@@ -54,6 +54,9 @@ public:
 	void decreasePosAfterPos(lyx::pos_type pos);
 	///
 	void deleteInsetsLyXText(BufferView * bv);
+	///
+	void InsetList::insetsOpenCloseBranch(BufferView * bv);
+
 private:
 	///
 	List list;

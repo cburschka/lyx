@@ -51,7 +51,7 @@ public:
 	    in a cleaner way. */
 	enum Code {
 		///
-		NO_CODE,
+		NO_CODE, // 0
 		///
 		TOC_CODE,  // do these insets really need a code? (ale)
 		///
@@ -59,9 +59,9 @@ public:
 		///
 		MARK_CODE,
 		///
-		REF_CODE, // 5
+		REF_CODE,
 		///
-		URL_CODE,
+		URL_CODE, // 5
 		///
 		HTMLURL_CODE,
 		///
@@ -69,9 +69,9 @@ public:
 		///
 		ENDING_CODE,
 		///
-		LABEL_CODE, // 10
+		LABEL_CODE,
 		///
-		NOTE_CODE,
+		NOTE_CODE, // 10
 		///
 		ACCENT_CODE,
 		///
@@ -79,9 +79,9 @@ public:
 		///
 		INDEX_CODE,
 		///
-		INCLUDE_CODE, // 15
+		INCLUDE_CODE,
 		///
-		GRAPHICS_CODE,
+		GRAPHICS_CODE, // 15
 		///
 		BIBITEM_CODE,
 		///
@@ -89,9 +89,9 @@ public:
 		///
 		TEXT_CODE,
 		///
-		ERT_CODE, // 20
+		ERT_CODE,
 		///
-		FOOT_CODE,
+		FOOT_CODE, // 20
 		///
 		MARGIN_CODE,
 		///
@@ -101,9 +101,9 @@ public:
 		///
 		MINIPAGE_CODE,
 		///
-		SPACE_CODE,
+		SPACE_CODE, // 25
 		///
-		SPECIALCHAR_CODE, // 25
+		SPECIALCHAR_CODE,
 		///
 		TABULAR_CODE,
 		///
@@ -125,13 +125,15 @@ public:
 		///
 		INDEX_PRINT_CODE,
 		///
-		OPTARG_CODE,
+		OPTARG_CODE, // 35
 		///
 		ENVIRONMENT_CODE,
 		///
 		HFILL_CODE,
 		///
-		NEWLINE_CODE
+		NEWLINE_CODE,
+		///
+		BRANCH_CODE
 	};
 
 	///

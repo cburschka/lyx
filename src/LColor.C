@@ -25,7 +25,7 @@ using std::endl;
 namespace {
 
 struct ColorEntry {
-	LColor::color lcolor;
+	int lcolor;
 	char const * guiname;
 	char const * latexname;
 	char const * x11name;
@@ -33,6 +33,11 @@ struct ColorEntry {
 };
 
 }
+
+struct TransformEntry {
+	char const * lyxname;
+	int ncolor;
+};
 
 
 struct LColor::Pimpl {
@@ -51,17 +56,24 @@ struct LColor::Pimpl {
 	/// initialise a color entry
 	void fill(ColorEntry const & entry)
 	{
-		information & in = infotab[entry.lcolor];
-		in.guiname   = entry.guiname;
-		in.latexname = entry.latexname;
-		in.x11name   = entry.x11name;
-		in.lyxname   = entry.lyxname;
+		information in;
+		in.lyxname   = string(entry.lyxname);
+		in.latexname = string(entry.latexname);
+		in.x11name   = string(entry.x11name);
+		in.guiname   = string(entry.guiname);
+		infotab[entry.lcolor] = in;
+		transform[string(entry.lyxname)] = int(entry.lcolor);
 	}
 
 	///
-	typedef std::map<LColor::color, information> InfoTab;
+	typedef std::map<int, information> InfoTab;
 	/// the table of color information
 	InfoTab infotab;
+
+	typedef std::map<string, int> Transform;
+	/// the transform between colour name string and integer code.
+	Transform transform;
+
 };
 
 
@@ -143,17 +155,30 @@ LColor::LColor(LColor const & c)
 
 
 LColor::~LColor()
-{
-	delete pimpl_;
-}
+{}
 
 
 void LColor::operator=(LColor const & c)
 {
 	LColor tmp(c);
-	std::swap(pimpl_, tmp.pimpl_);
+	boost::swap(pimpl_, tmp.pimpl_);
 }
 
+
+void LColor::fill(LColor::color c, 
+				string const & lyxname,
+				string const & x11name, 
+				string const & latexname, 
+				string const & guiname) 
+{
+	ColorEntry ce;
+	ce.lcolor = c;
+	ce.guiname = guiname.c_str();	
+	ce.latexname = latexname.c_str();	
+	ce.x11name = x11name.c_str();	
+	ce.lyxname = lyxname.c_str();	
+	pimpl_->fill(ce);
+}
 
 
 string const LColor::getGUIName(LColor::color c) const
@@ -161,6 +186,19 @@ string const LColor::getGUIName(LColor::color c) const
 	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
 	if (ici != pimpl_->infotab.end())
 		return _(ici->second.guiname);
+	return "none";
+}
+
+
+string const LColor::getGUIName(string const &  s) const
+{
+	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
+	if (ici != pimpl_->transform.end()) {
+		Pimpl::InfoTab::const_iterator 
+			it = pimpl_->infotab.find(ici->second);
+		if (it != pimpl_->infotab.end()) 
+			return it->second.guiname;	
+	}
 	return "none";
 }
 
@@ -178,11 +216,40 @@ string const LColor::getX11Name(LColor::color c) const
 }
 
 
+string const LColor::getX11Name(string const & s) const
+{
+	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
+	if (ici != pimpl_->transform.end()) {
+		Pimpl::InfoTab::const_iterator 
+			it = pimpl_->infotab.find(ici->second);
+		if (it != pimpl_->infotab.end()) 
+			return it->second.x11name;
+	}
+	lyxerr << "LyX internal error: Missing color"
+		" entry in LColor.C for " << s << endl;
+	lyxerr << "Using black." << endl;
+	return "black";
+}
+
+
 string const LColor::getLaTeXName(LColor::color c) const
 {
 	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
 	if (ici != pimpl_->infotab.end())
 		return ici->second.latexname;
+	return "black";
+}
+
+
+string const LColor::getLaTeXName(string const & s) const
+{
+	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
+	if (ici != pimpl_->transform.end()) {
+		Pimpl::InfoTab::const_iterator 
+			it = pimpl_->infotab.find(ici->second);
+		if (it != pimpl_->infotab.end()) 
+			return it->second.latexname;
+	}
 	return "black";
 }
 
@@ -193,6 +260,12 @@ string const LColor::getLyXName(LColor::color c) const
 	if (ici != pimpl_->infotab.end())
 		return ici->second.lyxname;
 	return "black";
+}
+
+
+size_t LColor::size() const
+{
+	return pimpl_->infotab.size();
 }
 
 
@@ -219,7 +292,7 @@ bool LColor::setColor(string const & lyxname, string const & x11name)
 			" redefined" << endl;
 		return false;
 	}
-	setColor (col, x11name);
+	setColor(col, x11name);
 	return true;
 }
 
@@ -230,7 +303,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; ici != end; ++ici) {
 		if (!compare_ascii_no_case(_(ici->second.guiname), guiname))
-			return ici->first;
+			return static_cast<LColor::color>(ici->first);
 	}
 	return LColor::inherit;
 }
@@ -238,13 +311,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.begin();
-	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
-	for (; ici != end; ++ici) {
-		if (!compare_ascii_no_case(ici->second.lyxname, lyxname))
-			return ici->first;
-	}
-	return LColor::inherit;
+	return static_cast<LColor::color>(pimpl_->transform[lyxname]);
 }
 
 

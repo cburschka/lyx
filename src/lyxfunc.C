@@ -505,6 +505,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			case InsetOld::NOTE_CODE:
 				disable = ev.argument != "note";
 				break;
+			case InsetOld::BRANCH_CODE:
+				disable = ev.argument != "branch";
+				break;
 			default:
 				break;
 		}
@@ -632,6 +635,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_INSERT_NOTE:
 		code = InsetOld::NOTE_CODE;
+		break;
+	case LFUN_INSERT_BRANCH:
+		code = InsetOld::BRANCH_CODE;
+		if (buf->params.branchlist.empty())
+			disable = true;
 		break;
 	case LFUN_INSERT_LABEL:
 		code = InsetOld::LABEL_CODE;

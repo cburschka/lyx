@@ -74,6 +74,8 @@ libxforms_la_SOURCES = \
 	FormBibtex.h \
 	FormBrowser.C \
 	FormBrowser.h \
+	FormBranch.C \
+	FormBranch.h \
 	FormChanges.C \
 	FormChanges.h \
 	FormCharacter.C \

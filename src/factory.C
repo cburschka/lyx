@@ -37,6 +37,7 @@
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetnote.h"
+#include "insets/insetbranch.h"
 #include "insets/insetoptarg.h"
 #include "insets/insetref.h"
 #include "insets/insetspace.h"
@@ -77,6 +78,14 @@ InsetOld * createInset(FuncRequest const & cmd)
 				arg = "Note";
 			return new InsetNote(params, arg);
 		}
+	case LFUN_INSERT_BRANCH:
+		{
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "none";
+			return new InsetBranch(params, arg);
+		}
+
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);
 
@@ -357,6 +366,8 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "Note"	|| tmptok == "Comment"
 				|| tmptok == "Greyedout") {
 			inset = new InsetNote(buf.params, tmptok);
+		} else if (tmptok == "Branch") {
+			inset = new InsetBranch(buf.params, tmptok); 
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);

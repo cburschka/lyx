@@ -65,7 +65,9 @@ public:
 		FloatInsert,
 		/** This is the list of selections that can
 		    be pasted. */
-		PasteRecent
+		PasteRecent,
+		/** Available branches in document */
+		Branches
 	};
 	/// Create a Command type MenuItem
 	MenuItem(Kind kind,
@@ -196,7 +198,7 @@ public:
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
-	    ViewFormats, ExportFormats, UpdateFormats
+	    ViewFormats, ExportFormats, UpdateFormats, Branches
 	*/
 	void expand(Menu const & frommenu, Menu & tomenu,
 		    LyXView const *) const;

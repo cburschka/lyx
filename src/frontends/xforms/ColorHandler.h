@@ -16,6 +16,7 @@
 #include "frontends/Painter.h"
 
 #include <map>
+#include <vector>
 #include <boost/scoped_ptr.hpp>
 
 // This is only included to provide stuff for the non-public sections
@@ -48,8 +49,10 @@ private:
 	Display * display;
 	///
 	Colormap colormap;
+	/// 
+	std::vector<GC> colorGCcache;
 	///
-	GC colorGCcache[LColor::ignore + 1];
+	GC getGCForeground(string const & s);
 	///
 	typedef std::map<int, GC> LineGCCache;
 	///

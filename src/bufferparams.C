@@ -24,6 +24,8 @@
 #include "author.h"
 #include "gettext.h"
 
+#include "LColor.h"
+
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -192,6 +194,31 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\tracking_changes") {
 		lex.nextToken();
 		tracking_changes = lex.getInteger();
+	} else if (token == "\\branch") {
+		lex.nextToken();
+		string branch = lex.getString();
+		branchlist.add(branch);
+		while (true) {
+			lex.nextToken();
+			string const tok = lex.getString();
+			if (tok == "\\end_branch")
+				break;
+			if (tok == "\\selected") {
+				lex.nextToken();
+				branchlist.setSelected(branch, lex.getInteger());
+			}
+			// not yet operational
+			if (tok == "\\color") {
+				lex.nextToken();
+				string color = lex.getString();
+				branchlist.setColor(branch, color);
+				// Update also the LColor table:
+				if (color == "none") 
+					color = lcolor.getX11Name(LColor::background);
+				lcolor.fill(static_cast<LColor::color>(lcolor.size()), 
+						branch, color);
+			}
+		}
 	} else if (token == "\\author") {
 		lex.nextToken();
 		istringstream ss(STRCONV(lex.getString()));
@@ -380,6 +407,17 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_numerical_citations " << use_numerical_citations
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
+
+	std::list<Branch>::const_iterator it = branchlist.begin();
+	std::list<Branch>::const_iterator end = branchlist.end();
+	for (; it != end; ++it) {
+		os << "\\branch " << it->getBranch()
+		   << "\n\\selected " << it->getSelected()	
+		   << "\n\\color " << it->getColor()	
+		   << "\n\\end_branch" 
+		   << "\n";
+	}
+
 	if (!paperwidth.empty())
 		os << "\\paperwidth "
 		   << VSpace(paperwidth).asLyXCommand() << '\n';

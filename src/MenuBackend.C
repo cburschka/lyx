@@ -69,6 +69,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case FloatListInsert:
 	case FloatInsert:
 	case PasteRecent:
+	case Branches:
 		break;
 	case Command:
 		action_ = lyxaction.LookupFunc(command);
@@ -189,6 +190,7 @@ Menu & Menu::read(LyXLex & lex)
 {
 	enum Menutags {
 		md_item = 1,
+		md_branches,
 		md_documents,
 		md_endmenu,
 		md_exportformats,
@@ -208,6 +210,7 @@ Menu & Menu::read(LyXLex & lex)
 	};
 
 	struct keyword_item menutags[md_last - 1] = {
+		{ "branches", md_branches },
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
@@ -291,6 +294,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_pasterecent:
 			add(MenuItem(MenuItem::PasteRecent));
+			break;
+
+		case md_branches:
+			add(MenuItem(MenuItem::Branches));
 			break;
 
 		case md_optsubmenu:
@@ -635,6 +642,25 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 }
 
 
+void expandBranches(Menu & tomenu, LyXView const * view)
+{
+	BufferParams const & params = view->buffer()->params;
+
+	std::list<Branch>::const_iterator cit = params.branchlist.begin();
+	std::list<Branch>::const_iterator end = params.branchlist.end();
+	
+	for (int ii = 1; cit != end; ++cit, ++ii) {
+		string label = cit->getBranch();
+		int const action = lyxaction.
+			getPseudoAction(LFUN_INSERT_BRANCH,
+					(cit->getBranch()));
+		if (ii < 10)
+			label = tostr(ii) + ". " + label + "|" + tostr(ii);
+		tomenu.add(MenuItem(MenuItem::Command, label, action), view);
+	}
+}
+
+
 } // namespace anon
 
 
@@ -669,6 +695,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::PasteRecent:
 			expandPasteRecent(tomenu, view);
+			break;
+
+		case MenuItem::Branches:
+			expandBranches(tomenu, view);
 			break;
 
 		case MenuItem::Toc:

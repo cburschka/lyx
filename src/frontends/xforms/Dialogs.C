@@ -17,6 +17,7 @@
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
+#include "ControlBranch.h"
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
@@ -44,6 +45,7 @@
 #include "FormAboutlyx.h"
 #include "FormBibitem.h"
 #include "FormBibtex.h"
+#include "FormBranch.h"
 #include "FormChanges.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
@@ -110,7 +112,7 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 }
 
 
-char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "changes",
+char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
 "float", "graphics", "include", "index", "label", "latexlog", "mathpanel",
 "mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
@@ -410,6 +412,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "note") {
 		dialog->setController(new ControlNote(*dialog));
 		dialog->setView(new FormNote(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "branch") {
+		dialog->setController(new ControlBranch(*dialog));
+		dialog->setView(new FormBranch(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "paragraph") {
 		dialog->setController(new ControlParagraph(*dialog));

@@ -3,7 +3,7 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 6
+Number of forms: 7
 Unit of measure: FL_COORD_PIXEL
 SnapGrid: 5
 
@@ -178,13 +178,13 @@ argument: 0
 =============== FORM ===============
 Name: form_document_paper
 Width: 395
-Height: 310
+Height: 320
 Number of Objects: 29
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 395 310
+box: 0 0 395 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -247,7 +247,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Width:|#W
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_custom_width
 callback: C_FormBaseInputCB
@@ -265,7 +265,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_custom_width_units
 callback: C_FormBaseInputCB
@@ -283,7 +283,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Height:|#H
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_custom_height
 callback: C_FormBaseInputCB
@@ -301,7 +301,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_custom_height_units
 callback: C_FormBaseInputCB
@@ -328,7 +328,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -400,7 +400,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 5 130 385 175
+box: 5 130 385 185
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -463,7 +463,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Top:|#T
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_top_margin
 callback: C_FormBaseInputCB
@@ -481,7 +481,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_top_margin_units
 callback: C_FormBaseInputCB
@@ -499,7 +499,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Bottom:|#B
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_bottom_margin
 callback: C_FormBaseInputCB
@@ -517,7 +517,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_bottom_margin_units
 callback: C_FormBaseInputCB
@@ -526,7 +526,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 75 240 50 25
+box: 75 250 50 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -535,7 +535,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Inner:|#I
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_inner_margin
 callback: C_FormBaseInputCB
@@ -544,7 +544,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 125 240 50 25
+box: 125 250 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -553,7 +553,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_inner_margin_units
 callback: C_FormBaseInputCB
@@ -562,7 +562,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 75 270 50 25
+box: 75 280 50 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -571,7 +571,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Outer:|#u
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_outer_margin
 callback: C_FormBaseInputCB
@@ -580,7 +580,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 125 270 50 25
+box: 125 280 50 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -589,7 +589,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_outer_margin_units
 callback: C_FormBaseInputCB
@@ -607,7 +607,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Headheight:|#H
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_head_height
 callback: C_FormBaseInputCB
@@ -625,7 +625,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_head_height_units
 callback: C_FormBaseInputCB
@@ -643,7 +643,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Headsep:|#d
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_head_sep
 callback: C_FormBaseInputCB
@@ -661,7 +661,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_head_sep_units
 callback: C_FormBaseInputCB
@@ -679,7 +679,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Footskip:|#F
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_foot_skip
 callback: C_FormBaseInputCB
@@ -697,7 +697,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_foot_skip_units
 callback: C_FormBaseInputCB
@@ -865,7 +865,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Spacing:|#g
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_spacing
 callback: C_FormBaseInputCB
@@ -883,7 +883,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Extra Options:|#X
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_extra
 callback: C_FormBaseInputCB
@@ -901,7 +901,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_skip
 callback: C_FormBaseInputCB
@@ -919,7 +919,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Default Skip:|#u
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_skip
 callback: C_FormBaseInputCB
@@ -928,7 +928,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1000,7 +1000,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1072,7 +1072,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1154,7 +1154,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_spacing
 callback: C_FormBaseInputCB
@@ -1172,7 +1172,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_skip_units
 callback: C_FormBaseInputCB
@@ -1259,7 +1259,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1349,13 +1349,13 @@ argument: 0
 =============== FORM ===============
 Name: form_document_options
 Width: 395
-Height: 310
+Height: 325
 Number of Objects: 8
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 395 310
+box: 0 0 395 325
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1373,7 +1373,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 185 20 120 25
+box: 185 15 120 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1382,7 +1382,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Float Placement:|#L
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_float_placement
 callback: C_FormBaseInputCB
@@ -1391,7 +1391,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 185 60 80 25
+box: 185 55 80 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1413,7 +1413,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 185 100 80 25
+box: 185 90 80 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1435,7 +1435,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 140 140 25
+box: 185 130 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1453,10 +1453,10 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 185 225 25 25
+box: 185 220 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1471,7 +1471,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 265 140 25
+box: 185 260 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1489,7 +1489,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 185 140 25
+box: 185 170 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1594,7 +1594,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: LaTeX:|#L
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_latex
 callback: C_FormBaseInputCB
@@ -1603,7 +1603,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1712,7 +1712,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1853,6 +1853,192 @@ gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 
+
+=============== FORM ===============
+Name: form_document_branch
+Width: 395
+Height: 325
+Number of Objects: 10
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 395 325
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 15 30 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: New Branch:|#N
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_all_branches
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 175 30 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Add|#d
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_add_branch
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 15 230 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Remove|#e
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_remove_branch
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BROWSER
+type: HOLD_BROWSER
+box: 15 90 150 125
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Available Branches:
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: browser_all_branches
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BROWSER
+type: HOLD_BROWSER
+box: 220 90 155 125
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Activated Branches:
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: browser_selection
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 175 95 35 35
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: @5->
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_select
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 175 135 35 35
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: @9+
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_deselect
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 165 275 55 30
+boxtype: FL_FLAT_BOX
+colors: FL_WHITE FL_COL1
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Display Background:
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_color
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 230 275 85 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Modify
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_modify
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms

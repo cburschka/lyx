@@ -321,7 +321,8 @@ enum kb_action {
 	LFUN_PARAGRAPH_UPDATE,
 	LFUN_EXTERNAL_EDIT,
 	// 245
-
+	LFUN_INSERT_BRANCH,
+	
 	LFUN_LASTACTION                  // end of the table
 };
 

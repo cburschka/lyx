@@ -12,6 +12,7 @@
 #define LCOLOR_H
 
 #include "LString.h"
+#include <boost/scoped_ptr.hpp>
 
 /**
   This is a stateless class.
@@ -174,6 +175,7 @@ public:
 		ignore
 	};
 
+	
 	///
 	LColor();
 	///
@@ -182,6 +184,14 @@ public:
 	~LColor();
 	///
 	void operator=(LColor const &);
+
+	///
+	void LColor::fill(LColor::color c, 
+			string const & lyxname,
+			string const & x11name = string(),
+			string const & latexname = string(), 
+			string const & guiname = string()); 
+
 	/// set the given LyX color to the color defined by the X11 name given
 	void setColor(LColor::color col, string const & x11name);
 	/// set the given LyX color to the color defined by the X11 name given
@@ -189,15 +199,25 @@ public:
 
 	/// Get GUI name of color
 	string const getGUIName(LColor::color c) const;
+	///
+	string const getGUIName(string const & s) const;
 
 	/// Get X11 name of color
 	string const getX11Name(LColor::color c) const;
+	///
+	string const getX11Name(string const & s) const;
 
 	/// Get LaTeX name of color
 	string const getLaTeXName(LColor::color c) const;
+	///
+	string const getLaTeXName(string const & s) const;
 
 	/// Get LyX name of color
 	string const getLyXName(LColor::color c) const;
+	/// (string-to-string version not needed as it is identity)
+
+	///
+	size_t size() const;
 
 	/// get the color from the GUI name
 	LColor::color getFromGUIName(string const & guiname) const;
@@ -207,7 +227,7 @@ private:
 	///
 	struct Pimpl;
 	///
-	Pimpl * pimpl_;
+	boost::scoped_ptr<Pimpl> pimpl_;
 };
 
 /// the current color definitions

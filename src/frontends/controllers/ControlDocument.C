@@ -82,6 +82,14 @@ void ControlDocument::apply()
 	buffer()->markDirty();
 
 	lv_.message(_("Document settings applied"));
+
+	// Open insets of selected branches, close deselected ones
+	// Currently only top-level insets in buffer handled (bug).
+	ParIterator pit = buffer()->par_iterator_begin();
+	ParIterator pend = buffer()->par_iterator_end();
+	for (; pit != pend; ++pit) {
+		pit->insetlist.insetsOpenCloseBranch(bufferview());
+	}
 }
 
 

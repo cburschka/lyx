@@ -17,11 +17,14 @@
 
 #include <boost/scoped_ptr.hpp>
 
+#include "lyx_forms.h"
 #include <vector>
 
 class ControlDocument;
 
 class BufferParams;
+
+class FormColorpicker;
 
 struct FD_document;
 struct FD_document_paper;
@@ -29,6 +32,17 @@ struct FD_document_class;
 struct FD_document_language;
 struct FD_document_options;
 struct FD_document_bullet;
+struct FD_document_branch;
+
+namespace {
+
+enum GuiColors {
+	GUI_COLOR_CHOICE   = FL_FREE_COL15
+};
+
+		
+}
+
 
 /** This class provides an XForms implementation of the FormDocument dialog.
  *  The table-layout-form here changes values for latex-tabulars
@@ -49,6 +63,8 @@ private:
 	/// Apply from dialog
 	virtual void apply();
 
+	///
+	void branch_input(FL_OBJECT *);
 	///
 	void ChoiceBulletSize(FL_OBJECT * ob, long);
 	///
@@ -78,6 +94,8 @@ private:
 	void options_update(BufferParams const &);
 	///
 	void bullets_update(BufferParams const &);
+	///
+	void branch_update(BufferParams const &);
 
 	///
 	void paper_apply(BufferParams &);
@@ -89,6 +107,8 @@ private:
 	bool options_apply(BufferParams &);
 	///
 	void bullets_apply(BufferParams &);
+	///
+	void branch_apply(BufferParams &);
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_document_paper>    paper_;
@@ -101,6 +121,10 @@ private:
 	///
 	boost::scoped_ptr<FD_document_bullet>   bullets_;
 	///
+	boost::scoped_ptr<FD_document_branch>   branch_;
+	///
+	boost::scoped_ptr<FormColorpicker> picker_;	
+	///
 	int ActCell;
 	///
 	int Confirmed;
@@ -112,6 +136,8 @@ private:
 	FL_OBJECT * fbullet;
 	///
 	std::vector<string> lang_;
+	/// Contains all legal branches for this doc
+	BranchList branchlist_;
 };
 
 #endif

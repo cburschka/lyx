@@ -5,6 +5,8 @@
  *
  * \author Jürgen Vigna
  * \author Rob Lahaye
+ * \author Martin Vermeer
+ * \author Juergen Spitzmueller
  *
  * Full author contact details are available in file CREDITS
  */
@@ -17,17 +19,23 @@
 #include "xformsBC.h"
 #include "ButtonController.h"
 
+#include "FormColorpicker.h"
+#include "LColor.h"
+#include "Lsstream.h"
 #include "bmtable.h"
 #include "checkedwidgets.h"
+#include "Tooltips.h"
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "xforms_helpers.h"
 
+#include "bufferparams.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
+#include "ColorHandler.h"
 
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
@@ -43,12 +51,15 @@
 #include <boost/bind.hpp>
 
 #include <functional>
+#include <iomanip>
 
 using namespace lyx::support;
 
 using std::bind2nd;
 using std::vector;
 using std::endl;
+using std::setw;
+using std::setfill;
 
 
 namespace {
@@ -58,6 +69,7 @@ bool const scalableTabfolders = false;
 #else
 bool const scalableTabfolders = true;
 #endif
+
 
 } // namespace anon
 
@@ -343,6 +355,46 @@ void FormDocument::build()
 	fl_set_bmtable_pixmap_file(bullets_->bmtable_panel, 6, 6,
 				   bmtablefile.c_str());
 
+	picker_.reset(new FormColorpicker);
+	
+	// the document branches form
+	branch_.reset(build_document_branch(this));
+
+	fl_set_object_color(branch_->button_color,
+		GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
+	
+	bcview().addReadOnly(branch_->input_all_branches);
+	bcview().addReadOnly(branch_->button_add_branch);
+	bcview().addReadOnly(branch_->button_remove_branch);
+	bcview().addReadOnly(branch_->button_select);
+	bcview().addReadOnly(branch_->button_deselect);
+	bcview().addReadOnly(branch_->button_modify);
+	bcview().addReadOnly(branch_->browser_all_branches);
+
+	// set up the tooltips for branches form
+	string str = _("Enter the name of a new branch.");
+	tooltips().init(branch_->input_all_branches, str);
+	str = _("Add a new branch to the document.");
+	tooltips().init(branch_->button_add_branch, str);
+	str = _("Remove the selected branch from the document.");
+	tooltips().init(branch_->button_remove_branch, str);
+	str = _("Activate the selected branch for output.");
+	tooltips().init(branch_->button_select, str);
+	str = _("Deactivate the selected activated branch.");
+	tooltips().init(branch_->button_deselect, str);
+	str = _("Available branches for this document.");
+	tooltips().init(branch_->browser_all_branches, str);
+	str = _("Activated branches. Content will occur in the document\'s output");
+	tooltips().init(branch_->browser_selection, str);
+	str = _("Modify background color of branch inset");
+	tooltips().init(branch_->button_modify, str);
+	str = _("Background color of branch inset");
+	tooltips().init(branch_->button_color, str);
+
+	// Handle middle mouse paint:
+	setPrehandler(branch_->input_all_branches);
+	fl_set_input_return(branch_->input_all_branches, FL_RETURN_CHANGED);
+
 	// Enable the tabfolder to be rescaled correctly.
 	if (scalableTabfolders)
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
@@ -366,6 +418,9 @@ void FormDocument::build()
 		fl_deactivate_object(fbullet);
 		fl_set_object_lcol(fbullet, FL_INACTIVE);
 	}
+
+	fl_addto_tabfolder(dialog_->tabfolder,_("Branches").c_str(),
+				     branch_->form);
 }
 
 
@@ -378,6 +433,7 @@ void FormDocument::apply()
 	language_apply(params);
 	options_apply(params);
 	bullets_apply(params);
+	branch_apply(params);
 }
 
 
@@ -395,6 +451,7 @@ void FormDocument::update()
 	language_update(params);
 	options_update(params);
 	bullets_update(params);
+	branch_update(params);
 }
 
 
@@ -456,6 +513,15 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		setEnabled(options_->choice_citation_format,
 			   fl_get_button(options_->check_use_natbib));
 
+	} else if (ob == branch_->browser_all_branches ||
+			ob == branch_->browser_selection ||
+			ob == branch_->button_add_branch ||
+			ob == branch_->button_remove_branch ||
+			ob == branch_->button_modify ||
+			ob == branch_->button_select ||
+			ob == branch_->button_deselect ||
+			ob == branch_->button_deselect) {
+		branch_input(ob);
 	} else if (ob == dialog_->button_save_defaults) {
 		apply();
 		controller().saveAsDefault();
@@ -603,6 +669,139 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 	}
 
 	return ButtonPolicy::SMI_VALID;
+}
+
+
+void FormDocument::branch_input(FL_OBJECT * ob)
+{
+	BufferParams & params = controller().params();
+	std::vector<string> vec;
+
+	if (ob == branch_->button_add_branch) {
+		string new_branch = fl_get_input(branch_->input_all_branches);
+		if (!new_branch.empty()) {
+			params.branchlist.add(new_branch);
+			fl_set_input(branch_->input_all_branches, "");
+			// Update branch list
+			string const all_branches = params.branchlist.allBranches();
+			fl_clear_browser(branch_->browser_all_branches);
+			vec = getVectorFromString(all_branches, "|");
+			for (unsigned i = 0; i < vec.size(); ++i) {
+				fl_addto_browser(branch_->browser_all_branches,
+								vec[i].c_str());
+			}
+			LColor::color c = static_cast<LColor::color>(lcolor.size());
+			lcolor.fill(c, new_branch, lcolor.getX11Name(LColor::background));
+		}
+
+	} else if (ob == branch_->button_remove_branch) {
+		unsigned i = fl_get_browser(branch_->browser_all_branches);
+		string const current_branch =
+			fl_get_browser_line(branch_->browser_all_branches, i);
+		if (!current_branch.empty()) {
+			params.branchlist.remove(current_branch);
+			// Update branch list
+			string const all_branches = params.branchlist.allBranches();
+			fl_clear_browser(branch_->browser_all_branches);
+			vec = getVectorFromString(all_branches, "|");
+			for (unsigned i = 0; i < vec.size(); ++i) {
+				fl_addto_browser(branch_->browser_all_branches,
+								vec[i].c_str());
+			}
+			// Update selected-list...
+			string const all_selected = params.branchlist.allSelected();
+			fl_clear_browser(branch_->browser_selection);
+			vec = getVectorFromString(all_selected, "|");
+			for (unsigned i = 0; i < vec.size(); ++i) {
+				fl_addto_browser(branch_->browser_selection, vec[i].c_str());
+			}
+		}
+	} else if (ob == branch_->button_select) {
+		unsigned i = fl_get_browser(branch_->browser_all_branches);
+		string const current_branch =
+			fl_get_browser_line(branch_->browser_all_branches, i);
+		if (!current_branch.empty()) {
+			fl_clear_browser(branch_->browser_selection);
+			params.branchlist.setSelected(current_branch, true);
+			string const all_selected = params.branchlist.allSelected();
+			vec = getVectorFromString(all_selected, "|");
+			for (unsigned i = 0; i < vec.size(); ++i) {
+				fl_addto_browser(branch_->browser_selection,
+							vec[i].c_str());
+			}
+		}
+	} else if (ob == branch_->button_deselect) {
+		unsigned i = fl_get_browser(branch_->browser_selection);
+		string const current_sel =
+			fl_get_browser_line(branch_->browser_selection, i);
+		if (!current_sel.empty()) {
+			fl_clear_browser(branch_->browser_selection);
+			params.branchlist.setSelected(current_sel, false);
+			string const all_selected = params.branchlist.allSelected();
+			vec = getVectorFromString(all_selected, "|");
+			for (unsigned i = 0; i < vec.size(); ++i) {
+				fl_addto_browser(branch_->browser_selection,
+							vec[i].c_str());
+			}
+		}
+	} else if (ob == branch_->button_modify) {
+		unsigned i = fl_get_browser(branch_->browser_all_branches);
+		string const current_branch =
+			fl_get_browser_line(branch_->browser_all_branches, i);
+		
+		RGBColor before;
+		string x11hexname = params.branchlist.getColor(current_branch);
+		if (x11hexname[0] == '#') {
+			before = RGBColor(x11hexname);
+		} else{
+			fl_getmcolor(FL_COL1, &before.r, &before.g, &before.b);
+		}
+
+		RGBColor col = picker_->requestColor(before);
+		if (before != col) {
+			fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
+			fl_redraw_object(branch_->button_color);
+			// Figure out here how to stash the new colour into the
+			// LyX colour database.
+
+			x11hexname = X11hexname(col);
+
+			// current_branch already in database
+			LColor::color c = lcolor.getFromLyXName(current_branch);
+			lcolor.setColor(current_branch, x11hexname);
+			// Make sure that new colour is also displayed ;-)
+			lyxColorHandler->getGCForeground(c);
+			lyxColorHandler->updateColor(c);
+			// what about system_lcolor?
+			// Here set colour in BranchList:
+			params.branchlist.setColor(current_branch, x11hexname);
+		}
+	} else if (ob == branch_->browser_all_branches) {
+		unsigned i = fl_get_browser(branch_->browser_all_branches);
+		string const current_branch =
+			fl_get_browser_line(branch_->browser_all_branches, i);
+		// make button_color track selected branch:
+
+		RGBColor rgb;
+		string x11hexname = params.branchlist.getColor(current_branch);
+		if (x11hexname[0] == '#') {
+			rgb = RGBColor(x11hexname);
+		} else {
+			fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
+		}
+		fl_mapcolor(GUI_COLOR_CHOICE, rgb.r, rgb.g, rgb.b);
+		fl_redraw_object(branch_->button_color);
+	}
+	setEnabled(branch_->button_select,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
+	setEnabled(branch_->button_deselect,
+		(fl_get_browser(branch_->browser_selection) > 0));
+	setEnabled(branch_->button_remove_branch,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
+	setEnabled(branch_->button_modify,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
+
+	branchlist_ = params.branchlist;
 }
 
 
@@ -830,6 +1029,16 @@ void FormDocument::bullets_apply(BufferParams & params)
 }
 
 
+void FormDocument::branch_apply(BufferParams & params)
+{
+	BufferParams & prms = controller().params();
+	if (branchlist_.empty())
+		branchlist_ = prms.branchlist;
+	params.branchlist = branchlist_;
+	branchlist_.clear();
+}
+
+		
 void FormDocument::UpdateClassParams(BufferParams const & params)
 {
 	// These are the params that have to be updated on any class change
@@ -1091,6 +1300,56 @@ void FormDocument::bullets_update(BufferParams const & params)
 		     params.user_defined_bullets[0].getText().c_str());
 	fl_set_choice(bullets_->choice_size,
 		      params.user_defined_bullets[0].getSize() + 2);
+}
+
+
+void FormDocument::branch_update(BufferParams const & params)
+{
+	if (!branch_.get())
+		return;
+	
+	string const all_branches = params.branchlist.allBranches();
+	fl_clear_browser(branch_->browser_all_branches);
+	string current_branch("none");
+	
+	if (!all_branches.empty()) {
+		std::vector<string> vec = getVectorFromString(all_branches, "|");
+		for (unsigned i = 0; i < vec.size(); ++i) {
+			fl_addto_browser(branch_->browser_all_branches, vec[i].c_str());
+		}
+		fl_select_browser_line(branch_->browser_all_branches, 1);
+		current_branch =
+			fl_get_browser_line(branch_->browser_all_branches, 1);
+	}
+
+	// display proper selection...
+	string const all_selected = params.branchlist.allSelected();
+	fl_clear_browser(branch_->browser_selection);
+	if (!all_selected.empty()) {
+		std::vector<string> vec = getVectorFromString(all_selected, "|");
+		for (unsigned i = 0; i < vec.size(); ++i) {
+			fl_addto_browser(branch_->browser_selection, vec[i].c_str());
+			}
+	}
+	// display proper colour...
+	RGBColor rgb;
+	string x11hexname = params.branchlist.getColor(current_branch);
+	if (x11hexname[0] == '#') {
+		rgb = RGBColor(x11hexname);
+	} else {
+		fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
+	}
+	fl_mapcolor(GUI_COLOR_CHOICE, rgb.r, rgb.g, rgb.b);
+	fl_redraw_object(branch_->button_color);
+
+	setEnabled(branch_->button_select,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
+	setEnabled(branch_->button_deselect,
+		(fl_get_browser(branch_->browser_selection) > 0));
+	setEnabled(branch_->button_remove_branch,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
+	setEnabled(branch_->button_modify,
+		(fl_get_browser(branch_->browser_all_branches) > 0));
 }
 
 

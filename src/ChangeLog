@@ -1,4 +1,29 @@
 
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+
+	* src/BranchList.[Ch]:
+	* src/InsetList.[Ch]:
+	* src/LColor.[Ch]:
+	* src/LyXAction.C:
+	* src/Makefile.am:
+	* src/MenuBackend.[Ch]:
+	* src/bufferparams.[Ch]:
+	* src/factory.C:
+	* src/lfuns.h:
+	* src/lyxfunc.C:
+	* src/text3.C: implements the 'branch inset'
+	idea. This allows the output of various versions of a document
+	from a single source version, selectively outputing or suppressing
+	output of parts of the text.
+	This implementation contains a 'branch list editor' in a separate
+	tab of the document settings dialog. Branches are user definable
+	and have a "display colour" to distinguish them on-screen.
+
+	ColorHandler was somewhat cleaned up.
+	(1) make possible a dynamically growing LColor list by allowing
+	the graphic context cache to grow along (vector);
+	(2) eliminate an IMHO unnecessary step in colour allocation.
+
 2003-08-15  Kayvan A. Sylvan <kayvan@sylvan.com>
 
 	* BufferView_pimpl.C: compile fix

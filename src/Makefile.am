@@ -60,6 +60,8 @@ lyx_SOURCES = \
 	BufferView_pimpl.h \
 	Bullet.C \
 	Bullet.h \
+	BranchList.C \
+	BranchList.h \
 	Chktex.C \
 	Chktex.h \
 	CutAndPaste.C \

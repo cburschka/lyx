@@ -21,6 +21,7 @@
 #include "texrow.h"
 #include "author.h"
 #include "paper.h"
+#include "BranchList.h"
 
 #include "insets/insetquotes.h"
 
@@ -134,6 +135,8 @@ public:
 	int tocdepth;
 	///
 	Language const * language;
+	/// BranchList:
+	BranchList branchlist;
 	///
 	string inputenc;
 	///

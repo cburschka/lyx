@@ -93,6 +93,7 @@ Menuset
 		OptItem "Minipage Settings...|M" "inset-settings minipage"
 		OptItem "Text Wrap Settings...|W" "inset-settings wrap"
 		OptItem "Note Settings...|N" "inset-settings note"
+		OptItem "Branch Settings...|B" "inset-settings branch"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
@@ -217,6 +218,8 @@ Menuset
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
 # YUCK
+		Submenu "Note|N" "insert_note"
+		Submenu "Branch|B" "branches"
 		Submenu "File|e" "insert_file"
 		Separator
 		Item "Citation Reference...|C" "dialog-show-new-inset citation"
@@ -324,6 +327,10 @@ Menuset
 		Item "LyX Note|N" "note-insert Note"
 		Item "Comment|C" "note-insert Comment"
 		Item "Greyed Out|G" "note-insert Greyedout"
+	End
+
+	Menu "branches"
+		Branches
 	End
 
 #

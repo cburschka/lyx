@@ -1,9 +1,12 @@
 #include <config.h>
 
 #include "InsetList.h"
+#include "BufferView.h"
+#include "buffer.h"
 #include "debug.h"
 
 #include "insets/updatableinset.h"
+#include "insets/insetbranch.h"
 
 #include <algorithm>
 
@@ -176,3 +179,23 @@ void InsetList::deleteInsetsLyXText(BufferView * bv)
 		}
 	}
 }
+
+
+void InsetList::insetsOpenCloseBranch(BufferView * bv)
+{
+	BufferParams bp = bv->buffer()->params;
+	List::iterator it = list.begin();
+	List::iterator end = list.end();
+	for (; it != end; ++it) {
+		if (it->inset && it->inset->lyxCode() == InsetOld::BRANCH_CODE) {
+			InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
+			if (bp.branchlist.selected(inset->params().branch)) {
+				inset->open(bv);
+			} else {
+				inset->close(bv);
+			}
+		}
+	}
+}
+
+

@@ -1,3 +1,4 @@
+src/BranchList.h
 src/BufferView.C
 src/BufferView_pimpl.C
 src/Chktex.C
@@ -90,6 +91,7 @@ src/frontends/xforms/FormAboutlyx.C
 src/frontends/xforms/FormBase.C
 src/frontends/xforms/FormBibitem.C
 src/frontends/xforms/FormBibtex.C
+src/frontends/xforms/FormBranch.C
 src/frontends/xforms/FormChanges.C
 src/frontends/xforms/FormCharacter.C
 src/frontends/xforms/FormCitation.C
@@ -138,6 +140,7 @@ src/gettext.h
 src/importer.C
 src/insets/inset.C
 src/insets/insetbibtex.C
+src/insets/insetbranch.C
 src/insets/insetcaption.C
 src/insets/insetenv.C
 src/insets/insetert.C
@@ -180,6 +183,7 @@ src/mathed/ref_inset.C
 src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
+src/support/path_defines.C
 src/text.C
 src/text2.C
 src/text3.C

@@ -44,6 +44,7 @@ namespace {
 
 
 LyXColorHandler::LyXColorHandler()
+		: colorGCcache(LColor::ignore + 1)
 {
 	display = fl_get_display();
 	drawable = XCreatePixmap(display,
@@ -52,7 +53,7 @@ LyXColorHandler::LyXColorHandler()
 
 	colormap = fl_state[fl_get_vclass()].colormap;
 	// Clear the GC cache
-	for (int i = 0; i <= LColor::ignore; ++i) {
+	for (int i = 0; i < colorGCcache.size(); ++i) {
 		colorGCcache[i] = 0;
 	}
 }
@@ -61,7 +62,7 @@ LyXColorHandler::LyXColorHandler()
 LyXColorHandler::~LyXColorHandler()
 {
 	// Release all the registered GCs
-	for (int i = 0; i <= LColor::ignore; ++i) {
+	for (unsigned i = 0; i < colorGCcache.size(); ++i) {
 		if (colorGCcache[i] != 0) {
 			XFreeGC(display, colorGCcache[i]);
 		}
@@ -82,39 +83,27 @@ unsigned long LyXColorHandler::colorPixel(LColor::color c)
 }
 
 
-// Gets GC according to color
-// Uses caching
-GC LyXColorHandler::getGCForeground(LColor::color c)
+GC LyXColorHandler::getGCForeground(string const & s)
 {
-	if (colorGCcache[c] != 0)
-		return colorGCcache[c];
-
 	XColor xcol;
 	XColor ccol;
-	string const s = lcolor.getX11Name(c);
 	XGCValues val;
-
 	// Look up the RGB values for the color, and an approximate
 	// color that we can hope to get on this display.
 	if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
 		lyxerr << bformat(
-			_("LyX: Unknown X11 color %1$s for %2$s\n"
+			_("LyX: Unknown X11 color %1$s\n"
 			  "     Using black instead, sorry!"),
-			s, lcolor.getGUIName(c)) << endl;
+			s) << endl;
 		unsigned long bla = BlackPixel(display,
 					       DefaultScreen(display));
 		val.foreground = bla;
 	// Try the exact RGB values first, then the approximate.
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
 		if (lyxerr.debugging(Debug::GUI)) {
-			lyxerr << bformat(_("LyX: X11 color %1$s allocated for %2$s"),
-				s, lcolor.getGUIName(c)) << endl;
+			lyxerr << bformat(_("LyX: X11 color %1$s allocated"),
+				s) << endl;
 		}
-		val.foreground = xcol.pixel;
-	} else if (XAllocColor(display, colormap, &ccol)) {
-		lyxerr << bformat(
-			_("LyX: Using approximated X11 color %1$s allocated for %2$s"),
-			s, lcolor.getGUIName(c)) << endl;
 		val.foreground = xcol.pixel;
 	} else {
 		// Here we are traversing the current colormap to find
@@ -155,8 +144,8 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		}
 
 		lyxerr << bformat(
-			_("LyX: Couldn't allocate '%1$s' for %2$s with (r,g,b)=%3$s.\n"),
-			s, lcolor.getGUIName(c), tostr(xcol));
+			_("LyX: Couldn't allocate '%1$s' with (r,g,b)=%3$s.\n"),
+			s, tostr(xcol));
 
 		lyxerr << bformat(
 				_("     Using closest allocated color with (r,g,b)=%1$s instead.\n"
@@ -165,10 +154,33 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 		val.foreground = cmap[closest_pixel].pixel;
 	}
-
 	val.function = GXcopy;
-	return colorGCcache[c] = XCreateGC(display, drawable,
+	return XCreateGC(display, drawable,
 					   GCForeground | GCFunction, &val);
+}
+		
+// Gets GC according to color
+// Uses caching
+GC LyXColorHandler::getGCForeground(LColor::color c)
+{
+	if (static_cast<unsigned>(c) >= colorGCcache.size()) {
+		colorGCcache.resize(c + 1, 0);
+	}
+
+	if (colorGCcache[c] != 0) {
+		return colorGCcache[c];
+	}
+	XColor xcol;
+	XColor ccol;
+	string const s = lcolor.getX11Name(c);
+	// Look up the RGB values for the color, and an approximate
+	// color that we can hope to get on this display.
+	if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
+		lyxerr << bformat(
+			_("LyX: Unknown X11 color %1$s for %2$s\n"),
+			s, lcolor.getGUIName(c)) << endl;
+	}
+	return colorGCcache[c] = getGCForeground(s);
 }
 
 
