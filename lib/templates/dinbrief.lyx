@@ -1,6 +1,5 @@
-#This file was created by <jug> Sun Jun  8 12:01:39 1997
-#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass dinbrief
 \language german
 \inputencoding latin1
@@ -11,6 +10,9 @@
 \papersize a4paper
 \paperpackage a4
 \use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -37,6 +39,7 @@
 \newline 
 <Deine Stadt>
 \layout Stadt
+
 <Stadt für Datum>
 \layout Datum
 

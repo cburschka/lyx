@@ -1,7 +1,27 @@
-#This file was created by <karger> Sun Nov 15 16:55:13 1998
-#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass letter
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
 
 \layout My Address
 
@@ -20,8 +40,12 @@
 \layout Signature
 
 <Your signature
-\begin_inset Info This field MUST come before the "Opening" field!
+\begin_inset Note
+collapsed true
 
+\layout Standard
+
+This field MUST come before the "Opening" field!
 \end_inset 
 
 >

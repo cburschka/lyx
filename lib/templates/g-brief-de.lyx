@@ -1,6 +1,5 @@
-#This file was created by <th04> Thu Nov 18 10:41:14 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass g-brief-de
 \begin_preamble
 %%\lochermarke
@@ -19,6 +18,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -94,10 +95,16 @@ TH
 \layout Datum
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Brieftext
 
 \backslash 
 today
+\end_inset 
+
+
 \layout Anrede
 
 Sehr geehrter Herr Beispiel,

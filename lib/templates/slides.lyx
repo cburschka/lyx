@@ -1,6 +1,5 @@
-#This file was created by <candide> Tue Dec 22 07:58:14 1998
-#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass slides
 \begin_preamble
 % Uncomment to print out only slides and overlays
@@ -21,6 +20,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -72,17 +73,27 @@ Test note.
 \layout Standard
 
 A time marker: 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 settime{60}
+\end_inset 
+
+
 \layout Standard
 
 Don't talk more than 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 addtime{200}
-\latex default 
+\end_inset 
+
 .
 \the_end
