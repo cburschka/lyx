@@ -11,14 +11,14 @@ INCLUDES = -I${top_srcdir}/src/ \
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 include ../../Makefile.dialogs
- 
+
 libqt2uimoc_la_SOURCES := $(UIMOCDIALOGS)
-	#$(patsubst, %, %Dialog_moc.C, $(DIALOGS))
- 
+#	$(patsubst, %, %Dialog_moc.C, $(DIALOGS))
+
 DISTCLEANFILES = $(libqt2uimoc_la_SOURCES) *.orig *.rej *~ *.bak core
 
 ETAGS_ARGS = --lang=c++
- 
+
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<
- 
+

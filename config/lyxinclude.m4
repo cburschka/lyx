@@ -131,11 +131,10 @@ done
 ])dnl
 
 
-AC_DEFUN(LYX_PROG_CXX_WORKS,
-[AC_LANG_SAVE
-AC_LANG_CPLUSPLUS
-AC_TRY_COMPILER(
-[class foo {
+AC_DEFUN([LYX_PROG_CXX_WORKS],
+[rm -f conftest.C
+cat >conftest.C <<EOF
+class foo {
    // we require the mutable keyword 
    mutable int bar; 
  }; 
@@ -146,31 +145,22 @@ AC_TRY_COMPILER(
  int main() {
    return(0);
  }
-], ac_cv_prog_cxx_works, ac_cv_prog_cxx_cross)
-AC_LANG_RESTORE
-if test $ac_cv_prog_cxx_works = no; then
-  CXX=
-fi
-cross_compiling=$ac_cv_prog_cxx_cross
+EOF
+$CXX -c $CXXFLAGS $CPPFLAGS conftest.C >&5 || CXX= 
+rm -f conftest.C conftest.o conftest.obj || true
 ])
 
 
 AC_DEFUN(LYX_PROG_CXX,
-[AC_BEFORE([$0], [AC_PROG_CXXCPP])dnl
-AC_MSG_CHECKING([for a working C++ compiler])
-LYX_SEARCH_PROG(CXX, $CCC g++ gcc c++ CC cxx xlC cc++, LYX_PROG_CXX_WORKS)
+[AC_MSG_CHECKING([for a good enough C++ compiler])
+LYX_SEARCH_PROG(CXX, $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
 
 if test -z "$CXX" ; then
-  AC_ERROR([Unable to find a working C++ compiler])
+  AC_ERROR([Unable to find a good enough C++ compiler])
 fi
-
-AC_SUBST(CXX)
 AC_MSG_RESULT($CXX)
 
-AC_MSG_CHECKING([whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) is a cross-compiler])
-AC_MSG_RESULT($cross_compiling)
-
-AC_PROG_CXX_GNU
+AC_PROG_CXX
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
@@ -198,23 +188,14 @@ case $enable_optimization in
 esac
 
 # set the debug flags correctly.
-if test $ac_cv_prog_gxx = yes; then
-  GXX=yes
-dnl Check whether -g works, even if CXXFLAGS is set, in case the package
-dnl plays around with CXXFLAGS (such as to build both debugging and
-dnl normal versions of a library), tasteless as that idea is.
-  ac_test_CXXFLAGS="${CXXFLAGS+set}"
-  ac_save_CXXFLAGS="$CXXFLAGS"
-  CXXFLAGS=
-dnl Check the version of g++
-  gxx_version=`${CXX} --version`
+if test x$GXX = xyes; then
   dnl Useful for global version info
+  gxx_version=`${CXX} --version`
   CXX_VERSION="($gxx_version)"
   
-  AC_PROG_CXX_G
   if test "$ac_test_CXXFLAGS" = set; then
     CXXFLAGS="$ac_save_CXXFLAGS"
-  elif test $ac_cv_prog_cxx_g = yes; then
+  else 
     case $gxx_version in
       2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
       2.95.2)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
@@ -224,8 +205,6 @@ dnl Check the version of g++
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
     esac
-  else
-    CXXFLAGS="$lyx_opt"
   fi
   if test x$enable_warnings = xyes ; then
     case $gxx_version in
@@ -234,20 +213,16 @@ dnl Check the version of g++
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
     esac
     if test $lyx_devel_version = yes ; then
-	case $gxx_version in
-	    2.95.*) ;;
-	    2.96*) ;;
-	    2.97*) ;;
-	    *2.91*) ;;
-	    *) ;;
-        esac
+      case $gxx_version in
+	  2.95.*) ;;
+	  2.96*) ;;
+	  2.97*) ;;
+	  *2.91*) ;;
+	  *) ;;
+      esac
     fi
   fi
-else
-  GXX=
-  test "${CXXFLAGS+set}" = set || CXXFLAGS=""
-fi
-])dnl
+fi])dnl
 
 
 dnl NOT USED CURRENTLY*************************************
@@ -371,7 +346,7 @@ dnl Usage: LYX_CXX_STL_STRING : checks whether the C++ compiler
 dnl   has a std::string that is usable for LyX. LyX does not require this
 dnl   std::string to be standard.
 AC_DEFUN(LYX_CXX_STL_STRING,[
-    AC_REQUIRE([LYX_PROG_CXX])
+    AC_REQUIRE([AC_PROG_CXX])
     AC_MSG_CHECKING(whether the included std::string should be used)
     AC_ARG_WITH(included-string,
        [  --with-included-string  use LyX string class instead of STL string],
@@ -416,7 +391,7 @@ dnl Usage: LYX_CXX_GOOD_STD_STRING : checks whether the C++ compiler
 dnl   has a std::string that is close to the standard. So close that
 dnl   methods not found in "unstandard" std::strings are present here.
 AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
-    AC_REQUIRE([LYX_PROG_CXX])
+    AC_REQUIRE([AC_PROG_CXX])
     AC_CACHE_CHECK([whether the systems std::string is really good],
     [lyx_cv_std_string_good],
     [AC_TRY_COMPILE([
@@ -460,7 +435,7 @@ AC_DEFUN(LYX_REGEX,[
 dnl NOT USED CURRENTLY*************************************
 dnl LYX_CXX_PARTIAL
 AC_DEFUN(LYX_CXX_PARTIAL, [
-    AC_REQUIRE([LYX_PROG_CXX])
+    AC_REQUIRE([AC_PROG_CXX])
     AC_CACHE_CHECK([if C++ compiler supports partial specialization],
 	[lyx_cv_cxx_partial_specialization],
 	[AC_TRY_COMPILE(
@@ -902,15 +877,18 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
   ac_cv_func_select_arg5='struct timeval *'
  fi
  AC_MSG_RESULT([$ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func_select_arg5])
- AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG1,$ac_cv_func_select_arg1)
- AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG234,($ac_cv_func_select_arg234))
- AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG5,($ac_cv_func_select_arg5))
+ AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG1,$ac_cv_func_select_arg1, 
+                    [Define to the type of arg1 for select().])
+ AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG234,($ac_cv_func_select_arg234),
+                    [Define to the type of args 2, 3 and 4 for select().])
+ AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG5,($ac_cv_func_select_arg5),
+                    [Define to the type of arg5 for select().])
 ])
 
 ### Check which frontend we want to use. The default is XForms
 ###
 AC_DEFUN(LYX_USE_FRONTEND,
-[AC_MSG_CHECKING(what frontend should be used as main GUI)
+[AC_MSG_CHECKING([what frontend should be used as main GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
                             Possible values: xforms, qt2, gnome],

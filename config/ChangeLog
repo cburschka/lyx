@@ -1,3 +1,13 @@
+2001-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* depcomp: new script to handle dependencies, from automake 1.5
+
+	* lyxinclude.m4 (LYX_FUNC_SELECT_ARGTYPES): add description of the
+	SELECT_* defines.
+	(LYX_PROG_CXX_WORKS): change to do the work without
+	AC_TRY_COMPILE, since we do not have a compiler defined yet.
+	(LYX_PROG_CXX): rewritten to be a wrapper around AC_PROG_CXX.
+
 2001-10-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* *.m4: update to gettext 0.10.40

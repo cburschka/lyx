@@ -1,5 +1,4 @@
 AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libqt2ui.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
@@ -11,9 +10,9 @@ ETAGS_ARGS = --lang=c++
 SUBDIRS=. moc
 
 include ../Makefile.dialogs
- 
+
 DISTCLEANFILES = $(UIDIALOGS) *.orig *.rej *~ *.bak core
- 
+
 libqt2ui_la_SOURCES = $(UIDIALOGS)
 
 # a pattern to change tr() to _()

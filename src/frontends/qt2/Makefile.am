@@ -1,5 +1,4 @@
 AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libqt2.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
@@ -14,7 +13,7 @@ DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 include Makefile.dialogs
 
 libqt2_la_DEPENDENCIES = ui/libqt2ui.la moc/libqt2moc.la ui/moc/libqt2uimoc.la
- 
+
 libqt2_la_LIBADD = \
 	ui/libqt2ui.la \
 	moc/libqt2moc.la \

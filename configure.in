@@ -74,10 +74,9 @@ case "$lyx_use_frontend" in
 esac 
 
 ### Check for a C++ compiler
-AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
-AC_PROG_CXXCPP
 ### Some checks on what the C++ compiler can(not) do
+AC_LANG_CPLUSPLUS
 dnl we do not need that currently (and probably all our supported
 dnl compiler allow that)  
 dnl LYX_CXX_PARTIAL
