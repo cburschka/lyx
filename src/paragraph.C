@@ -715,13 +715,13 @@ InsetBibitem * Paragraph::bibitem() const
 
 bool Paragraph::forceDefaultParagraphs() const
 {
-	return inInset()->forceDefaultParagraphs(inInset());
+	return inInset() && inInset()->forceDefaultParagraphs(inInset());
 }
 
 
 bool Paragraph::autoBreakRows() const
 {
-	return static_cast<InsetText *>(inInset())->getAutoBreakRows();
+	return inInset() && static_cast<InsetText *>(inInset())->getAutoBreakRows();
 }
 
 
