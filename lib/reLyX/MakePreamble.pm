@@ -281,7 +281,7 @@ sub translate_preamble {
 
 	"graphics"	=> "\\graphics default",
 	"rotating"	=> "",
-	"makeidx"	=> "\\makeindex"
+	"makeidx"	=> ""
     );
 
     ## Babel with arguments specifing language
