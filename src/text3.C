@@ -28,17 +28,14 @@
 #include "frontends/LyXView.h"
 #include "frontends/screen.h"
 #include "frontends/WorkArea.h"
-#include "frontends/Dialogs.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 #include "insets/insetquotes.h"
 #include "insets/insetcommand.h"
-#include "insets/insettabular.h"
 #include "undo_funcs.h"
 
 #include <ctime>
 #include <clocale>
-#include <cstdio>
 
 using std::endl;
 
@@ -1072,7 +1069,9 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_MARGINAL:
 	case LFUN_INSET_MINIPAGE:
 	case LFUN_INSET_OPTARG:
-	case LFUN_INSET_WIDE_FLOAT: {
+	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_TABULAR_INSERT:
+	{
 		Inset * inset = createInset(cmd);
 		if (inset) {
 			bool gotsel = false;
@@ -1091,22 +1090,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_TABULAR_INSERT:
-		if (cmd.argument.empty()) 
-			bv->owner()->getDialogs().showTabularCreate();
-		else {
-			int r = 2;
-			int c = 2;
-			::sscanf(cmd.argument.c_str(),"%d%d", &r, &c);
-			InsetTabular * inset = new InsetTabular(*bv->buffer(), r, c);
-			bv->beforeChange(this);
-			finishUndo();
-			if (!bv->insertInset(inset))
-				delete inset;
-			else
-				inset->edit(bv, !real_current_font.isRightToLeft());
-		}
-		break;
 
 	case LFUN_QUOTE: {
 		Paragraph const * par = cursor.par();

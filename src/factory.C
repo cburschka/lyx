@@ -15,12 +15,18 @@
 #include "insets/insetoptarg.h"
 #include "insets/insetparent.h"
 #include "insets/insetref.h"
+#include "insets/insettabular.h"
 #include "insets/insettext.h"
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
+#include <cstdio>
 
 
 Inset * createInset(FuncRequest const & cmd)
 {
-	BufferParams const & params = cmd.view()->buffer()->params;
+	BufferView * bv = cmd.view();
+	BufferParams const & params = bv->buffer()->params;
 
 	switch (cmd.action) {
 
@@ -59,6 +65,16 @@ Inset * createInset(FuncRequest const & cmd)
 				p->wide(true, params);
 			}
 			lyxerr << "Non-existent float type: " << cmd.argument << endl;
+			return 0;
+
+		case LFUN_TABULAR_INSERT:
+			if (!cmd.argument.empty()) {
+				int r = 2;
+				int c = 2;
+				::sscanf(cmd.argument.c_str(),"%d%d", &r, &c);
+				return new InsetTabular(*bv->buffer(), r, c);
+			}
+			bv->owner()->getDialogs().showTabularCreate();
 			return 0;
 
 	#if 0
