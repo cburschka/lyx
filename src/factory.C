@@ -331,9 +331,6 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		
 	lex.next();
 	string tmptok = lex.getString();
-	CharStyles::iterator found_cs = tclass.charstyle(tmptok);
-	if (found_cs != tclass.charstyles().end())
-		tmptok = "CharStyle";
 
 	// test the different insets
 	if (tmptok == "LatexCommand") {
@@ -406,6 +403,9 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		        || tmptok == "Ovalbox" || tmptok == "Frameless") {
 			inset.reset(new InsetBox(buf.params(), tmptok));
 		} else if (tmptok == "CharStyle") {
+			lex.next();
+			string s = lex.getString();
+			CharStyles::iterator found_cs = tclass.charstyle(s);
 			inset.reset(new InsetCharStyle(buf.params(), found_cs));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(), string()));

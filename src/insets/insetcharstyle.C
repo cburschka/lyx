@@ -196,7 +196,7 @@ void InsetCharStyle::validate(LaTeXFeatures & features) const
 
 void InsetCharStyleParams::write(ostream & os) const
 {
-	os << type << "\n";
+	os << "CharStyle " << type << "\n";
 }
 
 
