@@ -66,6 +66,7 @@
 #include "support/lstrings.h"
 
 #ifdef USE_PSPELL
+#define USE_ORIGINAL_MANAGER_FUNCS 1
 # include <pspell/pspell.h>
 #endif
 

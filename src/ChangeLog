@@ -1,3 +1,9 @@
+2001-05-30  Juergen Vigna  <jug@sad.it>
+
+	* spellchecker.C (USE_ORIGINAL_MANAGER_FUNCS): as it seems only I use
+	to check pspell I add this as default as I now have new pspell
+	libraries and they seem to use this.
+
 2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (CutSelection): make the cursor valid before the call to
