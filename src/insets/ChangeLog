@@ -1,3 +1,8 @@
+2002-05-13  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (insetButtonRelease): returned wrong return
+	value.
+
 2002-05-09  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.C (edit): first_after_edit should only be

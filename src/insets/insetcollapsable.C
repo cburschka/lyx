@@ -355,7 +355,7 @@ bool InsetCollapsable::insetButtonRelease(BufferView * bv,
 	if ((button == 3) && !ret) {
 		return showInsetDialog(bv);
 	}
-	return false;
+	return ret;
 }
 
 
