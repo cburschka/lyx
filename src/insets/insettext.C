@@ -1267,6 +1267,10 @@ int InsetText::beginningOfMainBody(Buffer const * buf, Paragraph * p) const
 void InsetText::getCursorPos(BufferView * bv,
 			     int & x, int & y) const
 {
+	if (the_locking_inset) {
+		the_locking_inset->getCursorPos(bv, x, y);
+		return;
+	}
 	x = cx(bv);
 	y = cy(bv);
 }
@@ -1959,4 +1963,77 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 		lp = lp->next();
 	}
 	return 0;
+}
+
+
+string InsetText::selectNextWord(BufferView * bv, float & value) const
+{
+	bool clear = false;
+	string str;
+
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (the_locking_inset) {
+		str = the_locking_inset->selectNextWord(bv, value);
+		if (!str.empty()) {
+			value += cy(bv);
+			if (clear)
+				lt = 0;
+			return str;
+		}
+#warning Dekel please have a look on this one RTL? (Jug)
+		// we have to go on checking so move cusor to the right
+		lt->cursor.pos(lt->cursor.pos() + 1);
+	}
+	str = lt->selectNextWord(bv, value);
+	if (str.empty())
+		bv->unlockInset(const_cast<InsetText *>(this));
+	else
+		value = cy(bv);
+	if (clear)
+		lt = 0;
+	return str;
+}
+
+
+void InsetText::selectSelectedWord(BufferView * bv)
+{
+	if (the_locking_inset) {
+		the_locking_inset->selectSelectedWord(bv);
+		return;
+	}
+	getLyXText(bv)->selectSelectedWord(bv);
+	updateLocal(bv, SELECTION, false);
+}
+
+
+void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
+{
+	if (the_locking_inset) {
+		the_locking_inset->toggleSelection(bv, kill_selection);
+	}
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+
+	int x = top_x + TEXT_TO_INSET_OFFSET;
+
+	int y = 0;
+	Row * row = lt->getRowNearY(y);
+	int y_offset = top_baseline - row->ascent_of_text();
+	y = y_offset;
+	while ((row != 0) && ((y+row->height()) <= 0)) {
+		y += row->height();
+		row = row->next();
+	}
+	if (y_offset < 0)
+		y_offset = y;
+	
+	bv->screen()->toggleSelection(lt, bv, kill_selection, y_offset, x);
+	if (clear)
+		lt = 0;
 }

@@ -2493,12 +2493,27 @@ void LyXText::status(BufferView * bview, LyXText::text_status st) const
 		}
 	}
 #else
-#warning Please tell what the intention is here.
+#warning Please tell what the intention is here. (Lgb)
 	// The above does not make any sense, I changed it to what is here,
 	// but it still does not make much sense. (Lgb)
+#warning Sure have a look now! (Jug)
+	// well as much as I know && binds more then || so the above and the
+	// below are identical (this for your known use of parentesis!)
+	// Now some explanation:
+	// We should only go up with refreshing code so this means that if
+	// we have a MORE refresh we should never set it to LITTLE if we still
+	// didn't handle it (and then it will be UNCHANGED. Now as long as
+	// we stay inside one LyXText this may work but we need to tell the
+	// outermost LyXText that it should REALLY draw us if there is some
+	// change in a Inset::LyXText. So you see that when we are inside a
+	// inset's LyXText we give the LITTLE to the outermost LyXText to
+	// tell'em that it should redraw the actual row (where the inset
+	// resides! Capito?!
+
 	if ((status_ != NEED_MORE_REFRESH)
 	    || (status_ == NEED_MORE_REFRESH
-		&& st != NEED_VERY_LITTLE_REFRESH)) {
+		&& st != NEED_VERY_LITTLE_REFRESH))
+	{
 		status_ = st;
 		if (inset_owner && st != UNCHANGED) {
 			bview->text->status(bview, NEED_VERY_LITTLE_REFRESH);

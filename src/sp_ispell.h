@@ -11,8 +11,8 @@ class ISpell : public SpellBase
   public:
 
     enum ActualSpellChecker {
-	ASC_ISPELL,
-	ASC_ASPELL
+		ASC_ISPELL,
+		ASC_ASPELL
     };
     
     ISpell();

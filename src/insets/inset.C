@@ -258,3 +258,11 @@ LyXCursor const & Inset::cursor(BufferView * bv) const
 {
 	return bv->text->cursor;
 }
+
+string UpdatableInset::selectNextWord(BufferView *bv, float & value) const
+{
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<UpdatableInset *>(this));
+	value = 0;
+	return string();
+}

@@ -1730,6 +1730,7 @@ int LyXTabular::GetLastCellBelow(int cell) const
 
 int LyXTabular::GetCellNumber(int row, int column) const
 {
+#if 1
 	if (column >= columns_)
 		column = columns_ - 1;
 	else if (column < 0)
@@ -1738,7 +1739,9 @@ int LyXTabular::GetCellNumber(int row, int column) const
 		row = rows_ - 1;
 	else if (row < 0)
 		row = 0;
-	
+#else
+	lyx::Assert(column < 0 || column >= columns_ || row < 0 || row >= rows_);
+#endif
 	return cell_info[row][column].cellno;
 }
 
@@ -2534,11 +2537,6 @@ InsetText * LyXTabular::GetCellInset(int cell) const
 
 InsetText * LyXTabular::GetCellInset(int row, int column) const
 {
-#ifdef WITH_WARNINGS
-#warning Juergen, should we check whether the row/column values are correct?
-// If we do not need to do that, the tests in GetCellNumber should be
-// changed to asserts.
-#endif
 	cur_cell = GetCellNumber(row, column);
 	return & cell_info[row][column].inset;
 }

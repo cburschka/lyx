@@ -74,12 +74,12 @@ extern void sigchldchecker(pid_t pid, int * status);
 
 
 PSpell::PSpell() 
-	: els(0), sc(0), spell_error_object(0), flag(ISP_UNKNOWN)
+	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN)
 {
 }
 
 PSpell::PSpell(BufferParams const & params, string const & lang)
-	: els(0), sc(0), spell_error_object(0), flag(ISP_UNKNOWN)
+	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN)
 {
 	initialize(params, lang);
 }

@@ -384,24 +384,25 @@ void BufferView::replaceWord(string const & replacestring)
 {
 	if (!available()) return;
 
+	LyXText * tt = getLyXText();
 	hideCursor();
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(tt, BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(tt, BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	text->replaceSelectionWithString(this, replacestring);
+	tt->replaceSelectionWithString(this, replacestring);
    
-	text->setSelectionOverString(this, replacestring);
+	tt->setSelectionOverString(this, replacestring);
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		text->cursorLeft(this);
+		tt->cursorLeft(this);
 	}
-	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(tt, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 // End of spellchecker stuff
 

@@ -1173,9 +1173,12 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 }
 
 
-void InsetTabular::getCursorPos(BufferView *,
-				int & x, int & y) const
+void InsetTabular::getCursorPos(BufferView * bv, int & x, int & y) const
 {
+	if (the_locking_inset) {
+		the_locking_inset->getCursorPos(bv, x, y);
+		return;
+	}
 	x = cursor_.x() - top_x;
 	y = cursor_.y();
 }
@@ -2430,4 +2433,65 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 		}
 	}
 	return 0;
+}
+
+
+string InsetTabular::selectNextWord(BufferView * bv, float & value) const
+{
+	if (the_locking_inset) {
+		string str;
+		str = the_locking_inset->selectNextWord(bv, value);
+		if (!str.empty())
+			return str;
+	}
+	if (tabular->IsLastCell(actcell)) {
+		bv->unlockInset(const_cast<InsetTabular *>(this));
+		return string();
+	}
+	
+	// otherwise we have to lock the next inset and ask for it's selecttion
+	UpdatableInset * inset =
+		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
+	inset->edit(bv, 0,  0, 0);
+	string str = selectNextWordInt(bv, value);
+	if (!str.empty())
+		resetPos(bv);
+	return str;
+}
+
+string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
+{
+	if (the_locking_inset) {
+		string str;
+		str = the_locking_inset->selectNextWord(bv, value);
+		if (!str.empty())
+			return str;
+	}
+	if (tabular->IsLastCell(actcell)) {
+		bv->unlockInset(const_cast<InsetTabular *>(this));
+		return string();
+	}
+	
+	// otherwise we have to lock the next inset and ask for it's selecttion
+	UpdatableInset * inset =
+		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
+	inset->edit(bv, 0,  0, 0);
+	return selectNextWordInt(bv, value);
+}
+
+
+void InsetTabular::selectSelectedWord(BufferView * bv)
+{
+	if (the_locking_inset) {
+		the_locking_inset->selectSelectedWord(bv);
+		return;
+	}
+	return;
+}
+
+void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
+{
+	if (the_locking_inset) {
+		the_locking_inset->toggleSelection(bv, kill_selection);
+	}
 }

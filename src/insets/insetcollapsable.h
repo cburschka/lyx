@@ -160,6 +160,16 @@ public:
 	bool isCollapsable() const { return true; }
 	bool collapsed() const { return collapsed_; }
 	void collapsed(BufferView *, bool);
+	///
+	string selectNextWord(BufferView * bv, float & value) const {
+		return inset.selectNextWord(bv, value);
+	}
+	void selectSelectedWord(BufferView * bv) {
+		return inset.selectSelectedWord(bv);
+	}
+	void toggleSelection(BufferView * bv, bool kill_selection) {
+		return inset.toggleSelection(bv, kill_selection);
+	}
 
 protected:
 	///

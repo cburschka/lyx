@@ -218,6 +218,10 @@ public:
 	///
 	void paragraph(Paragraph *);
 	///
+	string selectNextWord(BufferView *, float & value) const;
+	void selectSelectedWord(BufferView *);
+	void toggleSelection(BufferView *, bool kill_selection);
+	///
 	mutable int need_update;
 
 protected:

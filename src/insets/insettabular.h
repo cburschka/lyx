@@ -209,6 +209,10 @@ public:
 	Paragraph * firstParagraph() const;
 	///
 	LyXCursor const & cursor(BufferView *) const;
+	///
+	string selectNextWord(BufferView *, float & value) const;
+	void selectSelectedWord(BufferView *);
+	void toggleSelection(BufferView *, bool kill_selection);
 
 	//
 	// Public structures and variables
@@ -284,6 +288,8 @@ private:
 	bool isRightToLeft(BufferView *);
 	///
 	void getSelection(int & scol, int & ecol, int & srow, int & erow) const;
+	///
+	string selectNextWordInt(BufferView *, float & value) const;
 
 	//
 	// Private structures and variables

@@ -1,3 +1,13 @@
+2001-07-17  Juergen Vigna  <jug@sad.it>
+
+	* various files: implemented the below functions.
+	
+	* inset.h: added functions
+	- virtual string selectNextWord(BufferView *, float & value) const;
+	- virtual void selectSelectedWord(BufferView *) { return; }
+	- virtual void toggleSelection(BufferView *, bool /*kill_selection*/)
+	needed for spellchecking correctly!
+
 2001-07-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetert.C (latex): write out all paragraphs.

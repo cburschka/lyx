@@ -414,6 +414,14 @@ public:
 	///
 	virtual bool collapsed() const { return false; }
 	virtual void collapsed(BufferView *, bool) {}
+	///
+	// needed for spellchecking text
+	///
+	virtual string selectNextWord(BufferView *, float & value) const;
+	virtual void selectSelectedWord(BufferView *) { return; }
+	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
+		return;
+	}
 
 protected:
 	///

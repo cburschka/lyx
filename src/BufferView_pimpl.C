@@ -1266,8 +1266,11 @@ void BufferView::Pimpl::hideCursor()
 
 void BufferView::Pimpl::toggleSelection(bool b)
 {
-	if (screen_.get())
+	if (screen_.get()) {
+		if (bv_->theLockingInset())
+			bv_->theLockingInset()->toggleSelection(bv_, b);
 		screen_->toggleSelection(bv_->text, bv_, b);
+	}
 }
 
 

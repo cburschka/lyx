@@ -21,6 +21,7 @@
 #endif
 
 #include "ControlDialogs.h"
+#include "Lsstream.h"
 
 /**
  * A controller for the Version Control log viewer.

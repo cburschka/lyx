@@ -2224,6 +2224,22 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview)
 string const LyXText::selectNextWord(BufferView * bview,
 				     float & value) const
 {
+	if (the_locking_inset) {
+		string str = the_locking_inset->selectNextWord(bview, value);
+		if (!str.empty()) {
+			value += float(cursor.y())/float(height);
+			return str;
+		}
+#warning Dekel please have a look on this one RTL? (Jug)
+		// we have to go on checking so move cusor to the right
+		if (cursor.pos() == cursor.par()->size()) {
+			if (!cursor.par()->next())
+				return str;
+			cursor.par(cursor.par()->next());
+			cursor.pos(0);
+		} else
+			cursor.pos(cursor.pos() + 1);
+	}
 	Paragraph * tmppar = cursor.par();
 	
 	// If this is not the very first word, skip rest of
@@ -2237,20 +2253,33 @@ string const LyXText::selectNextWord(BufferView * bview,
 	
 	// Now, skip until we have real text (will jump paragraphs)
 	while ((cursor.par()->size() > cursor.pos()
-		&& (!cursor.par()->isLetter(cursor.pos())
+	       && (!cursor.par()->isLetter(cursor.pos())
 #ifndef NO_LATEX
 		    || cursor.par()->getFont(bview->buffer()->params, cursor.pos())
 		    .latex() == LyXFont::ON
 #endif
-			))
+			)
+	       && (!cursor.par()->isInset(cursor.pos()) ||
+	           !cursor.par()->getInset(cursor.pos())->isTextInset()))
 	       || (cursor.par()->size() == cursor.pos()
-		   && cursor.par()->next())){
+		   && cursor.par()->next()))
+	{
 		if (cursor.pos() == cursor.par()->size()) {
 			cursor.par(cursor.par()->next());
 			cursor.pos(0);
 		} else
 			cursor.pos(cursor.pos() + 1);
 	}
+
+	// now check if we hit an inset so it has to be a inset containing text!
+	if (cursor.pos() < cursor.par()->size() &&
+		cursor.par()->isInset(cursor.pos()))
+	{
+		// lock the inset!
+		cursor.par()->getInset(cursor.pos())->edit(bview, 0, 0, 0);
+		// now call us again to do the above trick
+		return selectNextWord(bview, value);
+	}		
   
 	// Update the value if we changed paragraphs
 	if (cursor.par() != tmppar){
@@ -2290,6 +2319,10 @@ string const LyXText::selectNextWord(BufferView * bview,
 // This one is also only for the spellchecker
 void LyXText::selectSelectedWord(BufferView * bview)
 {
+	if (the_locking_inset) {
+		the_locking_inset->selectSelectedWord(bview);
+		return;
+	}
 	// move cursor to the beginning
 	setCursor(bview, selection.cursor.par(), selection.cursor.pos());
 	
