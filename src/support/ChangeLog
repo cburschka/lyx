@@ -1,3 +1,12 @@
+2001-02-27  José Matos  <jamatos@fep.up.pt>
+
+	* filetools.h (BasePath):
+	* filetools.C (BasePath): removed since it is a duplicate of OnlyPath.
+
+	* filetools.C (IsLyXFilename):
+	* filetools.C (IsSGMLFilename): test if extension is suffix and not
+	only containned.
+
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* fmt.C: 

@@ -377,7 +377,7 @@ string const LaTeXFeatures::getTClassPreamble()
 string const LaTeXFeatures::getIncludedFiles(string const fname) const
 {
 	string sgmlpreamble;
-	string basename = BasePath(fname);
+	string basename = OnlyPath(fname);
 
 	FileMap::const_iterator end = IncludedFiles.end();
 	for (FileMap::const_iterator fi = IncludedFiles.begin();

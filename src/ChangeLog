@@ -1,3 +1,13 @@
+2001-02-27  José Matos  <jamatos@fep.up.pt>
+	
+	* LaTeXFeatures.C (getIncludedFiles): call to BasePath replaced
+	by OnlyPath.
+	
+2001-02-11  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (makeDocBookFile): command styles now have a parameter as
+	"title" by default.
+
 2001-02-23  Edwin Leuven <leuven@fee.uva.nl>
 
 	* layout_forms.[Ch]: removed

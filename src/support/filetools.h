@@ -179,9 +179,6 @@ string const NormalizePath(string const & path);
 /// Strips path from filename
 string const OnlyFilename(string const & fname);
 
-/// Strips filename from path
-string const BasePath(string const & fname);
-
 /// Get the contents of a file as a huge string
 string const GetFileContents(string const & fname);
 

@@ -68,13 +68,13 @@ extern string system_tempdir;
 
 bool IsLyXFilename(string const & filename)
 {
-	return contains(filename, ".lyx");
+	return suffixIs(filename, ".lyx");
 }
 
 
 bool IsSGMLFilename(string const & filename)
 {
-	return contains(filename, ".sgml");
+	return suffixIs(filename, ".sgml");
 }
 
 
@@ -645,21 +645,6 @@ string const OnlyFilename(string const & fname)
 
 	// Strip to basename
 	return fname.substr(j + 1);
-}
-
-
-// Strips filename from path
-string const BasePath(string const & fname)
-{
-	if (fname.empty())
-		return fname;
-
-	string::size_type j = fname.rfind('/');
-	if (j == string::npos) // no '/' in fname
-		return string();
-
-	// Strip to basename
-	return fname.substr(0,j + 1);
 }
 
 

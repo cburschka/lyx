@@ -1,3 +1,16 @@
+2001-02-26  José Matos  <jamatos@fep.up.pt>
+
+	* templates/docbook_template.lyx: removed.
+	* templates/docbook_article.lyx: updated file, to replace the previous.
+
+	* templates/linuxdoctemplate.lyx: removed.
+	* templates/linuxdoc_article.lyx: updated file, to replace the previous.
+
+2001-02-11  José Matos  <jamatos@fep.up.pt>
+
+	* layouts/docbook.layout: chapter and part insertion are forbiden in
+	article.
+
 2001-02-26  Juergen Vigna  <jug@sad.it>
 
 	* ui/default.ui: added Custom-Export to export menu.
@@ -7,7 +20,6 @@
 	* bind/emacs.bind: 
 	* bind/xemacs.bind: add bookmark commands. 
 	
-
 2001-02-07  Allan Rae  <rae@lyx.org>
 
 	* bind/emacs.bind: 
@@ -46,7 +58,7 @@
 
 	* ui/default.ui: Fix typos.
 
-2001-01-28  José Matos <jamatos@fep.up.pt>
+2001-01-28  José Matos  <jamatos@fep.up.pt>
 
 	* layouts/db_lyxmacros.inc
 	* layouts/db_stdclass.inc
