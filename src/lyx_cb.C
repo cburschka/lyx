@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "LString.h"
+//#include "LString.h"
 #include FORMS_H_LOCATION
 #include "lyx.h"
 #include "layout_forms.h"
@@ -163,8 +163,8 @@ void MenuLayoutSave();
 
 void ShowMessage(Buffer * buf,
 		 string const & msg1,
-		 string const & msg2 = string(),
-		 string const & msg3 = string(), int delay = 6)
+		 string const & msg2,
+		 string const & msg3, int delay)
 {
 	if (lyxrc.use_gui) {
 		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2,

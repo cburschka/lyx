@@ -31,16 +31,12 @@
 #include "LyXView.h"
 #include "minibuffer.h"
 #include "lyx_gui_misc.h"
+#include "lyx_cb.h"
 
 using std::map;
 using std::vector;
 using std::queue;
 using std::stack;
-
-extern void ShowMessage(Buffer * buf,
-		 string const & msg1,
-		 string const & msg2 = string(),
-		 string const & msg3 = string(), int delay = 6);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -49,7 +45,8 @@ vector<Command> Converter::commands;
 
 //////////////////////////////////////////////////////////////////////////////
 
-Format::Format(string const & n) : name(n), in_degree(0)
+Format::Format(string const & n)
+	: name(n), in_degree(0)
 {
 	struct Item {
 		char const * name;
@@ -73,11 +70,13 @@ Format::Format(string const & n) : name(n), in_degree(0)
 		}
 }
 
+
 void Formats::Add(string const & name)
 {
 	if (formats.find(name) == formats.end())
 		formats[name] = Format(name);
 }
+
 
 void Formats::SetViewer(string const & name, string const & command)
 {
@@ -147,9 +146,8 @@ Format * Formats::GetFormat(string const & name)
 		return 0;
 }
 
-string Formats::PrettyName(string const & name)
+string const Formats::PrettyName(string const & name)
 {
-
 	string format;
 	Converter::SplitFormat(name, format);
 	Format * f = GetFormat(format);
@@ -158,6 +156,7 @@ string Formats::PrettyName(string const & name)
 	else
 		return format;
 }
+
 
 //////////////////////////////////////////////////////////////////////////////
 void Converter::Add(string const & from, string const & to,
@@ -179,7 +178,8 @@ void Converter::Add(string const & from, string const & to,
 	++Formats::GetFormat(to)->in_degree;
 }
 
-vector< pair<string,string> > 
+
+vector< pair<string,string> > const
 Converter::GetReachable(string const & from, bool only_viewable)
 {
 	vector< pair<string,string> > result;
@@ -233,8 +233,8 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 			string const & to_format)
 
 {
-	string using_format, format;
-	using_format = SplitFormat(to_format, format);
+	string format;
+	string using_format = SplitFormat(to_format, format);
 	string from_format = GetExtension(from_file);
 	if (from_format == format)
 		return true;
@@ -336,13 +336,14 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 }
 
 
-string Converter::SplitFormat(string const & str, string & format)
+string const Converter::SplitFormat(string const & str, string & format)
 {
 	string using_format = split(str, format, ':');
 	if (format.empty())
 		format = "dvi";
 	return using_format;
 }
+
 
 bool Converter::runLaTeX(Buffer * buffer, string const & command)
 {

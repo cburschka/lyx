@@ -21,6 +21,7 @@
 
 class Buffer;
 
+///
 class Exporter {
 public:
 	///
@@ -32,13 +33,15 @@ public:
 	bool Preview(Buffer * buffer, string const & format);
 	///
 	static
-	std::vector<std::pair<string, string> > GetExportableFormats(Buffer * buffer);
+	std::vector<std::pair<string, string> > const
+	GetExportableFormats(Buffer const * buffer);
 	///
 	static
-	std::vector<std::pair<string, string> > GetViewableFormats(Buffer * buffer);
+	std::vector<std::pair<string, string> > const
+	GetViewableFormats(Buffer const * buffer);
 	///
 	static
-	string BufferExtension(Buffer * buffer);
+	string const BufferExtension(Buffer const * buffer);
 };
 
 //#define NEW_EXPORT 1

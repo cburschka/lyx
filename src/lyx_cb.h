@@ -2,6 +2,8 @@
 #ifndef LYX_CB_H
 #define LYX_CB_H
 
+#include "LString.h"
+
 class BufferParams;
 
 ///
@@ -15,6 +17,11 @@ extern bool toggleall;
 extern bool BindFileSet;
 ///
 extern LyXFont UserFreeFont(BufferParams const & params);
+///
+void ShowMessage(Buffer * buf,
+		 string const & msg1,
+		 string const & msg2 = string(),
+		 string const & msg3 = string(), int delay = 6);
 
 #endif
 

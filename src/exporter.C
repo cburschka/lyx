@@ -21,22 +21,17 @@
 #include "converter.h"
 
 #include "buffer.h"
+#include "lyx_cb.h"
 #include "support/path.h"
-
 
 using std::vector;
 using std::pair;
 
-extern void ShowMessage(Buffer * buf,
-		 string const & msg1,
-		 string const & msg2 = string(),
-		 string const & msg3 = string(), int delay = 6);
-
 bool Exporter::Export(Buffer * buffer, string const & format0,
 		      bool put_in_tempdir)
 {
-	string using_format, format;
-	using_format = Converter::SplitFormat(format0, format);
+	string format;
+	string using_format = Converter::SplitFormat(format0, format);
 
 	string filename = buffer->fileName();
 	string backend_format = BufferExtension(buffer);
@@ -91,18 +86,21 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 }
 
 
-vector<pair<string, string> > Exporter::GetExportableFormats(Buffer * buffer)
+vector<pair<string, string> > const
+Exporter::GetExportableFormats(Buffer const * buffer)
 {
 	return Converter::GetReachable(BufferExtension(buffer), false);
 }
 
 
-vector<pair<string, string> > Exporter::GetViewableFormats(Buffer * buffer)
+vector<pair<string, string> > const
+Exporter::GetViewableFormats(Buffer const * buffer)
 {
 	return Converter::GetReachable(BufferExtension(buffer), true);
 }
 
-string Exporter::BufferExtension(Buffer * buffer)
+
+string const Exporter::BufferExtension(Buffer const * buffer)
 {
 	if (buffer->isLinuxDoc())
 		return "sgml";

@@ -22,7 +22,9 @@
 
 class Buffer;
 
+///
 struct Command {
+	///
 	Command(string const & f, string const & t, string const & c,
 		bool o)
 		: from(f), to(t), command(c), original_dir(o) {}
@@ -40,8 +42,10 @@ struct Command {
 	std::vector<Command>::iterator previous;
 };
 
+///
 class Format {
 public:
+	///
 	Format() : in_degree(0) {}
 	///
 	Format(string const & n);
@@ -55,6 +59,7 @@ public:
 	int in_degree;
 };
 
+///
 class Formats {
 public:
 	///
@@ -71,13 +76,14 @@ public:
 	Format * GetFormat(string const & name);
 	///
 	static
-	string PrettyName(string const & name);
+	string const PrettyName(string const & name);
 private:
 	///
 	static
 	std::map<string, Format> formats;
 };
 
+///
 class Converter {
 public:
 	///
@@ -86,15 +92,16 @@ public:
 		 string const & command, string const & flags);
 	///
 	static
-	std::vector<std::pair<string, string> > GetReachable(string const & from,
-							     bool only_viewable = false);
+	std::vector<std::pair<string, string> > const
+	GetReachable(string const & from,
+		     bool only_viewable = false);
 	///
 	static
 	bool convert(Buffer * buffer, string const & from_file,
 		     string const & to_format);
 	///
 	static
-	string SplitFormat(string const & str, string & format); 
+	string const SplitFormat(string const & str, string & format); 
 private:
 	///
 	static
