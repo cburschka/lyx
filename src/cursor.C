@@ -36,9 +36,7 @@
 #include "insets/insettext.h"
 
 #include "mathed/math_data.h"
-#include "mathed/math_support.h"
 #include "mathed/math_inset.h"
-#include "mathed/math_braceinset.h"
 #include "mathed/math_macrotable.h"
 
 #include "support/limited_stack.h"
@@ -58,31 +56,6 @@ using std::isalpha;
 #endif
 using std::min;
 using std::swap;
-
-
-
-// our own cut buffer
-limited_stack<string> theCutBuffer;
-
-
-namespace {
-
-void region(CursorSlice const & i1, CursorSlice const & i2,
-	LCursor::row_type & r1, LCursor::row_type & r2,
-	LCursor::col_type & c1, LCursor::col_type & c2)
-{
-	InsetBase & p = i1.inset();
-	c1 = p.col(i1.idx());
-	c2 = p.col(i2.idx());
-	if (c1 > c2)
-		swap(c1, c2);
-	r1 = p.row(i1.idx());
-	r2 = p.row(i2.idx());
-	if (r1 > r2)
-		swap(r1, r2);
-}
-
-}
 
 
 LCursor::LCursor(BufferView & bv)
@@ -408,121 +381,6 @@ void LCursor::info(std::ostream & os) const
 }
 
 
-string LCursor::grabSelection()
-{
-	if (!selection())
-		return string();
-
-	CursorSlice i1 = selBegin();
-	CursorSlice i2 = selEnd();
-
-	if (i1.idx() == i2.idx()) {
-		if (i1.inset().asMathInset()) {
-			MathArray::const_iterator it = i1.cell().begin();
-			return asString(MathArray(it + i1.pos(), it + i2.pos()));
-		} else {
-			return "unknown selection 1";
-		}
-	}
-
-	row_type r1, r2;
-	col_type c1, c2;
-	region(i1, i2, r1, r2, c1, c2);
-
-	string data;
-	if (i1.inset().asMathInset()) {
-		for (row_type row = r1; row <= r2; ++row) {
-			if (row > r1)
-				data += "\\\\";
-			for (col_type col = c1; col <= c2; ++col) {
-				if (col > c1)
-					data += '&';
-				data += asString(i1.asMathInset()->cell(i1.asMathInset()->index(row, col)));
-			}
-		}
-	} else {
-		data = "unknown selection 2";
-	}
-	return data;
-}
-
-
-void LCursor::eraseSelection()
-{
-	//lyxerr << "LCursor::eraseSelection" << endl;
-	CursorSlice const & i1 = selBegin();
-	CursorSlice const & i2 = selEnd();
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
-	if (i1.inset().asMathInset()) {
-		if (i1.idx() == i2.idx()) {
-			i1.cell().erase(i1.pos(), i2.pos());
-		} else {
-			MathInset * p = i1.asMathInset();
-			row_type r1, r2;
-			col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2);
-			for (row_type row = r1; row <= r2; ++row)
-				for (col_type col = c1; col <= c2; ++col)
-					p->cell(p->index(row, col)).clear();
-		}
-		back() = i1;
-	} else {
-		lyxerr << "can't erase this selection 1" << endl;
-	}
-	//lyxerr << "LCursor::eraseSelection end" << endl;
-}
-
-
-string LCursor::grabAndEraseSelection()
-{
-	if (!selection())
-		return string();
-	string res = grabSelection();
-	eraseSelection();
-	selection() = false;
-	return res;
-}
-
-
-void LCursor::selCopy()
-{
-	if (selection()) {
-		theCutBuffer.push(grabSelection());
-		selection() = false;
-	} else {
-		//theCutBuffer.erase();
-	}
-}
-
-
-void LCursor::selCut()
-{
-	theCutBuffer.push(grabAndEraseSelection());
-}
-
-
-void LCursor::selDel()
-{
-	//lyxerr << "LCursor::selDel" << endl;
-	if (selection()) {
-		eraseSelection();
-		selection() = false;
-	}
-}
-
-
-void LCursor::selPaste(size_t n)
-{
-	selClearOrDel();
-	if (n < theCutBuffer.size())
-		paste(theCutBuffer[n]);
-	//grabSelection();
-	selection() = false;
-}
-
-
 void LCursor::selHandle(bool sel)
 {
 	//lyxerr << "LCursor::selHandle" << endl;
@@ -535,16 +393,6 @@ void LCursor::selHandle(bool sel)
 	
 	resetAnchor();
 	selection() = sel;
-}
-
-
-void LCursor::selClearOrDel()
-{
-	//lyxerr << "LCursor::selClearOrDel" << endl;
-	if (lyxrc.auto_region_delete)
-		selDel();
-	else
-		selection() = false;
 }
 
 
@@ -682,7 +530,7 @@ void LCursor::insert(char c)
 	//lyxerr << "LCursor::insert char '" << c << "'" << endl;
 	BOOST_ASSERT(!empty());
 	if (inMathed()) {
-		selClearOrDel();
+		lyx::cap::selClearOrDel(*this);
 		insert(new MathCharInset(c));
 	} else {
 		text()->insertChar(*this, c);
@@ -694,7 +542,7 @@ void LCursor::insert(MathAtom const & t)
 {
 	//lyxerr << "LCursor::insert MathAtom: " << endl;
 	macroModeClose();
-	selClearOrDel();
+	lyx::cap::selClearOrDel(*this);
 	plainInsert(t);
 	lyxerr << "LCursor::insert MathAtom: cur:\n" << *this << endl;
 }
@@ -723,7 +571,7 @@ void LCursor::niceInsert(string const & t)
 void LCursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
-	string safe = grabAndEraseSelection();
+	string safe = lyx::cap::grabAndEraseSelection(*this);
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
@@ -740,7 +588,7 @@ void LCursor::insert(MathArray const & ar)
 {
 	macroModeClose();
 	if (selection())
-		eraseSelection();
+		lyx::cap::eraseSelection(*this);
 	cell().insert(pos(), ar);
 	pos() += ar.size();
 }
@@ -751,7 +599,7 @@ bool LCursor::backspace()
 	autocorrect() = false;
 
 	if (selection()) {
-		selDel();
+		lyx::cap::selDel(*this);
 		return true;
 	}
 
@@ -791,7 +639,7 @@ bool LCursor::erase()
 		return true;
 
 	if (selection()) {
-		selDel();
+		lyx::cap::selDel(*this);
 		return true;
 	}
 
@@ -884,7 +732,7 @@ void LCursor::handleNest(MathAtom const & a, int c)
 {
 	//lyxerr << "LCursor::handleNest: " << c << endl;
 	MathAtom t = a;
-	asArray(grabAndEraseSelection(), t.nucleus()->cell(c));
+	asArray(lyx::cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
 	insert(t);
 	posLeft();
 	pushLeft(*nextInset());
@@ -1138,7 +986,7 @@ void LCursor::handleFont(string const & font)
 	string safe;
 	if (selection()) {
 		macroModeClose();
-		safe = grabAndEraseSelection();
+		safe = lyx::cap::grabAndEraseSelection(*this);
 	}
 
 	if (lastpos() != 0) {

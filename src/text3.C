@@ -158,9 +158,8 @@ namespace {
 				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
-				cur.insert(new MathMacroTemplate);
-				//cur.dispatch(FuncRequest(LFUN_RIGHT));
-				//cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
+				istringstream is(sel);
+				cur.insert(new MathMacroTemplate(is));
 			}
 		}
 		cur.message(N_("Math editor mode"));

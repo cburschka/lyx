@@ -31,6 +31,8 @@ namespace cap {
 
 ///
 std::vector<std::string> const availableSelections(Buffer const & buffer);
+///
+std::string getSelection(Buffer const & buffer, size_t sel_index);
 
 ///
 void cutSelection(LCursor & cur, bool doclear, bool realcut);
@@ -60,12 +62,25 @@ int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 				lyx::textclass_type c2,
 				ParagraphList & par,
 				ErrorList &);
-///
-bool checkPastePossible();
 
 // only used by the spellchecker
 void replaceWord(LCursor & cur, std::string const & replacestring);
 
+///
+std::string grabSelection(LCursor & cur);
+///
+void eraseSelection(LCursor & cur);
+///
+std::string grabAndEraseSelection(LCursor & cur);
+// other selection methods
+///
+void selCut(LCursor & cur);
+///
+void selDel(LCursor & cur);
+/// clears or deletes selection depending on lyxrc setting
+void selClearOrDel(LCursor & cur);
+/// pastes n-th element of cut buffer
+void selPaste(LCursor & cur, size_t n);
 } // namespace cap
 } // namespce lyx
 

@@ -81,24 +81,7 @@ public:
 	/// access start of selection
 	DocIterator selectionEnd() const;
 	///
-	std::string grabSelection();
-	///
-	void eraseSelection();
-	///
-	std::string grabAndEraseSelection();
-	// other selection methods
-	///
-	void selCopy();
-	///
-	void selCut();
-	///
-	void selDel();
-	/// pastes n-th element of cut buffer
-	void selPaste(size_t n);
-	///
 	void selHandle(bool selecting);
-	/// clears or deletes selection depending on lyxrc setting
-	void selClearOrDel();
 	//
 	std::string selectionAsString(bool label) const;
 	///
