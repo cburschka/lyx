@@ -427,7 +427,8 @@ bool FormDocument::class_apply()
 			CutAndPaste cap;
 			int ret = cap.SwitchLayoutsBetweenClasses(
 			    params.textclass, new_class,
-			    lv_->buffer()->paragraph);
+			    lv_->buffer()->paragraph,
+			    lv_->buffer()->params);
 			if (ret) {
 				string s;
 				if (ret==1) {

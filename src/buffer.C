@@ -398,7 +398,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				+ layoutname + _(" to ")
 				+ textclasslist.NameOfLayout(params.textclass, par->layout);
 			InsetError * new_inset = new InsetError(s);
-			par->InsertInset(0, new_inset);
+			par->InsertInset(0, new_inset,
+					 LyXFont(LyXFont::ALL_INHERIT,
+						 params.language));
 		}
 		// Test whether the layout is obsolete.
 		LyXLayout const & layout =
@@ -991,7 +993,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			+ " " + lex.text()  + "\n";
 
 		InsetError * new_inset = new InsetError(s);
-		par->InsertInset(pos, new_inset);
+		par->InsertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
+							 params.language));
 	}
 	return the_end_read;
 }
@@ -2883,7 +2886,8 @@ void Buffer::LinuxDocError(LyXParagraph * par, int pos,
 {
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
-	par->InsertInset(pos, new_inset);
+	par->InsertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
+						 params.language));
 }
 
 // This constant defines the maximum number of 
