@@ -1,3 +1,8 @@
+2002-11-04  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* text3.C (dispatch): Do not make the buffer dirty when moving the
+	cursor.
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* vc-backend.C: STRCONV

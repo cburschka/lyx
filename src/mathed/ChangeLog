@@ -1,3 +1,8 @@
+2002-11-04  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* formulabase.C (lfunMouseRelease): Do not make the buffer dirty
+	when releasing the first mouse button.
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_inset.C (asString): STRCONV

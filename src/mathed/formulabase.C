@@ -305,7 +305,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
-	bv->updateInset(this, true);
+	bv->updateInset(this, false);
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << "\n";
 
 	if (cmd.button() == mouse_button::button3) {

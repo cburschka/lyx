@@ -575,7 +575,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bool is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params);
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update(bv);
+		update(bv, false);
 		if (is_rtl)
 			cursorLeft(bv, false);
 		if (cursor.pos() < cursor.par()->size()
@@ -598,7 +598,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bool const is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params);
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update(bv);
+		update(bv, false);
 		LyXCursor const cur = cursor;
 		if (!is_rtl)
 			cursorLeft(bv, false);
