@@ -56,7 +56,7 @@ void GErrorList::doBuild()
 
 void GErrorList::update()
 {
-  setTitle(controller().name());
+	setTitle(controller().name());
 	updateContents();
 }
 

@@ -102,10 +102,10 @@ void GMathsMatrix::updateHorzAlignEntry()
 	if (ignoreHorzAlign_) return;
 
 	Glib::ustring orig = horzalignentry_->get_text();
-  Glib::ustring stripped;
+	Glib::ustring stripped;
 
-  Glib::ustring::iterator cur;
-  for (cur = orig.begin(); cur != orig.end(); ++cur) {
+	Glib::ustring::iterator cur;
+	for (cur = orig.begin(); cur != orig.end(); ++cur) {
 	  if (*cur == 'c' || *cur == 'l' ||
 	      *cur == 'r' || *cur == '|')
 	    stripped += *cur;
@@ -125,7 +125,7 @@ void GMathsMatrix::updateHorzAlignEntry()
 		barcount =	countbars(stripped);
 	}
 
-  if (orig.compare(stripped) != 0) {
+	if (orig.compare(stripped) != 0) {
 	ignoreHorzAlign_ = true;
 		horzalignentry_->set_text(stripped);
 		ignoreHorzAlign_ = false;
@@ -135,8 +135,8 @@ void GMathsMatrix::updateHorzAlignEntry()
 int GMathsMatrix::countbars(Glib::ustring str)
 {
 	int barcount = 0;
-  Glib::ustring::iterator cur = str.begin();
-  Glib::ustring::iterator end = str.end();
+	Glib::ustring::iterator cur = str.begin();
+	Glib::ustring::iterator end = str.end();
 	for (; cur != end; ++cur) {
 		if (*cur == '|')
 			++barcount;
