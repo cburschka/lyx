@@ -320,6 +320,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
 		XpmAttributes dumb_attributes = { 0 };
+		XpmColorSymbol xpm_col;
 		sp->nx = nx;
 		sp->ny = ny;
 		sp->bx = FL_abs(ob->bw);
@@ -330,7 +331,6 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
 
-		XpmColorSymbol xpm_col;
 		xpm_col.name = NULL;
 		xpm_col.value = "None";
 		xpm_col.pixel = fl_get_flcolor(ob->col1);
