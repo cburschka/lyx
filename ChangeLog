@@ -1,3 +1,8 @@
+2000-04-25  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/spellchecker.C (RunSpellChecker): Speedup spellchecking by
+	a factor of 50!
+
 2000-04-26  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/figinset.C: fixes to Lars sstream changes!

@@ -676,28 +676,29 @@ bool RunSpellChecker(BufferView * bv)
 		if(newvalue!= oldval) {
 			oldval = newvalue;
 			fl_set_slider_value(fd_form_spell_check->slider, oldval);
+ 		}
+
+		if (word_count%1000 == 0) {
+			obj =  fl_check_forms();
+			if (obj == fd_form_spell_check->stop) {
+				delete[] word;
+				ispell_terminate();
+				return true;
+			}
+			if (obj == fd_form_spell_check->done) {
+				delete[] word;
+				ispell_terminate(); 
+				return false;
+			}
 		}
 
 		result = ispell_check_word(word);
 		if (isp_pid == -1) {
+			delete result;
 			delete[] word;
 			break;
 		}
 
-		obj =  fl_check_forms();
-		if (obj == fd_form_spell_check->stop) {
-			delete result;
-			delete[] word;
-			ispell_terminate();
-			return true;
-		}
-		if (obj == fd_form_spell_check->done) {
-			delete result;
-			delete[] word;
-			ispell_terminate(); 
-			return false;
-		}
-    
 		switch (result->flag) {
 		case ISP_UNKNOWN:
 		case ISP_MISSED:
