@@ -35,8 +35,85 @@ namespace lyx {
 namespace support {
 namespace os {
 
-void init(int, char *[])
-{}
+void os::init(int /* argc */, char * argv[])
+{
+#ifdef _WIN32
+	/* Note from Angus, 17 Jan 2005:
+	 *
+	 * The code below is taken verbatim from Ruurd's original patch
+	 * porting LyX to Win32.
+	 *
+	 * Windows allows us to define LyX either as a console-based app
+	 * or as a GUI-based app. Ruurd decided to define LyX as a
+	 * console-based app with a "main" function rather than a "WinMain"
+	 * function as the point of entry to the program, but to
+	 * immediately close the console window that Windows helpfully
+	 * opens for us. Doing so allows the user to see all of LyX's
+	 * debug output simply by running LyX from a DOS or MSYS-shell
+	 * prompt.
+	 *
+	 * The alternative approach is to define LyX as a genuine
+	 * GUI-based app, with a "WinMain" function as the entry point to the
+	 * executable rather than a "main" function, so:
+	 *
+	 * #if defined (_WIN32)
+	 * # define WIN32_LEAN_AND_MEAN
+	 * # include <stdlib.h>  // for __argc, __argv
+	 * # include <windows.h> // for WinMain
+	 * #endif
+	 *
+	 * // This will require the "-mwindows" flag when linking with
+	 * // gcc under MinGW.
+	 * // For MSVC, use "/subsystem:windows".
+	 * #if defined (_WIN32)
+	 * int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+	 * {
+	 *     return mymain(__argc, __argv);
+	 * }
+	 * #endif
+	 *
+	 * where "mymain" is just a renamed "main".
+	 *
+	 * However, doing so means that the lyxerr messages would mysteriously
+	 * disappear. They could be resurrected with something like:
+	 *
+	 * #ifdef WIN32
+	 *  AllocConsole();
+	 *  freopen("conin$", "r", stdin);
+	 *  freopen("conout$", "w", stdout);
+	 *  freopen("conout$", "w", stderr);
+	 * #endif
+	 *
+	 * This code could be invoked (say) the first time that lyxerr
+	 * is called. However, Ruurd has tried this route and found that some
+	 * shell scripts failed, for mysterious reasons...
+	 *
+	 * I've chosen for now, therefore, to simply add Ruurd's original
+	 * code as-is.
+	 */
+	// Close the console when run (probably)
+	// not run from command prompt
+	char WindowTitle[1024];
+	HWND hwndFound;
+	GetConsoleTitle(WindowTitle,1024);
+	if ((strcmp(WindowTitle, argv[0]) == 0) ||
+		(strcmp(WindowTitle,"LyX") == 0)) {
+		// format a "unique" newWindowTitle
+		wsprintf(WindowTitle,"%d/%d",
+			GetTickCount(),
+			GetCurrentProcessId());
+		// change current window title
+		SetConsoleTitle(WindowTitle);
+		// ensure window title has been updated
+		Sleep(40);
+		// look for newWindowTitle
+		hwndFound=FindWindow(NULL, WindowTitle);
+		// If found, hide it
+		if ( hwndFound != NULL)
+			ShowWindow( hwndFound, SW_HIDE);
+	}
+#endif
+}
 
 
 string current_root()
@@ -97,7 +174,7 @@ string external_path(string const & p)
 #else // regular Win32
 	dos_path = p;
 #endif
-	
+
 	//No backslashes in LaTeX files
 	dos_path = subst(dos_path,'\\','/');
 
