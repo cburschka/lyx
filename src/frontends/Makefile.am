@@ -6,7 +6,7 @@ DIST_SUBDIRS = controllers xforms qt2 gnome
 
 noinst_LTLIBRARIES = libfrontends.la
 
-INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 libfrontends_la_SOURCES = \
 	Alert.C \
@@ -20,7 +20,6 @@ libfrontends_la_SOURCES = \
 	LyXScreenFactory.h \
 	LyXView.C \
 	LyXView.h \
-	Menubar.C \
 	Menubar.h \
 	Painter.C \
 	Painter.h \

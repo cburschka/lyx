@@ -21,7 +21,6 @@
 #include "lyxfunc.h"
 #include "BufferView.h"
 
-#include "frontends/Menubar.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Timeout.h"
 
@@ -29,6 +28,7 @@
 
 #include "QtView.h"
 #include "QLToolbar.h"
+#include "QLMenubar.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
@@ -61,7 +61,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
 
-	menubar_.reset(new Menubar(this, menubackend));
+	menubar_.reset(new QLMenubar(this, menubackend));
 	toolbar_.reset(new QLToolbar(this));
 	toolbar_->init();
 

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file xforms/Menubar_pimpl.h
+ * \file XFormsMenubar.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,9 +9,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef MENUBAR_PIMPL_H
-#define MENUBAR_PIMPL_H
-
+#ifndef XFORMSMENUBAR_H
+#define XFORMSMENUBAR_H
 
 #include "LString.h"
 #include "frontends/Menubar.h"
@@ -28,16 +27,14 @@ class LyXView;
 class XFormsView;
 class Menu;
 class MenuItem;
+class MenuBackend;
 
-/** The LyX GUI independent menubar class
-  The GUI interface is implemented in the corresponding Menubar_pimpl class.
-  */
-struct Menubar::Pimpl {
+class XFormsMenubar : public Menubar {
 public:
 	///
-	Pimpl(LyXView *, MenuBackend const &);
+	XFormsMenubar(LyXView *, MenuBackend const &);
 	///
-	~Pimpl();
+	~XFormsMenubar();
 
 	/// update the state of the menuitems
 	void update();
@@ -69,11 +66,11 @@ private:
 	///
 	struct ItemInfo {
 		///
-		ItemInfo(Menubar::Pimpl * p, MenuItem const * i,
+		ItemInfo(XFormsMenubar * p, MenuItem const * i,
 			 FL_OBJECT * o);
 		~ItemInfo();
 		///
-		Menubar::Pimpl * pimpl_;
+		XFormsMenubar * menubar_;
 		///
 		boost::shared_ptr<MenuItem const> item_;
 		///

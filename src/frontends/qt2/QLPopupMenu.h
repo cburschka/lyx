@@ -13,8 +13,6 @@
 #define QLPOPUPMENU_H
 
 
-#include "Menubar_pimpl.h"
-
 #include <qpopupmenu.h>
 
 #include "LString.h"
@@ -23,18 +21,19 @@ class MenuBackend;
 class MenuItem;
 class Menu;
 class QMenuData;
+class QLMenubar;
 class QLPopupMenu;
 
 /// create a sub-menu
 std::pair<int, QLPopupMenu *>
 createMenu(QMenuData * parent, MenuItem const * item,
-	   Menubar::Pimpl * owner, bool is_toplevel = false);
+	   QLMenubar * owner, bool is_toplevel = false);
 
 /// a submenu
 class QLPopupMenu : public QPopupMenu {
 	Q_OBJECT
 public:
-	QLPopupMenu(Menubar::Pimpl * owner,
+	QLPopupMenu(QLMenubar * owner,
 		    string const & name, bool toplevel);
 
 	/// populate the menu
@@ -44,7 +43,7 @@ public slots:
 	void showing();
 private:
 	/// our owning menubar
-	Menubar::Pimpl * owner_;
+	QLMenubar * owner_;
 
 	/// the name of this menu
 	string name_;

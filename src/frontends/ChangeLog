@@ -1,3 +1,13 @@
+2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Menubar.h: do not use a pimpl, but rather an abstract class
+
+	* Menubar.C: removed
+	
+2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Toolbar.h: do not use a pimpl, but rather an abstract class
+
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C (c-tor, greyOut): use namespace lyx::graphics

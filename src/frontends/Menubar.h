@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
@@ -15,32 +16,17 @@
 
 #include "LString.h"
 
-class LyXView;
-class MenuBackend;
-
 /**
  * The LyX GUI independent menubar class
- * The GUI interface is implemented in the corresponding Menubar_pimpl class.
+ * The GUI interface is implemented in the frontends
  */
 class Menubar {
 public:
 	///
-	Menubar(LyXView * o, MenuBackend const &);
-	///
-	~Menubar();
+	virtual ~Menubar() {}
 	/// Opens a top-level submenu given its name
-	void openByName(string const &);
+	virtual void openByName(string const &) = 0;
 	/// update the state of the menuitems
-	void update();
-
-
-	//I disable this temporarily until I find a nice way to make it work
-	//with compaq cxx. (Jean-Marc)
-	// Is this a new comment? (Lgb)
-	struct Pimpl;
-	friend struct Pimpl;
-private:
-	///
-	Pimpl * pimpl_;
+	virtual void update() = 0;
 };
 #endif // MENUBAR_H

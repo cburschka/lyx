@@ -15,12 +15,12 @@
 #include "lyx_forms.h"
 
 #include "XMiniBuffer.h"
+#include "XFormsMenubar.h"
 #include "XFormsToolbar.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"
 #include "support/filetools.h"        // OnlyFilename()
-#include "frontends/Menubar.h"
 #include "frontends/Timeout.h"
 #include "frontends/Dialogs.h"
 #include "MenuBackend.h"
@@ -140,7 +140,7 @@ void XFormsView::create_form_form_main(int width, int height)
 	int const air = 2;
 	int const bw = abs(fl_get_border_width());
 
-	menubar_.reset(new Menubar(this, menubackend));
+	menubar_.reset(new XFormsMenubar(this, menubackend));
 
 	toolbar_.reset(new XFormsToolbar(this, air, 30 + air + bw));
 	toolbar_->init();

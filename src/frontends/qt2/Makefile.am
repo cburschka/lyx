@@ -25,7 +25,7 @@ libqt2_la_SOURCES = \
 	FileDialog.C \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
-	Menubar_pimpl.C Menubar_pimpl.h \
+	QLMenubar.C QLMenubar.h \
 	qtTimeout.C qtTimeout.h \
 	QAbout.C QAbout.h \
 	QBibitem.C QBibitem.h \

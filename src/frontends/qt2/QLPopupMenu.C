@@ -18,6 +18,7 @@
 
 #include "QtView.h"
 
+#include "QLMenubar.h"
 #include "QLPopupMenu.h"
 #include "qt_helpers.h"
 
@@ -58,7 +59,7 @@ string const getLabel(MenuItem const & mi)
 
 
 pair<int, QLPopupMenu *>
-createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner,
+createMenu(QMenuData * parent, MenuItem const * item, QLMenubar * owner,
 	   bool is_toplevel)
 {
 	// FIXME: leaks ??
@@ -68,7 +69,7 @@ createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner,
 }
 
 
-QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner,
+QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 			 string const & name, bool toplevel)
 	: owner_(owner), name_(name)
 {

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt2/Menubar_pimpl.h
+ * \file qt2/QLMenubar.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,9 +11,8 @@
  */
 
 
-#ifndef MENUBAR_PIMPL_H
-#define MENUBAR_PIMPL_H
-
+#ifndef QLMENUBAR_H
+#define QLMENUBAR_H
 
 #include "frontends/Menubar.h"
 #include "LString.h"
@@ -24,12 +23,10 @@ class QtView;
 class MenuBackend;
 class QLPopupMenu;
 
-struct Menubar::Pimpl {
+class QLMenubar : public Menubar {
 public:
-	Pimpl(LyXView *, MenuBackend const &);
+	QLMenubar(LyXView *, MenuBackend const &);
 
-	~Pimpl();
-	
 	/// opens a top-level submenu given its name
 	void openByName(string const &);
 
@@ -54,4 +51,4 @@ private:
 	NameMap name_map_;
 };
 
-#endif // MENUBAR_PIMPL_H
+#endif // QLMENUBAR_H

@@ -177,7 +177,6 @@ case "$lyx_use_frontend" in
         RPM_FRONTEND="xforms"
         RPM_FRONTEND_DEPS='libforms >= 1.0'
 	FRONTEND_GUILIB="frontends/xforms/libxforms.la"
-	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
 	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
@@ -192,7 +191,7 @@ dnl     AC_SUBST(GNOME_FRONTEND_LIBS)
 dnl     FRONTEND="xforms gnome"
 dnl     FRONTEND_GUILIB="gnome/*.lo"
 dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
-dnl     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
+dnl     FRONTEND_INCLUDES="${GNOME_FRONTEND_CFLAGS}"
 dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
 dnl	;;
   qt)
@@ -200,7 +199,7 @@ dnl	;;
     RPM_FRONTEND_DEPS='qt >= 2.2.1'
     FRONTEND="qt2"
     FRONTEND_GUILIB="frontends/qt2/libqt2.la"
-    FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT_INCLUDES)"
+    FRONTEND_INCLUDES="\$(QT_INCLUDES)"
     FRONTEND_INFO="    Qt version:                   ${QT_VERSION}\n"
     ;;
   *)

@@ -1,17 +1,15 @@
 /**
- * \file qt2/Menubar_pimpl.C
+ * \file qt2/QLMenubar.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author  Lars Gullik Bjønnes
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
 
-
-#include "Menubar_pimpl.h"
 #include "MenuBackend.h"
 #include "LyXAction.h"
 #include "kbmap.h"
@@ -24,6 +22,7 @@
 #include "debug.h"
 
 #include "QtView.h"
+#include "QLMenubar.h"
 #include "QLPopupMenu.h"
 
 #include <qmenubar.h>
@@ -39,7 +38,7 @@ using std::for_each;
 using std::pair;
 
 
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
+QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
 {
 	Menu::const_iterator m = mbe.getMenubar().begin();
@@ -63,11 +62,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 }
 
 
-Menubar::Pimpl::~Pimpl()
-{}
-
-
-void Menubar::Pimpl::openByName(string const & name)
+void QLMenubar::openByName(string const & name)
 {
 	NameMap::const_iterator const cit = name_map_.find(name);
 	if (cit == name_map_.end())
@@ -78,17 +73,17 @@ void Menubar::Pimpl::openByName(string const & name)
 }
 
 
-void Menubar::Pimpl::update()
+void QLMenubar::update()
 {}
 
 
-QtView * Menubar::Pimpl::view()
+QtView * QLMenubar::view()
 {
 	return owner_;
 }
 
 
-MenuBackend const & Menubar::Pimpl::backend()
+MenuBackend const & QLMenubar::backend()
 {
 	return menubackend_;
 }

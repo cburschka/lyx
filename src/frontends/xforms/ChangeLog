@@ -1,10 +1,22 @@
-2003-07-25  Jean-Marc Lasgouttes <lasgouttes@lyx.org>  <lyx@htwm.de>
+2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* 
+	* XFormsMenubar.h: 
+	* XFormsMenubar.C: derives from Menubar (replaces Menubar::Pimpl)
 
-2003-07-25  Jean-Marc Lasgouttes  <lasgoutes@lyx.org>
+	* Menubar_pimpl.C:
+	* Menubar_pimpl.h: removed
+
+	* XFormsView.C: modified because of changes above
+
+2003-07-25  Jean-Marc Lasgouttes <lasgouttes@lyx.org>
 
 	* XFormsToolbar.h: 
+	* XFormsToolbar.C: derives from Toolbar (replaces Toolbar::Pimpl)
+
+	* Toolbar_pimpl.C:
+	* Toolbar_pimpl.h: removed
+
+	* XFormsView.C: modified because of changes above
 
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 

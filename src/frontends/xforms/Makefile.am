@@ -151,8 +151,8 @@ libxforms_la_SOURCES = \
 	FormWrap.h \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
-	Menubar_pimpl.C \
-	Menubar_pimpl.h \
+	XFormsMenubar.C \
+	XFormsMenubar.h \
 	RadioButtonGroup.C \
 	RadioButtonGroup.h \
 	XFormsToolbar.C \

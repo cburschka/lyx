@@ -1,5 +1,5 @@
 /**
- * \file xforms/Menubar_pimpl.C
+ * \file XFormsMenubar.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "Menubar_pimpl.h"
+#include "XFormsMenubar.h"
 #include "MenuBackend.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
@@ -72,26 +72,26 @@ extern "C" {
 
 	//Defined later, used in makeMenubar().
 	static
-	void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button)
+	void C_XFormsMenubar_MenuCallback(FL_OBJECT * ob, long button)
 	{
-		Menubar::Pimpl::MenuCallback(ob, button);
+		XFormsMenubar::MenuCallback(ob, button);
 	}
 
 }
 
 
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
+XFormsMenubar::XFormsMenubar(LyXView * view, MenuBackend const & mb)
 	: owner_(static_cast<XFormsView*>(view)), menubackend_(&mb)
 {
 	makeMenubar(menubackend_->getMenubar());
 }
 
 
-Menubar::Pimpl::~Pimpl()
+XFormsMenubar::~XFormsMenubar()
 {}
 
 
-void Menubar::Pimpl::makeMenubar(Menu const & menu)
+void XFormsMenubar::makeMenubar(Menu const & menu)
 {
 	FL_FORM * form = owner_->getForm();
 	int moffset = 0;
@@ -108,7 +108,7 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 	for (; i != end; ++i) {
 		FL_OBJECT * obj;
 		if (i->kind() != MenuItem::Submenu) {
-			lyxerr << "ERROR: Menubar::Pimpl::createMenubar:"
+			lyxerr << "ERROR: XFormsMenubar::createMenubar:"
 				" only submenus can appear in a menubar"
 			       << endl;
 			continue;
@@ -130,7 +130,7 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 				      NorthWestGravity);
 		moffset += obj->w + air;
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
-		fl_set_object_callback(obj, C_Menubar_Pimpl_MenuCallback, 1);
+		fl_set_object_callback(obj, C_XFormsMenubar_MenuCallback, 1);
 
 		boost::shared_ptr<ItemInfo>
 			iteminfo(new ItemInfo(this, new MenuItem(*i), obj));
@@ -141,13 +141,13 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 }
 
 
-void Menubar::Pimpl::update()
+void XFormsMenubar::update()
 {
 	// nothing yet
 }
 
 
-void Menubar::Pimpl::openByName(string const & name)
+void XFormsMenubar::openByName(string const & name)
 {
 	for (ButtonList::const_iterator cit = buttonlist_.begin();
 	     cit != buttonlist_.end(); ++cit) {
@@ -157,7 +157,7 @@ void Menubar::Pimpl::openByName(string const & name)
 		}
 	}
 
-	lyxerr << "Menubar::Pimpl::openByName: menu "
+	lyxerr << "XFormsMenubar::openByName: menu "
 	       << name << " not found" << endl;
 }
 
@@ -191,11 +191,11 @@ string const fixlabel(string const & str)
 
 
 
-int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
+int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 				   Menu const & menu, vector<int> & smn)
 {
 	const int menuid = get_new_submenu(smn, win);
-	lyxerr[Debug::GUI] << "Menubar::Pimpl::create_submenu: creating "
+	lyxerr[Debug::GUI] << "XFormsMenubar::create_submenu: creating "
 			   << menu.name() << " as menuid=" << menuid << endl;
 
 	// Compute the size of the largest label (because xforms is
@@ -321,7 +321,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 
 
 		default:
-			lyxerr << "Menubar::Pimpl::create_submenu: "
+			lyxerr << "XFormsMenubar::create_submenu: "
 				"this should not happen" << endl;
 			break;
 		}
@@ -330,10 +330,10 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 }
 
 
-void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
+void XFormsMenubar::MenuCallback(FL_OBJECT * ob, long button)
 {
 	ItemInfo * iteminfo = static_cast<ItemInfo *>(ob->u_vdata);
-	XFormsView * view = iteminfo->pimpl_->owner_;
+	XFormsView * view = iteminfo->menubar_->owner_;
 	MenuItem const * item = iteminfo->item_.get();
 
 	if (button == 1) {
@@ -349,12 +349,12 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);
 
-	MenuBackend const * menubackend_ = iteminfo->pimpl_->menubackend_;
+	MenuBackend const * menubackend_ = iteminfo->menubar_->menubackend_;
 	Menu tomenu;
 	Menu const frommenu = menubackend_->getMenu(item->submenuname());
 	menubackend_->expand(frommenu, tomenu, view);
 	vector<int> submenus;
-	int menu = iteminfo->pimpl_->create_submenu(FL_ObjWin(ob), view,
+	int menu = iteminfo->menubar_->create_submenu(FL_ObjWin(ob), view,
 						    tomenu, submenus);
 	if (menu != -1) {
 		// place popup
@@ -388,13 +388,13 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 }
 
 
-Menubar::Pimpl::ItemInfo::ItemInfo
-	(Menubar::Pimpl * p, MenuItem const * i, FL_OBJECT * o)
-	: pimpl_(p), obj_(o)
+XFormsMenubar::ItemInfo::ItemInfo
+	(XFormsMenubar * p, MenuItem const * i, FL_OBJECT * o)
+	: menubar_(p), obj_(o)
 {
 	item_.reset(i);
 }
 
 
-Menubar::Pimpl::ItemInfo::~ItemInfo()
+XFormsMenubar::ItemInfo::~ItemInfo()
 {}
