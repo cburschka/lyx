@@ -12,12 +12,14 @@
 
 #include <config.h>
 
-#include "gettext.h"
-
-#include "frontends/LyXKeySymFactory.h"
 #include "kbsequence.h"
+
+#include "gettext.h"
 #include "kbmap.h"
 #include "lfuns.h"
+
+#include "frontends/LyXKeySym.h"
+#include "frontends/LyXKeySymFactory.h"
 
 using std::make_pair;
 

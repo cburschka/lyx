@@ -14,11 +14,15 @@
 #include <config.h>
 
 #include "kbmap.h"
+
+#include "debug.h"
 #include "kbsequence.h"
 #include "LyXAction.h"
-#include "support/filetools.h"
 #include "lyxlex.h"
-#include "debug.h"
+
+#include "frontends/LyXKeySym.h"
+
+#include "support/filetools.h"
 
 using std::endl;
 using lyx::support::i18nLibFileSearch;

@@ -16,11 +16,13 @@
 
 #include "support/std_string.h"
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
+
+#include <boost/shared_ptr.hpp>
 
 #include <vector>
 
 class kb_sequence;
+class LyXKeySym;
 
 /// Defines key maps and actions for key sequences
 class kb_keymap {
@@ -39,6 +41,8 @@ public:
 	/// print all available keysyms
 	string const print() const;
 
+	///
+	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 	/**
 	 * Look up a key press in the keymap.
 	 * @param key the keysym

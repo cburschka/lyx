@@ -19,9 +19,11 @@
 #include "lfuns.h"
 #include "support/std_string.h"
 
+#include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 class FuncStatus;
+class LyXKeySym;
 class LyXView;
 class LyXText;
 class FuncRequest;
@@ -52,6 +54,8 @@ public:
 	/// return the status bar state string
 	string const view_status_message();
 
+	///
+	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 

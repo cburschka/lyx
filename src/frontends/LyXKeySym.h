@@ -13,7 +13,6 @@
 #define LYXKEYSYM_H
 
 #include "support/std_string.h"
-#include <boost/shared_ptr.hpp>
 
 /**
  * This is a base class for representing a keypress.
@@ -56,7 +55,5 @@ public:
  * sake of the keymap business.
  */
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2);
-
-typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 
 #endif

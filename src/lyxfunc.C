@@ -55,6 +55,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/lyx_gui.h"
+#include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
 #include "frontends/Toolbar.h"

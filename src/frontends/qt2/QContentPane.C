@@ -137,6 +137,8 @@ void QContentPane::wheelEvent(QWheelEvent * e)
 
 void QContentPane::keyPressEvent(QKeyEvent * e)
 {
+	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
+
 	QLyXKeySym * sym = new QLyXKeySym();
 	sym->set(e);
 	wa_->workAreaKeyPress(LyXKeySymPtr(sym), q_key_state(e->state()));

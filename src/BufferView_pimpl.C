@@ -48,6 +48,7 @@
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
+#include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
 #include "frontends/LyXScreenFactory.h"
 #include "frontends/screen.h"

@@ -18,22 +18,23 @@
 #ifndef BUFFERVIEW_PIMPL_H
 #define BUFFERVIEW_PIMPL_H
 
-#include "errorlist.h"
 #include "BufferView.h"
+#include "errorlist.h"
 
 #include "insets/inset.h"
 
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
 #include "frontends/Timeout.h"
 
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 
 class Change;
+class LyXKeySym;
 class LyXView;
 class WorkArea;
 class LyXScreen;
@@ -76,6 +77,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	 * Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	 */
 	void scroll(int lines);
+	///
+	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 	///
 	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
 	///

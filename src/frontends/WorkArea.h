@@ -14,17 +14,19 @@
 #define WORKAREA_H
 
 #include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
 
+#include <boost/shared_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 #include <boost/signals/signal2.hpp>
 #include <boost/signals/signal3.hpp>
 
+#include "support/std_string.h"
 #include <utility>
 
 class Painter;
 class FuncRequest;
+class LyXKeySym;
 
 /**
  * The work area class represents the widget that provides the
@@ -35,6 +37,7 @@ class FuncRequest;
  */
 class WorkArea {
 public:
+	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 
 	WorkArea() {}
 

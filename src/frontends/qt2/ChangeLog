@@ -1,5 +1,9 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* QContentPane.C: add a typedef for LyXKeySymPtr.
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* QCitationDialog.C:
 	* QMathDialog.C:
 	* QTabularDialog.C: remove using std::endl directive.

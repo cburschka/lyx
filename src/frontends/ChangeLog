@@ -1,3 +1,9 @@
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* LyXKeySym.h: remove LyXKeySymPtr typedef.
+	* WorkArea.h: forward declare LyXKeySym rather than
+	#include "frontends/LyXKeySym.h".
+
 2003-09-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Alert_pimpl.h: re-add missing system headers, needed for 2.95.2.
