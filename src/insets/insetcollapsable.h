@@ -51,6 +51,8 @@ public:
 	///
 	bool hitButton(FuncRequest const &) const;
 	///
+	std::string const getNewLabel(std::string const & l) const;
+	///
 	EDITABLE editable() const;
 	/// can we go further down on mouse click?
 	bool descendable() const { return isOpen(); }

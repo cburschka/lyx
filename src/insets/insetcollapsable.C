@@ -35,6 +35,7 @@ using lyx::graphics::PreviewLoader;
 using std::endl;
 using std::string;
 using std::max;
+using std::min;
 using std::ostream;
 
 
@@ -257,6 +258,30 @@ int InsetCollapsable::docbook(Buffer const & buf, ostream & os,
 bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 {
 	return button_dim.contains(cmd.x, cmd.y);
+}
+
+
+string const InsetCollapsable::getNewLabel(string const & l) const
+{
+	string la;
+	pos_type const max_length = 15;
+	pos_type const p_siz = inset.paragraphs().begin()->size();
+	pos_type const n = min(max_length, p_siz);
+	pos_type i = 0;
+	pos_type j = 0;
+	for( ; i < n && j < p_siz; ++j) {
+		if (inset.paragraphs().begin()->isInset(j))
+			continue;
+		la += inset.paragraphs().begin()->getChar(j);
+		++i;
+	}
+	if (inset.paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
+		la += "...";
+	}
+	if (la.empty()) {
+		la = l;
+	}
+	return la;
 }
 
 

@@ -451,33 +451,9 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 }
 
 
-string const InsetERT::getNewLabel() const
-{
-	string la;
-	pos_type const max_length = 15;
-	pos_type const p_siz = inset.paragraphs().begin()->size();
-	pos_type const n = min(max_length, p_siz);
-	pos_type i = 0;
-	pos_type j = 0;
-	for( ; i < n && j < p_siz; ++j) {
-		if (inset.paragraphs().begin()->isInset(j))
-			continue;
-		la += inset.paragraphs().begin()->getChar(j);
-		++i;
-	}
-	if (inset.paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
-		la += "...";
-	}
-	if (la.empty()) {
-		la = _("ERT");
-	}
-	return la;
-}
-
-
 void InsetERT::setButtonLabel() const
 {
-	setLabel(status_ == Collapsed ? getNewLabel() : _("ERT"));
+	setLabel(status_ == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
 }
 
 

@@ -92,8 +92,8 @@ void InsetCharStyle::setButtonLabel()
 {
 	LyXFont font(params_.labelfont);
 	font.realize(LyXFont(LyXFont::ALL_SANE));
-	font.decSize();
-	setLabel("Style: " + params_.type);
+	string const s = "Style: " + params_.type;
+	setLabel(isOpen() ? s : getNewLabel(s) );
 	setLabelFont(font);
 }
 

@@ -119,8 +119,6 @@ private:
 	///
 	void init();
 	///
-	std::string const getNewLabel() const;
-	///
 	void setButtonLabel() const;
 	///
 	void setLatexFont(BufferView *);
