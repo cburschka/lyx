@@ -29,7 +29,7 @@ InsetCommandParams::InsetCommandParams(string const & n,
 					string const & c,
 					string const & o,
 					string const & s)
-	: cmdname(n), contents(c), options(o), sec_options(s), 
+	: cmdname(n), contents(c), options(o), sec_options(s),
 	preview_(false)
 {}
 
@@ -39,7 +39,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	string tcmdname, toptions, tsecoptions, tcontents;
 
 	if (cmd.empty()) return;
-	
+
 	enum { WS, CMDNAME, OPTION, SECOPTION, CONTENT } state = WS;
 
 	// Used to handle things like \command[foo[bar]]{foo{bar}}
@@ -100,7 +100,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 		       << "> == <" << getCommand()
 		       << "> == <" << getCmdName()
 		       << '|' << getContents()
-		       << '|' << getOptions() 
+		       << '|' << getOptions()
 		       << '|' << getSecOptions() << '>' << endl;
 }
 

@@ -83,12 +83,12 @@ char nextToken(string & data)
 		lyx_advance(data, 1);
 		return '+';
 	}
-		
+
 	if (prefixIs(data, "plus")) {
 		lyx_advance(data, 4);
 		return '+';
 	}
-	
+
 	if (data[0] == '-') {
 		lyx_advance(data, 1);
 		return '-';
@@ -467,7 +467,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	case VFILL:
 		return keep_ ? "\\vspace*{\\fill}" : "\\vfill{}";
 
-	case LENGTH: 
+	case LENGTH:
 		return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
 			: "\\vspace{" + len_.asLatexString() + '}';
 
@@ -482,7 +482,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView const & bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int const default_height = defaultRowHeight(); 
+	int const default_height = defaultRowHeight();
 
 	switch (kind_) {
 

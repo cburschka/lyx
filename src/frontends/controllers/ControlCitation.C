@@ -37,9 +37,9 @@ bool ControlCitation::initialiseParams(string const & data)
 	kernel().buffer().fillWithBibKeys(blist);
 
 	bool use_styles = (usingNatbib() || usingJurabib());
-	
+
 	typedef std::map<string, string>::value_type InfoMapValue;
-	
+
 	for (vector<pair<string,string> >::size_type i = 0;
 	     i < blist.size(); ++i) {
 		bibkeysInfo_.insert(InfoMapValue(blist[i].first,
@@ -51,7 +51,7 @@ bool ControlCitation::initialiseParams(string const & data)
 	else {
 		if ((use_styles && citeStyles_.size() == 1) ||
 		    (!use_styles && citeStyles_.size() != 1))
-			citeStyles_ = biblio::getCiteStyles(usingNatbib(), 
+			citeStyles_ = biblio::getCiteStyles(usingNatbib(),
 				usingJurabib());
 	}
 

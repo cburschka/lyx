@@ -150,7 +150,7 @@ public:
 	bool insetAllowed(Code) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
-	
+
 protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);

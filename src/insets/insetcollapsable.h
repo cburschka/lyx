@@ -64,7 +64,7 @@ public:
 	void setLabel(std::string const & l);
 	///
 	virtual void setButtonLabel() {}
- 	///
+	///
 	void setLabelFont(LyXFont & f);
 	///
 	int scroll(bool recursive = true) const;

@@ -130,7 +130,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int a = 0;
 		int d = 0;
 		font_metrics::rectText(params_.type, font, w, a, d);
-		pi.pain.rectText(x + (dim_.wid - w) / 2, 
+		pi.pain.rectText(x + (dim_.wid - w) / 2,
 			y + InsetText::descent() + a,
 			params_.type, font, LColor::none, LColor::none);
 	}

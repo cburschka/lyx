@@ -152,9 +152,9 @@ public:
 	/// cache the absolute coordinate from the top inset
 	void updatePos();
 	/// sets anchor to cursor position
-	void resetAnchor(); 
+	void resetAnchor();
 	/// access to owning BufferView
-	BufferView & bv() const; 
+	BufferView & bv() const;
 	/// get some interesting description of top position
 	void info(std::ostream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
@@ -182,8 +182,8 @@ public:
 //private:
 	/// the anchor position
 	DocIterator anchor_;
-	
-	/// 
+
+	///
 	DispatchResult disp_;
 
 private:

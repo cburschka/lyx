@@ -1881,5 +1881,3 @@ unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
 	}
 }
-
-

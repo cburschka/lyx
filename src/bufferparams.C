@@ -937,7 +937,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		   << features.getBabelOptions();
 		texrow.newline();
 	}
-	
+
 	// Now insert the LyX specific LaTeX commands...
 
 	// The optional packages;
@@ -1006,7 +1006,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		lyxpreamble += bullets_def + "}\n\n";
 
 	// We try to load babel late, in case it interferes
-	// with other packages. 
+	// with other packages.
 	// Jurabib has to be called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")) {
 		lyxpreamble += babelCall(language_options.str()) + '\n';

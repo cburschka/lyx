@@ -325,7 +325,7 @@ bool XformsColor::read(string const & filename)
 	if (f.readable() && !lexrc.setFile(filename)) {
 		lyxerr << "XformsColor::read(" << filename << ")\n"
 		       << _("Failed to open file.") << std::endl;
- 		return false;
+		return false;
 	}
 
 	while (lexrc.isOK()) {
@@ -370,7 +370,7 @@ bool XformsColor::write(string const & filename)
 	if (!os) {
 		lyxerr << "XformsColor::write(" << filename << ")\n"
 		       << _("Failed to open file.") << std::endl;
- 		return false;
+		return false;
 	}
 
 	os << "###"

@@ -112,7 +112,7 @@ string const ResizeLatexCommand::front_impl() const
 			if (!data.height.zero())
 				height = data.height.asLatexString();
 		}
-		
+
 		os << "\\resizebox{"
 		   << width << "}{"
 		   << height << "}{";

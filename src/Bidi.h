@@ -46,8 +46,8 @@ struct  Bidi {
 	///
 	void computeTables(Paragraph const & par,
 			   Buffer const &, Row const & row);
-private: 
-	/// 
+private:
+	///
 	bool same_direction_;
 	///
 	std::vector<lyx::pos_type> log2vis_list_;

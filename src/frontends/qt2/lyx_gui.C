@@ -93,7 +93,7 @@ extern bool lyxX11EventFilter(XEvent * xev);
 #ifdef Q_WS_MACX
 extern bool macEventFilter(EventRef event);
 extern pascal OSErr
-handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/, 
+handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/,
 		    long /*refCon*/);
 #endif
 
@@ -127,13 +127,13 @@ LQApplication::~LQApplication()
 
 
 #ifdef Q_WS_MACX
-bool LQApplication::macEventFilter(EventRef event) 
+bool LQApplication::macEventFilter(EventRef event)
 {
 	if (GetEventClass(event) == kEventClassAppleEvent) {
 		EventRecord eventrec;
 		ConvertEventRefToEventRecord(event, &eventrec);
 		AEProcessAppleEvent(&eventrec);
-		
+
 		return false;
 	}
 	return false;

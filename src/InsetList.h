@@ -52,7 +52,7 @@ public:
 	///
 	bool empty() const { return list.empty(); }
 	///
-	iterator insetIterator(lyx::pos_type pos); 
+	iterator insetIterator(lyx::pos_type pos);
 	///
 	const_iterator insetIterator(lyx::pos_type pos) const;
 	///

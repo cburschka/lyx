@@ -56,7 +56,7 @@ InsetBase * DocIterator::nextInset()
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
 		return 0;
-	if (inMathed()) 
+	if (inMathed())
 		return nextAtom().nucleus();
 	return paragraph().isInset(pos()) ? paragraph().getInset(pos()) : 0;
 }
@@ -67,7 +67,7 @@ InsetBase * DocIterator::prevInset()
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
 		return 0;
-	if (inMathed()) 
+	if (inMathed())
 		return prevAtom().nucleus();
 	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
@@ -78,7 +78,7 @@ InsetBase const * DocIterator::prevInset() const
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
 		return 0;
-	if (inMathed()) 
+	if (inMathed())
 		return prevAtom().nucleus();
 	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
@@ -339,13 +339,13 @@ void DocIterator::forwardChar()
 {
 	forwardPos();
 	while (size() != 0 && pos() == lastpos())
-		forwardPos(); 
+		forwardPos();
 }
 
 
 void DocIterator::forwardInset()
 {
-	forwardPos(); 
+	forwardPos();
 	while (size() != 0 && (pos() == lastpos() || nextInset() == 0))
 		forwardPos();
 }
@@ -355,7 +355,7 @@ void DocIterator::backwardChar()
 {
 	backwardPos();
 	while (size() != 0 && pos() == lastpos())
-		backwardPos(); 
+		backwardPos();
 }
 
 
@@ -390,7 +390,7 @@ void DocIterator::backwardPos()
 
 	// move into an inset to the left if possible
 	InsetBase * n = 0;
-	
+
 	if (inMathed()) {
 		n = (top.cell().begin() + top.pos())->nucleus();
 	} else {
@@ -449,4 +449,3 @@ std::ostream & operator<<(std::ostream & os, StableDocIterator const & dit)
 		os << " " << dit.data_[i] << "\n";
 	return os;
 }
-

@@ -78,7 +78,7 @@ void FormBibtex::build()
 	// callback for double click in browser
 	fl_set_browser_dblclick_callback(dialog_->browser_styles,
 					 C_FormDialogView_InputCB, 2);
-					 
+
 	fl_addto_choice(dialog_->choice_btprint,
 			_(" all cited references "
 			  "| all uncited references "
@@ -113,7 +113,7 @@ void FormBibtex::build()
 		"the styles which are in directories where TeX finds them "
 		"are listed!");
 	tooltips().init(dialog_->button_rescan, str);
-	
+
 	str = _("The bibliography section contains...");
 	tooltips().init(dialog_->choice_btprint, str);
 }
@@ -198,14 +198,14 @@ void FormBibtex::update()
 		}
 	}
 	fl_set_input(dialog_->input_style, bibstyle.c_str());
-	
+
 	string btprint = controller().params().getSecOptions();
 	int btp = 1;
 	if (btprint == "btPrintNotCited")
 		btp = 2;
 	else if (btprint == "btPrintAll")
 		btp = 3;
-	
+
 	fl_set_choice(dialog_->choice_btprint, btp);
 	setEnabled(dialog_->choice_btprint, bibtopic);
 
@@ -260,11 +260,11 @@ void FormBibtex::apply()
 		controller().params().setOptions(bibtotoc + ',' + bibstyle);
 
 	} else {
-		// At least one of addtotoc and bibstyle is empty. 
+		// At least one of addtotoc and bibstyle is empty.
 		// No harm to output both!
 		controller().params().setOptions(bibtotoc + bibstyle);
 	}
-	
+
 	// bibtopic allows three kinds of sections:
 	// 1. sections that include all cited references of the database(s)
 	// 2. sec. that include all uncited references of the database(s)
@@ -283,7 +283,7 @@ void FormBibtex::apply()
 			break;
 		}
 	}
-	
+
 	else
 		controller().params().setSecOptions("");
 }

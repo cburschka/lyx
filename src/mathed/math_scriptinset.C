@@ -111,7 +111,7 @@ void MathScriptInset::ensure(bool up)
 		// just nucleus so far
 		cells_.push_back(MathArray());
 		cell_1_is_up_ = up;
-	} else if (nargs() == 2 && !has(up)) { 
+	} else if (nargs() == 2 && !has(up)) {
 		if (up) {
 			cells_.push_back(cell(1));
 			cell(1).clear();

@@ -183,7 +183,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			if (openinlined_)
 				InsetText::draw(pi, x + dimc.width(),
 						y - aa + textdim_.asc);
-			else 
+			else
 				InsetText::draw(pi, x, dimc.height()
 						+ y - aa + textdim_.asc);
 		}

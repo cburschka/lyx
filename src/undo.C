@@ -95,7 +95,7 @@ void recordUndo(Undo::undo_kind kind,
 		undo.pars = ParagraphList(first, last);
 	}
 
-	// push the undo entry to undo stack 
+	// push the undo entry to undo stack
 	//lyxerr << "undo record: " << stack.top() << std::endl;
 	stack.push(undo);
 

@@ -336,7 +336,7 @@ bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 {
 	BOOST_ASSERT(this == cur.text());
-	par_type beg, end; 
+	par_type beg, end;
 	getSelectionSpan(cur, beg, end);
 	int max_depth = 0;
 	if (beg != 0)
@@ -412,8 +412,8 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	par_type const beg = cur.selBegin().par();
 	par_type const end = cur.selEnd().par();
 
-	DocIterator pos = cur.selectionBegin();	
-	DocIterator posend = cur.selectionEnd();	
+	DocIterator pos = cur.selectionBegin();
+	DocIterator posend = cur.selectionEnd();
 
 	BufferParams const & params = bv()->buffer()->params();
 
@@ -422,7 +422,7 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 		f.update(font, params.language, toggleall);
 		setCharFont(pos.par(), pos.pos(), f);
 	}
-	
+
 	redoParagraphs(beg, end + 1);
 }
 
@@ -819,7 +819,7 @@ void LyXText::updateCounters()
 	bv()->buffer()->params().getLyXTextClass().counters().reset();
 
 	bool update_pos = false;
-	
+
 	par_type end = paragraphs().size();
 	for (par_type pit = 0; pit != end; ++pit) {
 		string const oldLabel = pars_[pit].params().labelString();
@@ -949,7 +949,7 @@ void LyXText::setCursor(CursorSlice & cur, par_type par,
 		// This shouldn't happen.
 		BOOST_ASSERT(false);
 	}
-	
+
 	if (pos < row.pos()) {
 		lyxerr << "dont like 3 please report pos:" << pos
 		       << " size: " << para.size()
@@ -1017,7 +1017,7 @@ pos_type LyXText::getColumnNearX(par_type pit,
 {
 	x -= xo_;
 	RowMetrics const r = computeRowMetrics(pit, row);
-	
+
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
 	pos_type c = 0;
@@ -1198,7 +1198,7 @@ void LyXText::cursorRight(LCursor & cur)
 	}
 
 	if (cur.pos() != cur.lastpos()) {
-		if (!checkAndActivateInset(cur, true)) { 
+		if (!checkAndActivateInset(cur, true)) {
 			setCursor(cur, cur.par(), cur.pos() + 1, true, false);
 			if (false && bidi.isBoundary(*bv()->buffer(), cur.paragraph(),
 							 cur.pos()))

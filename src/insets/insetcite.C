@@ -101,8 +101,8 @@ string const getNatbibLabel(Buffer const & buffer,
 		    cite_type == "citeyearpar")
 			before_str = before + ' ';
 		// In CITE (jurabib), the "before" string is used to attach
-		// the annotator (of legal texts) to the author(s) of the 
-		// first reference. 
+		// the annotator (of legal texts) to the author(s) of the
+		// first reference.
 		else if (cite_type == "cite")
 			before_str = '/' + before;
 	}
@@ -143,7 +143,7 @@ string const getNatbibLabel(Buffer const & buffer,
 				label += author + before_str + sep_str;
 			else
 				label += author + sep_str;
-		
+
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
 		} else if (cite_type == "citet") {
@@ -286,7 +286,7 @@ InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const & buffer) const
 			style = Cache::NATBIB_AY;
 		}
 	}
-	
+
 	if (buffer.params().use_jurabib)
 		style = Cache::JURABIB;
 
@@ -344,7 +344,7 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 	if (buffer.params().use_natbib)
 		os << getCmdName();
 	else if (buffer.params().use_jurabib) {
-		// jurabib does not (yet) support "force upper case" 
+		// jurabib does not (yet) support "force upper case"
 		// and "full author name". Fallback.
 		string cmd = getCmdName();
 		if (cmd[0] == 'C')
@@ -358,7 +358,7 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 
 	string const before = getSecOptions();
 	string const after  = getOptions();
-	if (!before.empty() 
+	if (!before.empty()
 		&& (buffer.params().use_natbib || buffer.params().use_jurabib))
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())

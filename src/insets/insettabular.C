@@ -471,7 +471,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_LEFTSEL: 
+	case LFUN_LEFTSEL:
 	case LFUN_LEFT:
 		cell(cur.idx()).dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
@@ -695,7 +695,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		int actcell = cur.idx();
-		int action = LyXTabular::LAST_ACTION;	
+		int action = LyXTabular::LAST_ACTION;
 		int i = 0;
 		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
 			string const tmp = tabularFeature[i].feature;
@@ -1540,7 +1540,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 
 	bool const track = cur.bv().buffer()->params().tracking_changes;
 	int rs, re, cs, ce;
-	getSelection(cur, rs, re, cs, ce); 
+	getSelection(cur, rs, re, cs, ce);
 	for (int i = rs; i <= re; ++i)
 		for (int j = cs; j <= ce; ++j)
 			cell(tabular.getCellNumber(i, j)).clear(track);
@@ -1801,4 +1801,3 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 	data << "\\end_inset\n";
 	return data.str();
 }
-	

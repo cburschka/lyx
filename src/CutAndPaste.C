@@ -84,7 +84,7 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 
 	InsetText in;
 	std::swap(in.paragraphs(), pars);
-	
+
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
 		string const name = it->layout()->name();
@@ -330,7 +330,7 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 		}
 	}
 	std::swap(in.paragraphs(), insertion);
-	
+
 	// Split the paragraph for inserting the buf if necessary.
 	bool did_split = false;
 	if (pars[pit].size() || pit + 1 == par_type(pars.size())) {
@@ -343,7 +343,7 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 	mergeParagraph(buffer.params(), pars, pit);
 
 	par_type last_paste = pit + insertion.size() - 1;
-	
+
 	// Store the new cursor position.
 	pit = last_paste;
 	pos = pars[last_paste].size();

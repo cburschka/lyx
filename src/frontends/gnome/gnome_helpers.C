@@ -25,4 +25,3 @@ void addDefaultTags(Glib::RefPtr<Gtk::TextBuffer> & buf) {
 	buf->get_tag_table()->add(boldTag);
 
 }
-

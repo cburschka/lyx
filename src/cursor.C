@@ -125,7 +125,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(par() <= lastpar());
 
-		// The common case is 'LFUN handled, need update', so make the 
+		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
 		// The handler can reset the update and val flags if necessary.
 		disp_.update(true);
@@ -1112,7 +1112,7 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
 	BOOST_ASSERT(!empty());
 	par_type beg, end;
-	CursorSlice bottom = operator[](0); 
+	CursorSlice bottom = operator[](0);
 	LyXText * text = bottom.text();
 	BOOST_ASSERT(text);
 	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
@@ -1324,7 +1324,7 @@ Encoding const * LCursor::getEncoding() const
 	CursorSlice const & sl = operator[](s);
 	LyXText & text = *sl.text();
 	LyXFont font = text.getPar(sl.par()).getFont(
-		bv().buffer()->params(), sl.pos(), outerFont(sl.par(), text.paragraphs()));	
+		bv().buffer()->params(), sl.pos(), outerFont(sl.par(), text.paragraphs()));
 	return font.language()->encoding();
 }
 

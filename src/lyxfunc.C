@@ -488,7 +488,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
-		
+
 		cur.getStatus(cmd, flag);
 		if (!flag.enabled())
 			flag = view()->getStatus(cmd);
@@ -562,7 +562,7 @@ void loadTextclass(string const & name)
 		Alert::error(_("Could not change class"), s);
 	}
 }
- 
+
 } //namespace anon
 
 
@@ -1342,14 +1342,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_LYXRC_APPLY: {
 			istringstream ss(argument);
 			bool const success = lyxrc.read(ss) == 0;
-			
+
 			if (!success) {
 				lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
 				       << "Unable to read lyxrc data"
 				       << endl;
 			}
 			break;
-		} 
+		}
 
 		default: {
 			DispatchResult res = view()->cursor().dispatch(cmd);

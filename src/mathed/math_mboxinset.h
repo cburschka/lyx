@@ -39,11 +39,11 @@ public:
 	bool inMathed() const { return false; }
 
 	///
-	LyXText * getText(int) const;	
+	LyXText * getText(int) const;
 	///
 	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 protected:
-	/// 
+	///
 	mutable LyXText text_;
 	///
 	BufferView * const bv_;

@@ -115,7 +115,7 @@ public:
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(InsetOld * inset) const;
 
-	/// simple replacing. Use the font of the first selected character 
+	/// simple replacing. Use the font of the first selected character
 	void replaceSelectionWithString(std::string const & str);
 
 	/// move cursor to the named label
@@ -163,7 +163,7 @@ public:
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
-	
+
 	/// clear the X selection
 	void unsetXSel();
 

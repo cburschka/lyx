@@ -230,13 +230,13 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->check_here, alternatives && !wide);
 		setEnabled(dialog_->radio_here_definitely, !wide);
 		setEnabled(dialog_->check_bottom, alternatives && !wide);
-	
+
 	} else if (ob == dialog_->check_sideways) {
 		setEnabled(dialog_->radio_default,   !sideways);
 		setEnabled(dialog_->radio_alternatives,   !sideways);
 		setEnabled(dialog_->radio_here_definitely, !wide && !sideways);
 		setEnabled(dialog_->check_top, alternatives && !sideways);
-		setEnabled(dialog_->check_bottom, 
+		setEnabled(dialog_->check_bottom,
 			alternatives && !wide && !sideways);
 		setEnabled(dialog_->check_page, alternatives && !sideways);
 		setEnabled(dialog_->check_here, alternatives && !wide && !sideways);

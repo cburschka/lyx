@@ -341,7 +341,7 @@ Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
 }
 
 
-/// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
+/// return the range of pars [beg, end[ owning the range of y [ystart, yend]
 void getParsInRange(ParagraphList & pars, int ystart, int yend,
 	par_type & beg, par_type & end)
 {

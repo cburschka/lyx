@@ -304,4 +304,3 @@ bool operator==(ParagraphParameeters const & ps1,
 		&& ps1.leftindent == ps2.leftindent;
 }
 */
-

@@ -320,4 +320,3 @@ LyXLex & LyXLex::operator>>(bool & s)
 	}
 	return *this;
 }
-

@@ -182,7 +182,7 @@ void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCollapsable::priv_dispatch(cur, cmd);
 		break;
 	}
-	
+
 	default:
 		InsetCollapsable::priv_dispatch(cur, cmd);
 		break;
@@ -201,7 +201,7 @@ void InsetFloatParams::write(ostream & os) const
 		os << "wide true\n";
 	else
 		os << "wide false\n";
-		
+
 	if (sideways)
 		os << "sideways true\n";
 	else
@@ -261,7 +261,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (contains(params_.placement, 'H')) {
 		features.require("float");
 	}
-	
+
 	if (params_.sideways)
 		features.require("rotating");
 

@@ -341,7 +341,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 	auto_ptr<InsetBase> inset;
 
 	LyXTextClass tclass = buf.params().getLyXTextClass();
-		
+
 	lex.next();
 	string tmptok = lex.getString();
 

@@ -161,10 +161,10 @@ void ControlSpellchecker::check()
 	ptrdiff_t start = 0, total = 0;
 	DocIterator it = DocIterator(kernel().buffer().inset());
 	for (start = 0; it != cur; it.forwardPos())
-		++start; 	
+		++start;
 
 	for (total = start; it; it.forwardPos())
-		++total; 	
+		++total;
 
 	for (; cur && isLetter(cur); cur.forwardPos())
 		++start;

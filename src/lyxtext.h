@@ -51,7 +51,7 @@ public:
 	typedef lyx::pos_type pos_type;
 	///
 	typedef lyx::par_type par_type;
-	
+
 	/// constructor
 	explicit LyXText(BufferView *);
 	///
@@ -265,7 +265,7 @@ public:
 
 	/// current text heigth
 	int height() const;
-	
+
 	/// updates all counters
 	void updateCounters();
 	/// Returns an inset if inset was hit, or 0 if not.
@@ -299,7 +299,7 @@ public:
 	ParagraphList & paragraphs() const;
 	/// return true if this is the main text
 	bool isMainText() const;
-	
+
 	/// return first row of text
 	RowList::iterator firstRow() const;
 	/// return last row of text
@@ -377,7 +377,7 @@ private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
 	par_type undoSpan(par_type pit);
-	
+
 	/// rebreaks the given par
 	void redoParagraphInternal(par_type pit);
 	/// used in setlayout

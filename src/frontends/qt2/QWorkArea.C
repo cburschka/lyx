@@ -110,55 +110,55 @@ OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
  {
 	DescType returnedType;
 	Size actualSize;
-	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr, 
-				      typeWildCard, &returnedType, nil, 0, 
+	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr,
+				      typeWildCard, &returnedType, nil, 0,
 				      &actualSize);
 	switch (err) {
 	case errAEDescNotFound:
-		return noErr;  
-	case noErr:      
+		return noErr;
+	case noErr:
 		return errAEEventNotHandled;
 	default:
-		return err; 
+		return err;
 	}
  }
 }
 
-pascal OSErr handleOpenDocuments(const AppleEvent* inEvent, 
-				 AppleEvent* /*reply*/, long /*refCon*/) 
+pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
+				 AppleEvent* /*reply*/, long /*refCon*/)
 {
 	QString s_arg;
 	AEDescList documentList;
-	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList, 
+	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList,
 				   &documentList);
-	if (err != noErr) 
+	if (err != noErr)
 		return err;
 
 	err = checkAppleEventForMissingParams(*inEvent);
 	if (err == noErr) {
 		long documentCount;
 		err = AECountItems(&documentList, &documentCount);
-		for (long documentIndex = 1; 
-		     err == noErr && documentIndex <= documentCount; 
+		for (long documentIndex = 1;
+		     err == noErr && documentIndex <= documentCount;
 		     documentIndex++) {
 			DescType returnedType;
 			Size actualSize;
 			AEKeyword keyword;
 			FSRef ref;
 			char qstr_buf[1024];
-			err = AESizeOfNthItem(&documentList, documentIndex, 
+			err = AESizeOfNthItem(&documentList, documentIndex,
 					      &returnedType, &actualSize);
 			if (err == noErr) {
 				err = AEGetNthPtr(&documentList, documentIndex,
 						  typeFSRef, &keyword,
-						  &returnedType, (Ptr)&ref, 
+						  &returnedType, (Ptr)&ref,
 						  sizeof(FSRef), &actualSize);
 				if (err == noErr) {
-					FSRefMakePath(&ref, (UInt8*)qstr_buf, 
+					FSRefMakePath(&ref, (UInt8*)qstr_buf,
 						      1024);
 					s_arg=QString::fromUtf8(qstr_buf);
 					wa_ptr->dispatch(
-						FuncRequest(LFUN_FILE_OPEN, 
+						FuncRequest(LFUN_FILE_OPEN,
 							    fromqstr(s_arg)));
 					break;
 				}

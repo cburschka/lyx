@@ -67,7 +67,7 @@ public:
 	virtual MathInset * asMathInset() { return 0; }
 	/// identification as non-math inset
 	virtual UpdatableInset * asUpdatableInset() { return 0; }
-	/// true for 'math' math inset, but not for e.g. mbox 
+	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 
 	// the real dispatcher
@@ -107,7 +107,7 @@ public:
 	virtual bool covers(int x, int y) const;
 	/// get the screen positions of the cursor (see note in cursor.C)
 	virtual void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
- 
+
 	/// is this an inset that can be moved into?
 	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
@@ -147,12 +147,12 @@ public:
 	virtual int cellXOffset(idx_type) const { return 0; }
 	/// any additional y-offset when drawing a cell?
 	virtual int cellYOffset(idx_type) const { return 0; }
- 	/// number of embedded cells
- 	virtual size_t nargs() const { return 0; }
- 	/// number of rows in gridlike structures
- 	virtual size_t nrows() const { return 0; }
- 	/// number of columns in gridlike structures
- 	virtual size_t ncols() const { return 0; }
+	/// number of embedded cells
+	virtual size_t nargs() const { return 0; }
+	/// number of rows in gridlike structures
+	virtual size_t nrows() const { return 0; }
+	/// number of columns in gridlike structures
+	virtual size_t ncols() const { return 0; }
 	/// is called when the cursor leaves this inset
 	virtual void notifyCursorLeaves(idx_type) {}
 

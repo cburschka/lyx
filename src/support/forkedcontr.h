@@ -38,7 +38,7 @@ public:
 	/** Those child processes that are found to have finished are removed
 	 *  from the list and their callback function is passed the final
 	 *  return state.
- 	 */
+	 */
 	void handleCompletedProcesses();
 
 	/// Add a new child process to the list of controlled processes.

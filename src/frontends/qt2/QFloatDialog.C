@@ -36,7 +36,7 @@ QFloatDialog::QFloatDialog(QFloat * form)
 
 	// enable span columns checkbox
 	floatFP->useWide();
-	
+
 	// enable sideways checkbox
 	floatFP->useSideways();
 

@@ -878,7 +878,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	lyxerr << "created temp cursor:\n" << cur << endl;
 
 	// Try to dispatch to an non-editable inset near this position
-	// via the temp cursor. If the inset wishes to change the real 
+	// via the temp cursor. If the inset wishes to change the real
 	// cursor it has to do so explicitly by using
 	//  cur.bv().cursor() = cur;  (or similar)'
 	DispatchResult res;
@@ -890,7 +890,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	if (!res.dispatched())
 		res = cur.dispatch(cmd);
 
-	// If the request was dispatched the temp cursor should have been 
+	// If the request was dispatched the temp cursor should have been
 	// in a way to be used as new 'real' cursor.
 	if (res.dispatched())
 		bv_->cursor() = cur;
@@ -924,7 +924,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	Buffer * buf = bv_->buffer();
 
 	FuncStatus flag;
-	
+
 	switch (cmd.action) {
 
 	case LFUN_UNDO:

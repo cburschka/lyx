@@ -16,13 +16,13 @@
 
 class Paragraph;
 
-class ParagraphList : public std::vector<Paragraph> 
+class ParagraphList : public std::vector<Paragraph>
 {
 public:
 	///
 	typedef std::vector<Paragraph> base_type;
 	///
-	ParagraphList(); 
+	ParagraphList();
 	///
 	template <class Iter>
 	ParagraphList(Iter beg, Iter end)

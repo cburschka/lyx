@@ -60,7 +60,7 @@ void RefInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.getArg(0) == "ref") {
 			MathArray ar;
 			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
-				*this = *ar[0].nucleus()->asRefInset();	
+				*this = *ar[0].nucleus()->asRefInset();
 				break;
 			}
 		}

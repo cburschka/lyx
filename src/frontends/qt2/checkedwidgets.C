@@ -22,7 +22,7 @@ void addCheckedLineEdit(BCView & bcview,
 {
 	bcview.addCheckedWidget(new CheckedLineEdit(input, label));
 }
-	
+
 
 namespace {
 
@@ -38,14 +38,14 @@ void setWarningColor(QWidget * widget)
 	widget->setPalette(pal);
 }
 
-	
+
 void setWidget(bool valid, QLineEdit * input, QLabel * label)
 {
 	if (valid)
 		input->unsetPalette();
 	else
 		setWarningColor(input);
-	
+
 	if (!label)
 		return;
 

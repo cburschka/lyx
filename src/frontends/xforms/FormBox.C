@@ -285,4 +285,3 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
-

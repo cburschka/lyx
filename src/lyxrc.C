@@ -580,7 +580,7 @@ int LyXRC::read(LyXLex & lexrc)
 				chktex_command = lexrc.getString();
 			}
 			break;
-			
+
 		case RC_BIBTEX_COMMAND:
 			if (lexrc.next()) {
 				bibtex_command = lexrc.getString();
@@ -2012,7 +2012,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_CHKTEX_COMMAND:
 		str = _("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
 		break;
-		
+
 	case RC_BIBTEX_COMMAND:
 		str = _("Define the options of bibtex (cf. man bibtex) or select and alternative compiler (e.g. mlbibtex or bibulus).");
 		break;

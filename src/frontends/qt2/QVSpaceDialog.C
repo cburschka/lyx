@@ -56,4 +56,3 @@ void QVSpaceDialog::enableCustom(int)
 	valueLE->setEnabled(enable);
 	unitCO->setEnabled(enable);
 }
-

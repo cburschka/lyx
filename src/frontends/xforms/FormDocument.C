@@ -315,12 +315,12 @@ void FormDocument::build()
 	bcview().addReadOnly(options_->choice_citation_format);
 	bcview().addReadOnly(options_->input_float_placement);
 	bcview().addReadOnly(options_->choice_postscript_driver);
-	
+
 	// add cite style radio buttons
 	citestyle_.init(options_->radio_use_defcite,   DEFCITE);
 	citestyle_.init(options_->radio_use_natbib,  NATBIB);
 	citestyle_.init(options_->radio_use_jurabib,  JURABIB);
-	
+
 	// set up the tooltips for optionss form
 	string str = _("Use LaTeX's default citation style");
 	tooltips().init(options_->radio_use_defcite, str);
@@ -535,8 +535,8 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			fl_set_choice_text(class_->choice_skip_units,
 					   default_unit.c_str());
 
-	} else if (ob == options_->radio_use_jurabib || 
-		   ob == options_->radio_use_defcite || 
+	} else if (ob == options_->radio_use_jurabib ||
+		   ob == options_->radio_use_defcite ||
 		   ob == options_->radio_use_natbib) {
 		setEnabled(options_->choice_citation_format,
 			   fl_get_button(options_->radio_use_natbib));
@@ -784,12 +784,12 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 
 		bool const selecting = ob == branch_->button_select;
 		string current_branch;
-		
-		// When selecting, take highlighted item from left browser, 
+
+		// When selecting, take highlighted item from left browser,
 		// when deselecting, from right browser:
 		if (selecting) {
 			int const i = fl_get_browser(branch_->browser_all_branches);
-			current_branch = 
+			current_branch =
 				fl_get_browser_line(branch_->browser_all_branches, i);
 		} else {
 			int const i = fl_get_browser(branch_->browser_selection);

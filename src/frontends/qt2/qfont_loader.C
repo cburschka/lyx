@@ -75,11 +75,11 @@ void addFontPath()
 	FSRef  fontDirRef;
 	FSSpec  fontDirSpec;
 	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
-					(UInt8 *) "Fonts", strlen("Fonts"),  
+					(UInt8 *) "Fonts", strlen("Fonts"),
 					kCFStringEncodingISOLatin1, false);
 
 	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
-	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, 
+	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault,
 			myAppResourcesURL, filePath, true);
 	if (lyxerr.debugging(Debug::FONT)) {
 		UInt8  buf[255];
@@ -87,12 +87,12 @@ void addFontPath()
 			lyxerr << "Adding Fonts directory: " << buf << endl;
 	}
 	CFURLGetFSRef (FontsURL, &fontDirRef);
-	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone, 
+	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone,
 					 NULL, NULL, &fontDirSpec, NULL);
-	if (err) 
+	if (err)
 		lyxerr << "FSGetCatalogInfo err = " << err << endl;
-	err = FMActivateFonts (&fontDirSpec, NULL, NULL, 
-			       kFMLocalActivationContext); 
+	err = FMActivateFonts (&fontDirSpec, NULL, NULL,
+			       kFMLocalActivationContext);
 	if (err)
 		lyxerr << "FMActivateFonts err = " << err << endl;
 #endif

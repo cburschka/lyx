@@ -162,7 +162,7 @@ void FloatPlacement::set(InsetFloatParams const & params)
 
 	spanCB->setChecked(params.wide);
 	sidewaysCB->setChecked(params.sideways);
-	sidewaysCB->setEnabled(params.type == "figure" 
+	sidewaysCB->setEnabled(params.type == "figure"
 		|| params.type == "table");
 	checkAllowed();
 }

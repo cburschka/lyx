@@ -306,7 +306,7 @@ string const LaTeXFeatures::getPackages() const
 		}
 		packages << "]{natbib}\n";
 	}
-	
+
 	// bibtopic -- the dot provides the aux file naming which
 	// LyX can detect.
 	if (isRequired("bibtopic")) {
@@ -420,7 +420,7 @@ string const LaTeXFeatures::getTClassPreamble() const
 		if (isRequired(cs->name))
 			tcpreamble << cs->preamble;
 	}
-	
+
 	return tcpreamble.str();
 }
 

@@ -128,7 +128,7 @@ void ControlPrint::dispatchParams()
 
 	string const target = (pp.target == PrinterParams::PRINTER) ?
 		"printer" : "file";
-	
+
 	string const target_name = (pp.target == PrinterParams::PRINTER) ?
 		(pp.printer_name.empty() ? "default" : pp.printer_name) :
 		pp.file_name;

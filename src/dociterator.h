@@ -66,7 +66,7 @@ public:
 	CursorSlice & top() { return back(); }
 	/// access to tip
 	CursorSlice const & top() const { return back(); }
-	/// access to outermost slice 
+	/// access to outermost slice
 	CursorSlice & bottom() { return front(); }
 	/// access to  outermost slicetip
 	CursorSlice const & bottom() const { return front(); }

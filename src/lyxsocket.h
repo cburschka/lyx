@@ -78,7 +78,7 @@ public:
 	int fd() const;
 	/// Connection status
 	bool connected() const;
-	/// Line buffered input from the socket	
+	/// Line buffered input from the socket
 	bool readln(std::string &);
 	/// Write the string + '\n' to the socket
 	void writeln(std::string const &);

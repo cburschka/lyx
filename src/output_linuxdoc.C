@@ -36,7 +36,7 @@ void linuxdocParagraphs(Buffer const & buf,
 			ostream & os,
 			OutputParams const & runparams)
 {
-	
+
 	Paragraph::depth_type depth = 0; // paragraph depth
 	string item_name;
 	vector<string> environment_stack(5);
@@ -160,5 +160,3 @@ void linuxdocParagraphs(Buffer const & buf,
 	for (int i = depth; i >= 0; --i)
 		sgml::closeTag(os, depth, false, environment_stack[i]);
 }
-
-

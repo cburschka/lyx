@@ -111,7 +111,7 @@ T* GView::getWidget(const string & name) const
 template <class Controller>
 class GControlledView : public GView {
 public:
-  	GControlledView(string const & name);
+	GControlledView(string const & name);
 protected:
 	Controller & controller();
 };

@@ -367,5 +367,3 @@ bool findNextChange(BufferView * bv)
 
 } // find namespace
 } // lyx namespace
-
-

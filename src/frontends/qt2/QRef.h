@@ -62,7 +62,7 @@ private:
 
 	/// at a reference ?
 	bool at_ref_;
-	
+
 	/// store the buffer settings
 	int restored_buffer_;
 

@@ -55,7 +55,7 @@ void QRef::build_dialog()
 	bcview().addReadOnly(dialog_->referenceED);
 	bcview().addReadOnly(dialog_->typeCO);
 	bcview().addReadOnly(dialog_->bufferCO);
-	
+
 	restored_buffer_ = -1;
 }
 
@@ -63,14 +63,14 @@ void QRef::build_dialog()
 void QRef::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
-	
+
 	int orig_type = dialog_->typeCO->currentItem();
-	
+
 	dialog_->referenceED->setText(toqstr(params.getContents()));
 
 	dialog_->nameED->setText(toqstr(params.getOptions()));
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
-	
+
 	// restore type settings for new insets
 	if (params.getContents().empty())
 		dialog_->typeCO->setCurrentItem(orig_type);
@@ -90,7 +90,7 @@ void QRef::update_contents()
 		dialog_->bufferCO->insertItem(toqstr(*it));
 	}
 	// restore the buffer combo setting for new insets
-	if (params.getContents().empty() && restored_buffer_ != -1 
+	if (params.getContents().empty() && restored_buffer_ != -1
 	&& restored_buffer_ < dialog_->bufferCO->count())
 		dialog_->bufferCO->setCurrentItem(restored_buffer_);
 	else
@@ -107,7 +107,7 @@ void QRef::apply()
 	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentItem()));
 	params.setContents(fromqstr(dialog_->referenceED->text()));
 	params.setOptions(fromqstr(dialog_->nameED->text()));
-	
+
 	restored_buffer_ = dialog_->bufferCO->currentItem();
 }
 
@@ -164,7 +164,7 @@ void QRef::gotoRef()
 void QRef::redoRefs()
 {
 	int lastref = dialog_->refsLB->currentItem();
-	
+
 	dialog_->refsLB->setAutoUpdate(false);
 	dialog_->refsLB->clear();
 
@@ -181,12 +181,12 @@ void QRef::redoRefs()
 		dialog_->refsLB->sort();
 
 	dialog_->referenceED->setText(tmp);
-	
+
 	// restore the last selection for new insets
-	if (tmp.isEmpty() && lastref != -1 
+	if (tmp.isEmpty() && lastref != -1
 	    && lastref < int(dialog_->refsLB->count()))
 		dialog_->refsLB->setCurrentItem(lastref);
-	else	
+	else
 		for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
 			if (tmp == dialog_->refsLB->text(i))
 				dialog_->refsLB->setCurrentItem(i);

@@ -62,10 +62,10 @@ void QCitation::apply()
 
 	string const before = fromqstr(dialog_->textBeforeED->text());
 	controller().params().setSecOptions(before);
-	
+
 	string const after = fromqstr(dialog_->textAfterED->text());
 	controller().params().setOptions(after);
-	
+
 	style_ = choice;
 	open_find_ = false;
 }
@@ -100,7 +100,7 @@ void QCitation::build_dialog()
 	bcview().addReadOnly(dialog_->fulllistCB);
 	bcview().addReadOnly(dialog_->textBeforeED);
 	bcview().addReadOnly(dialog_->textAfterED);
-	
+
 	open_find_ = true;
 }
 
@@ -125,7 +125,7 @@ void QCitation::fillStyles()
 
 	vector<string> const & sty = controller().getCiteStrings(key);
 
-	bool const use_styles = (controller().usingNatbib() || 
+	bool const use_styles = (controller().usingNatbib() ||
 		controller().usingJurabib());
 	dialog_->citationStyleCO->setEnabled(!sty.empty() && use_styles);
 	dialog_->citationStyleLA->setEnabled(!sty.empty() && use_styles);
@@ -146,7 +146,7 @@ void QCitation::updateStyle()
 
 	dialog_->fulllistCB->setEnabled(natbib);
 	dialog_->forceuppercaseCB->setEnabled(natbib);
-	dialog_->textBeforeED->setEnabled(natbib || 
+	dialog_->textBeforeED->setEnabled(natbib ||
 		controller().usingJurabib());
 
 	string const & command = controller().params().getCmdName();
@@ -158,8 +158,8 @@ void QCitation::updateStyle()
 
 	vector<biblio::CiteStyle>::const_iterator cit =
 		find(styles.begin(), styles.end(), cs.style);
-	
-	// restore the latest natbib style 
+
+	// restore the latest natbib style
 	if (style_ >= 0 && style_ < dialog_->citationStyleCO->count())
 		dialog_->citationStyleCO->setCurrentItem(style_);
 	else
@@ -197,7 +197,7 @@ void QCitation::update_contents()
 
 	fillStyles();
 	updateStyle();
-	
+
 	// open the find dialog if nothing has been selected (yet)
 	// the bool prevents that this is also done after "apply"
 	if (open_find_)

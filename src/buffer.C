@@ -647,7 +647,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 				       " that it is probably corrupted."),
 				       filename));
 	}
-#endif 
+#endif
 	pimpl_->file_fully_loaded = true;
 	return true;
 }

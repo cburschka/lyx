@@ -82,7 +82,7 @@ void MathColorInset::write(WriteStream & os) const
 {
 	if (oldstyle_)
 		os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
-	else 
+	else
 		os << "\\textcolor" << '{' << cell(0) << "}{" << cell(1) << '}';
 }
 

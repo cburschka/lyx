@@ -223,7 +223,7 @@ bool LColor::setColor(LColor::color col, string const & x11name)
 		       << " may not be redefined" << endl;
 		return false;
 	}
-	
+
 	it->second.x11name = x11name;
 	return true;
 }
@@ -233,8 +233,8 @@ bool LColor::setColor(string const & lyxname, string const &x11name)
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
-		lyxerr[Debug::GUI] 
-			<< "LColor::setColor: Unknown color \"" 
+		lyxerr[Debug::GUI]
+			<< "LColor::setColor: Unknown color \""
 		       << lyxname << '"' << endl;
 		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
 	}
@@ -267,7 +267,7 @@ LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
-		lyxerr << "LColor::getFromLyXName: Unknown color \"" 
+		lyxerr << "LColor::getFromLyXName: Unknown color \""
 		       << lyxname << '"' << endl;
 		return none;
 	}

@@ -543,9 +543,9 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_ESCAPE:
-		if (cur.selection()) 
+		if (cur.selection())
 			cur.selClear();
-		else 
+		else
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 

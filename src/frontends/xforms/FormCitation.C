@@ -117,7 +117,7 @@ void FormCitation::apply()
 
 	string const before  = getString(dialog_->input_before);
 	controller().params().setSecOptions(before);
-	
+
 	string const after  = getString(dialog_->input_after);
 	controller().params().setOptions(after);
 }
@@ -464,7 +464,7 @@ void FormCitation::update()
 	fl_set_input(dialog_->input_after,
 		     controller().params().getOptions().c_str());
 
-	fl_set_input(dialog_->input_before, 
+	fl_set_input(dialog_->input_before,
 		     controller().params().getSecOptions().c_str());
 }
 

@@ -22,7 +22,7 @@ class PainterInfo;
 class MathDimInset : public MathInset {
 public:
 	///
-	MathDimInset();	
+	MathDimInset();
 
 	///
 	Dimension dimensions() const { return dim_; }

@@ -405,7 +405,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 
 	LyXText & text = *cur[0].text();
 	setCursor(par, cur.pos());
-	
+
 	// hack for the chicken and egg problem
 	top_y(text.getPar(par.outerPar()).y);
 

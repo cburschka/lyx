@@ -70,7 +70,7 @@ void GXpmBtnTbl::construct()
 
 	GXpmBtn * btn;
 	int row, col;
-	for (row = 0; row < rows_; ++row) 
+	for (row = 0; row < rows_; ++row)
 		for (col = 0; col < cols_; ++col) {
 			btn = &btns_[index(row, col)];
 			btn->setRow(row);
@@ -85,7 +85,7 @@ void GXpmBtnTbl::construct()
 void GXpmBtnTbl::setBtnXpm(XpmData xpms[])
 {
 	int row, col;
-	for (row = 0; row < rows_; ++row) 
+	for (row = 0; row < rows_; ++row)
 		for (col = 0; col < cols_; ++col)
 			btns_[index(row, col)].setXpm(xpms[index(row, col)]);
 }

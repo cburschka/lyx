@@ -111,7 +111,7 @@ T* GnomeBase::getWidget(const string & name) const
 template <class Controller>
 class GnomeCB : public GnomeBase {
 public:
-  	GnomeCB(string const & name);
+	GnomeCB(string const & name);
 protected:
 	Controller & controller();
 };

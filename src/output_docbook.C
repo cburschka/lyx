@@ -68,14 +68,14 @@ void docbookParagraphs(Buffer const & buf,
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
     Counters & counters = buf.params().getLyXTextClass().counters();
-	
+
 	for (; par != pend; ++par) {
 
 		LyXLayout_ptr const & style = par->layout();
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			sgml::closeEnvTags(os, false, environment_inner[depth], 
+			sgml::closeEnvTags(os, false, environment_inner[depth],
 				item_tag, command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
@@ -85,14 +85,14 @@ void docbookParagraphs(Buffer const & buf,
 		if (depth == par->params().depth()
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
-				sgml::closeEnvTags(os, false, environment_inner[depth], 
+				sgml::closeEnvTags(os, false, environment_inner[depth],
 					item_tag, command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
 		}
-		
+
 		string ls = "";
 		bool labelid = false;
 		// Write opening SGML tags.
@@ -111,11 +111,11 @@ void docbookParagraphs(Buffer const & buf,
 			if (depth != 0)
 				//error(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
 				;
-			
+
 			command_name = style->latexname();
 
 			cmd_depth = style->commanddepth;
-			
+
 			if (command_flag) {
 				if (cmd_depth < command_base) {
 					for (Paragraph::depth_type j = command_depth;
@@ -160,25 +160,25 @@ void docbookParagraphs(Buffer const & buf,
 			if (!labelid && !style->latexparam().empty()) {
 				ls = style->latexparam();
 				if (ls.find('#') != string::npos) {
-					string el = expandLabel(buf.params().getLyXTextClass(), 
+					string el = expandLabel(buf.params().getLyXTextClass(),
 						style, false);
 					ls = subst(ls, "#", el);
-				} 
+				}
 			}
-			
+
 			sgml::openTag(os, depth + command_depth, false, command_name, ls);
 
 			// Label around sectioning number:
 			if (!style->labeltag().empty()) {
-				sgml::openTag(os, depth + 1 + command_depth, false, 
+				sgml::openTag(os, depth + 1 + command_depth, false,
 					style->labeltag());
 				os << expandLabel(buf.params().getLyXTextClass(), style, false);
-				sgml::closeTag(os, depth + 1 + command_depth, false, 
+				sgml::closeTag(os, depth + 1 + command_depth, false,
 					style->labeltag());
 			}
 
 			// Inner tagged header text, e.g. <title> for sectioning:
-			sgml::openTag(os, depth + 1 + command_depth, false, 
+			sgml::openTag(os, depth + 1 + command_depth, false,
 				style->innertag());
 			break;
 
@@ -197,10 +197,10 @@ void docbookParagraphs(Buffer const & buf,
 				environment_stack[depth] = style->latexname();
 				environment_inner[depth] = "!-- --";
 				// outputs <environment_stack[depth] latexparam()>
-				sgml::openTag(os, depth + command_depth, false, 
+				sgml::openTag(os, depth + command_depth, false,
 						environment_stack[depth], style->latexparam());
 			} else {
-				sgml::closeEnvTags(os, false, environment_inner[depth], 
+				sgml::closeEnvTags(os, false, environment_inner[depth],
 					style->itemtag(), command_depth + depth);
 			}
 
@@ -209,7 +209,7 @@ void docbookParagraphs(Buffer const & buf,
 					if (style->innertag() == "CDATA")
 						os << "<![CDATA[";
 					else
-						sgml::openTag(os, depth + command_depth, false, 
+						sgml::openTag(os, depth + command_depth, false,
 							style->innertag());
 				}
 				break;
@@ -234,7 +234,7 @@ void docbookParagraphs(Buffer const & buf,
 		// write closing SGML tags
 		switch (style->latextype) {
 		case LATEX_COMMAND:
-			sgml::closeTag(os, depth + command_depth, false, 
+			sgml::closeTag(os, depth + command_depth, false,
 				style->innertag());
 			break;
 		case LATEX_ENVIRONMENT:
@@ -242,7 +242,7 @@ void docbookParagraphs(Buffer const & buf,
 				if (style->innertag() == "CDATA")
 					os << "]]>";
 				else
-					sgml::closeTag(os, depth + command_depth, false, 
+					sgml::closeTag(os, depth + command_depth, false,
 						style->innertag());
 			}
 			break;
@@ -261,7 +261,7 @@ void docbookParagraphs(Buffer const & buf,
 	// Close open tags
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
-				sgml::closeEnvTags(os, false, environment_inner[depth], 
+				sgml::closeEnvTags(os, false, environment_inner[depth],
 					item_tag, command_depth + depth);
 		}
 	}
@@ -272,4 +272,3 @@ void docbookParagraphs(Buffer const & buf,
 			os << endl;
 		}
 }
-

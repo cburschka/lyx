@@ -62,9 +62,9 @@ bool ControlPrefs::initialiseParams(std::string const &)
 
 void ControlPrefs::dispatchParams()
 {
- 	ostringstream ss;
- 	rc_.write(ss);
- 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
+	ostringstream ss;
+	rc_.write(ss);
+	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns
 	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);

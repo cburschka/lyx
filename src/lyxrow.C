@@ -124,4 +124,3 @@ void Row::dump(const char * s) const
 		<< " top_of_text: " << top_of_text_
 		<< " y_offset: " << y_offset_ << std::endl;
 }
-

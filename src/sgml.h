@@ -37,7 +37,7 @@ int closeTag(std::ostream & os, lyx::depth_type depth,
 	    bool mixcont, std::string const & latexname);
 
 ///
-unsigned int closeEnvTags(std::ostream & os, 
+unsigned int closeEnvTags(std::ostream & os,
 		bool mixcont,
 		std::string const & environment_inner_depth,
 		std::string const & item_tag,

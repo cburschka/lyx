@@ -595,7 +595,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
-		if (cur.par() == 0 && cur.textRow().pos() == 0) {	
+		if (cur.par() == 0 && cur.textRow().pos() == 0) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		} else {
@@ -1001,21 +1001,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			c = par.getChar(pos - 1);
 
 		LyXLayout_ptr const & style = par.layout();
-		
+
 		BufferParams const & bufparams = bv->buffer()->params();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
-		    	string arg = cmd.argument;
+			string arg = cmd.argument;
 			if (arg == "single")
 				cur.insert(new InsetQuotes(c,
-				    bufparams.quotes_language, 
+				    bufparams.quotes_language,
 				    InsetQuotes::SingleQ));
 			else if (arg == "double")
 				cur.insert(new InsetQuotes(c,
-				    bufparams.quotes_language, 
+				    bufparams.quotes_language,
 				    InsetQuotes::DoubleQ));
 			else
-		  		cur.insert(new InsetQuotes(c, bufparams));
+				cur.insert(new InsetQuotes(c, bufparams));
 		}
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
@@ -1756,7 +1756,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_LDOTS:
 	case LFUN_END_OF_SENTENCE:
 	case LFUN_SPACE_INSERT:
-	case LFUN_INSET_DIALOG_SHOW: 
+	case LFUN_INSET_DIALOG_SHOW:
 		break;
 
 	case LFUN_EMPH:

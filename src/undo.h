@@ -17,7 +17,7 @@
 #define UNDO_H
 
 #include "dociterator.h"
-#include "ParagraphList_fwd.h" 
+#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 

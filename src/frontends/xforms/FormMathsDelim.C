@@ -37,7 +37,7 @@ int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
 	3,13,15,15,16,17,19,19,20,21,22
 };
-int const delim_size = 
+int const delim_size =
 	sizeof(delim_rversion) / sizeof(delim_rversion[0]);
 
 char const * delim_values[] = {

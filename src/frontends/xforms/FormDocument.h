@@ -133,7 +133,7 @@ private:
 	std::vector<std::string> lang_;
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
-	
+
 	/// citation style buttons
 	RadioButtonGroup citestyle_;
 };

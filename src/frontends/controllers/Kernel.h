@@ -81,7 +81,7 @@ public:
 	/** A request that the GUI be redrawn,
 	 *  e.g. because the colors have been remapped.
 	 */
- 	void redrawGUI() const;
+	void redrawGUI() const;
 
 	/** \name Kernel Nasties
 	 *  Unpleasantly public internals of the LyX kernel.

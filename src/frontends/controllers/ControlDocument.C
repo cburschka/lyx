@@ -68,10 +68,10 @@ namespace {
 void dispatch_bufferparams(Kernel const & kernel, BufferParams const & bp,
 			   kb_action lfun)
 {
- 	ostringstream ss;
- 	bp.writeFile(ss);
- 	ss << "\\end_header\n";
- 	kernel.dispatch(FuncRequest(lfun, ss.str()));
+	ostringstream ss;
+	bp.writeFile(ss);
+	ss << "\\end_header\n";
+	kernel.dispatch(FuncRequest(lfun, ss.str()));
 }
 
 } // namespace anon
@@ -83,17 +83,17 @@ void ControlDocument::dispatchParams()
 	setLanguage();
 
 	// Set the document class.
- 	lyx::textclass_type const old_class =
+	lyx::textclass_type const old_class =
 		kernel().buffer().params().textclass;
- 	lyx::textclass_type const new_class = bp_->textclass;
+	lyx::textclass_type const new_class = bp_->textclass;
 
- 	if (new_class != old_class) {
- 		string const name = textclasslist[new_class].name();
+	if (new_class != old_class) {
+		string const name = textclasslist[new_class].name();
 		kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));
 	}
 
 	// Apply the BufferParams.
- 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFERPARAMS_APPLY);
+	dispatch_bufferparams(kernel(), params(), LFUN_BUFFERPARAMS_APPLY);
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
@@ -123,10 +123,10 @@ void ControlDocument::setLanguage() const
 {
 	Language const * const newL = bp_->language;
 	if (kernel().buffer().params().language == newL)
- 		return;
+		return;
 
- 	string const lang_name = newL->lang();
- 	kernel().dispatch(FuncRequest(LFUN_LANGUAGE_BUFFER, lang_name));
+	string const lang_name = newL->lang();
+	kernel().dispatch(FuncRequest(LFUN_LANGUAGE_BUFFER, lang_name));
 }
 
 
@@ -143,5 +143,5 @@ bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
 
 void ControlDocument::saveAsDefault() const
 {
- 	dispatch_bufferparams(kernel(), params(), LFUN_SAVE_AS_DEFAULT);
+	dispatch_bufferparams(kernel(), params(), LFUN_SAVE_AS_DEFAULT);
 }

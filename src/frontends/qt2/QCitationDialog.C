@@ -78,7 +78,7 @@ void QCitationDialog::openFind()
 {
 	if (form_->readOnly())
 		return;
-	
+
 	if (selectedLB->count() == 0 && add_->availableLB->count() != 0){
 		// open the find dialog
 		add();

@@ -77,7 +77,7 @@ void InsetBibtex::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			setParams(p);
 		break;
 	}
-		
+
 	default:
 		InsetCommand::priv_dispatch(cur, cmd);
 		break;
@@ -103,7 +103,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	// 2. \begin{btSect}{database}
 	// 3. \btPrint{Cited|NotCited|All}
 	// 4. \end{btSect}
-	
+
 	// the database string
 	string adb;
 	string db_in = getContents();
@@ -115,8 +115,8 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	while (!adb.empty()) {
 		if (!runparams.nice &&
 		    IsFileReadable(MakeAbsPath(adb, buffer.filePath())+".bib"))
-			 adb = os::external_path(MakeAbsPath(adb, 
-			 	buffer.filePath()));
+			 adb = os::external_path(MakeAbsPath(adb,
+				buffer.filePath()));
 		db_out += adb;
 		db_out += ',';
 		db_in = split(db_in, adb,',');
@@ -132,7 +132,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			style = split(style, bibtotoc, ',');
 		}
 	}
-	
+
 	// line count
 	int i = 0;
 
@@ -145,7 +145,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		os << "\\bibliographystyle{" << style << "}\n";
 		i += 1;
 	}
-	
+
 	if (buffer.params().use_bibtopic){
 		os << "\\begin{btSect}{" << db_out << "}\n";
 		string btprint = getSecOptions();
@@ -186,7 +186,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		os << "\\bibliography{" << db_out << "}\n";
 		i += 1;
 	}
-	
+
 	return i;
 }
 
@@ -290,4 +290,3 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
 }
-

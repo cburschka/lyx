@@ -623,7 +623,7 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 		break;
 	}
 	}
-	
+
 
 	if (!pars_[pit].params().leftIndent().zero())
 		x += pars_[pit].params().leftIndent().inPixels(maxwidth_);
@@ -791,7 +791,7 @@ void LyXText::rowBreakPoint(par_type pit, Row & row) const
 				break;
 			}
 		}
-		
+
 		if (!pars_[pit].isInset(i) || pars_[pit].getInset(i)->isChar()) {
 			// some insets are line separators too
 			if (pars_[pit].isLineSeparator(i)) {
@@ -1397,7 +1397,7 @@ void LyXText::cursorLeftOneWord(LCursor & cur)
 	if (cur.pos() == 0 && cur.par() != 0) {
 		--cur.par();
 		cur.pos() = cur.lastpos();
-	} else { 
+	} else {
 		// Skip through initial nonword stuff.
 		// Treat floats and insets as words.
 		while (cur.pos() != 0 && !cur.paragraph().isWord(cur.pos() - 1))
@@ -1587,7 +1587,7 @@ void LyXText::Delete(LCursor & cur)
 	CursorSlice sl = cur.top();
 	cursorRight(cur);
 	if (sl != cur.top()) {
-		recordUndo(cur, Undo::DELETE, cur.par(), 
+		recordUndo(cur, Undo::DELETE, cur.par(),
 		           max(par_type(0), cur.par() - 1));
 		backspace(cur);
 	}
@@ -2019,7 +2019,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 		return xo_;
 
 	Row const & row = *pars_[pit].getRow(cur.pos());
-	
+
 	pos_type pos = cur.pos();
 	pos_type cursor_vpos = 0;
 

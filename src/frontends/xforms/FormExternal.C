@@ -367,14 +367,14 @@ void FormExternal::build()
 	bcview().addReadOnly(options_->input_option);
 
 	// initial setting
-// 	addCheckedPositiveFloat(bcview(), scale_->input_width);
+//	addCheckedPositiveFloat(bcview(), scale_->input_width);
 	// As I haven't written addCheckedPositiveFloat, we default to
 	// always checking that it is a valide LyXLength, even when
 	// I'm 'scaling'. No harm done, just not as strict as it might be.
 	addCheckedLyXLength(bcview(), scale_->input_width);
 	addCheckedLyXLength(bcview(), scale_->input_height);
 
-// 	addCheckedPositiveFloat(bcview(), input_displayscale);
+//	addCheckedPositiveFloat(bcview(), input_displayscale);
 	fl_set_input_filter(lyxview_->input_displayscale,
 			    fl_unsigned_int_filter);
 
@@ -745,10 +745,10 @@ void FormExternal::widthUnitChanged()
 
 	bool useHeight = fl_get_choice(scale_->choice_width) > 1;
 
-// 	if (useHeight)
-// 		widthED->setValidator(unsignedLengthValidator(widthED));
-// 	else
-// 		widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
+//	if (useHeight)
+//		widthED->setValidator(unsignedLengthValidator(widthED));
+//	else
+//		widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
 
 	setEnabled(scale_->input_height, useHeight);
 	setEnabled(scale_->choice_height, useHeight);

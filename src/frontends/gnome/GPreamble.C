@@ -41,9 +41,9 @@ void GPreamble::build()
 
 void GPreamble::apply()
 {
-// 	controller().params() = preamble()->get_buffer()->get_text(preamble()->get_buffer()->get_start_iter(),
-// 								   preamble()->get_buffer()->get_end_iter(),
-// 								   false);
+//	controller().params() = preamble()->get_buffer()->get_text(preamble()->get_buffer()->get_start_iter(),
+//								   preamble()->get_buffer()->get_end_iter(),
+//								   false);
 }
 
 

@@ -85,7 +85,7 @@ ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * ob, long)
 				     getString(dialog_->input_replace),
 				     fl_get_button(dialog_->check_casesensitive),
 				     fl_get_button(dialog_->check_matchword),
-				     !fl_get_button(dialog_->check_searchbackwards),				     
+				     !fl_get_button(dialog_->check_searchbackwards),
 				     all);
 	}
 

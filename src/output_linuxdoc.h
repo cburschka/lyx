@@ -24,6 +24,6 @@ void linuxdocParagraphs(Buffer const & buf,
 			ParagraphList const & paragraphs,
 			std::ostream & os,
 			OutputParams const & runparams);
-	
+
 
 #endif

@@ -107,17 +107,17 @@ void QBibtex::update_contents()
 		dialog_->bibtocCB->setChecked(false);
 
 	dialog_->bibtocCB->setEnabled(!bibtopic);
-	
+
 	string btprint(controller().params().getSecOptions());
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
 		btp = 1;
 	else if (btprint == "btPrintAll")
 		btp = 2;
-	
+
 	dialog_->btPrintCO->setCurrentItem(btp);
 	dialog_->btPrintCO->setEnabled(bibtopic);
-		
+
 	dialog_->styleCB->clear();
 
 	int item_nr(-1);
@@ -168,13 +168,13 @@ void QBibtex::apply()
 		// command!
 		controller().params().setOptions(bibstyle);
 	}
-	
+
 	// bibtopic allows three kinds of sections:
 	// 1. sections that include all cited references of the database(s)
 	// 2. sections that include all uncited references of the database(s)
 	// 3. sections that include all references of the database(s), cited or not
 	int btp = dialog_->btPrintCO->currentItem();
-	
+
 	switch (btp) {
 	case 0:
 		controller().params().setSecOptions("btPrintCited");
@@ -186,7 +186,7 @@ void QBibtex::apply()
 		controller().params().setSecOptions("btPrintAll");
 		break;
 	}
-	
+
 	if (!controller().usingBibtopic())
 		controller().params().setSecOptions("");
 }

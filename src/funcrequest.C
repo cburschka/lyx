@@ -91,8 +91,8 @@ bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 std::ostream & operator<<(std::ostream & os, FuncRequest const & cmd)
 {
 	return os
-		<< " action: " << cmd.action 
+		<< " action: " << cmd.action
 		<< " arg: '" << cmd.argument << "'"
-		<< " x: " << cmd.x 
-		<< " y: " << cmd.y; 
+		<< " x: " << cmd.x
+		<< " y: " << cmd.y;
 }

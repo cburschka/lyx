@@ -95,7 +95,7 @@ void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetWrapMailer(*this).updateDialog(&cur.bv());
 		break;
-		
+
 	case LFUN_MOUSE_RELEASE: {
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetWrapMailer(*this).showDialog(&cur.bv());
