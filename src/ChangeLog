@@ -1,3 +1,7 @@
+2002-08-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (readFile): Look for lyx2lyx in LYXDIR/lyx2lyx/
+
 2002-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.h: qualified name is not allowed in member

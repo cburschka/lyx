@@ -1171,7 +1171,15 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else {
-					string const command = "lyx2lyx "
+					string command = 
+						LibFileSearch("lyx2lyx", "lyx2lyx");
+					if (command.empty()) {
+						Alert::alert(_("ERROR!"),
+							     _("Can't find conversion script."));
+						return false;
+					}
+					command += " -t"
+						+tostr(LYX_FORMAT)+" "
 						+ QuoteName(filename_);
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
