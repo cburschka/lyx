@@ -89,6 +89,8 @@ void FormParagraph::changedParagraph()
 
 	if (!accept) {
 		postWarning(_("Cannot apply paragraph settings to this inset!"));
+	} else {
+		clearMessage();
 	}
 }
 

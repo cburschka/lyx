@@ -1,3 +1,8 @@
+2002-04-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormParagraph.C (changedParagraph): ensure that the warning message
+	is removed if the underlying paragraph will accept our changes.
+
 2002-04-09  Herbert Voss  <voss@perce.de>
 
 	* FormGraphics.C: allow rotate-values like 270.1
