@@ -1,13 +1,10 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
- *        
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
+/** \file
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
  *
- * ====================================================== */
+ *  \author Lars Gullik Bjønnes
+*/
 
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
@@ -19,7 +16,9 @@
 #include "LString.h"
 #include "undo.h"
 #include "commandtags.h"
+
 #include "insets/inset.h"
+
 #include <boost/utility.hpp>
 
 class LyXView;
@@ -160,7 +159,7 @@ public:
 	//		 bool no_table = false);
 	bool insertInset(Inset * inset, string const & lout = string());
 	/** Inserts a lyx file at cursor position.
-	    @return #false# if it fails.
+	    \return #false# if it fails.
 	*/
 	bool insertLyXFile(string const & file);
 	///
@@ -216,6 +215,7 @@ public:
 	///
 	bool Dispatch(kb_action action, string const & argument);
 private:
+	///
 	struct Pimpl;
 	///
 	friend struct BufferView::Pimpl;

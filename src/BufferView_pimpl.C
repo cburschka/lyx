@@ -311,8 +311,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	pos_type selendpos = 0;
 	bool selection = false;
 	bool mark_set  = false;
-	bool text_found = false;
-
+	
 	owner_->prohibitInput();
 
 	owner_->message(_("Formatting document..."));
@@ -330,12 +329,12 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
 		bv_->text->init(bv_);
+		buffer_->resizeInsets(bv_);
 	} else {
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
 		bv_->text = textcache.findFit(buffer_, workarea_.workWidth());
 		if (bv_->text) {
-			text_found = true;
 			if (lyxerr.debugging()) {
 				lyxerr << "Found a LyXText that fits:\n";
 				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea_.workWidth(), bv_->text)));
@@ -347,14 +346,16 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		} else {
 			bv_->text = new LyXText(bv_);
 			bv_->text->init(bv_);
+			//buffer_->resizeInsets(bv_);
 		}
 	}
+
 	updateScreen();
 
 	if (par) {
 		bv_->text->selection.set(true);
-		/* at this point just to avoid the Delete-Empty-Paragraph
-		 * Mechanism when setting the cursor */
+		// At this point just to avoid the Delete-Empty-Paragraph-
+		// Mechanism when setting the cursor.
 		bv_->text->selection.mark(mark_set);
 		if (selection) {
 			bv_->text->setCursor(bv_, selstartpar, selstartpos);
@@ -370,13 +371,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		// remake the inset locking
 		bv_->theLockingInset(the_locking_inset);
 	}
+
 	bv_->text->first_y = screen_->topCursorVisible(bv_->text);
-	// please tell me WHY the heck you deactivated this code, whoever
-	// 'you' are (Jug 20020311)
-#if 1
-	if (!text_found)
-		buffer_->resizeInsets(bv_);
-#endif
+
 	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();
 	redraw();
@@ -1002,6 +999,7 @@ void BufferView::Pimpl::workAreaExpose()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
+			buffer_->resizeInsets(bv_);
 		} else if (heightChange) {
 			// Rebuild image of current screen
 			updateScreen();
@@ -2358,7 +2356,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			       | BufferView::FITCUR
 			       | BufferView::CHANGE);
 		} else {
-			protectedBlank(lt);
+			specialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 		}
 		moveCursorUpdate(false);
 	}
@@ -3264,27 +3262,6 @@ void BufferView::Pimpl::hfill()
 }
 
 
-void BufferView::Pimpl::protectedBlank(LyXText * lt)
-{
-	if (available()) {
-		hideCursor();
-		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset =
-			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-#ifdef WITH_WARNINGS
-#warning Why is this code different from specialChar() below? (JMarc)
-// the code in specialChar is a generic version of what used to exist
-// for other special chars. I did not merge this case because of the
-// call to updateInset(), but what does it do?
-#endif
-		if (!insertInset(new_inset))
-			delete new_inset;
-		else
-			updateInset(new_inset, true);
-	}
-}
-
-
 void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 {
 	if (available()) {
@@ -3296,6 +3273,8 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 			new InsetSpecialChar(kind);
 		if (!insertInset(new_inset))
 			delete new_inset;
+		else
+			updateInset(new_inset, true);
 	}
 }
 

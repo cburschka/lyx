@@ -9,10 +9,12 @@ lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o \
 	frontends/libfrontends.o \
 	support/libsupport.o \
 	@INCLUDED_SIGC@
+
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
 	$(PSPELL_LIBS) @AIKSAURUS_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
+
 EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	Sectioning.h \
 	Sectioning.C \
@@ -23,7 +25,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
  
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
+INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
 localedir = $(datadir)/locale
 BUILT_SOURCES = version.C
 lyx_SOURCES = \

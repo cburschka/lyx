@@ -1,3 +1,29 @@
+2002-03-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* bufferlist.h: doxy changes
+
+	* bufferlist.C: ws changes
+
+	* DepTable.[Ch] (ext_exist): place const in the right spot.
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): further refine when to
+	call resizeInsets.
+	(workAreaExpose): call resizeInsets when the with BufferView changes.
+	(Dispatch): adjust for protectedBlank removal
+	(specialChar): call updateInset if the insert went ok.
+
+	* BufferView_pimpl.[Ch] (protectedBlank): remove func, use
+	specialChar instead.
+
+	* BufferView2.C (ChangeInsets): remove warning add FIXME comment
+
+	* BufferView.h: doxy change
+
+	* Makefile.am (INCLUDES): remove @FRONTEND_INCLUDES@
+
+	* lyxtextclass.C (operator[]): remove non-const version
+	(defaultLayout): remove non-const version
+
 2002-03-12  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (resizeCurrentBuffer): only resize insets if we

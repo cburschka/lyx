@@ -152,7 +152,7 @@ bool DepTable::extchanged(string const & ext) const
 }
 
 
-bool DepTable::ext_exist(const string& ext) const
+bool DepTable::ext_exist(string const & ext) const
 {
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();

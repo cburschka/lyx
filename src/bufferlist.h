@@ -1,15 +1,10 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team
+/** \file
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
  *
- *           This file is Copyright 1996-2001
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
+ *  \author Lars Gullik Bjønnes
+*/
 
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
@@ -18,12 +13,14 @@
 #pragma interface
 #endif
 
-class Buffer;
-class UpdatableInset;
-#include <vector>
+#include "LString.h"
+
 #include <boost/utility.hpp>
 
-#include "LString.h"
+#include <vector>
+
+class Buffer;
+class UpdatableInset;
 
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
@@ -43,12 +40,23 @@ public:
 	typedef Container::const_iterator const_iterator;
 	///
 	typedef Container::size_type size_type;
-	///
+	/**
+	   Is the container empty or not.
+	   \return True if the container is empty, False otherwise.
+	 */
 	bool empty() const { return container.empty(); }
-	///
+	/**
+	   Releases the passed buffer from the storage and deletes
+	   all resources.
+	   \param buf The buffer to release.
+	 */
 	void release(Buffer * buf);
-	///
-	Buffer * newBuffer(string const & s, bool = false);
+	/**
+	   \param s The name of the file to base the buffer on.
+	   \param ronly If the buffer should be created read only of not.
+	   \return The newly created buffer.
+	 */
+	Buffer * newBuffer(string const & s, bool ronly = false);
 	///
 	Container::iterator begin() { return container.begin(); }
 	///
@@ -61,7 +69,10 @@ public:
 	Buffer * front() { return container.front(); }
 	///
 	Buffer * operator[](int c) { return container[c]; }
-	///
+	/**
+	   What is the size of the container.
+	   \return The size of the container.
+	 */
 	size_type size() const { return container.size(); }
 private:
 	///
@@ -69,7 +80,9 @@ private:
 };
 
 
-/** The class govern all open buffers.
+/**
+   The class holds all all open buffers, and handles construction
+   and deletions of new ones.
  */
 class BufferList : boost::noncopyable {
 public:
@@ -87,10 +100,13 @@ public:
 	/// returns the state of the bufferlist
 	list_state getState() const { return state_; }
 	
-	/** loads a LyX file or...
-	    If the optional argument tolastfiles is false (default is
-            true), the file name will not be added to the last opened
-	    files list
+	/**
+	   Loads a LyX file or...
+
+	   \param filename The filename to read from.
+	   \param tolastfiles Wether the file should be put in the
+	   last opened files list or not.
+	   \return The newly loaded LyX file.
 	*/  
 	Buffer * loadLyXFile(string const & filename, 
 			     bool tolastfiles = true);
@@ -104,7 +120,10 @@ public:
 	/// Close all open buffers.
 	void closeAll();
 
-	/// Read a file into a buffer readonly or not.
+	/**
+	   Read a file into a buffer readonly or not.
+	   \return 
+	*/
 	Buffer * readFile(string const &, bool ro);
 
 	/// Make a new file (buffer) using a template
@@ -121,9 +140,10 @@ public:
 	///
 	void emergencyWriteAll();
 	
-	/** Close buffer.
-	    @param buf the buffer that should be closed
-	    @return #false# if operation was canceled
+	/**
+	   Close buffer.
+	   \param buf the buffer that should be closed
+	   \return #false# if operation was canceled
 	  */
 	bool close(Buffer * buf);
 
@@ -140,10 +160,10 @@ public:
 	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
-
 private:
 	/// ask to save a buffer on quit
-	bool qwriteOne(Buffer * buf, string const & fname, string & unsaved_list); 
+	bool qwriteOne(Buffer * buf, string const & fname,
+		       string & unsaved_list); 
 
 	///
 	BufferStorage bstore;

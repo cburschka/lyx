@@ -243,14 +243,16 @@ vector<string> const BufferList::getFileNames() const
 
 Buffer * BufferList::first()
 {
-	if (bstore.empty()) return 0;
+	if (bstore.empty())
+		return 0;
 	return bstore.front();
 }
 
 
 Buffer * BufferList::getBuffer(unsigned int choice)
 {
-	if (choice >= bstore.size()) return 0;
+	if (choice >= bstore.size())
+		return 0;
 	return bstore[choice];
 }
 
@@ -476,7 +478,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			}
 		}
 		if (!templateok) {
-			Alert::alert(_("Error!"), _("Unable to open template"), 
+			Alert::alert(_("Error!"), _("Unable to open template"),
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
 			b->paragraph = new Paragraph;

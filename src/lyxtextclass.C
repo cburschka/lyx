@@ -183,7 +183,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				string const name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
-					LyXLayout & lay = operator[](name);
+					LyXLayout & lay =
+						const_cast<LyXLayout &>(operator[](name));
 					error = do_readStyle(lexrc, lay);
 				} else {
 					LyXLayout lay;
@@ -530,33 +531,6 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 }
 
 
-LyXLayout & LyXTextClass::operator[](string const & n)
-{
-	lyx::Assert(!n.empty());
-
-	if (n.empty())
-		lyxerr << "Operator[] called with empty n" << endl;
-
-	string const name = (n.empty() ? defaultLayoutName() : n);
-	
-	LayoutList::iterator it =
-		find_if(layoutlist.begin(),
-			layoutlist.end(),
-			lyx::compare_memfun(&LyXLayout::name, name));
-
-	if (it == layoutlist.end()) {
-		lyxerr << "We failed to find the layout '" << name
-		       << "' in the layout list. You MUST investigate!"
-		       << endl;
-		
-		// we require the name to exist
-		lyx::Assert(false);
-	}
-	
-	return *it;
-}
-
-
 bool LyXTextClass::delete_layout(string const & name)
 {
 	if (name == defaultLayoutName())
@@ -603,12 +577,6 @@ string const LyXTextClass::defaultLayoutName() const
 
 
 LyXLayout const & LyXTextClass::defaultLayout() const
-{
-	return operator[](defaultLayoutName());
-}
-
-
-LyXLayout & LyXTextClass::defaultLayout()
 {
 	return operator[](defaultLayoutName());
 }

@@ -658,9 +658,9 @@ bool BufferView::ChangeInsets(Inset::Code code,
 		}
 		if (changed_inset) {
 			need_update = true;
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
+
+			// FIXME
+			
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {

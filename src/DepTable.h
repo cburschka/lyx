@@ -47,7 +47,7 @@ public:
 	///
 	bool exist(string const & fil) const;
 	/// returns true if any files with ext exist
-	bool ext_exist(string const& ext) const;
+	bool ext_exist(string const & ext) const;
 	///
 	void remove_files_with_extension(string const &);
 	///

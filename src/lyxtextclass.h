@@ -60,9 +60,6 @@ public:
 	///
 	LyXLayout const & operator[](string const & vname) const;
 
-	///
-	LyXLayout & operator[](string const & vname);
-
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
 
@@ -70,8 +67,6 @@ public:
 	string const defaultLayoutName() const;
 	///
 	LyXLayout const & defaultLayout() const;
-	///
-	LyXLayout & defaultLayout();
 	///
 	string const & name() const;
 	///
