@@ -169,6 +169,7 @@ void QCitationDialog::slotAddClicked()
 	form_->setBibButtons(QCitation::OFF);
 	form_->setCiteButtons(QCitation::ON);
 	form_->changed();
+	form_->fillStyles();
 }
 
 
@@ -188,6 +189,8 @@ void QCitationDialog::slotDelClicked()
 	form_->setBibButtons(QCitation::ON);
 	form_->setCiteButtons(QCitation::OFF);
 	form_->changed();
+	form_->fillStyles();
+	form_->updateStyle();
 }
 
 
@@ -212,6 +215,7 @@ void QCitationDialog::slotUpClicked()
 	form_->citekeys.insert(it - 1, tmp);
 	form_->setCiteButtons(QCitation::ON);
 	form_->changed();
+	form_->fillStyles();
 }
 
 
@@ -236,6 +240,7 @@ void QCitationDialog::slotDownClicked()
 	form_->citekeys.insert(it + 1, tmp);
 	form_->setCiteButtons(QCitation::ON);
 	form_->changed();
+	form_->fillStyles();
 }
 
 
