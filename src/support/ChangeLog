@@ -1,3 +1,10 @@
+2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
+
+	* putenv.C: allocate the string before putting it into the
+	environment.
+
+	* lyxlib.h: adjust.
+
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tempname.C (tempName): use scoped_array for exception safety

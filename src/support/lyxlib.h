@@ -40,8 +40,8 @@ int kill(int pid, int sig);
 void abort();
 /// create the given directory with the given mode
 int mkdir(std::string const & pathname, unsigned long int mode);
-/// put a C std::string into the environment
-int putenv(char const * str);
+/// put variable=value as a C std::string into the environment
+bool putenv(std::string const & varname, std::string const & value);
 /// unlink the given file
 int unlink(std::string const & file);
 /// remove the given directory
