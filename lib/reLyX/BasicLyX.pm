@@ -214,7 +214,7 @@ my %ExtraArgEnvironments = (
 );
 
 # Math environments are copied verbatim
-my $MathEnvironments = "(math|equation|displaymath|eqnarray(\\*)?)";
+my $MathEnvironments = "(math|displaymath|xxalignat|(equation|eqnarray|align|alignat|xalignat|multline|gather)(\\*)?)";
 # ListLayouts may have standard paragraphs nested inside them.
 my $ListLayouts = "Itemize|Enumerate|Description";
 
