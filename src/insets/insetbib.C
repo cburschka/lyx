@@ -146,6 +146,22 @@ string const InsetBibtex::getScreenLabel(Buffer const *) const
 	return _("BibTeX Generated References");
 }
 
+namespace {
+
+string normalize_name(Buffer const * buffer, string const & name,
+		      string const & ext)
+{
+	string const fname = MakeAbsPath(name, buffer->filePath());
+	if (AbsolutePath(name) || !IsFileReadable(fname + ext))
+		return name;
+	else if (!buffer->niceFile) 
+		return fname;
+	else 
+		return MakeRelPath(fname, buffer->getMasterBuffer()->filePath());
+}
+	
+}
+
 
 int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		       bool /*fragile*/, bool/*fs*/) const
@@ -154,9 +170,6 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// 1. \bibliographystyle{style}
 	// 2. \addcontentsline{...} - if option bibtotoc set
 	// 3. \bibliography{database}
-	string adb;
-	string db_in = getContents();
-	db_in = split(db_in, adb, ',');
 
 	// Style-Options
 	string style = getOptions(); // maybe empty! and with bibtotoc
@@ -168,13 +181,10 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		}
 	}
 
-	if (!buffer->niceFile
-	    && IsFileReadable(MakeAbsPath(style, buffer->filePath()) + ".bst")) {
-		style = MakeAbsPath(style, buffer->filePath());
-	}
-
 	if (!style.empty()) { // we want no \biblio...{}
-		os << "\\bibliographystyle{" << style << "}\n";
+		os << "\\bibliographystyle{"
+		   << os::external_path(normalize_name(buffer, style, ".bst"))
+		   << "}\n";
 	}
 
 	// bibtotoc-Option
@@ -206,15 +216,16 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
-	string db_out;
+	string adb, db_out;
+	string db_in = getContents();
+	db_in = split(db_in, adb, ',');
 	while (!adb.empty()) {
-		if (!buffer->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib"))
-			 adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
-		db_out += adb;
+		db_out += os::external_path(normalize_name(buffer,
+							   adb, ".bib"));
 		db_out += ',';
 		db_in= split(db_in, adb,',');
 	}
+
 	db_out = rtrim(db_out, ",");
 	os   << "\\bibliography{" << db_out << "}\n";
 	return 2;

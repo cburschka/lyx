@@ -1,3 +1,10 @@
+2004-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetbib.C (normalize_name): new helper function. This changes
+	the name in a way suitable to use in a latex file (relative to
+	master buffer if necessary).
+	(latex): use normalize_name.
+
 2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetinclude.C (loadIfNeeded): when the child buffer is loaded,
