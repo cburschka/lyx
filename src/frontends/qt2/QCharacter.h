@@ -17,6 +17,7 @@
 #include "LString.h"
 #include "Qt2Base.h"
 #include "controllers/character.h"
+#include "controllers/frnt_lang.h"
 
 
 class ControlCharacter;
@@ -38,13 +39,13 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	std::vector<character::FamilyPair> family;
-	std::vector<character::SeriesPair> series;
-	std::vector<character::ShapePair>  shape;
-	std::vector<character::SizePair>   size;
-	std::vector<character::BarPair>    bar;
-	std::vector<character::ColorPair>  color;
-	std::vector<string> language;
+	std::vector<frnt::FamilyPair> family;
+	std::vector<frnt::SeriesPair> series;
+	std::vector<frnt::ShapePair>  shape;
+	std::vector<frnt::SizePair>   size;
+	std::vector<frnt::BarPair>    bar;
+	std::vector<frnt::ColorPair>  color;
+	std::vector<frnt::LanguagePair> language;
 };
 
 #endif // QCHARACTER_H

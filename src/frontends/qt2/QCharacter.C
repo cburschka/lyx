@@ -22,7 +22,7 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 
-using namespace character;
+using namespace frnt;
 using std::vector;
 
 typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
@@ -69,9 +69,9 @@ void QCharacter::build_dialog()
 		cit != color.end(); ++cit) {
 		dialog_->colorCO->insertItem(cit->first.c_str(), -1);
 	}
-	for (vector<string>::const_iterator cit = language.begin();
+	for (vector<LanguagePair>::const_iterator cit = language.begin();
 		cit != language.end(); ++cit) {
-		dialog_->langCO->insertItem(cit->c_str(), -1);
+		dialog_->langCO->insertItem(cit->first.c_str(), -1);
 	}
 
 	bc().setOK(dialog_->okPB);
@@ -113,18 +113,9 @@ void QCharacter::update_contents()
 	dialog_->sizeCO->setCurrentItem(findPos2nd(size, controller().getSize()));
 	dialog_->miscCO->setCurrentItem(findPos2nd(bar, controller().getBar()));
 	dialog_->colorCO->setCurrentItem(findPos2nd(color, controller().getColor()));
+	dialog_->langCO->setCurrentItem(findPos2nd(language, controller().getLanguage()));
 
 	dialog_->toggleallCB->setChecked(controller().getToggleAll());
-
-	string const thelanguage(controller().getLanguage());
-	int i = 0;
-	for (vector<string>::const_iterator cit = language.begin();
-		cit != language.end(); ++i, ++cit) {
-		if (*cit == thelanguage) {
-			dialog_->langCO->setCurrentItem(i);
-			break;
-		}
-	}
 }
 
 
@@ -136,8 +127,7 @@ void QCharacter::apply()
 	controller().setSize(size[dialog_->sizeCO->currentItem()].second);
 	controller().setBar(bar[dialog_->miscCO->currentItem()].second);
 	controller().setColor(color[dialog_->colorCO->currentItem()].second);
-
-	controller().setLanguage(dialog_->langCO->currentText().latin1());
+	controller().setLanguage(language[dialog_->langCO->currentItem()].second);
 
 	controller().setToggleAll(dialog_->toggleallCB->isChecked());
 }
