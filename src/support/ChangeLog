@@ -1,5 +1,11 @@
 2005-01-17  Angus Leeming  <leeming@lyx.org>
 
+	* os_win32.C (init): Add Ruurd's original code to close the
+	console window that Windows opens for us, together with a note
+	explaining the alternative approach.
+
+2005-01-17  Angus Leeming  <leeming@lyx.org>
+
 	* package.C (get_binary_path): convert relative paths stored
 	in the PATH environment variable to absolute ones.
 
