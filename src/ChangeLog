@@ -1,3 +1,8 @@
+2002-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* converter.C (convert): if from and to files are the same, use a
+	temporary files as intermediary
+
 2002-11-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_main.C (queryUserLyXDir): re-run automatically the configure

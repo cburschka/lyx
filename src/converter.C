@@ -619,6 +619,14 @@ bool Converters::convert(Buffer const * buffer,
 				  subst(conv.result_file,
 					token_base, OnlyFilename(from_base)));
 
+		// if input and output files are equal, we use a
+		// temporary file as intermediary (JMarc)
+		string real_outfile;
+		if (outfile == infile) {
+			real_outfile = infile;
+			outfile = AddName(buffer->tmppath, "tmpfile.out");
+		}
+
 		if (conv.latex) {
 			run_latex = true;
 			string command = subst(conv.command, token_from, "");
@@ -668,6 +676,16 @@ bool Converters::convert(Buffer const * buffer,
 			} else
 				res = one.startscript(type, command);
 
+			if (!real_outfile.empty()) {
+				if (!lyx::rename(outfile, real_outfile))
+					res = -1;
+				else
+					lyxerr[Debug::FILES]
+						<< "renaming file " << outfile
+						<< " to " << real_outfile
+						<< endl;
+			}
+			
 			if (!conv.parselog.empty()) {
 				string const logfile =  infile2 + ".log";
 				string const script = LibScriptSearch(conv.parselog);
