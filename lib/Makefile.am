@@ -4,10 +4,24 @@ DISTCLEANFILES += textclass.lst packages.lst lyxrc.defaults
 
 SUBDIRS = doc reLyX
 
-EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates bind clipart examples images \
-	kbd layouts lyx2lyx scripts templates tex ui encodings \
-	languages symbols configure configure.m4
+EXTRA_DIST = \
+	configure.m4 \
+	chkconfig.ltx \
+	$(pkgdata_DATA) \
+	$(pkgdata_SCRIPTS) \
+	$(bind_DATA) \
+	$(clipart_DATA) \
+	$(examples_DATA) \
+	$(images_DATA) \
+	$(imagesmath_DATA) \
+	$(kbd_DATA) \
+	$(layouts_DATA) \
+	$(lyx2lyx_DATA) \
+	$(lyx2lyx_SCRIPTS) \
+	$(scripts_SCRIPTS) \
+	$(templates_DATA) \
+	$(tex_DATA) \
+	$(ui_DATA)
 
 CHMOD = chmod
 
