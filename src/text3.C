@@ -1528,24 +1528,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 			bv->owner()->message(inset_hit->editMessage());
 
-			if (isHighlyEditableInset(inset_hit)) {
-				// Highly editable inset, like math
-				UpdatableInset * inset = (UpdatableInset *) inset_hit;
-				FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-				inset->localDispatch(cmd1);
-			} else {
-				FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-				inset_hit->localDispatch(cmd1);
-				// IMO this is a gross hack! Insets should be changed so that
-				// they call the actions they have to do with the insetButtonRel.
-				// function and not in the edit(). This should be changed
-				// (Jug 20020329)
-#ifdef WITH_WARNINGS
-#warning Please remove donot call inset->edit() here (Jug 20020812)
-#endif
-				inset_hit->edit(bv, x, y, cmd.button());
-			}
-			break;
+			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
+			inset_hit->localDispatch(cmd1);
 		}
 
 		break;

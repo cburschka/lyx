@@ -32,6 +32,12 @@
 
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* text3.C (dispatch): remove the 'gross hack' of calling inset->edit
+	when the LFUN_MOUSE_RELEASE should have been handled by
+	inset->localDispatch.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C (dispatch):
 	* LyXAction.C (init):
 	* ToolbarDefaults.C (init):

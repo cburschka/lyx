@@ -29,6 +29,8 @@ public:
 	///
 	~InsetError();
 	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;

@@ -10,15 +10,18 @@
 
 #include <config.h>
 
+#include "inseterror.h"
 
 #include "BufferView.h"
-#include "frontends/font_metrics.h"
-#include "lyxfont.h"
+#include "funcrequest.h"
 #include "gettext.h"
-#include "inseterror.h"
+#include "lyxfont.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
-#include "frontends/Dialogs.h"
+
 #include "support/LAssert.h"
 
 using std::ostream;
@@ -34,6 +37,23 @@ InsetError::~InsetError()
 {
 	if (view())
 		view()->owner()->getDialogs().hide("error");
+}
+
+
+dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
+{
+	dispatch_result result = UNDISPATCHED;
+
+	switch (cmd.action) {
+	case LFUN_MOUSE_RELEASE:
+		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
+		break;
+
+	default:
+		break;
+	}
+
+	return result;
 }
 
 

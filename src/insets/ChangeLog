@@ -1,5 +1,10 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* inseterror.C (localDispatch): new method; calls edit() on
+	LFUN_MOUSE_RELEASE.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* insetbibitem.C (localDispatch):
 	* insetbibtex.C (localDispatch):
 	* insetlabel.C (localDispatch):

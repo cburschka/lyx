@@ -241,6 +241,10 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 	}
 	break;
 
+	case LFUN_MOUSE_RELEASE:
+		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
+		break;
+
 	default:
 		result = DISPATCHED;
 		break;

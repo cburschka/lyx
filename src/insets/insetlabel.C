@@ -74,6 +74,7 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 		result = DISPATCHED;
 	}
 	break;
+
 	default:
 		result = InsetCommand::localDispatch(cmd);
 	}
