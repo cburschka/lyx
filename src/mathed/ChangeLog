@@ -1,3 +1,12 @@
+2004-12-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.C (addRow, addCol): new, try to add a row or column to
+	a MathGridInset
+	* math_parser.C (parse1): use addRow and addCol, fixes bug 1542
+	* math_hullinset.[Ch] (rowChangeOK): new
+	* math_hullinset.C (addRow, delRow): check wether rows can be changed
+	* math_hullinset.C (delCol): don't delete if this is the only column
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (INCLUDES): Remove trailing slash from -Ifoo/

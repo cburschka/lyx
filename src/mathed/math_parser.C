@@ -101,6 +101,65 @@ bool stared(string const & s)
 }
 
 
+/*!
+ * Add the row \p cellrow to \p grid.
+ * \returns wether the row could be added. Adding a row can fail for
+ * environments like "equation" that have a fixed number of rows.
+ */
+bool addRow(MathGridInset & grid, MathGridInset::row_type & cellrow,
+            string const & vskip)
+{
+	++cellrow;
+	if (cellrow == grid.nrows()) {
+		//lyxerr << "adding row " << cellrow << endl;
+		grid.addRow(cellrow - 1);
+		if (cellrow == grid.nrows()) {
+			// We can't add a row to this grid, so let's
+			// append the content of this cell to the previous
+			// one.
+			// This does not happen in well formed .lyx files,
+			// but LyX versions 1.3.x and older could create
+			// such files and tex2lyx can still do that. 
+			--cellrow;
+			lyxerr << "ignoring extra row";
+			if (!vskip.empty())
+				lyxerr << " with extra space " << vskip;
+			lyxerr << '.' << endl;
+			return false;
+		}
+	}
+	grid.vcrskip(LyXLength(vskip), cellrow - 1);
+	return true;
+}
+
+
+/*!
+ * Add the column \p cellcol to \p grid.
+ * \returns wether the column could be added. Adding a column can fail for
+ * environments like "eqnarray" that have a fixed number of columns.
+ */
+bool addCol(MathGridInset & grid, MathGridInset::col_type & cellcol)
+{
+	++cellcol;
+	if (cellcol == grid.ncols()) {
+		//lyxerr << "adding column " << cellcol << endl;
+		grid.addCol(cellcol - 1);
+		if (cellcol == grid.ncols()) {
+			// We can't add a column to this grid, so let's
+			// append the content of this cell to the previous
+			// one.
+			// This does not happen in well formed .lyx files,
+			// but LyX versions 1.3.x and older could create
+			// such files and tex2lyx can still do that. 
+			--cellcol;
+			lyxerr << "ignoring extra column." << endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+
 // These are TeX's catcodes
 enum CatCode {
 	catEscape,     // 0    backslash
@@ -722,13 +781,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cat() == catAlign) {
-			++cellcol;
-			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
-			if (cellcol == grid.ncols()) {
-				//lyxerr << "adding column " << cellcol << "\n";
-				grid.addCol(cellcol - 1);
-			}
-			cell = &grid.cell(grid.index(cellrow, cellcol));
+			//lyxerr << " column now " << (cellcol + 1)
+			//       << " max: " << grid.ncols() << endl;
+			if (addCol(grid, cellcol))
+				cell = &grid.cell(grid.index(cellrow,
+				                             cellcol));
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
@@ -876,14 +933,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "\\") {
-			grid.vcrskip(LyXLength(getArg('[', ']')), cellrow);
-			++cellrow;
-			cellcol = 0;
-			if (cellrow == grid.nrows())
-				grid.addRow(cellrow - 1);
-			if (grid.asHullInset())
-				grid.asHullInset()->numbered(cellrow, numbered);
-			cell = &grid.cell(grid.index(cellrow, cellcol));
+			if (addRow(grid, cellrow, getArg('[', ']'))) {
+				cellcol = 0;
+				if (grid.asHullInset())
+					grid.asHullInset()->numbered(
+							cellrow, numbered);
+				cell = &grid.cell(grid.index(cellrow,
+				                             cellcol));
+			}
 		}
 
 #if 0
@@ -897,16 +954,15 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 			// resize the table if necessary
 			for (int i = 0; i < cols; ++i) {
-				++cellcol;
-				if (cellcol == grid.ncols()) {
-					//lyxerr << "adding column " << cellcol << "\n";
-					grid.addCol(cellcol - 1);
+				if (addCol(grid, cellcol)) {
+					cell = &grid.cell(grid.index(
+							cellrow, cellcol));
+					// mark this as dummy
+					grid.cellinfo(grid.index(
+						cellrow, cellcol)).dummy_ = true;
 				}
-				cell = &grid.cell(grid.index(cellrow, cellcol));
-				// mark this as dummy
-				grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = true;
 			}
-			// the last cell is the real thng, not a dummy
+			// the last cell is the real thing, not a dummy
 			grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = false;
 
 			// read special alignment

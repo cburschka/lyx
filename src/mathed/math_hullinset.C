@@ -400,6 +400,16 @@ void MathHullInset::footer_write(WriteStream & os) const
 }
 
 
+bool MathHullInset::rowChangeOK() const
+{
+	return
+		type_ == "eqnarray" || type_ == "align" ||
+		type_ == "flalign" || type_ == "alignat" ||
+		type_ == "xalignat" || type_ == "xxalignat" ||
+		type_ == "gather" || type_ == "multline";
+}
+
+
 bool MathHullInset::colChangeOK() const
 {
 	return
@@ -410,6 +420,10 @@ bool MathHullInset::colChangeOK() const
 
 void MathHullInset::addRow(row_type row)
 {
+	if (!rowChangeOK()) {
+		lyxerr << "Can't change number of rows in '" << type_ << "'\n";
+		return;
+	}
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
 	MathGridInset::addRow(row);
@@ -418,8 +432,10 @@ void MathHullInset::addRow(row_type row)
 
 void MathHullInset::delRow(row_type row)
 {
-	if (nrows() <= 1)
+	if (nrows() <= 1 || !rowChangeOK()) {
+		lyxerr << "Can't change number of rows in '" << type_ << "'\n";
 		return;
+	}
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
 	label_.erase(label_.begin() + row);
@@ -437,10 +453,10 @@ void MathHullInset::addCol(col_type col)
 
 void MathHullInset::delCol(col_type col)
 {
-	if (colChangeOK())
-		MathGridInset::delCol(col);
-	else
+	if (ncols() <= 1 || !colChangeOK())
 		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
+	else
+		MathGridInset::delCol(col);
 }
 
 

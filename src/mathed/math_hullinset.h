@@ -110,6 +110,8 @@ private:
 	char const * standardFont() const;
 	/// consistency check
 	void check() const;
+	/// can this change its number of rows?
+	bool rowChangeOK() const;
 	/// can this change its number of cols?
 	bool colChangeOK() const;
 
