@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>431</width>
+            <width>427</width>
             <height>371</height>
         </rect>
     </property>
@@ -176,11 +176,11 @@
                         <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>noindent</cstring>
+                            <cstring>indentCB</cstring>
                         </property>
                         <property stdset="1">
                             <name>text</name>
-                            <string>&amp;Don't indent</string>
+                            <string>In&amp;dent paragraph</string>
                         </property>
                     </widget>
                 </grid>
@@ -216,7 +216,7 @@
                         </property>
                         <property stdset="1">
                             <name>alignment</name>
-                            <set>AlignCenter</set>
+                            <set>AlignVCenter|AlignLeft</set>
                         </property>
                         <property>
                             <name>hAlign</name>
@@ -250,6 +250,10 @@
                         <property>
                             <name>buddy</name>
                             <cstring>keepAbove</cstring>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Include space even at the top/bottom of the page</string>
                         </property>
                     </widget>
                     <widget row="3"  column="0" >
@@ -434,6 +438,10 @@
                             <name>text</name>
                             <string></string>
                         </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Include this space even at the top of a page</string>
+                        </property>
                     </widget>
                     <widget row="4"  column="2" >
                         <class>QCheckBox</class>
@@ -444,6 +452,10 @@
                         <property stdset="1">
                             <name>text</name>
                             <string></string>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Include this space even at the bottom of a page</string>
                         </property>
                     </widget>
                     <widget row="0"  column="2" >
@@ -458,7 +470,7 @@
                         </property>
                         <property stdset="1">
                             <name>alignment</name>
-                            <set>AlignCenter</set>
+                            <set>AlignVCenter|AlignLeft</set>
                         </property>
                         <property>
                             <name>hAlign</name>
@@ -543,12 +555,20 @@
                                     <name>buddy</name>
                                     <cstring>labelWidth</cstring>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>This text defines the width of the paragraph label</string>
+                                </property>
                             </widget>
                             <widget>
                                 <class>QLineEdit</class>
                                 <property stdset="1">
                                     <name>name</name>
                                     <cstring>labelWidth</cstring>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>This text defines the width of the paragraph label</string>
                                 </property>
                             </widget>
                         </hbox>
@@ -582,6 +602,10 @@
                                     <name>text</name>
                                     <string>A&amp;bove</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Add a horizontal rule above the paragraph</string>
+                                </property>
                             </widget>
                             <widget>
                                 <class>QCheckBox</class>
@@ -592,6 +616,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>B&amp;elow</string>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Add a horizontal rule below the paragraph</string>
                                 </property>
                             </widget>
                         </vbox>
@@ -625,6 +653,10 @@
                                     <name>text</name>
                                     <string>Abo&amp;ve</string>
                                 </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Start a new page above this paragraph</string>
+                                </property>
                             </widget>
                             <widget>
                                 <class>QCheckBox</class>
@@ -635,6 +667,10 @@
                                 <property stdset="1">
                                     <name>text</name>
                                     <string>Belo&amp;w</string>
+                                </property>
+                                <property>
+                                    <name>toolTip</name>
+                                    <string>Start a new page below this paragraph</string>
                                 </property>
                             </widget>
                         </vbox>
@@ -772,7 +808,7 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>noindent</sender>
+        <sender>indentCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QParagraphDialogBase</receiver>
         <slot>change_adaptor()</slot>
@@ -883,7 +919,7 @@
     <tabstop>align</tabstop>
     <tabstop>linespacing</tabstop>
     <tabstop>linespacingValue</tabstop>
-    <tabstop>noindent</tabstop>
+    <tabstop>indentCB</tabstop>
     <tabstop>spacingAbove</tabstop>
     <tabstop>valueAbove</tabstop>
     <tabstop>unitAbove</tabstop>

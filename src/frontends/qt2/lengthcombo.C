@@ -27,8 +27,6 @@ LengthCombo::LengthCombo(QWidget * parent, char * name)
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));
-
-	QWhatsThis::add(this, qt_("Choose one of the units or relative lengths"));
 }
 
 

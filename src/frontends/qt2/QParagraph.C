@@ -210,7 +210,7 @@ void QParagraph::apply()
 	// label width
 	params.labelWidthString(fromqstr(dialog_->labelWidth->text()));
 	// indendation
-	params.noindent(dialog_->noindent->isChecked());
+	params.noindent(!dialog_->indentCB->isChecked());
 
 }
 
@@ -295,10 +295,14 @@ void QParagraph::update_contents()
 
 	// label width
 	string const & labelwidth = params.labelWidthString();
-	dialog_->labelWidth->setText(toqstr(labelwidth));
 	// _() is correct here (this is stupid though !)
-	dialog_->labelwidthGB->setEnabled(
-		labelwidth != _("Senseless with this layout!"));
+	if (labelwidth != _("Senseless with this layout!")) {
+		dialog_->labelwidthGB->setEnabled(true);
+		dialog_->labelWidth->setText(toqstr(labelwidth));
+	} else {
+		dialog_->labelwidthGB->setEnabled(false);
+		dialog_->labelWidth->setText("");
+	}
 
 	// alignment
 	int i;
@@ -331,7 +335,7 @@ void QParagraph::update_contents()
 	dialog_->lineBelow->setChecked(params.lineBottom());
 	dialog_->pagebreakAbove->setChecked(params.pagebreakTop());
 	dialog_->pagebreakBelow->setChecked(params.pagebreakBottom());
-	dialog_->noindent->setChecked(params.noindent());
+	dialog_->indentCB->setChecked(!params.noindent());
 
 	// linespacing
 	int linespacing;
@@ -376,7 +380,4 @@ void QParagraph::update_contents()
 			     dialog_->valueBelow,
 			     dialog_->unitBelow,
 			     dialog_->keepBelow,units_);
-
-	// no indent
-	dialog_->noindent->setChecked(params.noindent());
 }

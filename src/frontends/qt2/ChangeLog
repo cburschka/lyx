@@ -1,5 +1,15 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* QParagraph.C:
+	* QParagraphDialog.C:
+	* ui/QParagraphDialog.ui: don't use negative checkbox
+	strings. Add whats this for label width. Add tooltips
+	(bug 997). Never show "Senseless with this layout!"
+
+	* lengthcombo.C: remove pointless whatsthis
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* panelstack.C: compile fixes for Qt 2.3
 
 2003-03-28  John Levon  <levon@movementarian.org>
