@@ -4,6 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Ruurd A. Reitsma
+ * \author Claus Hentschel
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -19,13 +21,7 @@
 
 #include <windows.h>
 #include <io.h>
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-# include <sys/cygwin.h>
-
-#elif defined(_WIN32)
-# include <direct.h> // _getdrive
-#endif
+#include <direct.h> // _getdrive
 
 using std::endl;
 using std::string;
@@ -37,7 +33,6 @@ namespace os {
 
 void os::init(int /* argc */, char * argv[])
 {
-#ifdef _WIN32
 	/* Note from Angus, 17 Jan 2005:
 	 *
 	 * The code below is taken verbatim from Ruurd's original patch
@@ -112,20 +107,14 @@ void os::init(int /* argc */, char * argv[])
 		if ( hwndFound != NULL)
 			ShowWindow( hwndFound, SW_HIDE);
 	}
-#endif
 }
 
 
 string current_root()
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	return string("/");
-
-#else
 	// _getdrive returns the current drive (1=A, 2=B, and so on).
 	char const drive = ::_getdrive() + 'A' - 1;
 	return string(1, drive) + ":/";
-#endif
 }
 
 
@@ -149,31 +138,9 @@ string::size_type common_path(string const & p1, string const & p2)
 }
 
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-namespace {
-
-bool cygwin_path_fix_ = false;
-
-} // namespace anon
-#endif
-
-
 string external_path(string const & p)
 {
-	string dos_path;
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	// Translate from cygwin path syntax to dos path syntax
-	if (cygwin_path_fix_ && is_absolute_path(p)) {
-		char dp[PATH_MAX];
-		cygwin_conv_to_full_win32_path(p.c_str(), dp);
-		dos_path = !dp ? "" : dp;
-	}
-
-	else return p;
-#else // regular Win32
-	dos_path = p;
-#endif
+	string dos_path = p;
 
 	//No backslashes in LaTeX files
 	dos_path = subst(dos_path,'\\','/');
@@ -192,14 +159,7 @@ string external_path(string const & p)
 // the Win32/DOS pathnames into Cygwin pathnames.
 string internal_path(string const & p)
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	char posix_path[PATH_MAX];
-	posix_path[0] = '\0';
-	cygwin_conv_to_posix_path(p.c_str(), posix_path);
-	return posix_path;
-#else
 	return subst(p,"\\","/");
-#endif
 }
 
 
@@ -231,44 +191,25 @@ char const * popen_read_mode()
 
 string const & nulldev()
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	static string const nulldev_ = "/dev/null";
-#else
 	static string const nulldev_ = "nul";
-#endif
 	return nulldev_;
 }
 
 
 shell_type shell()
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	return UNIX;
-#else
 	return CMD_EXE;
-#endif
 }
 
 
 char path_separator()
 {
-#if defined (_WIN32)
 	return ';';
-#else // Cygwin
-	return ':';
-#endif
 }
 
 
-void cygwin_path_fix(bool use_cygwin_paths)
-{
-#if defined (_WIN32)
-	// Silence warning.
-	(void)use_cygwin_paths;
-#else // Cygwin
-	use_cygwin_paths_ = use_cygwin_paths;
-#endif
-}
+void cygwin_path_fix(bool)
+{}
 
 } // namespace os
 } // namespace support
