@@ -1,3 +1,14 @@
+2004-10-17  José Matos  <jamatos@lyx.org>
+
+	* lyx2lyx: moved code to LyX module making effectively lyx2lyx and
+	interface to the LyX module.
+	
+	* LyX.py: white space changes.  New class that serves as the basis
+	to two derived classes. One for reading and another for new files.
+	New function get_toc, to be used in Doc_toc.py in the
+	documentation directory.
+	New class paragraph, to read paragraphs from the lyx file.
+
 2004-10-10  José Matos  <jamatos@lyx.org>
 
 	* .cvsignore: add entries related with profiling lyx2lyx.
@@ -9,7 +20,9 @@
 
 	* LyX.py: add support for format 237, fix variables type,
 	new function formats_list().
+
 	* lyx2lyx: print list of available formats on request.
+
 	* lyx_1_4.py: add support for 237, reorganize directory functions.
 
 2004-09-29  José Matos  <jamatos@lyx.org>
@@ -20,6 +33,7 @@
 
 	* lyx_1_4.py (convert_ertbackslash): insert the new line after the
 	backslash, this did only work by accident in most cases
+
 	* lyx_1_4.py: unify warning messages
 
 2004-08-19  José Matos  <jamatos@lyx.org>

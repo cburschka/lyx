@@ -75,15 +75,9 @@ def parse_options(argv):
 
 def main(argv):
     end_format, input, output, error, debug = parse_options(argv)
-    file = LyX.FileInfo(end_format, input, output, error, debug)
+    file = LyX.File(end_format, input, output, error, debug)
 
-    mode, convertion_chain = file.chain()
-    file.warning("convertion chain: " + str(convertion_chain), 3)
-
-    for step in convertion_chain:
-        convert = getattr(__import__("lyx_" + step), mode)
-        convert(file)
-
+    file.convert()
     file.write()
 
 if __name__ == "__main__":
