@@ -38,6 +38,7 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
+#include "lyxrow.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "undo.h"
@@ -257,6 +258,9 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 	x += TEXT_TO_INSET_OFFSET;
 
+	text_.x0_ = x;
+	text_.y0_ = y - text_.firstRow()->ascent_of_text() + bv->top_y();
+	
 	paintTextInset(*bv, text_, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
@@ -340,10 +344,8 @@ void InsetText::edit(BufferView * bv, int x, int y)
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
 	sanitizeEmptyText(bv);
-	text_.setCursorFromCoordinates(x, y + dim_.asc);
-	text_.cursor.x(text_.cursor.x());
-	bv->x_target(text_.cursor.x());
-
+	text_.setCursorFromCoordinates(x - text_.x0_, y + bv->top_y()
+				       - text_.y0_);
 	text_.clearSelection();
 	finishUndo();
 

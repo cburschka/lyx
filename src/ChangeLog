@@ -1,3 +1,9 @@
+2003-11-20  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxtext.h: add x0_, y0_
+	* text3.C (cursorPrevious, cursorNext): rewrite (using x0_, y0_)
+	* text2.C (cursorDown, cursorUp): rewrite (using x0_, y0_)
+
 2003-11-18  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (setCursorIntern): move the x_target update here *

@@ -1409,6 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available()) {
 		view()->fitCursor();
 		view()->update();
+		
 		view()->cursor().updatePos();
 		// if we executed a mutating lfun, mark the buffer as dirty
 		if (!getStatus(func).disabled()

@@ -461,19 +461,19 @@ public:
 	///
 	bool checkAndActivateInset(bool front);
 
-
 private:
-	/** Cursor related data.
-	  Later this variable has to be removed. There should be now internal
-	  cursor in a text */
-	///
-	///TextCursor cursor_;
+	
 	/// prohibit this as long as there are back pointers...
 	LyXText(LyXText const &);
 
 	// cache for cursorPar()
 	mutable ParagraphList::iterator cache_par_;
 	mutable int cache_pos_;
+
+public:
+	/// absolute document pixel coordinates of this LyXText
+	int x0_;
+	int y0_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

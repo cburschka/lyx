@@ -74,7 +74,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
 	: height(0), width(0), inset_owner(inset), bv_owner(bv),
 	  in_inset_(ininset), paragraphs_(&paragraphs),
-		cache_pos_(-1)
+	  cache_pos_(-1), x0_(0), y0_(0)
 {}
 
 
@@ -1404,7 +1404,7 @@ void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cursor, par, pos, boundary);
-	bv()->x_target(cursor.x());
+	bv()->x_target(cursor.x() + x0_);
 	if (setfont)
 		setCurrentFont();
 }
@@ -1562,7 +1562,7 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 	deleteEmptyParagraphMechanism(old_cursor);
 }
 
-
+//gets LyXText coordinates
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
@@ -1710,24 +1710,16 @@ void LyXText::cursorUp(bool selecting)
 {
 	ParagraphList::iterator cpit = cursorPar();
 	Row const & crow = *cpit->getRow(cursor.pos());
-#if 1
-	int x = bv()->x_target();
+	int x = bv()->x_target() - x0_;
 	int y = cursor.y() - crow.baseline() - 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
-		int topy = bv()->top_y();
-		int y1 = cursor.y() - topy;
-		y -= topy;
-		InsetOld * inset_hit = checkInsetHit(x, y1);
+		y += y0_ - bv()->top_y();
+		lyxerr << "y:" << y << " y0: " << y0_ << endl;
+		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(bv(), x, y);
 	}
-#else
-	lyxerr << "cursorUp: y " << cursor.y() << " bl: " <<
-		crow.baseline() << endl;
-	setCursorFromCoordinates(bv()->x_target(),
-		cursor.y() - crow.baseline() - 1);
-#endif
 }
 
 
@@ -1735,22 +1727,15 @@ void LyXText::cursorDown(bool selecting)
 {
 	ParagraphList::iterator cpit = cursorPar();
 	Row const & crow = *cpit->getRow(cursor.pos());
-#if 1
-	int x = bv()->x_target();
+	int x = bv()->x_target() - x0_;
 	int y = cursor.y() - crow.baseline() + crow.height() + 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
-		int topy = bv()->top_y();
-		int y1 = cursor.y() - topy;
-		y -= topy;
-		InsetOld * inset_hit = checkInsetHit(x, y1);
+		y += y0_ - bv()->top_y();
+		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(bv(), x, y);
 	}
-#else
-	setCursorFromCoordinates(bv()->x_target(),
-		 cursor.y() - crow.baseline() + crow.height() + 1);
-#endif
 }
 
 

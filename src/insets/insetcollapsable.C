@@ -283,6 +283,7 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 		else
 			inset.edit(bv, x, ascent() + y - height_collapsed() + inset.ascent());
 	}
+	
 	bv->cursor().push(this);
 }
 
