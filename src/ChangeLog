@@ -1,3 +1,7 @@
+2002-03-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyx_gui.C (LyX_XErrHandler): don't abort on BadWindow
+
 2002-03-18  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (LeftAlreadyDrawed): fixed for multicolumn borders.

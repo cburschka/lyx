@@ -76,6 +76,11 @@ extern "C" {
 static
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
+	if (xeev->error_code == BadWindow) {
+		// We don't abort on BadWindow
+		return 0;
+	}
+	
 	// emergency cleanup
 	LyX::emergencyCleanup();
 
