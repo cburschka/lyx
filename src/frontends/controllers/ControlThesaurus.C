@@ -43,7 +43,7 @@ void ControlThesaurus::replace(string const & newstr)
 	 * deletion/change !
 	 */
 	int const replace_count =
-		lyxfind::LyXReplace(lv_.view(), oldstr_, newstr,
+		lyxfind::LyXReplace(lv_.view().get(), oldstr_, newstr,
 				    true, true, true, false, true);
 
 	oldstr_ = newstr;

@@ -558,7 +558,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const str =
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
-		inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
+		inset_->tabularFeatures(lv_->view().get(), LyXTabular::SET_PWIDTH, str);
 
 		//check if the input is valid
 		string const input =
@@ -577,7 +577,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const str =
 			getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					     cell_options_->choice_value_mcolumn_width);
-		inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH, str);
+		inset_->tabularFeatures(lv_->view().get(), LyXTabular::SET_MPWIDTH, str);
 
 		//check if the input is valid
 		string const input =
@@ -690,7 +690,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	else
 		return false;
 
-	inset_->tabularFeatures(lv_->view(), num, special);
+	inset_->tabularFeatures(lv_->view().get(), num, special);
 	update();
 
 	return true;

@@ -63,7 +63,7 @@ void ControlParagraph::apply()
 	view().apply();
 
 	LyXText * text(lv_.view()->getLyXText());
-	text->setParagraph(lv_.view(),
+	text->setParagraph(lv_.view().get(),
 			   pp_->lineTop(),
 			   pp_->lineBottom(),
 			   pp_->pagebreakTop(),

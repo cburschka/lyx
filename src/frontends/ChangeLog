@@ -1,3 +1,12 @@
+2002-08-02  Angus Leeming  <leeming@lyx.org>
+
+	* LyXView.[Ch] (view): now returns shared_ptr<BufferView> const &
+	so that anything wanting to cache the buffer view can do so safely
+	using a boost::weak_ptr.
+
+	* LyXView.h: store bufferview_ as a shared_ptr, not as a scoped_ptr.
+	Spell Bjønnes correctly.
+
 2002-08-01  John Levon  <levon@movementarian.org>
 
 	* Dialogs.h:

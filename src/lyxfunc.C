@@ -148,7 +148,7 @@ inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
 	if (selecting || TEXT(flag)->selection.mark()) {
-		TEXT(flag)->setSelection(owner->view());
+		TEXT(flag)->setSelection(owner->view().get());
 		if (TEXT(flag)->bv_owner)
 		    owner->view()->toggleToggle();
 	}
@@ -760,7 +760,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 #if 1
 			int inset_x;
 			int dummy_y;
-			inset->getCursorPos(owner->view(), inset_x, dummy_y);
+			inset->getCursorPos(owner->view().get(), inset_x, dummy_y);
 #endif
 			if ((action == LFUN_UNKNOWN_ACTION)
 			    && argument.empty()) {
@@ -775,7 +775,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				goto exit_with_message;
 			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
-				     localDispatch(owner->view(), action, argument)) ==
+				     localDispatch(owner->view().get(), action, argument)) ==
 				    UpdatableInset::DISPATCHED) ||
 				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				goto exit_with_message;
@@ -786,7 +786,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				// FINISHED means that the cursor should be
 				// one position after the inset.
 			} else if (result == UpdatableInset::FINISHED_RIGHT) {
-				TEXT()->cursorRight(owner->view());
+				TEXT()->cursorRight(owner->view().get());
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
 				goto exit_with_message;
@@ -794,12 +794,12 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				if (TEXT()->cursor.irow()->previous()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						owner->view(), TEXT()->cursor.ix() + inset_x,
+						owner->view().get(), TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() - 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
-					TEXT()->cursorUp(owner->view());
+					TEXT()->cursorUp(owner->view().get());
 #endif
 					moveCursorUpdate(true, false);
 					owner->view_state_changed();
@@ -811,16 +811,16 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				if (TEXT()->cursor.irow()->next()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						owner->view(), TEXT()->cursor.ix() + inset_x,
+						owner->view().get(), TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() +
 						TEXT()->cursor.irow()->height() + 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
-					TEXT()->cursorDown(owner->view());
+					TEXT()->cursorDown(owner->view().get());
 #endif
 				} else {
-					TEXT()->cursorRight(owner->view());
+					TEXT()->cursorRight(owner->view().get());
 				}
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
@@ -833,29 +833,29 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
-					TEXT()->cursorRight(owner->view());
+					TEXT()->cursorRight(owner->view().get());
 					owner->view()->switchKeyMap();
 					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
 					if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(owner->view());
+						TEXT()->cursorRight(owner->view().get());
 						moveCursorUpdate(true, false);
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(owner->view());
+						TEXT()->cursorRight(owner->view().get());
 						moveCursorUpdate(true, false);
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
 					if (TEXT()->cursor.row()->next())
-						TEXT()->cursorDown(owner->view());
+						TEXT()->cursorDown(owner->view().get());
 					else
-						TEXT()->cursorRight(owner->view());
+						TEXT()->cursorRight(owner->view().get());
 					moveCursorUpdate(true, false);
 					owner->view_state_changed();
 					goto exit_with_message;
@@ -879,11 +879,11 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 			if (tli == lock) {
 				owner->view()->unlockInset(tli);
-				TEXT()->cursorRight(owner->view());
+				TEXT()->cursorRight(owner->view().get());
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
 			} else {
-				tli->unlockInsetInInset(owner->view(),
+				tli->unlockInsetInInset(owner->view().get(),
 							lock,
 							true);
 			}
@@ -908,7 +908,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		}
 		bool fw = (action == LFUN_WORDFINDBACKWARD);
 		if (!searched_string.empty()) {
-			lyxfind::LyXFind(owner->view(), searched_string, fw);
+			lyxfind::LyXFind(owner->view().get(), searched_string, fw);
 		}
 //		owner->view()->showCursor();
 	}
@@ -977,15 +977,15 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 			s1 << _("Saving document") << ' '
 			   << MakeDisplayPath(owner->buffer()->fileName() + "...");
 			owner->message(s1.str().c_str());
-			MenuWrite(owner->view(), owner->buffer());
+			MenuWrite(owner->view().get(), owner->buffer());
 			s1 << _(" done.");
 			owner->message(s1.str().c_str());
 		} else
-			WriteAs(owner->view(), owner->buffer());
+			WriteAs(owner->view().get(), owner->buffer());
 		break;
 
 	case LFUN_WRITEAS:
-		WriteAs(owner->view(), owner->buffer(), argument);
+		WriteAs(owner->view().get(), owner->buffer(), argument);
 		break;
 
 	case LFUN_MENURELOAD:
@@ -1057,7 +1057,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		break;
 
 	case LFUN_AUTOSAVE:
-		AutoSave(owner->view());
+		AutoSave(owner->view().get());
 		break;
 
 	case LFUN_UNDO:
@@ -1081,11 +1081,11 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(owner->view(), TEXT(false), -1);
+		changeDepth(owner->view().get(), TEXT(false), -1);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(owner->view(), TEXT(false), 1);
+		changeDepth(owner->view().get(), TEXT(false), 1);
 		break;
 
 	case LFUN_FREE:
@@ -1093,7 +1093,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		break;
 
 	case LFUN_RECONFIGURE:
-		Reconfigure(owner->view());
+		Reconfigure(owner->view().get());
 		break;
 
 #if 0
@@ -1226,12 +1226,12 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		if (owner->view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
 		    InsetTabular * inset = static_cast<InsetTabular *>
 			(owner->view()->theLockingInset());
-		    inset->openLayoutDialog(owner->view());
+		    inset->openLayoutDialog(owner->view().get());
 		} else if (owner->view()->theLockingInset()->
 			   getFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
 		    InsetTabular * inset = static_cast<InsetTabular *>(
 			owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
-		    inset->openLayoutDialog(owner->view());
+		    inset->openLayoutDialog(owner->view().get());
 		}
 	    }
 	    break;
@@ -1313,10 +1313,10 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		if (owner->view()->theLockingInset())
 			owner->view()->unlockInset(owner->view()->theLockingInset());
 		if (par->inInset()) {
-			par->inInset()->edit(owner->view());
+			par->inInset()->edit(owner->view().get());
 		}
 		// Set the cursor
-		owner->view()->getLyXText()->setCursor(owner->view(), par, 0);
+		owner->view()->getLyXText()->setCursor(owner->view().get(), par, 0);
 		owner->view()->switchKeyMap();
 		owner->view_state_changed();
 
@@ -1879,5 +1879,5 @@ string const LyXFunc::view_status_message()
 	if (!owner->view()->available())
 		return _("Welcome to LyX!");
 
-	return currentState(owner->view());
+	return currentState(owner->view().get());
 }

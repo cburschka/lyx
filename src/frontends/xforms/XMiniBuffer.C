@@ -230,7 +230,7 @@ void XMiniBuffer::show_info(string const & info, string const & input, bool appe
 
 void XMiniBuffer::idle_timeout()
 {
-	set_input(currentState(view_->view()));
+	set_input(currentState(view_->view().get()));
 }
 
 

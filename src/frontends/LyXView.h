@@ -4,7 +4,7 @@
  * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Lars Gullik Bjornes <larsbj@lyx.org>
+ * \author Lars Gullik Bjønnes <larsbj@lyx.org>
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
@@ -21,6 +21,7 @@
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/signal0.hpp>
 
@@ -70,8 +71,11 @@ public:
 
 	//@{ generic accessor functions
 
-	/// return the current buffer view
-	BufferView * view() const;
+	/** return the current buffer view
+	    Returned as a shared_ptr so that anything wanting to cache the
+	    buffer view can do so safely using a boost::weak_ptr.
+	 */
+	boost::shared_ptr<BufferView> const & view() const;
 
 	/// return the LyX function handler for this view
 	LyXFunc * getLyXFunc() const;
@@ -120,7 +124,7 @@ public:
 
 protected:
 	/// view of a buffer. Eventually there will be several.
-	boost::scoped_ptr<BufferView> bufferview_;
+	boost::shared_ptr<BufferView> bufferview_;
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;

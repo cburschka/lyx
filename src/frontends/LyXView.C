@@ -86,9 +86,9 @@ Buffer * LyXView::buffer() const
 }
 
 
-BufferView * LyXView::view() const
+boost::shared_ptr<BufferView> const & LyXView::view() const
 {
-	return bufferview_.get();
+	return bufferview_;
 }
 
 
@@ -139,7 +139,7 @@ void LyXView::autoSave()
 	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
 
 	if (view()->available()) {
-		::AutoSave(view());
+		::AutoSave(view().get());
 	}
 }
 
