@@ -1,3 +1,8 @@
+2004-09-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.ac: print error message if uic or moc is not found
+	and the qt frontend is used
+
 2004-08-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* More pch work.

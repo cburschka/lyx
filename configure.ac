@@ -214,6 +214,13 @@ for frontend in $FRONTENDS ; do
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
       Qt version:\t\t${QT_VERSION}\n"
+dnl qt build will fail without moc or uic
+	  if test -z "$MOC"; then
+	    LYX_ERROR([moc binary not found !])
+	  fi
+	  if test -z "$UIC"; then
+	    LYX_ERROR([uic binary not found !])
+	  fi
       ;;
     *)
 	  LYX_ERROR(Unknown frontend '$frontend');;
