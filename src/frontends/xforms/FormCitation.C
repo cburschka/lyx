@@ -173,49 +173,49 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->check_force_uppercase);
 
 	//set up the tooltip mechanism
-	string str = N_("Add the selected entry to the current citation reference.");
+	string str = _("Add the selected entry to the current citation reference.");
 	tooltips().init(dialog_->button_add, str);
 
-	str = N_("Delete the selected entry from the current citation reference.");
+	str = _("Delete the selected entry from the current citation reference.");
 	tooltips().init(dialog_->button_del, str);
 
-	str = N_("Move the selected entry upwards (in the current list).");
+	str = _("Move the selected entry upwards (in the current list).");
 	tooltips().init(dialog_->button_up, str);
 
-	str = N_("Move the selected entry downwards (in the current list).");
+	str = _("Move the selected entry downwards (in the current list).");
 	tooltips().init(dialog_->button_down, str);
 
-	str = N_("The entries which will be cited. Select them with the arrow buttons from the right browser window.");
+	str = _("The entries which will be cited. Select them with the arrow buttons from the right browser window.");
 	tooltips().init(dialog_->browser_cite, str);
 
-	str = N_("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
+	str = _("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
 	tooltips().init(dialog_->browser_bib, str);
 
-	str = N_("Information about the selected entry");
+	str = _("Information about the selected entry");
 	tooltips().init(dialog_->browser_info, str);
 
-	str = N_("Here you may select how the citation label should look inside the text (Natbib).");
+	str = _("Here you may select how the citation label should look inside the text (Natbib).");
 	tooltips().init(dialog_->choice_style, str);
 
-	str = N_("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
+	str = _("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
 	tooltips().init(dialog_->check_full_author_list, str);
 
-	str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
+	str = _("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
 	tooltips().init(dialog_->check_force_uppercase, str);
 
-	str = N_("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
+	str = _("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
 	tooltips().init(dialog_->input_before, str);
 
-	str = N_("Optional text which appears after the citation reference, e.g. \"pp. 12\"");
+	str = _("Optional text which appears after the citation reference, e.g. \"pp. 12\"");
 	tooltips().init(dialog_->input_after, str);
 
-	str = N_("Search your database (all fields will be searched).");
+	str = _("Search your database (all fields will be searched).");
 	tooltips().init(dialog_->input_search, str);
 
-	str = N_("Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\".");
+	str = _("Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\".");
 	tooltips().init(dialog_->check_search_case, str);
 
-	str = N_("Activate if you want to enter Regular Expressions.");
+	str = _("Activate if you want to enter Regular Expressions.");
 	tooltips().init(dialog_->check_search_type, str);
 }
 

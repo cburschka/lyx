@@ -43,10 +43,10 @@ void FormSendto::build()
 	bc().setCancel(dialog_->button_close);
 
 	// Set up the tooltip mechanism
-	string str = N_("Export the buffer to this format before running the command below on it.");
+	string str = _("Export the buffer to this format before running the command below on it.");
 	tooltips().init(dialog_->browser_formats, str);
 
-	str = N_("Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file.");
+	str = _("Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file.");
 	tooltips().init(dialog_->input_command, str);
 }
 

@@ -84,7 +84,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 		return;
 
 	// Store the tooltip string
-	tooltipsMap[ob] = formatted(_(str), 400);
+	tooltipsMap[ob] = formatted(str, 400);
 }
 
 
@@ -152,7 +152,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 		return;
 
 	// Store the tooltip string
-	tooltipsMap[ob] = formatted(_(str), 400);
+	tooltipsMap[ob] = formatted(str, 400);
 
 	if (!tooltip_timer_) {
 		if (fl_current_form && ob->form != fl_current_form)

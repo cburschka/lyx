@@ -23,7 +23,6 @@
 #include "xforms_helpers.h" // formatted
 #include "support/LAssert.h"
 
-
 FeedbackController::FeedbackController()
 	: warning_posted_(false), message_widget_(0)
 {}
@@ -88,9 +87,7 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 void FeedbackController::postWarning(string const & warning)
 {
 	warning_posted_ = true;
-
-	string const str = _("WARNING! ") + warning;
-	postMessage(str);
+	postMessage(warning);
 }
 
 
@@ -106,9 +103,8 @@ void FeedbackController::clearMessage()
 		return;
 
 	// This trick is needed to get xforms to clear the label...
-	fl_hide_object(message_widget_);
 	fl_set_object_label(message_widget_, "");
-	fl_show_object(message_widget_);
+	fl_hide_object(message_widget_);
 }
 
 
@@ -116,10 +112,18 @@ void FeedbackController::postMessage(string const & message)
 {
 	lyx::Assert(message_widget_);
 
-	string const str = formatted(message,
-				     message_widget_->w-10, FL_SMALL_SIZE);
+	string str;
+	if (warning_posted_)
+		str = _("WARNING! ") + message;
+	else
+		str = message;
+
+	str = formatted(str, message_widget_->w-10, FL_SMALL_SIZE);
 
 	fl_set_object_label(message_widget_, str.c_str());
 	FL_COLOR const label_color = warning_posted_ ? FL_TOMATO : FL_BLACK;
 	fl_set_object_lcol(message_widget_, label_color);
+
+	if (!message_widget_->visible)
+		fl_show_object(message_widget_);
 }

@@ -86,7 +86,7 @@ void FormMathsBitmap::build()
 		y_ = max(y_, obj->y + obj->h);
 	}
 
-	char const * const label = N_("Close|^[");
+	char const * const label = _("Close|^[");
 	x_ = (form_->w - 90) / 2;
 	y_ += 10;
 

@@ -398,18 +398,18 @@ bool RWInfo::WriteableDir(string const & name)
 	error_message.erase();
 
 	if (!AbsolutePath(name)) {
-		error_message = N_("The absolute path is required.");
+		error_message = _("The absolute path is required.");
 		return false;
 	}
 
 	FileInfo const tp(name);
 	if (!tp.isOK() || !tp.isDir()) {
-		error_message = N_("Directory does not exist.");
+		error_message = _("Directory does not exist.");
 		return false;
 	}
 
 	if (!tp.writable()) {
-		error_message = N_("Cannot write to this directory.");
+		error_message = _("Cannot write to this directory.");
 		return false;
 	}
 
@@ -422,18 +422,18 @@ bool RWInfo::ReadableDir(string const & name)
 	error_message.erase();
 
 	if (!AbsolutePath(name)) {
-		error_message = N_("The absolute path is required.");
+		error_message = _("The absolute path is required.");
 		return false;
 	}
 
 	FileInfo const tp(name);
 	if (!tp.isOK() || !tp.isDir()) {
-		error_message = N_("Directory does not exist.");
+		error_message = _("Directory does not exist.");
 		return false;
 	}
 
 	if (!tp.readable()) {
-		error_message = N_("Cannot read this directory.");
+		error_message = _("Cannot read this directory.");
 		return false;
 	}
 
@@ -451,13 +451,13 @@ bool RWInfo::WriteableFile(string const & name)
 	error_message.erase();
 
 	if (name.empty()) {
-		error_message = N_("No file input.");
+		error_message = _("No file input.");
 		return false;
 	}
 
 	string const dir = OnlyPath(name);
 	if (!AbsolutePath(dir)) {
-		error_message = N_("The absolute path is required.");
+		error_message = _("The absolute path is required.");
 		return false;
 	}
 
@@ -468,23 +468,23 @@ bool RWInfo::WriteableFile(string const & name)
 	}
 
 	if (!d.isOK() || !d.isDir()) {
-		error_message = N_("Directory does not exist.");
+		error_message = _("Directory does not exist.");
 		return false;
 	}
 
 	if (!d.writable()) {
-		error_message = N_("Cannot write to this directory.");
+		error_message = _("Cannot write to this directory.");
 		return false;
 	}
 
 	FileInfo f(name);
 	if (dir == name || (f.isOK() && f.isDir())) {
-		error_message = N_("A file is required, not a directory.");
+		error_message = _("A file is required, not a directory.");
 		return false;
 	}
 
 	if (f.isOK() && f.exist() && !f.writable()) {
-		error_message = N_("Cannot write to this file.");
+		error_message = _("Cannot write to this file.");
 		return false;
 	}
 
@@ -497,13 +497,13 @@ bool RWInfo::ReadableFile(string const & name)
 	error_message.erase();
 
 	if (name.empty()) {
-		error_message = N_("No file input.");
+		error_message = _("No file input.");
 		return false;
 	}
 
 	string const dir = OnlyPath(name);
 	if (!AbsolutePath(dir)) {
-		error_message = N_("The absolute path is required.");
+		error_message = _("The absolute path is required.");
 		return false;
 	}
 
@@ -514,28 +514,28 @@ bool RWInfo::ReadableFile(string const & name)
 	}
 
 	if (!d.isOK() || !d.isDir()) {
-		error_message = N_("Directory does not exist.");
+		error_message = _("Directory does not exist.");
 		return false;
 	}
 
 	if (!d.readable()) {
-		error_message = N_("Cannot read from this directory.");
+		error_message = _("Cannot read from this directory.");
 		return false;
 	}
 
 	FileInfo f(name);
 	if (dir == name || (f.isOK() && f.isDir())) {
-		error_message = N_("A file is required, not a directory.");
+		error_message = _("A file is required, not a directory.");
 		return false;
 	}
 
 	if (!f.exist()) {
-		error_message = N_("File does not exist.");
+		error_message = _("File does not exist.");
 		return false;
 	}
 
 	if (!f.readable()) {
-		error_message = N_("Cannot read from this file.");
+		error_message = _("Cannot read from this file.");
 		return false;
 	}
 

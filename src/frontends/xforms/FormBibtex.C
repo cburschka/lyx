@@ -59,16 +59,16 @@ void FormBibtex::build()
 	bc().addReadOnly(dialog_->check_bibtotoc);
 
 	// set up the tooltips
-	string str = N_("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
+	string str = _("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
 	tooltips().init(dialog_->button_database_browse, str);
 
-	str = N_("Browse your directory for BibTeX stylefiles.");
+	str = _("Browse your directory for BibTeX stylefiles.");
 	tooltips().init(dialog_->button_style_browse, str);
 
-	str = N_("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
+	str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
 	tooltips().init(dialog_->input_style, str);
 
-	str = N_("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
+	str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
 	tooltips().init(dialog_->check_bibtotoc, str);
 }
 

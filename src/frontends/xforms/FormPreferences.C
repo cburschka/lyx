@@ -508,10 +508,10 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 	string str;
 
 	if (ob == dialog_->browser_lyx_objs) {
-		str = N_("LyX objects that can be assigned a color.");
+		str = _("LyX objects that can be assigned a color.");
 
 	} else if (ob == dialog_->button_modify) {
-		str = N_("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
+		str = _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
 
 	} else if (ob == dialog_->dial_hue ||
 		   ob == dialog_->slider_saturation ||
@@ -519,11 +519,11 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 		   ob == dialog_->slider_red ||
 		   ob == dialog_->slider_green ||
 		   ob == dialog_->slider_blue) {
-		str = N_("Find a new color.");
+		str = _("Find a new color.");
 
 	} else if (ob == dialog_->radio_rgb ||
 		   ob == dialog_->radio_hsv) {
-		str = N_("Toggle between RGB and HSV color spaces.");
+		str = _("Toggle between RGB and HSV color spaces.");
 	}
 
 	return str;
@@ -963,22 +963,22 @@ FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 	string str;
 
 	if (ob == dialog_->browser_all) {
-		str = N_("All the currently defined converters known to LyX.");
+		str = _("All the currently defined converters known to LyX.");
 	} else if (ob == dialog_->choice_from) {
-		str = N_("Convert \"from\" this format");
+		str = _("Convert \"from\" this format");
 	} else if (ob == dialog_->choice_to) {
-		str = N_("Convert \"to\" this format");
+		str = _("Convert \"to\" this format");
 	} else if (ob == dialog_->input_converter) {
-		str = N_("The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file.");
+		str = _("The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file.");
 	} else if (ob == dialog_->input_flags) {
-		str = N_("Flags that control the converter behavior");
+		str = _("Flags that control the converter behavior");
 	} else if (ob == dialog_->button_delete) {
-		str = N_("Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change.");
+		str = _("Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change.");
 	} else if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
-			str = N_("Add the current converter to the list of available converters. Note: you must then \"Apply\" the change.");
+			str = _("Add the current converter to the list of available converters. Note: you must then \"Apply\" the change.");
 		else
-			str = N_("Modify the contents of the current converter. Note: you must then \"Apply\" the change.");
+			str = _("Modify the contents of the current converter. Note: you must then \"Apply\" the change.");
 	}
 
 	return str;
@@ -1226,24 +1226,24 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 	string str;
 
 	if (ob == dialog_->browser_all) {
-		str = N_("All the currently defined formats known to LyX.");
+		str = _("All the currently defined formats known to LyX.");
 	} else if (ob == dialog_->input_format) {
-		str = N_("The format identifier.");
+		str = _("The format identifier.");
 	} else if (ob == dialog_->input_gui_name) {
-		str = N_("The format name as it will appear in the menus.");
+		str = _("The format name as it will appear in the menus.");
 	} else if (ob == dialog_->input_shrtcut) {
-		str = N_("The keyboard accelerator. Use a letter in the GUI name. Case sensitive.");
+		str = _("The keyboard accelerator. Use a letter in the GUI name. Case sensitive.");
 	} else if (ob == dialog_->input_extension) {
-		str = N_("Used to recognize the file. E.g., ps, pdf, tex.");
+		str = _("Used to recognize the file. E.g., ps, pdf, tex.");
 	} else if (ob == dialog_->input_viewer) {
-		str = N_("The command used to launch the viewer application.");
+		str = _("The command used to launch the viewer application.");
 	} else if (ob == dialog_->button_delete) {
-		str = N_("Remove the current format from the list of available formats. Note: you must then \"Apply\" the change.");
+		str = _("Remove the current format from the list of available formats. Note: you must then \"Apply\" the change.");
 	} else if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
-			str = N_("Add the current format to the list of available formats. Note: you must then \"Apply\" the change.");
+			str = _("Add the current format to the list of available formats. Note: you must then \"Apply\" the change.");
 		else
-			str = N_("Modify the contents of the current format. Note: you must then \"Apply\" the change.");
+			str = _("Modify the contents of the current format. Note: you must then \"Apply\" the change.");
 	}
 
 	return str;
@@ -1525,27 +1525,27 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->button_bind_file_browse) {
 		string dir  = AddName(system_lyxdir, "bind");
-		string name = N_("Sys Bind|#S#s");
+		string name = _("Sys Bind|#S#s");
 		pair<string,string> dir1(name, dir);
 
 		dir = AddName(user_lyxdir, "bind");
-		name = N_("User Bind|#U#u");
+		name = _("User Bind|#U#u");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_bind_file,
-			       N_("Bind file"), "*.bind", dir1, dir2);
+			       _("Bind file"), "*.bind", dir1, dir2);
 
 	} else if (ob == dialog_->button_ui_file_browse) {
 		string dir  = AddName(system_lyxdir, "ui");
-		string name = N_("Sys UI|#S#s");
+		string name = _("Sys UI|#S#s");
 		pair<string,string> dir1(name, dir);
 
 		dir = AddName(user_lyxdir, "ui");
-		name = N_("User UI|#U#u");
+		name = _("User UI|#U#u");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_ui_file,
-			       N_("UI file"), "*.ui", dir1, dir2);
+			       _("UI file"), "*.ui", dir1, dir2);
 	}
 
 	return true;
@@ -1733,18 +1733,18 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_kbmap1_browse) {
 		string const dir  = AddName(system_lyxdir, "kbd");
-		string const name = N_("Key maps|#K#k");
+		string const name = _("Key maps|#K#k");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap1,
-			       N_("Keyboard map"), "*.kmap", dir1);
+			       _("Keyboard map"), "*.kmap", dir1);
 	} else if (ob == dialog_->button_kbmap2_browse) {
 		string const dir  = AddName(system_lyxdir, "kbd");
-		string const name = N_("Key maps|#K#k");
+		string const name = _("Key maps|#K#k");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap2,
-			       N_("Keyboard map"), "*.kmap", dir1);
+			       _("Keyboard map"), "*.kmap", dir1);
 	}
 
 	return activate;
@@ -2219,24 +2219,24 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_default_path_browse) {
 		parent_.browse(dialog_->input_default_path,
-			       N_("Default path"), string());
+			       _("Default path"), string());
 	} else if (ob == dialog_->button_template_path_browse) {
 		parent_.browse(dialog_->input_template_path,
-			       N_("Template path"), string());
+			       _("Template path"), string());
 	} else if (ob == dialog_->button_temp_dir_browse) {
 		parent_.browse(dialog_->input_temp_dir,
-			       N_("Temp dir"), string());
+			       _("Temp dir"), string());
 	} else if (ob == dialog_->button_lastfiles_browse) {
 		pair<string, string> dir(_("User|#U#u"), user_lyxdir);
 
 		parent_.browse(dialog_->input_lastfiles,
-			       N_("Lastfiles"), string(), dir);
+			       _("Lastfiles"), string(), dir);
 	} else if (ob == dialog_->button_backup_path_browse) {
 		parent_.browse(dialog_->input_backup_path,
-			       N_("Backup path"), string());
+			       _("Backup path"), string());
 	} else if (ob == dialog_->button_serverpipe_browse) {
 		parent_.browse(dialog_->input_serverpipe,
-			       N_("LyX Server pipes"), string());
+			       _("LyX Server pipes"), string());
 	}
 
 	return activate;
@@ -2688,7 +2688,7 @@ bool FormPreferences::ScreenFonts::input()
 	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huge))
 	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huger))) {
 		activate = false;
-		str = N_("Fonts must be positive!");
+		str = _("Fonts must be positive!");
 
 	} else if (strToDbl(fl_get_input(dialog_->input_tiny)) >
 		   // Fontsizes -- tiny < script < footnote etc.
@@ -2711,7 +2711,7 @@ bool FormPreferences::ScreenFonts::input()
 		   strToDbl(fl_get_input(dialog_->input_huger))) {
 		activate = false;
 
-		str = N_("Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger.");
+		str = _("Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger.");
 	}
 
 	if (!activate)
@@ -2931,7 +2931,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_personal_dict) {
 		parent_.browse(dialog_->input_personal_dict,
-			       N_("Personal dictionary"), "*.ispell");
+			       _("Personal dictionary"), "*.ispell");
 	}
 
 	return true; // All input is valid!

@@ -1,3 +1,7 @@
+2002-04-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxrc.C (getDescription): use _() correctly rather than N_().
+
 2002-03-28  Herbert Voss  <voss@lyx.org>
 
 	* lyxlength.C: compatibility stuff for < 1.1.6fix4 and 
