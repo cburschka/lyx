@@ -106,9 +106,9 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 
 
 // And this would be the file interface.
-unsigned long lyx::sum(char const * file)
+unsigned long lyx::sum(string const & file)
 {
-	ifstream ifs(file);
+	ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	ifs.unsetf(ios::skipws);
 	ostringstream ostr;
@@ -119,8 +119,3 @@ unsigned long lyx::sum(char const * file)
 	return do_crc(w.begin(), w.end());
 }
 
-
-unsigned long lyx::sum(string const & file) 
-{
-	return lyx::sum(file.c_str());
-}

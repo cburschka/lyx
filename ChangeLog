@@ -1,3 +1,13 @@
+2000-10-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxlib.h: unify namespace/struct implementation.
+	Remove extra declarations.
+	
+	* src/support/chdir.C (chdir): remove version taking char const *
+	argument. 
+	* src/support/rename.C: ditto.
+	* src/support/lyxsum.C: ditto.
+
 2000-10-19  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormBase.[Ch]:
