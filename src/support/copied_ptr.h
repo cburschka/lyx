@@ -4,15 +4,21 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Yonat Sharon http://ootips.org/yonat/
+ * \author Angus Leeming
  *
- * simple copy-on-create/assign pointer.
+ * A templated class that can serve as a pointer to an object, with the
+ * property that when the copied_ptr is copied, it creates its own copy
+ * of the object pointed to as well.
  *
- * Note: If the actual object pointed to belongs to a derived class,
- * then copied_ptr will not create a copy of the derived class object,
- * but a new base class object.
- * If you want to use a polymorphic copy-on-assign pointer, use
- * cloned_ptr.
+ * The implementation was based originally on Yonat Sharon's copied_ptr templated
+ * class, as described at http://ootips.org/yonat/, but has evolved toward's
+ * Herb Sutter's HolderPtr, as described at http://www.gotw.ca/gotw/062.htm.
+ * (Note, HolderPtr became ValuePtr in his book, More Exceptional C++.)
+ *
+ * Warning: if the class stores 'Base * ptr_', but the actual object pointed to
+ * belongs to a derived class, then you must specialise memory_traits<Base> so that
+ * its clone and destroy member functions do the right thing. Otherwise, you'll
+ * end up slicing the data.
  */
 
 #ifndef COPIED_PTR_H
@@ -22,11 +28,18 @@ namespace lyx {
 namespace support {
 
 template <typename T>
+struct memory_traits {
+	static T * clone(T const * ptr) { return new T(*ptr); }
+	static void destroy(T * ptr) { delete ptr; }
+};
+
+
+template <typename T, typename Traits=memory_traits<T> >
 class copied_ptr {
 public:
 	explicit copied_ptr(T * = 0);
-	~copied_ptr();
 	copied_ptr(copied_ptr const &);
+	~copied_ptr();
 	copied_ptr & operator=(copied_ptr const &);
 
 	T & operator*() const;
@@ -35,66 +48,65 @@ public:
 
 private:
 	T * ptr_;
-	void copy(copied_ptr const &);
+	void swap(copied_ptr &);
 };
 
 
-template <typename T>
-copied_ptr<T>::copied_ptr(T * p)
+template <typename T, typename Traits>
+copied_ptr<T, Traits>::copied_ptr(T * p)
 	: ptr_(p)
 {}
 
 
-template <typename T>
-copied_ptr<T>::~copied_ptr()
+template <typename T, typename Traits>
+copied_ptr<T, Traits>::copied_ptr(copied_ptr const & other)
+	: ptr_(other.ptr_ ? Traits::clone(other.ptr_) : 0)
+{}
+
+
+template <typename T, typename Traits>
+copied_ptr<T, Traits>::~copied_ptr()
 {
-	delete ptr_;
+	Traits::destroy(ptr_);
 }
 
 
-template <typename T>
-copied_ptr<T>::copied_ptr(copied_ptr const & other)
+template <typename T, typename Traits>
+copied_ptr<T, Traits> & copied_ptr<T, Traits>::operator=(copied_ptr const & other)
 {
-	copy(other.get());
+	if (&other != this) {
+		copied_ptr temp(other);
+		swap(temp);
+	}
+	return *this;
 }
 
 
-template <typename T>
-copied_ptr<T> & copied_ptr<T>::operator=(copied_ptr const & other)
-{
-        if (&other != this) {
-		delete ptr_;
-		copy(other);
-        }
-        return *this;
-}
-
-
-template <typename T>
-T & copied_ptr<T>::operator*() const
+template <typename T, typename Traits>
+T & copied_ptr<T, Traits>::operator*() const
 {
 	return *ptr_;
 }
 
 
-template <typename T>
-T * copied_ptr<T>::operator->() const
+template <typename T, typename Traits>
+T * copied_ptr<T, Traits>::operator->() const
 {
 	return ptr_;
 }
 
 
-template <typename T>
-T * copied_ptr<T>::get() const
+template <typename T, typename Traits>
+T * copied_ptr<T, Traits>::get() const
 {
 	return ptr_;
 }
 
 
-template <typename T>
-void copied_ptr<T>::copy(copied_ptr const & other)
+template <typename T, typename Traits>
+void copied_ptr<T, Traits>::swap(copied_ptr & other)
 {
-	ptr_ = other.ptr_ ? new T(*other.ptr_) : 0;
+	std::swap( ptr_, other.ptr_ );
 }
 
 } // namespace support

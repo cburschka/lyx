@@ -79,6 +79,19 @@ BufferParams::Impl::Impl()
 }
 
 
+BufferParams::Impl *
+BufferParams::MemoryTraits::clone(BufferParams::Impl const * ptr)
+{
+	return new BufferParams::Impl(*ptr);
+}
+
+
+void BufferParams::MemoryTraits::destroy(BufferParams::Impl * ptr)
+{
+	delete ptr;
+}
+
+
 BufferParams::BufferParams()
 	: // Initialize textclass to point to article. if `first' is
 	  // true in the returned pair, then `second' is the textclass

@@ -20,7 +20,7 @@
 
 #include "insets/insetquotes.h"
 
-#include "support/cow_ptr.h"
+#include "support/copied_ptr.h"
 #include "support/types.h"
 
 #include "support/std_string.h"
@@ -39,10 +39,10 @@ struct Language;
 
 
 /** Buffer parameters.
-   This class contains all the parameters for this a buffer uses. Some
-   work needs to be done on this class to make it nice. Now everything
-   is in public.
-*/
+ *  This class contains all the parameters for this a buffer uses. Some
+ *  work needs to be done on this class to make it nice. Now everything
+ *  is in public.
+ */
 class BufferParams {
 public:
 	///
@@ -63,8 +63,8 @@ public:
 	void writeFile(std::ostream &) const;
 
 	/** \returns true if the babel package is used (interogates
-	    the BufferParams and a LyXRC variable).
-	    This returned value can then be passed to the insets...
+	 *  the BufferParams and a LyXRC variable).
+	 *  This returned value can then be passed to the insets...
 	 */
 	bool writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
 
@@ -84,8 +84,8 @@ public:
 	void setDefSkip(VSpace const & vs);
 
 	/** Wether paragraphs are separated by using a indent like in
-	  articles or by using a little skip like in letters.
-	  */
+	 *  articles or by using a little skip like in letters.
+	 */
 	PARSEP paragraph_separation;
 	///
 	InsetQuotes::quote_language quotes_language;
@@ -203,10 +203,14 @@ public:
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
-	    drag in other header files.
+	 *  drag in other header files.
 	 */
 	class Impl;
-	lyx::support::cow_ptr<Impl> pimpl_;
+	struct MemoryTraits {
+		static Impl * clone(Impl const *);
+		static void destroy(Impl *);
+	};
+	lyx::support::copied_ptr<Impl, MemoryTraits> pimpl_;
 };
 
 #endif
