@@ -124,7 +124,7 @@ void FormGraphics::build()
 	fl_addto_choice(file_->choice_display, display_List.c_str());
 
 #if USE_BOOST_FORMAT
-	string const width_list = boost::io::str(boost::format(_("Scale%%|%1$s")) % choice_Length_All);
+	string const width_list = boost::io::str(boost::format(_("Scale%%%%|%1$s")) % choice_Length_All);
 #else
 	// xgettext:no-c-format
 	string const width_list = _("Scale%%|") + choice_Length_All;
