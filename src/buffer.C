@@ -1739,11 +1739,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 			use_babel = true;
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
 				     features.UsedLanguages.begin();
-			     cit != features.UsedLanguages.end(); ++cit) {
+			     cit != features.UsedLanguages.end(); ++cit)
 				options += (*cit)->lang + ",";
-			}
-			if (default_language != params.language_info)
-				options += default_language->lang + ',';
 			options += params.language_info->lang + ',';
 		}
 
@@ -1884,7 +1881,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 		if (params.use_amsmath
-		    && !prefixIs(textclasslist.LatexnameOfClass(params.textclass), "ams")) {
+		    && !tclass.provides(LyXTextClass::amsmath)) {
 			ofs << "\\usepackage{amsmath}\n";
 			texrow.newline();
 		}
@@ -2128,7 +2125,7 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph *par,
 			par = par->TeXEnvironment(ofs, texrow,
 						  ftnote, ft_texrow, ftcount);
 		} else {
-			par = par->TeXOnePar(ofs, texrow,
+			par = par->TeXOnePar(ofs, texrow, false,
 					     ftnote, ft_texrow, ftcount);
 		}
 

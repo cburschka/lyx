@@ -1,3 +1,36 @@
+2000-05-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text.C (draw): do not display an exclamation mark in the
+	margin for margin notes. This is confusing, ugly and
+	uninformative. 
+
+	* src/LaTeXFeatures.C (getPackages): load amssymb also when 'Use
+	AMS math' is checked.
+
+	* src/buffer.C (makeLaTeXFile): do not depend on the textclass
+	name to see whether including the amsmath package is needed.
+
+2000-05-05  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/paragraph.C (validate): Compute UsedLanguages correctly
+	(don't insert the american language if it doesn't appear in the
+	document)
+
+	* src/paragraph.C (TeXOnePar,SimpleTeXOnePar,SimpleTeXSpecialChars)
+	The argument of \thanks{} command is considered moving argument
+
+	* src/paragraph.C (SimpleTeXOnePar): Put \protect before \\ if in
+	moving argument.
+
+2000-05-04  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/text.C (GetVisibleRow): Improved drawing of vertical lines
+	for appendix/minipage/depth. The lines can be now both in the footnote 
+	frame, and outside the frame.
+
+	* src/text.C (SingleWidth,draw): Correct rendering of Hebrew vowels
+	points ("nikud")
+
 2000-05-05  Juergen Vigna  <jug@sad.it>
 
 	* src/table.[Ch]: removed the inset and buffer stuff as this is now

@@ -367,12 +367,22 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 					     << (*cit).font.stateText()
 					     << endl;
 		}
+#if 0
 		Language const * language = (*cit).font.language();
-		if (language != doc_language && language != default_language) {
+		if (language != doc_language) {
 			features.UsedLanguages.insert(language);
 			lyxerr[Debug::LATEX] << "Found language "
 					     << language->lang << endl;
-		}		
+		}
+#endif
+	}
+
+	// This is not efficient. I plan to use the code above, after I
+	// change the fontlist handling.
+	for (size_type i = 0; i < size(); ++i) {
+		Language const * language = GetFontSettings(i).language();
+		if (language != doc_language)
+			features.UsedLanguages.insert(language);
 	}
 
 	// then the insets
@@ -1964,6 +1974,7 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 
 
 LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
+				       bool moving_arg, 
 				       ostream & foot,
 				       TexRow & foot_texrow,
 				       int & foot_count)
@@ -2041,7 +2052,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		break;
 	}
 
-	bool need_par = SimpleTeXOnePar(os, texrow);
+	bool need_par = SimpleTeXOnePar(os, texrow, moving_arg);
  
 	// Spit out footnotes
 	LyXParagraph * par = next;
@@ -2059,7 +2070,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 				par = par->TeXFootnote(os, texrow, foot,
 						       foot_texrow, foot_count,
 						       is_rtl);
-				par->SimpleTeXOnePar(os, texrow);
+				par->SimpleTeXOnePar(os, texrow, moving_arg);
 				is_rtl = par->GetFontSettings(par->size()-1).isRightToLeft();
 				if (par->next &&
 				    par->next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
@@ -2075,7 +2086,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 			par = par->TeXFootnote(os, texrow,
 					       foot, foot_texrow, foot_count,
 					       false);
-			par->SimpleTeXOnePar(os, texrow);
+			par->SimpleTeXOnePar(os, texrow, moving_arg);
 			par = par->next;
 		}
 	}
@@ -2184,7 +2195,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 
 // This one spits out the text of the paragraph
-bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
+bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
+				   bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 
@@ -2226,6 +2238,8 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
 			return_value = true;
 		}
 	}
+
+	moving_arg |= style.needprotect;
  
 	// Which font is currently active?
 	LyXFont running_font(basefont);
@@ -2356,13 +2370,15 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
 				    LyXFont::TYPEWRITER_FAMILY) {
 					os << "~";
 				}
+				if (moving_arg)
+					os << "\\protect ";
 				os << "\\\\\n";
 			}
 			texrow.newline();
 			texrow.start(this, i + 1);
 			column = 0;
 		} else {
-			SimpleTeXSpecialChars(os, texrow,
+			SimpleTeXSpecialChars(os, texrow, moving_arg,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -2549,7 +2565,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 			}
 			texrow.start(this, i + 1);
 		} else {
-			SimpleTeXSpecialChars(os, texrow,
+			SimpleTeXSpecialChars(os, texrow, false,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -2661,7 +2677,7 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 					column += 9;
 				}
 			}
-			SimpleTeXSpecialChars(os, texrow, font,
+			SimpleTeXSpecialChars(os, texrow, false, font,
 					      running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -3110,6 +3126,7 @@ void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
 
 
 void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
+					 bool moving_arg,
 					 LyXFont & font,
 					 LyXFont & running_font,
 					 LyXFont & basefont,
@@ -3135,7 +3152,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 				close = true;
 			}
 
-			int tmp = inset->Latex(os, style.isCommand(),
+			int tmp = inset->Latex(os, moving_arg,
 					       style.free_spacing);
 
 			if (close)
@@ -3472,7 +3489,7 @@ LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
 						  foot, foot_texrow,
 						  foot_count);
 		} else {
-			par = par->TeXOnePar(os, texrow,
+			par = par->TeXOnePar(os, texrow, false,
 					     foot, foot_texrow,
 					     foot_count);
 		}
@@ -3623,7 +3640,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 	}
 	LyXParagraph * par = this;
 	do {
-		par = par->TeXOnePar(os, texrow,
+		par = par->TeXOnePar(os, texrow, false,
 				     foot, foot_texrow, foot_count);
 
                 if (minipage_open && par && !style.isEnvironment() &&
@@ -3807,8 +3824,10 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 
+	bool moving_arg = false;
 	bool need_closing = false;
 	bool is_rtl = isRightToLeftPar();
+
 	if (is_rtl != parent_is_rtl) {
 		if (is_rtl)
 			os << "\\R{";
@@ -3824,6 +3843,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		if (style.intitle) {
 			os << "\\thanks{\n";
 			footer_in_body = false;
+			moving_arg = true;
 		} else {
 			if (foot_count == -1) {
 				// we're at depth 0 so we can use:
@@ -3918,7 +3938,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 							  foot, foot_texrow,
 							  foot_count);
 			} else {
-				par = par->TeXOnePar(os, texrow,
+				par = par->TeXOnePar(os, texrow, moving_arg,
 						     foot, foot_texrow,
 						     foot_count);
 			}
@@ -3960,6 +3980,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 							  dummy_count);
 			} else {
 				par = par->TeXOnePar(foot, foot_texrow,
+						     moving_arg,
 						     dummy, dummy_texrow,
 						     dummy_count);
 			}

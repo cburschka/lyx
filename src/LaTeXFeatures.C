@@ -158,7 +158,7 @@ string LaTeXFeatures::getPackages()
 		packages += "\\usepackage{rotating}\n";
 
 	// amssymb.sty
-	if (amssymb)
+	if (amssymb || params.use_amsmath)
 		packages += "\\usepackage{amssymb}\n";
 
 	// latexsym.sty

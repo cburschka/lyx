@@ -152,10 +152,11 @@ public:
 
 	///
 	LyXParagraph * TeXOnePar(std::ostream &, TexRow & texrow,
+				 bool moving_arg,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	bool SimpleTeXOnePar(std::ostream &, TexRow & texrow);
+	bool SimpleTeXOnePar(std::ostream &, TexRow & texrow, bool moving_arg);
 
 	///
 	LyXParagraph * TeXEnvironment(std::ostream &, TexRow & texrow,
@@ -590,6 +591,7 @@ private:
 			     LyXLayout const & style);
 	///
 	void SimpleTeXSpecialChars(std::ostream &, TexRow & texrow,
+				   bool moving_arg,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,

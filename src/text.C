@@ -101,9 +101,17 @@ static int iso885968x[] = {
 };
 
 
+inline
 bool is_arabic(unsigned char c)
 {
 	return 0xa8 <= c && c <= 0xea && iso885968x[c-0xa8];
+}
+
+
+inline
+bool is_nikud(unsigned char c)
+{
+        return 192 <= c && c <= 210;
 }
 
 
@@ -179,9 +187,14 @@ int LyXText::SingleWidth(LyXParagraph * par,
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
-		if (font.language()->lang == "arabic" &&
-		    lyxrc.font_norm == "iso8859-6.8x")
-			c = TransformChar(c, par, pos);
+		if (font.language()->RightToLeft) {
+			if (font.language()->lang == "arabic" &&
+			    lyxrc.font_norm == "iso8859-6.8x")
+				c = TransformChar(c, par, pos);
+			else if (font.language()->lang == "hebrew" &&
+				 is_nikud(c))
+				return 0;
+		}
 		return lyxfont::width(c, font);
 
 	} else if (IsHfillChar(c)) {
@@ -450,10 +463,15 @@ void LyXText::draw(Row const * row,
 		switch (c) {
 		case LyXParagraph::META_MARGIN:
 			fs = "margin";
+#ifdef WITH_WARNINGS
+#warning I think we do not need that '!' (JMarc)
+#endif
+#if 0
 			// Draw a sign at the left margin!
 			owner_->painter()
 				.text((LYX_PAPER_MARGIN - lyxfont::width('!', font))/2,
 				      offset + row->baseline, "!", 1, font);
+#endif
 			break;
 		case LyXParagraph::META_FIG:
 			fs = "fig";
@@ -518,31 +536,70 @@ void LyXText::draw(Row const * row,
 	// So IMHO we should go with the easier and clearer implementation.
 	// And even if 1024 is a large number here it might overflow, string
 	// will only overflow if the machine is out of memory...
-	bool do_transform =
-		font2.language()->lang == "arabic" &&
-		lyxrc.font_norm == "iso8859-6.8x";
-	if (do_transform)
-		c = TransformChar(c, row->par, pos);
 	static string textstring;
 	textstring = c;
 	++vpos;
 
 	LyXParagraph::size_type last = RowLastPrintable(row);
-	
-	while (vpos <= last &&
-	       (pos = vis2log(vpos)) >= 0
-	       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
-	       && font2 == GetFont(row->par, pos)) {
-		if (do_transform)
-			c = TransformChar(c, row->par, pos);
-		textstring += c;
-		++vpos;
-	}
 	float tmpx = x;
 
-	// Draw text and set the new x position
-	pain.text(int(x), offset + row->baseline, textstring, font);
-	x += lyxfont::width(textstring, font);
+	if (font.language()->lang == "hebrew") {
+		if (is_nikud(c)) {
+			LyXParagraph::size_type vpos2 = vpos;
+			int width = lyxfont::width(c, font2);
+			int dx = 0;
+			while (vpos2 <= last &&
+			       (pos = vis2log(vpos2)) >= 0
+			       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+			       && is_nikud(c))
+				++vpos2;
+			if (static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+			    && !is_nikud(c)) {
+				int width2 = SingleWidth(row->par, pos, c);
+				dx = (c == 'ø' || c == 'ã') 
+					? width2-width : (width2-width)/2;
+			}
+			// Draw nikud
+			pain.text(int(x)+dx, offset + row->baseline, textstring, font);
+		} else {
+			while (vpos <= last &&
+			       (pos = vis2log(vpos)) >= 0
+			       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+			       && !is_nikud(c)
+			       && font2 == GetFont(row->par, pos)) {
+				textstring += c;
+				++vpos;
+			}
+			// Draw text and set the new x position
+			pain.text(int(x), offset + row->baseline, textstring, font);
+			x += lyxfont::width(textstring, font);
+		}
+	} else if (font.language()->lang == "arabic" &&
+		   lyxrc.font_norm == "iso8859-6.8x") {
+		textstring = TransformChar(c, row->par, pos);
+		while (vpos <= last &&
+		       (pos = vis2log(vpos)) >= 0
+		       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+		       && font2 == GetFont(row->par, pos)) {
+			c = TransformChar(c, row->par, pos);
+			textstring += c;
+			++vpos;
+		}
+		// Draw text and set the new x position
+		pain.text(int(x), offset + row->baseline, textstring, font);
+		x += lyxfont::width(textstring, font);
+	} else {
+		while (vpos <= last &&
+		       (pos = vis2log(vpos)) >= 0
+		       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
+		       && font2 == GetFont(row->par, pos)) {
+			textstring += c;
+			++vpos;
+		}
+		// Draw text and set the new x position
+		pain.text(int(x), offset + row->baseline, textstring, font);
+		x += lyxfont::width(textstring, font);
+	}
 	
 	// what about underbars?
 	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
@@ -3581,7 +3638,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 	float x, tmpx;
 	int y_top, y_bottom;
 	float fill_separator, fill_hfill, fill_label_hfill;
-	LyXParagraph * par, * firstpar;
+
 	LyXFont font;
 	int maxdesc;
 	if (row_ptr->height <= 0) {
@@ -3727,55 +3784,14 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		}
 	}
 
-	if (row_ptr->par->appendix){
-		pain.line(1, offset,
-			  1, offset + row_ptr->height,
-			  LColor::appendixline);
-		pain.line(paperwidth - 2, offset,
-			  paperwidth - 2, offset + row_ptr->height,
-			  LColor::appendixline);
-	}
-
-	int depth = row_ptr->par->GetDepth();
-	if (depth > 0) {
-		int next_depth = (row_ptr->next)
-			? next_depth = row_ptr->next->par->GetDepth() : 0; 
-		int prev_depth = (row_ptr->previous)
-		        ? row_ptr->previous->par->GetDepth() : 0;
-
-		for (int i = 1; i <= depth; ++i)
-			pain.line(4*i, offset,
-				  4*i, offset + row_ptr->height - 1 - (i-next_depth-1)*3,
-				  LColor::depthbar);
-
-		for (int i = prev_depth + 1; i <= depth; ++i)
-			pain.fillRectangle(4*i, offset,
-					   4, 2,
-					   LColor::depthbar);
-
-		for (int i = next_depth + 1; i <= depth; ++i)
-			pain.fillRectangle(4*i, offset + row_ptr->height - 2 - (i-next_depth-1)*3,
-					   4, 2,
-					   LColor::depthbar);
-	}
-	
-	if (row_ptr->par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
-		/* draw a marker at the left margin! */ 
-		LyXFont font = GetFont(row_ptr->par, 0);
-		int asc = lyxfont::maxAscent(font);
-		int x = (LYX_PAPER_MARGIN - lyxfont::width('|', font)) / 2;
-		int y1 = (offset + row_ptr->baseline);
-		int y2 = (offset + row_ptr->baseline) - asc;
-		pain.line(x, y1, x, y2, LColor::minipageline);
-	}       
+	int box_x = 0;
 	if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 		font.setColor(LColor::footnote);
 		
-		int box_x = LYX_PAPER_MARGIN;
-		box_x += lyxfont::width(" wide-tab ", font);
-		if (row_ptr->previous && 
+		box_x = LYX_PAPER_MARGIN + lyxfont::width(" wide-tab ", font);
+		if (row_ptr->previous &&
 		    row_ptr->previous->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
 			string fs;
 			switch (row_ptr->par->footnotekind) {
@@ -3843,6 +3859,35 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			  paperwidth - LYX_PAPER_MARGIN,
 			  offset + row_ptr->height,
 			  LColor::footnoteframe);
+
+
+		// Draw appendix lines
+		LyXParagraph * p = row_ptr->par->PreviousBeforeFootnote()->FirstPhysicalPar();
+		if (p->appendix){
+			pain.line(1, offset,
+				  1, offset + row_ptr->height,
+				  LColor::appendixline);
+			pain.line(paperwidth - 2, offset,
+				  paperwidth - 2, offset + row_ptr->height,
+				  LColor::appendixline);
+		}
+
+		// Draw minipage line
+		bool minipage = p->pextra_type == LyXParagraph::PEXTRA_MINIPAGE;
+		if (minipage)
+			pain.line(LYX_PAPER_MARGIN/5, offset,
+				  LYX_PAPER_MARGIN/5, 
+				  offset + row_ptr->height - 1,
+				  LColor::minipageline);
+
+		// Draw depth lines
+		int depth = p->GetDepth();
+		for (int i = 1; i <= depth; ++i) {
+			int line_x = (LYX_PAPER_MARGIN/5)*(i+minipage);
+			pain.line(line_x, offset, line_x,
+				  offset + row_ptr->height - 1,
+				  LColor::depthbar);
+		}
 	} else if (row_ptr->previous &&
 		   row_ptr->previous->par->footnoteflag
 		   == LyXParagraph::OPEN_FOOTNOTE) {
@@ -3856,12 +3901,67 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			  paperwidth - LYX_PAPER_MARGIN,
 			  offset, LColor::footnote);
 	}
+
+	// Draw appendix lines
+	LyXParagraph * firstpar = row_ptr->par->FirstPhysicalPar();
+	if (firstpar->appendix){
+		pain.line(1, offset,
+			  1, offset + row_ptr->height,
+			  LColor::appendixline);
+		pain.line(paperwidth - 2, offset,
+			  paperwidth - 2, offset + row_ptr->height,
+			  LColor::appendixline);
+	}
+
+	// Draw minipage line
+	bool minipage = firstpar->pextra_type == LyXParagraph::PEXTRA_MINIPAGE;
+	if (minipage)
+		pain.line(LYX_PAPER_MARGIN/5 + box_x, offset,
+			  LYX_PAPER_MARGIN/5 + box_x, 
+			  offset + row_ptr->height - 1,
+			  LColor::minipageline);
+
+	// Draw depth lines
+	int depth = firstpar->GetDepth();
+	if (depth > 0) {
+		int next_depth = 0;
+		int prev_depth = 0;
+		if (row_ptr->next)
+			if (row_ptr->par->footnoteflag ==
+			    row_ptr->next->par->footnoteflag)
+				next_depth = row_ptr->next->par->GetDepth();
+			else if (row_ptr->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE)
+				next_depth = depth;
+
+		if (row_ptr->previous)
+			if (row_ptr->par->footnoteflag ==
+			    row_ptr->previous->par->footnoteflag)
+				prev_depth = row_ptr->previous->par->GetDepth();
+			else if (row_ptr->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE)
+				prev_depth = depth;
+
+		for (int i = 1; i <= depth; ++i) {
+			int line_x = (LYX_PAPER_MARGIN/5)*(i+minipage)+box_x;
+			pain.line(line_x, offset, line_x,
+				  offset + row_ptr->height - 1 - (i-next_depth-1)*3,
+				  LColor::depthbar);
+		
+			if (i > prev_depth)
+				pain.fillRectangle(line_x, offset, LYX_PAPER_MARGIN/5, 2,
+						   LColor::depthbar);
+			if (i > next_depth)
+				pain.fillRectangle(line_x,
+						   offset + row_ptr->height - 2 - (i-next_depth-1)*3,
+						   LYX_PAPER_MARGIN/5, 2,
+						   LColor::depthbar);
+		}
+	}
+
 	
 	LyXLayout const & layout =
 		textclasslist.Style(buffer->params.textclass,
 				    row_ptr->par->GetLayout());
-	firstpar = row_ptr->par->FirstPhysicalPar();
-	
+
 	y_top = 0;
 	y_bottom = row_ptr->height;
 	
@@ -4052,7 +4152,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 	}
 	
 	/* is it a last row? */
-	par = row_ptr->par->LastPhysicalPar();
+	LyXParagraph * par = row_ptr->par->LastPhysicalPar();
 	if (row_ptr->par->ParFromPos(last + 1) == par
 	    && (!row_ptr->next || row_ptr->next->par != row_ptr->par)) {     
 		
