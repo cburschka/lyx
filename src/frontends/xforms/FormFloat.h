@@ -17,6 +17,7 @@
 #endif
 
 #include "FormBase.h"
+#include "RadioButtonGroup.h"
 
 class ControlFloat;
 struct FD_float;
@@ -37,6 +38,9 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// placement
+	RadioButtonGroup placement_;
 };
 
 #endif // FORMFLOAT_H

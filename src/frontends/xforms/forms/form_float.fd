@@ -5,17 +5,18 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_float
-Width: 370
-Height: 320
-Number of Objects: 14
+Width: 395
+Height: 260
+Number of Objects: 17
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 370 320
+box: 0 0 395 260
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -31,45 +32,27 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 20 75 152 30
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 5 10 385 185
 boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Top of the page|#T
+label: Placement
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_top
-callback: C_FormBaseInputCB
-argument: 0
+gravity: FL_NorthWest FL_SouthEast
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 20 105 152 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Bottom of the page|#B
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_bottom
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 190 75 152 30
+box: 215 115 170 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -78,8 +61,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Page of floats|#P
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_East FL_NoGravity
 name: check_page
 callback: C_FormBaseInputCB
 argument: 0
@@ -87,43 +70,61 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 190 105 152 30
+box: 45 140 170 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Here, if possible|#i
+label: Bottom of the page|#B
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_here
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: check_bottom
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 20 180 152 30
+box: 45 115 170 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Here, definitely|#H
+label: Top of the page|#T
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_here_definitely
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: check_top
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 215 140 170 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Here, if possible|#r
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_East FL_NoGravity
+name: check_here
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 280 100 30
+box: 5 230 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -132,8 +133,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Restore|#R
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
 name: button_restore
 callback: C_FormBaseRestoreCB
 argument: 0
@@ -141,7 +142,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 130 280 70 30
+box: 110 230 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -150,8 +151,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
 argument: 0
@@ -159,7 +160,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 210 280 70 30
+box: 205 230 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -168,8 +169,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Apply|#A
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_apply
 callback: C_FormBaseApplyCB
 argument: 0
@@ -177,7 +178,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 290 280 70 30
+box: 300 230 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -186,8 +187,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
@@ -195,7 +196,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 20 230 30 30
+box: 5 200 385 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -204,23 +205,41 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Span columns|#S
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
 name: check_wide
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_LABELFRAME
-type: ENGRAVED_FRAME
-box: 10 20 350 200
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 125 165 260 25
 boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_TOP_LEFT
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Ignore internal LaTeX rules|#I
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NoGravity FL_NoGravity
+name: check_force
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 10 10 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Placement
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -229,40 +248,77 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: PUSH_BUTTON
-box: 20 135 30 30
+box: 10 85 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Ignore internal placement rules|#g
+label: Alternatives|#l
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_force
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: radio_alternatives
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
+class: FL_ROUND3DBUTTON
 type: PUSH_BUTTON
-box: 20 30 30 30
+box: 10 55 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Float Defaults|#D
+label: Here, definitely!|#H
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: radio_here_definitely
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_ROUND3DBUTTON
+type: PUSH_BUTTON
+box: 10 25 200 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Document default|#D
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_West FL_NoGravity
+name: radio_default
+callback: C_FormBaseInputCB
+argument: 0
+	value: 1
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_default
-callback: C_FormBaseInputCB
-argument: 0
+name: 
+callback: 
+argument: 
 
 ==============================
 create_the_forms

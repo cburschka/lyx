@@ -1,3 +1,11 @@
+2002-10-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* forms/form_float.fd: prettify and implement gravity/resize policy
+	correctly.
+
+	* FormFloat.C: add tooltips, lots of comments and check the
+	input more carefully.
+
 2002-10-23  Angus Leeming  <leeming@lyx.org>
 
 	* checkedwidgets.C (setWidget): Don't set icol2 to alert_col when
