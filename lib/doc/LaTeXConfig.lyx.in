@@ -1387,9 +1387,67 @@ Notes: The Society for Industrial and Applied Mathematics, Philadelphia,
 \layout Subsection
 
 
-\begin_inset LatexCommand \label{svjog}
+\begin_inset LatexCommand \label{svglobal}
 
 \end_inset 
+
+Springer Unspecific Journal
+\layout Description
+
+Found: @chk_svglobal@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/springer/svjour/global
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand \url{http://www.springeronline.com}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: 
+\family sans 
+Svglobal
+\family default 
+ is a format suitable for publication in a Springer journal for which a
+ specific style is not provided; i.e., if the journal author guidelines at
+ the above Springer site suggest using the 
+\family sans 
+svglobal
+\family default 
+ style.
+  The corresponding documentclass files and associated material can be found
+ on the Springer site.
+ The layout consists of two parts: 
+\family typewriter 
+svjour.inc
+\family default 
+ (which is generic for all Springer journals) and 
+\family typewriter 
+svglobal.layout
+\family default 
+, which includes 
+\family typewriter 
+svjour.inc
+\family default 
+ and is the default style for any Springer Journal without any specific
+ style.
+ You can write your own 
+\family typewriter 
+sv<journal>.layout
+\family default 
+ to support any other Springer journals (hint, hint!).
+ Note that you need to specify the 
+\family typewriter 
+global
+\family default 
+ extra documentclass option which is included in the class defaults.
+\layout Subsection
 
 Springer Journal of Geodesy
 \layout Description
@@ -1399,11 +1457,11 @@ Found: @chk_svjog@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/springer/svjour/jog
+macros/latex/contrib/springer/svjour/jog
 \layout Description
 
 WWW: 
-\begin_inset LatexCommand \url{http://www.springer.de/author/tex/help-journals.html}
+\begin_inset LatexCommand \url{http://www.springeronline.com}
 
 \end_inset 
 
@@ -1417,26 +1475,12 @@ Svjog
  is for the journal formats used by Springer Verlag, in particular that
  of Journal of Geodesy.
  It is not very well tested yet.
- The corresponding documentclass files and associated material can be found
- on the Springer site.
- The layout consists of two parts: 
-\family typewriter 
-svjour.inc
-\family default 
- (which is generic for all Springer journals) and 
-\family typewriter 
-svjog.layout
-\family default 
-, which includes 
-\family typewriter 
-svjour.inc
-\family default 
- and is specific for Journal of Geodesy.
- You can write your own 
-\family typewriter 
-sv<journal>.layout
-\family default 
- to support any other Springer journals (hint, hint!)
+ For more information, see section 
+\begin_inset LatexCommand \ref{svglobal}
+
+\end_inset 
+
+.
 \layout Subsection
 
 Springer Probability Theory and Related Fields
@@ -1447,11 +1491,11 @@ Found: @chk_svprobth@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/springer/svjour/prothe
+macros/latex/contrib/springer/svjour/prothe
 \layout Description
 
 WWW: 
-\begin_inset LatexCommand \url{http://www.springer.de/author/tex/help-journals.html}
+\begin_inset LatexCommand \url{http://www.springeronline.com}
 
 \end_inset 
 
@@ -1465,7 +1509,7 @@ Svprothe
  is a format suitable for publication in the journal Probability Theory
  and Related Fields.
  For more information, see section 
-\begin_inset LatexCommand \ref{svjog}
+\begin_inset LatexCommand \ref{svglobal}
 
 \end_inset 
 
