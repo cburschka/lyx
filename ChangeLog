@@ -1,3 +1,15 @@
+2000-03-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/layouts/svjog.layout: new file, for Springer-Verlag Journal
+	of Geodesy (from Martin Vermeer)
+
+	* lib/layouts/svjour.inc: include file for the Springer svjour
+	class. It can be used to support journals other than JoG.
+
+	* lib/Makefile.am: use $(DESTDIR) make variable (from Arkadiusz
+	Miskiewicz <misiek@pld.org.pl>)
+	* lib/reLyX/Makefile.am: ditto.
+
 2000-03-27  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C: added Cut/Copy/Paste inside insets,

@@ -32,13 +32,13 @@ EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \
-		$(mkinstalldirs) $(pkgdatadir)/$$dir ; \
+		$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$$dir ; \
 	done
 
 install-data-local: libinstalldirs
 	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
 	for i in $${files} ; do \
-	   $(INSTALL_DATA) ${srcdir}/$$i $(pkgdatadir)/$$i ; \
+	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
 dist-hook:

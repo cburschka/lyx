@@ -1,0 +1,53 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
+# svjour/jog (article) textclass definition file. 
+# for Springer Verlag Journal of Geodesy.
+# --------
+#
+# Taken from initial LyX source code
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modified and enhanced by serveral developers.
+#
+# --------
+# ejour2 made originally by Martin Vermeer based on article.layout.
+# Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
+#
+# Adapted to svjour/jog (new 1999 Springer LaTeX2e classes) by
+# MV in 2000.
+#
+# General textclass parameters
+# (jog) ?
+#
+# see www.springer.de/author/tex/help-journals.html for class files
+#
+# The standard Springer Journal sections
+Input svjour.inc
+
+ClassOptions
+  Other		jog
+End
+
+# Abstract style definition
+Style Abstract 
+  Margin		First_Dynamic
+  LatexType		Command
+  LatexName		abstract
+  Newline		1
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Top_Environment
+  LabelString		Abstract. 
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End 

@@ -18,11 +18,11 @@ reLyX.1:
 
 libinstalldirs:
 	for dir in $(LYXDATADIRS) ; do \
-	  $(mkinstalldirs) $(pkgdatadir)/$$dir ; \
+	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$$dir ; \
 	done
 
 install-data-local:  libinstalldirs
 	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
 	for i in $${files} ; do \
-	   $(INSTALL_DATA) ${srcdir}/$$i $(pkgdatadir)/reLyX/$$i ; \
+	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/reLyX/$$i ; \
 	done
