@@ -961,15 +961,19 @@ void MathedCursor::SelBalance()
 
 
 #ifdef USE_PAINTER
-void MathedCursor::SelGetArea(int * xp, int * yp, int & np)
+void MathedCursor::SelGetArea(int ** xp, int ** yp, int & np)
 {   
-    if (!selection) {
-	np = 0;
-	return;
-    }
-
     static int xpoint[10];
     static int ypoint[10];
+
+    if (!selection) {
+	np = 0;
+	xpoint[0] = 0;
+	ypoint[0] = 0;
+	*xp = &xpoint[0];
+	*yp = &ypoint[0];
+	return;
+    }
     
     // single row selection
     int i = 0, x, y, a, d, xo, yo, x1, y1, a1, d1;
@@ -1015,8 +1019,8 @@ void MathedCursor::SelGetArea(int * xp, int * yp, int & np)
     xpoint[i] = xpoint[0];
     ypoint[i++] = ypoint[0];
 
-    xp = &xpoint[0];
-    yp = &ypoint[0];
+    *xp = &xpoint[0];
+    *yp = &ypoint[0];
     np = i;
 //    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
 //    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";

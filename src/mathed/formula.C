@@ -496,7 +496,7 @@ void InsetFormula::draw(Painter & pain, LyXFont const &,
 			int n;
 			int * xp = 0;
 			int * yp = 0;
-			mathcursor->SelGetArea(xp, yp, n);
+			mathcursor->SelGetArea(&xp, &yp, n);
 			pain.fillPolygon(xp, yp, n, LColor::selection);
 		}
 		mathcursor->draw(pain, int(x), baseline);

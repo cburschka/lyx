@@ -1,3 +1,9 @@
+2000-02-17  Juergen Vigna  <jug@sad.it>
+
+	* src/mathed/math_cursor.[Ch] (SelGetArea): Changed form int * to
+	int ** as we have to return the pointer, otherwise we have only
+	NULL pointers in the returning function.
+
 2000-02-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/LaTeX.C (operator()): quote file name when running latex.

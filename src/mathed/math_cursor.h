@@ -124,7 +124,7 @@ class MathedCursor {
     ///
     void SelBalance();
 #ifdef USE_PAINTER
-	void SelGetArea(int * xp, int * yp, int & n);
+	void SelGetArea(int ** xp, int ** yp, int & n);
 #else
     ///
     XPoint * SelGetArea(int &);
