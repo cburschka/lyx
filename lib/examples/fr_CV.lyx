@@ -1,0 +1,172 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass cv
+\begin_preamble
+%% Vous pouvez modifier les polices utilisés dans le document
+%% en utilisant les macros suivantes. Elles prennent un
+%% paramètre qui est la commande de changement de
+%% police.
+%% \headerfont : la police utilisé dans les deux en-têtes.
+%% 
+%% You can modify the fonts used in the document be using the
+%% following macros. They take one parameter which is the font
+%% changing command.
+%% \headerfont: the font used in both headers.
+%%              Defaults to sans serif.
+%% \titlefont:  the font used for the title.
+%%              Defaults to \LARGE sans-serif semi bold condensed.
+%% \sectionfont: the font used by \section when beginning a new topic.
+%%              Defaults to sans-serif semi bold condensed.
+%% \itemfont:   the font used in descriptions of items.
+%%              Defaults to sans-serif slanted.
+% to make your name even bigger, uncomment the following line:
+% \titlefont{\Huge}
+%%
+%% You can modify the following parameters using \renewcommand:
+%% \topicmargin: the left margin inside topics.
+%%               Defaults to 20% of the text width (0.20\textwidth).
+% To get more room for left column of Topic layouts, uncomment following line:
+% \setlength{\topicmargin}{0.3\textwidth}
+\end_preamble
+\language frenchb
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth -1
+\tocdepth -1
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Left Header
+
+123, rue Hamlet
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Informations de révision :
+\layout Standard
+
+Traduction : Mise à jour OK, Date : 24/07/2002
+\layout Standard
+
+Original : Révision: 1.3, Date : 23/04/2002
+\end_inset 
+
+
+\newline 
+Stratford-upon-Avon
+\layout Right Header
+
+Tél.
+ : 08.36.68.TR.UC
+\newline 
+
+\family typewriter 
+\size small 
+guillaume@monde.org
+\layout Title
+
+William Shakespeare
+\layout Standard
+
+Ici certaines personnes mettent un résumé.
+ Note : dans le préambule vous pouvez paramétrer de nombreuses variables
+ LaTeX pour modifier l'aspect du CV.
+ Allez-y (faites 
+\family sans 
+Format\SpecialChar \menuseparator
+Préambule\SpecialChar \ldots{}
+
+\family default 
+) pour y trouver des exemples.
+ 
+\layout Section
+
+Expérience Professionnelle
+\layout Topic
+\labelwidthstring MMMMM
+
+1593--1609 J'ai écrit et mis en scène des pièces pour la Reine, puis pour
+ le Roi.
+ Il les a vraiment beaucoup aimées, mais elles lui rappelaient celles d'un
+ certain Comte d'Oxford.
+\layout Topic
+\labelwidthstring MMMMM
+
+\SpecialChar ~
+ Si un élément n'a pas de sous-titre, vous devez mettre une espace insécable,
+ comme ici.
+ C'est un inconvénient de LyX.
+\begin_deeper 
+\layout Standard
+
+Mais vous pouvez aussi vous servir de la profondeur d'environnement, selon
+ ce que vous voulez obtenir.
+\end_deeper 
+\layout Section
+
+Formation
+\layout Topic
+\labelwidthstring MMMMM
+
+1577--78 Mon Papa m'a appris le métier.
+\layout Topic
+\labelwidthstring MMMMM
+
+Avril\SpecialChar ~
+à\SpecialChar ~
+mai\SpecialChar ~
+1581 J'ai essayé les grandes écoles.
+ Je détestais mon professeur d'Anglais.
+ [Deux choses à noter : remarquez d'abord qu'un passage à la ligne apparaît
+ à l'impression si votre sous-titre est trop long ; ensuite, que vous devez
+ utiliser des espaces insécables pour mettre des espaces dans le sous-titre.]
+\layout Section
+
+Publications
+\layout Bibliography
+\labelwidthstring Publications
+\bibitem {premiere_ref}
+
+Premier Volume.
+ Moi.
+ 1623.
+\layout Bibliography
+\labelwidthstring Publications
+\bibitem {seconde_ref}
+
+Vous auriez pu entrer ces références avec BibTeX\SpecialChar \ldots{}
+ Dans tous les cas, je peux
+ citer ici mon 
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+oe{}
+\end_inset 
+
+uvre 
+\begin_inset LatexCommand \cite{premiere_ref}
+
+\end_inset 
+
+.
+\the_end

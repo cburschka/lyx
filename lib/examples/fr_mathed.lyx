@@ -36,10 +36,10 @@ collapsed true
 Informations de révision :
 \layout Standard
 
-Traduction : Mise à jour Date : 16/06/2002
+Traduction : Mise à jour Date : 19/06/2002
 \layout Standard
 
-Original : Révision: 1.5, Date : 21/03/2002
+Original : Révision: 1.6, Date : 19/06/2002
 \end_inset 
 
  
@@ -148,8 +148,8 @@ vous obtiendrez :
 \layout Standard
 
 
-\begin_inset Formula \[
-\frac{abc}{xyz}\]
+\begin_inset Formula \begin{equation}
+\frac{abc}{xyz}\end{equation}
 
 \end_inset 
 
@@ -186,167 +186,30 @@ tous
 
 Cependant pour afficher ces symboles supplémentaires, il faut que les polices
  nécessaires soient visibles par LyX.
- Vous pouvez créer un répertoire contenant des liens symboliques vers les
- polices requises avec le script suivant
+ Après avoir installé LyX, tapez
 \layout LyX-Code
 
-#!/bin/sh
-\layout LyX-Code
-
-\layout LyX-Code
-
-LYXDIR=`pwd`
-\layout LyX-Code
-
-LYX_XFONTS=$LYXDIR/xfonts
-\layout LyX-Code
-
-\layout LyX-Code
-
-if [ ! -d $LYX_XFONTS ]; then
-\layout LyX-Code
-
-    mkdir $LYX_XFONTS || exit
-\layout LyX-Code
-
-fi
-\layout LyX-Code
-
-\layout LyX-Code
-
-rm -f $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
-\layout LyX-Code
-
-\layout LyX-Code
-
-for file in `sed -e 's/^
-\backslash 
-(.*
-\backslash 
-.pf[ab]
-\backslash 
-) .*$/
-\backslash 
-1/' < fonts-xlfd`; do
-\layout LyX-Code
-
-    filepath=`kpsewhich $file`
-\layout LyX-Code
-
-    if [ $? -eq 0 ]; then
-\layout LyX-Code
-
-        if [ ! -e $LYX_XFONTS/$file ]; then
-\layout LyX-Code
-
-            ln -s $filepath $LYX_XFONTS/$file
-\layout LyX-Code
-
-        fi
-\layout LyX-Code
-
-        echo `grep -e $file fonts-xlfd` >> $LYX_XFONTS/fonts.scale
-\layout LyX-Code
-
-        echo "$file found."
-\layout LyX-Code
-
-    fi
-\layout LyX-Code
-
-done
-\layout LyX-Code
-
-\layout LyX-Code
-
-awk "/
-\backslash 
-.pf/ { nlines++ }
-\backslash 
-
-\layout LyX-Code
-
-END { print nlines }" < $LYX_XFONTS/fonts.scale > $LYX_XFONTS/fonts.dir
-\layout LyX-Code
-
-\layout LyX-Code
-
-cat $LYX_XFONTS/fonts.scale >> $LYX_XFONTS/fonts.dir
-\layout LyX-Code
-
-cp $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
+xset +fp REP_LYX/xfonts
 \layout Standard
 
-où le fichier 
+à la console (où REP_LYX est le répertoire contenant les fichiers LyX),
+ redémarrez LyX, chargez ce document et savourez !
+\layout Standard
+
+Pour rendre ces polices visibles en permanence, vous devez éditer l'un des
+ fichiers suivants (selon votre configuration) : 
 \family typewriter 
-fonts-xlfd
+/etc/X11/XF86Config-4
 \family default 
- contient
-\layout LyX-Code
-
-cmr10.pfb -bluesky-cmr-medium-r-normal--0-0-0-0-m-0-adobe-fontspecific
-\layout LyX-Code
-
-cmmi10.pfb -bluesky-cmmi-medium-i-normal--0-0-0-0-m-0-adobe-fontspecific
-\layout LyX-Code
-
-cmsy10.pfb -bluesky-cmsy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-cmex10.pfb -bluesky-cmex-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eufr10.pfb -bluesky-eufrak--medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eufb10.pfb -bluesky-eufrak-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eusr10.pfb -bluesky-eus-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-eusb10.pfb -bluesky-eus-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-msam10.pfb -bluesky-msam-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-msbm10.pfb -bluesky-msbm-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-marvosym.pfb -marvo-marvosym-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-wasy10.pfb -hoekwater-wasy-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-wasyb10.pfb -hoekwater-wasy-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-logo10.pfb -hoekwater-logo-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-logobf10.pfb -hoekwater-logo-bold-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcrm.pfa -adobe-lcrm-medium-i-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcry.pfa -adobe-lcry-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout LyX-Code
-
-plcrv.pfa -adobe-lcrv-medium-r-normal--0-0-0-0-p-0-adobe-fontspecific
-\layout Standard
-
-Ensuite, vous devez dire indiquer au serveur X l'emplacement de ce répertoire
- et des polices s'y trouvant.
- Tapez
-\layout LyX-Code
-
-xset +fp LYX_XFONTS; xset fp rehash
-\layout Standard
-
-à la console, redémarrez LyX, chargez ce document et savourez !
+, 
+\family typewriter 
+/etc/X11/XF86Config
+\family default 
+ ou 
+\family typewriter 
+/etc/X11/fs/config
+\family default 
+.
 \layout Section
 
 Quelques tableaux de symboles mathématiques
@@ -6286,7 +6149,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\{$
+\begin_inset Formula $\{ $
 \end_inset 
 
 
@@ -6310,7 +6173,7 @@ Downarrow
 \layout Standard
 
 
-\begin_inset Formula $\}$
+\begin_inset Formula $\} $
 \end_inset 
 
 
