@@ -21,7 +21,8 @@ import gzip
 import sys
 import os.path
 from parser_tools import read_file, write_file, read_version, set_version, \
-     read_format, set_format, chain, lyxformat, get_value
+     read_format, set_format, chain, lyxformat, get_value, get_backend
+
 
 # Allow the dummy object to be able to carry related data
 # like a C struct
@@ -34,6 +35,8 @@ class struct:
         self.dir = ""
         self.start = None
         self.end = None
+        self.backend = "latex"
+        self.textclass = "article"
 
     def warning(self, message, debug_level= 1):
         if debug_level <= self.debug:
@@ -43,6 +46,7 @@ class struct:
         self.warning(message)
         self.warning("Quiting.")
         sys.exit(1)
+
 
 def usage():
     print """Usage: lyx2lyx [options] [file]
@@ -104,6 +108,7 @@ def parse_options(argv, version, opt):
         except:
             opt.input = open(file)
 
+
 def main(argv):
     version = "1.4.0cvs"
 
@@ -117,6 +122,9 @@ def main(argv):
     read_file(header, body, opt)
 
     initial_version = read_version(header)
+
+    opt.textclass = get_value(header, "\\textclass", 0)
+    opt.backend = get_backend( opt.textclass)
     opt.format  = read_format(header, opt)
     opt.language = get_value(header, "\\language", 0)
     if opt.language == "":
@@ -132,6 +140,7 @@ def main(argv):
     set_version(header, version)
     set_format(header, opt.format)
     write_file(header, body, opt)
+
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -248,6 +248,7 @@ def add_end_layout(lines):
 
     i = i + 1
     struct_stack = ["\\layout"]
+
     while 1:
         i = find_tokens(lines, ["\\begin_inset", "\\end_inset", "\\layout",
                                 "\\begin_deeper", "\\end_deeper", "\\the_end"], i)
@@ -262,8 +263,9 @@ def add_end_layout(lines):
         if token == "\\end_inset":
             tail = struct_stack.pop()
             if tail == "\\layout":
+                lines.insert(i,"")
                 lines.insert(i,"\\end_layout")
-                i = i + 1
+                i = i + 2
                 #Check if it is the correct tag
                 struct_stack.pop()
             i = i + 1
@@ -272,20 +274,32 @@ def add_end_layout(lines):
         if token == "\\layout":
             tail = struct_stack.pop()
             if tail == token:
+                lines.insert(i,"")
                 lines.insert(i,"\\end_layout")
-                i = i + 2
+                i = i + 3
             else:
                 struct_stack.append(tail)
                 i = i + 1
             struct_stack.append(token)
             continue
 
-        if token == "\\begin_deeper" or token == "\\end_deeper":
+        if token == "\\begin_deeper":
+            lines.insert(i,"")
             lines.insert(i,"\\end_layout")
-            i = i + 2
+            i = i + 3
+            struct_stack.append(token)
+            continue
+
+        if token == "\\end_deeper":
+            lines.insert(i,"")
+            lines.insert(i,"\\end_layout")
+            i = i + 3
+            while struct_stack[-1] != "\\begin_deeper":
+                struct_stack.pop()
             continue
 
         #case \end_document
+        lines.insert(i, "")
         lines.insert(i, "\\end_layout")
         return
 
@@ -302,8 +316,13 @@ def rm_end_layout(lines):
 
 
 ##
-# Remove change tracking keywords
+# Handle change tracking keywords
 #
+def insert_tracking_changes(lines):
+    i = find_token(lines, "\\tracking_changes", 0)
+    if i == -1:
+        lines.append("\\tracking_changes 0")
+
 def rm_tracking_changes(lines):
     i = find_token(lines, "\\author", 0)
     if i != -1:
@@ -1118,6 +1137,7 @@ def revert_float(lines, opt):
         del_token(lines, 'sideways', i, j)
         i = i + 1
 
+
 def convert_graphics(lines, opt):
     """ Add extension to filenames of insetgraphics if necessary.
     """
@@ -1138,7 +1158,7 @@ def convert_graphics(lines, opt):
 	    # We could use a heuristic and take the current directory,
 	    # and we could try to find out if filename has an extension,
 	    # but that would be just guesses and could be wrong.
-	    opt.warning("""Warning: Can not determine wether file
+	    opt.warning("""Warning: Can not determine whether file
          %s
          needs an extension when reading from standard input.
          You may need to correct the file manually or run
@@ -1155,11 +1175,97 @@ def convert_graphics(lines, opt):
 
 
 ##
+# Convert firstname and surname from styles -> char styles
+#
+def convert_names(lines, opt):
+    """ Convert in the docbook backend from firstname and surname style
+    to charstyles.
+    """
+    if opt.backend != "docbook":
+        return
+
+    i = 0
+
+    while 1:
+        i = find_token(lines, "\\begin_layout Author", i)
+        if i == -1:
+            return
+
+        i = i + 1
+        while lines[i] == "":
+            i = i + 1
+
+        if lines[i][:11] != "\\end_layout" or lines[i+2][:13] != "\\begin_deeper":
+            i = i + 1
+            continue
+
+        k = i
+        i = find_end_of( lines, i+3, "\\begin_deeper","\\end_deeper")
+        if i == -1:
+            # something is really wrong, abort
+            opt.warning("Missing \\end_deeper,after style Author")
+            opt.warning("Aborted attempt to parse FirstName and Surname")
+            return
+        firstname, surname = "", ""
+
+        name = lines[k:i]
+
+        j = find_token(name, "\\begin_layout FirstName", 0)
+        if j != -1:
+            j = j + 1
+            while(name[j] != "\\end_layout"):
+                firstname = firstname + name[j]
+                j = j + 1
+
+        j = find_token(name, "\\begin_layout Surname", 0)
+        if j != -1:
+            j = j + 1
+            while(name[j] != "\\end_layout"):
+                surname = surname + name[j]
+                j = j + 1
+
+        # delete name
+        del lines[k+2:i+1]
+
+        lines[k-1:k-1] = ["", "",
+                          "\\begin_inset CharStyle Firstname",
+                          "status inlined",
+                          "",
+                          "\\begin_layout Standard",
+                          "",
+                          "%s" % firstname,
+                          "\end_layout",
+                          "",
+                          "\end_inset ",
+                          "",
+                          "",
+                          "\\begin_inset CharStyle Surname",
+                          "status inlined",
+                          "",
+                          "\\begin_layout Standard",
+                          "",
+                          "%s" % surname,
+                          "\\end_layout",
+                          "",
+                          "\\end_inset ",
+                          ""]
+
+
+def revert_names(lines, opt):
+    """ Revert in the docbook backend from firstname and surname char style
+    to styles.
+    """
+    if opt.backend != "docbook":
+        return
+
+
+##
 # Convertion hub
 #
 
 def convert(header, body, opt):
     if opt.format < 223:
+        insert_tracking_changes(header)
 	add_end_header(header)
 	convert_spaces(body)
 	convert_bibtex(body)
@@ -1220,10 +1326,12 @@ def convert(header, body, opt):
 
     if opt.format < 233:
         convert_graphics(body, opt)
+        convert_names(body, opt)
 	opt.format = 233
 
 def revert(header, body, opt):
     if opt.format > 232:
+        revert_names(body, opt)
 	opt.format = 232
     if opt.end == opt.format: return
 

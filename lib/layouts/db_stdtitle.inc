@@ -20,7 +20,6 @@ End
 Style Author
 	LatexType             Environment
 	LatexName             author
-	KeepEmpty             1
 End
 
 
@@ -29,30 +28,6 @@ Style Authorgroup
 	LatexType             Environment
 	LatexName             authorgroup
 	InnerTag              author
-End
-
-
-Style FirstName
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             firstname
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Center
-	AlignPossible         Center
-	LabelType             No_Label
-End
-
-
-Style Surname
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             surname
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Center
-	AlignPossible         Center
-	LabelType             No_Label
 End
 
 
@@ -115,4 +90,13 @@ Style RevisionRemark
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
+End
+
+
+Style FirstName
+        ObsoletedBy   Standard
+End
+
+Style Surname
+	ObsoletedBy   Standard
 End

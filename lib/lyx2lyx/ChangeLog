@@ -1,3 +1,16 @@
+2004-05-11  José Matos  <jamatos@lyx.org>
+
+
+	* parser_tools.py (get_backend): get the document backend.
+	* lyx2lyx (main): new member of the document structure,
+	the textclass and backend, that default to article and latex.
+	* lyx_1_4.py (add_end_layout): fix bug of mixed \begin_deeper
+	and \end_layout
+	(insert_tracking_changes): insert \tracking_changes 0, if not present
+	in the header.
+	(convert_names, revert_names): for docbook documents transform
+	the styles FirstName and Surname into character styles.
+
 2004-05-03  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (convert_graphics):

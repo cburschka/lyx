@@ -19,10 +19,12 @@
 import string
 import re
 
+
 def check_token(line, token):
     if line[:len(token)] == token:
 	return 1
     return 0
+
 
 # We need to check that the char after the token is space, but I think
 # we can ignore this
@@ -35,6 +37,7 @@ def find_token(lines, token, start, end = 0):
 	    return i
     return -1
 
+
 def find_token2(lines, token, start, end = 0):
     if end == 0:
 	end = len(lines)
@@ -43,6 +46,7 @@ def find_token2(lines, token, start, end = 0):
 	if len(x) > 0 and x[0] == token:
 	    return i
     return -1
+
 
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
@@ -54,6 +58,7 @@ def find_tokens(lines, tokens, start, end = 0):
 		return i
     return -1
 
+
 def find_re(lines, rexp, start, end = 0):
     if end == 0:
 	end = len(lines)
@@ -61,6 +66,7 @@ def find_re(lines, rexp, start, end = 0):
 	if rexp.match(lines[i]):
 		return i
     return -1
+
 
 def find_token_backwards(lines, token, start):
     m = len(token)
@@ -70,6 +76,7 @@ def find_token_backwards(lines, token, start):
 	    return i
     return -1
 
+
 def find_tokens_backwards(lines, tokens, start):
     for i in xrange(start, -1, -1):
 	line = lines[i]
@@ -77,6 +84,7 @@ def find_tokens_backwards(lines, tokens, start):
 	    if line[:len(token)] == token:
 		return i
     return -1
+
 
 def get_value(lines, token, start, end = 0):
     i = find_token2(lines, token, start, end)
@@ -87,6 +95,7 @@ def get_value(lines, token, start, end = 0):
     else:
         return ""
 
+
 def del_token(lines, token, i, j):
     k = find_token2(lines, token, i, j)
     if k == -1:
@@ -94,6 +103,7 @@ def del_token(lines, token, i, j):
     else:
 	del lines[k]
 	return j-1
+
 
 # Finds the paragraph that contains line i.
 def get_paragraph(lines, i):
@@ -105,6 +115,7 @@ def get_paragraph(lines, i):
 	i = find_beginning_of_inset(lines, i)
     return -1
 
+
 # Finds the paragraph after the paragraph that contains line i.
 def get_next_paragraph(lines, i):
     while i != -1:
@@ -113,6 +124,7 @@ def get_next_paragraph(lines, i):
 	    return i
 	i = find_end_of_inset(lines, i)
     return -1
+
 
 def find_end_of(lines, i, start_token, end_token):
     count = 1
@@ -127,6 +139,7 @@ def find_end_of(lines, i, start_token, end_token):
 	    return i
     return -1
 
+
 # Finds the matching \end_inset
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
@@ -140,16 +153,20 @@ def find_beginning_of(lines, i, start_token, end_token):
 	    return i
     return -1
 
+
 # Finds the matching \end_inset
 def find_end_of_inset(lines, i):
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
+
 
 # Finds the matching \end_inset
 def find_beginning_of_inset(lines, i):
     return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
 
+
 def find_end_of_tabular(lines, i):
     return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
+
 
 def get_tabular_lines(lines, i):
     result = []
@@ -166,8 +183,10 @@ def get_tabular_lines(lines, i):
 	    i = i+1
     return result
 
+
 def is_nonempty_line(line):
     return line != " "*len(line)
+
 
 def find_nonempty_line(lines, start, end = 0):
     if end == 0:
@@ -176,6 +195,7 @@ def find_nonempty_line(lines, start, end = 0):
 	if is_nonempty_line(lines[i]):
 	    return i
     return -1
+
 
 ##
 # Tools for file reading
@@ -209,12 +229,14 @@ def read_file(header, body, opt):
             break
         body.append(line[:-1])
 
+
 def write_file(header, body, opt):
     for line in header:
         opt.output.write(line+"\n")
     opt.output.write("\n")
     for line in body:
         opt.output.write(line+"\n")
+
 
 ##
 # lyx version
@@ -230,6 +252,7 @@ def read_version(header):
         if result:
             return result.group(1)
     return None
+
 
 def set_version(lines, version):
     lines[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
@@ -256,6 +279,7 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3"]),
                    ("1_4", [223,224,225,226,227,228,229,230,231,232,233], ["1.4.0cvs","1.4"])]
 
+
 def lyxformat(format, opt):
     result = format_re.match(format)
     if result:
@@ -269,6 +293,7 @@ def lyxformat(format, opt):
     opt.error(str(format) + ": " + "Format no supported.")
     return None
 
+
 def read_format(header, opt):
     for line in header:
         result = fileformat.match(line)
@@ -278,14 +303,25 @@ def read_format(header, opt):
         opt.error("Invalid LyX File.")
     return None
 
+
 def set_format(lines, number):
     if int(number) <= 217:
         number = float(number)/100
     i = find_token(lines, "\\lyxformat", 0)
     lines[i] = "\\lyxformat %s" % number
 
+
 def get_end_format():
     return format_relation[-1:][0][1][-1:][0]
+
+
+def get_backend(textclass):
+    if textclass == "linuxdoc" or textclass == "manpage":
+        return "linuxdoc"
+    if textclass[:7] == "docbook":
+        return "docbook"
+    return "latex"
+
 
 def chain(opt, initial_version):
     """ This is where all the decisions related with the convertion are taken"""
