@@ -25,8 +25,7 @@
 // FIXES for broken compilers
 #include <boost/config.hpp>
 
-// LGB
-// namespace boost {
+namespace boost {
 
     template<class T, std::size_t N>
     class array {
@@ -151,7 +150,6 @@
         x.swap(y);
     }
 
-// LGB
-// } /* namespace boost */
+} /* namespace boost */
 
 #endif /*BOOST_ARRAY_HPP*/
