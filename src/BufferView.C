@@ -17,7 +17,6 @@
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 #include "lyxtext.h"
-#include "WorkArea.h"
 #include "lyxscreen.h"
 
 

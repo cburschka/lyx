@@ -27,19 +27,12 @@ using std::ostream;
 
 void InsetERT::init()
 {
-#if 0
-	setLabel(_("666"), true);
-#else
-	setLabel(_("666"));
-#endif
+	setButtonLabel();
+
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
 	labelfont.decSize();
-#ifndef NO_LATEX
-	labelfont.setLatex(LyXFont::ON);
-#else
 	labelfont.setColor(LColor::latex);
-#endif
 	setInsetName("ERT");
 }
 
@@ -48,14 +41,6 @@ InsetERT::InsetERT() : InsetCollapsable()
 {
 	init();
 }
-
-
-#if 0
-InsetERT::InsetERT(InsetERT const & in, bool same_id)
-	: InsetCollapsable(in, same_id)
-{
-}
-#endif
 
 
 InsetERT::InsetERT(string const & contents, bool collapsed)
@@ -79,11 +64,8 @@ InsetERT::InsetERT(string const & contents, bool collapsed)
 void InsetERT::read(Buffer const * buf, LyXLex & lex)
 {
 	InsetCollapsable::read(buf, lex);
-	if (collapsed_) {
-		setLabel(get_new_label());
-	} else {
-		setLabel(_("666"));
-	}
+
+	setButtonLabel();
 }
 
 
@@ -120,14 +102,11 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	InsetCollapsable::edit(bv, x, y, button);
-#ifndef NO_LATEX
-	LyXFont font(LyXFont::ALL_SANE);
-	font.setLatex (LyXFont::ON);
-#else
+
 	LyXFont font(LyXFont::ALL_INHERIT);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
-#endif
+
 	inset.setFont(bv, font);
 }
 
@@ -212,14 +191,9 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	{
-#ifndef NO_LATEX
-		LyXFont font(LyXFont::ALL_SANE);
-		font.setLatex (LyXFont::ON);
-#else
 		LyXFont font(LyXFont::ALL_INHERIT);
 		font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 		font.setColor(LColor::latex);
-#endif
 		inset.setFont(bv, font);
 	}
 	break;
@@ -236,18 +210,31 @@ string const InsetERT::get_new_label() const
 	string la;
 	Paragraph::size_type const max_length = 15;
 
-	int const n = std::min(max_length, inset.paragraph()->size());
+	int const p_siz = inset.paragraph()->size();
+	int const n = std::min(max_length, p_siz);
 	int i = 0;
 	int j = 0;
-	for(; i < n && j < inset.paragraph()->size(); ++j) {
+	for(; i < n && j < p_siz; ++j) {
 		if (inset.paragraph()->isInset(j))
 			continue;
 		la += inset.paragraph()->getChar(j);
 		++i;
 	}
-	if ((i > 0) && (j < inset.paragraph()->size()))
+	if (i > 0 && j < p_siz) {
 		la += "...";
-	if (la.empty())
+	}
+	if (la.empty()) {
 		la = _("666");
+	}
 	return la;
+}
+
+
+void InsetERT::setButtonLabel() 
+{
+	if (collapsed_) {
+		setLabel(get_new_label());
+	} else {
+		setLabel(_("666"));
+	}
 }

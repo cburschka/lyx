@@ -237,8 +237,13 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		token = lex.GetString();
 		if (token.empty())
 			continue;
-		if (token == "\\end_inset")
+		if (token == "\\end_inset") {
+#ifdef NO_LATEX
+			const_cast<Buffer*>(buf)->insertErtContents(par, pos, font, false);
+#endif
 			break;
+		}
+		
 		if (const_cast<Buffer*>(buf)->
 			parseSingleLyXformat2Token(lex, par, return_par,
 						   token, pos, depth, font)) {

@@ -1,5 +1,11 @@
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* insettext.C (read): handle old latex end_inset
+
+	* insetert.C (setButtonLabel): new method
+	(init): use it, to set the dynamic label correctly
+	(read): use it
+
 	* Makefile.am (EXTRA_DIST): add files that is not part or the
 	binary here.
 

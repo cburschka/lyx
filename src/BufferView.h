@@ -27,7 +27,6 @@ class LyXText;
 class TeXErrors;
 class Buffer;
 class LyXScreen;
-class WorkArea;
 class Language;
 class Painter;
 class UpdatableInset;

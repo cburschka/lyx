@@ -68,6 +68,8 @@ private:
 	void init();
 	///
 	string const get_new_label() const;
+	///
+	void setButtonLabel();
 };
 
 #endif
