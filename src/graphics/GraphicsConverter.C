@@ -13,6 +13,7 @@
 #include "GraphicsConverter.h"
 
 #include "converter.h"
+#include "format.h"
 #include "debug.h"
 
 #include "support/filetools.h"

@@ -25,6 +25,7 @@
 
 #include "buffer.h"
 #include "converter.h"
+#include "format.h"
 #include "debug.h"
 #include "language.h"
 #include "frnt_lang.h"

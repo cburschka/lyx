@@ -24,6 +24,7 @@
 #include "support/LAssert.h"
 #include "support/userinfo.h"
 #include "converter.h"
+#include "format.h"
 #include "gettext.h"
 #include "lyxlex.h"
 

@@ -223,7 +223,11 @@ lyx_SOURCES = \
 	version.C \
 	version.h \
 	vspace.C \
-	vspace.h
+	vspace.h \
+	graph.C \
+	graph.h \
+	format.C \
+	format.h
 
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h \
 	lyxrc.h support/path.h support/filetools.h \

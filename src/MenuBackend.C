@@ -23,7 +23,7 @@
 #include "lyx_main.h" // for lastfiles
 #include "bufferlist.h"
 #include "buffer.h"
-#include "converter.h"
+#include "format.h"
 #include "exporter.h"
 #include "importer.h"
 #include "FloatList.h"

@@ -33,7 +33,7 @@
 #include "language.h"
 #include "exporter.h"
 #include "Lsstream.h"
-#include "converter.h"
+#include "format.h"
 #include "BufferView.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"

@@ -17,7 +17,7 @@
 #include "xformsBC.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
-#include "converter.h"
+#include "format.h"
 #include "gettext.h"
 #include FORMS_H_LOCATION
 

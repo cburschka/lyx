@@ -1,146 +1,33 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
 
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
+/**
+ * \file converter.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Dekel Tsur
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include "graph.h"
+
 #include <vector>
-#include <queue>
-#include "LString.h"
-#include "support/lstrings.h"
+
+class Format;
+class Formats;
 
 class Buffer;
-
-///
-class Format {
-public:
-	///
-	Format(string const & n, string const & e, string const & p,
-	       string const & s, string const & v) :
-		name_(n), extension_(e), prettyname_(p), shortcut_(s),
-		viewer_(v) {};
-	///
-	bool dummy() const;
-	///
-	bool isChildFormat() const;
-	///
-	string const parentFormat() const;
-	///
-	string const & name() const {
-		return name_;
-	}
-	///
-	string const & extension() const {
-		return extension_;
-	}
-	///
-	string const & prettyname() const {
-		return prettyname_;
-	}
-	///
-	string const & shortcut() const {
-		return shortcut_;
-	}
-	///
-	string const & viewer() const {
-		return viewer_;
-	}
-	///
-	void setViewer(string const & v) {
-		viewer_ = v;
-	}
-private:
-	string name_;
-	///
-	string extension_;
-	///
-	string prettyname_;
-	///
-	string shortcut_;
-	///
-	string viewer_;
-};
-
-
-inline
-bool operator<(Format const & a, Format const & b)
-{
-	// use the compare_ascii_no_case instead of compare_no_case,
-	// because in turkish, 'i' is not the lowercase version of 'I',
-	// and thus turkish locale breaks parsing of tags.
-
-	return compare_ascii_no_case(a.prettyname(), b.prettyname()) < 0;
-}
-
-
-///
-class Formats {
-public:
-	///
-	typedef std::vector<Format> FormatList;
-	///
-	typedef FormatList::const_iterator const_iterator;
-	///
-	Format const & get(FormatList::size_type i) const {
-		return formatlist[i];
-	}
-	///
-	Format const * getFormat(string const & name) const;
-	///
-	int getNumber(string const & name) const;
-	///
-	void add(string const & name);
-	///
-	void add(string const & name, string const & extension,
-		 string const & prettyname, string const & shortcut);
-	///
-	void erase(string const & name);
-	///
-	void sort();
-	///
-	void setViewer(string const & name, string const & command);
-	///
-	bool view(Buffer const * buffer, string const & filename,
-		  string const & format_name) const;
-	///
-	string const prettyName(string const & name) const;
-	///
-	string const extension(string const & name) const;
-	///
-	const_iterator begin() const {
-		return formatlist.begin();
-	}
-	///
-	const_iterator end() const {
-		return formatlist.end();
-	}
-	///
-	FormatList::size_type size() const {
-		return formatlist.size();
-	}
-private:
-	///
-	FormatList formatlist;
-};
-
-///////////////////////////////////////////////////////////////////////
 
 ///
 class Converter {
 public:
 	///
 	Converter(string const & f, string const & t, string const & c,
-		  string const & l)
-		: from(f), to(t), command(c), flags(l), From(0), To(0),
-		  latex(false), original_dir(false), need_aux(false) {}
+		  string const & l);
 	///
 	void readFlags();
 	///
@@ -176,11 +63,12 @@ public:
 ///
 class Converters {
 public:
+	///
+	typedef std::vector<int> EdgePath; // to be removed SOON
+	///
 	typedef std::vector<Converter> ConverterList;
 	///
 	typedef ConverterList::const_iterator const_iterator;
-	///
-	typedef std::vector<int> EdgePath;
 	///
 	Converter const & get(int i) const {
 		return converterlist_[i];
@@ -206,9 +94,9 @@ public:
 	///
 	bool isReachable(string const & from, string const & to);
 	///
-	EdgePath const getPath(string const & from, string const & to);
+	Graph::EdgePath const getPath(string const & from, string const & to);
 	///
-	bool usePdflatex(EdgePath const & path);
+	bool usePdflatex(Graph::EdgePath const & path);
 	///
 	bool convert(Buffer const * buffer,
 		     string const & from_file, string const & to_file_base,
@@ -219,8 +107,6 @@ public:
 		     string const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format);
 	///
-	string const papersize(Buffer const * buffer);
-	///
 	string const dvips_options(Buffer const * buffer);
 	///
 	string const dvipdfm_options(Buffer const * buffer);
@@ -228,8 +114,6 @@ public:
 	void update(Formats const & formats);
 	///
 	void updateLast(Formats const & formats);
-	///
-	void buildGraph();
 	///
 	bool formatIsUsed(string const & format);
 	///
@@ -239,7 +123,12 @@ public:
 	const_iterator end() const {
 		return converterlist_.end();
 	}
+	///
+	void buildGraph();
 private:
+	///
+	std::vector<Format const *> const
+	Converters::intToFormat(std::vector<int> const & input);
 	///
 	bool scanLog(Buffer const * buffer, string const & command,
 		     string const & filename);
@@ -250,28 +139,13 @@ private:
 	///
 	string latex_command_;
 	///
-	struct Vertex {
-		std::vector<int> in_vertices;
-		std::vector<int> out_vertices;
-		std::vector<int> out_edges;
-	};
-	///
-	static
-	std::vector<Vertex> vertices_;
-	///
-	std::vector<bool> visited_;
-	///
-	std::queue<int> Q_;
-	///
-	int bfs_init(string const & start, bool clear_visited = true);
-	///
 	bool move(string const & from, string const & to, bool copy);
+	///
+	Graph G_;
 };
 
-extern Formats formats;
 extern Converters converters;
 
-extern Formats system_formats;
 extern Converters system_converters;
 
-#endif
+#endif //CONVERTER_H

@@ -12,6 +12,7 @@
 
 #include "importer.h"
 #include "converter.h"
+#include "format.h"
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
 

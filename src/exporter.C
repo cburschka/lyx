@@ -18,6 +18,7 @@
 #include "support/filetools.h"
 #include "lyxrc.h"
 #include "converter.h"
+#include "format.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
@@ -46,7 +47,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
-			Converters::EdgePath p =
+			Graph::EdgePath p =
 				converters.getPath(*it,	format);
 			if (!p.empty()) {
 				lyxrc.pdf_mode = converters.usePdflatex(p);

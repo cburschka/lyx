@@ -14,7 +14,7 @@
 
 #include "QLImage.h"
 #include "graphics/GraphicsParams.h"
-#include "converter.h"
+#include "format.h"
 #include "debug.h"
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun

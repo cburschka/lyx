@@ -14,6 +14,7 @@
 
 
 #include "converter.h"
+#include "format.h"
 
 #include "Qt2Base.h"
 #include "ControlPrefs.h"

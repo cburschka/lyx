@@ -1,12 +1,26 @@
+2003-02-28  Alfredo Braunstein <abraunst@libero.it>
+
+	* converter.[Ch]: split into itself +
+	* graph.[Ch]
+	* format.[Ch]
+	* Makefile.am: += graph.[Ch] + format.[Ch]
+	* MenuBackend.C
+	* buffer.C
+	* exporter.C
+	* importer.C
+	* lyx_main.C
+	* lyxfunc.C
+	* lyxrc.C: added #include "format.h"
+
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): call a real, LyX dialog to insert
-	a label.
+	  a label.
 
 	* factory.C (createInset): add "label" to the factory.
 
 	* lyx_cb.[Ch] (getPossibleLabel): rewrite MenuInsertLabel to return the
-	string and do no more.
+	  string and do no more.
 
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
@@ -14,7 +28,7 @@
 	* LyXAction.C (init):
 	* factory.C (createInset):
 	* BufferView_pimpl.C (dispatch):
-	collapse LFUN_XYZ_APPLY to LFUN_INSET_APPLY.
+	  collapse LFUN_XYZ_APPLY to LFUN_INSET_APPLY.
 
 	* lyxfunc.C (getStatus): remove LFUN_BIBTEX_APPLY, LFUN_CITATION_APPLY.
 
@@ -24,11 +38,11 @@
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): collapse the various LFUN_XYZ_APPLY
-	blocks together.
-	Rearrange the ~includes. Strip out the unnecessary ones.
+	  blocks together.
+	  Rearrange the ~includes. Strip out the unnecessary ones.
 
 	* factory.C (createInset): reformat.
-	create new insets for the various LFUN_XYZ_APPLY lfuns.
+	  create new insets for the various LFUN_XYZ_APPLY lfuns.
 
 2003-02-26  John Levon  <levon@movementarian.org>
 
@@ -44,12 +58,12 @@
 	* text3.C:
 	* text2.C:
 	* text.C: use lyxrow helpers above.
-	Move draw and paint routines to RowPainter.
-	Make several methods use refs not pointers.
-	Make backgroundColor() const.
-	Add markChangeInDraw(), isInInset().
-	Merge changeRegionCase into changeCase.
-	Make workWidth() shouldn't-happen code into an Assert.
+	  Move draw and paint routines to RowPainter.
+	  Make several methods use refs not pointers.
+	  Make backgroundColor() const.
+	  Add markChangeInDraw(), isInInset().
+	  Merge changeRegionCase into changeCase.
+	  Make workWidth() shouldn't-happen code into an Assert.
 
 	* rowpainter.h:
 	* rowpainter.C: new class for painting a row.
@@ -75,11 +89,11 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* commandtags.h: Retire LFUN_CITATION_INSERT, LFUN_CITATION_CREATE,
-	LFUN_INSERT_BIBTEX, LFUN_BIBTEX_STYLE, LFUN_BIBDB_ADD, LFUN_BIBDB_DEL.
-	Bring to life LFUN_DIALOG_SHOW_NEW_INSET, LFUN_DIALOG_SHOW_NEXT_INSET,
-	LFUN_DIALOG_UPDATE, LFUN_DIALOG_HIDE, LFUN_DIALOG_DISCONNECT_INSET,
-	LFUN_BIBITEM_APPLY, LFUN_BIBTEX_APPLY, LFUN_CITATION_APPLY,
-	LFUN_INDEX_APPLY, LFUN_REF_APPLY, LFUN_TOC_APPLY, LFUN_URL_APPLY,
+	  LFUN_INSERT_BIBTEX, LFUN_BIBTEX_STYLE, LFUN_BIBDB_ADD, LFUN_BIBDB_DEL.
+	  Bring to life LFUN_DIALOG_SHOW_NEW_INSET, LFUN_DIALOG_SHOW_NEXT_INSET,
+	  LFUN_DIALOG_UPDATE, LFUN_DIALOG_HIDE, LFUN_DIALOG_DISCONNECT_INSET,
+	  LFUN_BIBITEM_APPLY, LFUN_BIBTEX_APPLY, LFUN_CITATION_APPLY,
+	  LFUN_INDEX_APPLY, LFUN_REF_APPLY, LFUN_TOC_APPLY, LFUN_URL_APPLY,
 
 	* BufferView_pimpl.C (dispatch):
 	* LyXAction.C (init):
@@ -92,7 +106,7 @@
 	* BufferView_pimpl.C (MenuInsertLyXFile):
 	* lyx_cb.C (WriteAs, getContentsOfAsciiFile):
 	* lyxfunc.C (menuNew, open, doImport):
-	no longer pass a LyXView & to fileDlg.
+	  no longer pass a LyXView & to fileDlg.
 
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
@@ -166,19 +180,19 @@
 2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (makeLaTeXFile): move the code that generates the
-	preamble... 
+	  preamble... 
 
 	* bufferparams.C (writeLaTeX): ... in this new method
 
 	* LaTeXFeatures.C (getEncodingSet): make const
-	(getLanguages): make const
+	  (getLanguages): make const
 
 	* MenuBackend.C (binding): returns the binding associated to this
-	action 
-	(add): sets the status of each item by calling getStatus. Adds
-	some intelligence.
-	(read): add support for OptSubMenu
-	(expand): remove extra separator at the end of expanded menu
+	  action 
+	  (add): sets the status of each item by calling getStatus. Adds
+	  some intelligence.
+	  (read): add support for OptSubMenu
+	  (expand): remove extra separator at the end of expanded menu
 
 2003-02-15  John Levon  <levon@movementarian.org>
 
@@ -186,18 +200,18 @@
 	* BufferView_pimpl.C:
 	* bufferlist.h:
 	* bufferlist.C: remove pointless BufferStorage bloat. Remove
-	inset code that had no actual effect. Remove unneeded status
-	code.
+	  inset code that had no actual effect. Remove unneeded status
+	  code.
 
 2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (makeLaTeXFile): fix counting of number of line feeds
-	in preamble
+	  in preamble
 
 2003-02-14  Michael Schmitt <michael.schmitt@teststep.org>
 
 	* text.C (drawLengthMarker): also draw an arrow marker for
-	symbolic lengths (medskip...)
+	  symbolic lengths (medskip...)
 
 2003-02-14  John Levon  <levon@movementarian.org>
 
@@ -217,7 +231,7 @@
 2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text2.C (LyXText): change order of initilizers to shut off
-	warnings 
+	  warnings 
 
 2003-02-14  John Levon  <levon@movementarian.org>
 
@@ -273,8 +287,8 @@
 	* paragraph.C (asString): remove two unused variables
 
 	* lyxtextclass.C (readTitleType): 
-	(Read): 
-	(LyXTextClass): handle new members titletype_ and titlename_
+	  (Read): 
+	  (LyXTextClass): handle new members titletype_ and titlename_
 
 	* buffer.C (latexParagraphs): honor LyXTextClass::titletype
 

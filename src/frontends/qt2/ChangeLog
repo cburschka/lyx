@@ -1,3 +1,10 @@
+2003-02-28  Alfredo Braunstein <abraunst@libero.it>
+
+	* QLImage.C 
+	* QSendto.C
+	* QSendtoDialog.C: removed #include "converter.h", and...
+	* QPrefs.h: added #include "format.h"
+
 2003-02-25  John Levon  <levon@movementarian.org>
 
 	From Nathan Weston

@@ -14,7 +14,7 @@
 #include "xformsImage.h"
 #include "graphics/GraphicsParams.h"
 #include "Color.h"
-#include "converter.h"              // formats
+#include "format.h"
 #include "debug.h"
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun

@@ -1,16 +1,18 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file converter.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Dekel Tsur
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
 #include "converter.h"
+#include "graph.h"
+#include "format.h"
 #include "lyxrc.h"
 #include "buffer.h"
 #include "bufferview_funcs.h"
@@ -37,12 +39,8 @@ using std::isdigit;
 #endif
 
 using std::vector;
-using std::queue;
 using std::endl;
-using std::fill;
 using std::find_if;
-using std::reverse;
-using std::sort;
 
 namespace {
 
@@ -51,9 +49,8 @@ string const token_base("$$b");
 string const token_to("$$o");
 string const token_path("$$p");
 
-//////////////////////////////////////////////////////////////////////////////
 
-inline
+
 string const add_options(string const & command, string const & options)
 {
 	string head;
@@ -63,188 +60,12 @@ string const add_options(string const & command, string const & options)
 
 } // namespace anon
 
-//////////////////////////////////////////////////////////////////////////////
 
-bool Format::dummy() const
-{
-	return extension().empty();
-}
-
-
-bool Format::isChildFormat() const
-{
-	if (name_.empty())
-		return false;
-	return isdigit(name_[name_.length() - 1]);
-}
-
-
-string const Format::parentFormat() const
-{
-	return name_.substr(0, name_.length() - 1);
-}
-
-//////////////////////////////////////////////////////////////////////////////
-
-// This method should return a reference, and throw an exception
-// if the format named name cannot be found (Lgb)
-Format const * Formats::getFormat(string const & name) const
-{
-	FormatList::const_iterator cit =
-		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
-	if (cit != formatlist.end())
-		return &(*cit);
-	else
-		return 0;
-}
-
-
-int Formats::getNumber(string const & name) const
-{
-	FormatList::const_iterator cit =
-		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
-	if (cit != formatlist.end())
-		return cit - formatlist.begin();
-	else
-		return -1;
-}
-
-
-void Formats::add(string const & name)
-{
-	if (!getFormat(name))
-		add(name, name, name, string());
-}
-
-
-// FIXME: horrednously mis-named, especially given the other ::add
-// function
-void Formats::add(string const & name, string const & extension,
-		  string const & prettyname, string const & shortcut)
-{
-	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
-	if (it == formatlist.end())
-		formatlist.push_back(Format(name, extension, prettyname,
-					    shortcut, ""));
-	else {
-		string viewer = it->viewer();
-		*it = Format(name, extension, prettyname, shortcut, viewer);
-	}
-}
-
-
-void Formats::erase(string const & name)
-{
-	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
-	if (it != formatlist.end())
-		formatlist.erase(it);
-}
-
-
-void Formats::sort()
-{
-	std::sort(formatlist.begin(), formatlist.end());
-}
-
-
-void Formats::setViewer(string const & name, string const & command)
-{
-	add(name);
-	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
-	if (it != formatlist.end())
-		it->setViewer(command);
-}
-
-
-bool Formats::view(Buffer const * buffer, string const & filename,
-		   string const & format_name) const
-{
-	if (filename.empty())
-		return false;
-
-	Format const * format = getFormat(format_name);
-	if (format && format->viewer().empty() &&
-	    format->isChildFormat())
-		format = getFormat(format->parentFormat());
-	if (!format || format->viewer().empty()) {
-#if USE_BOOST_FORMAT
-		Alert::alert(_("Cannot view file"),
-			     boost::io::str(boost::format(_("No information for viewing %1$s"))
-			   % prettyName(format_name)));
-#else
-		Alert::alert(_("Cannot view file"),
-			     _("No information for viewing ")
-			     + prettyName(format_name));
-#endif
-			   return false;
-	}
-
-	string command = format->viewer();
-
-	if (format_name == "dvi" &&
-	    !lyxrc.view_dvi_paper_option.empty()) {
-		command += ' ' + lyxrc.view_dvi_paper_option;
-		string paper_size = converters.papersize(buffer);
-		if (paper_size == "letter")
-			paper_size = "us";
-		command += ' ' + paper_size;
-		if (buffer->params.orientation
-		    == BufferParams::ORIENTATION_LANDSCAPE)
-			command += 'r';
-	}
-
-	if (!contains(command, token_from))
-		command += ' ' + token_from;
-
-	command = subst(command, token_from,
-			QuoteName(OnlyFilename(filename)));
-	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
-
-	lyxerr[Debug::FILES] << "Executing command: " << command << endl;
-	ShowMessage(buffer, _("Executing command:"), command);
-
-	Path p(OnlyPath(filename));
-	Systemcall one;
-	int const res = one.startscript(Systemcall::DontWait, command);
-
-	if (res) {
-		Alert::alert(_("Cannot view file"),
-			   _("Error while executing"),
-			   command.substr(0, 50));
-		return false;
-	}
-	return true;
-}
-
-
-string const Formats::prettyName(string const & name) const
-{
-	Format const * format = getFormat(name);
-	if (format)
-		return format->prettyname();
-	else
-		return name;
-}
-
-
-string const Formats::extension(string const & name) const
-{
-	Format const * format = getFormat(name);
-	if (format)
-		return format->extension();
-	else
-		return name;
-}
-
-//////////////////////////////////////////////////////////////////////////////
+Converter::Converter(string const & f, string const & t, string const & c,
+	  string const & l): from(f), to(t), command(c), flags(l), 
+			     From(0), To(0), latex(false), 
+			     original_dir(false), need_aux(false) 
+{}
 
 void Converter::readFlags()
 {
@@ -288,7 +109,7 @@ bool operator<(Converter const & a, Converter const & b)
 		return i < 0;
 }
 
-//////////////////////////////////////////////////////////////////////////////
+
 
 class compare_Converter {
 public:
@@ -301,6 +122,7 @@ private:
 	string const & from;
 	string const & to;
 };
+
 
 
 Converter const * Converters::getConverter(string const & from,
@@ -407,172 +229,9 @@ void Converters::sort()
 }
 
 
-int Converters::bfs_init(string const & start, bool clear_visited)
+bool Converters::usePdflatex(Graph::EdgePath const & path)
 {
-	int const s = formats.getNumber(start);
-	if (s < 0)
-		return s;
-
-	Q_ = queue<int>();
-	if (clear_visited)
-		fill(visited_.begin(), visited_.end(), false);
-	if (visited_[s] == false) {
-		Q_.push(s);
-		visited_[s] = true;
-	}
-	return s;
-}
-
-
-vector<Format const *> const
-Converters::getReachableTo(string const & target, bool clear_visited)
-{
-	vector<Format const *> result;
-	int const s = bfs_init(target, clear_visited);
-	if (s < 0)
-		return result;
-
-	while (!Q_.empty()) {
-		int const i = Q_.front();
-		Q_.pop();
-		if (i != s || target != "lyx") {
-			result.push_back(&formats.get(i));
-		}
-
-		vector<int>::iterator it = vertices_[i].in_vertices.begin();
-		vector<int>::iterator end = vertices_[i].in_vertices.end();
-		for (; it != end; ++it) {
-			if (!visited_[*it]) {
-				visited_[*it] = true;
-				Q_.push(*it);
-			}
-		}
-	}
-
-	return result;
-}
-
-
-vector<Format const *> const
-Converters::getReachable(string const & from, bool only_viewable,
-			 bool clear_visited)
-{
-	vector<Format const *> result;
-
-	if (bfs_init(from, clear_visited) < 0)
-		return result;
-
-	while (!Q_.empty()) {
-		int const i = Q_.front();
-		Q_.pop();
-		Format const & format = formats.get(i);
-		if (format.name() == "lyx")
-			continue;
-		if (!only_viewable || !format.viewer().empty() ||
-		    format.isChildFormat())
-			result.push_back(&format);
-
-		vector<int>::const_iterator cit =
-			vertices_[i].out_vertices.begin();
-		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
-		for (; cit != end; ++cit)
-			if (!visited_[*cit]) {
-				visited_[*cit] = true;
-				Q_.push(*cit);
-			}
-	}
-
-	return result;
-}
-
-
-bool Converters::isReachable(string const & from, string const & to)
-{
-	if (from == to)
-		return true;
-
-	int const s = bfs_init(from);
-	int const t = formats.getNumber(to);
-	if (s < 0 || t < 0)
-		return false;
-
-	while (!Q_.empty()) {
-		int const i = Q_.front();
-		Q_.pop();
-		if (i == t)
-			return true;
-
-		vector<int>::const_iterator cit =
-			vertices_[i].out_vertices.begin();
-		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
-		for (; cit != end; ++cit) {
-			if (!visited_[*cit]) {
-				visited_[*cit] = true;
-				Q_.push(*cit);
-			}
-		}
-	}
-
-	return false;
-}
-
-
-Converters::EdgePath const
-Converters::getPath(string const & from, string const & to)
-{
-	EdgePath path;
-	if (from == to)
-		return path;
-
-	int const s = bfs_init(from);
-	int t = formats.getNumber(to);
-	if (s < 0 || t < 0)
-		return path;
-
-	vector<int> prev_edge(formats.size());
-	vector<int> prev_vertex(formats.size());
-
-	bool found = false;
-	while (!Q_.empty()) {
-		int const i = Q_.front();
-		Q_.pop();
-		if (i == t) {
-			found = true;
-			break;
-		}
-
-		vector<int>::const_iterator beg =
-			vertices_[i].out_vertices.begin();
-		vector<int>::const_iterator cit = beg;
-		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
-		for (; cit != end; ++cit)
-			if (!visited_[*cit]) {
-				int const j = *cit;
-				visited_[j] = true;
-				Q_.push(j);
-				int const k = cit - beg;
-				prev_edge[j] = vertices_[i].out_edges[k];
-				prev_vertex[j] = i;
-			}
-	}
-	if (!found)
-		return path;
-
-	while (t != s) {
-		path.push_back(prev_edge[t]);
-		t = prev_vertex[t];
-	}
-	reverse(path.begin(), path.end());
-	return path;
-}
-
-
-bool Converters::usePdflatex(EdgePath const & path)
-{
-	for (EdgePath::const_iterator cit = path.begin();
+	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		if (conv.latex)
@@ -593,7 +252,7 @@ bool Converters::convert(Buffer const * buffer,
 	if (from_format == to_format)
 		return move(from_file, to_file, false);
 
-	EdgePath edgepath = getPath(from_format, to_format);
+	Graph::EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
 		return false;
 	}
@@ -606,7 +265,7 @@ bool Converters::convert(Buffer const * buffer,
 	string to_base = ChangeExtension(to_file, "");
 	string infile;
 	string outfile = from_file;
-	for (EdgePath::const_iterator cit = edgepath.begin();
+	for (Graph::EdgePath::const_iterator cit = edgepath.begin();
 	     cit != edgepath.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
@@ -794,22 +453,6 @@ bool Converters::convert(Buffer const * buffer,
 }
 
 
-void Converters::buildGraph()
-{
-	vertices_ = vector<Vertex>(formats.size());
-	visited_.resize(formats.size());
-
-	for (ConverterList::iterator it = converterlist_.begin();
-	     it != converterlist_.end(); ++it) {
-		int const s = formats.getNumber(it->from);
-		int const t = formats.getNumber(it->to);
-		vertices_[t].in_vertices.push_back(s);
-		vertices_[s].out_vertices.push_back(t);
-		vertices_[s].out_edges.push_back(it - converterlist_.begin());
-	}
-}
-
-
 bool Converters::formatIsUsed(string const & format)
 {
 	ConverterList::const_iterator cit = converterlist_.begin();
@@ -947,32 +590,6 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 }
 
 
-string const Converters::papersize(Buffer const * buffer)
-{
-	char real_papersize = buffer->params.papersize;
-	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc.default_papersize;
-
-	switch (real_papersize) {
-	case BufferParams::PAPER_A3PAPER:
-		return "a3";
-	case BufferParams::PAPER_A4PAPER:
-		return "a4";
-	case BufferParams::PAPER_A5PAPER:
-		return "a5";
-	case BufferParams::PAPER_B5PAPER:
-		return "b5";
-	case BufferParams::PAPER_EXECUTIVEPAPER:
-		return "foolscap";
-	case BufferParams::PAPER_LEGALPAPER:
-		return "legal";
-	case BufferParams::PAPER_USLETTER:
-	default:
-		return "letter";
-	}
-}
-
-
 string const Converters::dvips_options(Buffer const * buffer)
 {
 	string result;
@@ -1023,14 +640,68 @@ string const Converters::dvipdfm_options(Buffer const * buffer)
 	return result;
 }
 
+void Converters::buildGraph()
+{
+	G_.init(formats.size());
+	ConverterList::iterator beg = converterlist_.begin();
+	ConverterList::iterator end = converterlist_.end();
+	for (ConverterList::iterator it = beg; it != end ; ++it) {
+		int const s = formats.getNumber(it->from);
+		int const t = formats.getNumber(it->to);
+		G_.addEdge(s,t);
+	}
+}
 
-vector<Converters::Vertex> Converters::vertices_;
+vector<Format const *> const
+Converters::intToFormat(std::vector<int> const & input)
+{
+	vector<Format const *> result(input.size());
 
+	vector<int>::const_iterator it = input.begin();
+	vector<int>::const_iterator end = input.end();
+	vector<Format const *>::iterator rit = result.begin();
+	for ( ; it != end; ++it, ++rit) {
+		*rit = &formats.get(*it);
+	}
+	return result;
+}
+
+vector<Format const *> const
+Converters::getReachableTo(string const & target, bool clear_visited)
+{
+	vector<int> const & reachablesto = 
+		G_.getReachableTo(formats.getNumber(target), clear_visited);
+
+	return intToFormat(reachablesto);
+}
+
+vector<Format const *> const
+Converters::getReachable(string const & from, bool only_viewable,
+	     bool clear_visited)
+{
+	vector<int> const & reachables = 
+		G_.getReachable(formats.getNumber(from), 
+				only_viewable, 
+				clear_visited);
+
+	return intToFormat(reachables);
+}
+
+bool Converters::isReachable(string const & from, string const & to)
+{
+	return G_.isReachable(formats.getNumber(from),
+			      formats.getNumber(to));
+}
+
+Graph::EdgePath const 
+Converters::getPath(string const & from, string const & to)
+{
+	return G_.getPath(formats.getNumber(from),
+			  formats.getNumber(to));
+}
 
 /// The global instance
-Formats formats;
 Converters converters;
 
 // The global copy after reading lyxrc.defaults
-Formats system_formats;
 Converters system_converters;

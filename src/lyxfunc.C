@@ -34,7 +34,7 @@
 #include "frontends/lyx_gui.h"
 #include "vspace.h"
 #include "FloatList.h"
-#include "converter.h"
+#include "format.h"
 #include "exporter.h"
 #include "importer.h"
 #include "TextCache.h"

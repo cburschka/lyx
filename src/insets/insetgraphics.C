@@ -64,6 +64,7 @@ TODO
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
+#include "format.h"
 #include "frontends/Painter.h"
 #include "lyxrc.h"
 #include "frontends/font_metrics.h"

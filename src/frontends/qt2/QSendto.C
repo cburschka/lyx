@@ -23,7 +23,7 @@
 
 #include "debug.h"
 #include "qt_helpers.h"
-#include "converter.h"
+#include "format.h"
 
 using std::vector;
 

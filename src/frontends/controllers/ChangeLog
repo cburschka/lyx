@@ -1,3 +1,9 @@
+2003-02-28  Alfredo Braunstein  <abraunst@libero.it>
+
+	* ControlGraphics.C: removed #include "converter.h"
+	* ControlPrefs.C:
+	* ControlSendto.C: added #include "format.h"
+
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
 	* ControlLabel.[Ch]: new files. A controller for the Label dialog.

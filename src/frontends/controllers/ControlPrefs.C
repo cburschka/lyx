@@ -23,6 +23,7 @@
 #include "support/filetools.h"
 #include "frontends/Dialogs.h"
 #include "converter.h"
+#include "format.h"
 #include "debug.h"
 
 extern string system_lyxdir;

@@ -16,7 +16,6 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
-#include "converter.h"
 #include "LString.h"
 
 #include <qcombobox.h>

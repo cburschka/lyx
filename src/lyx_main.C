@@ -33,6 +33,7 @@
 #include "lastfiles.h"
 #include "encoding.h"
 #include "converter.h"
+#include "format.h"
 #include "lyxtextclasslist.h"
 
 #include "frontends/Alert.h"

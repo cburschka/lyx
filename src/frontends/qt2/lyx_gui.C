@@ -125,8 +125,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 
 void lyx_gui::parse_lyxrc()
-{
-}
+{}
 
 
 void lyx_gui::start(string const & batch, vector<string> const & files)
