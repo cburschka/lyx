@@ -20,51 +20,42 @@
 #include <string>
 
 class BufferView;
+class FuncRequest;
 class LyXText;
 
 namespace lyx {
 namespace find {
 
-/**
- * This function replaces an ocurrence of \param search with the
- * string \param replace
- *
- *  \param bv the BufferView in which the search is to be performed,
- *         starting at the current cursor position.
- *  \param search the string we're looking for.
- *  \param replace if \c search is found, replace it with this.
- *  \param cs perform a case-sensitive search for \c search.
- *  \param mw match whole words only.
- *  \param fw search forward from the current cursor position.
+/** Encode the parameters needed to find \c search as a string
+ *  that can be dispatched to the LyX core in a FuncRequest wrapper.
  */
+std::string const find2string(std::string const & search,
+			      bool casesensitive,
+			      bool matchword,
+			      bool forward);
 
-int replace(BufferView * bv,
-	    std::string const & search, std::string const & replace,
-	    bool cs, bool mw, bool fw);
-/**
- * This function replaces all ocurrences of \param search with
- * the string \param replace
- *
- *  \param bv the BufferView in which the search is to be performed,
- *         starting at the current cursor position.
- *  \param search the string we're looking for.
- *  \param replace if \c search is found, replace it with this.
- *  \param cs perform a case-sensitive search for \c search.
- *  \param mw match whole words only.
+/** Encode the parameters needed to replace \c search with \c replace
+ *  as a string that can be dispatched to the LyX core in a FuncRequest
+ *  wrapper.
  */
+std::string const replace2string(std::string const & search,
+				 std::string const & replace,
+				 bool casesensitive,
+				 bool matchword,
+				 bool all,
+				 bool forward);
 
-int replaceAll(BufferView * bv,
-	       std::string const & search, std::string const & replace,
-	       bool cs, bool mw);
-
-/**
- * This function is called as a general interface to find some text
- * from the actual cursor position in whatever direction we want to
- * go. This does also update the screen.
+/** Parse the string encoding of the find request that is found in
+ *  \c ev.argument and act on it.
+ * The string is encoded by \c find2string.
  */
-bool find(BufferView *, std::string const & search, 
-	  bool cs, bool mw, bool fw);
+void find(FuncRequest const & ev);
 
+/** Parse the string encoding of the replace request that is found in
+ *  \c ev.argument and act on it.
+ * The string is encoded by \c replace2string.
+ */
+void replace(FuncRequest const &);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);

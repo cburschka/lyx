@@ -878,13 +878,18 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			if (!argument.empty()) {
 				last_search = argument;
 				searched_string = argument;
-			} else {
+			} else
 				searched_string = last_search;
-			}
-			bool fw = (action == LFUN_WORDFINDFORWARD);
-			if (!searched_string.empty())
-				lyx::find::find(view(), searched_string,
-						true, false, fw);
+
+			if (searched_string.empty())
+				break;
+
+			bool const fw = action == LFUN_WORDFINDFORWARD;
+			string const data =
+				lyx::find::find2string(searched_string,
+						       true, false, fw);
+			FuncRequest const fr(view(), LFUN_WORD_FIND, data);
+			view()->dispatch(fr);
 			break;
 		}
 

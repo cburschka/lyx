@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "iterators.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "lyxtext.h"
 #include "paragraph.h"
@@ -26,18 +27,188 @@
 #include "undo.h"
 
 #include "frontends/Alert.h"
+#include "frontends/LyXView.h"
 
 #include "support/textutils.h"
+#include "support/tostr.h"
+
+#include "support/std_sstream.h"
 
 using lyx::support::lowercase;
 using lyx::support::uppercase;
+using lyx::support::split;
+
 using bv_funcs::put_selection_at;
 
+using std::ostringstream;
 using std::string;
+
+
+namespace {
+
+bool parse_bool(string & howto)
+{
+	if (howto.empty())
+		return false;
+	string var;
+	howto = split(howto, var, ' ');
+	return (var == "1");
+}
+
+
+bool find(BufferView * bv,
+	  string const & searchstr, bool cs, bool mw, bool fw);
+
+
+int replace(BufferView * bv,
+	    string const & searchstr, string const & replacestr,
+	    bool cs, bool mw, bool fw);
+
+
+int replaceAll(BufferView * bv,
+	       string const & searchstr, string const & replacestr,
+	       bool cs, bool mw);
+
+
+bool findChange(PosIterator & cur, PosIterator const & end);
+
+} // namespace anon
 
 
 namespace lyx {
 namespace find {
+
+string const find2string(string const & search,
+ 			 bool casesensitive, bool matchword, bool forward)
+{
+	ostringstream ss;
+	ss << search << '\n'
+	   << int(casesensitive) << ' '
+	   << int(matchword) << ' '
+	   << int(forward);
+
+	return ss.str();
+}
+ 
+
+string const replace2string(string const & search, string const & replace,
+			    bool casesensitive, bool matchword,
+			    bool all, bool forward)
+{
+	ostringstream ss;
+	ss << search << '\n'
+	   << replace << '\n'
+	   << int(casesensitive) << ' '
+	   << int(matchword) << ' '
+	   << int(all) << ' '
+	   << int(forward);
+
+	return ss.str();
+}
+
+
+void find(FuncRequest const & ev)
+{
+	if (!ev.view() || ev.action != LFUN_WORD_FIND)
+		return;
+
+	// data is of the form
+	// "<search>
+	//  <casesensitive> <matchword> <forward>"
+	string search;
+	string howto = split(ev.argument, search, '\n');
+
+	bool casesensitive = parse_bool(howto);
+	bool matchword     = parse_bool(howto);
+	bool forward       = parse_bool(howto);
+
+	BufferView * bv = ev.view();
+	bool const found = ::find(bv, search,
+				  forward, casesensitive, matchword);
+
+	if (!found)
+		bv->owner()->message(_("String not found!"));
+}
+
+
+void replace(FuncRequest const & ev)
+{
+	if (!ev.view() || ev.action != LFUN_WORD_REPLACE)
+		return;
+
+	// data is of the form
+	// "<search>
+	//  <replace>
+	//  <casesensitive> <matchword> <all> <forward>"
+	string search;
+	string replace;
+	string howto = split(ev.argument, search, '\n');
+	howto = split(howto, replace, '\n');
+
+	bool casesensitive = parse_bool(howto);
+	bool matchword     = parse_bool(howto);
+	bool all           = parse_bool(howto);
+	bool forward       = parse_bool(howto);
+
+	BufferView * bv = ev.view();
+	LyXView * lv = bv->owner();
+
+	int const replace_count = all ?
+		::replaceAll(bv, search, replace,
+			     casesensitive, matchword) :
+		::replace(bv, search, replace,
+			  casesensitive, matchword, forward);
+ 
+	if (replace_count == 0) {
+		lv->message(_("String not found!"));
+	} else {
+		if (replace_count == 1) {
+			lv->message(_("String has been replaced."));
+		} else {
+			string str = tostr(replace_count);
+			str += _(" strings have been replaced.");
+			lv->message(str);
+		}
+	}
+}
+
+
+bool findNextChange(BufferView * bv)
+{
+	if (!bv->available())
+		return false;
+
+	PosIterator cur = PosIterator(*bv);
+	PosIterator const endit = bv->buffer()->pos_iterator_end();
+
+	if (!findChange(cur, endit))
+		return false;
+	
+	ParagraphList::iterator pit = cur.pit();
+	pos_type pos = cur.pos();
+	
+	Change orig_change = pit->lookupChangeFull(pos);
+	pos_type parsize = pit->size();
+	pos_type end = pos;
+
+	for (; end != parsize; ++end) {
+		Change change = pit->lookupChangeFull(end);
+		if (change != orig_change) {
+			// slight UI optimisation: for replacements, we get
+			// text like : _old_new. Consider that as one change.
+			if (!(orig_change.type == Change::DELETED &&
+				change.type == Change::INSERTED))
+				break;
+		}
+	}
+	pos_type length = end - pos;
+	put_selection_at(bv, cur, length, true);
+	return true;
+}
+
+} // find namespace
+} // lyx namespace
+
 
 namespace {
 
@@ -49,11 +220,11 @@ public:
 	{}
 
 	// returns true if the specified string is at the specified position
-	bool operator()(Paragraph const & par, pos_type pos) const
-	{			
-		string::size_type size = str.length();
-		pos_type i = 0;
-		pos_type const parsize = par.size();
+	bool operator()(Paragraph const & par, lyx::pos_type pos) const
+	{
+		string::size_type const size = str.length();
+		lyx::pos_type i = 0;
+		lyx::pos_type const parsize = par.size();
 		while ((pos + i < parsize)
 		       && (string::size_type(i) < size)
 		       && (cs ? (str[i] == par.getChar(pos + i))
@@ -68,7 +239,7 @@ public:
 		if (mw) {
 			if (pos > 0	&& IsLetterCharOrDigit(par.getChar(pos - 1)))
 				return false;
-			if (pos + pos_type(size) < parsize
+			if (pos + lyx::pos_type(size) < parsize
 					&& IsLetterCharOrDigit(par.getChar(pos + size)));
 				return false;
 		}
@@ -129,9 +300,6 @@ bool searchAllowed(BufferView * bv, string const & str)
 	return bv->available();
 }
 
-} // namespace anon
-
-
 
 bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
 {
@@ -175,7 +343,7 @@ int replaceAll(BufferView * bv,
 	int const ssize = searchstr.size();
 
 	while (findForward(cur, end, match)) {
-		pos_type pos = cur.pos();
+		lyx::pos_type pos = cur.pos();
 		LyXFont const font
 			= cur.pit()->getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.pit()->erase(pos, pos + ssize);
@@ -192,8 +360,6 @@ int replaceAll(BufferView * bv,
 	return num;
 }
 
-
-namespace {
 
 bool stringSelected(BufferView * bv,
 		    string const & searchstr, 
@@ -212,8 +378,6 @@ bool stringSelected(BufferView * bv,
 
 	return true;
 }
-
-} //namespace anon
 
 
 int replace(BufferView * bv,
@@ -239,39 +403,4 @@ int replace(BufferView * bv,
 	return 1;
 }
 
-
-bool findNextChange(BufferView * bv)
-{
-	if (!bv->available())
-		return false;
-
-	PosIterator cur = PosIterator(*bv);
-	PosIterator const endit = bv->buffer()->pos_iterator_end();
-
-	if (!findChange(cur, endit))
-		return false;
-	
-	ParagraphList::iterator pit = cur.pit();
-	pos_type pos = cur.pos();
-	
-	Change orig_change = pit->lookupChangeFull(pos);
-	pos_type parsize = pit->size();
-	pos_type end = pos;
-
-	for (; end != parsize; ++end) {
-		Change change = pit->lookupChangeFull(end);
-		if (change != orig_change) {
-			// slight UI optimisation: for replacements, we get
-			// text like : _old_new. Consider that as one change.
-			if (!(orig_change.type == Change::DELETED &&
-				change.type == Change::INSERTED))
-				break;
-		}
-	}
-	pos_type length = end - pos;
-	put_selection_at(bv, cur, length, true);
-	return true;
-}
-
-} // find namespace
-} // lyx namespace
+} //namespace anon

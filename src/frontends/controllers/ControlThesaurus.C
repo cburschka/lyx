@@ -10,14 +10,10 @@
 
 #include <config.h>
 
-
 #include "ControlThesaurus.h"
 
-#include "gettext.h"
 #include "lyxfind.h"
-
-#include "frontends/LyXView.h"
-
+#include "funcrequest.h"
 
 using std::string;
 
@@ -46,16 +42,14 @@ void ControlThesaurus::replace(string const & newstr)
 	 * on a particular charpos in a paragraph that is broken on
 	 * deletion/change !
 	 */
-	int const replace_count =
-		lyx::find::replace(kernel().bufferview(), oldstr_, newstr,
-				   true /*cs*/, true /*mw*/, true /*fw*/);
-
-	oldstr_ = newstr;
-
-	if (replace_count == 0)
-		kernel().lyxview().message(_("String not found!"));
-	else
-		kernel().lyxview().message(_("String has been replaced."));
+	string const data =
+		lyx::find::replace2string(oldstr_, newstr,
+					  true,  // case sensitive
+					  true,  // match word
+					  false, // all words
+					  true); // forward
+	FuncRequest const fr(kernel().bufferview(), LFUN_WORD_REPLACE, data);
+	kernel().dispatch(fr);
 }
 
 

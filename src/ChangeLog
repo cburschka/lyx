@@ -3,6 +3,14 @@
 	* LyXAction.C:
 	* lfuns.h: add LFUN_WORD_FIND and LFUN_WORD_REPLACE.
 
+	* BufferView_pimpl.C (dispatch): act on these LFUNs.
+
+	* lyxfind.[Ch] (find2string, replace2string, find, replace): new
+	functions replacing find, replace and replaceAll.
+
+	* lyxfunc.C (dispatch): invoke LFUN_WORD_FIND from a call to
+	LFUN_WORDFIND(FORWARD|BACKWARD).
+
 2004-01-07  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text.C (breakParagraph): remove an outdated #warning

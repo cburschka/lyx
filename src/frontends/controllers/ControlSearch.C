@@ -12,17 +12,17 @@
 
 #include "ControlSearch.h"
 
-#include "gettext.h"
+#include "funcrequest.h"
 #include "lyxfind.h"
 
 #include "frontends/LyXView.h"
 
-#include "support/tostr.h"
-
-
 using std::string;
 
 
+/* The ControlSeach class is now in a fit state to derive from
+   Dialog::Controller
+*/
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {}
@@ -31,12 +31,11 @@ ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 void ControlSearch::find(string const & search,
 			 bool casesensitive, bool matchword, bool forward)
 {
-	bool const found = lyx::find::find(bufferview(), search,
-					   casesensitive, matchword,
-					   forward);
-
-	if (!found)
-		lv_.message(_("String not found!"));
+	string const data =
+		lyx::find::find2string(search,
+				       casesensitive, matchword, forward);
+	FuncRequest const fr(bufferview(), LFUN_WORD_FIND, data);
+	lv_.dispatch(fr);
 }
 
 
@@ -44,24 +43,10 @@ void ControlSearch::replace(string const & search, string const & replace,
 			    bool casesensitive, bool matchword,
 			    bool forward, bool all)
 {
-	// If not replacing all instances of the word, then do not
-	// move on to the next instance once the present instance has been
-	// changed
-	int const replace_count = all ?
-		lyx::find::replaceAll(bufferview(), search, replace,
-				      casesensitive, matchword)
-		: lyx::find::replace(bufferview(), search, replace,
-				     casesensitive, matchword, forward);
-
-	if (replace_count == 0) {
-		lv_.message(_("String not found!"));
-	} else {
-		if (replace_count == 1) {
-			lv_.message(_("String has been replaced."));
-		} else {
-			string str = tostr(replace_count);
-			str += _(" strings have been replaced.");
-			lv_.message(str);
-		}
-	}
+	string const data =
+		lyx::find::replace2string(search, replace,
+					  casesensitive, matchword,
+					  all, forward);
+	FuncRequest const fr(bufferview(), LFUN_WORD_REPLACE, data);
+	lv_.dispatch(fr);
 }

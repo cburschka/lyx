@@ -1230,6 +1230,14 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 	}
 
+	case LFUN_WORD_FIND:
+		lyx::find::find(ev);
+		break;
+
+	case LFUN_WORD_REPLACE:
+		lyx::find::replace(ev);
+		break;
+
 	case LFUN_UNKNOWN_ACTION:
 		ev.errorMessage(N_("Unknown function!"));
 		break;
