@@ -1,3 +1,7 @@
+2002-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxsum.C: an ugly hack to compile with non-gnu linkers
+
 2002-11-12  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
 
 	* lstrings.C (getVectorFromString): #if 0 -> #if 1 until Lars devises
