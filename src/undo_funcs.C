@@ -230,16 +230,6 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			it->getLyXText(bv)->redoParagraphs(bv,
 			                                   it->getLyXText(bv)->cursor,
 			                                   endpar);
-			LyXFont font;
-			it->update(bv, font, false);
-			// we now would have to rebreak the whole paragraph the
-			// undo-par was in. How we do it here is not really true.
-			// We would have to save this information in the undo-struct
-			// and then we could do the right rebreak. Here we only
-			// handle the case where this was in the actual paragraph,
-			// which not always is true.
-			bv->text->redoParagraphs(bv, bv->text->cursor,
-			                         bv->text->cursor.par());
 			if (tmppar) {
 				it = static_cast<UpdatableInset*>(tmppar->inInset());
 				LyXText * t;
@@ -251,7 +241,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				}
 				t->setCursorIntern(bv, tmppar, undo->cursor_pos);
 				t->updateCounters(bv, t->cursor.row());
+				bv->fitCursor();
 			}
+			bv->updateInset(it, false);
 			bv->text->setCursorIntern(bv, bv->text->cursor.par(),
 			                          bv->text->cursor.pos());
 		} else {

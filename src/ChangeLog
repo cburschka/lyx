@@ -1,5 +1,8 @@
 2002-03-14  Juergen Vigna  <jug@sad.it>
 
+	* undo_funcs.C (textHandleUndo): do the right thing when updating
+	the inset after the undo/redo.
+
 	* text2.C (setCursor): just some testcode for #44 not ready yet.
 
 	* undo_funcs.C (textHandleUndo): set the next() and previous()
