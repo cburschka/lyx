@@ -1,5 +1,29 @@
 2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/minibuffer.h: use Timeout instead of the xforms timer
+	object. 
+	(setTimer) rewrite for the Timeout, change to unsigned arg
+	(set): change to unsigned timer arg
+	(TimerCB): remove
+
+	* src/minibuffer.C (TimerCB): removed func 
+	(C_MiniBuffer_TimerCB): removed func 
+	(C_MiniBuffer_ExecutingCB): rewrite to not depend on TimerCB
+	(peek_event): use a switch statement
+	(add): don't use fl_add_timer.
+	(Set): rewrite to use the Timeout
+	(Init): ditto
+
+	* src/Timeout.[Ch] (setType): return a Timeout &
+	(setTimeout): ditto, change to unsigned arg for timeout
+
+2000-10-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/formula.C (mathed_string_width): Use string instead
+	of a constant size char array.
+                                      
+2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* src/frontends/ButtonPolicies.h: remove the LOstream and remove
 	the two recently added operator<< for SMInput and State.
 
