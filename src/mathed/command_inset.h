@@ -37,11 +37,14 @@ public:
 	virtual std::string const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
-
+	///
 	std::string const & commandname() const { return name_; }
 private:
+	///
 	std::string name_;
+	///
 	mutable bool set_label_;
+	///
 	mutable RenderButton button_;
 };
 

@@ -11,16 +11,16 @@
 #include <config.h>
 
 #include "ref_inset.h"
-#include "math_data.h"
-#include "math_factory.h"
 
 #include "BufferView.h"
+#include "LaTeXFeatures.h"
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
-#include "math_support.h"
 #include "gettext.h"
-#include "LaTeXFeatures.h"
+#include "math_data.h"
+#include "math_factory.h"
+#include "math_support.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
@@ -69,7 +69,7 @@ void RefInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
-			lyxerr << "trying to goto ref" << cell(0) << endl;
+			lyxerr << "trying to goto ref '" << asString(cell(0)) << "'" << endl;
 			cur.bv().dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 			break;
 		}

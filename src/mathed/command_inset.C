@@ -15,8 +15,8 @@
 #include "math_mathmlstream.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
-#include "support/std_sstream.h"
 
+#include "support/std_sstream.h"
 
 using std::string;
 using std::auto_ptr;
@@ -24,9 +24,7 @@ using std::ostringstream;
 
 
 CommandInset::CommandInset(string const & name)
-	: MathNestInset(2),
-	  name_(name),
-	  set_label_(false)
+	: MathNestInset(2), name_(name), set_label_(false)
 {
 	lock_ = true;
 }
@@ -45,6 +43,7 @@ void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		button_.update(screenLabel(), true);
 	}
 	button_.metrics(mi, dim);
+	dim_ = dim;
 }
 
 
@@ -66,16 +65,16 @@ void CommandInset::write(WriteStream & os) const
 
 string const CommandInset::screenLabel() const
 {
-       return name_;
+	return name_;
 }
 
 
 string const CommandInset::createDialogStr(string const & name) const
 {
-	ostringstream data;
-	data << name << " LatexCommand ";
-	WriteStream wsdata(data);
-	write(wsdata);
-	wsdata << "\n\\end_inset\n\n";
-	return data.str();
+	ostringstream os;
+	os << name << " LatexCommand ";
+	WriteStream ws(os);
+	write(ws);
+	ws << "\n\\end_inset\n\n";
+	return os.str();
 }
