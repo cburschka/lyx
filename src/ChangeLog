@@ -1,3 +1,8 @@
+2003-04-08  Alfredo Braunstein  <abraunst@libero.it>
+
+	* text2.C (changeDepth): do not setUndo on test_only (make undo work
+	again)
+ 
 2003-04-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyxfind.C (searchForward, searchBackwards): bug 782

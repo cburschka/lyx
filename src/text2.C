@@ -467,7 +467,8 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 
 	ParagraphList::iterator pastend = end;
 	++pastend;
-	setUndo(bv(), Undo::EDIT, &(*start), &(*pastend));
+	if (!test_only)
+		setUndo(bv(), Undo::EDIT, &(*start), &(*pastend));
 
 	bool changed = false;
 
