@@ -182,7 +182,6 @@ lyx_SOURCES = \
 	sp_spell.C \
 	sp_ispell.h \
 	sp_pspell.h \
-	stl_string_fwd.h \
 	tabular.C \
 	tabular.h \
 	tabular-old.C \
