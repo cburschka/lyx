@@ -39,6 +39,8 @@ libmathed_la_SOURCES = \
 	math_defs.h \
 	math_deliminset.C \
 	math_deliminset.h \
+	math_diffinset.C \
+	math_diffinset.h \
 	math_diminset.C \
 	math_diminset.h \
 	math_dotsinset.C \

@@ -62,7 +62,7 @@ void MathFracInset::normalize(NormalStream & os) const
 
 void MathFracInset::maplize(MapleStream & os) const
 {
-	os << '(' << cell(0) << '/' << cell(1) << ')';
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 

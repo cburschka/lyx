@@ -1,0 +1,33 @@
+// -*- C++ -*-
+#ifndef MATH_DIFFINSET_H
+#define MATH_DIFFINSET_H
+
+// d f(x)/dx in one block
+// for interfacing external programs
+
+#include "math_nestinset.h"
+
+class MathDiffInset : public MathNestInset {
+public:
+	///
+	explicit MathDiffInset();
+	///
+	MathInset * clone() const;
+	///
+	void addDer(MathArray const & der);
+	///
+	void metrics(MathMetricsInfo const & st) const;
+	///
+	void draw(Painter &, int x, int y) const;
+
+	///
+	void normalize(NormalStream &) const;
+	///
+	void maplize(MapleStream &) const;
+	///
+	void mathmlize(MathMLStream &) const;
+	///
+	void write(WriteStream & os) const;
+};
+
+#endif

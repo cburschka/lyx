@@ -403,6 +403,20 @@ void extractSums(MathArray & ar)
 }
 
 
+//
+// search differential stuff
+//
+
+void extractDiff(MathArray & ar)
+{
+	lyxerr << "\nDiffs from: " << ar << "\n";
+	lyxerr << "\nDiffs to: " << ar << "\n";
+}
+
+//
+// combine searches
+//
+
 void extractStructure(MathArray & ar)
 {
 	extractMatrices(ar);
@@ -410,6 +424,7 @@ void extractStructure(MathArray & ar)
 	extractFunctions(ar);
 	extractIntegrals(ar);
 	extractSums(ar);
+	extractDiff(ar);
 	extractStrings(ar);
 }
 
