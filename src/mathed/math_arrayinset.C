@@ -6,6 +6,7 @@
 #include "math_parser.h"
 #include "support/LOstream.h"
 #include "Lsstream.h"
+#include "math_mathmlstream.h"
 
 using std::vector;
 
@@ -73,7 +74,7 @@ void MathArrayInset::write(MathWriteInfo & os) const
 }
 
 
-void MathArrayInset::writeNormal(std::ostream & os) const
+void MathArrayInset::writeNormal(NormalStream & os) const
 {
 	os << "[array ";
 	MathGridInset::writeNormal(os);

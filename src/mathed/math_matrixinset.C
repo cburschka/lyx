@@ -7,9 +7,9 @@
 #include "math_matrixinset.h"
 #include "support.h"
 #include "debug.h"
-#include "support/LOstream.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"
+#include "math_mathmlstream.h"
 
 
 namespace {
@@ -182,36 +182,6 @@ void MathMatrixInset::draw(Painter & pain, int x, int y) const
 			drawStr(pain, LM_TC_BF, mi_, xx, yy, nicelabel(row));
 		}
 	}
-}
-
-
-void MathMatrixInset::write(MathWriteInfo & os) const
-{
-  header_write(os.os);
-
-	bool n = numberedType();
-
-	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << eocString(col);
-		if (n) {
-			if (!label_[row].empty())
-				os << "\\label{" << label_[row] << "}";
-			if (nonum_[row])
-				os << "\\nonumber ";
-		}
-		os << eolString(row);
-	}
-
-  footer_write(os.os);
-}
-
-
-void MathMatrixInset::writeNormal(std::ostream & os) const
-{
-	os << "[formula " << normalName(getType()) << " ";
-	MathGridInset::writeNormal(os);
-	os << "] ";
 }
 
 
@@ -673,3 +643,35 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 				<< "' to '" << newtype << "' not implemented\n";
 	}
 }
+
+
+void MathMatrixInset::write(MathWriteInfo & os) const
+{
+  header_write(os.os);
+
+	bool n = numberedType();
+
+	for (row_type row = 0; row < nrows(); ++row) {
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << eocString(col).c_str();
+		if (n) {
+			if (!label_[row].empty())
+				os << "\\label{" << label_[row].c_str() << "}";
+			if (nonum_[row])
+				os << "\\nonumber ";
+		}
+		os << eolString(row).c_str();
+	}
+
+  footer_write(os.os);
+}
+
+
+void MathMatrixInset::writeNormal(NormalStream & os) const
+{
+	os << "[formula " << normalName(getType()).c_str() << " ";
+	MathGridInset::writeNormal(os);
+	os << "] ";
+}
+
+

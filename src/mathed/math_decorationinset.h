@@ -26,7 +26,7 @@ public:
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	void writeNormal(std::ostream & os) const;
+	void writeNormal(NormalStream & os) const;
 	///
 	bool isScriptable() const;
 

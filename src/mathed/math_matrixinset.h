@@ -29,7 +29,7 @@ public:
 	///
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(std::ostream &) const;
+	void writeNormal(NormalStream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///

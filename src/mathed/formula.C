@@ -41,7 +41,8 @@
 #include "Painter.h"
 #include "lyxrc.h"
 #include "math_matrixinset.h"
-#include "mathed/support.h"
+#include "support.h"
+#include "math_mathmlstream.h"
 
 using std::ostream;
 using std::ifstream;
@@ -85,6 +86,12 @@ namespace {
 			"`latex/latex/*` := "
 				"subs(`\\,`=`\\cdot `,"
 					"eval(`latex/latex/*`)):\n";
+
+		// replace spurious \\noalign{\\medskip} in table output
+		header += 
+			"`latex/latex/matrix`:= "
+				"subs(`\\\\\\\\\\\\noalign{\\\\medskip}` = `\\\\\\\\`,"
+					"eval(`latex/latex/matrix`)):\n";
 
 		//"#`latex/latex/symbol` "
 		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
@@ -217,8 +224,9 @@ namespace {
 
 		// create normalized expression
 		ostringstream os;
+		NormalStream ns(os);
 		os << "[" << extra << ' ';
-		ar.writeNormal(os); 
+		ar.writeNormal(ns); 
 		os << "]";
 		string data = os.str().c_str();
 
@@ -305,10 +313,12 @@ int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
 int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 {
 	MathMLStream ms(os);
-	ms << "<equation><alt>";
+	ms << MTag("equation") << MTag("alt");
 	int res = ascii(buf, ms.os_, 0);
-	ms << "</alt>\n<math>" << par_.nucleus() << "<math></equation>";
-	return res + 1;
+	ms << ETag("alt") << MTag("math");
+	ms << par_.nucleus();
+	ms << ETag("math") << ETag("equation");
+	return ms.line_ + res;
 }
 
 
@@ -508,7 +518,7 @@ void InsetFormula::handleExtern(const string & arg)
 	MathArray ar;
 	if (selected) {
 		mathcursor->selGet(ar);
-		lyxerr << "use selection: " << ar << "\n";
+		//lyxerr << "use selection: " << ar << "\n";
 	} else {
 		mathcursor->end();
 		mathcursor->stripFromLastEqualSign();

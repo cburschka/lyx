@@ -8,9 +8,10 @@
 #include "LColor.h"
 #include "Painter.h"
 #include "support/LOstream.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "math_parser.h"
 #include "debug.h"
+#include "math_mathmlstream.h"
 
 
 MathCharInset::MathCharInset(char c)
@@ -101,7 +102,7 @@ void MathCharInset::write(MathWriteInfo & os) const
 }
 
 
-void MathCharInset::writeNormal(std::ostream & os) const
+void MathCharInset::writeNormal(NormalStream & os) const
 {
 	os << "[char " << char_ << " " << "mathalpha" << "]";
 }

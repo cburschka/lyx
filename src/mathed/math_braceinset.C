@@ -6,10 +6,8 @@
 
 #include "math_braceinset.h"
 #include "math_parser.h"
-#include "mathed/support.h"
-#include "support/LOstream.h"
-
-using std::max;
+#include "support.h"
+#include "math_mathmlstream.h"
 
 
 MathBraceInset::MathBraceInset()
@@ -29,7 +27,7 @@ void MathBraceInset::write(MathWriteInfo & os) const
 }
 
 
-void MathBraceInset::writeNormal(std::ostream & os) const
+void MathBraceInset::writeNormal(NormalStream & os) const
 {
 	os << "[block ";
 	cell(0).writeNormal(os);

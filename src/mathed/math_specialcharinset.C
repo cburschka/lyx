@@ -3,7 +3,7 @@
 #endif
 
 #include "math_specialcharinset.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 #include "support.h"
 
 
@@ -54,7 +54,7 @@ void MathSpecialCharInset::write(MathWriteInfo & os) const
 }
 
 
-void MathSpecialCharInset::writeNormal(std::ostream & os) const
+void MathSpecialCharInset::writeNormal(NormalStream & os) const
 {
 	os << "\\" << char_;
 }

@@ -6,14 +6,11 @@
 #include "math_charinset.h"
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
+#include "math_mathmlstream.h"
+#include "support.h"
 #include "debug.h"
 #include "array.h"
-#include "mathed/support.h"
 #include "support/LAssert.h"
-
-using std::ostream;
-using std::endl;
-
 
 
 MathArray::MathArray()
@@ -133,24 +130,19 @@ MathAtom & MathArray::back()
 }
 
 
-void MathArray::dump2(ostream & os) const
+void MathArray::dump2() const
 {
+	NormalStream ns(lyxerr);
 	for (const_iterator it = begin(); it != end(); ++it)
-		os << it->nucleus() << ' ';
+		ns << it->nucleus() << ' ';
 }
 
 
-void MathArray::dump(ostream & os) const
+void MathArray::dump() const
 {
+	NormalStream ns(lyxerr);
 	for (const_iterator it = begin(); it != end(); ++it)
-		os << "<" << it->nucleus() << ">";
-}
-
-
-std::ostream & operator<<(std::ostream & os, MathArray const & ar)
-{
-	ar.dump2(os);
-	return os;
+		ns << "<" << it->nucleus() << ">";
 }
 
 
@@ -231,7 +223,7 @@ void MathArray::write(MathWriteInfo & wi) const
 }
 
 
-void MathArray::writeNormal(ostream & os) const
+void MathArray::writeNormal(NormalStream & os) const
 {
 	MathArray ar = glueChars();
 	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
@@ -281,7 +273,7 @@ void MathArray::mathmlize(MathMLStream & os) const
 	else if (ar.size() == 1)
 		os << ar.begin()->nucleus();
 	else {
-		os << "<mrow>";
+		os << MTag("mrow");
 		for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
 			MathInset const * p = it->nucleus();
 			if (MathScriptInset const * q = ar.asScript(it)) {
@@ -290,7 +282,7 @@ void MathArray::mathmlize(MathMLStream & os) const
 			} else 
 				p->mathmlize(os);
 		}
-		os << "</mrow>";
+		os << ETag("mrow");
 	}
 }
 

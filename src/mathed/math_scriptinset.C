@@ -1,20 +1,12 @@
-
-#include <config.h>
-#include "Lsstream.h"
-
-#include "debug.h"
-#include "support.h"
-#include "support/LOstream.h"
-#include "support/LAssert.h"
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_scriptinset.h"
-
-using std::ostream;
-using std::ostringstream;
+#include "debug.h"
+#include "support.h"
+#include "math_mathmlstream.h"
+#include "support/LAssert.h"
 
 
 MathScriptInset::MathScriptInset()
@@ -227,72 +219,6 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 }
 
 
-void MathScriptInset::write(MathWriteInfo & os) const
-{  
-	//lyxerr << "unexpected call to MathScriptInset::write()\n";
-	write(0, os);
-}
-
-
-void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
-{
-	if (nuc) {
-		nuc->write(os);
-		if (nuc->takesLimits()) {
-			if (limits_ == -1)
-				os << "\\nolimits ";
-			if (limits_ == 1)
-				os << "\\limits ";
-		}
-	}
-	else
-		os << "{}";
-
-	if (hasDown() && down().data_.size())
-		os << "_{" << down().data_ << '}';
-
-	if (hasUp() && up().data_.size())
-		os << "^{" << up().data_ << '}';
-}
-
-
-void MathScriptInset::writeNormal(ostream & os) const
-{  
-	//lyxerr << "unexpected call to MathScriptInset::writeNormal()\n";
-	writeNormal(0, os);
-}
-
-
-void MathScriptInset::writeNormal(MathInset const * nuc, ostream & os) const
-{
-	bool d = hasDown() && down().data_.size();
-	bool u = hasUp() && up().data_.size();
-
-	ostringstream osb;
-	if (nuc)
-		nuc->writeNormal(osb);
-	else
-		osb << "[par]";
-	string base = osb.str();
-
-	if (u && d) {
-		os << "[sup [sub " << osb.str() << " ";
-		down().data_.writeNormal(os);
-		os << "] ";
-		up().data_.writeNormal(os);
-		os << ']';
-	} else if (u) {
-		os << "[sup " << osb.str() << " ";
-		up().data_.writeNormal(os);
-		os << ']';
-	} else if (d) {
-		os << "[sub " << osb.str() << " ";
-		down().data_.writeNormal(os);
-		os << ']';
-	}
-}
-
-
 bool MathScriptInset::hasLimits(MathInset const * nuc) const
 {
 	return limits_ == 1 || (limits_ == 0 && nuc && nuc->isScriptable());
@@ -346,18 +272,65 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 }
 
 
-void MathScriptInset::maplize(MathInset const * nuc, MapleStream & os) const
-{
-	if (nuc)
-		os << nuc;
-	if (hasDown() && down().data_.size())
-		os << '[' << down().data_ << ']';
-	if (hasUp() && up().data_.size())
-		os << "^(" << up().data_ << ')';
+void MathScriptInset::write(MathWriteInfo & os) const
+{  
+	//lyxerr << "unexpected call to MathScriptInset::write()\n";
+	write(0, os);
 }
 
 
-void MathScriptInset::octavize(MathInset const * nuc, OctaveStream & os) const
+void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
+{
+	if (nuc) {
+		os << nuc;
+		if (nuc->takesLimits()) {
+			if (limits_ == -1)
+				os << "\\nolimits ";
+			if (limits_ == 1)
+				os << "\\limits ";
+		}
+	}
+	else
+		os << "{}";
+
+	if (hasDown() && down().data_.size())
+		os << "_{" << down().data_ << '}';
+
+	if (hasUp() && up().data_.size())
+		os << "^{" << up().data_ << '}';
+}
+
+
+void MathScriptInset::writeNormal(NormalStream & os) const
+{  
+	//lyxerr << "unexpected call to MathScriptInset::writeNormal()\n";
+	writeNormal(0, os);
+}
+
+
+void MathScriptInset::writeNormal(MathInset const * nuc, NormalStream & os) const
+{
+	bool d = hasDown() && down().data_.size();
+	bool u = hasUp() && up().data_.size();
+
+	if (u) 
+		os << "[sup ";
+	if (d)
+		os << "[sub ";
+	
+	if (nuc)
+		os << nuc << ' ';
+	else
+		os << "[par]";
+
+	if (d)
+		os << down().data_ << ']';
+	if (u) 
+		os << up().data_ << ']';
+}
+
+
+void MathScriptInset::maplize(MathInset const * nuc, MapleStream & os) const
 {
 	if (nuc)
 		os << nuc;
@@ -373,20 +346,35 @@ void MathScriptInset::mathmlize(MathInset const * nuc, MathMLStream & os) const
 	bool d = hasDown() && down().data_.size();
 	bool u = hasUp() && up().data_.size();
 
-	if (u)
-		os << "<sup>";
-
-	if (d)
-		os << "<sub>";
+	if (u && d)
+		os << MTag("msubsup");
+	else if (u)
+		os << MTag("msup");
+	else if (d)
+		os << MTag("msub");
 
 	if (nuc)
 		os << nuc;
 	else
 		os << "<mrow/>";
 
-	if (d)
-		os << down().data_ << "</sub>";
-
-	if (u)
-		os << up().data_ << "</sup>";
+	if (u && d)
+		os << down().data_ << up().data_ << ETag("msubsup");
+	else if (u)
+		os << up().data_ << ETag("msup");
+	else if (d)
+		os << down().data_ << ETag("msub");
 }
+
+
+void MathScriptInset::octavize(MathInset const * nuc, OctaveStream & os) const
+{
+	if (nuc)
+		os << nuc;
+	if (hasDown() && down().data_.size())
+		os << '[' << down().data_ << ']';
+	if (hasUp() && up().data_.size())
+		os << "^(" << up().data_ << ')';
+}
+
+

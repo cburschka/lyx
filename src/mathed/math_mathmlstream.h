@@ -1,14 +1,30 @@
-#ifndef MATH_MATH_MLSTREAM
-#define MATH_MATH_MLSTREAM
+#ifndef MATH_MATHMLSTREAM_H
+#define MATH_MATHMLSTREAM_H
 
 #include <iosfwd>
+#include "support/LOstream.h"
 
+struct MathArray;
+struct MathInset;
+struct Buffer;
+
+struct MTag {
+	///
+	MTag(char const * const tag) : tag_(tag) {}
+	///
+	char const * const tag_;
+};
+
+struct ETag {
+	///
+	ETag(char const * const tag) : tag_(tag) {}
+	///
+	char const * const tag_;
+};
 
 struct MathMLStream {
 	///
-	explicit MathMLStream(std::ostream & os) : os_(os) {}
-	///
-	std::ostream & os_;
+	explicit MathMLStream(std::ostream & os);
 	///
 	MathMLStream & operator<<(MathInset const *);
 	///
@@ -17,6 +33,35 @@ struct MathMLStream {
 	MathMLStream & operator<<(char const *);
 	///
 	MathMLStream & operator<<(char);
+	///
+	MathMLStream & operator<<(MTag const &);
+	///
+	MathMLStream & operator<<(ETag const &);
+	///
+	void cr();
+
+	///
+	std::ostream & os_;
+	///
+	int tab_;
+	///
+	int line_;
+};
+
+
+struct NormalStream {
+	///
+	explicit NormalStream(std::ostream & os) : os_(os) {}
+	///
+	std::ostream & os_;
+	///
+	NormalStream & operator<<(MathInset const *);
+	///
+	NormalStream & operator<<(MathArray const &);
+	///
+	NormalStream & operator<<(char const *);
+	///
+	NormalStream & operator<<(char);
 };
 
 
@@ -50,5 +95,30 @@ struct OctaveStream {
 	///
 	OctaveStream & operator<<(char);
 };
+
+
+struct MathWriteInfo {
+	///
+	MathWriteInfo(Buffer const * buffer_, std::ostream & os_, bool fragile_);
+	///
+	explicit MathWriteInfo(std::ostream & os_);
+
+	///
+	MathWriteInfo & operator<<(MathInset const *);
+	///
+	MathWriteInfo & operator<<(MathArray const &);
+	///
+	MathWriteInfo & operator<<(char const *);
+	///
+	MathWriteInfo & operator<<(char);
+
+	///
+	Buffer const * buffer;
+	///
+	std::ostream & os;
+	///
+	bool fragile;
+};
+
 
 #endif

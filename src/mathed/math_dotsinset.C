@@ -3,10 +3,8 @@
 #endif
 
 #include "math_dotsinset.h"
-#include "mathed/support.h"
-#include "support/LOstream.h"
-
-using std::ostream;
+#include "math_mathmlstream.h"
+#include "support.h"
 
 
 MathDotsInset::MathDotsInset(string const & name)
@@ -46,11 +44,11 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 
 void MathDotsInset::write(MathWriteInfo & os) const
 {
-	os << '\\' << name_ << ' ';
+	os << '\\' << name_.c_str() << ' ';
 }
 
 
-void MathDotsInset::writeNormal(ostream & os) const
+void MathDotsInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << name_ << "] ";
+	os << "[" << name_.c_str() << "] ";
 }

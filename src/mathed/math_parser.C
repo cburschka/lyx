@@ -741,12 +741,14 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
+			//lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
+			lyxerr << "found '}' unexpectedly\n";
 			add(array, '}', LM_TC_TEX);
 		}
 		
 		else if (t.cat() == catAlign) {
-			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			//lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			lyxerr << "found tab unexpectedly\n";
 			add(array, '&', LM_TC_TEX);
 		}
 		
@@ -789,7 +791,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cs() == "\\") {
 			curr_skip_ = getArg('[', ']');
-			lyxerr << "found newline unexpectedly, array: '" << array << "'\n";
+			//lyxerr << "found newline unexpectedly, array: '" << array << "'\n";
+			lyxerr << "found newline unexpectedly\n";
 			array.push_back(createMathInset("\\"));
 		}
 	
@@ -830,7 +833,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		
 		else if (t.cs() == "right") {
 			if (!(flags & FLAG_RIGHT)) {
-				lyxerr << "got so far: '" << array << "'\n";
+				//lyxerr << "got so far: '" << array << "'\n";
 				error("Unmatched right delimiter");
 			}
 			return;

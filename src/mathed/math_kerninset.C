@@ -3,8 +3,8 @@
 #endif
 
 #include "math_kerninset.h"
+#include "math_mathmlstream.h"
 #include "support.h"
-#include "support/LOstream.h"
 
 
 MathKernInset::MathKernInset()
@@ -31,18 +31,6 @@ void MathKernInset::draw(Painter &, int, int) const
 {}
 
 
-void MathKernInset::write(MathWriteInfo & os) const
-{
-	os << "\\kern" << wid_.asLatexString() << " ";
-}
-
-
-void MathKernInset::writeNormal(std::ostream & os) const
-{
-	os << "[kern " << wid_.asLatexString() << "]";
-}
-
-
 void MathKernInset::metrics(MathMetricsInfo const &) const
 {
 	ascent_  = 0;
@@ -54,3 +42,16 @@ void MathKernInset::metrics(MathMetricsInfo const &) const
 	width_   = static_cast<int>(wid_.value());
 	//cerr << "handling kern of width " << wid_.value() << "\n";
 }
+
+
+void MathKernInset::write(MathWriteInfo & os) const
+{
+	os << "\\kern" << wid_.asLatexString().c_str() << " ";
+}
+
+
+void MathKernInset::writeNormal(NormalStream & os) const
+{
+	os << "[kern " << wid_.asLatexString().c_str() << "]";
+}
+

@@ -27,6 +27,7 @@
 #include "math_cursor.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
+#include "math_mathmlstream.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"
 
@@ -171,7 +172,7 @@ void MathMacro::write(MathWriteInfo & os) const
 }
 
 
-void MathMacro::writeNormal(std::ostream & os) const
+void MathMacro::writeNormal(NormalStream & os) const
 {
 	os << "[macro " << name() << " ";
 	for (idx_type i = 0; i < nargs(); ++i) {

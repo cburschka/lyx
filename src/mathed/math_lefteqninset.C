@@ -3,10 +3,10 @@
 #endif
 
 #include "math_lefteqninset.h"
-#include "support/LOstream.h"
 #include "LColor.h"
 #include "Painter.h"
 #include "math_cursor.h"
+#include "math_mathmlstream.h"
 
 
 MathLefteqnInset::MathLefteqnInset()
@@ -17,6 +17,15 @@ MathLefteqnInset::MathLefteqnInset()
 MathInset * MathLefteqnInset::clone() const
 {
 	return new MathLefteqnInset(*this);
+}
+
+
+void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
+{
+	MathNestInset::metrics(mi);
+	ascent_  = xcell(0).ascent() + 2;
+	descent_ = xcell(0).descent() + 2;
+	width_   = 4;
 }
 
 
@@ -36,19 +45,10 @@ void MathLefteqnInset::write(MathWriteInfo & os) const
 }
 
 
-void MathLefteqnInset::writeNormal(std::ostream & os) const
+void MathLefteqnInset::writeNormal(NormalStream & os) const
 {
 	os << "[lefteqn ";
-	MathWriteInfo wi(os);
+	MathWriteInfo wi(os.os_);
 	cell(0).write(wi);
-	os << "] ";
-}
-
-
-void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
-{
-	MathNestInset::metrics(mi);
-	ascent_  = xcell(0).ascent() + 2;
-	descent_ = xcell(0).descent() + 2;
-	width_   = 4;
+	os << "]";
 }

@@ -38,6 +38,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "lyxfont.h"
+#include "math_mathmlstream.h"
 
 using std::ostream;
 

@@ -23,26 +23,22 @@ public:
 	///
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(std::ostream & os) const;
+	void writeNormal(NormalStream & os) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
 
 	///
-	void write(MathInset const *, MathWriteInfo & os) const;
+	void metrics(MathInset const * nuc, MathMetricsInfo const & st) const;
 	///
-	void writeNormal(MathInset const *, std::ostream & os) const;
+	void draw(MathInset const * nuc, Painter &, int x, int y) const;
 	///
-	void metrics(MathInset const * nucleus, MathMetricsInfo const & st) const;
+	int ascent(MathInset const * nuc) const;
 	///
-	void draw(MathInset const * nucleus, Painter &, int x, int y) const;
+	int descent(MathInset const * nuc) const;
 	///
-	int ascent(MathInset const * nucleus) const;
-	///
-	int descent(MathInset const * nucleus) const;
-	///
-	int width(MathInset const * nucleus) const;
+	int width(MathInset const * nuc) const;
 
 	///
 	bool idxLeft(MathInset::idx_type &, MathInset::pos_type &) const;
@@ -59,7 +55,7 @@ public:
 	/// 
 	int limits() const { return limits_; }
 	///
-	bool hasLimits(MathInset const * nucleus) const;
+	bool hasLimits(MathInset const * nuc) const;
 	/// true if we have an "inner" position
 	MathXArray const & up() const;
 	/// returns subscript
@@ -81,6 +77,10 @@ public:
 	///
 	void ensure(bool up);
 
+	///
+	void write(MathInset const * nuc, MathWriteInfo & os) const;
+	///
+	void writeNormal(MathInset const * nuc, NormalStream & os) const;
 	///
 	void octavize(MathInset const * nuc, OctaveStream & os) const;
 	///

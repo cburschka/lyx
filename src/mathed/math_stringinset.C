@@ -5,9 +5,9 @@
 #include <cctype>
 
 #include "math_stringinset.h"
+#include "math_mathmlstream.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support/LOstream.h"
 #include "support.h"
 #include "math_parser.h"
 #include "debug.h"
@@ -58,15 +58,15 @@ void MathStringInset::draw(Painter & pain, int x, int y) const
 void MathStringInset::write(MathWriteInfo & os) const
 {
 	if (math_font_name(code_)) 
-		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
+		os << '\\' << math_font_name(code_) << '{' << str_.c_str() << '}';
 	else 
-		os << str_;
+		os << str_.c_str();
 }
 
 
-void MathStringInset::writeNormal(std::ostream & os) const
+void MathStringInset::writeNormal(NormalStream & os) const
 {
-	os << "[string " << str_ << " " << "mathalpha" << "]";
+	os << "[string " << str_.c_str() << ' ' << "mathalpha" << "]";
 }
 
 

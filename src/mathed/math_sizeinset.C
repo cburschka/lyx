@@ -4,7 +4,7 @@
 
 #include "math_sizeinset.h"
 #include "math_parser.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
@@ -37,13 +37,11 @@ void MathSizeInset::metrics(MathMetricsInfo const & mi) const
 
 void MathSizeInset::write(MathWriteInfo & os) const
 {
-	os << "{\\" << key_->name << ' ' << cell(0) << '}';
+	os << "{\\" << key_->name.c_str() << ' ' << cell(0) << '}';
 }
 
 
-void MathSizeInset::writeNormal(std::ostream & os) const
+void MathSizeInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << key_->name << " ";
-	cell(0).writeNormal(os);
-	os << "]";
+	os << "[" << key_->name.c_str() << ' ' << cell(0) << ']';
 }

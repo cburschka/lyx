@@ -5,7 +5,8 @@
 #include "math_macroarg.h"
 #include "math_macro.h"
 #include "math_defs.h"
-#include "mathed/support.h"
+#include "math_mathmlstream.h"
+#include "support.h"
 #include "debug.h"
 
 
@@ -57,7 +58,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathMacroArgument::writeNormal(std::ostream & os) const
+void MathMacroArgument::writeNormal(NormalStream & os) const
 {
 	os << "[macroarg " << number_ << "] ";
 }

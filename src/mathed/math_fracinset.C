@@ -3,9 +3,9 @@
 #endif
 
 #include "math_fracinset.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "Painter.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 MathFracInset::MathFracInset(bool atop)
@@ -50,7 +50,7 @@ void MathFracInset::write(MathWriteInfo & os) const
 }
 
 
-void MathFracInset::writeNormal(std::ostream & os) const
+void MathFracInset::writeNormal(NormalStream & os) const
 {
 	if (atop_) 
 		os << "[atop ";
@@ -71,5 +71,5 @@ void MathFracInset::maplize(MapleStream & os) const
 
 void MathFracInset::mathmlize(MathMLStream & os) const
 {
-	os << "<mfrac>" << cell(0) << cell(1) << "</mfrac>";
+	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
 }

@@ -3,9 +3,9 @@
 #endif
 
 #include "math_sqrtinset.h"
+#include "math_mathmlstream.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support/LOstream.h"
 
 
 MathSqrtInset::MathSqrtInset()
@@ -49,7 +49,7 @@ void MathSqrtInset::write(MathWriteInfo & os) const
 }
 
 
-void MathSqrtInset::writeNormal(std::ostream & os) const
+void MathSqrtInset::writeNormal(NormalStream & os) const
 {
 	os << "[sqrt ";
 	cell(0).writeNormal(os); 

@@ -1,7 +1,6 @@
 #include "math_exfuncinset.h"
 #include "support.h"
-#include "debug.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 using std::ostream;
@@ -20,17 +19,13 @@ MathInset * MathExFuncInset::clone() const
 
 void MathExFuncInset::write(MathWriteInfo & os) const
 {
-	os << '\\' << name_ << '{';
-	cell(0).write(os);
-	os << '}';
+	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
 }
 
 
-void MathExFuncInset::writeNormal(ostream & os) const
+void MathExFuncInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << name_ << ' ';
-	cell(0).writeNormal(os);
-	os << "] ";
+	os << '[' << name_.c_str() << ' ' << cell(0) << ']';
 }
 
 
@@ -38,14 +33,12 @@ void MathExFuncInset::metrics(MathMetricsInfo const & mi) const
 {
 	mi_ = mi;
 	mathed_string_dim(LM_TC_TEXTRM, mi_, name_, ascent_, descent_, width_);
-	lyxerr << "should not happen\n";
 }
 
 
 void MathExFuncInset::draw(Painter & pain, int x, int y) const
 {  
 	drawStr(pain, LM_TC_TEXTRM, mi_, x, y, name_);
-	lyxerr << "should not happen\n";
 }
 
 

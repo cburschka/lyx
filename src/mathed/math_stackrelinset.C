@@ -3,8 +3,8 @@
 #endif
 
 #include "math_stackrelinset.h"
-#include "mathed/support.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
+#include "support.h"
 
 
 MathStackrelInset::MathStackrelInset()
@@ -43,7 +43,7 @@ void MathStackrelInset::write(MathWriteInfo & os) const
 }
 
 
-void MathStackrelInset::writeNormal(std::ostream & os) const
+void MathStackrelInset::writeNormal(NormalStream & os) const
 {
 	os << "[stackrel ";
 	cell(0).writeNormal(os);

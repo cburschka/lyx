@@ -17,7 +17,6 @@
 #define MATHEDARRAY_H
 
 #include <vector>
-#include <iosfwd>
 
 #include "math_atom.h"
 #include "LString.h"
@@ -26,10 +25,12 @@ class MathScriptInset;
 class MathMacro;
 class MathWriteInfo;
 class MathMetricsInfo;
-class MathMLStream;
-class MapleStream;
-class OctaveStream;
 class LaTeXFeatures;
+class NormalStream;
+class MapleStream;
+class MathMLStream;
+class OctaveStream;
+
 
 #ifdef __GNUG__
 #pragma interface
@@ -93,9 +94,9 @@ public:
 	MathAtom & back();
 
 	///
-	void dump(std::ostream &) const;
+	void dump() const;
 	///
-	void dump2(std::ostream &) const;
+	void dump2() const;
 	///
 	void substitute(MathMacro const &);
 
@@ -106,7 +107,7 @@ public:
 	/// glue chars if necessary
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(std::ostream &) const;
+	void writeNormal(NormalStream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -138,9 +139,5 @@ private:
 	/// Buffer
 	buffer_type bf_;
 };
-
-
-std::ostream & operator<<(std::ostream & os, MathArray const & ar);
-
 
 #endif

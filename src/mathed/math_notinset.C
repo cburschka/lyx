@@ -1,10 +1,8 @@
 #include "math_notinset.h"
 #include "math_parser.h"
+#include "math_mathmlstream.h"
 #include "support.h"
-#include "support/LOstream.h"
 
-
-using std::ostream;
 
 MathNotInset::MathNotInset()
 {}
@@ -22,7 +20,7 @@ void MathNotInset::write(MathWriteInfo & os) const
 }
 
 
-void MathNotInset::writeNormal(ostream & os) const
+void MathNotInset::writeNormal(NormalStream & os) const
 {
 	os << "[not] ";
 }

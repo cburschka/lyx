@@ -6,7 +6,7 @@
 #include "support.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 
@@ -28,7 +28,7 @@ void MathSpaceInset::write(MathWriteInfo & os) const
 }
 
 
-void MathSpaceInset::writeNormal(std::ostream & os) const
+void MathSpaceInset::writeNormal(NormalStream & os) const
 {
 	os << "[space " << space_ << "] ";
 }

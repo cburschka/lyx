@@ -14,11 +14,13 @@ public:
 	///
 	explicit MathSymbolInset(latexkeys const *);
 	///
+	explicit MathSymbolInset(char const *);
+	///
 	MathInset * clone() const;
 	///
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(std::ostream &) const;
+	void writeNormal(NormalStream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///

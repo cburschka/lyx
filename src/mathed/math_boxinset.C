@@ -9,6 +9,7 @@
 #include "Painter.h"
 #include "math_cursor.h"
 #include "insets/insettext.h"
+#include "math_mathmlstream.h"
 
 
 MathBoxInset::MathBoxInset(string const & name)
@@ -46,11 +47,11 @@ UpdatableInset * MathBoxInset::asHyperActiveInset() const
 
 void MathBoxInset::write(MathWriteInfo & os) const
 {
-	os << "\\" << name_ << "{" << cell(0) << "}";
+	os << "\\" << name_.c_str() << "{" << cell(0) << "}";
 }
 
 
-void MathBoxInset::writeNormal(std::ostream & os) const
+void MathBoxInset::writeNormal(NormalStream & os) const
 {
 	os << "[mbox ";
 	//text_->write(buffer(), os);

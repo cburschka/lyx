@@ -3,12 +3,9 @@
 #endif
 
 #include "math_decorationinset.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "math_parser.h"
-#include "support/LOstream.h"
-
-
-using std::ostream;
+#include "math_mathmlstream.h"
 
 
 MathDecorationInset::MathDecorationInset(string const & name)
@@ -98,13 +95,11 @@ void MathDecorationInset::write(MathWriteInfo & os) const
 {
 	if (os.fragile && protect())
 		os << "\\protect";
-	os << '\\' << name_ << '{' << cell(0) << '}';
+	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
 }
 
 
-void MathDecorationInset::writeNormal(ostream & os) const
+void MathDecorationInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << name_ << " ";
-	cell(0).writeNormal(os);
-	os << "] ";
+	os << "[deco " << name_.c_str() << ' ' <<  cell(0) << ']';
 }

@@ -3,8 +3,8 @@
 #endif
 
 #include "math_gridinset.h"
+#include "math_mathmlstream.h"
 #include "lyxfont.h"
-#include "support/LOstream.h"
 #include "debug.h"
 
 
@@ -266,25 +266,22 @@ void MathGridInset::write(MathWriteInfo & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
 		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << eocString(col);
-		os << eolString(row);
+			os << cell(index(row, col)) << eocString(col).c_str();
+		os << eolString(row).c_str();
 	}
 }
 
 
-void MathGridInset::writeNormal(std::ostream & os) const
+void MathGridInset::writeNormal(NormalStream & os) const
 {
 	os << "[grid ";
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << "[row ";
-		for (col_type col = 0; col < ncols(); ++col) {
-			os << "[cell ";
-			cell(index(row, col)).writeNormal(os);
-			os << "]";
-		}
-		os << "]";
+		for (col_type col = 0; col < ncols(); ++col)
+			os << "[cell " << cell(index(row, col)) << ']';
+		os << ']';
 	}
-	os << "]";
+	os << ']';
 }
 
 
@@ -607,14 +604,14 @@ void MathGridInset::maplize(MapleStream & os) const
 
 void MathGridInset::mathmlize(MathMLStream & os) const
 {
-	os << "<mtable>";
+	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << "<mtr>";
+		os << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) 
 			os << cell(index(row, col));
-		os << "</mtr>";
+		os << ETag("mtr");
 	}
-	os << "</mtable>";
+	os << ETag("mtable");
 }
 
 

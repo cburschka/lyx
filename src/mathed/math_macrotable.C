@@ -10,6 +10,7 @@
 #include "math_macro.h"
 #include "math_macrotemplate.h"
 #include "math_parser.h"
+#include "math_mathmlstream.h"
 #include "debug.h"
 #include "support.h" // math_font_available
 
@@ -19,6 +20,7 @@ MathMacroTable::table_type MathMacroTable::macro_table;
 
 void MathMacroTable::dump()
 {
+/*
 	lyxerr << "\n------------------------------------------\n";
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)
@@ -26,6 +28,7 @@ void MathMacroTable::dump()
 			<< " [" << it->second->asMacroTemplate()->nargs() << "] : "
 			<< it->second->cell(0) << "\n";
 	lyxerr << "------------------------------------------\n";
+*/
 }
 
 

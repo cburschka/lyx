@@ -24,6 +24,7 @@
 #include "Lsstream.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
+#include "math_mathmlstream.h"
 #include "debug.h"
 
 
@@ -160,10 +161,10 @@ void MathInset::idxDeleteRange(idx_type, idx_type)
 {}
 
 
-void MathInset::writeNormal(std::ostream & os) const
+void MathInset::writeNormal(NormalStream & os) const
 {
 	os << "[unknown ";
-	MathWriteInfo wi(0, os, false);
+	MathWriteInfo wi(0, os.os_, false);
 	write(wi);
 	os << "] ";
 }
@@ -219,17 +220,20 @@ void MathInset::write(MathWriteInfo &) const
 
 void MathInset::octavize(OctaveStream & os) const
 {
-	writeNormal(os.os_);
+	NormalStream ns(os.os_);
+	writeNormal(ns);
 }
 
 
 void MathInset::maplize(MapleStream & os) const
 {
-	writeNormal(os.os_);
+	NormalStream ns(os.os_);
+	writeNormal(ns);
 }
 
 
 void MathInset::mathmlize(MathMLStream & os) const
 {
-	writeNormal(os.os_);
+	NormalStream ns(os.os_);
+	writeNormal(ns);
 }

@@ -7,7 +7,7 @@
 #include "xarray.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "math_defs.h"
 #include "Painter.h"
 #include "debug.h"
@@ -115,11 +115,4 @@ MathArray::size_type MathXArray::x2pos(int targetx) const
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
 		--it;
 	return it - begin();
-}
-
-
-std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
-{
-	os << ar.data_;
-	return os;
 }

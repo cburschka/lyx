@@ -50,7 +50,7 @@ public:
 	///
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(std::ostream &) const;
+	void writeNormal(NormalStream &) const;
 	///
 	void dump() const;
 

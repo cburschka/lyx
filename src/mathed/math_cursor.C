@@ -40,6 +40,7 @@
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
+#include "math_mathmlstream.h"
 
 #define FILEDEBUG 0
 

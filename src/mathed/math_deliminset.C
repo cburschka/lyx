@@ -6,10 +6,9 @@
 
 #include "math_deliminset.h"
 #include "math_parser.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "support/LOstream.h"
-
-using std::max;
+#include "math_mathmlstream.h"
 
 
 MathDelimInset::MathDelimInset(string const & l, string const & r)
@@ -45,16 +44,15 @@ string MathDelimInset::latexName(string const & name)
 
 void MathDelimInset::write(MathWriteInfo & os) const
 {
-	os << "\\left" << latexName(left_) << cell(0)
-	   << "\\right" << latexName(right_);
+	os << "\\left" << latexName(left_).c_str() << cell(0)
+	   << "\\right" << latexName(right_).c_str();
 }
 
 
-void MathDelimInset::writeNormal(std::ostream & os) const
+void MathDelimInset::writeNormal(NormalStream & os) const
 {
-	os << "[delim " << latexName(left_) << ' ' << latexName(right_) << ' ';
-	cell(0).writeNormal(os);
-	os << "]";
+	os << "[delim " << latexName(left_).c_str() << ' '
+		<< latexName(right_).c_str() << ' ' << cell(0) << ']';
 }
 
 
@@ -77,8 +75,8 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 	int h0   = (a + d) / 2;
 	int a0   = std::max(xcell(0).ascent(), a)   - h0;
 	int d0   = std::max(xcell(0).descent(), d)  + h0;
-	ascent_  = max(a0, d0) + h0;
-	descent_ = max(a0, d0) - h0;
+	ascent_  = std::max(a0, d0) + h0;
+	descent_ = std::max(a0, d0) - h0;
 	width_   = xcell(0).width() + 2 * dw() + 4;
 }
 

@@ -5,11 +5,10 @@
 #include "math_funcinset.h"
 #include "font.h"
 #include "Painter.h"
-#include "mathed/support.h"
-#include "support/LOstream.h"
+#include "support.h"
+#include "math_mathmlstream.h"
 
 
-using std::ostream;
 
 extern LyXFont WhichFont(short type, int size);
 
@@ -39,13 +38,13 @@ void MathFuncInset::setName(string const & n)
 
 void MathFuncInset::write(MathWriteInfo & os) const
 {
-	os << "\\" << name_ << ' ';
+	os << "\\" << name_.c_str() << ' ';
 }
 
 
-void MathFuncInset::writeNormal(std::ostream & os) const
+void MathFuncInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << name_ << "] ";
+	os << "[func " << name_.c_str() << ']';
 }
 
 
@@ -70,7 +69,7 @@ void MathFuncInset::maplize(MapleStream & os) const
 
 void MathFuncInset::mathmlize(MathMLStream & os) const
 {
-	os << "<mi>" << name_.c_str() << "</mi>";
+	os << MTag("mi") << name_.c_str() << ETag("mi");
 }
 
 

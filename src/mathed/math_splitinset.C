@@ -3,7 +3,7 @@
 #endif
 
 #include "math_splitinset.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 MathSplitInset::MathSplitInset(int n)

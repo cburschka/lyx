@@ -6,6 +6,7 @@
 #include "Painter.h"
 #include "support/LOstream.h"
 #include "support.h"
+#include "math_mathmlstream.h"
 
 
 MathBinaryOpInset::MathBinaryOpInset(char op)
@@ -50,11 +51,7 @@ void MathBinaryOpInset::write(MathWriteInfo & os) const
 }
 
 
-void MathBinaryOpInset::writeNormal(std::ostream & os) const
+void MathBinaryOpInset::writeNormal(NormalStream & os) const
 {
-	os << "[binop " << op_ << ' ';
-	cell(0).writeNormal(os); 
-	os << " ";
-	cell(1).writeNormal(os); 
-	os << "]";
+	os << "[binop " << op_ << ' ' << cell(0) << ' ' << cell(1) << ']';
 }

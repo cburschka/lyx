@@ -21,7 +21,7 @@
 #pragma interface
 #endif
 
-#include "mathed/formulabase.h"
+#include "formulabase.h"
 #include "math_defs.h"
 #include "math_atom.h"
 

@@ -5,6 +5,7 @@
 #include "math_binominset.h"
 #include "support.h"
 #include "support/LOstream.h"
+#include "math_mathmlstream.h"
 
 
 MathBinomInset::MathBinomInset()
@@ -56,7 +57,7 @@ void MathBinomInset::write(MathWriteInfo & os) const
 }
 
 
-void MathBinomInset::writeNormal(std::ostream & os) const
+void MathBinomInset::writeNormal(NormalStream & os) const
 {
 	os << "[binom ";
 	cell(0).writeNormal(os);

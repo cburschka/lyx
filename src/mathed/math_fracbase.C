@@ -3,6 +3,7 @@
 #endif
 
 #include "math_fracbase.h"
+#include "math_mathmlstream.h"
 
 
 MathFracbaseInset::MathFracbaseInset()

@@ -16,7 +16,7 @@
 #endif
 
 #include "math_rootinset.h"
-#include "support/LOstream.h"
+#include "math_mathmlstream.h"
 #include "Painter.h"
 
 
@@ -64,7 +64,7 @@ void MathRootInset::write(MathWriteInfo & os) const
 }
 
 
-void MathRootInset::writeNormal(std::ostream & os) const
+void MathRootInset::writeNormal(NormalStream & os) const
 {
 	os << "[root ";
 	cell(1).writeNormal(os);  

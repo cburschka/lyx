@@ -1,9 +1,7 @@
 #include "math_funcliminset.h"
+#include "math_mathmlstream.h"
 #include "support.h"
-#include "support/LOstream.h"
 
-
-using std::ostream;
 
 MathFuncLimInset::MathFuncLimInset(string const & name)
 	: name_(name)
@@ -24,13 +22,13 @@ bool MathFuncLimInset::isScriptable() const
 
 void MathFuncLimInset::write(MathWriteInfo & os) const
 {
-	os << '\\' << name_ << ' ';
+	os << '\\' << name_.c_str() << ' ';
 }
 
 
-void MathFuncLimInset::writeNormal(ostream & os) const
+void MathFuncLimInset::writeNormal(NormalStream & os) const
 {
-	os << "[" << name_ << "] ";
+	os << "[funclim " << name_.c_str() << ']';
 }
 
 

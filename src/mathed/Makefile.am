@@ -45,6 +45,8 @@ libmathed_la_SOURCES = \
 	math_dotsinset.h \
 	math_exfuncinset.C \
 	math_exfuncinset.h \
+	math_exintinset.C \
+	math_exintinset.h \
 	math_factory.C \
 	math_factory.h \
 	math_fracinset.C \

@@ -3,6 +3,7 @@
 #endif
 
 #include "math_macrotemplate.h"
+#include "math_mathmlstream.h"
 #include "Painter.h"
 #include "debug.h"
 
@@ -47,15 +48,6 @@ string const & MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::write(MathWriteInfo & os) const
-{
-	os << "\n\\newcommand{\\" << name_ << '}';
-	if (numargs_ > 0)
-		os << '[' << numargs_ << ']';
-	os << '{' << cell(0) << "}\n";
-}
-
-
 void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
 {
 	xcell(0).metrics(mi);
@@ -69,4 +61,13 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 2, y + 1);
 	pain.rectangle(x, y - ascent(), width(), height(), LColor::blue);
+}
+
+
+void MathMacroTemplate::write(MathWriteInfo & os) const
+{
+	os << "\n\\newcommand{\\" << name_.c_str() << '}';
+	if (numargs_ > 0)
+		os << '[' << ('0' + numargs_) << ']';
+	os << '{' << cell(0) << "}\n";
 }

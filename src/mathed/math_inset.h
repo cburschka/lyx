@@ -30,7 +30,6 @@
 
 #include "xarray.h"
 #include "math_defs.h"
-#include "math_mathmlstream.h"
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -50,44 +49,8 @@ class MathSpaceInset;
 class MathMacroTemplate;
 
 class LaTeXFeatures;
-class Buffer;
 class BufferView;
 class UpdatableInset;
-class MathOctaveInfo;
-
-
-struct MathWriteInfo {
-	///
-	MathWriteInfo(Buffer const * buffer_, std::ostream & os_, bool fragile_)
-		: buffer(buffer_), os(os_), fragile(fragile_)
-	{}
-	///
-	explicit MathWriteInfo(std::ostream & os_)
-		: buffer(0), os(os_), fragile(false)
-	{}
-
-	///
-	template <class T>
-	MathWriteInfo & operator<<(T const & t)
-	{
-		os << t;
-		return *this;
-	}
-	///
-	MathWriteInfo & operator<<(MathArray const & ar)
-	{
-		ar.write(*this);
-		return *this;
-	}
-
-
-	///
-	Buffer const * buffer;
-	///
-	std::ostream & os;
-	///
-	bool fragile;
-};
 
 
 class MathInset {
@@ -112,8 +75,6 @@ public:
 	virtual void draw(Painter &, int x, int y) const;
 	/// write LaTeX and Lyx code
 	virtual void write(MathWriteInfo & os) const;
-	/// write normalized content
-	virtual void writeNormal(std::ostream &) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
 	///substitutes macro arguments if necessary
@@ -254,12 +215,14 @@ public:
 	///
 	virtual void handleFont(MathTextCodes) {}
 
-	///
-	virtual void octavize(OctaveStream &) const;
+	/// write normalized content
+	virtual void writeNormal(NormalStream &) const;
 	///
 	virtual void maplize(MapleStream &) const;
 	///
 	virtual void mathmlize(MathMLStream &) const;
+	///
+	virtual void octavize(OctaveStream &) const;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);

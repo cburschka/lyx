@@ -1,11 +1,9 @@
 #include "math_symbolinset.h"
 #include "math_parser.h"
+#include "math_mathmlstream.h"
 #include "debug.h"
 #include "support.h"
-#include "support/LOstream.h"
 
-
-using std::ostream;
 
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
 	: sym_(l), h_(0)
@@ -20,13 +18,13 @@ MathInset * MathSymbolInset::clone() const
 
 void MathSymbolInset::write(MathWriteInfo & os) const
 {
-	os << '\\' << sym_->name << ' ';
+	os << '\\' << sym_->name.c_str() << ' ';
 }
 
 
-void MathSymbolInset::writeNormal(ostream & os) const
+void MathSymbolInset::writeNormal(NormalStream & os) const
 {
-	os << "[symbol " << sym_->name << "]";
+	os << "[symbol " << sym_->name.c_str() << "]";
 }
 
 

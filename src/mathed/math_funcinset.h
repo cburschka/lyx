@@ -25,7 +25,7 @@ public:
 	///
 	void write(MathWriteInfo &) const;
 	///
-	void writeNormal(std::ostream &) const;
+	void writeNormal(NormalStream &) const;
 	///
 	string const & name() const;
 	///
