@@ -31,6 +31,8 @@ public:
 	LyXLength::UNIT currentLengthItem() const;
 	/// enable the widget
 	virtual void setEnabled(bool b);
+	/// use the %-items?
+	virtual void noPercents();
 
 protected slots:
 	virtual void has_activated(int index);

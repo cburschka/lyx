@@ -16,32 +16,20 @@
 #include "QParagraphDialog.h"
 #include "Qt2BC.h"
 #include "ParagraphParameters.h"
-#include "lyxrc.h" // to set the deafult length values
 #include "qt_helpers.h"
 #include "helper_funcs.h"
 
 #include "Spacing.h"
-#include "vspace.h"
-
-#include "support/lstrings.h"
 #include "support/tostr.h"
 
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qtabwidget.h>
 #include <qbuttongroup.h>
 
-using lyx::support::contains_functor;
-using lyx::support::isStrDbl;
-using lyx::support::subst;
-using lyx::support::trim;
 
-using std::bind2nd;
-using std::remove_if;
 using std::string;
-using std::vector;
 
 
 typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
@@ -54,16 +42,8 @@ QParagraph::QParagraph(Dialog & parent)
 
 void QParagraph::build_dialog()
 {
-	// the tabbed folder
+	// the dialog
 	dialog_.reset(new QParagraphDialog(this));
-
-	// Create the contents of the unit choices
-	// Don't include the "%" terms...
-	units_ = getLatexUnits();
-	vector<string>::iterator del =
-		remove_if(units_.begin(), units_.end(),
-			  bind2nd(contains_functor(), "%"));
-	units_.erase(del, units_.end());
 
 	// Manage the ok, apply, restore and cancel/close buttons
 	bcview().setOK(dialog_->okPB);

@@ -167,6 +167,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(branchesModule->addBranchPB, SIGNAL(pressed()), this, SLOT(addBranchPressed()));
 	connect(branchesModule->removePB, SIGNAL(pressed()), this, SLOT(deleteBranchPressed()));
 	connect(branchesModule->activatePB, SIGNAL(pressed()), this, SLOT(toggleBranchPressed()));
+	connect(branchesModule->branchesLV, SIGNAL(doubleClicked(QListViewItem *)), this,
+		SLOT(branchDoubleClicked(QListViewItem *)));
 	connect(branchesModule->colorPB, SIGNAL(clicked()), this, SLOT(toggleBranchColor()));
 	branchesModule->branchesLV->setSorting(0);
 }
@@ -433,15 +435,17 @@ void QDocumentDialog::updateBranchView()
 			QString const bname = toqstr(all[i].c_str());
 			QString const sel =
 				(params.branchlist().selected(fromqstr(bname))) ? qt_("Yes") : qt_("No");
-			QColor itemcolor(white);
+			QListViewItem * newItem =
+				new QListViewItem(branchesModule->branchesLV, bname, sel);
+			QColor itemcolor;
 			string x11hexname = params.branchlist().getColor(fromqstr(bname));
 			if (x11hexname[0] == '#')
 				itemcolor.setNamedColor(toqstr(x11hexname));
-			QPixmap coloritem(30, 10);
-			coloritem.fill(itemcolor);
-			QListViewItem * newItem =
-				new QListViewItem(branchesModule->branchesLV, bname, sel);
-			newItem->setPixmap(2, coloritem);
+			if (itemcolor.isValid()) {
+				QPixmap coloritem(30, 10);
+				coloritem.fill(itemcolor);
+				newItem->setPixmap(2, coloritem);
+			}
 		}
 	}
 	form_->branchlist_ = params.branchlist();
@@ -483,11 +487,23 @@ void QDocumentDialog::deleteBranchPressed()
 
 void QDocumentDialog::toggleBranchPressed()
 {
+	QListViewItem * selItem =
+		branchesModule->branchesLV->selectedItem();
+	toggleBranch(selItem);
+}
+
+
+void QDocumentDialog::branchDoubleClicked(QListViewItem * selItem)
+{
+	toggleBranch(selItem);
+}
+
+
+void QDocumentDialog::toggleBranch(QListViewItem * selItem)
+{
 	ControlDocument & cntrl = form_->controller();
 	BufferParams & params = cntrl.params();
 
-	QListViewItem * selItem =
-		branchesModule->branchesLV->selectedItem();
 	QString sel_branch;
 	if (selItem != 0)
 		sel_branch = selItem->text(0);

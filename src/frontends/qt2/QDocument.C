@@ -114,6 +114,9 @@ void QDocument::build_dialog()
 	cb->insertItem(qt_("B3"));
 	cb->insertItem(qt_("B4"));
 	cb->insertItem(qt_("B5"));
+	// remove the %-items from the unit choice
+	dialog_->pageLayoutModule->paperwidthUnitCO->noPercents();
+	dialog_->pageLayoutModule->paperheightUnitCO->noPercents();
 
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
@@ -141,6 +144,8 @@ void QDocument::build_dialog()
 	dialog_->textLayoutModule->skipCO->insertItem(qt_("MedSkip"));
 	dialog_->textLayoutModule->skipCO->insertItem(qt_("BigSkip"));
 	dialog_->textLayoutModule->skipCO->insertItem(qt_("Length"));
+	// remove the %-items from the unit choice
+	dialog_->textLayoutModule->skipLengthCO->noPercents();
 
 	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("default"));
 	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("empty"));

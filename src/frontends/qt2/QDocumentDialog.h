@@ -43,6 +43,7 @@ public:
 	void updateFontsize(std::string const &, std::string const &);
 	void updatePagestyle(std::string const &, std::string const &);
 	void updateBranchView();
+	void toggleBranch(QListViewItem * selItem);
 
 	void showPreamble();
 
@@ -64,6 +65,7 @@ protected slots:
 	void addBranchPressed();
 	void deleteBranchPressed();
 	void toggleBranchPressed();
+	void branchDoubleClicked(QListViewItem * selItem);
 	void toggleBranchColor();
 
 protected:

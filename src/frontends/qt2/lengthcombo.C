@@ -50,3 +50,16 @@ void LengthCombo::setEnabled(bool b)
 {
 	QComboBox::setEnabled(b);
 }
+
+
+void LengthCombo::noPercents()
+{
+	int num = QComboBox::count();
+	for (int i = 0; i < num; i++) {
+		if (QComboBox::text(i).contains("%") > 0) {
+			QComboBox::removeItem(i);
+			i -= 1;
+			num -= 1;
+		}
+	}
+}

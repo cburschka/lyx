@@ -1,3 +1,16 @@
+2003-12-01  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QDocumentDialog.[Ch]: (branches) don't insert a coloritem
+	for colorless branches; implement double click for (de)activating
+	branches.
+
+	* lengthcombo.[Ch]: introduce a noPercents() method which allows
+	to use the widget without the %-items.
+	* QVSpace.C:
+	* QDocument.C: use noPercents() where appropriate.
+
+	* QParagraph.[Ch]: remove dead code and dependencies.
+
 2003-11-30  Angus Leeming  <leeming@lyx.org>
 
 	* QContentPane.C (QContentPane): squash warning about variables

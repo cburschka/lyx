@@ -155,13 +155,7 @@ void QVSpace::build_dialog()
 	bcview().addReadOnly(dialog_->keepCB);
 
 	// remove the %-items from the unit choice
-	int num = dialog_->unitCO->count();
-	for (int i=0; i < num; i++) {
-		if (dialog_->unitCO->text(i).contains("%") > 0) {
-			dialog_->unitCO->removeItem(i);
-			i -= 1;
-		}
-	}
+	dialog_->unitCO->noPercents();
 }
 
 
