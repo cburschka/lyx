@@ -470,6 +470,33 @@ broadway
  with LyX.
 \layout Subsection
 
+cv
+\layout Description
+
+Found: @chk_cv@
+\layout Description
+
+CTAN: N/A (must be installed from the 
+\family typewriter 
+tex/
+\family default 
+ subdirectory of LyX source distribution)
+\layout Description
+
+WWW: At the time of this writing, the latest version can be obtained at
+ 
+\begin_inset LatexCommand \url{http://www-rocq.inria.fr/~lasgoutt/lyx/cv-1.5.tar.gz}
+
+\end_inset 
+
+.
+\layout Description
+
+Notes: The document class cv is for writing a curriculum vitae.
+ It is rather minimalist, but has nice features like bibliography support
+ (useful for academics).
+\layout Subsection
+
 dinbrief
 \layout Description
 
