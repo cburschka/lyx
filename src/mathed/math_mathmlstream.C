@@ -72,6 +72,11 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
+	if (ws.pendingSpace() && strlen(s) > 0) {
+		if (isAlpha(s[0]))
+			ws.os() << ' ';
+		ws.pendingSpace(false);
+	}
 	ws.os() << s;
 	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
 	return ws;

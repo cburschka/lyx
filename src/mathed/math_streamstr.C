@@ -13,12 +13,7 @@
 
 WriteStream & operator<<(WriteStream & ws, string const & s)
 {
-	if (ws.pendingSpace()) {
-		ws.os() << ' ';
-		ws.pendingSpace(false);
-	}
-	ws.os() << s;
-	ws.addlines(int(lyx::count(s.begin(), s.end(), '\n')));
+	ws << s.c_str();
 	return ws;
 }
 
