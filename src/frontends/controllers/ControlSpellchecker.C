@@ -16,10 +16,14 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
+
+#include "PosIterator.h"
+#include "paragraph.h"
 
 #include "ispell.h"
 #ifdef USE_PSPELL
@@ -43,7 +47,7 @@ using std::string;
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
-	  newval_(0.0), oldval_(0), newvalue_(0), count_(0)
+	  oldval_(0), newvalue_(0), count_(0)
 {}
 
 
@@ -66,6 +70,7 @@ void ControlSpellchecker::clearParams()
 
 
 namespace {
+
 
 SpellBase * getSpeller(BufferParams const & bp)
 {
@@ -104,7 +109,6 @@ void ControlSpellchecker::startSession()
 	speller_.reset(getSpeller(buffer()->params()));
 
 	// reset values to initial
-	newval_ = 0.0;
 	oldval_ = 0;
 	newvalue_ = 0;
 	count_ = 0;
@@ -131,8 +135,6 @@ void ControlSpellchecker::endSession()
 {
 	lyxerr[Debug::GUI] << "spell endSession" << endl;
 
-	bufferview()->endOfSpellCheck();
-
 	emergency_exit_ = true;
 
 	if (!speller_.get()) {
@@ -144,17 +146,61 @@ void ControlSpellchecker::endSession()
 }
 
 
+namespace {
+
+
+bool isLetter(PosIterator & cur)
+{
+	return !cur.at_end()
+		&& cur.pit()->isLetter(cur.pos())
+		&& !isDeletedText(*cur.pit(), cur.pos());
+}
+
+
+WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
+		       int & progress, BufferParams & bp)
+{
+	// skip until we have real text (will jump paragraphs)
+	for (; cur != end && !isLetter(cur); ++cur, ++progress);
+	
+	if (cur == end)
+		return WordLangTuple(string(), string());
+
+	string lang_code = cur.pit()->getFontSettings(bp, cur.pos()).language()->code();
+	string str;
+	// and find the end of the word (insets like optional hyphens
+	// and ligature break are part of a word)
+	for (; cur != end && isLetter(cur); ++cur, ++progress)
+		str += cur.pit()->getChar(cur.pos());
+
+	return WordLangTuple(str, lang_code);
+}
+
+
+} //namespace anon
+
+
+
+
 void ControlSpellchecker::check()
 {
 	lyxerr[Debug::GUI] << "spell check a word" << endl;
 
 	SpellBase::Result res = SpellBase::OK;
 
-	// clear any old selection
-	bufferview()->update();
+	PosIterator cur(*bufferview());
+	PosIterator const beg = buffer()->pos_iterator_begin();
+	PosIterator const end = buffer()->pos_iterator_end();
 
+	int start = distance(beg, cur);
+	int const total = start + distance(cur, end);
+
+	if (cur != buffer()->pos_iterator_begin())
+		for (; cur != end && isLetter(cur); ++cur, ++start);
+
+	
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
-		word_ = bufferview()->nextWord(newval_);
+		word_ = nextWord(cur, end, start, buffer()->params());
 
 		// end of document
 		if (word_.word().empty())
@@ -163,7 +209,8 @@ void ControlSpellchecker::check()
 		++count_;
 
 		// Update slider if and only if value has changed
-		newvalue_ = int(100.0 * newval_);
+		float progress = total ? float(start)/total : 1;
+		newvalue_ = int(100.0 * progress);
 		if (newvalue_!= oldval_) {
 			lyxerr[Debug::GUI] << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
@@ -183,11 +230,12 @@ void ControlSpellchecker::check()
 	}
 
 	lyxerr[Debug::GUI] << "Found word \"" << word_.word() << "\"" << endl;
-	lyxerr << "Found word \"" << word_.word() << "\"" << endl;
 
 	if (!word_.word().empty()) {
-		bufferview()->selectLastWord();
-		bufferview()->fitCursor();
+		int const size = word_.word().size();
+		advance(cur, -size);
+		bv_funcs::put_selection_at(bufferview(), cur, size, false);
+		advance(cur, size);
 	} else {
 		showSummary();
 		endSession();

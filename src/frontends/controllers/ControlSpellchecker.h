@@ -85,7 +85,6 @@ private:
 	WordLangTuple word_;
 
 	/// values for progress
-	float newval_;
 	int oldval_;
 	int newvalue_;
 
