@@ -271,16 +271,6 @@ InsetFormula::localDispatch(FuncRequest const & ev)
 			break;
 		}
 
-		case LFUN_MATH_EXTERN:
-		{
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			if (mathcursor)
-				mathcursor->handleExtern(ev.argument);
-			// re-compute inset dimension
-			metrics(bv);
-			updateLocal(bv, true);
-			break;
-		}
 
 		case LFUN_MATH_DISPLAY:
 		{
@@ -318,19 +308,6 @@ bool InsetFormula::display() const
 	return hullType() != "simple" && hullType() != "none";
 }
 
-
-MathHullInset const * InsetFormula::hull() const
-{
-	lyx::Assert(par_->asHullInset());
-	return par_->asHullInset();
-}
-
-
-MathHullInset * InsetFormula::hull()
-{
-	lyx::Assert(par_->asHullInset());
-	return par_.nucleus()->asHullInset();
-}
 
 Inset::Code InsetFormula::lyxCode() const
 {

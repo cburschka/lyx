@@ -101,6 +101,8 @@ private:
 	///
 	string nicelabel(row_type row) const;
 	///
+	void doExtern(FuncRequest const & func, idx_type & idx, pos_type & pos);
+	///
 	void glueall();
 	///
 	char const * standardFont() const;

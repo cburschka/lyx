@@ -93,12 +93,6 @@ private:
 	bool display() const;
 	/// available in AMS only?
 	bool ams() const;
-	/// access to hull
-	MathHullInset const * hull() const;
-	/// access to hull
-	MathHullInset * hull();
-	///
-	void handleExtern(string const & arg);
 
 	/// contents
 	MathAtom par_;

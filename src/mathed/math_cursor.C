@@ -750,19 +750,6 @@ MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 }
 
 
-MathHullInset * MathCursor::enclosingHull(MathCursor::idx_type & idx) const
-{
-	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
-		MathHullInset * p = Cursor_[i].par_->asHullInset();
-		if (p) {
-			idx = Cursor_[i].idx_;
-			return p;
-		}
-	}
-	return 0;
-}
-
-
 void MathCursor::popToHere(MathInset const * p)
 {
 	while (depth() && Cursor_.back().par_ != p)
@@ -1074,14 +1061,6 @@ bool MathCursor::bruteFind
 	if (best_dist < 1e10)
 		Cursor_ = best_cursor;
 	return best_dist < 1e10;
-}
-
-
-bool MathCursor::idxLineFirst()
-{
-	idx() -= idx() % par()->ncols();
-	pos() = 0;
-	return true;
 }
 
 
@@ -1511,82 +1490,6 @@ MathCursorPos MathCursor::normalAnchor() const
 		++normal.pos_;
 	}
 	return normal;
-}
-
-
-
-void MathCursor::handleExtern(const string & arg)
-{
-	string lang;
-	string extra;
-	istringstream iss(arg.c_str());
-	iss >> lang >> extra;
-	if (extra.empty())
-		extra = "noextra";
-
-	if (selection()) {
-		MathArray ar;
-		selGet(ar);
-		lyxerr << "use selection: " << ar << "\n";
-		insert(pipeThroughExtern(lang, extra, ar));
-		return;
-	}
-
-	MathArray eq;
-	eq.push_back(MathAtom(new MathCharInset('=')));
-
-	popToEnclosingHull();
-
-	idx_type idx = 0;
-	MathHullInset * hull = enclosingHull(idx);
-	lyx::Assert(hull);
-	idxLineFirst();
-
-	if (hull->getType() == "simple") {
-		MathArray::size_type pos = cursor().cell().find_last(eq);
-		MathArray ar;
-		if (pos == size()) {
-			ar = array();
-			lyxerr << "use whole cell: " << ar << "\n";
-		} else {
-			ar = MathArray(array().begin() + pos + 1, array().end());
-			lyxerr << "use partial cell form pos: " << pos << "\n";
-		}
-		end();
-		insert(eq);
-		insert(pipeThroughExtern(lang, extra, ar));
-		return;
-	}
-
-	if (hull->getType() == "equation") {
-		lyxerr << "use equation inset\n";
-		hull->mutate("eqnarray");
-		MathArray & ar = cursor().cell();
-		lyxerr << "use cell: " << ar << "\n";
-		idxRight();
-		cursor().cell() = eq;
-		idxRight();
-		cursor().cell() = pipeThroughExtern(lang, extra, ar);
-		idxLineLast();
-		return;
-	}
-
-	{
-		lyxerr << "use eqnarray\n";
-		idxLineLast();
-		MathArray ar = cursor().cell();
-		lyxerr << "use cell: " << ar << "\n";
-#ifdef WITH_WARNINGS
-#warning temporarily disabled
-#endif
-		//breakLine();
-		//idxRight();
-		cursor().cell() = eq;
-		//idxRight();
-		cursor().cell() = pipeThroughExtern(lang, extra, ar);
-		idxLineLast();
-	}
-
 }
 
 

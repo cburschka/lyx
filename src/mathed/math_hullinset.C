@@ -8,6 +8,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
+#include "math_extern.h"
+#include "math_charinset.h"
 #include "debug.h"
 #include "textpainter.h"
 #include "funcrequest.h"
@@ -653,6 +655,82 @@ void MathHullInset::check() const
 }
 
 
+void MathHullInset::doExtern
+	(FuncRequest const & func, idx_type & idx, pos_type & pos)
+{
+	string lang;
+	string extra;
+	istringstream iss(func.argument.c_str());
+	iss >> lang >> extra;
+	if (extra.empty())
+		extra = "noextra";
+
+#ifdef WITH_WARNINGS
+#warning temporarily disabled
+	//if (selection()) {
+	//	MathArray ar;
+	//	selGet(ar);
+	//	lyxerr << "use selection: " << ar << "\n";
+	//	insert(pipeThroughExtern(lang, extra, ar));
+	//	return;
+	//}
+#endif
+
+	MathArray eq;
+	eq.push_back(MathAtom(new MathCharInset('=')));
+
+	// go to first item in line
+	idx -= idx % ncols();
+	pos = 0;
+
+	if (getType() == "simple") {
+		size_type pos = cell(idx).find_last(eq);
+		MathArray ar;
+		if (pos == cell(idx).size()) {
+			ar = cell(idx);
+			lyxerr << "use whole cell: " << ar << "\n";
+		} else {
+			ar = MathArray(cell(idx).begin() + pos + 1, cell(idx).end());
+			lyxerr << "use partial cell form pos: " << pos << "\n";
+		}
+		cell(idx).append(eq);
+		cell(idx).append(pipeThroughExtern(lang, extra, ar));
+		pos = cell(idx).size();
+		return;
+	}
+
+	if (getType() == "equation") {
+		lyxerr << "use equation inset\n";
+		mutate("eqnarray");
+		MathArray & ar = cell(idx);
+		lyxerr << "use cell: " << ar << "\n";
+		cell(idx + 1) = eq;
+		cell(idx + 2) = pipeThroughExtern(lang, extra, ar);
+		// move to end of line
+		idx += 2;
+		pos = cell(idx).size();
+		return;
+	}
+
+	{
+		lyxerr << "use eqnarray\n";
+		idx -= idx % ncols();
+		idx += 2;
+		pos = 0;
+		MathArray ar = cell(idx);
+		lyxerr << "use cell: " << ar << "\n";
+#ifdef WITH_WARNINGS
+#warning temporarily disabled
+#endif
+		addRow(row(idx));
+		cell(idx + 2) = eq;
+		cell(idx + 3) = pipeThroughExtern(lang, extra, ar);
+		idx += 3;
+		pos = cell(idx).size();
+	}
+}
+
+
 MathInset::result_type MathHullInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
@@ -725,6 +803,10 @@ MathInset::result_type MathHullInset::dispatch
 		case LFUN_MATH_VALIGN:
 			// we explicitly don't want the default behaviour here
 			return UNDISPATCHED;
+
+		case LFUN_MATH_EXTERN:
+			doExtern(cmd, idx, pos);
+			return DISPATCHED_POP;
 
 		default:
 			return MathGridInset::dispatch(cmd, idx, pos);

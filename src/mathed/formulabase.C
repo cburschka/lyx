@@ -428,6 +428,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	case LFUN_BREAKLINE:
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_INSERT_LABEL:
+	case LFUN_MATH_EXTERN:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(ev);
 		updateLocal(bv, true);

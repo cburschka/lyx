@@ -107,8 +107,6 @@ public:
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type & idx) const;
-	/// return the next enclosing hull inset and the cursor's index in it
-	MathHullInset * enclosingHull(idx_type & idx) const;
 	/// go up to enclosing grid
 	void popToEnclosingGrid();
 	/// go up to the hull inset
@@ -243,7 +241,7 @@ public:
 	/// hack for reveal codes
 	void markInsert();
 	void markErase();
-	void handleExtern(string const & arg);
+	//void handleExtern(string const & arg);
 
 	///
 	friend class Selection;
@@ -256,8 +254,6 @@ private:
 	bool idxLeft();
 	/// moves cursor index one cell to the right
 	bool idxRight();
-	/// moves cursor to beginning first cell of current line
-	bool idxLineFirst();
 	/// moves cursor to end of last cell of current line
 	bool idxLineLast();
 	/// moves cursor position one cell to the left
