@@ -1,3 +1,7 @@
+2001-07-18  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (readLyXformat2): Add filename to the error dialog
+
 2001-07-16  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/buffer.C (parseSingleLyXformat2Token): Generate error insets
