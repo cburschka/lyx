@@ -22,17 +22,17 @@ using std::endl;
 
 
 FuncRequest::FuncRequest()
-	: view_(0), action(LFUN_UNKNOWN_ACTION)
+	: view_(0), action(LFUN_UNKNOWN_ACTION), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(kb_action act)
-	: view_(0), action(act)
+	: view_(0), action(act), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(kb_action act, string const & arg)
-	: view_(0), action(act), argument(arg)
+	: view_(0), action(act), argument(arg), button_(mouse_button::none)
 {}
 
 
@@ -43,12 +43,12 @@ FuncRequest::FuncRequest
 
 
 FuncRequest::FuncRequest(BufferView * view, kb_action act)
-	: view_(view), action(act)
+	: view_(view), action(act), button_(mouse_button::none)
 {}
 
 
 FuncRequest::FuncRequest(BufferView * view, kb_action act, string const & arg)
-	: view_(view), action(act), argument(arg)
+	: view_(view), action(act), argument(arg), button_(mouse_button::none)
 {}
 
 
