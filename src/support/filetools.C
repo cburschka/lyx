@@ -1090,7 +1090,7 @@ string const getExtFromContents(string const & filename)
 			} else if ((stamp == "II") || (stamp == "MM")) {
 				format =  "tiff";
 
-			} else if (str == "%TGIF") {
+			} else if (prefixIs(str,"%TGIF")) {
 				format =  "tgif";
 
 			} else if (prefixIs(str,"GIF")) {
@@ -1111,7 +1111,7 @@ string const getExtFromContents(string const & filename)
 		    break;
 		else if (contains(str,"EPSF"))
 			// dummy, if we have wrong file description like
-			// description like "%!PS-Adobe-2.0EPSF"
+			// %!PS-Adobe-2.0EPSF"
 			format =  "eps";
 
 		else if (contains(str,"Grace"))
