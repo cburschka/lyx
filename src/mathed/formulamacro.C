@@ -1,7 +1,7 @@
 /*
  *  File:        formulamacro.C
  *  Purpose:     Implementation of the formula macro LyX inset
- *  Author:      André Pönitz
+ *  Author:      André Pönitz, based on ideas of Alejandro Aguilar Sierra
  *  Created:     March 2001
  *  Description: Allows the edition of math macros inside Lyx. 
  *
@@ -22,23 +22,19 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_macro.h"
-#include "math_macroarg.h"
 #include "math_macrotable.h"
-#include "math_macrotemplate.h"
-#include "math_hullinset.h"
-#include "lyx_main.h"
+#include "math_support.h"
+#include "math_mathmlstream.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "Painter.h"
 #include "font.h"
 #include "support/lyxlib.h"
-#include "mathed/math_support.h"
 #include "support/LOstream.h"
 #include "debug.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "lyxfont.h"
-#include "math_mathmlstream.h"
 
 using std::ostream;
 
