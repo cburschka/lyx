@@ -1,5 +1,10 @@
 2001-07-31  Juergen Vigna  <jug@sad.it>
 
+	* text.C (setHeightOfRow): fixed setting of ascent/descent based on
+	the font (wrong since using of Paragraph::highestFontInRange).
+
+	* paragraph.C (highestFontInRange): added a default_size parameter.
+
 	* text.C (getVisibleRow): minor clear row changes (still not perfect).
 	(setHeightOfRow): reformat
 

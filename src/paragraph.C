@@ -661,12 +661,13 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 /// Returns the height of the highest font in range
 LyXFont::FONT_SIZE
 Paragraph::highestFontInRange(Paragraph::size_type startpos,
-                              Paragraph::size_type endpos) const
+                              Paragraph::size_type endpos,
+							  LyXFont::FONT_SIZE const def_size) const
 {
-	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
 	if (pimpl_->fontlist.empty())
-		return maxsize;
+		return def_size;
 
+	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
 	Pimpl::FontTable end_search(endpos, LyXFont());
 	Pimpl::FontList::const_iterator end_it =
 		lower_bound(pimpl_->fontlist.begin(),
@@ -683,6 +684,8 @@ Paragraph::highestFontInRange(Paragraph::size_type startpos,
 	     cit != end_it; ++cit)
 	{
 		LyXFont::FONT_SIZE size = cit->font().size();
+		if (size == LyXFont::INHERIT_SIZE)
+			size = def_size;
 		if (size > maxsize && size <= LyXFont::SIZE_HUGER)
 			maxsize = size;
 	}

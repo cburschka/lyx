@@ -1203,10 +1203,14 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	LyXLayout const & layout = textclasslist.Style(bview->buffer()->params.textclass,
 	                                               firstpar->getLayout());
 
-	LyXFont font = getFont(bview->buffer(), par, par->size() - 1);
-	LyXFont::FONT_SIZE const size = font.size();
+	// as max get the first character of this row then it can increes but not
+	// decrees the height. Just some point to start with so we don't have to
+	// do the assignment below too often.
+	LyXFont font = getFont(bview->buffer(), par, row_ptr->pos());
+	LyXFont::FONT_SIZE const tmpsize = font.size();
 	font = getFont(bview->buffer(), par, -1);
-	font.setSize(size);
+	LyXFont::FONT_SIZE const size = font.size();
+	font.setSize(tmpsize);
 
 	LyXFont labelfont = getFont(bview->buffer(), par, -2);
 
@@ -1251,8 +1255,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	// Check if any custom fonts are larger (Asger)
 	// This is not completely correct, but we can live with the small,
 	// cosmetic error for now.
-	LyXFont::FONT_SIZE const maxsize =
-		row_ptr->par()->highestFontInRange(row_ptr->pos(), pos_end);
+	LyXFont::FONT_SIZE maxsize =
+		row_ptr->par()->highestFontInRange(row_ptr->pos(), pos_end, size);
 	if (maxsize > font.size()) {
 		font.setSize(maxsize);
 
