@@ -38,7 +38,6 @@ class LaTeXFeatures;
 class Language;
 class ParIterator;
 
-#define NO_COMPABILITY 1
 
 ///
 struct DEPCLEAN {
@@ -128,13 +127,6 @@ public:
 	///
 	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
 				 LyXFont const &, string const &) const;
-#ifndef NO_COMPABILITY
-	///
-	Inset * isErtInset(Paragraph * par, int pos) const;
-	///
-	void insertErtContents(Paragraph * par, int & pos,
-			       bool set_inactive = true);
-#endif
 	///
 	Paragraph * getParFromID(int id) const;
 private:

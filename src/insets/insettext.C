@@ -260,9 +260,6 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		if (token.empty())
 			continue;
 		if (token == "\\end_inset") {
-#ifndef NO_COMPABILITY
-			const_cast<Buffer*>(buf)->insertErtContents(par, pos, false);
-#endif
 			break;
 		}
 
@@ -1117,7 +1114,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
-		if (isHighlyEditableInset(inset)) 
+		if (isHighlyEditableInset(inset))
 			ret = inset->localDispatch(cmd1);
 		else {
 			inset_x = cix(bv) - top_x + drawTextXOffset;

@@ -314,7 +314,7 @@ void expandDocuments(Menu & tomenu)
 				    LFUN_NOACTION));
 		return;
 	}
-	
+
 	int ii = 1;
 	Strings::const_iterator docit = names.begin();
 	Strings::const_iterator end = names.end();
@@ -335,12 +335,12 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"), LFUN_NOACTION));
 		return;
-	}				
-			
+	}
+
 	typedef vector<Format const *> Formats;
 	Formats formats;
 	kb_action action;
-	
+
 	switch (kind) {
 	case MenuItem::ImportFormats:
 		formats = Importer::GetImportableFormats();
@@ -507,7 +507,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 	for (Menu::const_iterator cit = frommenu.begin();
 	     cit != frommenu.end() ; ++cit) {
 		switch (cit->kind()) {
-		case MenuItem::Lastfiles: 
+		case MenuItem::Lastfiles:
 			expandLastfiles(tomenu);
 			break;
 
@@ -542,7 +542,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			tomenu.add(item);
 		}
 		break;
-			
+
 		default:
 			tomenu.add(*cit);
 		}

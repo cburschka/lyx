@@ -1468,19 +1468,8 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 			|| token == "\\end_deeper")
 		{
 			lex.pushToken(token);
-#ifndef NO_COMPABILITY
-			// Here we need to insert the inset_ert_contents into the last
-			// cell of the tabular.
-			owner_->bufferOwner()->insertErtContents(par, pos);
-#endif
 			break;
 		}
-#ifndef NO_COMPABILITY
-		if (token == "\\newline")
-			// Here we need to insert the inset_ert_contents into the last
-			// cell of the tabular.
-			owner_->bufferOwner()->insertErtContents(par, pos, false);
-#endif
 		if (owner_->bufferOwner()->parseSingleLyXformat2Token(lex, par,
 															  return_par,
 															  token, pos,

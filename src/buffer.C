@@ -282,22 +282,6 @@ namespace {
 
 string last_inset_read;
 
-#ifndef NO_COMPABILITY
-struct ErtComp
-{
-	ErtComp() : active(false), fromlayout(false), in_tabular(false) {
-	}
-	string contents;
-	bool active;
-	bool fromlayout;
-	bool in_tabular;
-	LyXFont font;
-};
-
-std::stack<ErtComp> ert_stack;
-ErtComp ert_comp;
-#endif
-
 #ifdef WITH_WARNINGS
 #warning And _why_ is this here? (Lgb)
 #endif
@@ -319,12 +303,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
 	unknown_tokens = 0;
-#ifndef NO_COMPABILITY
-	ert_comp.contents.erase();
-	ert_comp.active = false;
-	ert_comp.fromlayout = false;
-	ert_comp.in_tabular = false;
-#endif
+
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
@@ -406,65 +385,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 }
 
 
-#ifndef NO_COMPABILITY
-
-Inset * Buffer::isErtInset(Paragraph * par, int pos) const
-{
-	Inset * inset;
-	if ((par->getChar(pos) == Paragraph::META_INSET) &&
-		(inset = par->getInset(pos)) &&
-		(inset->lyxCode() == Inset::ERT_CODE))
-	{
-		return inset;
-	}
-	return 0;
-}
-
-void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
-{
-	if (ert_comp.contents.find_first_not_of(' ') != string::npos) {
-		// we only skip completely empty ERT (only spaces) otherwise
-		// we have to insert it as is.
-		string str(ert_comp.contents);
-		lyxerr[Debug::INSETS] << "ERT contents:\n'"
-			<< str << "'" << endl;
-		// check if we have already an ert inset a position earlier
-		// if this is the case then we should insert the contents
-		// inside the other ertinset as it is stupid to have various
-		// ert in a row.
-		Inset * inset;
-		if ((pos > 0) && (inset=isErtInset(par, pos-1))) {
-			// get the last paragraph from the inset before
-			Paragraph * last = inset->firstParagraph();
-			while(last->next())
-				last = last->next();
-			// create the new paragraph after the last one
-			Paragraph * par = new Paragraph(last);
-			par->layout(params.getLyXTextClass().defaultLayoutName());
-			par->setInsetOwner(last->inInset());
-			// set the contents
-			LyXFont font(LyXFont::ALL_INHERIT, params.language);
-			string::const_iterator cit = str.begin();
-			string::const_iterator end = str.end();
-			pos_type pos = 0;
-			for (; cit != end; ++cit) {
-				par->insertChar(pos++, *cit, font);
-			}
-		} else {
-			Inset * inset =
-				new InsetERT(params, params.language, str, true);
-			par->insertInset(pos++, inset, ert_comp.font);
-		}
-	}
-	ert_comp.contents.erase();
-	ert_comp.fromlayout = false;
-	if (set_inactive) {
-		ert_comp.active = false;
-	}
-}
-#endif
-
-
 bool
 Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				   Paragraph *& first_par,
@@ -481,36 +401,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	// on large documents like UserGuide to a reduction of a
 	// factor 5! (JMarc)
 	if (token[0] != '\\') {
-#ifndef NO_COMPABILITY
-		if (ert_comp.active) {
-			ert_comp.contents += token;
-		} else {
-#endif
 		for (string::const_iterator cit = token.begin();
 		     cit != token.end(); ++cit) {
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
-#ifndef NO_COMPABILITY
-		}
-#endif
 	} else if (token == "\\layout") {
-#ifndef NO_COMPABILITY
-		bool old_fromlayout = ert_comp.fromlayout;
-		bool create_new_par = true;
-		ert_comp.in_tabular = false;
-		// Do the insetert.
-		if (!par->size() && par->previous() &&
-			(par->previous()->size() == 1) &&
-			isErtInset(par->previous(), par->previous()->size()-1))
-		{
-			int p = par->previous()->size();
-			insertErtContents(par->previous(), p);
-			create_new_par = false;
-		} else {
-			insertErtContents(par, pos);
-		}
-#endif
 		// reset the font as we start a new layout and if the font is
 		// not ALL_INHERIT,document_language then it will be set to the
 		// right values after this tag (Jug 20020420)
@@ -529,15 +425,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (layoutname.empty()) {
 			layoutname = tclass.defaultLayoutName();
 		}
-#ifndef NO_COMPABILITY
-		if (compare_ascii_no_case(layoutname, "latex") == 0) {
-			ert_comp.active = true;
-			ert_comp.fromlayout = true;
-			ert_comp.font = font;
-			if (old_fromlayout)
-				create_new_par = false;
-		}
-#endif
 		bool hasLayout = tclass.hasLayout(layoutname);
 		if (!hasLayout) {
 			lyxerr << "Layout '" << layoutname << "' does not"
@@ -601,9 +488,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			++pos;
 		} else {
 #endif
-#ifndef NO_COMPABILITY
-		if (create_new_par) {
-#endif
 			if (!first_par)
 				first_par = par;
 			else {
@@ -617,19 +501,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			if (!layout->obsoleted_by().empty())
 				par->layout(params.getLyXTextClass()[layout->obsoleted_by()]);
 			par->params().depth(depth);
-#ifndef NO_COMPABILITY
-		} else {
-			// we duplicate code here because it's easier to remove
-			// the code then of NO_COMPATIBILITY
-			par->layout(layoutname);
-			// Test whether the layout is obsolete.
-			LyXLayout_ptr const & layout =
-				params.getLyXTextClass()[par->layout()];
-			if (!layout->obsoleted_by().empty())
-				par->layout(layout->obsoleted_by());
-			par->params().depth(depth);
-		}
-#endif
 #if USE_CAPTION
 		}
 #endif
@@ -643,17 +514,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-#ifndef NO_COMPABILITY
-		insertErtContents(par, pos, false);
-		ert_stack.push(ert_comp);
-		ert_comp = ErtComp();
-#endif
 		readInset(lex, par, pos, font);
-#ifndef NO_COMPABILITY
-		ert_comp = ert_stack.top();
-		ert_stack.pop();
-		insertErtContents(par, pos);
-#endif
 	} else if (token == "\\family") {
 		lex.next();
 		font.setLyXFamily(lex.getString());
@@ -666,24 +527,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\size") {
 		lex.next();
 		font.setLyXSize(lex.getString());
-#ifndef NO_COMPABILITY
-	} else if (token == "\\latex") {
-		lex.next();
-		string const tok = lex.getString();
-		if (tok == "no_latex") {
-			// Do the insetert.
-			insertErtContents(par, pos);
-		} else if (tok == "latex") {
-			ert_comp.active = true;
-			ert_comp.font = font;
-		} else if (tok == "default") {
-			// Do the insetert.
-			insertErtContents(par, pos);
-		} else {
-			lex.printError("Unknown LaTeX font flag "
-				       "`$$Token'");
-		}
-#endif
 	} else if (token == "\\lang") {
 		lex.next();
 		string const tok = lex.getString();
@@ -751,107 +594,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\backslash") {
-#ifndef NO_COMPABILITY
-		if (ert_comp.active) {
-			ert_comp.contents += "\\";
-		} else {
-#endif
 		par->insertChar(pos, '\\', font);
 		++pos;
-#ifndef NO_COMPABILITY
-		}
-#endif
-#ifndef NO_COMPABILITY
-	} else if (token == "\\begin_float") {
-		insertErtContents(par, pos);
-		//insertErtContents(par, pos, false);
-		//ert_stack.push(ert_comp);
-		//ert_comp = ErtComp();
-
-		// This is the compability reader. It can be removed in
-		// LyX version 1.3.0. (Lgb)
-		lex.next();
-		string const tmptok = lex.getString();
-		//lyxerr << "old float: " << tmptok << endl;
-
-		Inset * inset = 0;
-		stringstream old_float;
-
-		if (tmptok == "footnote") {
-			inset = new InsetFoot(params);
-			old_float << "collapsed true\n";
-		} else if (tmptok == "margin") {
-			inset = new InsetMarginal(params);
-			old_float << "collapsed true\n";
-		} else if (tmptok == "fig") {
-			inset = new InsetFloat(params, "figure");
-			old_float << "wide false\n"
-				  << "collapsed false\n";
-		} else if (tmptok == "tab") {
-			inset = new InsetFloat(params, "table");
-			old_float << "wide false\n"
-				  << "collapsed false\n";
-		} else if (tmptok == "alg") {
-			inset = new InsetFloat(params, "algorithm");
-			old_float << "wide false\n"
-				  << "collapsed false\n";
-		} else if (tmptok == "wide-fig") {
-			inset = new InsetFloat(params, "figure");
-			//InsetFloat * tmp = new InsetFloat("figure");
-			//tmp->wide(true);
-			//inset = tmp;
-			old_float << "wide true\n"
-				  << "collapsed false\n";
-		} else if (tmptok == "wide-tab") {
-			inset = new InsetFloat(params, "table");
-			//InsetFloat * tmp = new InsetFloat("table");
-			//tmp->wide(true);
-			//inset = tmp;
-			old_float << "wide true\n"
-				  << "collapsed false\n";
-		}
-
-		if (!inset) {
-			return false; // no end read yet
-		}
-
-		// Here we need to check for \end_deeper and handle that
-		// before we do the footnote parsing.
-		// This _is_ a hack! (Lgb)
-		while (true) {
-			lex.next();
-			string const tmp = lex.getString();
-			if (tmp == "\\end_deeper") {
-				//lyxerr << "\\end_deeper caught!" << endl;
-				if (!depth) {
-					lex.printError("\\end_deeper: "
-						       "depth is already null");
-				} else
-					--depth;
-
-			} else {
-				old_float << tmp << ' ';
-				break;
-			}
-		}
-
-		old_float << lex.getLongString("\\end_float")
-			  << "\n\\end_inset\n";
-		//lyxerr << "Float Body:\n" << old_float.str() << endl;
-		// That this does not work seems like a bug
-		// in stringstream. (Lgb)
-		istringstream istr(old_float.str());
-		LyXLex nylex(0, 0);
-		nylex.setStream(istr);
-		inset->read(this, nylex);
-		par->insertInset(pos, inset, font);
-		++pos;
-		insertErtContents(par, pos);
-
-		// we have to reset the font as in the old format after a float
-		// the font was automatically reset!
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-#endif
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
@@ -932,13 +676,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\defskip") {
 		lex.nextToken();
 		params.defskip = VSpace(lex.getString());
-#ifndef NO_COMPABILITY
-	} else if (token == "\\epsfig") { // obsolete
-		// Indeed it is obsolete, but we HAVE to be backwards
-		// compatible until 0.14, because otherwise all figures
-		// in existing documents are irretrivably lost. (Asger)
-		params.readGraphicsDriver(lex);
-#endif
 	} else if (token == "\\quotes_language") {
 		int tmpret = lex.findToken(string_quotes_language);
 		if (tmpret == -1)
@@ -1174,26 +911,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\newline") {
-#ifndef NO_COMPABILITY
-		if (!ert_comp.in_tabular && ert_comp.active) {
-			ert_comp.contents += char(Paragraph::META_NEWLINE);
-		} else {
-			// Since we cannot know it this is only a regular
-			// newline or a tabular cell delimter we have to
-			// handle the ERT here.
-			insertErtContents(par, pos, false);
-
-			par->insertChar(pos, Paragraph::META_NEWLINE, font);
-			++pos;
-		}
-#else
 		par->insertChar(pos, Paragraph::META_NEWLINE, font);
 		++pos;
-#endif
 	} else if (token == "\\LyXTable") {
-#ifndef NO_COMPABILITY
-		ert_comp.in_tabular = true;
-#endif
 		Inset * inset = new InsetTabular(*this);
 		inset->read(this, lex);
 		par->insertInset(pos, inset, font);
@@ -1221,18 +941,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		par->bibkey->read(this, lex);
 	} else if (token == "\\the_end") {
-#ifndef NO_COMPABILITY
-		// If we still have some ert active here we have to insert
-		// it so we don't loose it. (Lgb)
-		insertErtContents(par, pos);
-#endif
 		the_end_read = true;
 	} else {
-#ifndef NO_COMPABILITY
-		if (ert_comp.active) {
-			ert_comp.contents += token;
-		} else {
-#endif
 		// This should be insurance for the future: (Asger)
 		++unknown_tokens;
 		lex.eatLine();
@@ -1244,9 +954,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
 				 params.language));
 
-#ifndef NO_COMPABILITY
-		}
-#endif
 	}
 
 	return the_end_read;
