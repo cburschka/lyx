@@ -212,7 +212,7 @@ fi
 if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
 	for FILE in ${BASE}*.${GSSUFFIX}
 	do
-		pnmcrop -left ${FILE} | pnmcrop -right ${FILE} > ${BASE}.tmp
+		pnmcrop -left ${FILE} | pnmcrop -right > ${BASE}.tmp
 		if [ $? -eq 0 ]; then
 			mv ${BASE}.tmp ${FILE}
 		else
