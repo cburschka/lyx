@@ -96,7 +96,7 @@ bool MathArray::empty() const
 {
 	return bf_.empty();
 }
-   
+
 
 MathArray::size_type MathArray::size() const
 {

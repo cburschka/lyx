@@ -77,7 +77,7 @@ void MathMacroTable::builtinMacros()
 
 	built = true;
 	//lyxerr[Debug::MATHED] << "Building macros\n";
-   
+D
 	//create("emptyset",     0, "\\not0");
 	create("notin",        0, "\\not\\in");
 	create("slash",        0, "/");
@@ -139,7 +139,7 @@ void MathMacroTable::builtinMacros()
 		create("gggtr",        0, "\\ggg");
 	}
 
-  	//create("lint",       4, "\\int_#1^#2#3 d#4");
-  	//create("silentmult", 0, "\\cdot");
-  	//create("binom",        2, "\\left(\\frac#1#2\\right)");
+	//create("lint",       4, "\\int_#1^#2#3 d#4");
+	//create("silentmult", 0, "\\cdot");
+	//create("binom",        2, "\\left(\\frac#1#2\\right)");
 }

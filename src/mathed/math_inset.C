@@ -193,8 +193,8 @@ void MathInset::idxDeleteRange(idx_type, idx_type)
 
 void MathInset::getXY(int & x, int & y) const
 {
-   x = xo();
-   y = yo();
+	x = xo();
+	y = yo();
 }
 
 
