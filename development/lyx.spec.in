@@ -1,4 +1,4 @@
-Summary: A WYSYWIG frontend to LaTeX
+Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1
@@ -7,30 +7,28 @@ Group: X11/Editors
 Url: http://www.lyx.org/
 Packager: Kayvan A. Sylvan <kayvan@sylvan.com>
 Source: ftp://ftp.lyx.org/pub/lyx/stable/lyx-%{PACKAGE_VERSION}.tar.gz
-BuildRoot: /var/tmp/rpm/lyx-root
+BuildRoot: %{_tmppath}/%{name}-root
 Icon: lyx.xpm
 Prefix: /usr
 Requires: xforms >= 0.88, tetex-xdvi, tetex, tetex-latex
+Obsoletes: tetex-lyx
 
 %description
-LyX is a modern approach of writing documents with a computer
-which breaks with the tradition of the obsolete typewriter
-concept.  It is designed for people who want a professional
-output with a minimum of time and effort, without becoming specia-
-lists in typesetting.  Compared to common word processors LyX
-will increase the productivity a lot, since most of the type-
-setting will be done by the computer, not the author.  With LyX
-the author can concentrate on the contents of his writing,
-since the computer will take care of the look.
+LyX is a modern approach to writing documents which breaks with the
+obsolete "typewriter paradigm" of most other document preparation
+systems.
 
-%package -n tetex-lyx
-Summary: Files for LyX packaged for tetex
-Requires: lyx
-Group: Applications/Publishing
+It is designed for people who want professional quality output
+with a minimum of time and effort, without becoming specialists in
+typesetting.
 
-%description -n tetex-lyx
-This package contains the LaTeX files for LyX installed in the normal
-place that the Redhat tetex package is installed and would see it.
+The major innovation in LyX is WYSIWYM (What You See Is What You Mean).
+That is, the author focuses on content, not on the details of formatting.
+This allows for greater productivity, and leaves the final typesetting
+to the backends (like LaTeX) that are specifically designed for the task.
+
+With LyX, the author can concentrate on the contents of his writing,
+and let the computer take care of the rest.
 
 %prep
 %setup
@@ -38,43 +36,39 @@ place that the Redhat tetex package is installed and would see it.
 %build
 unset LINGUAS || true
 CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" \
-./configure --prefix=/usr --without-warnings --with-included-string
-# The following check is to ensure that lyx RPMs generated on RH 6.X machines
-# with gcc-2.95 still run against older Redhat OS/compiler combinations.
-# It will eventually be ripped out.
-if [ -r /usr/lib/libstdc++-libc6.1-1.so.2 ]
-then
-	make CXX=gcc LYX_LIBS='/usr/lib/libstdc++-libc6.1-1.so.2 -lforms -lXpm'
-else
-	make
-fi
-
+./configure --prefix=%{_prefix} --mandir=%{_mandir} \
+	--bindir=%{_bindir} --datadir=%{_datadir} \
+	--without-warnings --with-included-string
+make
 
 %install
 unset LINGUAS || true
 rm -rf ${RPM_BUILD_ROOT}
 install -d -m 755 ${RPM_BUILD_ROOT}
-make prefix=${RPM_BUILD_ROOT}/usr install
-gzip -f9 ${RPM_BUILD_ROOT}/usr/man/man?/*
+make DESTDIR=${RPM_BUILD_ROOT} install
+gzip -f9 ${RPM_BUILD_ROOT}%{_mandir}/man?/*
 
 #
-# Set up the lyx-specific class files where TeX can see then
+# Set up the lyx-specific class files where TeX can see them
 #
-TEXMF=/usr/share/texmf
+TEXMF=%{_datadir}/texmf
 mkdir -p ${RPM_BUILD_ROOT}${TEXMF}/tex/latex
-cp -r ${RPM_BUILD_ROOT}/usr/share/lyx/tex \
-      ${RPM_BUILD_ROOT}${TEXMF}/tex/latex/lyx
+mv ${RPM_BUILD_ROOT}%{_datadir}/lyx/tex \
+      ${RPM_BUILD_ROOT}/${TEXMF}/tex/latex/lyx
 
 #
 # Miscellaneous files
 #
-cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}/usr/share/lyx/images/
+cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/lyx/images/
 cp lib/reLyX/README README.reLyX
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
 
 %post
+# Make TeX understand where LyX-specific packages are
+texhash
+
 # Before configuring lyx for the local system
 # PATH needs to be imported 
 if [ -f /etc/profile ]; then 
@@ -84,59 +78,28 @@ fi
 # Now configure LyX
 #
 echo "Configuring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
+cd %{_datadir}/lyx
 ./configure --srcdir
 
 # Fix reLyX perl program if the prefix is non-standard
-if [ "$RPM_INSTALL_PREFIX" != "/usr" ]
+if [ "%{_prefix}" != "/usr" ]
 then
-    perl -pi -e "s!/usr/share/lyx!$RPM_INSTALL_PREFIX/share/lyx!" \
-        ${RPM_INSTALL_PREFIX}/bin/reLyX
+    perl -pi -e "s!/usr/share/lyx!%{_datadir}/lyx!" \
+        %{_bindir}/reLyX
 fi
 
-%post -n tetex-lyx
+%postun
 # Fix the TeX file hash
 #
 texhash
-
-# Before configuring lyx for the local system
-# PATH needs to be imported 
-if [ -f /etc/profile ]; then 
-. /etc/profile
-fi 
-#
-# Now configure LyX
-#
-echo "Re-configuring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
-./configure --srcdir
-
-%postun -n tetex-lyx
-# Fix the TeX file hash
-#
-texhash
-
-# Before configuring lyx for the local system
-# PATH needs to be imported 
-if [ -f /etc/profile ]; then 
-. /etc/profile
-fi 
-#
-# Now configure LyX
-#
-echo "Reconfiguring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
-./configure --srcdir
 
 %files
-%attr(-,root,root) %doc ABOUT-NLS ANNOUNCE OLD-CHANGES COPYING 
-%attr(-,root,root) %doc README UPGRADING ChangeLog NEWS
-%attr(-,root,root) %doc lib/CREDITS README.reLyX
-
-%attr(-,root,root) /usr/bin/*
-%attr(-,root,root) /usr/man/*
-%attr(-,root,root) /usr/share/locale/*/LC_MESSAGES/*
-%attr(-,root,root) /usr/share/lyx
-
-%files -n tetex-lyx
-%attr(-,root,root) /usr/share/texmf/tex/latex/lyx
+%attr(-,root,root)
+%doc ABOUT-NLS ANNOUNCE COPYING 
+%doc README UPGRADING ChangeLog NEWS
+%doc lib/CREDITS README.reLyX
+%{_bindir}/*
+%{_mandir}/man?/*
+%{_datadir}/locale/*/LC_MESSAGES/*
+%{_datadir}/%{name}
+%{_datadir}/texmf/tex/latex/%{name}
