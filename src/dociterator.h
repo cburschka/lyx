@@ -188,7 +188,13 @@ public:
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocumentIterator const & cur);
+private:
+	InsetBase * inset_;
 };
+
+
+DocumentIterator doc_iterator_begin(InsetBase & inset);
+DocumentIterator doc_iterator_end(InsetBase & inset);
 
 
 // The difference to a ('non stable') DocumentIterator is the removed

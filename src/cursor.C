@@ -84,8 +84,9 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 
 
 LCursor::LCursor(BufferView & bv)
-	: DocumentIterator(), bv_(&bv), anchor_(),
-	  cached_y_(0), x_target_(-1), selection_(false), mark_(false)
+	: DocumentIterator(), bv_(&bv),
+	  anchor_(), cached_y_(0), x_target_(-1),
+	  selection_(false), mark_(false)
 {}
 
 
@@ -93,7 +94,7 @@ void LCursor::reset(InsetBase & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
-	anchor_.clear();
+	anchor_ = DocumentIterator(inset);
 	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;
@@ -1117,8 +1118,8 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	BOOST_ASSERT(text);
 	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
 
-	DocumentIterator it(bv().buffer()->inset());
-	DocumentIterator et;
+	DocumentIterator it = doc_iterator_begin(bv().buffer()->inset());
+	DocumentIterator et = doc_iterator_end(bv().buffer()->inset());
 	//lyxerr << "x: " << x << " y: " << y << endl;
 	//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
 	//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;

@@ -19,8 +19,6 @@ class InsetIterator : public DocumentIterator
 {
 public:
 	///
-	InsetIterator() {}
-	///
 	explicit InsetIterator(InsetBase & inset);
 	///
 	void operator++() { forwardInset(); }
@@ -31,5 +29,10 @@ public:
 	///
 	InsetBase & operator*() { return *nextInset(); }
 };
+
+InsetIterator inset_iterator_begin(InsetBase & inset);
+
+InsetIterator inset_iterator_end(InsetBase & inset);
+
 
 #endif

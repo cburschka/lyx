@@ -311,7 +311,7 @@ void BufferView::setCursorFromRow(int row)
 
 void BufferView::gotoLabel(string const & label)
 {
-	for (InsetIterator it(buffer()->inset()); it; ++it) {
+	for (InsetIterator it = inset_iterator_begin(buffer()->inset()); it; ++it) {
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {

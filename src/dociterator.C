@@ -14,14 +14,28 @@
 using std::endl;
 
 
-DocumentIterator::DocumentIterator()
+//we could be able to get rid of this if only every BufferView were
+//associated to a buffer on construction
+DocumentIterator::DocumentIterator() : inset_(0)
 {}
 
 
-DocumentIterator::DocumentIterator(InsetBase & inset)
+DocumentIterator doc_iterator_begin(InsetBase & inset)
 {
-	push_back(CursorSlice(inset));
+	DocumentIterator dit(inset);
+	dit.forwardPos();
+	return dit;
 }
+
+
+DocumentIterator doc_iterator_end(InsetBase & inset)
+{
+	return DocumentIterator(inset);
+}
+
+
+DocumentIterator::DocumentIterator(InsetBase & inset) : inset_(&inset)
+{}
 
 
 InsetBase * DocumentIterator::nextInset()
@@ -234,6 +248,12 @@ InsetBase * DocumentIterator::innerInsetOfType(int code) const
 
 void DocumentIterator::forwardPos()
 {
+	//this dog bites his tail
+	if (empty()) {
+		push_back(CursorSlice(*inset_));
+		return;
+	}
+
 	CursorSlice & top = back();
 	//lyxerr << "XXX\n" << *this << endl;
 
@@ -320,8 +340,57 @@ void DocumentIterator::forwardInset()
 
 void DocumentIterator::backwardChar()
 {
-	lyxerr << "not implemented" << endl;
-	BOOST_ASSERT(false);
+	backwardPos();
+	while (size() != 0 && pos() == lastpos())
+		backwardPos(); 
+}
+
+
+void DocumentIterator::backwardPos()
+{
+	//this dog bites his tail
+	if (empty()) {
+		push_back(CursorSlice(*inset_));
+		back().idx() = lastidx();
+		back().par() = lastpar();
+		back().pos() = lastpos();
+		return;
+	}
+
+	CursorSlice & top = back();
+
+	if (top.pos() != 0) {
+		--top.pos();
+	} else if (top.par() != 0) {
+		--top.par();
+		top.pos() = lastpos();
+		return;
+	} else if (top.idx() != 0) {
+		--top.idx();
+		top.par() = lastpar();
+		top.pos() = lastpos();
+		return;
+	} else {
+		pop_back();
+		return;
+	}
+
+	// move into an inset to the left if possible
+	InsetBase * n = 0;
+	
+	if (inMathed()) {
+		n = (top.cell().begin() + top.pos())->nucleus();
+	} else {
+		if (paragraph().isInset(top.pos()))
+			n = paragraph().getInset(top.pos());
+	}
+
+	if (n && n->isActive()) {
+		push_back(CursorSlice(*n));
+		back().idx() = lastidx();
+		back().par() = lastpar();
+		back().pos() = lastpos();
+	}
 }
 
 
@@ -349,7 +418,7 @@ StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << endl;
-	DocumentIterator dit;
+	DocumentIterator dit = DocumentIterator(*inset);
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		dit.push_back(data_[i]);
 		dit.back().inset_ = inset;

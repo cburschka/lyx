@@ -723,7 +723,7 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
 #warning FIXME
 #if 0
 	Buffer * buf = bv_->buffer();
-	InsetIterator beg(buf->inset());
+	InsetIterator beg = inset_iterator_begin(buf->inset());
 
 	bool cursor_par_seen = false;
 

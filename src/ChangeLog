@@ -1,3 +1,18 @@
+
+2004-03-30  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* dociterator.[Ch]: add an inset_ member 
+	(backwardPos): implemented
+	(backwardPos, forwardPos): use inset_ when the stack is empty.
+	(doc_iterator_begin, doc_iterator_end): implemented
+	* pariterator.[Ch]: adjust, add begin, end
+	* insetiterator.[Ch]: adjust, add begin, end
+	* cursor.C: 
+	* document.C:
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C: adjust
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.C: increment file format to 232.

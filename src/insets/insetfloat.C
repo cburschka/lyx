@@ -419,8 +419,8 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 
 void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
-	ParConstIterator pit(*this, 0);
-	ParConstIterator end = ParConstIterator(DocumentIterator());
+	ParConstIterator pit = par_const_iterator_begin(*this);
+	ParConstIterator end = par_const_iterator_end(*this);
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {

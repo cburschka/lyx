@@ -7,6 +7,18 @@
 InsetIterator::InsetIterator(InsetBase & inset)
 	: DocumentIterator(inset)
 {
-	if (size() && !nextInset())
-		forwardInset();
+}
+
+
+InsetIterator inset_iterator_begin(InsetBase & inset)
+{
+	InsetIterator it = InsetIterator(inset);
+	it.forwardInset();
+	return it;
+}
+
+
+InsetIterator inset_iterator_end(InsetBase & inset)
+{
+	return InsetIterator(inset);
 }

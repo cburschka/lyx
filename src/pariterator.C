@@ -30,9 +30,15 @@ ParIterator::ParIterator(DocumentIterator const & cur) : DocumentIterator(cur)
 {}
 
 
-ParIterator::ParIterator(InsetBase & in, par_type pit) : DocumentIterator(in)
+ParIterator par_iterator_begin(InsetBase & inset)
 {
-	par() = pit;
+	return ParIterator(doc_iterator_begin(inset));
+}
+
+
+ParIterator par_iterator_end(InsetBase & inset)
+{
+	return ParIterator(doc_iterator_end(inset));
 }
 
 
@@ -109,13 +115,6 @@ makeDocumentIterator(ParIterator const & par, lyx::pos_type pos)
 ///
 
 
-ParConstIterator::ParConstIterator(InsetBase const & in, par_type pit)
-	: DocumentIterator(const_cast<InsetBase &>(in))
-{
-	par() = pit;
-}
-
-
 ParConstIterator::ParConstIterator(DocumentIterator const & dit)
 	: DocumentIterator(dit)
 {}
@@ -160,4 +159,18 @@ bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2)
 bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
 	return !(iter1 == iter2);
+}
+
+
+#warning const correctness!
+
+ParConstIterator par_const_iterator_begin(InsetBase const & inset)
+{
+	return ParConstIterator(doc_iterator_begin(const_cast<InsetBase &>(inset)));
+}
+
+
+ParConstIterator par_const_iterator_end(InsetBase const & inset)
+{
+	return ParConstIterator(doc_iterator_end(const_cast<InsetBase &>(inset)));
 }

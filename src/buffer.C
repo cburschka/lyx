@@ -1192,7 +1192,7 @@ void Buffer::getLabelList(std::vector<string> & list) const
 		return;
 	}
 
-	for (InsetIterator it(inset()); it; ++it)
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 		it.nextInset()->getLabelList(*this, list);
 }
 
@@ -1210,7 +1210,7 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
 		return;
 	}
 
-	for (InsetIterator it(inset()); it; ++it) {
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == InsetOld::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				dynamic_cast<InsetBibtex const &>(*it);
@@ -1304,11 +1304,9 @@ bool Buffer::isMultiLingual() const
 
 ParIterator Buffer::getParFromID(int id) const
 {
-#warning FIXME: const correctness! (Andre)
-	ParIterator it = const_cast<Buffer*>(this)->par_iterator_begin();
-	ParIterator end = const_cast<Buffer*>(this)->par_iterator_end();
+	ParConstIterator it = par_iterator_begin();
+	ParConstIterator end = par_iterator_end();
 
-#warning FIXME, perhaps this func should return a ParIterator? (Lgb)
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
 		lyxerr << "getParFromID(), id: " << id << endl;
@@ -1344,25 +1342,25 @@ bool Buffer::hasParWithID(int id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(inset(), 0);
+	return ::par_iterator_begin(inset());
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator(DocumentIterator());
+	return ::par_iterator_end(inset());
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ParConstIterator(inset(), 0);
+	return ::par_const_iterator_begin(inset());
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ParConstIterator(DocumentIterator());
+	return ::par_const_iterator_end(inset());
 }
 
 

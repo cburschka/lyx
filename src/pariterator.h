@@ -59,7 +59,9 @@ public:
 
 DocumentIterator makeDocumentIterator(ParIterator const &, lyx::pos_type);
 
+ParIterator par_iterator_begin(InsetBase & inset);
 
+ParIterator par_iterator_end(InsetBase & inset);
 
 
 ///
@@ -74,8 +76,6 @@ class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 			 public DocumentIterator
 {
 public:
-	///
-	ParConstIterator(InsetBase const &, lyx::par_type pit);
 	///
 	ParConstIterator(ParConstIterator const &);
 	///
@@ -98,5 +98,11 @@ bool operator==(ParConstIterator const & iter1,
 
 bool operator!=(ParConstIterator const & iter1,
 		ParConstIterator const & iter2);
+
+
+ParConstIterator par_const_iterator_begin(InsetBase const & inset);
+
+ParConstIterator par_const_iterator_end(InsetBase const & inset);
+
 
 #endif

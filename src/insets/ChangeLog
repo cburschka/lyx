@@ -1,3 +1,9 @@
+
+2004-03-30  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insetfloat.C (addToToc): use par_const_iterator_begin and
+	par_const_iterator_end.
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetbibtex.[Ch]: bibtopic support.
