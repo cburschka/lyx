@@ -219,9 +219,11 @@ LyXFont WhichFont(MathTextCodes type, MathStyles size)
 
 	case LM_ST_SCRIPT:
 		f.decSize();
+		f.decSize();
 		break;
 
 	case LM_ST_SCRIPTSCRIPT:
+		f.decSize();
 		f.decSize();
 		f.decSize();
 		break;

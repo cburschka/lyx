@@ -149,10 +149,13 @@ void MathUpDownInset::Write(std::ostream & os, bool fragile) const
 
 void MathUpDownInset::Metrics(MathStyles st, int asc, int des)
 {
+	size_ = st;
+	MathStyles tt = smallerStyleScript(st);
+	
 	if (up())
-		xcell(0).Metrics(st);
+		xcell(0).Metrics(tt);
 	if (down())
-		xcell(1).Metrics(st);
+		xcell(1).Metrics(tt);
 
 	// we assume that asc, des, wid are the metrics of the item in front
 	// of this MathScriptInset
