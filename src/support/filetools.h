@@ -12,6 +12,7 @@
 #endif
 
 #include <vector>
+#include <utility>
 #include "LString.h"
 
 
@@ -209,5 +210,8 @@ void removeAutosaveFile(string const & filename);
 /// read the BoundingBox entry from a ps/eps/pdf-file
 string const readBB_from_PSFile(string const & file);
 
+typedef std::pair<int, string> cmd_ret;
+
+cmd_ret const RunCommand(string const & cmd);
 
 #endif

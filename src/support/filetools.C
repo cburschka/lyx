@@ -1286,11 +1286,7 @@ bool LyXReadLink(string const & file, string & link, bool resolve)
 }
 
 
-namespace {
-
-typedef pair<int, string> cmdret;
-
-cmdret const do_popen(string const & cmd)
+cmd_ret const RunCommand(string const & cmd)
 {
 	// One question is if we should use popen or
 	// create our own popen based on fork, exec, pipe
@@ -1313,8 +1309,6 @@ cmdret const do_popen(string const & cmd)
 	int const pret = pclose(inf);
 	return make_pair(pret, ret);
 }
-
-} // namespace anon
 
 
 string const findtexfile(string const & fil, string const & /*format*/)
@@ -1355,7 +1349,7 @@ string const findtexfile(string const & fil, string const & /*format*/)
 	// should help it by setting additional path in the approp. envir.var.
 	string const kpsecmd = "kpsewhich " + fil;
 
-	cmdret const c = do_popen(kpsecmd);
+	cmd_ret const c = RunCommand(kpsecmd);
 
 	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
 		 << "kpse result = `" << strip(c.second, '\n')

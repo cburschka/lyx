@@ -1713,10 +1713,22 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else if (file_format < 220) {
-					Alert::alert(_("ERROR!"),
-						     _("Old LyX file format found. "
-						       "Use LyX 1.2.x to read this!"));
-					return false;
+					//Alert::alert(_("Warning!"),
+					//	     _("Old LyX file format found. "
+					//	       "Running conversion script"));
+					string command = "lyxconvert "
+						+ QuoteName(filename_);
+					cmd_ret const ret = RunCommand(command);
+					if (ret.first) {
+						Alert::alert(_("ERROR!"),
+						     _("An error occured while "
+						       "running the conversion script."));
+						return false;
+					}
+					istringstream is(ret.second);
+					LyXLex tmplex(0, 0);
+					tmplex.setStream(is);
+					return readFile(tmplex);
 				}
 			}
 			bool the_end = readLyXformat2(lex, par);
