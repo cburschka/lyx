@@ -251,8 +251,9 @@ void xformsGImage::clip(GParams const & params)
 	int const new_width  = params.bb.xr - params.bb.xl;
 	int const new_height = params.bb.yt - params.bb.yb;
 
-	if (new_width  <= 0 || new_width > image_->w ||
-	    new_height <= 0 || new_height > image_->h)
+	// No need to check if the width, height are > 0 because the
+	// Bounding Box would be empty() in this case.
+	if (new_width > image_->w || new_height > image_->h)
 		// Bounds are invalid.
 		return;
 

@@ -1,3 +1,9 @@
+2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsParams.C (c-tor): if clipping, then check the Bounding Box of
+	the EPS file too, to ensure that the clipped Bounding Box is relative
+	to the original. (From Herbert.)
+
 2002-04-04  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsParams.C (BoundingBox c-tor): ensure that the member

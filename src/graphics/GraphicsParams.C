@@ -32,9 +32,36 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 		filename = MakeAbsPath(filename, filepath);
 	}
 
-	if (iparams.clip)
+	if (iparams.clip) {
 		bb = iparams.bb;
 
+		// Get the original Bounding Box from the file
+		string const bb_orig_str = readBB_from_PSFile(filename);
+		if (!bb_orig_str.empty()) {
+			BoundingBox bb_orig;
+			bb_orig.xl = strToInt(token(bb_orig_str, ' ', 0));
+			bb_orig.yb = strToInt(token(bb_orig_str, ' ', 1));
+			bb_orig.xr = strToInt(token(bb_orig_str, ' ', 2));
+			bb_orig.yt = strToInt(token(bb_orig_str, ' ', 3));
+
+			bb.xl -= bb_orig.xl;
+			bb.xr -= bb_orig.xl;
+			bb.yb -= bb_orig.yb;
+			bb.yt -= bb_orig.yb;
+		}
+
+		// Paranoia check.
+		int const width  = bb.xr - bb.xl;
+		int const height = bb.yt - bb.yb;
+
+		if (width  < 0 || height < 0) {
+			bb.xl = 0;
+			bb.xr = 0;
+			bb.yb = 0;
+			bb.yt = 0;
+		}
+	}
+	
 	if (iparams.rotate)
 		angle = int(iparams.rotateAngle);
 
@@ -131,14 +158,10 @@ BoundingBox::BoundingBox(string const & bb)
 	// want the bounding box in Postscript pixels.
 	// Note further that there are 72 Postscript pixels per inch.
 	double const scaling_factor = 7200.0 / (lyxrc.dpi * lyxrc.zoom);
-	unsigned int const xl_tmp =
-		uint(scaling_factor * length_xl.inPixels(1, 1));
-	unsigned int const yb_tmp =
-		uint(scaling_factor * length_yb.inPixels(1, 1));
-	unsigned int const xr_tmp =
-		uint(scaling_factor * length_xr.inPixels(1, 1));
-	unsigned int const yt_tmp =
-		uint(scaling_factor * length_yt.inPixels(1, 1));
+	int const xl_tmp = int(scaling_factor * length_xl.inPixels(1, 1));
+	int const yb_tmp = int(scaling_factor * length_yb.inPixels(1, 1));
+	int const xr_tmp = int(scaling_factor * length_xr.inPixels(1, 1));
+	int const yt_tmp = int(scaling_factor * length_yt.inPixels(1, 1));
 
 	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;

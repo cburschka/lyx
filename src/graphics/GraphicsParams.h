@@ -38,10 +38,10 @@ struct BoundingBox {
 	/// 0 0 0 0 is empty!
 	bool empty() const;
 
-	unsigned int xl;
-	unsigned int yb;
-	unsigned int xr;
-	unsigned int yt;
+	int xl;
+	int yb;
+	int xr;
+	int yt;
 };
 
 bool operator==(BoundingBox const &, BoundingBox const &);
@@ -65,6 +65,10 @@ struct GParams
 	/// The image filename.
 	string filename;
 
+	/** Note that the BoundingBox is always relative to the BoundingBox
+	 *  as stored in the EPS file.
+	 *  Ie, bb.xl and bb.yb == 0 if that corner is not moved.
+	 */
 	BoundingBox bb;
 
 	/** The size of the view inside lyx in pixels or the scaling of the
