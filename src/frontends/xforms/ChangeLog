@@ -1,3 +1,16 @@
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* Dialogs2.C:
+	* Dialogs_impl.h:
+	* FormPreferences.h:
+	* FormPreferences.C:
+	* FormTabular.h:
+	* FormTabular.C:
+	* forms/form_preferences.fd:
+	* forms/form_tabular.fd: port tabular and prefs to MVC
+
+	* FormBase.h: make hide() virtual for prefs
+ 
 2002-11-08  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
 
 	* xforms_resize.[Ch]: sigh. Hack the "get scaling" part of

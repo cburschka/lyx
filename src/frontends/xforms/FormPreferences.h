@@ -18,7 +18,7 @@
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 #include "Color.h" // NamedColor
 #include "xforms_helpers.h" // XformColor
 
@@ -27,6 +27,8 @@
 #include FORMS_H_LOCATION
 #include <utility> // pair
 
+class ControlPrefs;
+ 
 class Combox;
 class Dialogs;
 class LyXView;
@@ -50,14 +52,11 @@ struct FD_preferences_spelloptions;
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
  */
-class FormPreferences : public FormBaseBI {
+class FormPreferences : public FormCB<ControlPrefs, FormDB<FD_preferences> > {
 public:
-	///
-	FormPreferences(LyXView &, Dialogs &);
+	FormPreferences();
 
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
@@ -65,26 +64,15 @@ private:
 	virtual void update();
 	/// Hide the dialog.
 	virtual void hide();
-	/// OK (Save) from dialog
-	virtual void ok();
 	/// Apply from dialog
 	virtual void apply();
 	/// Filter the inputs -- return true if entries are valid
-	virtual bool input(FL_OBJECT *, long);
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	/// Build the dialog
 	virtual void build();
-	/// Pointer to the actual instantiation of the xforms form.
-	virtual FL_FORM * form() const;
 	/// control which feedback message is output
 	string const getFeedback(FL_OBJECT *);
-	///
-	void browse(FL_OBJECT * input,
-		    string const & title, string const & pattern,
-		    std::pair<string,string> const & dir1= std::make_pair(string(),string()),
-		    std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
-
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_preferences> dialog_;
+ 
 	/// Converters tabfolder
 	boost::scoped_ptr<FD_preferences_inner_tab> converters_tab_;
 	/// reLyX and other import/input stuff
@@ -246,13 +234,13 @@ private:
 		///
 		FD_preferences_inputs_misc const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -271,7 +259,7 @@ private:
 		///
 		FD_preferences_interface const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
@@ -279,7 +267,7 @@ private:
 		///
 		bool input(FL_OBJECT const * const);
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -298,7 +286,7 @@ private:
 		///
 		FD_preferences_language const * dialog();
 		///
-		void apply(); // not const because calls update()
+		void apply(LyXRC & rc); // not const because calls update()
 		///
 		void build();
 		///
@@ -306,7 +294,7 @@ private:
 		///
 		bool input(FL_OBJECT const * const);
 		///
-		void update();
+		void update(LyXRC const & rc);
 		///
 		static void ComboCB(int, void *, Combox *);
 
@@ -331,13 +319,13 @@ private:
 		///
 		FD_preferences_lnf_misc const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -356,13 +344,13 @@ private:
 		///
 		FD_preferences_outputs_misc const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -381,7 +369,7 @@ private:
 		///
 		FD_preferences_paths const * dialog();
 		///
-		void apply();
+		void apply(LyXRC & rc);
 		///
 		void build();
 		///
@@ -389,7 +377,7 @@ private:
 		///
 		bool input(FL_OBJECT const * const);
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -408,13 +396,13 @@ private:
 		///
 		FD_preferences_printer const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -433,7 +421,7 @@ private:
 		///
 		FD_preferences_screen_fonts const * dialog();
 		///
-		void apply() const;
+		void apply(LyXRC & rc) const;
 		///
 		void build();
 		///
@@ -441,7 +429,7 @@ private:
 		///
 		bool input();
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -460,7 +448,7 @@ private:
 		///
 		FD_preferences_spelloptions const * dialog();
 		///
-		void apply(); // not const because calls update()!
+		void apply(LyXRC & rc); // not const because calls update()!
 		///
 		void build();
 		///
@@ -468,7 +456,7 @@ private:
 		///
 		bool input(FL_OBJECT const * const);
 		///
-		void update();
+		void update(LyXRC const & rc);
 
 	private:
 		///
@@ -524,15 +512,6 @@ private:
 		///
 		RGBColor col;
 	};
-	/// The ButtonController
-	ButtonController<PreferencesPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormPreferences::bc()
-{
-	return bc_;
-}
-
-#endif
+#endif // FORMPREFERENCES_H

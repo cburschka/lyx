@@ -118,6 +118,7 @@
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
 
+#include "ControlPrefs.h"
 #include "FormPreferences.h"
 #include "forms/form_preferences.h"
 
@@ -141,6 +142,7 @@
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
+#include "ControlTabular.h"
 #include "FormTabular.h"
 #include "forms/form_tabular.h"
 
@@ -232,7 +234,8 @@ ParagraphDialog;
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
 
-typedef FormPreferences PreferencesDialog;
+typedef GUI<ControlPrefs, FormPreferences, OkApplyCancelPolicy, xformsBC>
+PreferencesDialog;
 
 typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
 PrintDialog;
@@ -249,7 +252,8 @@ SendtoDialog;
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
-typedef FormTabular TabularDialog;
+typedef GUI<ControlTabular, FormTabular, NoRepeatedApplyReadOnlyPolicy, xformsBC>
+TabularDialog;
 
 typedef GUI<ControlTabularCreate, FormTabularCreate, OkApplyCancelReadOnlyPolicy, xformsBC>
 TabularCreateDialog;

@@ -14,35 +14,34 @@
 #pragma implementation
 #endif
 
-#include "debug.h"
-
+#include <vector>
+#include <algorithm>
+ 
+#include "ControlTabular.h"
+#include "xformsBC.h"
+#include "insets/insettabular.h"
+ 
 #include "FormTabular.h"
 #include "forms/form_tabular.h"
-#include "frontends/LyXView.h"
-#include "buffer.h"
+#include "debug.h"
 #include "xforms_helpers.h"
-#include "lyxrc.h" // to set the default length values
+#include "gettext.h"
+#include "lyxrc.h"
 #include "helper_funcs.h"
 #include "input_validators.h"
-
-#include "insets/insettabular.h"
-
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
-
-#include <functional>
 #include FORMS_H_LOCATION
-
 
 using std::vector;
 using std::bind2nd;
-using std::remove_if;
 
 
-FormTabular::FormTabular(LyXView & lv, Dialogs & d)
-	: FormInset(lv, d, _("Tabular Layout")),
-	  inset_(0), actCell_(-1), closing_(false)
+typedef FormCB<ControlTabular, FormDB<FD_tabular> > base_class;
+
+FormTabular::FormTabular()
+	: base_class(_("Edit table settings")),
+	closing_(false), actCell_(-1)
 {
 }
 
@@ -57,51 +56,6 @@ void FormTabular::redraw()
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder);
 	if (outer_form && outer_form->visible)
 		fl_redraw_form(outer_form);
-}
-
-
-FL_FORM * FormTabular::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
-
-void FormTabular::disconnect()
-{
-	inset_ = 0;
-	FormInset::disconnect();
-}
-
-
-void FormTabular::showInset(InsetTabular * inset)
-{
-	if (inset == 0) return;
-
-	// If connected to another inset, disconnect from it.
-	if (inset_ != inset) {
-		ih_.disconnect();
-		ih_ = inset->hideDialog.connect(boost::bind(&FormTabular::hide, this));
-		inset_ = inset;
-	}
-
-	show();
-}
-
-
-void FormTabular::updateInset(InsetTabular * inset)
-{
-	if (inset == 0 || inset_ == 0) return;
-
-	// If connected to another inset, disconnect from it.
-	if (inset_ != inset) {
-		ih_.disconnect();
-		ih_ = inset->hideDialog.connect(boost::bind(&FormTabular::hide, this));
-		inset_ = inset;
-	}
-
-	update();
 }
 
 
@@ -170,6 +124,8 @@ void FormTabular::build()
 
 	// work-around xforms bug re update of folder->x, folder->y coords.
 	setPrehandler(dialog_->tabfolder);
+
+	//  FIXME: addReadOnly everything
 }
 
 
@@ -177,17 +133,16 @@ void FormTabular::update()
 {
 	if (closing_)
 		return;
-
-	if (!inset_ || !inset_->tabular.get())
-		return;
-
-	LyXTabular * tabular = inset_->tabular.get();
+ 
+	LyXTabular * tabular = controller().tabular();
+	InsetTabular * inset = controller().inset();
+ 
 	int align;
 	char buf[12];
 	LyXLength pwidth;
 	string special;
 
-	int cell = inset_->getActCell();
+	int cell = inset->getActCell();
 	actCell_ = cell;
 	int column = tabular->column_of_cell(cell) + 1;
 	clearMessage();
@@ -253,13 +208,13 @@ void FormTabular::update()
 
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
-		bool const metric = lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
+		bool const metric(controller().metric());
 		string const default_unit = metric ? "cm" : "in";
 		updateWidgetsFromLength(cell_options_->input_mcolumn_width,
 					cell_options_->choice_value_mcolumn_width,
 					pwidth, default_unit);
 
-		if (!lv_.buffer()->isReadonly()) {
+		if (bc().bp().isReadOnly()) {
 			setEnabled(cell_options_->input_special_multialign, true);
 			setEnabled(cell_options_->input_mcolumn_width, true);
 			setEnabled(cell_options_->choice_value_mcolumn_width, true);
@@ -335,7 +290,7 @@ void FormTabular::update()
 	special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 	fl_set_input(column_options_->input_special_alignment, special.c_str());
 
-	bool const isReadonly = lv_.buffer()->isReadonly();
+	bool const isReadonly = bc().bp().isReadOnly();
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
 	pwidth = tabular->GetColumnPWidth(cell);
@@ -506,22 +461,21 @@ void FormTabular::update()
 }
 
 
-bool FormTabular::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 {
-	if (!inset_)
-		return false;
-
 	int s;
 	LyXTabular::Feature num = LyXTabular::LAST_ACTION;
-	string special;;
+	string special;
 
-	int cell = inset_->getActCell();
+	InsetTabular * inset(controller().inset());
+	LyXTabular * tabular(controller().tabular());
+ 
+	int cell = inset->getActCell();
 
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...
 	if (ob == dialog_->button_close) {
 		closing_ = true;
-		LyXTabular * tabular = inset_->tabular.get();
 		string str1 =
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
@@ -548,38 +502,41 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		if (str1 != str2)
 			input(cell_options_->input_special_multialign, 0);
+ 
 		closing_ = false;
-		ok();
-		return true;
+		controller().OKButton(); 
+		return ButtonPolicy::SMI_VALID;
 	}
 
 	if (actCell_ != cell) {
 		update();
 		postWarning(_("Wrong Cursor position, updated window"));
-		return false;
+		return ButtonPolicy::SMI_VALID;
 	}
+ 
 	// No point in processing directives that you can't do anything with
 	// anyhow, so exit now if the buffer is read-only.
-	if (lv_.buffer()->isReadonly()) {
+	if (bc().bp().isReadOnly()) {
 		update();
-		return false;
+		return ButtonPolicy::SMI_VALID;
 	}
+ 
 	if ((ob == column_options_->input_column_width) ||
 	    (ob == column_options_->choice_value_column_width)) {
 		string const str =
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
-		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_PWIDTH, str);
+		controller().set(LyXTabular::SET_PWIDTH, str);
 
 		//check if the input is valid
 		string const input = getString(column_options_->input_column_width);
 		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
-			return false;
+			return ButtonPolicy::SMI_INVALID;
 		}
 
 		update(); // update for alignment
-		return true;
+		return ButtonPolicy::SMI_VALID;
 	}
 
 	if ((ob == cell_options_->input_mcolumn_width) ||
@@ -587,16 +544,16 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const str =
 			getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					     cell_options_->choice_value_mcolumn_width);
-		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_MPWIDTH, str);
+		controller().set(LyXTabular::SET_MPWIDTH, str);
 
 		//check if the input is valid
 		string const input = getString(cell_options_->input_mcolumn_width);
 		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
-			return false;
+			return ButtonPolicy::SMI_INVALID;
 		}
 		update(); // update for alignment
-		return true;
+		return ButtonPolicy::SMI_VALID;
 	}
 
 	if (ob == tabular_options_->button_append_row)
@@ -697,13 +654,14 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	else if (ob == cell_options_->radio_valign_center)
 		num = LyXTabular::M_VALIGN_CENTER;
 	else
-		return false;
+		return ButtonPolicy::SMI_VALID;
 
-	inset_->tabularFeatures(lv_.view().get(), num, special);
+	controller().set(num, special);
 	update();
 
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }
+ 
 
 int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
 {

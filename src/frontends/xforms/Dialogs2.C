@@ -177,7 +177,7 @@ void Dialogs::showPreamble()
 
 void Dialogs::showPreferences()
 {
-	pimpl_->preferences.show();
+	pimpl_->preferences.controller().show();
 }
 
 
@@ -219,13 +219,13 @@ void Dialogs::showSpellchecker()
 
 void Dialogs::showTabular(InsetTabular * it)
 {
-	pimpl_->tabular.showInset(it);
+	pimpl_->tabular.controller().showInset(it);
 }
 
 
 void Dialogs::updateTabular(InsetTabular * it)
 {
-	pimpl_->tabular.updateInset(it);
+	pimpl_->tabular.controller().updateInset(it);
 }
 
 

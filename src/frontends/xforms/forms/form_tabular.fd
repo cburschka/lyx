@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -160,7 +160,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_column
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -178,7 +178,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_column
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -196,7 +196,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_append_row
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -214,7 +214,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_delete_row
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -232,7 +232,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_set_borders
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -250,7 +250,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_unset_borders
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -268,7 +268,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_longtable
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -286,7 +286,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_rotate_tabular
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -418,7 +418,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_column_width
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -436,7 +436,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_top
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -454,7 +454,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_bottom
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -472,7 +472,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_left
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -490,7 +490,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_right
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -526,7 +526,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -545,7 +545,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -563,7 +563,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -617,7 +617,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -636,7 +636,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -654,7 +654,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -690,7 +690,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_alignment
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -708,7 +708,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_value_column_width
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -858,7 +858,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_top
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -876,7 +876,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_bottom
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -894,7 +894,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_left
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -912,7 +912,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_border_right
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -948,7 +948,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -967,7 +967,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -985,7 +985,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1039,7 +1039,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_top
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -1058,7 +1058,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_center
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1076,7 +1076,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_valign_bottom
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1112,7 +1112,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_mcolumn_width
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1130,7 +1130,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_special_multialign
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1148,7 +1148,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_multicolumn
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1166,7 +1166,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_useminipage
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1184,7 +1184,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_rotate_cell
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1202,7 +1202,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_value_mcolumn_width
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1352,7 +1352,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lt_firsthead
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1370,7 +1370,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lt_head
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1388,7 +1388,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lt_foot
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1406,7 +1406,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lt_lastfoot
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1424,7 +1424,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lt_newpage
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1442,7 +1442,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_head_2border_above
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1460,7 +1460,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_head_2border_below
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1550,7 +1550,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_1head_2border_above
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1568,7 +1568,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_foot_2border_above
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1586,7 +1586,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lastfoot_2border_above
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1604,7 +1604,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_1head_2border_below
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1622,7 +1622,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_foot_2border_below
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1640,7 +1640,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lastfoot_2border_below
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1658,7 +1658,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_1head_empty
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1676,7 +1676,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lastfoot_empty
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
