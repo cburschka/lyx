@@ -192,15 +192,12 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
 	// update our idea of where we are
-	xo_ = x;
-	yo_ = y;
-
-	Painter & pain = pi.pain;
+	setPosCache(pi, x, y);
 
 	// repaint the background if needed
 	x += TEXT_TO_INSET_OFFSET;
 	if (backgroundColor() != LColor::background)
-		clearInset(pain, x, y);
+		clearInset(pi.pain, x, y);
 
 	BufferView * bv = pi.base.bv;
 	bv->hideCursor();
@@ -212,7 +209,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	text_.draw(pi, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
-		drawFrame(pain, xo_);
+		drawFrame(pi.pain, xo_);
 }
 
 
@@ -285,7 +282,7 @@ extern CursorBase theTempCursor;
 
 void InsetText::edit(LCursor & cur, bool left)
 {
-	lyxerr << "InsetText: edit left/right" << endl;
+	//lyxerr << "InsetText: edit left/right" << endl;
 	old_par = -1;
 	setViewCache(&cur.bv());
 	int const par = left ? 0 : paragraphs().size() - 1;
@@ -303,12 +300,10 @@ void InsetText::edit(LCursor & cur, int x, int y)
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
-	text_.setCursorFromCoordinates(x - text_.xo_, y + cur.bv().top_y() - text_.yo_);
-	cur.clearSelection();
-	finishUndo();
-	sanitizeEmptyText(cur.bv());
-	updateLocal(cur);
-	cur.bv().updateParagraphDialog();
+	text_.edit(cur, x, y);
+	//sanitizeEmptyText(cur.bv());
+	//updateLocal(cur);
+	//cur.bv().updateParagraphDialog();
 }
 
 
@@ -319,26 +314,13 @@ DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	setViewCache(&cur.bv());
 
-	DispatchResult result;
-	result.dispatched(true);
-
 	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
-
-	switch (cmd.action) {
-	case LFUN_MOUSE_PRESS:
-		cur.cursor_ = theTempCursor;
-		cur.resetAnchor();
-		result = text_.dispatch(cur, cmd);
-		break;
-
-	default:
-		result = text_.dispatch(cur, cmd);
-		break;
-	}
+	DispatchResult result = text_.dispatch(cur, cmd);
 
 	// If the action has deleted all text in the inset, we need
 	// to change the language to the language of the surronding
 	// text.
+	// Why this cleverness? (Andre')
 	if (!was_empty && paragraphs().begin()->empty() &&
 	    paragraphs().size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -397,10 +379,10 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(int, int & x, int & y) const
+void InsetText::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
-	x = text_.cursorX() + TEXT_TO_INSET_OFFSET;
-	y = text_.cursorY() - dim_.asc + TEXT_TO_INSET_OFFSET;
+	x = text_.cursorX(cur);
+	y = text_.cursorY(cur);
 }
 
 

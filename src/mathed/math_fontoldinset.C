@@ -36,9 +36,9 @@ auto_ptr<InsetBase> MathFontOldInset::clone() const
 void MathFontOldInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
-	cell(0).metrics(mi, dim_);
-	metricsMarkers(1);
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

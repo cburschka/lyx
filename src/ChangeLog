@@ -1,3 +1,21 @@
+
+
+2004-01-30  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView_pimpl.C:
+	* cursor.C:
+	* cursor.h:
+	* cursor_slice.[Ch]:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* paragraph_funcs.C:
+	* paragraph_funcs.h:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: move some of the edit(x,y) handling to the insets
+	some coordinate changes.
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* text.C: add using statements for std::advance and std::distance

@@ -12,8 +12,10 @@
 
 #include "math_textinset.h"
 #include "math_data.h"
-#include "metricsinfo.h"
+
+#include "cursor_slice.h"
 #include "debug.h"
+#include "metricsinfo.h"
 
 using std::auto_ptr;
 using std::endl;
@@ -40,12 +42,13 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 }
 
 
-void MathTextInset::getScreenPos(idx_type /*idx*/, pos_type pos, int & x, int & y) const
+void MathTextInset::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
-	idx_type const i = pos2row(pos);
-	pos_type const p = pos - cache_.cellinfo_[i].begin_;
-	cache_.getScreenPos(i, p, x, y);
-	y = cache_.cell(i).yo();
+	CursorSlice c = cur;
+	c.idx() = pos2row(cur.pos());
+	c.pos() -= cache_.cellinfo_[c.idx()].begin_;
+	cache_.getCursorPos(c, x, y);
+	y = cache_.cell(c.idx()).yo();
 }
 
 

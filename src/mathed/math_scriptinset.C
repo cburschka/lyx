@@ -204,24 +204,24 @@ void MathScriptInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.wid = 0;
+	dim.wid = 0;
 	if (hasLimits()) {
-		dim_.wid = nwid();
+		dim.wid = nwid();
 		if (hasUp())
-			dim_.wid = max(dim_.wid, up().width());
+			dim.wid = max(dim.wid, up().width());
 		if (hasDown())
-			dim_.wid = max(dim_.wid, down().width());
+			dim.wid = max(dim.wid, down().width());
 	} else {
 		if (hasUp())
-			dim_.wid = max(dim_.wid, up().width());
+			dim.wid = max(dim.wid, up().width());
 		if (hasDown())
-			dim_.wid = max(dim_.wid, down().width());
-		dim_.wid += nwid();
+			dim.wid = max(dim.wid, down().width());
+		dim.wid += nwid();
 	}
-	dim_.asc = dy1() + (hasUp() ? up().ascent() : 0);
-	dim_.des = dy0() + (hasDown() ? down().descent() : 0);
-	metricsMarkers();
-	dim = dim_;
+	dim.asc = dy1() + (hasUp() ? up().ascent() : 0);
+	dim.des = dy0() + (hasDown() ? down().descent() : 0);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

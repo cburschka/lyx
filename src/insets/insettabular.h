@@ -110,7 +110,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TABULAR_CODE; }
 	/// get the absolute screen x,y of the cursor
-	void getCursorPos(int cell, int & x, int & y) const;
+	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
 	bool tabularFeatures(LCursor & cur, std::string const & what);
 	///

@@ -10,84 +10,25 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#if 0
 #ifndef INSET_FORMULA_H
 #define INSET_FORMULA_H
 
-#include "formulabase.h"
-#include "math_atom.h"
-
-#include <boost/scoped_ptr.hpp>
-
-class RenderPreview;
+#include "math_hullinset.h"
 
 
 /// The main LyX math inset
-class InsetFormula : public InsetFormulaBase {
+class InsetFormula : public MathHullInset {
 public:
 	///
-	InsetFormula();
+	std::auto_ptr<InsetBase> clone() const;
 	///
-	explicit InsetFormula(std::string const & data);
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	InsetFormula(InsetFormula const &);
-	///
-	~InsetFormula();
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
-
-	///
-	void write(Buffer const &, std::ostream &) const;
-	///
-	void read(Buffer const &, LyXLex & lex);
-	///
-	int latex(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
-	///
-	int plaintext(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
-	///
-	int linuxdoc(Buffer const &, std::ostream &,
-		     OutputParams const &) const;
-	///
-	int docbook(Buffer const &, std::ostream &,
-		    OutputParams const &) const;
-
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
-	void validate(LaTeXFeatures & features) const;
-	///
-	InsetOld::Code lyxCode() const;
-	///
-	bool insetAllowed(InsetOld::Code code) const;
-	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &,
-			  std::vector<std::string> & list) const;
-	///
-	MathAtom const & par() const { return par_; }
-	///
-	MathAtom & par() { return par_; }
-	///
-	void generatePreview(Buffer const &) const;
-	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
-	///
-	void mutate(std::string const & type);
-
-private:
-	/// Slot receiving a signal that the preview is ready to display.
-	void statusChanged() const;
-	/// available in AMS only?
-	bool ams() const;
-
-	/// contents
-	MathAtom par_;
-
-	/// The pointer never changes although *preview_'s contents may.
-	boost::scoped_ptr<RenderPreview> const preview_;
+	void read(Buffer const & buf, LyXLex & lex);
 };
-#endif
+
+// We don't really want to mess around with mathed stuff outside mathed.
+// So do it here.
+void mathDispatch(LCursor & cur, FuncRequest const & cmd);
+
 #endif

@@ -61,6 +61,7 @@ void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 {
+	setPosCache(pi, x, y);
 	int m = x + dim_.wid / 2;
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);

@@ -85,3 +85,10 @@ int InsetOld::scroll(bool recursive) const
 		return scx;
 	return 0;
 }
+
+
+void InsetOld::setPosCache(PainterInfo const &, int x, int y) const
+{
+	xo_ = x;
+	yo_ = y;
+}

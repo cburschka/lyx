@@ -105,8 +105,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 
 	// FIXME: setStatus(Inlined); this is not a const operation
 	LyXFont tmpfont = pi.base.font;

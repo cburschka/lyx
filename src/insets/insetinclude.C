@@ -548,8 +548,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 
 	if (!RenderPreview::activated() || !preview_->previewReady()) {
 		button_.draw(pi, x + button_.box().x1, y);

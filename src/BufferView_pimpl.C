@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- * \author Alfredo Braustein
+ * \author Alfredo Braunstein
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
@@ -58,8 +58,6 @@
 #include "frontends/WorkAreaFactory.h"
 
 #include "graphics/Previews.h"
-
-#include "mathed/math_hullinset.h"
 
 #include "support/filetools.h"
 #include "support/globbing.h"
@@ -483,9 +481,10 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const last = top_y() + workarea().workHeight() - height;
 
 	LyXText * text = bv_->text();
-	if (text->cursorY() < first)
+	int y = text->cursorY(bv_->cursor().cursor_.front());
+	if (y < first)
 		text->setCursorFromCoordinates(0, first);
-	else if (text->cursorY() > last)
+	else if (y > last)
 		text->setCursorFromCoordinates(0, last);
 
 	owner_->updateLayoutChoice();
@@ -727,7 +726,9 @@ void BufferView::Pimpl::center()
 
 	bv_->cursor().clearSelection();
 	int const half_height = workarea().workHeight() / 2;
-	int new_y = std::max(0, text->cursorY() - half_height);
+	int new_y = text->cursorY(bv_->cursor().cursor_.front()) - half_height;
+	if (new_y < 0)
+		new_y = 0;
 
 	// FIXME: look at this comment again ...
 	// This updates top_y() but means the fitCursor() call
@@ -737,7 +738,7 @@ void BufferView::Pimpl::center()
 	// to do it manually. Any operation that does a center()
 	// and also might have moved top_y() must make sure to call
 	// updateScrollbar() currently. Never mind that this is a
-	// pretty obfuscated way of updating t->top_y()
+	// pretty obfuscated way of updating text->top_y()
 	top_y(new_y);
 }
 
@@ -778,7 +779,8 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 			if (beg.getPar() == text->cursorPar()
 			    && beg.getPos() >= text->cursor().pos()) {
 				break;
-			} else if (beg.getPar() != text->cursorPar()) {
+			}
+			if (beg.getPar() != text->cursorPar()) {
 				break;
 			}
 		}
@@ -787,9 +789,8 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 	if (beg != end) {
 		// Now find the first inset that matches code.
 		for (; beg != end; ++beg) {
-			if (beg->lyxCode() == code) {
+			if (beg->lyxCode() == code)
 				return &(*beg);
-			}
 		}
 	}
 	return 0;
@@ -797,9 +798,9 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 }
 
 
-void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
+void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 {
-	string filename = filen;
+	string filename = filenm;
 
 	if (filename.empty()) {
 		// Launch a file browser
@@ -853,7 +854,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 void BufferView::Pimpl::trackChanges()
 {
-	Buffer * buf(bv_->buffer());
+	Buffer * buf = bv_->buffer();
 	bool const tracking(buf->params().tracking_changes);
 
 	if (!tracking) {
@@ -883,50 +884,18 @@ void BufferView::Pimpl::trackChanges()
 	buf->redostack().clear();
 }
 
-#warning remove me
-CursorBase theTempCursor;
 
-namespace {
-
-	InsetBase * insetFromCoords(BufferView * bv, int x, int y)
-	{
-		lyxerr << "insetFromCoords" << endl;
-		InsetBase * inset = 0;
-		theTempCursor.clear();
-		LyXText * text = bv->text();
-#warning FIXME
-#if 0
-		while (true) {
-			InsetBase * const inset_hit = text->checkInsetHit(x, y);
-			if (!inset_hit) {
-				lyxerr << "no further inset hit" << endl;
-				break;
-			}
-			inset = inset_hit;
-			if (!inset->descendable()) {
-				lyxerr << "not descendable" << endl;
-				break;
-			}
-			int const cell = inset->getCell(x, y + bv->top_y());
-			if (cell == -1)
-				break;
-			text = inset_hit->getText(cell);
-			lyxerr << "Hit inset: " << inset << " at x: " << x
-				<< " text: " << text << " y: " << y << endl;
-			theTempCursor.push_back(CursorSlice(inset));
-		}
-#endif
-		//lyxerr << "theTempCursor: " << theTempCursor << endl;
-		return inset;
-	}
-
-}
-
-
-bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
+bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 {
-	LCursor & cur = bv_->cursor();
+	//
+	// this is only called for mouse related events.
+	//
+	FuncRequest cmd = cmd0;
+	cmd.y += bv_->top_y();
+	lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
+	LCursor cur(*bv_);
 	switch (cmd.action) {
+#if 0
 	case LFUN_MOUSE_MOTION: {
 		if (!available())
 			return false;
@@ -934,22 +903,20 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		InsetBase * inset = cur.inset();
 		DispatchResult res;
 		if (inset) {
-			cmd1.x -= inset->x();
-			cmd1.y -= inset->y();
-			res = inset->dispatch(cur, cmd1);
+			res = inset->dispatch(cur, cmd);
 		} else {
-			cmd1.y += bv_->top_y();
-			res = cur.innerText()->dispatch(cur, cmd1);
+			res = cur.innerText()->dispatch(cur, cmd);
 		}
 
 		if (bv_->fitCursor() || res.update()) {
 			bv_->update();
 			cur.updatePos();
 		}
-
 		return true;
 	}
+#endif
 
+	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_DOUBLE:
@@ -970,55 +937,22 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// handle this event.
 
 		// built temporary path to inset
-		InsetBase * inset = insetFromCoords(bv_, cmd.x, cmd.y);
-		DispatchResult res;
+		LyXText * text = bv_->text();
+		InsetBase * const inset_hit = text->checkInsetHit(cmd.x, cmd.y);
+		if (inset_hit) 
+			inset_hit->edit(cur, cmd.x, cmd.y);
+		else
+			text->setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
+		lyxerr << "created temp cursor: " << cur << endl;
 
-		// try to dispatch to that inset
-		if (inset) {
-			FuncRequest cmd2 = cmd;
-			lyxerr << "dispatching action " << cmd2.action
-			       << " to inset " << inset << endl;
-			cmd2.x -= inset->x();
-			cmd2.y -= inset->y();
-			res = inset->dispatch(cur, cmd2);
-			if (res.update()) {
-				bv_->update();
-				cur.updatePos();
-			}
-			res.update(false);
-			switch (res.val()) {
-				case FINISHED:
-				case FINISHED_RIGHT:
-				case FINISHED_UP:
-				case FINISHED_DOWN:
-					theTempCursor.pop_back();
-					cur.cursor_ = theTempCursor;
-					cur.innerText()
-						->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
-					if (bv_->fitCursor())
-						bv_->update();
-					return true;
-				default:
-					lyxerr << "not dispatched by inner inset val: " << res.val() << endl;
-					break;
-			}
-		}
+		// Dispatch to the temp cursor.
+		// An inset (or LyXText) can assign this to bv->cursor()
+		// if it wishes to do so.
+		DispatchResult res = cur.dispatch(cmd);
 
-		// otherwise set cursor to surrounding LyXText
-		if (!res.dispatched()) {
-			//lyxerr << "temp cursor is: " << theTempCursor << endl;
-			//lyxerr << "dispatching " << cmd
-			 //      << " to surrounding LyXText "
-			  //     << theTempCursor.innerText() << endl;
-			cur.cursor_ = theTempCursor;
-			FuncRequest cmd1 = cmd;
-			cmd1.y += bv_->top_y();
-			res = cur.innerText()->dispatch(cur, cmd1);
-			if (bv_->fitCursor() || res.update())
-				bv_->update();
+		if (bv_->fitCursor() || res.update())
+			bv_->update();
 
-			//return DispatchResult(true, true);
-		}
 		// see workAreaKeyPress
 		cursor_timeout.restart();
 		screen().showCursor(*bv_);
@@ -1037,27 +971,29 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		owner_->dispatch(cmd);
-		return true;
+		lyxerr << "*** UNDISPATCHED: " << cmd;
+		//owner_->dispatch(cmd);
 	}
+	return true;
 }
 
 
-bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
+bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 {
+	lyxerr << "*** BufferView::Pimpl: request: " << cmd << std::endl;
 	// Make sure that the cached BufferView is correct.
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
-		<< " action[" << ev.action << ']'
-		<< " arg[" << ev.argument << ']'
-		<< " x[" << ev.x << ']'
-		<< " y[" << ev.y << ']'
-		<< " button[" << ev.button() << ']'
+		<< " action[" << cmd.action << ']'
+		<< " arg[" << cmd.argument << ']'
+		<< " x[" << cmd.x << ']'
+		<< " y[" << cmd.y << ']'
+		<< " button[" << cmd.button() << ']'
 		<< endl;
 
 	LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 	LCursor & cur = bv_->cursor();
 
-	switch (ev.action) {
+	switch (cmd.action) {
 
 	case LFUN_SCROLL_INSET:
 		// this is not handled here as this function is only active
@@ -1066,15 +1002,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_FILE_INSERT:
-		MenuInsertLyXFile(ev.argument);
+		MenuInsertLyXFile(cmd.argument);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
-		InsertAsciiFile(bv_, ev.argument, true);
+		InsertAsciiFile(bv_, cmd.argument, true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
-		InsertAsciiFile(bv_, ev.argument, false);
+		InsertAsciiFile(bv_, cmd.argument, false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1083,8 +1019,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 
 	case LFUN_INSERT_LABEL: {
 		// Try and generate a valid label
-		string const contents = ev.argument.empty() ?
-			getPossibleLabel(*bv_) : ev.argument;
+		string const contents = cmd.argument.empty() ?
+			getPossibleLabel(*bv_) : cmd.argument;
 		InsetCommandParams icp("label", contents);
 		string data = InsetCommandMailer::params2string("label", icp);
 		owner_->getDialogs().show("label", data, 0);
@@ -1092,15 +1028,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(strToUnsignedInt(ev.argument));
+		savePosition(strToUnsignedInt(cmd.argument));
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		restorePosition(strToUnsignedInt(ev.argument));
+		restorePosition(strToUnsignedInt(cmd.argument));
 		break;
 
 	case LFUN_REF_GOTO: {
-		string label = ev.argument;
+		string label = cmd.argument;
 		if (label.empty()) {
 			InsetRef * inset =
 				static_cast<InsetRef*>(getInsetByCode(InsetBase::REF_CODE));
@@ -1134,44 +1070,34 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_HUNG_UMLAUT:
 	case LFUN_CIRCLE:
 	case LFUN_OGONEK:
-		if (ev.argument.empty()) {
+		if (cmd.argument.empty()) {
 			// As always...
-			owner_->getLyXFunc().handleKeyFunc(ev.action);
+			owner_->getLyXFunc().handleKeyFunc(cmd.action);
 		} else {
-			owner_->getLyXFunc().handleKeyFunc(ev.action);
+			owner_->getLyXFunc().handleKeyFunc(cmd.action);
 			owner_->getIntl().getTransManager()
-				.TranslateAndInsert(ev.argument[0], bv_->getLyXText());
+				.TranslateAndInsert(cmd.argument[0], bv_->getLyXText());
 			update();
 		}
-		break;
-
-	case LFUN_MATH_MACRO:
-	case LFUN_MATH_DELIM:
-	case LFUN_INSERT_MATRIX:
-	case LFUN_INSERT_MATH:
-	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
-	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
-	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-		mathDispatch(cur, ev);
 		break;
 
 	case LFUN_INSET_INSERT: {
 		// Same as above.
 		BOOST_ASSERT(false);
-		InsetBase * inset = createInset(bv_, ev);
+		InsetBase * inset = createInset(bv_, cmd);
 		if (!inset || !insertInset(inset))
 			delete inset;
 		break;
 	}
 
 	case LFUN_FLOAT_LIST:
-		if (tclass.floats().typeExist(ev.argument)) {
-			InsetBase * inset = new InsetFloatList(ev.argument);
+		if (tclass.floats().typeExist(cmd.argument)) {
+			InsetBase * inset = new InsetFloatList(cmd.argument);
 			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << ev.argument << endl;
+			       << cmd.argument << endl;
 		}
 		break;
 
@@ -1188,11 +1114,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_PARAGRAPH_APPLY:
-		setParagraphParams(*bv_, ev.argument);
+		setParagraphParams(*bv_, cmd.argument);
 		break;
 
 	case LFUN_THESAURUS_ENTRY: {
-		string arg = ev.argument;
+		string arg = cmd.argument;
 
 		if (arg.empty()) {
 			arg = bv_->getLyXText()->selectionAsString(*buffer_,
@@ -1250,18 +1176,18 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 
 	case LFUN_WORD_FIND:
-		lyx::find::find(bv_, ev);
+		lyx::find::find(bv_, cmd);
 		break;
 
 	case LFUN_WORD_REPLACE:
-		lyx::find::replace(bv_, ev);
+		lyx::find::replace(bv_, cmd);
 		break;
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
 		bv_->update();
 		cur.resetAnchor();
-		ev.message(N_("Mark off"));
+		cmd.message(N_("Mark off"));
 		break;
 
 	case LFUN_MARK_ON:
@@ -1269,28 +1195,28 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		cur.mark() = true;
 		bv_->update();
 		cur.resetAnchor();
-		ev.message(N_("Mark on"));
+		cmd.message(N_("Mark on"));
 		break;
 
 	case LFUN_SETMARK:
 		cur.clearSelection();
 		if (cur.mark()) {
-			ev.message(N_("Mark removed"));
+			cmd.message(N_("Mark removed"));
 		} else {
 			cur.mark() = true;
-			ev.message(N_("Mark set"));
+			cmd.message(N_("Mark set"));
 		}
 		cur.resetAnchor();
 		bv_->update();
 		break;
 
 	case LFUN_UNKNOWN_ACTION:
-		ev.errorMessage(N_("Unknown function!"));
+		cmd.errorMessage(N_("Unknown function!"));
 		break;
 
 	default:
-		return cur.dispatch(ev).dispatched();
-	} // end of switch
+		return cur.dispatch(cmd).dispatched();
+	}
 
 	return true;
 }

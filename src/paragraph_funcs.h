@@ -17,12 +17,12 @@
 
 #include <string>
 
-
 class Buffer;
 class BufferParams;
 class LyXFont;
 class LyXLex;
 class InsetBase;
+
 
 ///
 void breakParagraph(BufferParams const & bparams,
@@ -77,10 +77,8 @@ Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset);
 
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
 void getParsInRange(ParagraphList & pl,
-		    int ystart, int yend,
-		    ParagraphList::iterator & beg,
-		    ParagraphList::iterator & end);
-
-
+				int ystart, int yend,
+				ParagraphList::iterator & beg,
+				ParagraphList::iterator & end);
 
 #endif // PARAGRAPH_FUNCS_H

@@ -34,11 +34,11 @@ void MathStackrelInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	dim_.wid = max(cell(0).width(), cell(1).width()) + 4;
-	dim_.asc = cell(1).ascent() + cell(0).height() + 4;
-	dim_.des = cell(1).descent();
-	metricsMarkers();
-	dim = dim_;
+	dim.wid = max(cell(0).width(), cell(1).width()) + 4;
+	dim.asc = cell(1).ascent() + cell(0).height() + 4;
+	dim.des = cell(1).descent();
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

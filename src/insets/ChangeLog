@@ -1,3 +1,19 @@
+
+2004-01-30  André Pönitz  <poenitz@gmx.net>
+	* inset.[Ch]:
+	* insetbase.[Ch]:
+	* insetcharstyle.C:
+	* insetcollapsable.[Ch]:
+	* insetcommand.C:
+	* insetexternal.C:
+	* insetgraphics.[Ch]:
+	* insetinclude.C:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetvspace.C:
+	* updatableinset.[Ch]: adjust coordinate handling to 'screen absolute'
+	 coordinate
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insettabular.C: add using statement for std::vector, remove

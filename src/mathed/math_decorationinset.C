@@ -87,22 +87,21 @@ bool MathDecorationInset::wide() const
 
 void MathDecorationInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi);
-	dim_ = cell(0).dim();
+	cell(0).metrics(mi, dim);
 
 	dh_  = 6; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
 	dw_  = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
 	if (upper()) {
-		dy_ = -dim_.asc - dh_;
-		dim_.asc += dh_ + 1;
+		dy_ = -dim.asc - dh_;
+		dim.asc += dh_ + 1;
 	} else {
-		dy_ = dim_.des + 1;
-		dim_.des += dh_ + 2;
+		dy_ = dim.des + 1;
+		dim.des += dh_ + 2;
 	}
 
-	metricsMarkers();
-	dim = dim_;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -34,9 +34,9 @@ auto_ptr<InsetBase> MathEnvInset::clone() const
 
 void MathEnvInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi, dim_);
-	metricsMarkers();
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -48,11 +48,10 @@ class VSpace;
 /// This class encapsulates the main text data and operations in LyX
 class LyXText {
 public:
-	/// Constructor
+	/// constructor
 	LyXText(BufferView *, bool ininset);
 	///
 	void init(BufferView *);
-
 
 	/// update y coordinate cache of all paragraphs
 	void updateParPositions();
@@ -102,7 +101,6 @@ public:
 			    ParagraphList::iterator end);
 	/// rebreaks the given par
 	void redoParagraph(ParagraphList::iterator pit);
-
 	/// rebreaks the cursor par
 	void redoParagraph();
 
@@ -112,11 +110,9 @@ public:
 	///
 	std::string getStringToIndex();
 
-	/** insert a character, moves all the following breaks in the
-	  same Paragraph one to the right and make a little rebreak
-	  */
+	/// insert a character at cursor position
 	void insertChar(char c);
-	///
+	/// insert an inset at cursor position
 	void insertInset(InsetBase * inset);
 
 	/// a full rebreak of the whole text
@@ -128,12 +124,10 @@ public:
 
 	/// try to handle that request
 	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
-
+	/// access to out BufferView. This should go...
 	BufferView * bv();
-
+	/// access to out BufferView. This should go...
 	BufferView * bv() const;
-
-	friend class LyXScreen;
 
 	/// returns an iterator pointing to a cursor paragraph
 	ParagraphList::iterator getPar(CursorSlice const & cursor) const;
@@ -198,6 +192,8 @@ public:
 	void setCursorFromCoordinates(int x, int y);
 	///
 	void setCursorFromCoordinates(CursorSlice &, int x, int y);
+	///
+	void edit(LCursor & cur, int x, int y);
 	///
 	void cursorUp(bool selecting = false);
 	///
@@ -271,7 +267,6 @@ public:
 	 * characters to the right. No safety checks.
 	 */
 	void setSelectionRange(lyx::pos_type length);
-
 	/** simple replacing. The font of the first selected character
 	  is used
 	  */
@@ -323,19 +318,15 @@ public:
 	 * the cursor and when creating a visible row */
 	void prepareToPrint(ParagraphList::iterator pit, Row & row) const;
 
-	//
-	// special owner functions
-	///
+	/// access to our paragraphs
 	ParagraphList & paragraphs() const;
-
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
-
-	///
+	/// the first of our paragraphs
 	ParagraphList::iterator firstPar() const;
-	///
+	/// the last of our paragraphs
 	ParagraphList::iterator lastPar() const;
-	///
+	/// one past the last of our paragraphs
 	ParagraphList::iterator endPar() const;
 	
 	/// return first row of text
@@ -392,10 +383,6 @@ public:
 	///
 	int descent() const;
 	///
-	int cursorX() const;
-	///
-	int cursorY() const;
-	///
 	int cursorX(CursorSlice const & cursor) const;
 	///
 	int cursorY(CursorSlice const & cursor) const;
@@ -408,6 +395,8 @@ public:
 	CursorSlice & anchor();
 	/// access to the selection anchor
 	CursorSlice const & anchor() const;
+
+	friend class LyXScreen;
 
 public:
 	///

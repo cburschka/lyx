@@ -41,7 +41,7 @@ auto_ptr<InsetBase> MathCommentInset::clone() const
 void MathCommentInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
-	metricsMarkers();
+	metricsMarkers(dim_);
 	dim = dim_;
 }
 

@@ -33,12 +33,12 @@ void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
 		StyleChanger dummy(mi.base, LM_ST_TEXT);
-		MathGridInset::metrics(mi);
+		MathGridInset::metrics(mi, dim);
 	} else {
-		MathGridInset::metrics(mi);
+		MathGridInset::metrics(mi, dim);
 	}
-	metricsMarkers();
-	dim = dim_;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -45,9 +45,9 @@ MathInset::mode_type MathFontInset::currentMode() const
 void MathFontInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
-	cell(0).metrics(mi, dim_);
-	metricsMarkers(1);
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 
@@ -59,7 +59,7 @@ void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
+void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension &) const
 {
 	cell(0).metricsT(mi, dim_);
 }

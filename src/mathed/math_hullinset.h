@@ -15,8 +15,6 @@
 #include "math_gridinset.h"
 
 
-class LaTeXFeatures;
-
 /// This provides an interface between "LyX insets" and "LyX math insets"
 class MathHullInset : public MathGridInset {
 public:
@@ -25,7 +23,7 @@ public:
 	///
 	explicit MathHullInset(std::string const & type);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const;
 	///
@@ -94,6 +92,29 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 
+	///
+	void write(Buffer const &, std::ostream & os) const;
+	///
+	void read(Buffer const &, LyXLex & lex);
+	///
+	int latex(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+	///
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+	///
+	int linuxdoc(Buffer const &, std::ostream &,
+		     OutputParams const &) const;
+	///
+	int docbook(Buffer const &, std::ostream &,
+		    OutputParams const &) const;
+
+	///
+	//bool insetAllowed(Code code) const;
+	///
+	//void addPreview(lyx::graphics::PreviewLoader &) const;
+
+
 protected:
 	///
 	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
@@ -145,8 +166,6 @@ public:
 
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
-	/// get the absolute document x,y of the cursor
-	virtual void getCursorPos(BufferView & bv, int & x, int & y) const;
 	///
 	virtual void getCursorDim(int &, int &) const;
 	///
@@ -172,11 +191,9 @@ public:
 	///
 	bool display() const;
 	///
-	void edit(LCursor & cur, bool);
+	void edit(LCursor & cur, bool left);
 	///
-	void edit(LCursor & cur, int, int);
-	///
-	Code MathHullInset::lyxCode() const;
+	Code lyxCode() const;
 
 private:
 	/// common base for handling accents
@@ -189,14 +206,6 @@ private:
 	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
 	///
 	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
-	///
-	int x() const { return xo_; }
-	///
-	int y() const { return yo_; }
-	///
-	int yo_;
-	///
-	int xo_;
 
 protected:
 
@@ -214,7 +223,7 @@ protected:
 	void handleFont2(LCursor &, std::string const & arg);
 };
 
-// We don't really mess want around with mathed stuff outside mathed.
+// We don't really want to mess around with mathed stuff outside mathed.
 // So do it here.
 void mathDispatch(LCursor & cur, FuncRequest const & cmd);
 #endif

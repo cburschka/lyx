@@ -252,8 +252,8 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 	ParagraphList::iterator end;
 
 	getParsInRange(paragraphs(),
-		       bv()->top_y() - yo_,
-		       bv()->top_y() - yo_ + bv()->workHeight(),
+		       bv()->top_y(),
+		       bv()->top_y() + bv()->workHeight(),
 		       pit, end);
 
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
@@ -262,17 +262,14 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 		InsetList::iterator iend = pit->insetlist.end();
 		for ( ; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
-			//lyxerr << "examining inset " << inset
-			//	<< " xy: " << inset->x() << "/" << inset->y()
-			//	<< " x: " << inset->x() << "..." << inset->x() + inset->width()
-			//	<< " y: " << inset->y() - inset->ascent() << "..."
-			//	<< inset->y() + inset->descent()
-			//	<< endl;
-			if (x >= inset->x()
-			    && x <= inset->x() + inset->width()
-			    && y >= inset->y() - inset->ascent()
-			    && y <= inset->y() + inset->descent())
-			{
+#if 1
+			lyxerr << "examining inset " << inset
+			//<< " xo/yo: " << inset->xo() << "/" << inset->yo()
+				<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
+				<< " yo: " << inset->yo() - inset->ascent() << "..."
+				<< inset->yo() + inset->descent() << endl;
+#endif
+			if (inset->covers(x, y - bv()->top_y())) {
 				lyxerr << "Hit inset: " << inset << endl;
 				return inset;
 			}
@@ -357,14 +354,14 @@ void LyXText::gotoInset(InsetOld_code code, bool same_content)
 void LyXText::cursorPrevious()
 {
 	LCursor & cur = bv()->cursor();
-	RowList::iterator crit = cursorRow();
+	pos_type cpos = cur.pos();
 	lyx::paroffset_type cpar = cur.par();
 
-	int x = bv()->cursor().x_target() - xo_;
-	int y = bv()->top_y() - yo_;
+	int x = bv()->cursor().x_target();
+	int y = bv()->top_y();
 	setCursorFromCoordinates(x, y);
 
-	if (cpar == cur.par() && crit == cursorRow()) {
+	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
 		cursorUp(true);
@@ -377,14 +374,15 @@ void LyXText::cursorPrevious()
 
 void LyXText::cursorNext()
 {
-	RowList::iterator crit = cursorRow();
-	ParagraphList::iterator cpar = cursorPar();
+	LCursor & cur = bv()->cursor();
+	pos_type cpos = cur.pos();
+	lyx::paroffset_type cpar = cur.par();
 
-	int x = bv()->cursor().x_target() - xo_;
-	int y = bv()->top_y() + bv()->workHeight() - yo_;
+	int x = cur.x_target();
+	int y = bv()->top_y() + bv()->workHeight();
 	setCursorFromCoordinates(x, y);
 
-	if (cpar == cursorPar() && crit == cursorRow()) {
+	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);
@@ -397,11 +395,11 @@ void LyXText::cursorNext()
 
 namespace {
 
-void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
+void specialChar(LyXText * text, BufferView * bv, InsetSpecialChar::Kind kind)
 {
 	bv->update();
 	InsetSpecialChar * new_inset = new InsetSpecialChar(kind);
-	replaceSelection(lt);
+	replaceSelection(text);
 	if (!bv->insertInset(new_inset))
 		delete new_inset;
 	else
@@ -450,7 +448,8 @@ bool LyXText::rtl() const
 
 DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	//lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
+	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
+	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
 	BufferView * bv = &cur.bv();
 
@@ -977,7 +976,8 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cmd.message(tostr(cursorX()) + ' ' + tostr(cursorY()));
+		cmd.message(tostr(cursorX(cur.current())) + ' '
+		          + tostr(cursorY(cur.current())));
 		break;
 
 	case LFUN_SETXY: {
@@ -1158,9 +1158,12 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_MOUSE_MOTION: {
+#if 0
 		// Only use motion with button 1
 		//if (ev.button() != mouse_button::button1)
 		//	return false;
+		// don't set anchor_
+		bv->cursor().cursor_ = cur.cursor_;
 
 		if (!bv->buffer())
 			break;
@@ -1185,6 +1188,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 				cursorUp(true);
 		}
 		cur.setSelection();
+#endif
 		break;
 	}
 
@@ -1227,10 +1231,13 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			break;
 		}
 
-		setCursorFromCoordinates(cmd.x, cmd.y);
+		setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
 		cur.resetAnchor();
 		finishUndo();
-		cur.x_target(cursorX() + xo_);
+		cur.x_target() = cursorX(cur.current());
+
+		// set cursor and anchor to this position
+		bv->cursor() = cur;
 
 		if (bv->fitCursor())
 			selection_possible = false;

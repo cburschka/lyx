@@ -370,6 +370,13 @@ void MathArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
 }
 
 
+bool MathArray::contains(int x, int y) const
+{
+	return xo_ <= x && x <= xo_ + width()
+	       && yo_ - ascent() <= y && y <= yo_ + descent();
+}
+
+
 void MathArray::center(int & x, int & y) const
 {
 	x = xo_ + width() / 2;

@@ -79,7 +79,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// get the screen x,y of the cursor
-	void getCursorPos(int cell, int & x, int & y) const;
+	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
 	void setLabel(std::string const & l);
 	///
@@ -89,7 +89,7 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
-	int scroll(bool recursive=true) const;
+	int scroll(bool recursive = true) const;
 	///
 	void scroll(BufferView & bv, float sx) const;
 	///
@@ -121,9 +121,7 @@ public:
 
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -142,15 +140,10 @@ protected:
 private:
 	///
 	DispatchResult lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
-	///
-	FuncRequest adjustCommand(FuncRequest const &);
 
 public:
 	///
 	mutable InsetText inset;
-private:
-	///
-	mutable CollapseStatus status_;
 protected:
 	///
 	LyXFont labelfont_;
@@ -162,6 +155,9 @@ protected:
 	mutable int topbaseline;
 	///
 	mutable std::string label;
+private:
+	///
+	mutable CollapseStatus status_;
 };
 
 #endif

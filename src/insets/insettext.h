@@ -88,7 +88,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
-	void getCursorPos(int cell, int & x, int & y) const;
+	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	///

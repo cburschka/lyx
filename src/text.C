@@ -1385,6 +1385,8 @@ void LyXText::backspace()
 
 ParagraphList::iterator LyXText::cursorPar() const
 {
+	//lyxerr << "### cursorPar: cursor: " << bv()->cursor() << endl;
+	//lyxerr << "xxx cursorPar: cursor: " << cursor() << endl;
 	return getPar(cursor().par());
 }
 
@@ -1403,6 +1405,7 @@ ParagraphList::iterator LyXText::getPar(CursorSlice const & cur) const
 
 ParagraphList::iterator LyXText::getPar(int par) const
 {
+	//lyxerr << "getPar: " << par << " from " << paragraphs().size() << endl;
 	BOOST_ASSERT(par >= 0);
 	BOOST_ASSERT(par < int(paragraphs().size()));
 	ParagraphList::iterator pit = paragraphs().begin();
@@ -1414,7 +1417,6 @@ ParagraphList::iterator LyXText::getPar(int par) const
 RowList::iterator
 LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 {
-	//lyxerr << "getRowNearY: y " << y << endl;
 #if 1
 	ParagraphList::iterator const
 		pend = boost::prior(paragraphs().end());
@@ -1862,23 +1864,11 @@ int LyXText::descent() const
 }
 
 
-int LyXText::cursorX() const
-{
-	return cursorX(cursor());
-}
-
-
-int LyXText::cursorY() const
-{
-	return cursorY(cursor());
-}
-
-
 int LyXText::cursorX(CursorSlice const & cur) const
 {
 	ParagraphList::iterator pit = getPar(cur);
 	if (pit->rows.empty())
-		return 0;
+		return xo_; 
 	Row const & row         = *pit->getRow(cur.pos());
 	pos_type pos            = cur.pos();
 	pos_type cursor_vpos    = 0;
@@ -1931,7 +1921,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 		} else
 			x += singleWidth(pit, pos);
 	}
-	return int(x);
+	return xo_ + int(x);
 }
 
 
@@ -1939,29 +1929,50 @@ int LyXText::cursorY(CursorSlice const & cur) const
 {
 	Paragraph & par = *getPar(cur);
 	Row & row = *par.getRow(cur.pos());
-	return par.y + row.y_offset() + row.baseline();
+	return yo_ + par.y + row.y_offset() + row.baseline();
+}
+
+
+namespace {
+
+int findText(LyXText const * text)
+{
+	CursorBase & cur = text->bv()->cursor().cursor_;
+	//lyxerr << "findText: text: " << text << " cursor: "
+	//	<< text->bv()->cursor() << endl;
+	for (int i = cur.size() - 1; i > 0; --i) 
+		if (cur[i].text() == text)
+			return i;
+	if (text->bv()->text() == text)
+		return 0;
+	lyxerr << "Trying to access text not touched by cursor" << endl;
+	BOOST_ASSERT(false);
+	return 0; // shut up compiler
+}
+
 }
 
 
 CursorSlice & LyXText::cursor()
 {
-	return bv()->cursor().cursor_.back();
+	//lyxerr << "# accessing slice " << findText(this) << endl;
+	return bv()->cursor().cursor_[findText(this)];
 }
 
 
 CursorSlice const & LyXText::cursor() const
 {
-	return bv()->cursor().cursor_.back();
+	return bv()->cursor().cursor_[findText(this)];
 }
 
 
 CursorSlice & LyXText::anchor()
 {
-	return bv()->cursor().anchor_.back();
+	return bv()->cursor().anchor_[findText(this)];
 }
 
 
 CursorSlice const & LyXText::anchor() const
 {
-	return bv()->cursor().anchor_.back();
+	return bv()->cursor().anchor_[findText(this)];
 }

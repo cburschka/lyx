@@ -44,12 +44,12 @@ void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (key_->name == "fbox") {
 		FontSetChanger dummy(mi.base, "textnormal");
-		cell(0).metrics(mi, dim_);
+		cell(0).metrics(mi, dim);
 	} else {
-		cell(0).metrics(mi, dim_);
+		cell(0).metrics(mi, dim);
 	}
-	metricsMarkers(5); // 5 pixels margin
-	dim = dim_;
+	metricsMarkers(dim, 5); // 5 pixels margin
+	dim_ = dim;
 }
 
 

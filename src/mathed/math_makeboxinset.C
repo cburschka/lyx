@@ -36,12 +36,12 @@ void MathMakeboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
 	MathNestInset::metrics(mi);
-	dim_   = cell(0).dim();
-	dim_  += cell(1).dim();
-	dim_  += cell(2).dim();
-	dim_.wid += 4 * w_ + 4;
-	metricsMarkers();
-	dim = dim_;
+	dim   = cell(0).dim();
+	dim  += cell(1).dim();
+	dim  += cell(2).dim();
+	dim.wid += 4 * w_ + 4;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

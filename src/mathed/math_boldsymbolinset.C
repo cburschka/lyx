@@ -34,7 +34,7 @@ void MathBoldsymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//FontSetChanger dummy(mi.base, "mathbf");
 	cell(0).metrics(mi, dim);
-	metricsMarkers(1);
+	metricsMarkers(dim);
 	++dim.wid;  // for 'double stroke'
 	dim_ = dim;
 }

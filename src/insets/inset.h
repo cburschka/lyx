@@ -54,10 +54,12 @@ public:
 	virtual void setBackgroundColor(LColor_color);
 	///
 	LColor_color backgroundColor() const;
+	/// set x/y drawing position cache
+	void setPosCache(PainterInfo const &, int, int) const;
 	///
-	int x() const { return xo_; }
+	int xo() const { return xo_; }
 	///
-	int y() const { return yo_; }
+	int yo() const { return yo_; }
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 

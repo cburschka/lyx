@@ -32,12 +32,12 @@ auto_ptr<InsetBase> MathLefteqnInset::clone() const
 
 void MathLefteqnInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi);
-	dim_.asc = cell(0).ascent() + 2;
-	dim_.des = cell(0).descent() + 2;
-	dim_.wid = 4;
-	metricsMarkers();
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	dim.asc += 2;
+	dim.des += 2;
+	dim.wid = 4;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -195,6 +195,8 @@ public:
 	///
 	bool boundary() const { return current().boundary(); }
 	///
+	bool & boundary() { return current().boundary(); }
+	///
 	Paragraph & paragraph();
 	///
 	Paragraph const & paragraph() const;
@@ -219,10 +221,12 @@ public:
 	/// move one step to the right
 	bool posRight();
 
-	/// set target x position of cursor
-	void x_target(int x);
+	/// write acess to target x position of cursor
+	int & x_target();
 	/// return target x position of cursor
 	int x_target() const;
+	/// clear target x position of cursor
+	void clearTargetX();
 
 	/// access to selection anchor
 	CursorSlice & anchor();
@@ -251,13 +255,8 @@ public:
 	std::vector<CursorSlice> anchor_;
 
 private:
-	/// don't implement this
-	void operator=(LCursor const &);
-	/// don't implement this
-	LCursor(LCursor const &);
-
 	///
-	BufferView * const bv_;
+	BufferView * bv_;
 	/// current slice
 	int current_;
 	///
@@ -331,8 +330,6 @@ public:
 
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);
-	/// in pixels from top of screen
-	void getScreenPos(int & x, int & y) const;
 	/// in pixels from left of screen
 	int targetX() const;
 	/// return the next enclosing grid inset and the cursor's index in it

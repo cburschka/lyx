@@ -33,12 +33,12 @@ auto_ptr<InsetBase> MathSqrtInset::clone() const
 
 void MathSqrtInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi, dim_);
-	dim_.asc += 4;
-	dim_.des += 2;
-	dim_.wid += 12;
-	metricsMarkers(1);
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	dim.asc += 4;
+	dim.des += 2;
+	dim.wid += 12;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

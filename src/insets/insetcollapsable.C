@@ -39,23 +39,22 @@ using std::min;
 using std::ostream;
 
 
-InsetCollapsable::InsetCollapsable(BufferParams const & bp, CollapseStatus status)
-	: UpdatableInset(), inset(bp), status_(status),
-	  label("Label")
+InsetCollapsable::InsetCollapsable(BufferParams const & bp,
+	CollapseStatus status)
+	: inset(bp), label("Label"), status_(status)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
 	inset.setDrawFrame(InsetText::ALWAYS);
 	inset.setFrameColor(LColor::collapsableframe);
 	setInsetName("Collapsable");
-
 	setButtonLabel();
 }
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
-	: UpdatableInset(in), inset(in.inset), status_(in.status_),
-	  labelfont_(in.labelfont_), label(in.label)
+	: UpdatableInset(in), inset(in.inset),
+	  labelfont_(in.labelfont_), label(in.label), status_(in.status_)
 {
 	inset.setOwner(this);
 	setButtonLabel();
@@ -116,12 +115,8 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 	}
 	inset.read(buf, lex);
 
-	if (!token_found) {
-		if (isOpen())
-			status_ = Open;
-		else
-			status_ = Collapsed;
-	}
+	if (!token_found)
+		status_ = isOpen() ? Open : Collapsed;
 
 	setButtonLabel();
 }
@@ -168,8 +163,7 @@ void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 
 	if (status_ == Inlined) {
 		inset.draw(pi, x, y);
@@ -205,14 +199,6 @@ bool InsetCollapsable::descendable() const
 }
 
 
-FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
-{
-	FuncRequest cmd1 = cmd;
-	cmd1.y += ascent() - height_collapsed();
-	return cmd1;
-}
-
-
 DispatchResult
 InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 {
@@ -236,7 +222,7 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 			return DispatchResult(false, FINISHED_RIGHT);
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-		return inset.dispatch(cur, adjustCommand(cmd));
+		return inset.dispatch(cur, cmd);
 
 	case Inlined:
 		return inset.dispatch(cur, cmd);
@@ -303,7 +289,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 
 void InsetCollapsable::edit(LCursor & cur, bool left)
 {
-	lyxerr << "InsetCollapsable: edit left/right" << endl;
+	//lyxerr << "InsetCollapsable: edit left/right" << endl;
 	cur.push(this);
 	inset.edit(cur, left);
 	open();
@@ -313,7 +299,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 void InsetCollapsable::edit(LCursor & cur, int x, int y)
 {
 	cur.push(this);
-	lyxerr << "InsetCollapsable: edit xy" << endl;
+	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status_ == Collapsed) {
 		setStatus(Open);
 	} else {
@@ -329,21 +315,21 @@ void InsetCollapsable::edit(LCursor & cur, int x, int y)
 DispatchResult
 InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
-	//	<< "  button y: " << button_dim.y2 << endl;
+	lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+		<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
-				inset.dispatch(cur, adjustCommand(cmd));
+				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
-				inset.dispatch(cur, adjustCommand(cmd));
+				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_RELEASE:
@@ -361,7 +347,7 @@ InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			}
 
 		default:
-			return inset.dispatch(cur, adjustCommand(cmd));
+			return inset.dispatch(cur, cmd);
 	}
 }
 
@@ -372,11 +358,10 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetCollapsable::getCursorPos(int cell, int & x, int & y) const
+void InsetCollapsable::getCursorPos(CursorSlice const & cur,
+	int & x, int & y) const
 {
-	inset.getCursorPos(cell, x, y);
-	if (status_ != Inlined)
-		y += - ascent() + height_collapsed() + inset.ascent();
+	inset.getCursorPos(cur, x, y);
 }
 
 

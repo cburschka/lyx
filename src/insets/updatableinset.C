@@ -26,9 +26,9 @@
 
 #include <boost/assert.hpp>
 
-
 using lyx::support::strToDbl;
 using lyx::support::strToInt;
+
 
 
 // An updatable inset is highly editable by definition

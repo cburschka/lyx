@@ -11,10 +11,19 @@
 #include <config.h>
 
 #include "insetbase.h"
+
+#include "BufferView.h"
+#include "LColor.h"
+#include "cursor.h"
 #include "debug.h"
+#include "dimension.h"
 #include "dispatchresult.h"
 #include "gettext.h"
 #include "lyxtext.h"
+#include "metricsinfo.h"
+
+#include "frontends/Painter.h"
+
 
 
 DispatchResult InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
@@ -70,13 +79,6 @@ bool InsetBase::idxUpDown2(LCursor &, bool) const
 }
 
 
-void InsetBase::getScreenPos(idx_type, pos_type, int & x, int & y) const
-{
-	lyxerr << "InsetBase::getScreenPos() called directly!" << std::endl;
-	x = y = 0;
-}
-
-
 int InsetBase::plaintext(Buffer const &,
 	std::ostream &, OutputParams const &) const
 {
@@ -122,12 +124,6 @@ std::string const InsetBase::editMessage() const
 }
 
 
-bool InsetBase::insetAllowed(InsetBase * inset) const
-{
-	return insetAllowed(inset->lyxCode());
-}
-
-
 std::string const & InsetBase::getInsetName() const
 {
 	static std::string const name = "unknown";
@@ -161,17 +157,85 @@ int InsetBase::getCell(int x, int y) const
 void InsetBase::markErased()
 {}
 
-/////////////////////////////////////////
 
-bool isEditableInset(InsetBase const * i)
+void InsetBase::getCursorPos(CursorSlice const &, int & x, int & y) const
 {
-	return i && i->editable();
+	lyxerr << "InsetBase::getCursorPos called directly" << std::endl;
+	x = 100;
+	y = 100;
 }
 
 
-bool isHighlyEditableInset(InsetBase const * i)
+void InsetBase::metricsMarkers(Dimension & dim, int) const
 {
-	return i && i->editable() == InsetBase::HIGHLY_EDITABLE;
+	dim.wid += 2;
+	dim.asc += 1;
+}
+
+
+void InsetBase::metricsMarkers2(Dimension & dim, int) const
+{
+	dim.wid += 2;
+	dim.asc += 1;
+	dim.des += 1;
+}
+
+
+void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
+{
+	if (!editing(pi.base.bv))
+		return;
+	int const t = x + width() - 1;
+	int const d = y + descent();
+	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
+	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
+	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
+	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
+	setPosCache(pi, x, y);
+}
+
+
+void InsetBase::drawMarkers2(PainterInfo & pi, int x, int y) const
+{
+	if (!editing(pi.base.bv))
+		return;
+	drawMarkers(pi, x, y);
+	int const t = x + width() - 1;
+	int const a = y - ascent();
+	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
+	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
+	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
+	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
+	setPosCache(pi, x, y);
+}
+
+
+bool InsetBase::editing(BufferView * bv) const
+{
+	return bv->cursor().isInside(this);
+}
+
+
+bool InsetBase::covers(int x, int y) const
+{
+	return x >= xo()
+			&& x <= xo() + width()
+			&& y >= yo() - ascent()
+			&& y <= yo() + descent();
+}
+
+
+/////////////////////////////////////////
+
+bool isEditableInset(InsetBase const * inset)
+{
+	return inset && inset->editable();
+}
+
+
+bool isHighlyEditableInset(InsetBase const * inset)
+{
+	return inset && inset->editable() == InsetBase::HIGHLY_EDITABLE;
 }
 
 

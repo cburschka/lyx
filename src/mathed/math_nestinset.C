@@ -12,18 +12,38 @@
 
 #include "math_nestinset.h"
 
+#include "math_arrayinset.h"
+#include "math_data.h"
+#include "math_deliminset.h"
+#include "math_factory.h"
+#include "math_hullinset.h"
+#include "math_mathmlstream.h"
+#include "math_parser.h"
+#include "math_spaceinset.h"
+#include "math_support.h"
+#include "math_mboxinset.h"
+
 #include "BufferView.h"
-#include "LColor.h"
+#include "bufferview_funcs.h"
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
-#include "math_data.h"
-#include "math_mathmlstream.h"
-#include "math_parser.h"
+#include "gettext.h"
+#include "LColor.h"
 #include "undo.h"
 
+#include "support/std_sstream.h"
+#include "support/lstrings.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
+
+
+using std::endl;
+using std::string;
+using std::istringstream;
 
 
 MathNestInset::MathNestInset(idx_type nargs)
@@ -49,13 +69,14 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
-void MathNestInset::getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const
+void MathNestInset::getCursorPos(CursorSlice const & cur,
+	int & x, int & y) const
 {
-	MathArray const & ar = cell(idx);
-	x = ar.xo() + ar.pos2x(pos);
+	MathArray const & ar = cur.cell();
+	x = ar.xo() + ar.pos2x(cur.pos());
 	y = ar.yo();
 	// move cursor visually into empty cells ("blue rectangles");
-	if (cell(idx).empty())
+	if (cur.cell().empty())
 		x += 2;
 }
 
@@ -216,12 +237,6 @@ bool MathNestInset::contains(MathArray const & ar) const
 }
 
 
-bool MathNestInset::editing(BufferView * bv) const
-{
-	return bv->cursor().isInside(this);
-}
-
-
 bool MathNestInset::lock() const
 {
 	return lock_;
@@ -278,9 +293,40 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 }
 
 
+void MathNestInset::handleFont
+	(LCursor & cur, string const & arg, string const & font)
+{
+	// this whole function is a hack and won't work for incremental font
+	// changes...
+	recordUndo(cur, Undo::ATOMIC);
+
+	if (cur.inset()->asMathInset()->name() == font)
+		cur.handleFont(font);
+	else {
+		cur.handleNest(createMathInset(font));
+		cur.insert(arg);
+	}
+}
+
+
+void MathNestInset::handleFont2(LCursor & cur, string const & arg)
+{
+	recordUndo(cur, Undo::ATOMIC);
+	LyXFont font;
+	bool b;
+	bv_funcs::string2font(arg, font, b);
+	if (font.color() != LColor::inherit) {
+		MathAtom at = createMathInset("color");
+		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
+		cur.handleNest(at, 1);
+	}
+}
+
+
 DispatchResult
 MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
+	lyxerr << "*** MathNestInset: request: " << cmd << std::endl;
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
 	//	<< " arg: '" << cmd.argument
 	//	<< "' x: '" << cmd.x
@@ -289,13 +335,26 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	switch (cmd.action) {
 
+	case LFUN_PASTE:
+		if (!cmd.argument.empty()) {
+			MathArray ar;
+			mathed_parse_cell(ar, cmd.argument);
+			cur.cell().insert(cur.pos(), ar);
+			cur.pos() += ar.size();
+		}
+		return DispatchResult(true, true);
+/*
 	case LFUN_PASTE: {
-		MathArray ar;
-		mathed_parse_cell(ar, cmd.argument);
-		cur.cell().insert(cur.pos(), ar);
-		cur.pos() += ar.size();
+		size_t n = 0;
+		istringstream is(cmd.argument.c_str());
+		is >> n;
+		if (was_macro)
+			cur.macroModeClose();
+		recordUndo(cur, Undo::ATOMIC);
+		cur.selPaste(n);
 		return DispatchResult(true, true);
 	}
+*/
 
 	case LFUN_PASTESELECTION:
 		return dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard())); 
@@ -419,7 +478,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 #if 0
 //
-// this needs to bee incorporated
+// this needs to be incorporated
 //
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
 	//	<< " arg: '" << cmd.argument
@@ -448,7 +507,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	DispatchResult result(true);
-	string argument    = cmd.argument;
 	bool was_macro     = cur.inMacroMode();
 
 	cur.normalize();
@@ -456,21 +514,11 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	switch (cmd.action) {
 
-	case LFUN_MATH_MUTATE:
-	case LFUN_MATH_DISPLAY:
-	case LFUN_MATH_NUMBER:
-	case LFUN_MATH_NONUMBER:
-	case LFUN_CELL_SPLIT:
-	case LFUN_BREAKLINE:
-	case LFUN_DELETE_LINE_FORWARD:
-	case LFUN_INSERT_LABEL:
-	case LFUN_MATH_EXTERN:
-	case LFUN_TABULAR_FEATURE:
-	case LFUN_PASTESELECTION:
 	case LFUN_MATH_LIMITS:
 		recordUndo(cur, Undo::ATOMIC);
 		cur.dispatch(cmd);
 		break;
+#endif
 
 	//    case LFUN_GETXY:
 	//      sprintf(dispatch_buffer, "%d %d",);
@@ -483,28 +531,17 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
 		cur.setScreenPos(x, y);
-		break;
-	}
-
-	case LFUN_PASTE: {
-		size_t n = 0;
-		istringstream is(cmd.argument.c_str());
-		is >> n;
-		if (was_macro)
-			cur.macroModeClose();
-		recordUndo(cur, Undo::ATOMIC);
-		cur.selPaste(n);
-		break;
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_CUT:
 		recordUndo(cur, Undo::DELETE);
 		cur.selCut();
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_COPY:
 		cur.selCopy();
-		break;
+		return DispatchResult(true, true);
 
 
 	// Special casing for superscript in case of LyX handling
@@ -516,7 +553,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			recordUndo(cur, Undo::ATOMIC);
 			cur.script(true);
 		}
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_UMLAUT:
 	case LFUN_ACUTE:
@@ -532,32 +569,60 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_TIE:
 	case LFUN_OGONEK:
 	case LFUN_HUNG_UMLAUT:
-		break;
+		return DispatchResult(true, true);
 
 	//  Math fonts
 	case LFUN_FREEFONT_APPLY:
 	case LFUN_FREEFONT_UPDATE:
 		handleFont2(cur, cmd.argument);
-		break;
+		return DispatchResult(true, true);
 
-	case LFUN_BOLD:         handleFont(cur, cmd.argument, "mathbf"); break;
-	case LFUN_SANS:         handleFont(cur, cmd.argument, "mathsf"); break;
-	case LFUN_EMPH:         handleFont(cur, cmd.argument, "mathcal"); break;
-	case LFUN_ROMAN:        handleFont(cur, cmd.argument, "mathrm"); break;
-	case LFUN_CODE:         handleFont(cur, cmd.argument, "texttt"); break;
-	case LFUN_FRAK:         handleFont(cur, cmd.argument, "mathfrak"); break;
-	case LFUN_ITAL:         handleFont(cur, cmd.argument, "mathit"); break;
-	case LFUN_NOUN:         handleFont(cur, cmd.argument, "mathbb"); break;
-	//case LFUN_FREEFONT_APPLY:  handleFont(cur, cmd.argument, "textrm"); break;
-	case LFUN_DEFAULT:      handleFont(cur, cmd.argument, "textnormal"); break;
+	case LFUN_BOLD:
+		handleFont(cur, cmd.argument, "mathbf");
+		return DispatchResult(true, true);
+	case LFUN_SANS:
+		handleFont(cur, cmd.argument, "mathsf");
+		return DispatchResult(true, true);
+	case LFUN_EMPH:
+		handleFont(cur, cmd.argument, "mathcal");
+		return DispatchResult(true, true);
+	case LFUN_ROMAN:
+		handleFont(cur, cmd.argument, "mathrm");
+		return DispatchResult(true, true);
+	case LFUN_CODE:
+		handleFont(cur, cmd.argument, "texttt");
+		return DispatchResult(true, true);
+	case LFUN_FRAK:
+		handleFont(cur, cmd.argument, "mathfrak");
+		return DispatchResult(true, true);
+	case LFUN_ITAL:
+		handleFont(cur, cmd.argument, "mathit");
+		return DispatchResult(true, true);
+	case LFUN_NOUN:
+		handleFont(cur, cmd.argument, "mathbb");
+		return DispatchResult(true, true);
+	//case LFUN_FREEFONT_APPLY:
+		handleFont(cur, cmd.argument, "textrm");
+		return DispatchResult(true, true);
+	case LFUN_DEFAULT:
+		handleFont(cur, cmd.argument, "textnormal");
+		return DispatchResult(true, true);
 
 	case LFUN_MATH_MODE:
+#if 1
+		cur.macroModeClose();
+		cur.selClearOrDel();
+		cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
+		cur.posLeft();
+		cur.pushLeft(cur.nextAtom().nucleus());
+#else
 		if (cur.currentMode() == InsetBase::TEXT_MODE)
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
 		else
 			handleFont(cur, cmd.argument, "textrm");
 		//cur.owner()->message(_("math text mode toggled"));
-		break;
+#endif
+		return DispatchResult(true, true);
 
 	case LFUN_MATH_SIZE:
 #if 0
@@ -566,7 +631,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.setSize(arg);
 		}
 #endif
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_INSERT_MATRIX: {
 		recordUndo(cur, Undo::ATOMIC);
@@ -574,20 +639,22 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		unsigned int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(argument);
+		istringstream is(cmd.argument);
 		is >> m >> n >> v_align >> h_align;
-		m = max(1u, m);
-		n = max(1u, n);
+		if (m < 1)
+			m = 1;
+		if (n < 1)
+			n = 1;
 		v_align += 'c';
 		cur.niceInsert(
 			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
-		break;
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_MATH_DELIM: {
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'" << endl;
 		string ls;
-		string rs = split(cmd.argument, ls, ' ');
+		string rs = lyx::support::split(cmd.argument, ls, ' ');
 		// Reasonable default values
 		if (ls.empty())
 			ls = '(';
@@ -595,65 +662,60 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			rs = ')';
 		recordUndo(cur, Undo::ATOMIC);
 		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
-		break;
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
 		recordUndo(cur, Undo::ATOMIC);
 		cur.insert(MathAtom(new MathSpaceInset(",")));
-		break;
+		return DispatchResult(true, true);
 
 	case LFUN_UNDO:
-		cur.bv().owner()->message(_("Invalid action in math mode!"));
-		break;
-
-
-	case LFUN_EXEC_COMMAND:
-		result = DispatchResult(false);
-		break;
+#warning look here
+		//cur.bv().owner()->message(_("Invalid action in math mode!"));
+		return DispatchResult(true, true);
 
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		recordUndo(cur, Undo::ATOMIC);
 		cur.interpret('\\');
-		break;
+		return DispatchResult(true, true);
 
+#if 0
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BREAKPARAGRAPH_SKIP:
-		argument = "\n";
-		// fall through
+		cmd.argument = "\n";
+		recordUndo(cur, Undo::ATOMIC);
+		cur.niceInsert(argument);
+		return DispatchResult(true, true);
+#endif
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
 		recordUndo(cur, Undo::ATOMIC);
-		cur.niceInsert(argument);
-		break;
-
-	case LFUN_INSET_TOGGLE:
-		cur.lockToggle();
-		break;
+		cur.niceInsert(cmd.argument);
+		return DispatchResult(true, true);
 
 	case LFUN_DIALOG_SHOW:
-		result = DispatchResult(false);
-		break;
+		return DispatchResult(false);
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
-		string const & name = argument;
+		string const & name = cmd.argument;
 		string data;
+#if 0
 		if (name == "ref") {
 			RefInset tmp(name);
 			data = tmp.createDialogStr(name);
 		}
-
+#endif
 		if (data.empty())
-			result = DispatchResult(false);
-		else
-			cur.bv().owner()->getDialogs().show(name, data, 0);
-		break;
+			return DispatchResult(false);
+		cur.bv().owner()->getDialogs().show(name, data, 0);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_APPLY: {
@@ -662,26 +724,24 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		if (base) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
-			result = base->dispatch(cur, fr);
-		} else {
-			MathArray ar;
-			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
-				cur.insert(ar);
-				result = DispatchResult(true, true);
-			} else {
-				result = DispatchResult(false);
-			}
+			return base->dispatch(cur, fr);
 		}
-		break;
+		MathArray ar;
+		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+			cur.insert(ar);
+			return DispatchResult(true, true);
+		}
+		return DispatchResult(false);
 	}
 
+#warning look here
+#if 0
+
 	case LFUN_WORD_REPLACE:
-	case LFUN_WORD_FIND: {
-		result = 
+	case LFUN_WORD_FIND:
+		return
 			searchForward(&cur.bv(), cmd.getArg(0), false, false)
 				? DispatchResult(true, true) : DispatchResult(false);
-		break;
-	}
 
 	case LFUN_INSERT_MATH:
 	case LFUN_INSERT_MATRIX:
@@ -691,15 +751,8 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			cur.inset()->dispatch(cur, cmd);
 		}
-		break;
+		return DispatchResult(true, true);
 	}
-
-	default:
-		result = DispatchResult(false);
-	}
-
-	if (result == DispatchResult(true, true))
-		cur.bv().update();
 
 	cur.normalize();
 	cur.touch();
@@ -719,48 +772,33 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 #endif
 
 	default:
-		return MathInset::priv_dispatch(cur, cmd);
+		return MathDimInset::priv_dispatch(cur, cmd);
 	}
 }
 
 
-void MathNestInset::metricsMarkers(int) const
+void MathNestInset::edit(LCursor & cur, int x, int y)
 {
-	dim_.wid += 2;
-	dim_.asc += 1;
-}
-
-
-void MathNestInset::metricsMarkers2(int) const
-{
-	dim_.wid += 2;
-	dim_.asc += 1;
-	dim_.des += 1;
-}
-
-
-void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
-{
-	if (!editing(pi.base.bv))
-		return;
-	int t = x + dim_.width() - 1;
-	int d = y + dim_.descent();
-	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
-	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
-	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
-	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
-}
-
-
-void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
-{
-	if (!editing(pi.base.bv))
-		return;
-	drawMarkers(pi, x, y);
-	int t = x + dim_.width() - 1;
-	int a = y - dim_.ascent();
-	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
-	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
-	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
-	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
+	lyxerr << "Called MathHullInset::edit with '" << x << ' ' << y << "'" << endl;
+	cur.push(this);
+	int idx_min = 0;
+	int dist_min = 1000000;
+	for (idx_type i = 0; i < nargs(); ++i) {
+		int d = cell(i).dist(x, y);
+		if (d < dist_min) {
+			dist_min = d;
+			idx_min = i;
+		}
+	}
+	MathArray & ar = cell(idx_min);
+	cur.push(this);
+	cur.idx() = idx_min;
+	cur.pos() = ar.x2pos(x - ar.xo());
+	lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
+	if (dist_min == 0) {
+		// hit inside cell
+		for (pos_type i = 0, n = ar.size(); i < n; ++i)
+			if (ar[i]->covers(x, y))
+				ar[i].nucleus()->edit(cur, x, y);
+	}
 }

@@ -1046,6 +1046,7 @@ void MathGridInset::splitCell(LCursor & cur)
 DispatchResult
 MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
+	lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 		case LFUN_MOUSE_RELEASE:

@@ -26,10 +26,10 @@ auto_ptr<InsetBase> MathErtInset::clone() const
 void MathErtInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "lyxert");
-	MathTextInset::metrics(mi, dim_);
+	MathTextInset::metrics(mi, dim);
 	cache_.colinfo_[0].align_ = 'l';
-	metricsMarkers();
-	dim = dim_;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -57,8 +57,7 @@ void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 	button_.draw(pi, x, y);
 }
 

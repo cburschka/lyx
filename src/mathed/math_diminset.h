@@ -15,21 +15,34 @@
 #include "math_inset.h"
 #include "dimension.h"
 
+class PainterInfo;
+
 
 /// things that need the dimension cache
 class MathDimInset : public MathInset {
 public:
-	/// not sure whether the initialization is really necessary
-	MathDimInset() {}
 	///
 	Dimension dimensions() const { return dim_; }
 	///
-	void metricsT(TextMetricsInfo const &) const;
+	int ascent() const;
 	///
-	void drawT(TextPainter & pain, int x, int y) const;
+	int descent() const;
+	///
+	int width() const;
+
+	///
+	int xo() const { return xo_; }
+	///
+	int yo() const { return yo_; }
+	///
+	void setPosCache(PainterInfo const & pi, int x, int y) const;
 
 protected:
 	///
 	mutable Dimension dim_;
+	///
+	mutable int xo_;
+	///
+	mutable int yo_;
 };
 #endif

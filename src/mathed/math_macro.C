@@ -73,35 +73,35 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	if (defining()) {
 
-		mathed_string_dim(font_, name(), dim_);
+		mathed_string_dim(font_, name(), dim);
 
 	} else if (editing(mi.base.bv)) {
 
 		expand();
-		expanded_.metrics(mi_, dim_);
-		metricsMarkers();
+		expanded_.metrics(mi_, dim);
+		metricsMarkers(dim);
 
-		dim_.wid += mathed_string_width(font_, name()) + 10;
+		dim.wid += mathed_string_width(font_, name()) + 10;
 
 		int ww = mathed_string_width(font_, "#1: ");
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			c.metrics(mi_);
-			dim_.wid  = max(dim_.wid, c.width() + ww);
-			dim_.des += max(c.ascent(),  dim_.asc) + 5;
-			dim_.des += max(c.descent(), dim_.des) + 5;
+			dim.wid  = max(dim.wid, c.width() + ww);
+			dim.des += max(c.ascent(),  dim.asc) + 5;
+			dim.des += max(c.descent(), dim.des) + 5;
 		}
 
 	} else {
 
 		expand();
 		expanded_.substitute(*this);
-		expanded_.metrics(mi_, dim_);
+		expanded_.metrics(mi_, dim);
 
 	}
 
-	dim = dim_;
+	dim_ = dim;
 }
 
 

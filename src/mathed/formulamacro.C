@@ -180,7 +180,6 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 #warning FIXME
 #if 0
 	par()->draw(pi, x + font_metrics::width(prefix(), p.base.font) + 5, y);
-	xo_ = x;
-	yo_ = y;
 #endif
+	setPosCache(pi, x, y);
 }

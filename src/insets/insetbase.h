@@ -18,6 +18,7 @@
 
 class Buffer;
 class BufferView;
+class CursorSlice;
 class DispatchResult;
 class FuncRequest;
 class LaTeXFeatures;
@@ -32,6 +33,7 @@ class OutputParams;
 class UpdatableInset;
 
 namespace lyx { namespace graphics { class PreviewLoader; } }
+
 
 
 /// Common base class to all insets
@@ -77,10 +79,26 @@ public:
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
+	///
+	virtual bool editing(BufferView * bv) const;
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
+	/// add space for markers
+	void metricsMarkers(Dimension & dim, int framesize = 1) const;
+	/// add space for markers
+	void metricsMarkers2(Dimension & dim, int framesize = 1) const;
 	/// last drawn position for 'important' insets
-	virtual int x() const { return 0; }
+	virtual int xo() const { return 0; }
 	/// last drawn position for 'important' insets
-	virtual int y() const { return 0; }
+	virtual int yo() const { return 0; }
+	/// set x/y drawing position cache if available
+	virtual void setPosCache(PainterInfo const &, int, int) const {}
+	/// do we cover screen position x/y?
+	virtual bool covers(int x, int y) const;
+	/// get the screen positions of the cursor (see note in cursor.C)
+	virtual void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
  
 	/// is this an inset that can be moved into?
 	virtual bool isActive() const { return nargs() > 0; }
@@ -128,8 +146,6 @@ public:
 	virtual int cellYOffset(idx_type) const { return 0; }
 	/// can we enter this cell?
 	virtual bool validCell(idx_type) const { return true; }
-	/// get coordinates
-	virtual void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
  	/// number of embedded cells
  	virtual size_t nargs() const { return 0; }
  	/// number of rows in gridlike structures
@@ -283,8 +299,6 @@ public:
 	};
 	/// returns true the inset can hold an inset of given type
 	virtual bool insetAllowed(Code) const { return false; }
-	/// wrapper around the above
-	bool insetAllowed(InsetBase * inset) const;
 	// if this inset has paragraphs should they be output all as default
 	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(InsetBase const *) const { return false; }

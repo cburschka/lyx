@@ -94,7 +94,7 @@ public:
 	/// Ensures that the dialog is closed.
 	~MathGridInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi) const;
 	///

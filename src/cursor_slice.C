@@ -131,6 +131,12 @@ bool CursorSlice::boundary() const
 }
 
 
+bool & CursorSlice::boundary()
+{
+	return boundary_;
+}
+
+
 CursorSlice::row_type CursorSlice::row() const
 {
 	BOOST_ASSERT(asMathInset());
@@ -164,16 +170,9 @@ MathArray & CursorSlice::cell() const
 }
 
 
-void CursorSlice::getScreenPos(int & x, int & y) const
-{
-	BOOST_ASSERT(asMathInset());
-	asMathInset()->getScreenPos(idx_, pos_, x, y);
-}
-
-
 LyXText * CursorSlice::text() const
 {
-	return asUpdatableInset() ? asUpdatableInset()->getText(idx_) : 0;
+	inset_ ? inset_->getText(idx_) : 0;
 }
 
 
@@ -235,7 +234,7 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
 	os << "inset: " << item.inset_
-//	   << " text: " << item.text()
+	   << " text: " << item.text()
 	   << " idx: " << item.idx_
 	   << " par: " << item.par_
 	   << " pos: " << item.pos_

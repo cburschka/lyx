@@ -13,26 +13,27 @@
 #include "math_diminset.h"
 
 
-void MathDimInset::metricsT(TextMetricsInfo const &) const
+
+int MathDimInset::ascent() const
 {
-#ifndef WITH_WARNINGS
-#warning temporarily disabled
-#endif
-/*
-	std::ostringstream os;
-	os << MathAtom(this);
-	dim_.wid = int(os.str().size());
-	dim_.asc = 1;
-	dim_.des = 0;
-*/
+	return dim_.asc;
 }
 
 
-void MathDimInset::drawT(TextPainter &, int, int) const
+int MathDimInset::descent() const
 {
-/*
-	std::ostringstream os;
-	os << MathAtom(this);
-	pain.draw(x, y, STRCONV(os.str()));
-*/
+	return dim_.des;
+}
+
+
+int MathDimInset::width() const
+{
+	return dim_.wid;
+}
+
+
+void MathDimInset::setPosCache(PainterInfo const &, int x, int y) const
+{
+	xo_ = x;
+	yo_ = y;
 }

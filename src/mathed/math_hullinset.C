@@ -27,12 +27,12 @@
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "lyxrc.h"
+#include "outputparams.h"
 #include "textpainter.h"
 
 #include "frontends/Alert.h"
 
 #include "support/std_sstream.h"
-
 
 using lyx::support::trim;
 
@@ -40,6 +40,7 @@ using std::endl;
 using std::max;
 
 using std::string;
+using std::ostream;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
@@ -110,6 +111,7 @@ namespace {
 
 
 } // end anon namespace
+
 
 
 MathHullInset::MathHullInset()
@@ -199,11 +201,11 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
 	// let the cells adjust themselves
-	MathGridInset::metrics(mi);
+	MathGridInset::metrics(mi, dim);
 
 	if (display()) {
-		dim_.asc += 12;
-		dim_.des += 12;
+		dim.asc += 12;
+		dim.des += 12;
 	}
 
 	if (numberedType()) {
@@ -213,19 +215,19 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
 
 		if (l)
-			dim_.wid += 30 + l;
+			dim.wid += 30 + l;
 	}
 
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
 	math_font_max_dim(mi.base.font, asc, des);
-	dim_.asc = max(dim_.asc, asc);
-	dim_.des = max(dim_.des, des);
+	dim.asc = max(dim.asc, asc);
+	dim.des = max(dim.des, des);
 
 	// for markers
-	metricsMarkers2();
-	dim = dim_;
+	metricsMarkers2(dim);
+	dim_ = dim;
 }
 
 
@@ -787,6 +789,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 DispatchResult
 MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
+	lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 		case LFUN_BREAKLINE:
@@ -887,23 +890,13 @@ string MathHullInset::fileInsetLabel() const
 
 #include "formulamacro.h"
 #include "math_arrayinset.h"
-#include "math_data.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
-#include "math_hullinset.h"
 #include "math_parser.h"
 #include "math_spaceinset.h"
-#include "math_support.h"
 #include "ref_inset.h"
 
-#include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "cursor.h"
-#include "dispatchresult.h"
-#include "debug.h"
-#include "funcrequest.h"
-#include "gettext.h"
-#include "LColor.h"
 #include "lyxtext.h"
 #include "undo.h"
 
@@ -914,15 +907,6 @@ string MathHullInset::fileInsetLabel() const
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
-using lyx::support::atoi;
-using lyx::support::split;
-using lyx::support::token;
-
-using std::abs;
-using std::endl;
-using std::max;
-using std::istringstream;
-using std::ostringstream;
 
 
 namespace {
@@ -930,17 +914,6 @@ namespace {
 // local global
 int first_x;
 int first_y;
-
-bool openNewInset(LCursor & cur, InsetBase * inset)
-{
-	if (!cur.bv().insertInset(inset)) {
-		delete inset;
-		return false;
-	}
-	inset->edit(cur, true);
-	return true;
-}
-
 
 } // namespace anon
 
@@ -1041,22 +1014,6 @@ void MathHullInset::insetUnlock(BufferView & bv)
 }
 
 
-void MathHullInset::getCursorPos(BufferView & bv, int & x, int & y) const
-{
-	if (bv.cursor().inMathed()) {
-		bv.cursor().getScreenPos(x, y);
-		x = bv.cursor().targetX();
-		x -= xo_;
-		y -= yo_;
-		lyxerr << "MathHullInset::getCursorPos: " << x << ' ' << y << endl;
-	} else {
-		x = 0;
-		y = 0;
-		lyxerr << "getCursorPos - should not happen";
-	}
-}
-
-
 void MathHullInset::getCursorDim(int & asc, int & desc) const
 {
 	asc = 10;
@@ -1087,7 +1044,7 @@ MathHullInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		MathArray ar;
 		asArray(cur.bv().getClipboard(), ar);
 		cur.selClear();
-		cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+		cur.setScreenPos(cmd.x, cmd.y);
 		cur.insert(ar);
 		cur.bv().update();
 		return DispatchResult(true, true);
@@ -1097,11 +1054,6 @@ MathHullInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		// try to dispatch to enclosed insets first
 		cur.dispatch(cmd);
 		cur.bv().stuffClipboard(cur.grabSelection());
-		// try to set the cursor
-		//delete mathcursor;
-		//mathcursor = new MathCursor(bv, this, x == 0);
-		//metrics(bv);
-		//cur.setScreenPos(x + xo_, y + yo_);
 		return DispatchResult(true, true);
 	}
 
@@ -1179,21 +1131,20 @@ void MathHullInset::edit(LCursor & cur, bool left)
 }
 
 
+/*
 void MathHullInset::edit(LCursor & cur, int x, int y)
 {
-	lyxerr << "Called FormulaBase::EDIT with '" << x << ' ' << y << "'" << endl;
-	//metrics(bv);
+	lyxerr << "Called MathHullInset::edit with '" << x << ' ' << y << "'" << endl;
 	cur.push(this);
 	//cur.idx() = left ? 0 : cur.lastidx();
 	cur.idx() = 0;
-	cur.idx() = 0;
+	cur.pos() = 0;
 	cur.setScreenPos(x + xo_, y + yo_);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	cur.bv().update();
 }
-
-
+*/
 
 
 void MathHullInset::revealCodes(LCursor & cur) const
@@ -1256,7 +1207,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 #warning pretty ugly
 #endif
 	static MathHullInset * lastformula = 0;
-	static CursorBase current = CursorBase(ibegin(par().nucleus()));
+	static CursorBase current = CursorBase(ibegin(nucleus()));
 	static MathArray ar;
 	static string laststr;
 
@@ -1264,7 +1215,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 		//lyxerr << "reset lastformula to " << this << endl;
 		lastformula = this;
 		laststr = str;
-		current	= ibegin(par().nucleus());
+		current	= ibegin(nucleus());
 		ar.clear();
 		mathed_parse_cell(ar, str);
 	} else {
@@ -1272,7 +1223,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 	}
 	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
 
-	for (CursorBase it = current; it != iend(par().nucleus()); increment(it)) {
+	for (CursorBase it = current; it != iend(nucleus()); increment(it)) {
 		CursorSlice & top = it.back();
 		MathArray const & a = top.asMathInset()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {
@@ -1294,8 +1245,96 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 bool MathHullInset::searchBackward(BufferView * bv, string const & what,
 				      bool a, bool b)
 {
-	lyxerr[Debug::MATHED] << "searching backward not implemented in mathed" << endl;
+	lyxerr[Debug::MATHED]
+		<< "searching backward not implemented in mathed" << endl;
 	return searchForward(bv, what, a, b);
+}
+
+
+void MathHullInset::write(Buffer const &, std::ostream & os) const
+{
+	WriteStream wi(os, false, false);
+	os << fileInsetLabel() << ' ';
+	write(wi);
+}
+
+
+void MathHullInset::read(Buffer const &, LyXLex & lex)
+{
+	MathAtom at;
+	mathed_parse_normal(at, lex);
+	operator=(*at->asHullInset());
+}
+
+
+int MathHullInset::latex(Buffer const &, ostream & os,
+			OutputParams const & runparams) const
+{
+	WriteStream wi(os, runparams.moving_arg, true);
+	write(wi);
+	return wi.line();
+}
+
+
+int MathHullInset::plaintext(Buffer const &, ostream & os,
+			OutputParams const &) const
+{
+	if (0 && display()) {
+		Dimension dim;
+		TextMetricsInfo mi;
+		metricsT(mi, dim);
+		TextPainter tpain(dim.width(), dim.height());
+		drawT(tpain, 0, dim.ascent());
+		tpain.show(os, 3);
+		// reset metrics cache to "real" values
+		//metrics();
+		return tpain.textheight();
+	} else {
+		WriteStream wi(os, false, true);
+		wi << ' ' << cell(0) << ' ';
+		return wi.line();
+	}
+}
+
+
+int MathHullInset::linuxdoc(Buffer const & buf, ostream & os,
+			   OutputParams const & runparams) const
+{
+	return docbook(buf, os, runparams);
+}
+
+
+int MathHullInset::docbook(Buffer const & buf, ostream & os,
+			  OutputParams const & runparams) const
+{
+	MathMLStream ms(os);
+	ms << MTag("equation");
+	ms <<   MTag("alt");
+	ms <<    "<[CDATA[";
+	int res = plaintext(buf, ms.os(), runparams);
+	ms <<    "]]>";
+	ms <<   ETag("alt");
+	ms <<   MTag("math");
+	MathGridInset::mathmlize(ms);
+	ms <<   ETag("math");
+	ms << ETag("equation");
+	return ms.line() + res;
+}
+
+
+
+/////////////////////////////////////////////
+
+namespace {
+
+bool openNewInset(LCursor & cur, InsetBase * inset)
+{
+	if (!cur.bv().insertInset(inset)) {
+		delete inset;
+		return false;
+	}
+	inset->edit(cur, true);
+	return true;
 }
 
 
@@ -1336,6 +1375,8 @@ void mathDispatchCreation(LCursor & cur, FuncRequest const & cmd,
 	}
 	cmd.message(N_("Math editor mode"));
 }
+
+} // namespace anon
 
 
 void mathDispatch(LCursor & cur, FuncRequest const & cmd)

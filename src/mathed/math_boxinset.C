@@ -48,9 +48,9 @@ void MathBoxInset::normalize(NormalStream & os) const
 void MathBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
-	cell(0).metrics(mi, dim_);
-	metricsMarkers();
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

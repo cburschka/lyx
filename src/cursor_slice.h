@@ -91,13 +91,15 @@ public:
 	/// return the grid row of the current cell
 	col_type col() const;
 
-	/// FIXME
-	void boundary(bool b);
-	/// FIXME
-	bool boundary() const;
 	///
 	/// texted specific stuff
 	///
+	/// see comment for the member
+	void boundary(bool b);
+	/// see comment for the member
+	bool boundary() const;
+	/// see comment for the member
+	bool & boundary();
 	///
 	LyXText * text() const;
 	///
@@ -112,8 +114,6 @@ public:
 	///
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
-	/// gets screen position of the thing
-	void getScreenPos(int & x, int & y) const;
 	///
 	MathInset * asMathInset() const;
 

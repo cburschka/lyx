@@ -148,7 +148,7 @@ string charSequence
 void extractStrings(MathArray & ar)
 {
 	//lyxerr << "\nStrings from: " << ar << endl;
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asCharInset())
 			continue;
 		string s = charSequence(ar.begin() + i, ar.end());
@@ -163,7 +163,7 @@ void extractMatrices(MathArray & ar)
 {
 	//lyxerr << "\nMatrices from: " << ar << endl;
 	// first pass for explicitly delimited stuff
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asDelimInset())
 			continue;
 		MathArray const & arr = ar[i]->asDelimInset()->cell(0);
@@ -175,7 +175,7 @@ void extractMatrices(MathArray & ar)
 	}
 
 	// second pass for AMS "pmatrix" etc
-	for (MathArray::size_type i = 0; i < ar.size(); ++i)
+	for (size_t i = 0; i < ar.size(); ++i)
 		if (ar[i]->asAMSArrayInset())
 			ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
 	//lyxerr << "\nMatrices to: " << ar << endl;
@@ -251,7 +251,7 @@ void replaceNested(
 {
 	// use indices rather than iterators for the loop  because we are going
 	// to modify the array.
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		// check whether this is the begin of the sequence
 		if (!testOpen(ar[i]))
 			continue;
@@ -278,7 +278,7 @@ void replaceNested(
 void splitScripts(MathArray & ar)
 {
 	//lyxerr << "\nScripts from: " << ar << endl;
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		// is this script inset?
 		if (!ar[i]->asScriptInset())
 			continue;
@@ -310,7 +310,7 @@ void splitScripts(MathArray & ar)
 void extractExps(MathArray & ar)
 {
 	//lyxerr << "\nExps from: " << ar << endl;
-	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
+	for (size_t i = 0; i + 1 < ar.size(); ++i) {
 		// is this 'e'?
 		if (ar[i]->getChar() != 'e')
 			continue;
@@ -373,7 +373,7 @@ string digitSequence
 void extractNumbers(MathArray & ar)
 {
 	//lyxerr << "\nNumbers from: " << ar << endl;
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asCharInset())
 			continue;
 		if (!isDigitOrSimilar(ar[i]->asCharInset()->getChar()))
@@ -435,7 +435,7 @@ void extractFunctions(MathArray & ar)
 		return;
 
 	//lyxerr << "\nFunctions from: " << ar << endl;
-	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
+	for (size_t i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 		MathArray::iterator jt = it + 1;
 
@@ -526,7 +526,7 @@ void extractIntegrals(MathArray & ar)
 		return;
 
 	//lyxerr << "\nIntegrals from: " << ar << endl;
-	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
+	for (size_t i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// search 'd'
@@ -598,7 +598,7 @@ void extractSums(MathArray & ar)
 		return;
 
 	//lyxerr << "\nSums from: " << ar << endl;
-	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
+	for (size_t i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
@@ -670,7 +670,7 @@ bool testDiffFrac(MathAtom const & at)
 void extractDiff(MathArray & ar)
 {
 	//lyxerr << "\nDiffs from: " << ar << endl;
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (size_t i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a "differential fraction"?
@@ -760,7 +760,7 @@ void extractLims(MathArray & ar)
 		return;
 
 	//lyxerr << "\nLimits from: " << ar << endl;
-	for (MathArray::size_type i = 0; i + 2 < ar.size(); ++i) {
+	for (size_t i = 0; i + 2 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a limit function?

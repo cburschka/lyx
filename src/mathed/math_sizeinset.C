@@ -38,9 +38,9 @@ auto_ptr<InsetBase> MathSizeInset::clone() const
 void MathSizeInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	StyleChanger dummy(mi.base, style_);
-	cell(0).metrics(mi, dim_);
-	metricsMarkers();
-	dim = dim_;
+	cell(0).metrics(mi, dim);
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 

@@ -47,6 +47,7 @@ using std::string;
 extern int NEST_MARGIN;
 extern int CHANGEBAR_MARGIN;
 
+
 namespace {
 
 /**
@@ -125,6 +126,9 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
 		hfill_(row_.fill_hfill()),
 		label_hfill_(row_.fill_label_hfill())
 {
+	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo << " yo: " << yo
+	//	<< " pit->y: " << pit_->y
+	//	<< " row: " << (pit_->size() ? pit_->getChar(row_.pos()) : 'X') << endl;
 	x_ += xo_;
 
 	// background has already been cleared.
@@ -411,19 +415,19 @@ void RowPainter::paintSelection()
 		int w;
 		if (sel_on_one_row) {
 			if (startx < endx) {
-				x = int(xo_) + startx;
+				x = startx;
 				w = endx - startx;
 			} else {
-				x = int(xo_) + endx;
+				x = endx;
 				w = startx - endx;
 			}
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (sel_starts_here) {
-			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
+			int const x = is_rtl ? 0 : startx;
 			int const w = is_rtl ? startx : (width_ - startx);
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (sel_ends_here) {
-			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
+			int const x = is_rtl ? endx : 0;
 			int const w = is_rtl ? (width_ - endx) : endx;
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (row_y > starty && row_y < endy) {
@@ -882,7 +886,9 @@ int paintPars(BufferView const & bv, LyXText const & text,
 int paintText(BufferView const & bv)
 {
 	ParagraphList::iterator pit;
-	bv.text()->getRowNearY(bv.top_y(), pit);
+	bv.text()->updateParPositions();
+	bv.text()->getRowNearY(0, pit);
+	lyxerr << "top_y: " << bv.top_y() << " y: " << pit->y << endl;
 	return paintPars(bv, *bv.text(), pit, 0, 0, pit->y);
 }
 

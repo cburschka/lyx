@@ -249,12 +249,11 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 
 	BufferView * bv = pi.base.bv;
+	setPosCache(pi, x, y);
 
 	if (!owner())
 		x += scroll();
 
-	xo_ = x;
-	yo_ = y;
 	x += ADD_TO_TABULAR_WIDTH;
 
 	int cell = 0;
@@ -383,9 +382,6 @@ void InsetTabular::updateLocal(LCursor & cur) const
 }
 
 
-extern CursorBase theTempCursor;
-
-
 void InsetTabular::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 {
 	if (hasSelection() && cmd.button() == mouse_button::button3)
@@ -397,13 +393,13 @@ void InsetTabular::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
 	if (cell == -1) {
 		tablemode = true;
-		cur.cursor_ = theTempCursor;
+		//cur.cursor_ = theTempCursor;
 		cur.push(this);
 		cur.idx() = cell;
 	} else {
 		tablemode = false;
 		setPos(cur.bv(), cmd.x, cmd.y);
-		cur.cursor_ = theTempCursor;
+		//cur.cursor_ = theTempCursor;
 		cur.idx() = cell;
 	}
 	cur.resetAnchor();
@@ -971,12 +967,9 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 }
 
 
-void InsetTabular::getCursorPos(int cell, int & x, int & y) const
+void InsetTabular::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
-	InsetText const & inset = tabular.getCellInset(cell);
-	inset.getCursorPos(cell, x, y);
-	x += inset.x() - xo_;
-	y += inset.y() - yo_;
+	tabular.getCellInset(cur.idx()).getCursorPos(cur, x, y);
 }
 
 

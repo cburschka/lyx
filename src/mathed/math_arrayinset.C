@@ -79,7 +79,7 @@ void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi);
-	metricsMarkers2();
+	metricsMarkers2(dim_);
 	dim = dim_;
 }
 

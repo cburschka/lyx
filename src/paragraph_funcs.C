@@ -605,10 +605,11 @@ Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
 }
 
 
+/// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
 void getParsInRange(ParagraphList & pl,
-		    int ystart, int yend,
-		    ParagraphList::iterator & beg,
-		    ParagraphList::iterator & end)
+				int ystart, int yend,
+				ParagraphList::iterator & beg,
+				ParagraphList::iterator & end)
 {
 	ParagraphList::iterator const endpar = pl.end();
 	ParagraphList::iterator const begpar = pl.begin();
@@ -622,3 +623,4 @@ void getParsInRange(ParagraphList & pl,
 	for (end = beg ; end != endpar && end->y <= yend; ++end)
 		;
 }
+

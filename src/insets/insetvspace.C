@@ -129,8 +129,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	static std::string const label = _("Vertical Space");
 
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 
 	x += ADD_TO_VSPACE_WIDTH;
 

@@ -45,7 +45,7 @@ void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += 4;
 		dim.des += 4;
 		dim.wid += 2 * w_ + 4;
-		metricsMarkers();
+		metricsMarkers(dim);
 	}
 	dim_ = dim;
 }

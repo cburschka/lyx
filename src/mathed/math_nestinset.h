@@ -40,7 +40,9 @@ public:
 	/// identifies NestInsets
 	MathNestInset const * asNestInset() const { return this; }
 	/// get cursor position
-	void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
+	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
+	///
+	void edit(LCursor & cur, int, int);
 
 	/// order of movement through the cells when pressing the left key
 	bool idxLeft(LCursor &) const;
@@ -97,9 +99,12 @@ public:
 	void normalize(NormalStream & os) const;
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	///
+	void handleFont(LCursor & cur,
+		std::string const & arg, std::string const & font);
+	///
+	void handleFont2(LCursor & cur, std::string const & arg);
 
 	/// we store the cells in a vector
 	typedef std::vector<MathArray> cells_type;
@@ -107,18 +112,6 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
-
-	///
-	bool editing(BufferView * bv) const;
-	/// draw four angular markers
-	void drawMarkers(PainterInfo & pi, int x, int y) const;
-	/// draw two angular markers
-	void drawMarkers2(PainterInfo & pi, int x, int y) const;
-
-	/// add space for markers
-	void metricsMarkers(int frame = 1) const;
-	/// add space for markers
-	void metricsMarkers2(int frame = 1) const;
 };
 
 #endif

@@ -824,13 +824,13 @@ bool ensureBufferClean(BufferView * bv)
 } //namespace anon
 
 
-void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
+void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 {
-	string argument = func.argument;
-	kb_action action = func.action;
+	string argument = cmd.argument;
+	kb_action action = cmd.action;
 
-	//lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << func << endl;
-	lyxerr << "LyXFunc::dispatch: cmd: " << func << endl;
+	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
+	//lyxerr << "*** LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -846,7 +846,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	selection_possible = false;
 
 	// We cannot use this function here
-	if (getStatus(func).disabled()) {
+	if (getStatus(cmd).disabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
@@ -1187,8 +1187,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_DIALOG_SHOW: {
-			string const name = func.getArg(0);
-			string data = trim(func.argument.substr(name.size()));
+			string const name = cmd.getArg(0);
+			string data = trim(cmd.argument.substr(name.size()));
 
 			if (name == "character") {
 				data = freefont2string();
@@ -1233,8 +1233,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		}
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
-			string const name = func.getArg(0);
-			string data = trim(func.argument.substr(name.size()));
+			string const name = cmd.getArg(0);
+			string data = trim(cmd.argument.substr(name.size()));
 			if (name == "bibitem" ||
 			    name == "bibtex" ||
 			    name == "include" ||
@@ -1297,7 +1297,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			// Can only update a dialog connected to an existing inset
 			InsetBase * inset = owner->getDialogs().getOpenInset(name);
 			if (inset) {
-				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, func.argument);
+				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument);
 				inset->dispatch(view()->cursor(), fr);
 			} else if (name == "paragraph") {
 				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
@@ -1440,7 +1440,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		default:
-			view()->cursor().dispatch(FuncRequest(func));
+			view()->cursor().dispatch(cmd);
 			break;
 		}
 	}
@@ -1452,23 +1452,23 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->update();
 		view()->cursor().updatePos();
 		// if we executed a mutating lfun, mark the buffer as dirty
-		if (!getStatus(func).disabled()
-		    && !lyxaction.funcHasFlag(func.action, LyXAction::NoBuffer)
-		    && !lyxaction.funcHasFlag(func.action, LyXAction::ReadOnly))
+		if (!getStatus(cmd).disabled()
+		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
+		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
 			view()->buffer()->markDirty();
 	}
 
-	sendDispatchMessage(getMessage(), func, verbose);
+	sendDispatchMessage(getMessage(), cmd, verbose);
 }
 
 
 void LyXFunc::sendDispatchMessage(string const & msg,
-				  FuncRequest const & func, bool verbose)
+				  FuncRequest const & cmd, bool verbose)
 {
 	owner->updateMenubar();
 	owner->updateToolbar();
 
-	if (func.action == LFUN_SELFINSERT || !verbose) {
+	if (cmd.action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
 		if (!msg.empty())
 			owner->message(msg);
@@ -1479,23 +1479,23 @@ void LyXFunc::sendDispatchMessage(string const & msg,
 	if (!dispatch_msg.empty())
 		dispatch_msg += ' ';
 
-	string comname = lyxaction.getActionName(func.action);
+	string comname = lyxaction.getActionName(cmd.action);
 
 	bool argsadded = false;
 
-	if (!func.argument.empty()) {
-		if (func.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + func.argument;
+	if (!cmd.argument.empty()) {
+		if (cmd.action != LFUN_UNKNOWN_ACTION) {
+			comname += ' ' + cmd.argument;
 			argsadded = true;
 		}
 	}
 
-	string const shortcuts = toplevel_keymap->findbinding(func);
+	string const shortcuts = toplevel_keymap->findbinding(cmd);
 
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;
-	} else if (!argsadded && !func.argument.empty()) {
-		comname += ' ' + func.argument;
+	} else if (!argsadded && !cmd.argument.empty()) {
+		comname += ' ' + cmd.argument;
 	}
 
 	if (!comname.empty()) {
@@ -1740,7 +1740,7 @@ void LyXFunc::closeBuffer()
 // Each "owner" should have it's own message method. lyxview and
 // the minibuffer would use the minibuffer, but lyxserver would
 // send an ERROR signal to its client.  Alejandro 970603
-// This func is bit problematic when it comes to NLS, to make the
+// This function is bit problematic when it comes to NLS, to make the
 // lyx servers client be language indepenent we must not translate
 // strings sent to this func.
 void LyXFunc::setErrorMessage(string const & m) const

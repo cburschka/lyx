@@ -269,8 +269,7 @@ void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 
 
 // return past-the-last paragraph influenced by a layout change on pit
-ParagraphList::iterator
-LyXText::undoSpan(ParagraphList::iterator pit)
+ParagraphList::iterator LyXText::undoSpan(ParagraphList::iterator pit)
 {
 	ParagraphList::iterator end = paragraphs().end();
 	ParagraphList::iterator nextpit = boost::next(pit);
@@ -1199,7 +1198,7 @@ void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cursor(), par, pos, boundary);
-	bv()->cursor().x_target(cursorX() + xo_);
+	bv()->cursor().x_target() = cursorX(cursor());
 	if (setfont)
 		setCurrentFont();
 }
@@ -1250,6 +1249,7 @@ void LyXText::setCurrentFont()
 pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	Row const & row, int & x, bool & boundary) const
 {
+	x -= xo_;
 	double tmpx             = row.x();
 	double fill_separator   = row.fill_separator();
 	double fill_hfill       = row.fill_hfill();
@@ -1271,7 +1271,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 	// check for empty row
 	if (vc == end) {
-		x = int(tmpx);
+		x = int(tmpx) + xo_;
 		return 0;
 	}
 
@@ -1343,9 +1343,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		c = end - 1;
 	}
 
-	c -= row.pos();
-	x = int(tmpx);
-	return c;
+	x = int(tmpx) + xo_;
+	return c - row.pos();
 }
 
 
@@ -1364,10 +1363,37 @@ void LyXText::setCursorFromCoordinates(CursorSlice & cur, int x, int y)
 	ParagraphList::iterator pit;
 	Row const & row = *getRowNearY(y, pit);
 	bool bound = false;
-	pos_type const column = getColumnNearX(pit, row, x, bound);
-	cur.par(parOffset(pit));
-	cur.pos(row.pos() + column);
-	cur.boundary(bound);
+	pos_type const pos = row.pos() + getColumnNearX(pit, row, x, bound);
+	cur.par() = parOffset(pit);
+	cur.pos() = pos;
+	cur.boundary() = bound;
+}
+
+
+// x,y are absolute screen coordinates
+void LyXText::edit(LCursor & cur, int x, int y)
+{
+	int xx = x; // is modified by getColumnNearX
+	ParagraphList::iterator pit;
+	Row const & row = *getRowNearY(y, pit);
+	bool bound = false;
+	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+	cur.par() = parOffset(pit);
+	cur.pos() = pos;
+	cur.boundary() = bound;
+
+	// try to descend into nested insets
+	InsetBase * inset = checkInsetHit(x, y);
+	if (inset) {
+		// This should be just before or just behind the cursor position
+		// set above.
+		BOOST_ASSERT((pos != 0 && inset == pit->getInset(pos - 1))
+		             || inset == pit->getInset(pos));
+		// Make sure the cursor points to the position before this inset.
+		if (inset == pit->getInset(pos - 1))
+			--cur.pos();
+		inset->edit(cur, x, y);
+	}
 }
 
 
@@ -1502,15 +1528,14 @@ void LyXText::cursorUp(bool selecting)
 {
 	LCursor & cur = bv()->cursor();
 	Row const & row = *cursorRow();
-	int x = cur.x_target() - xo_;
-	int y = cursorY() - row.baseline() - 1;
+	int x = cur.x_target();
+	int y = cursorY(cur.current()) - row.baseline() - 1;
 	setCursorFromCoordinates(x, y);
 
 	if (!selecting) {
-		int y_abs = y + yo_ - bv()->top_y();
-		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y_abs);
+		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(cur, cur.x_target(), y_abs);
+			inset_hit->edit(cur, cur.x_target(), y);
 	}
 }
 
@@ -1519,15 +1544,14 @@ void LyXText::cursorDown(bool selecting)
 {
 	LCursor & cur = bv()->cursor();
 	Row const & row = *cursorRow();
-	int x = cur.x_target() - xo_;
-	int y = cursorY() - row.baseline() + row.height() + 1;
+	int x = cur.x_target();
+	int y = cursorY(cur.current()) - row.baseline() + row.height() + 1;
 	setCursorFromCoordinates(x, y);
 
 	if (!selecting) {
-		int y_abs = y + yo_ - bv()->top_y();
-		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y_abs);
+		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(cur, cur.x_target(), y_abs);
+			inset_hit->edit(cur, cur.x_target(), y);
 	}
 }
 

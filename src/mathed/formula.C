@@ -9,293 +9,171 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#if 0
 #include <config.h>
 
 #include "formula.h"
+#include "formulamacro.h"
 #include "math_data.h"
-#include "math_parser.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
-#include "textpainter.h"
+#include "math_parser.h"
 
 #include "BufferView.h"
 #include "cursor.h"
+#include "dispatchresult.h"
 #include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "LaTeXFeatures.h"
 #include "LColor.h"
-#include "lyx_main.h"
-#include "outputparams.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
+#include "textpainter.h"
 
-#include "frontends/Painter.h"
-
-#include "graphics/PreviewLoader.h"
-
-#include "insets/render_preview.h"
+#include "frontends/Alert.h"
 
 #include "support/std_sstream.h"
 
-#include <boost/bind.hpp>
+using lyx::support::trim;
+
+using std::endl;
+using std::max;
 
 using std::string;
-using std::ostream;
-using std::ostringstream;
-using std::vector;
 using std::auto_ptr;
-using std::endl;
+using std::istringstream;
+using std::ostringstream;
+using std::pair;
 
 
-InsetFormula::InsetFormula()
-	: par_(MathAtom(new MathHullInset)),
-	  preview_(new RenderPreview)
+namespace {
+
+bool openNewInset(LCursor & cur, InsetBase * inset)
 {
-	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
+	if (!cur.bv().insertInset(inset)) {
+		delete inset;
+		return false;
+	}
+	inset->edit(cur, true);
+	return true;
 }
 
 
-InsetFormula::InsetFormula(InsetFormula const & other)
-	: InsetFormulaBase(other),
-	  par_(other.par_),
-	  preview_(new RenderPreview)
-{
-	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
-}
+} // namespace anon
 
 
-InsetFormula::InsetFormula(string const & data)
-	: par_(MathAtom(new MathHullInset)),
-	  preview_(new RenderPreview)
-{
-	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
-	if (!data.size())
-		return;
-	if (!mathed_parse_normal(par_, data))
-		lyxerr << "cannot interpret '" << data << "' as math" << endl;
-}
 
 
-InsetFormula::~InsetFormula()
-{}
-
-
-auto_ptr<InsetBase> InsetFormula::clone() const
+std::auto_ptr<InsetBase> InsetFormula::clone() const
 {
 	return auto_ptr<InsetBase>(new InsetFormula(*this));
 }
 
 
-void InsetFormula::write(Buffer const &, ostream & os) const
+void InsetFormula::write(Buffer const &, std::ostream & os) const
 {
 	WriteStream wi(os, false, false);
-	os << par_->fileInsetLabel() << ' ';
-	par_->write(wi);
-}
-
-
-int InsetFormula::latex(Buffer const &, ostream & os,
-			OutputParams const & runparams) const
-{
-	WriteStream wi(os, runparams.moving_arg, true);
-	par_->write(wi);
-	return wi.line();
-}
-
-
-int InsetFormula::plaintext(Buffer const &, ostream & os,
-			OutputParams const &) const
-{
-	if (0 && display()) {
-		Dimension dim;
-		TextMetricsInfo mi;
-		par()->metricsT(mi, dim);
-		TextPainter tpain(dim.width(), dim.height());
-		par()->drawT(tpain, 0, dim.ascent());
-		tpain.show(os, 3);
-		// reset metrics cache to "real" values
-		//metrics();
-		return tpain.textheight();
-	} else {
-		WriteStream wi(os, false, true);
-		wi << ' ' << (par_->asNestInset()->cell(0)) << ' ';
-		return wi.line();
-	}
-}
-
-
-int InsetFormula::linuxdoc(Buffer const & buf, ostream & os,
-			   OutputParams const & runparams) const
-{
-	return docbook(buf, os, runparams);
-}
-
-
-int InsetFormula::docbook(Buffer const & buf, ostream & os,
-			  OutputParams const & runparams) const
-{
-	MathMLStream ms(os);
-	ms << MTag("equation");
-	ms <<   MTag("alt");
-	ms <<    "<[CDATA[";
-	int res = plaintext(buf, ms.os(), runparams);
-	ms <<    "]]>";
-	ms <<   ETag("alt");
-	ms <<   MTag("math");
-	ms <<    par_;
-	ms <<   ETag("math");
-	ms << ETag("equation");
-	return ms.line() + res;
+	os << fileInsetLabel() << ' ';
+	MathHullInset::write(wi);
 }
 
 
 void InsetFormula::read(Buffer const &, LyXLex & lex)
 {
-	mathed_parse_normal(par_, lex);
-	// remove extra 'mathrm' for chemistry stuff.
-	// will be re-added on write
-	if (par_->asHullInset()->getType() =="chemistry")  {
-		lyxerr << "this is chemistry" << endl;
-		if (par_->cell(0).size() == 1) {
-			lyxerr << "this is size 1" << endl;
-			if (par_->cell(0)[0]->asFontInset()) {
-				lyxerr << "this is a font inset "
-				       << "replacing " << par_.nucleus()->cell(0) <<
-					" with " << par_->cell(0)[0]->cell(0) << endl;
+	MathAtom at;
+	mathed_parse_normal(at, lex);
+	MathHullInset::operator=(*at->asHullInset());
+}
+
+
+
+/////////////////////////////////////////////
+
+void mathDispatchCreation(LCursor & cur, FuncRequest const & cmd,
+	bool display)
+{
+	// use selection if available..
+	//string sel;
+	//if (action == LFUN_MATH_IMPORT_SELECTION)
+	//	sel = "";
+	//else
+
+	string sel =
+		cur.bv().getLyXText()->selectionAsString(*cur.bv().buffer(), false);
+
+	if (sel.empty()) {
+		InsetBase * f = new MathHullInset;
+		if (openNewInset(cur, f)) {
+			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
+			// don't do that also for LFUN_MATH_MODE unless you want end up with
+			// always changing to mathrm when opening an inlined inset
+			// -- I really hate "LyXfunc overloading"...
+			if (display)
+				f->dispatch(cur, FuncRequest(LFUN_MATH_DISPLAY));
+			f->dispatch(cur, FuncRequest(LFUN_INSERT_MATH, cmd.argument));
+		}
+	} else {
+		// create a macro if we see "\\newcommand" somewhere, and an ordinary
+		// formula otherwise
+		InsetBase * f;
+		if (sel.find("\\newcommand") == string::npos &&
+				sel.find("\\def") == string::npos)
+			f = new MathHullInset(sel);
+		else
+			f = new InsetFormulaMacro(sel);
+		cur.bv().getLyXText()->cutSelection(true, false);
+		openNewInset(cur, f);
+	}
+	cmd.message(N_("Math editor mode"));
+}
+
+
+void mathDispatch(LCursor & cur, FuncRequest const & cmd)
+{
+	if (!cur.bv().available())
+		return;
+
+	switch (cmd.action) {
+
+		case LFUN_MATH_DISPLAY:
+			mathDispatchCreation(cur, cmd, true);
+			break;
+
+		case LFUN_MATH_MODE:
+			mathDispatchCreation(cur, cmd, false);
+			break;
+
+		case LFUN_MATH_IMPORT_SELECTION:
+			mathDispatchCreation(cur, cmd, false);
+			break;
+
+/*
+		case LFUN_MATH_MACRO:
+			if (cmd.argument.empty())
+				cmd.errorMessage(N_("Missing argument"));
+			else {
+				string s = cmd.argument;
+				string const s1 = token(s, ' ', 1);
+				int const nargs = s1.empty() ? 0 : atoi(s1);
+				string const s2 = token(s, ' ', 2);
+				string const type = s2.empty() ? "newcommand" : s2;
+				openNewInset(cur, new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
 			}
+			break;
+
+		case LFUN_INSERT_MATH:
+		case LFUN_INSERT_MATRIX:
+		case LFUN_MATH_DELIM: {
+			MathHullInset * f = new MathHullInset;
+			if (openNewInset(cur, f)) {
+				cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
+				cur.inset()->dispatch(cur, cmd);
+			}
+			break;
 		}
-	}
-	//metrics();
-}
+*/
 
-
-void InsetFormula::draw(PainterInfo & pi, int x, int y) const
-{
-	xo_ = x;
-	yo_ = y;
-
-	// The previews are drawn only when we're not editing the inset.
-	bool const use_preview = !pi.base.bv->cursor().isInside(this)
-		&& RenderPreview::activated()
-		&& preview_->previewReady();
-
-	int const w = dim_.wid;
-	int const d = dim_.des;
-	int const a = dim_.asc;
-	int const h = a + d;
-
-	if (use_preview) {
-		// one pixel gap in front
-		preview_->draw(pi, x + 1, y);
-	} else {
-		PainterInfo p(pi.base.bv);
-		p.base.style = LM_ST_TEXT;
-		p.base.font  = pi.base.font;
-		p.base.font.setColor(LColor::math);
-		if (lcolor.getX11Name(LColor::mathbg)
-			    != lcolor.getX11Name(LColor::background))
-			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
-
-		if (!pi.base.bv->cursor().isInside(this)) {
-			pi.base.bv->cursor().drawSelection(pi);
-			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
-		}
-
-		par_->draw(p, x, y);
+		default:
+			break;
 	}
 }
-
-
-void InsetFormula::getLabelList(Buffer const & buffer,
-				vector<string> & res) const
-{
-	par()->getLabelList(buffer, res);
-}
-
-
-InsetOld::Code InsetFormula::lyxCode() const
-{
-	return InsetOld::MATH_CODE;
-}
-
-
-void InsetFormula::validate(LaTeXFeatures & features) const
-{
-	par_->validate(features);
-}
-
-
-bool InsetFormula::insetAllowed(InsetOld::Code code) const
-{
-	return
-		   code == InsetOld::LABEL_CODE
-		|| code == InsetOld::REF_CODE
-		|| code == InsetOld::ERT_CODE;
-}
-
-
-void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
-{
-	bool const use_preview = !m.base.bv->cursor().isInside(this)
-		&& RenderPreview::activated()
-		&& preview_->previewReady();
-
-	if (use_preview) {
-		preview_->metrics(m, dim);
-		// insert a one pixel gap in front of the formula
-		dim.wid += 1;
-		if (display())
-			dim.des += 12;
-	} else {
-		MetricsInfo mi = m;
-		mi.base.style = LM_ST_TEXT;
-		mi.base.font.setColor(LColor::math);
-		par()->metrics(mi, dim);
-		dim.asc += 1;
-		dim.des += 1;
-	}
-
-	dim_ = dim;
-}
-
-
-void InsetFormula::mutate(string const & type)
-{
-	par_.nucleus()->mutate(type);
-}
-
-
-//
-// preview stuff
-//
-
-void InsetFormula::statusChanged() const
-{
-	LyX::cref().updateInset(this);
-}
-
-
-namespace {
-
-string const latex_string(InsetFormula const & inset, Buffer const &)
-{
-	ostringstream os;
-	WriteStream wi(os, false, false);
-	inset.par()->write(wi);
-	return os.str();
-}
-
-} // namespace anon
-
-
-void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
-{
-	string const snippet = latex_string(*this, ploader.buffer());
-	preview_->addPreview(snippet, ploader);
-}
-
-
-void InsetFormula::generatePreview(Buffer const & buffer) const
-{
-	string const snippet = latex_string(*this, buffer);
-	preview_->addPreview(snippet, buffer);
-	preview_->startLoading(buffer);
-}
-#endif
