@@ -14,7 +14,7 @@ follow these rules, but they should be the goal.
   operator for all classes with dynamically allocated memory that
   do not inherit noncopyable
 
-- make destructors virtual in base classes.
+- make destructors virtual in base classes and only there.
 
 - assign to all data members in operator=.
 
@@ -59,8 +59,13 @@ Design. Addison-Wesley, 1992
 
 ==================================
 
-And one of mine: (Lgb)
+And one of mine: (Lgb)
 
 - When swiching on enums, refrain from using "default:" if possible.
 
+
+And one of mine: (Andre')
+
+- try to implement your class in a way that the automatically generated
+  copy constructor and copy assignment work out-of-the box.
 
