@@ -1,3 +1,10 @@
+2002-06-25  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfunc.C (dispatch): Comment out the call to
+	grfx::GCache::changeDisplay. The method no longer exists now that the
+	pixmap generation part of the graphics loader has been moved into
+	InsetGraphics.
+
 2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C: layout as layout

@@ -1,3 +1,10 @@
+2002-06-25  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.[Ch]: The inset now assumes the responsibility for
+	generating a pixmap once the graphics file is loaded into memory.
+	The current_view ugliness that was in grfx::ModifiedImage has been
+	moved here now that grfx::ModifiedImage is no more.
+
 2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettext.C: layout as layout

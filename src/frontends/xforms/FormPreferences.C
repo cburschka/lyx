@@ -1842,10 +1842,16 @@ void FormPreferences::LnFmisc::apply() const
 	} else {
 		lyxrc.display_graphics = "no";
 	}
+
+#ifdef WITH_WARNINGS
+#warning FIXME!! The graphics cache no longer has a changeDisplay method.
+#endif
+#if 0
 	if (old_value != lyxrc.display_graphics) {
 		grfx::GCache & gc = grfx::GCache::get();
 		gc.changeDisplay();
 	}
+#endif
 }
 
 

@@ -27,11 +27,7 @@
 #include <vector>
 #include <boost/utility.hpp>
 
-class InsetGraphics;
-
 namespace grfx {
-
-class GCacheItem;
 
 class GCache : boost::noncopyable {
 public:
@@ -39,62 +35,56 @@ public:
 	/// This is a singleton class. Get the instance.
 	static GCache & get();
 
-	///
-	~GCache();
-
-	/// Add a file to the cache (or modify an existing image).
-	void update(InsetGraphics const &, string const & filepath);
-
-	/** Remove the data associated with this inset.
-	 *  Called from the InsetGraphics d-tor.
+	/** Which graphics formats can be loaded directly by the image loader.
+	 *  Other formats can be loaded if a converter to a loadable format
+	 *  can be defined.
 	 */
-	void remove(InsetGraphics const &);
-
-	/** No processing of the image will take place until this call is
-	 *  received.
-	 */
-	void startLoading(InsetGraphics const &);
-
-	/** If (changed_background == true), then the background color of the
-	 *  graphics inset has changed. Update all images.
-	 *  Else, the preferred display type has changed.
-	 *  Update the view of all insets whose display type is DEFAULT.
-	 */
-	void changeDisplay(bool changed_background = false);
-
-	/// Get the image referenced by a particular inset.
-	ImagePtr const image(InsetGraphics const &) const;
-
-	/// How far have we got in loading the image?
-	ImageStatus status(InsetGraphics const &) const;
-
-	// Used to ascertain the Bounding Box of non (e)ps files.
-	unsigned int raw_width(string const & filename) const;
-	///
-	unsigned int raw_height(string const & filename) const;
-	///
 	std::vector<string> loadableFormats() const;
-	
+
+	/// Add a graphics file to the cache.
+	void add(string const & file);
+
+	/** Remove a file from the cache.
+	 *  Called from the InsetGraphics d-tor.
+	 *  If we use reference counting, then this may become redundant.
+	 */
+	void remove(string const & file);
+
+	/// Returns \c true if the file is in the cache.
+	bool inCache(string const & file) const;
+
+	/** Get the cache item associated with file.
+	 *  Returns an empty container if there is no such item.
+	 *
+	 *  IMPORTANT: whatever uses an image must make a local copy of this
+	 *  GraphicPtr. The boost::shared_ptr<>::use_count() function is
+	 *  used to ascertain whether or not to remove the item from the cache
+	 *  when remove(file) is called.
+	 *
+	 *  You have been warned!
+	 */
+	GraphicPtr const graphic(string const & file) const;
+
+	/** Get the image associated with file.
+	    If the image is not yet loaded, (or is not in the cache!) return
+	    an empty container.
+	 */
+	ImagePtr const image(string const & file) const;
+
 private:
-	/** Make the c-tor private so we can control how many objects
+	/** Make the c-tor, d-tor private so we can control how many objects
 	 *  are instantiated.
 	 */
 	GCache();
-
-	/// The cache contains data of this type.
-	typedef boost::shared_ptr<GCacheItem> CacheItemType;
+	///
+	~GCache();
 
 	/** The cache contains one item per file, so use a map to find the
 	 *  cache item quickly by filename.
 	 *  Note that each cache item can have multiple views, potentially one
 	 *  per inset that references the original file.
 	 */
-	typedef std::map<string, CacheItemType> CacheType;
-
-	/// Search the cache by inset.
-	CacheType::const_iterator find(InsetGraphics const &) const;
-	///
-	CacheType::iterator find(InsetGraphics const &);
+	typedef std::map<string, GraphicPtr> CacheType;
 
 	/** Store a pointer to the cache so that we can forward declare
 	 *  GCacheItem.

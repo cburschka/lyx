@@ -39,65 +39,37 @@
 #include <boost/utility.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 #include <boost/signals/connection.hpp>
 #include <boost/signals/trackable.hpp>
-
-#include <list>
 
 class InsetGraphics;
 
 namespace grfx {
 
-class GParams;
-class ModifiedItem;
-
 /// A grfx::GCache item holder.
 class GCacheItem : boost::noncopyable, public boost::signals::trackable {
 public:
-	/// the GCacheItem contains data of this type.
-	typedef boost::shared_ptr<ModifiedItem> ModifiedItemPtr;
-
 	///
-	GCacheItem(InsetGraphics const &, GParams const &);
-
-	/// The params have changed (but still refer to this file).
-	void modify(InsetGraphics const &, GParams const &);
-
-	/// Remove the reference to this inset.
-	void remove(InsetGraphics const &);
+	GCacheItem(string const & file);
 
 	/// It's in the cache. Now start the loading process.
-	void startLoading(InsetGraphics const &);
+	void startLoading();
 
-	/// Is the cache item referenced by any insets at all?
-	bool empty() const;
-
-	/// The name of the original image file.
-	string const & filename() const;
-
-	/// Is this image file referenced by this inset?
-	bool referencedBy(InsetGraphics const &) const;
-
-	/** Returns the image referenced by this inset (or an empty container
-	 *  if it's not yet loaded.
+	/** Get the image associated with filename_.
+	    If the image is not yet loaded, return a null pointer.
 	 */
-	ImagePtr const image(InsetGraphics const &) const;
+	ImagePtr const image() const { return image_; }
 
-	/// The loading status of the image referenced by this inset.
-	ImageStatus status(InsetGraphics const &) const;
+	/// How far have we got in loading the image?
+	ImageStatus status() const { return status_; }
 
-	/** If (changed_background == true), then the background color of the
-	 *  graphics inset has changed. Update all images.
-	 *  Else, the preferred display type has changed.
-	 *  Update the view of all insets whose display type is DEFAULT.
-	 */
-	void changeDisplay(bool changed_background);
+	/// This signal is emitted when the image loading status changes.
+	boost::signal0<void> statusChanged;
 
-	/// Used to ascertain the Bounding Box of non (e)ps files.
-	unsigned int raw_width() const;
 	///
-	unsigned int raw_height() const;
+	string const & filename() const { return filename_; }
 
 private:
 	/** Start the image conversion process, checking first that it is
@@ -132,9 +104,6 @@ private:
 	 */
 	void imageLoaded(bool);
 
-	/// How far have we got in loading the original, unmodified image?
-	ImageStatus status() const;
-
 	/** Sets the status of the loading process. Also notifies
 	 *  listeners that the status has chacnged.
 	 */
@@ -153,7 +122,7 @@ private:
 	 */
 	bool remove_loaded_file_;
 
-	/// The original, unmodified image and its loading status.
+	/// The image and its loading status.
 	ImagePtr image_;
 	///
 	ImageStatus status_;
@@ -163,7 +132,7 @@ private:
 	 *  When the image has been loaded, the signal is emitted.
 	 *
 	 *  We pass a shared_ptr because it is eminently possible for the
-	 *  ModifiedItem to be destructed before the loading is complete and
+	 *  GCacheItem to be destructed before the loading is complete and
 	 *  the signal must remain in scope. It doesn't matter if the slot
 	 *  disappears, SigC takes care of that.
 	 */
@@ -186,76 +155,6 @@ private:
 
 	/// The connection of the signal passed to GConverter::convert.
 	boost::signals::connection cc_;
-
-	/// The list of all modified images.
-	typedef std::list<ModifiedItemPtr> ListType;
-	///
-	ListType modified_images;
-};
-
-
-///
-class ModifiedItem {
-public:
-	///
-	ModifiedItem(InsetGraphics const &, GParams const &, ImagePtr const &);
-
-	///
-	GParams const & params() { return *p_.get(); }
-
-	/// Add inset to the list of insets.
-	void add(InsetGraphics const & inset);
-
-	/// Remove inset from the list of insets.
-	void remove(InsetGraphics const & inset);
-
-	///
-	bool empty() const { return insets.empty(); }
-
-	/// Is this ModifiedItem referenced by inset?
-	bool referencedBy(InsetGraphics const & inset) const;
-
-	///
-	ImagePtr const image() const;
-
-	/// How far have we got in loading the modified image?
-	ImageStatus status() const { return status_; }
-
-	/** Called from GCacheItem once the raw image is loaded.
-	 *  Modifies the image in accord with p_.
-	 */
-	void modify(ImagePtr const &);
-
-	/// Updates the pixmap.
-	void setPixmap();
-
-	/** changeDisplay returns a full ModifiedItemPtr if any of the
-	 *  insets have display=DEFAULT and if that DEFAULT value has
-	 *  changed.
-	 *  If this occurs, then this has these insets removed.
-	 */
-	boost::shared_ptr<ModifiedItem> changeDisplay();
-
-	///
-	typedef std::list<InsetGraphics const *> ListType;
-
-	/// Make these accessible for changeDisplay.
-	ListType insets;
-
-private:
-	/** Sets the status of the loading process. Also notifies
-	 *  listeners that the status has changed.
-	 */
-	void setStatus(ImageStatus new_status);
-
-	/// The original and modified images and its loading status.
-	ImagePtr original_image_;
-	///
-	ImagePtr modified_image_;
-	///
-	ImageStatus status_;
-	///
-	boost::shared_ptr<GParams> p_;
 };
 
 } // namespace grfx

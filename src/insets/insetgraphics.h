@@ -27,6 +27,8 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 
+#include <memory> // auto_ptr
+
 class Dialogs;
 class LaTeXFeatures;
 
@@ -98,18 +100,19 @@ public:
 	boost::signal0<void> hideDialog;
 
 private:
-	/// Set the cached variables
-	void setCache() const;
 	/// Is the image ready to draw, or should we display a message instead?
-	bool drawImage() const;
+	bool imageIsDrawable() const;
+
+	/** This method is connected to cache_->statusChanged, so we are
+	    informed when the image has been loaded.
+	 */
+	void statusChanged();
 
 	/// Read the inset native format
 	void readInsetGraphics(LyXLex & lex);
 	/// Read the FigInset file format
 	void readFigInset(LyXLex & lex);
 
-	/// Update the inset after parameter change.
-	void updateInset(string const & filepath) const;
 	/// Get the status message, depends on the image loading status.
 	string const statusMessage() const;
 	/// Create the options for the latex command.
@@ -124,13 +127,13 @@ private:
 	string const graphic_label;
 
 	/// The cached variables
-	mutable grfx::ImageStatus cached_status_;
-	///
-	mutable grfx::ImagePtr cached_image_;
-	///
-	mutable bool cache_filled_;
-	///
-	mutable int old_asc;
+	class Cache;
+	friend class Cache;
+	/** Can change the contents of the cache, but not the pointer.
+	 *  Use std::auto_ptr not boost::scoped_ptr so we do not have to define
+	 *  Cache in advance.
+	 */
+	std::auto_ptr<Cache> const cache_;
 };
 
 #endif

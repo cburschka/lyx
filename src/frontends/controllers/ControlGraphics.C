@@ -32,6 +32,7 @@
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsConverter.h"
+#include "graphics/GraphicsImage.h"
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
@@ -110,10 +111,18 @@ string const ControlGraphics::readBB(string const & file)
 		return readBB_from_PSFile(abs_file);
 
 	// we don't, so ask the Graphics Cache if it has loaded the file
+	int width = 0;
+	int height = 0;
+
 	grfx::GCache & gc = grfx::GCache::get();
-	return ("0 0 " +
-		tostr(gc.raw_width(abs_file)) + ' ' +
-		tostr(gc.raw_height(abs_file)));
+	grfx::ImagePtr const image = gc.image(abs_file);
+
+	if (image.get()) {
+		width  = image->getWidth();
+		height = image->getHeight();
+	}
+
+	return ("0 0 " + tostr(width) + ' ' + tostr(height));
 }
 
 

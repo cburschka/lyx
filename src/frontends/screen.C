@@ -4,6 +4,8 @@
  * Read the file COPYING
  *
  * \author John Levon <moz@compsoc.man.ac.uk>
+ *
+ * Splash screen code added by Angus Leeming
  */
 
 #ifdef __GNUG__
@@ -23,14 +25,152 @@
 #include "language.h"
 #include "debug.h"
 
+// Splash screen-specific stuff
+#include "lyxfont.h"
+#include "version.h"
+
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
+#include "graphics/GraphicsParams.h"
+
+#include "support/filetools.h" // LibFileSearch
+
+#include <boost/utility.hpp>
+#include <boost/bind.hpp>
+
 using std::min;
 using std::max;
 using std::endl;
+
+namespace {
+
+class SplashScreen : boost::noncopyable {
+public:
+	/// This is a singleton class. Get the instance.
+	static SplashScreen const & get();
+	///
+	grfx::GImage const * image() const { return image_.get(); }
+	///
+	string const & text() const { return text_; }
+	///
+	LyXFont const & font() const { return font_; }
+
+private:
+	/** Make the c-tor, d-tor private so we can control how many objects
+	 *  are instantiated.
+	 */
+	SplashScreen();
+	///
+	~SplashScreen();
+
+	/** Connected to grfx::GCacheItem::statusChanged, so will generate the
+	 *  pixmap as soon as the file is loaded into memory.
+	 */
+	void createPixmap();
+	
+	/** Must store a copy of the cached item to ensure that it is not
+	 *  erased unexpectedly by the cache itself.
+	 */
+	grfx::GraphicPtr graphic_;
+	/** We generate a pixmap from a copy of the grfx::GImage * stored in
+	 *  the cache.
+	 */
+	grfx::ImagePtr image_;
+	/// The loading status of the image.
+	grfx::ImageStatus status_;
+	/// The text to be written on top of the pixmap
+	string const text_;
+	/// in this font...
+	LyXFont font_;
+};
+
+
+SplashScreen const & SplashScreen::get()
+{
+	static SplashScreen singleton;
+	return singleton;
+}
+
+
+SplashScreen::SplashScreen()
+	: status_(grfx::WaitingToLoad),
+	  text_(lyx_version ? lyx_version : "unknown")
+{
+	string const file = LibFileSearch("images", "banner", "xpm");
+	if (file.empty())
+		return;
+
+	// The font used to display the version info
+	font_.setFamily(LyXFont::SANS_FAMILY);
+	font_.setSeries(LyXFont::BOLD_SERIES);
+	font_.setSize(LyXFont::SIZE_NORMAL);
+	font_.setColor(LColor::yellow);
+
+	// Load up the graphics file
+	grfx::GCache & gc = grfx::GCache::get();
+	if (!gc.inCache(file))
+		gc.add(file);
+	// We /must/ make a local copy of this.
+	graphic_ = gc.graphic(file);
+
+	if (graphic_->status() == grfx::Loaded) {
+		createPixmap();
+	} else {
+		graphic_->statusChanged.connect(
+			boost::bind(&SplashScreen::createPixmap, this));
+		graphic_->startLoading();
+	}
+}
+
+
+SplashScreen::~SplashScreen()
+{
+	if (!graphic_.get())
+		return;
+
+	string const file = graphic_->filename();
+	graphic_.reset();
+
+	// If only the cache itself now references this item, then it will be
+	// removed.
+	grfx::GCache::get().remove(file);
+}
+
+
+void SplashScreen::createPixmap()
+{
+	if (!graphic_.get() || image_.get())
+		return;
+
+	if (graphic_->status() != grfx::Loaded)
+		return;
+
+	if (status_ != grfx::WaitingToLoad)
+		return;
+
+	// Strictly speaking, we need to create a copy only if we're going to
+	// modify the image (scale, etc).
+	image_.reset(graphic_->image()->clone());
+	
+	bool const success = image_->setPixmap(grfx::GParams());
+
+	if (success) {
+		status_ = grfx::Loaded;
+	} else {
+		image_.reset();
+		status_ = grfx::ErrorScalingEtc;
+	}
+}
+
+} // namespace anon
 
 
 LyXScreen::LyXScreen()
 	: force_clear_(true), cursor_visible_(false)
 {
+	// Start loading the pixmap as soon as possible
+	SplashScreen::get();
 }
 
 
@@ -297,42 +437,26 @@ void LyXScreen::greyOut()
 		workarea().workHeight(),
 		LColor::bottomarea);
 
-// FIXME: pending GUIIzation / cleanup of graphics cache.
-//        We should be using something like this.
-#if 0
-	static bool first = true;
-	if (first) {
-		first = false;
-
-		splash_file_ = (lyxrc.show_banner) ?
-			LibFileSearch("images", "banner", "xpm") : string();
-		if (splash_file_) {
-			grfx::GCache & gc = grfx::GCache::get();
-			gc.add(splash_file_);
-			gc.startLoading(splash_file_);
-		}
-	}
-
 	// Add a splash screen to the centre of the work area
-	grfx::GCache & gc = grfx::GCache::get();
-	grfx::ImagePtr const splash = gc.image(splash_file_);
-	if (splash.get()) {
-		int const w = splash->getWidth();
-		int const h = splash->getHeight();
+	SplashScreen const & splash = SplashScreen::get();
+	grfx::GImage const * const splash_image = splash.image();
+	if (splash_image) {
+		int const w = splash_image->getWidth();
+		int const h = splash_image->getHeight();
 
-		int const x = 0.5 * (workarea().workWidth() - w);
-		int const y = 0.5 * (workarea().workHeight() - h);
+		int x = 0.5 * (workarea().workWidth() - w);
+		int y = 0.5 * (workarea().workHeight() - h);
 
-		workarea().getPainter().image(x, y, w, h, splash->getPixmap());
+		workarea().getPainter().image(x, y, w, h, *splash_image);
+
+		string const & splash_text  = splash.text();
+		LyXFont const & splash_font = splash.font();
+		
+		x += 260;
+		y += 265;
+
+		workarea().getPainter().text(x, y, splash_text, splash_font);
 	}
-#endif
-// Alternatively, we should compile this into the code.
-// I think that that is better here (so that the pixmap is displayed on
-// start-up).
-// Would need a new method
-//	virtual Pixmap splashPixmap() = 0;
-// or some such.
-// Angus 21 June 2002
 }
 
 

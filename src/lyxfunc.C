@@ -1634,8 +1634,13 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		lyxColorHandler->updateColor(lcolor.getFromLyXName(lyx_name));
 
 		if (graphicsbg_changed) {
+#ifdef WITH_WARNINGS
+#warning FIXME!! The graphics cache no longer has a changeDisplay method.
+#endif
+#if 0
 			grfx::GCache & gc = grfx::GCache::get();
 			gc.changeDisplay(true);
+#endif
 		}
 
 		owner->view()->repaint();

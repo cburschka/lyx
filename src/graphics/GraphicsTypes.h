@@ -26,6 +26,10 @@ namespace grfx {
 	class GImage;
 	///
 	typedef boost::shared_ptr<GImage> ImagePtr;
+	///
+	class GCacheItem;
+	/// The cache contains data of this type.
+	typedef boost::shared_ptr<GCacheItem> GraphicPtr;
 
 	/// The status of the loading process
 	enum ImageStatus {

@@ -16,8 +16,11 @@
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
-#include "GraphicsParams.h"
-#include "insets/insetgraphics.h"
+
+#include "debug.h"
+
+#include "support/filetools.h"
+
 #include "frontends/lyx_gui.h"
 
 namespace grfx {
@@ -49,145 +52,74 @@ GCache::~GCache()
 }
 
 
-void GCache::update(InsetGraphics const & inset, string const & filepath)
+std::vector<string> GCache::loadableFormats() const
 {
-	// A subset only of InsetGraphicsParams is needed for display purposes.
-	// The GraphicsParams c-tor also interrogates lyxrc to ascertain whether
-	// to display or not.
-	GParams params = inset.params().asGParams(filepath);
-
-	// Each inset can reference only one file, so check the cache for any
-	// graphics files referenced by inset. If the name of this file is
-	// different from that in params, then remove the reference.
-	CacheType::iterator it = find(inset);
-
-	if (it != cache->end()) {
-		CacheItemType item = it->second;
-		if (item->filename() != params.filename) {
-			item->remove(inset);
-			if (item->empty())
-				cache->erase(it);
-		}
-	}
-
-	// Are we adding a new file or modifying the display of an existing one?
-	it = cache->find(params.filename);
-
-	if (it != cache->end()) {
-		it->second->modify(inset, params);
-		return;
-	}
-
-	CacheItemType item(new GCacheItem(inset, params));
-	if (item.get() != 0)
-		(*cache)[params.filename] = item;
+	return GImage::loadableFormats();
 }
 
 
-void GCache::remove(InsetGraphics const & inset)
+void GCache::add(string const & file)
 {
-	CacheType::iterator it = find(inset);
+	if (!AbsolutePath(file)) {
+		lyxerr << "GCacheItem::add(" << file << "):\n"
+		       << "The file must be have an absolute path."
+		       << std::endl;
+		return;
+	}
+	
+	// Is the file in the cache already?
+	if (inCache(file)) {
+		lyxerr[Debug::GRAPHICS] << "GCache::add(" << file << "):\n"
+					<< "The file is already in the cache."
+					<< std::endl;
+		return;
+	}
+
+	
+	(*cache)[file] = GraphicPtr(new GCacheItem(file));
+}
+
+
+void GCache::remove(string const & file)
+{
+	CacheType::iterator it = cache->find(file);
 	if (it == cache->end())
 		return;
 
-	CacheItemType item = it->second;
-	item->remove(inset);
-	if (item->empty()) {
+	GraphicPtr item = it->second;
+	
+	if (item.use_count() == 1) {
+		// The graphics file is in the cache, but nothing else
+		// references it.
 		cache->erase(it);
 	}
 }
 
 
-void GCache::startLoading(InsetGraphics const & inset)
+bool GCache::inCache(string const & file) const
 {
-	CacheType::iterator it = find(inset);
-	if (it == cache->end())
-		return;
-
-	it->second->startLoading(inset);
+	return cache->find(file) != cache->end();
 }
 
 
-ImagePtr const GCache::image(InsetGraphics const & inset) const
+GraphicPtr const GCache::graphic(string const & file) const
 {
-	CacheType::const_iterator it = find(inset);
+	CacheType::const_iterator it = cache->find(file);
+	if (it == cache->end())
+		return GraphicPtr();
+
+	return it->second;
+}
+
+
+ImagePtr const GCache::image(string const & file) const
+{
+	CacheType::const_iterator it = cache->find(file);
 	if (it == cache->end())
 		return ImagePtr();
 
-	return it->second->image(inset);
+	return it->second->image();
 }
 
-
-ImageStatus GCache::status(InsetGraphics const & inset) const
-{
-	CacheType::const_iterator it = find(inset);
-	if (it == cache->end())
-		return ErrorUnknown;
-
-	return it->second->status(inset);
-}
-
-
-void GCache::changeDisplay(bool changed_background)
-{
-	CacheType::iterator it = cache->begin();
-	CacheType::iterator end = cache->end();
-	for(; it != end; ++it)
-		it->second->changeDisplay(changed_background);
-}
-
-
-GCache::CacheType::iterator
-GCache::find(InsetGraphics const & inset)
-{
-	CacheType::iterator it  = cache->begin();
-	CacheType::iterator end = cache->end();
-	for (; it != end; ++it) {
-		if (it->second->referencedBy(inset))
-			return it;
-	}
-
-	return cache->end();
-}
-
-
-GCache::CacheType::const_iterator
-GCache::find(InsetGraphics const & inset) const
-{
-	CacheType::const_iterator it  = cache->begin();
-	CacheType::const_iterator end = cache->end();
-	for (; it != end; ++it) {
-		if (it->second->referencedBy(inset))
-			return it;
-	}
-
-	return cache->end();
-}
-
-
-unsigned int GCache::raw_width(string const & filename) const
-{
-	CacheType::const_iterator it = cache->find(filename);
-	if (it == cache->end())
-		return 0;
-
-	return it->second->raw_width();
-}
-
-
-unsigned int GCache::raw_height(string const & filename) const
-{
-	CacheType::const_iterator it = cache->find(filename);
-	if (it == cache->end())
-		return 0;
-
-	return it->second->raw_height();
-}
-
-
-std::vector<string> GCache::loadableFormats() const {
-	return GImage::loadableFormats();
-}
 
 } // namespace grfx
-

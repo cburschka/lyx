@@ -20,7 +20,8 @@
 namespace grfx {
 
 GParams::GParams()
-	: width(0),
+	: display(COLOR),
+	  width(0),
 	  height(0),
 	  scale(0),
 	  angle(0)

@@ -1,3 +1,15 @@
+2002-06-25  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCache.[Ch]:
+	* GraphicsCacheItem.[Ch]:
+	* GraphicsTypes.h: rewrite the graphics cache to just load a graphics
+	file into memory. The cache no longer controls the generation of the
+	pixmap. Instead, it just emits a signal when the loading status of an
+	image changes.
+	The cache no longer stores InsetGraphics pointers and nor does it
+	assume responsibility for modifying an image (scaling, rotating etc).
+	Instead, that must now be performed elsewhere.
+
 2002-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsConverter.C: add using std::endl directive.
