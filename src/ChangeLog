@@ -1,3 +1,8 @@
+2001-08-13  Juergen Vigna  <jug@sad.it>
+
+	* lyxfind.C (LyXReplace): fixed not single-replacing characters with
+	casesensitive off.
+
 2001-08-11  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Many files: Remove inherit_language, and add latex_language

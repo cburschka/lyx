@@ -43,7 +43,7 @@ SearchResult SearchBackward(BufferView *, LyXText * text, string const & str,
 int LyXReplace(BufferView * bv,
                string const & searchstr, string const & replacestr,
                bool forward, bool casesens, bool matchwrd, bool replaceall,
-	       bool once)
+               bool once)
 {
 	if (!bv->available() || bv->buffer()->isReadonly()) 
 		return 0;
@@ -76,14 +76,23 @@ int LyXReplace(BufferView * bv,
 	
 	// if nothing selected or selection does not equal search string
 	// search and select next occurance and return if no replaceall
-	if (searchstr!=text->selectionAsString(bv->buffer())) {
+	string str1;
+	string str2;
+	if (casesens) {
+		str1 = searchstr;
+		str2 = text->selectionAsString(bv->buffer());
+	} else {
+		str1 = lowercase(searchstr);
+		str2 = lowercase(text->selectionAsString(bv->buffer()));
+	}
+	if (str1 != str2) {
 		if (!LyXFind(bv, searchstr, fw, false, casesens, matchwrd) ||
 			!replaceall)
 		{
 			return 0;
 		}
 	}
-   
+
 	bool found = false;
 	int replace_count = 0;
 	do {
@@ -106,7 +115,7 @@ int LyXReplace(BufferView * bv,
 
 bool LyXFind(BufferView * bv,
              string const & searchstr, bool forward,
-	     bool frominset, bool casesens, bool matchwrd)
+             bool frominset, bool casesens, bool matchwrd)
 {
 	if (!bv->available() || searchstr.empty())
 		return false;
