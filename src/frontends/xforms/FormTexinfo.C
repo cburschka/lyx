@@ -36,46 +36,44 @@ FormTexinfo::FormTexinfo()
 
 void FormTexinfo::build() {
 	dialog_.reset(build_texinfo(this));
-	// courier medium
-	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
-	// with Path is default
-	fl_set_button(dialog_->check_fullpath, 1);
+
 	updateStyles(ControlTexinfo::cls);
 
+	string const classes_List = _("LaTeX classes|LaTeX styles|BibTeX styles");
+	fl_addto_choice(dialog_->choice_classes, classes_List.c_str());
+
 	// set up the tooltips
-	string str = _("Runs the script \"TexFiles.sh\" to build new file lists.");
+	string str = _("Shows the installed classses and styles for LaTeX/BibTeX. These classes are only available in LyX if a corresponding LyX layout file exists.");
+	tooltips().init(dialog_->choice_classes, str);
+
+	str = _("View full path or only file name.");
+	tooltips().init(dialog_->check_fullpath, str);
+
+	str = _("Runs the script \"TexFiles.sh\" to build new file lists.");
 	tooltips().init(dialog_->button_rescan, str);
 
 	str = _("Shows the contents of the marked file. Only possible in full path mode.");
 	tooltips().init(dialog_->button_view, str);
 
-	str = _("Runs the script \"texhash\" which builds the a new LaTeX tree. Needed if you install a new TeX class or style. To execute it, you need the write permissions for the tex-dirs, often /var/lib/texmf and other.");
+	str = _("Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you install a new TeX class or style. You need write permissions for the TeX-dirs, often /var/lib/texmf and others.");
 	tooltips().init(dialog_->button_texhash, str);
-
-	str = _("View full path or only file name. Full path is needed to view the contents of a file.");
-	tooltips().init(dialog_->check_fullpath, str);
-
-	str = _("Shows the installed LaTeX Document classes. Remember, that these classes are only available in LyX if a corresponding LyX layout file exists!");
-	tooltips().init(dialog_->radio_cls, str);
-
-	str = _("Shows the installed LaTeX style files, which are available in LyX by default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX preamble.");
-	tooltips().init(dialog_->radio_sty, str);
-
-	str = _("Shows the installed style files for BibTeX. They can be loaded through insert->Lists&Toc->BibTeX Reference->Style.");
-	tooltips().init(dialog_->radio_bst, str);
 }
 
 
 ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 
-	if (ob == dialog_->radio_cls) {
-		updateStyles(ControlTexinfo::cls);
-
-	} else if (ob == dialog_->radio_sty) {
-		updateStyles(ControlTexinfo::sty);
-
-	} else if (ob == dialog_->radio_bst) {
-		updateStyles(ControlTexinfo::bst);
+	if (ob == dialog_->choice_classes) {
+		switch (fl_get_choice(dialog_->choice_classes)) {
+		case 1:
+			updateStyles(ControlTexinfo::cls);
+			break;
+		case 2:
+			updateStyles(ControlTexinfo::sty);
+			break;
+		case 3:
+		default:
+			updateStyles(ControlTexinfo::bst);
+		}
 
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst

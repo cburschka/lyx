@@ -5,23 +5,23 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
-SnapGrid: 1
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_texinfo
-Width: 513
-Height: 312
-Number of Objects: 14
+Width: 250
+Height: 215
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 513 312
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 250 215
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_FIXED_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
@@ -34,162 +34,35 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 15 12 324 241
+box: 5 35 240 110
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
 style: FL_FIXED_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_NONE
+resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
 name: browser
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 345 15 155 100
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_BEGIN_GROUP
-type: 0
-box: 0 0 0 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name:
-callback: 
-argument: 
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 350 20 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: LaTeX Classes|#C
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: radio_cls
-callback: C_FormBaseInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 350 50 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: LaTeX Styles|#S
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: radio_sty
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 350 80 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: BibTeX Styles|#B
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: radio_bst
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_END_GROUP
-type: 0
-box: 0 0 0 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 345 122 155 128
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthEast FL_NorthEast
-name: 
-callback: 
-argument: 
-
---------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 355 138 135 30
+box: 5 150 110 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Update List|#U
+label: Rescan|#R
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
+gravity: FL_SouthWest FL_South
 name: button_rescan
 callback: C_FormBaseInputCB
 argument: 2
@@ -197,7 +70,7 @@ argument: 2
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 355 173 135 30
+box: 135 150 110 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -207,7 +80,7 @@ lcol: FL_BLACK
 label: View|#V
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
+gravity: FL_SouthEast FL_SouthEast
 name: button_view
 callback: C_FormBaseInputCB
 argument: 2
@@ -215,17 +88,17 @@ argument: 2
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 350 209 30 30
+box: 140 5 105 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Show Path|#P
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
+gravity: FL_North FL_North
 name: check_fullpath
 callback: C_FormBaseInputCB
 argument: 2
@@ -233,25 +106,7 @@ argument: 2
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 14 270 131 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Run Texhash|#T
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_SouthWest FL_SouthEast
-name: button_texhash
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 409 270 90 30
+box: 160 185 85 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -265,6 +120,42 @@ gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 5 5 130 25
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_North
+name: choice_classes
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 5 185 110 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Run TeXhash|#T
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_South
+name: button_texhash
+callback: C_FormBaseInputCB
+argument: 2
 
 ==============================
 create_the_form
