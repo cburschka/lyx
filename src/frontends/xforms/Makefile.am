@@ -148,6 +148,10 @@ libxforms_la_SOURCES = \
 	FormTabularCreate.h \
 	form_tabular_create.C \
 	form_tabular_create.h \
+	FormThesaurus.C \
+	FormThesaurus.h \
+	form_thesaurus.C \
+	form_thesaurus.h \
 	FormToc.C \
 	FormToc.h \
 	form_toc.C \

@@ -13,7 +13,7 @@ lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 	support/libsupport.la \
 	@INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
-	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@ @AIKSAURUS_LIBS@
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h
 ETAGS_ARGS = --lang=c++
@@ -75,6 +75,8 @@ lyx_SOURCES = \
 	Spacing.h \
 	TextCache.C \
 	TextCache.h \
+	Thesaurus.C \
+	Thesaurus.h \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	UpdateInset.C \

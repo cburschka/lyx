@@ -3086,6 +3086,26 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
+	case LFUN_THESAURUS_ENTRY:
+	{
+		string arg = argument;
+
+		if (arg.empty()) {
+			arg = bv_->getLyXText()->selectionAsString(buffer_);
+ 
+			// FIXME
+			if (arg.size() > 100 || arg.empty()) {
+				// Get word or selection
+				bv_->getLyXText()->selectWordWhenUnderCursor(bv_, LyXText::WHOLE_WORD);
+				arg = bv_->getLyXText()->selectionAsString(buffer_);
+				// FIXME: where is getLyXText()->unselect(bv_) ?
+			}
+		}
+
+		bv_->owner()->getDialogs()->showThesaurus(arg);
+	}
+		break;
+ 
 	case LFUN_SELFINSERT:
 	{
 		if (argument.empty()) break;

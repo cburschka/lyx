@@ -14,11 +14,6 @@
 #include "buffer.h"
 #include "gettext.h"
 
-// declare local prototypes here so they cannot be used without hack
-// externally and also we won't see them in the lyxfind.h file so we
-// know this are internal files!
-
-
 ///
 // locally used enum
 ///
@@ -47,8 +42,8 @@ SearchResult SearchBackward(BufferView *, LyXText * text, string const & str,
 
 int LyXReplace(BufferView * bv,
                string const & searchstr, string const & replacestr,
-               bool const & forward, bool const & casesens,
-               bool const & matchwrd, bool const & replaceall)
+               bool forward, bool casesens, bool matchwrd, bool replaceall,
+	       bool once)
 {
 	if (!bv->available() || bv->buffer()->isReadonly()) 
 		return 0;
@@ -99,8 +94,9 @@ int LyXReplace(BufferView * bv,
 		bv->getLyXText()->setSelectionOverString(bv, replacestr);
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		++replace_count;
-		found = LyXFind(bv, searchstr, fw, false, casesens, matchwrd);
-	} while (replaceall && found);
+		if (!once)
+		  found = LyXFind(bv, searchstr, fw, false, casesens, matchwrd);
+	} while (!once && replaceall && found);
    
 	if (bv->focus())
 		bv->showCursor();
@@ -109,9 +105,8 @@ int LyXReplace(BufferView * bv,
 }
 
 bool LyXFind(BufferView * bv,
-             string const & searchstr, bool const & forward,
-			 bool const & frominset,
-             bool const & casesens, bool const & matchwrd)
+             string const & searchstr, bool forward,
+	     bool frominset, bool casesens, bool matchwrd)
 {
 	if (!bv->available() || searchstr.empty())
 		return false;

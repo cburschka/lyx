@@ -47,6 +47,19 @@
 	using interface colors for certain fonts in certain environments,
 	which should not seen as that on the final output.
 
+2001-07-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C:
+	* Thesaurus.h:
+	* Thesaurus.C:
+	* Makefile.am:
+	* commandtags.h:
+	* LyXAction.C: add thesaurus support
+
+	* lyxfind.h:
+	* lyxfind.C: add "once" parameter, for thesaurus, to not
+	  move to the next match
+  
 2001-07-26  Juergen Vigna  <jug@sad.it>
 
 	* lyxfont.C (realize): honor ignore_language too!

@@ -9,7 +9,6 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
-src/ext_l10n.h
 src/figureForm.C
 src/figure_form.C
 src/FontLoader.C
@@ -106,6 +105,8 @@ src/frontends/xforms/FormTabular.C
 src/frontends/xforms/form_tabular.C
 src/frontends/xforms/FormTabularCreate.C
 src/frontends/xforms/form_tabular_create.C
+src/frontends/xforms/FormThesaurus.C
+src/frontends/xforms/form_thesaurus.C
 src/frontends/xforms/FormToc.C
 src/frontends/xforms/form_toc.C
 src/frontends/xforms/FormUrl.C
@@ -115,7 +116,6 @@ src/frontends/xforms/input_validators.C
 src/frontends/xforms/Menubar_pimpl.C
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
-src/graphics/GraphicsCacheItem.C
 src/importer.C
 src/insets/figinset.C
 src/insets/insetbib.C

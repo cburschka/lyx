@@ -153,6 +153,8 @@ public:
 	SigC::Signal1<void, InsetTabular *> updateTabular;
 	///
 	SigC::Signal0<void> showTabularCreate;
+	/// show the thesaurus dialog
+	SigC::Signal1<void, string const &> showThesaurus; 
 	///
 	SigC::Signal1<void, InsetCommand *> showTOC;
 	///

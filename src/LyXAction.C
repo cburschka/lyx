@@ -384,6 +384,7 @@ void LyXAction::init()
 #if 0
 		{ LFUN_INSET_THEOREM, "theorem-insert", "", Noop },
 #endif
+		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", N_("Open thesaurus"), ReadOnly },
 		{ LFUN_TOC_INSERT, "toc-insert",
 		  N_("Insert table of contents"), Noop },
 		{ LFUN_TOCVIEW, "toc-view",

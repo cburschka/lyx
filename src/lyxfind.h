@@ -12,12 +12,12 @@
 class BufferView;
 
 int LyXReplace(BufferView * bv, string const &, string const &,
-               bool const &, bool const & = true, bool const & = false,
-               bool const & = false);
+               bool, bool = true, bool = false,
+               bool = false, bool = false);
 
 bool LyXFind(BufferView *,
-             string const & searchstr, bool const & forward,
-			 bool const & frominset = false,
-             bool const & casesens = true, bool const & matchwrd = false);
+             string const & searchstr, bool forward,
+	     bool frominset = false, bool casesens = true, 
+	     bool matchwrd = false);
 
 #endif

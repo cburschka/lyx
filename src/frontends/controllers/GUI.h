@@ -321,6 +321,22 @@ public:
 };
 
 
+/** Specialization for TabularCreate dialog
+ */
+class ControlThesaurus;
+
+template <class GUIview, class GUIbc>
+class GUIThesaurus :
+	public GUI<ControlThesaurus, GUIview,
+                   OkApplyCancelReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIThesaurus(LyXView & lv, Dialogs & d)
+		: GUI<ControlThesaurus, GUIview,
+		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+ 
 /** Specialization for Url dialog
  */
 class ControlUrl;
