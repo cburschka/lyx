@@ -40,8 +40,8 @@ my $dir = &dirname($name);
 push @maybe_dir, "$dir";
 # case 2: ran make but not make install.
 push @maybe_dir, "$dir/$srcdir";
-# case 3: environment variable LYX_DIR_11x has been set
-if (exists $ENV{LYX_DIR_11x}) { push @maybe_dir, "$ENV{LYX_DIR_11x}/reLyX"};
+# case 3: environment variable LYX_DIR_13x has been set
+if (exists $ENV{LYX_DIR_13x}) { push @maybe_dir, "$ENV{LYX_DIR_13x}/reLyX"};
 # case 4: e.g., reLyX in /opt/bin, $mainscript in /opt/share/lyx/reLyX
 push @maybe_dir, "$dir/../share/$lyxname/reLyX"; # case 4
 # case 5: configure figured out where $mainscript is

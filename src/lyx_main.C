@@ -263,7 +263,7 @@ void LyX::init(bool gui)
 
 	// Directories are searched in this order:
 	// 1) -sysdir command line parameter
-	// 2) LYX_DIR_12x environment variable
+	// 2) LYX_DIR_13x environment variable
 	// 3) Maybe <path of binary>/TOP_SRCDIR/lib
 	// 4) <path of binary>/../share/<name of binary>/
 	// 4a) repeat 4 after following the Symlink if <path of
@@ -280,11 +280,11 @@ void LyX::init(bool gui)
 	if (!system_lyxdir.empty())
 		searchpath= MakeAbsPath(system_lyxdir) + ';';
 
-	// LYX_DIR_12x environment variable
-	string const lyxdir = GetEnvPath("LYX_DIR_12x");
+	// LYX_DIR_13x environment variable
+	string const lyxdir = GetEnvPath("LYX_DIR_13x");
 
 	if (!lyxdir.empty()) {
-		lyxerr[Debug::INIT] << "LYX_DIR_12x: " << lyxdir << endl;
+		lyxerr[Debug::INIT] << "LYX_DIR_13x: " << lyxdir << endl;
 		searchpath += lyxdir + ';';
 	}
 
@@ -360,7 +360,7 @@ void LyX::init(bool gui)
 	// Warn if environment variable is set, but unusable
 	if (!lyxdir.empty()) {
 		if (system_lyxdir != NormalizePath(lyxdir)) {
-			lyxerr <<_("LYX_DIR_12x environment variable no good.")
+			lyxerr <<_("LYX_DIR_13x environment variable no good.")
 			       << '\n'
 			       << _("System directory set to: ")
 			       << system_lyxdir << endl;
@@ -372,7 +372,7 @@ void LyX::init(bool gui)
 	if (system_lyxdir == "./") {
 		lyxerr <<_("LyX Warning! Couldn't determine system directory. ")
 		       <<_("Try the '-sysdir' command line parameter or ")
-		       <<_("set the environment variable LYX_DIR_12x to the "
+		       <<_("set the environment variable LYX_DIR_13x to the "
 			   "LyX system directory ")
 		       << _("containing the file `chkconfig.ltx'.") << endl;
 		if (!path_shown) {
@@ -402,15 +402,15 @@ void LyX::init(bool gui)
 
 	// Directories are searched in this order:
 	// 1) -userdir command line parameter
-	// 2) LYX_USERDIR_12x environment variable
+	// 2) LYX_USERDIR_13x environment variable
 	// 3) $HOME/.<name of binary>
 
 	// If we had a command line switch, user_lyxdir is already set
 	bool explicit_userdir = true;
 	if (user_lyxdir.empty()) {
 
-		// LYX_USERDIR_12x environment variable
-		user_lyxdir = GetEnvPath("LYX_USERDIR_12x");
+		// LYX_USERDIR_13x environment variable
+		user_lyxdir = GetEnvPath("LYX_USERDIR_13x");
 
 		// default behaviour
 		if (user_lyxdir.empty())
