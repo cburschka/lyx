@@ -172,7 +172,6 @@ void Dialogs::updateParagraph()
 
 void Dialogs::showPreamble()
 {
-	pimpl_->document.controller().showPreamble();
 }
 
 
