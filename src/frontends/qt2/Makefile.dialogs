@@ -29,7 +29,8 @@ DIALOGS = \
 	QThesaurus \
 	QToc \
 	QURL \
-	QVCLog
+	QVCLog \
+	QWrap
  
 DIALOGSOURCES = \
 	QAbout.h QAboutDialog.h \
@@ -88,7 +89,9 @@ DIALOGSOURCES = \
 	QURL.h QURLDialog.h \
 	QURL.C QURLDialog.C \
 	QVCLog.h QVCLogDialog.h \
-	QVCLog.C QVCLogDialog.C
+	QVCLog.C QVCLogDialog.C \
+	QWrap.h QWrapDialog.h \
+	QWrap.C QWrapDialog.C
  
 MOCDIALOGS = \
 	QAboutDialog_moc.C \
@@ -119,7 +122,8 @@ MOCDIALOGS = \
 	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \
 	QURLDialog_moc.C \
-	QVCLogDialog_moc.C
+	QVCLogDialog_moc.C \
+	QWrapDialog_moc.C
  
 UIDIALOGS = \
 	QAboutDialogBase.h \
@@ -181,7 +185,9 @@ UIDIALOGS = \
 	QURLDialogBase.h \
 	QURLDialogBase.C \
 	QVCLogDialogBase.h \
-	QVCLogDialogBase.C
+	QVCLogDialogBase.C \
+	QWrapDialogBase.h \
+	QWrapDialogBase.C
  
 UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
@@ -213,4 +219,5 @@ UIMOCDIALOGS = \
 	QThesaurusDialogBase_moc.C \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C \
-	QVCLogDialogBase_moc.C
+	QVCLogDialogBase_moc.C \
+	QWrapDialogBase_moc.C

@@ -74,5 +74,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 
 	  toc(lv, d),
 	  url(lv, d),
-	  vclogfile(lv, d)
+	  vclogfile(lv, d),
+	  wrap(lv, d)
 {}

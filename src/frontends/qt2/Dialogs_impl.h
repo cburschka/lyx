@@ -117,6 +117,8 @@
 #include "QURLDialog.h"
 #include "QVCLog.h"
 #include "QVCLogDialog.h"
+#include "QWrap.h"
+#include "QWrapDialog.h"
 
 #include "Qt2BC.h"
 
@@ -205,6 +207,9 @@ UrlDialog;
 typedef GUI<ControlVCLog, QVCLog, OkCancelPolicy, Qt2BC>
 VCLogFileDialog;
 
+typedef GUI<ControlWrap, QWrap, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
+WrapDialog;
+
 
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
@@ -240,6 +245,7 @@ struct Dialogs::Impl {
 	TocDialog           toc;
 	UrlDialog           url;
 	VCLogFileDialog     vclogfile;
+	WrapDialog          wrap;
 };
 
 #endif // DIALOGS_IMPL_H

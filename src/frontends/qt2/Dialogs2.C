@@ -276,7 +276,7 @@ void Dialogs::showVCLogFile()
 }
 
 
-void Dialogs::showWrap(InsetWrap * i)
+void Dialogs::showWrap(InsetWrap * iw)
 {
-	// FIXME 
-} 
+	pimpl_->wrap.controller().showInset(iw);
+}
