@@ -486,7 +486,7 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUp(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxUp(idx_type & /*idx*/, pos_type & /*pos*/) const
 {
 	return false;
 /*
@@ -500,7 +500,7 @@ bool MathGridInset::idxUp(idx_type & idx, pos_type & pos) const
 }
 
 	
-bool MathGridInset::idxDown(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxDown(idx_type & /*idx*/, pos_type & /*pos*/) const
 {
 	return false;
 /*
@@ -519,7 +519,7 @@ bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 	// leave matrix if on the left hand edge
 	if (col(idx) == 0)
 		return false;
-	idx--;
+	--idx;
 	pos = cell(idx).size();
 	return true;
 }
@@ -530,7 +530,7 @@ bool MathGridInset::idxRight(idx_type & idx, pos_type & pos) const
 	// leave matrix if on the right hand edge
 	if (col(idx) + 1 == ncols())
 		return false;
-	idx++;
+	++idx;
 	pos = 0;
 	return true;
 }
@@ -712,13 +712,13 @@ void MathGridInset::mathmlize(MathMLStream & os) const
 void MathGridInset::write(WriteStream & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << verboseHLine(rowinfo_[row].lines_).c_str();
+		os << verboseHLine(rowinfo_[row].lines_);
 		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << eocString(col).c_str();
-		os << eolString(row).c_str();
+			os << cell(index(row, col)) << eocString(col);
+		os << eolString(row);
 	}
-	string s = verboseHLine(rowinfo_[nrows()].lines_);
-	if (s.size())
-		os << "\\\\" << s.c_str();
+	string const s = verboseHLine(rowinfo_[nrows()].lines_);
+	if (!s.empty())
+		os << "\\\\" << s;
 }
 

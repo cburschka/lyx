@@ -1,5 +1,7 @@
-#include "math_inset.h"
+#include <config.h>
+
 #include "math_mathmlstream.h"
+#include "math_inset.h"
 #include "math_extern.h"
 #include "debug.h"
 
@@ -205,6 +207,19 @@ WriteStream & WriteStream::operator<<(MathInset const * p)
 WriteStream & WriteStream::operator<<(MathArray const & ar)
 {
 	write(ar, *this);
+	return *this;		
+}
+
+
+WriteStream & WriteStream::operator<<(string const & s)
+{
+	os << s;
+	string::const_iterator cit = s.begin();
+	string::const_iterator end = s.end();
+	for ( ; cit != end ; ++cit) {
+		if (*cit == '\n')
+			++line_;
+	}
 	return *this;		
 }
 

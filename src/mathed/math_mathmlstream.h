@@ -1,8 +1,11 @@
 #ifndef MATH_MATHMLSTREAM_H
 #define MATH_MATHMLSTREAM_H
 
-#include <iosfwd>
+#include "LString.h"
+
 #include "support/LOstream.h"
+
+#include <iosfwd>
 
 struct MathArray;
 struct MathInset;
@@ -111,6 +114,8 @@ struct WriteStream {
 	WriteStream & operator<<(MathInset const *);
 	///
 	WriteStream & operator<<(MathArray const &);
+	///
+	WriteStream & operator<<(string const &);
 	///
 	WriteStream & operator<<(char const *);
 	///
