@@ -12,6 +12,7 @@
 
 #include "xforms_helpers.h"
 
+#include "debug.h"
 #include "gettext.h"
 #include "lyxgluelength.h"
 #include "lyxlex.h"
@@ -319,9 +320,13 @@ const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
 
 bool XformsColor::read(string const & filename)
 {
+	FileInfo const f(filename);
 	LyXLex lexrc(xformTags, xformCount);
-	if (!lexrc.setFile(filename))
-		return false;
+	if (f.readable() && !lexrc.setFile(filename)) {
+		lyxerr << "XformsColor::read(" << filename << ")\n"
+		       << _("Failed to open file.") << std::endl;
+ 		return false;
+	}
 
 	while (lexrc.isOK()) {
 		int const le = lexrc.lex();
@@ -362,8 +367,11 @@ bool XformsColor::read(string const & filename)
 bool XformsColor::write(string const & filename)
 {
 	ofstream os(filename.c_str());
-	if (!os)
-		return false;
+	if (!os) {
+		lyxerr << "XformsColor::write(" << filename << ")\n"
+		       << _("Failed to open file.") << std::endl;
+ 		return false;
+	}
 
 	os << "###"
 	   << "### file " << filename << "\n\n"

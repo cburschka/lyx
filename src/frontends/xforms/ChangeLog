@@ -1,3 +1,8 @@
+2003-12-28  Angus Leeming  <leeming@lyx.org>
+
+	* xforms_helpers.C (read, write): output a diagnostic message if
+	we fail to open preferences.xform for read/write.
+
 2003-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* Color.h (NamedColor): store both the LyX and the GUI name.
