@@ -1,5 +1,7 @@
 2002-12-16  Angus Leeming  <leeming@lyx.org>
 
+	* XPainter.C: missed a #ifdef USE_XFORMS_IMAGE_LOADER.
+
 	* FormPreferences.C: 
 	* forms/form_preferences.fd: remove override_x_deadkeys stuff.
 

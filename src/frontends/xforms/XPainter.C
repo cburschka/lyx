@@ -25,11 +25,7 @@
 #include "encoding.h"
 #include "language.h"
 
-#ifdef USE_XFORMS_IMAGE_LOADER
 #include "xformsImage.h"
-#else
-#include "graphics/GraphicsImageXPM.h"
-#endif
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -158,11 +154,8 @@ Painter & XPainter::image(int x, int y,
 	int w, int h,
 	grfx::Image const & i)
 {
-#ifdef USE_XFORMS_IMAGE_LOADER
-	grfx::xformsImage const & image = static_cast<grfx::xformsImage const &>(i);
-#else
-	grfx::ImageXPM const & image = static_cast<grfx::ImageXPM const &>(i);
-#endif
+	grfx::xformsImage const & image =
+		static_cast<grfx::xformsImage const &>(i);
 
 	XGCValues val;
 	val.function = GXcopy;
