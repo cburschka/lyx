@@ -90,6 +90,9 @@ in C++.
 
 - Make the scope of a variable as small as possible.
 
+- Make good use of namespaces. Prefer anonymous namespaces to declaring
+  "static" for file scope.
+
 - Prefer preincrement to postincrement whenever possible.
   Preincrement has potential of being faster than postincrement. Just
   thing about the obvious implementations of pre/post-increment. This
@@ -375,14 +378,6 @@ deciding what kind of function to add to a class interface:
 	else
 		make f a member function of C;
  
-To make the best use of this kind of Class API we need namespaces.
-Currently LyX still supports compilers that do not have good namespace
-support, so namespace declarations are enclosed as :
-
-#ifdef CXX_WORKING_NAMESPACES
-using Liason::setMinibuffer;
-#endif
-
 (I'll fill in more from Scott Meyers article when time allows.)
 
 References
