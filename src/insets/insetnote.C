@@ -141,7 +141,7 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY: {
 		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		bv->updateInset(this);
+		bv->update();
 		return DispatchResult(true, true);
 	}
 

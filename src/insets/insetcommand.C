@@ -99,7 +99,7 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			return DispatchResult(false);
 
 		setParams(p);
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		return DispatchResult(true, true);
 	}
 

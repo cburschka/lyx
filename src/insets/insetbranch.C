@@ -128,7 +128,6 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 		InsetBranchMailer::string2params(cmd.argument, params);
 		params_.branch = params.branch;
 		setButtonLabel();
-		bv->updateInset(this);
 		return DispatchResult(true, true);
 	}
 

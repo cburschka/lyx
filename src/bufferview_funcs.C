@@ -157,8 +157,7 @@ bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_o
 		return text->changeDepth(type, true);
 
 	bool const changed = text->changeDepth(type, false);
-	if (text->inset_owner)
-		bv->updateInset(text->inset_owner);
+	bv->update();
 	return changed;
 }
 

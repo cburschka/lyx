@@ -104,8 +104,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void center();
 	///
 	bool insertInset(InsetOld * inset, std::string const & lout = std::string());
-	///
-	void updateInset(InsetOld const * inset);
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed
@@ -195,6 +193,9 @@ private:
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
+	/// range of visible main text paragraphs
+	void getVisiblePars(ParagraphList::iterator &, ParagraphList::iterator &);
+
 	///
 	LCursor cursor_;
 };

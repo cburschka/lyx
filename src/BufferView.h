@@ -86,19 +86,6 @@ public:
 	bool fitCursor();
 	/// perform pending painting updates
 	void update();
-	/** update for a particular inset. Gets a pointer and not a
-	 *  reference because we really need the pointer information
-	 *  to find it in the buffer.
-   *
-	 * Extracted from Matthias notes:
-	 *
-	 * If a inset wishes any redraw and/or update it just has to call
-	 * updateInset(this). It's is completly irrelevant, where the inset is.
-   * UpdateInset will find it in any paragraph in any buffer.
-	 * Of course the insets in the current paragraph/buffer
-	 * are checked first, so no performance problem should occur.
-	 */
-	void updateInset(InsetOld const *);
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
 	/// FIXME
@@ -196,9 +183,9 @@ public:
 	bool dispatch(FuncRequest const & argument);
 	
 	/// set target x position of cursor
-	void BufferView::x_target(int x);
+	void x_target(int x);
 	/// return target x position of cursor
-	int BufferView::x_target() const;
+	int x_target() const;
 
 	/// access to cursor
 	LCursor & cursor();

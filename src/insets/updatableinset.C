@@ -99,7 +99,7 @@ UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 				scroll(cmd.view(), static_cast<float>(strToDbl(cmd.argument)));
 			else
 				scroll(cmd.view(), strToInt(cmd.argument));
-			cmd.view()->updateInset(this);
+			cmd.view()->update();
 			return DispatchResult(true, true);
 		}
 

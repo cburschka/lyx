@@ -394,12 +394,6 @@ void BufferView::hideCursor()
 }
 
 
-void BufferView::updateInset(InsetOld const * inset)
-{
-	pimpl_->updateInset(inset);
-}
-
-
 bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 {
 	// Check if the label 'from' appears more than once

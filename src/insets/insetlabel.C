@@ -83,7 +83,7 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 		}
 
 		setParams(p);
-		bv->updateInset(this);
+		bv->update();
 		return DispatchResult(true, true);
 	}
 

@@ -91,7 +91,7 @@ InsetWrap::priv_dispatch(FuncRequest const & cmd,
 		params_.placement = params.placement;
 		params_.width     = params.width;
 
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		return DispatchResult(true, true);
 	}
 

@@ -1,6 +1,11 @@
 
 2003-11-10  André Pönitz  <poenitz@gmx.net>
 
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]: merge update() and updateInset()
+
+2003-11-10  André Pönitz  <poenitz@gmx.net>
+
 	* lfuns.h: new LFUN_FINISHED_LEFT, LFUN_FINISHED_RIGHT,
 	LFUN_FINISHED_UP, LFUN_FINISHED_DOWN used in dispatch to
 	indicate that the cursor needs to leave an inset

@@ -378,7 +378,7 @@ string const InsetTabular::editMessage() const
 
 void InsetTabular::updateLocal(BufferView * bv) const
 {
-	bv->updateInset(this);
+	bv->update();
 	resetPos(bv);
 }
 
@@ -522,7 +522,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 				scroll(cmd.view(), static_cast<float>(strToDbl(cmd.argument)));
 			else
 				scroll(cmd.view(), strToInt(cmd.argument));
-			cmd.view()->updateInset(this);
+			cmd.view()->update();
 			return DispatchResult(true, true);
 		}
 

@@ -175,7 +175,7 @@ InsetFloat::priv_dispatch(FuncRequest const & cmd,
 		params_.wide      = params.wide;
 
 		wide(params_.wide, cmd.view()->buffer()->params());
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		return DispatchResult(true, true);
 	}
 

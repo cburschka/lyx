@@ -180,7 +180,6 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 		lyxerr << "InsetBox::dispatch MODIFY" << endl;
 		InsetBoxMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		bv->updateInset(this);
 		result.dispatched(true);
 		result.update(true);
 		return result;

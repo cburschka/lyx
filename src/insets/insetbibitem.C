@@ -75,7 +75,7 @@ InsetBibitem::priv_dispatch(FuncRequest const & cmd,
 		if (p.getCmdName().empty())
 			return DispatchResult(true, true);
 		setParams(p);
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		cmd.view()->fitCursor();
 		return DispatchResult(true, true);
 	}

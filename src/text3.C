@@ -267,12 +267,12 @@ InsetOld * LyXText::checkInsetHit(int & x, int & y)
 		InsetList::iterator iend = pit->insetlist.end();
 		for ( ; iit != iend; ++iit) {
 			InsetOld * inset = iit->inset;
-			lyxerr << "examining inset " << inset
-				<< " xy: " << inset->x() << "/" << inset->y()
-				<< " x: " << inset->x() << "..." << inset->x() + inset->width()
-				<< " y: " << inset->y() - inset->ascent() << "..."
-				<< inset->y() + inset->descent()
-				<< endl;
+			//lyxerr << "examining inset " << inset
+			//	<< " xy: " << inset->x() << "/" << inset->y()
+			//	<< " x: " << inset->x() << "..." << inset->x() + inset->width()
+			//	<< " y: " << inset->y() - inset->ascent() << "..."
+			//	<< inset->y() + inset->descent()
+			//	<< endl;
 			if (x >= inset->x()
 			    && x <= inset->x() + inset->width()
 			    && y >= inset->y() - inset->ascent()
@@ -471,7 +471,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 	if (!bv->insertInset(new_inset))
 		delete new_inset;
 	else
-		bv->updateInset(new_inset);
+		bv->update();
 }
 
 

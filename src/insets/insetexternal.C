@@ -449,7 +449,7 @@ InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		return DispatchResult(true, true);
 	}
 

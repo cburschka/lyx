@@ -205,7 +205,6 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 			collapsed_ = false;
 			edit(bv, true);
 			bv->buffer()->markDirty();
-			bv->updateInset(this);
 			bv->update();
 			return result;
 		}
@@ -221,7 +220,7 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 				return result;
 			}
 			result.update(true);
-			bv->updateInset(this);
+			bv->update();
 			bv->buffer()->markDirty();
 		} else if (!collapsed_ && cmd.y > button_dim.y2) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
@@ -283,7 +282,7 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 		collapsed_ = false;
 		// set this only here as it should be recollapsed only if
 		// it was already collapsed!
-		bv->updateInset(this);
+		bv->update();
 		bv->buffer()->markDirty();
 		inset.edit(bv, x, y);
 	} else {
@@ -401,7 +400,7 @@ void InsetCollapsable::open(BufferView * bv)
 		return;
 
 	collapsed_ = false;
-	bv->updateInset(this);
+	bv->update();
 }
 
 
@@ -411,7 +410,7 @@ void InsetCollapsable::close(BufferView * bv) const
 		return;
 
 	collapsed_ = true;
-	bv->updateInset(this);
+	bv->update();
 }
 
 

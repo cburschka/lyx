@@ -599,9 +599,17 @@ void BufferView::Pimpl::update()
 {
 	//lyxerr << "BufferView::update()" << endl;
 	// fix cursor coordinate cache in case something went wrong
+
+	// check needed to survive LyX startup
 	if (bv_->getLyXText()) {
-		// check needed to survive LyX startup
 		bv_->getLyXText()->redoCursor();
+
+		// update all 'visible' paragraphs
+		ParagraphList::iterator beg, end;
+		getVisiblePars(beg, end);
+		bv_->text->redoParagraphs(beg, end);
+
+		updateScrollbar();
 	}
 	screen().redraw(*bv_);
 }
@@ -938,7 +946,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			cmd2.y -= inset->y();
 			res = inset->dispatch(cmd2);
 			if (res.update())
-				bv_->updateInset(inset);
+				bv_->update();
 			res.update(false);
 		}
 
@@ -1094,8 +1102,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		InsetBase * inset = owner_->getDialogs().getOpenInset(name);
 		if (inset) {
 			// This works both for 'original' and 'mathed' insets.
-			// Note that the localDispatch performs updateInset
-			// also.
+			// Note that the localDispatch performs update also.
 			FuncRequest fr(bv_, LFUN_INSET_MODIFY, ev.argument);
 			inset->dispatch(fr);
 		} else {
@@ -1107,21 +1114,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_INSET_INSERT: {
 		InsetOld * inset = createInset(ev);
-		if (inset && insertInset(inset)) {
-			updateInset(inset);
-
-			string const name = ev.getArg(0);
-			if (name == "bibitem") {
-				// We need to do a redraw because the maximum
-				// InsetBibitem width could have changed
-#warning check whether the update() is needed at all
-				bv_->update();
-			}
-		} else {
+		if (!inset || !insertInset(inset))
 			delete inset;
-		}
+		break;
 	}
-	break;
 
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
@@ -1273,23 +1269,6 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 }
 
 
-void BufferView::Pimpl::updateInset(InsetOld const * /*inset*/)
-{
-	if (!available())
-		return;
-
-#warning used for asynchronous updates?
-	//bv_->text->redoParagraph(outerPar(*bv_->buffer(), inset));
-
-	// this should not be needed, but it is...
-	bv_->text->redoParagraph(bv_->text->cursorPar());
-	// bv_->text->fullRebreak();
-
-	update();
-	updateScrollbar();
-}
-
-
 bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 				     string const & from, string const & to)
 {
@@ -1346,4 +1325,23 @@ void BufferView::Pimpl::updateParagraphDialog()
 
 	data = "update " + tostr(accept) + '\n' + data;
 	bv_->owner()->getDialogs().update("paragraph", data);
+}
+
+
+void BufferView::Pimpl::getVisiblePars
+	(ParagraphList::iterator & beg, ParagraphList::iterator & end)
+{
+	beg = bv_->text->cursorPar();
+	end = beg;
+
+	for ( ; beg != bv_->text->ownerParagraphs().begin(); --beg)
+		if (beg->y - top_y() < 0)
+			break;
+
+	if (beg != bv_->text->ownerParagraphs().begin())
+		--beg;
+
+	for ( ; end != bv_->text->ownerParagraphs().end(); ++end)
+		if (end->y - top_y() > workarea().workHeight())
+			break;
 }

@@ -155,15 +155,13 @@ string const InsetFormulaBase::editMessage() const
 void InsetFormulaBase::insetUnlock(BufferView * bv)
 {
 	if (mathcursor) {
-		if (mathcursor->inMacroMode()) {
+		if (mathcursor->inMacroMode())
 			mathcursor->macroModeClose();
-			bv->updateInset(this);
-		}
 		releaseMathCursor(bv);
 	}
 	if (bv->buffer())
 		generatePreview(*bv->buffer());
-	bv->updateInset(this);
+	bv->update();
 }
 
 
@@ -209,7 +207,7 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 {
 	if (mathcursor)
-		bv->updateInset(this);
+		bv->update();
 }
 
 
@@ -219,7 +217,7 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		return DispatchResult(false);
 
 	BufferView * bv = cmd.view();
-	bv->updateInset(this);
+	bv->update();
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button3) {
@@ -238,7 +236,7 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->insert(ar);
-		bv->updateInset(this);
+		bv->update();
 		return DispatchResult(true, true);
 	}
 
@@ -285,7 +283,7 @@ DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		return DispatchResult(true, true);
 	}
 
-	bv->updateInset(this);
+	bv->update();
 	return DispatchResult(true, true);
 }
 
@@ -313,7 +311,7 @@ DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 
 	BufferView * bv = cmd.view();
 	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
-	bv->updateInset(this);
+	bv->update();
 	return DispatchResult(true, true);
 }
 
@@ -326,7 +324,7 @@ void InsetFormulaBase::edit(BufferView * bv, bool left)
 	bv->cursor().push(this); 
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
-	bv->updateInset(this);
+	bv->update();
 }
 
 
@@ -340,7 +338,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 	bv->cursor().push(this); 
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
-	bv->updateInset(this);
+	bv->update();
 }
 
 
@@ -739,7 +737,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	}
 
 	if (result == DispatchResult(true, true))
-		bv->updateInset(this);
+		bv->update();
 
 	mathcursor->normalize();
 	mathcursor->touch();
@@ -862,7 +860,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			mathcursor->setSelection(it, ar.size());
 			current = it;
 			it.jump(ar.size());
-			bv->updateInset(this);
+			bv->update();
 			return true;
 		}
 	}

@@ -106,7 +106,7 @@ InsetMinipage::priv_dispatch(FuncRequest const & cmd,
 		InsetMinipageMailer::string2params(cmd.argument, params);
 		params_.pos   = params.pos;
 		params_.width = params.width;
-		cmd.view()->updateInset(this);
+		cmd.view()->update();
 		return DispatchResult(true, true);
 	}
 

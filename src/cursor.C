@@ -74,7 +74,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
 		if (res.update())
-			bv_->updateInset(citem.inset_);
+			bv_->update();
 		if (res.dispatched()) {
 			lyxerr << " successfully dispatched to inset " << citem.inset_ << endl;
 			return DispatchResult(true, true);

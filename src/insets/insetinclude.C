@@ -118,7 +118,7 @@ InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetIncludeMailer::string2params(cmd.argument, p);
 		if (!p.getCmdName().empty()) {
 			set(p, *cmd.view()->buffer());
-			cmd.view()->updateInset(this);
+			cmd.view()->update();
 		}
 		return DispatchResult(true, true);
 	}

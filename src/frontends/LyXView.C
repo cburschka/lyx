@@ -199,7 +199,7 @@ Buffer const * const LyXView::updateInset(InsetOld const * inset) const
 	Buffer const * buffer_ptr = 0;
 	if (inset) {
 		buffer_ptr = bufferview_->buffer();
-		bufferview_->updateInset(inset);
+		bufferview_->update();
 	}
 	return buffer_ptr;
 }

@@ -201,7 +201,7 @@ InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {
 			setParams(p);
-			cmd.view()->updateInset(this);
+			cmd.view()->update();
 		}
 		return DispatchResult(true, true);
 	}
