@@ -1,3 +1,8 @@
+2002-10-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: workaround problem with autoconf 2.5x (off_t not
+	being correctly detected)
+
 2002-08-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.in (VERSION): back to version 1.2.2cvs

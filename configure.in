@@ -50,6 +50,10 @@ INSTALL_SCRIPT='${INSTALL}'
 
 ### we will also need a C compiler to compile GNU gettext
 AC_PROG_CC
+# and on some systems with autoconf 2.5x, the gettext test for off_t 
+# will fail because it does not look into sys/types.h. We try here to help 
+# it to do so
+AC_CHECK_HEADERS(sys/types.h)
 
 ### check for special systems
 AC_ISC_POSIX
