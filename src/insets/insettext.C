@@ -1991,7 +1991,6 @@ void InsetText::reinitLyXText() const
 	}
 	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
-		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
 		bv->updateScrollbar();
 	} else {

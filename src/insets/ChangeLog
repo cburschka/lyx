@@ -1,3 +1,9 @@
+2003-07-26  Asger Alstrup  <alstrup@local>
+
+	* insettext.C (reinitLyXText): Get rid of updateLocal which causes
+	the undo crashes. We'll see what problems other places this will
+	cause.
+
 2003-07-26  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C: remove unused declaration of system_tempdir.
