@@ -1,3 +1,8 @@
+2003-03-14  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyxconvert_218.py (remove_pextra): Fix conversion of
+	minipages that contains tabulars.
+
 2003-03-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* templates/revtex4.lyx:

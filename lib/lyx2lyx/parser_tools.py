@@ -105,9 +105,8 @@ def get_paragraph(lines, i):
 # Finds the paragraph after the paragraph that contains line i.
 def get_next_paragraph(lines, i):
     while i != -1:
-	i = find_tokens(lines, ["\\begin_inset", "\\layout"], i)
-        if i == -1: return -1
-	if check_token(lines[i], "\\layout"):
+	i = find_tokens(lines, ["\\begin_inset", "\\layout", "\\end_float", "\\the_end"], i)
+	if not check_token(lines[i], "\\begin_inset"):
 	    return i
 	i = find_end_of_inset(lines, i)
 
