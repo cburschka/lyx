@@ -1,5 +1,14 @@
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* commandtags.h: add LFUN_INSET_WIDE_FLOAT
+
+	* MenuBackend.C (expand): also create menu entries for wide
+	versions of the floats.
+
+	* LyXAction.C (init): add entry for LFUN_INSET_WIDE_FLOAT
+
+	* BufferView_pimpl.C (Dispatch): implement LFUN_INSET_WIDE_FLOAT
+
 	* Makefile.am (lyx_DEPENDENCIES): adjust for change in
 	frontends/Makefile.am
 

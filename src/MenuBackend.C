@@ -355,7 +355,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				int const action =  lyxaction
 					.getPseudoAction(LFUN_FLOAT_LIST,
 							 cit->second.type());
-				string label = "List of ";
+				string label = _("List of ");
 				label += cit->second.name();
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
@@ -368,12 +368,21 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			FloatList::const_iterator cit = floatList.begin();
 			FloatList::const_iterator end = floatList.end();
 			for (; cit != end; ++cit) {
+				// normal float
 				int const action = lyxaction
 					.getPseudoAction(LFUN_INSET_FLOAT,
 							 cit->second.type());
 				string const label = cit->second.name();
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
+				
+				// and the wide version
+				int const action2 = lyxaction
+					.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
+							 cit->second.type());
+				string const label2 = _("Wide ") + label;
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label2, action2));
 			}
 		}
 		break;

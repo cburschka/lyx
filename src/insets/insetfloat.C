@@ -123,6 +123,11 @@ void InsetFloat::Write(Buffer const * buf, ostream & os) const
 	} else {
 		os << "placement " << floatPlacement_ << "\n";
 	}
+	if (wide_) {
+		os << "wide true\n";
+	} else {
+		os << "wide false\n";
+	}
 	
 	InsetCollapsable::Write(buf, os);
 }
@@ -132,12 +137,25 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.IsOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string token = lex.GetString();
 		if (token == "placement") {
 			lex.next();
 			floatPlacement_ = lex.GetString();
 		} else {
 			lyxerr << "InsetFloat::Read: Missing placement!"
+			       << endl;
+		}
+		lex.next();
+		token = lex.GetString();
+		if (token == "wide") {
+			lex.next();
+			string const tmptoken = lex.GetString();
+			if (tmptoken == "true")
+				wide(true);
+			else
+				wide(false);
+		} else {
+			lyxerr << "InsetFloat::Read:: Missing wide!"
 			       << endl;
 		}
 	}
@@ -170,14 +188,16 @@ string const InsetFloat::EditMessage() const
 int InsetFloat::Latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
-	os << "\\begin{" << floatType_ << "}";
+	string const tmptype = (wide_ ? floatType_ + "*" : floatType_);
+	
+	os << "\\begin{" << tmptype << "}";
 	if (!floatPlacement_.empty()
 	    && floatPlacement_ != floatList.defaultPlacement(floatType_))
 		os << "[" << floatPlacement_ << "]";
 	os << "%\n";
     
 	int const i = inset.Latex(buf, os, fragile, fp);
-	os << "\\end{" << floatType_ << "}%\n";
+	os << "\\end{" << tmptype << "}%\n";
 	
 	return i + 2;
 }

@@ -1,5 +1,9 @@
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* insetfloat.C (Write): write out wide info
+	(Read): read the wide info
+	(Latex): use the wide info when creating latex.
+
 	* insettext.C: adjust
 
 	* insetgraphics.[Ch] (statusMessage): change to return string

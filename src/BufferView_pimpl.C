@@ -2740,6 +2740,24 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 
+	case LFUN_INSET_WIDE_FLOAT:
+	{
+		// check if the float type exist
+		if (floatList.typeExist(argument)) {
+			InsetFloat * new_inset = new InsetFloat(argument);
+			new_inset->wide(true);
+			if (bv_->insertInset(new_inset))
+				new_inset->Edit(bv_, 0, 0, 0);
+			else
+				delete new_inset;
+		} else {
+			lyxerr << "Non-existant float type: "
+			       << argument << endl;
+		}
+		
+	}
+	break;
+
 	case LFUN_INSET_LIST:
 	{
 		InsetList * new_inset = new InsetList;

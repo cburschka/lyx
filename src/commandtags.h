@@ -257,6 +257,7 @@ enum kb_action {
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
+	LFUN_INSET_WIDE_FLOAT,          // Lgb 20010531
 	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_INSET_THEOREM,             // Lgb 20000630
 	LFUN_CITATION_CREATE, // 240    // Angus 20000705
