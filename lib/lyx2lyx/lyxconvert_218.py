@@ -483,8 +483,20 @@ def change_infoinset(lines):
         i = find_token(lines, "\\begin_inset Info", i)
         if i == -1:
             break
-        lines[i:i+1] = ["\\begin_inset Note", "collapsed true", "",
-                        "\layout Standard", ""]
+        txt = string.lstrip(lines[i][18:])
+        new = ["\\begin_inset Note", "collapsed true", ""]
+        if len(txt) > 0:
+            new = new + ["\layout Standard", "", txt]
+        j = find_token(lines, "\\end_inset", i)
+        if j == -1:
+            break
+        for k in range(i+1, j):
+            new = new + ["\layout Standard", ""]
+            tmp = string.split(lines[k], '\\')
+            new = new + [tmp[0]]
+            for x in tmp[1:]:
+                new = new + ["\\backslash ", x]
+        lines[i:j] = new
         i = i+5
 
 def change_preamble(lines):
