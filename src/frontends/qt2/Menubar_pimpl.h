@@ -64,7 +64,7 @@ public:
 
 private:
 	/// create a menu
-	void makeMenu(QMenuData * parent, MenuItem const & menu);
+	void makeMenu(QMenuData * parent, MenuItem const * item, Menu const & menu);
  
 	/// special handling updating a submenu label
 	void updateSubmenu(MenuItemInfo const & i);

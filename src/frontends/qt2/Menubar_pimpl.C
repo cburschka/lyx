@@ -72,27 +72,28 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 	Menu::const_iterator m = mbe.getMenubar().begin();
 	Menu::const_iterator end = mbe.getMenubar().end();
 	for (; m != end; ++m) {
-		makeMenu(owner_->menuBar(), *m);
+		Menu tomenu;
+		Menu const frommenu = menubackend_.getMenu(m->submenuname());
+		menubackend_.expand(frommenu, tomenu, owner_->buffer());
+		makeMenu(owner_->menuBar(), m, tomenu);
 	}
 }
 
 
-void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const & menu)
+void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const * item, Menu const & menu)
 {
 	// FIXME: does this leak or not ?
 	QPopupMenu * pm = new QPopupMenu();
-	int const parentid = parent->insertItem(getLabel(menu).c_str(), pm);
+	int const parentid = parent->insertItem(getLabel(*item).c_str(), pm);
  
-	Menu md;
-	menubackend_.getMenu(menu.submenu()).expand(md, 0);
-	Menu::const_iterator m = md.begin();
-	Menu::const_iterator end = md.end();
+	Menu::const_iterator m = menu.begin();
+	Menu::const_iterator end = menu.end();
 	for (; m != end; ++m) {
 		// FIXME: handle the special stuff here
 		if (m->kind() == MenuItem::Separator) {
 			pm->insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			makeMenu(pm, *m);
+			makeMenu(pm, m, m->submenu());
 		} else {
 			pm->insertItem(getLabel(*m).c_str(), m->action());
 			MenuItemInfo const info(pm, m->action(), m);
@@ -101,8 +102,8 @@ void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const & menu)
 		}
 	}
 
-	MenuItemInfo const info(parent, parentid, &menu);
-	items_[menu.label()] = info;
+	MenuItemInfo const info(parent, parentid, item);
+	items_[item->label()] = info;
 	updateSubmenu(info);
 }
 
@@ -111,14 +112,13 @@ void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const & menu)
 // two-level submenus
 void Menubar::Pimpl::updateSubmenu(MenuItemInfo const & i)
 {
-	bool enable = true;
-#if 0
+#if 0 // SEGFAULTS
+// 7  0x0809d372 in Menu::begin (this=0x0) at MenuBackend.h:138
+// 8  0x081dcf60 in Menubar::Pimpl::updateSubmenu (this=0x839eaa0, i=@0xbffff010) at Menubar_pimpl.C:116 
 	bool enable = false;
-	Menu md;
-	// FIXME FIXME SEGFAULTS
-	menubackend_.getMenu(i.item_->submenu()).expand(md, 0);
-	Menu::const_iterator m = md.begin();
-	Menu::const_iterator end = md.end();
+ 
+	Menu::const_iterator m = i.item_->submenu().begin();
+	Menu::const_iterator end = i.item_->submenu().end();
 	for (; m != end; ++m) {
 	 	if (m->action() > 0) {
 			FuncStatus const status =
@@ -127,7 +127,9 @@ void Menubar::Pimpl::updateSubmenu(MenuItemInfo const & i)
 				enable = true;
 		}
 	}
-#endif 
+#else
+	bool enable = true;
+#endif
 	i.parent_->setItemEnabled(i.id_, enable);
 }
  
