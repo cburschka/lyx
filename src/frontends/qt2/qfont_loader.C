@@ -114,7 +114,7 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			break;
 	}
  
-	switch (f.shape()) {
+	switch (f.realShape()) {
 		case LyXFont::ITALIC_SHAPE:
 		case LyXFont::SLANTED_SHAPE:
 			font.setItalic(true);
@@ -131,12 +131,12 @@ qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
 		// FIXME
 	}
 
-	font_info * fi = fontinfo_[f.family()][f.series()][f.shape()][f.size()].get();
+	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()].get();
 	if (fi) {
 		return fi;
 	} else {
 		fi = new font_info(f); 
-		fontinfo_[f.family()][f.series()][f.shape()][f.size()].reset(fi);
+		fontinfo_[f.family()][f.series()][f.realShape()][f.size()].reset(fi);
 		return fi;
 	}
 }
