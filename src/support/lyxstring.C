@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -103,7 +103,7 @@ private:
 
 lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
 {
-// can be called with p==0 by lyxstring::assign(const value_type *, size_type)
+// can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
 
 	sz = nsz;
 	ref = 1;
@@ -137,7 +137,7 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 
 void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 {
-// can be called with p==0 by lyxstring::assign(const value_type *, size_type)
+// can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
 
 	if (res < nsz) {
 		delete[] s;
@@ -256,7 +256,7 @@ void lyxstring::Srep::reserve(lyxstring::size_type res_arg)
 void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 			    value_type const * p, size_type n2)
 {
-// can be called with p=0 and n2=0
+// can be called with p= 0 and n2= 0
 	n = min(sz - i, n);
 	sz -= n;
 	if (res >= n2 + sz) {
@@ -349,7 +349,7 @@ void lyxstringInvariant::helper() const
 	Assert(object->rep->res);  // always some space allocated
 	Assert(object->rep->sz <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < static_cast<size_t>(1) << (8 * sizeof(object->rep->ref) - 1));
+	Assert(object->rep->ref < 1UL << (8UL * sizeof(object->rep->ref) - 1));
 	// if it does ever == then we should be generating a new copy
 	// and starting again.  (Is char always 8-bits?)
 }
@@ -523,7 +523,7 @@ void lyxstring::reserve(size_type res_arg)
 // Assignment
 ////////////////
 
-lyxstring & lyxstring::operator=(lyxstring const & x)
+lyxstring & lyxstring::operator= (lyxstring const & x)
 {
 	TestlyxstringInvariant(this);
 
@@ -531,11 +531,11 @@ lyxstring & lyxstring::operator=(lyxstring const & x)
 }
 
 
-lyxstring & lyxstring::operator=(value_type const * s)
+lyxstring & lyxstring::operator= (value_type const * s)
 {
 	Assert(s); // OURS!
 	TestlyxstringInvariant(this);
-//	printf("lyxstring::operator=(value_type const *)\n");
+//	printf("lyxstring::operator= (value_type const *)\n");
 
 	return assign(s);
 }
@@ -1424,7 +1424,7 @@ int lyxstring::internal_compare(size_type pos, size_type n,
 {
 	if ((rep->sz == 0 || n == 0) && (!*s || n2 == 0)) return 0;
 	if (!*s) return 1;
-	// since n > n2, min(n,n2) == 0, c == 0 (stops segfault also)
+	// since n > n2, min(n, n2) == 0, c == 0 (stops segfault also)
 
         // remember that n can very well be a lot larger than rep->sz
         // so we have to ensure that n is no larger than rep->sz
@@ -1432,7 +1432,7 @@ int lyxstring::internal_compare(size_type pos, size_type n,
 	n2 = min(n2, slen);
         if (n == n2)
 		return memcmp(&(rep->s[pos]), s, n);
-	int c = memcmp(&(rep->s[pos]), s, min(n,n2));
+	int c = memcmp(&(rep->s[pos]), s, min(n, n2));
 	if (c)
 		return c;
 	if (n < n2)

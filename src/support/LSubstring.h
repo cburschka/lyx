@@ -7,7 +7,7 @@
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1998 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 // This one is heavily based on the substring class in The C++
 // Programming Language by Bjarne Stroustrup

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright (C) 1995 Matthias Ettrich
  *           Copyright (C) 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
@@ -26,7 +26,7 @@ unsigned long lyxsum(char const * file);
 inline char * date() 
 {
 	time_t tid;
-	if ((tid=time(0)) == (time_t)-1)
+	if ((tid= time(0)) == (time_t)-1)
 		return (char*)0;
 	else
 		return (ctime(&tid));
@@ -56,7 +56,7 @@ struct lyx {
 		return ::_getcwd2(buffer, size);
 #endif
 	};
-	static int chdir(const char * name) {
+	static int chdir(char const * name) {
 #ifndef __EMX__
 		return ::chdir(name);
 #else

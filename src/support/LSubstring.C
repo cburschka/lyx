@@ -6,7 +6,7 @@
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1998 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>

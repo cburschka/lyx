@@ -209,7 +209,7 @@ int tokenPos(string const & a, char delim, string const & tok)
 
 	while (!str.empty()) {
 		str = split(str, tmptok, delim);
-		if (tok==tmptok)
+		if (tok == tmptok)
 			return i;
 		++i;
 	}
@@ -224,12 +224,12 @@ bool regexMatch(string const & a, string const & pattern)
 	if (a.empty())
 		return false;
 	
-	string::size_type si=0, pi=0;
+	string::size_type si= 0, pi= 0;
 	string::size_type const sl = a.length();
 	string::size_type const pl = pattern.length();	
 
 	while (si < sl && pi < pl) {
-		if (pattern[pi]=='*') {
+		if (pattern[pi] == '*') {
 			// Skip all consequtive *s
 			while (pattern[pi] == '*') {
 				++pi;
@@ -265,7 +265,7 @@ bool regexMatch(string const & a, string const & pattern)
 					return false;
 				si += chunk.length()-1;
 				pi += chunk.length();
-				if (si==sl && pi==pl-1)
+				if (si == sl && pi == pl-1)
 					return true;
 			}
 		} else if (a[si++] != pattern[pi++]) {

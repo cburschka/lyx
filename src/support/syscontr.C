@@ -66,9 +66,9 @@ void
 SystemcallsSingletoncontroller::timer() {
 	// check each entry of our list, if it's finished
         ControlledCalls *prev = 0;
-	for (ControlledCalls *actCall=sysCalls; actCall; actCall=actCall->next)
+	for (ControlledCalls *actCall= sysCalls; actCall; actCall= actCall->next)
 	{
-		pid_t pid=actCall->call->getpid();
+		pid_t pid= actCall->call->getpid();
 		int stat_loc;
 		int waitrpid = waitpid(pid, &stat_loc, WNOHANG);
 		if (waitrpid == -1) {

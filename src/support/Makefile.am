@@ -20,6 +20,7 @@ libsupport_a_SOURCES = \
 	LRegex.h \
 	LSubstring.C \
 	LSubstring.h \
+	block.h \
 	filetools.C \
 	filetools.h \
 	lstrings.C \

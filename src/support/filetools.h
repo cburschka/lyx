@@ -70,7 +70,7 @@ public:
 	/// automatic converson to FILE* if that is needed.
 	operator FILE*() { return p; }
 	///
-	FilePtr & operator=(FILE * f) { p=f; return *this;}
+	FilePtr & operator=(FILE * f) { p= f; return *this;}
 	///
 	FILE * operator()() { return p; }
 private:
@@ -94,7 +94,7 @@ private:
 		// Should probably be rewritten to use open(2)
 		if((p = fopen(name.c_str(), modestr.c_str()))) {
 			// file succesfully opened.
-			if (fcntl(fileno(p),F_SETFD,FD_CLOEXEC) == -1) {
+			if (fcntl(fileno(p), F_SETFD, FD_CLOEXEC) == -1) {
 				p = 0;
 			}
 		} else {
@@ -252,7 +252,7 @@ string MakeAbsPath(string const & RelPath = string(),
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-string MakeDisplayPath(string const & path, unsigned int threshold=1000);
+string MakeDisplayPath(string const & path, unsigned int threshold= 1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,

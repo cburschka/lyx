@@ -7,7 +7,7 @@
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 // This one is heavily based on the string class in The C++
 // Programming Language by Bjarne Stroustrup
@@ -415,18 +415,18 @@ public:
 	// replace [(*this)[i], (*this)[i+n]] with other characters:
 
 	///
-	lyxstring & replace(size_type i,size_type n, lyxstring const & str);
+	lyxstring & replace(size_type i, size_type n, lyxstring const & str);
 
 	///
-	lyxstring & replace(size_type i,size_type n, lyxstring const & s,
+	lyxstring & replace(size_type i, size_type n, lyxstring const & s,
 			  size_type i2, size_type n2);
 
 	///
-	lyxstring & replace(size_type i,size_type n, value_type const * p,
+	lyxstring & replace(size_type i, size_type n, value_type const * p,
 			  size_type n2);
 
 	///
-	lyxstring & replace(size_type i,size_type n, value_type const * p);
+	lyxstring & replace(size_type i, size_type n, value_type const * p);
 
 	///
 	lyxstring & replace(size_type i, size_type n,

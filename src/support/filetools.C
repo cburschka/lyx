@@ -105,9 +105,9 @@ string TmpFileName(string const & dir, string const & mask)
 	// a short string...
 	string ret;
 	FileInfo fnfo;
-	for (int a='a'; a<= 'z'; ++a)
-		for (int b='a'; b<= 'z'; ++b)
-			for (int c='a'; c<= 'z'; ++c) {
+	for (int a= 'a'; a<= 'z'; ++a)
+		for (int b= 'a'; b<= 'z'; ++b)
+			for (int c= 'a'; c<= 'z'; ++c) {
 				// if this is not enough I have no idea what
 				// to do.
 				ret = tmpfl + char(a) + char(b) + char(c);
@@ -198,7 +198,7 @@ string FileOpenSearch (string const & path, string const & name,
 	while (notfound && !path_element.empty()) {
 		path_element = CleanupPath(path_element);
 		if (!suffixIs(path_element, '/'))
-			path_element+='/';
+			path_element+= '/';
 		path_element = subst(path_element, "$$LyX", system_lyxdir);
 		path_element = subst(path_element, "$$User", user_lyxdir);
 		
@@ -255,7 +255,7 @@ string FileSearch(string const & path, string const & name,
 string LibFileSearch(string const & dir, string const & name, 
 		      string const & ext)
 {
-        string fullname = FileSearch(AddPath(user_lyxdir,dir), name,
+        string fullname = FileSearch(AddPath(user_lyxdir, dir), name,
 				      ext); 
 	if (!fullname.empty())
 		return fullname;
@@ -266,7 +266,7 @@ string LibFileSearch(string const & dir, string const & name,
 	if (!fullname.empty())
 		return fullname;
 
-	return FileSearch(AddPath(system_lyxdir,dir), name, ext);
+	return FileSearch(AddPath(system_lyxdir, dir), name, ext);
 }
 
 
@@ -348,7 +348,7 @@ int DeleteAllFilesInDir (string const & path)
 	}
 	while ((de = readdir(dir))) {
 		string temp = de->d_name;
-		if (temp=="." || temp=="..") 
+		if (temp == "." || temp == "..") 
 			continue;
 		string unlinkpath = AddName (path, temp);
 
@@ -497,7 +497,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
 #ifdef __EMX__
-		if(RelPath[0]!='/' && RelPath[0]!='\\')
+		if(RelPath[0]!= '/' && RelPath[0]!= '\\')
 #endif
 		return RelPath;
 
@@ -534,8 +534,8 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 		// Split by next /
 		RTemp = split(RTemp, Temp, '/');
 		
-		if (Temp==".") continue;
-		if (Temp=="..") {
+		if (Temp == ".") continue;
+		if (Temp == "..") {
 			// Remove one level of TempBase
 			int i = TempBase.length()-2;
 #ifndef __EMX__
@@ -604,7 +604,7 @@ bool AbsolutePath(string const & path)
 #ifndef __EMX__
 	return (!path.empty() && path[0] == '/');
 #else
-	return (!path.empty() && (path[0]=='/' || (isalpha(static_cast<unsigned char>(path[0])) && path.length()>1 && path[1]==':')));
+	return (!path.empty() && (path[0] == '/' || (isalpha(static_cast<unsigned char>(path[0])) && path.length()>1 && path[1] == ':')));
 #endif
 }
 
@@ -623,13 +623,13 @@ string ExpandPath(string const & path)
 	string copy(RTemp);
 
 	// Split by next /
-	RTemp=split(RTemp, Temp, '/');
+	RTemp= split(RTemp, Temp, '/');
 
-	if (Temp==".") {
+	if (Temp == ".") {
 		return GetCWD() + '/' + RTemp;
-	} else if (Temp=="~") {
+	} else if (Temp == "~") {
 		return GetEnvPath("HOME") + '/' + RTemp;
-	} else if (Temp=="..") {
+	} else if (Temp == "..") {
 		return MakeAbsPath(copy);
 	} else
 		// Don't know how to handle this
@@ -656,14 +656,14 @@ string NormalizePath(string const & path)
 		// Split by next /
 		RTemp = split(RTemp, Temp, '/');
 		
-		if (Temp==".") {
+		if (Temp == ".") {
 			TempBase = "./";
-		} else if (Temp=="..") {
+		} else if (Temp == "..") {
 			// Remove one level of TempBase
 			int i = TempBase.length()-2;
 			while (i>0 && TempBase[i] != '/')
 				--i;
-			if (i>=0 && TempBase[i] == '/')
+			if (i>= 0 && TempBase[i] == '/')
 				TempBase.erase(i+1, string::npos);
 			else
 				TempBase = "../";
@@ -706,14 +706,14 @@ string ReplaceEnvironmentPath(string const & path)
 // 	 Search Environmentvariable
 //	 if found: Replace Strings
 //
-	const char CompareChar = '$';
-	const char FirstChar = '{'; 
-	const char EndChar = '}'; 
-	const char UnderscoreChar = '_'; 
+	char const CompareChar = '$';
+	char const FirstChar = '{'; 
+	char const EndChar = '}'; 
+	char const UnderscoreChar = '_'; 
 	string EndString; EndString += EndChar;
 	string FirstString; FirstString += FirstChar;
 	string CompareString; CompareString += CompareChar;
-	const string RegExp("*}*"); // Exist EndChar inside a String?
+	string const RegExp("*}*"); // Exist EndChar inside a String?
 
 // first: Search for a '$' - Sign.
 	//string copy(path);
@@ -741,7 +741,7 @@ string ReplaceEnvironmentPath(string const & path)
 			continue;
 		}
 		// check contents of res1
-		const char * res1_contents = res1.c_str();
+		char const * res1_contents = res1.c_str();
 		if (*res1_contents != FirstChar) {
 			// Again No Environmentvariable
 			result1 += CompareString;
@@ -750,7 +750,7 @@ string ReplaceEnvironmentPath(string const & path)
 
 		// Check for variable names
 		// Situation ${} is detected as "No Environmentvariable"
-		const char * cp1 = res1_contents+1;
+		char const * cp1 = res1_contents+1;
 		bool result = isalpha(*cp1) || (*cp1 == UnderscoreChar);
 		++cp1;
 		while (*cp1 && result) {
@@ -804,8 +804,8 @@ string MakeRelPath(string const & abspath0, string const & basepath0)
 
 	// Go back to last /
 	if (i < abslen && i < baselen
-	    || (i<abslen && abspath[i] != '/' && i==baselen)
-	    || (i<baselen && basepath[i] != '/' && i==abslen))
+	    || (i<abslen && abspath[i] != '/' && i == baselen)
+	    || (i<baselen && basepath[i] != '/' && i == abslen))
 	{
 		if (i) --i;	// here was the last match
 		while (i && abspath[i] != '/') --i;
@@ -885,7 +885,7 @@ string ChangeExtension(string const & oldname, string const & extension,
 	string ext;
 	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')
-		ext='.' + extension;
+		ext= '.' + extension;
 	else
 		ext = extension;
 	string ret_str;
@@ -955,7 +955,7 @@ bool LyXReadLink(string const & File, string & Link)
 	char LinkBuffer[512];
                 // Should be PATH_MAX but that needs autconf support
 	int nRead;
-	nRead = readlink(File.c_str(), LinkBuffer,sizeof(LinkBuffer)-1);
+	nRead = readlink(File.c_str(), LinkBuffer, sizeof(LinkBuffer)-1);
 	if (nRead <= 0)
 		return false;
 	LinkBuffer[nRead] = 0;

@@ -209,7 +209,7 @@ int main(int, char**)
 {
 	
 	SystemcallsSingletoncontroller::Startcontroller starter; 
-	SystemcallsSingletoncontroller *contr=starter.GetController();
+	SystemcallsSingletoncontroller *contr= starter.GetController();
 	
 	Systemcalls one(Systemcalls::System, "ls -ltag", back);
 	Systemcalls two(Systemcalls::Wait, "ls -ltag", back);

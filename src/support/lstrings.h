@@ -191,7 +191,7 @@ string frontStrip(string const & a, char const * p);
   The leading string up to delim is returned in piece (not including
   delim), while the original string is cut from after the delimiter.
   Example:
-  #s1=""; s2="a;bc".split(s1, ';') -> s1=="a"; s2 == "bc";#
+  #s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";#
   */
 string split(string const & a, string & piece, char delim);
 
