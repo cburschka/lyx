@@ -3,6 +3,9 @@
 	* math_grid.[Ch] -> math_gridinset.[Ch]
 	  math_root.[Ch] -> math_rootinset.[Ch]: more consistent names
 
+	* formulabase.C: fix 'buffer set to (Changed) when moving in math',
+	  fix 'mathed reports wrong width', cosmetics
+
 2001-07-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_cursor.C (operator==): moved ouf of struct

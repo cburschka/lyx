@@ -323,11 +323,11 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 	if (mathcursor) {
 		if (mathcursor->InMacroMode()) {
 			mathcursor->MacroModeClose();
-			updateLocal(bv);
+			updateLocal(bv, true);
 		}
 		delete mathcursor;
+		mathcursor = 0;
 	}
-	mathcursor = 0;
 	bv->updateInset(this, false);
 }
 
@@ -393,10 +393,8 @@ void InsetFormulaBase::hideInsetCursor(BufferView * bv)
 
 void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 {
-	if (!mathcursor)
-		return;
-
-	bv->updateInset(this, false);
+	if (mathcursor)
+		bv->updateInset(this, false);
 }
 
 
@@ -406,10 +404,10 @@ vector<string> const InsetFormulaBase::getLabelList() const
 }
 
 
-void InsetFormulaBase::updateLocal(BufferView * bv)
+void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 {
 	Metrics();
-	bv->updateInset(this, true);
+	bv->updateInset(this, dirty);
 }
 
 
@@ -516,7 +514,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_RIGHT:
 		result = DISPATCH_RESULT(mathcursor->Right(sel));
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 
@@ -525,7 +523,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_LEFT:
 		result = DISPATCH_RESULT(mathcursor->Left(sel));
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 
@@ -534,7 +532,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_UP:
 		result = DISPATCH_RESULT(mathcursor->Up(sel));
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 
@@ -543,39 +541,39 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_DOWN:
 		result = DISPATCH_RESULT(mathcursor->Down(sel));
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 	case LFUN_HOME:
 		mathcursor->Home();
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 	case LFUN_END:
 		mathcursor->End();
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->DelLine();
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_TAB:
 		mathcursor->idxNext();
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 	case LFUN_SHIFT_TAB:
 		mathcursor->idxPrev();
-		updateLocal(bv);
+		updateLocal(bv, false);
 		break;
 
 	case LFUN_TABINSERT:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->splitCell();
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_BACKSPACE:
@@ -613,7 +611,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		is >> x >> y;
 		par_->GetXY(x1, y1);
 		mathcursor->SetPos(x1 + x, y1 + y);
-		updateLocal(bv);
+		updateLocal(bv, false);
 	}
 	break;
 
@@ -624,13 +622,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			mathcursor->MacroModeClose();
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->SelPaste();
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_CUT:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->SelCut();
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_COPY:
@@ -699,7 +697,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		if (mathcursor->toggleLimits())
-			updateLocal(bv);
+			updateLocal(bv, true);
 		break;
 
 	case LFUN_MATH_SIZE:
@@ -707,7 +705,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			latexkeys const * l = in_word_set(arg);
 			mathcursor->SetSize(MathStyles(l ? l->id : static_cast<unsigned int>(-1)));
-			updateLocal(bv);
+			updateLocal(bv, true);
 		}
 		break;
 
@@ -715,7 +713,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			mathcursor->Interpret("matrix " + arg);
-			updateLocal(bv);
+			updateLocal(bv, true);
 		}
 		break;
 
@@ -723,7 +721,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			mathcursor->Interpret(arg);
-			updateLocal(bv);
+			updateLocal(bv, true);
 		}
 		break;
 
@@ -760,14 +758,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				irt = rt[0];
 
 		handleDelim(bv, ilt, irt);
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
 	case LFUN_PROTECTEDSPACE:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->insert(new MathSpaceInset(1));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_UNDO:
@@ -784,7 +782,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->halign(arg.size() ? arg[0] : 'c', p->col(idx));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -797,7 +795,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->valign(arg.size() ? arg[0] : 'c');
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -810,7 +808,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->addRow(p->row(idx));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -823,7 +821,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->delRow(p->row(idx));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -835,7 +833,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->addCol(p->col(idx));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -847,7 +845,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!p)
 			break; 
 		p->delCol(p->col(idx));
-		updateLocal(bv);
+		updateLocal(bv, true);
 		break;
 	}
 
@@ -946,34 +944,34 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				s[0] = c;
 				s[1] = 0;
 				mathcursor->Interpret(s);
-			} else if (c == ' ') {	
+			} else if (c == ' ') {
 				if (!varcode) {	
-					short f = (mathcursor->getLastCode()) ?
+					MathTextCodes f = (mathcursor->getLastCode()) ?
 						mathcursor->getLastCode() :
 						mathcursor->nextCode();
-					varcode = MathIsAlphaFont(f) ?
-						static_cast<MathTextCodes>(f) :
-						LM_TC_VAR;
+					varcode = MathIsAlphaFont(f) ? f : LM_TC_VAR;
 				}
 				
-				if (varcode == LM_TC_TEXTRM) {
+				if (varcode == LM_TC_TEXTRM)
 					mathcursor->insert(c, LM_TC_TEXTRM);
-				} else if (was_macro) {
+				else if (was_macro)
 					mathcursor->MacroModeClose();
-				} else {
-					if (!mathcursor->pop())
-						result = FINISHED;
+				else if (mathcursor->pop())
 					mathcursor->plainRight();
+				else {
+					// this would not work if the inset is in an table!
+					//bv->text->cursorRight(bv, true);
+					result = FINISHED;
 				}
 			} else if (c == '\'' || c == '@') {
-				mathcursor->insert (c, LM_TC_VAR);
+				mathcursor->insert(c, LM_TC_VAR);
 			} else if (c == '\\') {
 				if (was_macro)
 					mathcursor->MacroModeClose();
 				bv->owner()->message(_("TeX mode"));
 				mathcursor->setLastCode(LM_TC_TEX);
 			}
-			updateLocal(bv);
+			updateLocal(bv, true);
 		} else if (action == LFUN_MATH_PANEL) {
 			result = UNDISPATCHED;
 		} else {
@@ -984,15 +982,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	mathcursor->normalize();
 
-	if (mathcursor && was_macro != mathcursor->InMacroMode()
-				&& action >= 0
-				&& action != LFUN_BACKSPACE) 
-  		updateLocal(bv);
+	if (was_macro != mathcursor->InMacroMode()
+				&& action >= 0 && action != LFUN_BACKSPACE) 
+  		updateLocal(bv, true);
 	
-	//if (mathcursor)
-	//		updateLocal(bv);
-
-	if (mathcursor && (mathcursor->Selection() || was_selection))
+	if (mathcursor->Selection() || was_selection)
 		toggleInsetSelection(bv);
 
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE ||
@@ -1116,10 +1110,10 @@ void mathDispatchMathImportSelection(BufferView * bv, string const & arg)
 void mathDispatchMathMacro(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		string s(arg);
-		if (s.empty())
+		if (arg.empty())
 			bv->owner()->getLyXFunc()->setErrorMessage(N_("Missing argument"));
 		else {
+			string s(arg);
 			string const s1 = token(s, ' ', 1);
 			int const na = s1.empty() ? 0 : lyx::atoi(s1);
 			openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
@@ -1147,12 +1141,10 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 void mathDispatchInsertMath(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		if (arg.size() && arg[0] == '\\') {
-			InsetFormula * f = new InsetFormula(arg);
-			openNewInset(bv, f);
-		} else {
+		if (arg.size() && arg[0] == '\\')
+			openNewInset(bv, new InsetFormula(arg));
+		else
 			mathDispatchMathMode(bv, arg);
-		}
 	}
 }
 

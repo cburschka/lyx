@@ -171,7 +171,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			mathcursor->GetPos(x, y);
 			mathcursor->breakLine();
 			mathcursor->normalize();
-			updateLocal(bv);
+			updateLocal(bv, true);
 			break;
 
 		case LFUN_MATH_NUMBER:
@@ -183,7 +183,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				for (int row = 0; row < par()->nrows(); ++row)
 					par()->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
-				updateLocal(bv);
+				updateLocal(bv, true);
 			}
 			break;
 		}
@@ -197,7 +197,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				bool old = par()->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				par()->numbered(row, !old);
-				updateLocal(bv);
+				updateLocal(bv, true);
 			}
 			break;
 		}
@@ -236,14 +236,14 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 			par()->label(row, new_label);
 
-			updateLocal(bv);
+			updateLocal(bv, true);
 			break;
 		}
 
 		case LFUN_MATH_EXTERN:
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			handleExtern(arg, bv);
-			updateLocal(bv);
+			updateLocal(bv, true);
 			break;
 
 		case LFUN_MATH_MUTATE:
@@ -255,7 +255,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			par()->mutate(arg);
 			mathcursor->SetPos(x, y);
 			mathcursor->normalize();
-			updateLocal(bv);
+			updateLocal(bv, true);
 			break;
 		}
 
@@ -270,7 +270,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				par()->mutate(LM_OT_SIMPLE);
 			mathcursor->SetPos(x, y);
 			mathcursor->normalize();
-			updateLocal(bv);
+			updateLocal(bv, true);
 			break;
 		}
 
@@ -343,5 +343,5 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 int InsetFormula::width(BufferView *, LyXFont const &) const
 {
 	Metrics();
-	return par()->width() + 2;
+	return par()->width();
 }

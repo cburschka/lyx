@@ -168,7 +168,7 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 			lyxerr << "inserting macro arg " << i << "\n";
 			if (i > 0 && i <= tmacro()->numargs()) {
 				mathcursor->insert(new MathMacroArgument(i));
-				updateLocal(bv);
+				updateLocal(bv, true);
 			} else {
 				lyxerr << "not in range 0.." << tmacro()->numargs() << "\n";
 			}
