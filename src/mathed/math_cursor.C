@@ -77,6 +77,14 @@ MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
 }
 
 
+MathCursor::~MathCursor()
+{
+  // ensure that 'notifyCursorLeave' is called
+  while (popLeft())
+    ;
+}   
+
+
 void MathCursor::push(MathAtom & t)
 {
 	Cursor_.push_back(MathCursorPos(t.nucleus()));
@@ -103,8 +111,12 @@ void MathCursor::pushRight(MathAtom & t)
 bool MathCursor::popLeft()
 {
 	//cerr << "Leaving atom to the left\n";
-	if (depth() <= 1)
+	if (depth() <= 1) {
+		if (depth() == 1)
+			par()->notifyCursorLeaves();
 		return false;
+	}
+	par()->notifyCursorLeaves();
 	Cursor_.pop_back();
 	return true;
 }
@@ -113,8 +125,12 @@ bool MathCursor::popLeft()
 bool MathCursor::popRight()
 {
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
-	if (depth() <= 1)
+	if (depth() <= 1) {
+		if (depth() == 1)
+			par()->notifyCursorLeaves();
 		return false;
+	}
+	par()->notifyCursorLeaves();
 	Cursor_.pop_back();
 	posRight();
 	return true;

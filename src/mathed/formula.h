@@ -39,8 +39,6 @@ public:
 	///
 	explicit InsetFormula(string const &);
 	///
-	InsetFormula(InsetFormula const &);
-	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -95,15 +93,13 @@ private:
 	///
 	void statusChanged();
 	///
-	void init();
-	///
-	void updatePreview() const;
+	void updatePreview();
 	///
 	bool canPreview() const;
 
 	/// contents
 	MathAtom par_;
-	/// LaTeX preview
-	mutable grfx::Loader loader_;
+	/// non owning pointer
+	mutable grfx::Loader * loader_;
 };
 #endif

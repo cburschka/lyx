@@ -60,6 +60,8 @@ public:
 	///
 	explicit MathCursor(InsetFormulaBase *, bool left);
 	///
+	~MathCursor();
+	///
 	void insert(MathAtom const &);
 	///
 	void insert(MathArray const &);

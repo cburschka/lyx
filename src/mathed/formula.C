@@ -61,24 +61,13 @@ using std::getline;
 
 
 InsetFormula::InsetFormula()
-	: par_(MathAtom(new MathHullInset))
-{
-	init();
-}
-
-
-InsetFormula::InsetFormula(InsetFormula const & f)
-	: InsetFormulaBase(f), par_(f.par_), loader_(f.loader_.filename())
-{
-	init();
-}
+	: par_(MathAtom(new MathHullInset)), loader_(0)
+{}
 
 
 InsetFormula::InsetFormula(MathInsetTypes t)
-	: par_(MathAtom(new MathHullInset(t)))
-{
-	init();
-}
+	: par_(MathAtom(new MathHullInset(t))), loader_(0)
+{}
 
 
 InsetFormula::InsetFormula(string const & s)
@@ -94,8 +83,8 @@ InsetFormula::InsetFormula(string const & s)
 			par_ = MathAtom(new MathHullInset(LM_OT_SIMPLE));
 		}
 	}
-	init();
 	metrics();
+	updatePreview();
 }
 
 
@@ -167,6 +156,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
 	mathed_parse_normal(par_, lex);
 	metrics();
+	updatePreview();
 }
 
 
@@ -189,7 +179,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	MathPainterInfo pi(bv->painter());
 
 	if (canPreview()) {
-		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, *(loader_.image()));
+		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, *(loader_->image()));
 	} else {
 		pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 		pi.base.font  = font;
@@ -354,6 +344,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			result = InsetFormulaBase::localDispatch(bv, action, arg);
 	}
 
+	//updatePreview();
+
 	return result;
 }
 
@@ -404,7 +396,7 @@ int InsetFormula::ascent(BufferView *, LyXFont const &) const
 	const int a = par_->ascent();
 	if (!canPreview())
 		return a + 1;
-	return a + 1 - (par_->height() - loader_.image()->getHeight()) / 2;
+	return a + 1 - (par_->height() - loader_->image()->getHeight()) / 2;
 }
 
 
@@ -413,14 +405,14 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 	const int d = par_->descent();
 	if (!canPreview())
 		return d + 1;
-	return d + 1 - (par_->height() - loader_.image()->getHeight()) / 2;
+	return d + 1 - (par_->height() - loader_->image()->getHeight()) / 2;
 }
 
 
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
-	return canPreview() ? loader_.image()->getWidth() : par_->width();
+	return canPreview() ? loader_->image()->getWidth() : par_->width();
 }
 
 
@@ -436,85 +428,78 @@ MathInsetTypes InsetFormula::getType() const
 
 bool InsetFormula::canPreview() const
 {
-	return lyxrc.preview && !par_->asNestInset()->editing()
-		&& loader_.status() == grfx::Ready;
+	return lyxrc.preview && loader_ && !par_->asNestInset()->editing()
+		&& loader_->status() == grfx::Ready;
 }
 
 
 void InsetFormula::statusChanged()
 {
-	//lyxerr << "### InsetFormula::statusChanged called!, status: "
-	//	<< loader_.status() << "\n";
-	if (loader_.status() == grfx::Ready) 
+	lyxerr << "### InsetFormula::statusChanged called!, status: "
+		<< loader_->status() << "\n";
+	if (loader_->status() == grfx::Ready) 
 		view()->updateInset(this, false);
-	else if (loader_.status() == grfx::WaitingToLoad)
-		loader_.startLoading();
+	else if (loader_->status() == grfx::WaitingToLoad)
+		loader_->startLoading();
 }
 
 
-void InsetFormula::init()
-{
-	if (lyxrc.preview)
-		loader_.statusChanged.connect
-			(boost::bind(&InsetFormula::statusChanged, this));
-}
-
-
-// built some unique filename
-string constructFileName(string const & data)
-{
-	typedef std::map<string, int> cache_type;
-	static cache_type theCache;
-	static int theCounter = 0;
-
-	int number;
-	cache_type::const_iterator it = theCache.find(data);
-	if (it == theCache.end()) 
-		number = theCache[data] = theCounter++;
-	else
-		number = it->second;
-	
-	ostringstream os;
-	os << number;
-	return os.str();
-}
-
-
-void InsetFormula::updatePreview() const
+void InsetFormula::updatePreview()
 {
 	// nothing to be done if no preview requested
+	lyxerr << "### updatePreview() called\n";
 	if (!lyxrc.preview)
 		return;
-	//lyxerr << "### updatePreview() called\n";
 
 	// get LaTeX 
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
 	par_->write(wi);
 	string const data = ls.str();
-	string const base = constructFileName(data);
-	string const dir  = OnlyPath(lyx::tempName());
-	string const file = dir + base + ".lyxpreview";
 
-	// everything is fine already
-	if (loader_.filename() == file)
+	// the preview cache, maps contents to image loaders
+	typedef std::map<string, boost::shared_ptr<grfx::Loader> > cache_type;
+	static cache_type theCache;
+	static int theCounter = 0;
+
+	// set our loader corresponding to our current data
+	cache_type::const_iterator it = theCache.find(data);
+
+	// is this old data?
+	if (it != theCache.end()) {
+		// we have already a loader, connect to it anyway
+		lyxerr << "### updatePreview(), old loader: " << loader_ << "\n";
+		loader_ = it->second.get();
+		loader_->statusChanged.connect
+			(boost::bind(&InsetFormula::statusChanged, this));
 		return;
+	}
+
+	// construct new file name
+	static string const dir = OnlyPath(lyx::tempName());
+	ostringstream os;
+	os << dir << theCounter++ << ".lyxpreview";
+	string file = os.str();
 
 	// the real work starts
-	//lyxerr << "### updatePreview() called for " << file << "\n";
+	lyxerr << "### updatePreview(), new file " << file << "\n";
 	std::ofstream of(file.c_str());
 	of << "\\batchmode"
-	   << "\\documentclass{article}"
-	   << "\\usepackage{amssymb}"
-	   << "\\thispagestyle{empty}"
-	   << "\\pdfoutput=0"
-	   << "\\begin{document}"
-	   << data
-	   << "\\end{document}\n";
+		 << "\\documentclass{article}"
+		 << "\\usepackage{amssymb}"
+		 << "\\thispagestyle{empty}"
+		 << "\\pdfoutput=0"
+		 << "\\begin{document}"
+		 << data
+		 << "\\end{document}\n";
 	of.close();
 
 	// now we are done, start actual loading we will get called back via
 	// InsetFormula::statusChanged() if this is finished
-	loader_.reset(file);
+	lyxerr << "### updatePreview(), new loader: " << loader_ << "\n";
+	theCache[data].reset(new grfx::Loader(file));
+	loader_ = theCache.find(data)->second.get();
+	loader_->startLoading();
+	loader_->statusChanged.connect(boost::bind(&InsetFormula::statusChanged, this));
 }
 

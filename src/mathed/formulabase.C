@@ -158,8 +158,6 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 	mi.base.font  = font_;
 	mi.base.font.setColor(LColor::math);
 	par()->metrics(mi);
-	if (lyxrc.preview)
-		updatePreview();
 }
 
 

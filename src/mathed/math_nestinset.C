@@ -5,6 +5,7 @@
 #include "math_nestinset.h"
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
+#include "formulabase.h"
 #include "debug.h"
 #include "frontends/Painter.h"
 
@@ -233,4 +234,12 @@ MathArray MathNestInset::glue() const
 	for (unsigned i = 0; i < nargs(); ++i)
 		ar.push_back(cell(i));
 	return ar;
+}
+
+
+void MathNestInset::notifyCursorLeaves()
+{
+	//lyxerr << "leaving " << *this << "\n";
+	if (mathcursor)
+		mathcursor->formula()->updatePreview();
 }

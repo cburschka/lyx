@@ -244,6 +244,8 @@ public:
 	virtual bool lock() const { return false; }
 	/// access to the lock (only nest array have one)
 	virtual void lock(bool) {}
+	/// get notification when the cursor leaves this inset
+	virtual void notifyCursorLeaves() {}
 
 	/// write LaTeX and Lyx code
 	virtual void write(WriteStream & os) const;

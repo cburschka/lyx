@@ -57,6 +57,8 @@ public:
 	bool lock() const;
 	/// access to the lock
 	void lock(bool);
+	/// get notification when the cursor leaves this inset
+	void notifyCursorLeaves();
 
 	/// direct access to the cell
 	MathArray & cell(idx_type);
