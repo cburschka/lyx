@@ -239,6 +239,7 @@ void Buffer::setFileName(string const & newfile)
 }
 
 int unknown_layouts;
+int unknown_tokens;
 
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
@@ -251,6 +252,7 @@ int unknown_layouts;
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
 	unknown_layouts = 0;
+	unknown_tokens = 0;
 	int pos = 0;
 	char depth = 0; // signed or unsigned?
 #ifndef NEW_INSETS
@@ -327,7 +329,19 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		}
 		WriteAlert(_("Textclass Loading Error!"), s,
 			   _("When reading " + fileName()));
-	}	
+	}
+
+	if (unknown_tokens > 0) {
+		string s = _("Encountered ");
+		if (unknown_tokens == 1) {
+			s += _("one unknown token");
+		} else {
+			s += tostr(unknown_tokens);
+			s += _(" unknown tokens");
+		}
+		WriteAlert(_("Textclass Loading Error!"), s,
+			   _("When reading " + fileName()));
+	}
 
 	return the_end_read;
 }
@@ -971,14 +985,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		the_end_read = true;
 	} else {
 		// This should be insurance for the future: (Asger)
-		lex.printError("Unknown token `$$Token'. "
-			       "Inserting as text.");
-		string::const_iterator cit = token.begin();
-		string::const_iterator end = token.end();
-		for (; cit != end; ++cit) {
-			par->InsertChar(pos, (*cit), font);
-			++pos;
-		}
+		++unknown_tokens;
+		lex.EatLine();
+		string const s = _("Unknown token: ") + token
+			+ " " + lex.text()  + "\n";
+
+		InsetError * new_inset = new InsetError(s);
+		par->InsertInset(pos, new_inset);
 	}
 	return the_end_read;
 }

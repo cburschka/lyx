@@ -2,6 +2,9 @@
 
 	* src/buffer.C (makeLaTeXFile): Use the twoside option for the geometry
 	package when necessary.
+	(parseSingleLyXformat2Token): Insert an error inset
+	when encountering an unknown token.
+	(readLyXformat2): Show an error message if there were unknown tokens.
 
 2001-02-21  Dekel Tsur  <dekelts@tau.ac.il>
 
