@@ -1913,7 +1913,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 	if (lyxrc.auto_number) {
 		if (current_font.number() == LyXFont::ON) {
 			if (!isdigit(c) && !strchr("+-/*", c) &&
-			    !(strchr(".,",c) &&
+			    !(strchr(".,:",c) &&
 			      cursor.pos() >= 1 &&
 			      cursor.pos() < cursor.par()->size() &&
 			      GetFont(bview->buffer(),
@@ -1939,7 +1939,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 						    cursor.par(),
 						    cursor.pos() - 1,
 						    current_font);
-				} else if (strchr(".,", c) &&
+				} else if (strchr(".,:", c) &&
 					   cursor.pos() >= 2 &&
 					   GetFont(bview->buffer(),
 						   cursor.par(),
