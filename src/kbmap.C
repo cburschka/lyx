@@ -23,12 +23,17 @@ string const kb_keymap::printKeysym(LyXKeySymPtr key,
 
 	string const s = key->getSymbolName();
 
-	if (mod & key_modifier::shift) buf += "S-";
-	if (mod & key_modifier::ctrl) buf += "C-";
-	if (mod & key_modifier::alt) buf += "M-";
+	if (mod & key_modifier::shift)
+		buf += "S-";
+	if (mod & key_modifier::ctrl)
+		buf += "C-";
+	if (mod & key_modifier::alt)
+		buf += "M-";
+
 	buf += s;
 	return buf;
 }
+
 
 string const kb_keymap::printKey(kb_key const & key) const
 {
@@ -68,8 +73,8 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 		return LFUN_UNKNOWN_ACTION;
 	}
 
-	for (Table::const_iterator cit = table.begin();
-	     cit != table.end(); ++cit) {
+	Table::const_iterator end = table.end();
+	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
 		key_modifier::state mask(cit->mod.second);
 		key_modifier::state check =
 			static_cast<key_modifier::state>(mod & ~mask);
@@ -99,8 +104,8 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 string const kb_keymap::print() const
 {
 	string buf;
-	for (Table::const_iterator cit = table.begin();
-	     cit != table.end(); ++cit) {
+	Table::const_iterator end = table.end();
+	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
 		buf += printKey((*cit));
 		buf += ' ';
 	}
@@ -118,7 +123,8 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 	key_modifier::state const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
-	for (Table::iterator it = table.begin(); it != table.end(); ++it) {
+	Table::iterator end = table.end();
+	for (Table::iterator it = table.begin(); it != end; ++it) {
 		if (*(code) == *(it->code)
 		    && mod1 == it->mod.first
 		    && mod2 == it->mod.second) {

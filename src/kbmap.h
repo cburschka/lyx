@@ -15,7 +15,7 @@
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 
-#include <list>
+#include <vector>
 
 class kb_sequence;
 
@@ -87,7 +87,7 @@ private:
 		return table.empty();
 	}
 	///
-	typedef std::list<kb_key> Table;
+	typedef std::vector<kb_key> Table;
 	///
 	Table table;
 };
