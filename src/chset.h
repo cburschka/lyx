@@ -9,10 +9,10 @@
 #include <map>
 #include <utility>
 
+#include "LString.h"
+
 using std::map;
 using std::pair;
-
-#include "LString.h"
 
 ///
 class CharacterSet {

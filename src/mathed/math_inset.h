@@ -30,6 +30,7 @@
 #include "symbol_def.h"
 #include "LString.h"
 
+using std::ostream;
 
 /**
  Functions or LaTeX names for objects that I don't know how to draw.

@@ -13,6 +13,8 @@
 #endif
 
 
+using std::endl;
+
 //
 // Default constructor
 //

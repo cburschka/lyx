@@ -7,9 +7,10 @@
 
 #include "LString.h"
 
+using std::vector;
+
 class LyXLex;
 
-using std::vector;
 
 ///
 class ToolbarDefaults {

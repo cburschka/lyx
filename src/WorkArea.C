@@ -22,6 +22,8 @@
 #include "support/lstrings.h"
 #include "BufferView.h"
 
+using std::endl;
+
 FL_OBJECT * figinset_canvas;
 
 // need to make the c++ compiler fint the correct version of abs.

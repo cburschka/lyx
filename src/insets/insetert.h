@@ -20,6 +20,8 @@
 
 #include "insetcollapsable.h"
 
+using std::ostream;
+
 class Painter;
 
 /** A colapsable text inset

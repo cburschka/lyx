@@ -12,6 +12,8 @@
 #include "debug.h"
 #include "trans_mgr.h"
 
+using std::endl;
+
 
 // KmodInfo
 KmodInfo::KmodInfo()

@@ -33,6 +33,8 @@
 
 static LyxArrayBase * selarray = 0;
 
+using std::endl;
+
 inline
 bool IsAlpha(char c)
 {

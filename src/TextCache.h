@@ -18,9 +18,13 @@
 #pragma interface
 #endif
 
+#include <iosfwd>
+
 #include "LString.h"
-#include "support/LOstream.h"
 #include "lyxtext.h"
+
+using std::ostream;
+using std::vector;
 
 class Buffer;
 

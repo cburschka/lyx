@@ -14,9 +14,10 @@
 #endif
 
 #include <list>
-using std::list;
 
 #include "LString.h"
+
+using std::list;
 
 class kb_sequence;
 

@@ -21,6 +21,8 @@
 #include "LString.h"
 #include "gettext.h"
 
+using std::ostream;
+
 /** Used for error messages from LaTeX runs.
   
   The edit-operation opens a 

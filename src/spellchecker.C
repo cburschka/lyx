@@ -50,6 +50,8 @@
 #include "support/lstrings.h"
 
 
+using std::endl;
+
 // Spellchecker status
 enum {
 	ISP_OK = 1,

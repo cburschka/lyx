@@ -23,6 +23,8 @@
 
 #include "formula.h"
 
+using std::ostream;
+
 class MathMacroTemplate;
 
 

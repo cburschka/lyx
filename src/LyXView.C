@@ -33,6 +33,8 @@
 #include "layout.h"
 #include "lyxtext.h"
 
+using std::endl;
+
 extern FD_form_document * fd_form_document;
 
 extern void AutoSave();

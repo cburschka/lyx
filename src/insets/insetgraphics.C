@@ -22,6 +22,8 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 
+using std::endl;
+
 extern string system_lyxdir;
 extern string user_lyxdir;
 extern string system_tempdir;
@@ -188,7 +190,8 @@ void InsetGraphics::Read(LyXLex & /*lex*/)
 }
 
 
-int InsetGraphics::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
+int InsetGraphics::Latex(ostream & os,
+			 signed char /*fragile*/, bool/*fs*/) const
 {
 	// MISSING: We have to decide how to do the order of the options
 	// that is depentant of order, like witdth, height, andlge. Should

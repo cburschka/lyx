@@ -12,6 +12,8 @@
 #include "support/syscall.h"
 #include "gettext.h"
 
+using std::endl;
+
 /* Prototypes */
 
 bool sendfax(string const &fname, string const &sendcmd);

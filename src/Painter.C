@@ -29,6 +29,8 @@
 #include "support/lstrings.h"
 #include "WorkArea.h"
 
+using std::endl;
+
 Painter::Painter(WorkArea & wa)
 	: PainterBase(wa)
 {

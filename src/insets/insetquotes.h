@@ -18,6 +18,8 @@
 
 #include "lyxinset.h"
 
+using std::ostream;
+
 class BufferParams;
 
 struct LaTeXFeatures;

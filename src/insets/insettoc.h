@@ -19,6 +19,8 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
+using std::ostream;
+
 class Buffer;
 
 /** Used to insert table of contents

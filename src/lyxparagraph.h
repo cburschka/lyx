@@ -27,13 +27,15 @@
 #include "direction.h"
 #include "language.h"
 
+using std::ostream;
+using std::list;
+using std::vector;
+
 class BufferParams;
 class LyXBuffer;
 class TexRow;
 struct LaTeXFeatures;
 class InsetBibKey;
-
-using std::list;
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
@@ -181,8 +183,8 @@ public:
 			|| dhook->GetDepth() != GetDepth());
 	}
 
-	/// Check if the current paragraph is the last paragraph in a
-	/// proof environment
+	/** Check if the current paragraph is the last paragraph in a
+	    proof environment */
 	int GetEndLabel() const;
 
 private:
@@ -500,8 +502,8 @@ public:
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 	///
-	void DocBookContTableRows(ostream &, string & extra, int & desc_on,
-				  size_type i,
+	void DocBookContTableRows(ostream &, string & extra,
+				  int & desc_on, size_type i,
 				  int current_cell_number, int & column);
 	///
 	void SimpleDocBookOneTablePar(ostream &, string & extra,

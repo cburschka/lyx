@@ -19,6 +19,4 @@
 #include <iostream>
 #endif
 
-using std::istream;
-
 #endif

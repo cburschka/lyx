@@ -25,6 +25,8 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 
+using std::endl;
+
 /* Info, used for the Info boxes */
 
 extern BufferView * current_view;
@@ -126,7 +128,8 @@ void InsetInfo::Read(LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(ostream &, signed char /*fragile*/, bool /*free_spc*/) const
+int InsetInfo::Latex(ostream &,
+		     signed char /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }

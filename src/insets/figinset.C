@@ -49,6 +49,7 @@ using std::list;
 using std::vector;
 using std::find;
 using std::flush;
+using std::endl;
 
 #include "figinset.h"
 #include "lyx.h"
@@ -1141,7 +1142,8 @@ void InsetFig::Read(LyXLex & lex)
 }
 
 
-int InsetFig::Latex(ostream & os, signed char /* fragile*/, bool /* fs*/) const
+int InsetFig::Latex(ostream & os,
+		    signed char /* fragile*/, bool /* fs*/) const
 {
 	Regenerate();
 	if (!cmd.empty()) os << cmd << " ";

@@ -17,10 +17,10 @@
 #endif
 
 #include <deque>
-using std::deque;
 
 #include "LString.h"
 
+using std::deque;
 
 /** The latest documents loaded
     This class takes care of the last .lyx files used by the LyX user. It

@@ -20,6 +20,8 @@
 #include "lyxfont.h"
 #include "lyxlex.h"
 
+using std::ostream;
+
 class Painter;
 class Buffer;
 class BufferView;

@@ -21,6 +21,8 @@
 #include "buffer.h"
 #include "debug.h"
 
+using std::vector;
+
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
   of structure the buffers are stored in. Should be no concern for

@@ -13,10 +13,6 @@
 #include <fstream>
 #include <algorithm>
 
-using std::ifstream;
-using std::copy;
-using std::back_inserter;
-
 #include "LString.h"
 #include "support/lstrings.h"
 #include "lyx_main.h"
@@ -57,6 +53,14 @@ using std::back_inserter;
 #include "gettext.h"
 #include "layout.h"
 #include "language.h"
+
+using std::ifstream;
+using std::copy;
+using std::back_inserter;
+using std::endl;
+using std::cout;
+using std::ios;
+using std::istream_iterator;
 
 extern Combox * combo_language;
 extern BufferList bufferlist;
@@ -176,13 +180,15 @@ void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
 
-void ShowMessage(Buffer * buf, string const & msg1,
-	string const & msg2 = string(), string const & msg3 = string(), int delay=6)
+void ShowMessage(Buffer * buf,
+		 string const & msg1,
+		 string const & msg2 = string(),
+		 string const & msg3 = string(), int delay = 6)
 {
 	if (lyxrc.use_gui) {
-		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2, msg3, delay);
-	}
-	else {
+		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2,
+							      msg3, delay);
+	} else {
 		// can somebody think of something more clever? cerr?
 		cout << msg1 << msg2 << msg3 << endl;
 	}
@@ -521,8 +527,8 @@ bool RunScript(Buffer * buffer, bool wait,
 	// substitute the real file name otherwise the filename is
 	// simply appended. rokrau 1/12/00
 	cmd = command;
-	std::string::size_type i;
- 	if ( (i=command.find("$$FName")) != std::string::npos)
+	string::size_type i;
+ 	if ( (i=command.find("$$FName")) != string::npos)
 	{
 		cmd.replace(i,7,QuoteName(name));
 	}
@@ -1220,9 +1226,9 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		return;
 	}
 
-	ifs.unsetf(std::ios::skipws);
-	std::istream_iterator<char> ii(ifs);
-	std::istream_iterator<char> end;
+	ifs.unsetf(ios::skipws);
+	istream_iterator<char> ii(ifs);
+	istream_iterator<char> end;
 	//string tmpstr(ii, end); // yet a reason for using std::string
 	// alternate approach to get the file into a string:
 	string tmpstr;

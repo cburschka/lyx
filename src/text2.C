@@ -40,6 +40,7 @@
 #define FIX_DOUBLE_SPACE 1
 
 using std::copy;
+using std::endl;
 
 LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 {

@@ -69,6 +69,8 @@
 #include "WorkArea.h"
 #include "lyxfr1.h"
 
+using std::endl;
+
 extern bool cursor_follows_scrollbar;
 
 extern void InsertAsciiFile(BufferView *, string const &, bool);

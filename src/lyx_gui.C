@@ -44,6 +44,8 @@
 #include "banner.xpm"
 #endif
 
+using std::endl;
+
 FD_form_title * fd_form_title;
 FD_form_paragraph * fd_form_paragraph;
 FD_form_paragraph_extra * fd_form_paragraph_extra;

@@ -19,6 +19,8 @@
 #include "buffer.h"
 #include "support/filetools.h"
 
+using std::ostream;
+
 struct LaTeXFeatures;
 
 // Created by AAS 970521

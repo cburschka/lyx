@@ -166,7 +166,8 @@ string InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(ostream & os, signed char fragile, bool /*free_spc*/) const
+int InsetUrl::Latex(ostream & os,
+		    signed char fragile, bool /*free_spc*/) const
 {
 	if (!getOptions().empty())
 		os << getOptions() + ' ';

@@ -25,6 +25,7 @@
 #include "support/lyxmanip.h"
 
 using std::max;
+using std::endl;
 
 static int const WIDTH_OF_LINE = 5;
 
@@ -1435,7 +1436,7 @@ char const *LyXTable::getDocBookAlign(int cell, bool isColumn)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::DocBookEndOfCell(ostream & os, int cell, int &depth)
+int LyXTable::DocBookEndOfCell(ostream & os, int cell, int & depth)
 {
     int i;
     int ret = 0;

@@ -19,6 +19,8 @@
 #include "LString.h"
 #include "lyxlex.h"
 
+using std::ostream;
+
 /** Insertion of accents
   
   Proper handling of accented characters.

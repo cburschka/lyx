@@ -16,6 +16,8 @@
 #pragma interface
 #endif
 
+#include <iosfwd>
+
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include "debug.h"
@@ -35,6 +37,7 @@
 #undef OFF
 #endif
 
+using std::ostream;
 
 class LyXLex;
 

@@ -19,6 +19,8 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
+using std::endl;
+
 /*  
      NAMING RULES FOR USER-COMMANDS
      Here's the set of rules to apply when a new command name is introduced:

@@ -35,6 +35,7 @@
 
 using std::max;
 using std::min;
+using std::endl;
 
 static const int LYX_PAPER_MARGIN = 20;
 

@@ -23,6 +23,9 @@
 #include "LString.h"
 //#include "buffer.h"
 
+using std::ostream;
+using std::vector;
+
 class Painter;
 class BufferView;
 class Buffer;

@@ -33,6 +33,7 @@
 #include "gettext.h"
 
 using std::ifstream;
+using std::endl;
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to

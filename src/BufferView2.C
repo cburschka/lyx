@@ -26,6 +26,7 @@
 
 extern BufferList bufferlist;
 
+using std::endl;
 using std::ifstream;
 
 // Inserts a file into current document

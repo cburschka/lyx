@@ -26,6 +26,8 @@
 #include "gettext.h"
 #include "LyXAction.h"
 
+using std::endl;
+
 extern bool keyseqUncomplete();
 extern string keyseqOptions(int l= 190);
 extern string keyseqStr(int l= 190);

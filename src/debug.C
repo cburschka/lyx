@@ -15,7 +15,9 @@
 #include "debug.h"
 
 #include <iomanip>
+
 using std::setw;
+using std::endl;
 
 struct error_item {
 	Debug::type level;

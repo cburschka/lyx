@@ -14,6 +14,7 @@
 #include "insets/lyxinset.h"
 /* the rest is figure stuff */
 
+using std::ostream;
 
 struct Figref;
 

@@ -45,6 +45,8 @@
 #include "gettext.h"
 #include "layout.h"
 
+using std::endl;
+
 extern FD_form_screen * fd_form_screen;
 extern BufferList bufferlist;
 

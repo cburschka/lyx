@@ -25,8 +25,7 @@
 #pragma interface
 #endif
 
-#include "LOstream.h"
-#include "LIstream.h"
+#include <iosfwd>
 
 #if 0
 #include <iterator>

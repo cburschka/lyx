@@ -92,6 +92,8 @@ using std::setw;
 #include "gettext.h"
 #include "language.h"
 
+using std::endl;
+
 // Uncomment this line to enable a workaround for the weird behaviour
 // of the cursor between a displayed inset and last character
 // at the upper line. (Alejandro 20.9.96)
@@ -1133,10 +1135,10 @@ bool Buffer::save() const
 		FileInfo finfo(fileName());
 		if (finfo.exist()) {
 			mode_t fmode = finfo.getMode();
-			struct utimbuf * times = new struct utimbuf;
+			struct utimbuf times = {
+				finfo.getAccessTime(),
+				finfo.getModificationTime() };
 
-			times->actime = finfo.getAccessTime();
-			times->modtime = finfo.getModificationTime();
 			ifstream ifs(fileName().c_str());
 			ofstream ofs(s.c_str(), ios::out|ios::trunc);
 			if (ifs && ofs) {
@@ -1145,14 +1147,13 @@ bool Buffer::save() const
 				ofs.close();
 				::chmod(s.c_str(), fmode);
 				
-				if (::utime(s.c_str(), times)) {
+				if (::utime(s.c_str(), &times)) {
 					lyxerr << "utime error." << endl;
 				}
 			} else {
 				lyxerr << "LyX was not able to make "
 					"backupcopy. Beware." << endl;
 			}
-			delete times;
 		}
 	}
 	
@@ -2528,6 +2529,7 @@ void Buffer::push_tag(ostream & os, char const * tag,
 	for (int i = 0; i <= pos; ++i)
 		os << "<" << stack[i] << ">";
 }
+
 
 void Buffer::pop_tag(ostream & os, char const * tag,
                      int & pos, char stack[5][3])

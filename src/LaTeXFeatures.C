@@ -23,6 +23,7 @@
 #include "bufferparams.h"
 #include "layout.h"
 
+using std::endl;
 
 LaTeXFeatures::LaTeXFeatures(int n)
 	: layout(n, false)

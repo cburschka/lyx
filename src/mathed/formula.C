@@ -15,6 +15,13 @@
 
 #include <config.h>
 
+#ifdef HAVE_SSTREAM
+#include <sstream>
+using std::istringstream;
+#else
+#include <strstream>
+#endif
+
 #ifdef __GNUG__
 #pragma implementation "formula.h"
 #endif
@@ -34,6 +41,9 @@
 #include "support/LOstream.h"
 #include "LyXView.h"
 #include "Painter.h"
+
+using std::pair;
+using std::endl;
 
 extern char * mathed_label;
 

@@ -30,6 +30,8 @@
 #include "gettext.h"
 #include "kbmap.h"
 
+using std::endl;
+
 extern void LoadLyXFile(string const &);
 
 string system_lyxdir;

@@ -30,6 +30,7 @@
 #include "support/lstrings.h"
 #include "language.h"
 
+using std::endl;
 
 // a wrapper around the callback static member.
 extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);

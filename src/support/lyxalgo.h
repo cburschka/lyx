@@ -3,9 +3,6 @@
 #ifndef LYX_ALGO_H
 #define LYX_ALGO_H
 
-// Both these functions should ideally be placed into namespace lyx.
-// Also the using std::less should not be used.
-
 //namespace lyx {
 
 /// Returns true if the sequence first,last is sorted, false if not.

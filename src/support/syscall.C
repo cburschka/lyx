@@ -16,6 +16,9 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
+using std::endl;
+
+
 Systemcalls::Systemcalls() {
 	pid = 0; // No child yet
 }

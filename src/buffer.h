@@ -35,6 +35,7 @@
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 
+using std::ostream;
 
 class LyXRC;
 class TeXErrors;

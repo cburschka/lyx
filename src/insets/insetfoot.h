@@ -20,6 +20,7 @@
 
 #include "insetcollapsable.h"
 
+using std::ostream;
 
 class Painter;
 

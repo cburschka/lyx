@@ -93,6 +93,7 @@
 #include "layout_std.xpm"
 #include "build.xpm"
 
+using std::endl;
 
 // this one is not "C" because combox callbacks are really C++ %-|
 extern void LayoutsCB(int, void *);

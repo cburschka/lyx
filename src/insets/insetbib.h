@@ -18,6 +18,8 @@
 
 #include "insetcommand.h"
 
+using std::ostream;
+
 class Buffer;
 
 /** Used to insert citations  

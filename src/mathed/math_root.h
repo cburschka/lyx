@@ -24,6 +24,7 @@
 #include "symbol_def.h"
 #include "LString.h"
 
+using std::ostream;
 
 ///
 class MathRootInset: public MathSqrtInset {

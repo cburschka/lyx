@@ -19,6 +19,8 @@
 #include "buffer.h"
 #include "form_url.h"
 
+using std::ostream;
+
 struct LaTeXFeatures;
 
 /** The url inset  

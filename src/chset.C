@@ -5,7 +5,6 @@
 #endif
 
 #include <fstream>
-using std::ifstream;
 
 #include "chset.h"
 #include "support/filetools.h"
@@ -13,7 +12,9 @@ using std::ifstream;
 #include "support/LSubstring.h"
 #include "debug.h"
 
+using std::ifstream;
 using std::make_pair;
+using std::endl;
 
 bool CharacterSet::loadFile(string const & fname)
 {

@@ -17,12 +17,13 @@
 
 #include "LString.h"
 #include <map>
-using std::map;
-using std::pair;
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+using std::map;
+using std::pair;
 
 ///
 class DepTable {
@@ -53,7 +54,8 @@ public:
 	void remove_files_with_extension(string const &);
 private:
 	///
-	typedef map<string, pair<unsigned long, unsigned long> > DepList;
+	typedef map<string,
+		pair<unsigned long, unsigned long> > DepList;
 	///
 	DepList deplist;
 };

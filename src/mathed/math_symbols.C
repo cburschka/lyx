@@ -23,7 +23,6 @@
 #endif
 
 #include <algorithm>
-using std::max;
 
 #include "lyx_main.h"
 #include "buffer.h"
@@ -39,6 +38,9 @@ using std::max;
 
 #include "math_panel.h"                 
 #include "math_parser.h"
+
+using std::max;
+using std::endl;
 
 extern short greek_kb_flag;
 

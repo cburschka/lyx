@@ -11,13 +11,14 @@
 #pragma interface
 #endif
 
+#include <iosfwd>
 #include <fstream>
-using std::filebuf;
-
-#include "support/LIstream.h"
-#include "support/LOstream.h"
 
 #include "LString.h"
+
+using std::ostream;
+using std::istream;
+using std::filebuf;
 
 ///
 struct keyword_item {

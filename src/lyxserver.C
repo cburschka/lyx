@@ -66,6 +66,8 @@
 #include "os2_errortable.h"
 #endif
 
+using std::endl;
+
 // provide an empty mkfifo() if we do not have one. This disables the
 // lyxserver. 
 #ifndef HAVE_MKFIFO

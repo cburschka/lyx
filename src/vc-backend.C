@@ -5,7 +5,6 @@
 #endif
 
 #include <fstream>
-using std::ifstream;
 
 #include "vc-backend.h"
 #include "debug.h"
@@ -17,6 +16,8 @@ using std::ifstream;
 #include "LyXView.h"
 #include "lyxfunc.h"
 
+using std::endl;
+using std::ifstream;
 
 int VCS::doVCCommand(string const & cmd, string const & path)
 {

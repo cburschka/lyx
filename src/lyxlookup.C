@@ -24,6 +24,8 @@
 
 #include "debug.h"
 
+using std::endl;
+
 static XIM xim;
 static XIC xic;
 XComposeStatus compose_status= {0, 0};

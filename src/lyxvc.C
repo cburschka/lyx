@@ -17,6 +17,7 @@
 #include "lyxfunc.h"
 #include "LyXView.h"
 
+using std::endl;
 
 LyXVC::LyXVC()
 {
@@ -100,8 +101,9 @@ void LyXVC::registrer()
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
-	pair<bool, string> tmp = askForText(_("LyX VC: Initial description"),
-					    _("(no initial description)"));
+	pair<bool, string> tmp =
+		askForText(_("LyX VC: Initial description"),
+			   _("(no initial description)"));
 	if (!tmp.first || tmp.second.empty()) {
 		// should we insist on checking tmp.second.empty()?
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;

@@ -23,6 +23,8 @@
 #include "lyxfont.h"
 #include "Painter.h"
 
+using std::endl;
+
 extern LyXFont mathed_get_font(short type, int size);
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, byte const* s, int ls);

@@ -19,10 +19,11 @@
 
 #include <vector>
 #include <set>
-using std::vector;
-using std::set;
 
 #include "LString.h"
+
+using std::vector;
+using std::set;
 
 class BufferParams; 
 class LyXTextClass;

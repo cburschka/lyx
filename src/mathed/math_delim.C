@@ -27,6 +27,7 @@
 
 using std::sort;
 using std::lower_bound;
+using std::endl;
 
 /* 
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:

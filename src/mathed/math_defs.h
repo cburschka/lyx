@@ -24,12 +24,15 @@
 #pragma interface
 #endif
 
-#include "support/LIstream.h"
+#include <iosfwd>
 
 #include "LString.h"
 #include "debug.h"
 
 #include "array.h"
+
+using std::ostream;
+using std::istream;
 
 class Painter;
 

@@ -21,6 +21,8 @@
 #include "vspace.h"
 #include "insets/BoundingBox.h"
 
+using std::ostream;
+
 struct FD_Graphics;
 
 ///

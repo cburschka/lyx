@@ -43,7 +43,8 @@ void InsetParent::Edit(BufferView * bv, int, int, unsigned int)
 
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(ostream & os, signed char fragile, bool free_spc) const
+int InsetParent::Latex(ostream & os,
+		       signed char fragile, bool free_spc) const
 {
 	os << "%%#{lyx}";
 	InsetCommand::Latex(os, fragile, free_spc);

@@ -19,6 +19,7 @@
 #include "lyxparagraph.h"
 
 #include <list>
+
 using std::list;
 
 ///

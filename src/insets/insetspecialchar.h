@@ -18,6 +18,8 @@
 #include "lyxinset.h"
 #include "LString.h"
 
+using std::ostream;
+
 struct LaTeXFeatures;
 
 ///  Used to insert special chars

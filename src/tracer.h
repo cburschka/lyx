@@ -1,19 +1,24 @@
+// -*- C++ -*-
 #ifndef TRACER_H
 #define TRACER_H
 
 #include "debug.h"
 #include "LString.h"
 
+using std::endl;
+
 class DebugTracer {
 public:
 	DebugTracer(string const & s) : str(s) {
-		lyxerr << string(depth, ' ') << "Trace begin : " << str << endl;
+		lyxerr << string(depth, ' ') << "Trace begin : "
+		       << str << endl;
 		++depth;
 		
 	}
 	~DebugTracer() {
 		--depth;
-		lyxerr << string(depth, ' ') << "Trace end : " << str << endl;
+		lyxerr << string(depth, ' ') << "Trace end : "
+		       << str << endl;
 	}
 private:
 	string str;

@@ -12,14 +12,9 @@
 #ifndef SPACING_H
 #define SPACING_H
 
-#ifdef HAVE_SSTREAM
-#include <sstream>
-using std::istringstream;
-#else
-#include <strstream>
-#endif
+#include <iosfwd>
 
-#include "support/LOstream.h"
+using std::ostream;
 
 ///
 class Spacing {
@@ -41,42 +36,13 @@ public:
 		value = getValue();
 	}
 	///
-	float getValue() const {
-		switch(space) {
-		case Single: return 1.0;
-		case Onehalf: return 1.25;
-		case Double: return 1.667;
-		case Other: return value;
-		}
-		return 1.0;
-	}
+	float getValue() const;
 	///
-	Spacing::Space getSpace() const {
-		return space;
-	}
+	Spacing::Space getSpace() const { return space; }
 	///
-	void set(Spacing::Space sp, float val = 1.0) {
-		space = sp;
-		if (sp == Other) {
-			switch(int(val * 1000 + 0.5)) {
-			case 1000: space = Single; break;
-			case 1250: space = Onehalf; break;
-			case 1667: space = Double; break;
-			default: value = val; break;
-			}
-		}
-	}
+	void set(Spacing::Space sp, float val = 1.0);
 	///
-	void set(Spacing::Space sp, char const * val) {
-		float fval;
-#ifdef HAVE_SSTREAM
-		istringstream istr(val);
-#else
-		istrstream istr(val);
-#endif
-		istr >> fval;
-		set(sp, fval);
-	}
+	void set(Spacing::Space sp, char const * val) ;
 	///
 	void writeFile(ostream &) const;
 	///
@@ -91,5 +57,4 @@ private:
 	///
 	float value;
 };
-
 #endif

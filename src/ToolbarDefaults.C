@@ -4,6 +4,8 @@
 #include "LyXAction.h"
 #include "toolbar.h"
 
+using std::endl;
+
 extern LyXAction lyxaction;
 
 

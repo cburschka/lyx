@@ -9,7 +9,10 @@
  * ====================================================== */
 
 #include <config.h>
+#include <iostream>
+
 #include FORMS_H_LOCATION
+
 #include "lyx_main.h"
 #include "gettext.h"
 #include "LString.h"
@@ -23,8 +26,38 @@
        If you want to try to compile anyway, delete this test in src/main.C.
 #endif
 
+using std::cerr;
+using std::endl;
 
-int main(int argc, char *argv[]) {
+static int const xforms_include_version = FL_INCLUDE_VERSION;
+
+int main(int argc, char * argv[])
+{
+	// Check the XForms version in the forms.h header against
+	// the one in the libforms. If they don't match quit the
+	// execution of LyX. Better with a clean fast exit than
+	// a strange segfault later.
+	// I realize that this check have to be moved when we
+	// support several toolkits, but IMO all the toolkits
+	// should try to have the same kind of check. This could
+	// be done by having a CheckHeaderAndLib function in
+	// all the toolkit implementations, this function is
+	// responsible for notifing the user.
+	// if (!CheckHeaderAndLib()) {
+	//         // header vs. lib version failed
+	//         return 1;
+	// }
+	int xforms_lib_version = fl_library_version(0, 0);
+	if (xforms_include_version != xforms_lib_version) {
+		cerr << "You are either running LyX with wrong "
+			"version of a dynamic XForms library\n"
+			"or you have build LyX with conflicting header "
+			"and library (different\n"
+			"versions of XForms. Sorry but there is no point "
+			"in continuing executing LyX!" << endl;
+		return 1;
+	}
+	
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
 	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");

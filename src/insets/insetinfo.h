@@ -20,6 +20,8 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 
+using std::ostream;
+
 /** Info. Handles the note insets.
   
   This class handles the note insets. The edit operation bringes up

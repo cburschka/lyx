@@ -17,6 +17,7 @@
 #endif
 
 #include <list>
+
 using std::list;
 
 class LyXParagraph;

@@ -20,6 +20,7 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 
+using std::endl;
 
 /* LatexAccent. Proper handling of accented characters */
 /* This part is done by Ivan Schreter, schreter@ccsun.tuke.sk */
@@ -744,7 +745,8 @@ void InsetLatexAccent::Read(LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
+int InsetLatexAccent::Latex(ostream & os,
+			    signed char /*fragile*/, bool/*fs*/) const
 {
 	os << contents;
 	return 0;

@@ -15,8 +15,6 @@
 #endif
 
 #include <algorithm>
-using std::make_pair;
-using std::sort;
 
 #include "layout.h"
 #include "lyxlex.h"
@@ -26,6 +24,9 @@ using std::sort;
 #include "gettext.h"
 #include "support/LAssert.h"
 
+using std::make_pair;
+using std::sort;
+using std::endl;
 
 // Global variable: textclass table.
 LyXTextClassList textclasslist;

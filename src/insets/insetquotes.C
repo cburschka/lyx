@@ -24,6 +24,8 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 
+using std::endl;
+
 // Quotes. Used for the various quotes. German, English, French,
 // Danish, Polish, all either double or single.
 
@@ -95,7 +97,6 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 
 void InsetQuotes::ParseString(string const & s)
 {
-	int i;
 	string str(s);
 	if (str.length() != 3) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
@@ -103,6 +104,8 @@ void InsetQuotes::ParseString(string const & s)
 		str = "eld";
 	}
 
+	int i;
+	
 	for (i = 0; i < 6; ++i) {
 		if (str[0] == language_char[i]) {
 			language = InsetQuotes::quote_language(i);

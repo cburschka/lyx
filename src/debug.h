@@ -3,9 +3,12 @@
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
 
+#include <iosfwd>
+
 #include "LString.h"
-#include "support/LOstream.h"
 #include "support/lstrings.h"
+
+using std::ostream;
 
 /** Ideally this should have been a namespace, but since we try to be
     compilable on older C++ compilators too, we use a struct instead.

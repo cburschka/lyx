@@ -17,10 +17,11 @@
 #endif
 
 #include <utility>
-using std::pair;
 
 #include FORMS_H_LOCATION
 #include "Painter.h"
+
+using std::pair;
 
 class BufferView;
 

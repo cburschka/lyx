@@ -27,6 +27,8 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::endl;
+
 const int SizeInset = sizeof(char*) + 2;
 const int SizeFont = 2;
 

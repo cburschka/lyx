@@ -16,10 +16,6 @@ there are three major tasks to be done:
 		a lot, it could be per-view. However all the special
 		code in it needs to be (re)moved. Also a lot of the 
 		functionality needs to be relocated.
-	o Switch to LaTeX as fileformat
-		Will ease move from latex to LyX a lot.
-		Also will let people work both in (ex) emacs
-		and LyX on the same files.
 	o GUI independence.
 		Should be a compile time switch what gui (toolkit)
 		you wish to use. We are going to support Xforms first,
@@ -79,9 +75,6 @@ Some other things related to structure and services in the code:
 		  the processes can take place.
 	o pass an inforeceiver around in the object structure.
 	  (this instead of passing minibuffers, and lyxerrors.)
-	o remove code that is never used, or close to never used.
-	        Support for reverse video, fast selection and mono
-	        video comes to mind.
 
 ================
 
@@ -135,8 +128,26 @@ to make it into 0.14:
 	o the "LyX-Code" environment should be removed. Add a verbatim
 	  environment instead.
 	o tabbing support
+		 This would be a special inset that is line based (no
+	  breaking of lines), where tabstops can be set and used.
+
 	o picture support
+		 A special insets with some basic drawing
+		 capabilities. 
+
 	o better graphics support
+		 I have begun doing something about this. There are
+	  several things here that need to be dont. We have alreay
+	  decided to use graphicx.sty instead of graphics.sty. This
+	  makes several things easier. There is also some work in
+	  progress to separate the inset and the creation of the Xpm
+	  (Ximages) completely. I imagin this as the InsetGraphics
+	  asking a GraphicsCache for a graphics with certain
+	  parameters set and get a handle to the finished
+	  transformation of the graphics. Hopefully this should make
+	  it quite easy for LyX to support several/many graphics
+	  formats, both on screen and on hard copy. 
+
 	o rotating and scaling of text
 	o PSTricks (we should be able to support some of this package)
 	o better reference support
@@ -204,6 +215,7 @@ to make it into 0.14:
 		- make it indepentent of the GUI
 		- prob: concurrency (locks)
 	o other packages to support:
+		- listings.sty
 		- keyval (we should not use it directly, but know how
 			to parse options for it.)
 		- here.sty

@@ -21,6 +21,8 @@
 #include "kbsequence.h"
 #include "debug.h"
 
+using std::endl;
+
 // The only modifiers that we handle. We want to throw away things
 // like NumLock. 
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };

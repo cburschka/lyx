@@ -30,6 +30,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::endl;
 
 ostream & operator<<(ostream & o, MathedTextCodes mtc)
 {

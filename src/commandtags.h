@@ -12,6 +12,8 @@
 
 #include "debug.h"
 
+using std::ostream;
+
 /** These are all the lyxfunctions (as enums).
  */
 enum kb_action {

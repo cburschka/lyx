@@ -18,6 +18,8 @@
 #include "insetcommand.h"
 #include "buffer.h"
 
+using std::ostream;
+
 struct LaTeXFeatures;
 
 /** The reference inset  

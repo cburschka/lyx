@@ -21,6 +21,8 @@ using std::ifstream;
 #include "lyxtext.h"
 #include "support/filetools.h"
 
+using std::endl;
+
 extern BufferView * current_view;
 
 FD_citation_form * citation_form = 0;
@@ -319,7 +321,8 @@ string InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
+int InsetBibtex::Latex(ostream & os,
+		       signed char /*fragile*/, bool/*fs*/) const
 {
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib

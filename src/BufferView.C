@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include <algorithm>
-using std::for_each;
 
 #include <cstdlib>
 #include <csignal>
@@ -49,7 +48,9 @@ using std::for_each;
 #include "lyxrow.h"
 #include "WorkArea.h"
 
+using std::for_each;
 using std::find_if;
+using std::endl;
 
 extern BufferList bufferlist;
 

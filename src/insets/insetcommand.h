@@ -19,6 +19,8 @@
 #include "lyxinset.h"
 #include "LString.h"
 
+using std::ostream;
+
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
  *

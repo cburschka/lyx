@@ -16,8 +16,6 @@
 
 #include <algorithm>
 #include <fstream>
-using std::fstream;
-using std::ios;
 
 #include "lyxparagraph.h"
 #include "support/textutils.h"
@@ -36,6 +34,10 @@ using std::ios;
 #include "texrow.h"
 #include "support/lyxmanip.h"
 
+using std::endl;
+using std::fstream;
+using std::ios;
+using std::greater;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
@@ -1882,6 +1884,7 @@ int LyXParagraph::AutoDeleteInsets()
 			++i;
 		}
 	}
+	sort(tmpvec.begin(), tmpvec.end(), greater<size_type>());
 	for (vector<size_type>::const_iterator cit = tmpvec.begin();
 	     cit != tmpvec.end(); ++cit) {
 		Erase((*cit));
@@ -1931,7 +1934,8 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 
 
 LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
-				       ostream & foot, TexRow & foot_texrow,
+				       ostream & foot,
+				       TexRow & foot_texrow,
 				       int & foot_count)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
@@ -3433,7 +3437,8 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 
 
 LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
-				       ostream & foot, TexRow & foot_texrow,
+				       ostream & foot,
+				       TexRow & foot_texrow,
 				       int & foot_count)
 {
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;

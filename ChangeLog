@@ -1,3 +1,23 @@
+2000-03-24  Dekel Tsur <dekel@math.tau.ac.il>
+	
+	* src/paragraph.C (AutoDeleteInsets) Fixed a bug (wrong positions
+	were erased)
+
+2000-03-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/main.C: added a runtime check that verifies that the xforms
+	header used when building LyX and the library used when running
+	LyX match. Exit with a message if they don't match. This is a
+	version number check only.
+
+	* src/buffer.C (save): Don't allocate memory on the heap for
+	struct utimbuf times.
+
+	* *: some using changes, use iosfwd instead of the real headers.
+
+	* src/lyxfont.C use char const * instead of string for the static
+	strings. Rewrite some functions to use sstream.
+
 2000-03-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (Backspace): hopefully fix the dreaded backaspace

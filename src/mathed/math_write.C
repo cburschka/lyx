@@ -24,6 +24,8 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::endl;
+
 extern char const * latex_mathenv[];
 extern char * latex_mathspace[];
 

@@ -22,6 +22,7 @@
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 #include "support/lstrings.h"
 
+using std::endl;
 
 /// Load font close to this size
 string FontInfo::getFontname(int size)

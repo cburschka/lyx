@@ -22,6 +22,8 @@
 #include "lyxparagraph.h"
 #include "layout.h"
 
+using std::vector;
+
 class Buffer;
 class BufferParams;
 class Row;

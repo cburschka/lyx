@@ -24,7 +24,6 @@
 
 using std::vector;
 
-
 /// LyXDirEntry internal structure definition
 class LyXDirEntry
 {

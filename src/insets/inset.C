@@ -20,6 +20,8 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 
+using std::endl;
+
 /* Insets default methods */
 
 bool Inset::Deletable() const

@@ -30,6 +30,8 @@
 #include "math_root.h"
 #include "debug.h"
 
+using std::endl;
+
 enum {
 	FLAG_BRACE      = 1,	//  A { needed
 	FLAG_BRACE_ARG  = 2,	//  Next { is argument

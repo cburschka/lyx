@@ -18,6 +18,8 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
+using std::ostream;
+
 class Buffer;
 
 /** Reference to the parent document.

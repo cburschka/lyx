@@ -40,6 +40,8 @@
 
 #include "debug.h"
 
+using std::endl;
+
 // These are C wrappers around static members of Combox, used as
 // callbacks for xforms.
 extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long);

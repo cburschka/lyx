@@ -16,6 +16,8 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 
+using std::endl;
+
 extern string DoAccent(string const &, tex_accent);
 extern string DoAccent(char, tex_accent);
 extern BufferView * current_view;

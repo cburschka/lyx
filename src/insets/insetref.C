@@ -67,7 +67,8 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
+int InsetRef::Latex(ostream & os,
+		    signed char /*fragile*/, bool /*fs*/) const
 {
 	if(getOptions().empty())
 		os << escape(getCommand());

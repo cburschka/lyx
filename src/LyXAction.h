@@ -7,11 +7,11 @@
 #endif
 
 #include <map>
-using std::map;
-using std::less;
 
 #include "commandtags.h"
 #include "LString.h"
+
+using std::map;
 
 /** This class encapsulates LyX action and user command operations.
  */
@@ -31,15 +31,20 @@ private:
 	};
 public:
 	///
-	typedef map<string, kb_action, less<string> > func_map;
+	typedef map<string, kb_action> func_map;
+	//typedef map<string, kb_action, less<string> > func_map;
 	///
-	typedef map<kb_action, func_info, less<kb_action> > info_map;
+	typedef map<kb_action, func_info> info_map;
+	//typedef map<kb_action, func_info, less<kb_action> > info_map;
 	///
-	typedef map<unsigned int, pseudo_func, less<unsigned int> > pseudo_map;
+	typedef map<unsigned int, pseudo_func> pseudo_map;
+	//typedef map<unsigned int, pseudo_func, less<unsigned int> > pseudo_map;
 	///
-	typedef map<string, unsigned int, less<string> > arg_item;
+	typedef map<string, unsigned int> arg_item;
+	//typedef map<string, unsigned int, less<string> > arg_item;
 	///
-	typedef map<kb_action, arg_item, less<kb_action> > arg_map;
+	typedef map<kb_action, arg_item> arg_map;
+	//typedef map<kb_action, arg_item, less<kb_action> > arg_map;
 
 	///
 	enum func_attrib {

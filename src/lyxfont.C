@@ -25,6 +25,7 @@
 #include "FontLoader.h"
 #include "support/lstrings.h"
 
+using std::endl;
 
 // The global fontloader
 FontLoader fontloader;
@@ -33,65 +34,77 @@ FontLoader fontloader;
 // Names for the GUI
 //
 
-string const GUIFamilyNames[6] = 
+static
+char const * GUIFamilyNames[6] = 
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"), N_("Inherit"),
   N_("Ignore") };
-  
-string const GUISeriesNames[4] = 
+
+static
+char const * GUISeriesNames[4] = 
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
 
-string const GUIShapeNames[6] = 
+static
+char const * GUIShapeNames[6] = 
 { N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
   N_("Ignore") };
 
-string const GUISizeNames[14] = 
+static
+char const * GUISizeNames[14] = 
 { N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"), 
   N_("Inherit"), N_("Ignore") };
  
-string const lGUISizeNames[15] = 
-{ N_("tiny"), N_("smallest"), N_("smaller"), N_("small"), N_("normal"), N_("large"),
-  N_("larger"), N_("largest"), N_("huge"), N_("huger"), N_("increase"), N_("decrease"),
-  N_("inherit"), N_("ignore"), string() };
- 
-string const GUIMiscNames[5] = 
+//char const * lGUISizeNames[15] = 
+//{ N_("tiny"), N_("smallest"), N_("smaller"), N_("small"), N_("normal"), N_("large"),
+//  N_("larger"), N_("largest"), N_("huge"), N_("huger"), N_("increase"), N_("decrease"),
+//  N_("inherit"), N_("ignore"), string() };
+static
+char const * GUIMiscNames[5] = 
 { N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
 
 //
 // Strings used to read and write .lyx format files
 //
-string const LyXFamilyNames[6] = 
+static
+char const * LyXFamilyNames[6] = 
 { "roman", "sans", "typewriter", "symbol", "default", "error" };
- 
-string const LyXSeriesNames[4] = 
+
+static
+char const * LyXSeriesNames[4] = 
 { "medium", "bold", "default", "error" };
- 
-string const LyXShapeNames[6] = 
+
+static
+char const * LyXShapeNames[6] = 
 { "up", "italic", "slanted", "smallcaps", "default", "error" };
- 
-string const LyXSizeNames[14] = 
+
+static
+char const * LyXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant", 
   "increase-error", "decrease-error", "default", "error" };
 
-string const LyXMiscNames[12] = 
+static
+char const * LyXMiscNames[5] = 
 { "off", "on", "toggle", "default", "error" };
 
 //
 // Strings used to write LaTeX files
 //
-
-string const LaTeXFamilyNames[6] = 
+static
+char const * LaTeXFamilyNames[6] = 
 { "textrm", "textsf", "texttt", "error1", "error2", "error3" };
- 
-string const LaTeXSeriesNames[4] = 
+
+static
+char const * LaTeXSeriesNames[4] = 
 { "textmd", "textbf", "error4", "error5" };
- 
-string const LaTeXShapeNames[6] = 
+
+static
+char const * LaTeXShapeNames[6] = 
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
- 
-string const LaTeXSizeNames[14] = 
+
+static
+char const * LaTeXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
@@ -356,30 +369,47 @@ bool LyXFont::resolved() const
 /// Build GUI description of font state
 string LyXFont::stateText() const
 {
-	string buf;
+#ifdef HAVE_SSTREAM
+	ostringstream ost;
+#else
+	char str[1024];
+	ostrstream ost(str, 1024);
+#endif
 	if (family() != INHERIT_FAMILY)
-		buf += string(_(GUIFamilyNames[family()].c_str())) + ", ";
+		ost << _(GUIFamilyNames[family()]) << ", ";
 	if (series() != INHERIT_SERIES)
-		buf += string(_(GUISeriesNames[series()].c_str())) + ", ";
+		ost << _(GUISeriesNames[series()]) << ", ";
 	if (shape() != INHERIT_SHAPE)
-		buf += string(_(GUIShapeNames[shape()].c_str())) + ", ";
+		ost << _(GUIShapeNames[shape()]) << ", ";
 	if (size() != INHERIT_SIZE)
-		buf += string(_(GUISizeNames[size()].c_str())) + ", ";
+		ost << _(GUISizeNames[size()]) << ", ";
 	if (color() != LColor::inherit)
-		buf += lcolor.getGUIName(color()) + ", ";
+		ost << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		buf += string(_("Emphasis ")) + _(GUIMiscNames[emph()].c_str()) + ", ";
+		ost << _("Emphasis ")
+		    << _(GUIMiscNames[emph()]) << ", ";
 	if (underbar() != INHERIT)
-		buf += string(_("Underline ")) + _(GUIMiscNames[underbar()].c_str()) + ", ";
+		ost << _("Underline ")
+		    << _(GUIMiscNames[underbar()]) << ", ";
 	if (noun() != INHERIT)
-		buf += string(_("Noun ")) + _(GUIMiscNames[noun()].c_str()) + ", ";
+		ost << _("Noun ") << _(GUIMiscNames[noun()]) << ", ";
 	if (latex() != INHERIT)
-		buf += string(_("Latex ")) + _(GUIMiscNames[latex()].c_str()) + ", ";
-	if (buf.empty())
-		buf = _("Default");
+		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
+	//if (buf.empty())
+	//	ost << _("Default");
+	unsigned int opos = ost.tellp();
+	lyxerr << "Opos: " << opos << endl;
+	if (opos == 0)
+		ost << _("Default") << ", ";
+	ost << _("Language: ") << _(language()->display.c_str());
+#ifdef HAVE_SSTREAM
+	string buf(ost.str().c_str());
+#else
+	ost << '\0';
+	string buf(ost.str());
+#endif
 	buf = strip(buf, ' ');
 	buf = strip(buf, ',');
-	buf += "  " + string(_("Language: ")) + _(language()->display.c_str());
 	return buf;
 }
 
@@ -618,7 +648,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 	}
 	if (orgfont.language() != language()) {
 		if (language())
-			os << "\\lang " << language()->lang << endl;
+			os << "\\lang " << language()->lang << "\n";
 		else
 			os << "\\lang unknown\n";
 	}
@@ -661,21 +691,21 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		os << '\\'
 		   << LaTeXFamilyNames[f.family()]
 		   << '{';
-		count += LaTeXFamilyNames[f.family()].length() + 2;
+		count += strlen(LaTeXFamilyNames[f.family()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.series() != INHERIT_SERIES) {
 		os << '\\'
 		   << LaTeXSeriesNames[f.series()]
 		   << '{';
-		count += LaTeXSeriesNames[f.series()].length() + 2;
+		count += strlen(LaTeXSeriesNames[f.series()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.shape() != INHERIT_SHAPE) {
 		os << '\\'
 		   << LaTeXShapeNames[f.shape()]
 		   << '{';
-		count += LaTeXShapeNames[f.shape()].length() + 2;
+		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.color() != LColor::inherit) {
@@ -710,7 +740,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		os << '\\'
 		   << LaTeXSizeNames[f.size()]
 		   << ' ';
-		count += LaTeXSizeNames[f.size()].length() + 2;
+		count += strlen(LaTeXSizeNames[f.size()]) + 2;
 	}
 	return count;
 }
@@ -943,14 +973,7 @@ int LyXFont::drawText(char const * s, int n, Pixmap,
 		      int, int x) const
 {
 	if (realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		/* XDrawString(fl_display,
-		   pm,
-		   getGC(),
-		   x, baseline,
-		   s, n);
-		   XFlush(fl_display); */
 		return XTextWidth(getXFontstruct(), s, n);
-
 	} else {
 		// emulate smallcaps since X doesn't support this
 		char c;
@@ -963,22 +986,10 @@ int LyXFont::drawText(char const * s, int n, Pixmap,
 			c = s[i];
 			if (islower(static_cast<unsigned char>(c))){
 				c = toupper(c);
-				/* XDrawString(fl_display,
-				   pm,
-				   smallfont.getGC(),
-				   x, baseline,
-				   &c, 1); */
 				x += XTextWidth(smallfont.getXFontstruct(),
 						&c, 1);
-				//XFlush(fl_display);
 			} else {
-				/* XDrawString(fl_display,
-				   pm,
-				   getGC(),
-				   x, baseline,
-				   &c, 1);*/
 				x += XTextWidth(getXFontstruct(), &c, 1);
-				//XFlush(fl_display);
 			}
 		}
 		return x - sx;
@@ -998,6 +1009,7 @@ bool LyXFont::equalExceptLatex(LyXFont const & f) const
 	f1.setLatex(f.latex());
 	return f1 == f;
 }
+
 
 ostream & operator<<(ostream & o, LyXFont::FONT_MISC_STATE fms)
 {

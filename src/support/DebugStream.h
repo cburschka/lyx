@@ -14,6 +14,8 @@
 
 #include <iostream>
 
+using std::ostream;
+
 #ifdef TEST_DEBUGSTREAM
 #include <string>
 struct Debug {
@@ -34,7 +36,7 @@ struct Debug {
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
-	static Debug::type value(std::string const & val) {
+	static Debug::type value(string const & val) {
 		if (val == "NONE") return Debug::NONE;
 		if (val == "INFO") return Debug::INFO;
 		if (val == "WARN") return Debug::WARN;

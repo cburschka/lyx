@@ -23,6 +23,8 @@
 #include "layout.h"
 #include "lyxfunc.h"
 
+using std::endl;
+
 extern BufferView * current_view;
 
 extern BufferList bufferlist;
@@ -315,7 +317,8 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
+int InsetInclude::Latex(ostream & os,
+			signed char /*fragile*/, bool /*fs*/) const
 {
 	// Do nothing if no file name has been specified
 	if (contents.empty())

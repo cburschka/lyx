@@ -2,7 +2,9 @@
 #ifndef LYX_MANIP_H
 #define LYX_MANIP_H
 
-#include <iostream>
+#include "support/LOstream.h"
+
+using std::ostream;
 
 ///
 struct NewLineAndDepth_ {
@@ -17,6 +19,7 @@ NewLineAndDepth_ newlineAndDepth(int n)
 	nlad_.depth_ = n;
 	return nlad_;
 }
+
 ///
 inline
 ostream & operator<<(ostream & os, NewLineAndDepth_ const & nlad_)

@@ -21,8 +21,11 @@
 #pragma interface
 #endif
 
+#include <iosfwd>
+
 #include "insets/lyxinset.h"
-#include "support/LOstream.h"
+
+using std::ostream;
 
 class MathParInset;
 class MathedCursor;

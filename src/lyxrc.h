@@ -21,6 +21,7 @@
 #include "ToolbarDefaults.h"
 #include "bufferparams.h"
 
+using std::ostream;
 using std::map;
 
 /// This contains the runtime configuration of LyX

@@ -26,6 +26,8 @@
 #include "LyXView.h"
 #include "minibuffer.h"
 
+using std::endl;
+
 extern BufferView * current_view;
 
 // Initialize font loader
@@ -211,7 +213,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	if (!lyxrc.use_gui) {
 		if (!dummyXFontStructisGood) {
 			// no character specific info
-			dummyXFontStruct.per_char=0; 
+			dummyXFontStruct.per_char = 0; 
 			// unit ascent on character displays
 			dummyXFontStruct.ascent = 1; 
 			// no descent on character displays

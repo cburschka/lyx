@@ -15,10 +15,13 @@
 #pragma interface
 #endif
 
+#include <iosfwd>
+
 #include "lyxlex.h"
 #include "LString.h"
-#include "support/LOstream.h"
 
+using std::ostream;
+using std::istream;
 
 /* The features the text class offers for tables */ 
 

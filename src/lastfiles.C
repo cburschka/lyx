@@ -17,16 +17,17 @@
 
 #include <fstream>
 #include <algorithm>
-using std::ifstream;
-using std::ofstream;
-using std::copy;
-using std::ostream_iterator;
-
-using std::find;
 
 #include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "debug.h"
+
+using std::ifstream;
+using std::ofstream;
+using std::copy;
+using std::ostream_iterator;
+using std::find;
+using std::endl;
 
 LastFiles::LastFiles(string const & filename, bool st, unsigned int num)
 	: dostat(st)

@@ -22,6 +22,7 @@
 #include "LString.h"
 #include "DepTable.h"
 #include <vector>
+
 using std::vector;
 
 class MiniBuffer;

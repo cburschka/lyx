@@ -19,6 +19,8 @@
 #include "insetcommand.h"
 #include "LString.h"
 
+using std::ostream;
+
 ///
 class InsetLabel : public InsetCommand {
 public:

@@ -18,10 +18,6 @@
 #include <iomanip>
 #include <iostream>
 
-using std::ofstream;
-using std::cout;
-using std::ios;
-
 #include "debug.h"
 
 #include "lyxrc.h"
@@ -34,6 +30,11 @@ using std::ios;
 #include "support/path.h"
 #include "support/filetools.h"
 #include "lyxtext.h"
+
+using std::ofstream;
+using std::cout;
+using std::ios;
+using std::endl;
 
 // this is crappy... why are those colors command line arguments and
 // not in lyxrc?? (Matthias) 
