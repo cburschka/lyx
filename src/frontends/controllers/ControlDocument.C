@@ -132,7 +132,7 @@ void ControlDocument::classApply()
 #if USE_BOOST_FORMAT
 	if (ret == 1) {
 		boost::format fmt(_("One paragraph could not be converted\n"
-			"into the document class %2$s."));
+			"into the document class %1$s."));
 		fmt % textclasslist[new_class].name();
 		s = fmt.str();
 	} else {
