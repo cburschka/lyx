@@ -21,7 +21,7 @@
 #include "debug.h"
 #include "lyxlex.h"
 #if 1
-// only until we don't need access to the NEW_INSETS or NEW_TABULAR anymore
+// only until we don't need access to the NEW_INSETS anymore
 #include "lyxparagraph.h"
 #endif
 

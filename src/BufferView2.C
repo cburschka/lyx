@@ -209,16 +209,6 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 		return false;
 	}
 
-#ifndef NEW_TABULAR
-	// check for table/list in tables
-	if (no_table && text->cursor.par()->table){
-		WriteAlert(_("Impossible Operation!"),
-			   _("Cannot insert table/list in table."),
-			   _("Sorry."));
-		return false;
-	}
-#endif
-
 	// not quite sure if we want this...
 	text->SetCursorParUndo(buffer());
 	text->FreezeUndo();

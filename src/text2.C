@@ -1225,24 +1225,6 @@ void LyXText::CursorEnd(BufferView * bview) const
 		else
 			SetCursor(bview,cursor.par(), RowLast(cursor.row()) + 1);
 	}
-#ifndef NEW_TABULAR
-        if (cursor.par()->table) {
-                int cell = NumberOfCell(cursor.par(), cursor.pos());
-                if (cursor.par()->table->RowHasContRow(cell) &&
-                    cursor.par()->table->CellHasContRow(cell)<0) {
-                        if (!cursor.row()->next() || cursor.row()->next()->par() != cursor.row()->par())
-                                SetCursor(bview, cursor.par(), RowLast(cursor.row()) + 1);
-                        else {
-                                if (cursor.par()->Last() && 
-                                    (cursor.par()->GetChar(RowLast(cursor.row())) == ' '
-                                     || cursor.par()->IsNewline(RowLast(cursor.row()))))
-                                        SetCursor(bview, cursor.par(), RowLast(cursor.row()));
-                                else
-                                        SetCursor(bview, cursor.par(), RowLast(cursor.row()) + 1);
-                        }
-                }
-        }
-#endif
 }
 
 
@@ -1379,11 +1361,7 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 		tmppar->next->MakeSameLayout(cursor.par());
 
 	// first the end
-	if ((!tmppar->GetLayout()
-#ifndef NEW_TABULAR
-	     && !tmppar->table
-#endif
-		)
+	if (!tmppar->GetLayout()
 	    || (tmppar->Next()
 		&& (!tmppar->Next()->Last()
 		    || tmppar->Next()->HasSameLayout(tmppar)))) {
@@ -1400,11 +1378,7 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 	/* if there is no space between the text and the footnote, so we insert
 	 * a blank 
 	 * (only if the previous par and the footnotepar are not empty!) */
-	if ((!firsttmppar->next->GetLayout()
-#ifndef NEW_TABULAR
-	     && !firsttmppar->next->table
-#endif
-		)
+	if (!firsttmppar->next->GetLayout()
 	    || firsttmppar->HasSameLayout(firsttmppar->next)) {
 		if (firsttmppar->size()
 		    && !firsttmppar->IsSeparator(firsttmppar->size() - 1)
@@ -2213,19 +2187,7 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 		}
 	}
 #endif
-#ifndef NEW_TABULAR
-	/* table stuff -- begin */
-	if (sel_start_cursor.par()->table || sel_end_cursor.par()->table) {
-		if ( sel_start_cursor.par() != sel_end_cursor.par()) {
-			WriteAlert(_("Impossible operation"),
-				   _("Don't know what to do with half tables."),
-				   _("sorry."));
-			return;
-		}
-		sel_start_cursor.par()->table->Reinit();
-	}
-	/* table stuff -- end */
-#endif
+
 	// make sure that the depth behind the selection are restored, too
 #ifndef NEW_INSETS
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
@@ -2338,18 +2300,6 @@ void LyXText::CopySelection(BufferView * bview)
 			tmppar = tmppar->Next();
 		}
 	}
-#endif
-#ifndef NEW_TABULAR
-	/* table stuff -- begin */
-	if (sel_start_cursor.par()->table || sel_end_cursor.par()->table){
-		if ( sel_start_cursor.par() != sel_end_cursor.par()){
-			WriteAlert(_("Impossible operation"),
-				   _("Don't know what to do with half tables."),
-				   _("sorry."));
-			return;
-		}
-	}
-	/* table stuff -- end */
 #endif
    
 	// copy behind a space if there is one
@@ -2543,23 +2493,6 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 			    && pos && par->GetChar(pos - 1)!= ' ') {
 				par->InsertChar(pos, ' ', current_font);
 				++pos;
-#ifndef NEW_TABULAR
-			} else if (par->table) {
-				if (str[i] == '\t') {
-					while((pos < par->size()) &&
-					      (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
-						++pos;
-					if (pos < par->size())
-						++pos;
-					else // no more fields to fill skip the rest
-						break;
-				} else if ((str[i] != 13) &&
-					   ((str[i] & 127) >= ' ')) {
-					par->InsertChar(pos, str[i],
-							current_font);
-					++pos;
-				}
-#endif
                         } else if (str[i] == ' ') {
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
@@ -2589,50 +2522,21 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 				++pos;
 			}
 		} else {
-#ifndef NEW_TABULAR
-                        if (par->table) {
-                                if ((i + 1) >= str.length()) {
-					if (pos < par->size())
-						++pos;
-                                        break;
-                                }
-                                while((pos < par->size()) &&
-                                      (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
-                                        ++pos;
-                                ++pos;
-                                int cell = NumberOfCell(par, pos);
-                                while((pos < par->size()) &&
-                                      !(par->table->IsFirstCell(cell))) {
-
-                                        while((pos < par->size()) &&
-                                              (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
-                                                ++pos;
-                                        ++pos;
-                                        cell = NumberOfCell(par, pos);
-                                }
-                                if (pos >= par->size())
-                                        // no more fields to fill skip the rest
-                                        break;
-                        } else {
-#endif
-                                if (!par->size()) { // par is empty
-					InsetSpecialChar * new_inset =
-						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-					if (par->InsertInsetAllowed(new_inset)) {
-						par->InsertInset(pos,
-								 new_inset,
-								 current_font);
-					} else {
-						delete new_inset;
-					}
-                                        ++pos;
-                                }
-                                par->BreakParagraph(bview->buffer()->params, pos, flag);
-                                par = par->Next();
-                                pos = 0;
-#ifndef NEW_TABULAR
-                        }
-#endif
+			if (!par->size()) { // par is empty
+				InsetSpecialChar * new_inset =
+					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+				if (par->InsertInsetAllowed(new_inset)) {
+					par->InsertInset(pos,
+							 new_inset,
+							 current_font);
+				} else {
+					delete new_inset;
+				}
+				++pos;
+			}
+			par->BreakParagraph(bview->buffer()->params, pos, flag);
+			par = par->Next();
+			pos = 0;
 		}
 		++i;
 	}
@@ -2652,24 +2556,13 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 void LyXText::InsertStringB(BufferView * bview, string const & s)
 {
 	string str(s);
-#ifndef NEW_TABULAR
-	LyXParagraph * par = cursor.par();
-#endif
 	string::size_type i = 1;
 	while (i < str.length()) {
-		if (str[i] == '\t'
-#ifndef NEW_TABULAR
-		    && !par->table
-#endif
-			)
+		if (str[i] == '\t')
 			str[i] = ' ';
 		if (str[i] == ' ' && i + 1 < str.length() && str[i + 1] == ' ')
 			str[i] = 13;
-		if (str[i] == '\n' && i + 1 < str.length()
-#ifndef NEW_TABULAR
-		    && !par->table
-#endif
-			){
+		if (str[i] == '\n' && i + 1 < str.length()) {
 			if (str[i + 1] != '\n') {
 				if (str[i - 1] != ' ')
 					str[i] = ' ';
@@ -2742,66 +2635,53 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 {
 	LyXCursor tmpcursor;			
 
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/
-   
-	if (par->table) {
-		CheckParagraphInTable(bview, par, pos);
-	}
-	else {
-#endif
-		/* table stuff -- end*/
-     
-		long y = 0;
-		LyXParagraph::size_type z;
-		Row * row = GetRow(par, pos, y);
-     
-		// is there a break one row above
-		if (row->previous() && row->previous()->par() == row->par()) {
-			z = NextBreakPoint(bview, row->previous(), workWidth(bview));
-			if ( z >= row->pos()) {
-				// set the dimensions of the row above
-				y -= row->previous()->height();
-				refresh_y = y;
-				refresh_row = row->previous();
-				status = LyXText::NEED_MORE_REFRESH;
-       
-				BreakAgain(bview, row->previous());
-
-				// set the cursor again. Otherwise
-				// dangling pointers are possible
-				SetCursor(bview, cursor.par(), cursor.pos());
-				sel_cursor = cursor;
-				return;
-			}
+	long y = 0;
+	LyXParagraph::size_type z;
+	Row * row = GetRow(par, pos, y);
+	
+	// is there a break one row above
+	if (row->previous() && row->previous()->par() == row->par()) {
+		z = NextBreakPoint(bview, row->previous(), workWidth(bview));
+		if ( z >= row->pos()) {
+			// set the dimensions of the row above
+			y -= row->previous()->height();
+			refresh_y = y;
+			refresh_row = row->previous();
+			status = LyXText::NEED_MORE_REFRESH;
+			
+			BreakAgain(bview, row->previous());
+			
+			// set the cursor again. Otherwise
+			// dangling pointers are possible
+			SetCursor(bview, cursor.par(), cursor.pos());
+			sel_cursor = cursor;
+			return;
 		}
-
-		int tmpheight = row->height();
-		LyXParagraph::size_type tmplast = RowLast(row);
-		refresh_y = y;
-		refresh_row = row;
-
-		BreakAgain(bview, row);
-		if (row->height() == tmpheight && RowLast(row) == tmplast)
-			status = LyXText::NEED_VERY_LITTLE_REFRESH;
-		else
-			status = LyXText::NEED_MORE_REFRESH; 
-   
-		// check the special right address boxes
-		if (textclasslist.Style(bview->buffer()->params.textclass,
-					par->GetLayout()).margintype
-		    == MARGIN_RIGHT_ADDRESS_BOX) {
-			tmpcursor.par(par);
-			tmpcursor.row(row);
-			tmpcursor.y(y);
-			tmpcursor.x(0);
-			tmpcursor.x_fix(0);
-			tmpcursor.pos(pos);
-			RedoDrawingOfParagraph(bview, tmpcursor); 
-		}
-#ifndef NEW_TABULAR
 	}
-#endif
+
+	int const tmpheight = row->height();
+	LyXParagraph::size_type const tmplast = RowLast(row);
+	refresh_y = y;
+	refresh_row = row;
+	
+	BreakAgain(bview, row);
+	if (row->height() == tmpheight && RowLast(row) == tmplast)
+		status = LyXText::NEED_VERY_LITTLE_REFRESH;
+	else
+		status = LyXText::NEED_MORE_REFRESH; 
+	
+	// check the special right address boxes
+	if (textclasslist.Style(bview->buffer()->params.textclass,
+				par->GetLayout()).margintype
+	    == MARGIN_RIGHT_ADDRESS_BOX) {
+		tmpcursor.par(par);
+		tmpcursor.row(row);
+		tmpcursor.y(y);
+		tmpcursor.x(0);
+		tmpcursor.x_fix(0);
+		tmpcursor.pos(pos);
+		RedoDrawingOfParagraph(bview, tmpcursor); 
+	}
 
 	// set the cursor again. Otherwise dangling pointers are possible
 	// also set the selection
@@ -2929,11 +2809,7 @@ void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 		cursor_vpos = (row->par()->isRightToLeftPar(bview->buffer()->params))
 			? row->pos() : last + 1; 
 	else if (pos > row->pos() &&
-		 (pos > last || boundary
-#ifndef NEW_TABULAR
-		  || (row->par()->table && row->par()->IsNewline(pos))
-#endif
-			 ))
+		 (pos > last || boundary))
 		/// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
 			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
@@ -2941,65 +2817,41 @@ void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 		/// Place cursor before char at (logical) position pos
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
-
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/
-	if (row->par()->table) {
-		int cell = NumberOfCell(row->par(), row->pos());
-		float x_old = x;
-		x += row->par()->table->GetBeginningOfTextInCell(cell);
-		for (LyXParagraph::size_type vpos = row->pos();
-		     vpos < cursor_vpos; ++vpos) {
-			pos = vis2log(vpos);
-			if (row->par()->IsNewline(pos)) {
-				x = x_old + row->par()->table->WidthOfColumn(cell);
-				x_old = x;
-				++cell;
-				x += row->par()->table->GetBeginningOfTextInCell(cell);
-			} else {
-				x += SingleWidth(bview, row->par(), pos);
-			}
+	
+	LyXParagraph::size_type main_body =
+		BeginningOfMainBody(bview->buffer(), row->par());
+	if ((main_body > 0) &&
+	    ((main_body-1 > last) || 
+	     !row->par()->IsLineSeparator(main_body-1)))
+		main_body = 0;
+	
+	for (LyXParagraph::size_type vpos = row->pos();
+	     vpos < cursor_vpos; ++vpos) {
+		pos = vis2log(vpos);
+		if (main_body > 0 && pos == main_body - 1) {
+			x += fill_label_hfill +
+				lyxfont::width(textclasslist.Style(
+					bview->buffer()->params.textclass,
+					row->par()->GetLayout())
+					       .labelsep,
+					       GetFont(bview->buffer(), row->par(), -2));
+			if (row->par()->IsLineSeparator(main_body-1))
+				x -= SingleWidth(bview, row->par(),main_body-1);
 		}
-	} else {
-		/* table stuff -- end*/
-#endif
-		LyXParagraph::size_type main_body =
-			BeginningOfMainBody(bview->buffer(), row->par());
-		if ((main_body > 0) &&
-		    ((main_body-1 > last) || 
-		     !row->par()->IsLineSeparator(main_body-1)))
-			main_body = 0;
-
-		for (LyXParagraph::size_type vpos = row->pos();
-		     vpos < cursor_vpos; ++vpos) {
-			pos = vis2log(vpos);
-			if (main_body > 0 && pos == main_body-1) {
-				x += fill_label_hfill +
-					lyxfont::width(textclasslist.Style(
-						bview->buffer()->params.textclass,
-						row->par()->GetLayout())
-						       .labelsep,
-						       GetFont(bview->buffer(), row->par(), -2));
-				if (row->par()->IsLineSeparator(main_body-1))
-					x -= SingleWidth(bview, row->par(),main_body-1);
-			}
-			if (HfillExpansion(bview->buffer(), row, pos)) {
-				x += SingleWidth(bview, row->par(), pos);
-				if (pos >= main_body)
-					x += fill_hfill;
-				else 
-					x += fill_label_hfill;
-			} else if (row->par()->IsSeparator(pos)) {
-				x += SingleWidth(bview, row->par(), pos);
-				if (pos >= main_body)
-					x += fill_separator;
-			} else
-				x += SingleWidth(bview, row->par(), pos);
-		}
-#ifndef NEW_TABULAR
+		if (HfillExpansion(bview->buffer(), row, pos)) {
+			x += SingleWidth(bview, row->par(), pos);
+			if (pos >= main_body)
+				x += fill_hfill;
+			else 
+				x += fill_label_hfill;
+		} else if (row->par()->IsSeparator(pos)) {
+			x += SingleWidth(bview, row->par(), pos);
+			if (pos >= main_body)
+				x += fill_separator;
+		} else
+			x += SingleWidth(bview, row->par(), pos);
 	}
-#endif
-   
+	
 	cur.x(int(x));
    	cur.x_fix(cur.x());
 	cur.row(row);
@@ -3015,6 +2867,7 @@ void LyXText::SetCursorIntern(BufferView * bview, LyXParagraph * par,
 		SetCurrentFont(bview);
 }
 
+
 void LyXText::SetCurrentFont(BufferView * bview) const
 {
 	LyXParagraph::size_type pos = cursor.pos();
@@ -3022,11 +2875,7 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 		--pos;
 
 	if (pos > 0) {
-		if (pos == cursor.par()->Last()
-#ifndef NEW_TABULAR
-		    || (cursor.par()->table && cursor.par()->IsNewline(pos))
-#endif
-			)
+		if (pos == cursor.par()->Last())
 			--pos;
 		else if (cursor.par()->IsSeparator(pos)) {
 			if (pos > cursor.row()->pos() &&
@@ -3095,15 +2944,6 @@ void LyXText::SetCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 void LyXText::CursorLeft(BufferView * bview, bool internal) const
 {
 	CursorLeftIntern(bview, internal);
-#ifndef NEW_TABULAR
-        if (cursor.par()->table) {
-                int cell = NumberOfCell(cursor.par(), cursor.pos());
-                if (cursor.par()->table->IsContRow(cell)
-                    && cursor.par()->table->CellHasContRow(cursor.par()->table->GetCellAbove(cell)) < 0) {
-                        CursorUp(bview);
-                }
-        }
-#endif
 }
 
 
@@ -3125,26 +2965,13 @@ void LyXText::CursorLeftIntern(BufferView * bview, bool internal) const
 void LyXText::CursorRight(BufferView * bview, bool internal) const
 {
 	CursorRightIntern(bview, internal);
-#ifndef NEW_TABULAR
-        if (cursor.par()->table) {
-                int cell = NumberOfCell(cursor.par(), cursor.pos());
-                if (cursor.par()->table->IsContRow(cell) &&
-                    cursor.par()->table->CellHasContRow(cursor.par()->table->GetCellAbove(cell))<0) {
-                        CursorUp(bview);
-                }
-        }
-#endif
 }
 
 
 void LyXText::CursorRightIntern(BufferView * bview, bool internal) const
 {
 	if (!internal && cursor.boundary() &&
-	    (
-#ifndef NEW_TABULAR
-		    !cursor.par()->table ||
-#endif
-		    !cursor.par()->IsNewline(cursor.pos())))
+	    !cursor.par()->IsNewline(cursor.pos()))
 		SetCursor(bview, cursor.par(), cursor.pos(), true, false);
 	else if (cursor.pos() < cursor.par()->Last()) {
 		SetCursor(bview, cursor.par(), cursor.pos() + 1, true, false);
@@ -3160,47 +2987,14 @@ void LyXText::CursorUp(BufferView * bview) const
 {
 	SetCursorFromCoordinates(bview, cursor.x_fix(), 
 				 cursor.y() - cursor.row()->baseline() - 1);
-#ifndef NEW_TABULAR
-        if (cursor.par()->table) {
-                int cell = NumberOfCell(cursor.par(), cursor.pos());
-                if (cursor.par()->table->IsContRow(cell) &&
-                    cursor.par()->table->CellHasContRow(cursor.par()->table->GetCellAbove(cell))<0) {
-                        CursorUp(bview);
-                }
-        }
-#endif
 }
 
 
 void LyXText::CursorDown(BufferView * bview) const
 {
-#ifndef NEW_TABULAR
-        if (cursor.par()->table &&
-            cursor.par()->table->ShouldBeVeryLastRow(NumberOfCell(cursor.par(), cursor.pos())) &&
-            !cursor.par()->next)
-                return;
-#endif
-	
 	SetCursorFromCoordinates(bview, cursor.x_fix(), 
 				 cursor.y() - cursor.row()->baseline()
 				 + cursor.row()->height() + 1);
-#ifndef NEW_TABULAR
-        if (cursor.par()->table) {
-                int cell = NumberOfCell(cursor.par(), cursor.pos());
-                int cell_above = cursor.par()->table->GetCellAbove(cell);
-                while(cursor.par()->table &&
-                      cursor.par()->table->IsContRow(cell) &&
-                      (cursor.par()->table->CellHasContRow(cell_above)<0)) {
-                    SetCursorFromCoordinates(bview, cursor.x_fix(), 
-                                             cursor.y() - cursor.row()->baseline()
-                                             + cursor.row()->height() + 1);
-                    if (cursor.par()->table) {
-                        cell = NumberOfCell(cursor.par(), cursor.pos());
-                        cell_above = cursor.par()->table->GetCellAbove(cell);
-                    }
-                }
-        }
-#endif
 }
 
 
@@ -3763,70 +3557,6 @@ void LyXText::SetCursorParUndo(Buffer * buf)
 #endif
 		); 
 }
-
-
-#ifndef NEW_TABULAR
-void LyXText::RemoveTableRow(LyXCursor & cur) const
-{
-	int cell = -1;
-	int cell_org = 0;
-	int ocell = 0;
-    
-	// move to the previous row
-	int cell_act = NumberOfCell(cur.par(), cur.pos());
-	if (cell < 0)
-		cell = cell_act;
-	while (cur.pos() && !cur.par()->IsNewline(cur.pos() - 1))
-		cur.pos(cur.pos() - 1);
-	while (cur.pos() && 
-	       !cur.par()->table->IsFirstCell(cell_act)) {
-		cur.pos(cur.pos() - 1);
-		while (cur.pos() && !cur.par()->IsNewline(cur.pos() - 1))
-			cur.pos(cur.pos() - 1);
-		--cell;
-		--cell_act;
-	}
-	// now we have to pay attention if the actual table is the
-	//   main row of TableContRows and if yes to delete all of them
-	if (!cell_org)
-		cell_org = cell;
-	do {
-		ocell = cell;
-		// delete up to the next row
-		while (cur.pos() < cur.par()->Last() && 
-		       (cell_act == ocell
-			|| !cur.par()->table->IsFirstCell(cell_act))) {
-			while (cur.pos() < cur.par()->Last() &&
-			       !cur.par()->IsNewline(cur.pos()))
-				cur.par()->Erase(cur.pos());
-			++cell;
-			++cell_act;
-			if (cur.pos() < cur.par()->Last())
-				cur.par()->Erase(cur.pos());
-		}
-		if (cur.pos() && cur.pos() == cur.par()->Last()) {
-			cur.pos(cur.pos() - 1);
-			cur.par()->Erase(cur.pos()); // no newline at very end!
-		}
-	} while (((cell + 1) < cur.par()->table->GetNumberOfCells()) &&
-		 !cur.par()->table->IsContRow(cell_org) &&
-		 cur.par()->table->IsContRow(cell));
-	cur.par()->table->DeleteRow(cell_org);
-	return;
-}
-#endif
-
-
-#ifndef NEW_TABULAR
-bool LyXText::IsEmptyTableCell() const
-{
-	LyXParagraph::size_type pos = cursor.pos() - 1;
-	while (pos >= 0 && pos < cursor.par()->Last()
-	       && !cursor.par()->IsNewline(pos))
-		--pos;
-	return cursor.par()->IsNewline(pos + 1);
-}
-#endif
 
 
 void LyXText::toggleAppendix(BufferView * bview)

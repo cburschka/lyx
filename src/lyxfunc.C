@@ -133,7 +133,9 @@ extern void MenuLayoutCharacter();
 extern void MenuLayoutParagraph();
 extern void MenuLayoutDocument();
 extern void MenuLayoutPaper();
+#if 0
 extern void MenuLayoutTable(int flag);
+#endif
 extern void MenuLayoutQuotes();
 extern void MenuLayoutPreamble();
 extern void MenuLayoutSave();
@@ -546,11 +548,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			   || ! buf->isLiterate());
 		break;
 
-#ifndef NEW_TABULAR
-	case LFUN_LAYOUT_TABLE:
-		disable = ! owner->view()->text->cursor.par()->table;
-		break;
-#endif
 	case LFUN_LAYOUT_TABULAR:
 		disable = true;
 		if (owner->view()->the_locking_inset) {
@@ -1070,11 +1067,7 @@ string const LyXFunc::Dispatch(int ac,
 	}
 		
 	case LFUN_DIALOG_TABULAR_INSERT:
-#ifndef NEW_TABULAR
-		Table();
-#else
 		owner->getDialogs()->showTabularCreate();
-#endif
 		break;
 		
 	case LFUN_TABULAR_FEATURE:
@@ -1449,7 +1442,8 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_LAYOUT_CHARACTER:
 		MenuLayoutCharacter();
 		break;
-		
+
+#if 0
 	case LFUN_LAYOUT_TABLE:
 	{
 	        int flag = 0;
@@ -1457,7 +1451,8 @@ string const LyXFunc::Dispatch(int ac,
 		MenuLayoutTable(flag);
 	}
 	break;
-		
+#endif
+	
 	case LFUN_LAYOUT_TABULAR:
 	    if (owner->view()->the_locking_inset) {
 		if (owner->view()->the_locking_inset->LyxCode()==Inset::TABULAR_CODE) {

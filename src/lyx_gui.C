@@ -457,25 +457,6 @@ void LyXGUI::create_forms()
 	lyxerr[Debug::INIT] << "Initializing form_paper...done" << endl;
 #endif
 
-#ifndef NEW_TABULAR
-        // the table_options form
-	fd_form_table_options = create_form_form_table_options();
-	fl_set_form_atclose(fd_form_table_options->form_table_options,
-			    CancelCloseBoxCB, 0);
-	fl_set_input_return(fd_form_table_options->input_column_width,
-			    FL_RETURN_ALWAYS);
-
-        // the table_extra form
-	fd_form_table_extra = create_form_form_table_extra();
-	fl_set_form_atclose(fd_form_table_extra->form_table_extra,
-			    CancelCloseBoxCB, 0);
-	fl_set_input_return(fd_form_table_extra->input_special_alignment,
-			    FL_RETURN_ALWAYS);
-	fl_set_input_return(fd_form_table_extra->input_special_multialign,
-			    FL_RETURN_ALWAYS);
-	lyxerr[Debug::INIT] << "Initializing form_table_extra...done" << endl;
-#endif
-
 #ifdef USE_OLD_DOCUMENT_LAYOUT
 	// the quotes form
 	fd_form_quotes = create_form_form_quotes();
@@ -491,19 +472,6 @@ void LyXGUI::create_forms()
 	fd_form_preamble = create_form_form_preamble();
 	fl_set_form_atclose(fd_form_preamble->form_preamble,
 			    CancelCloseBoxCB, 0);
-
-#ifndef NEW_TABULAR
-	// the table form
-	fd_form_table = create_form_form_table();
-	fl_set_form_atclose(fd_form_table->form_table, CancelCloseBoxCB, 0);
-	fl_set_slider_bounds(fd_form_table->slider_rows, 1, 50);
-	fl_set_slider_bounds(fd_form_table->slider_columns, 1, 50);
-	fl_set_slider_value(fd_form_table->slider_rows, 5);
-	fl_set_slider_value(fd_form_table->slider_columns, 5);
-	fl_set_slider_precision(fd_form_table->slider_rows, 0);
-	fl_set_slider_precision(fd_form_table->slider_columns, 0);
-	lyxerr[Debug::INIT] << "Initializing form_table...done" << endl;
-#endif
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();

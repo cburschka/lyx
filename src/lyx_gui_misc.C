@@ -122,14 +122,6 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
 	}
-#ifndef NEW_TABULAR
-	if (fd_form_table->form_table->visible) {
-		fl_hide_form(fd_form_table->form_table);
-	}
-	if (fd_form_table_options->form_table_options->visible) {
-		fl_hide_form(fd_form_table_options->form_table_options);
-	}
-#endif
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_hide_form(fd_form_sendto->form_sendto);
 	}
@@ -203,11 +195,6 @@ void updateAllVisibleBufferRelatedDialogs()
 	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
 		UpdateParagraphExtra();
 	}
-#ifndef NEW_TABULAR
-	if (fd_form_table_options->form_table_options->visible) {
-		UpdateLayoutTable(1); // just like a right mouse click
-	}
-#endif
 	if (fd_form_bullet) {
 		if (fd_form_bullet->form_bullet->visible) {
 			updateBulletForm();
@@ -221,11 +208,6 @@ void updateAllVisibleBufferRelatedDialogs()
 		if (fd_form_character->form_character->visible) {
 			fl_hide_form(fd_form_character->form_character);
 		}
-#ifndef NEW_TABULAR
-		if (fd_form_table->form_table->visible) {
-			fl_hide_form(fd_form_table->form_table);
-		}
-#endif
 #ifndef ALWAYS_CLOSE_MATH_PANELS
 		// The math popups should be closed only if we switch
 		// to a readonly buffer

@@ -884,14 +884,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
 		++pos;
 	} else if (token == "\\LyXTable") {
-#ifdef NEW_TABULAR
 		Inset * inset = new InsetTabular(this);
 		inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
 		++pos;
-#else
-		par->table = new LyXTable(lex);
-#endif
 	} else if (token == "\\hfill") {
 		par->InsertChar(pos, LyXParagraph::META_HFILL, font);
 		++pos;
@@ -1309,12 +1305,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 	int ltype_depth = 0;
 	int actcell = 0;
 	int actpos = 0;
-#ifndef NEW_TABULAR
-	int h;
-	int * clen = 0;
-	int cell = 0;
-	int cells = 0;
-#endif
 	int currlinelen = 0;
 	long fpos = 0;
 	bool ref_printed = false;
@@ -1419,40 +1409,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 #endif
 		}
       
-		//LyXLayout const & layout =
-		//	textclasslist.Style(params.textclass, 
-		//			    par->GetLayout()); // unused
-		//bool free_spc = layout.free_spacing; //unused
-
-#ifndef NEW_TABULAR
-		/* It might be a table */ 
-		if (par->table){
-			cell = 1;
-                        actcell = 0;
-			cells = par->table->columns;
-			clen = new int [cells];
-			memset(clen, 0, sizeof(int) * cells);
-
-			for (i = 0, j = 0, h = 1; i < par->size(); ++i, ++h) {
-				c = par->GetChar(i);
-				if (c == LyXParagraph::META_INSET) {
-					if ((inset = par->GetInset(i))) {
-						std::ostringstream ost;
-						inset->Ascii(this, ost);
-						h += ost.str().length();
-					}
-				} else if (c == LyXParagraph::META_NEWLINE) {
-					if (clen[j] < h)
-						clen[j] = h;
-					h = 0;
-					j = (++j) % par->table->NumberOfCellsInRow(actcell);
-                                        ++actcell;
-				}
-			}
-			if (clen[j] < h)
-				clen[j] = h;
-		}
-#endif
 		font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
                 actcell = 0;
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
@@ -1484,27 +1440,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 						ofs << "  ";
 					currlinelen += (ltype_depth-depth)*2;
 				}
-#ifndef NEW_TABULAR
-				if (par->table) {
-					for(j = 0; j < cells; ++j) {
-						ofs << '+';
-						for(h = 0; h < (clen[j] + 1);
-						    ++h)
-							ofs << '-';
-					}
-					ofs << "+\n";
-					for(j = 0; j < depth; ++j)
-						ofs << "  ";
-					currlinelen = depth * 2;
-					if (ltype_depth > depth) {
-						for(j = ltype_depth;
-						    j > depth; --j)
-							ofs << "  ";
-						currlinelen += (ltype_depth-depth)*2;
-					}
-					ofs << "| ";
-				}
-#endif
 			}
 			font2 = par->GetFontSettings(params, i);
 			if (font1.latex() != font2.latex()) {
@@ -1528,61 +1463,16 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				}
 				break;
 			case LyXParagraph::META_NEWLINE:
-#ifndef NEW_TABULAR
-				if (par->table) {
-					if (par->table->NumberOfCellsInRow(actcell) <= cell) {
-						for(j = actpos; j < clen[cell - 1]; ++j)
-							ofs << ' ';
-						ofs << " |\n";
-						for(j = 0; j < depth; ++j)
-							ofs << "  ";
-						currlinelen = depth*2;
-						if (ltype_depth > depth) {
-							for(j = ltype_depth; j > depth; --j)
-								ofs << "  ";
-							currlinelen += (ltype_depth-depth) * 2;
-						}
-						for(j = 0; j < cells; ++j) {
-							ofs << '+';
-							for(h = 0; h < (clen[j] + 1); ++h)
-								ofs << '-';
-						}
-						ofs << "+\n";
-						for(j = 0; j < depth; ++j)
-							ofs << "  ";
-						currlinelen = depth * 2;
-						if (ltype_depth > depth) {
-							for(j = ltype_depth;
-							    j > depth; --j)
-								ofs << "  ";
-							currlinelen += (ltype_depth-depth)*2;
-						}
-						ofs << "| ";
-						cell = 1;
-					} else {
-						for(j = actpos;
-						    j < clen[cell - 1]; ++j)
-							ofs << ' ';
-						ofs << " | ";
-						++cell;
-					}
-                                        ++actcell;
-					currlinelen = actpos = 0;
-				} else {
-#endif
-					ofs << "\n";
-					for(j = 0; j < depth; ++j)
+				ofs << "\n";
+				for(j = 0; j < depth; ++j)
+					ofs << "  ";
+				currlinelen = depth * 2;
+				if (ltype_depth > depth) {
+					for(j = ltype_depth;
+					    j > depth; --j)
 						ofs << "  ";
-					currlinelen = depth * 2;
-					if (ltype_depth > depth) {
-						for(j = ltype_depth;
-						    j > depth; --j)
-							ofs << "  ";
-						currlinelen += (ltype_depth - depth) * 2;
-					}
-#ifndef NEW_TABULAR
+					currlinelen += (ltype_depth - depth) * 2;
 				}
-#endif
 				break;
 			case LyXParagraph::META_HFILL: 
 				ofs << "\t";
@@ -1611,28 +1501,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				break;
 			}
 		}
-#ifndef NEW_TABULAR
-		if (par->table) {
-			for(j = actpos; j < clen[cell - 1]; ++j)
-				ofs << ' ';
-			ofs << " |\n";
-			for(j = 0; j < depth; ++j)
-				ofs << "  ";
-			currlinelen = depth * 2;
-			if (ltype_depth > depth) {
-				for(j = ltype_depth; j > depth; --j)
-					ofs << "  ";
-				currlinelen += (ltype_depth - depth) * 2;
-			}
-			for(j = 0; j < cells; ++j) {
-				ofs << '+';
-				for(h = 0; h < (clen[j] + 1); ++h)
-					ofs << '-';
-			}
-			ofs << "+\n";
-			delete [] clen;    
-		}
-#endif
 		par = par->next;
 	}
    
@@ -3165,14 +3033,6 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				 LyXParagraph * par, int & desc_on,
 				 int const depth) 
 {
-#ifndef NEW_TABULAR
-	if (par->table) {
-		par->SimpleDocBookOneTablePar(this,
-					      os, extra, desc_on, depth);
-		return;
-	}
-#endif
-
 	bool emph_flag = false;
 
 	LyXLayout const & style = textclasslist.Style(params.textclass,

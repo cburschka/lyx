@@ -591,46 +591,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		selection_possible = true;
 	screen_->HideCursor();
 
-#ifndef NEW_TABULAR
-	// Right button mouse click on a table
-	if (button == 3 &&
-	    (bv_->text->cursor.par()->table ||
-	     bv_->text->MouseHitInTable(bv_, xpos, ypos + bv_->text->first))) {
-		// Set the cursor to the press-position
-		bv_->text->SetCursorFromCoordinates(bv_, xpos, ypos + bv_->text->first);
-		bool doit = true;
-		
-		// Only show the table popup if the hit is in
-		// the table, too
-		if (!bv_->text->HitInTable(bv_,
-					   bv_->text->cursor.row(), xpos))
-			doit = false;
-		
-		// Hit above or below the table?
-		if (doit) {
-			if (!bv_->text->selection) {
-				screen_->ToggleSelection(bv_->text);
-				bv_->text->ClearSelection();
-				bv_->text->FullRebreak(bv_);
-				screen_->Update(bv_->text);
-				updateScrollbar();
-			}
-			// Popup table popup when on a table.
-			// This is obviously temporary, since we
-			// should be able to popup various
-			// context-sensitive-menus with the
-			// the right mouse. So this should be done more
-			// general in the future. Matthias.
-			selection_possible = false;
-			owner_->getLyXFunc()
-				->Dispatch(LFUN_LAYOUT_TABLE,
-					   "true");
-			return;
-		}
-	}
-#endif
-	
-	int screen_first = bv_->text->first;
+	int const screen_first = bv_->text->first;
 	
 	// Middle button press pastes if we have a selection
 	bool paste_internally = false;
@@ -705,7 +666,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 			 * if necessary */
 			update(BufferView::SELECT|BufferView::FITCUR);
 		}
-	}            
+	}   
 }
 
 
@@ -767,19 +728,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 	
 	selection_possible = false;
-#ifndef NEW_TABULAR
-	if (bv_->text->cursor.par()->table) {
-                int cell = bv_->text->
-                        NumberOfCell(bv_->text->cursor.par(),
-                                     bv_->text->cursor.pos());
-                if (bv_->text->cursor.par()->table->IsContRow(cell) &&
-                    bv_->text->cursor.par()->table->
-                    CellHasContRow(bv_->text->cursor.par()->table->
-                                   GetCellAbove(cell))<0) {
-                        bv_->text->CursorUp(bv_);
-                }
-        }
-#endif
 	
 	if (button >= 2) return;
 

@@ -76,7 +76,6 @@ lyx_SOURCES = \
 	Sectioning.C \
 	Spacing.C \
 	Spacing.h \
-	TableLayout.C \
 	TextCache.C \
 	TextCache.h \
 	Timeout.C \

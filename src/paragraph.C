@@ -80,11 +80,6 @@ LyXParagraph::LyXParagraph()
 #endif
 	align = LYX_ALIGN_BLOCK;
 
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	table = 0;
-	/* table stuff -- end*/
-#endif
 	inset_owner = 0;
 	id_ = paragraph_id++;
         bibkey = 0; // ale970302
@@ -112,11 +107,6 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 #ifndef NEW_INSETS
 	footnoteflag = LyXParagraph::NO_FOOTNOTE;
 	footnotekind = LyXParagraph::FOOTNOTE;
-#endif
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	table = 0;
-	/* table stuff -- end*/
 #endif
 	inset_owner = 0;
 	id_ = paragraph_id++;
@@ -247,13 +237,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 		footflag = LyXParagraph::NO_FOOTNOTE;
 	}
 #endif
-#ifndef NEW_TABULAR
-	// It might be a table.
-	if (table){
-		os << "\\LyXTable\n";
-		table->Write(os);
-	}
-#endif
+
 	// bibitem  ale970302
 	if (bibkey)
 		bibkey->Write(buf, os);
@@ -398,10 +382,6 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 			(*cit).inset->Validate(features);
 	}
 
-#ifndef NEW_TABULAR
-        if (table && table->IsLongTable())
-		features.longtable = true;
-#endif
         if (pextra_type == PEXTRA_INDENT)
                 features.LyXParagraphIndent = true;
         if (pextra_type == PEXTRA_FLOATFLT)
@@ -414,10 +394,6 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
         if (params.paragraph_separation == BufferParams::PARSEP_INDENT
             && pextra_type == LyXParagraph::PEXTRA_MINIPAGE)
 		features.NeedLyXMinipageIndent = true;
-#ifndef NEW_TABULAR
-        if (table && table->NeedRotating())
-		features.rotating = true;
-#endif
 #ifndef NEW_INSETS
 	if (footnoteflag != NO_FOOTNOTE && footnotekind == ALGORITHM)
 		features.algorithm = true;
@@ -536,11 +512,6 @@ LyXParagraph::~LyXParagraph()
 	     it != insetlist.end(); ++it) {
 		delete (*it).inset;
 	}
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	delete table;
-	/* table stuff -- end*/
-#endif
 
         // ale970302
 	delete bibkey;
@@ -1609,22 +1580,17 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 		return 0;
 	
 	int i = 0;
-	if (
 #ifndef NEW_INSETS
-		!IsDummy() &&
+	if (!IsDummy()) {
 #endif
-#ifndef NEW_TABULAR
-		!table
-#else
-		true
-#endif
-		){
 		while (Last()
 		       && (IsNewline(0) || IsLineSeparator(0))){
 			Erase(0);
 			++i;
 		}
+#ifndef NEW_INSETS
 	}
+#endif
 	return i;
 }
 
@@ -1640,14 +1606,6 @@ LyXParagraph * LyXParagraph::Clone() const
 	// follow footnotes
 	result->layout = layout;
 
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	if (table)
-		result->table = table->Clone();
-	else
-		result->table = 0;
-	/* table stuff -- end*/ 
-#endif
 	result->inset_owner = inset_owner;
    
         // ale970302
@@ -1699,10 +1657,6 @@ bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
                 par->pextra_alignment == pextra_alignment && 
                 par->pextra_hfill == pextra_hfill && 
                 par->pextra_start_minipage == pextra_start_minipage && 
-#ifndef NEW_TABULAR
-		par->table == table && // what means: NO TABLE AT ALL
-#endif
-
 		par->noindent == noindent &&
 		par->depth == depth);
 }
@@ -1842,7 +1796,7 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 	int par_depth = GetDepth();
 	while (par) {
 		LyXTextClass::LayoutList::size_type layout = par->GetLayout();
-		int endlabeltype =
+		int const endlabeltype =
 			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
 		if (endlabeltype != END_LABEL_NO_LABEL) {
@@ -1964,12 +1918,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
 	LyXParagraph * npar = 0;
 
 	par->layout = new_layout;
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	if (table) 
-		par->layout = 0;
-	/* table stuff -- end*/
-#endif
+
         if (par->pextra_type == PEXTRA_NONE) {
                 if (par->Previous()) {
 #ifndef NEW_INSETS
@@ -2039,12 +1988,6 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
 	par->added_space_bottom = VSpace(VSpace::NONE);
 	par->spacing.set(Spacing::Default);
 
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/ 
-	if (table) 
-		par->layout = 0;
-	/* table stuff -- end*/
-#endif
         if (par->pextra_type == PEXTRA_NONE) {
                 if (par->Previous()) {
 #ifndef NEW_INSETS
@@ -2466,11 +2409,6 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		      && footnotekind != LyXParagraph::FOOTNOTE
 		      && footnotekind != LyXParagraph::MARGIN)
 #endif
-#ifndef NEW_TABULAR
-		      && !(table
-			  || (par
-			      && par->table))
-#endif
 			) {
 			// don't insert this if we would be adding it
 			// before or after a table in a float.  This 
@@ -2531,11 +2469,6 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 				   bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
-
-#ifndef NEW_TABULAR
-	if (table)
-		return SimpleTeXOneTablePar(buf, bparams, os, texrow);
-#endif
 
 	bool return_value = false;
 
@@ -2757,308 +2690,6 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 }
 
 
-#ifndef NEW_TABULAR
-// This one spits out the text of a table paragraph
-bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
-					BufferParams const & bparams,
-					ostream & os, TexRow & texrow)
-{
-	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...     " << this << endl;
-   
-	bool return_value = false;
-
-	LyXLayout const & style = 
-		textclasslist.Style(bparams.textclass, GetLayout());
- 
-	int column = 0;
-#ifndef NEW_INSETS
-	if (!IsDummy()) { // it is dummy if it is in a float!!!
-#endif
-		if (style.isCommand()) {
-			os << '{';
-			++column;
-		} else if (align != LYX_ALIGN_LAYOUT) {
-			os << '{';
-			++column;
-			return_value = true;
-		}
-		if (noindent) {
-			os << "\\noindent ";
-			column += 10;
-		}
-		switch (align) {
-		case LYX_ALIGN_NONE:
-		case LYX_ALIGN_BLOCK:
-		case LYX_ALIGN_LAYOUT:
-		case LYX_ALIGN_SPECIAL: break;
-		case LYX_ALIGN_LEFT:
-			os << "\\raggedright ";
-			column+= 13;
-			break;
-		case LYX_ALIGN_RIGHT:
-			os << "\\raggedleft ";
-			column+= 12;
-			break;
-		case LYX_ALIGN_CENTER:
-			os << "\\centering ";
-			column+= 11;
-			break;
-		}
-#ifndef NEW_INSETS
-	}
-#endif
-
-	LyXFont basefont = getFont(bparams, -1); // Get layout font
-	// Which font is currently active?
-	LyXFont running_font = basefont;
-	LyXFont last_font;
-	// Do we have an open font change?
-	bool open_font = false;
-	int current_cell_number = -1;
-	int tmp = table->TexEndOfCell(os, current_cell_number);
-	for (; tmp > 0 ; --tmp)
-		texrow.newline();
-	
-	texrow.start(this, 0);
-
-	bool is_rtl = getParLanguage(bparams)->RightToLeft();
-	bool first_in_cell = true;
-		
-	for (size_type i = 0; i < size(); ++i) {
-		value_type c = GetChar(i);
-		if (table->IsContRow(current_cell_number + 1)) {
-			if (c == LyXParagraph::META_NEWLINE)
-				++current_cell_number;
-			continue;
-		}
-		++column;
-
-		if (first_in_cell && is_rtl) {
-			os << "\\R{";
-			column += 3;
-			first_in_cell = false;
-		}
-
-		// Fully instantiated font
-		LyXFont font = getFont(bparams, i);
-		last_font = running_font;
-
-		// Spaces at end of font change are simulated to be
-		// outside font change.
-		// i.e. we write "\textXX{text} " rather than
-		// "\textXX{text }". (Asger)
-		if (open_font && c == ' ' && i <= size() - 2
-		    && getFont(bparams, i + 1) != running_font
-		    && getFont(bparams, i + 1) != font) {
-			font = getFont(bparams, i + 1);
-		}
-
-		// We end font definition before blanks
-		if (font != running_font && open_font) {
-			column += running_font.latexWriteEndChanges(os,
-								    basefont,
-								    font);
-			running_font = basefont;
-			open_font = false;
-		}
-		// Blanks are printed before start of fontswitch
-		if (c == ' ') {
-			SimpleTeXBlanks(os, texrow, i, column, font, style);
-		}
-		// Do we need to change font?
-		if (font != running_font) {
-			column += font.latexWriteStartChanges(os, basefont,
-							      last_font);
-			running_font = font;
-			open_font = true;
-		}
-		// Do we need to turn on LaTeX mode?
-		if (font.latex() != running_font.latex()) {
-			if (font.latex() == LyXFont::ON
-			    && style.needprotect) {
-				os << "\\protect ";
-				column += 9;
-			}
-		}
-		if (c == LyXParagraph::META_NEWLINE) {
-			// special case for inside a table
-			// different from default case in
-			// SimpleTeXSpecialChars()
-			if (open_font) {
-				column += running_font
-					.latexWriteEndChanges(os, basefont,
-							      basefont);
-				open_font = false;
-			}
-			basefont = getFont(bparams, -1);
-			running_font = basefont;
-			++current_cell_number;
-			if (table->CellHasContRow(current_cell_number) >= 0) {
-				TeXContTableRows(buf, bparams, os, i + 1,
-						 current_cell_number,
-						 column, texrow);
-			}
-			if (is_rtl && !first_in_cell) {
-				os << "}";
-				first_in_cell = true;
-			}
-
-			// if this cell follow only ContRows till end don't
-			// put the EndOfCell because it is put after the
-			// for(...)
-			if (table->ShouldBeVeryLastCell(current_cell_number)) {
-				--current_cell_number;
-				break;
-			}
-			int tmp = table->TexEndOfCell(os,
-						      current_cell_number);
-			if (tmp > 0) {
-				column = 0;
-			} else if (tmp < 0) {
-				tmp = -tmp;
-			}
-			for (; tmp--;) {
-				texrow.newline();
-			}
-			texrow.start(this, i + 1);
-		} else {
-			SimpleTeXSpecialChars(buf, bparams,
-					      os, texrow, false,
-					      font, running_font, basefont,
-					      open_font, style, i, column, c);
-		}
-	}
-
-	// If we have an open font definition, we have to close it
-	if (open_font) {
-		running_font.latexWriteEndChanges(os, basefont, basefont);
-	}
-	++current_cell_number;
-	if (is_rtl && !first_in_cell)
-		os << "}";
-	tmp = table->TexEndOfCell(os, current_cell_number);
-	for (; tmp > 0; --tmp)
-		texrow.newline();
-	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...done " << this << endl;
-	return return_value;
-}
-#endif
-
-
-#ifndef NEW_TABULAR
-// This one spits out the text off ContRows in tables
-bool LyXParagraph::TeXContTableRows(Buffer const * buf,
-				    BufferParams const & bparams,
-				    ostream & os,
-				    LyXParagraph::size_type i,
-				    int current_cell_number,
-				    int & column, TexRow & texrow)
-{
-	lyxerr[Debug::LATEX] << "TeXContTableRows...     " << this << endl;
-	if (!table)
-		return false;
-    
-	bool return_value = false;
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    GetLayout());
-	LyXFont basefont = getFont(bparams, -1); // Get layout font
-	LyXFont last_font;
-	// Which font is currently active?
-	LyXFont running_font = basefont;
-	// Do we have an open font change?
-	bool open_font = false;
-
-	size_type lastpos = i;
-	int cell = table->CellHasContRow(current_cell_number);
-	++current_cell_number;
-	value_type c;
-	while(cell >= 0) {
-		// first find the right position
-		i = lastpos;
-		for (; (i < size()) && (current_cell_number < cell); ++i) {
-			c = GetChar(i);
-			if (c == LyXParagraph::META_NEWLINE)
-				++current_cell_number;
-		}
-		lastpos = i;
-		c = GetChar(i);
-		if (table->Linebreaks(table->FirstVirtualCell(cell))) {
-			os << " \\\\\n";
-			texrow.newline();
-			column = 0;
-		} else if ((c != ' ') && (c != LyXParagraph::META_NEWLINE)) {
-			os << ' ';
-		}
-
-		for (; i < size()
-			     && (c = GetChar(i)) != LyXParagraph::META_NEWLINE;
-		     ++i) {
-			++column;
-
-			// Fully instantiated font
-			LyXFont font = getFont(bparams, i);
-			last_font = running_font;
-
-			// Spaces at end of font change are simulated to
-			// be outside font change. i.e. we write
-			// "\textXX{text} " rather than "\textXX{text }".
-			// (Asger)
-			if (open_font && c == ' ' && i <= size() - 2 
-			    && getFont(bparams, i + 1) != running_font
-			    && getFont(bparams, i + 1) != font) {
-				font = getFont(bparams, i + 1);
-			}
-
-			// We end font definition before blanks
-			if (font != running_font && open_font) {
-				column += running_font.latexWriteEndChanges(os, basefont, font);
-				running_font = basefont;
-				open_font = false;
-			}
-			// Blanks are printed before start of fontswitch
-			if (c == ' '){
-				SimpleTeXBlanks(os, texrow, i,
-						column, font, style);
-			}
-			// Do we need to change font?
-			if (font != running_font) {
-				column +=
-					font.latexWriteStartChanges(os,
-								    basefont,
-								    last_font);
-				running_font = font;
-				open_font = true;
-			}
-			// Do we need to turn on LaTeX mode?
-			if (font.latex() != running_font.latex()) {
-				if (font.latex() == LyXFont::ON
-				    && style.needprotect) {
-					os << "\\protect ";
-					column += 9;
-				}
-			}
-			SimpleTeXSpecialChars(buf, bparams,
-					      os, texrow, false, font,
-					      running_font, basefont,
-					      open_font, style, i, column, c);
-		}
-		// If we have an open font definition, we have to close it
-		if (open_font) {
-			running_font.latexWriteEndChanges(os, basefont,
-							  basefont);
-			open_font = false;
-		}
-		basefont = getFont(bparams, -1);
-		running_font = basefont;
-		cell = table->CellHasContRow(current_cell_number);
-	}
-	lyxerr[Debug::LATEX] << "TeXContTableRows...done " << this << endl;
-	return return_value;
-}
-#endif
-
-
 bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 {
 	bool retval = false;
@@ -3121,329 +2752,6 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 	}
 	return retval;
 }
-
-
-#ifndef NEW_TABULAR
-void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer, 
-					    ostream & os, string & extra,
-					    int & desc_on, int depth) 
-{
-	BufferParams const & bparams = buffer->params;
-	if (!table) return;
-	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar... " << this << endl;
-	int column = 0;
-	LyXFont font1, font2;
-	char c;
-	Inset * inset;
-	size_type main_body;
-	bool emph_flag = false;
-	
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    GetLayout());
-	
-	if (style.labeltype != LABEL_MANUAL)
-		main_body = 0;
-	else
-		main_body = BeginningOfMainBody();
-	
-	// Gets paragraph main font.
-	if (main_body > 0)
-		font1 = style.labelfont;
-	else
-		font1 = style.font;
-	
-	int char_line_count = depth;
-	os << newlineAndDepth(depth);
-#ifndef NEW_INSETS
-	if (footnoteflag == LyXParagraph::NO_FOOTNOTE) {
-		os << "<INFORMALTABLE>"
-		   << newlineAndDepth(++depth);
-	}
-#else
-	os << "<INFORMALTABLE>"
-	   << newlineAndDepth(++depth);
-#endif
-	int current_cell_number = -1;
-	int tmp = table->DocBookEndOfCell(os, current_cell_number, depth);
-	
-	// Parsing main loop.
-	for (size_type i = 0; i < size(); ++i) {
-		c = GetChar(i);
-		if (table->IsContRow(current_cell_number+1)) {
-			if (c == LyXParagraph::META_NEWLINE)
-				++current_cell_number;
-			continue;
-		}
-		++column;
-		
-		// Fully instantiated font
-		font2 = getFont(bparams, i);
-		
-		// Handle <emphasis> tag.
-		if (font1.emph() != font2.emph() && i) {
-			if (font2.emph() == LyXFont::ON) {
-				os << "<emphasis>";
-				emph_flag= true;
-			} else if (emph_flag) {
-				os << "</emphasis>";
-				emph_flag= false;
-			}
-		}
-		if (c == LyXParagraph::META_NEWLINE) {
-			// We have only to control for emphasis open here!
-			if (emph_flag) {
-				os << "</emphasis>";
-				emph_flag= false;
-			}
-			font1 = font2 = getFont(bparams, -1);
-			++current_cell_number;
-			if (table->CellHasContRow(current_cell_number) >= 0) {
-				DocBookContTableRows(buffer,
-						     os, extra, desc_on, i + 1,
-						     current_cell_number,
-						     column);
-			}
-			// if this cell follow only ContRows till end don't
-			// put the EndOfCell because it is put after the
-			// for(...)
-			if (table->ShouldBeVeryLastCell(current_cell_number)) {
-				--current_cell_number;
-				break;
-			}
-			tmp = table->DocBookEndOfCell(os,
-						      current_cell_number,
-						      depth);
-			
-			if (tmp > 0)
-				column = 0;
-		} else if (c == LyXParagraph::META_INSET) {
-			inset = GetInset(i);
-			std::ostringstream ost;
-			inset->DocBook(buffer, ost);
-			string tmp_out = ost.str().c_str();
-
-			//
-			// This code needs some explanation:
-			// Two insets are treated specially
-			//   label if it is the first element in a
-			//   command paragraph
-			//         desc_on == 3
-			//   graphics inside tables or figure floats
-			//   can't go on
-			//   title (the equivalente in latex for this
-			//   case is caption
-			//   and title should come first
-			//         desc_on == 4
-			//
-			if(desc_on != 3 || i != 0) {
-				if(tmp_out[0] == '@') {
-					if(desc_on == 4)
-						extra += frontStrip(tmp_out,
-								    '@');
-					else
-						os << frontStrip(tmp_out,
-								 '@');
-				} else
-					os << tmp_out;
-			}
-		} else if (font2.latex() == LyXFont::ON) {
-			// "TeX"-Mode on == > SGML-Mode on.
-			if (c != '\0')
-				os << c;
-			++char_line_count;
-		} else {
-			string sgml_string;
-			if (linuxDocConvertChar(c, sgml_string) 
-			    && !style.free_spacing) {
-				// in freespacing mode, spaces are
-				// non-breaking characters
-				// char is ' '
-				if (desc_on == 1) {
-					++char_line_count;
-					os << '\n'
-					   << "</term><listitem><para>";
-					desc_on = 2;
-				} else  {
-					os << c;
-				}
-			} else {
-				os << sgml_string;
-			}
-		}
-		font1 = font2;
-	}
-	
-	// Needed if there is an optional argument but no contents.
-	if (main_body > 0 && main_body == size()) {
-		font1 = style.font;
-	}
-
-	if (emph_flag) {
-	        os << "</emphasis>";
-	}
-	
-	++current_cell_number;
-	tmp = table->DocBookEndOfCell(os, current_cell_number, depth);
-	// Resets description flag correctly.
-	switch(desc_on){
-	case 1:
-		// <term> not closed...
-		os << "</term>";
-		break;
-	}
-#ifndef NEW_INSETS
-	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
-#endif
-		os << "</INFORMALTABLE>";
-	os << '\n';
-	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar...done "
-			     << this << endl;
-}
-#endif
-
-
-#ifndef NEW_TABULAR
-void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
-					ostream & os, string & extra,
-                                        int & desc_on,
-					LyXParagraph::size_type i,
-                                        int current_cell_number, int &column) 
-
-{
-	if (!table) return;
-
-	BufferParams const & bparams = buffer->params;
-	
-	lyxerr[Debug::LATEX] << "DocBookContTableRows... " << this << endl;
-
-	LyXFont font2;
-	char c;
-	Inset * inset;
-	//string emph = "emphasis";
-	bool emph_flag = false;
-	int char_line_count = 0;
-	
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    GetLayout());
-	
-	size_type main_body;
-	if (style.labeltype != LABEL_MANUAL)
-		main_body = 0;
-	else
-		main_body = BeginningOfMainBody();
-	
-	// Gets paragraph main font.
-	LyXFont font1;
-	if (main_body > 0)
-		font1 = style.labelfont;
-	else
-		font1 = style.font;
-	
-	size_type lastpos = i;
-	int cell = table->CellHasContRow(current_cell_number);
-	++current_cell_number;
-	while(cell >= 0) {
-		// first find the right position
-		i = lastpos;
-		for (; i < size() && current_cell_number < cell; ++i) {
-			c = GetChar(i);
-			if (c == LyXParagraph::META_NEWLINE)
-				++current_cell_number;
-		}
-		lastpos = i;
-		c = GetChar(i);
-		// I don't know how to handle this so I comment it
-                // for the moment (Jug)
-//             if (table->Linebreaks(table->FirstVirtualCell(cell))) {
-//                     file += " \\\\\n";
-//                     column = 0;
-//             } else
-		if ((c != ' ') && (c != LyXParagraph::META_NEWLINE)) {
-			os << ' ';
-		}
-
-		for (; i < size()
-			     && (c = GetChar(i)) != LyXParagraph::META_NEWLINE;
-		     ++i) {
-			++column;
-			
-			// Fully instantiated font
-			font2 = getFont(bparams, i);
-			
-			// Handle <emphasis> tag.
-			if (font1.emph() != font2.emph() && i) {
-				if (font2.emph() == LyXFont::ON) {
-					os << "<emphasis>";
-					emph_flag= true;
-				} else if (emph_flag) {
-					os << "</emphasis>";
-					emph_flag= false;
-				}
-			}
-			if (c == LyXParagraph::META_INSET) {
-				inset = GetInset(i);
-				std::ostringstream ost;
-				inset->DocBook(buffer, ost);
-				string tmp_out = ost.str().c_str();
-
-				// This code needs some explanation:
-				// Two insets are treated specially
-				//   label if it is the first element in a
-				//   command paragraph
-				//       desc_on == 3
-				//   graphics inside tables or figure floats
-				//   can't go on title (the equivalente in
-				//   latex for this case is caption and title
-				//   should come first
-				//       desc_on == 4
-				//
-				if(desc_on != 3 || i != 0) {
-					if(tmp_out[0] == '@') {
-						if(desc_on == 4)
-							extra += frontStrip(tmp_out, '@');
-						else
-							os << frontStrip(tmp_out, '@');
-					} else
-						os << tmp_out;
-				}
-			} else if (font2.latex() == LyXFont::ON) {
-				// "TeX"-Mode on == > SGML-Mode on.
-				if (c!= '\0')
-					os << c;
-				++char_line_count;
-			} else {
-				string sgml_string;
-				if (linuxDocConvertChar(c, sgml_string) 
-				    && !style.free_spacing) {
-					// in freespacing mode, spaces are
-					// non-breaking characters
-					// char is ' '
-					if (desc_on == 1) {
-						++char_line_count;
-						os << '\n'
-						   << "</term><listitem><para>";
-						desc_on = 2;
-					} else  {
-						os << c;
-					}
-				} else {
-					os << sgml_string;
-				}
-			}
-		}
-		// we have only to control for emphasis open here!
-		if (emph_flag) {
-			os << "</emphasis>";
-			emph_flag= false;
-		}
-		font1 = font2 = getFont(bparams, -1);
-		cell = table->CellHasContRow(current_cell_number);
-	}
-	lyxerr[Debug::LATEX] << "DocBookContTableRows...done " << this << endl;
-}
-#endif
 
 
 void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
@@ -3971,9 +3279,6 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 		if (par && par->depth > depth) {
 			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
-#ifndef NEW_TABULAR
-			    && !par->table
-#endif
 			    // Thinko!
 			    // How to handle this? (Lgb)
 			    //&& !suffixIs(os, "\n\n")
@@ -4571,29 +3876,14 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 	else
 #endif
 	if (size() > 0) {
-		Language const * lang = 0;
-#ifndef NEW_TABULAR
-		if (!table)
-#endif
-			lang = GetFirstFontSettings().language();
-#ifndef NEW_TABULAR
-		else {
-			for (size_type pos = 0; pos < size(); ++pos) {
-				if (IsNewline(pos)) {
-					lang = GetFontSettings(bparams, pos).language();
-					break;
-				}
-			}
-			if (!lang)
-				lang = GetFirstFontSettings().language();
-		}
-#endif
+		Language const * lang = GetFirstFontSettings().language();
+
 		if (lang->lang() == "default")
 			return bparams.language_info;
 		return lang;
 	} else if (previous)
 		return previous->getParLanguage(bparams);
-	//else
+
 		return bparams.language_info;
 }
 
@@ -4601,9 +3891,6 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 bool LyXParagraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
-#ifndef NEW_TABULAR
-		&& !table
-#endif
 		&& getParLanguage(bparams)->RightToLeft();
 }
 
@@ -4679,19 +3966,6 @@ string const LyXParagraph::String(Buffer const * buffer,
 			    LyXParagraph::size_type end)
 {
 	string s;
-#ifndef NEW_TABULAR
-	int actcell = 0;
-	int cell = 1;
-	if (table)
-		for (LyXParagraph::size_type i = 0; i < beg; ++i)
-			if (IsNewline(i)) {
-				if (cell >= table->NumberOfCellsInRow(actcell))
-					cell = 1;
-				else
-					++cell;
-				++actcell;
-			}
-#endif
 
 #ifndef NEW_INSETS
 	if (beg == 0 && !IsDummy() && !labelstring.empty())
@@ -4709,18 +3983,6 @@ string const LyXParagraph::String(Buffer const * buffer,
 			GetInset(i)->Ascii(buffer, ost);
 			s += ost.str();
 		}
-#ifndef NEW_TABULAR
-		else if (table && IsNewlineChar(c)) {
-			if (cell >= table->NumberOfCellsInRow(actcell)) {
-				s += '\n';
-				cell = 1;
-			} else {
-				s += ' ';
-				++cell;
-			}
-			++actcell;
-		}
-#endif
 	}
 
 	return s;

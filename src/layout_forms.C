@@ -549,7 +549,7 @@ FD_form_paper *create_form_form_paper(void)
   return fdui;
 }
 /*---------------------------------------*/
-
+#if 0
 FD_form_table_options *create_form_form_table_options(void)
 {
   FL_OBJECT *obj;
@@ -678,6 +678,7 @@ FD_form_table_options *create_form_form_table_options(void)
   return fdui;
 }
 /*---------------------------------------*/
+#endif
 
 FD_form_paragraph_extra *create_form_form_paragraph_extra(void)
 {
@@ -764,7 +765,7 @@ FD_form_paragraph_extra *create_form_form_paragraph_extra(void)
   return fdui;
 }
 /*---------------------------------------*/
-
+#if 0
 FD_form_table_extra *create_form_form_table_extra(void)
 {
   FL_OBJECT *obj;
@@ -815,4 +816,4 @@ FD_form_table_extra *create_form_form_table_extra(void)
   return fdui;
 }
 /*---------------------------------------*/
-
+#endif

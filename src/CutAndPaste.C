@@ -94,17 +94,8 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	for (; i < end; ++i) {
 	    startpar->CopyIntoMinibuffer(current_view->buffer()->params,
 					 start);
-#ifndef NEW_TABULAR
-	    /* table stuff -- begin */
-	    if (startpar->table && startpar->IsNewline(start)) {
-		++start;
-	    } else {
-		/* table stuff -- end */
-#endif
-		startpar->Erase(start);
-#ifndef NEW_TABULAR
-	    }
-#endif
+	    startpar->Erase(start);
+
 	    buf->InsertFromMinibuffer(buf->Last());
 	}
 	end = start-1;
@@ -276,59 +267,25 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
     if (!buf->next) {
 	// only within a paragraph
 	tmpbuf = buf->Clone();
-#ifndef NEW_TABULAR
-	/* table stuff -- begin */
-	bool table_too_small = false;
-	if ((*par)->table) {
-	    while (buf->size() && !table_too_small) {
-		if (buf->IsNewline(0)){
-		    while((tmppos < tmppar->Last()) &&
-			  !tmppar->IsNewline(tmppos))
-			++tmppos;
-		    buf->Erase(0);
-		    if (tmppos < tmppar->Last())
-			++tmppos;
-		    else
-			table_too_small = true;
-		} else {
-		    // This is an attempt to fix the
-		    // "never insert a space at the
-		    // beginning of a paragraph" problem.
-		    if (!tmppos && buf->IsLineSeparator(0)) {
-			buf->Erase(0);
-		    } else {
-			buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
-			buf->Erase(0);
-			if (tmppar->InsertFromMinibuffer(tmppos))
-			    ++tmppos;
-		    }
-		}
-	    }
-	} else {
-	    /* table stuff -- end */
-#endif
-	    // Some provisions should be done here for checking
-	    // if we are inserting at the beginning of a
-	    // paragraph. If there are a space at the beginning
-	    // of the text to insert and we are inserting at
-	    // the beginning of the paragraph the space should
-	    // be removed.
-	    while (buf->size()) {
+	// Some provisions should be done here for checking
+	// if we are inserting at the beginning of a
+	// paragraph. If there are a space at the beginning
+	// of the text to insert and we are inserting at
+	// the beginning of the paragraph the space should
+	// be removed.
+	while (buf->size()) {
 		// This is an attempt to fix the
 		// "never insert a space at the
 		// beginning of a paragraph" problem.
 		if (!tmppos && buf->IsLineSeparator(0)) {
-		    buf->Erase(0);
+			buf->Erase(0);
 		} else {
-		    buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
-		    buf->Erase(0);
-		    if (tmppar->InsertFromMinibuffer(tmppos))
-			++tmppos;
+			buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
+			buf->Erase(0);
+			if (tmppar->InsertFromMinibuffer(tmppos))
+				++tmppos;
 		}
-	    }
-#ifndef NEW_TABULAR
 	}
-#endif
 	delete buf;
 	buf = tmpbuf;
 	*endpar = tmppar->Next();
@@ -523,18 +480,6 @@ bool CutAndPaste::checkPastePossible(LyXParagraph * par, int)
 	    return false;
 	}
     }
-#endif
-#ifndef NEW_TABULAR
-    /* table stuff -- begin */
-    if (par->table) {
-	if (buf->next) {
-	    WriteAlert(_("Impossible operation"),
-		       _("Table cell cannot include more than one paragraph!"),
-		       _("Sorry."));
-	    return false;
-	}
-    }
-    /* table stuff -- end */
 #endif
     return true;
 }

@@ -36,17 +36,21 @@ extern "C" void PaperCancelCB(FL_OBJECT *, long);
 extern "C" void PaperApplyCB(FL_OBJECT *, long);
 extern "C" void PaperOKCB(FL_OBJECT *, long);
 
+#if 0
 extern "C" void TableOptCloseCB(FL_OBJECT *, long);
 extern "C" void TableOptionsCB(FL_OBJECT *, long);
 extern "C" void SetPWidthCB(FL_OBJECT *, long);
+#endif
 
 extern "C" void CheckPExtraOptCB(FL_OBJECT *, long);
 extern "C" void ParagraphExtraOKCB(FL_OBJECT *, long);
 extern "C" void ParagraphExtraApplyCB(FL_OBJECT *, long);
 extern "C" void ParagraphExtraCancelCB(FL_OBJECT *, long);
 
+#if 0
 extern "C" void TableOptionsCB(FL_OBJECT *, long);
 extern "C" void TableSpeCloseCB(FL_OBJECT *, long);
+#endif
 
 }
 
@@ -60,7 +64,9 @@ extern bool UpdateLayoutPaper();
 extern bool UpdateLayoutQuotes();
 extern bool UpdateLayoutParagraph();
 extern bool UpdateParagraphExtra();
+#if 0
 extern bool UpdateLayoutTable(int);
+#endif
 
 extern void MenuLayoutCharacter();
 extern void MenuLayoutDocument();
@@ -68,7 +74,9 @@ extern void MenuLayoutPreamble();
 extern void MenuLayoutPaper();
 extern void MenuLayoutQuotes();
 extern void MenuLayoutParagraph();
+#if 0
 extern void MenuLayoutTable(int);
+#endif
 
 extern "C" {
 

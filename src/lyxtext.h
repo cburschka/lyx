@@ -444,31 +444,6 @@ public:
 	///
 	int NumberOfCell(LyXParagraph * par,
 			 LyXParagraph::size_type pos) const;
-	/* table stuff -- begin*/
-
-	/** all table features of the text-class are put together in
-	  this function. Possible values of feature are defined in table.h
-	  */
-	void TableFeatures(BufferView *, int feature, string const & val) const;
-        ///
-	void TableFeatures(BufferView *, int feature) const;
-
-	/** pos points at the beginning of the next cell (if there is one)
-	 */
-	int WidthOfCell(BufferView *, LyXParagraph * par,
-			LyXParagraph::size_type & pos) const;
-	///
-	void CheckParagraphInTable(BufferView *, LyXParagraph * par,
-				   LyXParagraph::size_type pos);
-	///
-	void InsertCharInTable(BufferView *, char c);
-	///
-	void BackspaceInTable(BufferView *);
-	///
-	bool HitInTable(BufferView *, Row * row, int x) const;
-	///
-	bool MouseHitInTable(BufferView *, int x, long y) const;
-	/* table stuff -- end*/
 	///
 	LyXParagraph * GetParFromID(int id);
 

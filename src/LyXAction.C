@@ -19,7 +19,7 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 #if 1
-// only to get access to NEW_INSETS and NEW_TABULAR
+// only to get access to NEW_INSETS
 #include "lyxparagraph.h"
 #endif
 #if 1
