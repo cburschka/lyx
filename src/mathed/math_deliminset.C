@@ -40,8 +40,8 @@ void MathDelimInset::normalize(NormalStream & os) const
 int MathDelimInset::dw() const
 {
 	int w = height() / 5;
-	if (w > 12)
-		w = 12;
+	if (w > 8)
+		w = 8;
 	if (w < 4)
 		w = 4;
 	return w;
@@ -58,7 +58,7 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 	int d0   = std::max(xcell(0).descent(), d)  + h0;
 	ascent_  = std::max(a0, d0) + h0;
 	descent_ = std::max(a0, d0) - h0;
-	width_   = xcell(0).width() + 2 * dw() + 4;
+	width_   = xcell(0).width() + 2 * dw() + 8;
 }
 
 
@@ -66,9 +66,9 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 { 
 	int const w = dw();
 	int const b = y - ascent_;
-	xcell(0).draw(pain, x + w + 2, y);
-	mathed_draw_deco(pain, x + 1, b, w, height(), left_);
-	mathed_draw_deco(pain, x + width() - w - 1, b, w, height(), right_);
+	xcell(0).draw(pain, x + w + 4, y);
+	mathed_draw_deco(pain, x + 4, b, w, height(), left_);
+	mathed_draw_deco(pain, x + width() - w - 4, b, w, height(), right_);
 }
 
 
