@@ -658,7 +658,7 @@ string const BufferView::nextWord(float & value)
 {
 	if (!available()) {
 		value = 1;
-		return 0;
+		return string();
 	}
 
 	return text->SelectNextWord(this, value);

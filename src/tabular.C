@@ -2402,13 +2402,12 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
     //+           first calculate the width of the single columns          +
     //+---------------------------------------------------------------------
     vector<unsigned int> clen(columns_);
-    int cell;
 
     // first all non (real) multicolumn cells!
     for(int j = 0; j < columns_; ++j) {
 	clen[j] = 0;
 	for(int i = 0; i < rows_; ++i) {
-	    cell = GetCellNumber(i, j);
+	    int cell = GetCellNumber(i, j);
 	    if (IsMultiColumn(cell, true))
 		continue;
 	    ostringstream sstr;
@@ -2420,7 +2419,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
     // then all (real) multicolumn cells!
     for(int j = 0; j < columns_; ++j) {
 	for(int i = 0; i < rows_; ++i) {
-	    cell = GetCellNumber(i, j);
+	    int cell = GetCellNumber(i, j);
 	    if (!IsMultiColumn(cell, true) || IsPartOfMultiColumn(i, j))
 		continue;
 	    ostringstream sstr;
@@ -2433,7 +2432,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 		clen[j + n - 1] = len;
 	}
     }
-    cell = 0;
+    int cell = 0;
     for(int i = 0; i < rows_; ++i) {
 	AsciiTopHLine(os, i, clen);
 	for(int j = 0; j < columns_; ++j) {

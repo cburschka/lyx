@@ -1,3 +1,9 @@
+2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/tabular.C (Ascii): minimize scope of cell.
+
+	* src/BufferView2.C (nextWord): return string() instead of 0;
+
 2000-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/converter.h: add a std:: qualifier

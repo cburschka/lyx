@@ -50,7 +50,7 @@ IndexDialogData::IndexDialogData
 	index->setBackgroundMode( QWidget::PaletteBase );
 	index->setFontPropagation( QWidget::NoChildren );
 	index->setPalettePropagation( QWidget::NoChildren );
-	index->setText( _("") );
+	index->setText( _(""));
 	index->setMaxLength( 32767 );
 	index->setFrame( QLineEdit::Normal );
 	index->setFrame( TRUE );
