@@ -266,6 +266,9 @@ AC_CHECK_FUNCS(strerror)
 LYX_CHECK_DECL(istreambuf_iterator, iterator)
 LYX_CHECK_DECL(mkstemp,[unistd.h stdlib.h])
 
+# Check the form of mkdir()
+AC_FUNC_MKDIR
+
 AC_ARG_ENABLE(compression-support, AC_HELP_STRING([--enable-compression-support],[Support for compressed files.]),[
     case "${enableval}" in
 	yes) use_compression=true ;;
@@ -352,6 +355,20 @@ extern "C"
 #endif
 int mkstemp(char*);
 #endif
+#endif
+
+#if HAVE_MKDIR
+#  if MKDIR_TAKES_ONE_ARG
+     /* MinGW32 */
+#    define mkdir(a, b) mkdir(a)
+#  endif
+#else
+#  if HAVE__MKDIR
+     /* plain Windows 32 */
+#    define mkdir(a, b) _mkdir(a)
+#  else
+#    error "Don't know how to create a directory on this system."
+#  endif
 #endif
 
 #ifdef __EMX__

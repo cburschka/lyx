@@ -1,3 +1,8 @@
+2004-12-15  Angus Leeming  <leeming-0hXrFu2P2+c@public.gmane.org>
+
+	* configure.ac: add AC_FUNC_MKDIR test and code to
+	#define mkdir should a non-POSIX version be found.
+
 2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Most Makefile.am's: Move PCH_FLAGS to AM_CPP flags where
