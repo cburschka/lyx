@@ -183,6 +183,8 @@ lyx_SOURCES = \
 	lyxvc.C \
 	lyxvc.h \
 	main.C \
+	messages.C \
+	messages.h \
 	metricsinfo.C \
 	metricsinfo.h \
 	paragraph.C \
