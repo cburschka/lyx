@@ -517,7 +517,6 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			ob == branch_->button_remove_branch ||
 			ob == branch_->button_modify ||
 			ob == branch_->button_select ||
-			ob == branch_->button_deselect ||
 			ob == branch_->button_deselect) {
 		branch_input(ob);
 	} else if (ob == dialog_->button_save_defaults) {
@@ -753,15 +752,23 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 	} else if (ob == branch_->button_select ||
 		   ob == branch_->button_deselect) {
 
-		bool const selected = ob == branch_->button_select;
-
-		int const i = fl_get_browser(branch_->browser_all_branches);
-		string const current_branch =
-			fl_get_browser_line(branch_->browser_all_branches, i);
-
+		bool const selecting = ob == branch_->button_select;
+		string current_branch;
+		
+		// When selecting, take highlighted item from left browser, 
+		// when deselecting, from right browser:
+		if (selecting) {
+			int const i = fl_get_browser(branch_->browser_all_branches);
+			current_branch = 
+				fl_get_browser_line(branch_->browser_all_branches, i);
+		} else {
+			int const i = fl_get_browser(branch_->browser_selection);
+			current_branch =
+				fl_get_browser_line(branch_->browser_selection, i);
+		}
 		Branch * branch = branchlist_.find(current_branch);
 
-		if (branch && branch->setSelected(selected))
+		if (branch && branch->setSelected(selecting))
 			rebuild_selected_branches_browser();
 
 	} else if (ob == branch_->button_modify) {
