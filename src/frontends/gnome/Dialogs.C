@@ -31,14 +31,14 @@
 #include "ControlLog.h"
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
-
+#include "ControlTabularCreate.h"
 #include "GUI.h"
 
 #include "FormUrl.h"
 #include "FormCredits.h"
 #include "FormCopyright.h"
 #include "FormError.h"
-
+#include "FormTabularCreate.h"
 /*
 #include "FormBibitem.h"
 #include "FormBibtex.h"
@@ -77,6 +77,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICredits<FormCredits, gnomeBC>(*lv, *this));
 	add(new GUICopyright<FormCopyright, gnomeBC>(*lv, *this));
 	add(new GUIError<FormError, gnomeBC>(*lv, *this));
+	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
 
 /*	
 	splash_.reset(new FormSplash(lv, this));

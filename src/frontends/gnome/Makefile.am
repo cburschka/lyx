@@ -81,6 +81,8 @@ libgnome_la_SOURCES = \
 	FileDialog.C \
 	FormCopyright.C \
 	FormCopyright.h \
+	FormTabularCreate.C \
+	FormTabularCreate.h \
 	FormCredits.C \
 	FormCredits.h \
 	FormError.C \
