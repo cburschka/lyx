@@ -24,8 +24,6 @@ test -x reLyX && rm -f reLyX
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$ac_default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
-# make sure prefix is correctly quoted
-prefix="'$prefix'"
 
 # we need to expand ${datadir} to put it into the reLyX wrapper.
 LYX_DIR=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
