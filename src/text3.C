@@ -23,6 +23,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "coordcache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -203,10 +204,14 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 		for (; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
 #if 1
-			lyxerr << "examining inset " << inset
-				<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
-				<< " yo: " << inset->yo() - inset->ascent() << "..."
-				<< inset->yo() + inset->descent() << endl;
+			lyxerr << "examining inset " << inset << endl;
+			if (theCoords.insets_.has(inset))
+				lyxerr
+					<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
+					<< " yo: " << inset->yo() - inset->ascent() << "..."
+					<< inset->yo() + inset->descent() << endl;
+			else
+				lyxerr << " inset has no cached position";
 #endif
 			if (inset->covers(x, y)) {
 				lyxerr << "Hit inset: " << inset << endl;

@@ -19,6 +19,7 @@
 #include "math_support.h"
 #include "math_replace.h"
 
+#include "coordcache.h"
 #include "LColor.h"
 #include "BufferView.h"
 #include "buffer.h"
@@ -38,12 +39,11 @@ using std::vector;
 
 
 MathArray::MathArray()
-	: xo_(0), yo_(0) 
 {}
 
 
 MathArray::MathArray(const_iterator from, const_iterator to)
-	: base_type(from, to), xo_(0), yo_(0)
+	: base_type(from, to)
 {}
 
 
@@ -276,8 +276,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
-	xo_ = x;
-	yo_ = y;
+	setXY(x, y);	
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
@@ -332,8 +331,7 @@ void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 void MathArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
-	xo_ = x;
-	yo_ = y;
+	setXY(x, y);
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
@@ -393,6 +391,9 @@ int MathArray::dist(int x, int y) const
 	int xx = 0;
 	int yy = 0;
 
+	const int xo_ = xo();
+	const int yo_ = yo();
+
 	if (x < xo_)
 		xx = xo_ - x;
 	else if (x > xo_ + width())
@@ -409,6 +410,19 @@ int MathArray::dist(int x, int y) const
 
 void MathArray::setXY(int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	lyxerr << "setting position cache for MathArray " << this << std::endl;
+	theCoords.arrays_.add(this, x, y);
 }
+
+
+int MathArray::xo() const
+{
+	return theCoords.arrays_.x(this);
+}
+
+
+int MathArray::yo() const
+{
+	return theCoords.arrays_.y(this);
+}
+

@@ -2143,6 +2143,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 }
 
 
+// Manhattan distance to nearest corner
 int LyXText::dist(int x, int y) const
 {
 	int xx = 0;

@@ -286,7 +286,7 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathKernInset);
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new MathXArrowInset(s));
-	if (s == "split" || s == "gathered" || s == "aligned")
+	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")
 		return MathAtom(new MathSplitInset(s));
 	if (s == "cases")
 		return MathAtom(new MathCasesInset);

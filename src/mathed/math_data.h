@@ -112,13 +112,13 @@ public:
 	void touch() const;
 
 	/// access to cached x coordinate of last drawing
-	int xo() const { return xo_; }
+	int xo() const;
 	/// access to cached y coordinate of last drawing
-	int yo() const { return yo_; }
+	int yo() const;
 	/// access to cached x coordinate of mid point of last drawing
-	int xm() const { return xo_ + dim_.wid / 2; }
+	int xm() const { return xo() + dim_.wid / 2; }
 	/// access to cached y coordinate of mid point of last drawing
-	int ym() const { return yo_ + (dim_.des - dim_.asc) / 2; }
+	int ym() const { return yo() + (dim_.des - dim_.asc) / 2; }
 	/// write access to coordinate;
 	void setXY(int x, int y) const;
 	/// returns x coordinate of given position in the array
@@ -152,10 +152,6 @@ private:
 
 	/// cached dimensions of cell
 	mutable Dimension dim_;
-	/// cached x coordinate of last drawing
-	mutable int xo_;
-	/// cached y coordinate of last drawing
-	mutable int yo_;
 };
 
 ///

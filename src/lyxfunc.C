@@ -1433,7 +1433,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 
 		if (view()->available()) {
-			if (view()->fitCursor() || update)
+			// Redraw screen unless explicitly told otherwise.
+			// This also initializes the position cache for all insets
+			// in (at least partially) visible top-level paragraphs.
+			if (update)
+				view()->update();
+
+			// fitCursor() needs valid inset position. The previous call to
+			// update() makes sure we have such even for freshly created
+			// insets.
+			if (view()->fitCursor())
 				view()->update();
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (getStatus(cmd).enabled()

@@ -14,6 +14,7 @@
 #include "rowpainter.h"
 
 #include "buffer.h"
+#include "coordcache.h"
 #include "cursor.h"
 #include "debug.h"
 #include "bufferparams.h"
@@ -200,6 +201,7 @@ void RowPainter::paintInset(pos_type const pos)
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	pi.base.font = getFont(pos);
+	theCoords.insets_.add(inset, int(x_), yo_ + row_.baseline());
 	inset->drawSelection(pi, int(x_), yo_ + row_.baseline());
 	inset->draw(pi, int(x_), yo_ + row_.baseline());
 	x_ += inset->width();

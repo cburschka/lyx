@@ -22,21 +22,20 @@
 #include "lyxtext.h"
 #include "LColor.h"
 #include "metricsinfo.h"
+#include "coordcache.h"
 
 using std::string;
 
 
 InsetOld::InsetOld()
-	: InsetBase(),
-	  xo_(0), yo_(0), scx(0),
+	: scx(0),
 	  //background_color_(LColor::inherit)
 	  background_color_(LColor::background)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
-	: InsetBase(),
-	  xo_(0), yo_(0), scx(0), name_(in.name_),
+	: InsetBase(in), scx(0), name_(in.name_),
 	  background_color_(in.background_color_)
 {}
 
@@ -86,6 +85,5 @@ int InsetOld::scroll(bool) const
 void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
-	xo_ = x;
-	yo_ = y + pi.base.bv->top_y();
+	theCoords.insets_.add(this, x, y + pi.base.bv->top_y());
 }

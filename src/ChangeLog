@@ -1,3 +1,13 @@
+2004-08-14  André Pönitz  <poenitz@gmx.net>
+
+	* coordcache.[Ch]:
+	* Makefile.am: new files to accomodate an 'external' (x,y)-position
+    cache for all insets in (at least partially) visible (top-level)
+	  paragraphs.
+	
+  * BufferView_pimpl.C: reset external coord cache before every update.
+	  This means the coord cache only contains valid entries.
+
 2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
 	bug 1096

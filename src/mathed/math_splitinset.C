@@ -41,6 +41,8 @@ char MathSplitInset::defaultColAlign(col_type col)
 		return 'c';
 	if (name_ == "aligned")
 		return (col & 1) ? 'l' : 'r';
+	if (name_ == "alignedat")
+		return (col & 1) ? 'l' : 'r';
 	return 'l';
 }
 

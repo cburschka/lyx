@@ -98,9 +98,9 @@ public:
 	/// add space for markers
 	void metricsMarkers2(Dimension & dim, int framesize = 1) const;
 	/// last drawn position for 'important' insets
-	virtual int xo() const { return 0; }
+	int xo() const;
 	/// last drawn position for 'important' insets
-	virtual int yo() const { return 0; }
+	int yo() const;
 	/// set x/y drawing position cache if available
 	virtual void setPosCache(PainterInfo const &, int, int) const {}
 	/// do we cover screen position x/y?

@@ -34,19 +34,11 @@ public:
 	int width() const;
 
 	///
-	int xo() const { return xo_; }
-	///
-	int yo() const { return yo_; }
-	///
 	void setPosCache(PainterInfo const & pi, int x, int y) const;
 
 protected:
 	///
 	mutable Dimension dim_;
-	///
-	mutable int xo_;
-	///
-	mutable int yo_;
 };
 
 #endif

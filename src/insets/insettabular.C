@@ -387,8 +387,9 @@ void InsetTabular::edit(LCursor & cur, bool left)
 			cell = tabular.getNumberOfCells() - 1;
 	}
 	cur.selection() = false;
-	resetPos(cur);
-	cur.bv().fitCursor();
+	// this accesses the position cache before it is initialized
+	//resetPos(cur);
+	//cur.bv().fitCursor();
 	cur.push(*this);
 	cur.idx() = cell;
 }
@@ -400,7 +401,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
 	cur.selection() = false;
 	cur.push(const_cast<InsetTabular&>(*this));
 	return setPos(cur, x, y);
-	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
+	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(actcell);
 }
 
 
@@ -987,7 +988,7 @@ int InsetTabular::getCellXPos(int cell) const
 	for (; c < cell; ++c)
 		lx += tabular.getWidthOfColumn(c);
 
-	return lx - tabular.getWidthOfColumn(cell) + xo_;
+	return lx - tabular.getWidthOfColumn(cell) + xo();
 }
 
 
@@ -1012,8 +1013,8 @@ void InsetTabular::resetPos(LCursor & cur) const
 		scroll(bv, - tabular.getWidthOfColumn(actcell) - 20);
 	} else if (cursorx_ - offset < 20) {
 		scroll(bv, 20 - cursorx_ + offset);
-	} else if (scroll() && xo_ > 20 &&
-		   xo_ + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
+	} else if (scroll() && xo() > 20 &&
+		   xo() + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
 		scroll(bv, old_x - cursorx_);
 	}
 

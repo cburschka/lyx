@@ -985,7 +985,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else if (name == "split" || name == "cases" ||
-					 name == "gathered" || name == "aligned") {
+					 name == "gathered" || name == "aligned" ||
+				   name == "alignedat") {
 				cell->push_back(createMathInset(name));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}

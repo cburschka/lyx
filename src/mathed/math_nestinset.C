@@ -196,8 +196,11 @@ void MathNestInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
+void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 {
+	// FIXME: hack to get position cache warm
+	draw(pi, x, y);
+
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())

@@ -13,6 +13,7 @@
 #include "insetbase.h"
 
 #include "buffer.h"
+#include "coordcache.h"
 #include "BufferView.h"
 #include "LColor.h"
 #include "cursor.h"
@@ -287,6 +288,18 @@ bool InsetBase::editing(BufferView * bv) const
 }
 
 
+int InsetBase::xo() const
+{
+	return theCoords.insets_.x(this);
+}
+
+
+int InsetBase::yo() const
+{
+	return theCoords.insets_.y(this);
+}
+
+
 bool InsetBase::covers(int x, int y) const
 {
 	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y
@@ -294,7 +307,8 @@ bool InsetBase::covers(int x, int y) const
 	//	<< " x1: " << xo() << " x2: " << xo() + width()
 	//	<< " y1: " << yo() - ascent() << " y2: " << yo() + descent()
 	//	<< std::endl;
-	return x >= xo()
+	return theCoords.insets_.has(this)
+			&& x >= xo()
 			&& x <= xo() + width()
 			&& y >= yo() - ascent()
 			&& y <= yo() + descent();

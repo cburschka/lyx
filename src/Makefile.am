@@ -134,6 +134,8 @@ lyx_SOURCES = \
 	converter.h \
 	counters.C \
 	counters.h \
+	coordcache.C \
+	coordcache.h \
 	cursor.C \
 	cursor.h \
 	cursor_slice.C \

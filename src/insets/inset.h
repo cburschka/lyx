@@ -52,20 +52,12 @@ public:
 	LColor_color backgroundColor() const;
 	/// set x/y drawing position cache
 	void setPosCache(PainterInfo const &, int, int) const;
-	///
-	int xo() const { return xo_; }
-	///
-	int yo() const { return yo_; }
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 
 	///
 	bool forceDefaultParagraphs(InsetBase const * inset) const;
 protected:
-	///
-	mutable int xo_;
-	///
-	mutable int yo_;
 	///
 	mutable int scx;
 	///

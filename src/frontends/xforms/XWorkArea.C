@@ -293,6 +293,9 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				 FL_Coord, FL_Coord,
 				 int key, void * xev)
 {
+	if (event != 11)
+		lyxerr[Debug::WORKAREA] << "Workarea event: EVENT: " << event << endl;
+
 	XEvent * ev = static_cast<XEvent*>(xev);
 	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
 
@@ -385,6 +388,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 
 	case FL_DRAG: {
+		lyxerr[Debug::WORKAREA] << "Workarea event: DRAG 0" << endl;
+
 		if (!ev || !area->scrollbar)
 			break;
 

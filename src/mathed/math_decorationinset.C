@@ -18,6 +18,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include "debug.h"
+
 #include "support/std_ostream.h"
 
 using std::auto_ptr;
@@ -25,7 +27,9 @@ using std::auto_ptr;
 
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
 	: MathNestInset(1), key_(key)
-{}
+{
+	lyxerr << " creating deco " << key->name << std::endl;
+}
 
 
 auto_ptr<InsetBase> MathDecorationInset::clone() const
