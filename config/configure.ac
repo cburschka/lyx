@@ -150,7 +150,6 @@ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 ## Check whether X is new enough to handle the input method stuff
 AC_CHECK_FUNCS(XOpenIM)
 
- 
 ### check which frontend we want to use
 
 #LYX_USE_FRONTEND
@@ -201,6 +200,9 @@ case "$lyx_use_frontend" in
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
+
+AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
+	       test $lyx_use_xforms_image_loader = no)
 
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = no ; then

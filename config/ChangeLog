@@ -1,21 +1,28 @@
+2002-10-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* xforms.m4 (lyx_use_xforms_image_loader): move the AM_CONDITIONAL
+	USE_BASIC_IMAGE_LOADER from here...
+	* configure.ac: ... here
+	* configure.in: ...to here, and ...
+
 2002-09-13  John Levon  <levon@movementarian.org>
 
 	* qt.m4: tweak sed usage
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* Makefile.am: qt.m4 not qt2.m4
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* configure.ac:
 	* configure.in:
 	* qt.m4: output Qt version
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* qt.m4: make $FATAL actually work
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* configure.ac:
@@ -23,10 +30,10 @@
 	* lyxinclude.m4:
 	* qt2.m4:
 	* qt.m4: new Qt configure script
- 
+
 2002-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* relyx_configure.ac: 
+	* relyx_configure.ac:
 	* configure.ac: only require autoconf 2.52
 
 	* Makefile.am (EXTRA_DIST): distribute also xforms.m4
@@ -34,7 +41,7 @@
 2002-08-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxinclude.m4 (LYX_PATH_XPM): do not pass XPM_LIB as 5th
-	argument of AC_CHECK_LIB 
+	argument of AC_CHECK_LIB
 
 	* xforms.m4 (LYX_PATH_XFORMS): use 5th argument of AC_CHECK_LIB to
 	make sure that -lXpm is used when linking. Require LYX_PATH_XPM.
@@ -44,7 +51,7 @@
 
 	* configure.in:
 	* configure.ac: no xforms check with Qt
- 
+
 2002-08-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.in: change AC_LANG(XX) back to the AC_LANG_XX variant.
