@@ -75,6 +75,7 @@ latexkeys_a wordlist_array[] =
 	{"ker",  LM_TK_FUNC, 0},
 	{"kern",  LM_TK_KERN, 0},
 	{"label",  LM_TK_LABEL, 0},
+	{"lefteqn",  LM_TK_LEFTEQN, 1},
 	{"ldots",  LM_TK_DOTS, 0},
 	{"left",  LM_TK_LEFT, 0},
 	{"lg",  LM_TK_FUNC, 0},

@@ -24,6 +24,7 @@
 #include "commandtags.h"
 #include "math_cursor.h"
 #include "math_parser.h"
+#include "math_charinset.h"
 #include "lyx_main.h"
 #include "BufferView.h"
 #include "gettext.h"
@@ -46,6 +47,7 @@ using std::istream;
 using std::pair;
 using std::endl;
 using std::vector;
+
 
 
 InsetFormula::InsetFormula()
@@ -302,17 +304,39 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 void InsetFormula::handleExtern(const string & arg, BufferView *)
 {
+	// where are we?
+	MathArray & ar = mathcursor->cursor().cell();
+
+	// find position of last '=' in the array for handleExtern
+	MathArray::size_type pos = ar.size();
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		if ((*it)->getChar() == '=')
+			pos = it - ar.begin();
+
+	// delete everything behind this position
+	ar.erase(pos, ar.size());
+
+	// create normalized expression
 	//string outfile = lyx::tempName("maple.out");
 	string outfile = "/tmp/lyx2" + arg + ".out";
 	ostringstream os;
-	mat()->writeNormal(os); 
+	ar.writeNormal(os); 
 	string code = os.str().c_str();
+
+	// run external sript
 	string script = "lyx2" + arg + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
 	Systemcalls cmd(Systemcalls::System, script, 0);
 
+	// append a '='
+	ar.push_back(MathAtom(new MathCharInset('=')));
+	
+	// append result
 	ifstream is(outfile.c_str());
-	mathed_parse_normal(par_, is);
+	mathed_parse_cell(ar, is);
+	mathcursor->end();
+
+	// re-compute inset dimension
 	metrics();
 }
 

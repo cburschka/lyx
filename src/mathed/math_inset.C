@@ -215,7 +215,9 @@ void MathInset::userSetSize(MathStyles sz)
 
 void MathInset::writeNormal(std::ostream & os) const
 {
-	os << "[unknown] ";
+	os << "[unknown ";
+	write(os, false);
+	os << "] ";
 }
 
 

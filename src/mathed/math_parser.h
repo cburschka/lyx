@@ -52,6 +52,8 @@ enum MathTokenEnum
 	///
 	LM_TK_ROOT,
 	///
+	LM_TK_LEFTEQN,
+	///
 	LM_TK_BEGIN,
 	///
 	LM_TK_END,
@@ -142,5 +144,8 @@ bool mathed_parse_normal(MathAtom &, LyXLex &);
 string mathed_parse_macro(string const &);
 string mathed_parse_macro(std::istream &);
 string mathed_parse_macro(LyXLex &);
+
+void mathed_parse_cell(MathArray & ar, string const & str);
+void mathed_parse_cell(MathArray & ar, std::istream & is);
 
 #endif

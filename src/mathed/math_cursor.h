@@ -23,6 +23,7 @@
 
 #include "math_defs.h"
 #include "math_inset.h"
+#include "LString.h"
 
 class MathInset;
 class MathAtom;

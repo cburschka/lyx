@@ -13,8 +13,6 @@
 #include "debug.h"
 #include "support.h" // math_font_available
 
-MathArray mathed_parse_cell(string const &);
-
 
 MathMacroTable::table_type MathMacroTable::macro_table;
 
@@ -49,7 +47,7 @@ MathAtom & MathMacroTable::provide(string const & name)
 void MathMacroTable::create(string const & name, int na, string const & text)
 {
 	MathAtom t(new MathMacroTemplate(name, na));
-	t->cell(0) = mathed_parse_cell(text);
+	mathed_parse_cell(t->cell(0), text);
 	macro_table[name] = t;
 }
 

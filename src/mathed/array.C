@@ -201,12 +201,10 @@ void MathArray::write(ostream & os, bool fragile) const
 
 void MathArray::writeNormal(ostream & os) const
 {
-	if (empty()) {
-		os << "[par] ";
-		return;
-	}
-
-	write(os, true);
+	os << "[par ";
+	for (const_iterator it = begin(); it != end(); ++it)
+		(*it)->writeNormal(os);
+	os << "]";
 }
 
 

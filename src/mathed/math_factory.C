@@ -8,6 +8,7 @@
 #include "math_funcliminset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
+#include "math_lefteqninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macroarg.h"
@@ -49,6 +50,8 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathFracInset(true));
 	case LM_TK_NOT:
 		return MathAtom(new MathNotInset);
+	case LM_TK_LEFTEQN:
+		return MathAtom(new MathLefteqnInset);
 	case LM_TK_SQRT:
 		return MathAtom(new MathSqrtInset);
 	case LM_TK_ROOT:

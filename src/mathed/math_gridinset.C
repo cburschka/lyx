@@ -276,6 +276,22 @@ void MathGridInset::write(std::ostream & os, bool fragile) const
 }
 
 
+void MathGridInset::writeNormal(std::ostream & os) const
+{
+	os << "[grid ";
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << "[row ";
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << "[cell ";
+			cell(index(row, col)).writeNormal(os);
+			os << "]";
+		}
+		os << "]";
+	}
+	os << "]";
+}
+
+
 string MathGridInset::eolString(row_type row) const
 {
 	if (row + 1 == nrows())	

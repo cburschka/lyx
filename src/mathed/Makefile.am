@@ -54,6 +54,8 @@ libmathed_la_SOURCES = \
 	math_inset.h \
 	math_kerninset.C \
 	math_kerninset.h \
+	math_lefteqninset.C \
+	math_lefteqninset.h \
 	math_macro.C \
 	math_macro.h \
 	math_macroarg.C \

@@ -14,40 +14,71 @@
 
 namespace {
 
-
-int getCols(MathInsetTypes type)
-{
-	switch (type) {
-		case LM_OT_EQNARRAY:
-			return 3;
-		case LM_OT_ALIGN:
-		case LM_OT_ALIGNAT:
-		case LM_OT_XALIGNAT:
-		case LM_OT_XXALIGNAT:
-			return 2;
-		default:;
+	int getCols(MathInsetTypes type)
+	{
+		switch (type) {
+			case LM_OT_EQNARRAY:
+				return 3;
+			case LM_OT_ALIGN:
+			case LM_OT_ALIGNAT:
+			case LM_OT_XALIGNAT:
+			case LM_OT_XXALIGNAT:
+				return 2;
+			default:;
+		}
+		return 1;
 	}
-	return 1;
-}
 
 
-// returns position of first relation operator in the array
-// used for "intelligent splitting"
-int firstRelOp(MathArray const & array)
-{
-	for (MathArray::const_iterator it = array.begin(); it != array.end(); ++it)
-		if ((*it)->isRelOp())
-			return it - array.begin();
-	return array.size();
-}
+	// returns position of first relation operator in the array
+	// used for "intelligent splitting"
+	int firstRelOp(MathArray const & ar)
+	{
+		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+			if ((*it)->isRelOp())
+				return it - ar.begin();
+		return ar.size();
+	}
 
 
-char const * star(bool numbered)
-{
-	return numbered ? "" : "*";
-}
+	char const * star(bool numbered)
+	{
+		return numbered ? "" : "*";
+	}
 
-}
+	MathInsetTypes typecode(string const & s)
+	{
+		if (s == "equation")  return LM_OT_EQUATION;
+		if (s == "display")   return LM_OT_EQUATION;
+		if (s == "eqnarray")  return LM_OT_EQNARRAY;
+		if (s == "align")     return LM_OT_ALIGN;
+		if (s == "alignat")   return LM_OT_ALIGNAT;
+		if (s == "xalignat")  return LM_OT_XALIGNAT;
+		if (s == "xxalignat") return LM_OT_XXALIGNAT;
+		if (s == "multline")  return LM_OT_MULTLINE;
+		if (s == "gather")    return LM_OT_GATHER;
+		return LM_OT_SIMPLE;
+	}	
+
+
+	string normalName(MathInsetTypes t)
+	{
+		switch (t) {
+			case LM_OT_EQUATION:  return "equation";
+			case LM_OT_EQNARRAY:  return "eqnarray";
+			case LM_OT_ALIGN:     return "align";
+			case LM_OT_ALIGNAT:   return "alignat";
+			case LM_OT_XALIGNAT:  return "xalignat";
+			case LM_OT_XXALIGNAT: return "xxalignat";
+			case LM_OT_MULTLINE:  return "multline";
+			case LM_OT_GATHER:    return "gather";
+			case LM_OT_SIMPLE:    return "simple";
+			default: break;
+		}
+		return "unknown";
+	}	
+
+} // end anon namespace
 
 
 MathMatrixInset::MathMatrixInset()
@@ -178,6 +209,15 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 
   footer_write(os);
 }
+
+
+void MathMatrixInset::writeNormal(std::ostream & os) const
+{
+	os << "[formula " << normalName(getType()) << " ";
+	MathGridInset::writeNormal(os);
+	os << "] ";
+}
+
 
 
 string MathMatrixInset::label(row_type row) const
@@ -431,32 +471,6 @@ string MathMatrixInset::nicelabel(row_type row) const
 	if (label_[row].empty())
 		return string("(#)");
 	return "(" + label_[row] + ")";
-}
-
-
-namespace {
-	MathInsetTypes typecode(string const & s)
-	{
-		if (s == "equation")
-			return LM_OT_EQUATION;
-		if (s == "display")
-			return LM_OT_EQUATION;
-		if (s == "eqnarray")
-			return LM_OT_EQNARRAY;
-		if (s == "align")
-			return LM_OT_ALIGN;
-		if (s == "alignat")
-			return LM_OT_ALIGN;
-		if (s == "xalignat")
-			return LM_OT_XALIGNAT;
-		if (s == "xxalignat")
-			return LM_OT_XXALIGNAT;
-		if (s == "multline")
-			return LM_OT_MULTLINE;
-		if (s == "gather")
-			return LM_OT_GATHER;
-		return LM_OT_SIMPLE;
-	}	
 }
 
 

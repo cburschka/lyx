@@ -954,14 +954,16 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 } // anonymous namespace
 
 
-
-MathArray mathed_parse_cell(string const & str)
+void mathed_parse_cell(MathArray & ar, string const & str)
 {
 	istringstream is(str.c_str());
-	Parser parser(is);
-	MathArray ar;
-	parser.parse_into(ar, 0);
-	return ar;
+	mathed_parse_cell(ar, is);
+}
+
+
+void mathed_parse_cell(MathArray & ar, istream & is)
+{
+	Parser(is).parse_into(ar, 0);
 }
 
 
