@@ -2388,9 +2388,7 @@ int LyXTabular::ascii(Buffer const * buf, ostream & os, int const depth,
 {
 	int ret = 0;
 
-	//+---------------------------------------------------------------------
-	//+           first calculate the width of the single columns          +
-	//+---------------------------------------------------------------------
+	// first calculate the width of the single columns
 	vector<unsigned int> clen(columns_);
 
 	if (!onlydata) {
