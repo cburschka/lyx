@@ -268,19 +268,33 @@ void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 }
 
 
+// return past-the-last paragraph influenced by a layout change on pit
+ParagraphList::iterator
+LyXText::undoSpan(ParagraphList::iterator pit)
+{
+	ParagraphList::iterator end = paragraphs().end();
+	ParagraphList::iterator nextpit = boost::next(pit);
+	if (nextpit == end)
+		return nextpit;
+	//because of parindents
+	if (!pit->getDepth())
+		return boost::next(nextpit);
+	//because of depth constrains
+	for (; nextpit != end; ++pit, ++nextpit) {
+		if (!pit->getDepth())
+			break;
+	}
+	return nextpit;
+}
+
+
 ParagraphList::iterator
 LyXText::setLayout(ParagraphList::iterator start,
 		   ParagraphList::iterator end,
 		   string const & layout)
 {
-	ParagraphList::iterator undopit = end;
-	ParagraphList::iterator pars_end = paragraphs().end();
-
-	while (undopit != pars_end && undopit->getDepth())
-		++undopit;
-	//because of parindets etc
-	if (undopit != pars_end)
-		++undopit;
+	BOOST_ASSERT(start != end);
+	ParagraphList::iterator undopit = undoSpan(boost::prior(end));
 	recUndo(parOffset(start), parOffset(undopit) - 1);
 
 	BufferParams const & bufparams = bv()->buffer()->params();
@@ -582,16 +596,8 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 	string const & labelwidthstring, bool noindent)
 {
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator endpit = boost::next(getPar(selEnd()));
-	ParagraphList::iterator pars_end = paragraphs().end();
-
-	while (endpit != pars_end && endpit->getDepth())
-		++endpit;
-	// because of parindents etc.
-	if (endpit != pars_end)
-		++endpit;
-
-	recUndo(selStart().par(), parOffset(endpit) - 1);
+	ParagraphList::iterator undopit = undoSpan(getPar(selEnd()));
+	recUndo(selStart().par(), parOffset(undopit) - 1);
 
 	ParagraphList::reverse_iterator pit(getPar(selEnd().par()));
 	ParagraphList::reverse_iterator beg(getPar(selStart().par()));
@@ -615,7 +621,7 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 		params.noindent(noindent);
 	}
 
-	redoParagraphs(getPar(selStart()), endpit);
+	redoParagraphs(getPar(selStart()), undopit);
 }
 
 
@@ -952,14 +958,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator begpit = getPar(selStart().par());
 	ParagraphList::iterator endpit = getPar(selEnd().par());
-	ParagraphList::iterator undopit = boost::next(endpit);
-	ParagraphList::iterator pars_end = paragraphs().end();
-
-	while (undopit != pars_end && undopit->getDepth())
-		++undopit;
-	//because of parindents etc.
-	if (undopit != pars_end)
-		++undopit;
+	ParagraphList::iterator undopit = undoSpan(endpit);
 	recUndo(selStart().par(), parOffset(undopit) - 1);
 
 	int endpos = selEnd().pos();

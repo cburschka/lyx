@@ -441,6 +441,10 @@ public:
 
 
 private:
+	/// return past-the-last paragraph influenced by a layout
+	/// change on pit
+	ParagraphList::iterator undoSpan(ParagraphList::iterator pit);
+	
 	/// rebreaks the given par
 	void redoParagraphInternal(ParagraphList::iterator pit);
 	/// used in setlayout

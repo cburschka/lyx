@@ -596,9 +596,10 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 	// are taken from the layoutfont. Nicer on the screen :)
 	LyXLayout_ptr const & layout = pit->layout();
 
-	// as max get the first character of this row then it can increase but not
-	// decrease the height. Just some point to start with so we don't have to
-	// do the assignment below too often.
+	// as max get the first character of this row then it can
+	// increase but not decrease the height. Just some point to
+	// start with so we don't have to do the assignment below too
+	// often.
 	LyXFont font = getFont(pit, row.pos());
 	LyXFont::FONT_SIZE const tmpsize = font.size();
 	font = getLayoutFont(pit);
@@ -760,16 +761,16 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		bv()->buffer()->params().getLyXTextClass();
 	LyXLayout_ptr const & layout = cpit->layout();
 
-	// this is only allowed, if the current paragraph is not empty or caption
-	// and if it has not the keepempty flag active
+	// this is only allowed, if the current paragraph is not empty
+	// or caption and if it has not the keepempty flag active
 	if (cpit->empty() && !cpit->allowEmpty()
 	   && layout->labeltype != LABEL_SENSITIVE)
 		return;
 
-	recUndo(cursor.par());
+	// a layout change may affect also the following paragraph
+	recUndo(cursor.par(), parOffset(undoSpan(cpit)) - 1);
 
 	// Always break behind a space
-	//
 	// It is better to erase the space (Dekel)
 	if (cursor.pos() < cpit->size() && cpit->isLineSeparator(cursor.pos()))
 		cpit->erase(cursor.pos());
@@ -1289,8 +1290,9 @@ void LyXText::backspace()
 	pos_type lastpos = pit->size();
 
 	if (cursor.pos() == 0) {
-		// The cursor is at the beginning of a paragraph,
-		// so the the backspace will collapse two paragraphs into one.
+		// The cursor is at the beginning of a paragraph, so
+		// the the backspace will collapse two paragraphs into
+		// one.
 
 		// but it's not allowed unless it's new
 		if (pit->isChangeEdited(0, pit->size()))
@@ -1299,7 +1301,6 @@ void LyXText::backspace()
 		// we may paste some paragraphs
 
 		// is it an empty paragraph?
-
 		if (lastpos == 0 || (lastpos == 1 && pit->isSeparator(0))) {
 			// This is an empty paragraph and we delete it just
 			// by moving the cursor one step

@@ -1,3 +1,8 @@
+2004-01-08  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (undoSpan): add and use
+	* text.C (breakParagraph): use undoSpan (fix bug 578)
+	* lyxtext.h: adjust
 
 2004-01-08  Angus Leeming  <leeming@lyx.org>
 
