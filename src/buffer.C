@@ -284,10 +284,11 @@ string last_inset_read;
 #ifndef NO_COMPABILITY
 struct ErtComp
 {
-	ErtComp() : active(false), in_tabular(false) {
+	ErtComp() : active(false), fromlayout(false), in_tabular(false) {
 	}
 	string contents;
 	bool active;
+	bool fromlayout;
 	bool in_tabular;
 	LyXFont font;
 };
@@ -320,6 +321,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 #ifndef NO_COMPABILITY
 	ert_comp.contents.erase();
 	ert_comp.active = false;
+	ert_comp.fromlayout = false;
 	ert_comp.in_tabular = false;
 #endif
 	int pos = 0;
@@ -401,16 +403,55 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 
 #ifndef NO_COMPABILITY
+
+Inset * Buffer::isErtInset(Paragraph * par, int pos) const
+{
+	Inset * inset;
+	if ((par->getChar(pos) == Paragraph::META_INSET) &&
+		(inset = par->getInset(pos)) &&
+		(inset->lyxCode() == Inset::ERT_CODE))
+	{
+		return inset;
+	}
+	return 0;
+}
+
 void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
 {
-	if (!ert_comp.contents.empty()) {
+	string str = frontStrip(strip(ert_comp.contents, ' '), ' ');
+	if (!str.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n'"
-				      << ert_comp.contents << "'" << endl;
-		Inset * inset = new InsetERT(params, params.language,
-					     ert_comp.contents, true);
-		par->insertInset(pos++, inset, ert_comp.font);
-		ert_comp.contents.erase();
+			<< str << "'" << endl;
+		// check if we have already an ert inset a position earlier
+		// if this is the case then we should insert the contents
+		// inside the other ertinset as it is stupid to have various
+		// ert in a row.
+		Inset * inset;
+		if ((pos > 0) && (inset=isErtInset(par, pos-1))) {
+			// get the last paragraph from the inset before
+			Paragraph * last = inset->firstParagraph();
+			while(last->next())
+				last = last->next();
+			// create the new paragraph after the last one
+			Paragraph * par = new Paragraph(last);
+			par->layout(textclasslist[params.textclass].defaultLayoutName());
+			par->setInsetOwner(last->inInset());
+			// set the contents
+			LyXFont font(LyXFont::ALL_INHERIT, params.language);
+			string::const_iterator cit = str.begin();
+			string::const_iterator end = str.end();
+			pos_type pos = 0;
+			for (; cit != end; ++cit) {
+				par->insertChar(pos++, *cit, font);
+			}
+		} else {
+			Inset * inset =
+				new InsetERT(params, params.language, str, true);
+			par->insertInset(pos++, inset, ert_comp.font);
+		}
 	}
+	ert_comp.contents.erase();
+	ert_comp.fromlayout = false;
 	if (set_inactive) {
 		ert_comp.active = false;
 	}
@@ -459,9 +500,20 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\layout") {
 #ifndef NO_COMPABILITY
+		bool old_fromlayout = ert_comp.fromlayout;
+		bool create_new_par = true;
 		ert_comp.in_tabular = false;
 		// Do the insetert.
-		insertErtContents(par, pos);
+		if (!par->size() && par->previous() &&
+			(par->previous()->size() == 1) &&
+			isErtInset(par->previous(), par->previous()->size()-1))
+		{
+			int p = par->previous()->size();
+			insertErtContents(par->previous(), p);
+			create_new_par = false;
+		} else {
+			insertErtContents(par, pos);
+		}
 #endif
 		// reset the font as we start a new layout and if the font is
 		// not ALL_INHERIT,document_language then it will be set to the
@@ -481,7 +533,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
+			ert_comp.fromlayout = true;
 			ert_comp.font = font;
+			if (old_fromlayout)
+				create_new_par = false;
 		}
 #endif
 		bool hasLayout = tclass.hasLayout(layoutname);
@@ -547,6 +602,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			++pos;
 		} else {
 #endif
+#ifndef NO_COMPABILITY
+		if (create_new_par) {
+#endif
 			if (!first_par)
 				first_par = par;
 			else {
@@ -561,6 +619,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			if (!layout.obsoleted_by().empty())
 				par->layout(layout.obsoleted_by());
 			par->params().depth(depth);
+#ifndef NO_COMPABILITY
+		} else {
+			// we duplicate code here because it's easier to remove
+			// the code then of NO_COMPATIBILITY
+			par->layout(layoutname);
+			// Test whether the layout is obsolete.
+			LyXLayout const & layout =
+				textclasslist[params.textclass][par->layout()];
+			if (!layout.obsoleted_by().empty())
+				par->layout(layout.obsoleted_by());
+			par->params().depth(depth);
+		}
+#endif
 #if USE_CAPTION
 		}
 #endif
@@ -1002,6 +1073,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			font.setLanguage(params.language);
 			lex.printError("Unknown language `$$Token'");
 		}
+#ifndef NO_COMPABILITY
+		// if the contents is still empty we're just behind the
+		// latex font change and so this inset should also be
+		// inserted with that language tag!
+		if (ert_comp.active && ert_comp.contents.empty()) {
+			ert_comp.font.setLanguage(font.language());
+		}
+#endif			
 	} else if (token == "\\numeric") {
 		lex.next();
 		font.setNumber(font.setLyXMisc(lex.getString()));
@@ -1091,7 +1170,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		ert_comp = ert_stack.top();
 		ert_stack.pop();
-		insertErtContents(par, pos);
 #endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =

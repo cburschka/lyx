@@ -1,3 +1,29 @@
+2002-05-10  Juergen Vigna  <jug@sad.it>
+
+	* buffer.[Ch] : The following are only changes to the ert
+	compatibility read reading old LaTeX layout and font stuff and
+	convert it to ERTInsets.
+	
+	* buffer.h: added isErtInset().
+
+	* buffer.C (struct ErtComp): add a fromlayout bool to check
+	if we're inside a LaTeX layout.
+	(isErtInset): new helper function.
+	(insertErtContents): look for other ert insets before this one
+	and insert the contents there, so that we don't have subsequent
+	ERT insets with nothing between them. This way we create only one
+	inset with multiple paragraphs. Also check if we don't insert only
+	spaces ' ' as they are ignored anyway afterwards in the .tex file
+	so if we have only spaces we will ignore this latex part in the
+	new file.
+	(parseSingleLyXformat2Token \\layout): better compatibility when
+	reading layout-latex stuff.
+	(parseSingleLyXformat2Token \\lang): put the insetERT in the right
+	language tag.
+	(parseSingleLyXformat2Token \\begin_inset): don't reset ert_comp
+	stuff after reading the inset only get the information back from
+	the stack.
+
 2002-05-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (makeLaTeXFile): Put language options after loading babel.

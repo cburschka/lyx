@@ -127,6 +127,8 @@ public:
 				 LyXFont const &, string const &) const;
 #ifndef NO_COMPABILITY
 	///
+	Inset * isErtInset(Paragraph * par, int pos) const;
+	///
 	void insertErtContents(Paragraph * par, int & pos,
 			       bool set_inactive = true);
 #endif
