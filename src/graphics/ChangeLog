@@ -1,5 +1,13 @@
 2002-09-03  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C: fix crash reported by Norbert Koksch when
+	generating more than 999 preview snippets. Use filenames with 5 digit
+	numbers, not 3, in the first instance, although more general code is
+	commented out. I don't suppose /anyone/ has 100000 formulae in one
+	document...
+
+2002-09-03  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewLoader.C: activate #ifdef USING_NEW_PREVIEW_STY code.
 
 2002-09-03  Angus Leeming  <leeming@lyx.org>
