@@ -38,7 +38,6 @@ libsupport_la_SOURCES = \
 	limited_stack.h \
 	lstrings.C \
 	lstrings.h \
-	lxtl.h \
 	lyxalgo.h \
 	lyxfunctional.h \
 	lyxlib.h \
