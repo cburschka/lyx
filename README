@@ -30,7 +30,7 @@ What do I need to run LyX?
 
 	A decent LaTeX2e installation (e.g. teTeX for unix) not older
 	   than 1995/12/01.
-	Python 1.5 or later to convert old LyX files
+	Python 1.5.2 or later to convert old LyX files
 	Perl5.002 or later to import LaTeX files into LyX.
 
 How does LyX version scheme work?
@@ -42,7 +42,7 @@ How does LyX version scheme work?
 	file names:
 
 	   lyx-1.3.0.tar.gz       -- stable release
-	   lyx-1.3.5.tar.gz       -- second maintenance release of the
+	   lyx-1.3.5.tar.gz       -- fifth maintenance release of the
 	                             1.3.0 stable release
 	   lyx-1.4.0pre1.tar.gz   -- potentially unstable test release
 
@@ -80,8 +80,6 @@ How do I install .tar.gz a binary distribution of LyX?
 How do I upgrade from an earlier LyX version?
 
 	Read the file UPGRADING for info on this subject.
-	If you are upgrading from version 0.12.0 or later, you don't
-	need to do anything special.
 
 What do I need to compile LyX from the source distribution?
 
@@ -96,7 +94,7 @@ What do I need to compile LyX from the source distribution?
 	* LibXpm, version 4.7 or newer.
 
 	Or:
-	* The Qt library, version 2.x or 3.x.
+	* The Qt library, version 2.2.0 or newer.
 
 	Read the file "INSTALL" for more information on compiling.
 
@@ -124,11 +122,11 @@ Does LyX have support for non-English speakers/writers/readers?
 	bindings as well):
 
 	French      (fr)
+	Spanish     (es)
 	Italian     (it)
 	Danish      (da)
 	Basque	    (eu)
 	Nynorsk	    (nn)
-	Spanish     (es)
 	Finnish     (fi)    *
 	German      (de)    *
 	Russian     (ru)
@@ -197,12 +195,12 @@ How can I participate in the development of LyX?
 	cleaned up, and therefore it's important to follow some rules.
 	Read about those rules in development/Code_rules/.
 
-	If you don't know C++, there are many other ways to contribute.
-	Write documentation. Help to internationalize LyX by translating
-	documentation or menus/error messages, or by writing a new keymap.
-	Write a new textclass.  Work on reLyX (Perl). Find bugs (but please
-	read the list of known bugs first). Contribute money. Or just offer
-	feature suggestions (but please read the online TODO list first).
+	If you don't know C++, there are many other ways to
+	contribute. Write documentation. Help to internationalize LyX
+	by translating documentation or menus/error messages, or by
+	writing a new keymap. Write a new textclass. Contribute money.
+	Or just offer feature suggestions (but please read the online
+	TODO list first).
 
 Thank you for trying LyX, and we appreciate your feedback in the mailing
 lists.
