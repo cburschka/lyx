@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 #include "lyxtext.h"
+#include "font.h"
 
 class LyXText;
 
@@ -90,35 +91,50 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetCollapsable::ascent_collapsed(Painter & pain) const
+//int InsetCollapsable::ascent_collapsed(Painter & pain) const
+int InsetCollapsable::ascent_collapsed(Painter & /*pain*/) const
 {
 	int width = 0;
 	int ascent = 0;
 	int descent = 0;
+#if 0
 	pain.buttonText(0, 0, draw_label, labelfont, false, 
 			width, ascent, descent);
+#else
+	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+#endif
 	return ascent;
 }
 
 
-int InsetCollapsable::descent_collapsed(Painter & pain) const
+//int InsetCollapsable::descent_collapsed(Painter & pain) const
+int InsetCollapsable::descent_collapsed(Painter & /*pain*/) const
 {
 	int width = 0;
 	int ascent = 0;
 	int descent = 0;
+#if 0
 	pain.buttonText(0, 0, draw_label, labelfont, false, 
 			width, ascent, descent);
+#else
+	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+#endif
 	return descent;
 }
 
 
-int InsetCollapsable::width_collapsed(Painter & pain) const
+//int InsetCollapsable::width_collapsed(Painter & pain) const
+int InsetCollapsable::width_collapsed(Painter & /*pain*/) const
 {
 	int width;
 	int ascent;
 	int descent;
+#if 0
 	pain.buttonText(TEXT_TO_INSET_OFFSET, 0, draw_label, labelfont, false,
 			width, ascent, descent);
+#else
+	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+#endif
 	return width + (2*TEXT_TO_INSET_OFFSET);
 }
 
@@ -155,10 +171,19 @@ int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 
 void InsetCollapsable::draw_collapsed(Painter & pain, int baseline, float & x) const
 {
+#if 0
 	int width = 0;
 	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
 			baseline, draw_label, labelfont, true, width);
+#else
+	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
+			baseline, draw_label, labelfont);
+#endif
+#if 0
 	x += width + TEXT_TO_INSET_OFFSET;
+#else
+	x += width_collapsed(pain) + TEXT_TO_INSET_OFFSET;
+#endif
 }
 
 

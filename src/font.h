@@ -78,6 +78,15 @@ struct lyxfont {
 	///
 	static
 	void XSetFont(Display * display, GC gc, LyXFont const & f);
+	// A couple of more high-level metrics
+	///
+	static
+	void rectText(string const & str, LyXFont const & font,
+		      int & width, int & ascent, int & descent);
+	///
+	static
+	void buttonText(string const & str, LyXFont const & font,
+			int & width, int & ascent, int & descent);
 };
 
 //} // end of namespace font

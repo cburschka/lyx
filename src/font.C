@@ -186,7 +186,7 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 				result += ::XTextWidth16(getXFontstruct(smallfont), &c, 1);
 			} else {
 				result += ::XTextWidth16(getXFontstruct(f), &s[i], 1);
-			}
+		}
 		}
 		return result;
 	}
@@ -208,6 +208,27 @@ void lyxfont::XSetFont(Display * display, GC gc, LyXFont const & f)
 {
 	::XSetFont(display, gc, getFontID(f));
 }
+
+
+void lyxfont::rectText(string const & str, LyXFont const & font,
+	      int & width, int & ascent, int & descent)
+{
+	static int const d = 2;
+	width = lyxfont::width(str, font) + d * 2 + 2;
+	ascent = lyxfont::maxAscent(font) + d;
+	descent = lyxfont::maxDescent(font) + d;
+}
+
+
+
+void lyxfont::buttonText(string const & str, LyXFont const & font,
+		int & width, int & ascent, int & descent)
+{
+	width = lyxfont::width(str, font) + 8;
+	ascent = lyxfont::maxAscent(font) + 3;
+	descent = lyxfont::maxDescent(font) + 3;
+}
+
 
 //} // end of namespace font
 //} // end of namespace lyx

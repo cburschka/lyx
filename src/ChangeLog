@@ -1,3 +1,13 @@
+2001-07-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text.C (getVisibleRow): adjust
+
+	* font.[Ch] (rectText): new method, metrics
+	(buttonText): new method, metrics
+
+	* PainterBase.[hC]: make rectText and buttonText always draw and take
+	fewer paramteres.
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ToolbarDefaults.C (read): 

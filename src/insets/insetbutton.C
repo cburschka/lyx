@@ -20,6 +20,7 @@
 #include "Painter.h"
 #include "support/LAssert.h"
 #include "lyxfont.h"
+#include "font.h"
 
 using std::ostream;
 using std::endl;
@@ -36,7 +37,8 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 	int ascent;
 	int descent;
         string const s = getScreenLabel();
-	
+
+#if 0
         if (editable()) {
 		bv->painter().buttonText(0, 0, s, font,
 					 false, width, ascent, descent);
@@ -45,6 +47,13 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 				       LColor::commandbg, LColor::commandframe,
 				       false, width, ascent, descent);
 	}
+#else
+        if (editable()) {
+		lyxfont::buttonText(s, font, width, ascent, descent);
+	} else {
+		lyxfont::rectText(s, font, width, ascent, descent);
+	}
+#endif
 	return ascent;
 }
 
@@ -60,7 +69,8 @@ int InsetButton::descent(BufferView * bv, LyXFont const &) const
 	int ascent;
 	int descent;
         string const s = getScreenLabel();
-	
+
+#if 0
         if (editable()) {
 		bv->painter().buttonText(0, 0, s, font,
 					 false, width, ascent, descent);
@@ -69,6 +79,13 @@ int InsetButton::descent(BufferView * bv, LyXFont const &) const
 				   LColor::commandbg, LColor::commandframe,
 				   false, width, ascent, descent);
 	}
+#else
+        if (editable()) {
+		lyxfont::buttonText(s, font, width, ascent, descent);
+	} else {
+		lyxfont::rectText(s, font, width, ascent, descent);
+	}
+#endif
 	return descent;
 }
 
@@ -84,7 +101,8 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 	int ascent;
 	int descent;
         string const s = getScreenLabel();
-	
+
+#if 0
         if (editable()) {
 		bv->painter().buttonText(0, 0, s, font,
 					 false, width, ascent, descent);
@@ -93,6 +111,13 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 				       LColor::commandbg, LColor::commandframe,
 				       false, width, ascent, descent);
 	}
+#else
+        if (editable()) {
+		lyxfont::buttonText(s, font, width, ascent, descent);
+	} else {
+		lyxfont::rectText(s, font, width, ascent, descent);
+	}
+#endif
 	return width + 4;
 }
 
@@ -107,9 +132,10 @@ void InsetButton::draw(BufferView * bv, LyXFont const &,
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::command).decSize();
 
-	int width;
 	string const s = getScreenLabel();
 
+#if 0
+	int width;
 	if (editable()) {
 		pain.buttonText(int(x) + 2, baseline, s, font, true, width);
 	} else {
@@ -117,6 +143,18 @@ void InsetButton::draw(BufferView * bv, LyXFont const &,
 			      LColor::commandbg, LColor::commandframe,
 			      true, width);
 	}
+#else
+	if (editable()) {
+		pain.buttonText(int(x) + 2, baseline, s, font);
+	} else {
+		pain.rectText(int(x) + 2, baseline, s, font,
+			      LColor::commandbg, LColor::commandframe);
+	}
+#endif
 
+#if 0
 	x += width + 4;
+#else
+	x += width(bv, font);
+#endif
 }

@@ -90,6 +90,7 @@ PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
 }
 
 
+#if 0
 PainterBase & PainterBase::rectText(int x, int baseline, 
 				    string const & str, 
 				    LyXFont const & font,
@@ -97,17 +98,24 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 				    LColor::color frame, bool draw,
 				    int & width, int & ascent, int & descent)
 {
+#if 0
 	static int const d = 2;
 	width = lyxfont::width(str, font) + d * 2 + 2;
 	ascent = lyxfont::maxAscent(font) + d;
 	descent = lyxfont::maxDescent(font) + d;
-
+#else
+	lyxfont::rectText(str, font, width, axcent, descent);
+#endif
 	if (!draw) return *this;
 
 	rectangle(x, baseline - ascent, width, ascent + descent, frame);
 	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
 		      ascent + descent - 1, back);
+#if 0
 	text(x + d, baseline, str, font);
+#else
+	text(x + 2, baseline, str, font);
+#endif
 	return *this;
 }
 
@@ -117,13 +125,50 @@ PainterBase & PainterBase::buttonText(int x, int baseline,
 				      LyXFont const & font, bool draw,
 				      int & width, int & ascent, int & descent)
 {
+#if 0
 	width = lyxfont::width(str, font) + 8;
 	ascent = lyxfont::maxAscent(font) + 3;
 	descent = lyxfont::maxDescent(font) + 3;
-
+#else
+	lyxfont::buttonText(str, font, width, ascent, descent);
+#endif
 	if (!draw) return *this;
 
 	button(x, baseline - ascent, width, descent + ascent);
 	text(x + 4, baseline, str, font);
 	return *this;
 }
+#else
+PainterBase & PainterBase::rectText(int x, int baseline, 
+				    string const & str, 
+				    LyXFont const & font,
+				    LColor::color back,
+				    LColor::color frame)
+{
+	int width;
+	int ascent;
+	int descent;
+	
+	lyxfont::rectText(str, font, width, ascent, descent);
+	rectangle(x, baseline - ascent, width, ascent + descent, frame);
+	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
+		      ascent + descent - 1, back);
+	text(x + 2, baseline, str, font);
+	return *this;
+}
+
+
+PainterBase & PainterBase::buttonText(int x, int baseline,
+				      string const & str, 
+				      LyXFont const & font)
+{
+	int width;
+	int ascent;
+	int descent;
+	
+	lyxfont::buttonText(str, font, width, ascent, descent);
+	button(x, baseline - ascent, width, descent + ascent);
+	text(x + 4, baseline, str, font);
+	return *this;
+}
+#endif

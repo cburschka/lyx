@@ -161,7 +161,8 @@ public:
 
 	/// Draw a char at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y, char c, LyXFont const & f)=0;
-	
+
+#if 0
 	/** Draws a string and encloses it inside a rectangle. Returns
 	    the size of the rectangle. If draw is false, we only calculate
 	    the size. */
@@ -182,6 +183,22 @@ public:
 			     int & width = PainterBase::dummy1,
 			     int & ascent = PainterBase::dummy2, 
 			     int & descent = PainterBase::dummy3);
+#else
+	/** Draws a string and encloses it inside a rectangle. Returns
+	    the size of the rectangle. If draw is false, we only calculate
+	    the size. */
+	PainterBase & rectText(int x, int baseline, 
+			   string const & string, 
+			   LyXFont const & font,
+			   LColor::color back,
+			       LColor::color frame);
+
+	/** Draw a string and encloses it inside a button frame. Returns
+	    the size of the frame. If draw is false, we only calculate
+	    the size. */
+	PainterBase & buttonText(int x, int baseline, string const & s,
+				 LyXFont const & font);
+#endif
 protected:
 	///
 	WorkArea & owner;

@@ -37,6 +37,7 @@
 #include "language.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "font.h"
 
 using std::max;
 using std::min;
@@ -3152,12 +3153,18 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				  y_offset + y_top + 2 * defaultHeight(),
 				  LColor::pagebreak, 
 				  Painter::line_onoffdash)
+#if 0
 				.rectText(0,
 					  0,
 					  _("Page Break (top)"),
 					  pb_font,
 					  LColor::background,
 					  LColor::background, false, w, a, d);
+#else
+			;
+			lyxfont::rectText(_("Page Break (top)"), pb_font,
+					  w, a, d);
+#endif
 			pain.rectText((ww - w)/2,
 				      y_offset + y_top + 2 * defaultHeight() + d,
 				      _("Page Break (top)"),
@@ -3343,11 +3350,17 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				.line(0, y_place, ww, y_place,
 				      LColor::pagebreak,
 				      Painter::line_onoffdash)
+#if 0
 				.rectText(0, 0,
 					  _("Page Break (bottom)"),
 					  pb_font,
 					  LColor::background,
 					  LColor::background, false, w, a, d);
+#else
+			;
+			lyxfont::rectText(_("Page Break (bottom)"), pb_font,
+					  w, a, d);
+#endif
 			pain.rectText((ww - w) / 2, y_place + d,
 				      _("Page Break (bottom)"),
 				      pb_font,
