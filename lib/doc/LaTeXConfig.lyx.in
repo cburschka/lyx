@@ -1,5 +1,5 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.15
+\lyxformat 2.16
 \textclass article
 \language default
 \inputencoding default
@@ -923,6 +923,52 @@ Notes: RevTeX 4 is a class used for submitting manuscripts to journals including
  Topics---Accelerators and Beams), the American Institute of Physics, the
  Optical Society of America, and the Society for Exploration Geophysicists.
  [It is in BETA release as of September, 1999.]
+\layout Subsection
+
+Springer Journal of Geodesy
+\layout Description
+
+Found: @chk_svjog@
+\layout Description
+
+CTAN: N/A
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand \url{http://www.springer.de/author/tex/help-journals.html}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: 
+\family sans 
+Svjog
+\family default 
+ is for the journal formats used by Springer Verlag, in particular that
+ of Journal of Geodesy.
+ It is not very well tested yet.
+ The corresponding documentclass files and associated material can be found
+ on the Springer site.
+ The layout consists of two parts: 
+\family typewriter 
+svjour.inc
+\family default 
+ (which is generic for all Springer journals) and 
+\family typewriter 
+svjog.layout
+\family default 
+, which includes 
+\family typewriter 
+svjour.inc
+\family default 
+ and is specific for Journal of Geodesy.
+ You can write your own 
+\family typewriter 
+sv<journal>.layout
+\family default 
+ to support any other Springer journals (hint, hint!)
 \layout Section
 
 Paper layout packages
