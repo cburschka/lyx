@@ -1,3 +1,9 @@
+2003-02-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text.C (getLengthMarkerHeight): 
+	(drawLengthMarker): make the `symbolic' lengths (small/med/big)
+	visible on screen too.
+
 2003-02-07  John Levon  <levon@movementarian.org>
 
 	* text.C: s/LYX_PAPER_MARGIN/PAPER_MARGIN/g
