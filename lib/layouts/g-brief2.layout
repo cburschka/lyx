@@ -227,7 +227,7 @@ Style Signature
   EndFont
 End
 
-Style AdressRowA
+Style AddressRowA
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileA
@@ -238,7 +238,7 @@ Style AdressRowA
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowA:
+  LabelString		AddressRowA:
   # label font definition
   LabelFont
     Series		Bold
@@ -247,7 +247,7 @@ Style AdressRowA
   EndFont
 End
 
-Style AdressRowB
+Style AddressRowB
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileB
@@ -257,7 +257,7 @@ Style AdressRowB
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowB:
+  LabelString		AddressRowB:
   # label font definition
   LabelFont
     Series		Bold
@@ -266,7 +266,7 @@ Style AdressRowB
   EndFont
 End
 
-Style AdressRowC
+Style AddressRowC
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileC
@@ -276,7 +276,7 @@ Style AdressRowC
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowC:
+  LabelString		AddressRowC:
   # label font definition
   LabelFont
     Series		Bold
@@ -285,7 +285,7 @@ Style AdressRowC
   EndFont
 End
 
-Style AdressRowD
+Style AddressRowD
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileD
@@ -295,7 +295,7 @@ Style AdressRowD
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowD:
+  LabelString		AddressRowD:
   # label font definition
   LabelFont
     Series		Bold
@@ -304,7 +304,7 @@ Style AdressRowD
   EndFont
 End
 
-Style AdressRowE
+Style AddressRowE
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileE
@@ -314,7 +314,7 @@ Style AdressRowE
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowE:
+  LabelString		AddressRowE:
   # label font definition
   LabelFont
     Series		Bold
@@ -323,7 +323,7 @@ Style AdressRowE
   EndFont
 End
 
-Style AdressRowF
+Style AddressRowF
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileF
@@ -333,7 +333,7 @@ Style AdressRowF
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		AdressRowF:
+  LabelString		AddressRowF:
   # label font definition
   LabelFont
     Series		Bold
@@ -495,6 +495,7 @@ Style InternetRowB
     Color       Green
   EndFont
 End
+
 Style InternetRowC
   Margin		Static
   LatexType		Command
@@ -513,6 +514,7 @@ Style InternetRowC
     Color       Green
   EndFont
 End
+
 Style InternetRowD
   Margin		Static
   LatexType		Command
@@ -531,6 +533,7 @@ Style InternetRowD
     Color       Green
   EndFont
 End
+
 Style InternetRowE
   Margin		Static
   LatexType		Command
@@ -549,6 +552,7 @@ Style InternetRowE
     Color       Green
   EndFont
 End
+
 Style InternetRowF
   Margin		Static
   LatexType		Command
@@ -924,9 +928,6 @@ Style cc
     Color               Blue
   EndFont
 End
-
-
-
 
 # Gruss style definition
 Style Closing
