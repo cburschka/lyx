@@ -153,6 +153,3 @@ libmathed_la_SOURCES = \
 	command_inset.C \
 	ref_inset.h \
 	ref_inset.C
-
-#	math_tfracinset.C
-#	math_tfracinset.h

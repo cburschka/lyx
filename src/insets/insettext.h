@@ -72,10 +72,11 @@ public:
 		    OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+
+	/// return x,y of given position relative to the inset's baseline
+	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
 	///
 	Code lyxCode() const { return TEXT_CODE; }
-	/// FIXME, document
-	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
@@ -165,7 +166,7 @@ private:
 	 */
 	int frame_color_;
 	///
-	mutable lyx::pit_type old_par;
+	mutable lyx::pit_type old_pit;
 public:
 	///
 	mutable LyXText text_;

@@ -6,6 +6,7 @@
  *
  * \author various
  * \author John Levon
+ * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -18,36 +19,23 @@
 class LyXText;
 class BufferView;
 class PainterInfo;
+class ViewMetricsInfo;
 
-/// paint the rows of the main text, return last drawn y value
-int paintText(BufferView const & bv);
 
-/// refresh a par of the main text
-void refreshPar(BufferView const & bv, LyXText const & text,
-		lyx::pit_type pit);
+/// paint visible paragraph of main text
+void paintText(BufferView const & bv, ViewMetricsInfo const & vi);
 
 /// paint the rows of a text inset
-void paintTextInset(LyXText const & text, PainterInfo & pi);
+void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);
 
 /// some space for drawing the 'nested' markers (in pixel)
-inline int nestMargin()
-{
-	return 15;
-}
-
+inline int nestMargin() { return 15; }
 
 /// margin for changebar
-inline int changebarMargin()
-{
-	return 10;
-}
-
+inline int changebarMargin() { return 10; }
 
 /// right margin
-inline int rightMargin()
-{
-	return 30;
-}
+inline int rightMargin() { return 30; }
 
 
 #endif // ROWPAINTER_H

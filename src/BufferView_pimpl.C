@@ -41,6 +41,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lastfiles.h"
+#include "metricsinfo.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -91,6 +92,7 @@ using std::endl;
 using std::istringstream;
 using std::make_pair;
 using std::min;
+using std::max;
 using std::string;
 using std::mem_fun_ref;
 
@@ -136,7 +138,8 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 			 int width, int height)
 	: bv_(&bv), owner_(owner), buffer_(0), cursor_timeout(400),
-	  using_xterm_cursor(false), cursor_(bv)
+	  using_xterm_cursor(false), cursor_(bv) ,
+	  anchor_ref_(0), offset_ref_(0)
 {
 	xsel_cache_.set = false;
 
@@ -311,18 +314,6 @@ Painter & BufferView::Pimpl::painter() const
 }
 
 
-void BufferView::Pimpl::top_y(int y)
-{
-	top_y_ = y;
-}
-
-
-int BufferView::Pimpl::top_y() const
-{
-	return top_y_;
-}
-
-
 void BufferView::Pimpl::setBuffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
@@ -343,8 +334,10 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	}
 
 	// reset old cursor
-	top_y_ = 0;
 	cursor_ = LCursor(*bv_);
+	anchor_ref_ = 0;
+	offset_ref_ = 0;
+	
 
 	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
@@ -358,10 +351,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		cursor_.resetAnchor();
 		buffer_->text().init(bv_);
 		buffer_->text().setCurrentFont(cursor_);
-
-		// If we don't have a text object for this, we make one
-		//if (bv_->text() == 0)
-		//	resizeCurrentBuffer();
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -385,32 +374,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 }
 
 
-bool BufferView::Pimpl::fitCursor()
-{
-	// to get the correct y cursor info
-	lyxerr[Debug::DEBUG] << "BufferView::fitCursor" << std::endl;
-	lyx::pit_type const pit = bv_->cursor().bottom().pit();
-	bv_->text()->redoParagraph(pit);
-	refreshPar(*bv_, *bv_->text(), pit);
-
-	if (!screen().fitCursor(bv_))
-		return false;
-	updateScrollbar();
-	return true;
-}
-
-
-void BufferView::Pimpl::redoCurrentBuffer()
-{
-	lyxerr[Debug::DEBUG] << "BufferView::redoCurrentBuffer" << endl;
-	if (buffer_ && bv_->text()) {
-		resizeCurrentBuffer();
-		updateScrollbar();
-		owner_->updateLayoutChoice();
-	}
-}
-
-
 void BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::DEBUG] << "resizeCurrentBuffer" << endl;
@@ -423,7 +386,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	text->init(bv_);
 	update();
-	fitCursor();
 
 	switchKeyMap();
 	owner_->busy(false);
@@ -443,14 +405,23 @@ void BufferView::Pimpl::updateScrollbar()
 		return;
 	}
 
-	LyXText const & t = *bv_->text();
-
+	LyXText & t = *bv_->text();
+	if (anchor_ref_ >  int(t.paragraphs().size()) - 1) {
+		anchor_ref_ = int(t.paragraphs().size()) - 1;
+		offset_ref_ = 0;
+	}
+	    
 	lyxerr[Debug::GUI]
-		<< "Updating scrollbar: height: " << t.height()
-		<< " top_y: " << top_y()
+		<< "Updating scrollbar: height: " << t.paragraphs().size()
+		<< " curr par: " << bv_->cursor().bottom().pit()
 		<< " default height " << defaultRowHeight() << endl;
 
-	workarea().setScrollbarParams(t.height(), top_y(), defaultRowHeight());
+	//it would be better to fix the scrollbar to understand
+	//values in [0..1] and divide everything by wh
+	int const wh = workarea().workHeight() / 4;
+	int const h = t.getPar(anchor_ref_).height();
+	workarea().setScrollbarParams(t.paragraphs().size() * wh, anchor_ref_ * wh + int(offset_ref_ * wh / float(h)), int (wh * defaultRowHeight() / float(h)));
+//	workarea().setScrollbarParams(t.paragraphs().size(), anchor_ref_, 1);
 }
 
 
@@ -463,48 +434,69 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	screen().hideCursor();
 
-	top_y(value);
-	screen().redraw(*bv_);
+	int const wh = workarea().workHeight() / 4;
+
+	LyXText & t = *bv_->text();
+
+	float const bar = value / float(wh * t.paragraphs().size());
+
+	anchor_ref_ = int(bar * t.paragraphs().size());
+	t.redoParagraph(anchor_ref_);
+	int const h = t.getPar(anchor_ref_).height();
+	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
+	lyxerr << "scrolling: " << value << std::endl;
+	update();
 
 	if (!lyxrc.cursor_follows_scrollbar)
 		return;
 
-	int const height = defaultRowHeight();
-	int const first = top_y() + height;
-	int const last = top_y() + workarea().workHeight() - height;
+	int const height = 2 * defaultRowHeight();
+	int const first = height;
+	int const last = workarea().workHeight() - height;
+	LCursor & cur = bv_->cursor();
+	
+	bv_funcs::CurStatus st = bv_funcs::status(bv_, cur);
 
-	bv_->cursor().reset(bv_->buffer()->inset());
-	LyXText * text = bv_->text();
-	int y = text->cursorY(bv_->cursor().front());
-	if (y < first)
-		y = first;
-	if (y > last)
-		y = last;
-	text->setCursorFromCoordinates(bv_->cursor(), 0, y);
-
+	switch (st) {
+	case bv_funcs::CUR_ABOVE:
+		t.setCursorFromCoordinates(cur, 0, first);
+		cur.clearSelection();
+		break;
+	case bv_funcs::CUR_BELOW:
+		t.setCursorFromCoordinates(cur, 0, last);
+		cur.clearSelection();
+		break;
+	case bv_funcs::CUR_INSIDE:
+		int const y = bv_funcs::getPos(cur).y_;
+		int const newy = min(last, max(y, first));
+		if (y != newy) {
+			cur.reset(bv_->buffer()->inset());
+			t.setCursorFromCoordinates(cur, 0, newy);
+		}
+	}
 	owner_->updateLayoutChoice();
 }
 
 
 void BufferView::Pimpl::scroll(int lines)
 {
-	if (!buffer_)
-		return;
-
-	LyXText const * t = bv_->text();
-	int const line_height = defaultRowHeight();
-
-	// The new absolute coordinate
-	int new_top_y = top_y() + lines * line_height;
-
-	// Restrict to a valid value
-	new_top_y = std::min(t->height() - 4 * line_height, new_top_y);
-	new_top_y = std::max(0, new_top_y);
-
-	scrollDocView(new_top_y);
-
-	// Update the scrollbar.
-	workarea().setScrollbarParams(t->height(), top_y(), defaultRowHeight());
+//	if (!buffer_)
+//		return;
+//
+//	LyXText const * t = bv_->text();
+//	int const line_height = defaultRowHeight();
+//
+//	// The new absolute coordinate
+//	int new_top_y = top_y() + lines * line_height;
+//
+//	// Restrict to a valid value
+//	new_top_y = std::min(t->height() - 4 * line_height, new_top_y);
+//	new_top_y = std::max(0, new_top_y);
+//
+//	scrollDocView(new_top_y);
+//
+//	// Update the scrollbar.
+//	workarea().setScrollbarParams(t->height(), top_y(), defaultRowHeight());
 }
 
 
@@ -591,33 +583,50 @@ void BufferView::Pimpl::workAreaResize()
 }
 
 
-void BufferView::Pimpl::update()
+bool BufferView::Pimpl::fitCursor()
 {
-	//lyxerr << "BufferView::Pimpl::update(), buffer: " << buffer_ << endl;
-	// fix cursor coordinate cache in case something went wrong
+	if (bv_funcs::status(bv_, bv_->cursor()) == bv_funcs::CUR_INSIDE) {
+		int asc, des;
+		bv_->cursor().getDim(asc, des);
+		Point p = bv_funcs::getPos(bv_->cursor());
+		if (p.y_ - asc >= 0 && p.y_ + des < bv_->workHeight())
+			return false;
+	}
+	bv_->center();
+	return true;
+}
 
+
+void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
+{
+	lyxerr << "BufferView::Pimpl::update(fc=" << fitcursor << ", fu="
+	       << forceupdate << ")  buffer: " << buffer_ << endl;
+	
 	// check needed to survive LyX startup
 	if (buffer_) {
 		// update macro store
 		buffer_->buildMacros();
+		// first drawing step
 
-		// update all 'visible' paragraphs
-		lyx::pit_type beg, end;
-		getParsInRange(buffer_->paragraphs(),
-			       top_y(), top_y() + workarea().workHeight(),
-			       beg, end);
-		bv_->text()->redoParagraphs(beg, end);
+		CoordCache backup;
+		std::swap(theCoords, backup);
+		//
+		ViewMetricsInfo vi = metrics();
 
-		// and the scrollbar
-		updateScrollbar();
-	}
+		if (fitcursor && fitCursor()) {
+			forceupdate = true;
+			vi = metrics();
+		}
+		if (forceupdate) {
+			// second drawing step
+			screen().redraw(*bv_, vi);
+		} else
+			std::swap(theCoords, backup);
+	} else
+		screen().greyOut();
 
-	// remove old position cache
-	theCoords.clear();
-
-	// The real, big redraw.
-	screen().redraw(*bv_);
-
+	// and the scrollbar
+	updateScrollbar();
 	bv_->owner()->view_state_changed();
 }
 
@@ -732,30 +741,19 @@ void BufferView::Pimpl::switchKeyMap()
 
 void BufferView::Pimpl::center()
 {
-	LyXText * text = bv_->text();
-
-	bv_->cursor().clearSelection();
-	int const half_height = workarea().workHeight() / 2;
-	int new_y = text->cursorY(bv_->cursor().front()) - half_height;
-	if (new_y < 0)
-		new_y = 0;
-
-	// FIXME: look at this comment again ...
-	// This updates top_y() but means the fitCursor() call
-	// from the update(FITCUR) doesn't realise that we might
-	// have moved (e.g. from GOTOPARAGRAPH), so doesn't cause
-	// the scrollbar to be updated as it should, so we have
-	// to do it manually. Any operation that does a center()
-	// and also might have moved top_y() must make sure to call
-	// updateScrollbar() currently. Never mind that this is a
-	// pretty obfuscated way of updating text->top_y()
-	top_y(new_y);
+	CursorSlice const & bot = bv_->cursor().bottom();
+	lyx::pit_type const pit = bot.pit();
+	bot.text()->redoParagraph(pit);
+	Paragraph const & par = bot.text()->paragraphs()[pit];
+	anchor_ref_ = pit;
+	offset_ref_ = bv_funcs::coordOffset(bv_->cursor()).y_ + par.ascent()
+		- workarea().workHeight() / 2;
 }
 
 
-void BufferView::Pimpl::stuffClipboard(string const & stuff) const
+void BufferView::Pimpl::stuffClipboard(string const & content) const
 {
-	workarea().putClipboard(stuff);
+	workarea().putClipboard(content);
 }
 
 
@@ -870,7 +868,6 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		return true;
 	}
 
-	cmd.y += bv_->top_y();
 	if (!bv_->buffer())
 		return false;
 
@@ -891,8 +888,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// surrounding LyXText will handle this event.
 
 	// Build temporary cursor.
+	cmd.y = min(max(cmd.y,-1), bv_->workHeight());
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
-	lyxerr << " * created temp cursor: " << inset << endl;
 	lyxerr << " * hit inset at tip: " << inset << endl;
 	lyxerr << " * created temp cursor:" << cur << endl;
 
@@ -913,8 +910,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	if (cur.result().dispatched()) {
 		// Redraw if requested or necessary.
-		if (fitCursor() || cur.result().update())
-			update();
+		update(cur.result().update(), cur.result().update());
 	}
 
 	// see workAreaKeyPress
@@ -962,12 +958,9 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 	case LFUN_SETMARK:
 	case LFUN_CENTER:
-	case LFUN_BEGINNINGBUF:
-	case LFUN_ENDBUF:
-	case LFUN_BEGINNINGBUFSEL:
-	case LFUN_ENDBUFSEL:
 		flag.enabled(true);
 		break;
+		
 	case LFUN_BOOKMARK_GOTO:
 		flag.enabled(bv_->isSavedPosition(strToUnsignedInt(cmd.argument)));
 		break;
@@ -1137,25 +1130,80 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		bv_->center();
 		break;
 
-	case LFUN_BEGINNINGBUFSEL:
-		bv_->cursor().reset(bv_->buffer()->inset());
-		if (!cur.selection())
-			cur.resetAnchor();
-		bv_->text()->cursorTop(cur);
-		finishUndo();
-		break;
-
-	case LFUN_ENDBUFSEL:
-		bv_->cursor().reset(bv_->buffer()->inset());
-		if (!cur.selection())
-			cur.resetAnchor();
-		bv_->text()->cursorBottom(cur);
-		finishUndo();
-		break;
-
 	default:
 		return false;
 	}
 
 	return true;
+}
+
+
+ViewMetricsInfo BufferView::Pimpl::metrics()
+{
+	// remove old position cache
+	theCoords.clear();
+	BufferView & bv = *bv_;
+	LyXText * const text = bv.text();
+	if (anchor_ref_ > int(text->paragraphs().size() - 1)) {
+		anchor_ref_ = int(text->paragraphs().size() - 1);
+		offset_ref_ = 0;
+	}
+
+	lyx::pit_type const pit = anchor_ref_;
+	int pit1 = pit;
+	int pit2 = pit;
+	size_t npit = text->paragraphs().size();
+	lyxerr << "npit: " << npit << " pit1: " << pit1 
+		<< " pit2: " << pit2 << endl;
+
+	// rebreak anchor par	
+	text->redoParagraph(pit);
+	int y0 = text->getPar(pit1).ascent() - offset_ref_;
+	
+	// redo paragraphs above cursor if necessary
+	int y1 = y0;
+	while (y1 > 0 && pit1 > 0) {
+		y1 -= text->getPar(pit1).ascent();
+		--pit1;
+		text->redoParagraph(pit1);
+		y1 -= text->getPar(pit1).descent();
+	}
+
+	
+	// take care of ascent of first line
+	y1 -= text->getPar(pit1).ascent();
+
+	//normalize anchor for next time
+	anchor_ref_ = pit1;
+	offset_ref_ = -y1;
+
+	// grey at the beginning is ugly
+	if (pit1 == 0 && y1 > 0) {
+		y0 -= y1;
+		y1 = 0;
+		anchor_ref_ = 0;
+	}
+	
+	// redo paragraphs below cursor if necessary
+	int y2 = y0;
+	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
+		y2 += text->getPar(pit2).descent();
+		++pit2;
+		text->redoParagraph(pit2);
+		y2 += text->getPar(pit2).ascent();
+	}
+
+	// take care of descent of last line 
+	y2 += text->getPar(pit2).descent();
+
+	// the coordinates of all these paragraphs are correct, cache them
+	int y = y1;
+	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
+		y += text->getPar(pit).ascent();
+		theCoords.pars_[text][pit] = Point(0, y);
+		y += text->getPar(pit).descent();
+	}
+	
+	lyxerr << "bv:metrics:  y1: " << y1 << " y2: " << y2 << endl;
+	return ViewMetricsInfo(pit1, pit2, y1, y2);
 }

@@ -13,6 +13,7 @@
 #define METRICSINFO_H
 
 #include "lyxfont.h"
+#include "support/types.h"
 
 #include <string>
 
@@ -88,8 +89,18 @@ struct PainterInfo {
 	bool ltr_pos;
 };
 
-
 struct TextMetricsInfo {};
+
+
+struct ViewMetricsInfo
+{
+	ViewMetricsInfo(lyx::pit_type p1, lyx::pit_type p2,
+			int y1, int y2) : p1(p1), p2(p2), y1(y1), y2(y2) {}
+	lyx::pit_type p1;
+	lyx::pit_type p2;
+	int y1;
+	int y2;
+};
 
 
 // Generic base for temporarily changing things.

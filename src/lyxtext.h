@@ -17,6 +17,7 @@
 #include "bufferview_funcs.h"
 #include "Bidi.h"
 #include "dispatchresult.h"
+#include "dimension.h"
 #include "lyxfont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
@@ -56,8 +57,6 @@ public:
 	///
 	void init(BufferView *);
 
-	/// update y coordinate cache of all paragraphs
-	void updateParPositions();
 	///
 	LyXFont getFont(Paragraph const & par, pos_type pos) const;
 	///
@@ -93,12 +92,8 @@ public:
 	/// Set font over selection paragraphs and rebreak.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
-	/// rebreaks all paragaphs between the given pars.
-	void redoParagraphs(pit_type begin, pit_type end);
 	/// rebreaks the given par
 	void redoParagraph(pit_type pit);
-	/// rebreaks the cursor par
-	void redoParagraph(LCursor & cur);
 
 	/// returns pos in given par at given x coord
 	pos_type x2pos(pit_type pit, int row, int x) const;
@@ -115,17 +110,12 @@ public:
 	/// insert an inset at cursor position
 	void insertInset(LCursor & cur, InsetBase * inset);
 
-	/// a full rebreak of the whole text
-	void fullRebreak();
 	/// compute text metrics
 	void metrics(MetricsInfo & mi, Dimension & dim);
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw textselection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
-	/// returns distance of this cell to the point given by x and y
-	// assumes valid position and size cache
-	int dist(int x, int y) const;
 
 	/// try to handle that request
 	void dispatch(LCursor & cur, FuncRequest & cmd);
@@ -143,11 +133,11 @@ public:
 	// Returns the current font and depth as a message.
 	std::string LyXText::currentState(LCursor & cur);
 
-	/** returns an iterator pointing to the row near the specified
-	  * y-coordinate (relative to the whole text). y is set to the
-	  * real beginning of this row
+	/** returns row near the specified
+	  * y-coordinate in given paragraph (relative to the screen).
 	  */
-	Row const & getRowNearY(int y, pit_type & pit) const;
+	Row const & getRowNearY(int y, pit_type pit) const;
+	pit_type getPitNearY(int y) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
@@ -339,11 +329,9 @@ public:
 
 public:
 	///
-	unsigned int width_;
+	Dimension dim_;
 	///
 	int maxwidth_;
-	///
-	int height_;
 	/// the current font settings
 	LyXFont current_font;
 	/// the current font
@@ -361,10 +349,6 @@ public:
 	///
 	ParagraphList pars_;
 
-	/// absolute document pixel coordinates of this LyXText
-	mutable int xo_;
-	mutable int yo_;
-
 	/// our 'outermost' Font
 	LyXFont font_;
 
@@ -373,8 +357,6 @@ private:
 	/// change on pit
 	pit_type undoSpan(pit_type pit);
 
-	/// rebreaks the given par
-	void redoParagraphInternal(pit_type pit);
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 

@@ -1,3 +1,14 @@
+2004-11-26  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettabular.[Ch]: adjust, introduce "do not draw
+	offscreen" optimization using NullPainter, (dist): introduce,
+	(getCursorPos): implement, (drawSelection): implement
+
+	* insetcollapsable.[Ch]: adjust
+
+	* insettext.C: adjust, (metrics): set the font before calling
+	LyXText::metrics
+
 2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* rename a lot of InsetOld to InsetBase

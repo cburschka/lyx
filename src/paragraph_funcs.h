@@ -56,19 +56,9 @@ bool isFirstInSequence(lyx::pit_type par, ParagraphList const & plist);
     proof environment */
 int getEndLabel(lyx::pit_type par, ParagraphList const & plist);
 
-LyXFont const outerFont(lyx::pit_type par, ParagraphList const & plist);
-
-/// find outermost paragraph containing an inset
-lyx::pit_type outerPar(Buffer const & buf, InsetBase const * inset);
-
-/// return the range of pars [beg, end[ owning the range of y [ystart, yend]
-void getParsInRange(ParagraphList & plist,
-				int ystart, int yend,
-				lyx::pit_type & beg,
-				lyx::pit_type & end);
+LyXFont const outerFont(lyx::pit_type par_offset, ParagraphList const & pars);
 
 /// return the number of InsetOptArg in a paragraph
 int numberOfOptArgs(Paragraph const & par);
-
 
 #endif // PARAGRAPH_FUNCS_H

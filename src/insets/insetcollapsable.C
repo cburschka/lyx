@@ -50,8 +50,8 @@ void leaveInset(LCursor & cur, InsetBase const & in)
 }
 
 
-InsetCollapsable::InsetCollapsable(BufferParams const & bp,
-	CollapseStatus status)
+InsetCollapsable::InsetCollapsable
+		(BufferParams const & bp, CollapseStatus status)
 	: InsetText(bp), label("Label"), status_(status), openinlined_(false)
 {
 	setAutoBreakRows(true);
@@ -122,9 +122,11 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-void InsetCollapsable::dimension_collapsed(Dimension & dim) const
+Dimension InsetCollapsable::dimensionCollapsed() const
 {
+	Dimension dim;
 	font_metrics::buttonText(label, labelfont_, dim.wid, dim.asc, dim.des);
+	return dim;
 }
 
 
@@ -134,14 +136,14 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (status_ == Inlined) {
 		InsetText::metrics(mi, dim);
 	} else {
-		dimension_collapsed(dim);
+		dim = dimensionCollapsed();
 		if (status_ == Open) {
 			InsetText::metrics(mi, textdim_);
 			openinlined_ = (textdim_.wid + dim.wid <= mi.base.textwidth);
 			if (openinlined_) {
 				dim.wid += textdim_.wid;
-				dim.des = max(dim.des, textdim_.des);
-				dim.asc = max(dim.asc, textdim_.asc);
+				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
+				dim.asc = textdim_.asc;
 			} else {
 				dim.des += textdim_.height() + TEXT_TO_BOTTOM_OFFSET;
 				dim.wid = max(dim.wid, textdim_.wid);
@@ -156,39 +158,68 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
-{
-	pi.pain.buttonText(x, y, label, labelfont_);
-}
-
-
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	x += TEXT_TO_INSET_OFFSET;
-	y += TEXT_TO_INSET_OFFSET;
-
+	const int xx = x + TEXT_TO_INSET_OFFSET;
 	if (status_ == Inlined) {
-		InsetText::draw(pi, x, y);
+		InsetText::draw(pi, xx, y);
 	} else {
-		Dimension dimc;
-		dimension_collapsed(dimc);
-		int const aa  = ascent();
-		button_dim.x1 = x + 0;
-		button_dim.x2 = x + dimc.width();
-		button_dim.y1 = y - aa + pi.base.bv->top_y();
-		button_dim.y2 = y - aa + pi.base.bv->top_y() + dimc.height();
+		Dimension dimc = dimensionCollapsed();
+		int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
+		button_dim.x1 = xx + 0;
+		button_dim.x2 = xx + dimc.width();
+		button_dim.y1 = top;
+		button_dim.y2 = top + dimc.height();
 
-		draw_collapsed(pi, x, y - aa + dimc.asc);
+		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
 		if (status_ == Open) {
-			if (openinlined_)
-				InsetText::draw(pi, x + dimc.width(),
-						y - aa + textdim_.asc);
-			else
-				InsetText::draw(pi, x, dimc.height()
-						+ y - aa + textdim_.asc);
+			int textx, texty;
+			if (openinlined_) {
+				textx = xx + dimc.width();
+				texty = top + textdim_.asc;
+			} else {
+				textx = xx;
+				texty = top + dimc.height() + textdim_.asc;
+			}
+			InsetText::draw(pi, textx, texty);
 		}
 	}
 	setPosCache(pi, x, y);
+}
+
+
+void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	x += TEXT_TO_INSET_OFFSET;
+	if (status_ == Open) {
+		if (openinlined_)
+			x += dimensionCollapsed().wid;
+		else
+			y += dimensionCollapsed().des + textdim_.asc;
+	}
+	if (status_ != Collapsed)
+		InsetText::drawSelection(pi, x, y);
+}
+
+
+void InsetCollapsable::getCursorPos
+	(CursorSlice const & sl, int & x, int & y) const
+{
+	if (status_ == Collapsed) {
+		x = xo();
+		y = yo();
+		return;
+	}
+	
+	InsetText::getCursorPos(sl, x, y);
+	if (status_ == Open) {
+		if (openinlined_)
+			x += dimensionCollapsed().wid;
+		else
+			y += dimensionCollapsed().height() - ascent() + TEXT_TO_INSET_OFFSET + textdim_.asc;
+	}
+
+	x += TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -242,21 +273,17 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y) const
 {
-	cur.push(const_cast<InsetCollapsable&>(*this));
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status_ == Collapsed) {
 		return const_cast<InsetCollapsable*>(this);
 	}
+	cur.push(const_cast<InsetCollapsable&>(*this));
 	return InsetText::editXY(cur, x, y);
 }
 
 
 void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-//	lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
-//	       << "  button y: " << button_dim.y2
-//	       << "  coll/inline/open: " << status_ << endl;
-
 	lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
 		<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
 
@@ -267,7 +294,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (status_ == Open && !hitButton(cmd))
 			InsetText::doDispatch(cur, cmd);
 		else
-		  cur.noUpdate();
+			cur.noUpdate();
 		break;
 
 	case LFUN_MOUSE_MOTION:
@@ -275,6 +302,8 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			InsetText::doDispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))
 			InsetText::doDispatch(cur, cmd);
+		else
+			cur.undispatched();
 		break;
 
 	case LFUN_MOUSE_RELEASE:
@@ -287,8 +316,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		case Collapsed:
 			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
-			open();
-			InsetText::edit(cur, true);
+			edit(cur, true);
 			cur.bv().cursor() = cur;
 			break;
 
@@ -367,9 +395,9 @@ void InsetCollapsable::setLabel(string const & l)
 }
 
 
-void InsetCollapsable::setStatus(CollapseStatus st)
+void InsetCollapsable::setStatus(CollapseStatus status)
 {
-	status_ = st;
+	status_ = status;
 	setButtonLabel();
 }
 
@@ -391,8 +419,3 @@ void InsetCollapsable::scroll(BufferView & bv, int offset) const
 	UpdatableInset::scroll(bv, offset);
 }
 
-
-Box const & InsetCollapsable::buttonDim() const
-{
-	return button_dim;
-}

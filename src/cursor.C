@@ -15,6 +15,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "cursor.h"
+#include "coordcache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -42,6 +43,7 @@
 #include "support/limited_stack.h"
 
 #include "frontends/LyXView.h"
+#include "frontends/font_metrics.h"
 
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
@@ -80,9 +82,10 @@ namespace {
 
 
 	// Find position closest to (x, y) in cell given by iter.
+	// Used only in mathed
 	DocIterator bruteFind2(LCursor const & c, int x, int y)
 	{
-		double best_dist = 1e10;
+		double best_dist = std::numeric_limits<double>::max();
 
 		DocIterator result;
 
@@ -94,11 +97,12 @@ namespace {
 			int xo, yo;
 			LCursor cur = c;
 			cur.setCursor(it);
-			cur.inset().getCursorPos(cur, xo, yo);
+			cur.inset().getCursorPos(cur.top(), xo, yo);
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'
-			lyxerr[Debug::DEBUG] << "i: " << i << " d: " << d << " best: " << best_dist << endl;
+			lyxerr[Debug::DEBUG] << "i: " << i << " d: " << d
+				<< " best: " << best_dist << endl;
 			if (d <= best_dist) {
 				best_dist = d;
 				result = it;
@@ -120,27 +124,20 @@ namespace {
 		CursorSlice bottom = cursor[0];
 		LyXText * text = bottom.text();
 		BOOST_ASSERT(text);
-		getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
+		
+		DocIterator it = doc_iterator_begin(bottom.inset());
+		DocIterator const et = doc_iterator_end(bottom.inset());
 
-		DocIterator it = doc_iterator_begin(cursor.bv().buffer()->inset());
-		DocIterator et = doc_iterator_end(cursor.bv().buffer()->inset());
-		//lyxerr << "x: " << x << " y: " << y << endl;
-		//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
-		//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
-
-		it.pit() = beg;
-		//et.pit() = text->parOffset(end);
-
-		double best_dist = 10e10;
-		DocIterator best_cursor = it;
+		double best_dist = std::numeric_limits<double>::max();;
+		DocIterator best_cursor = et;
 
 		for ( ; it != et; it.forwardPos()) {
 			// avoid invalid nesting when selecting
-			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
-				int xo = 0, yo = 0;
-				LCursor cur = cursor;
-				cur.setCursor(it);
-				cur.inset().getCursorPos(cur, xo, yo);
+			if (bv_funcs::status(&cursor.bv(), it) == bv_funcs::CUR_INSIDE
+			    && (!cursor.selection() || positionable(it, cursor.anchor_))) {
+				Point p = bv_funcs::getPos(it);
+				int xo = p.x_;
+				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 					double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 					//lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
@@ -156,15 +153,20 @@ namespace {
 		}
 
 		//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
-		if (best_dist < 1e10)
+		if (best_cursor != et) {
 			cursor.setCursor(best_cursor);
-		return best_dist < 1e10;
+			return true;
+		}
+
+		return false;
 	}
 
 
 } // namespace anon
 
 
+// be careful: this is called from the bv's constructor, too, so 
+// bv functions are not yet available!
 LCursor::LCursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
 	  selection_(false), mark_(false)
@@ -348,11 +350,11 @@ void LCursor::getDim(int & asc, int & des) const
 		BOOST_ASSERT(inset().asMathInset());
 		//inset().asMathInset()->getCursorDim(asc, des);
 		asc = 10;
-		des = 10;
+		des = 2;
 	} else if (inTexted()) {
-		Row const & row = textRow();
-		asc = row.baseline();
-		des = row.height() - asc;
+		LyXFont const & realfont = text()->real_current_font;
+		asc = font_metrics::maxAscent(realfont);
+		des = font_metrics::maxDescent(realfont);
 	} else {
 		lyxerr << "should this happen?" << endl;
 		asc = 10;
@@ -363,10 +365,9 @@ void LCursor::getDim(int & asc, int & des) const
 
 void LCursor::getPos(int & x, int & y) const
 {
-	x = 0;
-	y = 0;
-	if (!empty())
-		inset().getCursorPos(*this, x, y);
+	Point p = bv_funcs::getPos(*this);
+	x = p.x_;
+	y = p.y_;
 }
 
 
@@ -854,6 +855,17 @@ int LCursor::targetX() const
 	int y = 0;
 	getPos(x, y);
 	return x;
+}
+
+
+void LCursor::setTargetX()
+{
+	//for now this is good enough. A better solution would be to
+	//avoid this rebreak by setting cursorX only after drawing
+	bottom().text()->redoParagraph(bottom().pit());
+	int x, y;
+	getPos(x, y);
+	x_target_ = x;
 }
 
 

@@ -1,3 +1,8 @@
+2004-11-26  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* Painter.C: adjust * screen.[Ch] (fitCursor): remove,
+	(showCursor): adjust, (redraw): adjust
+
 2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Dialogs.h: include <map> since it is used in this file, fixes

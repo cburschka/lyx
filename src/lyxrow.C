@@ -22,19 +22,18 @@
 using lyx::pos_type;
 
 
-RowMetrics::RowMetrics() : separator(0), hfill(0), label_hfill(0), x(0)
+RowMetrics::RowMetrics()
+	: separator(0), hfill(0), label_hfill(0), x(0)
 {}
 
 
 Row::Row()
-	: pos_(0), end_(0), height_(0), width_(0), y_offset_(0),
-	  ascent_of_text_(0), baseline_(0)
+	: pos_(0), end_(0), ascent_(0), descent_(0), width_(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: pos_(pos), end_(0), height_(0), width_(0), y_offset_(0),
-	  ascent_of_text_(0), baseline_(0)
+	: pos_(pos), end_(0), ascent_(0), descent_(0), width_(0)
 {}
 
 
@@ -62,65 +61,35 @@ pos_type Row::endpos() const
 }
 
 
-void Row::width(unsigned int w)
+void Row::width(int w)
 {
 	width_ = w;
 }
 
 
-unsigned int Row::width() const
+int Row::width() const
 {
 	return width_;
 }
 
 
-void Row::ascent_of_text(unsigned int a)
+void Row::ascent(int b)
 {
-	ascent_of_text_ = a;
+	ascent_ = b;
 }
 
 
-unsigned int Row::ascent_of_text() const
+int Row::ascent() const
 {
-	return ascent_of_text_;
-}
-
-
-void Row::top_of_text(unsigned int top)
-{
-	top_of_text_ = top;
-}
-
-
-unsigned int Row::top_of_text() const
-{
-	return top_of_text_;
-}
-
-
-void Row::baseline(unsigned int b)
-{
-	baseline_ = b;
-}
-
-
-unsigned int Row::baseline() const
-{
-	return baseline_;
-}
-
-
-bool Row::isParStart() const
-{
-	return !pos();
+	return ascent_;
 }
 
 
 void Row::dump(const char * s) const
 {
-	lyxerr << s << " pos: " << pos_ << " width: " << width_
-		<< " height: " << height_
-		<< " ascent_of_text: " << ascent_of_text_
-		<< " top_of_text: " << top_of_text_
-		<< " y_offset: " << y_offset_ << std::endl;
+	lyxerr << s << " pos: " << pos_ << " end: " << end_
+		<< " width: " << width_
+		<< " ascent: " << ascent_
+		<< " descent: " << descent_
+		<< std::endl;
 }

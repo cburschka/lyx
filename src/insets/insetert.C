@@ -79,10 +79,12 @@ auto_ptr<InsetBase> InsetERT::doClone() const
 
 
 InsetERT::InsetERT(BufferParams const & bp,
-		   Language const * l, string const & contents, CollapseStatus status)
+		   Language const *, string const & contents, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
-	LyXFont font(LyXFont::ALL_INHERIT, l);
+	//LyXFont font(LyXFont::ALL_INHERIT, lang);
+	LyXFont font;
+	getDrawFont(font);
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
@@ -259,7 +261,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 void InsetERT::setButtonLabel()
 {
-	setLabel(status() == Collapsed ? getNewLabel(_("P-ERT")) : _("P-ERT"));
+	setLabel(status() == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
 }
 
 

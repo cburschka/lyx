@@ -65,12 +65,6 @@ public:
 	/// return the owning main view
 	LyXView * owner() const;
 
-	/// return the visible top y
-	int top_y() const;
-
-	/// set the visible top y
-	void top_y(int);
-
 	/// resize event has happened
 	void resize();
 
@@ -82,14 +76,17 @@ public:
 	/// load a buffer into the view
 	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
 
-	/// fit the user cursor within the visible view
+	/** perform pending painting updates. \c fitcursor means first
+	 *  to do a fitcursor, and to force an update if screen
+	 *  position changes. \c forceupdate means to force an update
+	 *  in any case. 
+	 */
+	void update(bool fitcursor = true, bool forceupdate = true);
+	/// move the screen to fit the cursor. Only to be called with
+	/// good y coordinates (after a bv::metrics)
 	bool fitCursor();
-	/// perform pending painting updates
-	void update();
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
-	/// FIXME
-	void redoCurrentBuffer();
 
 	/// FIXME
 	bool available() const;
@@ -153,6 +150,11 @@ public:
 	/// clear the X selection
 	void unsetXSel();
 
+	/// access to offset
+	int offset_ref() const;
+	/// access to anchor
+	lyx::pit_type anchor_ref() const;
+	
 	/// access to full cursor
 	LCursor & cursor();
 	/// access to full cursor
@@ -168,6 +170,7 @@ public:
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
+
 
 private:
 	///

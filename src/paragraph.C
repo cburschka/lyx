@@ -69,10 +69,8 @@ ParagraphList::ParagraphList()
 
 
 Paragraph::Paragraph()
-	: y(0), height(0), begin_of_body_(0),
-	  pimpl_(new Paragraph::Pimpl(this))
+	: begin_of_body_(0), pimpl_(new Paragraph::Pimpl(this))
 {
-	//lyxerr << "sizeof Paragraph::Pimpl: " << sizeof(Paragraph::Pimpl) << endl;
 	itemdepth = 0;
 	params().clear();
 }
@@ -80,8 +78,8 @@ Paragraph::Paragraph()
 
 Paragraph::Paragraph(Paragraph const & par)
 	:	itemdepth(par.itemdepth), insetlist(par.insetlist),
-		rows(par.rows), y(par.y), height(par.height),
-		width(par.width), layout_(par.layout_),
+		dim_(par.dim_),
+		rows_(par.rows_), layout_(par.layout_),
 		text_(par.text_), begin_of_body_(par.begin_of_body_),
 	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
@@ -105,10 +103,8 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 		for (; it != end; ++it)
 			it->inset = it->inset->clone().release();
 
-		rows = par.rows;
-		y = par.y;
-		height = par.height;
-		width = par.width;
+		rows_ = par.rows_;
+		dim_ = par.dim_;
 		layout_ = par.layout();
 		text_ = par.text_;
 		begin_of_body_ = par.begin_of_body_;
@@ -407,8 +403,8 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 }
 
 
-LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
-				      LyXFont const & outerfont) const
+LyXFont const Paragraph::getLabelFont
+	(BufferParams const & bparams, LyXFont const & outerfont) const
 {
 	LyXFont tmpfont = layout()->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
@@ -418,8 +414,8 @@ LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
 }
 
 
-LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
-				       LyXFont const & outerfont) const
+LyXFont const Paragraph::getLayoutFont
+	(BufferParams const & bparams, LyXFont const & outerfont) const
 {
 	LyXFont tmpfont = layout()->font;
 	tmpfont.setLanguage(getParLanguage(bparams));
@@ -430,9 +426,8 @@ LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
 
 
 /// Returns the height of the highest font in range
-LyXFont_size
-Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
-			      LyXFont_size def_size) const
+LyXFont_size Paragraph::highestFontInRange
+	(pos_type startpos, pos_type endpos, LyXFont_size def_size) const
 {
 	if (pimpl_->fontlist.empty())
 		return def_size;
@@ -1792,34 +1787,34 @@ bool Paragraph::allowEmpty() const
 }
 
 
-RowList::iterator Paragraph::getRow(pos_type pos)
+Row & Paragraph::getRow(pos_type pos)
 {
-	RowList::iterator rit = rows.end();
-	RowList::iterator const begin = rows.begin();
+	RowList::iterator rit = rows_.end();
+	RowList::iterator const begin = rows_.begin();
 
 	for (--rit; rit != begin && rit->pos() > pos; --rit)
 		;
 
-	return rit;
+	return *rit;
 }
 
 
-RowList::const_iterator Paragraph::getRow(pos_type pos) const
+Row const & Paragraph::getRow(pos_type pos) const
 {
-	RowList::const_iterator rit = rows.end();
-	RowList::const_iterator const begin = rows.begin();
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
 
 	for (--rit; rit != begin && rit->pos() > pos; --rit)
 		;
 
-	return rit;
+	return *rit;
 }
 
 
-size_t Paragraph::row(pos_type pos) const
+size_t Paragraph::pos2row(pos_type pos) const
 {
-	RowList::const_iterator rit = rows.end();
-	RowList::const_iterator const begin = rows.begin();
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
 
 	for (--rit; rit != begin && rit->pos() > pos; --rit)
 		;
@@ -1861,3 +1856,23 @@ unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
 	}
 }
+
+
+void Paragraph::dump() const
+{
+	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
+	for (size_t i = 0; i != rows_.size(); ++i) {
+		lyxerr << "  row " << i << ":   ";
+		rows_[i].dump();
+	}
+}
+
+//void Paragraph::metrics(MetricsInfo & mi, Dimension & dim, LyXText & text)
+//{
+//}
+//
+//
+//void draw(PainterInfo & pi, int x, int y, LyXText & text) const
+//{
+//}
+

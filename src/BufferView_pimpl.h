@@ -41,6 +41,7 @@ class WorkArea;
 class LyXScreen;
 class FuncRequest;
 class FuncStatus;
+class ViewMetricsInfo;
 
 
 ///
@@ -53,14 +54,12 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	LyXScreen & screen() const;
 	///
 	void setBuffer(Buffer * buf);
-	/// Return true if the cursor was fitted.
-	bool fitCursor();
-	///
-	void redoCurrentBuffer();
 	///
 	void resizeCurrentBuffer();
+	// 
+	bool fitCursor();
 	///
-	void update();
+	void update(bool fitcursor = false, bool forceupdate = true);
 	///
 	void newFile(std::string const &, std::string const &, bool);
 	///
@@ -103,13 +102,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
-	///
-	int top_y() const;
-	///
-	void top_y(int y);
 private:
-	/// the y coordinate of the top of the screen
-	int top_y_;
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
 	/// add an error to the list
@@ -185,5 +178,14 @@ private:
 	} xsel_cache_;
 	///
 	LCursor cursor_;
+	///
+	///
+	lyx::pit_type anchor_ref_;
+	///
+	int offset_ref_;
+	///
+	ViewMetricsInfo metrics();
+
+
 };
 #endif // BUFFERVIEW_PIMPL_H

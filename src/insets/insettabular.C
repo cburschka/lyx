@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "coordcache.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -36,6 +37,7 @@
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
+#include "frontends/nullpainter.h"
 
 #include <sstream>
 #include <iostream>
@@ -251,7 +253,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	dim.asc = tabular.getAscentOfRow(0);
-	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
+	dim.des = tabular.getHeightOfTabular() - dim.asc;
 	dim.wid = tabular.getWidthOfTabular() + 2 * ADD_TO_TABULAR_WIDTH;
 	dim_ = dim;
 }
@@ -260,8 +262,13 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
-
 	BufferView * bv = pi.base.bv;
+
+	static NullPainter nop;
+	static PainterInfo nullpi(bv, nop);
+
+	resetPos(bv->cursor());
+
 	setPosCache(pi, x, y);
 
 	x += scroll();
@@ -271,45 +278,76 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	first_visible_cell = -1;
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int nx = x;
+		int const a = tabular.getAscentOfRow(i);
+		int const d = tabular.getDescentOfRow(i);
 		idx = tabular.getCellNumber(i, 0);
-		if (y + tabular.getDescentOfRow(i) <= 0
-		    && y - tabular.getAscentOfRow(i) < pi.pain.paperHeight()) {
-			y += tabular.getDescentOfRow(i)
-				+ tabular.getAscentOfRow(i + 1)
+		if (y + d <= 0 && y - a < pi.pain.paperHeight()) {
+			y += d	+ tabular.getAscentOfRow(i + 1)
 				+ tabular.getAdditionalHeight(i + 1);
 			continue;
 		}
 		for (int j = 0; j < tabular.columns(); ++j) {
-			if (nx > bv->workWidth())
-				break;
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
 			if (first_visible_cell < 0)
 				first_visible_cell = idx;
-			if (bv->cursor().selection())
-				drawCellSelection(pi, nx, y, i, j, idx);
 
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
-			cell(idx)->draw(pi, cx, y);
-			drawCellLines(pi.pain, nx, y, i, idx);
+			if (nx + tabular.getWidthOfColumn(idx) < 0
+			    || nx > bv->workWidth()
+			    || y - a > bv->workHeight()) {
+				cell(idx)->draw(nullpi, cx, y);
+				drawCellLines(nop, nx, y, i, idx);
+			} else {
+				cell(idx)->draw(pi, cx, y);
+				drawCellLines(pi.pain, nx, y, i, idx);
+			}
 			nx += tabular.getWidthOfColumn(idx);
 			++idx;
 		}
 
-// Would be nice, but for some completely unfathomable reason,
-// on a col resize to a new fixed width, even though the insettexts
-// are resized, the cell isn't, but drawing all cells in a tall table
-// has the desired effect somehow. Complete dark magic.
-#if 0
-		// avoiding drawing the rest of a long table is
-		// a pretty big speedup
-		if (y > bv->workHeight())
-			break;
-#endif
+		if (i + 1 < tabular.rows())
+			y += d + tabular.getAscentOfRow(i + 1) +
+				tabular.getAdditionalHeight(i + 1);
+	}
+}
 
-		y += tabular.getDescentOfRow(i) +
-			tabular.getAscentOfRow(i + 1) +
-			tabular.getAdditionalHeight(i + 1);
+
+void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	LCursor & cur = pi.base.bv->cursor();
+	if (!cur.selection())
+		return;
+	if (!ptr_cmp(&cur.inset(), this))
+		return;
+
+	x += scroll();
+	x += ADD_TO_TABULAR_WIDTH;
+
+	if (tablemode(cur)) {
+		int rs, re, cs, ce;
+		getSelection(cur, rs, re, cs, ce);
+		for (int j = 0; j < tabular.rows(); ++j) {
+			int const a = tabular.getAscentOfRow(j);
+			int const h = a + tabular.getDescentOfRow(j);
+			int xx = x;
+			y += tabular.getAdditionalHeight(j);
+			for (int i = 0; i < tabular.columns(); ++i) {
+				if (tabular.isPartOfMultiColumn(j, i))
+					continue;
+				int const cell = tabular.getCellNumber(j, i);
+				int const w = tabular.getWidthOfColumn(cell);
+				if (i >= cs && i <= ce && j >= rs && j <= re)
+					pi.pain.fillRectangle(xx, y - a, w, h,
+							      LColor::selection);
+				xx += w;
+				
+			}
+			y += h;
+		}
+		
+	} else {
+		cur.text()->drawSelection(pi, x, y);
 	}
 }
 
@@ -346,24 +384,6 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 		  y +  tabular.getDescentOfRow(row),
 		  on_off ? LColor::tabularonoffline : LColor::tabularline,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
-}
-
-
-void InsetTabular::drawCellSelection(PainterInfo & pi, int x, int y,
-				     int row, int column, int cell) const
-{
-	LCursor & cur = pi.base.bv->cursor();
-	BOOST_ASSERT(cur.selection());
-	if (tablemode(cur)) {
-		int rs, re, cs, ce;
-		getSelection(cur, rs, re, cs, ce);
-		if (column >= cs && column <= ce && row >= rs && row <= re) {
-			int w = tabular.getWidthOfColumn(cell);
-			int h = tabular.getAscentOfRow(row) + tabular.getDescentOfRow(row)-1;
-			pi.pain.fillRectangle(x, y - tabular.getAscentOfRow(row) + 1,
-						 w, h, LColor::selection);
-		}
-	}
 }
 
 
@@ -446,7 +466,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				setPos(cur, cmd.x, cmd.y);
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
-			}
+			} else
+				cur.undispatched();
 		}
 		break;
 
@@ -513,6 +534,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 			cur.undispatched();
+			resetPos(cur);
 		}
 		break;
 
@@ -530,45 +552,46 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 			cur.undispatched();
+			resetPos(cur);
 		}
 		break;
 
-	case LFUN_NEXT: {
-		//if (hasSelection())
-		//	cur.selection() = false;
-		int const col = tabular.column_of_cell(cur.idx());
-		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
-		if (t < yo() + tabular.getHeightOfTabular()) {
-			cur.bv().scrollDocView(t);
-			cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
-		} else {
-			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
-		}
-		cur.pit() = 0;
-		cur.pos() = 0;
-		resetPos(cur);
-		break;
-	}
-
-	case LFUN_PRIOR: {
-		//if (hasSelection())
-		//	cur.selection() = false;
-		int const col = tabular.column_of_cell(cur.idx());
-		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
-		if (yo() < 0) {
-			cur.bv().scrollDocView(t);
-			if (yo() > 0)
-				cur.idx() = col;
-			else
-				cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
-		} else {
-			cur.idx() = col;
-		}
-		cur.pit() = cur.lastpit();
-		cur.pos() = cur.lastpos();
-		resetPos(cur);
-		break;
-	}
+//	case LFUN_NEXT: {
+//		//if (hasSelection())
+//		//	cur.selection() = false;
+//		int const col = tabular.column_of_cell(cur.idx());
+//		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
+//		if (t < yo() + tabular.getHeightOfTabular()) {
+//			cur.bv().scrollDocView(t);
+//			cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
+//		} else {
+//			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
+//		}
+//		cur.par() = 0;
+//		cur.pos() = 0;
+//		resetPos(cur);
+//		break;
+//	}
+//
+//	case LFUN_PRIOR: {
+//		//if (hasSelection())
+//		//	cur.selection() = false;
+//		int const col = tabular.column_of_cell(cur.idx());
+//		int const t =	cur.bv().top_y() + cur.bv().painter().paperHeight();
+//		if (yo() < 0) {
+//			cur.bv().scrollDocView(t);
+//			if (yo() > 0)
+//				cur.idx() = col;
+//			else
+//				cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
+//		} else {
+//			cur.idx() = col;
+//		}
+//		cur.par() = cur.lastpar();
+//		cur.pos() = cur.lastpos();
+//		resetPos(cur);
+//		break;
+//	}
 
 	case LFUN_LAYOUT_TABULAR:
 		InsetTabularMailer(*this).showDialog(&cur.bv());
@@ -955,28 +978,86 @@ shared_ptr<InsetText> InsetTabular::cell(int idx)
 }
 
 
-void InsetTabular::getCursorPos(LCursor const & cur, int & x, int & y) const
+void InsetTabular::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 {
-	cell(cur.idx())->getCursorPos(cur, x, y);
+	cell(sl.idx())->getCursorPos(sl, x, y);
+
+	// y offset	correction
+	int const row = tabular.row_of_cell(sl.idx());
+	for (int i = 0;	i <= row; ++i) {
+		if (i != 0) {
+			y += tabular.getAscentOfRow(i);
+			y += tabular.getAdditionalHeight(i);
+		}
+		if (i != row)
+			y += tabular.getDescentOfRow(i);
+	}
+
+	// x offset	correction
+	int const col = tabular.column_of_cell(sl.idx());
+	int idx = tabular.getCellNumber(row, 0);
+	for (int j = 0; j < col; ++j) {
+		if (tabular.isPartOfMultiColumn(row, j))
+			continue;
+		x += tabular.getWidthOfColumn(idx);
+		++idx;
+	}
+	x += tabular.getBeginningOfTextInCell(idx);
+	x += ADD_TO_TABULAR_WIDTH;
+	x += scroll();
 }
+
+
+namespace  {
+	
+
+// Manhattan distance to nearest corner
+int dist(InsetOld const & inset, int x, int y)
+{
+	int xx = 0;
+	int yy = 0;
+	Point o = theCoords.insets_.xy(&inset);
+	int const xo = o.x_;
+	int const yo = o.y_;
+
+	if (x < xo)
+		xx = xo - x;
+	else if (x > xo + inset.width())
+		xx = x - xo - inset.width();
+
+	if (y < yo - inset.ascent())
+		yy = yo - inset.ascent() - y;
+	else if (y > yo + inset.descent())
+		yy = y - yo - inset.descent();
+
+	lyxerr << " xo_=" << xo << "  yo_=" << yo
+	       << " width_=" << inset.width() << " ascent=" << inset.ascent()
+	       << " descent=" << inset.descent()
+	       << " dist=" << xx + yy << endl;
+	return xx + yy;
+}
+
+
+} //namespace anon
 
 
 InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 {
 	lyxerr << "# InsetTabular::setPos()  x=" << x << " y=" << y << endl;
 	int idx_min = 0;
-	int dist_min = 1000000;
+	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
-		int d = getText(i)->dist(x, y);
-		if (d < dist_min) {
-			dist_min = d;
-			idx_min = i;
+		if (theCoords.insets_.has(tabular.getCellInset(i).get())) {
+			int d = dist(*tabular.getCellInset(i), x, y);
+			if (d < dist_min) {
+				dist_min = d;
+				idx_min = i;
+			}
 		}
 	}
 	cur.idx() = idx_min;
-	InsetBase * inset = cell(cur.idx())->text_.editXY(cur, x, y);
 	//lyxerr << "# InsetTabular::setPos()\n" << cur << endl;
-	return inset;
+	return cell(cur.idx())->text_.editXY(cur, x, y);
 }
 
 
@@ -996,27 +1077,48 @@ int InsetTabular::getCellXPos(int const cell) const
 
 void InsetTabular::resetPos(LCursor & cur) const
 {
+	
+	
 	BufferView & bv = cur.bv();
-	int const actcol = tabular.column_of_cell(cur.idx());
-	int const offset = ADD_TO_TABULAR_WIDTH + 2;
-	int const new_x = getCellXPos(cur.idx()) + offset;
-	int const old_x = cursorx_;
-	int const col_width = tabular.getWidthOfColumn(cur.idx());
-	cursorx_ = new_x;
+	
+//	int const actcol = tabular.column_of_cell(cur.idx());
+//	int const offset = ADD_TO_TABULAR_WIDTH + 2;
+//	int const new_x = getCellXPos(cur.idx()) + offset;
+//	int const old_x = cursorx_;
+//	int const col_width = tabular.getWidthOfColumn(cur.idx());
+//	cursorx_ = new_x;
 //    cursor.x(getCellXPos(cur.idx()) + offset);
-	if (actcol < tabular.columns() - 1 && scroll(false) &&
-		tabular.getWidthOfTabular() < bv.workWidth()-20)
-	{
-		scroll(bv, 0.0F);
-	} else if (cursorx_ - offset > 20 &&
-		   cursorx_ - offset + col_width > bv.workWidth() - 20) {
-		scroll(bv, - col_width - 20);
-	} else if (cursorx_ - offset < 20) {
-		scroll(bv, 20 - cursorx_ + offset);
-	} else if (scroll() && xo() > 20 &&
-		   xo() + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
-		scroll(bv, old_x - cursorx_);
+//	if (actcol < tabular.columns() - 1 && scroll(false) &&
+//		tabular.getWidthOfTabular() < bv.workWidth()-20)
+//	{
+//		scroll(bv, 0.0F);
+//	} else if (cursorx_ - offset > 20 &&
+//		   cursorx_ - offset + col_width > bv.workWidth() - 20) {
+//		scroll(bv, - col_width - 20);
+//	} else if (cursorx_ - offset < 20) {
+//		scroll(bv, 20 - cursorx_ + offset);
+//	} else if (scroll() && xo() > 20 &&
+//		   xo() + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
+//		scroll(bv, old_x - cursorx_);
+//	}
+
+	if (&cur.inset() != this) {
+		scroll(bv, 0);
+	} else {
+		int const X1 = 0;
+		int const X2 = bv.workWidth();
+		int const offset = ADD_TO_TABULAR_WIDTH + 2;
+		int const col_width = tabular.getWidthOfColumn(cur.idx());
+		int const x1 = getCellXPos(cur.idx()) + offset + scroll();
+		int const x2 = x1 + col_width;
+
+		if (x1 < X1 + 20)
+			scroll(bv, X1 + 20 - x1);
+		else if (x2 > X2 - 20)
+			scroll(bv, X2 - 20 - x2);
 	}
+
+	cur.needsUpdate();
 
 	InsetTabularMailer(*this).updateDialog(&bv);
 }

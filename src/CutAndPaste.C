@@ -466,7 +466,6 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		if (doclear)
 			text->paragraphs()[begpit].stripLeadingSpaces();
 
-		text->redoParagraphs(begpit, begpit + 1);
 		// cutSelection can invalidate the cursor so we need to set
 		// it anew. (Lgb)
 		// we prefer the end for when tracking changes
@@ -563,8 +562,6 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 								sel_index, el);
 		bufferErrors(cur.buffer(), el);
 		cur.bv().showErrorList(_("Paste"));
-
-		text->redoParagraphs(cur.pit(), endpit);
 
 		cur.clearSelection();
 		cur.resetAnchor();

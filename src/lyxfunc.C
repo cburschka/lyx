@@ -601,6 +601,7 @@ void loadTextclass(string const & name)
 
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
+	BOOST_ASSERT(view());
 	string const argument = cmd.argument;
 	kb_action const action = cmd.action;
 
@@ -1450,7 +1451,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				update |= view()->cursor().result().update();
 			else
 				update |= view()->dispatch(cmd);
-
 			break;
 		}
 		}
@@ -1459,14 +1459,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
-			if (update)
-				view()->update();
+			view()->update(true, update);
 
-			// fitCursor() needs valid inset position. The previous call to
-			// update() makes sure we have such even for freshly created
-			// insets.
-			if (view()->fitCursor())
-				view()->update();
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (getStatus(cmd).enabled()
 					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)

@@ -1,3 +1,58 @@
+	
+2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView.[Ch]: remove top_y, introduce anchor_ref,
+	offset_ref accessors
+
+	* BufferView_Pimpl.[Ch]: introduce anchor_ref_, offser_ref_, remove
+	top_y_, merge fitcursor with update
+	(updateScrollbar, scrollDocView, fitCursor, center, update): new
+	coord scheme
+	(metrics): introduce
+	(workAreaDispatch): adapt to new coord scheme
+	(redoCurrentBuffer): remove
+
+	* FontIterator.[Ch]: Use Paragraph & instead of pit_type 
+
+	* bufferview_funcs.[Ch]: introduce coordOffset, getPos, status,
+	CurStatus enum.
+  	
+	* coordcache.[Ch]: add paragraph cache and helpers
+
+	* CursorSlice.[Ch]: rename CursorSlice::par to CursorSlice::pit,
+	adjust everywhere
+
+	* cursor.[Ch] (getDim): fix, (getPos) use coordOffset
+	(targetX, setTargetX): introduce
+
+	* lyxrow.[Ch]: simplify, remove ascent_of_text, y_offset, rename
+	baseline -> ascent, as the rest of lyx
+
+	* lyxtext.h: remove redoParagraphs, updateParPositions,
+	fullRebreak, redoParagraphInternal. move dist to anon namespace in
+	tabular.C (doesn't belong here), remove xo_, yo_ cache, makes it
+	have ascent/descent (ascent is ascent of first par)
+
+	* metricsinfo.h: add ViewMetricsInfo struct to use in the metrics
+	step of BufferView
+
+	* paragraph.[Ch]: unify dimension handling with the rest of lyx
+
+	* paragraph_funcs.[Ch] (getParsInRange, outerPar): remove.
+
+	* pariterator.C: fix infinite loop introduced in par->pit renaming
+
+	* rowPainter.[Ch]: big rewrite: separate drawSelection from draw
+	in insets and LyXText, draw two off-screen paragraphs using
+	NullPainter, and adapt to new coord scheme
+
+	* text.C: 
+	* text2.C: 
+	* text3.C: adapt lfun handlers to the new coord scheme, which
+	means: there's only guaranteed coord information for onscreen pars
+	plus one above and one below. This implies that one can do search
+	from y coordinates in the range [-1,workHeight]
+
 2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* rename a lot of InsetOld to InsetBase
@@ -40,7 +95,6 @@
 	* text2.C:
 	* text3.C:
 	* undo.C: par->pit renaming
-
 
 2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

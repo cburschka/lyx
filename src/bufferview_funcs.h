@@ -17,6 +17,9 @@
 #include <string>
 
 class LyXFont;
+class Point;
+class DocIterator;
+class BufferView;
 
 
 namespace bv_funcs {
@@ -31,6 +34,21 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  *  frontends.
  */
 std::string const freefont2string();
+
+Point getPos(DocIterator const & dit);
+
+enum CurStatus {
+	CUR_INSIDE,
+	CUR_ABOVE,
+	CUR_BELOW
+};
+
+
+CurStatus status(BufferView const * bv, DocIterator const & dit);
+
+
+Point coordOffset(DocIterator const & dit);
+
 
 } // namespace bv_funcs
 

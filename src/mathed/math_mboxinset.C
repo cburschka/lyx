@@ -56,7 +56,7 @@ void MathMBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathMBoxInset::draw(PainterInfo & pi, int x, int y) const
 {
-	text_.draw(pi, x + 1, y - text_.ascent());
+	text_.draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
@@ -102,8 +102,15 @@ LyXText * MathMBoxInset::getText(int) const
 }
 
 
-void MathMBoxInset::getCursorPos(LCursor const & cur, int & x, int & y) const
+void MathMBoxInset::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 {
-	x = text_.cursorX(cur.top());
-	y = text_.cursorY(cur.top());
+	x = text_.cursorX(sl);
+	y = text_.cursorY(sl);
 }
+
+
+void MathMBoxInset::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	text_.drawSelection(pi, x, y);
+}
+

@@ -19,6 +19,7 @@
 #include "encoding.h"
 #include "gettext.h"
 #include "language.h"
+#include "lyxrow.h"
 #include "lyxtext.h"
 #include "outputparams.h"
 #include "paragraph_pimpl.h"
@@ -95,6 +96,9 @@ void breakParagraph(BufferParams const & bparams,
 		pars.insert(pars.begin() + par_offset + 1, Paragraph());
 
 	Paragraph & par = pars[par_offset];
+
+	// we will invalidate the row cache
+	par.rows().clear();
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
@@ -316,45 +320,6 @@ LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars)
 }
 
 
-pit_type outerPar(Buffer const & buf, InsetBase const * inset)
-{
-	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
-	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
-	for ( ; pit != end; ++pit) {
-		LyXText * text;
-		// the second '=' below is intentional
-		for (int i = 0; (text = inset->getText(i)); ++i)
-			if (&text->paragraphs() == &pit.plist())
-				return pit.outerPar();
-
-		InsetList::const_iterator ii = pit->insetlist.begin();
-		InsetList::const_iterator iend = pit->insetlist.end();
-		for ( ; ii != iend; ++ii)
-			if (ii->inset == inset)
-				return pit.outerPar();
-	}
-	lyxerr << "outerPar: should not happen" << endl;
-	BOOST_ASSERT(false);
-	return buf.paragraphs().size(); // shut up compiler
-}
-
-
-/// return the range of pars [beg, end[ owning the range of y [ystart, yend]
-void getParsInRange(ParagraphList & pars, int ystart, int yend,
-	pit_type & beg, pit_type & end)
-{
-	BOOST_ASSERT(!pars.empty());
-	pit_type const endpar = pars.size();
-	pit_type const begpar = 0;
-
-	for (beg = endpar - 1; beg != begpar && pars[beg].y > ystart; --beg)
-		;
-
-	for (end = beg ; end != endpar && pars[end].y <= yend; ++end)
-		;
-}
-
-
 /// return the number of InsetOptArg in a paragraph
 int numberOfOptArgs(Paragraph const & par)
 {
@@ -368,5 +333,3 @@ int numberOfOptArgs(Paragraph const & par)
 	}
 	return num;
 }
-
-

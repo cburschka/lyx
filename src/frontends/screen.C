@@ -121,12 +121,12 @@ SplashScreen::SplashScreen()
 
 
 LyXScreen::LyXScreen()
-	: cursor_visible_(false), greyed_out_(true)
+	: greyed_out_(true), cursor_visible_(false)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
 		SplashScreen const & splash = SplashScreen::get();
-		splash.connect(boost::bind(&LyXScreen::greyOut, this));
+		splash.connect(boost::bind(&LyXScreen::checkAndGreyOut, this));
 		splash.startLoading();
 	}
 }
@@ -134,6 +134,13 @@ LyXScreen::LyXScreen()
 
 LyXScreen::~LyXScreen()
 {
+}
+
+
+void LyXScreen::checkAndGreyOut()
+{
+	if (greyed_out_)
+		greyOut();
 }
 
 
@@ -167,13 +174,13 @@ void LyXScreen::showCursor(BufferView & bv)
 	if (realfont.language() == latex_language)
 		shape = BAR_SHAPE;
 
-	int ascent = font_metrics::maxAscent(realfont);
-	int descent = font_metrics::maxDescent(realfont);
+	int ascent, descent;
+	bv.cursor().getDim(ascent, descent);
 	int h = ascent + descent;
 	int x = 0;
 	int y = 0;
 	bv.cursor().getPos(x, y);
-	y -= ascent + bv.top_y();
+	y -= ascent;
 	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
 	// if it doesn't fit entirely on the screen, don't try to show it
@@ -204,84 +211,22 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
-bool LyXScreen::fitCursor(BufferView * bv)
+void LyXScreen::redraw(BufferView & bv, ViewMetricsInfo const & vi)
 {
-	int const top_y = bv->top_y();
-	int const h = workarea().workHeight();
-	int newtop = top_y;
-	int x, y, asc, desc;
-
-	bv->cursor().getPos(x, y);
-	bv->cursor().getDim(asc, desc);
-	lyxerr[Debug::DEBUG] << "LyXScreen::fitCursor: x: " << x
-			     << " y: " << y
-			     << "  top_y: " << top_y
-			     << endl;
-
-	bool const big_row = h / 4 < asc + desc && asc + desc < h;
-
-	if (y + desc - top_y >= h) {
-		if (big_row)
-			newtop = y + desc - h;
-		else
-			newtop = y - h / 2;
-
-	} else if (top_y > max(y - asc, 0)) {
-		if (big_row)
-			newtop = y - asc;
-		else {
-			newtop = y - h / 2;
-			newtop = min(newtop, top_y);
-		}
-	}
-
-	newtop = max(newtop, 0);
-	if (newtop == top_y)
-		return false;
-
-	bv->top_y(newtop);
-	return true;
-}
-
-
-void LyXScreen::redraw(BufferView & bv)
-{
-	greyed_out_ = !bv.text();
-
-	if (greyed_out_) {
-		greyOut();
-		return;
-	}
-
+	greyed_out_ = false;
 	workarea().getPainter().start();
-
 	hideCursor();
-
-	int const y = paintText(bv);
-
-	// maybe we have to clear the screen at the bottom
-	int const y2 = workarea().workHeight();
-	if (y < y2 && bv.text()->isMainText()) {
-		workarea().getPainter().fillRectangle(0, y,
-			workarea().workWidth(), y2 - y,
-			LColor::bottomarea);
-	}
-
+	paintText(bv, vi);
 	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
-
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
-
 	workarea().getPainter().end();
-
 	showCursor(bv);
 }
 
 
 void LyXScreen::greyOut()
 {
-	if (!greyed_out_)
-		return;
-
+	greyed_out_ = true;
 	workarea().getPainter().start();
 
 	workarea().getPainter().fillRectangle(0, 0,

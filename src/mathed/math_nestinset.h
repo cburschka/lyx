@@ -37,7 +37,7 @@ public:
 	/// identifies NestInsets
 	MathNestInset const * asNestInset() const { return this; }
 	/// get cursor position
-	void getCursorPos(LCursor const & cur, int & x, int & y) const;
+	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
 	///
 	void edit(LCursor & cur, bool left);
 	///

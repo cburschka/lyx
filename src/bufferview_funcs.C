@@ -20,6 +20,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "coordcache.h"
 #include "gettext.h"
 #include "language.h"
 #include "LColor.h"
@@ -144,5 +145,65 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 	}
 	return (nset > 0);
 }
+
+
+// the next two should probably go elsewhere
+// this give the position relative to (0, baseline) of outermost
+// paragraph
+Point coordOffset(DocIterator const & dit) 
+{
+	int x = 0;
+	int y = 0;
+	
+	// Contribution of nested insets
+	for (size_t i = 1; i != dit.size(); ++i) {
+		CursorSlice const & sl = dit[i];
+		int xx = 0, yy = 0;
+		sl.inset().getCursorPos(sl, xx, yy);
+		x += xx;
+		y += yy;
+		//lyxerr << "LCursor::getPos, i: " << i << " x: " << xx << " y: " << y << endl;
+	}
+
+	// Add contribution of initial rows of outermost paragraph
+	CursorSlice const & sl = dit[0];
+	Paragraph const & par = sl.text()->getPar(sl.pit());
+	y -= par.rows()[0].ascent();
+	for (size_t rit = 0, rend = par.pos2row(sl.pos()); rit != rend; ++rit)
+		y += par.rows()[rit].height();
+	y += par.rows()[par.pos2row(sl.pos())].ascent();
+	x += dit.bottom().text()->cursorX(dit.bottom());
+	return Point(x,y);
+}
+
+
+Point getPos(DocIterator const & dit)
+{
+	CursorSlice const & bot = dit.bottom();
+	CoordCache::InnerParPosCache & cache = theCoords.pars_[bot.text()];
+	CoordCache::InnerParPosCache::iterator it = cache.find(bot.pit());
+	if (it == cache.end()) {
+		//lyxerr << "cursor out of view" << std::endl;
+		return Point(-1,-1);
+	}
+	Point p = coordOffset(dit); // offset from outer paragraph
+	p.y_ += it->second.y_;
+	return p;
+}
+
+
+// this could be used elsewhere as well?
+CurStatus status(BufferView const * bv, DocIterator const & dit)
+{
+	CoordCache::InnerParPosCache & cache = theCoords.pars_[dit.bottom().text()];
+	
+	if (cache.find(dit.bottom().pit()) != cache.end())
+		return CUR_INSIDE;
+	else if (dit.bottom().pit() < bv->anchor_ref())
+		return CUR_ABOVE;
+	else
+		return CUR_BELOW;
+}
+
 
 } // namespace bv_funcs

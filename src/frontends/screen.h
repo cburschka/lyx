@@ -13,10 +13,13 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
+
 class LyXText;
 class CursorSlice;
 class WorkArea;
 class BufferView;
+class ViewMetricsInfo;
+
 
 /**
  * LyXScreen - document rendering management
@@ -37,16 +40,10 @@ public:
 	virtual ~LyXScreen();
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw(BufferView & bv);
+	virtual void redraw(BufferView & bv, ViewMetricsInfo const & vi);
 
-	/**
-	 * fitCursor - fit the cursor onto the work area
-	 * @param bv the bufferview
-	 * @return true if a change was necessary
-	 *
-	 * Scrolls the screen so that the cursor is visible
-	 */
-	virtual bool fitCursor(BufferView *);
+	/// grey out (no buffer)
+	void greyOut();
 
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
@@ -81,14 +78,14 @@ protected:
 	virtual void removeCursor() = 0;
 
 private:
-	/// grey out (no buffer)
-	void greyOut();
+	///
+	void checkAndGreyOut();
+
+	///
+	bool greyed_out_;
 
 	/// is the cursor currently displayed
 	bool cursor_visible_;
-
-	/// is the screen displaying text or the splash screen?
-	bool greyed_out_;
 };
 
 #endif // SCREEN_H

@@ -60,6 +60,8 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	void drawSelection(PainterInfo & pi, int x, int y) const;
+	///
 	std::string const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code) const { return true; }
@@ -87,8 +89,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	Code lyxCode() const { return InsetBase::TABULAR_CODE; }
-	/// get the absolute screen x,y of the cursor
-	void getCursorPos(LCursor const & cur, int & x, int & y) const;
+	/// get offset of this cursor slice relative to our upper left corner
+	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
 	///
 	bool tabularFeatures(LCursor & cur, std::string const & what);
 	///
@@ -147,11 +149,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
-	void drawCellLines(Painter &, int x, int baseline,
-		int row, int cell) const;
-	///
-	void drawCellSelection(PainterInfo &, int x, int baseline,
-		int row, int column, int cell) const;
+	void drawCellLines(Painter &, int x, int y, int row, int cell) const;
 	///
 	InsetBase * setPos(LCursor & cur, int x, int y) const;
 

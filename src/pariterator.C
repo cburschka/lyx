@@ -84,7 +84,7 @@ Paragraph & ParIterator::operator*() const
 
 pit_type ParIterator::pit() const
 {
-	return pit();
+	return DocIterator::pit();
 }
 
 

@@ -51,6 +51,10 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	void drawSelection(PainterInfo & pi, int x, int y) const;
+	/// return x,y of given position relative to the inset's baseline
+	void getCursorPos(CursorSlice const & sl, int & x, int & y) const;
+	///
 	bool hitButton(FuncRequest &) const;
 	///
 	std::string const getNewLabel(std::string const & l) const;
@@ -91,9 +95,7 @@ protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
-	void dimension_collapsed(Dimension &) const;
-	///
-	void draw_collapsed(PainterInfo & pi, int x, int y) const;
+	Dimension dimensionCollapsed() const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 	///

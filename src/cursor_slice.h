@@ -64,9 +64,9 @@ public:
 	idx_type & idx() { return idx_; }
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
-	/// return the paragraph this cursor is in
+	/// return the offset of the paragraph this cursor is in
 	pit_type pit() const { return pit_; }
-	/// set the paragraph this cursor is in
+	/// set the offset of the paragraph this cursor is in
 	pit_type & pit() { return pit_; }
 	/// increments the paragraph this cursor is in
 	void incrementPar();

@@ -18,12 +18,12 @@
 #include "paragraph.h"
 
 
-FontIterator::FontIterator(LyXText const & text, lyx::pit_type pit,
+FontIterator::FontIterator(LyXText const & text, Paragraph const & par,
 			   lyx::pos_type pos)
-	: text_(text), pit_(pit), pos_(pos),
-	  font_(text.getFont(text.getPar(pit), pos)),
-	  endspan_(text.getPar(pit).getEndPosOfFontSpan(pos)),
-	  bodypos_(text.getPar(pit).beginOfBody())
+	: text_(text), par_(par), pos_(pos),
+	  font_(text.getFont(par, pos)),
+	  endspan_(par.getEndPosOfFontSpan(pos)),
+	  bodypos_(par.beginOfBody())
 {}
 
 
@@ -43,8 +43,8 @@ FontIterator & FontIterator::operator++()
 {
 	++pos_;
 	if (pos_ > endspan_ || pos_ == bodypos_) {
-		font_ = text_.getFont(text_.getPar(pit_), pos_);
-		endspan_ = text_.getPar(pit_).getEndPosOfFontSpan(pos_);
+		font_ = text_.getFont(par_, pos_);
+		endspan_ = par_.getEndPosOfFontSpan(pos_);
 	}
 	return *this;
 }

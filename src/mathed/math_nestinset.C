@@ -34,6 +34,7 @@
 #include "FuncStatus.h"
 #include "LColor.h"
 #include "bufferview_funcs.h"
+#include "coordcache.h"
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
@@ -97,22 +98,51 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
-void MathNestInset::getCursorPos(LCursor const & cur, int & x, int & y) const
+void MathNestInset::getCursorPos(CursorSlice const & sl,
+	int & x, int & y) const
 {
-	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
-	MathArray const & ar = cur.cell();
-	x = ar.xo() + ar.pos2x(cur.pos());
-	y = ar.yo() + cur.bv().top_y();
+// FIXME: This is a hack. Ideally, the coord cache should not store
+// absolute positions, but relative ones. This would mean to call
+// setXY() not in MathArray::draw(), but in the parent insets' draw()
+// with the correctly adjusted x,y values. But this means that we'd have
+// to touch all (math)inset's draw() methods. Right now, we'll store
+// absolute value, and make them here relative, only to make them
+// absolute again when actually drawing the cursor. What a mess.
+	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
+	MathArray const & ar = sl.cell();
+	if (!theCoords.arrays_.has(&ar)) {
+		// this can (semi-)legally happen if we jsut created this cell
+		// and it never has been drawn before. So don't ASSERT.
+		//lyxerr << "no cached data for array " << &ar << endl;
+		x = 0;
+		y = 0;
+		return;
+	}
+	Point const pt = theCoords.arrays_.xy(&ar);
+	if (!theCoords.insets_.has(this)) {
+		// same as above
+		//lyxerr << "no cached data for inset " << this << endl;
+		x = 0;
+		y = 0;
+		return;
+	}
+	Point const pt2 = theCoords.insets_.xy(this);
+	//lyxerr << "retrieving position cache for MathArray "
+	//	<< pt.x_ << ' ' << pt.y_ << std::endl;
+	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());
+	y = pt.y_ - pt2.y_;
+//	lyxerr << "pt.y_ : " << pt.y_ << " pt2_.y_ : " << pt2.y_
+//		<< " asc: " << ascent() << "  des: " << descent()
+//		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
-	if (cur.cell().empty())
+	if (ar.empty())
 		x += 2;
 }
-
 
 void MathNestInset::metrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;
-	for (idx_type i = 0; i < nargs(); ++i)
+	for (idx_type i = 0, n = nargs(); i != n; ++i)
 		cell(i).metrics(m);
 }
 
@@ -179,7 +209,7 @@ void MathNestInset::dump() const
 	os << "---------------------------------------------\n";
 	write(os);
 	os << "\n";
-	for (idx_type i = 0; i < nargs(); ++i)
+	for (idx_type i = 0, n = nargs(); i != n; ++i)
 		os << cell(i) << "\n";
 	os << "---------------------------------------------\n";
 }
@@ -207,6 +237,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
 		return;
+
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
 	//lyxerr << "MathNestInset::drawing selection: "
@@ -936,7 +967,8 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 
 			bvcur.setCursor(cur);
 			bvcur.selection() = true;
-		}
+		} else
+			cur.undispatched();
 	}
 }
 

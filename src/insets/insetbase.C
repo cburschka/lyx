@@ -238,7 +238,7 @@ void InsetBase::markErased()
 {}
 
 
-void InsetBase::getCursorPos(LCursor const &, int & x, int & y) const
+void InsetBase::getCursorPos(CursorSlice const &, int & x, int & y) const
 {
 	lyxerr << "InsetBase::getCursorPos called directly" << std::endl;
 	x = 100;

@@ -1,9 +1,12 @@
 #ifndef COORDCACHE_H
 #define COORDCACHE_H
 
-#include "mathed/math_data.h"
-#include "insets/insetbase.h"
-#include "lyxtext.h"
+class InsetBase;
+class LyXText;
+class MathArray;
+class Paragraph;
+
+#include "support/types.h"
 
 #include <boost/assert.hpp>
 
@@ -15,6 +18,7 @@
 // to the right, y increases downwords.
 
 void lyxbreaker(void const * data, const char * hint, int size);
+void lyxaborter(int x, int y);
 
 struct Point {
 	Point()
@@ -79,10 +83,8 @@ private:
 
 	void check(T const * thing, char const * hint) const
 	{
-		if (!has(thing)) {
+		if (!has(thing))
 			lyxbreaker(thing, hint, data_.size());
-			BOOST_ASSERT(false);
-		}
 	}
 
 	typedef std::map<T const *, Point> cache_type;
@@ -93,9 +95,17 @@ private:
 class CoordCache {
 public:
 	void clear();
+	Point get(LyXText const *, lyx::pit_type);
 
 	CoordCacheBase<MathArray> arrays_;
+	
+	// all insets
 	CoordCacheBase<InsetBase> insets_;
+
+	// paragraph grouped by owning text
+	typedef std::map<lyx::pit_type, Point> InnerParPosCache;
+	typedef std::map<LyXText const *, InnerParPosCache> ParPosCache;
+	ParPosCache pars_;
 };
 
 extern CoordCache theCoords;

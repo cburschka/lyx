@@ -102,7 +102,7 @@ void InsetText::init()
 {
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, this));
-	old_par = -1;
+	old_pit = -1;
 }
 
 
@@ -160,7 +160,7 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 	}
 
 	// sanity check
-	// ensure we have at least one par.
+	// ensure we have at least one paragraph.
 	if (paragraphs().empty())
 		paragraphs().push_back(oldpar);
 }
@@ -170,16 +170,16 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 	setViewCache(mi.base.bv);
-	text_.metrics(mi, dim);
-	dim_ = dim;
 	font_ = mi.base.font;
 	text_.font_ = mi.base.font;
+	text_.metrics(mi, dim);
+	dim_ = dim;
 }
 
 
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(!text_.paragraphs().begin()->rows.empty());
+	BOOST_ASSERT(!text_.paragraphs().front().rows().empty());
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
@@ -187,13 +187,10 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	bv->hideCursor();
 
 	x += scroll();
-	y -= text_.ascent();
+	//y -= text_.ascent();
 
-	// repaint the background if needed
-	if (backgroundColor() != LColor::background)
-		clearInset(pi.pain, x, y);
 
-	text_.draw(pi, x, y + bv->top_y());
+	text_.draw(pi, x, y);
 
 	if (drawFrame_)
 		drawFrame(pi.pain, x, y);
@@ -202,15 +199,19 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
+	// repaint the background if needed
+	if (backgroundColor() != LColor::background)
+		clearInset(pi.pain, x, y);
 	text_.drawSelection(pi, x, y);
 }
 
 
 void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
-	int const w = text_.width();
+	int const w = max(1, text_.width());
 	int const h = text_.height();
-	pain.rectangle(x, y, w, h, frameColor());
+	int const a = text_.ascent();
+	pain.rectangle(x, y - a, w, h, frameColor());
 }
 
 
@@ -218,14 +219,15 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 {
 	int const w = text_.width();
 	int const h = text_.height();
-	pain.fillRectangle(x, y, w, h, backgroundColor());
+	int const a = text_.ascent();
+	pain.fillRectangle(x, y - a, w, h, backgroundColor());
 }
 
 
 void InsetText::updateLocal(LCursor & cur)
 {
 	if (!autoBreakRows_ && paragraphs().size() > 1) {
-		// collapseParagraphs
+		// collapse paragraphs
 		while (paragraphs().size() > 1) {
 			ParagraphList::iterator const first = paragraphs().begin();
 			ParagraphList::iterator second = first;
@@ -250,9 +252,9 @@ void InsetText::updateLocal(LCursor & cur)
 	lv->view_state_changed();
 	lv->updateMenubar();
 	lv->updateToolbars();
-	if (old_par != cur.pit()) {
+	if (old_pit != cur.pit()) {
 		lv->setLayout(text_.getPar(cur.pit()).layout()->name());
-		old_par = cur.pit();
+		old_pit = cur.pit();
 	}
 }
 
@@ -266,11 +268,11 @@ string const InsetText::editMessage() const
 void InsetText::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetText: edit left/right" << endl;
-	old_par = -1;
+	old_pit = -1;
 	setViewCache(&cur.bv());
-	int const par = left ? 0 : paragraphs().size() - 1;
+	int const pit = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
-	text_.setCursor(cur.top(), par, pos);
+	text_.setCursor(cur.top(), pit, pos);
 	cur.clearSelection();
 	finishUndo();
 #ifdef WITH_WARNINGS
@@ -283,7 +285,7 @@ void InsetText::edit(LCursor & cur, bool left)
 
 InsetBase * InsetText::editXY(LCursor & cur, int x, int y) const
 {
-	old_par = -1;
+	old_pit = -1;
 	return text_.editXY(cur, x, y);
 	//sanitizeEmptyText(cur.bv());
 	//updateLocal(cur);
@@ -354,10 +356,10 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(LCursor const & cur, int & x, int & y) const
+void InsetText::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 {
-	x = text_.cursorX(cur.top());
-	y = text_.cursorY(cur.top());
+	x = text_.cursorX(sl);
+	y = text_.cursorY(sl);
 }
 
 

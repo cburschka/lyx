@@ -235,9 +235,6 @@ void ControlSpellchecker::check()
 	// if we used a lfun like in find/replace, dispatch would do
 	// that for us
 	kernel().bufferview()->update();
-	if (kernel().bufferview()->fitCursor())
-		kernel().bufferview()->update();
-
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {

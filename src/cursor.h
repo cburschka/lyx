@@ -22,6 +22,7 @@ class Buffer;
 class BufferView;
 class FuncStatus;
 class FuncRequest;
+class Point;
 
 // these should go
 class MathUnknownInset;
@@ -119,10 +120,14 @@ public:
 	/// insert a string
 	void insert(std::string const & str);
 
+	/// in pixels from left of screen
+	int targetX() const;
 	/// write acess to target x position of cursor
 	int & x_target();
 	/// return target x position of cursor
 	int x_target() const;
+	/// set targetX in current position
+	void setTargetX();
 	/// clear target x position of cursor
 	void clearTargetX();
 
@@ -165,6 +170,7 @@ public:
 	///
 	DispatchResult disp_;
 
+
 private:
 	/**
 	 * The target x position of the cursor. This is used for when
@@ -183,11 +189,6 @@ private:
 	bool selection_;
 	/// are we on the way to get one?
 	bool mark_;
-
-public:
-	/// the actual cursor position
-	int xo_;
-	int yo_;
 
 private:
 
@@ -232,8 +233,6 @@ public:
 
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);
-	/// in pixels from left of screen
-	int targetX() const;
 	/// current offset in the top cell
 	/// interpret name a name of a macro
 	void macroModeClose();
@@ -280,5 +279,7 @@ public:
 	///
 	Encoding const * getEncoding() const;
 };
+
+
 
 #endif // LYXCURSOR_H

@@ -33,31 +33,19 @@ public:
 	///
 	lyx::pos_type endpos() const;
 	///
-	void height(unsigned int h) { height_ = h; }
+	int height() const { return ascent_ + descent_; }
 	///
-	unsigned int height() const { return height_; }
+	void width(int w);
 	///
-	void width(unsigned int w);
+	int width() const;
 	///
-	unsigned int width() const;
+	void ascent(int b);
 	///
-	void ascent_of_text(unsigned int a);
+	int ascent() const;
 	///
-	unsigned int ascent_of_text() const;
+	void descent(int b) { descent_ = b; }
 	///
-	void top_of_text(unsigned int top);
-	///
-	unsigned int top_of_text() const;
-	///
-	void baseline(unsigned int b);
-	///
-	unsigned int baseline() const;
-	/// return true if this row is the start of a paragraph
-	bool isParStart() const;
-	/// return the cached y position
-	unsigned int y_offset() const { return y_offset_; }
-	/// cache the y position
-	void y_offset(unsigned int newy) { y_offset_ = newy; }
+	int descent() const { return descent_; }
 	/// current debugging only
 	void dump(const char * = "") const;
 
@@ -67,17 +55,11 @@ private:
 	/// one behind last pos covered by this row
 	lyx::pos_type end_;
 	///
-	unsigned int height_;
+	int ascent_;
 	///
-	unsigned int width_;
-	/// cached y position
-	unsigned int y_offset_;
-	/// ascent from baseline including prelude space
-	unsigned short ascent_of_text_;
-	/// the top of the real text in the row
-	unsigned int top_of_text_;
+	int descent_;
 	///
-	unsigned int baseline_;
+	int width_;
 };
 
 

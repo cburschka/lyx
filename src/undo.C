@@ -55,7 +55,6 @@ void recordUndo(Undo::undo_kind kind,
 {
 	if (first_pit > last_pit)
 		std::swap(first_pit, last_pit);
-
 	// create the position information of the Undo entry
 	Undo undo;
 	undo.kind = kind;
@@ -104,6 +103,7 @@ void recordUndo(Undo::undo_kind kind,
 	// next time we'll try again to combine entries if possible
 	undo_finished = false;
 }
+
 
 void recordUndo(Undo::undo_kind kind,
 	LCursor & cur, pit_type first_pit, pit_type last_pit,
@@ -281,8 +281,8 @@ void recordUndo(LCursor & cur, Undo::undo_kind kind,
 }
 
 
-void recordUndoFullDocument(LCursor &)
+void recordUndoFullDocument(LCursor & cur)
 {
-	//recordUndo(Undo::ATOMIC,
-	//	cur, 0, cur.bv().text()->paragraphs().size() - 1);
+	recordUndo(Undo::ATOMIC, cur, 0,
+		   cur.bv().text()->paragraphs().size() - 1);
 }

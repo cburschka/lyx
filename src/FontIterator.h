@@ -25,13 +25,14 @@
 #include "support/types.h"
 
 class LyXText;
+class Paragraph;
 
 
 class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
 {
 public:
 	///
-	FontIterator(LyXText const & text, lyx::pit_type pit, lyx::pos_type pos);
+	FontIterator(LyXText const & text, Paragraph const & par, lyx::pos_type pos);
 	///
 	LyXFont operator*() const;
 	///
@@ -43,7 +44,7 @@ private:
 	///
 	LyXText const & text_;
 	///
-	lyx::pit_type pit_;
+	Paragraph const & par_;
 	///
 	lyx::pos_type pos_;
 	///

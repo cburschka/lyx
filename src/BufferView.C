@@ -21,6 +21,7 @@
 #include "bufferparams.h"
 #include "BufferView_pimpl.h"
 #include "CutAndPaste.h"
+#include "coordcache.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
@@ -141,9 +142,9 @@ bool BufferView::fitCursor()
 }
 
 
-void BufferView::update()
+void BufferView::update(bool fitcursor, bool forceupdate)
 {
-	pimpl_->update();
+	pimpl_->update(fitcursor, forceupdate);
 }
 
 
@@ -156,12 +157,6 @@ void BufferView::updateScrollbar()
 void BufferView::scrollDocView(int value)
 {
 	pimpl_->scrollDocView(value);
-}
-
-
-void BufferView::redoCurrentBuffer()
-{
-	pimpl_->redoCurrentBuffer();
 }
 
 
@@ -210,18 +205,6 @@ int BufferView::workWidth() const
 void BufferView::center()
 {
 	pimpl_->center();
-}
-
-
-int BufferView::top_y() const
-{
-	return pimpl_->top_y();
-}
-
-
-void BufferView::top_y(int y)
-{
-	pimpl_->top_y(y);
 }
 
 
@@ -336,13 +319,11 @@ LyXText * BufferView::text() const
 
 void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 {
-	int const last = par.size();
-	for (int i = 0; i < last; ++i)
+	for (int i = 0, n = par.size(); i < n; ++i)
 		par[i].inset().edit(cursor(), true);
 
 	cursor().setCursor(makeDocIterator(par, pos));
 	cursor().selection() = false;
-	par.bottom().text()->redoParagraph(par.bottom().pit());
 }
 
 
@@ -374,4 +355,16 @@ LCursor & BufferView::cursor()
 LCursor const & BufferView::cursor() const
 {
 	return pimpl_->cursor_;
+}
+
+
+lyx::pit_type BufferView::anchor_ref() const
+{
+	return pimpl_->anchor_ref_;
+}
+
+
+int BufferView::offset_ref() const
+{
+	return pimpl_->offset_ref_;
 }

@@ -72,9 +72,9 @@ using std::string;
 
 
 LyXText::LyXText(BufferView * bv)
-	: width_(0), maxwidth_(bv ? bv->workWidth() : 100), height_(0),
+	: maxwidth_(bv ? bv->workWidth() : 100),
 	  background_color_(LColor::background),
-	  bv_owner(bv), xo_(0), yo_(0)
+	  bv_owner(bv)
 {}
 
 
@@ -83,15 +83,15 @@ void LyXText::init(BufferView * bv)
 	BOOST_ASSERT(bv);
 	bv_owner = bv;
 	maxwidth_ = bv->workWidth();
-	width_ = maxwidth_;
-	height_ = 0;
+	dim_.wid = maxwidth_;
+	dim_.asc = 10;
+	dim_.des = 10;
 
 	pit_type const end = paragraphs().size();
 	for (pit_type pit = 0; pit != end; ++pit)
-		pars_[pit].rows.clear();
+		pars_[pit].rows().clear();
 
 	current_font = getFont(pars_[0], 0);
-	redoParagraphs(0, end);
 	updateCounters();
 }
 
@@ -102,40 +102,35 @@ bool LyXText::isMainText() const
 }
 
 
-// takes absolute x,y coordinates
+//takes screen x,y coordinates
 InsetBase * LyXText::checkInsetHit(int x, int y) const
 {
-	pit_type pit;
-	pit_type end;
+	pit_type pit = getPitNearY(y);
+	BOOST_ASSERT(pit != -1);
 
-	getParsInRange(paragraphs(),
-		       bv()->top_y() - yo_,
-		       bv()->top_y() - yo_ + bv()->workHeight(),
-		       pit, end);
+	Paragraph const & par = pars_[pit];
 
-	// convert to screen-absolute y coordinate
-	y -= bv()->top_y();
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
-	lyxerr << "  pit: " << pit << " end: " << end << endl;
-	for (; pit != end; ++pit) {
-		InsetList::const_iterator iit = pars_[pit].insetlist.begin();
-		InsetList::const_iterator iend = pars_[pit].insetlist.end();
-		for (; iit != iend; ++iit) {
-			InsetBase * inset = iit->inset;
+	lyxerr << "  pit: " << pit << endl;
+	InsetList::const_iterator iit = par.insetlist.begin();
+	InsetList::const_iterator iend = par.insetlist.end();
+	for (; iit != iend; ++iit) {
+		InsetBase * inset = iit->inset;
 #if 1
-			lyxerr << "examining inset " << inset << endl;
-			if (theCoords.insets_.has(inset))
-				lyxerr
-					<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
-					<< " yo: " << inset->yo() - inset->ascent() << "..."
-					<< inset->yo() + inset->descent() << endl;
-			else
-				lyxerr << " inset has no cached position";
+		lyxerr << "examining inset " << inset << endl;
+		if (theCoords.insets_.has(inset))
+			lyxerr
+				<< " xo: " << inset->xo() << "..."
+				<< inset->xo() + inset->width()
+				<< " yo: " << inset->yo() - inset->ascent()
+				<< "..."
+				<< inset->yo() + inset->descent() << endl;
+		else
+			lyxerr << " inset has no cached position" << endl;
 #endif
-			if (inset->covers(x, y)) {
-				lyxerr << "Hit inset: " << inset << endl;
-				return inset;
-			}
+		if (inset->covers(x, y)) {
+			lyxerr << "Hit inset: " << inset << endl;
+			return inset;
 		}
 	}
 	lyxerr << "No inset hit. " << endl;
@@ -341,7 +336,6 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
 	pit_type endpit = setLayout(start, end, layout);
-	redoParagraphs(start, endpit);
 	updateCounters();
 }
 
@@ -408,14 +402,15 @@ void LyXText::changeDepth(LCursor & cur, DEPTH_CHANGE type)
 		max_depth = pars_[beg - 1].getMaxDepthAfter();
 
 	for (pit_type pit = beg; pit != end; ++pit) {
-		if (::changeDepthAllowed(type, pars_[pit], max_depth)) {
-			int const depth = pars_[pit].params().depth();
+		Paragraph & par = pars_[pit];
+		if (::changeDepthAllowed(type, par, max_depth)) {
+			int const depth = par.params().depth();
 			if (type == INC_DEPTH)
-				pars_[pit].params().depth(depth + 1);
+				par.params().depth(depth + 1);
 			else
-				pars_[pit].params().depth(depth - 1);
+				par.params().depth(depth - 1);
 		}
-		max_depth = pars_[pit].getMaxDepthAfter();
+		max_depth = par.getMaxDepthAfter();
 	}
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
@@ -454,9 +449,6 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	// Ok, we have a selection.
 	recordUndoSelection(cur);
 
-	pit_type const beg = cur.selBegin().pit();
-	pit_type const end = cur.selEnd().pit();
-
 	DocIterator dit = cur.selectionBegin();
 	DocIterator ditend = cur.selectionEnd();
 
@@ -471,8 +463,6 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 			setCharFont(dit.pit(), dit.pos(), f);
 		}
 	}
-
-	redoParagraphs(beg, end + 1);
 }
 
 
@@ -491,6 +481,7 @@ void LyXText::cursorEnd(LCursor & cur)
 	BOOST_ASSERT(this == cur.text());
 	// if not on the last row of the par, put the cursor before
 	// the final space
+// FIXME: does this final space exist?
 	pos_type const end = cur.textRow().endpos();
 	setCursor(cur, cur.pit(), end == cur.lastpos() ? end : end - 1);
 }
@@ -602,8 +593,6 @@ void LyXText::setParagraph(LCursor & cur,
 		par.setLabelWidthString(labelwidthstring);
 		params.noindent(noindent);
 	}
-
-	redoParagraphs(cur.selBegin().pit(), undopit);
 }
 
 
@@ -897,12 +886,9 @@ void LyXText::updateCounters()
 		if (oldLabel != newLabel) {
 			//lyxerr[Debug::DEBUG] << "changing labels: old: " << oldLabel << " new: "
 			//	<< newLabel << endl;
-			redoParagraphInternal(pit);
 			update_pos = true;
 		}
 	}
-	if (update_pos)
-		updateParPositions();
 }
 
 
@@ -912,7 +898,6 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
 	cur.paragraph().insertInset(cur.pos(), inset);
-	redoParagraph(cur);
 }
 
 
@@ -920,7 +905,6 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 {
 	pit_type pit = cur.pit();
-	pit_type endpit = cur.pit() + 1;
 	pos_type pos = cur.pos();
 	recordUndo(cur);
 
@@ -928,7 +912,6 @@ void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 	cur.clearSelection();
 	cur.buffer().insertStringAsLines(pars_, pit, pos, current_font, str);
 
-	redoParagraphs(cur.pit(), endpit);
 	cur.resetAnchor();
 	setCursor(cur, cur.pit(), pos);
 	cur.setSelection();
@@ -975,19 +958,12 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par,
 	pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(par != int(paragraphs().size()));
-
 	cur.pit() = par;
 	cur.pos() = pos;
 	cur.boundary() = boundary;
 
-	// no rows, no fun...
-	if (paragraphs().begin()->rows.empty())
-		return;
-
 	// now some strict checking
 	Paragraph & para = getPar(par);
-	Row const & row = *para.getRow(pos);
-	pos_type const end = row.endpos();
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
@@ -998,24 +974,6 @@ void LyXText::setCursor(CursorSlice & cur, pit_type par,
 	if (pos > para.size()) {
 		lyxerr << "dont like 1, pos: " << pos
 		       << " size: " << para.size()
-		       << " row.pos():" << row.pos()
-		       << " par: " << par << endl;
-		BOOST_ASSERT(false);
-	}
-
-	if (pos > end) {
-		lyxerr << "dont like 2, pos: " << pos
-		       << " size: " << para.size()
-		       << " row.pos():" << row.pos()
-		       << " par: " << par << endl;
-		// This shouldn't happen.
-		BOOST_ASSERT(false);
-	}
-
-	if (pos < row.pos()) {
-		lyxerr << "dont like 3 please report pos:" << pos
-		       << " size: " << para.size()
-		       << " row.pos():" << row.pos()
 		       << " par: " << par << endl;
 		BOOST_ASSERT(false);
 	}
@@ -1026,7 +984,7 @@ void LyXText::setCursorIntern(LCursor & cur,
 	pit_type par, pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cur.top(), par, pos, boundary);
-	cur.x_target() = cursorX(cur.top());
+	cur.setTargetX();
 	if (setfont)
 		setCurrentFont(cur);
 }
@@ -1077,7 +1035,8 @@ void LyXText::setCurrentFont(LCursor & cur)
 pos_type LyXText::getColumnNearX(pit_type const pit,
 	Row const & row, int & x, bool & boundary) const
 {
-	x -= xo_;
+	int const xo = theCoords.get(this, pit).x_;
+	x -= xo;
 	RowMetrics const r = computeRowMetrics(pit, row);
 	Paragraph const & par = pars_[pit];
 
@@ -1099,7 +1058,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 
 	// check for empty row
 	if (vc == end) {
-		x = int(tmpx) + xo_;
+		x = int(tmpx) + xo;
 		return 0;
 	}
 
@@ -1169,55 +1128,59 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		c = end - 1;
 	}
 
-	x = int(tmpx) + xo_;
+	x = int(tmpx) + xo;
 	return c - row.pos();
 }
 
 
-// y is relative to this LyXText's top
-// this is only used in the two functions below
-Row const & LyXText::getRowNearY(int y, pit_type & pit) const
+// y is screen coordinate
+pit_type LyXText::getPitNearY(int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
-	BOOST_ASSERT(!paragraphs().begin()->rows.empty());
-	pit_type const pend = paragraphs().size() - 1;
-	pit = 0;
-	while (int(pars_[pit].y + pars_[pit].height) < y && pit != pend)
-		++pit;
+	BOOST_ASSERT(theCoords.pars_.find(this) != theCoords.pars_.end());
+	CoordCache::InnerParPosCache const & cc = theCoords.pars_[this];
+	lyxerr << "LyXText::getPitNearY: y: " << y << " cache size: "
+		<< cc.size() << endl;
 
-	RowList::iterator rit = pars_[pit].rows.end();
-	RowList::iterator const rbegin = pars_[pit].rows.begin();
-	do {
-		--rit;
-	} while (rit != rbegin && int(pars_[pit].y + rit->y_offset()) > y);
+	// look for highest numbered paragraph with y coordinate less than given y
+	pit_type pit = 0;
+	int yy = -1;
+	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
+	CoordCache::InnerParPosCache::const_iterator et = cc.end();
+	for (; it != et; ++it) {
+		lyxerr << "  examining: pit: " << it->first << " y: "
+			<< it->second.y_ << endl;
+		if (it->first >= pit && int(it->second.y_) - int(pars_[it->first].ascent()) <= y) {
+			pit = it->first;
+			yy = it->second.y_;
+		}
+	}
 
+	lyxerr << " found best y: " << yy << " for pit: " << pit << endl;
+	return pit;
+}
+
+
+Row const & LyXText::getRowNearY(int y, pit_type pit) const
+{
+	Paragraph const & par = pars_[pit];
+	int yy = theCoords.get(this, pit).y_ - par.ascent();
+	BOOST_ASSERT(!par.rows().empty());
+	RowList::const_iterator rit = par.rows().begin();
+	RowList::const_iterator const rlast = boost::prior(par.rows().end());
+	for (; rit != rlast; yy += rit->height(), ++rit)
+		if (yy + rit->height() > y)
+			break;
 	return *rit;
 }
-
-
-// x,y are absolute coordinates
-// sets cursor only within this LyXText
-void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
-{
-	x -= xo_;
-	y -= yo_;
-	pit_type pit;
-	Row const & row = getRowNearY(y, pit);
-	lyxerr[Debug::DEBUG] << "setCursorFromCoordinates:: hit row at: "
-			     << row.pos() << endl;
-	bool bound = false;
-	int xx = x + xo_; // getRowNearX get absolute x coords
-	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
-	setCursor(cur, pit, pos, true, bound);
-}
-
 
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 {
-	pit_type pit;
-	Row const & row = getRowNearY(y - yo_, pit);
+	pit_type pit = getPitNearY(y);
+	BOOST_ASSERT(pit != -1);
+	Row const & row = getRowNearY(y, pit);
 	bool bound = false;
 
 	int xx = x; // is modified by getColumnNearX
@@ -1225,13 +1188,18 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 	cur.pit() = pit;
 	cur.pos() = pos;
 	cur.boundary() = bound;
+	cur.x_target() = x;
 
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
 	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
-	if (!inset)
+	if (!inset) {
+		//either we deconst editXY or better we move current_font
+		//and real_current_font to LCursor
+		const_cast<LyXText *>(this)->setCurrentFont(cur);
 		return 0;
-
+	}
+	
 	// This should be just before or just behind the
 	// cursor position set above.
 	BOOST_ASSERT((pos != 0 && inset == pars_[pit].getInset(pos - 1))
@@ -1240,7 +1208,10 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 	// this inset.
 	if (inset == pars_[pit].getInset(pos - 1))
 		--cur.pos();
-	return inset->editXY(cur, x, y);
+	inset = inset->editXY(cur, x, y);
+	if (cur.top().text() == this)
+		const_cast<LyXText *>(this)->setCurrentFont(cur);
+	return inset;
 }
 
 
@@ -1302,31 +1273,50 @@ void LyXText::cursorRight(LCursor & cur)
 
 void LyXText::cursorUp(LCursor & cur)
 {
-	Row const & row = cur.textRow();
-	int x = cur.x_target();
-	int y = cursorY(cur.top()) - row.baseline() - 1;
-	setCursorFromCoordinates(cur, x, y);
+	Paragraph const & par = cur.paragraph();
+	int const row = par.pos2row(cur.pos());
+	int const x = cur.targetX();
 
 	if (!cur.selection()) {
-		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
-		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->editXY(cur, cur.x_target(), y);
+		int const y = bv_funcs::getPos(cur).y_;
+		editXY(cur, x, y - par.rows()[row].ascent() - 1);
+		return;
 	}
+
+	if (row > 0) {
+		setCursor(cur, cur.pit(), x2pos(cur.pit(), row - 1, x));
+	} else if (cur.pit() > 0) {
+		--cur.pit();
+		setCursor(cur, cur.pit(), x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
+		
+	}
+
+	cur.x_target() = x;
 }
 
 
 void LyXText::cursorDown(LCursor & cur)
 {
-	Row const & row = cur.textRow();
-	int x = cur.x_target();
-	int y = cursorY(cur.top()) - row.baseline() + row.height() + 1;
-	setCursorFromCoordinates(cur, x, y);
+ 
+
+	Paragraph const & par = cur.paragraph();
+	int const row = par.pos2row(cur.pos());
+	int const x = cur.targetX();
 
 	if (!cur.selection()) {
-		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
-		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->editXY(cur, cur.x_target(), y);
+		int const y = bv_funcs::getPos(cur).y_;
+		editXY(cur, x, y + par.rows()[row].descent() + 1);
+		return;
 	}
+	
+	if (row + 1 < int(par.rows().size())) {
+		setCursor(cur, cur.pit(), x2pos(cur.pit(), row + 1, x));
+	} else if (cur.pit() + 1 < int(paragraphs().size())) {
+		++cur.pit();
+		setCursor(cur, cur.pit(), x2pos(cur.pit(), 0, x));
+	}
+	
+	cur.x_target() = x;
 }
 
 

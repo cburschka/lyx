@@ -146,13 +146,13 @@ Paragraph const & DocIterator::paragraph() const
 
 Row & DocIterator::textRow()
 {
-	return *paragraph().getRow(pos());
+	return paragraph().getRow(pos());
 }
 
 
 Row const & DocIterator::textRow() const
 {
-	return *paragraph().getRow(pos());
+	return paragraph().getRow(pos());
 }
 
 
@@ -165,18 +165,6 @@ DocIterator::pit_type DocIterator::lastpit() const
 DocIterator::pos_type DocIterator::lastpos() const
 {
 	return inMathed() ? cell().size() : paragraph().size();
-}
-
-
-DocIterator::row_type DocIterator::crow() const
-{
-	return paragraph().row(pos());
-}
-
-
-DocIterator::row_type DocIterator::lastcrow() const
-{
-	return paragraph().rows.size();
 }
 
 
@@ -314,7 +302,7 @@ void DocIterator::forwardPos()
 		top.pos() = 0;
 		return;
 	}
-	//lyxerr << "... no next par" << endl;
+	//lyxerr << "... no next pit" << endl;
 
 	// otherwise try to move on one cell if possible
 	if (top.idx() < lastidx()) {

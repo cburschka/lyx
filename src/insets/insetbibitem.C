@@ -62,11 +62,8 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
-		if (p.getCmdName().empty())
-			break;
-		setParams(p);
-		cur.bv().update();
-		cur.bv().fitCursor();
+		if (!p.getCmdName().empty())
+			setParams(p);
 		break;
 	}
 
@@ -100,11 +97,10 @@ void InsetBibitem::write(Buffer const &, std::ostream & os) const
 // This should be changed!!! (Jug)
 void InsetBibitem::read(Buffer const &, LyXLex & lex)
 {
-	if (lex.eatLine()) {
+	if (lex.eatLine())
 		scanCommand(lex.getString());
-	} else {
+	else
 		lex.printError("InsetCommand: Parse error: `$$Token'");
-	}
 
 	if (prefixIs(getContents(), key_prefix)) {
 		int key = strToInt(getContents().substr(key_prefix.length()));

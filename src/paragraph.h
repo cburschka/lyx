@@ -17,6 +17,7 @@
 #define PARAGRAPH_H
 
 #include "changes.h"
+#include "dimension.h"
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"
@@ -35,12 +36,14 @@ class BufferView;
 class Counters;
 class InsetBase;
 class InsetBibitem;
+class LaTeXFeatures;
 class InsetBase_code;
 class Language;
-class LaTeXFeatures;
-class OutputParams;
 class LyXFont;
 class LyXFont_size;
+class MetricsInfo;
+class OutputParams;
+class PainterInfo;
 class ParagraphParameters;
 class TexRow;
 class UpdatableInset;
@@ -75,6 +78,7 @@ public:
 
 	///
 	int id() const;
+
 
 	///
 	Language const * getParLanguage(BufferParams const &) const;
@@ -358,25 +362,39 @@ public:
 	ParagraphParameters const & params() const;
 
 	///
-	RowList::iterator getRow(lyx::pos_type pos);
+	Row & getRow(lyx::pos_type pos);
 	///
-	RowList::const_iterator getRow(lyx::pos_type pos) const;
+	Row const & getRow(lyx::pos_type pos) const;
 	///
-	size_t row(lyx::pos_type pos) const;
+	size_t pos2row(lyx::pos_type pos) const;
 
 	///
 	InsetList insetlist;
 
-	///
-	mutable RowList rows;
-	/// last draw y position (baseline of top row)
-	int y;
 	/// total height of paragraph
-	unsigned int height;
+	unsigned int height() const { return dim_.height(); }
 	/// total width of paragraph, may differ from workwidth
-	unsigned int width;
+	unsigned int width() const { return dim_.width(); }
+	unsigned int ascent() const { return dim_.ascent(); }
+	unsigned int descent() const { return dim_.descent(); }
+	///
+	RowList & rows() { return rows_; }
+	///
+	RowList const & rows() const { return rows_; }
+
+	// compute paragraph metrics	
+	void metrics(MetricsInfo & mi, Dimension & dim, LyXText & text);
+	// draw paragraph
+	void draw(PainterInfo & pi, int x, int y, LyXText & text) const;
+	/// dump some information
+	void dump() const;
+
+	/// cached dimensions of paragraph
+	Dimension dim_;
 
 private:
+	///
+	mutable RowList rows_;
 	///
 	LyXLayout_ptr layout_;
 	/// keeping this here instead of in the pimpl makes LyX >10% faster

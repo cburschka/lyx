@@ -92,10 +92,6 @@ public:
 	pos_type & pos() { return back().pos(); }
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
-	/// return the display row of the cursor with in the top par
-	row_type crow() const;
-	/// return the display row of the cursor with in the top par
-	row_type lastcrow() const;
 
 	/// return the number of embedded cells
 	size_t nargs() const;
