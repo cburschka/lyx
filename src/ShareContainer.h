@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include <boost/utility.hpp>
 #include <boost/smart_ptr.hpp>
 
@@ -20,14 +21,20 @@ public:
 	value_type
 	get(Share const & ps) const {
 		// First see if we already have this ps in the container
+#if 0
 		Params::iterator it = params.begin();
 		Params::iterator end = params.end();
 		for (; it != end; ++it) {
 			if (ps == *(*it).get())
 				break;
 		}
+#else
+		Params::iterator it = find_if(params.begin(),
+					      params.end(),
+					      isEqual(ps));
+#endif
 		value_type tmp;
-		if (it == end) {
+		if (it == params.end()) {
 			// ok we don't have it so we should
 			// insert it.
 			tmp.reset(new Share(ps));
@@ -45,9 +52,18 @@ public:
 	}
 private:
 	///
+	struct isEqual {
+		isEqual(Share const & s) : p_(s) {}
+		bool operator()(value_type const & p1) const {
+			return *p1.get() == p_;
+		}
+	private:
+		Share const & p_;
+	};
+	///
 	struct comp {
 		int operator()(value_type const & p1,
-			       value_type const & p2) {
+			       value_type const & p2) const {
 			return p1.use_count() < p2.use_count();
 		}
 	};

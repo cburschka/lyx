@@ -3,10 +3,13 @@
 #ifndef BUFFERVIEW_PIMPL_H
 #define BUFFERVIEW_PIMPL_H
 
+#include <boost/smart_ptr.hpp>
+
 #include "BufferView.h"
 #include "UpdateInset.h"
 #include "commandtags.h"
 #include "frontends/Timeout.h"
+#include "WorkArea.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -120,6 +123,10 @@ struct BufferView::Pimpl : public Object {
 	void center();
 	///
 	bool Dispatch(kb_action action, string const & argument);
+private:
+	///
+	friend class BufferView;
+	
 	///
 	BufferView * bv_;
 	///
@@ -127,7 +134,7 @@ struct BufferView::Pimpl : public Object {
 	///
 	Buffer * buffer_;
 	///
-	LyXScreen * screen_;
+	boost::scoped_ptr<LyXScreen> screen_;
 	///
 	long current_scrollbar_value;
 	///
@@ -139,17 +146,16 @@ struct BufferView::Pimpl : public Object {
 	///
 	int last_click_y;
 	///
-	WorkArea * workarea_;
+	WorkArea workarea_;
 	///
 	UpdateInset updatelist;
 	///
 	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
-private:
 	///
 	bool using_xterm_cursor;
-
+	///
 	struct Position {
 		/// Filename
                 string filename;
@@ -163,11 +169,13 @@ private:
 		Position(string const & f, int id, LyXParagraph::size_type pos)
                         : filename(f), par_id(id), par_pos(pos) {}
 	};
+	///
 	std::vector<Position> saved_positions;
-
+	///
 	void moveCursorUpdate(bool selecting);
         /// Get next inset of this class from current cursor position  
 	Inset * getInsetByCode(Inset::Code code);
+	///
 	void MenuInsertLyXFile(string const & filen);
 };
 #endif

@@ -62,7 +62,7 @@ Intl::~Intl()
 
 void Intl::redraw()
 {
-	if (fd_form_keymap && fd_form_keymap->KeyMap->visible)
+	if (fd_form_keymap.get() && fd_form_keymap->KeyMap->visible)
 		fl_redraw_form(fd_form_keymap->KeyMap);
 }
 
@@ -110,7 +110,7 @@ void Intl::KeyMapOn(bool on)
 {
 	keymapon = on;
 
-	if (!fd_form_keymap) return;
+	if (!fd_form_keymap.get()) return;
 	
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
@@ -205,9 +205,9 @@ void Intl::KeyMapSec()
 void Intl::LCombo(int, void * v, Combox * combox)
 {
 	Intl * itl = static_cast<Intl*>(v);
-	if (combox == itl->Language)
+	if (combox == itl->Language.get())
 	    itl->Keymap(23);
-	else if (combox == itl->Language2)
+	else if (combox == itl->Language2.get())
 	    itl->Keymap(43);
 	return;
 }
@@ -244,12 +244,12 @@ void Intl::InitKeyMapper(bool on)
 	else
 		keymapon = on;
 
-	Language = new Combox(FL_COMBOX_DROPLIST);
-	Language2 = new Combox(FL_COMBOX_DROPLIST);
+	Language.reset(new Combox(FL_COMBOX_DROPLIST));
+	Language2.reset(new Combox(FL_COMBOX_DROPLIST));
 	Language->setcallback(LCombo, this);
 	Language2->setcallback(LCombo, this);
 
-	fd_form_keymap = create_form_KeyMap();
+	fd_form_keymap.reset(create_form_KeyMap());
 
 	// Add the Intl* pointer
 	fd_form_keymap->AcceptChset->u_vdata =

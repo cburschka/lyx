@@ -106,47 +106,50 @@ void SetXtermCursor(Window win)
 
 BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	     int xpos, int ypos, int width, int height)
-	: bv_(b), owner_(o), cursor_timeout(400)
+	: bv_(b), owner_(o), buffer_(0),
+	  current_scrollbar_value(0), cursor_timeout(400),
+	  workarea_(xpos, ypos, width, height), using_xterm_cursor(false)
 {
-	buffer_ = 0;
-	workarea_ = new WorkArea(xpos, ypos, width, height);
+	//buffer_ = 0;
+	//workarea_ = new WorkArea(xpos, ypos, width, height);
+	
 	// Setup the signals
-	workarea_->scrollCB.connect(slot(this, &BufferView::Pimpl::scrollCB));
-	workarea_->workAreaExpose
+	workarea_.scrollCB.connect(slot(this, &BufferView::Pimpl::scrollCB));
+	workarea_.workAreaExpose
 		.connect(slot(this, &BufferView::Pimpl::workAreaExpose));
-	workarea_->workAreaEnter
+	workarea_.workAreaEnter
 		.connect(slot(this, &BufferView::Pimpl::enterView));
-	workarea_->workAreaLeave
+	workarea_.workAreaLeave
 		.connect(slot(this, &BufferView::Pimpl::leaveView));
-	workarea_->workAreaButtonPress
+	workarea_.workAreaButtonPress
 		.connect(slot(this, &BufferView::Pimpl::workAreaButtonPress));
-	workarea_->workAreaButtonRelease
+	workarea_.workAreaButtonRelease
 		.connect(slot(this,
 			      &BufferView::Pimpl::workAreaButtonRelease));
-	workarea_->workAreaMotionNotify
+	workarea_.workAreaMotionNotify
 		.connect(slot(this, &BufferView::Pimpl::workAreaMotionNotify));
-	workarea_->workAreaDoubleClick
+	workarea_.workAreaDoubleClick
 		.connect(slot(this, &BufferView::Pimpl::doubleClick));
-	workarea_->workAreaTripleClick
+	workarea_.workAreaTripleClick
 		.connect(slot(this, &BufferView::Pimpl::tripleClick));
-	workarea_->workAreaKeyPress
+	workarea_.workAreaKeyPress
 		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
 	
-	screen_ = 0;
+	//screen_ = 0;
 
 	cursor_timeout.timeout.connect(slot(this,
 					    &BufferView::Pimpl::cursorToggle));
-	current_scrollbar_value = 0;
+	//current_scrollbar_value = 0;
 	cursor_timeout.start();
-	workarea_->setFocus();
-	using_xterm_cursor = false;
+	workarea_.setFocus();
+	//using_xterm_cursor = false;
 	saved_positions.resize(saved_positions_num);
 }
 
 
 Painter & BufferView::Pimpl::painter() 
 {
-	return workarea_->getPainter();
+	return workarea_.getPainter();
 }
 
 
@@ -162,7 +165,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// only if the buffer is still loaded.
 		// Also set the owner of the test to 0
 		//		bv_->text->owner(0);
-		textcache.add(buffer_, workarea_->workWidth(), bv_->text);
+		textcache.add(buffer_, workarea_.workWidth(), bv_->text);
 		if (lyxerr.debugging())
 			textcache.show(lyxerr, "BufferView::buffer");
 		
@@ -176,8 +179,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	
 	// Nuke old image
 	// screen is always deleted when the buffer is changed.
-	delete screen_;
-	screen_ = 0;
+	screen_.reset(0);
+	//delete screen_;
+	//screen_ = 0;
 
 	// If we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
@@ -209,7 +213,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		owner_->updateToolbar();
 		owner_->getDialogs()->hideBufferDependent();
 		updateScrollbar();
-		workarea_->redraw();
+		workarea_.redraw();
 
 		// Also remove all remaining text's from the testcache.
 		// (there should not be any!) (if there is any it is a
@@ -227,7 +231,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 void BufferView::Pimpl::resize(int xpos, int ypos, int width, int height)
 {
-	workarea_->resize(xpos, ypos, width, height);
+	workarea_.resize(xpos, ypos, width, height);
 	update(bv_->text, SELECT);
 	redraw();
 }
@@ -243,13 +247,13 @@ void BufferView::Pimpl::resize()
 void BufferView::Pimpl::redraw()
 {
 	lyxerr[Debug::INFO] << "BufferView::redraw()" << endl;
-	workarea_->redraw();
+	workarea_.redraw();
 }
 
 
 bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
-	Assert(screen_);
+	Assert(screen_.get());
  
 	bool ret = screen_->FitCursor(text, bv_);
 	if (ret)
@@ -302,11 +306,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	} else {
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
-		bv_->text = textcache.findFit(buffer_, workarea_->workWidth());
+		bv_->text = textcache.findFit(buffer_, workarea_.workWidth());
 		if (bv_->text) {
 			if (lyxerr.debugging()) {
 				lyxerr << "Found a LyXText that fits:\n";
-				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea_->workWidth(), bv_->text)));
+				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea_.workWidth(), bv_->text)));
 			}
 			// Set the owner of the newly found text
 			//	bv_->text->owner(bv_);
@@ -355,8 +359,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.
-	delete screen_;
-	screen_ = new LyXScreen(*workarea_);
+	screen_.reset(new LyXScreen(workarea_));
+	//delete screen_;
+	//screen_ = new LyXScreen(workarea_);
 }
 
 
@@ -367,7 +372,7 @@ void BufferView::Pimpl::updateScrollbar()
 	 * be possible */
 
 	if (!buffer_) {
-		workarea_->setScrollbar(0, 1.0);
+		workarea_.setScrollbar(0, 1.0);
 		return;
 	}
 	
@@ -384,31 +389,31 @@ void BufferView::Pimpl::updateScrollbar()
 
 	// check if anything has changed.
 	if (max2 == cbth &&
-	    height2 == workarea_->height() &&
+	    height2 == workarea_.height() &&
 	    current_scrollbar_value == cbsf)
 		return; // no
 	max2 = cbth;
-	height2 = workarea_->height();
+	height2 = workarea_.height();
 	current_scrollbar_value = cbsf;
 
 	if (cbth <= height2) { // text is smaller than screen
-		workarea_->setScrollbar(0, 1.0); // right?
+		workarea_.setScrollbar(0, 1.0); // right?
 		return;
 	}
 
-	long maximum_height = workarea_->height() * 3 / 4 + cbth;
+	long maximum_height = workarea_.height() * 3 / 4 + cbth;
 	long value = cbsf;
 
 	// set the scrollbar
-	double hfloat = workarea_->height();
+	double hfloat = workarea_.height();
 	double maxfloat = maximum_height;
 
 	float slider_size = 0.0;
 	int slider_value = value;
 
-	workarea_->setScrollbarBounds(0, bv_->text->height - workarea_->height());
-	double lineh = bv_->text->DefaultHeight();
-	workarea_->setScrollbarIncrements(lineh);
+	workarea_.setScrollbarBounds(0, bv_->text->height - workarea_.height());
+	double const lineh = bv_->text->DefaultHeight();
+	workarea_.setScrollbarIncrements(lineh);
 	if (maxfloat > 0.0) {
 		if ((hfloat / maxfloat) * float(height2) < 3)
 			slider_size = 3.0/float(height2);
@@ -417,7 +422,7 @@ void BufferView::Pimpl::updateScrollbar()
 	} else
 		slider_size = hfloat;
 
-	workarea_->setScrollbar(slider_value, slider_size / workarea_->height());
+	workarea_.setScrollbar(slider_value, slider_size / workarea_.height());
 }
 
 
@@ -430,7 +435,7 @@ void BufferView::Pimpl::scrollCB(double value)
 	if (current_scrollbar_value < 0)
 		current_scrollbar_value = 0;
    
-	if (!screen_)
+	if (!screen_.get())
 		return;
 
 	screen_->Draw(bv_->text, bv_, current_scrollbar_value);
@@ -444,7 +449,7 @@ void BufferView::Pimpl::scrollCB(double value)
  
 	int const height = vbt->DefaultHeight();
 	int const first = static_cast<int>((bv_->text->first + height));
-	int const last = static_cast<int>((bv_->text->first + workarea_->height() - height));
+	int const last = static_cast<int>((bv_->text->first + workarea_.height() - height));
 
 	if (vbt->cursor.y() < first)
 		vbt->SetCursorFromCoordinates(bv_, 0, first);
@@ -458,17 +463,17 @@ void BufferView::Pimpl::scrollCB(double value)
 int BufferView::Pimpl::scrollUp(long time)
 {
 	if (!buffer_) return 0;
-	if (!screen_) return 0;
+	if (!screen_.get()) return 0;
    
-	double value = workarea_->getScrollbarValue();
+	double value = workarea_.getScrollbarValue();
    
 	if (value == 0) return 0;
 
 	float add_value =  (bv_->text->DefaultHeight()
 			    + float(time) * float(time) * 0.125);
    
-	if (add_value > workarea_->height())
-		add_value = float(workarea_->height() -
+	if (add_value > workarea_.height())
+		add_value = float(workarea_.height() -
 				  bv_->text->DefaultHeight());
    
 	value -= add_value;
@@ -476,7 +481,7 @@ int BufferView::Pimpl::scrollUp(long time)
 	if (value < 0)
 		value = 0;
    
-	workarea_->setScrollbarValue(value);
+	workarea_.setScrollbarValue(value);
    
 	scrollCB(value); 
 	return 0;
@@ -486,10 +491,10 @@ int BufferView::Pimpl::scrollUp(long time)
 int BufferView::Pimpl::scrollDown(long time)
 {
 	if (!buffer_) return 0;
-	if (!screen_) return 0;
+	if (!screen_.get()) return 0;
    
-	double value= workarea_->getScrollbarValue();
-	pair<float, float> p = workarea_->getScrollbarBounds();
+	double value = workarea_.getScrollbarValue();
+	pair<float, float> p = workarea_.getScrollbarBounds();
 	double max = p.second;
 	
 	if (value == max) return 0;
@@ -497,8 +502,8 @@ int BufferView::Pimpl::scrollDown(long time)
 	float add_value =  (bv_->text->DefaultHeight()
 			    + float(time) * float(time) * 0.125);
    
-	if (add_value > workarea_->height())
-		add_value = float(workarea_->height() -
+	if (add_value > workarea_.height())
+		add_value = float(workarea_.height() -
 				  bv_->text->DefaultHeight());
    
 	value += add_value;
@@ -506,7 +511,7 @@ int BufferView::Pimpl::scrollDown(long time)
 	if (value > max)
 		value = max;
 
-	workarea_->setScrollbarValue(value);
+	workarea_.setScrollbarValue(value);
 	
 	scrollCB(value); 
 	return 0;
@@ -525,7 +530,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	if (!(state & Button1MotionMask))
 		return;
 
-	if (!buffer_ || !screen_) return;
+	if (!buffer_ || !screen_.get()) return;
 
 	// Check for inset locking
 	if (bv_->theLockingInset()) {
@@ -570,7 +575,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	last_click_x = -1;
 	last_click_y = -1;
 
-	if (!buffer_ || !screen_) return;
+	if (!buffer_ || !screen_.get()) return;
 
 	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos, button);
 
@@ -679,7 +684,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 	if (text->bv_owner && bv_->theLockingInset())
 	    return;
 
-	if (screen_ && button == 1) {
+	if (screen_.get() && button == 1) {
 	    if (text->bv_owner) {
 		screen_->HideCursor();
 		screen_->ToggleSelection(text, bv_);
@@ -706,7 +711,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 	if (text->bv_owner && bv_->theLockingInset())
 	    return;
 
-	if (screen_ && (button == 1)) {
+	if (screen_.get() && (button == 1)) {
 		screen_->HideCursor();
 		screen_->ToggleSelection(text, bv_);
 		text->CursorHome(bv_);
@@ -724,7 +729,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 void BufferView::Pimpl::enterView()
 {
 	if (active() && available()) {
-		SetXtermCursor(workarea_->getWin());
+		SetXtermCursor(workarea_.getWin());
 		using_xterm_cursor = true;
 	}
 }
@@ -733,7 +738,7 @@ void BufferView::Pimpl::enterView()
 void BufferView::Pimpl::leaveView()
 {
 	if (using_xterm_cursor) {
-		XUndefineCursor(fl_get_display(), workarea_->getWin());
+		XUndefineCursor(fl_get_display(), workarea_.getWin());
 		using_xterm_cursor = false;
 	}
 }
@@ -742,7 +747,7 @@ void BufferView::Pimpl::leaveView()
 void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 					      unsigned int button)
 {
-	if (!buffer_ || !screen_) return;
+	if (!buffer_ || !screen_.get()) return;
 
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an
@@ -898,7 +903,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 					 unsigned int /* button */)
 {
-	if (!screen_)
+	if (!screen_.get())
 		return 0;
   
 	int y_tmp = y + text->first;
@@ -967,12 +972,12 @@ void BufferView::Pimpl::workAreaExpose()
 	static int work_area_width = 0;
 	static unsigned int work_area_height = 0;
 
-	bool widthChange = workarea_->workWidth() != work_area_width;
-	bool heightChange = workarea_->height() != work_area_height;
+	bool widthChange = workarea_.workWidth() != work_area_width;
+	bool heightChange = workarea_.height() != work_area_height;
 
 	// update from work area
-	work_area_width = workarea_->workWidth();
-	work_area_height = workarea_->height();
+	work_area_width = workarea_.workWidth();
+	work_area_height = workarea_.height();
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// All buffers need a resize
@@ -1000,11 +1005,11 @@ void BufferView::Pimpl::workAreaExpose()
 			// ...including the minibuffer
 			owner_->getMiniBuffer()->Init();
 
-		} else if (screen_)
+		} else if (screen_.get())
 		    screen_->Redraw(bv_->text, bv_);
 	} else {
 		// Grey box when we don't have a buffer
-		workarea_->greyOut();
+		workarea_.greyOut();
 	}
 
 	// always make sure that the scrollbar is sane.
@@ -1016,7 +1021,7 @@ void BufferView::Pimpl::workAreaExpose()
 
 void BufferView::Pimpl::update()
 {
-	if (screen_) screen_->Update(bv_->text, bv_);
+	if (screen_.get()) screen_->Update(bv_->text, bv_);
 }
 
 // Values used when calling update:
@@ -1107,7 +1112,7 @@ void BufferView::Pimpl::cursorToggle()
 
 	updatelist.update(bv_);
 	
-	if (!screen_) {
+	if (!screen_.get()) {
 		cursor_timeout.restart();
 		return;
 	}
@@ -1138,12 +1143,12 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 		text->CursorUp(bv_);
 	
   	if (text->inset_owner ||
-	    text->cursor.row()->height() < workarea_->height())
+	    text->cursor.row()->height() < workarea_.height())
 		screen_->Draw(bv_->text, bv_,
 			      text->cursor.y()
 			      - text->cursor.row()->baseline()
 			      + text->cursor.row()->height()
-			      - workarea_->height() + 1 );
+			      - workarea_.height() + 1 );
 	updateScrollbar();
 }
 
@@ -1153,7 +1158,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	if (!text->cursor.row()->next())
 		return;
 	
-	int y = text->first + workarea_->height();
+	int y = text->first + workarea_.height();
 //	if (text->inset_owner)
 //		y += bv_->text->first;
 	text->GetRowNearY(y);
@@ -1166,7 +1171,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 		text->CursorDown(bv_);
 	
  	if (text->inset_owner ||
-	    text->cursor.row()->height() < workarea_->height())
+	    text->cursor.row()->height() < workarea_.height())
 		screen_->Draw(bv_->text, bv_, text->cursor.y() -
 			      text->cursor.row()->baseline());
 	updateScrollbar();
@@ -1286,52 +1291,52 @@ void BufferView::Pimpl::insetUnlock()
 
 bool BufferView::Pimpl::focus() const
 {
-	return workarea_->hasFocus();
+	return workarea_.hasFocus();
 }
 
 
 void BufferView::Pimpl::focus(bool f)
 {
-	if (f) workarea_->setFocus();
+	if (f) workarea_.setFocus();
 }
 
 
 bool BufferView::Pimpl::active() const
 {
-	return workarea_->active();
+	return workarea_.active();
 }
 
 
 bool BufferView::Pimpl::belowMouse() const 
 {
-	return workarea_->belowMouse();
+	return workarea_.belowMouse();
 }
 
 
 void BufferView::Pimpl::showCursor()
 {
-	if (screen_)
+	if (screen_.get())
 		screen_->ShowCursor(bv_->text, bv_);
 }
 
 
 void BufferView::Pimpl::hideCursor()
 {
-	if (screen_)
+	if (screen_.get())
 		screen_->HideCursor();
 }
 
 
 void BufferView::Pimpl::toggleSelection(bool b)
 {
-	if (screen_)
+	if (screen_.get())
 		screen_->ToggleSelection(bv_->text, bv_, b);
 }
 
 
 void BufferView::Pimpl::toggleToggle()
 {
-	if (screen_)
+	if (screen_.get())
 		screen_->ToggleToggle(bv_->text, bv_);
 }
 
@@ -1339,8 +1344,8 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center() 
 {
 	beforeChange(bv_->text);
-	if (bv_->text->cursor.y() > static_cast<int>((workarea_->height() / 2))) {
-		screen_->Draw(bv_->text, bv_, bv_->text->cursor.y() - workarea_->height() / 2);
+	if (bv_->text->cursor.y() > static_cast<int>((workarea_.height() / 2))) {
+		screen_->Draw(bv_->text, bv_, bv_->text->cursor.y() - workarea_.height() / 2);
 	} else {
 		screen_->Draw(bv_->text, bv_, 0);
 	}
@@ -1356,7 +1361,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	screen_->HideCursor();
 	beforeChange(bv_->text);
 	
-	string const clip(workarea_->getClipboard());
+	string const clip(workarea_.getClipboard());
 	
 	if (clip.empty()) return;
 
@@ -1371,7 +1376,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 
 void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 {
-	workarea_->putClipboard(stuff);
+	workarea_.putClipboard(stuff);
 }
 
 

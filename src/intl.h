@@ -12,6 +12,7 @@
 #pragma interface
 #endif
 
+#include <boost/smart_ptr.hpp>
 #include <sigc++/signal_system.h>
 #include "LString.h"
 #include "form1.h"
@@ -88,11 +89,11 @@ private:
 	int otherkeymap;
 	
 	///
-	FD_KeyMap * fd_form_keymap;
+	boost::scoped_ptr<FD_KeyMap> fd_form_keymap;
 	///
-	Combox * Language;
+	boost::scoped_ptr<Combox> Language;
 	///
-	Combox * Language2;
+	boost::scoped_ptr<Combox> Language2;
 	///
 	string & prim_lang;
 	///

@@ -46,13 +46,13 @@ Buffer * BufferView::buffer() const
 
 LyXScreen * BufferView::screen() const
 {
-	return pimpl_->screen_;
+	return pimpl_->screen_.get();
 }
 
 
 WorkArea * BufferView::workarea() const
 {
-	return pimpl_->workarea_;
+	return &pimpl_->workarea_;
 }
 
 
@@ -233,7 +233,7 @@ bool BufferView::active() const
 
 int BufferView::workWidth() const
 {
-    return pimpl_->workarea_->workWidth();
+    return pimpl_->workarea_.workWidth();
 }
 
 

@@ -205,12 +205,13 @@ TransFSM::TransFSM():
 
 // TransManager
 
+// Initialize static member.
+Trans TransManager::default_;
+
+
 TransManager::TransManager()
 	: active_(0), t1_(new Trans), t2_(new Trans)
 {}
-
-
-Trans * TransManager::default_ = new Trans;
 
 
 TransManager::~TransManager() 
@@ -263,7 +264,7 @@ void TransManager::EnableSecondary()
 
 void TransManager::DisableKeymap()
 {
-	active_ = default_;
+	active_ = &default_;
 	lyxerr[Debug::KBMAP] << "Disabling keymap" << endl;
 }
 
@@ -326,7 +327,7 @@ void TransManager::insert(string const & str, LyXText * text)
 
 void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 {
-	if (c == 0 && active_ != default_) {
+	if (c == 0 && active_ != &default_) {
 		// A deadkey was pressed that cannot be printed
 		// or a accent command was typed in the minibuffer
 		KmodInfo i;
@@ -337,7 +338,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		}
 	}
 	
-	if (active_ == default_ || c == 0) {
+	if (active_ == &default_ || c == 0) {
 		KmodInfo i;
 		i.accent = accent;
 		i.allowed = lyx_accent_table[accent].native;

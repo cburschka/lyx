@@ -135,7 +135,7 @@ private:
 	///
 	Trans * t2_;
 	///
-	static Trans * default_;
+	static Trans default_;
 	///
 	CharacterSet chset_;
 	///
