@@ -1,3 +1,8 @@
+2003-07-30  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxfunc.C (dispatch): do not mark the buffer dirty if the action
+	is disabled (bug 1232)
+
 2003-07-30	Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* factory.C: limited 'arg' scope
@@ -14,7 +19,6 @@
 	
 	* lyx_main.C (LyX):
 	* BufferView_pimpl.C (loadLyXFile): fix to bugs 1287 and 1297 + ws
-
 	
 2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 

@@ -1621,7 +1621,8 @@ exit_with_message:
 		view()->fitCursor();
 
 		// If we executed a mutating lfun, mark the buffer as dirty
-		if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
+		if (!getStatus(ev).disabled()
+		    && !lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(ev.action, LyXAction::ReadOnly))
 			view()->buffer()->markDirty();
 	}
