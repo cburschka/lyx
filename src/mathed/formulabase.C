@@ -477,10 +477,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	MathTextCodes varcode = LM_TC_MIN;
 	bool was_macro = mathcursor->InMacroMode();
 	bool sel = false;
-	bool space_on = false;
 	bool was_selection = mathcursor->Selection();
 	RESULT result = DISPATCHED;
-	static MathSpaceInset * sp = 0;
 
 	hideInsetCursor(bv);
 
@@ -690,27 +688,18 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		}
 		break;
 
-	case LFUN_INSERT_MATH:
+	case LFUN_INSERT_MATRIX:
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->Interpret(arg);
+			mathcursor->Interpret("matrix " + arg);
 			updateLocal(bv);
 		}
 		break;
 
-	case LFUN_INSERT_MATRIX:
-		if (mathcursor) {
+	case LFUN_INSERT_MATH:
+		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-			int m = 1;
-			int n = 1;
-			string v_align;
-			string h_align;
-			istringstream is(arg.c_str());
-			is >> m >> n >> v_align >> h_align;
-			MathArrayInset * p = new MathArrayInset(m, n);
-			p->valign(v_align[0]);
-			p->halign(h_align);
-			mathcursor->insert(p);
+			mathcursor->Interpret(arg);
 			updateLocal(bv);
 		}
 		break;
@@ -764,7 +753,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PROTECTEDSPACE:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->insert(new MathSpaceInset(1));
-		space_on = true;
 		updateLocal(bv);
 		break;
 
@@ -936,7 +924,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_BOP;
 				mathcursor->insert(c, code);
-			} else if (strchr(latex_special_chars, c) && c!= '_') {
+			} else if (strchr(latex_special_chars, c) && c != '_') {
 				MathTextCodes code = mathcursor->getLastCode();
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_SPECIAL;
@@ -960,10 +948,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 					mathcursor->insert(c, LM_TC_TEXTRM);
 				} else if (was_macro) {
 					mathcursor->MacroModeClose();
-				} else if (sp) {
-					int isp = (sp->GetSpace()<5) ? sp->GetSpace()+1: 0;
-					sp->SetSpace(isp);
-					space_on = true;
 				} else {
 					if (!mathcursor->pop())
 						result = FINISHED;
@@ -996,9 +980,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	
 	//if (mathcursor)
 	//		updateLocal(bv);
-
-	if (sp && !space_on)
-		sp = 0;
 
 	if (mathcursor && (mathcursor->Selection() || was_selection))
 		toggleInsetSelection(bv);

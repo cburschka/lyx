@@ -392,9 +392,9 @@ void do_insert(MathArray & dat, unsigned char ch, MathTextCodes fcode)
 }
 
 
-void handle_frac(MathArray & dat, MathInsetTypes t)
+void handle_frac(MathArray & dat, string const & name)
 {
-	MathFracInset * p = new MathFracInset(t);
+	MathFracInset * p = new MathFracInset(name);
 	mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
 	mathed_parse(p->cell(1), FLAG_BRACE | FLAG_BRACE_LAST);
 	dat.push_back(p);
@@ -723,15 +723,15 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_CHOOSE:
-			handle_frac(array, LM_OT_ATOP);	
+			handle_frac(array, "atop");	
 			break;
 
 		case LM_TK_STACK:
-			handle_frac(array, LM_OT_STACKREL);	
+			handle_frac(array, "stackrel");	
 			break;
 
 		case LM_TK_FRAC:
-			handle_frac(array, LM_OT_FRAC);	
+			handle_frac(array, "frac");	
 			break;
 
 		case LM_TK_SQRT:

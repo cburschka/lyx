@@ -475,10 +475,20 @@ void MathMatrixInset::mutate(short newtype)
 		case LM_OT_EQNARRAY:
 			switch (newtype) {
 				case LM_OT_SIMPLE:
-				case LM_OT_EQUATION:
+				case LM_OT_EQUATION: {
+					string label;
+					bool allnonum = true;
+					for (int r = 0; r < nrows(); ++r) {
+						label += label_[r];
+						if (!nonum_[r])
+							allnonum = false;
+					}
 					glueall();
 					mutate(newtype);
+					label_[0] = label;
+					nonum_[0] = allnonum;
 					break;
+				}
 
 				case LM_OT_ALIGN:
 				default:

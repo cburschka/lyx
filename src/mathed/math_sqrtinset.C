@@ -12,7 +12,7 @@
 
 
 MathSqrtInset::MathSqrtInset()
-	: MathInset("sqrt", LM_OT_SQRT, 1)
+	: MathInset(1)
 {}
 
 

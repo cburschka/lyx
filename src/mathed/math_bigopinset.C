@@ -11,7 +11,7 @@
 using std::ostream;
 
 MathBigopInset::MathBigopInset(string const & name, int id)
-	: MathScriptInset(true, false), lims_(0), sym_(id)
+	: MathScriptInset(false, true), lims_(0), sym_(id)
 {
 	SetName(name);
 }
@@ -101,9 +101,12 @@ void MathBigopInset::draw(Painter & pain, int x, int y)
 		t = LM_TC_TEXTRM;
 	}
 	if (sym_ == LM_oint) {
-		pain.arc(x, y - 5 * width_ / 4, width_, width_, 0, 360 * 64,
-			 LColor::mathline);
-		++x;
+		int wid;
+		int asc;
+		int des;
+		mathed_char_dim(t, size(), LM_int, asc, des, wid);
+		wid += 2;
+		pain.arc(x - 1, y - (asc - des) / 2, wid, wid, 0, 360 * 64, LColor::mathline);
 	}
 
 	int asc, des, wid;

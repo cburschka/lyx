@@ -13,9 +13,9 @@
 class MathSpaceInset : public MathInset {
 public:
 	///
-	MathSpaceInset(int sp, MathInsetTypes ot = LM_OT_SPACE);
+	explicit MathSpaceInset(int sp);
 	///
-	MathInset *  clone() const;
+	MathInset * clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

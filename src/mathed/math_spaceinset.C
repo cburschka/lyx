@@ -11,8 +11,8 @@
 #include "support/LOstream.h"
 
 
-MathSpaceInset::MathSpaceInset(int sp, MathInsetTypes ot)
-	: MathInset("", ot), space_(sp)
+MathSpaceInset::MathSpaceInset(int sp)
+	: space_(sp)
 {}
 
 

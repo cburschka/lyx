@@ -12,7 +12,7 @@ using std::ostream;
 
 
 MathDotsInset::MathDotsInset(string const & name, int id)
-	: MathInset(name, LM_OT_DOTS), code_(id)
+	: MathInset(0, name), code_(id)
 {}
 
 

@@ -23,6 +23,7 @@
 #include <cctype>
 
 #include "math_inset.h"
+#include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_cursor.h"
 #include "math_macro.h"
@@ -560,7 +561,8 @@ void MathCursor::SetSize(MathStyles size)
 
 void MathCursor::Interpret(string const & s)
 {
-	lyxerr << "Interpret: '" << s << "'\n";
+	lyxerr << "Interpret: '" << s << "'  ('" << s.substr(0, 7)  << "' " <<
+in_word_set(s) << " \n";
 
 	if (s[0] == '^') {
 		MathScriptInset * p = nearbyScriptInset();
@@ -604,6 +606,20 @@ void MathCursor::Interpret(string const & s)
 			p = new MathRootInset;
 		else if (MathMacroTable::hasTemplate(s))
 			p = new MathMacro(MathMacroTable::provideTemplate(s));
+		else if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
+			int m = 1;
+			int n = 1;
+			string v_align;
+			string h_align;
+			std::istringstream is(s.substr(7).c_str());
+			is >> m >> n >> v_align >> h_align;
+			m = std::max(1, m);
+			n = std::max(1, n);
+			MathArrayInset * pp = new MathArrayInset(m, n);
+			pp->valign(v_align[0]);
+			pp->halign(h_align);
+			p = pp;
+		}
 		else
 			p = new MathFuncInset(s, LM_OT_UNDEF);
 	} else {
@@ -624,11 +640,11 @@ void MathCursor::Interpret(string const & s)
 				break;
 
 			case LM_TK_STACK:
-				p = new MathFracInset(LM_OT_STACKREL);
+				p = new MathFracInset("stackrel");
 				break;
 
 			case LM_TK_FRAC:
-				p = new MathFracInset(LM_OT_FRAC);
+				p = new MathFracInset("frac");
 				break;
 
 			case LM_TK_SQRT:
@@ -709,7 +725,7 @@ void MathCursor::MacroModeClose()
 				imacro->SetName(l->name);
 		} else {
 			Left();
-			if (nextInset()->GetType() == LM_OT_ACCENT) 
+			if (nextInset()->isAccentInset()) 
 				setAccent(
 					static_cast<MathAccentInset*>(nextInset())->getAccentCode());
 			array().erase(cursor_);

@@ -24,7 +24,7 @@
 #include "Painter.h"
 
 MathRootInset::MathRootInset()
-	: MathInset("sqrt", LM_OT_SQRT, 2)
+	: MathInset(2)
 {}
 
 

@@ -134,26 +134,6 @@ enum MathInsetTypes  {
 	///
 	LM_OT_FUNCLIM,
 	///
-	LM_OT_SCRIPT,
-	///
-	LM_OT_SPACE,
-	///
-	LM_OT_DOTS,
-	/// A fraction
-	LM_OT_FRAC,
-	///
-	LM_OT_ATOP,
-	///
-	LM_OT_STACKREL,
-	/// A radical
-	LM_OT_SQRT,
-	/// A delimiter
-	LM_OT_DELIM,
-	/// A decoration
-	LM_OT_DECO,
-	/// An accent
-	LM_OT_ACCENT,
-	///
 	LM_OT_MACRO,
 	///
 	LM_OT_MAX

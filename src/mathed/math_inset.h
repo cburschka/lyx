@@ -43,8 +43,9 @@ public:
 	    type and font-size
 	*/
 	///
-	explicit
-	MathInset (string const & nm = string(), MathInsetTypes ot = LM_OT_SIMPLE, int na = 0);
+	explicit MathInset
+	(int na = 0, string const & nm = string(), MathInsetTypes ot = LM_OT_SIMPLE);
+
 	/// The virtual base destructor
 	virtual ~MathInset() {}
 
@@ -173,6 +174,8 @@ public:
 	bool covers(int x, int y) const;
 	/// Identifies ScriptInsets
 	virtual bool isScriptInset() const { return false; }
+	/// Identifies AccentInsets
+	virtual bool isAccentInset() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 

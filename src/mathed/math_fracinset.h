@@ -14,7 +14,7 @@
 class MathFracInset : public MathInset {
 public:
 	///
-	explicit MathFracInset(MathInsetTypes ot = LM_OT_FRAC);
+	explicit MathFracInset(const string & name);
 	///
 	virtual MathInset * clone() const;
 	///

@@ -1,3 +1,9 @@
+2001-07-04 André Pönitz  <poenitz@htwm.de>
+
+	* math_*inset.C: Change order of arguments in MathInset constructor 
+
+	* math_cursor.C: Remove broken "increase space" feature for a while
+
 2001-07-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* formulabase.C (mathDispatchInsertMath): Create an inline formula.

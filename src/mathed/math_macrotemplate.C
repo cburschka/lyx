@@ -10,12 +10,12 @@
 
 
 MathMacroTemplate::MathMacroTemplate() :
-	MathInset("undefined", LM_OT_MACRO, 1), numargs_(0), users_()
+	MathInset(1, "undefined", LM_OT_MACRO), numargs_(0), users_()
 {}
 
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs) :
-	MathInset(nm, LM_OT_MACRO, 1), numargs_(numargs), users_()
+	MathInset(1, nm, LM_OT_MACRO), numargs_(numargs), users_()
 {}
 
 

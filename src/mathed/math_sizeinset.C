@@ -9,7 +9,7 @@
 
 
 MathSizeInset::MathSizeInset(MathStyles st)
-	: MathInset("", LM_OT_SIMPLE, 1), style_(st)
+	: MathInset(1), style_(st)
 {
 	name_ = verbose();
 }

@@ -15,7 +15,7 @@ using std::ostream;
 
 
 MathDecorationInset::MathDecorationInset(int d)
-	: MathInset("", LM_OT_DECO, 1), deco_(d)
+	: MathInset(1), deco_(d)
 {
 	upper_ = deco_ != LM_underline && deco_ != LM_underbrace;
 }

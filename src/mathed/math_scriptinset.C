@@ -15,11 +15,11 @@
 
 
 MathScriptInset::MathScriptInset()
-	: MathInset("script", LM_OT_SCRIPT, 2), up_(false), down_(false)
+	: MathInset(2), up_(false), down_(false)
 {}
 
 MathScriptInset::MathScriptInset(bool up, bool down)
-	: MathInset("script", LM_OT_SCRIPT, 2), up_(up), down_(down)
+	: MathInset(2), up_(up), down_(down)
 {}
 
 

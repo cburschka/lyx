@@ -27,6 +27,8 @@ public:
 	void Metrics(MathStyles st);
 	///
 	int getAccentCode() const;
+	///
+	bool isAccentInset() const { return true; }
 protected:
 	///
 	byte c;

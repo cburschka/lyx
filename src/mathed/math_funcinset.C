@@ -18,7 +18,7 @@ extern LyXFont WhichFont(short type, int size);
 
 
 MathFuncInset::MathFuncInset(string const & nm, MathInsetTypes ot)
-	: MathInset(nm, ot)
+	: MathInset(0, nm, ot)
 {
 	lims_ = (GetType() == LM_OT_FUNCLIM);
 }

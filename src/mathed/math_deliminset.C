@@ -13,7 +13,7 @@
 
 
 MathDelimInset::MathDelimInset(int l, int r)
-	: MathInset("", LM_OT_DELIM, 1), left_(l), right_(r)
+	: MathInset(1), left_(l), right_(r)
 {}
 
 

@@ -147,7 +147,7 @@ void MathMacroTable::builtinMacros()
 
 	// binom has two arguments
 	{
-		MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
+		MathFracInset * frac = new MathFracInset("atop");
 		frac->cell(0).push_back(new MathMacroArgument(1));
 		frac->cell(1).push_back(new MathMacroArgument(2));
 

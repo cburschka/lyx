@@ -8,14 +8,12 @@
 using std::ostream;
 
 MathAccentInset::MathAccentInset(byte cx, MathTextCodes f, int cd)
-	: MathInset("", LM_OT_ACCENT),
-	  c(cx), fn(f), code(cd), inset(0)
+	: MathInset(1), c(cx), fn(f), code(cd), inset(0)
 {}
 
 
 MathAccentInset::MathAccentInset(MathInset * ins, int cd)
-	: MathInset("", LM_OT_ACCENT),
-	  c(0), fn(LM_TC_MIN), code(cd), inset(ins)
+	: MathInset(0), c(0), fn(LM_TC_MIN), code(cd), inset(ins)
 {}
 
 

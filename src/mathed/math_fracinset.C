@@ -13,12 +13,9 @@
 #include "support/LOstream.h"
 
 
-MathFracInset::MathFracInset(MathInsetTypes ot)
-	: MathInset("frac", ot, 2)
-{
-	if (objtype == LM_OT_STACKREL) 
-		SetName("stackrel");
-}
+MathFracInset::MathFracInset(string const & name)
+	: MathInset(2, name)
+{}
 
 
 MathInset * MathFracInset::clone() const
@@ -46,7 +43,7 @@ void MathFracInset::draw(Painter & pain, int x, int y)
 	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
 	
-	if (objtype == LM_OT_FRAC)
+	if (name() == "frac")
 		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::mathline);
 }
 
