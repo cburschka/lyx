@@ -3,6 +3,12 @@
 	* insetert.[Ch] (selectNextWordToSpellcheck): new method.
 	Returns string(), so nothing in an ERT inset is spellchecked.
 
+	* insetgraphics.C (draw): print the filename if not displaying the
+	image.
+	(width): make sure that the width and draw methods are consistent.
+	(updateInset): don't even load the image into cache if not displaying
+	it.
+
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* various files (selectNextWord): renamed as

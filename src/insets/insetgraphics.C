@@ -256,11 +256,23 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
 		return pixmap->getWidth();
 	else {
-		string const msg = statusMessage();
 		int font_width = 0;
-		
-		if (!msg.empty())
-			font_width = lyxfont::width(msg, font);
+
+		LyXFont msgFont(font);
+		msgFont.setFamily(LyXFont::SANS_FAMILY);
+
+		string const justname = OnlyFilename (params.filename);
+		if (!justname.empty()) {
+			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
+			font_width = lyxfont::width(justname, msgFont);
+		}
+
+		string const msg = statusMessage();
+		if (!msg.empty()) {
+			msgFont.setSize(LyXFont::SIZE_TINY);
+			int const msg_width = lyxfont::width(msg, msgFont);
+			font_width = std::max(font_width, msg_width);
+		}
 		
 		return std::max(50, font_width + 15);
 	}
@@ -291,7 +303,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (params.display != InsetGraphicsParams::NONE &&
+		if (lyxrc.display_graphics != "no" &&
+		    params.display != InsetGraphicsParams::NONE &&
 		    cacheHandle.get())
 			status = cacheHandle->getImageStatus();
 		
@@ -304,22 +317,25 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			return;
 		}
 
-		
 		paint.rectangle(old_x + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
 
+		// Print the file name.
+		LyXFont msgFont(font);
+		msgFont.setFamily(LyXFont::SANS_FAMILY);
+
+		string const justname = OnlyFilename (params.filename);
+		if (!justname.empty()) {
+			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
+			paint.text(old_x + 8, 
+				   baseline - lyxfont::maxAscent(msgFont) - 4,
+				   justname, msgFont);
+		}
+
+		// Print the message.
 		string const msg = statusMessage();
 		if (!msg.empty()) {
-			// Print the message.
-			LyXFont msgFont(font);
-			msgFont.setFamily(LyXFont::SANS_FAMILY);
-			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			string const justname = OnlyFilename (params.filename);
-			paint.text(old_x + 8, 
-			           baseline - lyxfont::maxAscent(msgFont) - 4,
-			           justname, msgFont);
-
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			paint.text(old_x + 8, baseline - 4, msg, msgFont);
 		}
@@ -784,7 +800,9 @@ void InsetGraphics::updateInset() const
 
 	// We do it this way so that in the face of some error, we will still
 	// be in a valid state.
-	if (!params.filename.empty()) {
+	if (!params.filename.empty() &&
+	    lyxrc.display_graphics != "no" &&
+	    params.display != InsetGraphicsParams::NONE) {
 		temp = gc.addFile(params.filename);
 	}
 
