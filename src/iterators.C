@@ -10,9 +10,9 @@ ParIterator & ParIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index >= 0) {
 			++p.index;
-			Paragraph * par = p.it.getInset()->getFirstParagraph(p.index);
-			if (par) {
-				positions.push(ParPosition(par));
+			ParagraphList * plist = p.it.getInset()->getParagraphs(p.index);
+			if (plist && !plist->empty()) {
+				positions.push(ParPosition(&plist->front()));
 				return *this;
 			}
 			++p.it;
@@ -25,10 +25,10 @@ ParIterator & ParIterator::operator++()
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.par->insetlist.end();
 		for (; p.it != end; ++p.it) {
-			Paragraph * par = p.it.getInset()->getFirstParagraph(0);
-			if (par) {
+			ParagraphList * plist = p.it.getInset()->getParagraphs(0);
+			if (plist && !plist->empty()) {
 				p.index = 0;
-				positions.push(ParPosition(par));
+				positions.push(ParPosition(&plist->front()));
 				return *this;
 			}
 		}
@@ -52,9 +52,9 @@ ParConstIterator & ParConstIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index >= 0) {
 			++p.index;
-			Paragraph * par = p.it.getInset()->getFirstParagraph(p.index);
-			if (par) {
-				positions.push(ParPosition(par));
+			ParagraphList * plist = p.it.getInset()->getParagraphs(p.index);
+			if (plist && !plist->empty()) {
+				positions.push(ParPosition(&plist->front()));
 				return *this;
 			}
 			++p.it;
@@ -67,10 +67,10 @@ ParConstIterator & ParConstIterator::operator++()
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.par->insetlist.end();
 		for (; p.it != end; ++p.it) {
-			Paragraph * par = p.it.getInset()->getFirstParagraph(0);
-			if (par) {
+			ParagraphList * plist = p.it.getInset()->getParagraphs(0);
+			if (plist && !plist->empty()) {
 				p.index = 0;
-				positions.push(ParPosition(par));
+				positions.push(ParPosition(&plist->front()));
 				return *this;
 			}
 		}

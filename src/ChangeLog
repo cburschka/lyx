@@ -1,3 +1,9 @@
+
+2003-05-05 André Pönitz <poenitz@gmx.net>
+
+	* iterator.C: 
+	* undo_funcs.C: use getParagraphs() instead of getFirstParagraph()
+
 2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* bufferparams.C: Output warning if a document with missing

@@ -2522,10 +2522,10 @@ void InsetTabular::getSelection(int & srow, int & erow,
 }
 
 
-Paragraph * InsetTabular::getFirstParagraph(int i) const
+ParagraphList * InsetTabular::getParagraphs(int i) const
 {
 	return (i < tabular->GetNumberOfCells())
-		? tabular->GetCellInset(i)->getFirstParagraph(0)
+		? tabular->GetCellInset(i)->getParagraphs(0)
 		: 0;
 }
 

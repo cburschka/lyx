@@ -198,7 +198,7 @@ public:
 	///
 	Inset * getInsetFromID(int id) const;
 	///
-	Paragraph * getFirstParagraph(int) const;
+	ParagraphList * getParagraphs(int) const;
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///

@@ -2382,9 +2382,9 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 }
 
 
-Paragraph * InsetText::getFirstParagraph(int i) const
+ParagraphList * InsetText::getParagraphs(int i) const
 {
-	return (i == 0) ? &*(paragraphs.begin()) : 0;
+	return (i == 0) ? const_cast<ParagraphList*>(&paragraphs) : 0;
 }
 
 

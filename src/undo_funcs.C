@@ -17,7 +17,6 @@
 #include "insets/insettext.h"
 #include "debug.h"
 #include "support/LAssert.h"
-
 #include "iterators.h"
 
 #include <vector>
@@ -51,11 +50,11 @@ Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
 {
 	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
 	if (inset) {
-		Paragraph * result = inset->getFirstParagraph(0);
-		if (result)
-			return result;
+		ParagraphList * result = inset->getParagraphs(0);
+		if (result && !result->empty())
+			return &result->front();
 	}
-	return &*bv->text->ownerParagraphs().begin();
+	return &bv->text->ownerParagraphs().front();
 }
 
 

@@ -29,6 +29,7 @@ class Painter;
 class LyXText;
 class LyXLex;
 class Paragraph;
+class ParagraphList;
 class LyXCursor;
 class FuncRequest;
 class WordLangTuple;
@@ -267,7 +268,7 @@ public:
 	virtual Inset * getInsetFromID(int /*id*/) const { return 0; }
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!
-	virtual Paragraph * getFirstParagraph(int /*num*/) const { return 0; }
+	virtual ParagraphList * getParagraphs(int /*num*/) const { return 0; }
 	///
 	virtual bool haveParagraphs() const {
 		return false;
