@@ -152,15 +152,16 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
+void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int)
 {
-	//lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
-
-	if (!mathcursor)
-		mathcursor = new MathCursor(this, x == 0);
+	delete mathcursor;
+	mathcursor = new MathCursor(this, true);
 	metrics(bv);
+	mathcursor->setPos(x, y);
+	//lyxerr << "setting pos to " << x << "," << y << "\n";
+	
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
@@ -169,8 +170,12 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 
 void InsetFormulaBase::edit(BufferView * bv, bool front)
 {
-	// looks hackish but seems to work
-	edit(bv, front ? 0 : 1, 0, 0);
+	if (!bv->lockInset(this))
+		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
+	delete mathcursor;
+	mathcursor = new MathCursor(this, front);
+	metrics(bv);
+	bv->updateInset(this, false);
 }
 
 
@@ -191,8 +196,8 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->getPos(x, y);
-	x += xo_;
-	y += yo_;
+	//x -= xo_;
+	y -= yo_;
 	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
 }
 
@@ -298,10 +303,9 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 		default:
 		case 1:
 			// left click
-			if (!mathcursor) {
-				mathcursor = new MathCursor(this, x == 0);
-				metrics(bv);
-			} 
+			delete mathcursor;
+			mathcursor = new MathCursor(this, x == 0);
+			metrics(bv);
 			first_x = x;
 			first_y = y;
 			mathcursor->selClear();
@@ -618,12 +622,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_DELIM:
 	{
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
-		string ls;
-		string rs;
+		string ls = "(";
+		string rs = ")";
 		istringstream is(arg.c_str());
 		is >> ls >> rs;
 		if (!is) {
 			lyxerr << "can't parse delimiters from '" << arg << "'\n";
+			lyxerr << "left: '" << ls << "'  rs: '" << rs << "'\n";
 			break;
 		}
 		bv->lockedInsetStoreUndo(Undo::EDIT);
