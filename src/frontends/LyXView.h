@@ -144,8 +144,6 @@ protected:
 	boost::scoped_ptr<Menubar> menubar_;
 	/// view's toolbar
 	boost::scoped_ptr<Toolbar> toolbar_;
-	/// view's command buffer controller
-	boost::scoped_ptr<ControlCommandBuffer> const controlcommand_;
 
 private:
 	/**
@@ -166,6 +164,12 @@ private:
 	boost::scoped_ptr<LyXFunc> lyxfunc_;
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
+
+protected:
+	/// view's command buffer controller
+	// this has to be declared _after_ lyxfunc_ as its initialization depends
+	// on it!
+	boost::scoped_ptr<ControlCommandBuffer> const controlcommand_;
 };
 
 #endif // LYXVIEW_H
