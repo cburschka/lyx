@@ -404,7 +404,7 @@ void LyXAction::init()
 
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset",
 		  N_("Show the inset's dialog"), Noop },
-		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-next-inset",
+		{ LFUN_DIALOG_SHOW_NEXT_INSET, "dialog-show-next-inset",
 		  N_("Show the inset's dialog"), Noop },
 		{ LFUN_DIALOG_UPDATE, "dialog-update",
 		  N_("Update the dialog"), Noop },

@@ -1,3 +1,8 @@
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* LyXAction.C (init): fix bug in poplating array with multiple entries
+	with the same LFUN (spotted by JMarc).
+
 2003-03-10  John Levon  <levon@movementarian.org>
 
 	* text.C:
