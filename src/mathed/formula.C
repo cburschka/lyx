@@ -331,7 +331,7 @@ int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
 }
 
 
-int InsetFormula::Ascii(Buffer const *, ostream & os) const
+int InsetFormula::Ascii(Buffer const *, ostream & os, int) const
 {
     par->Write(os, false);
     return 0;
@@ -340,13 +340,13 @@ int InsetFormula::Ascii(Buffer const *, ostream & os) const
 
 int InsetFormula::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-    return Ascii(buf, os);
+    return Ascii(buf, os, 0);
 }
 
 
 int InsetFormula::DocBook(Buffer const * buf, ostream & os) const
 {
-    return Ascii(buf, os);
+    return Ascii(buf, os, 0);
 }
 
 

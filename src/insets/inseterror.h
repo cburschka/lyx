@@ -51,7 +51,7 @@ public:
 	///
 	int Latex(Buffer const *, std::ostream &, bool, bool) const { return 0; }
 	///
-	int Ascii(Buffer const *, std::ostream &) const { return 0; }
+	int Ascii(Buffer const *, std::ostream &, int) const { return 0; }
 	///
 	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///

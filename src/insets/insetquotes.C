@@ -259,7 +259,7 @@ int InsetQuotes::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetQuotes::Ascii(Buffer const *, ostream & os) const
+int InsetQuotes::Ascii(Buffer const *, ostream & os, int) const
 {
 	os << "\"";
 	return 0;

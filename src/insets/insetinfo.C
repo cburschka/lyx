@@ -144,7 +144,7 @@ int InsetInfo::Latex(Buffer const *, ostream &,
 }
 
 
-int InsetInfo::Ascii(Buffer const *, ostream &) const
+int InsetInfo::Ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }

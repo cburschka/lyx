@@ -199,7 +199,7 @@ int InsetCommand::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetCommand::Ascii(Buffer const *, ostream &) const
+int InsetCommand::Ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }

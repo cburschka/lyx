@@ -108,7 +108,8 @@ void InsetText::init(InsetText const * ins)
 InsetText::~InsetText()
 {
     for(Cache::const_iterator cit=cache.begin(); cit != cache.end(); ++cit)
-	deleteLyXText((*cit).first);
+	delete (*cit).second;
+//	deleteLyXText((*cit).first);
     LyXParagraph * p = par->next;
     delete par;
     while(p) {
@@ -1019,6 +1020,17 @@ int InsetText::Latex(Buffer const * buf, ostream & os, bool, bool) const
     TexRow texrow;
     buf->latexParagraphs(os, par, 0, texrow);
     return texrow.rows();
+}
+
+
+int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
+{
+    LyXParagraph * p = par;
+    while (p) {
+	os << buf->asciiParagraph(p, linelen);
+	p = p->next;
+    }
+    os << "\n";
 }
 
 

@@ -1,3 +1,25 @@
+2000-09-26  Juergen Vigna  <jug@sad.it>
+
+	* src/buffer.C (asciiParagraph): new function.
+	(writeFileAscii): new function with parameter ostream.
+	(writeFileAscii): use now asciiParagraph.
+
+	* various inset files: added the linelen parameter to the Ascii-func.
+	
+	* src/tabular.C (Write): fixed error in writing file introduced by
+	the last changes from Lars.
+
+	* lib/bind/menus.bind: removed not supported functions.
+
+	* src/insets/insettext.C (Ascii): implemented this function.
+
+	* src/insets/lyxinset.h (Ascii): added linelen parameter.
+
+	* src/tabular.C (write_attribute[int,string,bool]): new functions.
+	(Write): use of the write_attribute functions.
+
+	* src/bufferlist.C (close): fixed reasking question!
+
 2000-09-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/unlink.C src/support/remove.C src/support/mkdir.C:

@@ -92,6 +92,7 @@
 #include "frontends/Dialogs.h"
 #include "encoding.h"
 #include "exporter.h"
+#include "Lsstream.h"
 
 using std::ostream;
 using std::ofstream;
@@ -1288,6 +1289,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 }
 
 
+#if 0
 void Buffer::writeFileAscii(string const & fname, int linelen) 
 {
 	Inset * inset;
@@ -1503,7 +1505,243 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
    
 	ofs << "\n";
 }
+//----------------------------------------------------------------------------
+#else
+//----------------------------------------------------------------------------
+string const Buffer::asciiParagraph(LyXParagraph const * par, int linelen) const
+{
+	ostringstream buffer;
+	LyXFont font1, font2;
+	Inset const * inset;
+	char c, footnoteflag = 0, depth = 0;
+	string tmp;
+	LyXParagraph::size_type i;
+	int j;
+	int ltype = 0;
+	int ltype_depth = 0;
+	int actcell = 0;
+	int currlinelen = 0;
+	bool ref_printed = false;
 
+	string fname1 = TmpFileName();
+
+	int noparbreak = 0;
+	int islatex = 0;
+	if (
+#ifndef NEW_INSETS
+		par->footnoteflag != LyXParagraph::NO_FOOTNOTE ||
+#endif
+		!par->previous
+#ifndef NEW_INSETS
+		|| par->previous->footnoteflag == LyXParagraph::NO_FOOTNOTE
+#endif
+		){
+#ifndef NEW_INSETS
+		/* begins a footnote environment ? */ 
+		if (footnoteflag != par->footnoteflag) {
+			footnoteflag = par->footnoteflag;
+			if (footnoteflag) {
+				j = strlen(string_footnotekinds[par->footnotekind])+4;
+				if ((linelen > 0) &&
+				    ((currlinelen + j) > linelen)) {
+					buffer << "\n";
+					currlinelen = 0;
+				}
+				buffer <<
+				    "([" <<
+				    string_footnotekinds[par->footnotekind] <<
+				    "] ";
+				currlinelen += j;
+			}
+		}
+#endif
+		/* begins or ends a deeper area ?*/ 
+		if (depth != par->depth) {
+			if (par->depth > depth) {
+				while (par->depth > depth) {
+					++depth;
+				}
+			}
+			else {
+				while (par->depth < depth) {
+					--depth;
+				}
+			}
+		}
+		
+		/* First write the layout */
+		tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
+		if (tmp == "Itemize") {
+			ltype = 1;
+			ltype_depth = depth+1;
+		} else if (tmp == "Enumerate") {
+			ltype = 2;
+			ltype_depth = depth+1;
+		} else if (strstr(tmp.c_str(), "ection")) {
+			ltype = 3;
+			ltype_depth = depth+1;
+		} else if (strstr(tmp.c_str(), "aragraph")) {
+			ltype = 4;
+			ltype_depth = depth+1;
+		} else if (tmp == "Description") {
+			ltype = 5;
+			ltype_depth = depth+1;
+		} else if (tmp == "Abstract") {
+			ltype = 6;
+			ltype_depth = 0;
+		} else if (tmp == "Bibliography") {
+			ltype = 7;
+			ltype_depth = 0;
+		} else {
+			ltype = 0;
+			ltype_depth = 0;
+		}
+		
+		/* maybe some vertical spaces */ 
+		
+		/* the labelwidthstring used in lists */ 
+		
+		/* some lines? */ 
+		
+		/* some pagebreaks? */ 
+		
+		/* noindent ? */ 
+		
+		/* what about the alignment */ 
+	} else {
+#ifndef NEW_INSETS
+		/* dummy layout, that means a footnote ended */ 
+		footnoteflag = LyXParagraph::NO_FOOTNOTE;
+		buffer << ") ";
+		noparbreak = 1;
+#else
+		lyxerr << "Should this ever happen?" << endl;
+#endif
+	}
+      
+	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
+	actcell = 0;
+	for (i = 0; i < par->size(); ++i) {
+		if (!i && !footnoteflag && !noparbreak){
+			buffer << "\n\n";
+			for(j = 0; j < depth; ++j)
+				buffer << "  ";
+			currlinelen = depth * 2;
+			switch(ltype) {
+			case 0: /* Standard */
+			case 4: /* (Sub)Paragraph */
+			case 5: /* Description */
+				break;
+			case 6: /* Abstract */
+				buffer << "Abstract\n\n";
+				break;
+			case 7: /* Bibliography */
+				if (!ref_printed) {
+					buffer << "References\n\n";
+					ref_printed = true;
+				}
+				break;
+			default:
+				buffer << par->labelstring << " ";
+				break;
+			}
+			if (ltype_depth > depth) {
+				for(j = ltype_depth - 1; j > depth; --j)
+					buffer << "  ";
+				currlinelen += (ltype_depth-depth)*2;
+			}
+		}
+		font2 = par->GetFontSettings(params, i);
+		if (font1.latex() != font2.latex()) {
+			if (font2.latex() == LyXFont::OFF)
+				islatex = 0;
+			else
+				islatex = 1;
+		} else {
+			islatex = 0;
+		}
+		c = par->GetChar(i);
+		if (islatex)
+			continue;
+		switch (c) {
+		case LyXParagraph::META_INSET:
+			if ((inset = par->GetInset(i))) {
+				if (!inset->Ascii(this, buffer)) {
+					string dummy;
+					string s = rsplit(buffer.str(),
+							  dummy, '\n');
+					currlinelen += s.length();
+				} else {
+					// to be sure it breaks paragraph
+					currlinelen += linelen;
+				}
+			}
+			break;
+		case LyXParagraph::META_NEWLINE:
+			buffer << "\n";
+			for(j = 0; j < depth; ++j)
+				buffer << "  ";
+			currlinelen = depth * 2;
+			if (ltype_depth > depth) {
+				for(j = ltype_depth;
+				    j > depth; --j)
+					buffer << "  ";
+				currlinelen += (ltype_depth - depth) * 2;
+			}
+			break;
+		case LyXParagraph::META_HFILL: 
+			buffer << "\t";
+			break;
+		case '\\':
+			buffer << "\\";
+			break;
+		default:
+			if ((linelen > 0) && (currlinelen > (linelen - 10)) &&
+			    (c == ' ') && ((i + 2) < par->size()))
+			{
+				buffer << "\n";
+				for(j = 0; j < depth; ++j)
+					buffer << "  ";
+				currlinelen = depth * 2;
+				if (ltype_depth > depth) {
+					for(j = ltype_depth;
+					    j > depth; --j)
+						buffer << "  ";
+					currlinelen += (ltype_depth-depth)*2;
+				}
+			} else if (c != '\0')
+				buffer << c;
+			else if (c == '\0')
+				lyxerr.debug() << "writeAsciiFile: NULL char in structure." << endl;
+			++currlinelen;
+			break;
+		}
+	}
+	return buffer.str();
+}
+
+
+void Buffer::writeFileAscii(string const & fname, int linelen) 
+{
+	ofstream ofs(fname.c_str());
+	if (!ofs) {
+		WriteFSAlert(_("Error: Cannot write file:"), fname);
+		return;
+	}
+	writeFileAscii(ofs, linelen);
+}
+
+
+void Buffer::writeFileAscii(ostream & ofs, int linelen) 
+{
+	LyXParagraph * par = paragraph;
+	while (par) {
+		ofs << asciiParagraph(par, linelen);
+		par = par->next;
+	}
+	ofs << "\n";
+}
+#endif
 
 void Buffer::makeLaTeXFile(string const & fname, 
 			   string const & original_path,

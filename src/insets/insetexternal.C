@@ -356,7 +356,7 @@ int InsetExternal::Latex(Buffer const * buf,
 }
 
 
-int InsetExternal::Ascii(Buffer const * buf, std::ostream & os) const
+int InsetExternal::Ascii(Buffer const * buf, std::ostream & os, int) const
 {
 	return write("Ascii", buf, os);
 }

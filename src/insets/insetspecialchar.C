@@ -196,7 +196,7 @@ int InsetSpecialChar::Latex(Buffer const *, ostream & os, bool /*fragile*/,
 	return 0;
 }
 
-int InsetSpecialChar::Ascii(Buffer const *, ostream & os) const
+int InsetSpecialChar::Ascii(Buffer const *, ostream & os, int) const
 {
 	switch (kind) {
 	case HYPHENATION:	                break;
@@ -211,13 +211,13 @@ int InsetSpecialChar::Ascii(Buffer const *, ostream & os) const
 
 int InsetSpecialChar::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os);
+	return Ascii(buf, os, 0);
 }
 
 
 int InsetSpecialChar::DocBook(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os);
+	return Ascii(buf, os, 0);
 }
 
 

@@ -918,51 +918,81 @@ int LyXTabular::right_column_of_cell(int cell) const
 }
 
 
+const string write_attribute(const string name, const int value)
+{
+    string str = " " + name + "=\"" + tostr(value) + "\"";
+    return str;
+}
+
+
+const string write_attribute(string name, const string & value)
+{
+    string str = " " + name + "=\"" + value + "\"";
+    return str;
+}
+
+
+const string write_attribute(string name, const bool value)
+{
+    string str = " " + name + "=\"" + tostr((int)value) + "\"";
+    return str;
+}
+
+
 void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
     // header line
-    os << "<LyXTabular version=1 rows=" << rows_
-       << " columns=" << columns_ << ">\n";
+    os << "<LyXTabular" <<
+	write_attribute("version", 1) <<
+	write_attribute("rows", rows_) <<
+	write_attribute("columns", columns_) <<
+	">\n";
     // global longtable options
-    os << "<Features rotate=" << rotate
-       << " islongtable=" << is_long_tabular
-       << " endhead=" << endhead
-       << " endfirsthead=" << endfirsthead
-       << " endfoot=" << endfoot
-       << " endlastfoot=" << endlastfoot << ">\n\n";
+    os << "<Features" <<
+	write_attribute("rotate", rotate) <<
+	write_attribute("islongtable", is_long_tabular) <<
+	write_attribute("endhead", endhead) <<
+	write_attribute("endfirsthead", endfirsthead) <<
+	write_attribute("endfoot", endfoot) <<
+	write_attribute("endlastfoot", endlastfoot) <<
+	">\n\n";
     for (int i = 0; i < rows_; ++i) {
-	os << "<Row topline=" << row_info[i].top_line
-	   << " bottomline=" << row_info[i].bottom_line
-	   << " newpage=" << row_info[i].newpage << ">\n";
+	os << "<Row" <<
+	    write_attribute("topline", row_info[i].top_line) <<
+	    write_attribute("bottomline", row_info[i].bottom_line) <<
+	    write_attribute("newpage", row_info[i].newpage) <<
+	    ">\n";
 	for (int j = 0; j < columns_; ++j) {
 	    if (!i) {
-		os << "<Column alignment=" << column_info[j].alignment
-		   << " valignment=" << column_info[j].valignment
-		   << " leftline=" << column_info[j].left_line
-		   << " rightline=" << column_info[j].right_line
-		   << " width=\"" << VSpace(column_info[j].p_width).asLyXCommand()
-		   << "\" special=\"" << column_info[j].align_special
-		   << "\"\n>";
+		os << "<Column" <<
+		    write_attribute("alignment", column_info[j].alignment) <<
+		    write_attribute("valignment", column_info[j].valignment) <<
+		    write_attribute("leftline", column_info[j].left_line) <<
+		    write_attribute("rightline", column_info[j].right_line) <<
+		    write_attribute("width", VSpace(column_info[j].p_width).asLyXCommand()) <<
+		    write_attribute("special", column_info[j].align_special) <<
+		    ">\n";
 	    } else {
 		os << "<Column>\n";
 	    }
-	    os << "<Cell multicolumn=" << cell_info[i][j].multicolumn
-	       << " alignment=" << cell_info[i][j].alignment
-	       << " valignment=" << cell_info[i][j].valignment
-	       << " topline=" << cell_info[i][j].top_line
-	       << " bottomline=" << cell_info[i][j].bottom_line
-	       << " leftline=" << cell_info[i][j].left_line
-	       << " rightline=" << cell_info[i][j].right_line
-	       << " rotate=" << cell_info[i][j].rotate
-	       << " usebox=" << (int)cell_info[i][j].usebox
-	       << " width=\"" << cell_info[i][j].p_width
-	       << "\" special=\"" << cell_info[i][j].align_special
-	       << "\">\n";
+	    os << "<Cell" <<
+		write_attribute("multicolumn", cell_info[i][j].multicolumn) <<
+		write_attribute("alignment", cell_info[i][j].alignment) <<
+		write_attribute("valignment", cell_info[i][j].valignment) <<
+		write_attribute("topline", cell_info[i][j].top_line) <<
+		write_attribute("bottomline", cell_info[i][j].bottom_line) <<
+		write_attribute("leftline", cell_info[i][j].left_line) <<
+		write_attribute("rightline", cell_info[i][j].right_line) <<
+		write_attribute("rotate", cell_info[i][j].rotate) <<
+		write_attribute("usebox", (int)cell_info[i][j].usebox) <<
+		write_attribute("width", cell_info[i][j].p_width) <<
+	        write_attribute("special", cell_info[i][j].align_special) <<
+		">\n";
 	    os << "\\begin_inset ";
 	    cell_info[i][j].inset.Write(buf, os);
 	    os << "\n\\end_inset \n"
 	       << "</Cell>\n"
-	       << "</Column\n>";
+	       << "</Column>\n";
 	}
 	os << "</Row>\n";
     }

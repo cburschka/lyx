@@ -1155,7 +1155,7 @@ int InsetFig::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetFig::Ascii(Buffer const *, ostream &) const
+int InsetFig::Ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }

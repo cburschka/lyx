@@ -192,6 +192,7 @@ bool BufferList::close(Buffer * buf)
 					reask = !MenuWriteAs(buf);
 				else if (buf->save()) {
 					lastfiles->newFile(buf->fileName());
+					reask = false;
 				} else {
 					if (buf->getUser())
 						AllowInput(buf->getUser());

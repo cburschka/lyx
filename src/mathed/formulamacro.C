@@ -83,13 +83,13 @@ int InsetFormulaMacro::Latex(Buffer const *, ostream & os, bool /*fragile*/,
 
 int InsetFormulaMacro::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-    return Ascii(buf, os);
+    return Ascii(buf, os, 0);
 }
 
 
 int InsetFormulaMacro::DocBook(Buffer const * buf, ostream & os) const
 {
-    return Ascii(buf, os);
+    return Ascii(buf, os, 0);
 }
 
 

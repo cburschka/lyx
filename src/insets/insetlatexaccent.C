@@ -629,7 +629,7 @@ int InsetLatexAccent::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetLatexAccent::Ascii(Buffer const *, ostream & os) const
+int InsetLatexAccent::Ascii(Buffer const *, ostream & os, int) const
 {
 	os << contents;
 	return 0;

@@ -592,7 +592,7 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 }
 
 
-int InsetGraphics::Ascii(Buffer const *, ostream &) const
+int InsetGraphics::Ascii(Buffer const *, ostream &, int) const
 {
 	// No graphics in ascii output.
 	return 0;

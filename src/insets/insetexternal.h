@@ -47,7 +47,7 @@ public:
 	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
 			  bool free_spc) const;
 	///
-	virtual int Ascii(Buffer const *, std::ostream &) const;
+	virtual int Ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
 	virtual int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
