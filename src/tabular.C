@@ -97,7 +97,7 @@ LyXTabular::columnstruct::columnstruct()
 }
 
 
-LyXTabular::lttype::lttype()
+LyXTabular::ltType::ltType()
 {
 	topDL = false;
 	bottomDL = false;
@@ -153,7 +153,7 @@ LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 {
 #if 0
-#warning This while method should look like this: (Lgb)
+#warning This whole method should look like this: (Lgb)
 
 		LyXTabular tmp(lt);
 		tmp.swap(*this);
@@ -509,7 +509,7 @@ bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 }
 
 
-bool LyXTabular::TopAlreadyDrawed(int cell) const
+bool LyXTabular::topAlreadyDrawn(int cell) const
 {
 	int row = row_of_cell(cell);
 	if ((row > 0) && !GetAdditionalHeight(row)) {
@@ -528,7 +528,7 @@ bool LyXTabular::TopAlreadyDrawed(int cell) const
 }
 
 
-bool LyXTabular::LeftAlreadyDrawed(int cell) const
+bool LyXTabular::leftAlreadyDrawn(int cell) const
 {
 	int column = column_of_cell(cell);
 	if (column > 0) {

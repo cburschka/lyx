@@ -442,7 +442,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
 	int x2 = x + tabular->GetWidthOfColumn(cell);
 	bool on_off;
 
-	if (!tabular->TopAlreadyDrawed(cell)) {
+	if (!tabular->topAlreadyDrawn(cell)) {
 		on_off = !tabular->TopLine(cell);
 		pain.line(x, baseline - tabular->GetAscentOfRow(row),
 			  x2, baseline -  tabular->GetAscentOfRow(row),
@@ -454,7 +454,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
 		  x2, baseline + tabular->GetDescentOfRow(row),
 		  on_off ? LColor::tabularonoffline : LColor::tabularline,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
-	if (!tabular->LeftAlreadyDrawed(cell)) {
+	if (!tabular->leftAlreadyDrawn(cell)) {
 		on_off = !tabular->LeftLine(cell);
 		pain.line(x, baseline -  tabular->GetAscentOfRow(row),
 			  x, baseline +  tabular->GetDescentOfRow(row),
@@ -1834,8 +1834,10 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 	return true;
 }
 
-static void checkLongtableSpecial(LyXTabular::ltType & ltt,
-				  string const & special, bool & flag)
+namespace {
+ 
+void checkLongtableSpecial(LyXTabular::ltType & ltt,
+			  string const & special, bool & flag)
 {
 	if (special == "dl_above") {
 		ltt.topDL = flag;
@@ -1850,6 +1852,8 @@ static void checkLongtableSpecial(LyXTabular::ltType & ltt,
 		ltt.empty = false;
 		ltt.set = true;
 	}
+}
+
 }
 
 

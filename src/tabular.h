@@ -158,9 +158,9 @@ public:
 		BOX_MINIPAGE = 2
 	};
 
-	struct lttype {
+	struct ltType {
 		// constructor
-		lttype();
+		ltType();
 		// we have this header type (is set in the GetLT... functions)
 		bool set;
 		// double borders on top
@@ -172,8 +172,6 @@ public:
 		// ignored in the output and it is set to be empty!
 		bool empty;
 	};
-	///
-	typedef struct lttype ltType;
 
 	/* konstruktor */
 	///
@@ -201,9 +199,9 @@ public:
 	bool RightLine(int cell, bool onlycolumn = false) const;
 
 	///
-	bool TopAlreadyDrawed(int cell) const;
+	bool topAlreadyDrawn(int cell) const;
 	///
-	bool LeftAlreadyDrawed(int cell) const;
+	bool leftAlreadyDrawn(int cell) const;
 	///
 	bool IsLastRow(int cell) const;
 
