@@ -1,7 +1,9 @@
+#include <config.h>
 
 #include "math_ertinset.h"
 #include "math_mathmlstream.h"
 
+#include "support/LOstream.h"
 
 MathInset * MathErtInset::clone() const
 {
