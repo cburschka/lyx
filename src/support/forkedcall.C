@@ -257,47 +257,59 @@ int Forkedcall::generateChild()
 		return 1;
 
 	// Split the input command up into an array of words stored
-	// in a contiguous block of memory.
-	char const * const c_str = line.c_str();
+	// in a contiguous block of memory. The array contains pointers
+	// to each word.
 	// Don't forget the terminating `\0' character.
+	char const * const c_str = line.c_str();
 	vector<char> vec(c_str, c_str + line.size() + 1);
-	// Turn the string into an array of words, each terminated with '\0'.
-	std::replace(vec.begin(), vec.end(), ' ', '\0');
 
-	// Build an array of pointers to each word.
-	vector<char>::iterator vit = vec.begin();
-	vector<char>::iterator vend = vec.end();
-	vector<char *> argv;
-	char prev = '\0';
-	for (; vit != vend; ++vit) {
-		if (*vit != '\0' && prev == '\0')
-			argv.push_back(&*vit);
-		prev = *vit;
-	}
-	// Strip quotes. Does so naively, assuming that the word begins
-	// and ends in quotes.
-	vector<char *>::iterator ait = argv.begin();
-	vector<char *>::iterator const aend = argv.end();
-	for (; ait != aend; ++ait) {
-		char * word = *ait;
-		std::size_t const len = strlen(word);
-		if (len >= 2) {
-			char & first = word[0];
-			char & last = word[len-1];
-
-			if (first == last &&
-			    (first == '\'' || first == '"')) {
-				first = '\0';
-				last = '\0';
-				*ait += 1;
+	// Splitting the command up into an array of words means replacing
+	// the whitespace between words with '\0'. Life is complicated
+	// however, because words protected by quotes can contain whitespace.
+	//
+	// The strategy we adopt is:
+	// 1. If we're not inside quotes, then replace white space with '\0'.
+	// 2. If we are inside quotes, then don't replace the white space
+	//    but do remove the quotes themselves. We do this naively by
+	//    replacing the quote with '\0' which is fine if quotes
+	//    delimit the entire word.
+	char inside_quote = 0;
+	vector<char>::iterator it = vec.begin();
+	vector<char>::iterator const end = vec.end();
+	for (; it != end; ++it) {
+		char const c = *it;
+		if (!inside_quote) {
+			if (c == ' ')
+				*it = '\0';
+			else if (c == '\'' || c == '"') {
+				*it = '\0';
+				inside_quote = c;
 			}
+		} else if (c == inside_quote) {
+			*it = '\0';
+			inside_quote = 0;
 		}
 	}
 
-	ait = argv.begin();
-	for (; ait != aend; ++ait)
-		std::cout << *ait << std::endl;
+	// Build an array of pointers to each word.
+	it = vec.begin();
+	vector<char *> argv;
+	char prev = '\0';
+	for (; it != end; ++it) {
+		if (*it != '\0' && prev == '\0')
+			argv.push_back(&*it);
+		prev = *it;
+	}
 	argv.push_back(0);
+
+	// Debug output.
+	vector<char *>::iterator ait = argv.begin();
+	vector<char *>::iterator const aend = argv.end();
+	lyxerr << "<command>\n";
+	for (; ait != aend; ++ait)
+		if (*ait)
+			lyxerr << '\t'<< *ait << '\n';
+	lyxerr << "</command>" << std::endl;
 
 #ifndef __EMX__
 	pid_t const cpid = ::fork();
