@@ -250,7 +250,7 @@ string Parser::getArg(char left, char right)
 		while ((c = getChar()) != right && good()) {
 			// Ignore comments
 			if (curr_token().cat() == catComment) {
-				if (curr_token().cs().size())
+				if (!curr_token().cs().empty())
 					cerr << "Ignoring comment: " << curr_token().asInput();
 			}
 			else if (curr_token().cat() == catSpace || curr_token().cat() == catNewline)

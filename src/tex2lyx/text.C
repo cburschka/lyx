@@ -294,6 +294,43 @@ void check_space(Parser const & p, ostream & os, Context & context)
 	os << ' ';
 }
 
+
+/*!
+ * Check wether \param command is a known command. If yes,
+ * handle the command with all arguments.
+ * \return true if the command was parsed, false otherwise.
+ */
+bool parse_command(string const & command, Parser & p, ostream & os,
+                   bool outer, Context & context)
+{
+	if (known_commands.find(command) != known_commands.end()) {
+		vector<ArgumentType> const & template_arguments = known_commands[command];
+		string ert = command;
+		size_t no_arguments = template_arguments.size();
+		for (size_t i = 0; i < no_arguments; ++i) {
+			switch (template_arguments[i]) {
+			case required:
+				// This argument contains regular LaTeX
+				handle_ert(os, ert + '{', context);
+				parse_text(p, os, FLAG_ITEM, outer, context);
+				ert = "}";
+				break;
+			case verbatim:
+				// This argument may contain special characters
+				ert += '{' + p.verbatim_item() + '}';
+				break;
+			case optional:
+				ert += p.getOpt();
+				break;
+			}
+		}
+		handle_ert(os, ert, context);
+		return true;
+	}
+	return false;
+}
+
+
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
 {
@@ -377,11 +414,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			// lyx can't handle length variables
 			ostringstream ss;
 			ss << "\\begin{minipage}";
-			if (latex_position.size())
+			if (!latex_position.empty())
 				ss << '[' << latex_position << ']';
-			if (latex_height.size())
+			if (!latex_height.empty())
 				ss << '[' << latex_height << ']';
-			if (latex_inner_pos.size())
+			if (!latex_inner_pos.empty())
 				ss << '[' << latex_inner_pos << ']';
 			ss << "{" << width << "}";
 			handle_ert(os, ss.str(), parent_context);
@@ -628,7 +665,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cat() == catComment) {
 			context.check_layout(os);
-			if (t.cs().size()) {
+			if (!t.cs().empty()) {
 				handle_comment(os, '%' + t.cs(), context);
 				if (p.next_token().cat() == catNewline) {
 					// A newline after a comment line starts a new paragraph
@@ -696,7 +733,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					handle_ert(os, "[", context);
 					os << s;
 					handle_ert(os, "]", context);
-				} else if (s.size()) {
+				} else if (!s.empty()) {
 					// The space is needed to separate the item from the rest of the sentence.
 					os << s << ' ';
 					p.skip_spaces();
@@ -781,7 +818,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (opt.find('t') != string::npos) ss << "Top";
 				if (opt.find('b') != string::npos) ss << "Bottom";
 				if (opt.find('B') != string::npos) ss << "Baseline";
-				if (ss.str().size())
+				if (!ss.str().empty())
 					os << "\trotateOrigin " << ss.str() << '\n';
 				else
 					cerr << "Warning: Ignoring unknown includegraphics origin argument '" << opt << "'\n";
@@ -838,7 +875,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (opts.find("command") != opts.end())
 				special << "command=" << opts["command"] << ',';
 			string s_special = special.str();
-			if (s_special.size()) {
+			if (!s_special.empty()) {
 				// We had special arguments. Remove the trailing ','.
 				os << "\tspecial " << s_special.substr(0, s_special.size() - 1) << '\n';
 			}
@@ -1187,7 +1224,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "LatexCommand ");
 			os << "\\bibtex";
 			// Do we have a bibliographystyle set?
-			if (bibliographystyle.size()) {
+			if (!bibliographystyle.empty()) {
 				os << '[' << bibliographystyle << ']';
 			}
 			os << '{' << p.verbatim_item() << "}\n";
@@ -1223,16 +1260,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// next paragraph.
 		}
 
-		else if (t.cs() == "psfrag") {
-			// psfrag{ps-text}[ps-pos][tex-pos]{tex-text}
-			// TODO: Generalize this!
-			string arguments = p.getArg('{', '}');
-			arguments += '}';
-			arguments += p.getOpt();
-			arguments += p.getOpt();
-			handle_ert(os, "\\psfrag{" + arguments, context);
-		}
-
 		else {
 			//cerr << "#: " << t << " mode: " << mode << endl;
 			// heuristic: read up to next non-nested space
@@ -1247,14 +1274,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			cerr << "found ERT: " << s << endl;
 			handle_ert(os, s + ' ', context);
 			*/
-			context.check_layout(os);
 			string name = t.asInput();
 			if (p.next_token().asInput() == "*") {
 				// Starred commands like \vspace*{}
 				p.get_token();				// Eat '*'
 				name += '*';
 			}
-			handle_ert(os, name, context);
+			if (! parse_command(t.asInput(), p, os, outer, context))
+				handle_ert(os, name, context);
 		}
 
 		if (flags & FLAG_LEAVE) {

@@ -131,7 +131,7 @@ void handle_package(string const & name, string const & options)
 		h_language = name;
 		h_quotes_language = name;
 	} else {
-		if (options.size())
+		if (!options.empty())
 			h_preamble << "\\usepackage[" << options << "]{" << name << "}\n";
 		else
 			h_preamble << "\\usepackage{" << name << "}\n";
@@ -146,7 +146,7 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\lyxformat 225\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
-	if (h_options.size())
+	if (!h_options.empty())
 	   os << "\\options " << h_options << "\n";
 	os << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
@@ -319,7 +319,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			trim(name);
 			int nargs = 0;
 			string opts = p.getOpt();
-			if (opts.size()) {
+			if (!opts.empty()) {
 				istringstream is(string(opts, 1));
 				//cerr << "opt: " << is.str() << "\n";
 				is >> nargs;
@@ -361,13 +361,13 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			h_preamble << "\\begin{" << name << "}";
 		}
 
-		else if (t.cs().size())
+		else if (!t.cs().empty())
 			h_preamble << '\\' << t.cs();
 	}
 	p.skip_spaces();
 
 	// Force textclass if the user wanted it
-	if (forceclass.size()) {
+	if (!forceclass.empty()) {
 		h_textclass = forceclass;
 	}
 	string layoutfilename = LibFileSearch("layouts", h_textclass, "layout");
@@ -377,7 +377,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 	}
 	LyXTextClass textclass;
 	textclass.Read(layoutfilename);
-	if (! h_papersides.size()) {
+	if (h_papersides.empty()) {
 		ostringstream ss;
 		ss << textclass.sides();
 		h_papersides = ss.str();

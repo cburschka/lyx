@@ -299,7 +299,7 @@ void handle_tabular(Parser & p, ostream & os,
 		    Context & context)
 {
 	string posopts = p.getOpt();
-	if (posopts.size())
+	if (!posopts.empty())
 		cerr << "vertical tabular positioning '" << posopts << "' ignored\n";
 
 	vector<ColInfo>            colinfo;
@@ -484,9 +484,9 @@ void handle_tabular(Parser & p, ostream & os,
 			os << " leftline=\"true\"";
 		if (colinfo[col].rightline)
 			os << " rightline=\"true\"";
-		if (colinfo[col].width.size())
+		if (!colinfo[col].width.empty())
 			os << " width=\"" << colinfo[col].width << "\"";
-		if (colinfo[col].special.size())
+		if (!colinfo[col].special.empty())
 			os << " special=\"" << colinfo[col].special << "\"";
 		os << ">\n";
 	}

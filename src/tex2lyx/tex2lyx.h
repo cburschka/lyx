@@ -19,6 +19,7 @@
 #include <iosfwd>
 #include <string>
 #include <vector>
+#include <map>
 
 class Context;
 
@@ -59,6 +60,15 @@ char const ** is_known(std::string const & str, char const ** what);
 // Access to environment stack
 extern std::vector<std::string> active_environments;
 std::string active_environment();
+
+enum ArgumentType {
+	required,
+	verbatim,
+	optional
+};
+
+/// Known TeX commands with arguments that get parsed into ERT.
+extern std::map<std::string, std::vector<ArgumentType> > known_commands;
 
 /*! Reads tex input from \a is and writes lyx output to \a os.
  *  Uses some common settings for the preamble, so this should only

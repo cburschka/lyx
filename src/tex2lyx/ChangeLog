@@ -1,3 +1,16 @@
+2003-11-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tex2lyx.C:
+	* tex2lyx.h:
+	* text.C: Read a list of commands and their arguments from a reLyX
+	compatible syntax file in order to parse optional argumnts correctly.
+	* preamble.C:
+	* table.C:
+	* text.C:
+	* tex2lyx.C:
+	* texparser.C
+	* math.C: change size() to !empty() where it was used as bool
+
 2003-11-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math.C:
