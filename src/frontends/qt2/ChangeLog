@@ -1,3 +1,14 @@
+2001-03-16  Kalle Dalheimer  <kalle@klaralvdalens-datakonsult.se>
+
+	* FormParagraph.C (apply): Only call SetParagraphExtraOpt() when
+	NO_PEXTRA is not defined (in line with XForms frontend)
+
+	* Dialogs.C: Adapted to backend changes
+
+	* Makefile.am: updated citation dialog
+	* Citation dialog added: FormCitation.{C,h},
+	*    FormCitationDialog.ui, FormCitationDialogImpl.{C,h}
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* several files: remove CXX_WORKING_NAMESPACES

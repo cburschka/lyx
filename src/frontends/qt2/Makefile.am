@@ -1,18 +1,19 @@
 AUTOMAKE_OPTIONS = foreign 1.4
+DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libqt2.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
-	-I${top_srcdir}/src/frontends/xforms
-DEFINES = -DQT_CLEAN_NAMESPACE
-CXXFLAGS= $(DEFINES)
+	-I${top_srcdir}/src/frontends/xforms \
+	-I$(top_srcdir)/src/frontends/controllers
+CXXFLAGS += -DQT_CLEAN_NAMESPACE -fno-rtti -fno-exceptions
 
 # moc generated files
 BUILTSOURCES = \
 	moc_FileDialog_private.C \
-	moc_FormCopyrightDialogBase.C \
-                moc_FormCopyrightDialog.C \
+	moc_FormCitationDialog.C	\
+	moc_FormCitationDialogImpl.C	\
 	       moc_chardlg.C \
 	       moc_chardlgimpl.C \
 	       moc_paragraphdlg.C \
@@ -25,8 +26,6 @@ BUILTSOURCES = \
 	       moc_tabularcreatedlgimpl.C \
 	       moc_emptytable.C
 
-
-		
 LYXDATADIRS = dlg
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
@@ -34,7 +33,8 @@ libqt2_la_OBJADD = \
 	../xforms/ButtonController.lo \
 	../xforms/Color.lo \
 	../xforms/FormBase.lo \
-	../xforms/FormCitation.lo \
+	../xforms/FormBaseDeprecated.lo	\
+	../xforms/FormCopyright.lo	\
 	../xforms/FormCredits.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \
@@ -65,7 +65,8 @@ libqt2_la_OBJADD = \
 	../xforms/form_toc.lo \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
-	../xforms/xforms_helpers.lo
+	../xforms/xforms_helpers.lo	\
+	../xforms/xformsBC.lo
 
 LIBS=
 LDFLAGS= $(libqt2_la_OBJADD)
@@ -83,12 +84,12 @@ libqt2_la_SOURCES = \
 	chardlgimpl.h \
 	FileDialog.C \
 	FileDialog_private.C \
-	FormCopyright.C	\
-	FormCopyright.h	\
-	FormCopyrightDialog.C \
-	FormCopyrightDialog.h \
-	FormCopyrightDialogBase.C \
-	FormCopyrightDialogBase.h \
+	FormCitation.C	\
+	FormCitation.h	\
+	FormCitationDialog.C	\
+	FormCitationDialog.h	\
+	FormCitationDialogImpl.C	\
+	FormCitationDialogImpl.h	\
 	FormParagraph.C	\
 	FormParagraph.h	\
 	paragraphdlg.C \
@@ -134,16 +135,14 @@ dist-hook:
 	done ; \
 	done
 
-FormCopyright.C: FormCopyrightDialogBase.h
-FormCopyrightDialogBase.h: FormCopyrightDialogBase.ui
+FormCitation.C: FormCitationDialog.h
+FormCitationDialog.h: FormCitationDialog.ui
 	$(UIC) -o $@ $<
-FormCopyrightDialogBase.C: FormCopyrightDialogBase.ui
-	$(UIC) -impl FormCopyrightDialogBase.h -o $@ $<
-moc_FileDialog_private.C: FileDialog_private.h
+FormCitationDialog.C: FormCitationDialog.ui
+	$(UIC) -impl FormCitationDialog.h -o $@ $<
+moc_FormCitationDialog.C: FormCitationDialog.h
 	$(MOC) -o $@ $<
-moc_FormCopyrightDialogBase.C: FormCopyrightDialogBase.h
-	$(MOC) -o $@ $<
-moc_FormCopyrightDialog.C: FormCopyrightDialog.h
+moc_FormCitationDialogImpl.C: FormCitationDialogImpl.h
 	$(MOC) -o $@ $<
 
 FormParagraph.C: paragraphdlg.h
@@ -198,3 +197,5 @@ moc_searchdlg.C: searchdlg.h
 moc_searchdlgimpl.C: searchdlgimpl.h
 	$(MOC) -o $@ $<
 
+moc_FileDialog_private.C: FileDialog_private.h
+	$(MOC) -o $@ $<

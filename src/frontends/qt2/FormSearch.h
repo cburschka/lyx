@@ -54,10 +54,10 @@ private:
    Dialogs * d_;
 	
    /// Hide connection.
-   Connection h_;
+   SigC::Connection h_;
 
    /// Update connection.
-   Connection u_;
+   SigC::Connection u_;
    
 };
 
