@@ -123,11 +123,11 @@ public:
 private:
 	///
 	static
-	bool scanLog(Buffer * buffer, string const & command, 
+	bool scanLog(Buffer const * buffer, string const & command, 
 		     string const & filename);
 	///
 	static
-	bool runLaTeX(Buffer * buffer, string const & command);
+	bool runLaTeX(Buffer const * buffer, string const & command);
 	///
 	static
 	std::vector<Command> commands;

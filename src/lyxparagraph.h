@@ -124,14 +124,17 @@ public:
 	///
 	typedef std::vector<value_type> TextContainer;
 	///
-	typedef int size_type;
+	/* This should be TextContainer::size_type, but we need
+	   signed values for now.
+	*/
+	typedef TextContainer::difference_type size_type;
 
 	///
 	LyXParagraph();
-	/// this konstruktor inserts the new paragraph in a list
+	/// this constructor inserts the new paragraph in a list
 	explicit
 	LyXParagraph(LyXParagraph * par);
-	/// the destruktors removes the new paragraph from the list
+	/// the destructor removes the new paragraph from the list
 	~LyXParagraph();
 
 	///

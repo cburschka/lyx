@@ -506,7 +506,7 @@ public:
 	}
 	///
 	inline
-	int bidi_level(LyXParagraph::size_type pos) const {
+	LyXParagraph::size_type bidi_level(LyXParagraph::size_type pos) const {
 		if (bidi_start == -1)
 			return 0;
 		else

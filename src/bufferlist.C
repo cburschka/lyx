@@ -43,6 +43,8 @@
 using std::vector;
 using std::find;
 using std::endl;
+using std::find_if;
+using std::for_each;
 
 //
 // Class BufferStorage

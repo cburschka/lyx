@@ -43,8 +43,12 @@ libgnome_la_SOURCES = \
 	FormCitation.h \
 	FormCopyright.C \
 	FormCopyright.h \
+	FormError.C \
+	FormError.h \
 	FormPrint.C \
 	FormPrint.h \
+	FormRef.C \
+	FormRef.h \
 	FormUrl.C \
 	FormUrl.h \
 	FormIndex.C \

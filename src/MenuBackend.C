@@ -34,6 +34,7 @@ extern BufferList bufferlist;
 using std::endl;
 using std::vector;
 using std::pair;
+using std::find_if;
 
 // This is the global menu definition
 MenuBackend menubackend;

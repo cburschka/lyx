@@ -30,6 +30,8 @@ using std::pair;
 using std::make_pair;
 using std::sort;
 using std::endl;
+using std::find_if;
+using std::remove_if;
 
 // Global variable: textclass table.
 LyXTextClassList textclasslist;

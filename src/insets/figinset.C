@@ -139,7 +139,7 @@ void addpidwait(int pid)
 	if (lyxerr.debugging()) {
 		lyxerr << "Pids to wait for: \n";
 		copy(pidwaitlist.begin(), pidwaitlist.end(),
-		     ostream_iterator<int>(lyxerr, "\n"));
+		     std::ostream_iterator<int>(lyxerr, "\n"));
 		lyxerr << flush;
 	}
 }

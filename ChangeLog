@@ -1,3 +1,37 @@
+2000-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/converter.C (runLaTeX): constify buffer argument
+	(scanLog): ditto.
+
+	* src/frontends/support/Makefile.am (INCLUDES): fix.
+
+	* src/buffer.h: add std:: qualifier
+	* src/insets/figinset.C (addpidwait): ditto
+	* src/MenuBackend.C: ditto
+	* src/buffer.C: ditto
+	* src/bufferlist.C: ditto
+	* src/layout.C: ditto
+	* src/lyxfunc.C: ditto
+
+2000-10-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxtext.h (bidi_level): change return type to
+	LyXParagraph::size_type. 
+
+	* src/lyxparagraph.h: change size_type to
+	TextContainer::difference_type. This should really be
+	TextContainer::size_type, but we need currently to support signed
+	values. 
+
+2000-10-11  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/FormError.h
+	* src/frontends/gnome/FormRef.C
+	* src/frontends/gnome/FormRef.h
+	* src/frontends/gnome/FormError.C
+	* src/frontends/gnome/Makefile.am
+	* src/frontends/gnome/pixbutton.h: FormError and FormRef are ported 
+	to Gnome frontend. Both dialogs	use "action" area.
+
 2000-10-12  Baruch Even  <baruch.even@writeme.com>
 
 	* src/graphics/GraphicsCacheItem_pimpl.C:
@@ -99,8 +133,8 @@
 
 2000-10-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* src/support/translator.h: move helper template clsses to
-	lyxfunctional.h, inlcude 2support/lyxfunctional.h"
+	* src/support/translator.h: move helper template classes to
+	lyxfunctional.h, include "support/lyxfunctional.h"
 
 	* src/support/lyxmanip.h: add delaration of fmt
 
@@ -112,13 +146,13 @@
 	(compare_memfun_t): new template class
 	(compare_memfun): helper template function
 	(equal_1st_in_pair): moved here from translator
-	(equal_2nd_in_pair): moved here from translatro
+	(equal_2nd_in_pair): moved here from translator
 
 	* src/support/fmt.C: new file
-	(fmt): new func, can be used for a printf substute when still
+	(fmt): new func, can be used for a printf substitute when still
 	using iostreams ex. lyxerr << fmg("Hello %s", "Jürgen") << endl;
 
-	* src/support/StrPool.C: add some comment
+	* src/support/StrPool.C: add some comments
 
 	* src/support/Makefile.am (libsupport_la_SOURCES): add fmt.C and
 	lyxfunctional.h
@@ -188,7 +222,7 @@
 	return NULL
 
 	* src/bufferlist.C: add <functional>, "support/lyxmanip.h",
-	"support/lyxfunctional.h", remove currentview variable.
+	"support/lyxfunctional.h", remove current_view variable.
 	(resize): use std::for_each with std::mem_fun
 	(getFileNames): use std::copy with back_inserter_fun
 	(getBuffer): change arg type to unsigned int
@@ -202,12 +236,11 @@
 	* src/buffer.h: add typedefs for iterator_category, value_type
 	difference_type, pointer and reference for inset_iterator
 	add postfix ++ for inset_iterator
-	make isnet_iterator::getPos() const
+	make inset_iterator::getPos() const
 
 	* src/buffer.C: added support/lyxmanip.h
 	(readFile): use lyxerr << fmt instead of printf
 	(makeLaTeXFile): use std::copy to write out encodings
-	
 
 	* src/Painter.C (text): rewrite slightly to avoid extra font variable
 
@@ -223,11 +256,11 @@
 
 	* src/LColor.C (getGUIName): remove c_str()
 
-	* several files: change all occurances of fl_display to
+	* several files: change all occurrences of fl_display to
 	fl_get_display() 
 
 	* config/lyxinclude.m4 (LYX_PROG_CXX): add a 2.97 clause so
-	that -pedantid is not used for gcc 2.97 (cvs gcc)
+	that -pedantic is not used for gcc 2.97 (cvs gcc)
 
 	* boost/Makefile.am: begin slowly to prepare for a real boost lib
 

@@ -28,7 +28,7 @@ namespace Gnome
     PixButton(string label, string pixname): Button()
     {
       Gtk::Box * b = manage( new Gtk::HBox() );
-      Gtk::Label * l = manage( new Gtk::Label(label) );
+      l = manage( new Gtk::Label(label) );
       Gnome::Pixmap * p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(NULL, pixname.c_str()) ) );
 
       b->set_spacing(3);
@@ -46,8 +46,11 @@ namespace Gnome
 
     guint get_accelkey() { return accelkey_; }
 
+    void set_text(string const & newlabel) { l->set_text(newlabel); }
+
   protected:
     guint accelkey_;
+    Gtk::Label * l;
   };
 }
 

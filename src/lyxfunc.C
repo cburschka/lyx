@@ -90,7 +90,7 @@
 
 using std::pair;
 using std::endl;
-
+using std::find_if;
 
 extern void InsertAsciiFile(BufferView *, string const &, bool);
 extern void math_insert_symbol(string const &);

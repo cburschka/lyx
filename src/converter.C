@@ -447,7 +447,7 @@ string const Converter::SplitFormat(string const & str, string & format)
 	return using_format;
 }
 
-bool Converter::scanLog(Buffer * buffer, string const & command,
+bool Converter::scanLog(Buffer const * buffer, string const & command,
 			string const & filename)
 {
 	BufferView * bv = buffer->getUser();
@@ -494,7 +494,7 @@ bool Converter::scanLog(Buffer * buffer, string const & command,
 	return true;
 }
 
-bool Converter::runLaTeX(Buffer * buffer, string const & command)
+bool Converter::runLaTeX(Buffer const * buffer, string const & command)
 {
 	
 	BufferView * bv = buffer->getUser();

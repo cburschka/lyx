@@ -1889,8 +1889,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 					encodings.insert((*it)->encoding()->LatexName());
 
 			ofs << "\\usepackage[";
-			copy(encodings.begin(), encodings.end(),
-			     ostream_iterator<string>(ofs, ","));
+			std::copy(encodings.begin(), encodings.end(),
+				  std::ostream_iterator<string>(ofs, ","));
 			ofs << doc_encoding << "]{inputenc}\n";
 			texrow.newline();
 		} else if (params.inputenc != "default") {

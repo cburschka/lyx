@@ -413,7 +413,7 @@ public:
 	///
 	class inset_iterator {
 	public:
-		typedef input_iterator_tag iterator_category;
+		typedef std::input_iterator_tag iterator_category;
 		typedef Inset value_type;
 		typedef ptrdiff_t difference_type;
 		typedef Inset * pointer;

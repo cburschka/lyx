@@ -4,8 +4,8 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libfrontendsupport.la
 LIBS =
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS)
+INCLUDES = -I${srcdir}/../../ $(SIGC_CFLAGS)
 
 libfrontendsupport_la_SOURCES = \
 	LyXImage.h \
-	LyXImage.C
+	LyXImage.C 
