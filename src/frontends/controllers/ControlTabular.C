@@ -188,17 +188,17 @@ void ControlTabular::halign(ControlTabular::HALIGN h)
 
 void ControlTabular::valign(ControlTabular::VALIGN v)
 {
-	LyXTabular::Feature num = LyXTabular::VALIGN_CENTER;
-	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_CENTER;
+	LyXTabular::Feature num = LyXTabular::VALIGN_MIDDLE;
+	LyXTabular::Feature multi_num = LyXTabular::M_VALIGN_MIDDLE;
 
 	switch (v) {
 		case TOP:
 			num = LyXTabular::VALIGN_TOP;
 			multi_num = LyXTabular::M_VALIGN_TOP;
 			break;
-		case VCENTER:
-			num = LyXTabular::VALIGN_CENTER;
-			multi_num = LyXTabular::M_VALIGN_CENTER;
+		case MIDDLE:
+			num = LyXTabular::VALIGN_MIDDLE;
+			multi_num = LyXTabular::M_VALIGN_MIDDLE;
 			break;
 		case BOTTOM:
 			num = LyXTabular::VALIGN_BOTTOM;

@@ -1,3 +1,21 @@
+2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* configure.m4: replace "PDF" by "PDF (ps2pdf)"
+
+	* bind/math.bind: rename "valign-center" to "valign-middle"
+
+	* ui/classic.ui: Consistent capitalization of menu items;
+	introduce submenu "alignment" in "Edit/Tabular" (shared with 
+	"Edit/Math"); fix shortcuts for "Flalign Environment" and
+	"Font Change" and "Table of Contents"
+
+	* ui/stdmenus.ui: Consistent capitalization of menu items;
+	introduce submenu "alignment" in "Edit/Tabular" (shared with
+	"Edit/Math")
+
+	* ui/stdtoolbars.ui: De-capitalize names for consistency;
+	use imperative style for consistency: "XXX aligned" => "Align XXX" 
+ 
 2003-08-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* templates/koma-letter2.lyx: fix typo.

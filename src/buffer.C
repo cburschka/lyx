@@ -246,7 +246,7 @@ void unknownClass(string const & unknown)
 {
 	Alert::warning(_("Unknown document class"),
 		bformat(_("Using the default document class, because the "
-			" class %1$s is unknown."), unknown));
+			"class %1$s is unknown."), unknown));
 }
 
 } // anon

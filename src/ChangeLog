@@ -1,3 +1,11 @@
+2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* bufferlist.C: beautify two alerts (shorter text of buttons)
+	* buffer.C: Remove redundant ' ' from message
+	* tabular.h:
+	* tabular.C: rename LYX_VALIGN_CENTER" to LYX_VALIGN_MIDDLE";
+	rename M_VALIGN_CENTER to M_VALIGN_MIDDLE;
+	rename VALIGN_CENTER to VALIGN_MIDDLE
 
 2003-08-11  André Pönitz  <poenitz@gmx.net>
 

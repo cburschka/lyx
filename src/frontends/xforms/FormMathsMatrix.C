@@ -68,7 +68,7 @@ void FormMathsMatrix::build()
 	dialog_.reset(build_maths_matrix(this));
 
 	fl_addto_choice(dialog_->choice_valign,
-			_("Top | Center | Bottom").c_str());
+			_("Top | Middle | Bottom").c_str());
 	fl_set_choice(dialog_->choice_valign, 2);
 	fl_set_input(dialog_->input_halign, h_align_str);
 	dialog_->input_halign->u_vdata = this;

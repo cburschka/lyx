@@ -57,7 +57,7 @@ public:
 		///
 		VALIGN_BOTTOM,
 		///
-		VALIGN_CENTER,
+		VALIGN_MIDDLE,
 		///
 		M_TOGGLE_LINE_TOP,
 		///
@@ -77,7 +77,7 @@ public:
 		///
 		M_VALIGN_BOTTOM,
 		///
-		M_VALIGN_CENTER,
+		M_VALIGN_MIDDLE,
 		///
 		MULTICOLUMN,
 		///
@@ -140,7 +140,7 @@ public:
 		///
 		LYX_VALIGN_BOTTOM = 1,
 		///
-		LYX_VALIGN_CENTER = 2
+		LYX_VALIGN_MIDDLE = 2
 	};
 
 	enum BoxType {

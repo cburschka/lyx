@@ -1087,7 +1087,7 @@ dispatch_result MathGridInset::dispatch
 			is >> s;
 			if (s == "valign-top")
 				valign('t');
-			else if (s == "valign-center")
+			else if (s == "valign-middle")
 				valign('c');
 			else if (s == "valign-bottom")
 				valign('b');

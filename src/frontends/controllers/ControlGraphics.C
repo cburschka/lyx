@@ -144,9 +144,9 @@ char const * const rorigin_lyx_strs[] = {
 // use. Note that they can/should be translated.
 char const * const rorigin_gui_strs[] = {
 	N_("Default"),
-	N_("Top left"), N_("Bottom left"), N_("Left baseline"),
-	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Center baseline"),
-	N_("Top right"), N_("Bottom right"), N_("Right baseline") };
+	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
+	N_("Top right"), N_("Bottom right"), N_("Baseline right") };
 
 size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 

@@ -78,8 +78,8 @@ Menuset
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		Item "Thesaurus..." "thesaurus-entry"
 		Item "Check TeX|h" "buffer-chktex"
-		Item "Open/Close float|l" "inset-toggle"
-		Submenu "Change tracking|g" "edit_change"
+		Item "Open/Close Float|l" "inset-toggle"
+		Submenu "Change Tracking|g" "edit_change"
 		Separator
 		Item "Preferences...|P" "dialog-show preferences"
 		Item "Reconfigure|R" "reconfigure"
@@ -98,13 +98,7 @@ Menuset
 		Item "Line Left|L" "tabular-feature toggle-line-left"
 		Item "Line Right|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Align Left|e" "tabular-feature align-left"
-		Item "Align Center|C" "tabular-feature align-center"
-		Item "Align Right|i" "tabular-feature align-right"
-		Separator
-		Item "V.Align Top|o" "tabular-feature valign-top"
-		Item "V.Align Center|n" "tabular-feature valign-center"
-		Item "V.Align Bottom|V" "tabular-feature valign-bottom"
+		Submenu "Alignment|i" "edit_align"
 		Separator
 		Item "Add Row|A" "tabular-feature append-row"
 		Item "Delete Row|w" "tabular-feature delete-row"
@@ -115,6 +109,16 @@ Menuset
 		Item "Delete Column|D" "tabular-feature delete-column"
 		Item "Copy Column" "tabular-feature copy-column"
 		Item "Swap Columns" "tabular-feature swap-column"
+	End
+
+	Menu "edit_align"
+		Item "Left|L" "tabular-feature align-left"
+		Item "Center|C" "tabular-feature align-center"
+		Item "Right|R" "tabular-feature align-right"
+		Separator
+		Item "Top|T" "tabular-feature valign-top"
+		Item "Middle|M" "tabular-feature valign-middle"
+		Item "Bottom|B" "tabular-feature valign-bottom"
 	End
 
 	Menu "edit_math"
@@ -135,7 +139,7 @@ Menuset
 		Separator
 		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 		Separator
-		Submenu "Alignment|A" "edit_math_align"
+		Submenu "Alignment|A" "edit_align"
 		Separator
 		Item "Add Row|R" "tabular-feature append-row"
 		Item "Delete Row|D" "tabular-feature delete-row"
@@ -171,21 +175,11 @@ Menuset
 		Item "Eqnarray Environment|q" "math-mutate eqnarray"
 		Item "Align Environment|A" "math-mutate align"
 		Item "AlignAt Environment" "math-mutate alignat"
-		Item "Flalign Environment|f" "math-mutate flalign"
+		Item "Flalign Environment|F" "math-mutate flalign"
 		#Item "XAlignAt Environment" "math-mutate xalignat"
 		#Item "XXAlignAt Environment" "math-mutate xxalignat"
 		Item "Gather Environment" "math-mutate gather"
 		Item "Multline Environment" "math-mutate multline"
-	End
-
-	Menu "edit_math_align"
-		Item "Align Left|L" "tabular-feature align-left"
-		Item "Align Center|C" "tabular-feature align-center"
-		Item "Align Right|R" "tabular-feature align-right"
-		Separator
-		Item "V.Align Top|T" "tabular-feature valign-top"
-		Item "V.Align Center|e" "tabular-feature valign-center"
-		Item "V.Align Bottom|B" "tabular-feature valign-bottom"
 	End
 #
 # INSERT MENU
@@ -237,7 +231,7 @@ Menuset
 		Item "Inline Formula|I" "math-mode"
 		Item "Display Formula|D" "math-display"
 		Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
-		Item "AMS align Environment|A" "command-sequence math-mode; math-mutate align;"
+		Item "AMS align Environment|a" "command-sequence math-mode; math-mutate align;"
 		Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
 		Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
 		#Item "AMS xalignat Environment|x" "command-sequence math-mode; math-mutate xalignat;"
@@ -249,34 +243,34 @@ Menuset
 		Item "Cases Environment|C" "math-insert \cases"
 		Item "Split Environment|S" "math-insert \split"
 	Separator
-		Submenu "Font Change|f" "insert_math_font"
+		Submenu "Font Change|o" "insert_math_font"
 		Item "Math Panel|l" "dialog-show mathpanel"
 	End
 
 	Menu "insert_math_font"
-		Item "Math normal font" "math-insert \mathnormal"
+		Item "Math Normal Font" "math-insert \mathnormal"
 		Separator
-		Item "Math calligraphic family" "math-insert \mathcal"
-		Item "Math fraktur family" "math-insert \mathfrak"
-		Item "Math roman family" "math-insert \mathrm"
-		Item "Math sans serif family" "math-insert \mathsf"
+		Item "Math Calligraphic Family" "math-insert \mathcal"
+		Item "Math Fraktur Family" "math-insert \mathfrak"
+		Item "Math Roman Family" "math-insert \mathrm"
+		Item "Math Sans Serif Family" "math-insert \mathsf"
 		Separator
-		Item "Math bold series" "math-insert \mathbf"
+		Item "Math Bold Series" "math-insert \mathbf"
 		Separator
-		Item "Text normal font" "math-insert \textnormal"
+		Item "Text Normal Font" "math-insert \textnormal"
 		Separator
-		Item "Text roman family" "math-insert \textrm"
-		Item "Text sans serif family" "math-insert \textsf"
-		Item "Text typewriter family" "math-insert \texttt"
+		Item "Text Roman Family" "math-insert \textrm"
+		Item "Text Sans Serif Family" "math-insert \textsf"
+		Item "Text Typewriter Family" "math-insert \texttt"
 		Separator
-		Item "Text bold series" "math-insert \textbf"
-		Item "Text medium series" "math-insert \textmd"
+		Item "Text Bold Series" "math-insert \textbf"
+		Item "Text Medium Series" "math-insert \textmd"
 		Separator
-		Item "Text italic shape" "math-insert \textit"
-		Item "Text small caps shape" "math-insert \textsc"
-		Item "Text slanted shape" "math-insert \textsl"
-		Item "Text upright shape" "math-insert \textup"
-			End
+		Item "Text Italic Shape" "math-insert \textit"
+		Item "Text Small Caps Shape" "math-insert \textsc"
+		Item "Text Slanted Shape" "math-insert \textsl"
+		Item "Text Upright Shape" "math-insert \textup"
+	End
 
 	Menu "insert_floats"
 		FloatInsert
@@ -297,10 +291,10 @@ Menuset
 	End
 
 	Menu "edit_change"
-		Item "Track changes|T" "track-changes"
-		Item "Merge changes ...|M" "merge-changes"
-		Item "Accept all changes|A" "accept-all-changes"
-		Item "Reject all changes|R" "reject-all-changes"
+		Item "Track Changes|T" "track-changes"
+		Item "Merge Changes ...|M" "merge-changes"
+		Item "Accept All Changes|A" "accept-all-changes"
+		Item "Reject All Changes|R" "reject-all-changes"
 	End
 #
 # LAYOUT MENU
@@ -332,8 +326,8 @@ Menuset
 		Submenu "Update|U" "update"
 		Separator
 		Item "LaTeX Logfile|L" "dialog-show latexlog"
-		Item "Table of Contents|T" "toc-view"
-		Item "Child Processes|C" "dialog-show forks"
+		Item "Table of Contents|C" "toc-view"
+		Item "Child Processes|o" "dialog-show forks"
 		Item "TeX Information|X" "dialog-show texinfo"
 	End
 

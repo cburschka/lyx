@@ -118,12 +118,17 @@ Menuset
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Left aligned|e" "tabular-feature align-left"
-		Item "Centered|C" "tabular-feature align-center"
-		Item "Right aligned|i" "tabular-feature align-right"
-		Item "Top aligned|o" "tabular-feature valign-top"
-		Item "Vertically Centered|V" "tabular-feature valign-center"
-		Item "Bottom aligned|g" "tabular-feature valign-bottom"
+		Submenu "Alignment|i" "edit_align"
+	End
+
+	Menu "edit_align"
+		Item "Left|L" "tabular-feature align-left"
+		Item "Center|C" "tabular-feature align-center"
+		Item "Right|R" "tabular-feature align-right"
+		Separator
+		Item "Top|T" "tabular-feature valign-top"
+		Item "Middle|M" "tabular-feature valign-middle"
+		Item "Bottom|B" "tabular-feature valign-bottom"
 	End
 
 	Menu "edit_math"
@@ -135,7 +140,7 @@ Menuset
 		Separator
 		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 		Separator
-		Submenu "Alignment|A" "edit_math_align"
+		Submenu "Alignment|A" "edit_align"
 		Separator
 		Item "Add Row|R" "tabular-feature append-row"
 		Item "Delete Row|D" "tabular-feature delete-row"
@@ -174,16 +179,6 @@ Menuset
 		Item "AMS flalign Environment|f" "math-mutate flalign"
 		Item "AMS gather Environment|g" "math-mutate gather"
 		Item "AMS multline Environment|m" "math-mutate multline"
-	End
-
-	Menu "edit_math_align"
-		Item "Left-aligned|L" "tabular-feature align-left"
-		Item "Centered|C" "tabular-feature align-center"
-		Item "Right-aligned|R" "tabular-feature align-right"
-		Separator
-		Item "Top-aligned|T" "tabular-feature valign-top"
-		Item "Centered Vertically|e" "tabular-feature valign-center"
-		Item "Bottom-aligned|B" "tabular-feature valign-bottom"
 	End
 
 #
@@ -279,28 +274,28 @@ Menuset
 	End
 
 	Menu "insert_math_font"
-		Item "Math normal font" "math-insert \mathnormal"
+		Item "Math Normal Font" "math-insert \mathnormal"
 		Separator
-		Item "Math calligraphic family" "math-insert \mathcal"
-		Item "Math fraktur family" "math-insert \mathfrak"
-		Item "Math roman family" "math-insert \mathrm"
-		Item "Math sans serif family" "math-insert \mathsf"
+		Item "Math Calligraphic Family" "math-insert \mathcal"
+		Item "Math Fraktur Family" "math-insert \mathfrak"
+		Item "Math Roman Family" "math-insert \mathrm"
+		Item "Math Sans Serif Family" "math-insert \mathsf"
 		Separator
-		Item "Math bold series" "math-insert \mathbf"
+		Item "Math Bold Series" "math-insert \mathbf"
 		Separator
-		Item "Text normal font" "math-insert \textnormal"
+		Item "Text Normal Font" "math-insert \textnormal"
 		Separator
-		Item "Text roman family" "math-insert \textrm"
-		Item "Text sans serif family" "math-insert \textsf"
-		Item "Text typewriter family" "math-insert \texttt"
+		Item "Text Roman Family" "math-insert \textrm"
+		Item "Text Sans Serif Family" "math-insert \textsf"
+		Item "Text Typewriter Family" "math-insert \texttt"
 		Separator
-		Item "Text bold series" "math-insert \textbf"
-		Item "Text medium series" "math-insert \textmd"
+		Item "Text Bold Series" "math-insert \textbf"
+		Item "Text Medium Series" "math-insert \textmd"
 		Separator
-		Item "Text italic shape" "math-insert \textit"
-		Item "Text small caps shape" "math-insert \textsc"
-		Item "Text slanted shape" "math-insert \textsl"
-		Item "Text upright shape" "math-insert \textup"
+		Item "Text Italic Shape" "math-insert \textit"
+		Item "Text Small Caps Shape" "math-insert \textsc"
+		Item "Text Slanted Shape" "math-insert \textsl"
+		Item "Text Upright Shape" "math-insert \textup"
 			End
 
 	Menu "insert_float"
@@ -336,7 +331,7 @@ Menuset
 #
  
 	Menu "document"
-		Submenu "Change tracking|C" "edit_change"
+		Submenu "Change Tracking|C" "edit_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log File...|L" "dialog-show latexlog"
 		Item "Table of Contents...|T" "toc-view"
@@ -347,10 +342,10 @@ Menuset
 	End
  
 	Menu "edit_change"
-		Item "Track changes|T" "track-changes"
-		Item "Merge changes...|M" "merge-changes"
-		Item "Accept all changes|A" "accept-all-changes"
-		Item "Reject all changes|R" "reject-all-changes"
+		Item "Track Changes|T" "track-changes"
+		Item "Merge Changes...|M" "merge-changes"
+		Item "Accept All Changes|A" "accept-all-changes"
+		Item "Reject All Changes|R" "reject-all-changes"
 	End
 
 #

@@ -61,7 +61,7 @@ public:
 
 	void halign(HALIGN h);
 
-	enum VALIGN { TOP, VCENTER, BOTTOM };
+	enum VALIGN { TOP, MIDDLE, BOTTOM };
 
 	void valign(VALIGN h);
 

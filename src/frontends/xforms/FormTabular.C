@@ -213,9 +213,9 @@ void FormTabular::update()
 		align = tabular.getVAlignment(cell);
 		fl_set_button(cell_options_->radio_valign_top, 0);
 		fl_set_button(cell_options_->radio_valign_bottom, 0);
-		fl_set_button(cell_options_->radio_valign_center, 0);
-		if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_CENTER))
-			fl_set_button(cell_options_->radio_valign_center, 1);
+		fl_set_button(cell_options_->radio_valign_middle, 0);
+		if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_MIDDLE))
+			fl_set_button(cell_options_->radio_valign_middle, 1);
 		else if (align == LyXTabular::LYX_VALIGN_BOTTOM)
 			fl_set_button(cell_options_->radio_valign_bottom, 1);
 		else
@@ -237,7 +237,7 @@ void FormTabular::update()
 
 		setEnabled(cell_options_->radio_valign_top,    !pwidth.zero());
 		setEnabled(cell_options_->radio_valign_bottom, !pwidth.zero());
-		setEnabled(cell_options_->radio_valign_center, !pwidth.zero());
+		setEnabled(cell_options_->radio_valign_middle, !pwidth.zero());
 
 		setEnabled(cell_options_->radio_align_left,   true);
 		setEnabled(cell_options_->radio_align_right,  true);
@@ -272,8 +272,8 @@ void FormTabular::update()
 		fl_set_button(cell_options_->radio_valign_bottom, 0);
 		setEnabled(cell_options_->radio_valign_bottom, false);
 
-		fl_set_button(cell_options_->radio_valign_center, 0);
-		setEnabled(cell_options_->radio_valign_center, false);
+		fl_set_button(cell_options_->radio_valign_middle, 0);
+		setEnabled(cell_options_->radio_valign_middle, false);
 
 		fl_set_input(cell_options_->input_special_multialign, "");
 		setEnabled(cell_options_->input_special_multialign, false);
@@ -342,9 +342,9 @@ void FormTabular::update()
 	align = tabular.getVAlignment(cell, true);
 	fl_set_button(column_options_->radio_valign_top, 0);
 	fl_set_button(column_options_->radio_valign_bottom, 0);
-	fl_set_button(column_options_->radio_valign_center, 0);
-	if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_CENTER))
-		fl_set_button(column_options_->radio_valign_center, 1);
+	fl_set_button(column_options_->radio_valign_middle, 0);
+	if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_MIDDLE))
+		fl_set_button(column_options_->radio_valign_middle, 1);
 	else if (align == LyXTabular::LYX_VALIGN_BOTTOM)
 		fl_set_button(column_options_->radio_valign_bottom, 1);
 	else
@@ -356,7 +356,7 @@ void FormTabular::update()
 	setEnabled(column_options_->radio_align_block,   !pwidth.zero());
 	setEnabled(column_options_->radio_valign_top,    !pwidth.zero());
 	setEnabled(column_options_->radio_valign_bottom, !pwidth.zero());
-	setEnabled(column_options_->radio_valign_center, !pwidth.zero());
+	setEnabled(column_options_->radio_valign_middle, !pwidth.zero());
 
 	fl_set_button(tabular_options_->check_longtable,
 		      tabular.isLongTabular());
@@ -610,8 +610,8 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		num = LyXTabular::VALIGN_TOP;
 	else if (ob == column_options_->radio_valign_bottom)
 		num = LyXTabular::VALIGN_BOTTOM;
-	else if (ob == column_options_->radio_valign_center)
-		num = LyXTabular::VALIGN_CENTER;
+	else if (ob == column_options_->radio_valign_middle)
+		num = LyXTabular::VALIGN_MIDDLE;
 	else if (ob == cell_options_->check_multicolumn)
 		num = LyXTabular::MULTICOLUMN;
 	else if (ob == tabular_options_->check_longtable) {
@@ -675,8 +675,8 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		num = LyXTabular::M_VALIGN_TOP;
 	else if (ob == cell_options_->radio_valign_bottom)
 		num = LyXTabular::M_VALIGN_BOTTOM;
-	else if (ob == cell_options_->radio_valign_center)
-		num = LyXTabular::M_VALIGN_CENTER;
+	else if (ob == cell_options_->radio_valign_middle)
+		num = LyXTabular::M_VALIGN_MIDDLE;
 	else
 		return ButtonPolicy::SMI_VALID;
 

@@ -70,9 +70,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		file = MakeDisplayPath(buf->fileName(), 30);
 
 	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
-		"Do you want to save the document?"), file);
+		"Do you want to save the document or discard the changes?"), file);
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
@@ -174,9 +174,9 @@ bool BufferList::close(Buffer * buf, bool ask)
 		fname = MakeDisplayPath(buf->fileName(), 30);
 
 	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
-		"Do you want to save the document?"), fname);
+		"Do you want to save the document or discard the changes?"), fname);
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save Changes"), _("&Discard Changes"), _("&Cancel"));
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {

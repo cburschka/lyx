@@ -91,7 +91,7 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::ALIGN_BLOCK, "align-block" },
 	{ LyXTabular::VALIGN_TOP, "valign-top" },
 	{ LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
-	{ LyXTabular::VALIGN_CENTER, "valign-center" },
+	{ LyXTabular::VALIGN_MIDDLE, "valign-middle" },
 	{ LyXTabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
 	{ LyXTabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
 	{ LyXTabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
@@ -101,7 +101,7 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::M_ALIGN_CENTER, "m-align-center" },
 	{ LyXTabular::M_VALIGN_TOP, "m-valign-top" },
 	{ LyXTabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
-	{ LyXTabular::M_VALIGN_CENTER, "m-valign-center" },
+	{ LyXTabular::M_VALIGN_MIDDLE, "m-valign-middle" },
 	{ LyXTabular::MULTICOLUMN, "multicolumn" },
 	{ LyXTabular::SET_ALL_LINES, "set-all-lines" },
 	{ LyXTabular::UNSET_ALL_LINES, "unset-all-lines" },
@@ -1613,9 +1613,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		setVAlign = LyXTabular::LYX_VALIGN_BOTTOM;
 		break;
 
-	case LyXTabular::M_VALIGN_CENTER:
-	case LyXTabular::VALIGN_CENTER:
-		setVAlign = LyXTabular::LYX_VALIGN_CENTER;
+	case LyXTabular::M_VALIGN_MIDDLE:
+	case LyXTabular::VALIGN_MIDDLE:
+		setVAlign = LyXTabular::LYX_VALIGN_MIDDLE;
 		break;
 
 	default:
@@ -1795,11 +1795,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::M_VALIGN_TOP:
 	case LyXTabular::M_VALIGN_BOTTOM:
-	case LyXTabular::M_VALIGN_CENTER:
+	case LyXTabular::M_VALIGN_MIDDLE:
 		flag = false;
 	case LyXTabular::VALIGN_TOP:
 	case LyXTabular::VALIGN_BOTTOM:
-	case LyXTabular::VALIGN_CENTER:
+	case LyXTabular::VALIGN_MIDDLE:
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setVAlignment(
@@ -2130,10 +2130,10 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
 		break;
 
-	case LyXTabular::M_VALIGN_CENTER:
+	case LyXTabular::M_VALIGN_MIDDLE:
 		flag = false;
-	case LyXTabular::VALIGN_CENTER:
-		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_CENTER);
+	case LyXTabular::VALIGN_MIDDLE:
+		status.setOnOff(tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
 		break;
 
 	case LyXTabular::SET_LONGTABULAR:

@@ -159,7 +159,7 @@ void QTabularDialog::vAlign_changed(int align)
 
 	switch (align) {
 		case 0: v = ControlTabular::TOP; break;
-		case 1: v = ControlTabular::VCENTER; break;
+		case 1: v = ControlTabular::MIDDLE; break;
 		case 2: v = ControlTabular::BOTTOM; break;
 	}
 

@@ -1,3 +1,11 @@
+2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* ControlGraphics.C: rename "XXX baseline" to "Baseline XXX"
+	for consistency
+	* ControlTabular.h:
+	* ControlTabular.C: rename VALIGN_CENTER to VALIGN_MIDDLE;
+	rename M_VALIGN_CENTER to M_VALIGN_MIDDLE;
+	rename VCENTER to MIDDLE
 
 2003-08-04  André Pönitz  <poenitz@gmx.net>
 

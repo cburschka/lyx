@@ -1,3 +1,13 @@
+2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QTabularDialog.C:
+	* QTabular.C: rename LYX_VALIGN_CENTER to LYX_VALIGN_MIDDLE;
+	rename VCENTER to MIDDLE;
+	* ui/QTabularDialogBase.ui:
+	* ui/QMathMatrixDialogBase.ui: replace "Center" by "Middle"
+	* ui/QBibtexDialogBase.ui: rename "Bibtex" to "BibTeX"
+	* ui/QDocumentDialogBase.ui: Remove redundant ' ' from message
+
 2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QWorkArea.C (QWorkArea): 

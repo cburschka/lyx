@@ -117,8 +117,8 @@ string const tostr(LyXTabular::VAlignment const & num)
 	switch (num) {
 	case LyXTabular::LYX_VALIGN_TOP:
 		return "top";
-	case LyXTabular::LYX_VALIGN_CENTER:
-		return "center";
+	case LyXTabular::LYX_VALIGN_MIDDLE:
+		return "middle";
 	case LyXTabular::LYX_VALIGN_BOTTOM:
 		return "bottom";
 	}
@@ -162,8 +162,8 @@ bool string2type(string const str, LyXTabular::VAlignment & num)
 {
 	if (str == "top")
 		num = LyXTabular::LYX_VALIGN_TOP;
-	else if (str == "center")
-		num = LyXTabular::LYX_VALIGN_CENTER;
+	else if (str == "middle" )
+		num = LyXTabular::LYX_VALIGN_MIDDLE;
 	else if (str == "bottom")
 		num = LyXTabular::LYX_VALIGN_BOTTOM;
 	else
@@ -1869,7 +1869,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 				case LYX_VALIGN_TOP:
 					os << 'p';
 					break;
-				case LYX_VALIGN_CENTER:
+				case LYX_VALIGN_MIDDLE:
 					os << 'm';
 					break;
 				case LYX_VALIGN_BOTTOM:
@@ -1906,7 +1906,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 		case LYX_VALIGN_TOP:
 			os << 't';
 			break;
-		case LYX_VALIGN_CENTER:
+		case LYX_VALIGN_MIDDLE:
 			os << 'c';
 			break;
 		case LYX_VALIGN_BOTTOM:
@@ -1920,7 +1920,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 		case LYX_VALIGN_TOP:
 			os << 't';
 			break;
-		case LYX_VALIGN_CENTER:
+		case LYX_VALIGN_MIDDLE:
 			os << 'm';
 			break;
 		case LYX_VALIGN_BOTTOM:
@@ -2137,7 +2137,7 @@ int LyXTabular::latex(Buffer const * buf, ostream & os,
 				case LYX_VALIGN_TOP:
 					os << 'p';
 					break;
-				case LYX_VALIGN_CENTER:
+				case LYX_VALIGN_MIDDLE:
 					os << 'm';
 					break;
 				case LYX_VALIGN_BOTTOM:
@@ -2272,7 +2272,7 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 		case LYX_VALIGN_BOTTOM:
 			os << "bottom";
 			break;
-		case LYX_VALIGN_CENTER:
+		case LYX_VALIGN_MIDDLE:
 			os << "middle";
 		}
 		os << '"';

@@ -207,7 +207,7 @@ void QTabular::update_contents()
 	case LyXTabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
-	case LyXTabular::LYX_VALIGN_CENTER:
+	case LyXTabular::LYX_VALIGN_MIDDLE:
 		valign = 1;
 		break;
 	case LyXTabular::LYX_VALIGN_BOTTOM:

@@ -462,7 +462,7 @@ cat >$outfile <<EOF
 \\Format lyxpreview	lyxpreview	"LyX Preview"		""
 \\Format literate nw	NoWeb		N
 \\Format pbm	  pbm	PBM		""
-\\Format pdf	  pdf	PDF		P
+\\Format pdf	  pdf  "PDF (ps2pdf)"	P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format pdftex   pdftex_t PDFTEX       ""
