@@ -2935,8 +2935,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated
 		// by a space. The first one is the bibstyle.
-		string const db       = token(ev.argument, ' ', 0);
-		string const bibstyle = token(ev.argument, ' ', 1);
+		string const db = token(ev.argument, ' ', 0);
+		string bibstyle = token(ev.argument, ' ', 1);
+		if (bibstyle.empty())
+			bibstyle = "plain";
 
 		InsetCommandParams p("BibTeX", db, bibstyle);
 		InsetBibtex * inset = new InsetBibtex(p);
