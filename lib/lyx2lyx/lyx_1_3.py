@@ -22,7 +22,8 @@ import re
 from parser_tools import find_token, find_end_of_inset, get_value,\
                          find_token2, del_token
 
-def change_insetgraphics(lines):
+def change_insetgraphics(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset Graphics", i)
@@ -79,7 +80,8 @@ def change_insetgraphics(lines):
 	i = i+1
 
 
-def change_tabular(lines):
+def change_tabular(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, "<column", i)
@@ -91,8 +93,11 @@ def change_tabular(lines):
 
 
 def convert(file):
-    change_insetgraphics(file.body)
-    change_tabular(file.body)
+    table = [change_insetgraphics, change_tabular]
+
+    for conv in table:
+        conv(file)
+
     file.format = 221
 
 

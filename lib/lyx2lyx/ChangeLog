@@ -1,3 +1,19 @@
+2005-01-04  José Matos  <jamatos@lyx.org>
+
+	* LyX.py (set_format): fix typo.
+
+	* lyx_0_12.py:
+	* lyx_1_0_0.py:
+	* lyx_1_0_1.py:
+	* lyx_1_1_4.py:
+	* lyx_1_1_5.py:
+	* lyx_1_1_6.py:
+	* lyx_1_1_6fix3.py:
+	* lyx_1_2.py:
+	* lyx_1_3.py:
+	* lyx_1_4.py: unify the call convention of convertion
+	functions. Now they all accept a file.
+
 2004-12-03  José Matos  <jamatos@lyx.org>
 
 	* LyX.py: format up to 238.

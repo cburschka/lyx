@@ -31,7 +31,8 @@ align_table = {"0": "top", "2": "left", "4": "right", "8": "center"}
 use_table = {"0": "none", "1": "parbox"}
 table_meta_re = re.compile(r'<LyXTabular version="?1"? rows="?(\d*)"? columns="?(\d*)"?>')
 
-def update_tabular(lines, opt):
+def update_tabular(file):
+    lines = file.body
     i=0
     while 1:
         i = find_token(lines, '\\begin_inset  Tabular', i)
@@ -48,7 +49,7 @@ def update_tabular(lines, opt):
 
         j = find_token(lines, '</LyXTabular>', i) + 1
         if j == 0:
-            opt.warning( "Error: Bad lyx format i=%d j=%d" % (i,j))
+            file.warning( "Error: Bad lyx format i=%d j=%d" % (i,j))
             break
 
         new_table = table_update(lines[i:j])
@@ -114,7 +115,11 @@ def table_update(lines):
 
 
 def convert(file):
-    update_tabular(file.body, file)
+    table = [update_tabular]
+
+    for conv in table:
+        conv(file)
+
     file.format = 218
 
 

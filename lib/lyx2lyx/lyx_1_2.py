@@ -71,7 +71,8 @@ def get_width(mo):
 #
 # Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
 #
-def remove_oldfloat(lines, opt):
+def remove_oldfloat(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_float", i)
@@ -82,7 +83,7 @@ def remove_oldfloat(lines, opt):
 
 	floattype = string.split(lines[i])[1]
 	if not floats.has_key(floattype):
-	    opt.warning("Error! Unknown float type " + floattype)
+	    file.warning("Error! Unknown float type " + floattype)
 	    floattype = "fig"
 
 	# skip \end_deeper tokens
@@ -125,7 +126,7 @@ def remove_oldfloat(lines, opt):
 		    flag = 1
 		    new.append("")
 		if token == "\\lang":
-		    new.append(token+" "+ opt.language)
+		    new.append(token+" "+ file.language)
 		else:
 		    new.append(token+" default ")
 
@@ -136,7 +137,8 @@ def remove_oldfloat(lines, opt):
 pextra_type2_rexp = re.compile(r".*\\pextra_type\s+[12]")
 pextra_type2_rexp2 = re.compile(r".*(\\layout|\\pextra_type\s+2)")
 
-def remove_pextra(lines):
+def remove_pextra(file):
+    lines = file.body
     i = 0
     flag = 0
     while 1:
@@ -213,7 +215,8 @@ ert_begin = ["\\begin_inset ERT",
 	     "\\layout Standard"]
 
 
-def remove_oldert(lines):
+def remove_oldert(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
@@ -322,7 +325,8 @@ def remove_oldert(lines):
 
 
 # ERT insert are hidden feature of lyx 1.1.6. This might be removed in the future.
-def remove_oldertinset(lines):
+def remove_oldertinset(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset ERT", i)
@@ -351,7 +355,8 @@ def is_ert_paragraph(lines, i):
     return check_token(lines[k], "\\layout")
 
 
-def combine_ert(lines):
+def combine_ert(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset ERT", i)
@@ -392,7 +397,8 @@ def write_attribute(x, token, value):
 	x.append("\t"+token+" "+value)
 
 
-def remove_figinset(lines):
+def remove_figinset(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset Figure", i)
@@ -466,7 +472,8 @@ def remove_figinset(lines):
 attr_re = re.compile(r' \w*="(false|0|)"')
 line_re = re.compile(r'<(features|column|row|cell)')
 
-def update_tabular(lines):
+def update_tabular(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\begin_inset  Tabular', i)
@@ -662,7 +669,8 @@ def update_longtables(file):
 
 
 # Figure insert are hidden feature of lyx 1.1.6. This might be removed in the future.
-def fix_oldfloatinset(lines):
+def fix_oldfloatinset(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset Float ", i)
@@ -674,7 +682,8 @@ def fix_oldfloatinset(lines):
         i = i+1
 
 
-def change_listof(lines):
+def change_listof(file):
+    lines = file.body
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
@@ -685,7 +694,8 @@ def change_listof(lines):
         i = i+1
 
 
-def change_infoinset(lines):
+def change_infoinset(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, "\\begin_inset Info", i)
@@ -711,7 +721,8 @@ def change_infoinset(lines):
         i = i+5
 
 
-def change_preamble(lines):
+def change_preamble(file):
+    lines = file.header
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
 	return
@@ -720,18 +731,14 @@ def change_preamble(lines):
 
 
 def convert(file):
-    change_preamble(file.header)
-    change_listof(file.body)
-    fix_oldfloatinset(file.body)
-    update_tabular(file.body)
-    update_longtables(file)
-    remove_pextra(file.body)
-    remove_oldfloat(file.body, file)
-    remove_figinset(file.body)
-    remove_oldertinset(file.body)
-    remove_oldert(file.body)
-    combine_ert(file.body)
-    change_infoinset(file.body)
+    table = [change_preamble, change_listof, fix_oldfloatinset,
+             update_tabular, update_longtables, remove_pextra,
+             remove_oldfloat, remove_figinset, remove_oldertinset,
+             remove_oldert, combine_ert, change_infoinset]
+
+    for conv in table:
+        conv(file)
+
     file.format = 220
 
 

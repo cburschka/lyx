@@ -21,7 +21,8 @@ import string
 from parser_tools import find_token, find_re, check_token
 
 
-def space_before_layout(lines):
+def space_before_layout(file):
+    lines = file.body
     i = 2 # skip first layout
     while 1:
         i = find_token(lines, '\\layout', i)
@@ -33,7 +34,8 @@ def space_before_layout(lines):
         i = i + 1
 
 
-def formula_inset_space_eat(lines):
+def formula_inset_space_eat(file):
+    lines = file.body
     i=0
     while 1:
         i = find_token(lines, "\\begin_inset Formula", i)
@@ -45,7 +47,8 @@ def formula_inset_space_eat(lines):
 
 
 # Update from tabular format 2 to 4
-def update_tabular(lines):
+def update_tabular(file):
+    lines = file.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
     i=0
     while 1:
@@ -76,7 +79,8 @@ def update_tabular(lines):
             i = i + 1
 
 
-def final_dot(lines):
+def final_dot(file):
+    lines = file.body
     i = 0
     while i < len(lines):
         if lines[i][-1:] == '.' and lines[i+1][:1] != '\\' and  lines[i+1][:1] != ' ' and len(lines[i]) + len(lines[i+1])<= 72 and lines[i+1] != '':
@@ -86,7 +90,8 @@ def final_dot(lines):
             i = i + 1
 
 
-def update_inset_label(lines):
+def update_inset_label(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\begin_inset Label', i)
@@ -96,7 +101,8 @@ def update_inset_label(lines):
         i = i + 1
 
 
-def update_latexdel(lines):
+def update_latexdel(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\begin_inset LatexDel', i)
@@ -106,13 +112,15 @@ def update_latexdel(lines):
         i = i + 1
 
 
-def update_vfill(lines):
+def update_vfill(file):
+    lines = file.body
     for i in range(len(lines)):
         lines[i] = string.replace(lines[i],'\\fill_top','\\added_space_top vfill')
         lines[i] = string.replace(lines[i],'\\fill_bottom','\\added_space_bottom vfill')
 
 
-def update_space_units(lines):
+def update_space_units(file):
+    lines = file.body
     added_space_bottom = re.compile(r'\\added_space_bottom ([^ ]*)')
     added_space_top    = re.compile(r'\\added_space_top ([^ ]*)')
     for i in range(len(lines)):
@@ -129,11 +137,13 @@ def update_space_units(lines):
             lines[i] = string.replace(lines[i], old, new)
 
 
-def update_inset_accent(lines):
+def update_inset_accent(file):
+    lines = file.body
     pass
 
 
-def remove_cursor(lines):
+def remove_cursor(file):
+    lines = file.body
     i = 0
     cursor_re = re.compile(r'.*(\\cursor \d*)')
     while 1:
@@ -145,7 +155,8 @@ def remove_cursor(lines):
         i = i + 1
 
 
-def remove_empty_insets(lines):
+def remove_empty_insets(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\begin_inset ',i)
@@ -157,7 +168,8 @@ def remove_empty_insets(lines):
         i = i + 1
 
 
-def remove_formula_latex(lines):
+def remove_formula_latex(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\latex formula_latex ', i)
@@ -171,13 +183,15 @@ def remove_formula_latex(lines):
         del lines[i]
 
 
-def add_end_document(lines):
+def add_end_document(file):
+    lines = file.body
     i = find_token(lines, '\\the_end', 0)
     if i == -1:
         lines.append('\\the_end')
 
 
-def header_update(lines, file):
+def header_update(file):
+    lines = file.header
     i = 0
     l = len(lines)
     while i < l:
@@ -265,21 +279,16 @@ def update_latexaccents(file):
 
 
 def convert(file):
-    header_update(file.header, file)
-    add_end_document(file.body)
-    remove_cursor(file.body)
-    final_dot(file.body)
-    update_inset_label(file.body)
-    update_latexdel(file.body)
-    update_space_units(file.body)
-    update_inset_accent(file.body)
-    space_before_layout(file.body)
-    formula_inset_space_eat(file.body)
-    update_tabular(file.body)
-    update_vfill(file.body)
-    remove_empty_insets(file.body)
-    remove_formula_latex(file.body)
-    update_latexaccents(file)
+    table = [header_update, add_end_document, remove_cursor,
+             final_dot, update_inset_label, update_latexdel,
+             update_space_units, update_inset_accent,
+             space_before_layout, formula_inset_space_eat,
+             update_tabular, update_vfill, remove_empty_insets,
+             remove_formula_latex, update_latexaccents]
+
+    for conv in table:
+        conv(file)
+
     file.format = 215
 
 

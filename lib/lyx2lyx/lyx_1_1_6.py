@@ -22,7 +22,8 @@ from parser_tools import find_re, find_tokens, find_token, check_token
 
 
 lyxtable_re = re.compile(r".*\\LyXTable$")
-def update_tabular(lines, opt):
+def update_tabular(file):
+    lines = file.body
     i=0
     while 1:
         i = find_re(lines, lyxtable_re, i)
@@ -105,7 +106,7 @@ def update_tabular(lines, opt):
                     end = find_token(lines, '\\newline', i)
 
                 if end == -1:
-                    opt.error("Malformed LyX file.")
+                    file.error("Malformed LyX file.")
 
                 end = end - i
                 while end > 0:
@@ -262,7 +263,8 @@ def set_paragraph_properties(lines, prop_dict):
     return result[:]
 
 
-def update_language(header):
+def update_language(file):
+    header = file.header
     i = find_token(header, "\\language", 0)
     if i == -1:
         # no language, should emit a warning
@@ -275,8 +277,11 @@ def update_language(header):
 
 
 def convert(file):
-    update_tabular(file.body, file)
-    update_language(file.header)
+    table = [update_tabular, update_language]
+
+    for conv in table:
+        conv(file)
+
     file.format = 217
 
 

@@ -243,7 +243,7 @@ class LyX_Base:
     def set_format(self):
         " Set the file format of the file, in the header."
         if self.format <= 217:
-            format = str(float(format)/100)
+            format = str(float(self.format)/100)
         else:
             format = str(self.format)
         i = find_token(self.header, "\\lyxformat", 0)

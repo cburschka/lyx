@@ -24,7 +24,8 @@ from parser_tools import find_token, find_token_backwards, find_re
 layout_exp = re.compile(r"\\layout (\S*)")
 math_env = ["\\[","\\begin{eqnarray*}","\\begin{eqnarray}","\\begin{equation}"]
 
-def replace_protected_separator(lines):
+def replace_protected_separator(file):
+    lines = file.body
     i=0
     while 1:
         i = find_token(lines, "\\protected_separator", i)
@@ -47,7 +48,8 @@ def replace_protected_separator(lines):
         del lines[i]
 
 
-def merge_formula_inset(lines):
+def merge_formula_inset(file):
+    lines = file.body
     i=0
     while 1:
         i = find_token(lines, "\\begin_inset Formula", i)
@@ -59,7 +61,8 @@ def merge_formula_inset(lines):
 
 
 # Update from tabular format 4 to 5 if necessary
-def update_tabular(lines):
+def update_tabular(file):
+    lines = file.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
     i=0
     while 1:
@@ -90,7 +93,8 @@ def update_tabular(lines):
             i = i + 1
 
 
-def update_toc(lines):
+def update_toc(file):
+    lines = file.body
     i = 0
     while 1:
         i = find_token(lines, '\\begin_inset LatexCommand \\tableofcontents', i)
@@ -100,13 +104,15 @@ def update_toc(lines):
         i = i + 1
 
 
-def remove_cursor(lines):
+def remove_cursor(file):
+    lines = file.body
     i = find_token(lines, '\\cursor', 0)
     if i != -1:
         del lines[i]
 
 
-def remove_vcid(lines):
+def remove_vcid(file):
+    lines = file.header
     i = find_token(lines, '\\lyxvcid', 0)
     if i != -1:
         del lines[i]
@@ -115,14 +121,16 @@ def remove_vcid(lines):
         del lines[i]
 
 
-def first_layout(lines):
+def first_layout(file):
+    lines = file.body
     while (lines[0] == ""):
         del lines[0]
     if lines[0][:7] != "\\layout":
         lines[:0] = ["\\layout Standard"]
 
 
-def remove_space_in_units(lines):
+def remove_space_in_units(file):
+    lines = file.header
     margins = ["\\topmargin","\\rightmargin",
                "\\leftmargin","\\bottommargin"]
 
@@ -148,14 +156,13 @@ def remove_space_in_units(lines):
 
 
 def convert(file):
-    first_layout(file.body)
-    remove_vcid(file.header)
-    remove_cursor(file.body)
-    update_toc(file.body)
-    replace_protected_separator(file.body)
-    merge_formula_inset(file.body)
-    update_tabular(file.body)
-    remove_space_in_units(file.header)
+    table = [first_layout, remove_vcid, remove_cursor, update_toc,
+             replace_protected_separator, merge_formula_inset,
+             update_tabular, remove_space_in_units]
+
+    for conv in table:
+        conv(file)
+
     file.format = 216
 
 
