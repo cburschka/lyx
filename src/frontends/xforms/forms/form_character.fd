@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_character
 Width: 300
 Height: 415
-Number of Objects: 14
+Number of Objects: 15
 
 --------------------
 class: FL_BOX
@@ -261,6 +261,24 @@ label: These are always toggled
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthEast
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 25 170 70 40
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Language:
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 

@@ -87,7 +87,7 @@ void FormCharacter::build()
 	// insert default language box manually
 	fl_addto_form(dialog_->form);
 		FL_OBJECT * ob = dialog_->choice_language;
-		fl_deactivate_object(dialog_->choice_language);
+		fl_hide_object(dialog_->choice_language);
 
 		combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
 		combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);

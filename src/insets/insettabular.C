@@ -159,9 +159,7 @@ InsetTabular::~InsetTabular()
 
 Inset * InsetTabular::clone(Buffer const & buf) const
 {
-	InsetTabular * t = new InsetTabular(*this, buf);
-	t->tabular.reset(tabular->clone(t));
-	return t;
+	return new InsetTabular(*this, buf);
 }
 
 
