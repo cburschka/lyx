@@ -315,17 +315,4 @@ bool ParagraphList::empty() const
 	return parlist == 0;
 }
 
-
-ParagraphList::iterator ParagraphList::find(Paragraph const & p)
-{
-	iterator it = begin();
-	iterator last = end();
-	for (;it != last; ++it) {
-		if (&*it == &p)
-			break;
-	}
-	return it;
-}
-
-
 #endif

@@ -99,8 +99,6 @@ public:
 	int size() const;
 	///
 	bool empty() const;
-	///
-	iterator find(Paragraph const &);
 private:
 	///
 	Paragraph * parlist;

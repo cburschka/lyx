@@ -337,4 +337,6 @@ inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 	return par.lookupChange(pos) == Change::DELETED;
 }
 
+bool operator==(Paragraph const & lhs, Paragraph const & rhs);
+
 #endif // PARAGRAPH_H

@@ -1396,3 +1396,10 @@ bool Paragraph::isFreeSpacing() const
 		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
 	return false;
 }
+
+
+bool operator==(Paragraph const & lhs, Paragraph const & rhs)
+{
+#warning FIXME this implementatoin must be completely wrong...
+	return &lhs == &rhs;
+}

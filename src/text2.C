@@ -1197,7 +1197,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 					isOK = true;
 					break;
 				} else {
-					tmppit = ownerParagraphs().find(*in->parOwner());
+					tmppit = std::find(ownerParagraphs().begin(), ownerParagraphs().end(), *in->parOwner());
 				}
 			}
 
