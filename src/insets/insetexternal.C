@@ -31,6 +31,7 @@
 #include "support/syscall.h"
 #include "gettext.h"
 #include "debug.h"
+#include "support/FileInfo.h"
 
 using std::endl;
 
@@ -140,12 +141,7 @@ int InsetExternal::write(string const & format,
 		return 0;
 	}
 	
-	if (et.automaticProduction) {
-		executeCommand(doSubstitution(buf,
-					      cit->second.updateCommand),
-			       buf);
-	}
-	
+	updateExternal(format, buf);
 	os << doSubstitution(buf, cit->second.product);
 	return 0; // CHECK  (FIXME check what ? - jbl)
 }
@@ -274,24 +270,46 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 
 void InsetExternal::updateExternal() const
 {
+	updateExternal("LaTeX", view_->buffer());	
+}
+
+void InsetExternal::updateExternal(string const & format,
+				   Buffer const * buf) const
+{
 	ExternalTemplate const & et = params_.templ;
 	ExternalTemplate::Formats::const_iterator cit =
-		et.formats.find("LaTeX");
-	if (cit == et.formats.end())
+		et.formats.find(format);
+
+	if (cit == et.formats.end() ||
+	    cit->second.updateCommand.empty() ||
+	    !et.automaticProduction)
 		return;
 	
-	executeCommand(doSubstitution(view_->buffer(),
-				      cit->second.updateCommand),
-		       view_->buffer());
+	if (!cit->second.updateResult.empty()) {
+		string const resultfile = doSubstitution(buf,
+							 cit->second.updateResult);
+		FileInfo fi(params_.filename);
+		FileInfo fi2(resultfile);
+		if (fi2.exist() && fi.exist() &&
+		    ::difftime(fi2.getModificationTime(),
+			       fi.getModificationTime()) >= 0) {
+			lyxerr[Debug::FILES] << resultfile 
+					     << " is up to date" << endl;
+			return;
+		}
+	}
+
+	executeCommand(doSubstitution(buf, cit->second.updateCommand), buf);
 }
 
 
 void InsetExternal::viewExternal() const
 {
 	ExternalTemplate const & et = params_.templ;
-	if (et.automaticProduction)
-		updateExternal();
+	if (et.viewCommand.empty())
+		return;
 
+	updateExternal();
 	executeCommand(doSubstitution(view_->buffer(),
 				      et.viewCommand),
 		       view_->buffer());
@@ -301,9 +319,10 @@ void InsetExternal::viewExternal() const
 void InsetExternal::editExternal() const
 {
 	ExternalTemplate const & et = params_.templ;
-	if (et.automaticProduction)
-		updateExternal();
+	if (et.editCommand.empty())
+		return;
 
+	updateExternal();
 	executeCommand(doSubstitution(view_->buffer(),
 				      et.editCommand),
 		       view_->buffer());

@@ -1,3 +1,10 @@
+2001-11-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetexternal.C (updateExternal): Do not run update command if
+	result file exists and is up to date.
+
+	* ExternalTemplate.C (readFormat): Support the updateresult token.
+
 2001-10-31  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* insetexternal.C (doSubstitution): Fix filepath ($$FPath in

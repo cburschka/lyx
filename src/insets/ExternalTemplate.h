@@ -45,6 +45,8 @@ struct ExternalTemplate {
 		string product;
 		/// The shell command to produce a resulting file
 		string updateCommand;
+		/// The filename of the resulting file
+		string updateResult;
 		/// What features does this external inset require?
 		string requirement;
 		/// What should be inserted into the preamble

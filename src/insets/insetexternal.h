@@ -86,8 +86,11 @@ public:
 	/// set the parameters from a Params structure
 	virtual void setFromParams(Params const &);
 
-	/// update the file represented by the template
+	///
 	void updateExternal() const;
+
+	/// update the file represented by the template
+	void updateExternal(string const &, Buffer const *) const;
 
 	/// edit file of this template
 	void editExternal() const;

@@ -34,12 +34,11 @@ extern string user_lyxdir;
 // We have to have dummy default commands for security reasons!
 
 ExternalTemplate::ExternalTemplate()
-	: viewCommand("true"), editCommand("true")
 {}
 
 
 ExternalTemplate::FormatTemplate::FormatTemplate()
-	: updateCommand("true") {}
+{}
 
 
 ExternalTemplateManager::ExternalTemplateManager()
@@ -85,6 +84,7 @@ public:
 		ost << "\tFormat " << vt.first << "\n"
 		    << "\t\tProduct " << ft.product << "\n"
 		    << "\t\tUpdateCommand " << ft.updateCommand << "\n"
+		    << "\t\tUpdateResult " << ft.updateResult << "\n"
 		    << "\t\tRequirement " << ft.requirement << "\n"
 		    << "\t\tPreamble\n"
 		    << ft.preamble
@@ -227,17 +227,11 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		case TO_VIEWCMD:
 			lex.next(true);
 			viewCommand = lex.getString();
-			// For security reasons, a command may not be empty!
-			if (viewCommand.empty())
-				viewCommand = "true";
 			break;
 			
 		case TO_EDITCMD:
 			lex.next(true);
 			editCommand = lex.getString();
-			// For security reasons, a command may not be empty!
-			if (editCommand.empty())
-				editCommand = "true";
 			break;
 			
 		case TO_AUTOMATIC:
@@ -268,6 +262,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 	enum FormatTags {
 		FO_PRODUCT = 1,
 		FO_UPDATECMD,
+		FO_UPDATERESULT,
 		FO_REQUIREMENT,
 		FO_PREAMBLE,
 		FO_END
@@ -278,7 +273,8 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		{ "preamble", FO_PREAMBLE },
 		{ "product", FO_PRODUCT },
 		{ "requirement", FO_REQUIREMENT },
-		{ "updatecommand", FO_UPDATECMD }
+		{ "updatecommand", FO_UPDATECMD },
+		{ "updateresult", FO_UPDATERESULT }
 	};
 
 	pushpophelper pph(lex, formattags, FO_END);
@@ -293,9 +289,11 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		case FO_UPDATECMD:
 			lex.next(true);
 			updateCommand = lex.getString();
-			// For security reasons, a command may not be empty!
-			if (updateCommand.empty())
-				updateCommand = "true";
+			break;
+
+		case FO_UPDATERESULT:
+			lex.next(true);
+			updateResult = lex.getString();
 			break;
 			
 		case FO_REQUIREMENT:
