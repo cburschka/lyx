@@ -48,7 +48,7 @@ void FormCopyright::build()
 	minw_ = form()->w;
 	minh_ = form()->h;
 
-	string str = _("LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team");
+	string str = _("LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2001 LyX Team");
 	str = formatted(str, dialog_->text_copyright->w-10,
 			FL_NORMAL_SIZE, FL_NORMAL_STYLE);
 	fl_set_object_label(dialog_->text_copyright, str.c_str());
