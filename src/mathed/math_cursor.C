@@ -38,6 +38,7 @@
 #include "math_hullinset.h"
 #include "math_iterator.h"
 #include "math_macroarg.h"
+#include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "math_replace.h"
@@ -1371,7 +1372,9 @@ bool MathCursor::interpret(char c)
 	if (inMacroArgMode()) {
 		--pos();
 		plainErase();
-		if ('1' <= c && c <= '9')
+		int n = c - '0';
+		MathMacroTemplate * p = formula()->par()->asMacroTemplate();
+		if (p && 1 <= n && n <= p->numargs())
 			insert(MathAtom(new MathMacroArgument(c - '0')));
 		else {
 			insert(MathAtom(new MathSpecialCharInset('#')));
