@@ -52,7 +52,7 @@ public:
  * We need to be able to equality compare these for the
  * sake of the keymap business.
  */
-bool operator==(LyXKeySym const & k1, LyXKeySym const & k1);
+bool operator==(LyXKeySym const & k1, LyXKeySym const & k2);
 
 typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 
