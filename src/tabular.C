@@ -323,31 +323,6 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
     rowofcell.resize(numberofcells);
     columnofcell.resize(numberofcells);
 
-#if 0
-    int row = 0;
-    int column = 0;
-    int c = 0;
-    
-    while (c < numberofcells && row < rows_ && column < columns_) {
-	rowofcell[c] = row;
-	columnofcell[c] = column;
-	++c;
-	do {
-	    ++column;
-	} while (column < columns_ &&
-		 cell_info[row][column].multicolumn
-		 == LyXTabular::CELL_PART_OF_MULTICOLUMN);
-	if (column == columns_) {
-	    column = 0;
-	    ++row;
-	}
-    }
-#else
-    // Isn't this the same as the while above? (Lgb)
-#ifdef WITH_WARNINGS
-#warning Please check this Jürgen.
-#endif
-    // if ok please delete the #if 0 section above. (Lgb)
     for (int row = 0, column = 0, c = 0;
 	 c < numberofcells && row < rows_ && column < columns_;) {
 	rowofcell[c] = row;
@@ -363,7 +338,6 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
 	    ++row;
 	}
     }
-#endif
 
     for (int row = 0; row < rows_; ++row) {
 	for (int column = 0; column < columns_; ++column) {
@@ -2378,27 +2352,16 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 {
     int const fcell = GetFirstCellInRow(row);
     int const n = NumberOfCellsInRow(fcell) + fcell;
-
-#if 0
     int tmp = 0;
 
     for (int i = fcell; i < n; ++i) {
-	if (TopLine(i))
+	if (TopLine(i)) {
 	    ++tmp;
+	    break;
+	}
     }
     if (!tmp)
 	return 0;
-#else
-    // Isn't this equivalent? (Lgb)
-#ifdef WITH_WARNINGS
-#warning Please check this Jürgen.
-#endif
-    // If ok please delete the abofe #if 0 section. (Lgb)
-    for (int i = fcell; i < n; ++i) {
-	    if (TopLine(i))
-		    return 0;
-    }
-#endif
 
     unsigned char ch;
     for (int i = fcell; i < n; ++i) {
@@ -2436,27 +2399,17 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 {
     int const fcell = GetFirstCellInRow(row);
     int const n = NumberOfCellsInRow(fcell) + fcell;
-
-#if 0
     int tmp = 0;
 
     for (int i = fcell; i < n; ++i) {
-	if (BottomLine(i))
+	if (BottomLine(i)) {
 	    ++tmp;
+	    break;
+	}
     }
     if (!tmp)
 	return 0;
-#else
-    // Isn't this equivalent? (Lgb)
-#ifdef WITH_WARNINGS
-#warning Please check this Jürgen.
-#endif
-    // If ok, please delete the above #if 0 section. (Lgb)
-    for (int i = fcell; i < n; ++i) {
-	if (BottomLine(i))
-	    return 0;
-    }
-#endif
+
     unsigned char ch;
     for (int i = fcell; i < n; ++i) {
 	if (BottomLine(i)) {

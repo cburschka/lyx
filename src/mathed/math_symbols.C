@@ -331,27 +331,30 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
    return data;
 }
 
-bool math_insert_greek(char c)
+bool math_insert_greek(BufferView * bv, char c)
 {
-   if (current_view->available() &&
+   if (bv->available() &&
        (('A' <= c && c <= 'Z') ||
 	('a'<= c && c<= 'z')))   {
       string tmp;
       tmp = c;
-      if (!current_view->theLockingInset()) {
+      if (!bv->theLockingInset() || bv->theLockingInset()->IsTextInset()) {
 	 int greek_kb_flag_save = greek_kb_flag;
 	 InsetFormula * new_inset = new InsetFormula();
-	 current_view->beforeChange();
-	 current_view->insertInset(new_inset);
+	 bv->beforeChange();
+	 if (!bv->insertInset(new_inset)) {
+	     delete new_inset;
+	     return false;
+	 }
 //	 Update(1);//BUG
-	 new_inset->Edit(current_view, 0, 0, 0);
-	 new_inset->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
+	 new_inset->Edit(bv, 0, 0, 0);
+	 new_inset->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
 	 if (greek_kb_flag_save < 2)
-		 current_view->unlockInset(current_view->theLockingInset());
+		 bv->unlockInset(new_inset); // bv->theLockingInset());
       } else
-	 if (current_view->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
-	     current_view->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
-		static_cast<InsetFormula*>(current_view->theLockingInset())->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
+	 if (bv->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
+	     bv->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
+		static_cast<InsetFormula*>(bv->theLockingInset())->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
 	 else
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;
@@ -361,20 +364,23 @@ bool math_insert_greek(char c)
 }
 
 
-void math_insert_symbol(string const & s)
+void math_insert_symbol(BufferView * bv, string const & s)
 {
-   if (current_view->available())   {
-      if (!current_view->theLockingInset()) {
+   if (bv->available())   {
+      if (!bv->theLockingInset() || bv->theLockingInset()->IsTextInset()) {
 	 InsetFormula * new_inset = new InsetFormula();
-	 current_view->beforeChange();
-	 current_view->insertInset(new_inset);
+	 bv->beforeChange();
+	 if (!bv->insertInset(new_inset)) {
+	     delete new_inset;
+	     return;
+	 }
 //	 Update(1);//BUG
-	 new_inset->Edit(current_view, 0, 0, 0);
-	 new_inset->InsertSymbol(current_view, s);
+	 new_inset->Edit(bv, 0, 0, 0);
+	 new_inset->InsertSymbol(bv, s);
       } else
-	if (current_view->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
-	    current_view->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
-		static_cast<InsetFormula*>(current_view->theLockingInset())->InsertSymbol(current_view, s);
+	if (bv->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
+	    bv->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
+		static_cast<InsetFormula*>(bv->theLockingInset())->InsertSymbol(bv, s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;

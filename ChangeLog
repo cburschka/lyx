@@ -1,3 +1,17 @@
+2001-01-02  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (pasteSelection): rewritten correctly.
+
+	* src/tabular.C (TeXTopHLine): 
+	(TeXBottomHLine): fixed Lars new code.
+
+	* src/insets/insettext.C (LocalDispatch): added support for math_greek.
+
+	* src/mathed/math_symbols.C (math_insert_greek): removed current_view
+	from this function and added a BufferView * parameter.
+
+	* src/mathed/math_symbols.C (math_insert_symbol): ditto
+
 2000-12-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/version.h: set to pre3

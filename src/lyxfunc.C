@@ -91,8 +91,8 @@ using std::pair;
 using std::endl;
 using std::find_if;
 
-extern void math_insert_symbol(string const &);
-extern bool math_insert_greek(char);
+extern void math_insert_symbol(BufferView *, string const &);
+extern bool math_insert_greek(BufferView *, char);
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
 extern int greek_kb_flag;
@@ -2520,7 +2520,7 @@ string const LyXFunc::Dispatch(int ac,
 	       
 	case LFUN_INSERT_MATH:
 	{
-		math_insert_symbol(argument);
+		math_insert_symbol(owner->view(), argument);
 	}
 	break;
 	
@@ -2951,7 +2951,8 @@ string const LyXFunc::Dispatch(int ac,
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
-					if (!math_insert_greek(argument[i]))
+					if (!math_insert_greek(owner->view(),
+							       argument[i]))
 #if 0
 						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
 #else

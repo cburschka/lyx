@@ -55,6 +55,8 @@ using std::min;
 using std::max;
 
 extern unsigned char getCurrentTextClass(Buffer *);
+extern bool math_insert_greek(BufferView *, char);
+extern int greek_kb_flag;
 
 InsetText::InsetText()
 {
@@ -355,15 +357,15 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		row = row->next();
 	    }
 	} else if (need_update == SELECTION) {
-	    bv->screen()->ToggleToggle(TEXT(bv), y_offset, int(x));
+	    bv->screen()->ToggleToggle(TEXT(bv), bv, y_offset, int(x));
 	} else {
 	    locked = false;
 	    if (need_update == CURSOR) {
-		bv->screen()->ToggleSelection(TEXT(bv), true, y_offset,int(x));
+		bv->screen()->ToggleSelection(TEXT(bv), bv, true, y_offset,int(x));
 		TEXT(bv)->ClearSelection();
 		TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	    }
-	    bv->screen()->Update(TEXT(bv), y_offset, int(x));
+	    bv->screen()->Update(TEXT(bv), bv, y_offset, int(x));
 	    locked = true;
 	}
     }
@@ -799,11 +801,23 @@ InsetText::LocalDispatch(BufferView * bv,
 	    }
 	    TEXT(bv)->ClearSelection();
 	    for (string::size_type i = 0; i < arg.length(); ++i) {
+		if (greek_kb_flag) {
+		    if (!math_insert_greek(bv, arg[i])) {
 #if 0
-		bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
+			bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
 #else
-		bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
+			bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
 #endif
+		    } else if (!the_locking_inset) {
+			(void)moveRight(bv, false);
+		    }
+		} else {
+#if 0
+		    bv->owner()->getIntl()->getTrans()->TranslateAndInsert(arg[i], TEXT(bv));
+#else
+		    bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], TEXT(bv));
+#endif
+		}
 	    }
 	}
 	UpdateLocal(bv, CURSOR_PAR, true);

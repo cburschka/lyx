@@ -22,6 +22,7 @@
 class LyXText;
 class WorkArea;
 class Buffer;
+class BufferView;
 
 struct Row;
 
@@ -54,39 +55,40 @@ public:
 	
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
-	void Draw(LyXText *, unsigned int y);
+	void Draw(LyXText *, BufferView *, unsigned int y);
 
 	/// Redraws the screen, without using existing pixmap
-	void Redraw(LyXText *);
+	void Redraw(LyXText *, BufferView *);
    
 	/// Returns a new top so that the cursor is visible
 	unsigned int TopCursorVisible(LyXText const *);
 	/// Redraws the screen such that the cursor is visible
-	bool FitCursor(LyXText *);
+	bool FitCursor(LyXText *, BufferView *);
 	///
-	void ShowCursor(LyXText const *);
+	void ShowCursor(LyXText const *, BufferView const *);
 	///
 	void HideCursor();
 	///
-	void CursorToggle(LyXText const *);
+	void CursorToggle(LyXText const *, BufferView const *);
 	///
 	void ShowManualCursor(LyXText const *, int x, int y,
 			      int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
-	bool FitManualCursor(LyXText *, int, int, int, int);
+	bool FitManualCursor(LyXText *, BufferView *, int, int, int, int);
 	///
-	void ToggleSelection(LyXText *, bool = true, int y_offset = 0,
-			     int x_offset = 0);
+	void ToggleSelection(LyXText *, BufferView *, bool = true,
+			     int y_offset = 0, int x_offset = 0);
 	///
-	void ToggleToggle(LyXText *, int y_offset = 0, int x_offset = 0);
+	void ToggleToggle(LyXText *, BufferView *,
+			  int y_offset = 0, int x_offset = 0);
 	
 	/** Updates part of the screen. If text->status is
 	    LyXText::NEED_MORE_REFRESH, we update from the
 	    point of change and to the end of the screen.
 	    If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
 	    we only update the current row. */
-	void Update(LyXText *, int y_offset=0, int x_offset=0);
+	void Update(LyXText *, BufferView *, int y_offset=0, int x_offset=0);
 	///
 	bool forceClear() const { return force_clear; }
 
@@ -97,12 +99,12 @@ private:
 	void expose(int x, int y, int exp_width, int exp_height); 
 
 	/// y1 and y2 are coordinates of the screen
-	void DrawFromTo(LyXText *, int y1, int y2,
+	void DrawFromTo(LyXText *, BufferView *, int y1, int y2,
 			int y_offset = 0, int x_offset = 0);
 
 	/// y is a coordinate of the text
-	void DrawOneRow(LyXText *, Row * row, int y_text, int y_offset = 0,
-			int x_offset = 0);
+	void DrawOneRow(LyXText *, BufferView *, Row * row,
+			int y_text, int y_offset = 0, int x_offset = 0);
 
 	///
 	WorkArea & owner;

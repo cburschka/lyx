@@ -2052,18 +2052,21 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 {
     if (!paste_tabular)
 	return false;
-    for (int j=0, i=actcell; j<paste_tabular->GetNumberOfCells(); ++j,++i) {
-	while (paste_tabular->row_of_cell(j) > tabular->row_of_cell(i)-actrow)
-	    ++i;
-	if (tabular->GetNumberOfCells() <= i)
-	    break;
-	while (paste_tabular->row_of_cell(j) < tabular->row_of_cell(i)-actrow)
-	    ++j;
-	if (paste_tabular->GetNumberOfCells() <= j)
-	    break;
-	*(tabular->GetCellInset(i)) = *(paste_tabular->GetCellInset(j));
-	tabular->GetCellInset(i)->setOwner(this);
-	tabular->GetCellInset(i)->deleteLyXText(bv);
+
+    for (int r1 = 0, r2 = actrow;
+	 (r1 < paste_tabular->rows()) && (r2 < tabular->rows());
+	 ++r1, ++r2)
+    {
+	for(int c1 = 0, c2 = actcol;
+	    (c1 < paste_tabular->columns()) && (c2 < tabular->columns());
+	    ++c1, ++c2)
+	{
+	    int n1 = paste_tabular->GetCellNumber(r1, c1);
+	    int n2 = tabular->GetCellNumber(r2, c2);
+	    *(tabular->GetCellInset(n2)) = *(paste_tabular->GetCellInset(n1));
+	    tabular->GetCellInset(n2)->setOwner(this);
+	    tabular->GetCellInset(n2)->deleteLyXText(bv);
+	}
     }
     return true;
 }
