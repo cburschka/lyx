@@ -266,8 +266,6 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	string const getIncludeonlyList(char delim = ',');
-	///
 	std::vector<std::pair<string, string> > const getBibkeyList() const;
 	///
 	std::vector<string> const getLabelList() const;

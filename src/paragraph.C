@@ -29,9 +29,7 @@
 #include "ParameterStruct.h"
 #include "gettext.h"
 
-#include "insets/insetinclude.h"
 #include "insets/insetbib.h"
-#include "insets/insettext.h"
 #include "insets/insetoptarg.h"
 
 #include "support/filetools.h"

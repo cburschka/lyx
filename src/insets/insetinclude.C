@@ -113,7 +113,7 @@ InsetInclude::Params const & InsetInclude::params() const
 bool InsetInclude::Params::operator==(Params const & o) const
 {
 	if (cparams == o.cparams && flag == o.flag &&
-	    noload == o.noload && masterFilename_ == o.masterFilename_)
+	    masterFilename_ == o.masterFilename_)
 		return true;
 
 	return false;
@@ -129,26 +129,6 @@ bool InsetInclude::Params::operator!=(Params const & o) const
 void InsetInclude::set(Params const & p)
 {
 	params_ = p;
-
-	// Just to be safe...
-	string command;
-
-	switch (params_.flag) {
-		case INCLUDE:
-			command="include";
-			break;
-		case VERB:
-			command="verbatiminput";
-			break;
-		case INPUT:
-			command="input";
-			break;
-		case VERBAST:
-			command="verbatiminput*";
-			break;
-	}
-
-	params_.cparams.setCmdName(command);
 
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
@@ -252,7 +232,7 @@ string const InsetInclude::getMasterFilename() const
 
 bool InsetInclude::loadIfNeeded() const
 {
-	if (params_.noload || isVerbatim())
+	if (isVerbatim())
 		return false;
 
 	if (!IsLyXFilename(getFileName()))

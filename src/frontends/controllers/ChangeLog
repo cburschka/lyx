@@ -1,5 +1,10 @@
 2002-09-09  John Levon  <levon@movementarian.org>
 
+	* ControlInclude.C: fix file masks. Get rid of noload,
+	remove stupid warning
+ 
+2002-09-09  John Levon  <levon@movementarian.org>
+
 	* ControlMath.h:
 	* ControlMath.C: add latex_deco
  

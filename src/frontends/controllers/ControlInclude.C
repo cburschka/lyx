@@ -55,7 +55,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	string pattern;
 	switch (in_type) {
 	case INPUT:
-	    pattern = _("*.tex| LaTeX Documents (*.tex)");
+	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents");
 	    break;
 
 	case VERBATIM:
@@ -63,7 +63,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	    break;
 
 	case INCLUDE:
-	    pattern = _("*.lyx| LyX Documents (*.lyx)");
+	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents");
 	    break;
 	}
 
@@ -87,18 +87,8 @@ bool ControlInclude::fileExists(string const & file)
 	string const fileWithAbsPath
 		= MakeAbsPath(file, OnlyPath(params().masterFilename_));
 
-	if (params().noload) {
-
-		if (prefixIs(file, "../") || prefixIs(file, "/"))
-			Alert::alert(_("Warning!"),
-				_("On some systems, with this options only relative path names"),
-				_("inside the master file dir are allowed. You might get a LaTeX error!"));
-	}
-
 	if (IsFileReadable(fileWithAbsPath))
 		return true;
 	
-	else
-		Alert::alert(_("Warning!"), _("Specified file doesn't exist"));
-		return false;
+	return false;
 }

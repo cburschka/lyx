@@ -1159,8 +1159,8 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 			} else if (file_format > LYX_FORMAT) {
 				// future format
 				Alert::alert(_("Warning!"),
-					   _("LyX file format is newer that what"),
-					   _("is supported in this LyX version. Expect some problems."));
+					_("The file was created with a newer version of"
+					"LyX. This is likely to cause problems."));
 
 			} else if (file_format < LYX_FORMAT) {
 				// old formats
@@ -3148,26 +3148,6 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();
 	}
-}
-
-
-// This function should be in Buffer because it's a buffer's property (ale)
-string const Buffer::getIncludeonlyList(char delim)
-{
-	string lst;
-	for (inset_iterator it = inset_iterator_begin();
-	    it != inset_iterator_end(); ++it) {
-		if (it->lyxCode() == Inset::INCLUDE_CODE) {
-			InsetInclude & inc = static_cast<InsetInclude &>(*it);
-			if (inc.isIncludeOnly()) {
-				if (!lst.empty())
-					lst += delim;
-				lst += inc.getRelFileBaseName();
-			}
-		}
-	}
-	lyxerr[Debug::INFO] << "Includeonly(" << lst << ')' << endl;
-	return lst;
 }
 
 

@@ -1177,7 +1177,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_CHILD_INSERT:
 	{
 		InsetInclude::Params p;
-		p.cparams.setFromString(ev.argument);
+		if (!ev.argument.empty())
+			p.cparams.setFromString(ev.argument);
 		p.masterFilename_ = buffer_->fileName();
 
 		InsetInclude * inset = new InsetInclude(p);

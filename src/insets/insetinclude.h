@@ -1,12 +1,11 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetinclude.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1997 LyX Team (this file was created this year)
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
@@ -25,32 +24,27 @@ struct LaTeXFeatures;
 
 // Created by AAS 970521
 
-/**  Used to include files
- */
+/// for including tex/lyx files
 class InsetInclude: public InsetButton, boost::noncopyable {
 public:
 	/// the type of inclusion
 	enum Flags {
-		///
-		INCLUDE = 0,
-		///
-		VERB = 1,
-		///
-		INPUT = 2,
-		///
-		VERBAST = 3
+		INCLUDE = 0, //<
+		VERB = 1, //<
+		INPUT = 2, //<
+		VERBAST = 3 //<
 	};
 
 	struct Params {
-		Params(InsetCommandParams const & cp = InsetCommandParams(),
-		       Flags f = INCLUDE,
+		Params(InsetCommandParams const & cp = InsetCommandParams("input"),
+		       Flags f = INPUT,
 		       bool nl = false,
 		       string const & name = string())
-			: cparams(cp), flag(f), noload(nl),
+			: cparams(cp), flag(f),
 			  masterFilename_(name) {}
+ 
 		InsetCommandParams cparams;
 		Flags flag;
-		bool noload;
 		string masterFilename_;
 
 		///
@@ -63,7 +57,7 @@ public:
 	InsetInclude(Params const &);
 	///
 	InsetInclude(InsetCommandParams const &, Buffer const &);
-	///
+
 	~InsetInclude();
 
 	/// Override these InsetButton methods if Previewing
@@ -121,9 +115,6 @@ public:
 	/// return the filename stub of the included file
 	string const getRelFileBaseName() const;
 
-	/// return true if the included file is not loaded
-	bool isIncludeOnly() const;
-
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;
 
@@ -160,10 +151,4 @@ inline bool InsetInclude::isVerbatim() const
 	return params_.flag == VERB || params_.flag == VERBAST;
 }
 
-
-inline bool InsetInclude::isIncludeOnly() const
-{
-	return params_.flag == INCLUDE && params_.noload;
-}
-
-#endif
+#endif // INSETINCLUDE_H

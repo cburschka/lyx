@@ -17,6 +17,8 @@
 #pragma implementation
 #endif
 
+#include "debug.h"
+ 
 #include "xformsBC.h"
 #include "ControlInclude.h"
 #include "FormInclude.h"
@@ -46,7 +48,6 @@ void FormInclude::build()
 
 	bc().addReadOnly(dialog_->button_browse);
 	bc().addReadOnly(dialog_->radio_verbatim);
-	bc().addReadOnly(dialog_->check_typeset);
 	bc().addReadOnly(dialog_->radio_useinput);
 	bc().addReadOnly(dialog_->radio_useinclude);
 }
@@ -54,30 +55,12 @@ void FormInclude::build()
 
 void FormInclude::update()
 {
-	#if 0
-	// I believe this is not needed.
-	// Anyway, it is plain wrong (JSpitzm 3/7/02)
-	if (controller().params().noload) {
-		fl_set_input(dialog_->input_filename, "");
-		fl_set_button(dialog_->check_typeset, 0);
-		fl_set_button(dialog_->radio_useinput, 0);
-		fl_set_button(dialog_->radio_useinclude, 1);
-		fl_set_button(dialog_->radio_verbatim, 0);
-		fl_set_button(dialog_->check_visiblespace, 0);
-		fl_deactivate_object(dialog_->check_visiblespace);
-		fl_set_object_lcol(dialog_->check_visiblespace, FL_INACTIVE);
-		return;
-	}
-	#endif
-
 	fl_set_input(dialog_->input_filename,
 		     controller().params().cparams.getContents().c_str());
 
 	string const cmdname = controller().params().cparams.getCmdName();
 
-	fl_set_button(dialog_->check_typeset,
-		      int(controller().params().noload));
-
+	lyxerr << cmdname << endl; 
 	if (cmdname == "input")
 		fl_set_button(dialog_->check_preview,
 			      int(controller().params().cparams.preview()));
@@ -106,7 +89,6 @@ void FormInclude::update()
 
 void FormInclude::apply()
 {
-	controller().params().noload = fl_get_button(dialog_->check_typeset);
 	controller().params().cparams
 		.preview(fl_get_button(dialog_->check_preview));
 
@@ -151,7 +133,6 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_load) {
 		string const in_name = fl_get_input(dialog_->input_filename);
 		if (!rtrim(in_name).empty() && controller().fileExists(in_name)) {
-//			ApplyButton();
 			controller().OKButton();
 			controller().load(rtrim(in_name));
 			action = ButtonPolicy::SMI_NOOP;

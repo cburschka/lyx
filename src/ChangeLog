@@ -1,3 +1,13 @@
+2002-09-09  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C: Don't use empty arg for LFUN_CHILD_INSERT
+
+	* buffer.h:
+	* buffer.C: remove getIncludeonlyList()
+ 
+	* paragraph.C: 
+	* lyxfunc.C: remove headers
+ 
 2002-09-09  Juergen Vigna  <jug@sad.it>
 
 	* text.C (getColumnNearX): fix form Michael this is most

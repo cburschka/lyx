@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_include
 Width: 340
 Height: 250
-Number of Objects: 15
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
@@ -63,24 +63,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 180 70 150 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Don't typeset|#D
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_typeset
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -159,7 +141,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 180 100 150 30
+box: 180 70 150 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -213,7 +195,7 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 100 160 30
+box: 10 70 160 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -231,7 +213,7 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 70 160 30
+box: 10 100 160 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -267,7 +249,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 180 130 150 30
+box: 180 100 150 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
