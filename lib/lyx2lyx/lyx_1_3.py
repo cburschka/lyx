@@ -1,6 +1,7 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
+# Copyright (C) 2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,9 +17,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
-import sys,string,re
-from parser_tools import *
+import string
+import re
+from parser_tools import find_token, find_end_of_inset, get_value,\
+                         find_token2, del_token
 
 def change_insetgraphics(lines):
     i = 0
@@ -76,6 +78,7 @@ def change_insetgraphics(lines):
 
 	i = i+1
 
+
 def change_tabular(lines):
     i = 0
     while 1:
@@ -86,9 +89,16 @@ def change_tabular(lines):
             lines[i] = re.sub(' alignment=".*?"',' alignment="block"',lines[i])
         i = i+1
 
-def convert(header, body):
+
+def convert(header, body, opt):
     change_insetgraphics(body)
     change_tabular(body)
+    opt.format = 221
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+
 
 if __name__ == "__main__":
     pass

@@ -1,6 +1,7 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
+# Copyright (C) 2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,9 +17,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+import string
+import re
 
-import sys,string,re
-from parser_tools import *
+from parser_tools import find_token, find_token_backwards, get_next_paragraph,\
+                         find_tokens, find_end_of_inset, find_re, \
+                         is_nonempty_line, get_paragraph, find_nonempty_line, \
+                         get_value, get_tabular_lines, check_token
 
 floats = {
     "footnote": ["\\begin_inset Foot",
@@ -52,6 +57,7 @@ pextra_rexp = re.compile(r"\\pextra_type\s+(\S+)"+\
 			 r"(\s+\\pextra_start_minipage\s+(\S+))?"+\
 			 r"(\s+(\\pextra_widthp?)\s+(\S*))?")
 
+
 def get_width(mo):
     if mo.group(10):
 	if mo.group(9) == "\\pextra_widthp":
@@ -61,11 +67,11 @@ def get_width(mo):
     else:
 	return "100col%"
 
+
 #
 # Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
 #
-
-def remove_oldfloat(lines, language):
+def remove_oldfloat(lines, opt):
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_float", i)
@@ -76,7 +82,7 @@ def remove_oldfloat(lines, language):
 
 	floattype = string.split(lines[i])[1]
 	if not floats.has_key(floattype):
-	    sys.stderr.write("Error! Unknown float type "+floattype+"\n")
+	    opt.warning("Error! Unknown float type " + floattype)
 	    floattype = "fig"
 
 	# skip \end_deeper tokens
@@ -119,12 +125,13 @@ def remove_oldfloat(lines, language):
 		    flag = 1
 		    new.append("")
 		if token == "\\lang":
-		    new.append(token+" "+language)
+		    new.append(token+" "+ opt.language)
 		else:
 		    new.append(token+" default ")
 
 	lines[i:j+1] = new
 	i = i+1
+
 
 pextra_type2_rexp = re.compile(r".*\\pextra_type\s+[12]")
 pextra_type2_rexp2 = re.compile(r".*(\\layout|\\pextra_type\s+2)")
@@ -192,8 +199,10 @@ def remove_pextra(lines):
 	lines[j0:j] = start+mid+end
 	i = i+1
 
+
 def is_empty(lines):
     return filter(is_nonempty_line, lines) == []
+
 
 move_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun|end_deeper)")
 ert_rexp = re.compile(r"\\begin_inset|\\hfill|.*\\SpecialChar")
@@ -202,6 +211,7 @@ ert_begin = ["\\begin_inset ERT",
 	     "status Collapsed",
 	     "",
 	     "\\layout Standard"]
+
 
 def remove_oldert(lines):
     i = 0
@@ -310,6 +320,7 @@ def remove_oldert(lines):
 	    break
 	del lines[i]
 
+
 # ERT insert are hidden feature of lyx 1.1.6. This might be removed in the future.
 def remove_oldertinset(lines):
     i = 0
@@ -326,6 +337,7 @@ def remove_oldertinset(lines):
 	lines[i:j+1] = new
 	i = i+1
 
+
 def is_ert_paragraph(lines, i):
     if not check_token(lines[i], "\\layout Standard"):
         return 0
@@ -337,6 +349,7 @@ def is_ert_paragraph(lines, i):
     j = find_end_of_inset(lines, i)
     k = find_nonempty_line(lines, j+1)
     return check_token(lines[k], "\\layout")
+
 
 def combine_ert(lines):
     i = 0
@@ -363,6 +376,7 @@ def combine_ert(lines):
 
 	i = i+1
 
+
 oldunits = ["pt", "cm", "in", "text%", "col%"]
 
 def get_length(lines, name, start, end):
@@ -372,9 +386,11 @@ def get_length(lines, name, start, end):
     x = string.split(lines[i])
     return x[2]+oldunits[int(x[1])]
 
+
 def write_attribute(x, token, value):
     if value != "":
 	x.append("\t"+token+" "+value)
+
 
 def remove_figinset(lines):
     i = 0
@@ -443,6 +459,7 @@ def remove_figinset(lines):
 	new = new + ["\end_inset"]
 	lines[i:j+1] = new
 
+
 attr_re = re.compile(r' \w*="(false|0|)"')
 line_re = re.compile(r'<(features|column|row|cell)')
 
@@ -464,6 +481,7 @@ def update_tabular(lines):
 
 	i = i+1
 
+
 # Figure insert are hidden feature of lyx 1.1.6. This might be removed in the future.
 def fix_oldfloatinset(lines):
     i = 0
@@ -476,6 +494,7 @@ def fix_oldfloatinset(lines):
             lines[j:j] = ["wide false"]
         i = i+1
 
+
 def change_listof(lines):
     i = 0
     while 1:
@@ -485,6 +504,7 @@ def change_listof(lines):
         type = re.search(r"listof(\w*)", lines[i]).group(1)[:-1]
         lines[i] = "\\begin_inset FloatList "+type
         i = i+1
+
 
 def change_infoinset(lines):
     i = 0
@@ -511,6 +531,7 @@ def change_infoinset(lines):
         lines[i:j] = new
         i = i+5
 
+
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
@@ -518,22 +539,25 @@ def change_preamble(lines):
     lines[i+1:i+1] = ["\\use_natbib 0",
 		      "\use_numerical_citations 0"]
 
-def convert(header, body):
-    language = get_value(header, "\\language", 0)
-    if language == "":
-	language = "english"
 
+def convert(header, body, opt):
     change_preamble(header)
     change_listof(body)
     fix_oldfloatinset(body)
     update_tabular(body)
     remove_pextra(body)
-    remove_oldfloat(body, language)
+    remove_oldfloat(body, opt)
     remove_figinset(body)
     remove_oldertinset(body)
     remove_oldert(body)
     combine_ert(body)
     change_infoinset(body)
+    opt.format = 220
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+
 
 if __name__ == "__main__":
     pass

@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,10 +17,11 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import re
-from parser_tools import *
+import string
+from parser_tools import find_token, find_token_backwards, find_re
+
 
 layout_exp = re.compile(r"\\layout (\S*)")
-
 math_env = ["\\[","\\begin{eqnarray*}","\\begin{eqnarray}","\\begin{equation}"]
 
 def replace_protected_separator(lines):
@@ -45,6 +46,7 @@ def replace_protected_separator(lines):
 
         del lines[i]
 
+
 def merge_formula_inset(lines):
     i=0
     while 1:
@@ -54,6 +56,7 @@ def merge_formula_inset(lines):
             lines[i] = lines[i] + lines[i+1]
             del lines[i+1]
         i = i + 1
+
 
 # Update from tabular format 4 to 5 if necessary
 def update_tabular(lines):
@@ -86,6 +89,7 @@ def update_tabular(lines):
             lines[i] = lines[i] + ' "" ""'
             i = i + 1
 
+
 def update_toc(lines):
     i = 0
     while 1:
@@ -95,10 +99,12 @@ def update_toc(lines):
         lines[i] = lines[i] + '{}'
         i = i + 1
 
+
 def remove_cursor(lines):
     i = find_token(lines, '\\cursor', 0)
     if i != -1:
         del lines[i]
+
 
 def remove_vcid(lines):
     i = find_token(lines, '\\lyxvcid', 0)
@@ -108,11 +114,13 @@ def remove_vcid(lines):
     if i != -1:
         del lines[i]
 
+
 def first_layout(lines):
     while (lines[0] == ""):
         del lines[0]
     if lines[0][:7] != "\\layout":
         lines[:0] = ["\\layout Standard"]
+
 
 def remove_space_in_units(lines):
     margins = ["\\topmargin","\\rightmargin",
@@ -138,7 +146,8 @@ def remove_space_in_units(lines):
                 lines[i] = margin + " " + result.group(1) + result.group(2)
             i = i + 1
 
-def convert(header,body):
+
+def convert(header, body, opt):
     first_layout(body)
     remove_vcid(header)
     remove_cursor(body)
@@ -147,7 +156,11 @@ def convert(header,body):
     merge_formula_inset(body)
     update_tabular(body)
     remove_space_in_units(header)
+    opt.format = 216
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
 
 if __name__ == "__main__":
     pass
-

@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,11 +16,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import re, string, sys
-from parser_tools import *
+import re
+import string
+from parser_tools import find_re, find_tokens, find_token, check_token
+
 
 lyxtable_re = re.compile(r".*\\LyXTable$")
-def update_tabular(lines):
+def update_tabular(lines, opt):
     i=0
     while 1:
         i = find_re(lines, lyxtable_re, i)
@@ -103,8 +105,7 @@ def update_tabular(lines):
                     end = find_token(lines, '\\newline', i)
 
                 if end == -1:
-                    sys.stderr.write("Malformed lyx file\n")
-                    sys.exit(1)
+                    opt.error("Malformed LyX file.")
 
                 end = end - i
                 while end > 0:
@@ -175,7 +176,9 @@ def update_tabular(lines):
 
         i = i + len(tmp)
 
+
 prop_exp = re.compile(r"\\(\S*)\s*(\S*)")
+
 def set_paragraph_properties(lines, prop_dict):
     # we need to preserve the order of options
     properties = ["family","series","shape","size",
@@ -258,6 +261,7 @@ def set_paragraph_properties(lines, prop_dict):
 
     return result[:]
 
+
 def update_language(header):
     i = find_token(header, "\\language", 0)
     if i == -1:
@@ -269,10 +273,16 @@ def update_language(header):
         header[i] = '\\language english'
     return
 
-def convert(header,body):
-    update_tabular(body)
+
+def convert(header, body, opt):
+    update_tabular(body, opt)
     update_language(header)
+    opt.format = 217
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+
 
 if __name__ == "__main__":
     pass
-

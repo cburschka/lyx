@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2003 José Matos <jamatos@lyx.org>
+# Copyright (C) 2003-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,7 +18,8 @@
 
 import re
 import string
-from parser_tools import *
+from parser_tools import find_token, find_re, check_token
+
 
 def space_before_layout(lines):
     i = 2 # skip first layout
@@ -31,6 +32,7 @@ def space_before_layout(lines):
             del lines[i-1]
         i = i + 1
 
+
 def formula_inset_space_eat(lines):
     i=0
     while 1:
@@ -40,6 +42,7 @@ def formula_inset_space_eat(lines):
         if len(lines[i]) > 22 and lines[i][21] == ' ':
             lines[i] = lines[i][:20] + lines[i][21:]
         i = i + 1
+
 
 # Update from tabular format 2 to 4
 def update_tabular(lines):
@@ -72,6 +75,7 @@ def update_tabular(lines):
             lines[i] = lines[i] + ' 0 0 0'
             i = i + 1
 
+
 def final_dot(lines):
     i = 0
     while i < len(lines):
@@ -80,6 +84,7 @@ def final_dot(lines):
             del lines[i+1]
         else:
             i = i + 1
+
 
 def update_inset_label(lines):
     i = 0
@@ -90,6 +95,7 @@ def update_inset_label(lines):
         lines[i] = '\\begin_inset LatexCommand \label{' + lines[i][19:] + '}'
         i = i + 1
 
+
 def update_latexdel(lines):
     i = 0
     while 1:
@@ -99,10 +105,12 @@ def update_latexdel(lines):
         lines[i] = string.replace(lines[i],'\\begin_inset LatexDel', '\\begin_inset LatexCommand')
         i = i + 1
 
+
 def update_vfill(lines):
     for i in range(len(lines)):
         lines[i] = string.replace(lines[i],'\\fill_top','\\added_space_top vfill')
         lines[i] = string.replace(lines[i],'\\fill_bottom','\\added_space_bottom vfill')
+
 
 def update_space_units(lines):
     added_space_bottom = re.compile(r'\\added_space_bottom ([^ ]*)')
@@ -120,8 +128,10 @@ def update_space_units(lines):
             new = '\\added_space_top ' + str(float(result.group(1))) + 'cm'
             lines[i] = string.replace(lines[i], old, new)
 
+
 def update_inset_accent(lines):
     pass
+
 
 def remove_cursor(lines):
     i = 0
@@ -134,6 +144,7 @@ def remove_cursor(lines):
         lines[i]= string.replace(lines[i], cursor, '')
         i = i + 1
 
+
 def remove_empty_insets(lines):
     i = 0
     while 1:
@@ -144,6 +155,7 @@ def remove_empty_insets(lines):
             del lines[i]
             del lines[i]
         i = i + 1
+
 
 def remove_formula_latex(lines):
     i = 0
@@ -158,18 +170,21 @@ def remove_formula_latex(lines):
             break
         del lines[i]
 
-def add_end_document(lines):
-    lines.append('\\the_end')
 
-def header_update(lines):
+def add_end_document(lines):
+    i = find_token(lines, '\\the_end', 0)
+    if i == -1:
+        lines.append('\\the_end')
+
+
+def header_update(lines, opt):
     i = 0
     l = len(lines)
     while i < l:
         if check_token(lines[i], '\\begin_preamble'):
             i = find_token(lines, '\\end_preamble', i)
             if i == -1:
-                sys.stderr.write('Unfinished preamble')
-                sys.exit(1)
+                opt.error('Unfinished preamble')
             i = i + 1
             continue
 
@@ -220,8 +235,9 @@ def header_update(lines):
 
         i = i + 1
 
-def convert(header,body):
-    header_update(header)
+
+def convert(header,body, opt):
+    header_update(header, opt)
     add_end_document(body)
     remove_cursor(body)
     final_dot(body)
@@ -235,7 +251,12 @@ def convert(header,body):
     update_vfill(body)
     remove_empty_insets(body)
     remove_formula_latex(body)
+    opt.format = 215
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+
 
 if __name__ == "__main__":
     pass
-

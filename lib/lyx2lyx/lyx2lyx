@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002-2003 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,32 +16,31 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import getopt, sys, string, re
-from error import error, warning
-from parser_tools import set_comment, set_format, check_token
+import getopt
 import gzip
-
-version = "1.4.0cvs"
+import sys
+from parser_tools import read_file, write_file, read_version, set_version, \
+     read_format, set_format, chain, lyxformat, get_value
 
 # Allow the dummy object to be able to carry related data
 # like a C struct
 class struct:
-    pass
+    def __init__(self):
+        self.output = sys.stdout
+        self.input = sys.stdin
+        self.err = sys.stderr
+        self.debug = 1
+        self.start = None
+        self.end = None
 
-# options object, with default values
-opt = struct()
+    def warning(self, message, debug_level= 10):
+        if debug_level <= self.debug:
+            self.err.write(message + "\n")
 
-opt.output = sys.stdout
-opt.input = sys.stdin
-opt.err = sys.stderr
-opt.start = None
-opt.end = None
-opt.quiet = 0
-
-format = re.compile(r"(\d)[\.,]?(\d\d)")
-fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-lst_ft = [210, 215, 216, 217, 218, 220, 221, 223, 224, 225, 226, 227, 228, 229, 
-          230, 231, 232]
+    def error(self, message):
+        self.warning(message)
+        self.warning("Quiting.")
+        sys.exit(1)
 
 def usage():
     print """Usage: lyx2lyx [options] [file]
@@ -52,7 +51,7 @@ Options:
     -h, --help			this information
     -v, --version		output version information and exit
     -l, --list			list all available formats
-    -d, --debug level		level=0..2 (O_ no debug information,2_verbose)
+    -d, --debug level		level=0..2 (O_ no debug information, 2_verbose)
 				default: level=1
     -e, --err error_file	name of the error file or else goes to stderr
     -f, --from version		initial version (optional)
@@ -61,7 +60,7 @@ Options:
     -q, --quiet			same as --debug=0"""
 
 
-def parse_options(argv):
+def parse_options(argv, version, opt):
     _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "quiet"]
     try:
        opts, args = getopt.getopt(argv[1:], "d:e:f:hlo:qt:v", _options)
@@ -74,27 +73,24 @@ def parse_options(argv):
             usage()
             sys.exit()
         if o in ("-v", "--version"):
-            print "lyxconvert, version %s" %(version)
-            print "Copyright (C) 2002-2003 José Matos and Dekel Tsur"
+            print "lyx2lyx, version %s" %(version)
+            print "Copyright (C) 2002-2004 José Matos and Dekel Tsur"
             sys.exit()
         if o in ("-d", "--debug"):
             opt.debug = int(a)
         if o in ("-q", "--quiet"):
             opt.debug = 0
         if o in ("-l", "--list"):
-            print lst_ft
+            # list available formats
             sys.exit()
         if o in ("-o", "--output"):
             opt.output = open(a, "w")
         if o in ("-f", "--from"):
-            opt.start = lyxformat(a)
+            opt.start = lyxformat(a, opt)
         if o in ("-t", "--to"):
-            opt.end = lyxformat(a)
+            opt.end = lyxformat(a, opt)
         if o in ("-e","--err"):
             opt.err = open(a, "w")
-
-    if not opt.end:
-        opt.end = lst_ft[len(lst_ft)-1]
 
     if args:
         file = args[0]
@@ -105,94 +101,34 @@ def parse_options(argv):
         except:
             opt.input = open(file)
 
-def lyxformat(fmt):
-    result = format.match(fmt)
-    if result:
-        fmt = int(result.group(1) + result.group(2))
-    else:
-        opt.err.write(str(fmt) + ": " + error.invalid_format)
-        sys.exit(2)
-
-    if fmt in lst_ft:
-        return fmt
-
-    opt.err.write(str(fmt) + ": " + error.format_not_supported)
-    sys.exit(1)
-
-def read_file(file, header, body):
-    """Reads a file into the header and body parts"""
-    fmt = None
-    preamble = 0
-
-    while 1:
-        line = file.readline()
-        if not line:
-            opt.err.write(error.invalid_file)
-            sys.exit(3)
-
-        line = line[:-1]
-        if check_token(line, '\\begin_preamble'):
-            preamble = 1
-        if check_token(line, '\\end_preamble'):
-            preamble = 0
-
-        if not preamble:
-            line = string.strip(line)
-
-        if not line and not preamble:
-            break
-
-        header.append(line)
-        result = fileformat.match(line)
-        if result:
-            fmt = lyxformat(result.group(1))
-
-    while 1:
-        line = file.readline()
-        if not line:
-            break
-        body.append(line[:-1])
-
-    if not fmt:
-        opt.err.write(error.invalid_file)
-        sys.exit(3)
-    return fmt
-
-def write_file(file, header, body):
-    for line in header:
-        file.write(line+"\n")
-    file.write("\n")
-    for line in body:
-        file.write(line+"\n")
-
 def main(argv):
-    parse_options(argv)
+    version = "1.4.0cvs"
+
+    # options object, with default values
+    opt = struct()
+    
+    parse_options(argv, version, opt)
 
     header, body = [], []
-    fmt =  read_file(opt.input, header, body)
 
-    if opt.start:
-        if opt.start != fmt:
-            opt.err.write("%s: %s %s\n" % (warning.dont_match, opt.start, fmt))
-    else:
-        opt.start = fmt
+    read_file(header, body, opt)
 
-    # Convertion chain
-    if opt.start < opt.end:
-        mode = "lyxconvert_"
-    else:
-        lst_ft.reverse()
-        mode = "lyxrevert_"
+    initial_version = read_version(header)
+    opt.format  = read_format(header, opt)
+    opt.language = get_value(header, "\\language", 0)
+    if opt.language == "":
+	opt.language = "english"
 
-    start = lst_ft.index(opt.start)
-    end = lst_ft.index(opt.end)
+    mode, convertion_chain = chain(opt, initial_version)
+    opt.warning("convertion chain: " + str(convertion_chain), 3)
 
-    for fmt in lst_ft[start:end]:
-        __import__(mode + str(fmt)).convert(header,body)
+    for step in convertion_chain:
+        convert = getattr(__import__("lyx_" + step), mode)
+        convert(header,body, opt)
 
-    set_comment(header, version)
-    set_format(header, opt.end)
-    write_file(opt.output, header, body)
+    set_version(header, version)
+    set_format(header, opt.format)
+    write_file(header, body, opt)
 
 if __name__ == "__main__":
     main(sys.argv)

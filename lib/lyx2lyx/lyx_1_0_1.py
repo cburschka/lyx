@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2003 José Matos <jamatos@fep.up.pt>
+# Copyright (C) 2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,14 +16,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+def convert(header, body, opt):
+    opt.format = 215
 
 
-import sys
-from parser_tools import find_token
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
 
-
-def convert(header, body):
-    pass
 
 if __name__ == "__main__":
     pass
+

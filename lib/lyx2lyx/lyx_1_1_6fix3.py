@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: iso-8859-1 -*-
-# Copyright (C) 2002 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,8 +16,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import re, string, sys
-from parser_tools import *
+import re
+import string
+from parser_tools import find_token
 
 def bool_table(item):
     if item == "0":
@@ -25,11 +26,12 @@ def bool_table(item):
     # should emit a warning if item != "1"
     return "true"
 
+
 align_table = {"0": "top", "2": "left", "4": "right", "8": "center"}
 use_table = {"0": "none", "1": "parbox"}
-
 table_meta_re = re.compile(r'<LyXTabular version="?1"? rows="?(\d*)"? columns="?(\d*)"?>')
-def update_tabular(lines):
+
+def update_tabular(lines, opt):
     i=0
     while 1:
         i = find_token(lines, '\\begin_inset  Tabular', i)
@@ -46,12 +48,13 @@ def update_tabular(lines):
 
         j = find_token(lines, '</LyXTabular>', i) + 1
         if j == 0:
-            sys.stderr.write( "Error: Bad lyx format i=%d j=%d\n" % (i,j))
+            opt.warning( "Error: Bad lyx format i=%d j=%d" % (i,j))
             break
 
         new_table = table_update(lines[i:j])
 	lines[i:j] = new_table
         i = i + len(new_table)
+
 
 col_re = re.compile(r'<column alignment="?(\d)"? valignment="?(\d)"? leftline="?(\d)"? rightline="?(\d)"? width="(.*)" special="(.*)">')
 cell_re = re.compile(r'<cell multicolumn="?(\d)"? alignment="?(\d)"? valignment="?(\d)"? topline="?(\d)"? bottomline="?(\d)"? leftline="?(\d)"? rightline="?(\d)"? rotate="?(\d)"? usebox="?(\d)"? width="(.*)" special="(.*)">')
@@ -109,9 +112,15 @@ def table_update(lines):
 
     return lines[:2] + col_info + lines[2:]
 
-def convert(header,body):
-    update_tabular(body)
+
+def convert(header, body, opt):
+    update_tabular(body, opt)
+    opt.format = 218
+
+
+def revert(header, body, opt):
+    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+
 
 if __name__ == "__main__":
     pass
-

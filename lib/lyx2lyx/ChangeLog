@@ -1,3 +1,12 @@
+2004-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxconvert_229.py (convert_jurabib): new, add use_jurabib flag
+	* lyxrevert_230.py (convert_jurabib): new, remove use_jurabib flag
+	* lyxconvert_230.py (convert_float): new, add sideways flag
+	* lyxrevert_231.py (convert_float): new, remove sideways flag
+	* lyxconvert_231.py (convert_bibtopic): new, add use_bibtopic flag
+	* lyxrevert_232.py (convert_bibtopic): new, remove use_bibtopic flag
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyx2lyx: up the format to 232.
