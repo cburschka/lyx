@@ -485,6 +485,7 @@ named_deco_struct deco_table[] = {
 	{"/",              slash,      0 },
 	{"Vert",           Vert,       0 },
 	{"'",              slash,      1 },
+	{"backslash",      slash,      1 },
 	{"langle",         angle,      0 },
 	{"lceil",          corner,     0 }, 
 	{"lfloor",         corner,     1 },  
@@ -644,7 +645,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	deco_struct const * mds = search_deco(name);
 	if (!mds) {
 		lyxerr << "Deco was not found. Programming error?\n";
-		lyxerr << "name: '" << name << "\n";
+		lyxerr << "name: '" << name << "'\n";
 		return;
 	}
 	

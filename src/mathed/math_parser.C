@@ -218,8 +218,6 @@ private:
 	void error(string const & msg);
 	///
 	void parse_lines(MathGridInset * p, bool numbered, bool outmost);
-	///
-	latexkeys const * read_delim();
 
 private:
 	///
@@ -607,14 +605,6 @@ MathMatrixInset * Parser::parse_normal()
 }
 
 
-latexkeys const * Parser::read_delim()
-{
-	Token const & t = getToken();
-	latexkeys const * l = in_word_set(t.asString());
-	return l ? l : in_word_set(".");
-}
-
-
 void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
 	MathTextCodes yyvarcode = LM_TC_MIN;
@@ -758,10 +748,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 		
 		else if (t.cs() == "left") {
-			latexkeys const * l = read_delim();
+			string l = getToken().asString();
 			MathArray ar;
 			parse_into(ar, FLAG_RIGHT);
-			latexkeys const * r = read_delim();
+			string r = getToken().asString();
 			MathDelimInset * dl = new MathDelimInset(l, r);
 			dl->cell(0) = ar;
 			array.push_back(dl);

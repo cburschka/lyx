@@ -752,7 +752,7 @@ void MathCursor::handleFont(MathTextCodes t)
 }
 
 
-void MathCursor::handleDelim(latexkeys const * l, latexkeys const * r)
+void MathCursor::handleDelim(string const & l, string const & r)
 {
 	handleNest(new MathDelimInset(l, r));
 }

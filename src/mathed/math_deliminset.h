@@ -13,12 +13,10 @@
     \author Alejandro Aguilar Sierra
 */
 
-class latexkeys;
-
 class MathDelimInset : public MathNestInset {
 public:
 	///
-	MathDelimInset(latexkeys const *, latexkeys const *);
+	MathDelimInset(string const &, string const &);
 	///
 	MathInset * clone() const;
 	///
@@ -29,12 +27,12 @@ public:
 	void metrics(MathStyles st) const;
 private:
 	///
-	static string latexName(latexkeys const *);
-	///
 	int dw() const;
 	///
-	latexkeys const * left_;
+	string left_;
 	///
-	latexkeys const * right_;
+	string right_;
+	///
+	static string latexName(string const & name);
 };
 #endif

@@ -575,14 +575,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		string rs;
 		istringstream is(arg.c_str());
 		is >> ls >> rs;
-		latexkeys const * l = in_word_set(ls);
-		latexkeys const * r = in_word_set(rs);
-		if (!is || !l || !r) {
+		if (!is) {
 			lyxerr << "can't parse delimeters from '" << arg << "'\n";
 			break;
 		}
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->handleDelim(l, r);
+		mathcursor->handleDelim(ls, rs);
 		updateLocal(bv, true);
 		break;
 	}

@@ -163,7 +163,7 @@ public:
 	///
 	void handleFont(MathTextCodes t);
 	///
-	void handleDelim(latexkeys const * l, latexkeys const * r);
+	void handleDelim(string const & l, string const & r);
 	///
 	void handleNest(MathInset * p);
 	/// Splits cells and shifts right part to the next cell
