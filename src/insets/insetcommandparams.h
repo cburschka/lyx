@@ -66,11 +66,9 @@ private:
 
 
 ///
-bool operator==(InsetCommandParams const &,
-		InsetCommandParams const &);
+bool operator==(InsetCommandParams const &, InsetCommandParams const &);
 
 ///
-bool operator!=(InsetCommandParams const &,
-		InsetCommandParams const &);
+bool operator!=(InsetCommandParams const &, InsetCommandParams const &);
 
 #endif

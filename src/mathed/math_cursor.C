@@ -1254,6 +1254,16 @@ bool MathCursor::interpret(char c)
 		return pos() != size();
 	}
 
+	if (c == '_') {
+		script(false);
+		return true;
+	}
+
+	if (c == '^') {
+		script(true);
+		return true;
+	}
+
 	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
 		niceInsert(createMathInset(string(1, c)));
 		return true;

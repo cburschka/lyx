@@ -1193,15 +1193,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			setErrorMessage(N_("This is only allowed in math mode!"));
 			break;
 
-		// passthrough hat and underscore outside mathed:
-		case LFUN_SUBSCRIPT:
-			dispatch(FuncRequest(view(), LFUN_SELFINSERT, "_"));
-			break;
-
-		case LFUN_SUPERSCRIPT:
-			dispatch(FuncRequest(view(), LFUN_SELFINSERT, "^"));
-			break;
-
 		case LFUN_DIALOG_SHOW: {
 			string const name = func.getArg(0);
 			string data = trim(func.argument.substr(name.size()));

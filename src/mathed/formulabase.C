@@ -604,16 +604,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		break;
 	}
 
-	case LFUN_SUPERSCRIPT:
-	case LFUN_SUBSCRIPT:
-	{
-		recordUndo(bv, Undo::ATOMIC);
-		mathcursor->script(cmd.action == LFUN_SUPERSCRIPT);
-		break;
-	}
-
-	case LFUN_MATH_DELIM:
-	{
+	case LFUN_MATH_DELIM: {
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'" << endl;
 		string ls;
 		string rs = split(cmd.argument, ls, ' ');
