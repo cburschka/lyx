@@ -198,7 +198,7 @@ void InsetFormulaMacro::InsetUnlock(BufferView * bv)
 	MathedArray * tarray = tmacro->GetData();
 	MathedIter it(tarray);
 	it.Clear();
-	tmacro->SetData(par->GetData());
+	tmacro->setData(par->GetData());
 	tmacro->setEditMode(false);
 	InsetFormula::InsetUnlock(bv);
 }

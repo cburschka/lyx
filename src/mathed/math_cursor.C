@@ -452,8 +452,8 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 			MathMatrixInset * mt = create_multiline(type, cols);
 			mt->SetStyle(LM_ST_DISPLAY);
 			mt->SetType(type);
-			mt->SetData(p->GetData());
-			p->SetData(0);                          // BUG duda
+			mt->setData(p->GetData());
+			p->setData(0);                          // BUG duda
 			delete p;
 			par = mt;
 			p = mt;
@@ -510,7 +510,7 @@ void MathedCursor::Insert(MathedInset * p, int t)
 	if (selection) {
 		if (MathIsActive(t)) {
 			SelCut();
-			static_cast<MathParInset*>(p)->SetData(selarray);
+			static_cast<MathParInset*>(p)->setData(selarray);
 		} else
 			SelDel();
 	}
@@ -720,7 +720,7 @@ void MathedCursor::setNumbered()
 void MathedCursor::Interpret(string const & s)
 {
 	MathedInset * p = 0;
-	latexkeys * l = 0;
+	latexkeys const * l = 0;
 	MathedTextCodes tcode = LM_TC_INSET;
 
 	if (s[0] == '^' || s[0] == '_') {
@@ -758,7 +758,7 @@ void MathedCursor::Interpret(string const & s)
 		if (!p) {
 		lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
 		if (s == "root") {
-			p = new MathRootInset();
+			p = new MathRootInset;
 			tcode = LM_TC_ACTIVE_INSET;
 		} else
 			p = new MathFuncInset(s, LM_OT_UNDEF);
@@ -844,7 +844,7 @@ bool MathedCursor::pullArg()
 			return false;
 		
 		MathedArray * a = p->GetData();
-		p->SetData(0);
+		p->setData(0);
 		Delete();
 		if (a) {
 			cursor->Merge(a);
@@ -872,7 +872,7 @@ void MathedCursor::MacroModeClose()
 {
 	if (macro_mode)  {
 		macro_mode = false;
-		latexkeys * l = in_word_set(imacro->GetName());
+		latexkeys const * l = in_word_set(imacro->GetName());
 		if (!imacro->GetName().empty()
 		&& (!l || (l && IsMacro(l->token, l->id))) &&
 		!MathMacroTable::mathMTable.getMacro(imacro->GetName())) {

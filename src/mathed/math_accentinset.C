@@ -84,7 +84,7 @@ MathAccentInset::Metrics()
 
 void MathAccentInset::Write(ostream & os, bool fragile)
 {
-	latexkeys * l = lm_get_key_by_id(code, LM_TK_ACCENT);
+	latexkeys const * l = lm_get_key_by_id(code, LM_TK_ACCENT);
 	os << '\\' << l->name;
 	if (code!= LM_not)
 		os << '{';
@@ -100,7 +100,7 @@ void MathAccentInset::Write(ostream & os, bool fragile)
 			   << '{';
 		}
 		if (MathIsSymbol(fn)) {
-			latexkeys * l = lm_get_key_by_id(c, LM_TK_SYM);
+			latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);
 			if (l) {
 				os << '\\' << l->name << ' ';
 			}

@@ -365,6 +365,7 @@ public:
     bool GetLTNewPage(int cell) const;
     ///
     InsetText * GetCellInset(int cell) const;
+    ///
     InsetText * GetCellInset(int row, int column) const;
     ///
     int rows() const { return rows_; }

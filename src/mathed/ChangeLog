@@ -1,6 +1,21 @@
+2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Makefile.am (libmathed_la_SOURCES): remove math_write.C, add
+	math_utils.h
+
+	* math_write.C: delete file
+	* math_delim.C: delete file
+	* marh_sqrtinset.h: delete file
+
+	* move funcs to more localized files, more general cleanup.
+	Constify several local vars. Doxygen changes. Formatting.
+	
 2001-02-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* support.C: add some consts
+
 	* matriz.C: clean up a bit.
+	(matmat): remove the for loop.
 
 	* several files: changes so that several friends can be removed
 

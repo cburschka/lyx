@@ -173,7 +173,7 @@ extern bool isValidGlueLength(string const & data, LyXGlueLength * result);
 ///  VSpace class
 class VSpace {
 public:
-	///
+	/// The different kinds of spaces.
 	enum vspace_kind {
 		///
 		NONE,
@@ -190,37 +190,37 @@ public:
 		///
 		LENGTH
 	};
-	/// constructors
+	/// Constructor
 	VSpace() : 
 		kin (NONE), 
 		len(0.0, LyXLength::PT),
                 kp (false) {}
-	///
+	/// Constructor
 	explicit
-	VSpace(vspace_kind k) : 
+	VSpace(vspace_kind k) :
 		kin (k), 
 		len (0.0, LyXLength::PT),
 	        kp (false) {}
-	///
+	/// Constructor
 	explicit
 	VSpace(LyXGlueLength l) :
 		kin (LENGTH),
 		len (l),
 	        kp (false) {}
 
-	///
+	/// Constructor
 	explicit
 	VSpace(float v, LyXLength::UNIT u) : 
 		kin (LENGTH), 
 		len (v, u),
 	        kp (false) {}
 
-	/// this constructor is for reading from a .lyx file
+	/// Constructor for reading from a .lyx file
 	explicit
 	VSpace(string const & data);
 	
-	// access functions
-	vspace_kind kind() const  { return  kin; }
+	/// access functions
+	vspace_kind kind() const { return  kin; }
 	///
 	LyXGlueLength   length() const { return len; }
 
@@ -241,7 +241,7 @@ public:
 	///
 	int inPixels(int default_height, int default_skip) const;
 private:
-	///
+	/// This VSpace kind
 	vspace_kind kin;
 	///
 	LyXGlueLength len;

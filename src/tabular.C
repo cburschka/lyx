@@ -1348,7 +1348,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 {
     int version;
-    int i, j;
+    int i;
+    int j;
     int rows_arg = 0;
     int columns_arg = 0;
     int is_long_tabular_arg = false;

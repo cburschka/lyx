@@ -85,14 +85,10 @@ void
 diaprint_on_print_from_changed         (GtkEditable     *editable,
                                         gpointer         user_data)
 {
-  GtkSpinButton * to;
-  GtkAdjustment * a;
-  int nmin, v;
-
-  nmin = gtk_spin_button_get_value_as_int( GTK_SPIN_BUTTON(editable) );
-  to = GTK_SPIN_BUTTON(lookup_widget(GTK_WIDGET(editable), "print_to"));
-  a = gtk_spin_button_get_adjustment(to);
-  v = gtk_spin_button_get_value_as_int(to);
+  int nmin = gtk_spin_button_get_value_as_int( GTK_SPIN_BUTTON(editable) );
+  GtkSpinButton * to = GTK_SPIN_BUTTON(lookup_widget(GTK_WIDGET(editable), "print_to"));
+  GtkAdjustment * a = gtk_spin_button_get_adjustment(to);
+  int v = gtk_spin_button_get_value_as_int(to);
 
   a->lower = nmin;
   if (v < nmin)

@@ -2,10 +2,9 @@
 /* Command-line: gperf -a -p -o -t -G -D keywords  */
 #include <config.h>
 
-#include <cstring>
-
 #include "math_defs.h"
 #include "math_parser.h"
+#include "support/lstrings.h"
 
 int const TOTAL_KEYWORDS = 269;
 int const MIN_WORD_LENGTH = 2;
@@ -38,8 +37,9 @@ math_hash (register char const * str, register int len)
 	return len + asso_values[str[len - 1]] + asso_values[str[0]];
 }
 
+
 static
-latexkeys wordlist[] = 
+latexkeys const wordlist[] = 
 {
 	{"",0,0}, {"",0,0}, {"",0,0}, {"",0,0},
 	{"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, 
@@ -355,7 +355,7 @@ static short lookup[] =
 };
 
 
-latexkeys *
+latexkeys const *
 in_word_set (register char const * str, register int len)
 {
 	if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH) {
@@ -367,17 +367,19 @@ in_word_set (register char const * str, register int len)
 			if (idx >= 0 && idx < MAX_HASH_VALUE) {
 				char const * s = wordlist[idx].name;
 				
-				if (*s == *str && !strcmp (str + 1, s + 1))
+				if (*s == *str && !compare(str + 1, s + 1))
 					return &wordlist[idx];
 			} else if (idx < 0 && idx >= -MAX_HASH_VALUE) {
 				return 0;
 			} else {
 				int const offset = key + idx + (idx > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
-				latexkeys * base = &wordlist[-lookup[offset]];
-				latexkeys * ptr = base + -lookup[offset + 1];
+				latexkeys const * base = &wordlist[-lookup[offset]];
+				latexkeys const * ptr = base + -lookup[offset + 1];
 				
 				while (--ptr >= base)
-					if (*str == *ptr->name && !strcmp (str + 1, ptr->name + 1))
+					if (*str == *ptr->name
+					    && !compare(str + 1,
+							ptr->name + 1))
 						return ptr;
 			}
 		}
@@ -386,16 +388,16 @@ in_word_set (register char const * str, register int len)
 }
 
 
-latexkeys * in_word_set(string const & str) 
+latexkeys const * in_word_set(string const & str) 
 {
 	return in_word_set(str.c_str(), str.length());
 }
 
 
-latexkeys * lm_get_key_by_id(int t, short tk)
+latexkeys const * lm_get_key_by_id(int t, short tk)
 {
-	latexkeys * l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
-	latexkeys * base = &wordlist[MIN_HASH_VALUE];
+	latexkeys const * l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
+	latexkeys const * base = &wordlist[MIN_HASH_VALUE];
 	while (--l >= base) {
 		if (t == l->id && tk == l->token)
 			return l;
@@ -404,7 +406,7 @@ latexkeys * lm_get_key_by_id(int t, short tk)
 }
 
 
-latexkeys * lm_get_key_by_index(int i)
+latexkeys const * lm_get_key_by_index(int i)
 {
 	if (i > 0 && i < TOTAL_KEYWORDS + 2)
 		return &wordlist[i];

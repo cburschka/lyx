@@ -74,9 +74,6 @@ public:
 	std::set<string> databases;
 	///
 	std::set<string> styles;
-	///
-	friend
-	bool operator==(Aux_Info const & a, Aux_Info const & o);
 };
 
 

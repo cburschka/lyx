@@ -4,7 +4,9 @@
 
 #include "math_parinset.h"
 
-/// An argument
+/** A macro argument
+    \author Alejandro Aguilar Sierra
+*/
 class MathMacroArgument: public MathParInset {
 public:
     ///

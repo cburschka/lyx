@@ -91,7 +91,7 @@ void ParaDialog::setReadOnly(bool readonly)
 void ParaDialog::setLabelWidth(char const * text)
 {
 	// FIXME: should be cleverer here
-	if (!strcmp(_("Senseless with this layout!"),text)) {
+	if (!compare(_("Senseless with this layout!"), text)) {
 		generalpage->labelwidth->setText("");
 		generalpage->labelwidth->setEnabled(false);
 	} else {

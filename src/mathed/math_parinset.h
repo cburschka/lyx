@@ -5,11 +5,13 @@
 #include "math_inset.h"
 #include "math_defs.h"
 
-struct MathedRowSt;
+class MathedRowSt;
 class MathedArray;
 
 
-/** The math paragraph base class, base to all editable math objects */
+/** The math paragraph base class, base to all editable math objects
+    \author Alejandro Aguilar Sierra
+ */
 class MathParInset: public MathedInset  {
 public: 
 	///
@@ -31,7 +33,7 @@ public:
 	///
 	virtual void UserSetSize(short);
 	/// Data is stored in a LyXArray
-	virtual void SetData(MathedArray *);
+	virtual void setData(MathedArray *);
 	///
 	virtual MathedArray * GetData();
 	/// Paragraph position

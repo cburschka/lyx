@@ -15,7 +15,7 @@ class MathParInset;
 
 struct math_deco_struct {
 	int code;
-	float * data;
+	float const * data;
 	int angle;
 };
 
@@ -38,10 +38,6 @@ extern math_deco_struct const * search_deco(int code);
 extern
 MathedArray * mathed_parse(unsigned flags, MathedArray * data,
 			    MathParInset ** mt);
-/// math_write.C
-extern
-void mathed_write(MathParInset *, std::ostream &, int *, bool fragile,
-		  string const & label = string());
 
 /// math_parser.C
 extern
@@ -49,9 +45,6 @@ void mathed_parser_file(std::istream &, int);
 /// math_parser.C
 extern
 int mathed_parser_lineno();
-/// math_utils.C
-extern
-int MathedLookupBOP(short);
 
 extern
 bool MathIsInset(short x);

@@ -1,9 +1,12 @@
+// -*- C++ -*-
 #ifndef MATH_FRACINSET_H
 #define MATH_FRACINSET_H
 
 #include "math_parinset.h"
 
-/// Fraction like objects (frac, stackrel, binom) 
+/** Fraction like objects (frac, stackrel, binom)
+    \author Alejandro Aguilar Sierra
+ */
 class MathFracInset: public MathParInset {
 public:
 	///
@@ -24,7 +27,7 @@ public:
 	*/
 	void SetData(MathedArray *, MathedArray *);
 	///
-	void SetData(MathedArray *);
+	void setData(MathedArray *);
 	///
 	void GetXY(int & x, int & y) const;
 	///
@@ -36,17 +39,37 @@ public:
 	///
 	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///
-	int getArgumentIdx() const { return idx; }
+	int getArgumentIdx() const;
 	///
-	int getMaxArgumentIdx() const { return 1; }
+	int getMaxArgumentIdx() const;
 	///
 	void  SetStyle(short);
-protected:
+private:
 	///
-	int idx;
+	int idx_;
 	///
-	MathParInset * den;
+	MathParInset * den_;
 	///
-	int w0, w1, des0, dh;
+	int w0_;
+	///
+	int w1_;
+	///
+	int des0_;
+	///
+	int dh_;
 };
+
+
+inline
+int MathFracInset::getArgumentIdx() const
+{
+  return idx_;
+}
+
+
+inline
+int MathFracInset::getMaxArgumentIdx() const
+{
+  return 1;
+}
 #endif

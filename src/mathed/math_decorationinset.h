@@ -3,7 +3,9 @@
 
 #include "math_parinset.h"
 
-/// Decorations over (below) a math object
+/** Decorations over (below) a math object
+    \author Alejandro Aguilar Sierra
+ */
 class MathDecorationInset: public MathParInset {
 public:
 	///
@@ -18,12 +20,16 @@ public:
 	void Metrics();
 	///
 	bool GetLimits() const;
-protected:
+private:
 	///
-	int deco;
+	int deco_;
 	///
-	bool upper;
+	bool upper_;
 	///
-	int dw, dh, dy;
+	int dw_;
+	///
+	int dh_;
+	///
+	int dy_;
 };
 #endif

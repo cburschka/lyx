@@ -12,31 +12,32 @@ using std::ostream;
 
 
 MathDelimInset::MathDelimInset(int l, int r, short st)
-	: MathParInset(st, "", LM_OT_DELIM), left(l), right(r) {}
+	: MathParInset(st, "", LM_OT_DELIM), left_(l), right_(r) {}
 
 
 MathedInset * MathDelimInset::Clone()
 {   
-	MathDelimInset * p = new MathDelimInset(left, right, GetStyle());
+	MathDelimInset * p = new MathDelimInset(left_, right_, GetStyle());
 	MathedIter it(array);
-	p->SetData(it.Copy());
+	p->setData(it.Copy());
 	return p;
 }
 
 
-
 void MathDelimInset::Write(ostream & os, bool fragile)
 {
-	latexkeys * l = (left != '|') ? lm_get_key_by_id(left, LM_TK_SYM): 0;
-	latexkeys * r = (right != '|') ? lm_get_key_by_id(right, LM_TK_SYM): 0;
+	latexkeys const * l = (left_ != '|') ?
+		lm_get_key_by_id(left_, LM_TK_SYM) : 0;
+	latexkeys const * r = (right_ != '|') ?
+		lm_get_key_by_id(right_, LM_TK_SYM) : 0;
 	os << "\\left";
 	if (l) {
 		os << '\\' << l->name << ' ';
 	} else {
-		if (left == '{' || left == '}') {
-			os << '\\' << char(left) << ' ';
+		if (left_ == '{' || left_ == '}') {
+			os << '\\' << char(left_) << ' ';
 		} else {
-			os << char(left) << ' ';
+			os << char(left_) << ' ';
 		}
 	}
 	MathParInset::Write(os, fragile);
@@ -44,14 +45,13 @@ void MathDelimInset::Write(ostream & os, bool fragile)
 	if (r) {
 		os << '\\' << r->name << ' ';
 	} else {
-		if (right == '{' || right == '}') {
-			os << '\\' << char(right) << ' ';
+		if (right_ == '{' || right_ == '}') {
+			os << '\\' << char(right_) << ' ';
 		} else {
-			os << char(right) << ' ';
+			os << char(right_) << ' ';
 		}
 	}
 }
-
 
 
 void
@@ -59,21 +59,21 @@ MathDelimInset::draw(Painter & pain, int x, int y)
 { 
 	xo(x);
 	yo(y); 
-	MathParInset::draw(pain, x + dw + 2, y - dh); 
+	MathParInset::draw(pain, x + dw_ + 2, y - dh_); 
 	
-	if (left == '.') {
+	if (left_ == '.') {
 		pain.line(x + 4, yo() - ascent,
 			  x + 4, yo() + descent,
 			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
-		mathed_draw_deco(pain, x, y - ascent, dw, Height(), left);
-	x += Width() - dw - 2;
-	if (right == '.') {
+		mathed_draw_deco(pain, x, y - ascent, dw_, Height(), left_);
+	x += Width() - dw_ - 2;
+	if (right_ == '.') {
 		pain.line(x + 4, yo() - ascent,
 			  x + 4, yo() + descent,
 			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
-		mathed_draw_deco(pain, x, y - ascent, dw, Height(), right);
+		mathed_draw_deco(pain, x, y - ascent, dw_, Height(), right_);
 }
 
 
@@ -83,12 +83,12 @@ MathDelimInset::Metrics()
 	MathParInset::Metrics();
 	int d;
 	
-	mathed_char_height(LM_TC_CONST, size(), 'I', d, dh);
-	dh /= 2;
-	ascent += 2 + dh;
-	descent += 2 - dh;
-	dw = Height()/5;
-	if (dw > 15) dw = 15;
-	if (dw < 6) dw = 6;
-	width += 2 * dw + 4;
+	mathed_char_height(LM_TC_CONST, size(), 'I', d, dh_);
+	dh_ /= 2;
+	ascent += 2 + dh_;
+	descent += 2 - dh_;
+	dw_ = Height()/5;
+	if (dw_ > 15) dw_ = 15;
+	if (dw_ < 6) dw_ = 6;
+	width += 2 * dw_ + 4;
 }

@@ -56,7 +56,7 @@ void PrintDialog::clickedBrowse()
 
 void PrintDialog::changedCount(char const * text)
 {
-	if (strcmp("",text) && strToInt(text) == 0) {
+	if (compare("", text) && strToInt(text) == 0) {
 		count->setText("1");
 		return;
 	}

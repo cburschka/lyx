@@ -220,7 +220,8 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	return;
 
     Painter & pain = bv->painter();
-    int i, j;
+    int i;
+    int j;
     int nx;
 
     UpdatableInset::draw(bv, font, baseline, x, cleared);
@@ -355,7 +356,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 void InsetTabular::DrawCellLines(Painter & pain, int x, int baseline,
                                  int row, int cell) const
 {
-    int  x2 = x + tabular->GetWidthOfColumn(cell);
+    int x2 = x + tabular->GetWidthOfColumn(cell);
     bool on_off;
 
     if (!tabular->TopAlreadyDrawed(cell)) {
@@ -1367,7 +1368,7 @@ bool InsetTabular::TabularFeatures(BufferView * bv, string const & what)
 	string const tmp = tabularFeatures[i].feature;
 	    
 	if (tmp == what.substr(0, tmp.length())) {
-	//if (!strncmp(tabularFeatures[i].feature.c_str(), what.c_str(),
+	//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
 	      //tabularFeatures[i].feature.length())) {
 	    action = tabularFeatures[i].action;
 	    break;
@@ -1805,7 +1806,7 @@ LyXFunc::func_status InsetTabular::getStatus(string const & what) const
     for (; tabularFeatures[i].action != LyXTabular::LAST_ACTION; ++i) {
 	string const tmp = tabularFeatures[i].feature;
 	if (tmp == what.substr(0, tmp.length())) {		    
-	//if (!strncmp(tabularFeatures[i].feature.c_str(), what.c_str(),
+	//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
 	//   tabularFeatures[i].feature.length())) {
 	    action = tabularFeatures[i].action;
 	    break;
@@ -1816,7 +1817,8 @@ LyXFunc::func_status InsetTabular::getStatus(string const & what) const
 
     string const argument = frontStrip(what.substr(tabularFeatures[i].feature.length()));
 
-    int sel_row_start, sel_row_end;
+    int sel_row_start;
+    int sel_row_end;
     int dummy;
     bool flag = true;
 
@@ -2022,8 +2024,10 @@ bool InsetTabular::copySelection(BufferView * bv)
 	return false;
     delete paste_tabular;
 
-    int sel_col_start, sel_col_end;
-    int sel_row_start, sel_row_end;
+    int sel_col_start;
+    int sel_col_end;
+    int sel_row_start;
+    int sel_row_end;
 
     sel_col_start = tabular->column_of_cell(sel_cell_start);
     sel_col_end = tabular->column_of_cell(sel_cell_end);
@@ -2108,8 +2112,10 @@ bool InsetTabular::cutSelection()
     if (!hasSelection())
 	return false;
 
-    int sel_col_start, sel_col_end;
-    int sel_row_start, sel_row_end;
+    int sel_col_start;
+    int sel_col_end;
+    int sel_row_start;
+    int sel_row_end;
 
     sel_col_start = tabular->column_of_cell(sel_cell_start);
     sel_col_end = tabular->column_of_cell(sel_cell_end);

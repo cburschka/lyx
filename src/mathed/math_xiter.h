@@ -4,7 +4,7 @@
 
 #include "math_iter.h"
 
-struct MathedRowSt;
+class MathedRowSt;
 class MathParInset;
 
 /**

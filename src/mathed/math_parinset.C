@@ -42,7 +42,7 @@ MathParInset::MathParInset(MathParInset * p)
 	flag = p->flag;
 	p->setArgumentIdx(0);
 	MathedIter it(p->GetData());
-	SetData(it.Copy());
+	setData(it.Copy());
 }
 
 
@@ -62,7 +62,7 @@ MathedInset * MathParInset::Clone()
 }
 
 
-void MathParInset::SetData(MathedArray * a)
+void MathParInset::setData(MathedArray * a)
 {
 	array = a;
 	
@@ -286,7 +286,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 {
 	if (!array) return;
 	int brace = 0;
-	latexkeys * l;
+	latexkeys const * l;
 	MathedIter data(array);
 	// hack
 	MathedRowSt const * crow = getRowSt();   

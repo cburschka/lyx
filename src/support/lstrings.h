@@ -1,9 +1,12 @@
 // -*- C++ -*-
 
-/*
-  This is a collection of string helper functions that works
-  together with string (and later also with STL String. Some of these
-  would certainly benefit from a rewrite/optimization.
+/** String helper functions.
+    \file lstrings.h
+    This is a collection of string helper functions that works
+    together with string (and later also with STL String. Some of these
+    would certainly benefit from a rewrite/optimization.
+    \author Lars Gullik Bjønnes
+    \author Jean-Marc Lasgouttes
 */
 
 #ifndef LSTRINGS_H
@@ -71,7 +74,7 @@ string const lowercase(string const &);
 ///
 string const uppercase(string const &);
 
-/// convert T to string
+/// convert \a T to string
 template<typename T>
 inline
 string const tostr(T const & t) 
@@ -147,20 +150,24 @@ bool containsOnly(char const *, string const &);
 string::size_type countChar(string const & a, char c);
 
 /** Extracts a token from this string at the nth delim.
-  Doesn't modify the original string. Similar to strtok.
-  Example:
-  #"a;bc;d".token(';', 1) == "bc";#
-  #"a;bc;d".token(';', 2) == "d";#
+    Doesn't modify the original string. Similar to strtok.
+    Example:
+    \code
+    "a;bc;d".token(';', 1) == "bc";
+    "a;bc;d".token(';', 2) == "d";
+    \endcode
 */
 string const token(string const & a, char delim, int n);
 
 
 /** Search a token in this string using the delim.
-  Doesn't modify the original string. Returns -1 in case of
-  failure. 
-  Example:
-  #"a;bc;d".tokenPos(';', "bc") == 1;#
-  #"a;bc;d".token(';', "d") == 2;#
+    Doesn't modify the original string. Returns -1 in case of
+    failure. 
+    Example:
+    \code
+    "a;bc;d".tokenPos(';', "bc") == 1;
+    "a;bc;d".token(';', "d") == 2;
+    \endcode
 */
 int tokenPos(string const & a, char delim, string const & tok);
 
@@ -170,37 +177,47 @@ int tokenPos(string const & a, char delim, string const & tok);
   */
 bool regexMatch(string const & a, string const & pattern);
 
-/// Substitute all "oldchar"s with "newchar"
+/// Substitute all \a oldchar with \a newchar
 string const subst(string const & a, char oldchar, char newchar);
 
-/// Substitutes all instances of oldstr with newstr
+/// Substitutes all instances of \a oldstr with \a newstr
 string const subst(string const & a,
 	     char const * oldstr, string const & newstr);
 
-/// substitutes all instances ofr oldstr with newstr
+/// substitutes all instances of \a oldstr with \a newstr
 string const subst(string const & a,
 		   string const & oldstr, string const & newstr);
 
 /** Strips characters off the end of a string.
-  #"abccc".strip('c') = "ab".#
-  */
+    \code
+    "abccc".strip('c') = "ab".
+    \endcode
+*/
 string const strip(string const & a, char c = ' ');
 
 /** Strips characters of the beginning of a string.
-  #"cccba".frontstrip('c') = "ba"#. */
+    \code
+    "cccba".frontstrip('c') = "ba"
+    \endcode
+*/
 string const frontStrip(string const & a, char c = ' ');
 
 /** Strips characters off the beginning of a string.
-    #"ababcdef".frontstrip("ab") = "cdef"# .*/
+    \code
+    "ababcdef".frontstrip("ab") = "cdef"
+    \endcode
+*/
 string const frontStrip(string const & a, char const * p);
 
 /** Splits the string by the first delim.
-  Splits the string by the first appearance of delim.
-  The leading string up to delim is returned in piece (not including
-  delim), while the original string is cut from after the delimiter.
-  Example:
-  #s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";#
-  */
+    Splits the string by the first appearance of delim.
+    The leading string up to delim is returned in piece (not including
+    delim), while the original string is cut from after the delimiter.
+    Example:
+    \code
+    s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";
+    \endcode
+*/
 string const split(string const & a, string & piece, char delim);
 
 /// Same as split but does not return a piece

@@ -1,0 +1,7 @@
+2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* FormCitation.C: small cleanup.
+	(searchSimple): better localization of variables, don't use
+	sequencing operator if you don't have to.
+
+	* other: use compare instead of strcmp/strncmp

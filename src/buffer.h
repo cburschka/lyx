@@ -37,7 +37,6 @@
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
-class auto_mem_buffer;
 class Language;
 
 ///
@@ -54,26 +53,30 @@ struct DEPCLEAN {
   The is is the buffer object. It contains all the informations about
   a document loaded into LyX. I am not sure if the class is complete or
   minimal, probably not.
+  \author Lars Gullik Bjønnes
   */
 class Buffer {
 public:
-	/// what type of log will getLogName() return ?
+	/// What type of log will \c getLogName() return?
 	enum LogType {
-		latexlog, /**< LaTeX log */
-		buildlog  /**< Literate build log */
+		latexlog, ///< LaTeX log
+		buildlog  ///< Literate build log
 	};
 
-	///
+	/** Constructor
+	    \param file
+	    \param b  optional \c false by default
+	*/
 	explicit Buffer(string const & file, bool b = false);
 	
-	///
+	/// Destrucotr
 	~Buffer();
 
-	/** save the buffer's parameters as user default
-	    This function saves a file #user_lyxdir/templates/defaults.lyx# 
+	/** Save the buffer's parameters as user default.
+	    This function saves a file \c user_lyxdir/templates/defaults.lyx
 	    which parameters are those of the current buffer. This file
 	    is used as a default template when creating a new
-	    file. Returns #true# on success.
+	    file. Returns \c true on success.
 	*/
 	bool saveParamsAsDefaults();
 
@@ -85,50 +88,43 @@ public:
 	/// Maybe we know the function already by number...
 	bool Dispatch(int ac, string const & argument);
 
-	/// and have an xtl buffer to work with.
-	bool Dispatch(int, auto_mem_buffer &);
-
-	/// should be changed to work for a list.
+	/// Should be changed to work for a list.
 	void resize();
-	///
+	/// 
 	void resizeInsets(BufferView *);
 
-	/// Update window titles of all users
+	/// Update window titles of all users.
 	void updateTitles() const;
 
-	/// Reset autosave timers for all users
+	/// Reset autosave timers for all users.
 	void resetAutosaveTimers() const;
 
 	/** Adds the BufferView to the users list.
-	    Later this func will insert the #BufferView# into a real list,
+	    Later this func will insert the \c BufferView into a real list,
 	    not just setting a pointer.
 	*/
-	void addUser(BufferView * u) { users = u; }
+	void addUser(BufferView * u);
 
 	/** Removes the #BufferView# from the users list.
 	    Since we only can have one at the moment, we just reset it.
 	*/
-	void delUser(BufferView *) { users = 0; }
+	void delUser(BufferView *);
 	
 	///
-	void redraw() {
-		users->redraw(); 
-		users->fitCursor(users->text); 
-		//users->updateScrollbar();
-	}
+	void redraw();
 
-	///
+	/// Load the autosaved file.
 	void loadAutoSaveFile();
 	
 	/** Reads a file. 
-	    @param par if != 0 insert the file.
-	    @return #false# if method fails.
+	    \param par if != 0 insert the file.
+	    \return \c false if method fails.
 	*/
 	bool readFile(LyXLex &, LyXParagraph * par = 0);
 	
 	/** Reads a file without header.
-	    @param par if != 0 insert the file.
-	    @return false if file is not completely read.
+	    \param par if != 0 insert the file.
+	    \return \c false if file is not completely read.
 	*/
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
@@ -146,13 +142,13 @@ private:
 	/// Parse a single inset.
 	void readInset(LyXLex &, LyXParagraph *& par, int & pos, LyXFont &);
 public:
-	/** Save file
+	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
-	    Returns #true# if the save is successful, #false# otherwise.
+	    Returns \c true if the save is successful, \c false otherwise.
 	*/
 	bool save() const;
 	
-	/// Write file. Returns #false# if unsuccesful.
+	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(string const &, bool) const;
 	
 	///
@@ -167,7 +163,7 @@ public:
 			   string const & original_path,
 			   bool nice, bool only_body = false);
 	/** LaTeX all paragraphs from par to endpar.
-	    @param endpar if == 0 then to the end
+	    \param \a endpar if == 0 then to the end
 	*/
 	void latexParagraphs(std::ostream & os, LyXParagraph * par,
 			     LyXParagraph * endpar, TexRow & texrow) const;
@@ -188,66 +184,42 @@ public:
 			     bool nice, bool only_body = false);
 
 	/// returns the main language for the buffer (document)
-	Language const * GetLanguage() const {
-		return params.language;
-	}
-	
+	Language const * GetLanguage() const;
 	///
-	bool isLyxClean() const { return lyx_clean; }
-	
+	bool isLyxClean() const;
 	///
-	bool isBakClean() const { return bak_clean; }
-	
+	bool isBakClean() const;
 	///
 	bool isDepClean(string const & name) const;
 	
 	///
-	void markLyxClean() const { 
-		if (!lyx_clean) {
-			lyx_clean = true; 
-			updateTitles();
-		}
-		// if the .lyx file has been saved, we don't need an
-		// autosave 
-		bak_clean = true;
-	}
+	void markLyxClean() const;
 
 	///
-	void markBakClean() { bak_clean = true; }
+	void markBakClean();
 	
 	///
 	void markDepClean(string const & name);
 	
 	///
-	void setUnnamed(bool flag=true) { unnamed = flag; }
+	void setUnnamed(bool flag=true);
 
 	///
-	bool isUnnamed() { return unnamed; }
+	bool isUnnamed();
 
-	///
-	void markDirty() {
-		if (lyx_clean) {
-			lyx_clean = false;
-			updateTitles();
-		}
-		bak_clean = false;
-		DEPCLEAN * tmp = dep_clean;
-		while (tmp) {
-			tmp->clean = false;
-			tmp = tmp->next;
-		}
-	}
+	/// Mark this buffer as dirty.
+	void markDirty();
 
-	///
-	string const & fileName() const { return filename; }
+	/// Returns the buffers filename.
+	string const & fileName() const;
 
-	/** A transformed version of the file name, adequate for LaTeX  
-	    The path is stripped if no_path is true (default)
+	/** A transformed version of the file name, adequate for LaTeX.
+	    \param no_path optional if \c true then the path is stripped.
 	*/
 	string const getLatexName(bool no_path = true) const;
 
-	/// get the name and type of the log
-	std::pair<LogType, string> const getLogName(void) const;
+	/// Get the name and type of the log.
+	std::pair<LogType, string> const getLogName() const;
  
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(string const & newfile);
@@ -256,21 +228,21 @@ public:
 	void setParentName(string const &);
 
 	/// Is buffer read-only?
-	bool isReadonly() const { return read_only; }
+	bool isReadonly() const;
 
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true);
 
-	/// returns #true# if the buffer contains a LaTeX document
+	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;
-	/// returns #true# if the buffer contains a LinuxDoc document
+	/// returns \c true if the buffer contains a LinuxDoc document
 	bool isLinuxDoc() const;
-	/// returns #true# if the buffer contains a DocBook document
+	/// returns \c true if the buffer contains a DocBook document
 	bool isDocBook() const;
-	/** returns #true# if the buffer contains either a LinuxDoc
+	/** returns \c true if the buffer contains either a LinuxDoc
 	    or DocBook document */
 	bool isSGML() const;
-        /// returns #true# if the buffer contains a Wed document
+        /// returns \c true if the buffer contains a Wed document
         bool isLiterate() const;
 
 	///
@@ -300,16 +272,12 @@ public:
 		///
 		string str;
 	};
-	///
+	/// The different content list types.
 	enum TocType {
-		///
-		TOC_TOC = 0,
-		///
-		TOC_LOF,
-		///
-		TOC_LOT,
-		///
-		TOC_LOA
+		TOC_TOC = 0, ///< Table of Contents
+		TOC_LOF, ///< List of Figures
+		TOC_LOT, ///< List of Tables
+		TOC_LOA ///< List of Algorithms
 	};
 	///
 	std::vector<std::vector<TocItem> > const getTocList() const;
@@ -318,7 +286,7 @@ public:
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */
-	BufferView * getUser() const { return users; }
+	BufferView * getUser() const;
 
 	///
 	void ChangeLanguage(Language const * from, Language const * to);
@@ -334,20 +302,23 @@ public:
 	///
 	BufferParams params;
 	
-	/** is a list of paragraphs.
+	/** The list of paragraphs.
+	    This is a linked list of paragraph, this list holds the
+	    whole contents of the document.
 	 */
 	LyXParagraph * paragraph;
 
-	/// RCS object
+	/// LyX version control object.
 	LyXVC lyxvc;
 
-	/// where the temporaries go if we want them
+	/// Where to put temporary files.
 	string tmppath;
 
-	///
+	/// The path to the document file.
 	string filepath;
 
-	/** While writing as LaTeX, tells whether we are
+	/** If we are writing a nice LaTeX file or not.
+	    While writing as LaTeX, tells whether we are
 	    doing a 'nice' LaTeX file */
 	bool niceFile;
 
@@ -472,10 +443,6 @@ public:
 		friend
 		bool operator==(inset_iterator const & iter1,
 				inset_iterator const & iter2);
-		//
-		//friend
-		//bool operator!=(inset_iterator const & iter1,
-		//		inset_iterator const & iter2);
 	private:
 		///
 		void SetParagraph();
@@ -496,11 +463,126 @@ public:
 };
 
 
+inline
+void Buffer::addUser(BufferView * u)
+{
+	users = u;
+}
+
+
+inline
+void Buffer::delUser(BufferView *)
+{
+	users = 0;
+}
+	
+
+inline
+void Buffer::redraw()
+{
+	users->redraw(); 
+	users->fitCursor(users->text); 
+}
+
+
+inline
+Language const * Buffer::GetLanguage() const
+{
+	return params.language;
+}
+	
+
+inline
+bool Buffer::isLyxClean() const
+{
+	return lyx_clean;
+}
+	
+
+inline
+bool Buffer::isBakClean() const
+{
+	return bak_clean;
+}
+
+
+inline
+void Buffer::markLyxClean() const
+{ 
+	if (!lyx_clean) {
+		lyx_clean = true; 
+		updateTitles();
+	}
+	// if the .lyx file has been saved, we don't need an
+	// autosave 
+	bak_clean = true;
+}
+
+
+inline
+void Buffer::markBakClean()
+{
+	bak_clean = true;
+}
+
+
+inline
+void Buffer::setUnnamed(bool flag = true)
+{
+	unnamed = flag;
+}
+
+
+inline
+bool Buffer::isUnnamed()
+{
+	return unnamed;
+}
+
+
+inline
+void Buffer::markDirty()
+{
+	if (lyx_clean) {
+		lyx_clean = false;
+		updateTitles();
+	}
+	bak_clean = false;
+	DEPCLEAN * tmp = dep_clean;
+	while (tmp) {
+		tmp->clean = false;
+		tmp = tmp->next;
+	}
+}
+
+
+inline
+string const & Buffer::fileName() const
+{
+	return filename;
+}
+
+
+inline
+bool Buffer::isReadonly() const
+{
+	return read_only;
+}
+
+
+inline
+BufferView * Buffer::getUser() const
+{
+	return users;
+}
+
+
 inline  
-void Buffer::setParentName(string const & name)
+void Buffer::Buffer::setParentName(string const & name)
 {
 	params.parentname = name;    
 }
+
 
 ///
 inline

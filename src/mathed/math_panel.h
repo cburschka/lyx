@@ -66,7 +66,6 @@ enum SomeMathValues {
 };
 
 
-///
 /// Class to manage bitmap menu bars
 class BitmapMenu {
 	///
@@ -78,7 +77,9 @@ class BitmapMenu {
 	///
 	typedef bitmaps_type::size_type    size_type;
 	///
-	BitmapMenu * next, * prev;
+	BitmapMenu * next;
+	///
+	BitmapMenu * prev;
 	/// Current bitmap
 	size_type current_;
 	/// Border width

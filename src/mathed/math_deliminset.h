@@ -4,8 +4,10 @@
 
 #include "math_parinset.h"
 
-/// A delimiter
-class MathDelimInset: public MathParInset {
+/** A delimiter
+    \author Alejandro Aguilar Sierra
+*/
+class MathDelimInset : public MathParInset {
 public:
 	///
 	MathDelimInset(int, int, short st = LM_ST_TEXT);
@@ -17,14 +19,14 @@ public:
 	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
-protected:
+private:
 	///
-	int left;
+	int left_;
 	///
-	int right;
+	int right_;
 	///
-	int dw;
+	int dw_;
 	///
-	int dh;
+	int dh_;
 };
 #endif

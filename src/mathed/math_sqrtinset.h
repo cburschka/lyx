@@ -4,8 +4,10 @@
 
 #include "math_parinset.h"
 
-///
-class MathSqrtInset: public MathParInset {
+/** The square root inset.
+    \author Alejandro Aguilar Siearra
+ */
+class MathSqrtInset : public MathParInset {
 public:
 	///
 	MathSqrtInset(short st = LM_ST_TEXT);
@@ -21,6 +23,8 @@ public:
 	bool Inside(int, int);
 private:
 	///
-	int hmax, wbody;
+	int hmax_;
+	///
+	int wbody_;
 };
 #endif

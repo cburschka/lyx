@@ -2546,7 +2546,7 @@ void Buffer::pop_tag(ostream & os, string const & tag,
 	int j;
 	
         // pop all tags till specified one
-        for (j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
+        for (j = pos; (j >= 0) && tag != stack[j]; --j)
                 os << "</" << stack[j] << ">";
 
         // closes the tag
@@ -2561,7 +2561,7 @@ void Buffer::pop_tag(ostream & os, string const & tag,
 #else
         // pop all tags till specified one
 	int j = pos;
-        for (int j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
+        for (int j = pos; (j >= 0) && tag != stack[j]; --j)
                 os << "</" << stack[j] << ">";
 
         // closes the tag

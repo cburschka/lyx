@@ -27,7 +27,10 @@
 class MathMacroTemplate;
 
 
-/// This class contains the data for a macro
+/** This class contains the data for a macro
+    \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
+    \version November 1996
+ */
 class MathMacro : public MathParInset
 {
 public:
@@ -64,7 +67,7 @@ public:
 	///
 	MathedRowSt * getRowSt() const;
 	///
-	void SetData(MathedArray *);
+	void setData(MathedArray *);
 	///
 	MathedTextCodes getTCode() const;
 	///

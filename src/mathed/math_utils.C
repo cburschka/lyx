@@ -25,6 +25,8 @@ struct binary_op_pair {
 	short isrel;
 };
 
+
+static
 binary_op_pair binary_op_table[] = {
       { LM_leq, LMB_RELATION }, { LM_geq, LMB_RELATION }, 
       { LM_equiv, LMB_RELATION }, { LM_models, LMB_RELATION }, 

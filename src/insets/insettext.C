@@ -261,7 +261,7 @@ int InsetText::width(BufferView * bv, LyXFont const &) const
 
 int InsetText::textWidth(Painter & pain) const
 {
-    int w = getMaxWidth(pain, this);
+    int const w = getMaxWidth(pain, this);
     return w;
 }
 

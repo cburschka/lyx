@@ -65,7 +65,7 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_symbols.C \
 	math_utils.C \
-	math_write.C \
+	math_utils.h \
 	math_xiter.C \
 	math_xiter.h \
 	matriz.C \

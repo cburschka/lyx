@@ -99,7 +99,9 @@ void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 
 int InsetCollapsable::ascent_collapsed(Painter & pain, LyXFont const &) const
 {
-    int width = 0, ascent = 0, descent = 0;
+    int width = 0;
+    int ascent = 0;
+    int descent = 0;
     pain.buttonText(0, 0, label, labelfont, false, 
 		    width, ascent, descent);
     return ascent;
@@ -108,7 +110,9 @@ int InsetCollapsable::ascent_collapsed(Painter & pain, LyXFont const &) const
 
 int InsetCollapsable::descent_collapsed(Painter & pain, LyXFont const &) const
 {
-    int width = 0, ascent = 0, descent = 0;
+    int width = 0;
+    int ascent = 0;
+    int descent = 0;
     pain.buttonText(0, 0, label, labelfont, false, 
 		    width, ascent, descent);
     return descent;
@@ -117,7 +121,9 @@ int InsetCollapsable::descent_collapsed(Painter & pain, LyXFont const &) const
 
 int InsetCollapsable::width_collapsed(Painter & pain, LyXFont const &) const
 {
-    int width, ascent, descent;
+    int width;
+    int ascent;
+    int descent;
     pain.buttonText(TEXT_TO_INSET_OFFSET, 0, label, labelfont, false,
 		    width, ascent, descent);
     return width + (2*TEXT_TO_INSET_OFFSET);
@@ -292,7 +298,7 @@ int InsetCollapsable::Latex(Buffer const * buf, ostream & os,
 int InsetCollapsable::getMaxWidth(Painter & pain,
 				  UpdatableInset const * inset) const
 {
-    int w = UpdatableInset::getMaxWidth(pain,inset);
+    int const w = UpdatableInset::getMaxWidth(pain, inset);
 
     if (w < 0) {
 	// What does a negative max width signify? (Lgb)

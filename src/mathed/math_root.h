@@ -21,49 +21,68 @@
 
 #include "math_sqrtinset.h"
 #include "symbol_def.h"
-#include "LString.h"
 
-///
-class MathRootInset: public MathSqrtInset {
+
+/** The general n-th root inset.
+    \author Alejandro Aguilar Sierra
+    \version January 1999
+ */
+class MathRootInset : public MathSqrtInset {
 public:
-    ///
-    explicit
-    MathRootInset(short st = LM_ST_TEXT);
-    ///
-    ~MathRootInset();
-    ///
-    MathedInset * Clone();
-    ///
-    void draw(Painter &, int x, int baseline);
-    ///
-    void Write(std::ostream &, bool fragile);
-    ///
-    void Metrics();
-    ///
-    bool Inside(int, int);
-    ///
-    void SetFocus(int, int);
-    ///
-    void SetData(MathedArray *);
-    ///
-    void GetXY(int & x, int & y) const;
-    ///
-    MathedArray * GetData();
-    ///
-    bool setArgumentIdx(int i);
-    ///
-    int getArgumentIdx() const { return idx; }
-    ///
-    int getMaxArgumentIdx() const { return 1; }
-    ///
-    void SetStyle(short);
-
-protected:
-    ///
-    int idx;
-    ///
-    MathParInset * uroot;
-    ///
-    int wroot, dh;
+	///
+	explicit
+	MathRootInset(short st = LM_ST_TEXT);
+	///
+	~MathRootInset();
+	///
+	MathedInset * Clone();
+	///
+	void draw(Painter &, int x, int baseline);
+	///
+	void Write(std::ostream &, bool fragile);
+	///
+	void Metrics();
+	///
+	bool Inside(int, int);
+	///
+	void SetFocus(int, int);
+	///
+	void setData(MathedArray *);
+	///
+	void GetXY(int & x, int & y) const;
+	///
+	MathedArray * GetData();
+	///
+	bool setArgumentIdx(int i);
+	///
+	int getArgumentIdx() const;
+	///
+	int getMaxArgumentIdx() const;
+	///
+	void SetStyle(short);
+private:
+	///
+	int idx_;
+	///
+	MathParInset * uroot_;
+	///
+	int wroot_;
+	///
+	int dh_;
 };
+
+
+inline
+int MathRootInset::getArgumentIdx() const
+{
+	return idx_;
+}
+
+
+inline
+int MathRootInset::getMaxArgumentIdx() const
+{
+	return 1;
+}
+
 #endif

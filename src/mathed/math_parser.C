@@ -44,6 +44,7 @@
 #include "debug.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
+#include "boost/array.hpp"
 
 using std::istream;
 using std::endl;
@@ -62,6 +63,19 @@ enum {
 	FLAG_END	= 64,      //  Next end ends the parsing process
 	FLAG_BRACE_FONT = 128,	//  Next } closes a font
 	FLAG_BRACK_END  = 256   // Next ] ends the parsing process
+};
+
+
+///
+union YYSTYPE {
+    ///
+    unsigned char c;
+    ///
+    char const * s;
+    ///
+    int i;
+    ///
+    latexkeys const * l;
 };
 
 static
@@ -115,7 +129,8 @@ enum lexcode_enum {
 
 static lexcode_enum lexcode[256];  
 #warning Replace with string
-static char yytext[256];
+//static char yytext[256];
+static array<char, 256> yytext;
 static int yylineno;
 static istream * yyis;
 static bool yy_mtextmode= false;
@@ -195,7 +210,7 @@ char LexGetArg(char lf, bool accept_spaces= false)
       if (c == lf) ++bcnt;
       if (c == rg) --bcnt;
       if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt > 0) *(p++) = c;
-   } while (bcnt > 0 && yyis->good() && p-yytext < 255);
+   } while (bcnt > 0 && yyis->good() && p - yytext.data() < 255);
    *p = '\0';
    return rg;
 }
@@ -295,7 +310,7 @@ int yylex(void)
 	 if (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
 	    char * p = &yytext[0];
 	    while ((lexcode[c] == LexAlpha || lexcode[c] == LexDigit)
-		   && p-yytext < 255) {
+		   && p - yytext.data() < 255) {
 	       *p = c;
 	       yyis->get(cc);
 	       c = cc;
@@ -303,16 +318,16 @@ int yylex(void)
 	    }
 	    *p = '\0';
 	    if (yyis->good()) yyis->putback(c);
-	    latexkeys * l = in_word_set (yytext, strlen(yytext));
+	    latexkeys const * l = in_word_set (yytext.data(), strlen(yytext.data()));
 	    if (l) {
 	       if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
 		  int i;
 		  LexGetArg('{');
-//		  for (i = 0; i < 5 && strncmp(yytext, latex_mathenv[i],
+//		  for (i = 0; i < 5 && compare(yytext, latex_mathenv[i],
 //				strlen(latex_mathenv[i])); ++i);
 		  
 		  for (i = 0; i < latex_mathenv_num
-			       && strcmp(yytext, latex_mathenv[i]); ++i);
+			       && compare(yytext.data(), latex_mathenv[i]); ++i);
 		  yylval.i = i;
 	       } else
 	       if (l->token == LM_TK_SPACE) 
@@ -321,7 +336,7 @@ int yylex(void)
 		 yylval.l = l;
 	       return l->token;
 	    } else { 
-	       yylval.s = yytext;
+	       yylval.s = yytext.data();
 	       return LM_TK_UNDEF;
 	    }
 	 }
@@ -449,12 +464,12 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	  char const c = yyis->peek();
 	  if (c == '[') {
 	      LexGetArg('[');
-	      na = lyx::atoi(yytext);
+	      na = lyx::atoi(yytext.data());
 	  }  
 	  macro = new MathMacroTemplate(name, na);
 	  flags = FLAG_BRACE|FLAG_BRACE_LAST;
 	  *mtx = macro;
-	  macro->SetData(array);
+	  macro->setData(array);
 	  break;
       }
     case LM_TK_SPECIAL:
@@ -545,7 +560,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {  
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->SetData(ar);
+	 p->setData(ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 	 data.Insert (p, LM_TC_UP);
 	 break;
@@ -554,7 +569,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->SetData(ar);
+	 p->setData(ar);
 	 data.Insert (p, LM_TC_DOWN);
 	 break;
       }
@@ -666,13 +681,13 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (c == '[') {
 	     rt = new MathRootInset(size);
 	     rt->setArgumentIdx(0);
-	     rt->SetData(mathed_parse(FLAG_BRACK_END, 0, &rt));
+	     rt->setData(mathed_parse(FLAG_BRACK_END, 0, &rt));
 	     rt->setArgumentIdx(1);
 	 } else {
 		 yyis->putback(c);
 	     rt = new MathSqrtInset(size);
 	 }
-	 rt->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
+	 rt->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
 	 data.Insert(rt, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -689,7 +704,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)
 	   rgd = (rgd == LM_TK_SYM) ? yylval.l->id: yylval.i;	 
 	 MathDelimInset * dl = new MathDelimInset(lfd, rgd);
-	 dl->SetData(a);
+	 dl->setData(a);
 	 data.Insert(dl, LM_TC_ACTIVE_INSET);
 //	 lyxerr << "RL[" << lfd << " " << rgd << "]";
   	 break;
@@ -717,7 +732,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {  
 	 MathDecorationInset * sq = new MathDecorationInset(yylval.l->id,
 							    size);
-	 sq->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	 sq->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	 data.Insert(sq, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -759,7 +774,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	   else
 	     data.Insert(p, p->getTCode());
 	   for (int i = 0; p->setArgumentIdx(i); ++i)
-	     p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	     p->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
        }
        else {
 	   MathedInset * q = new MathFuncInset(yylval.s, LM_OT_UNDEF);
@@ -780,7 +795,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 		 lyxerr << "[" << yylval.i << "]" << endl;
 	 --plevel;
 	 if (mt) { // && (flags & FLAG_END)) {
-	    mt->SetData(array);
+	    mt->setData(array);
 	    array = 0;
 	 }
 	 return array;
@@ -792,10 +807,10 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	    ar[0] = ar2[0] = '\0'; 
             char rg = LexGetArg(0);
 	    if (rg == ']') {
-	       strcpy(ar2, yytext);
+	       strcpy(ar2, yytext.data());
 	       rg = LexGetArg('{');
 	    }
-	    strcpy(ar, yytext);
+	    strcpy(ar, yytext.data());
 	    int const nc = parse_align(ar, ar2);
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
@@ -827,7 +842,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 					    << c << "'" << endl;
 			 }
 			 LexGetArg('{');
-			 cols = strToInt(string(yytext));
+			 cols = strToInt(string(yytext.data()));
 		     }
 		     mt = create_multiline(mathed_env, cols);
 		     if (mtx) *mtx = mt;
@@ -847,7 +862,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 } else {
 //	     lyxerr << "MATHCRO[" << yytext << "]";
 	     MathMacro * p = 
-	       MathMacroTable::mathMTable.getMacro(yytext);
+	       MathMacroTable::mathMTable.getMacro(yytext.data());
 	     if (p) {
 		 data.Insert(p, p->getTCode());
 		 p->setArgumentIdx(0);
@@ -880,14 +895,14 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	  if (rg != '}') {
 	     mathPrintError("Expected '{'");
 	      // debug info
-	     lyxerr << "[" << yytext << "]" << endl;
+	     lyxerr << "[" << yytext.data() << "]" << endl;
 	      panic = true;
 	     break;
 	  } 
 	  if (crow) {
-	      crow->setLabel(yytext);
+	      crow->setLabel(yytext.data());
 	  } else {
-		  mathed_label = yytext;
+		  mathed_label = yytext.data();
 	  }
 #ifdef DEBUG
 	  lyxerr << "Label[" << mathed_label << "]" << endl;
@@ -897,7 +912,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
      default:
        mathPrintError("Unrecognized token");
        // debug info
-       lyxerr << "[" << t << " " << yytext << "]" << endl;
+       lyxerr << "[" << t << " " << yytext.data() << "]" << endl;
        break;
     }
     tprev = t;

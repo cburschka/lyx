@@ -59,6 +59,7 @@ extern string mathed_label;
 extern char const * latex_special_chars;
 
 int greek_kb_flag = 0;
+extern char const * latex_mathenv[];
 
 // this is only used by Whichfont and mathed_init_fonts (Lgb)
 LyXFont * Math_Fonts = 0;
@@ -70,13 +71,20 @@ static int sel_x;
 static int sel_y;
 static bool sel_flag;
 
-MathedCursor * InsetFormula::mathcursor = 0;
+// quite a hack i know. Should be done with return values...
+int number_of_newlines = 0;
+
+static
+int mathed_write(MathParInset *, std::ostream &, bool fragile,
+		 string const & label = string());
 
 void mathed_init_fonts();
 
-
 static
 void mathedValidate(LaTeXFeatures & features, MathParInset * par);
+
+
+MathedCursor * InsetFormula::mathcursor = 0;
 
 
 LyXFont WhichFont(short type, int size)
@@ -250,11 +258,9 @@ void InsetFormula::Write(Buffer const * buf, ostream & os) const
 
 int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
-	int ret = 0;
 	//#warning Alejandro, the number of lines is not returned in this case
 	// This problem will disapear at 0.13.
-	mathed_write(par, os, &ret, fragile, label);
-	return ret;
+	return mathed_write(par, os, fragile, label);
 }
 
 
@@ -905,7 +911,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 
 	case LFUN_MATH_SIZE:
 		if (!arg.empty()) {
-			latexkeys * l = in_word_set(arg);
+			latexkeys const * l = in_word_set(arg);
 			int sz = (l) ? l->id: -1;
 			mathcursor->SetSize(sz);
 			UpdateLocal(bv);
@@ -950,7 +956,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		char lf[40], rg[40], arg2[40];
 		int ilf = '(', irg = '.';
-		latexkeys * l;
+		latexkeys const * l;
 		string vdelim("(){}[]./|");
 
 		if (arg.empty())
@@ -1245,4 +1251,58 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 		}
 		it.Next();
 	}
+}
+
+
+static
+int mathed_write(MathParInset * p, ostream & os,
+		 bool fragile, string const & label)
+{
+	number_of_newlines = 0;
+	short mathed_env = p->GetType();
+	
+	if (mathed_env == LM_OT_MIN) {
+		if (fragile) os << "\\protect";
+		os << "\\( "; // changed from " \\( " (Albrecht Dress)
+	} else {
+		if (mathed_env == LM_OT_PAR){
+			os << "\\[\n";
+		} else {
+			os << "\\begin{"
+			   << latex_mathenv[mathed_env]
+			   << "}";
+			if (is_multicolumn(mathed_env)) {
+				if (mathed_env != LM_OT_ALIGNAT
+				    && mathed_env != LM_OT_ALIGNATN)
+					os << "%";
+				os << "{" << p->GetColumns()/2 << "}";
+			}
+			os << "\n";
+		}
+		++number_of_newlines;
+	}
+	
+	if (!label.empty() && label[0] > ' '
+	    && is_singlely_numbered(mathed_env)) {
+		os << "\\label{"
+		   << label
+		   << "}\n";
+		++number_of_newlines;
+	}
+	
+	p->Write(os, fragile);
+	
+	if (mathed_env == LM_OT_MIN){
+		if (fragile) os << "\\protect";
+		os << " \\)";
+	} else if (mathed_env == LM_OT_PAR) {
+		os << "\\]\n";
+		++number_of_newlines;
+	} else {
+		os << "\n\\end{"
+		   << latex_mathenv[mathed_env]
+		   << "}\n";
+		number_of_newlines += 2;
+	}
+	return number_of_newlines;
 }

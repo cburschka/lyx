@@ -320,10 +320,6 @@ public:
 	friend
 	bool operator==(LyXFont const & font1, LyXFont const & font2);
 
-	///
-	friend 
-	bool operator!=(LyXFont const & font1, LyXFont const & font2);
-
 	/// compares two fonts, ignoring the setting of the Latex part.
 	bool equalExceptLatex(LyXFont const &) const;
 

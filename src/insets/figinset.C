@@ -566,7 +566,7 @@ void runqueue()
 				for (i = 0; i < nprop; ++i) {
 					char * p = XGetAtomName(tempdisp,
 								prop[i]);
-					if (strcmp(p, "GHOSTVIEW") == 0) {
+					if (compare(p, "GHOSTVIEW") == 0) {
 						err = false;
 						// We free it when we leave so we don't leak.
 						XFree(p);

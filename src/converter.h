@@ -61,9 +61,6 @@ public:
 	void setViewer(string const & v) {
 		viewer_ = v;
 	}
-	friend bool operator<(Format const & a, Format const & b) {
-		return compare_no_case(a.prettyname(),b.prettyname()) < 0;
-	}
 private:
 	string name_;
 	///
@@ -75,6 +72,13 @@ private:
 	///
 	string viewer_;
 };
+
+
+inline
+bool operator<(Format const & a, Format const & b)
+{
+	return compare_no_case(a.prettyname(),b.prettyname()) < 0;
+}
 
 
 ///

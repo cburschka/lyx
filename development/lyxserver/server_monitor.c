@@ -128,7 +128,7 @@ void io_cb(int fd, void *data)
     if (n>=0)
       s[n] = 0;
     fprintf(stderr, "monitor: Coming: %s\n", s);
-    if (strncmp(s, "LYXSRV:", 7)==0) {
+    if (compare(s, "LYXSRV:", 7) == 0) {
 	if (strstr(s, "bye")) {
 	    lyx_listen = 0;
 	    fprintf(stderr, "monitor: LyX has closed connection!\n");

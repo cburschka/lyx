@@ -582,20 +582,20 @@ bool DocDialog::updateParams(BufferParams & params)
 
 string DocDialog::placementString(QComboBox * box) const
 {
-	if (!strcmp(box->currentText(), _("Here")))
+	if (!compare(box->currentText(), _("Here")))
 		return "h";
-	if (!strcmp(box->currentText(), _("Bottom of page")))
+	if (!compare(box->currentText(), _("Bottom of page")))
 		return "b";
-	if (!strcmp(box->currentText(), _("Top of page")))
+	if (!compare(box->currentText(), _("Top of page")))
 		return "t";
-	if (!strcmp(box->currentText(), _("Separate page")))
+	if (!compare(box->currentText(), _("Separate page")))
 		return "p";
 	return "";
 }
 
 void DocDialog::linespacingChanged(const char * sel)
 {
-	bool const custom = !strcmp(sel, _("custom"));
+	bool const custom = !compare(sel, _("custom"));
 
 	settings->linespacingVal->setEnabled(custom);
 }
@@ -603,7 +603,7 @@ void DocDialog::linespacingChanged(const char * sel)
 
 void DocDialog::paraspacingChanged(const char * sel)
 {
-	bool const custom = !strcmp(sel, _("custom"));
+	bool const custom = !compare(sel, _("custom"));
 	settings->paraspacingValue->setEnabled(custom);
 	settings->paraspacingStretch->setEnabled(custom);
 	settings->paraspacingShrink->setEnabled(custom);
@@ -612,7 +612,8 @@ void DocDialog::paraspacingChanged(const char * sel)
 void DocDialog::addspaceChanged(bool on)
 {
 	settings->paraspacing->setEnabled(on);
-	on = (on && !strcmp(settings->paraspacing->currentText(), _("custom")));
+	on = (on && !compare(settings->paraspacing->currentText(),
+			     _("custom")));
 	settings->paraspacingValue->setEnabled(on);
 	settings->paraspacingStretch->setEnabled(on);
 	settings->paraspacingShrink->setEnabled(on);

@@ -160,11 +160,6 @@ struct PrinterParams {
 		{
 			testInvariant();
 		}
-
-// do we need these?
-//	friend bool operator==(PrinterParams const &, PrinterParams const &);
-//	friend bool operator<(PrinterParams const &, PrinterParams const &);
-
 };
 
 #endif

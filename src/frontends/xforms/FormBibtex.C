@@ -79,7 +79,7 @@ void FormBibtex::build()
 bool FormBibtex::input(FL_OBJECT *, long)
 {
 	// minimal validation 
-	if (!strcmp(fl_get_input(dialog_->database),""))
+	if (!compare(fl_get_input(dialog_->database),""))
 		return false;
 
 	return true;

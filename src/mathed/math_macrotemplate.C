@@ -48,7 +48,7 @@ MathMacroTemplate::~MathMacroTemplate()
 {
 	// prevent to delete already deleted objects
 	for (int i = 0; i < nargs_; ++i) {
-		args_[i].SetData(0);
+		args_[i].setData(0);
 	}
 }
 
@@ -125,7 +125,7 @@ void MathMacroTemplate::update(MathMacro * macro)
 	for (int i = 0; i < nargs_; ++i) {
 		if (macro) {
 			macro->setArgumentIdx(i);
-			args_[i].SetData(macro->GetData());
+			args_[i].setData(macro->GetData());
 			MathedRowSt * row = macro->getRowSt();
 			args_[i].setRowSt(row);
 		}
@@ -154,7 +154,7 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 
 void MathMacroTemplate::setArgument(MathedArray * a, int i)
 {
-	args_[i].SetData(a);
+	args_[i].setData(a);
 }
 
 

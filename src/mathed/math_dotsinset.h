@@ -4,7 +4,7 @@
 #include "math_inset.h"
 #include "math_defs.h"
 
-///
+/// The different kinds of ellipsis
 class MathDotsInset: public MathedInset {
 public:
 	///
@@ -19,6 +19,8 @@ public:
 	void Metrics();
 protected:
 	///
-	int dh, code;
+	int dh_;
+	///
+	int code_;
 };   
 #endif

@@ -173,7 +173,7 @@ void MathMacro::SetFocus(int x, int y)
 }
 
 
-void MathMacro::SetData(MathedArray * a)
+void MathMacro::setData(MathedArray * a)
 {
 	args_[idx_].array = a;
 }

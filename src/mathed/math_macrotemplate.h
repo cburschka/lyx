@@ -9,7 +9,9 @@
 
 class MathMacro;
 
-/// This class contains the macro definition
+/** This class contains the macro definition
+    \author Alejandro Aguilar Sierra
+ */
 class MathMacroTemplate : public MathParInset {
 public:
 	/// A template constructor needs all the data

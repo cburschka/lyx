@@ -133,7 +133,9 @@ public:
 	///
 	combox_type type;
 	///
-        int bw, bh;
+        int bw;
+	///
+	int bh;
 	///
 	int sel;
 	///

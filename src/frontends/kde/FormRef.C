@@ -143,7 +143,8 @@ void FormRef::updateRefs()
 	dialog_->reference->setText(tmp.c_str());
 
 	for (unsigned int i=0; i < dialog_->refs->count(); ++i) {
-		if (!strcmp(dialog_->reference->text(),dialog_->refs->text(i)))
+		if (!compare(dialog_->reference->text(),
+			     dialog_->refs->text(i)))
 			dialog_->refs->setCurrentItem(i);
 	}
 

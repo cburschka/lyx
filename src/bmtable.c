@@ -29,15 +29,15 @@ extern "C"
 #endif
   
 typedef struct   {   
-   int nx, ny;   /* Dimensions of the table */
-   int dx, dy;   /* Size of each item */ 
-   int bx, by;   /* Bitmap's position */
-   int bw, bh;   /* Bitmap dimensions */
-   unsigned char const * bdata;  /* Bitmap data */
-   int maxi;     /* Number of items */
-   int i;        /* Current position */
-   int mousebut; /* mouse button pushed */  
-   Pixmap pix;   /* Pixmap from data (temporal) */
+  int nx, ny;   /**< Dimensions of the table */
+  int dx, dy;   /**< Size of each item */
+   int bx, by;   /**< Bitmap's position */
+   int bw, bh;   /**< Bitmap dimensions */
+   unsigned char const * bdata;  /**< Bitmap data */
+   int maxi;     /**< Number of items */
+   int i;        /**< Current position */
+   int mousebut; /**< mouse button pushed */  
+   Pixmap pix;   /**< Pixmap from data (temporal) */
 } BMTABLE_SPEC;
                  
 
@@ -294,8 +294,10 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 
 void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 {	
-   int xh, yh;
-   unsigned int bw, bh;
+   int xh;
+   int yh;
+   unsigned int bw;
+   unsigned int bh;
    unsigned char * bdata;
    
    if (XReadBitmapFileData(filename, &bw, &bh,
@@ -436,7 +438,10 @@ Pixmap fl_get_bmtable_pixmap(FL_OBJECT * ob)
 
 void fl_draw_bmtable_item(FL_OBJECT * ob, int i, Drawable d, int xx, int yy)
 {
-   int x, y, w, h;
+   int x;
+   int y;
+   int w;
+   int h;
    GC gc = fl_state[fl_get_vclass()].gc[0];
    BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
    

@@ -78,9 +78,6 @@ struct Debug {
 	///
 	static type const ANY;
 
-	///
-//	friend inline void operator|=(Debug::type & d1, Debug::type d2);
-	
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/

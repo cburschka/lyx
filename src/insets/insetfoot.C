@@ -55,7 +55,7 @@ int InsetFoot::Latex(Buffer const * buf,
 {
     os << "\\footnote{%\n";
     
-    int i = inset->Latex(buf, os, fragile, fp);
+    int const i = inset->Latex(buf, os, fragile, fp);
     os << "}%\n";
     
     return i + 2;

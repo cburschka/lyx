@@ -16,12 +16,6 @@
 #pragma interface
 #endif
 
-//#define HAVE_ROPE 1
-
-#ifdef HAVE_ROPE
-#include <rope>
-#endif
-
 #include <vector>
 #include <list>
 
@@ -128,11 +122,7 @@ public:
 	///
 	typedef char value_type;
 	///
-#ifndef HAVE_ROPE
 	typedef std::vector<value_type> TextContainer;
-#else
-	typedef std::rope<value_type> TextContainer;
-#endif
 	///
 	/* This should be TextContainer::size_type, but we need
 	   signed values for now.
@@ -169,14 +159,9 @@ public:
 	void validate(LaTeXFeatures &) const;
 	
 	///
-	int id() const {
-		return id_;
-	}
+	int id() const;
 	///
-	void id(int id_arg) {
-		id_ = id_arg;
-	}
-
+	void id(int id_arg);
 	///
 	void read();
 
@@ -212,18 +197,13 @@ public:
 	void MakeSameLayout(LyXParagraph const * par);
 
 	/// Is it the first par with same depth and layout?
-	bool IsFirstInSequence() const {
-		LyXParagraph const * dhook = DepthHook(GetDepth());
-		return (dhook == this
-			|| dhook->GetLayout() != GetLayout()
-			|| dhook->GetDepth() != GetDepth());
-	}
+	bool IsFirstInSequence() const;
 
 	/** Check if the current paragraph is the last paragraph in a
 	    proof environment */
 	int GetEndLabel(BufferParams const &) const;
 	///
-	Inset * InInset() { return inset_owner; }
+	Inset * InInset();
 	///
 	void SetInsetOwner(Inset * i);
 	///
@@ -238,26 +218,13 @@ private:
 
 public:
 	///
-	size_type size() const { return text.size(); }
+	size_type size() const;
 	///
-	void fitToSize() {
-#ifndef HAVE_ROPE
-		text.resize(text.size());
-#endif
-	}
+	void fitToSize();
 	///
-	void setContentsFromPar(LyXParagraph * par) {
-		text = par->text;
-	}
+	void setContentsFromPar(LyXParagraph * par);
 	///
-	void clearContents() {
-#ifndef HAVE_ROPE
-		text.clear();
-#else
-		text.erase(text.mutable_begin(), text.mutable_end());
-#endif
-	}
-	
+	void clearContents();
 	/// 
 	VSpace added_space_top;
 	
@@ -308,11 +275,11 @@ private:
 	array<int, 10> counter_;
 public:
 	///
-	void setCounter(int i, int v) { counter_[i] = v; }
+	void setCounter(int i, int v);
 	///
-	int getCounter(int i) const { return counter_[i]; }
+	int getCounter(int i) const;
 	///
-	void incCounter(int i) { counter_[i]++; }
+	void incCounter(int i);
 	///
 	bool start_of_appendix;
 
@@ -444,14 +411,7 @@ public:
 	///
 	value_type GetUChar(BufferParams const &, size_type pos) const;
 	/// The position must already exist.
-	void SetChar(size_type pos, value_type c) {
-#ifndef HAVE_ROPE
-		text[pos] = c;
-#else
-		text.replace(pos, c);
-#endif
-	}
-	
+	void SetChar(size_type pos, value_type c);
 	///
 	void SetFont(size_type pos, LyXFont const & font);
 	///
@@ -688,15 +648,97 @@ public:
 		InsetList::iterator it;
 	};
 	///
-	inset_iterator inset_iterator_begin() {
-		return inset_iterator(insetlist.begin());
-	}
+	inset_iterator inset_iterator_begin();
 	///
-	inset_iterator inset_iterator_end() {
-		return inset_iterator(insetlist.end());
-	}
+	inset_iterator inset_iterator_end();
 	///
 	inset_iterator InsetIterator(size_type pos);
 };
 
+
+inline
+int LyXParagraph::id() const
+{
+	return id_;
+}
+
+
+inline
+void  LyXParagraph::id(int id_arg)
+{
+	id_ = id_arg;
+}
+
+
+inline
+bool LyXParagraph::IsFirstInSequence() const
+{
+	LyXParagraph const * dhook = DepthHook(GetDepth());
+	return (dhook == this
+		|| dhook->GetLayout() != GetLayout()
+		|| dhook->GetDepth() != GetDepth());
+}
+
+
+inline
+Inset * LyXParagraph::InInset()
+{
+	return inset_owner;
+}
+
+
+inline
+LyXParagraph::size_type LyXParagraph::size() const
+{
+	return text.size();
+}
+
+
+inline
+void LyXParagraph::clearContents()
+{
+	text.clear();
+}
+
+
+inline
+void LyXParagraph::setCounter(int i, int v)
+{
+	counter_[i] = v;
+}
+
+
+inline
+int LyXParagraph::getCounter(int i) const
+{
+	return counter_[i];
+}
+
+
+inline
+void LyXParagraph::incCounter(int i)
+{
+	counter_[i]++;
+}
+
+
+inline
+void LyXParagraph::SetChar(size_type pos, value_type c)
+{
+	text[pos] = c;
+}
+
+
+inline
+LyXParagraph::inset_iterator LyXParagraph::inset_iterator_begin()
+{
+	return inset_iterator(insetlist.begin());
+}
+
+
+inline
+LyXParagraph::inset_iterator LyXParagraph::inset_iterator_end()
+{
+	return inset_iterator(insetlist.end());
+}
 #endif

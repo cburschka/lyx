@@ -1,3 +1,15 @@
+2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* insettext.C (textWidth): constify local var
+
+	* insettabular.C: small cleanup.
+
+	* insetfoot.C (Latex): constify local var
+
+	* insetcollapsable.C: small cleanup.
+
+	* figinset.C (runqueue): use compare instead of strcmp
+
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.C:

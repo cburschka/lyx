@@ -79,7 +79,7 @@ void FormBibitem::build()
 bool FormBibitem::input(FL_OBJECT *, long)
 {
 	// minimal validation 
-	if (!strcmp(fl_get_input(dialog_->key),""))
+	if (!compare(fl_get_input(dialog_->key), ""))
 		return false;
 
 	return true;

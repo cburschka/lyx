@@ -924,10 +924,11 @@ void FormCitation::searchReg()
 void FormCitation::searchSimple()
 {
   vector<string> searchwords;
-  string tmp, stext( search_string_ );
+  string tmp;
+  string stext(search_string_);
   stext = frontStrip( strip( stext ) );
   stext = frontStrip( split(stext, tmp, ' ') );
-  while( !tmp.empty() )
+  while ( !tmp.empty() )
     {
       searchwords.push_back(tmp);
       stext = frontStrip( split(stext, tmp, ' ') );
@@ -939,20 +940,17 @@ void FormCitation::searchSimple()
   clist_bib_->freeze();
 
   int const sz = bibkeys.size();
-  bool additem;
-  for ( int i = 0; i < sz; ++i )
-    {
-      string data = bibkeys[i] + bibkeysInfo[i];
+  for (int i = 0; i < sz; ++i) {
+      string const data = bibkeys[i] + bibkeysInfo[i];
 
-      additem = true;
+      bool additem = true;
 
-      int j, szs;
-      for (j = 0, szs = searchwords.size();
-	   additem && j < szs; ++j )
-	if ( data.find(searchwords[j]) == string::npos )
-	  additem = false;
-	     
-      if ( additem ) addItemToBibList(i);
+      int const szs = searchwords.size();
+      for (int j = 0; additem && j < szs; ++j)
+	      if (data.find(searchwords[j]) == string::npos)
+		      additem = false;
+      
+      if (additem) addItemToBibList(i);
     }
 
   clist_bib_->sort();

@@ -9,24 +9,24 @@
 using std::ostream;
 
 
+MathDecorationInset::MathDecorationInset(int d, short st)
+	: MathParInset(st, "", LM_OT_DECO), deco_(d)
+{
+	upper_ = (deco_ != LM_underline && deco_ != LM_underbrace);
+}
+
+
 bool MathDecorationInset::GetLimits() const
 { 
-	return deco == LM_underbrace || deco == LM_overbrace;
+	return deco_ == LM_underbrace || deco_ == LM_overbrace;
 }    
-
-
-MathDecorationInset::MathDecorationInset(int d, short st)
-	: MathParInset(st, "", LM_OT_DECO), deco(d)
-{
-   upper = (deco!= LM_underline && deco!= LM_underbrace);
-}
 
 
 MathedInset * MathDecorationInset::Clone()
 {   
-   MathDecorationInset * p = new MathDecorationInset(deco, GetStyle());
+   MathDecorationInset * p = new MathDecorationInset(deco_, GetStyle());
    MathedIter it(array);
-   p->SetData(it.Copy());
+   p->setData(it.Copy());
    return p;
 }
 
@@ -34,8 +34,8 @@ MathedInset * MathDecorationInset::Clone()
 void
 MathDecorationInset::draw(Painter & pain, int x, int y)
 { 
-	MathParInset::draw(pain, x + (width - dw) / 2, y);
-	mathed_draw_deco(pain, x, y + dy, width, dh, deco);
+	MathParInset::draw(pain, x + (width - dw_) / 2, y);
+	mathed_draw_deco(pain, x, y + dy_, width, dh_, deco_);
 }
 
 
@@ -47,24 +47,24 @@ MathDecorationInset::Metrics()
 	MathParInset::Metrics();
 	int w = Width() + 4;
 	if (w < 16) w = 16;
-	dh = w / 5;
-	if (dh > h) dh = h;
+	dh_ = w / 5;
+	if (dh_ > h) dh_ = h;
 	
-	if (upper) {
-		ascent += dh + 2;
-		dy = -ascent;
+	if (upper_) {
+		ascent += dh_ + 2;
+		dy_ = -ascent;
 	} else {
-		dy = descent + 2;
-		descent += dh + 4;
+		dy_ = descent + 2;
+		descent += dh_ + 4;
 	}
-	dw = width;
+	dw_ = width;
 	width = w;
 }
 
 
 void MathDecorationInset::Write(ostream & os, bool fragile)
 {
-	latexkeys * l = lm_get_key_by_id(deco, LM_TK_WIDE);
+	latexkeys const * l = lm_get_key_by_id(deco_, LM_TK_WIDE);
 	if (fragile &&
 	    (strcmp(l->name, "overbrace") == 0 ||
 	     strcmp(l->name, "underbrace") == 0 ||

@@ -14,9 +14,9 @@ MathFracInset::MathFracInset(short ot)
 	: MathParInset(LM_ST_TEXT, "frac", ot)
 {
 	
-	den = new MathParInset(LM_ST_TEXT); // this leaks
-	dh = 0;
-	idx = 0;
+	den_ = new MathParInset(LM_ST_TEXT); // this leaks
+	dh_ = 0;
+	idx_ = 0;
 	if (objtype == LM_OT_STACKREL) {
 		flag |= LMPF_SCRIPT;
 		SetName("stackrel");
@@ -26,7 +26,7 @@ MathFracInset::MathFracInset(short ot)
 
 MathFracInset::~MathFracInset()
 {
-	delete den;
+	delete den_;
 }
 
 
@@ -34,10 +34,10 @@ MathedInset * MathFracInset::Clone()
 {   
 	MathFracInset * p = new MathFracInset(GetType());
 	MathedIter itn(array);
-	MathedIter itd(den->GetData());
+	MathedIter itd(den_->GetData());
 	p->SetData(itn.Copy(), itd.Copy());
-	p->idx = idx;
-	p->dh = dh;
+	p->idx_ = idx_;
+	p->dh_ = dh_;
 	return p;
 }
 
@@ -45,7 +45,7 @@ MathedInset * MathFracInset::Clone()
 bool MathFracInset::setArgumentIdx(int i)
 {
 	if (i == 0 || i == 1) {
-		idx = i;
+		idx_ = i;
 		return true;
 	} else 
 		return false;
@@ -55,8 +55,8 @@ bool MathFracInset::setArgumentIdx(int i)
 void MathFracInset::SetStyle(short st)
 {
 	MathParInset::SetStyle(st);
-	dh = 0;
-	den->SetStyle((size() == LM_ST_DISPLAY) ?
+	dh_ = 0;
+	den_->SetStyle((size() == LM_ST_DISPLAY) ?
 		      static_cast<short>(LM_ST_TEXT)
 		      : size());
 }
@@ -64,42 +64,42 @@ void MathFracInset::SetStyle(short st)
 
 void MathFracInset::SetData(MathedArray * n, MathedArray * d)
 {
-	den->SetData(d);
-	MathParInset::SetData(n);
+	den_->setData(d);
+	MathParInset::setData(n);
 }
 
 
-void MathFracInset::SetData(MathedArray * d)
+void MathFracInset::setData(MathedArray * d)
 {
-	if (idx == 0)
-		MathParInset::SetData(d);
+	if (idx_ == 0)
+		MathParInset::setData(d);
 	else {
-		den->SetData(d);
+		den_->setData(d);
 	}
 }
 
 
 void MathFracInset::GetXY(int & x, int & y) const
 {  
-	if (idx == 0)
+	if (idx_ == 0)
 		MathParInset::GetXY(x, y);
 	else
-		den->GetXY(x, y);
+		den_->GetXY(x, y);
 }
 
 
 MathedArray * MathFracInset::GetData()
 {
-	if (idx == 0)
+	if (idx_ == 0)
 		return array;
 	else
-		return den->GetData();
+		return den_->GetData();
 }
 
 
 bool MathFracInset::Inside(int x, int y) 
 {
-	int xx = xo() - (width - w0) / 2;
+	int xx = xo() - (width - w0_) / 2;
 	
 	return x >= xx
 		&& x <= xx + width
@@ -110,50 +110,52 @@ bool MathFracInset::Inside(int x, int y)
 
 void MathFracInset::SetFocus(int /*x*/, int y)
 {  
-//    lyxerr << "y " << y << " " << yo << " " << den->yo << " ";
-	idx = (y > yo()) ? 1: 0;
+	// lyxerr << "y " << y << " " << yo << " " << den_->yo << " ";
+	idx_ = (y > yo()) ? 1 : 0;
 }
 
 
 void
 MathFracInset::draw(Painter & pain, int x, int y)
 { 
-	short idxp = idx;
-	short sizex = size();
+	int const idxp = idx_;
+	int const sizex = size();
 	
-	idx = 0;
+	idx_ = 0;
 	if (size() == LM_ST_DISPLAY) incSize();
-	MathParInset::draw(pain, x + (width - w0) / 2, y - des0);
-	den->draw(pain, x + (width - w1) / 2, y + den->Ascent() + 2 - dh);
+	MathParInset::draw(pain, x + (width - w0_) / 2, y - des0_);
+	den_->draw(pain, x + (width - w1_) / 2, y + den_->Ascent() + 2 - dh_);
 	size(sizex);
 	if (objtype == LM_OT_FRAC)
-		pain.line(x + 2, y - dh, x + width - 4, y - dh, LColor::mathline);
-	idx = idxp;
+		pain.line(x + 2, y - dh_,
+			  x + width - 4, y - dh_, LColor::mathline);
+	idx_ = idxp;
 }
 
 
 void
 MathFracInset::Metrics()
 {
-	if (!dh) {
-		int a, b;
-		dh = mathed_char_height(LM_TC_CONST, size(), 'I', a, b) / 2;
+	if (!dh_) {
+		int a;
+		int b;
+		dh_ = mathed_char_height(LM_TC_CONST, size(), 'I', a, b) / 2;
 	}
-	short idxp = idx;
-	short sizex = size();
-	idx = 0;
+	int const idxp = idx_;
+	int const sizex = size();
+	idx_ = 0;
 	if (size() == LM_ST_DISPLAY) incSize(); 
 	MathParInset::Metrics();
 	size(sizex);
-	w0 = width;
-	int as = Height() + 2 + dh;
-	des0 = Descent() + 2 + dh;
-	den->Metrics();  
-	w1 = den->Width();   
-	width = ((w0 > w1) ? w0: w1) + 12;
+	w0_ = width;
+	int const as = Height() + 2 + dh_;
+	des0_ = Descent() + 2 + dh_;
+	den_->Metrics();  
+	w1_ = den_->Width();   
+	width = ((w0_ > w1_) ? w0_: w1_) + 12;
 	ascent = as; 
-	descent = den->Height()+ 2 - dh;
-	idx = idxp;
+	descent = den_->Height()+ 2 - dh_;
+	idx_ = idxp;
 }
 
 
@@ -162,6 +164,6 @@ void MathFracInset::Write(ostream & os, bool fragile)
 	os << '\\' << name << '{';
 	MathParInset::Write(os, fragile);
 	os << "}{";
-	den->Write(os, fragile);
+	den_->Write(os, fragile);
 	os << '}';
 }

@@ -8,22 +8,22 @@ using std::ostream;
 
 
 MathDotsInset::MathDotsInset(string const & nam, int id, short st)
-	: MathedInset(nam, LM_OT_DOTS, st), code(id) {}
+	: MathedInset(nam, LM_OT_DOTS, st), code_(id) {}
 
 
 MathedInset * MathDotsInset::Clone()
 {
-	return new MathDotsInset(name, code, GetStyle());
+	return new MathDotsInset(name, code_, GetStyle());
 }     
 
 
 void
 MathDotsInset::draw(Painter & pain, int x, int y)
 {
-	mathed_draw_deco(pain, x + 2, y - dh, width - 2, ascent, code);
-	if (code == LM_vdots || code == LM_ddots) ++x; 
-	if (code != LM_vdots) --y;
-	mathed_draw_deco(pain, x + 2, y - dh, width - 2, ascent, code);
+	mathed_draw_deco(pain, x + 2, y - dh_, width - 2, ascent, code_);
+	if (code_ == LM_vdots || code_ == LM_ddots) ++x;
+	if (code_ != LM_vdots) --y;
+	mathed_draw_deco(pain, x + 2, y - dh_, width - 2, ascent, code_);
 }
 
 
@@ -32,11 +32,11 @@ MathDotsInset::Metrics()
 {
 	mathed_char_height(LM_TC_VAR, size(), 'M', ascent, descent);
 	width = mathed_char_width(LM_TC_VAR, size(), 'M');   
-	switch (code) {
-	case LM_ldots: dh = 0; break;
-	case LM_cdots: dh = ascent/2; break;
+	switch (code_) {
+	case LM_ldots: dh_ = 0; break;
+	case LM_cdots: dh_ = ascent/2; break;
 	case LM_vdots: width /= 2;
-	case LM_ddots: dh = ascent; break;
+	case LM_ddots: dh_ = ascent; break;
 	}
 } 
 

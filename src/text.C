@@ -3088,15 +3088,12 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #warning Should be fixed with a lyxinset::clear_width(bv, font) function! (Jug)
 #warning Should we not fix this in the Painter, please have a look Lars! (Jug)
 #endif
-		int w = (inset_owner ? inset_owner->width(bview, font)-2 : ww);
-		int h = row_ptr->height();
-		int x = x_offset;
-		int y = y_offset;
-		if (y < 0) {
-		    h += y;
-		    y = 0;
-		}
-
+		int const y = y_offset < 0 ? 0 : y_offset;
+		int const h = y_offset < 0 ?
+			row_ptr->height() + y_offset : row_ptr->height();
+		int const w = inset_owner ?
+			inset_owner->width(bview, font) - 2 : ww;
+		int const x = x_offset;
 		pain.fillRectangle(x, y, w, h);
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);

@@ -214,7 +214,7 @@ void MathedXIter::SetData(MathParInset * pp)
 	} 
 	if (!array) {
 		array = new MathedArray; // this leaks
-		p->SetData(array);
+		p->setData(array);
 	}
 	size = p->GetStyle();
 	Reset();

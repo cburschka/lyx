@@ -68,9 +68,7 @@ unsigned int LyXParagraph::paragraph_id = 0;
 
 LyXParagraph::LyXParagraph()
 {
-#ifndef HAVE_ROPE
 	text.reserve(500); // is this number too big?
-#endif
 	for (int i = 0; i < 10; ++i) setCounter(i , 0);
 	appendix = false;
 	enumdepth = 0;
@@ -93,9 +91,7 @@ LyXParagraph::LyXParagraph()
 // This konstruktor inserts the new paragraph in a list.
 LyXParagraph::LyXParagraph(LyXParagraph * par)
 {
-#ifndef HAVE_ROPE
 	text.reserve(500);
-#endif
 	par->fitToSize();
 	
 	for (int i = 0; i < 10; ++i) setCounter(i, 0);
@@ -560,11 +556,9 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 				insetlist.erase(it);
 			}
 		}
-#ifndef HAVE_ROPE
+
 		text.erase(text.begin() + pos);
-#else
-		text.erase(text.mutable_begin() + pos);
-#endif
+
 		// Erase entries in the tables.
 		FontTable search_font(pos, LyXFont());
 		
@@ -640,11 +634,8 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 #else
 	Assert(pos <= size());
 #endif
-#ifndef HAVE_ROPE
 	text.insert(text.begin() + pos, c);
-#else
-	text.insert(pos, c);
-#endif
+
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
 	for (FontList::iterator it = lower_bound(fontlist.begin(),
@@ -4088,4 +4079,17 @@ void LyXParagraph::resizeInsetsLyXText(BufferView * bv)
 			}
 		}
 	}
+}
+
+
+void LyXParagraph::fitToSize()
+{
+	TextContainer tmp(text.begin(), text.end());
+	text.swap(tmp);
+}
+
+
+void LyXParagraph::setContentsFromPar(LyXParagraph * par)
+{
+	text = par->text;
 }

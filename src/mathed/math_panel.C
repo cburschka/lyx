@@ -150,8 +150,9 @@ void button_cb(FL_OBJECT * ob, long data)
 /* callbacks for form delim */
 void delim_cb(FL_OBJECT *, long data)
 {
-   int left = fd_delim->left->u_ldata, right= fd_delim->right->u_ldata;
-   int side = (fl_get_button(fd_delim->right)!= 0);
+   int left = fd_delim->left->u_ldata;
+   int right= fd_delim->right->u_ldata;
+   int side = (fl_get_button(fd_delim->right) != 0);
    
    switch (data) {
     case MM_APPLY:

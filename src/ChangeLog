@@ -1,3 +1,32 @@
+2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* vspace.h: doxygen
+
+	* text.C (GetVisibleRow): make several local vars const
+
+	* tabular.C: small cleanup.
+
+	* lyxserver.C (callback): use compare instead of strncmp
+
+	* lyxparagraph.h: remove all code dep. on HAVE_ROPE, move inclass
+	inlines to after class or to paragraph.C
+
+	* lyxfont.h: remove friend operator!=
+
+	* converter.h: move friend bool operator< to non friend and after
+	class def.
+
+	* combox.h: small cleanup
+
+	* buffer.h: doxygen, remove unused constructor, move inclas inlies
+	to inlines after class def.
+
+	* buffer.C (pop_tag): use string operations instead of strcmp
+
+	* bmtable.c: doxygen, small cleanup
+
+	* LaTeX.h: remove friend operator==
+
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* screen.C: 
