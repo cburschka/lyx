@@ -14,9 +14,6 @@
 
 #include <config.h>
 
-#include <vector>
-#include <algorithm>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -27,7 +24,10 @@
 #include "helper_funcs.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
-#include "support/LRegex.h"
+
+#include <boost/regex.hpp>
+
+#include <algorithm>
 
 using std::find;
 using std::min;
@@ -122,11 +122,11 @@ regexSearch(InfoMap const & theMap,
 	    vector<string>::const_iterator start,
 	    Direction dir)
 {
-	LRegex reg(expr);
+	boost::regex reg(expr);
 
 	for (vector<string>::const_iterator it = start;
 	     // End condition is direction-dependent.
-	     (dir == FORWARD) ? (it<keys.end()) : (it>=keys.begin());
+	     (dir == FORWARD) ? (it < keys.end()) : (it >= keys.begin());
 	     // increment is direction-dependent.
 	     (dir == FORWARD) ? (++it) : (--it)) {
 
@@ -135,8 +135,9 @@ regexSearch(InfoMap const & theMap,
 		if (info != theMap.end())
 			data += " " + info->second;
 
-		if (reg.exec(data).size() > 0)
+		if (boost::regex_match(data, reg)) {
 			return it;
+		}
 	}
 
 	return keys.end();
@@ -380,7 +381,7 @@ string const parseBibTeX(string data, string const & findkey)
 	// at first we delete all characters right of '%' and
 	// replace tabs through a space and remove leading spaces
 	// we read the data line by line so that the \n are
-	// ignored, too. 
+	// ignored, too.
 	string data_;
 	int Entries = 0;
 	string dummy = token(data,'\n', Entries);
@@ -390,7 +391,7 @@ string const parseBibTeX(string data, string const & findkey)
 		// ignore lines with a beginning '%' or ignore all right of %
 		string::size_type const idx =
 			dummy.empty() ? string::npos : dummy.find('%');
-		if (idx != string::npos) 
+		if (idx != string::npos)
 			dummy.erase(idx, string::npos);
 		// do we have a new token or a new line of
 		// the same one? In the first case we ignore
@@ -398,7 +399,7 @@ string const parseBibTeX(string data, string const & findkey)
 		// with a space
 		if (!dummy.empty()) {
 			if (!contains(dummy, "="))
-		    		data_ += (' ' + dummy); 
+				data_ += (' ' + dummy);
 			else
 				data_ += dummy;
 		}
@@ -424,10 +425,10 @@ string const parseBibTeX(string data, string const & findkey)
 		dummy = token(data, ',', Entries++);
 		if (!dummy.empty()) {
 			found = contains(lowercase(dummy), findkey);
-			if (findkey == "title" && 
+			if (findkey == "title" &&
 				contains(lowercase(dummy), "booktitle"))
 				found = false;
-		}		
+		}
 	} while (!found && !dummy.empty());
 	if (dummy.empty())
 		// no such keyword

@@ -1,3 +1,19 @@
+2002-05-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* vc-backend.C (scanMaster): use boost regex and get rid of LRegex
+	and LSubstring
+
+	* chset.C: change include order
+	(loadFile): use boost regex and get rid of LRegex and LSubstring
+
+	* Makefile.am (BOOST_LIBS): new variable
+	(lyx_LDADD): use it
+
+	* LaTeX.C: change include order.
+	(scanAuxFile): use boost regex and get rid of LRegex and
+	LSubstring
+	(deplog): ditto
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ColorHandler.h:
@@ -10,20 +26,20 @@
 
 	* Makefile.am:
 	* lyx_gui.C:
-	* lyxfont.C: 
+	* lyxfont.C:
 	* lyxfunc.C: changes from above
- 
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LColor.C: remove spurious X include
- 
+
 	* BufferView_pimpl.C:
 	* Makefile.am:
 	* font.h:
 	* font.C:
 	* text.C:
 	* text2.C: move font metrics to frontends/
- 
+
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fix the cursor selection after
@@ -39,7 +55,7 @@
 	* WorkArea.h:
 	* WorkArea.C:
 	* screen.C: move WorkArea into frontends/
- 
+
 	* lyxscreen.h:
 	* screen.C:
 	* text.C:
@@ -64,8 +80,8 @@
 	* buffer.C:
 	* bufferlist.C:
 	* bufferview_funcs.C:
-	* converter.C: 
-	* importer.C: 
+	* converter.C:
+	* importer.C:
 	* lyx_cb.C:
 	* lyx_gui.C:
 	* lyx_main.C:
@@ -77,7 +93,7 @@
 	* text2.C:
 	* trans.C:
 	* vc-backend.C: move LyX/XFormsView into frontends/
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -91,7 +107,7 @@
 	* tabular.C:
 	* text.C:
 	* text2.C: move Painter to frontends/
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C: comment out some some code that depend upon lyx_format

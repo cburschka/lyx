@@ -16,6 +16,7 @@
 #define BIBLIOHELPERS_H
 
 #include <map>
+#include <vector>
 
 #ifdef __GNUG__
 #pragma interface
@@ -62,7 +63,7 @@ namespace biblio
 
 	// rturn the year from the bibtex data record
 	string const getYear(InfoMap const & map, string const & key);
-	
+
 	/// return the short form of an authorlist
 	string const getAbbreviatedAuthor(InfoMap const & map, string const & key);
 

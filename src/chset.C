@@ -4,20 +4,23 @@
 #pragma implementation
 #endif
 
-#include <fstream>
-
 #include "chset.h"
 #include "support/filetools.h"
-#include "support/LRegex.h"
-#include "support/LSubstring.h"
 #include "support/lyxlib.h"
 #include "debug.h"
+
+#include <boost/regex.hpp>
+
+#include <fstream>
 
 using std::ifstream;
 using std::getline;
 using std::pair;
 using std::make_pair;
 using std::endl;
+using boost::regex;
+using boost::regex_match;
+using boost::smatch;
 
 bool CharacterSet::loadFile(string const & fname)
 {
@@ -44,14 +47,12 @@ bool CharacterSet::loadFile(string const & fname)
 	// the fastest way to parse the cdef files, but I though it
 	// was a bit neat. Anyway it is wrong to use the lyxlex parse
 	// without the use of a keyword table.
-	LRegex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
+	regex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
 	while (getline(ifs, line)) {
-		if (reg.exact_match(line)) {
-			LRegex::SubMatches const & sub = reg.exec(line);
-			int const n = lyx::atoi(line.substr(sub[1].first,
-						  sub[1].second));
-			string const str = LSubstring(line, sub[2].first,
-						      sub[2].second);
+		smatch sub;
+		if (regex_match(line, sub, reg)) {
+			int const n = lyx::atoi(sub[1]);
+			string const str = sub[2];
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
 				       << " to [" << str << "]" << endl;

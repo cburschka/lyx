@@ -36,7 +36,6 @@
 #include "support/systemcall.h"
 
 #include "filetools.h"
-#include "LSubstring.h"
 #include "frontends/Alert.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)

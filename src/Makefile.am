@@ -15,9 +15,11 @@ LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
+BOOST_LIBS = ../boost/libs/regex/src/libboostregex.la
+
 #lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(INCLUDED_SIGC)
 
-lyx_LDADD = $(LYX_CONV_LIBS) $(SIGC_LIBS) $(INCLUDED_SIGC) @INTLLIBS@ \
+lyx_LDADD = $(LYX_CONV_LIBS) $(SIGC_LIBS) $(BOOST_LIBS) $(INCLUDED_SIGC) @INTLLIBS@ \
 	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
 
 #  @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
@@ -212,7 +214,7 @@ lyx_SOURCES = \
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h lyx_gui.h \
 	lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h 
+	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
 	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 

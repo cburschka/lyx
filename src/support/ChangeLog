@@ -1,3 +1,20 @@
+2002-05-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* filetools.C: do not include LSubstring.h
+
+	* lstrings.C: change include order
+	(regexMatch): use boost regex get rid of LRegex and LSubstring
+
+	* Makefile.am (libsupport_la_SOURCES): delete regex and substring
+	stuff.
+
+	* LSubstring.h: remove file
+	* regex.c: ditto
+	* lyxregex.h: ditto
+	* LRegex.C: ditto
+	* LRegex.h: ditto
+	* LSubstring.C: ditto
+
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
 	* lyxsum.C: include local includes first (self containment)

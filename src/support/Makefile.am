@@ -4,14 +4,11 @@ noinst_LTLIBRARIES = libsupport.la
 
 INCLUDES = -I$(srcdir)/../ $(SIGC_INCLUDES) $(BOOST_INCLUDES)
 
-EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h \
-             os_unix.C os_win32.C os_os2.C
+EXTRA_DIST = lyxstring.C lyxstring.h \
+	     os_unix.C os_win32.C os_os2.C
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
-endif
-if USE_REGEX
-REGEX = regex.c lyxregex.h
 endif
 
 libsupport_la_SOURCES = \
@@ -23,10 +20,6 @@ libsupport_la_SOURCES = \
 	LAssert.h \
 	LIstream.h \
 	LOstream.h \
-	LRegex.C \
-	LRegex.h \
-	LSubstring.C \
-	LSubstring.h \
 	os.C \
 	os.h \
 	StrPool.C \
@@ -67,7 +60,7 @@ libsupport_la_SOURCES = \
 	snprintf.h \
 	snprintf.c \
 	sstream.h \
-	$(REGEX) systemcall.C \
+	systemcall.C \
 	systemcall.h \
 	tempname.C \
 	textutils.h \

@@ -16,7 +16,6 @@
 #ifdef __GNUG__
 #pragma implementation
 #endif
-#include <fstream>
 
 #include "LaTeX.h"
 #include "bufferlist.h"
@@ -25,13 +24,15 @@
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
-#include "support/LRegex.h"
-#include "support/LSubstring.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
 #include "support/os.h"
 #include "support/path.h"
+
+#include <boost/regex.hpp>
+
+#include <fstream>
 #include <cstdio>  // sscanf
 
 using std::ifstream;
@@ -39,6 +40,9 @@ using std::getline;
 using std::endl;
 using std::vector;
 using std::set;
+using boost::regex;
+using boost::regex_match;
+using boost::smatch;
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
@@ -415,17 +419,16 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 
 	ifstream ifs(file.c_str());
 	string token;
-	LRegex reg1("\\\\citation\\{([^}]+)\\}");
-	LRegex reg2("\\\\bibdata\\{([^}]+)\\}");
-	LRegex reg3("\\\\bibstyle\\{([^}]+)\\}");
-	LRegex reg4("\\\\@input\\{([^}]+)\\}");
+	regex reg1("\\\\citation\\{([^}]+)\\}");
+	regex reg2("\\\\bibdata\\{([^}]+)\\}");
+	regex reg3("\\\\bibstyle\\{([^}]+)\\}");
+	regex reg4("\\\\@input\\{([^}]+)\\}");
 
 	while (getline(ifs, token)) {
 		token = strip(token, '\r');
-		if (reg1.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg1.exec(token);
-			string data = LSubstring(token, sub[1].first,
-						 sub[1].second);
+		smatch sub;
+		if (regex_match(token, sub, reg1)) {
+			string data = sub[1];
 			while (!data.empty()) {
 				string citation;
 				data = split(data, citation, ',');
@@ -433,10 +436,8 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << citation << endl;
 				aux_info.citations.insert(citation);
 			}
-		} else if (reg2.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg2.exec(token);
-			string data = LSubstring(token, sub[1].first,
-						 sub[1].second);
+		} else if (regex_match(token, sub, reg2)) {
+			string data = sub[1];
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
 			while (!data.empty()) {
@@ -447,20 +448,16 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << database << "'" << endl;
 				aux_info.databases.insert(database);
 			}
-		} else if (reg3.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg3.exec(token);
-			string style = LSubstring(token, sub[1].first,
-						  sub[1].second);
+		} else if (regex_match(token, sub, reg3)) {
+			string style = sub[1];
 			// token is now the style file
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
 					     << style << "'" << endl;
 			aux_info.styles.insert(style);
-		} else if (reg4.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg4.exec(token);
-			string file2 = LSubstring(token, sub[1].first,
-						  sub[1].second);
+		} else if (regex_match(token, sub, reg4)) {
+			string file2 = sub[1];
 			scanAuxFile(file2, aux_info);
 		}
 	}
@@ -656,16 +653,16 @@ void LaTeX::deplog(DepTable & head)
 
 	string const logfile = OnlyFilename(ChangeExtension(file, ".log"));
 
-	LRegex reg1("\\)* *\\(([^ )]+).*");
-	LRegex reg2("File: ([^ ]+).*");
-	LRegex reg3("No file ([^ ]+)\\..*");
-	LRegex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
+	regex reg1("\\)* *\\(([^ )]+).*");
+	regex reg2("File: ([^ ]+).*");
+	regex reg3("No file ([^ ]+)\\..*");
+	regex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
 	// If an index should be created, MikTex does not write a line like
 	//    \openout# = 'sample,idx'.
 	// but intstead only a line like this into the log:
 	//   Writing index file sample.idx
-	LRegex reg5("Writing index file ([^ ]+).*");
-	LRegex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
+	regex reg5("Writing index file ([^ ]+).*");
+	regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 
 	ifstream ifs(logfile.c_str());
 	while (ifs) {
@@ -680,26 +677,17 @@ void LaTeX::deplog(DepTable & head)
 		token = strip(token, '\r');
 		if (token.empty()) continue;
 
-		if (reg1.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg1.exec(token);
-			foundfile = LSubstring(token, sub[1].first,
-					       sub[1].second);
-		} else if (reg2.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg2.exec(token);
-			foundfile = LSubstring(token, sub[1].first,
-					       sub[1].second);
-		} else if (reg3.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg3.exec(token);
-			foundfile = LSubstring(token, sub[1].first,
-					       sub[1].second);
-		} else if (reg4.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg4.exec(token);
-			foundfile = LSubstring(token, sub[1].first,
-					       sub[1].second);
-		} else if (reg5.exact_match(token)) {
-			LRegex::SubMatches const & sub = reg5.exec(token);
-			foundfile = LSubstring(token, sub[1].first,
-					       sub[1].second);
+		smatch sub;
+		if (regex_match(token, sub, reg1)) {
+			foundfile = sub[1];
+		} else if (regex_match(token, sub, reg2)) {
+			foundfile = sub[1];
+		} else if (regex_match(token, sub, reg3)) {
+			foundfile = sub[1];
+		} else if (regex_match(token, sub, reg4)) {
+			foundfile = sub[1];
+		} else if (regex_match(token, sub, reg5)) {
+			foundfile = sub[1];
 		} else {
 			continue;
 		}
@@ -732,7 +720,7 @@ void LaTeX::deplog(DepTable & head)
 		// (2) foundfile is in the tmpdir
 		//     insert it into head
 		else if (FileInfo(OnlyFilename(foundfile)).exist()) {
-			if (unwanted.exact_match(foundfile)) {
+			if (regex_match(foundfile, unwanted)) {
 				lyxerr[Debug::DEPEND]
 					<< "We don't want "
 					<< OnlyFilename(foundfile)

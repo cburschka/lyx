@@ -12,18 +12,21 @@
 #include "lyxfunc.h"
 
 #include "support/FileInfo.h"
-#include "support/LRegex.h"
-#include "support/LSubstring.h"
 #include "support/path.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
+
+#include <boost/regex.hpp>
 
 #include <fstream>
 
 using std::endl;
 using std::ifstream;
 using std::getline;
+using boost::regex;
+using boost::regex_match;
+using boost::smatch;
 
 int VCS::doVCCommand(string const & cmd, string const & path)
 {
@@ -240,18 +243,18 @@ void CVS::scanMaster()
 	string tmpf = "/" + OnlyFilename(file_) + "/";
 	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << "'" << endl;
 	string line;
-	LRegex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
+	regex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 	while (getline(ifs, line)) {
 		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.
-			LRegex::SubMatches const & sm = reg.exec(line);
+			smatch sm;
+			regex_match(line, sm, reg);
+
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
-			version_ = LSubstring(line, sm[2].first,
-					      sm[2].second);
-			string file_date = LSubstring(line, sm[3].first,
-						      sm[3].second);
+			version_ = sm[2];
+			string file_date = sm[3];
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			FileInfo fi(file_);

@@ -1,3 +1,10 @@
+2002-05-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* biblio.h: include vector
+
+	* biblio.C: change include order
+	(regexSearch): use boost regex and get rid of LRegex
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlAboutlyx.C:
@@ -30,7 +37,7 @@
 	* ControlToc.C:
 	* ControlUrl.C:
 	* ControlVCLog.C: LyXView moved into frontends
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ControlExternal.C: add scoped_ptr.hpp

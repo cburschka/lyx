@@ -14,16 +14,17 @@
 #pragma implementation
 #endif
 
+#include "LString.h"
+#include "lstrings.h"
+#include "LAssert.h"
+#include "debug.h"
+
+#include <boost/regex.hpp>
+
 #include <algorithm>
 
 #include <cctype>
 #include <cstdlib>
-
-#include "LString.h"
-#include "lstrings.h"
-#include "LRegex.h"
-#include "LAssert.h"
-#include "debug.h"
 
 using std::count;
 using std::transform;
@@ -476,8 +477,8 @@ bool regexMatch(string const & a, string const & pattern)
 	string regex(pattern);
 	regex = subst(regex, ".", "\\.");
 	regex = subst(regex, "*", ".*");
-	LRegex reg(regex);
-	return reg.exact_match(a);
+	boost::regex reg(regex);
+	return boost::regex_match(a, reg);
 }
 
 
@@ -674,4 +675,3 @@ string const getStringFromVector(vector<string> const & vec,
 	}
 	return str;
 }
-
