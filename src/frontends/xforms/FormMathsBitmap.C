@@ -82,7 +82,8 @@ void FormMathsBitmap::build()
 	x_ = (form_->w - 90) / 2;
 	y_ += 10;
 		
-	obj = fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30, idex(_(label)));
+	FL_OBJECT * button_cancel = obj =
+		fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30, idex(_(label)));
 	fl_add_object(form_.get(), obj);
 	fl_set_button_shortcut(obj, scex(_(label)), 1);
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
