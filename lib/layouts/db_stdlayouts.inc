@@ -44,5 +44,5 @@ NoStyle Verse
 
 Style Caption
   LatexType		Paragraph
-  LatexName		caption
+  LatexName		title
 End

@@ -1226,7 +1226,12 @@ int InsetTabular::ascii(Buffer const * buf, ostream & os, int ll) const
 
 int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return tabular->ascii(buf,os, (int)parOwner()->params().depth(), false, 0);
+	os << "<![CDATA[";
+	int const ret = tabular->ascii(buf,os,
+				       (int)parOwner()->params().depth(),
+				       false, 0);
+	os << "]]>";
+	return ret;
 }
 
 

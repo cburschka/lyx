@@ -332,9 +332,9 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 	}
 
 	if (isVerbatim()) {
-		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
-		   << "\" format=\"linespecific\">"
-		   << "</inlinegraphic>";
+		os << "<![CDATA["
+		   << GetFileContents(getFileName())
+		   << "]]>";
 	} else
 		os << '&' << include_label << ';';
 	
@@ -370,9 +370,9 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 	}
 
 	if (isVerbatim()) {
-		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
+		os << "<inlinegraphic fileref=\""
+		   << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">"
-		   << "</inlinegraphic>";
 	} else
 		os << '&' << include_label << ';';
 	

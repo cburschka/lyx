@@ -773,8 +773,11 @@ int InsetGraphics::docbook(Buffer const * buf, ostream & os) const
 {
 	// Change the path to be relative to the main file.
 	string const buffer_dir = buf->filePath();
-	string const filename = RemoveExtension(
-	                           MakeRelPath(params.filename, buffer_dir));
+	string filename = RemoveExtension(
+		MakeRelPath(params.filename, buffer_dir));
+
+	if (suffixIs(filename, ".eps"))
+		filename.erase(filename.length() - 4);
 
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will 
 	// need to switch to MediaObject. However, for now this is sufficient and 

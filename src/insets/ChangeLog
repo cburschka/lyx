@@ -1,3 +1,13 @@
+2002-01-16  José Matos  <jamatos@fep.up.pt>
+
+	* figinset.C (docbook): removed a old place holder "@".
+	* insetgraphics.C (docbook): remove the file sufix if graphic is eps.
+	* insetinclude.C (linuxdoc): if include is verbatim, then export the
+	ascii text version, clearly guarded inside a CDATA section.
+	(docbook): in docbook 4, inlinegraphics is empty.
+	* insettabular.C (linuxdoc): export the ascii version of the table
+	inside a CDATA section.
+
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetparent.C (InsetParent): 
