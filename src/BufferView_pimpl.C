@@ -1270,20 +1270,15 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 
 	// Redo paragraphs below cursor if necessary
 	int y2 = y0;
-	lyxerr << "y2 (1): " << y2 << endl;
 	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
 		y2 += text->getPar(pit2).descent();
-		lyxerr << "y2 (2): " << y2 << endl;
 		++pit2;
 		text->redoParagraph(pit2);
 		y2 += text->getPar(pit2).ascent();
-		lyxerr << "y2 (3): " << y2 << endl;
 	}
 
 	// Take care of descent of last line
 	y2 += text->getPar(pit2).descent();
-	lyxerr << "text->getPar(pit2).descent(): " << text->getPar(pit2).descent() << endl;
-	lyxerr << "y2 (4): " << y2 << endl;
 
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
