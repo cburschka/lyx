@@ -1553,9 +1553,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << '\\' << t.cs();
-			os << p.getOpt();
-			os << p.getOpt();
-			os << '{' << p.verbatim_item() << "}\n";
+			// lyx cannot handle newlines in a latex command
+			// FIXME: Move the substitution into parser::getOpt()?
+			os << subst(p.getOpt(), "\n", " ");
+			os << subst(p.getOpt(), "\n", " ");
+			os << '{' << subst(p.verbatim_item(), "\n", " ") << "}\n";
 			end_inset(os);
 		}
 
