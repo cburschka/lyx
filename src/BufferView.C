@@ -44,6 +44,8 @@ using std::for_each;
 #include "lyx_cb.h"
 #include "gettext.h"
 #include "layout.h"
+#include "intl.h"
+#include "lyxrc.h"
 
 using std::find_if;
 
@@ -467,6 +469,7 @@ int BufferView::resizeCurrentBuffer()
 	updateScrollbar();
 	redraw();
 	owner_->getMiniBuffer()->Init();
+	SetState();
 	AllowInput();
 
 	// Now if the title form still exist kill it
@@ -1231,6 +1234,8 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 	    (abs(last_click_y - y) >= 5)) {
 		return 0;
 	}
+	SetState();
+	owner_->getMiniBuffer()->Set(CurrentState());
 
 	// Did we hit an editable inset?
 	if (inset_hit != 0) {
@@ -1303,15 +1308,15 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 	// Do we want to close a float? (click on the float-label)
 	if (text->cursor.row->par->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
-	    && text->cursor.pos == 0
+	    //&& text->cursor.pos == 0
 	    && text->cursor.row->previous &&
 	    text->cursor.row->previous->par->
 	    footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
 		LyXFont font (LyXFont::ALL_SANE);
-		font.setSize(LyXFont::SIZE_SMALL);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
 		int box_x = 20; // LYX_PAPER_MARGIN;
-		box_x += font.textWidth("Mwide-figM", 10);
+		box_x += font.textWidth(" wide-tab ", 10);
 
 		int screen_first = screen->first;
 
@@ -1351,8 +1356,10 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
   
 	int y_tmp = y + getScreen()->first;
   
-	LyXCursor cursor = text->cursor;
-	if (cursor.pos < cursor.par->Last() 
+	LyXCursor & cursor = text->cursor;
+	LyXDirection direction = text->GetFontDirection(text->real_current_font);
+
+	if (cursor.pos < cursor.par->Last()
 	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 	    && cursor.par->GetInset(cursor.pos)
 	    && cursor.par->GetInset(cursor.pos)->Editable()) {
@@ -1360,26 +1367,50 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = text->GetFont(cursor.par, cursor.pos);
-		if (x > cursor.x
-		    && x < cursor.x + tmpinset->Width(font) 
+		int start_x, end_x;
+		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->Width(font);
+		} else {
+			start_x = cursor.x - tmpinset->Width(font);
+			end_x = cursor.x;
+		}
+
+		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->Ascent(font)
 		    && y_tmp < cursor.y + tmpinset->Descent(font)) {
-			x = x - cursor.x;
+			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (cursor.y); 
 			return tmpinset;
 		}
-	} else if (cursor.pos - 1 >= 0 
+	}
+
+	if (cursor.pos - 1 >= 0
 		   && cursor.par->GetChar(cursor.pos - 1) == LyXParagraph::META_INSET
 		   && cursor.par->GetInset(cursor.pos - 1)
 		   && cursor.par->GetInset(cursor.pos - 1)->Editable()) {
 		text->CursorLeft();
-		Inset * result = checkInsetHit(x, y);
-		if (result == 0) {
+		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
+		LyXFont font = text->GetFont(cursor.par, cursor.pos);
+		int start_x, end_x;
+		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->Width(font);
+		} else {
+			start_x = cursor.x - tmpinset->Width(font);
+			end_x = cursor.x;
+		}
+		if (x > start_x && x < end_x
+		    && y_tmp > cursor.y - tmpinset->Ascent(font)
+		    && y_tmp < cursor.y + tmpinset->Descent(font)) {
+			x = x - start_x;
+			// The origin of an inset is on the baseline
+			y = y_tmp - (cursor.y); 
+			return tmpinset;
+		} else {
 			text->CursorRight();
 			return 0;
-		} else {
-			return result;
 		}
 	}
 	return 0;
@@ -1759,6 +1790,22 @@ void BufferView::smallUpdate(signed char f)
 	}
 }
 
+extern LyXRC * lyxrc;
+void BufferView::SetState() {
+	bool primary;
+
+	if (!lyxrc->rtl_support)
+		return;
+
+	if (text->GetFontDirection(text->real_current_font)
+	    == LYX_DIR_LEFT_TO_RIGHT) {
+		if (!owner_->getIntl()->primarykeymap)
+			owner_->getIntl()->KeyMapPrim();
+	} else {
+		if (owner_->getIntl()->primarykeymap)
+			owner_->getIntl()->KeyMapSec();
+	}
+}
 
 void BufferView::insetSleep()
 {

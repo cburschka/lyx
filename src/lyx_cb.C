@@ -2104,6 +2104,7 @@ void BufferView::openStuff()
 		update(-2);
 		text->OpenStuff();
 		update(0);
+		current_view->SetState();
 	}
 }
 
@@ -2117,6 +2118,7 @@ void BufferView::toggleFloat()
 		update(-2);
 		text->ToggleFootnote();
 		update(0);
+		current_view->SetState();
 	}
 }
 
@@ -2132,6 +2134,7 @@ void BufferView::menuUndo()
 			owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
 			update(-1);
+		current_view->SetState();
 	}
 }
 
@@ -2152,6 +2155,7 @@ void BufferView::menuRedo()
 			owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
 			update(-1);
+		current_view->SetState();
 	}
 }
 
@@ -2314,6 +2318,14 @@ void TexCB()
 	font.setLatex (LyXFont::TOGGLE);
 	ToggleAndShow(font);
 }
+
+void RTLCB()
+{
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setDirection (LyXFont::TOGGLE_DIR);
+	ToggleAndShow(font);
+}
+
 
 
 void StyleResetCB()
@@ -2929,6 +2941,13 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 
+	if (lyxrc->rtl_support) {
+		current_view->text->SetCursor(current_view->text->cursor.par,
+					      current_view->text->cursor.pos);
+		current_view->SetState();
+		//minibuffer->Set(CurrentState());
+	}
+
 	LyXTextClassList::ClassList::size_type new_class = fl_get_choice(fd_form_document->choice_class) - 1;
 	if (params->textclass != new_class) {
 		// try to load new_class
@@ -3270,6 +3289,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
      
 	current_view->update(1);
 	current_view->owner()->getMiniBuffer()->Set(_("Table inserted"));
+	current_view->SetState();
 }
 
 
@@ -3534,6 +3554,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	current_view->update(0);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
+	current_view->SetState();
 }
 
 

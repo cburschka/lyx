@@ -21,6 +21,7 @@
 #include "undo.h"
 #include "lyxcursor.h"
 #include "lyxparagraph.h"
+#include "layout.h"
 
 class Buffer;
 class BufferParams;
@@ -226,10 +227,12 @@ public:
 	void SelectSelectedWord();
 	///
 	void SetCursor(LyXParagraph * par,
-		       LyXParagraph::size_type pos) const;
+		       LyXParagraph::size_type pos,
+		       bool setfont = true) const;
 	///
 	void SetCursorIntern(LyXParagraph * par,
-			     LyXParagraph::size_type pos) const;
+			     LyXParagraph::size_type pos,
+			     bool setfont = true) const;
 	///
 	void SetCursorFromCoordinates(int x, long y) const;
 	///
@@ -474,6 +477,18 @@ public:
         void toggleAppendix();
 	///
 	unsigned short paperWidth() const { return paperwidth; }
+
+	///
+	LyXDirection GetDocumentDirection() const;
+	///
+	LyXDirection GetParDirection(LyXParagraph * par) const;
+
+	///
+	LyXDirection GetFontDirection(LyXFont const &font) const;
+
+	///
+	LyXDirection GetLetterDirection(LyXParagraph * par, LyXParagraph::size_type pos) const;
+
 private:
 	/// width of the paper
 	unsigned short  paperwidth;
@@ -523,7 +538,8 @@ private:
 	void PrepareToPrint(Row * row, float & x,
 			    float & fill_separator, 
 			    float & fill_hfill,
-			    float & fill_label_hfill) const;
+			    float & fill_label_hfill,
+			    bool bidi = true) const;
 	///
 	void DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const;
 
@@ -590,6 +606,41 @@ private:
 	  */
 	bool HfillExpansion(Row const * row_ptr,
 			    LyXParagraph::size_type pos) const;
+
+	///
+	mutable vector<LyXParagraph::size_type> log2vis_list;
+
+	///
+	mutable vector<LyXParagraph::size_type> vis2log_list;
+
+	///
+	mutable LyXParagraph::size_type bidi_start;
+
+	///
+	void ComputeBidiTables(Row *row) const;
+
+	///
+	void ComputeBidiTablesFromTo(Row *row,
+				     LyXParagraph::size_type from,
+				     LyXParagraph::size_type to,
+				     LyXParagraph::size_type offset) const;
+
+	/// Maps positions in the visual string to positions in logical string.
+	inline LyXParagraph::size_type log2vis(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return pos;
+		else
+			return log2vis_list[pos-bidi_start];
+	}
+
+	/// Maps positions in the logical string to positions in visual string.
+	inline LyXParagraph::size_type vis2log(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return pos;
+		else
+			return vis2log_list[pos-bidi_start];
+	}
+
 	/** returns the paragraph position of the last character in the 
 	  specified row
 	  */

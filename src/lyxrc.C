@@ -128,6 +128,7 @@ enum LyXRCTags {
 	RC_RELYX_COMMAND,
 	RC_HTML_COMMAND,
 	RC_MAKE_BACKUP,
+	RC_RTL_SUPPORT,
 	RC_PDFLATEX_COMMAND,
 	RC_PDF_MODE,
 	RC_VIEWPDF_COMMAND,
@@ -204,6 +205,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\printer", RC_PRINTER },
 	{ "\\ps_command", RC_PS_COMMAND },
 	{ "\\relyx_command", RC_RELYX_COMMAND },
+	{ "\\rtl", RC_RTL_SUPPORT },
 	{ "\\screen_dpi", RC_SCREEN_DPI },
 	{ "\\screen_font_encoding", RC_SCREEN_FONT_ENCODING },
 	{ "\\screen_font_menu", RC_SCREEN_FONT_MENU },
@@ -323,6 +325,7 @@ LyXRC::LyXRC()
 	isp_use_esc_chars = false;
 	use_kbmap = false;
 	hasBindFile = false;
+	rtl_support = false;
 	defaultKeyBindings();
 	///
 	date_insert_format = "%A, %e. %B %Y";
@@ -911,6 +914,10 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				date_insert_format = lexrc.GetString();
 			break;
+		case RC_RTL_SUPPORT:
+			if (lexrc.next())
+				rtl_support = lexrc.GetBool();
+			break;
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1199,6 +1206,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\personal_dictionary \"" << isp_pers_dict << "\"\n";
 	case RC_ESC_CHARS:
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
+	case RC_RTL_SUPPORT:
+		os << "\\rtl " << tostr(rtl_support) << "\n";
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";
 	case RC_DATE_INSERT_FORMAT:

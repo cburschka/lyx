@@ -119,6 +119,19 @@ public:
 		IGNORE_SIZE
 	};
  
+	enum FONT_DIRECTION {
+		///
+		LTR_DIR,
+		///
+		RTL_DIR,
+		///
+		TOGGLE_DIR,
+		///
+		INHERIT_DIR,
+		///
+		IGNORE_DIR
+	};
+
 	/// Used for emph, underbar, noun and latex toggles
 	enum FONT_MISC_STATE {
 		///
@@ -227,7 +240,10 @@ public:
  
 	///
 	FONT_COLOR color() const;
- 
+
+ 	///
+	FONT_DIRECTION direction() const;
+
 	///
 	LyXFont & setFamily(LyXFont::FONT_FAMILY f);
 	///
@@ -246,7 +262,9 @@ public:
 	LyXFont & setLatex(LyXFont::FONT_MISC_STATE l);
 	///
 	LyXFont & setColor(LyXFont::FONT_COLOR c);
- 
+ 	///
+	LyXFont & setDirection(LyXFont::FONT_DIRECTION d);
+
 	/// Set family after LyX text format
 	LyXFont & setLyXFamily(string const &);
  
@@ -304,13 +322,15 @@ public:
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(string &, LyXFont const & base) const;
+	int latexWriteStartChanges(string &, LyXFont const & base,
+				   LyXFont const & prev) const;
 
 	/** Writes tha tail of the LaTeX needed to chagne to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(string &, LyXFont const & base) const;
+	int latexWriteEndChanges(string &, LyXFont const & base,
+				 LyXFont const & next) const;
  
 	/// Build GUI description of font state
 	string stateText() const;
@@ -405,7 +425,9 @@ private:
 		///
 		Nou_Pos = 22,
 		///
-		Lat_Pos = 25
+		Lat_Pos = 25,
+		///
+		Dir_Pos = 28
 	};
 
 	///
@@ -421,6 +443,8 @@ private:
 		///
 		Col_Mask = 0x0f,
 		///
+		Dir_Mask = 0x07,
+		///
 		Misc_Mask = 0x07
 	};
  
@@ -433,7 +457,8 @@ private:
 		| ui32(OFF) << Emp_Pos
 		| ui32(OFF) << Und_Pos
 		| ui32(OFF) << Nou_Pos
-		| ui32(OFF) << Lat_Pos};
+		| ui32(OFF) << Lat_Pos
+		| ui32(LTR_DIR) << Dir_Pos};
  
 	/// All inherit font
 	enum{ inherit = ui32(INHERIT_FAMILY) << Fam_Pos
@@ -444,7 +469,8 @@ private:
 		      | ui32(INHERIT) << Emp_Pos
 		      | ui32(INHERIT) << Und_Pos
 		      | ui32(INHERIT) << Nou_Pos
-		      | ui32(INHERIT) << Lat_Pos};
+		      | ui32(INHERIT) << Lat_Pos
+		      | ui32(INHERIT_DIR) << Dir_Pos};
  
 	/// All ignore font
 	enum{ ignore = ui32(IGNORE_FAMILY) << Fam_Pos
@@ -455,7 +481,8 @@ private:
 		      | ui32(IGNORE) << Emp_Pos
 		      | ui32(IGNORE) << Und_Pos
 		      | ui32(IGNORE) << Nou_Pos
-		      | ui32(IGNORE) << Lat_Pos};
+		      | ui32(IGNORE) << Lat_Pos
+		      | ui32(IGNORE_DIR) << Dir_Pos};
  
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
@@ -562,6 +589,10 @@ inline LyXFont::FONT_COLOR LyXFont::color() const
 	return LyXFont::FONT_COLOR((bits >> Col_Pos) & Col_Mask);
 }
 
+inline LyXFont::FONT_DIRECTION LyXFont::direction() const 
+{
+	return LyXFont::FONT_DIRECTION((bits >> Dir_Pos) & Dir_Mask);
+}
 
 inline LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
 {
@@ -632,4 +663,12 @@ inline LyXFont & LyXFont::setColor(LyXFont::FONT_COLOR c)
 	bits |= ui32(c) << Col_Pos;
 	return *this;
 }
+
+inline LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
+{
+	bits &= ~(Dir_Mask << Dir_Pos);
+	bits |= ui32(d) << Dir_Pos;
+	return *this;
+}
+
 #endif

@@ -59,6 +59,9 @@ string const lGUISizeNames[15] =
 string const GUIMiscNames[5] = 
 { N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
+string const GUIDirectionNames[5] = 
+{ N_("LTR"), N_("RTL"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
+
 string const GUIColorNames[13] = 
 { N_("None"), N_("Black"), N_("White"), N_("Red"), N_("Green"), N_("Blue"),
   N_("Cyan"), N_("Magenta"), 
@@ -240,6 +243,19 @@ void LyXFont::update(LyXFont const & newfont, bool toggleall)
 	setNoun(setMisc(newfont.noun(), noun()));
 	setLatex(setMisc(newfont.latex(), latex()));
 
+	switch(newfont.direction()) {
+	case TOGGLE_DIR:
+		if (direction() == LTR_DIR)
+			setDirection(RTL_DIR);
+		else
+			setDirection(LTR_DIR);
+		break;
+	case IGNORE_DIR:
+		break;
+	default:
+		setDirection(newfont.direction());
+	}
+
 	if(newfont.color() == color() && toggleall)
 		setColor(INHERIT_COLOR); // toggle 'back'
 	else if (newfont.color() != IGNORE_COLOR)
@@ -268,6 +284,8 @@ void LyXFont::reduce(LyXFont const & tmplt)
 		setLatex(INHERIT);
 	if (color() == tmplt.color())
 		setColor(INHERIT_COLOR);
+	if (direction() == tmplt.direction())
+		setDirection(INHERIT_DIR);
 }
 
 
@@ -325,6 +343,12 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 			bits &= ~(Col_Mask << Col_Pos);
 			bits |= (tmplt.bits & Col_Mask << Col_Pos);
 		}
+	if ((bits & (Dir_Mask << Dir_Pos)) == ui32(INHERIT_DIR) << Dir_Pos)
+		{
+			bits &= ~(Dir_Mask << Dir_Pos);
+			bits |= (tmplt.bits & Dir_Mask << Dir_Pos);
+		}
+
 	return *this;
 }
 
@@ -336,7 +360,8 @@ bool LyXFont::resolved() const
 		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
 		emph() != INHERIT && underbar() != INHERIT && 
 		noun() != INHERIT && latex() != INHERIT && 
-		color() != INHERIT_COLOR);
+		color() != INHERIT_COLOR &&
+		direction() != INHERIT_DIR);
 }
 
 
@@ -363,6 +388,8 @@ string LyXFont::stateText() const
 		buf += string(_("Noun ")) + _(GUIMiscNames[noun()].c_str()) + ", ";
 	if (latex() != INHERIT)
 		buf += string(_("Latex ")) + _(GUIMiscNames[latex()].c_str()) + ", ";
+	if (direction() != INHERIT_DIR)
+		buf += string(_("Direction ")) + _(GUIDirectionNames[direction()].c_str()) + ", ";
 	if (buf.empty())
 		buf = _("Default");
 	buf = strip(buf, ' ');
@@ -549,6 +576,17 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			lex.next();
 			string tok = lex.GetString();
 			setLyXColor(tok);
+		} else if (tok == "direction") {
+			lex.next();
+			string tok = lowercase(lex.GetString());
+
+			if (tok == "ltr") {
+				setDirection(LTR_DIR);
+			} else if (tok == "rtl") {
+				setDirection(RTL_DIR);
+			} else {
+				lex.printError("Illegal type`$$Token'");
+			}
 		} else {
 			lex.printError("Unknown tag `$$Token'");
 			error = true;
@@ -615,12 +653,26 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 	if (orgfont.color() != color()) {
 		os << "\\color " << LyXColorNames[color()] << "\n";
 	}
+	if (orgfont.direction() != direction()) {
+		switch (direction()) {
+		case RTL_DIR:	os << "\\direction rtl \n"; break;
+		case LTR_DIR:	os << "\\direction ltr\n"; break;
+		case TOGGLE_DIR:   lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"TOGGLE should not appear here!"
+				       << endl;
+		case INHERIT_DIR:   os << "\\direction default \n"; break;
+		case IGNORE_DIR:    lyxerr << "LyXFont::lyxWriteFontChanges: "
+					"IGNORE should not appear here!"
+				       << endl;
+		break;
+		}
+	}
 }
 
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base) const
+int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base, LyXFont const & prev) const
 {
 	LyXFont f = *this;
 	f.reduce(base);
@@ -630,7 +682,21 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base) const
 	
 	int count = 0;
 	bool env = false;
-	
+
+	FONT_DIRECTION direction = f.direction();
+	if (direction != prev.direction()) {
+		if (direction == LTR_DIR) {
+			file += "\\L{";
+			count += 3;
+			env = true; //We have opened a new environment
+		}
+		if (direction == RTL_DIR) {
+			file += "\\R{";
+			count += 3;
+			env = true; //We have opened a new environment
+		}
+	}
+
 	if (f.family() != INHERIT_FAMILY) {
 		file += '\\';
 		file += LaTeXFamilyNames[f.family()];
@@ -693,7 +759,7 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base) const
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base) const
+int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base, LyXFont const & next) const
 {
 	LyXFont f = *this; // why do you need this?
 	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
@@ -706,6 +772,15 @@ int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base) const
 	
 	int count = 0;
 	bool env = false;
+
+	FONT_DIRECTION direction = f.direction();
+	if ( direction != next.direction()
+	    && (direction == RTL_DIR || direction == LTR_DIR) ) {
+		file += '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+
 	if (f.family() != INHERIT_FAMILY) {
 		file += '}';
 		++count;

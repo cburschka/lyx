@@ -58,6 +58,8 @@ public:
 	///
 	bool keymapon;
 	///
+	bool primarykeymap;
+	///
 	char * chsetcode;
 	///
 	static void DispatchCallback(FL_OBJECT *, long);
@@ -70,8 +72,6 @@ private:
 	static void LCombo2(int i, void *); // callback
 	///
 	void Keymap(long code);
-	///
-	bool primarykeymap;
 	///
 	int curkeymap;
 	///

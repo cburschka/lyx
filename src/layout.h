@@ -65,6 +65,15 @@ enum LYX_MARGIN_TYPE {
 	MARGIN_RIGHT_ADDRESS_BOX
 };
 
+
+///
+enum LyXDirection {
+	///
+	LYX_DIR_LEFT_TO_RIGHT = 1,
+	///
+	LYX_DIR_RIGHT_TO_LEFT = -1
+};
+  
 ///
 enum LyXAlignment {
 	///

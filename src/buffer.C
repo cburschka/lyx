@@ -677,6 +677,18 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			else
 				lex.printError("Unknown LaTeX font flag "
 					       "`$$Token'");
+		} else if (token == "\\direction") {
+			lex.next();
+			string tok = lex.GetString();
+			if (tok == "ltr")
+				font.setDirection(LyXFont::LTR_DIR);
+			else if (tok == "rtl")
+				font.setDirection(LyXFont::RTL_DIR);
+			else if (tok == "default")
+				font.setDirection(LyXFont::INHERIT_DIR);
+			else
+				lex.printError("Unknown font flag "
+					       "`$$Token'");
 		} else if (token == "\\emph") {
 			lex.next();
 			font.setEmph(font.setLyXMisc(lex.GetString()));
@@ -1681,11 +1693,16 @@ void Buffer::makeLaTeXFile(string const & fname,
 		    && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 			options += "landscape,";
 		
-		// language should be a parameter to \documentclass
+		// language should be a parameter to \documentclass		
 		if (params.language != "default") {
+			if (params.language == "hebrew")
+				options += "english,";
+			else if (lyxrc->rtl_support)
+				options += "hebrew,";
 			options += params.language + ',';
-		}
-		
+		} else if (lyxrc->rtl_support)
+			options += "hebrew,english,";
+
 		// the user-defined options
 		if (!params.options.empty()) {
 			options += params.options + ',';
@@ -1840,7 +1857,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		// We try to load babel late, in case it interferes
 		// with other packages.
-		if (params.language != "default") {
+		if (params.language != "default" || lyxrc->rtl_support ) {
 			LFile += "\\usepackage{babel}\n";
 			texrow.newline();
 		}

@@ -24,6 +24,8 @@ extern void BoldCB();
 ///
 extern void NounCB();
 ///
+extern void RTLCB();
+///
 extern "C" void MarginCB(FL_OBJECT *, long);
 ///
 extern "C" void FigureCB(FL_OBJECT *, long);

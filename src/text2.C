@@ -936,8 +936,16 @@ void LyXText::SetSelection()
 	last_sel_cursor = cursor;
    
 	// and now the whole selection
-   
-	if (sel_cursor.y < cursor.y ||
+
+	if (sel_cursor.par == cursor.par)
+	   if (sel_cursor.pos < cursor.pos) {
+		sel_end_cursor = cursor;
+		sel_start_cursor = sel_cursor;
+	} else {
+   		sel_end_cursor = sel_cursor; 
+		sel_start_cursor = cursor;
+	}
+	else if (sel_cursor.y < cursor.y ||
 	    (sel_cursor.y == cursor.y && sel_cursor.x < cursor.x)) {
 		sel_end_cursor = cursor;
 		sel_start_cursor = sel_cursor;
@@ -1596,35 +1604,43 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			par->incCounter(i + par->enumdepth);
 			char * s = new char[25];
 			int number = par->getCounter(i + par->enumdepth);
+
+			static const char *roman[20] = {
+				"i",   "ii",  "iii", "iv", "v",
+				"vi",  "vii", "viii", "ix", "x",
+				"xi",  "xii", "xiii", "xiv", "xv",
+				"xvi", "xvii", "xviii", "xix", "xx"
+			};
+			static const char hebrew[22] = {
+				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט',
+				'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 
+				'ק', 'ר', 'ש', 'ת'
+			};
+
 			switch (par->enumdepth) {
 			case 1:
-				sprintf(s, "(%c)", (number % 27) + 'a' - 1);
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					sprintf(s, "(%c)", ((number-1) % 26) + 'a');
+				else
+					sprintf(s, "(%c)", hebrew[(number-1) % 22]);
 				break;
 			case 2:
-				switch (number) {
-				case 1: sprintf(s, "i."); break;
-				case 2: sprintf(s, "ii."); break;
-				case 3: sprintf(s, "iii."); break;
-				case 4: sprintf(s, "iv."); break;
-				case 5: sprintf(s, "v."); break;
-				case 6: sprintf(s, "vi."); break;
-				case 7: sprintf(s, "vii."); break;
-				case 8: sprintf(s, "viii."); break;
-				case 9: sprintf(s, "ix."); break;
-				case 10: sprintf(s, "x."); break;
-				case 11: sprintf(s, "xi."); break;
-				case 12: sprintf(s, "xii."); break;
-				case 13: sprintf(s, "xiii."); break;
-				default:
-					sprintf(s, "\\roman{%d}.", number);
-					break;
-				}
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					sprintf(s, "%s.", roman[(number-1) % 20]);
+				else
+					sprintf(s, ".%s", roman[(number-1) % 20]);
 				break;
 			case 3:
-				sprintf(s, "%c.", (number % 27) + 'A' - 1);
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					sprintf(s, "%c.", ((number-1) % 26) + 'A');
+				else
+					sprintf(s, ".%c", ((number-1) % 26) + 'A');
 				break;
 			default:
-				sprintf(s, "%d.", number);
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					sprintf(s, "%d.", number);
+				else
+					sprintf(s, ".%d", number);	
 				break;
 			}
 			par->labelstring = s;
@@ -1653,18 +1669,31 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			    && (par->footnotekind == LyXParagraph::FIG
 				|| par->footnotekind == LyXParagraph::WIDE_FIG))
-				s = "Figure:";
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					s = "Figure:";
+				else
+					s = ":רויא";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && (par->footnotekind == LyXParagraph::TAB
 				     || par->footnotekind == LyXParagraph::WIDE_TAB))
-				s = "Table:";
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					s = "Table:";
+				else
+					s = ":הלבט";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && par->footnotekind == LyXParagraph::ALGORITHM)
-				s = "Algorithm:";
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					s = "Algorithm:";
+				else
+					s = ":םתירוגלא";
 			else {
 				/* par->SetLayout(0); 
 				   s = layout->labelstring;  */
-				s = "Senseless: "; 
+				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+					s = "Senseless: ";
+				else
+					s = " :תועמשמ רסח";
+	   
 			}
 		}
 		par->labelstring = s;
@@ -2882,22 +2911,22 @@ int LyXText::UpdateInset(Inset * inset)
 
 
 void LyXText::SetCursor(LyXParagraph * par,
-			LyXParagraph::size_type pos) const
+			LyXParagraph::size_type pos, bool setfont) const
 {
 	LyXCursor old_cursor = cursor;
-	SetCursorIntern(par, pos);
+	SetCursorIntern(par, pos, setfont);
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
 
 
 void LyXText::SetCursorIntern(LyXParagraph * par,
-			      LyXParagraph::size_type pos) const
+			      LyXParagraph::size_type pos, bool setfont) const
 {
 	long y;
 	Row * row;
-	int left_margin;
 	LyXParagraph * tmppar;
-   
+	LyXParagraph::size_type vpos,cursor_vpos;
+
 	// correct the cursor position if impossible
 	if (pos > par->Last()){
 		tmppar = par->ParFromPos(pos);
@@ -2923,6 +2952,25 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 	cursor.par = par;
 	cursor.pos = pos;
 
+	if (setfont)
+		if (cursor.pos && 
+		    (cursor.pos == cursor.par->Last() || cursor.par->IsSeparator(cursor.pos)
+		     || (cursor.pos && cursor.pos == BeginningOfMainBody(cursor.par)
+			 && !cursor.par->IsSeparator(cursor.pos))
+		     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
+		     )) {
+			current_font = cursor.par->GetFontSettings(cursor.pos - 1);
+			real_current_font = GetFont(cursor.par, cursor.pos - 1);
+		} else {
+			current_font = cursor.par->GetFontSettings(cursor.pos);
+			real_current_font = GetFont(cursor.par, cursor.pos);
+			if (pos == 0 && par->size() == 0 
+			    && GetDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
+				current_font.setDirection(LyXFont::RTL_DIR);
+				real_current_font.setDirection(LyXFont::RTL_DIR);
+			}
+		}
+
 	/* get the cursor y position in text  */
 	row = GetRow(par, pos, y);
 	/* y is now the beginning of the cursor row */ 
@@ -2931,19 +2979,33 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 	cursor.y = y;
    
 	/* now get the cursors x position */
-   
 	float x;
 	float fill_separator, fill_hfill, fill_label_hfill;
-	left_margin = LabelEnd(row);
 	PrepareToPrint(row, x, fill_separator, fill_hfill, fill_label_hfill);
-	LyXParagraph::size_type main_body =
-		BeginningOfMainBody(row->par);
+
+	LyXParagraph::size_type last = RowLast(row);
+	if (row->pos > last)
+		cursor_vpos = 0;
+	else if (pos <= last ) {
+		LyXDirection letter_direction = GetLetterDirection(row->par, pos);
+		LyXDirection font_direction = GetFontDirection(real_current_font);
+		if (letter_direction == font_direction || pos == 0)
+			cursor_vpos = (letter_direction == LYX_DIR_LEFT_TO_RIGHT)
+				? log2vis(pos) : log2vis(pos)+1;
+		else
+			cursor_vpos = (font_direction == LYX_DIR_LEFT_TO_RIGHT)
+				? log2vis(pos-1)+1 : log2vis(pos-1);
+	} else
+		cursor_vpos = (GetLetterDirection(row->par, last) == LYX_DIR_LEFT_TO_RIGHT)
+			? log2vis(last)+1 : log2vis(last);
+
 	/* table stuff -- begin*/
 	if (row->par->table) {
 		int cell = NumberOfCell(row->par, row->pos);
 		float x_old = x;
 		x += row->par->table->GetBeginningOfTextInCell(cell);
-		for (pos = row->pos; pos < cursor.pos; ++pos)  {
+		for (vpos = row->pos; vpos < cursor_vpos; ++vpos)  {
+			pos = vis2log(vpos);
 			if (row->par->IsNewline(pos)) {
 				x = x_old + row->par->table->WidthOfColumn(cell);
 				x_old = x;
@@ -2953,16 +3015,23 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 				x += SingleWidth(row->par, pos);
 			}
 		}
-	} else
+	} else {
 		/* table stuff -- end*/
+		LyXParagraph::size_type main_body =
+			BeginningOfMainBody(row->par);
+		if (main_body > 0 &&
+		    (main_body-1 > last || 
+		     !row->par->IsLineSeparator(main_body-1)))
+			main_body = 0;
 
-		for (pos = row->pos; pos < cursor.pos; ++pos)  {
-			if (pos && pos == main_body
-			    && !row->par->IsLineSeparator(pos - 1)) {
-				x += GetFont(row->par, -2).stringWidth(
+		for (vpos = row->pos; vpos < cursor_vpos; ++vpos)  {
+			pos = vis2log(vpos);
+			if (main_body > 0 && pos == main_body-1) {
+				x += fill_label_hfill +
+					GetFont(row->par, -2).stringWidth(
 						    textclasslist.Style(parameters->textclass, row->par->GetLayout()).labelsep);
-				if (x < left_margin)
-					x = left_margin;
+				if (row->par->IsLineSeparator(main_body-1))
+					x -= SingleWidth(row->par, main_body-1);
 			}
       
 			x += SingleWidth(row->par, pos);
@@ -2975,34 +3044,13 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			else if (pos >= main_body && row->par->IsSeparator(pos)) {
 				x+= fill_separator;
 			}
-      
-			if (pos + 1 == main_body
-			    && row->par->IsLineSeparator(pos)) {
-				x += GetFont(row->par, -2).stringWidth(
-						    textclasslist.Style(parameters->textclass, row->par->GetLayout()).labelsep);
-				if (row->par->IsLineSeparator(pos))
-					x -= SingleWidth(row->par, pos);
-				if (x < left_margin)
-					x = left_margin;
-			}
 		}
+	}
    
 	cursor.x = int(x);
    
 	cursor.x_fix = cursor.x;
 	cursor.row = row;
-   
-	if (cursor.pos && 
-	    (cursor.pos == cursor.par->Last() || cursor.par->IsSeparator(cursor.pos)
-	     || (cursor.pos && cursor.pos == BeginningOfMainBody(cursor.par)
-		 && !cursor.par->IsSeparator(cursor.pos))
-		    )) {
-		current_font = cursor.par->GetFontSettings(cursor.pos - 1);
-		real_current_font = GetFont(cursor.par, cursor.pos - 1);
-	} else {
-		current_font = cursor.par->GetFontSettings(cursor.pos);
-		real_current_font = GetFont(cursor.par, cursor.pos);
-	}
 }
 
 
@@ -3028,6 +3076,7 @@ void LyXText::SetCursorFromCoordinates(int x, long y) const
 	     || cursor.par->IsSeparator(cursor.pos)
 	     || (cursor.pos && cursor.pos == BeginningOfMainBody(cursor.par)
 		 && !cursor.par->IsSeparator(cursor.pos))
+	     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
 		    )) {
 		current_font = cursor.par->GetFontSettings(cursor.pos - 1);
 		real_current_font = GetFont(cursor.par, cursor.pos - 1);

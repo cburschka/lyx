@@ -985,6 +985,8 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 			tmpfont = layout.font;
 		else
 			tmpfont = layout.labelfont;
+		if (current_view->text->GetParDirection((LyXParagraph *)this) == LYX_DIR_RIGHT_TO_LEFT)
+			tmpfont.setDirection(LyXFont::RTL_DIR);
 	}
 
 	// check for environment font information
@@ -2314,6 +2316,17 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 		texrow.newline();
 	}
 
+	LyXDirection direction = current_view->text->GetParDirection((LyXParagraph *)this);
+	LyXDirection global_direction = current_view->text->GetDocumentDirection();
+	if (direction != global_direction) {
+		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+			file += "{\\unsethebrew\n";
+		else
+			file += "{\\sethebrew\n";
+		texrow.newline();
+	}
+	
+
 	switch (style.latextype) {
 	case LATEX_COMMAND:
 		file += '\\';
@@ -2368,6 +2381,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 	} else if (style.resfont.size() != font.size()){
 		file += "{\\" + font.latexSize() + " \\par}";
 	}
+
+	if (direction != global_direction)
+		file += "\\par}";
 	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -2447,7 +2463,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	bool return_value = false;
 
 	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
-	LyXFont basefont;
+	LyXFont basefont, last_font;
 
 	// Maybe we have to create a optional argument.
 	if (style.labeltype != LABEL_MANUAL)
@@ -2490,7 +2506,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 		if (i == main_body && !IsDummy()) {
 			if (main_body > 0) {
 				if (open_font) {
-					column += running_font.latexWriteEndChanges(file, basefont);
+					column += running_font.latexWriteEndChanges(file, basefont, basefont);
 					open_font = false;
 				}
 				basefont = getFont(-1); // Now use the layout font
@@ -2535,6 +2551,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 
 		// Fully instantiated font
 		LyXFont font = getFont(i);
+		last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
@@ -2547,7 +2564,8 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 		// We end font definition before blanks
 		if (!font.equalExceptLatex(running_font) && open_font) {
 			column += running_font.latexWriteEndChanges(file,
-								    basefont);
+								    basefont,
+								    (i == main_body-1) ? basefont : font);
 			running_font = basefont;
 			open_font = false;
 		}
@@ -2564,7 +2582,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 		// Do we need to change font?
 		if (!font.equalExceptLatex(running_font)
 		    && i != main_body-1) {
-			column += font.latexWriteStartChanges(file, basefont);
+			column += font.latexWriteStartChanges(file, basefont, last_font);
 			running_font = font;
 			open_font = true;
 		}
@@ -2577,7 +2595,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 				file += '\n';
 			} else {
 				if (open_font) {
-					column += running_font.latexWriteEndChanges(file, basefont);
+					column += running_font.latexWriteEndChanges(file, basefont, basefont);
 					open_font = false;
 				}
 				basefont = getFont(-1);
@@ -2600,7 +2618,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
-		running_font.latexWriteEndChanges(file, basefont);
+		running_font.latexWriteEndChanges(file, basefont, basefont);
 	}
 
 	// Needed if there is an optional argument but no contents.
@@ -2662,6 +2680,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 	LyXFont basefont = getFont(-1); // Get layout font
 	// Which font is currently active?
 	LyXFont running_font = basefont;
+	LyXFont last_font;
 	// Do we have an open font change?
 	bool open_font = false;
 	int current_cell_number = -1;
@@ -2682,6 +2701,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 		
 		// Fully instantiated font
 		LyXFont font = getFont(i);
+		last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change.
@@ -2695,7 +2715,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 		// We end font definition before blanks
 		if (font != running_font && open_font) {
 			column += running_font.latexWriteEndChanges(file,
-								    basefont);
+								    basefont, font);
 			running_font = basefont;
 			open_font = false;
 		}
@@ -2705,7 +2725,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 		}
 		// Do we need to change font?
 		if (font != running_font) {
-			column += font.latexWriteStartChanges(file, basefont);
+			column += font.latexWriteStartChanges(file, basefont, last_font);
 			running_font = font;
 			open_font = true;
 		}
@@ -2723,7 +2743,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 			// SimpleTeXSpecialChars()
 			if (open_font) {
 				column += running_font
-					.latexWriteEndChanges(file, basefont);
+					.latexWriteEndChanges(file, basefont, basefont);
 				open_font = false;
 			}
 			basefont = getFont(-1);
@@ -2761,7 +2781,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
-		running_font.latexWriteEndChanges(file, basefont);
+		running_font.latexWriteEndChanges(file, basefont, basefont);
 	}
 	++current_cell_number;
 	tmp = table->TexEndOfCell(file, current_cell_number);
@@ -2789,6 +2809,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 		textclasslist.Style(current_view->buffer()->params.textclass,
 				    GetLayout());
 	LyXFont basefont = getFont(-1); // Get layout font
+	LyXFont last_font;
 	// Which font is currently active?
 	LyXFont running_font = basefont;
 	// Do we have an open font change?
@@ -2822,6 +2843,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 
 			// Fully instantiated font
 			LyXFont font = getFont(i);
+			last_font = running_font;
 
 			// Spaces at end of font change are simulated to
 			// be outside font change. i.e. we write
@@ -2835,7 +2857,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 
 			// We end font definition before blanks
 			if (font != running_font && open_font) {
-				column += running_font.latexWriteEndChanges(file, basefont);
+				column += running_font.latexWriteEndChanges(file, basefont, font);
 				running_font = basefont;
 				open_font = false;
 			}
@@ -2848,7 +2870,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 			if (font != running_font) {
 				column +=
 					font.latexWriteStartChanges(file,
-								    basefont);
+								    basefont, last_font);
 				running_font = font;
 				open_font = true;
 			}
@@ -2867,7 +2889,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 		}
 		// If we have an open font definition, we have to close it
 		if (open_font) {
-			running_font.latexWriteEndChanges(file, basefont);
+			running_font.latexWriteEndChanges(file, basefont, basefont);
 			open_font = false;
 		}
 		basefont = getFont(-1);
@@ -3308,8 +3330,18 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 	case LyXParagraph::META_INSET: {
 		Inset * inset = GetInset(i);
 		if (inset) {
+			bool close = false;
 			int len = file.length();
+			if ( (inset->LyxCode() == Inset::GRAPHICS_CODE
+			      || inset->LyxCode() == Inset::MATH_CODE)
+			     && current_view->text->GetFontDirection(running_font)
+			     == LYX_DIR_RIGHT_TO_LEFT) {
+				file += "\\L{";
+				close = true;
+			}
 			int tmp = inset->Latex(file, style.isCommand());
+			if (close)
+				file += "}";
 			
 			if (tmp) {
 				column = 0;
@@ -3326,7 +3358,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 	case LyXParagraph::META_NEWLINE:
 		if (open_font) {
 			column += running_font.latexWriteEndChanges(file,
-								    basefont);
+								    basefont, basefont);
 			open_font = false;
 		}
 		basefont = getFont(-1);

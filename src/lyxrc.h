@@ -199,7 +199,8 @@ public:
 	string lyxpipes;
 	///
 	string date_insert_format;
-
+	///
+	bool rtl_support;
 private:
 	///
 	void defaultKeyBindings();

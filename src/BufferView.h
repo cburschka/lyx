@@ -207,6 +207,10 @@ public:
 	 */
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord, int key, void *xev);
+
+	///
+	void SetState();
+
 private:
 	///
 	int WorkAreaMotionNotify(FL_OBJECT * ob,
