@@ -63,10 +63,10 @@ void MathMacroTable::create
 }
 
 
-void MathMacroTable::define(string const & def)
+void MathMacroTable::define(string const & display)
 {
 	string name;
-	mathed_parse_macro(name, def);
+	mathed_parse_macro(name, display);
 }
 
 
@@ -150,6 +150,9 @@ void MathMacroTable::builtinMacros()
 	if (math_font_available(LM_TC_MSB)) {
 		define("\\def\\Join{\\ltimes\\kern-12mu\\rtimes}");
 	}
+
+	//
+	define("\\def\\mathcircumflex{\\mbox{\\^{}}}\n"   "{\\hat{}}");
 
 	//define("\def\lint",       4, "\\int_#1^#2#3 d#4}");
 	//define("\\def\\silentmult{\\cdot}");

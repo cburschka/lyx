@@ -24,6 +24,7 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
@@ -53,9 +54,9 @@ MathInset * MathMacro::clone() const
 }
 
 
-const char * MathMacro::name() const
+string const & MathMacro::name() const
 {
-	return tmplate_->asMacroTemplate()->name().c_str();
+	return tmplate_->asMacroTemplate()->name();
 }
 
 
@@ -190,8 +191,8 @@ bool MathMacro::idxRight(idx_type &, pos_type &) const
 
 void MathMacro::validate(LaTeXFeatures & features) const
 {
-	if (name() == "binom")
-		features.require("binom");
+	if (name() == "binom" || name() == "mathcircumflex")
+		features.require(name());
 	//MathInset::validate(features);
 }
 

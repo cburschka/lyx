@@ -436,6 +436,13 @@ double const  Vert[] = {
 };
 
 
+double const ring[] = {
+	2, 5,
+	0.5, 0.8,  0.8, 0.5,  0.5, 0.2,  0.2, 0.5,  0.5, 0.8,
+	0
+};
+
+
 double const tilde[] = {
 	2, 4,
 	0.05, 0.8,  0.25, 0.2,  0.75, 0.8,  0.95, 0.2,
@@ -510,6 +517,7 @@ named_deco_struct deco_table[] = {
 	{"breve",          parenth,    1 },
 	{"vec",            arrow,      3 },
 	{"not",            slash,      0 },
+	{"mathring",       ring,       0 },
 
 	// Dots
 	{"ldots",          hline3,     0 },

@@ -103,6 +103,7 @@ key_type wordlist_array[] =
 	{"mathfrak",  LM_TK_FONT, LM_TC_EUFRAK},
 	{"mathit",  LM_TK_FONT, LM_TC_IT},
 	{"mathnormal",  LM_TK_FONT, LM_TC_VAR},
+	//{"mathring",  LM_TK_DECORATION, 0},
 	{"mathrm",  LM_TK_FONT, LM_TC_RM},
 	{"mathsf",  LM_TK_FONT, LM_TC_SF},
 	{"mathtt",  LM_TK_FONT, LM_TC_TT},

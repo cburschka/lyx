@@ -802,6 +802,7 @@ bool Parser::parse_macro(string & name)
 		return false;
 	}
 
+	// is a version for display attached?
 	MathArray ar2;
 	parse_into(ar2, FLAG_ITEM);
 
