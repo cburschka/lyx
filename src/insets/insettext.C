@@ -1998,6 +1998,7 @@ void InsetText::clearInset(Painter & pain, int baseline, bool & cleared) const
 
 Paragraph * InsetText::getParFromID(int id) const
 {
+#if 0
 	Paragraph * result = par;
 	Paragraph * ires = 0;
 	while (result && result->id() != id) {
@@ -2006,6 +2007,22 @@ Paragraph * InsetText::getParFromID(int id) const
 		result = result->next();
 	}
 	return result;
+#else
+	Paragraph * tmp = par;
+	while (tmp) {
+		int tmp_id = tmp->id();
+		lyxerr << "Looking at paragraph: " << tmp_id << endl;
+		if (tmp->id() == id) {
+			return tmp;
+		}
+		Paragraph * tmp2 = tmp->getParFromID(id);
+		if (tmp2 != 0) {
+			return tmp2;
+		}
+		tmp = tmp->next();
+	}
+	return 0;
+#endif
 }
 
 

@@ -2137,14 +2137,26 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 			      bool setfont, bool boundary) const
 {
 	InsetText * it = static_cast<InsetText *>(par->inInset());
-	if (it && (it != inset_owner)) {
-		it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
-						       boundary);
-	} else {
-		setCursor(bview, cursor, par, pos, boundary);
-		if (setfont)
-			setCurrentFont(bview);
+	if (it) {
+		lyxerr << "InsetText   is " << it << endl;
+		lyxerr << "inset_owner is " << inset_owner << endl;
+		if (it != inset_owner) {
+#warning I belive this code is wrong. (Lgb)
+#warning Jürgen, have a look at this. (Lgb)
+			// Jürgen, would you like to have a look?
+			// I guess we need to move the outer cursor
+			// and open and lock the inset (bla bla bla)
+			// stuff I don't know... so can you have a look?
+			// (Lgb)
+			it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
+							       boundary);
+			return;
+		}
 	}
+	
+	setCursor(bview, cursor, par, pos, boundary);
+	if (setfont)
+		setCurrentFont(bview);
 }
 
 

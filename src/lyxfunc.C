@@ -1393,10 +1393,13 @@ string const LyXFunc::dispatch(int ac,
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
 					    << id << "]" << std::endl;
 			break;
+		} else {
+			lyxerr << "Paragraph " << par->id()
+			       << " found." << endl;
 		}
 
 		// Set the cursor
-		TEXT()->setCursor(owner->view(), par, 0);
+		owner->view()->text->setCursor(owner->view(), par, 0);
 		owner->view()->setState();
 		owner->showState();
 

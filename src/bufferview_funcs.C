@@ -194,6 +194,9 @@ string const currentState(BufferView * bv)
 				break;
 			}
 		}
+#if 1
+		state << _(", Paragraph: ") << text->cursor.par()->id();
+#endif
 	}
 	return state.str().c_str();
 }

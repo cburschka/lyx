@@ -550,6 +550,7 @@ int InsetCollapsable::scroll(bool recursive) const
 
 Paragraph * InsetCollapsable::getParFromID(int id) const
 {
+	lyxerr[Debug::INFO] << "Looking for paragraph " << id << endl;
 	return inset.getParFromID(id);
 }
 
