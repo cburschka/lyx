@@ -150,6 +150,8 @@ Menuset
 
     Menu "edit_math_extern"
 	Item "Octave" "math-extern octave"
+	Item "Maxima" "math-extern maxima"
+	Item "Mathematica" "math-extern mathematica"
 	Separator
 	Item "Maple, simplify" "math-extern maple simplify"
 	Item "Maple, factor" "math-extern maple factor"
