@@ -464,34 +464,29 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Next", LFUN_NEXT);
 	
 	kbmap->bind("Return", LFUN_BREAKPARAGRAPH);
-	kbmap->bind("~C-~S-~M-nobreakspace", LFUN_PROTECTEDSPACE);
+	//kbmap->bind("~C-~S-~M-nobreakspace", LFUN_PROTECTEDSPACE);
 	
 	kbmap->bind("Delete", LFUN_DELETE);
 	kbmap->bind("BackSpace", LFUN_BACKSPACE);
 	
 	// kbmap->bindings to enable the use of the numeric keypad
 	// e.g. Num Lock set
-	kbmap->bind("KP_0", LFUN_SELFINSERT);
-	kbmap->bind("KP_Decimal", LFUN_SELFINSERT);
+	//kbmap->bind("KP_0", LFUN_SELFINSERT);
+	//kbmap->bind("KP_Decimal", LFUN_SELFINSERT);
 	kbmap->bind("KP_Enter", LFUN_BREAKPARAGRAPH);
-	kbmap->bind("KP_1", LFUN_SELFINSERT);
-	kbmap->bind("KP_2", LFUN_SELFINSERT);
-	kbmap->bind("KP_3", LFUN_SELFINSERT);
-	kbmap->bind("KP_4", LFUN_SELFINSERT);
-	kbmap->bind("KP_5", LFUN_SELFINSERT);
-	kbmap->bind("KP_6", LFUN_SELFINSERT);
-	kbmap->bind("KP_Add", LFUN_SELFINSERT);
-	kbmap->bind("KP_7", LFUN_SELFINSERT);
-	kbmap->bind("KP_8", LFUN_SELFINSERT);
-	kbmap->bind("KP_9", LFUN_SELFINSERT);
-	kbmap->bind("KP_Divide", LFUN_SELFINSERT);
-	kbmap->bind("KP_Multiply", LFUN_SELFINSERT);
-	kbmap->bind("KP_Subtract", LFUN_SELFINSERT);
-	
-	/* Most self-insert keys are handled in the 'default:' section of
-	 * WorkAreaKeyPress - so we don't have to define them all.
-	 * However keys explicit decleared as self-insert are
-	 * handled seperatly (LFUN_SELFINSERT.) Lgb. */
+	//kbmap->bind("KP_1", LFUN_SELFINSERT);
+	//kbmap->bind("KP_2", LFUN_SELFINSERT);
+	//kbmap->bind("KP_3", LFUN_SELFINSERT);
+	//kbmap->bind("KP_4", LFUN_SELFINSERT);
+	//kbmap->bind("KP_5", LFUN_SELFINSERT);
+	//kbmap->bind("KP_6", LFUN_SELFINSERT);
+	//kbmap->bind("KP_Add", LFUN_SELFINSERT);
+	//kbmap->bind("KP_7", LFUN_SELFINSERT);
+	//kbmap->bind("KP_8", LFUN_SELFINSERT);
+	//kbmap->bind("KP_9", LFUN_SELFINSERT);
+	//kbmap->bind("KP_Divide", LFUN_SELFINSERT);
+	//kbmap->bind("KP_Multiply", LFUN_SELFINSERT);
+	//kbmap->bind("KP_Subtract", LFUN_SELFINSERT);
 	
         kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
 	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522

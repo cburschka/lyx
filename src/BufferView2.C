@@ -20,7 +20,6 @@
 #include "lyxtext.h"
 #include "insets/inseterror.h"
 #include "insets/insetinfo.h"
-#include "insets/insetspecialchar.h"
 #include "LyXView.h"
 #include "bufferlist.h"
 #include "support/FileInfo.h"
@@ -43,6 +42,7 @@ using std::vector;
 using std::find;
 using std::count;
 using std::count_if;
+
 
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
@@ -313,91 +313,6 @@ void BufferView::menuRedo()
 }
 
 
-void BufferView::hyphenationPoint()
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::ldots()
-{
-	if (available())  {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::LDOTS);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::endOfSentenceDot()
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::menuSeparator()
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::newline()
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->InsertChar(this, LyXParagraph::META_NEWLINE);
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	}
-}
-
-
-void BufferView::protectedBlank(LyXText * lt)
-{
-	if (available()) {
-		hideCursor();
-		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset =
-			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-		if (!insertInset(new_inset))
-			delete new_inset;
-		else
-			updateInset(new_inset, true);
-	}
-}
-
-
-void BufferView::hfill()
-{
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->InsertChar(this, LyXParagraph::META_HFILL);
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	}
-}
-
-
 void BufferView::copyEnvironment()
 {
 	if (available()) {
@@ -432,6 +347,7 @@ void BufferView::copy()
 		owner()->message(_("Copy"));
 	}
 }
+
 
 void BufferView::cut()
 {

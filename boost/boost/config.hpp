@@ -11,6 +11,13 @@
 //  http://www.boost.org/libs/config
 
 //  Revision History (excluding minor changes for specific compilers)
+//   16 Mar 01  Added BOOST_VERSION (Jens Maurer)
+//   06 Mar 01  Refactored EDG checks for Intel C++ (Dave Abrahams)
+//   04 Mar 01  Factored EDG checks, added BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+//              for Intel C++ 5.0 (Dave Abrahams)
+//   17 Feb 01  BOOST_NO_CV_SPECIALIZATIONS
+//              BOOST_NO_CV_VOID_SPECIALIZATIONS (John Maddock)
+//   11 Feb 01  Added BOOST_STATIC_CONSTANT (Dave Abrahams)
 //   20 Jan 01  BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS moved here from
 //              cast.hpp. Added missing BOOST_NO_STRINGSTREAM which some
 //              boost code seemed to depend on. (Dave Abrahams)
@@ -51,6 +58,13 @@
 #ifndef BOOST_CONFIG_HPP
 #define BOOST_CONFIG_HPP
 
+#define BOOST_VERSION 102200
+
+//  BOOST_VERSION % 100 is the sub-minor version
+//  BOOST_VERSION / 100 % 1000 is the minor version
+//  BOOST_VERSION / 100000 is the major version
+
+
 //  Conformance Flag Macros  -------------------------------------------------//
 //
 //  Conformance flag macros should identify the absence of C++ Standard 
@@ -58,6 +72,12 @@
 //  compilers do not require a lot of configuration flag macros.  It places the
 //  burden where it should be, on non-conforming compilers.  In the future,
 //  hopefully, less rather than more conformance flags will have to be defined.
+
+//  BOOST_NO_CV_SPECIALIZATIONS: if template specialisations for cv-qualified types
+//  conflict with a specialistaion for unqualififed type.
+
+//  BOOST_NO_CV_VOID_SPECIALIZATIONS: if template specialisations for cv-void types
+//  conflict with a specialistaion for void.
 
 //  BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP: Compiler does not implement
 //  argument-dependent lookup (also named Koenig lookup); see std::3.4.2
@@ -194,6 +214,18 @@
 //  BOOST_NO_STD_MIN_MAX: The C++ standard library does not provide
 //  the min() and max() template functions that should be in <algorithm>.
 
+//  Common compiler front-ends precede all compiler checks  ------------------//
+
+//  Edison Design Group front-ends
+# if defined(__EDG_VERSION__)
+
+#   if __EDG_VERSION__ <= 241
+#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+#   endif
+
+# endif
+
+//  Compiler-specific checks -------------------------------------------------//
 //  Compilers are listed in alphabetic order (except VC++ last - see below)---//
 
 //  GNU CC (also known as GCC and G++)  --------------------------------------//
@@ -203,9 +235,11 @@
        // egcs 1.1 won't parse smart_ptr.hpp without this:
 #      define BOOST_NO_AUTO_PTR
 #   endif
-#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 95
-#     include <iterator>  // not sure this is the right way to do this -JGS
-#     if !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
+#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
+#     include <string>  // not sure this is the right way to do this -JGS
+#     if defined(__BASTRING__) && !defined(__GLIBCPP__) && !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
+        // this should only detect the stdlibc++ that ships with gcc, and
+        // not any replacements that may be installed...
 #       define BOOST_NO_STD_ITERATOR
 #       define BOOST_NO_LIMITS
 #     endif
@@ -218,7 +252,7 @@
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 8
 #     define BOOST_NO_MEMBER_TEMPLATES
 #   endif
-#   if (__GNUC__ == 2 && __GNUC_MINOR__ > 95) || __GNUC__ > 2
+#   if (__GNUC__ == 2 && __GNUC_MINOR__ > 97) || __GNUC__ > 2
       // upcoming gcc 3.0
 #     include <iterator>
 #     if defined(__GLIBCPP__)
@@ -229,7 +263,16 @@
 #     endif
 #   endif
 
-//  Kai C++ ------------------------------------------------------------------//
+//  Intel on Linux ---------------------------------------------------------
+
+#elif defined __ICC
+#   include <iterator>
+#   ifdef _CPPLIB_VER 
+      // shipped with Dinkumware 3.10, which has a different hash_map
+#     define BOOST_NO_HASH
+#   endif
+
+//  Kai C++ ----------------------------------------------------------------
 
 #elif defined __KCC
 #   define BOOST_NO_SLIST
@@ -244,17 +287,11 @@
 
 #elif defined __sgi
 
-#   if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 240
-#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
-#   endif
-
 //  Compaq Tru64 Unix cxx ---------------------------------------------------
 
 #elif defined __DECCXX
-
-#   if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 240
-#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
-#   endif
+#   define BOOST_NO_SLIST
+#   define BOOST_NO_HASH
 
 //  Greenhills C++ -----------------------------------------------------------//
 
@@ -267,6 +304,8 @@
 #elif defined __BORLANDC__
 #   define BOOST_NO_SLIST
 #   define BOOST_NO_HASH
+// pull in standard library version:
+#   include <memory>
 #   if __BORLANDC__ <= 0x0551
 #     define BOOST_NO_INTEGRAL_INT64_T
 #     define BOOST_NO_PRIVATE_IN_AGGREGATE
@@ -290,8 +329,16 @@
 #   else
 #     define BOOST_DECL
 #   endif
+#if (__BORLANDC__ == 0x550) || (__BORLANDC__ == 0x551)
+// <climits> is partly broken, some macos define symbols that are really in
+// namespace std, so you end up having to use illegal constructs like
+// std::DBL_MAX, as a fix we'll just include float.h and have done with:
+#include <float.h>
+#endif
+#   define BOOST_NO_CV_SPECIALIZATIONS
+#   define BOOST_NO_CV_VOID_SPECIALIZATIONS
 
-//  Intel  -------------------------------------------------------------------//
+//  Intel on Windows --------------------------------------------------------//
 
 # elif defined __ICL
 #   include <iterator>  // not sure this is the right way to do this -JGS
@@ -299,6 +346,13 @@
         // a perfectly good implementation of std::iterator is supplied
 #   elif defined(__SGI_STL_ITERATOR)
 #     define BOOST_NO_STD_ITERATOR // No std::iterator in this case
+#   elif defined(_CPPLIB_VER) && (_CPPLIB_VER >= 306)
+#     // full dinkumware 3.06 and above
+#     define BOOST_NO_HASH
+#     define BOOST_NO_STD_ITERATOR_TRAITS
+#     if !_GLOBAL_USING   // can be defined in yvals.h
+#       define BOOST_NO_STDC_NAMESPACE
+#     endif
 #   else // assume using dinkumware's STL that comes with VC++ 6.0
 #     define BOOST_MSVC_STD_ITERATOR
 #     define BOOST_NO_STD_ITERATOR_TRAITS
@@ -309,16 +363,17 @@
 #     define BOOST_NO_STD_ALLOCATOR
 #     define BOOST_NO_STD_MIN_MAX
 #   endif
-
+#   define BOOST_NO_INTRINSIC_WCHAR_T // tentative addition - required for VC6 compatibility? (added by JM 19 Feb 2001)
 
 //  Metrowerks CodeWarrior  --------------------------------------------------//
 
 # elif defined  __MWERKS__
-#   if __MWERKS__ <= 0x4000
+#   if __MWERKS__ <= 0x2401  // 6.2
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #   endif
-#   if __MWERKS__ <= 0x2301
+#   if __MWERKS__ <= 0x2301  // 5.3?
 #     define BOOST_NO_POINTER_TO_MEMBER_CONST
+#     define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
 #   endif
 #   if __MWERKS__ >= 0x2300
 #     define BOOST_SYSTEM_HAS_STDINT_H
@@ -336,20 +391,41 @@
 
 #   define BOOST_STD_EXTENSION_NAMESPACE Metrowerks
 
-//  Sun Workshop Compiler C++ ------------------------------------------------//
+//  Sun Workshop Compiler C++ ------------------------------------------------
 
 # elif defined  __SUNPRO_CC
 #    if __SUNPRO_CC <= 0x520
 #      define BOOST_NO_SLIST
 #      define BOOST_NO_HASH
 #      define BOOST_NO_STD_ITERATOR_TRAITS
+       // although sunpro 5.1 supports the syntax for
+       // inline initialization it often gets the value
+       // wrong, especially where the value is computed
+       // from other constants (J Maddock 6th May 2001)
+#      define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+       // although sunpro 5.1 supports the syntax for
+       // partial specialization, it often seems to
+       // bind to the wrong specialization.  Better
+       // to disable it until suppport becomes more stable
+       // (J Maddock 6th May 2001).
+#      define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 #    endif
 #    if __SUNPRO_CC <= 0x500
 #      define BOOST_NO_MEMBER_TEMPLATES
 #      define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 #    endif
 
-//  Microsoft Visual C++ (excluding Intel/EDG front end)  --------------------//
+
+//  HP aCC -------------------------------------------------------------------
+
+# elif defined __HP_aCC
+#    define BOOST_NO_SLIST
+#    define BOOST_NO_HASH
+#    define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
+#    define BOOST_NO_OPERATORS_IN_NAMESPACE
+     // (support for HP aCC is not complete, see the regression test results)
+
+//  Microsoft Visual C++ (excluding Intel/EDG front end)  --------------------
 //
 //  Must remain the last #elif since some other vendors (Metrowerks, for
 //  example) also #define _MSC_VER
@@ -384,6 +460,13 @@
         // a perfectly good implementation of std::iterator is supplied
 #     elif defined(__SGI_STL_ITERATOR)
 #       define BOOST_NO_STD_ITERATOR // No std::iterator in this case
+#     elif defined(_CPPLIB_VER) && (_CPPLIB_VER >= 306)
+        // full dinkumware 3.06 and above
+#       define BOOST_NO_HASH
+#       define BOOST_NO_STD_ITERATOR_TRAITS
+#       ifndef _GLOBAL_USING    // can be defined in yvals.h
+#         define BOOST_NO_STDC_NAMESPACE
+#       endif
 #     else
 #       define BOOST_MSVC_STD_ITERATOR 1
 #       define BOOST_NO_SLIST
@@ -403,6 +486,7 @@
 #       endif
 #     endif
 #     define BOOST_NO_STD_ITERATOR_TRAITS
+#     define BOOST_NO_CV_VOID_SPECIALIZATIONS
 
 
 // Make sure at least one standard library header is included so that library
@@ -437,17 +521,20 @@
 
 //  end of compiler specific portion  ----------------------------------------//
 
-#if defined(BOOST_NO_LIMITS) || \
-  (defined(_RWSTD_VER) && _RWSTD_VER < 0x0203) || \
-  (defined(__SGI_STL_PORT) && __SGI_STL_PORT <= 0x410 && __STL_STATIC_CONST_INIT_BUG)
+#if defined(BOOST_NO_LIMITS) || (defined(_RWSTD_VER) && defined(__BORLANDC__) && _RWSTD_VER < 0x020300) || (defined(__SGI_STL_PORT) && __SGI_STL_PORT <= 0x410 && defined(__STL_STATIC_CONST_INIT_BUG))
 // STLPort 4.0 doesn't define the static constants in numeric_limits<> so that they
 // can be used at compile time if the compiler bug indicated by
 // __STL_STATIC_CONST_INIT_BUG is present.
 
 // Rogue wave STL (C++ Builder) also has broken numeric_limits
 // with default template defining members out of line.
-// However, Compaq C++ also uses RogueWave (version 2.03) and it's ok.
+// However, Compaq C++ also uses RogueWave (version 0x0203) and it's ok.
 #   define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
+#endif
+
+#if defined(__hpux)
+// HP-UX has a nice stdint.h in a different location, see boost/cstdint.hpp
+# define BOOST_SYSTEM_HAS_STDINT_H
 #endif
 
 #ifndef BOOST_STD_EXTENSION_NAMESPACE
@@ -497,5 +584,21 @@ namespace std {
 }
 #endif
 
+// BOOST_STATIC_CONSTANT workaround --------------------------------------- //
+// On compilers which don't allow in-class initialization of static integral
+// constant members, we must use enums as a workaround if we want the constants
+// to be available at compile-time. This macro gives us a convenient way to
+// declare such constants.
+#ifdef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+# define BOOST_STATIC_CONSTANT(type, assignment) enum { assignment }
+#else
+# define BOOST_STATIC_CONSTANT(type, assignment) static const type assignment
+#endif
+
 #endif  // BOOST_CONFIG_HPP
+
+
+
+
+
 

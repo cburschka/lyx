@@ -4,7 +4,7 @@
  *           LyX, The Document Processor 	 
  *
  *    The function lyx::sum is taken from GNU textutill-1.22
- *    and is there part of the program chsum. The chsum program
+ *    and is there part of the program chsum. The cksum program
  *    is written by Q. Frank Xia, qx@math.columbia.edu.
  *
  *    Modified for use in LyX by Lars G. Bjønnes.
@@ -16,13 +16,13 @@
 #include <config.h>
 
 #include <fstream>
-
-#include "Lsstream.h"
+#include <iterator>
 
 #include "support/lyxlib.h"
 
 using std::ifstream;
 using std::ios;
+using std::istream_iterator;
 
 namespace {
 
@@ -92,7 +92,7 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	unsigned long crc = 0;
 	long bytes_read = 0;
-	while(first != last) {
+	while (first != last) {
 		++bytes_read;
 		crc = (crc << 8)
 			^ crctab[((crc >> 24) ^ *first++) & 0xFF];
@@ -114,11 +114,7 @@ unsigned long lyx::sum(string const & file)
 	ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	ifs.unsetf(ios::skipws);
-	ostringstream ostr;
-	ostr << ifs.rdbuf();
-	// The .c_str() is here in case we use our lyxstring class
-	// instead of standard string. 
-	string w = ostr.str().c_str();
-	return do_crc(w.begin(), w.end());
+	istream_iterator<char> beg(ifs);
+	istream_iterator<char> end;
+	return do_crc(beg, end);
 }
-

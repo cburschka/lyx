@@ -1,3 +1,11 @@
+2001-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxsum.C (sum): don't use sstream anymore, use istream_iterator
+	directly instead.
+
+	* lyxstring.C (operator): make const operator[] behave as
+	non-const and at.
+
 2001-05-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (EXTRA_DIST): add the os_*.C files.

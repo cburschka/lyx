@@ -237,31 +237,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		return;
 	}
 
-#if 0
-	// This if clause should not be here, but should rather be changed
-	// to a lyxfunc and get XK_Escape bound to it (Lgb)
-#warning Fix this please. (Lgb)
-	if (owner->view()->available()) {
-		// this function should be used always [asierra060396]
-		UpdatableInset * tli = owner->view()->theLockingInset();
-		if (tli && (keysym == XK_Escape)) {
-			if (tli == tli->GetLockingInset()) {
-				owner->view()->unlockInset(tli);
-				TEXT()->CursorRight(owner->view());
-				moveCursorUpdate(true, false);
-				owner->showState();
-			} else {
-				tli->UnlockInsetInInset(owner->view(),
-							tli->GetLockingInset(),
-							true);
-			}
-			//return 0;
-			//return FL_PREEMPT;
-			return;
-		}
-	}
-#endif
-	
 	// Can we be sure that this will work for all X-Windows
 	// implementations? (Lgb)
 	// This code snippet makes lyx ignore some keys. Perhaps
@@ -309,7 +284,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (lyxerr.debugging(Debug::KEY)) {
 		string buf;
 		keyseq.print(buf);
-		lyxerr << "Key ["
+		lyxerr << "Key [action="
 		       << action << "]["
 		       << buf << "]"
 		       << endl;
@@ -330,10 +305,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		// the modifiers? (Lgb)
 		action = keyseq.addkey(keysym, 0);
 
-		// We keep the shift state, but remove the others.
-		// This is for the sake of the LFUN_SELFINSERT below.
-		state &= ShiftMask;
-		
 		if (lyxerr.debugging(Debug::KEY)) {
 			lyxerr << "Removing modifiers...\n"
 			       << "Action now set to ["
@@ -347,39 +318,34 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	}
 
 	if (action == LFUN_SELFINSERT) {
-		// We must set the argument to the char looked up by
-		// XKeysymToString
-		XKeyEvent xke;
-		xke.type = KeyPress;
-		xke.serial = 0;
-		xke.send_event = False;
-		xke.display = fl_get_display();
-		xke.window = 0;
-		xke.root = 0;
-		xke.subwindow = 0;
-		xke.time = 0;
-		xke.x = 0;
-		xke.y = 0;
-		xke.x_root = 0;
-		xke.y_root = 0;
-		xke.state = state;
-		xke.keycode = XKeysymToKeycode(fl_get_display(), keysym);
-		xke.same_screen = True;
-		char ret[10];
-		KeySym tmpkeysym;
-		int const res = XLookupString(&xke, ret, 10, &tmpkeysym, 0);
-		//Assert(keysym == tmpkeysym);
-		lyxerr[Debug::KEY] << "TmpKeysym ["
-				   << tmpkeysym << "]" << endl;
+		// This is very X dependant.
+		unsigned int c = keysym;
 		
-		if (res > 0)
-			argument = string(ret, res);
-
-		lyxerr[Debug::KEY] << "SelfInsert arg["
-				   << argument << "]" << endl;
+		switch (c & 0x0000FF00) {
+			// latin 1 byte 3 = 0
+		case 0x00000000: break;
+			// latin 2 byte 3 = 1
+		case 0x00000100:
+			// latin 3 byte 3 = 2
+		case 0x00000200:
+			// latin 4 byte 3 = 3
+		case 0x00000300:
+			// latin 8 byte 3 = 18 (0x12)
+		case 0x00001200:
+			// latin 9 byte 3 = 19 (0x13)
+		case 0x00001300:
+			c &= 0x000000FF;
+			break;
+		default:
+			c = 0;
+			break;
+		}
+		if (c > 0)
+			argument = static_cast<char>(c);
+		lyxerr[Debug::KEY] << "SelfInsert arg[`"
+				   << argument << "']" << endl;
 	}
 	
-
         bool tmp_sc = show_sc;
 	show_sc = false;
 	Dispatch(action, argument);
@@ -1004,27 +970,7 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->fitCursor(TEXT());
 		}
 		break;
-		
-	case LFUN_HYPHENATION:
-		owner->view()->hyphenationPoint();
-		break;
-		
-	case LFUN_LDOTS:
-		owner->view()->ldots();
-		break;
-		
-	case LFUN_END_OF_SENTENCE:
-		owner->view()->endOfSentenceDot();
-		break;
 
-	case LFUN_MENU_SEPARATOR:
-		owner->view()->menuSeparator();
-		break;
-		
-	case LFUN_HFILL:
-		owner->view()->hfill();
-		break;
-		
 	case LFUN_DEPTH:
 		changeDepth(owner->view(), TEXT(false), 0);
 		break;

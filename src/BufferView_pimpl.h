@@ -125,6 +125,20 @@ private:
 	/// open and lock an updatable inset
 	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	///
+	void protectedBlank(LyXText * lt);
+	///
+	void newline();
+	///
+	void hfill();
+	///
+	void menuSeparator();
+	///
+	void endOfSentenceDot();
+	///
+	void ldots();
+	///
+	void hyphenationPoint();
+	///
 	void insertNote();
 	///
 	BufferView * bv_;

@@ -17,6 +17,10 @@
 //  See http://www.boost.org for most recent version including documentation.
 
 //  Revision History
+//  21 May 01  Require complete type where incomplete type is unsafe.
+//             (suggested by Vladimir Prus)
+//  21 May 01  operator= fails if operand transitively owned by *this, as in a
+//             linked list (report by Ken Johnson, fix by Beman Dawes)
 //  21 Jan 01  Suppress some useless warnings with MSVC (David Abrahams)
 //  19 Oct 00  Make shared_ptr ctor from auto_ptr explicit. (Robert Vugts) 
 //  24 Jul 00  Change throw() to // never throws.  See lib guidelines
@@ -60,11 +64,17 @@
 #include <cstddef>            // for std::size_t
 #include <memory>             // for std::auto_ptr
 #include <algorithm>          // for std::swap
-#include <boost/utility.hpp>  // for boost::noncopyable
+#include <boost/utility.hpp>  // for boost::noncopyable, checked_delete, checked_array_delete
 #include <functional>         // for std::less
+#include <boost/static_assert.hpp> // for BOOST_STATIC_ASSERT
 
 #ifdef LYX_NO_EXCEPTIONS
 #include <assert.h>
+#endif
+
+#ifdef BOOST_MSVC  // moved here to work around VC++ compiler crash
+# pragma warning(push)
+# pragma warning(disable:4284) // return type for 'identifier::operator->' is not a UDT or reference to a UDT. Will produce errors if applied using infix notation
 #endif
 
 namespace boost {
@@ -84,9 +94,9 @@ template<typename T> class scoped_ptr : noncopyable {
   typedef T element_type;
 
   explicit scoped_ptr( T* p=0 ) : ptr(p) {}  // never throws
-  ~scoped_ptr()                 { delete ptr; }
-
-  void reset( T* p=0 )          { if ( ptr != p ) { delete ptr; ptr = p; } }
+  ~scoped_ptr()                 { checked_delete(ptr); }
+  void reset( T* p=0 )          { if ( ptr != p ) { checked_delete(ptr); ptr =
+p; } }
   T& operator*() const          { return *ptr; }  // never throws
 #ifdef BOOST_MSVC
 # pragma warning(push)

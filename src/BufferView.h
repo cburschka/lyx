@@ -151,20 +151,6 @@ public:
 	///
 	void copyEnvironment();
 	///
-	void hfill();
-	///
-	void protectedBlank(LyXText *);
-	///
-	void newline();
-	///
-	void menuSeparator();
-	///
-	void endOfSentenceDot();
-	///
-	void ldots();
-	///
-	void hyphenationPoint();
-	///
 	void menuUndo();
 	///
 	void menuRedo();
