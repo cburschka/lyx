@@ -33,10 +33,12 @@ using std::pair;
 using std::vector;
 using std::make_pair;
 
+
 bool isActive(FL_OBJECT * ob)
 {
 	return ob && ob->active > 0;
 }
+
 
 std::pair<string, string> parse_shortcut(string const & str)
 {

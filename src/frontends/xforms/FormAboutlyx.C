@@ -23,11 +23,21 @@
 
 #include FORMS_H_LOCATION
 
+namespace {
+
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
+} // namespace anon
+
 
 typedef FormController<ControlAboutlyx, FormView<FD_aboutlyx> > base_class;
 
 FormAboutlyx::FormAboutlyx(Dialog & parent)
-	: base_class(parent, _("About LyX"), false)
+	: base_class(parent, _("About LyX"), scalableTabfolders)
 {}
 
 
@@ -63,16 +73,17 @@ void FormAboutlyx::build()
 
 	fl_add_browser_line(license_->browser_license, cs.str().c_str());
 
-	// stack tabs
+	// Enable the tabfolder to be rescaled correctly.
+	if (scalableTabfolders)
+		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
+
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder, _("Version"),
 			   version_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Credits"),
 			   credits_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("License"),
 			   license_->form);
-
-	// work-around xforms bug re update of folder->x, folder->y coords.
-	setPrehandler(dialog_->tabfolder);
 
 	// Manage the cancel/close button
 	bcview().setCancel(dialog_->button_close);

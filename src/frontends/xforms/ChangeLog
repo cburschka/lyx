@@ -1,3 +1,13 @@
+2003-04-09  Angus Leeming  <leeming@lyx.org>
+
+	* FormAboutlyx.C:
+	* FormDocument.C:
+	* FormGraphics.C:
+	* FormPreferences.C:
+	* FormTabular.C:
+	* forms/form_preferences.fd: prepare the way for resizable
+	tabfolders if the xforms version is up to the task.
+
 2003-04-09  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C:

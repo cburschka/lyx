@@ -52,13 +52,19 @@ int const FILENAME_MAXCHARS = 1024;
 
 string defaultUnit("cm");
 
+#if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
+bool const scalableTabfolders = false;
+#else
+bool const scalableTabfolders = true;
+#endif
+
 } // namespace anon
 
 
 typedef FormController<ControlGraphics, FormView<FD_graphics> > base_class;
 
 FormGraphics::FormGraphics(Dialog & parent)
-	: base_class(parent, _("Graphics"), false)
+	: base_class(parent, _("Graphics"), scalableTabfolders)
 {}
 
 
@@ -257,13 +263,14 @@ void FormGraphics::build()
 		"graphicx-package and not mentioned in the gui's tabfolders.");
 	tooltips().init(extra_->input_special, str);
 
-	// add the different tabfolders
+	// Enable the tabfolder to be rescaled correctly.
+	if (scalableTabfolders)
+		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
+
+	// Stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder, _("File"), file_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Bounding Box"), bbox_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Extra"), extra_->form);
-
-	// work-around xforms bug re update of folder->x, folder->y coords.
-	setPrehandler(dialog_->tabfolder);
 
 	// set the right default unit
 	switch (lyxrc.default_papersize) {
