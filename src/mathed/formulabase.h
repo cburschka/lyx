@@ -100,10 +100,6 @@ public:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 	///
-	int xo() const { return xo_; }
-	///
-	int yo() const { return yo_; }
-	///
 	BufferView * view() const { return view_; }
 
 private:
