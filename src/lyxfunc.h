@@ -31,13 +31,22 @@ public:
 	LyXFunc(LyXView *);
     
 	/// LyX dispatcher, executes lyx actions.
-	string const dispatch(int action, string const & arg = string());
-			 
-	/// The same but uses the name of a lyx command.
-	string const dispatch(string const & cmd);
+	string const dispatch(kb_action ac, string argument = string());
 
-	///
-	void miniDispatch(string const & cmd);
+	/// The same as dispatch, but also shows shortcuts and command
+	/// name in minibuffer if show_sc is true (more to come?) 
+	void const LyXFunc::verboseDispatch(kb_action action,
+					    string const & argument,
+					    bool show_sc);
+	
+	/// Same as above, using a pseudoaction as argument
+	void const LyXFunc::verboseDispatch(int ac, bool show_sc);
+
+	/// Same as above, when the command is provided as a string
+	void const LyXFunc::verboseDispatch(string const & s, bool show_sc);
+
+	/// 
+	void LyXFunc::miniDispatch(string const & s);
 
 	///
 	void initMiniBuffer();
@@ -45,12 +54,12 @@ public:
 	///
 	void processKeySym(KeySym k, unsigned int state);
 
-	/// we need one internall which is called from inside LyXAction and
+	/// we need one internal which is called from inside LyXAction and
 	/// can contain the string argument.
 	FuncStatus getStatus(int ac) const;
 	///
-	FuncStatus getStatus(int ac, 
-			     string const & not_to_use_arg) const;
+	FuncStatus getStatus(kb_action action, 
+			     string const & argument = string()) const;
 	
 	/// The last key was meta
 	bool wasMetaKey() const;
@@ -65,8 +74,7 @@ public:
         string const getMessage() const { return dispatch_buffer; }
 	/// Handle a accented char keysequenze
 	void handleKeyFunc(kb_action action);
-	/// Should a hint message be displayed?
-	void setHintMessage(bool);
+
 private:
 	///
 	LyXView * owner;
@@ -116,8 +124,6 @@ private:
 	///
 	LyXText * TEXT(bool) const;
 	///
-	//  This is the same for all lyxfunc objects
-	static bool show_sc;
 };
      
      
@@ -129,11 +135,5 @@ bool LyXFunc::wasMetaKey() const
 	return (meta_fake_bit != 0);
 }
      
-
-inline
-void LyXFunc::setHintMessage(bool hm) 
-{ 
-	show_sc = hm;
-}
 
 #endif

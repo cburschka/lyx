@@ -20,7 +20,7 @@
 #include "form_maths_style.h"
 
 extern char * latex_mathstyle[];
-extern char * latex_mathfontcmds[];
+extern kb_action latex_mathfontcmds[];
 
 FormMathsStyle::FormMathsStyle(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)

@@ -150,7 +150,7 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
 	doVCCommand(cmd, owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -158,7 +158,7 @@ void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -167,7 +167,7 @@ void RCS::checkOut()
 	owner_->markLyxClean();
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -178,7 +178,7 @@ void RCS::revert()
 	// We ignore changes and just reload!
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
-		->getLyXFunc()->dispatch("buffer-reload");
+		->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -280,7 +280,7 @@ void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -289,7 +289,7 @@ void CVS::checkIn(string const & msg)
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"",
 		    owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 
@@ -310,7 +310,7 @@ void CVS::revert()
 		    owner_->filepath);
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
-		->getLyXFunc()->dispatch("buffer-reload");
+		->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
 

@@ -158,9 +158,6 @@ MiniBufferController mb_ctrl;
 
 /* === globals =========================================================== */
 
-// Initialization of static member var
-bool LyXFunc::show_sc = true;
-
 
 LyXFunc::LyXFunc(LyXView * o)
 	: owner(o),
@@ -325,44 +322,36 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (action == LFUN_SELFINSERT) {
 		// This is very X dependent.
 		unsigned int c = keysym;
+		string argument;
 		
 		c = kb_keymap::getiso(c);
 
 		if (c > 0)
 			argument = static_cast<char>(c);
+		
+		dispatch(LFUN_SELFINSERT, argument);
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
 	}
-	
-        bool tmp_sc = show_sc;
-	show_sc = false;
-	dispatch(action, argument);
-	show_sc = tmp_sc;
-	
-	//return 0;
+	else
+		verboseDispatch(action, false);
 } 
 
 
 FuncStatus LyXFunc::getStatus(int ac) const
 {
-	return getStatus(ac, string());
+	kb_action action;
+	string argument;
+	action = lyxaction.retrieveActionArg(ac, argument);
+	return getStatus(action, argument);
 }
 
-FuncStatus LyXFunc::getStatus(int ac,
-			      string const & not_to_use_arg) const
+
+FuncStatus LyXFunc::getStatus(kb_action action,
+			      string const & argument) const
 {
-	kb_action action;
 	FuncStatus flag;
-	string argument;
 	Buffer * buf = owner->buffer();
-	
-	if (lyxaction.isPseudoAction(ac)) 
-		action = lyxaction.retrieveActionArg(ac, argument);
-	else {
-		action = static_cast<kb_action>(ac);
-		if (!not_to_use_arg.empty())
-			argument = not_to_use_arg; // except here
-	}
 	
 	if (action == LFUN_UNKNOWN_ACTION) {
 		setErrorMessage(N_("Unknown action"));
@@ -435,7 +424,7 @@ FuncStatus LyXFunc::getStatus(int ac,
 		disable = true;
 		if (owner->view()->theLockingInset()) {
 			FuncStatus ret;
-			ret.disabled(true);
+			//ret.disabled(true);
 			if (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset())->
@@ -760,12 +749,12 @@ void LyXFunc::miniDispatch(string const & s)
 	string s2(frontStrip(strip(s))); 
  
 	if (!s2.empty()) {
-		dispatch(s2);
+		verboseDispatch(s2, true);
 	}
 }
 
 
-string const LyXFunc::dispatch(string const & s) 
+void const LyXFunc::verboseDispatch(string const & s, bool show_sc) 
 {
 	// Split command string into command and argument
 	string cmd;
@@ -778,57 +767,107 @@ string const LyXFunc::dispatch(string const & s)
 		string const msg = string(_("Unknown function ("))
 			+ cmd + ")";
 		owner->message(msg);
-		return string();
 	} else {
-		return dispatch(action, arg);
+		verboseDispatch(action, show_sc);
 	} 
 }
 
 
-string const LyXFunc::dispatch(int ac,
-			       string const & do_not_use_this_arg)
+void const LyXFunc::verboseDispatch(int ac, bool show_sc) 
 {
-	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << ac
-			      <<"] arg[" << do_not_use_this_arg << "]" << endl;
-	
 	string argument;
 	kb_action action;
         
+	// get the real action and argument
+	action = lyxaction.retrieveActionArg(ac, argument);
+
+	verboseDispatch(action, argument, show_sc);
+}
+
+
+
+void const LyXFunc::verboseDispatch(kb_action action,
+				    string const & argument, bool show_sc)
+{
+	string res = dispatch(action, argument);
+
+	commandshortcut.erase();
+	
+	if (lyxrc.display_shortcuts && show_sc) {
+		if (action != LFUN_SELFINSERT) {
+			// Put name of command and list of shortcuts
+			// for it in minibuffer
+			string comname = lyxaction.getActionName(action);
+			
+			int pseudoaction = action;
+			bool argsadded = false;
+			
+			if (!argument.empty()) {
+				// the pseudoaction is useful for the bindings
+				pseudoaction = 
+					lyxaction.searchActionArg(action,
+							  	  argument);
+
+				if (pseudoaction == LFUN_UNKNOWN_ACTION) {
+					pseudoaction = action;
+				} else {
+					comname += " " + argument;
+					argsadded = true;
+				}
+			}
+
+			string const shortcuts =
+				toplevel_keymap->findbinding(pseudoaction);
+
+			if (!shortcuts.empty()) {
+				comname += ": " + shortcuts;
+			} else if (!argsadded && !argument.empty()) {
+				comname += " " + argument;
+			}
+
+			if (!comname.empty()) {
+				comname = strip(comname);
+				commandshortcut = "(" + comname + ')';
+			}
+		}
+        }
+
+	if (res.empty()) {
+		if (!commandshortcut.empty()) {
+			owner->getMiniBuffer()->addSet(commandshortcut);
+		}
+	} else {
+		owner->getMiniBuffer()->addSet(' ' + commandshortcut);
+	}
+}
+
+
+string const LyXFunc::dispatch(kb_action action, string argument)
+{
+	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << action
+			      <<"] arg[" << argument << "]" << endl;
+
         // we have not done anything wrong yet.
         errorstat = false;
 	dispatch_buffer.erase();
-	
-	// if action is a pseudo-action, we need the real action
-	if (lyxaction.isPseudoAction(ac)) {
-		string tmparg;
-		action = static_cast<kb_action>
-			(lyxaction.retrieveActionArg(ac, tmparg));
-		if (!tmparg.empty())
-			argument = tmparg;
-	} else {
-		action = static_cast<kb_action>(ac);
-		if (!do_not_use_this_arg.empty())
-			argument = do_not_use_this_arg; // except here
-	}
 
- 
 #ifdef NEW_DISPATCHER
 	// We try do call the most specific dispatcher first:
 	//  1. the lockinginset's dispatch
 	//  2. the bufferview's dispatch
 	//  3. the lyxview's dispatch
 #endif
-	
+
 	selection_possible = false;
-	
+
 	if (owner->view()->available())
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(ac, do_not_use_this_arg).disabled()) {
+	if (getStatus(action, argument).disabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: "
-		       << lyxaction.getActionName(ac)
-		       << " [" << ac << "] is disabled at this location"
+		       << lyxaction.getActionName(action)
+		       << " [" << action << "] is disabled at this location"
 		       << endl;
 		goto exit_with_message;
 	}
@@ -838,7 +877,8 @@ string const LyXFunc::dispatch(int ac,
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (!keyseq.deleted())))
 		{
-			if ((action==LFUN_UNKNOWN_ACTION) && argument.empty()){
+			if ((action == LFUN_UNKNOWN_ACTION)
+			    && argument.empty()){
 				argument = keyseq.getiso();
 			}
 			// Undo/Redo is a bit tricky for insets.
@@ -1509,7 +1549,7 @@ string const LyXFunc::dispatch(int ac,
 		while (argument.find(';') != string::npos) {
 			string first;
 			argument = split(argument, first, ';');
-			dispatch(first);
+			verboseDispatch(first, false);
 		}
 	}
 	break;
@@ -1588,65 +1628,10 @@ string const LyXFunc::dispatch(int ac,
 
 exit_with_message:
 
-	commandshortcut.erase();
-	
-	if (lyxrc.display_shortcuts && show_sc) {
-		if (action != LFUN_SELFINSERT) {
-			// Put name of command and list of shortcuts
-			// for it in minibuffer
-			string comname = lyxaction.getActionName(action);
-
-			kb_action pseudoaction = action;
-			bool argsadded = false;
-
-			if (!argument.empty()) {
-				// If we have the command with argument, 
-				// this is better
-				pseudoaction = 
-					lyxaction.searchActionArg(action,
-							  	  argument);
-
-				if (pseudoaction == -1) {
-					pseudoaction = action;
-				} else {
-					comname += " " + argument;
-					argsadded = true;
-				}
-			}
-
-			string const shortcuts =
-				toplevel_keymap->findbinding(pseudoaction);
-
-			if (!shortcuts.empty()) {
-				comname += ": " + shortcuts;
-			} else if (!argsadded && !argument.empty()) {
-				comname += " " + argument;
-			}
-
-			if (!comname.empty()) {
-				comname = strip(comname);
-				commandshortcut = "(" + comname + ')';
-
-				// Here we could even add a small pause,
-				// to annoy the user and make him learn
-				// the shortcuts.
-				// No! That will just annoy, not teach
-				// anything. The user will read the messages
-				// if they are interested. (Asger)
-			}
-		}
-        }
-
 	string const res = getMessage();
 
-	if (res.empty()) {
-		if (!commandshortcut.empty()) {
-			owner->getMiniBuffer()->addSet(commandshortcut);
-		}
-	} else {
-		string const msg(_(res) + ' ' + commandshortcut);
-		owner->message(msg);
-	}
+	if (!res.empty())
+		owner->message(_(res));
 
 	return res;
 }

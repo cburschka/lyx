@@ -58,7 +58,7 @@ XFormsView::XFormsView(int width, int height)
 
 	// Connect the minibuffer signals
 	minibuffer->stringReady.connect(SigC::slot(getLyXFunc(),
-						   &LyXFunc::miniDispatch));
+						&LyXFunc::miniDispatch));
 	minibuffer->timeout.connect(SigC::slot(getLyXFunc(),
 					       &LyXFunc::initMiniBuffer));
 	

@@ -63,9 +63,9 @@ public:
 	///
 	LyXAction();
     
-	/** Returns an action tag from a string. Returns kb_action.
-	  Include arguments in func_name ONLY if you
-	  want to create new pseudo actions. */
+	/** Returns an pseudoaction from a string
+	  If you include arguments in func_name, a new psedoaction will be 
+	  created if needed. */
 	int LookupFunc(string const & func_name) const; 
 
         /** Returns an action tag which name is the most similar to a string.
@@ -83,11 +83,8 @@ public:
 	kb_action retrieveActionArg(int i, string & arg) const;
     
 	/// Search for an existent pseudoaction, return -1 if it doesn't exist.
-	kb_action searchActionArg(kb_action action, string const & arg) const;
+	int searchActionArg(kb_action action, string const & arg) const;
 
-	/// Check if a value is a pseudo-action. 
-	bool isPseudoAction(int) const;
-    
 	/// Return the name associated with command
 	string const getActionName(int action) const;
 
@@ -125,15 +122,5 @@ private:
 	  pseudofuncs and the arguments the action should use. */
 	mutable arg_map lyx_arg_map;
 };
-     
-
-/* --------------------   Inlines  ------------------ */
-    
-     
-inline
-bool LyXAction::isPseudoAction(int a) const
-{ 
-	return a > int(LFUN_LASTACTION); 
-}
      
 #endif

@@ -1,3 +1,8 @@
+2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* math_support.C: change latex_mathfontcmds to an array of
+	kb_action. 
+
 2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_exfuncinset.C: remove using std::ostream declaration.

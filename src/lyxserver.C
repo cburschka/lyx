@@ -501,7 +501,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// connect to the lyxfunc in the single LyXView we
 			// support currently. (Lgb)
 
-			int action = lyxaction.LookupFunc(cmd);
+			kb_action action = static_cast<kb_action>(lyxaction.LookupFunc(cmd));
 			//int action = -1;
 			string rval, buf;
 		    

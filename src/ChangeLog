@@ -1,3 +1,43 @@
+2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* LyXAction.[Ch]: move isPseudoAction to the C file, since nobody
+	should need to care about that.
+
+	* lyxfunc.C (verboseDispatch): simplify a bit
+	(getStatus): have a version which takes a pseudoaction, and
+	another which requires a (kb_action,string).
+
+	* LyXAction.C (retrieveActionArg): make it work also when action
+	is not a pseudo-action.
+	(getActionName): simplify a bit
+	(helpText): 
+
+2002-01-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (verboseDispatch): new families of methods with
+	several ways to specify a command and a bool to indicate whether
+	the command name and shortcut should be displayed in minibuffer
+	(eventually, we could extend that to a finer bitmask like
+	SHORTCUT|CMDNAME|CMDRESULT, or whatever).
+	(dispatch): the pristine dispatch command which just, well,
+	dispatchs! Note it still sets its result to minibuffer; I'm not
+	sure we want that.
+
+	* lyxfunc.h: remove setHintMessage
+
+	* vc-backend.C: use LFUN_MENURELOAD instead of "buffer-reload"
+
+2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* BufferView_pimpl.C (specialChar): delete new inset if we have
+	not been able to insert it.
+
+	* kbmap.C: revert to using int instead of kb_action, since all we
+	are dealing with is pseudo-actions.
+
+	* LyXAction.C (searchActionArg): change to return int instead of
+	kb_action, since the result is a pseudoaction.
+
 2002-01-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (insertErtContents): Fix (partially) the font bug.

@@ -12,6 +12,7 @@
 #ifndef FORM_MATHSPANEL_H
 #define FORM_MATHSPANEL_H
 
+#include "commandtags.h"
 #include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG_
@@ -64,7 +65,7 @@ public:
 	/// dispatch a symbol insert 
 	void insertSymbol(string const & sym) const;
 	/// dispatch an LFUN:
-	void dispatchFunc(string const & funcode) const;
+	void dispatchFunc(kb_action action) const;
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();

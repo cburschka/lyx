@@ -582,7 +582,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 		// If the action value is too low, then it is not a
 		// valid action, but something else.
 		if (choice >= action_offset + 1) {
-			view->getLyXFunc()->dispatch(choice - action_offset);
+			view->getLyXFunc()->verboseDispatch(choice - action_offset, true);
 		} else {
 			lyxerr[Debug::GUI]
 				<< "MenuCallback: ignoring bogus action "

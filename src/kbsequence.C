@@ -20,6 +20,7 @@
 
 #include "kbsequence.h"
 #include "kbmap.h"
+#include "commandtags.h"
 #include "debug.h"
 
 using std::endl;
@@ -29,7 +30,7 @@ using std::endl;
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
 
-kb_action kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
+int kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence

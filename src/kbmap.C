@@ -17,6 +17,7 @@
 #endif
 
 #include "kbmap.h"
+#include "commandtags.h"
 #include "kbsequence.h"
 #include "debug.h"
 
@@ -71,7 +72,7 @@ string const kb_keymap::printKey(kb_key const & key) const
 }
 
 
-string::size_type kb_keymap::bind(string const & seq, kb_action action)
+string::size_type kb_keymap::bind(string const & seq, int action)
 {
 	if (lyxerr.debugging(Debug::KBMAP)) {
 		lyxerr << "BIND: Sequence `"
@@ -94,7 +95,7 @@ string::size_type kb_keymap::bind(string const & seq, kb_action action)
 }
 
 
-kb_action kb_keymap::lookup(unsigned int key,
+int kb_keymap::lookup(unsigned int key,
 		      unsigned int mod, kb_sequence * seq) const
 {
 	if (table.empty()) {
@@ -144,7 +145,7 @@ string const kb_keymap::print() const
 }
 
 
-void kb_keymap::defkey(kb_sequence * seq, kb_action action, unsigned int r)
+void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 {
 	unsigned int const code = seq->sequence[r];
 	if (code == NoSymbol) return;
@@ -193,7 +194,7 @@ void kb_keymap::defkey(kb_sequence * seq, kb_action action, unsigned int r)
 }
 
 
-string const kb_keymap::findbinding(kb_action act, string const & prefix) const
+string const kb_keymap::findbinding(int act, string const & prefix) const
 {
 	string res;
 	if (table.empty()) return res;

@@ -302,10 +302,7 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
 	
-	string res = owner->getLyXFunc()->dispatch(int(ac));
-	if (!res.empty())
-		lyxerr[Debug::GUI] << "ToolbarCB: Function returned: " 
-				   << res << endl;
+	owner->getLyXFunc()->verboseDispatch(int(ac), true);
 }
 
 
@@ -322,20 +319,15 @@ extern "C" {
 
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 {
-	string name;
 	string arg;
 	string xpm_name;
-	kb_action act;
 
-	if (lyxaction.isPseudoAction(action)) {
-		act = lyxaction.retrieveActionArg(action, arg);
-		name = lyxaction.getActionName(act);
+	const kb_action act = lyxaction.retrieveActionArg(action, arg);
+	string const name = lyxaction.getActionName(act);
+	if (!arg.empty())
 		xpm_name = subst(name + ' ' + arg, ' ','_');
-	} else {
-		act = (kb_action)action;
-		name = lyxaction.getActionName(action);
+	else 
 		xpm_name = name;
-	}
 
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 

@@ -42,6 +42,15 @@ using std::endl;
 // These are globals. 
 LyXAction lyxaction;
 
+// Small helper function
+inline
+bool isPseudoAction(int a)
+{ 
+	return a > int(LFUN_LASTACTION); 
+}
+     
+
+
 void LyXAction::newFunc(kb_action action, string const & name,
 			string const & helpText, unsigned int attrib)
 {
@@ -448,7 +457,7 @@ LyXAction::LyXAction()
 
 // Search for an existent pseudoaction, return LFUN_UNKNOWN_ACTION
 // if it doesn't exist.
-kb_action LyXAction::searchActionArg(kb_action action, string const & arg) const
+int LyXAction::searchActionArg(kb_action action, string const & arg) const
 {
 	arg_map::const_iterator pit = lyx_arg_map.find(action);
 
@@ -476,7 +485,7 @@ kb_action LyXAction::searchActionArg(kb_action action, string const & arg) const
 			      << action << '|' 
 			      << arg << "] = " << aci->second << endl;
 
-	return kb_action(aci->second);
+	return aci->second;
 }
 
 
@@ -516,12 +525,15 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 {
 	arg.erase(); // clear it to be sure.
 
+	if (!isPseudoAction(pseudo)) 
+		return static_cast<kb_action>(pseudo);
+	
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				      << pit->second.action << '|'
-				      << pit->second.arg << '\n';
+				      << pit->second.arg << "]\n";
 		arg = pit->second.arg;
 		return pit->second.action;
 	} else {
@@ -601,12 +613,11 @@ string const LyXAction::getActionName(int action) const
 {
 	kb_action ac;
 	string arg;
-	if (isPseudoAction(action)) {
-		ac = retrieveActionArg(action, arg);
-		arg.insert(0, " ");
-	} else
-		ac = static_cast<kb_action>(action);
 
+	ac = retrieveActionArg(action, arg);
+	if (!arg.empty())
+		arg.insert(0, " ");
+	
 	info_map::const_iterator iit = lyx_info_map.find(ac);
 
 	if (iit != lyx_info_map.end()) {
@@ -625,10 +636,7 @@ string const LyXAction::helpText(int pseudoaction) const
 	string help, arg;
 	kb_action action;
 
-	if (isPseudoAction(pseudoaction)) 
-		action = retrieveActionArg(pseudoaction, arg);
-	else 
-		action = static_cast<kb_action>(pseudoaction);
+	action = retrieveActionArg(pseudoaction, arg);
 
 	info_map::const_iterator ici = lyx_info_map.find(action);
 	if (ici != lyx_info_map.end()) {

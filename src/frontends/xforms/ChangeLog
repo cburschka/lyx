@@ -1,3 +1,13 @@
+2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Toolbar_pimpl.C (setPixmap): simplify a bit
+
+2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Toolbar_pimpl.C (ToolbarCB): 
+	* Menubar_pimpl.C (MenuCallback): use verboseDispatch instead of
+	dispatch.
+
 2002-01-12  Allan Rae  <rae@lyx.org>
 
 	* FormTabular.C (FormTabular): Fix Purify UMR.

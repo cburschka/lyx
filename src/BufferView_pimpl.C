@@ -2624,13 +2624,13 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			if (cursor.par()->params().spaceTop() == VSpace(VSpace::NONE)) {
 				lt->setParagraph
 					(bv_,
-					 cursor.par()->params().lineTop(),      
+					 cursor.par()->params().lineTop(),
 					 cursor.par()->params().lineBottom(),
-					 cursor.par()->params().pagebreakTop(), 
+					 cursor.par()->params().pagebreakTop(),
 					 cursor.par()->params().pagebreakBottom(),
 					 VSpace(VSpace::DEFSKIP), cursor.par()->params().spaceBottom(),
-					 cursor.par()->params().spacing(), 
-					 cursor.par()->params().align(), 
+					 cursor.par()->params().spacing(),
+					 cursor.par()->params().align(),
 					 cursor.par()->params().labelWidthString(), 1);
 				//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			} 
@@ -3279,9 +3279,8 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(kind);
-		insertInset(new_inset);
-		// Ok, what happens here if we are unable to insert
-		// the inset? Leak it?
+		if (!insertInset(new_inset))
+			delete new_inset;
 	}
 }
 

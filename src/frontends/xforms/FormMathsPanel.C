@@ -301,10 +301,12 @@ void FormMathsPanel::insertSymbol(string const & sym) const
 	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, '\\' + sym);
 }
 
-void FormMathsPanel::dispatchFunc(string const & funcode) const
+
+void FormMathsPanel::dispatchFunc(kb_action action) const
 {
-	lv_->getLyXFunc()->dispatch(funcode);
+	lv_->getLyXFunc()->dispatch(action);
 }
+
 
 void FormMathsPanel::mathDisplay() const
 {

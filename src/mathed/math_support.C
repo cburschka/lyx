@@ -12,6 +12,7 @@
 #include "math_parser.h"
 #include "Painter.h"
 #include "debug.h"
+#include "commandtags.h"
 
 using std::map;
 using std::endl;
@@ -781,9 +782,9 @@ char const * latex_mathstyle[] = {
 	"textstyle", "displaystyle", "scriptstyle", "scriptscriptstyle" 
 };
 
-char const * latex_mathfontcmds[] = {
-	"font-bold", "font-emph", "font-roman", "font-code", "font-sans",
-	"font-ital", "font-noun", "font-frak", "font-free", "font-default"
+kb_action latex_mathfontcmds[] = {
+	LFUN_BOLD, LFUN_EMPH, LFUN_ROMAN, LFUN_CODE, LFUN_SANS,
+	LFUN_ITAL, LFUN_NOUN, LFUN_FRAK, LFUN_FREE, LFUN_DEFAULT
 };
 
 

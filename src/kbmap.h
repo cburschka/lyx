@@ -16,8 +16,6 @@
 #include <list>
 #include <boost/smart_ptr.hpp>
 
-#include "commandtags.h"
-
 #include "LString.h"
 
 class kb_sequence;
@@ -30,7 +28,7 @@ public:
 	 * @return 0 on success, or position in string seq where error
 	 * occurs.
 	 */
-	string::size_type bind(string const & seq, kb_action action);
+	string::size_type bind(string const & seq, int action);
 
 	/// print all available keysyms
 	string const print() const;
@@ -42,11 +40,11 @@ public:
 	 * @param seq the current key sequence so far
 	 * @return the action / LFUN_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
-	kb_action lookup(unsigned int key,
-		unsigned int mod, kb_sequence * seq) const;
+	int lookup(unsigned int key,
+		   unsigned int mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
-	string const findbinding(kb_action action,
+	string const findbinding(int action,
 				 string const & prefix = string()) const;
 
 	/**
@@ -72,7 +70,7 @@ private:
 		boost::shared_ptr<kb_keymap> table;
 		
 		/// Action for !prefix keys
-		kb_action action;
+		int action;
 	};
 
 
@@ -80,7 +78,7 @@ private:
 	 * Define an action for a key sequence.
 	 * @param r internal recursion level
 	 */
-	void defkey(kb_sequence * seq, kb_action action, unsigned int r = 0);
+	void defkey(kb_sequence * seq, int action, unsigned int r = 0);
 	
 	///  Returns a string of the given key
 	string const printKey(kb_key const & key) const;
