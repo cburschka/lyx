@@ -21,26 +21,21 @@ Style LyX-Code
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	FreeSpacing           1
-
-	# define the environment lyxcode
 	Preamble
-	\newenvironment{lyxcode}
-	  {\begin{list}{}{
-	    \setlength{\rightmargin}{\leftmargin}
-	    \setlength{\listparindent}{0pt}% needed for AMS classes
-	    \raggedright
-	    \setlength{\itemsep}{0pt}
-	    \setlength{\parsep}{0pt}
-	    \normalfont\ttfamily}%
-	   \item[]}
-	  {\end{list}}
+		\newenvironment{lyxcode}
+			{\begin{list}{}{
+				\setlength{\rightmargin}{\leftmargin}
+				\setlength{\listparindent}{0pt}% needed for AMS classes
+				\raggedright
+				\setlength{\itemsep}{0pt}
+				\setlength{\parsep}{0pt}
+				\normalfont\ttfamily}%
+			 \item[]}
+			{\end{list}}
 	EndPreamble
-
-	# standard font definition
 	Font 
 	  Family              Typewriter
 	EndFont
-
 End
 
 
@@ -54,16 +49,13 @@ Style Address
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-
-	# define the macro \lyxaddress
 	Preamble
-	\newcommand{\lyxaddress}[1]{
-	  \par {\raggedright #1 
-	  \vspace{1.4em}
-	  \noindent\par}
-	}
+		\newcommand{\lyxaddress}[1]{
+			\par {\raggedright #1 
+			\vspace{1.4em}
+			\noindent\par}
+		}
 	EndPreamble
-
 End
 
 
@@ -76,16 +68,13 @@ Style Right_Address
 	ParSep                1.5
 	Align                 Left
 	AlignPossible         Left
-
-	# define the macro \lyxrightaddress
 	Preamble
-	\newcommand{\lyxrightaddress}[1]{
-	  \par {\raggedleft \begin{tabular}{l}\ignorespaces
-	  #1
-	  \end{tabular}
-	  \vspace{1.4em}
-	  \par}
-	}
+		\newcommand{\lyxrightaddress}[1]{
+			\par {\raggedleft \begin{tabular}{l}\ignorespaces
+			#1
+			\end{tabular}
+			\vspace{1.4em}
+			\par}
+		}
 	EndPreamble
-	
 End

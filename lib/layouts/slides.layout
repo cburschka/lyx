@@ -6,11 +6,11 @@
 # Based on the Article textclass "article.layout"
 #
 
-# General textclass parameters
+
 Columns        1
 Sides          1
 PageStyle      Plain
-MaxCounter     Counter_EnumI
+
 
 DefaultFont
 	Family       Sans
@@ -26,13 +26,6 @@ ClassOptions
 	Pagestyle  plain|headings|empty
 	Other      "dvips"
 End
-
-
-#####################################
-#
-#  Layout-specific preamble
-#
-#####################################
 
 
 Preamble
@@ -75,12 +68,20 @@ Style Standard
 End
 
 
+#  Note that the "Section" family of environments is missing, as is
+#  "Title" "Bibliograpy" "LaTeX-Title" "Author" "Abstract" and "Date".
+#  I may choose to reintroduce these and/or remove others at a later
+#  date.
+#  -jw 10/2/96
 
-##############################
-#
-# New Definitions for Slides
-#
-##############################
+Input stdlists.inc
+Input stdlayouts.inc
+Input lyxmacros.inc
+Input stdcounters.inc
+Input stdfloats.inc
+
+NoStyle Address
+NoStyle Right_Address
 
 
 Style Slide
@@ -99,7 +100,6 @@ Style Slide
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxMMMMxxxNewSlide
 	LabelString       "_____________________________NewSlide: "
-
 	Font 
 	  Family          Typewriter
 	  Series          Bold
@@ -111,13 +111,12 @@ Style Slide
 	  Size            Large
 	  Color           Blue
 	EndFont
-
 	Preamble
-	\newcommand{\lyxnewslide}[1]{
-	   \lyxendslide{.}
-	   \setcounter{slidetype}{1}
-	   \begin{slide}
-	}
+		\newcommand{\lyxnewslide}[1]{
+			 \lyxendslide{.}
+			 \setcounter{slidetype}{1}
+			 \begin{slide}
+		}
 	EndPreamble
 End
 
@@ -138,7 +137,6 @@ Style Overlay
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxNewOverlay
 	LabelString       "- - - - - - - - - - NewOverlay: "
-
 	Font 
 	  Family          Typewriter
 	  Series          Bold
@@ -153,13 +151,12 @@ Style Overlay
 	  Shape                       SmallCaps
 	  Color           Magenta
 	EndFont
-
 	Preamble
-	\newcommand{\lyxnewoverlay}[1]{
-	   \lyxendslide{.}
-	   \setcounter{slidetype}{2}
-	   \begin{overlay}
-	}
+		\newcommand{\lyxnewoverlay}[1]{
+			 \lyxendslide{.}
+			 \setcounter{slidetype}{2}
+			 \begin{overlay}
+		}
 	EndPreamble
 End
 
@@ -180,7 +177,6 @@ Style Note
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxMMxxNewNote
 	LabelString       "........................NewNote: "
-
 	Font 
 	  Family          Typewriter
 	  Series          Bold
@@ -195,13 +191,12 @@ Style Note
 	  Shape                       Italic
 	  Color           Magenta
 	EndFont
-
 	Preamble
-	\newcommand{\lyxnewnote}[1]{
-	   \lyxendslide{.}
-	   \setcounter{slidetype}{3}
-	   \begin{note}
-	}
+		\newcommand{\lyxnewnote}[1]{
+			 \lyxendslide{.}
+			 \setcounter{slidetype}{3}
+			 \begin{note}
+		}
 	EndPreamble
 End
 
@@ -215,7 +210,6 @@ Style InvisibleText
 	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Invisible Text Follows>"
-
 	Font 
 	  Family          Roman
 	  Size            Normal
@@ -226,11 +220,8 @@ Style InvisibleText
 	  Size            Normal
 	  Color           Cyan
 	EndFont
-
 	Preamble
-	\newcommand{\lyxinvisible}[1]{
-	   \invisible
-	}
+		\newcommand{\lyxinvisible}[1]{\invisible}
 	EndPreamble
 End
 
@@ -244,7 +235,6 @@ Style VisibleText
 	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Visible Text Follows>"
-
 	Font 
 	  Family          Roman
 	  Size            Normal
@@ -255,47 +245,7 @@ Style VisibleText
 	  Size            Normal
 	  Color           Green
 	EndFont
-
 	Preamble
-	\newcommand{\lyxvisible}[1]{
-	   \visible
-	}
+		\newcommand{\lyxvisible}[1]{\visible}
 	EndPreamble
 End
-
-########################################################################
-#
-# Definitions taken from article.layout.
-#
-#  Note that the "Section" family of environments is missing, as is
-#  "Title" "Bibliograpy" "LaTeX-Title" "Author" "Abstract" and "Date".
-#
-#  I may choose to reintroduce these and/or remove others at a later
-#  date.
-# 
-#  -jw 10/2/96
-#
-########################################################################
-
-Input stdlists.inc
-Input stdlayouts.inc
-Input lyxmacros.inc
-Input stdcounters.inc
-Input stdfloats.inc
-
-#Input obsolete.inc
-
-# Style definition for end of a slide
-Style End_All_Slides
-	ObsoletedBy       Comment
-End
-
-NoStyle Address
-NoStyle Right_Address
-
-
-
-
-#############
-#
-# End  File

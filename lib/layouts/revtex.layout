@@ -9,13 +9,10 @@
 #          Amir Karger (LyX v11.34 style modifications - using changes
 #                       made by Jean-Marc Lasgouttes to amsart.layout)
 
-# General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Headers
-MaxCounter              Counter_Section
 
-# Default textclass options. The user may need to modify this.
 ClassOptions
 	Other                 "aps,manuscript"
 End
@@ -32,17 +29,14 @@ Style Standard
 	LabelType             No_Label
 End
 
-############### Sections.
 
 Input stdsections.inc
-
-# Redefine some of the section styles.
+Input numrevtex.inc
 
 
 Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
-
 	Font
 	  Series              Medium
 	  Shape               Smallcaps
@@ -70,7 +64,6 @@ End
 Style Paragraph
 	TopSep                0.7
 	ParSep                0.4
-
 	Font
 	  Shape               Italic
 	  Size                Normal
@@ -81,23 +74,17 @@ End
 # then define the unumbered sections, based on the numbered ones.
 Input stdstarsections.inc
 
-
 # remove the layouts that do not make sense.
-NoStyle         Chapter
-NoStyle         Chapter*
-NoStyle         Subparagraph
-NoStyle         Subparagraph*
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Subparagraph
+NoStyle Subparagraph*
 
-########### LAYOUTS quotes, etc.
+
 Input stdlayouts.inc
-
-########## LISTS
 Input stdlists.inc
-
-################ STRUCTURE OF THE DOCUMENT
 Input stdtitle.inc
 Input stdstruct.inc
-
 
 Style Title
 	Font
@@ -106,7 +93,7 @@ Style Title
 	EndFont
 End
 
-# Same as stdstruct.inc except the font
+
 Style Author
 	Font
 	  Size                Large
@@ -118,7 +105,6 @@ End
 Style Date
 	LabelType             Static
 	LabelString           "Date: "
-
 	LabelFont
 	  Shape               Italic
 	  Size                Large
@@ -138,32 +124,23 @@ Style Address
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Address: "
-
 	LabelFont
 	  Shape               Italic
 	EndFont
-End  
+End
 
 
-Style Abstract 
+Style Abstract
 	ItemSep               0.2
 	ParSep                0.3
-
 	Font
 	  Size                Normal
 	EndFont
-
 	LabelFont
 	  Size                Large
 	EndFont
-End 
+End
+
 
 Input stdfloats.inc
 Input stdcounters.inc
-
-### Finally a few obsolete definitions for compatibility
-Input obsolete.inc
-
-Style REVTEX_Title
-	ObsoletedBy           Title
-End

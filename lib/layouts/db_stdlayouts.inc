@@ -37,12 +37,10 @@ Style Quotation
 	LatexParam            para
 End
 
-
 # Quote should be an inline element
 NoStyle Quote
-
-
 NoStyle Verse
+
 
 Style Caption
 	LatexType             Paragraph

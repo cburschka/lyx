@@ -3,33 +3,28 @@
 # Springer's cl2emult textclass definition file. 
 # Author : André Poenitz
 
-# General textclass parameters
 Columns                   1
 Sides                     1
 SecNumDepth               2
 TocDepth                  2
-
-MaxCounter                Counter_Section
-
 DefaultStyle              Standard
 
-Input stdlists.inc
 Input stdsections.inc
-Input stdstarsections.inc
+Input numarticle.inc
+Input stdlists.inc
 Input stdstruct.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
-
-NoStyle                   Chapter
-NoStyle                   Chapter*
-NoStyle                   Part
-NoStyle                   Part*
-NoStyle                   Paragraph
-NoStyle                   Paragraph*
-NoStyle                   Subparagraph
-NoStyle                   Subparagraph*
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Part
+NoStyle Part*
+NoStyle Paragraph
+NoStyle Paragraph*
+NoStyle Subparagraph
+NoStyle Subparagraph*
 
 
 DefaultFont
@@ -52,10 +47,10 @@ Style Title
 	ParSep                1
 	Align                 Left
 	Font                  
-		Size		Largest
-		Series		Bold        
+	  Size                Largest
+	  Series              Bold        
 	EndFont               
-End
+End                     
 
 
 Style Author

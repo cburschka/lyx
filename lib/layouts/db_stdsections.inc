@@ -7,7 +7,6 @@
 
 Input stdsections.inc
 
-
 Style Part
 	LatexType             Command
 	LatexName             part

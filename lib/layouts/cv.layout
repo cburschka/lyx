@@ -3,12 +3,11 @@
 # CV textclass definition file. 
 # Author : Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
-# General textclass parameters
+
 Columns                 1
 Sides                   1
 SecNumDepth             -1
 TocDepth                -1
-MaxCounter              Counter_Section
 
 
 Style Standard
@@ -22,6 +21,9 @@ Style Standard
 	LabelType             No_Label
 End
 
+
+Input stdfloats.inc
+Input stdcounters.inc
 
 Style Section
 	Margin                Dynamic
@@ -37,7 +39,6 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             No_Label
-
 	Font
 	  Family              Sans 
 	  Series              Bold
@@ -50,11 +51,6 @@ Style Subsection
 	LatexName             subsection
 	Margin                Static
 	LeftMargin            MMM
-End
-
-
-Style SubSection
-	ObsoletedBy           Subsection
 End
 
 
@@ -73,7 +69,6 @@ Style Topic
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MMMMM
-
 	LabelFont 
 	  Family              Sans
 	  Shape               Slanted
@@ -110,11 +105,9 @@ Style Left_Header
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-
 	Font
 	  Family              Sans
 	EndFont
-
 End
 
 
@@ -138,7 +131,6 @@ Style Title
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -153,11 +145,7 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           ""
 	LabelBottomSep        0.7
-
 	LabelFont
 	  Size                Tiny
 	EndFont
 End
-
-Input stdfloats.inc
-Input stdcounters.inc

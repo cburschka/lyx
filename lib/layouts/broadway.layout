@@ -1,8 +1,8 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[broadway]{broadway}
-# 
+ 
 # For theater plays
-# General textclass parameters
+
 Columns                 1
 Sides                   1
 SecNumDepth             2
@@ -12,17 +12,17 @@ ClassOptions
 FontSize                12
 End
 
-# This is just to show how to declare the default font.
-# The defaults are exactly those shown here.
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
 
-# Dialogue style definition. Actor dialog
+Counter
+	Name                  act
+End
+
+
+Counter
+	Name                  scene
+End
+
+
 Style Dialogue
 	Margin                Static
 	LatexType             Command
@@ -35,8 +35,6 @@ Style Dialogue
 End
 
 
-
-# Narrative description of Scene
 Style Narrative
 	Margin                Static
 	LatexType             Command
@@ -47,14 +45,12 @@ Style Narrative
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-Font
-	Family                Roman
-	Series                Medium
-	Shape                 Italic
-	Size                  Normal
-	Color                 Black
-EndFont
+	Font
+	  Shape               Italic
+	  Color               Black
+	EndFont
 End
+
 
 Style ACT
 	Margin                Static
@@ -67,8 +63,8 @@ Style ACT
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Counter
-	LabelCounter          chapter
-	LabelString           "ACT "
+	LabelCounter          act
+	LabelString           "ACT \arabic{act}"
 End
 
 
@@ -83,9 +79,10 @@ Style SCENE
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Counter
-	LabelCounter          section
-	LabelString           "SCENE "
+	LabelCounter          scene
+	LabelString           "SCENE \arabic{scene}"
 End
+
 
 Style SCENE*
 	Margin                Dynamic
@@ -101,6 +98,7 @@ Style SCENE*
 	LabelString           "SCENE "
 End
 
+
 Style AT_RISE:
 	Margin                Dynamic
 	LatexType             Command
@@ -115,6 +113,7 @@ Style AT_RISE:
 	LabelString           "AT RISE: "
 End
 
+
 # Speaker style definition, identifies speaker  ALL CAPS
 Style Speaker
 	Margin                Static
@@ -126,6 +125,7 @@ Style Speaker
 	AlignPossible         Center
 	LabelType             No_Label
 End
+
 
 # Parenthetical instruction to speaker (in parenthises, l.c.)
 # The ( and ) will automatically appear on screen, so don't type any.
@@ -144,22 +144,13 @@ Style Parenthetical
 	LabelString           (
 	EndLabelType          Static
 	EndLabelString        )
-
-Font
-	Family                Roman
-	Series                Medium
-	Shape                 Italic
-	Size                  Normal
-	Color                 Blue
-EndFont
-
-LabelFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 Blue
-EndFont
+	Font
+	  Shape               Italic
+	  Color               Blue
+	EndFont
+	LabelFont
+	  Color               Blue
+	EndFont
 End
 
 
@@ -177,6 +168,7 @@ Style CURTAIN
 	LabelString           "CURTAIN"
 End
 
+
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
 	Margin                Static
@@ -189,6 +181,7 @@ Style Standard
 	Labeltype             No_Label
 End
 
+
 Style Title
 	Margin                Static
 	LatexType             Command
@@ -199,8 +192,8 @@ Style Title
 	ParSep                1.5
 	Align                 Center
 	AlignPossible         Left, Right, Center
-
 End
+
 
 Style Author
 	Margin                Static
@@ -214,7 +207,7 @@ Style Author
 	AlignPossible         Left, Right, Center
 End
 
-# Right Address style
+
 Style Right_Address
 	Margin                Right_Address_Box
 	LatexType             Command
@@ -226,14 +219,14 @@ Style Right_Address
 	Align                 Left
 	AlignPossible         Left, Right
 End
+
  
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdfloats.inc
 Input stdcounters.inc
 # Input lyxmacros.inc
+
 NoStyle Abstract
 NoStyle Bibliography
 NoStyle Date
-
-

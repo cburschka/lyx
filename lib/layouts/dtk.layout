@@ -6,16 +6,14 @@
 # Author : Herbert Voss <voss@lyx.org> 2001/08/13
 
 
-# General textclass parameters
 Columns                 1
 Sides                   2
-SecNumDepth             -1              #no counting
+SecNumDepth             -1              # no counting
 TocDepth                -1
-MaxCounter              Counter_EnumI   #no counting of sections
 
 
 ClassOptions
-	FontSize              default         #only 10pt in fact of A5
+	FontSize              default         # only 10pt in fact of A5
 	PageStyle             ""              # controlled by class
 End
 
@@ -40,20 +38,16 @@ Style Standard
 	LabelType             No_Label
 End
 
-
 Input stdlists.inc
 Input stdsections.inc
+Input numarticle.inc
 Input stdstarsections.inc
-
 
 NoStyle Chapter
 NoStyle Chapter*
-
 
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
-
-# no lyxmacros!

@@ -4,7 +4,7 @@
 # Update for Koma Script Release >=2.8q
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/08.
 
-# General textclass parameters
+
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
@@ -17,19 +17,25 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 End
 
-Input stdlists.inc
-Input stdcounters.inc
-Input stdfloats.inc
 
-# Modify Description
+Input stdlists.inc
+Input stdfloats.inc
+Input stdsections.inc
+Input stdstarsections.inc
+Input stdcounters.inc
+Input stdtitle.inc
+Input stdstruct.inc
+Input stdlayouts.inc
+Input lyxmacros.inc
+
+NoStyle List
+
+
 Style Description
 	LabelFont
 	  Family              Sans
 	EndFont
 End
-
-# Delete List
-NoStyle List
 
 
 Style Labeling
@@ -48,16 +54,14 @@ Style Labeling
 	LabelString           00.00.0000
 End
 
-Input stdsections.inc
 
-# Modify Part
 Style Part
 	Font
 	  Family              Sans
 	EndFont
 End
 
-# Modify Chapter
+
 Style Chapter
 	LabelString           ""
 	Font
@@ -66,35 +70,35 @@ Style Chapter
 	EndFont
 End
 
-# Modify Section
+
 Style Section
 	Font
 	  Family              Sans
 	EndFont
 End
 
-# Modify Subsection
+
 Style Subsection
 	Font
 	  Family              Sans
 	EndFont
 End
 
-# Modify Subsubsection
+
 Style Subsubsection
 	Font
 	  Family              Sans
 	EndFont
 End
 
-# Modify Paragraph
+
 Style Paragraph
 	Font
 	  Family              Sans
 	EndFont
 End
 
-# Modify Subparagraph
+
 Style Subparagraph
 	LeftMargin            ""
 	Font
@@ -102,7 +106,6 @@ Style Subparagraph
 	EndFont
 End
 
-Input stdstarsections.inc
 
 
 Style Addpart
@@ -145,16 +148,13 @@ Style Minisec
 	TopSep                0.4
 	ParSep                0.4
 	AlignPossible         Block, Left
-
 	Font 
 	  Family              Sans
 	  Series              Bold
 	EndFont
 End
 
-Input stdtitle.inc
 
-# Modify Title
 Style Title
 	Font
 	  Family              Sans
@@ -162,14 +162,14 @@ Style Title
 	EndFont
 End
 
-# Modify Author
+
 Style Author
 	Font
 	  Size                Larger
 	EndFont
 End
 
-# Modify Date
+
 Style Date
 	Font
 	  Size                Larger
@@ -200,7 +200,6 @@ Style Titlehead
 	LatexName             titlehead
 	Align                 Left
 	AlignPossible         Left
-
 	Font 
 	  Size                Normal
 	EndFont
@@ -224,23 +223,19 @@ Style Extratitle
 	LatexName             extratitle
 End
 
-Input stdstruct.inc
 
-# Modify Abstract
 Style Abstract
 	LabelFont
 	  Family              Sans
 	EndFont
 End
 
-# Modify Bibliography
+
 Style Bibliography
 	LabelFont
 	  Family              Sans
 	EndFont
 End
-
-Input stdlayouts.inc
 
 
 Style Captionabove
@@ -265,11 +260,7 @@ Style Dictum
 	Align                Left
 	AlignPossible        Left
 	OptionalArgs         1
-	
 	Font
-	  Size                Normal
+	  Size               Normal
 	EndFont
 End
-
-Input lyxmacros.inc
-Input scrmacros.inc

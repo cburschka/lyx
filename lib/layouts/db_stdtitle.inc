@@ -79,7 +79,6 @@ Style RevisionHistory
 	LabelType             Centered_Top_Environment
 	LabelString           "Revision History"
 	LabelBottomSep        0.5
- 
 End
 
 
@@ -95,7 +94,6 @@ Style Revision
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block
- 
 End
 
 

@@ -7,11 +7,10 @@
 # Heavily modifed and enhanced by several developers.
 # Converted article -> egs Martin Vermeer
 
-# General textclass parameters
+
 Columns                 2
 Sides                   1
 PageStyle               Plain
-MaxCounter              Counter_Section
 
 
 Style Standard
@@ -38,12 +37,9 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Section
-
 	Font
 	  Series              Bold
 	EndFont
-
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -62,8 +58,6 @@ Style Subsection
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Subsection
-
 	Font
 	  Shape               Up
 	EndFont
@@ -71,23 +65,15 @@ End
 
 
 Style Paragraph
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Subsection
 	LatexName             paragraph
-	NextNoIndent          1
-	LabelSep              xxx
 	ParSkip               0.4
 	TopSep                0.4
 	BottomSep             0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_Paragraph
-
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Normal
@@ -96,28 +82,10 @@ End
 
 
 Style Subparagraph
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Paragraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_SubParagraph
-
-	Font 
-	  Series              Bold
-	  Size                Normal
-	EndFont
-
-	LabelFont 
-	  Series              Bold
-	  Size                Normal
-	EndFont
 End
 
 
@@ -186,7 +154,7 @@ Style Enumerate
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
+	LabelType             Enumerate
 End
 
 
@@ -203,7 +171,7 @@ Style Itemize
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           *
 End
 
@@ -224,7 +192,6 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -289,7 +256,6 @@ Style Title
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -311,7 +277,6 @@ Style LaTeX_Title
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -335,7 +300,6 @@ Style Author
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           Author:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -359,13 +323,11 @@ Style Affil
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           Affilation:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
 
@@ -384,7 +346,6 @@ Style Journal
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           Journal:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -409,13 +370,13 @@ Style msnumber
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           MS_number:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
 End
+
 
 
 Style FirstAuthor
@@ -433,13 +394,11 @@ Style FirstAuthor
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           1st_author_surname:
- 
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
 	EndFont
-
 End
 
 
@@ -458,7 +417,6 @@ Style Received
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           Received:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -482,7 +440,6 @@ Style Accepted
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           Accepted:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -506,7 +463,6 @@ Style Offsets
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           reprint_reqs_to:
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -546,7 +502,6 @@ Style Abstract
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Abstract.  
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -568,11 +523,9 @@ Style Acknowledgements
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Acknowledgements. 
-
 	Font 
 	  Size                Small
 	EndFont
-
 	LabelFont 
 	  Shape               Italic
 	  Size                Small
@@ -595,11 +548,9 @@ Style Acknowledgement
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Acknowledgement. 
-
 	Font 
 	  Size                Small
 	EndFont
-
 	LabelFont 
 	  Shape               Italic
 	  Size                Small
@@ -623,7 +574,6 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References 
 	LabelBottomSep    0.7
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -641,7 +591,6 @@ Style Caption
 	AlignPossible         Block, Left
 	LabelType             Sensitive
 	LabelString           Caption
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -661,7 +610,6 @@ Style Section*
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-
 	Font 
 	  Series              Bold
 #    Size               Larger
@@ -697,7 +645,6 @@ Style LaTeX
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	FreeSpacing           1
-
 	Font 
 	  Color               red
 	EndFont
@@ -717,7 +664,6 @@ Style LyX-Code
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	FreeSpacing           1
-
 	Font 
 	  Family              Typewriter
 	EndFont
@@ -725,4 +671,5 @@ End
 
 
 Input stdfloats.inc
+Input numarticle.inc
 Input stdcounters.inc

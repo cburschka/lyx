@@ -28,7 +28,6 @@
 # - Conclusion
 
 
-# Theorem-numbered style declaration
 Style Theorem
 	Preamble
 	  \theoremstyle{plain}    
@@ -36,7 +35,7 @@ Style Theorem
 	EndPreamble
 End  
 
-# Corollary-numbered style declaration
+
 Style Corollary
 	Preamble
 	  \theoremstyle{plain}    
@@ -44,7 +43,7 @@ Style Corollary
 	EndPreamble
 End  
 
-# Lemma-numbered style declaration
+
 Style Lemma
 	Preamble
 	  \theoremstyle{plain}    
@@ -52,7 +51,7 @@ Style Lemma
 	EndPreamble
 End  
 
-# Proposition-numbered style declaration
+
 Style Proposition
 	Preamble
 	  \theoremstyle{plain}    
@@ -60,7 +59,7 @@ Style Proposition
 	EndPreamble
 End  
 
-# Conjecture-numbered style declaration
+
 Style Conjecture
 	Preamble
 	  \theoremstyle{plain}    
@@ -68,7 +67,7 @@ Style Conjecture
 	EndPreamble
 End  
 
-# Criterion-numbered style declaration
+
 Style Criterion
 	Preamble
 	  \theoremstyle{plain}    
@@ -76,7 +75,7 @@ Style Criterion
 	EndPreamble
 End  
 
-# Algorithm-numbered style declaration
+
 Style Algorithm
 	Preamble
 	  \theoremstyle{plain}    
@@ -84,7 +83,7 @@ Style Algorithm
 	EndPreamble
 End  
 
-# Fact-numbered style declaration
+
 Style Fact
 	Preamble
 	  \theoremstyle{plain}    
@@ -92,7 +91,7 @@ Style Fact
 	EndPreamble
 End  
 
-# Axiom-numbered style declaration
+
 Style Axiom
 	Preamble
 	  \theoremstyle{plain}    
@@ -100,7 +99,7 @@ Style Axiom
 	EndPreamble
 End  
 
-# Definition-numbered style declaration
+
 Style Definition
 	Preamble
 	 \theoremstyle{definition}
@@ -108,7 +107,7 @@ Style Definition
 	EndPreamble
 End  
 
-# Example-numbered style declaration
+
 Style Example
 	Preamble
 	 \theoremstyle{definition}
@@ -116,7 +115,7 @@ Style Example
 	EndPreamble
 End  
 
-# Condition-numbered style declaration
+
 Style Condition
 	Preamble
 	 \theoremstyle{definition}
@@ -124,7 +123,7 @@ Style Condition
 	EndPreamble
 End  
 
-# Problem-numbered style declaration
+
 Style Problem
 	Preamble
 	 \theoremstyle{definition}
@@ -132,7 +131,7 @@ Style Problem
 	EndPreamble
 End  
 
-# Exercise-numbered style declaration
+
 Style Exercise
 	Preamble
 	 \theoremstyle{definition}
@@ -140,7 +139,7 @@ Style Exercise
 	EndPreamble
 End  
 
-# Remark-numbered style declaration
+
 Style Remark
 	Preamble
 	  \theoremstyle{remark}
@@ -148,7 +147,7 @@ Style Remark
 	EndPreamble
 End  
 
-# Claim-numbered style declaration
+
 Style Claim
 	Preamble
 	  \theoremstyle{remark}    
@@ -156,7 +155,7 @@ Style Claim
 	EndPreamble
 End  
 
-# Note-numbered style declaration
+
 Style Note
 	Preamble
 	  \theoremstyle{remark}    
@@ -164,7 +163,7 @@ Style Note
 	EndPreamble
 End  
 
-# Notation-numbered style declaration
+
 Style Notation
 	Preamble
 	  \theoremstyle{remark}    
@@ -172,7 +171,7 @@ Style Notation
 	EndPreamble
 End  
 
-# Summary-numbered style declaration
+
 Style Summary
 	Preamble
 	  \theoremstyle{remark}    
@@ -180,7 +179,7 @@ Style Summary
 	EndPreamble
 End  
 
-# Acknowledgement-numbered style declaration
+
 Style Acknowledgement
 	Preamble
 	  \theoremstyle{remark}    
@@ -188,7 +187,7 @@ Style Acknowledgement
 	EndPreamble
 End  
 
-# Case-numbered style declaration
+
 Style Case
 	Preamble
 	  \theoremstyle{remark}    
@@ -196,7 +195,7 @@ Style Case
 	EndPreamble
 End  
 
-# Conclusion-numbered style declaration
+
 Style Conclusion
 	Preamble
 	  \theoremstyle{remark}    

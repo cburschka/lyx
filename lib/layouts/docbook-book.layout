@@ -4,11 +4,9 @@
 # Author : Jose' Matos <jamatos@lyx.org>
 # hacked for books: Luc Abom <luc@abom.com>
 
-# Input general definitions
+
 Input db_stdclass.inc
-
-MaxCounter              Counter_Chapter
-
+Input report
 
 Style Title
 	LatexType             Command

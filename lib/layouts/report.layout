@@ -5,15 +5,18 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-# Input general definitions
 Input stdclass.inc
+Input numreport.inc
 
-# a few changes to the bibliography
+Style Chapter
+	LabelString           "Chapter \arabic{chapter}"
+	LabelStringAppendix   "Appendix \Alph{chapter}"
+End
+
+
 Style Bibliography
 	TopSep                4
 	LabelString           Bibliography
-
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Huge

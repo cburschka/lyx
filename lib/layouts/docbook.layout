@@ -3,10 +3,10 @@
 # DocBook textclass definition file. 
 # Author : Jose' Matos <jamatos@lyx.org>
 
-# Input general definitions
-Input db_stdclass.inc
 
-MaxCounter              Counter_Section
+Input db_stdclass.inc
+Input numarticle.inc
+
 
 # Exclude higher, or equal, sections:
 NoStyle Part

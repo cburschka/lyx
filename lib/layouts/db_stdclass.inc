@@ -7,23 +7,11 @@
 
 OutputType              docbook
 
-# General textclass parameters
 Columns                 1
 Sides                   1
 SecNumDepth             3
 TocDepth                3
 DefaultStyle            Standard
-
-
-# This is just to show how to declare the default font.
-# The defaults are exactly those shown here.
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
 
 
 Style Standard
@@ -36,6 +24,7 @@ Style Standard
 	AlignPossible         Block
 	LabelType             No_Label
 End
+
 
 Input db_stdlists.inc
 Input db_stdsections.inc

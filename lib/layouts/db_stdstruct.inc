@@ -7,7 +7,6 @@
 
 Input stdstruct.inc
 
-
 Style Abstract
 	LatexType             Environment
 	LatexName             abstract

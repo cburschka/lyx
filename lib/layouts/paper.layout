@@ -4,8 +4,6 @@
 # Created by Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
-# General textclass parameters
-MaxCounter              Counter_Section
 Columns                 1
 Sides                   1
 SecNumDepth             3
@@ -24,22 +22,17 @@ Style Standard
 End
 
 
-# A few lists
 Input stdlists.inc
-
-
-# Standard sections.
 Input stdsections.inc
+Input numarticle.inc
 
 
-### All the section headings now use sans serif
-
+# All the section headings now use sans serif
 Style Part
 	Align                 Left
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
-
 	Font
 	  Family              Sans
 	  Series              Bold
@@ -92,7 +85,6 @@ Style Subparagraph
 End
 
 
-# Starred versions of the sectioning layouts.
 Input stdstarsections.inc
 
 
@@ -100,18 +92,14 @@ Input stdstarsections.inc
 NoStyle                 Chapter
 NoStyle                 Chapter*
 
-
-# Some standard layouts 
 Input stdtitle.inc
 Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
-Input obsolete.inc
 
 
-### The description environment also uses sans serif labels.
 Style Description
 	LabelFont 
 	  Family              Sans
@@ -119,11 +107,11 @@ Style Description
 	EndFont
 End
 
-### The \maketitle stuff is by default left justified.
+
+# The \maketitle stuff is by default left justified.
 Style Title
 	Align                 Left
 	AlignPossible         Left
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -147,7 +135,6 @@ End
 Style Abstract
 	Align                 Left
 	AlignPossible         Left
-
 	Font 
 	  Size                Small
 	  Family              Sans
@@ -159,7 +146,6 @@ End
 Style SubTitle
 	CopyStyle             Title
 	LatexName             subtitle
-
 	Font 
 	  Family              Sans
 	  Series              Medium
@@ -171,7 +157,6 @@ End
 Style Institution
 	CopyStyle             Title
 	LatexName             institution
-
 	Font 
 	  Family              Sans
 	  Series              Medium

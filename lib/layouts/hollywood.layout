@@ -15,19 +15,15 @@
 # Based on course given by Lars Davidson
 
 
-# General textclass parameters
 Columns                 1
 Sides                   1
 SecNumDepth             2
 TocDepth                2
 
 ClassOptions
-FontSize                12
+	FontSize              12
 End
 
-
-# This is just to show how to declare the default font.
-# The defaults are exactly those shown here.
 DefaultFont
 	Family                Typewriter
 	Series                Medium
@@ -55,7 +51,7 @@ Style Dialogue
 End
 
 
-# Use to break a long Dialogue
+# More: Use to break a long Dialogue
 Style More
 	Margin                Static
 	LatexType             Command
@@ -69,15 +65,13 @@ Style More
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "(MORE)"
-
-Font
-	Family                Typewriter
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 Green
-EndFont
-
+	Font
+	  Family              Typewriter
+	  Series              Medium
+	  Shape               Up
+	  Size                Normal
+	  Color               Green
+	EndFont
 End
 
 
@@ -180,13 +174,12 @@ Style Parenthetical
 	LabelString           (
 	EndLabelType          Static
 	EndLabelString        )
-
 	Font
-		Family		Typewriter
-		Series		Medium
-		Shape		Up
-		Size		Normal
-		Color		Blue
+	  Family              Typewriter
+	  Series              Medium
+	  Shape               Up
+	  Size                Normal
+	  Color               Blue
 	EndFont
 End
 
@@ -207,11 +200,11 @@ Style Continuing
 	LabelType             Static
 	LabelString           "(continuing)"
 	Font
-		Family		Typewriter
-		Series		Medium
-		Shape		Up
-		Size		Normal
-		Color		Green
+	  Family              Typewriter
+	  Series              Medium
+	  Shape               Up
+	  Size                Normal
+	  Color               Green
 	EndFont
 End
 
@@ -329,6 +322,7 @@ Style Right_Address
 	AlignPossible         Left, Right
 End
 
+
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -357,10 +351,7 @@ End
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
-ObsoletedBy General
-End
-Style FADE_OUT:
-ObsoletedBy "FADE OUT"
+	ObsoletedBy General
 End
 
 
@@ -378,13 +369,12 @@ End
 #  LatexType            Command
 #  LatexName            endcontinued
 #End
-
  
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdfloats.inc
 Input stdcounters.inc
-# Input lyxmacros.inc
+
 NoStyle Abstract
 NoStyle Bibliography
 NoStyle Date

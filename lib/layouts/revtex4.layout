@@ -9,11 +9,11 @@
 #          Amir Karger (LyX v11.34 style modifications)
 #          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
 
-# General textclass parameters
+
 Columns                 1
 Sides                   1
 PageStyle               Headers
-MaxCounter              Counter_Section
+
 
 # Default textclass options. The user may need to modify this.
 ClassOptions
@@ -32,20 +32,16 @@ Style Standard
 	LabelType             No_Label
 End
 
-# Idea from aapaper: declare all layouts here ("Style Foo\nEnd\n")
-# so that they appear in a specific order in the layout dropdown menu?
 
-############### Sections.
+# Idea from aapaper: declare all layouts here ("Style Foo\nEnd\n")
+# so that they appear in a specific order in the layout dropdown menu.
 
 Input stdsections.inc
-
-# Redefine some of the section styles.
-
+Input numrevtex.inc
 
 Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
-
 	Font
 	  Series              Medium
 	  Shape               Smallcaps
@@ -73,7 +69,6 @@ End
 Style Paragraph
 	TopSep                0.7
 	ParSep                0.4
-
 	Font
 	  Shape               Italic
 	  Size                Normal
@@ -83,19 +78,13 @@ End
 # then define the unumbered sections, based on the numbered ones.
 Input stdstarsections.inc
 
-# remove the layouts that do not make sense.
 NoStyle         Chapter
 NoStyle         Chapter*
 NoStyle         Subparagraph
 NoStyle         Subparagraph*
 
-########### LAYOUTS quotes, etc.
 Input stdlayouts.inc
-
-########## LISTS
 Input stdlists.inc
-
-################ STRUCTURE OF THE DOCUMENT
 Input stdtitle.inc
 Input stdstruct.inc
 
@@ -121,7 +110,6 @@ Style Title
 End
 
 
-# Same as stdstruct.inc except the font
 Style Author
 	Font
 	  Size                Large
@@ -133,12 +121,12 @@ End
 Style Date
 	LabelType             Static
 	LabelString           "Date: "
-
 	LabelFont
 	  Shape               Italic
 	  Size                Large
 	EndFont
 End
+
 
 Style Affiliation
 	Margin                Dynamic
@@ -162,9 +150,9 @@ End
 # Address is exactly the same as Affiliation. We just put this in so
 # that reLyX will know what to do with it.
 Style Address
-	  CopyStyle           Affiliation
-	  LatexName           address
-	  LabelString         "Address: "
+	CopyStyle             Affiliation
+	LatexName             address
+	LabelString           "Address: "
 End
 
 
@@ -180,12 +168,10 @@ Style Author_Email
 	PassThru              1
 	LatexName             email
 	LabelString           "Electronic Address: "
-
 	TextFont
 	  Family              Typewriter
 	EndFont
 	LabelFont
-# override Typewriter
 	  Family              Roman
 	EndFont
 End
@@ -203,7 +189,6 @@ Style Abstract
 	InTitle               1
 	ItemSep               0.2
 	ParSep                0.3
-
 	LabelFont
 	  Size                Large
 	EndFont
@@ -217,7 +202,6 @@ Style Acknowledgments
 	ParSkip               0.4
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-
 	LabelType             Centered_Top_Environment
 	LabelString           acknowledgments
 	LabelBottomSep        0.5
@@ -249,12 +233,3 @@ End
 
 Input stdfloats.inc
 Input stdcounters.inc
-
-
-### Finally a few obsolete definitions for compatibility
-Input obsolete.inc
-
-
-Style REVTEX_Title
-	ObsoletedBy           Title
-End

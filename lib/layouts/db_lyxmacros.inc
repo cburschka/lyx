@@ -7,7 +7,6 @@
 
 Input lyxmacros.inc
 
-
 Style Code
 	CopyStyle             LyX-Code
 	LatexType             Environment
@@ -16,11 +15,9 @@ Style Code
 	PassThru              1
 End
 
-
 Style LyX-Code
 	ObsoletedBy           Code
 End
-
 
 NoStyle LyX-Code
 NoStyle Address

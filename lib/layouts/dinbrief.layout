@@ -6,10 +6,7 @@
 # Modifies only some things from letter.layout
 
 
-# Input general definitions
 Input letter.layout
-
-# Redefine some stuff
 
 
 Style My_Address
@@ -131,7 +128,7 @@ Style cc
 	EndFont
 End
 
-# Oggetto style definition
+
 Style Betreff
 	Margin                Static
 	LatexType             Command
@@ -177,7 +174,6 @@ Style Stadt
 End
 
 
-# Data style definition
 Style Datum
 	Margin                Right_Address_Box
 	LatexType             Command

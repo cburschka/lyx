@@ -3,11 +3,10 @@
 # LinuxDoc manpage textclass definition file. 
 # Author : José Matos <jamatos@novalis.fc.up.pt>
 
-# General textclass parameters
+
 Columns                 1
 Sides                   1
 PageStyle               Plain
-MaxCounter              Counter_Section
 OutputType              linuxdoc
 DefaultStyle            Standard
 
@@ -51,12 +50,10 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Counter_Subsection
-
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Large
@@ -77,7 +74,7 @@ Style Enumerate
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
+	LabelType             Enumerate
 End
 
 
@@ -94,10 +91,9 @@ Style Itemize
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           *
 End
-
 
 
 Style Description
@@ -116,7 +112,6 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -137,11 +132,9 @@ Style Verbatim
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-
 	Font 
 	  Family              Typewriter
 	EndFont
-
 	LabelFont 
 	  Family              Typewriter
 	EndFont

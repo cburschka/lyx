@@ -3,7 +3,6 @@
 # KOMA scrlettr textclass definition file. 
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1999/2/17.
 
-
 Style Standard
 	LatexName             dummy
 	ParSep                0.4
@@ -12,15 +11,14 @@ End
 
 Input stdlists.inc
 
-# Modify Description
+NoStyle List
+
+
 Style Description
 	LabelFont
 	  Family              Sans
 	EndFont
 End
-
-# Delete List
-NoStyle List
 
 
 Style Labeling
@@ -39,9 +37,9 @@ Style Labeling
 	LabelString           00.00.0000
 End
 
+
 Input stdlayouts.inc
 
-# Delete Caption
 NoStyle Caption
 
 
@@ -57,7 +55,6 @@ Style Letter
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "L"
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -71,7 +68,6 @@ Style Opening
 	CopyStyle             Letter
 	LatexName             lyxopening
 	LabelString           "O"
-
 	Preamble
 	  \newcommand{\lyxopening}[1]{\pagebreak\startbreaks\opening{#1}}
 	EndPreamble
@@ -136,7 +132,6 @@ Style Name
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Name:"
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -219,7 +214,6 @@ Style Yourref
 	CopyStyle             Name
 	LatexName             yourref
 	LabelString           "Your ref.:"
-
 	LabelFont 
 	  Family              Sans
 	  Series              Medium

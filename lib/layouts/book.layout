@@ -5,25 +5,23 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-# Input general definitions
-Input stdclass.inc
 
-# Global parameters.
+Input stdclass.inc
+Input numreport.inc
+
+
 Sides           2
 PageStyle       Headings
 
-# There is no abstract environment in book.cls
+
 NoStyle Abstract
 	      
-# a few changes to the bibliography
+
 Style Bibliography
 	TopSep                4
 	LabelString           Bibliography
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Huge
 	EndFont
 End
-
-

@@ -3,10 +3,8 @@
 # DocBook textclass definition file. 
 # Author : Jose' Matos <jamatos@lyx.org>
 
-# Input general definitions
 Input db_stdclass.inc
-
-MaxCounter              Counter_Section
+Input stnumarticle.inc
 
 
 Style Title
@@ -14,6 +12,7 @@ Style Title
 	LatexName             "!-- --"
 	LatexParam            "2|"
 End
+
 
 # Exclude higher, or equal, sections:
 NoStyle Part
