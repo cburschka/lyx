@@ -1,5 +1,9 @@
 2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* sp_form.[Ch]: remove.
+
+2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* src/LColor.[Ch]: remove noteframe. Change note to "yellow".
 
 	* src/BufferView_pimpl.C (insertNote): use InsetNote in place of

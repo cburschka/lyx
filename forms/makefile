@@ -17,11 +17,11 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS = figure_form.fd print_form.fd sp_form.fd
+SRCS = figure_form.fd print_form.fd
 
-OBJS = figure_form.c print_form.c sp_form.c
+OBJS = figure_form.c print_form.c
 
-COBJS = figure_form.C print_form.C sp_form.C
+COBJS = figure_form.C print_form.C
 
 all:
 	@echo "This is a makefile intended for the maintainer only."
