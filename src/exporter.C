@@ -71,7 +71,11 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// LaTeX backend
 	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);
-	else
+	else if (contains(buffer->filepath, ' ')) {
+		WriteAlert(_("Cannot run latex."),
+			   _("The path to the lyx file cannot contain spaces."));
+		return false;
+	} else
 		buffer->makeLaTeXFile(filename, buffer->filepath, false);
 
 	string outfile_base = (put_in_tempdir)
