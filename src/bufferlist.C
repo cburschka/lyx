@@ -111,8 +111,10 @@ bool BufferList::QwriteAll()
 				case 1: // Yes
 					if ((*it)->isUnnamed())
 						reask = !MenuWriteAs((*it));
-					else
+					else {
 						MenuWrite((*it));
+						reask = false;
+					}
 					break;
 				case 2: // No
 					askMoreConfirmation = true;

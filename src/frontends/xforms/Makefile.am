@@ -19,6 +19,10 @@ libxforms_la_SOURCES = \
 	FormCopyright.h \
 	form_copyright.C \
 	form_copyright.h \
+	FormGraphics.C \
+	FormGraphics.h \
+	form_graphics.C \
+	form_graphics.h \
 	FormPreferences.C \
 	FormPreferences.h \
 	form_preferences.C \
@@ -35,12 +39,14 @@ libxforms_la_SOURCES = \
 	FormUrl.h \
 	form_url.C \
 	form_url.h \
-	Toolbar_pimpl.C \
-	Toolbar_pimpl.h \
-	Menubar_pimpl.C \
-	Menubar_pimpl.h \
 	input_validators.h \
 	input_validators.c \
+	Menubar_pimpl.C \
+	Menubar_pimpl.h \
+	RadioButtonGroup.C \
+	RadioButtonGroup.h \
+	Toolbar_pimpl.C \
+	Toolbar_pimpl.h \
 	xform_macros.h
 
 # These still have to be added. Sooner or later. ARRae-20000411

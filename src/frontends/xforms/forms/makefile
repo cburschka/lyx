@@ -23,6 +23,7 @@ SRCS := form_citation.fd \
 	form_copyright.fd \
 	form_preferences.fd \
 	form_print.fd \
+	form_graphics.fd \
 	form_tabular.fd \
 	form_url.fd
 

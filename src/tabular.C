@@ -53,7 +53,7 @@ LyXTabular::cellstruct::cellstruct()
     top_line = true;
     bottom_line = false;
     rotate = false;
-    linebreaks = false;
+    usebox = false;
 }
 
 
@@ -940,7 +940,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 		" leftline=" << cell_info[i][j].left_line <<
 		" rightline=" << cell_info[i][j].right_line <<
 		" rotate=" << cell_info[i][j].rotate <<
-		" linebreaks=" << cell_info[i][j].linebreaks <<
+		" usebox=" << cell_info[i][j].usebox <<
 		" width=\"" << cell_info[i][j].p_width <<
 	        "\" special=\"" << cell_info[i][j].align_special <<
 		"\">" << endl;
@@ -1110,7 +1110,7 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 	    (void)getTokenValue(line, "leftline", cell_info[i][j].left_line);
 	    (void)getTokenValue(line, "rightline", cell_info[i][j].right_line);
 	    (void)getTokenValue(line, "rotate", cell_info[i][j].rotate);
-	    (void)getTokenValue(line, "linebreaks", cell_info[i][j].linebreaks);
+	    (void)getTokenValue(line, "usebox", cell_info[i][j].usebox);
 	    (void)getTokenValue(line, "width", cell_info[i][j].p_width);
 	    (void)getTokenValue(line, "special", cell_info[i][j].align_special);
 	    l_getline(is, line);
@@ -1248,7 +1248,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		cell_info[i][j].top_line = static_cast<char>(c);
 		cell_info[i][j].bottom_line = static_cast<char>(d);
 		cell_info[i][j].rotate = static_cast<bool>(f);
-		cell_info[i][j].linebreaks = static_cast<bool>(g);
+		cell_info[i][j].usebox = static_cast<bool>(g);
 		cell_info[i][j].align_special = s1;
 		cell_info[i][j].p_width = s2;
 	    }
@@ -1326,7 +1326,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	    }
 	    inset = GetCellInset(cell);
 	    row = row_of_cell(cell);
-	    if (!cell_info[row_of_cell(cell)][column_of_cell(cell)].linebreaks)
+	    if (!cell_info[row_of_cell(cell)][column_of_cell(cell)].usebox)
 	    {
 		// insert a space instead
 		par->Erase(i);
@@ -1684,18 +1684,18 @@ int LyXTabular::GetCellNumber(int row, int column) const
 }
 
 
-void LyXTabular::SetLinebreaks(int cell, bool what)
+void LyXTabular::SetUsebox(int cell, int what)
 {
-    cellinfo_of_cell(cell)->linebreaks = what;
+    cellinfo_of_cell(cell)->usebox = what;
 }
 
 
-bool LyXTabular::GetLinebreaks(int cell) const
+int LyXTabular::GetUsebox(int cell) const
 {
     if (column_info[column_of_cell(cell)].p_width.empty() &&
         !(IsMultiColumn(cell) && !cellinfo_of_cell(cell)->p_width.empty()))
         return false;
-    return cellinfo_of_cell(cell)->linebreaks;
+    return cellinfo_of_cell(cell)->usebox;
 }
 
 
@@ -1950,7 +1950,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 	    os << "}{";
 	}
     }
-    if (GetLinebreaks(cell)) {
+    if (GetUsebox(cell) == 1) {
 	os << "\\parbox[";
 	switch(GetVAlignment(cell)) {
 	case LYX_VALIGN_TOP:
@@ -1963,7 +1963,22 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 	    os << "b";
 	    break;
 	}
-	os << "]{" << GetPWidth(cell) << "}{\\smallskip{}";
+	os << "]{" << GetPWidth(cell) << "}{";
+    } else if (GetUsebox(cell) == 2) {
+	os << "\\begin{minipage}[";
+	switch(GetVAlignment(cell)) {
+	case LYX_VALIGN_TOP:
+	    os << "t";
+	    break;
+	case LYX_VALIGN_CENTER:
+	    os << "m";
+	    break;
+	case LYX_VALIGN_BOTTOM:
+	    os << "b";
+	    break;
+	}
+	os << "]{" << GetPWidth(cell) << "}\n";
+	++ret;
     }
     return ret;
 }
@@ -1974,13 +1989,17 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
     int ret = 0;
 
     // usual cells
-    if (GetLinebreaks(cell))
-	os << "\\smallskip{}}";
+    if (GetUsebox(cell) == 1)
+	os << "}";
+    else if (GetUsebox(cell) == 2) {
+	os << "%\n\\end{minipage}";
+	ret += 2;
+    }
     if (IsMultiColumn(cell)){
 	os << '}';
     }
     if (GetRotateCell(cell)) {
-	os << endl << "\\end{sideways}";
+	os << "%\n\\end{sideways}";
 	++ret;
     }
     return ret;

@@ -1,3 +1,50 @@
+2000-07-31  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/xforms/FormTabular.C (local_update): changed
+	radio_linebreaks to radio_useparbox and added radio_useminipage.
+
+	* src/tabular.C: made support for using minipages/parboxes.
+
+	* src/bufferlist.C (QwriteAll): small fix for asking for save.
+
+	* src/insets/insetgraphics.C (draw): just draw the inset so that the
+	cursor is visible.
+	(descent): so the cursor is in the middle.
+	(width): bit smaller box.
+
+	* src/insets/insetgraphics.h: added display() function.
+
+2000-07-31  Baruch Even <baruch.even@writeme.com>
+
+    * src/frontends/Dialogs.h: Added showGraphics signals.
+    
+    * src/frontends/xforms/forms/form_graphics.fd: Added file, the xforms
+                    form definition of the graphics dialog.
+
+    * src/frontends/xforms/FormGraphics.h:
+    * src/frontends/xforms/FormGraphics.C: Added files, the GUIndependent
+                    code of InsetGraphics
+    
+    * src/insets/insetgraphics.h:
+    * src/insets/insetgraphics.C: Major writing to make it work.
+
+    * src/insets/insetgraphicsParams.h:
+    * src/insets/insetgraphicsParams.C: Added files, parameter passing struct
+                    between InsetGraphics and GUI.
+
+    * src/LaTeXFeatures.h:
+    * src/LaTeXFeatures.C (c-tor, require, getPackages):
+                    Enabled support for graphicx package.
+
+    * src/buffer.C (parseSingleLyXformat2Token):
+                    Fixed read support for the graphics inset.
+
+    * src/support/translator.h: Added file, used in InsetGraphicsParams. this                       is a template to translate between two types.
+
+    * src/frontends/xforms/RadioButtonGroup.h:
+    * src/frontends/xforms/RadioButtonGroup.C: Added files, Comprise a way to
+                    easily control a radio button group.
+
 2000-07-28  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (LocalDispatch): 

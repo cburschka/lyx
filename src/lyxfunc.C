@@ -924,8 +924,12 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSET_GRAPHICS:
 	{
 		Inset * new_inset = new InsetGraphics;
-		if (!owner->view()->insertInset(new_inset))
+		if (!owner->view()->insertInset(new_inset)) {
 			delete new_inset;
+		} else {
+		    // this is need because you don't use a inset->Edit()
+		    owner->view()->updateInset(new_inset, true);
+		}
 		break;
 	}
 	

@@ -55,5 +55,6 @@ libsupport_la_SOURCES = \
 	syscontr.C \
 	syscontr.h \
 	syssingleton.C \
+	translator.h \
 	textutils.h \
 	utility.hpp

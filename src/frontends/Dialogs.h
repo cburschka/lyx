@@ -29,6 +29,7 @@ class DialogBase;
 // Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
 
+class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
 class InsetCitation;
@@ -104,6 +105,8 @@ public:
 	Signal0<void> showCredits;
 	///
 	Signal0<void> showPreferences;
+	///
+	Signal1<void, InsetGraphics *> showGraphics;
 	///
 	Signal1<void, InsetInclude *> showInclude;
 	///

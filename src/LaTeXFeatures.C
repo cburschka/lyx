@@ -31,7 +31,8 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	// packages
 	array = false;
 	color = false;
-	graphics = false;
+	graphics = false; // INSET_GRAPHICS: remove this when InsetFig is thrown.
+    graphicx = false;
 	setspace = false;
 	makeidx = false;
 	verbatim = false;
@@ -79,11 +80,8 @@ void LaTeXFeatures::require(string const & name) {
 	} else if (name == "color") {
 		color = true;
 	} else if (name == "graphics") {
-#ifdef USE_GRAPHICX
 		graphicx = true;
-#else
-		graphics = true;
-#endif
+		graphics = true;// INSET_GRAPHICS: remove this when InsetFig is thrown.
 	} else if (name == "setspace") {
 		setspace = true;
 	} else if (name == "makeidx") {
@@ -151,6 +149,16 @@ string LaTeXFeatures::getPackages()
 		packages += "\\makeindex\n";
 	}
 
+	// graphicx.sty
+	if (graphicx && params.graphicsDriver != "none") {
+		if (params.graphicsDriver == "default")
+			packages += "\\usepackage{graphicx}\n";
+		else
+			packages += "\\usepackage[" 
+				+ params.graphicsDriver + "]{graphicx}\n";
+	}
+
+    // INSET_GRAPHICS: remove this when InsetFig is thrown.
 	// graphics.sty
 	if (graphics && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")

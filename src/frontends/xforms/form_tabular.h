@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Fri Jul 28 11:50:11 2000.**/
+/** Header file generated with fdesign on Mon Jul 31 12:55:35 2000.**/
 
 #ifndef FD_form_tabular_h_
 #define FD_form_tabular_h_
@@ -61,7 +61,7 @@ struct FD_form_cell_options {
 
 	FL_FORM *form_cell_options;
 	FL_OBJECT *radio_multicolumn;
-	FL_OBJECT *radio_linebreak_cell;
+	FL_OBJECT *radio_useparbox;
 	FL_OBJECT *radio_rotate_cell;
 	FL_OBJECT *input_special_multialign;
 	FL_OBJECT *input_mcolumn_width;
@@ -75,6 +75,7 @@ struct FD_form_cell_options {
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
+	FL_OBJECT *radio_useminipage;
 };
 struct FD_form_longtable_options {
 

@@ -39,6 +39,8 @@ libinsets_la_SOURCES = \
 	insetfoot.h \
 	insetfootlike.C \
 	insetfootlike.h \
+	insetgraphicsParams.h \
+	insetgraphicsParams.C \
 	insetgraphics.C \
 	insetgraphics.h \
 	insetinclude.C \

@@ -948,10 +948,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
 			++pos;
-		} else if (tmptok == "GRAPHICS") {
+		} else if (tmptok == "Graphics") {
 			Inset * inset = new InsetGraphics;
-				//inset->Read(this, lex);
+            inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
+            ++pos;
 		} else if (tmptok == "LatexCommand") {
 			InsetCommand inscmd;
 			inscmd.Read(this, lex);
@@ -3563,7 +3564,7 @@ int Buffer::runLiterate()
 	users->owner()->getMiniBuffer()->Set(_("Running Literate..."));   
 
 	// Remove all error insets
-	bool a = users->removeAutoInsets();
+	bool removedErrorInsets = users->removeAutoInsets();
 
 	// generate the Literate file if necessary
 	makeLaTeXFile(lit_name, org_path, false);
@@ -3596,7 +3597,7 @@ int Buffer::runLiterate()
 
 	// if we removed error insets before we ran LaTeX or if we inserted
 	// error insets after we ran LaTeX this must be run:
-        if (a || (res & Literate::ERRORS)){
+        if (removedErrorInsets || (res & Literate::ERRORS)){
                 users->redraw();
                 users->fitCursor();
                 //users->updateScrollbar();
@@ -3630,10 +3631,10 @@ int Buffer::buildProgram()
         users->owner()->getMiniBuffer()->Set(_("Building Program..."));   
  
         // Remove all error insets
-        bool a = users->removeAutoInsets();
+        bool removedErrorInsets = users->removeAutoInsets();
  
         // generate the LaTeX file if necessary
-        if (!isNwClean() || a) {
+        if (!isNwClean() || removedErrorInsets) {
                 makeLaTeXFile(lit_name, org_path, false);
                 markNwDirty();
         }
@@ -3667,7 +3668,7 @@ int Buffer::buildProgram()
         // if we removed error insets before we ran Literate/Build or
 	// if we inserted error insets after we ran Literate/Build this
 	// must be run:
-	if (a || (res & Literate::ERRORS)){
+	if (removedErrorInsets || (res & Literate::ERRORS)){
 		users->redraw();
 		users->fitCursor();
 		//users->updateScrollbar();

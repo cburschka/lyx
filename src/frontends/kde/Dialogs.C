@@ -9,9 +9,9 @@
 #endif
 
 
-Dialogs::Dialogs(LyXFunc * lf)
+Dialogs::Dialogs(LyXView * lv)
 {
-	dialogs_.push_back(new FormCopyright(lf, this));
+	dialogs_.push_back(new FormCopyright(lv, this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

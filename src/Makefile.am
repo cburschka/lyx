@@ -1,5 +1,5 @@
 AUTOMAKE_OPTIONS = foreign
-SUBDIRS = mathed insets support frontends
+SUBDIRS = mathed insets graphics support frontends
 DISTCLEANFILES= *.orig *.rej *~ *.bak core libintl.h config.h
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/config.h.in
 bin_PROGRAMS = lyx
@@ -8,6 +8,7 @@ bin_PROGRAMS = lyx
 ## free to provide another solution... Maybe signals would solve that
 ## magically, but I do not understand them much (JMarc)
 lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
+	graphics/libgraphics.la \
 	frontends/libfrontends.la @FRONTEND_GUILIB@ \
 	frontends/libfrontends.la support/libsupport.la @INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \

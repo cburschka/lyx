@@ -68,7 +68,7 @@ public:
 	UNSET_ROTATE_TABULAR,
 	SET_ROTATE_CELL,
 	UNSET_ROTATE_CELL,
-	SET_LINEBREAKS,
+	SET_USEBOX,
 	SET_LTHEAD,
 	SET_LTFIRSTHEAD,
 	SET_LTFOOT,
@@ -270,9 +270,9 @@ public:
     ///
     int GetCellNumber(int row, int column) const;
     ///
-    void SetLinebreaks(int cell, bool what);
+    void SetUsebox(int cell, int what);
     ///
-    bool GetLinebreaks(int cell) const;
+    int GetUsebox(int cell) const;
     ///
     /// Long Tabular Options
     ///
@@ -334,7 +334,11 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	bool right_line;
 	///
-	bool linebreaks;
+	/// 0 ... don't use a box
+	/// 1 ... use a parbox
+	/// 2 ... use a minipage
+	///
+	int usebox;
 	///
 	int rotate;
 	///

@@ -90,7 +90,7 @@ static tabular_features tabularFeatures[] =
     { LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
     { LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
     { LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
-    { LyXTabular::SET_LINEBREAKS, "set-linebreaks" },
+    { LyXTabular::SET_USEBOX, "set-usebox" },
     { LyXTabular::SET_LTHEAD, "set-lthead" },
     { LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
     { LyXTabular::SET_LTFOOT, "set-ltfoot" },
@@ -190,7 +190,7 @@ void InsetTabular::initFeatures()
 	{ LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
 	{ LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
 	{ LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
-	{ LyXTabular::SET_LINEBREAKS, "set-linebreaks" },
+	{ LyXTabular::SET_USEBOX, "set-usebox" },
 	{ LyXTabular::SET_LTHEAD, "set-lthead" },
 	{ LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
 	{ LyXTabular::SET_LTFOOT, "set-ltfoot" },
@@ -1171,7 +1171,7 @@ bool InsetTabular::TabularFeatures(BufferView * bv, string what)
 }
 
 
-void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
+void InsetTabular::TabularFeatures(BufferView * bv, int feature, string value)
 {
     int
 	i, j,
@@ -1252,8 +1252,8 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     switch (feature) {
     case LyXTabular::SET_PWIDTH:
     {
-	bool update = (tabular->GetColumnPWidth(actcell) != val);
-	tabular->SetColumnPWidth(actcell,val);
+	bool update = (tabular->GetColumnPWidth(actcell) != value);
+	tabular->SetColumnPWidth(actcell,value);
 	if (update) {
 	    for (int i=0; i < tabular->rows(); ++i) {
 		tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -1265,8 +1265,8 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     break;
     case LyXTabular::SET_MPWIDTH:
     {
-	bool update = (tabular->GetPWidth(actcell) != val);
-	tabular->SetMColumnPWidth(actcell,val);
+	bool update = (tabular->GetPWidth(actcell) != value);
+	tabular->SetMColumnPWidth(actcell,value);
 	if (update) {
 	    for (int i=0; i < tabular->rows(); ++i) {
 		tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -1278,7 +1278,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     break;
     case LyXTabular::SET_SPECIAL_COLUMN:
     case LyXTabular::SET_SPECIAL_MULTI:
-	tabular->SetAlignSpecial(actcell,val,feature);
+	tabular->SetAlignSpecial(actcell,value,feature);
 	break;
     case LyXTabular::APPEND_ROW:
 	// append the row into the tabular
@@ -1452,12 +1452,16 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
 		tabular->SetRotateCell(tabular->GetCellNumber(i,j),false);
 	break;
-    case LyXTabular::SET_LINEBREAKS:
-	what = !tabular->GetLinebreaks(actcell);
+    case LyXTabular::SET_USEBOX:
+    {
+	int val = strToInt(value);
+	if (val == tabular->GetUsebox(actcell))
+	    val = 0;
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetLinebreaks(tabular->GetCellNumber(i,j),what);
+		tabular->SetUsebox(tabular->GetCellNumber(i,j),val);
 	break;
+    }
     case LyXTabular::SET_LTFIRSTHEAD:
 	tabular->SetLTHead(actcell,true);
 	break;

@@ -17,23 +17,34 @@
 #endif
 
 #include "insets/lyxinset.h"
-#include "LaTeXFeatures.h"
-#include "vspace.h"
-#include "insets/BoundingBox.h"
+#include "insets/insetgraphicsParams.h"
 
-struct FD_Graphics;
+#include "LaTeXFeatures.h"
+
+// We need a signal here to hide an active dialog when we are deleted.
+#include "sigc++/signal_system.h"
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
+
+class Dialogs;
+class GraphicsCacheItem;
 
 ///
 class InsetGraphics : public Inset {
 public:
 	///
 	InsetGraphics();
+    ///
+    ~InsetGraphics();
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
 	///
 	int width(BufferView *, LyXFont const &) const;
+	///
+	bool display() const { return true; }
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
@@ -44,6 +55,7 @@ public:
 	void Write(Buffer const *, std::ostream &) const;
 	///
 	void Read(Buffer const *, LyXLex & lex);
+
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile == true means, that the inset should take care about
 	 fragile commands by adding a \protect before.
@@ -57,7 +69,9 @@ public:
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 
-	/// Updates needed features for this inset.
+	/** Tell LyX what the latex features you need i.e. what latex packages
+     * you need to be included.
+     */
 	void Validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
@@ -65,28 +79,37 @@ public:
   
 	///
 	Inset * Clone() const;
-	/// Set the graphics file
-	void graphicsFile(string const & f) {
-		graphicsfile = f;
-	}
-	/// Get the graphics file
-	string const & graphicsFile() const {
-		return graphicsfile;
-	}
+
+    /// Set the inset parameters, used by the GUIndependent dialog.
+    /// Return true of new params are different from what was so far.
+    bool setParams(InsetGraphicsParams const & params);
+
+    /// Get the inset parameters, used by the GUIndependent dialog.
+    InsetGraphicsParams getParams() const;
+
+    /// This signal is connected by our dialog and called when the inset
+    /// is deleted.
+    Signal0<void> hide;
 private:
-	///
-	FD_Graphics * form;
-	///
-	string graphicsfile;
-	///
-	Pixmap pixmap;
-	
+    /// Update the inset after parameter change.
+    void updateInset();
+
+    /// The graphics cache handle.
+    GraphicsCacheItem * cachehandle;
+
+
+    InsetGraphicsParams params;
+
+    // Baruch Even (baruch.even@writeme.com) 2000-07-17
+    // This was the intended way however it is not flexible enough and
+    // only provides for LaTeX output.
+#ifdef IG_OLDPARAMS
 	// We need variables to store the size of the boundingbox and
 	// to store a pointer to the pixmap in.. The question is if
 	// these should be in a "pixmap" class.
 	// We also need to have variables about rotation and scaling,
 	// width and height. in effect all the paramters that
-	// \includegrapichs can handle. (the graphix.sty package)
+	// \includegraphics can handle. (the graphix.sty package)
 
 	/** The "bounding box" of the graphics image. Its value field
 	    must contain four dimensions, separated by spaces.	*/
@@ -101,76 +124,77 @@ private:
 	    and then for HiResBoundingBox, and set hiresbb depending on this.
 	    This key makes LaTeX search for %%HiResBoundingBox comments
 	    instead of the normal %%BoundingBox. Some applications use
-	    this to specify more precise bounding boxes, becase the cumbers
+	    this to specify more precise bounding boxes, becase the numbers
 	    can normally only have integer values. It is a Boolean, either
 	    "true" or "false". */
 	bool hiresbb;
+    
 	/** This key takes four arguments (like bb), but in this case the
 	    origin is taken with respect to the bounding box specified in
 	    the file. So to view a 20 bp square at the lower left-hand corner
 	    of the picture, specify viewport=0 0 20 20. */
 	BoundingBox viewport;
+    
 	/** Similar to the viewport key, but the four dimensions correspond
 	    to the amount of space to be trimmed (cut off) at the left-hand
 	    side, bottom, right-hand side and top of the included graphics. */
 	BoundingBox trim;
+    
 	/// Natural height of figure
 	LyXLength natheight;
+    
 	/// Natural width of figure.
 	LyXLength natwidth;
+   
 	/// Rotation angle (in degrees, counterclockwise).
 	float angle;
-	/// This is the different origins that the graphicx package support.
-	enum Origin {
-		DEFAULT,
-		LEFTTOP,
-		LEFTCENTER,
-		LEFTBASELINE,
-		LEFTBOTTOM,
-		CENTERTOP,
-		CENTER,
-		CENTERBASELINE,
-		CENTERBOTTOM,
-		RIGHTTOP,
-		RIGHTCENTER,
-		RIGHTBASELINE,
-		RIGHTBOTTOM,
-		REFERENCE_POINT = LEFTBASELINE
-	};
+
 	/** Origin for rotation, similar to the origin parameter of
 	    the \rotatebox command described on p.46 and Fig. 2.2 on p.46. */
 	Origin origin;
+    
 	/// Required width (the width of the image is scaled to that value).
 	LyXLength g_width;
+    
 	/// Required height (the height of the image is scaled to that value).
 	LyXLength g_height;
+    
 	/** Required total height (the total height of the image is scaled
 	    to that value). This key should be used instead of height if
 	    images are rotated over 90 degrees, since the height can
 	    disappear (and become the depth) and LaTeX will have difficulties
 	    satisfying the user's request. */
 	LyXLength totalheight;
+    
 	/** Boolean variable that can have the values "true" and "false"
 	    (se above for defaults). When true, specifying both width and
 	    height parameters does not distort the picture, but the image
 	    is scaled so that neither of the width of height exceeds the
 	    given dimensions. */
 	bool keepaspectratio;
+    
 	/// Scale factor
 	float scale;
+    
 	/** Clip the graphic to the bounding box. It is a Boolean, either
 	    "true" or "false". */
 	bool clip;
+    
 	/// Locally switch to draft mode. A Boolean valued key, like clip.
 	bool draft;
+    
 	/// The graphics type.
 	string type;
-	///x The file extension of the file containing the image data.
+    
+	/// The file extension of the file containing the image data.
 	string ext;
+    
 	/// The file extension of the file "read" by LaTeX.
 	string read;
+    
 	/// Any command to be applied to the file.
 	string command;
+#endif    
 };
 
 #endif
