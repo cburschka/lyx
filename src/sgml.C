@@ -23,6 +23,7 @@
 #include "support/std_ostream.h"
 #include "support/tostr.h"
 
+#include <boost/tuple/tuple.hpp>
 #include <sstream>
 
 using lyx::support::subst;
@@ -100,7 +101,7 @@ string escapeString(string const & raw)
 {
 	ostringstream bin;
 
-	for(int i=0; i < raw.size(); ++i) {
+	for(unsigned int i=0; i < raw.size(); ++i) {
 		bool ws;
 		string str;
 		boost::tie(ws, str) = sgml::escapeChar(raw[i]);
