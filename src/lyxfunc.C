@@ -360,6 +360,10 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		disable = !Exporter::IsExportable(buf, "program");
 		break;
 
+	case LFUN_LAYOUT_CHARACTER:
+		disable = tli && tli->lyxCode() == Inset::ERT_CODE;
+		break;
+
 	case LFUN_LAYOUT_TABULAR:
 		disable = !tli
 			|| (tli->lyxCode() != Inset::TABULAR_CODE

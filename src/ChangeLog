@@ -1,5 +1,9 @@
 2002-07-30  John Levon  <levon@movementarian.org>
 
+	* lyxfunc.C: disable character dialog in ERT inset (partial fix)
+ 
+2002-07-30  John Levon  <levon@movementarian.org>
+
 	* lyxserver.h:
 	* lyxserver.C: remove I/O callback too
  
