@@ -1709,7 +1709,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		bool use_babel = false;
-		if (params.language->babel() == "hebrew") // This seems necessary
+		if (params.language->babel() == "hebrew"
+		    && default_language->babel() != "hebrew")
+			 // This seems necessary
 			features.UsedLanguages.insert(default_language);
 #ifdef DO_USE_DEFAULT_LANGUAGE
 		if (params.language->lang() != "default" ||

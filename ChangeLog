@@ -1,3 +1,14 @@
+2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/languages: Add extra_options field. It is used to fix the ~n
+ 	problem with Spanish.
+
+	* src/language.C (latex_options_): New field.
+
+	* src/LaTeXFeatures.C (getMacros): Add language macros.
+
+	* src/buffer.C (makeLaTeXFile): Small fix.
+
 2001-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C: fix the name of the inset for LFUN_CHILDINSERT
