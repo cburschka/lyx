@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>275</width>
+            <width>267</width>
             <height>290</height>
         </rect>
     </property>
@@ -280,12 +280,6 @@
         <slot>update()</slot>
     </connection>
     <connection>
-        <sender>fileList</sender>
-        <signal>clicked(QListBoxItem*)</signal>
-        <receiver>QTexinfoDialogBase</receiver>
-        <slot>enableViewPB()</slot>
-    </connection>
-    <connection>
         <sender>path</sender>
         <signal>stateChanged(int)</signal>
         <receiver>QTexinfoDialogBase</receiver>
@@ -303,6 +297,12 @@
         <receiver>QTexinfoDialogBase</receiver>
         <slot>rescanClicked()</slot>
     </connection>
+    <connection>
+        <sender>fileList</sender>
+        <signal>highlighted(QListBoxItem*)</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>enableViewPB()</slot>
+    </connection>
     <slot access="protected">enableViewPB()</slot>
     <slot access="protected">rescanClicked()</slot>
     <slot access="protected">update()</slot>
@@ -311,8 +311,9 @@
 <tabstops>
     <tabstop>whatStyle</tabstop>
     <tabstop>path</tabstop>
-    <tabstop>viewPB</tabstop>
+    <tabstop>fileList</tabstop>
     <tabstop>rescanPB</tabstop>
+    <tabstop>viewPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>

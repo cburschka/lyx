@@ -1,3 +1,13 @@
+2003-07-15  John Levon  <levon@movementarian.org>
+ 
+	* QMathDialog.C: use widget(i) not visibleWidget() due to
+	issue N26610 in Qt 3.2.0beta2
+ 
+2003-07-03  John Levon  <levon@movementarian.org>
+
+	* ui/QTexinfoDialog.ui: fix tab order and enable View
+	properly
+
 2003-07-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Menubar_pimpl.C (Pimpl): when creating a top-level menu, make

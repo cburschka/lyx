@@ -191,7 +191,7 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 
 void QMathDialog::addPanel(int num)
 {
-	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->visibleWidget());
+	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->widget(num));
 	IconPalette * p = makePanel(view->viewport(), panels[num]);
 	view->setChild(p);
 }
