@@ -112,13 +112,15 @@ void TexRow::increasePos(int id, int pos) const
 		if (id == (*kit).id()
 		    && pos < (*kit).pos()) {
 			(*kit).pos((*kit).pos() + 1);
-			lyxerr << "TeXRow::increasePos: ideally this "
+			lyxerr.debug()
+				<< "TeXRow::increasePos: ideally this "
 				"should never happen..." << endl;
 		}
 		// When verified to work this clause should be deleted.
 		if (id == (*kit).id()
 		    && pos == (*kit).pos()) {
-			lyxerr << "TexRow::increasePos: this should happen "
+			lyxerr.debug()
+				<< "TexRow::increasePos: this should happen "
 				"maximum one time for each run of "
 				"increasePos!" << endl;
 		}
