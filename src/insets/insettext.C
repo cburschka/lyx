@@ -629,11 +629,10 @@ bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
 				return false;
 			found = tl_inset->updateInsetInInset(bv, inset);
 			ustat = FULL;
-		}
-		if (found)
+		} else { 
 			text_.updateInset(tl_inset);
-		if (found)
 			setUpdateStatus(ustat);
+		}
 		return found;
 	}
 	bool found = text_.updateInset(inset);
@@ -825,7 +824,9 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 		locked = true;
 		the_locking_inset = 0;
-		inset_pos = inset_x = inset_y = 0;
+		inset_pos = 0;
+		inset_x = 0;
+		inset_y = 0;
 		inset_boundary = false;
 		inset_par = paragraphs.end();
 		old_par = paragraphs.end();
@@ -835,11 +836,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			if (cmd.argument == "left")
 				text_.setCursorIntern(paragraphs.begin(), 0);
 			else {
-				ParagraphList::iterator it = paragraphs.begin();
-				ParagraphList::iterator end = paragraphs.end();
-				while (boost::next(it) != end)
-					++it;
-		//		int const pos = (p->size() ? p->size()-1 : p->size());
+				ParagraphList::iterator it = boost::prior(paragraphs.end());
 				text_.setCursor(it, it->size());
 			}
 		} else {
@@ -1312,6 +1309,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	return lines;
 }
 
+
 int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
 {
 	ParagraphList::iterator pit = const_cast<ParagraphList&>(paragraphs).begin();
@@ -1331,6 +1329,7 @@ int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
 	}
 	return 0;
 }
+
 
 int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
@@ -1520,7 +1519,7 @@ int InsetText::insetInInsetY() const
 	if (!the_locking_inset)
 		return 0;
 
-	return (inset_y + the_locking_inset->insetInInsetY());
+	return inset_y + the_locking_inset->insetInInsetY();
 }
 
 
@@ -1727,19 +1726,15 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 {
-	if (cpar()->isInset(cpos())) {
-		InsetOld * inset =
-			static_cast<UpdatableInset*>(cpar()->getInset(cpos()));
-		if (!isHighlyEditableInset(inset))
-			return false;
-		FuncRequest cmd(bv, LFUN_INSET_EDIT, front ? "left" : "right");
-		inset->localDispatch(cmd);
-		if (!the_locking_inset)
-			return false;
-		updateLocal(bv, CURSOR, false);
-		return true;
-	}
-	return false;
+	InsetOld * inset = cpar()->getInset(cpos());
+	if (!isHighlyEditableInset(inset))
+		return false;
+	FuncRequest cmd(bv, LFUN_INSET_EDIT, front ? "left" : "right");
+	inset->localDispatch(cmd);
+	if (!the_locking_inset)
+		return false;
+	updateLocal(bv, CURSOR, false);
+	return true;
 }
 
 
@@ -1758,21 +1753,20 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	if (button == mouse_button::none && !isHighlyEditableInset(inset))
 		return false;
 
-	if (inset) {
-		if (x < 0)
-			x = dim_.wid;
-		if (y < 0)
-			y = dim_.des;
-		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy() + drawTextYOffset;
-		FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
-		inset->localDispatch(cmd);
-		if (!the_locking_inset)
-			return false;
-		updateLocal(bv, CURSOR, false);
-		return true;
-	}
-	return false;
+	if (!inset)
+		return false;
+	if (x < 0)
+		x = dim_.wid;
+	if (y < 0)
+		y = dim_.des;
+	inset_x = cix(bv) - top_x + drawTextXOffset;
+	inset_y = ciy() + drawTextYOffset;
+	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
+	inset->localDispatch(cmd);
+	if (!the_locking_inset)
+		return false;
+	updateLocal(bv, CURSOR, false);
+	return true;
 }
 
 
@@ -1790,8 +1784,7 @@ void InsetText::setParagraphData(ParagraphList const & plist)
 	ParagraphList::const_iterator end = plist.end();
 	for (; it != end; ++it) {
 		paragraphs.push_back(*it);
-		Paragraph & tmp = paragraphs.back();
-		tmp.setInsetOwner(this);
+		paragraphs.back().setInsetOwner(this);
 	}
 
 	reinitLyXText();
