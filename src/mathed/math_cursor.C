@@ -369,11 +369,15 @@ bool positionable(MathCursor::cursor_type const & cursor,
 
 void MathCursor::setPos(int x, int y)
 {
-	dump("setPos 2");
+	dump("setPos 1");
 	bool res = bruteFind(x, y,
 		formula()->xlow(), formula()->xhigh(),
 		formula()->ylow(), formula()->yhigh());
-	lyx::Assert(res);
+	if (!res) {
+		// this ccan happen on creation of "math-display"
+		dump("setPos 1.5");
+		first();
+	}
 	dump("setPos 2");
 }
 
