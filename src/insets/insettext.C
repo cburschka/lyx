@@ -181,9 +181,6 @@ void InsetText::init(InsetText const * ins, bool same_id)
 		autoBreakRows = false;
 	}
 	top_y = 0;
-	insetAscent = 0;
-	insetDescent = 0;
-	insetWidth = 0;
 	old_max_width = 0;
 	no_selection = true;
 	need_update = FULL;
@@ -306,6 +303,8 @@ void InsetText::dimension(BufferView * bv, LyXFont const &,
 	dim.d = text->height - dim.a + TEXT_TO_INSET_OFFSET;
 	dim.w = max(textWidth(bv), int(text->width)) + 2 * TEXT_TO_INSET_OFFSET;
 	dim.w = max(dim.w, 10);
+	// cache it
+	dim_ = dim;
 }
 
 
@@ -339,11 +338,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	Painter & pain = bv->painter();
 
-	// call these methods so that insetWidth, insetAscent and
-	// insetDescent have the right values.
-	width(bv, f);
-	ascent(bv, f);
-	descent(bv, f);
+	// call this method so that dim_ has the right value
+	dimension(bv, f, dim_);
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)
@@ -361,11 +357,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		x += static_cast<float>(scroll());
 
 	top_baseline = baseline;
-	top_y = baseline - insetAscent;
+	top_y = baseline - dim_.a;
 
-	if (last_drawn_width != insetWidth) {
+	if (last_drawn_width != dim_.w) {
 		need_update |= FULL;
-		last_drawn_width = insetWidth;
+		last_drawn_width = dim_.w;
 	}
 
 	if (the_locking_inset && (cpar(bv) == inset_par)
@@ -421,7 +417,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		drawFrame(pain, int(start_x));
 	}
 
-	x += insetWidth - TEXT_TO_INSET_OFFSET;
+	x += dim_.w - TEXT_TO_INSET_OFFSET;
 
 	if (need_update != INIT) {
 		need_update = NONE;
@@ -435,9 +431,9 @@ void InsetText::drawFrame(Painter & pain, int x) const
 {
 	static int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
 	frame_x = x + ttoD2;
-	frame_y = top_baseline - insetAscent + ttoD2;
-	frame_w = insetWidth - TEXT_TO_INSET_OFFSET;
-	frame_h = insetAscent + insetDescent - TEXT_TO_INSET_OFFSET;
+	frame_y = top_baseline - dim_.a + ttoD2;
+	frame_w = dim_.w - TEXT_TO_INSET_OFFSET;
+	frame_h = dim_.a + dim_.d - TEXT_TO_INSET_OFFSET;
 	pain.rectangle(frame_x, frame_y, frame_w, frame_h,
 		       frame_color);
 }
@@ -811,7 +807,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		lockInset(bv);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->top_y();
+	int tmp_y = cmd.y + dim_.a - getLyXText(bv)->top_y();
 	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 
 	if (the_locking_inset) {
@@ -854,7 +850,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		int old_top_y = lt->top_y();
 
 		lt->setCursorFromCoordinates(cmd.x - drawTextXOffset,
-					     cmd.y + insetAscent);
+					     cmd.y + dim_.a);
 		// set the selection cursor!
 		lt->selection.cursor = lt->cursor;
 		lt->cursor.x_fix(lt->cursor.x());
@@ -903,7 +899,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		return the_locking_inset->localDispatch(cmd1);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->top_y();
+	int tmp_y = cmd.y + dim_.a - getLyXText(bv)->top_y();
 	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
@@ -954,7 +950,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	}
 	LyXCursor cur = lt->cursor;
 	lt->setCursorFromCoordinates
-		(cmd.x - drawTextXOffset, cmd.y + insetAscent);
+		(cmd.x - drawTextXOffset, cmd.y + dim_.a);
 	lt->cursor.x_fix(lt->cursor.x());
 	if (cur == lt->cursor) {
 		if (clear)
@@ -1016,7 +1012,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			// FIXME: GUII I've changed this to none: probably WRONG
 			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
 				lt->setCursorFromCoordinates(cmd.x - drawTextXOffset,
-									cmd.y + insetAscent);
+									cmd.y + dim_.a);
 				lt->cursor.x_fix(lt->cursor.x());
 			}
 		}
@@ -1897,7 +1893,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 {
 	x -= drawTextXOffset;
 	int dummyx = x;
-	int dummyy = y + insetAscent;
+	int dummyy = y + dim_.a;
 	Inset * inset = getLyXText(bv)->checkInsetHit(dummyx, dummyy);
 	// we only do the edit() call if the inset was hit by the mouse
 	// or if it is a highly editable inset. So we should call this
@@ -1909,9 +1905,9 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 
 	if (inset) {
 		if (x < 0)
-			x = insetWidth;
+			x = dim_.w;
 		if (y < 0)
-			y = insetDescent;
+			y = dim_.d;
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 		FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
@@ -2319,9 +2315,9 @@ void InsetText::clearSelection(BufferView * bv)
 void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 {
 	Painter & pain = bv->painter();
-	int w = insetWidth;
-	int h = insetAscent + insetDescent;
-	int ty = baseline - insetAscent;
+	int w = dim_.w;
+	int h = dim_.a + dim_.d;
+	int ty = baseline - dim_.a;
 
 	if (ty < 0) {
 		h += ty;

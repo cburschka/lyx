@@ -17,6 +17,7 @@
 #include "LColor.h"
 #include "ParagraphList.h"
 #include "RowList.h"
+#include "dimension.h"
 #include "frontends/mouse_state.h"
 
 #include "support/types.h"
@@ -347,11 +348,7 @@ private:
 	///
 	mutable bool locked;
 	///
-	mutable int insetAscent;
-	///
-	mutable int insetDescent;
-	///
-	mutable int insetWidth;
+	mutable Dimension dim_;
 	///
 	mutable int top_y;
 	///
