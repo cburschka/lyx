@@ -128,10 +128,11 @@ bool MathNestInset::idxHome(int & /* idx */, int & pos) const
 
 bool MathNestInset::idxEnd(int & idx, int & pos) const
 {
-	if (pos == cell(idx).size())
+	int n = cell(idx).size();
+	if (pos == n)
 		return false;
 
-	pos = cell(idx).size();
+	pos = n;
 	return true;
 }
 

@@ -45,15 +45,17 @@ public:
 	typedef buffer_type::const_iterator  const_iterator;
 	///
 	typedef buffer_type::iterator        iterator;
+	///
+	typedef buffer_type::size_type       size_type;
 
 public:
 	///
 	MathArray();
 	///
-	MathArray(MathArray const &, int from, int to);
+	MathArray(MathArray const &, size_type from, size_type to);
 
 	///
-	int size() const;
+	size_type size() const;
 	///
 	bool empty() const;
 	///
@@ -62,19 +64,16 @@ public:
 	void swap(MathArray &);
 	
 	///
-	void insert(int pos, MathInset * inset);
+	void insert(size_type pos, MathInset * inset);
 	///
-	void insert(int pos, MathArray const &);
+	void insert(size_type pos, MathArray const &);
 
 	///
-	void erase(int pos1, int pos2);
+	void erase(size_type pos1, size_type pos2);
 	///
-	void erase(int pos);
+	void erase(size_type pos);
 	///
 	void erase();
-	///
-	int last() const;
-
 
 	///
 	void push_back(MathInset * inset);
@@ -93,9 +92,9 @@ public:
 	void substitute(MathMacro const &);
 
 	///
-	MathAtom * at(int pos);
+	MathAtom * at(size_type pos);
 	///
-	MathAtom const * at(int pos) const;
+	MathAtom const * at(size_type pos) const;
 	///
 	void write(std::ostream &, bool) const;
 	///

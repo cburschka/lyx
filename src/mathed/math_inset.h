@@ -44,6 +44,9 @@ class MathScriptInset;
 class MathInset {
 public: 
 	///
+	typedef MathArray::size_type     size_type;
+
+	///
 	MathInset();
 	/// the virtual base destructor
 	virtual ~MathInset(); 

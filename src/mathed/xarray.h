@@ -17,6 +17,9 @@ class MathXArray
 {
 public:
 	///
+	typedef MathArray::size_type    size_type;
+
+	///
 	MathXArray();
 	///
 	void metrics(MathStyles st) const;
@@ -28,11 +31,11 @@ public:
 	///
 	int yo() const { return yo_; }
 	///
-	int pos2x(int pos) const;
+	int pos2x(size_type pos) const;
 	///
-	int x2pos(int pos) const;
+	size_type x2pos(int pos) const;
 	///
-	int width(int pos) const;
+	int width(size_type pos) const;
 
 	///
 	int ascent() const { return ascent_; }

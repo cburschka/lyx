@@ -17,15 +17,9 @@ MathArray::MathArray()
 {}
 
 
-MathArray::MathArray(MathArray const & array, int from, int to)
+MathArray::MathArray(MathArray const & array, size_type from, size_type to)
 	: bf_(array.begin() + from, array.begin() + to)
 {}
-
-
-int MathArray::last() const
-{
-	return size() - 1;
-}
 
 
 void MathArray::substitute(MathMacro const & m)
@@ -35,19 +29,19 @@ void MathArray::substitute(MathMacro const & m)
 }
 
 
-MathAtom * MathArray::at(int pos)
+MathAtom * MathArray::at(size_type pos)
 {
-	return (0 <= pos && pos < size()) ? &bf_[pos] : 0;
+	return pos < size() ? &bf_[pos] : 0;
 }
 
 
-MathAtom const * MathArray::at(int pos) const
+MathAtom const * MathArray::at(size_type pos) const
 {
-	return (0 <= pos && pos < size()) ? &bf_[pos] : 0;
+	return pos < size() ? &bf_[pos] : 0;
 }
 
 
-void MathArray::insert(int pos, MathInset * p)
+void MathArray::insert(size_type pos, MathInset * p)
 {
 	//cerr << "\n  1: "; p->write(cerr, true); cerr << p << "\n";
 	// inserting here invalidates the pointer!
@@ -56,7 +50,7 @@ void MathArray::insert(int pos, MathInset * p)
 }
 
 
-void MathArray::insert(int pos, MathArray const & array)
+void MathArray::insert(size_type pos, MathArray const & array)
 {
 	bf_.insert(begin() + pos, array.begin(), array.end());
 }
@@ -93,7 +87,7 @@ bool MathArray::empty() const
 }
    
 
-int MathArray::size() const
+MathArray::size_type MathArray::size() const
 {
 	return bf_.size();
 }
@@ -105,14 +99,14 @@ void MathArray::erase()
 }
 
 
-void MathArray::erase(int pos)
+void MathArray::erase(size_type pos)
 {
 	if (pos < size())
 		erase(pos, pos + 1);
 }
 
 
-void MathArray::erase(int pos1, int pos2)
+void MathArray::erase(size_type pos1, size_type pos2)
 {
 	bf_.erase(begin() + pos1, begin() + pos2);
 }
