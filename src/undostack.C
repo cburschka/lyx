@@ -23,18 +23,18 @@ UndoStack::UndoStack()
 	: limit(100) {}
 
 
-Undo * UndoStack::pop()
+void UndoStack::pop()
 {
-	if (stakk.empty()) return 0;
-	Undo * result = stakk.front();
+	if (stakk.empty())
+		return;
 	stakk.pop_front();
-	return result;
 }
 
 
-Undo * UndoStack::top()
+Undo * UndoStack::top() const
 {
-	if (stakk.empty()) return 0;
+	if (stakk.empty())
+		return 0;
 	return stakk.front();
 }
 
@@ -63,7 +63,8 @@ void UndoStack::SetStackLimit(Stakk::size_type l)
 
 void UndoStack::push(Undo * undo_arg)
 {
-	if (!undo_arg) return;
+	if (!undo_arg)
+		return;
 	
 	stakk.push_front(undo_arg);
 	if (stakk.size() > limit) {
@@ -74,6 +75,7 @@ void UndoStack::push(Undo * undo_arg)
 }
 
 
-bool UndoStack::empty() const {
+bool UndoStack::empty() const
+{
 	return stakk.empty();
 }

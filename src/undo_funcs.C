@@ -26,10 +26,12 @@ bool undo_finished;
 /// a flag
 bool undo_frozen;
 
+
 bool textUndo(BufferView * bv)
 {
 	// returns false if no undo possible
-	Undo * undo = bv->buffer()->undostack.pop();
+	Undo * undo = bv->buffer()->undostack.top();
+	bv->buffer()->undostack.pop();
 	if (undo) {
 		finishUndo();
 		if (!undo_frozen) {
@@ -50,7 +52,8 @@ bool textUndo(BufferView * bv)
 bool textRedo(BufferView * bv)
 {
 	// returns false if no redo possible
-	Undo * undo = bv->buffer()->redostack.pop();
+	Undo * undo = bv->buffer()->redostack.top();
+	bv->buffer()->redostack.pop();
 	if (undo) {
 		finishUndo();
 		if (!undo_frozen) {
@@ -247,7 +250,6 @@ void setRedo(BufferView * bv, Undo::undo_kind kind,
 	bv->buffer()->redostack.push(createUndo(bv, kind, first, behind));
 }
 
-using lyx::pos_type;
 
 Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
                   Paragraph const * first, Paragraph const * behind)
@@ -276,8 +278,8 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 		// check wether storing is needed
 		if (!bv->buffer()->undostack.empty() && 
 		    bv->buffer()->undostack.top()->kind == kind &&
-		    bv->buffer()->undostack.top()->number_of_before_par ==  before_number &&
-		    bv->buffer()->undostack.top()->number_of_behind_par ==  behind_number ){
+		    bv->buffer()->undostack.top()->number_of_before_par == before_number &&
+		    bv->buffer()->undostack.top()->number_of_behind_par == behind_number) {
 			// no undo needed
 			return 0;
 		}
@@ -345,6 +347,7 @@ void setCursorParUndo(BufferView * bv)
 			bv->text->cursor.par()->next());
 }
 
+
 Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
 {
 	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
@@ -355,6 +358,7 @@ Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
 	}
 	return bv->text->ownerParagraph();
 }
+
 
 LyXCursor const & undoCursor(BufferView * bv)
 {

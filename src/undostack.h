@@ -33,13 +33,13 @@ public:
 	///
 	UndoStack();
 	///
-	Undo * pop();
+	~UndoStack();
 	///
-	Undo * top();
+	void pop();
+	///
+	Undo * top() const;
 	///
 	bool empty() const;
-	///
-	~UndoStack();
 	///
 	void clear();
 	///
