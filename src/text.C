@@ -3220,7 +3220,9 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				      sel_start_cursor.pos() <= pos) &&
 				     (sel_end_cursor.row() != row_ptr ||
 				      pos < sel_end_cursor.pos()) )
-					pain.fillRectangle(x_offset + int(old_tmpx),
+					/// Here we do not use x_offset as x_offset was
+					// added to x.
+					pain.fillRectangle(int(old_tmpx),
 							   y_offset,
 							   int(tmpx - old_tmpx + 1),
 							   row_ptr->height(),
