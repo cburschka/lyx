@@ -167,10 +167,14 @@ void kill_gs(int pid, int sig)
 }
 
 
-extern "C" // static
-int GhostscriptMsg(FL_OBJECT *, Window, int, int,
-		   XEvent * ev, void *)
+extern "C" {
+static
+int GhostscriptMsg(XEvent * ev, void *)
 {
+	// bin all events not of interest
+	if (ev->type != ClientMessage)
+		return FL_PREEMPT;
+
 	XClientMessageEvent * e = reinterpret_cast<XClientMessageEvent*>(ev);
 
 	if (lyxerr.debugging()) {
@@ -297,7 +301,8 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 			}
 			break;
 		}
-	return 0;
+	return FL_PREEMPT;
+}
 }
 
 
@@ -378,6 +383,9 @@ void AllocGrays(int num)
 }
 
 
+// xforms doesn't define this
+extern "C" FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
+
 static
 void InitFigures()
 {
@@ -389,9 +397,10 @@ void InitFigures()
 	// first get visual
 	gs_color = false;
 	if (lyxrc.use_gui) {
-		fl_add_canvas_handler(figinset_canvas, ClientMessage,
-				      GhostscriptMsg,
-				      current_view->owner()->getForm());
+		/* we want to capture every event, in order to work around an
+		 * xforms bug.
+		 */
+		fl_set_preemptive_callback(fl_get_canvas_id(figinset_canvas), GhostscriptMsg, 0);
 
 		local_gc_copy = createGC();
 
@@ -430,9 +439,6 @@ void DoneFigures()
 	figures.clear();
 	
 	lyxerr.debug() << "Unregistering figures..." << endl;
-
-	fl_remove_canvas_handler(figinset_canvas, ClientMessage,
-				 GhostscriptMsg);
 }
 
 

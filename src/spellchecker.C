@@ -65,12 +65,8 @@
 #include "encoding.h"
 #include "support/lstrings.h"
 
-//#define USE_PSPELL 1
-
 #ifdef USE_PSPELL
-
-#include <pspell/pspell.h>
-
+# include <pspell/pspell.h>
 #endif
 
 using std::reverse;
@@ -110,10 +106,8 @@ PspellManager * sc;
 FD_form_spell_options *fd_form_spell_options = 0;
 FD_form_spell_check *fd_form_spell_check = 0;
 
-//void sigchldhandler(int sig);
 void sigchldhandler(pid_t pid, int *status);
 
-//extern void sigchldchecker(int sig);
 extern void sigchldchecker(pid_t pid, int *status);
 
 #ifndef USE_PSPELL
@@ -628,7 +622,7 @@ void sc_clean_up_after_error()
 
 
 
-// Send word to ispell and get reply
+// Send word to pspell and get reply
 static
 isp_result * sc_check_word(string const & word)
 {
@@ -805,6 +799,12 @@ bool RunSpellChecker(BufferView * bv)
 	int newvalue;
 	FL_OBJECT * obj;
 
+#ifndef NEW_INSETS
+	// Open all floats
+        bv->allFloats(1, 0);
+        bv->allFloats(1, 1);
+#endif
+
 #ifdef USE_PSPELL
 	string tmp = (lyxrc.isp_use_alt_lang) ?
 	    lyxrc.isp_alt_lang : bv->buffer()->params.language->code();
@@ -966,9 +966,7 @@ bool RunSpellChecker(BufferView * bv)
 	}
 }
 
-
-#ifndef USE_PSPELL
-
+#warning should go somewhere more sensible
 void sigchldhandler(pid_t pid, int * status)
 { 
 	if (isp_pid > 0)
@@ -980,12 +978,3 @@ void sigchldhandler(pid_t pid, int * status)
 		}
 	sigchldchecker(pid, status);
 }
-
-#else
-
-void sigchldhandler(pid_t, int *)
-{ 
-	// do nothing
-}
-
-#endif

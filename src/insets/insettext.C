@@ -1450,7 +1450,15 @@ LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 
 int InsetText::cx(BufferView * bv) const
 {
-    return TEXT(bv)->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
+	LyXText * text = TEXT(bv);
+	int x = text->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
+	if (the_locking_inset) {
+		LyXFont font = text->GetFont(bv->buffer(),
+				     text->cursor.par(), text->cursor.pos());
+		if (font.isVisibleRightToLeft())
+			x -= the_locking_inset->width(bv, font);
+	}
+	return x;
 }
 
 

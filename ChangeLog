@@ -1,3 +1,27 @@
+2000-12-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/BufferView_pimpl.C (workAreaMotionNotify): Fixed mouse
+	movement in inset in RTL text.
+	(checkInsetHit): Fixed mouse movement in scrolled inset in RTL text.
+	(workAreaButtonRelease): Do not open a float when there is a selection.
+
+	* src/insets/insettext.C (cx): Fixed for insets in RTL text.
+
+	* src/spellchecker.C (RunSpellChecker): Open all floats before
+ 	spellchecking.
+
+	* src/text.C (InsertChar): Consider "," as a part of a number
+	(for LTR numbers in RTL text code).
+	(IsBoundary): Fixed (and simplified).
+	(InsertChar): Recalculate cursor boundary.
+	(Backspace): Ditto.
+
+2000-12-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/spellchecker.C: fix figures with pspell enabled
+
+	* src/insets/figinset.C: workaround for gs hang xforms bug
+
 2000-12-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/??_menus.bind: comment out the entries corresponding to
