@@ -1,3 +1,11 @@
+2005-01-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ui/classic.ui, ui/stdmenus.ui: Increase number of bookmarks to 5
+	(from Uwe Stöhr)
+	* ui/classic.ui: Goto -> Go to
+	* bind/aqua.bind, bind/cua.bind, bind/emacs.bind, bind/mac.bind,
+	* bind/xemacs.bind: Add shortcuts for bookmarks 4 and 5
+
 2005-01-02  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* configure.m4: add \cygwin_path_fix_needed to lyrxc.defaults.
@@ -47,7 +55,7 @@
 2004-12-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* configure.m4: add printout of language list for which
-        hyphenation is enabled
+	hyphenation is enabled
 
 2004-11-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
