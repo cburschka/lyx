@@ -15,6 +15,8 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "support/types.h"
+
 #include <boost/utility.hpp>
 
 #include <string>
@@ -32,6 +34,7 @@ class LyXText;
 class LyXScreen;
 class LyXView;
 class Painter;
+class ParIterator;
 class PosIterator;
 class TeXErrors;
 class UpdatableInset;
@@ -189,6 +192,8 @@ public:
 	LCursor const & cursor() const;
 	///
 	LyXText * text() const;
+	///
+	void setCursor(ParIterator const & par, lyx::pos_type pos);
 	///
 	void putSelectionAt(PosIterator const & cur, int length, bool backwards);
 

@@ -933,8 +933,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 		screen().hideCursor();
 
-		// either the inset under the cursor or the surrounding LyXText will
-		// handle this event.
+		// either the inset under the cursor or the
+		// surrounding LyXText will handle this event.
 
 		// built temporary path to inset
 		LyXText * text = bv_->text();

@@ -1164,11 +1164,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 								<< " found." << endl;
 			}
 
-			par.lockPath(view());
-			LyXText * lt = par.text(*view()->buffer());
-
 			// Set the cursor
-			lt->setCursor(par.pit(), 0);
+			view()->setCursor(par, 0);
+
 			view()->switchKeyMap();
 			owner->view_state_changed();
 

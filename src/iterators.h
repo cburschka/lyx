@@ -25,7 +25,6 @@ class LyXText;
 class InsetBase;
 class Cursor;
 class Buffer;
-class BufferView;
 class PosIterator;
 
 
@@ -78,8 +77,6 @@ public:
 	int index() const;
 	///
 	size_t size() const;
-	///
-	void lockPath(BufferView *) const;
 
 	typedef std::vector<ParPosition> PosHolder;
 	PosHolder const & positions() const

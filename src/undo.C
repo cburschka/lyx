@@ -183,8 +183,9 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	// rebreak the entire lyxtext
 	buf.text().fullRebreak();
 
-	pit.lockPath(bv);
-	text->setCursor(undo.cursor_par, undo.cursor_pos);
+	ParIterator pit2 = num2pit(buf, undo.text);
+	advance(pit2, undo.cursor_par);
+	bv->setCursor(pit2, undo.cursor_pos);
 
 	finishUndo();
 	return true;

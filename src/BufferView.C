@@ -444,6 +444,19 @@ LyXText * BufferView::text() const
 }
 
 
+void BufferView::setCursor(ParIterator const & par,
+			   lyx::pos_type pos)
+{
+	LCursor & cur = cursor();
+	cur.reset();
+	ParIterator::PosHolder const & positions = par.positions();
+	int const last = par.size() - 1;
+	for (int i = 0; i < last; ++i)
+		(*positions[i].it)->inset->edit(cur, true);
+	cur.resetAnchor();
+	LyXText * lt = par.text(*buffer());
+	lt->setCursor(par.pit(), pos);
+}
 
 
 /*
@@ -468,7 +481,8 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	cursor().clearSelection();
 
 	LyXText * text = par.text(*buffer());
-	par.lockPath(this);
+	setCursor(par, cur.pos());
+	
 	// hack for the chicken and egg problem
 	if (par.inset())
 		top_y(par.outerPar()->y);

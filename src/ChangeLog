@@ -1,3 +1,12 @@
+
+2004-02-02  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* iterators.[Ch] (lockPath): remove in favour of...
+	* BufferView.[Ch] (setCursor): this addition
+	* BufferView.C (putSelectionAt): adjust
+	* undo.C (performUndoOrRedo): adjust
+	* lyxfunc.C (dispatch): adjust
+
 2004-02-02  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* iterators.C (lockPath): add a missing slice
