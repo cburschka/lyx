@@ -1,5 +1,7 @@
 2001-04-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/examples/eu_splash.lyx: update from Dooteo
+
 	* src/insets/insetquotes.C (Latex): improve the guard against
 	unwanted !` and ?` ligatures. This should really be done in
 	another place (to catch all this ligatures at low-level).
