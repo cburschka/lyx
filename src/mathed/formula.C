@@ -165,15 +165,15 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 {
 	metrics(bv, font);
 
-	int x = int(xx);
-	int w = par_->width();
-	int h = par_->height();
-	int a = par_->ascent();
+	int const x = int(xx);
+	int const w = par_->width();
+	int const h = par_->height();
+	int const a = par_->ascent();
 
 	MathPainterInfo pi(bv->painter());
+	pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 	pi.base.font  = font;
 	pi.base.font.setColor(LColor::math);
-	pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 
 	if (lcolor.getX11Name(LColor::mathbg)!=lcolor.getX11Name(LColor::background))
 		pi.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
@@ -194,11 +194,15 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 		par_->write(wi);
 		if (preview(os.str(), preview_)) {
 			cerr << "image could be drawn\n";
-			pi.pain.image(x + 40, y, 50, 50, *(preview_->image()));
+			pi.pain.image(x + w + 2, y - a + 1, w - 2, h - 2, *(preview_->image()));
+		} else {
+			pi.pain.fillRectangle(x + w, y - a, w, h, LColor::white);
 		}
+		pi.pain.rectangle(x + w, y - a, w, h, LColor::mathframe);
+		xx += w;
 	}
 
-	xx += par_->width();
+	xx += w;
 	xo_ = x;
 	yo_ = y;
 
@@ -404,7 +408,9 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
-	return par_->width();
+	int const w = par_->width();
+	// double the space for the preview if needed
+	return lyxrc.preview ? 2 * w : w;
 }
 
 

@@ -106,10 +106,10 @@ public:
 
 	///
 	virtual bool searchForward(BufferView *, string const &,
-				   bool = true, bool = false);
+	                           bool = true, bool = false);
 	///
 	virtual bool searchBackward(BufferView *, string const &,
-				    bool = true, bool = false);
+	                            bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
 	///
