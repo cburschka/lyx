@@ -19,6 +19,7 @@
 #include "ControlPrint.h"
 #include "FormPrint.h"
 #include "forms/form_print.h"
+#include "Tooltips.h"
 
 #include "PrinterParams.h"
 
@@ -34,7 +35,7 @@ typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 
 FormPrint::FormPrint()
 	: base_class(_("Print")),
-	  target_(2), order_(2), which_(3)
+	  target_(2), which_pages_(2)
 {}
 
 
@@ -48,77 +49,98 @@ void FormPrint::build()
 	bc().setCancel(dialog_->button_close);
 
 	// allow controlling of input and ok/apply (de)activation
-	fl_set_input_return(dialog_->input_printer,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_file,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_from_page,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_to_page,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_count,
-			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_printer, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_file, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_from_page, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_to_page, FL_RETURN_CHANGED);
 
 	// limit these inputs to unsigned integers
-	fl_set_input_filter(dialog_->input_from_page,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_to_page,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_count,
-			    fl_unsigned_int_filter);
-
-	setPrehandler(dialog_->input_printer);
-	setPrehandler(dialog_->input_file);
-	setPrehandler(dialog_->input_from_page);
-	setPrehandler(dialog_->input_to_page);
-	setPrehandler(dialog_->input_count);
+	fl_set_input_filter(dialog_->input_from_page, fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_to_page, fl_unsigned_int_filter);
 
 	// what limits (if any) make sense for these?
 	fl_set_input_maxchars(dialog_->input_printer, 255);
 	fl_set_input_maxchars(dialog_->input_file, 255);
 	fl_set_input_maxchars(dialog_->input_from_page, 4); // 9999
 	fl_set_input_maxchars(dialog_->input_to_page, 4);   // 9999
-	fl_set_input_maxchars(dialog_->input_count, 4);     // 9999
+
+	bc().addReadOnly(dialog_->button_browse);   
+	bc().addReadOnly(dialog_->check_odd_pages);   
+	bc().addReadOnly(dialog_->check_even_pages);   
+	bc().addReadOnly(dialog_->check_sorted_copies);
+	bc().addReadOnly(dialog_->check_reverse_order);
 
 	target_.reset();
 	target_.init(dialog_->radio_printer, PrinterParams::PRINTER);
 	target_.init(dialog_->radio_file,    PrinterParams::FILE);
-	order_.reset();
-	order_.init(dialog_->radio_order_reverse, true);
-	order_.init(dialog_->radio_order_normal,  false);
-	which_.reset();
-	which_.init(dialog_->radio_odd_pages,  PrinterParams::ODD);
-	which_.init(dialog_->radio_even_pages, PrinterParams::EVEN);
-	which_.init(dialog_->radio_all_pages,  PrinterParams::ALL);
+	which_pages_.reset();
+	which_pages_.init(dialog_->radio_all_pages, true);
+	which_pages_.init(dialog_->radio_from_to,   false);
+	
+	// set up the tooltips for Destination
+	string str = _("Select for printer output.");
+	tooltips().init(dialog_->radio_printer, str);
+	str = _("Enter printer command.");
+	tooltips().init(dialog_->input_printer, str);
+	str = _("Select for file output.");
+	tooltips().init(dialog_->radio_file, str);
+	str = _("Enter file name as print destination.");
+	tooltips().init(dialog_->input_file, str);
+	str = _("Browse directories for file name.");
+	tooltips().init(dialog_->button_browse, str);
+
+	// set up the tooltips for Range
+	str = _("Select for printing all pages.");
+	tooltips().init(dialog_->radio_all_pages, str);
+	str = _("Select for printing a specific page range.");
+	tooltips().init(dialog_->radio_from_to, str);
+	str = _("First page.");
+	tooltips().init(dialog_->input_from_page, str);
+	str = _("Last page.");
+	tooltips().init(dialog_->input_to_page, str);
+	str = _("Print the odd numbered pages.");
+	tooltips().init(dialog_->check_odd_pages, str);
+	str = _("Print the even numbered pages.");
+	tooltips().init(dialog_->check_even_pages, str);
+
+	// set up the tooltips for Copies
+	str = _("Number of copies to be printed.");
+	tooltips().init(dialog_->counter_copies, str);
+	str = _("Sort the copies.");
+	tooltips().init(dialog_->check_sorted_copies, str);
+
+	str = _("Reverse the order of the printed pages.");
+	tooltips().init(dialog_->check_reverse_order, str);
 }
 
 
 void FormPrint::apply()
 {
-	PrinterParams::WhichPages
-		wp(static_cast<PrinterParams::WhichPages>(which_.get()));
+	PrinterParams pp;
 
-	string from;
-	int to(0);
+	pp.target = static_cast<PrinterParams::Target>(target_.get());
+	pp.printer_name = fl_get_input(dialog_->input_printer);
+	pp.file_name = fl_get_input(dialog_->input_file);
+
+	pp.all_pages = which_pages_.get();
+	pp.from_page = 0;
+	pp.to_page = 0;
 	if (strlen(fl_get_input(dialog_->input_from_page)) > 0) {
 		// we have at least one page requested
-		from = fl_get_input(dialog_->input_from_page);
+		pp.from_page = strToInt(fl_get_input(dialog_->input_from_page));
 		if (strlen(fl_get_input(dialog_->input_to_page)) > 0) {
 			// okay we have a range
-			to = strToInt(fl_get_input(dialog_->input_to_page));
+			pp.to_page = strToInt(fl_get_input(dialog_->input_to_page));
 		} // else we only print one page.
 	}
 
-	PrinterParams::Target
-		t(static_cast<PrinterParams::Target>(target_.get()));
+	pp.odd_pages = static_cast<bool>(fl_get_button(dialog_->check_odd_pages));
+	pp.even_pages = static_cast<bool>(fl_get_button(dialog_->check_even_pages));
 
-	PrinterParams const pp(t,
-			       string(fl_get_input(dialog_->input_printer)),
-			       string(fl_get_input(dialog_->input_file)),
-			       wp, from, to,
-			       static_cast<bool>(order_.get()),
-			       !static_cast<bool>(fl_get_button(dialog_->check_collated)),
-			       strToInt(fl_get_input(dialog_->input_count)));
+	pp.count_copies = static_cast<unsigned int>(fl_get_counter_value(dialog_->counter_copies));
+	pp.sorted_copies = static_cast<bool>(fl_get_button(dialog_->check_sorted_copies));
+
+	pp.reverse_order = static_cast<bool>(fl_get_button(dialog_->check_reverse_order));
 
 	controller().params() = pp;
 }
@@ -128,36 +150,32 @@ void FormPrint::update()
 {
 	PrinterParams & pp = controller().params();
 
+	target_.set(pp.target);
 	fl_set_input(dialog_->input_printer, pp.printer_name.c_str());
 	fl_set_input(dialog_->input_file, pp.file_name.c_str());
 
-	target_.set(pp.target);
-	order_.set(pp.reverse_order);
-	which_.set(pp.which_pages);
-
 	// hmmm... maybe a bit weird but maybe not
-	// we might just be remembering the last
-	// time this was printed.
-	if (!pp.from_page.empty()) {
-		fl_set_input(dialog_->input_from_page, pp.from_page.c_str());
+	// we might just be remembering the last time this was printed.
+	which_pages_.set(pp.all_pages);
+	
+	string const from = ( pp.from_page ? tostr(pp.from_page) : "");
+	string const to   = ( pp.to_page   ? tostr(pp.to_page)   : "");
+	fl_set_input(dialog_->input_from_page, from.c_str());
+	fl_set_input(dialog_->input_to_page, to.c_str());
 
-		// we only set the "to" page of a range
-		// if there's a corresponding "from"
-		fl_activate_object(dialog_->input_to_page);
-		if (pp.to_page) {
-			fl_set_input(dialog_->input_to_page,
-				     tostr(pp.to_page).c_str());
-		} else {
-			fl_set_input(dialog_->input_to_page,"");
-		}
+	fl_set_button(dialog_->check_odd_pages, pp.odd_pages);
+	fl_set_button(dialog_->check_even_pages, pp.even_pages);
+	fl_set_button(dialog_->check_reverse_order, pp.reverse_order);
+	fl_set_button(dialog_->check_sorted_copies, pp.sorted_copies);
 
-	} else {
-		fl_deactivate_object(dialog_->input_to_page);
-		fl_set_input(dialog_->input_to_page,"");
-		fl_set_input(dialog_->input_from_page,"");
-	}
+	fl_set_counter_value(dialog_->counter_copies, pp.count_copies);
 
-	fl_set_input(dialog_->input_count, tostr(pp.count_copies).c_str());
+	// number of copies only used when output goes to printer
+	bool const enable_counter = pp.target == PrinterParams::PRINTER;
+	setEnabled(dialog_->counter_copies, enable_counter);
+
+	// sorting only used when printing more than one copy
+	setEnabled(dialog_->check_sorted_copies, enable_counter && pp.count_copies > 1);
 }
 
 
@@ -185,7 +203,7 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 			// set both backgrounds to red?
 		}
 	} else if (strlen(fl_get_input(dialog_->input_to_page))) {
-		// from is empty but to exists so probably editting from
+		// from is empty but to exists, so probably editting from
 		// therefore deactivate ok and apply until form is valid again
 		activate = ButtonPolicy::SMI_INVALID;
 	} else {
@@ -194,9 +212,18 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 		fl_deactivate_object(dialog_->input_to_page);
 	}
 
-	if (fl_get_button(dialog_->radio_file)
-	    && !strlen(fl_get_input(dialog_->input_file))) {
-		activate = ButtonPolicy::SMI_INVALID;
+	// number of copies only used when output goes to printer
+	bool const enable_counter = static_cast<bool>(fl_get_button(dialog_->radio_printer));
+	setEnabled(dialog_->counter_copies, enable_counter);
+
+	// sorting only used when printing more than one copy
+	bool const enable_sorted = enable_counter
+			&& static_cast<unsigned int>(fl_get_counter_value(dialog_->counter_copies)) > 1;
+	setEnabled(dialog_->check_sorted_copies, enable_sorted);
+
+	// disable OK/Apply buttons when file output is selected, but no file name entered.
+	if (fl_get_button(dialog_->radio_file) && !strlen(fl_get_input(dialog_->input_file))) {
+			activate = ButtonPolicy::SMI_INVALID;
 	}
 
 	if (ob == dialog_->button_browse) {
@@ -217,14 +244,18 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 		}
 	}
 
-	// if we type into file, select that as a target
-	if (ob == dialog_->input_file && fl_get_button(dialog_->radio_printer)
-	    && strlen(fl_get_input(dialog_->input_file))) {
-		fl_set_button(dialog_->radio_file, 1);
+	// if we type input string for file or printer, select that as a target
+	if (ob == dialog_->input_file && !fl_get_button(dialog_->radio_file)) {
 		fl_set_button(dialog_->radio_printer, 0);
-	} else if (ob == dialog_->input_printer) {
-		fl_set_button(dialog_->radio_file, 0);
+		fl_set_button(dialog_->radio_file, 1);
+	} else if (ob == dialog_->input_printer && !fl_get_button(dialog_->radio_printer)) {
 		fl_set_button(dialog_->radio_printer, 1);
+		fl_set_button(dialog_->radio_file, 0);
+	// if we type intput string for from/to, select from/to radio button
+	} else if ( (ob == dialog_->input_from_page || ob == dialog_->input_to_page) &&
+			!fl_get_button(dialog_->radio_from_to)) {
+		fl_set_button(dialog_->radio_from_to, 1);
+		fl_set_button(dialog_->radio_all_pages, 0);
 	}
 
 	return activate;

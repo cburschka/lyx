@@ -30,6 +30,8 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
+#include "debug.h" // for lyxerr
+
 using std::endl;
 
 namespace Liason {
@@ -55,44 +57,39 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 			+ ' ';
 	}
 
-	switch (pp.which_pages) {
-	case PrinterParams::EVEN:
-		command += lyxrc.print_evenpage_flag + ' ';
-		break;
-
-	case PrinterParams::ODD:
-		command += lyxrc.print_oddpage_flag + ' ';
-		break;
-
-	default:
-		// only option left is print all of them
-		break;
-	}
-
-	if (!pp.from_page.empty()) {
+	if (!pp.all_pages && pp.from_page) {
 		command += lyxrc.print_pagerange_flag + ' ';
-		command += pp.from_page;
+		command += tostr(pp.from_page);
 		if (pp.to_page) {
-				// we have a range "from-to"
+			// we have a range "from-to"
 			command += '-';
 			command += tostr(pp.to_page);
 		}
 		command += ' ';
 	}
 
-	if (pp.reverse_order) {
-		command += lyxrc.print_reverse_flag + ' ';
+	// If both are, or both are not selected, then skip the odd/even printing
+	if (pp.odd_pages != pp.even_pages) {
+		if (pp.odd_pages) {
+			command += lyxrc.print_oddpage_flag + ' ';
+		} else if (pp.even_pages) {
+			command += lyxrc.print_evenpage_flag + ' ';
+		}
 	}
 
-	if (1 < pp.count_copies) {
-		if (pp.unsorted_copies) {
-			command += lyxrc.print_copies_flag;
-		} else {
+	if (pp.count_copies > 1) {
+		if (pp.sorted_copies) {
 			command += lyxrc.print_collcopies_flag;
+		} else {
+			command += lyxrc.print_copies_flag;
 		}
 		command += ' ';
 		command += tostr(pp.count_copies);
 		command += ' ';
+	}
+	
+	if (pp.reverse_order) {
+		command += lyxrc.print_reverse_flag + ' ';
 	}
 
 	if (!lyxrc.print_extra_options.empty()) {
@@ -151,6 +148,9 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		res = one.startscript(Systemcall::DontWait, command);
 		break;
 	}
+
+	lyxerr[Debug::LATEX] << "printBuffer: \"" << command << "\"\n";
+
 	return res == 0;
 }
 

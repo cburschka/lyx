@@ -45,17 +45,8 @@ struct PrinterParams {
 	string printer_name;
 	///
 	string file_name;
-	/// We allow printing of even pages in a range and so on.
-	enum WhichPages{
-		///
-		ALL,
-		///
-		ODD,
-		///
-		EVEN
-	};
 	///
-	WhichPages which_pages;
+	bool all_pages;
 	/** Print a page range. Both from_page and to_page used to be strings
 	    because they're actually easier to work with that way.  I've
 	    switched to_page to be an int.  However, from_page will remain a
@@ -63,15 +54,19 @@ struct PrinterParams {
 	    a page range "1,3-5" and so on.
 	    I've modified the invariant test to match. ARRae 20000518
 	 */
-	string from_page;
+	unsigned int from_page;
 	///
-	int to_page;
+	unsigned int to_page;
+	///
+	bool odd_pages;
+	///
+	bool even_pages;
+	///
+	unsigned int count_copies;
+	///
+	bool sorted_copies;
 	///
 	bool reverse_order;
-	///
-	bool unsorted_copies;
-	///
-	int count_copies;
 	// The settings below should allow us to print any read-only doc in
 	// whatever size/orientation we want it -- overriding the documents
 	// settings.
@@ -90,31 +85,12 @@ struct PrinterParams {
 	void testInvariant() const
 		{
 #ifdef ENABLE_ASSERTIONS
-			if (!from_page.empty()) {
-				// Assert(from_page == number or empty)
-				lyx::Assert(containsOnly(from_page,
-							 "1234567890"));
-			}
-			if (to_page) {
-				// Assert(to_page == empty
-				//        or number iff from_page set)
-				lyx::Assert(!from_page.empty());
-			}
 			switch (target) {
 			case PRINTER:
-//				Assert(!printer_name.empty());
+				//Assert(!printer_name.empty());
 				break;
 			case FILE:
 				lyx::Assert(!file_name.empty());
-				break;
-			default:
-				lyx::Assert(false);
-				break;
-			}
-			switch (which_pages) {
-			case ALL:
-			case ODD:
-			case EVEN:
 				break;
 			default:
 				lyx::Assert(false);
@@ -127,21 +103,25 @@ struct PrinterParams {
 	PrinterParams(Target const & t = PRINTER,
 		      string const & pname = lyxrc.printer,
 		      string const & fname = string(),
-		      WhichPages const wp = ALL,
-		      string const & from = string(),
-		      int const & to = 0,
-		      bool const reversed = false,
-		      bool const unsorted = false,
-		      int const & num_copies = 1)
+		      bool const all = true,
+		      unsigned int const & from = 1,
+		      unsigned int const & to = 1,
+		      bool const odd = true,
+		      bool const even = true,
+		      unsigned int const & copies = 1,
+		      bool const sorted = false,
+		      bool const reverse = false)
 		: target(t),
 		  printer_name(pname),
 		  file_name(fname),
-		  which_pages(wp),
+		  all_pages(all),
 		  from_page(from),
 		  to_page(to),
-		  reverse_order(reversed),
-		  unsorted_copies(unsorted),
-		  count_copies(num_copies)
+		  odd_pages(odd),
+		  even_pages(even),
+		  count_copies(copies),
+		  sorted_copies(sorted),
+		  reverse_order(reverse)
 		{
 			testInvariant();
 		}
@@ -150,12 +130,14 @@ struct PrinterParams {
 		: target(pp.target),
 		  printer_name(pp.printer_name),
 		  file_name(pp.file_name),
-		  which_pages(pp.which_pages),
+		  all_pages(pp.all_pages),
 		  from_page(pp.from_page),
 		  to_page(pp.to_page),
-		  reverse_order(pp.reverse_order),
-		  unsorted_copies(pp.unsorted_copies),
-		  count_copies(pp.count_copies)
+		  odd_pages(pp.odd_pages),
+		  even_pages(pp.even_pages),
+		  count_copies(pp.count_copies),
+		  sorted_copies(pp.sorted_copies),
+		  reverse_order(pp.reverse_order)
 		{
 			testInvariant();
 		}

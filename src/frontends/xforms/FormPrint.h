@@ -44,10 +44,8 @@ private:
 
 	/// print target
 	RadioButtonGroup target_;
-	/// page order
-	RadioButtonGroup order_;
 	/// which pages
-	RadioButtonGroup which_;
+	RadioButtonGroup which_pages_;
 };
 
 #endif // FORMPRINT_H
