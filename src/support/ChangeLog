@@ -1,3 +1,9 @@
+2001-05-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* fmt.C: 
+	* atoi.C: add using directives when needed for C functions
+	declared in std:: namespace.
+
 2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lstrings.C : add two helper structs, local_lowercase and

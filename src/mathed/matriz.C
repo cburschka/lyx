@@ -4,7 +4,10 @@
 
 #include "matriz.h"
 
-
+#ifndef CXX_GLOBAL_CSTD
+using std::memcpy;
+#endif
+ 
 namespace {
 
 inline

@@ -1,5 +1,8 @@
 2001-05-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* matriz.C: add using directives when needed for C functions
+	declared in std:: namespace.
+
 	* math_macrotemplate.h: do not use explicitely std::string, but
 	string. 
 

@@ -4,6 +4,9 @@
 
 #include "lyxlib.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::atoi;
+#endif
 
 int lyx::atoi(string const & nstr)
 {

@@ -8,6 +8,10 @@
 
 #include "LString.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::va_list;
+#endif
+
 /* This output manipulator gives the option to use Old style format
    specifications in ostreams. Note that this is done at the expense
    of typesafety, so if possible this manipulator should be avoided.

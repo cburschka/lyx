@@ -44,6 +44,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::signal;
+#endif
+
 extern void LoadLyXFile(string const &);
 extern void QuitLyX();
 
