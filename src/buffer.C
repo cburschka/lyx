@@ -1496,7 +1496,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		} else {
 			islatex = 0;
 		}
-		c = par->GetChar(i);
+		c = par->GetUChar(params, i);
 		if (islatex)
 			continue;
 		switch (c) {

@@ -441,6 +441,8 @@ public:
 	LyXFont const getFont(BufferParams const &, size_type pos) const;
 	///
 	value_type GetChar(size_type pos) const;
+	///
+	value_type GetUChar(BufferParams const &, size_type pos) const;
 	/// The position must already exist.
 	void SetChar(size_type pos, value_type c) {
 #ifndef HAVE_ROPE

@@ -1018,6 +1018,47 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 }
 
 
+LyXParagraph::value_type
+LyXParagraph::GetUChar(BufferParams const & bparams,
+		       LyXParagraph::size_type pos) const
+{
+	value_type c = GetChar(pos);
+	if (!lyxrc.rtl_support)
+		return c;
+
+	value_type uc = c;
+	switch (c) {
+	case '(':
+		uc = ')';
+		break;
+	case ')':
+		uc = '(';
+		break;
+	case '[':
+		uc = ']';
+		break;
+	case ']':
+		uc = '[';
+		break;
+	case '{':
+		uc = '}';
+		break;
+	case '}':
+		uc = '{';
+		break;
+	case '<':
+		uc = '>';
+		break;
+	case '>':
+		uc = '<';
+		break;
+	}
+	if (uc != c && GetFontSettings(bparams, pos).isRightToLeft())
+		return uc;
+	else
+		return c;
+}
+
 // return an string of the current word, and the end of the word in lastpos.
 string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 {
@@ -3991,7 +4032,7 @@ string const LyXParagraph::String(Buffer const * buffer,
 		s += labelstring + ' ';
 
 	for (LyXParagraph::size_type i = beg; i < end; ++i) {
-		value_type c = GetChar(i);
+		value_type c = GetUChar(buffer->params, i);
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET) {

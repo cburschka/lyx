@@ -1,3 +1,15 @@
+2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/insettext.C (LocalDispatch): Restore the language
+ 	if the inset becomes empty.
+
+	* src/text.C (PrepareToPrint): Fix for RTL text in tabulars.
+
+	* src/paragraph.C (GetUChar): New method.
+	(String):  Use GetUChar.
+
+	* src/buffer.C (asciiParagraph): Use GetUChar.
+
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (scanAuxFile): A rewrite of this method. It now returns

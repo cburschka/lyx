@@ -1102,6 +1102,15 @@ InsetText::LocalDispatch(BufferView * bv,
 	result = UNDISPATCHED;
 	break;
     }
+
+    /// If the action has deleted all text in the inset, we need to change the
+    // language to the language to the surronding text.
+    if (par->Last() == 0 && !par->next) {
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setLanguage(bv->getParentLanguage(this));
+	SetFont(bv, font, false);
+    }
+
     if (result != FINISHED) {
 	ShowInsetCursor(bv);
     } else
