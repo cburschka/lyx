@@ -14,15 +14,16 @@
 #pragma implementation "vspace.h"
 #endif
 
-#include <stdio.h>
-
+#include "vspace.h"
 #include "lyx_main.h"
 #include "buffer.h"
-#include "vspace.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "BufferView.h"
+
 #include "support/lstrings.h"
+
+#include <cstdio>
 
 
 namespace {
@@ -544,6 +545,11 @@ bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
 		&& l1.minusUnit() == l2.minusUnit();
 }
 
+
+bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2)
+{
+	return !(l1 == l2);
+}
 
 
 

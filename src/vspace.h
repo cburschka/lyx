@@ -160,6 +160,8 @@ protected:
 ///
 bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2);
 ///
+bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2);
+///
 bool isValidGlueLength(string const & data, LyXGlueLength * result);
 
 
