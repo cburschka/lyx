@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_parinset.h"
 #include "math_iter.h"
 #include "array.h"
@@ -80,67 +84,66 @@ MathParInset::draw(Painter & pain, int x, int y)
 	data.GoBegin();
 	while (data.OK()) {
 		data.GetPos(x, y);
-		byte cx = data.GetChar();
+		byte const cx = data.GetChar();
 		if (cx >= ' ') {
 			string const s = data.GetString();
 			drawStr(pain, data.fcode(), size(), x, y, s);
 			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
 			limits = false;
-		} else {
-			if (cx == 0)
-				break;
-			if (MathIsInset(cx)) {
-				int yy = y;
-				MathedInset * p = data.GetInset();
-				if (cx == LM_TC_UP) {
-					if (limits) {
-						x -= (xp > p->Width()) ?
-							p->Width() + (xp - p->Width()) / 2 : xp;  
-						yy -= (asc + p->Descent() + 4);
-					} else
-						yy -= (p->Descent() > asc) ?
-							p->Descent() + 4 : asc;
-				} else if (cx == LM_TC_DOWN) {
-					if (limits) {
-						x -= (xp > p->Width()) ?
-							p->Width() + (xp - p->Width()) / 2 : xp;
-						yy += des + p->Ascent() + 2;
-					} else
-						yy += des + p->Ascent() / 2;
-				} else {
-					asc = p->Ascent();
-					des = p->Descent();
-				}
-				p->draw(pain, x, yy);
-				if (cx != LM_TC_UP && cx != LM_TC_DOWN) {
-					limits = p->GetLimits();
-					if (limits)
-						xp = p->Width();
-				}
-				data.Next();
-			} else if (cx == LM_TC_TAB) {
-				if (cxp == cx
-				    || cxp == LM_TC_CR || data.IsFirst()) {
-					pain.rectangle(x, y - df_asc,
-						       df_width, df_asc,
-						       LColor::mathline);
-				}
-				data.Next();
-				limits = false;
-			} else if (cx == LM_TC_CR) {
-				if (cxp == LM_TC_TAB
-				    || cxp == LM_TC_CR || data.IsFirst()) {
-					pain.rectangle(x, y - df_asc,
-						       df_width, df_asc,
-						       LColor::mathline);
-				}
-				data.Next();
-				limits = false;
-			} else {	 
-				lyxerr << "GMathed Error: Unrecognized code[" << cx << "]" << endl;
-				break;
+		} else if (cx == 0) {
+			break;
+		} else if (MathIsInset(cx)) {
+			int yy = y;
+			MathedInset * p = data.GetInset();
+			if (cx == LM_TC_UP) {
+				if (limits) {
+					x -= (xp > p->Width()) ?
+						p->Width() + (xp - p->Width()) / 2 : xp;  
+					yy -= (asc + p->Descent() + 4);
+				} else
+					yy -= (p->Descent() > asc) ?
+						p->Descent() + 4 : asc;
+			} else if (cx == LM_TC_DOWN) {
+				if (limits) {
+					x -= (xp > p->Width()) ?
+						p->Width() + (xp - p->Width()) / 2 : xp;
+					yy += des + p->Ascent() + 2;
+				} else
+					yy += des + p->Ascent() / 2;
+			} else {
+				asc = p->Ascent();
+				des = p->Descent();
 			}
+			p->draw(pain, x, yy);
+			if (cx != LM_TC_UP && cx != LM_TC_DOWN) {
+				limits = p->GetLimits();
+				if (limits)
+					xp = p->Width();
+			}
+			data.Next();
+		} else if (cx == LM_TC_TAB) {
+			if (cxp == cx
+			    || cxp == LM_TC_CR || data.IsFirst()) {
+				pain.rectangle(x, y - df_asc,
+					       df_width, df_asc,
+					       LColor::mathline);
+			}
+			data.Next();
+			limits = false;
+		} else if (cx == LM_TC_CR) {
+			if (cxp == LM_TC_TAB
+			    || cxp == LM_TC_CR || data.IsFirst()) {
+				pain.rectangle(x, y - df_asc,
+					       df_width, df_asc,
+					       LColor::mathline);
+			}
+			data.Next();
+			limits = false;
+		} else {	 
+			lyxerr << "GMathed Error: Unrecognized code[" << cx << "]" << endl;
+			break;
 		}
+	
 		cxp = cx;
 	}
 	if (cxp == LM_TC_TAB || cxp == LM_TC_CR) { 

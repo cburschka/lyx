@@ -6,6 +6,10 @@
 #include "math_inset.h"
 #include "math_defs.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 class MathedRowSt;
 class MathedArray;
 
@@ -13,7 +17,7 @@ class MathedArray;
 /** The math paragraph base class, base to all editable math objects
     \author Alejandro Aguilar Sierra
  */
-class MathParInset: public MathedInset  {
+class MathParInset : public MathedInset  {
 public: 
 	///
 	MathParInset(short st = LM_ST_TEXT, string const & nm = string(),
@@ -44,38 +48,34 @@ public:
 	virtual bool Inside(int, int);   
 	// Tab stuff used by Matrix.
 	///
-	virtual void SetAlign(char, string const &) {}
+	virtual void SetAlign(char, string const &);
 	///
-	virtual int GetColumns() const { return 1; }
+	virtual int GetColumns() const;
 	///
-	virtual int GetRows() const { return 1; }
+	virtual int GetRows() const;
 	///
-	virtual bool isMatrix() const { return false; }
+	virtual bool isMatrix() const;
 	// Vertical switching
 	///
-	virtual bool setArgumentIdx(int i) { return (i == 0); }
+	virtual bool setArgumentIdx(int i);
 	///
-	virtual bool setNextArgIdx() { return false; }
+	virtual bool setNextArgIdx();
 	///
-	virtual int getArgumentIdx() const { return 0; }
+	virtual int getArgumentIdx() const;
 	///
-	virtual int getMaxArgumentIdx() const { return 0; }
+	virtual int getMaxArgumentIdx() const;
 	///
 	virtual void SetStyle(short);
 	///
 	virtual MathedRowSt * getRowSt() const;
 	///
-	virtual void setRowSt(MathedRowSt *) {}
+	virtual void setRowSt(MathedRowSt *);
 	///
 	virtual bool Permit(short f) const;
 	///
-	int xo() const {
-		return xo_;
-	}
+	int xo() const;
 	///
-	int yo() const {
-		return yo_;
-	}
+	int yo() const;
 	///
 	void clear();
 protected:
@@ -84,17 +84,100 @@ protected:
 	/// 
 	short flag;
 	///
-	void xo(int tx) {
-		xo_ = tx;
-	}
+	void xo(int tx);
 	///
-	void yo(int ty) {
-		yo_ = ty;
-	}
+	void yo(int ty);
 private:
 	/// Cursor start position
 	int xo_;
 	///
 	int yo_;
 };
+
+
+inline
+void MathParInset::SetAlign(char, string const &)
+{}
+
+
+inline
+int MathParInset::GetColumns() const
+{
+	return 1;
+}
+
+
+inline
+int MathParInset::GetRows() const
+{
+	return 1;
+}
+
+
+inline
+bool MathParInset::isMatrix() const
+{
+	return false;
+}
+
+
+inline
+bool MathParInset::setArgumentIdx(int i)
+{
+	return (i == 0);
+}
+
+
+inline
+bool MathParInset::setNextArgIdx()
+{
+	return false;
+}
+
+
+inline
+int MathParInset::getArgumentIdx() const
+{
+	return 0;
+}
+
+
+inline
+int MathParInset::getMaxArgumentIdx() const
+{
+	return 0;
+}
+
+
+inline
+void MathParInset::setRowSt(MathedRowSt *)
+{}
+
+
+inline
+int MathParInset::xo() const
+{
+	return xo_;
+}
+
+
+inline
+int MathParInset::yo() const
+{
+	return yo_;
+}
+
+
+inline
+void MathParInset::xo(int tx)
+{
+	xo_ = tx;
+}
+
+
+inline
+void MathParInset::yo(int ty)
+{
+	yo_ = ty;
+}
 #endif
