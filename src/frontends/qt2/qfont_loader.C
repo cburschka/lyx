@@ -293,10 +293,6 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 
 qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
 {
-	if (!lyx_gui::use_gui) {
-		// FIXME
-	}
-
 	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
 	if (fi)
 		return fi;
