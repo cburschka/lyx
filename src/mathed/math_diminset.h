@@ -18,7 +18,7 @@ public:
 	/// read width
 	int width() const { return dim_.width(); }
 	/// 
-	void dimensions(Dimension & dim) const;
+	Dimension dimensions() const { return dim_; }
 	///
 	void metricsT(TextMetricsInfo const &) const;
 	///

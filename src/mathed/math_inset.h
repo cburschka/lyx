@@ -128,12 +128,13 @@ public:
 	/// total width
 	virtual int width() const { return 2; }
 	/// all in one batch
-	virtual void dimensions(Dimension & dim) const;
+	virtual Dimension dimensions() const;
 	/// total height (== ascent + descent)
 	virtual int height() const;
 
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up) const;
+	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up,
+		int targetx) const;
 	/// The left key
 	virtual bool idxLeft(idx_type & idx, pos_type & pos) const;
 	/// The right key

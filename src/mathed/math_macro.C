@@ -160,11 +160,20 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUpDown(idx_type & idx, pos_type &, bool up) const
+bool MathMacro::idxUpDown(idx_type & idx, pos_type &, bool up, int x) const
 {
 	pos_type pos;
-	return
-		up ? MathNestInset::idxLeft(idx, pos) : MathNestInset::idxRight(idx, pos);
+	if (up) {
+		if (!MathNestInset::idxLeft(idx, pos))
+			return false;
+		pos = xcell(idx).x2pos(x);
+		return true;
+	} else {
+		if (!MathNestInset::idxRight(idx, pos))
+			return false;
+		pos = xcell(idx).x2pos(x);
+		return true;
+	}
 }
 
 

@@ -297,7 +297,7 @@ MathArray MathNestInset::glue() const
 {
 	MathArray ar;
 	for (unsigned i = 0; i < nargs(); ++i)
-		ar.push_back(cell(i));
+		ar.append(cell(i));
 	return ar;
 }
 

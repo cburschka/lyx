@@ -280,6 +280,8 @@ private:
 	bool goUpDown(bool up);
 	/// moves position into box
 	bool bruteFind(int xo, int yo, int xlow, int xhigh, int ylow, int yhigh);
+	/// are we in a nucleus of a script inset?
+	bool inNucleus() const;
 
 
 	/// grab grid marked by anchor and current cursor 

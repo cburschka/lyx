@@ -497,7 +497,6 @@ void Parser::error(string const & msg)
 }
 
 
-
 bool Parser::parse(MathAtom & at)
 {
 	skipSpaces();
@@ -632,7 +631,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
 			if (ar.size() == 1 && ar[0]->extraBraces())
-				cell->push_back(ar);
+				cell->append(ar);
 			else
 				cell->push_back(MathAtom(new MathBraceInset(ar)));
 		}
@@ -657,14 +656,16 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
 			bool up = (t.cat() == catSuper);
-			MathScriptInset * p = 0;
-			if (cell->size())
-				p = cell->back()->asScriptInset();
-			if (!p || p->has(up)) {
+			// we need no new script inset if the last thing was a scriptinset,
+			// which has that script already not the same script already
+			if (cell->size() && cell->back()->asScriptInset() &&
+			    !cell->back()->asScriptInset()->has(up))
+				cell->back()->asScriptInset()->ensure(up);
+			else if (cell->back()->asScriptInset())
 				cell->push_back(MathAtom(new MathScriptInset(up)));
-				p = cell->back()->asScriptInset();
-			}
-			p->ensure(up);
+			else
+				cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
+			MathScriptInset * p = cell->back()->asScriptInset();
 			parse(p->cell(up), FLAG_ITEM, mathmode);
 			p->limits(limits);
 			limits = 0;
@@ -987,7 +988,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
 			MathAtom p = createMathInset(t.cs());
-			cell->swap(p->cell(0));
+			p->cell(0) = *cell;
+			cell->clear();
 			parse(p->cell(1), flags, mathmode);
 			cell->push_back(p);
 			return;

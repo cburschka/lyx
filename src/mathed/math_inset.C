@@ -62,17 +62,17 @@ ostream & operator<<(ostream & os, MathInset const & inset)
 	return os;
 }
 
+
 MathInset::size_type MathInset::nargs() const
 {
 	return 0;
 }
 
 
-void MathInset::dimensions(Dimension & dim) const
+Dimension MathInset::dimensions() const
 {
-	dim.w = width();
-	dim.a = ascent();
-	dim.d = descent();
+	lyxerr << "call MathInset::dimensions()\n";
+	return Dimension(width(), ascent(), descent());
 }
 
 
@@ -143,7 +143,7 @@ bool MathInset::idxLeft(idx_type &, pos_type &) const
 }
 
 
-bool MathInset::idxUpDown(idx_type &, pos_type &, bool) const
+bool MathInset::idxUpDown(idx_type &, pos_type &, bool, int) const
 {
 	return false;
 }

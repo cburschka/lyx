@@ -14,7 +14,7 @@ using std::max;
 
 
 MathScriptInset::MathScriptInset()
-	: MathNestInset(2), limits_(0)
+	: MathNestInset(3), limits_(0)
 {
 	script_[0] = false;
 	script_[1] = false;
@@ -22,11 +22,21 @@ MathScriptInset::MathScriptInset()
 
 
 MathScriptInset::MathScriptInset(bool up)
-	: MathNestInset(2), limits_(0)
+	: MathNestInset(3), limits_(0)
 {
 	script_[0] = !up;
 	script_[1] = up;
 }
+
+
+MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
+	: MathNestInset(3), limits_(0)
+{
+	script_[0] = !up;
+	script_[1] = up;
+	cell(2).push_back(at);
+}
+
 
 
 MathInset * MathScriptInset::clone() const
@@ -47,9 +57,19 @@ MathScriptInset * MathScriptInset::asScriptInset()
 }
 
 
-MathXArray const & MathScriptInset::up() const
+bool MathScriptInset::idxFirst(idx_type & idx, pos_type & pos) const
 {
-	return xcell(1);
+	idx = 2;
+	pos = nuc().size();
+	return true;
+}
+
+
+bool MathScriptInset::idxLast(idx_type & idx, pos_type & pos) const
+{
+	idx = 2;
+	pos = nuc().size();
+	return true;
 }
 
 
@@ -59,15 +79,21 @@ MathXArray const & MathScriptInset::down() const
 }
 
 
-MathXArray & MathScriptInset::up()
+MathXArray & MathScriptInset::down()
+{
+	return xcell(0);
+}
+
+
+MathXArray const & MathScriptInset::up() const
 {
 	return xcell(1);
 }
 
 
-MathXArray & MathScriptInset::down()
+MathXArray & MathScriptInset::up()
 {
-	return xcell(0);
+	return xcell(1);
 }
 
 
@@ -77,13 +103,25 @@ void MathScriptInset::ensure(bool up)
 }
 
 
-int MathScriptInset::dy0(MathInset const * nuc) const
+MathXArray const & MathScriptInset::nuc() const
 {
-	int nd = ndes(nuc);
+	return xcell(2);
+}
+
+
+MathXArray & MathScriptInset::nuc()
+{
+	return xcell(2);
+}
+
+
+int MathScriptInset::dy0() const
+{
+	int nd = ndes();
 	if (!hasDown())
 		return nd;
 	int des = down().ascent();
-	if (hasLimits(nuc))
+	if (hasLimits())
 		des += nd + 2;
 	else
 		des = max(des, nd);
@@ -91,13 +129,13 @@ int MathScriptInset::dy0(MathInset const * nuc) const
 }
 
 
-int MathScriptInset::dy1(MathInset const * nuc) const
+int MathScriptInset::dy1() const
 {
-	int na = nasc(nuc);
+	int na = nasc();
 	if (!hasUp())
 		return na;
 	int asc = up().descent();
-	if (hasLimits(nuc))
+	if (hasLimits())
 		asc += na + 2;
 	else
 		asc = max(asc, na);
@@ -106,154 +144,106 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 }
 
 
-int MathScriptInset::dx0(MathInset const * nuc) const
+int MathScriptInset::dx0() const
 {
 	lyx::Assert(hasDown());
-	return hasLimits(nuc) ? (width2(nuc) - down().width()) / 2 : nwid(nuc);
+	return hasLimits() ? (dim_.w - down().width()) / 2 : nwid();
 }
 
 
-int MathScriptInset::dx1(MathInset const * nuc) const
+int MathScriptInset::dx1() const
 {
 	lyx::Assert(hasUp());
-	return hasLimits(nuc) ? (width2(nuc) - up().width()) / 2 : nwid(nuc);
+	return hasLimits() ? (dim_.w - up().width()) / 2 : nwid();
 }
 
 
-int MathScriptInset::dxx(MathInset const * nuc) const
+int MathScriptInset::dxx() const
 {
-	//lyx::Assert(nuc());
-	return hasLimits(nuc)  ?  (width2(nuc) - nwid(nuc)) / 2  :  0;
+	return hasLimits() ? (dim_.w - nwid()) / 2  :  0;
 }
 
 
-void MathScriptInset::dimensions2(MathInset const * nuc, Dimension & dim) const
+int MathScriptInset::nwid() const
 {
-	dim.a = dy1(nuc) + (hasUp() ? up().ascent() : 0);
-	dim.d = dy0(nuc) + (hasDown() ? down().descent() : 0);
-	dim.w = width2(nuc);
+	return nuc().size() ? nuc().width() : mathed_char_width(font_, '.');
 }
 
 
-int MathScriptInset::width2(MathInset const * nuc) const
+int MathScriptInset::nasc() const
 {
-	int w = 0;
-	if (hasLimits(nuc)) {
-		w = nwid(nuc);
-		if (hasUp())
-			w = max(w, up().width());
-		if (hasDown())
-			w = max(w, down().width());
-	} else {
-		if (hasUp())
-			w = max(w, up().width());
-		if (hasDown())
-			w = max(w, down().width());
-		w += nwid(nuc);
-	}
-	return w;
+	return nuc().size() ? nuc().ascent() : mathed_char_ascent(font_, 'I');
 }
 
 
-int MathScriptInset::nwid(MathInset const * nuc) const
+int MathScriptInset::ndes() const
 {
-	return nuc ?  nuc->width() : mathed_char_width(font_, '.');
-}
-
-
-int MathScriptInset::nasc(MathInset const * nuc) const
-{
-	return nuc ? nuc->ascent() : mathed_char_ascent(font_, 'I');
-}
-
-
-int MathScriptInset::ndes(MathInset const * nuc) const
-{
-	return nuc ? nuc->descent() : mathed_char_descent(font_, 'I');
+	return nuc().size() ? nuc().descent() : mathed_char_descent(font_, 'I');
 }
 
 
 void MathScriptInset::metrics(MathMetricsInfo & mi) const
 {
-	metrics(0, mi);
-}
-
-
-void MathScriptInset::metrics(MathInset const * nuc, MathMetricsInfo & mi) const
-{
-	if (nuc)
-		nuc->metrics(mi);
 	MathNestInset::metrics(mi);
 	MathScriptChanger dummy(mi.base);
-	dimensions2(nuc, dim_);
+	dim_.w = 0;
+	if (hasLimits()) {
+		dim_.w = nwid();
+		if (hasUp())
+			dim_.w = max(dim_.w, up().width());
+		if (hasDown())
+			dim_.w = max(dim_.w, down().width());
+	} else {
+		if (hasUp())
+			dim_.w = max(dim_.w, up().width());
+		if (hasDown())
+			dim_.w = max(dim_.w, down().width());
+		dim_.w += nwid();
+	}
+	dim_.a = dy1() + (hasUp() ? up().ascent() : 0);
+	dim_.d = dy0() + (hasDown() ? down().descent() : 0);
+	metricsMarkers();
 }
 
 
 void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
-	draw(0, pi, x, y);
-}
-
-
-void MathScriptInset::draw(MathInset const * nuc, MathPainterInfo & pi,
-	int x, int y) const
-{
-	if (nuc)
-		nuc->draw(pi, x + dxx(nuc), y);
+	if (nuc().size())
+		nuc().draw(pi, x + dxx(), y);
 	else if (editing())
-		drawStr(pi, font_, x + dxx(nuc), y, ".");
-
+		drawStr(pi, font_, x + dxx(), y, ".");
 	MathScriptChanger dummy(pi.base);
 	if (hasUp())
-		up().draw(pi, x + dx1(nuc), y - dy1(nuc));
+		up().draw(pi, x + dx1(), y - dy1());
 	if (hasDown())
-		down().draw(pi, x + dx0(nuc), y + dy0(nuc));
+		down().draw(pi, x + dx0(), y + dy0());
+	drawMarkers(pi, x, y);
 }
 
 
 void MathScriptInset::metricsT(TextMetricsInfo const & mi) const
 {
-	metricsT(0, mi);
-}
-
-
-void MathScriptInset::metricsT(MathInset const * nuc,
-	TextMetricsInfo const & mi) const
-{
 	if (hasUp())
 		up().metricsT(mi);
 	if (hasDown())
 		down().metricsT(mi);
-	if (nuc)
-		nuc->metricsT(mi);
-	//ascent_  = ascent2(nuc);
-	//descent_ = descent2(nuc);
-	//width_   = width2(nuc);
+	nuc().metricsT(mi);
 }
 
 
 void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
 {
-	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
-	drawT(0, pain, x, y);
-}
-
-
-void MathScriptInset::drawT(MathInset const * nuc, TextPainter & pain,
-	int x, int y) const
-{
-	if (nuc)
-		nuc->drawT(pain, x + dxx(nuc), y);
+	if (nuc().size())
+		nuc().drawT(pain, x + dxx(), y);
 	if (hasUp())
-		up().drawT(pain, x + dx1(nuc), y - dy1(nuc));
+		up().drawT(pain, x + dx1(), y - dy1());
 	if (hasDown())
-		down().drawT(pain, x + dx0(nuc), y + dy0(nuc));
+		down().drawT(pain, x + dx0(), y + dy0());
 }
 
 
 
-bool MathScriptInset::hasLimits(MathInset const * nuc) const
+bool MathScriptInset::hasLimits() const
 {
 	// obvious cases
 	if (limits_ == 1)
@@ -262,14 +252,14 @@ bool MathScriptInset::hasLimits(MathInset const * nuc) const
 		return false;
 
 	// we can only display limits if the nucleus wants some
-	if (!nuc)
+	if (!nuc().size())
 		return false;
-	if (!nuc->isScriptable())
+	if (!nuc().back()->isScriptable())
 		return false;
 
 	// per default \int has limits beside the \int even in displayed formulas
-	if (nuc->asSymbolInset())
-		if (nuc->asSymbolInset()->name().find("int") != string::npos)
+	if (nuc().back()->asSymbolInset())
+		if (nuc().back()->asSymbolInset()->name().find("int") != string::npos)
 			return false;
 
 	// assume "real" limits for everything else
@@ -302,7 +292,7 @@ bool MathScriptInset::has(bool up) const
 
 bool MathScriptInset::empty() const
 {
-	return !script_[0] && !script_[1];
+	return !script_[0] && !script_[1] && cell(2).empty();
 }
 
 
@@ -318,42 +308,52 @@ bool MathScriptInset::hasDown() const
 }
 
 
-bool MathScriptInset::idxRight(MathInset::idx_type &,
-				 MathInset::pos_type &) const
+bool MathScriptInset::idxRight(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxLeft(MathInset::idx_type &,
-				MathInset::pos_type &) const
+bool MathScriptInset::idxLeft(idx_type &, pos_type &) const
 {
 	return false;
+}
+
+
+bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
+	int) const
+{
+	if ((idx == 1 && up) || (idx == 0 && !up))
+		return false;
+
+	// in nuclues?
+	if (idx == 2) {
+		idx = up;
+		pos = 0;
+	} else {
+		idx = 2;
+		pos = cell(2).size();	
+	}
+	return true;
 }
 
 
 void MathScriptInset::write(WriteStream & os) const
 {
-	//lyxerr << "unexpected call to MathScriptInset::write()\n";
-	write2(0, os);
-}
-
-
-void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
-{
-	if (nuc) {
-		os << nuc;
-		if (nuc->takesLimits()) {
+	if (nuc().size()) {
+		os << nuc().data();
+		if (nuc().back()->takesLimits()) {
 			if (limits_ == -1)
 				os << "\\nolimits ";
 			if (limits_ == 1)
 				os << "\\limits ";
 		}
-	} else
-			if (os.firstitem())
-				lyxerr[Debug::MATHED] << "suppressing {} when writing\n";
-			else
-				os << "{}";
+	} else {
+		if (os.firstitem())
+			lyxerr[Debug::MATHED] << "suppressing {} when writing\n";
+		else
+			os << "{}";
+	}
 
 	if (hasDown() && down().data().size())
 		os << "_{" << down().data() << '}';
@@ -365,23 +365,16 @@ void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 
 void MathScriptInset::normalize(NormalStream & os) const
 {
-	//lyxerr << "unexpected call to MathScriptInset::normalize()\n";
-	normalize2(0, os);
-}
-
-
-void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
-{
-	bool d = hasDown() && down().data().size();
-	bool u = hasUp() && up().data().size();
+	bool d = hasDown() && down().size();
+	bool u = hasUp() && up().size();
 
 	if (u)
 		os << "[sup ";
 	if (d)
 		os << "[sub ";
 
-	if (nuc)
-		os << nuc << ' ';
+	if (nuc().size())
+		os << nuc().data() << ' ';
 	else
 		os << "[par]";
 
@@ -392,37 +385,39 @@ void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 }
 
 
-void MathScriptInset::maplize2(MathInset const * nuc, MapleStream & os) const
+void MathScriptInset::maplize(MapleStream & os) const
 {
-	if (nuc)
-		os << nuc;
-	if (hasDown() && down().data().size())
+	if (nuc().size())
+		os << nuc().data();
+	if (hasDown() && down().size())
 		os << '[' << down().data() << ']';
-	if (hasUp() && up().data().size())
+	if (hasUp() && up().size())
 		os << "^(" << up().data() << ')';
 }
 
 
-void MathScriptInset::mathematicize2(MathInset const * nuc, MathematicaStream & os) const
+void MathScriptInset::mathematicize(MathematicaStream & os) const
 {
-	bool d = hasDown() && down().data().size();
-	bool u = hasUp() && up().data().size();
+	bool d = hasDown() && down().size();
+	bool u = hasUp() && up().size();
 
-	if (nuc)
-		if (d)  //subscript only if nuc !
-			os << "Subscript[" << nuc;
+	if (nuc().size()) {
+		if (d) 
+			os << "Subscript[" << nuc().data();
 		else
-			os << nuc;
+			os << nuc().data();
+	}
+
 	if (u)
 		os << "^(" << up().data() << ")";
 
-	if (nuc)
+	if (nuc().size())
 		if (d)
-		os << "," << down().data() << "]"; 
+			os << "," << down().data() << "]"; 
 }
 
 
-void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
+void MathScriptInset::mathmlize( MathMLStream & os) const
 {
 	bool d = hasDown() && down().data().size();
 	bool u = hasUp() && up().data().size();
@@ -434,8 +429,8 @@ void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 	else if (d)
 		os << MTag("msub");
 
-	if (nuc)
-		os << nuc;
+	if (nuc().size())
+		os << nuc().data();
 	else
 		os << "<mrow/>";
 
@@ -448,13 +443,13 @@ void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 }
 
 
-void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
+void MathScriptInset::octavize(OctaveStream & os) const
 {
-	if (nuc)
-		os << nuc;
-	if (hasDown() && down().data().size())
+	if (nuc().size())
+		os << nuc().data();
+	if (hasDown() && down().size())
 		os << '[' << down().data() << ']';
-	if (hasUp() && up().data().size())
+	if (hasUp() && up().size())
 		os << "^(" << up().data() << ')';
 }
 

@@ -113,20 +113,6 @@ MathArray::iterator extractArgument(MathArray & ar,
 }
 
 
-MathScriptInset const * asScript(MathArray::const_iterator it)
-{
-	if (!it->nucleus())
-		return 0;
-	if (it->nucleus()->asScriptInset())
-		return 0;
-	++it;
-	if (!it->nucleus())
-		return 0;
-	return it->nucleus()->asScriptInset();
-}
-
-
-
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
 string charSequence
@@ -300,7 +286,7 @@ void splitScripts(MathArray & ar)
 		// create extra script inset and move superscript over
 		MathScriptInset * q = new MathScriptInset;
 		q->ensure(true);
-		q->up().data().swap(p->up().data());
+		std::swap(q->up(), p->up());
 		p->removeScript(true);
 
 		// insert new inset behind
@@ -799,8 +785,8 @@ void extractLims(MathArray & ar)
 			continue;
 
 		// the -> splits the subscript int x and x0
-		MathArray x  = MathArray(s, 0, st - s.begin());
-		MathArray x0 = MathArray(s, st - s.begin() + 1, s.size());
+		MathArray x  = MathArray(s.begin(), st);
+		MathArray x0 = MathArray(st + 1, s.end());
 		
 		// use something behind the script as core
 		MathArray f;
@@ -842,18 +828,8 @@ void write(MathArray const & dat, WriteStream & wi)
 {
 	MathArray ar = dat;
 	extractStrings(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		wi.firstitem() = (it == ar.begin());
-		MathInset const * p = it->nucleus();
-		if (it + 1 != ar.end()) {
-			if (MathScriptInset const * q = asScript(it)) {
-				q->write2(p, wi);
-				++it;
-				continue;
-			}
-		}
-		p->write(wi);
-	}
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->write(wi);
 }
 
 
@@ -868,17 +844,8 @@ void octavize(MathArray const & dat, OctaveStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (it + 1 != ar.end()) {
-			if (MathScriptInset const * q = asScript(it)) {
-				q->octavize2(p, os);
-				++it;
-				continue;
-			}
-		}
-		p->octavize(os);
-	}
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->octavize(os);
 }
 
 
@@ -886,17 +853,8 @@ void maplize(MathArray const & dat, MapleStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (it + 1 != ar.end()) {
-			if (MathScriptInset const * q = asScript(it)) {
-				q->maplize2(p, os);
-				++it;
-				continue;
-			}
-		}
-		p->maplize(os);
-	}
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->maplize(os);
 }
 
 
@@ -904,17 +862,8 @@ void mathematicize(MathArray const & dat, MathematicaStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (it + 1 != ar.end()) {
-			if (MathScriptInset const * q = asScript(it)) {
-				q->mathematicize2(p, os);
-				++it;
-				continue;
-			}
-		}
-		p->mathematicize(os);
-	}
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->mathematicize(os);
 }
 
 
@@ -928,17 +877,8 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 		os << ar.begin()->nucleus();
 	else {
 		os << MTag("mrow");
-		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-			MathInset const * p = it->nucleus();
-			if (it + 1 != ar.end()) {
-				if (MathScriptInset const * q = asScript(it)) {
-					q->mathmlize2(p, os);
-					++it;
-					continue;
-				}
-			}
-			p->mathmlize(os);
-		}
+		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+			(*it)->mathmlize(os);
 		os << ETag("mrow");
 	}
 }
@@ -1099,7 +1039,7 @@ namespace {
 		MathArrayInset const * mat = at.nucleus()->asArrayInset();
 		MathArray res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)
-			res.push_back(mat->cell(0));
+			res.append(mat->cell(0));
 		else {
 			res.push_back(MathAtom(new MathDelimInset("(", ")")));
 			res.back()->cell(0).push_back(at);

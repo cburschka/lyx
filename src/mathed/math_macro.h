@@ -51,7 +51,7 @@ public:
 	void dump() const;
 
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up) const;
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///
 	bool idxLeft(idx_type & idx, pos_type & pos) const;
 	///

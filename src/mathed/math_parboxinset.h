@@ -31,7 +31,7 @@ public:
 	///
 	void setPosition(string const & pos);
 	/// moves cursor up or down
-	bool idxUpDown(idx_type &, pos_type & pos, bool up) const;
+	bool idxUpDown(idx_type &, pos_type & pos, bool up, int targetx) const;
 private:
 	/// number of rows on screen
 	int screenrows() const;

@@ -444,7 +444,7 @@ void MathHullInset::glueall()
 {
 	MathArray ar;
 	for (idx_type i = 0; i < nargs(); ++i)
-		ar.push_back(cell(i));
+		ar.append(cell(i));
 	*this = MathHullInset("simple");
 	cell(0) = ar;
 	setDefaults();
@@ -506,11 +506,11 @@ void MathHullInset::mutate(string const & newtype)
 
 			// split it "nicely" on the firest relop
 			pos_type pos = firstRelOp(cell(0));
-			cell(1) = MathArray(cell(0), pos, cell(0).size());
+			cell(1) = MathArray(cell(0).begin() + pos, cell(0).end());
 			cell(0).erase(pos, cell(0).size());
 
 			if (cell(1).size()) {
-				cell(2) = MathArray(cell(1), 1, cell(1).size());
+				cell(2) = MathArray(cell(1).begin() + 1, cell(1).end());
 				cell(1).erase(1, cell(1).size());
 			}
 			setType("eqnarray");
@@ -551,7 +551,7 @@ void MathHullInset::mutate(string const & newtype)
 		} else { // align & Co.
 			for (row_type row = 0; row < nrows(); ++row) {
 				idx_type c = 3 * row + 1;
-				cell(c).push_back(cell(c + 1));
+				cell(c).append(cell(c + 1));
 			}
 			MathGridInset::delCol(2);
 			setType("align");

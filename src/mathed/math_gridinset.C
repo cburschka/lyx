@@ -630,17 +630,20 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUpDown(idx_type & idx, pos_type &, bool up) const
+bool MathGridInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
+	int targetx) const
 {
 	if (up) {
 		if (idx < ncols())
 			return false;
 		idx -= ncols();
+		pos = xcell(idx).x2pos(targetx - xcell(idx).xo());
 		return true;
 	} else {
 		if (idx >= ncols() * (nrows() - 1))
 			return false;
 		idx += ncols();
+		pos = xcell(idx).x2pos(targetx - xcell(idx).xo());
 		return true;
 	}
 }
@@ -759,7 +762,7 @@ bool MathGridInset::idxDelete(idx_type & idx)
 
 	// move cells if necessary
 	for (idx_type i = index(row(idx), 0); i < idx; ++i)
-		cell(i).swap(cell(i + ncols()));
+		std::swap(cell(i), cell(i + ncols()));
 
 	delRow(row(idx));
 
@@ -783,14 +786,14 @@ void MathGridInset::idxGlue(idx_type idx)
 	if (c + 1 == ncols()) {
 		if (row(idx) + 1 != nrows()) {
 			for (col_type cc = 0; cc < ncols(); ++cc)
-				cell(idx).push_back(cell(idx + cc + 1));
+				cell(idx).append(cell(idx + cc + 1));
 			delRow(row(idx) + 1);
 		}
 	} else {
-		cell(idx).push_back(cell(idx + 1));
+		cell(idx).append(cell(idx + 1));
 		for (col_type cc = c + 2; cc < ncols(); ++cc)
 			cell(idx - c + cc - 1) = cell(idx - c + cc);
-		cell(idx - c + ncols() - 1).erase();
+		cell(idx - c + ncols() - 1).clear();
 	}
 }
 

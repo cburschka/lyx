@@ -20,13 +20,21 @@ class TextPainter;
 /** This class extends a MathArray by drawing routines and caches for
  * metric information.
  */
-class MathXArray
+class MathXArray : private MathArray 
 {
 public:
-	/// type for positions and sizes
-	typedef MathArray::size_type       size_type;
-	/// const iterator into the underlying MathArray
-	typedef MathArray::const_iterator  const_iterator;
+	// re-use inherited stuff
+	using MathArray::size_type;
+	using MathArray::const_iterator;
+	using MathArray::begin;
+	using MathArray::end;
+	using MathArray::operator[];
+	using MathArray::clear;
+	using MathArray::size;
+	using MathArray::empty;
+	using MathArray::back;
+	MathArray & data() { return *this; }
+	MathArray const & data() const { return *this; }
 
 	// helper structure for external metrics computations as done
 	// in parboxes
@@ -104,26 +112,14 @@ public:
 	/// adjust (x,y) to point on boundary on a straight line from the center
 	void towards(int & x, int & y) const;
 
-	/// begin iterator of the underlying MathArray
-	const_iterator begin() const { return data_.begin(); }
-	/// end iterator of the underlying MathArray
-	const_iterator end() const { return data_.end(); }
-	/// access to data
-	MathArray const & data() const { return data_; }
-	/// access to data
-	MathArray & data() { return data_; }
 
 private:
-	/// the underlying MathArray
-	MathArray data_;
 	/// cached dimensions of cell
 	mutable Dimension dim_;
 	/// cached x coordinate of last drawing
 	mutable int xo_;
 	/// cached y coordinate of last drawing
 	mutable int yo_;
-	/// cache size information of last drawing
-	mutable MathMetricsInfo size_;
 	/// cached cleaness of cell
 	mutable bool clean_;
 	/// cached draw status of cell

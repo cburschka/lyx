@@ -82,15 +82,15 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	///
-	void drawT(TextPainter &, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const;
 	///
-	void halign(string const &);
+	void halign(string const & align);
 	///
 	void halign(char c, col_type col);
 	///
@@ -126,13 +126,9 @@ public:
 	col_type col(idx_type idx) const;
 	///
 	row_type row(idx_type idx) const;
-	///
-	int cellXOffset(idx_type idx) const;
-	///
-	int cellYOffset(idx_type idx) const;
 
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool) const;
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///
 	bool idxLeft(idx_type & idx, pos_type & pos) const;
 	///
@@ -202,6 +198,10 @@ public:
 	//void octavize(OctaveStream &) const;
 
 protected:
+	/// returns x offset of cell comapared to inset
+	int cellXOffset(idx_type idx) const;
+	/// returns y offset of cell comapared to inset
+	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
 	string eolString(row_type row, bool fragile = false) const;
 	/// returns proper 'end of column' code for LaTeX

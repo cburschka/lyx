@@ -4,8 +4,9 @@
 #pragma implementation
 #endif
 
-#include "math_scriptinset.h"
+#include "math_xdata.h"
 #include "math_support.h"
+#include "math_inset.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
 #include "debug.h"
@@ -14,9 +15,6 @@
 using std::max;
 using std::min;
 using std::abs;
-
-
-extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
 MathXArray::MathXArray()
@@ -35,33 +33,19 @@ Dimension const & MathXArray::metrics(MathMetricsInfo & mi) const
 {
 	//if (clean_)
 	//	return;
-
-	size_   = mi;
 	clean_  = true;
 	drawn_  = false;
 
-	if (data_.empty()) {
+	if (empty()) {
 		mathed_char_dim(mi.base.font, 'I', dim_);
 		return dim_;
 	}
 
 	dim_.clear();
-	for (const_iterator it = begin(); it != end(); ++it) {
-		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		Dimension d;
-		if (q) {
-			q->metrics(p, mi);
-			q->dimensions2(p, d);
-			++it;
-		} else {
-			p->metrics(mi);
-			p->dimensions(d);
-		}
-		dim_ += d;
+	for (const_iterator it = begin(), et = end(); it != et; ++it) {
+		(*it)->metrics(mi);
+		dim_ += (*it)->dimensions();
 	}
-
-	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
 	return dim_;
 }
 
@@ -72,33 +56,21 @@ void MathXArray::metricsExternal(MathMetricsInfo & mi,
 	//if (clean_)
 	//	return;
 
-	size_   = mi;
 	clean_  = true;
 	drawn_  = false;
 
-	if (data_.empty()) {
+	if (empty()) {
 		mathed_char_dim(mi.base.font, 'I', dim_);
 		return;
 	}
 
 	dim_.clear();
-	for (const_iterator it = begin(); it != end(); ++it) {
+	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		Dimension d;
-		if (q) {
-			q->metrics(p, mi);
-			q->dimensions2(p, d);
-			v.push_back(d);
-			v.push_back(Dimension());
-			++it;
-		} else {
-			p->metrics(mi);
-			p->dimensions(d);
-			v.push_back(d);
-		}
+		p->metrics(mi);
+		v.push_back(p->dimensions());
 	}
-	//for (int i = 0; i < data_.size(); ++i)
+	//for (int i = 0; i < size(); ++i)
 	//	lyxerr << "i: " << i << "  dim: " << v[i] << endl;
 	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
 }
@@ -132,16 +104,8 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 	}
 
 	for (; it != et; ++it) {
-		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
-		if (q) {
-			q->draw(p, pi, x, y);
-			x += q->width2(p);
-			++it;
-		} else {
-			p->draw(pi, x, y);
-			x += p->width();
-		}
+		(*it)->draw(pi, x, y);
+		x += (*it)->width();
 	}
 }
 
@@ -151,7 +115,7 @@ void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
 {
 	//for (size_type r = 0; r < v.size(); ++r)
 	//	lyxerr << "row " << r << " to: " << v[r].end << endl; 
-	//lyxerr << " data: " << data_ << endl;
+	//lyxerr << " data: " << *this << endl;
 
 	xo_    = x;
 	yo_    = y;
@@ -159,26 +123,16 @@ void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
 	for (size_type r = 0; r < v.size(); ++r) {
 		int xx = x;
 		int yy = y + v[r].yo;
-		for (size_type pos = v[r].begin; pos < v[r].end && pos < data_.size(); ++pos) {
-			//lyxerr << "drawing pos " << pos << " of " << data_.size() 
-			//	<< " " << int(data_[pos]->getChar()) << endl;
-			MathInset const * p = data_[pos].nucleus();
-		
-			// insert extra glue
+		for (size_type pos = v[r].begin; pos < v[r].end && pos < size(); ++pos) {
+			//lyxerr << "drawing pos " << pos << " of " << size() 
+			//	<< " " << int(operator[](pos)->getChar()) << endl;
+			MathInset const * p = operator[](pos).nucleus();
+			// insert extra glue if necessary
 			if (p->getChar() == ' ') 
 				xx += v[r].glue;
-	
-			MathScriptInset const * q = 0;
-			if (pos + 1 < data_.size())
-				q = asScript(begin() + pos);
-			if (q) {
-				q->draw(p, pi, xx, yy);
-				xx += q->width2(p);
-				++pos;
-			} else {
-				p->draw(pi, xx, yy);
-				xx += p->width();
-			}
+			// ordinary case
+			p->draw(pi, xx, yy);
+			xx += p->width();
 		}
 	}
 }
@@ -190,18 +144,8 @@ Dimension const & MathXArray::metricsT(TextMetricsInfo const & mi) const
 	//	return;
 	dim_.clear();
 	for (const_iterator it = begin(); it != end(); ++it) {
-		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		Dimension d;
-		if (q) {
-			q->metricsT(p, mi);
-			q->dimensions2(p, d);
-			++it;
-		} else {
-			p->metricsT(mi);
-			p->dimensions(d);
-		}
-		dim_ += d;
+		(*it)->metricsT(mi);
+		dim_ += (*it)->dimensions();
 	}
 	return dim_;
 }
@@ -222,15 +166,8 @@ void MathXArray::drawT(TextPainter & pain, int x, int y) const
 
 	for (; it != et; ++it) {
 		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
-		if (q) {
-			q->drawT(p, pain, x, y);
-			x += q->width2(p);
-			++it;
-		} else {
-			p->drawT(pain, x, y);
-			x += p->width();
-		}
+		p->drawT(pain, x, y);
+		x += p->width();
 	}
 }
 
@@ -244,21 +181,13 @@ int MathXArray::pos2x(size_type pos) const
 int MathXArray::pos2x(size_type pos1, size_type pos2, int glue) const
 {
 	int x = 0;
-	size_type target = min(pos2, data_.size());
+	size_type target = min(pos2, size());
 	for (size_type i = pos1; i < target; ++i) {
 		const_iterator it = begin() + i;
 		MathInset const * p = it->nucleus();
 		if (p->getChar() == ' ')
 			x += glue;
-		MathScriptInset const * q = (i + 1 == data_.size()) ? 0 : asScript(it);
-		if (q) {
-			++i;
-			if (i < target)
-				x += q->width2(p);
-			else  // "half" position
-				x += q->dxx(p) + q->nwid(p);
-		} else
-			x += p->width();
+		x += p->width();
 	}
 	return x;
 }
@@ -277,21 +206,11 @@ MathArray::size_type MathXArray::x2pos(size_type startpos, int targetx,
 	int lastx = 0;
 	int currx = 0;
 	for (; currx < targetx && it < end(); ++it) {
-		size_type pos = it - begin();
 		lastx = currx;
-
 		MathInset const * p = it->nucleus();
 		if (p->getChar() == ' ')
 			currx += glue;
-		MathScriptInset const * q = 0;
-		if (it + 1 != end())
-			q = asScript(it);
-		if (q) {
-			currx += q->width2(p);
-			++it;
-		} else {
-			currx += p->width();
-		}
+		currx += p->width();
 	}
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin() + startpos)
 		--it;
@@ -339,16 +258,7 @@ void MathXArray::findPos(MathPosFinder & f) const
 		// check inset
 		MathInset const * p = it->nucleus();
 		p->findPos(f);
-
-		// move on
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		if (q) {
-			x += q->width(p);
-			f.nextPos();
-			++it;
-		} else {
-			x += p->width();
-		}
+		x += p->width();
 	}
 }
 */

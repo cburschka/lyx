@@ -32,7 +32,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up) const;
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///

@@ -40,6 +40,7 @@ void MathRootInset::metrics(MathMetricsInfo & mi) const
 	dim_.a = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
 	dim_.d = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
 	dim_.w = xcell(0).width() + xcell(1).width() + 10;
+	metricsMarkers();
 }
 
 
@@ -60,6 +61,7 @@ void MathRootInset::draw(MathPainterInfo & pi, int x, int y) const
 	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;
 	xp[4] = x;            yp[4] = y + (d - a)/2 + 2;
 	pi.pain.lines(xp, yp, 5, LColor::math);
+	drawMarkers(pi, x, y);
 }
 
 
@@ -75,12 +77,13 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUpDown(idx_type & idx, pos_type &, bool up) const
+bool MathRootInset::idxUpDown(idx_type & idx, pos_type & pos, bool up, int) const
 {
 	bool target = !up; // up ? 0 : 1;
 	if (idx == target)
 		return false;
 	idx = target;
+	pos = target ? 0 : cell(0).size();
 	return true;
 }
 

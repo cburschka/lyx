@@ -20,9 +20,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
 	string str() const { return str_; }
 	///

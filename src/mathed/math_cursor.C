@@ -170,9 +170,6 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 	if (t->lock())
 		return false;
 
-	if (t->asScriptInset())
-		return false;
-
 	if (sel) {
 		// we can't move into anything new during selection
 		if (depth() == Anchor_.size())
@@ -184,8 +181,16 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 }
 
 
+bool MathCursor::inNucleus() const
+{
+	return par()->asScriptInset() && idx() == 2;
+}
+
+
 bool MathCursor::posLeft()
 {
+	if (inNucleus())
+		return false;
 	if (pos() == 0)
 		return false;
 	--pos();
@@ -281,10 +286,11 @@ void MathCursor::setPos(int x, int y)
 		formula()->xlow(), formula()->xhigh(),
 		formula()->ylow(), formula()->yhigh());
 	if (!res) {
-		// this ccan happen on creation of "math-display"
+		// this can happen on creation of "math-display"
 		dump("setPos 1.5");
 		first();
 	}
+	targetx_ = -1; // "no target"
 	dump("setPos 2");
 }
 
@@ -299,6 +305,7 @@ bool MathCursor::home(bool sel)
 	if (!par()->idxHome(idx(), pos()))
 		return popLeft();
 	dump("home 2");
+	targetx_ = -1; // "no target"
 	return true;
 }
 
@@ -312,6 +319,7 @@ bool MathCursor::end(bool sel)
 	if (!par()->idxEnd(idx(), pos()))
 		return popRight();
 	dump("end 2");
+	targetx_ = -1; // "no target"
 	return true;
 }
 
@@ -417,20 +425,21 @@ void MathCursor::paste(MathGridInset const & data)
 		for (row_type row = 0; row < numrows; ++row) {
 			for (col_type col = 0; col < numcols; ++col) {
 				idx_type i = p->index(row + p->row(idx), col + p->col(idx));
-				p->cell(i).push_back(data.cell(data.index(row, col)));
+				p->cell(i).append(data.cell(data.index(row, col)));
 			}
 			// append the left over horizontal cells to the last column
 			idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
 			for (MathInset::col_type col = numcols; col < data.ncols(); ++col)
-				p->cell(i).push_back(data.cell(data.index(row, col)));
+				p->cell(i).append(data.cell(data.index(row, col)));
 		}
 		// append the left over vertical cells to the last _cell_
 		idx_type i = p->nargs() - 1;
 		for (row_type row = numrows; row < data.nrows(); ++row)
 			for (col_type col = 0; col < data.ncols(); ++col)
-				p->cell(i).push_back(data.cell(data.index(row, col)));
+				p->cell(i).append(data.cell(data.index(row, col)));
 	}
 }
+
 
 void MathCursor::backspace()
 {
@@ -445,12 +454,16 @@ void MathCursor::backspace()
 		return;
 	}
 
-	MathScriptInset * p = prevAtom()->asScriptInset();
-	if (p) {
-		p->removeScript(p->hasUp());
-		// Don't delete if there is anything left
-		if (p->hasUp() || p->hasDown())
-			return;
+	if (prevAtom()->asScriptInset()) {
+		// simply enter nucleus
+		left();
+		return;
+	}
+
+	if (inNucleus()) {
+		// we are in nucleus
+		if (pos() == 1) {
+		}
 	}
 
 	--pos();
@@ -480,12 +493,25 @@ void MathCursor::erase()
 		return;
 	}
 
-	MathScriptInset * p = nextAtom()->asScriptInset();
-	if (p) {
-		p->removeScript(p->hasUp());
-		// Don't delete if there is anything left
-		if (p->hasUp() || p->hasDown())
-			return;
+	// if we are standing in front of a script inset, grab item before us and
+	// move it into nucleus
+	// and remove first thing.
+	if (hasNextAtom() && nextAtom()->asScriptInset()) {
+		if (hasPrevAtom()) {
+			MathAtom at = prevAtom();
+			--pos();
+			array().erase(pos());
+			pushLeft(nextAtom());
+			if (array().empty())
+				array().push_back(at);
+			else
+				array()[0] = at;
+			pos() = 1;
+		} else {
+			pushLeft(nextAtom());
+			array().clear();
+		}
+		return;
 	}
 
 	plainErase();
@@ -579,6 +605,7 @@ string MathCursor::macroName() const
 
 void MathCursor::selClear()
 {
+	Anchor_.clear();
 	selection_ = false;
 }
 
@@ -786,20 +813,6 @@ void MathCursor::pullArg()
 {
 	dump("pullarg");
 	MathArray a = array();
-
-	MathScriptInset const * p = par()->asScriptInset();
-	if (p) {
-		// special handling for scripts
-		const bool up = p->hasUp();
-		popLeft();
-		MathScriptInset * q = nextAtom()->asScriptInset();
-		if (q)
-			q->removeScript(up);
-		++pos();
-		array().insert(pos(), a);
-		return;
-	}
-
 	if (popLeft()) {
 		plainErase();
 		array().insert(pos(), a);
@@ -823,7 +836,7 @@ void MathCursor::normalize()
 {
 	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "
-		       << idx() << " " << par()->nargs() << "\n";
+		       << idx() << " " << par()->nargs() << " in: " << par() << "\n";
 		dump("error 2");
 	}
 	idx() = min(idx(), par()->nargs() - 1);
@@ -995,11 +1008,11 @@ void MathCursor::breakLine()
 		// split line
 		const row_type r = hullRow();
 		for (col_type c = hullCol() + 1; c < p->ncols(); ++c)
-			p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
+			std::swap(p->cell(p->index(r, c)), p->cell(p->index(r + 1, c)));
 
 		// split cell
 		splitCell();
-		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
+		std::swap(p->cell(idx()), p->cell(idx() + p->ncols() - 1));
 	}
 }
 
@@ -1060,8 +1073,6 @@ bool MathCursor::goUpDown(bool up)
 	// Be warned: The 'logic' implemented in this function is highly fragile.
 	// A distance of one pixel or a '<' vs '<=' _really_ matters.
 	// So fiddle around with it only if you know what you are doing!
-	int xlow, xhigh, ylow, yhigh;
-
   int xo, yo;
 	getPos(xo, yo);
 
@@ -1112,31 +1123,12 @@ bool MathCursor::goUpDown(bool up)
 	while (1) {
 		///lyxerr << "updown: We are in " << *par() << " idx: " << idx() << '\n';
 		// ask inset first
-		if (par()->idxUpDown(idx(), pos(), up)) {
-#ifdef WITH_WARNINGS
-#warning this code should be moved to individual insets that handle this
-#endif
-			// position might have changed, so re-compute it
-			getPos(xo, yo);
-			// we found a cell that thinks it has something "below" us.
-			//lyxerr << "updown: found inset that handles UpDown\n";
-			xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-			// project (xo,yo) onto proper box
-			//lyxerr << "\n   xo: " << xo << " yo: " << yo
-			//       << "\n   xlow: " << xlow << " ylow: " << ylow
-			//       << "\n   xhigh: " << xhigh << " yhigh: " << yhigh;
-			xo = min(max(xo, xlow), xhigh);
-			yo = min(max(yo, ylow), yhigh);
-			//lyxerr << "\n   xo2: " << xo << " yo2: " << yo << "\n";
-			bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
-			//lyxerr << "updown: handled by final brute find\n";
+		if (par()->idxUpDown(idx(), pos(), up, targetx_))
 			return true;
-		}
 
-		// leave inset
-		if (!popLeft()) {
-			// no such inset found, just take something "above"
-			///lyxerr << "updown: handled by strange case\n";
+		// no such inset found, just take something "above"
+		///lyxerr << "updown: handled by strange case\n";
+		if (!popLeft())
 			return
 				bruteFind(xo, yo,
 					formula()->xlow(),
@@ -1144,7 +1136,6 @@ bool MathCursor::goUpDown(bool up)
 					up ? formula()->ylow() : yo + 4,
 					up ? yo - 4 : formula()->yhigh()
 				);
-		}
 
 		// any improvement so far?
 		int xnew, ynew;
@@ -1266,9 +1257,9 @@ bool MathCursor::interpret(string const & s)
 	string name = s.substr(1);
 
 	if (name == "over" || name == "choose" || name == "atop") {
-		MathArray ar = array();
 		MathAtom t(createMathInset(name));
-		t->asNestInset()->cell(0).swap(array());
+		t->asNestInset()->cell(0) = array();
+		array().clear();
 		pos() = 0;
 		niceInsert(t);
 		popRight();
@@ -1302,13 +1293,19 @@ bool MathCursor::script(bool up)
 
 	macroModeClose();
 	MathGridInset safe = grabAndEraseSelection();
-	if (hasPrevAtom() && prevAtom()->asScriptInset()) {
+	if (inNucleus()) {
+		// we are in a nucleus of a script inset, move to _our_ script
+		par()->asScriptInset()->ensure(up);
+		idx() = up;
+		pos() = 0;
+	} else if (hasPrevAtom() && prevAtom()->asScriptInset()) {
 		prevAtom()->asScriptInset()->ensure(up);
 		pushRight(prevAtom());
 		idx() = up;
 		pos() = size();
-	} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
-		nextAtom()->asScriptInset()->ensure(up);
+	} else if (hasPrevAtom()) {
+		--pos();
+		array()[pos()] = MathAtom(new MathScriptInset(nextAtom(), up));
 		pushLeft(nextAtom());
 		idx() = up;
 		pos() = 0;
@@ -1559,7 +1556,8 @@ MathGridInset MathCursor::grabSelection() const
 	// shouldn't we assert on i1.par_ == i2.par_?
 	if (i1.idx_ == i2.idx_) {
 		MathGridInset data(1, 1);
-		data.cell(0) = MathArray(i1.cell(), i1.pos_, i2.pos_);
+		MathArray::const_iterator it = i1.cell().begin();
+		data.cell(0) = MathArray(it + i1.pos_, it + i2.pos_);
 		return data;
 	}
 	row_type r1, r2;
@@ -1589,7 +1587,7 @@ void MathCursor::eraseSelection()
 		region(i1, i2, r1, r2, c1, c2);
 		for (row_type row = r1; row <= r2; ++row)
 			for (col_type col = c1; col <= c2; ++col)
-				p->cell(p->index(row, col)).erase();
+				p->cell(p->index(row, col)).clear();
 	}
 	cursor() = i1;
 }
@@ -1659,7 +1657,7 @@ void MathCursor::handleExtern(const string & arg)
 			ar = array();
 			lyxerr << "use whole cell: " << ar << "\n";
 		} else {
-			ar = MathArray(array(), pos + 1, size());
+			ar = MathArray(array().begin() + pos + 1, array().end());
 			lyxerr << "use partial cell form pos: " << pos << "\n";
 		}
 		end();

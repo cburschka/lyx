@@ -3,12 +3,6 @@
 #include "textpainter.h"
 
 
-void MathDimInset::dimensions(Dimension & dim) const
-{
-	dim = dim_;
-}
-
-
 void MathDimInset::metricsT(TextMetricsInfo const &) const
 {
 	std::ostringstream os;

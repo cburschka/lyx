@@ -26,12 +26,13 @@ void MathSqrtInset::metrics(MathMetricsInfo & mi) const
 	dim_.a = xcell(0).ascent()  + 4;
 	dim_.d = xcell(0).descent() + 2;
 	dim_.w = xcell(0).width()   + 12;
+	metricsMarkers();
 }
 
 
-void MathSqrtInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathSqrtInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	xcell(0).draw(pain, x + 10, y);
+	xcell(0).draw(pi, x + 10, y);
 	int const a = ascent();
 	int const d = descent();
 	int xp[4];
@@ -40,7 +41,8 @@ void MathSqrtInset::draw(MathPainterInfo & pain, int x, int y) const
 	xp[1] = x + 8;       yp[1] = y - a + 1;
 	xp[2] = x + 5;       yp[2] = y + d - 1;
 	xp[3] = x;           yp[3] = y + (d - a)/2;
-	pain.pain.lines(xp, yp, 4, LColor::math);
+	pi.pain.lines(xp, yp, 4, LColor::math);
+	drawMarkers(pi, x, y);
 }
 
 
