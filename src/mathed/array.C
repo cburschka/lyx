@@ -52,7 +52,7 @@ MathAtom const * MathArray::at(int pos) const
 void MathArray::insert(int pos, MathInset * p)
 {
 	//cerr << "\n  1: "; p->write(cerr, true); cerr << p << "\n";
-	// inserting th
+	// inserting here invalidates the pointer!
 	bf_.insert(begin() + pos, MathAtom(p));
 	//cerr << "\n  2: "; p->write(cerr, true); cerr << p << "\n";
 }

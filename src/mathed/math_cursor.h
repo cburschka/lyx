@@ -259,7 +259,7 @@ private:
 	/// can we enter the inset? 
 	bool openable(MathInset *, bool selection) const;
 	/// can the setPos routine enter that inset?
-	bool positionable(MathInset *, bool selection) const;
+	MathInset * positionable(MathAtom *, int x, int y) const;
 	/// write access to cursor cell position
 	int & pos();
 	/// write access to cursor cell index

@@ -315,9 +315,9 @@ void MathAtom::draw(Painter & pain, int x, int y) const
 	if (nucleus())
 		nucleus()->draw(pain, x + dxx(), y);
 	if (up())
-		up()->xcell(0).draw(pain, x + dx1(), y - dy1());
+		up()->draw(pain, x + dx1(), y - dy1());
 	if (down())
-		down()->xcell(0).draw(pain, x + dx0(), y + dy0());
+		down()->draw(pain, x + dx0(), y + dy0());
 }
 
 

@@ -232,22 +232,34 @@ bool MathCursor::openable(MathInset * p, bool sel) const
 }
 
 
-bool MathCursor::positionable(MathInset * p, bool sel) const
+MathInset * MathCursor::positionable(MathAtom * t, int x, int y) const
 {
-	if (!p)
-		return false;
+	if (!t)
+		return 0;
 
-	if (!p->nargs())
-		return false;
-
-	if (sel) {
+	if (selection_) {
 		// we can't move into anything new during selection
 		if (Cursor_.size() == Anchor_.size())
-			return false;
-		if (p != Anchor_[Cursor_.size()].par_)
-			return false;
+			return 0;
+		//if (t != Anchor_[Cursor_.size()].par_)
+		//	return 0;
 	}
-	return true;
+
+	MathInset * p;
+
+	p = t->nucleus();
+	if (p && p->nargs() && p->covers(x, y))
+		return p;
+
+	p = t->up();
+	if (p && p->nargs() && p->covers(x, y))
+		return p;
+
+	p = t->down();
+	if (p && p->nargs() && p->covers(x, y))
+		return p;
+
+	return 0;
 }
 
 
@@ -327,7 +339,7 @@ void MathCursor::last()
 
 void MathCursor::setPos(int x, int y)
 {
-	dump("setPos 1");
+	//dump("setPos 1");
 	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
 
 	macroModeClose();
@@ -339,7 +351,7 @@ void MathCursor::setPos(int x, int y)
 	while (1) {
 		idx() = -1;
 		cursor().pos_ = -1;
-		//lyxerr << "found idx: " << idx_ << " cursor: " << pos()  << "\n";
+		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";
 		int distmin = 1 << 30; // large enough
 		for (int i = 0; i < par()->nargs(); ++i) {
 			MathXArray const & ar = par()->xcell(i);
@@ -351,23 +363,21 @@ void MathCursor::setPos(int x, int y)
 			//lyxerr << "idx: " << i << " xx: " << xx << " yy: " << yy
 			//	<< " c: " << c  << " xo: " << ar.xo() << "\n";
 			if (yy + xx <= distmin) {
-				distmin        = yy + xx;
-				idx()  = i;
-				pos()  = c;
+				distmin = yy + xx;
+				idx()   = i;
+				pos()   = c;
 			}
 		}
 		//lyxerr << "found idx: " << idx() << " cursor: "
 		//	<< pos()  << "\n";
-		MathInset * n = nextInset();
-		MathInset * p = prevInset();
-		if (positionable(n, selection_) && n->covers(x, y))
-			pushLeft(n);
-		else if (positionable(p, selection_) && p->covers(x, y))
+		if (MathInset * p = positionable(nextAtom(), x, y))
+			pushLeft(p);
+		else if (MathInset * p = positionable(prevAtom(), x, y))
 			pushRight(p);
 		else 
 			break;
 	}
-	dump("setPos 2");
+	//dump("setPos 2");
 }
 
 

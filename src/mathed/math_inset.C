@@ -267,6 +267,8 @@ void MathInset::push_back(MathInset *)
 
 bool MathInset::covers(int x, int y) const
 {
+	//lyxerr << "cover? p: " << this << " x: " << x << " y: " <<  y
+	//	<< " xo_: " << xo_ << " yo_: " << yo_  << endl;
 	return
 		x >= xo_ &&
 		x <= xo_ + width() &&
