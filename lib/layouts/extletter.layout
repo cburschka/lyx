@@ -1,13 +1,11 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{extletter}
-# Article textclass definition file. Taken from initial LyX source code
-# Author   : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
-# this file: Herbert Voss <voss@lyx.org>
+# Extended article textclass definition file.
+# Herbert Voss <voss@lyx.org>
 
 Input letter.layout
 
 # change available fontsizes
-
 ClassOptions
 	FontSize              8|9|14|17|20
-End
+end

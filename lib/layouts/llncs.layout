@@ -14,11 +14,9 @@
 # Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
 
 
-# General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Plain
-MaxCounter              Counter_Section
 
 
 Style Standard
@@ -32,8 +30,9 @@ Style Standard
 	LabelType             No_Label
 End
 
-# The standard sections
+
 Input stdsections.inc
+Input numarticle.inc
 
 
 Style Chapter
@@ -92,11 +91,9 @@ End
 # Now define the starred versions from the normal ones.
 Input stdstarsections.inc
 
-
-# Remove the ones that we do not want
-NoStyle         Part
-NoStyle         Part*
-NoStyle         Chapter
+NoStyle Part
+NoStyle Part*
+NoStyle Chapter
 
 
 # Some standard things
@@ -119,7 +116,6 @@ Style Title
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -142,7 +138,6 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Family              Sans
 	  Series              Bold
@@ -167,7 +162,6 @@ Style Running_LaTeX_Title
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Running title: "
-
 	LabelFont 
 	  Series              Bold
 	  Shape               Italic
@@ -198,12 +192,10 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Series              Bold
 	  Shape               Italic
 	EndFont
-
 End
 
 
@@ -236,7 +228,6 @@ Style Institute
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
 	Font 
 	  Size                Small
 	EndFont
@@ -266,7 +257,6 @@ Style Abstract
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
 	LabelString           Abstract. 
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -289,14 +279,13 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References 
 	LabelBottomSep    0.7
-
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# Mathematics-like definitions:
 
+# Mathematics-like definitions:
 Style Case
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -312,7 +301,6 @@ Style Case
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Case #. 
-
 	LabelFont 
 	  Shape               Italic
 	EndFont
@@ -337,17 +325,13 @@ Style Corollary
 	CopyStyle             Case
 	LatexName             corollary
 	LabelString           "Corollary #. " 
-
-	# font & label font definition
 	Font 
 	  Shape               Italic
 	EndFont
-
 	LabelFont 
 	  Shape               Up
 	  Series              Bold
 	EndFont
-
 End
 
 
@@ -377,7 +361,6 @@ Style Lemma
 	LatexName             lemma
 	LabelString           "Lemma #. "
 End
-
 
 Style Note
 	CopyStyle             Case
@@ -413,7 +396,6 @@ Style Proposition
 	LabelString           "Proposition #. "
 End
 
-
 Style Question
 	CopyStyle             Case
 	LatexName             question        
@@ -444,7 +426,3 @@ End
 
 Input stdfloats.inc
 Input stdcounters.inc
-
-
-#Finally a few older definitions for compatibility
-Input obsolete.inc

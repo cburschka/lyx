@@ -4,17 +4,15 @@
 # Author : Pascal André <andre@via.ecp.fr>
 
 
-# General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Plain
-MaxCounter              Counter_Section
 OutputType              linuxdoc
 DefaultStyle            Standard
 
-
 Input stdcounters.inc
 Input stdfloats.inc
+Input numarticle.inc
 
 
 Style Standard
@@ -51,13 +49,11 @@ Style Title
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-
 	Font 
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-
 	LabelFont 
 	  Family              Sans
 	  Series              Bold
@@ -77,12 +73,10 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Section
 	Font 
 	  Series              Bold
 	  Size                Larger
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Larger
@@ -101,13 +95,10 @@ Style Subsection
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Subsection
-
 	Font 
 	  Series              Bold
 	  Size                Large
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Large
@@ -126,12 +117,9 @@ Style Subsubsection
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_SubSubSection
-
 	Font 
 	  Series              Bold
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -148,12 +136,9 @@ Style Paragraph
 	BottomSep             0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Paragraph
-
 	Font 
 	  Series              Bold
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -161,25 +146,9 @@ End
 
 
 Style Subparagraph
-	Margin                Dynamic
-	LatexType             Command
+	CopyStyle             Paragraph
 	LatexName             sect4
 	LeftMargin            MM
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Counter_SubParagraph
-
-	Font 
-	  Series              Bold
-	EndFont
-
-	LabelFont 
-	  Series              Bold
-	EndFont
 End
 
 
@@ -195,7 +164,7 @@ Style Enumerate
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
+	LabelType             Enumerate
 End
 
 
@@ -211,7 +180,7 @@ Style Itemize
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           *
 End
 
@@ -231,7 +200,6 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-
 	LabelFont 
 	  Series              Bold
 	EndFont
@@ -252,11 +220,9 @@ Style Verbatim
 	AlignPossible         Block
 	FreeSpacing           1
 	LabelType             No_Label
-
 	Font 
 	  Family              Typewriter
 	EndFont
-
 	LabelFont 
 	  Family              Typewriter
 	EndFont
@@ -293,11 +259,9 @@ Style Author
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Size                Larger
 	EndFont
-
 	LabelFont 
 	  Size                Larger
 	EndFont
@@ -316,11 +280,9 @@ Style Date
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Size                Large
 	EndFont
-
 	LabelFont 
 	  Size                Large
 	EndFont
@@ -340,11 +302,9 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-
 	Font 
 	  Shape               Italic
 	EndFont
-
 	LabelFont 
 	  Shape               Italic
 	EndFont
@@ -380,7 +340,6 @@ Style Caption
 	LabelType             Sensitive
 	LabelString		Caption
 	OptionalArgs          1
-
 	LabelFont 
 	  Series              Bold
 	EndFont

@@ -5,16 +5,14 @@
 # Author : Herbert Voss <voss@perce.de> 2001/08/13
 
 
-# General textclass parameters
 Columns                 2
 Sides                   2
-#SecNumDepth                            #no counting
+#SecNumDepth                            # no counting
 #TocDepth               -1
-MaxCounter              Counter_Section
 
 
 ClassOptions
-	FontSize              default         #only 11pt
+	FontSize              default         # only 11pt
 	PageStyle             ""              # controlled by class
 End
 
@@ -43,7 +41,6 @@ End
 
 Input stdlists.inc
 
-
 Style Section
 	Margin                Dynamic
 	LatexType             Command
@@ -57,13 +54,10 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Section
-
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
-
 End
 
 
@@ -80,7 +74,6 @@ Style Subsection
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Subsection
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -101,13 +94,10 @@ Style Subsubsection
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_SubSubSection
-
 	Font 
 	  Series              Bold
 	  Size                Normal
 	EndFont
-
 End
 
 
@@ -124,8 +114,6 @@ Style Paragraph
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_Paragraph
-
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -135,15 +123,11 @@ End
 
 #Input stdstarsections.inc
 
+Input numarticle.inc
 Input stdstruct.inc
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
-
-
-#
-# Create and Overwrite some styles
-#
 
 
 Style Title

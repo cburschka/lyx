@@ -1,28 +1,15 @@
 #% Do not delete he line below; configure depends on this
-#  \DeclareLaTeXClass[g-brief]{letter (g-brief, german)}
+#  \DeclareLaTeXClass[g-brief]{letter (g-brief)}
 # Letter textclass definition file. 
 # Author : Thomas Hartkens <thomas@hartkens.de>
 
-# Input general definitions
-# Input stdletter.inc
+Input stdfloats.inc
+Input stdcounters.inc
 
-
-# General textclass parameters
 Columns                 1
 Sides                   1
 PageStyle               Empty
 DefaultStyle            Brieftext
-
-
-# This is just to show how to declare the default font.
-# The defaults are exactly those shown here.
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
 
 
 Style Brieftext
@@ -43,7 +30,6 @@ Style Brieftext
 End
 
 
-# Name und Titel des Absenders
 Style Name
 	Margin                Static
 	LatexType             Command
@@ -63,521 +49,190 @@ Style Name
 End
 
 
-# Unterschrift des Absenders
 Style Unterschrift
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Unterschrift
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Unterschrift:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Strasse
 Style Strasse
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Strasse
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Strasse:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Zusatz
 Style Zusatz
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Zusatz
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Zusatz:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Ort
 Style Ort
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Ort
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Ort:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Land
 Style Land
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Land
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Land:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# RetourAdresse
 Style RetourAdresse
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             RetourAdresse
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           RetourAdresse:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# MeinZeichen
 Style MeinZeichen
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             MeinZeichen
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           MeinZeichen:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# IhrZeichen
 Style IhrZeichen
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             IhrZeichen
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           IhrZeichen:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# IhrSchreiben
 Style IhrSchreiben
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             IhrSchreiben
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           IhrSchreiben:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Telefon
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Telefon
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	TopSep                1.5
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Telefon:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Telefax
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Telefax
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Telefax:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Telex
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Telex
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Telex:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# email  des Absenders
 Style EMail
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             EMail
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           EMail:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
-# HTTP  des Absenders
+
 Style HTTP
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             HTTP
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           HTTP:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Bank
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Bank
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	TopSep                1.5
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Bank:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style BLZ
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             BLZ
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           BLZ:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Konto
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Konto
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Konto:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Postvermerk
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Postvermerk
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Postvermerk:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Adresse
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Adresse
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	TopSep                1.5
 	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Adresse:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Data style definition
 Style Datum
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Datum
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
-	KeepEmpty             1  
-	Align                 Left
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Datum:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Oggetto style definition
 Style Betreff
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Betreff
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	TopSep                1.5
 	ParSep                0.4
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Betreff:
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
-# Opening style definition
 Style Anrede
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Anrede
-	KeepEmpty             1  
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	TopSep                1.5
 	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Anrede:
-
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Anlagen
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Anlagen
-	KeepEmpty             1  
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Anlagen:
-
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Verteiler
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             Verteiler
 	KeepEmpty             1  
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
 	LabelString           Verteiler:
-
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
 End
 
 
 Style Gruss
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Name
 	LatexName             LyxGruss
-	LeftMargin            xxxxxxxxxx::xx
-	LabelSep              xx
 	BottomSep             1.5
 	ParSep                0.4
-	KeepEmpty             1  
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           Gruﬂ:
-
-	LabelFont 
-	  Series              Bold
-	  Shape               Italic
-	  Color               Blue
-	EndFont
-
+	LabelString           Gruss:
 	Preamble
-	\newcommand{\LyxGruss}[1]
-	  { \Gruss{#1}{0.5cm} }
+		\newcommand{\LyxGruss}[1]{\Gruss{#1}{0.5cm}}
 	EndPreamble
 End
-
-
-Input stdfloats.inc
-Input stdcounters.inc
-
-
-# Input lyxmacros.inc
-
-# Remove some unwanted styles.
-# NoStyle               Right_Address
-# NoStyle               Address

@@ -4,15 +4,12 @@
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
 # Heavily modifed and enhanced by serveral developers.
 
-
-# Input general definitions
 Input stdletter.inc
 Input stdlists.inc
 Input lyxmacros.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
-
-# Remove some unwanted styles.
 NoStyle         Right_Address
 NoStyle         Address
+

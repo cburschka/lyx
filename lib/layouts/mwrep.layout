@@ -5,22 +5,19 @@
 # Transposed by Tomasz £uczak <tlu@technodat.com.pl>
 # Heavily modifed and enhanced by serveral developers.
 
-# Input general definitions
 Input stdclass.inc
 
-# a few changes to the bibliography
+
 Style Bibliography
 	TopSep                4
 	LabelString           Bibliography
-
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	  Size                Huge
 	EndFont
 End
 
-# Page styles
+
 ClassOptions
 	PageStyle     empty|plain|outer|headings|myheadings|uheadings|myuheadings
 End

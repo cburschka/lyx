@@ -3,30 +3,29 @@
 # Hebrew letter textclass definition file. 
 # Author: Dekel Tsur <dekel@math.tau.ac.il>
 
-
 Input letter
 
 
 Style My_Address
-      Align Left
+	Align                 Left
 End
 
 
 Style Send_To_Address
-      Align Right
+	Align                 Right
 End
 
 
 Style Opening
-      LabelString :החיתפ
+	LabelString           :החיתפ
 End
 
 
 Style Closing
-      LabelString :םויס
+	LabelString           :םויס
 End
 
 
 Style Signature
-      LabelString :המיתח
+	LabelString           :המיתח
 End

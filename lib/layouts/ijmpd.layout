@@ -11,27 +11,21 @@
 # Version 2  2003-03-03  -  Updated for LyX 1.3.0.
 
 
-# Input general definitions
 Input stdclass.inc
-Input stdsections.inc
+Input numarticle.inc
+
 NoStyle Chapter
 NoStyle Chapter*
 NoStyle Part
-Input stdlists.inc
-Input stdlayouts.inc
 NoStyle Verse
-Input stdstruct.inc
-Input stdfloats.inc
-Input stdcounters.inc
 
-
-# General class settings
-MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                0
 ProvidesAmsmath         0
 ProvidesNatbib          0
 ProvidesUrl             0
+
+
 ClassOptions
 	FontSize              ""
 	PageStyle             ""
@@ -74,7 +68,6 @@ Style Address
 End
 
 
-# Abstract style redefinition
 Style Abstract
 	LatexType             Environment
 	Align                 Block
@@ -86,7 +79,6 @@ Style Abstract
 End
 
 
-# Section style redefinition
 Style Section
 	Align                 Block
 	AlignPossible         Block
@@ -96,7 +88,6 @@ Style Section
 End
 
 
-# Section* style redefinition
 Style Section*
 	Align                 Block
 	AlignPossible         Block
@@ -106,7 +97,6 @@ Style Section*
 End
 
 
-# Subsection style redefinition
 Style Subsection
 	Align                 Block
 	AlignPossible         Block
@@ -117,7 +107,6 @@ Style Subsection
 End
 
 
-# Subsubection style redefinition
 Style Subsubsection
 	Align                 Block
 	AlignPossible         Block
@@ -161,7 +150,6 @@ Style Proof
 End
 
 
-# Bibliography style redefinition
 Style Bibliography
 	Align                 Block
 	AlignPossible         Block

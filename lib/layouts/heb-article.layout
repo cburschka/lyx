@@ -7,10 +7,10 @@
 Input article
 
 Preamble
-\usepackage{theorem}
-\theorembodyfont{\upshape}
-\newtheorem{theorem}{\R{משפט}}[section]
-\AtBeginDocument{\make@lr\thetheorem}
+	\usepackage{theorem}
+	\theorembodyfont{\upshape}
+	\newtheorem{theorem}{\R{משפט}}[section]
+	\AtBeginDocument{\make@lr\thetheorem}
 EndPreamble
 
 
@@ -51,7 +51,7 @@ Style Lemma
 	LatexName             lemma
 	LabelString           ".# המל"
 	Preamble
-\newtheorem{lemma}[theorem]{\R{למה}}
+		\newtheorem{lemma}[theorem]{\R{למה}}
 	EndPreamble
 End
 
@@ -61,7 +61,7 @@ Style Corollary
 	LatexName             corollary
 	LabelString           ".# הנקסמ"
 	Preamble
-\newtheorem{corollary}[theorem]{\R{מסקנה}}
+		\newtheorem{corollary}[theorem]{\R{מסקנה}}
 	EndPreamble
 End
 
@@ -71,7 +71,7 @@ Style Claim
 	LatexName             claim
 	LabelString           ".# הנעט"
 	Preamble
-\newtheorem{claim}[theorem]{\R{טענה}}
+		\newtheorem{claim}[theorem]{\R{טענה}}
 	EndPreamble
 End
 
@@ -81,7 +81,7 @@ Style Definition
 	LatexName             definition
 	LabelString           ".# הרדגה"
 	Preamble
-\newtheorem{definition}[theorem]{\R{הגדרה}}
+		\newtheorem{definition}[theorem]{\R{הגדרה}}
 	EndPreamble
 End
 
@@ -91,7 +91,7 @@ Style Remarks
 	LatexName             remark
 	LabelString           ".# הרעה"
 	Preamble
-\newtheorem{remark}[theorem]{\R{הערה}}
+		\newtheorem{remark}[theorem]{\R{הערה}}
 	EndPreamble
 End
 
@@ -122,6 +122,8 @@ Style Proof
 	  Series              Bold
 	EndFont
 	Preamble
-\newenvironment{proof}{\R{\textbf{הוכחה:}}}{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
+		\newenvironment{proof}%
+			{\R{\textbf{הוכחה:}}}%
+			{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
 	EndPreamble
 End

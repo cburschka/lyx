@@ -3,25 +3,19 @@
 # Latex8 textclass definition file.
 # Author : Allan Rae <rae@elec.uq.edu.au>
 
-
 Preamble
 	\usepackage{latex8}
 	\usepackage{times}
 EndPreamble
 
 
-# Input general definitions
 Input stdclass.inc
 
-
 Columns                 1
-MaxCounter              Counter_Section
-
 
 ClassOptions
 	 FontSize             10
 End
-
 
 NoStyle Part
 NoStyle Part*
@@ -77,7 +71,6 @@ Style Email
 	  Size                Large
 	  Family              Typewriter
 	EndFont
-
 	LabelFont
 	  Family              Roman
 	EndFont
@@ -103,11 +96,9 @@ Style Affiliation
 End
 
 
-# Abstract style redefinition
 Style Abstract 
 	LeftMargin            ""
 	RightMargin           ""
-
 	Font
 	  Size                Normal
 	  Shape               Italic

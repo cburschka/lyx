@@ -28,29 +28,22 @@
 # Version 1.1   7/25/99 - Changed \url to take advantage of new layout option.
 # Version 1.2   4/18/02 - Updated for natbib in 1.2.0
 
-# General textclass parameters
+
 Columns                 1
 Sides                   1
-MaxCounter              Counter_Section
 #SecNumDepth            3
 TocDepth                0
 PageStyle               Plain
 ProvidesAmsmath         1
 ProvidesNatbib          1
 ProvidesUrl             1
+
+
 ClassOptions
 	PageStyle             ""      
 End
 
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
 
-# Standard style definition
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -62,82 +55,107 @@ Style Standard
 	LabelType             No_Label
 End
 
+
 # I want to keep the entries in a logical order.
 # Therefore I'll define the entries first, then fill them in
 
 Style Section
-	End
+End
+
 Style Subsection
-	End
+End
+
 Style Subsubsection
-	End
+End
+
 Style Paragraph
-	End
+End
+
 Style Itemize
-	End
+End
+
 Style Enumerate
-	End
+End
+
 Style Description
-	End
+End
+
 Style List
-	End
+End
+
 Style Title
-	End
+End
+
 Style Author
-	End
+End
+
 Style Affiliation
-	End
+End
+
 Style Email
-	End
+End
+
 Style And
-	End
+End
+
 Style Date
-	End
+End
+
 Style Abstract 
-	End
+End
+
 Style Keywords
-	End
+End
+
 Style Acknowledgements
-	End
+End
+
 Style Appendix
-	End
+End
+
 Style References
-	End
+End
+
 Style PlaceFigure
-	End
+End
+
 Style PlaceTable
-	End
+End
+
 Style TableComments
-	End
+End
+
 Style TableRefs
-	End
+End
+
 Style Caption
-	End
+End
+
 Style MathLetters
-	End
+End
+
 Style NoteToEditor
-	End
+End
+
 
 # OK, now we have a more or less consistent Ordering. Now fill the
-# definitions. 
-# First, the standard includes
+# definitions. First, the standard includes
 
 Input stdsections.inc
+Input numarticle.inc
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
-# Remove unwanted Styles
+
 NoStyle Part
 NoStyle Chapter
 NoStyle Subparagraph
 NoStyle List
 NoStyle Bibliography
 
-# Redefine some things
 
-# Section style redefinition
 Style Section
 	Align                 Center
 	AlignPossible         Center
@@ -150,7 +168,7 @@ Style Section
 	EndFont
 End
 
-# Subsection style redefinition
+
 Style Subsection
 	Align                 Center
 	AlignPossible         Center
@@ -163,7 +181,7 @@ Style Subsection
 	EndFont
 End
 
-# Subsubsection style redefinition
+
 Style Subsubsection
 	Align                 Center
 	AlignPossible         Center
@@ -177,7 +195,7 @@ Style Subsubsection
 	EndFont
 End
 
-# Title style redefinition
+
 Style Title
 	TopSep                2
 	BottomSep             1.3
@@ -190,7 +208,7 @@ Style Title
 	EndFont
 End
 
-# Author style redefinition
+
 Style Author
 	Align                 Center
 	AlignPossible         Center
@@ -203,7 +221,7 @@ Style Author
 	EndFont
 End
 
-# Date style redefinition
+
 Style Date
 	LabelSep              ""
 	TopSep                1.2
@@ -215,7 +233,7 @@ Style Date
 	EndFont
 End
 
-# Abstract style redefinition
+
 Style Abstract 
 	LeftMargin            "MMM"
 	RightMargin           "MMM"
@@ -234,7 +252,7 @@ Style Abstract
 	EndFont
 End 
 
-# Affiliation style definition
+
 Style Affiliation
 	Margin                Static
 	LatexType             Command
@@ -252,7 +270,7 @@ Style Affiliation
 	EndFont
 End
 
-# Keywords style definition
+
 Style Keywords
 	LeftMargin            MMM     
 	Margin                Dynamic
@@ -278,7 +296,7 @@ Style Keywords
 	EndFont
 End
 
-# Email style definition
+
 Style Email
 	Margin                Static
 	LatexType             Command
@@ -296,7 +314,7 @@ Style Email
 	EndFont
 End
 
-# Acknowledgements style definition
+
 Style Acknowledgements
 	Margin                Dynamic
 	LatexType             Command
@@ -318,7 +336,6 @@ Style Acknowledgements
 End
 
 	
-# And style definition
 Style And
 	Margin                Dynamic
 	LatexType             Command
@@ -338,7 +355,7 @@ Style And
 	EndFont
 End
  
-# Placefigure style definition
+
 Style PlaceFigure
 	Margin                Dynamic
 	LatexType             Command
@@ -358,7 +375,7 @@ Style PlaceFigure
 	EndFont
 End
 
-# Placetable style definition
+
 Style PlaceTable
 	Margin                Dynamic
 	LatexType             Command
@@ -378,7 +395,7 @@ Style PlaceTable
 	EndFont
 End
 
-# Appendix style definition
+
 Style Appendix
 	Margin                Dynamic
 	LatexType             Command
@@ -399,7 +416,7 @@ Style Appendix
 	EndFont
 End
 
-# MathLetters style redefinition
+
 Style MathLetters
 	LatexType             Environment     
 	LatexName             mathletters
@@ -411,7 +428,7 @@ Style MathLetters
 	EndFont
 End 
 
-# References style redefinition
+
 Style References
 	Margin                First_Dynamic   
 	LatexType             Item_Environment        
@@ -435,9 +452,9 @@ Style References
 	EndFont
 End 
 
+
 # Need reordering below here
 
-# Notetoeditor style definition
 Style NoteToEditor
 	Margin                Dynamic
 	LatexType             Command
@@ -457,7 +474,7 @@ Style NoteToEditor
 	EndFont
 End
 
-# TableRefs style definition
+
 Style TableRefs
 	Margin                First_Dynamic
 	LatexType             Command
@@ -476,7 +493,7 @@ Style TableRefs
 	EndFont
 End
 
-# TableComments style definition
+
 Style TableComments
 	Margin                First_Dynamic
 	LatexType             Command
@@ -495,7 +512,7 @@ Style TableComments
 	EndFont
 End
 
-# Caption style definition
+
 Style Caption
 	Margin                First_Dynamic
 	LatexType             Command
@@ -508,14 +525,12 @@ Style Caption
 	AlignPossible         Block, Left
 	LabelType             Sensitive
 	LabelString           Caption
-
-	# label font definition
 	LabelFont 
 	  Series              Bold
 	EndFont
 End
 
-# FigCaption style definition
+
 Style FigCaption
 	Margin                First_Dynamic
 	LatexType             Command

@@ -6,10 +6,8 @@
 # To do: Define class specific options.
 
 
-# General textclass parameters
 Columns                 1
 Sides                   1
-MaxCounter              Counter_Section
 
 
 DefaultFont
@@ -22,9 +20,9 @@ EndFont
 
 
 ClassOptions
-	FontSize   17|20|25|30
-	PageStyle  "empty|plain|foilheadings|fancy"
-	Other      "dvips"
+	FontSize              17|20|25|30
+	PageStyle             "empty|plain|foilheadings|fancy"
+	Other                 "dvips"
 End
 
 
@@ -52,7 +50,6 @@ Style Foilhead
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-
 	Font 
 	  Series              Bold
 	  Size                Large
@@ -78,11 +75,8 @@ Style ShortRotatefoilhead
 End
 
 
-# then a few lists
-Input stdlists.inc
-
-
 # We add there a few additional lists that look good in foils.
+Input stdlists.inc
 
 Style TickList
 	Margin                Static
@@ -100,12 +94,10 @@ Style TickList
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           _/
-	
 	Preamble
 	   \usepackage{pifont}
 	EndPreamble
 End
-
 
 Style CrossList
 	Margin                Static
@@ -123,14 +115,12 @@ Style CrossList
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           ><
-	
 	Preamble
 	  \usepackage{pifont}
 	EndPreamble
 End
 
 
-# Then the Titles stuff.
 Input stdtitle.inc
 Input stdstruct.inc
 
@@ -162,7 +152,6 @@ Style Abstract
 	  Size                Normal
 	  Series              Medium
 	EndFont
-	
 	LabelFont 
 	  Size                Large
 	  Series              Bold
@@ -172,55 +161,54 @@ End
 
 # Header definitions:
 Style My_Logo
-	Margin        Static
-	LatexType     Command
-	LatexName     MyLogo
-	LeftMargin        My_Logo:xx
-	LabelSep      xxx
-	Align         Left
-	AlignPossible     Left
-	LabelType     Static
-	LabelString       "My Logo:"
-
-	# standard font definition
-	LabelFont
-	  Series      Bold
-	  Shape       Italic
-	  Color       red
+	Margin                Static
+	LatexType             Command
+	LatexName             MyLogo
+	LeftMargin            My_Logo:xx
+	LabelSep              xxx
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "My Logo:"
+	LabelFont             
+	  Series              Bold
+	  Shape               Italic
+	  Color               red
 	EndFont
-
 End
 
 
 Style Restriction
-	CopyStyle              "My Logo"
-	LatexName     Restriction
-	LeftMargin        Restriction:xx
-	LabelString       "Restriction:"
+	CopyStyle             "My Logo"
+	LatexName             Restriction
+	LeftMargin            Restriction:xx
+	LabelString           "Restriction:"
 End
 
 
 Style Left_Header
-	CopyStyle              "My Logo"
-	LatexName     leftheader
-	LeftMargin        Left_Header:xx
-	LabelString       "Left Header:"
+	CopyStyle             "My Logo"
+	LatexName             leftheader
+	LeftMargin            Left_Header:xx
+	LabelString           "Left Header:"
 End
 
 
 Style Right_Header
-	CopyStyle              "My Logo"
-	LatexName     rightheader
-	LeftMargin        Right_Header:xx
-	LabelString       "Right Header:"
+	CopyStyle             "My Logo"
+	LatexName             rightheader
+	LeftMargin            Right_Header:xx
+	LabelString           "Right Header:"
 End
 
+
 Style Right_Footer
-	CopyStyle              "My Logo"
-	LatexName     rightfooter
-	LeftMargin        Right_Footer:xx
-	LabelString       "Right Footer:"
+	CopyStyle             "My Logo"
+	LatexName             rightfooter
+	LeftMargin            Right_Footer:xx
+	LabelString           "Right Footer:"
 End
+
 
 
 Style Bibliography
@@ -246,12 +234,10 @@ Style Theorem
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           "Theorem #."
-
 	TextFont
 	  Shape               Slanted
 	  Size                Normal
 	EndFont
-
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -283,11 +269,9 @@ Style Definition
 	CopyStyle             Theorem
 	LatexName             Definition
 	LabelString           "Definition #."
-
 	Font
 	  Shape               Up
 	EndFont
-
 	LabelFont
 	  Shape               Up
 	  Series              Bold
@@ -299,11 +283,9 @@ Style Proof
 	CopyStyle             Theorem
 	LatexName             Proof
 	LabelString           "Proof."
-	
 	Font
 	  Shape               Up
 	EndFont
-
 	LabelFont
 	  Shape               Up
 	  Series              Bold
@@ -346,11 +328,7 @@ Style Definition*
 End
 
 
-# all the standard LaTeX environments
 Input stdlayouts.inc
 Input stdfloats.inc
 Input stdcounters.inc
-
-
-# Finally add a few weird LyX environments.
 Input lyxmacros.inc

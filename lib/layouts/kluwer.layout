@@ -14,10 +14,8 @@
 # 2003-03-03  Updated for lyx 1.3.0.
 
 
-# General textclass parameters
 Columns                 1
 Sides                   2
-MaxCounter              Counter_Section
 SecNumDepth             4
 PageStyle               Plain
 
@@ -29,10 +27,6 @@ DefaultFont
 	Size                  Normal
 	Color                 None
 EndFont
-
-
-Preamble
-EndPreamble
 
 
 Style Standard
@@ -48,12 +42,16 @@ End
 
 
 Input stdsections.inc
-NoStyle Chapter
-NoStyle Part
+Input numarticle.inc
 Input stdstruct.inc
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
+Input stdlayouts.inc
+
+NoStyle Chapter
+NoStyle Part
+NoStyle Verse
 
 
 Style Section
@@ -101,9 +99,6 @@ Style Subparagraph
 	  Shape               Italic
 	EndFont
 End
-
-Input stdlayouts.inc
-NoStyle Verse
 
 
 Style Title

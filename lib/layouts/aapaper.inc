@@ -4,7 +4,7 @@
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
-# Subitle style definition
+
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -19,15 +19,13 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-
-	# standard font definition
 	Font 
 	  Size                Normal
 	  Series              Bold
 	EndFont
 End
 
-# Address style definition
+
 Style Address
 	Margin                Static
 	LatexType             Command
@@ -38,14 +36,13 @@ Style Address
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-
 	Font 
 	  Family              Sans
 	  Size                Small
 	EndFont
 End
 
-# Email address style definition
+
 Style Email
 	Margin                Static
 	LatexType             Command
@@ -57,14 +54,13 @@ Style Email
 	LabelType             Static
 	LabelString           email:
 	LabelSep              M
-
 	Font 
 	  Family              Sans
 	  Size                Small
 	EndFont
 End
 
-# Address for Offprints style definition
+
 Style Offprint
 	Margin                Static
 	LatexType             Command
@@ -76,14 +72,13 @@ Style Offprint
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
 	LabelSep              M
-
 	Font 
 	  Family              Sans
 	  Size                Small
 	EndFont
 End
 
-# Acnowledgement style definition
+
 Style Acknowledgement
 	Margin                Static
 	LatexType             Environment
@@ -98,17 +93,15 @@ Style Acknowledgement
 	LabelType             Top_Environment
 	LabelString           Acknowledgements
 	LabelSep              M
-	# standard font definition
 	Font 
 	  Size                Small
 	EndFont
-
-	# label font definition
 	LabelFont 
 	  Size                Small
 	  Shape               Italic
 	EndFont
 End 
+
 	
 Style Thesaurus
 	LabelType             Static
@@ -129,6 +122,3 @@ Style Thesaurus
 	  Color               Red
 	EndFont
 End
-
-
-
