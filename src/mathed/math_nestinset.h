@@ -7,7 +7,9 @@
 
 #include "math_diminset.h"
 
-/** Abstract base class for all math objects that conatin nested items.
+/** Abstract base class for all math objects that contain nested items.
+    This is basically everything that is not a single character or a
+    single symbol
 */
 
 
@@ -15,10 +17,10 @@ class LaTeXFeatures;
 
 class MathNestInset : public MathDimInset {
 public: 
-	///
+	/// nestinsets have a fixed size to start with
 	explicit MathNestInset(idx_type ncells);
 
-	///
+	/// the size is usuall some sort of convex hull of the cells
 	void metrics(MathMetricsInfo const & st) const;
 	/// draw the object, sets xo_ and yo_ cached values 
 	void draw(Painter &, int x, int y) const;
@@ -27,58 +29,57 @@ public:
 	/// identifies NestInsets
 	MathNestInset * asNestInset() { return this; }
 
-	/// The left key
+	/// order of movement through the cells when pressing the left key
 	bool idxLeft(idx_type & idx, pos_type & pos) const;
-	/// The right key
+	/// order of movement through the cells when pressing the right key
 	bool idxRight(idx_type & idx, pos_type & pos) const;
 
-	/// Move one physical cell up
+	/// move one physical cell up
 	bool idxNext(idx_type & idx, pos_type & pos) const;
-	/// Move one physical cell down
+	/// move one physical cell down
 	bool idxPrev(idx_type & idx, pos_type & pos) const;
 
-	/// Target pos when we enter the inset from the left by pressing "Right"
+	/// target pos when we enter the inset from the left by pressing "Right"
 	bool idxFirst(idx_type & idx, pos_type & pos) const;
-	/// Target pos when we enter the inset from the right by pressing "Left"
+	/// target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(idx_type & idx, pos_type & pos) const;
 
-	/// Where should we go if we press home?
+	/// where should we go if we press home?
 	bool idxHome(idx_type & idx, pos_type & pos) const;
-	/// Where should we go if we press end?
+	/// where should we go if we press end?
 	bool idxEnd(idx_type & idx, pos_type & pos) const;
 
-	///
+	/// number of cells currently governed by us
 	idx_type nargs() const;
 
-	///
+	/// direct access to the cell
 	MathArray & cell(idx_type);
-	///
+	/// direct access to the cell
 	MathArray const & cell(idx_type) const;
-	///
+	/// direct access to the cell including the drawing cache
 	MathXArray & xcell(idx_type);
-	///
+	/// direct access to the cell including the drawing cache
 	MathXArray const & xcell(idx_type) const;
 			
-	///
+	/// can we move into this cell (see macroarg.h)
 	bool isActive() const { return nargs() > 0; }
-	///
-	void push_back(MathAtom const &);
-	///
-	void dump() const;
-	///
-	bool match(MathInset *) const;
-	///
-	void replace(ReplaceData &);
-
-	///
+	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
-	///
+	/// do we cover the point (x,y)?
 	bool covers(int x, int y) const;
 
+	/// match in all cells
+	bool match(MathInset *) const;
+	/// replace in all cells
+	void replace(ReplaceData &);
+
+	/// debug helper
+	void dump() const;
+
 protected:
-	///
+	/// we store the cells in a vector
 	typedef std::vector<MathXArray> cells_type;
-	/// The nested contents of the inset are contained here.
+	/// thusly:
 	cells_type cells_;
 };
 

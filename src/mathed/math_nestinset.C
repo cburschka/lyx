@@ -146,15 +146,6 @@ void MathNestInset::dump() const
 }
 
 
-void MathNestInset::push_back(MathAtom const & t)
-{
-	if (nargs())
-		cells_.back().data_.push_back(t);
-	else
-		lyxerr << "can't push without a cell\n";
-}
-
-
 void MathNestInset::validate(LaTeXFeatures & features) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)

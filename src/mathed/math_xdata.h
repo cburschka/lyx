@@ -49,6 +49,8 @@ public:
 	int height() const { return ascent_ + descent_; }
 	///
 	int width() const { return width_; }
+	/// do we cover point(x, y)?
+	bool covers(int x, int y) const;
 
 	///
 	const_iterator begin() const { return data_.begin(); }

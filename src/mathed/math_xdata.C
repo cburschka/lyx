@@ -141,3 +141,13 @@ int MathXArray::dist(int x, int y) const
 
 	return xx + yy;	
 }
+
+
+bool MathXArray::covers(int x, int y) const
+{
+	int const x0 = xo_;
+	int const y0 = yo_ - ascent_;
+	int const x1 = xo_ + width_;
+	int const y1 = yo_ + descent_;
+	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+}
