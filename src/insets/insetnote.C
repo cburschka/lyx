@@ -132,8 +132,7 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 		InsetNoteMailer("note", *this).updateDialog(bv);
 		return DISPATCHED;
 	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && cmd.x < button_length
-					&& cmd.y >= button_top_y && cmd.y <= button_bottom_y) {
+		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetNoteMailer("note", *this).showDialog(bv);
 			return DISPATCHED;
 		}

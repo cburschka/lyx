@@ -295,8 +295,7 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 		return true;
 	}
 
-	if (status_ != Inlined && (cmd.x >= 0) && (cmd.x < button_length) &&
-	    (cmd.y >= button_top_y) && (cmd.y <= button_bottom_y)) {
+	if (status_ != Inlined && hitButton(cmd)) {
 		updateStatus(bv, true);
 	} else {
 		FuncRequest cmd1 = cmd;
@@ -304,10 +303,10 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 		cmd1.y = ascent() + cmd.y - inset.ascent();
 
 		// inlined is special - the text appears above
-		// button_bottom_y
+		// button_dim.y2
 		if (status_ == Inlined)
 			inset.localDispatch(cmd1);
-		else if (!collapsed_ && (cmd.y > button_bottom_y)) {
+		else if (!collapsed_ && (cmd.y > button_dim.y2)) {
 			cmd1.y -= height_collapsed();
 			inset.localDispatch(cmd1);
 		}

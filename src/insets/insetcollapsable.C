@@ -45,8 +45,7 @@ using std::max;
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), inset(bp),
-	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  label("Label"),
+	  button_dim(0, 0, 0, 0), label("Label"),
 #if 0
 	autocollapse(false),
 #endif
@@ -63,8 +62,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 	: UpdatableInset(in), collapsed_(in.collapsed_),
 	  framecolor(in.framecolor), labelfont(in.labelfont), inset(in.inset),
-	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  label(in.label),
+	  button_dim(0, 0, 0, 0), label(in.label),
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
@@ -158,10 +156,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	Dimension dim_collapsed;
 	dimension_collapsed(dim_collapsed);
 
-	int const aa    = ascent();
-	button_length   = dim_collapsed.width();
-	button_top_y    = -aa;
-	button_bottom_y = -aa + dim_collapsed.height();
+	int const aa  = ascent();
+	button_dim.x1 = 0;
+	button_dim.x2 = dim_collapsed.width();
+	button_dim.y1 = -aa;
+	button_dim.y2 = -aa + dim_collapsed.height();
 
 	if (!isOpen()) {
 		draw_collapsed(pi, x, y);
@@ -241,8 +240,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		return;
 	}
 
-	if ((cmd.button() != mouse_button::button3) && (cmd.x < button_length) &&
-	    (cmd.y >= button_top_y) && (cmd.y <= button_bottom_y))
+	if (cmd.button() != mouse_button::button3 && hitButton(cmd))
 	{
 		if (collapsed_) {
 			collapsed_ = false;
@@ -255,7 +253,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 			bv->updateInset(this);
 			bv->buffer()->markDirty();
 		}
-	} else if (!collapsed_ && (cmd.y > button_bottom_y)) {
+	} else if (!collapsed_ && (cmd.y > button_dim.y2)) {
 		ret = (inset.localDispatch(adjustCommand(cmd)) == DISPATCHED);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
@@ -285,6 +283,12 @@ int InsetCollapsable::linuxdoc(Buffer const * buf, ostream & os) const
 int InsetCollapsable::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	return inset.docbook(buf, os, mixcont);
+}
+
+
+bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
+{
+	return button_dim.contained(cmd.x, cmd.y);
 }
 
 
@@ -337,7 +341,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				FuncRequest cmd1 = cmd;
 				if (!bv->lockInset(this))
 					return DISPATCHED;
-				if (cmd.y <= button_bottom_y) {
+				if (cmd.y <= button_dim.y2) {
 					cmd1.y = 0;
 				} else {
 					cmd1.y = ascent() + cmd.y - (height_collapsed() + inset.ascent());
@@ -348,12 +352,12 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_MOUSE_PRESS:
-			if (!collapsed_ && cmd.y > button_bottom_y)
+			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.localDispatch(adjustCommand(cmd));
 			return DISPATCHED;
 
 		case LFUN_MOUSE_MOTION:
-			if (!collapsed_ && cmd.y > button_bottom_y)
+			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.localDispatch(adjustCommand(cmd));
 			return DISPATCHED;
 

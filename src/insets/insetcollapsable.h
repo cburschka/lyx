@@ -19,6 +19,7 @@
 #include "lyxfont.h"
 #include "funcrequest.h" // for adjustCommand
 #include "LColor.h"
+#include "box.h"
 
 #include <boost/weak_ptr.hpp>
 
@@ -50,6 +51,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw, either inlined (no button) or collapsed/open
 	void draw(PainterInfo & pi, int x, int y, bool inlined) const;
+	///
+	bool hitButton(FuncRequest const &) const;
 	///
 	EDITABLE editable() const;
 	///
@@ -193,11 +196,7 @@ public:
 	mutable InsetText inset;
 protected:
 	///
-	mutable int button_length;
-	///
-	mutable int button_top_y;
-	///
-	mutable int button_bottom_y;
+	mutable Box button_dim;
 	///
 	mutable int topx;
 	mutable int topbaseline;
