@@ -66,6 +66,7 @@ enum LyXRCTags {
 	RC_USETEMPDIR,
 	RC_LASTFILES,
 	RC_AUTOREGIONDELETE,
+	RC_AUTORESET_OPTIONS,
 	RC_BIND,
 	RC_OVERRIDE_X_DEADKEYS,
 	RC_SERVERPIPE,
@@ -208,6 +209,8 @@ enum LyXRCTags {
 	///
 	bool auto_region_delete;
 	/// flag telling whether lastfiles should be checked for existance
+	bool auto_reset_options;
+	///
 	bool check_lastfiles;
 	/// filename for lastfiles file
 	string lastfiles;

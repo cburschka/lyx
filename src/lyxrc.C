@@ -52,6 +52,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\ascii_roff_command", LyXRC::RC_ASCIIROFF_COMMAND },
 	{ "\\auto_number", LyXRC::RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", LyXRC::RC_AUTOREGIONDELETE },
+	{ "\\auto_reset_options", LyXRC::RC_AUTORESET_OPTIONS },
 	{ "\\autosave", LyXRC::RC_AUTOSAVE },
 	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
 	{ "\\bind", LyXRC::RC_BIND },
@@ -213,6 +214,7 @@ void LyXRC::setDefaults() {
 	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
+	auto_reset_options = true;
 	ascii_linelen = 65;
 	num_lastfiles = 4;
 	check_lastfiles = true;
@@ -347,16 +349,21 @@ int LyXRC::read(string const & filename)
 				exit_confirmation = lexrc.getBool();
 			break;
 			
+		case RC_AUTORESET_OPTIONS:
+			if (lexrc.next())
+				auto_reset_options = lexrc.getBool();
+			break;
+
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next())
 				display_graphics = lexrc.getString();
 			break;
-			
+
 		case RC_DISPLAY_SHORTCUTS:
 			if (lexrc.next())
 				display_shortcuts = lexrc.getBool();
 			break;
-			
+
 		case RC_KBMAP:
 			if (lexrc.next())
 				use_kbmap = lexrc.getBool();
@@ -1020,6 +1027,13 @@ void LyXRC::output(ostream & os) const
 			os << "# Set to false to inhibit automatic replacement of\n"
 			   << "# the current selection.\n"
 			   << "\\auto_region_delete " << tostr(auto_region_delete)
+			   << "\n";
+		}
+	case RC_AUTORESET_OPTIONS:
+		if (auto_reset_options != system_lyxrc.auto_reset_options) {
+			os << "# Set to false to inhibit automatic reset of\n"
+			   << "# the class options to defaults on class change.\n"
+			   << "\\auto_reset_options " << tostr(auto_reset_options)
 			   << "\n";
 		}
 	case RC_AUTOSAVE:
@@ -1792,20 +1806,24 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_AUTOREGIONDELETE:
 		str = N_("De-select if you don't want the current selection to be replaced automatically by what you type.");
 		break;
+
+	case RC_AUTORESET_OPTIONS:
+		str = N_("De-select if you don't want the class options to be reset to defaults after class change.");
+		break;
 		
 	case RC_OVERRIDE_X_DEADKEYS:
 		str = N_("Select if LyX is to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
 		break;
-		
+
 
 	case RC_SERVERPIPE:
 		str = N_("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");
 		break;
-		
+
 	case RC_BINDFILE:
 		str = N_("Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories.");
 		break;
-		
+
 	case RC_UIFILE:
 		str = N_("The  UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
 		break;

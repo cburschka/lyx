@@ -3097,7 +3097,7 @@ argument:
 Name: form_outputs_misc
 Width: 455
 Height: 375
-Number of Objects: 9
+Number of Objects: 10
 
 --------------------
 class: FL_BOX
@@ -3160,7 +3160,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 230 110 199 29
+box: 230 105 199 29
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -3178,7 +3178,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 160 435 135
+box: 10 190 435 135
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -3196,7 +3196,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 175 285 30
+box: 145 205 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3214,7 +3214,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 215 285 30
+box: 145 245 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3232,7 +3232,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 255 285 30
+box: 145 285 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -3250,7 +3250,7 @@ argument: 0
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 10 10 435 140
+box: 10 10 435 165
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -3264,6 +3264,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
 argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 20 140 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Autoreset Class Options on change|#u
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_autoreset_classopt
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 ==============================
 create_the_forms

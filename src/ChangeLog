@@ -17,6 +17,10 @@
 	* FontLoader.C (available): Check if font is available without
 	loading the font.
 
+2001-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxrc.[Ch]: added auto_reset_options variable and associated code.
+
 2001-09-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyxrc.[Ch]: added display_graphics variable and associated code.

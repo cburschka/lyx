@@ -135,7 +135,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
 
   {
     char const * const dummy = N_("Papersize:|#P");
-    fdui->choice_papersize2 = obj = fl_add_choice(FL_NORMAL_CHOICE, 70, 15, 160, 30, idex(_(dummy)));
+    fdui->choice_papersize2 = obj = fl_add_choice(FL_NORMAL_CHOICE, 85, 15, 135, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -253,7 +253,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Fonts:|#F");
-    fdui->choice_doc_fonts = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 100, 160, 30, idex(_(dummy)));
+    fdui->choice_doc_fonts = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 90, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -261,7 +261,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Font Size:|#O");
-    fdui->choice_doc_fontsize = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 140, 160, 30, idex(_(dummy)));
+    fdui->choice_doc_fontsize = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 125, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -277,7 +277,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, CHECKCHOICECLASS);
   {
     char const * const dummy = N_("Pagestyle:|#P");
-    fdui->choice_doc_pagestyle = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 60, 160, 30, idex(_(dummy)));
+    fdui->choice_doc_pagestyle = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 55, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -285,7 +285,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Spacing|#g");
-    fdui->choice_doc_spacing = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 290, 160, 30, idex(_(dummy)));
+    fdui->choice_doc_spacing = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 240, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -293,17 +293,17 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Extra Options:|#X");
-    fdui->input_doc_extra = obj = fl_add_input(FL_NORMAL_INPUT, 120, 185, 160, 30, idex(_(dummy)));
+    fdui->input_doc_extra = obj = fl_add_input(FL_NORMAL_INPUT, 120, 160, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->input_doc_skip = obj = fl_add_input(FL_NORMAL_INPUT, 220, 225, 60, 30, "");
+  fdui->input_doc_skip = obj = fl_add_input(FL_NORMAL_INPUT, 220, 200, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Default Skip:|#u");
-    fdui->choice_doc_skip = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 225, 90, 30, idex(_(dummy)));
+    fdui->choice_doc_skip = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 200, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -354,6 +354,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+    fl_set_button(obj, 1);
   {
     char const * const dummy = N_("Skip|#K");
     fdui->radio_doc_skip = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 240, 110, 30, idex(_(dummy)));
@@ -364,9 +365,24 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_button(obj, 1);
   fl_end_group();
 
-  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 300, 290, 120, 30, "");
+  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 220, 240, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  {
+    char const * const dummy = N_("Save as Defaults|#v");
+    fdui->button_save_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 305, 295, 105, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  {
+    char const * const dummy = N_("Reset|#R");
+    fdui->button_reset_defaults = obj = fl_add_button(FL_NORMAL_BUTTON, 160, 295, 100, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->radio_auto_reset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 295, 30, 30, _("Auto Reset"));
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 285, 410, 45, _("Class Defaults"));
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -457,22 +473,22 @@ FD_form_doc_options * FormDocument::build_doc_options()
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   {
     char const * const dummy = N_("Float Placement:|#L");
-    fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 220, 45, 120, 30, idex(_(dummy)));
+    fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 200, 35, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 220, 85, 80, 30, _("Section number depth"));
+  fdui->slider_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 75, 80, 30, _("Section number depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 220, 125, 80, 30, _("Table of contents depth"));
+  fdui->slider_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 200, 115, 80, 30, _("Table of contents depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("PS Driver|#S");
-    fdui->choice_postscript_driver = obj = fl_add_choice(FL_NORMAL_CHOICE, 220, 165, 190, 30, idex(_(dummy)));
+    fdui->choice_postscript_driver = obj = fl_add_choice(FL_NORMAL_CHOICE, 200, 155, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -480,7 +496,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Use AMS Math|#M");
-    fdui->check_use_amsmath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 220, 205, 35, 30, idex(_(dummy)));
+    fdui->check_use_amsmath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 200, 200, 35, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -488,7 +504,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Use Natbib|#N");
-    fdui->check_use_natbib = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 220, 245, 35, 30, idex(_(dummy)));
+    fdui->check_use_natbib = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 200, 245, 35, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -496,7 +512,7 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Citation style|#C");
-    fdui->choice_citation_format = obj = fl_add_choice(FL_NORMAL_CHOICE, 220, 285, 190, 30, idex(_(dummy)));
+    fdui->choice_citation_format = obj = fl_add_choice(FL_NORMAL_CHOICE, 200, 285, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);

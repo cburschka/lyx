@@ -34,6 +34,8 @@
 #include "support/lstrings.h"
 #include "language.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
+#include "lyxrc.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "Liason.h"
@@ -175,6 +177,10 @@ void FormDocument::build()
     bc().addReadOnly (class_->choice_doc_skip);
     bc().addReadOnly (class_->choice_doc_spacing);
     bc().addReadOnly (class_->input_doc_spacing);
+    bc().addReadOnly (class_->radio_auto_reset);
+    bc().addReadOnly (class_->button_reset_defaults);
+    bc().addReadOnly (class_->button_save_defaults);
+
 
     // the document language form
     language_.reset(build_doc_language());
@@ -353,6 +359,26 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 			   fl_get_button(options_->check_use_natbib));
 	}
 
+	if (ob == class_->radio_auto_reset) {
+		lyxrc.auto_reset_options = fl_get_button(class_->radio_auto_reset);
+	}
+
+	if (ob == class_->button_save_defaults) {
+		lv_->getLyXFunc()->dispatch(LFUN_LAYOUT_SAVE_DEFAULT);
+	}
+
+	if (ob == class_->button_reset_defaults) {
+		BufferParams params = lv_->buffer()->params;
+		params.textclass = combo_doc_class->get() - 1;
+		params.useClassDefaults();
+		UpdateLayoutDocument(params);
+	}
+
+
+	setEnabled(class_->button_reset_defaults,
+		lv_->buffer()->params.hasClassDefaults());
+
+
 	switch (data) {
 	case INPUT:
 	case CHECKCHOICECLASS:
@@ -440,7 +466,7 @@ bool FormDocument::class_apply()
 	case 2:
 		params.setDefSkip(VSpace(VSpace::MEDSKIP));
 		break;
-    case 3:
+    	case 3:
 	    params.setDefSkip(VSpace(VSpace::BIGSKIP));
 	    break;
 	case 4:
@@ -697,6 +723,11 @@ void FormDocument::class_update(BufferParams const & params)
 	fl_set_input(class_->input_doc_extra, params.options.c_str());
     else
 	fl_set_input(class_->input_doc_extra, "");
+    fl_set_button(class_->radio_auto_reset, lyxrc.auto_reset_options);
+    fl_set_object_label(class_->button_reset_defaults, _("Reset"));
+    setEnabled(class_->button_reset_defaults, !params.hasClassDefaults());
+    fl_set_object_label(class_->button_save_defaults, _("Save as Defaults"));
+
 }
 
 
@@ -1054,12 +1085,10 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     unsigned int tc = combo_doc_class->get() - 1;
     if (textclasslist.Load(tc)) {
 	    // we use a copy of the bufferparams because we do not
-	    // want to modify them yet. 
+	    // want to modify them yet.
 	    BufferParams params = lv_->buffer()->params;
 
-	    if (params.textclass != tc
-		&& AskQuestion(_("Should I set some parameters to"), 
-			       _("the defaults of this document class?"))) {
+	    if (lyxrc.auto_reset_options) {
 	    params.textclass = tc;
 	    params.useClassDefaults();
 	    UpdateLayoutDocument(params);

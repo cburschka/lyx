@@ -418,7 +418,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 70 15 160 30
+box: 85 15 135 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -653,7 +653,7 @@ argument:
 Name: form_doc_class
 Width: 440
 Height: 345
-Number of Objects: 25
+Number of Objects: 29
 
 --------------------
 class: FL_BOX
@@ -730,7 +730,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 100 160 30
+box: 120 90 160 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -748,7 +748,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 140 160 30
+box: 120 125 160 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -784,7 +784,7 @@ argument: CHECKCHOICECLASS
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 60 160 30
+box: 120 55 160 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -802,7 +802,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 290 160 30
+box: 120 240 90 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -820,7 +820,7 @@ argument: INPUT
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 185 160 30
+box: 120 160 160 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -838,7 +838,7 @@ argument: INPUT
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 220 225 60 30
+box: 220 200 60 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -856,7 +856,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 225 90 30
+box: 120 200 90 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1091,7 +1091,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 290 120 30
+box: 220 240 60 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1105,6 +1105,78 @@ gravity: FL_NoGravity FL_NoGravity
 name: input_doc_spacing
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 305 295 105 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Save as Defaults|#v
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_save_defaults
+callback: C_FormBaseDeprecatedInputCB
+argument: INPUT
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 160 295 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Reset|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_reset_defaults
+callback: C_FormBaseDeprecatedInputCB
+argument: INPUT
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 20 295 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Auto Reset
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_auto_reset
+callback: C_FormBaseDeprecatedInputCB
+argument: INPUT
+
+--------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 10 285 410 45
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Class Defaults
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 =============== FORM ===============
 Name: form_doc_language
@@ -1301,7 +1373,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 220 45 120 30
+box: 200 35 120 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1319,7 +1391,7 @@ argument: INPUT
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 220 85 80 30
+box: 200 75 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1337,7 +1409,7 @@ argument: INPUT
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 220 125 80 30
+box: 200 115 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1355,7 +1427,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 220 165 190 30
+box: 200 155 190 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1373,7 +1445,7 @@ argument: INPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 220 205 35 30
+box: 200 200 35 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT
@@ -1391,7 +1463,7 @@ argument: INPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 220 245 35 30
+box: 200 245 35 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT
@@ -1409,7 +1481,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 220 285 190 30
+box: 200 285 190 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT

@@ -1,3 +1,16 @@
+2001-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_document.fd: Added checkbox "auto_reset", button
+	"reset_defaults" and button "save_defaults".
+
+	* Form_Document.[Ch]: Removed AskQuestion when changing class.
+	Implement the 2 buttons and the checkbox described above.
+
+	* forms/form_preferences.fd: Added checkbox "auto_reset" (to
+	save the default value of that lyxrc)
+
+	* FormPreferences.C: Handle that button
+
 2001-09-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* form_ref.fd: a little tweaking.

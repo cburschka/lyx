@@ -244,6 +244,7 @@ struct FD_form_outputs_misc {
 	FL_OBJECT *input_ascii_roff;
 	FL_OBJECT *input_checktex;
 	FL_OBJECT *input_paperoption;
+	FL_OBJECT *check_autoreset_classopt;
 };
 
 #endif /* FD_form_preferences_h_ */
