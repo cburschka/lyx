@@ -1991,24 +1991,6 @@ void LyXText::cursorRightOneWord()
 }
 
 
-void LyXText::cursorTab()
-{
-	LyXCursor tmpcursor = cursor;
-	while (tmpcursor.pos() < tmpcursor.par()->size()
-	   && !tmpcursor.par()->isNewline(tmpcursor.pos()))
-	tmpcursor.pos(tmpcursor.pos() + 1);
-
-	if (tmpcursor.pos() == tmpcursor.par()->size()) {
-		if (tmpcursor.par()->next()) {
-			tmpcursor.par(tmpcursor.par()->next());
-			tmpcursor.pos(0);
-		}
-	} else
-		tmpcursor.pos(tmpcursor.pos() + 1);
-	setCursor(tmpcursor.par(), tmpcursor.pos());
-}
-
-
 // Skip initial whitespace at end of word and move cursor to *start*
 // of prior word, not to end of next prior word.
 void LyXText::cursorLeftOneWord()

@@ -383,8 +383,6 @@ public:
 	///
 	void cursorNext();
 	///
-	void cursorTab();
-	///
 	void cursorTop();
 	///
 	void cursorBottom();

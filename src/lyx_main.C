@@ -503,8 +503,8 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Up", LFUN_UP);
 	kbmap->bind("Down", LFUN_DOWN);
 
-	kbmap->bind("Tab", LFUN_TAB);
-	kbmap->bind("ISO_Left_Tab", LFUN_TAB); // jbl 2001-23-02
+	kbmap->bind("Tab", LFUN_CELL_FORWARD);
+	kbmap->bind("ISO_Left_Tab", LFUN_CELL_FORWARD); // jbl 2001-23-02
 
 	kbmap->bind("Home", LFUN_HOME);
 	kbmap->bind("End", LFUN_END);
@@ -548,9 +548,9 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("KP_Prior", LFUN_PRIOR);
 	kbmap->bind("KP_Next", LFUN_NEXT);
 
-	kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
-	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522
-	kbmap->bind("S-ISO_Left_Tab", LFUN_SHIFT_TAB); // jbl 2001-23-02
+	kbmap->bind("C-Tab", LFUN_CELL_SPLIT);  // ale970515
+	kbmap->bind("S-Tab", LFUN_CELL_BACKWARD);  // jug20000522
+	kbmap->bind("S-ISO_Left_Tab", LFUN_CELL_BACKWARD); // jbl 2001-23-02
 }
 
 

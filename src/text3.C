@@ -460,15 +460,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		finishChange(bv);
 		break;
 
-	case LFUN_SHIFT_TAB:
-	case LFUN_TAB:
-		if (!selection.mark())
-			bv->beforeChange(this);
-		update();
-		cursorTab();
-		finishChange(bv);
-		break;
-
 	case LFUN_WORDRIGHT:
 		if (!selection.mark())
 			bv->beforeChange(this);

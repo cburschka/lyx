@@ -77,8 +77,8 @@ enum kb_action {
 	LFUN_NEXT,
 	LFUN_HOME,
 	LFUN_END,
-	LFUN_TAB,
-	LFUN_SHIFT_TAB,
+	LFUN_CELL_FORWARD,
+	LFUN_CELL_BACKWARD,
 	// 45
 	LFUN_WORDRIGHT,
 	LFUN_WORDLEFT,
@@ -228,7 +228,7 @@ enum kb_action {
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05
 	LFUN_LAYOUT_COPY,               // Asger 1997-05-04
 	LFUN_LAYOUT_PASTE,              // Asger 1997-05-04
-	LFUN_TABINSERT,                 // Ale 970515
+	LFUN_CELL_SPLIT,
 	// 170
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27

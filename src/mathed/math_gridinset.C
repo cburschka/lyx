@@ -1048,7 +1048,7 @@ dispatch_result MathGridInset::dispatch
 				pos = cell(idx).size();
 			return DISPATCHED_POP;
 
-		case LFUN_TABINSERT:
+		case LFUN_CELL_SPLIT:
 			//bv->lockedInsetStoreUndo(Undo::EDIT);
 			splitCell(idx, pos);
 			return DISPATCHED_POP;

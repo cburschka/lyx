@@ -450,7 +450,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
-	case LFUN_TABINSERT:
+	case LFUN_CELL_SPLIT:
 	case LFUN_BREAKLINE:
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_INSERT_LABEL:
@@ -532,11 +532,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		result = FINISHED_RIGHT;
 		break;
 
-	case LFUN_TAB:
+	case LFUN_CELL_FORWARD:
 		mathcursor->idxNext();
 		break;
 
-	case LFUN_SHIFT_TAB:
+	case LFUN_CELL_BACKWARD:
 		mathcursor->idxPrev();
 		break;
 

@@ -812,11 +812,11 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		case LFUN_MOUSE_RELEASE:
 			return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
 
-		case LFUN_SHIFT_TAB:
-		case LFUN_TAB:
+		case LFUN_CELL_BACKWARD:
+		case LFUN_CELL_FORWARD:
 			hideInsetCursor(bv);
 			unlockInsetInInset(bv, the_locking_inset);
-			if (cmd.action == LFUN_TAB)
+			if (cmd.action == LFUN_CELL_FORWARD)
 				moveNextCell(bv, old_locking_inset != 0);
 			else
 				movePrevCell(bv, old_locking_inset != 0);
