@@ -1,3 +1,10 @@
+2000-07-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: add check for strings.h header.
+
+	* src/spellchecker.C: include <strings.h> in order to have a
+	definition for bzero().
+
 2000-07-07  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (draw): set the status of the bv->text to

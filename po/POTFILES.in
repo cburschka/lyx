@@ -25,6 +25,8 @@ src/CutAndPaste.C
 src/filedlg.C
 src/FontLoader.C
 src/form1.C
+src/frontends/xforms/FormCitation.C
+src/frontends/xforms/form_citation.C
 src/frontends/xforms/FormCopyright.C
 src/frontends/xforms/form_copyright.C
 src/frontends/xforms/FormPreferences.C
@@ -37,7 +39,6 @@ src/insets/form_graphics.C
 src/insets/form_url.C
 src/insets/insetbib.C
 src/insets/inset.C
-src/insets/insetcite.C
 src/insets/inseterror.C
 src/insets/insetert.C
 src/insets/insetexternal.C
