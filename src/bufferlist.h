@@ -68,6 +68,8 @@ public:
 	Buffer * getBuffer(std::string const &);
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
+	/// returns a pointer to the buffer whose temppath matches the string
+	Buffer * BufferList::getBufferFromTmp(std::string const &);
 
 	/// reset current author for all buffers
 	void setCurrentAuthor(std::string const & name, std::string const & email);

@@ -7,6 +7,15 @@
 
 2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
 
+	* format.C: new placeholder $$a to pass the socket address.
+
+	* bufferlist.[Ch]: new function getBufferFromTmp.
+
+	* lyxfunc.C: Modification of LFUN_GOTOFILEROW so that it can handle
+	  files in the temporary dir.
+
+2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
+
 	* lyxsocket.[Ch]: new files. A simple local socket interface for lyx.
 
 	* Makefile.am: add lyxsocket.[Ch].

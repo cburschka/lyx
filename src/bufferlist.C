@@ -37,6 +37,7 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::removeAutosaveFile;
+using lyx::support::prefixIs;
 
 using std::endl;
 using std::find;
@@ -326,6 +327,17 @@ Buffer * BufferList::getBuffer(string const & s)
 		find_if(bstore.begin(), bstore.end(),
 			lyx::compare_memfun(&Buffer::fileName, s));
 	return it != bstore.end() ? (*it) : 0;
+}
+
+
+Buffer * BufferList::getBufferFromTmp(string const & s)
+{
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it < end; ++it)
+		if (prefixIs(s, (*it)->temppath()))
+			return *it;
+	return 0;
 }
 
 

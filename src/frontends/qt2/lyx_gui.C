@@ -13,6 +13,7 @@
 
 
 #include "support/lstrings.h"
+#include "support/os.h"
 #include "qt_helpers.h"
 
 #include "lyx_gui.h"
@@ -25,6 +26,7 @@
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
+#include "lyxsocket.h"
 #include "BufferView.h"
 #include "LColor.h"
 
@@ -43,6 +45,8 @@
 #include <qpaintdevicemetrics.h>
 
 using lyx::support::ltrim;
+
+namespace os = lyx::support::os;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -70,6 +74,7 @@ map<int, io_callback *> io_callbacks;
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
+LyXServerSocket * lyxsocket;
 
 // in QLyXKeySym.C
 extern void initEncodings();
@@ -138,6 +143,8 @@ void start(string const & batch, vector<string> const & files)
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
@@ -152,6 +159,7 @@ void start(string const & batch, vector<string> const & files)
 	qApp->exec();
 
 	// FIXME
+	delete lyxsocket;
 	delete lyxserver;
 	lyxserver = 0;
 }

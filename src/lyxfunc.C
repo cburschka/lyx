@@ -73,6 +73,7 @@
 #include "support/path_defines.h"
 #include "support/tostr.h"
 #include "support/std_sstream.h"
+#include "support/os.h"
 
 using bv_funcs::apply_freefont;
 using bv_funcs::changeDepth;
@@ -104,6 +105,8 @@ using lyx::support::system_lyxdir;
 using lyx::support::token;
 using lyx::support::trim;
 using lyx::support::user_lyxdir;
+using lyx::support::prefixIs;
+using lyx::support::os::getTmpDir;
 
 using std::endl;
 using std::make_pair;
@@ -1362,14 +1365,20 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		int row;
 		istringstream istr(argument.c_str());
 		istr >> file_name >> row;
-		// Must replace extension of the file to be .lyx and get full path
-		string const s(ChangeExtension(file_name, ".lyx"));
-
-		// Either change buffer or load the file
-		if (bufferlist.exists(s)) {
-			view()->buffer(bufferlist.getBuffer(s));
+		if (prefixIs(file_name, getTmpDir())) {
+			// Needed by inverse dvi search. If it is a file
+			// in tmpdir, call the apropriated function
+			view()->buffer(bufferlist.getBufferFromTmp(file_name));
 		} else {
-			view()->loadLyXFile(s);
+			// Must replace extension of the file to be .lyx
+			// and get full path
+			string const s(ChangeExtension(file_name, ".lyx"));
+			// Either change buffer or load the file
+			if (bufferlist.exists(s)) {
+				view()->buffer(bufferlist.getBuffer(s));
+			} else {
+				view()->loadLyXFile(s);
+			}
 		}
 
 		view()->setCursorFromRow(row);

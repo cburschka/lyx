@@ -16,6 +16,7 @@
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"
+#include "lyxsocket.h"
 
 #include "frontends/Alert.h" //to be removed?
 
@@ -36,11 +37,13 @@ using lyx::support::Systemcall;
 
 using std::string;
 
+extern LyXServerSocket * lyxsocket;
 
 namespace {
 
 string const token_from("$$i");
 string const token_path("$$p");
+string const token_socket("$$a");
 
 } //namespace anon
 
@@ -196,7 +199,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	command = subst(command, token_from,
 			QuoteName(OnlyFilename(filename)));
 	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
-
+	command = subst(command, token_socket, QuoteName(lyxsocket->address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + command);
 
