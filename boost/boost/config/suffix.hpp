@@ -17,10 +17,6 @@
 #ifndef BOOST_CONFIG_SUFFIX_HPP
 #define BOOST_CONFIG_SUFFIX_HPP
 
-# ifndef BOOST_DECL
-#   define BOOST_DECL  // default for compilers not needing this decoration.
-# endif
-
 //
 // look for long long by looking for the appropriate macros in <limits.h>.
 // Note that we use limits.h rather than climits for maximal portability,
@@ -311,6 +307,34 @@ namespace std {
 #  define BOOST_NESTED_TEMPLATE template
 #else
 #  define BOOST_NESTED_TEMPLATE
+#endif
+
+// BOOST_UNREACHABLE_RETURN(x) workaround -------------------------------------//
+// Normally evaluates to nothing, unless BOOST_NO_UNREACHABLE_RETURN_DETECTION
+// is defined, in which case it evaluates to return x; Use when you have a return
+// statement that can never be reached.
+
+#ifdef BOOST_NO_UNREACHABLE_RETURN_DETECTION
+#  define BOOST_UNREACHABLE_RETURN(x) return x;
+#else
+#  define BOOST_UNREACHABLE_RETURN(x)
+#endif
+
+// BOOST_DEDUCED_TYPENAME workaround ------------------------------------------//
+//
+// Some compilers don't support the use of `typename' for dependent
+// types in deduced contexts, e.g.
+//
+//     template <class T> void f(T, typename T::type);
+//                                  ^^^^^^^^
+// Replace these declarations with:
+//
+//     template <class T> void f(T, BOOST_DEDUCED_TYPENAME T::type);
+
+#ifndef BOOST_NO_DEDUCED_TYPENAME
+#  define BOOST_DEDUCED_TYPENAME typename
+#else 
+#  define BOOST_DEDUCED_TYPENAME
 #endif
 
 // ---------------------------------------------------------------------------//

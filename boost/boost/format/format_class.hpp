@@ -21,32 +21,37 @@
 #define BOOST_FORMAT_CLASS_HPP
 
 #include <vector>
-#include <sstream>
 #include <string>
-#include <ostream>
-#include <locale>
-#include "boost/format/format_fwd.hpp"
-#include "boost/format/internals_fwd.hpp"
 
-#include "boost/format/internals.hpp" 
+#include <boost/format/format_fwd.hpp>
+#include <boost/format/internals_fwd.hpp>
+
+#include <boost/format/internals.hpp>
 
 namespace boost {
 
 template<class Ch, class Tr>
 class basic_format 
 {
-  typedef BOOST_IO_STD basic_ostream<Ch, Tr>               stream_t;
+public:
+  typedef Ch  CharT;   // those 2 are necessary for borland compatibilty,
+  typedef Tr  Traits;  // in the body of the operator% template.
+
+
+  typedef std::basic_string<Ch, Tr>                string_t;
+  typedef BOOST_IO_STD basic_ostringstream<Ch, Tr> internal_stream_t;
+private:
+  typedef BOOST_IO_STD basic_ostream<Ch, Tr>       stream_t;
   typedef io::detail::stream_format_state<Ch, Tr>  stream_format_state;
   typedef io::detail::format_item<Ch, Tr>          format_item_t;
-public:
-  typedef std::basic_string<Ch, Tr>                string_t;
-  typedef BOOST_IO_STD basic_ostringstream<Ch, Tr>         internal_stream_t;
 
 public:
   basic_format(const Ch* str);
-  basic_format(const Ch* str, const std::locale & loc);
   basic_format(const string_t& s);
+#ifndef BOOST_NO_STD_LOCALE
+  basic_format(const Ch* str, const std::locale & loc);
   basic_format(const string_t& s, const std::locale & loc);
+#endif // no locale
   basic_format(const basic_format& x);
   basic_format& operator= (const basic_format& x);
 
@@ -55,13 +60,13 @@ public:
   // pass arguments through those operators :
   template<class T>  basic_format&   operator%(const T& x) 
   { 
-    return io::detail::feed<Ch, Tr, const T&>(*this,x);
+    return io::detail::feed<CharT, Traits, const T&>(*this,x);
   }
 
-#ifdef BOOST_OVERLOAD_FOR_NON_CONST
+#ifndef BOOST_NO_OVERLOAD_FOR_NON_CONST
   template<class T>  basic_format&   operator%(T& x) 
   {
-    return io::detail::feed<Ch, Tr, T&>(*this,x);
+    return io::detail::feed<CharT, Traits, T&>(*this,x);
   }
 #endif
 
@@ -89,14 +94,16 @@ public:
   // final output
   string_t str() const;
   friend BOOST_IO_STD basic_ostream<Ch, Tr>& 
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1300
-  operator<< <Ch, Tr> ( BOOST_IO_STD basic_ostream<Ch, Tr>& , const basic_format& ); 
-#else
+#if BOOST_WORKAROUND( BOOST_MSVC, <= 1300) \
+ &&  BOOST_WORKAROUND( BOOST_MSVC,  BOOST_TESTED_AT( 1300) )
   operator<< ( BOOST_IO_STD basic_ostream<Ch, Tr>& , const basic_format& ); 
+#else
+  operator<< <Ch, Tr> ( BOOST_IO_STD basic_ostream<Ch, Tr>& , const basic_format& ); 
 #endif
                       
 
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#if !defined( BOOST_NO_MEMBER_TEMPLATE_FRIENDS )  && ! BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x570) ) && !BOOST_WORKAROUND( _CRAYC, != 0)
+
   template<class Ch2, class Tr2, class T>  friend basic_format<Ch2, Tr2>&  
   io::detail::feed(basic_format<Ch2,Tr2>&, T);
     

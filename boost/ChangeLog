@@ -1,7 +1,11 @@
+2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* update boost to version pre-1.30.0
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* boost/format/format_implementation.hpp (clear_bind): use
-	io::out_of_range 
+	io::out_of_range
 
 	* boost/config/user.hpp (BOOST_FUNCTION_NO_DEPRECATED): define it.
 

@@ -22,44 +22,77 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <ostream>
+#include <boost/config.hpp>
+#include <boost/detail/workaround.hpp>
 
-#include "boost/config.hpp"
-#include "boost/format/format_config.hpp"
+#ifndef BOOST_NO_STD_LOCALE
+#include <locale>
+#endif
 
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1300
-#define BOOST_OVERLOAD_FOR_NON_CONST
+
+// make sure our local macros wont override something :
+#if defined(BOOST_NO_LOCALE_ISDIGIT) || defined(BOOST_OVERLOAD_FOR_NON_CONST) \
+  || defined(BOOST_IO_STD) || defined( BOOST_IO_NEEDS_USING_DECLARATION )
+#error "a local macro would overwrite a previously defined macro"
+#endif
+
+
+#include <boost/format/macros_stlport.hpp>  // stlport workarounds
+#include <boost/format/macros_default.hpp> 
+
+#if defined(BOOST_NO_STD_LOCALE) || ( BOOST_WORKAROUND(__BORLANDC__, <= 0x561) \
+ && BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT( 0x570 ) ) )
+#define BOOST_BAD_ISDIGIT
+#endif
+
+#ifdef BOOST_BAD_ISDIGIT
+#include <cctype>  // we'll use the non-locale  <cctype>'s std::isdigit(int)
+#endif
+
+
+#if  BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x570) ) || BOOST_WORKAROUND( BOOST_MSVC, BOOST_TESTED_AT(1300))
+#define BOOST_NO_OVERLOAD_FOR_NON_CONST
 #endif
 
 
 // ****  Forward declarations ----------------------------------
-#include "boost/format/format_fwd.hpp"           // basic_format<Ch,Tr>, and other frontends
-#include "boost/format/internals_fwd.hpp"        // misc forward declarations for internal use
+#include <boost/format/format_fwd.hpp>           // basic_format<Ch,Tr>, and other frontends
+#include <boost/format/internals_fwd.hpp>        // misc forward declarations for internal use
 
 
 // ****  Auxiliary structs (stream_format_state<Ch,Tr> , and format_item<Ch,Tr> )
-#include "boost/format/internals.hpp"    
+#include <boost/format/internals.hpp>    
 
 // ****  Format  class  interface --------------------------------
-#include "boost/format/format_class.hpp"
+#include <boost/format/format_class.hpp>
 
 // **** Exceptions -----------------------------------------------
-#include "boost/format/exceptions.hpp"
+#include <boost/format/exceptions.hpp>
 
 // **** Implementation -------------------------------------------
-#include "boost/format/format_implementation.hpp"   // member functions
+#include <boost/format/format_implementation.hpp>   // member functions
 
-#include "boost/format/group.hpp"                   // class for grouping arguments
+#include <boost/format/group.hpp>                   // class for grouping arguments
 
-#include "boost/format/feed_args.hpp"               // argument-feeding functions
-#include "boost/format/parsing.hpp"                 // format-string parsing (member-)functions
+#include <boost/format/feed_args.hpp>               // argument-feeding functions
+#include <boost/format/parsing.hpp>                 // format-string parsing (member-)functions
 
 // **** Implementation of the free functions ----------------------
-#include "boost/format/free_funcs.hpp"
+#include <boost/format/free_funcs.hpp>
 
-#ifdef BOOST_OVERLOAD_FOR_NON_CONST
-#undef BOOST_OVERLOAD_FOR_NON_CONST
+
+// *** Undefine 'local' macros :
+#ifdef BOOST_NO_OVERLOAD_FOR_NON_CONST
+#undef BOOST_NO_OVERLOAD_FOR_NON_CONST
 #endif
-
+#ifdef BOOST_BAD_ISDIGIT
+#undef BOOST_BAD_ISDIGIT
+#endif
+#ifdef BOOST_IO_STD
+#undef BOOST_IO_STD
+#endif
+#ifdef BOOST_IO_NEEDS_USING_DECLARATION
+#undef BOOST_IO_NEEDS_USING_DECLARATION
+#endif
 
 #endif // BOOST_FORMAT_HPP

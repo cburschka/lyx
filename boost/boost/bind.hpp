@@ -22,6 +22,7 @@
 #include <boost/config.hpp>
 #include <boost/ref.hpp>
 #include <boost/mem_fn.hpp>
+#include <boost/type.hpp>
 #include <boost/bind/arg.hpp>
 
 // Borland-specific bug, visit_each() silently fails to produce code
@@ -1133,6 +1134,18 @@ template<class A1, class A2, class A3, class A4, class A5, class A6, class A7, c
     typedef list9<B1, B2, B3, B4, B5, B6, B7, B8, B9> type;
 };
 
+// g++ 2.95 specific helper; used by the data member overload
+
+template<class T> struct add_cref
+{
+    typedef T const & type;
+};
+
+template<> struct add_cref<void>
+{
+    typedef void type;
+};
+
 } // namespace _bi
 
 // visit_each
@@ -1230,6 +1243,88 @@ template<class R, class F, class A1, class A2, class A3, class A4, class A5, cla
 template<class R, class F, class A1, class A2, class A3, class A4, class A5, class A6, class A7, class A8, class A9>
     _bi::bind_t<R, F, typename _bi::list_av_9<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type>
     BOOST_BIND(F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
+{
+    typedef typename _bi::list_av_9<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7, a8, a9));
+}
+
+// generic function objects, alternative syntax
+
+template<class R, class F>
+    _bi::bind_t<R, F, _bi::list0>
+    BOOST_BIND(boost::type<R>, F f)
+{
+    typedef _bi::list0 list_type;
+    return _bi::bind_t<R, F, list_type> (f, list_type());
+}
+
+template<class R, class F, class A1>
+    _bi::bind_t<R, F, typename _bi::list_av_1<A1>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1)
+{
+    typedef typename _bi::list_av_1<A1>::type list_type;
+    return _bi::bind_t<R, F, list_type> (f, list_type(a1));
+}
+
+template<class R, class F, class A1, class A2>
+    _bi::bind_t<R, F, typename _bi::list_av_2<A1, A2>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2)
+{
+    typedef typename _bi::list_av_2<A1, A2>::type list_type;
+    return _bi::bind_t<R, F, list_type> (f, list_type(a1, a2));
+}
+
+template<class R, class F, class A1, class A2, class A3>
+    _bi::bind_t<R, F, typename _bi::list_av_3<A1, A2, A3>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3)
+{
+    typedef typename _bi::list_av_3<A1, A2, A3>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4>
+    _bi::bind_t<R, F, typename _bi::list_av_4<A1, A2, A3, A4>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4)
+{
+    typedef typename _bi::list_av_4<A1, A2, A3, A4>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4, class A5>
+    _bi::bind_t<R, F, typename _bi::list_av_5<A1, A2, A3, A4, A5>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
+{
+    typedef typename _bi::list_av_5<A1, A2, A3, A4, A5>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4, class A5, class A6>
+    _bi::bind_t<R, F, typename _bi::list_av_6<A1, A2, A3, A4, A5, A6>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
+{
+    typedef typename _bi::list_av_6<A1, A2, A3, A4, A5, A6>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4, class A5, class A6, class A7>
+    _bi::bind_t<R, F, typename _bi::list_av_7<A1, A2, A3, A4, A5, A6, A7>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7)
+{
+    typedef typename _bi::list_av_7<A1, A2, A3, A4, A5, A6, A7>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4, class A5, class A6, class A7, class A8>
+    _bi::bind_t<R, F, typename _bi::list_av_8<A1, A2, A3, A4, A5, A6, A7, A8>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8)
+{
+    typedef typename _bi::list_av_8<A1, A2, A3, A4, A5, A6, A7, A8>::type list_type;
+    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7, a8));
+}
+
+template<class R, class F, class A1, class A2, class A3, class A4, class A5, class A6, class A7, class A8, class A9>
+    _bi::bind_t<R, F, typename _bi::list_av_9<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type>
+    BOOST_BIND(boost::type<R>, F f, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
 {
     typedef typename _bi::list_av_9<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type list_type;
     return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7, a8, a9));
@@ -1403,14 +1498,29 @@ template<class F, class A1, class A2, class A3, class A4, class A5, class A6, cl
 
 // data member pointers
 
+#if defined(__GNUC__) && (__GNUC__ == 2)
+
 template<class R, class T, class A1>
-    _bi::bind_t< R const &, _mfi::dm<R, T>, typename _bi::list_av_1<A1>::type >
+_bi::bind_t< typename _bi::add_cref<R>::type, _mfi::dm<R, T>, typename _bi::list_av_1<A1>::type >
+    BOOST_BIND(R T::*f, A1 a1)
+{
+    typedef _mfi::dm<R, T> F;
+    typedef typename _bi::list_av_1<A1>::type list_type;
+    return _bi::bind_t<typename _bi::add_cref<R>::type, F, list_type>(F(f), list_type(a1));
+}
+
+#else
+
+template<class R, class T, class A1>
+_bi::bind_t< R const &, _mfi::dm<R, T>, typename _bi::list_av_1<A1>::type >
     BOOST_BIND(R T::*f, A1 a1)
 {
     typedef _mfi::dm<R, T> F;
     typedef typename _bi::list_av_1<A1>::type list_type;
     return _bi::bind_t<R const &, F, list_type>(F(f), list_type(a1));
 }
+
+#endif
 
 } // namespace boost
 

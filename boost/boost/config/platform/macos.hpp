@@ -9,8 +9,9 @@
 
 #define BOOST_PLATFORM "Mac OS"
 
-// If __MACH__, we're using the BSD standard C library, not the MSL:
-#if __MACH__
+#if __MACH__ && !defined(_MSL_USING_MSL_C)
+
+// Using the Mac OS X system BSD-style C library.
 
 #  define BOOST_NO_CTYPE_FUNCTIONS
 #  define BOOST_NO_CWCHAR
@@ -18,18 +19,21 @@
 #    define BOOST_HAS_UNISTD_H
 #  endif
 // boilerplate code:
-#  include <boost/config/posix_features.hpp>
+#  ifndef TARGET_CARBON
+#     include <boost/config/posix_features.hpp>
+#  endif
 #  ifndef BOOST_HAS_STDINT_H
 #     define BOOST_HAS_STDINT_H
 #  endif
 
 //
-// BSD runtime has pthreads, sched_yield and gettimeofday,
+// BSD runtime has pthreads, sigaction, sched_yield and gettimeofday,
 // of these only pthreads are advertised in <unistd.h>, so set the 
 // other options explicitly:
 //
 #  define BOOST_HAS_SCHED_YIELD
 #  define BOOST_HAS_GETTIMEOFDAY
+#  define BOOST_HAS_SIGACTION
 
 #  ifndef __APPLE_CC__
 
@@ -40,6 +44,8 @@
 #  endif
 
 #else
+
+// Using the MSL C library.
 
 // We will eventually support threads in non-Carbon builds, but we do
 // not support this yet.
@@ -57,3 +63,4 @@
 #  endif
 
 #endif
+

@@ -29,18 +29,27 @@
 #   endif
 
 //
-// Threading support:
-// Turn this on unconditionally here, it will get turned off again later
-// if no threading API is detected.
+// Threading support: Turn this on unconditionally here (except for
+// MinGW, where we can know for sure). It will get turned off again
+// later if no threading API is detected.
 //
-#define BOOST_HAS_THREADS
+#if !defined(__MINGW32__) || defined(_MT)
+# define BOOST_HAS_THREADS
+#endif 
 
 //
 // gcc has "long long"
 //
 #define BOOST_HAS_LONG_LONG
 
-#define BOOST_COMPILER "GNU C++ version " BOOST_STRINGIZE(__GNUC__) "." BOOST_STRINGIZE(__GNUC_MINOR__)
+//
+// gcc implements the named return value optimization since version 3.1
+//
+#if __GNUC__ > 3 || ( __GNUC__ == 3 && __GNUC_MINOR__ >= 1 )
+#define BOOST_HAS_NRVO
+#endif
+
+#define BOOST_COMPILER "GNU C++ version " __VERSION__
 
 //
 // versions check:

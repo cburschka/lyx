@@ -86,9 +86,9 @@ public:
      // parentheses and space are the default manipulators
      if (!c) {
        switch(m) {
-         case open : c = '('; break;
-         case close : c = ')'; break;
-         case delimiter : c = ' '; break;
+         case detail::format_info::open : c = '('; break;
+         case detail::format_info::close : c = ')'; break;
+         case detail::format_info::delimiter : c = ' '; break;
        }
      }
      return c;
@@ -109,9 +109,9 @@ public:
      // parentheses and space are the default manipulators
      if (!c) {
        switch(m) {
-         case open :  c = i.widen('('); break;
-         case close : c = i.widen(')'); break;
-         case delimiter : c = i.widen(' '); break;
+         case detail::format_info::open :  c = i.widen('('); break;
+         case detail::format_info::close : c = i.widen(')'); break;
+         case detail::format_info::delimiter : c = i.widen(' '); break;
        }
      }
      return c;
@@ -438,6 +438,9 @@ extract_and_check_delimiter(
 
 #if defined (BOOST_NO_STD_LOCALE)
   const bool is_delimiter = !isspace(d);
+#elif defined ( __BORLANDC__ )
+  const bool !is_delimiter = std::use_facet< std::ctype< CharType > >
+    (is.getloc() ).is( std::ctype_base::space, d);
 #else
   const bool is_delimiter = (!std::isspace(d, is.getloc()) );            
 #endif

@@ -21,6 +21,7 @@
 
 #if !defined(BOOST_MPL_NO_FULL_LAMBDA_SUPPORT)
 
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) /**/
 #   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i,name,params) /**/
 
 #else
@@ -35,23 +36,75 @@
     typedef_ param BOOST_PP_CAT(arg,BOOST_PP_INC(i)); \
     /**/
 
-#   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i,name,params) \
-    struct rebind \
+// agurt, 18/jan/03: old EDG-based compilers actually enforce 11.4 para 9
+// (in strict mode), so we have to provide an alternative to the 
+// MSVC-optimized implementation
+#if defined(__EDG_VERSION__) && !defined(BOOST_INTEL_CXX_VERSION)
+
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) \
+    BOOST_STATIC_CONSTANT(int, arity = i); \
+    BOOST_PP_LIST_FOR_EACH_I_R( \
+          1 \
+        , BOOST_MPL_AUX_LAMBDA_SUPPORT_ARG_TYPEDEF_FUNC \
+        , typedef \
+        , BOOST_PP_TUPLE_TO_LIST(i,params) \
+        ) \
+    struct rebind; \
+/**/
+
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i, name, params) \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) \
+}; \
+template< BOOST_MPL_PP_PARAMS(i,typename T) > \
+struct name<BOOST_MPL_PP_PARAMS(i,T)>::rebind \
+{ \
+    template< BOOST_MPL_PP_PARAMS(i,typename U) > struct apply \
+        : name< BOOST_MPL_PP_PARAMS(i,U) > \
     { \
-        BOOST_STATIC_CONSTANT(int, arity = i); \
-        BOOST_PP_LIST_FOR_EACH_I_R( \
-              1 \
-            , BOOST_MPL_AUX_LAMBDA_SUPPORT_ARG_TYPEDEF_FUNC \
-            , typedef \
-            , BOOST_PP_TUPLE_TO_LIST(i,params) \
-            ) \
-        \
-        template< BOOST_MPL_PP_PARAMS(i,typename U) > struct apply \
-        { \
-            typedef typename name< BOOST_MPL_PP_PARAMS(i,U) >::type type; \
-        }; \
     }; \
-    /**/
+/**/
+
+#else // __EDG_VERSION__
+
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) \
+    BOOST_STATIC_CONSTANT(int, arity = i); \
+    BOOST_PP_LIST_FOR_EACH_I_R( \
+          1 \
+        , BOOST_MPL_AUX_LAMBDA_SUPPORT_ARG_TYPEDEF_FUNC \
+        , typedef \
+        , BOOST_PP_TUPLE_TO_LIST(i,params) \
+        ) \
+    friend class BOOST_PP_CAT(name,_rebind); \
+    typedef BOOST_PP_CAT(name,_rebind) rebind; \
+/**/
+
+#   if !defined(__BORLANDC__)
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i, name, params) \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) \
+}; \
+class BOOST_PP_CAT(name,_rebind) \
+{ \
+ public: \
+    template< BOOST_MPL_PP_PARAMS(i,typename U) > struct apply \
+        : name< BOOST_MPL_PP_PARAMS(i,U) > \
+    { \
+    }; \
+/**/
+#   else
+#   define BOOST_MPL_AUX_LAMBDA_SUPPORT(i, name, params) \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(i, name, params) \
+}; \
+class BOOST_PP_CAT(name,_rebind) \
+{ \
+ public: \
+    template< BOOST_MPL_PP_PARAMS(i,typename U) > struct apply \
+    { \
+        typedef typename name< BOOST_MPL_PP_PARAMS(i,U) >::type type; \
+    }; \
+/**/
+#   endif // __BORLANDC__
+
+#endif // __EDG_VERSION__
 
 #endif // BOOST_MPL_NO_FULL_LAMBDA_SUPPORT
 

@@ -7,7 +7,7 @@
 //  See http://www.boost.org for most recent version including documentation.
 //
 //  defines object traits classes:
-//  is_object, is_scalar, is_class, is_compound, is_POD, 
+//  is_object, is_scalar, is_class, is_compound, is_pod, 
 //  has_trivial_constructor, has_trivial_copy, has_trivial_assign, 
 //  has_trivial_destructor, is_empty.
 //
@@ -27,7 +27,7 @@
 #include "boost/type_traits/is_compound.hpp"
 #include "boost/type_traits/is_empty.hpp"
 #include "boost/type_traits/is_object.hpp"
-#include "boost/type_traits/is_POD.hpp"
+#include "boost/type_traits/is_pod.hpp"
 #include "boost/type_traits/is_scalar.hpp"
 #include "boost/type_traits/is_stateless.hpp"
 

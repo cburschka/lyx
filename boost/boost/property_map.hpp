@@ -4,13 +4,15 @@
 //  "as is" without express or implied warranty, and with no claim as
 //  to its suitability for any purpose.
 
+//  See http://www.boost.org/libs/property_map for documentation.
+
 #ifndef BOOST_PROPERTY_MAP_HPP
 #define BOOST_PROPERTY_MAP_HPP
 
 #include <cassert>
-#include <iterator>
 #include <boost/config.hpp>
 #include <boost/pending/cstddef.hpp>
+#include <boost/detail/iterator.hpp>
 #include <boost/concept_check.hpp>
 #include <boost/concept_archetype.hpp>
 
@@ -410,14 +412,14 @@ namespace boost {
   template <class RAIter, class ID>
   inline safe_iterator_property_map<
     RAIter, ID,
-    typename std::iterator_traits<RAIter>::value_type,
-    typename std::iterator_traits<RAIter>::reference>
+    typename boost::detail::iterator_traits<RAIter>::value_type,
+    typename boost::detail::iterator_traits<RAIter>::reference>
   make_safe_iterator_property_map(RAIter iter, std::size_t n, ID id) {
     function_requires< RandomAccessIteratorConcept<RAIter> >();
     typedef safe_iterator_property_map<
       RAIter, ID,
-      typename std::iterator_traits<RAIter>::value_type,
-      typename std::iterator_traits<RAIter>::reference> PA;
+      typename boost::detail::iterator_traits<RAIter>::value_type,
+      typename boost::detail::iterator_traits<RAIter>::reference> PA;
     return PA(iter, n, id);
   }
 #endif

@@ -19,6 +19,7 @@
 
 #if (BOOST_INTEL_CXX_VERSION <= 500) && defined(_MSC_VER)
 #  define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
+#  define BOOST_NO_TEMPLATE_TEMPLATES
 #endif
 
 #if (BOOST_INTEL_CXX_VERSION <= 600) || !defined(BOOST_STRICT_CONFIG)
@@ -61,6 +62,12 @@
 #  define BOOST_DISABLE_WIN32
 #endif
 
+// I checked version 6.0 build 020312Z, it implements the NRVO.
+// Correct this as you find out which version of the compiler
+// implemented the NRVO first.  (Daniel Frey)
+#if (BOOST_INTEL_CXX_VERSION >= 600)
+#  define BOOST_HAS_NRVO
+#endif
 
 //
 // versions check:
@@ -69,8 +76,8 @@
 #  error "Compiler not supported or configured - please reconfigure"
 #endif
 //
-// last known and checked version is 600:
-#if (BOOST_INTEL_CXX_VERSION > 600)
+// last known and checked version:
+#if (BOOST_INTEL_CXX_VERSION > 700)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  elif defined(_MSC_VER)

@@ -9,7 +9,7 @@
 //  This software is provided "as is" without express or implied
 //  warranty, and with no claim as to its suitability for any purpose.
 //
-//  See http://www.boost.org/libs/smart_ptr/scoped_ptr.htm for documentation.
+//  http://www.boost.org/libs/smart_ptr/scoped_ptr.htm
 //
 
 #include <boost/assert.hpp>
@@ -22,12 +22,21 @@
 namespace boost
 {
 
+// Debug hooks
+
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+
+void sp_scalar_constructor_hook(void * p);
+void sp_scalar_destructor_hook(void * p);
+
+#endif
+
 //  scoped_ptr mimics a built-in pointer except that it guarantees deletion
 //  of the object pointed to, either on destruction of the scoped_ptr or via
 //  an explicit reset(). scoped_ptr is a simple solution for simple needs;
 //  use shared_ptr or std::auto_ptr if your needs are more complex.
 
-template<typename T> class scoped_ptr // noncopyable
+template<class T> class scoped_ptr // noncopyable
 {
 private:
 
@@ -44,27 +53,34 @@ public:
 
     explicit scoped_ptr(T * p = 0): ptr(p) // never throws
     {
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+        boost::sp_scalar_constructor_hook(ptr);
+#endif
     }
 
 #ifndef BOOST_NO_AUTO_PTR
 
     explicit scoped_ptr(std::auto_ptr<T> p): ptr(p.release()) // never throws
     {
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+        boost::sp_scalar_constructor_hook(ptr);
+#endif
     }
 
 #endif
 
     ~scoped_ptr() // never throws
     {
-        checked_delete(ptr);
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+        boost::sp_scalar_destructor_hook(ptr);
+#endif
+        boost::checked_delete(ptr);
     }
 
     void reset(T * p = 0) // never throws
     {
-        if(ptr != p)
-        {
-            this_type(p).swap(*this);
-        }
+        BOOST_ASSERT(p == 0 || p != ptr); // catch self-reset errors
+        this_type(p).swap(*this);
     }
 
     T & operator*() const // never throws
@@ -106,14 +122,14 @@ public:
     }
 };
 
-template<typename T> inline void swap(scoped_ptr<T> & a, scoped_ptr<T> & b) // never throws
+template<class T> inline void swap(scoped_ptr<T> & a, scoped_ptr<T> & b) // never throws
 {
     a.swap(b);
 }
 
 // get_pointer(p) is a generic way to say p.get()
 
-template<typename T> inline T * get_pointer(scoped_ptr<T> const & p)
+template<class T> inline T * get_pointer(scoped_ptr<T> const & p)
 {
     return p.get();
 }

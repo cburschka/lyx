@@ -53,9 +53,13 @@
 #define BOOST_HAS_NANOSLEEP
 #define BOOST_HAS_GETTIMEOFDAY
 #define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
+#define BOOST_HAS_SIGACTION
 
 // boilerplate code:
 #define BOOST_HAS_UNISTD_H
 #include <boost/config/posix_features.hpp>
+
+
+
 
 

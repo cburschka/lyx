@@ -8,7 +8,7 @@
 // implied warranty, and with no claim as to its suitability for any
 // purpose.
 
-// See http://www.boost.org for updates, documentation, and revision history.
+// See http://www.boost.org/libs/tokenizer for documentation.
 
 // Revision History:
 
@@ -282,10 +282,10 @@ namespace boost{
     {
       // Borland workaround
       if (kept_delims)
-	m_kept_delims = kept_delims;
+        m_kept_delims = kept_delims;
     }
 
- 		// use ispunct() for kept delimiters and isspace for dropped.
+                // use ispunct() for kept delimiters and isspace for dropped.
     explicit
     char_separator()
       : m_use_ispunct(true), 

@@ -16,11 +16,25 @@
 #  endif
 #endif
 
-#if (__HP_aCC <= 33300) || !defined(BOOST_STRICT_CONFIG)
+#if (__HP_aCC <= 33300)
 // member templates are sufficiently broken that we disable them for now
 #    define BOOST_NO_MEMBER_TEMPLATES
 #    define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
+#endif
+
+#if (__HP_aCC <= 33900) || !defined(BOOST_STRICT_CONFIG)
+#    define BOOST_NO_UNREACHABLE_RETURN_DETECTION
+#    define BOOST_NO_TEMPLATE_TEMPLATES
+#    define BOOST_NO_SWPRINTF
 #    define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
+//     std lib config should set this one already:
+//#    define BOOST_NO_STD_ALLOCATOR
+#endif 
+
+// optional features rather than defects:
+#if (__HP_aCC >= 33900)
+#    define BOOST_HAS_LONG_LONG
+#    define BOOST_HAS_PARTIAL_STD_ALLOCATOR
 #endif
 
 #define BOOST_COMPILER "HP aCC version " BOOST_STRINGIZE(__HP_aCC)
@@ -33,9 +47,11 @@
 #endif
 //
 // last known and checked version is 0:
-#if (__HP_aCC > 33300)
+#if (__HP_aCC > 33900)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  endif
 #endif
+
+
 

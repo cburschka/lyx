@@ -10,12 +10,13 @@
 #ifndef BOOST_TT_HAS_TRIVIAL_COPY_HPP_INCLUDED
 #define BOOST_TT_HAS_TRIVIAL_COPY_HPP_INCLUDED
 
+#include "boost/type_traits/config.hpp"
+#include "boost/type_traits/intrinsics.hpp"
 #include "boost/type_traits/is_volatile.hpp"
-#include "boost/type_traits/is_POD.hpp"
+#include "boost/type_traits/is_pod.hpp"
 #include "boost/type_traits/detail/ice_and.hpp"
 #include "boost/type_traits/detail/ice_or.hpp"
 #include "boost/type_traits/detail/ice_not.hpp"
-#include "boost/type_traits/config.hpp"
 
 // should be the last #include
 #include "boost/type_traits/detail/bool_trait_def.hpp"
@@ -30,7 +31,7 @@ struct has_trivial_copy_impl
    BOOST_STATIC_CONSTANT(bool, value =
       (::boost::type_traits::ice_and<
          ::boost::type_traits::ice_or<
-            ::boost::is_POD<T>::value,
+            ::boost::is_pod<T>::value,
             BOOST_HAS_TRIVIAL_COPY(T)
          >::value,
       ::boost::type_traits::ice_not< ::boost::is_volatile<T>::value >::value

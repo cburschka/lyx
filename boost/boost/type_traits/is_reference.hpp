@@ -33,7 +33,7 @@ namespace boost {
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_reference,T,false)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T&,true)
 
-#if defined(__BORLANDC__)
+#if defined(__BORLANDC__) && !defined(__COMO__)
 // these are illegal specialisations; cv-qualifies applied to
 // references have no effect according to [8.3.2p1],
 // C++ Builder requires them though as it treats cv-qualified
@@ -41,6 +41,20 @@ BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T&,true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T& const,true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T& volatile,true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T& const volatile,true)
+#endif
+
+#if defined(__GNUC__) && (__GNUC__ < 3)
+// these allow us to work around illegally cv-qualified reference
+// types.
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T const ,::boost::is_reference<T>::value)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T volatile ,::boost::is_reference<T>::value)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_reference,T const volatile ,::boost::is_reference<T>::value)
+// However, the above specializations confuse gcc 2.96 unless we also
+// supply these specializations for array types
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,unsigned long N,is_reference,T[N],false)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,unsigned long N,is_reference,const T[N],false)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,unsigned long N,is_reference,volatile T[N],false)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,unsigned long N,is_reference,const volatile T[N],false)
 #endif
 
 #else
@@ -72,15 +86,16 @@ struct is_reference_impl
         );
 };
 
+BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1(is_reference,void,false)
+#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
+BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1(is_reference,void const,false)
+BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1(is_reference,void volatile,false)
+BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1(is_reference,void const volatile,false)
+#endif
+
 } // namespace detail
 
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_reference,T,::boost::detail::is_reference_impl<T>::value)
-BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_reference,void,false)
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_reference,void const,false)
-BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_reference,void volatile,false)
-BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_reference,void const volatile,false)
-#endif
 
 #ifdef BOOST_MSVC
 #   pragma warning(pop)
@@ -93,3 +108,4 @@ BOOST_TT_AUX_BOOL_TRAIT_SPEC1(is_reference,void const volatile,false)
 #include "boost/type_traits/detail/bool_trait_undef.hpp"
 
 #endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
+

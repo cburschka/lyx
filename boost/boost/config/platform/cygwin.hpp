@@ -11,6 +11,7 @@
 #define BOOST_NO_CWCTYPE
 #define BOOST_NO_CWCHAR
 #define BOOST_NO_SWPRINTF
+#define BOOST_HAS_DIRENT_H
 
 //
 // Threading API:
@@ -23,6 +24,7 @@
 #  define BOOST_HAS_SCHED_YIELD
 #  define BOOST_HAS_GETTIMEOFDAY
 #  define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
+#  define BOOST_HAS_SIGACTION
 #else
 #  if !defined(BOOST_HAS_WINTHREADS)
 #     define BOOST_HAS_WINTHREADS

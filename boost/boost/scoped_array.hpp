@@ -9,7 +9,7 @@
 //  This software is provided "as is" without express or implied
 //  warranty, and with no claim as to its suitability for any purpose.
 //
-//  See http://www.boost.org/libs/smart_ptr/scoped_array.htm for documentation.
+//  http://www.boost.org/libs/smart_ptr/scoped_array.htm
 //
 
 #include <boost/assert.hpp>
@@ -20,11 +20,20 @@
 namespace boost
 {
 
+// Debug hooks
+
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+
+void sp_array_constructor_hook(void * p);
+void sp_array_destructor_hook(void * p);
+
+#endif
+
 //  scoped_array extends scoped_ptr to arrays. Deletion of the array pointed to
 //  is guaranteed, either on destruction of the scoped_array or via an explicit
 //  reset(). Use shared_array or std::vector if your needs are more complex.
 
-template<typename T> class scoped_array // noncopyable
+template<class T> class scoped_array // noncopyable
 {
 private:
 
@@ -41,20 +50,23 @@ public:
 
     explicit scoped_array(T * p = 0) : ptr(p) // never throws
     {
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+        boost::sp_array_constructor_hook(ptr);
+#endif
     }
 
     ~scoped_array() // never throws
     {
-        checked_array_delete(ptr);
+#if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+        boost::sp_array_destructor_hook(ptr);
+#endif
+        boost::checked_array_delete(ptr);
     }
 
     void reset(T * p = 0) // never throws
     {
-        if (ptr != p)
-        {
-            checked_array_delete(ptr);
-            ptr = p;
-        }
+        BOOST_ASSERT(p == 0 || p != ptr); // catch self-reset errors
+        this_type(p).swap(*this);
     }
 
     T & operator[](std::ptrdiff_t i) const // never throws

@@ -6,7 +6,7 @@
 //  express or implied warranty, and with no claim as to its suitability for
 //  any purpose.
 
-//  See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/integer for documentation.
 
 //  Revision History
 //   31 Oct 01  use BOOST_HAS_LONG_LONG to check for "long long" (Jens M.)
@@ -161,10 +161,27 @@ namespace boost
 //  16-bit types  -----------------------------------------------------------//
 
 # if USHRT_MAX == 0xffff
+#  if defined(__crayx1)
+     // The Cray X1 has a 16-bit short, however it is not recommend
+     // for use in performance critical code.
+     typedef short           int16_t;
+     typedef short           int_least16_t;
+     typedef int             int_fast16_t;
+     typedef unsigned short  uint16_t;
+     typedef unsigned short  uint_least16_t;
+     typedef unsigned int    uint_fast16_t;
+#  else
      typedef short           int16_t;
      typedef short           int_least16_t;
      typedef short           int_fast16_t;
      typedef unsigned short  uint16_t;
+     typedef unsigned short  uint_least16_t;
+     typedef unsigned short  uint_fast16_t;
+#  endif
+# elif (USHRT_MAX == 0xffffffff) && defined(CRAY)
+     // no 16-bit types on Cray:
+     typedef short           int_least16_t;
+     typedef short           int_fast16_t;
      typedef unsigned short  uint_least16_t;
      typedef unsigned short  uint_fast16_t;
 # else
@@ -372,5 +389,7 @@ BOOST_HAS_STDINT_H is defined (John Maddock).
 # undef UINTMAX_C
 
 #endif // __STDC_CONSTANT_MACROS_DEFINED etc.
+
+
 
 

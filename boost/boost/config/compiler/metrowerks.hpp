@@ -24,12 +24,20 @@
 #   endif
 
 #   if(__MWERKS__ <= 0x2407)  // 7.x
-#     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
+#     define BOOST_NO_UNREACHABLE_RETURN_DETECTION
 #   endif
+
+#   if(__MWERKS__ <= 0x3003)  // 8.x
+#     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#    endif
 
 #if !__option(wchar_type)
 #   define BOOST_NO_INTRINSIC_WCHAR_T
+#endif
+
+#if !__option(exceptions)
+#   define BOOST_NO_EXCEPTIONS
 #endif
 
 #   if __MWERKS__ == 0x3000
@@ -38,6 +46,8 @@
 #     define BOOST_COMPILER_VERSION 8.1
 #   elif __MWERKS__ == 0x3002
 #     define BOOST_COMPILER_VERSION 8.2
+#   elif __MWERKS__ == 0x3003
+#     define BOOST_COMPILER_VERSION 8.3
 #   else
 #     define BOOST_COMPILER_VERSION __MWERKS__
 #   endif 
@@ -52,7 +62,7 @@
 #endif
 //
 // last known and checked version:
-#if (__MWERKS__ > 0x3002)
+#if (__MWERKS__ > 0x3003)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  endif

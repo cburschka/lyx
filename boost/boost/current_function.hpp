@@ -15,6 +15,8 @@
 //  This software is provided "as is" without express or implied
 //  warranty, and with no claim as to its suitability for any purpose.
 //
+//  http://www.boost.org/libs/utility/current_function.html
+//
 
 namespace boost
 {
@@ -25,7 +27,7 @@ namespace detail
 inline void current_function_helper()
 {
 
-#if defined(__GNUC__)
+#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000))
 
 # define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
 
@@ -33,7 +35,7 @@ inline void current_function_helper()
 
 # define BOOST_CURRENT_FUNCTION __FUNCSIG__
 
-#elif defined(__BORLANDC__)
+#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
 
 # define BOOST_CURRENT_FUNCTION __FUNC__
 

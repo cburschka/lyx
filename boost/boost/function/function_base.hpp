@@ -1,6 +1,6 @@
 // Boost.Function library
 
-// Copyright (C) 2001, 2002 Doug Gregor (gregod@cs.rpi.edu)
+// Copyright (C) 2001-2003 Doug Gregor (gregod@cs.rpi.edu)
 //
 // Permission to copy, use, sell and distribute this software is granted
 // provided this copyright notice appears in all copies.
@@ -10,61 +10,132 @@
 //
 // This software is provided "as is" without express or implied warranty,
 // and with no claim as to its suitability for any purpose.
- 
+
 // For more information, see http://www.boost.org
 
 #ifndef BOOST_FUNCTION_BASE_HEADER
 #define BOOST_FUNCTION_BASE_HEADER
 
-#include <string>
 #include <stdexcept>
+#include <string>
 #include <memory>
 #include <new>
-#include <typeinfo>
 #include <boost/config.hpp>
-#include <boost/type_traits.hpp>
+#include <boost/assert.hpp>
+#include <boost/type_traits/arithmetic_traits.hpp>
+#include <boost/type_traits/composite_traits.hpp>
+#include <boost/type_traits/is_stateless.hpp>
 #include <boost/ref.hpp>
 #include <boost/pending/ct_if.hpp>
+#include <boost/detail/workaround.hpp>
 
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300 || defined(__ICL) && __ICL <= 600 || defined(__MWERKS__) && __MWERKS__ < 0x2406
+#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300 || defined(__ICL) && __ICL <= 600 || defined(__MWERKS__) && __MWERKS__ < 0x2406 && !defined(BOOST_STRICT_CONFIG)
 #  define BOOST_FUNCTION_TARGET_FIX(x) x
 #else
 #  define BOOST_FUNCTION_TARGET_FIX(x)
 #endif // not MSVC
 
-#ifdef BOOST_FUNCTION_SILENT_DEPRECATED
-#  define BOOST_FUNCTION_DEPRECATED_PRE
-#  define BOOST_FUNCTION_DEPRECATED_INNER
-#else
-#  if defined (BOOST_MSVC) && (BOOST_MSVC >= 1300)
-#    define BOOST_FUNCTION_DEPRECATED_PRE __declspec(deprecated)
-#    define BOOST_FUNCTION_DEPRECATED_INNER
-#  else
-#    define BOOST_FUNCTION_DEPRECATED_PRE
-#    define BOOST_FUNCTION_DEPRECATED_INNER int deprecated;
-#  endif
+#if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
+// Work around a compiler bug.
+// boost::python::objects::function has to be seen by the compiler before the
+// boost::function class template.
+namespace boost { namespace python { namespace objects {
+  class function;
+}}}
 #endif
+
+// GCC 2.95.3 (or earlier) doesn't support enable_if
+#if BOOST_WORKAROUND(__GNUC__, < 3)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+// MIPSpro 7.3.1.3m doesn't support enable_if
+#if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+// MSVC 7.0 doesn't support enable_if
+#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300 && !defined(BOOST_STRICT_CONFIG)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+// Borland C++ 5.6.0 doesn't support enable_if
+#if BOOST_WORKAROUND(__BORLANDC__, <= 0x562)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+// Metrowerks 7.2 doesn't support enable_if
+#if BOOST_WORKAROUND(__MWERKS__, <= 0x2407)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+#if BOOST_WORKAROUND(__SUNPRO_CC, <= 0x540)
+#  define BOOST_FUNCTION_NO_ENABLE_IF
+#endif
+
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+namespace boost {
+
+#if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
+// The library shipping with MIPSpro 7.3.1.3m has a broken allocator<void>
+class function_base;
+
+template<typename Signature,
+         typename Allocator = std::allocator<function_base> >
+class function;
+#else
+template<typename Signature, typename Allocator = std::allocator<void> >
+class function;
+#endif
+
+template<typename Signature, typename Allocator>
+inline void swap(function<Signature, Allocator>& f1,
+                 function<Signature, Allocator>& f2)
+{
+  f1.swap(f2);
+}
+
+} // end namespace boost
+#endif // have partial specialization
 
 namespace boost {
   namespace detail {
     namespace function {
       /**
        * A union of a function pointer and a void pointer. This is necessary
-       * because 5.2.10/6 allows reinterpret_cast<> to safely cast between 
+       * because 5.2.10/6 allows reinterpret_cast<> to safely cast between
        * function pointer types and 5.2.9/10 allows static_cast<> to safely
        * cast between a void pointer and an object pointer. But it is not legal
        * to cast between a function pointer and a void* (in either direction),
        * so function requires a union of the two. */
-      union any_pointer 
+      union any_pointer
       {
         void* obj_ptr;
         const void* const_obj_ptr;
         void (*func_ptr)();
-
-        explicit any_pointer(void* p) : obj_ptr(p) {}
-        explicit any_pointer(const void* p) : const_obj_ptr(p) {}
-        explicit any_pointer(void (*p)()) : func_ptr(p) {}
+        char data[1];
       };
+
+      inline any_pointer make_any_pointer(void* o)
+      {
+        any_pointer p;
+        p.obj_ptr = o;
+        return p;
+      }
+
+      inline any_pointer make_any_pointer(const void* o)
+      {
+        any_pointer p;
+        p.const_obj_ptr = o;
+        return p;
+      }
+
+      inline any_pointer make_any_pointer(void (*f)())
+      {
+        any_pointer p;
+        p.func_ptr = f;
+        return p;
+      }
 
       /**
        * The unusable class is a placeholder for unused function arguments
@@ -72,7 +143,7 @@ namespace boost {
        * anything. This helps compilers without partial specialization to
        * handle Boost.Function objects returning void.
        */
-      struct unusable 
+      struct unusable
       {
         unusable() {}
         template<typename T> unusable(const T&) {}
@@ -80,19 +151,19 @@ namespace boost {
 
       /* Determine the return type. This supports compilers that do not support
        * void returns or partial specialization by silently changing the return
-       * type to "unusable". 
+       * type to "unusable".
        */
       template<typename T> struct function_return_type { typedef T type; };
 
-      template<> 
-      struct function_return_type<void> 
+      template<>
+      struct function_return_type<void>
       {
         typedef unusable type;
       };
 
       // The operation type to perform on the given functor/function pointer
-      enum functor_manager_operation_type { 
-        clone_functor_tag, 
+      enum functor_manager_operation_type {
+        clone_functor_tag,
         destroy_functor_tag
       };
 
@@ -126,18 +197,18 @@ namespace boost {
 
       // The trivial manager does nothing but return the same pointer (if we
       // are cloning) or return the null pointer (if we are deleting).
-      inline any_pointer trivial_manager(any_pointer f, 
+      inline any_pointer trivial_manager(any_pointer f,
                                          functor_manager_operation_type op)
       {
         if (op == clone_functor_tag)
           return f;
         else
-          return any_pointer(reinterpret_cast<void*>(0));
+          return make_any_pointer(reinterpret_cast<void*>(0));
       }
 
       /**
        * The functor_manager class contains a static function "manage" which
-       * can clone or destroy the given function/function object pointer. 
+       * can clone or destroy the given function/function object pointer.
        */
       template<typename Functor, typename Allocator>
       struct functor_manager
@@ -147,25 +218,25 @@ namespace boost {
 
         // For function pointers, the manager is trivial
         static inline any_pointer
-        manager(any_pointer function_ptr, 
+        manager(any_pointer function_ptr,
                 functor_manager_operation_type op,
                 function_ptr_tag)
         {
           if (op == clone_functor_tag)
             return function_ptr;
           else
-            return any_pointer(static_cast<void (*)()>(0));
+            return make_any_pointer(static_cast<void (*)()>(0));
         }
 
-        // For function object pointers, we clone the pointer to each 
+        // For function object pointers, we clone the pointer to each
         // function has its own version.
         static inline any_pointer
-        manager(any_pointer function_obj_ptr, 
+        manager(any_pointer function_obj_ptr,
                 functor_manager_operation_type op,
                 function_obj_tag)
         {
 #ifndef BOOST_NO_STD_ALLOCATOR
-        typedef typename Allocator::template rebind<functor_type>::other 
+        typedef typename Allocator::template rebind<functor_type>::other
           allocator_type;
         typedef typename allocator_type::pointer pointer_type;
 #else
@@ -177,7 +248,7 @@ namespace boost {
 #  endif // BOOST_NO_STD_ALLOCATOR
 
           if (op == clone_functor_tag) {
-            functor_type* f = 
+            functor_type* f =
               static_cast<functor_type*>(function_obj_ptr.obj_ptr);
 
             // Clone the functor
@@ -190,11 +261,11 @@ namespace boost {
 #  else
             functor_type* new_f = new functor_type(*f);
 #  endif // BOOST_NO_STD_ALLOCATOR
-            return any_pointer(static_cast<void*>(new_f));
+            return make_any_pointer(static_cast<void*>(new_f));
           }
           else {
             /* Cast from the void pointer to the functor pointer type */
-            functor_type* f = 
+            functor_type* f =
               reinterpret_cast<functor_type*>(function_obj_ptr.obj_ptr);
 
 #  ifndef BOOST_NO_STD_ALLOCATOR
@@ -209,7 +280,7 @@ namespace boost {
             delete f;
 #  endif // BOOST_NO_STD_ALLOCATOR
 
-            return any_pointer(static_cast<void*>(0));
+            return make_any_pointer(static_cast<void*>(0));
           }
         }
       public:
@@ -223,106 +294,123 @@ namespace boost {
         }
       };
 
-      // value=1 if the given type is not "unusable"
-      template<typename T>
-      struct count_if_used
-      {
-        BOOST_STATIC_CONSTANT(int, value = 1);
-      };
-    
-      // value=0 for unusable types
-      template<>
-      struct count_if_used<unusable>
-      {
-        BOOST_STATIC_CONSTANT(int, value = 0);
-      };
-    
-      // Count the number of arguments (from the given set) which are not 
-      // "unusable" (therefore, count those arguments that are used).
-      template<typename T1, typename T2, typename T3, typename T4, 
-               typename T5, typename T6, typename T7, typename T8, 
-               typename T9, typename T10>
-      struct count_used_args
-      {
-        BOOST_STATIC_CONSTANT(int, value = 
-                              (count_if_used<T1>::value + 
-                               count_if_used<T2>::value +
-                               count_if_used<T3>::value + 
-                               count_if_used<T4>::value +
-                               count_if_used<T5>::value + 
-                               count_if_used<T6>::value +
-                               count_if_used<T7>::value + 
-                               count_if_used<T8>::value +
-                               count_if_used<T9>::value +
-                               count_if_used<T10>::value));
-      };
-    } // end namespace function
-  } // end namespace detail
+#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+    template<bool cond, typename T> struct enable_if;
+    template<typename T> struct enable_if<true, T>  { typedef T type; };
+    template<typename T> struct enable_if<false, T> {};
 
-  /**
-   * The function_base class contains the basic elements needed for the
-   * function1, function2, function3, etc. classes. It is common to all
-   * functions (and as such can be used to tell if we have one of the
-   * functionN objects). 
-   */
-  class function_base 
-  {
-  public:
-    function_base() : manager(0), functor(static_cast<void*>(0)) {}
-    
-    // Is this function empty?
-    bool empty() const { return !manager; }
-    
-  public: // should be protected, but GCC 2.95.3 will fail to allow access
-    detail::function::any_pointer (*manager)(
-                           detail::function::any_pointer, 
-                           detail::function::functor_manager_operation_type);
-    detail::function::any_pointer functor;
-  };
-
-  /* Poison comparison between Boost.Function objects (because it is 
-   * meaningless). The comparisons would otherwise be allowed because of the
-   * conversion required to allow syntax such as:
-   *   boost::function<int, int> f;
-   *   if (f) { f(5); }
-   */
-  void operator==(const function_base&, const function_base&);
-  void operator!=(const function_base&, const function_base&);
-
-  namespace detail {
-    namespace function {
-      inline bool has_empty_target(const function_base* f)
-      {
-        return f->empty();
-      }
-
-      inline bool has_empty_target(...)
-      {
-        return false;
-      }
-    } // end namespace function
-  } // end namespace detail
-
-  // The default function policy is to do nothing before and after the call.
-  struct empty_function_policy
-  {
-    inline void precall(const function_base*) {}
-    inline void postcall(const function_base*) {}
-  };
-
-  // The default function mixin does nothing. The assignment and
-  // copy-construction operators are all defined because MSVC defines broken
-  // versions.
-  struct empty_function_mixin 
-  {
-    empty_function_mixin() {}
-    empty_function_mixin(const empty_function_mixin&) {}
-
-    empty_function_mixin& operator=(const empty_function_mixin&) 
+    template<bool x>
+    struct enabled
     {
-      return *this; 
-    }
-  };
+      template<typename T>
+      struct base
+      {
+        typedef T type;
+      };
+    };
+
+    template<>
+    struct enabled<false>
+    {
+      template<typename T>
+      struct base
+      {
+      };
+    };
+
+    template<bool Enabled, typename T>
+    struct enable_if : public enabled<Enabled>::template base<T>
+    {
+    };
+#endif
+
+      // A type that is only used for comparisons against zero
+      struct useless_clear_type {};
+    } // end namespace function
+  } // end namespace detail
+
+/**
+ * The function_base class contains the basic elements needed for the
+ * function1, function2, function3, etc. classes. It is common to all
+ * functions (and as such can be used to tell if we have one of the
+ * functionN objects).
+ */
+class function_base
+{
+public:
+  function_base() : manager(0)
+  {
+    functor.obj_ptr = 0;
+  }
+
+  // Is this function empty?
+  bool empty() const { return !manager; }
+
+public: // should be protected, but GCC 2.95.3 will fail to allow access
+  detail::function::any_pointer (*manager)(
+    detail::function::any_pointer,
+    detail::function::functor_manager_operation_type);
+  detail::function::any_pointer functor;
+};
+
+/**
+ * The bad_function_call exception class is thrown when a boost::function
+ * object is invoked
+ */
+class bad_function_call : public std::runtime_error
+{
+public:
+  bad_function_call() : std::runtime_error("call to empty boost::function") {}
+};
+
+/* Poison comparison between Boost.Function objects (because it is
+ * meaningless). The comparisons would otherwise be allowed because of the
+ * conversion required to allow syntax such as:
+ *   boost::function<int, int> f;
+ *   if (f) { f(5); }
+ */
+void operator==(const function_base&, const function_base&);
+void operator!=(const function_base&, const function_base&);
+
+#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
+inline bool operator==(const function_base& f,
+                       detail::function::useless_clear_type*)
+{
+  return f.empty();
 }
+
+inline bool operator!=(const function_base& f,
+                       detail::function::useless_clear_type*)
+{
+  return !f.empty();
+}
+
+inline bool operator==(detail::function::useless_clear_type*,
+                       const function_base& f)
+{
+  return f.empty();
+}
+
+inline bool operator!=(detail::function::useless_clear_type*,
+                       const function_base& f)
+{
+  return !f.empty();
+}
+#endif
+
+namespace detail {
+  namespace function {
+    inline bool has_empty_target(const function_base* f)
+    {
+      return f->empty();
+    }
+
+    inline bool has_empty_target(...)
+    {
+      return false;
+    }
+  } // end namespace function
+} // end namespace detail
+} // end namespace boost
 
 #endif // BOOST_FUNCTION_BASE_HEADER

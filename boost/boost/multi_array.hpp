@@ -10,6 +10,8 @@
 // and with no claim as to its suitability for any purpose.
 //
 
+//  See http://www.boost.org/libs/multi_array for documentation.
+
 #ifndef BOOST_MULTI_ARRAY_RG071801_HPP
 #define BOOST_MULTI_ARRAY_RG071801_HPP
 
@@ -33,7 +35,20 @@
 #include <numeric>
 #include <vector>
 
+
+
 namespace boost {
+  namespace detail {
+    namespace multi_array {
+      struct populate_index_ranges {
+        multi_array_types::index_range
+        operator()(multi_array_types::index base,
+                   multi_array_types::size_type extent) {
+          return multi_array_types::index_range(base,base+extent);
+        }
+      };
+    } //namespace multi_array
+  } // namespace detail
 
 template<typename T, std::size_t NumDims,
   typename Allocator>
@@ -133,7 +148,7 @@ public:
               const_sub_array<T,NumDims,OPtr>& rhs) :
     super_type(rhs) {
     allocate_space();
-    std::copy(rhs.begin(),rhs.end(),begin());
+    std::copy(rhs.begin(),rhs.end(),this->begin());
   }
 
   // For some reason, gcc 2.95.2 doesn't pick the above template
@@ -143,7 +158,7 @@ public:
               sub_array<T,NumDims>& rhs) :
     super_type(rhs) {
     allocate_space();
-    std::copy(rhs.begin(),rhs.end(),begin());
+    std::copy(rhs.begin(),rhs.end(),this->begin());
   }
 
   // Since assignment is a deep copy, multi_array_ref 
@@ -162,6 +177,70 @@ public:
   }
 
 
+  multi_array& resize(const detail::multi_array
+                      ::extent_gen<NumDims>& ranges) {
+
+
+    // build a multi_array with the specs given
+    multi_array new_array(ranges);
+
+
+    // build a view of tmp with the minimum extents
+
+    // Get the minimum extents of the arrays.
+    boost::array<size_type,NumDims> min_extents;
+
+    const size_type& (*min)(const size_type&, const size_type&) =
+      std::min<size_type>;
+    std::transform(new_array.extent_list_.begin(),new_array.extent_list_.end(),
+                   this->extent_list_.begin(),
+                   min_extents.begin(),
+                   min);
+
+    
+    // typedef boost::array<index,NumDims> index_list;
+    // Build index_gen objects to create views with the same shape
+
+    // these need to be separate to handle non-zero index bases
+    typedef detail::multi_array::index_gen<NumDims,NumDims> index_gen;
+    index_gen old_idxes;
+    index_gen new_idxes;
+
+    std::transform(new_array.index_base_list_.begin(),
+                   new_array.index_base_list_.end(),
+                   min_extents.begin(),old_idxes.ranges_.begin(),
+                   detail::multi_array::populate_index_ranges());
+
+    std::transform(this->index_base_list_.begin(),
+                   this->index_base_list_.end(),
+                   min_extents.begin(),new_idxes.ranges_.begin(),
+                   detail::multi_array::populate_index_ranges());
+
+    // Build same-shape views of the two arrays
+    typename multi_array::array_view<3>::type view_old = (*this)[old_idxes];
+    typename multi_array::array_view<3>::type view_new = new_array[new_idxes];
+
+    // Set the right portion of the new array
+    view_new = view_old;
+
+    using std::swap;
+    // Swap the internals of these arrays.
+    swap(this->super_type::base_,new_array.super_type::base_);
+    swap(this->storage_,new_array.storage_);
+    swap(this->extent_list_,new_array.extent_list_);
+    swap(this->stride_list_,new_array.stride_list_);
+    swap(this->index_base_list_,new_array.index_base_list_);
+    swap(this->origin_offset_,new_array.origin_offset_);
+    swap(this->directional_offset_,new_array.directional_offset_);
+    swap(this->num_elements_,new_array.num_elements_);
+    swap(this->allocator_,new_array.allocator_);
+    swap(this->base_,new_array.base_);
+    swap(this->allocated_elements_,new_array.allocated_elements_);
+
+    return *this;
+  }
+
+
   ~multi_array() {
     deallocate_space();
   }
@@ -169,9 +248,9 @@ public:
 private:
   void allocate_space() {
     typename Allocator::const_pointer no_hint=0;
-    base_ = allocator_.allocate(super_type::num_elements(),no_hint);
-    super_type::set_base_ptr(base_);
-    allocated_elements_ = super_type::num_elements();
+    base_ = allocator_.allocate(this->num_elements(),no_hint);
+    this->set_base_ptr(base_);
+    allocated_elements_ = this->num_elements();
     std::uninitialized_fill_n(base_,allocated_elements_,T());
   }
 

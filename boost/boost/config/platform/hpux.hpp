@@ -22,7 +22,39 @@
 #define BOOST_HAS_UNISTD_H
 #include <boost/config/posix_features.hpp>
 
-#ifndef BOOST_HAS_GETTIMEOFDAY
-// gettimeofday is always available
-#define BOOST_HAS_GETTIMEOFDAY
+// HPUX has an incomplete pthreads implementation, so it doesn't
+// define _POSIX_THREADS, but it might be enough to implement
+// Boost.Threads.
+#if !defined(BOOST_HAS_PTHREADS) && defined(_POSIX_THREAD_ATTR_STACKADDR)
+# define BOOST_HAS_PTHREADS 
 #endif
+
+// the following are always available:
+#ifndef BOOST_HAS_GETTIMEOFDAY
+#  define BOOST_HAS_GETTIMEOFDAY
+#endif
+#ifndef BOOST_HAS_SCHED_YIELD
+#    define BOOST_HAS_SCHED_YIELD
+#endif
+#ifndef BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
+#    define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
+#endif
+#ifndef BOOST_HAS_NL_TYPES_H
+#    define BOOST_HAS_NL_TYPES_H
+#endif
+#ifndef BOOST_HAS_NANOSLEEP
+#    define BOOST_HAS_NANOSLEEP
+#endif
+#ifndef BOOST_HAS_GETTIMEOFDAY
+#    define BOOST_HAS_GETTIMEOFDAY
+#endif
+#ifndef BOOST_HAS_DIRENT_H
+#    define BOOST_HAS_DIRENT_H
+#endif
+#ifndef BOOST_HAS_CLOCK_GETTIME
+#    define BOOST_HAS_CLOCK_GETTIME
+#endif
+#ifndef BOOST_HAS_SIGACTION
+#  define BOOST_HAS_SIGACTION
+#endif
+

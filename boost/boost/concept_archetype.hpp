@@ -10,6 +10,8 @@
 //   17 July  2001: Added const to some member functions. (Jeremy Siek) 
 //   05 May   2001: Removed static dummy_cons object. (Jeremy Siek)
 
+// See http://www.boost.org/libs/concept_check for documentation.
+
 #ifndef BOOST_CONCEPT_ARCHETYPES_HPP
 #define BOOST_CONCEPT_ARCHETYPES_HPP
 
@@ -508,6 +510,7 @@ namespace boost {
     typedef output_proxy<T> reference;
     typedef void pointer;
     typedef void difference_type;
+    output_iterator_archetype(detail::dummy_constructor) { }
     output_iterator_archetype(const self&) { }
     self& operator=(const self&) { return *this; }
     bool operator==(const self&) const { return true; }

@@ -15,6 +15,14 @@
 #
 # include <boost/preprocessor/array/data.hpp>
 # include <boost/preprocessor/array/elem.hpp>
+# include <boost/preprocessor/array/insert.hpp>
+# include <boost/preprocessor/array/pop_back.hpp>
+# include <boost/preprocessor/array/pop_front.hpp>
+# include <boost/preprocessor/array/push_back.hpp>
+# include <boost/preprocessor/array/push_front.hpp>
+# include <boost/preprocessor/array/remove.hpp>
+# include <boost/preprocessor/array/replace.hpp>
+# include <boost/preprocessor/array/reverse.hpp>
 # include <boost/preprocessor/array/size.hpp>
 #
 # endif

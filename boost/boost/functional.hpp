@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------------------
 // Boost functional.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
+// See http://www.boost.org/libs/functional for documentation.
 // ------------------------------------------------------------------------------
 // Copyright (c) 2000
 // Cadenza New Zealand Ltd
@@ -14,7 +14,7 @@
 // purpose.  It is provided "as is" without express or implied
 // warranty.
 // ------------------------------------------------------------------------------
-// $Id: functional.hpp,v 1.3 2000/11/22 09:04:28 mark_rodgers Exp $
+// $Id: functional.hpp,v 1.4 2002/12/27 16:51:52 beman_dawes Exp $
 // ------------------------------------------------------------------------------
 
 #ifndef BOOST_FUNCTIONAL_HPP

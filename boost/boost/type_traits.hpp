@@ -3,7 +3,7 @@
 //  in all copies. This software is provided "as is" without express or implied
 //  warranty, and with no claim as to its suitability for any purpose.
 
-//  See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for documentation.
 //  See boost/type_traits/*.hpp for full copyright notices.
 
 #ifndef BOOST_TYPE_TRAITS_HPP
@@ -39,7 +39,8 @@
 #include "boost/type_traits/is_member_function_pointer.hpp"
 #include "boost/type_traits/is_member_pointer.hpp"
 #include "boost/type_traits/is_object.hpp"
-#include "boost/type_traits/is_POD.hpp"
+#include "boost/type_traits/is_pod.hpp"
+#include "boost/type_traits/is_polymorphic.hpp"
 #include "boost/type_traits/is_pointer.hpp"
 #include "boost/type_traits/is_reference.hpp"
 #include "boost/type_traits/is_same.hpp"
@@ -56,7 +57,10 @@
 #include "boost/type_traits/remove_volatile.hpp"
 #include "boost/type_traits/type_with_alignment.hpp"
 
+#include "boost/type_traits/ice.hpp"
+
 #endif // BOOST_TYPE_TRAITS_HPP
+
 
 
 
