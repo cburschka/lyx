@@ -39,6 +39,8 @@ libsupport_la_SOURCES = \
 	forkedcontr.C \
 	forkedcontr.h \
 	getcwd.C \
+	globbing.C \
+	globbing.h \
 	$(COMPRESSION) kill.C \
 	limited_stack.h \
 	lstrings.C \

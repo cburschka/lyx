@@ -20,10 +20,11 @@
 #include "frontends/Dialogs.h"
 
 #include "support/FileInfo.h"
-#include "support/lyxlib.h"
-#include "support/lstrings.h"
-#include "support/tostr.h"
 #include "support/filetools.h"
+#include "support/globbing.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/tostr.h"
 
 #include "lyx_forms.h"
 
@@ -72,6 +73,7 @@ using std::max;
 using std::sort;
 using std::string;
 using std::map;
+using std::vector;
 
 
 namespace {
@@ -198,32 +200,6 @@ int FileDialog::Private::minw_ = 0;
 int FileDialog::Private::minh_ = 0;
 
 
-namespace {
-
-boost::regex glob2regex(string const & pat)
-{
-	// We massage the pattern a bit so that the usual
-	// shell pattern we all are used to will work.
-	// One nice thing about using a real regex is that
-	// things like "*.*[^~]" will work also.
-	// build the regex string.
-	string pattern = subst(pat, ".", "\\.");
-	pattern = subst(pattern, "*", ".*");
-
-	boost::regex reg(pattern);
-	return reg;
-}
-
-
-bool globMatch(string const & a, boost::regex const & reg)
-{
-	// If the glob is invalid then match everything.
-	return reg.empty() ? true : boost::regex_match(a, reg);
-}
-
-} // namespace anon
-
-
 // Reread: updates dialog list to match class directory
 void FileDialog::Private::Reread()
 {
@@ -263,9 +239,9 @@ void FileDialog::Private::Reread()
 		++depth_;
 	}
 
-	// Parses all entries of the given subdirectory
-	boost::regex const mask_regex = glob2regex(mask_);
-
+	vector<string> const glob_matches =
+		lyx::support::expand_globs(mask_, directory_);
+	
 	time_t curTime = time(0);
 	rewinddir(dir);
 	while (dirent * entry = readdir(dir)) {
@@ -331,7 +307,7 @@ void FileDialog::Private::Reread()
 				buffer += Link;
 
 				// This gives the FileType of the file that
-				// is really pointed too after resolving all
+				// is really pointed to after resolving all
 				// symlinks. This is not necessarily the same
 				// as the type of Link (which could again be a
 				// link). Is that intended?
@@ -349,7 +325,10 @@ void FileDialog::Private::Reread()
 		    || fileInfo.isChar()
 		    || fileInfo.isBlock()
 		    || fileInfo.isFifo()) {
-			if (!globMatch(fname, mask_regex))
+			typedef vector<string>::const_iterator viterator;
+			viterator gbegin = glob_matches.begin();
+			viterator const gend = glob_matches.end();
+			if (std::find(gbegin, gend, fname) == gend)
 				continue;
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;

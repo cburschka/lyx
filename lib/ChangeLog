@@ -1,3 +1,10 @@
+2004-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* external_templates: use the valid csh-style glob
+	"*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}" to define the
+	RasterImage file filter, rather than the current psuedo-glob,
+	psuedo-regex .
+
 2003-12-22  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* layouts/g-brief2.layout: more spelling fixes

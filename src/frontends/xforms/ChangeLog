@@ -1,3 +1,8 @@
+2004-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C (glob2regex, globMatch): removed.
+	(Reread): use lyx::support::expand_globs instead.
+
 2004-01-02  Angus Leeming  <leeming@lyx.org>
 
 	* forms/fdfix.sh: no need to assume that the fdfix files are in

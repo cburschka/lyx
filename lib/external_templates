@@ -38,18 +38,10 @@ Template RasterImage
 	GuiName "Bitmap: $$Basename"
 	HelpText
 		A bitmap file.
-		In the parameters box, you can provide optional
-		parameters for the ImageMagick convert program.
-		E.g., use `-border 10x10 -bordercolor black'
-		to surround the picture with a black border
-		when you export to LaTeX.
-		When you export to Ascii, you can provide a
-		number describing how many columns the picture
-		should expand to.
 		This template uses Gimp for editing.
 	HelpTextEnd
 	InputFormat "*"
-	FileFilter "*.(gif|png|jpg|bmp|pbm|ppm|tga|tif|xpm|xbm)"
+	FileFilter "*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}"
 	EditCommand "gimp $$FName"
 	AutomaticProduction true
 	Transform Rotate
@@ -188,7 +180,7 @@ TemplateEnd
 Template Date
 	GuiName "Date"
 	HelpText
-		Todays date.
+		Today's date.
 		Read 'info date' for more information.
 	HelpTextEnd
 	InputFormat date

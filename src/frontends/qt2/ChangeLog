@@ -1,3 +1,9 @@
+2004-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog_private.C (c-tor): invoke convert_brace_glob to convert
+	a csh-style glob like "*.{abc,def}" to something that
+	Qt can understand.
+
 2003-12-30  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* ui/QGraphicsDialogBase.ui: add missing signal/slot (bug 1469).
