@@ -1,3 +1,12 @@
+2003-10-14  Alfredo Braunstein  <abraunst@libero.it>
+
+	* paragraph_funcs.C (readParToken): report unknown insets as error
+	boxes. Use the outer paragraph as location (also for unknown
+	tokens).
+
+	* factory.C (readInset): do not abort on reading an unknown inset. 
+	Eat it and return 0.
+
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (LyX): remove call to setDisplayTranslator().

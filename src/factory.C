@@ -366,8 +366,11 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (cmdName == "printindex") {
 			inset = new InsetPrintIndex(inscmd);
 		} else {
-			lyxerr << "unknown CommandInset '" << cmdName << "'" << std::endl;
-			BOOST_ASSERT(false);
+			lyxerr << "unknown CommandInset '" << cmdName
+			       << "'" << std::endl;
+			while (lex.isOK() && lex.getString() != "\\end_inset")
+				lex.next();
+			return 0;
 		}
 	} else {
 		if (tmptok == "Quotes") {
@@ -430,8 +433,11 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "FloatList") {
 			inset = new InsetFloatList;
 		} else {
-			lyxerr << "unknown Inset type '" << tmptok << "'" << std::endl;
-			BOOST_ASSERT(false);
+			lyxerr << "unknown Inset type '" << tmptok
+			       << "'" << std::endl;
+			while (lex.isOK() && lex.getString() != "\\end_inset")
+				lex.next();
+			return 0;
 		}
 
 		inset->read(buf, lex);

@@ -865,7 +865,16 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		       << "Missing \\begin_inset?.\n";
 	} else if (token == "\\begin_inset") {
 		InsetOld * inset = readInset(lex, buf);
-		par.insertInset(par.size(), inset, font, change);
+		if (inset)
+			par.insertInset(par.size(), inset, font, change);
+		else {
+			lex.eatLine();
+			string line = lex.getString();
+			buf.error(ErrorItem(_("Unknown Inset"), line,
+					    buf.paragraphs().back().id(),
+					    0, par.size()));
+			return 1;
+		}
 	} else if (token == "\\family") {
 		lex.next();
 		font.setLyXFamily(lex.getString());
@@ -986,7 +995,8 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			token, lex.getString());
 
 		buf.error(ErrorItem(_("Unknown token"), s,
-				    par.id(), 0, par.size()));
+				    buf.paragraphs().back().id(),
+				    0, par.size()));
 		return 1;
 	}
 	return 0;
