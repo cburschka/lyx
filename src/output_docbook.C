@@ -132,7 +132,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	// Opening outter tag
 	sgml::openTag(buf, os, *pbegin);
 	os << '\n';
-	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->innertag() == "CDATA")
+	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->pass_thru)
 		os << "<![CDATA[";
 
 	while (par != pend) {
@@ -145,7 +145,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// Opening inner tag
 		switch (bstyle->latextype) {
 		case LATEX_ENVIRONMENT:
-			if (!bstyle->innertag().empty() and bstyle->innertag() != "CDATA") {
+			if (!bstyle->innertag().empty()) {
 				sgml::openTag(os, bstyle->innertag(), id);
 			}
 			break;
@@ -189,7 +189,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// Closing inner tag
 		switch (bstyle->latextype) {
 		case LATEX_ENVIRONMENT:
-			if (!bstyle->innertag().empty() and bstyle->innertag() != "CDATA") {
+			if (!bstyle->innertag().empty()) {
 				sgml::closeTag(os, bstyle->innertag());
 				os << '\n';
 			}
@@ -204,7 +204,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		}
 	}
 
-	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->innertag() == "CDATA")
+	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->pass_thru)
 		os << "]]>";
 
 	// Closing outter tag

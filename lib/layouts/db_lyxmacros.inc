@@ -11,7 +11,6 @@ Style Code
 	CopyStyle             LyX-Code
 	LatexType             Environment
 	LatexName             screen
-	InnerTag              CDATA
 	PassThru              1
 End
 

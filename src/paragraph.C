@@ -1389,10 +1389,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 			string str;
 			boost::tie(ws, str) = sgml::escapeChar(c);
 
-			if (style->pass_thru)
-				os << c;
-			else
-				os << str;
+			os << str;
 		}
 	}
 	return i;
@@ -1410,7 +1407,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	bool cdata = (style->innertag() == "CDATA");
+	bool cdata = style->pass_thru;
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		LyXFont font = getFont(buf.params(), i, outerfont);
