@@ -216,7 +216,7 @@ test $latex_to_pdf != "none" && latex_to_pdf="$latex_to_pdf \$\$i"
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
-PATH=${PATH}:./reLyX/
+PATH=${PATH}:${srcdir}/reLyX/
 SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command,reLyX)
 PATH=${save_PATH}
 test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$i"
