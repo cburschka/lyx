@@ -58,6 +58,17 @@ Toolbar::Pimpl::~Pimpl()
 }
 
 
+void Toolbar::Pimpl::displayToolbar(ToolbarBackend::Toolbar const & tb, bool show)
+{
+	QToolBar * qtb = toolbars_[tb.name];
+	if (show) {
+		qtb->show();
+	} else {
+		qtb->hide();
+	}
+}
+
+
 void Toolbar::Pimpl::update()
 {
 	ButtonMap::const_iterator p = map_.begin();
@@ -201,7 +212,9 @@ void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 	for (; it != end; ++it)
 		add(qtb, it->first, it->second);
 
-	toolbars_.push_back(qtb);
+	toolbars_[tb.name] = qtb;
+	displayToolbar(tb, tb.display_type == ToolbarBackend::ON);
+
 }
 
 

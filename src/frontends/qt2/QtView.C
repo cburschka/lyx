@@ -64,7 +64,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	::current_view = bufferview_.get();
 
 	menubar_.reset(new Menubar(this, menubackend));
-	toolbar_.reset(new Toolbar(this, 0, 0, toolbarbackend));
+	toolbar_.reset(new Toolbar(this, 0, 0));
 
 	statusBar()->setSizeGripEnabled(false);
 

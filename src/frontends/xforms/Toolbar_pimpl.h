@@ -38,6 +38,9 @@ public:
 	/// add an item to a toolbar
 	void add(int action, string const & tooltip);
 
+	/// display toolbar, not implemented
+	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show) {}
+
 	/// update the state of the icons
 	void update();
 

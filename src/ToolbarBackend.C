@@ -65,6 +65,21 @@ void ToolbarBackend::read(LyXLex & lex)
 	Toolbar tb;
 	tb.name = lex.getString();
 
+	lex.next(true);
+	string type = lex.getString();
+	if (!compare_ascii_no_case(type, "off"))
+		tb.display_type = OFF;
+	else if (!compare_ascii_no_case(type, "on"))
+		tb.display_type = ON;
+	else if (!compare_ascii_no_case(type, "math"))
+		tb.display_type = MATH;
+	else if (!compare_ascii_no_case(type, "table"))
+		tb.display_type = TABLE;
+	else {
+		lyxerr << "ToolbarBackend::read: unrecognised token:`"
+		       << type << '\'' << endl;
+	}
+
 	bool quit = false;
 
 	lex.pushTable(toolTags, TO_LAST - 1);

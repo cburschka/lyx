@@ -16,22 +16,23 @@
 #include "LString.h"
 
 class LyXView;
-class ToolbarBackend;
 
 
-/** The LyX GUI independent toolbar class
-  The GUI interface is implemented in the corresponding Toolbar_pimpl class.
-  */
+/**
+ * The LyX GUI independent toolbar class
+ *
+ * The GUI interface is implemented in the corresponding Toolbar_pimpl class.
+ */
 class Toolbar {
 public:
 	///
-	Toolbar(LyXView * o, int x, int y, ToolbarBackend const &);
+	Toolbar(LyXView * o, int x, int y);
 
 	///
 	~Toolbar();
 
-	/// update the state of the icons
-	void update();
+	/// update the state of the toolbars
+	void update(bool in_math, bool in_table);
 
 	/// update the layout combox
 	void setLayout(string const & layout);

@@ -19,14 +19,14 @@
 
 using std::endl;
 
-Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarBackend const & backend)
+Toolbar::Toolbar(LyXView * o, int x, int y)
 	: last_textclass_(-1)
 {
 	pimpl_ = new Pimpl(o, x, y);
 
 	// extracts the toolbars from the backend
-	ToolbarBackend::Toolbars::const_iterator cit = backend.begin();
-	ToolbarBackend::Toolbars::const_iterator end = backend.end();
+	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
 
 	for (; cit != end; ++cit)
 		pimpl_->add(*cit);
@@ -39,9 +39,27 @@ Toolbar::~Toolbar()
 }
 
 
-void Toolbar::update()
+void Toolbar::update(bool in_math, bool in_table)
 {
 	pimpl_->update();
+
+	// extracts the toolbars from the backend
+	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+
+	for (; cit != end; ++cit) {
+		switch (cit->display_type) {
+			case ToolbarBackend::OFF:
+			case ToolbarBackend::ON:
+				break;
+			case ToolbarBackend::MATH:
+				pimpl_->displayToolbar(*cit, in_math);
+				break;
+			case ToolbarBackend::TABLE:
+				pimpl_->displayToolbar(*cit, in_table);
+				break;
+		}
+	}
 }
 
 

@@ -31,6 +31,7 @@
 #include "Timeout.h"
 #include "Menubar.h"
 #include "controllers/ControlCommandBuffer.h"
+#include "mathed/math_cursor.h"
 
 #include "support/filetools.h" // OnlyFilename()
 
@@ -96,7 +97,10 @@ void LyXView::setLayout(string const & layout)
 
 void LyXView::updateToolbar()
 {
-	toolbar_->update();
+	bool const math = mathcursor;
+	bool const table =
+		!getLyXFunc().getStatus(LFUN_LAYOUT_TABULAR).disabled();
+	toolbar_->update(math, table);
 }
 
 

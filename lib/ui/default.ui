@@ -391,7 +391,13 @@ Menuset
 
 End
 
-# Setup your favorite Toolbar here:
+# A Toolbar starts like :
+#
+# Toolbar "Name" "on" 
+#
+# The second parameter is the status, and can be "on", "off", "math"
+# or "table". The last two make the toolbars appear and disappear automatically.
+#
 # Only three commands are allowed inside the begin_toolbar and end_toolbar
 # directives: 
 #   Item "<action> [<parameter>]" adds an icon to the toolbar performing
@@ -411,7 +417,7 @@ End
 #
 # This is the default toolbar:
 
-Toolbar "Standard"
+Toolbar "Standard" "on"
     Layouts
     Item "Open document" "file-open"
     Item "Save document" "buffer-write"

@@ -44,6 +44,9 @@ public:
 	/// add an item to a toolbar
 	void add(QToolBar * tb, int action, string const & tooltip);
 
+	/// show or hide a toolbar
+	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
+
 	/// update the state of the icons
 	void update();
 
@@ -64,7 +67,7 @@ private:
 
 	boost::scoped_ptr<ToolbarProxy> proxy_;
 
-	std::vector<QToolBar *> toolbars_;
+	std::map<string, QToolBar *> toolbars_;
 
 	QLComboBox * combo_;
 

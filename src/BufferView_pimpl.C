@@ -937,7 +937,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
 
 	bool const res = dispatch(ev_in);
 
+	// FIXME: we should skip these when selecting
 	bv_->owner()->updateLayoutChoice();
+	bv_->owner()->updateToolbar();
 	bv_->fitCursor();
 
 	// slight hack: this is only called currently when

@@ -23,7 +23,7 @@ class LyXLex;
 class ToolbarBackend {
 public:
 	/// The special toolbar actions
-	enum  ItemType {
+	enum ItemType {
 		/// adds space between buttons in the toolbar
 		SEPARATOR = -3,
 		/// a special combox insead of a button
@@ -38,12 +38,22 @@ public:
 	/// the toolbar items
 	typedef std::vector<std::pair<int, string> > Items;
 
+	/// possibly display types
+	enum DisplayType {
+		OFF, //< never shown
+		ON, //< always shown
+		MATH, //< shown when in math
+		TABLE //< shown when in table
+	};
+
 	/// a toolbar
 	struct Toolbar {
 		/// toolbar UI name
 		string name;
 		/// toolbar contents
 		Items items;
+		/// display type
+		DisplayType display_type;
 	};
 
 	typedef std::vector<Toolbar> Toolbars;

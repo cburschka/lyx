@@ -1,5 +1,15 @@
 2003-04-10  John Levon  <levon@movementarian.org>
 
+	* ui/default.ui: Add visibility tag to toolbars
+
+	* BufferView_pimpl.C: updateToolbar on mouse click
+
+	* ToolbarBackend.h:
+	* ToolbarBackend.C: handle toolbar on/off settings
+
+
+2003-04-10  John Levon  <levon@movementarian.org>
+
 	* images/: new icons, mostly taken from kdeart
 
 2003-04-09  John Levon  <levon@movementarian.org>

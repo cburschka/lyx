@@ -142,7 +142,7 @@ void XFormsView::create_form_form_main(int width, int height)
 
 	menubar_.reset(new Menubar(this, menubackend));
 
-	toolbar_.reset(new Toolbar(this, air, 30 + air + bw, toolbarbackend));
+	toolbar_.reset(new Toolbar(this, air, 30 + air + bw));
 
 	int const ywork = 60 + 2 * air + bw;
 	int const workheight = height - ywork - (25 + 2 * air);
