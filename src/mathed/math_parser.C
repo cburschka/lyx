@@ -257,6 +257,8 @@ public:
 
 private:
 	///
+	void parse_into1(MathArray & array, unsigned flags, MathTextCodes);
+	///
 	string getArg(char lf, char rf);
 	///
 	char getChar();
@@ -521,6 +523,7 @@ void Parser::error(string const & msg)
 }
 
 
+
 bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 {	
 	MathGridInset * p = t->asGridInset();
@@ -545,7 +548,11 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		for (MathInset::col_type col = 0; col < p->ncols(); ++col) {
 			//lyxerr << "reading cell " << row << " " << col << "\n";
 		
-			parse_into(p->cell(col + row * p->ncols()), FLAG_BLOCK);
+			MathArray & ar = p->cell(col + row * p->ncols());
+			parse_into(ar, FLAG_BLOCK);
+			// remove 'unnecessary' braces:
+			if (ar.size() == 1 && ar.back()->asBraceInset())
+				ar = ar.back()->asBraceInset()->cell(0);
 
 			// break if cell is not followed by an ampersand
 			if (nextToken().cat() != catAlign) {
@@ -824,6 +831,15 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 
 void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
+{
+	parse_into1(array, flags, code);
+	// remove 'unnecessary' braces:
+	if (array.size() == 1 && array.back()->asBraceInset())
+		array = array.back()->asBraceInset()->cell(0);
+}
+
+
+void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 {
 	bool panic  = false;
 	int  limits = 0;

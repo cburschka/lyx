@@ -47,6 +47,7 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 
 class MathArrayInset;
+class MathBraceInset;
 class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
@@ -176,6 +177,7 @@ public:
 
 	/// identifies certain types of insets
 	virtual MathArrayInset         * asArrayInset()         { return 0; }
+	virtual MathBraceInset         * asBraceInset()         { return 0; }
 	virtual MathBoxInset           * asBoxInset()           { return 0; }
 	virtual MathBoxInset const     * asBoxInset() const     { return 0; }
 	virtual MathCharInset const    * asCharInset() const    { return 0; }

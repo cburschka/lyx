@@ -20,6 +20,8 @@ public:
 	///
 	MathInset * clone() const;
 	///
+	MathBraceInset * asBraceInset() { return this; }
+	///
 	void draw(Painter &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
