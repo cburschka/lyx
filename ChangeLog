@@ -1,3 +1,10 @@
+2000-06-17  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* development/lyx.spec.in: Call configure with ``--without-warnings''
+	to work around a bug with the Makefiles when doing ``make lyxrpm''.
+	This should be fine, however, since we generally don't want to be
+	verbose when making an RPM.
+	
 2000-06-16  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* lib/scripts/fig2pstex.py: New file
