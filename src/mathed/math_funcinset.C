@@ -5,6 +5,9 @@
 #include "font.h"
 #include "Painter.h"
 #include "mathed/support.h"
+#include "support/LOstream.h"
+
+using std::ostream;
 
 
 extern LyXFont WhichFont(short type, int size);

@@ -3,6 +3,9 @@
 #include "math_macrotemplate.h"
 #include "math_macro.h"
 #include "macro_support.h"
+#include "support/LOstream.h"
+
+using std::ostream;
 
 
 void  MathMacroTemplate::setTCode(MathedTextCodes t)

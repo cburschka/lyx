@@ -3,7 +3,9 @@
 #include "math_accentinset.h"
 #include "mathed/support.h"
 #include "math_parser.h"
+#include "support/LOstream.h"
 
+using std::ostream;
 
 MathAccentInset::MathAccentInset(byte cx, MathedTextCodes f, int cd, short st)
 	: MathedInset("", LM_OT_ACCENT, st), c(cx), fn(f), code(cd)

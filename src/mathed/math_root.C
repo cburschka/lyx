@@ -21,6 +21,7 @@
 
 #include "math_iter.h"
 #include "math_root.h"
+#include "support/LOstream.h"
 
 using std::ostream;
 

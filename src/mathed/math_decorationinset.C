@@ -4,6 +4,9 @@
 #include "math_iter.h"
 #include "mathed/support.h"
 #include "math_parser.h"
+#include "support/LOstream.h"
+
+using std::ostream;
 
 
 bool MathDecorationInset::GetLimits() const

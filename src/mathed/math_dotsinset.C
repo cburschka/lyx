@@ -2,6 +2,9 @@
 
 #include "math_dotsinset.h"
 #include "mathed/support.h"
+#include "support/LOstream.h"
+
+using std::ostream;
 
 
 MathDotsInset::MathDotsInset(string const & nam, int id, short st)

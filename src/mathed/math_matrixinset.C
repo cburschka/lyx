@@ -3,6 +3,9 @@
 #include "math_matrixinset.h"
 #include "math_rowst.h"
 #include "math_xiter.h"
+#include "support/LOstream.h"
+
+using std::ostream;
 
 extern int number_of_newlines;
 

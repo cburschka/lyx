@@ -5,7 +5,9 @@
 #include "LColor.h"
 #include "Painter.h"
 #include "support.h"
+#include "support/LOstream.h"
 
+using std::ostream;
 
 MathSqrtInset::MathSqrtInset(short st)
 	: MathParInset(st, "sqrt", LM_OT_SQRT) {}

@@ -11,6 +11,7 @@
 #include "math_parinset.h"
 #include "debug.h"
 
+using std::endl;
 
 MathMacroTable MathMacroTable::mathMTable;
 
