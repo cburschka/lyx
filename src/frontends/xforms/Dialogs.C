@@ -39,8 +39,10 @@
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlShowFile.h"
 #include "ControlSpellchecker.h"
 #include "ControlTabularCreate.h"
+#include "ControlTexinfo.h"
 #include "ControlThesaurus.h"
 #include "ControlToc.h"
 #include "ControlUrl.h"
@@ -69,6 +71,7 @@
 #include "form_search.h"
 #include "form_spellchecker.h"
 #include "form_tabular_create.h"
+#include "form_texinfo.h"
 #include "form_thesaurus.h"
 #include "form_toc.h"
 #include "form_url.h"
@@ -91,8 +94,10 @@
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
+#include "FormShowFile.h"
 #include "FormSpellchecker.h"
 #include "FormTabularCreate.h"
+#include "FormTexinfo.h" 
 #include "FormThesaurus.h" 
 #include "FormToc.h"
 #include "FormUrl.h"
@@ -128,11 +133,13 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIPrint<FormPrint, xformsBC>(*lv, *this));
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
 	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
+	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
 	add(new GUISpellchecker<FormSpellchecker, xformsBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, xformsBC>(*lv, *this));
 #ifdef HAVE_LIBAIKSAURUS
 	add(new GUIThesaurus<FormThesaurus, xformsBC>(*lv, *this));
 #endif
+	add(new GUITexinfo<FormTexinfo, xformsBC>(*lv, *this));
 	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
 	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));

@@ -289,6 +289,19 @@ public:
 		: GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
+/** Specialization for ShowFile dialog
+ */
+class ControlShowFile;
+
+template <class GUIview, class GUIbc>
+class GUIShowFile :
+	public GUI<ControlShowFile, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUIShowFile(LyXView & lv, Dialogs & d)
+		: GUI<ControlShowFile, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
+
 /** Specialization for Spellchecker dialog
  */
 class ControlSpellchecker;
@@ -331,6 +344,19 @@ public:
 		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
+
+/** Specialization for Texinfo dialog
+ */
+class ControlTexinfo;
+
+template <class GUIview, class GUIbc>
+class GUITexinfo :
+	public GUI<ControlTexinfo, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUITexinfo(LyXView & lv, Dialogs & d)
+		: GUI<ControlTexinfo, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
 
 /** Specialization for Thesaurus dialog
  */

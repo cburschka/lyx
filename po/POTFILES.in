@@ -29,6 +29,7 @@ src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSearch.C
 src/frontends/controllers/ControlSpellchecker.C
+src/frontends/controllers/ControlTexinfo.C
 src/frontends/controllers/ControlThesaurus.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/character.C
@@ -104,6 +105,7 @@ src/frontends/xforms/FormSearch.C
 src/frontends/xforms/FormSpellchecker.C
 src/frontends/xforms/FormTabular.C
 src/frontends/xforms/FormTabularCreate.C
+src/frontends/xforms/FormTexinfo.C
 src/frontends/xforms/FormThesaurus.C
 src/frontends/xforms/FormToc.C
 src/frontends/xforms/FormUrl.C
@@ -140,6 +142,7 @@ src/frontends/xforms/form_search.C
 src/frontends/xforms/form_spellchecker.C
 src/frontends/xforms/form_tabular.C
 src/frontends/xforms/form_tabular_create.C
+src/frontends/xforms/form_texinfo.C
 src/frontends/xforms/form_thesaurus.C
 src/frontends/xforms/form_toc.C
 src/frontends/xforms/form_url.C

@@ -421,6 +421,8 @@ void LyXAction::init()
 		{ LFUN_ESCAPE, "escape", "", Noop },
 		{ LFUN_HELP_ABOUTLYX, "help-aboutlyx",
 		  N_("Display information about LyX"), NoBuffer },
+		{ LFUN_HELP_TEXINFO, "help-Texinfo",
+		  N_("Display information about the TeX installation"), NoBuffer },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

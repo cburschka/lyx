@@ -294,6 +294,7 @@ enum kb_action {
 	LFUN_ESCAPE, // 260             // Lgb 20010517
 	LFUN_HELP_ABOUTLYX,             // Edwin 20010712
 	LFUN_THESAURUS_ENTRY,		// Levon 20010720
+	LFUN_HELP_TEXINFO,		// Herbert 20011001
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

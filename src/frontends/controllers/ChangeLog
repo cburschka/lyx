@@ -1,3 +1,18 @@
+2001-10-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlSpellchecker.C: commented out redundant includes.
+
+2001-10-09  Herbert Voss  <voss@perce.de>
+
+	* ControlTexinfo.[Ch]: new files. Display information about the
+	installed texfiles (cls,sty,bst).
+
+	* ControlShowFile.[Ch]: new files. Display the contents of a file.
+
+	* GUI.h: added classes GUIShowFile and GUITexinfo.
+
+	* Makefile.am: modified appropriately.
+
 2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ControlAboutlyx.C (getVersion): use lyx_version and

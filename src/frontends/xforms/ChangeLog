@@ -1,3 +1,14 @@
+2001-10-09  Herbert Voss  <voss@perce.de>
+
+	* FormTexinfo.[Ch]:
+	* forms/form_texinfo.fd: new files. Display information about the
+	installed texfiles (cls,sty,bst).
+
+	* FormShowFile.[Ch]: new files. Display the contents of a file.
+
+	* Dialog.C:
+	* Makefile.am: modified appropriately.
+
 2001-10-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xforms_helpers.[Ch] (getLengthFromWidgets): new function.

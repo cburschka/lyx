@@ -75,15 +75,13 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
-	string length;
-
-	string len = strip(frontStrip(fl_get_input(input)));
-	if (len.empty())
-		len = "0";
+	string length = strip(frontStrip(fl_get_input(input)));
+	if (length.empty())
+		length = "0";
 
 	string const units = strip(frontStrip(fl_get_choice_text(choice)));
 
-	return len + units;
+	return length + units;
 }
 	
 

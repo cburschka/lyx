@@ -1,3 +1,13 @@
+2001-10-09  Herbert Voss  <voss@perce.de>
+
+	* commandtags.h (kb_action): added LFUN_HELP_TEXINFO.
+
+	* LyXAction.C (init): added LFUN_HELP_TEXINFO to items array.
+
+	* lyx_main.C: added global string help_lyxdir.
+
+	* lyxfunc.C (dispatch): added LFUN_HELP_TEXINFO to switch.
+
 2001-10-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* lyxrc.C (set_font_norm_type): support iso8859-4

@@ -140,6 +140,8 @@ libxforms_la_SOURCES = \
 	FormSearch.h \
 	form_search.C \
 	form_search.h \
+	FormShowFile.C \
+	FormShowFile.h \
 	FormSpellchecker.C \
 	FormSpellchecker.h \
 	form_spellchecker.C \
@@ -152,6 +154,10 @@ libxforms_la_SOURCES = \
 	FormTabularCreate.h \
 	form_tabular_create.C \
 	form_tabular_create.h \
+	FormTexinfo.C \
+	FormTexinfo.h \
+	form_texinfo.C \
+	form_texinfo.h \
 	FormThesaurus.C \
 	FormThesaurus.h \
 	form_thesaurus.C \

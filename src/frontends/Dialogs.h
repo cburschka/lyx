@@ -107,6 +107,8 @@ public:
 	SigC::Signal1<void, InsetError *> showError;
 	/// show the external inset dialog
 	SigC::Signal1<void, InsetExternal *> showExternal; 
+	/// show the contents of a file.
+	SigC::Signal1<void, string const &> showFile;
 	///
 	SigC::Signal1<void, InsetGraphics *> showGraphics;
 	/// show the details of a LyX file include inset
@@ -157,6 +159,8 @@ public:
 	SigC::Signal1<void, InsetTabular *> updateTabular;
 	///
 	SigC::Signal0<void> showTabularCreate;
+	/// show the TexInfo
+	SigC::Signal0<void> showTexinfo;
 	/// show the thesaurus dialog
 	SigC::Signal1<void, string const &> showThesaurus; 
 	///

@@ -1202,6 +1202,10 @@ string const LyXFunc::dispatch(int ac,
 		owner->getDialogs()->showAboutlyx();
 		break;
 
+	case LFUN_HELP_TEXINFO:
+		owner->getDialogs()->showTexinfo();
+		break;
+
         case LFUN_HELP_OPEN:
 	{
 		string const arg = argument;

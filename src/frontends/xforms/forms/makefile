@@ -48,6 +48,7 @@ SRCS =  form_aboutlyx.fd \
 	form_spellchecker.fd \
 	form_tabular.fd \
 	form_tabular_create.fd \
+	form_texinfo.fd \
 	form_thesaurus.fd \
 	form_toc.fd \
 	form_url.fd

@@ -62,10 +62,14 @@ libcontrollers_la_SOURCES=\
 	ControlRef.h \
 	ControlSearch.C \
 	ControlSearch.h \
+	ControlShowFile.C \
+	ControlShowFile.h \
 	ControlSpellchecker.C \
 	ControlSpellchecker.h \
 	ControlTabularCreate.C \
 	ControlTabularCreate.h \
+	ControlTexinfo.C \
+	ControlTexinfo.h \
 	ControlThesaurus.C \
 	ControlThesaurus.h \
 	ControlToc.C \
