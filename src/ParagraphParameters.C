@@ -246,28 +246,25 @@ void ParagraphParameters::read(LyXLex & lex)
 
 void ParagraphParameters::write(ostream & os) const
 {
-	ostringstream oss;
-
 	// Maybe the paragraph has special spacing
-	spacing().writeFile(oss, true);
+	spacing().writeFile(os, true);
 
 	// The labelwidth string used in lists.
 	if (!labelWidthString().empty())
-		oss << "\\labelwidthstring "
+		os << "\\labelwidthstring "
 		   << labelWidthString() << '\n';
 
 	// Start of appendix?
 	if (startOfAppendix())
-		oss << "\\start_of_appendix ";
+		os << "\\start_of_appendix\n";
 
 	// Noindent?
 	if (noindent())
-		oss << "\\noindent ";
+		os << "\\noindent\n";
 
 	// Do we have a manual left indent?
 	if (!leftIndent().zero())
-		oss << "\\leftindent " << leftIndent().asString()
-		   << ' ';
+		os << "\\leftindent " << leftIndent().asString() << '\n';
 
 	// Alignment?
 	if (align() != LYX_ALIGN_LAYOUT) {
@@ -278,9 +275,8 @@ void ParagraphParameters::write(ostream & os) const
 		case LYX_ALIGN_CENTER: h = 3; break;
 		default: h = 0; break;
 		}
-		oss << "\\align " << string_align[h] << ' ';
+		os << "\\align " << string_align[h] << '\n';
 	}
-	os << rtrim(oss.str());
 }
 
 
@@ -301,7 +297,7 @@ void params2string(Paragraph const & par, string & data)
 	params.write(os);
 
 	// Is alignment possible
-	os << '\n' << "\\alignpossible " << layout->alignpossible << '\n';
+	os << "\\alignpossible " << layout->alignpossible << '\n';
 
 	/// set default alignment
 	os << "\\aligndefault " << layout->align << '\n';

@@ -1,3 +1,9 @@
+2005-01-06  José Matos  <jamatos@lyx.org>
+
+	* ParagraphParameters.C (write): put every parameter in its own line.
+	* paragraph.C (write): reduce number of consecutive empty lines exported.
+	* buffer.C (LYX_FORMAT): increase file format to 239.
+
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* everywhere: change support/tostr.h -> support/convert.h
@@ -184,7 +190,7 @@
 
 	* Makefile.am (BOOST_LIBS): use boost variables
 
-2004-12-03  José Matos <jamatos@lyx.org>
+2004-12-03  José Matos  <jamatos@lyx.org>
 
 	* buffer.C: format up to 238.
 

@@ -1508,6 +1508,32 @@ def use_x_binary(file):
         file.header[i] = decompose[0] + ' ' + bool2bin[decompose[1]]
 
 ##
+# Place all the paragraph parameters in their own line
+#
+def normalize_paragraph_params(file):
+    body = file.body
+    allowed_parameters = '\\paragraph_spacing', '\\noindent', '\\align', '\\labelwidthstring'
+
+    i = 0
+    while 1:
+        i = find_token(file.body, '\\begin_layout', i)
+        if i == -1:
+            return
+
+        i = i + 1
+        while 1:
+            if strip(body[i]) and split(body[i])[0] not in allowed_parameters:
+                break
+
+            j = find(body[i],'\\', 1)
+
+            if j != -1:
+                body[i:i+1] = [strip(body[i][:j]), body[i][j:]]
+
+            i = i + 1
+
+
+##
 # Convertion hub
 #
 
@@ -1529,9 +1555,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
            [236, [convert_bullets, add_begin_header, add_begin_body,
                   normalize_papersize, strip_end_space]],
            [237, [use_x_boolean]],
-           [238, [update_latexaccents]]]
+           [238, [update_latexaccents]],
+           [239, [normalize_paragraph_params]]]
 
-revert =  [[237, []],
+revert =  [[238, []],
+           [237, []],
            [236, [use_x_binary]],
            [235, [denormalize_papersize, remove_begin_body,remove_begin_header,
                   revert_bullets]],

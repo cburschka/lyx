@@ -1,26 +1,43 @@
 LyX file-format changes
 -----------------------
 
+2005-01-06  José Matos  <jamatos@lyx.org>
+
+	* format incremented to 239.
+	* the paragraph parameters are displayed in their own line. This
+	change is consistent with the insets behaviour, and corresponds
+	to a more uniform treatment of the paragraphs since some of them
+	had already their own line.
+
+	An example of a single paragraph follows:
+
+\begin_layout Standard
+\paragraph_spacing single
+\align left
+Paragraph text.
+\end_layout
+
+
 2004-12-03  José Matos  <jamatos@lyx.org>
 
-       * format up to 238.
-       * The compatibility code to read old latex accents from 0.12.x in
-       InsetLatexAccent::checkContents has been removed.
-       The following translations are done:
-               "\i \x"   -> "\i \x{}"
-               "\i \xy"  -> "\i \x{y}"
-               "\i \x y" -> "\i \x{y}"
-               "\i \x\i" -> "\i \x{\i}"
-               "\i \x\j" -> "\i \x{\j}"
-       x is a latex accent command, y the base character. \, i and j are
-       literal.
-       lyx did these changes already from 0.12.x -> 215, but not lyx2lyx,
-       so formats 215 - 237 can have both versions.
+	* format incremented to 238.
+	* The compatibility code to read old latex accents from 0.12.x in
+	InsetLatexAccent::checkContents has been removed.
+	The following translations are done:
+		"\i \x"   -> "\i \x{}"
+		"\i \xy"  -> "\i \x{y}"
+		"\i \x y" -> "\i \x{y}"
+		"\i \x\i" -> "\i \x{\i}"
+		"\i \x\j" -> "\i \x{\j}"
+	x is a latex accent command, y the base character. \, i and j are
+	literal.
+	lyx did these changes already from 0.12.x -> 215, but not lyx2lyx,
+	so formats 215 - 237 can have both versions.
 
 
 2004-10-10  José Matos  <jamatos@lyx.org>
 
-	* format up to 237.
+	* format incremented to 237.
 	* In the header, the following statments use now booleans values,
 	instead of 0, 1:
 		- \use_geometry

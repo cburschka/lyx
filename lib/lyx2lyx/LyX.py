@@ -16,12 +16,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-from parser_tools import get_value, check_token, find_token, find_tokens, find_end_of, find_end_of_inset
+from parser_tools import get_value, check_token, find_token,\
+     find_tokens, find_end_of, find_end_of_inset
 import os.path
 import gzip
 import sys
 import re
 import string
+import time
 
 version_lyx2lyx = "1.4.0cvs"
 default_debug_level = 2
@@ -44,7 +46,7 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("1_1_6fix3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
                    ("1_2", [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
                    ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3"]),
-                   ("1_4", range(223,239), ["1.4.0cvs","1.4"])]
+                   ("1_4", range(223,240), ["1.4.0cvs","1.4"])]
 
 
 def formats_list():
@@ -267,23 +269,23 @@ class LyX_Base:
         for step in convertion_chain:
             steps = getattr(__import__("lyx_" + step), mode)
 
+            self.warning("Convertion step: %s - %s" % (step, mode), default_debug_level + 1)
             if not steps:
                     self.error("The convertion to an older format (%s) is not implemented." % self.format)
 
-            if len(steps) == 1:
-                version, table = steps[0]
-                for conv in table:
-                    conv(self)
-                self.format = version
-                continue
-
+            multi_conv = len(steps) != 1
             for version, table in steps:
-                if self.format >= version and mode == "convert":
+                if multi_conv and \
+                   (self.format >= version and mode == "convert") or\
+                   (self.format <= version and mode == "revert"):
                     continue
-                if self.format <= version and mode == "revert":
-                    continue
+
                 for conv in table:
+                    init_t = time.time()
                     conv(self)
+                    self.warning("%lf: Elapsed time on %s"  % (time.time() - init_t, str(conv)),
+                                 default_debug_level + 1)
+
                 self.format = version
                 if self.end_format == self.format:
                     return

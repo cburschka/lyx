@@ -156,10 +156,6 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 
 	int column = 0;
 	for (pos_type i = 0; i < size(); ++i) {
-		if (!i) {
-			os << '\n';
-			column = 0;
-		}
 
 		Change change = pimpl_->lookupChangeFull(i);
 		Changes::lyxMarkChange(os, column, curtime, running_change, change);
@@ -185,7 +181,9 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 					// the file
 					inset->write(buf, os);
 				} else {
-					os << "\n\\begin_inset ";
+					if (i)
+						os << '\n';
+					os << "\\begin_inset ";
 					inset->write(buf, os);
 					os << "\n\\end_inset\n\n";
 					column = 0;
