@@ -7,10 +7,34 @@
 #include "debug.h"
 
 
+#include "insets/mailinset.h"
+
 using std::swap;
 using std::max;
 using std::min;
 using std::vector;
+
+
+class GridInsetMailer : public MailInset {
+public:
+	GridInsetMailer(MathGridInset & inset) : inset_(inset) {}
+	///
+	virtual string const & name() const
+	{
+		static const string theName = "tabular";
+		return theName;
+	}
+	///
+	virtual string const inset2string() const
+	{
+		lyxerr << "inset2string called" << endl;
+		return "whatever"; //(inset_);
+	}
+
+protected:
+	InsetBase & inset() const { return inset_; }
+	MathGridInset & inset_;	
+};
 
 
 void mathed_parse_normal(MathGridInset &, string const & argument);
@@ -972,6 +996,25 @@ dispatch_result MathGridInset::dispatch
 {
 	switch (cmd.action) {
 
+		case LFUN_MOUSE_RELEASE: {
+			if (cmd.button() == mouse_button::button3) {
+				WriteStream ws(lyxerr);
+				write(ws);
+				GridInsetMailer mailer(*this);
+				lyxerr << "mailer " << mailer.name() << " active\n";
+				mailer.showDialog();
+				return DISPATCHED;
+			}
+			break;
+		}
+
+		case LFUN_INSET_DIALOG_UPDATE: {
+			GridInsetMailer mailer(*this);
+			mailer.updateDialog();
+			break;
+		}
+
+		// insert file functions
 		case LFUN_DELETE_LINE_FORWARD:
 			//autocorrect_ = false;
 			//macroModeClose();
