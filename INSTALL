@@ -155,6 +155,11 @@ flags:
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly. 
  
+  o --enable-debug will add debug information to your binary. This
+    requires a lot more disk space, but is a must if you want to try to
+    debug problems in LyX. The default is to have debug information
+    for development versions and prereleases only.
+
 There are also flags to control the internationalization support in
 LyX:
 
