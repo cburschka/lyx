@@ -71,7 +71,7 @@ string formatted(string const & sin, int w, int size, int style)
 		char c = word[0];
 		if (c == '\n') {
 			sout += line + '\n';
-			word = word.substr(1);
+			word.erase(0,1);
 			line_plus_word.erase();
 			line.erase();
 		}
