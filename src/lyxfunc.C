@@ -48,7 +48,6 @@
 #include "lyxvc.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "TextCache.h"
 #include "undo.h"
 
 #include "insets/insetcommand.h"
@@ -1583,12 +1582,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		// handle the screen font changes.
 		lyxrc.set_font_norm_type();
 		lyx_gui::update_fonts();
-		// We also need to empty the textcache so that
-		// the buffer will be formatted correctly after
-		// a zoom change.
-		textcache.clear();
-		// Of course we should only do the resize and the textcache.clear
-		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize
 		view()->resize();
 		view()->update();

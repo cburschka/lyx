@@ -102,8 +102,6 @@ lyx_SOURCES = \
 	ShareContainer.h \
 	Spacing.C \
 	Spacing.h \
-	TextCache.C \
-	TextCache.h \
 	Thesaurus.C \
 	Thesaurus.h \
 	ToolbarBackend.C \

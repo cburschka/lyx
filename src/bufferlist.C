@@ -21,7 +21,6 @@
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "paragraph.h"
-#include "TextCache.h"
 
 #include "frontends/Alert.h"
 
@@ -119,12 +118,8 @@ void BufferList::release(Buffer * buf)
 	BOOST_ASSERT(buf);
 	BufferStorage::iterator it = find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
-		// Make sure that we don't store a LyXText in
-		// the textcache that points to the buffer
-		// we just deleted.
 		Buffer * tmp = (*it);
 		bstore.erase(it);
-		textcache.removeAllWithBuffer(tmp);
 		delete tmp;
 	}
 }
@@ -143,10 +138,6 @@ Buffer * BufferList::newBuffer(string const & s, bool ronly)
 
 void BufferList::closeAll()
 {
-	// Since we are closing we can just as well delete all
-	// in the textcache this will also speed the closing/quiting up a bit.
-	textcache.clear();
-
 	while (!bstore.empty()) {
 		close(bstore.front(), false);
 	}

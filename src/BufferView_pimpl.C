@@ -41,7 +41,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "TextCache.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -297,14 +296,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			    << b << ')' << endl;
 	if (buffer_) {
 		disconnectBuffer();
-		// Put the old text into the TextCache, but
-		// only if the buffer is still loaded.
-		// Also set the owner of the test to 0
-		//		bv_->text->owner(0);
-		textcache.add(buffer_, workarea().workWidth(), bv_->text);
-		if (lyxerr.debugging())
-			textcache.show(lyxerr, "BufferView::buffer");
-
+		delete bv_->text;
 		bv_->text = 0;
 	}
 
@@ -339,13 +331,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->getDialogs().hideBufferDependent();
-
-		// Also remove all remaining text's from the testcache.
-		// (there should not be any!) (if there is any it is a
-		// bug!)
-		if (lyxerr.debugging())
-			textcache.show(lyxerr, "buffer delete all");
-		textcache.clear();
 	}
 
 	update();
@@ -433,29 +418,10 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		update();
 	} else {
 		lyxerr << "text not available!" << endl;
-		// See if we have a text in TextCache that fits
-		// the new buffer_ with the correct width.
-		bv_->text = textcache.findFit(buffer_, workarea().workWidth());
-		if (bv_->text) {
-			lyxerr << "text in cache!" << endl;
-			if (lyxerr.debugging()) {
-				lyxerr << "Found a LyXText that fits:" << endl;
-				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea().workWidth(), bv_->text)));
-			}
-			// Set the owner of the newly found text
-			//	bv_->text->owner(bv_);
-			if (lyxerr.debugging())
-				textcache.show(lyxerr, "resizeCurrentBuffer");
-		} else {
 			lyxerr << "no text in cache!" << endl;
 			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
 			bv_->text->init(bv_);
-		}
 	}
-
-#warning does not help much
-	//bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
-	//	bv_->text->ownerParagraphs().end());
 
 	if (par != -1) {
 		bv_->text->selection.set(true);
@@ -629,16 +595,6 @@ void BufferView::Pimpl::workAreaResize()
 		if (widthChange) {
 			// The visible LyXView need a resize
 			resizeCurrentBuffer();
-
-			// Remove all texts from the textcache
-			// This is not _really_ what we want to do. What
-			// we really want to do is to delete in textcache
-			// that does not have a BufferView with matching
-			// width, but as long as we have only one BufferView
-			// deleting all gives the same result.
-			if (lyxerr.debugging())
-				textcache.show(lyxerr, "Expose delete all");
-			textcache.clear();
 		}
 	}
 

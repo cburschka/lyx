@@ -1,3 +1,20 @@
+2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (dispatch): remove textcache stuff
+
+	* bufferlist.C (release): remove textcache stuff
+	(closeAll): ditto
+
+	* TextCache.C: delete file
+	* TextCache.h: delete file
+
+	* Makefile.am (lyx_SOURCES): delete TextCache.C and TextCache.h
+
+	* BufferView_pimpl.C (buffer): remove textcache stuff, add a
+	delete of the bv_->text.
+	(resizeCurrentBuffer): remove texcache stuff
+	(workAreaResize): ditto
+
 2003-10-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (getStatus): also set flag disabled if it is a unknown
