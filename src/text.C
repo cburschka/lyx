@@ -300,6 +300,40 @@ int LyXText::singleWidth(Paragraph * par,
 }
 
 
+lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const 
+{
+	if (bidi_start == -1)
+		return pos;
+	else
+		return log2vis_list[pos-bidi_start];
+}
+
+
+lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const 
+{
+	if (bidi_start == -1)
+		return pos;
+	else
+		return vis2log_list[pos-bidi_start];
+}
+
+
+lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const 
+{
+	if (bidi_start == -1)
+		return 0;
+	else
+		return bidi_levels[pos-bidi_start];
+}
+
+
+bool LyXText::bidi_InRange(lyx::pos_type pos) const 
+{
+	return bidi_start == -1 ||
+		(bidi_start <= pos && pos <= bidi_end);
+}
+
+
 void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 {
 	bidi_same_direction = true;

@@ -487,40 +487,17 @@ public:
 	int workWidth() const;
 	///
 	int workWidth(Inset * inset) const;
+
 	///
 	void computeBidiTables(Buffer const *, Row * row) const;
-
 	/// Maps positions in the visual string to positions in logical string.
-	inline
-	lyx::pos_type log2vis(lyx::pos_type pos) const {
-		if (bidi_start == -1)
-			return pos;
-		else
-			return log2vis_list[pos-bidi_start];
-	}
-
+	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
-	inline
-	lyx::pos_type vis2log(lyx::pos_type pos) const {
-		if (bidi_start == -1)
-			return pos;
-		else
-			return vis2log_list[pos-bidi_start];
-	}
+	lyx::pos_type vis2log(lyx::pos_type pos) const;
 	///
-	inline
-	lyx::pos_type bidi_level(lyx::pos_type pos) const {
-		if (bidi_start == -1)
-			return 0;
-		else
-			return bidi_levels[pos-bidi_start];
-	}
+	lyx::pos_type bidi_level(lyx::pos_type pos) const;
 	///
-	inline
-	bool bidi_InRange(lyx::pos_type pos) const {
-		return bidi_start == -1 ||
-			(bidi_start <= pos && pos <= bidi_end);
-	}
+	bool bidi_InRange(lyx::pos_type pos) const;
 private:
 	///
 	Row * firstrow;
@@ -655,16 +632,12 @@ private:
 
 	///
 	mutable std::vector<lyx::pos_type> log2vis_list;
-
 	///
 	mutable std::vector<lyx::pos_type> vis2log_list;
-
 	///
 	mutable std::vector<lyx::pos_type> bidi_levels;
-
 	///
 	mutable lyx::pos_type bidi_start;
-
 	///
 	mutable lyx::pos_type bidi_end;
 
