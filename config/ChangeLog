@@ -1,5 +1,10 @@
 2002-06-03  John Levon  <moz@compsoc.man.ac.uk>
 
+	* xforms.m4: wallpaper coding ... only try to link
+	  against flimage if it's found
+ 
+2002-06-03  John Levon  <moz@compsoc.man.ac.uk>
+
 	* xforms.m4: don't warn about missing flimage.h
  
 2002-06-02  John Levon  <moz@compsoc.man.ac.uk>
