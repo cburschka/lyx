@@ -20,6 +20,8 @@
 #pragma interface
 #endif
 
+#include <config.h>
+ 
 #include "support/LOstream.h"
 #include "LString.h"
 
@@ -65,7 +67,7 @@ TocList const getTocList(Buffer const *);
 std::vector<string> const getTypes(Buffer const *);
 
 ///
-void asciiTocList(string const &, Buffer const *, ostream &);
+void asciiTocList(string const &, Buffer const *, std::ostream &);
 	
 /** Given the cmdName of the TOC param, returns the type used
     by ControlToc::getContents() */

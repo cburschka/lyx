@@ -31,6 +31,9 @@
 #include "debug.h"
 
 using std::vector;
+using std::max;
+using std::endl;
+using std::ostream;
 
 extern LyXAction lyxaction;
 

@@ -24,6 +24,7 @@
 
 #include <vector>
 
+using std::vector;
 using std::endl;
 
 
