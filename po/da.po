@@ -9,14 +9,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-20 11:29+0100\n"
+"POT-Creation-Date: 2004-09-10 12:25+0200\n"
 "PO-Revision-Date: 2004-03-20 11:37+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -2321,7 +2321,7 @@ msgstr "BibTeX-stilen"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:294
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:473
 msgid "&Browse..."
 msgstr "&Gennemse..."
 
@@ -2334,7 +2334,7 @@ msgstr "Vælg en stil-fil"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:947
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -2573,7 +2573,7 @@ msgstr "Tekst efter:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:55
-#: src/frontends/xforms/FormCitation.C:467
+#: src/frontends/xforms/FormCitation.C:471
 msgid "Not yet supported"
 msgstr "Understøttes endnu ikke"
 
@@ -3003,7 +3003,7 @@ msgstr "Billedtekst for underfiguren"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:366
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
 #: src/frontends/controllers/ButtonController.h:73
@@ -3479,7 +3479,8 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr ""
+"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -4043,28 +4044,28 @@ msgstr "Saml kopierne i ens bunker"
 msgid "&Print"
 msgstr "&Udskriv"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:387
 msgid "Print Destination"
 msgstr "Mål for udskrift"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:409
 msgid "P&rinter"
 msgstr "P&rinter"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:417
 msgid "Send output to the printer"
 msgstr "Send uddata til printeren"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:428
 msgid "Send output to the given printer"
 msgstr "Send uddata til en given printer"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:439
 msgid "&File"
 msgstr "&Fil"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:443
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:458
 msgid "Send output to a file"
 msgstr "Send uddata til en fil"
 
@@ -4528,7 +4529,8 @@ msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4588,7 +4590,7 @@ msgstr "&URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94
-#: ../lib/layouts/scrlttr2.layout:217 ../lib/layouts/amsdefs.inc:223
+#: ../lib/layouts/scrlttr2.layout:219 ../lib/layouts/amsdefs.inc:223
 #: src/frontends/qt2/QURL.C:33
 msgid "URL"
 msgstr "URL"
@@ -4857,7 +4859,7 @@ msgstr "Underundersektion*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1518
+#: src/buffer.C:1533
 msgid "Abstract"
 msgstr "Sammendrag"
 
@@ -4916,7 +4918,7 @@ msgid "MarkBoth"
 msgstr "MarkérBegge"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:262
+#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
 #: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
 #: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
@@ -4924,7 +4926,7 @@ msgid "Itemize"
 msgstr "Punktinddeling"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:280
+#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:299
 #: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
 #: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
@@ -4961,8 +4963,8 @@ msgstr "Liste"
 #: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
 #: ../lib/layouts/llncs.layout:107 ../lib/layouts/ltugboat.layout:151
 #: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
-#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrlettr.layout:204
-#: ../lib/layouts/scrlttr2.layout:281 ../lib/layouts/siamltex.layout:103
+#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrlettr.layout:206
+#: ../lib/layouts/scrlttr2.layout:283 ../lib/layouts/siamltex.layout:103
 #: ../lib/layouts/svprobth.layout:37 ../lib/layouts/amsdefs.inc:65
 #: ../lib/layouts/db_stdtitle.inc:11 ../lib/layouts/scrclass.inc:158
 #: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:141
@@ -4999,8 +5001,8 @@ msgstr "Forfatter"
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
 #: ../lib/layouts/g-brief2.layout:798 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
-#: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
-#: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
+#: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:157
+#: ../lib/layouts/scrlttr2.layout:50 ../lib/layouts/aapaper.inc:31
 #: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 msgid "Address"
 msgstr "Adresse"
@@ -5022,7 +5024,7 @@ msgstr "Brev"
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
-#: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
+#: ../lib/layouts/scrlettr.layout:178 ../lib/layouts/scrlttr2.layout:251
 #: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
 #: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
 #: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:253
@@ -5084,13 +5086,13 @@ msgid "And"
 msgstr "Og"
 
 #: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
-#: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:303
-#: ../lib/layouts/svjour.inc:321
+#: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
+#: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Taksigelser"
 
 #: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1529
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
 msgid "References"
 msgstr "Referencer"
 
@@ -5166,28 +5168,28 @@ msgstr "Tidsskrift"
 msgid "CopNum"
 msgstr "CopNum"
 
-#: ../lib/layouts/apa.layout:212 ../lib/layouts/revtex4.layout:215
+#: ../lib/layouts/apa.layout:232 ../lib/layouts/revtex4.layout:215
 #: ../lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr "Taksigelser"
 
-#: ../lib/layouts/apa.layout:217
+#: ../lib/layouts/apa.layout:236
 msgid "ThickLine"
 msgstr "TykLinje"
 
-#: ../lib/layouts/apa.layout:225
+#: ../lib/layouts/apa.layout:244
 msgid "CenteredCaption"
 msgstr "CentreretBilledtekst"
 
-#: ../lib/layouts/apa.layout:232
+#: ../lib/layouts/apa.layout:251
 msgid "FitFigure"
 msgstr "Tilpas Figur"
 
-#: ../lib/layouts/apa.layout:237
+#: ../lib/layouts/apa.layout:256
 msgid "FitBitmap"
 msgstr "Tilpas Bitmap"
 
-#: ../lib/layouts/apa.layout:298
+#: ../lib/layouts/apa.layout:317
 msgid "Seriate"
 msgstr "Seriate"
 
@@ -5332,21 +5334,21 @@ msgstr "Modtageradresse"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
 #: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
-#: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
+#: ../lib/layouts/scrlettr.layout:72 ../lib/layouts/scrlttr2.layout:102
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Åbning"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
 #: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
-#: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
+#: ../lib/layouts/scrlettr.layout:150 ../lib/layouts/scrlttr2.layout:178
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Signatur"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
 #: ../lib/layouts/g-brief2.layout:933 ../lib/layouts/heb-letter.layout:20
-#: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
+#: ../lib/layouts/scrlettr.layout:83 ../lib/layouts/scrlttr2.layout:124
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
 msgstr "Afslutning"
@@ -5534,8 +5536,8 @@ msgid "Brieftext"
 msgstr "Korttekst"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:126
-#: ../lib/layouts/scrlttr2.layout:153
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:128
+#: ../lib/layouts/scrlttr2.layout:155
 msgid "Name"
 msgstr "Navn"
 
@@ -5596,7 +5598,7 @@ msgid "HTTP"
 msgstr "HTTP"
 
 #: ../lib/layouts/g-brief-de.layout:363 ../lib/layouts/g-brief-en.layout:363
-#: ../lib/layouts/scrlttr2.layout:225
+#: ../lib/layouts/scrlttr2.layout:227
 msgid "Bank"
 msgstr "Bank"
 
@@ -5633,7 +5635,7 @@ msgid "Gruss"
 msgstr "Gruss"
 
 #: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
-#: ../lib/layouts/scrlettr.layout:48
+#: ../lib/layouts/scrlettr.layout:50
 msgid "Letter"
 msgstr "Brev"
 
@@ -5817,7 +5819,7 @@ msgstr "BanklinjeE"
 msgid "BankRowF"
 msgstr "BanklinjeF"
 
-#: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:345
+#: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:347
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
 msgid "Comment"
 msgstr "Kommentar"
@@ -5965,87 +5967,87 @@ msgstr "Kladdetryk"
 msgid "PACS"
 msgstr "PACS"
 
-#: ../lib/layouts/scrlettr.layout:26 ../lib/layouts/scrlttr2.layout:26
+#: ../lib/layouts/scrlettr.layout:28 ../lib/layouts/scrlttr2.layout:28
 #: ../lib/layouts/scrclass.inc:35
 msgid "Labeling"
 msgstr "Mærkning"
 
-#: ../lib/layouts/scrlettr.layout:93 ../lib/layouts/scrlttr2.layout:130
+#: ../lib/layouts/scrlettr.layout:95 ../lib/layouts/scrlttr2.layout:132
 msgid "PS"
 msgstr "PS"
 
-#: ../lib/layouts/scrlettr.layout:104 ../lib/layouts/scrlttr2.layout:138
+#: ../lib/layouts/scrlettr.layout:106 ../lib/layouts/scrlttr2.layout:140
 msgid "CC"
 msgstr "CC"
 
-#: ../lib/layouts/scrlettr.layout:119 ../lib/layouts/scrlttr2.layout:146
+#: ../lib/layouts/scrlettr.layout:121 ../lib/layouts/scrlttr2.layout:148
 msgid "Encl"
 msgstr "Vedlagt"
 
-#: ../lib/layouts/scrlettr.layout:162 ../lib/layouts/scrlttr2.layout:192
+#: ../lib/layouts/scrlettr.layout:164 ../lib/layouts/scrlttr2.layout:194
 #: ../lib/layouts/stdletter.inc:179
 msgid "Telephone"
 msgstr "Telefon"
 
-#: ../lib/layouts/scrlettr.layout:169 ../lib/layouts/scrlttr2.layout:241
+#: ../lib/layouts/scrlettr.layout:171 ../lib/layouts/scrlttr2.layout:243
 msgid "Place"
 msgstr "Sted"
 
-#: ../lib/layouts/scrlettr.layout:183 ../lib/layouts/scrlttr2.layout:257
+#: ../lib/layouts/scrlettr.layout:185 ../lib/layouts/scrlttr2.layout:259
 msgid "Backaddress"
 msgstr "Bagsideadresse"
 
-#: ../lib/layouts/scrlettr.layout:190 ../lib/layouts/scrlttr2.layout:265
+#: ../lib/layouts/scrlettr.layout:192 ../lib/layouts/scrlttr2.layout:267
 msgid "Specialmail"
 msgstr "Specialpost"
 
-#: ../lib/layouts/scrlettr.layout:197 ../lib/layouts/scrlttr2.layout:273
+#: ../lib/layouts/scrlettr.layout:199 ../lib/layouts/scrlttr2.layout:275
 #: ../lib/layouts/stdletter.inc:162
 msgid "Location"
 msgstr "Placering"
 
-#: ../lib/layouts/scrlettr.layout:211 ../lib/layouts/scrlttr2.layout:289
+#: ../lib/layouts/scrlettr.layout:213 ../lib/layouts/scrlttr2.layout:291
 #: ../lib/layouts/scrclass.inc:180
 msgid "Subject"
 msgstr "Emne"
 
-#: ../lib/layouts/scrlettr.layout:218 ../lib/layouts/scrlttr2.layout:297
+#: ../lib/layouts/scrlettr.layout:220 ../lib/layouts/scrlttr2.layout:299
 msgid "Yourref"
 msgstr "DinRef"
 
-#: ../lib/layouts/scrlettr.layout:233 ../lib/layouts/scrlttr2.layout:313
+#: ../lib/layouts/scrlettr.layout:235 ../lib/layouts/scrlttr2.layout:315
 msgid "Yourmail"
 msgstr "DinPost"
 
-#: ../lib/layouts/scrlettr.layout:240 ../lib/layouts/scrlttr2.layout:321
+#: ../lib/layouts/scrlettr.layout:242 ../lib/layouts/scrlttr2.layout:323
 msgid "Myref"
 msgstr "Myref"
 
-#: ../lib/layouts/scrlettr.layout:247 ../lib/layouts/scrlttr2.layout:329
+#: ../lib/layouts/scrlettr.layout:249 ../lib/layouts/scrlttr2.layout:331
 msgid "Customer"
 msgstr "Kunde"
 
-#: ../lib/layouts/scrlettr.layout:254 ../lib/layouts/scrlttr2.layout:337
+#: ../lib/layouts/scrlettr.layout:256 ../lib/layouts/scrlttr2.layout:339
 msgid "Invoice"
 msgstr "Faktura"
 
-#: ../lib/layouts/scrlttr2.layout:77
+#: ../lib/layouts/scrlttr2.layout:79
 msgid "NextAddress"
 msgstr "NæsteAdresse"
 
-#: ../lib/layouts/scrlttr2.layout:184
+#: ../lib/layouts/scrlttr2.layout:186
 msgid "SenderAddress"
 msgstr "AfsenderAdresse"
 
-#: ../lib/layouts/scrlttr2.layout:200
+#: ../lib/layouts/scrlttr2.layout:202
 msgid "Fax"
 msgstr "Fax"
 
-#: ../lib/layouts/scrlttr2.layout:209
+#: ../lib/layouts/scrlttr2.layout:211
 msgid "E-Mail"
 msgstr "E-post"
 
-#: ../lib/layouts/scrlttr2.layout:233
+#: ../lib/layouts/scrlttr2.layout:235
 msgid "Logo"
 msgstr "Logo"
 
@@ -6436,90 +6438,103 @@ msgid "Hebrew"
 msgstr "Hebraisk"
 
 #: ../lib/languages:35
+msgid "Icelandic"
+msgstr ""
+
+#: ../lib/languages:36
 msgid "Irish"
 msgstr "Irsk"
 
-#: ../lib/languages:36
+#: ../lib/languages:37
 msgid "Italian"
 msgstr "Italiensk"
 
-#: ../lib/languages:37
+#: ../lib/languages:38
 msgid "Kazakh"
 msgstr "Kazaksk"
 
-#: ../lib/languages:38
+#: ../lib/languages:39
+#, fuzzy
+msgid "Latvian"
+msgstr "Placering"
+
+#: ../lib/languages:40
+msgid "Lithuanian"
+msgstr ""
+
+#: ../lib/languages:41
 msgid "Lsorbian"
 msgstr "Lsorbian"
 
-#: ../lib/languages:40
+#: ../lib/languages:43
 msgid "Magyar"
 msgstr "Magyar"
 
-#: ../lib/languages:41
+#: ../lib/languages:44
 msgid "Norsk"
 msgstr "Norsk"
 
-#: ../lib/languages:42
+#: ../lib/languages:45
 msgid "Polish"
 msgstr "Polsk"
 
-#: ../lib/languages:43
+#: ../lib/languages:46
 msgid "Portugese"
 msgstr "Portugisisk"
 
-#: ../lib/languages:44
+#: ../lib/languages:47
 msgid "Romanian"
 msgstr "Ordinær"
 
-#: ../lib/languages:45
+#: ../lib/languages:48
 msgid "Russian"
 msgstr "Russisk"
 
-#: ../lib/languages:46
+#: ../lib/languages:49
 msgid "Scottish"
 msgstr "Skotsk"
 
-#: ../lib/languages:47
+#: ../lib/languages:50
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: ../lib/languages:48
+#: ../lib/languages:51
 msgid "Serbo-Croatian"
 msgstr "Serbokroatisk"
 
-#: ../lib/languages:49
+#: ../lib/languages:52
 msgid "Spanish"
 msgstr "Spansk"
 
-#: ../lib/languages:50
+#: ../lib/languages:53
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: ../lib/languages:51
+#: ../lib/languages:54
 msgid "Slovene"
 msgstr "Slovensk"
 
-#: ../lib/languages:52
+#: ../lib/languages:55
 msgid "Swedish"
 msgstr "Svensk"
 
-#: ../lib/languages:53
+#: ../lib/languages:56
 msgid "Thai"
 msgstr "Thai"
 
-#: ../lib/languages:54
+#: ../lib/languages:57
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: ../lib/languages:55
+#: ../lib/languages:58
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: ../lib/languages:56
+#: ../lib/languages:59
 msgid "Usorbian"
 msgstr "Usorbian"
 
-#: ../lib/languages:58
+#: ../lib/languages:61
 msgid "Welsh"
 msgstr "Walisisk"
 
@@ -7407,7 +7422,7 @@ msgstr "Flyttet til bogmærke "
 msgid "Select LyX document to insert"
 msgstr "Vælg det LyX-dokument, som skal indsættes"
 
-#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -7438,7 +7453,7 @@ msgstr "Indsætter dokumentet %1$s..."
 msgid "Inserting document "
 msgstr "Indsætter dokumentet "
 
-#: src/BufferView_pimpl.C:897 src/importer.C:47 src/lyxfunc.C:990
+#: src/BufferView_pimpl.C:897 src/importer.C:47 src/lyxfunc.C:992
 #: src/lyxfunc.C:1153 src/lyxfunc.C:1734
 msgid "..."
 msgstr "..."
@@ -8320,21 +8335,21 @@ msgstr "LyX vil ikke kunne producere et korrekt resultat."
 msgid "The document uses a missing TeX class "
 msgstr "Dokumentet benytter en manglende TeX-klasse "
 
-#: src/buffer.C:968
+#: src/buffer.C:983
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukendt symbol: %1$s %2$s\n"
 
-#: src/buffer.C:972
+#: src/buffer.C:987
 msgid "Unknown token: "
 msgstr "Ukendt symbol: "
 
 #. future format
-#: src/buffer.C:1197 src/buffer.C:1252
+#: src/buffer.C:1212 src/buffer.C:1267
 msgid "Warning!"
 msgstr "Advarsel!"
 
-#: src/buffer.C:1198
+#: src/buffer.C:1213
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
@@ -8343,77 +8358,77 @@ msgstr ""
 "problemer."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1204 src/buffer.C:1212 src/buffer.C:1226 src/buffer.C:1258
-#: src/buffer.C:1261
+#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
+#: src/buffer.C:1276
 msgid "ERROR!"
 msgstr "FEJL!"
 
-#: src/buffer.C:1205
+#: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Gammelt LyX-filformat fundet. Brug LyX 0.10.x for at læse dette!"
 
-#: src/buffer.C:1213
+#: src/buffer.C:1228
 msgid "Can't find conversion script."
 msgstr "Kan ikke finde konverteringsskript."
 
-#: src/buffer.C:1227
+#: src/buffer.C:1242
 msgid "An error occured while running the conversion script."
 msgstr "Der skete en fejl under kørslen af konverteringsskriptet."
 
-#: src/buffer.C:1253
+#: src/buffer.C:1268
 msgid "Reading of document is not complete"
 msgstr "Indlæsning af dokumentet er ikke fuldstændig"
 
-#: src/buffer.C:1254
+#: src/buffer.C:1269
 msgid "Maybe the document is truncated"
 msgstr "Dokumentet er måske afkortet"
 
-#: src/buffer.C:1258
+#: src/buffer.C:1273
 msgid "Not a LyX file!"
 msgstr "Ikke en LyX-fil!"
 
-#: src/buffer.C:1261
+#: src/buffer.C:1276
 msgid "Unable to read file!"
 msgstr "Kan ikke læse filen!"
 
-#: src/buffer.C:1521
+#: src/buffer.C:1536
 msgid "Abstract: "
 msgstr "Sammendrag: "
 
-#: src/buffer.C:1532
+#: src/buffer.C:1547
 msgid "References: "
 msgstr "Referencer: "
 
-#: src/buffer.C:1646
+#: src/buffer.C:1661
 msgid "Error: Cannot write file:"
 msgstr "Fejl: Kan ikke skrive fil:"
 
-#: src/buffer.C:1676
+#: src/buffer.C:1691
 msgid "Error: Cannot open file: "
 msgstr "Fejl: Kan ikke åbne fil: "
 
-#: src/buffer.C:2279 src/buffer.C:2734
+#: src/buffer.C:2308 src/buffer.C:2763
 msgid "LYX_ERROR:"
 msgstr "LYX_FEJL:"
 
-#: src/buffer.C:2279 src/buffer.C:2734
+#: src/buffer.C:2308 src/buffer.C:2763
 msgid "Cannot write file"
 msgstr "Kan ikke skrive fil"
 
-#: src/buffer.C:2367 src/buffer.C:2840
+#: src/buffer.C:2396 src/buffer.C:2869
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Fejl: Forkert dybde for LatexType-kommando.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3127
+#: src/buffer.C:3156
 msgid "Running chktex..."
 msgstr "Kører chktex..."
 
-#: src/buffer.C:3140
+#: src/buffer.C:3169
 msgid "chktex did not work!"
 msgstr "chktex virkede ikke!"
 
-#: src/buffer.C:3141
+#: src/buffer.C:3170
 msgid "Could not run with file:"
 msgstr "Kunne ikke køre med filen:"
 
@@ -8556,7 +8571,7 @@ msgstr "Fejl under udførelse"
 msgid "There were errors during the Build process."
 msgstr "Der blev rapporteret fejl under opbygningsprocessen."
 
-#: src/converter.C:708 src/converter.C:863 src/converter.C:929
+#: src/converter.C:708 src/converter.C:865 src/converter.C:933
 msgid "You should try to fix them."
 msgstr "Prøv at rette dem."
 
@@ -8581,52 +8596,52 @@ msgstr " til "
 msgid "Error while trying to move file:"
 msgstr "Fejl under flytning af fil:"
 
-#: src/converter.C:858 src/converter.C:924
+#: src/converter.C:860 src/converter.C:928
 msgid "One error detected"
 msgstr "Fandt én fejl"
 
-#: src/converter.C:859 src/converter.C:925
+#: src/converter.C:861 src/converter.C:929
 msgid "You should try to fix it."
 msgstr "Prøv at rette den."
 
-#: src/converter.C:862 src/converter.C:928
+#: src/converter.C:864 src/converter.C:932
 msgid " errors detected."
 msgstr " fejl fundet."
 
-#: src/converter.C:868
+#: src/converter.C:870
 #, c-format
 msgid "There were errors during running of %1$s"
 msgstr "Der blev rapporteret fejl under kørslen af %1$s"
 
-#: src/converter.C:871
+#: src/converter.C:873
 msgid "There were errors during running of "
 msgstr "Der blev rapporteret fejl under kørslen af "
 
-#: src/converter.C:876 src/converter.C:934
+#: src/converter.C:878 src/converter.C:938
 msgid "The operation resulted in"
 msgstr "Denne operation resulterede i"
 
-#: src/converter.C:877 src/converter.C:935
+#: src/converter.C:879 src/converter.C:939
 msgid "an empty file."
 msgstr "en tom fil."
 
-#: src/converter.C:878 src/converter.C:936
+#: src/converter.C:880 src/converter.C:940
 msgid "Resulting file is empty"
 msgstr "Den færdige fil er tom"
 
-#: src/converter.C:894
+#: src/converter.C:896
 msgid "Running LaTeX..."
 msgstr "Kører LaTeX..."
 
-#: src/converter.C:917
+#: src/converter.C:921
 msgid "LaTeX did not work!"
 msgstr "LaTeX virkede ikke!"
 
-#: src/converter.C:918
+#: src/converter.C:922
 msgid "Missing log file:"
 msgstr "Mangler logfil:"
 
-#: src/converter.C:931
+#: src/converter.C:935
 msgid "There were errors during the LaTeX run."
 msgstr "Der blev rapporteret fejl under kørslen af LaTeX."
 
@@ -8651,7 +8666,8 @@ msgid "GUI handling"
 msgstr "Brugerflade"
 
 #: src/debug.C:43
-msgid "Lyxlex grammer parser"
+#, fuzzy
+msgid "Lyxlex grammar parser"
 msgstr "Lyxlex-grammatikfortolker"
 
 #: src/debug.C:44
@@ -8735,27 +8751,27 @@ msgstr "Fejlfinder '%1$s' (%2$s)"
 msgid "Debugging `"
 msgstr "Fejlfinder '"
 
-#: src/exporter.C:62
+#: src/exporter.C:64
 msgid "Cannot export file"
 msgstr "Kan ikke eksportere fil"
 
-#: src/exporter.C:63
+#: src/exporter.C:65
 msgid "No information for exporting to "
 msgstr "Ingen information om ekport til "
 
-#: src/exporter.C:89
+#: src/exporter.C:91
 msgid "Cannot run LaTeX."
 msgstr "Kan ikke køre LaTeX."
 
-#: src/exporter.C:90
+#: src/exporter.C:92
 msgid "The path to the lyx file cannot contain spaces."
 msgstr "Stien til lyx-filen må ikke indeholde mellemrum."
 
-#: src/exporter.C:104
+#: src/exporter.C:106
 msgid "Document exported as "
 msgstr "Dokument eksporteret som "
 
-#: src/exporter.C:106
+#: src/exporter.C:108
 msgid " to file `"
 msgstr "til fil `"
 
@@ -9680,7 +9696,7 @@ msgstr "Krydshenvisning"
 msgid "&Go back"
 msgstr "&Gå tilbage"
 
-#: src/frontends/qt2/QRef.C:123 src/frontends/xforms/FormRef.C:277
+#: src/frontends/qt2/QRef.C:123 src/frontends/xforms/FormRef.C:279
 msgid "Go back"
 msgstr "Gå tilbage"
 
@@ -9999,12 +10015,16 @@ msgstr ""
 "ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
+msgid ""
+"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr ""
+"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
+msgid ""
+"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr ""
+"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
@@ -10044,7 +10064,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:243
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr ""
+" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10156,8 +10177,10 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Tilføj alle processer til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid "Add the currently selected child process to the list of processes to kill."
-msgstr "Tilføj den valgte underproces til listen over processer, der skal dræbes."
+msgid ""
+"Add the currently selected child process to the list of processes to kill."
+msgstr ""
+"Tilføj den valgte underproces til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:77
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -10477,8 +10500,10 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
@@ -10733,7 +10758,7 @@ msgstr "Vælg dokument til referencer."
 msgid "Sort the references alphabetically."
 msgstr "Sortér referencer i alfabetisk rækkefølge"
 
-#: src/frontends/xforms/FormRef.C:74 src/frontends/xforms/FormRef.C:281
+#: src/frontends/xforms/FormRef.C:74 src/frontends/xforms/FormRef.C:283
 msgid "Go to selected reference."
 msgstr "Gå til valgte reference."
 
@@ -10749,11 +10774,11 @@ msgstr "Vælg format til referencen."
 msgid "*** No labels found in document ***"
 msgstr "*** Fandt ingen referencemærker i dokumentet ***"
 
-#: src/frontends/xforms/FormRef.C:278
+#: src/frontends/xforms/FormRef.C:280
 msgid "Go back to original place."
 msgstr "Gå tilbage til oprindeligt sted."
 
-#: src/frontends/xforms/FormRef.C:280
+#: src/frontends/xforms/FormRef.C:282
 msgid "Go to"
 msgstr "Gå til"
 
@@ -10796,7 +10821,8 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid "Export the buffer to this format before running the command below on it."
+msgid ""
+"Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -11207,12 +11233,12 @@ msgstr "Ingen oplysninger om konvertering fra  %1$s til %2$s"
 msgid "No information for converting from "
 msgstr "Ingen oplysninger om konvertering fra "
 
-#: src/insets/insetgraphics.C:778
+#: src/insets/insetgraphics.C:797
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikfil: %1$s"
 
-#: src/insets/insetgraphics.C:782
+#: src/insets/insetgraphics.C:801
 msgid "Graphics file: "
 msgstr "Grafikfil: "
 
@@ -11656,104 +11682,104 @@ msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemmappen "
 msgid "containing the file `chkconfig.ltx'."
 msgstr "som indeholder filen `chkconfgi.ltx'."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:371
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Bruger indbyggede standard %1$s, men forvent problemer."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:376
 msgid "Using built-in default "
 msgstr "Bruger indbyggede standard "
 
-#: src/lyx_main.C:376
+#: src/lyx_main.C:377
 msgid " but expect problems."
 msgstr " men forvent problemer."
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:381
 msgid "Expect problems."
 msgstr "Forvent problemer."
 
-#: src/lyx_main.C:630
+#: src/lyx_main.C:631
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: genkonfigurerer brugermappe"
 
-#: src/lyx_main.C:634 src/lyx_main.C:682
+#: src/lyx_main.C:635 src/lyx_main.C:683
 msgid "Done!"
 msgstr "Færdig!"
 
-#: src/lyx_main.C:644
+#: src/lyx_main.C:645
 msgid "You have specified an invalid LyX directory."
 msgstr "Du har angivet en ugyldig LyX-mappe."
 
-#: src/lyx_main.C:645
+#: src/lyx_main.C:646
 msgid "It is needed to keep your own configuration."
 msgstr "Det behøves for at tage vare på din personlige opsætning."
 
-#: src/lyx_main.C:646
+#: src/lyx_main.C:647
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Skal jeg prøve at sætte det op for dig (anbefales)?"
 
-#: src/lyx_main.C:647
+#: src/lyx_main.C:648
 msgid "Running without personal LyX directory."
 msgstr "Kører uden personlig LyX-mappe."
 
-#: src/lyx_main.C:654
+#: src/lyx_main.C:655
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Opretter mappen %1$s og kører \"configure\"..."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:660
 msgid "LyX: Creating directory "
 msgstr "LyX: Opretter mappen "
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:661
 msgid " and running configure..."
 msgstr " og kører \"configure\"..."
 
-#: src/lyx_main.C:668
+#: src/lyx_main.C:669
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Mislykkedes. Vil bruge %1$s i stedet."
 
-#: src/lyx_main.C:672
+#: src/lyx_main.C:673
 msgid "Failed. Will use "
 msgstr "Mislykkedes. Vil bruge "
 
-#: src/lyx_main.C:673
+#: src/lyx_main.C:674
 msgid " instead."
 msgstr " i stedet."
 
-#: src/lyx_main.C:696 src/lyx_main.C:700
+#: src/lyx_main.C:697 src/lyx_main.C:701
 msgid "LyX Warning!"
 msgstr "LyX-advarsel!"
 
-#: src/lyx_main.C:697
+#: src/lyx_main.C:698
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Fejl under læsning af %1$s."
 
-#: src/lyx_main.C:698 src/lyx_main.C:702
+#: src/lyx_main.C:699 src/lyx_main.C:703
 msgid "Using built-in defaults."
 msgstr "Bruger indbyggede standarder."
 
-#: src/lyx_main.C:701
+#: src/lyx_main.C:702
 msgid "Error while reading "
 msgstr "Fejl under læsning af "
 
-#: src/lyx_main.C:811
+#: src/lyx_main.C:812
 msgid "List of supported debug flags:"
 msgstr "Liste over understøttede aflusningsflag:"
 
-#: src/lyx_main.C:816
+#: src/lyx_main.C:817
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Sætter fejlretnings-niveau til %1$s"
 
-#: src/lyx_main.C:820
+#: src/lyx_main.C:821
 msgid "Setting debug level to "
 msgstr "Sætter fejlretnings-niveau til "
 
-#: src/lyx_main.C:831
+#: src/lyx_main.C:832
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11791,27 +11817,27 @@ msgstr ""
 "\t-version        opsummér versions- og oversættelsesoplysninger\n"
 "Se LyX's manualside for flere detaljer."
 
-#: src/lyx_main.C:867
+#: src/lyx_main.C:868
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglende mappe for tilvalget '-sysdir'"
 
-#: src/lyx_main.C:877
+#: src/lyx_main.C:878
 msgid "Missing directory for -userdir switch"
 msgstr "Manglende mappe for tilvalget '-userdir'"
 
-#: src/lyx_main.C:887
+#: src/lyx_main.C:888
 msgid "Missing command string after --execute switch"
 msgstr "Manglende kommandostreng efter tilvalget '-execute'"
 
-#: src/lyx_main.C:900
+#: src/lyx_main.C:901
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-export'"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:913
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-import'"
 
-#: src/lyx_main.C:917
+#: src/lyx_main.C:918
 msgid "Missing filename for --import"
 msgstr "Manglende filnavn for '-import'"
 
@@ -11930,16 +11956,16 @@ msgstr "Ukendt funktion (%1$s)"
 msgid "Unknown function ("
 msgstr "Ukendt funktion ("
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:987
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/lyxfunc.C:988
+#: src/lyxfunc.C:990
 msgid "Saving document "
 msgstr "Gemmer dokumentet "
 
-#: src/lyxfunc.C:994
+#: src/lyxfunc.C:996
 msgid " done."
 msgstr " færdig."
 
@@ -12071,7 +12097,8 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr ""
+"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1840
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12087,7 +12114,8 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1852
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr ""
+"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1856
 msgid "The option for specifying the number of copies to print."
@@ -12127,7 +12155,8 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1888
 msgid "Option to pass to the print program to print to a file."
-msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr ""
+"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1892
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12177,11 +12206,13 @@ msgstr ""
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr ""
+"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr ""
+"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
@@ -12200,8 +12231,10 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1946
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr ""
+"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1950
 msgid ""
@@ -12351,7 +12384,8 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2041
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2046
@@ -12409,7 +12443,8 @@ msgstr ""
 "samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2078
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12432,7 +12467,8 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr ""
+"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2094
 msgid ""
@@ -12449,7 +12485,8 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2102
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2106
@@ -12495,7 +12532,8 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2144
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr ""
+"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2148
 msgid "Shows a typeset preview of things such as math"
@@ -12605,35 +12643,35 @@ msgstr " Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/support/filetools.C:448
+#: src/support/filetools.C:455
 msgid "Error! Cannot open directory:"
 msgstr "Fejl! Kan ikke åbne mappe:"
 
-#: src/support/filetools.C:468
+#: src/support/filetools.C:477
 msgid "Error! Could not remove file:"
 msgstr "Fejl: Kunne ikke slette fil:"
 
-#: src/support/filetools.C:492 src/support/filetools.C:528
+#: src/support/filetools.C:501 src/support/filetools.C:537
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Fejl: Kunne ikke oprette midlertidig mappe:"
 
-#: src/support/filetools.C:509
+#: src/support/filetools.C:518
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fejl: Kunne ikke slette midlertidig mappe:"
 
-#: src/support/filetools.C:574
+#: src/support/filetools.C:583
 msgid "Internal error!"
 msgstr "Intern fejl!"
 
-#: src/support/filetools.C:575
+#: src/support/filetools.C:584
 msgid "Call to createDirectory with invalid name"
 msgstr "Kald af createDirectory med ugyldigt navn"
 
-#: src/support/filetools.C:580
+#: src/support/filetools.C:589
 msgid "Error! Couldn't create directory:"
 msgstr "Fejl! Kunne ikke oprette mappe:"
 
-#: src/support/filetools.C:1344
+#: src/support/filetools.C:1353
 msgid "Could not delete auto-save file!"
 msgstr "Kunne ikke slette automatisk gemt fil!"
 
@@ -12659,7 +12697,8 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr ""
+"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -12695,14 +12734,14 @@ msgstr "Intet at indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
-#: src/text2.C:1326
+#: src/text2.C:1328
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
 
 #. par->SetLayout(0);
 #. s = layout->labelstring;
-#: src/text2.C:1339
+#: src/text2.C:1341
 msgid "Senseless: "
 msgstr "Meningsløs: "
 
@@ -13239,4 +13278,3 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
-

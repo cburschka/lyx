@@ -59,14 +59,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-01 11:51+0200\n"
+"POT-Creation-Date: 2004-09-10 12:25+0200\n"
 "PO-Revision-Date: 2004-06-01 15:18+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -2631,7 +2631,7 @@ msgstr "Text danach:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:55
-#: src/frontends/xforms/FormCitation.C:467
+#: src/frontends/xforms/FormCitation.C:471
 msgid "Not yet supported"
 msgstr "Noch nicht unterstützt"
 
@@ -4724,7 +4724,7 @@ msgstr "&Platzierung:"
 msgid "Standard"
 msgstr "Standard"
 
-#: ../lib/layouts/IEEEtran.layout:65 ../lib/layouts/scrmaths.inc:1
+#: ../lib/layouts/IEEEtran.layout:65
 msgid "TheoremTemplate"
 msgstr "TheoremVorlage"
 
@@ -4741,7 +4741,7 @@ msgstr "Beweis"
 #: ../lib/layouts/ijmpd.layout:125 ../lib/layouts/llncs.layout:441
 #: ../lib/layouts/siamltex.layout:189 ../lib/layouts/amsmaths-plain.inc:32
 #: ../lib/layouts/amsmaths-seq.inc:32 ../lib/layouts/amsmaths.inc:59
-#: ../lib/layouts/scrmaths.inc:17 ../lib/layouts/svjour.inc:509
+#: ../lib/layouts/svjour.inc:509
 msgid "Theorem"
 msgstr "Theorem"
 
@@ -4796,8 +4796,7 @@ msgstr "Axiom"
 #: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/llncs.layout:369 ../lib/layouts/siamltex.layout:221
 #: ../lib/layouts/amsmaths-plain.inc:131 ../lib/layouts/amsmaths-seq.inc:104
-#: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/scrmaths.inc:27
-#: ../lib/layouts/svjour.inc:429
+#: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/svjour.inc:429
 msgid "Definition"
 msgstr "Definition"
 
@@ -4930,7 +4929,7 @@ msgstr "Unterunterabschn.*"
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
 #: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/scrclass.inc:230
-#: src/buffer.C:1518
+#: src/buffer.C:1533
 msgid "Abstract"
 msgstr "Zusammenfassung"
 
@@ -4951,7 +4950,7 @@ msgstr "Stichwörter"
 #: ../lib/layouts/llncs.layout:290 ../lib/layouts/memoir.layout:21
 #: ../lib/layouts/mwbk.layout:23 ../lib/layouts/mwrep.layout:12
 #: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
-#: ../lib/layouts/scrreprt.layout:11 ../lib/layouts/siamltex.layout:171
+#: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/aguplus.inc:163 ../lib/layouts/amsdefs.inc:338
 #: ../lib/layouts/scrclass.inc:237 ../lib/layouts/stdstruct.inc:43
 #: ../lib/layouts/svjour.inc:356 src/frontends/qt2/QDocumentDialog.C:72
@@ -4989,7 +4988,7 @@ msgid "MarkBoth"
 msgstr "Beides Markieren"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:262
+#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
 #: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
 #: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
@@ -4997,7 +4996,7 @@ msgid "Itemize"
 msgstr "Auflistung"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:280
+#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:299
 #: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
 #: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
@@ -5157,13 +5156,13 @@ msgid "And"
 msgstr "Und"
 
 #: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
-#: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:303
-#: ../lib/layouts/svjour.inc:321
+#: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
+#: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Danksagungen"
 
 #: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
-#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1529
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
 msgid "References"
 msgstr "Referenzen"
 
@@ -5239,28 +5238,28 @@ msgstr "Journal"
 msgid "CopNum"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:212 ../lib/layouts/revtex4.layout:215
+#: ../lib/layouts/apa.layout:232 ../lib/layouts/revtex4.layout:215
 #: ../lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr "Danksagungen"
 
-#: ../lib/layouts/apa.layout:217
+#: ../lib/layouts/apa.layout:236
 msgid "ThickLine"
 msgstr "Dicke Linie"
 
-#: ../lib/layouts/apa.layout:225
+#: ../lib/layouts/apa.layout:244
 msgid "CenteredCaption"
 msgstr "Zentrierte Beschriftung"
 
-#: ../lib/layouts/apa.layout:232
+#: ../lib/layouts/apa.layout:251
 msgid "FitFigure"
 msgstr "Abbildung einpassen"
 
-#: ../lib/layouts/apa.layout:237
+#: ../lib/layouts/apa.layout:256
 msgid "FitBitmap"
 msgstr "Bitmap einpassen"
 
-#: ../lib/layouts/apa.layout:298
+#: ../lib/layouts/apa.layout:317
 msgid "Seriate"
 msgstr ""
 
@@ -6509,90 +6508,103 @@ msgid "Hebrew"
 msgstr "Hebräisch"
 
 #: ../lib/languages:35
+msgid "Icelandic"
+msgstr ""
+
+#: ../lib/languages:36
 msgid "Irish"
 msgstr "Irisch"
 
-#: ../lib/languages:36
+#: ../lib/languages:37
 msgid "Italian"
 msgstr "Italienisch"
 
-#: ../lib/languages:37
+#: ../lib/languages:38
 msgid "Kazakh"
 msgstr "Kasachisch"
 
-#: ../lib/languages:38
+#: ../lib/languages:39
+#, fuzzy
+msgid "Latvian"
+msgstr "Adresszusatz"
+
+#: ../lib/languages:40
+msgid "Lithuanian"
+msgstr ""
+
+#: ../lib/languages:41
 msgid "Lsorbian"
 msgstr "Sorbisch (L)"
 
-#: ../lib/languages:40
+#: ../lib/languages:43
 msgid "Magyar"
 msgstr "Ungarisch"
 
-#: ../lib/languages:41
+#: ../lib/languages:44
 msgid "Norsk"
 msgstr "Norwegisch"
 
-#: ../lib/languages:42
+#: ../lib/languages:45
 msgid "Polish"
 msgstr "Polnisch"
 
-#: ../lib/languages:43
+#: ../lib/languages:46
 msgid "Portugese"
 msgstr "Portugiesisch"
 
-#: ../lib/languages:44
+#: ../lib/languages:47
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: ../lib/languages:45
+#: ../lib/languages:48
 msgid "Russian"
 msgstr "Russisch"
 
-#: ../lib/languages:46
+#: ../lib/languages:49
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: ../lib/languages:47
+#: ../lib/languages:50
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: ../lib/languages:48
+#: ../lib/languages:51
 msgid "Serbo-Croatian"
 msgstr "Serbokroatisch"
 
-#: ../lib/languages:49
+#: ../lib/languages:52
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: ../lib/languages:50
+#: ../lib/languages:53
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: ../lib/languages:51
+#: ../lib/languages:54
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: ../lib/languages:52
+#: ../lib/languages:55
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: ../lib/languages:53
+#: ../lib/languages:56
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: ../lib/languages:54
+#: ../lib/languages:57
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: ../lib/languages:55
+#: ../lib/languages:58
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: ../lib/languages:56
+#: ../lib/languages:59
 msgid "Usorbian"
 msgstr "Sorbisch (U)"
 
-#: ../lib/languages:58
+#: ../lib/languages:61
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -8367,21 +8379,21 @@ msgstr "LyX wird keine Ausgabe erzeugen können."
 msgid "The document uses a missing TeX class "
 msgstr "Das Dokument verwendet die fehlende TeX-Klasse "
 
-#: src/buffer.C:968
+#: src/buffer.C:983
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
 
-#: src/buffer.C:972
+#: src/buffer.C:987
 msgid "Unknown token: "
 msgstr "Unbekanntes Token: "
 
 #. future format
-#: src/buffer.C:1197 src/buffer.C:1252
+#: src/buffer.C:1212 src/buffer.C:1267
 msgid "Warning!"
 msgstr "Achtung!"
 
-#: src/buffer.C:1198
+#: src/buffer.C:1213
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
@@ -8390,80 +8402,80 @@ msgstr ""
 "wahrscheinlich Probleme verursachen."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1204 src/buffer.C:1212 src/buffer.C:1226 src/buffer.C:1258
-#: src/buffer.C:1261
+#: src/buffer.C:1219 src/buffer.C:1227 src/buffer.C:1241 src/buffer.C:1273
+#: src/buffer.C:1276
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/buffer.C:1205
+#: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Altes LyX-Dateiformat gefunden. Bitte benutzen Sie LyX 0.10.x, um diese "
 "Datei zu lesen!"
 
-#: src/buffer.C:1213
+#: src/buffer.C:1228
 msgid "Can't find conversion script."
 msgstr "Kein Konvertierungsskript gefunden."
 
-#: src/buffer.C:1227
+#: src/buffer.C:1242
 msgid "An error occured while running the conversion script."
 msgstr ""
 "Während der Ausführung des Konvertierungsskripts ist ein Fehler aufgetreten."
 
-#: src/buffer.C:1253
+#: src/buffer.C:1268
 msgid "Reading of document is not complete"
 msgstr "Das Dokument wurde nicht vollständig eingelesen"
 
-#: src/buffer.C:1254
+#: src/buffer.C:1269
 msgid "Maybe the document is truncated"
 msgstr "Möglicherweise ist die Datei beschädigt"
 
-#: src/buffer.C:1258
+#: src/buffer.C:1273
 msgid "Not a LyX file!"
 msgstr "Dies ist keine LyX-Datei!"
 
-#: src/buffer.C:1261
+#: src/buffer.C:1276
 msgid "Unable to read file!"
 msgstr "Die Datei kann nicht gelesen werden!"
 
-#: src/buffer.C:1521
+#: src/buffer.C:1536
 msgid "Abstract: "
 msgstr "Zusammenfassung: "
 
-#: src/buffer.C:1532
+#: src/buffer.C:1547
 msgid "References: "
 msgstr "Referenzen: "
 
-#: src/buffer.C:1646
+#: src/buffer.C:1661
 msgid "Error: Cannot write file:"
 msgstr "Fehler! Die Datei kann nicht geschrieben werden werden:"
 
-#: src/buffer.C:1676
+#: src/buffer.C:1691
 msgid "Error: Cannot open file: "
 msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
-#: src/buffer.C:2293 src/buffer.C:2748
+#: src/buffer.C:2308 src/buffer.C:2763
 msgid "LYX_ERROR:"
 msgstr "LYX_FEHLER:"
 
-#: src/buffer.C:2293 src/buffer.C:2748
+#: src/buffer.C:2308 src/buffer.C:2763
 msgid "Cannot write file"
 msgstr "Die Datei kann nicht geschrieben werden"
 
-#: src/buffer.C:2381 src/buffer.C:2854
+#: src/buffer.C:2396 src/buffer.C:2869
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Fehler: Falsche Tiefe für den Befehl LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3141
+#: src/buffer.C:3156
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/buffer.C:3154
+#: src/buffer.C:3169
 msgid "chktex did not work!"
 msgstr "ChkTeX war nicht erfolgreich!"
 
-#: src/buffer.C:3155
+#: src/buffer.C:3170
 msgid "Could not run with file:"
 msgstr "Fehler bei der Ausführung mit der Datei:"
 
