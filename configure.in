@@ -33,6 +33,11 @@ done
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
 AC_PROG_RANLIB
+AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
+if test "x$KPSEWHICH" = xkpsewhich ; then
+    AC_DEFINE(HAVE_KPSEWHICH, 1,
+    [Define this if you have the kpsewhich program working on your system.])
+fi
 
 ### we will also need a C compiler to compile GNU gettext
 AC_PROG_CC

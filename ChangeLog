@@ -1,3 +1,13 @@
+1999-10-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* configure.in (Check for programs): Added a check for kpsewhich,
+	the latex generation will use this later to better the dicovery of
+	all used files. 
+
+	* src/BufferView.C (create_view): we don't need to cast this to
+	(void*) that is done automatically.
+	(WorkAreaButtonPress): removed some dead code.
+
 1999-10-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/minibuffer.C (Init): make sure that the "Welcome to LyX!"

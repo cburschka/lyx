@@ -394,7 +394,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 				      height-2*bw,"",
 				      work_area_handler);
 	obj->wantkey = FL_KEY_TAB;
-	obj->u_vdata = (void*) this; /* This is how we pass the BufferView
+	obj->u_vdata = this; /* This is how we pass the BufferView
 				       to the work_area_handler. */
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -469,7 +469,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	timer_cursor = obj = fl_add_timer(FL_HIDDEN_TIMER,
 					  0,0,0,0,"Timer");
 	fl_set_object_callback(obj,CursorToggleCB,0);
-	obj->u_vdata = (void*) this;
+	obj->u_vdata = this;
 }
 
 
@@ -893,18 +893,6 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT *ob, Window,
 		
 		// Hit above or below the table?
 		if (doit) {
-#if 0
-			long y_tmp = y + screen->first;
-
-			Row*  row =  _buffer->text->GetRowNearY(y_tmp);
-
-			// Isn't this empty code anyway? (Lgb)
-			if (row->par != _buffer->text->cursor.par)
-				doit = true;
-		}
-		
-		if (doit) {
-#endif
 			if (!_buffer->text->selection) {
 				screen->ToggleSelection();
 				_buffer->text->ClearSelection();
@@ -954,18 +942,6 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT *ob, Window,
 
 	// Right click on a footnote flag opens float menu
 	if (button == 3) { 
-#if 0
-		// Isn't this empty code anyway? (Lgb)
-		if (_buffer->text->cursor.par->footnoteflag == 
-		    LyXParagraph::OPEN_FOOTNOTE) {
-			selection_possible = false;
-			lyxerr.debug("LyX: Sorry not implemented yet.");
-			return 0;
-		}
-	}
-	
-	if (button == 3) {
-#endif
 		selection_possible = false;
 		return 0;
 	}
@@ -1525,4 +1501,3 @@ void BufferView::restorePosition()
 	currentBuffer()->text->SetCursorFromCoordinates(x, y);
 	currentBuffer()->update(0);
 } 
-
