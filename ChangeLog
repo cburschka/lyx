@@ -1,3 +1,10 @@
+2000-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxfunc.C (processKeySym): only handle the
+	lockinginset/inset stuff if we have a buffer and text loaded...
+
+	* lib/Makefile.am (EXTRA_DIST): add encodings and languages
+
 2000-10-12    <larsbj@baywatch.lyx.org>
 
 	* src/support/lyxfunctional.h: add operator= that takes a reference

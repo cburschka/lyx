@@ -190,23 +190,25 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		//return 0;
 		return FL_PREEMPT;
 	}
-	
-	// this function should be used always [asierra060396]
-	UpdatableInset * tli = owner->view()->theLockingInset();
-	if (owner->view()->available() && tli && (keysym == XK_Escape)) {
-		if (tli == tli->GetLockingInset()) {
-			owner->view()->unlockInset(tli);
-			owner->view()->text->CursorRight(owner->view());
-			moveCursorUpdate(false);
-			owner->showState();
-		} else {
-			tli->UnlockInsetInInset(owner->view(),
-						tli->GetLockingInset(),true);
-		}
-		//return 0;
-		return FL_PREEMPT;
-	}
 
+	if (owner->view()->available()) {
+		// this function should be used always [asierra060396]
+		UpdatableInset * tli = owner->view()->theLockingInset();
+		if (tli && (keysym == XK_Escape)) {
+			if (tli == tli->GetLockingInset()) {
+				owner->view()->unlockInset(tli);
+				owner->view()->text->CursorRight(owner->view());
+				moveCursorUpdate(false);
+				owner->showState();
+			} else {
+				tli->UnlockInsetInInset(owner->view(),
+							tli->GetLockingInset(),true);
+			}
+			//return 0;
+			return FL_PREEMPT;
+		}
+	}
+	
 	// Can we be sure that this will work for all X-Windows
 	// implementations? (Lgb)
 	// This code snippet makes lyx ignore some keys. Perhaps
