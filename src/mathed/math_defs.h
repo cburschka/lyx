@@ -126,7 +126,7 @@ enum MathSymbolTypes {
 	///
 	LMB_RELATION,
 	///
-	LMB_OPERATOR,
+	LMB_OPERATOR
 };
 
 #endif
