@@ -321,6 +321,12 @@
         <slot>viewClicked()</slot>
     </connection>
     <connection>
+        <sender>editPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QExternalDialogBase</receiver>
+        <slot>editClicked()</slot>
+    </connection>
+    <connection>
         <sender>externalCO</sender>
         <signal>activated(const QString&amp;)</signal>
         <receiver>QExternalDialogBase</receiver>
