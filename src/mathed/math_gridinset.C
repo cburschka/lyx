@@ -700,7 +700,7 @@ void MathGridInset::write(WriteStream & os) const
 		os << eolString(row);
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
-	if (!s.empty())
+	if (!s.empty() && s != " ")
 		os << "\\\\" << s;
 }
 
