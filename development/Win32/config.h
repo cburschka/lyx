@@ -405,7 +405,7 @@
 #define MODERN_STL_STREAMS 1
 
 /* Name of package */
-#define PACKAGE "lyx-1.4.0cvs"
+#define PACKAGE "lyx"
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "lyx-devel@lists.lyx.org"

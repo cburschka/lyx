@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -319,9 +320,9 @@ string const get_document_dir(string const & home_dir)
 string const get_home_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
-	string const home_dir = GetEnv("USERPROFILE");
+	string const home_dir = getEnv("USERPROFILE");
 #else // Posix-like.
-	string const home_dir = GetEnv("HOME");
+	string const home_dir = getEnv("HOME");
 #endif
 
 	return os::internal_path(home_dir);
@@ -650,7 +651,7 @@ bool check_command_line_dir(string const & dir,
 // The environment variable @c env_var expands to a (single) file path.
 string const extract_env_var_dir(string const & env_var)
 {
-	string const dir = os::internal_path(GetEnv(env_var));
+	string const dir = os::internal_path(getEnv(env_var));
 	return dir.empty() ? dir : MakeAbsPath(dir);
 }
 

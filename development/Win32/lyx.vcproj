@@ -10341,6 +10341,9 @@
 					RelativePath="..\..\src\support\debugstream.h">
 				</File>
 				<File
+					RelativePath="..\..\src\support\environment.C">
+				</File>
+				<File
 					RelativePath="..\..\src\support\filefilterlist.C">
 					<FileConfiguration
 						Name="Debug|Win32">
@@ -10534,15 +10537,6 @@
 				</File>
 				<File
 					RelativePath="..\..\src\support\pch.h">
-				</File>
-				<File
-					RelativePath="..\..\src\support\putenv.C">
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							CompileAs="2"/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\support\rename.C">

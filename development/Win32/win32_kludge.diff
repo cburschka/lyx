@@ -1,11 +1,10 @@
-? development/Win32/fake.bat
 Index: src/DepTable.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/DepTable.C,v
+RCS file: /cvs/lyx/lyx-devel/src/DepTable.C,v
 retrieving revision 1.41
 diff -u -r1.41 DepTable.C
---- src/DepTable.C	13 Oct 2003 01:01:33 -0000	1.41
-+++ src/DepTable.C	1 Feb 2005 14:12:30 -0000
+--- src/DepTable.C	2003/10/13 01:01:33	1.41
++++ src/DepTable.C	2005/02/17 18:19:16
 @@ -26,7 +26,9 @@
  #include <fstream>
  
@@ -18,11 +17,11 @@ diff -u -r1.41 DepTable.C
  using lyx::support::ltrim;
 Index: src/buffer.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/buffer.C,v
+RCS file: /cvs/lyx/lyx-devel/src/buffer.C,v
 retrieving revision 1.612
 diff -u -r1.612 buffer.C
---- src/buffer.C	8 Feb 2005 13:17:57 -0000	1.612
-+++ src/buffer.C	14 Feb 2005 08:44:10 -0000
+--- src/buffer.C	2005/02/08 13:17:57	1.612
++++ src/buffer.C	2005/02/17 18:19:17
 @@ -77,7 +77,11 @@
  #include <boost/bind.hpp>
  #include <boost/filesystem/operations.hpp>
@@ -38,11 +37,11 @@ diff -u -r1.612 buffer.C
  #include <stack>
 Index: src/cursor.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/cursor.C,v
-retrieving revision 1.121
-diff -u -r1.121 cursor.C
---- src/cursor.C	8 Feb 2005 13:17:57 -0000	1.121
-+++ src/cursor.C	14 Feb 2005 08:44:13 -0000
+RCS file: /cvs/lyx/lyx-devel/src/cursor.C,v
+retrieving revision 1.122
+diff -u -r1.122 cursor.C
+--- src/cursor.C	2005/02/15 17:34:53	1.122
++++ src/cursor.C	2005/02/17 18:19:18
 @@ -58,7 +58,9 @@
  using std::vector;
  using std::endl;
@@ -55,11 +54,11 @@ diff -u -r1.121 cursor.C
  using std::swap;
 Index: src/ispell.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/ispell.C,v
+RCS file: /cvs/lyx/lyx-devel/src/ispell.C,v
 retrieving revision 1.25
 diff -u -r1.25 ispell.C
---- src/ispell.C	20 Jan 2005 16:17:36 -0000	1.25
-+++ src/ispell.C	1 Feb 2005 14:12:30 -0000
+--- src/ispell.C	2005/01/20 16:17:36	1.25
++++ src/ispell.C	2005/02/17 18:19:18
 @@ -24,11 +24,17 @@
  
  #include "support/forkedcall.h"
@@ -71,11 +70,11 @@ diff -u -r1.25 ispell.C
  // HP-UX 11.x doesn't have this header
  #ifdef HAVE_SYS_SELECT_H
  #include <sys/select.h>
- #endif
--#include <sys/time.h>
++#endif
 +#ifndef _WIN32
 +# include <sys/time.h>
-+#endif
+ #endif
+-#include <sys/time.h>
  
  using boost::shared_ptr;
  
@@ -161,11 +160,11 @@ diff -u -r1.25 ispell.C
  
 Index: src/lyx_cb.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyx_cb.C,v
+RCS file: /cvs/lyx/lyx-devel/src/lyx_cb.C,v
 retrieving revision 1.247
 diff -u -r1.247 lyx_cb.C
---- src/lyx_cb.C	31 Jan 2005 10:42:18 -0000	1.247
-+++ src/lyx_cb.C	1 Feb 2005 14:12:30 -0000
+--- src/lyx_cb.C	2005/01/31 10:42:18	1.247
++++ src/lyx_cb.C	2005/02/17 18:19:19
 @@ -44,6 +44,10 @@
  #include "support/path.h"
  #include "support/systemcall.h"
@@ -179,11 +178,11 @@ diff -u -r1.247 lyx_cb.C
  
 Index: src/lyxserver.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyxserver.C,v
-retrieving revision 1.59
-diff -u -r1.59 lyxserver.C
---- src/lyxserver.C	20 Jan 2005 15:07:36 -0000	1.59
-+++ src/lyxserver.C	1 Feb 2005 14:12:30 -0000
+RCS file: /cvs/lyx/lyx-devel/src/lyxserver.C,v
+retrieving revision 1.60
+diff -u -r1.60 lyxserver.C
+--- src/lyxserver.C	2005/02/15 11:04:40	1.60
++++ src/lyxserver.C	2005/02/17 18:19:19
 @@ -54,6 +54,10 @@
  #include <sys/stat.h>
  #include <fcntl.h>
@@ -195,16 +194,16 @@ diff -u -r1.59 lyxserver.C
  #ifdef __EMX__
  #include <cstdlib>
  #include <io.h>
-@@ -182,6 +186,8 @@
+@@ -180,6 +184,8 @@
  	// Imported handles can be used both with OS/2 APIs and emx
  	// library functions.
- 	fd = _imphandle(os2fd);
+ 	int const fd = _imphandle(os2fd);
 +#elif defined(_WIN32)
-+
++	int fd = -1;
  #else
  	if (::access(filename.c_str(), F_OK) == 0) {
  		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
-@@ -236,10 +242,12 @@
+@@ -235,10 +241,12 @@
  	}
  #endif
  
@@ -217,7 +216,7 @@ diff -u -r1.59 lyxserver.C
  
  // OS/2 pipes are deleted automatically
  #ifndef __EMX__
-@@ -275,7 +283,13 @@
+@@ -274,7 +282,13 @@
  	errno = 0;
  	int status;
  	// the single = is intended here.
@@ -232,7 +231,7 @@ diff -u -r1.59 lyxserver.C
  
  		if (status > 0) {
  			charbuf[status] = '\0'; // turn it into a c string
-@@ -332,6 +346,9 @@
+@@ -331,6 +345,9 @@
  
  	if (pipename.empty()) return;
  
@@ -242,7 +241,7 @@ diff -u -r1.59 lyxserver.C
  	if (!ready) {
  		lyxerr << "LyXComm: Pipes are closed. Could not send "
  		       << msg << endl;
-@@ -342,6 +359,7 @@
+@@ -341,6 +358,7 @@
  		closeConnection();
  		openConnection();
  	}
@@ -252,12 +251,12 @@ diff -u -r1.59 lyxserver.C
  	int errnum;
 Index: src/lyxsocket.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyxsocket.C,v
-retrieving revision 1.6
-diff -u -r1.6 lyxsocket.C
---- src/lyxsocket.C	23 Jul 2004 19:01:48 -0000	1.6
-+++ src/lyxsocket.C	1 Feb 2005 14:12:30 -0000
-@@ -68,7 +68,9 @@
+RCS file: /cvs/lyx/lyx-devel/src/lyxsocket.C,v
+retrieving revision 1.7
+diff -u -r1.7 lyxsocket.C
+--- src/lyxsocket.C	2005/02/15 13:45:40	1.7
++++ src/lyxsocket.C	2005/02/17 18:19:20
+@@ -69,7 +69,9 @@
  LyXServerSocket::~LyXServerSocket()
  {
  	lyx_gui::unregister_socket_callback(fd_);
@@ -267,7 +266,7 @@ diff -u -r1.6 lyxsocket.C
  	lyx::support::unlink(address_);
  	lyxerr[Debug::LYXSERVER] << "lyx: Server socket quitting" << endl;
  }
-@@ -155,7 +157,11 @@
+@@ -156,7 +158,11 @@
  {
  	string const linen(line + '\n');
  	int const size = linen.size();
@@ -279,7 +278,7 @@ diff -u -r1.6 lyxsocket.C
  	if (written < size) { // Allways mean end of connection.
  		if ((written == -1) && (errno == EPIPE)) {
  			// The program will also receive a SIGPIPE
-@@ -194,7 +200,9 @@
+@@ -195,7 +201,9 @@
  
  LyXDataSocket::~LyXDataSocket()
  {
@@ -289,7 +288,7 @@ diff -u -r1.6 lyxsocket.C
  
  	lyx_gui::unregister_socket_callback(fd_);
  	lyxerr[Debug::LYXSERVER] << "lyx: Data socket " << fd_ << " quitting."
-@@ -216,7 +224,13 @@
+@@ -217,7 +225,13 @@
  	int count;
  
  	// read and store characters in buffer
@@ -304,7 +303,7 @@ diff -u -r1.6 lyxsocket.C
  		buffer_.append(charbuf, charbuf + count);
  	}
  
-@@ -250,7 +264,11 @@
+@@ -251,7 +265,11 @@
  {
  	string const linen(line + '\n');
  	int const size = linen.size();
@@ -318,11 +317,11 @@ diff -u -r1.6 lyxsocket.C
  			// The program will also receive a SIGPIPE
 Index: src/client/client.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/client/client.C,v
+RCS file: /cvs/lyx/lyx-devel/src/client/client.C,v
 retrieving revision 1.7
 diff -u -r1.7 client.C
---- src/client/client.C	20 Jan 2005 15:38:13 -0000	1.7
-+++ src/client/client.C	1 Feb 2005 14:12:31 -0000
+--- src/client/client.C	2005/01/20 15:38:13	1.7
++++ src/client/client.C	2005/02/17 18:19:20
 @@ -25,12 +25,14 @@
  # include <unistd.h>
  #endif
@@ -343,11 +342,11 @@ diff -u -r1.7 client.C
  #include <fcntl.h>
 Index: src/frontends/LyXView.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/frontends/LyXView.C,v
+RCS file: /cvs/lyx/lyx-devel/src/frontends/LyXView.C,v
 retrieving revision 1.50
 diff -u -r1.50 LyXView.C
---- src/frontends/LyXView.C	8 Feb 2005 13:18:02 -0000	1.50
-+++ src/frontends/LyXView.C	14 Feb 2005 08:44:33 -0000
+--- src/frontends/LyXView.C	2005/02/08 13:18:02	1.50
++++ src/frontends/LyXView.C	2005/02/17 18:19:20
 @@ -39,7 +39,9 @@
  
  #include <boost/bind.hpp>
@@ -361,11 +360,11 @@ diff -u -r1.50 LyXView.C
  #endif
 Index: src/frontends/qt2/QLyXKeySym.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/frontends/qt2/QLyXKeySym.C,v
+RCS file: /cvs/lyx/lyx-devel/src/frontends/qt2/QLyXKeySym.C,v
 retrieving revision 1.32
 diff -u -r1.32 QLyXKeySym.C
---- src/frontends/qt2/QLyXKeySym.C	7 Jul 2004 09:32:19 -0000	1.32
-+++ src/frontends/qt2/QLyXKeySym.C	14 Feb 2005 08:55:50 -0000
+--- src/frontends/qt2/QLyXKeySym.C	2004/07/07 09:32:19	1.32
++++ src/frontends/qt2/QLyXKeySym.C	2005/02/17 18:19:21
 @@ -74,7 +74,7 @@
  void initEncodings()
  {
@@ -377,12 +376,12 @@ diff -u -r1.32 QLyXKeySym.C
  	encoding_map["iso8859-2"] = QTextCodec::codecForName("ISO 8859-2");
 Index: src/support/filetools.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/filetools.C,v
-retrieving revision 1.205
-diff -u -r1.205 filetools.C
---- src/support/filetools.C	1 Feb 2005 16:41:24 -0000	1.205
-+++ src/support/filetools.C	2 Feb 2005 07:49:03 -0000
-@@ -1152,6 +1152,11 @@
+RCS file: /cvs/lyx/lyx-devel/src/support/filetools.C,v
+retrieving revision 1.206
+diff -u -r1.206 filetools.C
+--- src/support/filetools.C	2005/02/15 13:45:40	1.206
++++ src/support/filetools.C	2005/02/17 18:19:24
+@@ -1042,6 +1042,11 @@
  
  cmd_ret const RunCommand(string const & cmd)
  {
@@ -394,7 +393,7 @@ diff -u -r1.205 filetools.C
  	// FIXME: replace all calls to RunCommand with ForkedCall
  	// (if the output is not needed) or the code in ispell.C
  	// (if the output is needed).
-@@ -1192,6 +1197,7 @@
+@@ -1082,6 +1087,7 @@
  	sigprocmask(SIG_SETMASK, &oldMask, 0);
  
  	return make_pair(pret, ret);
@@ -404,11 +403,11 @@ diff -u -r1.205 filetools.C
  
 Index: src/support/forkedcall.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcall.C,v
+RCS file: /cvs/lyx/lyx-devel/src/support/forkedcall.C,v
 retrieving revision 1.23
 diff -u -r1.23 forkedcall.C
---- src/support/forkedcall.C	3 Feb 2005 14:55:33 -0000	1.23
-+++ src/support/forkedcall.C	7 Feb 2005 15:50:21 -0000
+--- src/support/forkedcall.C	2005/02/03 14:55:33	1.23
++++ src/support/forkedcall.C	2005/02/17 18:19:24
 @@ -30,6 +30,10 @@
  #include "support/lyxlib.h"
  #include "support/filetools.h"
@@ -525,11 +524,11 @@ diff -u -r1.23 forkedcall.C
  	if (cpid < 0) {
 Index: src/support/forkedcall.h
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcall.h,v
+RCS file: /cvs/lyx/lyx-devel/src/support/forkedcall.h,v
 retrieving revision 1.19
 diff -u -r1.19 forkedcall.h
---- src/support/forkedcall.h	26 Sep 2004 14:19:47 -0000	1.19
-+++ src/support/forkedcall.h	1 Feb 2005 14:12:31 -0000
+--- src/support/forkedcall.h	2004/09/26 14:19:47	1.19
++++ src/support/forkedcall.h	2005/02/17 18:19:24
 @@ -31,6 +31,10 @@
  
  #include <sys/types.h>
@@ -543,11 +542,11 @@ diff -u -r1.19 forkedcall.h
  
 Index: src/support/forkedcontr.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcontr.C,v
+RCS file: /cvs/lyx/lyx-devel/src/support/forkedcontr.C,v
 retrieving revision 1.27
 diff -u -r1.27 forkedcontr.C
---- src/support/forkedcontr.C	20 Jan 2005 15:38:14 -0000	1.27
-+++ src/support/forkedcontr.C	1 Feb 2005 14:12:31 -0000
+--- src/support/forkedcontr.C	2005/01/20 15:38:14	1.27
++++ src/support/forkedcontr.C	2005/02/17 18:19:24
 @@ -19,14 +19,22 @@
  
  #include "debug.h"
@@ -646,11 +645,11 @@ diff -u -r1.27 forkedcontr.C
  } // namespace support
 Index: src/support/forkedcontr.h
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/forkedcontr.h,v
+RCS file: /cvs/lyx/lyx-devel/src/support/forkedcontr.h,v
 retrieving revision 1.18
 diff -u -r1.18 forkedcontr.h
---- src/support/forkedcontr.h	7 Nov 2004 13:22:51 -0000	1.18
-+++ src/support/forkedcontr.h	1 Feb 2005 14:12:31 -0000
+--- src/support/forkedcontr.h	2004/11/07 13:22:51	1.18
++++ src/support/forkedcontr.h	2005/02/17 18:19:24
 @@ -19,7 +19,10 @@
  #include <boost/shared_ptr.hpp>
  
@@ -676,11 +675,11 @@ diff -u -r1.18 forkedcontr.h
  } // namespace support
 Index: src/support/os_win32.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/os_win32.C,v
+RCS file: /cvs/lyx/lyx-devel/src/support/os_win32.C,v
 retrieving revision 1.27
 diff -u -r1.27 os_win32.C
---- src/support/os_win32.C	21 Jan 2005 22:08:59 -0000	1.27
-+++ src/support/os_win32.C	14 Feb 2005 09:06:17 -0000
+--- src/support/os_win32.C	2005/01/21 22:08:59	1.27
++++ src/support/os_win32.C	2005/02/17 18:19:25
 @@ -89,12 +89,14 @@
  	// Close the console when run (probably)
  	// not run from command prompt
@@ -716,11 +715,11 @@ diff -u -r1.27 os_win32.C
  
 Index: src/support/socktools.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/socktools.C,v
+RCS file: /cvs/lyx/lyx-devel/src/support/socktools.C,v
 retrieving revision 1.6
 diff -u -r1.6 socktools.C
---- src/support/socktools.C	20 Jan 2005 15:38:14 -0000	1.6
-+++ src/support/socktools.C	1 Feb 2005 14:12:31 -0000
+--- src/support/socktools.C	2005/01/20 15:38:14	1.6
++++ src/support/socktools.C	2005/02/17 18:19:25
 @@ -15,8 +15,10 @@
  
  #include "debug.h"
@@ -771,11 +770,11 @@ diff -u -r1.6 socktools.C
  } // namespace socktools
 Index: src/support/tempname.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/tempname.C,v
+RCS file: /cvs/lyx/lyx-devel/src/support/tempname.C,v
 retrieving revision 1.25
 diff -u -r1.25 tempname.C
---- src/support/tempname.C	20 Jan 2005 15:38:14 -0000	1.25
-+++ src/support/tempname.C	1 Feb 2005 14:12:31 -0000
+--- src/support/tempname.C	2005/01/20 15:38:14	1.25
++++ src/support/tempname.C	2005/02/17 18:19:25
 @@ -30,6 +30,10 @@
  # include <sys/stat.h>
  #endif
@@ -821,11 +820,11 @@ diff -u -r1.25 tempname.C
  		return t;
 Index: src/support/userinfo.C
 ===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/userinfo.C,v
-retrieving revision 1.9
-diff -u -r1.9 userinfo.C
---- src/support/userinfo.C	20 Jan 2005 15:38:14 -0000	1.9
-+++ src/support/userinfo.C	1 Feb 2005 14:12:31 -0000
+RCS file: /cvs/lyx/lyx-devel/src/support/userinfo.C,v
+retrieving revision 1.10
+diff -u -r1.10 userinfo.C
+--- src/support/userinfo.C	2005/02/15 13:45:41	1.10
++++ src/support/userinfo.C	2005/02/17 18:19:25
 @@ -15,7 +15,9 @@
  
  #include <boost/assert.hpp>
