@@ -7,20 +7,19 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	formcopyrightdialog_moc.C \
-		formurldialog_moc.C
+		formurldialog_moc.C \
+		formindexdialog_moc.C \
+		formcitationdialog_moc.C \
+		formtocdialog_moc.C
 
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 libkde_la_OBJADD = \
-        ../xforms/FormCitation.lo \
-        ../xforms/form_citation.lo \
         ../xforms/FormCommand.lo \
         ../xforms/FormDocument.lo \
         ../xforms/form_document.lo \
         ../xforms/FormGraphics.lo \
         ../xforms/form_graphics.lo \
-        ../xforms/FormIndex.lo \
-        ../xforms/form_index.lo \
         ../xforms/FormPreferences.lo \
         ../xforms/form_preferences.lo \
 	../xforms/FormPrint.lo \
@@ -29,8 +28,6 @@ libkde_la_OBJADD = \
         ../xforms/form_ref.lo \
         ../xforms/FormTabular.lo \
         ../xforms/form_tabular.lo \
-        ../xforms/FormToc.lo \
-        ../xforms/form_toc.lo \
         ../xforms/input_validators.lo \
         ../xforms/RadioButtonGroup.lo \
         ../xforms/Toolbar_pimpl.lo \
@@ -52,6 +49,18 @@ libkde_la_SOURCES = \
 	FormUrl.h \
 	formurldialog.C \
 	formurldialog.h \
+	FormIndex.C \
+	FormIndex.h \
+	formindexdialog.C \
+	formindexdialog.h \
+	FormCitation.C \
+	FormCitation.h \
+	formcitationdialog.C \
+	formcitationdialog.h \
+	FormToc.C \
+	FormToc.h \
+	formtocdialog.C \
+	formtocdialog.h \
 	$(BUILTSOURCES)
 
 # These still have to be added. Sooner or later. ARRae-20000129
@@ -85,3 +94,15 @@ formcopyrightdialog_moc.C: formcopyrightdialog.h
 formurldialog.C: formurldialog_moc.C
 formurldialog_moc.C: formurldialog.h
 	$(MOC) formurldialog.h -o formurldialog_moc.C
+
+formindexdialog.C: formindexdialog_moc.C
+formindexdialog_moc.C: formindexdialog.h
+	$(MOC) formindexdialog.h -o formindexdialog_moc.C
+
+formcitationdialog.C: formcitationdialog_moc.C
+formcitationdialog_moc.C: formcitationdialog.h
+	$(MOC) formcitationdialog.h -o formcitationdialog_moc.C
+
+formtocdialog.C: formtocdialog_moc.C
+formtocdialog_moc.C: formtocdialog.h
+	$(MOC) formtocdialog.h -o formtocdialog_moc.C

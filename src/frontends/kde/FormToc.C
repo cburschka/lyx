@@ -1,0 +1,208 @@
+/*
+ * FormToc.C
+ * (C) 2000 LyX Team
+ * John Levon, moz@compsoc.man.ac.uk
+ */
+ 
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
+#include <config.h>
+
+#include "formtocdialog.h"
+ 
+#include "Dialogs.h"
+#include "FormToc.h"
+#include "gettext.h"
+#include "buffer.h"
+#include "support/lstrings.h"
+#include "QtLyXView.h"
+#include "lyxfunc.h" 
+#include "debug.h" 
+
+using std::vector;
+using std::pair;
+ 
+FormToc::FormToc(LyXView *v, Dialogs *d)
+	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
+	toclist(0), type(Buffer::TOC_TOC)
+{
+	// let the dialog be shown
+	// This is a permanent connection so we won't bother
+	// storing a copy because we won't be disconnecting.
+	d->showTOC.connect(slot(this, &FormToc::showTOC));
+	d->createTOC.connect(slot(this, &FormToc::createTOC));
+}
+
+FormToc::~FormToc()
+{
+	delete dialog_;
+}
+
+void FormToc::showTOC(InsetCommand * const inset)
+{
+	// FIXME: when could inset be 0 here ?
+	if (inset==0)
+		return;
+
+	inset_ = inset;
+	ih_ = inset_->hide.connect(slot(this,&FormToc::hide));
+	params = inset->params();
+	
+	show();
+}
+ 
+void FormToc::createTOC(string const & arg)
+{
+	if (inset_)
+		close();
+ 
+	params.setFromString(arg);
+	show();
+}
+ 
+void FormToc::updateToc()
+{
+	if (!lv_->view()->available()) {
+		toclist.clear();
+		dialog_->tree->clear();
+		return;
+	}
+
+	vector< vector<Buffer::TocItem> > tmp =
+		lv_->view()->buffer()->getTocList();
+
+	// Check if all elements are the same.
+	if (toclist.size() == tmp[type].size()) {
+		unsigned int i = 0;
+		for (; i < toclist.size(); ++i) {
+			if (toclist[i] !=  tmp[type][i])
+				break;
+		}
+		if (i >= toclist.size()) 
+			return;
+	}
+ 
+	toclist = tmp[type];
+
+	dialog_->tree->clear();
+
+	 
+	// FIXME: should do hierarchically. at each point we need to know
+	// id of item we've just inserted, id of most recent sibling, and
+	// id of parent
+ 
+	dialog_->tree->setAutoUpdate(false);
+	for (vector< Buffer::TocItem >::const_iterator iter = toclist.begin();
+		iter != toclist.end(); ++iter) {
+		dialog_->tree->insertItem((string(4*(*iter).depth,' ')+(*iter).str).c_str(), 0, -1, false);
+	}
+	dialog_->tree->setAutoUpdate(true);
+	dialog_->tree->update();
+}
+ 
+void FormToc::setType(Buffer::TocType toctype)
+{
+	type = toctype;
+	switch (type) {
+		case Buffer::TOC_TOC:
+			dialog_->setCaption(_("Table of Contents"));
+			break; 
+		case Buffer::TOC_LOF:
+			dialog_->setCaption(_("List of Figures"));
+			break; 
+		case Buffer::TOC_LOT:
+			dialog_->setCaption(_("List of Tables"));
+			break; 
+		case Buffer::TOC_LOA:
+			dialog_->setCaption(_("List of Algorithms"));
+			break; 
+	}
+}
+ 
+void FormToc::update()
+{
+	if (params.getCmdName()=="tableofcontents") {
+		setType(Buffer::TOC_TOC);
+		dialog_->menu->setCurrentItem(0);
+	} else if (params.getCmdName()=="listoffigures") {
+		setType(Buffer::TOC_LOF); 
+		dialog_->menu->setCurrentItem(1); 
+	} else if (params.getCmdName()=="listoftables") {
+		setType(Buffer::TOC_LOT); 
+		dialog_->menu->setCurrentItem(2); 
+	} else {
+		setType(Buffer::TOC_LOA); 
+		dialog_->menu->setCurrentItem(3); 
+	} 
+
+	updateToc();
+}
+ 
+void FormToc::highlight(int index)
+{
+	if (!lv_->view()->available())
+		return;
+ 
+	// FIXME: frontStrip can go once it's hierarchical
+	string tmp(frontStrip(dialog_->tree->itemAt(index)->getText(),' '));
+ 
+	vector <Buffer::TocItem>::const_iterator iter = toclist.begin();
+	for (; iter != toclist.end(); ++iter) {
+		if (iter->str==tmp)
+			break;
+	} 
+	
+	if (iter==toclist.end()) {
+		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : " << tmp << endl;
+		return;
+	}
+
+	lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tostr(iter->par->id()).c_str());
+}
+ 
+void FormToc::set_type(Buffer::TocType toctype)
+{
+	if (toctype==type)
+		return;
+
+	setType(toctype);
+	updateToc();
+}
+ 
+void FormToc::show()
+{
+	if (!dialog_)
+		dialog_ = new FormTocDialog(this, 0, _("LyX: Table of Contents"), false);
+ 
+	if (!dialog_->isVisible()) {
+		h_ = d_->hideBufferDependent.connect(slot(this, &FormToc::hide));
+		u_ = d_->updateBufferDependent.connect(slot(this, &FormToc::update));
+	}
+
+	dialog_->raise();
+	dialog_->setActiveWindow();
+ 
+	update();
+	dialog_->show();
+}
+
+void FormToc::close()
+{
+	h_.disconnect();
+	u_.disconnect();
+	ih_.disconnect();
+	inset_ = 0;
+}
+ 
+void FormToc::hide()
+{
+	dialog_->hide();
+	close();
+}

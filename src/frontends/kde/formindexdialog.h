@@ -1,5 +1,5 @@
 /*
- * formurldialog.h
+ * formindexdialog.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,64 +13,59 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMURLDIALOG_H
-#define FORMURLDIALOG_H
+#ifndef FORMINDEXDIALOG_H
+#define FORMINDEXDIALOG_H
 
 #include <config.h>
 #include <gettext.h>
 
 // to connect apply() and hide()
-#include "FormUrl.h"
+#include "FormIndex.h"
 
 #include <qdialog.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
-#include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class FormUrlDialog : public QDialog  {
+class FormIndexDialog : public QDialog  {
    Q_OBJECT
 public:
-	FormUrlDialog(FormUrl *form, QWidget *parent=0, const char *name=0,
+	FormIndexDialog(FormIndex *form, QWidget *parent=0, const char *name=0,
 			    bool modal=false, WFlags f=0);
-	~FormUrlDialog();
+	~FormIndexDialog();
 
 	// widgets
  
-	QLabel *labelurl;
-	QLabel *labelurlname;
-	QLineEdit *url;
-	QLineEdit *urlname;
-	QCheckBox *htmlurl;
+	QLabel *labelindex;
+	QLineEdit *index;
 	QPushButton *buttonOk;
 	QPushButton *buttonCancel;
+ 
 
 protected:
 	void closeEvent(QCloseEvent *e);
  
 private:
-	FormUrl *form_;
+	FormIndex *form_;
 
 	// layouts
  
 	QHBoxLayout *topLayout;
 	QVBoxLayout *layout;
-	QHBoxLayout *urlLayout;
-	QBoxLayout *urlnameLayout;
-	QBoxLayout *htmlurlLayout;
+	QHBoxLayout *indexLayout;
 	QHBoxLayout *buttonLayout;
 
 private slots:
-	/// adaptor to FormUrl::apply
+	/// adaptor to FormIndex::apply
 	void apply_adaptor(void) {
 		form_->apply();
 		form_->close();
 		hide();
 	}
 
-	/// adaptor to FormUrl::close
+	/// adaptor to FormIndex::close
 	void close_adaptor(void) {
 		form_->close();
 		hide();

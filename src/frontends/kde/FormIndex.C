@@ -1,5 +1,5 @@
 /*
- * FormUrl.C
+ * FormIndex.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -16,29 +16,29 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "FormUrl.h"
+#include "FormIndex.h"
 #include "gettext.h"
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h" 
-#include "formurldialog.h"
+#include "formindexdialog.h"
 
-FormUrl::FormUrl(LyXView *v, Dialogs *d)
+FormIndex::FormIndex(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showUrl.connect(slot(this, &FormUrl::showUrl));
-	d->createUrl.connect(slot(this, &FormUrl::createUrl));
+	d->showIndex.connect(slot(this, &FormIndex::showIndex));
+	d->createIndex.connect(slot(this, &FormIndex::createIndex));
 }
 
-FormUrl::~FormUrl()
+FormIndex::~FormIndex()
 {
 	delete dialog_;
 }
 
-void FormUrl::showUrl(InsetCommand * const inset)
+void FormIndex::showIndex(InsetCommand * const inset)
 {
 	// FIXME: when could inset be 0 here ?
 	if (inset==0)
@@ -46,13 +46,13 @@ void FormUrl::showUrl(InsetCommand * const inset)
 
 	inset_ = inset;
 	readonly = lv_->buffer()->isReadonly();
-	ih_ = inset_->hide.connect(slot(this,&FormUrl::hide));
+	ih_ = inset_->hide.connect(slot(this,&FormIndex::hide));
 	params = inset->params();
 	
 	show();
 }
  
-void FormUrl::createUrl(string const & arg)
+void FormIndex::createIndex(string const & arg)
 {
 	// we could already be showing a URL, clear it out
 	if (inset_)
@@ -63,44 +63,28 @@ void FormUrl::createUrl(string const & arg)
 	show();
 }
  
-void FormUrl::update()
+void FormIndex::update()
 {
-	dialog_->url->setText(params.getContents().c_str());
-	dialog_->urlname->setText(params.getOptions().c_str());
-
-	if (params.getCmdName()=="url") 
-		dialog_->htmlurl->setChecked(0);
-	else
-		dialog_->htmlurl->setChecked(1);
+	dialog_->index->setText(params.getContents().c_str());
 
 	if (readonly) {
-		dialog_->urlname->setFocusPolicy(QWidget::NoFocus);
-		dialog_->url->setFocusPolicy(QWidget::NoFocus);
+		dialog_->index->setFocusPolicy(QWidget::NoFocus);
 		dialog_->buttonOk->setEnabled(false);
 		dialog_->buttonCancel->setText(_("Close"));
-		dialog_->htmlurl->setEnabled(false);
 	} else {
-		dialog_->urlname->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->url->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->url->setFocus();
+		dialog_->index->setFocusPolicy(QWidget::StrongFocus);
+		dialog_->index->setFocus();
 		dialog_->buttonOk->setEnabled(true);
 		dialog_->buttonCancel->setText(_("Cancel"));
-		dialog_->htmlurl->setEnabled(true);
 	}
 }
  
-void FormUrl::apply()
+void FormIndex::apply()
 {
 	if (readonly)
 		return;
 
-	params.setContents(dialog_->url->text());
-	params.setOptions(dialog_->urlname->text());
-
-	if (dialog_->htmlurl->isChecked())
-		params.setCmdName("htmlurl");
-	else
-		params.setCmdName("url");
+	params.setContents(dialog_->index->text());
 
 	if (inset_ != 0) {
 		if (params != inset_->params()) {
@@ -108,17 +92,17 @@ void FormUrl::apply()
 			lv_->view()->updateInset(inset_, true);
 		}
 	} else
-		lv_->getLyXFunc()->Dispatch(LFUN_INSERT_URL, params.getAsString().c_str());
+		lv_->getLyXFunc()->Dispatch(LFUN_INDEX_INSERT, params.getAsString().c_str());
 }
  
-void FormUrl::show()
+void FormIndex::show()
 {
 	if (!dialog_)
-		dialog_ = new FormUrlDialog(this, 0, _("LyX: Url"), false);
+		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"), false);
  
 	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormUrl::hide));
-		u_ = d_->updateBufferDependent.connect(slot(this, &FormUrl::update));
+		h_ = d_->hideBufferDependent.connect(slot(this, &FormIndex::hide));
+		u_ = d_->updateBufferDependent.connect(slot(this, &FormIndex::update));
 	}
 
 	dialog_->raise();
@@ -128,7 +112,7 @@ void FormUrl::show()
 	dialog_->show();
 }
 
-void FormUrl::close()
+void FormIndex::close()
 {
 	h_.disconnect();
 	u_.disconnect();
@@ -136,7 +120,7 @@ void FormUrl::close()
 	inset_ = 0;
 }
  
-void FormUrl::hide()
+void FormIndex::hide()
 {
 	dialog_->hide();
 	close();

@@ -1,3 +1,31 @@
+2000-09-11  John Levon  <moz@compsoc.man.ac.uk>
+
+        * src/frontends/kde/formurldialog.C
+        * src/frontends/kde/formurldialog.h
+        * src/frontends/kde/FormUrl.C
+        * src/frontends/kde/FormUrl.h: minor cleanups
+        
+        * src/frontends/kde/QtLyXView: wrapper to avoid Qt namespace mangling
+
+        * src/frontends/kde/Makefile.am
+        * src/frontends/kde/FormToc.C
+        * src/frontends/kde/FormToc.h
+        * src/frontends/kde/FormCitation.C
+        * src/frontends/kde/FormCitation.h
+        * src/frontends/kde/FormIndex.C
+        * src/frontends/kde/FormIndex.h
+        * src/frontends/kde/formtocdialog.C
+        * src/frontends/kde/formtocdialog.h
+        * src/frontends/kde/formcitationdialog.C
+        * src/frontends/kde/formcitationdialog.h
+        * src/frontends/kde/formindexdialog.C
+        * src/frontends/kde/formindexdialog.h: new Toc,Citation,Index dialogs
+
+2000-09-12  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/gnome/GUIRunTime.C (initApplication): make id + version
+	static strings.
+
 2000-09-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/GUIRunTime.C (initApplication): use lyxerr,

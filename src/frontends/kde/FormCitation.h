@@ -1,4 +1,4 @@
-/* FormUrl.h
+/* FormCitation.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -12,32 +12,48 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef FORMCITATION_H
+#define FORMCITATION_H
 
 #include "DialogBase.h"
-#include "LString.h"
+#include "support/lstrings.h"
 #include "support/utility.hpp"
-#include "insets/inseturl.h"
+#include "insets/insetcommand.h" 
 
+#include <vector> 
+ 
 class Dialogs;
 class LyXView;
-class FormUrlDialog;
+class FormCitationDialog;
 
-class FormUrl : public DialogBase, public noncopyable {
+class FormCitation : public DialogBase, public noncopyable {
 public: 
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormCitation(LyXView *, Dialogs *);
 	/// 
-	~FormUrl();
+	~FormCitation();
 	//@}
 
 	/// Apply changes
 	void apply();
 	/// close the connections
 	void close();
+	/// add a key
+	void add();
+	/// remove a key
+	void remove();
+	/// move a key up
+	void up();
+	/// move a key down
+	void down(); 
+	/// a key has been highlighted
+	void highlight_key(const char *key);
+	/// a chosen key has been highlighted
+	void highlight_chosen(const char *key); 
+	/// a key has been double-clicked
+	void select_key(const char *key);
  
 private: 
 	/// Create the dialog if necessary, update it and display it.
@@ -47,13 +63,22 @@ private:
 	/// Update the dialog.
 	void update();
 
-	/// create a URL inset
-	void createUrl(string const &);
-	/// edit a URL inset
-	void showUrl(InsetCommand * const);
+	/// create a Citation inset
+	void createCitation(string const &);
+	/// edit a Citation inset
+	void showCitation(InsetCommand * const);
+ 
+	/// update add,remove,up,down
+	void updateButtons();
+	/// update the available keys list
+	void updateAvailableList();
+	/// update the chosen keys list
+	void updateChosenList();
+	/// select the currently chosen key 
+	void selectChosen();
  
 	/// Real GUI implementation.
-	FormUrlDialog * dialog_;
+	FormCitationDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
@@ -66,7 +91,7 @@ private:
 	InsetCommand * inset_;
 	/// insets params
 	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer
+	/// is the inset we are reading from a readonly buffer ?
 	bool readonly;
 	
 	/// Hide connection.
@@ -75,6 +100,17 @@ private:
 	Connection u_;
 	/// Inset hide connection.
 	Connection ih_;
+
+	/// available citation keys
+	std::vector<pair<string, string> > keys;
+	/// chosen citation keys
+	std::vector<string> chosenkeys;
+ 
+	/// currently selected key
+	string selectedKey;
+
+	/// currently selected chosen key
+	string selectedChosenKey;
 };
 
 #endif

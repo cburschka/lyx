@@ -1,5 +1,5 @@
 /*
- * formurldialog.h
+ * formtocdialog.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,64 +13,81 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMURLDIALOG_H
-#define FORMURLDIALOG_H
+#ifndef FORMTOCDIALOG_H
+#define FORMTOCDIALOG_H
 
 #include <config.h>
 #include <gettext.h>
 
-// to connect apply() and hide()
-#include "FormUrl.h"
-
+#include <debug.h> 
 #include <qdialog.h>
 #include <qlayout.h>
-#include <qlabel.h>
-#include <qtooltip.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
 #include <qpushbutton.h>
+#include <qcombobox.h>
 
-class FormUrlDialog : public QDialog  {
+#include <ktreelist.h>
+ 
+#include "FormToc.h"
+
+class FormTocDialog : public QDialog  {
    Q_OBJECT
 public:
-	FormUrlDialog(FormUrl *form, QWidget *parent=0, const char *name=0,
+	FormTocDialog(FormToc *form, QWidget *parent=0, const char *name=0,
 			    bool modal=false, WFlags f=0);
-	~FormUrlDialog();
+	~FormTocDialog();
 
 	// widgets
  
-	QLabel *labelurl;
-	QLabel *labelurlname;
-	QLineEdit *url;
-	QLineEdit *urlname;
-	QCheckBox *htmlurl;
-	QPushButton *buttonOk;
-	QPushButton *buttonCancel;
+	QComboBox *menu;
+	KTreeList *tree;
+	QPushButton *buttonUpdate;
+	QPushButton *buttonClose;
 
 protected:
 	void closeEvent(QCloseEvent *e);
  
 private:
-	FormUrl *form_;
+	FormToc *form_;
 
-	// layouts
+	// layouts  
  
 	QHBoxLayout *topLayout;
 	QVBoxLayout *layout;
-	QHBoxLayout *urlLayout;
-	QBoxLayout *urlnameLayout;
-	QBoxLayout *htmlurlLayout;
 	QHBoxLayout *buttonLayout;
-
+ 
 private slots:
-	/// adaptor to FormUrl::apply
-	void apply_adaptor(void) {
-		form_->apply();
-		form_->close();
-		hide();
+	/// adaptor to FormToc::highlight
+	void highlight_adaptor(int index) {
+		form_->highlight(index);
 	}
 
-	/// adaptor to FormUrl::close
+	/// adaptor to FormToc::update
+	void update_adaptor(void) {
+		form_->update();
+	}
+ 
+	// adaptors to FormToc::set_type
+	void activate_adaptor(int index) {
+		switch (index) {
+			case 0: 
+				form_->set_type(Buffer::TOC_TOC);
+				break;
+			case 1: 
+				form_->set_type(Buffer::TOC_LOF);
+				break;
+			case 2: 
+				form_->set_type(Buffer::TOC_LOT);
+				break;
+			case 3: 
+				form_->set_type(Buffer::TOC_LOA);
+				break;
+			default:
+				lyxerr[Debug::GUI] << "Unknown TOC combo selection." << endl;
+				break;
+		}
+	}
+ 
+	/// adaptor to FormToc::close
 	void close_adaptor(void) {
 		form_->close();
 		hide();

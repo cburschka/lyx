@@ -1,4 +1,4 @@
-/* FormUrl.h
+/* FormIndex.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -12,26 +12,26 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef FORMINDEX_H
+#define FORMINDEX_H
 
 #include "DialogBase.h"
 #include "LString.h"
 #include "support/utility.hpp"
-#include "insets/inseturl.h"
+#include "insets/insetindex.h"
 
 class Dialogs;
 class LyXView;
-class FormUrlDialog;
+class FormIndexDialog;
 
-class FormUrl : public DialogBase, public noncopyable {
+class FormIndex : public DialogBase, public noncopyable {
 public: 
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormIndex(LyXView *, Dialogs *);
 	/// 
-	~FormUrl();
+	~FormIndex();
 	//@}
 
 	/// Apply changes
@@ -47,13 +47,13 @@ private:
 	/// Update the dialog.
 	void update();
 
-	/// create a URL inset
-	void createUrl(string const &);
-	/// edit a URL inset
-	void showUrl(InsetCommand * const);
+	/// create an Index inset
+	void createIndex(string const &);
+	/// edit an Index  inset
+	void showIndex(InsetCommand * const);
  
 	/// Real GUI implementation.
-	FormUrlDialog * dialog_;
+	FormIndexDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
@@ -66,7 +66,7 @@ private:
 	InsetCommand * inset_;
 	/// insets params
 	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer
+	/// is the inset we are reading from a readonly buffer ?
 	bool readonly;
 	
 	/// Hide connection.

@@ -63,8 +63,8 @@ int GUIRunTime::initApplication(int, char * argv[])
 		return 1;
 	}
 
-	string app_id(PACKAGE);
-	string app_version(VERSION);
+	static string app_id(PACKAGE);
+	static string app_version(VERSION);
 	static Gnome::Main  a(app_id, app_version, 1, argv);
 	static GLyxAppWin   appWin;
 	mainAppWin = &appWin;

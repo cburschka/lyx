@@ -1,4 +1,4 @@
-/* FormUrl.h
+/* FormToc.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -12,30 +12,34 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef FORMTOC_H
+#define FORMTOC_H
 
 #include "DialogBase.h"
 #include "LString.h"
 #include "support/utility.hpp"
-#include "insets/inseturl.h"
+#include "insets/insetcommand.h" 
+#include "buffer.h" 
 
 class Dialogs;
-class LyXView;
-class FormUrlDialog;
+class FormTocDialog;
 
-class FormUrl : public DialogBase, public noncopyable {
+class FormToc : public DialogBase, public noncopyable {
 public: 
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormToc(LyXView *, Dialogs *);
 	/// 
-	~FormUrl();
+	~FormToc();
 	//@}
 
-	/// Apply changes
-	void apply();
+	/// Highlighted an item
+	void highlight(int index);
+	/// Choose which type
+	void set_type(Buffer::TocType type);
+	/// Update the dialog.
+	void update();
 	/// close the connections
 	void close();
  
@@ -44,16 +48,22 @@ private:
 	void show();
 	/// Hide the dialog.
 	void hide();
-	/// Update the dialog.
-	void update();
 
-	/// create a URL inset
-	void createUrl(string const &);
-	/// edit a URL inset
-	void showUrl(InsetCommand * const);
+	/// create a Toc inset
+	void createTOC(string const &);
+	/// view a Toc inset
+	void showTOC(InsetCommand * const);
+	 
+	/// hierarchical tree
+	int FormToc::doTree(vector < Buffer::TocItem>::const_iterator & , int, int, int);
+	/// update the Toc
+	void updateToc(void);
+
+	/// set the type
+	void setType(Buffer::TocType);
  
 	/// Real GUI implementation.
-	FormUrlDialog * dialog_;
+	FormTocDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
@@ -66,8 +76,6 @@ private:
 	InsetCommand * inset_;
 	/// insets params
 	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer
-	bool readonly;
 	
 	/// Hide connection.
 	Connection h_;
@@ -75,6 +83,12 @@ private:
 	Connection u_;
 	/// Inset hide connection.
 	Connection ih_;
+
+	/// the toc list
+	std::vector <Buffer::TocItem> toclist;
+
+	/// type currently being shown
+	Buffer::TocType type;
 };
 
 #endif

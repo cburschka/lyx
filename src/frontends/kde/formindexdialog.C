@@ -1,5 +1,5 @@
 /*
- * formurldialog.C
+ * formindexdialog.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,37 +13,23 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "formurldialog.h"
+#include "formindexdialog.h"
 
-FormUrlDialog::FormUrlDialog(FormUrl *form, QWidget *parent, const char *name, bool, WFlags)
+FormIndexDialog::FormIndexDialog(FormIndex *form, QWidget *parent, const char *name, bool, WFlags)
 	: QDialog(parent,name,false), form_(form)
 {
 	setCaption(name);
 
 	// widgets
 
-	url = new QLineEdit(this);
-	url->setMinimumSize(url->sizeHint());
+	index = new QLineEdit(this);
+	index->setMinimumSize(index->sizeHint());
 
-	urlname = new QLineEdit(this);
-	urlname->setMinimumSize(urlname->sizeHint());
-
-	labelurl = new QLabel(this);
-	labelurl->setText(_("Url :"));
-	labelurl->setMargin(5);
-	labelurl->setMinimumSize(labelurl->sizeHint());
-	labelurl->setMaximumSize(labelurl->sizeHint());
-
-	labelurlname = new QLabel(this);
-	labelurlname->setText(_("Name :"));
-	labelurlname->setMargin(5);
-	labelurlname->setMinimumSize(labelurlname->sizeHint());
-	labelurlname->setMaximumSize(labelurlname->sizeHint());
-
-	htmlurl = new QCheckBox(this);
-	htmlurl->setText(_("Generate hyperlink"));
-	htmlurl->setMinimumSize(htmlurl->sizeHint());
-	htmlurl->setMaximumSize(htmlurl->sizeHint());
+	labelindex = new QLabel(this);
+	labelindex->setText(_("Keyword :"));
+	labelindex->setMargin(5);
+	labelindex->setMinimumSize(labelindex->sizeHint());
+	labelindex->setMaximumSize(labelindex->sizeHint());
 
 	buttonOk = new QPushButton(this);
 	buttonOk->setMinimumSize(buttonOk->sizeHint());
@@ -58,11 +44,8 @@ FormUrlDialog::FormUrlDialog(FormUrl *form, QWidget *parent, const char *name, b
 
 	// tooltips
 
-	QToolTip::add(labelurl,_("URL"));
-	QToolTip::add(url,_("URL"));
-	QToolTip::add(labelurlname,_("Name associated with the URL"));
-	QToolTip::add(urlname,_("Name associated with the URL"));
-	QToolTip::add(htmlurl,_("Output as a hyperlink ?"));
+	QToolTip::add(labelindex,_("Index entry"));
+	QToolTip::add(index,_("Index entry"));
 
 	// layouts
 
@@ -71,44 +54,35 @@ FormUrlDialog::FormUrlDialog(FormUrl *form, QWidget *parent, const char *name, b
 	layout = new QVBoxLayout();
 	topLayout->addLayout(layout);
 	layout->addSpacing(10);
-	
-	urlLayout = new QHBoxLayout();
-	layout->addLayout(urlLayout);
-	urlLayout->addWidget(labelurl, 0);
-	urlLayout->addWidget(url, 1);
 
-	urlnameLayout = new QHBoxLayout();
-	layout->addLayout(urlnameLayout);
-	urlnameLayout->addWidget(labelurlname, 0);
-	urlnameLayout->addWidget(urlname, 1);
+	indexLayout = new QHBoxLayout();
+	layout->addLayout(indexLayout);
+	indexLayout->addWidget(labelindex, 0);
+	indexLayout->addWidget(index, 1);
 
-	htmlurlLayout = new QHBoxLayout();
 	layout->addStretch(1);
-	layout->addLayout(htmlurlLayout);
-	layout->addStretch(1);
-	htmlurlLayout->addWidget(htmlurl);
-	htmlurlLayout->addStretch(1);
 
 	buttonLayout = new QHBoxLayout();
+
 	layout->addLayout(buttonLayout);
 	buttonLayout->addStretch(1);
 	buttonLayout->addWidget(buttonOk, 1);
 	buttonLayout->addStretch(2);
 	buttonLayout->addWidget(buttonCancel, 1);
 	buttonLayout->addStretch(1);
-
+ 
 	// connections
 
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(apply_adaptor()));
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
 }
 
-void FormUrlDialog::closeEvent(QCloseEvent *e)
+void FormIndexDialog::closeEvent(QCloseEvent *e)
 {
 	form_->close();
 	e->accept();
 }
 
-FormUrlDialog::~FormUrlDialog()
+FormIndexDialog::~FormIndexDialog()
 {
 }

@@ -31,7 +31,7 @@ extern bool finished;
 
 static int const xforms_include_version = FL_INCLUDE_VERSION;
 
-int GUIRunTime::initApplication(int argc, char * argv[])
+int GUIRunTime::initApplication(int , char **)
 {
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the
