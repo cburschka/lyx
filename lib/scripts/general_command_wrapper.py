@@ -13,7 +13,7 @@ if sys.argv[1] != "-":
 	os.close(0)
 	sys.stdin = open(sys.argv[1],"r")
 if sys.argv[2] != "-":
-	print "Redirecting" + sys.argv[2]
+	print "Redirecting " + sys.argv[2]
 	os.close(1)
 	os.close(2)
 	sys.stdout = open(sys.argv[2],"w")
