@@ -2383,12 +2383,17 @@ Paragraph * InsetText::paragraph() const
 void InsetText::paragraph(Paragraph * p)
 {
 	// first we have to delete the old contents otherwise we'll have a
-	// memory leak!
-	the_locking_inset = 0;
-	while (par) {
-		Paragraph * tmp = par->next();
-		delete par;
-		par = tmp;
+	// memory leak! But there check that we don't delete the paragraphs
+	// the new par is refering to (could happen in LyXText::EmptyParagrapM...)
+	// well don't do deletes at all if we come from there. Really stupid
+	// thing! (Jug 20011205)
+	if (par->next() != p) {
+		the_locking_inset = 0;
+		while (par && par != p) {
+			Paragraph * tmp = par->next();
+			delete par;
+			par = tmp;
+		}
 	}
 	par = p;
 	// set ourself as owner for all the paragraphs inserted!

@@ -2,6 +2,8 @@
 
 	* insettext.C (insetAllowed): fixed for the case that we directly
 	ask the insettext from it's LyXText.
+	(paragraph): fixed the crash when assigning the par->next() from
+	the EmptyParagraphMechanism!
 
 2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

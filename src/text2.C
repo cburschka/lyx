@@ -2473,7 +2473,7 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			setUndo(bview, Undo::DELETE, old_cursor.par(), endpar);
 			cursor = tmpcursor;
 
-				// delete old row
+			// delete old row
 			removeRow(old_cursor.row());
 			if (ownerParagraph() == old_cursor.par()) {
 				ownerParagraph(ownerParagraph()->next());
