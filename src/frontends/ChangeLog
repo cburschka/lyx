@@ -1,3 +1,8 @@
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* Painter.C: draw frame after background. This is needed
+	  on Qt but not xforms ??
+ 
 2002-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* all files: modify the headers as discussed on the list.
