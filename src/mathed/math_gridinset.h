@@ -149,6 +149,9 @@ public:
 	///
 	void setDefaults();
 
+	///
+	string octavize() const;
+
 protected:
 	/// returns proper 'end of line' code for LaTeX
 	string eolString(row_type row) const;

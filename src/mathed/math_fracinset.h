@@ -25,6 +25,8 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	string maplize() const;
 public:
 	///
 	const bool atop_;

@@ -68,3 +68,27 @@ void MathStringInset::writeNormal(std::ostream & os) const
 {
 	os << "[string " << str_ << " " << "mathalpha" << "]";
 }
+
+
+string MathStringInset::octavize() const
+{
+	return maplize();
+}
+
+
+string MathStringInset::maplize() const
+{
+	if (code_ != LM_TC_VAR)
+		return str_;
+	if (str_.size() <= 1)
+		return str_;
+	string res;
+
+	// insert '*' between adjacent chars if type is LM_TC_VAR
+	res += str_[0];
+	for (string::size_type i = 1; i < str_.size(); ++i) {
+		res += '*';
+		res += str_[i];
+	}
+	return res;
+}

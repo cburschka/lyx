@@ -30,6 +30,7 @@
 
 #include "xarray.h"
 #include "math_defs.h"
+#include "LString.h"
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -52,6 +53,7 @@ class LaTeXFeatures;
 class Buffer;
 class BufferView;
 class UpdatableInset;
+class MathOctaveInfo;
 
 
 struct MathWriteInfo {
@@ -249,6 +251,13 @@ public:
 	virtual void validate(LaTeXFeatures & features) const;
 	///
 	virtual void handleFont(MathTextCodes) {}
+
+	///
+	virtual string octavize() const;
+	///
+	virtual string maplize() const;
+	///
+	virtual string mathmlize() const;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);

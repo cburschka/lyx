@@ -34,6 +34,10 @@ public:
 	int width() const;
 	///
 	string & str();
+	///
+	string octavize() const;
+	///
+	string maplize() const;
 
 private:
 	/// the string

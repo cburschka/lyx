@@ -61,3 +61,9 @@ void MathFracInset::writeNormal(std::ostream & os) const
 	cell(1).writeNormal(os);
 	os << "] ";
 }
+
+
+string MathFracInset::maplize() const
+{
+	return '(' + cell(0).maplize() + '/' + cell(1).maplize() + ')';
+}

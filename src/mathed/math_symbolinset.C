@@ -112,3 +112,25 @@ bool MathSymbolInset::takesLimits() const
 {
 	return sym_->token == LM_TK_CMEX;
 }
+
+
+string MathSymbolInset::octavize() const
+{
+	if (sym_->name == "cdot")
+		return "*";
+	return sym_->name;
+}
+
+
+string MathSymbolInset::maplize() const
+{
+	if (sym_->name == "cdot")
+		return "*";
+	return sym_->name;
+}
+
+
+string MathSymbolInset::mathmlize() const
+{
+	return sym_->name;
+}

@@ -19,6 +19,8 @@
 #pragma implementation
 #endif
 
+#include <sstream>
+
 #include "math_inset.h"
 #include "math_scriptinset.h"
 #include "debug.h"
@@ -175,7 +177,7 @@ void MathInset::dump() const
 }
 
 
-bool MathInset::covers(int x, int y) const
+bool MathInset::covers(int, int) const
 {
 	lyxerr << "MathInset::covers() called directly!\n";
 	return false;
@@ -211,4 +213,25 @@ void MathInset::draw(Painter &, int, int) const
 void MathInset::write(MathWriteInfo &) const
 {
 	lyxerr << "MathInset::write() called directly!\n";
+}
+
+
+string MathInset::octavize() const
+{
+	ostringstream os;
+	writeNormal(os);
+	return os.str();
+	return string();
+}
+
+
+string MathInset::maplize() const
+{
+	return octavize();
+}
+
+
+string MathInset::mathmlize() const
+{
+	return string();
 }

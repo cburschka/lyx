@@ -15,6 +15,7 @@ using std::ostream;
 using std::endl;
 
 
+
 MathArray::MathArray()
 {}
 
@@ -37,6 +38,8 @@ MathScriptInset const * MathArray::asScript(const_iterator it) const
 		return 0;
 	const_iterator jt = it + 1;
 	if (jt == end())
+		return 0;
+	if (!jt->nucleus())
 		return 0;
 	return jt->nucleus()->asScriptInset();
 }
@@ -191,19 +194,34 @@ MathArray MathArray::glueChars() const
 }
 
 
-void MathArray::write(MathWriteInfo & wi) const
+bool needAsterisk(MathAtom const & a, MathAtom const & b)
 {
-	glueChars().write1(wi);
+	return false;
 }
 
 
-void MathArray::write1(MathWriteInfo & wi) const
+MathArray MathArray::guessAsterisks() const
 {
-	for (const_iterator it = begin(); it != end(); ++it) {	
-		MathInset * p = it->nucleus();
-		if (!p)
-			continue;
-		if (MathScriptInset const * q = asScript(it)) {
+	if (size() <= 1)
+		return *this;
+	MathArray ar;
+	ar.push_back(*begin());
+	for (const_iterator it = begin(), jt = begin()+1 ; jt != end(); ++it, ++jt) {
+		if (needAsterisk(*it, *jt))
+			ar.push_back(MathAtom(new MathCharInset('*')));
+		ar.push_back(*it);
+	}
+	ar.push_back(*end());
+	return ar;
+}
+
+
+void MathArray::write(MathWriteInfo & wi) const
+{
+	MathArray ar = glueChars();
+	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = ar.asScript(it)) {
 			q->write(p, wi);
 			++it;
 		} else {
@@ -215,24 +233,71 @@ void MathArray::write1(MathWriteInfo & wi) const
 
 void MathArray::writeNormal(ostream & os) const
 {
-	for (const_iterator it = begin(); it != end(); ++it) {	
-		MathInset * p = it->nucleus();
-		if (!p)
-			continue;
-		if (MathScriptInset const * q = asScript(it)) {
+	MathArray ar = glueChars();
+	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = ar.asScript(it)) {
 			q->writeNormal(p, os);
 			++it;
-		} else {
+		} else 
 			p->writeNormal(os);
-		}
 	}
+}
+
+
+string MathArray::octavize() const
+{
+	MathArray ar = glueChars();
+	string res;
+	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = ar.asScript(it)) {
+			res += q->octavize(p);
+			++it;
+		} else 
+			res += p->octavize();
+	}
+	return res;
+}
+
+
+string MathArray::maplize() const
+{
+	MathArray ar = glueChars();
+	string res;
+	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = ar.asScript(it)) {
+			res += q->maplize(p);
+			++it;
+		} else 
+			res += p->maplize();
+	}
+	return res;
+}
+
+
+string MathArray::mathmlize() const
+{
+	MathArray ar = glueChars();
+	string res;
+	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = ar.asScript(it)) {
+			res += q->mathmlize(p);
+			++it;
+		} else 
+			res += p->mathmlize();
+	}
+	return res;
 }
 
 
 void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		it->nucleus()->validate(features);
+		if (it->nucleus())
+			it->nucleus()->validate(features);
 }
 
 
@@ -268,3 +333,5 @@ MathArray::iterator MathArray::end()
 {
 	return bf_.end();
 }
+
+

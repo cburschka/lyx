@@ -18,7 +18,9 @@
 
 #include <vector>
 #include <iosfwd>
+
 #include "math_atom.h"
+#include "LString.h"
 
 class MathScriptInset;
 class MathMacro;
@@ -29,6 +31,7 @@ class LaTeXFeatures;
 #ifdef __GNUG__
 #pragma interface
 #endif
+
 
 /** \class MathArray
     \brief Low level container for math insets
@@ -99,8 +102,6 @@ public:
 	MathAtom const & at(size_type pos) const;
 	/// glue chars if necessary
 	void write(MathWriteInfo & os) const;
-	/// raw write 
-	void write1(MathWriteInfo & os) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
@@ -117,6 +118,16 @@ public:
 	MathScriptInset const * asScript(const_iterator it) const;
 	/// glues chars with the same attributes into MathStringInsets
 	MathArray glueChars() const;
+	/// insert asterisks in "suitable" places
+	MathArray guessAsterisks() const;
+
+	/// interface to Octave
+	string octavize() const;
+	/// interface to Maple
+	string maplize() const;
+	/// interface to MathML
+	string mathmlize() const;
+
 private:
 	/// Buffer
 	buffer_type bf_;

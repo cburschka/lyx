@@ -20,6 +20,8 @@ public:
 	///
 	void write(MathWriteInfo & os) const;
 	///
+	void writeNormal(std::ostream &) const;
+	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }

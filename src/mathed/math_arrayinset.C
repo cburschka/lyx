@@ -44,6 +44,14 @@ void MathArrayInset::write(MathWriteInfo & os) const
 }
 
 
+void MathArrayInset::writeNormal(std::ostream & os) const
+{
+	os << "[array ";
+	MathGridInset::writeNormal(os);
+	os << "]";
+}
+
+
 void MathArrayInset::metrics(MathMetricsInfo const & st) const
 {
 	MathMetricsInfo mi = st;
@@ -51,4 +59,3 @@ void MathArrayInset::metrics(MathMetricsInfo const & st) const
 		mi.style = LM_ST_TEXT;
 	MathGridInset::metrics(mi);
 }
-

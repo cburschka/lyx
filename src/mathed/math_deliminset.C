@@ -91,3 +91,19 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 	mathed_draw_deco(pain, x + 1, b, w, height(), left_);
 	mathed_draw_deco(pain, x + width() - w - 1, b, w, height(), right_);
 }
+
+
+string MathDelimInset::octavize() const
+{
+	if (left_ == "|" && right_ == "|")
+		return "det(" + cell(0).octavize() + ")";
+	return left_ + cell(0).octavize() + right_;
+}
+
+
+string MathDelimInset::maplize() const
+{
+	if (left_ == "|" && right_ == "|")
+		return "abs(" + cell(0).octavize() + ")";
+	return left_ + cell(0).octavize() + right_;
+}

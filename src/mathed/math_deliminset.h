@@ -27,6 +27,10 @@ public:
 	void writeNormal(std::ostream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
+	///
+	string octavize() const;
+	///
+	string maplize() const;
 private:
 	///
 	int dw() const;

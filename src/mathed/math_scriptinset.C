@@ -346,3 +346,28 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 }
 
 
+string MathScriptInset::maplize(MathInset const * nuc) const
+{
+	string res;
+	if (nuc)
+		res += nuc->maplize();
+	if (hasDown() && down().data_.size())
+		res += "[" + down().data_.maplize() + "]";
+	if (hasUp() && up().data_.size())
+		res += "^(" + up().data_.maplize() + ")";
+	return res;
+}
+
+
+string MathScriptInset::octavize(MathInset const * nuc) const
+{
+	return maplize(nuc);
+}
+
+
+string MathScriptInset::mathmlize(MathInset const * nuc) const
+{
+	if (nuc)
+		return nuc->mathmlize();
+	return string();
+}

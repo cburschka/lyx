@@ -585,3 +585,23 @@ std::vector<MathInset::idx_type>
 			res.push_back(index(i, j));
 	return res;
 }
+
+
+string MathGridInset::octavize() const
+{
+	string res;
+	res += '[';
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (row)
+			res += ';';
+		res += '[';
+		for (col_type col = 0; col < ncols(); ++col) {
+			res += cell(index(row, col)).octavize();
+			res += ' ';
+		}
+		res += ']';
+	}
+	res += ']';
+	return res;
+}
+

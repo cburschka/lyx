@@ -81,6 +81,13 @@ public:
 	///
 	void ensure(bool up);
 
+	///
+	virtual string octavize(MathInset const * nuc) const;
+	///
+	virtual string maplize(MathInset const * nuc) const;
+	///
+	virtual string mathmlize(MathInset const * nuc) const;
+
 public:
 	/// returns x offset for main part
 	int dxx(MathInset const * nuc) const;

@@ -64,6 +64,64 @@ namespace {
 	}
 
 
+	string captureOutput(string const & cmd, string const & data)
+	{
+		string outfile = lyx::tempName(string(), "mathextern");
+		string full =  "echo '" + data + "' | " + cmd + " > " + outfile;
+		lyxerr << "calling: " << full << "\n";
+		Systemcalls dummy(Systemcalls::System, full, 0);
+		string out = GetFileContents(outfile);
+		lyxerr << "result: " << out << "\n";
+		return out;
+	}
+
+
+	string pipeThroughMaple(string const & extra, MathArray const & ar)
+	{
+		string header = 
+			"readlib(latex):\n"
+			"`latex/csname_font` := ``:\n"
+			"`latex/latex/*` := subs(`\\,`=`\\cdot `,eval(`latex/latex/*`)):\n";
+		//"#`latex/csname_font` := `\\it `:"
+		//"#`latex/latex/symbol` "
+		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
+
+		string trailer = "quit;";
+		string expr = ar.maplize();
+
+		for (int i = 0; i < 100; ++i) { // at most 100 attempts
+			// try to fix missing '*' the hard way by using mint
+			//
+			// ... > echo "1A;" | mint -i 1 -S -s -q
+			// on line     1: 1A;
+			//                 ^ syntax error - 
+			//                   Probably missing an operator such as * p
+			//
+			lyxerr << "checking expr: '" << expr << "'\n";
+			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ";");
+			if (out.empty())
+				break; // expression syntax is ok
+			istringstream is(out);
+			string line;
+			getline(is, line);
+			if (line.find("on line") != 0)
+				break; // error message not identified
+			getline(is, line);
+			string::size_type pos = line.find('^');
+			if (pos == string::npos || pos < 15)
+				break; // caret position not found
+			expr.insert(pos - 15,  "*");
+		}
+
+		string full = "latex(" +  extra + '(' + expr + "));";
+		string res = captureOutput("maple -q", header + full + trailer);
+
+		// change \_ into _
+		return res;
+	}
+		
+
+
 	MathArray pipeThroughExtern(string const & arg, MathArray const & ar)
 	{
 		string lang;
@@ -73,27 +131,40 @@ namespace {
 		if (extra.empty())
 			extra = "noextra";	
 
-		// create normalized expression
-		string outfile = lyx::tempName(string(), "mathextern");
-		ostringstream os;
-		os << "[" << extra << ' ';
-		ar.writeNormal(os); 
-		os << "]";
-		string code = os.str().c_str();
-
-		// run external sript
-		string file = LibFileSearch("mathed", "extern_" + lang);
-		if (file.empty()) {
-			lyxerr << "converter to '" << lang << "' not found\n";
-			return MathArray();
-		}
-		string script = file + " '" + code + "' " + outfile;
-		lyxerr << "calling: " << script << endl;
-		Systemcalls cmd(Systemcalls::System, script, 0);
-
-		// append result
 		MathArray res;
-		mathed_parse_cell(res, GetFileContents(outfile));
+
+		if (lang == "octave") {
+
+			string out = captureOutput("octave -q", ar.octavize());
+			if (out.size() > 6)
+				out = out.substr(6);
+			mathed_parse_cell(res, out);
+
+		} else if (lang == "maple") {
+
+			mathed_parse_cell(res, pipeThroughMaple(extra, ar));
+
+		} else {
+
+			// create normalized expression
+			ostringstream os;
+			os << "[" << extra << ' ';
+			ar.writeNormal(os); 
+			os << "]";
+			string data = os.str().c_str();
+
+			// search external script
+			string file = LibFileSearch("mathed", "extern_" + lang);
+			if (file.empty()) {
+				lyxerr << "converter to '" << lang << "' not found\n";
+				return MathArray();
+			}
+		
+			// run external sript
+			string out = captureOutput(file, data);
+			mathed_parse_cell(res, out);
+		}
+
 		return res;
 	}
 
@@ -371,7 +442,7 @@ void InsetFormula::handleExtern(const string & arg)
 		ar = mathcursor->cursor().cell();
 		stripFromLastEqualSign(ar);
 		mathcursor->insert(MathAtom(new MathCharInset('=', LM_TC_VAR)));
-		lyxerr << "use whole cell: " << ar << "\n";
+		//lyxerr << "use whole cell: " << ar << "\n";
 	}
 
 	mathcursor->insert(pipeThroughExtern(arg, ar));

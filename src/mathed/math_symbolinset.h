@@ -30,6 +30,12 @@ public:
 	/// identifies things that can get \limits or \nolimits
 	bool takesLimits() const;
 
+	///
+	string octavize() const;
+	///
+	string maplize() const;
+	///
+	string mathmlize() const;
 private:
 	///
 	MathTextCodes code() const;
