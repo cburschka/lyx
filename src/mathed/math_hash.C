@@ -94,6 +94,7 @@ latexkeys_a wordlist_array[] =
 	{"mathsf",  LM_TK_FONT, LM_TC_SF},
 	{"mathtt",  LM_TK_FONT, LM_TC_TT},
 	{"max",  LM_TK_FUNCLIM, 0},
+	//{"mbox",  LM_TK_BOX, 0},
 	{"min",  LM_TK_FUNCLIM, 0},
 	{"newcommand",  LM_TK_NEWCOMMAND, 0 },
 	{"nolimits",  LM_TK_LIMIT, static_cast<unsigned>(-1)},
@@ -153,6 +154,7 @@ MathTokenEnum tokenEnum(const string & font)
 		return LM_TK_MSB;
 	return LM_TK_SYM;
 }
+
 
 MathSymbolTypes symbolType(const string & type)
 {

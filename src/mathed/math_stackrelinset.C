@@ -17,9 +17,10 @@ MathInset * MathStackrelInset::clone() const
 }
 
 
-void MathStackrelInset::metrics(MathStyles st) const
+void MathStackrelInset::metrics(MathMetricsInfo const & st) const
 {
-	size_    = smallerStyleFrac(st);
+	size_    = st;
+	size_.size = smallerStyleFrac(size_.size);
 	xcell(0).metrics(size_);
 	xcell(1).metrics(st);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
@@ -38,13 +39,9 @@ void MathStackrelInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathStackrelInset::write(std::ostream & os, bool fragile) const
+void MathStackrelInset::write(MathWriteInfo & os) const
 {
-	os << "\\stackrel{";
-	cell(0).write(os, fragile);
-	os << "}{";
-	cell(1).write(os, fragile);
-	os << '}';
+	os << "\\stackrel{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 

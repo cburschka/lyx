@@ -40,7 +40,7 @@ void MathSpaceInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSpaceInset::write(std::ostream & os, bool /* fragile */) const
+void MathSpaceInset::write(MathWriteInfo & os) const
 {
 	if (space_ >= 0 && space_ < 6)
 		os << '\\' << latex_mathspace[space_] << ' ';
@@ -53,7 +53,7 @@ void MathSpaceInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathSpaceInset::metrics(MathStyles st) const
+void MathSpaceInset::metrics(MathMetricsInfo const & st) const
 {
 	size_  = st;
 	width_ = space_ ? space_ * 2 : 2;

@@ -28,11 +28,12 @@ int MathBinomInset::dw() const
 }
 
 
-void MathBinomInset::metrics(MathStyles st) const
+void MathBinomInset::metrics(MathMetricsInfo const & st) const
 {
-	size_    = smallerStyleFrac(st);
-	xcell(0).metrics(size_);
-	xcell(1).metrics(size_);
+	MathMetricsInfo m = st;
+	m.size   = smallerStyleFrac(m.size);
+	xcell(0).metrics(m);
+	xcell(1).metrics(m);
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4; 
@@ -51,13 +52,9 @@ void MathBinomInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathBinomInset::write(std::ostream & os, bool fragile) const
+void MathBinomInset::write(MathWriteInfo & os) const
 {
-	os << '{';
-	cell(0).write(os, fragile);
-	os << " \\choose ";
-	cell(1).write(os, fragile);
-	os << '}';
+	os << '{' << cell(0) << " \\choose " << cell(1) << '}';
 }
 
 

@@ -19,7 +19,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MathStyles st) const
+void MathSqrtInset::metrics(MathMetricsInfo const & st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
@@ -46,11 +46,9 @@ void MathSqrtInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSqrtInset::write(std::ostream & os, bool fragile) const
+void MathSqrtInset::write(MathWriteInfo & os) const
 {
-	os << "\\sqrt{";
-	cell(0).write(os, fragile); 
-	os << '}';
+	os << "\\sqrt{" << cell(0) << '}';
 }
 
 

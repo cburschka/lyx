@@ -24,7 +24,7 @@ public:
 	///
 	MathXArray();
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter & pain, int x, int y) const;
 

@@ -22,9 +22,9 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::write(std::ostream & os, bool fragile) const
+void MathArrayInset::write(MathWriteInfo & os) const
 {
-	if (fragile)
+	if (os.fragile)
 		os << "\\protect";
 	os << "\\begin{array}";
 
@@ -36,16 +36,19 @@ void MathArrayInset::write(std::ostream & os, bool fragile) const
 		os << colinfo_[col].align_;
 	os << "}\n";
 
-	MathGridInset::write(os, fragile);
+	MathGridInset::write(os);
 
-	if (fragile)
+	if (os.fragile)
 		os << "\\protect";
 	os << "\\end{array}\n";
 }
 
 
-void MathArrayInset::metrics(MathStyles st) const
+void MathArrayInset::metrics(MathMetricsInfo const & st) const
 {
-	MathGridInset::metrics(st == LM_ST_DISPLAY ? LM_ST_TEXT : st);
+	MathMetricsInfo m = st;
+	if (m.size == LM_ST_DISPLAY)
+		m.size = LM_ST_TEXT;
+	MathGridInset::metrics(m);
 }
 

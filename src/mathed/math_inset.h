@@ -37,15 +37,74 @@
 */
 
 
-class LaTeXFeatures;
 class MathArrayInset;
+class MathBoxInset;
 class MathCharInset;
 class MathGridInset;
 class MathNestInset;
-class MathScriptInset;
 class MathMatrixInset;
+class MathScriptInset;
 class MathSpaceInset;
 class MathMacroTemplate;
+
+class LaTeXFeatures;
+class Buffer;
+class BufferView;
+class LyXFont;
+
+
+struct MathMetricsInfo {
+	///
+	MathMetricsInfo()
+		: view(0), font(0), size(LM_ST_TEXT)
+	{}
+	///
+	MathMetricsInfo(BufferView * v, LyXFont const * f, MathStyles s)
+		: view(v), font(f), size(s)
+	{}
+
+	///
+	BufferView * view;
+	///
+	LyXFont const * font;
+	///
+	MathStyles size;
+};
+
+
+struct MathWriteInfo {
+	///
+	MathWriteInfo(Buffer const * buffer_, std::ostream & os_, bool fragile_)
+		: buffer(buffer_), os(os_), fragile(fragile_)
+	{}
+	///
+	explicit MathWriteInfo(std::ostream & os_)
+		: buffer(0), os(os_), fragile(false)
+	{}
+
+	///
+	template <class T>
+	MathWriteInfo & operator<<(T const & T)
+	{
+		os << T;
+		return *this;
+	}
+	///
+	MathWriteInfo & operator<<(MathArray const & ar)
+	{
+		ar.write(*this);
+		return *this;
+	}
+
+
+	///
+	Buffer const * buffer;
+	///
+	std::ostream & os;
+	///
+	bool fragile;
+};
+
 
 class MathInset {
 public: 
@@ -68,7 +127,7 @@ public:
 	/// draw the object, sets xo_ and yo_ cached values 
 	virtual void draw(Painter &, int x, int y) const;
 	/// write LaTeX and Lyx code
-	virtual void write(std::ostream &, bool fragile) const;
+	virtual void write(MathWriteInfo & os) const;
 	/// write normalized content
 	virtual void writeNormal(std::ostream &) const;
 	/// reproduce itself
@@ -76,7 +135,7 @@ public:
 	///substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
 	/// compute the size of the object, sets ascend_, descend_ and width_
-	virtual void metrics(MathStyles st) const;
+	virtual void metrics(MathMetricsInfo const & st) const;
 	/// 
 	virtual int ascent() const { return 1; }
 	///
@@ -191,6 +250,8 @@ public:
 	virtual MathGridInset * asGridInset() { return 0; }
 	/// identifies ArrayInsets
 	virtual MathArrayInset * asArrayInset() { return 0; }
+	/// identifies BoxInsets
+	virtual MathBoxInset * asBoxInset() { return 0; }
 	/// identifies macro templates
 	virtual MathMacroTemplate * asMacroTemplate() { return 0; }
 
@@ -226,10 +287,8 @@ public:
 	static int workwidth;
 
 protected:
-	/// _sets_ style
-	void size(MathStyles s) const;
 	/// the used font size
-	mutable MathStyles size_;
+	mutable MathMetricsInfo size_;
 
 private:
 	/// the following are used for positioning the cursor with the mouse

@@ -76,7 +76,7 @@ int MathCharInset::width() const
 }
 
 
-void MathCharInset::metrics(MathStyles st) const
+void MathCharInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
 }
@@ -87,7 +87,7 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
-	drawChar(pain, code_, size_, x, y, char_);
+	drawChar(pain, code_, size_.size, x, y, char_);
 }
 
 
@@ -111,11 +111,11 @@ void MathCharInset::writeRaw(std::ostream & os) const
 }
 
 
-void MathCharInset::write(std::ostream & os, bool) const
+void MathCharInset::write(MathWriteInfo & os) const
 {
-	writeHeader(os);
-	writeRaw(os);
-	writeTrailer(os);
+	writeHeader(os.os);
+	writeRaw(os.os);
+	writeTrailer(os.os);
 }
 
 

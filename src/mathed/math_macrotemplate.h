@@ -25,7 +25,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(std::ostream &, bool fragile) const;
+	void write(MathWriteInfo & os) const;
 	/// Number of arguments
 	int numargs() const;
 	///
@@ -35,7 +35,7 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
 private:

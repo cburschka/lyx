@@ -2,6 +2,7 @@
 
 #include "math_parser.h"
 #include "math_binominset.h"
+//#include "math_boxinset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_funcinset.h"
@@ -62,6 +63,8 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathSpaceInset(l->id));
 	case LM_TK_DOTS:
 		return MathAtom(new MathDotsInset(l->name));
+	//case LM_TK_BOX:
+	//	return MathAtom(new MathBoxInset(l->name));
 	}
 	return MathAtom(new MathFuncInset(l->name));
 }

@@ -30,7 +30,7 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MathStyles st) const
+void MathRootInset::metrics(MathMetricsInfo const & st) const
 {
 	MathNestInset::metrics(st);
 	size_    = st;
@@ -60,13 +60,9 @@ void MathRootInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathRootInset::write(std::ostream & os, bool fragile) const
+void MathRootInset::write(MathWriteInfo & os) const
 {
-	os << "\\sqrt[";
-	cell(0).write(os, fragile);  
-	os << "]{";
-	cell(1).write(os, fragile);
-	os << '}';
+	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
 }
 
 

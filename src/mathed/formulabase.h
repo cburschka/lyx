@@ -89,12 +89,16 @@ public:
 	///
 	virtual MathAtom & par() = 0;
 	///
-	virtual void metrics() const = 0;
+	virtual void metrics(BufferView * bv = 0, LyXFont const * font = 0) const;
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
+	///
+	mutable BufferView * view_;	
+	///
+	mutable LyXFont const * font_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

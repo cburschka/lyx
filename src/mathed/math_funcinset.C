@@ -37,7 +37,7 @@ void MathFuncInset::setName(string const & n)
 }
 
 
-void MathFuncInset::write(std::ostream & os, bool /* fragile */) const
+void MathFuncInset::write(MathWriteInfo & os) const
 {
 	os << "\\" << name_ << ' ';
 }
@@ -49,10 +49,10 @@ void MathFuncInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathFuncInset::metrics(MathStyles st) const 
+void MathFuncInset::metrics(MathMetricsInfo const & st) const 
 {
 	size_ = st;
-	mathed_string_dim(LM_TC_TEX, size_, name_, ascent_, descent_, width_);
+	mathed_string_dim(LM_TC_TEX, size_.size, name_, ascent_, descent_, width_);
 }
 
 
@@ -60,5 +60,5 @@ void MathFuncInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
-	drawStr(pain, LM_TC_TEX, size_, x, y, name_);
+	drawStr(pain, LM_TC_TEX, size_.size, x, y, name_);
 }

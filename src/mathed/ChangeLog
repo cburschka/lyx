@@ -1,11 +1,16 @@
 
 2001-10-17  André Pönitz  <poenitz@gmx.net>
 
+	* math_inset.h:
+	* *.[Ch]: make output more stream-like
+
+2001-10-17  André Pönitz  <poenitz@gmx.net>
+
 	* formula.C:
 	* array.C: add missing/broken  writeNormal()
 
 	* math_lefteqn.[Ch]: some visual support for \lefteqn
-	
+
 
 2001-10-10  André Pönitz  <poenitz@gmx.net>
 

@@ -21,16 +21,16 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(std::ostream &, bool fragile) const;
+	void write(MathWriteInfo & os) const;
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
 
 	///
-	void write(MathInset const * nucleus, std::ostream &, bool fragile) const;
+	void write(MathInset const *, MathWriteInfo & os) const;
 	///
-	void metrics(MathInset const * nucleus, MathStyles st) const;
+	void metrics(MathInset const * nucleus, MathMetricsInfo const & st) const;
 	///
 	void draw(MathInset const * nucleus, Painter &, int x, int y) const;
 	///

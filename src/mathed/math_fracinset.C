@@ -19,9 +19,10 @@ MathInset * MathFracInset::clone() const
 }
 
 
-void MathFracInset::metrics(MathStyles st) const
+void MathFracInset::metrics(MathMetricsInfo const & st) const
 {
-	size_    = smallerStyleFrac(st);
+	size_    = st;
+	size_.size = smallerStyleFrac(size_.size);
 	xcell(0).metrics(size_);
 	xcell(1).metrics(size_);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
@@ -42,21 +43,12 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathFracInset::write(std::ostream & os, bool fragile) const
+void MathFracInset::write(MathWriteInfo & os) const
 {
-	if (atop_) {
-		os << "{";
-		cell(0).write(os, fragile);
-		os << "\\atop ";
-		cell(1).write(os, fragile);
-		os << '}';
-	} else {
-		os << "\\frac{";
-		cell(0).write(os, fragile);
-		os << "}{";
-		cell(1).write(os, fragile);
-		os << '}';
-	}
+	if (atop_)
+		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
+	else
+		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 

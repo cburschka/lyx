@@ -47,20 +47,16 @@ string const & MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::write(std::ostream & os, bool fragile) const
+void MathMacroTemplate::write(MathWriteInfo & os) const
 {
-	os << "\n\\newcommand{\\" << name_ << "}";
-
+	os << "\n\\newcommand{\\" << name_ << '}';
 	if (numargs_ > 0)
-		os << "[" << numargs_ << "]";
-
-	os << "{";
-	cell(0).write(os, fragile);
-	os << "}\n";
+		os << '[' << numargs_ << ']';
+	os << '{' << cell(0) << "}\n";
 }
 
 
-void MathMacroTemplate::metrics(MathStyles st) const
+void MathMacroTemplate::metrics(MathMetricsInfo const & st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;

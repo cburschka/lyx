@@ -31,7 +31,7 @@ void MathKernInset::draw(Painter &, int, int) const
 {}
 
 
-void MathKernInset::write(std::ostream & os, bool) const
+void MathKernInset::write(MathWriteInfo & os) const
 {
 	os << "\\kern" << wid_.asLatexString() << " ";
 }
@@ -43,12 +43,14 @@ void MathKernInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathKernInset::metrics(MathStyles) const
+void MathKernInset::metrics(MathMetricsInfo const &) const
 {
 	ascent_  = 0;
 	descent_ = 0;
 #ifdef WITH_WARNINGS
 #warning fix this once the interface to LyXLength has improved
 #endif
+	// this uses the numerical valu in pixels, even if the unit is cm or ex!
 	width_   = static_cast<int>(wid_.value());
+	//cerr << "handling kern of width " << wid_.value() << "\n";
 }

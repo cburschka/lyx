@@ -171,7 +171,7 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 }
 
 
-void MathArray::write(ostream & os, bool fragile) const
+void MathArray::write(MathWriteInfo & wi) const
 {
 	for (const_iterator it = begin(); it != end(); ++it) {	
 		MathInset * p = it->nucleus();
@@ -190,10 +190,10 @@ void MathArray::write(ostream & os, bool fragile) const
 		} else
 */
 		if (MathScriptInset const * q = asScript(it)) {
-			q->write(p, os, fragile);
+			q->write(p, wi);
 			++it;
 		} else {
-			p->write(os, fragile);
+			p->write(wi);
 		}
 	}
 }

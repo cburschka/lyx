@@ -19,7 +19,7 @@ public:
 	explicit MathNestInset(idx_type ncells);
 
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	/// draw the object, sets xo_ and yo_ cached values 
 	void draw(Painter &, int x, int y) const;
 	/// appends itself with macro arguments substituted

@@ -30,23 +30,22 @@ void MathLefteqnInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathLefteqnInset::write(std::ostream & os, bool fragile) const
+void MathLefteqnInset::write(MathWriteInfo & os) const
 {
-	os << "\\lefteqn{";
-	cell(0).write(os, fragile);
-	os << "}";
+	os << "\\lefteqn{" << cell(0) << "}";
 }
 
 
 void MathLefteqnInset::writeNormal(std::ostream & os) const
 {
 	os << "[lefteqn ";
-	cell(0).write(os, false);
+	MathWriteInfo wi(os);
+	cell(0).write(wi);
 	os << "] ";
 }
 
 
-void MathLefteqnInset::metrics(MathStyles st) const
+void MathLefteqnInset::metrics(MathMetricsInfo const & st) const
 {
 	MathNestInset::metrics(st);
 	size_    = st;

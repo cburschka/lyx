@@ -16,7 +16,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(std::ostream &, bool fragile) const;
+	void write(MathWriteInfo & os) const;
 	///
 	int defaultColSpace(int) { return 0; }
 	///

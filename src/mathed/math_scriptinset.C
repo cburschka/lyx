@@ -180,13 +180,14 @@ int MathScriptInset::ndes(MathInset const * nuc) const
 }
 
 
-void MathScriptInset::metrics(MathStyles st) const
+void MathScriptInset::metrics(MathMetricsInfo const & st) const
 {	
 	metrics(0, st);
 }
 
 
-void MathScriptInset::metrics(MathInset const * nuc, MathStyles st) const
+void MathScriptInset::metrics(MathInset const * nuc,
+	MathMetricsInfo const & st) const
 {	
 	MathNestInset::metrics(st);
 	if (nuc)
@@ -221,18 +222,17 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 }
 
 
-void MathScriptInset::write(std::ostream & os, bool fragile) const
+void MathScriptInset::write(MathWriteInfo & os) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::write()\n";
-	write(0, os, fragile);
+	write(0, os);
 }
 
 
-void MathScriptInset::write(MathInset const * nuc, std::ostream & os,
-	bool fragile) const
+void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
 {
 	if (nuc) {
-		nuc->write(os, fragile);
+		nuc->write(os);
 		if (nuc->takesLimits()) {
 			if (limits_ == -1)
 				os << "\\nolimits ";
@@ -243,17 +243,11 @@ void MathScriptInset::write(MathInset const * nuc, std::ostream & os,
 	else
 		os << "{}";
 
-	if (hasDown() && down().data_.size()) {
-		os << "_{";
-		down().data_.write(os, fragile);
-		os << "}";
-	}
+	if (hasDown() && down().data_.size())
+		os << "_{" << down().data_ << '}';
 
-	if (hasUp() && up().data_.size()) {
-		os << "^{";
-		up().data_.write(os, fragile);
-		os << "}";
-	}
+	if (hasUp() && up().data_.size())
+		os << "^{" << up().data_ << '}';
 }
 
 

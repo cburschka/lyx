@@ -140,9 +140,10 @@ int MathMatrixInset::defaultColSpace(col_type col)
 }
 
 
-void MathMatrixInset::metrics(MathStyles) const
+void MathMatrixInset::metrics(MathMetricsInfo const & st) const
 {
-	size_ = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
+	size_ = st;
+	size_.size = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(size_);
@@ -187,17 +188,15 @@ void MathMatrixInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathMatrixInset::write(std::ostream & os, bool fragile) const
+void MathMatrixInset::write(MathWriteInfo & os) const
 {
-  header_write(os);
+  header_write(os.os);
 
 	bool n = numberedType();
 
 	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col) {
-			cell(index(row, col)).write(os, fragile);
-			os << eocString(col);
-		}
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << eocString(col);
 		if (n) {
 			if (!label_[row].empty())
 				os << "\\label{" << label_[row] << "}";
@@ -207,7 +206,7 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 		os << eolString(row);
 	}
 
-  footer_write(os);
+  footer_write(os.os);
 }
 
 

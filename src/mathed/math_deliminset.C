@@ -42,11 +42,10 @@ string MathDelimInset::latexName(string const & name)
 }
 
 
-void MathDelimInset::write(std::ostream & os, bool fragile) const
+void MathDelimInset::write(MathWriteInfo & os) const
 {
-	os << "\\left"  << latexName(left_);
-	cell(0).write(os, fragile);
-	os << "\\right" << latexName(right_);
+	os << "\\left" << latexName(left_) << cell(0)
+	   << "\\right" << latexName(right_);
 }
 
 
@@ -61,12 +60,12 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::metrics(MathStyles st) const
+void MathDelimInset::metrics(MathMetricsInfo const & st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
 	int a, d, w;
-	mathed_char_dim(LM_TC_VAR, st,'I', a, d, w);
+	mathed_char_dim(LM_TC_VAR, size_.size,'I', a, d, w);
 	int h0   = (a + d) / 2;
 	int a0   = std::max(xcell(0).ascent(), a)   - h0;
 	int d0   = std::max(xcell(0).descent(), d)  + h0;

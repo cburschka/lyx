@@ -36,7 +36,7 @@ int MathSpecialCharInset::width() const
 }
 
 
-void MathSpecialCharInset::metrics(MathStyles st) const
+void MathSpecialCharInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
 }
@@ -46,11 +46,11 @@ void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
-	drawChar(pain, LM_TC_CONST, size_, x, y, char_);
+	drawChar(pain, LM_TC_CONST, size(), x, y, char_);
 }
 
 
-void MathSpecialCharInset::write(std::ostream & os, bool) const
+void MathSpecialCharInset::write(MathWriteInfo & os) const
 {
 	os << "\\" << char_;
 }

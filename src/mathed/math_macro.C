@@ -69,11 +69,11 @@ bool MathMacro::editing() const
 }
 
 
-void MathMacro::metrics(MathStyles st) const
+void MathMacro::metrics(MathMetricsInfo const & st) const
 {
 	if (defining()) {
 		size_ = st;
-		mathed_string_dim(LM_TC_TEX, size_, name(), ascent_, descent_, width_);
+		mathed_string_dim(LM_TC_TEX, size_.size, name(), ascent_, descent_, width_);
 		return;
 	}
 
@@ -85,12 +85,12 @@ void MathMacro::metrics(MathStyles st) const
 		ascent_  = expanded_.ascent()  + 2;
 		descent_ = expanded_.descent() + 2;
 
-		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_, name()) + 10;
+		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_.size, name()) + 10;
 
 		int lasc;
 		int ldes;
 		int lwid;
-		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+		mathed_string_dim(LM_TC_TEXTRM, size_.size, "#1: ", lasc, ldes, lwid);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
@@ -117,25 +117,25 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 
-	metrics(size());
+	metrics(size_);
 
 	if (defining()) {
-		drawStr(pain, LM_TC_TEX, size_, x, y, name());
+		drawStr(pain, LM_TC_TEX, size_.size, x, y, name());
 		return;
 	}
 
 	if (editing()) {
 		int h = y - ascent() + 2 + expanded_.ascent();
-		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, name());
+		drawStr(pain, LM_TC_TEXTRM, size_.size, x + 3, h, name());
 
-		int const w = mathed_string_width(LM_TC_TEXTRM, size(), name());
+		int const w = mathed_string_width(LM_TC_TEXTRM, size_.size, name());
 		expanded_.draw(pain, x + w + 12, h);
 		h += expanded_.descent();
 
 		int lasc;
 		int ldes;
 		int lwid;
-		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+		mathed_string_dim(LM_TC_TEXTRM, size_.size, "#1: ", lasc, ldes, lwid);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
@@ -143,7 +143,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
-			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
+			drawStr(pain, LM_TC_TEX, size_.size, x + 3, h, str);
 			h += std::max(c.descent(), ldes) + 5;
 		}
 		return;
@@ -158,18 +158,18 @@ void MathMacro::dump() const
 	MathMacroTable::dump();
 	lyxerr << "\n macro: '" << this << "'\n";
 	lyxerr << " name: '" << name() << "'\n";
-	lyxerr << " template: '"; tmplate_->write(lyxerr, false); lyxerr << "'\n";
+	lyxerr << " template: '";
+	MathWriteInfo wi(lyxerr);
+	tmplate_->write(wi);
+	lyxerr << "'\n";
 }
 
 
-void MathMacro::write(std::ostream & os, bool fragile) const
+void MathMacro::write(MathWriteInfo & os) const
 {
 	os << '\\' << name();
-	for (idx_type i = 0; i < nargs(); ++i) {
-		os << '{';
-		cell(i).write(os, fragile);
-		os << '}';
-	}
+	for (idx_type i = 0; i < nargs(); ++i)
+		os << '{' << cell(i) << '}';
 	if (nargs() == 0) 
 		os << ' ';
 }

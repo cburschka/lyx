@@ -104,6 +104,7 @@ MathArrayInset * matrixpar(MathInset::idx_type & idx)
 
 
 InsetFormulaBase::InsetFormulaBase()
+	: view_(0), font_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
@@ -114,6 +115,17 @@ InsetFormulaBase::InsetFormulaBase()
 // Check if uses AMS macros
 void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
+
+
+void InsetFormulaBase::metrics(BufferView * bv, LyXFont const * f) const 
+{
+	if (bv)
+		view_ = bv;
+	if (f)
+		font_ = f;
+	MathMetricsInfo mi(view_, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	par()->metrics(mi);
+}
 
 
 string const InsetFormulaBase::editMessage() const
@@ -128,7 +140,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
 	mathcursor = new MathCursor(this, x == 0);
-	metrics();
+	metrics(bv);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
@@ -233,7 +245,7 @@ vector<string> const InsetFormulaBase::getLabelList() const
 
 void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 {
-	metrics();
+	metrics(bv);
 	bv->updateInset(this, dirty);
 }
 
@@ -677,8 +689,7 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 		//	sel = "";
 		//else
 
-		string sel = bv->getLyXText()->selectionAsString(bv->buffer(),
-								 false);
+		string sel = bv->getLyXText()->selectionAsString(bv->buffer(), false);
 
 		InsetFormulaBase * f;
 		if (sel.empty()) {

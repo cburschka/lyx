@@ -20,11 +20,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(std::ostream &, bool fragile) const;
+	void write(MathWriteInfo & os) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///

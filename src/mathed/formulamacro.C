@@ -61,7 +61,10 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
 	string name = mathed_parse_macro(s);
 	setInsetName(name);
-	metrics();
+#ifdef WITH_WARNINGS
+#warning "metrics disabled"
+#endif
+	//metrics();
 }
 
 
@@ -71,23 +74,27 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 }
 
 
-void InsetFormulaMacro::write(Buffer const *, ostream & os) const
+void InsetFormulaMacro::write(Buffer const * buf, ostream & os) const
 {
 	os << "FormulaMacro ";
-	par()->write(os, false);
+	MathWriteInfo wi(buf, os, false);
+	par()->write(wi);
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(Buffer const * buf, ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
-	par()->write(os, fragile);
+	MathWriteInfo wi(buf, os, fragile);
+	par()->write(wi);
 	return 2;
 }
 
-int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
+
+int InsetFormulaMacro::ascii(Buffer const * buf, ostream & os, int) const
 {
-	par()->write(os, false);
+	MathWriteInfo wi(buf, os, false);
+	par()->write(wi);
 	return 0;
 }
 
@@ -108,6 +115,7 @@ void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
 	string name = mathed_parse_macro(lex);
 	setInsetName(name);
+	lyxerr << "metrics disabled";
 	metrics();
 }
 
@@ -130,9 +138,9 @@ int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 }
 
 
-int InsetFormulaMacro::width(BufferView *, LyXFont const & f) const
+int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
-	metrics();
+	metrics(bv, &f);
 	return 10 + lyxfont::width(prefix(), f) + par()->width();
 }
 
@@ -190,12 +198,6 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 MathInsetTypes InsetFormulaMacro::getType() const
 {
 	return LM_OT_MACRO;
-}
-
-
-void InsetFormulaMacro::metrics() const
-{
-	par()->metrics(LM_ST_TEXT);
 }
 
 

@@ -29,13 +29,13 @@ MathInset * MathMacroArgument::clone() const
 }
 
 
-void MathMacroArgument::write(std::ostream & os, bool /*fragile*/) const
+void MathMacroArgument::write(MathWriteInfo & os) const
 {
 	os << '#' << number_;
 }
 
 
-void MathMacroArgument::metrics(MathStyles st) const
+void MathMacroArgument::metrics(MathMetricsInfo const & st) const
 {
 	if (expanded_) {
 		xcell(0).metrics(st);
@@ -43,7 +43,7 @@ void MathMacroArgument::metrics(MathStyles st) const
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent();
 	} else
-		mathed_string_dim(LM_TC_TEX, size(), str_, ascent_, descent_, width_);
+		mathed_string_dim(LM_TC_TEX, size_.size, str_, ascent_, descent_, width_);
 }
 
 
@@ -52,7 +52,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y) const
 	if (expanded_)
 		xcell(0).draw(pain, x, y);
 	else
-		drawStr(pain, LM_TC_TEX, size(), x, y, str_);
+		drawStr(pain, LM_TC_TEX, size_.size, x, y, str_);
 }
 
 

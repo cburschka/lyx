@@ -132,7 +132,7 @@ LyXLength MathGridInset::vskip(row_type row) const
 }
 
 
-void MathGridInset::metrics(MathStyles st) const
+void MathGridInset::metrics(MathMetricsInfo const & st) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(st);
@@ -264,13 +264,11 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathGridInset::write(std::ostream & os, bool fragile) const
+void MathGridInset::write(MathWriteInfo & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col) {
-			cell(index(row, col)).write(os, fragile);
-			os << eocString(col);
-		}
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << eocString(col);
 		os << eolString(row);
 	}
 }

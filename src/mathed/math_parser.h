@@ -38,6 +38,8 @@ enum MathTokenEnum
 	///
 	LM_TK_SYM = 256,
 	///
+	LM_TK_BOX,
+	///
 	LM_TK_CHOOSE,
 	///
 	LM_TK_BINOM,

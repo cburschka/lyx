@@ -22,6 +22,8 @@
 
 class MathScriptInset;
 class MathMacro;
+class MathWriteInfo;
+class MathMetricsInfo;
 class LaTeXFeatures;
 
 #ifdef __GNUG__
@@ -96,7 +98,7 @@ public:
 	///
 	MathAtom const & at(size_type pos) const;
 	///
-	void write(std::ostream &, bool) const;
+	void write(MathWriteInfo & os) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///

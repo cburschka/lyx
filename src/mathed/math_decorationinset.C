@@ -62,7 +62,7 @@ bool MathDecorationInset::wide() const
 }
 
 
-void MathDecorationInset::metrics(MathStyles st) const
+void MathDecorationInset::metrics(MathMetricsInfo const & st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
@@ -96,13 +96,11 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathDecorationInset::write(ostream & os, bool fragile) const
+void MathDecorationInset::write(MathWriteInfo & os) const
 {
-	if (fragile && protect())
+	if (os.fragile && protect())
 		os << "\\protect";
-	os << '\\' << name_ << '{';
-	cell(0).write(os, fragile);  
-	os << '}';
+	os << '\\' << name_ << '{' << cell(0) << '}';
 }
 
 

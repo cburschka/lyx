@@ -28,7 +28,7 @@ int MathInset::workwidth;
 
 
 MathInset::MathInset()
-	: size_(LM_ST_DISPLAY), xo_(0), yo_(0)
+	: xo_(0), yo_(0)
 {}
 
 
@@ -44,19 +44,14 @@ int MathInset::height() const
 
 MathStyles MathInset::size() const
 {
-	return size_;
-}
-
-
-void MathInset::size(MathStyles s) const
-{
-	size_ = s;
+	return size_.size;
 }
 
 
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
-	inset.write(os, false);
+	MathWriteInfo wi(0, os, false);
+	inset.write(wi);
 	return os;
 }
 
@@ -216,7 +211,8 @@ void MathInset::userSetSize(MathStyles sz)
 void MathInset::writeNormal(std::ostream & os) const
 {
 	os << "[unknown ";
-	write(os, false);
+	MathWriteInfo wi(0, os, false);
+	write(wi);
 	os << "] ";
 }
 
@@ -224,7 +220,8 @@ void MathInset::writeNormal(std::ostream & os) const
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
-	write(lyxerr, false);
+	MathWriteInfo wi(0, lyxerr, false);
+	write(wi);
 	lyxerr << "\n---------------------------------------------\n";
 }
 
@@ -267,7 +264,7 @@ std::vector<MathInset::idx_type>
 }
 
 
-void MathInset::metrics(MathStyles st) const
+void MathInset::metrics(MathMetricsInfo const & st) const
 {
 	lyxerr << "MathInset::metrics() called directly!\n";
 	size_ = st;
@@ -280,7 +277,7 @@ void MathInset::draw(Painter &, int, int) const
 }
 
 
-void MathInset::write(std::ostream &, bool) const
+void MathInset::write(MathWriteInfo &) const
 {
 	lyxerr << "MathInset::write() called directly!\n";
 }

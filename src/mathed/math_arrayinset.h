@@ -18,9 +18,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(std::ostream &, bool fragile) const;
+	void write(MathWriteInfo & os) const;
 	///
-	void metrics(MathStyles st) const;
+	void metrics(MathMetricsInfo const & st) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }
 };

@@ -68,8 +68,6 @@ public:
 	///
 	MathInsetTypes getType() const;
 	///
-	void metrics() const;
-	///
 	MathAtom const & par() const;
 	///
 	MathAtom & par();

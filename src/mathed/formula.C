@@ -90,16 +90,19 @@ void InsetFormula::write(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
+int InsetFormula::latex(Buffer const * buf, ostream & os, bool fragil, bool)
+	const
 {
-	par_->write(os, fragile);
+	MathWriteInfo wi(buf, os, fragil);
+	par_->write(wi);
 	return 1;
 }
 
 
-int InsetFormula::ascii(Buffer const *, ostream & os, int) const
+int InsetFormula::ascii(Buffer const * buf, ostream & os, int) const
 {
-	par_->write(os, false);
+	MathWriteInfo wi(buf, os, false);
+	par_->write(wi);
 	return 1;
 }
 
@@ -123,7 +126,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 }
 
 
-void InsetFormula::draw(BufferView * bv, LyXFont const &,
+void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
 	int x = int(xx) - 1;
@@ -132,7 +135,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
-	metrics();
+	metrics(bv, &font);
 	int w = par_->width();
 	int h = par_->height();
 	int a = par_->ascent();
@@ -147,12 +150,6 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	xx += par_->width();
 
 	setCursorVisible(false);
-}
-
-
-void InsetFormula::metrics() const 
-{
-	par_->metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 }
 
 
@@ -302,7 +299,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-void InsetFormula::handleExtern(const string & arg, BufferView *)
+void InsetFormula::handleExtern(const string & arg, BufferView * bv)
 {
 	// where are we?
 	MathArray & ar = mathcursor->cursor().cell();
@@ -337,7 +334,7 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 	mathcursor->end();
 
 	// re-compute inset dimension
-	metrics();
+	metrics(bv);
 }
 
 
@@ -391,9 +388,9 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 }
 
 
-int InsetFormula::width(BufferView *, LyXFont const &) const
+int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
-	metrics();
+	metrics(bv, &font);
 	return par_->width();
 }
 

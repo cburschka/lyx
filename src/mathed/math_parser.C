@@ -889,6 +889,17 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			}
 			array.push_back(MathAtom(p));
 		}
+
+/*
+		// Disabled
+		else if (t.cs() == "mbox") {
+			array.push_back(createMathInset(t.cs()));
+			// slurp in the argument of mbox
+	
+			MathBoxInset * p = array.back()->asBoxInset();
+			//lyx::assert(p);
+		}
+*/
 	
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());

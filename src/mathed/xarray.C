@@ -18,15 +18,15 @@ MathXArray::MathXArray()
 {}
 
 
-void MathXArray::metrics(MathStyles st) const
+void MathXArray::metrics(MathMetricsInfo const & st) const
 {
-	style_   = st;
-	mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_);
+	style_ = st.size;
+	mathed_char_dim(LM_TC_VAR, style_, 'I', ascent_, descent_, width_);
 
 	if (data_.empty()) 
 		return;
 
-	math_font_max_dim(LM_TC_TEXTRM, st, ascent_, descent_);	
+	math_font_max_dim(LM_TC_TEXTRM, style_, ascent_, descent_);	
 	width_   = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";

@@ -26,20 +26,20 @@ void MathSizeInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSizeInset::metrics(MathStyles /* st */) const
+void MathSizeInset::metrics(MathMetricsInfo const & st) const
 {
-	xcell(0).metrics(MathStyles(key_->id));
+	size_ = st;
+	size_.size = MathStyles(key_->id);
+	xcell(0).metrics(size_);
 	ascent_   = xcell(0).ascent_;
 	descent_  = xcell(0).descent_;
 	width_    = xcell(0).width_;
 }
 
 
-void MathSizeInset::write(std::ostream & os, bool fragile) const
+void MathSizeInset::write(MathWriteInfo & os) const
 {
-	os << "{\\" << key_->name << " ";
-	cell(0).write(os, fragile);
-	os << "}";
+	os << "{\\" << key_->name << ' ' << cell(0) << '}';
 }
 
 

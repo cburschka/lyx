@@ -48,7 +48,7 @@ void MathNestInset::substitute(MathMacro const & m)
 }
 
 
-void MathNestInset::metrics(MathStyles st) const
+void MathNestInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
 	for (idx_type i = 0; i < nargs(); ++i)
@@ -139,12 +139,13 @@ bool MathNestInset::idxEnd(idx_type & idx, pos_type & pos) const
 
 void MathNestInset::dump() const
 {
-	lyxerr << "---------------------------------------------\n";
-	write(lyxerr, false);
-	lyxerr << "\n";
+	MathWriteInfo os(lyxerr);
+	os << "---------------------------------------------\n";
+	write(os);
+	os << "\n";
 	for (idx_type i = 0; i < nargs(); ++i)
-		lyxerr << cell(i) << "\n";
-	lyxerr << "---------------------------------------------\n";
+		os << cell(i) << "\n";
+	os << "---------------------------------------------\n";
 }
 
 
