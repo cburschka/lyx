@@ -34,9 +34,9 @@ LyX-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
  
 \family sans 
 \bar under 
-H
+L
 \bar default 
-elp
+aguntza
 \bar under 
 \SpecialChar \menuseparator
 S
@@ -47,14 +47,18 @@ arrera
  Ondoren, 
 \family sans 
 \bar under 
-H
+L
 \bar default 
-elp
+aguntza
 \bar under 
 \SpecialChar \menuseparator
-
+T
 \bar default 
-Tutoretza-n laguntzaz LyX erabiltzen ikasi.
+utoretza-n 
+\family default 
+laguntzaz LyX erabiltzen ikasi
+\family sans 
+.
 \layout Enumerate
 
 LyX 
@@ -84,26 +88,22 @@ LyX-en irteera emaitzak (output) itxura hobezina dauka.
 \bar under 
 F
 \bar default 
-ile\SpecialChar \menuseparator
-View\SpecialChar ~
-
-\bar under 
-d
-\bar default 
-vi 
+itxategia\SpecialChar \menuseparator
+Dvi\SpecialChar ~
+ikusi 
 \family default 
 lan dezakezu (une honetan adibidez).
 \layout Enumerate
 
 Bai,.
- LyX-ek LaTeX-en betebeharreko ia dena antzez dezake.
+ LyX-ek LaTeX-en betebeharreko ia dena errepika (edo landu) dezake.
  Eta bai, LyX-ek LaTeX-eko fitxategiak beregana (
 \family sans 
 \bar under 
 F
 \bar default 
-ile\SpecialChar \menuseparator
-Import
+itxategia\SpecialChar \menuseparator
+Barneratu
 \family default 
 ) ditzake.
  LaTeX-eko erabiltzaile adituei 
@@ -126,8 +126,8 @@ LyX LaTeX-eko erabiltzaileentzat
 
 Inglesez gain beste edozein hizkuntzetan idazten edo irakurtzen duten erabiltzai
 leentzat abantaila ugari daude.
- Gainera tekla elkarte, tresna barra eta beste hainbat ezaugarrik egokitze
- maila handia dauka (ia dena 
+ Gainera tekla elkarte, tresna barra eta beste hainbat ezaugarriek egokitze
+ maila handia eskeintzen diote (ia dena 
 \family typewriter 
 lyxrc
 \family default 
@@ -135,27 +135,32 @@ lyxrc
  
 \family sans 
 \bar under 
-H
+L
 \bar default 
-elp\SpecialChar \menuseparator
+aguntza\SpecialChar \menuseparator
 
 \bar under 
-C
+E
 \bar default 
-ustomization
+gokitua
 \family default 
  ikus ezazu.
 \layout Enumerate
 
 LyX-en Interneteko orria 
 \family typewriter 
-www.lyx.org
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
 \family default 
  da.
  Bertan programari buruzko informazioa lortu, gutun zerrendetan harpidetu,
  
 \emph on 
-LyX-eko Irudi Tour
+LyX-eko Marrazkidun Ibilalditxoa (edo Tour)
 \emph default 
 -a lortu eta gauza gehiago egin dezakezu.
 \the_end

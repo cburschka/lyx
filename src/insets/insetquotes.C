@@ -260,7 +260,8 @@ int InsetQuotes::Latex(Buffer const * buf, ostream & os,
 		qstr = latex_quote_babel[times][quoteind];
 
 	// Always guard against unfortunate ligatures (!` ?`)
-	qstr.insert(0, "{}");
+	if (prefixIs(qstr, "`"))
+		qstr.insert(0, "{}");
 
 	os << qstr;
 	return 0;
