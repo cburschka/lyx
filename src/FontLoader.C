@@ -143,7 +143,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 
 		case LyXFont::EUFRAK_FAMILY:
 			fontinfo[family][series][shape] = 
-				new FontInfo("-*-eufrak-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-eufrak-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		default:
