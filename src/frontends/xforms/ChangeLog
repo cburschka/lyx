@@ -1,3 +1,8 @@
+2002-10-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* xformsGImage.C (getWidth): add 4 instead of 2 in the fix below,
+	to catch more cases)
+
 2002-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* xformsGImage.C (getWidth): correct the width of images, due to
