@@ -227,7 +227,7 @@ bool BufferView::Pimpl::fitCursor()
 
 	dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 
-	// We need to always update, in case we did a 
+	// We need to always update, in case we did a
 	// paste and we stayed anchored to a row, but
 	// the actual height of the doc changed ...
 	updateScrollbar();
@@ -1143,7 +1143,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		}
 	}
 	break;
-	
+
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
 			Inset * inset = new InsetFloatList(ev.argument);

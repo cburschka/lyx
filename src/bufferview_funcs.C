@@ -79,7 +79,7 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 	int Int = 0;
 	bool Bool = false;
 	string String;
-			
+
 	int nset = 0;
 	while (lex.isOK()) {
 		lex.next();
@@ -113,7 +113,7 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 		if (token == "family") {
 			font.setFamily(static_cast<LyXFont::FONT_FAMILY>(Int));
-			
+
 		} else if (token == "series") {
 			font.setSeries(static_cast<LyXFont::FONT_SERIES>(Int));
 
@@ -403,7 +403,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {
 		LyXCursor & cursor = text->cursor;
-		text->computeBidiTables(bv->buffer(), cursor.row());
+		text->computeBidiTables(bv->buffer(), *cursor.row());
 		if (cursor.boundary() !=
 		    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
 				     text->real_current_font))

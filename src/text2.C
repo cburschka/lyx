@@ -292,16 +292,15 @@ void LyXText::removeRow(RowList::iterator rit)
 
 
 // remove all following rows of the paragraph of the specified row.
-void LyXText::removeParagraph(Row * row)
+void LyXText::removeParagraph(RowList::iterator rit)
 {
-	Paragraph * tmppar = row->par();
-	row = row->next();
+	Paragraph * tmppar = rit->par();
+	++rit;
 
-	Row * tmprow;
-	while (row && row->par() == tmppar) {
-		tmprow = row->next();
-		removeRow(row);
-		row = tmprow;
+	while (rit != rows().end() && rit->par() == tmppar) {
+		RowList::iterator tmprit = boost::next(rit);
+		removeRow(rit);
+		rit = tmprit;
 	}
 }
 
@@ -1879,7 +1878,7 @@ void LyXText::setCurrentFont()
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type
-LyXText::getColumnNearX(Row * row, int & x,
+LyXText::getColumnNearX(RowList::iterator rit, int & x,
 			bool & boundary) const
 {
 	float tmpx = 0.0;
@@ -1887,27 +1886,27 @@ LyXText::getColumnNearX(Row * row, int & x,
 	float fill_hfill;
 	float fill_label_hfill;
 
-	prepareToPrint(row, tmpx, fill_separator,
+	prepareToPrint(rit, tmpx, fill_separator,
 		       fill_hfill, fill_label_hfill);
 
-	pos_type vc = row->pos();
-	pos_type last = row->lastPrintablePos();
+	pos_type vc = rit->pos();
+	pos_type last = rit->lastPrintablePos();
 	pos_type c = 0;
 
-	LyXLayout_ptr const & layout = row->par()->layout();
+	LyXLayout_ptr const & layout = rit->par()->layout();
 
 	bool left_side = false;
 
-	pos_type body_pos = row->par()->beginningOfBody();
+	pos_type body_pos = rit->par()->beginningOfBody();
 	float last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
 	    (body_pos - 1 > last ||
-	     !row->par()->isLineSeparator(body_pos - 1)))
+	     !rit->par()->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	// check for empty row
-	if (!row->par()->size()) {
+	if (!rit->par()->size()) {
 		x = int(tmpx);
 		return 0;
 	}
@@ -1915,26 +1914,26 @@ LyXText::getColumnNearX(Row * row, int & x,
 	while (vc <= last && tmpx <= x) {
 		c = vis2log(vc);
 		last_tmpx = tmpx;
-		if (body_pos > 0 && c == body_pos-1) {
+		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
 				font_metrics::width(layout->labelsep,
-					       getLabelFont(bv()->buffer(), row->par()));
-			if (row->par()->isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(row->par(), body_pos-1);
+					       getLabelFont(bv()->buffer(), rit->par()));
+			if (rit->par()->isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(rit->par(), body_pos - 1);
 		}
 
-		if (row->hfillExpansion(c)) {
-			tmpx += singleWidth(row->par(), c);
+		if (rit->hfillExpansion(c)) {
+			tmpx += singleWidth(rit->par(), c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
-		} else if (row->par()->isSeparator(c)) {
-			tmpx += singleWidth(row->par(), c);
+		} else if (rit->par()->isSeparator(c)) {
+			tmpx += singleWidth(rit->par(), c);
 			if (c >= body_pos)
 				tmpx+= fill_separator;
 		} else {
-			tmpx += singleWidth(row->par(), c);
+			tmpx += singleWidth(rit->par(), c);
 		}
 		++vc;
 	}
@@ -1950,17 +1949,18 @@ LyXText::getColumnNearX(Row * row, int & x,
 	boundary = false;
 	bool const lastrow = lyxrc.rtl_support // This is not needed, but gives
 					 // some speedup if rtl_support=false
-		&& (!row->next() || row->next()->par() != row->par());
+		&& (boost::next(rit) == rows().end() ||
+		    boost::next(rit)->par() != rit->par());
 	bool const rtl = (lastrow)
-		? row->par()->isRightToLeftPar(bv()->buffer()->params)
+		? rit->par()->isRightToLeftPar(bv()->buffer()->params)
 		: false; // If lastrow is false, we don't need to compute
 			 // the value of rtl.
 
 	if (lastrow &&
-		 ((rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
+		 ((rtl &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
 		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
 		c = last + 1;
-	else if (vc == row->pos()) {
+	else if (vc == rit->pos()) {
 		c = vis2log(vc);
 		if (bidi_level(c) % 2 == 1)
 			++c;
@@ -1969,20 +1969,20 @@ LyXText::getColumnNearX(Row * row, int & x,
 		bool const rtl = (bidi_level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(bv()->buffer(), row->par(), c);
+			boundary = isBoundary(bv()->buffer(), rit->par(), c);
 		}
 	}
 
-	if (row->pos() <= last && c > last
-	    && row->par()->isNewline(last)) {
+	if (rit->pos() <= last && c > last
+	    && rit->par()->isNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
-			tmpx -= singleWidth(row->par(), last);
+			tmpx -= singleWidth(rit->par(), last);
 		else
-			tmpx += singleWidth(row->par(), last);
+			tmpx += singleWidth(rit->par(), last);
 		c = last;
 	}
 
-	c -= row->pos();
+	c -= rit->pos();
 	x = int(tmpx);
 	return c;
 }
@@ -2424,7 +2424,7 @@ void LyXText::postPaint(int start_y)
 
 // FIXME: we should probably remove this y parameter,
 // make refresh_y be 0, and use row->y etc.
-void LyXText::postRowPaint(Row * row, int start_y)
+void LyXText::postRowPaint(RowList::iterator rit, int start_y)
 {
 	if (refresh_status_ != REFRESH_NONE && refresh_y < start_y) {
 		refresh_status_ = REFRESH_AREA;
@@ -2437,7 +2437,7 @@ void LyXText::postRowPaint(Row * row, int start_y)
 		return;
 
 	refresh_status_ = REFRESH_ROW;
-	refresh_row = row;
+	refresh_row = rit;
 
 	if (!inset_owner)
 		return;

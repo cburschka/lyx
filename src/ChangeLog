@@ -1,3 +1,22 @@
+2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (removeParagraph): make it take a RowList::iterator as
+	arg, adjust.
+	(getColumnNearX): make it take a RowList::iterator as arg, adjust.
+	(postRowPaint): make it take a RowList::iterator as arg, adjust.
+
+	* text.C (anchor_row): make it take a RowList::iterator as arg,
+	adjust.
+	(computeBidiTables): make it take a const reference to Row instead
+	of Row pointer, adjust.
+	(leftMargin): make it take a RowList::iterator as arg, adjust.
+	(rowBreakPoint): adjust
+	(breakAgainOneRow): make it take a RowList::iterator as arg,
+	adjust.
+	(prepareToPrint): make it take a RowList::iterator as arg, adjust.
+
+	* bufferview_funcs.C (toggleAndShow): adjust
+
 2003-03-30  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:

@@ -263,7 +263,7 @@ void unknownClass(string const & unknown)
 			" class %1$s is unknown.")) % unknown);
 #else
 		_("Using the default document class, because the "
-		" class ") + unknown + (" is unknown."); 
+		" class ") + unknown + (" is unknown.");
 #endif
 	Alert::warning(_("Unknown document class"), msg);
 }

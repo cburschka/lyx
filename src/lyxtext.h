@@ -90,7 +90,7 @@ public:
 	/// set the y coord. of the top of the screen (relative to doc start)
 	void top_y(int newy);
 	/// set the anchoring row. top_y will be computed relative to this
-	void anchor_row(Row * row);
+	void anchor_row(RowList::iterator rit);
 	///
 	InsetText * inset_owner;
 	///
@@ -112,7 +112,7 @@ public:
 			 lyx::pos_type pos, LyXFont const & font, bool toggleall);
 
 	///
-	void breakAgainOneRow(Row * row);
+	void breakAgainOneRow(RowList::iterator rit);
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(ParagraphList & paragraphs, char keep_layout = 0);
 
@@ -190,7 +190,7 @@ public:
 	/**
 	 * Mark the given row at position y as needing a repaint.
 	 */
-	void postRowPaint(Row * row, int start_y);
+	void postRowPaint(RowList::iterator rit, int start_y);
 
 	///
 	Inset::RESULT dispatch(FuncRequest const & cmd);
@@ -238,7 +238,7 @@ public:
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	lyx::pos_type getColumnNearX(Row * row,
+	lyx::pos_type getColumnNearX(RowList::iterator rit,
 					    int & x, bool & boundary) const;
 
 	/** returns a pointer to a specified row. y is set to the beginning
@@ -479,7 +479,7 @@ public:
 	int workWidth(Inset * inset) const;
 
 	///
-	void computeBidiTables(Buffer const *, Row * row) const;
+	void computeBidiTables(Buffer const *, Row const & row) const;
 	/// Maps positions in the visual string to positions in logical string.
 	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
@@ -515,7 +515,7 @@ private:
 	void removeRow(RowList::iterator rit);
 
 	/// remove all following rows of the paragraph of the specified row.
-	void removeParagraph(Row * row);
+	void removeParagraph(RowList::iterator rit);
 
 	/// insert the specified paragraph behind the specified row
 	void insertParagraph(Paragraph * par, RowList::iterator rowit);
@@ -571,13 +571,13 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(Row const * row) const;
+	int leftMargin(RowList::iterator rit) const;
 	///
 	int rightMargin(Buffer const &, Row const & row) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(Row * row, float & x,
+	void prepareToPrint(RowList::iterator rit, float & x,
 			    float & fill_separator,
 			    float & fill_hfill,
 			    float & fill_label_hfill,
