@@ -1,3 +1,12 @@
+2000-03-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/bind/*.bind: make sure 'buffer-previous' function is not
+	bound (from Kayvan).
+
+	* src/insets/Makefile.am (libinsets_la_SOURCES): add BoundingBox.h.
+
+	* lib/layouts/stdletter.inc: fix line spacing in Send_To_Address.
+
 2000-03-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* some things that I should comment but the local pub says head to

@@ -53,7 +53,6 @@ Style Send_To_Address
   Align			Left
   AlignPossible		Block, Left, Right, Center
   LabelType		No_Label
-  Spacing               Other 1.5
 End
 
 # Opening style definition

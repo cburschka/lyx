@@ -155,7 +155,7 @@
 #
 # These are now defined in cua or emacs bind files so their "standard"
 # bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
-\bind "M-d p"			"buffer-previous"
+#\bind "M-d p"			"buffer-previous"
 \bind "M-d space"		"menu-open Dokumentumok"
 
 

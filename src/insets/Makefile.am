@@ -6,6 +6,7 @@ ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../ 
 
 libinsets_la_SOURCES = \
+	BoundingBox.h \
 	figinset.C \
 	figinset.h \
 	form_url.C \
