@@ -631,13 +631,6 @@
 # Arabic). Default is false.
 #\rtl true
 
-# If number_inset is set to "true", each time a digit key is pressed,
-# LyX will automatically open a new number inset.
-# If number_inset is set to "rtl", the above behavior will take place
-# only when the cursor is on right-to-left text.
-# Default is rtl.
-#\number_inset true
-
 # The latex command for loading the language package.
 # Default is \usepackage{babel}.
 #\language_package "\usepackage{omega}"

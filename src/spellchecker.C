@@ -37,6 +37,8 @@
 #include <sys/select.h>
 #endif
 
+#include <algorithm>
+
 #include "LString.h"
 #include "sp_form.h"
 #include "spellchecker.h"
@@ -643,6 +645,7 @@ bool RunSpellChecker(BufferView * bv)
 	FL_OBJECT * obj;
 
 	string tmp = (lyxrc.isp_use_alt_lang) ? lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
+	bool rtl = tmp == "hebrew" || tmp == "arabic";
 
 	int oldval = 0;  /* used for updating slider only when needed */
 	float newval = 0.0;
@@ -704,11 +707,21 @@ bool RunSpellChecker(BufferView * bv)
 		case ISP_MISSED:
 		{
 			bv->selectLastWord();
-			fl_set_object_label(fd_form_spell_check->text, word);
+			if (rtl) {
+				string tmp = word;
+				reverse(tmp.begin(),tmp.end());
+				fl_set_object_label(fd_form_spell_check->text, tmp.c_str());
+			} else
+				fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
 			for (i = 0; i < result->count; ++i) {
-				fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
+				if (rtl) {
+					string tmp = result->misses[i];
+					reverse(tmp.begin(),tmp.end());
+					fl_add_browser_line(fd_form_spell_check->browser, tmp.c_str());
+				} else
+					fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
 			}
 
 			int clickline = -1;
@@ -741,10 +754,17 @@ bool RunSpellChecker(BufferView * bv)
 						break;
 					}
 					clickline = fl_get_browser(fd_form_spell_check->browser);
-					fl_set_input(fd_form_spell_check->input, 
-						     fl_get_browser_line(fd_form_spell_check->browser,
-									 fl_get_browser(fd_form_spell_check->browser)));
-						     
+					/// Why not use
+					/// fl_set_input(fd_form_spell_check->input, result->misses[clickline-1]); ?
+					if (rtl) {
+						string tmp = fl_get_browser_line(fd_form_spell_check->browser,
+										 clickline);
+						reverse(tmp.begin(),tmp.end());
+						fl_set_input(fd_form_spell_check->input, tmp.c_str());
+					} else
+						fl_set_input(fd_form_spell_check->input,
+							     fl_get_browser_line(fd_form_spell_check->browser,
+										 clickline));
 				}
 				if (obj == fd_form_spell_check->stop) {
 					delete result;
