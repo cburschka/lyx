@@ -412,14 +412,9 @@ void FormParagraph::update()
         bool const metric = lyxrc.default_papersize > 3;
         string const default_unit = metric ? "cm" : "in";
         string const length = par_->params().spaceTop().length().asString();
-	//check if there's a stretch or shrink factor
-	if (!isValidLength(length) && !isStrDbl(length))
-		fl_set_input(dialog_->input_space_above, length.c_str());
-	else {
-		updateWidgetsFromLengthString(dialog_->input_space_above,
+	updateWidgetsFromLengthString(dialog_->input_space_above,
 					      dialog_->choice_value_space_above,
                 			      length, default_unit);
-	}
 	break;
     }
     }
@@ -458,14 +453,9 @@ void FormParagraph::update()
         string const default_unit = metric ? "cm" : "in";
         string const length =
         	par_->params().spaceBottom().length().asString();
- 	//check if there's a stretch or shrink factor
- 	if (!isValidLength(length) && !isStrDbl(length))
-		fl_set_input(dialog_->input_space_below, length.c_str());
- 	else {
-		updateWidgetsFromLengthString(dialog_->input_space_below,
+	updateWidgetsFromLengthString(dialog_->input_space_below,
 					      dialog_->choice_value_space_below,
 					      length, default_unit);
- 	}
 	break;
     }
     }

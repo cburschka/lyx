@@ -170,7 +170,9 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 }
 	
 
-#if 1
+#if 0
+// old code which can be deleted if the new one, now enabled,
+// works satisfyingly (JSpitzm, 11/02/2002)
 // this should definitely be the other way around!!!
 void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 			     LyXLength const & len,
@@ -179,6 +181,11 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 	if (len.zero())
 		updateWidgetsFromLengthString(input, choice,
 					      string(), default_unit);
+	// use input field only for gluelengths
+	else if (!isValidLength(len) && !isStrDbl(len)) {
+		fl_set_input(input, len.c_str());
+		fl_set_choice_text(choice, default_unit.c_str());
+	}
 	else
 		updateWidgetsFromLengthString(input, choice,
 					      len.asString(), default_unit);
@@ -252,8 +259,14 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 				   string const & str,
 				   string const & default_unit)
 {
-	updateWidgetsFromLength(input, choice,
+	// use input field only for gluelengths
+	if (!isValidLength(str) && !isStrDbl(str)) {
+		fl_set_input(input, str.c_str());
+		fl_set_choice_text(choice, default_unit.c_str());
+	} else {
+		updateWidgetsFromLength(input, choice,
 				LyXLength(str), default_unit);
+	}
 }
 
 
