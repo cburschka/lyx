@@ -150,6 +150,7 @@ TODO Extended features:
 extern string system_tempdir;
 
 using std::ostream;
+using std::endl;
 
 // This function is a utility function
 inline
@@ -338,6 +339,20 @@ void InsetGraphics::write(Buffer const * buf, ostream & os) const
 
 void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 {
+	string const token = lex.GetString();
+
+	if (token == "GRAPHICS")
+		readInsetGraphics(buf, lex);
+	else if (token == "Figure") // Compatibility reading of FigInset figures.
+		readFigInset(buf, lex);
+	else
+		lyxerr[Debug::INFO] << "Not a GRAPHICS or Figure inset!\n";
+
+	updateInset();
+}
+
+void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
+{
 	bool finished = false;
 
 	while (lex.IsOK() && !finished) {
@@ -368,8 +383,70 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 					<< std::endl;
 		}
 	}
+}
 
-	updateInset();
+
+void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
+{
+	bool finished = false;
+	
+	while (lex.IsOK() && !finished) {
+		lex.next();
+
+		string const token = lex.GetString();
+		lyxerr[Debug::INFO] << "Token: " << token << endl;
+		
+		if (token.empty())
+			continue;
+		else if (token == "\\end_inset") {
+			finished = true;
+		} else if (token == "file") {
+			if (lex.next()) {
+				string const name = lex.GetString();
+				string const path = OnlyPath(buf->fileName());
+				params.filename = MakeAbsPath(name, path);
+			}
+		} else if (token == "extra") {
+			if (lex.next());
+			// kept for backwards compability. Delete in 0.13.x
+		} else if (token == "subcaption") {
+			if (lex.EatLine())
+				params.subcaptionText = lex.GetString();
+		} else if (token == "label") {
+			if (lex.next());
+			// kept for backwards compability. Delete in 0.13.x
+		} else if (token == "angle") {
+			if (lex.next())
+				params.rotateAngle = lex.GetFloat();
+		} else if (token == "size") {
+			// Size of image on screen is ignored in InsetGraphics, just eat
+			// the input.
+			if (lex.next())
+				lex.GetInteger();
+			if (lex.next())
+				lex.GetInteger();
+		} else if (token == "flags") {
+			InsetGraphicsParams::DisplayType tmp = InsetGraphicsParams::COLOR;
+			if (lex.next())
+				switch (lex.GetInteger()) {
+				case 1: tmp = InsetGraphicsParams::MONOCHROME; break;
+				case 2: tmp = InsetGraphicsParams::GRAYSCALE; break;
+				}
+			params.display = tmp;
+		} else if (token == "subfigure") {
+			params.subcaption = true;
+		} else if (token == "width") {
+			if (lex.next())
+				params.widthResize = static_cast<InsetGraphicsParams::Resize>(lex.GetInteger());
+			if (lex.next())
+				params.widthSize = lex.GetFloat();
+		} else if (token == "height") {
+			if (lex.next())
+				params.heightResize = static_cast<InsetGraphicsParams::Resize>(lex.GetInteger());
+			if (lex.next())
+				params.heightSize = lex.GetFloat();
+		}
+	}
 }
 
 
@@ -415,7 +492,9 @@ InsetGraphics::createLatexOptions() const
 	formatResize(options, "width", params.widthResize, params.widthSize);
 	formatResize(options, "height", params.heightResize, params.heightSize);
 
-	if (params.rotateAngle != 0) {
+	// Make sure it's not very close to zero, a float can be effectively
+	// zero but not exactly zero.
+	if (lyx::float_equal(params.rotateAngle, 0, 0.001)) {
 		options << "angle="
 			<< params.rotateAngle << ',';
 	}
@@ -510,13 +589,6 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// after the actual includegraphics command.
 	string before;
 	string after;
-
-	// If it's not an inline image, surround it with the centering paragraph.
-	if (! params.inlineFigure) {
-		before += "\n" "\\vspace{0.3cm}\n" "{\\par\\centering ";
-		after = " \\par}\n" "\\vspace{0.3cm}\n" + after;
-		newlines += 4;
-	}
 
 	// Do we want subcaptions?
 	if (params.subcaption) {

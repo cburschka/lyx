@@ -25,9 +25,15 @@ extern "C"
 {
 #endif
 
-    /** Only allow whole numbers no '+' or '-' signs or exponents. */
+    /** Only allow integer numbers,
+	possibly preceeded by a +' or '-' sign */
+int fl_int_filter(FL_OBJECT *, char const *, char const *, int);
+    /** Only allow integer numbers. No '+' or '-' signs. */
 int fl_unsigned_int_filter(FL_OBJECT *, char const *, char const *, int);
-    /** Only allow whole numbers no '+' or '-' signs or exponents. */
+    /** Only allow floating point numbers,
+	possibly preceeded by a +' or '-' sign */
+int fl_float_filter(FL_OBJECT *, char const *, char const *, int);
+    /** Only allow floating point numbers. No '+' or '-' signs. */
 int fl_unsigned_float_filter(FL_OBJECT *, char const *, char const *, int);
 
     /** Only allow lowercase letters. */

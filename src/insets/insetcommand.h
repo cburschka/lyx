@@ -101,13 +101,6 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::NO_CODE; }
 	
-	/** Get the label that appears at screen.
-	  
-         I thought it was enough to eliminate the argument to avoid
-         confusion with lyxinset::getLabel(int), but I've seen that
-         it wasn't. I hope you never confuse again both methods.  (ale)
-	 */
-	virtual string const getScreenLabel() const = 0;
 	///
 	string const getCommand() const { return p_.getCommand(); }
 	///

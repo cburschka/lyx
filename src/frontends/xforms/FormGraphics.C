@@ -41,17 +41,6 @@ FormGraphics::FormGraphics(ControlGraphics & c)
 {}
 
 
-void FormGraphics::hide()
-{
-	// Remove all associations for the radio buttons
-	widthButtons.reset();
-	heightButtons.reset();
-	displayButtons.reset();
-
-	FormBase::hide();
-}
-
-
 void FormGraphics::build()
 {
 	dialog_.reset(build_graphics());
@@ -67,8 +56,8 @@ void FormGraphics::build()
 	                      FL_RETURN_CHANGED);
 	fl_set_input_return (dialog_->input_filename,
 	                      FL_RETURN_CHANGED);
-	//    fl_set_input_return(dialog_->input_rotate_angle,
-	//            FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_rotate_angle,
+	                      FL_RETURN_CHANGED);
 
 	// Set the maximum characters that can be written in the input texts.
 	fl_set_input_maxchars(dialog_->input_width, WIDTH_MAXDIGITS);
@@ -83,6 +72,9 @@ void FormGraphics::build()
 	fl_set_input_filter(dialog_->input_height,
 	                    fl_unsigned_int_filter);
 
+	// Set input filter on rotate_angle to make it accept only
+	// floating point numbers.
+	fl_set_input_filter(dialog_->input_rotate_angle, fl_float_filter);
 
 	// Add the widgets of the width radio buttons to their group
 	widthButtons.reset();
@@ -133,7 +125,6 @@ void FormGraphics::build()
 	bc().addReadOnly(dialog_->radio_button_group_height);
 	bc().addReadOnly(dialog_->radio_button_group_display);
 	bc().addReadOnly(dialog_->input_rotate_angle);
-	bc().addReadOnly(dialog_->check_inline);
 	bc().addReadOnly(dialog_->input_subcaption);
 	bc().addReadOnly(dialog_->check_subcaption);
 }
@@ -157,16 +148,16 @@ void FormGraphics::apply()
 	                   (heightButtons.getButton());
 	igp.heightSize = strToDbl(fl_get_input(dialog_->input_height));
 
-	igp.rotateAngle = strToInt(fl_get_input(dialog_->input_rotate_angle));
+	igp.rotateAngle = strToDbl(fl_get_input(dialog_->input_rotate_angle));
+	/* // Need to redo it for floats, but I'm lazy now - BE 20010725
 	if (igp.rotateAngle >= 360)
 		igp.rotateAngle = igp.rotateAngle % 360;
 	if (igp.rotateAngle <= -360)
 		igp.rotateAngle = - (( -igp.rotateAngle) % 360);
+	*/
 
 	igp.subcaption = fl_get_button(dialog_->check_subcaption);
 	igp.subcaptionText = fl_get_input(dialog_->input_subcaption);
-
-	igp.inlineFigure = fl_get_button(dialog_->check_inline);
 
 	igp.testInvariant();
 }
@@ -204,10 +195,6 @@ void FormGraphics::update()
 	fl_set_input(dialog_->input_subcaption,
 	             igp.subcaptionText.c_str());
 
-	// Update the inline figure check button
-	fl_set_button(dialog_->check_inline,
-	              igp.inlineFigure);
-
 	// Now make sure that the buttons are set correctly.
 	input(0, 0);
 }
@@ -231,7 +218,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT *, long data)
 
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(dialog_->input_filename, out_name.c_str());
-			input(0, 0);
+			activate = input(0, CHECKINPUT);
 		}
 		break;
 	}

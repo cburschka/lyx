@@ -17,6 +17,11 @@
 	* text2.C (toggleFree): do selection with WHOLE_WORD_STRICT
 	scheme.
 
+2001-07-26  Baruch Even  <baruch@lyx.org>
+
+	* buffer.C (readInset): Changed to call up InsetGraphics when reading
+	an InsetFig figure, backwards compatible reading of old figure code.
+
 2001-07-27  Juergen Vigna  <jug@sad.it>
 
 	* text2.C: font.realize function adaption.

@@ -12,7 +12,7 @@
 
 using std::endl;
 
-string const InsetFloatList::getScreenLabel() const 
+string const InsetFloatList::getScreenLabel(Buffer const *) const 
 {
 	string const guiName = floatList[float_type]->second.name();
 	if (!guiName.empty()) {
@@ -104,7 +104,7 @@ int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 
 int InsetFloatList::ascii(Buffer const * buffer, std::ostream & os, int) const
 {
-	os << getScreenLabel() << "\n\n";
+	os << getScreenLabel(buffer) << "\n\n";
 
 	Buffer::Lists const toc_list = buffer->getLists();
 	Buffer::Lists::const_iterator cit =

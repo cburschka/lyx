@@ -25,7 +25,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
 
-string const InsetCitation::getScreenLabel() const
+string const InsetCitation::getScreenLabel(Buffer const *) const
 {
 	string keys(getContents());
 
@@ -98,6 +98,6 @@ int InsetCitation::latex(Buffer const * buffer, std::ostream & os,
 
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
-	if (getCmdName() != "cite" && features.bufferParams().use_natbib)
+	if (features.bufferParams().use_natbib)
 		features.natbib = true;
 }

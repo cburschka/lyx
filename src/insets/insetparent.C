@@ -37,7 +37,7 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 }
 
 
-string const InsetParent::getScreenLabel() const 
+string const InsetParent::getScreenLabel(Buffer const *) const 
 {
 	return string(_("Parent:")) + getContents();
 }

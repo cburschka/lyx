@@ -100,7 +100,7 @@ string const InsetBibKey::getBibLabel() const
 	return tostr(counter);
 }
 
-string const InsetBibKey::getScreenLabel() const
+string const InsetBibKey::getScreenLabel(Buffer const *) const
 {
 	return getContents() + " [" + getBibLabel() + "]";
 }
@@ -128,7 +128,7 @@ InsetBibtex::~InsetBibtex()
 }
 
 
-string const InsetBibtex::getScreenLabel() const
+string const InsetBibtex::getScreenLabel(Buffer const *) const
 {
 	return _("BibTeX Generated References");
 }

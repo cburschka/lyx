@@ -1,3 +1,23 @@
+2001-07-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* input_validators.[Ch] (fl_int_filter, fl_float_filter): new methods.
+
+	* FormGraphics.C (build): uncommented the fl_set_input_return call for
+	input_rotate_angle. Set input filter on rotate_angle to make it accept
+	only floating point numbers.
+	(input): Browse now activates the Ok button approriately.
+
+2001-07-26  Baruch Even  <baruch@lyx.org>
+
+	* FormGraphics.h:
+	* FormGraphics.C: Removed hide method since it was interfering with the
+	needed work, it cleared several vectors that were needed for proper
+	functioning. Also changed rotateAngle to float.
+
+	* FormGraphics.C:
+	* forms/form_graphics.fd: Removed inline option, all InsetGraphics figures
+	are inlined.
+	
 2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormInclude.C: add load file facility back

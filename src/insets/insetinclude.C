@@ -162,7 +162,7 @@ bool InsetInclude::display() const
 }
 
 
-string const InsetInclude::getScreenLabel() const
+string const InsetInclude::getScreenLabel(Buffer const *) const
 {
 	string temp;
 

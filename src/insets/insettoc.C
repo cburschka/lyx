@@ -14,7 +14,7 @@
 
 using std::vector;
 
-string const InsetTOC::getScreenLabel() const 
+string const InsetTOC::getScreenLabel(Buffer const *) const 
 {
 	string const cmdname(getCmdName());
 	
@@ -47,7 +47,7 @@ void InsetTOC::edit(BufferView * bv, bool)
 
 int InsetTOC::ascii(Buffer const * buffer, std::ostream & os, int) const
 {
-	os << getScreenLabel() << "\n\n";
+	os << getScreenLabel(buffer) << "\n\n";
 
 	string type;
 	string const cmdname = getCmdName();

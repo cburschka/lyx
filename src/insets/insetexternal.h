@@ -79,7 +79,7 @@ public:
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 
 	/// returns the text of the button
-	virtual string const getScreenLabel() const;
+	virtual string const getScreenLabel(Buffer const *) const;
 
 	// The following public members are used from the frontends code
 

@@ -38,7 +38,7 @@ void InsetRef::edit(BufferView *, bool)
 }
 
 
-string const InsetRef::getScreenLabel() const
+string const InsetRef::getScreenLabel(Buffer const *) const
 {
 	string temp;
 	for (int i = 0; !types[i].latex_name.empty(); ++ i)

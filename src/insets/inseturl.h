@@ -35,7 +35,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

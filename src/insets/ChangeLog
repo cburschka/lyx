@@ -1,3 +1,51 @@
+2001-07-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetert.C (get_new_label): int -> Paragraph::size_type to get
+	std::min working.
+
+	* insetgraphics.C: added a using std::endl directive.
+
+	* insetcommand.h (getScreenLabel): removed pure virtual function,
+	as it duplicates that in InsetButton.
+
+	* insetbib.[Ch] (getScreenLabel):
+	* insetbutton.[Ch] (getScreenLabel):
+	* insetcite.[Ch] (getScreenLabel):
+	* insetert.[Ch] (getScreenLabel):
+	* insetexternal.[Ch] (getScreenLabel):
+	* insetfloatlist.[Ch] (getScreenLabel):
+	* insetinclude.[Ch] (getScreenLabel):
+	* insetindex.[Ch] (getScreenLabel):
+	* insetlabel.h (getScreenLabel):
+	* insetparent.[Ch] (getScreenLabel):
+	* insetref.[Ch] (getScreenLabel):
+	* insettoc.[Ch] (getScreenLabel):
+	* inseturl.[Ch] (getScreenLabel): passed a Buffer const * parameter.
+
+	* insetcite.C (getScreenLabel): use this Buffer parameter in creating
+	the label.
+	(validate): remove check on "cite" when using natbib.
+
+2001-07-26  Baruch Even  <baruch@lyx.org>
+
+	* insetgraphics.C (draw): changed casting to be in one place rather than 
+	all over the function.
+
+	* insetgraphics.h:
+	* insetgraphics.C (read): Added compatibility reads of InsetFig.
+	
+	* insetgraphicsParams.h:
+	* insetgraphicsParams.C: 
+	* insetgraphics.C: Removed inline option and changed rotateAngle to float.
+
+2001-07-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* insetfoot.C (validate): Added method to ensure that the
+	right bit of LaTeX is emitted.
+
+	* insetfoot.h: Added validate method to set the correct
+	LaTeXFeatures bit for the special footnote code.
+
 2001-07-26  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
 
 	* insetquotes.C (dispString): display the right ISO8859-{1,9,15}

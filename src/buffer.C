@@ -1453,8 +1453,11 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFormulaMacro;
 		} else if (tmptok == "Formula") {
 			inset = new InsetFormula;
-		} else if (tmptok == "Figure") {
-			inset = new InsetFig(100, 100, *this);
+		} else if (tmptok == "Figure") { // Backward compatibility
+			//inset = new InsetFig(100, 100, *this);
+			inset = new InsetGraphics;
+		} else if (tmptok == "GRAPHICS") {
+			inset = new InsetGraphics;
 		} else if (tmptok == "Info") {// backwards compatibility
 			inset = new InsetNote(this,
 					      lex.getLongString("\\end_inset"),
@@ -1489,8 +1492,6 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 #endif
 		} else if (tmptok == "Caption") {
 			inset = new InsetCaption;
-		} else if (tmptok == "GRAPHICS") {
-			inset = new InsetGraphics;
 		} else if (tmptok == "FloatList") {
 			inset = new InsetFloatList;
 		}

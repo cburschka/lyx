@@ -32,7 +32,7 @@ void InsetUrl::edit(BufferView * bv, bool)
 }
 
 
-string const InsetUrl::getScreenLabel() const
+string const InsetUrl::getScreenLabel(Buffer const *) const
 {
 	string temp;
 	if (getCmdName() == "url" )

@@ -98,6 +98,11 @@ public:
 	SigC::Signal0<void> hideDialog;
 
 private:
+	/// Read the inset native format
+	void readInsetGraphics(Buffer const * buf, LyXLex & lex);
+	/// Read the FigInset file format
+	void readFigInset(Buffer const * buf, LyXLex & lex);
+	
 	/// Update the inset after parameter change.
 	void updateInset() const;
 	/// Get the status message, depends on the image loading status.

@@ -79,7 +79,7 @@ string const ControlGraphics::Browse(string const & in_name)
 {
 	string const title = N_("Graphics");
 	// FIXME: currently we need the second '|' to prevent mis-interpretation 
-	string const pattern = "*.(ps|png)|";
+	string const pattern = "*.(eps|png|jpeg|gif)|";
 
   	// Does user clipart directory exist?
   	string clipdir = AddName (user_lyxdir, "clipart");

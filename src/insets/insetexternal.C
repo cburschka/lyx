@@ -202,7 +202,7 @@ Inset * InsetExternal::clone(Buffer const &, bool same_id) const
 }
 
 
-string const InsetExternal::getScreenLabel() const
+string const InsetExternal::getScreenLabel(Buffer const *) const
 {
 	ExternalTemplate const & et = params_.templ;
 	if (et.guiName.empty())

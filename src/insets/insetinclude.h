@@ -119,7 +119,7 @@ public:
 	SigC::Signal0<void> hideDialog;
 private:
 	/// get the text displayed on the button
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	/// is this a verbatim include ?
 	bool isVerbatim() const;
         /// get the filename of the master buffer

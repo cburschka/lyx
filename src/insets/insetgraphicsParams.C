@@ -18,6 +18,7 @@
 
 #include "support/translator.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 
 #include "support/LAssert.h"
 
@@ -109,7 +110,6 @@ void InsetGraphicsParams::init()
 {
 	subcaptionText = filename = string();
 	display = MONOCHROME;
-	inlineFigure = false;
 	subcaption = false;
 	keepAspectRatio = true;
 	widthResize = DEFAULT_SIZE;
@@ -117,7 +117,7 @@ void InsetGraphicsParams::init()
 	heightResize = DEFAULT_SIZE;
 	heightSize = 0.0;
 	rotateOrigin = DEFAULT;
-	rotateAngle = 0;
+	rotateAngle = 0.0;
 
 	testInvariant();
 }
@@ -126,7 +126,6 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 {
 	filename = igp.filename;
 	display = igp.display;
-	inlineFigure = igp.inlineFigure;
 	subcaption = igp.subcaption;
 	subcaptionText = igp.subcaptionText;
 	keepAspectRatio = igp.keepAspectRatio;
@@ -171,8 +170,8 @@ void InsetGraphicsParams::testInvariant() const
 	// The reason for this is that in latex there is a meaning for the
 	// different angles and they are not necessarliy interchangeable,
 	// it depends on the rotation origin.
-	lyx::Assert(rotateAngle < 360);
-	lyx::Assert(rotateAngle > -360);
+	lyx::Assert(rotateAngle < 360.0);
+	lyx::Assert(rotateAngle > -360.0);
 
 }
 
@@ -181,7 +180,6 @@ bool operator==(InsetGraphicsParams const & left,
 {
 	if (left.filename == right.filename &&
 	        left.display == right.display &&
-	        left.inlineFigure == right.inlineFigure &&
 	        left.subcaption == right.subcaption &&
 	        left.subcaptionText == right.subcaptionText &&
 	        left.keepAspectRatio == right.keepAspectRatio &&
@@ -190,7 +188,7 @@ bool operator==(InsetGraphicsParams const & left,
 	        left.heightResize == right.heightResize &&
 	        left.heightSize == right.heightSize &&
 	        left.rotateOrigin == right.rotateOrigin &&
-	        left.rotateAngle == right.rotateAngle
+	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001)
 	   )
 		return true;
 
@@ -237,10 +235,6 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	// Save the display type
 	os << " display " << displayTranslator.find(display) << '\n';
 
-	// Save the inline status
-	if (inlineFigure)
-		os << " inline";
-
 	// Save the subcaption status
 	if (subcaption)
 		os << " subcaption";
@@ -252,7 +246,7 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	writeResize(os, "height", heightResize, heightSize);
 
 	writeOrigin(os, rotateOrigin);
-	if (rotateAngle != 0)
+	if (lyx::float_equal(rotateAngle, 0.0, 0.001))
 		os << " rotateAngle " << rotateAngle << '\n';
 }
 
@@ -298,8 +292,6 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		string const type = lex.GetString();
 
 		display = displayTranslator.find(type);
-	} else if (token == "inline") {
-		inlineFigure = true;
 	} else if (token == "subcaption") {
 		subcaption = true;
 	} else if (token == "subcaptionText") {
@@ -328,7 +320,7 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		readOrigin(this, token);
 	} else if (token == "rotateAngle") {
 		lex.next();
-		rotateAngle = lex.GetInteger();
+		rotateAngle = lex.GetFloat();
 	} else {
 		// If it's none of the above, its not ours.
 		return false;

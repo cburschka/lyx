@@ -41,7 +41,7 @@ public:
 	///
 	void read(Buffer const *, LyXLex & lex);
 	///
-	virtual string const getScreenLabel() const;
+	virtual string const getScreenLabel(Buffer const *) const;
 	///
 	void edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -87,7 +87,7 @@ public:
 		return new InsetBibtex(params(), same_id);
 	}
 	///
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

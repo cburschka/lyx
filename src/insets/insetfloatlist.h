@@ -32,7 +32,7 @@ public:
 		return new InsetFloatList(*this);
 	}
 	///
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	///
 	void edit(BufferView * bv, int, int, unsigned int);
 	///

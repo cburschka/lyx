@@ -30,7 +30,7 @@ public:
 		return new InsetTOC(params(), same_id);
 	}
 	///
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	///
 	void edit(BufferView * bv, int, int, unsigned int);
 	///

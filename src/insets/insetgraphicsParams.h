@@ -44,9 +44,6 @@ struct InsetGraphicsParams
 	/// How to display the image
 	DisplayType display;
 
-	/// Is the figure inlined? (not in a paragraph of its own).
-	bool inlineFigure;
-
 	/// Do we have a subcaption?
 	bool subcaption;
 
@@ -97,7 +94,7 @@ struct InsetGraphicsParams
 	/// Origin point of rotation
 	Origin rotateOrigin;
 	/// Rotation angle.
-	int rotateAngle;
+	float rotateAngle;
 	///
 	InsetGraphicsParams();
 	///

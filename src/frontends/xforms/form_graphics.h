@@ -38,7 +38,6 @@ struct FD_form_graphics {
 	FL_OBJECT *radio_display_color;
 	FL_OBJECT *radio_no_display;
 	FL_OBJECT *input_rotate_angle;
-	FL_OBJECT *check_inline;
 	FL_OBJECT *input_subcaption;
 	FL_OBJECT *check_subcaption;
 	FL_OBJECT *button_restore;

@@ -28,7 +28,6 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 20, 310, 138, 30, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 279, 250, 201, 50, "");
   {
     char const * const dummy = N_("Graphics File|#F");
     fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 150, 20, 210, 30, idex(_(dummy)));
@@ -109,16 +108,10 @@ FD_form_graphics * FormGraphics::build_graphics()
   }
   fl_end_group();
 
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 250, 236, 50, _("Rotate"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 250, 240, 50, _("Rotate"));
   {
     char const * const dummy = N_("Angle|#A");
     fdui->input_rotate_angle = obj = fl_add_input(FL_INT_INPUT, 91, 260, 94, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
-  {
-    char const * const dummy = N_("Inline Figure|#I");
-    fdui->check_inline = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 279, 260, 201, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);

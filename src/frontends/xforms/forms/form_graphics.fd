@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_graphics
 Width: 490
 Height: 390
-Number of Objects: 38
+Number of Objects: 36
 
 --------------------
 class: FL_BOX
@@ -34,24 +34,6 @@ argument:
 class: FL_FRAME
 type: ENGRAVED_FRAME
 box: 20 310 138 30
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 279 250 201 50
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -540,7 +522,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 20 250 236 50
+box: 20 250 240 50
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -570,24 +552,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_rotate_angle
-callback: C_FormBaseInputCB
-argument: CHECKINPUT
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 279 260 201 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Inline Figure|#I
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_inline
 callback: C_FormBaseInputCB
 argument: CHECKINPUT
 

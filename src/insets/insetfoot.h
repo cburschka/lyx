@@ -18,6 +18,7 @@
 #pragma interface
 #endif
 
+#include "LaTeXFeatures.h"
 #include "insetfootlike.h"
 
 /** The footnote inset
@@ -37,6 +38,8 @@ public:
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	string const editMessage() const;
+	///
+	void InsetFoot::validate(LaTeXFeatures & features) const;
 };
 
 #endif

@@ -203,7 +203,8 @@ Menuset
 	Separator
 	Item "TeX|T" "ert-insert"
 	Item "Minipage|p" "minipage-insert"
-	Item "Graphics...|G" "figure-insert"
+	Item "Old-Graphics..." "figure-insert"
+	Item "Graphics...|G" "graphics-insert"
 	Item "Tabular Material...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator

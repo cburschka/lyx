@@ -27,7 +27,7 @@ public:
 		return new InsetLabel(params(), same_id);
 	}
 	///
-	string const getScreenLabel() const { return getContents(); }
+	string const getScreenLabel(Buffer const *) const { return getContents(); }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

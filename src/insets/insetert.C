@@ -222,8 +222,8 @@ string const InsetERT::get_new_label() const
 	string la;
 	Paragraph::size_type const max_length = 15;
 
-	int const p_siz = inset.paragraph()->size();
-	int const n = std::min(max_length, p_siz);
+	Paragraph::size_type const p_siz = inset.paragraph()->size();
+	Paragraph::size_type const n = std::min(max_length, p_siz);
 	int i = 0;
 	int j = 0;
 	for(; i < n && j < p_siz; ++j) {

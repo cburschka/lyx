@@ -53,5 +53,23 @@ int atoi(string const & nstr);
 string const tempName(string const & dir = string(),
 		      string const & mask = string());
 
+
+/** Returns true if var is approximately equal to number with allowed error
+ * of 'error'.
+ *
+ * Reason: A float can be very close to the number, yet still need not be 
+ * exactly equal, you can have exp(-10) which is very close to zero but not
+ * zero. If you only need an approximate equality (you usually do), use this
+ * template.
+ *
+ * Usage: if (float_equal(var, number, 0.0001)) { }
+ * 
+ * This will check if 'var' is approx. equal to 'number' with error of 1/1000
+ */
+inline bool float_equal(float var, float number, float error)
+{
+	return (number - error <= var && var <= number + error);
+}
+
 } // namespace lyx
 #endif /* LYX_LIB_H */

@@ -33,7 +33,7 @@ public:
 		return new InsetParent(params(), buffer, same_id);
 	}
 	///
-	string const getScreenLabel() const;
+	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
