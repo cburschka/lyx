@@ -169,7 +169,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2003-01-12 20:46+0100\n"
+"POT-Creation-Date: 2003-01-13 23:52+0100\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -221,13 +221,13 @@ msgstr "Clé :|#C"
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:279
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:92
-#: ../src/frontends/qt2/ui/QERTDialog.ui:147
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:128
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:90
-#: src/frontends/qt2/QSpellchecker.C:122
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
+#: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
 msgstr "OK"
 
@@ -425,7 +425,7 @@ msgid "@2->"
 msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:205
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:205
 #: src/frontends/qt2/QSearch.C:34
 msgid "Search"
 msgstr "Chercher"
@@ -722,7 +722,7 @@ msgstr "Ding 4|#g"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:43
 #: ../src/frontends/xforms/forms/form_tabular.fd:1764
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:956
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:956
 msgid "Status"
 msgstr "Statut"
 
@@ -861,7 +861,7 @@ msgid "Ok"
 msgstr "Ok"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:286
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:286
 msgid "Output"
 msgstr "Sorties"
 
@@ -894,7 +894,7 @@ msgid "Height|#H"
 msgstr "Hauteur|#H"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:374
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:251
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:251
 msgid "%"
 msgstr "%"
 
@@ -931,7 +931,7 @@ msgid "Get from file|#G"
 msgstr "Valeurs du fichier|#V"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:620
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:481
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:481
 msgid "Rotation"
 msgstr "Rotation"
 
@@ -1031,11 +1031,11 @@ msgstr "Alignement Horizontal|#H"
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1190
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:358
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:291
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:261
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1334
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:129
 msgid "Close"
 msgstr "Fermer"
@@ -1045,7 +1045,7 @@ msgid "Functions"
 msgstr "Fonctions"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:81
-#: ../src/frontends/qt2/ui/QMathDialog.ui:511 ../lib/languages:32
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:511 ../lib/languages:32
 #: src/frontends/xforms/FormMathsPanel.C:152
 msgid "Greek"
 msgstr "Grec"
@@ -1075,7 +1075,7 @@ msgid "Misc"
 msgstr "Divers"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:297
-#: ../src/frontends/qt2/ui/QMathDialog.ui:523
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:523
 #: src/frontends/xforms/FormMathsPanel.C:165
 msgid "Dots"
 msgstr "Points"
@@ -1141,7 +1141,7 @@ msgstr "Largeur"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:61
 #: ../src/frontends/xforms/forms/form_paragraph.fd:44
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:295
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:295
 msgid "Alignment"
 msgstr "Alignement"
 
@@ -1740,7 +1740,7 @@ msgid "Autoreset Class Options on change|#u"
 msgstr "Remettre à Zéro les Options de Classe à chaque changement|#Z"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:45
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
 msgid "Pages"
 msgstr "Pages"
 
@@ -1749,7 +1749,7 @@ msgid "Destination"
 msgstr "Destination"
 
 #: ../src/frontends/xforms/forms/form_print.fd:80
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:231
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:231
 msgid "Copies"
 msgstr "Exemplaires"
 
@@ -1852,7 +1852,7 @@ msgid "Word count"
 msgstr "Nombre de mots"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:221
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
 msgid "Unknown:"
 msgstr "Mot inconnu :"
 
@@ -2061,8 +2061,8 @@ msgstr "Saut de page dans la ligne en cours|#S"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1620
 #: ../src/frontends/xforms/forms/form_tabular.fd:1638
 #: ../src/frontends/xforms/forms/form_tabular.fd:1656
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:131 src/bufferview_funcs.C:194
-#: src/frontends/qt2/QDocument.C:101
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:131
+#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:101
 msgid "Double"
 msgstr "Double"
 
@@ -2096,7 +2096,7 @@ msgid "Border Below"
 msgstr "Bordure Bas"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1746
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1011
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1011
 msgid "Contents"
 msgstr "Contenu"
 
@@ -2156,13 +2156,13 @@ msgstr "Défaut|#D"
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:22
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:22
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:22
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:22
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:22
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 msgid "Form1"
 msgstr ""
 
@@ -2269,7 +2269,7 @@ msgid "S&kip"
 msgstr "Interligne"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:144
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
 msgid "&Language:"
 msgstr "&Langue :"
 
@@ -2396,9 +2396,9 @@ msgid "&Height:"
 msgstr "Hauteur :"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:75
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:365
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 msgid "&Width:"
 msgstr "Largeur :"
 
@@ -2416,58 +2416,6 @@ msgstr "Portrait"
 msgid "&Landscape"
 msgstr "Paysage"
 
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:22 src/frontends/qt2/QAbout.C:39
-#: src/frontends/xforms/FormAboutlyx.C:33
-msgid "About LyX"
-msgstr "À Propos de LyX"
-
-#. stack tabs
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:51
-#: src/frontends/xforms/FormAboutlyx.C:70
-msgid "Version"
-msgstr "Version"
-
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:82
-msgid "Version goes here"
-msgstr "La version va là"
-
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:105
-#: src/frontends/xforms/FormAboutlyx.C:72
-msgid "Credits"
-msgstr "Crédits"
-
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:141 ../lib/layouts/apa.layout:192
-msgid "Copyright"
-msgstr "Copyright"
-
-#: ../src/frontends/qt2/ui/QAboutDialog.ui:213
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:204
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:508
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:414
-#: ../src/frontends/qt2/ui/QERTDialog.ui:162
-#: ../src/frontends/qt2/ui/QErrorDialog.ui:92
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:141
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:310
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:371
-#: ../src/frontends/qt2/ui/QLogDialog.ui:107
-#: ../src/frontends/qt2/ui/QMathDialog.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:312
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:722
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:149
-#: ../src/frontends/qt2/ui/QRefDialog.ui:308
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialog.ui:92
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:141
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:252
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:240
-#: ../src/frontends/qt2/ui/QTocDialog.ui:203
-#: ../src/frontends/qt2/ui/QURLDialog.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialog.ui:107
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:318
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:133
-msgid "&Close"
-msgstr "&Fermer"
-
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
 msgstr "LyX : Entrez du texte"
@@ -2477,2087 +2425,539 @@ msgid "&Dummy"
 msgstr "Bidon"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:179
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:179
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
 msgstr "&Annuler"
 
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:22
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:22 src/frontends/qt2/QIndex.C:30
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:70
-msgid "Index"
-msgstr "Index"
+# ---------------------------XFORMS---------------------------
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
+#: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
+msgid "Citation"
+msgstr "Citation"
 
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:60
-msgid "&Key"
-msgstr "&Clé"
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
+msgid "&Restore"
+msgstr "&Restaurer"
 
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:86
-msgid "The citation key"
-msgstr "La clé de citation"
-
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:114
-msgid "&Label"
-msgstr "&Étiquette"
-
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:140
-msgid "The label as it appears in the document"
-msgstr "Le nom du format tel qu'il apparaîtra dans le document"
-
-#: ../src/frontends/qt2/ui/QBibitemDialog.ui:189
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:157
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:288
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:356
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:274
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:700
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:111
-#: ../src/frontends/qt2/ui/QRefDialog.ui:293
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:280
-#: ../src/frontends/qt2/ui/QURLDialog.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:280
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:250
-msgid "&OK"
-msgstr "&OK"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:22
-msgid "Bibtex"
-msgstr "BibTeX"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:45
-#, fuzzy
-msgid "Databa&ses"
-msgstr "Base de D."
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:57
-msgid "BibTeX database to use"
-msgstr "Base de D. BibTeX"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:75
-msgid "Available BibTeX databases"
-msgstr "Bases de D. BibTeX disponibles"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:246
-msgid "&Add"
-msgstr "&Ajouter"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:90
-msgid "Add a BibTeX database file"
-msgstr "Ajouter un fichier BibTeX"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:101
-#, fuzzy
-msgid "Add a BibTeX file manually"
-msgstr "Ajouter un fichier BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:112
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "Parcourir..."
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:120
-#, fuzzy
-msgid "Browse for a BibTeX database file"
-msgstr "Ajouter un fichier BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:131
-msgid "&Delete"
-msgstr "&Effacer"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:135
-msgid "Remove the selected database"
-msgstr "Enlever la base de D. sélectionnée"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:186
-#, fuzzy
-msgid "St&yle"
-msgstr "&Style"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:194
-msgid "The BibTeX style"
-msgstr "Le style BibTeX"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:290
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:90
-#, fuzzy
-msgid "&Browse..."
-msgstr "&Parcourir ..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:213
-msgid "Choose a style file"
-msgstr "Choisir un fichier de style"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:224
-#: ../src/frontends/qt2/ui/QLogDialog.ui:88
-#: ../src/frontends/qt2/ui/QRefDialog.ui:67
-#: ../src/frontends/qt2/ui/QTocDialog.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialog.ui:88
-msgid "&Update"
-msgstr "&Mise à jour"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:232
-#, fuzzy
-msgid "Update style list"
-msgstr "Mettre à jour l'affichage"
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:168
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+msgid "&Apply"
+msgstr "&Appliquer"
 
 #. /
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:294
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:120
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120
 #: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
 #: src/lyxfunc.C:942
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:307
-msgid "Add bibliography to &TOC"
-msgstr "Ajouter la bibliographie à la &TdM"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:311
-msgid "Add bibliography to the table of contents"
-msgstr "Ajouter la bibliographie à la table des matières"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:66
-#: src/frontends/qt2/QCharacter.C:39
-msgid "Character"
-msgstr "Caractère"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:95
-msgid "&Family:"
-msgstr "&Famille :"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:114
-msgid "Font family"
-msgstr "Famille police"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:125
-msgid "&Series:"
-msgstr "&Série :|#S"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:204
-msgid "Font series"
-msgstr "Série police :"
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Langue"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:193
-msgid "Font shape"
-msgstr "Forme police"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:227
-msgid "Font color"
-msgstr "Couleur police"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:185
-msgid "S&hape:"
-msgstr "F&orme :|#o"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:219
-msgid "&Color:"
-msgstr "Couleurs :"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:249
-msgid "&Toggle all"
-msgstr "(Dés)Activer Tous"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:253
-msgid "toggle font on all of the above"
-msgstr "(Dés)Activer Tous|#v"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:302
-msgid "Never toggled"
-msgstr "Paramètres non (dés)activables"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:324
-msgid "Si&ze:"
-msgstr "Taille :"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:343
-msgid "Font size"
-msgstr "Taille police"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:356
-msgid "Always toggled"
-msgstr "Paramètres (dés)activables"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:397
-msgid "Other font settings"
-msgstr "Autres réglages de police"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:382
-msgid "&Misc:"
-msgstr "Divers :"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:410
-msgid "Auto apply"
-msgstr "Appliquer automatiquement"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:414
-msgid "Apply each change automatically"
-msgstr "Appliquer tous les changements automatiquement"
-
-#: ../src/frontends/qt2/ui/QCharacterDialog.ui:497
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:168
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:126
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:299
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1164
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:293
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:711
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:109
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:118
-msgid "&Apply"
-msgstr "&Appliquer"
-
-# ---------------------------XFORMS---------------------------
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:22
-#: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
-msgid "Citation"
-msgstr "Citation"
-
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:60
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:125
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:256
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1098
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:234
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:668
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:240
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:67
-msgid "&Restore"
-msgstr "&Restaurer"
-
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:142
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
 msgstr "Rechercher les citations disponibles"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:153
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:153
 msgid "Regular E&xpression"
 msgstr "E&xpression Régulière"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:157
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Interpret search entry as a regular expression"
 msgstr "Interpréter comme une expression régulière"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:168
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:168
 msgid "&Case sensitive"
 msgstr "Selon la casse"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:172
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
 msgid "Make the search case-sensitive"
 msgstr "Recherche sensible à la casse"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:183
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:183
 msgid "&Next"
 msgstr "Suivant"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:194
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:194
 msgid "&Previous"
 msgstr "Précédent"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:213
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:362
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:176
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:124
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 msgid "New Item"
 msgstr "Nouvel Élément"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:222
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:222
 msgid "Available citation keys"
 msgstr "Clés disponibles"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:263
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:263
 msgid "Add the selected citation"
 msgstr "Ajouter la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:289
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:289
 msgid "Remove the selected citation"
 msgstr "Enlever la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:315
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:315
 msgid "Move the selected citation up"
 msgstr "Remonter la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:341
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:341
 msgid "Move the selected citation down"
 msgstr "Descendre la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:354
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:354
 msgid "Available"
 msgstr "Disponible"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:375
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:375
 msgid "Citations currently selected"
 msgstr "Clés sélectionnées"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:386
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:386
 msgid "Selected"
 msgstr "Sélectionné"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:418 src/lyxvc.C:131
 msgid "Info"
 msgstr "Informations"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:441
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:441
 msgid "Citation entry"
 msgstr "Entrée de citation"
 
 # à revoir
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:488
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:488
 msgid "&Full author list"
 msgstr "Liste complète des auteurs"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:492
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 msgid "List all authors"
 msgstr "Donne la liste de tous les auteurs"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:503
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:503
 msgid "Force &upper case"
 msgstr "Forcer les majuscules"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:507
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:507
 msgid "Force upper case in citation"
 msgstr "Forcer les majuscules dans la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:527
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:527
 msgid "Text to place after citation"
 msgstr "Texte à ajouter après la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:538
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:538
 #, fuzzy
 msgid "Text after:"
 msgstr "Texte après le paramètre"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:560
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:560
 #: src/frontends/qt2/QCitationDialog.C:55
 #: src/frontends/xforms/FormCitation.C:461
 msgid "Not yet supported"
 msgstr "Pas encore supporté"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:564
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 msgid "Text to place before citation"
 msgstr "Texte à ajouter avant la citation"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:579
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:579
 #, fuzzy
 msgid "Text before:"
 msgstr "Texte avant"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:597
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:597
 msgid "Natbib citation style to use"
 msgstr "Style de citation Natbib"
 
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:608
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:608
 #, fuzzy
 msgid "Citation style:"
 msgstr "Style de citation"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:165
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:165
 #, fuzzy
 msgid "Left delimiter"
 msgstr "Délimiteurs Mathématiques"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:266
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:266
 #, fuzzy
 msgid "Right delimiter"
 msgstr "Délimiteurs Mathématiques"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:321
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:321
 msgid "&Keep matched"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:329
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:329
 #, fuzzy
 msgid "Match delimiter types"
 msgstr "Délimiteurs Mathématiques"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:378
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:378
 #, fuzzy
 msgid "&Insert"
 msgstr "Insérer|I"
 
-#: ../src/frontends/qt2/ui/QDelimiterDialog.ui:382
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:382
 #, fuzzy
 msgid "Insert the delimiters"
 msgstr "Insérer la dernière marque d'index"
 
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:71
-#, fuzzy
-msgid "Use Class Defaults"
-msgstr "Valeurs par Défaut de la Classe|#f"
-
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:75
-#, fuzzy
-msgid "Reset default params of the current class"
-msgstr "leur valeur par défaut dans cette classe ?"
-
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:93
-#, fuzzy
-msgid "Save as Document Defaults"
-msgstr "Retenir ces Valeurs par Défaut|#D"
-
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:97
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialog.ui:228
-#, fuzzy
-msgid "title here"
-msgstr "En-têteTitre"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:22
-#: ../src/frontends/qt2/ui/QERTDialog.ui:45
-msgid "ERT inset display"
-msgstr "Affichage de l'insert ERT"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:64
-msgid "&Inline"
-msgstr "&En Ligne"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:68
-msgid "Show ERT inline"
-msgstr "Affiche l'ERT en ligne"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:79
-msgid "&Collapsed"
-msgstr "&Fermé"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:83
-msgid "Show ERT button only"
-msgstr "Affiche seulement le bouton ERT"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:94
-msgid "&Open"
-msgstr "&Ouvert"
-
-#: ../src/frontends/qt2/ui/QERTDialog.ui:98
-msgid "Show ERT contents"
-msgstr "Affiche le contenu de l'ERT"
-
-#: ../src/frontends/qt2/ui/QErrorDialog.ui:22 src/frontends/qt2/QError.C:31
-#: src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "Erreur LaTeX"
-
-#: ../src/frontends/qt2/ui/QErrorDialog.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:219
-msgid "LaTeX error messages"
-msgstr "Messages d'erreur LaTeX"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:22
-msgid "External Material"
-msgstr "Objet Externe"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:45
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:60
-msgid "&File:"
-msgstr "&Fichier :"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:53
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:64
-msgid "Filename"
-msgstr "Nom Fichier"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:180
-#, fuzzy
-msgid "&View Result"
-msgstr "Afficher Résultat|#R"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:184
-msgid "View the file"
-msgstr "Visualiser le fichier"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:202
-#, fuzzy
-msgid "&Update Result"
-msgstr "Mise à Jour|#J"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:206
-msgid "Update the material"
-msgstr "Met à jour le matériau"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:249
-msgid "Available templates"
-msgstr "Modèles disponibles"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:241
-#, fuzzy
-msgid "&Template:"
-msgstr "&Modèle"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:279
-msgid "Parameters"
-msgstr "Paramètres"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:271
-#, fuzzy
-msgid "&Parameters:"
-msgstr "&Paramètres"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:301
-msgid "&Edit file"
-msgstr "Édit&er Fichier"
-
-#: ../src/frontends/qt2/ui/QExternalDialog.ui:305
-msgid "Edit the file externally"
-msgstr "Éditer le fichier extérieur"
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+msgid "&Close"
+msgstr "&Fermer"
 
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:45
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 #, fuzzy
 msgid "Use &default placement"
 msgstr "Placement des Flottants :"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:49
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:49
 msgid "Use LaTeX default settings"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:60
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
 #, fuzzy
 msgid "Advanced placement options"
 msgstr "Options Avancées"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:94
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:94
 msgid "&Top of page"
 msgstr "Haut de la page"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:98
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:98
 #, fuzzy
 msgid "Prefer top of page"
 msgstr "Haut de la page"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:109
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:109
 msgid "&Bottom of page"
 msgstr "Bas de la page"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:113
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:113
 #, fuzzy
 msgid "Prefer bottom of page"
 msgstr "Bas de la page"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:124
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:124
 msgid "&Page of floats"
 msgstr "Page de flottants"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:128
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:128
 msgid "Separate page for multiple floats"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:139
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:139
 msgid "&Here if possible"
 msgstr "Ici, si possible"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:143
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:143
 msgid "Place float at current position if possible"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:154
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:154
 msgid "&Ignore LaTeX rules"
 msgstr "Ignorer les choix de LaTeX"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:158
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:158
 msgid "Ignore the internal LaTeX placement rules"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:186
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:186
 #, fuzzy
 msgid "Here definitely"
 msgstr "Ici, à tout prix"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:190
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:190
 #, fuzzy
 msgid "Place float at current position"
 msgstr "Remplace le mot par le choix sélectionné"
 
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:226
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:226
 #, fuzzy
 msgid "&Span columns"
 msgstr "Colonne spéciale"
 
-#: ../src/frontends/qt2/ui/QFloatDialog.ui:230
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:230
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:55
-#, fuzzy
-msgid "&Graphics"
-msgstr "Graphique"
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:157
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+msgid "&OK"
+msgstr "&OK"
 
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:108
-#, fuzzy
-msgid "File name of image"
-msgstr "Choisir le fichier à inclure"
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
+#: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
+#: src/insets/insetindex.C:70
+msgid "Index"
+msgstr "Index"
 
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:119
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:461
-msgid "&Browse ..."
-msgstr "&Parcourir ..."
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:123
-#, fuzzy
-msgid "Select an image file"
-msgstr "Choisir un fichier"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:136
-#, fuzzy
-msgid "LyX display"
-msgstr "Affichage"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:155
-msgid "&Show in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:159
-#, fuzzy
-msgid "Display image in LyX"
-msgstr "Afficher l'information à propos de LyX"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:170
-#, fuzzy
-msgid "Display :"
-msgstr "Affichage des Graphiques"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:213
-msgid "Screen display"
-msgstr "Affichage"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:186
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:113
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "Défaut"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:192
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-msgid "Monochrome"
-msgstr "Noir et Blanc"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:198
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-msgid "Grayscale"
-msgstr "Niveaux de gris"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:204
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-msgid "Color"
-msgstr "Couleurs"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:224
-#, fuzzy
-msgid "Scale :"
-msgstr "Éch&elle"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:339
-msgid "Height of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:368
-msgid "Units of height value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:385
-#, fuzzy
-msgid "&Height"
-msgstr "Hauteur :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:419
-msgid "Width of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:443
-#, fuzzy
-msgid "&Width"
-msgstr "Largeur :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:464
-#, fuzzy
-msgid "&Maintain aspect ratio"
-msgstr "Conserver les proportions"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:515
-#, fuzzy
-msgid "A&ngle:"
-msgstr "&Angle :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:541
-msgid "Angle to rotate image by"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:552
-msgid "&Origin:"
-msgstr "&Origine :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:571
-msgid "The origin of the rotation"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:588
-#, fuzzy
-msgid "&Clipping"
-msgstr "Fermeture"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:622
-msgid "Clip to &bounding box"
-msgstr "&Couper selon le cadre limite"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:626
-#, fuzzy
-msgid "Clip to bounding box values"
-msgstr "&Couper au cadre"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:658
-#, fuzzy
-msgid "&Get from file"
-msgstr "Valeurs du fichier|#V"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:662
-#, fuzzy
-msgid "Get bounding box from the (EPS) file"
-msgstr "Obtenir le cadre limite dans le fichier (EPS)"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:709
-msgid "Right &top:"
-msgstr "&Haut Droite :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:781
-msgid "y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:799
-#, fuzzy
-msgid "x"
-msgstr "ex"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:828
-#, fuzzy
-msgid "&Left bottom:"
-msgstr "&Bas Gauche :"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:868
-#, fuzzy
-msgid "E&xtra options"
-msgstr "&Autres Options"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:887
-msgid "Su&bfigure"
-msgstr "Sous-figure"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:902
-#, fuzzy
-msgid "Don't un&zip on export"
-msgstr "Ne pas décompresser à l'exportation LaTeX|#m"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:906
-#, fuzzy
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Ne pas décompresser à l'exportation LaTeX|#m"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:917
-#, fuzzy
-msgid "LaTeX &options:"
-msgstr "Options LaTeX"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:936
-#, fuzzy
-msgid "Additional LaTeX options"
-msgstr "Autres Options LaTeX|#L"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:947
-msgid "&Draft mode"
-msgstr "Mode &Brouillon"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:951
-#, fuzzy
-msgid "Draft mode"
-msgstr "Mode &Brouillon"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1025
-#, fuzzy
-msgid "Ca&ption :"
-msgstr "Légende"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1048
-#, fuzzy
-msgid "The caption for the sub-figure"
-msgstr "La sous-légende pour la figure"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:22
-msgid "Include File"
-msgstr "Inclure Fichier"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:79
-msgid "File name to include"
-msgstr "Choisir le fichier à inclure"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:94
-msgid "Select a file"
-msgstr "Choisir un fichier"
-
-# à confirmer
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:122
-#, fuzzy
-msgid "&Include Type:"
-msgstr "Inclusion"
-
-# à confirmer aussi
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:134 src/insets/insetinclude.C:225
-msgid "Input"
-msgstr "Incorporation"
-
-# à confirmer
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr "Inclusion"
-
-# Texto mieux que "Mot à mot" ? - AR
-# Retour à verbatim (cf intro) - JPC
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr "Verbatim"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:183
-msgid "&Load"
-msgstr "Charger"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:187
-msgid "Load the file"
-msgstr "Charger le fichier"
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:237
-msgid "&Mark spaces in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:241
-msgid "Underline spaces in generated output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:259
-msgid "&Show preview"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialog.ui:263
-#, fuzzy
-msgid "Show LaTeX preview"
-msgstr "Le Préambule LaTeX"
-
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:60
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword"
 msgstr "Mot-Clé"
 
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:68
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:79
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:68
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
 msgstr "Entrée d'index"
 
-#: ../src/frontends/qt2/ui/QLogDialog.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr "Log"
-
-#: ../src/frontends/qt2/ui/QLogDialog.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialog.ui:96
-msgid "Update the display"
-msgstr "Mettre à jour l'affichage"
-
-#: ../src/frontends/qt2/ui/QMathDialog.ui:22
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 #, fuzzy
 msgid "LyX: Math Panel"
 msgstr "Palette Mathématique"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:98
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
 #, fuzzy
 msgid "Insert root"
 msgstr "Insérer un guillemet"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:117
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
 #, fuzzy
 msgid "Insert spacing"
 msgstr "Interligne"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:136
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
 msgid "Set limits style"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:155
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:155
 #, fuzzy
 msgid "Set math font"
 msgstr "Régler la taille de la police"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:213
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
 #, fuzzy
 msgid "Insert fraction (\frac)"
 msgstr "Insérer une citation"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:239
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display mode"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:258
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:22
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
 #, fuzzy
 msgid "Insert matrix"
 msgstr "Insérer un appendice"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:277
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
 #, fuzzy
 msgid "Subscript"
 msgstr "Indice|I"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:296
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
 #, fuzzy
 msgid "Superscript"
 msgstr "Exposant|x"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:315
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:381
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
 #, fuzzy
 msgid "&Functions"
 msgstr "Fonctions"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:410
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
 #, fuzzy
 msgid "Select a function or operator to insert"
 msgstr "Choisir le fichier à insérer"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:462
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
 #, fuzzy
 msgid "Symbols"
 msgstr "Symbol"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:493
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
 #, fuzzy
 msgid "Operators"
 msgstr "Grands Opérateurs"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:499
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
 #, fuzzy
 msgid "Big operators"
 msgstr "Grands Opérateurs"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:505
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
 #, fuzzy
 msgid "Relations"
 msgstr "Relations Binaires"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:517
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
 #: src/frontends/xforms/FormMathsPanel.C:137
 msgid "Arrows"
 msgstr "Flèches"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:529
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:529
 msgid "Frame decorations"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:535
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:535
 msgid "Miscellaneous"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:541
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
 #, fuzzy
 msgid "AMS operators"
 msgstr "Opérateurs AMS"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:547
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
 #, fuzzy
 msgid "AMS relations"
 msgstr "Relations AMS"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:553
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
 #, fuzzy
 msgid "AMS negated relations"
 msgstr "Négations de Relations AMS"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:559
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
 #, fuzzy
 msgid "AMS arrows"
 msgstr "Flèches AMS"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:565
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
 #, fuzzy
 msgid "AMS Miscellaneous"
 msgstr "Divers AMS"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:581
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
 #, fuzzy
 msgid "Select a page of symbols"
 msgstr "Classes ou styles sélectionnés"
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:655
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
 msgid "&Detach panel"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathDialog.ui:659
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:23
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
 msgid "Minipage settings"
 msgstr "Options de minipage"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:87
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:311
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:377
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 msgid "Top"
 msgstr "&Haut"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:93
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
 msgid "Middle"
 msgstr "&Milieu"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:99
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:323
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:389
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 msgid "Bottom"
 msgstr "&Bas"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:108
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:114
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:332
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 msgid "Vertical alignment"
 msgstr "Alignement vertical"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:119
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
 msgid "A&lignment:"
 msgstr "Alignement :"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:152
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:158
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
 msgid "Units of width value"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:170
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:176
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
 msgid "Width value"
 msgstr "Largeur"
 
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:181
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:187
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
 msgid "&Units:"
 msgstr "&Unité :"
 
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:55
-#, fuzzy
-msgid "&General"
-msgstr "Général"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:71
-msgid "Justified"
-msgstr "Justifié"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:77
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:93
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:115
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "À gauche"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:83
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:99
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:127
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "À droite"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:89
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:317
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-#, fuzzy
-msgid "Center"
-msgstr "Centré"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:119 src/bufferview_funcs.C:188
-#: src/frontends/qt2/QDocument.C:97
-msgid "Single"
-msgstr "Simple"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:125
-msgid "1.5"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:137
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:326
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:375
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
-#: src/frontends/qt2/QDocumentDialog.C:342
-msgid "Custom"
-msgstr "Paramétré"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:153
-#, fuzzy
-msgid "L&ine spacing:"
-msgstr "Interligne"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:168
-#, fuzzy
-msgid "Alig&nment:"
-msgstr "Alignement :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:183
-#, fuzzy
-msgid "No &indent"
-msgstr "Pas d'indentation"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:196
-#, fuzzy
-msgid "&Spacing"
-msgstr "Interligne"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:215
-#, fuzzy
-msgid "Above paragraph"
-msgstr "avant un paragraphe"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:233
-#, fuzzy
-msgid "S&pacing:"
-msgstr "Interligne :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:248
-msgid "&Keep space:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:263
-#, fuzzy
-msgid "&Unit:"
-msgstr "&Unité :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:278
-#, fuzzy
-msgid "&Value:"
-msgstr "Valeur :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:290
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:339
-msgid "None"
-msgstr "Sans"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:296
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:345
-msgid "DefSkip"
-msgstr "par Défaut"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:302
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:351
-msgid "SmallSkip"
-msgstr "Petit"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:308
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:357
-msgid "MedSkip"
-msgstr "Moyen"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:314
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:363
-msgid "BigSkip"
-msgstr "Gros"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:320
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:369
-msgid "VFill"
-msgstr "ressort vertical"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:457
-#, fuzzy
-msgid "Below paragraph"
-msgstr "après un paragraphe"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:498
-#, fuzzy
-msgid "&Lines && Pagebreaks"
-msgstr "&Sauts de Ligne et de Page"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:521
-#, fuzzy
-msgid "Label width"
-msgstr "Taille du marqueur :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:540
-#, fuzzy
-msgid "Lon&gest label"
-msgstr "Le plus long :|#L"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:564
-#, fuzzy
-msgid "L&ines"
-msgstr "Lignes"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:583
-#, fuzzy
-msgid "A&bove"
-msgstr "Avant :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:594
-#, fuzzy
-msgid "B&elow"
-msgstr "Après :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:607
-#, fuzzy
-msgid "&Page breaks"
-msgstr "Saut de Page"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:626
-#, fuzzy
-msgid "Abo&ve"
-msgstr "Avant :"
-
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:637
-#, fuzzy
-msgid "Belo&w"
-msgstr "Après :"
-
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:22
-msgid "LaTeX pre-amble"
-msgstr "Préambule LaTeX"
-
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:45
-msgid "The LaTeX pre-amble"
-msgstr "Le Préambule LaTeX"
-
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:71
-msgid "&Edit ..."
-msgstr "&Éditer ..."
-
-#: ../src/frontends/qt2/ui/QPreambleDialog.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr "Éditer le préambule dans un éditeur externe"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:22 src/frontends/qt2/QPrint.C:39
-#: src/frontends/xforms/FormPrint.C:36 src/LyXAction.C:140
-msgid "Print"
-msgstr "Imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:101
-msgid "Page number to print from"
-msgstr "Numéro de la page à partir de laquelle imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:112
-#, fuzzy
-msgid "&to"
-msgstr "à"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:131
-msgid "Page number to print to"
-msgstr "Numéro de la page jusqu'à laquelle imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:144
-#, fuzzy
-msgid "Fro&m"
-msgstr "Depuis|#D"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:152
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:171
-msgid "Print all pages"
-msgstr "Imprime toutes les pages"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:163
-msgid "&All"
-msgstr "&Toutes"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:184
-#, fuzzy
-msgid "Print &odd-numbered pages"
-msgstr "Imprime seulement les pages impaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:199
-#, fuzzy
-msgid "Print &even-numbered pages"
-msgstr "Imprime seulement les pages paires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:214
-msgid "Re&verse order"
-msgstr "&Ordre inverse"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:218
-msgid "Print in reverse order"
-msgstr "Imprime à partir de la derniére page"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:258
-msgid "Number of copies"
-msgstr "Nombre d'exemplaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:273
-msgid "&Collate"
-msgstr "Accoler"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:277
-msgid "Collate copies"
-msgstr "Accoler les exemplaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:347
-msgid "&Print"
-msgstr "&Imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:375
-msgid "Print Destination"
-msgstr "Destination"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:397
-msgid "P&rinter"
-msgstr "Imprimante"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:405
-msgid "Send output to the printer"
-msgstr "Envoie le résultat à l'imprimante"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:416
-msgid "Send output to the given printer"
-msgstr "Envoie le résultat à l'imprimante donnée"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:427
-msgid "&File"
-msgstr "&Fichier"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:446
-msgid "Send output to a file"
-msgstr "Envoie le résultat à un fichier"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
-msgid "Reference"
-msgstr "Référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:71
-msgid "Update the reference list"
-msgstr "Met à jour la liste des références"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:89 src/frontends/qt2/QRef.C:129
-msgid "&Goto"
-msgstr "&Aller"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:93
-msgid "Move the document cursor to reference"
-msgstr "Déplace le curseur à la référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:106
-msgid "Sort"
-msgstr "Trier"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:110
-msgid "Sort references in alphabetical order"
-msgstr "Trie les références par ordre aphabétique"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:125
-#, fuzzy
-msgid "<reference>"
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
 msgstr "Préférences"
 
-#: ../src/frontends/qt2/ui/QRefDialog.ui:131
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
 #, fuzzy
-msgid "<page>"
-msgstr "Minipage"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:137
-msgid "on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:143
-msgid "<reference> on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:149
-#, fuzzy
-msgid "Formatted reference"
-msgstr "Jolie Référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:165
-msgid "Reference as it appears in output"
-msgstr "Référence telle qu'elle sera imprimée"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:176
-msgid "&Reference:"
-msgstr "Référence :"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:198
-#, fuzzy
-msgid "&Format:"
-msgstr "Formats"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:224
-msgid "&Name:"
-msgstr "Nom :"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:321
-#, fuzzy
-msgid "Available references in selected document:"
-msgstr "Références disponibles"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:343
-msgid "Available references"
-msgstr "Références disponibles"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:354
-#, fuzzy
-msgid "&Document:"
-msgstr "Document"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:22
-msgid "Search and replace"
-msgstr "Rechercher et Remplacer"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:51
-msgid "&Find:"
-msgstr "Rechercher :"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:108
-msgid "Replace &with:"
-msgstr "Remplacer par :"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:161
-msgid "Case &sensitive"
-msgstr "Selon la casse"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:172
-msgid "Match whole words onl&y"
-msgstr "Mots complets seulement"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:250
-msgid "Find &Next"
-msgstr "Suivant"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:269
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:187
-msgid "&Replace"
-msgstr "Remplacer"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:284
-msgid "Replace &All "
-msgstr "Remplacer tout"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:295
-msgid "Search &backwards"
-msgstr "Rechercher en arrière"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:22
-#, fuzzy
-msgid "Custom Export"
-msgstr "Client"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:45
-#, fuzzy
-msgid "&Command:"
-msgstr "commande"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:60
-#, fuzzy
-msgid "&Export formats:"
-msgstr "Format d'exportation|#e"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:168
-msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:192
-#, fuzzy
-msgid "Available export converters"
-msgstr "Modèles disponibles"
-
-#: ../src/frontends/qt2/ui/QShowFileDialog.ui:22
-msgid "File: "
-msgstr "Fichier :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
-msgid "Spellchecker"
-msgstr "Correcteur Orthographique"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:45
-msgid "Suggestions:"
-msgstr "Suggestions :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:64
-msgid "Replace word with current choice"
-msgstr "Remplace le mot par le choix sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:79
-msgid "Add the word to your personal dictionary"
-msgstr "Ajoute le mot à votre dictionnaire personnel"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:90
-msgid "&Ignore"
-msgstr "Ignorer"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:94
-msgid "Ignore this word"
-msgstr "Ignore le mot"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:105
-msgid "&Accept"
-msgstr "Accepter"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:109
-msgid "Accept word for this session"
-msgstr "Accepte le mot durant cette session"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:152
-msgid "How far spellchecking has got"
-msgstr "État d'avancement de la correction"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:163
-msgid "Suggestions"
-msgstr "Suggestions"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:195
-msgid "Replacement:"
-msgstr "Remplacement :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:210
-msgid "Current word"
-msgstr "Mot actuel"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:263
-msgid "Replace with selected word"
-msgstr "Remplace par le mot sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:274
-msgid "&Start..."
-msgstr "&Commencer..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:278
-msgid "Start spellcheck"
-msgstr "Commence la correction"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-msgid "Insert table"
-msgstr "Insérer un tableau"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:60
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:68
-msgid "&Rows:"
-msgstr "&Lignes :"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:91
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:99
-msgid "Number of rows"
-msgstr "Nombre de lignes"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:102
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:110
-msgid "&Columns:"
-msgstr "&Colonnes :"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:141
-msgid "Number of columns"
-msgstr "Nombre de colonnes"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:231
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:203
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:57
-msgid "LaTeX classes"
-msgstr "Classes LaTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:63
-msgid "LaTeX styles"
-msgstr "Styles LaTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:69
-msgid "BibTeX styles"
-msgstr "Styles BibTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:78
-msgid "Selected classes or styles"
-msgstr "Classes ou styles sélectionnés"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:110
-msgid "Show &path"
-msgstr "Afficher le chemin"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:114
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:133
-msgid "Installed files"
-msgstr "Fichiers installés"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:180
-msgid "&Rescan"
-msgstr "&Rafraîchir"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:184
-msgid "Built new file list"
-msgstr "A reconstruit la liste des fichiers"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:199
-msgid "&View"
-msgstr "Visualiser"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
-"chemin est affiché."
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:256
-msgid "Close this dialog"
-msgstr "Fermer cette fenêtre"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
-#: src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr "Dictionnaire de Synonymes"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:79
-msgid "Entry"
-msgstr "Entrée"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:110
-msgid "Thesaurus entries"
-msgstr "Entrées du Dictionnaire"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:131
-msgid "Select a related word"
-msgstr "Sélectionne un synonyme"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:157
-msgid "&Selection"
-msgstr "&Sélection"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:176
-msgid "The selected entry"
-msgstr "L'entrée sélectionnée"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:191
-msgid "Replace the entry with the selection"
-msgstr "Remplace l'entrée par la sélection"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:22
-msgid "Table Of Contents"
-msgstr "Table des Matières"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:60
-msgid "&Type"
-msgstr "Type"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:109
-msgid "Contents list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:22
-msgid "Insert URL"
-msgstr "Insérer une URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:45
-msgid "&URL"
-msgstr "&URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:53
-#: ../src/frontends/qt2/ui/QURLDialog.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:64
-msgid "&Name"
-msgstr "&Nom"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:72
-#: ../src/frontends/qt2/ui/QURLDialog.ui:83
-msgid "Name associated with the URL"
-msgstr "Nom associé à l'URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:120
-msgid "&Generate hyperlink"
-msgstr "&Créer un lien hypertexte"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Imprimer comme lien hypertexte ?"
-
-#: ../src/frontends/qt2/ui/QVCLogDialog.ui:22
-msgid "Version control log"
-msgstr "Historique de Contrôle de Version"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "Autres Options :"
-
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "Répertoire par défaut"
-
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "Autre"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "Emplacement"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:351
-#, fuzzy
-msgid "&Vertical:"
-msgstr "Espacement vertical"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:399
-#, fuzzy
-msgid "&Horizontal:"
-msgstr "Alignement Horizontal|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:22
-#, fuzzy
-msgid "Table Settings"
-msgstr "Paramètres du Document"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:63
-#, fuzzy
-msgid "&Table Settings"
-msgstr "Paramètres du Document"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:82
-#, fuzzy
-msgid "&Horizontal alignment:"
-msgstr "Alignement Horizontal|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:97
-#, fuzzy
-msgid "&Multicolumn"
-msgstr "Multi-Colonnes|M"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:101
-msgid "Merge cells"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-#, fuzzy
-msgid "Block"
-msgstr "Noir"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:136
-#, fuzzy
-msgid "Horizontal alignment in column"
-msgstr "Alignement Horizontal|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:168
-#, fuzzy
-msgid "Column"
-msgstr "Colonnes"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "Ajouter"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:195
-#, fuzzy
-msgid "Append column (right)"
-msgstr "Ajouter une colonne (à droite)"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:206
-#, fuzzy
-msgid "De&lete"
-msgstr "&Supprimer"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:214
-msgid "Delete current column"
-msgstr "Supprimer la colonne"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:227
-msgid "Row"
-msgstr "Ligne"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:254
-msgid "Append row (below)"
-msgstr "Ajouter une ligen (en bas)"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:265
-#, fuzzy
-msgid "Dele&te"
-msgstr "&Effacer"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:273
-msgid "Delete this row"
-msgstr "Supprimer la ligne"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:286
-#, fuzzy
-msgid "Column Width"
-msgstr "Colonnes "
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:305
-#, fuzzy
-msgid "&Vertical alignment:"
-msgstr "Alignement vertical"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:335
-#, fuzzy
-msgid "Width unit"
-msgstr "Largeur"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:354
-msgid "Fixed with of the column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:398
-msgid "Vertical alignment for fixed width columns"
-msgstr ""
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:411
-#, fuzzy
-msgid "Rotate 90Â°"
-msgstr "Rotation 90°|#9"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:434
-#, fuzzy
-msgid "&Rotate Table"
-msgstr "PlacementTableau"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:438
-msgid "Rotate the table by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:449
-msgid "Rotate &Cell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:453
-msgid "Rotate this cell by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:466
-msgid "Custom column format (LaTeX)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:477
-#, fuzzy
-msgid "LaTe&X argument:"
-msgstr "Paramètre LaTeX|#A"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:494
-#, fuzzy
-msgid "&Borders"
-msgstr "Bordures"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:513
-msgid "Set Borders"
-msgstr "Activer Bordures"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:804
-#, fuzzy
-msgid "All Borders"
-msgstr "Bordures"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:823
-msgid "&Default"
-msgstr "&Défaut"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:827
-#, fuzzy
-msgid "Set all borders"
-msgstr "Activer Bordures|#B"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:838
-#, fuzzy
-msgid "C&lear"
-msgstr "Effacer|#E"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:842
-#, fuzzy
-msgid "Unset all borders"
-msgstr "Désact. Bordures|#d"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:899
-#, fuzzy
-msgid "&Longtable"
-msgstr "Tab.Long"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:918
-msgid "&Use long table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:922
-msgid "Select for tables that span multiple pages"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:937
-#, fuzzy
-msgid "Settings"
-msgstr "Section"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:967
-#, fuzzy
-msgid "Header:"
-msgstr "En-tête"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:978
-#, fuzzy
-msgid "Footer:"
-msgstr "Pied"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:989
-#, fuzzy
-msgid "First header:"
-msgstr "Premier En-tête"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1000
-#, fuzzy
-msgid "Last footer:"
-msgstr "Dernier Pied"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1022
-#, fuzzy
-msgid "Border above"
-msgstr "Bordure Haut"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1033
-#, fuzzy
-msgid "Border below"
-msgstr "Bordure Bas"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1044
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1055
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1066
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1077
-#, fuzzy
-msgid "on"
-msgstr "Nom Propre"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1088
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1099
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1110
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1121
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1132
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1143
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1154
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1165
-#, fuzzy
-msgid "double"
-msgstr "Double"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1176
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1187
-#, fuzzy
-msgid "is empty"
-msgstr "vide"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1204
-#, fuzzy
-msgid "Page &break on current row"
-msgstr "Saut de page dans la rangée en cours|#S"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1208
-#, fuzzy
-msgid "Set a page break on the current row"
-msgstr "Saut de page dans la rangée en cours|#S"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1237
-#, fuzzy
-msgid "Current cell :"
-msgstr "Mot actuel"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1266
-#, fuzzy
-msgid "Current row position"
-msgstr "Proposition"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1295
-msgid "Current column position"
-msgstr ""
+msgid "&Save"
+msgstr "Enregistrer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -4666,6 +3066,21 @@ msgstr ""
 msgid "Display insets"
 msgstr "Affichage des Graphiques"
 
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+msgid "Monochrome"
+msgstr "Noir et Blanc"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+msgid "Grayscale"
+msgstr "Niveaux de gris"
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+msgid "Color"
+msgstr "Couleurs"
+
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 msgid "Do not display"
 msgstr "Ne pas afficher"
@@ -4719,6 +3134,13 @@ msgstr "Extension|#x"
 #, fuzzy
 msgid "Keyboard"
 msgstr "Réaffectation clavier"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Parcourir..."
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 #, fuzzy
@@ -4801,6 +3223,15 @@ msgstr "Marquer étranger|#M"
 #, fuzzy
 msgid "LaTeX settings"
 msgstr "Options LaTeX"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "Défaut"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 #, fuzzy
@@ -5204,16 +3635,1589 @@ msgstr "minutes"
 msgid "&Maximum last files :"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr "Rechercher et Remplacer"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+msgid "&Find:"
+msgstr "Rechercher :"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+msgid "Replace &with:"
+msgstr "Remplacer par :"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+msgid "Case &sensitive"
+msgstr "Selon la casse"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr "Mots complets seulement"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr "Suivant"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+msgid "&Replace"
+msgstr "Remplacer"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+msgid "Replace &All "
+msgstr "Remplacer tout"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr "Rechercher en arrière"
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+msgid "File: "
+msgstr "Fichier :"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+msgid "Insert table"
+msgstr "Insérer un tableau"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+msgid "&Rows:"
+msgstr "&Lignes :"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+msgid "Number of rows"
+msgstr "Nombre de lignes"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+msgid "&Columns:"
+msgstr "&Colonnes :"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+msgid "Number of columns"
+msgstr "Nombre de colonnes"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
+#: src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr "Dictionnaire de Synonymes"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+msgid "Entry"
+msgstr "Entrée"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+msgid "Thesaurus entries"
+msgstr "Entrées du Dictionnaire"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr "Sélectionne un synonyme"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+msgid "&Selection"
+msgstr "&Sélection"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+msgid "The selected entry"
+msgstr "L'entrée sélectionnée"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr "Remplace l'entrée par la sélection"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+msgid "Insert URL"
+msgstr "Insérer une URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+msgid "&URL"
+msgstr "&URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+msgid "&Name"
+msgstr "&Nom"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "Nom associé à l'URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr "&Créer un lien hypertexte"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Imprimer comme lien hypertexte ?"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "Autres Options :"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "Répertoire par défaut"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "À gauche"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "À droite"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "Autre"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "Emplacement"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+msgid "&Key"
+msgstr "&Clé"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+msgid "The citation key"
+msgstr "La clé de citation"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+msgid "&Label"
+msgstr "&Étiquette"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+msgid "The label as it appears in the document"
+msgstr "Le nom du format tel qu'il apparaîtra dans le document"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
+#: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
+msgid "About LyX"
+msgstr "À Propos de LyX"
+
+#. stack tabs
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:51
+#: src/frontends/xforms/FormAboutlyx.C:70
+msgid "Version"
+msgstr "Version"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:82
+msgid "Version goes here"
+msgstr "La version va là"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:105
+#: src/frontends/xforms/FormAboutlyx.C:72
+msgid "Credits"
+msgstr "Crédits"
+
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:141
+#: ../lib/layouts/apa.layout:192
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "Bibtex"
+msgstr "BibTeX"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+#, fuzzy
+msgid "Databa&ses"
+msgstr "Base de D."
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr "Base de D. BibTeX"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+msgid "Available BibTeX databases"
+msgstr "Bases de D. BibTeX disponibles"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "&Ajouter"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr "Ajouter un fichier BibTeX"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+#, fuzzy
+msgid "Add a BibTeX file manually"
+msgstr "Ajouter un fichier BibTeX"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+#, fuzzy
+msgid "Browse for a BibTeX database file"
+msgstr "Ajouter un fichier BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+msgid "&Delete"
+msgstr "&Effacer"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr "Enlever la base de D. sélectionnée"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "&Style"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+msgid "The BibTeX style"
+msgstr "Le style BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#, fuzzy
+msgid "&Browse..."
+msgstr "&Parcourir ..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+msgid "Choose a style file"
+msgstr "Choisir un fichier de style"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "&Mise à jour"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+#, fuzzy
+msgid "Update style list"
+msgstr "Mettre à jour l'affichage"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+msgid "Add bibliography to &TOC"
+msgstr "Ajouter la bibliographie à la &TdM"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+msgid "Add bibliography to the table of contents"
+msgstr "Ajouter la bibliographie à la table des matières"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:66
+#: src/frontends/qt2/QCharacter.C:39
+msgid "Character"
+msgstr "Caractère"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+msgid "&Family:"
+msgstr "&Famille :"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr "Famille police"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+msgid "&Series:"
+msgstr "&Série :|#S"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr "Série police :"
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Langue"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+msgid "Font shape"
+msgstr "Forme police"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr "Couleur police"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+msgid "S&hape:"
+msgstr "F&orme :|#o"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+msgid "&Color:"
+msgstr "Couleurs :"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+msgid "&Toggle all"
+msgstr "(Dés)Activer Tous"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+msgid "toggle font on all of the above"
+msgstr "(Dés)Activer Tous|#v"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+msgid "Never toggled"
+msgstr "Paramètres non (dés)activables"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+msgid "Si&ze:"
+msgstr "Taille :"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+msgid "Font size"
+msgstr "Taille police"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+msgid "Always toggled"
+msgstr "Paramètres (dés)activables"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr "Autres réglages de police"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+msgid "&Misc:"
+msgstr "Divers :"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+msgid "Auto apply"
+msgstr "Appliquer automatiquement"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr "Appliquer tous les changements automatiquement"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:71
+#, fuzzy
+msgid "Use Class Defaults"
+msgstr "Valeurs par Défaut de la Classe|#f"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:75
+#, fuzzy
+msgid "Reset default params of the current class"
+msgstr "leur valeur par défaut dans cette classe ?"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:93
+#, fuzzy
+msgid "Save as Document Defaults"
+msgstr "Retenir ces Valeurs par Défaut|#D"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:97
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:228
+#, fuzzy
+msgid "title here"
+msgstr "En-têteTitre"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "Erreur LaTeX"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+msgid "LaTeX error messages"
+msgstr "Messages d'erreur LaTeX"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+msgid "ERT inset display"
+msgstr "Affichage de l'insert ERT"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr "&En Ligne"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr "Affiche l'ERT en ligne"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+msgid "&Collapsed"
+msgstr "&Fermé"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr "Affiche seulement le bouton ERT"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+msgid "&Open"
+msgstr "&Ouvert"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
+msgstr "Affiche le contenu de l'ERT"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
+msgid "External Material"
+msgstr "Objet Externe"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+msgid "&File:"
+msgstr "&Fichier :"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
+msgid "Filename"
+msgstr "Nom Fichier"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+#, fuzzy
+msgid "&View Result"
+msgstr "Afficher Résultat|#R"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+msgid "View the file"
+msgstr "Visualiser le fichier"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+#, fuzzy
+msgid "&Update Result"
+msgstr "Mise à Jour|#J"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+msgid "Update the material"
+msgstr "Met à jour le matériau"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+msgid "Available templates"
+msgstr "Modèles disponibles"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+#, fuzzy
+msgid "&Template:"
+msgstr "&Modèle"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+#, fuzzy
+msgid "&Parameters:"
+msgstr "&Paramètres"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+msgid "&Edit file"
+msgstr "Édit&er Fichier"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+msgid "Edit the file externally"
+msgstr "Éditer le fichier extérieur"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+#, fuzzy
+msgid "&Graphics"
+msgstr "Graphique"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+#, fuzzy
+msgid "File name of image"
+msgstr "Choisir le fichier à inclure"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+msgid "&Browse ..."
+msgstr "&Parcourir ..."
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+#, fuzzy
+msgid "Select an image file"
+msgstr "Choisir un fichier"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+#, fuzzy
+msgid "LyX display"
+msgstr "Affichage"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+#, fuzzy
+msgid "Display image in LyX"
+msgstr "Afficher l'information à propos de LyX"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+#, fuzzy
+msgid "Display :"
+msgstr "Affichage des Graphiques"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+msgid "Screen display"
+msgstr "Affichage"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+#, fuzzy
+msgid "Scale :"
+msgstr "Éch&elle"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+#, fuzzy
+msgid "&Height"
+msgstr "Hauteur :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+#, fuzzy
+msgid "&Width"
+msgstr "Largeur :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+#, fuzzy
+msgid "&Maintain aspect ratio"
+msgstr "Conserver les proportions"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+#, fuzzy
+msgid "A&ngle:"
+msgstr "&Angle :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr "&Origine :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+#, fuzzy
+msgid "&Clipping"
+msgstr "Fermeture"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr "&Couper selon le cadre limite"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+#, fuzzy
+msgid "Clip to bounding box values"
+msgstr "&Couper au cadre"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+#, fuzzy
+msgid "&Get from file"
+msgstr "Valeurs du fichier|#V"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+#, fuzzy
+msgid "Get bounding box from the (EPS) file"
+msgstr "Obtenir le cadre limite dans le fichier (EPS)"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+msgid "Right &top:"
+msgstr "&Haut Droite :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+#, fuzzy
+msgid "x"
+msgstr "ex"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+#, fuzzy
+msgid "&Left bottom:"
+msgstr "&Bas Gauche :"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+#, fuzzy
+msgid "E&xtra options"
+msgstr "&Autres Options"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+msgid "Su&bfigure"
+msgstr "Sous-figure"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+#, fuzzy
+msgid "Don't un&zip on export"
+msgstr "Ne pas décompresser à l'exportation LaTeX|#m"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+#, fuzzy
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr "Ne pas décompresser à l'exportation LaTeX|#m"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+#, fuzzy
+msgid "LaTeX &options:"
+msgstr "Options LaTeX"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+#, fuzzy
+msgid "Additional LaTeX options"
+msgstr "Autres Options LaTeX|#L"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+msgid "&Draft mode"
+msgstr "Mode &Brouillon"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+#, fuzzy
+msgid "Draft mode"
+msgstr "Mode &Brouillon"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+#, fuzzy
+msgid "Ca&ption :"
+msgstr "Légende"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+#, fuzzy
+msgid "The caption for the sub-figure"
+msgstr "La sous-légende pour la figure"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+msgid "Include File"
+msgstr "Inclure Fichier"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+msgid "File name to include"
+msgstr "Choisir le fichier à inclure"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+msgid "Select a file"
+msgstr "Choisir un fichier"
+
+# à confirmer
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+#, fuzzy
+msgid "&Include Type:"
+msgstr "Inclusion"
+
+# à confirmer aussi
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr "Incorporation"
+
+# à confirmer
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr "Inclusion"
+
+# Texto mieux que "Mot à mot" ? - AR
+# Retour à verbatim (cf intro) - JPC
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
+msgid "Verbatim"
+msgstr "Verbatim"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+msgid "&Load"
+msgstr "Charger"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+msgid "Load the file"
+msgstr "Charger le fichier"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+msgid "&Show preview"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+#, fuzzy
+msgid "Show LaTeX preview"
+msgstr "Le Préambule LaTeX"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr "Log"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+msgid "Update the display"
+msgstr "Mettre à jour l'affichage"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "Centré"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "Espacement vertical"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
+#, fuzzy
+msgid "&General"
+msgstr "Général"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
+msgid "Justified"
+msgstr "Justifié"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:97
+msgid "Single"
+msgstr "Simple"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:125
+msgid "1.5"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocumentDialog.C:342
+msgid "Custom"
+msgstr "Paramétré"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:153
+#, fuzzy
+msgid "L&ine spacing:"
+msgstr "Interligne"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:168
+#, fuzzy
+msgid "Alig&nment:"
+msgstr "Alignement :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
+#, fuzzy
+msgid "No &indent"
+msgstr "Pas d'indentation"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
+#, fuzzy
+msgid "&Spacing"
+msgstr "Interligne"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:215
+#, fuzzy
+msgid "Above paragraph"
+msgstr "avant un paragraphe"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:233
+#, fuzzy
+msgid "S&pacing:"
+msgstr "Interligne :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:248
+msgid "&Keep space:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:263
+#, fuzzy
+msgid "&Unit:"
+msgstr "&Unité :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:278
+#, fuzzy
+msgid "&Value:"
+msgstr "Valeur :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
+msgid "None"
+msgstr "Sans"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
+msgid "DefSkip"
+msgstr "par Défaut"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
+msgid "SmallSkip"
+msgstr "Petit"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
+msgid "MedSkip"
+msgstr "Moyen"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
+msgid "BigSkip"
+msgstr "Gros"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
+msgid "VFill"
+msgstr "ressort vertical"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
+#, fuzzy
+msgid "Below paragraph"
+msgstr "après un paragraphe"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
+#, fuzzy
+msgid "&Lines && Pagebreaks"
+msgstr "&Sauts de Ligne et de Page"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
+#, fuzzy
+msgid "Label width"
+msgstr "Taille du marqueur :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
+#, fuzzy
+msgid "Lon&gest label"
+msgstr "Le plus long :|#L"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
+#, fuzzy
+msgid "L&ines"
+msgstr "Lignes"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
+#, fuzzy
+msgid "A&bove"
+msgstr "Avant :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
+#, fuzzy
+msgid "B&elow"
+msgstr "Après :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
+#, fuzzy
+msgid "&Page breaks"
+msgstr "Saut de Page"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
+#, fuzzy
+msgid "Abo&ve"
+msgstr "Avant :"
+
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
+#, fuzzy
+msgid "Belo&w"
+msgstr "Après :"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
+msgid "LaTeX pre-amble"
+msgstr "Préambule LaTeX"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+msgid "The LaTeX pre-amble"
+msgstr "Le Préambule LaTeX"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit ..."
+msgstr "&Éditer ..."
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr "Éditer le préambule dans un éditeur externe"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22
+#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
+#: src/LyXAction.C:140
+msgid "Print"
+msgstr "Imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
+msgid "Page number to print from"
+msgstr "Numéro de la page à partir de laquelle imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
+#, fuzzy
+msgid "&to"
+msgstr "à"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
+msgid "Page number to print to"
+msgstr "Numéro de la page jusqu'à laquelle imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
+#, fuzzy
+msgid "Fro&m"
+msgstr "Depuis|#D"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
+msgid "Print all pages"
+msgstr "Imprime toutes les pages"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
+msgid "&All"
+msgstr "&Toutes"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
+#, fuzzy
+msgid "Print &odd-numbered pages"
+msgstr "Imprime seulement les pages impaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
+#, fuzzy
+msgid "Print &even-numbered pages"
+msgstr "Imprime seulement les pages paires"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
+msgid "Re&verse order"
+msgstr "&Ordre inverse"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
+msgid "Print in reverse order"
+msgstr "Imprime à partir de la derniére page"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
+msgid "Number of copies"
+msgstr "Nombre d'exemplaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
+msgid "&Collate"
+msgstr "Accoler"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
+msgid "Collate copies"
+msgstr "Accoler les exemplaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
+msgid "&Print"
+msgstr "&Imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
+msgid "Print Destination"
+msgstr "Destination"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
+msgid "P&rinter"
+msgstr "Imprimante"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
+msgid "Send output to the printer"
+msgstr "Envoie le résultat à l'imprimante"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
+msgid "Send output to the given printer"
+msgstr "Envoie le résultat à l'imprimante donnée"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
+msgid "&File"
+msgstr "&Fichier"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
+msgid "Send output to a file"
+msgstr "Envoie le résultat à un fichier"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
+#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+msgid "Reference"
+msgstr "Référence"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
+msgid "Update the reference list"
+msgstr "Met à jour la liste des références"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
+msgid "&Goto"
+msgstr "&Aller"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
+msgid "Move the document cursor to reference"
+msgstr "Déplace le curseur à la référence"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
+msgid "Sort"
+msgstr "Trier"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
+msgid "Sort references in alphabetical order"
+msgstr "Trie les références par ordre aphabétique"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
+#, fuzzy
+msgid "<reference>"
 msgstr "Préférences"
 
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:103
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
 #, fuzzy
-msgid "&Save"
-msgstr "Enregistrer"
+msgid "<page>"
+msgstr "Minipage"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
+msgid "on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
+msgid "<reference> on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
+#, fuzzy
+msgid "Formatted reference"
+msgstr "Jolie Référence"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
+msgid "Reference as it appears in output"
+msgstr "Référence telle qu'elle sera imprimée"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+msgid "&Reference:"
+msgstr "Référence :"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
+#, fuzzy
+msgid "&Format:"
+msgstr "Formats"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+msgid "&Name:"
+msgstr "Nom :"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
+#, fuzzy
+msgid "Available references in selected document:"
+msgstr "Références disponibles"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
+msgid "Available references"
+msgstr "Références disponibles"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
+#, fuzzy
+msgid "&Document:"
+msgstr "Document"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+#, fuzzy
+msgid "Custom Export"
+msgstr "Client"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
+#, fuzzy
+msgid "&Command:"
+msgstr "commande"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
+#, fuzzy
+msgid "&Export formats:"
+msgstr "Format d'exportation|#e"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
+msgid "Process the converted file with this command ($$FName = file name)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
+#, fuzzy
+msgid "Available export converters"
+msgstr "Modèles disponibles"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormSpellchecker.C:33
+msgid "Spellchecker"
+msgstr "Correcteur Orthographique"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
+msgid "Suggestions:"
+msgstr "Suggestions :"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
+msgid "Replace word with current choice"
+msgstr "Remplace le mot par le choix sélectionné"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
+msgid "Add the word to your personal dictionary"
+msgstr "Ajoute le mot à votre dictionnaire personnel"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
+msgid "&Ignore"
+msgstr "Ignorer"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
+msgid "Ignore this word"
+msgstr "Ignore le mot"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
+msgid "&Accept"
+msgstr "Accepter"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
+msgid "Accept word for this session"
+msgstr "Accepte le mot durant cette session"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
+msgid "How far spellchecking has got"
+msgstr "État d'avancement de la correction"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
+msgid "Suggestions"
+msgstr "Suggestions"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
+msgid "Replacement:"
+msgstr "Remplacement :"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
+msgid "Current word"
+msgstr "Mot actuel"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
+msgid "Replace with selected word"
+msgstr "Remplace par le mot sélectionné"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
+msgid "&Start..."
+msgstr "&Commencer..."
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
+msgid "Start spellcheck"
+msgstr "Commence la correction"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
+#, fuzzy
+msgid "Table Settings"
+msgstr "Paramètres du Document"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
+#, fuzzy
+msgid "&Table Settings"
+msgstr "Paramètres du Document"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
+#, fuzzy
+msgid "&Horizontal alignment:"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
+#, fuzzy
+msgid "&Multicolumn"
+msgstr "Multi-Colonnes|M"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
+msgid "Merge cells"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#, fuzzy
+msgid "Block"
+msgstr "Noir"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
+#, fuzzy
+msgid "Horizontal alignment in column"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
+#, fuzzy
+msgid "Column"
+msgstr "Colonnes"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "Ajouter"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
+#, fuzzy
+msgid "Append column (right)"
+msgstr "Ajouter une colonne (à droite)"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
+#, fuzzy
+msgid "De&lete"
+msgstr "&Supprimer"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
+msgid "Delete current column"
+msgstr "Supprimer la colonne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
+msgid "Row"
+msgstr "Ligne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
+msgid "Append row (below)"
+msgstr "Ajouter une ligen (en bas)"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
+#, fuzzy
+msgid "Dele&te"
+msgstr "&Effacer"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
+msgid "Delete this row"
+msgstr "Supprimer la ligne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
+#, fuzzy
+msgid "Column Width"
+msgstr "Colonnes "
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
+#, fuzzy
+msgid "&Vertical alignment:"
+msgstr "Alignement vertical"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
+#, fuzzy
+msgid "Width unit"
+msgstr "Largeur"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
+msgid "Fixed with of the column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
+msgid "Vertical alignment for fixed width columns"
+msgstr ""
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
+#, fuzzy
+msgid "Rotate 90Â°"
+msgstr "Rotation 90°|#9"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
+#, fuzzy
+msgid "&Rotate Table"
+msgstr "PlacementTableau"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
+msgid "Rotate the table by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
+msgid "Rotate &Cell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
+msgid "Rotate this cell by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
+msgid "Custom column format (LaTeX)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
+#, fuzzy
+msgid "LaTe&X argument:"
+msgstr "Paramètre LaTeX|#A"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
+#, fuzzy
+msgid "&Borders"
+msgstr "Bordures"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
+msgid "Set Borders"
+msgstr "Activer Bordures"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
+#, fuzzy
+msgid "All Borders"
+msgstr "Bordures"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
+msgid "&Default"
+msgstr "&Défaut"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
+#, fuzzy
+msgid "Set all borders"
+msgstr "Activer Bordures|#B"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
+#, fuzzy
+msgid "C&lear"
+msgstr "Effacer|#E"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
+#, fuzzy
+msgid "Unset all borders"
+msgstr "Désact. Bordures|#d"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
+#, fuzzy
+msgid "&Longtable"
+msgstr "Tab.Long"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
+msgid "&Use long table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
+msgid "Select for tables that span multiple pages"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
+#, fuzzy
+msgid "Settings"
+msgstr "Section"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
+#, fuzzy
+msgid "Header:"
+msgstr "En-tête"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
+#, fuzzy
+msgid "Footer:"
+msgstr "Pied"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
+#, fuzzy
+msgid "First header:"
+msgstr "Premier En-tête"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
+#, fuzzy
+msgid "Last footer:"
+msgstr "Dernier Pied"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
+#, fuzzy
+msgid "Border above"
+msgstr "Bordure Haut"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
+#, fuzzy
+msgid "Border below"
+msgstr "Bordure Bas"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
+#, fuzzy
+msgid "on"
+msgstr "Nom Propre"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
+#, fuzzy
+msgid "double"
+msgstr "Double"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
+#, fuzzy
+msgid "is empty"
+msgstr "vide"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
+#, fuzzy
+msgid "Page &break on current row"
+msgstr "Saut de page dans la rangée en cours|#S"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
+#, fuzzy
+msgid "Set a page break on the current row"
+msgstr "Saut de page dans la rangée en cours|#S"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
+#, fuzzy
+msgid "Current cell :"
+msgstr "Mot actuel"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
+#, fuzzy
+msgid "Current row position"
+msgstr "Proposition"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
+msgid "Current column position"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
+msgid "LaTeX classes"
+msgstr "Classes LaTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
+msgid "LaTeX styles"
+msgstr "Styles LaTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
+msgid "BibTeX styles"
+msgstr "Styles BibTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
+msgid "Selected classes or styles"
+msgstr "Classes ou styles sélectionnés"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
+msgid "Show &path"
+msgstr "Afficher le chemin"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
+msgid "Installed files"
+msgstr "Fichiers installés"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
+msgid "&Rescan"
+msgstr "&Rafraîchir"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
+msgid "Built new file list"
+msgstr "A reconstruit la liste des fichiers"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
+msgid "&View"
+msgstr "Visualiser"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
+"chemin est affiché."
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
+msgid "Close this dialog"
+msgstr "Fermer cette fenêtre"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+msgid "Table Of Contents"
+msgstr "Table des Matières"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+msgid "&Type"
+msgstr "Type"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+msgid "Version control log"
+msgstr "Historique de Contrôle de Version"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -9136,7 +9140,7 @@ msgstr "Puces"
 msgid "Bibliography Settings"
 msgstr "Entrée Bibliographique"
 
-#: src/frontends/qt2/QDocumentDialog.C:282 src/frontends/qt2/QPreamble.C:32
+#: src/frontends/qt2/QDocumentDialog.C:282
 msgid "LaTeX Preamble"
 msgstr "Préambule LaTeX"
 
@@ -9331,14 +9335,6 @@ msgstr "Style de Paragraphe"
 msgid "Senseless with this layout!"
 msgstr "Aucun sens avec ce style !"
 
-#: src/frontends/qt2/QPreambleDialog.C:69
-msgid "Enter editor program"
-msgstr "Entrer le programme d'édition"
-
-#: src/frontends/qt2/QPreambleDialog.C:69
-msgid "Editor"
-msgstr "Éditeur"
-
 #: src/frontends/qt2/QPrefs.C:67
 #, fuzzy
 msgid "LyX: Preferences"
@@ -9450,7 +9446,7 @@ msgstr "Envoyer le Document à la Commande"
 msgid "ShowFile"
 msgstr "Affiche l'ERT en ligne"
 
-#: src/frontends/qt2/QSpellchecker.C:120
+#: src/frontends/qt2/QSpellchecker.C:133
 msgid "Spellcheck complete"
 msgstr "Correction orthographique terminée"
 
@@ -9858,8 +9854,8 @@ msgstr "Options ERT"
 msgid "Edit external file"
 msgstr "Éditer le fichier externe"
 
-#: src/frontends/xforms/FormFiledialog.C:191
-#: src/frontends/xforms/FormFiledialog.C:360
+#: src/frontends/xforms/FormFiledialog.C:193
+#: src/frontends/xforms/FormFiledialog.C:362
 msgid "Warning! Couldn't open directory."
 msgstr "Attention ! Impossible d'ouvrir le répertoire."
 
@@ -13302,6 +13298,12 @@ msgstr "Saut de Page (Bas)"
 #: src/text.C:3538
 msgid "Space below"
 msgstr "Espacement au-dessous"
+
+#~ msgid "Enter editor program"
+#~ msgstr "Entrer le programme d'édition"
+
+#~ msgid "Editor"
+#~ msgstr "Éditeur"
 
 #~ msgid "Table of contents depth"
 #~ msgstr "Profondeur de la TdM"
