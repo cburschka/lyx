@@ -220,7 +220,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		font_metrics::XSetFont(display(), gc, f);
+		xfont_metrics::XSetFont(display(), gc, f);
 		XDrawString(display(), owner.getPixmap(), gc, x, y, s, ls);
 	} else {
 		LyXFont smallfont(f);
@@ -229,15 +229,15 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		for (size_t i = 0; i < ls; ++i) {
 			char const c = uppercase(s[i]);
 			if (c != s[i]) {
-				font_metrics::XSetFont(display(), gc, smallfont);
+				xfont_metrics::XSetFont(display(), gc, smallfont);
 				XDrawString(display(), owner.getPixmap(), gc,
 					    tmpx, y, &c, 1);
-				tmpx += font_metrics::XTextWidth(smallfont, &c, 1);
+				tmpx += xfont_metrics::XTextWidth(smallfont, &c, 1);
 			} else {
-				font_metrics::XSetFont(display(), gc, f);
+				xfont_metrics::XSetFont(display(), gc, f);
 				XDrawString(display(), owner.getPixmap(), gc,
 					    tmpx, y, &c, 1);
-				tmpx += font_metrics::XTextWidth(f, &c, 1);
+				tmpx += xfont_metrics::XTextWidth(f, &c, 1);
 			}
 		}
 	}
@@ -255,7 +255,7 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 {
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		font_metrics::XSetFont(display(), gc, f);
+		xfont_metrics::XSetFont(display(), gc, f);
 		XDrawString16(display(), owner.getPixmap(), gc, x, y, s, ls);
 	} else {
 		LyXFont smallfont(f);
@@ -270,21 +270,21 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 				c.byte2 = uppercase(s[i].byte2);
 			}
 			if (c.byte2 != s[i].byte2) {
-				font_metrics::XSetFont(display(), gc, smallfont);
+				xfont_metrics::XSetFont(display(), gc, smallfont);
 				XDrawString16(display(), owner.getPixmap(), gc,
 					      tmpx, y, &c, 1);
-				tmpx += font_metrics::XTextWidth16(smallfont, &c, 1);
+				tmpx += xfont_metrics::XTextWidth16(smallfont, &c, 1);
 			} else {
-				font_metrics::XSetFont(display(), gc, f);
+				xfont_metrics::XSetFont(display(), gc, f);
 				XDrawString16(display(), owner.getPixmap(), gc,
 					      tmpx, y, &c, 1);
-				tmpx += font_metrics::XTextWidth16(f, &c, 1);
+				tmpx += xfont_metrics::XTextWidth16(f, &c, 1);
 			}
 		}
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, font_metrics::width(s, ls, f));
+		underline(f, x, y, xfont_metrics::width(s, ls, f));
 	}
 
 	return *this;
