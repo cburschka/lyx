@@ -2,7 +2,6 @@
 
 	* FormMinipage.C: return SMI_VALID on other form changes
  
-2002-02-10  Rob Lahaye  <lahaye@users.sourceforge.net>
 2002-02-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* FormParagraph.C (update): [VSpace:] Delete the special method
@@ -11,6 +10,7 @@
 	Activate JMarcs new (shorter) code for updateWidgetsFromLengthString
 	and updateWidgetsFromLength.
 
+2002-02-10  Rob Lahaye  <lahaye@users.sourceforge.net>
  
 	* forms/form_external.fd:
 	* form_external.C: change color2 of a few buttons into the

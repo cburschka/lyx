@@ -35,7 +35,7 @@ void InsetNote::init()
 	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
-	setBackgroundColor(LColor::note);
+	setBackgroundColor(LColor::notebg);
 	setLabel(_("note"));
 	setInsetName("Note");
 }
