@@ -21,6 +21,7 @@
 #include "frontends/Painter.h"
 #include "support/LAssert.h"
 #include "lyxfont.h"
+#include "metricsinfo.h"
 #include "frontends/font_metrics.h"
 
 using std::ostream;
@@ -46,27 +47,23 @@ void InsetButton::dimension(BufferView * bv, LyXFont const &,
 }
 
 
-void InsetButton::draw(BufferView * bv, LyXFont const &,
-			int baseline, float & x) const
+void InsetButton::draw(PainterInfo & pi, int x, int y) const
 {
-	lyx::Assert(bv);
-	cache(bv);
+	lyx::Assert(pi.base.bv);
+	cache(pi.base.bv);
 
-	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::command).decSize();
 
-	string const s = getScreenLabel(bv->buffer());
+	string const s = getScreenLabel(pi.base.bv->buffer());
 
 	if (editable()) {
-		pain.buttonText(int(x) + 2, baseline, s, font);
+		pi.pain.buttonText(x + 2, y, s, font);
 	} else {
-		pain.rectText(int(x) + 2, baseline, s, font,
+		pi.pain.rectText(x + 2, y, s, font,
 			      LColor::commandbg, LColor::commandframe);
 	}
-
-	x += width(bv, font);
 }
 
 

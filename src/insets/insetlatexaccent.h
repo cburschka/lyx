@@ -36,14 +36,13 @@ public:
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	void draw(BufferView *, LyXFont const &, int, float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	int lbearing(LyXFont const & font) const;
 	///
 	int rbearing(LyXFont const & font) const;
 	///
-	bool displayISO8859_9(BufferView *, LyXFont const & font,
-			      int baseline, float & x) const;
+	bool displayISO8859_9(PainterInfo & pi, int x, int y) const;
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///

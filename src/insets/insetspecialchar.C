@@ -22,6 +22,7 @@
 #include "frontends/font_metrics.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
+#include "metricsinfo.h"
 
 using std::ostream;
 using std::max;
@@ -58,56 +59,49 @@ void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 }
 
 
-void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x) const
+void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
-	Painter & pain = bv->painter();
-	LyXFont font(f);
+	LyXFont font = pi.base.font;
 
 	switch (kind_) {
 	case HYPHENATION:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, '-', font);
-		x += width(bv, font);
+		pi.pain.text(x, y, '-', font);
 		break;
 	}
 	case LIGATURE_BREAK:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, '|', font);
-		x += width(bv, font);
+		pi.pain.text(x, y, '|', font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, '.', font);
-		x += width(bv, font);
+		pi.pain.text(x, y, '.', font);
 		break;
 	}
 	case LDOTS:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, ". . .", font);
-		x += width(bv, font);
+		pi.pain.text(x, y, ". . .", font);
 		break;
 	}
 	case MENU_SEPARATOR:
 	{
 		// A triangle the width and height of an 'x'
 		int w = font_metrics::width('x', font);
-		int ox = font_metrics::width(' ', font) + int(x);
+		int ox = font_metrics::width(' ', font) + x;
 		int h = font_metrics::ascent('x', font);
 		int xp[4], yp[4];
 
-		xp[0] = ox;	yp[0] = baseline;
-		xp[1] = ox;	yp[1] = baseline - h;
-		xp[2] = ox + w; yp[2] = baseline - h/2;
-		xp[3] = ox;	yp[3] = baseline;
+		xp[0] = ox;     yp[0] = y;
+		xp[1] = ox;     yp[1] = y - h;
+		xp[2] = ox + w; yp[2] = y - h/2;
+		xp[3] = ox;     yp[3] = y;
 
-		pain.lines(xp, yp, 4, LColor::special);
-		x += width(bv, font);
+		pi.pain.lines(xp, yp, 4, LColor::special);
 		break;
 	}
 	}

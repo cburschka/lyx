@@ -28,8 +28,7 @@ public:
 
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 
-	virtual void draw(BufferView *, LyXFont const &,
-	                  int baseline, float & x) const;
+	virtual void draw(PainterInfo & pi, int x, int y) const;
 
 	virtual int latex(Buffer const *, std::ostream &,
 			  LatexRunParams const &) const;

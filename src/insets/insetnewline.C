@@ -17,6 +17,7 @@
 #include "dimension.h"
 #include "paragraph.h"
 #include "lyxtext.h"
+#include "metricsinfo.h"
 #include "support/LOstream.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
@@ -75,18 +76,14 @@ int InsetNewline::docbook(Buffer const *, std::ostream &, bool) const
 }
 
 
-void InsetNewline::draw(BufferView * bv, LyXFont const & font,
-	                int baseline, float & x) const
+void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 {
-	Painter & pain(bv->painter());
-
-	int const wid = font_metrics::width('n', font);
-	int const asc = font_metrics::maxAscent(font);
-	int const y = baseline;
+	int const wid = font_metrics::width('n', pi.base.font);
+	int const asc = font_metrics::maxAscent(pi.base.font);
 
 	// hack, and highly dubious
 	lyx::pos_type pos = parOwner()->getPositionOfInset(this);
-	bool const ltr_pos = (bv->text->bidi_level(pos) % 2 == 0);
+	bool const ltr_pos = (pi.base.bv->text->bidi_level(pos) % 2 == 0);
 
 	int xp[3];
 	int yp[3];
@@ -105,7 +102,7 @@ void InsetNewline::draw(BufferView * bv, LyXFont const & font,
 		xp[2] = int(x + wid * 0.625);
 	}
 
-	pain.lines(xp, yp, 3, LColor::eolmarker);
+	pi.pain.lines(xp, yp, 3, LColor::eolmarker);
 
 	yp[0] = int(y - 0.500 * asc * 0.75);
 	yp[1] = int(y - 0.500 * asc * 0.75);
@@ -121,7 +118,5 @@ void InsetNewline::draw(BufferView * bv, LyXFont const & font,
 		xp[2] = int(x);
 	}
 
-	pain.lines(xp, yp, 3, LColor::eolmarker);
-
-	x += wid;
+	pi.pain.lines(xp, yp, 3, LColor::eolmarker);
 }

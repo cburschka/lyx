@@ -16,6 +16,8 @@
 
 class BufferView;
 class FuncRequest;
+class MetricsInfo;
+class PainterInfo;
 
 /** Dispatch result codes
 		DISPATCHED          = the inset catched the action
@@ -62,6 +64,8 @@ public:
 
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
+	///
+	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 
 	///
 	virtual ~InsetBase() {}

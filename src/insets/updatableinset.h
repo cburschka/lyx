@@ -66,8 +66,7 @@ public:
 	///
 	virtual void insetUnlock(BufferView *);
 	///
-	virtual void draw(BufferView *, LyXFont const &,
-			  int baseline, float & x) const;
+	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///

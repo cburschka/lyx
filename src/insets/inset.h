@@ -167,8 +167,6 @@ public:
 	int descent(BufferView *, LyXFont const &) const;
 	///
 	int width(BufferView *, LyXFont const &) const;
-	///
-	virtual void draw(BufferView *, LyXFont const &, int baseline, float & x) const = 0;
 	/// update the inset representation
 	virtual void update(BufferView *, bool = false)
 		{}

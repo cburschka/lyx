@@ -91,7 +91,7 @@ public:
 	///
 	int textWidth(BufferView *, bool fordraw = false) const;
 	///
-	void draw(BufferView *, LyXFont const &, int , float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void update(BufferView *, bool = false);
 	///

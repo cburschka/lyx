@@ -21,6 +21,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Lsstream.h"
+#include "metricsinfo.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/BoostFormat.h"
@@ -66,8 +67,7 @@ string const InsetCaption::editMessage() const
 }
 
 
-void InsetCaption::draw(BufferView * bv, LyXFont const & f,
-			int baseline, float & x) const
+void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 {
 	// We must draw the label, we should get the label string
 	// from the enclosing float inset.
@@ -88,7 +88,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 		lyx::Assert(0);
 
 	FloatList const & floats =
-		bv->buffer()->params.getLyXTextClass().floats();
+		pi.base.bv->buffer()->params.getLyXTextClass().floats();
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
 
 	// Discover the number...
@@ -96,12 +96,9 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 
 	// Generate the label
 	string const label = bformat("%1$s %2$s:", _(fl), num);
-	Painter & pain = bv->painter();
-	int const w = font_metrics::width(label, f);
-	pain.text(int(x), baseline, label, f);
-	x += w;
-
-	InsetText::draw(bv, f, baseline, x);
+	int const w = font_metrics::width(label, pi.base.font);
+	pi.pain.text(x, y, label, pi.base.font);
+	InsetText::draw(pi, x + w, y);
 }
 
 

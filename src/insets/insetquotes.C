@@ -23,6 +23,7 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "paragraph.h"
+#include "metricsinfo.h"
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 #include "support/LAssert.h"
@@ -202,18 +203,17 @@ LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 #endif
 
 
-void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
-		       int baseline, float & x) const
+void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
-	string const text = dispString(font.language());
+	string const text = dispString(pi.base.font.language());
 
 	if (text.length() == 2 && text[0] == text[1]) {
-		bv->painter().text(int(x), baseline, text[0], font);
-		int x2 = int(x + font_metrics::width(',', font));
-		bv->painter().text(x2, baseline, text[0], font);
-	} else
-		bv->painter().text(int(x), baseline, text, font);
-	x += width(bv, font);
+		pi.pain.text(x, y, text[0], pi.base.font);
+		int const t = font_metrics::width(',', pi.base.font);
+		pi.pain.text(x + t, y, text[0], pi.base.font);
+	} else {
+		pi.pain.text(x, y, text, pi.base.font);
+	}
 }
 
 

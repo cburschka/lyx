@@ -39,7 +39,7 @@
 #include "sgml.h"
 #include "rowpainter.h"
 #include "insetnewline.h"
-#include "Lsstream.h"
+#include "metricsinfo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -321,38 +321,37 @@ int InsetText::textWidth(BufferView * bv, bool fordraw) const
 }
 
 
-void InsetText::draw(BufferView * bv, LyXFont const & f,
-		     int baseline, float & x) const
+void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 {
 	if (nodraw())
 		return;
 
 	// update our idea of where we are. Clearly, we should
 	// not have to know this information.
-	if (top_x != int(x))
-		top_x = int(x);
+	if (top_x != x)
+		top_x = x;
 
-	int const start_x = int(x);
+	int const start_x = x;
 
-	Painter & pain = bv->painter();
+	BufferView * bv = pi.base.bv;
+	Painter & pain = pi.pain;
 
 	// call this method so that dim_ has the right value
-	dimension(bv, f, dim_);
+	dimension(bv, pi.base.font, dim_);
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)
 		clearInset(bv, start_x + TEXT_TO_INSET_OFFSET, baseline);
 
 	// no draw is necessary !!!
-	if ((drawFrame_ == LOCKED) && !locked && paragraphs.begin()->empty()) {
+	if (drawFrame_ == LOCKED && !locked && paragraphs.begin()->empty()) {
 		top_baseline = baseline;
-		x += width(bv, f);
 		need_update = NONE;
 		return;
 	}
 
 	if (!owner())
-		x += static_cast<float>(scroll());
+		x += scroll();
 
 	top_baseline = baseline;
 	top_y = baseline - dim_.asc;

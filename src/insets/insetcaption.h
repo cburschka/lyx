@@ -34,8 +34,7 @@ public:
 	///
 	virtual string const editMessage() const;
 	///
-	virtual void draw(BufferView * bv, LyXFont const & f,
-			  int baseline, float & x) const;
+	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual int latex(Buffer const * buf, std::ostream & os,
 			  LatexRunParams const &) const;

@@ -72,7 +72,7 @@ public:
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	void draw(BufferView *, LyXFont const &, int, float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 #if 0
 	///
 	LyXFont const convertFont(LyXFont const & font) const;

@@ -562,10 +562,9 @@ void InsetERT::dimension(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetERT::draw(BufferView * bv, LyXFont const & f,
-		    int baseline, float & x) const
+void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
-	InsetCollapsable::draw(bv, f, baseline, x, inlined());
+	InsetCollapsable::draw(pi, x, y, inlined());
 }
 
 

@@ -101,7 +101,7 @@ public:
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	void draw(BufferView *, const LyXFont &, int , float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// set the status of the inset
 	void status(BufferView *, ERTStatus const st) const;
 	///

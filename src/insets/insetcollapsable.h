@@ -47,10 +47,9 @@ public:
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	void draw(BufferView *, const LyXFont &, int, float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw, either inlined (no button) or collapsed/open
-	void draw(BufferView * bv, LyXFont const & f,
-	          int baseline, float & x, bool inlined) const;
+	void draw(PainterInfo & pi, int x, int y, bool inlined) const;
 	///
 	void update(BufferView *, bool = false);
 	///
@@ -181,7 +180,7 @@ protected:
 	///
 	int height_collapsed() const;
 	///
-	void draw_collapsed(Painter & pain, int, float &) const;
+	void draw_collapsed(PainterInfo & pi, int x, int y) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 

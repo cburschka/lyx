@@ -88,7 +88,7 @@ public:
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
-	void draw(BufferView *, const LyXFont &, int , float &) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void update(BufferView *, bool = false);
 	///

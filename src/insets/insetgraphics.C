@@ -73,7 +73,7 @@ TODO
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "Lsstream.h"
+#include "metricsinfo.h"
 
 #include "frontends/lyx_gui.h"
 #include "frontends/Alert.h"
@@ -324,9 +324,9 @@ BufferView * InsetGraphics::view() const
 }
 
 
-void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
-			 int baseline, float & x) const
+void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
+	BufferView * bv = pi.base.bv;
 	// MakeAbsPath returns params().filename unchanged if it absolute
 	// already.
 	string const file_with_path =
@@ -342,22 +342,18 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	cache_->view = bv->owner()->view();
 	int oasc = cache_->old_ascent;
 
-	int ldescent = descent(bv, font);
-	int lascent  = ascent(bv, font);
-	int lwidth   = width(bv, font);
+	Dimension dim;
+	dimension(bv, pi.base.font, dim);
 
 	// we may have changed while someone other was drawing us so better
 	// to not draw anything as we surely call to redraw ourself soon.
 	// This is not a nice thing to do and should be fixed properly somehow.
 	// But I still don't know the best way to go. So let's do this like this
 	// for now (Jug 20020311)
-	if (lascent != oasc)
+	if (dim.asc != oasc)
 		return;
 
 	// Make sure now that x is updated upon exit from this routine
-	int old_x = int(x);
-	x += lwidth;
-
 	grfx::Params const & gparams = params().as_grfxParams();
 
 	if (gparams.display != grfx::NoDisplay &&
@@ -369,26 +365,25 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
-	Painter & paint = bv->painter();
 
 	if (imageIsDrawable()) {
-		paint.image(old_x + TEXT_TO_INSET_OFFSET, baseline - lascent,
-			    lwidth - 2 * TEXT_TO_INSET_OFFSET, lascent + ldescent,
+		pi.pain.image(x + TEXT_TO_INSET_OFFSET, y - dim.asc,
+			    dim.wid - 2 * TEXT_TO_INSET_OFFSET, dim.asc + dim.des,
 			    *cache_->loader.image());
 
 	} else {
 
-		paint.rectangle(old_x + TEXT_TO_INSET_OFFSET, baseline - lascent,
-				lwidth - 2 * TEXT_TO_INSET_OFFSET, lascent + ldescent);
+		pi.pain.rectangle(x + TEXT_TO_INSET_OFFSET, y - dim.asc,
+				dim.wid - 2 * TEXT_TO_INSET_OFFSET, dim.asc + dim.des);
 
 		// Print the file name.
-		LyXFont msgFont(font);
+		LyXFont msgFont = pi.base.font;
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6,
-				   baseline - font_metrics::maxAscent(msgFont) - 4,
+			pi.pain.text(x + TEXT_TO_INSET_OFFSET + 6,
+				   y - font_metrics::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
 
@@ -396,7 +391,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const msg = statusMessage();
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6, baseline - 4, msg, msgFont);
+			pi.pain.text(x + TEXT_TO_INSET_OFFSET + 6, y - 4, msg, msgFont);
 		}
 	}
 }

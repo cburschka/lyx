@@ -17,6 +17,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxfont.h"
+#include "metricsinfo.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/font_metrics.h"
@@ -71,30 +72,24 @@ void InsetError::dimension(BufferView *, LyXFont const & font,
 }
 
 
-void InsetError::draw(BufferView * bv, LyXFont const & font,
-		      int baseline, float & x) const
+void InsetError::draw(PainterInfo & pi, int x, int y) const
 {
-	lyx::Assert(bv);
-	cache(bv);
+	lyx::Assert(pi.base.bv);
+	cache(pi.base.bv);
 
-	Painter & pain = bv->painter();
 	LyXFont efont;
-	efont.setSize(font.size()).decSize();
+	efont.setSize(pi.base.font.size()).decSize();
 	efont.setColor(LColor::error);
 
 	// Draw as "Error" in a framed box
 	x += 1;
-	pain.fillRectangle(int(x), baseline - ascent(bv, font) + 1,
-			  width(bv, font) - 2,
-			  ascent(bv, font) + descent(bv, font) - 2,
-			   LColor::insetbg);
-	pain.rectangle(int(x), baseline - ascent(bv, font) + 1,
-		       width(bv, font) - 2,
-		       ascent(bv, font) + descent(bv, font) - 2,
-		       LColor::error);
-	pain.text(int(x + 2), baseline, _("Error"), efont);
-
-	x +=  width(bv, font) - 1;
+	Dimension dim;
+	dimension(pi.base.bv, pi.base.font, dim);
+	pi.pain.fillRectangle(x, y - dim.asc + 1,
+	      dim.wid - 2, dim.asc + dim.des - 2, LColor::insetbg);
+	pi.pain.rectangle(x, y - dim.asc + 1,
+	      dim.wid - 2, dim.asc + dim.des - 2, LColor::error);
+	pi.pain.text(x + 2, y, _("Error"), efont);
 }
 
 

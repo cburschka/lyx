@@ -24,6 +24,7 @@
 #include "frontends/font_metrics.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
+#include "metricsinfo.h"
 
 using std::ostream;
 using std::max;
@@ -73,31 +74,28 @@ void InsetSpace::dimension(BufferView *, LyXFont const & font,
 }
 
 
-void InsetSpace::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x) const
+void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
-	Painter & pain = bv->painter();
-	LyXFont font(f);
-
-	float w = width(bv, font);
-	int h = font_metrics::ascent('x', font);
+	int const w = width(pi.base.bv, pi.base.font);
+	int const h = font_metrics::ascent('x', pi.base.font);
 	int xp[4], yp[4];
 
-	xp[0] = int(x); yp[0] = baseline - max(h / 4, 1);
+	xp[0] = x;
+	yp[0] = y - max(h / 4, 1);
 	if (kind_ == NORMAL) {
-		xp[1] = int(x); yp[1] = baseline;
-		xp[2] = int(x + w); yp[2] = baseline;
+		xp[1] = x;     yp[1] = y;
+		xp[2] = x + w; yp[2] = y;
 	} else {
-		xp[1] = int(x); yp[1] = baseline + max(h / 4, 1);
-		xp[2] = int(x + w); yp[2] = baseline + max(h / 4, 1);
+		xp[1] = x;     yp[1] = y + max(h / 4, 1);
+		xp[2] = x + w; yp[2] = y + max(h / 4, 1);
 	}
-	xp[3] = int(x + w); yp[3] = baseline - max(h / 4, 1);
+	xp[3] = x + w;
+	yp[3] = y - max(h / 4, 1);
 
 	if (kind_ == PROTECTED || kind_ == ENSPACE || kind_ == NEGTHIN)
-		pain.lines(xp, yp, 4, LColor::latex);
+		pi.pain.lines(xp, yp, 4, LColor::latex);
 	else
-		pain.lines(xp, yp, 4, LColor::special);
-	x += w;
+		pi.pain.lines(xp, yp, 4, LColor::special);
 }
 
 

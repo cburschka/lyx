@@ -31,7 +31,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
-#include "Lsstream.h"
+#include "metricsinfo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -252,40 +252,39 @@ void InsetTabular::dimension(BufferView *, LyXFont const &,
 }
 
 
-void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
-			float & x) const
+void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	if (nodraw()) {
 		need_update = FULL;
 		return;
 	}
 
-	Painter & pain = bv->painter();
+	BufferView * bv = pi.base.bv;
 	int i;
 	int j;
 	int nx;
 
 #if 0
-	UpdatableInset::draw(bv, font, baseline, x);
+	UpdatableInset::draw(pi, x, y);
 #else
 	if (!owner())
-		x += static_cast<float>(scroll());
+		x += scroll();
 #endif
 
-	top_x = int(x);
-	top_baseline = baseline;
+	top_x = x;
+	top_baseline = y;
 	x += ADD_TO_TABULAR_WIDTH;
 
 	int cell = 0;
-	float cx;
+	int cx;
 	first_visible_cell = -1;
 	for (i = 0; i < tabular->rows(); ++i) {
-		nx = int(x);
+		nx = x;
 		cell = tabular->GetCellNumber(i, 0);
-		if (!((baseline + tabular->GetDescentOfRow(i)) > 0) &&
-			(baseline - tabular->GetAscentOfRow(i))<pain.paperHeight())
+		if (!((y + tabular->GetDescentOfRow(i)) > 0) &&
+			(y - tabular->GetAscentOfRow(i)) < pi.pain.paperHeight())
 		{
-		baseline += tabular->GetDescentOfRow(i) +
+		y += tabular->GetDescentOfRow(i) +
 				tabular->GetAscentOfRow(i + 1) +
 				tabular->GetAdditionalHeight(i + 1);
 			continue;
@@ -299,32 +298,30 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			if (first_visible_cell < 0)
 				first_visible_cell = cell;
 			if (hasSelection()) {
-				drawCellSelection(pain, nx, baseline, i, j, cell);
+				drawCellSelection(pi.pain, nx, y, i, j, cell);
 			}
 
-			tabular->GetCellInset(cell)->draw(bv, font, baseline, cx);
-			drawCellLines(pain, nx, baseline, i, cell);
+			tabular->GetCellInset(cell)->draw(pi, cx, y);
+			drawCellLines(pi.pain, nx, y, i, cell);
 			nx += tabular->GetWidthOfColumn(cell);
 			++cell;
 		}
 
 		// avoiding drawing the rest of a long table is
 		// a pretty big speedup
-		if (baseline > bv->workHeight())
+		if (y > bv->workHeight())
 			break;
 
-		baseline += tabular->GetDescentOfRow(i) +
+		y += tabular->GetDescentOfRow(i) +
 			tabular->GetAscentOfRow(i + 1) +
 			tabular->GetAdditionalHeight(i + 1);
 	}
 
-	x -= ADD_TO_TABULAR_WIDTH;
-	x += width(bv, font);
 	need_update = NONE;
 }
 
 
-void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
+void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 				 int row, int cell) const
 {
 	int x2 = x + tabular->GetWidthOfColumn(cell);
@@ -332,34 +329,34 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
 
 	if (!tabular->topAlreadyDrawn(cell)) {
 		on_off = !tabular->TopLine(cell);
-		pain.line(x, baseline - tabular->GetAscentOfRow(row),
-			  x2, baseline -  tabular->GetAscentOfRow(row),
+		pain.line(x, y - tabular->GetAscentOfRow(row),
+			  x2, y -  tabular->GetAscentOfRow(row),
 			  on_off ? LColor::tabularonoffline : LColor::tabularline,
 			  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	}
 	on_off = !tabular->BottomLine(cell);
-	pain.line(x, baseline + tabular->GetDescentOfRow(row),
-		  x2, baseline + tabular->GetDescentOfRow(row),
+	pain.line(x, y + tabular->GetDescentOfRow(row),
+		  x2, y + tabular->GetDescentOfRow(row),
 		  on_off ? LColor::tabularonoffline : LColor::tabularline,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	if (!tabular->leftAlreadyDrawn(cell)) {
 		on_off = !tabular->LeftLine(cell);
-		pain.line(x, baseline -  tabular->GetAscentOfRow(row),
-			  x, baseline +  tabular->GetDescentOfRow(row),
+		pain.line(x, y -  tabular->GetAscentOfRow(row),
+			  x, y +  tabular->GetDescentOfRow(row),
 			  on_off ? LColor::tabularonoffline : LColor::tabularline,
 			  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	}
 	on_off = !tabular->RightLine(cell);
 	pain.line(x2 - tabular->GetAdditionalWidth(cell),
-		  baseline -  tabular->GetAscentOfRow(row),
+		  y -  tabular->GetAscentOfRow(row),
 		  x2 - tabular->GetAdditionalWidth(cell),
-		  baseline +  tabular->GetDescentOfRow(row),
+		  y +  tabular->GetDescentOfRow(row),
 		  on_off ? LColor::tabularonoffline : LColor::tabularline,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
 }
 
 
-void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
+void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 				     int row, int column, int cell) const
 {
 	lyx::Assert(hasSelection());
@@ -380,7 +377,7 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 	if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
 		int w = tabular->GetWidthOfColumn(cell);
 		int h = tabular->GetAscentOfRow(row) + tabular->GetDescentOfRow(row)-1;
-		pain.fillRectangle(x, baseline - tabular->GetAscentOfRow(row) + 1,
+		pain.fillRectangle(x, y - tabular->GetAscentOfRow(row) + 1,
 				   w, h, LColor::selection);
 	}
 }

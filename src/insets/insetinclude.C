@@ -22,7 +22,8 @@
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "Lsstream.h"
+#include "metricsinfo.h"
+#include "dimension.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
@@ -532,28 +533,22 @@ int InsetInclude::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
-			float & xx) const
+void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(bv);
+	cache(pi.base.bv);
 	if (!preview_->previewReady()) {
-		InsetButton::draw(bv, font, y, xx);
+		InsetButton::draw(pi, x, y);
 		return;
 	}
 
 	if (!preview_->monitoring())
 		preview_->startMonitoring();
 
-	int const x = int(xx);
-	int const w = width(bv, font);
-	int const d = descent(bv, font);
-	int const a = ascent(bv, font);
-	int const h = a + d;
+	Dimension dim;
+	dimension(pi.base.bv, pi.base.font, dim);
 
-	bv->painter().image(x, y - a, w, h,
+	pi.pain.image(x, y - dim.asc, dim.wid, dim.height(),
 			    *(preview_->pimage()->image()));
-
-	xx += w;
 }
 
 

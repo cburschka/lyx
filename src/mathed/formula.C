@@ -212,44 +212,42 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 //}
 
 
-void InsetFormula::draw(BufferView * bv, LyXFont const & font,
-			int y, float & xx) const
+void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(bv);
+	cache(pi.base.bv);
 	// This initiates the loading of the preview, so should come
 	// before the metrics are computed.
 	bool const use_preview = preview_->previewReady();
 
-	int const x = int(xx);
-	int const w = width(bv, font);
-	int const d = descent(bv, font);
-	int const a = ascent(bv, font);
+	Dimension dim;
+	dimension(pi.base.bv, pi.base.font, dim);
+	int const w = dim.wid;
+	int const d = dim.des;
+	int const a = dim.asc;
 	int const h = a + d;
-
-	PainterInfo pi(bv);
 
 	if (use_preview) {
 		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
 			      *(preview_->pimage()->image()));
 	} else {
-		pi.base.style = LM_ST_TEXT;
-		pi.base.font  = font;
-		pi.base.font.setColor(LColor::math);
+		PainterInfo p(pi.base.bv);
+		p.base.style = LM_ST_TEXT;
+		p.base.font  = pi.base.font;
+		p.base.font.setColor(LColor::math);
 		if (lcolor.getX11Name(LColor::mathbg)
 			    != lcolor.getX11Name(LColor::background))
-			pi.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
+			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
 		if (mathcursor &&
 				const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
 		{
 			mathcursor->drawSelection(pi);
-			//pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
+			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 
-		par_->draw(pi, x, y);
+		par_->draw(p, x, y);
 	}
 
-	xx += w;
 	xo_ = x;
 	yo_ = y;
 }

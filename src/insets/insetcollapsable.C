@@ -25,6 +25,7 @@
 #include "WordLangTuple.h"
 #include "funcrequest.h"
 #include "buffer.h"
+#include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -136,22 +137,16 @@ void InsetCollapsable::dimension(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetCollapsable::draw_collapsed(Painter & pain,
-				      int baseline, float & x) const
+void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 {
-	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
-			baseline, label, labelfont);
-	Dimension dim;
-	dimension_collapsed(dim);
-	x += dim.wid;
+	pi.pain.buttonText(x + TEXT_TO_INSET_OFFSET, y, label, labelfont);
 }
 
 
-void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
-                            int baseline, float & x, bool inlined) const
+void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 {
-	lyx::Assert(bv);
-	cache(bv);
+	lyx::Assert(pi.base.bv);
+	cache(pi.base.bv);
 
 	if (nodraw())
 		return;
@@ -159,45 +154,41 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	Dimension dim_collapsed;
 	dimension_collapsed(dim_collapsed);
 
-	Painter & pain = bv->painter();
-
+	int const aa    = ascent(pi.base.bv, pi.base.font);
 	button_length   = dim_collapsed.width();
-	button_top_y    = -ascent(bv, f);
-	button_bottom_y = -ascent(bv, f) + dim_collapsed.height();
+	button_top_y    = -aa;
+	button_bottom_y = -aa + dim_collapsed.height();
 
 	if (!isOpen()) {
-		draw_collapsed(pain, baseline, x);
+		draw_collapsed(pi, x, y);
 		return;
 	}
 
-	float old_x = x;
+	int old_x = x;
 
 	if (!owner())
 		x += scroll();
 
-	top_x = int(x);
-	top_baseline = baseline;
+	top_x = x;
+	top_baseline = y;
 
-	int const bl = baseline - ascent(bv, f) + dim_collapsed.ascent();
+	int const bl = y - aa + dim_collapsed.ascent();
 
 	if (inlined) {
-		inset.draw(bv, f, baseline, x);
+		inset.draw(pi, x, y);
 	} else {
-		draw_collapsed(pain, bl, old_x);
-		int const yy = bl + dim_collapsed.descent() + inset.ascent(bv, f);
-		inset.draw(bv, f, yy, x);
-		// contained inset may be shorter than the button
-		if (x < top_x + button_length + TEXT_TO_INSET_OFFSET)
-			x = top_x + button_length + TEXT_TO_INSET_OFFSET;
+		draw_collapsed(pi, old_x, bl);
+		int const yy = bl + dim_collapsed.descent()
+			+ inset.ascent(pi.base.bv, pi.base.font);
+		inset.draw(pi, x, yy);
 	}
 }
 
 
-void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x) const
+void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	// by default, we are not inlined-drawing
-	draw(bv, f, baseline, x, false);
+	draw(pi, x, y, false);
 }
 
 

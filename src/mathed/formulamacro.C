@@ -171,20 +171,18 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 }
 
 
-void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
-			     int y, float & xx) const
+void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 {
 	// label
-	LyXFont font(f);
+	LyXFont font = p.base.font;
 	font.setColor(LColor::math);
 
-	PainterInfo pi(bv);
+	PainterInfo pi(p.base.bv);
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 
 	Dimension dim;
-	dimension(bv, font, dim);
-	int const x = int(xx);
+	dimension(pi.base.bv, font, dim);
 	int const a = y - dim.asc + 1;
 	int const w = dim.wid - 2;
 	int const h = dim.height() - 2;
@@ -200,8 +198,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	pi.pain.text(x + 2, y, prefix(), font);
 
 	// formula
-	par()->draw(pi, x + font_metrics::width(prefix(), f) + 5, y);
-	xx += w + 2;
+	par()->draw(pi, x + font_metrics::width(prefix(), p.base.font) + 5, y);
 	xo_ = x;
 	yo_ = y;
 }

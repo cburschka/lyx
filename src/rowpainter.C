@@ -33,6 +33,7 @@
 #include "rowpainter.h"
 #include "lyxrc.h"
 #include "lyxrow_funcs.h"
+#include "metricsinfo.h"
 
 using std::max;
 using lyx::pos_type;
@@ -103,12 +104,14 @@ void RowPainter::paintInset(pos_type const pos)
 
 	lyx::Assert(inset);
 
-	LyXFont const & font = getFont(pos);
-
 #warning inset->update FIXME
 	inset->update(perv(bv_), false);
 
-	inset->draw(perv(bv_), font, yo_ + row_->baseline(), x_);
+	PainterInfo pi(perv(bv_));
+	pi.base.font = getFont(pos);
+	int const w = inset->width(perv(bv_), pi.base.font);
+	inset->draw(pi, int(x_), yo_ + row_->baseline());
+	x_ += w;
 }
 
 

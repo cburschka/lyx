@@ -52,13 +52,11 @@ void UpdatableInset::fitInsetCursor(BufferView *) const
 {}
 
 
-void UpdatableInset::draw(BufferView *, LyXFont const &,
-			  int /* baseline */, float & x) const
+void UpdatableInset::draw(PainterInfo &, int, int) const
 {
-	x += float(scx);
 	// ATTENTION: don't do the following here!!!
-	//    top_x = int(x);
-	//    top_baseline = baseline;
+	//    top_x = x;
+	//    top_baseline = y;
 }
 
 
