@@ -11,7 +11,9 @@
 #include "math_support.h"
 #include "support/LOstream.h"
 
+#ifndef CXX_GLOBAL_CSTD
 using std::atoi;
+#endif
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
 	: MathNestInset(1), key_(l), style_(MathStyles(atoi(l->extra.c_str())))

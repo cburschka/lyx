@@ -1,3 +1,8 @@
+2004-02-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_parser.C: 
+	* math_sizeinset.C: atoi is not always in std:: namespace
+
 2003-09-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_symbolinset.C (metrics): apply a different hack to metrics

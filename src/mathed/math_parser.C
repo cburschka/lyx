@@ -78,7 +78,9 @@ using std::ios;
 using std::endl;
 using std::fill;
 using std::vector;
+#ifndef CXX_GLOBAL_CSTD
 using std::atoi;
+#endif
 
 
 //#define FILEDEBUG
