@@ -71,7 +71,7 @@ public:
 	///
 	char character() const { return char_; }
 	///
-	string asString() const { return cs_.size() ? cs_ : string(1, char_); }
+	string asString() const;
 	///
 	string asInput() const;
 

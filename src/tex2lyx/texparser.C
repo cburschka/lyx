@@ -89,6 +89,17 @@ ostream & operator<<(ostream & os, Token const & t)
 }
 
 
+string Token::asString() const
+{
+	return cs_.size() ? cs_ : string(1, char_);
+}
+
+
+string Token::asInput() const
+{
+	return cs_.size() ? cs_ + ' ' : string(1, char_);
+}
+
 
 //
 // Parser

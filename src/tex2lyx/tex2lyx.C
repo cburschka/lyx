@@ -54,6 +54,10 @@ const char * known_languages[] = { "austrian", "babel", "bahasa",
 const char * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 
+const char * known_math_envs[] = {"equation", "eqnarray", "eqnarray*",
+"align", 0};
+
+
 // some ugly stuff
 ostringstream h_preamble;
 string h_textclass               = "FIXME";
@@ -88,6 +92,13 @@ bool in_preamble = true;
 // current stack of nested environments
 stack<string> active_environments;
 
+
+string cap(string s)
+{
+	if (s.size())
+		s[0] = toupper(s[0]);
+	return s;
+}
 
 
 string const trim(string const & a, char const * p = " ")
@@ -146,6 +157,32 @@ void handle_opt(vector<string> & opts, char const ** what, string & target)
 }
 
 
+bool is_math_env(string const & name)
+{
+	for (char const ** what = known_math_envs; *what; ++what)
+		if (*what == name)
+			return true;
+	return false;
+}
+
+
+bool is_heading(string const & name)
+{
+	return
+		name == "title" ||
+		name == "author" ||
+		name == "paragraph" ||
+		name == "chapter" ||
+		name == "chapter*" ||
+		name == "section" ||
+		name == "section*" ||
+		name == "subsection" ||
+		name == "subsection*" ||
+		name == "subsubsection" ||
+		name == "subsubsection*";
+}
+
+
 void begin_inset(ostream & os, string const & name)
 {
 	os << "\n\\begin_inset " << name;
@@ -186,9 +223,7 @@ void handle_par(ostream & os)
 		os << "LyX-Code\n\n";
 		return;
 	}
-	if (s.size()) 
-		s[0] = toupper(s[0]);	
-	os << s << "\n\n";
+	os << cap(s) << "\n\n";
 }
 
 
@@ -362,7 +397,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << t.character();
 
 		else if (t.cat() == catNewline)
-			os << t.character();
+			os << ' ';
 
 		else if (t.cat() == catSuper)
 			os << t.character();
@@ -474,6 +509,8 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				end_preamble(os);
 			else if (name == "abstract")
 				handle_par(os);
+			else if (is_math_env(name))
+				begin_inset(os, "Formula ");	
 			else
 				os << "\\begin{" << name << "}";
 			parse(p, os, FLAG_END, mode);
@@ -489,6 +526,8 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				active_environments.pop();
 				if (name == "document" || name == "abstract")
 					;
+				else if (is_math_env(name))
+					end_inset(os);	
 				else
 					os << "\\end{" << name << "}";
 				return;
@@ -576,11 +615,10 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "par")
 			handle_par(os);
 
-		else if (t.cs() == "title")
-			os << "\\layout Title\n\n" + p.verbatimItem();
-
-		else if (t.cs() == "author")
-			os << "\\layout Author\n\n" + p.verbatimItem();
+		else if (is_heading(t.cs())) {
+			os << "\\layout " << cap(t.cs()) << "\n\n";
+			parse(p, os, FLAG_ITEM, mode);
+		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
 			; // swallow this
@@ -606,8 +644,8 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			end_inset(os);
 		}
 
-		else 
-			(in_preamble ? h_preamble : os) << '\\' << t.asString();
+		else
+			(in_preamble ? h_preamble : os) << '\\' << t.asInput();
 
 		if (flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;
