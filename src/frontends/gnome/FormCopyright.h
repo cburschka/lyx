@@ -49,9 +49,9 @@ private:
 	*/
 	Dialogs * d_;
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Destroy connection.
-	Connection destroy_;
+	SigC::Connection destroy_;
 };
 
 #endif

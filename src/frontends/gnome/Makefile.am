@@ -4,51 +4,62 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libgnome.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
-	-I${top_srcdir}/src/frontends/ -I${top_srcdir}/src/frontends/xforms \
+	-I${top_srcdir}/src/frontends/ \
+	-I${top_srcdir}/src/frontends/xforms \
+	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
+
 libgnome_la_OBJADD = \
-	../xforms/ButtonController.lo \
-	../xforms/Color.lo \
+	../xforms/xforms_helpers.lo \
+	../xforms/Toolbar_pimpl.lo \
+	../xforms/combox.lo \
+	../xforms/MathsSymbols.lo \
+	../xforms/FormMathsBitmap.lo \
+	../xforms/FormMathsDeco.lo \
+	../xforms/FormMathsDelim.lo \
+	../xforms/FormMathsMatrix.lo \
+	../xforms/FormMathsPanel.lo \
+	../xforms/FormMathsSpace.lo \
 	../xforms/FileDialog.lo \
 	../xforms/FormFiledialog.lo \
-	../xforms/form_filedialog.lo \
-	../xforms/FormBase.lo \
-	../xforms/FormCitation.lo \
-	../xforms/form_citation.lo \
-	../xforms/FormCopyright.lo \
-	../xforms/form_copyright.lo \
-	../xforms/FormDocument.lo \
-	../xforms/form_document.lo \
-	../xforms/FormError.lo \
-	../xforms/form_error.lo \
-	../xforms/FormGraphics.lo \
-	../xforms/form_graphics.lo \
-	../xforms/FormIndex.lo \
-	../xforms/form_index.lo \
-	../xforms/FormInset.lo \
-	../xforms/FormParagraph.lo \
-	../xforms/form_paragraph.lo \
-	../xforms/FormPreferences.lo \
-	../xforms/form_preferences.lo \
-	../xforms/FormPrint.lo \
-	../xforms/form_print.lo \
-	../xforms/FormRef.lo \
-	../xforms/form_ref.lo \
-	../xforms/FormSplash.lo \
-	../xforms/form_splash.lo \
-	../xforms/FormTabular.lo \
-	../xforms/form_tabular.lo \
-	../xforms/FormTabularCreate.lo \
-	../xforms/form_tabular_create.lo \
-	../xforms/FormToc.lo \
-	../xforms/form_toc.lo \
-	../xforms/FormUrl.lo \
-	../xforms/form_url.lo \
-	../xforms/input_validators.lo \
-	../xforms/RadioButtonGroup.lo \
-	../xforms/Timeout_pimpl.lo \
-	../xforms/Toolbar_pimpl.lo \
-	../xforms/xforms_helpers.lo
+	../xforms/form_filedialog.lo 
+#	../xforms/Timeout_pimpl.lo \
+#	../xforms/Color.lo \
+#	../xforms/FormFiledialog.lo \
+#	../xforms/form_filedialog.lo \
+#	../xforms/FormBase.lo \
+#	../xforms/FormCitation.lo \
+#	../xforms/form_citation.lo \
+#	../xforms/FormCopyright.lo \
+#	../xforms/form_copyright.lo \
+#	../xforms/FormDocument.lo \
+#	../xforms/form_document.lo \
+#	../xforms/FormError.lo \
+#	../xforms/form_error.lo \
+#	../xforms/FormGraphics.lo \
+#	../xforms/form_graphics.lo \
+#	../xforms/FormIndex.lo \
+#	../xforms/form_index.lo \
+#	../xforms/FormInset.lo \
+#	../xforms/FormParagraph.lo \
+#	../xforms/form_paragraph.lo \
+#	../xforms/FormPreferences.lo \
+#	../xforms/form_preferences.lo \
+#	../xforms/FormPrint.lo \
+#	../xforms/form_print.lo \
+#	../xforms/FormRef.lo \
+#	../xforms/form_ref.lo \
+#	../xforms/FormSplash.lo \
+#	../xforms/form_splash.lo \
+#	../xforms/FormTabular.lo \
+#	../xforms/form_tabular.lo \
+#	../xforms/FormTabularCreate.lo \
+#	../xforms/form_tabular_create.lo \
+#	../xforms/FormToc.lo \
+#	../xforms/form_toc.lo \
+#	../xforms/input_validators.lo \
+#	../xforms/RadioButtonGroup.lo \
+
 LIBS= 
 LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 
@@ -56,49 +67,22 @@ LYXDATADIRS =
 libgnome_la_SOURCES = \
 	Dialogs.C \
 	GUIRunTime.C \
-	FormCitation.C \
-	FormCitation.h \
-	FormCopyright.C \
-	FormCopyright.h \
-	FormError.C \
-	FormError.h \
-	FormPrint.C \
-	FormPrint.h \
-	FormRef.C \
-	FormRef.h \
-	FormUrl.C \
-	FormUrl.h \
-	FormIndex.C \
-	FormIndex.h \
-	FormToc.C \
-	FormToc.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
+	Timeout_pimpl.C \
+	Timeout_pimpl.h \
+	gnomeBC.C \
+	gnomeBC.h \
+	gnome_helpers.h \
 	mainapp.C \
 	mainapp.h \
 	support.c \
 	support.h \
-	diaprint_callbacks.c \
-	diaprint_callbacks.h \
-	diaprint_interface.c \
-	diaprint_interface.h \
-	diainserturl_callbacks.c  \
-	diainserturl_interface.c  \
-	diainserturl_callbacks.h \
-	diainserturl_interface.h \
-	diainsertindex_callbacks.c  \
-	diainsertindex_interface.c  \
-	diainsertindex_callbacks.h \
-	diainsertindex_interface.h \
-	diatoc_callbacks.c  \
-	diatoc_interface.c  \
-	diatoc_callbacks.h \
-	diatoc_interface.h \
-	diainsertcitation_interface.c \
-	diainsertcitation_interface.h \
-	diainsertcitation_callbacks.c \
-	diainsertcitation_callbacks.h \
-	pixbutton.h
+	pixbutton.h \
+	GnomeBase.C \
+	GnomeBase.h \
+	FormUrl.C \
+	FormUrl.h 
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

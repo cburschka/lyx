@@ -1,3 +1,26 @@
+2001-03-26  Baruch Even  <baruch@lyx.org>
+
+	* Various files: Fixes to get the gnome frontend to compile again. 
+	Removed most xforms dialogs in order to reduce compilation breaks caused
+	by the moves to MVC in the xforms frontend.
+
+	* GUIRuntime.C: Added libglade library initialization.
+
+	* gnomeBC.h:
+	* gnomeBC.C: Added file for the MVC support.
+
+	* gnome_helpers.h: Added file with support functions.
+
+	* GnomeBase.h:
+	* GnomeBase.C: Added file to be the base class of MVC dialogs that use
+	libglade.
+
+	* FormUrl.h:
+	* FormUrl.C: Recreated the dialog in the MVC way.
+
+	* Timeout_pimpl.h:
+	* Timeout_pimpl.C: Implementation of the Timeout pimpl.
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* several files: remove CXX_WORKING_NAMESPACES

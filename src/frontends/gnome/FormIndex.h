@@ -64,11 +64,11 @@ private:
   /// the nitty-griity. What is modified and passed back
   InsetCommandParams params;
   /// Update connection.
-  Connection u_;
+  SigC::Connection u_;
   /// Hide connection.
-  Connection h_;
+  SigC::Connection h_;
   /// inset::hide connection.
-  Connection ih_;
+  SigC::Connection ih_;
 
   /// Real GUI implementation.
   Gtk::Container * dialog_;

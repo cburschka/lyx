@@ -58,11 +58,11 @@ private:
   /// pointer to the inset passed through showInset (if any)
   InsetError * inset_;
   /// Update connection.
-  Connection u_;
+  SigC::Connection u_;
   /// Hide connection.
-  Connection h_;
+  SigC::Connection h_;
   /// inset::hide connection.
-  Connection ih_;
+  SigC::Connection ih_;
 
   /// Real GUI implementation.
   Gtk::Container * dialog_;

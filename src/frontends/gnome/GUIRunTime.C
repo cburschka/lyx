@@ -20,6 +20,7 @@
 
 #include <gnome--/main.h>
 #include "mainapp.h"
+#include <glade/glade.h>
 
 using std::endl;
 
@@ -73,6 +74,7 @@ int GUIRunTime::initApplication(int, char * argv[])
 	static string app_id(PACKAGE);
 	static string app_version(VERSION);
 	static Gnome::Main  a(app_id, app_version, 1, argv);
+	glade_gnome_init(); // Initialize the glade library.
 	static GLyxAppWin   appWin;
 	mainAppWin = &appWin;
 

@@ -1,65 +1,116 @@
-#include <config.h>
-#include FORMS_H_LOCATION
+/* This file is part of
+ * ======================================================
+ *
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995-2001 The LyX Team.
+ *
+ * ======================================================
+ */
 
-#include "Dialogs.h"
-#include "FormCitation.h"
-#include "FormCopyright.h"
-#include "FormDocument.h"
-#include "FormError.h"
-#include "FormGraphics.h"
-#include "FormIndex.h"
-#include "FormParagraph.h"
-#include "FormPreferences.h"
-#include "FormPrint.h"
-#include "FormRef.h"
-#include "FormSplash.h"
-#include "FormTabular.h"
-#include "FormToc.h"
-#include "FormUrl.h"
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-// temporary till ported
-extern void ShowCredits();
+#include "Dialogs.h"
+
+#include "gnomeBC.h"
+
+#include "ControlBibitem.h"
+#include "ControlBibtex.h"
+#include "ControlCharacter.h"
+#include "ControlCitation.h"
+#include "ControlCopyright.h"
+#include "ControlCredits.h"
+#include "ControlInclude.h"
+#include "ControlLog.h"
+#include "ControlUrl.h"
+#include "ControlVCLog.h"
+
+#include "GUI.h"
+
+#include "FormUrl.h"
+/*
+#include "FormBibitem.h"
+#include "FormBibtex.h"
+#include "FormCharacter.h"
+#include "FormCitation.h"
+#include "FormCopyright.h"
+#include "FormCredits.h"
+#include "FormLog.h"
+#include "FormVCLog.h"
+
+#include "FormDocument.h"
+#include "FormError.h"
+#include "FormExternal.h" 
+#include "FormGraphics.h"
+#include "FormInclude.h"
+#include "FormIndex.h"
+#include "FormMathsPanel.h"
+#include "FormParagraph.h"
+#include "FormPreamble.h"
+#include "FormPreferences.h"
+#include "FormPrint.h"
+#include "FormRef.h"
+#include "FormSearch.h"
+#include "FormSplash.h"
+#include "FormTabular.h"
+#include "FormTabularCreate.h"
+#include "FormToc.h"
+#include "FormUrl.h"
+#include "FormMinipage.h"
+*/
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
-Signal0<void> Dialogs::redrawGUI;
+SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	dialogs_.push_back(new FormCitation(lv, this));
-	dialogs_.push_back(new FormCopyright(lv, this));
-	dialogs_.push_back(new FormDocument(lv, this));
-	dialogs_.push_back(new FormError(lv, this));
-	dialogs_.push_back(new FormGraphics(lv, this));
-	dialogs_.push_back(new FormIndex(lv, this));
-	dialogs_.push_back(new FormPreferences(lv, this));
-	dialogs_.push_back(new FormParagraph(lv, this));
-	dialogs_.push_back(new FormPrint(lv, this));
-	dialogs_.push_back(new FormRef(lv, this));
-	dialogs_.push_back(new FormSplash(lv, this));
-	dialogs_.push_back(new FormTabular(lv, this));
-	dialogs_.push_back(new FormToc(lv, this));
-	dialogs_.push_back(new FormUrl(lv, this));
+	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
+/*	
+	splash_.reset(new FormSplash(lv, this));
+
+	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
+	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
+	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
+	//add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
+	//add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
+	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
+	add(new GUILog<FormLog, xformsBC>(*lv, *this));
+	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
+
+	// For now we use the gnome non MVC dialogs
+	add(new FormCitation(lv, this));
+	add(new FormCopyright(lv, this));
+	
+	add(new FormDocument(lv, this));
+	add(new FormError(lv, this));
+	add(new FormExternal(lv, this));
+	add(new FormGraphics(lv, this));
+	add(new FormInclude(lv, this));
+	add(new FormIndex(lv, this));
+ 	add(new FormMathsPanel(lv, this));
+	add(new FormParagraph(lv, this));
+	add(new FormPreamble(lv, this));
+	add(new FormPreferences(lv, this));
+	add(new FormPrint(lv, this));
+	add(new FormRef(lv, this));
+	add(new FormSearch(lv, this));
+	add(new FormSplash(lv, this));
+	add(new FormTabular(lv, this));
+	add(new FormTabularCreate(lv, this));
+	add(new FormToc(lv, this));
+	add(new FormUrl(lv, this));
+	add(new FormMinipage(lv, this));
+*/
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
 }
-
-
-Dialogs::~Dialogs()
-{
-	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
-	     iter != dialogs_.end();
-	     ++iter) {
-		delete *iter;
-	}
-}
-
 
 /*****************************************************************************
 

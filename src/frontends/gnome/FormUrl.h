@@ -1,13 +1,15 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
+ * =================================================
+ * 
+ *          LyX, The Document Processor
+ *          Copyright 1995 Matthias Ettrich.
+ *          Copyright 1995-2000 The LyX Team.
  *
- *           LyX, The Document Processor
+ * ================================================= 
  *
- *           Copyright 2000 The LyX Team.
- *
- * ======================================================
- */
+ * \author Baruch Even
+ * */
 
 #ifndef FORMURL_H
 #define FORMURL_H
@@ -16,75 +18,78 @@
 #pragma interface
 #endif
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "insets/insetcommand.h"
+#include "ControlUrl.h"
+#include "GnomeBase.h"
 
-#include <gtk--/container.h>
-#include <gtk--/checkbutton.h>
-#include <gnome--/entry.h>
-#include <gtk--/button.h>
+//#include <gnome--/dialog.h>
+namespace Gnome {
+class Dialog;
+}
 
-/** This class provides an Gnome implementation of the FormUrl Dialog.
+namespace Gtk {
+class Button;
+class CheckButton;
+class Entry;
+}
+
+/**
+ * This class implements the dialog to insert/modify urls.
  */
-class FormUrl : public DialogBase {
+class FormUrl : public FormCB<ControlUrl> {
 public:
-  /**@name Constructors and Destructors */
-  //@{
-  ///
-  FormUrl(LyXView *, Dialogs *);
-  ///
-  ~FormUrl();
-  //@}
-  
+	///
+	FormUrl(ControlUrl & c);
+	///
+	~FormUrl();
+
+	void apply();
+	void hide();
+	void show();
+	void update();
+	
 private:
-  /// Slot launching dialog to (possibly) create a new inset
-  void createInset( string const & );
-  /// Slot launching dialog to an existing inset
-  void showInset( InsetCommand * const );
-  
-  /// Update dialog before showing it
-  virtual void update() { }
-  virtual void updateSlot(bool = false);
-  /// Apply from dialog (modify or create inset)
-  virtual void apply();
-  /// Explicitly free the dialog.
-  void free();
-  /// Create the dialog if necessary, update it and display it.
-  void show();
-  /// Hide the dialog.
-  void hide();
-  
-  /** Which LyXFunc do we use?
-      We could modify Dialogs to have a visible LyXFunc* instead and
-      save a couple of bytes per dialog.
-  */
-  LyXView * lv_;
-  /** Which Dialogs do we belong to?
-      Used so we can get at the signals we have to connect to.
-  */
-  Dialogs * d_;
-  /// pointer to the inset passed through showInset (if any)
-  InsetCommand * inset_;
-  /// the nitty-griity. What is modified and passed back
-  InsetCommandParams params;
-  /// Update connection.
-  Connection u_;
-  /// Hide connection.
-  Connection h_;
-  /// inset::hide connection.
-  Connection ih_;
+	/// Build the dialog
+	void build();
 
-  /// Real GUI implementation.
-  Gtk::Container * dialog_;
+	/// Returns true if the dialog input is in a valid state.
+	bool validate() const;
 
-  Gtk::CheckButton * html_type_;
+	/// Do the connection of signals
+	void connect_signals();
+	/// Disconnect the signals.
+	void disconnect_signals();
 
-  Gnome::Entry * url_;
-  Gnome::Entry * name_;  
+	void OKClicked() { OKButton(); }
+	void CancelClicked() { CancelButton(); }
+	void ApplyClicked() { ApplyButton(); }
+	void RestoreClicked() { RestoreButton(); }
+	void InputChanged() { bc().valid(validate()); }
+	
+	/// Get the dialog
+	Gnome::Dialog * dialog();
+	/// The url entry
+	Gtk::Entry * url() const;
+	/// The name entry
+	Gtk::Entry * name() const;
+	/// The html type checkbutton
+	Gtk::CheckButton * html() const;
+	/// The ok button
+	Gtk::Button * ok_btn() const;
+	/// The cancel button
+	Gtk::Button * cancel_btn() const;
+	/// The apply button
+	Gtk::Button * apply_btn() const;
+	/// The restore button
+	Gtk::Button * restore_btn() const;
 
-  Gtk::Button * b_ok;
-  Gtk::Button * b_cancel;
+	// Hold the dialog.
+	//boost::shared_ptr<Gnome::Dialog> dialog_;
+	Gnome::Dialog * dialog_;
+
+	/// Keeps the connection to the input validator.
+	SigC::Connection slot_url_;
+	SigC::Connection slot_name_;
+	SigC::Connection slot_html_;
 };
 
 #endif

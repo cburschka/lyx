@@ -92,12 +92,15 @@ void Menubar::Pimpl::set(string const & menu_name)
 
 void Menubar::Pimpl::updateAllLists()
 {
+#warning Implement me! (be 20010324)
+#if 0
   // update lists
   if (toc_.size() > 0)
     {
       vector<Buffer::TocItem> toclist = (owner_->view()->buffer()->getTocList())[Buffer::TOC_TOC];
       updateList(&toclist, &toc_);
     }
+#endif
 }
 
 int const max_number_of_items = 25;
