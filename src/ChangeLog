@@ -1,5 +1,9 @@
 2004-02-13  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* cursor.C (dispatch): restore current_ before returning
+
+2004-02-13  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* text2.C (cursorUp, cursorDown): fix coords
 	(moveUp): fix crash
 

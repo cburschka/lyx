@@ -83,8 +83,11 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	FuncRequest cmd = cmd0;
 	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
 		DispatchResult res = inset()->dispatch(*this, cmd);
-		if (res.dispatched())
+		if (res.dispatched()) {
+			current_ = cursor_.size() - 1;
 			return DispatchResult(true, true);
+		}
+		
 
 		// "Mutate" the request for semi-handled requests that need
 		// additional handling in outer levels.
@@ -110,6 +113,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	BOOST_ASSERT(current_ == 0);
 	DispatchResult res = bv_->text()->dispatch(*this, cmd);
 	//lyxerr << "   result: " << res.val() << endl;
+	current_ = cursor_.size() - 1;
 	return res;
 }
 
