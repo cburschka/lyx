@@ -16,6 +16,7 @@
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h" // float_equal
+#include "support/tostr.h"
 #include "support/translator.h"
 
 #include <boost/regex.hpp>
@@ -24,6 +25,7 @@
 #include <sstream>
 
 using lyx::support::float_equal;
+using lyx::support::strToDbl;
 
 using std::string;
 
@@ -52,21 +54,25 @@ bool ResizeData::no_resize() const
 
 bool ResizeData::usingScale() const
 {
-	return !float_equal(scale, 0.0, 0.05);
+	return (!scale.empty() && !float_equal(strToDbl(scale), 0.0, 0.05));
 }
 
 
 bool RotationData::no_rotation() const
 {
-	return (std::abs(angle()) < 0.1);
+	return (angle.empty() || std::abs(strToDbl(angle)) < 0.1);
 }
 
 
-void RotationData::angle(double a)
+string const RotationData::adjAngle() const
 {
-	// Ensure that angle_ lies in the range -360 < angle_ < 360.
-	int const multiples = int(a) / 360;
-	angle_ = a - (multiples * 360);
+	// Ensure that angle lies in the range -360 < angle < 360
+	double rotAngle = strToDbl(angle);
+	if (std::abs(rotAngle) > 360.0) {
+		rotAngle -= 360.0 * floor(rotAngle / 360.0);
+		return tostr(rotAngle);
+	}
+	return angle;
 }
 
 
@@ -97,8 +103,8 @@ string const ResizeLatexCommand::front_impl() const
 
 	std::ostringstream os;
 	if (data.usingScale()) {
-		double const scl = data.scale / 100.0;
-		os << "\\scalebox{" << scl << "}{" << scl << "}{";
+		double const scl = strToDbl(data.scale) / 100.0;
+		os << "\\scalebox{" << scl << "}[" << scl << "]{";
 	} else {
 		string width  = "!";
 		string height = "!";
@@ -194,7 +200,7 @@ string const RotationLatexCommand::front_impl() const
 	if (data.origin() != RotationData::DEFAULT)
 		os << "[origin=" << data.origin() << ']';
 
-	os << '{' << data.angle() << "}{";
+	os << '{' << data.angle << "}{";
 	return os.str();
 }
 
@@ -229,8 +235,9 @@ string const ResizeLatexOption::option_impl() const
 
 	std::ostringstream os;
 	if (data.usingScale()) {
-		if (!float_equal(data.scale, 100.0, 0.05))
-			os << "scale=" << data.scale / 100.0 << ',';
+		double scl = strToDbl(data.scale);
+		if (!float_equal(scl, 100.0, 0.05))
+			os << "scale=" << scl / 100.0 << ',';
 		return os.str();
 	}
 
@@ -251,7 +258,7 @@ string const RotationLatexOption ::option_impl() const
 		return string();
 
 	std::ostringstream os;
-	os << "angle=" << data.angle() << ',';
+	os << "angle=" << data.angle << ',';
 
 	if (data.origin() != RotationData::DEFAULT)
 		os << "origin=" << data.origin() << ',';

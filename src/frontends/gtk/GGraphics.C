@@ -380,7 +380,8 @@ void GGraphics::update() {
 	unitsComboFromLength(heightunitscombo_, stringcol_,
 	                     igp.height, defaultUnit);
 
-	if (!igp.scale.empty() && igp.scale != "0") {
+	if (!igp.scale.empty() 
+		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
 		// scaling sizing mode
 		setscalingradio_->set_active(true);
 	} else {

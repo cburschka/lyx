@@ -94,6 +94,7 @@ using lyx::support::ChangeExtension;
 using lyx::support::compare_timestamps;
 using lyx::support::contains;
 using lyx::support::FileName;
+using lyx::support::float_equal;
 using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
@@ -299,9 +300,10 @@ string const InsetGraphics::createLatexOptions() const
 	    options << " draft,\n";
 	if (params().clip)
 	    options << " clip,\n";
-	if (!params().scale.empty() && params().scale != "0") {
-		if (params().scale != "100")
-			options << " scale=" << strToDbl(params().scale) / 100.0
+	double const scl = strToDbl(params().scale);
+	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
+		if (!float_equal(scl, 100.0, 0.05))
+			options << " scale=" << scl / 100.0
 				<< ",\n";
 	} else {
 		if (!params().width.zero())
@@ -314,7 +316,8 @@ string const InsetGraphics::createLatexOptions() const
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
-	if (!params().rotateAngle.empty() && params().rotateAngle != "0") {
+	if (!params().rotateAngle.empty() 
+		&& !float_equal(strToDbl(params().rotateAngle), 0.0, 0.001)) {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
 		options << "  origin=" << params().rotateOrigin[0];
@@ -403,10 +406,11 @@ string const InsetGraphics::createDocBookAttributes() const
 	// Right now it only works with my version of db2latex :-)
 
 	ostringstream options;
-	if (!params().scale.empty() && params().scale != "0") {
-		if (params().scale != "100")
+	double const scl = strToDbl(params().scale);
+	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
+		if (!float_equal(scl, 100.0, 0.05))
 			options << " scale=\"" 
-				<< static_cast<int>( (strToDbl(params().scale)) + 0.5 )
+				<< static_cast<int>( (scl) + 0.5 )
 				<< "\" ";
 	} else {
 		if (!params().width.zero()) {

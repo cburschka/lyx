@@ -142,7 +142,7 @@ void setRotation(QLineEdit & angleED, QComboBox & originCO,
 		 external::RotationData const & data)
 {
 	originCO.setCurrentItem(int(data.origin()));
-	angleED.setText(toqstr(tostr(data.angle())));
+	angleED.setText(toqstr(data.angle));
 }
 
 
@@ -152,7 +152,7 @@ void getRotation(external::RotationData & data,
 	typedef external::RotationData::OriginType OriginType;
 
 	data.origin(static_cast<OriginType>(originCO.currentItem()));
-	data.angle(strToDbl(fromqstr(angleED.text())));
+	data.angle = fromqstr(angleED.text());
 }
 
 
@@ -162,15 +162,15 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 	     external::ResizeData const & data)
 {
 	bool using_scale = data.usingScale();
-	double scale =  data.scale;
+	std::string scale = data.scale;
 	if (data.no_resize()) {
 		// Everything is zero, so default to this!
 		using_scale = true;
-		scale = 100;
+		scale = "100";
 	}
 
 	if (using_scale) {
-		widthED.setText(toqstr(tostr(scale)));
+		widthED.setText(toqstr(scale));
 		widthUnitCO.setCurrentItem(0);
 	} else {
 		widthED.setText(toqstr(tostr(data.width.value())));
@@ -216,11 +216,11 @@ void getSize(external::ResizeData & data,
 		else
 			data.width = LyXLength();
 
-		data.scale = 0.0;
+		data.scale = string();
 
 	} else {
 		// scaling instead of a width
-		data.scale = strToDbl(width);
+		data.scale = width;
 		data.width = LyXLength();
 	}
 

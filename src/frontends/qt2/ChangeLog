@@ -1,6 +1,11 @@
+2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QExternal.C: store all float/double values as strings.
+	* GGraphics.C: more precise checks for the value strings.
+
 2004-12-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* QGraphics.C: store all values as strings.
+	* QGraphics.C: store all float/double values as strings.
 
 2004-12-19  Angus Leeming  <leeming@lyx.org>
 

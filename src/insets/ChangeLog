@@ -1,3 +1,13 @@
+2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* ExternalTransforms.C: fix LaTeX output of \scalebox.
+	
+	* ExternalTransforms.[Ch]: 
+	* insetexternal.C: store all float/double values as strings.
+	
+	* insetgraphics.C: 
+	* insetgraphicsParams.C: more precise checks for the value strings.
+
 2004-12-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettext.C (doDispatch): remove unused variable was_empty
@@ -5,7 +15,7 @@
 2004-12-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetgraphics.C: 
-	* insetgraphicsParams.[Ch]: store all values as strings.
+	* insetgraphicsParams.[Ch]: store all float/double values as strings.
 
 2004-12-17  Alfredo Braunstein  <abraunst@lyx.org>
 

@@ -156,7 +156,7 @@ void setRotation(FL_OBJECT * angleED, FL_OBJECT * originCO,
 	BOOST_ASSERT(originCO && originCO->objclass == FL_CHOICE);
 
 	fl_set_choice(originCO, 1 + int(data.origin()));
-	fl_set_input(angleED, tostr(data.angle()).c_str());
+	fl_set_input(angleED, data.angle.c_str());
 }
 
 
@@ -169,7 +169,7 @@ void getRotation(external::RotationData & data,
 	typedef external::RotationData::OriginType OriginType;
 
 	data.origin(static_cast<OriginType>(fl_get_choice(originCO) - 1));
-	data.angle(strToDbl(getString(angleED)));
+	data.angle = getString(angleED);
 }
 
 
@@ -186,15 +186,15 @@ void setSize(FL_OBJECT * widthED, FL_OBJECT * widthUnitCO,
 		     aspectratioCB->objclass == FL_CHECKBUTTON);
 
 	bool using_scale = data.usingScale();
-	double scale =  data.scale;
+	std::string scale =  data.scale;
 	if (data.no_resize()) {
 		// Everything is zero, so default to this!
 		using_scale = true;
-		scale = 100;
+		scale = "100";
 	}
 
 	if (using_scale) {
-		fl_set_input(widthED, tostr(scale).c_str());
+		fl_set_input(widthED, scale.c_str());
 		fl_set_choice(widthUnitCO, 1);
 	} else {
 		fl_set_input(widthED, tostr(data.width.value()).c_str());
@@ -248,11 +248,11 @@ void getSize(external::ResizeData & data,
 		else
 			data.width = LyXLength();
 
-		data.scale = 0.0;
+		data.scale = string();
 
 	} else {
 		// scaling instead of a width
-		data.scale = strToDbl(width);
+		data.scale = width;
 		data.width = LyXLength();
 	}
 

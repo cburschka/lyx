@@ -220,7 +220,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 	}
 
 	if (!rotationdata.no_rotation()) {
-		os << "\trotateAngle " << rotationdata.angle() << '\n';
+		os << "\trotateAngle " << rotationdata.adjAngle() << '\n';
 		if (rotationdata.origin() != external::RotationData::DEFAULT)
 			os << "\trotateOrigin "
 			   << rotationdata.originString() << '\n';
@@ -228,9 +228,9 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (!resizedata.no_resize()) {
 		using support::float_equal;
-
-		if (!float_equal(resizedata.scale, 0.0, 0.05)) {
-			if (!float_equal(resizedata.scale, 100.0, 0.05))
+		double scl = support::strToDbl(resizedata.scale);
+		if (!float_equal(scl, 0.0, 0.05)) {
+			if (!float_equal(scl, 100.0, 0.05))
 				os << "\tscale "
 				   << resizedata.scale << '\n';
 		} else {
@@ -354,7 +354,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 
 		case EX_ROTATEANGLE:
 			lex.next();
-			rotationdata.angle(lex.getFloat());
+			rotationdata.angle = lex.getString();
 			break;
 
 		case EX_ROTATEORIGIN:
@@ -364,7 +364,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 
 		case EX_SCALE:
 			lex.next();
-			resizedata.scale = lex.getFloat();
+			resizedata.scale = lex.getString();
 			break;
 
 		case EX_WIDTH:
@@ -524,7 +524,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	gparams.scale = eparams.lyxscale;
 	if (eparams.clipdata.clip)
 		gparams.bb = eparams.clipdata.bbox;
-	gparams.angle = eparams.rotationdata.angle();
+	gparams.angle = lyx::support::strToDbl(eparams.rotationdata.adjAngle());
 
 	switch (eparams.display) {
 	case external::DefaultDisplay:

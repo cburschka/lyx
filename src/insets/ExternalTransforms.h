@@ -56,12 +56,12 @@ private:
 
 class ResizeData {
 public:
-	ResizeData() : scale(0), keepAspectRatio(false) {}
+	ResizeData() : scale(), keepAspectRatio(false) {}
 	bool no_resize() const;
 
 	bool usingScale() const;
 
-	float scale;
+	std::string scale;
 	LyXLength width;
 	LyXLength height;
 	bool keepAspectRatio;
@@ -84,11 +84,11 @@ public:
 		BASELINERIGHT
 	};
 
-	RotationData() : angle_(0), origin_(DEFAULT) {}
+	RotationData() : angle("0"), origin_(DEFAULT) {}
 	bool no_rotation() const;
 
-	void angle(double a);
-	double angle() const { return angle_; }
+	std::string const adjAngle() const;
+	std::string angle;
 
 	void origin(OriginType o) { origin_ = o; }
 	OriginType origin() const { return origin_; }
@@ -97,7 +97,6 @@ public:
 	std::string const originString() const;
 
 private:
-	double angle_;
 	OriginType origin_;
 };
 

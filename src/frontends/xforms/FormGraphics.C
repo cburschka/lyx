@@ -331,7 +331,9 @@ void FormGraphics::apply()
 	// first item in choice_width means scaling
 	if (fl_get_choice(file_->choice_width) == 1) {
 		igp.scale = getString(file_->input_width);
-		if (igp.scale.empty() || igp.scale == "0" || igp.scale == "100") {
+		if (igp.scale.empty() 
+			|| float_equal(strToDbl(igp.scale), 0.0, 0.05) 
+			|| float_equal(strToDbl(igp.scale), 100.0, 0.05)) {
 			igp.scale = string();
 		}
 		igp.width = LyXLength();
@@ -459,7 +461,7 @@ void FormGraphics::update() {
 	}
 
 	// set width input fields according to scaling or width/height input
-	if (!igp.scale.empty() && igp.scale != "0") {
+	if (!igp.scale.empty() && !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
 		fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 		fl_set_input_maxchars(file_->input_width, 0);
 		fl_set_input(file_->input_width, igp.scale.c_str());
@@ -475,7 +477,8 @@ void FormGraphics::update() {
 				igp.height, defaultUnit);
 
 	// disable height input in case of scaling
-	bool const disable_height = (!igp.scale.empty() && igp.scale != "0");
+	bool const disable_height = (!igp.scale.empty() 
+		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05));
 	setEnabled(file_->input_height, !disable_height);
 	setEnabled(file_->choice_height, !disable_height);
 

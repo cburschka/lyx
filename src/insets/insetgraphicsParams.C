@@ -28,6 +28,7 @@
 
 using lyx::support::float_equal;
 using lyx::support::readBB_from_PSFile;
+using lyx::support::strToDbl;
 using lyx::support::strToInt;
 using lyx::support::token;
 
@@ -154,8 +155,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != lyx::graphics::DefaultDisplay)
 		os << "\tdisplay " << lyx::graphics::displayTranslator().find(display) << '\n';
-	if (!scale.empty() && scale != "0") {
-		if (scale != "100")
+	if (!scale.empty() && !float_equal(strToDbl(scale), 0.0, 0.05)) {
+		if (!float_equal(strToDbl(scale), 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())
@@ -176,7 +177,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	if (clip)			// clip image
 		os << "\tclip\n";
 
-	if (!rotateAngle.empty() && rotateAngle != "0")
+	if (!rotateAngle.empty() 
+		&& !float_equal(strToDbl(rotateAngle), 0.0, 0.001))
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
