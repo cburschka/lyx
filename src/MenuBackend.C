@@ -105,7 +105,9 @@ MenuItem::MenuItem(Kind kind, string const & label,
 MenuItem::MenuItem(Kind kind, string const & label,
 		   FuncRequest const & func, bool optional)
 	: kind_(kind), label_(label), func_(func), optional_(optional)
-{}
+{
+	func_.origin = FuncRequest::UI;
+}
 
 
 MenuItem::~MenuItem()

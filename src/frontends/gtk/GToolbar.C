@@ -166,9 +166,9 @@ void GLayoutBox::selected()
 	for (; it != end; ++it) {
 		string const & name = (*it)->name();
 		if (name == layoutGuiName) {
-			owner_.getLyXFunc().dispatch(
-				FuncRequest(LFUN_LAYOUT, name),
-				true);
+			FunctRequest const func(LFUN_LAYOUT, name, 
+						FuncRequest::UI);
+			owner_.getLyXFunc().dispatch(func);
 			return;
 		}
 	}
@@ -264,7 +264,7 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 
 void GToolbar::clicked(FuncRequest func)
 {
-	owner_.getLyXFunc().dispatch(func, true);
+	owner_.getLyXFunc().dispatch(func);
 }
 
 

@@ -1,3 +1,11 @@
+2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlRef.C (gotoRef, gotoBookmark): 
+	* Kernel.C (dispatch): remove verbose argument
+
+	* ControlCommandBuffer.C (dispatch): set origin of the lfun to
+	COMMANDBUFFER instead of using the old verbose argument to dispatch
+
 2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ControlInclude.C: s/getExtFromContents/getFormatFromContents/

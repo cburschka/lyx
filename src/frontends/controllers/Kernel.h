@@ -37,10 +37,8 @@ public:
 	 *  the "gateway" by which the dialog can send a request (of a
 	 *  change in the data, for more information) to the kernel.
 	 *  \param fr is the encoding of the request.
-	 *  \param verbose is set to true if the completed action should
-	 *  be displayed in the minibuffer.
 	 */
-	void dispatch(FuncRequest const & fr, bool verbose = false) const;
+	void dispatch(FuncRequest const & fr) const;
 
 	/** The dialog has received a request from the user
 	 *  (who pressed the "Restore" buuton) to update contents.

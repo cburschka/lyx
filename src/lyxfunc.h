@@ -42,7 +42,7 @@ public:
 	explicit LyXFunc(LyXView *);
 
 	/// LyX dispatcher, executes lyx actions.
-	void dispatch(FuncRequest const &, bool verbose = false);
+	void dispatch(FuncRequest const &);
 
 	/// return the status bar state string
 	std::string const viewStatusMessage();
@@ -103,7 +103,7 @@ private:
 
 	/// send a post-dispatch status message
 	void sendDispatchMessage(std::string const & msg,
-		FuncRequest const & ev, bool verbose);
+		FuncRequest const & ev);
 
 	// I think the following should be moved to BufferView. (Asger)
 	///

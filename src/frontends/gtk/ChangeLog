@@ -1,3 +1,9 @@
+2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* GToolbar.C (selected, clicked): 
+	* GMenubar.C (onCommandActivate): do not use the verbose argument
+	to dispatch
+
 2004-11-04  John Spray  <spray_john@users.sourceforge.net>
 
 	* GWorkArea.C: convert GdkEventButton->state from

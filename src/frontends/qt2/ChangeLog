@@ -1,3 +1,8 @@
+2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLToolbar.C (activated, clicked): 
+	* QtView.C (activated): do not use the verbose argument to dispatch
+
 2004-11-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QPrefsDialog.C (new_format(), remove_format()): fix crash when 

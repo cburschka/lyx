@@ -155,9 +155,9 @@ void QLayoutBox::selected(const QString & str)
 		string const & name = (*it)->name();
 		// Yes, the _() is correct
 		if (_(name) == sel) {
-			owner_.getLyXFunc()
-				.dispatch(FuncRequest(LFUN_LAYOUT, name),
-					  true);
+			FuncRequest const func(LFUN_LAYOUT, name, 
+					       FuncRequest::UI);
+			owner_.getLyXFunc().dispatch(func);
 			return;
 		}
 	}
@@ -261,7 +261,7 @@ void QLToolbar::clicked()
 	ButtonMap::const_iterator it = map_.find(button);
 
 	if (it != map_.end())
-		owner_.getLyXFunc().dispatch(it->second, true);
+		owner_.getLyXFunc().dispatch(it->second);
 	else
 		lyxerr << "non existent tool button selected !" << endl;
 }

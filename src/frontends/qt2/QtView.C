@@ -140,7 +140,7 @@ void QtView::update_view_state()
 
 void QtView::activated(FuncRequest const & func)
 {
-	getLyXFunc().dispatch(func, true);
+	getLyXFunc().dispatch(func);
 }
 
 

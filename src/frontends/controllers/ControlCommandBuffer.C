@@ -130,7 +130,9 @@ void ControlCommandBuffer::dispatch(string const & str)
 
 	history_.push_back(str);
 	history_pos_ = history_.end();
-	lv_.getLyXFunc().dispatch(lyxaction.lookupFunc(str), true);
+	FuncRequest func = lyxaction.lookupFunc(str);
+	func.origin = FuncRequest::COMMANDBUFFER;
+	lv_.getLyXFunc().dispatch(func);
 }
 
 } // namespace frontend

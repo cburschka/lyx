@@ -207,6 +207,7 @@ void ToolbarBackend::add(Toolbar & tb,
 			 FuncRequest const & func, string const & tooltip)
 {
 	tb.items.push_back(make_pair(func, tooltip));
+	tb.items.back().first.origin = FuncRequest::UI;
 }
 
 

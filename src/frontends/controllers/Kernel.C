@@ -30,9 +30,9 @@ Kernel::Kernel(LyXView & lyxview)
 {}
 
 
-void Kernel::dispatch(FuncRequest const & fr, bool verbose) const
+void Kernel::dispatch(FuncRequest const & fr) const
 {
-	lyxview_.getLyXFunc().dispatch(fr, verbose);
+	lyxview_.getLyXFunc().dispatch(fr);
 }
 
 

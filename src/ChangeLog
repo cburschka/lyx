@@ -1,3 +1,17 @@
+2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (dispatch): remove the verbose argument
+	(sendDispatchMessage): ditto. Use the origin of the FuncRequest
+	instead
+
+	* kbmap.C (defkey): set the origin of func to KEYBOARD
+
+	* MenuBackend.C (MenuItem): 
+	* ToolbarBackend.C (add): set the origin of func to UI
+
+	* funcrequest.[Ch]: add origin member, which indicates which part
+	of LyX requests an action
+
 2004-11-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* converter.C (move): don't lie in the error message

@@ -400,7 +400,7 @@ void XFormsMenubar::MenuCallback(FL_OBJECT * ob, long button)
 		// If the action value is too low, then it is not a
 		// valid action, but something else.
 		if (choice >= action_offset) {
-			view->getLyXFunc().dispatch(funcs[choice - action_offset], true);
+			view->getLyXFunc().dispatch(funcs[choice - action_offset]);
 		} else {
 			lyxerr[Debug::GUI]
 				<< "MenuCallback: ignoring bogus action "

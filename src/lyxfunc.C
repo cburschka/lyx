@@ -588,7 +588,7 @@ void loadTextclass(string const & name)
 } //namespace anon
 
 
-void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
+void LyXFunc::dispatch(FuncRequest const & cmd)
 {
 	string const argument = cmd.argument;
 	kb_action const action = cmd.action;
@@ -1463,17 +1463,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		if (view()->cursor().inTexted()) {
 			view()->owner()->updateLayoutChoice();
-			sendDispatchMessage(getMessage(), cmd, verbose);
+			sendDispatchMessage(getMessage(), cmd);
 		}
 	}
 }
 
 
-void LyXFunc::sendDispatchMessage(string const & msg,
-				  FuncRequest const & cmd, bool verbose)
+void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 {
 	owner->updateMenubar();
 	owner->updateToolbars();
+
+	const bool verbose = (cmd.origin == FuncRequest::UI
+			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
 	if (cmd.action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;

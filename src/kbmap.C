@@ -255,6 +255,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 					it->table.reset();
 				}
 				it->func = func;
+				it->func.origin = FuncRequest::KEYBOARD;
 				return;
 			} else if (!it->table.get()) {
 				lyxerr << "Error: New binding for '" << seq->print()

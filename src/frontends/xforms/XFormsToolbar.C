@@ -276,7 +276,7 @@ void C_ToolbarCB(FL_OBJECT * ob, long ac)
 
 	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
 	XFormsView & owner = ptr->owner_;
-	owner.getLyXFunc().dispatch(ptr->funcs[ac], true);
+	owner.getLyXFunc().dispatch(ptr->funcs[ac]);
 }
 
 } // extern "C"
@@ -528,9 +528,9 @@ void XLayoutBox::selected()
 	for (; it != end; ++it) {
 		string const & name = (*it)->name();
 		if (_(name) == layoutguiname) {
-			owner_.getLyXFunc()
-				.dispatch(FuncRequest(LFUN_LAYOUT, name),
-					  true);
+			FuncRequest const func(LFUN_LAYOUT, name, 
+					       FuncRequest::UI);
+			owner_.getLyXFunc().dispatch(func);
 			return;
 		}
 	}
