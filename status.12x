@@ -57,7 +57,8 @@ What's new
 - fix bug with citation keys that contain spaces (this was a new bug
   in 1.2.1)
 
-- fix bugs with handling of EPSI files (epsi handling was new in 1.2.1)
+- remove special handling of EPSI files, because it caused more
+  problems than it fixed (EPSI handling was new in 1.2.1)
 
 - fix crash with undo
 

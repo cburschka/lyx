@@ -387,13 +387,6 @@ case $TOPNG in
     jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
 esac
 
-SEARCH_PROG([for an EPSI -> EPS/XPM converter], EPS2EPS, eps2eps)
-if test "$EPS2EPS" = "eps2eps"; then
-    epsi_to_eps="eps2eps \$\$i \$\$o"
-    epsi_to_xpm="eps2eps -sOutputFile=- \$\$i dummy.eps | convert - \$\$o"
-fi
-
-
 SEARCH_PROG([for an Image -> XPM converter], TOXPM, convert)
 if test "$TOXPM" = "convert"; then
   gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
@@ -504,7 +497,6 @@ cat >$outfile <<EOF
 \\Format bmp      bmp	BMP		""
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
-\\Format epsi     epsi  EPSI		""
 \\Format fax	  ""	Fax		""
 \\Format fig	  fig	XFig		""
 \\Format fits     fits	FITS		""
@@ -554,7 +546,6 @@ cat >$outfile <<EOF
 \\converter word latex "$word_to_latex_command" ""
 
 \\converter bmp  eps "$bmp_to_eps" ""
-\\converter epsi eps "$epsi_to_eps" ""
 \\converter fits  eps "$fits_to_eps" ""
 \\converter fig  eps "$fig_to_eps" ""
 \\converter gif  eps "$gif_to_eps" ""
@@ -576,20 +567,17 @@ cat >$outfile <<EOF
 
 \\converter gif  png "$gif_to_png" ""
 \\converter eps  png "$eps_to_png" ""
-\\converter epsi png "$eps_to_png" ""
 \\converter jpg  png "$jpg_to_png" ""
 
 \\converter fig  xpm "$fig_to_xpm" ""
 \\converter gif  xpm "$gif_to_xpm" ""
 \\converter eps  xpm "$eps_to_xpm" ""
-\\converter epsi xpm "$epsi_to_xpm" ""
 \\converter jpg  xpm "$jpg_to_xpm" ""
 \\converter png  xpm "$png_to_xpm" ""
 \\converter ps  xpm "$ps_to_xpm" ""
 \\converter xbm  xpm "$xbm_to_xpm" ""
 
 \\converter eps  pdf "$eps_to_pdf" ""
-\\converter epsi pdf "$eps_to_pdf" ""
 
 \\converter agr  eps "$agr_to_eps" ""
 \\converter agr  pdf "$agr_to_pdf" ""
