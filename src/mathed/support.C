@@ -591,6 +591,29 @@ int mathed_string_width(MathTextCodes type, MathMetricsInfo const & size,
 }
 
 
+int mathed_string_ascent(MathTextCodes type, MathMetricsInfo const & size,
+	string const & s)
+{
+	LyXFont const font = whichFont(type, size);
+	int asc = 0;
+	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
+		asc = max(asc, lyxfont::ascent(*it, font));
+	return asc;
+}
+
+
+int mathed_string_descent(MathTextCodes type, MathMetricsInfo const & size,
+	string const & s)
+{
+	LyXFont const font = whichFont(type, size);
+	int des = 0;
+	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
+		des = max(des, lyxfont::descent(*it, font));
+	return des;
+}
+
+
+
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	const string & name)
 {
@@ -714,3 +737,22 @@ void math_font_max_dim(MathTextCodes code, MathMetricsInfo const & siz,
 char const * latex_mathspace[] = {
 	"!", ",", ":", ";", "quad", "qquad"
 };
+
+
+char const * math_font_name(MathTextCodes code)
+{
+	static char const * theFontNames[] = {
+		"mathrm",
+		"mathcal",
+		"mathbf",
+		"mathbb",
+		"mathsf",
+		"mathtt",
+		"mathit",
+		"textrm"
+	};
+
+	if (code >= LM_TC_RM && code <= LM_TC_TEXTRM) 
+		return theFontNames[code - LM_TC_RM];
+	return 0;
+}

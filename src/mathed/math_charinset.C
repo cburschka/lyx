@@ -13,22 +13,6 @@
 #include "debug.h"
 
 
-namespace {
-
-char const * math_font_name[] = {
-	"mathrm",
-	"mathcal",
-	"mathbf",
-	"mathbb",
-	"mathsf",
-	"mathtt",
-	"mathit",
-	"textrm"
-};
-
-}
-
-
 MathCharInset::MathCharInset(char c)
 	: char_(c), code_(nativeCode(c))
 {
@@ -91,14 +75,14 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 
 void MathCharInset::writeHeader(std::ostream & os) const
 {
-	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM) 
-		os << '\\' << math_font_name[code_ - LM_TC_RM] << '{';
+	if (math_font_name(code_))
+		os << '\\' << math_font_name(code_) << '{';
 }
 
 
 void MathCharInset::writeTrailer(std::ostream & os) const
 {
-	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM)
+	if (math_font_name(code_))
 		os << '}';
 }
 

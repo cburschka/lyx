@@ -28,6 +28,8 @@ libmathed_la_SOURCES = \
 	math_braceinset.h \
 	math_boxinset.C \
 	math_boxinset.h \
+	math_binaryopinset.C \
+	math_binaryopinset.h \
 	math_charinset.C \
 	math_charinset.h \
 	math_cursor.C \
@@ -94,6 +96,8 @@ libmathed_la_SOURCES = \
 	math_sqrtinset.h \
 	math_stackrelinset.C \
 	math_stackrelinset.h \
+	math_stringinset.C \
+	math_stringinset.h \
 	math_symbolinset.C \
 	math_symbolinset.h \
 	support.C \

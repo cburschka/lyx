@@ -5,6 +5,7 @@
 #include "math_inset.h"
 #include "math_charinset.h"
 #include "math_scriptinset.h"
+#include "math_stringinset.h"
 #include "debug.h"
 #include "array.h"
 #include "mathed/support.h"
@@ -171,24 +172,37 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 }
 
 
+MathArray MathArray::glueChars() const
+{
+	MathArray ar;
+	const_iterator it = begin();
+	while (it != end()) {
+		if (it->nucleus() && it->nucleus()->asCharInset()) {
+			string s = charSequence(it, end());
+			MathTextCodes c = it->nucleus()->asCharInset()->code();
+			ar.push_back(MathAtom(new MathStringInset(s, c)));
+			it += s.size();
+		} else {
+			ar.push_back(*it);
+			++it;
+		}
+	}
+	return ar;
+}
+
+
 void MathArray::write(MathWriteInfo & wi) const
+{
+	glueChars().write1(wi);
+}
+
+
+void MathArray::write1(MathWriteInfo & wi) const
 {
 	for (const_iterator it = begin(); it != end(); ++it) {	
 		MathInset * p = it->nucleus();
 		if (!p)
 			continue;
-
-/*
-		if (p->asCharInset()) {
-			MathCharInset const * c = p->asCharInset();
-			// special handling for character sequences with the same code
-			string s = charSequence(it, end());
-			c->writeHeader(os);
-			os << s;
-			c->writeTrailer(os);
-			it += s.size() - 1;
-		} else
-*/
 		if (MathScriptInset const * q = asScript(it)) {
 			q->write(p, wi);
 			++it;

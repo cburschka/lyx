@@ -97,8 +97,10 @@ public:
 	MathAtom & at(size_type pos);
 	///
 	MathAtom const & at(size_type pos) const;
-	///
+	/// glue chars if necessary
 	void write(MathWriteInfo & os) const;
+	/// raw write 
+	void write1(MathWriteInfo & os) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
@@ -113,6 +115,8 @@ public:
 	iterator end();
 	///
 	MathScriptInset const * asScript(const_iterator it) const;
+	/// glues chars with the same attributes into MathStringInsets
+	MathArray glueChars() const;
 private:
 	/// Buffer
 	buffer_type bf_;

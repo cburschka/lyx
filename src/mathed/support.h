@@ -54,6 +54,7 @@ void smallerStyleScript(MathMetricsInfo &);
 // decrease math size for fractions
 void smallerStyleFrac(MathMetricsInfo & st);
 
+char const * math_font_name(MathTextCodes type);
 
 
 #endif
