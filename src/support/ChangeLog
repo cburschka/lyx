@@ -1,3 +1,8 @@
+2001-12-03  Ben Stanley <bds02@uow.edu.au>
+
+	* lyxsum.C: Added mmap version of CRC and made it selected 
+	by default where available. Used process_block for crc for speedup.
+	
 2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* filetools.C: more robust failure for DirList()

@@ -10,13 +10,57 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <iterator>
 #include <algorithm>
 #include <boost/crc.hpp>
 
 #include "support/lyxlib.h"
 
+
+// Various implementations of lyx::sum(), depending on what methods
+// are available. Order is faster to slowest.
+#if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
+#ifdef WITH_WARNINGS
+#warning lyx::sum() using mmap (lightning fast)
+#endif
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/mman.h>
+
+unsigned long lyx::sum(string const & file)
+{
+	int fd = open(file.c_str(), O_RDONLY);
+	if(!fd)
+		return 0;
+	
+	struct stat info;
+	fstat(fd, &info);
+	
+	void * mm = mmap(0, info.st_size, PROT_READ,
+			 MAP_PRIVATE, fd, 0);
+	if (mm == MAP_FAILED) {
+		close(fd);
+		return 0;
+	}
+	
+	char * beg = static_cast<char*>(mm);
+	char * end = beg + info.st_size;
+	
+	boost::crc_32_type crc;
+	crc.process_block(beg, end);
+	unsigned long result = crc.checksum();
+	
+	munmap(mm, info.st_size);
+	close(fd);
+	
+	return result;
+}
+#else // No mmap
+
+#include <fstream>
+#include <iterator>
 
 namespace {
 
@@ -31,23 +75,34 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 
 } // namespace
 
-
-// And this would be the file interface.
+#if HAVE_DECL_ISTREAMBUF_ITERATOR
+#ifdef WITH_WARNINGS
+#warning lyx::sum() using istreambuf_iterator (fast)
+#endif
 unsigned long lyx::sum(string const & file)
 {
 	std::ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	
-#ifdef HAVE_DECL_ISTREAMBUF_ITERATOR
-	// This is a lot faster...
 	std::istreambuf_iterator<char> beg(ifs);
 	std::istreambuf_iterator<char> end;
+	
+	return do_crc(beg,end);
+}
 #else
-	// than this.
+#ifdef WITH_WARNINGS
+#warning lyx::sum() using istream_iterator (slow as a snail)
+#endif
+unsigned long lyx::sum(string const & file)
+{
+	std::ifstream ifs(file.c_str());
+	if (!ifs) return 0;
+	
 	ifs.unsetf(std::ios::skipws);
 	std::istream_iterator<char> beg(ifs);
 	std::istream_iterator<char> end;
-#endif
-
-	return do_crc(beg, end);
+	
+	return do_crc(beg,end);
 }
+#endif
+#endif // mmap
