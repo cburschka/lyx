@@ -34,11 +34,17 @@ public:
 	/// insert a math symbol into the doc
 	void insert_symbol(string const & name);
  
+	/// insert a cube root
+	void insertCubeRoot();
+ 
 	/// add a subscript
 	void subscript();
 
 	/// add a superscript
 	void superscript();
+ 
+	/// switch between display and inline
+	void toggleDisplay();
  
 private:
 	/// Apply changes

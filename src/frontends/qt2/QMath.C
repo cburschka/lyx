@@ -72,3 +72,17 @@ void QMath::insert_symbol(string const & name)
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
 }
+ 
+
+void QMath::insertCubeRoot()
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, "\\root"));
+	current_view->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "3"));
+	current_view->owner()->dispatch(FuncRequest(LFUN_RIGHT));
+}
+
+
+void QMath::toggleDisplay()
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+}

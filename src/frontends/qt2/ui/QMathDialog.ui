@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>331</width>
-            <height>356</height>
+            <width>319</width>
+            <height>357</height>
         </rect>
     </property>
     <property stdset="1">
@@ -38,7 +38,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout15</cstring>
+                <cstring>Layout14</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -53,7 +53,7 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout14</cstring>
+                        <cstring>Layout13</cstring>
                     </property>
                     <vbox>
                         <property stdset="1">
@@ -68,9 +68,9 @@
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout13</cstring>
+                                <cstring>Layout9</cstring>
                             </property>
-                            <grid>
+                            <hbox>
                                 <property stdset="1">
                                     <name>margin</name>
                                     <number>0</number>
@@ -79,11 +79,11 @@
                                     <name>spacing</name>
                                     <number>6</number>
                                 </property>
-                                <widget row="2"  column="0" >
+                                <widget>
                                     <class>QPushButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>delimitersPB</cstring>
+                                        <cstring>sqrtPB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>text</name>
@@ -95,14 +95,14 @@
                                     </property>
                                     <property>
                                         <name>toolTip</name>
-                                        <string>Show delimiter and bracket dialog</string>
+                                        <string>Insert root</string>
                                     </property>
                                 </widget>
-                                <widget row="1"  column="1" >
+                                <widget>
                                     <class>QPushButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>subscriptPB</cstring>
+                                        <cstring>spacePB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>text</name>
@@ -114,10 +114,10 @@
                                     </property>
                                     <property>
                                         <name>toolTip</name>
-                                        <string>Subscript</string>
+                                        <string>Insert spacing</string>
                                     </property>
                                 </widget>
-                                <widget row="2"  column="1" >
+                                <widget>
                                     <class>QPushButton</class>
                                     <property stdset="1">
                                         <name>name</name>
@@ -133,14 +133,14 @@
                                     </property>
                                     <property>
                                         <name>toolTip</name>
-                                        <string>Show text style dialog</string>
+                                        <string>Set limits style</string>
                                     </property>
                                 </widget>
-                                <widget row="1"  column="0" >
+                                <widget>
                                     <class>QPushButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>superscriptPB</cstring>
+                                        <cstring>fontPB</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>text</name>
@@ -152,101 +152,18 @@
                                     </property>
                                     <property>
                                         <name>toolTip</name>
-                                        <string>Superscript</string>
+                                        <string>Set math font</string>
                                     </property>
                                 </widget>
-                                <widget row="0"  column="1" >
-                                    <class>QPushButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>fracPB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>1</hsizetype>
-                                            <vsizetype>1</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>pixmap</name>
-                                        <pixmap>image4</pixmap>
-                                    </property>
-                                    <property>
-                                        <name>toolTip</name>
-                                        <string>Insert fraction (\frac)</string>
-                                    </property>
-                                </widget>
-                                <widget row="3"  column="1" >
-                                    <class>QPushButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>matrixPB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>pixmap</name>
-                                        <pixmap>image5</pixmap>
-                                    </property>
-                                    <property>
-                                        <name>toolTip</name>
-                                        <string>Show math matrix dialog</string>
-                                    </property>
-                                </widget>
-                                <widget row="3"  column="0" >
-                                    <class>QPushButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>spacePB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>pixmap</name>
-                                        <pixmap>image6</pixmap>
-                                    </property>
-                                    <property>
-                                        <name>toolTip</name>
-                                        <string>Insert spacing</string>
-                                    </property>
-                                </widget>
-                                <widget row="0"  column="0" >
-                                    <class>QPushButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>sqrtPB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string></string>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>pixmap</name>
-                                        <pixmap>image7</pixmap>
-                                    </property>
-                                    <property>
-                                        <name>toolTip</name>
-                                        <string>Insert square root (\sqrt)</string>
-                                    </property>
-                                </widget>
-                            </grid>
+                            </hbox>
                         </widget>
                         <widget>
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout2</cstring>
+                                <cstring>Layout12</cstring>
                             </property>
-                            <vbox>
+                            <hbox>
                                 <property stdset="1">
                                     <name>margin</name>
                                     <number>0</number>
@@ -256,46 +173,250 @@
                                     <number>6</number>
                                 </property>
                                 <widget>
-                                    <class>QLabel</class>
+                                    <class>QLayoutWidget</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>functionsLA</cstring>
+                                        <cstring>Layout10</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>&amp;Functions</string>
-                                    </property>
-                                    <property>
-                                        <name>buddy</name>
-                                        <cstring>functionsLB</cstring>
-                                    </property>
+                                    <vbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QLabel</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>functionsLA</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>&amp;Functions</string>
+                                            </property>
+                                            <property>
+                                                <name>buddy</name>
+                                                <cstring>functionsLB</cstring>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QListBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>functionsLB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>7</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>minimumSize</name>
+                                                <size>
+                                                    <width>100</width>
+                                                    <height>100</height>
+                                                </size>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Selection a function or operator to insert</string>
+                                            </property>
+                                        </widget>
+                                    </vbox>
                                 </widget>
                                 <widget>
-                                    <class>QListBox</class>
+                                    <class>QLayoutWidget</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>functionsLB</cstring>
+                                        <cstring>Layout18</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>delimitersPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image4</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Show delimiter and bracket dialog</string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>matrixPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image5</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Show math matrix dialog</string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>subscriptPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image6</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Subscript</string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>superscriptPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image7</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Superscript</string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>fracPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>1</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image8</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Insert fraction (\frac)</string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>equationPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>1</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image9</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Toggle between display mode</string>
+                                            </property>
+                                        </widget>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer4</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Vertical</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>20</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                    </vbox>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer5</cstring>
                                     </property>
                                     <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>1</hsizetype>
-                                            <vsizetype>7</vsizetype>
-                                        </sizepolicy>
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
                                     </property>
                                     <property stdset="1">
-                                        <name>minimumSize</name>
-                                        <size>
-                                            <width>100</width>
-                                            <height>100</height>
-                                        </size>
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
                                     </property>
                                     <property>
-                                        <name>toolTip</name>
-                                        <string>Selection a function or operator to insert</string>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
                                     </property>
-                                </widget>
-                            </vbox>
+                                </spacer>
+                            </hbox>
                         </widget>
                     </vbox>
                 </widget>
@@ -308,7 +429,7 @@
                     <property stdset="1">
                         <name>sizePolicy</name>
                         <sizepolicy>
-                            <hsizetype>5</hsizetype>
+                            <hsizetype>7</hsizetype>
                             <vsizetype>3</vsizetype>
                         </sizepolicy>
                     </property>
@@ -612,29 +733,29 @@
             <hordata>7</hordata>
             <verdata>7</verdata>
         </sizepolicy>
-        <pixmap>image8</pixmap>
+        <pixmap>image10</pixmap>
     </customwidget>
 </customwidgets>
 <images>
     <image>
         <name>image0</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c8135756564608813948e289608026ae8710d7c31087e0a12b8ec55fb8c2017bb851215e6aadb900c1776f11</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c81757460022c5f5901858c431ccd7d34b0403c2e220bb20e2104c481ce24a6ce27ab8c47198439a3bc9096722c56badb90001e46d10</data>
     </image>
     <image>
         <name>image1</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402a82cae0c0658c4f560c48088278200367120499c38c45f18e25040b238ba7b3000c9e2b5d65c00f2a86971</data>
+        <data format="XPM.GZ" length="554">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade65232325000210543251d2e253d856405bffcbc54105b19c8564e4b330002b014163052c59595952102500605e270408c38cdfc556bcd050072466219</data>
     </image>
     <image>
         <name>image2</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc40220e2ca6000168032d1c5c1249238420442a0a95786b150c5117a50cdc1218e1026208ecb5f7a7a898958c51313a112300743c441826009685840c5216a4124ba3804a0fb17b77a32c5e1818adbbfb5d65c00748269b8</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc402f08a2bc3819e5e2218101287ea068b8331c47cb8049a389204b239c81268e2c846a1ba1f5582a0380e7370d88bc39d38fc852b1c480d4f5cf1824dbcd69a0b00d9cc7093</data>
     </image>
     <image>
         <name>image3</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc40250c59541009b381413144f04032ce27a6082647174f740c531dc4f737188bf30c431c08089d75a7301006ff86b61</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc40220e2ca6000168032d1c5c1249238420442a0a95786b150c5117a50cdc1218e1026208ecb5f7a7a898958c51313a112300743c441826009685840c5216a4124ba3804a0fb17b77a32c5e1818adbbfb5d65c00748269b8</data>
     </image>
     <image>
         <name>image4</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc40288105706032ce2708246e238ecc5eace4424408cf850f72f8678ad351700b4f269b9</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c8135756564608813948e289608026ae8710d7c31087e0a12b8ec55fb8c2017bb851215e6aadb900c1776f11</data>
     </image>
     <image>
         <name>image5</name>
@@ -642,14 +763,22 @@
     </image>
     <image>
         <name>image6</name>
-        <data format="XPM.GZ" length="554">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade65232325000210543251d2e253d856405bffcbc54105b19c8564e4b330002b014163052c59595952102500605e270408c38cdfc556bcd050072466219</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402a82cae0c0658c4f560c48088278200367120499c38c45f18e25040b238ba7b3000c9e2b5d65c00f2a86971</data>
     </image>
     <image>
         <name>image7</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c81757460022c5f5901858c431ccd7d34b0403c2e220bb20e2104c481ce24a6ce27ab8c47198439a3bc9096722c56badb90001e46d10</data>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc40250c59541009b381413144f04032ce27a6082647174f740c531dc4f737188bf30c431c08089d75a7301006ff86b61</data>
     </image>
     <image>
         <name>image8</name>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc40288105706032ce2708246e238ecc5eace4424408cf850f72f8678ad351700b4f269b9</data>
+    </image>
+    <image>
+        <name>image9</name>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c814574601d4578f4f3c110cb088c30922c57198438a7b06321c50c56badb90087fe6771</data>
+    </image>
+    <image>
+        <name>image10</name>
         <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
     </image>
 </images>
@@ -665,12 +794,6 @@
         <signal>clicked()</signal>
         <receiver>QMathDialogBase</receiver>
         <slot>accept()</slot>
-    </connection>
-    <connection>
-        <sender>sqrtPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QMathDialogBase</receiver>
-        <slot>sqrtClicked()</slot>
     </connection>
     <connection>
         <sender>fracPB</sender>
@@ -697,22 +820,10 @@
         <slot>delimiterClicked()</slot>
     </connection>
     <connection>
-        <sender>spacePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QMathDialogBase</receiver>
-        <slot>spaceClicked()</slot>
-    </connection>
-    <connection>
         <sender>matrixPB</sender>
         <signal>clicked()</signal>
         <receiver>QMathDialogBase</receiver>
         <slot>matrixClicked()</slot>
-    </connection>
-    <connection>
-        <sender>stylePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QMathDialogBase</receiver>
-        <slot>styleClicked()</slot>
     </connection>
     <connection>
         <sender>functionsLB</sender>
@@ -720,14 +831,18 @@
         <receiver>QMathDialogBase</receiver>
         <slot>functionSelected(const QString &amp;)</slot>
     </connection>
+    <connection>
+        <sender>equationPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QMathDialogBase</receiver>
+        <slot>equationClicked()</slot>
+    </connection>
     <slot access="public">delimiterClicked()</slot>
+    <slot access="public">equationClicked()</slot>
     <slot access="public">expandClicked()</slot>
     <slot access="public">fracClicked()</slot>
     <slot access="public">functionSelected(const QString &amp;)</slot>
     <slot access="public">matrixClicked()</slot>
-    <slot access="public">spaceClicked()</slot>
-    <slot access="public">sqrtClicked()</slot>
-    <slot access="public">styleClicked()</slot>
     <slot access="public">subscriptClicked()</slot>
     <slot access="public">superscriptClicked()</slot>
 </connections>

@@ -17,7 +17,6 @@
 
 class QMath;
 class IconPalette;
-class QPopupMenu;
 
 class QMathDialog : public QMathDialogBase
 {
@@ -32,13 +31,14 @@ public slots:
 	virtual void fracClicked();
 	virtual void functionSelected(const QString &);
 	virtual void matrixClicked();
-	virtual void spaceClicked();
-	virtual void sqrtClicked();
-	virtual void styleClicked();
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
+	virtual void equationClicked();
 	void symbol_clicked(string str);
 	void insertSpace(int id);
+	void insertRoot(int id);
+	void insertStyle(int id);
+	void insertFont(int id);
 
 	/// about to show a symbol panel
 	void showingPanel(int);
@@ -55,9 +55,6 @@ private:
  
 	/// owning form
 	QMath * form_;
-
-	/// menu on click of space
-	QPopupMenu * space_menu_;
 };
 
 #endif // QMATHDIALOG_H

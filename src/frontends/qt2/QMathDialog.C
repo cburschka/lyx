@@ -101,14 +101,43 @@ QMathDialog::QMathDialog(QMath * form)
  
 	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
  
-	space_menu_ = new QPopupMenu(spacePB);
-	space_menu_->insertItem(_("Thin space	\\,"), 1); 
-	space_menu_->insertItem(_("Medium space	\\:"), 2); 
-	space_menu_->insertItem(_("Thick space	\\;"), 3); 
-	space_menu_->insertItem(_("Quadratin space	\\quad"), 4); 
-	space_menu_->insertItem(_("Double quadratin space	\\qquad"), 5); 
-	space_menu_->insertItem(_("Negative space	\\!"), 6);
-	connect(space_menu_, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
+	QPopupMenu * m = new QPopupMenu(spacePB);
+	m->insertItem(_("Thin space	\\,"), 1); 
+	m->insertItem(_("Medium space	\\:"), 2); 
+	m->insertItem(_("Thick space	\\;"), 3); 
+	m->insertItem(_("Quadratin space	\\quad"), 4); 
+	m->insertItem(_("Double quadratin space	\\qquad"), 5); 
+	m->insertItem(_("Negative space	\\!"), 6);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
+	spacePB->setPopup(m);
+
+	m = new QPopupMenu(sqrtPB);
+	m->insertItem(_("Square root	\\sqrt"), 1);
+	m->insertItem(_("Cube root	\\root"), 2);
+	m->insertItem(_("Other root	\\root"), 3);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int))); 
+	sqrtPB->setPopup(m);
+
+	m = new QPopupMenu(stylePB);
+	m->insertItem(_("Display style	\\displaystyle"), 1);
+	m->insertItem(_("Normal text style	\\textstyle"), 2);
+	m->insertItem(_("Script (small) style	\\scriptstyle"), 3);
+	m->insertItem(_("Scriptscript (smaller) style	\\scriptscriptstyle"), 4);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertStyle(int)));
+	stylePB->setPopup(m);
+
+	m = new QPopupMenu(fontPB);
+	m->insertItem(_("Roman	\\mathrm"), 1);
+	m->insertItem(_("Bold	\\mathbf"), 2);
+	m->insertItem(_("San serif	\\mathsf"), 3);
+	m->insertItem(_("Italic	\\mathit"), 4);
+	m->insertItem(_("Typewriter	\\mathtt"), 5);
+	m->insertItem(_("Blackboard	\\mathbb"), 6);
+	m->insertItem(_("Fraktur	\\mathfrak"), 7);
+	m->insertItem(_("Calligraphic	\\mathcal"), 8);
+	m->insertItem(_("Normal text mode	\\textrm"), 9);
+	connect(m, SIGNAL(activated(int)), this, SLOT(insertFont(int)));
+	fontPB->setPopup(m);
 }
 
 
@@ -147,21 +176,6 @@ void QMathDialog::addPanel(int num)
 }
 
  
-void QMathDialog::insertSpace(int id)
-{
-	string str;
-	switch (id) {
-		case 1: str = ","; break;
-		case 2: str = ":"; break;
-		case 3: str = ";"; break;
-		case 4: str = "quad"; break;
-		case 5: str = "qquad"; break;
-		case 6: str = "!"; break;
-	}
-	form_->insert_symbol(str);
-}
-
- 
 void QMathDialog::symbol_clicked(string str)
 {
 	form_->insert_symbol(str);
@@ -174,12 +188,6 @@ void QMathDialog::fracClicked()
 }
  
 
-void QMathDialog::sqrtClicked()
-{
-	form_->insert_symbol("sqrt");
-}
-
- 
 void QMathDialog::delimiterClicked()
 {
 }
@@ -209,14 +217,9 @@ void QMathDialog::matrixClicked()
 }
 
  
-void QMathDialog::spaceClicked()
+void QMathDialog::equationClicked()
 {
-	space_menu_->exec(QCursor::pos());
-}
-
- 
-void QMathDialog::styleClicked()
-{
+	form_->toggleDisplay();
 }
 
  
@@ -229,4 +232,66 @@ void QMathDialog::subscriptClicked()
 void QMathDialog::superscriptClicked()
 {
 	form_->superscript();
+}
+
+
+void QMathDialog::insertSpace(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = ","; break;
+		case 2: str = ":"; break;
+		case 3: str = ";"; break;
+		case 4: str = "quad"; break;
+		case 5: str = "qquad"; break;
+		case 6: str = "!"; break;
+	}
+	form_->insert_symbol(str);
+}
+
+ 
+void QMathDialog::insertRoot(int id)
+{
+	switch (id) {
+		case 1:
+			form_->insert_symbol("sqrt");
+			break;
+		case 2:
+			form_->insertCubeRoot();
+			break;
+		case 3:
+			form_->insert_symbol("root");
+			break;
+	}
+}
+
+ 
+void QMathDialog::insertStyle(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = "displaystyle"; break;
+		case 2: str = "textstyle"; break;
+		case 3: str = "scriptstyle"; break;
+		case 4: str = "scriptscriptstyle"; break;
+	} 
+	form_->insert_symbol(str);
+}
+
+ 
+void QMathDialog::insertFont(int id)
+{
+	string str;
+	switch (id) {
+		case 1: str = "mathrm"; break;
+		case 2: str = "mathbf"; break;
+		case 3: str = "mathsf"; break;
+		case 4: str = "mathit"; break;
+		case 5: str = "mathtt"; break;
+		case 6: str = "mathbb"; break;
+		case 7: str = "mathfrak"; break;
+		case 8: str = "mathcal"; break;
+		case 9: str = "textrm"; break;
+	}
+	form_->insert_symbol(str);
 }
