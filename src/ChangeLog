@@ -1,3 +1,8 @@
+2003-09-02  John Levon  <levon@movementarian.org>
+
+	* text2.C: simplification of cursorEnd(), including partial
+	fix for bug 1376
+
 2003-09-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C (readFile): add a space

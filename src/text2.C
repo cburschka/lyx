@@ -675,21 +675,12 @@ void LyXText::cursorEnd()
 		return;
 
 	RowList::iterator rit = cursorRow();
-	RowList::iterator next_rit = boost::next(rit);
-	RowList::iterator end = boost::next(rit);
 	ParagraphList::iterator pit = cursor.par();
-	pos_type last_pos = lastPos(*pit, rit);
-
-	if (next_rit == end) {
-		++last_pos;
-	} else {
-		if (pit->empty() ||
-		    (pit->getChar(last_pos) != ' ' && !pit->isNewline(last_pos))) {
-			++last_pos;
-		}
-	}
-
-	setCursor(pit, last_pos);
+	pos_type pos = lastPos(*pit, rit);
+	/* cursor should be before a hard newline only */
+	if (!pit->isNewline(pos))
+		++pos;
+	setCursor(pit, pos);
 }
 
 
