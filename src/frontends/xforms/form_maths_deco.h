@@ -5,7 +5,7 @@
 #define FD_form_maths_deco_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseDeprecatedApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 
 
@@ -14,8 +14,9 @@ struct FD_form_maths_deco {
 	~FD_form_maths_deco();
 
 	FL_FORM *form;
-	FL_OBJECT *bmtable;
+	FL_OBJECT *bmtable_deco1;
 	FL_OBJECT *button_cancel;
+	FL_OBJECT *bmtable_deco2;
 };
 
 #endif /* FD_form_maths_deco_h_ */

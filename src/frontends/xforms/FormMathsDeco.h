@@ -35,6 +35,8 @@ private:
 	virtual void build();
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
+	/// Input selection:
+	virtual bool FormMathsDeco::input(FL_OBJECT *, long);
 
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
@@ -44,6 +46,10 @@ private:
 	
 	// Real GUI implementation
 	boost::scoped_ptr<FD_form_maths_deco> dialog_;
+
+	/// Current choice
+	short deco_;
+
 };
 
 #endif //  FORM_MATHSDECO_H

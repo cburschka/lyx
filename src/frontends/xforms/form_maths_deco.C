@@ -23,15 +23,18 @@ FD_form_maths_deco * FormMathsDeco::build_maths_deco()
   FL_OBJECT *obj;
   FD_form_maths_deco *fdui = new FD_form_maths_deco;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 160, 150);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 160, 257);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 160, 150, "");
-  fdui->bmtable = obj = fl_add_bmtable(FL_PUSH_BUTTON, 10, 10, 140, 90, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 160, 257, "");
+  fdui->bmtable_deco1 = obj = fl_add_bmtable(FL_PUSH_BUTTON, 10, 10, 140, 90, "");
     fl_set_object_lcolor(obj, FL_BLUE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 30, 110, 100, 30, _("Close"));
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 28, 214, 100, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+  fdui->bmtable_deco2 = obj = fl_add_bmtable(FL_PUSH_BUTTON, 20, 110, 120, 90, "");
+    fl_set_object_lcolor(obj, FL_BLUE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

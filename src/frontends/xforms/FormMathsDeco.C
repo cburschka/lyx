@@ -25,7 +25,10 @@
 
 static char const * decoration_names[] = {
 	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
-	"overline", "underbrace", "underline"
+	"overline", "underbrace", "underline",
+	"hat", "acute", "bar", "dot",
+	"check", "grave", "vec", "ddot", 
+	"breve", "tilde"
 };
 
 
@@ -33,7 +36,7 @@ static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char co
  
 FormMathsDeco::FormMathsDeco(LyXView * lv, Dialogs * d,
 			     FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Decorations"), false)
+	: FormMathsSub(lv, d, p, _("Maths Decorations & Accents"), false)
 {}
 
 
@@ -49,21 +52,37 @@ void FormMathsDeco::build()
 {
 	dialog_.reset(build_maths_deco());
 
-	fl_set_bmtable_data(dialog_->bmtable, 3, 3,
-			    deco_width, deco_height, deco_bits);
-	fl_set_bmtable_maxitems(dialog_->bmtable, 8);
+	fl_set_bmtable_data(dialog_->bmtable_deco1, 3, 3,
+			    deco1_width, deco1_height, deco1_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_deco1, 8);
+
+	fl_set_bmtable_data(dialog_->bmtable_deco2, 4, 3,
+			    deco2_width, deco2_height, deco2_bits);
+	fl_set_bmtable_maxitems(dialog_->bmtable_deco2, 10);
 
 	bc().setCancel(dialog_->button_cancel);
-	bc().addReadOnly(dialog_->bmtable);
+	bc().addReadOnly(dialog_->bmtable_deco1);
+	bc().addReadOnly(dialog_->bmtable_deco2);
 }
 
 
 void FormMathsDeco::apply()
 {
-	int const i = fl_get_bmtable(dialog_->bmtable);
+	//int const i = fl_get_bmtable(dialog_->bmtable_deco1);
  
-	if (i >= nr_decoration_names)
+	if (deco_ >= nr_decoration_names)
 		return;
  
-	parent_.insertSymbol(decoration_names[i]);
+	parent_.insertSymbol(decoration_names[deco_]);
 }
+
+bool FormMathsDeco::input(FL_OBJECT * ob, long)
+{
+	deco_ = fl_get_bmtable(ob);
+	if (deco_ < 0) return false;
+	//if (ob == dialog_->bmtable_deco1) deco_ += 0; 
+	if (ob == dialog_->bmtable_deco2) deco_ += 8;
+	apply();
+	return true;
+}
+				

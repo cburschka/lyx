@@ -10,13 +10,13 @@ SnapGrid: 2
 =============== FORM ===============
 Name: form_maths_deco
 Width: 160
-Height: 150
-Number of Objects: 3
+Height: 257
+Number of Objects: 4
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 160 150
+box: 0 0 160 257
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -45,14 +45,14 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: bmtable
-callback: C_FormBaseDeprecatedApplyCB
-argument:
+name: bmtable_deco1
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 30 110 100 30
+box: 28 214 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -65,7 +65,25 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
 callback: C_FormBaseDeprecatedCancelCB
-argument
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: PUSH_BUTTON
+box: 20 110 120 90
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLUE
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: bmtable_deco2
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 ==============================
 create_the_forms
