@@ -95,8 +95,6 @@ void QMinipage::update_contents()
 	LyXLength len(params.width);
 	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
-	lyxerr << "width " << numtostr(len.value())
-	       << " units " << len.unit() << std::endl;
 
 	int item = 0;
 	switch (params.pos) {
