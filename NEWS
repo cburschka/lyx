@@ -47,6 +47,8 @@ The math editor has been mostly rewritten. This begun as a general
 cleanup, but it turns out that many new features happened in this
 process, among which:
 
+- many of the known bugs or annoyances in mathed have been fixed.
+
 - possibility to display all standard latex and amsmath symbols (and
   also the \mathcal, \mathbb, and \mathfrak fonts)as long as the
   relevant fonts have been made available to the X server
@@ -67,8 +69,6 @@ process, among which:
 - Improvements to math text mode
 
 - (Better) support for nested macros 
-
-- (Better) support for \limits/\nolimits
 
 - Enable size changes to arrays after creation (add/delete rows/columns)
 
