@@ -177,9 +177,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	string command = format->viewer();
 
 	if (format_name == "dvi" &&
-	    prefixIs(frontStrip(command), "xdvi") &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
-		
 		command += " " + lyxrc.view_dvi_paper_option;
 		string paper_size = converters.papersize(buffer);
 		if (paper_size == "letter")

@@ -1,5 +1,9 @@
 2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* converter.C (Formats::view): reverted! Incorrect fix.
+
+2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* converter.C (Formats::view): only output the -paper option
 	if the dvi viewer is xdvi, thereby fixing bug #233429.
 
