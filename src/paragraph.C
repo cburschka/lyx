@@ -1556,7 +1556,7 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 }
 
 
-bool Paragraph::isMultiLingual(BufferParams const & bparams)
+bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 {
 	Language const * doc_language =	bparams.language;
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();

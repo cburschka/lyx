@@ -22,7 +22,7 @@ namespace support {
 class FileName {
 public:
 	FileName();
-	/** \param filename the file in question. Must have an absolute path.
+	/** \param abs_filename the file in question. Must have an absolute path.
 	 *  \param save_abs_path how is the file to be output to file?
 	 */
 	FileName(std::string const & abs_filename, bool save_abs_path = true);

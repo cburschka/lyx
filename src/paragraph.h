@@ -80,7 +80,7 @@ public:
 	void changeLanguage(BufferParams const & bparams,
 			    Language const * from, Language const * to);
 	///
-	bool isMultiLingual(BufferParams const &);
+	bool isMultiLingual(BufferParams const &) const;
 
 	///
 	std::string const asString(Buffer const &,

@@ -142,14 +142,18 @@
                     </property>
                 </widget>
                 <widget row="4"  column="0" >
-                    <class>QCheckBox</class>
+                    <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>tempDirCB</cstring>
+                        <cstring>tempDirLA</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Use temporary directory</string>
+                        <string>&amp;Temporary directory:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>tempDirED</cstring>
                     </property>
                 </widget>
                 <widget row="3"  column="2" >
@@ -251,20 +255,6 @@
         </spacer>
     </vbox>
 </widget>
-<connections>
-    <connection>
-        <sender>tempDirCB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>tempDirED</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>tempDirCB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>tempDirPB</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-</connections>
 <tabstops>
     <tabstop>workingDirED</tabstop>
     <tabstop>workingDirPB</tabstop>
@@ -274,7 +264,6 @@
     <tabstop>backupDirPB</tabstop>
     <tabstop>lyxserverDirED</tabstop>
     <tabstop>lyxserverDirPB</tabstop>
-    <tabstop>tempDirCB</tabstop>
     <tabstop>tempDirED</tabstop>
     <tabstop>tempDirPB</tabstop>
 </tabstops>

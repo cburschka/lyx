@@ -1,3 +1,15 @@
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxrc.C, buffer.C, exporter.C: use always a temp dir, ignore
+	use_tempdir in preferences
+	* buffer.C (readFile), lyxvc.C (getLogFile): check success of
+	tempfile creation
+	* lyx_main.C: ensure that tempdir is valid
+	* lyxlex.h: correct typo
+	* buffer.[Ch] (isMultiLingual), (isUnnamed): make const
+	* paragraph.[Ch] (isMultiLingual): make const
+	* cursor.[Ch] (openable): make const
+
 2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C: fixed LFUN_QUOTE and add lfun arguments single/double.

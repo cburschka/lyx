@@ -28,6 +28,7 @@
 #include "metricsinfo.h"
 #include "outputparams.h"
 
+#include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
@@ -36,6 +37,7 @@
 #include "insets/render_preview.h"
 
 #include "support/FileInfo.h"
+#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/tostr.h"
@@ -46,9 +48,11 @@
 #include "support/std_sstream.h"
 
 using lyx::support::AddName;
+using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
 using lyx::support::FileInfo;
+using lyx::support::FileName;
 using lyx::support::GetFileContents;
 using lyx::support::IsFileReadable;
 using lyx::support::IsLyXFilename;
@@ -307,30 +311,25 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
-		// FIXME: this should be a GUI warning
 		if (tmp->params().textclass != buffer.params().textclass) {
-			lyxerr << "WARNING: Included file `"
-			       << MakeDisplayPath(included_file)
-			       << "' has textclass `"
-			       << tmp->params().getLyXTextClass().name()
-			       << "' while parent file has textclass `"
-			       << buffer.params().getLyXTextClass().name()
-			       << "'." << endl;
+			string text = bformat(_("Included file `%1$s'\n"
+			                        "has textclass `%2$s'\n"
+			                        "while parent file has textclass `%3$s'."),
+			                      MakeDisplayPath(included_file),
+			                      tmp->params().getLyXTextClass().name(),
+			                      buffer.params().getLyXTextClass().name());
+			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(included_file, ".tex");
 
-		if (!buffer.temppath().empty() && !runparams.nice) {
-			incfile = subst(incfile, '/','@');
-#ifdef __EMX__
-			incfile = subst(incfile, ':', '$');
-#endif
-			writefile = AddName(buffer.temppath(), incfile);
-		} else
-			writefile = included_file;
-		writefile = ChangeExtension(writefile, ".tex");
+		if (!runparams.nice) {
+			incfile = FileName(writefile).mangledFilename();
+			writefile = MakeAbsPath(incfile, buffer.temppath());
+		}
+
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
@@ -388,15 +387,16 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(included_file, ".sgml");
-		if (!buffer.temppath().empty() && !runparams.nice) {
-			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer.temppath(), incfile);
-		} else
+		string writefile;
+		if (IsLyXFilename(included_file))
+			writefile = ChangeExtension(included_file, ".sgml");
+		else
 			writefile = included_file;
 
-		if (IsLyXFilename(included_file))
-			writefile = ChangeExtension(writefile, ".sgml");
+		if (!runparams.nice) {
+			incfile = FileName(writefile).mangledFilename();
+			writefile = MakeAbsPath(incfile, buffer.temppath());
+		}
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
@@ -431,14 +431,16 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(included_file, ".sgml");
-		if (!buffer.temppath().empty() && !runparams.nice) {
-			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer.temppath(), incfile);
-		} else
-			writefile = included_file;
+		string writefile;
 		if (IsLyXFilename(included_file))
-			writefile = ChangeExtension(writefile, ".sgml");
+			writefile = ChangeExtension(included_file, ".sgml");
+		else
+			writefile = included_file;
+
+		if (!runparams.nice) {
+			incfile = FileName(writefile).mangledFilename();
+			writefile = MakeAbsPath(incfile, buffer.temppath());
+		}
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
@@ -468,18 +470,14 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string const included_file = includedFilename(buffer, params_);
 
 	if (IsLyXFilename(included_file))
-		writefile = ChangeExtension(writefile, ".sgml");
-	else if (!buffer.temppath().empty() &&
-	         !features.nice() &&
-	         !isVerbatim(params_)) {
-		incfile = subst(incfile, '/','@');
-#ifdef __EMX__
-// FIXME: It seems that the following is necessary (see latex() above)
-//		incfile = subst(incfile, ':', '$');
-#endif
-		writefile = AddName(buffer.temppath(), incfile);
-	} else
+		writefile = ChangeExtension(included_file, ".sgml");
+	else
 		writefile = included_file;
+
+	if (!features.nice() && !isVerbatim(params_)) {
+		incfile = FileName(writefile).mangledFilename();
+		writefile = MakeAbsPath(incfile, buffer.temppath());
+	}
 
 	features.includeFile(include_label, writefile);
 

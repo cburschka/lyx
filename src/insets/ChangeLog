@@ -1,3 +1,13 @@
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetexternal.C, insetgraphics.C, insetinclude.C: use always a
+	temp dir
+	* insetinclude.C (latex): show a GUI warning if textclasses don't
+	match
+	* insetinclude.C: use mangledFilename() for temp files
+	* insetgraphics.C (readInsetGraphics): remove version check, since
+	the graphics inset has no own fileformat number anymore
+
 2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetquotes.[Ch]: added new member that allows direct access

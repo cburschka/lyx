@@ -155,7 +155,7 @@ private:
     This is needed to ensure that the pop is done upon exit from methods
     with more than one exit point or that can return as a response to
     exceptions.
-    @autor Lgb
+    @author Lgb
 */
 struct pushpophelper {
 	///

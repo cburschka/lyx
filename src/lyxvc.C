@@ -223,6 +223,11 @@ string const LyXVC::getLogFile() const
 		return string();
 
 	string tmpf = tempName(string(), "lyxvclog");
+	if (tmpf.empty()) {
+		lyxerr[Debug::LYXVC] << "Could not generate logfile "
+		                     << tmpf << endl;
+		return string();
+	}
 	lyxerr[Debug::LYXVC] << "Generating logfile " << tmpf << endl;
 	vcs->getLog(tmpf);
 	return tmpf;

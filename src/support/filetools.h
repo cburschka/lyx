@@ -22,14 +22,19 @@ namespace support {
 /// remove directory and all contents, returns 0 on success
 int destroyDir(std::string const & tmpdir);
 
-///
-std::string const CreateBufferTmpDir(std::string const & pathfor = std::string());
+/// Creates the per buffer temporary directory
+std::string const createBufferTmpDir();
 
 /// Creates directory. Returns true on success
 bool createDirectory(std::string const & name, int permissions);
 
-///
-std::string const CreateLyXTmpDir(std::string const & deflt);
+/** Creates the global LyX temp dir.
+  \p deflt can be an existing directory name. In this case a new directory
+  inside \p deflt is created. If \p deflt does not exist yet, \p deflt is
+  created and used as the temporary directory.
+  \return the tmp dir name or string() if something went wrong.
+ */
+std::string const createLyXTmpDir(std::string const & deflt);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
@@ -141,11 +146,18 @@ std::string const getExtFromContents(std::string const & name);
 /// check for zipped file
 bool zippedFile(std::string const & name);
 
-/// \return the name that LyX will give to the unzipped file.
+/** \return the name that LyX will give to the unzipped file \p zipped_file
+  if the second argument of unzipFile() is empty.
+ */
 std::string const unzippedFileName(std::string const & zipped_file);
 
-/// unzip a file
-std::string const unzipFile(std::string const & zipped_file);
+/** Unzip \p zipped_file.
+  The unzipped file is named \p unzipped_file if \p unzipped_file is not
+  empty, and unzippedFileName(\p zipped_file) otherwise.
+  Will overwrite an already existing unzipped file without warning.
+ */
+std::string const unzipFile(std::string const & zipped_file,
+                            std::string const & unzipped_file = std::string());
 
 /// Returns true is path is absolute
 bool AbsolutePath(std::string const & path);

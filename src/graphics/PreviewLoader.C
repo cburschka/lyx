@@ -461,8 +461,7 @@ void PreviewLoader::Impl::startLoading()
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
 	// As used by the LaTeX file and by the resulting image files
-	string const directory = buffer_.temppath().empty() ?
-		buffer_.filePath() : buffer_.temppath();
+	string const directory = buffer_.temppath();
 
 	string const filename_base(unique_filename(directory));
 
@@ -477,6 +476,12 @@ void PreviewLoader::Impl::startLoading()
 	string const latexfile = filename_base + ".tex";
 
 	ofstream of(latexfile.c_str());
+	if (!of) {
+		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
+					<< "Unable to create LaTeX file\n"
+					<< latexfile << endl;
+		return;
+	}
 	of << "\\batchmode\n";
 	dumpPreamble(of);
 	of << "\n\\begin{document}\n";

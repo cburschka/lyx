@@ -34,6 +34,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lyxvc.h"
+#include "lyx_main.h"
 #include "messages.h"
 #include "output.h"
 #include "output_docbook.h"
@@ -85,7 +86,7 @@ using lyx::support::atoi;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::cmd_ret;
-using lyx::support::CreateBufferTmpDir;
+using lyx::support::createBufferTmpDir;
 using lyx::support::destroyDir;
 using lyx::support::FileInfo;
 using lyx::support::FileInfo;
@@ -190,8 +191,10 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 		text(0, 0)
 {
 	lyxvc.buffer(&parent);
-	if (readonly_ || lyxrc.use_tempdir)
-		temppath = CreateBufferTmpDir();
+	temppath = createBufferTmpDir();
+	// FIXME: And now do something if temppath == string(), because we
+	// assume from now on that temppath points to a valid temp dir.
+	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
 }
 
 
@@ -318,10 +321,7 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 	if (filename.empty())
 		return make_pair(Buffer::latexlog, string());
 
-	string path = OnlyPath(filename);
-
-	if (lyxrc.use_tempdir || !IsDirWriteable(path))
-		path = temppath();
+	string const path = temppath();
 
 	string const fname = AddName(path,
 				     OnlyFilename(ChangeExtension(filename,
@@ -596,6 +596,15 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 					 filename));
 	} else if (file_format < LYX_FORMAT) {
 		string const tmpfile = tempName();
+		if (tmpfile.empty()) {
+			Alert::error(_("Conversion failed"),
+				     bformat(_("%1$s is from an earlier"
+					      " version of LyX, but a temporary"
+					      " file for converting it could"
+					      " not be created."),
+					      filename));
+			return false;
+		}
 		string command = LibFileSearch("lyx2lyx", "lyx2lyx");
 		if (command.empty()) {
 			Alert::error(_("Conversion script not found"),
@@ -953,7 +962,7 @@ bool Buffer::isSGML() const
 
 void Buffer::makeLinuxDocFile(string const & fname,
 			      OutputParams const & runparams,
-			      bool body_only )
+                              bool body_only)
 {
 	ofstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -1074,12 +1083,8 @@ int Buffer::runChktex()
 
 	// get LaTeX-Filename
 	string const name = getLatexName();
-	string path = filePath();
-
-	string const org_path = path;
-	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
-		path = temppath();
-	}
+	string const path = temppath();
+	string const org_path = filePath();
 
 	Path p(path); // path to LaTeX file
 	message(_("Running chktex..."));
@@ -1272,10 +1277,10 @@ void Buffer::updateDocLang(Language const * nlang)
 }
 
 
-bool Buffer::isMultiLingual()
+bool Buffer::isMultiLingual() const
 {
-	ParIterator end = par_iterator_end();
-	for (ParIterator it = par_iterator_begin(); it != end; ++it)
+	ParConstIterator end = par_iterator_end();
+	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
 		if (it->isMultiLingual(params()))
 			return true;
 
@@ -1424,7 +1429,7 @@ void Buffer::setUnnamed(bool flag)
 }
 
 
-bool Buffer::isUnnamed()
+bool Buffer::isUnnamed() const
 {
 	return pimpl_->unnamed;
 }

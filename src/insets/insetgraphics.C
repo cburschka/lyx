@@ -29,9 +29,6 @@ TODO
 
 /* NOTES:
  * Fileformat:
- * Current version is 1 (inset file format version), when changing it
- * it should be changed in the Write() function when writing in one place
- * and when reading one should change the version check and the error message.
  * The filename is kept in  the lyx file in a relative way, so as to allow
  * moving the document file and its images with no problem.
  *
@@ -281,18 +278,7 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
 			continue;
 		} else if (token == "\\end_inset") {
 			finished = true;
-		} else if (token == "FormatVersion") {
-			lex.next();
-			int version = lex.getInteger();
-			if (version > VersionNumber)
-				lyxerr
-				<< "This document was created with a newer Graphics widget"
-				", You should use a newer version of LyX to read this"
-				" file."
-				<< endl;
-			// TODO: Possibly open up a dialog?
-		}
-		else {
+		} else {
 			if (!params_.Read(lex, token, bufpath))
 				lyxerr << "Unknown token, " << token << ", skipping."
 					<< std::endl;
@@ -469,9 +455,6 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
 
-	if (from == to && !lyxrc.use_tempdir)
-		return stripExtensionIfPossible(orig_file, to);
-
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
 	// file format.
@@ -480,16 +463,14 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	bool conversion_needed = true;
-	if (lyxrc.use_tempdir) {
-		CopyStatus status;
-		boost::tie(status, temp_file) =
+	CopyStatus status;
+	boost::tie(status, temp_file) =
 			copyToDirIfNeeded(orig_file, buf.temppath());
 
-		if (status == FAILURE)
-			return orig_file;
-		else if (status == IDENTICAL_CONTENTS)
-			conversion_needed = false;
-	}
+	if (status == FAILURE)
+		return orig_file;
+	else if (status == IDENTICAL_CONTENTS)
+		conversion_needed = false;
 
 	if (from == to)
 		return stripExtensionIfPossible(temp_file, to);
@@ -515,7 +496,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tto_file_base = " << to_file_base << '\n'
 		<< "\t from " << from << " to " << to << '\n';
 
-	// if no special converter defined, than we take the default one
+	// if no special converter defined, then we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
 	if (!converters.convert(&buf, temp_file, to_file_base, from, to)) {
 		string const command =

@@ -36,6 +36,7 @@ using support::getExtFromContents;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
+using support::unzippedFileName;
 using support::zippedFile;
 
 using std::endl;
@@ -381,8 +382,19 @@ void CacheItem::Impl::convertToDisplayFormat()
 	}
 
 	// Make a local copy in case we unzip it
-	string const filename = zippedFile(filename_) ?
-		unzipFile(filename_) : filename_;
+	string filename;
+	if ((zipped_ = zippedFile(filename_))) {
+		unzipped_filename_ = tempName(string(), filename_);
+		if (unzipped_filename_.empty()) {
+			setStatus(ErrorConverting);
+			lyxerr[Debug::GRAPHICS]
+				<< "\tCould not create temporary file." << endl;
+			return;
+		}
+		filename = unzipFile(filename_, unzipped_filename_);
+	} else
+		filename = filename_;
+
 	string const displayed_filename = MakeDisplayPath(filename_);
 	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
@@ -412,6 +424,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	remove_loaded_file_ = true;
 
 	// Remove the temp file, we only want the name...
+	// FIXME: This is unsafe!
 	unlink(to_file_base);
 
 	// Connect a signal to this->imageConverted and pass this signal to

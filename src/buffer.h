@@ -181,7 +181,7 @@ public:
 	void setUnnamed(bool flag = true);
 
 	///
-	bool isUnnamed();
+	bool isUnnamed() const;
 
 	/// Mark this buffer as dirty.
 	void markDirty();
@@ -248,7 +248,7 @@ public:
 	void updateDocLang(Language const * nlang);
 
 	///
-	bool isMultiLingual();
+	bool isMultiLingual() const;
 
 	/// Does this mean that this is buffer local?
 	limited_stack<Undo> & undostack();

@@ -170,10 +170,7 @@ void ControlPrint::apply()
 	}
 
 	// Push directory path.
-	string path = buffer()->filePath();
-	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
-		path = buffer()->temppath();
-	}
+	string const path = buffer()->temppath();
 	Path p(path);
 
 	// there are three cases here:

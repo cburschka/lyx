@@ -1,3 +1,13 @@
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.[Ch] (CreateBufferTmpDir): rename to createBufferTmpDir,
+	remove pathfor argument
+	* filetools.[Ch] (CreateLyXTmpDir): rename to createLyXTmpDir, try
+	harder to create a usable temp dir
+	* filetools.C (CreateTmpDir): rename to createTmpDir
+	filetools.[Ch] (unzipFile): add argument for output filename
+	* filename.h: fix doxygen warning
+
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lstrings.h (contains_functor): delete

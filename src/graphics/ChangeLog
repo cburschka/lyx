@@ -1,3 +1,10 @@
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* GraphicsCacheItem.C (convertToDisplayFormat): unzip zipped files
+	to a temporary file
+	* PreviewLoader.C: use always a temp dir
+	* PreviewLoader.C: check successfull creation of LaTeX file
+
 2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (FindFirst): inherit from std::unary_function

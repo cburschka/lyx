@@ -206,8 +206,6 @@ enum LyXRCTags {
 	///
 	std::string tempdir_path;
 	///
-	bool use_tempdir;
-	///
 	bool auto_region_delete;
 	/// flag telling whether lastfiles should be checked for existance
 	bool auto_reset_options;

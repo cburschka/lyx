@@ -77,6 +77,7 @@ namespace external {
 TempName::TempName()
 {
 	tempname_ = support::tempName(string(), "lyxext");
+	// FIXME: This is unsafe
 	support::unlink(tempname_);
 	// must have an extension for the converter code to work correctly.
 	tempname_ += ".tmp";
@@ -685,8 +686,7 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 	// run through the LaTeX compiler.
 	// If we're running through the LaTeX compiler, we should write the
 	// generated files in the bufer's temporary directory.
-	bool const external_in_tmpdir =
-		lyxrc.use_tempdir && !buf.temppath().empty() && !runparams.nice;
+	bool const external_in_tmpdir = !runparams.nice;
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.

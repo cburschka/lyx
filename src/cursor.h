@@ -471,7 +471,7 @@ private:
 	/// where in the curent cell does the macro name start?
 	int macroNamePos();
 	/// can we enter the inset?
-	bool openable(MathAtom const &);
+	bool openable(MathAtom const &) const;
 };
 
 #endif // LYXCURSOR_H

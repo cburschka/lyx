@@ -894,7 +894,7 @@ bool LCursor::isInside(InsetBase const * p)
 }
 
 
-bool LCursor::openable(MathAtom const & t)
+bool LCursor::openable(MathAtom const & t) const
 {
 	if (!t->isActive())
 		return false;

@@ -195,7 +195,6 @@ void QPrefs::apply()
 	rc.document_path = fromqstr(pathsmod->workingDirED->text());
 	rc.template_path = fromqstr(pathsmod->templateDirED->text());
 	rc.backupdir_path = fromqstr(pathsmod->backupDirED->text());
-	rc.use_tempdir = pathsmod->tempDirCB->isChecked();
 	rc.tempdir_path = fromqstr(pathsmod->tempDirED->text());
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = fromqstr(pathsmod->lyxserverDirED->text());
@@ -499,7 +498,6 @@ void QPrefs::update_contents()
 	pathsmod->workingDirED->setText(toqstr(rc.document_path));
 	pathsmod->templateDirED->setText(toqstr(rc.template_path));
 	pathsmod->backupDirED->setText(toqstr(rc.backupdir_path));
-	pathsmod->tempDirCB->setChecked(rc.use_tempdir);
 	pathsmod->tempDirED->setText(toqstr(rc.tempdir_path));
 	// FIXME: should be a checkbox only
 	pathsmod->lyxserverDirED->setText(toqstr(rc.lyxpipes));

@@ -85,8 +85,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		backend_format = format;
 
 	string filename = buffer->getLatexName(false);
-	if (!buffer->temppath().empty())
-		filename = AddName(buffer->temppath(), filename);
+	filename = AddName(buffer->temppath(), filename);
 	filename = ChangeExtension(filename,
 				   formats.extension(backend_format));
 

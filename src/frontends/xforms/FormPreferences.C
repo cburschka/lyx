@@ -1825,17 +1825,10 @@ void FormPreferences::Paths::apply(LyXRC & rc)
 {
 	rc.document_path = fl_get_input(dialog_->input_default_path);
 	rc.template_path = fl_get_input(dialog_->input_template_path);
+	rc.tempdir_path  = fl_get_input(dialog_->input_temp_dir);
 
-	int button = fl_get_button(dialog_->check_use_temp_dir);
-	string str  = fl_get_input(dialog_->input_temp_dir);
-	if (!button)
-		str.erase();
-
-	rc.use_tempdir = button;
-	rc.tempdir_path = str;
-
-	button = fl_get_button(dialog_->check_last_files);
-	str = fl_get_input(dialog_->input_lastfiles);
+	int button = fl_get_button(dialog_->check_last_files);
+	string str = fl_get_input(dialog_->input_lastfiles);
 	if (!button) str.erase();
 
 	rc.check_lastfiles = button;
@@ -1880,7 +1873,6 @@ void FormPreferences::Paths::build()
 	setPrehandler(dialog_->input_backup_path);
 	setPrehandler(dialog_->input_serverpipe);
 	setPrehandler(dialog_->input_temp_dir);
-	setPrehandler(dialog_->check_use_temp_dir);
 }
 
 
@@ -1891,8 +1883,6 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_DOCUMENTPATH);
 	if (ob == dialog_->input_template_path)
 		return LyXRC::getDescription(LyXRC::RC_TEMPLATEPATH);
-	if (ob == dialog_->check_use_temp_dir)
-		return LyXRC::getDescription(LyXRC::RC_USETEMPDIR);
 	if (ob == dialog_->input_temp_dir)
 		return LyXRC::getDescription(LyXRC::RC_TEMPDIRPATH);
 	if (ob == dialog_->check_last_files)
@@ -1918,11 +1908,6 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	// !ob if function is called from Paths::update() to de/activate
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
-	if (!ob || ob == dialog_->check_use_temp_dir) {
-		bool const enable = fl_get_button(dialog_->check_use_temp_dir);
-		setEnabled(dialog_->input_temp_dir, enable);
-	}
-
 	if (!ob || ob == dialog_->check_last_files) {
 		bool const enable = fl_get_button(dialog_->check_last_files);
 		setEnabled(dialog_->input_lastfiles, enable);
@@ -2046,13 +2031,7 @@ void FormPreferences::Paths::update(LyXRC const & rc)
 		      rc.make_backup);
 	fl_set_input(dialog_->input_backup_path, str.c_str());
 
-	str.erase();
-	if (rc.use_tempdir)
-		str = rc.tempdir_path;
-
-	fl_set_button(dialog_->check_use_temp_dir,
-		      rc.use_tempdir);
-	fl_set_input(dialog_->input_temp_dir, str.c_str());
+	fl_set_input(dialog_->input_temp_dir, rc.tempdir_path.c_str());
 
 	str.erase();
 	if (rc.check_lastfiles)

@@ -58,7 +58,7 @@ using lyx::support::AddName;
 using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::createDirectory;
-using lyx::support::CreateLyXTmpDir;
+using lyx::support::createLyXTmpDir;
 using lyx::support::FileInfo;
 using lyx::support::FileSearch;
 using lyx::support::GetEnv;
@@ -390,7 +390,21 @@ void LyX::init(bool gui)
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
 
-	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
+	os::setTmpDir(createLyXTmpDir(lyxrc.tempdir_path));
+	if (os::getTmpDir().empty()) {
+		Alert::error(_("Could not create temporary directory"),
+		             bformat(_("Could not create a temporary directory in\n"
+		                       "%1$s. Make sure that this\n"
+		                       "path exists and is writable and try again."),
+		                     lyxrc.tempdir_path));
+		// createLyXTmpDir() tries sufficiently hard to create a
+		// usable temp dir, so the probability to come here is
+		// close to zero. We therefore don't try to overcome this
+		// problem with e.g. asking the user for a new path and
+		// trying again but simply exit.
+		exit(EXIT_FAILURE);
+	}
+
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << os::getTmpDir() << '\'' << endl;
 	}

@@ -1,3 +1,8 @@
+2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ControlPrint.C, ControlSendto.C: use always a temp dir
+	* ControlSendto.C: check return value of buffer()->writeFile()
+
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* biblio.C (parseBibTeX): "=" -> '='

@@ -440,11 +440,11 @@ int DeleteAllFilesInDir(string const & path)
 }
 
 
-string const CreateTmpDir(string const & tempdir, string const & mask)
+string const createTmpDir(string const & tempdir, string const & mask)
 {
 	lyxerr[Debug::FILES]
-		<< "CreateTmpDir: tempdir=`" << tempdir << "'\n"
-		<< "CreateTmpDir:    mask=`" << mask << '\'' << endl;
+		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
+		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
 
 	string const tmpfl(tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
@@ -453,8 +453,11 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 	// safe because of the gap between unlink and mkdir. (Lgb)
 	unlink(tmpfl);
 
-	if (tmpfl.empty() || mkdir(tmpfl, 0700))
+	if (tmpfl.empty() || mkdir(tmpfl, 0700)) {
+		lyxerr << "LyX could not create the temporary directory '"
+		       << tmpfl << "'" << endl;
 		return string();
+	}
 
 	return MakeAbsPath(tmpfl);
 }
@@ -477,36 +480,47 @@ int destroyDir(string const & tmpdir)
 }
 
 
-string const CreateBufferTmpDir(string const & pathfor)
+string const createBufferTmpDir()
 {
 	static int count;
-	static string const tmpdir(pathfor.empty() ? os::getTmpDir() : pathfor);
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
 	// of EMX mkstemp().
-	string const tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
+	string const tmpfl = os::getTmpDir() + "/lyx_tmpbuf" + tostr(count++);
 	if (mkdir(tmpfl, 0777)) {
+		lyxerr << "LyX could not create the temporary directory '"
+		       << tmpfl << "'" << endl;
 		return string();
 	}
 	return tmpfl;
 }
 
 
-string const CreateLyXTmpDir(string const & deflt)
+string const createLyXTmpDir(string const & deflt)
 {
-	if ((!deflt.empty()) && (deflt  != "/tmp")) {
+	if (!deflt.empty() && deflt != "/tmp") {
 		if (mkdir(deflt, 0777)) {
+			if (IsDirWriteable(deflt))
+				// deflt could not be created because it
+				// did exist already, so let's create our own
+				// dir inside deflt.
 #ifdef __EMX__
-		Path p(user_lyxdir());
+				Path p(user_lyxdir());
 #endif
-			return CreateTmpDir(deflt, "lyx_tmpdir");
+				return createTmpDir(deflt, "lyx_tmpdir");
+			else
+				// some other error occured.
+#ifdef __EMX__
+				Path p(user_lyxdir());
+#endif
+				return createTmpDir("/tmp", "lyx_tmpdir");
 		} else
 			return deflt;
 	} else {
 #ifdef __EMX__
 		Path p(user_lyxdir());
 #endif
-		return CreateTmpDir("/tmp", "lyx_tmpdir");
+		return createTmpDir("/tmp", "lyx_tmpdir");
 	}
 }
 
@@ -1080,9 +1094,10 @@ string const unzippedFileName(string const & zipped_file)
 }
 
 
-string const unzipFile(string const & zipped_file)
+string const unzipFile(string const & zipped_file, string const & unzipped_file)
 {
-	string  const tempfile = unzippedFileName(zipped_file);
+	string const tempfile = unzipped_file.empty() ?
+		unzippedFileName(zipped_file) : unzipped_file;
 	// Run gunzip
 	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
 	Systemcall one;

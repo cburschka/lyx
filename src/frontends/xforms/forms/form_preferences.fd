@@ -2024,7 +2024,7 @@ argument: 0
 Name: form_preferences_paths
 Width: 450
 Height: 350
-Number of Objects: 17
+Number of Objects: 16
 
 --------------------
 class: FL_BOX
@@ -2117,25 +2117,6 @@ callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 140 80 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Temp dir:|#d
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_use_temp_dir
-callback: C_FormBaseInputCB
-argument: 0
-	value: 1
-
---------------------
 class: FL_INPUT
 type: NORMAL_INPUT
 box: 170 80 170 30
@@ -2145,7 +2126,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: 
+label: Temp dir:|#d
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity

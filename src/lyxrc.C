@@ -156,6 +156,7 @@ keyword_item lyxrcTags[] = {
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
 	{ "\\use_spell_lib", LyXRC::RC_USE_SPELL_LIB },
+	// compatibility with versions older than 1.4.0 only
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
@@ -197,7 +198,6 @@ void LyXRC::setDefaults() {
 	print_paper_dimension_flag = "-T";
 	document_path.erase();
 	tempdir_path = "/tmp";
-	use_tempdir = true;
 	ps_command = "gs";
 	view_dvi_paper_option.erase();
 	default_papersize = PAPER_USLETTER;
@@ -657,7 +657,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_USETEMPDIR:
 			if (lexrc.next()) {
-				use_tempdir = lexrc.getBool();
+				lyxerr << "Ignoring obsolete use_tempdir flag." << endl;
 			}
 			break;
 
@@ -1524,9 +1524,7 @@ void LyXRC::output(ostream & os) const
 			os << "\\tempdir_path \"" << tempdir_path << "\"\n";
 		}
 	case RC_USETEMPDIR:
-		if (use_tempdir != system_lyxrc.use_tempdir) {
-			os << "\\use_tempdir " << tostr(use_tempdir) << '\n';
-		}
+		// Ignore it
 	case RC_ASCII_LINELEN:
 		if (ascii_linelen != system_lyxrc.ascii_linelen) {
 			os << "\\ascii_linelen " << ascii_linelen << '\n';
@@ -1902,10 +1900,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_TEMPDIRPATH:
 		str = _("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
-		break;
-
-	case RC_USETEMPDIR:
-		str = _("Select if you wish to use a temporary directory structure to store temporary TeX output.");
 		break;
 
 	case RC_LASTFILES:
