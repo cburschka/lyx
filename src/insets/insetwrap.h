@@ -51,7 +51,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
 	///

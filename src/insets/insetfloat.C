@@ -259,7 +259,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetFloat::clone(Buffer const &) const
+Inset * InsetFloat::clone() const
 {
 	return new InsetFloat(*this);
 }

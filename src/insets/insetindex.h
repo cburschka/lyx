@@ -26,7 +26,7 @@ public:
 	///
 	~InsetIndex();
 	///
-	virtual Inset * clone(Buffer const &) const {
+	virtual Inset * clone() const {
 		return new InsetIndex(params());
 	}
 	///
@@ -49,7 +49,7 @@ public:
 	///
 	~InsetPrintIndex();
 	///
-	Inset * clone(Buffer const &) const {
+	Inset * clone() const {
 		return new InsetPrintIndex(params());
 	}
 	///

@@ -1,3 +1,42 @@
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* inset.h:
+	* insetbibitem.[Ch]:
+	* insetbibtex.h:
+	* insetcite.h:
+	* insetcommand.[Ch]:
+	* insetenv.[Ch]:
+	* inseterror.h:
+	* insetert.[Ch]:
+	* insetexternal.[Ch]:
+	* insetfloat.[Ch]:
+	* insetfloatlist.h:
+	* insetfoot.[Ch]:
+	* insetgraphics.[Ch]:
+	* insethfill.h:
+	* insetinclude.[Ch]:
+	* insetindex.h:
+	* insetlabel.h:
+	* insetlatexaccent.[Ch]:
+	* insetmarginal.[Ch]:
+	* insetminipage.[Ch]:
+	* insetnewline.h:
+	* insetnote.[Ch]:
+	* insetoptarg.[Ch]:
+	* insetquotes.[Ch]:
+	* insetref.[Ch]:
+	* insetspace.[Ch]:
+	* insetspecialchar.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetthereom.[Ch]:
+	* insettoc.h:
+	* inseturl.h:
+	* insetwrap.[Ch]: make clone() not take a Buffer * arg
+
+	* insetgraphics.[Ch]:
+	* insetgraphicsParams.[Ch]: always store an absolute
+	path at runtime
 
 2003-06-02  André Pönitz  <poenitz@gmx.net>
 

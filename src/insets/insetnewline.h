@@ -20,7 +20,7 @@ public:
 
 	InsetNewline() {}
 
-	virtual Inset * clone(Buffer const &) const {
+	virtual Inset * clone() const {
 		return new InsetNewline;
 	}
 

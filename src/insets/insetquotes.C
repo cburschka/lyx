@@ -351,16 +351,10 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetQuotes::clone(Buffer const &) const
+Inset * InsetQuotes::clone() const
 {
 	return new InsetQuotes(language_, side_, times_);
 }
-
-
-// Inset * InsetQuotes::clone(Buffer const &, bool) const
-// {
-//   return new InsetQuotes(language_, side_, times_);
-// }
 
 
 Inset::Code InsetQuotes::lyxCode() const

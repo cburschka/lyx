@@ -22,7 +22,7 @@ public:
 	///
 	~InsetLabel();
 	///
-	virtual Inset * clone(Buffer const &) const {
+	virtual Inset * clone() const {
 		return new InsetLabel(params());
 	}
 	///

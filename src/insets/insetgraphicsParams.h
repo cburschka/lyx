@@ -69,14 +69,14 @@ struct InsetGraphicsParams
 	///
 	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 	/// Save the parameters in the LyX format stream.
-	void Write(std::ostream & os) const;
+	void Write(std::ostream & os, string const & bufpath) const;
 	/// If the token belongs to our parameters, read it.
-	bool Read(LyXLex & lex, string const & token);
+	bool Read(LyXLex & lex, string const & token, string const & bufpath);
 	/// convert
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.
-	grfx::Params as_grfxParams(string const & filepath = string()) const;
+	grfx::Params as_grfxParams() const;
 
 private:
 	/// Initialize the object to a default status.

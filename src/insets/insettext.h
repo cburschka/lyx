@@ -77,7 +77,7 @@ public:
 	///
 	~InsetText();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	InsetText & operator=(InsetText const & it);
 	/// empty inset to empty par, or just mark as erased

@@ -25,7 +25,7 @@ public:
 	///
 	InsetNote(InsetNote const &);
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	string const editMessage() const;
 	///

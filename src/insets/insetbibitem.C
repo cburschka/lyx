@@ -43,20 +43,12 @@ InsetBibitem::~InsetBibitem()
 }
 
 
-Inset * InsetBibitem::clone(Buffer const &) const
+Inset * InsetBibitem::clone() const
 {
 	InsetBibitem * b = new InsetBibitem(params());
 	b->setCounter(counter);
 	return b;
 }
-
-
-// Inset * InsetBibitem::clone(Buffer const &, bool) const
-// {
-//	InsetBibitem * b = new InsetBibitem(params());
-//	b->setCounter(counter);
-//	return b;
-// }
 
 
 dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)

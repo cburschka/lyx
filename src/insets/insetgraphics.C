@@ -182,7 +182,7 @@ void InsetGraphics::Cache::update(string const & file_with_path)
 	lyx::Assert(!file_with_path.empty());
 
 	string const path = OnlyPath(file_with_path);
-	loader.reset(file_with_path, parent_.params().as_grfxParams(path));
+	loader.reset(file_with_path, parent_.params().as_grfxParams());
 }
 
 
@@ -192,19 +192,20 @@ InsetGraphics::InsetGraphics()
 {}
 
 
-InsetGraphics::InsetGraphics(InsetGraphics const & ig,
-			     string const & filepath)
+#warning I have zero idea about the trackable()
+InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: Inset(ig),
+	  boost::signals::trackable(ig),
 	  graphic_label(uniqueID()),
 	  cache_(new Cache(*this))
 {
-	setParams(ig.params(), filepath);
+	setParams(ig.params());
 }
 
 
-Inset * InsetGraphics::clone(Buffer const & buffer) const
+Inset * InsetGraphics::clone() const
 {
-	return new InsetGraphics(*this, buffer.filePath());
+	return new InsetGraphics(*this);
 }
 
 
@@ -222,8 +223,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, p);
 		if (!p.filename.empty()) {
-			string const filepath = cmd.view()->buffer()->filePath();
-			setParams(p, filepath);
+			setParams(p);
 			cmd.view()->updateInset(this);
 		}
 		return DISPATCHED;
@@ -327,18 +327,6 @@ BufferView * InsetGraphics::view() const
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView * bv = pi.base.bv;
-	// MakeAbsPath returns params().filename unchanged if it absolute
-	// already.
-	string const file_with_path =
-		MakeAbsPath(params().filename, bv->buffer()->filePath());
-
-	// A 'paste' operation creates a new inset with the correct filepath,
-	// but then the 'old' inset stored in the 'copy' operation is actually
-	// added to the buffer.
-	// Thus, we should ensure that the filepath is correct.
-	if (file_with_path != cache_->loader.filename())
-		cache_->update(file_with_path);
-
 	cache_->view = bv->owner()->view();
 	int oasc = cache_->old_ascent;
 
@@ -400,10 +388,10 @@ Inset::EDITABLE InsetGraphics::editable() const
 }
 
 
-void InsetGraphics::write(Buffer const *, ostream & os) const
+void InsetGraphics::write(Buffer const * buf, ostream & os) const
 {
 	os << "Graphics\n";
-	params().Write(os);
+	params().Write(os, buf->filePath());
 }
 
 
@@ -412,15 +400,15 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 	string const token = lex.getString();
 
 	if (token == "Graphics")
-		readInsetGraphics(lex);
+		readInsetGraphics(lex, buf->filePath());
 	else
 		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!\n";
 
-	cache_->update(MakeAbsPath(params().filename, buf->filePath()));
+	cache_->update(params().filename);
 }
 
 
-void InsetGraphics::readInsetGraphics(LyXLex & lex)
+void InsetGraphics::readInsetGraphics(LyXLex & lex, string const & bufpath)
 {
 	bool finished = false;
 
@@ -447,7 +435,7 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex)
 			// TODO: Possibly open up a dialog?
 		}
 		else {
-			if (! params_.Read(lex, token))
+			if (!params_.Read(lex, token, bufpath))
 				lyxerr << "Unknown token, " << token << ", skipping."
 					<< std::endl;
 		}
@@ -510,17 +498,13 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.
-	string const orig_file = params().filename;
-	string orig_file_with_path =
-		MakeAbsPath(orig_file, buf->filePath());
-	lyxerr[Debug::GRAPHICS] << "[InsetGraphics::prepareFile] orig_file = "
-		    << orig_file << "\n\twith path: "
-		    << orig_file_with_path << endl;
+	string orig_file = params().filename;
+	string const rel_file = MakeRelPath(orig_file, buf->filePath());
 
-	if (!IsFileReadable(orig_file_with_path))
-		return orig_file;
+	if (!IsFileReadable(rel_file))
+		return rel_file;
 
-	bool const zipped = zippedFile(orig_file_with_path);
+	bool const zipped = zippedFile(orig_file);
 
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
@@ -528,9 +512,9 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 	if (zipped && params().noUnzip) {
 		lyxerr[Debug::GRAPHICS]
 			<< "\tpass zipped file to LaTeX but with full path.\n";
-		// LaTeX needs an absolue path, otherwise the
+		// LaTeX needs an absolute path, otherwise the
 		// coresponding *.eps.bb file isn't found
-		return orig_file_with_path;
+		return orig_file;
 	}
 
 	// Ascertain whether the file has changed.
@@ -551,22 +535,21 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		lyxerr[Debug::GRAPHICS]
 			<< "\ttemp_file: " << temp_file << endl;
 		if (file_has_changed || !IsFileReadable(temp_file)) {
-			bool const success = lyx::copy(orig_file_with_path,
-						       temp_file);
+			bool const success = lyx::copy(orig_file, temp_file);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tCopying zipped file from "
-				<< orig_file_with_path << " to " << temp_file
+				<< orig_file << " to " << temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 		} else
 			lyxerr[Debug::GRAPHICS]
 				<< "\tzipped file " << temp_file
 				<< " exists! Maybe no tempdir ...\n";
-		orig_file_with_path = unzipFile(temp_file);
+		orig_file = unzipFile(temp_file);
 		lyxerr[Debug::GRAPHICS]
-			<< "\tunzipped to " << orig_file_with_path << endl;
+			<< "\tunzipped to " << orig_file << endl;
 	}
 
-	string const from = getExtFromContents(orig_file_with_path);
+	string const from = getExtFromContents(orig_file);
 	string const to   = findTargetFormat(from, runparams);
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
@@ -576,8 +559,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		// graphic file as is.
 		// This is true even if the orig_file is compressed.
 		if (formats.getFormat(to)->extension() == GetExtension(orig_file))
-			return RemoveExtension(orig_file_with_path);
-		return orig_file_with_path;
+			return RemoveExtension(orig_file);
+		return orig_file;
 	}
 
 	// We're going to be running the exported buffer through the LaTeX
@@ -592,13 +575,13 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 	// to "any_dir_file.ext"! changing the dots in the
 	// dirname is important for the use of ChangeExtension
 	lyxerr[Debug::GRAPHICS]
-		<< "\tthe orig file is: " << orig_file_with_path << endl;
+		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (lyxrc.use_tempdir) {
-		string const ext_tmp = GetExtension(orig_file_with_path);
+		string const ext_tmp = GetExtension(orig_file);
 		// without ext and /
 		temp_file = subst(
-			ChangeExtension(orig_file_with_path, string()), "/", "_");
+			ChangeExtension(orig_file, string()), "/", "_");
 		// without dots and again with ext
 		temp_file = ChangeExtension(
 			subst(temp_file, ".", "_"), ext_tmp);
@@ -609,14 +592,14 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 
 		// if the file doen't exists, copy it into the tempdir
 		if (file_has_changed || !IsFileReadable(temp_file)) {
-			bool const success = lyx::copy(orig_file_with_path, temp_file);
+			bool const success = lyx::copy(orig_file, temp_file);
 			lyxerr[Debug::GRAPHICS]
-				<< "\tcopying from " << orig_file_with_path << " to "
+				<< "\tcopying from " << orig_file << " to "
 				<< temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 			if (!success) {
 				string str = bformat(_("Could not copy the file\n%1$s\n"
-					"into the temporary directory."), orig_file_with_path);
+					"into the temporary directory."), orig_file);
 				Alert::error(_("Graphics display failed"), str);
 				return orig_file;
 			}
@@ -672,9 +655,12 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 		<< "insetgraphics::latex: Filename = "
 		<< params().filename << endl;
 
+	string const relative_file = MakeRelPath(params().filename, buf->filePath());
+
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
-	string const file_ = MakeAbsPath(params().filename, buf->filePath());
+#warning uh, but can our cache handle it ? no.
+	string const file_ = params().filename;
 	bool const file_exists =
 		!file_.empty() &&
 		(IsFileReadable(file_) ||		// original
@@ -718,7 +704,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
 	if (runparams.nice) {
-		os << before <<'{' << params().filename << '}' << after;
+		os << before <<'{' << relative_file << '}' << after;
 		return 1;
 	}
 
@@ -727,7 +713,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 	// appropriate (when there are several versions in different formats)
 	string const latex_str = message.empty() ?
 		(before + '{' + os::external_path(prepareFile(buf, runparams)) + '}' + after) :
-		(before + '{' + params().filename + " not found!}" + after);
+		(before + '{' + relative_file + " not found!}" + after);
 	os << latex_str;
 
 	// Return how many newlines we issued.
@@ -790,8 +776,7 @@ void InsetGraphics::statusChanged()
 }
 
 
-bool InsetGraphics::setParams(InsetGraphicsParams const & p,
-			      string const & filepath)
+bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 {
 	// If nothing is changed, just return and say so.
 	if (params() == p && !p.filename.empty())
@@ -801,7 +786,7 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p,
 	params_ = p;
 
 	// Update the inset with the new parameters.
-	cache_->update(MakeAbsPath(params().filename, filepath));
+	cache_->update(params().filename);
 
 	// We have changed data, report it.
 	return true;
@@ -848,7 +833,8 @@ void InsetGraphicsMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetGraphics inset;
-		inset.readInsetGraphics(lex);
+#warning FIXME not setting bufpath is dubious
+		inset.readInsetGraphics(lex, string());
 		params = inset.params();
 	}
 }
@@ -859,7 +845,8 @@ InsetGraphicsMailer::params2string(InsetGraphicsParams const & params)
 {
 	ostringstream data;
 	data << name_ << ' ';
-	params.Write(data);
+#warning FIXME not setting bufpath is dubious
+	params.Write(data, string());
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

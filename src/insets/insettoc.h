@@ -24,7 +24,7 @@ public:
 	///
 	~InsetTOC();
 	///
-	virtual Inset * clone(Buffer const &) const {
+	virtual Inset * clone() const {
 		return new InsetTOC(params());
 	}
 	///

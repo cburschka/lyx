@@ -29,7 +29,7 @@ public:
 	///
 	InsetGraphics();
 	///
-	InsetGraphics(InsetGraphics const &, string const & filepath);
+	InsetGraphics(InsetGraphics const &);
 	///
 	~InsetGraphics();
 	///
@@ -67,13 +67,12 @@ public:
 	Inset::Code lyxCode() const { return Inset::GRAPHICS_CODE; }
 
 	///
-	virtual Inset * clone(Buffer const &) const;
+	virtual Inset * clone() const;
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
 	*/
-	bool setParams(InsetGraphicsParams const & params,
-		       string const & filepath);
+	bool setParams(InsetGraphicsParams const & params);
 
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
@@ -94,7 +93,7 @@ private:
 	void statusChanged();
 
 	/// Read the inset native format
-	void readInsetGraphics(LyXLex & lex);
+	void readInsetGraphics(LyXLex & lex, string const & bufpath);
 
 	/// Get the status message, depends on the image loading status.
 	string const statusMessage() const;

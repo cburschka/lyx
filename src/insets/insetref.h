@@ -35,13 +35,15 @@ public:
 	///
 	static string const & getName(int type);
 
-	///
+
 	InsetRef(InsetCommandParams const &, Buffer const &);
-	///
+
+	InsetRef(InsetRef const &);
+
 	~InsetRef();
 	///
-	virtual Inset * clone(Buffer const & buffer) const {
-		return new InsetRef(params(), buffer);
+	virtual Inset * clone() const {
+		return new InsetRef(*this);
 	}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);

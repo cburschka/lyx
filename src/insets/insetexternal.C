@@ -223,7 +223,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetExternal::clone(Buffer const &) const
+Inset * InsetExternal::clone() const
 {
 	InsetExternal * inset = new InsetExternal;
 	inset->params_ = params_;

@@ -1,3 +1,8 @@
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* ControlGraphics.C: make file path relative for the GUI,
+	absolute for the backend
+
 2003-05-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlDocument.C (saveAsDefault): adjust

@@ -26,7 +26,7 @@ public:
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
 	///

@@ -24,8 +24,8 @@
 #include "gettext.h"
 #include "paragraph_funcs.h"
 #include "debug.h"
-
-#include "insets/inseterror.h"
+#include "insets/insetinclude.h"
+#include "insets/insettabular.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -272,6 +272,38 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// Make the buf exactly the same layout than
 	// the cursor paragraph.
 	simple_cut_clone.begin()->makeSameLayout(*pit);
+
+	// Prepare the paragraphs and insets for insertion
+	// A couple of insets store buffer references so need
+	// updating
+	ParIterator fpit(simple_cut_clone.begin(), simple_cut_clone);
+	ParIterator fend(simple_cut_clone.end(), simple_cut_clone);
+
+	for (; fpit != fend; ++fpit) {
+		InsetList::iterator lit = fpit->insetlist.begin();
+		InsetList::iterator eit = fpit->insetlist.end();
+
+		for (; lit != eit; ++lit) {
+			switch (lit->inset->lyxCode()) {
+			case Inset::INCLUDE_CODE: {
+				InsetInclude * ii = static_cast<InsetInclude*>(lit->inset);
+				InsetInclude::Params ip = ii->params();
+				ip.masterFilename_ = current_view->buffer()->fileName();
+				ii->set(ip);
+				break;
+			}
+				
+			case Inset::TABULAR_CODE: {
+				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
+				it->buffer(current_view->buffer());
+				break;
+			}
+				
+			default:
+				break; // nothing
+			}
+		}
+	}
 
 	bool paste_the_end = false;
 

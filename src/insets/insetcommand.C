@@ -31,9 +31,10 @@ InsetCommand::InsetCommand(InsetCommandParams const & p)
 {}
 
 
-// InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
-//	: p_(p.getCmdName(), p.getContents(), p.getOptions())
-// {}
+InsetCommand::InsetCommand(InsetCommand const & ic)
+	: p_(ic.p_)
+{
+}
 
 
 void InsetCommand::setParams(InsetCommandParams const & p)
@@ -72,7 +73,6 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
-	lyxerr << "InsetCommand::localDispatch: " << cmd.action << "\n";
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;

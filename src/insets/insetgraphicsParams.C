@@ -49,7 +49,7 @@ InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 {
 	// Are we assigning the object into itself?
 	if (this == &params)
-		return * this;
+		return *this;
 	copy(params);
 	return *this;
 }
@@ -137,12 +137,12 @@ bool operator!=(InsetGraphicsParams const & left,
 }
 
 
-void InsetGraphicsParams::Write(ostream & os) const
+void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 {
 	// Do not write the default values
 
 	if (!filename.empty()) {
-		os << "\tfilename " << filename << '\n';
+		os << "\tfilename " << MakeRelPath(filename, bufpath) << '\n';
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
@@ -183,11 +183,11 @@ void InsetGraphicsParams::Write(ostream & os) const
 }
 
 
-bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
+bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const & bufpath)
 {
 	if (token == "filename") {
 		lex.eatLine();
-		filename = lex.getString();
+		filename = MakeAbsPath(lex.getString(), bufpath);
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
@@ -254,15 +254,12 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 }
 
 
-grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
+grfx::Params InsetGraphicsParams::as_grfxParams() const
 {
 	grfx::Params pars;
 	pars.filename = filename;
 	pars.scale = lyxscale;
 	pars.angle = rotateAngle;
-
-	if (!filepath.empty())
-		pars.filename = MakeAbsPath(pars.filename, filepath);
 
 	if (clip) {
 		pars.bb = bb;

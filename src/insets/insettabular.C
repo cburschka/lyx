@@ -151,7 +151,7 @@ bool InsetTabular::hasPasteBuffer() const
 
 
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
-	: buffer(&buf)
+	: buffer_(&buf)
 {
 	if (rows <= 0)
 		rows = 1;
@@ -174,10 +174,10 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 }
 
 
-InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
-	: UpdatableInset(tab), buffer(&buf)
+InsetTabular::InsetTabular(InsetTabular const & tab)
+	: UpdatableInset(tab), buffer_(tab.buffer_)
 {
-	tabular.reset(new LyXTabular(buf.params,
+	tabular.reset(new LyXTabular(buffer_->params,
 				     this, *(tab.tabular)));
 	the_locking_inset = 0;
 	old_locking_inset = 0;
@@ -200,15 +200,21 @@ InsetTabular::~InsetTabular()
 }
 
 
-Inset * InsetTabular::clone(Buffer const & buf) const
+Inset * InsetTabular::clone() const
 {
-	return new InsetTabular(*this, buf);
+	return new InsetTabular(*this);
 }
 
 
 BufferView * InsetTabular::view() const
 {
-	return buffer->getUser();
+	return buffer_->getUser();
+}
+
+
+void InsetTabular::buffer(Buffer * b)
+{
+	buffer_ = b;
 }
 
 
@@ -2891,6 +2897,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	if (!lex.isOK())
 		return -1;
 
+	// FIXME: even current_view would be better than this.
 	BufferView * const bv = inset.view();
 	Buffer const * const buffer = bv ? bv->buffer() : 0;
 	if (buffer)
@@ -2904,6 +2911,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 
 string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
+	// FIXME: even current_view would be better than this.
 	BufferView * const bv = inset.view();
 	Buffer const * const buffer = bv ? bv->buffer() : 0;
 	if (!buffer)

@@ -53,7 +53,7 @@ void InsetTheorem::write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetTheorem::clone(Buffer const &, bool) const
+Inset * InsetTheorem::clone() const
 {
 #ifdef WITH_WARNINGS
 #warning Is this inset used? If YES this is WRONG!!! (Jug)

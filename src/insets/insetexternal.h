@@ -69,7 +69,7 @@ public:
 	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
 
 	///
-	virtual Inset * clone(Buffer const &) const;
+	virtual Inset * clone() const;
 
 	/// returns the text of the button
 	virtual string const getScreenLabel(Buffer const *) const;

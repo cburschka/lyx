@@ -33,6 +33,8 @@ public:
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
+	InsetCommand(InsetCommand const &);
+	///
 	void write(Buffer const *, std::ostream & os) const
 		{ p_.write(os); }
 	///

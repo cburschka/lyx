@@ -206,8 +206,7 @@ Inset * createInset(FuncRequest const & cmd)
 			InsetGraphicsParams igp;
 			InsetGraphicsMailer::string2params(cmd.argument, igp);
 			InsetGraphics * inset = new InsetGraphics;
-			string const fpath = cmd.view()->buffer()->filePath();
-			inset->setParams(igp, fpath);
+			inset->setParams(igp);
 			return inset;
 
 		} else if (name == "include") {

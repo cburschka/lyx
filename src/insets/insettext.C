@@ -224,7 +224,7 @@ void InsetText::clear(bool just_mark_erased)
 }
 
 
-Inset * InsetText::clone(Buffer const &) const
+Inset * InsetText::clone() const
 {
 	return new InsetText(*this);
 }

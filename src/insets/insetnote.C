@@ -53,7 +53,7 @@ InsetNote::InsetNote(InsetNote const & in)
 }
 
 
-Inset * InsetNote::clone(Buffer const &) const
+Inset * InsetNote::clone() const
 {
 	return new InsetNote(*this);
 }

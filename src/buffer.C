@@ -369,7 +369,6 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 		lex.pushToken(token);
 
 		Paragraph par;
-		par.owningBuffer(*this);
 		par.params().depth(depth);
 		if (params.tracking_changes)
 			par.trackChanges();

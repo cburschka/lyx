@@ -113,16 +113,10 @@ InsetFormula::~InsetFormula()
 {}
 
 
-Inset * InsetFormula::clone(Buffer const &) const
+Inset * InsetFormula::clone() const
 {
 	return new InsetFormula(*this);
 }
-
-
-// Inset * InsetFormula::clone(Buffer const &, bool) const
-// {
-//	return new InsetFormula(*this);
-// }
 
 
 void InsetFormula::write(Buffer const *, ostream & os) const

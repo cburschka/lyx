@@ -180,7 +180,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetWrap::clone(Buffer const &) const
+Inset * InsetWrap::clone() const
 {
 	return new InsetWrap(*this);
 }

@@ -28,9 +28,10 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 {}
 
 
-// InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
-//	: InsetCommand(p, false), isLatex(buf.isLatex())
-// {}
+InsetRef::InsetRef(InsetRef const & ir)
+	: InsetCommand(ir), isLatex(ir.isLatex)
+{
+}
 
 
 InsetRef::~InsetRef()

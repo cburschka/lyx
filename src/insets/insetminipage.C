@@ -93,7 +93,7 @@ InsetMinipage::InsetMinipage(InsetMinipage const & in)
 {}
 
 
-Inset * InsetMinipage::clone(Buffer const &) const
+Inset * InsetMinipage::clone() const
 {
 	return new InsetMinipage(*this);
 }

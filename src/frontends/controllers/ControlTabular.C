@@ -18,7 +18,6 @@
 #include "support/LAssert.h"
 
 
-
 ControlTabular::ControlTabular(Dialog & parent)
 	: Dialog::Controller(parent), active_cell_(-1)
 {}

@@ -192,22 +192,14 @@ void InsetInclude::set(Params const & p)
 }
 
 
-Inset * InsetInclude::clone(Buffer const & buffer) const
+Inset * InsetInclude::clone() const
 {
-	Params p(params_);
-	p.masterFilename_ = buffer.fileName();
+	//Params p(params_);
+	//p.masterFilename_ = buffer.fileName();
+#warning FIXME: broken cross-doc copy/paste - must fix
 
-	return new InsetInclude(p);
+	return new InsetInclude(params_);
 }
-
-
-// Inset * InsetInclude::clone(Buffer const & buffer, bool) const
-// {
-//	Params p(params_);
-//	p.masterFilename_ = buffer.fileName();
-
-//	return new InsetInclude(p);
-// }
 
 
 void InsetInclude::write(Buffer const *, ostream & os) const

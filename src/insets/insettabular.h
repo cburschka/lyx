@@ -76,11 +76,11 @@ public:
 	///
 	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
 	///
-	InsetTabular(InsetTabular const &, Buffer const &);
+	InsetTabular(InsetTabular const &);
 	///
 	~InsetTabular();
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -228,6 +228,10 @@ public:
 
 	///
 	virtual BufferView * view() const;
+
+	/// set the owning buffer
+	void buffer(Buffer * b);
+
 private:
 	///
 	void lfunMousePress(FuncRequest const &);
@@ -315,7 +319,7 @@ private:
 	///
 	InsetText * old_locking_inset;
 	///
-	Buffer const * buffer;
+	Buffer const * buffer_;
 	///
 	mutable LyXCursor cursor_;
 	///

@@ -84,14 +84,13 @@ Paragraph::Paragraph(Paragraph const & lp)
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout_ = lp.layout();
-	buffer_ = lp.buffer_;
 
 	// copy everything behind the break-position to the new paragraph
 	insetlist = lp.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it->inset = it->inset->clone(**buffer_);
+		it->inset = it->inset->clone();
 		// tell the new inset who is the boss now
 		it->inset->parOwner(this);
 	}
@@ -231,7 +230,7 @@ void Paragraph::copyIntoMinibuffer(Buffer const & buffer, pos_type pos) const
 	minibuffer_inset = 0;
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (getInset(pos)) {
-			minibuffer_inset = getInset(pos)->clone(buffer);
+			minibuffer_inset = getInset(pos)->clone();
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';

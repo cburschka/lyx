@@ -66,7 +66,7 @@ public:
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	Inset * clone(Buffer const &) const;
+	Inset * clone() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

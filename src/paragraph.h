@@ -20,8 +20,6 @@
 
 #include "LString.h"
 
-#include <boost/optional.hpp>
-
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -293,15 +291,10 @@ public:
 	ParagraphParameters const & params() const;
 	///
 	InsetList insetlist;
-	///
-	void owningBuffer(Buffer const & b) {
-		buffer_.reset(&b);
-	}
+
 private:
 	///
 	LyXLayout_ptr layout_;
-	///
-	boost::optional<Buffer const *> buffer_;
 
 	struct Pimpl;
 	///
