@@ -137,6 +137,24 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 		}
 	}
 	inset.read(buf, lex);
+
+#ifndef INHERIT_LANG
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+#else 
+	LyXFont font(LyXFont::ALL_INHERIT);
+#endif
+
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
+	Paragraph * par = inset.paragraph();
+	while (par) {
+		Paragraph::size_type siz = par->size();
+		for (Paragraph::size_type i = 0; i < siz; ++i) {
+			par->setFont(i, font);
+		}
+		par = par->next();
+	}
+
 	if (!token_found) {
 		if (collapsed_) {
 			status(0, Collapsed);
@@ -167,7 +185,33 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	os << getInsetName() << "\n"
 	   << "status "<< st << "\n";
 
-	inset.writeParagraphData(buf, os);
+	//inset.writeParagraphData(buf, os);
+	string const layout =
+		textclasslist.NameOfLayout(buf->params.textclass, 0);
+	Paragraph * par = inset.paragraph();
+	while (par) {
+		os << "\n\\layout " << layout << "\n";
+		Paragraph::size_type siz = par->size();
+		for (Paragraph::size_type i = 0; i < siz; ++i) {
+			Paragraph::value_type c = par->getChar(i);
+			switch (c) {
+			case Paragraph::META_INSET:
+			case Paragraph::META_HFILL:
+				lyxerr << "Element is not allowed in insertERT"
+				       << std::endl;
+			case Paragraph::META_NEWLINE:
+				os << "\n\\newline \n";
+				break;
+			case '\\':
+				os << "\n\\backslash \n";
+				break;
+			default:
+				os << c;
+				break;
+			}
+		}
+		par = par->next();
+	}
 }
 
 
@@ -272,9 +316,9 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 {
 	Paragraph * par = inset.paragraph();
 	while (par) {
-		Paragraph::size_type siz = inset.paragraph()->size();
-		for (Paragraph::size_type i = 0; i != siz; ++i) {
-			char c = inset.paragraph()->getChar(i);
+		Paragraph::size_type siz = par->size();
+		for (Paragraph::size_type i = 0; i < siz; ++i) {
+			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_NEWLINE:
 				os << '\n';
@@ -285,6 +329,8 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 			}
 		}
 		par = par->next();
+		if (par)
+			os << "\n\n";
 	}
 	
 	return 1;
@@ -329,6 +375,12 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 	switch(action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	case LFUN_BACKSPACE:
+	case LFUN_BACKSPACE_SKIP:
+	case LFUN_DELETE:
+	case LFUN_DELETE_SKIP:
+	case LFUN_DELETE_LINE_FORWARD:
+	case LFUN_CUT:
 		set_latex_font(bv);
 		break;
 	

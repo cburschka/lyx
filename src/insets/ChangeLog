@@ -1,3 +1,16 @@
+2001-08-18  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetert.C (latex): Fix output for multiple paragraphs.
+	(write): New code for writing paragraph data.
+	(read): Set font after reading the inset.
+	(localDispatch): Call set_latex_font() for more cases.
+
+	* insetnote.h: Add empty validate method.
+	* insetert.h: Ditto
+
+	* insetnote.C (InsetNote): Set language to the language of the 
+	document.
+
 2001-08-16  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C: implemented the new FINISHED states.

@@ -80,6 +80,8 @@ public:
 	///
 	int docBook(Buffer const *, std::ostream &) const;
 	///
+	void validate(LaTeXFeatures &) const {}
+	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 	                                     string const &);
 	///

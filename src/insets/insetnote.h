@@ -32,14 +32,16 @@ public:
 	/// constructor with initial contents
 	InsetNote(Buffer const *, string const & contents, bool collapsed);
 	///
-	virtual string const editMessage() const;
+	string const editMessage() const;
 	///
-	virtual Inset::Code lyxCode() const { return Inset::IGNORE_CODE; }
+	Inset::Code lyxCode() const { return Inset::IGNORE_CODE; }
 	///
-	virtual void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	virtual int latex(Buffer const *, std::ostream &, bool, bool) const
+	int latex(Buffer const *, std::ostream &, bool, bool) const
 		{ return 0; }
+	///
+	void validate(LaTeXFeatures &) const {}
 private:
 	/// used by the constructors
 	void init();
