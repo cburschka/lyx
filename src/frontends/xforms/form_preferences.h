@@ -100,7 +100,9 @@ struct FD_form_colors {
 	FL_OBJECT *slider_red;
 	FL_OBJECT *slider_green;
 	FL_OBJECT *slider_blue;
-	FL_OBJECT *button_colorspace;
+	FL_OBJECT *group_radio_printto;
+	FL_OBJECT *radio_hsv;
+	FL_OBJECT *radio_rgb;
 	FL_OBJECT *text_color_values;
 	FL_OBJECT *button_color;
 	FL_OBJECT *button_modify;

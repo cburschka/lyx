@@ -819,7 +819,7 @@ argument:
 Name: form_colors
 Width: 450
 Height: 360
-Number of Objects: 12
+Number of Objects: 15
 
 --------------------
 class: FL_BOX
@@ -971,22 +971,77 @@ argument: 0
 	slsize: 0.15
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 310 219 30 30
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
+colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
+size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_colorspace
+name: group_radio_printto
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 250 220 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_RIGHT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: HSV
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_hsv
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 335 220 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_RIGHT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: RGB
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_rgb
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
+	value: 1
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_TEXT
@@ -1246,7 +1301,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER

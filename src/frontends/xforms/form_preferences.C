@@ -325,9 +325,17 @@ FD_form_colors * FormPreferences::build_colors()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_slider_size(obj, 0.15);
-  fdui->button_colorspace = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 310, 219, 30, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+
+  fdui->group_radio_printto = fl_bgn_group();
+  fdui->radio_hsv = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 250, 220, 30, 30, _("HSV"));
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->radio_rgb = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 335, 220, 30, 30, _("RGB"));
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fl_end_group();
+
   fdui->text_color_values = obj = fl_add_text(FL_NORMAL_TEXT, 250, 250, 150, 30, "");
     fl_set_object_boxtype(obj, FL_DOWN_BOX);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);

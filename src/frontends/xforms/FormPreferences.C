@@ -499,7 +499,8 @@ void FormPreferences::Colors::build()
 	setPreHandler(dialog_->slider_red);
 	setPreHandler(dialog_->slider_green);
 	setPreHandler(dialog_->slider_blue);
-	setPreHandler(dialog_->button_colorspace);
+	setPreHandler(dialog_->radio_rgb);
+	setPreHandler(dialog_->radio_hsv);
 }
 
 string const
@@ -521,7 +522,8 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 		   ob == dialog_->slider_blue) {
 		str = N_("Find a new color.");
 
-	} else if (ob == dialog_->button_colorspace) {
+	} else if (ob == dialog_->radio_rgb ||
+		   ob == dialog_->radio_hsv) {
 		str = N_("Toggle between RGB and HSV color spaces.");
 	}
 
@@ -544,7 +546,8 @@ void FormPreferences::Colors::input(FL_OBJECT const * const ob)
 		   ob == dialog_->slider_blue) {
 		InputRGB();
 
-	} else if (ob == dialog_->button_colorspace) {
+	} else if (ob == dialog_->radio_rgb ||
+		   ob == dialog_->radio_hsv) {
 		SwitchColorSpace();
 
 	} else if (ob == dialog_->button_modify) {
@@ -847,16 +850,14 @@ void FormPreferences::Colors::Modify()
 
 void FormPreferences::Colors::SwitchColorSpace() const
 {
-	bool const pressed = fl_get_button(dialog_->button_colorspace);
+	bool const hsv = fl_get_button(dialog_->radio_hsv);
 
 	RGBColor col;
 	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
 
 	fl_freeze_form(dialog_->form);
 
-	if (pressed) {
-		fl_set_object_label(dialog_->button_colorspace, _("HSV"));
-
+	if (hsv) {
 		fl_hide_object(dialog_->slider_red);
 		fl_hide_object(dialog_->slider_blue);
 		fl_hide_object(dialog_->slider_green);
@@ -887,8 +888,6 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		fl_set_object_label(dialog_->text_color_values, label.c_str());
 		
 	} else {
-		fl_set_object_label(dialog_->button_colorspace, _("RGB"));
-
 		fl_show_object(dialog_->slider_red);
 		fl_show_object(dialog_->slider_blue);
 		fl_show_object(dialog_->slider_green);
