@@ -1,3 +1,8 @@
+2004-01-08  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* Dialog.C (hide): disconnect dialog/inset on hide (partial fix
+	to bug 1251)
+
 2004-01-08  Angus Leeming  <leeming@lyx.org>
 
 	* ControlBibtex.[Ch] (browse):

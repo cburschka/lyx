@@ -110,6 +110,7 @@ void Dialog::hide()
 
 	controller().clearParams();
 	view().hide();
+	kernel().disconnect(name());
 }
 
 
