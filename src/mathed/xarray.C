@@ -22,15 +22,13 @@ MathXArray::MathXArray()
 
 void MathXArray::metrics(MathStyles st) const
 {
-	if (data_.empty()) {
-		mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_); 
-		return;
-	}
-	
-	ascent_  = 0;
-	descent_ = 0;
-	width_   = 0;
 	style_   = st;
+	mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_);
+
+	if (data_.empty()) 
+		return;
+	
+	width_   = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
 	for (int pos = 0; pos < data_.size(); ++pos) {
