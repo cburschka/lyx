@@ -26,9 +26,6 @@ Qt2BC::Qt2BC(string const & cancel, string const & close)
 
 void Qt2BC::setButtonEnabled(QButton * obj, bool enabled)
 {
-	lyxerr << "Qt2BC: setting button " 
-		<< obj << " to " << enabled << std::endl;
- 
 	obj->setEnabled(enabled);
 }
 
@@ -38,7 +35,7 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 	// yuck, rtti, but the user comes first
 	if (obj->inherits("QLineEdit")) {
 		QLineEdit * le(static_cast<QLineEdit*>(obj)); 
-		le->setReadOnly(enabled);
+		le->setReadOnly(!enabled);
 	} else {
 		obj->setEnabled(enabled);
 	}

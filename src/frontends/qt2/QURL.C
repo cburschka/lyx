@@ -41,8 +41,6 @@ void QURL::build_dialog()
  
 void QURL::update_contents()
 {
-	lyxerr << "update_contents URL" << std::endl;
-	lyxerr << dialog_->okPB << std::endl;
 	dialog_->urlED->setText(controller().params().getContents().c_str());
 	dialog_->nameED->setText(controller().params().getOptions().c_str());
 	dialog_->hyperlinkCB->setChecked(controller().params().getCmdName() != "url");
