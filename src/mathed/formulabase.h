@@ -134,6 +134,8 @@ protected:
 	void metrics(BufferView * bv, LyXFont const & font) const;
 	///
 	void metrics(BufferView * bv = 0) const;
+	///
+	void handleFont(BufferView * bv, string const & arg, MathTextCodes t);
 
 	///
 	mutable int xo_;

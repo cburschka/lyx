@@ -67,16 +67,6 @@ int first_x;
 int first_y;
 
 
-void handleFont(BufferView * bv, string const & arg, MathTextCodes t)
-{
-	if (mathcursor->selection())
-		bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->handleFont(t);
-	for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
-		mathcursor->insert(*it);
-}
-
-
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
 	if (!bv->insertInset(new_inset)) {
@@ -176,6 +166,20 @@ void InsetFormulaBase::edit(BufferView * bv, bool front)
 	mathcursor = new MathCursor(this, front);
 	metrics(bv);
 	bv->updateInset(this, false);
+}
+
+
+void InsetFormulaBase::handleFont
+	(BufferView * bv, string const & arg, MathTextCodes t)
+{
+	if (mathcursor->selection()) {
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		updateLocal(bv, true);
+	}
+	mathcursor->handleFont(t);
+	for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
+		mathcursor->insert(*it);
+	updateLocal(bv, false);
 }
 
 
