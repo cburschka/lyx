@@ -19,7 +19,7 @@ MathInset * MathCheatInset::clone() const
 }
 
 
-void MathCheatInset::draw(Painter & pain, int x, int y) const
+void MathCheatInset::draw(Painter &, int, int) const
 {}
 
 
