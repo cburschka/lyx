@@ -518,7 +518,7 @@ bool MathCursor::up(bool sel)
 	selHandle(sel);
 
 	if (selection_)
-		return idxUp() || popLeft();
+		return goUp();
 
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
@@ -545,7 +545,7 @@ bool MathCursor::up(bool sel)
 		}
 	}
 
-	return idxUp() || popLeft();
+	return goUp();
 }
 
 
@@ -556,7 +556,7 @@ bool MathCursor::down(bool sel)
 	selHandle(sel);
 
 	if (selection_) 
-		return idxDown() || popLeft();
+		return goDown();
 
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
@@ -585,7 +585,7 @@ bool MathCursor::down(bool sel)
 		}
 	}
 
-	return idxDown() || popLeft();
+	return goDown();
 }
 
 
@@ -1269,31 +1269,37 @@ void MathCursor::gotoX(int x)
 }
 
 
-bool MathCursor::idxUp()
+bool MathCursor::goUp()
 {
-	int x = par()->xo() + xpos();
-	do {
-		if (par()->idxUp(idx(), pos())) {
-			gotoX(x - par()->xo());
-			return true;
-		}
-	} while (popLeft());
-	gotoX(x - par()->xo());
-	return true;
+	int x0;
+	int y0;
+	getPos(x0, y0);
+	std::vector<MathCursorPos> save = Cursor_;
+	y0 -= xarray().ascent();
+	for (int y = y0 - 4; y > outerPar()->yo() - outerPar()->ascent(); y -= 4) {
+		setPos(x0, y);
+		if (save != Cursor_ && xarray().yo() < y0)
+			return true;	
+	}
+	Cursor_ = save;
+	return false;
 }
 
 
-bool MathCursor::idxDown()
+bool MathCursor::goDown()
 {
-	int x = par()->xo() + xpos();
-	do {
-		if (par()->idxDown(idx(), pos())) {
-			gotoX(x - par()->xo());
-			return true;
-		}
-	} while (popLeft());
-	gotoX(x - par()->xo());
-	return true;
+	int x0;
+	int y0;
+	getPos(x0, y0);
+	std::vector<MathCursorPos> save = Cursor_;
+	y0 += xarray().descent();
+	for (int y = y0 + 4; y < outerPar()->yo() + outerPar()->descent(); y += 4) {
+		setPos(x0, y);
+		if (save != Cursor_ && xarray().yo() > y0)
+			return true;	
+	}
+	Cursor_ = save;
+	return false;
 }
 
 

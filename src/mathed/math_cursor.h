@@ -91,18 +91,18 @@ public:
 	void first();
 	/// Put the cursor in the last position
 	void last();
-	///
+	/// moves cursor position one cell to the left
 	bool posLeft();
-	///
+	/// moves cursor position one cell to the right
 	bool posRight();
-	/// moves position one cell to the left
+	/// moves cursor index one cell to the left
 	bool idxLeft();
-	/// moves position one cell to the right
+	/// moves cursor index one cell to the right
 	bool idxRight();
-	/// moves position one cell up
-	bool idxUp();
-	/// moves position one cell down
-	bool idxDown();
+	/// moves position somehow up
+	bool goUp();
+	/// moves position somehow down
+	bool goDown();
 	///
 	void idxNext();
 	///
