@@ -118,29 +118,29 @@ FormPreferences::~FormPreferences()
 
 void FormPreferences::redraw()
 {
-	if( !(form() && form()->visible) )
+	if (!(form() && form()->visible))
 		return;
-	fl_redraw_form( form() );
+	fl_redraw_form(form());
 
 	FL_FORM * form2 = fl_get_active_folder(dialog_->tabfolder_prefs);
-	if( !(form2 && form2->visible) )
+	if (!(form2 && form2->visible))
 		return;
-	fl_redraw_form( form2 );
+	fl_redraw_form(form2);
 
 	FL_FORM * form3 = 0;
-	if( form2 == converters_tab_->form )
+	if (form2 == converters_tab_->form)
 		form3 = fl_get_active_folder(converters_tab_->tabfolder_outer);
 
-	else if( form2 == look_n_feel_tab_->form )
+	else if (form2 == look_n_feel_tab_->form)
 		form3 = fl_get_active_folder(look_n_feel_tab_->tabfolder_outer);
 
-	else if( form2 == inputs_tab_->form )
+	else if (form2 == inputs_tab_->form)
 		form3 = fl_get_active_folder(inputs_tab_->tabfolder_outer);
 
-	else if( form2 == outputs_tab_->form )
+	else if (form2 == outputs_tab_->form)
 		form3 = fl_get_active_folder(outputs_tab_->tabfolder_outer);
 
-	else if( form2 == usage_tab_->form )
+	else if (form2 == usage_tab_->form)
 		form3 = fl_get_active_folder(usage_tab_->tabfolder_outer);
 
 	if (form3 && form3->visible)
@@ -159,9 +159,9 @@ void FormPreferences::ok()
 {
 	FormBase::ok();
 
-	if( modifiedXformPrefs ) {
+	if (modifiedXformPrefs) {
 		string filename = user_lyxdir + "/preferences.xform";
-		modifiedXformPrefs = ! XformColor::write( filename );
+		modifiedXformPrefs = ! XformColor::write(filename);
 	}
 	
 	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);

@@ -40,7 +40,7 @@ using std::endl;
 
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy ),
+	: FormInset(lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy),
 	  dialog_(0), inset_(0),
 	  // The buttons c-tor values are the number of buttons we use
 	  // This is only to reduce memory waste.

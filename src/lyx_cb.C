@@ -17,10 +17,8 @@
 #include FORMS_H_LOCATION
 #include "lyx.h"
 #include "layout_forms.h"
-//#include "form1.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"
-//#include "insets/insetref.h"
 #include "insets/insetlabel.h"
 #include "insets/figinset.h"
 #include "lyxfunc.h"
@@ -30,19 +28,14 @@
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h"
-//#include "BufferView.h"
 #include "lastfiles.h"
 #include "bufferview_funcs.h"
 #include "support/FileInfo.h"
 #include "support/syscall.h"
 #include "support/filetools.h"
 #include "support/path.h"
-//#include "support/lyxlib.h"
-//#include "lyxserver.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-//#include "CutAndPaste.h"
-//#include "exporter.h"
 
 using std::ifstream;
 using std::copy;
@@ -74,8 +67,6 @@ extern bool send_fax(string const & fname, string const & sendcmd);
 #endif
 
 extern void MenuSendto();
-
-//extern LyXServer * lyxserver;
 
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
@@ -148,15 +139,6 @@ void ToggleLockedInsetCursor(int x, int y, int asc, int desc);
   -----------------------------------------------------------------------
  */
 
-/* some function prototypes */
-
-int RunLinuxDoc(BufferView *, int, string const &);
-int RunDocBook(int, string const &);
-bool MenuWrite(Buffer * buf);
-bool MenuWriteAs(Buffer * buffer);
-void MenuReload(Buffer * buf);
-void MenuLayoutSave();
-
 
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,
@@ -180,16 +162,16 @@ void ShowMessage(Buffer const * buf,
 //
 
 // should be moved to lyxfunc.C
-bool MenuWrite(Buffer * buffer)
+bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
 	XFlush(fl_get_display());
 	if (!buffer->save()) {
-		string fname = buffer->fileName();
-		string s = MakeAbsPath(fname);
+		string const fname = buffer->fileName();
+		string const s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(s, 50),
 				_("(If not, document is not saved.)"))) {
-			return MenuWriteAs(buffer);
+			return MenuWriteAs(bv, buffer);
 		}
 		return false;
 	} else {
@@ -201,7 +183,7 @@ bool MenuWrite(Buffer * buffer)
 
 // should be moved to BufferView.C
 // Half of this func should be in LyXView, the rest in BufferView.
-bool MenuWriteAs(Buffer * buffer)
+bool MenuWriteAs(BufferView * bv, Buffer * buffer)
 {
 	// Why do we require BufferView::text to be able to write a
 	// document? I see no point in that. (Lgb)
@@ -211,7 +193,7 @@ bool MenuWriteAs(Buffer * buffer)
 	string oldname = fname;
 	LyXFileDlg fileDlg;
 
-	ProhibitInput(current_view);
+	ProhibitInput(bv);
 	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
 
@@ -223,7 +205,7 @@ bool MenuWriteAs(Buffer * buffer)
 			       "*.lyx", 
 			       OnlyFilename(fname));
 
-	AllowInput(current_view);
+	AllowInput(bv);
 
 	if (fname.empty())
 		return false;
@@ -259,7 +241,7 @@ bool MenuWriteAs(Buffer * buffer)
 		return false;
 	} // Check whether the file exists
 	else {
-		FileInfo myfile(s);
+		FileInfo const myfile(s);
 		if (myfile.isOK() && !AskQuestion(_("Document already exists:"), 
 						  MakeDisplayPath(s, 50),
 						  _("Replace file?")))
@@ -275,7 +257,7 @@ bool MenuWriteAs(Buffer * buffer)
 	// Small bug: If the save fails, we have irreversible changed the name
 	// of the document.
 	// Hope this is fixed this way! (Jug)
-	if (!MenuWrite(buffer)) {
+	if (!MenuWrite(bv, buffer)) {
 	    buffer->setFileName(oldname);
 	    buffer->setUnnamed(unnamed);
 	    ShowMessage(buffer, _("Document could not be saved!"),
@@ -317,6 +299,7 @@ int MenuRunChktex(Buffer * buffer)
 	}
 	return ret;
 }
+
 
 #if 0
 void MenuFax(Buffer * buffer)
@@ -393,7 +376,7 @@ void AutoSave(BufferView * bv)
 	
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
-	pid_t pid = fork(); // If you want to debug the autosave
+	pid_t const pid = fork(); // If you want to debug the autosave
 	// you should set pid to -1, and comment out the
 	// fork.
 	if (pid == 0 || pid == -1) {
@@ -402,7 +385,7 @@ void AutoSave(BufferView * bv)
 		// anyway.
 		bool failed = false;
 		
-		string tmp_ret = lyx::tempName();
+		string const tmp_ret = lyx::tempName();
 		if (!tmp_ret.empty()) {
 			bv->buffer()->writeFile(tmp_ret, 1);
 			// assume successful write of tmp_ret
@@ -530,10 +513,10 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 }
 
 
-void MenuInsertLabel(string const & arg)
+void MenuInsertLabel(BufferView * bv, string const & arg)
 {
 	string label(arg);
-	ProhibitInput(current_view);
+	ProhibitInput(bv);
 	if (label.empty()) {
 		pair<bool, string>
 			result = askForText(_("Enter new label to insert:"));
@@ -544,9 +527,9 @@ void MenuInsertLabel(string const & arg)
 	if (!label.empty()) {
 		InsetCommandParams p( "label", label );
 		InsetLabel * inset = new InsetLabel( p );
-		current_view->insertInset( inset );
+		bv->insertInset( inset );
 	}
-	AllowInput(current_view);
+	AllowInput(bv);
 }
 
 
@@ -554,7 +537,7 @@ void MenuInsertLabel(string const & arg)
 // current_view. (Lgb)
 void LayoutsCB(int sel, void *, Combox *)
 {
-	string tmp = tostr(sel);
+	string const tmp = tostr(sel);
 	current_view->owner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
 						      tmp);
 }
@@ -579,24 +562,23 @@ void MenuLayoutCharacter()
 }
 
 
-bool UpdateLayoutPreamble()
+bool UpdateLayoutPreamble(BufferView * bv)
 {
 	bool update = true;
-	if (!current_view->available())
+	if (!bv->available())
 		update = false;
 
 	if (update) {
 		fl_set_input(fd_form_preamble->input_preamble,
-			     current_view->buffer()->params.preamble.c_str());
+			     bv->buffer()->params.preamble.c_str());
 
-		if (current_view->buffer()->isReadonly()) {
+		if (bv->buffer()->isReadonly()) {
 			fl_deactivate_object(fd_form_preamble->input_preamble);
 			fl_deactivate_object(fd_form_preamble->button_ok);
 			fl_deactivate_object(fd_form_preamble->button_apply);
 			fl_set_object_lcol(fd_form_preamble->button_ok, FL_INACTIVE);
 			fl_set_object_lcol(fd_form_preamble->button_apply, FL_INACTIVE);
-		}
-		else {
+		} else {
 			fl_activate_object(fd_form_preamble->input_preamble);
 			fl_activate_object(fd_form_preamble->button_ok);
 			fl_activate_object(fd_form_preamble->button_apply);
@@ -614,7 +596,7 @@ void MenuLayoutPreamble()
 {
 	static int ow = -1, oh;
 
-	if (UpdateLayoutPreamble()) {
+	if (UpdateLayoutPreamble(current_view)) {
 		if (fd_form_preamble->form_preamble->visible) {
 			fl_raise_form(fd_form_preamble->form_preamble);
 		} else {
@@ -633,15 +615,15 @@ void MenuLayoutPreamble()
 }
 
 
-void MenuLayoutSave()
+void MenuLayoutSave(BufferView * bv)
 {
-	if (!current_view->available())
+	if (!bv->available())
 		return;
 
 	if (AskQuestion(_("Do you want to save the current settings"),
 			_("for Character, Document, Paper and Quotes"),
 			_("as default for new documents?")))
-		current_view->buffer()->saveParamsAsDefaults();
+		bv->buffer()->saveParamsAsDefaults();
 }
 
 
@@ -742,7 +724,8 @@ LyXFont const UserFreeFont(BufferParams const & params)
 
 
 /* callbacks for form form_title */
-extern "C" void TimerCB(FL_OBJECT *, long)
+extern "C"
+void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
 	if (lyxrc.show_banner
@@ -759,7 +742,8 @@ extern "C" void TimerCB(FL_OBJECT *, long)
 
 /* callbacks for form form_character */
 
-extern "C" void CharacterApplyCB(FL_OBJECT *, long)
+extern "C"
+void CharacterApplyCB(FL_OBJECT *, long)
 {
 	// we set toggleall locally here, since it should be true for
 	// all other uses of ToggleAndShow() (JMarc)
@@ -770,13 +754,15 @@ extern "C" void CharacterApplyCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void CharacterCloseCB(FL_OBJECT *, long)
+extern "C"
+void CharacterCloseCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_character->form_character);
 }
 
 
-extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
+extern "C"
+void CharacterOKCB(FL_OBJECT * ob, long data)
 {
 	CharacterApplyCB(ob, data);
 	CharacterCloseCB(ob, data);
@@ -785,13 +771,15 @@ extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_preamble */
 
-extern "C" void PreambleCancelCB(FL_OBJECT *, long)
+extern "C"
+void PreambleCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_preamble->form_preamble);
 }
 
 
-extern "C" void PreambleApplyCB(FL_OBJECT *, long)
+extern "C"
+void PreambleApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -803,7 +791,8 @@ extern "C" void PreambleApplyCB(FL_OBJECT *, long)
 }
 
    
-extern "C" void PreambleOKCB(FL_OBJECT * ob, long data)
+extern "C"
+void PreambleOKCB(FL_OBJECT * ob, long data)
 {
 	PreambleApplyCB(ob, data);
 	PreambleCancelCB(ob, data);

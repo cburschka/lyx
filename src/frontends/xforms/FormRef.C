@@ -34,7 +34,8 @@ static int const minw_hb = 250;
 static int minw_sb;
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
+	: FormCommand(lv, d, _("Reference"), new OkCancelReadOnlyPolicy),
+	  toggle(GOBACK), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -52,14 +53,14 @@ FormRef::~FormRef()
 
 FL_FORM * FormRef::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_) return dialog_->form;
 	return 0;
 }
 
 
 void FormRef::connect()
 {
-	fl_set_form_maxsize( form(), 2*minw_, minh_ );
+	fl_set_form_maxsize(form(), 2 * minw_, minh_);
 	FormCommand::connect();
 }
 	
@@ -85,16 +86,16 @@ void FormRef::build()
 
 	// Name is irrelevant to LaTeX documents
 	if (lv_->buffer()->isLatex()) {
-		fl_deactivate_object( dialog_->name );
-		fl_set_object_lcol( dialog_->name, FL_INACTIVE );
+		fl_deactivate_object(dialog_->name);
+		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
 	}
 	  
 	// Can change reference only through browser
-	fl_deactivate_object( dialog_->ref );
+	fl_deactivate_object(dialog_->ref);
 
-	bc_.setOK( dialog_->button_ok );
-	bc_.setCancel( dialog_->button_cancel );
-	bc_.addReadOnly( dialog_->type );
+	bc_.setOK(dialog_->button_ok);
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.addReadOnly(dialog_->type);
 	bc_.refresh();
 }
 
@@ -105,7 +106,7 @@ void FormRef::update()
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
 	Type type = getType();
-	fl_set_choice( dialog_->type, type+1 );
+	fl_set_choice(dialog_->type, type + 1);
 
 	toggle = GOBACK;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
@@ -113,82 +114,83 @@ void FormRef::update()
 	refs.clear();
 	if (inset_ == 0) {
 		refs = lv_->buffer()->getLabelList();
-		updateBrowser( refs );
+		updateBrowser(refs);
 		showBrowser();
 	} else {
 		hideBrowser();
 	}
-	bc_.readOnly( lv_->buffer()->isReadonly() );
+	bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
 
-void FormRef::updateBrowser( vector<string> keys ) const
+void FormRef::updateBrowser(vector<string> const & akeys) const
 {
-	if (fl_get_button( dialog_->sort ) )
-		sort( keys.begin(), keys.end() );
+	vector<string> keys(akeys);
+	if (fl_get_button( dialog_->sort))
+		sort(keys.begin(), keys.end());
 
-	fl_clear_browser( dialog_->browser );
+	fl_clear_browser(dialog_->browser);
 	for (vector<string>::const_iterator it = keys.begin();
-	     it != keys.end(); ++it )
-		fl_add_browser_line( dialog_->browser, (*it).c_str());
+	     it != keys.end(); ++it)
+		fl_add_browser_line(dialog_->browser, (*it).c_str());
 
 	if (keys.empty()) {
-		fl_add_browser_line( dialog_->browser,
-				     _("*** No labels found in document ***"));
+		fl_add_browser_line(dialog_->browser,
+				    _("*** No labels found in document ***"));
 
-		fl_deactivate_object( dialog_->browser );
-		fl_deactivate_object( dialog_->button_update );
-		fl_deactivate_object( dialog_->sort );
-		fl_set_object_lcol( dialog_->browser, FL_INACTIVE );
-		fl_set_object_lcol( dialog_->button_update, FL_INACTIVE );
-		fl_set_object_lcol( dialog_->sort, FL_INACTIVE );
+		fl_deactivate_object(dialog_->browser);
+		fl_deactivate_object(dialog_->button_update);
+		fl_deactivate_object(dialog_->sort);
+		fl_set_object_lcol(dialog_->browser, FL_INACTIVE);
+		fl_set_object_lcol(dialog_->button_update, FL_INACTIVE);
+		fl_set_object_lcol(dialog_->sort, FL_INACTIVE);
 	} else {
-		fl_set_browser_topline( dialog_->browser, 1 );
-		fl_activate_object( dialog_->browser );
-		fl_set_object_lcol( dialog_->browser, FL_BLACK );
-		fl_activate_object( dialog_->button_update );
-		fl_set_object_lcol( dialog_->button_update, FL_BLACK );
-		fl_activate_object( dialog_->sort );
-		fl_set_object_lcol( dialog_->sort, FL_BLACK );
+		fl_set_browser_topline(dialog_->browser, 1);
+		fl_activate_object(dialog_->browser);
+		fl_set_object_lcol(dialog_->browser, FL_BLACK);
+		fl_activate_object(dialog_->button_update);
+		fl_set_object_lcol(dialog_->button_update, FL_BLACK);
+		fl_activate_object(dialog_->sort);
+		fl_set_object_lcol(dialog_->sort, FL_BLACK);
 	}
 }
 
 
 void FormRef::showBrowser() const
 {
-	fl_show_object( dialog_->browser );
-	fl_show_object( dialog_->button_update );
-	fl_show_object( dialog_->sort );
+	fl_show_object(dialog_->browser);
+	fl_show_object(dialog_->button_update);
+	fl_show_object(dialog_->sort);
 
-	setSize( minw_sb, 0 );
+	setSize(minw_sb, 0);
 
-	fl_deactivate_object( dialog_->type );
-	fl_set_object_lcol( dialog_->type, FL_INACTIVE );
-	fl_deactivate_object( dialog_->button_go );
-	fl_set_object_lcol( dialog_->button_go, FL_INACTIVE );
-	fl_set_object_lcol( dialog_->ref, FL_INACTIVE );
+	fl_deactivate_object(dialog_->type);
+	fl_set_object_lcol(dialog_->type, FL_INACTIVE);
+	fl_deactivate_object(dialog_->button_go);
+	fl_set_object_lcol(dialog_->button_go, FL_INACTIVE);
+	fl_set_object_lcol(dialog_->ref, FL_INACTIVE);
 	bc_.valid(false);
 }
 
 
 void FormRef::hideBrowser() const
 {
-	fl_hide_object( dialog_->browser );
-	fl_hide_object( dialog_->button_update );
-	fl_hide_object( dialog_->sort );
+	fl_hide_object(dialog_->browser);
+	fl_hide_object(dialog_->button_update);
+	fl_hide_object(dialog_->sort);
 
-	setSize( minw_hb, 280 );
+	setSize(minw_hb, 280);
 
-	fl_activate_object( dialog_->type );
-	fl_set_object_lcol( dialog_->type, FL_BLACK );
-	fl_activate_object( dialog_->button_go );
-	fl_set_object_lcol( dialog_->button_go, FL_BLACK );
-	fl_set_object_lcol( dialog_->ref, FL_BLACK );
+	fl_activate_object(dialog_->type);
+	fl_set_object_lcol(dialog_->type, FL_BLACK);
+	fl_activate_object(dialog_->button_go);
+	fl_set_object_lcol(dialog_->button_go, FL_BLACK);
+	fl_set_object_lcol(dialog_->ref, FL_BLACK);
 	bc_.invalid();
 }
 
 
-void FormRef::setSize( int w, int dx ) const
+void FormRef::setSize(int w, int dx) const
 {
 	static int x1 = dialog_->name->x;
 	static int y1 = dialog_->name->y;
@@ -205,26 +207,26 @@ void FormRef::setSize( int w, int dx ) const
 
 	if (form()->w != w) {
 		minw_ = w;
-		fl_set_form_size( form(), minw_, minh_ );
+		fl_set_form_size(form(), minw_, minh_);
 	} else
 		return;
 	
-	fl_set_object_position( dialog_->name,   x1-dx, y1 );
-	fl_set_object_position( dialog_->ref,    x2-dx, y2 );
-	fl_set_object_position( dialog_->type,   x3-dx, y3 );
-	fl_set_object_position( dialog_->button_go,     x4-dx, y4 );
-	fl_set_object_position( dialog_->button_ok,     x5-dx, y5 );
-	fl_set_object_position( dialog_->button_cancel, x6-dx, y6 );
+	fl_set_object_position(dialog_->name,   x1 - dx, y1);
+	fl_set_object_position(dialog_->ref,    x2 - dx, y2);
+	fl_set_object_position(dialog_->type,   x3 - dx, y3);
+	fl_set_object_position(dialog_->button_go,     x4 - dx, y4);
+	fl_set_object_position(dialog_->button_ok,     x5 - dx, y5);
+	fl_set_object_position(dialog_->button_cancel, x6 - dx, y6);
 
 	// These two must be reset apparently
 	// Name is irrelevant to LaTeX documents
 	if (lv_->buffer()->isLatex()) {
-		fl_deactivate_object( dialog_->name );
-		fl_set_object_lcol( dialog_->name, FL_INACTIVE );
+		fl_deactivate_object(dialog_->name);
+		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
 	}
 	  
 	// Can change reference only through browser
-	fl_deactivate_object( dialog_->ref );
+	fl_deactivate_object(dialog_->ref);
 }
 
 
@@ -256,9 +258,9 @@ void FormRef::apply()
 // Seems okay except that goref and goback shouldn't
 // affect the status of ok.
 #endif
-bool FormRef::input( FL_OBJECT *, long data )
+bool FormRef::input(FL_OBJECT *, long data)
 {
-	bool activate( true );
+	bool activate(true);
 	switch (data) {
 	// goto reference / go back
 	case 1:
@@ -293,31 +295,31 @@ bool FormRef::input( FL_OBJECT *, long data )
 	// choose browser key
 	case 2:
 	{
-		unsigned int sel = fl_get_browser( dialog_->browser );
-		if (sel < 1 || sel > refs.size() ) break;
+		unsigned int sel = fl_get_browser(dialog_->browser);
+		if (sel < 1 || sel > refs.size()) break;
 
-		string s = fl_get_browser_line( dialog_->browser, sel );
-		fl_set_input( dialog_->ref, s.c_str());
-		params.setContents( s );
+		string s = fl_get_browser_line(dialog_->browser, sel);
+		fl_set_input(dialog_->ref, s.c_str());
+		params.setContents(s);
 
 		toggle = GOBACK;
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
 		fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
-		fl_activate_object( dialog_->type );
-		fl_set_object_lcol( dialog_->type, FL_BLACK );
-		fl_activate_object( dialog_->button_go );
-		fl_set_object_lcol( dialog_->button_go, FL_BLACK );
-		fl_set_object_lcol( dialog_->ref, FL_BLACK );
+		fl_activate_object(dialog_->type);
+		fl_set_object_lcol(dialog_->type, FL_BLACK);
+		fl_activate_object(dialog_->button_go);
+		fl_set_object_lcol(dialog_->button_go, FL_BLACK);
+		fl_set_object_lcol(dialog_->ref, FL_BLACK);
 	}
 	break;
 
 	// update or sort
 	case 3:
 	{
-		fl_freeze_form( form() );
-		updateBrowser( refs );
-		fl_unfreeze_form( form() );
+		fl_freeze_form(form());
+		updateBrowser(refs);
+		fl_unfreeze_form(form());
 	}
 	break;
 
@@ -325,8 +327,8 @@ bool FormRef::input( FL_OBJECT *, long data )
 	case 4:
 	{
 		Type type = static_cast<Type>( 
-			fl_get_choice(dialog_->type) - 1 );
-		if (params.getCmdName() == getName( type )
+			fl_get_choice(dialog_->type) - 1);
+		if (params.getCmdName() == getName(type)
 		    && inset_) {
 			activate = false;
 		}
@@ -363,7 +365,7 @@ FormRef::Type FormRef::getType() const
 }
 
 
-string FormRef::getName( Type type ) const
+string const FormRef::getName(Type type) const
 {
 	string name;
 

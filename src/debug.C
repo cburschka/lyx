@@ -12,9 +12,11 @@
 #endif
 
 #include <config.h>
-#include "debug.h"
 
 #include <iomanip>
+
+#include "debug.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::setw;
@@ -27,26 +29,27 @@ struct error_item {
 };
 
 static error_item errorTags[] = {
-	{ Debug::NONE,		"none",		"No debugging message"},
-	{ Debug::INFO,		"info",		"General information"},
-	{ Debug::INIT,		"init",		"Program initialisation"},
-	{ Debug::KEY,		"key",		"Keyboard events handling"},
-	{ Debug::GUI,		"gui",		"GUI handling"},
-	{ Debug::PARSER,	"parser",	"Lyxlex grammer parser"},
-	{ Debug::LYXRC,		"lyxrc",	"Configuration files reading"},
-	{ Debug::KBMAP,		"kbmap",	"Custom keyboard definition"},
-	{ Debug::LATEX,		"latex",	"LaTeX generation/execution"},
-	{ Debug::MATHED,	"mathed",	"Math editor"},
-	{ Debug::FONT,		"font",		"Font handling"},
-	{ Debug::TCLASS,	"tclass",	"Textclass files reading"},
-	{ Debug::LYXVC,		"lyxvc",	"Version control"},
-	{ Debug::LYXSERVER,	"lyxserver",	"External control interface"},
-	{ Debug::ROFF,		"roff",		"Keep *roff temporary files"},
-	{ Debug::ACTION,	"action",	"User commands"},
-	{ Debug::LYXLEX,        "lyxlex",       "The LyX Lexxer"},
-	{ Debug::DEPEND,        "depend",       "Dependency information"},
-	{ Debug::INSETS,	"insets",	"LyX Insets"},
-        { Debug::ANY,		"any",          "All debugging messages"}
+	{ Debug::NONE,      "none",      N_("No debugging message")},
+	{ Debug::INFO,      "info",      N_("General information")},
+	{ Debug::INIT,      "init",      N_("Program initialisation")},
+	{ Debug::KEY,       "key",       N_("Keyboard events handling")},
+	{ Debug::GUI,       "gui",       N_("GUI handling")},
+	{ Debug::PARSER,    "parser",    N_("Lyxlex grammer parser")},
+	{ Debug::LYXRC,     "lyxrc",     N_("Configuration files reading")},
+	{ Debug::KBMAP,     "kbmap",     N_("Custom keyboard definition")},
+	{ Debug::LATEX,     "latex",     N_("LaTeX generation/execution")},
+	{ Debug::MATHED,    "mathed",    N_("Math editor")},
+	{ Debug::FONT,      "font",      N_("Font handling")},
+	{ Debug::TCLASS,    "tclass",    N_("Textclass files reading")},
+	{ Debug::LYXVC,     "lyxvc",     N_("Version control")},
+	{ Debug::LYXSERVER, "lyxserver", N_("External control interface")},
+	{ Debug::ROFF,      "roff",      N_("Keep *roff temporary files")},
+	{ Debug::ACTION,    "action",    N_("User commands")},
+	{ Debug::LYXLEX,    "lyxlex",    N_("The LyX Lexxer")},
+	{ Debug::DEPEND,    "depend",    N_("Dependency information")},
+	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
+	{ Debug::FILES,     "files",     N_("Files used by LyX")},
+        { Debug::ANY,       "any",       N_("All debugging messages")}
 };
 
 
@@ -58,7 +61,7 @@ Debug::type const Debug::ANY = Debug::type(
 	Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
 	Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
 	Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
-	Debug::DEPEND | Debug::INSETS);
+	Debug::DEPEND | Debug::INSETS | Debug::FILES);
 
 
 Debug::type Debug::value(string const & val) 
@@ -94,8 +97,8 @@ void Debug::showLevel(ostream & o, Debug::type level)
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level)
-			o << "Debugging `" << errorTags[i].name
-			  << "' (" << errorTags[i].desc << ')' << endl;
+			o << _("Debugging `") << errorTags[i].name
+			  << "' (" << _(errorTags[i].desc) << ')' << endl;
 }
 
 
@@ -104,6 +107,6 @@ void Debug::showTags(ostream & os)
 	for (int i = 0 ; i < numErrorTags ; ++i)
 		os << setw(7) << errorTags[i].level
 		   << setw(10) << errorTags[i].name
-		   << "  " << errorTags[i].desc << '\n';
+		   << "  " << _(errorTags[i].desc) << '\n';
 	os.flush();
 }

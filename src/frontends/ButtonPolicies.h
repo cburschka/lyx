@@ -221,8 +221,10 @@ private:
     The state machine design for this policy allows changes to occur within
     the dialog while a file is read-only -- the okay button is disabled until
     a read-write input is given.  When the file is made read-write the dialog
-    will then be in the correct state (as if the file had always been read-write).
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    will then be in the correct state (as if the file had always been
+    read-write).
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
@@ -256,16 +258,18 @@ private:
 };
 
 
-/** Ok, Apply and Cancel buttons for dialogs where read-only operation is blocked.
+/** Ok, Apply and Cancel buttons for dialogs where read-only operation
+    is blocked.
     Repeated Apply are not allowed.  Likewise,  Ok cannot follow Apply without
-    some valid input. That is, the dialog contents must change between each Apply
-    or Apply and Ok.
+    some valid input. That is, the dialog contents must change between
+    each Apply or Apply and Ok.
     The state machine design for this policy allows changes to occur within
     the dialog while a file is read-only -- the Ok+Apply buttons are disabled
     until a read-write input is given.  When the file is made read-write the
     dialog will then be in the correct state (as if the file had always been
     read-write).
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
@@ -300,14 +304,16 @@ private:
 };
 
 
-/** Ok, Apply and Cancel buttons for dialogs where read-only operation is blocked.
+/** Ok, Apply and Cancel buttons for dialogs where read-only
+    operation is blocked.
     Repeated Apply is allowed.  Likewise,  Ok can follow Apply.
     The state machine design for this policy allows changes to occur within
     the dialog while a file is read-only -- the Ok+Apply buttons are disabled
     until a read-write input is given.  When the file is made read-write the
     dialog will then be in the correct state (as if the file had always been
     read-write).
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
@@ -342,7 +348,8 @@ private:
 
 
 /** Ok, Apply and Cancel buttons for dialogs where repeated Apply is allowed.
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
@@ -374,7 +381,8 @@ private:
 
 
 /** Ok, Apply and Cancel buttons for dialogs with no repeated Apply.
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
@@ -407,7 +415,8 @@ private:
 
 /** Defines the policy used by the Preferences dialog.
     Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close
+    and vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */

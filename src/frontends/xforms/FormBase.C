@@ -22,6 +22,7 @@
 #include "LyXView.h"
 #include "xform_macros.h"
 #include "support/LAssert.h"
+//#include "debug.h"
 
 // The current scheme muddles debugging.
 // Can we please use some other means to create these functions?
@@ -54,20 +55,21 @@ FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 
 FormBase::~FormBase()
 {
+	//lyxerr << "bp_[" << bp_ << "]" << endl;
 	delete bp_;
 }
 
 
 void FormBase::redraw()
 {
-	if( form() && form()->visible )
-		fl_redraw_form( form() );
+	if (form() && form()->visible)
+		fl_redraw_form(form());
 }
 
 
 void FormBase::connect()
 {
-	fl_set_form_minsize( form(), minw_, minh_ );
+	fl_set_form_minsize(form(), minw_, minh_);
 }
 
 
@@ -79,9 +81,9 @@ void FormBase::show()
 				    C_FormBaseWMHideCB, 0);
 	}
 
-	fl_freeze_form( form() );
+	fl_freeze_form(form());
 	update();  // make sure its up-to-date
-	fl_unfreeze_form( form() );
+	fl_unfreeze_form(form());
 
 	if (form()->visible) {
 		fl_raise_form(form());
@@ -151,7 +153,7 @@ void FormBase::CancelCB(FL_OBJECT * ob, long)
 }
 
 
-void FormBase::InputCB(FL_OBJECT * ob, long data )
+void FormBase::InputCB(FL_OBJECT * ob, long data)
 {
 	Assert(ob && ob->form);
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
@@ -173,7 +175,7 @@ void FormBase::RestoreCB(FL_OBJECT * ob, long)
 FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 		       ButtonPolicy * bp,
 		       char const * close, char const * cancel)
-	: FormBase( lv, d, t, bp, close, cancel )
+	: FormBase(lv, d, t, bp, close, cancel)
 {}
 
 
@@ -193,7 +195,7 @@ void FormBaseBI::disconnect()
 FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 		       ButtonPolicy * bp,
 		       char const * close, char const * cancel)
-	: FormBase( lv, d, t, bp, close, cancel ),
+	: FormBase(lv, d, t, bp, close, cancel),
 	  u_(0)
 {}
 

@@ -8,6 +8,7 @@
 
 #include "ButtonController.h"
 #include "support/LAssert.h"
+//#include "debug.h"
 
 
 ButtonController::ButtonController(ButtonPolicy * bp,
@@ -88,6 +89,7 @@ void ButtonController::refresh()
 
 void ButtonController::input(ButtonPolicy::SMInput in)
 {
+	//lyxerr << "ButtonController::input: bp_[" << bp_ << "]" << endl;
 	bp_->input(in);
 	refresh();
 }

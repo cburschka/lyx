@@ -47,6 +47,8 @@ using std::find_if;
 using std::for_each;
 using std::mem_fun;
 
+extern BufferView * current_view;
+
 //
 // Class BufferStorage
 //
@@ -92,9 +94,6 @@ bool BufferList::empty() const
 }
 
 
-extern bool MenuWrite(Buffer *);
-extern bool MenuWriteAs(Buffer *);
-
 bool BufferList::QwriteAll()
 {
         bool askMoreConfirmation = false;
@@ -114,9 +113,9 @@ bool BufferList::QwriteAll()
 						       _("Save document?"))) {
 				case 1: // Yes
 					if ((*it)->isUnnamed())
-						reask = !MenuWriteAs((*it));
+						reask = !MenuWriteAs(current_view, (*it));
 					else {
-						reask = !MenuWrite((*it));
+						reask = !MenuWrite(current_view, (*it));
 					}
 					break;
 				case 2: // No
@@ -190,7 +189,7 @@ bool BufferList::close(Buffer * buf)
 					       _("Save document?"))){
 			case 1: // Yes
 				if (buf->isUnnamed())
-					reask = !MenuWriteAs(buf);
+					reask = !MenuWriteAs(current_view, buf);
 				else if (buf->save()) {
 					lastfiles->newFile(buf->fileName());
 					reask = false;

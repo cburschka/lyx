@@ -29,7 +29,7 @@ public:
 	~FormRef();
 private:
 	///
-	enum Type{
+	enum Type {
 		///
 		REF,
 		///
@@ -42,7 +42,7 @@ private:
 		PRETTYREF
 	};
 	///
-	enum Goto{
+	enum Goto {
 		///
 		GOREF,
 		///
@@ -59,7 +59,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the input
-	virtual bool input( FL_OBJECT *, long );
+	virtual bool input(FL_OBJECT *, long);
 	/// Update dialog before showing it
 	virtual void update();
 	/// Not used but must be instantiated
@@ -68,19 +68,19 @@ private:
 	virtual FL_FORM * form() const;
 
 	///
-	void updateBrowser( std::vector<string> ) const;
+	void updateBrowser(std::vector<string> const &) const;
 	///
 	void showBrowser() const;
 	///
 	void hideBrowser() const;
 	///
-	void setSize( int, int ) const;
+	void setSize(int, int) const;
 	///
 	FD_form_ref * build_ref();
 	///
 	Type getType() const;
 	///
-	string getName( Type type ) const;
+	string const getName(Type type) const;
 
 	///
 	Goto toggle;

@@ -6,6 +6,8 @@
 #include "lyxfont.h"
 
 class BufferParams;
+class BufferView;
+class Combox;
 
 ///
 extern bool quitting;
@@ -23,6 +25,39 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2 = string(),
 		 string const & msg3 = string(), int delay = 6);
+///
+bool MenuWrite(BufferView * bv, Buffer * buffer);
+///
+bool MenuWriteAs(BufferView * bv, Buffer * buffer);
+///
+int MenuRunChktex(Buffer * buffer);
+///
+void QuitLyX();
+///
+void AutoSave(BufferView * bv);
+///
+Buffer * NewLyxFile(string const & filename);
+///
+void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
+///
+void MenuInsertLabel(BufferView * bv, string const & arg);
+///
+void LayoutsCB(int sel, void *, Combox *);
+///
+void MenuLayoutCharacter();
+///
+bool UpdateLayoutPreamble(BufferView * bv);
+///
+void MenuLayoutPreamble();
+///
+void MenuLayoutSave(BufferView * bv);
+///
+LyXFont const UserFreeFont(BufferParams const & params);
+///
+void Figure();
+///
+void Reconfigure(BufferView * bv);
 
+	
 #endif
 

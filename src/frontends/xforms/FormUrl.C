@@ -26,7 +26,8 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url")), dialog_(0)
+	: FormCommand(lv, d, _("Url"), new OkCancelReadOnlyPolicy),
+	  dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -51,7 +52,7 @@ FL_FORM * FormUrl::form() const
 
 void FormUrl::connect()
 {
-	fl_set_form_maxsize( form(), 2*minw_, minh_ );
+	fl_set_form_maxsize(form(), 2 * minw_, minh_);
 	FormCommand::connect();
 }
 	
@@ -74,23 +75,23 @@ void FormUrl::update()
 	fl_set_input(dialog_->url,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
-	if (params.getCmdName() == "url" )
+	if (params.getCmdName() == "url")
 		fl_set_button(dialog_->radio_html, 0);
 	else
 		fl_set_button(dialog_->radio_html, 1);
 
 	if (lv_->buffer()->isReadonly()) {
-		fl_deactivate_object( dialog_->url );
-		fl_deactivate_object( dialog_->name );
-		fl_deactivate_object( dialog_->radio_html );
-		fl_deactivate_object( dialog_->button_ok );
-		fl_set_object_lcol( dialog_->button_ok, FL_INACTIVE );
+		fl_deactivate_object(dialog_->url);
+		fl_deactivate_object(dialog_->name);
+		fl_deactivate_object(dialog_->radio_html);
+		fl_deactivate_object(dialog_->button_ok);
+		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
 	} else {
-		fl_activate_object( dialog_->url );
-		fl_activate_object( dialog_->name );
-		fl_activate_object( dialog_->radio_html );
-		fl_activate_object( dialog_->button_ok );
-		fl_set_object_lcol( dialog_->button_ok, FL_BLACK );
+		fl_activate_object(dialog_->url);
+		fl_activate_object(dialog_->name);
+		fl_activate_object(dialog_->radio_html);
+		fl_activate_object(dialog_->button_ok);
+		fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
 	}
 }
 

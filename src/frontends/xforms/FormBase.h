@@ -112,8 +112,10 @@ protected: // methods
 	Connection h_;
 	/// dialog title, displayed by WM.
   	string title;
+private:
 	///
 	ButtonPolicy * bp_;
+public:
 	/// Overcome a dumb xforms sizing bug
 	mutable int minw_;
 	///
@@ -129,7 +131,7 @@ class FormBaseBI : public FormBase {
 protected:
 	/// Constructor
 	FormBaseBI(LyXView *, Dialogs *, string const &,
-		   ButtonPolicy * bp = new OkApplyCancelPolicy,
+		   ButtonPolicy * bp,
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 
@@ -146,7 +148,7 @@ class FormBaseBD : public FormBase {
 protected:
 	/// Constructor
 	FormBaseBD(LyXView *, Dialogs *, string const &,
-		   ButtonPolicy * bp = new OkApplyCancelReadOnlyPolicy,
+		   ButtonPolicy * bp,
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 

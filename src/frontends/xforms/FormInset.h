@@ -25,10 +25,10 @@
 class FormInset : public FormBaseBD {
 protected:
 	/// Constructor
-	FormInset( LyXView *, Dialogs *, string const &,
-		   ButtonPolicy * bp = new OkCancelReadOnlyPolicy,
-		   char const * close = N_("Close"),
-		   char const * cancel = N_("Cancel"));
+	FormInset(LyXView *, Dialogs *, string const &,
+		  ButtonPolicy * bp,
+		  char const * close = N_("Close"),
+		  char const * cancel = N_("Cancel"));
 
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
@@ -49,18 +49,18 @@ protected:
 class FormCommand : public FormInset {
 protected:
 	/// Constructor
-	FormCommand( LyXView *, Dialogs *, string const &,
-		     ButtonPolicy * = new OkCancelReadOnlyPolicy,
-		     char const * close = N_("Close"),
-		     char const * cancel = N_("Cancel"));
+	FormCommand(LyXView *, Dialogs *, string const &,
+		    ButtonPolicy *,
+		    char const * close = N_("Close"),
+		    char const * cancel = N_("Cancel"));
 
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 
 	/// Slot launching dialog to (possibly) create a new inset
-	void createInset( string const & );
+	void createInset(string const &);
 	/// Slot launching dialog to an existing inset
-	void showInset( InsetCommand * );
+	void showInset(InsetCommand *);
 
 	/// pointer to the inset passed through showInset
 	InsetCommand * inset_;

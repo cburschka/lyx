@@ -1,3 +1,67 @@
+2000-11-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/tempname.C (tempName): small changes to make it
+	safer. remove the '.' before XXXXXX
+
+	* src/support/filetools.C (TmpFileName): remove func 
+	(GetCWD): ditto
+	
+	* src/frontends/xforms/FormRef.C (FormRef): explicit call the bp
+	* src/frontends/xforms/FormUrl.C (FormUrl): ditto
+	* src/frontends/xforms/FormTabularCreate.C (FormTabularCreate): ditto
+	* src/frontends/xforms/FormTabular.C (FormTabular): ditto
+
+	* src/frontends/xforms/FormInset.h (FormInset): remove default for bp
+	(FormCommand): ditto
+	
+	* src/frontends/xforms/FormGraphics.C (FormGraphics): explicit
+	call the bp
+
+	* src/frontends/xforms/FormError.C (FormError): use IgnorantPolicy
+	for bp (this fixes a reproducible hard crash)
+
+	* src/frontends/xforms/FormCopyright.C (FormCopyright): explicit
+	call the bp
+
+	* src/frontends/xforms/FormBase.h: make bp_ private
+	(FormBaseBI): remove default for bp
+	(FormBaseBD): ditto
+	
+	* src/frontends/xforms/Dialogs.C (Dialogs): use the old method it
+	is safe enough.
+
+	* src/frontends/xforms/Color.C (RGBColor): made several vars
+	const, changed initialization of j to allow it to be const
+	(HSVColor): similar
+
+	* several files: added const to local variables.
+	
+	* src/lyx_cb.C: removed several function prototypes and moved them
+	to lyx_cb.h
+	(MenuWrite):
+	(MenuWriteAs):
+	(UpdateLayoutPreamble): 
+	(MenuLayoutSave): 
+	(MenuInsertLabel): add BufferView as arguemnt
+	(LayoutsCB): make tmp const
+
+	* src/layout_forms.h: regenerated
+
+	* src/debug.C: add Debug::FILES
+	(showLevel) (showTags): translate the desc
+
+	* src/debug.h: add FILES as debug target
+
+	* src/bufferlist.C: use current_view as an interim measure becuase
+	of added arguments to MenuWrite and MenuWriteAs
+
+	* forms/layout_forms.h.patch: make the patch more correct and more appalyable
+
+	* config/lyxinclude.m4 (LYX_STD_COUNT): change test to not involve
+	string. 
+	(LYX_PROG_CXX): change 2.97 rules to include the -f.. that
+	libstdc++ is compiled with.
+
 2000-11-13  José Abílio Matos <jamatos@fep.up.pt>
 	
 	* lib/layouts/docbook-book.layout

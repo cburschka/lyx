@@ -26,7 +26,8 @@
 #include "insets/insettabular.h"
 
 FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Insert Tabular")),
+	: FormBaseBD(lv, d, _("Insert Tabular"),
+		     new OkApplyCancelReadOnlyPolicy),
 	  dialog_(0)
 {
 	// let the dialog be shown
@@ -44,7 +45,7 @@ FormTabularCreate::~FormTabularCreate()
 
 FL_FORM * FormTabularCreate::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_) return dialog_->form;
 	return 0;
 }
 

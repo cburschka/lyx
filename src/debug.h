@@ -65,7 +65,9 @@ struct Debug {
 		///
 		DEPEND     = (1 << 16),
 		///
-		INSETS     = (1 << 17)
+		INSETS     = (1 << 17),
+		///
+		FILES      = (1 << 18)
 	};
 	///
 //	static const type ANY = type(INFO | INIT | KEY | GUI |

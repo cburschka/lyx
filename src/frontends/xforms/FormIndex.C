@@ -26,7 +26,8 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index")), dialog_(0)
+	: FormCommand(lv, d, _("Index"), new OkCancelReadOnlyPolicy),
+	  dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -44,14 +45,14 @@ FormIndex::~FormIndex()
 
 FL_FORM * FormIndex::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_) return dialog_->form;
 	return 0;
 }
 
 
 void FormIndex::connect()
 {
-	fl_set_form_maxsize( form(), 2*minw_, minh_ );
+	fl_set_form_maxsize(form(), 2 * minw_, minh_);
 	FormCommand::connect();
 }
 	
@@ -74,13 +75,13 @@ void FormIndex::update()
 	fl_set_input(dialog_->key, params.getContents().c_str());
 
 	if (lv_->buffer()->isReadonly()) {
-		fl_deactivate_object( dialog_->key );
-		fl_deactivate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
+		fl_deactivate_object(dialog_->key);
+		fl_deactivate_object(dialog_->ok);
+		fl_set_object_lcol(dialog_->ok, FL_INACTIVE);
 	} else {
-		fl_activate_object( dialog_->key );
-		fl_activate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_BLACK );
+		fl_activate_object(dialog_->key);
+		fl_activate_object(dialog_->ok);
+		fl_set_object_lcol(dialog_->ok, FL_BLACK);
 	}
 }
 

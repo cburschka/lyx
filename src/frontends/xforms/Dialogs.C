@@ -26,6 +26,7 @@
 #include "FormTabularCreate.h"
 #include "FormToc.h"
 #include "FormUrl.h"
+#include "debug.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -67,20 +68,12 @@ Dialogs::Dialogs(LyXView * lv)
 
 Dialogs::~Dialogs()
 {
-#if 0
-	// I belive that this is unsafe...
 	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
 	     iter != dialogs_.end();
 	     ++iter) {
+		lyxerr << "delete *iter" << endl;
 		delete *iter;
 	}
-#else
-	// I think this is better...
-	while (!dialogs_.empty()) {
-		delete dialogs_.back();
-		dialogs_.erase(dialogs_.end() - 1);
-	}
-#endif
 }
 
 

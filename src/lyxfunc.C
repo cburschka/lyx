@@ -91,7 +91,6 @@ using std::pair;
 using std::endl;
 using std::find_if;
 
-extern void InsertAsciiFile(BufferView *, string const &, bool);
 extern void math_insert_symbol(string const &);
 extern bool math_insert_greek(char);
 extern BufferList bufferlist;
@@ -101,14 +100,6 @@ extern bool selection_possible;
 
 extern kb_keymap * toplevel_keymap;
 
-extern bool MenuWrite(Buffer *);
-extern bool MenuWriteAs(Buffer *);
-extern int  MenuRunLaTeX(Buffer *);
-extern int  MenuBuildProg(Buffer *);
-extern int  MenuRunChktex(Buffer *);
-extern void MenuPrint(Buffer *);
-extern void MenuSendto();
-extern void QuitLyX();
 #if 0
 extern void MenuFax(Buffer *);
 #endif
@@ -118,19 +109,7 @@ extern LyXAction lyxaction;
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 
-extern void AutoSave(BufferView *);
-extern void MenuInsertLabel(string const &);
-extern void MenuLayoutCharacter();
-extern void MenuLayoutParagraph();
-extern void MenuLayoutPreamble();
-extern void MenuLayoutSave();
-
-extern Buffer * NewLyxFile(string const &);
-extern void LoadLyXFile(string const &);
-extern void Reconfigure(BufferView *);
-
 extern LyXTextClass::size_type current_layout;
-extern int getISOCodeFromLaTeX(char *);
 
 extern void ShowLatexLog();
 
@@ -773,7 +752,7 @@ string const LyXFunc::Dispatch(int ac,
 			owner->getMiniBuffer()->Set(_("Saving document"),
 						    MakeDisplayPath(owner->buffer()->fileName()),
 						    "...");
-			MenuWrite(owner->buffer());
+			MenuWrite(owner->view(), owner->buffer());
 			//owner->getMiniBuffer()-> {
 			//	Set(_("Document saved as"),
 			//	    MakeDisplayPath(owner->buffer()->fileName()));
@@ -781,12 +760,12 @@ string const LyXFunc::Dispatch(int ac,
 			//owner->getMiniBuffer()->Set(_("Save failed!"));
 			//}
 		} else {
-			MenuWriteAs(owner->buffer());
+			MenuWriteAs(owner->view(), owner->buffer());
 		}
 		break;
 		
 	case LFUN_MENUWRITEAS:
-		MenuWriteAs(owner->buffer());
+		MenuWriteAs(owner->view(), owner->buffer());
 		break;
 		
 	case LFUN_MENURELOAD:
@@ -1287,7 +1266,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_LAYOUT_SAVE_DEFAULT:
-		MenuLayoutSave();
+		MenuLayoutSave(owner->view());
 		break;
 		
 	case LFUN_DROP_LAYOUTS_CHOICE:
@@ -1375,7 +1354,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(argument);
+		MenuInsertLabel(owner->view(), argument);
 		break;
 		
 	case LFUN_REF_INSERT:
@@ -2506,8 +2485,8 @@ string const LyXFunc::Dispatch(int ac,
 		        if (s.empty())
 				setErrorMessage(N_("Missing argument"));
 		        else {
-				string s1 = token(s, ' ', 1);
-				int na = s1.empty() ? 0 : lyx::atoi(s1);
+				string const s1 = token(s, ' ', 1);
+				int const na = s1.empty() ? 0 : lyx::atoi(s1);
 				owner->view()->
 					open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
@@ -2571,7 +2550,7 @@ string const LyXFunc::Dispatch(int ac,
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated 
 		// by a space. The first one is the bibstyle.
-		string db       = token(argument, ' ', 0);
+		string const db       = token(argument, ' ', 0);
 		string bibstyle = token(argument, ' ', 1);
 		if (bibstyle.empty())
 			bibstyle = "plain";
@@ -2644,13 +2623,13 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_INSERT:
 	{
 		InsetCommandParams p;
-		p.setFromString( argument );
-		InsetIndex * inset = new InsetIndex( p );
+		p.setFromString(argument);
+		InsetIndex * inset = new InsetIndex(p);
 
 		if (!owner->view()->insertInset(inset))
 			delete inset;
 		else
-			owner->view()->updateInset( inset, true );
+			owner->view()->updateInset(inset, true);
 	}
 	break;
 		    
@@ -2660,24 +2639,24 @@ string const LyXFunc::Dispatch(int ac,
 		LyXParagraph::size_type curpos = 
 			owner->view()->text->cursor.pos() - 1;
 	  	// Can't do that at the beginning of a paragraph
-	  	if (curpos < 0 ) break;
+	  	if (curpos < 0) break;
 
-		string curstring( owner->view()->text
-				  ->cursor.par()->GetWord(curpos) );
+		string const curstring(owner->view()->text
+				  ->cursor.par()->GetWord(curpos));
 
-		InsetCommandParams p( "index", curstring );
-		InsetIndex * inset = new InsetIndex( p );
+		InsetCommandParams p("index", curstring);
+		InsetIndex * inset = new InsetIndex(p);
 
 		if (!owner->view()->insertInset(inset))
 			delete inset;
 		else
-			owner->view()->updateInset( inset, true );
+			owner->view()->updateInset(inset, true);
 	}
 	break;
 		    
 	case LFUN_INDEX_PRINT:
 	{
-		InsetCommandParams p( "printindex" );
+		InsetCommandParams p("printindex");
 		Inset * inset = new InsetPrintIndex(p);
 		if (!owner->view()->insertInset(inset, "Standard", true))
 			delete inset;
@@ -2707,7 +2686,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_CHILDOPEN:
 	{
-		string filename =
+		string const filename =
 			MakeAbsPath(argument, 
 				    OnlyPath(owner->buffer()->fileName()));
 		setMessage(N_("Opening child document ") +
@@ -2727,21 +2706,21 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_INSERTFOOTNOTE: 
 	{
 		LyXParagraph::footnote_kind kind;
-		if (argument == "footnote")
-			{ kind = LyXParagraph::FOOTNOTE; }
-		else if (argument == "margin")
-			{ kind = LyXParagraph::MARGIN; }
-		else if (argument == "figure")
-			{ kind = LyXParagraph::FIG; }
-		else if (argument == "table")
-			{ kind = LyXParagraph::TAB; }
-		else if (argument == "wide-fig")
-			{ kind = LyXParagraph::WIDE_FIG; }
-		else if (argument == "wide-tab")
-			{ kind = LyXParagraph::WIDE_TAB; }
-		else if (argument == "algorithm")
-			{ kind = LyXParagraph::ALGORITHM; }
-		else {
+		if (argument == "footnote") {
+			kind = LyXParagraph::FOOTNOTE;
+		} else if (argument == "margin") {
+			kind = LyXParagraph::MARGIN;
+		} else if (argument == "figure") {
+			kind = LyXParagraph::FIG;
+		} else if (argument == "table") {
+			kind = LyXParagraph::TAB;
+		} else if (argument == "wide-fig") {
+			kind = LyXParagraph::WIDE_FIG;
+		} else if (argument == "wide-tab") {
+			kind = LyXParagraph::WIDE_TAB;
+		} else if (argument == "algorithm") {
+			kind = LyXParagraph::ALGORITHM;
+		} else {
 			setErrorMessage(N_("Unknown kind of footnote"));
 			break;
 		}
@@ -2773,7 +2752,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_SELFINSERT:
 	{
-		LyXFont old_font(owner->view()->text->real_current_font);
+		LyXFont const old_font(owner->view()->text->real_current_font);
 		for (string::size_type i = 0; i < argument.length(); ++i) {
 			owner->view()->text->InsertChar(owner->view(), argument[i]);
 			// This needs to be in the loop, or else we
@@ -2815,7 +2794,8 @@ string const LyXFunc::Dispatch(int ac,
 		else 
 			arg = lyxrc.date_insert_format;
 		char datetmp[32];
-		int datetmp_len = ::strftime(datetmp, 32, arg.c_str(), now_tm);
+		int const datetmp_len =
+			::strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(owner->view(), datetmp[i]);
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -2856,8 +2836,8 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_SET_COLOR:
 	{
-		string lyx_name, x11_name;
-		x11_name = split(argument, lyx_name, ' ');
+		string lyx_name;
+		string const x11_name = split(argument, lyx_name, ' ');
 		if (lyx_name.empty() || x11_name.empty()) {
 			LyXBell();
 			setErrorMessage(N_("Syntax: set-color <lyx_name>"
@@ -2866,11 +2846,12 @@ string const LyXFunc::Dispatch(int ac,
 			}
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
-			static string err1 (N_("Set-color \""));
-			static string err2 (N_("\" failed - color is undefined "
-						"or may not be redefined"));
+			static string const err1 (N_("Set-color \""));
+			static string const err2 (
+				N_("\" failed - color is undefined "
+				   "or may not be redefined"));
 			LyXBell();
-			setErrorMessage(err1 + lyx_name + err2);
+			setErrorMessage(_(err1) + lyx_name + _(err2));
 			break;
 		}
 		lyxColorHandler->updateColor(lcolor.getFromLyXName(lyx_name));
@@ -2908,7 +2889,7 @@ string const LyXFunc::Dispatch(int ac,
 			}
 			
 			owner->view()->beforeChange();
-			LyXFont old_font(owner->view()->text->real_current_font);
+			LyXFont const old_font(owner->view()->text->real_current_font);
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
@@ -2945,11 +2926,12 @@ string const LyXFunc::Dispatch(int ac,
 	} // end of switch
   exit_with_message:
 
-	string res = getMessage();
+	string const res = getMessage();
 
 	if (res.empty()) {
 		if (!commandshortcut.empty()) {
-			string newbuf = owner->getMiniBuffer()->GetText();
+			string const newbuf =
+				owner->getMiniBuffer()->GetText();
 			if (newbuf != commandshortcut) {
 				owner->getMiniBuffer()->Set(newbuf
 							    + " " +
@@ -2980,7 +2962,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	LyXFileDlg fileDlg;
 
 	if (owner->view()->available()) {
-		string trypath = owner->buffer()->filepath;
+		string const trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2988,7 +2970,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 
 	static int newfile_number = 0;
 	string s;
-
+	
 	if (lyxrc.new_ask_filename) {
 		ProhibitInput(owner->view());
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
@@ -3065,9 +3047,9 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	string templname;
 	if (fromTemplate) {
 		ProhibitInput(owner->view());
-		string fname = fileDlg.Select(_("Choose template"),
-				       lyxrc.template_path,
-				       "*.lyx");
+		string const fname = fileDlg.Select(_("Choose template"),
+						    lyxrc.template_path,
+						    "*.lyx");
 		AllowInput(owner->view());
 		if (fname.empty()) return;
                 templname = fname;
@@ -3085,7 +3067,7 @@ void LyXFunc::MenuOpen()
 	LyXFileDlg fileDlg;
   
 	if (owner->view()->available()) {
-		string trypath = owner->buffer()->filepath;
+		string const trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -3127,6 +3109,7 @@ void LyXFunc::MenuOpen()
 	}
 }
 
+
 // checks for running without gui are missing.
 void LyXFunc::doImport(string const & argument)
 {
@@ -3140,7 +3123,7 @@ void LyXFunc::doImport(string const & argument)
 		LyXFileDlg fileDlg;
 		
 		if (owner->view()->available()) {
-			string trypath = owner->buffer()->filepath;
+			string const trypath = owner->buffer()->filepath;
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath) == 1)
 				initpath = trypath;
@@ -3151,9 +3134,9 @@ void LyXFunc::doImport(string const & argument)
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 		fileDlg.SetButton(1, _("Examples"), 
 					AddPath(system_lyxdir, "examples"));
-		string text = _("Select ") + formats.PrettyName(format)
+		string const text = _("Select ") + formats.PrettyName(format)
 			+ _(" file to import");
-		string extension = "*." + formats.Extension(format);
+		string const extension = "*." + formats.Extension(format);
 		filename = fileDlg.Select(text, initpath, extension);
 		AllowInput(owner->view());
  
@@ -3169,7 +3152,7 @@ void LyXFunc::doImport(string const & argument)
 	// get absolute path of file
 	filename = MakeAbsPath(filename);
 
-	string lyxfile = ChangeExtension(filename, ".lyx");
+	string const lyxfile = ChangeExtension(filename, ".lyx");
 
 	// Check if the document already is open
 	if (bufferlist.exists(lyxfile)) {
@@ -3193,7 +3176,7 @@ void LyXFunc::doImport(string const & argument)
 	}
 
 	// Check if a LyX document by the same root exists in filesystem
-	FileInfo f(lyxfile, true);
+	FileInfo const f(lyxfile, true);
 	if (f.exist() && !AskQuestion(_("A document by the name"), 
 				      MakeDisplayPath(lyxfile),
 				      _("already exists. Overwrite?"))) {
@@ -3216,7 +3199,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 		LyXFileDlg fileDlg;
 
 		if (owner->view()->available()) {
-			string trypath = owner->buffer()->filepath;
+			string const trypath = owner->buffer()->filepath;
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath) == 1)
 				initpath = trypath;
@@ -3247,7 +3230,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 	// Inserts document
 	owner->getMiniBuffer()->Set(_("Inserting document"),
 				    MakeDisplayPath(filename), "...");
-	bool res = owner->view()->insertLyXFile(filename);
+	bool const res = owner->view()->insertLyXFile(filename);
 	if (res) {
 		owner->getMiniBuffer()->Set(_("Document"),
 					    MakeDisplayPath(filename),
@@ -3261,7 +3244,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 
 void LyXFunc::reloadBuffer()
 {
-	string fn = owner->buffer()->fileName();
+	string const fn = owner->buffer()->fileName();
 	if (bufferlist.close(owner->buffer()))
 		owner->view()->buffer(bufferlist.loadLyXFile(fn));
 }
@@ -3275,8 +3258,7 @@ void LyXFunc::CloseBuffer()
 			// set variables that don't exist
 			// since there's no current buffer
 			owner->getDialogs()->hideBufferDependent();
-		}
-		else {
+		} else {
 			owner->view()->buffer(bufferlist.first());
 		}
 	}

@@ -120,39 +120,6 @@ string const QuoteName(string const & name)
 }
 
 
-#if 0
-// Returns an unique name to be used as a temporary file. 
-string const TmpFileName(string const & dir, string const & mask)
-{// With all these temporary variables, it should be safe enough :-) (JMarc)
-	string tmpdir;	
-	if (dir.empty())
-		tmpdir = system_tempdir;
-	else
-		tmpdir = dir;
-	string tmpfl(AddName(tmpdir, mask));
-
-	// find a uniq postfix for the filename...
-	// using the pid, and...
-	tmpfl += tostr(getpid());
-	// a short string...
-	string ret;
-	FileInfo fnfo;
-	for (int a = 'a'; a <= 'z'; ++a)
-		for (int b = 'a'; b <= 'z'; ++b)
-			for (int c = 'a'; c <= 'z'; ++c) {
-				// if this is not enough I have no idea what
-				// to do.
-				ret = tmpfl + char(a) + char(b) + char(c);
-				// check if the file exist
-				if (!fnfo.newFile(ret).exist())
-					return ret;
-			}
-	lyxerr << "Not able to find a uniq tmpfile name." << endl;
-	return string();
-}
-#endif
-
-
 // Is a file readable ?
 bool IsFileReadable (string const & path)
 {
@@ -238,73 +205,44 @@ string const FileOpenSearch (string const & path, string const & name,
 
 
 /// Returns a vector of all files in directory dir having extension ext.
-vector<string> const DirList( string const & dir, string const & ext)
+vector<string> const DirList(string const & dir, string const & ext)
 {
-	// What what what????
-	// where you tinking when you implemented this?
-#if 0
-	string lsCommand = "ls " + dir;
-	if (!ext.empty()) {
-		string::size_type sz = lsCommand.size();
-		if (lsCommand[sz - 1] != '/')
-			lsCommand += '/';
-		lsCommand += '*';
-		if (ext[0] != '.')
-			lsCommand += '.';
-		lsCommand += ext;
-	}
-	string tmpfile = system_tempdir + "/dirlist";
-	lsCommand += " > " + tmpfile;
-
-	Systemcalls(Systemcalls::System, lsCommand);
-
-	string contents = GetFileContents(tmpfile);
-	string rmCommand = "rm " + tmpfile;
-	Systemcalls(Systemcalls::System, rmCommand);
-
-	string tmp = strip(contents);
-	vector<string> dirlist;
-
-	while (!tmp.empty()) {
-		string file;
-		tmp = frontStrip(split(tmp, file, '\n'));
-		dirlist.push_back( file );
-	}
-	return dirlist;
-#else
 	// This is a non-error checking C/system implementation
-	// of the above.
 	string extension(ext);
 	if (extension[0] != '.')
-		// If I do not use the explicit cast below, compaq cxx
-		// is not able to guess between
-		//   insert(size_type, size_type, value_type)
-		// and
-		//   insert(iterator, size_type, value_type)		
-		extension.insert(string::size_type(0), 1u, '.');
+		extension.insert(0, ".");
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	dirent * dire;
 	while ((dire = ::readdir(dirp))) {
-		string fil = dire->d_name;
+		string const fil = dire->d_name;
 		if (prefixIs(fil, extension)) {
 			dirlist.push_back(fil);
 		}
 	}
 	::closedir(dirp);
 	return dirlist;
+	/* I would have prefered to take a vector<string>& as parameter so
+	   that we could avoid the copy of the vector when returning.
+	   Then we would use:
+	   dirlist.swap(argvec);
+	   to avoid the copy. (Lgb)
+	*/
 	/* A C++ implementaion will look like this:
-	   if (ext[0] != '.') ext.insert(0u, 1u, '.');
+	   string extension(ext);
+	   if (extension[0] != '.') extension.insert(0, ".");
+	   vector<string> dirlist;
 	   directory_iterator dit("dir");
 	   while (dit != directory_iterator()) {
 	           string fil = (*dit).filename;
-		   if (prefixIs(fil, ext)) {
+		   if (prefixIs(fil, extension)) {
 		           dirlist.push_back(fil);
 		   }
 		   ++dit;
 	   }
+	   dirlist.swap(argvec);
+	   return;
 	*/
-#endif
 }
 
 
@@ -498,9 +436,9 @@ int DeleteAllFilesInDir (string const & path)
 static
 string const CreateTmpDir(string const & tempdir, string const & mask)
 {
-#warning Possibly buggy (Lgb)
-	lyxerr << "CreateTmpDir: tempdir=`" << tempdir << "'" << endl;
-	lyxerr << "CreateTmpDir:    mask=`" << mask << "'" << endl;
+	lyxerr[Debug::FILES]
+		<< "CreateTmpDir: tempdir=`" << tempdir << "'\n"
+		<< "CreateTmpDir:    mask=`" << mask << "'" << endl;
 	
 	string const tmpfl(lyx::tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
@@ -567,7 +505,7 @@ string const CreateLyXTmpDir(string const & deflt)
 }
 
 
-int DestroyLyXTmpDir (string const & tmpdir)
+int DestroyLyXTmpDir(string const & tmpdir)
 {
        return DestroyTmpDir (tmpdir, false); // Why false?
 }
@@ -590,30 +528,6 @@ bool createDirectory(string const & path, int permission)
 	}
 	return true;
 }
-
-
-#if 0
-// Returns current working directory
-string const GetCWD ()
-{
-  	int n = 256;	// Assume path is less than 256 chars
-	char * err;
-  	char * tbuf = new char[n];
-  	
-  	// Safe. Hopefully all getcwds behave this way!
-  	while (((err = lyx::getcwd(tbuf, n)) == 0) && (errno == ERANGE)) {
-		// Buffer too small, double the buffersize and try again
-    		delete[] tbuf;
-    		n = 2 * n;
-    		tbuf = new char[n];
-  	}
-
-	string result;
-	if (err) result = tbuf;
-	delete[] tbuf;
-	return result;
-}
-#endif
 
 
 // Strip filename from path name
@@ -962,8 +876,8 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 // different, then the absolute path will be used as relative path.
 {
 	// This is a hack. It should probaly be done in another way. Lgb.
-	string abspath = CleanupPath(abspath0);
-	string basepath = CleanupPath(basepath0);
+	string const abspath = CleanupPath(abspath0);
+	string const basepath = CleanupPath(basepath0);
 	if (abspath.empty())
 		return "<unknown_path>";
 
@@ -976,8 +890,8 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 
 	// Go back to last /
 	if (i < abslen && i < baselen
-	    || (i<abslen && abspath[i] != '/' && i == baselen)
-	    || (i<baselen && basepath[i] != '/' && i == abslen))
+	    || (i < abslen && abspath[i] != '/' && i == baselen)
+	    || (i < baselen && basepath[i] != '/' && i == abslen))
 	{
 		if (i) --i;	// here was the last match
 		while (i && abspath[i] != '/') --i;
@@ -1026,12 +940,10 @@ string const AddPath(string const & path, string const & path_2)
 			buf += '/';
 	}
 
-	if (!path2.empty()){
-	        string::size_type p2start = path2.find_first_not_of('/');
-
-		string::size_type p2end = path2.find_last_not_of('/');
-
-		string tmp = path2.substr(p2start, p2end - p2start + 1);
+	if (!path2.empty()) {
+	        string::size_type const p2start = path2.find_first_not_of('/');
+		string::size_type const p2end = path2.find_last_not_of('/');
+		string const tmp = path2.substr(p2start, p2end - p2start + 1);
 		buf += tmp + '/';
 	}
 	return buf;
@@ -1115,10 +1027,10 @@ MakeDisplayPath (string const & path, unsigned int threshold)
 			// Yes, filename in itself is too long.
 			// Pick the start and the end of the filename.
 			relhome = OnlyFilename(path);
-			string head = relhome.substr(0, threshold/2 - 3);
+			string const head = relhome.substr(0, threshold/2 - 3);
 
 			l2 = relhome.length();
-			string tail =
+			string const tail =
 				relhome.substr(l2 - threshold/2 - 2, l2 - 1);
 			relhome = head + "..." + tail;
 		}
@@ -1135,7 +1047,7 @@ bool LyXReadLink(string const & File, string & Link)
 				     LinkBuffer, sizeof(LinkBuffer) - 1);
 	if (nRead <= 0)
 		return false;
-	LinkBuffer[nRead] = 0;
+	LinkBuffer[nRead] = '\0'; // terminator
 	Link = LinkBuffer;
 	return true;
 }
@@ -1157,7 +1069,7 @@ cmdret const do_popen(string const & cmd)
 		ret += static_cast<char>(c);
 		c = fgetc(inf);
 	}
-	int pret = pclose(inf);
+	int const pret = pclose(inf);
 	return make_pair(pret, ret);
 }
 
@@ -1216,7 +1128,7 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	a += OnlyFilename(filename);
 	a += '#';
-	FileInfo fileinfo(a);
+	FileInfo const fileinfo(a);
 	if (fileinfo.exist()) {
 		if (lyx::unlink(a) != 0) {
 			WriteFSAlert(_("Could not delete auto-save file!"), a);

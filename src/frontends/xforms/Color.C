@@ -28,29 +28,29 @@ using std::ofstream;
 
 static int const nohue = -1;
 
-RGBColor::RGBColor( HSVColor const & hsv )
+RGBColor::RGBColor(HSVColor const & hsv)
 {
 	double h = hsv.h;
-	double s = hsv.s;
-	double v = hsv.v;
+	double const s = hsv.s;
+	double const v = hsv.v;
 	
 	double rd, gd, bd;
 	
-	if( h == nohue || s == 0.0 ) {
+	if (h == nohue || s == 0.0) {
 		rd = gd = bd = v;
 	} else {
-		if( h == 360.0 ) h = 0.0;
+		if (h == 360.0) h = 0.0;
 		h /= 60.0;
 
-		int j = static_cast<int>( ::floor(h) );
-		if( j < 0 ) j = 0;
+		int const j = max(0, static_cast<int>(::floor(h)));
+		//if( j < 0 ) j = 0;
 
-		double f = h - j;
-		double p = v * (1.0 - s);
-		double q = v * (1.0 - (s*f));
-		double t = v * (1.0 - (s*(1.0 - f)));
+		double const f = h - j;
+		double const p = v * (1.0 - s);
+		double const q = v * (1.0 - (s * f));
+		double const t = v * (1.0 - (s * (1.0 - f)));
 
-		switch( j ) {
+		switch (j) {
 		case 0:
 			rd = v;
 			gd = t;
@@ -95,39 +95,39 @@ RGBColor::RGBColor( HSVColor const & hsv )
 }
 
 
-HSVColor::HSVColor( RGBColor const & rgb )
+HSVColor::HSVColor(RGBColor const & rgb)
 {
 	// r, g, b lie in the range 0-1, not 0-255.
-	double r = rgb.r / 255.0;
-	double g = rgb.g / 255.0;
-	double b = rgb.b / 255.0;
+	double const r = rgb.r / 255.0;
+	double const g = rgb.g / 255.0;
+	double const b = rgb.b / 255.0;
 
-	double maxval = max( max( r, g ), b );
-	double minval = max( min( r, g ), b );
+	double const maxval = max( max( r, g ), b );
+	double const minval = max( min( r, g ), b );
 
 	v = maxval;
 
-	double diff = maxval - minval;
-	if( maxval != 0.0 )
+	double const diff = maxval - minval;
+	if (maxval != 0.0)
 		s = diff / maxval;
 	else
 		s = 0.0;
 
 	h = nohue;
-	if( s != 0.0 ) {
-		double rc = (maxval - r) / diff;
-		double gc = (maxval - g) / diff;
-		double bc = (maxval - b) / diff;
+	if (s != 0.0) {
+		double const rc = (maxval - r) / diff;
+		double const gc = (maxval - g) / diff;
+		double const bc = (maxval - b) / diff;
 
-		if( r == maxval )
+		if (r == maxval)
 			h = bc - gc;
-		else if( g == maxval )
+		else if (g == maxval)
 			h = 2.0 + rc - bc;
-		else if( b == maxval )
+		else if (b == maxval)
 			h = 4.0 + gc - rc;
 
 		h *= 60.0;
-		if ( h < 0 )
+		if (h < 0)
 			h += 360;
 	}
 }
@@ -154,14 +154,14 @@ static const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
 
 bool XformColor::read(string const & filename)
 {
-	LyXLex lexrc( xformTags, xformCount );
-	if( !lexrc.setFile( filename ) )
+	LyXLex lexrc(xformTags, xformCount);
+	if (!lexrc.setFile(filename))
 		return false;
 
-	while( lexrc.IsOK() ) {
-		int le = lexrc.lex();
+	while (lexrc.IsOK()) {
+		int const le = lexrc.lex();
 
-		switch( le ) {
+		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
 			continue; 
@@ -172,13 +172,13 @@ bool XformColor::read(string const & filename)
 
 		RGBColor col;
 
-		if( !lexrc.next() ) break;
+		if (!lexrc.next()) break;
 		col.r = lexrc.GetInteger();
 
-		if( !lexrc.next() ) break;
+		if (!lexrc.next()) break;
 		col.g = lexrc.GetInteger();
 
-		if( !lexrc.next() ) break;
+		if (!lexrc.next()) break;
 		col.b = lexrc.GetInteger();
 
 		fl_mapcolor(le, col.r, col.g, col.b);
@@ -207,14 +207,14 @@ bool XformColor::write(string const & filename)
 	   << "# modifications you should do them from inside LyX and save\n"
 	   << "\n";
 
-	for( int i = 0; i < xformCount; ++i ) {
-		string tag  = xformTags[i].tag;
-		int colorID = xformTags[i].code;
+	for (int i = 0; i < xformCount; ++i) {
+		string const tag  = xformTags[i].tag;
+		int const colorID = xformTags[i].code;
 		RGBColor color;
 
 		fl_getmcolor(colorID, &color.r, &color.g, &color.b);
 
-		os << tag + " "
+		os << tag << " "
 		   << color.r << " " << color.g << " " << color.b << "\n";
 	}
 

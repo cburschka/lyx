@@ -20,16 +20,16 @@
 
 #include "LString.h"
 
-class HSVColor;
-class RGBColor;
+struct RGBColor;
 
 struct HSVColor {
 	double h;
 	double s;
 	double v;
 	HSVColor() : h(0.0), s(0.0), v(0.0) {}
-	HSVColor(double hue, double sat, double val) : h(hue), s(sat), v(val) {}
-	HSVColor( RGBColor const & );
+	HSVColor(double hue, double sat, double val)
+		: h(hue), s(sat), v(val) {}
+	HSVColor(RGBColor const &);
 };
 
 struct RGBColor {
@@ -37,8 +37,9 @@ struct RGBColor {
 	int g;
 	int b;
 	RGBColor() : r(0), g(0), b(0) {}
-	RGBColor(int red, int green, int blue) : r(red), g(green), b(blue) {}
-	RGBColor( HSVColor const & );
+	RGBColor(int red, int green, int blue)
+		: r(red), g(green), b(blue) {}
+	RGBColor(HSVColor const &);
 };
 
 typedef std::pair<string, RGBColor> X11Color;
@@ -49,9 +50,9 @@ struct XformColor {
 	int colorID;
 	RGBColor col;
 	XformColor() : colorID(0) {}
-	string const getname() { return name; }
-	static bool read( string const & );
-	static bool write( string const & );
+	string const & getname() const { return name; }
+	static bool read(string const &);
+	static bool write(string const &);
 };
 
 inline

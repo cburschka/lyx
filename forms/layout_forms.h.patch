@@ -1,7 +1,3 @@
-1c1
-< /** Header file generated with fdesign on Tue Sep 26 15:14:15 2000.**/
----
-> /** Header file generated with fdesign **/
 7,8c7,8
 < extern void CharacterApplyCB(FL_OBJECT *, long);
 < extern void CharacterCloseCB(FL_OBJECT *, long);
@@ -16,7 +12,3 @@
 > extern "C" void PreambleOKCB(FL_OBJECT *, long);
 > extern "C" void PreambleApplyCB(FL_OBJECT *, long);
 > extern "C" void PreambleCancelCB(FL_OBJECT *, long);
-13a14,16
-> /* Some extra funcs */
-> 
-> extern bool UpdateLayoutPreamble();

@@ -187,7 +187,7 @@ dnl Check the version of g++
       2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
       2.95.*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       2.96*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
-      2.97*)   CXXFLAGS="-g $lyx_opt -fhonor-std -fno-builtin -ffunction-sectons -fdata-sections";;
+      2.97*)   CXXFLAGS="-g $lyx_opt -fvtable-thunks -fno-builtin -ffunction-sections -fdata-sections";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
     esac
@@ -299,17 +299,15 @@ dnl    count template, if not the old HP version is assumed.
 AC_DEFUN(LYX_STD_COUNT,[
 AC_CACHE_CHECK(for conforming std::count,lyx_cv_std_count,
  [AC_TRY_COMPILE([
-#include <string>
 #include <algorithm>
-using std::string;
 using std::count;
-int countChar(string const & a, char const c)
+int countChar(char * b, char * e, char const c)
 {
-        return count(a.begin(), a.end(), c);
+        return count(b, e, c);
 }
 ],[
-    string a("hello");
-    int i = countChar(a, 'l');
+    char a[] = "hello";
+    int i = countChar(a, a + 5, 'l');
 ],lyx_cv_std_count=yes,lyx_cv_std_count=no)
 ])
 if test $lyx_cv_std_count = yes ; then

@@ -25,7 +25,7 @@
 FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t,
 		     ButtonPolicy * bp,
 		     char const * close, char const * cancel)
-	: FormBaseBD( lv, d, t, bp, close, cancel ), ih_(0)
+	: FormBaseBD(lv, d, t, bp, close, cancel), ih_(0)
 {}
 
 
@@ -46,7 +46,7 @@ void FormInset::disconnect()
 }
 
 
-void FormInset::updateSlot( bool switched )
+void FormInset::updateSlot(bool switched)
 {
 	if (switched)
 		hide();
@@ -55,10 +55,10 @@ void FormInset::updateSlot( bool switched )
 }
 
 
-FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t,
-			  ButtonPolicy * bp,
-			  char const * close, char const * cancel)
-	: FormInset( lv, d, t, bp, close, cancel ),
+FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t,
+			 ButtonPolicy * bp,
+			 char const * close, char const * cancel)
+	: FormInset(lv, d, t, bp, close, cancel),
 	  inset_(0)
 {}
 
@@ -66,12 +66,12 @@ FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t,
 void FormCommand::disconnect()
 {
 	inset_ = 0;
-	params = InsetCommandParams( string() );
+	params = InsetCommandParams(string());
 	FormInset::disconnect();
 }
 
        
-void FormCommand::showInset( InsetCommand * inset )
+void FormCommand::showInset(InsetCommand * inset)
 {
 	if (inset == 0) return;  // maybe we should Assert this?
 
@@ -86,13 +86,13 @@ void FormCommand::showInset( InsetCommand * inset )
 }
 
 
-void FormCommand::createInset( string const & arg )
+void FormCommand::createInset(string const & arg)
 {
 	if (inset_) {
 		ih_.disconnect();
 		inset_ = 0;
 	}
 
-	params.setFromString( arg );
+	params.setFromString(arg);
 	show();
 }

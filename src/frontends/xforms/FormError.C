@@ -23,7 +23,7 @@
 
 
 FormError::FormError(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("LaTeX Error")),
+	: FormInset( lv, d, _("LaTeX Error"), new IgnorantPolicy),
 	  dialog_(0), inset_(0)
 {
 	Assert(lv && d);

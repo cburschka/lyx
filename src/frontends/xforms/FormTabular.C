@@ -23,7 +23,7 @@
 
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("Tabular Layout") ),
+	: FormInset(lv, d, _("Tabular Layout"), new OkCancelReadOnlyPolicy),
 	  dialog_(0), tabular_options_(0), column_options_(0),
 	  cell_options_(0), longtable_options_(0),
 	  inset_(0), actCell_(-1)
@@ -48,20 +48,20 @@ FormTabular::~FormTabular()
 
 void FormTabular::redraw()
 {
-	if( form() && form()->visible )
-		fl_redraw_form( form() );
+	if(form() && form()->visible)
+		fl_redraw_form(form());
 	else
 		return;
 
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabFolder);
 	if (outer_form && outer_form->visible)
-		fl_redraw_form( outer_form );
+		fl_redraw_form(outer_form);
 }
 
 
 FL_FORM * FormTabular::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_) return dialog_->form;
 	return 0;
 }
 
@@ -73,7 +73,7 @@ void FormTabular::disconnect()
 }
 
 
-void FormTabular::showInset( InsetTabular * inset )
+void FormTabular::showInset(InsetTabular * inset)
 {
 	if (inset == 0) return;
 
@@ -88,7 +88,7 @@ void FormTabular::showInset( InsetTabular * inset )
 }
 
 
-void FormTabular::updateInset( InsetTabular * inset )
+void FormTabular::updateInset(InsetTabular * inset)
 {
 	if (inset == 0 || inset_ == 0) return;
 
@@ -140,19 +140,17 @@ void FormTabular::update()
 	if (!inset_ || !inset_->tabular)
 		return;
 
-	LyXTabular
-		* tabular = inset_->tabular;
+	LyXTabular * tabular = inset_->tabular;
 	int
 		align,
-		cell,
-		column,row;
+		cell;
 	char
 		buf[12];
 	string
 		pwidth, special;
 
 	actCell_ = cell = inset_->GetActCell();
-	column = tabular->column_of_cell(cell)+1;
+	int column = tabular->column_of_cell(cell)+1;
 	fl_set_object_label(dialog_->text_warning,"");
 	fl_activate_object(column_options_->input_special_alignment);
 	fl_activate_object(cell_options_->input_special_multialign);
@@ -160,7 +158,7 @@ void FormTabular::update()
 	sprintf(buf,"%d",column);
 	fl_set_input(dialog_->input_tabular_column, buf);
 	fl_deactivate_object(dialog_->input_tabular_column);
-	row = tabular->row_of_cell(cell)+1;
+	int row = tabular->row_of_cell(cell)+1;
 	sprintf(buf,"%d",row);
 	fl_set_input(dialog_->input_tabular_row, buf);
 	fl_deactivate_object(dialog_->input_tabular_row);
@@ -430,18 +428,12 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     if (!inset_)
         return false;
 
-    LyXTabular
-        * tabular = inset_->tabular;
-    int
-        cell,
-        s;
-    LyXTabular::Feature
-        num = LyXTabular::LAST_ACTION;
-    string
-        special,
-        str;
+    LyXTabular * tabular = inset_->tabular;
+    int s;
+    LyXTabular::Feature num = LyXTabular::LAST_ACTION;
+    string special;;
 
-    cell = inset_->GetActCell();
+    int cell = inset_->GetActCell();
     if (actCell_ != cell) {
         update();
         fl_set_object_label(dialog_->text_warning,
@@ -456,9 +448,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
       return false;
     }
     if (ob == column_options_->input_column_width) {
-        string
-            str;
-        str = fl_get_input(ob);
+        string str = fl_get_input(ob);
         if (!str.empty() && !isValidLength(str)) {
             fl_set_object_label(dialog_->text_warning,
                  _("Warning: Invalid Length (valid example: 10mm)"));
@@ -470,9 +460,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         return true;
     }
     if (ob == cell_options_->input_mcolumn_width) {
-        string
-            str;
-        str = fl_get_input(ob);
+        string str = fl_get_input(ob);
         if (!str.empty() && !isValidLength(str)) {
             fl_set_object_label(dialog_->text_warning,
                  _("Warning: Invalid Length (valid example: 10mm)"));
@@ -483,7 +471,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         update(); // update for alignment
         return true;
     }
-    str = fl_get_input(column_options_->input_column_width);
+    string str = fl_get_input(column_options_->input_column_width);
     if (!str.empty() && !isValidLength(str)) {
         fl_set_object_label(
 	    dialog_->text_warning,
@@ -526,7 +514,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     else if (ob == cell_options_->radio_multicolumn)
         num = LyXTabular::MULTICOLUMN;
     else if (ob == tabular_options_->radio_longtable) {
-        s=fl_get_button(tabular_options_->radio_longtable);
+        s = fl_get_button(tabular_options_->radio_longtable);
         if (s) {
             num = LyXTabular::SET_LONGTABULAR;
             fl_activate_object(longtable_options_->radio_lt_firsthead);
@@ -567,13 +555,13 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 			       FL_INACTIVE);
         }
     } else if (ob == tabular_options_->radio_rotate_tabular) {
-        s=fl_get_button(tabular_options_->radio_rotate_tabular);
+        s = fl_get_button(tabular_options_->radio_rotate_tabular);
 	if (s)
             num = LyXTabular::SET_ROTATE_TABULAR;
 	else
 	    num = LyXTabular::UNSET_ROTATE_TABULAR;
     } else if (ob == cell_options_->radio_rotate_cell) {
-        s=fl_get_button(cell_options_->radio_rotate_cell);
+        s = fl_get_button(cell_options_->radio_rotate_cell);
 	if (s)
             num = LyXTabular::SET_ROTATE_CELL;
 	else

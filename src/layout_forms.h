@@ -11,9 +11,6 @@ extern "C" void PreambleOKCB(FL_OBJECT *, long);
 extern "C" void PreambleApplyCB(FL_OBJECT *, long);
 extern "C" void PreambleCancelCB(FL_OBJECT *, long);
 
-/* Some extra funcs */
-
-extern bool UpdateLayoutPreamble();
 
 /**** Forms and Objects ****/
 typedef struct {

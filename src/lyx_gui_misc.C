@@ -139,7 +139,7 @@ void CloseAllBufferRelatedDialogs()
 void updateAllVisibleBufferRelatedDialogs(bool)
 {
 	if (fd_form_preamble->form_preamble->visible) {
-		UpdateLayoutPreamble();
+		UpdateLayoutPreamble(current_view);
 	}
 	if (fd_latex_log->LaTeXLog->visible) {
 		LatexLogUpdate(0,0);
