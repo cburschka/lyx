@@ -1,3 +1,32 @@
+2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlButtons.h: no longer include ButtonControllerBase.h, ViewBase.h
+	* ControlGraphics.h: no longer include insetgraphicsParams.h
+	* ControlInset.h: no longer include LyXView.h, LAssert.h
+
+	* ControlBibitem.C:
+	* ControlBibtex.C:
+	* ControlButtons.C:
+	* ControlCharacter.C:
+	* ControlCitation.C:
+	* ControlCommand.C:
+	* ControlConnections.C:
+	* ControlCopyright.C:
+	* ControlCredits.C:
+	* ControlError.C:
+	* ControlExternal.C:
+	* ControlGraphics.C:
+	* ControlInclude.C:
+	* ControlLog.C:
+	* ControlMinipage.C:
+	* ControlPreamble.C:
+	* ControlPrint.C:
+	* ControlRef.C:
+	* ControlSearch.C:
+	* ControlTabularCreate.C:
+	* ControlToc.C:
+	* ControlVCLog.C: they're now in here!
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ButtonControllerBase.h: C++ mode, inherit privately from

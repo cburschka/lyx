@@ -20,6 +20,8 @@
 #endif
 
 #include <config.h>
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlBibtex.h"
 #include "Dialogs.h"
 #include "LyXView.h"

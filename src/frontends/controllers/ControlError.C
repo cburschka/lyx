@@ -17,6 +17,8 @@
 
 #include <config.h>
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlError.h"
 #include "Dialogs.h"
 #include "LyXView.h"

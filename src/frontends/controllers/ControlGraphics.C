@@ -17,6 +17,8 @@
 #pragma implementation
 #endif 
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlGraphics.h"
 #include "buffer.h"
 #include "Dialogs.h"
@@ -24,6 +26,7 @@
 #include "gettext.h"
 
 #include "insets/insetgraphics.h"
+#include "insets/insetgraphicsParams.h" // need operator!=()
 
 #include "support/FileInfo.h"  // for FileInfo
 #include "helper_funcs.h"      // for browseFile

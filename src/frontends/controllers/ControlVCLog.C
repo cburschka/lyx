@@ -12,14 +12,16 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
 #include <fstream>
+#include "Lsstream.h"
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-#include "Lsstream.h"
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlVCLog.h"
 #include "buffer.h"
 #include "LyXView.h"

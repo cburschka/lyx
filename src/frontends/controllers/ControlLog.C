@@ -12,11 +12,14 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlLog.h"
 #include "LyXView.h"
 #include "Dialogs.h"

@@ -13,12 +13,12 @@
 #ifndef CONTROLTABULARCREATE_H
 #define CONTROLTABULARCREATE_H
 
+#include <utility>
+ 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <utility>
- 
 #include "ControlDialogs.h"
 
 /** A controller for the TabularCreate Dialog.

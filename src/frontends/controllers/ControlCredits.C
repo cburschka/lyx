@@ -9,12 +9,13 @@
 
 #include <config.h>
 #include <fstream>
-#include "Lsstream.h"
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlCredits.h"
 #include "Dialogs.h"
 #include "LyXView.h"

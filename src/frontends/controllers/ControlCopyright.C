@@ -13,6 +13,8 @@
 
 #include <config.h>
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlCopyright.h"
 #include "Dialogs.h"
 #include "LyXView.h"

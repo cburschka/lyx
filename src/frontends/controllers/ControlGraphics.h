@@ -19,9 +19,9 @@
 #endif 
 
 #include "ControlInset.h"
-#include "insets/insetgraphicsParams.h" // need operator!=()
 
 class InsetGraphics;
+class InsetGraphicsParams;
 class LyXView;
 
 /** A controller for Graphics dialogs.

@@ -18,6 +18,8 @@
 #pragma implementation
 #endif
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlCitation.h"
 #include "buffer.h"
 #include "Dialogs.h"

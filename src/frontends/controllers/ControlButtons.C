@@ -19,6 +19,8 @@
 #endif
 
 #include "ControlButtons.h"
+#include "ButtonControllerBase.h"
+#include "ViewBase.h"
 
 void ControlButtons::ApplyButton()
 {

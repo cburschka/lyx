@@ -14,6 +14,8 @@
 
 #include <config.h>
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlCharacter.h"
 #include "buffer.h"
 #include "Dialogs.h"

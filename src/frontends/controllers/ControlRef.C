@@ -17,7 +17,8 @@
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlRef.h"
 #include "Dialogs.h"
 #include "LyXView.h"

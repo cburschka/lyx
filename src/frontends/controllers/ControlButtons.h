@@ -33,9 +33,9 @@
 #endif
 
 #include "DialogBase.h" // This can go eventually
-#include "ButtonControllerBase.h"
 
 class ViewBase;
+class ButtonControllerBase;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
@@ -75,7 +75,5 @@ protected:
 	    of the View. */
 	virtual ViewBase & view() = 0;
 };
-
-#include "ViewBase.h"
 
 #endif // CONTROLBUTTONS_H

@@ -22,6 +22,8 @@
 #pragma implementation
 #endif
 
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlExternal.h"
 #include "buffer.h"
 #include "Dialogs.h"

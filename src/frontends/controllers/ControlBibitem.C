@@ -19,6 +19,8 @@
 #endif
 
 #include <config.h>
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
 #include "ControlBibitem.h"
 #include "Dialogs.h"
 #include "LyXView.h"
