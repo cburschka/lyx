@@ -257,7 +257,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const end = row_.endpos();
 	LyXFont orig_font = getFont(pos);
 
 	// first character
@@ -274,7 +274,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	++vpos;
 
 	// collect as much similar chars as we can
-	while (vpos <= last && (pos = text_.bidi.vis2log(vpos)) >= 0) {
+	while (vpos < end && (pos = text_.bidi.vis2log(vpos)) >= 0) {
 		char c = pit_->getChar(pos);
 
 		if (!IsPrintableNonspace(c))
@@ -437,10 +437,10 @@ void RowPainter::paintSelection()
 			int(x_), row_.height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const end = row_.endpos();
 	double tmpx = x_;
 
-	for (pos_type vpos = row_.pos(); vpos <= last; ++vpos)  {
+	for (pos_type vpos = row_.pos(); vpos < end; ++vpos)  {
 		pos_type pos = text_.bidi.vis2log(vpos);
 		double const old_tmpx = tmpx;
 		if (body_pos > 0 && pos == body_pos - 1) {
@@ -489,9 +489,9 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_.pos();
-	pos_type const end = lastPos(*pit_, row_);
+	pos_type const end = row_.endpos();
 
-	if (!pit_->isChanged(start, end))
+	if (start == end || !pit_->isChanged(start, end - 1))
 		return;
 
 	int const height = text_.isLastRow(pit_, row_)
@@ -906,10 +906,10 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = lastPos(*pit_, row_);
+	pos_type const end = row_.endpos();
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
-		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
+		(body_pos > end || !pit_->isLineSeparator(body_pos - 1))) {
 		body_pos = 0;
 	}
 
@@ -920,7 +920,7 @@ void RowPainter::paintText()
 	int last_strikeout_x = 0;
 
 	pos_type vpos = row_.pos();
-	while (vpos <= last) {
+	while (vpos < end) {
 		if (x_ > bv_.workWidth())
 			break;
 		pos_type pos = text_.bidi.vis2log(vpos);

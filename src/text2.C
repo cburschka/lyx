@@ -1307,10 +1307,15 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = lastPos(*pit, row);
+	pos_type const end = row.endpos();
 
 	// None of these should happen, but we're scaredy-cats
-	if (pos > pit->size()) {
+	if (pos < 0) {
+		lyxerr << "dont like -1" << endl;
+		pos = 0;
+		cur.pos(0);
+		BOOST_ASSERT(false);
+	} else if (pos > pit->size()) {
 		lyxerr << "dont like 1, pos: " << pos
 		       << " size: " << pit->size()
 		       << " row.pos():" << row.pos()
@@ -1318,10 +1323,10 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 		pos = 0;
 		cur.pos(0);
 		BOOST_ASSERT(false);
-	} else if (pos > last + 1) {
+	} else if (pos > end) {
 		lyxerr << "dont like 2 please report" << endl;
 		// This shouldn't happen.
-		pos = last + 1;
+		pos = end;
 		cur.pos(pos);
 		BOOST_ASSERT(false);
 	} else if (pos < row.pos()) {
@@ -1333,16 +1338,15 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 		cur.pos(pos);
 		BOOST_ASSERT(false);
 	}
-
 	// now get the cursors x position
-	float x = getCursorX(pit, row, pos, last, boundary);
+	float x = getCursorX(pit, row, pos, boundary);
 	cur.x(int(x));
 	cur.x_fix(cur.x());
 }
 
 
 float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
-			  pos_type pos, pos_type last, bool boundary) const
+			  pos_type pos, bool boundary) const
 {
 	pos_type cursor_vpos    = 0;
 	double x                = row.x();
@@ -1350,13 +1354,14 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 	double fill_hfill       = row.fill_hfill();
 	double fill_label_hfill = row.fill_label_hfill();
 	pos_type const row_pos  = row.pos();
-
-	if (last < row_pos)
+	pos_type const end = row.endpos();
+	
+	if (end <= row_pos)
 		cursor_vpos = row_pos;
-	else if (pos > last && !boundary)
+	else if (pos >= end && !boundary)
 		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params()))
-			? row_pos : last + 1;
-	else if (pos > row_pos && (pos > last || boundary))
+			? row_pos : end;
+	else if (pos > row_pos && (pos >= end || boundary))
 		// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
 			? bidi.log2vis(pos - 1) + 1 : bidi.log2vis(pos - 1);
@@ -1367,15 +1372,15 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 
 	pos_type body_pos = pit->beginningOfBody();
 	if (body_pos > 0 &&
-	    (body_pos - 1 > last || !pit->isLineSeparator(body_pos - 1)))
+	    (body_pos > end || !pit->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
-			x += fill_label_hfill +
-				font_metrics::width(
-					pit->layout()->labelsep, getLabelFont(pit));
+			x += fill_label_hfill
+				+ font_metrics::width(pit->layout()->labelsep,
+						      getLabelFont(pit));
 			if (pit->isLineSeparator(body_pos - 1))
 				x -= singleWidth(pit, body_pos - 1);
 		}
@@ -1456,7 +1461,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	double fill_label_hfill = row.fill_label_hfill();
 
 	pos_type vc = row.pos();
-	pos_type last = lastPos(*pit, row);
+	pos_type end = row.endpos();
 	pos_type c = 0;
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -1466,17 +1471,17 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
-	    (body_pos - 1 > last ||
+	    (body_pos > end ||
 	     !pit->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	// check for empty row
-	if (!pit->size()) {
+	if (vc == end) {
 		x = int(tmpx);
 		return 0;
 	}
 
-	while (vc <= last && tmpx <= x) {
+	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
@@ -1507,8 +1512,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		left_side = true;
 	}
 
-	if (vc > last + 1)  // This shouldn't happen.
-		vc = last + 1;
+	BOOST_ASSERT(vc <= end);  // This shouldn't happen.
 
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
@@ -1522,8 +1526,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		: false;
 	if (lastrow &&
 		 ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-		  (!rtl && !left_side && vc == last + 1  && x > tmpx + 5)))
-		c = last + 1;
+		  (!rtl && !left_side && vc == end  && x > tmpx + 5)))
+		c = end;
 	else if (vc == row.pos()) {
 		c = bidi.vis2log(vc);
 		if (bidi.level(c) % 2 == 1)
@@ -1537,12 +1541,12 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		}
 	}
 
-	if (row.pos() <= last && c > last && pit->isNewline(last)) {
-		if (bidi.level(last) % 2 == 0)
-			tmpx -= singleWidth(pit, last);
+	if (row.pos() < end && c >= end && pit->isNewline(end - 1)) {
+		if (bidi.level(end -1) % 2 == 0)
+			tmpx -= singleWidth(pit, end - 1);
 		else
-			tmpx += singleWidth(pit, last);
-		c = last;
+			tmpx += singleWidth(pit, end - 1);
+		c = end - 1;
 	}
 
 	c -= row.pos();

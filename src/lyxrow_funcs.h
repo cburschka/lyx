@@ -18,8 +18,6 @@
 class Paragraph;
 class Row;
 
-lyx::pos_type lastPos(Paragraph const & par, Row const & row);
-
 int numberOfSeparators(Paragraph const & par, Row const & row);
 
 int numberOfHfills(Paragraph const & par, Row const & row);

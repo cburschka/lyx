@@ -1,5 +1,16 @@
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
 
+	* text.C: 
+	* lyxrow_funcs.[Ch]: 
+	* Bidi.C: 
+	* paragraph.C: 
+	* lyxtext.h: 
+	* rowpainter.C: 
+	* text2.C: 
+	* text3.C: remove lastPos uses in favour of Row::endpos
+
+2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
+
 	* undo.C (performUndoOrRedo): fix two crashes by setting a
 	cursor by hand and reordering some calls. Use bv->lockInset instead
 	of inset->edit because the latter loses cursor information

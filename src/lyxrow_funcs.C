@@ -24,25 +24,16 @@ using std::min;
 using std::endl;
 
 
-pos_type lastPos(Paragraph const & par, Row const & row)
-{
-	if (par.empty())
-		return 0;
-	pos_type pos = row.endpos() - 1;
-//	if (pos == par.size())
-//		--pos;
-	return pos;
-}
-
-
 int numberOfSeparators(Paragraph const & par, Row const & row)
 {
-	pos_type const last = lastPos(par, row);
+	pos_type const first = max(row.pos(), par.beginningOfBody());
+	pos_type const last = row.endpos() - 1;
 	int n = 0;
-	pos_type p = max(row.pos(), par.beginningOfBody());
-	for ( ; p < last; ++p)
+	for (pos_type p = first; p < last; ++p) {
 		if (par.isSeparator(p))
 			++n;
+	}
+
 	return n;
 }
 
@@ -51,7 +42,7 @@ int numberOfSeparators(Paragraph const & par, Row const & row)
 // an anonymous namespace there. (Lgb)
 int numberOfHfills(Paragraph const & par, Row const & row)
 {
-	pos_type const last = lastPos(par, row);
+	pos_type const last = row.endpos() - 1;
 	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
@@ -78,7 +69,7 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 // an anonymous namespace there. (Lgb)
 int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
-	pos_type last = lastPos(par, row);
+	pos_type last = row.endpos() - 1;
 	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!

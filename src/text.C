@@ -507,6 +507,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
+
 	// We re-use the font resolution for the entire font span when possible
 	LyXFont font = getFont(pit, pos);
 	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(pos);
@@ -534,6 +535,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 
 		char const c = pit->getChar(i);
+ 
 		if (i > endPosOfFontSpan) {
 			font = getFont(pit, i);
 			endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
@@ -571,7 +573,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			}
 			// exit on last registered breakpoint:
 			if (i + 1 < end)
-				break;  
+				break;
 		}
 
 		InsetOld * in = pit->getInset(i);
@@ -608,11 +610,13 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) cons
 {
 	int w;
 	// get the pure distance
-	pos_type const last = lastPos(*pit, row);
+	pos_type const end = row.endpos();
 
 	LyXLayout_ptr const & layout = pit->layout();
 
 	// special handling of the right address boxes
+#if 0
+//this is not working anymore
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		int const tmpfill = row.fill();
 		row.fill(0); // the minfill in leftMargin()
@@ -621,15 +625,18 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) cons
 	} else {
 		w = leftMargin(pit, row);
 	}
+#else
+	w = leftMargin(pit, row);
+#endif
 
 	pos_type const body_pos = pit->beginningOfBody();
 	pos_type i = row.pos();
 
-	if (! pit->empty() && i <= last) {
+	if (i < end) {
 		// We re-use the font resolution for the entire span when possible
 		LyXFont font = getFont(pit, i);
 		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
-		while (i <= last) {
+		while (i < end) {
 			if (body_pos > 0 && i == body_pos) {
 				w += font_metrics::width(layout->labelsep, getLabelFont(pit));
 				if (pit->isLineSeparator(i - 1))
@@ -648,10 +655,10 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) cons
 			++i;
 		}
 	}
-	if (body_pos > 0 && body_pos > last) {
+	if (body_pos > 0 && body_pos >= end) {
 		w += font_metrics::width(layout->labelsep, getLabelFont(pit));
-		if (last >= 0 && pit->isLineSeparator(last))
-			w -= singleWidth(pit, last);
+		if (end > 0 && pit->isLineSeparator(end - 1))
+			w -= singleWidth(pit, end - 1);
 		int const left_margin = labelEnd(pit, row);
 		if (w < left_margin)
 			w = left_margin;
@@ -752,7 +759,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 	// This is not completely correct, but we can live with the small,
 	// cosmetic error for now.
 	int labeladdon = 0;
-	pos_type const pos_end = lastPos(*pit, row);
+	pos_type const pos_end = row.endpos();
 
 	LyXFont::FONT_SIZE maxsize =
 		pit->highestFontInRange(row.pos(), pos_end, size);
@@ -1150,7 +1157,7 @@ void LyXText::insertChar(char c)
 
 void LyXText::charInserted()
 {
-	// Here we could call finishUndo for every 20 characters inserted.
+	// Here we call finishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it. (Lgb)
 	static unsigned int counter;
 	if (counter < 20) {
@@ -1193,9 +1200,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		if (!pit->empty())
 			++nlh;
 
-		if (nlh && !pit->getLabelWidthString().empty()) {
+		if (nlh && !pit->getLabelWidthString().empty())
 			fill_label_hfill = labelFill(pit, row) / double(nlh);
-		}
 	}
 
 	// are there any hfills in the row?
@@ -1271,13 +1277,13 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 	bidi.computeTables(*pit, *bv()->buffer(), row);
 	if (is_rtl) {
 		pos_type body_pos = pit->beginningOfBody();
-		pos_type last = lastPos(*pit, row);
+		pos_type end = row.endpos();
 
 		if (body_pos > 0 &&
-				(body_pos - 1 > last ||
+				(body_pos > end ||
 				 !pit->isLineSeparator(body_pos - 1))) {
 			x += font_metrics::width(layout->labelsep, getLabelFont(pit));
-			if (body_pos - 1 <= last)
+			if (body_pos <= end)
 				x += fill_label_hfill;
 		}
 	}
@@ -1539,10 +1545,10 @@ void LyXText::deleteWordBackward()
 // Kill to end of line.
 void LyXText::deleteLineForward()
 {
-	if (cursorPar()->empty())
+	if (cursorPar()->empty()) {
 		// Paragraph is empty, so we just go to the right
 		cursorRight(bv());
-	else {
+	} else {
 		LyXCursor tmpcursor = cursor;
 		// We can't store the row over a regular setCursor
 		// so we set it to 0 and reset it afterwards.
@@ -1553,11 +1559,10 @@ void LyXText::deleteLineForward()
 		cursor = tmpcursor;
 		setSelection();
 		// What is this test for ??? (JMarc)
-		if (!selection.set()) {
+		if (!selection.set())
 			deleteWordForward();
-		} else {
+		else
 			cutSelection(true, false);
-		}
 	}
 }
 

@@ -76,8 +76,8 @@ namespace {
 	{
 		LyXText * lt = bv->getLyXText();
 
-		//if (!lt->selection.set())
-    //	lt->selection.cursor = lt->cursor;
+//		if (!lt->selection.set())
+//			lt->selection.cursor = lt->cursor;
 
 		if (selecting || lt->selection.mark())
 			lt->setSelection();

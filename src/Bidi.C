@@ -11,13 +11,13 @@
 
 #include "Bidi.h"
 #include "buffer.h"
-#include "insets/updatableinset.h"
 #include "lyxfont.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "lyxrc.h"
 #include "paragraph.h"
 
+#include "insets/updatableinset.h"
 
 using lyx::pos_type;
 
@@ -68,7 +68,7 @@ void Bidi::computeTables(Paragraph const & par,
 	}
 
 	start_ = row.pos();
-	end_ = lastPos(par, row);
+	end_ = row.endpos() - 1;
 
 	if (start_ > end_) {
 		start_ = -1;

@@ -343,8 +343,7 @@ public:
 private:
 	///
 	float getCursorX(ParagraphList::iterator pit,
-	     Row const & row, lyx::pos_type pos,
-			 lyx::pos_type last, bool boundary) const;
+	     Row const & row, lyx::pos_type pos, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 

@@ -414,7 +414,7 @@ Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 		return def_size;
 
 	Pimpl::FontList::const_iterator end_it = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	Pimpl::FontList::const_iterator const end = pimpl_->fontlist.end();
 	for (; end_it != end; ++end_it) {
 		if (end_it->pos() >= endpos)
 			break;
