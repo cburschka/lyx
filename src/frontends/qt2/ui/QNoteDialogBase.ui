@@ -1,0 +1,156 @@
+<!DOCTYPE UI><UI>
+<class>QNoteDialogBase</class>
+<include location="global">config.h</include>
+<include location="local">qt_helpers.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QNoteDialogBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>188</width>
+            <height>146</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Annotation Settings</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="1"  column="0" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>okPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>OK</string>
+            </property>
+            <property stdset="1">
+                <name>default</name>
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>closePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Close</string>
+            </property>
+            <property stdset="1">
+                <name>default</name>
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+            <class>QButtonGroup</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>NoteBG</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Type</string>
+            </property>
+            <vbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>noteRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Note</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>LyX internal only</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>commentRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>C&amp;omment</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Export to LaTeX but don't print</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>greyedoutRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Greyed out</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Print as grey text</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>noteRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QNoteDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>greyedoutRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QNoteDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>commentRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QNoteDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <slot access="public">change_adaptor()</slot>
+</connections>
+</UI>

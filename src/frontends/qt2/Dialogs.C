@@ -27,6 +27,7 @@
 #include "ControlLog.h"
 #include "ControlMath.h"
 #include "ControlMinipage.h"
+#include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
 #include "ControlShowFile.h"
@@ -57,6 +58,7 @@
 #include "QLog.h"
 #include "QMath.h"
 #include "QMinipage.h"
+#include "QNote.h"
 #include "QParagraph.h"
 #include "QRef.h"
 #include "QShowFile.h"
@@ -84,7 +86,7 @@ char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist", "ert", "external", "file",
 "float", "graphics", "include", "index", "label", "latexlog",
 "mathpanel", "mathdelimiter", "mathmatrix",
-"minipage", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+"minipage", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -206,6 +208,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new QMinipage(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "note") {
+		dialog->setController(new ControlNote(*dialog));
+		dialog->setView(new QNote(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "paragraph") {
 		dialog->setController(new ControlParagraph(*dialog));

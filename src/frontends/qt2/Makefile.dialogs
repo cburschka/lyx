@@ -33,6 +33,7 @@ UIFILES = \
 	QMathDialogBase.ui \
 	QMathMatrixDialogBase.ui \
 	QMinipageDialogBase.ui \
+	QNoteDialogBase.ui \
 	QParagraphDialogBase.ui \
 	QPrefAsciiModule.ui \
 	QPrefColorsModule.ui \
@@ -100,6 +101,7 @@ MOCFILES = \
 	QMathDialog.C QMathDialog.h \
 	QMathMatrixDialog.C QMathMatrixDialog.h \
 	QMinipageDialog.C QMinipageDialog.h \
+	QNoteDialog.C QNoteDialog.h \
 	QParagraphDialog.C QParagraphDialog.h \
 	QPrefsDialog.C QPrefsDialog.h \
 	QRefDialog.C QRefDialog.h \

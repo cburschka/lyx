@@ -4,6 +4,15 @@
 	sure that it is initialized to some reasonable value, so that the
 	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MAC).
 
+2003-07-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QNoteDialog.ui:
+	* QNoteDialog.[Ch]:
+	* QNote.[Ch]:
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* Dialogs2.C: New Annotation (Note) dialog
+
 2003-07-11  André Pönitz  <poenitz@lyx.org>
 
 	* Alert_pimpl.C:
