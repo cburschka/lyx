@@ -1281,14 +1281,30 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 	Language const * language = getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
-	Language const * previous_language = previous_
-		? previous_->getParLanguage(bparams) : doc_language;
-	if (language->babel() != doc_language->babel() &&
-	    language->babel() != previous_language->babel()) {
-		os << subst(lyxrc.language_command_begin, "$$lang",
-			    language->babel())
-		   << endl;
-		texrow.newline();
+	Language const * previous_language = previous()
+		? previous()->getParLanguage(bparams) : doc_language;
+
+	if (language->babel() != previous_language->babel()
+	    // check if we already put language command in TeXEnvironment()
+	    && !(textclasslist.Style(bparams.textclass, layout).isEnvironment()
+		 && (!previous() || previous()->layout != layout ||
+		     previous()->params().depth() != params().depth()))) {
+
+		if (!lyxrc.language_command_end.empty() &&
+		    previous_language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_end, "$$lang",
+				    previous_language->babel())
+			   << endl;
+			texrow.newline();
+		}
+
+		if (lyxrc.language_command_end.empty() ||
+		    language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_begin, "$$lang",
+				    language->babel())
+			   << endl;
+			texrow.newline();
+		}
 	}
 
 	if (bparams.inputenc == "auto" &&
@@ -1345,15 +1361,6 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	} else if (is_command)
 		os << "}";
 
-	if (language->babel() != doc_language->babel() &&
-	    (!next_ ||
-	     next_->getParLanguage(bparams)->babel() != language->babel()))
-	{
-		os << endl 
-		   << subst(lyxrc.language_command_end, "$$lang",
-			    doc_language->babel());
-	}
-	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -1411,6 +1418,24 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	if (next_) {
 		os << '\n';
 		texrow.newline();
+	} else {
+		// Since \selectlanguage write the language to the aux file,
+		// we need to reset the language at the end of footnote or
+		// float.
+
+		if (language->babel() != doc_language->babel()) {
+			if (lyxrc.language_command_end.empty())
+				os << subst(lyxrc.language_command_begin,
+					    "$$lang",
+					    doc_language->babel())
+				   << endl;
+			else
+				os << subst(lyxrc.language_command_end,
+					    "$$lang",
+					    language->babel())
+				   << endl;
+			texrow.newline();
+		}
 	}
 
 	lyxerr[Debug::LATEX] << "TeXOnePar...done " << next_ << endl;
@@ -1733,6 +1758,29 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 	LyXLayout const & style =
 		textclasslist.Style(bparams.textclass,
 				    layout);
+
+	Language const * language = getParLanguage(bparams);
+	Language const * doc_language = bparams.language;
+	Language const * previous_language = previous_
+		? previous_->getParLanguage(bparams) : doc_language;
+	if (language->babel() != previous_language->babel()) {
+
+		if (!lyxrc.language_command_end.empty() &&
+		    previous_language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_end, "$$lang",
+				    previous_language->babel())
+			   << endl;
+			texrow.newline();
+		}
+
+		if (lyxrc.language_command_end.empty() ||
+		    language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_begin, "$$lang",
+				    language->babel())
+			   << endl;
+			texrow.newline();
+		}
+	}
 
 	if (style.isEnvironment()){
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {

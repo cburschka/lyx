@@ -243,7 +243,6 @@ void LyXRC::setDefaults() {
 	language_use_babel = true;
 	language_package = "\\usepackage{babel}";
 	language_command_begin = "\\selectlanguage{$$lang}";
-	language_command_end = "\\selectlanguage{$$lang}";
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
 	//
