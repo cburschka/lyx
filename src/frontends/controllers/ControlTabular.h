@@ -46,6 +46,9 @@ public:
  
 	/// return true if units should default to metric
 	bool metric() const;
+	
+	/// return true if actual cell is multicolumn
+	bool isMulticolumnCell() const;
  
 private:
 

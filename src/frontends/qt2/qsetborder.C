@@ -87,6 +87,7 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 		}
 	}
 	update();
+	emit clicked();
 }
 
 
@@ -142,21 +143,33 @@ void QSetBorder::drawBottom(bool draw)
 void QSetBorder::setLeft(bool border)
 {
 	left_ = border;
+	drawLeft(border);
 }
 
 void QSetBorder::setRight(bool border)
 {
 	right_ = border;
+	drawRight(border);
 }
 
 void QSetBorder::setTop(bool border)
 {
 	top_ = border;
+	drawTop(border);
 }
 
 void QSetBorder::setBottom(bool border)
 {
 	bottom_ = border;
+	drawBottom(border);
+}
+
+void QSetBorder::setAll(bool border)
+{
+	setLeft(border);
+	setRight(border);
+	setTop(border);
+	setBottom(border);
 }
 
 bool QSetBorder::getLeft()

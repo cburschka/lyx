@@ -154,3 +154,9 @@ bool ControlTabular::metric() const
 {
 	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
 }
+
+bool ControlTabular::isMulticolumnCell() const
+{
+	int cell(inset()->getActCell());
+	return tabular()->IsMultiColumn(cell);
+}

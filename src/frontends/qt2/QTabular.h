@@ -6,6 +6,8 @@
  *
  * \author John Levon
  * \author Kalle Dalheimer
+ * \author Juergen Spitzmueller
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -37,10 +39,14 @@ protected:
 private:
 	/// We can't use this ...
 	virtual void apply() {}
+	/// update borders
+	virtual void update_borders();
 	/// update
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
+	/// save some values before closing the gui
+	virtual void closeGUI();
 };
 
 #endif // QTABULAR_H

@@ -34,12 +34,14 @@ signals:
 	void leftSet(bool);
 	void topSet(bool);
 	void bottomSet(bool);
+	void clicked();
 
 public slots:
 	void setLeft(bool);
 	void setRight(bool);
 	void setTop(bool);
 	void setBottom(bool);
+	void setAll(bool);
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
