@@ -1,10 +1,4 @@
 
-2002-10-24  André Pönitz <poenitz@gmx.net>
-
-	* math_unknowninset.[Ch] ;
-    Let UnknownInset inherit from NestInset instead of DimInset to enable
-    it to store the selection while the macro name is typed.
-
 2002-10-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_factory.C (initSymbols): Support "else" token.

@@ -11,7 +11,7 @@
 
 
 MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
-	: MathNestInset(1), name_(nm), final_(final), black_(black)
+	: name_(nm), final_(final), black_(black)
 {}
 
 
