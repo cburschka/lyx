@@ -1,3 +1,11 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* Alert.C: all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* Toolbar.h (Pimpl): type definition made public.
+
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (DIST_SUBDIRS): use this instead of EXTRA_DIST

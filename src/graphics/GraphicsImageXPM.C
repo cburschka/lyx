@@ -25,6 +25,14 @@
 #include <cmath>                  // cos, sin
 #include <cstdlib>                // malloc, free
 
+#ifndef CXX_GLOBAL_CSTD
+using std::cos;
+using std::sin;
+using std::malloc;
+using std::strcpy;
+using std::strlen;
+#endif
+
 namespace grfx {
 
 /// Access to this class is through this static method.

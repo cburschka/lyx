@@ -34,6 +34,10 @@
 #include "support/path.h"
 #include <cstdio>  // sscanf
 
+#ifndef CXX_GLOBAL_CSTD
+using std::sscanf;
+#endif
+
 using std::ifstream;
 using std::getline;
 using std::endl;

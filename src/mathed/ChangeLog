@@ -1,3 +1,10 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* math_charinset.C: 
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
 2002-05-31  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_hullinset.C (ams): Do a real check.

@@ -326,13 +326,11 @@ public:
 
 	/// Converts logical attributes to concrete shape attribute
 	LyXFont::FONT_SHAPE realShape() const;
-private:
-	///
+
+	/** Compaq cxx 6.5 requires that the definition be public so that
+	    it can compile operator==()
+	 */
 	struct FontBits {
-		///
-		bool operator==(FontBits const & fb1) const;
-		///
-		bool operator!=(FontBits const & fb1) const;
 		///
 		FONT_FAMILY family;
 		///
@@ -352,6 +350,7 @@ private:
 		///
 		FONT_MISC_STATE number;
 	};
+private:
 
 	///
 	FontBits bits;
@@ -435,6 +434,14 @@ bool LyXFont::isSymbolFont() const
 ///
 std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
 
+bool operator==(LyXFont::FontBits const & lhs, LyXFont::FontBits const & rhs);
+
+inline
+bool operator!=(LyXFont::FontBits const & lhs, LyXFont::FontBits const & rhs)
+{
+	return !(lhs == rhs);
+}
+
 ///
 inline
 bool operator==(LyXFont const & font1, LyXFont const & font2)
@@ -449,4 +456,6 @@ bool operator!=(LyXFont const & font1, LyXFont const & font2)
 {
 	return !(font1 == font2);
 }
+
+
 #endif

@@ -20,6 +20,7 @@
 
 #include "LString.h"
 #include "tabular.h"
+#include "support/lstrings.h" // for tostr
 
 #include <iosfwd>
 

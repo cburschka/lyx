@@ -31,6 +31,7 @@
 #include "lyxfunc.h"
 #include "BufferView.h"
 
+using std::abs;
 using std::endl;
 
 //extern void AutoSave(BufferView *);

@@ -34,6 +34,10 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::isdigit;
+#endif
+
 using std::vector;
 using std::queue;
 using std::endl;

@@ -1,7 +1,7 @@
 #include <config.h>
 
 #include <sys/types.h>
-#include <signal.h>
+#include <csignal>
 
 #include "lyxlib.h"
 

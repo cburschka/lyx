@@ -29,6 +29,10 @@
 
 #include <utility>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::exit;
+#endif
+
 using lyx::textclass_type;
 using std::pair;
 using std::make_pair;

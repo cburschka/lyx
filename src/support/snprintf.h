@@ -8,6 +8,11 @@
 extern "C" {
 #endif
 
+#ifndef CXX_GLOBAL_CSTD
+using std::size_t;
+using std::va_list;
+#endif
+
 #if defined(HAVE_DECL_SNPRINTF) || defined(HAVE_DECL_VSNPRINTF)
 #include <stdio.h>
 #endif

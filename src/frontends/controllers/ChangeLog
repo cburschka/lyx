@@ -1,3 +1,8 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* ControlInset.tmpl: #include a couple of headers.
+
 2002-05-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* frnt_lang.C (getLanguageData): change a couple of N_() to _().

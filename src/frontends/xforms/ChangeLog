@@ -1,3 +1,12 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* Color.C:
+	* DropDown.C:
+	* FormThesaurus.C:
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
 2002-06-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* xformsGImage.h: do not rely on FLIMAGE_H_LOCATION anymore

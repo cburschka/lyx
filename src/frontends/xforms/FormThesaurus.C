@@ -21,6 +21,10 @@
 #include "form_thesaurus.h"
 #include "debug.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::isupper;
+using std::islower;
+#endif
 
 using std::vector;
 

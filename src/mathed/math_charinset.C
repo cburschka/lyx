@@ -23,6 +23,7 @@ using std::ostream;
 using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
+using std::isalpha;
 using std::strchr;
 #endif
 

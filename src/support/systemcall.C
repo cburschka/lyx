@@ -27,6 +27,9 @@
 
 #include <cstdlib> //for ::system
 
+#ifndef CXX_GLOBAL_CSTD
+using std::system;
+#endif
 
 #if 0
 Systemcall::Systemcall(Starttype how, string const & what)

@@ -33,6 +33,8 @@
 
 namespace grfx {
 
+class ConvProcess;
+
 class GConverter : boost::noncopyable {
 public:
 

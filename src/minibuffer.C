@@ -35,6 +35,10 @@
 
 #include <cctype>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::isprint;
+#endif
+
 using SigC::slot;
 using std::vector;
 using std::back_inserter;

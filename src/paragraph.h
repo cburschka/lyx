@@ -342,6 +342,10 @@ public:
 private:
 	///
 	string layout_;
+public:
+	/** Both these definitions must be made public to keep Compaq cxx 6.5
+	 *  happy.
+	 */
 	///
 	struct InsetTable {
 		///
@@ -354,6 +358,7 @@ private:
 
 	///
 	typedef std::vector<InsetTable> InsetList;
+private:
 	///
 	InsetList insetlist;
 public:

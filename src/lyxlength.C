@@ -24,6 +24,7 @@
 
 #include <cstdlib>
 
+using std::abs;
 
 LyXLength::LyXLength()
 	: val_(0), unit_(LyXLength::PT)

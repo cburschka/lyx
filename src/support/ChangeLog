@@ -1,3 +1,23 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* lyxfunctional.h: rename lyx::class_fun(C & c, void(C::*f)(A)) as
+	lyx::void_class_fun to avoid compiler problems with Compaq cxx 6.5:
+	more than one instance of overloaded function "lyx::class_fun" matches
+	the argument list.
+
+	* filetools.C:
+	* lstrings.C:
+	* snprintf.h:
+	* systemcall.C:
+	* utility.h:
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* kill.C: rename signal.h as csignal.
+
+	* putenv.C: rename stdlib.h as cstdlib
+
 2002-05-03  Herbert Voss  <voss@perce.de>
 
 	* filetools.C (getExtFromContents): only print the first 60 chars of

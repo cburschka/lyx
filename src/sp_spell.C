@@ -53,6 +53,13 @@
 #include "encoding.h"
 #include "sp_ispell.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strcpy;
+using std::strlen;
+using std::strpbrk;
+using std::strstr;
+#endif
+
 using std::endl;
 
 namespace {

@@ -40,6 +40,7 @@
 #include <algorithm>
 #include <cstdlib>
 
+using std::abs;
 using std::ostream;
 using std::istream;
 using std::getline;

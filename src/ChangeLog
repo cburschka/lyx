@@ -1,8 +1,49 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* BufferView_pimpl.C:
+	* ColorHandler.C
+	* DepTable.C:
+	* LaTeX.C:
+	* buffer.C:
+	* converter.C:
+	* encoding.C:
+	* lyx_gui.C:
+	* lyx_main.C:
+	* lyxtextclasslist.C:
+	* minibuffer.C:
+	* sp_spell.[Ch]:
+	* tabular_funcs.C:
+	* vc-backend.C:
+	* vspace.C:
+	all c-library variables have been moved into namespace std. Wrap
+	using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* XFormsView.C:
+	* lyxlength.C:
+	* tabular-old.C:
+	* tabular.C:
+	Add a using std::abs declaration.
+	
+	* kbmap.h (modifier_pair):
+	* paragraph.h (InsetTable, InsetList):
+	* lyxfont.h (FontBits):
+	type definition made public.
+
+	* bufferlist.C (emergencyWriteAll): the compiler complains that
+	there is more than one possible lyx::class_fun template to choose from.
+	I re-named the void specialisation as lyx::void_class_fun.
+
+	* lyxfont.C (FontBits' operator==, operator!=): taken out of class.
+
+	* tabular_funcs.[Ch]: move the #include of lstrings.h into the header
+	file for the templatised write_attribute method.
+
 2002-06-14  Allan Rae  <rae@lyx.org>
 
 	* paragraph.C (InsetIterator): fix #432 by fixing iterator selection.
 
-2002-06-12  "Andrew Zabolotny"  <zap@cobra.ru>
+2002-06-12  Andrew Zabolotny  <zap@cobra.ru>
 
 	* kbmap.C (getiso): add support for cyrillic and greek
 

@@ -1,3 +1,14 @@
+2002-06-14  Angus Leeming  <leeming@lyx.org>
+
+	* inseetexternal.C: remove the using std::difftime declaration.
+
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.3.
+	* insetexternal.C: 
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
 2002-06-12  Vitaly Lipatov  <LAV@VL3143.spb.edu>
 
 	* insetquotes.C (draw): fix drawing of double quotes

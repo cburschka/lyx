@@ -7,6 +7,9 @@
 
 class BufferParams;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::FILE;
+#endif
 
 class ISpell : public SpellBase
 {
