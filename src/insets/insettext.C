@@ -548,7 +548,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     // language to the surronding text.
 #ifndef NEW_INSETS
     if (par->Last() == 0 && !par->next_) {
-#else#
+#else
     if (par->size() == 0 && !par->next()) {
 #endif
 	LyXFont font(LyXFont::ALL_IGNORE);
