@@ -114,7 +114,7 @@ int getItemNo(vector<string> v, string const & s) {
 void QGraphics::update_contents()
 {
 	// clear and fill in the comboboxes
-	vector<string> const bb_units = controller().getUnits();
+	vector<string> const bb_units = frnt::getBBUnits();
 	dialog_->lbXunit->clear();
 	dialog_->lbYunit->clear();
 	dialog_->rtXunit->clear();

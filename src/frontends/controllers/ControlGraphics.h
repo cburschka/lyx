@@ -47,8 +47,6 @@ public:
 	bool bbChanged;
 	/// test if file exist
 	bool isFilenameValid(string const & fname) const;
-	/// get the units for the bb
-	std::vector<string> const getUnits();
 
 private:
 	/// Dispatch the changed parameters to the kernel.
@@ -62,6 +60,9 @@ private:
 };
 
 namespace frnt {
+
+/// get the units for the bounding box
+std::vector<string> const getBBUnits();
 
 /// The (tranlated) GUI string and it's LaTeX equivalent.
 typedef std::pair<string, string> RotationOriginPair;

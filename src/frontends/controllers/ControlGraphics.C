@@ -133,31 +133,12 @@ bool ControlGraphics::isFilenameValid(string const & fname) const
 }
 
 
-namespace {
-
-static char const * bb_units[] = { "bp", "cm", "mm", "in"};
-size_t const bb_size = sizeof(bb_units) / sizeof(char *);
-
-}
-
-
-vector<string> const ControlGraphics::getUnits()
-{
-	static vector<string> data;
-	if (!data.empty())
-		return data;
-
-	data.resize(bb_size);
-	for (lyx::size_type i = 0; i < bb_size; ++i) {
-		data[i] = bb_units[i];
-	}
-	return data;
-}
-
-
 namespace frnt {
 
 namespace {
+
+char const * const bb_units[] = { "bp", "cm", "mm", "in" };
+size_t const bb_size = sizeof(bb_units) / sizeof(char *);
 
 // These are the strings that are stored in the LyX file and which
 // correspond to the LaTeX identifiers shown in the comments at the
@@ -178,6 +159,12 @@ char const * const rorigin_gui_strs[] = {
 size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 } // namespace anon
+
+
+vector<string> const getBBUnits()
+{
+	return vector<string> (bb_units, bb_units + bb_size);
+}
 
 
 vector<RotationOriginPair> getRotationOriginData()

@@ -1,3 +1,8 @@
+2002-11-04  Angus Leeming  <leeming@lyx.org>
+
+	* ControlGraphics.[Ch] (getUnits): moved out of class and into
+	frnt::getBBUnits(). Code cleaned also.
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* biblio.C (regexSearch): STRCONV

@@ -183,7 +183,7 @@ void FormGraphics::build()
 	fl_set_input_filter(bbox_->input_bb_y0, fl_unsigned_float_filter);
 	fl_set_input_filter(bbox_->input_bb_y1, fl_unsigned_float_filter);
 
-	string const bb_units = "bp|cm|mm|in";
+	string const bb_units = getStringFromVector(frnt::getBBUnits(), "|");
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 
 	// set up the tooltips for the bounding-box-section
