@@ -29,7 +29,7 @@
 class LyXImage;
 
 /// A GraphicsCache item holder.
-class GraphicsCacheItem : public boost::noncopyable {
+class GraphicsCacheItem : boost::noncopyable {
 public:
 	/// c-tor
 	GraphicsCacheItem(string const & filename);

@@ -30,7 +30,7 @@ class QComboBox;
  * This widget provides a value edit and a combo box
  * for LyXLengths.
  */
-class LengthEntry : public QWidget, public boost::noncopyable {
+class LengthEntry : public QWidget, boost::noncopyable {
    Q_OBJECT
 public:
 	LengthEntry(QWidget * parent = 0, const char * name = 0);

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * tabstack.h
  * (C) 2000 LyX Team
@@ -28,7 +29,7 @@ class QBoxLayout;
  * This widget provides a tab bar which can switch between a stack
  * of QFrames.
  */
-class TabStack : public QWidget, public boost::noncopyable {
+class TabStack : public QWidget, boost::noncopyable {
    Q_OBJECT
 public:
 	TabStack(QWidget * parent = 0, const char * name = 0);

@@ -1,3 +1,9 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* dlg/emptytable.h: C++ mode, inhrit privately from noncopyable
+	* dlg/tabstack.h: ditto
+	* dlg/lengthentry.h: ditto
+
 2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Form*.C:
