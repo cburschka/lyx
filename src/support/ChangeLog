@@ -1,3 +1,8 @@
+2004-04-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* filetools.C (RunCommand): block SIGCHLD during popen/pclose
+	(actually Angus' fix).
+
 2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.C (DeleteAllFilesInDir): delete directories with

@@ -28,6 +28,7 @@
 #include "filetools.h"
 #include "lstrings.h"
 #include "FileInfo.h"
+#include "forkedcontr.h"
 #include "path.h"
 #include "path_defines.h"
 #include "gettext.h"
@@ -1172,17 +1173,31 @@ bool LyXReadLink(string const & file, string & link, bool resolve)
 
 cmd_ret const RunCommand(string const & cmd)
 {
+	// FIXME: replace all calls to RunCommand with ForkedCall 
+	// (if the output is not needed) or the code in ispell.C
+	// (if the output is needed).
+	
 	// One question is if we should use popen or
 	// create our own popen based on fork, exec, pipe
 	// of course the best would be to have a
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
+	sigset_t newMask, oldMask;
+	sigemptyset(&oldMask);
+	sigemptyset(&newMask);
+	sigaddset(&newMask, SIGCHLD);
+
+	// Block the SIGCHLD signal.
+	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
+	
 	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
-	if (!inf)
+	if (!inf) {
 		return make_pair(-1, string());
+		lyxerr << "RunCommand:: could not start child process" << endl;
+		}
 
 	string ret;
 	int c = fgetc(inf);
@@ -1191,6 +1206,12 @@ cmd_ret const RunCommand(string const & cmd)
 		c = fgetc(inf);
 	}
 	int const pret = pclose(inf);
+	if (pret == -1)
+		perror("RunCommand:: could not terminate child process");
+
+	// Unblock the SIGCHLD signal and restore the old mask.
+	sigprocmask(SIG_SETMASK, &oldMask, 0);
+
 	return make_pair(pret, ret);
 }
 
