@@ -3,6 +3,9 @@
 	* formula.C (descent): add an arbitrary 12 pixels to the descent when
 	previewing a display mode equation, analogous to André's code elsewhere.
 
+	* math_nestinset.C (notifyCursorLeaves): generate the preview only
+	when leaving an inset with depth() == 1.
+
 2002-07-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_support.C (mathed_draw_deco): fix rounding bug for rotated

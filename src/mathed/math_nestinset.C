@@ -277,12 +277,16 @@ MathArray MathNestInset::glue() const
 
 void MathNestInset::notifyCursorLeaves()
 {
-	//lyxerr << "leaving " << *this << "\n";
-	if (!mathcursor || !grfx::Previews::activated())
+	// Generate a preview only if previews are active and we are leaving
+	// the InsetFormula itself
+	if (!grfx::Previews::activated() ||
+	    !mathcursor || mathcursor->depth() != 1)
 		return;
 
 	InsetFormulaBase * inset = mathcursor->formula();
 	BufferView * bufferview = inset->view();
+
+	// Paranoia check
 	if (!bufferview || !bufferview->buffer())
 		return;
 
