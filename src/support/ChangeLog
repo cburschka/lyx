@@ -1,5 +1,10 @@
 2003-09-25  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.C (ReplaceEnvironmentPath): rewrite to use boost::regex.
+	* lstrings.[Ch]: (regexMatch): removed.
+
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
 	* translator.h (add): new member function.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>

@@ -19,7 +19,6 @@
 #include "lyxlib.h"
 #include "tostr.h"
 
-#include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
 
 #include <algorithm>
@@ -386,21 +385,6 @@ int tokenPos(string const & a, char delim, string const & tok)
 		++i;
 	}
 	return -1;
-}
-
-
-bool regexMatch(string const & a, string const & pattern)
-{
-	// We massage the pattern a bit so that the usual
-	// shell pattern we all are used to will work.
-	// One nice thing about using a real regex is that
-	// things like "*.*[^~]" will work also.
-	// build the regex string.
-	string regex(pattern);
-	regex = subst(regex, ".", "\\.");
-	regex = subst(regex, "*", ".*");
-	boost::regex reg(regex);
-	return boost::regex_match(a, reg);
 }
 
 

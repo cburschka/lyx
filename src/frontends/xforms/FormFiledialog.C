@@ -28,6 +28,7 @@
 #include "lyx_forms.h"
 
 #include <boost/bind.hpp>
+#include <boost/regex.hpp>
 
 #include <algorithm>
 #include <map>
@@ -62,8 +63,8 @@ using lyx::support::GetEnvPath;
 using lyx::support::LyXReadLink;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyFilename;
-using lyx::support::regexMatch;
 using lyx::support::split;
+using lyx::support::subst;
 using lyx::support::suffixIs;
 using lyx::support::trim;
 
@@ -195,6 +196,25 @@ FD_filedialog * FileDialog::Private::file_dlg_form_ = 0;
 FileDialog::Private * FileDialog::Private::current_dlg_ = 0;
 int FileDialog::Private::minw_ = 0;
 int FileDialog::Private::minh_ = 0;
+
+
+namespace {
+
+bool regexMatch(string const & a, string const & pattern)
+{
+	// We massage the pattern a bit so that the usual
+	// shell pattern we all are used to will work.
+	// One nice thing about using a real regex is that
+	// things like "*.*[^~]" will work also.
+	// build the regex string.
+	string regex = subst(pattern, ".", "\\.");
+	regex = subst(regex, "*", ".*");
+
+	boost::regex reg(regex);
+	return boost::regex_match(a, reg);
+}
+
+} // namespace anon
 
 
 // Reread: updates dialog list to match class directory

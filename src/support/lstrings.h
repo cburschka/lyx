@@ -141,11 +141,6 @@ string const token(string const & a, char delim, int n);
 int tokenPos(string const & a, char delim, string const & tok);
 
 
-/** Compares a string and a (simple) regular expression
-  The only element allowed is "*" for any string of characters
-  */
-bool regexMatch(string const & a, string const & pattern);
-
 /// Substitute all \a oldchar with \a newchar
 string const subst(string const & a, char oldchar, char newchar);
 

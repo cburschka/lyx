@@ -37,7 +37,7 @@
 #include "support/std_sstream.h"
 
 #include <boost/assert.hpp>
-#include <boost/cregex.hpp>
+#include <boost/regex.hpp>
 
 #include <cctype>
 #include <cstdlib>
@@ -737,96 +737,25 @@ string const GetFileContents(string const & fname)
 }
 
 
-//
-// Search ${...} as Variable-Name inside the string and replace it with
-// the denoted environmentvariable
-// Allow Variables according to
-//  variable :=  '$' '{' [A-Za-z_]{[A-Za-z_0-9]*} '}'
-//
-
+// Search the string for ${...} and replace the ... with the value of the
+// denoted environment variable
 string const ReplaceEnvironmentPath(string const & path)
 {
-	//
-	// CompareChar: Environment variables starts with this character
-	// PathChar:    Next path component start with this character
-	// while CompareChar found do:
-	//       Split String with PathChar
-	//	 Search Environmentvariable
-	//	 if found: Replace Strings
-	//
-	char const CompareChar = '$';
-	char const FirstChar = '{';
-	char const EndChar = '}';
-	char const UnderscoreChar = '_';
-	string EndString; EndString += EndChar;
-	string FirstString; FirstString += FirstChar;
-	string CompareString; CompareString += CompareChar;
-	string const RegExp("*}*"); // Exist EndChar inside a String?
+	// A valid environment variable is defined as
+	// $\{[A-Za-z_][A-Za-z_0-9]*\}
+	string const valid_var = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
 
-// first: Search for a '$' - Sign.
-	//string copy(path);
-	string result1; //(copy);    // for split-calls
-	string result0 = split(path, result1, CompareChar);
-	while (!result0.empty()) {
-		string copy1(result0); // contains String after $
+	boost::regex re("(.*)" + valid_var + "(.*)");
+	boost::smatch what;
 
-		// Check, if there is an EndChar inside original String.
-
-		if (!regexMatch(copy1, RegExp)) {
-			// No EndChar inside. So we are finished
-			result1 += CompareString + result0;
-			result0.erase();
-			continue;
-		}
-
-		string res1;
-		string res0 = split(copy1, res1, EndChar);
-		// Now res1 holds the environmentvariable
-		// First, check, if Contents is ok.
-		if (res1.empty()) { // No environmentvariable. Continue Loop.
-			result1 += CompareString + FirstString;
-			result0  = res0;
-			continue;
-		}
-		// check contents of res1
-		char const * res1_contents = res1.c_str();
-		if (*res1_contents != FirstChar) {
-			// Again No Environmentvariable
-			result1 += CompareString;
-			result0 = res0;
-		}
-
-		// Check for variable names
-		// Situation ${} is detected as "No Environmentvariable"
-		char const * cp1 = res1_contents + 1;
-		bool result = isalpha(*cp1) || (*cp1 == UnderscoreChar);
-		++cp1;
-		while (*cp1 && result) {
-			result = isalnum(*cp1) ||
-				(*cp1 == UnderscoreChar);
-			++cp1;
-		}
-
-		if (!result) {
-			// no correct variable name
-			result1 += CompareString + res1 + EndString;
-			result0  = split(res0, res1, CompareChar);
-			result1 += res1;
-			continue;
-		}
-
-		string env(GetEnv(res1_contents + 1));
-		if (!env.empty()) {
-			// Congratulations. Environmentvariable found
-			result1 += env;
-		} else {
-			result1 += CompareString + res1 + EndString;
-		}
-		// Next $-Sign?
-		result0  = split(res0, res1, CompareChar);
-		result1 += res1;
+	string result = path;
+	while (1) {
+		regex_match(result, what, re, boost::match_partial);
+		if (!what[0].matched)
+			break;
+		result = what.str(1) + GetEnv(what.str(2)) + what.str(3);
 	}
-	return result1;
+	return result;
 }
 
 

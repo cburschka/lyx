@@ -1,5 +1,10 @@
 2003-09-25  Angus Leeming  <leeming@lyx.org>
 
+	* FormFiledialog.C (regexMatch): moved here from lstrings.[Ch] because
+	this is the only place using this 'massaged' regex.
+
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
 	* FormExternal.C (update, apply): InsetExternal::Params::
 	templatename now has accessor functions.
 
