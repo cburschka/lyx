@@ -36,7 +36,9 @@
 //#define FILEDEBUG 1
 
 using std::endl;
+#ifndef CXX_GLOBAL_CSTD
 using std::isalpha;
+#endif
 using std::min;
 using std::swap;
 

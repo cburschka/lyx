@@ -12,7 +12,7 @@
 
 #include "math_streamstr.h"
 #include "math_mathmlstream.h"
-
+#include "support/std_ostream.h"
 
 WriteStream & operator<<(WriteStream & ws, string const & s)
 {

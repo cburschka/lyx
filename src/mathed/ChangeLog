@@ -1,3 +1,10 @@
+2003-10-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_cursor.C:
+	* math_parser.C:
+	* math_sizeinset.C:
+	* math_streamstr.C: Small fixes to build using STLport
+
 2003-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_symbolinset.C (metrics): apply a different hack to metrics

@@ -20,6 +20,7 @@
 #include "tostr.h"
 
 #include <boost/tokenizer.hpp>
+#include <boost/assert.hpp>
 
 #include <algorithm>
 

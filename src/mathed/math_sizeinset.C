@@ -17,7 +17,9 @@
 #include "math_streamstr.h"
 #include "support/std_ostream.h"
 
+#ifndef CXX_GLOBAL_CSTD
 using std::atoi;
+#endif
 
 using std::auto_ptr;
 

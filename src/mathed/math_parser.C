@@ -65,7 +65,9 @@ following hack as starting point to write some macros:
 #include "support/std_sstream.h"
 #include "debug.h"
 
+#ifndef CXX_GLOBAL_CSTD
 using std::atoi;
+#endif
 using std::endl;
 using std::fill;
 
