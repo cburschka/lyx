@@ -150,7 +150,7 @@ struct compareNoCase: public std::binary_function<string, string, bool>
 		return compare_ascii_no_case(s1, s2) < 0;
 	}
 };
- 
+
 } // namespace anon
 
 
@@ -238,81 +238,56 @@ string const getInfo(InfoMap const & map, string const & key)
 
 namespace {
 
-// The functions doing the dirty work for the search.
-vector<string>::const_iterator
-simpleSearch(InfoMap const & theMap,
-	     vector<string> const & keys,
-	     string const & expr,
-	     vector<string>::const_iterator start,
-	     Direction dir,
-	     bool caseSensitive)
+// Escape special chars.
+// All characters are literals except: .|*?+(){}[]^$\
+// These characters are literals when preceded by a "\", which is done here
+string const escape_special_chars(string const & expr)
 {
-	string tmp = expr;
-	if (!caseSensitive)
-		tmp = lowercase(tmp);
+	// Search for all chars .|*?+(){}[]^$\
+	// Note that they must be escaped in the RE.
+        boost::RegEx reg("[\\.\\|\\*\\?\\+\\(\\)\\{\\}\\[\\]\\^\\$\\\\]");
 
-	vector<string> searchwords = getVectorFromString(tmp, " ");
+	// $& is a perl-like expression that expands to all of the current match
+	// The '$' must be prefixed with the escape character '\' for
+	// boost to treat it as a literal.
+	// Thus, to prefix a matched expression with '\', we use:
+        string const fmt("\\\\$&");
 
-	// Loop over all keys from start...
-	for (vector<string>::const_iterator it = start;
-	     // End condition is direction-dependent.
-	     (dir == FORWARD) ? (it<keys.end()) : (it>=keys.begin());
-	     // increment is direction-dependent.
-	     (dir == FORWARD) ? (++it) : (--it)) {
-
-		string data = (*it);
-		InfoMap::const_iterator info = theMap.find(*it);
-		if (info != theMap.end())
-			data += " " + info->second;
-		if (!caseSensitive)
-			data = lowercase(data);
-
-		bool found = true;
-
-		// Loop over all search words...
-		for (vector<string>::const_iterator sit = searchwords.begin();
-		     sit != searchwords.end(); ++sit) {
-			if (data.find(*sit) == string::npos) {
-				found = false;
-				break;
-			}
-		}
-
-		if (found) return it;
-	}
-
-	return keys.end();
+	return reg.Merge(expr, fmt);
 }
 
 
-vector<string>::const_iterator
-regexSearch(InfoMap const & theMap,
-	    vector<string> const & keys,
-	    string const & expr,
-	    vector<string>::const_iterator start,
-	    Direction dir)
+// A functor for use with std::find_if, used to ascertain whether a
+// data entry matches the required regex_
+struct RegexMatch
 {
-	boost::regex reg(STRCONV(expr));
+	// re and icase are used to construct an instance of boost::RegEx.
+	// if icase is true, then matching is insensitive to case
+	RegexMatch(InfoMap const & m, string const & re, bool icase)
+		: map_(m), regex_(re, icase) {}
 
-	for (vector<string>::const_iterator it = start;
-	     // End condition is direction-dependent.
-	     (dir == FORWARD) ? (it < keys.end()) : (it >= keys.begin());
-	     // increment is direction-dependent.
-	     (dir == FORWARD) ? (++it) : (--it)) {
+	bool operator()(string const & key) {
+		if (!validRE())
+			return false;
 
-		string data = (*it);
-		InfoMap::const_iterator info = theMap.find(*it);
-		if (info != theMap.end())
+		// the data searched is the key + its associated BibTeX/biblio
+		// fields
+		string data = key;
+		InfoMap::const_iterator info = map_.find(key);
+		if (info != map_.end())
 			data += " " + info->second;
 
-		if (boost::regex_match(STRCONV(data), reg)) {
-			return it;
-		}
+		// Attempts to find a match for the current RE
+		// somewhere in data.
+		return regex_.Search(data);
 	}
 
-	return keys.end();
-}
+	bool validRE() const { return regex_.error_code() == 0; }
 
+private:
+	InfoMap const map_;
+	boost::RegEx regex_;
+};
 
 } // namespace anon
 
@@ -320,7 +295,7 @@ regexSearch(InfoMap const & theMap,
 vector<string>::const_iterator
 searchKeys(InfoMap const & theMap,
 	   vector<string> const & keys,
-	   string const & expr,
+	   string const & search_expr,
 	   vector<string>::const_iterator start,
 	   Search type,
 	   Direction dir,
@@ -330,15 +305,34 @@ searchKeys(InfoMap const & theMap,
 	if (start < keys.begin() || start >= keys.end())
 		return keys.end();
 
-	string search_expr = trim(expr);
-	if (search_expr.empty())
+	string expr = trim(search_expr);
+	if (expr.empty())
 		return keys.end();
 
 	if (type == SIMPLE)
-		return simpleSearch(theMap, keys, search_expr, start, dir,
-				    caseSensitive);
+		// We must escape special chars in the search_expr so that
+		// it is treated as a simple string by boost::regex.
+		expr = escape_special_chars(expr);
 
-	return regexSearch(theMap, keys, search_expr, start, dir);
+	// Build the functor that will be passed to find_if.
+	RegexMatch const match(theMap, expr, !caseSensitive);
+	if (!match.validRE())
+		return keys.end();
+
+	// Search the vector of 'keys' from 'start' for one that matches the
+	// predicate 'match'. Searching can be forward or backward from start.
+	if (dir == FORWARD)
+		return std::find_if(start, keys.end(), match);
+
+	vector<string>::const_reverse_iterator rit(start);
+	vector<string>::const_reverse_iterator rend = keys.rend();
+	rit = std::find_if(rit, rend, match);
+
+	if (rit == rend)
+		return keys.end();
+	// This is correct and always safe.
+	// (See Meyer's Effective STL, Item 28.)
+	return (++rit).base();
 }
 
 

@@ -1,5 +1,11 @@
 2002-11-06  Angus Leeming  <leeming@lyx.org>
 
+	* biblio.C (searchKeys and helper functions): rewritten entirely
+	using the STL. Boost::regex searching now works as the old 1.2 code
+	did.
+
+2002-11-06  Angus Leeming  <leeming@lyx.org>
+
 	* biblio.C: clean-up of the code. No change in functionality.
 
 2002-11-04  Angus Leeming  <leeming@lyx.org>
