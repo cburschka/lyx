@@ -1,0 +1,11 @@
+--- form_filedialog.C	Fri Mar  9 09:29:35 2001
++++ .././form_filedialog.C	Thu Mar  8 14:18:08 2001
+@@ -17,7 +17,7 @@
+ }
+ 
+ 
+-FD_form_filedialog * FormFiledialog::build_filedialog()
++FD_form_filedialog * FileDialog::Private::build_filedialog()
+ {
+   FL_OBJECT *obj;
+   FD_form_filedialog *fdui = new FD_form_filedialog;
