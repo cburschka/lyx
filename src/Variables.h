@@ -23,19 +23,19 @@
 ///
 class Variables {
 public:
-  /// 
-  void set(string const &, string const &);
-  /// 
-  string const get(string const &) const;
-  ///
-  bool set(string const & var) const;
-  /// 
-  string const expand(string const &) const;
+	/// 
+	void set(string const &, string const &);
+	/// 
+	string const get(string const &) const;
+	///
+	bool isSet(string const & var) const;
+	/// 
+	string const expand(string const &) const;
 private:
-  ///
-  typedef std::map<string, string> Vars;
-  ///
-  Vars vars_;
+	///
+	typedef std::map<string, string> Vars;
+	///
+	Vars vars_;
 };
 
 #endif
