@@ -8,7 +8,8 @@
 
 #include <boost/format.hpp>
 
-// Add explicit instantion
+// Add explicit instantion for g++ compilers
+#ifdef __GNUG__
 
 namespace boost
 {
@@ -52,6 +53,8 @@ feed<char, std::char_traits<char>,
 } // namespace io
 
 } // namespace boost
+
+#endif // __GNUG__
 
 #endif // USE_BOOST_FORMAT
 

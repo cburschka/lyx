@@ -364,7 +364,7 @@ void LyX::init(bool gui)
 #if USE_BOOST_FORMAT
 			lyxerr << boost::format(_("Using built-in default %1$s"
 						  " but expect problems."))
-				% LYX_DIR
+				% static_cast<char *>(LYX_DIR)
 			       << endl;
 #else
 			lyxerr << _("Using built-in default ") << LYX_DIR

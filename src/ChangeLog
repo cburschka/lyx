@@ -1,3 +1,9 @@
+2002-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* BoostFormat.h: wrap code inside #ifdef __GNUG__ block.
+
+	* lyx_main.C (init): compile fix.
+
 2002-11-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_cb.C (start): boost.formatify
