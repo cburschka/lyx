@@ -1,5 +1,9 @@
 2002-06-14  Angus Leeming  <leeming@lyx.org>
 
+	* forms/Makefile.am: make the .Ch files dependent on the fdfix files.
+
+2002-06-14  Angus Leeming  <leeming@lyx.org>
+
 	* FormPreferences (XYZ::build): pass "&parent_" to build_xyz, not
 	"this", ro we'll get a crash following FormBaseDeprecated's
 	C_PrehandlerCB cast of ob->form->u_vdata to FormBaseDeprecated *.

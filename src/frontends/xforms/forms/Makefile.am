@@ -7,12 +7,6 @@ noinst_LTLIBRARIES = libfdesign.la
 # For (forms_fwd.h, forms_gettext.h) and LString.h, respectively.
 INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src
 
-# These are used to generate the .[Ch] files from the .fd ones.
-# It would be nice if we could make the .Ch files dependent on the fdfix files.
-SHELL = /bin/sh
-SCRIPT = $(srcdir)/fdfix.sh
-SUFFIXES = .fd
-
 SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
 	form_bibtex.fd \
@@ -52,6 +46,14 @@ SRCS =  form_aboutlyx.fd \
 	form_url.fd
 
 libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
+
+# These are used to generate the .[Ch] files from the .fd ones.
+SHELL = /bin/sh
+SCRIPT = $(srcdir)/fdfix.sh
+SUFFIXES = .fd
+
+# Make the .Ch files dependent on the fdfix files.
+$(libfdesign_la_SOURCES): $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed
 
 libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
 
