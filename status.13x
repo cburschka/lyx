@@ -34,8 +34,9 @@ What's new
 
 - Add support for Icelandic, Latvian, Lithuanian and Nynorsk.
 
-- Updated the Basque, Danish, German, Italian, Romanian and Spanish
-  localizations. Updated the Basque and German documentation.
+- Updated the Basque, Danish, German, Italian, Romanian, Russian (fix crash 
+  when autosaving) and Spanish localizations. Updated the Basque and German 
+  documentation.
 
 ** Bug fixes
 
@@ -106,6 +107,9 @@ What's new
 
 - The Qt-related parts of the configure script honors the environment
   variables MOC and UIC if they are set.
+
+- The precompiled .pyc files in the lib/lyx2lyx/ directory are not
+  distributed anymore, since they were not correct anyway.
 
 - Fix compilation for OpenBSD.
 
