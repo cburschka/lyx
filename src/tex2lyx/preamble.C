@@ -167,6 +167,9 @@ void end_preamble(ostream & os)
 
 void parse_preamble(Parser & p, ostream & os)
 {
+	// initialize fixed types
+	special_columns['D'] = 3;
+
 	while (p.good()) {
 		Token const & t = p.get_token();
 
