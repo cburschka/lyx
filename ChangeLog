@@ -1,3 +1,19 @@
+2001-01-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/tabular.C (ReadNew): new method
+	(Read): changed to call ReadNew or ReadOld depending on the
+	tabular version found.
+
+	* src/tabular-old.C: new file with the support functions and the
+	ReadOld method.
+	(ReadOld): new method
+
+	* src/frontends/xforms/FormDocument.C (CheckChoiceClass): make tc
+	unsigned to remove a signed/usigned warning.
+
+	* src/tabular.C (tostr): new spesializations, replaces type2string
+	(Write): use the new spesializations
+
 2001-01-09  Juergen Vigna  <jug@sad.it>
 
 	* src/tabular.C (OldFormatRead): convert the footer/header information

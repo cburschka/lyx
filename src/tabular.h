@@ -455,6 +455,12 @@ private: //////////////////////////////////////////////////////////////////
     typedef std::vector<columnstruct> column_vector;
 
     ///
+    void ReadNew(Buffer const * buf, istream & is,
+    	     LyXLex & lex, string const & l);
+    ///
+    void ReadOld(Buffer const * buf, istream & is,
+    	     LyXLex & lex, string const & l);
+    ///
     int rows_;
     ///
     int columns_;

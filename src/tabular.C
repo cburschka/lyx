@@ -943,7 +943,68 @@ string const write_attribute(string const & name, bool value)
 #endif
 
 
-string const type2string(LyXAlignment num)
+//  #if 0
+//  static inline
+//  string const type2string(LyXAlignment num)
+//  {
+//      switch(num) {
+//      case LYX_ALIGN_NONE:
+//  	return "none";
+//      case LYX_ALIGN_BLOCK:
+//  	return "block";
+//      case LYX_ALIGN_LEFT:
+//  	return "left";
+//      case LYX_ALIGN_CENTER:
+//  	return "center";
+//      case LYX_ALIGN_RIGHT:
+//  	return "right";
+//      case LYX_ALIGN_LAYOUT:
+//  	return "layout";
+//      case LYX_ALIGN_SPECIAL:
+//  	return "special";
+//      }
+//      return string();
+//  }
+
+
+//  static inline
+//  string const type2string(LyXTabular::VAlignment num)
+//  {
+//      switch(num) {
+//      case LyXTabular::LYX_VALIGN_TOP:
+//  	return "top";
+//      case LyXTabular::LYX_VALIGN_CENTER:
+//  	return "center";
+//      case LyXTabular::LYX_VALIGN_BOTTOM:
+//  	return "bottom";
+//      }
+//      return string();
+//  }
+
+
+//  static inline
+//  string const type2string(LyXTabular::BoxType num)
+//  {
+//      switch(num) {
+//      case LyXTabular::BOX_NONE:
+//  	return "none";
+//      case LyXTabular::BOX_PARBOX:
+//  	return "parbox";
+//      case LyXTabular::BOX_MINIPAGE:
+//  	return "minipage";
+//      }
+//      return string();
+//  }
+
+//  static inline
+//  string const type2string(bool flag)
+//  {
+//      return (flag ? "true" : "false");
+//  }
+//  #else
+template<>
+inline
+string const tostr(LyXAlignment const & num)
 {
     switch(num) {
     case LYX_ALIGN_NONE:
@@ -965,7 +1026,9 @@ string const type2string(LyXAlignment num)
 }
 
 
-string const type2string(LyXTabular::VAlignment num)
+template<>
+inline
+string const tostr(LyXTabular::VAlignment const & num)
 {
     switch(num) {
     case LyXTabular::LYX_VALIGN_TOP:
@@ -979,7 +1042,9 @@ string const type2string(LyXTabular::VAlignment num)
 }
 
 
-string const type2string(LyXTabular::BoxType num)
+template<>
+inline
+string const tostr(LyXTabular::BoxType const & num)
 {
     switch(num) {
     case LyXTabular::BOX_NONE:
@@ -992,25 +1057,35 @@ string const type2string(LyXTabular::BoxType num)
     return string();
 }
 
+// We already have a function like this in lstring.h (Lgb)
+//string const type2string(bool flag)
+//{
+//    return (flag ? "true" : "false");
+//}
 
-string const type2string(bool flag)
-{
-    return (flag ? "true" : "false");
-}
+
+//#endif
+
+
 
 
 void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
     // header line
     os << "<LyXTabular"
-       << write_attribute("version", 1)
+       << write_attribute("version", 2)
        << write_attribute("rows", rows_)
        << write_attribute("columns", columns_)
        << ">\n";
     // global longtable options
     os << "<Features"
-       << write_attribute("rotate", type2string(rotate))
-       << write_attribute("islongtable", type2string(is_long_tabular))
+//#if 0
+//       << write_attribute("rotate", type2string(rotate))
+//       << write_attribute("islongtable", type2string(is_long_tabular))
+//#else
+       << write_attribute("rotate", tostr(rotate))
+       << write_attribute("islongtable", tostr(is_long_tabular))
+//#endif
        << write_attribute("endhead", endhead)
        << write_attribute("endfirsthead", endfirsthead)
        << write_attribute("endfoot", endfoot)
@@ -1018,10 +1093,17 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
        << ">\n";
     for (int j = 0; j < columns_; ++j) {
 	os << "<Column"
-	   << write_attribute("alignment", type2string(column_info[j].alignment))
-	   << write_attribute("valignment", type2string(column_info[j].valignment))
-	   << write_attribute("leftline", type2string(column_info[j].left_line))
-	   << write_attribute("rightline", type2string(column_info[j].right_line))
+//#if 0
+//	   << write_attribute("alignment", type2string(column_info[j].alignment))
+//	   << write_attribute("valignment", type2string(column_info[j].valignment))
+//	   << write_attribute("leftline", type2string(column_info[j].left_line))
+//	   << write_attribute("rightline", type2string(column_info[j].right_line))
+//#else
+	   << write_attribute("alignment", tostr(column_info[j].alignment))
+	   << write_attribute("valignment", tostr(column_info[j].valignment))
+	   << write_attribute("leftline", tostr(column_info[j].left_line))
+	   << write_attribute("rightline", tostr(column_info[j].right_line))
+//#endif
 	   << write_attribute("width",
 			      VSpace(column_info[j].p_width)
 			      .asLyXCommand())
@@ -1030,18 +1112,32 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
     }
     for (int i = 0; i < rows_; ++i) {
 	os << "<Row"
-	   << write_attribute("topline", type2string(row_info[i].top_line))
-	   << write_attribute("bottomline", type2string(row_info[i].bottom_line))
-	   << write_attribute("newpage", type2string(row_info[i].newpage))
+//#if 0
+//	   << write_attribute("topline", type2string(row_info[i].top_line))
+//	   << write_attribute("bottomline", type2string(row_info[i].bottom_line))
+//	   << write_attribute("newpage", type2string(row_info[i].newpage))
+//#else
+	   << write_attribute("topline", tostr(row_info[i].top_line))
+	   << write_attribute("bottomline", tostr(row_info[i].bottom_line))
+	   << write_attribute("newpage", tostr(row_info[i].newpage))
+//#endif
 	   << ">\n";
 	for (int j = 0; j < columns_; ++j) {
 #if 0
 	    if (!i) {
 		os << "<Column"
-		   << write_attribute("alignment", type2string(column_info[j].alignment))
-		   << write_attribute("valignment", type2string(column_info[j].valignment))
-		   << write_attribute("leftline", type2string(column_info[j].left_line))
-		   << write_attribute("rightline", type2string(column_info[j].right_line))
+//#if 0
+//		   << write_attribute("alignment", type2string(column_info[j].alignment))
+//		   << write_attribute("valignment", type2string(column_info[j].valignment))
+//		   << write_attribute("leftline", type2string(column_info[j].left_line))
+//		   << write_attribute("rightline", type2string(column_info[j].right_line))
+//#else
+		   << write_attribute("alignment", tostr(column_info[j].alignment))
+		   << write_attribute("valignment", tostr(column_info[j].valignment))
+		   << write_attribute("leftline", tostr(column_info[j].left_line))
+		   << write_attribute("rightline", tostr(column_info[j].right_line))
+
+//#endif
 		   << write_attribute("width",
 				      VSpace(column_info[j].p_width)
 				      .asLyXCommand())
@@ -1053,14 +1149,25 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 #endif
 	    os << "<Cell"
 	       << write_attribute("multicolumn", cell_info[i][j].multicolumn)
-	       << write_attribute("alignment", type2string(cell_info[i][j].alignment))
-	       << write_attribute("valignment", type2string(cell_info[i][j].valignment))
-	       << write_attribute("topline", type2string(cell_info[i][j].top_line))
-	       << write_attribute("bottomline", type2string(cell_info[i][j].bottom_line))
-	       << write_attribute("leftline", type2string(cell_info[i][j].left_line))
-	       << write_attribute("rightline", type2string(cell_info[i][j].right_line))
-	       << write_attribute("rotate", type2string(cell_info[i][j].rotate))
-	       << write_attribute("usebox", type2string(cell_info[i][j].usebox))
+//#if 0
+//	       << write_attribute("alignment", type2string(cell_info[i][j].alignment))
+//	       << write_attribute("valignment", type2string(cell_info[i][j].valignment))
+//	       << write_attribute("topline", type2string(cell_info[i][j].top_line))
+//	       << write_attribute("bottomline", type2string(cell_info[i][j].bottom_line))
+//	       << write_attribute("leftline", type2string(cell_info[i][j].left_line))
+//	       << write_attribute("rightline", type2string(cell_info[i][j].right_line))
+//	       << write_attribute("rotate", type2string(cell_info[i][j].rotate))
+//	       << write_attribute("usebox", type2string(cell_info[i][j].usebox))
+//#else
+	       << write_attribute("alignment", tostr(cell_info[i][j].alignment))
+	       << write_attribute("valignment", tostr(cell_info[i][j].valignment))
+	       << write_attribute("topline", tostr(cell_info[i][j].top_line))
+	       << write_attribute("bottomline", tostr(cell_info[i][j].bottom_line))
+	       << write_attribute("leftline", tostr(cell_info[i][j].left_line))
+	       << write_attribute("rightline", tostr(cell_info[i][j].right_line))
+	       << write_attribute("rotate", tostr(cell_info[i][j].rotate))
+	       << write_attribute("usebox", tostr(cell_info[i][j].usebox))
+//#endif
 	       << write_attribute("width", cell_info[i][j].p_width)
 	       << write_attribute("special", cell_info[i][j].align_special)
 	       << ">\n";
@@ -1078,6 +1185,9 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 }
 
 
+// I would have liked a fromstr template a lot better. (Lgb)
+
+static inline
 bool string2type(string const str, LyXAlignment & num)
 {
     if (str == "none")
@@ -1096,6 +1206,7 @@ bool string2type(string const str, LyXAlignment & num)
 }
 
 
+static inline
 bool string2type(string const str, LyXTabular::VAlignment & num)
 {
     if (str == "top")
@@ -1110,6 +1221,7 @@ bool string2type(string const str, LyXTabular::VAlignment & num)
 }
 
 
+static inline
 bool string2type(string const str, LyXTabular::BoxType & num)
 {
     if (str == "none")
@@ -1124,6 +1236,7 @@ bool string2type(string const str, LyXTabular::BoxType & num)
 }
 
 
+static inline
 bool string2type(string const str, bool & num)
 {
     if (str == "true")
@@ -1134,6 +1247,7 @@ bool string2type(string const str, bool & num)
 	return false;
     return true;
 }
+
 
 static
 bool getTokenValue(string const & str, const char * token, string & ret)
@@ -1160,7 +1274,7 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 
 //#define USE_OLD_READFORMAT
 
-#ifndef USE_OLD_READFORMAT
+//#ifndef USE_OLD_READFORMAT
 static
 bool getTokenValue(string const & str, const char * token, int & num)
 {
@@ -1213,90 +1327,90 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
     return string2type(tmp, flag);
 }    
 
-#else
+//#else
 
-static
-bool getTokenValue(string const & str, const char * token, int & num)
-{
-    string::size_type pos = str.find(token);
-    char ch = str[pos + strlen(token)];
+//  static
+//  bool getTokenValue(string const & str, const char * token, int & num)
+//  {
+//      string::size_type pos = str.find(token);
+//      char ch = str[pos + strlen(token)];
 
-    if ((pos == string::npos) || (ch != '='))
-	return false;
-    string ret;
-    pos += strlen(token) + 1;
-    ch = str[pos];
-    if ((ch != '"') && (ch != '\'')) { // only read till next space
-	if (!isdigit(ch))
-	    return false;
-	ret += ch;
-    }
-    ++pos;
-    while((pos < str.length() - 1) && isdigit(str[pos]))
-	ret += str[pos++];
+//      if ((pos == string::npos) || (ch != '='))
+//  	return false;
+//      string ret;
+//      pos += strlen(token) + 1;
+//      ch = str[pos];
+//      if ((ch != '"') && (ch != '\'')) { // only read till next space
+//  	if (!isdigit(ch))
+//  	    return false;
+//  	ret += ch;
+//      }
+//      ++pos;
+//      while((pos < str.length() - 1) && isdigit(str[pos]))
+//  	ret += str[pos++];
 
-    num = strToInt(ret);
-    return true;
-}
-
-
-static
-bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
-{
-    int tmp;
-    bool const ret = getTokenValue(str, token, tmp);
-    num = static_cast<LyXAlignment>(tmp);
-    return ret;
-}
+//      num = strToInt(ret);
+//      return true;
+//  }
 
 
-static
-bool getTokenValue(string const & str, const char * token,
-		   LyXTabular::VAlignment & num)
-{
-    int tmp;
-    bool const ret = getTokenValue(str, token, tmp);
-    num = static_cast<LyXTabular::VAlignment>(tmp);
-    return ret;
-}
+//  static
+//  bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
+//  {
+//      int tmp;
+//      bool const ret = getTokenValue(str, token, tmp);
+//      num = static_cast<LyXAlignment>(tmp);
+//      return ret;
+//  }
 
 
-static
-bool getTokenValue(string const & str, const char * token,
-		   LyXTabular::BoxType & num)
-{
-    int tmp;
-    bool ret = getTokenValue(str, token, tmp);
-    num = static_cast<LyXTabular::BoxType>(tmp);
-    return ret;
-}
+//  static
+//  bool getTokenValue(string const & str, const char * token,
+//  		   LyXTabular::VAlignment & num)
+//  {
+//      int tmp;
+//      bool const ret = getTokenValue(str, token, tmp);
+//      num = static_cast<LyXTabular::VAlignment>(tmp);
+//      return ret;
+//  }
 
 
-static
-bool getTokenValue(string const & str, const char * token, bool & flag)
-{
-    string::size_type pos = str.find(token);
-    char ch = str[pos + strlen(token)];
+//  static
+//  bool getTokenValue(string const & str, const char * token,
+//  		   LyXTabular::BoxType & num)
+//  {
+//      int tmp;
+//      bool ret = getTokenValue(str, token, tmp);
+//      num = static_cast<LyXTabular::BoxType>(tmp);
+//      return ret;
+//  }
 
-    if ((pos == string::npos) || (ch != '='))
-	return false;
-    string ret;
-    pos += strlen(token) + 1;
-    ch = str[pos];
-    if ((ch != '"') && (ch != '\'')) { // only read till next space
-	if (!isdigit(ch))
-	    return false;
-	ret += ch;
-    }
-    ++pos;
-    while((pos < str.length() - 1) && isdigit(str[pos]))
-	ret += str[pos++];
 
-    flag = strToInt(ret);
-    return true;
-}
+//  static
+//  bool getTokenValue(string const & str, const char * token, bool & flag)
+//  {
+//      string::size_type pos = str.find(token);
+//      char ch = str[pos + strlen(token)];
 
-#endif
+//      if ((pos == string::npos) || (ch != '='))
+//  	return false;
+//      string ret;
+//      pos += strlen(token) + 1;
+//      ch = str[pos];
+//      if ((ch != '"') && (ch != '\'')) { // only read till next space
+//  	if (!isdigit(ch))
+//  	    return false;
+//  	ret += ch;
+//      }
+//      ++pos;
+//      while((pos < str.length() - 1) && isdigit(str[pos]))
+//  	ret += str[pos++];
+
+//      flag = strToInt(ret);
+//      return true;
+//  }
+
+//  #endif
 
 static inline
 void l_getline(istream & is, string & str)
@@ -1307,26 +1421,54 @@ void l_getline(istream & is, string & str)
 }
 
 
-#ifndef USE_OLD_READFORMAT
+//#ifndef USE_OLD_READFORMAT
 
 void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 {
-    string line;
-    istream & is = lex.getStream();
+	string line;
+	istream & is = lex.getStream();
 
-    l_getline(is, line);
-    if (!prefixIs(line, "<LyXTabular ")) {
-	OldFormatRead(lex, line);
-	return;
-    }
+	l_getline(is, line);
+	if (!prefixIs(line, "<LyXTabular ")) {
+		OldFormatRead(lex, line);
+		return;
+	}
 
-    int version;
+	int version;
+	if (!getTokenValue(line, "version", version))
+		return;
+	if (version == 1)
+		ReadOld(buf, is, lex, line);
+	else if (version == 2)
+		ReadNew(buf, is, lex, line);
+}
+
+
+//#if 0
+//void LyXTabular::ReadNew(Buffer const * buf, LyXLex & lex)
+//{
+//    string line;
+//    istream & is = lex.getStream();
+//
+//    l_getline(is, line);
+//    if (!prefixIs(line, "<LyXTabular ")) {
+//	OldFormatRead(lex, line);
+//	return;
+//    }
+//
+//    int version;
+//    if (!getTokenValue(line, "version", version))
+//	return;
+//#else
+void LyXTabular::ReadNew(Buffer const * buf, istream & is,
+			 LyXLex & lex, string const & l)
+{
+    string line(l);
+//#endif    
     int rows_arg;
-    int columns_arg;
-    if (!getTokenValue(line, "version", version))
-	return;
     if (!getTokenValue(line, "rows", rows_arg))
 	return;
+    int columns_arg;
     if (!getTokenValue(line, "columns", columns_arg))
 	return;
     Init(rows_arg, columns_arg);
@@ -1410,113 +1552,113 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
     set_row_column_number_info();
 }
 
-#else
+//  #else
 
-void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
-{
-    string line;
-    istream & is = lex.getStream();
+//  void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
+//  {
+//      string line;
+//      istream & is = lex.getStream();
 
-    l_getline(is, line);
-    if (!prefixIs(line, "<LyXTabular ")) {
-	OldFormatRead(lex, line);
-	return;
-    }
+//      l_getline(is, line);
+//      if (!prefixIs(line, "<LyXTabular ")) {
+//  	OldFormatRead(lex, line);
+//  	return;
+//      }
 
-    int version;
-    int rows_arg;
-    int columns_arg;
-    if (!getTokenValue(line, "version", version))
-	return;
-    if (!getTokenValue(line, "rows", rows_arg))
-	return;
-    if (!getTokenValue(line, "columns", columns_arg))
-	return;
-    Init(rows_arg, columns_arg);
-    l_getline(is, line);
-    if (!prefixIs(line, "<Features ")) {
-	lyxerr << "Wrong tabular format (expected <Feture ...> got" <<
-	    line << ")" << endl;
-	return;
-    }
-    getTokenValue(line, "islongtable", is_long_tabular);
-    getTokenValue(line, "endhead", endhead);
-    getTokenValue(line, "endfirsthead", endfirsthead);
-    getTokenValue(line, "endfoot", endfoot);
-    getTokenValue(line, "endlastfoot", endlastfoot);
+//      int version;
+//      int rows_arg;
+//      int columns_arg;
+//      if (!getTokenValue(line, "version", version))
+//  	return;
+//      if (!getTokenValue(line, "rows", rows_arg))
+//  	return;
+//      if (!getTokenValue(line, "columns", columns_arg))
+//  	return;
+//      Init(rows_arg, columns_arg);
+//      l_getline(is, line);
+//      if (!prefixIs(line, "<Features ")) {
+//  	lyxerr << "Wrong tabular format (expected <Feture ...> got" <<
+//  	    line << ")" << endl;
+//  	return;
+//      }
+//      getTokenValue(line, "islongtable", is_long_tabular);
+//      getTokenValue(line, "endhead", endhead);
+//      getTokenValue(line, "endfirsthead", endfirsthead);
+//      getTokenValue(line, "endfoot", endfoot);
+//      getTokenValue(line, "endlastfoot", endlastfoot);
 
-    for (int i = 0; i < rows_; ++i) {
-	l_getline(is, line);
-	if (!prefixIs(line, "<Row ")) {
-	    lyxerr << "Wrong tabular format (expected <Row ...> got" <<
-		line << ")" << endl;
-	    return;
-	}
-	getTokenValue(line, "topline", row_info[i].top_line);
-	getTokenValue(line, "bottomline", row_info[i].bottom_line);
-	getTokenValue(line, "newpage", row_info[i].newpage);
-	for (int j = 0; j < columns_; ++j) {
-	    l_getline(is,line);
-	    if (!prefixIs(line,"<Column")) {
-		lyxerr << "Wrong tabular format (expected <Column ...> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	    if (!i) {
-		getTokenValue(line, "alignment", column_info[j].alignment);
-		getTokenValue(line, "valignment", column_info[j].valignment);
-		getTokenValue(line, "leftline", column_info[j].left_line);
-		getTokenValue(line, "rightline", column_info[j].right_line);
-		getTokenValue(line, "width", column_info[j].p_width);
-		getTokenValue(line, "special", column_info[j].align_special);
-	    }
-	    l_getline(is, line);
-	    if (!prefixIs(line, "<Cell")) {
-		lyxerr << "Wrong tabular format (expected <Cell ...> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	    getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
-	    getTokenValue(line, "alignment", cell_info[i][j].alignment);
-	    getTokenValue(line, "valignment", cell_info[i][j].valignment);
-	    getTokenValue(line, "topline", cell_info[i][j].top_line);
-	    getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
-	    getTokenValue(line, "leftline", cell_info[i][j].left_line);
-	    getTokenValue(line, "rightline", cell_info[i][j].right_line);
-	    getTokenValue(line, "rotate", cell_info[i][j].rotate);
-	    getTokenValue(line, "usebox", cell_info[i][j].usebox);
-	    getTokenValue(line, "width", cell_info[i][j].p_width);
-	    getTokenValue(line, "special", cell_info[i][j].align_special);
-	    l_getline(is, line);
-	    if (prefixIs(line, "\\begin_inset")) {
-		cell_info[i][j].inset.Read(buf, lex);
-		l_getline(is, line);
-	    }
-	    if (line != "</Cell>") {
-		lyxerr << "Wrong tabular format (expected </Cell> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	    l_getline(is, line);
-	    if (line != "</Column>") {
-		lyxerr << "Wrong tabular format (expected </Column> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	}
-	l_getline(is, line);
-	if (line != "</Row>") {
-	    lyxerr << "Wrong tabular format (expected </Row> got" <<
-		line << ")" << endl;
-	    return;
-	}
-    }
-    while (line != "</LyXTabular>") {
-	l_getline(is, line);
-    }
-    set_row_column_number_info();
-}
-#endif
+//      for (int i = 0; i < rows_; ++i) {
+//  	l_getline(is, line);
+//  	if (!prefixIs(line, "<Row ")) {
+//  	    lyxerr << "Wrong tabular format (expected <Row ...> got" <<
+//  		line << ")" << endl;
+//  	    return;
+//  	}
+//  	getTokenValue(line, "topline", row_info[i].top_line);
+//  	getTokenValue(line, "bottomline", row_info[i].bottom_line);
+//  	getTokenValue(line, "newpage", row_info[i].newpage);
+//  	for (int j = 0; j < columns_; ++j) {
+//  	    l_getline(is,line);
+//  	    if (!prefixIs(line,"<Column")) {
+//  		lyxerr << "Wrong tabular format (expected <Column ...> got" <<
+//  		    line << ")" << endl;
+//  		return;
+//  	    }
+//  	    if (!i) {
+//  		getTokenValue(line, "alignment", column_info[j].alignment);
+//  		getTokenValue(line, "valignment", column_info[j].valignment);
+//  		getTokenValue(line, "leftline", column_info[j].left_line);
+//  		getTokenValue(line, "rightline", column_info[j].right_line);
+//  		getTokenValue(line, "width", column_info[j].p_width);
+//  		getTokenValue(line, "special", column_info[j].align_special);
+//  	    }
+//  	    l_getline(is, line);
+//  	    if (!prefixIs(line, "<Cell")) {
+//  		lyxerr << "Wrong tabular format (expected <Cell ...> got" <<
+//  		    line << ")" << endl;
+//  		return;
+//  	    }
+//  	    getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
+//  	    getTokenValue(line, "alignment", cell_info[i][j].alignment);
+//  	    getTokenValue(line, "valignment", cell_info[i][j].valignment);
+//  	    getTokenValue(line, "topline", cell_info[i][j].top_line);
+//  	    getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
+//  	    getTokenValue(line, "leftline", cell_info[i][j].left_line);
+//  	    getTokenValue(line, "rightline", cell_info[i][j].right_line);
+//  	    getTokenValue(line, "rotate", cell_info[i][j].rotate);
+//  	    getTokenValue(line, "usebox", cell_info[i][j].usebox);
+//  	    getTokenValue(line, "width", cell_info[i][j].p_width);
+//  	    getTokenValue(line, "special", cell_info[i][j].align_special);
+//  	    l_getline(is, line);
+//  	    if (prefixIs(line, "\\begin_inset")) {
+//  		cell_info[i][j].inset.Read(buf, lex);
+//  		l_getline(is, line);
+//  	    }
+//  	    if (line != "</Cell>") {
+//  		lyxerr << "Wrong tabular format (expected </Cell> got" <<
+//  		    line << ")" << endl;
+//  		return;
+//  	    }
+//  	    l_getline(is, line);
+//  	    if (line != "</Column>") {
+//  		lyxerr << "Wrong tabular format (expected </Column> got" <<
+//  		    line << ")" << endl;
+//  		return;
+//  	    }
+//  	}
+//  	l_getline(is, line);
+//  	if (line != "</Row>") {
+//  	    lyxerr << "Wrong tabular format (expected </Row> got" <<
+//  		line << ")" << endl;
+//  	    return;
+//  	}
+//      }
+//      while (line != "</LyXTabular>") {
+//  	l_getline(is, line);
+//      }
+//      set_row_column_number_info();
+//  }
+//  #endif
 
 void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 {

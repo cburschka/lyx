@@ -1085,7 +1085,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     ProhibitInput(lv_->view());
 
 #ifdef USE_CLASS_COMBO
-    int tc = combo_doc_class->get() - 1;
+    unsigned int tc = combo_doc_class->get() - 1;
     string tct = combo_doc_class->getline();
 #else
     int tc = fl_get_choice(ob) - 1;
