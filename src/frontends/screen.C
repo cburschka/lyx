@@ -111,7 +111,7 @@ SplashScreen::SplashScreen()
 
 
 LyXScreen::LyXScreen()
-	: cursor_visible_(false), force_clear_(true), greyed_out_(false)
+	: cursor_visible_(false), force_clear_(true), greyed_out_(true)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -361,12 +361,12 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 {
 	greyed_out_ = !text;
 
-	workarea().getPainter().start();
-
 	if (greyed_out_) {
 		greyOut();
 		return;
 	}
+
+	workarea().getPainter().start();
 
 	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0, text == bv->text);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
@@ -384,6 +384,8 @@ void LyXScreen::greyOut()
 {
 	if (!greyed_out_)
 		return;
+
+	workarea().getPainter().start();
 
 	workarea().getPainter().fillRectangle(0, 0,
 		workarea().workWidth(),
