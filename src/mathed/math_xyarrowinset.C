@@ -35,6 +35,7 @@ MathXYMatrixInset const * MathXYArrowInset::targetMatrix() const
 
 MathXArray const & MathXYArrowInset::targetCell() const
 {
+#if 0	
 	MathXYMatrixInset const * p = targetMatrix();
 	int x = 0;
 	int y = 0;
@@ -55,12 +56,21 @@ MathXArray const & MathXYArrowInset::targetCell() const
 		n = 0;
 	}
   return p->xcell(n);
+#else
+	static MathXArray dummy;
+	return dummy;
+#endif
 }
 
 
 MathXArray const & MathXYArrowInset::sourceCell() const
 {
+#if 0
   return targetMatrix()->xcell(mi_.idx);
+#else
+	static MathXArray dummy;
+	return dummy;
+#endif
 }
 
 
@@ -69,6 +79,7 @@ void MathXYArrowInset::metrics(MathMetricsInfo & mi) const
 	MathNestInset::metrics(mi);
 	mi_   = mi;
 	MathFontSetChanger dummy(mi.base, "textrm");
+#if 0
 	target_ = mi.inset ? mi.inset->asXYMatrixInset() : 0;
 
 	if (editing()) {
@@ -82,6 +93,7 @@ void MathXYArrowInset::metrics(MathMetricsInfo & mi) const
 		descent_ = 0;
 		//mathed_string_dim(font_, "X", ascent_, descent_, width_);
 	}
+#endif
 }
 
 
@@ -91,6 +103,8 @@ void MathXYArrowInset::draw(MathPainterInfo & pi, int x, int y) const
 	MathFontSetChanger dummy(pi.base, "textrm");
 
 	if (editing()) {
+
+#if 0
 
 		int lasc;
 		int ldes;
@@ -105,9 +119,11 @@ void MathXYArrowInset::draw(MathPainterInfo & pi, int x, int y) const
 		xcell(1).draw(pi, x + lwid, y);
 		drawStr(pi, pi.base.font, x + 3, y, "label");
 
+#endif
+
 	} else {
 
-		//drawStr(pi, font_, x, y, "X");
+		drawStr(pi, font_, x, y, "X");
 		MathXArray const & s = sourceCell();
 		MathXArray const & t = targetCell();
 		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);

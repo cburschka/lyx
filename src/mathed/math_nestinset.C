@@ -58,11 +58,8 @@ void MathNestInset::substitute(MathMacro const & m)
 void MathNestInset::metrics(MathMetricsInfo const & mi) const
 {
 	MathMetricsInfo m = mi;
-	m.inset = this;
-	for (idx_type i = 0; i < nargs(); ++i) {
-		m.idx = i;
+	for (idx_type i = 0; i < nargs(); ++i)
 		xcell(i).metrics(m);
-	}
 }
 
 

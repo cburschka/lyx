@@ -47,10 +47,6 @@ struct MathMetricsInfo {
 	MathMetricsBase base;
 	///
 	BufferView * view;
-	/// used to pass some info down
-	MathNestInset const * inset;
-	///
-	int idx;
 	///
 	bool fullredraw;
 };

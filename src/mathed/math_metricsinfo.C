@@ -17,7 +17,7 @@ MathMetricsBase::MathMetricsBase()
 
 
 MathMetricsInfo::MathMetricsInfo()
-	: view(0), inset(0), idx(0), fullredraw(false)
+	: view(0), fullredraw(false)
 {}
 
 
