@@ -5,11 +5,13 @@ PreambleDef XFigInput
 	%% encased in an fbox.
 	\def\stripprefix#1>{}
 	\newcommand*{\xfiginput}[1]{%
-		\edef\tempfilename{#1}%
-		\InputIfFileExists{#1}{}{%
-			\fbox{Could not find
-			\ttfamily\expandafter\stripprefix\meaning\tempfilename
-		!}}}
+	    \edef\tempfilename{#1}%
+	    \InputIfFileExists{#1}{}{%
+	        \fbox{Could not find
+	            \ttfamily\expandafter\stripprefix\meaning\tempfilename!}
+	        \typeout{xfiginput: Could not find \tempfilename!}
+	    }
+	}
 PreambleDefEnd
 
 Template XFig
