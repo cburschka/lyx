@@ -300,11 +300,11 @@ void lyx_gui::init_graphics()
 
 #ifdef USE_XFORMS_IMAGE_LOADER
 	// connect the image loader based on the xforms library
-	Image::newImage.connect(boost::bind(&xformsImage::newImage));
-	Image::loadableFormats.connect(boost::bind(&xformsImage::loadableFormats));
+	Image::newImage = boost::bind(&xformsImage::newImage);
+	Image::loadableFormats = boost::bind(&xformsImage::loadableFormats);
 #else
 	// connect the image loader based on the XPM library
-	Image::newImage.connect(boost::bind(&ImageXPM::newImage));
-	Image::loadableFormats.connect(boost::bind(&ImageXPM::loadableFormats));
+	Image::newImage = boost::bind(&ImageXPM::newImage);
+	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
 #endif
 }

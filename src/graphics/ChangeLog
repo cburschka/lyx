@@ -1,3 +1,8 @@
+2002-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* GraphicsImage.[Ch]: newImage and loadableFormats changed to
+	boost::function from boost::signal.
+
 2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* GraphicsConverter.C (convert): do not use ChangeExtension
@@ -19,7 +24,7 @@
 	grfx::Converter now represents a single conversion process.
 	Thus grfx::CachItem now has a grfx::Converter * that is set when the
 	conversion is initiated and destroyed on completion.
-	
+
 	* GraphicsCache.[Ch]:
 	* GraphicsCacheItem.[Ch]:
 	* GraphicsConverter.[Ch]:
@@ -29,7 +34,7 @@
 	so not only should we have a clean, minimal and well documented
 	interface to these classes in the header files, but the class internals
 	should be much clearer too.
-	
+
 	* Renamed classes
 	grfx::GCache -> grfx::Cache,
 	grfx::GCacheItem -> grfx::CacheItem,
@@ -80,15 +85,15 @@
 
 2002-06-17  Herbert Voss  <voss@lyx.org>
 
-	* GraphicsCachItem.C: (findTargetFormat)return xpm-format as a 
+	* GraphicsCachItem.C: (findTargetFormat)return xpm-format as a
 	default when nothing different was found
-	(convertToDisplayFormat): handle zipped files in the right way and 
-	choose always convert as a default converter when no other 
+	(convertToDisplayFormat): handle zipped files in the right way and
+	choose always convert as a default converter when no other
 	userdefined was found
-	
+
 	* GraphicsConverter.C: add more lyxerr comments and choose
 	convert when no other userdefined converter was found
-		
+
 2002-06-10  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsImageXPM.C (convertTo7chars): get another special color
@@ -97,20 +102,20 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsCache.C: use right colormap incantation
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsCache.C: use lyx_gui namespace
 
 	* GraphicsImageXPM.C: back down to using xforms
 	  directly again
- 
+
 2002-06-07  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.5.
 	* GraphicsConverter.h: forward declare class ConvProcess.
 
-	* GraphicsImageXPM.C: 
+	* GraphicsImageXPM.C:
 	all c-library variables have been moved into namespace std.
 	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
 

@@ -76,7 +76,7 @@ InsetFormula::InsetFormula(string const & data)
 {
 	if (!data.size())
 		return;
-	if (!mathed_parse_normal(par_, data)) 
+	if (!mathed_parse_normal(par_, data))
 		lyxerr << "cannot interpret '" << data << "' as math\n";
 }
 
@@ -279,7 +279,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			}
 
 #warning FIXME: please check you really mean repaint() ... is it needed,
-#warning and if so, should it be update() instead ? 
+#warning and if so, should it be update() instead ?
 			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 				bv->repaint();
 
@@ -382,7 +382,7 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 {
 	return
 		(code == Inset::LABEL_CODE && display())
-		|| code == Inset::REF_CODE	
+		|| code == Inset::REF_CODE
 		|| code == Inset::ERT_CODE;
 }
 
@@ -440,7 +440,7 @@ void InsetFormula::statusChanged()
 {
 	lyxerr << "### InsetFormula::statusChanged called!, status: "
 		<< loader_->status() << "\n";
-	if (loader_->status() == grfx::Ready) 
+	if (loader_->status() == grfx::Ready)
 		view()->updateInset(this, false);
 	else if (loader_->status() == grfx::WaitingToLoad)
 		loader_->startLoading();
@@ -454,7 +454,7 @@ void InsetFormula::updatePreview()
 	if (!lyxrc.preview)
 		return;
 
-	// get LaTeX 
+	// get LaTeX
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
 	par_->write(wi);
@@ -505,4 +505,3 @@ void InsetFormula::updatePreview()
 	loader_->startLoading();
 	loader_->statusChanged.connect(boost::bind(&InsetFormula::statusChanged, this));
 }
-

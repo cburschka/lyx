@@ -75,14 +75,15 @@ XMiniBuffer::~XMiniBuffer()
 }
 
 
-int XMiniBuffer::peek_event(FL_OBJECT * ob, int event, int key, XEvent * xev)
+int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
+			    int key, XEvent * /*xev*/)
 {
 #if 0
 	if (dropdown_->isVisible()) {
 		return dropdown_->peek(xev);
 	}
 #endif
-	
+
 	switch (event) {
 	case FL_UNFOCUS:
 		messageMode();
@@ -98,7 +99,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event, int key, XEvent * xev)
 			char const * tmp = fl_get_input(ob);
 			input = tmp ? tmp : "";
 		}
-		  
+
 
 		switch (key) {
 		case XK_Down:

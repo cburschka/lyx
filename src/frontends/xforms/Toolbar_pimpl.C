@@ -53,7 +53,9 @@ Toolbar::Pimpl::toolbarItem::toolbarItem()
 
 Toolbar::Pimpl::toolbarItem::~toolbarItem()
 {
-	clean();
+	// It seems that now this is taken care of
+	// in the XFormsView destructor. (Lgb)
+	// clean();
 }
 
 

@@ -49,7 +49,7 @@ void ControlBibtex::applyParamsToInset()
 
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
-#warning are you sure you need this repaint() ? 
+#warning are you sure you need this repaint() ?
 	lv_.view()->repaint();
 	lv_.view()->fitCursor();
 }

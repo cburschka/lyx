@@ -33,10 +33,6 @@ public:
 			    string const & c = string(),
 			    string const & o = string());
 	///
-	bool operator==(InsetCommandParams const &) const;
-	///
-	bool operator!=(InsetCommandParams const &) const;
-	///
 	void read(LyXLex &);
 	/// Parse the command
 	void scanCommand(string const &);
@@ -69,5 +65,13 @@ private:
 	string options;
 };
 
+
+///
+bool operator==(InsetCommandParams const &,
+		InsetCommandParams const &);
+
+///
+bool operator!=(InsetCommandParams const &,
+		InsetCommandParams const &);
 
 #endif

@@ -25,7 +25,7 @@
 #include "LString.h"
 
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal0.hpp>
+#include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
 
 #include <X11/X.h> // for Pixmap :-(
@@ -48,12 +48,12 @@ public:
 	 */
 	typedef boost::shared_ptr<Image> ImagePtr;
 	///
-	static boost::signal0<ImagePtr> newImage;
+	static boost::function0<ImagePtr> newImage;
 
 	/// Return the list of loadable formats.
 	typedef std::vector<string> FormatList;
 	///
-	static boost::signal0<FormatList> loadableFormats;
+	static boost::function0<FormatList> loadableFormats;
 
 	/// Must define default c-tor explicitly as we define a copy c-tor.
 	Image() {}

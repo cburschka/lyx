@@ -20,10 +20,11 @@ namespace grfx {
 
 // This is to be connected to a function that will return a new
 // instance of a viable derived class.
-boost::signal0<Image::ImagePtr> Image::newImage;
+boost::function0<Image::ImagePtr> Image::newImage;
 
 /// Return the list of loadable formats.
-boost::signal0<Image::FormatList> Image::loadableFormats;
+boost::function0<Image::FormatList> Image::loadableFormats;
+
 
 std::pair<unsigned int, unsigned int>
 Image::getScaledDimensions(Params const & params) const

@@ -94,8 +94,8 @@ SplashScreen::SplashScreen()
 	loader_.reset(file);
 	// We aren't interested here in when the image is loaded.
 	// If it isn't ready when we want it, then we ignore it.
-//  	loader_->statusChanged.connect(
-//  			boost::bind(&SplashScreen::statusChanged, this));
+//	loader_->statusChanged.connect(
+//			boost::bind(&SplashScreen::statusChanged, this));
 	if (loader_.status() == grfx::WaitingToLoad)
 		loader_.startLoading();
 }
@@ -189,8 +189,7 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 	if (!row)
 		return max(newtop, 0);
 
-	if (cursor.y() - row->baseline() + row->height()
-	    - top_y >= vheight) {
+	if (cursor.y() - row->baseline() + row->height() - top_y >= vheight) {
 		if (row->height() < vheight
 		    && row->height() > vheight / 4) {
 			newtop = cursor.y()
@@ -381,14 +380,14 @@ void LyXScreen::greyOut()
 		int const w = splash_image->getWidth();
 		int const h = splash_image->getHeight();
 
-		int x = 0.5 * (workarea().workWidth() - w);
-		int y = 0.5 * (workarea().workHeight() - h);
+		int x = (workarea().workWidth() - w) / 2;
+		int y = (workarea().workHeight() - h) / 2;
 
 		workarea().getPainter().image(x, y, w, h, *splash_image);
 
 		string const & splash_text  = splash.text();
 		LyXFont const & splash_font = splash.font();
-		
+
 		x += 260;
 		y += 265;
 

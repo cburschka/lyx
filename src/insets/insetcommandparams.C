@@ -16,6 +16,11 @@
 #include "lyxlex.h"
 #include "debug.h"
 
+#include "support/LOstream.h"
+
+using std::ostream;
+using std::endl;
+
 
 InsetCommandParams::InsetCommandParams()
 {}
@@ -55,19 +60,6 @@ void InsetCommandParams::setFromString(string const & b)
 		contents  = tmp.substr(0, idx);
 		options = tmp.substr(idx+4);
 	}
-}
-
-
-bool InsetCommandParams::operator==(InsetCommandParams const & o) const
-{
-	return cmdname == o.cmdname && contents == o.contents
-		&& options == o.options;
-}
-
-
-bool InsetCommandParams::operator!=(InsetCommandParams const & o) const
-{
-	return !(*this == o);
 }
 
 
@@ -172,3 +164,18 @@ string const InsetCommandParams::getCommand() const
 	return s;
 }
 
+
+bool operator==(InsetCommandParams const & o1,
+		InsetCommandParams const & o2)
+{
+	return o1.getCmdName() == o2.getCmdName()
+		&& o1.getContents() == o2.getContents()
+		&& o1.getOptions() == o2.getOptions();
+}
+
+
+bool operator!=(InsetCommandParams const & o1,
+		InsetCommandParams const & o2)
+{
+	return !(o1 == o2);
+}

@@ -72,7 +72,11 @@ XFormsView::XFormsView(int width, int height)
 }
 
 
-XFormsView::~XFormsView() {}
+XFormsView::~XFormsView()
+{
+	fl_hide_form(form_);
+	fl_free_form(form_);
+}
 
 
 /// Redraw the main form.
@@ -88,7 +92,7 @@ void XFormsView::redraw()
 
 FL_FORM * XFormsView::getForm() const
 {
-	return form_.get();
+	return form_;
 }
 
 
@@ -133,7 +137,7 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 	 */
 {
 	// the main form
-	form_.reset(fl_bgn_form(FL_NO_BOX, width, height));
+	form_ = fl_bgn_form(FL_NO_BOX, width, height);
 	getForm()->u_vdata = this;
 	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);

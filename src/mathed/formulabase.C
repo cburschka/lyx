@@ -1030,7 +1030,7 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 	if (!bv->available())
 		return;
 	InsetFormula * f = new InsetFormula(bv);
-	if (openNewInset(bv, f)) { 
+	if (openNewInset(bv, f)) {
 		f->mutate("simple");
 		bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
 	}

@@ -1,13 +1,31 @@
+2002-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyx_gui.C (init_graphics): boost::function assign, not
+	boost::signal connect.
+
+	* combox.C (Combox): what remove does is now done implicitly from
+	XFormsView destructor.
+
+	* XMiniBuffer.C (peek_event): comment last arg to avoid warning.
+
+	* XFormsView.h: form_ is now a raw pointer not a scoped_ptr.
+
+	* XFormsView.C (XFormsView): hide and free form_
+	(getForm): raw pointer return
+	(create_form_form_main): raw pointer set
+
+	* Toolbar_pimpl.C (toolbarItem): whet clean does is now done
+	implicitly from XFormsView destructor.
 
 2002-07-04  André Pönitz <poenitz@gmx.net>
 
 	* FormInset.[Ch]: reduce #include depencies
-	
+
 	* guiapi.C: suppress compiler warning
 
 2002-06-27  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
-	* FormInclude.C: Comment out unneeded and wrong update mechanism 
+	* FormInclude.C: Comment out unneeded and wrong update mechanism
 	(related to bug #459)
 	*forms/form_include.fd: define missing callbacks (bug #459)
 

@@ -84,7 +84,8 @@ Combox::Combox(combox_type t)
 
 Combox::~Combox()
 {
-   remove();
+	// This is now handled by the XFormsView destructor (Lgb)
+	// remove();
 }
 
 

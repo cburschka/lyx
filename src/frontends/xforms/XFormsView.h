@@ -65,6 +65,6 @@ private:
 	/// makes the main form.
 	void create_form_form_main(Dialogs & d, int width, int height);
 	/// the main form.
-	boost::scoped_ptr<FL_FORM> form_;
+	FL_FORM * form_;
 };
 #endif
