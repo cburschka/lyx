@@ -12,6 +12,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "debug.h"
 #include "gettext.h"
 
@@ -126,7 +127,7 @@ void lyx_gui::exit()
 string const lyx_gui::hexname(LColor::color col)
 {
 	QColor color(lcolor.getX11Name(col).c_str());
-	return color.name().latin1();
+	return ltrim(color.name().latin1(), "#");
 }
 
 
