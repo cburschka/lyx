@@ -219,10 +219,11 @@ bool operator==(Token const & s, Token const & t)
 		&& s.cat() == t.cat() && s.cs() == t.cs(); 
 }
 
-bool operator!=(Token const & s, Token const & t)
-{
-	return !(s == t);
-}
+// Angus' compiler says this is not needed
+//bool operator!=(Token const & s, Token const & t)
+//{
+//	return !(s == t);
+//}
 
 ostream & operator<<(ostream & os, Token const & t)
 {
