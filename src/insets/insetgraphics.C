@@ -181,7 +181,7 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-void InsetGraphics::statusChanged()
+void InsetGraphics::statusChanged() const
 {
 	BufferView * bv = graphic_->view();
 	if (bv)

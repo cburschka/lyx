@@ -15,53 +15,47 @@
 #include "PreviewLoader.h"
 #include "Previews.h"
 
-#include "BufferView.h"
-
-#include "insets/inset.h"
-
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
-namespace support = lyx::support;
+namespace graphics = lyx::graphics;
+namespace support  = lyx::support;
 
-
-namespace lyx {
-namespace graphics {
 
 bool PreviewedInset::activated()
 {
-	return Previews::activated();
+	return graphics::Previews::activated();
 }
 
 
-PreviewedInset::PreviewedInset(InsetOld & inset)
-	: inset_(inset), pimage_(0)
+PreviewedInset::PreviewedInset()
+	: pimage_(0)
 {}
 
 
-BufferView * PreviewedInset::view() const
+boost::signals::connection PreviewedInset::connect(slot_type const & slot)
 {
-	return inset_.view();
+	return preview_ready_signal_.connect(slot);
 }
 
 
 void PreviewedInset::generatePreview(Buffer const & buffer)
 {
-	if (!Previews::activated() || !previewWanted(buffer))
+	if (!activated() || !previewWanted(buffer))
 		return;
 
-	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(buffer);
+	graphics::Previews & previews = graphics::Previews::get();
+	graphics::PreviewLoader & loader = previews.loader(buffer);
 	addPreview(loader);
 	if (!snippet_.empty())
 		loader.startLoading();
 }
 
 
-void PreviewedInset::addPreview(PreviewLoader & ploader)
+void PreviewedInset::addPreview(graphics::PreviewLoader & ploader)
 {
-	if (!Previews::activated() || !previewWanted(ploader.buffer()))
+	if (!activated() || !previewWanted(ploader.buffer()))
 		return;
 
 	snippet_ = support::trim(latexString(ploader.buffer()));
@@ -89,8 +83,8 @@ void PreviewedInset::removePreview(Buffer const & buffer)
 	if (snippet_.empty())
 		return;
 
-	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(buffer);
+	graphics::Previews & previews = graphics::Previews::get();
+	graphics::PreviewLoader & loader = previews.loader(buffer);
 	loader.remove(snippet_);
 	snippet_.erase();
 	pimage_ = 0;
@@ -99,11 +93,12 @@ void PreviewedInset::removePreview(Buffer const & buffer)
 
 bool PreviewedInset::previewReady(Buffer const & buffer) const
 {
-	if (!Previews::activated() || !previewWanted(buffer))
+	if (!activated() || !previewWanted(buffer))
 		return false;
 
 	if (!pimage_ || snippet_ != pimage_->snippet()) {
-		PreviewLoader & ploader = Previews::get().loader(buffer);
+		graphics::PreviewLoader & ploader =
+			graphics::Previews::get().loader(buffer);
 		pimage_ = ploader.preview(snippet_);
 	}
 
@@ -111,17 +106,12 @@ bool PreviewedInset::previewReady(Buffer const & buffer) const
 }
 
 
-void PreviewedInset::imageReady(PreviewImage const & pimage) const
+void PreviewedInset::imageReady(graphics::PreviewImage const & pimage) const
 {
 	// Check the current snippet is the same as that previewed.
 	if (snippet_ != pimage.snippet())
 		return;
 
 	pimage_ = &pimage;
-
-	if (view())
-		view()->updateInset(&inset());
+	preview_ready_signal_();
 }
-
-} // namespace graphics
-} // namespace lyx

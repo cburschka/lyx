@@ -30,6 +30,7 @@
 
 #include "support/std_sstream.h"
 
+#include <boost/bind.hpp>
 
 using std::string;
 using std::ostream;
@@ -39,10 +40,10 @@ using std::auto_ptr;
 using std::endl;
 
 
-class InsetFormula::PreviewImpl : public lyx::graphics::PreviewedInset {
+class InsetFormula::PreviewImpl : public PreviewedInset {
 public:
 	///
-	PreviewImpl(InsetFormula & p) : PreviewedInset(p) {}
+	PreviewImpl(InsetFormula const & p) : parent_(p) {}
 
 private:
 	///
@@ -50,18 +51,15 @@ private:
 	///
 	string const latexString(Buffer const &) const;
 	///
-	InsetFormula const & parent() const
-	{
-		return dynamic_cast<InsetFormula const &>(inset());
-	}
+	InsetFormula const & parent_;
 };
-
 
 
 InsetFormula::InsetFormula(bool chemistry)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
 {
+	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 	if (chemistry)
 		mutate("chemistry");
 }
@@ -71,14 +69,16 @@ InsetFormula::InsetFormula(InsetFormula const & other)
 	: InsetFormulaBase(other),
 	  par_(other.par_),
 	  preview_(new PreviewImpl(*this))
-{}
+{
+	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
+}
 
 
 InsetFormula::InsetFormula(BufferView *)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
 {
-	//view_ = bv->owner()->view();
+	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 }
 
 
@@ -86,12 +86,12 @@ InsetFormula::InsetFormula(string const & data)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
 {
+	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 	if (!data.size())
 		return;
 	if (!mathed_parse_normal(par_, data))
 		lyxerr << "cannot interpret '" << data << "' as math" << endl;
 }
-
 
 
 InsetFormula::~InsetFormula()
@@ -300,6 +300,13 @@ void InsetFormula::mutate(string const & type)
 // preview stuff
 //
 
+void InsetFormula::statusChanged() const
+{
+	if (view())
+		view()->updateInset(this);
+}
+
+
 void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	preview_->addPreview(ploader);
@@ -314,7 +321,7 @@ void InsetFormula::generatePreview(Buffer const & buffer) const
 
 bool InsetFormula::PreviewImpl::previewWanted(Buffer const &) const
 {
-	return !parent().par_->asNestInset()->editing();
+	return !parent_.par_->asNestInset()->editing();
 }
 
 
@@ -322,6 +329,6 @@ string const InsetFormula::PreviewImpl::latexString(Buffer const &) const
 {
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
-	parent().par_->write(wi);
+	parent_.par_->write(wi);
 	return ls.str();
 }

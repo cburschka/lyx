@@ -387,7 +387,7 @@ InsetExternal::~InsetExternal()
 }
 
 
-void InsetExternal::statusChanged()
+void InsetExternal::statusChanged() const
 {
 	BufferView * const bv = renderer_->view();
 	if (bv)

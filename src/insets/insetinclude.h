@@ -83,6 +83,9 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
+	/// Slot receiving a signal that the preview is ready to display.
+	void statusChanged() const;
+	
 	friend class InsetIncludeMailer;
 
 	/// set the parameters

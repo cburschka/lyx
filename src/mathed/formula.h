@@ -74,6 +74,8 @@ public:
 	void mutate(std::string const & type);
 
 private:
+	/// Slot receiving a signal that the preview is ready to display.
+	void statusChanged() const;
 	/// available in AMS only?
 	bool ams() const;
 

@@ -1,5 +1,13 @@
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.[Ch] (statusChanged):
+	* insetgraphics.[Ch] (statusChanged): make a const member function.
+
+	* insetinclude.[Ch]: mods to PreviewImpl due to the changes to
+	PreviewedInset.
+	
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
 	* insetinclude.C (metrics, draw, restartLoading): pass a buffer arg
 	to PreviewedInset's previewReady and removePreview member functions.
 

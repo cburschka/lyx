@@ -65,20 +65,16 @@ using std::ostringstream;
 extern BufferList bufferlist;
 
 
-class InsetInclude::PreviewImpl : public lyx::graphics::PreviewedInset {
+class InsetInclude::PreviewImpl : public PreviewedInset {
 public:
 	///
-	PreviewImpl(InsetInclude & p) : PreviewedInset(p) {}
+	PreviewImpl(InsetInclude const & p) : parent_(p) {}
 
 	///
 	bool previewWanted(Buffer const &) const;
 	///
 	string const latexString(Buffer const &) const;
 	///
-	InsetInclude const & parent() const {
-		return dynamic_cast<InsetInclude const &>(inset());
-	}
-
 	///
 	bool monitoring() const { return monitor_.get(); }
 	///
@@ -91,6 +87,8 @@ private:
 	void restartLoading();
 	///
 	boost::scoped_ptr<FileMonitor> monitor_;
+	///
+	InsetInclude const & parent_;
 };
 
 
@@ -109,7 +107,9 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
 	  preview_(new PreviewImpl(*this)),
 	  set_label_(false)
-{}
+{
+	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
+}
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
@@ -118,7 +118,9 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  include_label(other.include_label),
 	  preview_(new PreviewImpl(*this)),
 	  set_label_(other.set_label_)
-{}
+{
+	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
+}
 
 
 InsetInclude::~InsetInclude()
@@ -195,7 +197,7 @@ Types type(InsetCommandParams const & params)
 bool isVerbatim(InsetCommandParams const & params)
 {
 	string const command_name = params.getCmdName();
-	return command_name == "verbatiminput" ||
+	return command_name == "verbatiminput" || 
 		command_name == "verbatiminput*";
 }
 
@@ -210,8 +212,7 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
-	if (lyx::graphics::PreviewedInset::activated() &&
-	    type(params_) == INPUT)
+	if (PreviewedInset::activated() && type(params_) == INPUT)
 		preview_->generatePreview(buffer);
 }
 
@@ -593,6 +594,13 @@ BufferView * InsetInclude::view() const
 // preview stuff
 //
 
+void InsetInclude::statusChanged() const
+{
+	if (view())
+		view()->updateInset(this);
+}
+
+
 void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	preview_->addPreview(ploader);
@@ -601,10 +609,10 @@ void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 
 bool InsetInclude::PreviewImpl::previewWanted(Buffer const & buffer) const
 {
-	string const included_file = includedFilename(buffer, parent().params());
+	string const included_file = includedFilename(buffer, parent_.params());
 
-	return type(parent().params_) == INPUT &&
-		parent().params_.preview() &&
+	return type(parent_.params_) == INPUT &&
+		parent_.params_.preview() &&
 		IsFileReadable(included_file);
 }
 
@@ -614,7 +622,7 @@ string const InsetInclude::PreviewImpl::latexString(Buffer const & buffer) const
 	ostringstream os;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	parent().latex(buffer, os, runparams);
+	parent_.latex(buffer, os, runparams);
 
 	return os.str();
 }
@@ -630,11 +638,12 @@ void InsetInclude::PreviewImpl::startMonitoring(string const & file)
 
 void InsetInclude::PreviewImpl::restartLoading()
 {
-	if (!view())
+	BufferView * const view = parent_.view();
+	if (!view)
 		return;
-	view()->updateInset(&parent());
-	if (view()->buffer()) {
-		Buffer const & buffer = *view()->buffer();
+	view->updateInset(&parent_);
+	if (view->buffer()) {
+		Buffer const & buffer = *view->buffer();
 		removePreview(buffer);
 		generatePreview(buffer);
 	}

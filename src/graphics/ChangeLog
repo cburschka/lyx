@@ -1,5 +1,13 @@
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewedInset.[Ch]: move PreviewedInset out of namespace lyx::graphics.
+	Remove the inset and view member functions.
+	Add a new connect member function and preview_ready_signal_ member
+	variable, to enable the class to tell an arbirary connectee that the
+	preview is ready.
+
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewedInset.[Ch] (removePreview, previewReady): these functions
 	are now passed a 'Buffer const &', eliminating most of the remaining
 	need for PreviewedInset to use a BufferView cache.

@@ -16,12 +16,12 @@
 #ifndef PREVIEWEDINSET_H
 #define PREVIEWEDINSET_H
 
+#include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
 class Buffer;
 class BufferView;
-class InsetOld;
 
 
 namespace lyx {
@@ -30,13 +30,16 @@ namespace graphics {
 class PreviewImage;
 class PreviewLoader;
 
+} // namespace graphics
+} // namespace lyx
+
 class PreviewedInset : public boost::signals::trackable {
 public:
 	/// a wrapper for Previews::activated()
 	static bool activated();
 
 	///
-	PreviewedInset(InsetOld & inset);
+	PreviewedInset();
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
@@ -46,7 +49,7 @@ public:
 	/** Add a LaTeX snippet to the PreviewLoader but do not start the
 	 *  loading process.
 	 */
-	void addPreview(PreviewLoader & ploader);
+	void addPreview(lyx::graphics::PreviewLoader & ploader);
 
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.
@@ -56,54 +59,39 @@ public:
 	/// The preview has been generated and is ready to use.
 	bool previewReady(Buffer const &) const;
 
-	/// If !previewReady() returns 0.
-	PreviewImage const * pimage() const;
+	/// If the preview is not ready, returns 0.
+	lyx::graphics::PreviewImage const * const pimage() const { return pimage_; }
+
+	/// Connect and you'll be informed when the preview is ready.
+	typedef boost::signal0<void>::slot_type slot_type;
+	boost::signals::connection connect(slot_type const &);
 
 protected:
 	///
 	virtual ~PreviewedInset() {}
-	/// Allow the daughter classes to cast up to the parent inset.
-	InsetOld const & inset() const;
-	///
-	BufferView * view() const;
 
 private:
 	/// This method is connected to the PreviewLoader::imageReady signal.
-	void imageReady(PreviewImage const &) const;
+	void imageReady(lyx::graphics::PreviewImage const &) const;
 
 	/// Does the owning inset want a preview?
 	virtual bool previewWanted(Buffer const &) const = 0;
 	/// a wrapper to Inset::latex
 	virtual std::string const latexString(Buffer const &) const = 0;
 
-	///
-	InsetOld & inset_;
-	///
+	/// The thing that we're trying to generate a preview of.
 	std::string snippet_;
 
 	/// We don't own this. Cached for efficiency reasons.
-	mutable PreviewImage const * pimage_;
+	mutable lyx::graphics::PreviewImage const * pimage_;
+
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
 	 */
 	boost::signals::connection ploader_connection_;
+
+	/// This signal is emitted when the preview is ready for display.
+	boost::signal0<void> preview_ready_signal_;
 };
-
-
-inline
-PreviewImage const * PreviewedInset::pimage() const
-{
-	return pimage_;
-}
-
-
-inline
-InsetOld const & PreviewedInset::inset() const
-{
-	return inset_;
-}
-
-} // namespace graphics
-} // namespace lyx
 
 #endif // PREVIEWEDINSET_H
