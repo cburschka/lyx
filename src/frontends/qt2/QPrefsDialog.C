@@ -545,7 +545,7 @@ void QPrefsDialog::select_dict()
 
 void QPrefsDialog::select_templatedir()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->templateDirED->text()), _("Select a document templates directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->templateDirED->text()), _("Select a document templates directory")));
 	if (!file.empty())
 		pathsModule->templateDirED->setText(toqstr(file));
 }
@@ -553,7 +553,7 @@ void QPrefsDialog::select_templatedir()
 
 void QPrefsDialog::select_tempdir()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->tempDirED->text()), _("Select a temporary directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->tempDirED->text()), _("Select a temporary directory")));
 	if (!file.empty())
 		pathsModule->tempDirED->setText(toqstr(file));
 }
@@ -561,7 +561,7 @@ void QPrefsDialog::select_tempdir()
 
 void QPrefsDialog::select_backupdir()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->backupDirED->text()), _("Select a backups directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->backupDirED->text()), _("Select a backups directory")));
 	if (!file.empty())
 		pathsModule->backupDirED->setText(toqstr(file));
 }
@@ -569,7 +569,7 @@ void QPrefsDialog::select_backupdir()
 
 void QPrefsDialog::select_workingdir()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->workingDirED->text()), _("Select a document directory")));
+	string file(form_->controller().browsedir(fromqstr(pathsModule->workingDirED->text()), _("Select a document directory")));
 	if (!file.empty())
 		pathsModule->workingDirED->setText(toqstr(file));
 }

@@ -88,12 +88,38 @@ FileDialog::Result const FileDialog::open(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = _("*|All files");
+		filter = _("All files (*)");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
 			   << "\", mask \"" << filter
 			   << "\", suggested \"" << suggested << endl;
+
+	if (!suggested.empty())
+		dlg.setSelection(toqstr(suggested));
+
+	FileDialog::Result result;
+	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
+	result.first = FileDialog::Chosen;
+	int res = dlg.exec();
+	lyxerr[Debug::GUI] << "result " << res << endl;
+	if (res == QDialog::Accepted)
+		result.second = string(dlg.selectedFile().data());
+	dlg.hide();
+	return result;
+}
+
+
+FileDialog::Result const FileDialog::opendir(string const & path,
+					    string const & suggested)
+{
+	string filter = _("Directories");
+
+	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
+	lyxerr[Debug::GUI] << "Select with path \"" << path
+			   << "\", suggested \"" << suggested << endl;
+
+	dlg.setMode(QFileDialog::DirectoryOnly);
 
 	if (!suggested.empty())
 		dlg.setSelection(toqstr(suggested));

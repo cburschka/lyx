@@ -77,6 +77,13 @@ public:
 	Result const open(string const & path = string(),
 		string const & mask = string(),
 		string const & suggested = string());
+		
+	/**
+	 * Choose a directory, starting in directory \param
+	 * path.
+	 */
+	Result const opendir(string const & path = string(),
+		string const & suggested = string());
 
 	/**
 	 * Choose a file for saving, starting in directory \param

@@ -2186,29 +2186,35 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (ob == dialog_->button_default_path_browse) {
-		string f = parent_.controller().browse(
+		string f = parent_.controller().browsedir(
 			fl_get_input(dialog_->input_default_path), _("Default path"));
-		fl_set_input(dialog_->input_default_path, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_default_path, f.c_str());
 	} else if (ob == dialog_->button_template_path_browse) {
-		string f = parent_.controller().browse(
+		string f = parent_.controller().browsedir(
 			fl_get_input(dialog_->input_template_path), _("Template path"));
-		fl_set_input(dialog_->input_template_path, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_template_path, f.c_str());
 	} else if (ob == dialog_->button_temp_dir_browse) {
-		string f = parent_.controller().browse(
+		string f = parent_.controller().browsedir(
 			fl_get_input(dialog_->input_temp_dir), _("Temporary dir"));
-		fl_set_input(dialog_->input_temp_dir, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_temp_dir, f.c_str());
 	} else if (ob == dialog_->button_lastfiles_browse) {
 		string f = parent_.controller().browse(
 			fl_get_input(dialog_->input_lastfiles), _("Last files"));
-		fl_set_input(dialog_->input_lastfiles, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_lastfiles, f.c_str());
 	} else if (ob == dialog_->button_backup_path_browse) {
-		string f = parent_.controller().browse(
+		string f = parent_.controller().browsedir(
 			fl_get_input(dialog_->input_backup_path), _("Backup path"));
-		fl_set_input(dialog_->input_backup_path, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_backup_path, f.c_str());
 	} else if (ob == dialog_->button_serverpipe_browse) {
 		string f = parent_.controller().browse(
 			fl_get_input(dialog_->input_serverpipe), _("LyX server pipes"));
-		fl_set_input(dialog_->input_serverpipe, f.c_str());
+		if (!f.empty())
+			fl_set_input(dialog_->input_serverpipe, f.c_str());
 	}
 
 	return activate;

@@ -89,6 +89,40 @@ string const browseRelFile(LyXView * lv, string const & filename,
 }
 
 
+string const browseDir(LyXView * lv, string const & pathname,
+			string const & title,
+			pair<string,string> const & dir1,
+			pair<string,string> const & dir2)
+{
+	string lastPath(".");
+	if (!pathname.empty())
+		lastPath = OnlyPath(pathname);
+
+	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
+
+	FileDialog::Result result;
+
+	while (true) {
+		result = fileDlg.opendir(lastPath,
+				OnlyFilename(pathname));
+
+		if (result.second.empty())
+			return result.second;
+
+		lastPath = OnlyPath(result.second);
+
+		if (result.second.find_first_of("#~$% ") == string::npos)
+			break;
+
+		Alert::alert(_("directory name can't contain any "
+			"of these characters:"),
+			_("space, '#', '~', '$' or '%'."));
+	}
+
+	return result.second;
+}
+
+
 // sorry this is just a temporary hack we should include vspace.h! (Jug)
 extern const char * stringFromUnit(int);
 

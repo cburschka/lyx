@@ -110,6 +110,12 @@ string const ControlPrefs::browse(string const & file, string const & title)
 }
 
 
+string const ControlPrefs::browsedir(string const & path, string const & title)
+{
+	return browseDir(&lv_, path, title);
+}
+
+
 void ControlPrefs::redrawGUI()
 {
 	// we must be sure to get the new values first

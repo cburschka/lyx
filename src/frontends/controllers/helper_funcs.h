@@ -58,6 +58,20 @@ browseRelFile(LyXView * lv, string const & filename,
 	      std::make_pair(string(), string()));
 
 
+/** Launch a file dialog and return the chosen directory.
+    pathname: a suggested pathname.
+    title: the title of the dialog.
+    dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
+*/
+string const
+browseDir(LyXView * lv, string const & pathname,
+	   string const & title,
+	   std::pair<string,string> const & dir1 =
+	   std::make_pair(string(), string()),
+	   std::pair<string,string> const & dir2 =
+	   std::make_pair(string(), string()));
+
+
 /// Returns a vector of units that can be used to create a valid LaTeX length.
 std::vector<string> const getLatexUnits();
 

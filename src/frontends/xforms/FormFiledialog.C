@@ -29,6 +29,7 @@ using std::sort;
 #include "gettext.h"
 #include "frontends/Dialogs.h"
 #include "forms_gettext.h"
+#include "xforms_helpers.h"
 
 #include <boost/bind.hpp>
 
@@ -736,6 +737,7 @@ string const FileDialog::Private::Select(string const & title,
 
 	// runs dialog
 	SetInfoLine(string());
+	setEnabled(file_dlg_form_->Filename, true);
 	fl_set_input(file_dlg_form_->Filename, suggested.c_str());
 	fl_set_button(file_dlg_form_->Cancel, 0);
 	fl_set_button(file_dlg_form_->Ready, 0);
@@ -765,5 +767,67 @@ string const FileDialog::Private::Select(string const & title,
 
 	if (!AbsolutePath(file_name_))
 		file_name_ = AddName(fl_get_input(file_dlg_form_->DirBox), file_name_);
+	return file_name_;
+}
+
+
+// SelectDir: launches dialog and returns selected directory
+string const FileDialog::Private::SelectDir(string const & title,
+					 string const & path,
+					 string const & suggested)
+{
+	SetMask("*/");
+	// handles new path
+	bool isOk = true;
+	if (!path.empty()) {
+		// handle case where path does not end with "/"
+		// remerge path+suggested and check if it is a valid path
+		if (!suggested.empty()) {
+			string tmp = suggested;
+			if (!suffixIs(tmp, '/'))
+				tmp += '/';
+			string full_path = path;
+			full_path += tmp;
+			// check if this is really a directory
+			DIR * dir = ::opendir(full_path.c_str());
+			if (dir)
+				SetDirectory(full_path);
+			else
+				SetDirectory(path);
+		} else
+			SetDirectory(path);
+		isOk = false;
+	}
+	if (!isOk)
+		Reread();
+
+	// checks whether dialog can be started
+	if (current_dlg_)
+		return string();
+	current_dlg_ = this;
+
+	// runs dialog
+	SetInfoLine(string());
+	fl_set_input(file_dlg_form_->Filename, "");
+	setEnabled(file_dlg_form_->Filename, false);
+	fl_set_button(file_dlg_form_->Cancel, 0);
+	fl_set_button(file_dlg_form_->Ready, 0);
+	fl_set_focus_object(file_dlg_form_->form, file_dlg_form_->DirBox);
+	fl_deactivate_all_forms();
+	fl_show_form(file_dlg_form_->form,
+		     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
+		     title.c_str());
+
+	isOk = RunDialog();
+
+	fl_hide_form(file_dlg_form_->form);
+	fl_activate_all_forms();
+	current_dlg_ = 0;
+
+	// Returns directory or string() if no valid selection was made
+	if (!isOk)
+		return string();
+
+	file_name_ = fl_get_input(file_dlg_form_->DirBox);
 	return file_name_;
 }

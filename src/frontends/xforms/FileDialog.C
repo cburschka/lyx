@@ -54,6 +54,26 @@ FileDialog::Result const FileDialog::save(string const & path, string const & ma
 }
 
 
+FileDialog::Result const FileDialog::opendir(string const & path, string const & suggested)
+{
+	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", suggested \"" 
+		<< suggested << '"' << endl;
+
+	// no support for asynchronous selection yet
+
+	lv_->prohibitInput();
+
+	FileDialog::Result result;
+
+	result.first = FileDialog::Chosen;
+	result.second = private_->SelectDir(title_, path, suggested);
+
+	lv_->allowInput();
+
+	return result;
+}
+
+
 FileDialog::Result const FileDialog::open(string const & path, string const & mask, string const & suggested)
 {
 	string filter = mask;

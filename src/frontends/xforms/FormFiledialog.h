@@ -69,6 +69,10 @@ public:
 		       string const & pszPath = string(),
 		       string const & pszMask = string(),
 		       string const & pszSuggested = string());
+	/// launches dialog and returns selected directory
+	string const SelectDir(string const & pszTitle = string(),
+		       string const & pszPath = string(),
+		       string const & pszSuggested = string());
 	/// XForms objects callback (static)
 	static void FileDlgCB(FL_OBJECT *, long);
 	/// Callback for double click in list

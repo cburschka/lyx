@@ -1,3 +1,9 @@
+2003-01-11  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* helper_funcs.[Ch]: implement browseDir (browse directory) [bug 824]
+	
+	* ControlPrefs.[Ch]: implement browsedir for the use of use browseDir.
+
 2002-12-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlDocument.C: use BoostFormat.h instead of boost/format.hpp
