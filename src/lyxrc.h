@@ -226,6 +226,8 @@ public:
 	string auto_mathmode;
 	///
 	bool show_banner;
+	/// Do we have to use a GUI?
+	bool use_gui;
 	///
 	typedef map<string, int> Bindings;
 	///

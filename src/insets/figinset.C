@@ -397,36 +397,38 @@ void InitFigures()
 		bittable[i] = char(~k);
 	}
 
-	fl_add_canvas_handler(figinset_canvas, ClientMessage,
-			      GhostscriptMsg, current_view->owner()->getMainForm());
-
 	// allocate color cube on pseudo-color display
 	// first get visual
 	gs_color = false;
-	local_gc_copy = createGC();
+	if (lyxrc.use_gui) {
+		fl_add_canvas_handler(figinset_canvas, ClientMessage,
+							GhostscriptMsg, current_view->owner()->getMainForm());
 
-	Visual * vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
-	if (lyxerr.debugging()) {
-		printf("Visual ID: %ld, class: %d, bprgb: %d, mapsz: %d\n", 
-		       vi->visualid, vi->c_class, 
-		       vi->bits_per_rgb, vi->map_entries);
+		local_gc_copy = createGC();
+
+		Visual * vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
+		if (lyxerr.debugging()) {
+			printf("Visual ID: %ld, class: %d, bprgb: %d, mapsz: %d\n", 
+						 vi->visualid, vi->c_class, 
+						 vi->bits_per_rgb, vi->map_entries);
+		}
+		color_visual = ( (vi->c_class == StaticColor) ||
+				 (vi->c_class == PseudoColor) ||
+				 (vi->c_class == TrueColor) ||
+				 (vi->c_class == DirectColor) );
+		if ((vi->c_class & 1) == 0) return;
+		// now allocate colors
+		if (vi->c_class == GrayScale) {
+			// allocate grayscale
+			AllocGrays(vi->map_entries/2);
+		} else {
+			// allocate normal color
+			int i = 5;
+			while (i * i * i * 2 > vi->map_entries) --i;
+			AllocColors(i);
+		}
+		gs_allcolors = vi->map_entries;
 	}
-	color_visual = ( (vi->c_class == StaticColor) ||
-			 (vi->c_class == PseudoColor) ||
-			 (vi->c_class == TrueColor) ||
-			 (vi->c_class == DirectColor) );
-	if ((vi->c_class & 1) == 0) return;
-	// now allocate colors
-	if (vi->c_class == GrayScale) {
-		// allocate grayscale
-		AllocGrays(vi->map_entries/2);
-	} else {
-		// allocate normal color
-		int i = 5;
-		while (i * i * i * 2 > vi->map_entries) --i;
-		AllocColors(i);
-	}
-	gs_allcolors = vi->map_entries;
 }
 
 
@@ -1240,7 +1242,8 @@ Inset * InsetFig::Clone() const
 	tmp->pswid = pswid;
 	tmp->pshgh = pshgh;
 	tmp->fname = fname;
-	if (!fname.empty() && (flags & 3) && !lyxrc.ps_command.empty()) { 
+	if (!fname.empty() && (flags & 3) && !lyxrc.ps_command.empty()
+	    && lyxrc.use_gui) { 
 		// do not display if there is
 		// "do not display" chosen (Matthias 260696)
 		tmp->figure->data = getfigdata(wid, hgh, fname, psx, psy,

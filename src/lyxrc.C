@@ -147,6 +147,7 @@ enum LyXRCTags {
 	RC_DVI_TO_PS_COMMAND,
 	RC_DATE_INSERT_FORMAT,
 	RC_SHOW_BANNER,
+	RC_USE_GUI,
 	RC_LAST
 };
 
@@ -165,8 +166,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\begin_toolbar", RC_BEGINTOOLBAR },
 	{ "\\bind", RC_BIND },
 	{ "\\bind_file", RC_BINDFILE },
-        { "\\build_command", RC_BUILD_COMMAND },
-        { "\\build_error_filter", RC_BUILD_ERROR_FILTER },
+	{ "\\build_command", RC_BUILD_COMMAND },
+	{ "\\build_error_filter", RC_BUILD_ERROR_FILTER },
 	{ "\\check_lastfiles", RC_CHECKLASTFILES },
 	{ "\\chktex_command", RC_CHKTEX_COMMAND },
 	{ "\\cursor_follows_scrollbar", RC_CURSOR_FOLLOWS_SCROLLBAR },
@@ -245,6 +246,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\template_path", RC_TEMPLATEPATH },
 	{ "\\use_alt_language", RC_USE_ALT_LANG },
 	{ "\\use_escape_chars", RC_USE_ESC_CHARS },
+	{ "\\use_gui", RC_USE_GUI },
 	{ "\\use_input_encoding", RC_USE_INP_ENC },
 	{ "\\use_personal_dictionary", RC_USE_PERS_DICT },
 	{ "\\use_tempdir", RC_USETEMPDIR },
@@ -281,7 +283,7 @@ void LyXRC::setDefaults() {
 	print_to_printer = "-P";
 	print_to_file = "-o ";
 	print_file_extension = ".ps";
-        print_paper_flag = "-t";
+	print_paper_flag = "-t";
 	print_paper_dimension_flag = "-T";
 	document_path = GetEnvPath("HOME");
 	tempdir_path = "/tmp";
@@ -359,6 +361,7 @@ void LyXRC::setDefaults() {
 	///
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
+	use_gui = true;
 	//
 	defaultKeyBindings();
 }
@@ -990,6 +993,10 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				show_banner = lexrc.GetBool();
 			break;
+		case RC_USE_GUI:
+			if (lexrc.next())
+				use_gui = lexrc.GetBool();
+			break;
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1307,6 +1314,8 @@ void LyXRC::output(ostream & os) const
 		   << "\"\n";
 	case RC_SHOW_BANNER:
 		os << "\\show_banner " << tostr(show_banner) << "\n";
+	case RC_USE_GUI:
+		os << "\\use_gui " << tostr(show_banner) << "\n";
 	}
 	os.flush();
 }

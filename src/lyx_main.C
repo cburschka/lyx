@@ -79,7 +79,7 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	init(argc, argv);
+	init(argc, argv, gui);
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
 	lyxGUI->init();
@@ -114,7 +114,8 @@ LyX::LyX(int * argc, char * argv[])
 
 	if (last_loaded != 0) {
 		lyxerr.debug() << "Yes we loaded some files." << endl;
-		lyxGUI->regBuf(last_loaded);
+		if (lyxrc.use_gui)
+			lyxGUI->regBuf(last_loaded);
 	}
 
 	// Execute batch commands if available
@@ -142,7 +143,7 @@ LyX::~LyX()
 
 extern "C" void error_handler(int err_sig);
 
-void LyX::init(int */*argc*/, char **argv)
+void LyX::init(int */*argc*/, char **argv, bool gui)
 {
 	// Install the signal handlers
 	signal(SIGHUP, error_handler);
@@ -334,11 +335,20 @@ void LyX::init(int */*argc*/, char **argv)
 	}
 
 	// Calculate screen dpi as average of x-DPI and y-DPI:
-	Screen * scr = DefaultScreenOfDisplay(fl_get_display());
-	lyxrc.dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
-		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
-	lyxerr[Debug::INFO] << "DPI setting detected to be "
-		       << lyxrc.dpi + 0.5 << endl;
+	// Disable gui when either lyxrc or easyparse says so
+	if (!gui)
+		lyxrc.use_gui = false;
+ 
+        // Calculate screen dpi as average of x-DPI and y-DPI:
+	if (lyxrc.use_gui) {
+		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+		lyxrc.dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
+			      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
+		lyxerr[Debug::INFO] << "DPI setting detected to be "
+                                                << lyxrc.dpi + 0.5 << endl;
+	} else {
+		lyxrc.dpi = 1; // I hope this is safe
+	}
 
 	//
 	// Read configuration files
@@ -565,6 +575,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
+		gui = false;
 	}
 	return gui;
 }

@@ -74,7 +74,7 @@ private:
 	///
 	void runtime();
 	///
-	void init(int * argc, char * argv[]);
+	void init(int * argc, char * argv[], bool);
 	///
 	void queryUserLyXDir();
 	///

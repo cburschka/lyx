@@ -855,17 +855,6 @@ int LyXFont::descent(char c) const
 }
 
 
-// Specialized after profiling. (Asger)
-int LyXFont::width(char c) const
-{
-	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
-		return XTextWidth(getXFontstruct(), &c, 1);
-	} else {
-		return textWidth(&c, 1);
-	}
-}
-
-
 int LyXFont::lbearing(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
@@ -892,8 +881,22 @@ int LyXFont::rbearing(char c) const
 }
 
 
+// Specialized after profiling. (Asger)
+int LyXFont::width(char c) const
+{
+	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
+		return lyxrc.use_gui ? XTextWidth(getXFontstruct(), &c, 1) : 1;
+	} else {
+		return textWidth(&c, 1);
+	}
+}
+
+
 int LyXFont::textWidth(char const * s, int n) const
 {
+	if (!lyxrc.use_gui)
+		return n;
+
 	if (realShape() != LyXFont::SMALLCAPS_SHAPE){
 		return XTextWidth(getXFontstruct(), s, n);
 	} else {

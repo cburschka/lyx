@@ -175,6 +175,18 @@ void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
 
+void ShowMessage(Buffer * buf, string const & msg1,
+	string const & msg2 = string(), string const & msg3 = string(), int delay=6)
+{
+	if (lyxrc.use_gui) {
+		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2, msg3, delay);
+	}
+	else {
+		// can somebody think of something more clever? cerr?
+		cout << msg1 << msg2 << msg3 << endl;
+	}
+}
+
 // How should this actually work? Should it prohibit input in all BufferViews,
 // or just in the current one? If "just the current one", then it should be
 // placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
@@ -345,9 +357,8 @@ void MenuWriteAs(Buffer * buffer)
 				buffer->fileName(s);
 				buffer->markDirty();
 
-				buffer->getUser()->owner()->getMiniBuffer()->Set(_("Document renamed to '"),
-						MakeDisplayPath(s),
-						_("', but not saved..."));
+				ShowMessage(buffer, _("Document renamed to '"),
+						MakeDisplayPath(s), _("', but not saved..."));
 			}
 		return;
 	} // Check whether the file exists
@@ -549,12 +560,10 @@ bool RunScript(Buffer * buffer, bool wait,
 #ifdef WITH_WARNINGS
 #warning What should we do here?
 #endif		
-		buffer->getUser()->owner()->getMiniBuffer()->Set(
-			_("Executing command:"), cmd);
+		ShowMessage(buffer, _("Executing command:"), cmd);
 		result = one.startscript(Systemcalls::System, cmd);
 	} else {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(
-			_("Executing command:"), cmd);
+		ShowMessage(buffer, _("Executing command:"), cmd);
 		result = one.startscript(wait ? Systemcalls::Wait
 					 : Systemcalls::DontWait, cmd);
 	}
@@ -772,6 +781,22 @@ bool PreviewDVI(Buffer * buffer)
 }
 
 
+bool AskOverwrite(Buffer * buffer, string const & s)
+{
+	if (lyxrc.use_gui) {
+		// be friendly if there is a gui
+		FileInfo fi(s);
+		if (fi.readable() &&
+				!AskQuestion(_("File already exists:"), 
+				 MakeDisplayPath(s, 50),
+				 _("Do you want to overwrite the file?"))) {
+			ShowMessage(buffer, _("Canceled"));
+			return false;
+		}
+	}
+	return true;
+}
+
 void MenuMakeLaTeX(Buffer * buffer)
 {
 	// Why care about this?
@@ -781,25 +806,18 @@ void MenuMakeLaTeX(Buffer * buffer)
 	// Get LaTeX-Filename
 	string s = buffer->getLatexName(false);
 	
-	FileInfo fi(s);
-	if (fi.readable() &&
-	    !AskQuestion(_("File already exists:"), 
-			 MakeDisplayPath(s, 50),
-			 _("Do you want to overwrite the file?"))) {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
-		return;
-	}
+	if (!AskOverwrite(buffer, s))
+		return; 
 	
 	if (buffer->isDocBook())
-		buffer->getUser()->owner()->getMiniBuffer()->Set(
-			_("DocBook does not have a latex backend"));
+		ShowMessage(buffer, _("DocBook does not have a latex backend"));
 	else {
 		if (buffer->isLinuxDoc())
 			RunLinuxDoc(buffer->getUser(), 0, buffer->fileName());
 		else
 			buffer->makeLaTeXFile(s, string(), true);
-		buffer->getUser()->owner()->getMiniBuffer()->Set(
-			_("Nice LaTeX file saved as"), MakeDisplayPath(s));
+		ShowMessage(buffer, _("Nice LaTeX file saved as"), 
+			    MakeDisplayPath(s));
 		buffer->markDviDirty();
 	}
 }
@@ -818,22 +836,16 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 	// Get LinuxDoc-Filename
 	string s = ChangeExtension(buffer->fileName(), 
 				   ".sgml", false);
-	
-	FileInfo fi(s);
-	if (fi.readable() &&
-	    !AskQuestion(_("File already exists:"), 
-			 MakeDisplayPath(s, 50),
-			 _("Do you want to overwrite the file?"))) {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
+
+	if (!AskOverwrite(buffer, s))
 		return;
-	}
 	
-	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Building LinuxDoc SGML file `"),
+	ShowMessage(buffer, _("Building LinuxDoc SGML file `"),
 					  MakeDisplayPath(s),"'...");
 	
 	buffer->makeLinuxDocFile(s, 65);
 	buffer->redraw();
-	buffer->getUser()->owner()->getMiniBuffer()->Set(_("LinuxDoc SGML file save as"),
+	ShowMessage(buffer, _("LinuxDoc SGML file save as"),
 					  MakeDisplayPath(s)); 
 }
 
@@ -852,22 +864,16 @@ void MenuMakeDocBook(Buffer * buffer)
 	// Get DocBook-Filename
 	string s = ChangeExtension(buffer->fileName(), 
 				   ".sgml", false);
-	
-	FileInfo fi(s);
-	if (fi.readable() &&
-	    !AskQuestion(_("File already exists:"), 
-			 MakeDisplayPath(s, 50),
-			 _("Do you want to overwrite the file?"))) {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
+
+	if (!AskOverwrite(buffer, s))
 		return;
-	}
 	
-	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Building DocBook SGML file `"),
+	ShowMessage(buffer, _("Building DocBook SGML file `"),
 					  MakeDisplayPath(s), "'..."); 
 	
 	buffer->makeDocBookFile(s, 65);
 	buffer->redraw();
-	buffer->getUser()->owner()->getMiniBuffer()->Set(_("DocBook SGML file save as"),
+	ShowMessage(buffer, _("DocBook SGML file save as"),
 					  MakeDisplayPath(s)); 
 }
 
@@ -881,18 +887,13 @@ void MenuMakeAscii(Buffer * buffer)
 	string s = ChangeExtension (buffer->fileName(),
 				    ".txt", false);
 	
-	FileInfo fi(s);
-	if (fi.readable() &&
-	    !AskQuestion(_("File already exists:"), 
-			 MakeDisplayPath(s, 50),
-			 _("Do you want to overwrite the file?"))) {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
+
+	if (!AskOverwrite(buffer, s))
 		return;
-	}
 	
 	buffer->writeFileAscii(s, lyxrc.ascii_linelen);
 	
-	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Ascii file saved as"), MakeDisplayPath(s));
+	ShowMessage(buffer, _("Ascii file saved as"), MakeDisplayPath(s));
 }
 
 
@@ -936,10 +937,10 @@ void MenuMakeHTML(Buffer * buffer)
 	Systemcalls one;
 	int res = one.startscript(Systemcalls::System, tmp);
 	if (res == 0) {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Document exported as HTML to file `")
+		ShowMessage(buffer, _("Document exported as HTML to file `")
 						  + MakeDisplayPath(result) +'\'');
 	} else {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Unable to convert to HTML the file `")
+		ShowMessage(buffer, _("Unable to convert to HTML the file `")
 						  + MakeDisplayPath(infile) 
 						  + '\'');
 	}
@@ -996,7 +997,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		MenuMakeHTML(buffer);
 	}
 	else {
-		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Unknown export type: ") + extyp);
+		ShowMessage(buffer, _("Unknown export type: ") + extyp);
 	}
 }
 

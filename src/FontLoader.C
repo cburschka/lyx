@@ -197,12 +197,39 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	}
 }
 
+
+// A dummy fontstruct used when there is no gui. Only the last 3 have
+// well-thought values...  
+static XFontStruct dummyXFontStruct = {
+	/*XExtData *ext_data; */	0,  
+	/* Font fid; */			0,
+	/* unsigned direction; */	FontLeftToRight,
+	/* unsigned min_char_or_byte2; */ 0,
+	/* unsigned max_char_or_byte2; */ 0,
+	/* unsigned min_byte1; */	0,
+        /* unsigned max_byte1; */	0,
+        /* Bool all_chars_exist; */	0,
+	/* unsigned default_char; */	0,
+        /* int n_properties; */		0,
+        /* XFontProp *properties; */	0,
+        /* XCharStruct min_bounds; */	0,
+	/* XCharStruct max_bounds; */	0,
+	/* XCharStruct *per_char; */	0, // no character specific info
+        /* int ascent; */		1, // unit ascent on character displays
+        /* int descent; */		0, // no descent on character displays
+};
+
+
 /// Do load font
 XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family, 
 				LyXFont::FONT_SERIES series, 
 				LyXFont::FONT_SHAPE shape, 
 				LyXFont::FONT_SIZE size)
 {
+	if (!lyxrc.use_gui) {
+		return &dummyXFontStruct;
+	}
+
 	getFontinfo(family, series, shape);
 	int fsize = int( (lyxrc.font_sizes[size] * lyxrc.dpi * 
 			  (lyxrc.zoom/100.0) ) / 72.27 + 0.5 );
@@ -215,11 +242,12 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 		font = "fixed";
 	}
 
+	XFontStruct * fs = 0;
+
 	current_view->owner()->getMiniBuffer()->Store();
 	current_view->owner()->getMiniBuffer()->Set(_("Loading font into X-Server..."));
-
-	XFontStruct * fs = XLoadQueryFont(fl_display, font.c_str());
-
+	fs = XLoadQueryFont(fl_display, font.c_str());
+	
 	if (fs == 0) {
 		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;

@@ -1,3 +1,20 @@
+2000-03-09 André Pönitz <poenitz@mathematik.tu-chemnitz.de>
+
+	* src/lyxrc.*: Added support for running without Gui 
+	(\use_gui false)
+	  
+	* src/FontLoader.C: sensible defaults if no fonts are needed
+
+	* src/lyx_cb.C: New function ShowMessage (writes either to the
+	minibuffer or cout in case of no gui
+	New function AskOverwrite for common stuff
+	Consequently various changes to call these functions
+
+	* src/lyx_main.C:  allow gui = false and handle lyxrc \use_gui false
+	wild guess at sensible screen resolution when having no gui
+
+	* src/lyxfont.C: no gui, no fonts... set some defaults
+
 2000-03-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/LColor.C: made the command inset background a bit lighter.
