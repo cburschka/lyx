@@ -36,17 +36,21 @@ class ParagraphList;
   */
 class LyXText {
 public:
-	///
+	/// what repainting is needed
 	enum text_status {
-		///
+		/// no repaint is needed
 		UNCHANGED = 0,
-		///
+		/**
+		 * A paint has caused a change in some rows
+		 * and rebreaking is needed.
+		 */
 		CHANGED_IN_DRAW = 1,
-		///
+		/// the refresh_row needs repainting
 		NEED_VERY_LITTLE_REFRESH = 2,
-		///
+		/// everything from refresh_y downwards needs repainting
 		NEED_MORE_REFRESH = 3
 	};
+
 	///
 	enum word_location {
 		// the word around the cursor, only if the cursor is
@@ -183,14 +187,28 @@ public:
 
 	///
 	mutable Row * need_break_row;
-	///
+	/**
+	 * The pixel y position from which to repaint the screen.
+	 * The position is absolute along the height of outermost
+	 * lyxtext (I think). NEED_MORE_REFRESH and NEED_LITTLE_REFRESH
+	 * repaints both use this as a starting point (if it's within
+	 * the viewable portion of the lyxtext).
+	 */
 	mutable int refresh_y;
-	///
+	/**
+	 * The row from which to repaint the screen, used by screen.c.
+	 * This must be set if the pending update is NEED_LITTLE_REFRESH.
+	 * It doesn't make any difference for NEED_MORE_REFRESH.
+	 */
 	mutable Row * refresh_row;
 
-	/// give and set the LyXText status
+	/**
+	 * Return the status. This represents what repaints are
+	 * pending after some operation (e.g. inserting a char).
+	 */
 	text_status status() const;
-	///
+
+	/// Set the status to make a paint pending.
 	void status(BufferView *, text_status) const;
 
 	///
