@@ -50,7 +50,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
-	virtual void input(long);
+	virtual bool input( long );
 	/// Update dialog before showing it
 	virtual void update();
 	/// Apply from dialog (modify or create inset)

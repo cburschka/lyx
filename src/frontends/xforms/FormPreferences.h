@@ -17,8 +17,7 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-#include "DialogBase.h"
-#include "support/utility.hpp"
+#include "FormBase.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -26,8 +25,6 @@
 
 class LyXView;
 class Dialogs;
-class PreferencesPolicy;
-template <class x> class ButtonController;
 
 struct FD_form_preferences;
 struct FD_form_bind;
@@ -37,46 +34,30 @@ struct FD_form_interface_fonts;
 struct FD_form_printer;
 struct FD_form_paths;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
  */
-class FormPreferences : public DialogBase, public noncopyable {
+class FormPreferences : public FormBase {
 public:
 	/// #FormPreferences x(LyXFunc ..., Dialogs ...);#
 	FormPreferences(LyXView *, Dialogs *);
 	///
 	~FormPreferences();
-
-	///
-	static  int WMHideCB(FL_FORM *, void *);
-	///
-	static void OKCB(FL_OBJECT *, long);
-	///
-	static void ApplyCB(FL_OBJECT *, long);
-	///
-	static void CancelCB(FL_OBJECT *, long);
-	///
-	static void InputCB(FL_OBJECT *, long);
-	///
-	static void RestoreCB(FL_OBJECT *, long);
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
+	///
+	virtual void connect();
 	/// Update the dialog.
-	void update();
-
+	virtual void update();
+	/// OK from dialog
+	virtual void ok();
 	/// Apply from dialog
-	void apply();
+	virtual void apply();
 	/// Filter the inputs -- return true if entries are valid
-	bool input();
+	virtual bool input(long);
 	/// Build the dialog
-	void build();
+	virtual void build();
+	///
+	virtual FL_FORM * const form() const;
 	///
 	FD_form_preferences * build_preferences();
 	///
@@ -106,20 +87,10 @@ private:
 	FD_form_printer * printer_;
 	///
 	FD_form_paths * paths_;
-	/// Which LyXView do we belong to?
-	LyXView * lv_;
-	///
-	Dialogs * d_;
-	/// Update connection.
-	Connection u_;
-	/// Hide connection.
-	Connection h_;
 	/// Overcome a dumb xforms sizing bug
 	int minw_;
 	///
 	int minh_;
-	///
-	ButtonController<PreferencesPolicy> * bc_;
 };
 
 #endif

@@ -5,22 +5,22 @@
 #define FD_form_bind_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormPreferencesApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormPreferencesCancelCB(FL_OBJECT *, long);
-extern  "C" void C_FormPreferencesOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormPreferencesRestoreCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

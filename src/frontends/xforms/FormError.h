@@ -33,13 +33,13 @@ private:
 	/// Slot launching dialog to an existing inset
 	void showInset( InsetError * const );
 	/// Update dialog before showing it
-	void update();
+	virtual void update();
 	/// Build the dialog
-	void build();
+	virtual void build();
 	/// Reset data when hide() is called
-	void clearStore();
+	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
-	FL_FORM * const form() const;
+	virtual FL_FORM * const form() const;
 	/// Fdesign generated method
 	FD_form_error * build_error();
 

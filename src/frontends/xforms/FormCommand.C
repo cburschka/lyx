@@ -21,15 +21,16 @@
 #include "Dialogs.h"
 #include "FormCommand.h"
 
-FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t )
-	: FormBase( lv, d, BUFFER_DEPENDENT, t ),
+FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t,
+			  ButtonPolicy * bp )
+	: FormBase( lv, d, BUFFER_DEPENDENT, t, bp ),
 	  inset_(0), ih_(0)
 {}
 
 
 void FormCommand::showInset( InsetCommand * const inset )
 {
-	if( dialogIsOpen || inset == 0 ) return;
+	if ( dialogIsOpen || inset == 0 ) return;
 
 	inset_ = inset;
 	ih_ = inset_->hide.connect(slot(this, &FormCommand::hide));
@@ -41,7 +42,7 @@ void FormCommand::showInset( InsetCommand * const inset )
 
 void FormCommand::createInset( string const & arg )
 {
-	if( dialogIsOpen ) return;
+	if ( dialogIsOpen ) return;
 
 	params.setFromString( arg );
 	show();

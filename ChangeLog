@@ -1,3 +1,42 @@
+2000-10-01  Allan Rae  <rae@lyx.org>
+
+	* src/PrinterParams.h: moved things around to avoid the "can't
+	inline call" warning.
+
+	* src/frontends/xforms/RadioButtonGroup.h: turned a comment
+	into doc++ documentation.
+
+	* src/frontends/xforms/FormCommand.[Ch]: support button policy
+
+	* src/frontends/xforms/FormRef.C: make use of button controller
+	* src/frontends/xforms/FormDocument.[Ch]: convert to use FormBase
+	cleaned up button controller usage.
+	* src/frontends/xforms/FormPreferences.[Ch]: convert to use FormBase
+	* src/frontends/xforms/FormPrint.[Ch]: convert to use FormBase and
+	use the button controller
+
+	* src/frontends/xforms/forms/*.fd: and associated generated files
+	updated to reflect changes to FormBase.  Some other FormXxxx files
+	also got minor updates to reflect changes to FormBase.
+
+	* src/frontends/xforms/FormBase.[Ch]: (ok, cancel): new
+	(hide): made virtual.
+	(input): return a bool. true == valid input
+	(RestoreCB, restore): new
+	(CancelCB, OKCB): renamed from HideCB and ApplyHideCB.
+	Changes to allow derived dialogs to use a ButtonController and
+	make sense when doing so: OK button calls ok() and so on.
+
+	* src/frontends/xforms/ButtonController.h (class ButtonController):
+	Switch from template implementation to taking Policy parameter.
+        Allows FormBase to provide a ButtonController for any dialog.
+
+	* src/frontends/xforms/FormPrint.C (connect): setup sizing at show-time
+	Probably should rename connect and disconnect.
+	(apply): use the radio button groups
+	(form): needed by FormBase
+	(build): setup the radio button groups
+
 2000-09-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* several files: type canges to reduce the number of warnings and

@@ -16,7 +16,6 @@
 #endif
 
 #include "lyx_gui_misc.h"
-#include "gettext.h"
 #include FORMS_H_LOCATION
 #include XPM_H_LOCATION
 
@@ -39,7 +38,6 @@
 #include "Liason.h"
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
-#include "ButtonController.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -51,12 +49,7 @@ using Liason::setMinibuffer;
 
 #define USE_CLASS_COMBO 1
 
-C_RETURNCB(FormDocument,  WMHideCB)
 C_GENERICCB(FormDocument, InputCB)
-C_GENERICCB(FormDocument, OKCB)
-C_GENERICCB(FormDocument, ApplyCB)
-C_GENERICCB(FormDocument, CancelCB)
-C_GENERICCB(FormDocument, RestoreCB)
 C_GENERICCB(FormDocument, ChoiceClassCB)
 C_GENERICCB(FormDocument, BulletPanelCB)
 C_GENERICCB(FormDocument, BulletDepthCB)
@@ -65,11 +58,10 @@ C_GENERICCB(FormDocument, ChoiceBulletSizeCB)
 
 	
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
-	: dialog_(0), paper_(0), class_(0), language_(0), options_(0),
-	  bullets_(0), lv_(lv), d_(d), u_(0), h_(0),
-	  status(POPUP_UNMODIFIED) ,
-	  bc_(new ButtonController<NoRepeatedApplyReadOnlyPolicy>(_("Cancel"),
-								  _("Close")))
+	: FormBase(lv, d, BUFFER_DEPENDENT, _("Document Layout"),
+		   new NoRepeatedApplyReadOnlyPolicy),
+	  dialog_(0), paper_(0), class_(0), language_(0), options_(0),
+	  bullets_(0)
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -82,8 +74,23 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 
 FormDocument::~FormDocument()
 {
-    free();
-    delete bc_;
+#ifdef USE_CLASS_COMBO
+    delete combo_doc_class;
+#endif
+    delete class_;
+    delete paper_;
+    delete combo_language;
+    delete language_;
+    delete options_;
+    delete bullets_;
+    delete dialog_;
+}
+
+
+FL_FORM * const FormDocument::form() const
+{
+    if (dialog_) return dialog_->form;
+    return 0;
 }
 
 
@@ -95,11 +102,11 @@ void FormDocument::build()
     dialog_ = build_tabbed_document();
 
     // manage the restore, ok, apply and cancel/close buttons
-    bc_->setOK(dialog_->button_ok);
-    bc_->setApply(dialog_->button_apply);
-    bc_->setCancel(dialog_->button_cancel);
-    bc_->setUndoAll(dialog_->button_restore);
-    bc_->refresh();
+    bc_.setOK(dialog_->button_ok);
+    bc_.setApply(dialog_->button_apply);
+    bc_.setCancel(dialog_->button_cancel);
+    bc_.setUndoAll(dialog_->button_restore);
+    bc_.refresh();
 
     // the document paper form
     paper_ = build_doc_paper();
@@ -121,21 +128,21 @@ void FormDocument::build()
     fl_set_input_return(paper_->input_head_sep, FL_RETURN_ALWAYS);
     fl_set_input_return(paper_->input_foot_skip, FL_RETURN_ALWAYS);
 
-    bc_->addReadOnly (paper_->choice_paperpackage);
-    bc_->addReadOnly (paper_->greoup_radio_orientation);
-    bc_->addReadOnly (paper_->radio_portrait);
-    bc_->addReadOnly (paper_->radio_landscape);
-    bc_->addReadOnly (paper_->choice_papersize2);
-    bc_->addReadOnly (paper_->push_use_geometry);
-    bc_->addReadOnly (paper_->input_custom_width);
-    bc_->addReadOnly (paper_->input_custom_height);
-    bc_->addReadOnly (paper_->input_top_margin);
-    bc_->addReadOnly (paper_->input_bottom_margin);
-    bc_->addReadOnly (paper_->input_left_margin);
-    bc_->addReadOnly (paper_->input_right_margin);
-    bc_->addReadOnly (paper_->input_head_height);
-    bc_->addReadOnly (paper_->input_head_sep);
-    bc_->addReadOnly (paper_->input_foot_skip);
+    bc_.addReadOnly (paper_->choice_paperpackage);
+    bc_.addReadOnly (paper_->greoup_radio_orientation);
+    bc_.addReadOnly (paper_->radio_portrait);
+    bc_.addReadOnly (paper_->radio_landscape);
+    bc_.addReadOnly (paper_->choice_papersize2);
+    bc_.addReadOnly (paper_->push_use_geometry);
+    bc_.addReadOnly (paper_->input_custom_width);
+    bc_.addReadOnly (paper_->input_custom_height);
+    bc_.addReadOnly (paper_->input_top_margin);
+    bc_.addReadOnly (paper_->input_bottom_margin);
+    bc_.addReadOnly (paper_->input_left_margin);
+    bc_.addReadOnly (paper_->input_right_margin);
+    bc_.addReadOnly (paper_->input_head_height);
+    bc_.addReadOnly (paper_->input_head_sep);
+    bc_.addReadOnly (paper_->input_foot_skip);
 
     // the document class form
     class_ = build_doc_class();
@@ -176,23 +183,23 @@ void FormDocument::build()
     fl_set_input_return(class_->input_doc_skip, FL_RETURN_ALWAYS);
     fl_set_input_return(class_->input_doc_spacing, FL_RETURN_ALWAYS);
 
-    bc_->addReadOnly (class_->radio_doc_indent);
-    bc_->addReadOnly (class_->radio_doc_skip);
+    bc_.addReadOnly (class_->radio_doc_indent);
+    bc_.addReadOnly (class_->radio_doc_skip);
 #ifndef USE_CLASS_COMBO
-    bc_->addReadOnly (class_->choice_doc_class);
+    bc_.addReadOnly (class_->choice_doc_class);
 #endif
-    bc_->addReadOnly (class_->choice_doc_pagestyle);
-    bc_->addReadOnly (class_->choice_doc_fonts);
-    bc_->addReadOnly (class_->choice_doc_fontsize);
-    bc_->addReadOnly (class_->radio_doc_sides_one);
-    bc_->addReadOnly (class_->radio_doc_sides_two);
-    bc_->addReadOnly (class_->radio_doc_columns_one);
-    bc_->addReadOnly (class_->radio_doc_columns_two);
-    bc_->addReadOnly (class_->input_doc_extra);
-    bc_->addReadOnly (class_->input_doc_skip);
-    bc_->addReadOnly (class_->choice_doc_skip);
-    bc_->addReadOnly (class_->choice_doc_spacing);
-    bc_->addReadOnly (class_->input_doc_spacing);
+    bc_.addReadOnly (class_->choice_doc_pagestyle);
+    bc_.addReadOnly (class_->choice_doc_fonts);
+    bc_.addReadOnly (class_->choice_doc_fontsize);
+    bc_.addReadOnly (class_->radio_doc_sides_one);
+    bc_.addReadOnly (class_->radio_doc_sides_two);
+    bc_.addReadOnly (class_->radio_doc_columns_one);
+    bc_.addReadOnly (class_->radio_doc_columns_two);
+    bc_.addReadOnly (class_->input_doc_extra);
+    bc_.addReadOnly (class_->input_doc_skip);
+    bc_.addReadOnly (class_->choice_doc_skip);
+    bc_.addReadOnly (class_->choice_doc_spacing);
+    bc_.addReadOnly (class_->input_doc_spacing);
 
     // the document language form
     language_ = build_doc_language();
@@ -221,8 +228,8 @@ void FormDocument::build()
 		    _(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
 		      " «text» | »text« "));
 
-    bc_->addReadOnly (language_->choice_language);
-    bc_->addReadOnly (language_->choice_inputenc);
+    bc_.addReadOnly (language_->choice_language);
+    bc_.addReadOnly (language_->choice_inputenc);
 
     // the document options form
     options_ = build_doc_options();
@@ -236,11 +243,11 @@ void FormDocument::build()
 	fl_addto_choice(options_->choice_postscript_driver, tex_graphics[n]);
     }
 
-    bc_->addReadOnly (options_->slider_secnumdepth);
-    bc_->addReadOnly (options_->slider_tocdepth);
-    bc_->addReadOnly (options_->check_use_amsmath);
-    bc_->addReadOnly (options_->input_float_placement);
-    bc_->addReadOnly (options_->choice_postscript_driver);
+    bc_.addReadOnly (options_->slider_secnumdepth);
+    bc_.addReadOnly (options_->slider_tocdepth);
+    bc_.addReadOnly (options_->check_use_amsmath);
+    bc_.addReadOnly (options_->input_float_placement);
+    bc_.addReadOnly (options_->choice_postscript_driver);
 
     // the document bullets form
     bullets_ = build_doc_bullet();
@@ -251,8 +258,10 @@ void FormDocument::build()
     fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
     fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
-    fl_set_form_atclose(dialog_->form,
-			C_FormDocumentWMHideCB, 0);
+    bc_.addReadOnly (bullets_->bmtable_bullet_panel);
+    bc_.addReadOnly (bullets_->choice_bullet_size);
+    bc_.addReadOnly (bullets_->input_bullet_latex);
+
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
 		       class_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Paper"),
@@ -269,36 +278,6 @@ void FormDocument::build()
 			"has been disabled") << '\n';
 	fl_deactivate_object(fbullet);
 	fl_set_object_lcol(fbullet, FL_INACTIVE);
-    }
-}
-
-
-void FormDocument::show()
-{
-    if (!dialog_)
-	build();
-
-    update();  // make sure its up-to-date
-    if (dialog_->form->visible) {
-        fl_raise_form(dialog_->form);
-    } else {
-        fl_show_form(dialog_->form,
-                     FL_PLACE_MOUSE | FL_FREE_SIZE,
-                     FL_TRANSIENT, _("Document Layout"));
-	u_ = d_->updateBufferDependent.connect(
-	    slot(this, &FormDocument::update));
-	h_ = d_->hideBufferDependent.connect(
-	    slot(this, &FormDocument::hide));
-    }
-}
-
-
-void FormDocument::hide()
-{
-    if (dialog_->form->visible) {
-        fl_hide_form(dialog_->form);
-        u_.disconnect();
-        h_.disconnect();
     }
 }
 
@@ -571,6 +550,7 @@ void FormDocument::cancel()
     param.temp_bullets[1] = param.user_defined_bullets[1];
     param.temp_bullets[2] = param.user_defined_bullets[2];
     param.temp_bullets[3] = param.user_defined_bullets[3];
+    hide();
 }
 
 
@@ -761,15 +741,6 @@ void FormDocument::bullets_update(BufferParams const & params)
 	fl_activate_object(fbullet);
 	fl_set_object_lcol(fbullet, FL_BLACK);
     }
-    if (lv_->buffer()->isReadonly()) {
-	fl_deactivate_object (bullets_->bmtable_bullet_panel);
-	fl_deactivate_object (bullets_->choice_bullet_size);
-	fl_deactivate_object (bullets_->input_bullet_latex);
-    } else {
-	fl_activate_object (bullets_->bmtable_bullet_panel);
-	fl_activate_object (bullets_->choice_bullet_size);
-	fl_activate_object (bullets_->input_bullet_latex);
-    }
 
     fl_set_button(bullets_->radio_bullet_depth_1, 1);
     fl_set_input(bullets_->input_bullet_latex,
@@ -779,95 +750,10 @@ void FormDocument::bullets_update(BufferParams const & params)
 }
 
 
-void FormDocument::free()
-{
-    if (dialog_) {
-        hide();
-        if (class_) {
-#ifdef USE_CLASS_COMBO
-	    delete combo_doc_class;
-#endif
-            fl_free_form(class_->form);
-            delete class_;
-            class_ = 0;
-        }
-        if (paper_) {
-            fl_free_form(paper_->form);
-            delete paper_;
-            paper_ = 0;
-        }
-        if (language_) {
-	    delete combo_language;
-            fl_free_form(language_->form);
-            delete language_;
-            language_ = 0;
-        }
-        if (options_) {
-            fl_free_form(options_->form);
-            delete options_;
-            options_ = 0;
-        }
-        if (bullets_) {
-            fl_free_form(bullets_->form);
-            delete bullets_;
-            bullets_ = 0;
-        }
-        fl_free_form(dialog_->form);
-        delete dialog_;
-        dialog_ = 0;
-    }
-}
-
-
-int FormDocument::WMHideCB(FL_FORM * form, void *)
-{
-    // Ensure that the signals (u and h) are disconnected even if the
-    // window manager is used to close the popup.
-    FormDocument * pre = static_cast<FormDocument*>(form->u_vdata);
-    pre->hide();
-    pre->bc_->hide();
-    return FL_CANCEL;
-}
-
-
-void FormDocument::OKCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->apply();
-    pre->hide();
-    pre->bc_->ok();
-}
-
-
-void FormDocument::ApplyCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->apply();
-    pre->bc_->apply();
-}
-
-
-void FormDocument::CancelCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->cancel();
-    pre->hide();
-    pre->bc_->cancel();
-}
-
-
-void FormDocument::RestoreCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->update();
-    pre->bc_->undoAll();
-}
-
-
 void FormDocument::InputCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 
@@ -876,7 +762,7 @@ void FormDocument::ComboInputCB(int, void * v, Combox * combox)
     FormDocument * pre = static_cast<FormDocument*>(v);
     if (combox == pre->combo_doc_class)
 	pre->CheckChoiceClass(0, 0);
-    pre->bc_->valid(pre->CheckDocumentInput(0,0));
+    pre->bc_.valid(pre->CheckDocumentInput(0,0));
 }
 
 
@@ -884,13 +770,13 @@ void FormDocument::ChoiceClassCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->CheckChoiceClass(ob,0);
-    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 
 void FormDocument::checkReadOnly()
 {
-    if (bc_->readOnly(lv_->buffer()->isReadonly())) {
+    if (bc_.readOnly(lv_->buffer()->isReadonly())) {
 	combo_doc_class->deactivate();
 	combo_language->deactivate();
 	fl_set_object_label(dialog_->text_warning,
@@ -1014,7 +900,7 @@ void FormDocument::ChoiceBulletSizeCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->ChoiceBulletSize(ob,0);
-    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 
@@ -1033,7 +919,7 @@ void FormDocument::InputBulletLaTeXCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->InputBulletLaTeX(ob,0);
-    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 
@@ -1046,10 +932,10 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 }
 
 
-void FormDocument::BulletDepthCB(FL_OBJECT * ob, long)
+void FormDocument::BulletDepthCB(FL_OBJECT * ob, long data)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->BulletDepth(ob,0);
+    pre->BulletDepth(ob, data);
 }
 
 
@@ -1138,7 +1024,7 @@ void FormDocument::BulletBMTableCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->BulletBMTable(ob,0);
-    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 

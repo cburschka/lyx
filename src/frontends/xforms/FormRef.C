@@ -18,7 +18,6 @@
 #endif
 
 
-#include "gettext.h"
 #include "Dialogs.h"
 #include "FormRef.h"
 #include "LyXView.h"
@@ -77,15 +76,10 @@ void FormRef::build()
 	// Can change reference only through browser
 	fl_deactivate_object( dialog_->ref );
 
-	if( lv_->buffer()->isReadonly() ) {
-		fl_deactivate_object( dialog_->type );
-		fl_deactivate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
-	} else {
-		fl_activate_object( dialog_->type );
-		fl_activate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_BLACK );
-	}
+	bc_.setOK( dialog_->ok );
+	bc_.setCancel( dialog_->cancel );
+	bc_.addReadOnly( dialog_->type );
+	bc_.refresh();
 }
 
 
@@ -114,8 +108,10 @@ void FormRef::update()
 		refs = lv_->buffer()->getLabelList();
 		updateBrowser( refs );
 		showBrowser();
-	} else
+	} else {
 		hideBrowser();
+	}
+	bc_.readOnly( lv_->buffer()->isReadonly() );
 }
 
 
@@ -163,9 +159,8 @@ void FormRef::showBrowser() const
 	fl_set_object_lcol( dialog_->type, FL_INACTIVE );
 	fl_deactivate_object( dialog_->go );
 	fl_set_object_lcol( dialog_->go, FL_INACTIVE );
-	fl_deactivate_object( dialog_->ok );
-	fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
 	fl_set_object_lcol( dialog_->ref, FL_INACTIVE );
+	bc_.valid(false);
 }
 
 
@@ -181,9 +176,8 @@ void FormRef::hideBrowser() const
 	fl_set_object_lcol( dialog_->type, FL_BLACK );
 	fl_activate_object( dialog_->go );
 	fl_set_object_lcol( dialog_->go, FL_BLACK );
-	fl_deactivate_object( dialog_->ok );
-	fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
 	fl_set_object_lcol( dialog_->ref, FL_BLACK );
+	bc_.invalid();
 }
 
 
@@ -252,8 +246,14 @@ void FormRef::apply()
 }
 
 
-void FormRef::input(long data)
+#ifdef WITH_WARNINGS
+#warning check use of buttoncontroller
+// Seems okay except that goref and goback shouldn't
+// affect the status of ok.
+#endif
+bool FormRef::input( long data )
 {
+	bool activate( true );
 	switch( data ) {
 	// goto reference / go back
 	case 1:
@@ -302,8 +302,6 @@ void FormRef::input(long data)
 		fl_set_object_lcol( dialog_->type, FL_BLACK );
 		fl_activate_object( dialog_->go );
 		fl_set_object_lcol( dialog_->go, FL_BLACK );
-		fl_activate_object( dialog_->ok );
-		fl_set_object_lcol( dialog_->ok, FL_BLACK );
 		fl_set_object_lcol( dialog_->ref, FL_BLACK );
 	}
 	break;
@@ -321,12 +319,9 @@ void FormRef::input(long data)
 	case 4:
 	{
 		Type type = static_cast<Type>( fl_get_choice(dialog_->type)-1 );
-		if( params.getCmdName() != getName( type ) ) {
-			fl_activate_object( dialog_->ok );
-			fl_set_object_lcol( dialog_->ok, FL_BLACK );
-		} else if( inset_ != 0 ) {
-			fl_deactivate_object( dialog_->ok );
-			fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
+		if( params.getCmdName() == getName( type )
+		    && inset_ ) {
+			activate = false;
 		}
 	}
 	break;
@@ -334,6 +329,7 @@ void FormRef::input(long data)
 	default:
 		break;
 	}
+	return activate;
 }
 
 

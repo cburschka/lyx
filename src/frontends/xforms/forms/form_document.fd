@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormDocumentCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormDocumentApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormDocumentOKCB
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
@@ -136,7 +136,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_restore
-callback: C_FormDocumentRestoreCB
+callback: C_FormBaseRestoreCB
 argument: 0
 
 =============== FORM ===============

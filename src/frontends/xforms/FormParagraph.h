@@ -24,7 +24,8 @@
 class LyXView;
 class Dialogs;
 class NoRepeatedApplyReadOnlyPolicy;
-template <class x> class ButtonController;
+//template <class x> class ButtonController;
+class ButtonController;
 
 struct FD_form_tabbed_paragraph;
 struct FD_form_paragraph_general;
@@ -110,7 +111,7 @@ private:
     /// has form contents changed? Used to control OK/Apply
     EnumPopupStatus status;
     ///
-    ButtonController<NoRepeatedApplyReadOnlyPolicy> * bc_;
+	ButtonController/*<NoRepeatedApplyReadOnlyPolicy>*/ * bc_;
 };
 
 #endif

@@ -13,8 +13,7 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#include "DialogBase.h"
-#include "support/utility.hpp"
+#include "FormBase.h"
 #include <vector>
 
 #ifdef __GNUG_
@@ -25,8 +24,6 @@ class LyXView;
 class Dialogs;
 class Combox;
 class BufferParams;
-class NoRepeatedApplyReadOnlyPolicy;
-template <class x> class ButtonController;
 
 struct FD_form_tabbed_document;
 struct FD_form_doc_paper;
@@ -35,30 +32,16 @@ struct FD_form_doc_language;
 struct FD_form_doc_options;
 struct FD_form_doc_bullet;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 /** This class provides an XForms implementation of the FormDocument Popup.
     The table-layout-form here changes values for latex-tabulars
  */
-class FormDocument : public DialogBase, public noncopyable {
+class FormDocument : public FormBase {
 public:
     /// #FormDocument x(Communicator ..., Popups ...);#
     FormDocument(LyXView *, Dialogs *);
     ///
     ~FormDocument();
-    ///
-    static  int WMHideCB(FL_FORM *, void *);
-    ///
-    static void OKCB(FL_OBJECT *, long);
-    ///
-    static void ApplyCB(FL_OBJECT *, long);
-    ///
-    static void CancelCB(FL_OBJECT *, long);
-    ///
-    static void RestoreCB(FL_OBJECT *, long);
-    ///
+    /// this operates very differently to FormBase::InputCB
     static void InputCB(FL_OBJECT *, long);
     ///
     static void ComboInputCB(int, void *, Combox *);
@@ -74,15 +57,6 @@ public:
     static void BulletPanelCB(FL_OBJECT * ob, long);
     ///
     static void BulletBMTableCB(FL_OBJECT * ob, long);
-    ///
-    enum EnumPopupStatus {
-	///
-        POPUP_UNMODIFIED,
-	///
-        POPUP_MODIFIED,
-	///
-        POPUP_READONLY
-    };
 
 private:
     ///
@@ -106,12 +80,8 @@ private:
     ///
     void UpdateLayoutDocument(BufferParams const & params);
 
-    /// Create the popup if necessary, update it and display it.
-    void show();
-    /// Hide the popup.
-    void hide();
     /// Update the popup.
-    void update();
+    virtual void update();
     ///
     void paper_update(BufferParams const &);
     ///
@@ -123,7 +93,7 @@ private:
     ///
     void bullets_update(BufferParams const &);
     /// Apply from popup
-    void apply();
+    virtual void apply();
     ///
     void paper_apply();
     ///
@@ -135,11 +105,15 @@ private:
     ///
     void bullets_apply();
     /// Cancel from popup
-    void cancel();
+    virtual void cancel();
+    ///
+    virtual void restore() {
+	update();
+    }
     /// Build the popup
-    void build();
-    /// Explicitly free the popup.
-    void free();
+    virtual void build();
+    ///
+    virtual FL_FORM * const FormDocument::form() const;
 
     /// Typedefinitions from the fdesign produced Header file
     FD_form_tabbed_document * build_tabbed_document();
@@ -166,16 +140,6 @@ private:
     FD_form_doc_options     * options_;
     ///
     FD_form_doc_bullet      * bullets_;
-    /// Which LyXView do we belong to?
-    LyXView * lv_;
-    ///
-    Dialogs * d_;
-    /// Update connection.
-    Connection u_;
-    /// Hide connection.
-    Connection h_;
-    /// has form contents changed? Used to control OK/Apply
-    EnumPopupStatus status;
     ///
     int ActCell;
     ///
@@ -190,8 +154,6 @@ private:
     Combox * combo_language;
     ///
     Combox * combo_doc_class;
-    ///
-    ButtonController<NoRepeatedApplyReadOnlyPolicy> * bc_;
 };
 
 #endif

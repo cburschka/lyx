@@ -12,7 +12,6 @@
 
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "gettext.h"
 #include "form_copyright.h"
 #include "FormCopyright.h"
 
@@ -41,8 +40,6 @@ void FormCopyright::build()
 
 FL_FORM * const FormCopyright::form() const
 {
-	if( dialog_ ) // no need to test for dialog_->form
-		return dialog_->form;
-	else
-		return 0;
+	if ( dialog_ ) return dialog_->form;
+	return 0;
 }

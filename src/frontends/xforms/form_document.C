@@ -35,20 +35,20 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
   fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 410, 100, 30, idex(_("Cancel|^[")));
     fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormDocumentCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 410, 100, 30, idex(_("Apply|#A")));
     fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormDocumentApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 135, 410, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormDocumentOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 20, 380, 435, 30, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 410, 100, 30, idex(_("Restore|#R")));
     fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormDocumentRestoreCB, 0);
+    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

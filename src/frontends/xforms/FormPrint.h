@@ -17,8 +17,8 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-#include "DialogBase.h"
-#include "support/utility.hpp"
+#include "FormBase.h"
+#include "RadioButtonGroup.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -28,57 +28,41 @@ class LyXView;
 class Dialogs;
 struct FD_form_print;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public DialogBase, public noncopyable {
+class FormPrint : public FormBase {
 public:
-	/// #FormPrint x(LyXFunc ..., Dialogs ...);#
+	/// #FormPrint x(LyXView ..., Dialogs ...);#
 	FormPrint(LyXView *, Dialogs *);
 	///
 	~FormPrint();
 
-	///
-	static  int WMHideCB(FL_FORM *, void *);
-	///
-	static void OKCB(FL_OBJECT *, long);
-	///
-	static void ApplyCB(FL_OBJECT *, long);
-	///
-	static void CancelCB(FL_OBJECT *, long);
-	///
-	static void InputCB(FL_OBJECT *, long);
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
 	/// Update the dialog.
-	void update();
-
+	virtual void update();
 	/// Apply from dialog
-	void apply();
+	virtual void apply();
 	/// Filter the inputs
-	void input();
+	virtual bool input(long);
+	///
+	virtual void connect();
+	/// Pointer to the actual instantiation of the xform's form
+	virtual FL_FORM * const form() const;
 	/// Build the dialog
-	void build();
+	virtual void build();
+
 	///
 	FD_form_print * build_print();
-
+	
 	/// Real GUI implementation.
 	FD_form_print * dialog_;
-	/// Which LyXView do we belong to?
-	LyXView * lv_;
-	///
-	Dialogs * d_;
-	/// Update connection.
-	Connection u_;
-	/// Hide connection.
-	Connection h_;
+	/// print target
+	RadioButtonGroup target_;
+	/// page order
+	RadioButtonGroup order_;
+	/// which pages
+	RadioButtonGroup which_;
 };
 
 #endif

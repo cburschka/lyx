@@ -31,8 +31,6 @@ public:
 private:
 	/// Build the dialog
 	virtual void build();
-	/// Not used but must be instantiated
-	virtual void input(long) {}
 	/// Update dialog before showing it
 	virtual void update();
 	/// Apply from dialog (modify or create inset)

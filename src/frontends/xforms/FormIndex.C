@@ -18,7 +18,6 @@
 #endif
 
 
-#include "gettext.h"
 #include "Dialogs.h"
 #include "FormIndex.h"
 #include "LyXView.h"

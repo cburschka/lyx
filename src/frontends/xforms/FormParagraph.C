@@ -50,9 +50,11 @@ C_GENERICCB(FormParagraph, VSpaceCB)
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	: dialog_(0), general_(0), extra_(0),
 	  lv_(lv), d_(d), u_(0), h_(0),
-	  status(POPUP_UNMODIFIED) ,
-	  bc_(new ButtonController<NoRepeatedApplyReadOnlyPolicy>(_("Cancel"),
-								  _("Close")))
+	  status(POPUP_UNMODIFIED),
+// this will leak till converted to use FormBase
+	  bc_(new ButtonController(new NoRepeatedApplyReadOnlyPolicy,
+				   _("Cancel"),
+				   _("Close")))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother

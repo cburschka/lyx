@@ -12,7 +12,6 @@
 
 #include "FormPreferences.h"
 #include "form_preferences.h"
-#include "xform_macros.h"
 #include "input_validators.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
@@ -22,26 +21,16 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
-#include "gettext.h"
-#include "ButtonController.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
 #endif
 
-C_RETURNCB(FormPreferences,  WMHideCB)
-C_GENERICCB(FormPreferences, OKCB)
-C_GENERICCB(FormPreferences, ApplyCB)
-C_GENERICCB(FormPreferences, CancelCB)
-C_GENERICCB(FormPreferences, InputCB)
-C_GENERICCB(FormPreferences, RestoreCB)
-
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: dialog_(0), bind_(0), misc_(0), screen_fonts_(0), interface_fonts_(0),
-	  printer_(0), paths_(0), lv_(lv), d_(d), u_(0), h_(0),
-	  minw_(0), minh_(0),
-	  bc_(new ButtonController<PreferencesPolicy>(_("Cancel"), _("Close")))
+	: FormBase(lv, d, BUFFER_INDEPENDENT, _("Preferences"), new PreferencesPolicy),
+	  dialog_(0), bind_(0), misc_(0), screen_fonts_(0), interface_fonts_(0),
+	  printer_(0), paths_(0), minw_(0), minh_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -53,7 +42,12 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 FormPreferences::~FormPreferences()
 {
 	delete dialog_;
-	delete bc_;
+	delete bind_;
+	delete misc_;
+	delete screen_fonts_;
+	delete interface_fonts_;
+	delete printer_;
+	delete paths_;
 }
 
 
@@ -62,11 +56,11 @@ void FormPreferences::build()
 	dialog_ = build_preferences();
 
 	// manage the restore, save, apply and cancel/close buttons
-	bc_->setOK(dialog_->button_ok);
-	bc_->setApply(dialog_->button_apply);
-	bc_->setCancel(dialog_->button_cancel);
-	bc_->setUndoAll(dialog_->button_restore);
-	bc_->refresh();
+	bc_.setOK(dialog_->button_ok);
+	bc_.setApply(dialog_->button_apply);
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.setUndoAll(dialog_->button_restore);
+	bc_.refresh();
 
 	// Workaround dumb xforms sizing bug
 	minw_ = dialog_->form->w;
@@ -156,9 +150,6 @@ void FormPreferences::build()
 			   _("Paths"),
 			   paths_->form);
 
-	fl_set_form_atclose(dialog_->form,
-			    C_FormPreferencesWMHideCB, 0);
-
 	// deactivate the various browse buttons because they
 	// currently aren't implemented
 	fl_deactivate_object(bind_->button_bind_file_browse);
@@ -176,34 +167,19 @@ void FormPreferences::build()
 }
 
 
-void FormPreferences::show()
+FL_FORM * const FormPreferences::form() const
 {
-	if (!dialog_) {
-		build();
-	}
-	update();  // make sure its up-to-date
-
-	if (dialog_->form->visible) {
-		fl_raise_form(dialog_->form);
-	} else {
-		fl_set_form_minsize(dialog_->form,
-				    minw_,
-				    minh_);
-		fl_show_form(dialog_->form,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_TRANSIENT,
-			     _("Preferences"));
-	}
+	if (dialog_) return dialog_->form;
+	return 0;
 }
 
 
-void FormPreferences::hide()
+void FormPreferences::connect()
 {
-	if (dialog_
-	    && dialog_->form
-	    && dialog_->form->visible) {
-		fl_hide_form(dialog_->form);
-	}
+	FormBase::connect();
+	fl_set_form_minsize(dialog_->form,
+			    minw_,
+			    minh_);
 }
 
 
@@ -464,7 +440,7 @@ void FormPreferences::update()
 }
 
 
-bool FormPreferences::input()
+bool FormPreferences::input(long)
 {
 	bool activate = true;
 	//
@@ -542,54 +518,8 @@ bool FormPreferences::input()
 }
 
 
-int FormPreferences::WMHideCB(FL_FORM * form, void *)
+void FormPreferences::ok()
 {
-	// Ensure that the signals (u and h) are disconnected even if the
-	// window manager is used to close the dialog.
-	FormPreferences * pre = static_cast<FormPreferences*>(form->u_vdata);
-	pre->hide();
-	pre->bc_->hide();
-	return FL_CANCEL;
-}
-
-
-void FormPreferences::OKCB(FL_OBJECT * ob, long)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
-	pre->bc_->ok();
-	pre->lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
-}
-
-
-void FormPreferences::ApplyCB(FL_OBJECT * ob, long)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->apply();
-	pre->bc_->apply();
-}
-
-
-void FormPreferences::CancelCB(FL_OBJECT * ob, long)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->hide();
-	pre->bc_->cancel();
-}
-
-
-void FormPreferences::InputCB(FL_OBJECT * ob, long)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->bc_->valid(pre->input());
-}
-
-
-void FormPreferences::RestoreCB(FL_OBJECT * ob, long)
-{
-	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->update();
-	pre->input();
-	pre->bc_->undoAll();
+	FormBase::ok();
+	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
 }

@@ -31,7 +31,7 @@ FD_form_toc * FormToc::build_toc()
   obj = fl_add_button(FL_RETURN_BUTTON, 310, 300, 100, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   obj = fl_add_button(FL_NORMAL_BUTTON, 200, 300, 100, 30, _("Update"));
     fl_set_button_shortcut(obj, scex(_("Update|#U#u")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

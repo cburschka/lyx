@@ -84,6 +84,46 @@ struct PrinterParams {
 	// Override document settings for duplex.
 	// bool duplex;
 
+	/** Test that all the fields contain valid entries.  It's unlikely
+	    that the internal code will get this wrong (at least for the
+	    xforms code anyway) however new ports and external scripts
+	    might drive the wrong values in.
+	 */
+	void testInvariant() const
+		{
+#ifdef ENABLE_ASSERTIONS
+			if (!from_page.empty()) {
+				// Assert(from_page == number or empty)
+				Assert(containsOnly(from_page, "1234567890"));
+			}
+			if (to_page) {
+				// Assert(to_page == empty
+				//        or number iff from_page set)
+				Assert(!from_page.empty());
+			}
+			switch (target) {
+			case PRINTER:
+//  				Assert(!printer_name.empty());
+				break;
+			case FILE:
+				Assert(!file_name.empty());
+				break;
+			default:
+				Assert(false);
+				break;
+			}
+			switch (which_pages) {
+			case ALL:
+			case ODD:
+			case EVEN:
+				break;
+			default:
+				Assert(false);
+				break;
+			}
+#endif
+		}
+
 	///
 	PrinterParams(Target const & t = PRINTER,
 		      string const & pname = lyxrc.printer,
@@ -125,45 +165,6 @@ struct PrinterParams {
 //	friend bool operator==(PrinterParams const &, PrinterParams const &);
 //	friend bool operator<(PrinterParams const &, PrinterParams const &);
 
-	/** Test that all the fields contain valid entries.  It's unlikely
-	    that the internal code will get this wrong (at least for the
-	    xforms code anyway) however new ports and external scripts
-	    might drive the wrong values in.
-	 */
-	void testInvariant() const
-		{
-#ifdef ENABLE_ASSERTIONS
-			if (!from_page.empty()) {
-				// Assert(from_page == number or empty)
-				Assert(containsOnly(from_page, "1234567890"));
-			}
-			if (to_page) {
-				// Assert(to_page == empty
-				//        or number iff from_page set)
-				Assert(!from_page.empty());
-			}
-			switch (target) {
-			case PRINTER:
-//  				Assert(!printer_name.empty());
-				break;
-			case FILE:
-				Assert(!file_name.empty());
-				break;
-			default:
-				Assert(false);
-				break;
-			}
-			switch (which_pages) {
-			case ALL:
-			case ODD:
-			case EVEN:
-				break;
-			default:
-				Assert(false);
-				break;
-			}
-#endif
-		}
 };
 
 #endif

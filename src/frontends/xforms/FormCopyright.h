@@ -18,7 +18,6 @@
 #define FORMCOPYRIGHT_H
 
 #include "FormBase.h"
-#include "form_copyright.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -37,9 +36,9 @@ public:
 
 private:
 	/// Build the dialog
-	void build();
+	virtual void build();
 	/// Pointer to the actual instantiation of the xform's form
-	FL_FORM * const form() const;
+	virtual FL_FORM * const form() const;
 	/// Fdesign generated method
 	FD_form_copyright * build_copyright();
 

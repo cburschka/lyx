@@ -46,7 +46,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bind
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -106,7 +106,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_banner
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -125,7 +125,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_auto_region_delete
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -144,7 +144,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_exit_confirm
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -163,7 +163,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_display_shortcuts
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -182,7 +182,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_autosave
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
   bounds: 0 1200
   precision: 0
@@ -204,7 +204,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_line_len
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
   bounds: 0 120
   precision: 0
@@ -250,7 +250,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_roman
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -268,7 +268,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_sans
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -286,7 +286,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_typewriter
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -304,7 +304,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_zoom
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
   bounds: 0 999
   precision: 0
@@ -326,7 +326,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_scalable
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -345,7 +345,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_screen_encoding
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -363,7 +363,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_tiny
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -381,7 +381,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_script
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -399,7 +399,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_footnote
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -417,7 +417,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_small
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -435,7 +435,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_large
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -453,7 +453,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_larger
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -471,7 +471,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_largest
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -489,7 +489,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_normal
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -507,7 +507,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huge
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -525,7 +525,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huger
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
@@ -567,7 +567,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_popup_font
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -585,7 +585,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_menu_font
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -603,7 +603,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_popup_encoding
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
@@ -645,7 +645,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -663,7 +663,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_page_range
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -681,7 +681,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_copies
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -699,7 +699,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_reverse
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -717,7 +717,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_printer
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -735,7 +735,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_file_extension
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -753,7 +753,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_command
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -771,7 +771,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_type
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -789,7 +789,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_even_pages
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -807,7 +807,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_odd_pages
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -825,7 +825,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_collated
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -843,7 +843,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_landscape
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -861,7 +861,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_file
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -879,7 +879,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_extra_options
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -897,7 +897,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_prefix
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -915,7 +915,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_size
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -933,7 +933,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_name
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -951,7 +951,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_adapt_output
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
@@ -993,7 +993,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_default_path
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1029,7 +1029,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_lastfiles
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
   bounds: 0 9
   precision: 0
@@ -1051,7 +1051,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_template_path
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1087,7 +1087,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_last_files
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -1106,7 +1106,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_temp_dir
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1142,7 +1142,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_lastfiles
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1178,7 +1178,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_temp_dir
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -1197,7 +1197,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_make_backups
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 	value: 1
 
@@ -1216,7 +1216,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_backup_path
-callback: C_FormPreferencesInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -1276,7 +1276,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormPreferencesApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -1294,7 +1294,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormPreferencesCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -1312,7 +1312,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormPreferencesOKCB
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
@@ -1348,7 +1348,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_restore
-callback: C_FormPreferencesRestoreCB
+callback: C_FormBaseRestoreCB
 argument: 0
 
 ==============================

@@ -81,7 +81,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_printer
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -99,7 +99,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_file
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -135,7 +135,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_printer
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -153,7 +153,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_file
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -225,7 +225,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormPrintOKCB
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
@@ -243,7 +243,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormPrintApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -261,7 +261,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormPrintCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -297,7 +297,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_all_pages
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -315,7 +315,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_odd_pages
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -333,7 +333,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_even_pages
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -387,7 +387,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_order_normal
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -405,7 +405,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_order_reverse
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -477,7 +477,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_from_page
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -531,7 +531,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_count
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -549,7 +549,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_unsorted
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -567,7 +567,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_page
-callback: C_FormPrintInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 ==============================

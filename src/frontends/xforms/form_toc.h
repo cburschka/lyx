@@ -6,7 +6,7 @@
 
 /** Callbacks, globals and object handlers **/
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormBaseHideCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

@@ -5,10 +5,10 @@
 #define FD_form_tabbed_document_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormDocumentCancelCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentRestoreCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
 

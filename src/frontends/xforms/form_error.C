@@ -30,7 +30,7 @@ FD_form_error * FormError::build_error()
   obj = fl_add_button(FL_RETURN_BUTTON, 135, 200, 130, 30, _("Close"));
     fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

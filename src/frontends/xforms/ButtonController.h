@@ -30,8 +30,9 @@
     the activation policy and which buttons correspond to which output of the
     state machine.
     @author Allan Rae <rae@lyx.org>
+    20001001 Switch from template implementation to taking Policy parameter.
+             Allows FormBase to provide a ButtonController for any dialog.
 */
-template <class Policy>
 class ButtonController : public noncopyable
 {
 public:
@@ -43,8 +44,8 @@ public:
 	    you can just assign "Cancel" to both labels.  Or even reuse this
 	    class for something completely different.
 	 */
-	ButtonController(char const * cancel, char const * close)
-		: bp_(), okay_(0), apply_(0), cancel_(0), undo_all_(0),
+	ButtonController(ButtonPolicy * bp, char const * cancel, char const * close)
+		: bp_(bp), okay_(0), apply_(0), cancel_(0), undo_all_(0),
 		  read_only_(), cancel_label(cancel), close_label(close) {}
 	/// Somebody else owns the FL_OBJECTs we just manipulate them.
 	~ButtonController() {}
@@ -84,9 +85,74 @@ public:
 	}
 
 	/* Action Functions */
+	/// force a refresh of the buttons
+	void refresh() {
+		if (okay_) {
+			if (bp_->buttonStatus(ButtonPolicy::OKAY)) {
+				fl_activate_object(okay_);
+				fl_set_object_lcol(okay_, FL_BLACK);
+			} else {
+				fl_deactivate_object(okay_);
+				fl_set_object_lcol(okay_, FL_INACTIVE);
+			}
+		}
+		if (apply_) {
+			if (bp_->buttonStatus(ButtonPolicy::APPLY)) {
+				fl_activate_object(apply_);
+				fl_set_object_lcol(apply_, FL_BLACK);
+			} else {
+				fl_deactivate_object(apply_);
+				fl_set_object_lcol(apply_, FL_INACTIVE);
+			}
+		}
+		if (undo_all_) {
+			if (bp_->buttonStatus(ButtonPolicy::UNDO_ALL)) {
+				fl_activate_object(undo_all_);
+				fl_set_object_lcol(undo_all_, FL_BLACK);
+			} else {
+				fl_deactivate_object(undo_all_);
+				fl_set_object_lcol(undo_all_,
+						   FL_INACTIVE);
+			}
+		}
+		if (cancel_) {
+			if (bp_->buttonStatus(ButtonPolicy::CANCEL)) {
+				fl_set_object_label(cancel_,
+						    cancel_label);
+			} else {
+				fl_set_object_label(cancel_,
+						    close_label);
+			}
+		}
+		if (!read_only_.empty()) {
+			if (bp_->isReadOnly()) {
+				std::list<FL_OBJECT *>::iterator
+					end = read_only_.end();
+				for (std::list<FL_OBJECT *>::iterator
+				     iter = read_only_.begin();
+				     iter != end;
+				     ++iter) {
+					fl_deactivate_object(*iter);
+					fl_set_object_lcol(*iter,
+							   FL_INACTIVE);
+				}
+			} else {
+				std::list<FL_OBJECT *>::iterator
+					end = read_only_.end();
+				for (std::list<FL_OBJECT *>::iterator
+				     iter = read_only_.begin();
+				     iter != end;
+				     ++iter) {
+					fl_activate_object(*iter);
+					fl_set_object_lcol(*iter,
+							   FL_BLACK);
+				}
+			}
+		}
+	}
 	///
 	void input(ButtonPolicy::SMInput in) {
-		bp_.input(in);
+		bp_->input(in);
 		refresh();
 	}
 	///
@@ -120,7 +186,7 @@ public:
 	}
 	///
 	void readWrite() {
-		read_only(false);
+		readOnly(false);
 	}
 	/// Passthrough function -- returns its input value
 	bool valid(bool v = true) { 
@@ -135,74 +201,9 @@ public:
 	void invalid() {
 		valid(false);
 	}
-	/// force a refresh of the buttons
-	void refresh() {
-		if (okay_) {
-			if (bp_.buttonStatus(ButtonPolicy::OKAY)) {
-				fl_activate_object(okay_);
-				fl_set_object_lcol(okay_, FL_BLACK);
-			} else {
-				fl_deactivate_object(okay_);
-				fl_set_object_lcol(okay_, FL_INACTIVE);
-			}
-		}
-		if (apply_) {
-			if (bp_.buttonStatus(ButtonPolicy::APPLY)) {
-				fl_activate_object(apply_);
-				fl_set_object_lcol(apply_, FL_BLACK);
-			} else {
-				fl_deactivate_object(apply_);
-				fl_set_object_lcol(apply_, FL_INACTIVE);
-			}
-		}
-		if (undo_all_) {
-			if (bp_.buttonStatus(ButtonPolicy::UNDO_ALL)) {
-				fl_activate_object(undo_all_);
-				fl_set_object_lcol(undo_all_, FL_BLACK);
-			} else {
-				fl_deactivate_object(undo_all_);
-				fl_set_object_lcol(undo_all_,
-						   FL_INACTIVE);
-			}
-		}
-		if (cancel_) {
-			if (bp_.buttonStatus(ButtonPolicy::CANCEL)) {
-				fl_set_object_label(cancel_,
-						    cancel_label);
-			} else {
-				fl_set_object_label(cancel_,
-						    close_label);
-			}
-		}
-		if (!read_only_.empty()) {
-			if (bp_.isReadOnly()) {
-				std::list<FL_OBJECT *>::iterator
-					end = read_only_.end();
-				for (std::list<FL_OBJECT *>::iterator
-				     iter = read_only_.begin();
-				     iter != end;
-				     ++iter) {
-					fl_deactivate_object(*iter);
-					fl_set_object_lcol(*iter,
-							   FL_INACTIVE);
-				}
-			} else {
-				std::list<FL_OBJECT *>::iterator
-					end = read_only_.end();
-				for (std::list<FL_OBJECT *>::iterator
-				     iter = read_only_.begin();
-				     iter != end;
-				     ++iter) {
-					fl_activate_object(*iter);
-					fl_set_object_lcol(*iter,
-							   FL_BLACK);
-				}
-			}
-		}
-	}
 private:
 	///
-	Policy bp_;
+	ButtonPolicy * bp_;
 	///
 	FL_OBJECT * okay_;
 	///

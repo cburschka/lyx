@@ -25,7 +25,8 @@
 class FormCommand : public FormBase {
 public:
 	/// Constructor
-	FormCommand( LyXView *, Dialogs *, string const & );
+	FormCommand( LyXView *, Dialogs *, string const &,
+		     ButtonPolicy * bp = new OkCancelReadOnlyPolicy );
 
 protected:
 	/// Slot launching dialog to (possibly) create a new inset

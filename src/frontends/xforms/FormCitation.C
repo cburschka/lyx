@@ -20,7 +20,6 @@
 #endif
 
 
-#include "gettext.h"
 #include "Dialogs.h"
 #include "FormCitation.h"
 #include "LyXView.h"
@@ -40,7 +39,6 @@ static int min_wform;
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Citation")), dialog_(0)
 {
-	dialog_ = 0;
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
 	// storing a copy because we won't be disconnecting.
@@ -290,7 +288,10 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 }
 
 
-void FormCitation::input(long data)
+#ifdef WITH_WARNINGS
+#warning convert this to use the buttoncontroller
+#endif
+bool FormCitation::input( long data )
 {
 	State cb = static_cast<FormCitation::State>( data );
 
@@ -433,6 +434,7 @@ void FormCitation::input(long data)
 	default:
 		break;
 	}
+	return true;
 }
 
 

@@ -23,13 +23,16 @@
 
 C_RETURNCB (FormBase, WMHideCB)
 C_GENERICCB(FormBase, ApplyCB)
-C_GENERICCB(FormBase, ApplyHideCB)
-C_GENERICCB(FormBase, HideCB)
+C_GENERICCB(FormBase, OKCB)
+C_GENERICCB(FormBase, CancelCB)
 C_GENERICCB(FormBase, InputCB)
+C_GENERICCB(FormBase, RestoreCB)
 
 
-FormBase::FormBase(LyXView * lv, Dialogs * d, BufferDependency bd, string const & t)
-	: dialogIsOpen(false), lv_(lv), u_(0), h_(0), title(t)
+FormBase::FormBase(LyXView * lv, Dialogs * d, BufferDependency bd, string const & t,
+		   ButtonPolicy * bp, char const * close, char const * cancel)
+	: dialogIsOpen(false), lv_(lv), bc_(bp, cancel, close),
+	  u_(0), h_(0), title(t), bp_(bp)
 {
 	switch( bd ) {
 	case BUFFER_DEPENDENT:
@@ -43,7 +46,13 @@ FormBase::FormBase(LyXView * lv, Dialogs * d, BufferDependency bd, string const 
 	}
 }
 
-		
+
+FormBase::~FormBase()
+{
+	delete bp_;
+}
+
+
 void FormBase::show()
 {
 	if (!form()) {
@@ -104,6 +113,7 @@ int FormBase::WMHideCB(FL_FORM * form, void *)
 	// window manager is used to close the dialog.
 	FormBase * pre = static_cast<FormBase*>(form->u_vdata);
 	pre->hide();
+	pre->bc_.hide();
 	return FL_CANCEL;
 }
 
@@ -112,26 +122,36 @@ void FormBase::ApplyCB(FL_OBJECT * ob, long)
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	pre->apply();
+	pre->bc_.apply();
 }
 
 
-void FormBase::ApplyHideCB(FL_OBJECT * ob, long)
+void FormBase::OKCB(FL_OBJECT * ob, long)
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
+	pre->ok();
+	pre->bc_.ok();
 }
 
 
-void FormBase::HideCB(FL_OBJECT * ob, long)
+void FormBase::CancelCB(FL_OBJECT * ob, long)
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->hide();
+	pre->cancel();
+	pre->bc_.cancel();
 }
 
 
-void FormBase::InputCB(FL_OBJECT * ob, long data)
+void FormBase::InputCB(FL_OBJECT * ob, long data )
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->input( data );
+	pre->bc_.valid( pre->input( data ) );
+}
+
+
+void FormBase::RestoreCB(FL_OBJECT * ob, long)
+{
+	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	pre->restore();
+	pre->bc_.undoAll();
 }

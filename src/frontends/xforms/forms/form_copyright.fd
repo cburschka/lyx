@@ -81,7 +81,7 @@ shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_South FL_South
 name: button_ok
-callback: C_FormBaseHideCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------

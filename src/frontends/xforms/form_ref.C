@@ -53,10 +53,10 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_callback(obj, C_FormBaseInputCB, 1);
   fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 330, 300, 90, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseApplyHideCB, 0);
+    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   fdui->cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 430, 300, 90, 30, _("Cancel"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;
