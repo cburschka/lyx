@@ -40,7 +40,9 @@ static error_item errorTags[] = {
         { Debug::ANY,		"any",          "All debugging messages"}
 };
 
+
 static const int numErrorTags = sizeof(errorTags)/sizeof(error_item);
+
 
 Debug::type Debug::value(string const & val) 
 {
@@ -56,7 +58,7 @@ Debug::type Debug::value(string const & val)
 			l |= static_cast<type>(strToInt(tmp));
 		else
 		// Search for an explicit name
-		for (int i = 0 ; i<numErrorTags ; ++i) 
+		for (int i = 0 ; i < numErrorTags ; ++i) 
 			if (tmp == errorTags[i].name) {
 				l |= errorTags[i].level;
 				break;
@@ -67,7 +69,8 @@ Debug::type Debug::value(string const & val)
 	return l;
 }
 
-void Debug::showLevel(ostream &o, Debug::type level)
+
+void Debug::showLevel(ostream & o, Debug::type level)
 {
 	// Show what features are traced
 	for (int i = 0 ; i < numErrorTags ; ++i)
@@ -79,13 +82,13 @@ void Debug::showLevel(ostream &o, Debug::type level)
 }
 
 
-void Debug::showTags(ostream &) 
+void Debug::showTags(ostream & os) 
 {
 	for (int i = 0 ; i < numErrorTags ; ++i)
-		fprintf(stdout, "  %5d  %-10s%-35s\n", 
-			errorTags[i].level,
-			errorTags[i].name, 
-			errorTags[i].desc);
+		os << "  " << errorTags[i].level
+		   << "  " << errorTags[i].name
+		   << "  " << errorTags[i].desc << '\n';
+	os.flush();
 }
 
 

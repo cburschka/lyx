@@ -70,7 +70,7 @@ int Literate::weave(TeXErrors & terr, MiniBuffer * minib)
 }
 
 
-int Literate::build(TeXErrors & terr, MiniBuffer * minib)
+int Literate::build(TeXErrors & /*terr*/, MiniBuffer * minib)
         // We know that this function will only be run if the lyx buffer
         // has been changed. 
 {

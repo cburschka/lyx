@@ -16,7 +16,8 @@
 #pragma implementation "lyxstring.h"
 #endif
 
-#include "LString.h"
+//#include "LString.h"
+#include "lyxstring.h"
 #include <cstdlib>
 #include <cctype>
 #include <algorithm>
@@ -58,6 +59,27 @@ using std::min;
 // increase and a noticable memory saving.
 
 // Lgb.
+
+
+#if 0
+// I have no clue why this function is needed at all, it is static and
+// confined to this filescope. How can any other file/fuction/module
+// get access to it at all?? Perhaps the forward declaration in LString.h
+// is enough. ARRae, any clues? Lgb.
+
+#ifdef HAVE_STL_STRING_FWD_H
+// SGI's STL > 3.13 expects string to provide __get_c_string.
+// Due to a clash with SGI's forward declaration of string we have
+// to provide this ourselves and block their string declarations
+// as best we can.  ARRae.
+
+static char const * __get_c_string(string const & s)
+{
+	return s.c_str();
+}
+#endif
+#endif
+
 
 ///////////////////////////////////////
 // The internal string representation
@@ -1443,19 +1465,6 @@ lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
 	memcpy(buf, &(rep->s[pos]), nn);
 	return nn;
 }
-
-
-#ifdef HAVE_STL_STRING_FWD_H
-// SGI's STL > 3.13 expects string to provide __get_c_string.
-// Due to a clash with SGI's forward declaration of string we have
-// to provide this ourselves and block their string declarations
-// as best we can.  ARRae.
-
-static const char* __get_c_string(const string & s)
-{
-	return s.c_str();
-}
-#endif
 
 
 ////////////////////

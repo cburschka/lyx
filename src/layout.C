@@ -26,8 +26,10 @@ using std::sort;
 #include "gettext.h"
 #include "support/LAssert.h"
 
+
 // Global variable: textclass table.
 LyXTextClassList textclasslist;
+
 
 // Reads the style files
 void LyXSetStyle()
@@ -380,6 +382,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 	return error;
 }
 
+
 enum AlignTags {
 	AT_BLOCK = 1,
 	AT_LEFT,
@@ -387,6 +390,7 @@ enum AlignTags {
 	AT_CENTER,
 	AT_LAYOUT
 };
+
 
 static keyword_item alignTags[] = {
 	{ "block",  AT_BLOCK },
@@ -461,6 +465,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 	lexrc.popTable();
 }
 
+
 enum LabelTypeTags {
 	LA_NO_LABEL = 1,
 	LA_MANUAL,
@@ -481,6 +486,7 @@ enum LabelTypeTags {
 	LA_BIBLIO
 };
 
+
 static keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
 	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
@@ -500,6 +506,7 @@ static keyword_item labelTypeTags[] = {
 	{ "static",                   LA_STATIC },
 	{ "top_environment",          LA_TOP_ENVIRONMENT }
 };
+
 
 void LyXLayout::readLabelType(LyXLex & lexrc)
 {
@@ -566,6 +573,7 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	}
 }
 
+
 enum MarginTags {
 	MT_STATIC = 1,
 	MT_MANUAL,
@@ -574,6 +582,7 @@ enum MarginTags {
 	MT_RIGHT_ADDRESS_BOX
 };
 
+
 static keyword_item marginTags[] = {
 	{ "dynamic",           MT_DYNAMIC },
 	{ "first_dynamic",     MT_FIRST_DYNAMIC },
@@ -581,6 +590,7 @@ static keyword_item marginTags[] = {
 	{ "right_address_box", MT_RIGHT_ADDRESS_BOX },
 	{ "static",            MT_STATIC }
 };
+
 
 void LyXLayout::readMargin(LyXLex & lexrc)
 {
@@ -611,6 +621,7 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 	}
 }
 
+
 enum LatexTypeTags {
 	LX_PARAGRAPH = 1,
 	LX_COMMAND,
@@ -619,6 +630,7 @@ enum LatexTypeTags {
 	LX_LIST_ENVIRONMENT
 };
 
+
 static keyword_item latexTypeTags[] = {
 	{ "command",          LX_COMMAND },
 	{ "environment",      LX_ENVIRONMENT },
@@ -626,6 +638,7 @@ static keyword_item latexTypeTags[] = {
 	{ "list_environment", LX_LIST_ENVIRONMENT },
 	{ "paragraph",        LX_PARAGRAPH }
 };
+
 
 void LyXLayout::readLatexType(LyXLex & lexrc)
 {
@@ -656,6 +669,7 @@ void LyXLayout::readLatexType(LyXLex & lexrc)
 	}
 }
 
+
 enum SpacingTags {
 	ST_SPACING_SINGLE = 1,
 	ST_SPACING_ONEHALF,
@@ -663,12 +677,14 @@ enum SpacingTags {
 	ST_OTHER
 };
 
+
 static keyword_item spacingTags[] = {
 	{"double",  ST_SPACING_DOUBLE },
 	{"onehalf", ST_SPACING_ONEHALF },
 	{"other",   ST_OTHER },
 	{"single",  ST_SPACING_SINGLE }
 };
+
 
 void LyXLayout::readSpacing(LyXLex & lexrc)
 {
@@ -696,6 +712,7 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 		break;
 	}
 }
+
 
 /* ******************************************************************* */
 
@@ -755,6 +772,7 @@ enum TextClassTags {
 	TC_RIGHTMARGIN
 };
 
+
 static keyword_item textClassTags[] = {
 	{ "classoptions",    TC_CLASSOPTIONS },
 	{ "columns",         TC_COLUMNS },
@@ -775,6 +793,7 @@ static keyword_item textClassTags[] = {
 	{ "style",           TC_STYLE },
 	{ "tocdepth",        TC_TOCDEPTH }
 };
+
 
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
@@ -952,6 +971,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 	return error;
 }
 
+
 enum OutputTypeTags {
 	OT_OTLATEX = 1,
 	OT_OTLINUXDOC,
@@ -959,12 +979,14 @@ enum OutputTypeTags {
 	OT_OTLITERATE
 };
 
+
 static keyword_item outputTypeTags[] = {
 	{ "docbook", OT_OTDOCBOOK },
 	{ "latex", OT_OTLATEX },
 	{ "linuxdoc", OT_OTLINUXDOC },
 	{ "literate", OT_OTLITERATE }
 };
+
 
 void LyXTextClass::readOutputType(LyXLex & lexrc)
 {
@@ -992,6 +1014,7 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 	}
 }
 
+
 enum MaxCounterTags {
 	MC_COUNTER_CHAPTER = 1,
 	MC_COUNTER_SECTION,
@@ -1005,6 +1028,7 @@ enum MaxCounterTags {
 	MC_COUNTER_ENUMIV
 };
 
+
 static keyword_item maxCounterTags[] = {
 	{"counter_chapter", MC_COUNTER_CHAPTER },
 	{"counter_enumi", MC_COUNTER_ENUMI },
@@ -1017,6 +1041,7 @@ static keyword_item maxCounterTags[] = {
 	{"counter_subsection", MC_COUNTER_SUBSECTION },
 	{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
 };
+
 
 void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 {
@@ -1062,6 +1087,7 @@ void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 	}
 }
 
+
 enum ClassOptionsTags {
 	CO_FONTSIZE = 1,
 	CO_PAGESTYLE,
@@ -1069,12 +1095,14 @@ enum ClassOptionsTags {
 	CO_END
 };
 
+
 static keyword_item classOptionsTags[] = {
 	{"end", CO_END },
 	{"fontsize", CO_FONTSIZE },
 	{"other", CO_OTHER },
 	{"pagestyle", CO_PAGESTYLE }
 };
+
 
 void LyXTextClass::readClassOptions(LyXLex & lexrc)
 {

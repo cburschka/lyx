@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1999 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  * ====================================================== */
 
@@ -25,7 +25,7 @@ typedef lyxstring string;
 // __get_c_string() ourselves since SGI expects it to exist and block
 // their string declarations as best we can.  ARRae.
 # define __SGI_STL_STRING_FWD_H
-static const char* __get_c_string(const string&);
+static char const * __get_c_string(string const &);
 #endif // HAVE_STL_STRING_FWD_H
 #endif
 #endif

@@ -33,7 +33,7 @@ InsetLatexAccent::InsetLatexAccent()
 
 
 InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
-    : contents(other.contents),
+    : Inset(), contents(other.contents),
       candisp(other.candisp),
       modtype(other.modtype),
       remdot(other.remdot),

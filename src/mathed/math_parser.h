@@ -67,17 +67,21 @@ enum MathTokenEnum
 };
 
 ///
-struct latexkeys { char const * name; short token; int id; };
+struct latexkeys {
+	char const * name;
+	short token;
+	int id;
+};
 
 ///
-struct latexkeys *
+latexkeys *
 in_word_set (register char const * str, register int len);
 
 ///
-struct latexkeys * lm_get_key(int index);
+latexkeys * lm_get_key(int index);
 
 ///
-struct latexkeys * lm_get_key_by_id(int id, short tc = LM_TK_SYM);
+latexkeys * lm_get_key_by_id(int id, short tc = LM_TK_SYM);
 
 ///
 typedef union{

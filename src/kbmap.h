@@ -33,7 +33,7 @@ struct kb_key {
 	unsigned int mod;
 	
 	/// Keymap for prefix keys
-	kb_keymap *table;
+	kb_keymap * table;
 	
 	/// Action for !prefix keys
 	int action;
@@ -54,19 +54,19 @@ public:
 	/// Bind a key-sequence to an action
 	/** Returns 0 on success. Otherwise, position in string where
 	  error occured. */
-	int bind(char const* seq, int action);
+	int bind(char const * seq, int action);
 	
 	///
-	int print(char* buf, int maxlen) const;
+	int print(char * buf, int maxlen) const;
 	
 	/// Look up a key in the keymap
-	int lookup(KeySym key, unsigned mod, kb_sequence *seq);
+	int lookup(KeySym key, unsigned mod, kb_sequence * seq);
 
 	/// Given an action, find all keybindings.
 	string findbinding(int action) const;
 private:
 	/// Define a new key sequence
-	int defkey(kb_sequence *seq, int action, int idx = 0);
+	int defkey(kb_sequence * seq, int action, int idx = 0);
 	
 	/// Size of the table (<0: hashtab)
        int size;
@@ -76,10 +76,10 @@ private:
 	union
 	{
 		/// Table for linear array
-		kb_key *table;
+		kb_key * table;
 		
 		/// Hash table holding key lists
-		kb_key **htable;
+		kb_key ** htable;
 	};
 };
 
@@ -114,10 +114,10 @@ public:
 	int addkey(KeySym key, unsigned mod, unsigned nmod = 0);
 	
 	///
-	int print(char *buf, int maxlen, bool when_defined = false) const; //RVDK_PATCH_5
+	int print(char * buf, int maxlen, bool when_defined = false) const; //RVDK_PATCH_5
 	
         ///
-	int printOptions(char *buf, int maxlen) const;
+	int printOptions(char * buf, int maxlen) const;
 	
 	/// Make length negative to mark the sequence as deleted
 	void delseq();
@@ -132,20 +132,20 @@ public:
 	void reset();
 	
 	///
-	int parse(char const *s);
+	int parse(char const * s);
 	
 	/// Keymap to use if a new sequence is starting
-	kb_keymap *stdmap;
+	kb_keymap * stdmap;
 	
 	/// Keymap to use for the next key
-	kb_keymap *curmap;
+	kb_keymap * curmap;
 	
 	/// Array holding the current key sequence
 	/** If sequence[length-1] < 0xff it can be used as ISO8859 char */
-	unsigned int *sequence;
+	unsigned int * sequence;
 	
 	///
-	unsigned int *modifiers;
+	unsigned int * modifiers;
 	
 	/// Current length of key sequence
 	int length;

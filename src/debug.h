@@ -62,12 +62,13 @@ struct Debug {
 	/** Display the tags and descriptions of the current debug level 
 	    of ds 
 	*/
-	static void showLevel(ostream &o, type level);
+	static void showLevel(ostream & o, type level);
 
 	/** show all the possible tags that can be used for debugging */
-	static void showTags(ostream &o);
+	static void showTags(ostream & o);
 
 };
+
 
 ///
 inline void operator|= (Debug::type & d1, Debug::type d2)
@@ -77,6 +78,7 @@ inline void operator|= (Debug::type & d1, Debug::type d2)
 
 
 #include "support/DebugStream.h"
+
 
 ///
 ostream & operator<<(ostream & o, Debug::type t);

@@ -1240,7 +1240,7 @@ bool Buffer::writeFile(string const & filename, bool flag)
 			lyxerr << _("Error! Cannot open file: ")
 			       << filename << endl;
 		else
-			WriteFSAlert(_("Error! Canno open file:"),
+			WriteFSAlert(_("Error! Cannot open file: "),
 				     filename);
 		return false;
 	}
@@ -1611,7 +1611,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 
 	ofstream ofs(filename.c_str());
 	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot open file:"), filename);
+		WriteFSAlert(_("Error: Cannot open file: "), filename);
 		return;
 	}
 	
@@ -2534,7 +2534,7 @@ void linux_doc_line_break(ostream & os, unsigned int & colcount,
 
 
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
-				  int desc_on, int const depth)
+				  int desc_on, int const /*depth*/)
 {
 	LyXFont font1, font2;
 	char c;

@@ -73,7 +73,7 @@ int Systemcalls::startscript() {
 	return retval;
 }
 
-void Systemcalls::kill(int tolerance) {
+void Systemcalls::kill(int /*tolerance*/) {
 	if (getpid() == 0) {
 		lyxerr << "LyX: Can't kill non-existing process." << endl;
 		return;

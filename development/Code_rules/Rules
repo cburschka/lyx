@@ -1,8 +1,16 @@
 Rules for the code in LyX
 -------------------------
+[updated from the C++STYLE distrubuted with the GNU C++ Standard]
 
 The aim of this file is to serve as a guide for the developers, to aid us to
 get clean and uniform code. Still uncomplete.
+
+We really like to have new developers joining the LyX Project. However
+since we have had problems in the past with developers leaving the
+project and their contributed code in a far from perfect state. Most
+of this happened before that we really became aware of these issues,
+but still, we don't want it to happen again. So we have put together
+some guidelines and rules for the developers.
 
 In general, if you want to contribute to the main source, we expect at least 
 that you:
@@ -12,24 +20,70 @@ that you:
 - adapt the code to the structures already existing in LyX, or in case that 
   you have better ideas, discuss them on the developer's list before writing 
   the code.
+- take advantage of the C++ standard library.
 
 These guidelines should save us a lot of work while cleaning up the code and 
 help us to have quality code. LyX has been haunted by problems coming from 
 unfinished projects by people who have left the team. Those problems will 
 hopefully disappear if the code is easy to hand over to somebody else.
 
+When you send in a patch or commit to the LyX cvs repository we expect
+you to add a ChangeLog entry. The entry should have this syntax:
+
+1999-12-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (find): assert bug fixed.
+
+* Pointers and references
+  char * p = "flop";
+  char & c = *p;
+      -NOT-
+  char *p = "flop"; // wrong
+  char &c = *p;     // wrong
+
+ Some time ago we had a huge discusion on this subject and after
+convincing argumentation from Asger this is what we decided. Also note
+that we will have:
+ char const * p;
+      -NOT-
+ const char * p;
+
+* Operator names and parentheses
+  operator==(type)
+       -NOT-
+  operator == (type)  // wrong
+
+  The == is part of the function name, separating it makes the
+declaration look like an expression.
+
+* Function names and parentheses
+  void mangle()
+       -NOT-
+  void mangle ()  // wrong
+
+* Enumerators
+  enum {
+	one = 1,
+	two = 2,
+	three = 3
+  };
+  -NOT-
+  enum { one = 1, two = 2, three 3 };
 
 * Naming rules for classes
 
   - Use descriptive but simple and short names. For stuff specific to LyX
     use LyX as prefix. Some modules, like mathed or spellchecker, could have
     other prefixes.
+    [I am not so sure about the LyX prefix]
 
   - Class names are usually capitalized, and function names lowercased.
-    Enums are in CAPS.
+    Enums are named like Classes, enum values in CAPS.
 
   - Long variables are named like thisLongVariableName.
 
+  New types are capitalized, so this goes for typedefs,classes,structs
+and enums.
 
 * Formatting
 
@@ -41,12 +95,16 @@ hopefully disappear if the code is easy to hand over to somebody else.
 
 * Use existing structures
 
-  - Use LString whereever possible. LyX will someday move to Unicode, and
-    that will be easy if everybody uses LString now.
+  - Use string whereever possible. LyX will someday move to Unicode, and
+    that will be easy if everybody uses string now.
 
   - Check out the filename and path tools in filetools.h
 
-  - Use the Error class to report errors and messages
+  - Check out the string tools in lstring.h, and the SubString class
+    and the regex class.
+
+  - Use the DebugStream class to report errors and messages using
+    the lyxerr instantation.
 
   [add description of other existing structures]
 
@@ -56,7 +114,9 @@ hopefully disappear if the code is easy to hand over to somebody else.
   - Use this order for the access sections of your class: public,
     protected, private. The public section is interesting for every
     user of the class. The private section is only of interest for the
-    implementors of the class (you).
+    implementors of the class (you). [Obvously not true since this is
+    for developers, and we do not want one developer only to be able to
+    read and understand the implementation of class internals. Lgb]
   
   - Avoid to declare global objects in the declaration file of the class. 
     If the same variable is used for all object, use a static member.
@@ -74,8 +134,7 @@ hopefully disappear if the code is easy to hand over to somebody else.
   - You document for the other developers, not for yourself.
   - You should document what the funtion do, not the implementation.
   - in the .C files you document the implementation.
-  - Short description (///), large description (/** ... */)
-    (someone explain this please)
+  - Single line description (///), multiple lines description (/** ... */)
   - You make the documentation by doing "make srcdoc" in the root,
     and then you'll find HTML in the srcdoc/ directory. Read with
     Netscape for best results.

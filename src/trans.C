@@ -162,7 +162,7 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	
 	for(string::size_type i = 0; i < keys.length(); ++i) {
 		char * temp =
-			keymap_[static_cast<unsigned int>(keys[i])] =
+			keymap_[static_cast<unsigned char>(keys[i])] =
 			new char[2];
 		temp[0] = 0; temp[1] = accent;
 	}
@@ -347,7 +347,7 @@ string Trans::process(char c, TransManager & k)
 {
 	char dummy[2] = "?";
 	char * dt = dummy;
-	char * t = Match(c);
+	char * t = Match(static_cast<unsigned char>(c));
     
 	if ((t == 0 && (*dt = c)) || (t[0] != 0 && (dt = t)) ){
 		return k.normalkey(c, dt);

@@ -43,18 +43,15 @@ enum { ModsMask = ShiftMask | ControlMask | Mod1Mask};
 static
 int printKeysym( KeySym key, unsigned int mod, char *buf, int maxlen )
 {
-	int len;
-	char *s;
-	
 	mod &= ModsMask;
 
 	// calc required length;
-	len = 0;
+	int len = 0;
 	if ( mod & ShiftMask )   len += 2;
 	if ( mod & ControlMask ) len += 2;
 	if ( mod & Mod1Mask )    len += 2;
 	
-	s = XKeysymToString( key );
+	char * s = XKeysymToString( key );
 	if ( s ) len += strlen( s );
 	if ( len < maxlen ) {
 		if ( mod & ShiftMask ) {
@@ -81,13 +78,13 @@ int printKeysym( KeySym key, unsigned int mod, char *buf, int maxlen )
 \* ---F------------------------------------------------------------------- */
 
 static
-int printKeyTab( kb_key *tabPt, char *buf, int maxLen )
+int printKeyTab( kb_key * tabPt, char *buf, int maxLen )
 {
 	int len, doneLen = 0;
 	unsigned int ksym, mod;
 	
 	/* -------> Print each of the slots into buf. */
-	for( ; (tabPt->code & 0xffff) != NoSymbol; tabPt++) {
+	for( ; (tabPt->code & 0xffff) != NoSymbol; ++tabPt) {
 		if ( maxLen <= 0 ) break;
 		
 		ksym =  tabPt->code;
@@ -128,21 +125,21 @@ int printKeyTab( kb_key *tabPt, char *buf, int maxLen )
 
 int kb_sequence::addkey(KeySym key, unsigned int mod, unsigned int nmod /*= 0*/)
 {
-	if(length<0) length = 0;
+	if(length < 0) length = 0;
 
-	if(length+1 >= size) {
-		unsigned int *nseq = new unsigned int[size+KB_PREALLOC];
+	if(length + 1 >= size) {
+		unsigned int * nseq = new unsigned int[size+KB_PREALLOC];
 		size += KB_PREALLOC;
-		memcpy(nseq, sequence, length*sizeof(unsigned int));
+		memcpy(nseq, sequence, length * sizeof(unsigned int));
 		if(sequence != staticseq) delete sequence;
 		sequence = nseq;
 		nseq = new unsigned int[size];
-		memcpy(nseq, modifiers, length*sizeof(unsigned int));
+		memcpy(nseq, modifiers, length * sizeof(unsigned int));
 		if(modifiers != staticmod) delete modifiers;
 		modifiers = nseq;
 	}
 
-	modifiers[length]  = mod + (nmod<<16);
+	modifiers[length]  = mod + (nmod << 16);
 	sequence[length++] = key;
    
 	if(curmap)
@@ -163,7 +160,7 @@ int kb_sequence::addkey(KeySym key, unsigned int mod, unsigned int nmod /*= 0*/)
                 Prefixes are S-, C-, M- for shift, control, meta
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::parse(char const*s)
+int kb_sequence::parse(char const * s)
 {
 	int i = 0;
 	unsigned int mod = 0, nmod = 0;
@@ -173,7 +170,7 @@ int kb_sequence::parse(char const*s)
 	if(!s[0]) return 1;
 	
 	while(s[i]) {
-		if(s[i] && (s[i]) <= ' ') i++;
+		if(s[i] && (s[i]) <= ' ') ++i;
 		if(!s[i]) break;
 		
 		if(s[i+1] == '-')	{ // is implicit that s[i] == true
@@ -212,7 +209,7 @@ int kb_sequence::parse(char const*s)
 			}
 		} else {
 			int j = 0;
-			for(j = i; s[j] && (s[j])>' '; j++)
+			for(j = i; s[j] && (s[j])>' '; ++j)
 				tbuf[j-i] = s[j];    // (!!!check bounds :-)
 			
 			tbuf[j-i] = '\0';
@@ -245,15 +242,15 @@ int kb_sequence::parse(char const*s)
     Returns   : 0, if ok, -1 if string too long
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::print(char *buf, int maxlen, bool when_defined) const
+int kb_sequence::print(char * buf, int maxlen, bool when_defined) const
 {
 	KeySym key;
 	unsigned int mod;
 	int len;
 	int l = length;
-	if ( l<0 && !when_defined ) l = -l;
+	if ( l < 0 && !when_defined ) l = -l;
 	
-	for(int i = 0; i < l; i++) {
+	for(int i = 0; i < l; ++i) {
 		key = sequence[i];
 		mod = modifiers[i] & 0xffff;
 
@@ -286,12 +283,10 @@ int kb_sequence::print(char *buf, int maxlen, bool when_defined) const
     Returns   : 0, if ok, -1 if string too long
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::printOptions(char *buf, int maxlen) const
+int kb_sequence::printOptions(char * buf, int maxlen) const
 {
-	int len;
-
-	print( buf, maxlen, true );
-	len = strlen( buf );
+	print(buf, maxlen, true);
+	int len = strlen(buf);
 	maxlen -= len;
 	buf    += len;
 	
@@ -338,7 +333,7 @@ KeySym kb_sequence::getsym()
 {
 	int l = length;
 	if(l == 0) return NoSymbol;
-	if(l<0) l = -l;
+	if(l < 0) l = -l;
 	return sequence[l-1];
 }
 
@@ -380,7 +375,7 @@ void kb_sequence::reset()
 // === kb_keymap methods ================================================== 
 
 // This binds a key to an action
-int kb_keymap::bind(char const *seq, int action)
+int kb_keymap::bind(char const * seq, int action)
 {
 	kb_sequence k;
 
@@ -405,10 +400,10 @@ int kb_keymap::bind(char const *seq, int action)
     Returns   : user defined action; 0 for prefix key, -1 if key not found
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence *seq)
+int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 {
 	unsigned int hashval, ksym, msk1, msk0;
-	kb_key *tab;
+	kb_key * tab;
 
 	//suppress modifier bits we do not handle
 	mod &= ModsMask;
@@ -433,12 +428,12 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence *seq)
 
 	// --- now search the list of keys ---
 
-	for( ; (tab->code & 0xffff) != NoSymbol; tab++) {
+	for( ; (tab->code & 0xffff) != NoSymbol; ++tab) {
 		ksym =  tab->code;
 		msk1 =  tab->mod      & 0xffff;
-		msk0 = (tab->mod>>16) & 0xffff;
+		msk0 = (tab->mod >> 16) & 0xffff;
 
-		if(ksym == key && (mod&~msk0) == msk1) {
+		if(ksym == key && (mod & ~msk0) == msk1) {
 			// match found:
 			if(tab->table) {
 				 // this is a prefix key - set new map
@@ -469,10 +464,8 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence *seq)
     Returns   : updated maxLen.
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::print(char *buf, int maxLen) const
+int kb_keymap::print(char * buf, int maxLen) const
 {
-	int                    len;
-	
  /* -----> Return when running out of string space or when keymap has no table.
      Else, place a terminating newline in case no other output is generated. */
 
@@ -482,16 +475,16 @@ int kb_keymap::print(char *buf, int maxLen) const
    
  /* -------> Hash table. Process each of its slots recursively and return. */
 	if ( size < 0 ) {   
-		for ( int ix = 0; (ix < KB_HASHSIZE) && (maxLen > 1); ix++ ) {
+		for ( int ix = 0; (ix < KB_HASHSIZE) && (maxLen > 1); ++ix ) {
 			if ( htable[ix] ) {
-				len = printKeyTab( htable[ix], buf, maxLen );
+				int len = printKeyTab( htable[ix], buf, maxLen );
 				maxLen -= len;
 				buf    += len;
 			}
 		}
 	} else {
 		/* -------> Normal table. */
-		len = printKeyTab( table, buf, maxLen ); 
+		int len = printKeyTab( table, buf, maxLen ); 
 		maxLen -= len;
 		buf    += len;
 	}
@@ -511,14 +504,11 @@ int kb_keymap::print(char *buf, int maxLen) const
 
 int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 {
-	int      tsize;
-	unsigned int code, modmsk;
-	kb_key  *tab, **ptab;
-
-	code = seq->sequence[idx];
-	modmsk = seq->modifiers[idx];
+	unsigned int code = seq->sequence[idx];
 	if(code == NoSymbol) return -1;
 
+	unsigned int modmsk = seq->modifiers[idx];
+	kb_key  *tab, **ptab;
 	// --- get list------------------------------------------------------
 	if(!table) {
 		// If we don't have any yet, make an empty one
@@ -545,8 +535,9 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 
 	// --- check if key is already there --------------------------------
 
-	kb_key *t;
-	for(t = tab, tsize = 1; t->code != NoSymbol; t++, tsize++) {
+	kb_key * t;
+	int tsize;
+	for(t = tab, tsize = 1; t->code != NoSymbol; ++t, ++tsize) {
 		if(code == t->code && modmsk == t->mod) { // -- overwrite binding ---
 			if(idx+1 == seq->length) {
 				char buf[20]; buf[0] = 0;
@@ -578,14 +569,14 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 	// --- extend list if necessary -------------------------------------
 
 	if(tsize % KB_PREALLOC == 0) {
-		kb_key *nt = new kb_key[tsize+KB_PREALLOC];
+		kb_key * nt = new kb_key[tsize+KB_PREALLOC];
 		// Set to 0 as table is used uninitialised later (thornley)
 		nt[tsize].table = 0;
-		memcpy(nt, tab, tsize*sizeof(kb_key));
+		memcpy(nt, tab, tsize * sizeof(kb_key));
 		*ptab = nt;
 		delete[] tab;
 		tab = nt;
-		if(size>= 0) size = tsize+KB_PREALLOC;
+		if(size>= 0) size = tsize + KB_PREALLOC;
 	}
 
 	// --- add action ---------------------------------------------------
@@ -593,24 +584,24 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 	tab[tsize--].code = NoSymbol;
 	tab[tsize].code = code;
 	tab[tsize].mod  = modmsk;
-	kb_key *newone = &tab[tsize];
+	kb_key * newone = &tab[tsize];
 	
 	// --- convert list to hash table if necessary ----------------------
 
-	if(size>= 0 && tsize>= 32) {
-		kb_key *oldtab = tab;
-		kb_key **nht = new kb_key*[KB_HASHSIZE];
-		for(int i = 0; i < KB_HASHSIZE; i++)
+	if(size >= 0 && tsize >= 32) {
+		kb_key * oldtab = tab;
+		kb_key ** nht = new kb_key*[KB_HASHSIZE];
+		for(int i = 0; i < KB_HASHSIZE; ++i)
 			nht[i] = 0;
 		htable = nht;
 		size   = -KB_HASHSIZE;
 		
 		// --- copy old keys to new hash table ---
 		int hashval;
-		for(kb_key *tu = oldtab; tu->code != NoSymbol; tu++){
+		for(kb_key * tu = oldtab; tu->code != NoSymbol; ++tu) {
 			// copy values from oldtab to htable
-			hashval = (tu->code&0xffff);
-			hashval = ((hashval&0xff) ^ ((hashval>>8)&0xff)) % KB_HASHSIZE;
+			hashval = (tu->code & 0xffff);
+			hashval = ((hashval & 0xff) ^ ((hashval>>8) & 0xff)) % KB_HASHSIZE;
 			tab  = htable[hashval];
 			
 			if(!tab){
@@ -618,12 +609,12 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 				tab->code = NoSymbol;
 			}
 			int ts = 1;
-			for(kb_key *tt = tab; tt->code != NoSymbol; tt++)
-				ts++;
+			for(kb_key * tt = tab; tt->code != NoSymbol; ++tt)
+				++ts;
 			if(ts % KB_PREALLOC == 0){
 				// extend table
-				kb_key *nt = new kb_key[ts+KB_PREALLOC];
-				memcpy(nt, tab, ts*sizeof(kb_key));
+				kb_key * nt = new kb_key[ts+KB_PREALLOC];
+				memcpy(nt, tab, ts * sizeof(kb_key));
 				htable[hashval] = nt;
 				delete[] tab;
 				tab = nt;
@@ -665,10 +656,11 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 kb_keymap::~kb_keymap()
 {
 	if(!table) return;
-	if(size<0) {
-		for(int i = 0; i < KB_HASHSIZE; i++) {
+	if(size < 0) {
+		for(int i = 0; i < KB_HASHSIZE; ++i) {
 			if(htable[i]) {
-				for(kb_key *t = htable[i]; t->code != NoSymbol; t++)
+				for(kb_key * t = htable[i];
+				    t->code != NoSymbol; ++t)
 					if(t->table)
 						delete t->table;
 				delete htable[i];
@@ -676,7 +668,7 @@ kb_keymap::~kb_keymap()
 		}
 		delete htable;
 	} else {
-		for(kb_key *t = table; t->code != NoSymbol; t++)
+		for(kb_key * t = table; t->code != NoSymbol; ++t)
 			if(t->table)
 				delete t->table;
 		delete table;
@@ -695,10 +687,11 @@ string kb_keymap::findbinding(int act) const {
 	if (!table)
 		return res;
 
-	if (size<0) {
-		for(int i = 0; i < KB_HASHSIZE; i++) {
+	if (size < 0) {
+		for(int i = 0; i < KB_HASHSIZE; ++i) {
 			if(htable[i]) {
-				for(kb_key *t = htable[i]; t->code != NoSymbol; t++) {
+				for(kb_key * t = htable[i];
+				    t->code != NoSymbol; ++t) {
 					if(t->table) {
 						string suffix = t->table->findbinding(act);
 						suffix = strip(suffix, ' ');
@@ -714,7 +707,7 @@ string kb_keymap::findbinding(int act) const {
 			}
 		}
 	} else {
-		for(kb_key *t = table; t->code != NoSymbol; t++) {
+		for(kb_key * t = table; t->code != NoSymbol; ++t) {
 			if(t->table) {
 				string suffix = t->table->findbinding(act);
 				suffix = strip(suffix, ' ');

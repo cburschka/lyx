@@ -77,7 +77,7 @@ private:
 	///
 	int Load(LyXLex &);
 	///
-	inline char * Match(unsigned int c);
+	inline char * Match(unsigned char c);
 	///
 	void InsertException(keyexc & exclist, char c,
 			     string const & data, bool = false,
@@ -95,7 +95,7 @@ private:
 };
 
 
-char * Trans::Match(unsigned int c)
+char * Trans::Match(unsigned char c)
 {
 	return keymap_[c];
 }

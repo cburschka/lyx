@@ -193,8 +193,8 @@ dnl Check the version of g++
   fi
   if test x$with_warnings = xyes ; then
     case $gxx_version in
-	2.95.*) CXXFLAGS="$CXXFLAGS -Wall";;
-	*) CXXFLAGS="$CXXFLAGS -ansi -Wall";;
+	2.95.*) CXXFLAGS="$CXXFLAGS -Wall -W -Wconversion";;
+	*) CXXFLAGS="$CXXFLAGS -ansi -Wall -W";;
     esac
     if test $lyx_devel_version = yes ; then
 	case $gxx_version in

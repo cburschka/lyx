@@ -121,13 +121,13 @@ char	   selection_color[32];
 
 FL_resource res[] =
 {
-	{"width", "widthClass", FL_INT, &width, "690"},
-	{"height", "heightClass", FL_INT, &height, "510"},
-	{"xpos", "xposClass", FL_INT, &xpos, "-1"},
-	{"ypos", "yposClass", FL_INT, &ypos, "-1"},
-	{"Reverse", "reverseClass", FL_INT, &reverse_video, "0"},
-	{"Mono", "monoClass", FL_INT, &mono_video, "0"},
-	{"FastSelection", "selectionClass", FL_INT, &fast_selection, "0"},
+	{"width", "widthClass", FL_INT, &width, "690", 0},
+	{"height", "heightClass", FL_INT, &height, "510", 0},
+	{"xpos", "xposClass", FL_INT, &xpos, "-1", 0},
+	{"ypos", "yposClass", FL_INT, &ypos, "-1", 0},
+	{"Reverse", "reverseClass", FL_INT, &reverse_video, "0", 0},
+	{"Mono", "monoClass", FL_INT, &mono_video, "0", 0},
+	{"FastSelection", "selectionClass", FL_INT, &fast_selection, "0", 0},
 	{"MathColor", "colorClass", FL_STRING, math_color, "blue", 31},
 	{"MathFrameColor", "colorClass", FL_STRING, math_frame_color, "magenta", 31},
 	{"FootColor", "colorClass", FL_STRING, foot_color, "red", 31},
