@@ -1148,6 +1148,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				p->previous(parBeforeMinipage);
 				parBeforeMinipage->next(p);
 				p->next(0);
+				p->params.depth(parBeforeMinipage->params.depth());
 				parBeforeMinipage = p;
 			}
 			InsetMinipage * mini = new InsetMinipage;
@@ -1190,6 +1191,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			tmp->params.pextraStartMinipage(false);
 			tmp = tmp->next();
 		}
+		depth = parBeforeMinipage->params.depth();
 		minipar = parBeforeMinipage = 0;
 	} else if (!minipar &&
 		   (par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE))
@@ -1205,6 +1207,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		p->layout = 0;
 		p->previous(par->previous());
 		p->next(0);
+		p->params.depth(depth);
+		par->params.depth(0);
+		depth = 0;
 		if (par->previous())
 			par->previous()->next(p);
 		par->previous(0);
