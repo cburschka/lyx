@@ -1,5 +1,23 @@
 2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/frontends/xforms/Menubar_pimpl.C (openByName): check that
+	the menu exists in the current menubar before opening it.
+
+	* src/MenuBackend.C (hasSubmenu): new method. 
+
+	* src/frontends/xforms/Menubar_pimpl.C: fix problem with bogus
+	action value by offsetting actions by a large constant (so that
+	bogs choice result will be less than this constant).
+
+	* lib/bind/fi_menus.bind: more cleanup to menus.
+	* lib/bind/sciword.bind: ditto.
+	* lib/bind/xemacs.bind: ditto.
+	* lib/bind/emacs.bind: ditto.
+	* lib/bind/pt_menus.bind: ditto.
+	* lib/bind/hu_menus.bind: ditto.
+
+	* src/gettext.h (locale_init): set locale LC_NUMERIC to "C".
+
 	* INSTALL: update PROBLEMS section.
 
 	* src/lyxlookup.h: remove condition on xforms version, since we

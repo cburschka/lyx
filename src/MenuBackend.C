@@ -324,6 +324,12 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		checkShortcuts();
 }
 
+bool Menu::hasSubmenu(string const & name) const
+{
+	return find_if(begin(), end(),
+		       compare_memfun(&MenuItem::submenu, name)) != end();
+}
+
 
 void MenuBackend::read(LyXLex & lex)
 {

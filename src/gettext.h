@@ -52,7 +52,7 @@ string const _(string const &);
 
 #  ifdef HAVE_LC_MESSAGES
                                 // LC_TIME, LC_CTYPE, even LC_ALL
-#    define locale_init() { setlocale (LC_MESSAGES, ""); setlocale (LC_CTYPE, "");}
+#    define locale_init() { setlocale (LC_MESSAGES, ""); setlocale (LC_CTYPE, ""); setlocale(LC_NUMERIC, "C"); }
 #  else
 #    define locale_init()
 #  endif

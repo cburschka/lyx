@@ -127,6 +127,8 @@ public:
 	bool empty() const { return items_.empty(); }
 	///
 	ItemList::size_type size() const { return items_.size(); }
+	///
+	bool hasSubmenu(string const &) const;
         ///
         const_iterator begin() const {
                 return items_.begin();
@@ -163,7 +165,7 @@ public:
 	///
 	void add(Menu const &);
 	///
-	bool hasMenu (string const &) const;
+	bool hasMenu(string const &) const;
 	///
 	Menu & getMenu (string const &);
 	///

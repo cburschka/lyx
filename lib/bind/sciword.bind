@@ -230,14 +230,14 @@
 # Visible Menu access menu
 #
 
-\bind "F10 d"                  "menu-open Documents"
-\bind "F10 e"                  "menu-open Edit"
-\bind "F10 f"                  "menu-open File"
-\bind "F10 h"                  "menu-open Help"
-\bind "F10 i"                  "menu-open Insert"
-\bind "F10 l"                  "menu-open Layout"
-\bind "F10 m"                  "menu-open Math"
-\bind "F10 o"                  "menu-open Options"
+#\bind "F10 d"                  "menu-open Documents"
+#\bind "F10 e"                  "menu-open Edit"
+#\bind "F10 f"                  "menu-open File"
+#\bind "F10 h"                  "menu-open Help"
+#\bind "F10 i"                  "menu-open Insert"
+#\bind "F10 l"                  "menu-open Layout"
+#\bind "F10 m"                  "menu-open Math"
+#\bind "F10 o"                  "menu-open Options"
 
 
 
@@ -245,59 +245,59 @@
 # File menu
 #
 
-\bind "M-f a"                  "buffer-write-as"
-\bind "M-f c"                  "buffer-close"
-\bind "M-f n"                  "buffer-new"
+#\bind "M-f a"                  "buffer-write-as"
+#\bind "M-f c"                  "buffer-close"
+#\bind "M-f n"                  "buffer-new"
 #\bind "M-f l"                  "file-last"                      # Not yet implemented.
-\bind "M-f o"                  "buffer-open"
-\bind "M-f p"                  "buffer-print"
-\bind "M-f q"                  "lyx-quit"
-\bind "M-f r"                  "buffer-update dvi"
+#\bind "M-f o"                  "buffer-open"
+#\bind "M-f p"                  "buffer-print"
+#\bind "M-f q"                  "lyx-quit"
+#\bind "M-f r"                  "buffer-update dvi"
         # Obsolete
-\bind "M-f s"                  "buffer-write"
-\bind "M-f t"                  "buffer-update dvi"
+#\bind "M-f s"                  "buffer-write"
+#\bind "M-f t"                  "buffer-update dvi"
 
-\bind "M-f x"                  "buffer-view dvi"
-\bind "M-f g"                  "buffer-view ps"
-\bind "M-f space"              "menu-open File"
+#\bind "M-f x"                  "buffer-view dvi"
+#\bind "M-f g"                  "buffer-view ps"
+#\bind "M-f space"              "menu-open File"
 
 
 #
 # Edit menu
 #
 
-#\bind "M-e b"                  "table"                         # Not yet implemented!
-\bind "M-e c"                  "cut"
-\bind "M-e e"                  "error-next"
-\bind "M-e f"                  "find-replace"
-\bind "M-e k"                  "line-delete-forward"
-\bind "M-e m"                  "mark-on"
-\bind "M-e S-M"                "mark-off"
-\bind "M-e n"                  "note-next"
-\bind "M-e o"                  "copy"
-\bind "M-e p"                  "paste"
-\bind "M-e r"                  "redo"
-\bind "M-e s"                  "spellchecker"
+##\bind "M-e b"                  "table"                         # Not yet implemented!
+#\bind "M-e c"                  "cut"
+#\bind "M-e e"                  "error-next"
+#\bind "M-e f"                  "find-replace"
+#\bind "M-e k"                  "line-delete-forward"
+#\bind "M-e m"                  "mark-on"
+#\bind "M-e S-M"                "mark-off"
+#\bind "M-e n"                  "note-next"
+#\bind "M-e o"                  "copy"
+#\bind "M-e p"                  "paste"
+#\bind "M-e r"                  "redo"
+#\bind "M-e s"                  "spellchecker"
 #\bind "M-e t"                  "toc-update"
-\bind "M-e u"                  "undo"
-\bind "M-e space"              "menu-open Edit"
+#\bind "M-e u"                  "undo"
+#\bind "M-e space"              "menu-open Edit"
 
 
 #
 # Layout menu
 #
 
-\bind "M-l c"                  "layout-character"
-\bind "M-l p"                  "layout-paragraph"
-\bind "M-l d"                  "layout-document"
-\bind "M-l q"                  "layout-quotes"
-\bind "M-l l"                  "layout-preamble"
-\bind "M-l e"                  "font-emph"
+#\bind "M-l c"                  "layout-character"
+#\bind "M-l p"                  "layout-paragraph"
+#\bind "M-l d"                  "layout-document"
+#\bind "M-l q"                  "layout-quotes"
+#\bind "M-l l"                  "layout-preamble"
+#\bind "M-l e"                  "font-emph"
 #\bind "M-l n"                  "font-smallcaps"
-\bind "M-l b"                  "font-bold"
-\bind "M-l t"                  "tex-mode"
-\bind "M-l v"                  "depth-next"
-\bind "M-l space"              "menu-open Layout"
+#\bind "M-l b"                  "font-bold"
+#\bind "M-l t"                  "tex-mode"
+#\bind "M-l v"                  "depth-next"
+#\bind "M-l space"              "menu-open Layout"
 
 
 
@@ -305,17 +305,17 @@
 # Insert menu
 #
 
-\bind "M-i c"                  "citation-insert"
-\bind "M-i f"                  "footnote-insert"
-\bind "M-i h"                  "hfill-insert"
-\bind "M-i m"                  "marginpar-insert"
-\bind "M-i n"                  "note-insert"
-\bind "M-i l"                  "label-insert"
-\bind "M-i r"                  "reference-insert"
-\bind "M-i minus"              "hyphenation-point-insert"
-\bind "M-i apostrophe"         "quote-insert"
-\bind "M-i S-quotedbl"         "quote-insert"
-\bind "M-i space"              "menu-open Insert"
+#\bind "M-i c"                  "citation-insert"
+#\bind "M-i f"                  "footnote-insert"
+#\bind "M-i h"                  "hfill-insert"
+#\bind "M-i m"                  "marginpar-insert"
+#\bind "M-i n"                  "note-insert"
+#\bind "M-i l"                  "label-insert"
+#\bind "M-i r"                  "reference-insert"
+#\bind "M-i minus"              "hyphenation-point-insert"
+#\bind "M-i apostrophe"         "quote-insert"
+#\bind "M-i S-quotedbl"         "quote-insert"
+#\bind "M-i space"              "menu-open Insert"
 
 
 
@@ -327,7 +327,7 @@
 #\bind "M-o s"                  "spellcheck-options"            # Not yet implemented!
 #\bind "M-o k"                  "keyboard-options"              # Not yet implemented!
 #\bind "M-o l"                  "latex-options"                 # Not yet implemented!
-\bind "M-o space"              "menu-open Options"
+#\bind "M-o space"              "menu-open Options"
 
 
 
@@ -335,8 +335,8 @@
 # Documents menu
 #
 
-\bind "M-d p"                  "buffer-previous"
-\bind "M-d space"              "menu-open Documents"
+#\bind "M-d p"                  "buffer-previous"
+#\bind "M-d space"              "menu-open Documents"
 
 
 
@@ -349,7 +349,7 @@
 #\bind "M-h w"                  "help-warranty"                 # Not yet implemented!
 #\bind "M-h c"                  "help-credits"                  # Not yet implemented!
 #\bind "M-h v"                  "help-version"                  # Not yet implemented!
-\bind "M-h space"              "menu-open Help"
+#\bind "M-h space"              "menu-open Help"
 
 
 

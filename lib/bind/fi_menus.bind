@@ -158,7 +158,7 @@
 \bind "M-e t"                   "math-mode"
 \bind "M-e k"                   "math-display"
 #bind "M-e p"                  "display-math-panel-or-something" # What function to use?
-\bind "M-e space"		"menu-open Math" 
+#\bind "M-e space"		"menu-open Math" 
 
 #
 # Options menu

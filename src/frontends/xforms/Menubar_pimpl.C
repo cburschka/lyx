@@ -46,6 +46,12 @@ static const int mbadd = 20; // menu button add (to width)
 static const int air = 2;
 static char const * menu_tabstop = "aa";
 static char const * default_tabstop = "aaaaaaaa";
+// We do not want to mix position values in a menu (like the index of
+// a submenu) with the action numbers which convey actual information.
+// Therefore we offset all the action values by an arbitrary large
+// constant. 
+static const int action_offset = 1000;
+
 
 //Defined later, used in makeMenubar().
 extern "C"
@@ -169,11 +175,13 @@ void Menubar::Pimpl::set(string const & menu_name)
 
 void Menubar::Pimpl::openByName(string const & name)
 {
-	for (ButtonList::const_iterator cit = buttonlist_.begin();
-	    cit != buttonlist_.end(); ++cit) {
-		if ((*cit)->item_->submenu() == name) {
-			MenuCallback((*cit)->obj_, 1);
-			return;
+	if (menubackend_->getMenu(current_menu_name_).hasSubmenu(name)) {
+		for (ButtonList::const_iterator cit = buttonlist_.begin();
+		     cit != buttonlist_.end(); ++cit) {
+			if ((*cit)->item_->submenu() == name) {
+				MenuCallback((*cit)->obj_, 1);
+				return;
+			}
 		}
 	}
 	lyxerr << "Menubar::Pimpl::openByName: menu "
@@ -228,7 +236,7 @@ void add_toc2(int menu, string const & extra_label,
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
 			label += fixlabel(toc_list[i].str);
 			label = limit_string_length(label);
-			label += "%x" + tostr(action);
+			label += "%x" + tostr(action + action_offset);
 			if (i == to - 1 && depth == 0)
 				label += extra_label;
 			fl_addtopup(menu, label.c_str());
@@ -264,7 +272,7 @@ void add_toc2(int menu, string const & extra_label,
 				label += extra_label;
 
 			if (new_pos == pos + 1) {
-				label += "%x" + tostr(action);
+				label += "%x" + tostr(action + action_offset);
 				fl_addtopup(menu, label.c_str());
 			} else {
 				int menu2 = get_new_submenu(smn, win);
@@ -310,7 +318,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 							tostr(toc_list[j][i].par->id()));
 				string label = fixlabel(toc_list[j][i].str);
 				label = limit_string_length(label);
-				label += "%x" + tostr(action);
+				label += "%x" + tostr(action + action_offset);
 				fl_addtopup(menu2, label.c_str());
 			}
 			if (j == max_nonempty) {
@@ -351,7 +359,7 @@ void add_references2(int menu, vector<int> & smn, Window win,
 			string label = label_list[i];
 			if (label.size() > max_item_length)
 				label = label.substr(0, max_item_length-1) + "$";
-			label += "%x" + tostr(action);
+			label += "%x" + tostr(action + action_offset);
 			fl_addtopup(menu, label.c_str());
 		}
 	else {
@@ -386,7 +394,7 @@ void add_references2(int menu, vector<int> & smn, Window win,
 				string label2 = label_list[k];
 				if (label2.size() > max_item_length)
 					label2 = label2.substr(0, max_item_length-1) + "$";
-				label2 += "%x" + tostr(action);
+				label2 += "%x" + tostr(action + action_offset);
 				fl_addtopup(menu2, label2.c_str());
 			}
 			label += "%m";
@@ -537,7 +545,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 				while (string_width(label) < max_width);
 				label += accel.substr(1,accel.find(']') - 1);
 			}
-			label += "%x" + tostr(item.action()) + extra_label;
+			label += "%x" + tostr(item.action() + action_offset)
+				+ extra_label;
 			
 			// Modify the entry using the function status
 			string pupmode;
@@ -661,9 +670,16 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 			fl_set_object_boxtype(ob, FL_FLAT_BOX);
 			fl_redraw_object(ob);
 		}
-		
-		if (choice >= 1) {
-			view->getLyXFunc()->Dispatch(choice);
+
+		// If the action value is too low, then it is not a
+		// valid action, but something else.
+		if (choice >= action_offset + 1) {
+			view->getLyXFunc()->Dispatch(choice - action_offset);
+		}
+		else {
+			lyxerr[Debug::GUI]
+				<< "MenuCallback: ignoring bogus action "
+				<< choice << endl;
 		}
 	}
 	else 
