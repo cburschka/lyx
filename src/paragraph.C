@@ -346,19 +346,20 @@ void Paragraph::validate(LaTeXFeatures & features) const
 
 	// then the fonts
 	Language const * doc_language = bparams.language;
-	
-	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
-	     cit != pimpl_->fontlist.end(); ++cit) {
-		if (cit->font().noun() == LyXFont::ON) {
+
+	Pimpl::FontList::const_iterator fcit = pimpl_->fontlist.begin();
+	Pimpl::FontList::const_iterator fend = pimpl_->fontlist.end();
+	for (; fcit != fend; ++fcit) {
+		if (fcit->font().noun() == LyXFont::ON) {
 			lyxerr[Debug::LATEX] << "font.noun: "
-					     << cit->font().noun()
+					     << fcit->font().noun()
 					     << endl;
 			features.require("noun");
 			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
-					     << cit->font().stateText(0)
+					     << fcit->font().stateText(0)
 					     << endl;
 		}
-		switch (cit->font().color()) {
+		switch (fcit->font().color()) {
 		case LColor::none:
 		case LColor::inherit:
 		case LColor::ignore:
@@ -370,11 +371,11 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		default:
 			features.require("color");
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
-					     << cit->font().stateText(0)
+					     << fcit->font().stateText(0)
 					     << endl;
 		}
 
-		Language const * language = cit->font().language();
+		Language const * language = fcit->font().language();
 		if (language->babel() != doc_language->babel() &&
 		    language != ignore_language &&
 #ifdef INHERIT_LANGUAGE
@@ -391,12 +392,13 @@ void Paragraph::validate(LaTeXFeatures & features) const
 	// then the insets
 	LyXLayout const & lout = textclasslist[bparams.textclass][layout()];
 
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
-		if (cit->inset) {
-			cit->inset->validate(features);
+	InsetList::const_iterator icit = insetlist.begin();
+	InsetList::const_iterator iend = insetlist.end();
+	for (; icit != iend; ++icit) {
+		if (icit->inset) {
+			icit->inset->validate(features);
 			if (lout.needprotect &&
-			    cit->inset->lyxCode() == Inset::FOOT_CODE)
+			    icit->inset->lyxCode() == Inset::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}
@@ -435,12 +437,14 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 			// the inset, not just a clone. Otherwise
 			// the inset would be deleted when calling Erase(pos)
 			// find the entry
-			InsetTable search_elem(pos, 0);
-			InsetList::iterator it =
-				lower_bound(insetlist.begin(),
-					    insetlist.end(),
-					    search_elem, Pimpl::matchIT());
-			if (it != insetlist.end() && it->pos == pos)
+			InsetList::iterator it = insetlist.begin();
+			InsetList::iterator end = insetlist.end();
+			for (; it != end; ++it) {
+				if (it->pos == pos)
+					break;
+			}
+
+			if (it != end && it->pos == pos)
 				it->inset = 0;
 			// the inset is not in a paragraph anymore
 			minibuffer_inset->parOwner(0);
@@ -532,15 +536,18 @@ Inset * Paragraph::getInset(pos_type pos)
 	lyx::Assert(pos < size());
 
 	// Find the inset.
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = lower_bound(insetlist.begin(),
-					     insetlist.end(),
-					     search_inset, Pimpl::matchIT());
-	if (it != insetlist.end() && it->pos == pos)
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		if (it->pos == pos)
+			break;
+	}
+
+	if (it != end && it->pos == pos)
 		return it->inset;
 
 	lyxerr << "ERROR (Paragraph::getInset): "
-		"Inset does not exist: " << pos << endl;
+	       << "Inset does not exist: " << pos << endl;
 	//::raise(SIGSTOP);
 	
 	// text[pos] = ' '; // WHY!!! does this set the pos to ' '????
@@ -557,15 +564,18 @@ Inset const * Paragraph::getInset(pos_type pos) const
 	lyx::Assert(pos < size());
 
 	// Find the inset.
-	InsetTable search_inset(pos, 0);
-	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
-						    insetlist.end(),
-						    search_inset, Pimpl::matchIT());
-	if (cit != insetlist.end() && cit->pos == pos)
+	InsetList::const_iterator cit = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; cit != end; ++cit) {
+		if (cit->pos == pos)
+			break;
+	}
+
+	if (cit != end && cit->pos == pos)
 		return cit->inset;
 
-	lyxerr << "ERROR (Paragraph::GetInset): "
-		"Inset does not exist: " << pos << endl;
+	lyxerr << "ERROR (Paragraph::getInset): "
+	       << "Inset does not exist: " << pos << endl;
 	//::raise(SIGSTOP);
 	//text[pos] = ' '; // WHY!!! does this set the pos to ' '????
 	// Did this commenting out introduce a bug? So far I have not
@@ -581,13 +591,16 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
                                          pos_type pos) const
 {
 	lyx::Assert(pos <= size());
-	
-	Pimpl::FontTable search_font(pos, LyXFont());
-	Pimpl::FontList::const_iterator cit = lower_bound(pimpl_->fontlist.begin(),
-						   pimpl_->fontlist.end(),
-						   search_font, Pimpl::matchFT());
+
+	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	for (; cit != end; ++cit) {
+		if (cit->pos() > pos)
+			break;
+	}
+
 	LyXFont retfont;
-	if (cit != pimpl_->fontlist.end()) {
+	if (cit != end) {
 		retfont = cit->font();
 	} else if (pos == size() && size()) {
 		retfont = getFontSettings(bparams, pos - 1);
@@ -679,21 +692,23 @@ Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 	if (pimpl_->fontlist.empty())
 		return def_size;
 
-	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
-	Pimpl::FontTable end_search(endpos, LyXFont());
-	Pimpl::FontList::const_iterator end_it =
-		lower_bound(pimpl_->fontlist.begin(),
-		            pimpl_->fontlist.end(),
-		            end_search, Pimpl::matchFT());
-	if (end_it != pimpl_->fontlist.end())
+	Pimpl::FontList::const_iterator end_it = pimpl_->fontlist.begin();
+	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	for (; end_it != end; ++end_it) {
+		if (end_it->pos() > endpos)
+			break;
+	}
+
+	if (end_it != end)
 		++end_it;
 
-	Pimpl::FontTable start_search(startpos, LyXFont());
-	Pimpl::FontList::const_iterator cit =
-		lower_bound(pimpl_->fontlist.begin(),
-			    pimpl_->fontlist.end(),
-			    start_search, Pimpl::matchFT());
-	
+	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	for (; cit != end; ++cit) {
+		if (cit->pos() > startpos)
+			break;
+	}
+
+	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
 	for (; cit != end_it; ++cit) {
 		LyXFont::FONT_SIZE size = cit->font().size();
 		if (size == LyXFont::INHERIT_SIZE)
@@ -757,18 +772,21 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 	// in a new kernel. (Asger)
 	// Next search font table
 
-	Pimpl::FontTable search_font(pos, LyXFont());
-	Pimpl::FontList::iterator it = lower_bound(pimpl_->fontlist.begin(),
-					    pimpl_->fontlist.end(),
-					    search_font, Pimpl::matchFT());
-	unsigned int i = it - pimpl_->fontlist.begin();
-	bool notfound = it == pimpl_->fontlist.end();
+	Pimpl::FontList::iterator beg = pimpl_->fontlist.begin();
+	Pimpl::FontList::iterator it = beg;
+	Pimpl::FontList::iterator endit = pimpl_->fontlist.end();
+	for (; it != endit; ++it) {
+		if (it->pos() > pos)
+			break;
+	}
+	unsigned int i = std::distance(beg, it);
+	bool notfound = (it == endit);
 
 	if (!notfound && pimpl_->fontlist[i].font() == font)
 		return;
 
 	bool begin = pos == 0 || notfound ||
-		(i > 0 && pimpl_->fontlist[i-1].pos() == pos - 1);
+		(i > 0 && pimpl_->fontlist[i - 1].pos() == pos - 1);
 	// Is position pos is a beginning of a font block?
 	bool end = !notfound && pimpl_->fontlist[i].pos() == pos;
 	// Is position pos is the end of a font block?
@@ -1191,10 +1209,13 @@ Paragraph const * Paragraph::outerHook() const
 Paragraph::inset_iterator
 Paragraph::InsetIterator(pos_type pos)
 {
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = lower_bound(insetlist.begin(),
-					     insetlist.end(),
-					     search_inset, Pimpl::matchIT());
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		if (it->pos == pos)
+			break;
+	}
+
 	return inset_iterator(it);
 }
 
@@ -1203,8 +1224,9 @@ Paragraph::InsetIterator(pos_type pos)
 int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
+	InsetList::const_iterator cit = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; cit != end; ++cit) {
 		if (cit->inset == inset) {
 			return cit->pos;
 		}
@@ -1974,8 +1996,10 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 bool Paragraph::isMultiLingual(BufferParams const & bparams)
 {
 	Language const * doc_language =	bparams.language;
-	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
-	     cit != pimpl_->fontlist.end(); ++cit)
+	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	
+	for (; cit != end; ++cit)
 		if (cit->font().language() != ignore_language &&
 		    cit->font().language() != latex_language &&
 #ifdef INHERIT_LANGUAGE
@@ -2044,8 +2068,9 @@ string const Paragraph::asString(Buffer const * buffer,
 void Paragraph::setInsetOwner(Inset * i)
 {
 	pimpl_->inset_owner = i;
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
+	InsetList::const_iterator cit = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; cit != end; ++cit) {
 		if (cit->inset)
 			cit->inset->setOwner(i);
 	}
@@ -2055,13 +2080,12 @@ void Paragraph::setInsetOwner(Inset * i)
 void Paragraph::deleteInsetsLyXText(BufferView * bv)
 {
 	// then the insets
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
-		if (cit->inset) {
-			if (cit->inset->isTextInset()) {
-				static_cast<UpdatableInset *>
-					(cit->inset)->deleteLyXText(bv, true);
-			}
+	InsetList::const_iterator cit = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; cit != end; ++cit) {
+		if (cit->inset && cit->inset->isTextInset()) {
+			static_cast<UpdatableInset *>
+				(cit->inset)->deleteLyXText(bv, true);
 		}
 	}
 }
@@ -2070,9 +2094,9 @@ void Paragraph::deleteInsetsLyXText(BufferView * bv)
 void Paragraph::resizeInsetsLyXText(BufferView * bv)
 {
 	// then the insets
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit)
-	{
+	InsetList::const_iterator cit = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
+	for (; cit != end; ++cit) {
 		if (cit->inset) {
 			if (cit->inset->isTextInset()) {
 				static_cast<UpdatableInset *>
