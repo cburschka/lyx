@@ -218,7 +218,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 {
 	if (token == "filename") {
-		lex.next();
+		lex.eatLine();
 		filename = lex.getString();
 	} else if (token == "BoundingBox") {
 		for (int i=0; i<4 ;i++) {
