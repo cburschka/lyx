@@ -48,7 +48,7 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
 
 
 def get_end_format():
-    return format_relation[-1:][0][1][-1:][0]
+    return format_relation[-1][1][-1]
 
 
 def get_backend(textclass):
