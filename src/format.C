@@ -8,12 +8,14 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include "config.h"
 #include "format.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "lyx_cb.h" // for ShowMessage() ... to be removed?
 #include "gettext.h"
 #include "LString.h"
+#include "BoostFormat.h"
 
 #include "frontends/Alert.h" //to be removed?
 
@@ -21,6 +23,7 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/lyxfunctional.h"
+
 
 
 namespace {
@@ -129,9 +132,7 @@ void Formats::erase(string const & name)
 
 void Formats::sort()
 {
-	cout << "here" << endl;
 	std::sort(formatlist.begin(), formatlist.end());
-	cout << "and here " << formatlist.size() << endl;
 }
 
 
@@ -190,7 +191,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 			QuoteName(OnlyFilename(filename)));
 	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
 
-	lyxerr[Debug::FILES] << "Executing command: " << command << endl;
+	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	ShowMessage(buffer, _("Executing command:"), command);
 
 	Path p(OnlyPath(filename));
