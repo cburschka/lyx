@@ -1423,7 +1423,9 @@ void LyXText::copyEnvironmentType()
 
 void LyXText::pasteEnvironmentType(BufferView * bview)
 {
-	setLayout(bview, copylayouttype);
+	// do nothing if there has been no previous copyEnvironmentType()
+	if (!copylayouttype.empty())
+		setLayout(bview, copylayouttype);
 }
 
 

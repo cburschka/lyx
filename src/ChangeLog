@@ -1,5 +1,10 @@
 2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* text2.C (pasteEnvironmentType): avoid crash if layout-copy has
+	not been invoked
+
+2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
 	* lyxfunc.C (getStatus): query lyx_gui::getStatus() to catter for
 	unimplemented lfuns. Make LFUN_THESAURUS_ENTRY status unknown if
 	thesaurus is not compiled in
