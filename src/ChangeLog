@@ -1,3 +1,8 @@
+2004-02-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (workAreaDispatch): allow also
+	LFUN_FILE_OPEN, which is used by the drag-and-drop code.
+
 2004-02-27  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text.C (rowBreakPoint): fix a bug showing with very large insets
@@ -35,7 +40,6 @@
 	* text2.C:
 	* text3.C:  streamlines the LyXText cursor movement handlers a bit.
 
-
 2004-02-20  André Pönitz  <poenitz@gmx.net>
 
 	* lyxfunc.[Ch]: rename view_status_message() to viewStatusMessage()
@@ -61,7 +65,6 @@
 	* text.C:
 	* text2.C:
 	* text3.C: adjust
-
 
 2004-02-16  Alfredo Braunstein  <abraunst@lyx.org>
 
