@@ -1,5 +1,15 @@
 2004-10-24  José Matos  <jamatos@lyx.org>
 
+	* paragraph.[Ch] (getFirstWord): new function to get the first
+	word. Useful for description.
+	(simpleDocBookOnePar): remove depth argument, add another that
+	says where to start the paragraph.
+
+	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):
+	use the new functions to fix cleanly the support for descriptions.
+	
+2004-10-24  José Matos  <jamatos@lyx.org>
+
 	* buffer.C (makeLinuxDocFile, makeDocBookFile):
 	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):
 	* output_linuxdoc.C (linuxdocParagraphs):

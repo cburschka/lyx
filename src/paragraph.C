@@ -1347,42 +1347,62 @@ string Paragraph::getDocbookId() const
 }
 
 
+pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams const & runparams) const
+{
+	pos_type i;
+	LyXLayout_ptr const & style = layout();
+	for (i = 0; i < size(); ++i) {
+		if (isInset(i)) {
+			InsetBase const * inset = getInset(i);
+			inset->docbook(buf, os, runparams);
+		} else {
+			char c = getChar(i);
+			if (c == ' ')
+				break;
+			bool ws;
+			string str;
+			boost::tie(ws, str) = sgml::escapeChar(c);
+
+			if (style->pass_thru)
+				os << c;
+			else
+				os << str;
+		}
+	}
+	return i;
+}
+
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
-				    LyXFont const & outerfont,
 				    OutputParams const & runparams,
-				    lyx::depth_type depth) const
+				    LyXFont const & outerfont,
+				    pos_type initial) const
 {
 	bool emph_flag = false;
-	int char_line_count = 0;
 
 	LyXLayout_ptr const & style = layout();
-	LyXLayout_ptr const & defaultstyle =
-		buf.params().getLyXTextClass().defaultLayout();
-
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	bool label_closed = true;
-
+	bool cdata = (style->latexparam() == "CDATA");
 	// parsing main loop
-	for (pos_type i = 0; i < size(); ++i) {
+	for (pos_type i = initial; i < size(); ++i) {
 		LyXFont font = getFont(buf.params(), i, outerfont);
 
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
 			if (font.emph() == LyXFont::ON) {
-				if (style->latexparam() == "CDATA")
+				if (cdata)
 					os << "]]>";
 				os << "<emphasis>";
-				if (style->latexparam() == "CDATA")
+				if (cdata)
 					os << "<![CDATA[";
 				emph_flag = true;
-			} else if (i) {
-				if (style->latexparam() == "CDATA")
+			} else if (i != initial) {
+				if (cdata)
 					os << "]]>";
 				os << "</emphasis>";
-				if (style->latexparam() == "CDATA")
+				if (cdata)
 					os << "<![CDATA[";
 				emph_flag = false;
 			}
@@ -1390,10 +1410,10 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
-			if (style->latexparam() == "CDATA")
+			if (cdata)
 				os << "]]>";
 			inset->docbook(buf, os, runparams);
-			if (style->latexparam() == "CDATA")
+			if (cdata)
 				os << "<![CDATA[";
 		} else {
 			char c = getChar(i);
@@ -1401,38 +1421,22 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			string str;
 			boost::tie(ws, str) = sgml::escapeChar(c);
 
-			if (style->pass_thru) {
+			if (style->pass_thru)
 				os << c;
-			} else if (isFreeSpacing() || c != ' ') {
-					os << str;
-			} else if (!style->labeltag().empty() && !label_closed) {
-				++char_line_count;
-				os << "\n</" << style->labeltag() << "><"
-				   << style->itemtag() << "><"
-				   << defaultstyle->latexname() << ">";
-				label_closed = true;
-			} else {
-				os << ' ';
-			}
+			else
+				os << str;
 		}
 		font_old = font;
 	}
 
 	if (emph_flag) {
-		if (style->latexparam() == "CDATA")
+		if (cdata)
 			os << "]]>";
 		os << "</emphasis>";
-		if (style->latexparam() == "CDATA")
+		if (cdata)
 			os << "<![CDATA[";
 	}
 
-	// resets description flag correctly
-	if (!label_closed) {
-		// <term> not closed...
-		os << "</" << style->labeltag() << ">\n<"
-		   << style->itemtag() << "><"
-		   << defaultstyle->latexname() << ">&nbsp;";
-	}
 	if (style->free_spacing)
 		os << '\n';
 }

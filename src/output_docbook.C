@@ -28,10 +28,12 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/tostr.h"
+#include "support/types.h"
 
 #ifdef HAVE_LOCALE
 #endif
 
+using lyx::pos_type;
 using lyx::support::subst;
 
 using std::endl;
@@ -107,8 +109,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 		id = id.empty()? "": " id = \"" + id + "\"";
 
 		sgml::openTag(buf, os, depth, true, style->latexname(), id);
-		par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs), runparams, depth);
-	
+		par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
 		sgml::closeTag(os, depth, true, style->latexname());
 		os << '\n';
 	}
@@ -143,6 +144,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		string id = "";
 		ParagraphList::const_iterator send;
 		string wrapper = "";
+		pos_type sep = 0;
 
 		// Opening inner tag
 		switch (bstyle->latextype) {
@@ -154,11 +156,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 		case LATEX_ITEM_ENVIRONMENT:
 			if (!bstyle->labeltag().empty()) {
+				sgml::openTag(buf, os, depth, true, bstyle->innertag());
 				sgml::openTag(buf, os, depth, true, bstyle->labeltag());
-			} else {
-				wrapper = defaultstyle->latexname();
-				sgml::openTag(buf, os, depth, true, bstyle->itemtag());
+				sep = par->getFirstWord(buf, os, runparams) + 1;
+				sgml::closeTag(os, depth, true, bstyle->labeltag());
 			}
+			wrapper = defaultstyle->latexname();
+			sgml::openTag(buf, os, depth, true, bstyle->itemtag());
 		default:
 			break;
 		}
@@ -168,7 +172,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ITEM_ENVIRONMENT: {
 			if(par->params().depth() == pbegin->params().depth()) {
 				sgml::openTag(buf, os, depth, true, wrapper, id);
-				par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs), runparams, depth);
+				par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs), sep);
 				sgml::closeTag(os, depth, true, wrapper);
 				++par;
 			}
@@ -196,6 +200,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			sgml::closeTag(os, depth, true, bstyle->itemtag());
+			if (!bstyle->labeltag().empty())
+				sgml::closeTag(os, depth, true, bstyle->innertag());
 			break;
 		default:
 			break;
@@ -255,8 +261,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	// Opend inner tag
 	sgml::openTag(buf, os, depth, true, bstyle->innertag());
 
-	par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs),
-				 runparams, depth);
+	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(par - paragraphs.begin(), paragraphs));
 
 	// Close inner tags
 	sgml::closeTag(os, depth, true, bstyle->innertag());

@@ -132,12 +132,17 @@ public:
 	/// Get the id of the paragraph, usefull for docbook
 	std::string getDocbookId() const;
 
-	///
+	// Get the first word of a paragraph, return the position where it left
+	lyx::pos_type getFirstWord(Buffer const & buf,
+				   std::ostream & os,
+				   OutputParams const & runparams) const;
+
+	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
 				 std::ostream &,
-				 LyXFont const & outerfont,
 				 OutputParams const & runparams,
-				 lyx::depth_type depth) const;
+				 LyXFont const & outerfont,
+				 lyx::pos_type initial = 0) const;
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;
