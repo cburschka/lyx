@@ -65,6 +65,13 @@ string convert<string>(unsigned long ul)
 
 
 template<>
+string convert<string>(long l)
+{
+	return lexical_cast<string>(l);
+}
+
+
+template<>
 string convert<string>(float f)
 {
 	return lexical_cast<string>(f);

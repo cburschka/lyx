@@ -1,6 +1,10 @@
+2005-01-07  Angus Leeming  <leeming@lyx.org>
+
+	* convert.C (string>): add specialization for long.
+
 2005-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* convert.h: remove the specializations, dont included unneeded
+	* convert.h: remove the specializations, don't included unneeded
 	headers 
 	* convert.C: add specialization for unsigned long
 
