@@ -291,7 +291,7 @@ void LyXText::setLayout(string const & layout)
 		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
-		bv()->insertInset(inset);
+		insertInset(inset);
 		//inset->edit(bv());
 		//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		return;

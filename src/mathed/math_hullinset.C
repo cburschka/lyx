@@ -1328,7 +1328,7 @@ namespace {
 
 bool openNewInset(LCursor & cur, InsetBase * inset)
 {
-	cur.bv().insertInset(inset);
+	cur.bv().getLyXText()->insertInset(inset);
 	inset->edit(cur, true);
 	return true;
 }

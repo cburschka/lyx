@@ -1080,7 +1080,23 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(cmd.argument)) {
 			InsetBase * inset = new InsetFloatList(cmd.argument);
-			bv_->insertInset(inset, tclass.defaultLayoutName());
+		
+			// not quite sure if we want this...
+			bv_->text()->recUndo(bv_->text()->cursor().par());
+			freezeUndo();
+
+			cur.clearSelection();
+			bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
+
+			if (!bv_->text()->cursorPar()->empty()) {
+				bv_->text()->cursorLeft(true);
+				bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
+			}
+
+			bv_->text()->setLayout(tclass.defaultLayoutName());
+			bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
+			bv_->getLyXText()->insertInset(inset);
+			unFreezeUndo();
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << cmd.argument << endl;

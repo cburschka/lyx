@@ -398,14 +398,13 @@ namespace {
 void specialChar(LyXText * text, BufferView * bv, InsetSpecialChar::Kind kind)
 {
 	bv->update();
-	InsetSpecialChar * new_inset = new InsetSpecialChar(kind);
 	replaceSelection(text);
-	bv->insertInset(new_inset);
+	text->insertInset(new InsetSpecialChar(kind));
 	bv->update();
 }
 
 
-void doInsertInset(BufferView * bv, FuncRequest const & cmd,
+void doInsertInset(LyXText * text, BufferView * bv, FuncRequest const & cmd,
 	bool edit, bool pastesel)
 {
 	InsetBase * inset = createInset(bv, cmd);
@@ -417,7 +416,7 @@ void doInsertInset(BufferView * bv, FuncRequest const & cmd,
 		bv->owner()->dispatch(FuncRequest(LFUN_CUT));
 		gotsel = true;
 	}
-	bv->insertInset(inset);
+	text->insertInset(inset);
 	if (edit)
 		inset->edit(bv->cursor(), true);
 	if (gotsel && pastesel)
@@ -863,7 +862,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSET_INSERT: {
 		InsetBase * inset = createInset(bv, cmd);
 		if (inset)
-			bv->insertInset(inset);
+			insertInset(inset);
 		break;
 	}
 
@@ -884,7 +883,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cursorPar()->layout()->free_spacing)
 			insertChar(' ');
 		else
-			doInsertInset(bv, cmd, false, false);
+			doInsertInset(this, bv, cmd, false, false);
 		moveCursor(cur, false);
 		break;
 
@@ -1108,7 +1107,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		BufferParams const & bufparams = bv->buffer()->params();
 		if (style->pass_thru ||
 		    pit->getFontSettings(bufparams,pos).language()->lang() == "hebrew")
-		  bv->insertInset(new InsetQuotes(c, bufparams));
+		  insertInset(new InsetQuotes(c, bufparams));
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;
@@ -1357,12 +1356,12 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
-		doInsertInset(bv, cmd, true, true);
+		doInsertInset(this, bv, cmd, true, true);
 		break;
 
 	case LFUN_INDEX_INSERT:
 		// Just open the inset
-		doInsertInset(bv, cmd, true, false);
+		doInsertInset(this, bv, cmd, true, false);
 		break;
 
 	case LFUN_INDEX_PRINT:
@@ -1371,7 +1370,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSERT_LINE:
 	case LFUN_INSERT_PAGEBREAK:
 		// do nothing fancy
-		doInsertInset(bv, cmd, false, false);
+		doInsertInset(this, bv, cmd, false, false);
 		break;
 
 	case LFUN_DEPTH_MIN:
