@@ -203,10 +203,10 @@ void error_handler(int err_sig)
 	case SIGSEGV:
 		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
 		lyxerr <<
-			"Sorry, you have found a bug in LyX."
-			" If possible, please read 'Known bugs'\n"
-			"under the Help menu and then send us "
-			"a full bug report. Thanks!" << endl;
+			"Sorry, you have found a bug in LyX. "
+			"Please read the bug-reporting instructions " 
+			"in Help->Introduction and send us a bug report, "
+			"if necessary. Thanks !" << endl;
 		break;
 	case SIGTERM:
 		// no comments
