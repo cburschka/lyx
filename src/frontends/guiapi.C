@@ -57,12 +57,6 @@ void gui_ShowForks(Dialogs & d)
 }
 
 
-void gui_ShowGraphics(InsetGraphics * ig, Dialogs & d)
-{
-	d.showGraphics(ig);
-}
-
-
 void gui_ShowLogFile(Dialogs & d)
 {
 	d.showLogFile();

@@ -18,6 +18,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "lyxrc.h"
 
@@ -41,38 +42,30 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 
 
-ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
+ControlGraphics::ControlGraphics(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-InsetGraphicsParams const ControlGraphics::getParams(string const &)
+void ControlGraphics::initialiseParams(string const & data)
 {
-	return InsetGraphicsParams();
+	InsetGraphicsParams params;
+	InsetGraphicsMailer::string2params(data, params);
+	params_.reset(new InsetGraphicsParams(params));
 }
 
 
-InsetGraphicsParams const
-ControlGraphics::getParams(InsetGraphics const & inset)
+void ControlGraphics::clearParams()
 {
-	return inset.params();
+	params_.reset();
 }
 
 
-void ControlGraphics::applyParamsToInset()
+void ControlGraphics::dispatchParams()
 {
-	// Set the parameters in the inset, it also returns true if the new
-	// parameters are different from what was in the inset already.
-	bool changed = inset()->setParams(params(), buffer()->filePath());
-
-	// Tell LyX we've got a change, and mark the document dirty,
-	// if it changed.
-	bufferview()->updateInset(inset(), changed);
+	string const lfun = InsetGraphicsMailer::params2string(params());
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
-
-
-void ControlGraphics::applyParamsNoInset()
-{}
 
 
 string const ControlGraphics::Browse(string const & in_name)
@@ -88,14 +81,15 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(in_name, buffer()->filePath(),
+	return browseRelFile(in_name, kernel().buffer()->filePath(),
 			     title, "*.*", false, dir1, dir2);
 }
 
 
 string const ControlGraphics::readBB(string const & file)
 {
-	string const abs_file = MakeAbsPath(file, buffer()->filePath());
+	string const abs_file =
+		MakeAbsPath(file, kernel().buffer()->filePath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -124,7 +118,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	string const name = MakeAbsPath(fname, buffer()->filePath());
+	string const name = MakeAbsPath(fname, kernel().buffer()->filePath());
 	return IsFileReadable(name);
 }
 

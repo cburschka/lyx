@@ -16,7 +16,6 @@
 #include "LString.h"
 
 class Dialogs;
-class InsetGraphics;
 class InsetTabular;
 
 extern "C" {
@@ -29,7 +28,6 @@ void gui_SetUserFreeFont(Dialogs &);
 void gui_ShowDocument(Dialogs &);
 void gui_ShowFile(string const &, Dialogs &);
 void gui_ShowForks(Dialogs &);
-void gui_ShowGraphics(InsetGraphics *, Dialogs &);
 void gui_ShowLogFile(Dialogs &);
 void gui_ShowMathPanel(Dialogs &);
 void gui_ShowParagraph(Dialogs &);

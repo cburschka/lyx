@@ -26,6 +26,7 @@
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
 #include "insets/insetfoot.h"
+#include "insets/insetgraphics.h"
 #include "insets/insetinclude.h"
 #include "insets/insetindex.h"
 #include "insets/insetlabel.h"
@@ -190,6 +191,14 @@ Inset * createInset(FuncRequest const & cmd)
 			InsetExternalMailer::string2params(cmd.argument, iep);
 			InsetExternal * inset = new InsetExternal;
 			inset->setFromParams(iep);
+			return inset;
+
+		} else if (name == "graphics") {
+			InsetGraphicsParams igp;			
+			InsetGraphicsMailer::string2params(cmd.argument, igp);
+			InsetGraphics * inset = new InsetGraphics;
+			string const fpath = cmd.view()->buffer()->filePath();
+			inset->setParams(igp, fpath);
 			return inset;
 
 		} else if (name == "include") {

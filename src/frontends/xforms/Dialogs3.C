@@ -22,6 +22,7 @@
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
+#include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlMinipage.h"
 #include "ControlRef.h"
@@ -42,6 +43,8 @@
 #include "forms/form_external.h"
 #include "FormFloat.h"
 #include "forms/form_float.h"
+#include "FormGraphics.h"
+#include "forms/form_graphics.h"
 #include "FormInclude.h"
 #include "forms/form_include.h"
 #include "FormMinipage.h"
@@ -76,15 +79,11 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC>
 
 namespace {
 
-// char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-// 				     "error", "ert", "external", "float",
-// 				     "graphics", "include", "index",
-// 				     "minipage", "ref", "tabular", "toc",
-// 				     "url", "wrap" };
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
-				     "include", "index", "label", "minipage",
-				     "ref", "toc", "url", "wrap" };
+				     "graphics", "include", "index", "label",
+				     "minipage", "ref", "toc", "url", "wrap" };
+
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -143,6 +142,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new FormFloat(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "graphics") {
+		dialog->setController(new ControlGraphics(*dialog));
+		dialog->setView(new FormGraphics(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));

@@ -988,19 +988,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		// a tabular-inset
 		break;
 
-	case LFUN_INSET_GRAPHICS:
-	{
-		Inset * new_inset = new InsetGraphics;
-		if (!insertInset(new_inset)) {
-			delete new_inset;
-		} else {
-			// this is need because you don't use a inset->Edit()
-			updateInset(new_inset, true);
-			new_inset->edit(bv_);
-		}
-		break;
-	}
-
 	case LFUN_LAYOUT_COPY:
 		bv_->copyEnvironment();
 		break;

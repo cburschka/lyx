@@ -1,5 +1,10 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.h: remove showGraphics.
+	* guiapi.[Ch]: remove gui_showGraphics.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h: remove showMinipage, updateMinipage.
 	* guiapi.[Ch]: remove gui_showMinipage, gui_updateMinipage.
 

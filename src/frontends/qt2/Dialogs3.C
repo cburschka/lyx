@@ -19,6 +19,7 @@
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
+#include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlMinipage.h"
 #include "ControlRef.h"
@@ -43,6 +44,8 @@
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
+#include "QGraphics.h"
+#include "QGraphicsDialog.h"
 #include "QInclude.h"
 #include "QIncludeDialog.h"
 #include "QIndex.h"
@@ -79,8 +82,8 @@ namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
-				     "include", "index", "label", "minipage",
-				     "ref", "toc", "url", "wrap" };
+				     "graphics", "include", "index", "label",
+				     "minipage", "ref", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -139,6 +142,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new QFloat(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "graphics") {
+		dialog->setController(new ControlGraphics(*dialog));
+		dialog->setView(new QGraphics(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));

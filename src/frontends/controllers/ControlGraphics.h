@@ -15,11 +15,7 @@
 #define CONTROLGRAPHICS_H
 
 
-#include "ControlInset.h"
-
-// needed to instatiate inset->hideDialog in ControlInset
-#include "insets/insetgraphics.h"
-
+#include "Dialog.h"
 #include <utility>
 #include <vector>
 
@@ -30,11 +26,22 @@ class LyXView;
 /** A controller for Graphics dialogs.
  */
 
-class ControlGraphics
-	: public ControlInset<InsetGraphics, InsetGraphicsParams> {
+class ControlGraphics : public Dialog::Controller {
 public:
 	///
-	ControlGraphics(LyXView &, Dialogs &);
+	ControlGraphics(Dialog &);
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	InsetGraphicsParams & params() { return *params_.get(); }
+	///
+	InsetGraphicsParams const & params() const { return *params_.get(); }
 
 	/// Browse for a file
 	string const Browse(string const &);
@@ -46,14 +53,8 @@ public:
 	bool isFilenameValid(string const & fname) const;
 
 private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual InsetGraphicsParams const getParams(string const &);
-	/// get the parameters from the inset passed to showInset.
-	virtual InsetGraphicsParams const getParams(InsetGraphics const &);
+	boost::scoped_ptr<InsetGraphicsParams> params_;
 };
 
 namespace frnt {

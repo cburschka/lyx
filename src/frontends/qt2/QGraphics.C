@@ -43,11 +43,11 @@
 using std::vector;
 using std::endl;
 
-typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
+typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 
 
-QGraphics::QGraphics()
-	: base_class(qt_("LyX: Insert Graphics"))
+QGraphics::QGraphics(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Graphics"))
 {
 }
 

@@ -174,8 +174,6 @@ void LyXAction::init()
 		  N_("Remove all error boxes"), ReadOnly },
 		{ LFUN_INSET_ERT, "ert-insert",
 		  N_("Insert a new ERT Inset"), Noop },
-		{ LFUN_INSET_GRAPHICS, "graphics-insert",
-		  N_("Insert Graphics"), Noop },
 		{ LFUN_FILE_INSERT, "file-insert", "", Noop },
 		{ LFUN_FILE_INSERT_ASCII, "file-insert-ascii", _("Insert ASCII files as lines"), Noop },
 		{ LFUN_FILE_INSERT_ASCII_PARA, "file-insert-ascii-para", _("Insert ASCII file as a paragraph"), Noop },

@@ -14,7 +14,7 @@
 #define FORMGRAPHICS_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -28,10 +28,11 @@ struct FD_graphics_extra;
 
 /** This class provides an XForms implementation of the Graphics Dialog.
  */
-class FormGraphics : public FormCB<ControlGraphics, FormDB<FD_graphics> > {
+class FormGraphics
+	: public FormController<ControlGraphics, FormView<FD_graphics> > {
 public:
 	///
-	FormGraphics();
+	FormGraphics(Dialog &);
 private:
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,

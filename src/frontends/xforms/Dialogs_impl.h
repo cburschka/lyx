@@ -41,10 +41,6 @@
 #include "FormForks.h"
 #include "forms/form_forks.h"
 
-#include "ControlGraphics.h"
-#include "FormGraphics.h"
-#include "forms/form_graphics.h"
-
 #include "ControlLog.h"
 #include "FormLog.h"
 
@@ -122,9 +118,6 @@ FileDialog;
 typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
 ForksDialog;
 
-typedef GUI<ControlGraphics, FormGraphics, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-GraphicsDialog;
-
 typedef GUI<ControlLog, FormLog, OkCancelPolicy, xformsBC>
 LogFileDialog;
 
@@ -178,7 +171,6 @@ struct Dialogs::Impl {
 	DocumentDialog      document;
 	FileDialog          file;
 	ForksDialog         forks;
-	GraphicsDialog      graphics;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	ParagraphDialog     paragraph;

@@ -543,9 +543,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;
 		break;
-	case LFUN_INSET_GRAPHICS:
-		code = Inset::GRAPHICS_CODE;
-		break;
 	case LFUN_INSET_FOOTNOTE:
 		code = Inset::FOOT_CODE;
 		break;

@@ -23,7 +23,6 @@ class Dialog;
 class InsetBase;
 class LyXView;
 
-class InsetGraphics;
 class InsetInfo;
 class Paragraph;
 class InsetTabular;
@@ -86,8 +85,6 @@ public:
 	void showFile(string const &);
 	/// show all forked child processes
 	void showForks();
-	///
-	void showGraphics(InsetGraphics *);
 	/// show the LaTeX log or build file
 	void showLogFile();
 	/// display the top-level maths panel

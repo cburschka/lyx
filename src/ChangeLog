@@ -1,4 +1,15 @@
-2003-03-05  Angus Leeming  <leeming@lyx.org>
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (dispatch):
+	* LyXAction.C (init):
+	* ToolbarDefaults.C (init):
+	* commandtags.h:
+	* lyxfunc.C (getStatus):
+	remove LFUN_INSET_GRAPHICS.
+
+	* factory.C (createInset): add "graphics" to LFUN_INSET_APPLY.
+	
+2003-03-07  Angus Leeming  <leeming@lyx.org>
 
 	* commandtags.h:
 	* LyXAction.C (init):

@@ -14,21 +14,21 @@
 #define QGRAPHICS_H
 
 
-#include "insets/insetgraphics.h"
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlGraphics;
 class QGraphicsDialog;
 
 ///
 class QGraphics
-	: public Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> >
+	: public QController<ControlGraphics, QView<QGraphicsDialog> >
 {
 public:
 	///
 	friend class QGraphicsDialog;
 	///
-	QGraphics();
+	QGraphics(Dialog &);
 protected:
 	virtual bool isValid();
 private:

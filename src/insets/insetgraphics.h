@@ -18,8 +18,6 @@
 #include "insets/inset.h"
 #include "insets/insetgraphicsParams.h"
 
-// We need a signal here to hide an active dialog when we are deleted.
-#include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -36,6 +34,8 @@ public:
 		      bool same_id = false);
 	///
 	~InsetGraphics();
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -88,12 +88,13 @@ public:
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
 
-	/** This signal is connected by our dialog and called when the inset
-	    is deleted.
-	*/
-	boost::signal0<void> hideDialog;
-
 private:
+	/// Returns the cached BufferView.
+	BufferView * view() const;
+
+	///
+	friend class InsetGraphicsMailer;
+
 	/// Is the image ready to draw, or should we display a message instead?
 	bool imageIsDrawable() const;
 
@@ -123,6 +124,30 @@ private:
 	friend class Cache;
 	/// The pointer never changes although *cache_'s contents may.
 	boost::scoped_ptr<Cache> const cache_;
+};
+
+
+#include "mailinset.h"
+
+class InsetGraphicsMailer : public MailInset {
+public:
+	///
+	InsetGraphicsMailer(InsetGraphics & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetGraphicsParams &);
+	///
+	static string const params2string(InsetGraphicsParams const &);
+private:
+	///
+	static string const name_;
+	///
+	InsetGraphics & inset_;
 };
 
 #endif

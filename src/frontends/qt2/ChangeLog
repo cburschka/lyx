@@ -7,6 +7,16 @@
 
 	* Dialogs.C:
 	* Dialogs2.C:
+	* Dialogs_impl.h: remove graphics dialog.
+
+	* Dialogs3.C: add graphics dialog.
+
+	* QGraphics.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
 	* Dialogs_impl.h: remove minipage dialog.
 
 	* Dialogs3.C: add minipage dialog. No longer use the bibitem, include,

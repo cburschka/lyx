@@ -233,7 +233,6 @@ enum kb_action {
 	LFUN_DATE_INSERT,	              // jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_INSET_ERT,	                // Jug 20000218
-	LFUN_INSET_GRAPHICS,            // Lgb 20000226
 	LFUN_INSET_FOOTNOTE,            // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
 	LFUN_TABULAR_INSERT,            // Jug 20000412

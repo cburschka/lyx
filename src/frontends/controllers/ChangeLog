@@ -1,5 +1,12 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* ControlGraphics.[Ch]: rewrite to use the Dialog-based scheme.
+
+	* ControlInset.{h, tmpl}: remove.
+	* Makefile.am: remove files.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* ControlBibitem.[Ch]:
 	* ControlIndex.[Ch]:
 	* ControlLabel.[Ch]:

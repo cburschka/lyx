@@ -5,7 +5,7 @@ noinst_LTLIBRARIES = libcontrollers.la
 INCLUDES = -I$(top_srcdir)/src \
 	$(BOOST_INCLUDES)
 
-EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl
+EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl
 
 libcontrollers_la_SOURCES= \
 	Dialog.C \
@@ -62,7 +62,6 @@ libcontrollers_la_SOURCES= \
 	ControlGraphics.h \
 	ControlInclude.C \
 	ControlInclude.h \
-	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
 	ControlMath.C \

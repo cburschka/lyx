@@ -64,20 +64,19 @@ TODO
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
-#include "format.h"
-#include "frontends/Painter.h"
-#include "lyxrc.h"
-#include "frontends/font_metrics.h"
 #include "debug.h"
+#include "format.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
+#include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
-
-#include "frontends/controllers/helper_funcs.h" // getVectorFromString
+#include "frontends/Painter.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
@@ -213,8 +212,41 @@ Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
 
 InsetGraphics::~InsetGraphics()
 {
-	// Emits the hide signal to the dialog connected (if any)
-	hideDialog();
+	InsetGraphicsMailer mailer(*this);
+	mailer.hideDialog();
+}
+
+
+dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
+{
+	dispatch_result result = UNDISPATCHED;
+
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetGraphicsParams p;
+		InsetGraphicsMailer::string2params(cmd.argument, p);
+		if (p.filename.empty())
+			break;
+
+		string const filepath = cmd.view()->buffer()->filePath();
+		setParams(p, filepath);
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetGraphicsMailer mailer(*this);
+		mailer.updateDialog();
+	}
+	break;
+
+	default:
+		result = DISPATCHED;
+		break;
+	}
+
+	return result;
 }
 
 
@@ -298,6 +330,12 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 	}
 
 	return std::max(50, font_width + 15);
+}
+
+
+BufferView * InsetGraphics::view() const
+{
+	return cache_->view.lock().get();
 }
 
 
@@ -394,9 +432,10 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetGraphics::edit(BufferView *bv, int, int, mouse_button::state)
+void InsetGraphics::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showGraphics(this);
+	InsetGraphicsMailer mailer(*this);
+	mailer.showDialog();
 }
 
 
@@ -832,4 +871,51 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p,
 InsetGraphicsParams const & InsetGraphics::params() const
 {
 	return params_;
+}
+
+
+string const InsetGraphicsMailer::name_("graphics");
+
+InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
+	: inset_(inset)
+{}
+
+
+string const InsetGraphicsMailer::inset2string() const
+{
+	return params2string(inset_.params());
+}
+
+
+void InsetGraphicsMailer::string2params(string const & in,
+					InsetGraphicsParams & params)
+{
+	params = InsetGraphicsParams();
+
+	istringstream data(in);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != name_)
+			return;
+	}
+
+	InsetGraphics inset;	
+	inset.readInsetGraphics(lex);
+	params = inset.params();
+}
+
+
+string const
+InsetGraphicsMailer::params2string(InsetGraphicsParams const & params)
+{
+	ostringstream data;
+	data << name_ << ' ';
+	params.Write(data);
+	data << "\\end_inset\n";
+
+	return data.str();
 }

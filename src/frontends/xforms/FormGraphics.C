@@ -55,10 +55,10 @@ string defaultUnit("cm");
 } // namespace anon
 
 
-typedef FormCB<ControlGraphics, FormDB<FD_graphics> > base_class;
+typedef FormController<ControlGraphics, FormView<FD_graphics> > base_class;
 
-FormGraphics::FormGraphics()
-	: base_class(_("Graphics"), false)
+FormGraphics::FormGraphics(Dialog & parent)
+	: base_class(parent, _("Graphics"), false)
 {}
 
 
