@@ -705,28 +705,6 @@ rm -f conftest*])
 ])
 ### end of LYX_PATH_HEADER
 
-### Check for stl_string_fwd.h existence and location if it exists
-AC_DEFUN(LYX_STL_STRING_FWD,
-[ AC_CHECK_HEADER(stl_string_fwd.h,[
-  AC_CACHE_CHECK([path to stl_string_fwd.h],lyx_cv_path_stl_string_fwd_h,
-  [ cat > conftest.$ac_ext <<EOF
-#line __oline__ "configure"
-#include "confdefs.h"
-
-#include <stl_string_fwd.h>
-EOF
-lyx_cv_path_stl_string_fwd_h=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
-  grep 'stl_string_fwd.h'  2>/dev/null | \
-  sed -e 's/.*\(".*stl_string_fwd.h"\).*/\1/' -e "1q"`
-rm -f conftest*])
-  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h,
-[define this to the location of stl_string_fwd.h to be used with #include,
-  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
-	supplied version of the header.
-  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path])])
-])
-
-
 dnl AC_VALIDATE_CACHE_SYSTEM_TYPE[(cmd)]
 dnl if the cache file is inconsistent with the current host,
 dnl target and build system types, execute CMD or print a default

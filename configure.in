@@ -244,10 +244,6 @@ AC_HEADER_DIRENT
 AC_HEADER_MAJOR
 AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h)
 
-# some annoying header files
-#LYX_PATH_HEADER(stl_string_fwd.h)
-LYX_STL_STRING_FWD
-
 # some standard structures
 AC_HEADER_STAT
 AC_HEADER_TIME
