@@ -1,3 +1,9 @@
+2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
+
+	* lyx_gui.h (set_datasocket_callback, set_serversocket_callback,
+	remove_datasocket_callback, remove_serversocket_callback):
+	new function declarations, implemented in the various frontends.
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyx_gui.h: add <string> and other small fixes to make Lars'

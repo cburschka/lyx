@@ -236,6 +236,22 @@ void remove_read_callback(int fd)
 }
 
 
+void set_datasocket_callback(LyXDataSocket * /* p */)
+{}
+
+
+void remove_datasocket_callback(LyXDataSocket * /* p */)
+{}
+
+
+void set_serversocket_callback(LyXServerSocket * /* p */)
+{}
+
+
+void remove_serversocket_callback(LyXServerSocket * /* p */)
+{}
+
+
 string const roman_font_name()
 {
 	if (!use_gui)

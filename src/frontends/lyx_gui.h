@@ -22,6 +22,8 @@ class Dialogs;
 class LColor_color;
 class LyXFont;
 class LyXComm;
+class LyXDataSocket;
+class LyXServerSocket;
 class FuncRequest;
 
 /// GUI interaction
@@ -94,12 +96,16 @@ bool font_available(LyXFont const & font);
  * add a callback for I/O read notification
  */
 void set_read_callback(int fd, LyXComm * comm);
+void set_datasocket_callback(LyXDataSocket *);
+void set_serversocket_callback(LyXServerSocket *);
 
 /**
  * remove a I/O read callback
  * @param fd file descriptor
  */
 void remove_read_callback(int fd);
+void remove_datasocket_callback(LyXDataSocket *);
+void remove_serversocket_callback(LyXServerSocket *);
 
 } // namespace lyx_gui
 

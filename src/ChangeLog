@@ -1,3 +1,10 @@
+2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
+
+	* lyxsocket.[Ch]: new files. A simple local socket interface for lyx.
+
+	* Makefile.am: add lyxsocket.[Ch].
+
+	* lyx_main.C (error_handler): handle SIGPIPE.
 
 2003-10-13  André Pönitz  <poenitz@gmx.net>
 

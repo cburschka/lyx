@@ -214,6 +214,13 @@ static void error_handler(int err_sig)
 	case SIGTERM:
 		// no comments
 		break;
+	case SIGPIPE:
+		// This will be received if lyx tries to write to a socket
+		// whose reading end was closed. It can safely be ignored,
+		// as in this case the ::write() system call will return -1
+		// and errno will be set to EPIPE
+		return;
+		//break;
 	}
 
 	// Deinstall the signal handlers
@@ -222,6 +229,7 @@ static void error_handler(int err_sig)
 	signal(SIGFPE, SIG_DFL);
 	signal(SIGSEGV, SIG_DFL);
 	signal(SIGTERM, SIG_DFL);
+	signal(SIGPIPE, SIG_DFL);
 
 	LyX::emergencyCleanup();
 
@@ -250,6 +258,7 @@ void LyX::init(bool gui)
 	signal(SIGSEGV, error_handler);
 	signal(SIGINT, error_handler);
 	signal(SIGTERM, error_handler);
+	signal(SIGPIPE, error_handler);
 
 	bool const explicit_userdir = setLyxPaths();
 

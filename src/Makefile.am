@@ -209,6 +209,8 @@ lyx_SOURCES = \
 	lyxrow_funcs.h \
 	lyxserver.C \
 	lyxserver.h \
+	lyxsocket.C \
+	lyxsocket.h \
 	lyxtext.h \
 	lyxtextclass.C \
 	lyxtextclass.h \

@@ -29,12 +29,13 @@
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
+#include "lyxsocket.h"
 
 #include "graphics/LoaderQueue.h"
 
+#include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
-#include "support/filetools.h"
 #include "support/path_defines.h"
 
 #include "lyx_forms.h"
@@ -69,6 +70,7 @@ extern BufferList bufferlist;
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
+LyXServerSocket * lyxsocket;
 
 namespace {
 
@@ -289,6 +291,8 @@ void start(string const & batch, vector<string> const & files)
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
@@ -313,6 +317,7 @@ void start(string const & batch, vector<string> const & files)
 	}
 
 	// FIXME: breaks emergencyCleanup
+	delete lyxsocket;
 	delete lyxserver;
 }
 
@@ -382,6 +387,20 @@ void C_read_callback(int, void * data)
 	comm->read_ready();
 }
 
+extern "C"
+void C_datasocket_callback(int, void * data)
+{
+	LyXDataSocket * client = static_cast<LyXDataSocket *>(data);
+	client->server()->dataCallback(client);
+}
+
+extern "C"
+void C_serversocket_callback(int, void * data)
+{
+	LyXServerSocket * server = static_cast<LyXServerSocket *>(data);
+	server->serverCallback();
+}
+
 }
 
 void set_read_callback(int fd, LyXComm * comm)
@@ -389,12 +408,30 @@ void set_read_callback(int fd, LyXComm * comm)
 	fl_add_io_callback(fd, FL_READ, C_read_callback, comm);
 }
 
-
 void remove_read_callback(int fd)
 {
 	fl_remove_io_callback(fd, FL_READ, C_read_callback);
 }
 
+void set_datasocket_callback(LyXDataSocket * p)
+{
+	fl_add_io_callback(p->fd(), FL_READ, C_datasocket_callback, p);
+}
+
+void remove_datasocket_callback(LyXDataSocket * p)
+{
+	fl_remove_io_callback(p->fd(), FL_READ, C_datasocket_callback);
+}
+
+void set_serversocket_callback(LyXServerSocket * p)
+{
+	fl_add_io_callback(p->fd(), FL_READ, C_serversocket_callback, p);
+}
+
+void remove_serversocket_callback(LyXServerSocket * p)
+{
+	fl_remove_io_callback(p->fd(), FL_READ, C_serversocket_callback);
+}
 
 string const roman_font_name()
 {

@@ -65,6 +65,8 @@ libsupport_la_SOURCES = \
 	rmdir.C \
 	snprintf.h \
 	snprintf.c \
+	socktools.C \
+	socktools.h \
 	sstream.h \
 	std_istream.h \
 	std_ostream.h \
