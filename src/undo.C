@@ -183,7 +183,7 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 
 	// clear any selection
 	text->clearSelection();
-	text->anchor() = text->cursor();
+	bv->resetAnchor();
 	text->updateCounters();
 
 	// rebreak the entire lyxtext

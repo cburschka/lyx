@@ -295,7 +295,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 		bv->top_y(par.outerPar()->y);
 	bv->update();
 	text->setCursor(cur.pit(), cur.pos());
-	bv->cursor().updatePos();
+	bv->fullCursor().updatePos();
 
 	if (length) {
 		text->setSelectionRange(length);

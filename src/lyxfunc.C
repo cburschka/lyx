@@ -157,8 +157,8 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
+	view()->resetAnchor();
 	view()->update();
-	view()->getLyXText()->anchor() = view()->getLyXText()->cursor();
 }
 
 
@@ -322,8 +322,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 	}
 
-	UpdatableInset * tli = view()->cursor().innerInset();
-	InsetTabular * tab = view()->cursor().innerInsetTabular();
+	UpdatableInset * tli = view()->fullCursor().innerInset();
+	InsetTabular * tab = view()->fullCursor().innerInsetTabular();
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -356,7 +356,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		disable = !view()->cursor().innerInsetTabular();
+		disable = !view()->fullCursor().innerInsetTabular();
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -471,7 +471,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
-		UpdatableInset * inset = view()->cursor().innerInset();
+		UpdatableInset * inset = view()->fullCursor().innerInset();
 
 		if (!inset)
 			break;
@@ -543,7 +543,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			disable = !Exporter::IsExportable(*buf, "dvi") ||
 				lyxrc.print_command == "none";
 		} else if (name == "character") {
-			UpdatableInset * tli = view()->cursor().innerInset();
+			UpdatableInset * tli = view()->fullCursor().innerInset();
 			disable = tli && tli->lyxCode() == InsetOld::ERT_CODE;
 		} else if (name == "vclog") {
 			disable = !buf->lyxvc().inUse();
@@ -866,7 +866,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		case LFUN_ESCAPE: {
 			if (!view()->available())
 				break;
-			view()->cursor().pop();
+			view()->fullCursor().pop();
 			// Tell the paragraph dialog that we changed paragraph
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			break;
@@ -1101,7 +1101,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_LAYOUT_TABULAR:
-			if (InsetTabular * tab = view()->cursor().innerInsetTabular())
+			if (InsetTabular * tab = view()->fullCursor().innerInsetTabular())
 				tab->openLayoutDialog(view());
 			break;
 
@@ -1449,7 +1449,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 		default: {
 				DispatchResult result =
-					view()->cursor().dispatch(FuncRequest(func, view()));
+					view()->fullCursor().dispatch(FuncRequest(func, view()));
 				if (result.dispatched())
 					lyxerr << "dispatched by Cursor::dispatch()" << endl;
 				else
@@ -1464,7 +1464,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available()) {
 		view()->fitCursor();
 		view()->update();
-		view()->cursor().updatePos();
+		view()->fullCursor().updatePos();
 		// if we executed a mutating lfun, mark the buffer as dirty
 		if (!getStatus(func).disabled()
 		    && !lyxaction.funcHasFlag(func.action, LyXAction::NoBuffer)

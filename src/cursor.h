@@ -49,9 +49,9 @@ public:
 	/// pop one level off the cursor
 	void pop();
 	/// access to cursor 'tip'
-	CursorSlice & top() { return data_.back(); }
+	CursorSlice & top() { return cursor_.back(); }
 	/// access to cursor 'tip'
-	CursorSlice const & top() const { return data_.back(); }
+	CursorSlice const & top() const { return cursor_.back(); }
 
 	/// set the cell the cursor is in
 	void cell(int);
@@ -71,16 +71,25 @@ public:
 	void getDim(int & asc, int & desc) const;
 	/// cache the absolute coordinate from the top inset
 	void updatePos();
+	/// sets anchor to cursor position
+	void resetAnchor(); 
 	///
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:
 	/// mainly used as stack, but wee need random access
-	std::vector<CursorSlice> data_;
+	std::vector<CursorSlice> cursor_;
+	/// The
+	std::vector<CursorSlice> anchor_;
 	///
 	BufferView * bv_;
 private:
 	///
 	int cached_y_;
+};
+
+
+class LCursorS
+{
 };
 
 #endif // LYXCURSOR_H

@@ -32,17 +32,17 @@ using std::vector;
 using std::endl;
 
 
-std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
+std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
 	os << "\n";
-	for (size_t i = 0, n = cursor.data_.size(); i != n; ++i)
-		os << "   " << cursor.data_[i] << "\n";
+	for (size_t i = 0, n = cur.cursor_.size(); i != n; ++i)
+		os << "   (" << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
 	return os;
 }
 
 
 LCursor::LCursor(BufferView * bv)
-	: data_(1), bv_(bv)
+	: cursor_(1), anchor_(1), bv_(bv)
 {}
 
 
@@ -51,8 +51,8 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	lyxerr << "\nLCursor::dispatch: " << *this << endl;
 	FuncRequest cmd = cmd0;
 
-	for (int i = data_.size() - 1; i >= 1; --i) {
-		CursorSlice const & citem = data_[i];
+	for (int i = cursor_.size() - 1; i >= 1; --i) {
+		CursorSlice const & citem = cursor_[i];
 		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
 		if (res.dispatched()) {
@@ -100,7 +100,8 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 void LCursor::push(UpdatableInset * inset)
 {
 	lyxerr << "LCursor::push()  inset: " << inset << endl;
-	data_.push_back(CursorSlice(inset));
+	cursor_.push_back(CursorSlice(inset));
+	anchor_.push_back(CursorSlice(inset));
 	updatePos();
 }
 
@@ -109,9 +110,10 @@ void LCursor::push(UpdatableInset * inset)
 void LCursor::pop(int depth)
 {
 	lyxerr << "LCursor::pop() to " << depth << endl;
-	while (data_.size() > 1 && depth < data_.size()) {
+	while (cursor_.size() > 1 && depth < cursor_.size()) {
 		lyxerr <<   "LCursor::pop a level " << endl;
-		data_.pop_back();
+		cursor_.pop_back();
+		anchor_.pop_back();
 	}
 }
 
@@ -119,28 +121,30 @@ void LCursor::pop(int depth)
 void LCursor::pop()
 {
 	lyxerr << "LCursor::pop() " << endl;
-	//BOOST_ASSERT(!data_.empty());
-	if (data_.size() <= 1)
+	//BOOST_ASSERT(!cursor_.empty());
+	if (cursor_.size() <= 1)
 		lyxerr << "### TRYING TO POP FROM EMPTY CURSOR" << endl;
-	else
-		data_.pop_back();
+	else {
+		cursor_.pop_back();
+		anchor_.pop_back();
+	}
 }
 
 
 UpdatableInset * LCursor::innerInset() const
 {
-	return data_.size() <= 1 ? 0 : data_.back().asUpdatableInset();
+	return cursor_.size() <= 1 ? 0 : cursor_.back().asUpdatableInset();
 }
 
 
 LyXText * LCursor::innerText() const
 {
-	if (data_.size() > 1) {
+	if (cursor_.size() > 1) {
 		// go up until first non-0 text is hit
 		// (innermost text is 0 e.g. for mathed and the outer tabular level)
-		for (int i = data_.size() - 1; i >= 1; --i)
-			if (data_[i].text())
-				return data_[i].text();
+		for (int i = cursor_.size() - 1; i >= 1; --i)
+			if (cursor_[i].text())
+				return cursor_[i].text();
 	}
 	return bv_->text();
 }
@@ -148,7 +152,7 @@ LyXText * LCursor::innerText() const
 
 void LCursor::updatePos()
 {
-	if (data_.size() > 1)
+	if (cursor_.size() > 1)
 		cached_y_ = bv_->top_y() + innerInset()->y();
 }
 
@@ -168,7 +172,7 @@ void LCursor::getDim(int & asc, int & desc) const
 
 void LCursor::getPos(int & x, int & y) const
 {
-	if (data_.size() <= 1) {
+	if (cursor_.size() <= 1) {
 		x = bv_->text()->cursorX();
 		y = bv_->text()->cursorY();
 //		y -= bv_->top_y();
@@ -182,7 +186,7 @@ void LCursor::getPos(int & x, int & y) const
 		// inset->draw() is not called: this doesn't update
 		// inset.top_baseline, so getCursor() returns an old value.
 		// Ugly as you like.
-		inset->getCursorPos(data_.back().idx_, x, y);
+		inset->getCursorPos(cursor_.back().idx_, x, y);
 		x += inset->x();
 		y += cached_y_;
 	}
@@ -191,9 +195,9 @@ void LCursor::getPos(int & x, int & y) const
 
 UpdatableInset * LCursor::innerInsetOfType(int code) const
 {
-	for (int i = data_.size() - 1; i >= 1; --i)
-		if (data_[i].asUpdatableInset()->lyxCode() == code)
-			return data_[i].asUpdatableInset();
+	for (int i = cursor_.size() - 1; i >= 1; --i)
+		if (cursor_[i].asUpdatableInset()->lyxCode() == code)
+			return cursor_[i].asUpdatableInset();
 	return 0;
 }
 
@@ -207,13 +211,19 @@ InsetTabular * LCursor::innerInsetTabular() const
 
 void LCursor::cell(int idx)
 {
-	BOOST_ASSERT(!data_.empty());
-	data_.back().idx_ = idx;
+	BOOST_ASSERT(!cursor_.empty());
+	cursor_.back().idx_ = idx;
 }
 
 
 int LCursor::cell() const
 {
-	BOOST_ASSERT(!data_.empty());
-	return data_.back().idx_;
+	BOOST_ASSERT(!cursor_.empty());
+	return cursor_.back().idx_;
+}
+
+
+void LCursor::resetAnchor()
+{
+	anchor_ = cursor_;
 }

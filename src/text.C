@@ -1104,7 +1104,7 @@ void LyXText::selectWord(word_location loc)
 		setCursor(from.par(), from.pos());
 	if (to == from)
 		return;
-	anchor() = cursor();
+	bv()->resetAnchor();
 	setCursor(to.par(), to.pos());
 	setSelection();
 }
@@ -1170,7 +1170,7 @@ void LyXText::deleteWordForward()
 		selection.set(true); // to avoid deletion
 		cursorRightOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		anchor() = cursor();
+		bv()->resetAnchor();
 		cursor() = tmpcursor;
 		setSelection();
 		cutSelection(true, false);
@@ -1188,7 +1188,7 @@ void LyXText::deleteWordBackward()
 		selection.set(true); // to avoid deletion
 		cursorLeftOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		anchor() = cursor();
+		bv()->resetAnchor();
 		cursor() = tmpcursor;
 		setSelection();
 		cutSelection(true, false);
@@ -1207,7 +1207,7 @@ void LyXText::deleteLineForward()
 		selection.set(true); // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		anchor() = cursor();
+		bv()->resetAnchor();
 		cursor() = tmpcursor;
 		setSelection();
 		// What is this test for ??? (JMarc)
@@ -1601,7 +1601,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 void LyXText::fullRebreak()
 {
 	redoParagraphs(paragraphs().begin(), paragraphs().end());
-	anchor() = cursor();
+	bv()->resetAnchor();
 }
 
 
@@ -1937,25 +1937,25 @@ int LyXText::cursorY(CursorSlice const & cur) const
 
 CursorSlice & LyXText::cursor()
 {
-	return bv()->cursor().top();
+	return bv()->cursor();
 }
 
 
 CursorSlice const & LyXText::cursor() const
 {
-	return bv()->cursor().top();
+	return bv()->cursor();
 }
 
 
 CursorSlice & LyXText::anchor()
 {
-	return anchor_;
+	return bv()->anchor();
 }
 
 
 CursorSlice const & LyXText::anchor() const
 {
-	return anchor_;
+	return bv()->anchor();
 }
 
 
@@ -2005,7 +2005,7 @@ void LyXText::clearSelection()
 {
 	selection.set(false);
 	selection.mark(false);
-	anchor() = cursor();
+	bv()->resetAnchor();
 	// reset this in the bv()!
 	if (bv() && bv()->text())
 		bv()->unsetXSel();

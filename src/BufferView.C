@@ -316,7 +316,7 @@ void BufferView::gotoLabel(string const & label)
 			text()->setCursor(
 				std::distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
-			text()->anchor() = text()->cursor();
+			resetAnchor();
 			update();
 			return;
 		}
@@ -393,13 +393,13 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 
 UpdatableInset * BufferView::innerInset() const
 {
-	return static_cast<UpdatableInset*>(cursor().innerInset());
+	return static_cast<UpdatableInset*>(fullCursor().innerInset());
 }
 
 
 LyXText * BufferView::getLyXText() const
 {
-	return cursor().innerText();
+	return fullCursor().innerText();
 }
 
 
@@ -436,15 +436,45 @@ int BufferView::workHeight() const
 }
 
 
-LCursor & BufferView::cursor()
+void BufferView::fullCursor(LCursor const & cur)
+{
+	pimpl_->cursor_ = cur;
+}
+
+
+LCursor & BufferView::fullCursor()
 {
 	return pimpl_->cursor_;
 }
 
 
-LCursor const & BufferView::cursor() const
+LCursor const & BufferView::fullCursor() const
 {
 	return pimpl_->cursor_;
+}
+
+
+CursorSlice & BufferView::cursor()
+{
+	return fullCursor().cursor_.back();
+}
+
+
+CursorSlice const & BufferView::cursor() const
+{
+	return fullCursor().cursor_.back();
+}
+
+
+CursorSlice & BufferView::anchor()
+{
+	return fullCursor().anchor_.back();
+}
+
+
+CursorSlice const & BufferView::anchor() const
+{
+	return fullCursor().anchor_.back();
 }
 
 
@@ -469,4 +499,10 @@ void BufferView::updateParagraphDialog()
 LyXText * BufferView::text() const
 {
 	return pimpl_->buffer_ ? &pimpl_->buffer_->text() : 0;
+}
+
+
+void BufferView::resetAnchor()
+{
+	return fullCursor().resetAnchor();
 }

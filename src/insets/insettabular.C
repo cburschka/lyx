@@ -398,14 +398,14 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
 	if (cell == -1) {
 		tablemode = true;
-		bv->cursor() = theTempCursor;
-		bv->cursor().data_.push_back(CursorSlice(this));
-		bv->cursor().cell(cell);
+		bv->fullCursor(theTempCursor);
+		bv->fullCursor().push(this);
+		bv->fullCursor().cell(cell);
 	} else {
 		tablemode = false;
 		setPos(bv, cmd.x, cmd.y);
-		bv->cursor() = theTempCursor;
-		bv->cursor().cell(cell);
+		bv->fullCursor(theTempCursor);
+		bv->fullCursor().cell(cell);
 	}
 	lyxerr << bv->cursor() << endl;
 
@@ -461,8 +461,8 @@ void InsetTabular::edit(BufferView * bv, bool left)
 	clearSelection();
 	resetPos(bv);
 	bv->fitCursor();
-	bv->cursor().push(this);
-	bv->cursor().cell(cell);
+	bv->fullCursor().push(this);
+	bv->fullCursor().cell(cell);
 	lyxerr << bv->cursor() << endl;
 }
 
@@ -477,7 +477,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 	clearSelection();
 	finishUndo();
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
-	bv->cursor().push(this);
+	bv->fullCursor().push(this);
 	//if (x > xx)
 	//	activateCellInset(bv, cell, x - xx, y - cursory_);
 }
@@ -511,7 +511,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		break;
 	}
 
-	CursorSlice & cur = bv->cursor().data_.back();
+	CursorSlice & cur = bv->cursor();
 
 	if (!tablemode) {
 		
@@ -677,7 +677,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_NEXT: {
 			if (hasSelection())
 				clearSelection();
-			int actcell = bv->cursor().cell();
+			int actcell = bv->cursor().idx();
 			int actcol = tabular.column_of_cell(actcell);
 			int column = actcol;
 			if (bv->top_y() + bv->painter().paperHeight()
@@ -695,7 +695,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_PRIOR: {
 			if (hasSelection())
 				clearSelection();
-			int actcell = bv->cursor().cell();
+			int actcell = bv->cursor().idx();
 			int actcol = tabular.column_of_cell(actcell);
 			int column = actcol;
 			if (yo_ < 0) {
@@ -1278,7 +1278,7 @@ void checkLongtableSpecial(LyXTabular::ltType & ltt,
 void InsetTabular::tabularFeatures(BufferView * bv,
 	LyXTabular::Feature feature, string const & value)
 {
-	int actcell = bv->cursor().cell();
+	int actcell = bv->cursor().idx();
 	int sel_col_start;
 	int sel_col_end;
 	int sel_row_start;
@@ -1881,7 +1881,7 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 {
 	if (!paste_tabular)
 		return false;
-	int actcell = bv->cursor().cell();
+	int actcell = bv->cursor().idx();
 	int actcol = tabular.column_of_cell(actcell);
 	int actrow = tabular.row_of_cell(actcell);
 	for (int r1 = 0, r2 = actrow;
@@ -2019,7 +2019,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	string::size_type len = buf.length();
 	string::size_type p = 0;
 
-	int actcell = bv->cursor().cell();
+	int actcell = bv->cursor().idx();
 	int actcol = tabular.column_of_cell(actcell);
 	int actrow = tabular.row_of_cell(actcell);
 

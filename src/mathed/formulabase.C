@@ -313,7 +313,7 @@ void InsetFormulaBase::edit(BufferView * bv, bool left)
 	lyxerr << "Called FormulaBase::edit" << endl;
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, left);
-	bv->cursor().push(this);
+	bv->fullCursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->update();
@@ -327,7 +327,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 	mathcursor = new MathCursor(this, true);
 	//metrics(bv);
 	mathcursor->setPos(x + xo_, y + yo_);
-	bv->cursor().push(this);
+	bv->fullCursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->update();
@@ -901,7 +901,7 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 	if (sel.empty()) {
 		InsetFormula * f = new InsetFormula(bv);
 		if (openNewInset(bv, f)) {
-			bv->cursor().innerInset()->
+			bv->fullCursor().innerInset()->
 				dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -964,7 +964,7 @@ void mathDispatch(FuncRequest const & cmd)
 		case LFUN_MATH_DELIM: {
 			InsetFormula * f = new InsetFormula(bv);
 			if (openNewInset(bv, f)) {
-				UpdatableInset * inset = bv->cursor().innerInset();
+				UpdatableInset * inset = bv->fullCursor().innerInset();
 				inset->dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 				inset->dispatch(cmd);
 			}

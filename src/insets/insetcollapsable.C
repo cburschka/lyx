@@ -308,7 +308,7 @@ void InsetCollapsable::edit(BufferView * bv, bool left)
 	lyxerr << "InsetCollapsable: edit left/right" << endl;
 	inset.edit(bv, left);
 	open();
-	bv->cursor().push(this);
+	bv->fullCursor().push(this);
 }
 
 
@@ -324,7 +324,7 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 			y += inset.ascent() - height_collapsed();
 	}
 	inset.edit(bv, x, y);
-	bv->cursor().push(this);
+	bv->fullCursor().push(this);
 }
 
 

@@ -36,25 +36,37 @@ CursorSlice::CursorSlice(InsetBase * p)
 }
 
 
-void CursorSlice::par(lyx::paroffset_type par)
+void CursorSlice::idx(idx_type idx)
+{
+	idx_ = idx;
+}
+
+
+CursorSlice::idx_type CursorSlice::idx() const
+{
+	return idx_;
+}
+
+
+void CursorSlice::par(par_type par)
 {
 	par_ = par;
 }
 
 
-lyx::paroffset_type CursorSlice::par() const
+CursorSlice::par_type CursorSlice::par() const
 {
 	return par_;
 }
 
 
-void CursorSlice::pos(lyx::pos_type pos)
+void CursorSlice::pos(pos_type pos)
 {
 	pos_ = pos;
 }
 
 
-lyx::pos_type CursorSlice::pos() const
+CursorSlice::pos_type CursorSlice::pos() const
 {
 	return pos_;
 }
@@ -87,6 +99,7 @@ UpdatableInset * CursorSlice::asUpdatableInset() const
 MathArray & CursorSlice::cell(CursorSlice::idx_type idx) const
 {
 	BOOST_ASSERT(inset_);
+	BOOST_ASSERT(asMathInset());
 	return asMathInset()->cell(idx);
 }
 
@@ -100,6 +113,7 @@ MathArray & CursorSlice::cell() const
 
 void CursorSlice::getPos(int & x, int & y) const
 {
+	BOOST_ASSERT(inset_);
 	asMathInset()->getPos(idx_, pos_, x, y);
 }
 

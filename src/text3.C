@@ -349,7 +349,7 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 		}
 	}
 	bv()->update();
-	anchor() = cursor();
+	bv()->resetAnchor();
 }
 
 
@@ -543,7 +543,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_RIGHTSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		if (rtl())
 			cursorLeft(bv);
 		else
@@ -553,7 +553,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_LEFTSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		if (rtl())
 			cursorRight(bv);
 		else
@@ -563,56 +563,56 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UPSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorUp(true);
 		finishChange(bv, true);
 		break;
 
 	case LFUN_DOWNSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorDown(true);
 		finishChange(bv, true);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorUpParagraph();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_DOWN_PARAGRAPHSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorDownParagraph();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_PRIORSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorPrevious();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_NEXTSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorNext();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_HOMESEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorHome();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_ENDSEL:
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorEnd();
 		finishChange(bv, true);
 		break;
@@ -722,7 +722,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_DELETE:
 		if (!selection.set()) {
 			Delete();
-			anchor() = cursor();
+			bv->resetAnchor();
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 		} else {
@@ -739,10 +739,10 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 				cursorRight(bv);
 				cursorLeft(bv);
 				Delete();
-				anchor() = cursor();
+				bv->resetAnchor();
 			} else {
 				Delete();
-				anchor() = cursor();
+				bv->resetAnchor();
 			}
 		} else {
 			cutSelection(true, false);
@@ -755,7 +755,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.set()) {
 			if (bv->owner()->getIntl().getTransManager().backspace()) {
 				backspace();
-				anchor() = cursor();
+				bv->resetAnchor();
 				// It is possible to make it a lot faster still
 				// just comment out the line below...
 			}
@@ -783,7 +783,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		replaceSelection(bv->getLyXText());
 		breakParagraph(bv->buffer()->paragraphs(), 0);
 		bv->update();
-		anchor() = cursor();
+		bv->resetAnchor();
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
 		break;
@@ -792,7 +792,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		replaceSelection(bv->getLyXText());
 		breakParagraph(bv->buffer()->paragraphs(), 1);
 		bv->update();
-		anchor() = cursor();
+		bv->resetAnchor();
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
 		break;
@@ -882,7 +882,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		bv->cursor().innerInset()->showInsetDialog(bv);
+		bv->fullCursor().innerInset()->showInsetDialog(bv);
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -924,7 +924,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_MARK_OFF:
 		clearSelection();
 		bv->update();
-		anchor() = cursor();
+		bv->resetAnchor();
 		cmd.message(N_("Mark off"));
 		break;
 
@@ -932,7 +932,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		clearSelection();
 		selection.mark(true);
 		bv->update();
-		anchor() = cursor();
+		bv->resetAnchor();
 		cmd.message(N_("Mark on"));
 		break;
 
@@ -944,7 +944,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			selection.mark(true);
 			cmd.message(N_("Mark set"));
 		}
-		anchor() = cursor();
+		bv->resetAnchor();
 		bv->update();
 		break;
 
@@ -998,7 +998,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (in_inset_)
 			return DispatchResult(false);
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorTop();
 		finishChange(bv, true);
 		break;
@@ -1007,7 +1007,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (in_inset_)
 			return DispatchResult(false);
 		if (!selection.set())
-			anchor() = cursor();
+			bv->resetAnchor();
 		cursorBottom();
 		finishChange(bv, true);
 		break;
@@ -1171,7 +1171,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		for (int i = 0; i < datetmp_len; i++)
 			insertChar(datetmp[i]);
 
-		anchor() = cursor();
+		bv->resetAnchor();
 		moveCursor(bv, false);
 		break;
 	}
@@ -1182,7 +1182,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			selection_possible = true;
 			cursorHome();
-			anchor() = cursor();
+			bv->resetAnchor();
 			cursorEnd();
 			setSelection();
 			bv->haveSelection(selection.set());
@@ -1270,7 +1270,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		}
 
 		setCursorFromCoordinates(cmd.x, cmd.y);
-		anchor() = cursor();
+		bv->resetAnchor();
 		finishUndo();
 		bv->x_target(cursorX() + xo_);
 
@@ -1340,7 +1340,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			bv->owner()->getIntl().getTransManager().
 				TranslateAndInsert(*cit, this);
 
-		anchor() = cursor();
+		bv->resetAnchor();
 		moveCursor(bv, false);
 
 		// real_current_font.number can change so we need to

@@ -314,7 +314,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		bv->cursor() = theTempCursor;
+		bv->fullCursor(theTempCursor);
 		// fall through
 	default:
 		result = text_.dispatch(cmd);

@@ -393,8 +393,8 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	if (!text)
 		return;
 
-	par = text->cursor().par();
-	pos = text->cursor().pos();
+	par = bv_->cursor().par();
+	pos = bv_->cursor().pos();
 	selstartpar = text->selStart().par();
 	selstartpos = text->selStart().pos();
 	selendpar = text->selEnd().par();
@@ -412,13 +412,13 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		text->selection.mark(mark_set);
 		if (selection) {
 			text->setCursor(selstartpar, selstartpos);
-			text->anchor() = text->cursor();
+			bv_->resetAnchor();
 			text->setCursor(selendpar, selendpos);
 			text->setSelection();
 			text->setCursor(par, pos);
 		} else {
 			text->setCursor(par, pos);
-			text->anchor() = text->cursor();
+			bv_->resetAnchor();
 			text->selection.set(false);
 		}
 	}
@@ -537,11 +537,11 @@ void BufferView::Pimpl::selectionRequested()
 	}
 
 	if (!xsel_cache_.set ||
-	    text->cursor() != xsel_cache_.cursor ||
-	    text->anchor() != xsel_cache_.anchor)
+	    bv_->cursor() != xsel_cache_.cursor ||
+	    bv_->anchor() != xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = text->cursor();
-		xsel_cache_.anchor = text->anchor();
+		xsel_cache_.cursor = bv_->cursor();
+		xsel_cache_.anchor = bv_->anchor();
 		xsel_cache_.set = text->selection.set();
 		sel = text->selectionAsString(*bv_->buffer(), false);
 		if (!sel.empty())
@@ -915,7 +915,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		if (!available())
 			return false;
 		FuncRequest cmd1(cmd, bv_);
-		UpdatableInset * inset = bv_->cursor().innerInset();
+		UpdatableInset * inset = bv_->fullCursor().innerInset();
 		DispatchResult res;
 		if (inset) {
 			cmd1.x -= inset->x();
@@ -923,12 +923,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			res = inset->dispatch(cmd1);
 		} else {
 			cmd1.y += bv_->top_y();
-			res = bv_->cursor().innerText()->dispatch(cmd1);
+			res = bv_->fullCursor().innerText()->dispatch(cmd1);
 		}
 
 		if (bv_->fitCursor() || res.update()) {
 			bv_->update();
-			bv_->cursor().updatePos();
+			bv_->fullCursor().updatePos();
 		}
 
 		return true;
@@ -968,7 +968,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			res = inset->dispatch(cmd2);
 			if (res.update()) {
 				bv_->update();
-				bv_->cursor().updatePos();
+				bv_->fullCursor().updatePos();
 			}
 			res.update(false);
 			switch (res.val()) {
@@ -977,8 +977,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 				case FINISHED_UP:
 				case FINISHED_DOWN:
 					theTempCursor.pop();
-					bv_->cursor() = theTempCursor;
-					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
+					bv_->fullCursor(theTempCursor);
+					bv_->fullCursor().innerText()
+						->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
 					if (bv_->fitCursor())
 						bv_->update();
 					return true;
@@ -994,9 +995,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			lyxerr << "dispatching " << cmd1
 			       << " to surrounding LyXText "
 			       << theTempCursor.innerText() << endl;
-			bv_->cursor() = theTempCursor;
+			bv_->fullCursor(theTempCursor);
 			cmd1.y += bv_->top_y();
-			res = bv_->cursor().innerText()->dispatch(cmd1);
+			res = bv_->fullCursor().innerText()->dispatch(cmd1);
 			if (bv_->fitCursor() || res.update())
 				bv_->update();
 
@@ -1276,7 +1277,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 		bv_->text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
 		bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
 	}
-	bv_->cursor().innerText()->insertInset(inset);
+	bv_->fullCursor().innerText()->insertInset(inset);
 	unFreezeUndo();
 	return true;
 }

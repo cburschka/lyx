@@ -21,6 +21,7 @@
 
 class Buffer;
 class Change;
+class CursorSlice;
 class Encoding;
 class ErrorList;
 class FuncRequest;
@@ -185,14 +186,26 @@ public:
 	/// clear the X selection
 	void unsetXSel();
 
-	/// access to cursor
-	LCursor & cursor();
-	/// access to cursor
-	LCursor const & cursor() const;
+	/// access to full cursor
+	LCursor & fullCursor();
+	/// access to full cursor
+	void fullCursor(LCursor const &);
+	/// access to full cursor
+	LCursor const & fullCursor() const;
+	/// access to topmost cursor slice
+	CursorSlice & cursor();
+	/// access to topmost cursor slice
+	CursorSlice const & cursor() const;
+	/// access to selection anchor
+	CursorSlice & anchor();
+	/// access to selection anchor
+	CursorSlice const & anchor() const;
 	///
 	UpdatableInset * innerInset() const;
 	///
 	LyXText * text() const;
+	/// 
+	void resetAnchor();
 
 private:
 	///

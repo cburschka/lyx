@@ -95,7 +95,7 @@ void LyXText::init(BufferView * bview)
 
 	redoParagraphs(beg, end);
 	setCursorIntern(0, 0);
-	anchor() = cursor();
+	bv()->resetAnchor();
 
 	updateCounters();
 }
@@ -532,7 +532,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	if (implicitSelection) {
 		clearSelection();
 		cursor() = resetCursor;
-		anchor() = cursor();
+		bv()->resetAnchor();
 	}
 }
 
@@ -556,7 +556,7 @@ string LyXText::getStringToIndex()
 
 	// Reset cursors to their original position.
 	cursor() = reset_cursor;
-	anchor() = cursor();
+	bv()->resetAnchor();
 
 	// Clear the implicit selection.
 	if (implicitSelection)
@@ -1026,7 +1026,7 @@ void LyXText::pasteSelection(size_t sel_index)
 
 	clearSelection();
 
-	anchor() = cursor();
+	bv()->resetAnchor();
 	setCursor(ppp.first, ppp.second);
 	setSelection();
 	updateCounters();
@@ -1038,7 +1038,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 	if (!length)
 		return;
 
-	anchor() = cursor();
+	bv()->resetAnchor();
 	while (length--)
 		cursorRight(true);
 	setSelection();
@@ -1087,7 +1087,7 @@ void LyXText::insertStringAsLines(string const & str)
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
 	redoParagraphs(cursorPar(), endpit);
-	anchor() = cursor();
+	bv()->resetAnchor();
 	setCursor(pit, pos);
 	setSelection();
 }
@@ -1673,7 +1673,7 @@ bool LyXText::deleteEmptyParagraphMechanism(CursorSlice const & old_cursor)
 
 		if (selection_position_was_oldcursor_position) {
 			// correct selection
-			anchor() = cursor();
+			bv()->resetAnchor();
 		}
 	}
 
@@ -1682,7 +1682,7 @@ bool LyXText::deleteEmptyParagraphMechanism(CursorSlice const & old_cursor)
 
 	if (old_pit->stripLeadingSpaces()) {
 		redoParagraph(old_pit);
-		anchor() = cursor();
+		bv()->resetAnchor();
 	}
 	return false;
 }

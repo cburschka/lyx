@@ -51,11 +51,15 @@ public:
 	explicit CursorSlice(InsetBase *);
 
 	/// set the paragraph that contains this cursor
-	void par(par_type pit);
+	void idx(idx_type idx);
+	/// return the paragraph this cursor is in
+	idx_type idx() const;
+	/// set the paragraph that contains this cursor
+	void par(par_type par);
 	/// return the paragraph this cursor is in
 	par_type par() const;
 	/// set the position within the paragraph
-	void pos(pos_type p);
+	void pos(pos_type pos);
 	/// return the position within the paragraph
 	pos_type pos() const;
 

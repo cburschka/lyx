@@ -172,7 +172,7 @@ void LyXScreen::showCursor(BufferView & bv)
 	int h = ascent + descent;
 	int x = 0;
 	int y = 0;
-	bv.cursor().getPos(x, y);
+	bv.fullCursor().getPos(x, y);
 	y -= ascent + bv.top_y();
 	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
@@ -211,8 +211,8 @@ bool LyXScreen::fitCursor(BufferView * bv)
 	int newtop = top_y;
 	int x, y, asc, desc;
 
-	bv->cursor().getPos(x, y);
-	bv->cursor().getDim(asc, desc);
+	bv->fullCursor().getPos(x, y);
+	bv->fullCursor().getDim(asc, desc);
 	
 	bool const big_row = h / 4 < asc + desc && asc + desc < h;
 
