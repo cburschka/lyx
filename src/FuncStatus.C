@@ -20,7 +20,7 @@ FuncStatus::FuncStatus() : v_(OK)
 }
 
 
-FuncStatus::FuncStatus & FuncStatus::clear ()
+FuncStatus & FuncStatus::clear ()
 {
 	v_ = OK;
 	return *this;
@@ -31,7 +31,7 @@ void FuncStatus::operator |= (FuncStatus const & f)
 	v_ |= f.v_;
 }
 
-FuncStatus::FuncStatus & FuncStatus::unknown (bool b)
+FuncStatus & FuncStatus::unknown (bool b)
 {
 	if (b)
 		v_ |= UNKNOWN;
@@ -47,7 +47,7 @@ bool FuncStatus::unknown () const
 }
 
 
-FuncStatus::FuncStatus & FuncStatus::disabled (bool b)
+FuncStatus & FuncStatus::disabled (bool b)
 {
 	if (b)
 	  	v_ |= DISABLED;

@@ -1,3 +1,8 @@
+2002-01-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FuncStatus.C: small compile fix for DEC cxx. Doesn't like
+	FuncStaus::FuncStatus & FuncStaus::some_method().
+
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FuncStatus.[Ch]: new files. This is a rewrite as a proper class
