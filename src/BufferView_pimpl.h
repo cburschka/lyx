@@ -141,6 +141,6 @@ private:
 	///
 	void MenuInsertLyXFile(string const & filen);
 	/// our workarea
-	WorkArea & Pimpl::workarea() const;
+	WorkArea & workarea() const;
 };
 #endif // BUFFERVIEW_PIMPL_H
