@@ -1,9 +1,10 @@
 #!/bin/sh
 
-ACLOCAL=aclocal
+ACLOCAL="aclocal"
 AUTOHEADER="autoheader"
 AUTOMAKE="automake -a -c --foreign"
 AUTOCONF="autoconf"
+ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"
 
 # Discover what version of autoconf we are using.
 autoversion=`$AUTOCONF --version | head -n 1`
@@ -16,6 +17,7 @@ case $autoversion in
 	rm -f configure.ac
 	cp config/relyx_configure.in lib/reLyX/configure.in
 	rm -f lib/reLyX/configure.ac
+	EXTRA_ACINCLUDE_FILES="lyxinclude213.m4"
 	;;
     *2.5[23])
 	rm -f acconfig.h
@@ -23,17 +25,14 @@ case $autoversion in
 	cp config/configure.ac .
 	rm -f lib/reLyX/configure.in
 	cp config/relyx_configure.ac lib/reLyX/configure.ac
+	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.13 and 2.53."
+	echo "LyX only supports autoconf 2.13 and 2.5[23]."
 	exit
 	;;
 esac
-
-
-ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"
-SIGCPP_ACINCLUDE_FILES="libtool.m4"
 
 echo -n "Locating GNU m4... "
 GNUM4=
@@ -58,7 +57,7 @@ fi
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
 rm -f acinclude.m4
-(cd config ; cat ${ACINCLUDE_FILES} >../acinclude.m4)
+(cd config ; cat ${ACINCLUDE_FILES} ${EXTRA_ACINCLUDE_FILES} >../acinclude.m4)
 echo "done."
 
 # Generate the Makefiles and configure files

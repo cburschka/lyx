@@ -1,3 +1,20 @@
+2002-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Makefile.am (EXTRA_DIST): add lyxinclude25x.m4 and
+	lyxinclude213.m4
+
+	* lyxinclude25x.m4: new file, containing macros specific to
+	autoconf 2.5x (LYX_CHECK_DECL and LYX_CHECK_DECL_HDRS for now)
+
+	* lyxincludes213.m4: new file, containing macros specific to
+	autoconf 2.13 (LYX_CHECK_DECL and LYX_CHECK_DECL_HDRS for now)
+	(LYX_FUNC_SELECT_ARGTYPES): move here
+	
+	* lyxinclude.m4 (LYX_FUNC_SELECT_ARGTYPES): remove 
+
+	* configure.ac: use AC_FUNC_SELECT_ARGTYPES (because it works in
+	2.5x) 
+
 2002-11-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* configure.ac: USE_BOOST_FORMAT 
