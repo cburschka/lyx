@@ -32,8 +32,6 @@ using std::remove_if;
 using std::ostream;
 
 
-/* ******************************************************************* */
-
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc)
 	: name_(fn), latexname_(cln), description_(desc)
@@ -526,7 +524,6 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 	if (name == lastLayoutName)
 		return layoutlist[lastLayoutIndex];
 
-
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
@@ -582,7 +579,6 @@ bool LyXTextClass::load() const
 	}
 	loaded = true;
 	return loaded;
-
 }
 
 
