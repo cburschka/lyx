@@ -2203,7 +2203,7 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 }
 
 
-ParagraphList::iterator Buffer::getParFromID(int id) const
+ParIterator Buffer::getParFromID(int id) const
 {
 #warning FIXME: const correctness! (Andre)
 	ParIterator it(const_cast<Buffer*>(this)->par_iterator_begin());
@@ -2213,18 +2213,14 @@ ParagraphList::iterator Buffer::getParFromID(int id) const
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
 		lyxerr << "getParFromID(), id: " << id << endl;
-		return 0;
+		return end;
 	}
 
-	for (; it != end; ++it) {
-		// go on then, show me how to remove
-		// the cast
-		if ((*it)->id() == id) {
-			return *it;
-		}
-	}
+	for (; it != end; ++it)
+		if ((*it)->id() == id)
+			return it;
 
-	return 0;
+	return end;
 }
 
 

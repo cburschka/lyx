@@ -509,13 +509,13 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
 
-	Paragraph * texrowpar;
+	ParagraphList::iterator texrowpar;
 
 	if (tmpid == -1) {
-		texrowpar = &*text->ownerParagraphs().begin();
+		texrowpar = text->ownerParagraphs().begin();
 		tmppos = 0;
 	} else {
-		texrowpar = &*buffer()->getParFromID(tmpid);
+		texrowpar = *buffer()->getParFromID(tmpid);
 	}
 	text->setCursor(texrowpar, tmppos);
 }

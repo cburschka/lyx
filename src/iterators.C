@@ -136,13 +136,13 @@ ParIterator & ParIterator::operator++()
 }
 
 
-ParagraphList::iterator ParIterator::operator*()
+ParagraphList::iterator ParIterator::operator*() const
 {
 	return pimpl_->positions.top().pit;
 }
 
 
-ParagraphList::iterator ParIterator::operator->()
+ParagraphList::iterator ParIterator::operator->() const
 {
 	return pimpl_->positions.top().pit;
 }
@@ -243,13 +243,13 @@ ParConstIterator & ParConstIterator::operator++()
 }
 
 
-ParagraphList::iterator ParConstIterator::operator*()
+ParagraphList::iterator ParConstIterator::operator*() const
 {
 	return pimpl_->positions.top().pit;
 }
 
 
-ParagraphList::iterator ParConstIterator::operator->()
+ParagraphList::iterator ParConstIterator::operator->() const
 {
 	return pimpl_->positions.top().pit;
 }

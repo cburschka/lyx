@@ -642,12 +642,12 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 		if (b != 0) buffer(b);
 	}
 
-	Paragraph * par = &*buffer_->getParFromID(saved_positions[i].par_id);
-	if (!par)
+	ParIterator par = buffer_->getParFromID(saved_positions[i].par_id);
+	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text->setCursor(par,
-			     min(par->size(), saved_positions[i].par_pos));
+	bv_->text->setCursor(*par,
+			     min((*par)->size(), saved_positions[i].par_pos));
 
 	update(BufferView::SELECT);
 	if (i > 0)

@@ -27,9 +27,9 @@ public:
 	///
 	ParIterator & operator++();
 	///
-	ParagraphList::iterator operator*();
+	ParagraphList::iterator operator*() const;
 	///
-	ParagraphList::iterator operator->();
+	ParagraphList::iterator operator->() const;
 	///
 	size_t size() const;
 	///
@@ -58,10 +58,9 @@ public:
 	///
 	ParConstIterator & operator++();
 	///
-	ParagraphList::iterator operator*();
-
+	ParagraphList::iterator operator*() const;
 	///
-	ParagraphList::iterator operator->();
+	ParagraphList::iterator operator->() const;
 
 	///
 	size_t size() const;

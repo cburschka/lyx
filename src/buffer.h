@@ -23,6 +23,7 @@
 #include "ParagraphList.h"
 #include "paragraph.h"
 #include "author.h"
+#include "iterators.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -122,7 +123,7 @@ public:
 	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
 				 LyXFont const &, string const &);
 	///
-	ParagraphList::iterator getParFromID(int id) const;
+	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 

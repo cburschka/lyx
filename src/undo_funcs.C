@@ -78,12 +78,13 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 {
 	Buffer * b = bv->buffer();
 
-	Paragraph * const before = &*b->getParFromID(undo.number_of_before_par);
-	Paragraph * const behind = &*b->getParFromID(undo.number_of_behind_par);
+	ParIterator const before = b->getParFromID(undo.number_of_before_par);
+	ParIterator const behind = b->getParFromID(undo.number_of_behind_par);
+	ParIterator const end    = b->par_iterator_end();
 
 	// If there's no before take the beginning
 	// of the document for redoing.
-	if (!before) {
+	if (before == end) {
 		LyXText * t = bv->text;
 		int num = undo.number_of_inset_id;
 		if (undo.number_of_inset_id >= 0) {
@@ -100,7 +101,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	// Set the right(new) inset-owner of the paragraph if there is any. 
 	if (!undo.pars.empty()) {
 		Inset * in = 0;
-		if (before)
+		if (before != end)
 			in = before->inInset();
 		else if (undo.number_of_inset_id >= 0)
 			in = bv->buffer()->getInsetFromID(undo.number_of_inset_id);
@@ -112,17 +113,20 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	vector<Paragraph *> deletelist;
 
 	// Now add old paragraphs to be deleted.
-	if (before != behind || (!behind && !before)) {
-		Paragraph * deletepar;
-		if (before)
-			deletepar = before->next();
-		else
-			deletepar = &undoParagraphs(bv, undo.number_of_inset_id).front();
+	if (before != behind || (behind == end && before == end)) {
+		ParagraphList::iterator deletepar;
+		if (before != end) {
+			deletepar = *before;
+			++deletepar;
+		} else {
+			deletepar = undoParagraphs(bv, undo.number_of_inset_id).begin();
+		}
 		// this surprisingly fills the undo! (Andre')
 		size_t par = 0;
-		while (deletepar && deletepar != behind) {
-			deletelist.push_back(deletepar);
-			deletepar = deletepar->next();
+		//while (deletepar && deletepar != *behind) {
+		while (deletepar != *behind) {
+			deletelist.push_back(&*deletepar);
+			++deletepar;
 
 			// A memory optimization for edit:
 			// Only layout information
@@ -141,21 +145,21 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 	// Thread the end of the undo onto the par in front if any.
 	if (!undo.pars.empty()) {
-		undo.pars.back()->next(behind);
-		if (behind)
-			behind->previous(undo.pars.back());
+		undo.pars.back()->next(&**behind);
+		if (behind != end)
+			(&**behind)->previous(undo.pars.back());
 	}
 
 	// Put the new stuff in the list if there is one.
 	Paragraph * undopar = undo.pars.empty() ? 0 : undo.pars.front();
 	if (!undo.pars.empty()) {
-		undo.pars.front()->previous(before);
-		if (before)
-			before->next(undopar);
+		undo.pars.front()->previous(&**before);
+		if (before != end)
+			(&**before)->next(undopar);
 		else {
 			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
-			Paragraph * op = &*bv->buffer()->getParFromID(id);
-			if (op && op->inInset()) {
+			ParIterator op = bv->buffer()->getParFromID(id);
+			if (op != end && op->inInset()) {
 				static_cast<InsetText*>(op->inInset())->paragraph(undopar);
 			} else {
 				bv->buffer()->paragraphs.set(undopar);
@@ -165,27 +169,27 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		// We enter here on DELETE undo operations where we
 		// have to substitue the second paragraph with the
 		// first if the removed one is the first.
-		if (!before && behind) {
+		if (before == end && behind != end) {
 			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
-			Paragraph * op = &*bv->buffer()->getParFromID(id);
-			if (op && op->inInset()) {
-				static_cast<InsetText*>(op->inInset())->paragraph(behind);
+			ParIterator op = bv->buffer()->getParFromID(id);
+			if (op != end && op->inInset()) {
+				static_cast<InsetText*>(op->inInset())->paragraph(&**behind);
 			} else {
-				bv->buffer()->paragraphs.set(behind);
+				bv->buffer()->paragraphs.set(&**behind);
 			}
-			undopar = behind;
+			undopar = &**behind;
 		}
 	}
 
 
 	// Set the cursor for redoing.
 	// If we have a par before the undopar.
-	if (before) {
+	if (before != end) {
 		Inset * it = before->inInset();
 		if (it)
-			it->getLyXText(bv)->setCursorIntern(before, 0);
+			it->getLyXText(bv)->setCursorIntern(*before, 0);
 		else
-			bv->text->setCursorIntern(before, 0);
+			bv->text->setCursorIntern(*before, 0);
 	}
 
 // we are not ready for this we cannot set the cursor for a paragraph
@@ -200,24 +204,28 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	}
 #endif
 
-	Paragraph * endpar = 0;
-
-	// Calculate the endpar for redoing the paragraphs.
-	if (behind)
-		endpar = behind->next();
-
 	UpdatableInset * it = 0;
 	if (undopar)
 		it = static_cast<UpdatableInset*>(undopar->inInset());
+
+	LyXText * text = it ? it->getLyXText(bv) : bv->text;
+
+	ParagraphList::iterator endpar = text->ownerParagraphs().end();
+
+	// Calculate the endpar for redoing the paragraphs.
+	if (behind != end) {
+		endpar = *behind;
+		++endpar;
+	}
+
+	text->redoParagraphs(text->cursor, endpar);
+	ParIterator tmppar =
+		bv->buffer()->getParFromID(undo.number_of_cursor_par);
+
 	if (it) {
-		it->getLyXText(bv)->redoParagraphs(
-						   it->getLyXText(bv)->cursor,
-						   endpar);
-		Paragraph * tmppar =
-			&*bv->buffer()->getParFromID(undo.number_of_cursor_par);
-		if (tmppar) {
-			it = static_cast<UpdatableInset*>(tmppar->inInset());
+		if (tmppar != end) {
 			LyXText * t;
+			Inset * it = tmppar->inInset();
 			if (it) {
 				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
 				it->localDispatch(cmd);
@@ -225,7 +233,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			} else {
 				t = bv->text;
 			}
-			t->setCursorIntern(tmppar, undo.cursor_pos);
+			t->setCursorIntern(*tmppar, undo.cursor_pos);
 			// Clear any selection and set the selection
 			// cursor for an evt. new selection.
 			t->clearSelection();
@@ -237,10 +245,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		bv->text->setCursorIntern(bv->text->cursor.par(),
 					  bv->text->cursor.pos());
 	} else {
-		bv->text->redoParagraphs(bv->text->cursor, endpar);
-		Paragraph * tmppar =
-			&*bv->buffer()->getParFromID(undo.number_of_cursor_par);
-		if (tmppar) {
+		if (tmppar != end) {
 			LyXText * t;
 			Inset * it = tmppar->inInset();
 			if (it) {
@@ -250,7 +255,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			} else {
 				t = bv->text;
 			}
-			t->setCursorIntern(tmppar, undo.cursor_pos);
+			t->setCursorIntern(*tmppar, undo.cursor_pos);
 			// Clear any selection and set the selection
 			// cursor for an evt. new selection.
 			t->clearSelection();
@@ -381,17 +386,25 @@ bool textUndoOrRedo(BufferView * bv,
 	finishUndo();
 
 	if (!undo_frozen) {
-		Paragraph * first = &*b->getParFromID(undo->number_of_before_par);
-		if (first && first->next())
-			first = first->next();
-		else if (!first)
-			first = &*undoParagraphs(bv, undo->number_of_inset_id).begin();
+/*
+		ParIterator p = b->getParFromID(undo->number_of_before_par);
+		bool ok = false;
+		ParagraphList::iterator first;
+		// default constructed?
+		ParIterator const end = b->par_iterator_end();
+		if (p != end) {
+			first = p.par();
+			if (first->next())
+				first = first->next();
+		} else
+			first = undoParagraphs(bv, undo->number_of_inset_id).begin();
 		if (first) {
 			shared_ptr<Undo> u;
-			if (createUndo(bv, undo->kind, first,
-				             b->getParFromID(undo->number_of_behind_par), u))
+			ParIterator behind = b->getParFromID(undo->number_of_behind_par);
+			if (createUndo(bv, undo->kind, first, behind.par(), u))
 				otherstack.push(u);
 		}
+*/
 	}
 
 	// Now we can unlock the inset for saftey because the inset
