@@ -502,8 +502,8 @@ AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
 dnl Usage LYX_PATH_XPM: Checks for xpm library and header
 AC_DEFUN(LYX_PATH_XPM,[
 ### Check for Xpm library
-AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage,XPM_LIB="-lXpm",
-	[LYX_LIB_ERROR(libXpm,Xpm)], $XPM_LIB)
+AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage, XPM_LIB="-lXpm",
+	[LYX_LIB_ERROR(libXpm,Xpm)])
 AC_SUBST(XPM_LIB)
 ### Check for Xpm headers
 lyx_cv_xpm_h_location="<xpm.h>"

@@ -4,12 +4,11 @@ dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flags,
 dnl and FORMS_H_LOCATION / FLIMAGE_H_LOCATION is also set
 AC_DEFUN(LYX_PATH_XFORMS,[
-
-LIBS="$XPM_LIB $LIBS"
+AC_REQUIRE([LYX_PATH_XPM])
 
 AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms",
   [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms",
-    [LYX_LIB_ERROR(libforms or libxforms,xforms)])])
+    [LYX_LIB_ERROR(libforms or libxforms,xforms)], $XPM_LIB)], $XPM_LIB)
 AC_SUBST(XFORMS_LIB)
 
 ### Check for xforms headers
@@ -65,9 +64,9 @@ fi
 
 dnl Check whether the xforms library has a viable image loader
 AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
-[
+[AC_REQUIRE([LYX_PATH_XFORMS])
 save_LIBS=$LIBS
-LIBS="$XFORMS_LIB $LIBS"
+LIBS="$XFORMS_LIB $XPM_LIB $LIBS"
 lyx_use_xforms_image_loader=no
 AC_LANG_SAVE
 AC_LANG_C
@@ -79,7 +78,7 @@ AC_SEARCH_LIBS(flimage_dup, flimage,
   [lyx_use_xforms_image_loader=yes
    if test "$ac_cv_search_flimage_dup" != "none required" ; then
      XFORMS_IMAGE_LIB="-lflimage $XFORMS_IMAGE_LIB"
-     LIBS="$XFORMS_IMAGE_LIB $XFORMS_LIB $LIBS"
+     LIBS="$XFORMS_IMAGE_LIB $LIBS"
   fi])
 AC_SUBST(XFORMS_IMAGE_LIB)
 
