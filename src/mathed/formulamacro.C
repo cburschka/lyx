@@ -99,7 +99,7 @@ int InsetFormulaMacro::linuxdoc(ostream & os) const
 }
 
 
-int InsetFormulaMacro::docBook(ostream & os) const
+int InsetFormulaMacro::docbook(ostream & os) const
 {
 	return ascii(os, 0);
 }

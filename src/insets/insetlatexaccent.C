@@ -655,7 +655,7 @@ int InsetLatexAccent::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetLatexAccent::docBook(Buffer const *, ostream & os) const
+int InsetLatexAccent::docbook(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;

@@ -328,7 +328,7 @@ public:
 	TexRow texrow;
 private:
         ///
-	void docBookHandleCaption(std::ostream & os, string & inner_tag,
+	void docbookHandleCaption(std::ostream & os, string & inner_tag,
 				  Paragraph::depth_type depth, int desc_on,
 				  Paragraph * & par);
 	/// Open SGML/XML tag.

@@ -350,7 +350,7 @@ int InsetERT::linuxdoc(Buffer const *, std::ostream &) const
 }
 
 
-int InsetERT::docBook(Buffer const *, std::ostream &) const
+int InsetERT::docbook(Buffer const *, std::ostream &) const
 {
 	return 0;
 }

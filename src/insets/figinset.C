@@ -1174,7 +1174,7 @@ int InsetFig::linuxdoc(Buffer const *, ostream &) const
 }
 
 
-int InsetFig::docBook(Buffer const *, ostream & os) const
+int InsetFig::docbook(Buffer const *, ostream & os) const
 {
 	string const buf1 = OnlyPath(owner->fileName());
 	string figurename = MakeRelPath(fname, buf1);

@@ -140,7 +140,7 @@ public:
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int docBook(Buffer const *, std::ostream &) const ;
+	int docbook(Buffer const *, std::ostream &) const ;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

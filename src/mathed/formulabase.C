@@ -151,9 +151,9 @@ int InsetFormulaBase::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormulaBase::docBook(Buffer const *, ostream & os) const
+int InsetFormulaBase::docbook(Buffer const *, ostream & os) const
 {
-	return docBook(os);
+	return docbook(os);
 }
 
 

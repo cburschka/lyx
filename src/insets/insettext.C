@@ -1352,7 +1352,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 }
 
 
-int InsetText::docBook(Buffer const * buf, ostream & os) const
+int InsetText::docbook(Buffer const * buf, ostream & os) const
 {
 	Paragraph * p = par;
 	unsigned int lines = 0;

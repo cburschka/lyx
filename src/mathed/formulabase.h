@@ -56,7 +56,7 @@ public:
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	virtual int docBook(Buffer const *, std::ostream &) const;
+	virtual int docbook(Buffer const *, std::ostream &) const;
 	///
 	virtual MathInsetTypes getType() const = 0;
 
@@ -73,7 +73,7 @@ protected:
 	///
 	virtual int linuxdoc(std::ostream &) const = 0;
 	///
-	virtual int docBook(std::ostream &) const = 0;
+	virtual int docbook(std::ostream &) const = 0;
 
 public:
 	///

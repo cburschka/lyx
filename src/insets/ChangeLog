@@ -1,3 +1,39 @@
+2001-09-04  José Matos  <jamatos@fep.up.pt>
+	* figinset.C
+	* figinset.h
+	* insetcaption.C
+	* insetcaption.h
+	* insetcollapsable.h
+	* insetcommand.C
+	* insetcommand.h
+	* inseterror.h
+	* insetert.C
+	* insetert.h
+	* insetexternal.C
+	* insetexternal.h
+	* insetfloat.C
+	* insetfloat.h
+	* insetfloatlist.h
+	* insetgraphics.C
+	* insetgraphics.h
+	* inset.h
+	* insetinclude.C
+	* insetinclude.h
+	* insetlabel.C
+	* insetlabel.h
+	* insetlatexaccent.C
+	* insetlatexaccent.h
+	* insetquotes.C
+	* insetquotes.h
+	* insetref.C
+	* insetref.h
+	* insetspecialchar.C
+	* insetspecialchar.h
+	* insettabular.C
+	* insettabular.h
+	* insettext.C
+	* insettext.C (docbook): rename docBook method to docbook.
+
 2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* inset.h (getFirstParagraph): New virtual method.

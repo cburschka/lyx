@@ -269,7 +269,7 @@ int InsetSpecialChar::linuxdoc(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetSpecialChar::docBook(Buffer const * buf, ostream & os) const
+int InsetSpecialChar::docbook(Buffer const * buf, ostream & os) const
 {
 	return ascii(buf, os, 0);
 }

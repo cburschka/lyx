@@ -97,7 +97,7 @@ public:
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	virtual int docBook(Buffer const *, std::ostream &) const;
+	virtual int docbook(Buffer const *, std::ostream &) const;
 	///
 	Inset::Code lyxCode() const { return Inset::NO_CODE; }
 	

@@ -170,7 +170,7 @@ int InsetExternal::linuxdoc(Buffer const * buf, std::ostream & os) const
 }
 
 
-int InsetExternal::docBook(Buffer const * buf, std::ostream & os) const
+int InsetExternal::docbook(Buffer const * buf, std::ostream & os) const
 {
 	return write("DocBook", buf, os);
 }

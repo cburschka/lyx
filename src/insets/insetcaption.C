@@ -120,7 +120,7 @@ int InsetCaption::ascii(Buffer const * /*buf*/,
 }
 
 
-int InsetCaption::docBook(Buffer const * /*buf*/, ostream & /*os*/) const
+int InsetCaption::docbook(Buffer const * /*buf*/, ostream & /*os*/) const
 {
 	// Fix: Implement me!
 	return 0;

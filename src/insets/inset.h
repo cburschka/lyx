@@ -190,7 +190,7 @@ public:
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual int docBook(Buffer const *, std::ostream &) const = 0;
+	virtual int docbook(Buffer const *, std::ostream &) const = 0;
 	/// Updates needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
 	///

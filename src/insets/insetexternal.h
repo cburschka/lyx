@@ -67,7 +67,7 @@ public:
 	/// write LinuxDoc output to the ostream
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	/// write DocBook output to the ostream
-	virtual int docBook(Buffer const *, std::ostream &) const;
+	virtual int docbook(Buffer const *, std::ostream &) const;
 
 	/// Updates needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;

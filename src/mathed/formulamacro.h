@@ -57,7 +57,7 @@ public:
 	///
 	int linuxdoc(std::ostream & os) const;
 	///
-	int docBook(std::ostream &) const;
+	int docbook(std::ostream &) const;
 
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;

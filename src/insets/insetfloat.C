@@ -240,10 +240,10 @@ int InsetFloat::latex(Buffer const * buf,
 }
 
 
-int InsetFloat::docBook(Buffer const * buf, ostream & os) const
+int InsetFloat::docbook(Buffer const * buf, ostream & os) const
 {
 	os << "<" << floatType_ << ">";
-	int const i = inset.docBook(buf, os);
+	int const i = inset.docbook(buf, os);
 	os << "</" << floatType_ << ">";
 
 	return i;

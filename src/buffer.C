@@ -2719,7 +2719,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 }
 
 
-void Buffer::docBookHandleCaption(ostream & os, string & inner_tag,
+void Buffer::docbookHandleCaption(ostream & os, string & inner_tag,
 				  Paragraph::depth_type depth, int desc_on,
 				  Paragraph * & par)
 {
@@ -3340,7 +3340,7 @@ void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 		if (c == Paragraph::META_INSET) {
 			Inset * inset = par->getInset(i);
 			ostringstream ost;
-			inset->docBook(this, ost);
+			inset->docbook(this, ost);
 			string tmp_out = ost.str().c_str();
 
 			//

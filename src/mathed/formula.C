@@ -115,7 +115,7 @@ int InsetFormula::linuxdoc(ostream & os) const
 }
 
 
-int InsetFormula::docBook(ostream & os) const
+int InsetFormula::docbook(ostream & os) const
 {
 	return ascii(os, 0);
 }

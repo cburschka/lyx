@@ -2356,7 +2356,7 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 			}
 		
 			os << ">";
-			ret += GetCellInset(cell)->docBook(buf, os);
+			ret += GetCellInset(cell)->docbook(buf, os);
 			os << "</entry>";
 			++cell;
 		}

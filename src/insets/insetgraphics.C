@@ -746,7 +746,7 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docBook(Buffer const * buf, ostream & os) const
+int InsetGraphics::docbook(Buffer const * buf, ostream & os) const
 {
 	// Change the path to be relative to the main file.
 	string const buffer_dir = OnlyPath(buf->fileName());

@@ -85,7 +85,7 @@ int InsetRef::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetRef::docBook(Buffer const *, ostream & os) const
+int InsetRef::docbook(Buffer const *, ostream & os) const
 {
 	if (getOptions().empty()) {
 		os << "<xref linkend=\"" << getContents() << "\"/>";
