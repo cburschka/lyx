@@ -1,3 +1,20 @@
+2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* debug.h: add DEBUG to enum and fix size of ANY.
+
+	* debug.C: add support for Debug::DEBUG
+	(showTags): cast errorTags.level to unsigned int
+
+	* BufferView_pimpl.C (fitCursor): use Debug::DEBUG
+	(redoCurrentBuffer): ditto
+	(updateScrollbar): ditto
+	* cursor.C (dispatch): ditto
+	* text2.C (setLayout): ditto
+	(setFont): ditto
+	(updateCounters): ditto
+	(editXY): ditto
+	(deleteEmptyParagraphMechanism): ditto
+
 2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (dist_noinst_DATA): use the dist_ and noinst_

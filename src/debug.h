@@ -73,7 +73,9 @@ struct lyx_debug_trait {
 		///
 		EXTERNAL   = (1 << 23),
 		///
-		ANY = 0xffffff
+		DEBUG      = (1 << 31),
+		///
+		ANY = 0xffffffff
 	};
 
 	static bool match(type a, type b) {

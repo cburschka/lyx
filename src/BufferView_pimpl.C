@@ -361,7 +361,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 bool BufferView::Pimpl::fitCursor()
 {
 	// to get the correct y cursor info
-	lyxerr << "BufferView::fitCursor" << std::endl;
+	lyxerr[Debug::DEBUG] << "BufferView::fitCursor" << std::endl;
 	lyx::par_type const pit = bv_->cursor().bottom().par();
 	bv_->text()->redoParagraph(pit);
 	refreshPar(*bv_, *bv_->text(), pit);
@@ -375,7 +375,7 @@ bool BufferView::Pimpl::fitCursor()
 
 void BufferView::Pimpl::redoCurrentBuffer()
 {
-	lyxerr[Debug::INFO] << "BufferView::redoCurrentBuffer" << endl;
+	lyxerr[Debug::DEBUG] << "BufferView::redoCurrentBuffer" << endl;
 	if (buffer_ && bv_->text()) {
 		resizeCurrentBuffer();
 		updateScrollbar();
@@ -386,7 +386,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 
 void BufferView::Pimpl::resizeCurrentBuffer()
 {
-	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
+	lyxerr[Debug::DEBUG] << "resizeCurrentBuffer" << endl;
 	owner_->busy(true);
 	owner_->message(_("Formatting document..."));
 
@@ -411,8 +411,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::updateScrollbar()
 {
 	if (!bv_->text()) {
-		lyxerr[Debug::GUI] << "no text in updateScrollbar" << endl;
-		lyxerr << "no text in updateScrollbar" << endl;
+		lyxerr[Debug::DEBUG] << "no text in updateScrollbar" << endl;
 		workarea().setScrollbarParams(0, 0, 0);
 		return;
 	}

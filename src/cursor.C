@@ -85,7 +85,7 @@ void LCursor::setCursor(DocIterator const & cur, bool sel)
 
 DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
-	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	if (empty())
 		return DispatchResult();
 
@@ -93,7 +93,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	LCursor safe = *this;
 
 	for ( ; size(); pop()) {
-		//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+		//lyxerr << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(par() <= lastpar());
@@ -110,7 +110,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
 	if (!disp_.dispatched()) {
-		lyxerr << "RESTORING OLD CURSOR!" << endl;
+		lyxerr[Debug::DEBUG] << "RESTORING OLD CURSOR!" << endl;
 		operator=(safe);
 		disp_.dispatched(false);
 	}

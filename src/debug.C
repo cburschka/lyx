@@ -63,6 +63,7 @@ error_item errorTags[] = {
 	{ Debug::GRAPHICS,  "graphics",  N_("Graphics conversion and loading")},
 	{ Debug::CHANGES,   "changes",   N_("Change tracking")},
 	{ Debug::EXTERNAL,  "external",  N_("External template/inset messages")},
+	{ Debug::DEBUG,  "debug",  N_("Developers general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
 
@@ -119,7 +120,7 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 void lyx_debug_trait::showTags(ostream & os)
 {
 	for (int i = 0; i < numErrorTags ; ++i)
-		os << setw(7) << errorTags[i].level
+		os << setw(7) << static_cast<unsigned int>(errorTags[i].level)
 		   << setw(10) << errorTags[i].name
 		   << "  " << _(errorTags[i].desc) << '\n';
 	os.flush();

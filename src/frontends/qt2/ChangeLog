@@ -1,3 +1,10 @@
+2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (roman_font_name): go through QString when converting
+	to std::string.
+	(sans_font_name): ditto
+	(typewriter_font_name): ditto
+
 2004-06-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLMenubar.C (QLMenubar): use QLMenubar::menuBar().

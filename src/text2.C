@@ -285,7 +285,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
-		lyxerr << "setting layout " << layout << endl;
+		lyxerr[Debug::DEBUG] << "setting layout " << layout << endl;
 		bv.owner()->dispatch(FuncRequest(LFUN_HOME));
 		bv.owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv.owner()->dispatch(FuncRequest(LFUN_CUT));
@@ -418,7 +418,8 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	DocIterator pos = cur.selectionBegin();
 	DocIterator posend = cur.selectionEnd();
 
-	lyxerr << "pos: " << pos << " posend: " << posend << endl;
+	lyxerr[Debug::DEBUG] << "pos: " << pos << " posend: " << posend
+			     << endl;
 
 	BufferParams const & params = cur.buffer().params();
 
@@ -841,7 +842,7 @@ void LyXText::updateCounters()
 		setCounter(*bv()->buffer(), pit);
 		string const & newLabel = pars_[pit].params().labelString();
 		if (oldLabel != newLabel) {
-			//lyxerr << "changing labels: old: " << oldLabel << " new: "
+			//lyxerr[Debug::DEBUG] << "changing labels: old: " << oldLabel << " new: "
 			//	<< newLabel << endl;
 			redoParagraphInternal(pit);
 			update_pos = true;
@@ -1125,7 +1126,8 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 	y -= yo_;
 	par_type pit;
 	Row const & row = getRowNearY(y, pit);
-	lyxerr << "setCursorFromCoordinates:: hit row at: " << row.pos() << endl;
+	lyxerr[Debug::DEBUG] << "setCursorFromCoordinates:: hit row at: "
+			     << row.pos() << endl;
 	bool bound = false;
 	int xx = x + xo_; // getRowNearX get absolute x coords
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
@@ -1148,7 +1150,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
-	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
+	lyxerr[Debug::DEBUG] << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset)
 		return 0;
 
@@ -1295,7 +1297,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 	if (cur.selection())
 		return false;
 
-	//lyxerr << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
+	//lyxerr[Debug::DEBUG] << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
 	Paragraph const & oldpar = pars_[old.par()];
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.

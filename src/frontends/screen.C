@@ -213,8 +213,10 @@ bool LyXScreen::fitCursor(BufferView * bv)
 
 	bv->cursor().getPos(x, y);
 	bv->cursor().getDim(asc, desc);
-	lyxerr << "LyXScreen::fitCursor: x: " << x << " y: " << y
-	       << "  top_y: " << top_y << endl;
+	lyxerr[Debug::DEBUG] << "LyXScreen::fitCursor: x: " << x
+			     << " y: " << y
+			     << "  top_y: " << top_y
+			     << endl;
 
 	bool const big_row = h / 4 < asc + desc && asc + desc < h;
 
@@ -265,7 +267,7 @@ void LyXScreen::redraw(BufferView & bv)
 			LColor::bottomarea);
 	}
 
-	lyxerr << "Redraw screen" << endl;
+	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
 
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 

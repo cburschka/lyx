@@ -326,7 +326,9 @@ string const roman_font_name()
 	QFont font;
 	font.setStyleHint(QFont::Serif);
 	font.setFamily("serif");
-	return QFontInfo(font).family().latin1();
+
+	QString name = QFontInfo(font).family().latin1();
+	return name;
 }
 
 
@@ -338,7 +340,9 @@ string const sans_font_name()
 	QFont font;
 	font.setStyleHint(QFont::SansSerif);
 	font.setFamily("sans");
-	return QFontInfo(font).family().latin1();
+
+	QString name = QFontInfo(font).family().latin1();
+	return name;
 }
 
 
@@ -350,7 +354,9 @@ string const typewriter_font_name()
 	QFont font;
 	font.setStyleHint(QFont::TypeWriter);
 	font.setFamily("monospace");
-	return QFontInfo(font).family().latin1();
+
+	QString name = QFontInfo(font).family().latin1();
+	return name;
 }
 
 }; // namespace lyx_gui
