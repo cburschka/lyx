@@ -82,7 +82,7 @@ void MathRootInset::normalize(NormalStream & os) const
 
 bool MathRootInset::idxUpDown(LCursor & cur, bool up) const
 {
-	bool target = !up; // up ? 0 : 1;
+	LCursor::idx_type const target = up ? 0 : 1;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;

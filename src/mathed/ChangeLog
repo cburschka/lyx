@@ -1,3 +1,8 @@
+2005-02-14  Angus Leeming  <leeming@lyx.org>
+
+	* math_rootinset.C (idxUpDown): Silence an MSVC compiler warning
+	by making the code more transparent.
+
 2005-02-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_gridinset.C (halign): fix '|' to the right of the last column
