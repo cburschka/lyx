@@ -255,8 +255,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	if (!owner())
 		x += scroll();
 
-	top_x = x;
-	top_baseline = y;
+	xo_ = x;
+	yo_ = y;
 	x += ADD_TO_TABULAR_WIDTH;
 
 	int cell = 0;
@@ -474,7 +474,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 	setPos(bv, x, y);
 	clearSelection();
 	finishUndo();
-	int xx = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
+	int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 	bv->cursor().push(this);
 	if (x > xx)
 		activateCellInset(bv, x - xx, y - cursory_);
@@ -623,7 +623,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			clearSelection();
 		int column = actcol;
 		if (bv->top_y() + bv->painter().paperHeight()
-		    < top_baseline + tabular.getHeightOfTabular())
+		    < yo_ + tabular.getHeightOfTabular())
 		{
 			bv->scrollDocView(bv->top_y() + bv->painter().paperHeight());
 			actcell = tabular.getCellBelow(first_visible_cell) + column;
@@ -638,9 +638,9 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		if (hs)
 			clearSelection();
 		int column = actcol;
-		if (top_baseline < 0) {
+		if (yo_ < 0) {
 			bv->scrollDocView(bv->top_y() - bv->painter().paperHeight());
-			if (top_baseline > 0)
+			if (yo_ > 0)
 				actcell = column;
 			else
 				actcell = tabular.getCellBelow(first_visible_cell) + column;
@@ -968,7 +968,7 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 
 void InsetTabular::getCursorPos(BufferView *, int & x, int & y) const
 {
-	x = TEXT_TO_INSET_OFFSET + cursorx_ - top_x;
+	x = TEXT_TO_INSET_OFFSET + cursorx_ - xo_;
 	y = TEXT_TO_INSET_OFFSET + cursory_;
 }
 
@@ -1015,7 +1015,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 		lx += tabular.getWidthOfColumn(actcell + 1)
 			+ tabular.getAdditionalWidth(actcell);
 
-	cursorx_ = lx - tabular.getWidthOfColumn(actcell) + top_x + 2;
+	cursorx_ = lx - tabular.getWidthOfColumn(actcell) + xo_ + 2;
 	resetPos(bv);
 }
 
@@ -1030,7 +1030,7 @@ int InsetTabular::getCellXPos(int cell) const
 	for (; c < cell; ++c)
 		lx += tabular.getWidthOfColumn(c);
 
-	return lx - tabular.getWidthOfColumn(cell) + top_x;
+	return lx - tabular.getWidthOfColumn(cell) + xo_;
 }
 
 
@@ -1091,8 +1091,8 @@ void InsetTabular::resetPos(BufferView * bv) const
 	} else if (cursorx_ - offset < 20) {
 		scroll(bv, 20 - cursorx_ + offset);
 		updateLocal(bv);
-	} else if (scroll() && top_x > 20 &&
-		   top_x + tabular.getWidthOfTabular() > bv->workWidth() - 20) {
+	} else if (scroll() && xo_ > 20 &&
+		   xo_ + tabular.getWidthOfTabular() > bv->workWidth() - 20) {
 		scroll(bv, old_x - cursorx_);
 		updateLocal(bv);
 	}

@@ -195,6 +195,9 @@ bool editing_inset(InsetFormula const * inset)
 
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
+	xo_ = x;
+	yo_ = y;
+
 	// The previews are drawn only when we're not editing the inset.
 	bool const use_preview = !editing_inset(this)
 		&& RenderPreview::activated()
@@ -224,13 +227,6 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 
 		par_->draw(p, x, y);
 	}
-
-	xo_ = x;
-	yo_ = y;
-
-	top_x = x;
-	top_baseline = y;
-
 }
 
 

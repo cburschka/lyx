@@ -26,14 +26,14 @@ using std::string;
 
 InsetOld::InsetOld()
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0), owner_(0),
+	xo_(0), yo_(0), scx(0), owner_(0),
 	background_color_(LColor::inherit)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0), owner_(0),
+	xo_(0), yo_(0), scx(0), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
 {}
 

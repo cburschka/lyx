@@ -146,8 +146,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	button_dim.y1 = -aa;
 	button_dim.y2 = -aa + dim_collapsed.height();
 
-	top_x = x;
-	top_baseline = y;
+	xo_ = x;
+	yo_ = y;
 
 	if (!isOpen()) {
 		draw_collapsed(pi, x, y);
@@ -327,7 +327,7 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 
 int InsetCollapsable::insetInInsetY() const
 {
-	return inset.y() - top_baseline + inset.insetInInsetY();
+	return inset.y() - yo_ + inset.insetInInsetY();
 }
 
 

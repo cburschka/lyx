@@ -213,9 +213,9 @@ public:
 	///
 	LColor_color backgroundColor() const;
 	///
-	int x() const { return top_x; }
+	int x() const { return xo_; }
 	///
-	int y() const { return top_baseline; }
+	int y() const { return yo_; }
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
 	/// returns the actuall scroll-value
@@ -288,9 +288,9 @@ public:
 	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
 protected:
 	///
-	mutable int top_x;
+	mutable int xo_;
 	///
-	mutable int top_baseline;
+	mutable int yo_;
 	///
 	mutable int scx;
 	///

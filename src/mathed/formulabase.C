@@ -78,7 +78,6 @@ bool openNewInset(BufferView * bv, UpdatableInset * inset)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
@@ -173,12 +172,10 @@ void InsetFormulaBase::getCursor(BufferView &, int & x, int & y) const
 
 void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
-	// calling metrics here destroys the cached xo,yo positions e.g. in
-	// MathParboxinset. And it would be too expensive anyway...
-	//metrics(bv);
 	if (!mathcursor) {
 		lyxerr << "getCursorPos - should not happen";
-		x = y = 0;
+		x = 0;
+		y = 0;
 		return;
 	}
 	mathcursor->getPos(x, y);

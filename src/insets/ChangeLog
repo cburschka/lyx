@@ -3,6 +3,9 @@
 
 	* inset.h: remove Inset::id_
 
+	* inset.h: top_x -> xo_, top_baseline -> yo_ to unify with mathed/*.[Ch]
+	* *.[Ch]: adjust
+
 2003-11-10  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]:

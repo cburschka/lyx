@@ -47,37 +47,37 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 	}
 
 	int const workW = bv->workWidth();
-	int const tmp_top_x = top_x - scx;
+	int const tmp_xo_ = xo_ - scx;
 
-	if (tmp_top_x > 0 && tmp_top_x + width() < workW)
+	if (tmp_xo_ > 0 && tmp_xo_ + width() < workW)
 		return;
-	if (s > 0 && top_x > 0)
+	if (s > 0 && xo_ > 0)
 		return;
 
 	scx = int(s * workW / 2);
 
 #warning metrics?
-	if (tmp_top_x + scx + width() < workW / 2)
-		scx = workW / 2 - tmp_top_x - width();
+	if (tmp_xo_ + scx + width() < workW / 2)
+		scx = workW / 2 - tmp_xo_ - width();
 }
 
 
 void UpdatableInset::scroll(BufferView * bv, int offset) const
 {
 	if (offset > 0) {
-		if (!scx && top_x >= 20)
+		if (!scx && xo_ >= 20)
 			return;
-		if (top_x + offset > 20)
+		if (xo_ + offset > 20)
 			scx = 0;
-		// scx = - top_x;
+		// scx = - xo_;
 		else
 			scx += offset;
 	} else {
 #warning metrics?
-		if (!scx && top_x + width() < bv->workWidth() - 20)
+		if (!scx && xo_ + width() < bv->workWidth() - 20)
 			return;
-		if (top_x - scx + offset + width() < bv->workWidth() - 20) {
-			scx += bv->workWidth() - width() - top_x - 20;
+		if (xo_ - scx + offset + width() < bv->workWidth() - 20) {
+			scx += bv->workWidth() - width() - xo_ - 20;
 		} else {
 			scx += offset;
 		}

@@ -241,8 +241,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
 	// update our idea of where we are. Clearly, we should
 	// not have to know this information.
-	top_x = x;
-	top_baseline = y;
+	xo_ = x;
+	yo_ = y;
 
 	int const start_x = x;
 
@@ -271,7 +271,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 {
 	int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
 	int const frame_x = x + ttoD2;
-	int const frame_y = top_baseline - dim_.asc + ttoD2;
+	int const frame_y = yo_ - dim_.asc + ttoD2;
 	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
 	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
 	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frameColor());
@@ -689,7 +689,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 
 void InsetText::getCursorPos(BufferView *, int & x, int & y) const
 {
-	x = cx() - top_x;
+	x = cx() - xo_;
 	y = cy();
 }
 
@@ -918,7 +918,7 @@ void InsetText::setFrameColor(LColor_color col)
 
 int InsetText::cx() const
 {
-	return text_.cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
+	return text_.cursor.x() + xo_ + TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -1006,7 +1006,7 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 	}
 	if (ty + h > pain.paperHeight())
 		h = pain.paperHeight();
-	if (top_x + w > pain.paperWidth())
+	if (xo_ + w > pain.paperWidth())
 		w = pain.paperWidth();
 	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 }

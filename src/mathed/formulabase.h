@@ -116,11 +116,6 @@ protected:
 	void handleFont(BufferView * bv, std::string const & arg, std::string const & font);
 	///
 	void handleFont2(BufferView * bv, std::string const & arg);
-
-	///
-	mutable int xo_;
-	///
-	mutable int yo_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

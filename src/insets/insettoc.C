@@ -80,10 +80,6 @@ InsetTOC::priv_dispatch(FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:
-		if (button().box().contains(cmd.x, cmd.y))
-			InsetCommandMailer("toc", *this).showDialog(cmd.view());
-		return DispatchResult(true, true);
-
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetCommandMailer("toc", *this).showDialog(cmd.view());
 		return DispatchResult(true, true);
