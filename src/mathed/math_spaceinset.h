@@ -31,6 +31,12 @@ public:
 	///
 	void incSpace();
 	///
+	int ascent() const;
+	///
+	int descent() const;
+	///
+	int width() const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
