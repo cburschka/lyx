@@ -32,6 +32,8 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	/// redraw cell using cache metrics information
 	void draw(Painter & pain, int x, int y) const;
+	/// mark cell for re-drawing
+	void touch() const;
 
 	/// access to cached x coordinate of last drawing
 	int xo() const { return xo_; }
@@ -86,6 +88,10 @@ public:
 	mutable int yo_;
 	/// cache size information of last drawing
 	mutable MathMetricsInfo size_;
+	/// cached cleaness of cell
+	mutable bool clean_;
+	/// cached draw status of cell
+	mutable bool drawn_;
 };
 
 /// output cell on a stream

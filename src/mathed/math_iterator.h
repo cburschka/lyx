@@ -22,10 +22,10 @@ public:
 	void operator++();
 	/// move on several steps
 	void jump(MathInset::difference_type);
-	/// read access to top most item
-	MathCursorPos const & position() const;
+	/// read access to top most item (inline after running gprof!)
+	MathCursorPos const & position() const { return cursor_.back(); }
 	/// write access to top most item
-	MathCursorPos & position();
+	MathCursorPos & position() { return cursor_.back(); }
 	/// read access to full path
 	MathCursor::cursor_type const & cursor() const;
 	/// read access to top most inset

@@ -185,6 +185,8 @@ public:
 
 	/// make sure cursor position is valid
 	void normalize();
+	/// mark current cursor trace for redraw 
+	void touch();
 	///
 	UpdatableInset * asHyperActiveInset() const;
 
@@ -220,11 +222,6 @@ public:
 	void getSelection(MathCursorPos &, MathCursorPos &) const;
 	/// returns the normalized anchor of the selection
 	MathCursorPos normalAnchor() const;
-
-	/// path of positions the cursor had to go if it were leving each inset
-	cursor_type Cursor_;
-	/// path of positions the anchor had to go if it were leving each inset
-	mutable cursor_type Anchor_;
 
 	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos & cursor();
@@ -278,9 +275,13 @@ private:
 	/// write access to cursor cell index
 	idx_type & idx();
 
-	///
+	/// path of positions the cursor had to go if it were leving each inset
+	cursor_type Cursor_;
+	/// path of positions the anchor had to go if it were leving each inset
+	mutable cursor_type Anchor_;
+	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
-	///
+	/// text code of last char entered
 	MathTextCodes lastcode_;
 	// Selection stuff
 	/// do we currently select

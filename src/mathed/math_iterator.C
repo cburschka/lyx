@@ -21,20 +21,6 @@ MathIterator::MathIterator(MathInset * p)
 //{}
 
 
-MathCursorPos const & MathIterator::position() const
-{
-	lyx::Assert(cursor_.size());
-	return cursor_.back();
-}
-
-
-MathCursorPos & MathIterator::position()
-{
-	lyx::Assert(cursor_.size());
-	return cursor_.back();
-}
-
-
 MathCursor::cursor_type const & MathIterator::cursor() const
 {
 	return cursor_;
@@ -111,29 +97,32 @@ void MathIterator::operator++()
 {
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
-	if (nextInset() && nextInset()->isActive()) {
-		push(nextInset());
+	MathInset * n = nextInset();
+	if (n && n->isActive()) {
+		push(n);
 		return;
 	}
 
 	// otherwise move on one cell position if possible
-	if (position().pos_ < xcell().data_.size()) {
+	MathCursorPos & top = position();
+	if (top.pos_ < top.par_->cell(top.idx_).size()) {
 		// pos() == size() is valid!
-		++position().pos_;
+		++top.pos_;
 		return;
 	}
 
 	// otherwise move on one cell if possible
-	if (position().idx_ + 1 < par()->nargs()) {
+	if (top.idx_ + 1 < top.par_->nargs()) {
 		// idx() == nargs() is _not_ valid!
-		++position().idx_;
-		position().pos_ = 0;
+		++top.idx_;
+		top.pos_ = 0;
 		return;
 	}
 
 	// otherwise leave array, move on one position
 	// this might yield pos() == size(), but that's a ok.
-	pop();
+	// it certainly invalidates top
+	pop(); 
 	++position().pos_;
 }
 

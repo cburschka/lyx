@@ -47,10 +47,10 @@ public:
 	void operator=(MathAtom const &);
 	/// change inset under the hood
 	void reset(MathInset * p);
+	/// access to the inset (checked with gprof)
+	MathInset * nucleus() const { return nucleus_; }
 	/// access to the inset
-	MathInset * nucleus() const;
-	/// access to the inset
-	MathInset * operator->() const;
+	MathInset * operator->() const { return nucleus_; }
 
 private:
 	///

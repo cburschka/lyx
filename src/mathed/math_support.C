@@ -609,8 +609,7 @@ int mathed_char_width(MathTextCodes type, MathMetricsInfo const & size,
 	whichFont(font, type, size);
 	if (isBinaryOp(c, type))
 		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
-	else
-		return lyxfont::width(c, font);
+	return lyxfont::width(c, font);
 }
 
 

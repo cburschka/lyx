@@ -934,6 +934,15 @@ void MathCursor::pullArg(bool goright)
 }
 
 
+void MathCursor::touch()
+{
+	cursor_type::const_iterator it = Cursor_.begin();
+	cursor_type::const_iterator et = Cursor_.end();
+	for ( ; it != et; ++it)
+		it->xcell().touch();
+}
+
+
 void MathCursor::normalize()
 {
 	// rebreak

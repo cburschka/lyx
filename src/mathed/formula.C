@@ -335,14 +335,13 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
-	int x = int(xx);
-
-	Painter & pain = bv->painter();
-
 	metrics(bv, font);
+
+	int x = int(xx);
 	int w = par_->width();
 	int h = par_->height();
 	int a = par_->ascent();
+	Painter & pain = bv->painter();
 
 	if (lcolor.getX11Name(LColor::mathbg)!=lcolor.getX11Name(LColor::background))
 		pain.fillRectangle(x, y - a, w, h, LColor::mathbg);

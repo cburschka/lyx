@@ -18,13 +18,26 @@ extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
 MathXArray::MathXArray()
-	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), size_()
+	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), size_(),
+	  clean_(false), drawn_(false)
 {}
+
+
+void MathXArray::touch() const
+{	
+	clean_  = false;
+	drawn_  = false;
+}
 
 
 void MathXArray::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = mi;
+	if (clean_)
+		return;
+
+	size_   = mi;
+	clean_  = true;
+	drawn_  = false;
 
 	if (data_.empty()) {
 		mathed_char_dim(LM_TC_VAR, mi, 'I', ascent_, descent_, width_);
@@ -58,8 +71,12 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 
 void MathXArray::draw(Painter & pain, int x, int y) const
 {
-	xo_ = x;
-	yo_ = y;
+	//if (drawn_ && x == xo_ && y == yo_)
+	//	return;
+
+	xo_    = x;
+	yo_    = y;
+	drawn_ = true;
 
 	if (data_.empty()) {
 		pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);

@@ -392,6 +392,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	hideInsetCursor(bv);
 
 	mathcursor->normalize();
+	mathcursor->touch();
+
 	switch (action) {
 
 		// --- Cursor Movements ---------------------------------------------
@@ -721,6 +723,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	}
 
 	mathcursor->normalize();
+	mathcursor->touch();
 
 	lyx::Assert(mathcursor);
 

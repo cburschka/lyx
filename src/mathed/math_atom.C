@@ -20,12 +20,8 @@
 
 #include "math_atom.h"
 #include "math_inset.h"
-#include "support/LAssert.h"
 
 #include <utility>
-
-
-using std::swap;
 
 
 MathAtom::MathAtom()
@@ -48,7 +44,7 @@ void MathAtom::operator=(MathAtom const & p)
 	if (&p == this)
 		return;
 	MathAtom tmp(p);
-	swap(tmp.nucleus_, nucleus_);
+	std::swap(tmp.nucleus_, nucleus_);
 }
 
 
@@ -64,17 +60,4 @@ void MathAtom::reset(MathInset * p)
 		return;
 	delete nucleus_;
 	nucleus_ = p;
-}
-
-
-MathInset * MathAtom::nucleus() const
-{
-	lyx::Assert(nucleus_);
-	return nucleus_;
-}
-
-
-MathInset * MathAtom::operator->() const
-{
-	return nucleus();
 }
