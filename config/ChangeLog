@@ -1,3 +1,14 @@
+2003-05-20  Angus Leeming  <angus@localhost.localdomain>
+
+	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): clean-up instigated by
+	Rob Lahaye to ensure that the configure test succeeds with
+	xforms 1.0.2 and, moreover, that this will not break the final
+	linking step under cygwin.
+
+2003-05-15  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* xforms.m4: reverse two tests; do first -ljpeg, then -lflimage
+
 2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* qt.m4: errors are not fatal
