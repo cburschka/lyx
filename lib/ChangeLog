@@ -1,3 +1,8 @@
+2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (dist_*): Use the dist annotation to clean up the
+	Makefile slightly. 
+
 2004-06-02  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (EXTRA_DIST): fix and cleanup, make sure

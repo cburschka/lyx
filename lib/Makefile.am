@@ -6,33 +6,18 @@ SUBDIRS = doc reLyX
 
 EXTRA_DIST = \
 	configure.m4 \
-	chkconfig.ltx \
-	$(pkgdata_DATA) \
-	$(pkgdata_SCRIPTS) \
-	$(bind_DATA) \
-	$(clipart_DATA) \
-	$(examples_DATA) \
-	$(images_DATA) \
-	$(imagesmath_DATA) \
-	$(kbd_DATA) \
-	$(layouts_DATA) \
-	$(lyx2lyx_DATA) \
-	$(lyx2lyx_SCRIPTS) \
-	$(scripts_SCRIPTS) \
-	$(templates_DATA) \
-	$(tex_DATA) \
-	$(ui_DATA)
+	chkconfig.ltx
 
 CHMOD = chmod
 
-pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
+dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 	       textclass.lst packages.lst external_templates \
 	       encodings languages symbols
 
-pkgdata_SCRIPTS = configure configure.cmd
+dist_pkgdata_SCRIPTS = configure configure.cmd
 
 binddir = $(pkgdatadir)/bind
-bind_DATA = \
+dist_bind_DATA = \
 	bind/broadway.bind \
 	bind/cua.bind \
 	bind/cyrkeys.bind \
@@ -51,10 +36,10 @@ bind_DATA = \
 	bind/aqua.bind
 
 clipartdir = $(pkgdatadir)/clipart
-clipart_DATA = clipart/platypus.eps
+dist_clipart_DATA = clipart/platypus.eps
 
 examplesdir = $(pkgdatadir)/examples
-examples_DATA = \
+dist_examples_DATA = \
 	examples/Foils.lyx \
 	examples/ItemizeBullets.lyx \
 	examples/Literate.lyx \
@@ -126,7 +111,7 @@ examples_DATA = \
 	examples/ro_splash.lyx
 
 imagesdir = $(pkgdatadir)/images
-images_DATA = \
+dist_images_DATA = \
 	images/amssymb.xpm \
 	images/banner.ppm \
 	images/bookmark-goto.xpm \
@@ -227,7 +212,7 @@ images_DATA = \
 	images/url-insert.xpm
 
 imagesmathdir = $(imagesdir)/math
-imagesmath_DATA = \
+dist_imagesmath_DATA = \
 	images/math/Bbbk.xpm \
 	images/math/Finv.xpm \
 	images/math/Game.xpm \
@@ -682,7 +667,7 @@ imagesmath_DATA = \
 	images/math/zeta.xpm
 
 kbddir = $(pkgdatadir)/kbd
-kbd_DATA = \
+dist_kbd_DATA = \
 	kbd/american-2.kmap \
 	kbd/american.kmap \
 	kbd/arabic.kmap \
@@ -737,7 +722,7 @@ kbd_DATA = \
 	kbd/espanol.kmap
 
 layoutsdir = $(pkgdatadir)/layouts
-layouts_DATA =\
+dist_layouts_DATA =\
 	layouts/IEEEtran.layout \
 	layouts/aa.layout \
 	layouts/aapaper.inc \
@@ -848,8 +833,8 @@ layouts_DATA =\
 	layouts/svglobal.layout
 
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
-lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
-lyx2lyx_DATA = \
+dist_lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
+dist_lyx2lyx_DATA = \
 	lyx2lyx/lyx2lyx \
 	lyx2lyx/parser_tools.py \
 	lyx2lyx/lyx_0_12.py \
@@ -864,7 +849,7 @@ lyx2lyx_DATA = \
 	lyx2lyx/lyx_1_4.py
 
 scriptsdir = $(pkgdatadir)/scripts
-scripts_SCRIPTS = \
+dist_scripts_SCRIPTS = \
 	scripts/TeXFiles.sh \
 	scripts/convertDefault.sh \
 	scripts/fen2ascii.py \
@@ -875,7 +860,7 @@ scripts_SCRIPTS = \
 	scripts/lyxpreview2bitmap.py
 
 templatesdir = $(pkgdatadir)/templates
-templates_DATA = \
+dist_templates_DATA = \
 	templates/IEEEtran.lyx \
 	templates/README.new_templates \
 	templates/aa.lyx \
@@ -898,7 +883,7 @@ templates_DATA = \
 	templates/agu_article.lyx
 
 texdir = $(pkgdatadir)/tex
-tex_DATA = \
+dist_tex_DATA = \
 	tex/broadway.cls \
 	tex/cv.cls \
 	tex/hollywood.cls \
@@ -907,7 +892,7 @@ tex_DATA = \
 	tex/revtex.cls
 
 uidir = $(pkgdatadir)/ui
-ui_DATA = \
+dist_ui_DATA = \
 	ui/classic.ui \
 	ui/default.ui \
 	ui/stdmenus.ui \

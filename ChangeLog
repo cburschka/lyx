@@ -1,3 +1,8 @@
+2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (dist_noinst_DATA): use the dist_ and noinst_
+	annotations to clean up the Makefile slightly.
+
 2004-06-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* configure.ac (AC_CONFIG_FILES): add lib/doc/Makefile

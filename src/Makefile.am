@@ -6,7 +6,7 @@ MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
 SUBDIRS = mathed insets graphics support frontends tex2lyx
 
-EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
+EXTRA_DIST = config.h.in stamp-h.in version.C.in \
 	Sectioning.h \
 	Sectioning.C \
 	Variables.C \
@@ -280,8 +280,21 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-dist-hook:
-	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`
+dist_noinst_DATA = \
+	cheaders/ChangeLog \
+	cheaders/cassert \
+	cheaders/cctype \
+	cheaders/cerrno \
+	cheaders/climits \
+	cheaders/clocale \
+	cheaders/cmath \
+	cheaders/csignal \
+	cheaders/cstdarg \
+	cheaders/cstddef \
+	cheaders/cstdio \
+	cheaders/cstdlib \
+	cheaders/cstring \
+	cheaders/ctime
 
 version.C: stamp-version
 	@:

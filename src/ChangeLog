@@ -1,3 +1,8 @@
+2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (dist_noinst_DATA): use the dist_ and noinst_
+	annotations to cleanup the Makefile slightly.
+
 2004-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxrc.C: do not set user_email to a default value but use empty
