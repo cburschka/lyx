@@ -24,17 +24,17 @@ libinstalldirs:
 
 install-data-local:  libinstalldirs
 	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
-	for i in $$(files) ; do \
+	for i in $$files ; do \
 	   $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/reLyX/$$i ; \
 	done
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
 	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
-	for i in $$(files) ; do \
+	for i in $$files ; do \
 	  rm -f $(pkgdatadir)/reLyX/$$i ; \
 	done ; \
 	dirs=`cd $(srcdir) ; echo $(LYXDATADIRS)` ; \
-	for i in $$(dirs) ; do \
+	for i in $$dirs ; do \
 	  rm -rf $(pkgdatadir)/$$i ; \
 	done
