@@ -578,7 +578,9 @@ int Paragraph::stripLeadingSpaces()
 
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))) {
-		pimpl_->eraseIntern(0);
+		// Set Change::Type to Change::INSERTED to quietly remove it
+		setChange(0, Change::INSERTED);
+		erase(0);
 		++i;
 	}
 

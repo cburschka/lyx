@@ -1,3 +1,12 @@
+2005-02-28  Johnathan Burchill  <jkerrb@users.sourceforge.net>
+
+	* paragraph.C: fix for confused change tracker when pasting
+	text that begins with a lineseparator. [bug 1827]
+	(setChange(0, Change::INSERTED);)
+       
+	* paragraph_funcs.C: fix for lost changes on triple-paste
+	in change tracking mode [bug 1827] (par.setChange()).
+
 2005-02-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (updateCounters, setCounter, expandLabel): move to

@@ -214,9 +214,13 @@ void breakParagraphConservative(BufferParams const & bparams,
 			if (moveItem(par, tmp, bparams, i, j - pos, change))
 				++j;
 		}
-
-		for (pos_type k = pos_end; k >= pos; --k)
-			par.eraseIntern(k);
+		// If tracking changes, set all the text that is to be  
+		// erased to Type::INSERTED.  
+		for (pos_type k = pos_end; k >= pos; --k) { 
+			if (bparams.tracking_changes)
+				par.setChange(k, Change::INSERTED);
+			par.erase(k);
+		}
 	}
 }
 
