@@ -290,33 +290,33 @@ bool InsetLatexAccent::displayISO8859_9(PainterInfo & pi, int x, int y) const
 	switch (modtype) {
 
 	case CEDILLA: {
-		if (ic == 'c') tmpic = 0xe7;
-		if (ic == 'C') tmpic = 0xc7;
-		if (ic == 's') tmpic = 0xfe;
-		if (ic == 'S') tmpic = 0xde;
+		if (ic == 'c') tmpic = '\xe7';
+		if (ic == 'C') tmpic = '\xc7';
+		if (ic == 's') tmpic = '\xfe';
+		if (ic == 'S') tmpic = '\xde';
 		break;
 	}
 
 	case BREVE: {
-		if (ic == 'g') tmpic = 0xf0;
-		if (ic == 'G') tmpic = 0xd0;
+		if (ic == 'g') tmpic = '\xf0';
+		if (ic == 'G') tmpic = '\xd0';
 		break;
 	}
 
 	case UMLAUT: {
-		if (ic == 'o') tmpic = 0xf6;
-		if (ic == 'O') tmpic = 0xd6;
-		if (ic == 'u') tmpic = 0xfc;
-		if (ic == 'U') tmpic = 0xdc;
+		if (ic == 'o') tmpic = '\xf6';
+		if (ic == 'O') tmpic = '\xd6';
+		if (ic == 'u') tmpic = '\xfc';
+		if (ic == 'U') tmpic = '\xdc';
 		break;
 	}
 
 	case DOT:
-		if (ic == 'I') tmpic = 0xdd;
+		if (ic == 'I') tmpic = '\xdd';
 		break;
 
 	case DOT_LESS_I:
-		tmpic = 0xfd;
+		tmpic = '\xfd';
 		break;
 
 	default:
@@ -407,15 +407,15 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		// now the rest - draw within (x, y, x + wid, y + hg)
 		switch (modtype) {
 		case ACUTE:
-			drawAccent(pi, x2, baseline, char(0xB4));
+			drawAccent(pi, x2, baseline, '\xB4');
 			break;
 
 		case GRAVE:
-			drawAccent(pi, x2, baseline, char(0x60));
+			drawAccent(pi, x2, baseline, '\x60');
 			break;
 
 		case MACRON:
-			drawAccent(pi, x2, baseline, char(0xAF));
+			drawAccent(pi, x2, baseline, '\xAF');
 			break;
 
 		case TILDE:
@@ -423,14 +423,14 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			break;
 
 		case UNDERBAR: {
-			char const underbar(0x5F);
+			char const underbar('\x5F');
 			pi.pain.text(x2 - font_metrics::center(underbar, font),
 				     baseline, underbar, font);
 			break;
 		}
 
 		case CEDILLA: {
-			char const cedilla(0xB8);
+			char const cedilla('\xB8');
 			pi.pain.text(x2  - font_metrics::center(cedilla, font),
 				     baseline, cedilla, font);
 			break;
@@ -447,7 +447,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			break;
 
 		case CIRCLE:
-			drawAccent(pi, x2, baseline, char(0xB0));
+			drawAccent(pi, x2, baseline, '\xB0');
 			break;
 
 		case TIE:
@@ -498,7 +498,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			break;
 
 		case CIRCUMFLEX:
-			drawAccent(pi, x2, baseline, 0x5E);
+			drawAccent(pi, x2, baseline, '\x5E');
 			break;
 
 		case OGONEK: {
