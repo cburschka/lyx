@@ -1,3 +1,8 @@
+2002-07-15  Soeren Pietsch  <SPietsch@gmx.de>
+
+	* lib/configure.m4: fix the detection of cygwin when the shell is
+	not bash
+
 2002-07-10  Andrew Zabolotny  <zap@cobra.ru>
 
 	* bind/emacs.bind: 

@@ -164,11 +164,12 @@ if test ! -r ${srcdir}/chkconfig.ltx ; then
 fi
 
 #### Adjust PATH for Win32 (Cygwin)
-if test "x$OSTYPE" = xcygwin; then
-  echo "configure: cygwin detected; path correction"
-  srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
-  echo "srcdir=${srcdir}"
-fi
+case `uname -s` in
+   CYGWIN*)
+     echo "configure: cygwin detected; path correction"
+     srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
+     echo "srcdir=${srcdir}" ;;
+esac
 
 #### Create the build directories if necessary
 for dir in bind clipart doc examples help images kbd layouts reLyX \
