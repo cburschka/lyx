@@ -1,3 +1,7 @@
+2003-08-27  John Levon  <levon@movementarian.org>
+
+	* screen.C: fix cursor in ERT (bug 1341)
+
 2003-08-26  Alfredo Braunstein  <abraunst@libero.it>
 
 	* screen.C (redraw): remove an uneeded updateRowPositions

@@ -158,6 +158,10 @@ void LyXScreen::showCursor(BufferView & bv)
 			shape = REVERSED_L_SHAPE;
 	}
 
+	// The ERT language hack needs fixing up
+	if (realfont.language() == latex_language)
+		shape = BAR_SHAPE;
+
 	int ascent = font_metrics::maxAscent(realfont);
 	int descent = font_metrics::maxDescent(realfont);
 	int h = ascent + descent;
