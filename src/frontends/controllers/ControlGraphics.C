@@ -46,6 +46,18 @@
 using std::pair;
 using std::make_pair;
 using std::ifstream;
+
+namespace {
+
+// FIXME: currently we need the second '|' to prevent mis-interpretation!
+// All supported graphic formats with their file-extension and the
+// gzip-ext for zipped (e)ps-files.
+string const grfx_pattern = 
+	"*.(agr|bmp|eps|epsi|fits|gif|jpg|obj|pdf|pbm|pgm|png|"
+	"ppm|ps|tif|tiff|xbm|xpm|xwd|gz)|";		
+
+}
+
  
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
@@ -90,8 +102,6 @@ extern string user_lyxdir;
 string const ControlGraphics::Browse(string const & in_name)
 {
 	string const title = _("Select graphics file");
-	// FIXME: currently we need the second '|' to prevent mis-interpretation
-	string const pattern = "*.(ps|eps|png|jpeg|jpg|gif|gz)|";
 
 	// Does user clipart directory exist?
 	string clipdir = AddName (user_lyxdir, "clipart");
@@ -103,7 +113,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
-			     title, pattern, dir1, dir2);
+			     title, ::grfx_pattern, dir1, dir2);
 }
 
 
