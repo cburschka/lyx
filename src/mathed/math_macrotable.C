@@ -98,28 +98,28 @@ void MathMacroTable::builtinMacros()
 	create("to",           0, "\\rightarrow");
 	create("|",            0, "\\Vert");
 
-	create("longleftrightarrow", 0, "\\leftarrow\\kern-6mu\\rightarrow");
-	create("Longleftrightarrow", 0, "\\Leftarrow\\kern-6mu\\Rightarrow");
+	create("longleftrightarrow", 0, "\\leftarrow\\kern-8mu\\rightarrow");
+	create("Longleftrightarrow", 0, "\\Leftarrow\\kern-8mu\\Rightarrow");
 	create("doteq", 0, "\\stackrel{\\cdot}{=}");
 
 	//create("models",         0, "|\\kern-9mu=");
 
 	if (math_font_available(LM_TC_CMSY)) {
-		create("longrightarrow", 0, "\\lyxbar\\kern-5mu\\rightarrow");
-		create("longleftarrow",  0, "\\leftarrow\\kern-5mu\\lyxbar");
-		create("mapsto",  0, "\\mapstochar\\rightarrow");
-		create("longmapsto",  0, "\\mapstochar\\lyxbar\\kern-5mu\\rightarrow");
+		create("longrightarrow", 0, "\\lyxbar\\kern-6mu\\rightarrow");
+		create("longleftarrow",  0, "\\leftarrow\\kern-6mu\\lyxbar");
+		create("mapsto",  0, "\\mapstochar\\kern-4mu\\rightarrow");
+		create("longmapsto",  0, "\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow");
 	}
 
 	if (math_font_available(LM_TC_CMR)) {
-		create("Longrightarrow", 0, "\\lyxeq\\kern-3mu\\Rightarrow");
-		create("Longleftarrow",  0, "\\Leftarrow\\kern-9mu\\lyxeq");
+		create("Longrightarrow", 0, "\\lyxeq\\kern-5mu\\Rightarrow");
+		create("Longleftarrow",  0, "\\Leftarrow\\kern-5mu\\lyxeq");
 	}
 
 	if (math_font_available(LM_TC_CMM)) {
-		create("hookrightarrow", 0, "\\lhook\\kern-5mu\\rightarrow");
-		create("hookleftarrow",  0, "\\leftarrow\\kern-5mu\\rhook");
-		create("bowtie",         0, "\\triangleright\\kern-3mu\\triangleleft");
+		create("hookrightarrow", 0, "\\lhook\\kern-8mu\\rightarrow");
+		create("hookleftarrow",  0, "\\leftarrow\\kern-8mu\\rhook");
+		create("bowtie",         0, "\\triangleright\\kern-2mu\\triangleleft");
 	}
 
 	if (math_font_available(LM_TC_MSA)) {
