@@ -19,6 +19,7 @@
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
 #include "frontends/LyXView.h"
+#include "frontends/lyx_gui.h"
 #include "support/systemcall.h"
 #include "support/filetools.h"
 
