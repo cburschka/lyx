@@ -187,6 +187,7 @@ bool is_heading(string const & name)
 bool is_latex_command(string const & name)
 {
 	return
+ 		name == "cite" ||
  		name == "label" ||
  		name == "index" ||
  		name == "printindex";
@@ -202,6 +203,12 @@ void begin_inset(ostream & os, string const & name)
 void end_inset(ostream & os)
 {
 	os << "\n\\end_inset\n";
+}
+
+
+string curr_env()
+{
+	return active_environments.empty() ? string() : active_environments.top();
 }
 
 
@@ -224,7 +231,7 @@ void handle_par(ostream & os)
 	if (active_environments.empty())
 		return;
 	os << "\n\\layout ";
-	string s = active_environments.top();
+	string s = curr_env();
 	if (s == "document") {
 		os << "Standard\n\n";
 		return;
@@ -426,8 +433,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << wrap("macroarg", string(1, n.character()));
 		}
 
-		else if (t.cat() == catActive)
-			os << wrap("active", string(1, t.character()));
+		else if (t.cat() == catActive) {
+			if (t.character() == '~')
+				os << (curr_env() == "lyxcode" ? ' ' : '~');
+			else
+				os << t.asInput();
+		}
 
 		else if (t.cat() == catBegin) {
 			os << '{';
@@ -553,9 +564,9 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			if (flags & FLAG_END) {
 				// eat environment name
 				string const name = p.getArg('{', '}');
-				if (name != active_environments.top())
+				if (name != curr_env())
 					p.error("\\end{" + name + "} does not match \\begin{"
-						+ active_environments.top() + "}");
+						+ curr_env() + "}");
 				active_environments.pop();
 				if (name == "document" || name == "abstract")
 					;
