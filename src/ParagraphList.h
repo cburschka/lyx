@@ -57,6 +57,8 @@ public:
 	///
 	void assign(iterator beg, iterator end);
 	///
+	void splice(iterator pos, ParagraphList & pl);
+	///
 	void clear();
 	///
 	void erase(iterator it);

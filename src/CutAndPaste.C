@@ -276,9 +276,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// Paste it!
 
 	ParagraphList::iterator past_pit = boost::next(pit);
-	// It is possible that std::list::splice also could be used here.
-	pars.insert(past_pit,
-		    simple_cut_clone.begin(), simple_cut_clone.end());
+	pars.splice(past_pit, simple_cut_clone);
 	ParagraphList::iterator last_paste = boost::prior(past_pit);
 
 	// If we only inserted one paragraph.
@@ -293,7 +291,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	// Maybe some pasting.
 #warning CHECK! Are we comparing last_paste to the wrong list here? (Lgb)
-	if (boost::next(last_paste) != simple_cut_clone.end() &&
+	if (boost::next(last_paste) != pars.end() &&
 	    paste_the_end) {
 		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {
 			mergeParagraph(current_view->buffer()->params, pars,

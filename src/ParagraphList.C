@@ -176,6 +176,65 @@ void ParagraphList::assign(iterator beg, iterator end)
 }
 
 
+void ParagraphList::splice(iterator pos, ParagraphList & pl)
+{
+	Paragraph * first = pl.parlist;
+	Paragraph * last = first;
+#ifndef NO_NEXT
+	while (last->next_)
+		last = last->next_;
+
+	if (pos == end()) {
+		if (parlist == 0) {
+			parlist = first;
+		} else {
+			Paragraph * last_par = &back();
+			last_par->next_ = first;
+			first->previous_ = last_par;
+		}
+	} else if (pos == begin()) {
+		last->next_ = parlist;
+		parlist->previous_ = last;
+		parlist = first;
+	} else {
+		Paragraph * pos_par = &*pos;
+		Paragraph * before_pos = pos_par->previous_;
+
+		before_pos->next_ = first;
+		first->previous_ = before_pos;
+		last->next_ = pos_par;
+		pos_par->previous_ = last;
+	}
+	pl.parlist = 0;
+#else
+	while (last->next_par_)
+		last = last->next_par_;
+
+	if (pos == end()) {
+		if (parlist == 0) {
+			parlist = first;
+		} else {
+			Paragraph * last_par = &back();
+			last_par->next_par_ = first;
+			first->prev_par_ = last_par;
+		}
+	} else if (pos == begin()) {
+		last->next_par_ = parlist;
+		parlist->prev_par_ = last;
+		parlist = first;
+	} else {
+		Paragraph * pos_par = &*pos;
+		Paragraph * before_pos = pos_par->prev_par_;
+
+		before_pos->next_par_ = first;
+		first->prev_par_ = before_pos;
+		last->next_par_ = pos_par;
+		pos_par->prev_par_ = last;
+	}
+	pl.parlist = 0;
+#endif
+}
+
 
 void ParagraphList::clear()
 {
