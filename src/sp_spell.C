@@ -78,11 +78,13 @@ PSpell::PSpell()
 {
 }
 
+
 PSpell::PSpell(BufferParams const & params, string const & lang)
 	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN)
 {
 	initialize(params, lang);
 }
+
 
 PSpell::~PSpell() 
 {
@@ -176,10 +178,12 @@ char const * PSpell::nextMiss()
 	return "";
 }
 
+
 char const * PSpell::error()
 {
 	return error_;
 }
+
 
 void PSpell::sigchldhandler(pid_t pid, int * status)
 {
@@ -193,16 +197,13 @@ void PSpell::sigchldhandler(pid_t pid, int * status)
 ///
 
 ISpell::ISpell()
-{
-	str = 0;
-	flag = ISP_UNKNOWN;
-}
+	: str(0), flag(ISP_UNKNOWN)
+{}
 
 
 ISpell::ISpell(BufferParams const & params, string const & lang)
+	: str(0), flag(ISP_UNKNOWN)
 {
-	str = 0;
-	flag = ISP_UNKNOWN;
 	initialize(params, lang);
 }
 
@@ -226,7 +227,8 @@ char const * ISpell::nextMiss()
 void ISpell::initialize(BufferParams const & params, string const & lang)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
-	int pipein[2], pipeout[2];
+	int pipein[2];
+	int pipeout[2];
 	char * argv[14];
 	int argc;
 
@@ -330,7 +332,8 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 				: params.inputenc;
 			string::size_type n = enc.length();
 			tmp = new char[3];
-			string("-T").copy(tmp, 2); tmp[2] = '\0';
+			string("-T").copy(tmp, 2);
+			tmp[2] = '\0';
 			argv[argc++] = tmp; // Input encoding
 			tmp = new char[n + 1];
 			enc.copy(tmp, n);
@@ -344,7 +347,7 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 
 		// free the memory used by string::copy in the
 		// setup of argv
-		for (int i= 0; i < argc -1; ++i)
+		for (int i = 0; i < argc - 1; ++i)
 			delete[] argv[i];
 		
 		lyxerr << "LyX: Failed to start ispell!" << endl;
@@ -439,8 +442,8 @@ enum ISpell::spellStatus ISpell::check(string const & word)
 	char buf[1024];
 	::fgets(buf, 1024, in); 
   
-	/* I think we have to check if ispell is still alive here because
-	   the signal-handler could have disabled blocking on the fd */
+	// I think we have to check if ispell is still alive here because
+	// the signal-handler could have disabled blocking on the fd 
 	if (!alive()) return ISP_UNKNOWN;
 
 	switch (*buf) {
@@ -483,10 +486,10 @@ enum ISpell::spellStatus ISpell::check(string const & word)
 
 void ISpell::close()
 {
-        // Note: If you decide to optimize this out when it is not 
-        // needed please note that when Aspell is used this command 
-        // is also needed to save the replacement dictionary.
-        // -- Kevin Atkinson (kevinatk@home.com)
+	// Note: If you decide to optimize this out when it is not 
+	// needed please note that when Aspell is used this command 
+	// is also needed to save the replacement dictionary.
+	// -- Kevin Atkinson (kevinatk@home.com)
 
 	fputs("#\n", out); // Save personal dictionary
 
@@ -513,13 +516,13 @@ void ISpell::accept(string const & word)
 
 void ISpell::store(string const & mis, string const & cor)
 {
-        if (actual_spell_checker == ASC_ASPELL) {
-                ::fputs("$$ra ", out);
-                ::fputs(mis.c_str(), out);
-                ::fputc(',', out);
-                ::fputs(cor.c_str(), out);
-                ::fputc('\n', out);
-        }
+	if (actual_spell_checker == ASC_ASPELL) {
+		::fputs("$$ra ", out);
+		::fputs(mis.c_str(), out);
+		::fputc(',', out);
+		::fputs(cor.c_str(), out);
+		::fputc('\n', out);
+	}
 }
 
 
@@ -527,14 +530,15 @@ void ISpell::sigchldhandler(pid_t pid, int * status)
 {
 	if (isp_pid > 0) {
 		if (pid == isp_pid) {
-			isp_pid= -1;
-			fcntl(isp_fd, F_SETFL, O_NONBLOCK); /* set the file descriptor
-							       to nonblocking so we can 
-							       continue */
+			isp_pid = -1;
+			// set the file descriptor to nonblocking so we can
+			// continue 
+			fcntl(isp_fd, F_SETFL, O_NONBLOCK);
 		}
 	}
 	sigchldchecker(pid, status);
 }
+
 
 char const * ISpell::error()
 {
