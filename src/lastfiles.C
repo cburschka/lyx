@@ -17,6 +17,7 @@
 
 #include <fstream>
 #include <algorithm>
+#include <iterator>
 
 #include "support/FileInfo.h"
 #include "lastfiles.h"
