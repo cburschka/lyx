@@ -272,8 +272,18 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 {
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
-	Buffer * buf = owner->buffer();
 	LCursor & cur = view()->cursor();
+
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer-related.
+	*/
+	Buffer * buf;
+	if (cmd.origin == FuncRequest::UI && !owner->hasFocus())
+		buf = 0;
+	else
+		buf = owner->buffer();
 
 	if (cmd.action == LFUN_NOACTION) {
 		setStatusMessage(N_("Nothing to do"));
@@ -447,7 +457,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SEQUENCE: {
 		// argument contains ';'-terminated commands
 		string const firstcmd = token(cmd.argument, ';', 0);
-		flag = getStatus(lyxaction.lookupFunc(firstcmd));
+		FuncRequest func(lyxaction.lookupFunc(firstcmd));
+		func.origin = cmd.origin;
+		flag = getStatus(func);
 	}
 
 	case LFUN_MENUNEW:
@@ -1219,7 +1231,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			while (!arg.empty()) {
 				string first;
 				arg = split(arg, first, ';');
-				dispatch(lyxaction.lookupFunc(first));
+				FuncRequest func(lyxaction.lookupFunc(first));
+				func.origin = cmd.origin;
+				dispatch(func);
 			}
 			break;
 		}

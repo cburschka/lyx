@@ -59,6 +59,9 @@ public:
 	/// menu item has been selected
 	void activated(FuncRequest const &);
 
+	// returns true if this view has the focus.
+	virtual bool hasFocus() const;
+
 public slots:
 	/// idle timeout
 	void update_view_state_qt();

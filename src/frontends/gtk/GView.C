@@ -171,5 +171,13 @@ void GView::clearMessage()
 	message(getLyXFunc().viewStatusMessage());
 }
 
+
+bool GView::hasFocus() const
+{
+	// No real implementation needed for now
+	return true;
+}
+
+
 } // namespace frontend
 } // namespace lyx

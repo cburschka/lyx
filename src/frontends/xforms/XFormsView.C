@@ -218,6 +218,13 @@ void XFormsView::updateMetrics(bool resize_form)
 }
 
 
+bool XFormsView::hasFocus() const
+{
+	// No real implementation needed for now
+	return true;
+}
+
+
 void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 {
 	fl_set_form_title(getForm(), title.c_str());

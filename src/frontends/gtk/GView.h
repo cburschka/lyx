@@ -51,6 +51,10 @@ public:
 	virtual void busy(bool) const;
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage();
+
+	// returns true if this view has the focus.
+	virtual bool hasFocus() const;
+
 private:
 	void showViewState();
 	bool onFocusIn(GdkEventFocus * event);

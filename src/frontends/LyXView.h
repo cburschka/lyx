@@ -142,6 +142,9 @@ public:
 	 */
 	Buffer const * const updateInset(InsetBase const *) const;
 
+	// returns true if this view has the focus.
+	virtual bool hasFocus() const = 0;
+
 protected:
 	/// view of a buffer. Eventually there will be several.
 	boost::shared_ptr<BufferView> bufferview_;

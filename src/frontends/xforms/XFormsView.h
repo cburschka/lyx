@@ -79,6 +79,9 @@ public:
 	///
 	boost::signal<void()> metricsUpdated;
 
+	// returns true if this view has the focus.
+	virtual bool hasFocus() const;
+
 private:
 	/**
 	 * setWindowTitle - set title of window

@@ -144,6 +144,12 @@ void QtView::activated(FuncRequest const & func)
 }
 
 
+bool QtView::hasFocus() const
+{
+	return qApp->activeWindow() == this;
+}
+
+
 void QtView::closeEvent(QCloseEvent *)
 {
 	QuitLyX();

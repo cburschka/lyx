@@ -1,7 +1,17 @@
+2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus): when the origin of the request is menu or
+	toolbar, and the LyXView does not have focus, do as if there was
+	no buffer (bug 1720)
+
+	* lyxfunc.C (getStatus, dispatch): propagate the origin of a
+	FuncRequest to individual entries of LFUN_SEQUENCE
+
 2004-11-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* output_latex.C (TeXOnePar): override runparams.moving_arg
-	according to the needprotect value of the current paragraph (bug 1739)
+	according to the needprotect value of the current paragraph (bug
+	1739)
 
 	* paragraph.C (simpleTeXOnePar): no need to override
 	runparams.moving_args here
