@@ -1400,7 +1400,7 @@ DispatchResult LyXText::moveLeftIntern(LCursor & cur,
 
 DispatchResult LyXText::moveUp(LCursor & cur)
 {
-	if (cur.par() == 0 && cur.row() == 0)
+	if (cur.par() == 0 && cur.crow() == 0)
 		return DispatchResult(false, FINISHED_UP);
 	cursorUp(cur, false);
 	cur.clearSelection();
@@ -1468,7 +1468,7 @@ void LyXText::cursorUp(LCursor & cur, bool selecting)
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() - 1;
-	setCursorFromCoordinates(x, y);
+	setCursorFromCoordinates(cur.current(), x - xo_, y - yo_);
 
 	if (!selecting) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
@@ -1483,7 +1483,7 @@ void LyXText::cursorDown(LCursor & cur, bool selecting)
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() + row.height() + 1;
-	setCursorFromCoordinates(cur.current(), x, y);
+	setCursorFromCoordinates(cur.current(), x - xo_, y - yo_);
 
 	if (!selecting) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
