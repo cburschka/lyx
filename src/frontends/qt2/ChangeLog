@@ -1,3 +1,12 @@
+2001-02-16  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* remove inheritance from noncopyable in Form*.h
+	* Character dialog added:
+	* FormCharacter.[Ch]
+	* chardlg.ui
+	* chardlg.[Ch]
+	* chardlgimpl.[Ch]
+	
 2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: fix bview->update()

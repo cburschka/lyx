@@ -28,7 +28,7 @@ class FormCopyrightDialog;
 /**
   @author Jürgen Vigna
   */
-class FormCopyright : public DialogBase, public noncopyable {
+class FormCopyright : public DialogBase {
 public: 
 	FormCopyright(LyXView *, Dialogs *);
 	~FormCopyright();

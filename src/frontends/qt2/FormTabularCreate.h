@@ -23,7 +23,7 @@ class Dialogs;
 class LyXView; 
 class TabularCreateDlgImpl;
 
-class FormTabularCreate : public DialogBase, public noncopyable {
+class FormTabularCreate : public DialogBase {
 public: 
 	/**@name Constructors and Destructors */
 	//@{

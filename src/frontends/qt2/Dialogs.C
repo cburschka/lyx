@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "Dialogs.h"
+#include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormCopyright.h"
 #include "FormDocument.h"
@@ -44,6 +45,7 @@ Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
+	dialogs_.push_back(new FormCharacter(lv, this));
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
 	dialogs_.push_back(new FormDocument(lv, this));

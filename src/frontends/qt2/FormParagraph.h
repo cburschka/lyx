@@ -17,7 +17,7 @@ class Dialogs;
 class LyXView;
 class ParagraphDlgImpl;
 
-class FormParagraph : public DialogBase, public noncopyable {
+class FormParagraph : public DialogBase {
 public: 
 	/**@name Constructors and Destructors */
 	//@{

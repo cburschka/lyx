@@ -11,6 +11,8 @@ CXXFLAGS= $(DEFINES)
 # moc generated files
 BUILTSOURCES = 	moc_FormCopyrightDialogBase.C \
                 moc_FormCopyrightDialog.C \
+	       moc_chardlg.C \
+	       moc_chardlgimpl.C \
 	       moc_paragraphdlg.C \
 	       moc_paragraphdlgimpl.C \
 	       moc_printdlg.C \
@@ -64,6 +66,12 @@ libqt2_la_SOURCES = \
 	$(BUILTSOURCES) \
 	Dialogs.C \
 	GUIRunTime.C \
+	FormCharacter.C	\
+	FormCharacter.h	\
+	chardlg.C \
+	chardlg.h \
+	chardlgimpl.C \
+	chardlgimpl.h \
 	FormCopyright.C	\
 	FormCopyright.h	\
 	FormCopyrightDialog.C \
@@ -146,3 +154,14 @@ moc_tabularcreatedlgimpl.C: tabularcreatedlgimpl.h
 	$(MOC) -o $@ $<
 moc_emptytable.C: emptytable.h
 	$(MOC) -o $@ $<
+
+FormCharacter.C: chardlg.h
+chardlg.h: chardlg.ui
+	$(UIC) -o $@ $<
+chardlg.C: chardlg.ui
+	$(UIC) -impl chardlg.h -o $@ $<
+moc_chardlg.C: chardlg.h
+	$(MOC) -o $@ $<
+moc_chardlgimpl.C: chardlgimpl.h
+	$(MOC) -o $@ $<
+

@@ -19,7 +19,7 @@ class PrintDlgImpl;
 using SigC::Connection;
 #endif
 
-class FormPrint : public DialogBase, public noncopyable {
+class FormPrint : public DialogBase {
 public: 
 	/**@name Constructors and Destructors */
 	//@{
