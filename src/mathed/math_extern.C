@@ -3,6 +3,7 @@
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.
 
+#include <algorithm>
 
 #include "math_charinset.h"
 #include "math_deliminset.h"
@@ -111,8 +112,9 @@ string extractString(MathInset * p)
 // define a function for tests
 typedef bool TestItemFunc(MathInset *);
 
-// define a function for replacing pa
+// define a function for replacing subexpressions
 typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
+
 
 // search end of nested sequence
 MathArray::iterator endNestSearch(
@@ -293,7 +295,7 @@ void extractIntegrals(MathArray & ar)
 			continue;
 
 		// create a proper inset as replacement
-		MathExIntInset * p = new MathExIntInset;
+		MathExIntInset * p = new MathExIntInset("int");
 
 		// collect scripts
 		MathArray::iterator st = it + 1;
@@ -305,17 +307,99 @@ void extractIntegrals(MathArray & ar)
 		}
 
 		// use the atom behind the 'd' as differential
-		MathArray diff;
+		MathArray ind;
 		if (jt + 1 != ar.end()) {
-			diff.push_back(*(jt + 1));
-			ar.erase(it + 1, jt + 2);
-		} else {
-			ar.erase(it + 1, jt + 1);
+			ind.push_back(*(jt + 1));
+			++jt;
 		}
-		p->differential(diff);
+		ar.erase(it + 1, jt + 1);
+
+		p->index(ind);
 		(*it).reset(p);
 	}
 	lyxerr << "\nIntegrals to: " << ar << "\n";
+}
+
+
+//
+// search sums
+//
+
+bool sumSymbolTest(MathInset * p)
+{
+	return p->asSymbolInset() && p->asSymbolInset()->name() == "sum";
+}
+
+
+bool equalSign(MathInset * p)
+{
+	return extractString(p) == "=";
+}
+
+
+bool equalSign1(MathAtom const & at)
+{
+	return equalSign(at.nucleus());
+}
+
+
+
+// replace '\sum' ['_^'] f(x) sequences by a real MathExIntInset
+// assume 'extractDelims' ran before
+void extractSums(MathArray & ar)
+{
+	// we need at least two items...
+	if (ar.size() <= 1)
+		return;
+
+	lyxerr << "\nSums from: " << ar << "\n";
+	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
+		MathArray::iterator it = ar.begin() + i;
+
+		// is this a sum name?
+		if (!sumSymbolTest(it->nucleus()))
+			continue;
+
+		// create a proper inset as replacement
+		MathExIntInset * p = new MathExIntInset("sum");
+
+		// collect scripts
+		MathArray::iterator st = it + 1;
+		if (st != ar.end() && (*st)->asScriptInset()) {
+			p->scripts(*st);
+			++st;
+
+			// try to figure out the summation index from the subscript
+			MathScriptInset * script = p->scripts()->asScriptInset();
+			if (script->hasDown()) {
+				MathArray & ar = script->down().data_;
+				MathArray::iterator it =
+					std::find_if(ar.begin(), ar.end(), &equalSign1);
+				if (it != ar.end()) {
+					// we found a '=', use everything in front of that as index,
+					// and everything behind as start value
+					p->index(MathArray(ar.begin(), it));
+					ar.erase(ar.begin(), it + 1);
+				} else {
+					// use everything as summation index
+					p->index(ar);
+					p->scripts().reset(0);
+				}
+			}
+		}
+
+		// use the atom behind the script as core
+		MathArray ind;
+		if (st != ar.end()) {
+			MathArray core;
+			core.push_back(*st);
+			p->core(core);
+			++st;
+		}
+		ar.erase(it + 1, st);
+		(*it).reset(p);
+	}
+	lyxerr << "\nSums to: " << ar << "\n";
 }
 
 
@@ -325,6 +409,7 @@ void extractStructure(MathArray & ar)
 	extractDelims(ar);
 	extractFunctions(ar);
 	extractIntegrals(ar);
+	extractSums(ar);
 	extractStrings(ar);
 }
 

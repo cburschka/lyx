@@ -5,8 +5,8 @@
 #include "math_symbolinset.h"
 
 
-MathExIntInset::MathExIntInset()
-	: int_(new MathSymbolInset("int"))
+MathExIntInset::MathExIntInset(string const & name)
+	: symbol_(name)
 {}
 
 
@@ -16,9 +16,9 @@ MathInset * MathExIntInset::clone() const
 }
 
 
-void MathExIntInset::differential(MathArray const & ar)
+void MathExIntInset::index(MathArray const & ar)
 {
-	diff_ = ar;
+	index_ = ar;
 }
 
 
@@ -34,9 +34,15 @@ void MathExIntInset::scripts(MathAtom const & at)
 }
 
 
-void MathExIntInset::symbol(MathAtom const & at)
+MathAtom & MathExIntInset::scripts()
 {
-	int_ = at;
+	return scripts_;
+}
+
+
+void MathExIntInset::symbol(string const & symbol)
+{
+	symbol_ = symbol;
 }
 
 
@@ -49,12 +55,12 @@ bool MathExIntInset::hasScripts() const
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	os << "[int ";
+	os << '[' << symbol_.c_str() << ' ';
 	if (hasScripts())
 		os << scripts_.nucleus();
 	else 
 		os << "{}";
-	os << ' ' << core_ << ' ' << diff_ << ']';
+	os << ' ' << core_ << ' ' << index_ << ']';
 }
 
 
@@ -72,12 +78,12 @@ void MathExIntInset::draw(Painter &, int, int) const
 
 void MathExIntInset::maplize(MapleStream & os) const
 {
-	os << int_.nucleus() << '(';
+	os << symbol_.c_str() << '(';
 	if (core_.size())
 		os << core_;
 	else 
 		os << '1';
-	os << ',' << diff_;
+	os << ',' << index_;
 	if (hasScripts()) {
 		MathScriptInset * p = scripts_->asScriptInset();
 		os << '=' << p->down().data_ << ".." << p->up().data_;
@@ -88,20 +94,20 @@ void MathExIntInset::maplize(MapleStream & os) const
 
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
+	MathSymbolInset * sym = new MathSymbolInset(symbol_.c_str());
 	if (hasScripts())
-		scripts_->asScriptInset()->mathmlize(int_.nucleus(), os);
+		scripts_->asScriptInset()->mathmlize(sym, os);
 	else 
-		int_->mathmlize(os);
+		sym->mathmlize(os);
+	delete sym;
 	os << core_ << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
-	   << diff_ << ETag("mrow");
+	   << index_ << ETag("mrow");
 }
 
 
-void MathExIntInset::write(WriteStream & os) const
+void MathExIntInset::write(WriteStream &) const
 {
-	if (hasScripts())
-		os << scripts_.nucleus();
-	os << core_ << "d" << diff_;
+	lyxerr << "should not happen\n";
 }
 

@@ -10,19 +10,19 @@
 class MathExIntInset : public MathInset {
 public:
 	///
-	MathExIntInset();
+	explicit MathExIntInset(string const & name_);
 	///
 	MathInset * clone() const;
 	///
-	void differential(MathArray const &);
+	void index(MathArray const &);
 	///
 	void core(MathArray const &);
 	///
 	void scripts(MathAtom const &);
 	///
-	void symbol(MathAtom const &);
+	MathAtom & scripts();
 	///
-	bool hasScripts() const;
+	void symbol(string const &);
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
@@ -38,12 +38,16 @@ public:
 	void write(WriteStream & os) const;
 private:
 	///
-	MathAtom int_;
+	bool hasScripts() const;
+
+	///
+	string symbol_;
 	///
 	MathAtom scripts_;
 	///
 	MathArray core_;
 	///
-	MathArray diff_;
+	MathArray index_;
 };
+
 #endif
