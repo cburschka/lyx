@@ -159,7 +159,7 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 }
 
 
-int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
+void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	string const & token, LyXFont & font)
 {
 	static Change change;
@@ -187,11 +187,9 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		bool hasLayout = tclass.hasLayout(layoutname);
 
 		if (!hasLayout) {
-			lyxerr << "Layout '" << layoutname << "' does not"
-			       << " exist in textclass '" << tclass.name()
-			       << "'." << endl;
-			lyxerr << "Trying to use default layout instead."
-			       << endl;
+			buf.error(ErrorItem(_("Unknown layout"),
+			bformat(_("Layout '%1$s' does not exists in textclass '%2$s'\nTrying to use the default instead.\n"),
+				layoutname, tclass.name()), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
 		}
 
@@ -219,7 +217,6 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			string line = lex.getString();
 			buf.error(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
-			return 1;
 		}
 	} else if (token == "\\family") {
 		lex.next();
@@ -345,23 +342,19 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		buf.error(ErrorItem(_("Unknown token"),
 			bformat(_("Unknown token: %1$s %2$s\n"), token, lex.getString()),
 			par.id(), 0, par.size()));
-		return 1;
 	}
-	return 0;
 }
 
 
-int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
+void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 {
-	int unknown = 0;
-
 	lex.nextToken();
 	string token = lex.getString();
 	LyXFont font;
 
 	while (lex.isOK()) {
 
-		unknown += readParToken(buf, par, lex, token, font);
+		readParToken(buf, par, lex, token, font);
 
 		lex.nextToken();
 		token = lex.getString();
@@ -385,9 +378,8 @@ int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 			       << "Missing \\end_layout.\n";
 			break;
 		}
+		lyxerr << "Paragraph token unknown: `" << token << '\'' << endl;
 	}
-
-	return unknown;
 }
 
 
@@ -1867,12 +1859,17 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 			break;
 		}
 
+		if (token == "\\end_body") {
+			continue;
+		}
+
+		if (token == "\\begin_body") {
+			continue;
+		}
+
 		if (token == "\\end_document") {
 			return false;
 		}
-
-		// FIXME: ugly.
-		int unknown = 0;
 
 		if (token == "\\begin_layout") {
 			lex.pushToken(token);
@@ -1897,9 +1894,9 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 				--depth;
 			}
 		} else {
-			++unknown;
+			lyxerr << "Handling unknown body token: `"
+			       << token << '\'' << endl;
 		}
-
 	}
 	return true;
 }

@@ -1,3 +1,10 @@
+2004-08-16  José Matos  <jamatos@lyx.org>
+
+	* text.C (readParToken, readParagraph, read): report all unknown tokens.
+	For the same level of importance use the same chanel to report problems.
+	(read): add code to deal with \begin_body and \end_body.
+
+
 2004-08-15  José Matos  <jamatos@lyx.org>
 
 	* lyxlex.C (getString): fix comment, buffer::readBody is now
