@@ -477,8 +477,10 @@ public:
 	///
 	void CloseFootnote(size_type pos);
 #endif
-	/// important for cut and paste
-	void CopyIntoMinibuffer(BufferParams const &, size_type pos) const;
+	/** important for cut and paste
+	    Temporary change from BufferParams to Buffer. Will revert when we
+	    get rid of the argument to Inset::Clone(Buffer const &) */
+	void CopyIntoMinibuffer(Buffer const &, size_type pos) const;
 	///
 	void CutIntoMinibuffer(BufferParams const &, size_type pos);
 	///

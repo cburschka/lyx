@@ -92,8 +92,7 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	if (end > startpar->Last())
 	    end = startpar->Last();
 	for (; i < end; ++i) {
-	    startpar->CopyIntoMinibuffer(current_view->buffer()->params,
-					 start);
+	    startpar->CopyIntoMinibuffer(*current_view->buffer(), start);
 	    startpar->Erase(start);
 
 	    buf->InsertFromMinibuffer(buf->Last());
@@ -188,7 +187,7 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 	if (end > startpar->Last())
 	    end = startpar->Last();
 	for (; i < end; ++i) {
-	    startpar->CopyIntoMinibuffer(current_view->buffer()->params, i);
+	    startpar->CopyIntoMinibuffer(*current_view->buffer(), i);
 	    buf->InsertFromMinibuffer(buf->Last());
 	}
     } else {

@@ -407,15 +407,17 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 
 
 // First few functions needed for cut and paste and paragraph breaking.
-void LyXParagraph::CopyIntoMinibuffer(BufferParams const & bparams,
+void LyXParagraph::CopyIntoMinibuffer(Buffer const & buffer,
 				      LyXParagraph::size_type pos) const
 {
+	BufferParams bparams = buffer.params;
+
 	minibuffer_char = GetChar(pos);
 	minibuffer_font = GetFontSettings(bparams, pos);
 	minibuffer_inset = 0;
 	if (minibuffer_char == LyXParagraph::META_INSET) {
 		if (GetInset(pos)) {
-			minibuffer_inset = GetInset(pos)->Clone(*current_view->buffer());
+			minibuffer_inset = GetInset(pos)->Clone(buffer);
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';

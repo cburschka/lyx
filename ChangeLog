@@ -1,3 +1,14 @@
+2000-12-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/lyxparagraph.h, src/paragraph.C (CopyIntoMinibuffer): pass a
+	(Buffer const &), not a (BufferParams const &) and so fix a crash
+	caused by using current_view before it had been initialised. Not
+	the best way to do this, but much easier than changing
+	Inset::Clone(Buffer const &) to Inset::Clone().
+
+	* src/CutAndPaste.C:
+	* src/tabular.C: changed call to CopyIntoMinibuffer().
+
 2000-12-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/ui/default.ui: put TOC at the beginning of the TOC menu.
@@ -7,8 +18,8 @@
 
 2000-12-06  Angus Leeming <a.leeming@ic.ac.uk>
 
-	* src/frontends/xforms/FormPreferences.C (ScreenFonts::build): changed
-	filter for screen fonts input filter from int to float
+	* src/frontends/xforms/FormPreferences.C (ScreenFonts::build):
+	changed filter for screen fonts input filter from int to float
 
 	* src/frontends/xforms/input_validators.c: removed.
 	* src/frontends/xforms/input_validators.C: new file. Can now call C++
@@ -17,9 +28,9 @@
 	* src/frontends/xforms/input_validators.[Ch]
 	(fl_unsigned_float_filter): new filter function.
 
-	* src/frontends/xforms/forms/fdfixc.sed: I defy gettext to get confused
-	now! And if you think I'm going to do this in ./forms/fdfix.sh with
-	its "sed -e" declarations, then think again!
+	* src/frontends/xforms/forms/fdfixc.sed: I defy gettext to get
+	confused now! And if you think I'm going to do this in
+	./forms/fdfix.sh with its "sed -e" declarations, then think again!
                           
 2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
