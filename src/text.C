@@ -1239,8 +1239,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	// is it a bottom line?
 	RowList::iterator next_rit = boost::next(rit);
-	if (next_rit == rows().end() ||
-	    next_rit->par() != pit) {
+	if (next_rit == rows().end() || next_rit->par() != pit) {
 		// the bottom margin
 		ParagraphList::iterator nextpit = boost::next(pit);
 		if (nextpit == ownerParagraphs().end() &&
@@ -2684,10 +2683,16 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 	return rit;
 }
 
+// returns pointer to some fancy row 'below' specified row
+RowList::iterator LyXText::cursorIRow() const
+{
+	int y = 0;
+	return getRow(cursor.par(), cursor.pos(), y);
+}
+
 
 RowList::iterator LyXText::getRowNearY(int & y) const
 {
-
 	RowList::iterator rit = anchor_row_;
 	RowList::iterator const beg = rows().begin();
 	RowList::iterator const end = rows().end();

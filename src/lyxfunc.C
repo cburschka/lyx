@@ -912,12 +912,13 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_UP) {
-				if (TEXT()->cursor.irow() != TEXT()->rows().begin()) {
+				RowList::iterator const irow = TEXT()->cursorIRow();
+				if (irow != TEXT()->rows().begin()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
 						TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
-						TEXT()->cursor.irow()->baseline() - 1);
+						irow->baseline() - 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
 					TEXT()->cursorUp(view());
@@ -929,13 +930,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
-				if (boost::next(TEXT()->cursor.irow()) != TEXT()->rows().end()) {
+				RowList::iterator const irow = TEXT()->cursorIRow();
+				if (boost::next(irow) != TEXT()->rows().end()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
 						TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
-						TEXT()->cursor.irow()->baseline() +
-						TEXT()->cursor.irow()->height() + 1);
+						irow->baseline() +
+						irow->height() + 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
 #else
 					TEXT()->cursorDown(view());

@@ -205,6 +205,13 @@ public:
 	RowList::iterator getRow(LyXCursor const & cursor) const;
 	/// convenience
 	RowList::iterator cursorRow() const;
+	/**
+	 * Return the next row, when cursor is at the end of the
+	 * previous row, for insets that take a full row.
+	 *
+	 * FIXME: explain why we need this ? especially for y...
+	 */
+	RowList::iterator cursorIRow() const;
 
 	/** returns a pointer to the row near the specified y-coordinate
 	  (relative to the whole text). y is set to the real beginning

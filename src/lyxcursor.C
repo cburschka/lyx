@@ -111,18 +111,6 @@ int LyXCursor::iy() const
 }
 
 
-void LyXCursor::irow(RowList::iterator r)
-{
-	irow_ = r;
-}
-
-
-RowList::iterator LyXCursor::irow() const
-{
-	return irow_;
-}
-
-
 bool operator==(LyXCursor const & a, LyXCursor const & b)
 {
 	return a.par() == b.par()

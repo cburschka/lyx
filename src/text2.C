@@ -1523,7 +1523,6 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	RowList::iterator beg = rows().begin();
 
 	RowList::iterator old_row = row;
-	cur.irow(row);
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
@@ -1899,11 +1898,9 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 		float x = getCursorX(next_row, cur.pos(), last, bound);
 		cur.ix(int(x));
 		cur.iy(y + row->height() + next_row->baseline());
-		cur.irow(next_row);
 	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
-		cur.irow(row);
 	}
 	cur.boundary(bound);
 }
@@ -1972,7 +1969,7 @@ void LyXText::cursorDown(bool selecting)
 	int x = cursor.x_fix();
 	int y = cursor.y() - cursorRow()->baseline() + cursorRow()->height() + 1;
 	setCursorFromCoordinates(x, y);
-	if (!selecting && cursorRow() == cursor.irow()) {
+	if (!selecting && cursorRow() == cursorIRow()) {
 		int topy = top_y();
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;

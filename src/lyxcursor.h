@@ -10,7 +10,6 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
-#include "RowList.h"
 #include "ParagraphList.h"
 #include "support/types.h"
 
@@ -79,16 +78,6 @@ public:
 	 * FIXME: explain why we need this ? especially for y...
 	 */
 	int iy() const;
-	/// set the stored next row
-	void irow(RowList::iterator r);
-	/**
-	 * Return the next row, when this
-	 * cursor is at the end of the previous row, for insets that take
-	 * a full row.
-	 *
-	 * FIXME: explain why we need this ? especially for y...
-	 */
-	RowList::iterator irow() const;
 private:
 	/// The paragraph the cursor is in.
 	ParagraphList::iterator par_;
@@ -120,8 +109,6 @@ private:
 	int y_;
 	/// the stored next-row y position
 	int iy_;
-	/// the containing row for the next line
-	RowList::iterator irow_;
 };
 
 /// 
