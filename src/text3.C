@@ -250,7 +250,7 @@ void LyXText::cursorPrevious()
 	if (cursorRow() == rows().begin()) {
 		if (y > 0) {
 			int new_y = bv()->text->top_y() - bv()->workHeight();
-			bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
+			//bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
 			bv()->updateScrollbar();
 		}
 		return;
@@ -285,7 +285,7 @@ void LyXText::cursorPrevious()
 				- bv()->workHeight() + 1;
 		}
 	}
-	bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
+	//bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
 	if (cursorRow() != rows().begin()) {
 		LyXCursor cur;
 		setCursor(cur, boost::prior(cursorRow())->par(),
@@ -306,7 +306,7 @@ void LyXText::cursorNext()
 		int y = cursor.y() - cursorRow()->baseline() +
 			cursorRow()->height();
 		if (y > topy + bv()->workHeight()) {
-			bv()->screen().draw(bv()->text, bv(), bv()->text->top_y() + bv()->workHeight());
+			//bv()->screen().draw(bv()->text, bv(), bv()->text->top_y() + bv()->workHeight());
 			bv()->updateScrollbar();
 		}
 		return;
@@ -346,7 +346,7 @@ void LyXText::cursorNext()
 			new_y =  cursor.y() - cursorRow()->baseline();
 		}
 	}
-	bv()->screen().draw(bv()->text, bv(), new_y);
+	//bv()->screen().draw(bv()->text, bv(), new_y);
 
 	RowList::iterator next_row = boost::next(cursorRow());
 	if (next_row != rows().end()) {
