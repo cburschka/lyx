@@ -23,15 +23,19 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(MathWriteInfo &) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
 	string const & name() const;
 	///
-	void setName(string const & n);
+	void setName(string const &);
 	///
-	string octavize() const;
+	void maplize(MapleStream &) const;
+	///
+	void mathmlize(MathMLStream &) const;
+	///
+	void octavize(OctaveStream &) const;
 private:
 	///
 	string name_;

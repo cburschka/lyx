@@ -62,7 +62,19 @@ void MathFuncInset::draw(Painter & pain, int x, int y) const
 }
 
 
-string MathFuncInset::octavize() const
+void MathFuncInset::maplize(MapleStream & os) const
 {
-	return name_;
+	os << name_.c_str();
+}
+
+
+void MathFuncInset::mathmlize(MathMLStream & os) const
+{
+	os << "<mi>" << name_.c_str() << "</mi>";
+}
+
+
+void MathFuncInset::octavize(OctaveStream & os) const
+{
+	os << name_.c_str();
 }
