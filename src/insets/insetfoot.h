@@ -39,10 +39,6 @@ public:
     ///
     int Latex(std::ostream &, bool fragile, bool fp) const;
     ///
-    void Write(std::ostream &) const;
-    ///
-    void Read(LyXLex &);
-    ///
     const char * EditMessage() const;
     ///
     bool InsertInset(BufferView *, Inset * inset);

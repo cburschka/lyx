@@ -19,9 +19,9 @@
 #endif
 
 #include "lyxinset.h"
-#include "lyxparagraph.h"
 #include "LString.h"
-//#include "buffer.h"
+#include "lyxparagraph.h"
+#include "lyxcursor.h"
 
 class Painter;
 class BufferView;
@@ -46,6 +46,8 @@ public:
     ///
     Inset * Clone() const;
     ///
+    void clear() const { par->clearContents(); }
+    ///
     void Read(LyXLex &);
     ///
     void Write(std::ostream &) const;
@@ -64,7 +66,9 @@ public:
     ///
     void InsetUnlock(BufferView *);
     ///
-    bool UnlockInsetInInset(BufferView *, Inset *, bool lr = false);
+    bool LockInsetInInset(BufferView *, UpdatableInset *);
+    ///
+    bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
     ///
     bool UpdateInsetInInset(BufferView *, Inset *);
     ///
@@ -110,7 +114,7 @@ protected:
     ///
     void WriteParagraphData(std::ostream &) const;
     ///
-    void resetPos(BufferView *, bool setfont=false);
+    void resetPos(Painter &) const;
     ///
     void drawSelection(Painter &, int pos, int baseline, float x);
     ///
@@ -122,6 +126,9 @@ protected:
     LyXFont GetFont(LyXParagraph * par, int pos) const;
     ///
     virtual LyXFont GetDrawFont(LyXParagraph * par, int pos) const;
+    ///
+    virtual int getMaxTextWidth(Painter &, UpdatableInset const *,
+				int x=0) const;
 
     Buffer * buffer;
     ///
@@ -129,15 +136,14 @@ protected:
     ///
     LyXFont real_current_font;
     ///
-    mutable int maxWidth;
-    ///
     mutable int maxAscent;
     ///
     mutable int maxDescent;
     ///
     mutable int insetWidth;
     ///
-    int widthOffset;
+    mutable int drawTextXOffset;
+    mutable int drawTextYOffset;
     ///
     bool autoBreakRows;
 
@@ -159,12 +165,12 @@ private:
     ///
     void HideInsetCursor(BufferView *);
     ///
-    void setPos(BufferView *, int x, int y, bool activate_inset = true);
+    void setPos(Painter &, int x, int y) const;
     ///
-    bool moveRight(BufferView *, bool activate_inset = true);
-    bool moveLeft(BufferView *, bool activate_inset = true);
-    bool moveUp(BufferView *, bool activate_inset = true);
-    bool moveDown(BufferView *, bool activate_inset = true);
+    UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true);
+    UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true);
+    UpdatableInset::RESULT moveUp(BufferView *);
+    UpdatableInset::RESULT moveDown(BufferView *);
     bool Delete();
     bool cutSelection();
     bool copySelection();
@@ -175,14 +181,17 @@ private:
     void SetCharFont(int pos, LyXFont const & font);
     ///
     string getText(int);
+    ///
+    bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
+			       int button = 0);
 	
     /* Private structures and variables */
     ///
     int inset_pos;
     ///
-    int inset_x;
+    mutable int inset_x;
     ///
-    int inset_y;
+    mutable int inset_y;
     ///
     int interline_space;
     ///
@@ -190,15 +199,11 @@ private:
     ///
     int selection_end;
     ///
-    int old_x;
+    mutable LyXCursor cursor;
     ///
-    int cx;
+    mutable LyXCursor old_cursor;
     ///
-    int cy;
-    ///
-    int actpos;
-    ///
-    int actrow;
+    mutable int actrow;
     ///
     bool no_selection;
     ///
@@ -227,7 +232,6 @@ private:
 	buffer = it.buffer; // suspect
 	current_font = it.current_font;
 	real_current_font = it.real_current_font;
-	maxWidth = it.maxWidth;
 	maxAscent = it.maxAscent;
 	maxDescent = it.maxDescent;
 	insetWidth = it.insetWidth;
@@ -237,10 +241,7 @@ private:
 	interline_space = it.interline_space;
 	selection_start = it.selection_start;
 	selection_end = it.selection_end;
-	old_x = it.old_x;
-	cx = it.cx;
-	cy = it.cy;
-	actpos = it.actpos;
+	cursor = it.cursor;
 	actrow = it.actrow;
 	no_selection = it.no_selection;
 	the_locking_inset = it.the_locking_inset; // suspect

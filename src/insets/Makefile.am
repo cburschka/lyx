@@ -52,6 +52,8 @@ libinsets_la_SOURCES = \
 	insetref.h \
 	insetspecialchar.C \
 	insetspecialchar.h \
+	insettabular.C \
+	insettabular.h \
 	insettext.C \
 	insettext.h \
 	insettoc.C \

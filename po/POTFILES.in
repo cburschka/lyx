@@ -12,10 +12,12 @@
 src/buffer.C
 src/bufferlist.C
 src/BufferView2.C
+src/bufferview_funcs.C
 src/BufferView_pimpl.C
 src/bullet_forms.C
 src/bullet_forms_cb.C
 src/Chktex.C
+src/ColorHandler.C
 src/combox.C
 src/credits.C
 src/credits_form.C
@@ -41,6 +43,7 @@ src/insets/insetlof.C
 src/insets/insetlot.C
 src/insets/insetparent.C
 src/insets/insetref.C
+src/insets/insettabular.C
 src/insets/insettext.C
 src/insets/insettoc.C
 src/insets/inseturl.C
@@ -75,7 +78,6 @@ src/mathed/math_forms.C
 src/mathed/math_panel.C
 src/menus.C
 src/minibuffer.C
-src/Painter.C
 src/PaperLayout.C
 src/paragraph.C
 src/ParagraphExtra.C
@@ -86,6 +88,7 @@ src/support/filetools.C
 src/support/getUserName.C
 src/support/path.C
 src/support/path.h
+src/table.C
 src/TableLayout.C
 src/text2.C
 src/text.C

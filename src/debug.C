@@ -44,6 +44,7 @@ static error_item errorTags[] = {
 	{ Debug::ROFF,		"roff",		"Keep *roff temporary files"},
 	{ Debug::ACTION,	"action",	"User commands"},
 	{ Debug::LYXLEX,        "lyxlex",       "The LyX Lexxer"},
+	{ Debug::INSETS,	"insets",	"LyX Insets"},
 	{ Debug::NONE,		"none",		"No debugging message"},
         { Debug::ANY,		"any",          "All debugging messages"}
 };

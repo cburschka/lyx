@@ -33,6 +33,7 @@ InsetFoot::InsetFoot(Buffer * bf)
     font.setColor(LColor::footnote);
     setLabelFont(font);
     setAutoCollapse(false);
+    setInsetName("Foot");
 }
 
 
@@ -54,41 +55,15 @@ char const * InsetFoot::EditMessage() const
 
 int InsetFoot::Latex(ostream & os, bool fragile, bool fp) const
 {
-	if (fragile) 
-		os << "\\footnote{"; // was footnotemark but that won't work
-	else 
-		os << "\\footnote{";
-	
-	int i = InsetText::Latex(os, fragile, fp);
-	os << "}";
-	
-	return i;
-}
-
-
-void InsetFoot::Write(ostream & os) const
-{
-	os << "Foot\n"
-	   << "\ncollapsed ";
-	if (display())
-		os << "false\n";
-	else
-		os << "true\n";
-	WriteParagraphData(os);
-}
-
-
-void InsetFoot::Read(LyXLex & lex)
-{
-    if (lex.IsOK()) {
-	lex.next();
-        string token = lex.GetString();
-	if (token == "collapsed") {
-	    lex.next();
-	    collapsed = lex.GetBool();
-	}
-    }
-    InsetText::Read(lex);
+    if (fragile) 
+	os << "\\footnote{"; // was footnotemark but that won't work
+    else 
+	os << "\\footnote{";
+    
+    int i = InsetText::Latex(os, fragile, fp);
+    os << "}";
+    
+    return i;
 }
 
 

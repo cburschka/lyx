@@ -1,3 +1,64 @@
+2000-04-19  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (init): using a LyXCursor now for cursor
+	position. Set the inset_owner of the used paragraph so that it knows
+	that it is inside an inset. Fixed cursor handling with mouse and
+	cursor keys. Fixed wrong timed inset redraws and lots of other changes
+	and cleanups to make TextInsets work better.
+
+	* src/insets/insettext.h: Using a LyXCursor now. Added a clear() call.
+	Changed parameters of various functions and added LockInsetInInset().
+
+	* src/insets/insettext.C: 
+
+	* src/insets/insetcollapsable.h: 
+	* src/insets/insetcollapsable.C: 
+	* src/insets/insetfoot.h: 
+	* src/insets/insetfoot.C: 
+	* src/insets/insetert.h: 
+	* src/insets/insetert.C: cleaned up the code so that it works now
+	correctly with insettext.
+
+	* src/insets/inset.C: 
+	* src/insets/lyxinset.h: inserted inset_owner and some more changes so
+	that insets in insets are supported right.
+
+	* src/table.h: 
+	* src/table.C: lots of changes for use with inset tabular (and cleanup)
+
+	* src/paragraph.C: some small fixes
+
+	* src/debug.h: inserted INSETS debug info
+
+	* src/lyxfunc.C (Dispatch): added code for InsetTabular and some inset
+	fixes (f.ex. calling LFUN_DOWN if exiting inset with LFUN_DOWN).
+
+	* src/commandtags.h: 
+	* src/LyXAction.C: insert code for InsetTabular.
+
+	* src/BufferView_pimpl.C (workAreaMotionNotify): do return always if
+	not Button1MotionMask.
+	(workAreaButtonRelease): send always a InsetButtonRelease event to
+	the_locking_inset.
+	(checkInsetHit): some setCursor fixes (always with insets).
+
+	* src/BufferView2.C (lockInset): returns a bool now and extended for
+	locking insets inside insets.
+	(showLockedInsetCursor): it is important to have the cursor always
+	before the locked inset.
+	(fitLockedInsetCursor): forgot adding of InsetInInsetY()-offset.
+
+	* src/BufferView.h: made lockInset return a bool.
+
+	* src/lyxtext.h: inserted function SetCursor(LyXCursor, ...).
+
+	* src/text2.C (SetCursor): This now has a version with a LyXCursor
+	that is used also internally but can be called as public to have back
+	a cursor pos which is not set internally.
+	(SetCursorIntern): Changed to use above function.
+
+	* src/CutAndPaste.C (DeleteBuffer): forgot to inizialize textclass
+
 2000-04-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ANNOUNCE: 

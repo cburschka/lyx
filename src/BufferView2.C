@@ -723,24 +723,29 @@ void BufferView::replaceWord(string const & replacestring)
 // End of spellchecker stuff
 
 
-
-/* these functions return 1 if an error occured, 
-   otherwise 0 */
-int BufferView::lockInset(UpdatableInset * inset)
+bool BufferView::lockInset(UpdatableInset * inset)
 {
-	if (!the_locking_inset && inset){
+	if (!the_locking_inset && inset) {
 		the_locking_inset = inset;
-		return 0;
+		return true;
+	} else if (inset) {
+	    return the_locking_inset->LockInsetInInset(this, inset);
 	}
-	return 1;
+	return false;
 }
 
 
 void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()) {
-		y += text->cursor.y +
-		    the_locking_inset->InsetInInsetY();
+		LyXCursor cursor = text->cursor;
+		if ((cursor.pos - 1 >= 0) &&
+		    (cursor.par->GetChar(cursor.pos-1) ==
+		     LyXParagraph::META_INSET) &&
+		    (cursor.par->GetInset(cursor.pos - 1) ==
+		     the_locking_inset->GetLockingInset()))
+			text->SetCursor(cursor, cursor.par, cursor.pos-1);
+		y += cursor.y + the_locking_inset->InsetInInsetY();
 		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
 					 LyXScreen::BAR_SHAPE);
 	}
@@ -758,7 +763,7 @@ void BufferView::hideLockedInsetCursor()
 void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()){
-		y += text->cursor.y;
+		y += text->cursor.y + the_locking_inset->InsetInInsetY();
 		if (pimpl_->screen->FitManualCursor(x, y, asc, desc))
 			updateScrollbar();
 	}

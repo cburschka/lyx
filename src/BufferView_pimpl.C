@@ -551,6 +551,10 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 {
 	if (buffer_ == 0 || !screen) return;
 
+	// Only use motion with button 1
+	if (!state & Button1MotionMask)
+		return; 
+
 	// Check for inset locking
 	if (bv_->the_locking_inset) {
 		LyXCursor cursor = bv_->text->cursor;
@@ -561,10 +565,6 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 					  state);
 		return;
 	}
-
-	// Only use motion with button 1
-	if (!state & Button1MotionMask)
-		return; 
    
 	/* The selection possible is needed, that only motion events are 
 	 * used, where the bottom press event was on the drawing area too */
@@ -849,6 +849,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
 			UpdatableInset *inset = (UpdatableInset *)inset_hit;
 			inset->InsetButtonRelease(bv_, x, y, button);
 		} else {
+			inset_hit->InsetButtonRelease(bv_, x, y, button);
 			inset_hit->Edit(bv_, x, y, button);
 		}
 		return;
@@ -938,7 +939,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
-Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int button)
+Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int /* button */)
 {
 	if (!screen)
 		return 0;
@@ -947,12 +948,8 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int button)
   
 	LyXCursor cursor;
 	bv_->text->SetCursorFromCoordinates(cursor, x, y_tmp);
-#if 1
-	bool move_cursor = true;
-#else
 	bool move_cursor = ((cursor.par != bv_->text->cursor.par) ||
-			    (cursor.pos != bv_->text->cursor.pos)) && (button < 2);
-#endif
+			    (cursor.pos != bv_->text->cursor.pos));
 
 	if (cursor.pos < cursor.par->Last()
 	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
@@ -976,8 +973,8 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int button)
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
-			if (move_cursor)
-				bv_->text->SetCursorFromCoordinates(x, y_tmp);
+			if (move_cursor && (tmpinset != bv_->the_locking_inset))
+				bv_->text->SetCursor(cursor.par,cursor.pos,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (bv_->text->cursor.y); 
@@ -1004,8 +1001,8 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int button)
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
-			if (move_cursor)
-				bv_->text->SetCursorFromCoordinates(x, y_tmp);
+			if (move_cursor && (tmpinset != bv_->the_locking_inset))
+				bv_->text->SetCursor(cursor.par,cursor.pos,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (bv_->text->cursor.y); 

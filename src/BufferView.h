@@ -160,7 +160,7 @@ public:
 	/// Inserts a lyx file at cursor position. Returns false if it fails.
 	bool insertLyXFile(string const & file);
 	///
-	int lockInset(UpdatableInset * inset);
+	bool lockInset(UpdatableInset * inset);
 	///
 	void showLockedInsetCursor(long x, long y, int asc, int desc);
 	///

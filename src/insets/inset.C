@@ -122,6 +122,14 @@ void UpdatableInset::ToggleInsetCursor(BufferView *)
 {
 }
 
+void UpdatableInset::ShowInsetCursor(BufferView *)
+{
+}
+
+void UpdatableInset::HideInsetCursor(BufferView *)
+{
+}
+
 
 void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 {
@@ -170,10 +178,9 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
     return UNDISPATCHED; 
 }
 
-int UpdatableInset::getMaxWidth(Painter & pain) const
+int UpdatableInset::getMaxWidth(Painter & pain, UpdatableInset const *inset) const
 {
-    if (owner_)
-        return owner_->getMaxWidth(pain);
+    if (owner())
+        return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain, inset);
     return pain.paperWidth();
 }
-

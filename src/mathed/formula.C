@@ -1,5 +1,5 @@
 /*
- *  File:        formula.h
+ *  File:        formula.C
  *  Purpose:     Implementation of formula inset
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
  *  Created:     January 1996
@@ -461,7 +461,8 @@ char const * InsetFormula::EditMessage() const
 void InsetFormula::Edit(BufferView * bv, int x, int y, unsigned int)
 {
     mathcursor = new MathedCursor(par);
-    bv->lockInset(this);
+    if (!bv->lockInset(this))
+        lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
     par->Metrics();
     bv->updateInset(this, false);
     x += par->xo; 

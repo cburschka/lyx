@@ -36,8 +36,6 @@ public:
     ///
     Inset * Clone() const;
     ///
-    void Write(std::ostream &) const;
-    ///
     char const * EditMessage() const;
     ///
     bool InsertInset(BufferView *, Inset *);

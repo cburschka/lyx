@@ -239,6 +239,8 @@ public:
 	void SetCursor(LyXParagraph * par,
 		       LyXParagraph::size_type pos,
 		       bool setfont = true) const;
+	void SetCursor(LyXCursor &, LyXParagraph * par,
+		       LyXParagraph::size_type pos) const;
 	///
 	void SetCursorIntern(LyXParagraph * par,
 			     LyXParagraph::size_type pos,

@@ -41,6 +41,10 @@ public:
     ///
     Inset * Clone() const;
     ///
+    void Read(LyXLex &);
+    ///
+    void Write(std::ostream &) const;
+    ///
     int ascent(Painter &, LyXFont const &) const;
     ///
     int descent(Painter &, LyXFont const &) const;
@@ -67,7 +71,9 @@ public:
     ///
     void setLabelFont(LyXFont & f) { labelfont = f; }
     ///
-    void setAutoCollapse(bool f) { autocolapse = f; }
+    void setAutoCollapse(bool f) { autocollapse = f; }
+    ///
+    int getMaxWidth(Painter & pain, UpdatableInset const *) const;
 
 protected:
     ///
@@ -80,6 +86,8 @@ protected:
     void draw_collapsed(Painter & pain, const LyXFont &, int , float &) const;
     ///
     void UpdateLocal(BufferView *, bool);
+    ///
+    int getMaxTextWidth(Painter & pain, UpdatableInset const *, int x=0) const;
     
     ///
     bool collapsed;
@@ -92,11 +100,12 @@ private:
     ///
     LyXFont labelfont;
     ///
-    bool autocolapse;
+    bool autocollapse;
     ///
     mutable int
-        top_baseline, top_x,
-	button_x, button_top_y, button_bottom_y;
+	button_length, button_top_y, button_bottom_y;
+    ///
+    int widthOffset;
 };
 
 #endif

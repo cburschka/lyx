@@ -3156,10 +3156,136 @@ void LyXText::SetCursor(LyXParagraph * par,
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
 
+void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
+			LyXParagraph::size_type pos) const
+{
+	// correct the cursor position if impossible
+	if (pos > par->Last()){
+		LyXParagraph * tmppar = par->ParFromPos(pos);
+		pos = par->PositionInParFromPos(pos);
+		par = tmppar;
+	}
+	if (par->IsDummy() && par->previous &&
+	    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
+		while (par->previous &&
+		       ((par->previous->IsDummy() &&
+			 (par->previous->previous->footnoteflag ==
+			  LyXParagraph::CLOSED_FOOTNOTE)) ||
+			(par->previous->footnoteflag ==
+			 LyXParagraph::CLOSED_FOOTNOTE))) {
+			par = par->previous ;
+			if (par->IsDummy() &&
+			    (par->previous->footnoteflag ==
+			     LyXParagraph::CLOSED_FOOTNOTE))
+				pos += par->size() + 1;
+		}
+		if (par->previous) {
+			par = par->previous;
+		}
+		pos += par->size() + 1;
+	}
+
+	cur.par = par;
+	cur.pos = pos;
+
+	/* get the cursor y position in text  */
+	long y = 0;
+	Row * row = GetRow(par, pos, y);
+	/* y is now the beginning of the cursor row */ 
+	y += row->baseline;
+	/* y is now the cursor baseline */ 
+	cur.y = y;
+   
+	/* now get the cursors x position */
+	float x;
+	float fill_separator, fill_hfill, fill_label_hfill;
+	PrepareToPrint(row, x, fill_separator, fill_hfill, fill_label_hfill);
+	LyXParagraph::size_type cursor_vpos;
+	LyXParagraph::size_type last = RowLastPrintable(row);
+
+	if (pos > last + 1)   // This shouldn't happen.
+		pos = last+1;
+
+	if (last < row->pos)
+                cursor_vpos = 0;
+	else if ((pos > last) ||
+		 ((pos - 1 >= row->pos) &&
+		  (row->par->IsSeparator(pos) ||
+		   (row->par->table && row->par->IsNewline(pos)))))
+		/// Place cursor after char at (logical) position pos-1
+		cursor_vpos = !(bidi_level(pos-1) % 2)
+			? log2vis(pos-1) + 1 : log2vis(pos-1);
+	else
+		/// Place cursor before char at (logical) position pos
+		cursor_vpos = !(bidi_level(pos) % 2)
+			? log2vis(pos) : log2vis(pos) + 1;
+
+	/* table stuff -- begin*/
+	if (row->par->table) {
+		int cell = NumberOfCell(row->par, row->pos);
+		float x_old = x;
+		x += row->par->table->GetBeginningOfTextInCell(cell);
+		for (LyXParagraph::size_type vpos = row->pos;
+		     vpos < cursor_vpos; ++vpos) {
+			pos = vis2log(vpos);
+			if (row->par->IsNewline(pos)) {
+				x = x_old + row->par->table->WidthOfColumn(cell);
+				x_old = x;
+				++cell;
+				x += row->par->table->GetBeginningOfTextInCell(cell);
+			} else {
+				x += SingleWidth(row->par, pos);
+			}
+		}
+	} else {
+		/* table stuff -- end*/
+		LyXParagraph::size_type main_body =
+			BeginningOfMainBody(row->par);
+		if ((main_body > 0) &&
+		    ((main_body-1 > last) || 
+		     !row->par->IsLineSeparator(main_body-1)))
+			main_body = 0;
+
+		for (LyXParagraph::size_type vpos = row->pos;
+		     vpos < cursor_vpos; ++vpos) {
+			pos = vis2log(vpos);
+			if (main_body > 0 && pos == main_body-1) {
+				x += fill_label_hfill +
+					lyxfont::width(textclasslist.Style(
+						buffer->params.textclass,
+						row->par->GetLayout())
+						       .labelsep,
+						       GetFont(row->par, -2));
+				if (row->par->IsLineSeparator(main_body-1))
+					x -= SingleWidth(row->par,main_body-1);
+			}
+			if (HfillExpansion(row, pos)) {
+				x += SingleWidth(row->par, pos);
+				if (pos >= main_body)
+					x += fill_hfill;
+				else 
+					x += fill_label_hfill;
+			} else if (row->par->IsSeparator(pos)) {
+				x += SingleWidth(row->par, pos);
+				if (pos >= main_body)
+					x += fill_separator;
+			} else
+				x += SingleWidth(row->par, pos);
+		}
+	}
+   
+	cur.x = int(x);
+   	cur.x_fix = cur.x;
+	cur.row = row;
+}
+
 
 void LyXText::SetCursorIntern(LyXParagraph * par,
 			      LyXParagraph::size_type pos, bool setfont) const
 {
+	SetCursor(cursor, par, pos);
+#warning Remove this when verified working (Jug 20000413)
+#if 0
 	// correct the cursor position if impossible
 	if (pos > par->Last()){
 		LyXParagraph * tmppar = par->ParFromPos(pos);
@@ -3184,18 +3310,6 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 
 	cursor.par = par;
 	cursor.pos = pos;
-
-	if (setfont)
-		if (cursor.pos && 
-		    (cursor.pos == cursor.par->Last() || cursor.par->IsSeparator(cursor.pos)
-		     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
-		     )) {
-			current_font = cursor.par->GetFontSettings(cursor.pos - 1);
-			real_current_font = GetFont(cursor.par, cursor.pos - 1);
-		} else {
-			current_font = cursor.par->GetFontSettings(cursor.pos);
-			real_current_font = GetFont(cursor.par, cursor.pos);
-		}
 
 	/* get the cursor y position in text  */
 	long y = 0;
@@ -3287,6 +3401,19 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
    
 	cursor.x_fix = cursor.x;
 	cursor.row = row;
+#endif
+	if (setfont) {
+		if (cursor.pos && 
+		    (cursor.pos == cursor.par->Last() || cursor.par->IsSeparator(cursor.pos)
+		     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
+		     )) {
+			current_font = cursor.par->GetFontSettings(cursor.pos - 1);
+			real_current_font = GetFont(cursor.par, cursor.pos - 1);
+		} else {
+			current_font = cursor.par->GetFontSettings(cursor.pos);
+			real_current_font = GetFont(cursor.par, cursor.pos);
+		}
+	}
 }
 
 

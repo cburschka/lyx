@@ -4,7 +4,6 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2000 the LyX Team.
  *
  * ====================================================== */
@@ -92,7 +91,9 @@ public:
 		///
 		SPECIALCHAR_CODE,
 		///
-		NUMBER_CODE
+		NUMBER_CODE,
+		///
+		TABULAR_CODE
 	};
 
 	enum EDITABLE {
@@ -101,6 +102,8 @@ public:
 	    HIGHLY_EDITABLE
 	};
 
+	///
+	Inset() { owner_ = 0; }
 	///
 	virtual ~Inset() {}
 	///
@@ -120,6 +123,12 @@ public:
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	virtual EDITABLE Editable() const;
+	///
+	virtual void InsetButtonPress(BufferView *, int, int, int) {}
+	///
+	virtual void InsetButtonRelease(BufferView *, int, int, int) {}
+	///
+	virtual void InsetMotionNotify(BufferView *, int , int , int) {}
 	///
 	bool IsTextInset() const;
 	///
@@ -172,6 +181,20 @@ public:
 	virtual void init(BufferView *) {}
 	///
 	virtual bool InsertInsetAllowed(Inset *) const { return false; }
+	///
+	virtual void setInsetName(const char * s) { name = s; }
+	///
+	virtual string getInsetName() const { return name; }
+	///
+	virtual void setOwner(Inset * inset) { owner_ = inset; }
+	///
+	virtual Inset * owner() const { return owner_; }
+	///
+private:
+	///
+	Inset * owner_;
+	///
+	string name;
 };
 
 
@@ -209,6 +232,8 @@ public:
 	    are not enough. 
 	 
 	    DISPATCHED   = the inset catched the action
+	    DISPATCHED_NOUPDATE = the inset catched the action and no update
+                                  is needed here to redraw the inset
 	    FINISHED     = the inset must be unlocked as a result
 	                   of the action
 	    UNDISPATCHED = the action was not catched, it should be
@@ -217,6 +242,7 @@ public:
 	enum RESULT {
 	    UNDISPATCHED = 0,
 	    DISPATCHED,
+	    DISPATCHED_NOUPDATE,
 	    FINISHED
 	};
     
@@ -226,10 +252,7 @@ public:
 	}
 
 	///
-	UpdatableInset() {
-	    scx = mx_scx = 0;
-	    owner_ = 0;
-	}
+	UpdatableInset() { scx = mx_scx = 0; }
 	///
 	//virtual ~UpdatableInset() {}
 	///
@@ -237,6 +260,10 @@ public:
    
 	/// may call ToggleLockedInsetCursor
 	virtual void ToggleInsetCursor(BufferView *);
+	///
+	virtual void ShowInsetCursor(BufferView *);
+	///
+	virtual void HideInsetCursor(BufferView *);
 	///
 	virtual void GetCursorPos(int &, int &) const {}
 	///
@@ -270,7 +297,10 @@ public:
 	virtual bool UpdateInsetInInset(BufferView *, Inset *)
 		{ return false; }
 	///
-	virtual bool UnlockInsetInInset(BufferView *, Inset *,
+	virtual bool LockInsetInInset(BufferView *, UpdatableInset *)
+		{ return false; }
+	///
+	virtual bool UnlockInsetInInset(BufferView *, UpdatableInset *,
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
@@ -278,11 +308,7 @@ public:
 	///
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
-	virtual int getMaxWidth(Painter & pain) const;
-	///
-	virtual void setOwner(UpdatableInset * inset) { owner_ = inset; }
-	///
-	virtual UpdatableInset * owner() { return owner_; }
+	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
 
 protected:
 	///
@@ -296,8 +322,5 @@ private:
 	///
 	int mx_scx;
 	mutable int scx;
-	///
-	UpdatableInset * owner_;
-
 };
 #endif

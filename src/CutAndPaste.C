@@ -32,7 +32,7 @@ using std::pair;
 // easy to implement. (Lgb)
 
 static LyXParagraph * buf = 0;
-static LyXTextClassList::size_type textclass;
+static LyXTextClassList::size_type textclass = 0;
 
 // for now here this should be in another Cut&Paste Class!
 // Jürgen, I moved this out of CutAndPaste since it does not operate on any

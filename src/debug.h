@@ -50,14 +50,16 @@ struct Debug {
 		///
 		LYXLEX     = (1 << 15),
 		///
-		DEPEND     = (1 << 16)
+		DEPEND     = (1 << 16),
+		///
+		INSETS     = (1 << 17)
 	};
 	///
 	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
 				     LYXSERVER | ROFF | ACTION | LYXLEX |
-				     DEPEND);
+				     DEPEND | INSETS);
 	///
 	friend inline void operator|=(Debug::type & d1, Debug::type d2);
 	

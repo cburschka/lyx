@@ -24,6 +24,8 @@
 #include "layout.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
+#include "lyx_gui_misc.h"
+#include "insets/insettext.h"
 
 using std::ostream;
 using std::istream;
@@ -32,32 +34,161 @@ using std::endl;
 
 static int const WIDTH_OF_LINE = 5;
 
+/// Define a few methods for the inner structs
+
+LyXTable::cellstruct::cellstruct(Buffer * buf) 
+{
+	cellno = 0; //should be initilaized correctly later.
+	width_of_cell = 0;
+	multicolumn = LyXTable::CELL_NORMAL;
+	alignment = LYX_ALIGN_CENTER;
+	top_line = true;
+	bottom_line = false;
+	has_cont_row = false;
+	rotate = false;
+	linebreaks = false;
+	buf ? inset = new InsetText(buf): inset = 0;
+	
+}
+
+LyXTable::cellstruct::~cellstruct() 
+{
+    if (inset)
+	delete inset;
+}
+
+LyXTable::cellstruct & 
+  LyXTable::cellstruct::operator=(cellstruct const & cs)
+{
+	cellno = cs.cellno;
+	width_of_cell = cs.width_of_cell;
+	multicolumn = cs.multicolumn;
+	alignment = cs.alignment;
+	top_line = cs.top_line;
+	bottom_line = cs.bottom_line;
+	has_cont_row = cs.has_cont_row;
+	rotate = cs.rotate;
+	linebreaks = cs.linebreaks;
+	return *this;
+}
+
+LyXTable::rowstruct::rowstruct() 
+{
+	top_line = true;
+	bottom_line = false;
+	is_cont_row = false;
+	ascent_of_row = 0;
+	descent_of_row = 0;
+	newpage = false;
+}
+
+// Nothing to do, but gcc 2.7.2.3 wants one... (JMarc)
+LyXTable::rowstruct::~rowstruct() 
+{
+}
+
+LyXTable::rowstruct & 
+  LyXTable::rowstruct::operator=(rowstruct const & rs)
+{
+	top_line = rs.top_line;
+	bottom_line = rs.bottom_line;
+	is_cont_row = rs.is_cont_row;
+	ascent_of_row = rs.ascent_of_row;
+	descent_of_row = rs.descent_of_row;
+	newpage = rs.newpage;
+	return *this;
+}
+
+LyXTable::columnstruct::columnstruct() 
+{
+        left_line = true;
+        right_line = false;
+        alignment = LYX_ALIGN_CENTER;
+        width_of_column = 0;
+}
+
+LyXTable::columnstruct::~columnstruct() 
+{
+}
+
+LyXTable::columnstruct & 
+  LyXTable::columnstruct::operator=(columnstruct const & cs)
+{
+        left_line = cs.left_line;
+        right_line = cs.right_line;
+        alignment = cs.alignment;
+        width_of_column = cs.width_of_column;
+	p_width = cs.p_width;
+	align_special = cs.align_special;
+	return *this;
+}
 
 /* konstruktor */
-LyXTable::LyXTable(int rows_arg, int columns_arg)
+LyXTable::LyXTable(int rows_arg, int columns_arg, Buffer *buf)
 {
-	Init(rows_arg, columns_arg);
+    buffer = buf;
+    Init(rows_arg, columns_arg);
 }
 
 
-LyXTable::LyXTable(LyXLex & lex)
+LyXTable::LyXTable(LyXTable const & lt, Buffer * buf)
 {
-	istream & is = lex.getStream();
-	Read(is);
+    buffer = buf;
+    Init(lt.rows, lt.columns);
+    
+    operator=(lt);
+}
+
+LyXTable::LyXTable(LyXLex & lex, Buffer *buf)
+{
+    istream & is = lex.getStream();
+    buffer = buf;
+    Read(is);
 }
 
 
-LyXTable::~LyXTable() {
-	delete[] rowofcell;
-	delete[] columnofcell;
-	delete[] column_info;
-        delete[] row_info;
-	for (int i = 0; i < rows; ++i) {
-		delete[] cell_info[i]; // verify that this shoudn't be freed with delete
-	}
-	delete[] cell_info;
+LyXTable::~LyXTable()
+{
+    delete[] rowofcell;
+    delete[] columnofcell;
+    delete[] column_info;
+    delete[] row_info;
+    for (int i = 0; i < rows; ++i) {
+	delete[] cell_info[i];
+    }
+    delete[] cell_info;
 }
 
+
+LyXTable & LyXTable::operator=(LyXTable const & lt)
+{
+    // If this and lt is not of the same size we have a serious bug
+    // So then it is ok to throw an exception, or for now
+    // call abort()
+    Assert(rows == lt.rows && columns == lt.columns);
+
+    int row = 0, column = 0;
+    
+    for (row = 0; row < rows; ++row) {
+        for (column = 0; column < columns; ++column) {
+            cell_info[row][column] = lt.cell_info[row][column];
+        }
+    }
+    
+    for (row = 0; row < rows; ++row) {
+        row_info[row] = lt.row_info[row];
+    }
+    
+    for (column = 0; column < columns; ++column) {
+	column_info[column] = lt.column_info[column];
+    }
+
+    SetLongTable(lt.is_long_table);
+    rotate = lt.rotate;
+    Reinit();
+    
+    return *this;
+}
 
 LyXTable * LyXTable::Clone()
 {
@@ -101,33 +232,15 @@ void LyXTable::Init(int rows_arg, int columns_arg)
 
     int cellno = 0;
     for (i = 0; i < rows; ++i) {
-        cell_info[i] = new cellstruct[columns];
-        row_info[i].top_line = true;
-        row_info[i].bottom_line = false;
-        row_info[i].is_cont_row = false;
-        row_info[i].newpage = false;
+        cell_info[i] = new cellstruct[columns](buffer);
         for (j = 0; j < columns; ++j) {
             cell_info[i][j].cellno = cellno++;
-            cell_info[i][j].width_of_cell = 0;
-            cell_info[i][j].multicolumn = LyXTable::CELL_NORMAL;
-            cell_info[i][j].alignment = LYX_ALIGN_CENTER;
-            cell_info[i][j].top_line = row_info[i].top_line;
-            cell_info[i][j].bottom_line = row_info[i].bottom_line;
-            cell_info[i][j].has_cont_row = false;
-            cell_info[i][j].rotate = false;
-            cell_info[i][j].linebreaks = false;
         }
     }
     row_info[i-1].bottom_line = true;
     row_info[0].bottom_line = true;
 
     for (i = 0; i < columns; ++i) {
-        column_info[i].left_line = true;
-        column_info[i].right_line = false;
-        column_info[i].alignment = LYX_ALIGN_CENTER;
-        // set width_of_column to zero before it is used in
-        // calculate_width_of_column() (thornley)
-        column_info[i].width_of_column = 0;
         calculate_width_of_column(i);
     }
     column_info[i-1].right_line = true;
@@ -780,7 +893,7 @@ void LyXTable::calculate_width_of_table()
 }
 
 
-int LyXTable::row_of_cell(int cell) 
+int LyXTable::row_of_cell(int cell) const
 {
     if (cell >= numberofcells)
         return rows-1;
@@ -790,7 +903,7 @@ int LyXTable::row_of_cell(int cell)
 }
 
 
-int LyXTable::column_of_cell(int cell)
+int LyXTable::column_of_cell(int cell) const
 {
     if (cell >= numberofcells)
         return columns-1;
@@ -811,29 +924,30 @@ int LyXTable::right_column_of_cell(int cell)
 }
 
 
-void LyXTable::Write(ostream & os)
+void LyXTable::Write(ostream & os, bool old_format)
 {
-    int i, j;
-    os << "multicol5\n"
-       << rows << " " << columns << " " << is_long_table << " "
-       << rotate << " " << endhead << " " << endfirsthead << " "
-       << endfoot << " " << endlastfoot << "\n";
-    for (i = 0; i < rows; ++i) {
+    if (old_format) {
+	int i, j;
+	os << "multicol5\n"
+	   << rows << " " << columns << " " << is_long_table << " "
+	   << rotate << " " << endhead << " " << endfirsthead << " "
+	   << endfoot << " " << endlastfoot << "\n";
+	for (i = 0; i < rows; ++i) {
 	    os << row_info[i].top_line << " "
 	       << row_info[i].bottom_line << " "
 	       << row_info[i].is_cont_row << " "
 	       << row_info[i].newpage << "\n";
-    }
-    for (i = 0; i < columns; ++i) {
+	}
+	for (i = 0; i < columns; ++i) {
 	    os << column_info[i].alignment << " "
 	       << column_info[i].left_line << " "
 	       << column_info[i].right_line << " \""
 	       << VSpace(column_info[i].p_width).asLyXCommand() << "\" \""
 	       << column_info[i].align_special << "\"\n";
-    }
+	}
 
-    for (i = 0; i < rows; ++i) {
-        for (j = 0; j < columns; ++j) {
+	for (i = 0; i < rows; ++i) {
+	    for (j = 0; j < columns; ++j) {
 		os << cell_info[i][j].multicolumn << " "
 		   << cell_info[i][j].alignment << " "
 		   << cell_info[i][j].top_line << " "
@@ -843,7 +957,10 @@ void LyXTable::Write(ostream & os)
 		   << cell_info[i][j].linebreaks << " \""
 		   << cell_info[i][j].align_special << "\" \""
 		   << cell_info[i][j].p_width << "\"\n";
-        }
+	    }
+	}
+    } else {
+	lyxerr << "New format type not yet implemented!!!\n" << endl;
     }
 }
 
@@ -871,13 +988,13 @@ void LyXTable::Read(istream & is)
 		version = atoi(s.c_str() + 8);
 	else
 		version = 1;
-#ifdef WITH_WARNINGS
-#warning Insert a error message window here that this format is not supported anymore
-#endif
 	if (version < 5) {
 		lyxerr << "Tabular format < 5 is not supported anymore\n"
 			"Get an older version of LyX (< 1.1.x) for conversion!"
 		       << endl;
+		WriteAlert(_("Warning:"),
+			   _("Tabular format < 5 is not supported anymore\n"),
+			   _("Get an older version of LyX (< 1.1.x) for conversion!"));
 		if (version > 2) {
 			is >> rows_arg >> columns_arg >> is_long_table_arg
 			   >> rotate_arg >> a >> b >> c >> d;
@@ -1914,4 +2031,61 @@ void LyXTable::SetLTNewPage(int cell, bool what)
 bool LyXTable::LTNewPage(int cell)
 {
     return row_info[row_of_cell(cell)].newpage;
+}
+
+void LyXTable::SetAscentOfRow(int row, int height)
+{
+    if (row >= rows)
+        return;
+    row_info[row].ascent_of_row = height;
+}
+
+void LyXTable::SetDescentOfRow(int row, int height)
+{
+    if (row >= rows)
+        return;
+    row_info[row].descent_of_row = height;
+}
+
+int LyXTable::AscentOfRow(int row)
+{
+    if (row >= rows)
+        return 0;
+    return row_info[row].ascent_of_row;
+}
+
+int LyXTable::DescentOfRow(int row)
+{
+    if (row >= rows)
+        return 0;
+    return row_info[row].descent_of_row;
+}
+
+int LyXTable::HeightOfTable()
+{
+    int
+        height,
+        row;
+
+    for(row=0,height=0;(row<rows); ++row)
+        height += AscentOfRow(row) + DescentOfRow(row) +
+	    AdditionalHeight(GetCellNumber(0,row));
+    return height;
+}
+
+bool LyXTable::IsPartOfMultiColumn(int row, int column)
+{
+    if ((row >= rows) || (column >= columns))
+        return false;
+    return (cell_info[row][column].multicolumn==CELL_PART_OF_MULTICOLUMN);
+}
+
+int LyXTable::Latex(ostream &)
+{
+    return 0;
+}
+
+InsetText * LyXTable::GetCellInset(int cell) const
+{
+    return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }

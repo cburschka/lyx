@@ -644,6 +644,8 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 				"there is an inset in position: " << pos << endl;
 		else
 			insetlist.insert(it, InsetTable(pos,inset));
+		if (inset_owner)
+			inset->setOwner(inset_owner);
 	}
 }
 
@@ -3483,7 +3485,9 @@ LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
 	LyXParagraph * par = this;
 
-	while (par && par->depth == depth) {
+	while (par &&
+	       (par->depth == depth) &&
+	       (par->footnoteflag == footnoteflag)) {
 		if (par->IsDummy())
 			lyxerr << "ERROR (LyXParagraph::TeXDeeper)" << endl;
 		if (textclasslist.Style(current_view->buffer()->params.textclass, 
@@ -3736,7 +3740,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 	} while (par
 		 && par->layout == layout
 		 && par->depth == depth
-		 && par->pextra_type == pextra_type);
+		 && par->pextra_type == pextra_type
+		 && par->footnoteflag == footnoteflag);
  
 	if (style.isEnvironment()) {
 		os << "\\end{" << style.latexname() << '}';

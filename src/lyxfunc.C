@@ -54,6 +54,7 @@ using std::istringstream;
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
+#include "insets/insettabular.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -533,6 +534,7 @@ string LyXFunc::Dispatch(int ac,
 	// the math inset [asierra060396]
 	if (owner->view()->available() &&
 	    owner->view()->the_locking_inset) {
+		UpdatableInset::RESULT result;
 		if (action > 1
 		    || (action == LFUN_UNKNOWN_ACTION
 			&& keyseq.length >= -1)) {
@@ -574,10 +576,11 @@ string LyXFunc::Dispatch(int ac,
 				if (inset)
 					inset->Edit(owner->view(),slx,sly,0); 
 				return string();
-			} else if (owner->view()->the_locking_inset->
+			} else if (((result=owner->view()->the_locking_inset->
 				   LocalDispatch(owner->view(), action,
-						 argument) ==
-				   UpdatableInset::DISPATCHED)
+						 argument)) ==
+				   UpdatableInset::DISPATCHED) ||
+				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				return string();
 			else {
 				setMessage(N_("Text mode"));
@@ -604,6 +607,12 @@ string LyXFunc::Dispatch(int ac,
 						owner->getMiniBuffer()->
 							Set(CurrentState(owner->view()));
 					}
+					return string();
+				case LFUN_DOWN:
+					owner->view()->text->CursorDown();
+					moveCursorUpdate(false);
+					owner->getMiniBuffer()->
+						Set(CurrentState(owner->view()));
 					return string();
 				default:
 					break;
@@ -2043,6 +2052,14 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSET_FOOTNOTE:
 	{
 		InsetFoot * new_inset = new InsetFoot(owner->buffer());
+		owner->view()->insertInset(new_inset);
+		new_inset->Edit(owner->view(), 0, 0, 0);
+	}
+	break;
+
+	case LFUN_INSET_TABULAR:
+	{
+		InsetTabular * new_inset = new InsetTabular(owner->buffer(),2,2);
 		owner->view()->insertInset(new_inset);
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}

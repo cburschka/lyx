@@ -340,6 +340,8 @@ void LyXAction::init()
 		{ LFUN_TAB, "tab-forward", "", Noop },
 		{ LFUN_TABINSERT, "tab-insert", "", Noop },
 		{ LFUN_TABLE, "table-insert", N_("Insert Table"), Noop },
+		{ LFUN_INSET_TABULAR, "tabular-inset-insert",
+		  N_("Insert a new Tabular Inset"), Noop },
 		{ LFUN_TEX, "tex-mode", N_("Toggle TeX style"), Noop },
 		{ LFUN_INSET_TEXT, "text-inset-insert",
 		  N_("Insert a new Text Inset"), Noop },

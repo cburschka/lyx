@@ -36,6 +36,7 @@ InsetERT::InsetERT(Buffer * bf)
     labelfont.setColor(LColor::ert);
     setLabelFont(labelfont);
     setAutoCollapse(false);
+    setInsetName("ERT");
 }
 
 
@@ -43,14 +44,9 @@ Inset * InsetERT::Clone() const
 {
     InsetERT * result = new InsetERT(buffer);
     result->init(buffer, this);
+
+    result->collapsed = collapsed;
     return result;
-}
-
-
-void InsetERT::Write(ostream & os) const
-{
-    os << "ERT\n";
-    WriteParagraphData(os);
 }
 
 
