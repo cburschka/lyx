@@ -50,10 +50,6 @@ public:
 	void operator++();
 	/// move on several steps
 	void jump(difference_type);
-	/// read access to top most inset
-	MathInset const * inset() const;
-	/// read access to top most inset
-	MathInset * inset();
 	/// helper for iend
 	void goEnd();
 	/// read access to top most item

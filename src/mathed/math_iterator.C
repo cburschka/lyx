@@ -27,17 +27,6 @@ MathIterator::MathIterator(MathInset * p)
 }
 
 
-MathInset const * MathIterator::inset() const
-{
-	return back().asMathInset();
-}
-
-
-MathInset * MathIterator::inset()
-{
-	return back().asMathInset();
-}
-
 
 MathArray const & MathIterator::cell() const
 {
