@@ -754,7 +754,6 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_UNDEF: 
 			if (MathMacroTable::hasTemplate(yytext)) {
-				lyxerr << "@@@ Found macro!\n";
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
 				for (int i = 0; i < m->nargs(); ++i) 
 					mathed_parse(m->cell(i), FLAG_ITEM);
