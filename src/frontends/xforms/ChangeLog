@@ -1,3 +1,13 @@
+2002-06-14  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences (XYZ::build): pass "&parent_" to build_xyz, not
+	"this", ro we'll get a crash following FormBaseDeprecated's
+	C_PrehandlerCB cast of ob->form->u_vdata to FormBaseDeprecated *.
+
+	This is the only form in which all the folders are not built in the
+	parent class direct, so this is the only one that should suffer from
+	this bug.
+
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* form_*.[Ch]: removed from the repository.
