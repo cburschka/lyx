@@ -181,7 +181,9 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			break;
 		case MenuItem::Command:
 		{
-			#warning Bindings are not inserted into the menu labels here. (Lgb)
+#ifdef WITH_WARNINGS
+#warning Bindings are not inserted into the menu labels here. (Lgb)
+#endif
 			FuncStatus const flag =
 				view_->getLyXFunc().getStatus(i->func());
 			bool on = flag.onoff(true);

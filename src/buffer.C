@@ -636,7 +636,9 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 	bool the_end = readBody(lex);
 	params().setPaperStuff();
 
+#ifdef WITH_WARNINGS
 #warning Look here!
+#endif
 #if 0
 	if (token == "\\end_document")
 		the_end_read = true;

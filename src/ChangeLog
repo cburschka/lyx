@@ -1,3 +1,15 @@
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* counters.C:
+	* cursor.C:
+	* lyxfunc.C
+	* paragraph.C:
+	* pariterator.C:
+	* text.C:
+	* text2.C:
+	* text3.C: wrap #warning calls inside #ifdef WITH_WARNINGS blocks.
 
 2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
 

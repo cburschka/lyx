@@ -289,7 +289,9 @@ string Counters::counterLabel(string const & format)
 {
 	string label = format;
 	while (true) {
+#ifdef WITH_WARNINGS
 #warning Using boost::regex would make this code a lot simpler... (Lgb)
+#endif
 
 		size_t const i = label.find('\\', 0);
 		if (i == string::npos)

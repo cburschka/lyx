@@ -134,7 +134,9 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const &)
 	ParagraphList::iterator end = bv->buffer()->paragraphs().end();
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
+#ifdef WITH_WARNINGS
 #warning metrics broken!
+#endif
 			int const wx = it->bibitem()->width();
 			if (wx > w)
 				w = wx;

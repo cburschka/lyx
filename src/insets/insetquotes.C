@@ -270,7 +270,9 @@ int InsetQuotes::latex(Buffer const & buf, ostream & os,
 	lyx::pos_type curr_pos = ownerPar(buf, this).getPositionOfInset(this);
 	BOOST_ASSERT(curr_pos != -1);
 
+#ifdef WITH_WARNINGS
 #warning FIXME. We _must_ find another way to get the language. (Lgb)
+#endif
 #if 0
 	// This cannot be used. (Lgb)
 	string const curr_lang =

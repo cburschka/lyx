@@ -38,7 +38,9 @@ int MathBinaryOpInset::opwidth() const
 }
 
 
+#ifdef WITH_WARNINGS
 #warning Andre, have a look here. (Lgb)
+#endif
 #if 0
 // That this is not declared in class MathBinaryOpInset makes
 // Doxygen give warnings. (Lgb)

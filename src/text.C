@@ -609,7 +609,9 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 		// row in this paragraph.
 		RowList::iterator rit = pars_[pit].rows.begin();
 		RowList::iterator end = pars_[pit].rows.end();
+#ifdef WITH_WARNINGS
 #warning This is wrong.
+#endif
 		int minfill = maxwidth_;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
@@ -1454,7 +1456,9 @@ void LyXText::acceptChange(LCursor & cur)
 		redoParagraph(startc.par());
 		setCursorIntern(cur, startc.par(), 0);
 	}
+#ifdef WITH_WARNINGS
 #warning handle multi par selection
+#endif
 }
 
 
@@ -1474,7 +1478,9 @@ void LyXText::rejectChange(LCursor & cur)
 		redoParagraph(startc.par());
 		setCursorIntern(cur, startc.par(), 0);
 	}
+#ifdef WITH_WARNINGS
 #warning handle multi par selection
+#endif
 }
 
 
@@ -1573,7 +1579,9 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 				break;
 			}
 		}
+#ifdef WITH_WARNINGS
 #warning changes
+#endif
 		pars_[pit].setChar(pos, c);
 		++pos;
 	}
@@ -1959,7 +1967,9 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 		}
 
 		if (token == "\\end_document") {
+#ifdef WITH_WARNINGS
 #warning Look here!
+#endif
 #if 0
 			lex.printError("\\end_document read in inset! Error in document!");
 #endif

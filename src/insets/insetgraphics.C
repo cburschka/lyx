@@ -543,7 +543,9 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
+#ifdef WITH_WARNINGS
 #warning uh, but can our cache handle it ? no.
+#endif
 	string const file_ = params().filename.absFilename();
 	bool const file_exists =
 		!file_.empty() &&

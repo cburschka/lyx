@@ -71,8 +71,10 @@ void ControlErrorList::goTo(int item)
 	lyx::pos_type const range = end - start;
 
 	// Now make the selection.
+#ifdef WITH_WARNINGS
 #warning FIXME (goto error)
 #warning This should be implemented using an LFUN. (Angus)
+#endif
 #if 0
 	PosIterator const pos(pit, start);
 	kernel().bufferview()->putSelectionAt(pos, range, false);

@@ -55,7 +55,9 @@ void UpdatableInset::scroll(BufferView & bv, float s) const
 
 	scx = int(s * workW / 2);
 
+#ifdef WITH_WARNINGS
 #warning metrics?
+#endif
 	if (tmp_xo_ + scx + width() < workW / 2)
 		scx = workW / 2 - tmp_xo_ - width();
 }

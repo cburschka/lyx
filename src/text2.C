@@ -110,7 +110,9 @@ LyXFont LyXText::getFont(par_type pit, pos_type pos) const
 	BOOST_ASSERT(pos >= 0);
 
 	LyXLayout_ptr const & layout = pars_[pit].layout();
+#ifdef WITH_WARNINGS
 #warning broken?
+#endif
 	BufferParams const & params = bv()->buffer()->params();
 	pos_type const body_pos = pars_[pit].beginOfBody();
 

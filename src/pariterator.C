@@ -55,7 +55,9 @@ ParIterator & ParIterator::operator++()
 
 ParIterator & ParIterator::operator--()
 {
+#ifdef WITH_WARNINGS
 #warning look here
+#endif
 //	DocIterator::backwardPar();
 	return *this;
 }

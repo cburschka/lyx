@@ -1283,7 +1283,9 @@ void readBB_lyxerrMessage(string const & file, bool & zipped,
 {
 	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] "
 		<< message << std::endl;
+#ifdef WITH_WARNINGS
 #warning Why is this func deleting a file? (Lgb)
+#endif
 	if (zipped)
 		unlink(file);
 }

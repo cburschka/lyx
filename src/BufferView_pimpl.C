@@ -717,7 +717,9 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 
 InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
 {
+#ifdef WITH_WARNINGS
 #warning Does not work for mathed
+#endif
 	// Ok, this is a little bit too brute force but it
 	// should work for now. Better infrastructure is coming. (Lgb)
 
@@ -824,7 +826,9 @@ void BufferView::Pimpl::trackChanges()
 	} else {
 		update();
 		bv_->text()->setCursor(bv_->cursor(), 0, 0);
+#ifdef WITH_WARNINGS
 #warning changes FIXME
+#endif
 		bool found = lyx::find::findNextChange(bv_);
 		if (found) {
 			owner_->getDialogs().show("changes");
@@ -1072,7 +1076,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
 		bv_->cursor().reset(bv_->buffer()->inset());
+#ifdef WITH_WARNINGS
 #warning FIXME changes
+#endif
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->acceptChange(bv_->cursor());
 		update();
@@ -1081,7 +1087,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_REJECT_ALL_CHANGES: {
 		bv_->cursor().reset(bv_->buffer()->inset());
+#ifdef WITH_WARNINGS
 #warning FIXME changes
+#endif
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange(bv_->cursor());
 		update();

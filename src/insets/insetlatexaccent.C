@@ -433,7 +433,9 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			// closer to the top of the dot-less 'i' or 'j'.
 			char tmpic = ic; // store the ic when we
 			ic = 'x';        // calculates the ascent of
+#ifdef WITH_WARNINGS
 #warning metrics?
+#endif
 			int asc = ascent(); // the dot-less version (here: 'x')
 			ic = tmpic;      // set the orig ic back
 			y = baseline - asc; // update to new y coord.

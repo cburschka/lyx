@@ -784,7 +784,9 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+#ifdef WITH_WARNINGS
 #warning look here
+#endif
 #if 0
 
 	case LFUN_WORD_REPLACE:
@@ -997,7 +999,9 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	if (cur.inMacroArgMode()) {
 		cur.posLeft();
 		cur.plainErase();
+#ifdef WITH_WARNINGS
 #warning FIXME
+#endif
 #if 0
 		int n = c - '0';
 		MathMacroTemplate const * p = formula()->asMacroTemplate();

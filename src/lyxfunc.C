@@ -1250,7 +1250,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 
 		case LFUN_BREAKLINE: {
+#ifdef WITH_WARNINGS
 #warning swallow 'Return' if the minibuffer is focused. But how?
+#endif
 			break;
 		}
 

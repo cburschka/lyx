@@ -1526,7 +1526,9 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 {
 	if (!empty())
 		return getFirstFontSettings().language();
+#ifdef WITH_WARNINGS
 #warning FIXME we should check the prev par as well (Lgb)
+#endif
 	return bparams.language;
 }
 

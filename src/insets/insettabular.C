@@ -898,7 +898,9 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 	int ret = 0;
 	InsetOld * master = 0;
 
+#ifdef WITH_WARNINGS
 #warning Why not pass a proper DocIterator here?
+#endif
 #if 0
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
@@ -1749,7 +1751,9 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
+#ifdef WITH_WARNINGS
 #warning CHECK verify that this is a sane value to return.
+#endif
 	if (in.empty())
 		return -1;
 
@@ -1794,7 +1798,9 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
 	ostringstream data;
+#ifdef WITH_WARNINGS
 #warning wrong!
+#endif
 	//data << name_ << " \\active_cell " << inset.getActCell() << '\n';
 	data << name_ << " \\active_cell " << 0 << '\n';
 	inset.write(inset.buffer(), data);

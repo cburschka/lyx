@@ -1,3 +1,7 @@
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* GMenubar.C: wrap #warning calls inside #ifdef WITH_WARNINGS blocks.
+
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* GViewBase.C: remove mention of ControlButtons.h.

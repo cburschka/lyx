@@ -152,7 +152,9 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 {
 	clear(false);
 
+#ifdef WITH_WARNINGS
 #warning John, look here. Doesnt make much sense.
+#endif
 	if (buf.params().tracking_changes)
 		paragraphs().begin()->trackChanges();
 
@@ -294,7 +296,9 @@ void InsetText::edit(LCursor & cur, bool left)
 	cur.clearSelection();
 	finishUndo();
 	sanitizeEmptyText(cur.bv());
+#ifdef WITH_WARNINGS
 #warning can someone check if/when this is needed?
+#endif
 //Andre?
 //	updateLocal(cur);
 }
@@ -491,9 +495,11 @@ LyXText * InsetText::getText(int i) const
 
 void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 {
+#ifdef WITH_WARNINGS
 #warning FIXME Check if Changes stuff needs changing here. (Lgb)
 // And it probably does. You have to take a look at this John. (Lgb)
 #warning John, have a look here. (Lgb)
+#endif
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = paragraphs().insert(paragraphs().end(), *pit);
 	++pit;

@@ -155,7 +155,9 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
 	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
 
+#ifdef WITH_WARNINGS
 #warning FIXME
+#endif
 #if 0
 	LCursor & cur = p.base.bv->cursor();
 	if (cur.isInside(this))

@@ -1,3 +1,8 @@
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C:
+	wrap #warning calls inside #ifdef WITH_WARNINGS blocks.
+
 2004-04-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* filetools.C (RunCommand): block SIGCHLD during popen/pclose

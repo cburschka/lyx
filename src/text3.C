@@ -684,7 +684,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BACKSPACE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!cur.selection()) {
+#ifdef WITH_WARNINGS
 #warning look here
+#endif
 			//CursorSlice cur = cursor();
 			backspace(cur);
 			//anchor() = cur;
@@ -851,7 +853,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
 		lyx::cap::replaceSelection(cur);
+#ifdef WITH_WARNINGS
 #warning FIXME Check if the arg is in the domain of available selections.
+#endif
 		if (isStrUnsignedInt(cmd.argument))
 			pasteSelection(cur, strToUnsignedInt(cmd.argument));
 		else

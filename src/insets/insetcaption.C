@@ -92,7 +92,9 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	InsetOld * i2 = i1 ? i1->owner() : 0;
 	string type;
 	if (i2->lyxCode() == FLOAT_CODE)
+#ifdef WITH_WARNINGS
 #warning Now, what happens for i2 == 0?
+#endif
 		type = static_cast<InsetFloat *>(i2)->params().type;
 	else if (i2->lyxCode() == WRAP_CODE)
 		type = static_cast<InsetWrap *>(i2)->params().type;

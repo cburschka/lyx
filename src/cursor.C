@@ -462,7 +462,9 @@ void LCursor::eraseSelection()
 	//lyxerr << "LCursor::eraseSelection" << endl;
 	CursorSlice const & i1 = selBegin();
 	CursorSlice const & i2 = selEnd();
+#ifdef WITH_WARNINGS
 #warning FIXME
+#endif
 	if (i1.inset().asMathInset()) {
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
@@ -960,7 +962,9 @@ MathGridInset * LCursor::enclosingGrid(idx_type & idx) const
 
 void LCursor::pullArg()
 {
+#ifdef WITH_WARNINGS
 #warning Look here
+#endif
 	MathArray ar = cell();
 	if (popLeft() && inMathed()) {
 		plainErase();
@@ -974,7 +978,9 @@ void LCursor::pullArg()
 
 void LCursor::touch()
 {
+#ifdef WITH_WARNINGS
 #warning look here
+#endif
 #if 0
 	DocIterator::const_iterator it = begin();
 	DocIterator::const_iterator et = end();
@@ -1283,7 +1289,9 @@ string LCursor::selectionAsString(bool label) const
 		return result;
 	}
 
+#ifdef WITH_WARNINGS
 #warning and mathed?
+#endif
 	return string();
 }
 
