@@ -75,7 +75,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	string text = fmt.str();
 #else
 	string text = _("The document ");
-	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
+	text += file + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, _("&Save"), _("&Discard"), _("&Cancel"));
@@ -183,7 +183,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	string text = fmt.str();
 #else
 	string text = _("The document ");
-	text += fname + _(" has unsaved changes.\n\nDo you want to save the document?");
+	text += fname + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, _("&Save"), _("&Discard"));
