@@ -16,6 +16,7 @@
 #include "support/types.h"
 
 #include <iosfwd>
+#include <string>
 #include <utility>
 
 class Buffer;
