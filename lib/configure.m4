@@ -540,7 +540,7 @@ fi
 
 #### Add Grace conversions (xmgrace needs an Xserver, gracebat doesn't.)
 SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
-if test "$GRACE" = "gracebat"; then 
+if test "$GRACE" = "gracebat"; then
 cat >>$outfile <<EOF
 \\converter agr eps "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
 \\converter agr png "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
@@ -597,7 +597,7 @@ for file in $outfile textclass.lst packages.lst \
 done
 if test ! -r xfonts/fonts.dir ; then
     echo "removing font links"
-    rm -r xfonts/*.pfb xfonts/fonts.scale
+    rm -f xfonts/*.pfb xfonts/fonts.scale
 fi
 
 # Final clean-up

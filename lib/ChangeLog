@@ -1,3 +1,7 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* configure.m4 (removing font links): use -f not -r 
+
 2002-11-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* layouts/llncs.layout: Remove layouts that don't exist in llncs.cls.
@@ -5,12 +9,12 @@
 2002-10-31  John Levon  <levon@movementarian.org>
 
 	* external_templates: small tweak for clarity
- 
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* ui/default.ui: re-add table-like commands to math, and
 	  some minor fixes
- 
+
 2002-10-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* configure.m4: Remove files in ~/.lyx/xfonts if fonts.dir was erased.
@@ -29,8 +33,8 @@
 
 2002-10-24  John Levon  <levon@movementarian.org>
 
-	* images/math/: use black for visibility (from Edwin) 
- 
+	* images/math/: use black for visibility (from Edwin)
+
 2002-10-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* layouts/llncs.layout: Fix the Bibliography layout
