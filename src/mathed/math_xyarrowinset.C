@@ -27,9 +27,9 @@ MathXYArrowInset::MathXYArrowInset()
 {}
 
 
-InsetBase * MathXYArrowInset::clone() const
+auto_ptr<InsetBase> MathXYArrowInset::clone() const
 {
-	return new MathXYArrowInset(*this);
+	return auto_ptr<InsetBase>(new MathXYArrowInset(*this));
 }
 
 

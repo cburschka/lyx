@@ -12,6 +12,8 @@
 #ifndef MATH_GRIDINFO_H
 #define MATH_GRIDINFO_H
 
+#include "LString.h"
+
 struct ColInfo
 {
 	ColInfo() : align('c'), rightline(0), leftline(false) {}

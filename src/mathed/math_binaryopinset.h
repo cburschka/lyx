@@ -14,6 +14,7 @@
 
 #include "math_nestinset.h"
 #include "math_nestinset.h"
+#include "metricsinfo.h"
 
 
 /// An inset for multiplication
@@ -22,7 +23,7 @@ public:
 	///
 	explicit MathBinaryOpInset(char op);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
