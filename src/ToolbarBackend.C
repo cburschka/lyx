@@ -142,8 +142,12 @@ string const ToolbarBackend::getIcon(int action)
 			xpm_name = subst(name + ' ' + f.argument, ' ', '_');
 
 		fullname = LibFileSearch("images", xpm_name, "xpm");
-	}
 
+		if (fullname.empty()) {
+			// try without the argument
+			fullname = LibFileSearch("images", name, "xpm");
+		}
+	}
 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
