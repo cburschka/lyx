@@ -152,7 +152,7 @@ void GBox::update()
 	contenthorzcombo_->set_active(string("lcrs").find(c, 0));
 
 	string type(controller().params().type);
-	for (unsigned int i = 0; i < gui_names_.size(); ++i) {
+	for (size_t i = 0; i < gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			typecombo_->set_active(i);
 	}
@@ -174,11 +174,11 @@ void GBox::update()
 	string const special(controller().params().special);
 	if (!special.empty() && special != "none") {
 		string spc;
-		for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
+		for (size_t i = 0; i < gui_names_spec_.size(); ++i) {
 			if (special == ids_spec_[i])
 				spc = gui_names_spec_[i];
 		}
-		for (unsigned int j = 0; j 
+		for (size_t j = 0; j 
 			< widthunitsstore_->children().size(); ++j) {
 			if (widthunitsstore_->children()[j][stringcol_] == spc)
 				widthunitscombo_->set_active(j);
@@ -192,12 +192,12 @@ void GBox::update()
 	string const height_special(controller().params().height_special);
 	if (!height_special.empty() && height_special != "none") {
 		string hspc;
-		for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
+		for (size_t i = 0; i < gui_names_spec_.size(); ++i) {
 			if (height_special == ids_spec_[i]) {
 				hspc = gui_names_spec_[i];
 			}
 		}
-		for (unsigned int j = 0; j < heightunitscombo_->get_model()->children().size(); ++j) {
+		for (size_t j = 0; j < heightunitscombo_->get_model()->children().size(); ++j) {
 			if (heightunitscombo_->get_model()->children()[j][stringcol_] == hspc) {
 				heightunitscombo_->set_active(j);
 			}
@@ -235,7 +235,7 @@ void GBox::setSpecial(bool ibox)
 			(*widthunitsstore_->append())[stringcol_] = *it;
 	}
 
-	unsigned int const store_size = widthunitsstore_->children().size();
+	size_t const store_size = widthunitsstore_->children().size();
 	if (initselection >= store_size) {
 		widthunitscombo_->set_active(0);
 		onWidthChanged();
@@ -358,7 +358,7 @@ void GBox::onHeightChanged()
 	int i = 0;
 	bool spec = false;
 	Glib::ustring special = (*heightunitscombo_->get_active())[stringcol_];
-	for (unsigned int j = 1; j < gui_names_spec_.size() ; ++j) {
+	for (size_t j = 1; j < gui_names_spec_.size() ; ++j) {
 		if (gui_names_spec_[j] == special) {
 			i=j;
 			spec = true;
@@ -390,7 +390,7 @@ void GBox::onWidthChanged()
 	int i = 0;
 	bool spec = false;
 	Glib::ustring special = (*widthunitscombo_->get_active())[stringcol_];
-	for (unsigned int j = 1; j < gui_names_spec_.size() ; ++j) {
+	for (size_t j = 1; j < gui_names_spec_.size() ; ++j) {
 		if (gui_names_spec_[j] == special) {
 			i = j;
 			spec = true;
