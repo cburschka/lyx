@@ -1,5 +1,10 @@
 2002-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C (startLoading): pass the desired output format to the
+	conversion script.
+
+2002-09-04  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewLoader.C: remove this ndigits stuff as an unnecessary extra.
 
 2002-09-03  Angus Leeming  <leeming@lyx.org>

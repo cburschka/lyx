@@ -1,5 +1,13 @@
 2002-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* scripts/lyxpreview2bitmap.sh: rename lyxpreview2ppm.sh as this.
+	The new script takes an extra argument specifying the desired
+	output format, ppm or png.
+
+	* configure.m4: associated changes.
+
+2002-09-04  Angus Leeming  <leeming@lyx.org>
+
 	* scripts/lyxpreview2ppm.sh: output gs filenames as %d, not %Nd where N
 	is some input value.
 

@@ -1,28 +1,31 @@
 #! /bin/sh
-#
-# \file lyxpreview2ppm.sh
+
+# \file tex2preview.sh
 # Copyright 2002 the LyX Team
 # Read the file COPYING
-#
 # \author Angus Leeming, leeming@lyx.org
 # with much advice from David Kastrup, david.kastrup@t-online.de.
-#
-# This script takes a LaTeX file and generates PPM files, one per page.
+
+# This script takes a LaTeX file and generates bitmap image files,
+# one per page.
+
 # The idea is to use it with preview.sty from the preview-latex project
 # (http://preview-latex.sourceforge.net/) to create small bitmap previews of
 # things like math equations.
 
 # preview.sty can be obtained from CTAN/macros/latex/contrib/supported/preview.
 
-# This script takes two arguments:
-# TEXFILE:     the name of the .tex file to be converted.
-# SCALEFACTOR: a scale factor, used to ascertain the resolution of the
-#              generated image which is then passed to gs.
+# This script takes three arguments:
+# TEXFILE:       the name of the .tex file to be converted.
+# SCALEFACTOR:   a scale factor, used to ascertain the resolution of the
+#                generated image which is then passed to gs.
+# OUTPUTFORMAT:  the format of the output bitmap image files. Two formats
+#                are recognised: PPM and PNG
 
 # If successful, this script will leave in dir ${DIR}:
-# ${BASE}\([0-9]*\).ppm:  a (possibly large) number of image files.
-# ${BASE}.metrics:        a file containing info needed by LyX to position the
-#                         images correctly on the screen.
+# ${BASE}\([0-9]*\).ppm/png:  a (possibly large) number of image files.
+# ${BASE}.metrics:            a file containing info needed by LyX to
+#                             position the images correctly on the screen.
 # All other files ${BASE}* will be deleted.
 
 # Three helper functions.
@@ -47,8 +50,26 @@ REQUIRED_VERSION () {
 }
 
 # Preliminary check.
-if [ $# -ne 2 ]; then
+if [ $# -ne 3 ]; then
 	exit 1
+fi
+
+# Extract the params from the argument list.
+DIR=`dirname $1`
+BASE=`basename $1 .tex`
+
+SCALEFACTOR=$2
+
+if [ "$3" = "ppm" ]; then
+	GSDEVICE=pnmraw
+	GSSUFFIX=ppm
+elif [ "$3" = "png" ]; then
+	GSDEVICE=png16m
+	GSSUFFIX=png
+else
+	echo "Unrecognised output format ${OUTPUTFORMAT}."
+	echo "Expected either \"ppm\" or \"png\"."
+	BAIL_OUT
 fi
 
 # We use latex, dvips and gs, so check that they're all there.
@@ -57,11 +78,6 @@ EXECUTABLE=dvips; FIND_IT
 EXECUTABLE=gs;    FIND_IT
 
 # Initialise some variables.
-DIR=`dirname $1`
-BASE=`basename $1 .tex`
-
-SCALEFACTOR=$2
-
 TEXFILE=${BASE}.tex
 LOGFILE=${BASE}.log
 DVIFILE=${BASE}.dvi
@@ -136,7 +152,7 @@ if [ ${INT_RESOLUTION} -gt 150 ]; then
 fi
 
 gs -q -dNOPAUSE -dBATCH -dSAFER \
-    -sDEVICE=pnmraw -sOutputFile=${BASE}%d.ppm \
+    -sDEVICE=${GSDEVICE} -sOutputFile=${BASE}%d.${GSSUFFIX} \
     -dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} -r${RESOLUTION} \
     ${PSFILE}
 
@@ -148,5 +164,5 @@ fi
 # All has been successful, so remove everything except the bitmap files
 # and the metrics file.
 FILES=`ls ${BASE}* | \
-	sed -e "/${BASE}.metrics/d" -e "/${BASE}\([0-9]*\).ppm/d"`
+	sed -e "/${BASE}.metrics/d" -e "/${BASE}\([0-9]*\).${GSSUFFIX}/d"`
 rm -f ${FILES} texput.log
