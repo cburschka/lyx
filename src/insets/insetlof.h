@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1996-1999 the LyX Team.
  * 
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_LOF_H
 #define INSET_LOF_H
@@ -28,7 +28,7 @@ public:
 	///
 	InsetLOF(): InsetCommand("listoffigures") {}
 	///
-	InsetLOF(Buffer * b): InsetCommand("listoffigures"),owner(b) {}
+	InsetLOF(Buffer * b): InsetCommand("listoffigures"), owner(b) {}
         ///
         Inset * Clone() { return new InsetLOF(owner); }
     	///

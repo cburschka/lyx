@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of*
- * ======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_LATEX_ACCENT_H
 #define INSET_LATEX_ACCENT_H
@@ -129,7 +129,7 @@ private:
 	/// modifier type
 	ACCENT_TYPES  modtype;
 	
-	/// remove dot from 'i' and 'j' or transform l,L into lslash,LSLaSH
+	/// remove dot from 'i' and 'j' or transform l, L into lslash, LSLaSH
 	bool  remdot;
 	/// add something to ascent - accent at the top
 	bool  plusasc;

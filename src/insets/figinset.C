@@ -743,7 +743,7 @@ static figdata *getfigdata(int wid, int hgh, string const & fname,
 
 	while (i < bmpinsref) {
 		if (bitmaps[i]->wid == wid && bitmaps[i]->hgh == hgh &&
-		    bitmaps[i]->flags == flags && bitmaps[i]->fname==fname &&
+		    bitmaps[i]->flags == flags && bitmaps[i]->fname == fname &&
 		    bitmaps[i]->angle == angle) {
 			bitmaps[i]->ref++;
 			return bitmaps[i];
@@ -1008,10 +1008,10 @@ static char* NextToken(FILE *myfile)
 		token = new char[256];
 		do {
 			c = fgetc(myfile);
-			token[i++]=c;
+			token[i++]= c;
 		} while (!feof(myfile) && !isspace(c));
       
-		token[i-1]='\0';         /* just the end of a command  */
+		token[i-1]= '\0';         /* just the end of a command  */
 	}
 	return token;
 }
@@ -1099,11 +1099,11 @@ void InsetFig::Draw(LyXFont font, LyXScreen &scr, int baseline, float &x)
 		font.setFamily (LyXFont::SANS_FAMILY);
 		font.setSize (LyXFont::SIZE_FOOTNOTE);
 		string justname = OnlyFilename (fname);
-		font.drawString(justname,pm,
+		font.drawString(justname, pm,
 			       baseline - font.maxAscent() - 4,
 			       (int) x + 8);
 		font.setSize (LyXFont::SIZE_TINY);
-		font.drawText (msg, strlen(msg),pm,
+		font.drawText (msg, strlen(msg), pm,
 			       baseline - 4,
 			       (int) x + 8);
 
@@ -1239,12 +1239,12 @@ int InsetFig::Linuxdoc(string &/*file*/)
 
 int InsetFig::DocBook(string &file)
 {
-	string figurename=fname;
+	string figurename= fname;
 
 	if(suffixIs(figurename, ".eps"))
 		figurename.erase(fname.length() - 5);
 
-	file += "@<graphic fileref=\"" + figurename + "\"></graphic>";
+	file += "@<graphic fileref= \"" + figurename + "\"></graphic>";
 	return 0;
 }
 
@@ -1282,9 +1282,9 @@ void InsetFig::Edit(int, int)
 	if (!form) {
 		form = create_form_Figure();
 		fl_set_form_atclose(form->Figure, CancelCloseBoxCB, 0);
-		fl_set_object_return(form->Angle,FL_RETURN_ALWAYS);
-		fl_set_object_return(form->Width,FL_RETURN_ALWAYS);
-		fl_set_object_return(form->Height,FL_RETURN_ALWAYS);
+		fl_set_object_return(form->Angle, FL_RETURN_ALWAYS);
+		fl_set_object_return(form->Width, FL_RETURN_ALWAYS);
+		fl_set_object_return(form->Height, FL_RETURN_ALWAYS);
 	}
 	RestoreForm();
 	if (form->Figure->visible) {
@@ -1722,7 +1722,7 @@ void InsetFig::GetPSSizes()
 	char *p = 0;
 	
 	/* defaults to associated size
-	 * ..just in case the PS-file is not readable (Henner,24-Aug-97) 
+	 * ..just in case the PS-file is not readable (Henner, 24-Aug-97) 
 	 */
 	psx = 0;
 	psy = 0;
@@ -2154,7 +2154,7 @@ void InsetFig::BrowseFile()
 	do {
 		ProhibitInput();
 		if (once) {
-			p =fileDlg.Select(_("EPS Figure"), current_figure_path,
+			p = fileDlg.Select(_("EPS Figure"), current_figure_path,
 					   "*ps", string());
 		} else {
 			p = fileDlg.Select(_("EPS Figure"), buf,

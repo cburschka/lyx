@@ -48,19 +48,19 @@ FD_index_form * create_form_index_form()
 	FD_index_form *fdui = (FD_index_form *) fl_calloc(1, sizeof(FD_index_form));
 
 	fdui->index_form = fl_bgn_form(FL_NO_BOX, 258, 196);
-	obj = fl_add_box(FL_UP_BOX,0,0,258,196,"");
-	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT,93,26,130,30,
+	obj = fl_add_box(FL_UP_BOX, 0, 0, 258, 196, "");
+	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT, 93, 26, 130, 30,
 				       idex(_("Keyword:|#K")));
-	  fl_set_object_shortcut(obj,scex(_("Keyword:|#K")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	obj = fl_add_button(FL_RETURN_BUTTON,50,140,80,30,_("OK"));
+	  fl_set_object_shortcut(obj, scex(_("Keyword:|#K")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	obj = fl_add_button(FL_RETURN_BUTTON, 50, 140, 80, 30, _("OK"));
 	  obj->u_vdata = index_form;
-	  fl_set_object_callback(obj,index_cb,1);
-	obj = fl_add_button(FL_NORMAL_BUTTON,150,140,80,30,
+	  fl_set_object_callback(obj, index_cb, 1);
+	obj = fl_add_button(FL_NORMAL_BUTTON, 150, 140, 80, 30,
 			    idex(_("Cancel|^[")));
-	  fl_set_object_shortcut(obj,scex(_("Cancel|^[")),1);
+	  fl_set_object_shortcut(obj, scex(_("Cancel|^[")), 1);
 	  obj->u_vdata = index_form;
-	  fl_set_object_callback(obj,index_cb,0);
+	  fl_set_object_callback(obj, index_cb, 0);
 	fl_end_form();
 
 	return fdui;

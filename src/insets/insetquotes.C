@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -32,29 +32,29 @@ extern BufferView * current_view;
 // codes used to read/write quotes to LyX files
 static char const * const language_char = "esgpfa";
 static char const * const side_char = "lr" ;
-static char const * const times_char ="sd";
+static char const * const times_char = "sd";
 
 // List of known quote chars
 static char const * const quote_char = ",'`<>";
 
-// Index of chars used for the quote. Index is [side,language]
+// Index of chars used for the quote. Index is [side, language]
 int quote_index[2][6] = 
 { { 2, 1, 0, 0, 3, 4 },    // "'',,<>" 
   { 1, 1, 2, 1, 4, 3 } };  // "`'`'><"
 
 // Corresponding LaTeX code, for double and single quotes.
-static char const * const latex_quote_t1[2][5] =
+static char const * const latex_quote_t1[2][5] = 
 { { "\\quotesinglbase{}",  "'", "`", 
     "\\guilsinglleft{}", "\\guilsinglright{}" }, 
   { ",,", "''", "``", "<<", ">>" } };
 
-static char const * const latex_quote_ot1[2][5] =
+static char const * const latex_quote_ot1[2][5] = 
 { { "\\quotesinglbase{}",  "'", "`", 
     "\\guilsinglleft{}", "\\guilsinglright{}" }, 
   { "\\quotedblbase{}", "''", "``",
     "\\guillemotleft{}", "\\guillemotright{}" } };
 
-static char const * const latex_quote_babel[2][5] =
+static char const * const latex_quote_babel[2][5] = 
 { { "\\glq{}",  "'", "`", "\\flq{}", "\\frq{}" },
   { "\\glqq{}", "''", "``", "\\flqq{}", "\\frqq{}" } };
 
@@ -78,8 +78,9 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	// Decide whether left or right 
 	switch(c) {
 	case ' ': case '(': case '{': case '[': case '-': case ':':
-	case LYX_META_HFILL: case LYX_META_PROTECTED_SEPARATOR:
-	case LYX_META_NEWLINE: 
+	case LyXParagraph::META_HFILL:
+	case LyXParagraph::META_PROTECTED_SEPARATOR:
+	case LyXParagraph::META_NEWLINE: 
 		side = InsetQuotes::LeftQ;   // left quote 
 		break;
 	default:
@@ -98,37 +99,37 @@ void InsetQuotes::ParseString(string const & s)
 		str = "eld";
 	}
 
-	for (i=0;i<6;i++) {
+	for (i= 0;i<6;i++) {
 		if (str[0] == language_char[i]) {
 			language = (InsetQuotes::quote_language)i;
 			break;
 		}
 	}
-	if (i>=6) {
+	if (i>= 6) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad language specification." << endl;
 		language = InsetQuotes::EnglishQ; 
 	}
 
-	for (i=0;i<2;i++) {
+	for (i= 0;i<2;i++) {
 		if (str[1] == side_char[i]) {
 			side = (InsetQuotes::quote_side)i;
 			break;
 		}
 	}
-	if (i>=2) {
+	if (i>= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad side specification." << endl;
 		side = InsetQuotes::LeftQ; 
 	}
 
-	for (i=0;i<2;i++) {
+	for (i= 0;i<2;i++) {
 		if (str[2] == times_char[i]) {
 			times = (InsetQuotes::quote_times)i;
 			break;
 		}
 	}
-	if (i>=2) {
+	if (i>= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad times specification." << endl;
 		times = InsetQuotes::DoubleQ; 
@@ -227,7 +228,7 @@ int InsetQuotes::Latex(FILE * file, signed char /*fragile*/)
 
 int InsetQuotes::Latex(string & file, signed char /*fragile*/)
 {
-	string doclang =
+	string doclang = 
 		current_view->buffer()->GetLanguage();
 	int quoteind = quote_index[side][language];
 	string qstr;

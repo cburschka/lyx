@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1996-1999 LyX Team
  * 
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_LOT_H
 #define INSET_LOT_H

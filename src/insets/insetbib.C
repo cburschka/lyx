@@ -75,24 +75,24 @@ FD_citation_form *create_form_citation_form(void)
 	FD_citation_form *fdui = (FD_citation_form *) fl_calloc(1, sizeof(FD_citation_form));
 
 	fdui->citation_form = fl_bgn_form(FL_NO_BOX, 220, 130);
-	obj = fl_add_box(FL_UP_BOX,0,0,220,130,"");
-	fdui->key = obj = fl_add_text(FL_NORMAL_TEXT,20,10,60,30,_("Key:"));
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	  fl_set_object_lalign(obj,FL_ALIGN_RIGHT);
+	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
+	fdui->key = obj = fl_add_text(FL_NORMAL_TEXT, 20, 10, 60, 30, _("Key:"));
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	  fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
 
 	bibcombox = new Combox(FL_COMBOX_INPUT);
-	bibcombox->add(80,10,130,30, 120);
+	bibcombox->add(80, 10, 130, 30, 120);
 
-	obj = fl_add_button(FL_RETURN_BUTTON,20,90,90,30,_("OK"));
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj,bibitem_cb,1);
-	obj = fl_add_button(FL_NORMAL_BUTTON,120,90,90,30,idex(_("Cancel|^[")));
-	  fl_set_button_shortcut(obj,scex(_("Cancel|^[")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj,bibitem_cb,0);
-	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT,80,50,130,30,idex(_("Remark:|#R")));
-	  fl_set_input_shortcut(obj,scex(_("Remark:|#R")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	  fl_set_object_callback(obj, bibitem_cb, 1);
+	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
+	  fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	  fl_set_object_callback(obj, bibitem_cb, 0);
+	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Remark:|#R")));
+	  fl_set_input_shortcut(obj, scex(_("Remark:|#R")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	fl_end_form();
 
 	//fdui->citation_form->fdui = fdui;
@@ -107,20 +107,20 @@ FD_bibitem_form *create_form_bibitem_form(void)
 	FD_bibitem_form *fdui = (FD_bibitem_form *) fl_calloc(1, sizeof(FD_bibitem_form));
 
 	fdui->bibitem_form = fl_bgn_form(FL_NO_BOX, 220, 130);
-	obj = fl_add_box(FL_UP_BOX,0,0,220,130,"");
-	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT,80,10,130,30,idex(_("Key:|#K")));
-	  fl_set_input_shortcut(obj,scex(_("Key:|#K")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	obj = fl_add_button(FL_RETURN_BUTTON,20,90,90,30,_("OK"));
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj,bibitem_cb,3);
-	obj = fl_add_button(FL_NORMAL_BUTTON,120,90,90,30,idex(_("Cancel|^[")));
-	  fl_set_button_shortcut(obj,scex(_("Cancel|^[")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj,bibitem_cb,2);
-	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT,80,50,130,30,idex(_("Label:|#L")));
-	  fl_set_input_shortcut(obj,scex(_("Label:|#L")),1);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
+	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_("Key:|#K")));
+	  fl_set_input_shortcut(obj, scex(_("Key:|#K")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	  fl_set_object_callback(obj, bibitem_cb, 3);
+	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
+	  fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	  fl_set_object_callback(obj, bibitem_cb, 2);
+	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Label:|#L")));
+	  fl_set_input_shortcut(obj, scex(_("Label:|#L")), 1);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	fl_end_form();
 
 	//fdui->bibitem_form->fdui = fdui;
@@ -164,7 +164,7 @@ void InsetCitation::Edit(int, int)
 	if (citation_form->citation_form->visible) {
 		fl_raise_form(citation_form->citation_form);
 	} else {
-		fl_show_form(citation_form->citation_form,FL_PLACE_MOUSE, FL_FULLBORDER,
+		fl_show_form(citation_form->citation_form, FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Citation"));
 	}   
 }
@@ -177,7 +177,7 @@ string InsetCitation::getScreenLabel() const
 	temp += contents;
 
 	if (!options.empty()) {
-		temp += "," + options;
+		temp += ", " + options;
 	}
 
 	return temp + ']';
@@ -228,7 +228,7 @@ void InsetBibKey::Write(FILE *file)
 	}
 	s += '{';
 	s += contents + '}';
-	fprintf(file,"\\bibitem %s\n", s.c_str());
+	fprintf(file, "\\bibitem %s\n", s.c_str());
 }
 
 
@@ -259,15 +259,15 @@ void InsetBibKey::Edit(int, int)
 	bibitem_form->bibitem_form->u_vdata = this;
 	// InsetBibtex uses the same form, with different labels
 	fl_set_object_label(bibitem_form->key, idex(_("Key:|#K")));
-	fl_set_button_shortcut(bibitem_form->key,scex(_("Key:|#K")),1);
+	fl_set_button_shortcut(bibitem_form->key, scex(_("Key:|#K")), 1);
 	fl_set_object_label(bibitem_form->label, idex(_("Label:|#L")));
-	fl_set_button_shortcut(bibitem_form->label,scex(_("Label:|#L")),1);
+	fl_set_button_shortcut(bibitem_form->label, scex(_("Label:|#L")), 1);
 	fl_set_input(bibitem_form->key, getContents().c_str());
 	fl_set_input(bibitem_form->label, getOptions().c_str());
 	if (bibitem_form->bibitem_form->visible) {
 		fl_raise_form(bibitem_form->bibitem_form);
 	} else {
-		fl_show_form(bibitem_form->bibitem_form,FL_PLACE_MOUSE,
+		fl_show_form(bibitem_form->bibitem_form, FL_PLACE_MOUSE,
 			     FL_FULLBORDER,
 			     _("Bibliography item"));
 	}   
@@ -317,14 +317,14 @@ int InsetBibtex::Latex(string &file, signed char /*fragile*/)
 	// have a comma-separated list of bibliographies
 	string db_in, adb, db_out;
 	db_in = getContents();
-	db_in=split(db_in, adb, ',');
+	db_in= split(db_in, adb, ',');
 	while(!adb.empty()) {
 		if (!owner->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb,owner->filepath)+".bib")) 
-			adb = MakeAbsPath(adb,owner->filepath);
+		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
+			adb = MakeAbsPath(adb, owner->filepath);
 		db_out += adb;
 		db_out += ',';
-		db_in=split(db_in, adb,',');
+		db_in= split(db_in, adb,',');
 	}
 	db_out = strip(db_out, ',');
 	// Idem, but simpler
@@ -360,12 +360,12 @@ string InsetBibtex::getKeys()
 	// BIBINPUTS
 	string bibfiles, linebuf, tmp, keys;
 	bibfiles = getContents();
-	bibfiles=split(bibfiles, tmp, ',');
+	bibfiles= split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
-		if (IsFileReadable(MakeAbsPath(tmp,owner->filepath)+".bib"))
-			tmp = MakeAbsPath(tmp,owner->filepath)+".bib";
+		if (IsFileReadable(MakeAbsPath(tmp, owner->filepath)+".bib"))
+			tmp = MakeAbsPath(tmp, owner->filepath)+".bib";
 		else {
-			tmp = FileOpenSearch(GetEnvPath("BIBINPUTS"),tmp,"bib");
+			tmp = FileOpenSearch(GetEnvPath("BIBINPUTS"), tmp, "bib");
 			if (tmp.empty())
 				tmp = FileOpenSearch(GetEnvPath("BIBINPUT"),
 						     tmp, "bib");
@@ -377,7 +377,7 @@ string InsetBibtex::getKeys()
 			// All it does is to look for lines starting in @ and not
  			// being @preamble and @string entries.
 			// It does NOT do any syntax checking!
-			FilePtr file(tmp,FilePtr::read);
+			FilePtr file(tmp, FilePtr::read);
  			char c;
 
 			// On some systems where feof() is a macro,
@@ -396,7 +396,7 @@ string InsetBibtex::getKeys()
 	    					if (!prefixIs(tmp, "@string") && !prefixIs(tmp, "@preamble") ) {
 							linebuf = split(linebuf, tmp,',');
 							if (!tmp.empty())
-								keys += strip(tmp) + ",";
+								keys += strip(tmp) + ", ";
 						}
 					}
 					linebuf.clear();
@@ -406,7 +406,7 @@ string InsetBibtex::getKeys()
 			}
 		}
 		// Get next file name
-    		bibfiles=split(bibfiles, tmp, ',');
+    		bibfiles= split(bibfiles, tmp, ',');
 	}
   	return keys;
 }
@@ -454,10 +454,10 @@ bool InsetBibtex::delDatabase(string const & db)
 		int n = tokenPos(contents, ',', bd);
 		if (n > 0) {
 			// Weird code, would someone care to explain this?(Lgb)
-			string tmp(",");
+			string tmp(", ");
 			tmp += bd;
-			contents = subst(contents, tmp.c_str(), ",");
-		} else if (n==0)
+			contents = subst(contents, tmp.c_str(), ", ");
+		} else if (n == 0)
 			contents = split(contents, bd, ',');
 		else 
 			return false;

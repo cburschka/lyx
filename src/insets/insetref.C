@@ -78,7 +78,7 @@ int InsetRef::Latex(FILE * file, signed char /*fragile*/)
 		fprintf(file, "%s", escape(getCommand()).c_str());
 	else {
 		string ns;
-		InsetCommand clone= InsetCommand(getCmdName(),getContents(),ns);
+		InsetCommand clone= InsetCommand(getCmdName(), getContents(), ns);
 		fprintf(file, "%s", escape(clone.getCommand()).c_str());
 	}
 	return 0;
@@ -91,7 +91,7 @@ int InsetRef::Latex(string & file, signed char /*fragile*/)
 		file += escape(getCommand());
 	else {
 		string ns;
-		InsetCommand clone= InsetCommand(getCmdName(),getContents(),ns);
+		InsetCommand clone= InsetCommand(getCmdName(), getContents(), ns);
 		file += escape(clone.getCommand());
 	}
 	return 0;
@@ -123,8 +123,8 @@ string InsetRef::escape(string const & lab) const {
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	string enc;
 	for (string::size_type i = 0; i < lab.length(); ++i) {
-		unsigned char c=lab[i];
-		if (c >= 128 || c=='=' || c=='%') {
+		unsigned char c= lab[i];
+		if (c >= 128 || c == '=' || c == '%') {
 			enc += '=';
 			enc += hexdigit[c>>4];
 			enc += hexdigit[c & 15];

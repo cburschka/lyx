@@ -117,7 +117,7 @@ void InsetUrl::Edit(int, int)
 	if (!fd_form_url) {
 		fd_form_url = create_form_form_url();
 		fd_form_url->button_close->u_vdata = this;
-		fl_set_form_atclose(fd_form_url->form_url,CancelCloseBoxCB, 0);
+		fl_set_form_atclose(fd_form_url->form_url, CancelCloseBoxCB, 0);
 	}
 	fl_set_input(fd_form_url->url_name, getContents().c_str());
 	fl_set_input(fd_form_url->name_name, getOptions().c_str());

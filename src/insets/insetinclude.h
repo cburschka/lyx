@@ -6,7 +6,7 @@
  * 	 
  *	    Copyright (C) 1997 LyX Team (this file was created this year)
  * 
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
@@ -93,7 +93,7 @@ public:
 	 */ 
 	bool isVerb() const;
 	///
-	bool isVerbVisibleSpace() const { return flag==InsetInclude::VERBAST;}
+	bool isVerbVisibleSpace() const { return flag == InsetInclude::VERBAST;}
         ///  
 	bool isInclude() const { return flag == InsetInclude::INCLUDE;}
         ///  
@@ -112,7 +112,7 @@ private:
         ///
         enum Include_Flags {
 		///
-		INCLUDE=0,
+		INCLUDE= 0,
 		///
 		VERB = 1,
 		///
@@ -135,7 +135,7 @@ private:
 inline 
 bool InsetInclude::isVerb() const
 {
-    return (bool)(flag==InsetInclude::VERB || flag==InsetInclude::VERBAST); 
+    return (bool)(flag == InsetInclude::VERB || flag == InsetInclude::VERBAST); 
 }
 
 
@@ -179,10 +179,10 @@ void InsetInclude::setVerb()
 inline
 void InsetInclude::setVisibleSpace(bool b)
 {
-        if (b && flag==InsetInclude::VERB) {
+        if (b && flag == InsetInclude::VERB) {
 	    setCmdName("verbatiminput*");
 	    flag = InsetInclude::VERBAST;
-	} else if (!b && flag==InsetInclude::VERBAST) {
+	} else if (!b && flag == InsetInclude::VERBAST) {
 	    setCmdName("verbatiminput");
 	    flag = InsetInclude::VERB;
 	}

@@ -27,8 +27,6 @@ insets_o_SOURCES = \
 	insetinfo.h \
 	insetlabel.C \
 	insetlabel.h \
-	insetlatex.C \
-	insetlatex.h \
 	insetlatexaccent.C \
 	insetlatexaccent.h \
 	insetloa.C \

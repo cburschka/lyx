@@ -7,7 +7,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_QUOTES_H
 #define INSET_QUOTES_H

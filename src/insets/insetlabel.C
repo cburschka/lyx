@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -82,7 +82,7 @@ string InsetLabel::escape(string const & lab) const {
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	string enc;
-	for (string::size_type i=0; i < lab.length(); ++i) {
+	for (string::size_type i= 0; i < lab.length(); ++i) {
 		unsigned char c = lab[i];
 		if (c >= 128 || c == '=' || c == '%') {
 			enc += '=';

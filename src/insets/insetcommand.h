@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of*
- * ======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1996-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_LATEXCOMMAND_H
 #define INSET_LATEXCOMMAND_H

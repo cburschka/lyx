@@ -35,47 +35,47 @@ FD_include * create_form_include(void)
   FD_include * fdui = (FD_include *) fl_calloc(1, sizeof(FD_include));
 
   fdui->include = fl_bgn_form(FL_NO_BOX, 340, 210);
-  obj = fl_add_box(FL_UP_BOX,0,0,340,210,"");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME,10,70,160,90,"");
-  fdui->browsebt = obj = fl_add_button(FL_NORMAL_BUTTON,230,30,100,30,idex(_("Browse|#B")));
-    fl_set_button_shortcut(obj,scex(_("Browse|#B")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,0);
-  fdui->flag1 = obj = fl_add_checkbutton(FL_PUSH_BUTTON,180,70,150,30,idex(_("Don't typeset|#D")));
-    fl_set_button_shortcut(obj,scex(_("Don't typeset|#D")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-  obj = fl_add_button(FL_RETURN_BUTTON,120,170,100,30,_("OK"));
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,1);
-  obj = fl_add_button(FL_NORMAL_BUTTON,230,170,100,30,idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj,scex(_("Cancel|^[")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,2);
-  obj = fl_add_button(FL_NORMAL_BUTTON,230,130,100,30,idex(_("Load|#L")));
-    fl_set_button_shortcut(obj,scex(_("Load|#L")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,5);
-  fdui->input = obj = fl_add_input(FL_NORMAL_INPUT,10,30,210,30,idex(_("File name:|#F")));
-    fl_set_input_shortcut(obj,scex(_("File name:|#F")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj,FL_ALIGN_TOP_LEFT);
-  fdui->flag41 = obj = fl_add_checkbutton(FL_PUSH_BUTTON,180,100,150,30,idex(_("Visible space|#s")));
-    fl_set_button_shortcut(obj,scex(_("Visible space|#s")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 210, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 70, 160, 90, "");
+  fdui->browsebt = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 30, 100, 30, idex(_("Browse|#B")));
+    fl_set_button_shortcut(obj, scex(_("Browse|#B")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 0);
+  fdui->flag1 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 70, 150, 30, idex(_("Don't typeset|#D")));
+    fl_set_button_shortcut(obj, scex(_("Don't typeset|#D")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  obj = fl_add_button(FL_RETURN_BUTTON, 120, 170, 100, 30, _("OK"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 1);
+  obj = fl_add_button(FL_NORMAL_BUTTON, 230, 170, 100, 30, idex(_("Cancel|^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 2);
+  obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 100, 30, idex(_("Load|#L")));
+    fl_set_button_shortcut(obj, scex(_("Load|#L")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 5);
+  fdui->input = obj = fl_add_input(FL_NORMAL_INPUT, 10, 30, 210, 30, idex(_("File name:|#F")));
+    fl_set_input_shortcut(obj, scex(_("File name:|#F")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
+  fdui->flag41 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 100, 150, 30, idex(_("Visible space|#s")));
+    fl_set_button_shortcut(obj, scex(_("Visible space|#s")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 
   fdui->include_grp = fl_bgn_group();
-  fdui->flag4 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,130,160,30,idex(_("Verbatim|#V")));
-    fl_set_button_shortcut(obj,scex(_("Verbatim|#V")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,10);
-  fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,100,160,30,idex(_("Use input|#i")));
-    fl_set_button_shortcut(obj,scex(_("Use input|#i")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,11);
-  fdui->flag3 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,70,160,30,idex(_("Use include|#U")));
-    fl_set_button_shortcut(obj,scex(_("Use include|#U")),1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_callback(obj,include_cb,11);
+  fdui->flag4 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_("Verbatim|#V")));
+    fl_set_button_shortcut(obj, scex(_("Verbatim|#V")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 10);
+  fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_("Use input|#i")));
+    fl_set_button_shortcut(obj, scex(_("Use input|#i")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 11);
+  fdui->flag3 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_("Use include|#U")));
+    fl_set_button_shortcut(obj, scex(_("Use include|#U")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, include_cb, 11);
   fl_end_group();
 
   fl_end_form();
@@ -252,7 +252,7 @@ void InsetInclude::Edit(int, int)
         if (form->include->visible) {
 		fl_raise_form(form->include);
 	} else {
-		fl_show_form(form->include,FL_PLACE_MOUSE, FL_FULLBORDER,
+		fl_show_form(form->include, FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Include"));
 	}
 }
@@ -268,7 +268,7 @@ void InsetInclude::Read(LyXLex & lex)
 {
 	InsetCommand::Read(lex);
     
-	if (getCmdName()=="include")
+	if (getCmdName() == "include")
 		setInclude();
 	else if (getCmdName() == "input")
 		setInput();
@@ -292,9 +292,9 @@ string InsetInclude::getScreenLabel() const
 	temp += ": ";
 	
 	if (contents.empty()) {
-		temp+="???";
+		temp+= "???";
 	} else {
-		temp+=contents;
+		temp+= contents;
 	}
 	return temp;
 }
@@ -360,7 +360,7 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/)
 			writefile = AddName(master->tmppath, incfile);
 		} else
 			writefile = getFileName();
-		writefile = ChangeExtension(writefile,".tex",false);
+		writefile = ChangeExtension(writefile, ".tex", false);
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
@@ -385,7 +385,7 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/)
 		} else {
 			file += '\\';
 			file += command + '{';
-			file +=	ChangeExtension(incfile, ".tex", false)
+			file += ChangeExtension(incfile, ".tex", false)
 				+ '}';
 		}
 	} else {
@@ -393,7 +393,7 @@ int InsetInclude::Latex(string & file, signed char /*fragile*/)
 		// file really have .tex
 		file += '\\';
 		file += command + '{';
-		file +=	ChangeExtension(incfile, string(), false)
+		file += 	ChangeExtension(incfile, string(), false)
 			+ '}';
 	}
 

@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of*
- * ======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  * 	 
  *           Copyright (C) 1997-1999 LyX Team
  * 
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_PARENT_H
 #define INSET_PARENT_H
@@ -29,7 +29,7 @@ public:
 	/// Non-standard LyX macro
 	InsetParent(): InsetCommand("lyxparent") { }
 	///
-        InsetParent(string fn, Buffer * owner=0);
+        InsetParent(string fn, Buffer * owner= 0);
 	///
         ~InsetParent() {}
 	/// 

@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -186,12 +186,12 @@ void InsetInfo::Edit(int, int)
 	
 	if (!form) {
 		FL_OBJECT *obj;
-		form = fl_bgn_form(FL_UP_BOX,400,180);
-		strobj = obj = fl_add_input(FL_MULTILINE_INPUT,10,10,380,120,"");
-		fl_set_object_color(obj,FL_MCOL,FL_MCOL);
+		form = fl_bgn_form(FL_UP_BOX, 400, 180);
+		strobj = obj = fl_add_input(FL_MULTILINE_INPUT, 10, 10, 380, 120, "");
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
-		obj = fl_add_button(FL_NORMAL_BUTTON,130,140,120,30,idex(_("Close|#C^[")));
+		obj = fl_add_button(FL_NORMAL_BUTTON, 130, 140, 120, 30, idex(_("Close|#C^[")));
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
 		fl_set_object_callback(obj, C_InsetInfo_CloseInfoCB, 0);
@@ -204,7 +204,7 @@ void InsetInfo::Edit(int, int)
 	if (form->visible) {
 		fl_raise_form(form);
 	} else {
-		fl_show_form(form,FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER, 
+		fl_show_form(form, FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER, 
 			     _("Note"));
 		if (ow < 0) {
 			ow = form->w;

@@ -6,7 +6,7 @@
  * 	 
  *	    Copyright (C) 1997 LyX Team (this file was created this year)
  * 
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_REF_H
 #define INSET_REF_H

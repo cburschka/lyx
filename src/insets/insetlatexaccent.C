@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -80,7 +80,7 @@ void InsetLatexAccent::checkContents()
 			tmp += contents[2];
 			tmp += '}';
 			contents = tmp;
-		} else if (contents.length()==4 && contents[2] == ' ') {
+		} else if (contents.length() == 4 && contents[2] == ' ') {
 			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
@@ -88,8 +88,8 @@ void InsetLatexAccent::checkContents()
 			tmp += contents[3];
 			tmp += '}';
 			contents = tmp;
-		} else if  (contents.length()==4 && contents[2] == '\\'
-			    && (contents[3]== 'i' || contents[3]== 'j')) {
+		} else if  (contents.length() == 4 && contents[2] == '\\'
+			    && (contents[3] == 'i' || contents[3] == 'j')) {
 			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
@@ -246,8 +246,8 @@ void InsetLatexAccent::checkContents()
 		    temp += '\\';
 		    temp += char(ic);
 		    for(string::size_type j = 4; j < contents.length(); ++j)
-				temp+=contents[j];
-		    contents=temp;
+				temp+= contents[j];
+		    contents= temp;
 		    i++;
 			remdot = true;
 		}    
@@ -287,7 +287,7 @@ int InsetLatexAccent::Descent(LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
-		if (ic==' ') 
+		if (ic == ' ') 
 			max = font.descent('a');
                 else 
                 	max = font.descent(ic);
@@ -357,7 +357,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 			    int baseline, 
 			    float & x)
 {
-	if (lyxrc->font_norm=="iso8859-9")
+	if (lyxrc->font_norm == "iso8859-9")
 		if (DisplayISO8859_9 (font, scr, baseline, x))	
 			return;
 	
@@ -402,7 +402,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 					  font.ascent('x')-1);
 			
 		}
-		// now the rest - draw within (x,y, x+wid, y+hg)
+		// now the rest - draw within (x, y, x+wid, y+hg)
 		switch (modtype) {
 		case ACUTE:     // acute
  		{
@@ -412,7 +412,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 		}
 		case GRAVE:     // grave
 		{
-			scr.drawLine(pgc,int(x2), int(y+hg35),
+			scr.drawLine(pgc, int(x2), int(y+hg35),
 				     int(x2-hg35), y); 
 			break;
 		}
@@ -455,7 +455,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 		case UNDERDOT:     // underdot
 		case DOT:    // dot
 		{
-			scr.drawArc(pgc,int(x2), y+(hg/2),
+			scr.drawArc(pgc, int(x2), y+(hg/2),
 				    1, 1, 0, 360*64); 
 			break;
 		}

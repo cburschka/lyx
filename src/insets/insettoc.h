@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1996-1999 The LyX Team.
  * 
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_TOC_H
 #define INSET_TOC_H
@@ -28,7 +28,7 @@ public:
 	///
 	InsetTOC(): InsetCommand("tableofcontents") {}
 	///
-	InsetTOC(Buffer * b): InsetCommand("tableofcontents"),owner(b) {}
+	InsetTOC(Buffer * b): InsetCommand("tableofcontents"), owner(b) {}
         ///
         Inset * Clone() { return new InsetTOC(owner); }
     	///

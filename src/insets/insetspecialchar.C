@@ -5,7 +5,7 @@
  * 	 
  *	    Copyright 1997 Asger Alstrup
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -136,13 +136,13 @@ void InsetSpecialChar::Read(LyXLex & lex)
 	lex.nextToken();
 	string command = lex.GetString();
 
-	if (command=="\\-")
+	if (command == "\\-")
 		kind = HYPHENATION;
-	else if (command=="\\@.")
+	else if (command == "\\@.")
 		kind = END_OF_SENTENCE;
-	else if (command=="\\ldots{}")
+	else if (command == "\\ldots{}")
 		kind = LDOTS;
-	else if (command=="\\menuseparator")
+	else if (command == "\\menuseparator")
 	        kind = MENU_SEPARATOR;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");

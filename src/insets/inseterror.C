@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -14,7 +14,6 @@
 #pragma implementation
 #endif
 
-#include "definitions.h"
 #include "inseterror.h"
 #include "lyxdraw.h"
 #include "gettext.h"
@@ -79,7 +78,7 @@ void InsetError::Draw(LyXFont font, LyXScreen & scr,
 	x += 1;
 	scr.fillRectangle(gc_lighted,
 			  int(x), baseline - Ascent(font)+1,
-			  Width(font)-2,Ascent(font)+ Descent(font)-2);
+			  Width(font)-2, Ascent(font)+ Descent(font)-2);
 	scr.drawRectangle(gc_foot,
 			  int(x), baseline-Ascent(font)+1,
 			  Width(font)-2, Ascent(font)+Descent(font)-2); 
@@ -159,10 +158,11 @@ void InsetError::Edit(int, int)
 	if (!form) {
 		FL_OBJECT * obj;
 		form = fl_bgn_form(FL_UP_BOX, ow, oh);
-		strobj = fl_add_box(FL_FRAME_BOX,10,10,380,180,"");
-		fl_set_object_color(strobj,FL_MCOL,FL_MCOL);
+		strobj = fl_add_box(FL_FRAME_BOX, 10, 10, 380, 180, "");
+		fl_set_object_color(strobj, FL_MCOL, FL_MCOL);
 		fl_set_object_gravity(strobj, FL_NorthWest, FL_SouthEast);
-		obj = fl_add_button(FL_RETURN_BUTTON,140,200,120,30,_("Close"));
+		obj = fl_add_button(FL_RETURN_BUTTON, 140, 200, 120, 30,
+				    _("Close"));
 		fl_set_object_callback(obj, C_InsetError_CloseErrorCB, 0);
 		obj->u_vdata = this;
 		fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
@@ -174,14 +174,14 @@ void InsetError::Edit(int, int)
 	if (form->visible) {
 		fl_raise_form(form);
 	} else {
-		fl_show_form(form,FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER, 
-			     _("LaTeX Error"));
+		fl_show_form(form, FL_PLACE_MOUSE | FL_FREE_SIZE,
+			     FL_FULLBORDER, _("LaTeX Error"));
 		fl_set_form_minsize(form, ow, oh);
 	}
 }
 
 
-Inset* InsetError::Clone()
+Inset * InsetError::Clone()
 {
 	InsetError * result = new InsetError(contents);
 	return result;

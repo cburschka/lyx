@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -113,21 +113,21 @@ void InsetCommand::scanCommand(string const & cmd)
 
 	for (string::size_type i = 0; i < cmd.length(); ++i) {
 		char c = cmd[i];
-		if ((state==Command && c == ' ') ||
-		    (state==Command && c == '[') ||
-		    (state==Command && c == '{')) {
+		if ((state == Command && c == ' ') ||
+		    (state == Command && c == '[') ||
+		    (state == Command && c == '{')) {
 			state = WS;
 		}
-		if ((state==Option  && c == ']') ||
-		    (state==Content && c == '}')) {
-			if (nestdepth==0) {
+		if ((state == Option  && c == ']') ||
+		    (state == Content && c == '}')) {
+			if (nestdepth == 0) {
 				state = WS;
 			} else {
 				nestdepth--;
 			}
 		}
-		if ((state==Option  && c == '[') ||
-		    (state==Content && c == '{')) {
+		if ((state == Option  && c == '[') ||
+		    (state == Content && c == '{')) {
 		    	nestdepth++;
 		}
 		switch (state) {

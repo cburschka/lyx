@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -14,7 +14,6 @@
 #pragma implementation
 #endif
 
-#include "definitions.h"
 #include "insetlatex.h"
 #include "lyxdraw.h"
 
@@ -67,7 +66,7 @@ void InsetLatex::Draw(LyXFont font, LyXScreen & scr,
 	scr.fillRectangle(gc_lighted, int(x), baseline - Ascent(font) +1 ,
 			  Width(font) - 2, Ascent(font) + Descent(font) -2);
 	
-	scr.drawRectangle(gc_foot,int(x), baseline - Ascent(font) + 1,
+	scr.drawRectangle(gc_foot, int(x), baseline - Ascent(font) + 1,
 			  Width(font)-2, Ascent(font)+Descent(font)-2);
 	
 	scr.drawString(font, contents, baseline, int(x+2));

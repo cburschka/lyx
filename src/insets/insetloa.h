@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1996-1999 the LyX Team.
  * 
- *======================================================*/
+ * ====================================================== */
 
 #ifndef INSET_LOA_H
 #define INSET_LOA_H
@@ -28,7 +28,7 @@ public:
 	///
 	InsetLOA(): InsetCommand("listofalgorithms") {}
 	///
-	InsetLOA(Buffer * b): InsetCommand("listofalgorithms"),owner(b) {}
+	InsetLOA(Buffer * b): InsetCommand("listofalgorithms"), owner(b) {}
         ///
 	void Validate(LaTeXFeatures & features) const;
         ///

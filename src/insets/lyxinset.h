@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 the LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef LYXINSET_H
 #define LYXINSET_H
@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include "definitions.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
@@ -28,11 +27,11 @@ struct LaTeXFeatures;
 /// Insets
 class Inset {
 public:
-	/** This is not quite the correct place for this enum, but it is
-	  better than definitions.h. I think the correct would be to let
-	  each subclass of Inset declare its own enum code. Actually the
-	  notion of an Inset::Code should be avoided, but I am not sure how
-	  this could be done in a cleaner way. */
+	/** This is not quite the correct place for this enum. I think
+	    the correct would be to let each subclass of Inset declare
+	    its own enum code. Actually the notion of an Inset::Code
+	    should be avoided, but I am not sure how this could be done
+	    in a cleaner way. */
 	enum Code {
 		///
 		NO_CODE,
@@ -91,8 +90,6 @@ public:
 	///
 	virtual void Draw(LyXFont font, LyXScreen & scr,
 			  int baseline, float & x) = 0;
-	///
-	//virtual void setBuffer(Buffer const&) {;}
 	/// what appears in the minibuffer when opening
 	virtual char const * EditMessage() {return _("Opened inset");}
 	///
@@ -102,9 +99,9 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(FILE * file)=0;
+	virtual void Write(FILE * file)= 0;
 	///
-	virtual void Read(LyXLex & lex)=0;
+	virtual void Read(LyXLex & lex)= 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
@@ -112,9 +109,9 @@ public:
 	virtual int Latex(FILE * file, signed char fragile) = 0;
 	virtual int Latex(string & file, signed char fragile) = 0;
 	///
-	virtual int Linuxdoc(string &/*file*/) = 0;
+	virtual int Linuxdoc(string & /*file*/) = 0;
 	///
-	virtual int DocBook(string &/*file*/) = 0;
+	virtual int DocBook(string & /*file*/) = 0;
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///
