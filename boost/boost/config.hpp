@@ -313,7 +313,7 @@
 #      define BOOST_NO_AUTO_PTR
 #   endif
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
-#     include <string>  // not sure this is the right way to do this -JGS
+#     include "LString.h"  // not sure this is the right way to do this -JGS
 #     if defined(__BASTRING__) && !defined(__GLIBCPP__) && !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
         // this should only detect the stdlibc++ that ships with gcc, and
         // not any replacements that may be installed...
