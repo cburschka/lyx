@@ -11,31 +11,32 @@
 #include <config.h>
 
 #include "paragraph_funcs.h"
-#include "paragraph_pimpl.h"
+
 #include "buffer.h"
 #include "debug.h"
+#include "encoding.h"
 #include "errorlist.h"
+#include "factory.h"
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
-#include "encoding.h"
 #include "lyxlex.h"
-#include "factory.h"
-#include "support/std_sstream.h"
+#include "lyxrc.h"
+#include "paragraph_pimpl.h"
 
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-
-#include "insets/insetoptarg.h"
 #include "insets/insetbibitem.h"
+#include "insets/insethfill.h"
+#include "insets/insetlatexaccent.h"
+#include "insets/insetnewline.h"
+#include "insets/insetoptarg.h"
 #include "insets/insetspace.h"
 #include "insets/insetspecialchar.h"
-#include "insets/insetlatexaccent.h"
 #include "insets/insettabular.h"
-#include "insets/insethfill.h"
-#include "insets/insetnewline.h"
 
-extern string bibitemWidest(Buffer const &);
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 
@@ -44,6 +45,8 @@ using lyx::pos_type;
 using std::endl;
 using std::istringstream;
 using std::ostream;
+
+extern string bibitemWidest(Buffer const &);
 
 
 namespace {

@@ -15,16 +15,19 @@
 #include <config.h>
 
 #include "LaTeXFeatures.h"
-#include "debug.h"
-#include "lyx_sty.h"
+
 #include "bufferparams.h"
+#include "debug.h"
+#include "encoding.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "language.h"
-#include "encoding.h"
-#include "support/std_sstream.h"
+#include "lyx_sty.h"
+#include "lyxrc.h"
 
 #include "support/filetools.h"
+
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

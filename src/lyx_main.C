@@ -31,6 +31,7 @@
 #include "lastfiles.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "lyxserver.h"
 #include "MenuBackend.h"

@@ -1,3 +1,8 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* converter.h: forward declare LatexRunParams.
+	* encoding.h: remove #include "lyxrc.h"
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* Bullet.[Ch]: factorize all those #ifdef ENABLE_ASSERTIONS to just one,

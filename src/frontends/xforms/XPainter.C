@@ -21,6 +21,7 @@
 #include "encoding.h"
 #include "language.h"
 #include "lyxfont.h"
+#include "lyxrc.h"
 
 #include "support/lstrings.h"
 

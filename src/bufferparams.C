@@ -16,13 +16,16 @@
 #include <config.h>
 
 #include "bufferparams.h"
+
+#include "Bullet.h"
 #include "debug.h"
 #include "encoding.h"
 #include "gettext.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
-#include "support/std_sstream.h"
+#include "latexrunparams.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
 #include "texrow.h"
@@ -31,13 +34,15 @@
 
 #include "support/lyxalgo.h" // for lyx::count
 
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
+
+using std::endl;
 
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
-using std::endl;
 using std::pair;
 
 

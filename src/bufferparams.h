@@ -15,18 +15,19 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "support/std_string.h"
-#include "vspace.h"
-#include "Spacing.h"
+#include "author.h"
+#include "BranchList.h"
 #include "Bullet.h"
 #include "lyxtextclass.h"
-#include "author.h"
 #include "paper.h"
-#include "BranchList.h"
+#include "Spacing.h"
+#include "vspace.h"
 
 #include "insets/insetquotes.h"
 
 #include <boost/array.hpp>
+
+#include "support/std_string.h"
 #include <vector>
 
 class LyXLex;

@@ -16,6 +16,7 @@
 
 #include "encoding.h"
 #include "language.h"
+#include "lyxrc.h"
 
 #include "frontends/lyx_gui.h"
 

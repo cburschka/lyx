@@ -17,29 +17,32 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "gettext.h"
+
 #include "buffer.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "encoding.h"
 #include "funcrequest.h"
-#include "frontends/LyXView.h"
-#include "frontends/font_metrics.h"
-#include "BufferView.h"
+#include "gettext.h"
 #include "language.h"
-#include "ParagraphParameters.h"
-#include "undo_funcs.h"
-#include "text_funcs.h"
-#include "WordLangTuple.h"
-#include "paragraph_funcs.h"
-#include "rowpainter.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
+#include "paragraph_funcs.h"
+#include "ParagraphParameters.h"
+#include "rowpainter.h"
+#include "text_funcs.h"
+#include "undo_funcs.h"
+#include "WordLangTuple.h"
+
+#include "frontends/font_metrics.h"
+#include "frontends/LyXView.h"
 
 #include "insets/insettext.h"
 
-#include "support/textutils.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 
 using namespace lyx::support;

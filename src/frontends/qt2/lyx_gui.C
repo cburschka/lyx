@@ -22,6 +22,7 @@
 // FIXME: move this stuff out again
 #include "bufferlist.h"
 #include "lyxfunc.h"
+#include "lyxrc.h"
 #include "lyxserver.h"
 #include "BufferView.h"
 

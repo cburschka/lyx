@@ -15,8 +15,9 @@
 
 #include "buffer.h"
 #include "converter.h"
-#include "format.h"
 #include "debug.h"
+#include "format.h"
+#include "latexrunparams.h"
 #include "lyxrc.h"
 
 #include "frontends/lyx_gui.h" // hexname
@@ -46,9 +47,9 @@ using std::make_pair;
 using std::setfill;
 using std::setw;
 
+using std::ifstream;
 using std::list;
 using std::map;
-using std::ifstream;
 using std::ofstream;
 using std::ostream;
 using std::ostringstream;

@@ -13,8 +13,10 @@
 #include <config.h>
 
 #include "encoding.h"
-#include "lyxlex.h"
+
 #include "debug.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strtol;

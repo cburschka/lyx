@@ -21,6 +21,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "support/std_sstream.h"

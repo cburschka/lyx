@@ -12,15 +12,15 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
-#include "latexrunparams.h"
 #include "graph.h"
 
 #include <vector>
 
+class Buffer;
 class Format;
 class Formats;
+class LatexRunParams;
 
-class Buffer;
 
 ///
 class Converter {

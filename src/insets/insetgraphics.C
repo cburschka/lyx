@@ -63,7 +63,7 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "support/std_sstream.h"
+#include "latexrunparams.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 
@@ -79,6 +79,8 @@ TODO
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
+
+#include "support/std_sstream.h"
 
 namespace support = lyx::support;
 using namespace lyx::support;

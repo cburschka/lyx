@@ -38,6 +38,7 @@
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxserver.h"
 #include "paragraph.h"

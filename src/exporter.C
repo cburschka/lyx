@@ -17,15 +17,18 @@
 #include <config.h>
 
 #include "exporter.h"
+
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "support/filetools.h"
-#include "lyxrc.h"
 #include "converter.h"
 #include "format.h"
-#include "frontends/Alert.h"
 #include "gettext.h"
+#include "latexrunparams.h"
+#include "lyxrc.h"
 
+#include "frontends/Alert.h"
+
+#include "support/filetools.h"
 
 using namespace lyx::support;
 

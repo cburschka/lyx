@@ -15,6 +15,7 @@
 #include "qfont_loader.h"
 #include "qt_helpers.h"
 #include "debug.h"
+#include "lyxrc.h"
 
 #include "support/lstrings.h"
 #include "frontends/lyx_gui.h"

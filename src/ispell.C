@@ -12,13 +12,15 @@
 
 #include <config.h>
 
-#include "language.h"
+#include "ispell.h"
+
+#include "bufferparams.h"
 #include "debug.h"
 #include "encoding.h"
-#include "ispell.h"
-#include "WordLangTuple.h"
 #include "gettext.h"
-#include "bufferparams.h"
+#include "language.h"
+#include "lyxrc.h"
+#include "WordLangTuple.h"
 
 #include "support/forkedcall.h"
 

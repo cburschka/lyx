@@ -14,8 +14,6 @@
 #define ENCODING_H
 
 #include "support/std_string.h"
-#include "lyxrc.h"
-
 #include <map>
 
 ///
