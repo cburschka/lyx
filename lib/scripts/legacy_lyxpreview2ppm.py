@@ -241,7 +241,7 @@ def crop_files(pnmcrop, basename):
         new = t.open(file, "r")
         copyfileobj(new, tmp)
         if not new.close():
-            copyfileobj(tmp, open(file,"wb"))
+            copyfileobj(tmp, open(file,"wb"), 1)
 
 
 def legacy_conversion(argv):
