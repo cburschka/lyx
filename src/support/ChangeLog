@@ -1,3 +1,7 @@
+2001-10-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* filetools.C (findtexfile): apply os::internal_path to the result.
+
 2001-07-02  Claus Hentschel  <claus.hentschel@mbau.fh-hannover.de>
 
 	* os_win32.C: 

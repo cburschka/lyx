@@ -18,8 +18,9 @@
 #endif
 #include <fstream>
 
-#include "support/filetools.h"
 #include "LaTeX.h"
+#include "support/filetools.h"
+#include "support/os.h"
 #include "support/FileInfo.h"
 #include "debug.h"
 #include "support/lyxlib.h"
@@ -649,6 +650,11 @@ void LaTeX::deplog(DepTable & head)
 	LRegex reg2("File: ([^ ]+).*");
 	LRegex reg3("No file ([^ ]+)\\..*");
 	LRegex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
+	// If an index should be created, MikTex does not write a line like
+	//    \openout# = 'sample,idx'.
+	// but intstead only a line like this into the log:
+	//   Writing index file sample.idx
+	LRegex reg5("Writing index file ([^ ]+).*");
 	LRegex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 	
 	ifstream ifs(logfile.c_str());
@@ -680,10 +686,17 @@ void LaTeX::deplog(DepTable & head)
 			LRegex::SubMatches const & sub = reg4.exec(token);
 			foundfile = LSubstring(token, sub[1].first,
 					       sub[1].second);
+		} else if (reg5.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg5.exec(token);
+			foundfile = LSubstring(token, sub[1].first,
+					       sub[1].second);
 		} else {
 			continue;
 		}
 
+		// convert from native os path to unix path
+		foundfile = os::internal_path(foundfile);
+		
 		lyxerr[Debug::DEPEND] << "Found file: " 
 				      << foundfile << endl;
 		
