@@ -1016,6 +1016,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				parse2(cell->back(), FLAG_END, MathInset::MATH_MODE, !stared(name));
 			}
 
+			else if (name == "flalign" || name == "flalign*") {
+				cell->push_back(MathAtom(new MathHullInset("flalign")));
+				parse2(cell->back(), FLAG_END, MathInset::MATH_MODE, !stared(name));
+			}
+
 			else if (name == "alignat" || name == "alignat*") {
 				// ignore this for a while
 				getArg('{', '}');

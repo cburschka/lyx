@@ -156,8 +156,9 @@ Menuset
 	Item "Eqnarray environment|q" "math-mutate eqnarray"
 	Item "Align environment|A" "math-mutate align"
 	Item "AlignAt environment" "math-mutate alignat"
-	Item "XAlignAt environment" "math-mutate xalignat"
-	Item "XXAlignAt environment" "math-mutate xxalignat"
+	Item "Flalign environment|f" "math-mutate flalign"
+	#Item "XAlignAt environment" "math-mutate xalignat"
+	#Item "XXAlignAt environment" "math-mutate xxalignat"
 	Item "Gather environment" "math-mutate gather"
 	Item "Multline environment" "math-mutate multline"
     End
@@ -211,8 +212,9 @@ Menuset
 	Item "Eqnarray environment|E" "command-sequence math-mode; math-mutate eqnarray;"
 	Item "AMS align environment|A" "command-sequence math-mode; math-mutate align;"
 	Item "AMS alignat environment|t" "command-sequence math-mode; math-mutate alignat;"
-	Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
-	Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
+	Item "AMS flalign environment|f" "command-sequence math-mode; math-mutate flalign;"
+	#Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
+	#Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
 	Item "AMS gather environment" "command-sequence math-mode; math-mutate gather;"
 	Item "AMS multline environment" "command-sequence math-mode; math-mutate multline;"
   Separator

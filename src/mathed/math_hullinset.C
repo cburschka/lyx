@@ -38,6 +38,8 @@ namespace {
 			return 3;
 		if (type == "align")
 			return 2;
+		if (type == "flalign")
+			return 2;
 		if (type == "alignat")
 			return 2;
 		if (type == "xalignat")
@@ -77,6 +79,7 @@ namespace {
 		if (s == "xxalignat") return 7;
 		if (s == "multline")  return 8;
 		if (s == "gather")    return 9;
+		if (s == "flalign")   return 10;
 		lyxerr << "unknown hull type '" << s << "'\n";
 		return 0;
 	}
@@ -151,7 +154,7 @@ int MathHullInset::defaultColSpace(col_type col)
 		return 0;
 	if (type_ == "xalignat")
 		return (col & 1) ? 20 : 0;
-	if (type_ == "xxalignat")
+	if (type_ == "xxalignat" || type_ == "flalign")
 		return (col & 1) ? 40 : 0;
 	return 0;
 }
@@ -278,6 +281,7 @@ bool MathHullInset::ams() const
 {
 	return
 		type_ == "align" ||
+		type_ == "flalign" ||
 		type_ == "multline" ||
 		type_ == "gather" ||
 		type_ == "alignat" ||
@@ -353,7 +357,7 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << "\\[\n";
 	}
 
-	else if (type_ == "eqnarray" || type_ == "align")
+	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign")
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
 	else if (type_ == "alignat" || type_ == "xalignat")
@@ -388,8 +392,8 @@ void MathHullInset::footer_write(WriteStream & os) const
 		else
 			os << "\\]\n";
 
-	else if (type_ == "eqnarray" || type_ == "align" || type_ == "alignat"
-	      || type_ == "xalignat")
+	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"  
+	     || type_ == "alignat" || type_ == "xalignat")
 		os << "\n\\end{" << type_ << star(n) << "}\n";
 
 	else if (type_ == "xxalignat" || type_ == "multline" || type_ == "gather")
@@ -403,7 +407,7 @@ void MathHullInset::footer_write(WriteStream & os) const
 bool MathHullInset::colChangeOK() const
 {
 	return
-		type_ == "align" || type_ == "alignat" ||
+		type_ == "align" || type_ == "flalign" ||type_ == "alignat" ||
 		type_ == "xalignat" || type_ == "xxalignat";
 }
 
@@ -588,7 +592,7 @@ void MathHullInset::mutate(string const & newtype)
 
 	else if (type_ == "multline") {
 		if (newtype == "gather" || newtype == "align" ||	
-		           newtype == "xalign" || newtype == "xxalign")
+		    newtype == "xalignat" || newtype == "xxalignat" || newtype == "flalign")
 			setType(newtype);
 		else if (newtype == "eqnarray") {
 			MathGridInset::addCol(1);

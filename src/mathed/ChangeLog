@@ -3,6 +3,9 @@
 
 	* formulabase.C: support pasting stuff into formulas using button3
 
+	* math_parser.C:
+	  math_hullinset.C: Herbert's patch to support flalign
+
 2002-10-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (localDispatch): make LFUN_WORDLEFTSEL and
