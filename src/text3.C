@@ -409,7 +409,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			if (tmp->params().startOfAppendix()) {
 				recordUndo(bv, Undo::ATOMIC, tmp);
 				tmp->params().startOfAppendix(false);
-				setHeightOfRow(getRow(tmp, 0));
+				setHeightOfRow(tmp, getRow(tmp, 0));
 				break;
 			}
 		}

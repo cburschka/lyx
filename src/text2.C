@@ -299,9 +299,9 @@ void LyXText::insertParagraph(ParagraphList::iterator pit,
 
 		// Set the dimensions of the row
 		// fixed fill setting now by calling inset->update() in
-		// SingleWidth when needed!
-		tmprow->fill(fill(tmprow, workWidth()));
-		setHeightOfRow(tmprow);
+		// singleWidth when needed!
+		tmprow->fill(fill(pit, tmprow, workWidth()));
+		setHeightOfRow(pit, tmprow);
 
 	} while (!done);
 }
@@ -732,10 +732,11 @@ void LyXText::cursorEnd()
 
 	RowList::iterator rit = cursorRow();
 	RowList::iterator next_rit = boost::next(rit);
+	RowList::iterator end = boost::next(rit);
 	ParagraphList::iterator pit = cursor.par();
 	pos_type last_pos = lastPos(*this, pit, rit);
 
-	if (next_rit == rows().end() || getPar(next_rit) != pit) {
+	if (next_rit == end) {
 		++last_pos;
 	} else {
 		if (pit->empty() ||
@@ -2010,7 +2011,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 				redoParagraph(getPar(tmprit));
 				updateCounters();
 			}
-			setHeightOfRow(prevrow);
+			setHeightOfRow(getPar(prevrow), prevrow);
 		} else {
 			RowList::iterator nextrow = boost::next(getRow(old_cursor));
 

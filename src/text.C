@@ -605,18 +605,12 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 		// are *NOT* allowed in the LaTeX realisation of this layout.
 
 		// find the first row of this paragraph
-		RowList::iterator tmprit = rowlist_.begin();
-		while (tmprit != rowlist_.end()
-		       && getPar(tmprit) != pit)
-			++tmprit;
-
-		int minfill = tmprit->fill();
-		while (boost::next(tmprit) != rowlist_.end() &&
-		       getPar(boost::next(tmprit)) == pit) {
-			++tmprit;
-			if (tmprit->fill() < minfill)
-				minfill = tmprit->fill();
-		}
+		RowList::iterator rit = beginRow(pit);
+		RowList::iterator end = endRow(pit);
+		int minfill = rit->fill();
+		for ( ; rit != end; ++rit)
+			if (rit->fill() < minfill)
+				minfill = rit->fill();
 
 		x += font_metrics::signedWidth(layout->leftmargin,
 			tclass.defaultfont());
@@ -875,14 +869,14 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 
 
 // returns the minimum space a row needs on the screen in pixel
-int LyXText::fill(RowList::iterator row, int paper_width) const
+int LyXText::fill(ParagraphList::iterator pit,
+	RowList::iterator row, int paper_width) const
 {
 	if (paper_width < 0)
 		return 0;
 
 	int w;
 	// get the pure distance
-	ParagraphList::iterator pit = getPar(row);
 	pos_type const last = lastPrintablePos(*this, pit, row);
 
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1009,7 +1003,7 @@ LColor::color LyXText::backgroundColor() const
 }
 
 
-void LyXText::setHeightOfRow(RowList::iterator rit)
+void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 {
 	Assert(rit != rows().end());
 
@@ -1021,8 +1015,6 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	// ok, let us initialize the maxasc and maxdesc value.
 	// Only the fontsize count. The other properties
 	// are taken from the layoutfont. Nicer on the screen :)
-	ParagraphList::iterator pit = getPar(rit);
-
 	LyXLayout_ptr const & layout = pit->layout();
 
 	// as max get the first character of this row then it can increase but not
@@ -2076,7 +2068,7 @@ void LyXText::backspace()
 				cursorLeft(bv());
 
 				// the layout things can change the height of a row !
-				setHeightOfRow(cursorRow());
+				setHeightOfRow(cursor.par(), cursorRow());
 				return;
 			}
 		}

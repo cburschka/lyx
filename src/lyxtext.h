@@ -404,7 +404,7 @@ private:
 			     RowList::iterator rowit);
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(RowList::iterator rit);
+	void setHeightOfRow(ParagraphList::iterator, RowList::iterator rit);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
@@ -482,7 +482,8 @@ private:
 		Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
-	int fill(RowList::iterator row, int workwidth) const;
+	int fill(ParagraphList::iterator pit,
+		RowList::iterator row, int workwidth) const;
 
 	/**
 	 * returns the minimum space a manual label needs on the
