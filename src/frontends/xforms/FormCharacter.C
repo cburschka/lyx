@@ -45,6 +45,8 @@ void FormCharacter::build()
 {
 	dialog_.reset(build_character());
 
+	fl_set_form_maxsize(dialog_->form, minw_, minh_);
+ 
 	vector<FamilyPair> const family = getFamilyData();
 	vector<SeriesPair> const series = getSeriesData();
 	vector<ShapePair>  const shape  = getShapeData();

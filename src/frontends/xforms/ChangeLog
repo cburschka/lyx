@@ -1,3 +1,10 @@
+2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormCharacter.C: disable resizing as it doesn't work
+
+	* FormPreamble.C: allow to copy-paste from RO preamble by
+	  enabling editing.
+
 2001-07-20  Jürgen Spitzmüller  <juergen.sp@t-online.de>
 
 	* forms/form_citation.fd: resized form to fit on a 800x600 screen.
