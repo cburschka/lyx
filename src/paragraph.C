@@ -1420,3 +1420,15 @@ bool Paragraph::allowEmpty() const
 		return pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE;
 	return false;
 }
+
+
+RowList::iterator Paragraph::getRow(pos_type pos)
+{
+	RowList::iterator rit = rows.end();
+	RowList::iterator const begin = rows.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return rit;
+}

@@ -222,8 +222,7 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-
-	textwidth_ = mi.base.textwidth;
+	textwidth_ = mi.base.textwidth - 30;
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
 	text_.metrics(mi, dim);
@@ -1493,7 +1492,7 @@ bool InsetText::cboundary() const
 
 RowList::iterator InsetText::crow() const
 {
-	return text_.cursorRow();
+	return cpar()->getRow(cpos());
 }
 
 

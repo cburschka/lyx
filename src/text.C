@@ -467,7 +467,9 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 {
 	// maximum pixel width of a row.
-	int width = workWidth() - rightMargin(*pit, *bv()->buffer(), row);
+	int width = workWidth()
+		- rightMargin(*pit, *bv()->buffer(), row)
+		- leftMargin(pit, row);
 
 	// inset->textWidth() returns -1 via workWidth(),
 	// but why ?
@@ -509,7 +511,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	LyXFont font = getFont(pit, i);
 	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 
-	for (; i < last; ++i) {
+	for ( ; i < last; ++i) {
 		if (pit->isNewline(i)) {
 			point = i;
 			break;
@@ -667,8 +669,7 @@ int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 
 	BOOST_ASSERT(last > 0);
 
-	// -1 because a label ends either with a space that is in the label,
-	// or with the beginning of a footnote that is outside the label.
+	// -1 because a label ends with a space that is in the label
 	--last;
 
 	// a separator at this end does not count
@@ -676,11 +677,8 @@ int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 		--last;
 
 	int w = 0;
-	pos_type i = row.pos();
-	while (i <= last) {
+	for (pos_type i = row.pos(); i <= last; ++i)
 		w += singleWidth(pit, i);
-		++i;
-	}
 
 	int fill = 0;
 	string const & labwidstr = pit->params().labelWidthString();
@@ -733,65 +731,28 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		spacing_val = bv()->buffer()->params().spacing().getValue();
 	//lyxerr << "spacing_val = " << spacing_val << endl;
 
+	// these are minimum values
 	int maxasc  = int(font_metrics::maxAscent(font) *
 	                  layout->spacing.getValue() * spacing_val);
 	int maxdesc = int(font_metrics::maxDescent(font) *
 	                  layout->spacing.getValue() * spacing_val);
 
-	pos_type const pos_end = lastPos(*pit, row);
-	int labeladdon = 0;
-	int maxwidth = 0;
-
-	if (!pit->empty()) {
-		// We re-use the font resolution for the entire font span when possible
-		LyXFont font = getFont(pit, row.pos());
-		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(row.pos());
-
-		// Optimisation
-		Paragraph const & par = *pit;
-
-		// Check if any insets are larger
-		for (pos_type pos = row.pos(); pos <= pos_end; ++pos) {
-			// Manual inlined optimised version of common case of
-			// "maxwidth += singleWidth(pit, pos);"
-			char const c = par.getChar(pos);
-
-			if (IsPrintable(c)) {
-				if (pos > endPosOfFontSpan) {
-					// We need to get the next font
-					font = getFont(pit, pos);
-					endPosOfFontSpan = par.getEndPosOfFontSpan(pos);
-				}
-				if (! font.language()->RightToLeft()) {
-					maxwidth += font_metrics::width(c, font);
-				} else {
-					// Fall-back to normal case
-					maxwidth += singleWidth(pit, pos, c, font);
-					// And flush font cache
-					endPosOfFontSpan = 0;
-				}
-			} else {
-				// Special handling of insets - are any larger?
-				if (par.isInset(pos)) {
-					InsetOld const * tmpinset = par.getInset(pos);
-					if (tmpinset) {
-						maxwidth += tmpinset->width();
-						maxasc = max(maxasc, tmpinset->ascent());
-						maxdesc = max(maxdesc, tmpinset->descent());
-					}
-				} else {
-					// Fall-back to normal case
-					maxwidth += singleWidth(pit, pos, c, font);
-					// And flush font cache
-					endPosOfFontSpan = 0;
-				}
-			}
+	// insets may be taller
+	InsetList::iterator ii = pit->insetlist.begin();
+	InsetList::iterator iend = pit->insetlist.end();
+	for ( ; ii != iend; ++ii) {
+		if (ii->pos >= row.pos() && ii->pos < row.endpos()) {
+			maxasc = max(maxasc, ii->inset->ascent());
+			maxdesc = max(maxdesc, ii->inset->descent());
 		}
 	}
 
 	// Check if any custom fonts are larger (Asger)
 	// This is not completely correct, but we can live with the small,
 	// cosmetic error for now.
+	int labeladdon = 0;
+	pos_type const pos_end = lastPos(*pit, row);
+
 	LyXFont::FONT_SIZE maxsize =
 		pit->highestFontInRange(row.pos(), pos_end, size);
 	if (maxsize > font.size()) {
@@ -984,28 +945,24 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 	row.height(maxasc + maxdesc + labeladdon);
 	row.baseline(maxasc + labeladdon);
 	row.top_of_text(row.baseline() - font_metrics::maxAscent(font));
-
-	row.width(maxwidth);
-
-	if (inset_owner)
-		width = max(workWidth(), int(maxParagraphWidth(ownerParagraphs())));
 }
 
 
 void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 {
 	// allow only if at start or end, or all previous is new text
-	if (cursor.pos() && cursor.pos() != cursorPar()->size()
-	    && cursorPar()->isChangeEdited(0, cursor.pos()))
+	ParagraphList::iterator cpit = cursorPar();
+	if (cursor.pos() && cursor.pos() != cpit->size()
+	    && cpit->isChangeEdited(0, cursor.pos()))
 		return;
 
 	LyXTextClass const & tclass =
 		bv()->buffer()->params().getLyXTextClass();
-	LyXLayout_ptr const & layout = cursorPar()->layout();
+	LyXLayout_ptr const & layout = cpit->layout();
 
 	// this is only allowed, if the current paragraph is not empty or caption
 	// and if it has not the keepempty flag active
-	if (cursorPar()->empty() && !cursorPar()->allowEmpty()
+	if (cpit->empty() && !cpit->allowEmpty()
 	   && layout->labeltype != LABEL_SENSITIVE)
 		return;
 
@@ -1014,9 +971,8 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// Always break behind a space
 	//
 	// It is better to erase the space (Dekel)
-	if (cursor.pos() < cursorPar()->size()
-	     && cursorPar()->isLineSeparator(cursor.pos()))
-	   cursorPar()->erase(cursor.pos());
+	if (cursor.pos() < cpit->size() && cpit->isLineSeparator(cursor.pos()))
+	   cpit->erase(cursor.pos());
 
 	// break the paragraph
 	if (keep_layout)
@@ -1028,21 +984,22 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// breakParagraph call should return a bool if it inserts the
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
-	bool const isempty = (cursorPar()->allowEmpty() && cursorPar()->empty());
-	::breakParagraph(bv()->buffer()->params(), paragraphs, cursorPar(),
+	bool const isempty = cpit->allowEmpty() && cpit->empty();
+	::breakParagraph(bv()->buffer()->params(), paragraphs, cpit,
 			 cursor.pos(), keep_layout);
 
 #warning Trouble Point! (Lgb)
 	// When ::breakParagraph is called from within an inset we must
 	// ensure that the correct ParagraphList is used. Today that is not
 	// the case and the Buffer::paragraphs is used. Not good. (Lgb)
-	ParagraphList::iterator next_par = boost::next(cursorPar());
+	cpit = cursorPar();
+	ParagraphList::iterator next_par = boost::next(cpit);
 
 	// well this is the caption hack since one caption is really enough
 	if (layout->labeltype == LABEL_SENSITIVE) {
 		if (!cursor.pos())
 			// set to standard-layout
-			cursorPar()->applyLayout(tclass.defaultLayout());
+			cpit->applyLayout(tclass.defaultLayout());
 		else
 			// set to standard-layout
 			next_par->applyLayout(tclass.defaultLayout());
@@ -1052,8 +1009,9 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// move one row up!
 	// This touches only the screen-update. Otherwise we would may have
 	// an empty row on the screen
-	if (cursor.pos() && cursorRow()->pos() == cursor.pos()
-	    && !cursorPar()->isNewline(cursor.pos() - 1))
+	RowList::iterator crit = cpit->getRow(cursor.pos());
+	if (cursor.pos() && crit->pos() == cursor.pos()
+	    && !cpit->isNewline(cursor.pos() - 1))
 	{
 		cursorLeft(bv());
 	}
@@ -1062,7 +1020,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		next_par->erase(0);
 
 	updateCounters();
-	redoParagraph(cursorPar());
+	redoParagraph(cpit);
 	redoParagraph(next_par);
 
 	// This check is necessary. Otherwise the new empty paragraph will
@@ -1070,7 +1028,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	if (cursor.pos() || isempty)
 		setCursor(next_par, 0);
 	else
-		setCursor(cursorPar(), 0);
+		setCursor(cpit, 0);
 }
 
 
@@ -1257,9 +1215,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		} else {
 			align = pit->params().align();
 		}
-		InsetOld * inset = 0;
 		// ERT insets should always be LEFT ALIGNED on screen
-		inset = pit->inInset();
+		InsetOld * inset = pit->inInset();
 		if (inset && inset->owner() &&
 			inset->owner()->lyxCode() == InsetOld::ERT_CODE)
 		{
@@ -1791,6 +1748,12 @@ ParagraphList::iterator LyXText::cursorPar() const
 }
 
 
+RowList::iterator LyXText::cursorRow() const
+{
+	return cursorPar()->getRow(cursor.pos());
+}
+
+
 ParagraphList::iterator LyXText::getPar(LyXCursor const & cur) const
 {
 	return getPar(cur.par());
@@ -1804,31 +1767,6 @@ ParagraphList::iterator LyXText::getPar(int par) const
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	std::advance(pit, par);
 	return pit;
-}
-
-
-
-RowList::iterator LyXText::cursorRow() const
-{
-	return getRow(*cursorPar(), cursor.pos());
-}
-
-
-RowList::iterator LyXText::getRow(LyXCursor const & cur) const
-{
-	return getRow(*getPar(cur), cur.pos());
-}
-
-
-RowList::iterator LyXText::getRow(Paragraph & par, pos_type pos) const
-{
-	RowList::iterator rit = boost::prior(par.rows.end());
-	RowList::iterator const begin = par.rows.begin();
-
-	while (rit != begin && rit->pos() > pos)
-		--rit;
-
-	return rit;
 }
 
 

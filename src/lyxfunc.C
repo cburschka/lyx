@@ -956,13 +956,14 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 			if (result == FINISHED_UP) {
 				LyXText * text = view()->text;
-				RowList::iterator const rit = text->cursorRow();
-				if (text->isFirstRow(text->cursorPar(), *rit)) {
+				ParagraphList::iterator pit = text->cursorPar();
+				Row const & row = *pit->getRow(text->cursor.pos());
+				if (text->isFirstRow(pit, row)) {
 #if 1
 					text->setCursorFromCoordinates(
 						text->cursor.x() + inset_x,
 						text->cursor.y() -
-						rit->baseline() - 1);
+						row.baseline() - 1);
 					text->cursor.x_fix(text->cursor.x());
 #else
 					text->cursorUp(view());
@@ -977,14 +978,15 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 			if (result == FINISHED_DOWN) {
 				LyXText * text = view()->text;
-				RowList::iterator const rit = text->cursorRow();
-				if (text->isLastRow(text->cursorPar(), *rit)) {
+				ParagraphList::iterator pit = text->cursorPar();
+				Row const & row = *pit->getRow(text->cursor.pos());
+				if (text->isLastRow(pit, row)) {
 #if 1
 					text->setCursorFromCoordinates(
 						text->cursor.x() + inset_x,
 						text->cursor.y() -
-						rit->baseline() +
-						rit->height() + 1);
+						row.baseline() +
+						row.height() + 1);
 					text->cursor.x_fix(text->cursor.x());
 #else
 					text->cursorDown(view());
@@ -1024,7 +1026,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				goto exit_with_message;
 			case LFUN_DOWN: {
 				LyXText * text = view()->text;
-				if (text->isLastRow(text->cursorPar(), *text->cursorRow()))
+				ParagraphList::iterator pit = text->cursorPar();
+				if (text->isLastRow(pit, *pit->getRow(text->cursor.pos())))
 					view()->text->cursorDown(view());
 				else
 					view()->text->cursorRight(view());

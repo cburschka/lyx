@@ -295,6 +295,10 @@ public:
 	ParagraphParameters & params();
 	///
 	ParagraphParameters const & params() const;
+
+	///
+	RowList::iterator getRow(lyx::pos_type pos);
+
 	///
 	InsetList insetlist;
 

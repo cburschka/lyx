@@ -29,6 +29,7 @@
 #include "lyxrow.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "rowpainter.h"
 #include "version.h"
 
@@ -257,22 +258,22 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 	int newtop = top_y;
 	unsigned int const vheight = workarea().workHeight();
 
-	RowList::iterator row = text->cursorRow();
+	Row & row = *text->cursorPar()->getRow(cursor.pos());
 
-	if (int(cursor.y() - row->baseline() + row->height() - top_y) >= vheight) {
-		if (row->height() < vheight
-		    && row->height() > vheight / 4) {
+	if (int(cursor.y() - row.baseline() + row.height() - top_y) >= vheight) {
+		if (row.height() < vheight
+		    && row.height() > vheight / 4) {
 			newtop = cursor.y()
-				+ row->height()
-				- row->baseline() - vheight;
+				+ row.height()
+				- row.baseline() - vheight;
 		} else {
 			// scroll down, the scroll region must be so big!!
 			newtop = cursor.y() - vheight / 2;
 		}
 
-	} else if (int(cursor.y() - row->baseline()) < top_y && top_y > 0) {
-		if (row->height() < vheight && row->height() > vheight / 4) {
-			newtop = cursor.y() - row->baseline();
+	} else if (int(cursor.y() - row.baseline()) < top_y && top_y > 0) {
+		if (row.height() < vheight && row.height() > vheight / 4) {
+			newtop = cursor.y() - row.baseline();
 		} else {
 			// scroll up
 			newtop = cursor.y() - vheight / 2;

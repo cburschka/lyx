@@ -362,12 +362,13 @@ string const currentState(BufferView * bv)
 		}
 	}
 #ifdef DEVEL_VERSION
-	state << _(", Paragraph: ") << text->cursorPar()->id();
+	ParagraphList::iterator pit = text->cursorPar();
+	state << _(", Paragraph: ") << pit->id();
 	state << _(", Position: ") << text->cursor.pos();
-	RowList::iterator rit = text->cursorRow();
+	RowList::iterator rit = pit->getRow(text->cursor.pos());
 	state << bformat(_(", Row b:%1$d e:%2$d"), rit->pos(), rit->endpos());
 	state << _(", Inset: ");
-	InsetOld * inset = text->cursorPar()->inInset();
+	InsetOld * inset = pit->inInset();
 	if (inset)
 		state << inset << " id: " << inset->id()
 		      << " text: " << inset->getLyXText(bv, true)
@@ -399,10 +400,11 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {
 		LyXCursor & cursor = text->cursor;
-		text->bidi.computeTables(*text->cursorPar(), *bv->buffer(),
-			*text->cursorRow());
+		Paragraph & par = *text->cursorPar();
+		text->bidi.computeTables(par, *bv->buffer(),
+			*par.getRow(cursor.pos()));
 		if (cursor.boundary() !=
-		    text->bidi.isBoundary(*bv->buffer(), *text->cursorPar(),
+		    text->bidi.isBoundary(*bv->buffer(), par,
 					  cursor.pos(),
 					  text->real_current_font))
 			text->setCursor(cursor.par(), cursor.pos(),
