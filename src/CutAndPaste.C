@@ -113,7 +113,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 	Paragraph * pit = startpar->next();
 
-	while (1) {
+	while (true) {
 		// *endpar can be 0
 		if (!pit)
 			break;
@@ -165,7 +165,11 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	// paste the paragraphs again, if possible
 	if (startpar->hasSameLayout(startpar->next()) ||
 	    startpar->next()->empty()) {
-		mergeParagraph(buffer, startpar);
+#warning This is suspect. (Lgb)
+		// When doing this merge we must know if the par really
+		// belongs to an inset, and if it does then we have to use
+		// the insets paragraphs, and not the buffers. (Lgb)
+		mergeParagraph(buffer->params, buffer->paragraphs, startpar);
 		// this because endpar gets deleted here!
 		(*endpar) = startpar;
 	}
@@ -361,7 +365,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
 			breakParagraphConservative(
-				current_view->buffer(), *par, pos);
+				current_view->buffer()->params, current_view->buffer()->paragraphs, *par, pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later
@@ -377,20 +381,23 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		if ((*par)->next() == lastbuffer)
 			lastbuffer = *par;
 
-		mergeParagraph(current_view->buffer(), *par);
+		mergeParagraph(current_view->buffer()->params,
+			       current_view->buffer()->paragraphs, *par);
 		// store the new cursor position
 		*par = lastbuffer;
 		pos = lastbuffer->size();
 		// maybe some pasting
 		if (lastbuffer->next() && paste_the_end) {
 			if (lastbuffer->next()->hasSameLayout(lastbuffer)) {
-				mergeParagraph(current_view->buffer(), lastbuffer);
+				mergeParagraph(current_view->buffer()->params,
+					       current_view->buffer()->paragraphs, lastbuffer);
 			} else if (!lastbuffer->next()->size()) {
 				lastbuffer->next()->makeSameLayout(lastbuffer);
-				mergeParagraph(current_view->buffer(), lastbuffer);
+				mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
 			} else if (!lastbuffer->size()) {
 				lastbuffer->makeSameLayout(lastbuffer->next());
-				mergeParagraph(current_view->buffer(), lastbuffer);
+				mergeParagraph(current_view->buffer()->params,
+					       current_view->buffer()->paragraphs, lastbuffer);
 			} else
 				lastbuffer->next()->stripLeadingSpaces();
 		}

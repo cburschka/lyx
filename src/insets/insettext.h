@@ -262,7 +262,7 @@ public:
 	ParagraphList paragraphs;
 protected:
 	///
-	void updateLocal(BufferView *, int what, bool mark_dirty) const;
+	void updateLocal(BufferView *, int what, bool mark_dirty);
 	/// set parameters for an initial lock of this inset
 	void lockInset(BufferView *);
 	/// lock an inset inside this one
@@ -358,7 +358,7 @@ private:
 	///
 	void reinitLyXText() const;
 	///
-	void collapseParagraphs(BufferView *) const;
+	void collapseParagraphs(BufferView *);
 
 	/* Private structures and variables */
 	///

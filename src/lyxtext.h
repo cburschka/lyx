@@ -28,6 +28,7 @@ class Spacing;
 class UpdatableInset;
 class VSpace;
 class WordLangTuple;
+class ParagraphList;
 
 
 /**
@@ -106,7 +107,8 @@ public:
 	///
 	void breakAgainOneRow(BufferView *, Row * row);
 	/// what you expect when pressing <enter> at cursor position
-	void breakParagraph(BufferView *, char keep_layout = 0);
+	void breakParagraph(BufferView *,
+			    ParagraphList & paragraphs, char keep_layout = 0);
 
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs

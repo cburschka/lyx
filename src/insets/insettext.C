@@ -635,7 +635,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 }
 
 
-void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
+void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 {
 	if (!autoBreakRows && paragraphs.begin()->next())
 		collapseParagraphs(bv);
@@ -1448,7 +1448,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			result = DISPATCHED;
 			break;
 		}
-		lt->breakParagraph(bv, 0);
+		lt->breakParagraph(bv, paragraphs, 0);
 		updwhat = CURSOR | FULL;
 		updflag = true;
 		break;
@@ -1457,7 +1457,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			result = DISPATCHED;
 			break;
 		}
-		lt->breakParagraph(bv, 1);
+		lt->breakParagraph(bv, paragraphs, 1);
 		updwhat = CURSOR | FULL;
 		updflag = true;
 		break;
@@ -2388,7 +2388,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 	t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
 	if (!owner()) {
-		updateLocal(bv, FULL, false);
+		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
 		bv->updateScrollbar();
 	} else {
@@ -2427,7 +2427,7 @@ void InsetText::reinitLyXText() const
 		}
 		t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
 		if (!owner()) {
-			updateLocal(bv, FULL, false);
+			const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 			// this will scroll the screen such that the cursor becomes visible
 			bv->updateScrollbar();
 		} else {
@@ -2768,7 +2768,7 @@ bool InsetText::checkInsertChar(LyXFont & font)
 }
 
 
-void InsetText::collapseParagraphs(BufferView * bv) const
+void InsetText::collapseParagraphs(BufferView * bv)
 {
 	LyXText * llt = getLyXText(bv);
 
@@ -2790,7 +2790,7 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 					llt->selection.end.pos() + paragraphs.begin()->size());
 			}
 		}
-		mergeParagraph(bv->buffer(), paragraphs.begin());
+		mergeParagraph(bv->buffer()->params, paragraphs, paragraphs.begin());
 	}
 	reinitLyXText();
 }
@@ -2837,7 +2837,7 @@ void InsetText::appendParagraphs(Buffer * buffer,
 	// paste it!
 	lastbuffer->next(buf);
 	buf->previous(lastbuffer);
-	mergeParagraph(buffer, lastbuffer);
+	mergeParagraph(buffer->params, paragraphs, lastbuffer);
 
 	reinitLyXText();
 }

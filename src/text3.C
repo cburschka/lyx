@@ -830,7 +830,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BREAKPARAGRAPH:
 		bv->beforeChange(this);
-		breakParagraph(bv, 0);
+		breakParagraph(bv, bv->buffer()->paragraphs, 0);
 		update(bv);
 		selection.cursor = cursor;
 		bv->switchKeyMap();
@@ -839,7 +839,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		bv->beforeChange(this);
-		breakParagraph(bv, 1);
+		breakParagraph(bv, bv->buffer()->paragraphs, 1);
 		update(bv);
 		selection.cursor = cursor;
 		bv->switchKeyMap();
@@ -867,7 +867,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 		else {
-			breakParagraph(bv, 0);
+			breakParagraph(bv, bv->buffer()->paragraphs, 0);
 			//update(bv);
 		}
 		update(bv);

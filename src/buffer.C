@@ -317,7 +317,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		par->layout(params.getLyXTextClass().defaultLayout());
 	} else {
 		// We are inserting into an existing document
-		users->text->breakParagraph(users);
+		users->text->breakParagraph(users, paragraphs);
 		first_par = users->text->ownerParagraph();
 		pos = 0;
 		markDirty();
@@ -1030,7 +1030,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
 			if (autobreakrows && (!par->empty() || layout->keepempty)) {
-				breakParagraph(this, par, pos,
+				breakParagraph(params, paragraphs, par, pos,
 					       layout->isEnvironment());
 				par = par->next();
 				pos = 0;
@@ -1867,12 +1867,12 @@ void Buffer::latexParagraphs(ostream & ofs,
 			if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
-				par = TeXEnvironment(this, params, par, ofs, texrow);
+				par = TeXEnvironment(this, params, paragraphs, par, ofs, texrow);
 			} else {
-				par = TeXOnePar(this, params, par, ofs, texrow, moving_arg);
+				par = TeXOnePar(this, params, paragraphs, par, ofs, texrow, moving_arg);
 			}
 		} else {
-			par = TeXOnePar(this, params, par, ofs, texrow, moving_arg);
+			par = TeXOnePar(this, params, paragraphs, par, ofs, texrow, moving_arg);
 		}
 	}
 	// It might be that we only have a title in this document

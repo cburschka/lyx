@@ -1,3 +1,10 @@
+2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (updateLocal): un-const function
+	(updateLocal): adjust
+	(collapseParagraphs): un-const function
+	(collapseParagraphs): adjust
+
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* insetwrap.[Ch]: define a new class InsetWrapMailer and use

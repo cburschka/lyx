@@ -1,3 +1,27 @@
+2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C (dispatch): adjust
+
+	* text.C (breakParagraph): add a ParagraphList as arg
+
+	* paragraph_funcs.C (breakParagraph): change to take a
+	BufferParams and a ParagraphList as args.
+	(breakParagraphConservative): ditto
+	(mergeParagraph): ditto
+	(TeXDeeper): add a ParagraphList arg
+	(TeXEnvironment): ditto
+	(TeXOnePar): ditto
+
+	* buffer.C (readLyXformat2): adjust
+	(insertStringAsLines): adjust
+	(latexParagraphs): adjust
+
+	* CutAndPaste.C (cutSelection): use 'true' not '1' as truth value.
+	(cutSelection): adjust
+	(pasteSelection): adjust
+
+	* BufferView_pimpl.C (insertInset): adjust
+
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* commandtags.h:

@@ -817,7 +817,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
-		InsetBase * base = 
+		InsetBase * base =
 			bv->owner()->getDialogs().getOpenInset(name);
 
 		if (base) {

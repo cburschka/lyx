@@ -21,13 +21,15 @@ class Paragraph;
 class TexRow;
 
 ///
-void breakParagraph(Buffer * buf,
+void breakParagraph(BufferParams const & bparams,
+		    ParagraphList & paragraphs,
 		    ParagraphList::iterator par,
 		    lyx::pos_type pos,
 		    int flag);
 
 ///
-void breakParagraphConservative(Buffer * buf,
+void breakParagraphConservative(BufferParams const & bparams,
+				ParagraphList & paragraphs,
 				ParagraphList::iterator par,
 				lyx::pos_type pos);
 
@@ -35,7 +37,8 @@ void breakParagraphConservative(Buffer * buf,
  * Append the next paragraph onto the tail of this one.
  * Be careful, this doesent make any check at all.
  */
-void mergeParagraph(Buffer * buf,
+void mergeParagraph(BufferParams const & bparams,
+		    ParagraphList & paragraphs,
 		    ParagraphList::iterator par);
 
 
@@ -56,18 +59,21 @@ int getEndLabel(Paragraph * para, BufferParams const & bparams);
 ParagraphList::iterator
 TeXDeeper(Buffer const * buf,
 	  BufferParams const & bparams,
+	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  std::ostream & os, TexRow & texrow);
 
 ParagraphList::iterator
 TeXEnvironment(Buffer const * buf,
 	       BufferParams const & bparams,
+	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
 	       std::ostream & os, TexRow & texrow);
 
 ParagraphList::iterator
 TeXOnePar(Buffer const * buf,
 	  BufferParams const & bparams,
+	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  std::ostream & os, TexRow & texrow,
 	  bool moving_arg);

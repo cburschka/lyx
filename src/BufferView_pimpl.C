@@ -1315,13 +1315,13 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-		bv_->text->breakParagraph(bv_);
+		bv_->text->breakParagraph(bv_, bv_->buffer()->paragraphs);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (!bv_->text->cursor.par()->empty()) {
 			bv_->text->cursorLeft(bv_);
 
-			bv_->text->breakParagraph(bv_);
+			bv_->text->breakParagraph(bv_, bv_->buffer()->paragraphs);
 			update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
