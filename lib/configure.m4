@@ -460,7 +460,7 @@ cat >$outfile <<EOF
 \\Format fax	  ""	Fax		""
 \\Format fits     fits	FITS		""
 \\Format gif      gif	GIF		""
-\\Format grace    agr	GRACE		""
+\\Format agr      agr	GRACE		""
 \\Format html	  html	HTML		H
 \\Format jpg      jpg	JPEG		""
 \\Format latex	  tex	LaTeX		L

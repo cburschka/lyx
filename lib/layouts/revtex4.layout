@@ -181,6 +181,7 @@ End
 
 Style Author_Email
   CopyStyle             Affiliation
+  PassThru              1
   LatexName             email
   LabelString           "Electronic Address: "
 
@@ -195,6 +196,7 @@ End
 
 Style Author_URL
   CopyStyle             "Author Email"
+  PassThru              1
   LatexName             homepage
   LabelString           "URL: "
 End
