@@ -1,3 +1,3 @@
 /* Version and release date definition */
-#define LYX_VERSION "1.1.1pre2"
-#define LYX_RELEASE "Wed, Oct 13, 1999"
+#define LYX_VERSION "1.1.1cvs"
+#define LYX_RELEASE "Man, Oct 25, 1999"

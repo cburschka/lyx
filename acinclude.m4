@@ -8,15 +8,20 @@ dnl   built, displays it and sets variable "lyx_devel" to yes or no depending
 dnl   whether the version is a development release or not. 
 AC_DEFUN(LYX_GET_VERSION,[
 changequote(, ) dnl
-# Get LyX version from $1 and guess wether is is stable or experimental.
-VERSION=`grep '#define *LYX_VERSION' $1 | 
-             sed -e 's/^.*"\([0-9.]*\)[^0-9.].*$/\1/' 2>/dev/null`
+VERSION=`grep '#define *LYX_VERSION' $1 |
+              sed -e 's/^.*"\(.*\)"$/\1/' 2>/dev/null`
 echo "configuring LyX version $VERSION"
-if echo "$VERSION" | grep '[0-9]*\.[0-9]*[13579]\.[0-9]*' >/dev/null ; then
+if echo "$VERSION" | grep 'cvs' >/dev/null ; then
   lyx_devel_version=yes
   echo "WARNING: This is a development version. Expect bugs."
 else
   lyx_devel_version=no
+fi
+if echo "$VERSION" | grep 'pre' > /dev/null ; then
+    lyx_prerelease=yes
+    echo "WARNING: This is a prerelease. Be careful and backup your documents."
+else
+    lyx_prerelease=no
 fi
 changequote([, ]) dnl
 PACKAGE=lyx${program_suffix}
@@ -142,12 +147,12 @@ AC_PROG_CXX_GNU
 dnl We might want to get or shut warnings.
 AC_ARG_WITH(warnings,
   [  --with-warnings         tell GNU C++ to display more warnings],,
-  [if test $lyx_devel_version = yes && test $ac_cv_prog_gxx = yes ; then
-     with_warnings=yes;
-   else
-     with_warnings=no;
-   fi;])
-if test "x$with_warnings" = xyes ; then
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
+	with_warnings=yes;
+    else
+	with_warnings=no;
+    fi;])
+if test x$with_warnings = xyes ; then
   lyx_flags="$lyx_flags warnings"
   AC_DEFINE(WITH_WARNINGS, 1,
   [Define this if you want to see the warning directives put here and
@@ -155,7 +160,7 @@ if test "x$with_warnings" = xyes ; then
 fi
 
 # optimize less for development versions
-if test "$lyx_devel_version" = yes ; then
+if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
   lyx_opt="-O"
 else
   lyx_opt="-O2"
@@ -184,8 +189,11 @@ dnl Check the version of g++
   else
     CXXFLAGS="$lyx_opt"
   fi
-  if test $with_warnings = yes ; then
-    CXXFLAGS="$CXXFLAGS -ansi -pedantic -Wall"
+  if test x$with_warnings = xyes ; then
+    CXXFLAGS="$CXXFLAGS -ansi -Wall"
+    if test $lyx_devel_version = yes ; then
+	CXXFLAGS="$CXXFLAGS -pedantic"
+    fi
   fi
 else
   GXX=

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.3pre2\n"
-"POT-Creation-Date: 1999-10-19 23:13+0200\n"
+"POT-Creation-Date: 1999-10-25 20:48+0200\n"
 "PO-Revision-Date: 1999-09-23 16:54+02:00\n"
 "Last-Translator:  Roman Maurer <roman.maurer@fmf.uni-lj.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -46,20 +46,20 @@ msgstr "Poganjam MakeIndex."
 msgid "Running BibTeX."
 msgstr "Poganjam BibTeX."
 
-#: src/LaTeXLog.C:42
+#: src/LaTeXLog.C:43
 #, fuzzy
 msgid "Unable to show log file!"
 msgstr "Ne morem brati datoteke!"
 
-#: src/LaTeXLog.C:45
+#: src/LaTeXLog.C:46
 msgid "NO LATEX LOG FILE!"
 msgstr "NI DNEVNIKA LATEXA!"
 
-#: src/LaTeXLog.C:52
+#: src/LaTeXLog.C:53
 msgid "Build Program Log"
 msgstr "Zgradi dnevnik programa"
 
-#: src/LaTeXLog.C:52
+#: src/LaTeXLog.C:53
 msgid "LaTeX Log"
 msgstr "Dnevnik LaTeXa"
 
@@ -97,10 +97,10 @@ msgstr "Pojdi na zaèetek spisa"
 msgid "Select to beginning of document"
 msgstr "Izberi do zaèetka spisa"
 
-#: src/LyXAction.C:595 src/insets/inseterror.C:168 src/insets/insetref.C:64
-#: src/latexoptions.C:46 src/layout_forms.C:158 src/layout_forms.C:472
-#: src/layout_forms.C:692 src/lyx.C:112 src/lyx_sendfax.C:109 src/lyxvc.C:329
-#: src/mathed/math_forms.C:179
+#: src/LyXAction.C:595 src/insets/form_url.C:31 src/insets/inseterror.C:170
+#: src/insets/insetref.C:64 src/latexoptions.C:47 src/layout_forms.C:240
+#: src/layout_forms.C:562 src/layout_forms.C:790 src/lyx.C:125
+#: src/lyx_sendfax.C:109 src/lyxvc.C:342 src/mathed/math_forms.C:179
 msgid "Close"
 msgstr "Zapri"
 
@@ -172,7 +172,7 @@ msgstr "Shrani"
 msgid "Save As"
 msgstr "Shrani kot"
 
-#: src/LyXAction.C:613 src/lyxfunc.C:581
+#: src/LyXAction.C:613 src/lyxfunc.C:555
 msgid "Cancel"
 msgstr "Preklièi"
 
@@ -192,11 +192,11 @@ msgstr "Vnesi citat"
 msgid "Execute command"
 msgstr "Izvedi ukaz"
 
-#: src/LyXAction.C:618 src/lyx_cb.C:2375
+#: src/LyXAction.C:618 src/lyx_cb.C:2402
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/LyXAction.C:619 src/lyx_cb.C:2387
+#: src/LyXAction.C:619 src/lyx_cb.C:2414
 msgid "Cut"
 msgstr "Izre¾i"
 
@@ -232,11 +232,11 @@ msgstr "Izberi okolje odstavka"
 msgid "Go to next error"
 msgstr "Pojdi na naslednjo napako"
 
-#: src/LyXAction.C:628 src/lyx_cb.C:2327
+#: src/LyXAction.C:628 src/lyx_cb.C:2354
 msgid "Insert Figure"
 msgstr "Vstavi sliko"
 
-#: src/LyXAction.C:629 src/lyxfr0.C:95
+#: src/LyXAction.C:629 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "Poi¹èi in zamenjaj"
 
@@ -392,7 +392,7 @@ msgstr "Pojdi odstavek navzgor"
 msgid "Select previous paragraph"
 msgstr "Izberi prej¹nji odstavek"
 
-#: src/LyXAction.C:668 src/lyx_cb.C:2396
+#: src/LyXAction.C:668 src/lyx_cb.C:2423
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -408,7 +408,7 @@ msgstr "Vstavi narekovaj"
 msgid "Reconfigure"
 msgstr "Ponovna ukrojitev"
 
-#: src/LyXAction.C:672 src/lyx_cb.C:2083
+#: src/LyXAction.C:672 src/lyx_cb.C:2110
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -416,7 +416,7 @@ msgstr "Ponovi"
 msgid "Insert cross reference"
 msgstr "Vstavi navzkri¾no referenco"
 
-#: src/LyXAction.C:674 src/lyx_cb.C:2339
+#: src/LyXAction.C:674 src/lyx_cb.C:2366
 msgid "Insert Table"
 msgstr "Vstavi tabelo"
 
@@ -424,11 +424,11 @@ msgstr "Vstavi tabelo"
 msgid "Toggle TeX style"
 msgstr "Spremeni stil TeXa"
 
-#: src/LyXAction.C:676 src/lyx_cb.C:2063
+#: src/LyXAction.C:676 src/lyx_cb.C:2090
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/LyXAction.C:677 src/lyx_cb.C:2418
+#: src/LyXAction.C:677 src/lyx_cb.C:2445
 msgid "Melt"
 msgstr "Stopi"
 
@@ -449,15 +449,15 @@ msgstr "Vstavi loènico med menuji"
 msgid "No description available!"
 msgstr "Ni dostopnega opisa!"
 
-#: src/LyXSendto.C:36
+#: src/LyXSendto.C:38
 msgid "Send Document to Command"
 msgstr "Po¹lji spis ukazu"
 
-#: src/LyXView.C:347 src/minibuffer.C:185
+#: src/LyXView.C:370 src/minibuffer.C:230
 msgid " (Changed)"
 msgstr " (Spremenjeno)"
 
-#: src/LyXView.C:349
+#: src/LyXView.C:372
 msgid " (read only)"
 msgstr " (le za branje)"
 
@@ -465,16 +465,16 @@ msgstr " (le za branje)"
 msgid "Document is read-only.  No changes to layout permitted."
 msgstr "Spis je le za branje.  Spremembe izgleda niso dovoljene."
 
-#: src/PaperLayout.C:181
+#: src/PaperLayout.C:180
 msgid "Paper Layout"
 msgstr "Naèrt papirja"
 
-#: src/PaperLayout.C:213
+#: src/PaperLayout.C:212
 msgid "Paper layout set"
 msgstr "Nastavi naèrt papirja"
 
-#: src/PaperLayout.C:270 src/ParagraphExtra.C:302 src/TableLayout.C:298
-#: src/TableLayout.C:471
+#: src/PaperLayout.C:269 src/ParagraphExtra.C:302 src/TableLayout.C:306
+#: src/TableLayout.C:479
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Pozor: Neprava dol¾ina (veljaven primer: 10mm)"
 
@@ -490,19 +490,19 @@ msgstr "Nastavi naèrt OdstavkaEkstra"
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Pozor: Neprava vrednost v odstotkih (0-100)"
 
-#: src/TableLayout.C:235
+#: src/TableLayout.C:237
 msgid "Table Extra Form"
 msgstr "Posebna oblika tabele"
 
-#: src/TableLayout.C:248
+#: src/TableLayout.C:256
 msgid "Table Layout"
 msgstr "Naèrt tabele"
 
-#: src/TableLayout.C:278
+#: src/TableLayout.C:286
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Pozor: Napaèen polo¾aj kazalca, osve¾eno okno"
 
-#: src/TableLayout.C:333
+#: src/TableLayout.C:341
 msgid "Confirm: press Delete-Button again"
 msgstr "Potrditev: ponovno pritisnite tipko Delete"
 
@@ -629,7 +629,7 @@ msgstr "Manjka datoteka z dnevnikom:"
 
 #. no errors or any other things to think about so:
 #: src/buffer.C:3161 src/buffer.C:3170 src/buffer.C:3229 src/buffer.C:3238
-#: src/buffer.C:3297 src/buffer.C:3305 src/combox.C:441
+#: src/buffer.C:3297 src/buffer.C:3305 src/combox.C:464
 msgid "Done"
 msgstr "Opravljeno"
 
@@ -676,7 +676,7 @@ msgstr "Napaka! Ne morem odpreti zaèasne datoteke:"
 msgid "Error executing *roff command on table"
 msgstr "Napaka pri izvajanju ukaza *roff na tabeli"
 
-#: src/buffer.C:3748 src/lyx_cb.C:3149 src/text.C:1875
+#: src/buffer.C:3748 src/lyx_cb.C:3176 src/text.C:1875
 msgid "Impossible Operation!"
 msgstr "Nemogoèa operacija!"
 
@@ -684,7 +684,7 @@ msgstr "Nemogoèa operacija!"
 msgid "Cannot insert table/list in table."
 msgstr "Ne morem vstaviti tabele/seznama v tabelo."
 
-#: src/buffer.C:3750 src/lyx_cb.C:3151 src/text.C:1877 src/text.C:3929
+#: src/buffer.C:3750 src/lyx_cb.C:3178 src/text.C:1877 src/text.C:3929
 #: src/text.C:3937 src/text.C:3952 src/text.C:3969 src/text2.C:2130
 #: src/text2.C:2140
 msgid "Sorry."
@@ -771,8 +771,8 @@ msgstr "Ne morem odpreti vzorca"
 msgid "Could not convert file"
 msgstr "Ne morem pretvoriti datoteke"
 
-#: src/bufferlist.C:621 src/lyxfunc.C:2493 src/lyxfunc.C:2632
-#: src/lyxfunc.C:2711
+#: src/bufferlist.C:621 src/lyxfunc.C:2469 src/lyxfunc.C:2608
+#: src/lyxfunc.C:2687
 msgid "Document is already open:"
 msgstr "Spis je ¾e odprt:"
 
@@ -797,34 +797,34 @@ msgid "Size|#z"
 msgstr "Velikost|#z"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
-#: src/form1.C:43 src/form1.C:117 src/form1.C:267 src/form1.C:290
+#: src/form1.C:43 src/form1.C:117 src/form1.C:258 src/form1.C:281
 #: src/insets/insetbib.C:106 src/insets/insetbib.C:134
 #: src/insets/insetinclude.C:46 src/insets/insetindex.C:64
-#: src/latexoptions.C:21 src/layout_forms.C:53 src/layout_forms.C:188
-#: src/layout_forms.C:323 src/layout_forms.C:387 src/layout_forms.C:607
-#: src/lyx.C:47 src/lyx.C:85 src/mathed/math_forms.C:111 src/print_form.C:41
+#: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
+#: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
+#: src/lyx.C:47 src/lyx.C:95 src/mathed/math_forms.C:111 src/print_form.C:41
 #: src/print_form.C:114 src/sp_form.C:38
 msgid "OK"
 msgstr "V redu"
 
-#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:293 src/latexoptions.C:24
-#: src/layout_forms.C:50 src/layout_forms.C:155 src/layout_forms.C:192
-#: src/layout_forms.C:298 src/layout_forms.C:326 src/layout_forms.C:384
-#: src/layout_forms.C:611 src/lyx.C:50 src/lyx.C:88 src/lyx_sendfax.C:39
+#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:284 src/latexoptions.C:24
+#: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
+#: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
+#: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
 #: src/mathed/math_forms.C:108 src/mathed/math_forms.C:158
 #: src/mathed/math_forms.C:203 src/print_form.C:44 src/print_form.C:117
 #: src/sp_form.C:62
 msgid "Apply|#A"
 msgstr "Uporabi|#A"
 
-#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:270 src/form1.C:296
+#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:261 src/form1.C:287
 #: src/insets/insetbib.C:109 src/insets/insetbib.C:110
 #: src/insets/insetbib.C:137 src/insets/insetbib.C:138
 #: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
 #: src/insets/insetindex.C:68 src/insets/insetindex.C:69 src/latexoptions.C:27
-#: src/layout_forms.C:47 src/layout_forms.C:196 src/layout_forms.C:302
-#: src/layout_forms.C:329 src/layout_forms.C:381 src/layout_forms.C:615
-#: src/lyx.C:53 src/lyx.C:91 src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393
+#: src/layout_forms.C:64 src/layout_forms.C:285 src/layout_forms.C:391
+#: src/layout_forms.C:419 src/layout_forms.C:471 src/layout_forms.C:705
+#: src/lyx.C:53 src/lyx.C:103 src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393
 #: src/lyx_gui_misc.C:399 src/lyx_gui_misc.C:408 src/lyx_sendfax.C:35
 #: src/mathed/math_forms.C:102 src/mathed/math_forms.C:132
 #: src/mathed/math_forms.C:200 src/print_form.C:47 src/print_form.C:120
@@ -979,7 +979,7 @@ msgstr ""
 "Free Software Foundation, Inc.,\n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
 
-#: src/filedlg.C:221
+#: src/filedlg.C:234
 msgid "Warning! Couldn't open directory."
 msgstr "Pozor! Ne morem odpreti imenika."
 
@@ -1063,9 +1063,9 @@ msgstr "Prika¾i okvir|#F"
 msgid "Do Translations|#r"
 msgstr "Izvedi preslikave|#r"
 
-#: src/form1.C:129 src/menus.C:121 src/menus.C:128 src/menus.C:235
-#: src/menus.C:236 src/menus.C:237 src/menus.C:310 src/menus.C:311
-#: src/menus.C:312 src/sp_form.C:58
+#: src/form1.C:129 src/menus.C:169 src/menus.C:176 src/menus.C:283
+#: src/menus.C:284 src/menus.C:285 src/menus.C:358 src/menus.C:359
+#: src/menus.C:360 src/sp_form.C:58
 msgid "Options"
 msgstr "Izbire"
 
@@ -1073,212 +1073,239 @@ msgstr "Izbire"
 msgid "Angle:|#L"
 msgstr "Kot:|#L"
 
-#: src/form1.C:139 src/form1.C:141
-#, no-c-format
+#: src/form1.C:138
+#, c-format
 msgid "% of Page|#g"
 msgstr "% strani|#g"
 
-#: src/form1.C:144
+#: src/form1.C:141
 msgid "Default|#t"
 msgstr "Privzeto|#t"
 
-#: src/form1.C:147
+#: src/form1.C:144
 msgid "cm|#m"
 msgstr "cm|#m"
 
-#: src/form1.C:150
+#: src/form1.C:147
 msgid "inches|#h"
 msgstr "palcev|#h"
 
-#: src/form1.C:155
+#: src/form1.C:152
 msgid "Display"
 msgstr "Zaslon"
 
-#: src/form1.C:159
+#: src/form1.C:156
 msgid "Height"
 msgstr "Vi¹ina"
 
-#: src/form1.C:163 src/layout_forms.C:539 src/layout_forms.C:622
+#: src/form1.C:160 src/layout_forms.C:629 src/layout_forms.C:712
 msgid "Width"
 msgstr "©irina"
 
-#: src/form1.C:167
+#: src/form1.C:164
 msgid "Rotation"
 msgstr "Zavrtitev"
 
-#: src/form1.C:173
+#: src/form1.C:170
 msgid "Display in Color|#D"
 msgstr "Prika¾i v barvi|#D"
 
-#: src/form1.C:176
+#: src/form1.C:173
 msgid "Do not display this figure|#y"
 msgstr "Ne prika¾i te slike|#y"
 
-#: src/form1.C:179
+#: src/form1.C:176
 msgid "Display as Grayscale|#i"
 msgstr "Prika¾i v sivini|#i"
 
-#: src/form1.C:182
+#: src/form1.C:179
 msgid "Display as Monochrome|#s"
 msgstr "Prika¾i èrnobelo|#s"
 
-#: src/form1.C:189
+#: src/form1.C:186
 msgid "Default|#U"
 msgstr "Privzeto|#U"
 
-#: src/form1.C:192
+#: src/form1.C:189
 msgid "cm|#c"
 msgstr "cm|#c"
 
-#: src/form1.C:195
+#: src/form1.C:192
 msgid "inches|#n"
 msgstr "palcev|#n"
 
-#: src/form1.C:199 src/form1.C:201
-#, no-c-format
+#: src/form1.C:195
+#, c-format
 msgid "% of Page|#P"
 msgstr "% strani|#P"
 
-#: src/form1.C:205 src/form1.C:207
-#, no-c-format
+#: src/form1.C:198
+#, c-format
 msgid "% of Column|#o"
 msgstr "% stolpca|#o"
 
-#: src/form1.C:213
+#: src/form1.C:204
 msgid "Caption|#k"
 msgstr "Pojasnilo|#k"
 
-#: src/form1.C:216
+#: src/form1.C:207
 msgid "Subfigure|#q"
 msgstr "Podslika|#q"
 
-#: src/form1.C:239
+#: src/form1.C:230
 msgid "Directory:|#D"
 msgstr "Imenik:|#D"
 
-#: src/form1.C:243
+#: src/form1.C:234
 msgid "Pattern:|#P"
 msgstr "Vzorec:|#P"
 
-#: src/form1.C:251
+#: src/form1.C:242
 msgid "Filename:|#F"
 msgstr "Ime datoteke:|#F"
 
-#: src/form1.C:255
+#: src/form1.C:246
 msgid "Rescan|#R#r"
 msgstr "Prebrskaj|#R#r"
 
-#: src/form1.C:258
+#: src/form1.C:249
 msgid "Home|#H#h"
 msgstr "Domaèi imenik|#H#h"
 
-#: src/form1.C:261
+#: src/form1.C:252
 msgid "User1|#1"
 msgstr "Uporabnik1|#1"
 
-#: src/form1.C:264
+#: src/form1.C:255
 msgid "User2|#2"
 msgstr "Uporabnik2|#2"
 
-#: src/form1.C:299 src/layout_forms.C:83
+#: src/form1.C:290 src/layout_forms.C:119
 msgid "Columns"
 msgstr "Stolpci"
 
-#: src/form1.C:303 src/mathed/math_forms.C:135
+#: src/form1.C:294 src/mathed/math_forms.C:135
 msgid "Rows"
 msgstr "Vrstice"
 
-#: src/form1.C:323
+#: src/form1.C:315
 msgid "Find|#n"
 msgstr "I¹èi|#n"
 
-#: src/form1.C:327
+#: src/form1.C:319
 msgid "Replace with|#W"
 msgstr "Nadomesti z|#W"
 
-#: src/form1.C:331
+#: src/form1.C:323
 #, fuzzy
 msgid "@>|#F"
 msgstr "@>|#F"
 
-#: src/form1.C:335
+#: src/form1.C:327
 #, fuzzy
 msgid "@<|#B"
 msgstr "@<|#B"
 
-#: src/form1.C:339
+#: src/form1.C:331
 msgid "Replace|#R#r"
 msgstr "Nadomesti|#R#r"
 
-#: src/form1.C:343
+#: src/form1.C:335
 msgid "Close|^["
 msgstr "Zapri|^["
 
-#: src/form1.C:347
+#: src/form1.C:339
 msgid "Case sensitive|#s#S"
 msgstr "Loèi velike in male èrke|#s#S"
 
-#: src/form1.C:349
+#: src/form1.C:341
 msgid "Match word|#M#m"
 msgstr "Ujemanje besede|#M#m"
 
-#: src/form1.C:351
+#: src/form1.C:343
 msgid "Replace All|#A#a"
 msgstr "Nadomesti vse|#V#v"
 
-#: src/insets/figinset.C:1083
+#: src/insets/figinset.C:1090
 msgid "[render error]"
 msgstr "[napaka pri upodabljanju]"
 
-#: src/insets/figinset.C:1084
+#: src/insets/figinset.C:1091
 msgid "[rendering ... ]"
 msgstr "[upodabljam ... ]"
 
-#: src/insets/figinset.C:1086
+#: src/insets/figinset.C:1093
 msgid "[no file]"
 msgstr "[ni datoteke]"
 
-#: src/insets/figinset.C:1087
+#: src/insets/figinset.C:1094
 msgid "[not displayed]"
 msgstr "[ni prikazano]"
 
-#: src/insets/figinset.C:1088
+#: src/insets/figinset.C:1095
 msgid "[no ghostscript]"
 msgstr "[ni ghostscripta]"
 
-#: src/insets/figinset.C:1090
+#: src/insets/figinset.C:1097
 msgid "[unknown error]"
 msgstr "[neznana napaka]"
 
-#: src/insets/figinset.C:1287
+#: src/insets/figinset.C:1294
 msgid "Figure"
 msgstr "Slika"
 
-#: src/insets/figinset.C:1349 src/insets/figinset.C:1487
+#: src/insets/figinset.C:1356 src/insets/figinset.C:1494
 msgid "empty figure path"
 msgstr "prazna pot do slike"
 
-#: src/insets/figinset.C:2133
+#: src/insets/figinset.C:2150
 msgid "Clipart"
 msgstr "Izrezek"
 
-#: src/insets/figinset.C:2134 src/lyxfunc.C:2525 src/lyxfunc.C:2588
-#: src/lyxfunc.C:2811
+#: src/insets/figinset.C:2151 src/lyxfunc.C:2501 src/lyxfunc.C:2564
+#: src/lyxfunc.C:2787
 msgid "Document"
 msgstr "Spis"
 
-#: src/insets/figinset.C:2140 src/insets/figinset.C:2143
+#: src/insets/figinset.C:2157 src/insets/figinset.C:2160
 msgid "EPS Figure"
 msgstr "Slika EPS"
 
-#: src/insets/figinset.C:2157
+#: src/insets/figinset.C:2174
 msgid "Filename can't contain any of these characters:"
 msgstr "Ime datoteke ne sme vsebovati teh znakov:"
 
-#: src/insets/figinset.C:2158
+#: src/insets/figinset.C:2175
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "presledek, '#', '~', '$' ali '%'."
+
+#: src/insets/form_url.C:19
+#, fuzzy
+msgid "Url"
+msgstr "Url: "
+
+#: src/insets/form_url.C:20
+msgid "Url|#U"
+msgstr "Url|#U"
+
+#: src/insets/form_url.C:23
+#, fuzzy
+msgid "Name"
+msgstr "Ime|#N"
+
+#: src/insets/form_url.C:24 src/lyx.C:171
+msgid "Name|#N"
+msgstr "Ime|#N"
+
+#: src/insets/form_url.C:27
+#, fuzzy
+msgid "HTML type"
+msgstr "Tip HTML|#H"
+
+#: src/insets/form_url.C:28
+msgid "HTML type|#H"
+msgstr "Tip HTML|#H"
 
 #: src/insets/insetbib.C:99
 msgid "Key:"
@@ -1323,11 +1350,11 @@ msgstr "Stil:  "
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3682
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3709
 msgid "Error"
 msgstr "Napaka"
 
-#: src/insets/inseterror.C:180
+#: src/insets/inseterror.C:182
 msgid "LaTeX Error"
 msgstr "Napaka LaTeXa"
 
@@ -1369,9 +1396,9 @@ msgid "Use include|#U"
 msgstr "Uporabi vkljuèitev|#U"
 
 #. launches dialog
-#: src/insets/insetinclude.C:110 src/lyx_cb.C:363 src/lyxfunc.C:2473
-#: src/lyxfunc.C:2563 src/lyxfunc.C:2612 src/lyxfunc.C:2685 src/lyxfunc.C:2786
-#: src/menus.C:122 src/menus.C:249 src/menus.C:250 src/menus.C:251
+#: src/insets/insetinclude.C:110 src/lyx_cb.C:363 src/lyxfunc.C:2449
+#: src/lyxfunc.C:2539 src/lyxfunc.C:2588 src/lyxfunc.C:2661 src/lyxfunc.C:2762
+#: src/menus.C:170 src/menus.C:297 src/menus.C:298 src/menus.C:299
 msgid "Documents"
 msgstr "Spisi"
 
@@ -1410,11 +1437,11 @@ msgid "PrintIndex"
 msgstr "Stvarno kazalo"
 
 #: src/insets/insetinfo.C:69 src/insets/insetinfo.C:88
-#: src/insets/insetinfo.C:204
+#: src/insets/insetinfo.C:206
 msgid "Note"
 msgstr "Opomba"
 
-#: src/insets/insetinfo.C:191 src/insets/insetinfo.C:195 src/lyx.C:142
+#: src/insets/insetinfo.C:193 src/insets/insetinfo.C:197 src/lyx.C:155
 msgid "Close|#C^["
 msgstr "Zapri|#Z^["
 
@@ -1467,35 +1494,19 @@ msgid "Ref: "
 msgstr "Ref: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:798
+#: src/insets/insettoc.h:35 src/lyxfunc.C:773
 msgid "Table of Contents"
 msgstr "Vsebinsko kazalo"
 
-#: src/insets/inseturl.C:116 src/insets/inseturl.C:117
-msgid "Url|#U"
-msgstr "Url|#U"
-
-#: src/insets/inseturl.C:118 src/insets/inseturl.C:119 src/lyx.C:158
-msgid "Name|#N"
-msgstr "Ime|#N"
-
-#: src/insets/inseturl.C:120 src/insets/inseturl.C:121
-msgid "Close|#C^[^M"
-msgstr "Zapri|#Z^[^M"
-
-#: src/insets/inseturl.C:124 src/insets/inseturl.C:125
-msgid "HTML type|#H"
-msgstr "Tip HTML|#H"
-
-#: src/insets/inseturl.C:145
+#: src/insets/inseturl.C:135
 msgid "Insert Url"
 msgstr "Vstavi Url"
 
-#: src/insets/inseturl.C:154
+#: src/insets/inseturl.C:149
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/inseturl.C:156
+#: src/insets/inseturl.C:151
 msgid "Url: "
 msgstr "Url: "
 
@@ -1506,11 +1517,11 @@ msgstr "Url: "
 msgid "Opened inset"
 msgstr "Odprt vstavek"
 
-#: src/intl.C:288 src/intl.C:289
+#: src/intl.C:301 src/intl.C:302
 msgid "other..."
 msgstr "drugo..."
 
-#: src/intl.C:358
+#: src/intl.C:371
 msgid "Key Mappings"
 msgstr "Polo¾aji tipk"
 
@@ -1522,7 +1533,7 @@ msgstr "  izbire: "
 msgid "Allow accents on ALL characters|#w"
 msgstr "Dovoli akcente na VSEH znakih|#w"
 
-#: src/latexoptions.C:49 src/lyxvc.C:333 src/lyxvc.C:334
+#: src/latexoptions.C:51 src/lyxvc.C:346 src/lyxvc.C:347
 msgid "Update|#Uu"
 msgstr "Osve¾i|#Uu"
 
@@ -1550,463 +1561,463 @@ msgstr "Preverite vsebino datoteke \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "®al, moram iti ven :-("
 
-#: src/layout_forms.C:22
+#: src/layout_forms.C:25
 msgid "Separation"
 msgstr "Separacija"
 
-#: src/layout_forms.C:28
+#: src/layout_forms.C:33
 msgid "Indent|#I"
 msgstr "Zamik|#i"
 
-#: src/layout_forms.C:30
+#: src/layout_forms.C:37
 msgid "Skip|#K"
 msgstr "Preskok|#P"
 
-#: src/layout_forms.C:34
+#: src/layout_forms.C:43
 msgid "Class:|#C"
 msgstr "Razred:|#R"
 
-#: src/layout_forms.C:38
+#: src/layout_forms.C:49
 msgid "Pagestyle:|#P"
 msgstr "Stil strani:|#P"
 
-#: src/layout_forms.C:41
+#: src/layout_forms.C:54
 msgid "Fonts:|#F"
 msgstr "Pisave:|#F"
 
-#: src/layout_forms.C:44
+#: src/layout_forms.C:59
 msgid "Font Size:|#O"
 msgstr "Velikost pisave:|#O"
 
-#: src/layout_forms.C:56
+#: src/layout_forms.C:76
 msgid "Float Placement:|#L"
 msgstr "Postavitev plovk:|#L"
 
-#: src/layout_forms.C:58
+#: src/layout_forms.C:80
 msgid "PS Driver:|#S"
 msgstr "Gonilnik za PS:|#S"
 
-#: src/layout_forms.C:61
+#: src/layout_forms.C:85
 msgid "Encoding:|#D"
 msgstr "Kodiranje:|#D"
 
-#: src/layout_forms.C:73
+#: src/layout_forms.C:103
 msgid "One|#n"
 msgstr "Ena|#n"
 
-#: src/layout_forms.C:75
+#: src/layout_forms.C:107
 msgid "Two|#T"
 msgstr "Dve|#T"
 
-#: src/layout_forms.C:79
+#: src/layout_forms.C:113
 msgid "Sides"
 msgstr "Strani"
 
-#: src/layout_forms.C:89
+#: src/layout_forms.C:127
 msgid "One|#e"
 msgstr "Ena|#e"
 
-#: src/layout_forms.C:91
+#: src/layout_forms.C:131
 msgid "Two|#w"
 msgstr "Dve|#w"
 
-#: src/layout_forms.C:95
+#: src/layout_forms.C:137
 msgid "Extra Options:|#X"
 msgstr "Dodatne izbire:|#X"
 
-#: src/layout_forms.C:97
+#: src/layout_forms.C:141
 msgid "Language:"
 msgstr "Jezik:"
 
-#: src/layout_forms.C:103
+#: src/layout_forms.C:151
 msgid "Default Skip:|#u"
 msgstr "Privzeti preskok:|#u"
 
-#: src/layout_forms.C:107
+#: src/layout_forms.C:157
 msgid "Section number depth"
 msgstr "Globina ¹tevilk razdelkov"
 
-#: src/layout_forms.C:110
+#: src/layout_forms.C:162
 msgid "Table of contents depth"
 msgstr "Globina kazala vsebine"
 
-#: src/layout_forms.C:113
+#: src/layout_forms.C:167
 msgid "Spacing|#g"
 msgstr "Razmiki|#g"
 
-#: src/layout_forms.C:117
+#: src/layout_forms.C:173
 msgid "Bullet Shapes|#B"
 msgstr "Oblike pik|#B"
 
-#: src/layout_forms.C:120
+#: src/layout_forms.C:178
 msgid "Use AMS Math|#M"
 msgstr "Uporabi matematiko AMS|#M"
 
-#: src/layout_forms.C:140
+#: src/layout_forms.C:211
 msgid "Family:|#F"
 msgstr "Dru¾ina:|#F"
 
-#: src/layout_forms.C:143
+#: src/layout_forms.C:216
 msgid "Series:|#S"
 msgstr "Vrsta:|#S"
 
-#: src/layout_forms.C:146
+#: src/layout_forms.C:221
 msgid "Shape:|#H"
 msgstr "Oblika:|#H"
 
-#: src/layout_forms.C:149
+#: src/layout_forms.C:226
 msgid "Size:|#Z"
 msgstr "Velikost:|#Z"
 
-#: src/layout_forms.C:152
+#: src/layout_forms.C:231
 msgid "Misc:|#M"
 msgstr "Razno:|#M"
 
-#: src/layout_forms.C:161
+#: src/layout_forms.C:244
 msgid "Color:|#C"
 msgstr "Barva:|#B"
 
-#: src/layout_forms.C:164
+#: src/layout_forms.C:249
 msgid "Toggle on all these|#T"
 msgstr "Vklopi vse te|#T"
 
-#: src/layout_forms.C:166
+#: src/layout_forms.C:252
 msgid "These are never toggled"
 msgstr "Ti se nikoli ne preklopijo"
 
-#: src/layout_forms.C:170
+#: src/layout_forms.C:257
 msgid "These are always toggled"
 msgstr "Ti se vedno preklopijo"
 
-#: src/layout_forms.C:211
+#: src/layout_forms.C:300
 msgid "Label Width:|#d"
 msgstr "©irina oznake:|#d"
 
-#: src/layout_forms.C:215
+#: src/layout_forms.C:304
 msgid "Indent"
 msgstr "Zamik"
 
-#: src/layout_forms.C:219
+#: src/layout_forms.C:308
 msgid "Above|#b"
 msgstr "Zgoraj|#b"
 
-#: src/layout_forms.C:221
+#: src/layout_forms.C:310
 msgid "Below|#E"
 msgstr "Spodaj|#E"
 
-#: src/layout_forms.C:223
+#: src/layout_forms.C:312
 msgid "Above|#o"
 msgstr "Zgoraj|#o"
 
-#: src/layout_forms.C:225
+#: src/layout_forms.C:314
 msgid "Below|#l"
 msgstr "Spodaj|#l"
 
-#: src/layout_forms.C:227
+#: src/layout_forms.C:316
 msgid "No Indent|#I"
 msgstr "Brez zamika|#I"
 
-#: src/layout_forms.C:231 src/layout_forms.C:494 src/mathed/math_forms.C:94
+#: src/layout_forms.C:320 src/layout_forms.C:584 src/mathed/math_forms.C:94
 msgid "Right|#R"
 msgstr "Desno|#R"
 
-#: src/layout_forms.C:233
+#: src/layout_forms.C:322
 msgid "Left|#f"
 msgstr "Levo|#l"
 
-#: src/layout_forms.C:235
+#: src/layout_forms.C:324
 msgid "Block|#c"
 msgstr "Blok|#c"
 
-#: src/layout_forms.C:237
+#: src/layout_forms.C:326
 msgid "Center|#n"
 msgstr "Sredina|#n"
 
-#: src/layout_forms.C:247
+#: src/layout_forms.C:336
 msgid "Above:|#v"
 msgstr "Zgoraj:|#v"
 
-#: src/layout_forms.C:251
+#: src/layout_forms.C:340
 msgid "Below:|#w"
 msgstr "Spodaj:|#w"
 
-#: src/layout_forms.C:255
+#: src/layout_forms.C:344
 msgid "Pagebreaks"
 msgstr "Prelomi strani"
 
-#: src/layout_forms.C:259
+#: src/layout_forms.C:348
 msgid "Lines"
 msgstr "Èrte"
 
-#: src/layout_forms.C:263 src/layout_forms.C:500 src/layout_forms.C:626
+#: src/layout_forms.C:352 src/layout_forms.C:590 src/layout_forms.C:716
 msgid "Alignment"
 msgstr "Poravnava"
 
-#: src/layout_forms.C:267
+#: src/layout_forms.C:356
 msgid "Vertical Spaces"
 msgstr "Vertikalni presledki"
 
-#: src/layout_forms.C:271
+#: src/layout_forms.C:360
 msgid "ExtraOpt|#X"
 msgstr "Dodatne izbire|#X"
 
-#: src/layout_forms.C:275
+#: src/layout_forms.C:364
 msgid "Keep|#K"
 msgstr "Ohrani|#K"
 
-#: src/layout_forms.C:277
+#: src/layout_forms.C:366
 msgid "Keep|#p"
 msgstr "Ohrani|#p"
 
-#: src/layout_forms.C:294 src/lyx_gui_misc.C:409 src/lyx_sendfax.C:31
+#: src/layout_forms.C:383 src/lyx_gui_misc.C:409 src/lyx_sendfax.C:31
 msgid "OK|#O"
 msgstr "V redu|#r"
 
-#: src/layout_forms.C:332
+#: src/layout_forms.C:422
 msgid "Type:|#T"
 msgstr "Tip:|#T"
 
-#: src/layout_forms.C:337
+#: src/layout_forms.C:427
 msgid "Single|#S"
 msgstr "Enojni|#S"
 
-#: src/layout_forms.C:339
+#: src/layout_forms.C:429
 msgid "Double|#D"
 msgstr "Dvojni|#D"
 
-#: src/layout_forms.C:343
+#: src/layout_forms.C:433
 msgid "Text"
 msgstr "Besedilo"
 
-#: src/layout_forms.C:363
+#: src/layout_forms.C:453
 msgid "Special:|#S"
 msgstr "Posebno:|#S"
 
-#: src/layout_forms.C:373
+#: src/layout_forms.C:463
 msgid "Margins"
 msgstr "Robovi"
 
-#: src/layout_forms.C:377
+#: src/layout_forms.C:467
 msgid "Foot/Head Margins"
 msgstr "Robovi noge/glave"
 
-#: src/layout_forms.C:397
+#: src/layout_forms.C:487
 msgid "Orientation"
 msgstr "Usmeritev"
 
-#: src/layout_forms.C:403
+#: src/layout_forms.C:493
 msgid "Portrait|#o"
 msgstr "Pokonèno|#o"
 
-#: src/layout_forms.C:405
+#: src/layout_forms.C:495
 msgid "Landscape|#L"
 msgstr "Preèno|#L"
 
-#: src/layout_forms.C:409
+#: src/layout_forms.C:499
 msgid "Papersize:|#P"
 msgstr "Velikost papirja:|#P"
 
-#: src/layout_forms.C:413
+#: src/layout_forms.C:503
 msgid "Custom Papersize"
 msgstr "Uporabni¹ka velikost papirja"
 
-#: src/layout_forms.C:417
+#: src/layout_forms.C:507
 msgid "Use Geometry Package|#U"
 msgstr "Uporabi paket Geometry|#U"
 
-#: src/layout_forms.C:419
+#: src/layout_forms.C:509
 msgid "Width:|#W"
 msgstr "©irina:|#W"
 
-#: src/layout_forms.C:422
+#: src/layout_forms.C:512
 msgid "Height:|#H"
 msgstr "Vi¹ina:|#H"
 
-#: src/layout_forms.C:425
+#: src/layout_forms.C:515
 msgid "Top:|#T"
 msgstr "Zgoraj:|#T"
 
-#: src/layout_forms.C:428
+#: src/layout_forms.C:518
 msgid "Bottom:|#B"
 msgstr "Spodaj:|#B"
 
-#: src/layout_forms.C:431
+#: src/layout_forms.C:521
 msgid "Left:|#e"
 msgstr "Levo:|#e"
 
-#: src/layout_forms.C:434
+#: src/layout_forms.C:524
 msgid "Right:|#R"
 msgstr "Desno:|#R"
 
-#: src/layout_forms.C:437
+#: src/layout_forms.C:527
 msgid "Headheight:|#i"
 msgstr "Vi¹ina glave:|#i"
 
-#: src/layout_forms.C:440
+#: src/layout_forms.C:530
 msgid "Headsep:|#d"
 msgstr "Loèitev glave:|#d"
 
-#: src/layout_forms.C:443
+#: src/layout_forms.C:533
 msgid "Footskip:|#F"
 msgstr "Preskok noge:|#F"
 
-#: src/layout_forms.C:478
+#: src/layout_forms.C:568
 msgid "Borders"
 msgstr "Meje"
 
-#: src/layout_forms.C:482 src/layout_forms.C:632
+#: src/layout_forms.C:572 src/layout_forms.C:722
 msgid "Top|#T"
 msgstr "Zgoraj|#T"
 
-#: src/layout_forms.C:486 src/layout_forms.C:638
+#: src/layout_forms.C:576 src/layout_forms.C:728
 msgid "Bottom|#B"
 msgstr "Spodaj|#B"
 
-#: src/layout_forms.C:490 src/mathed/math_forms.C:97
+#: src/layout_forms.C:580 src/mathed/math_forms.C:97
 msgid "Left|#L"
 msgstr "Levo|#L"
 
-#: src/layout_forms.C:504
+#: src/layout_forms.C:594
 msgid "Special Cell"
 msgstr "Posebna celica"
 
-#: src/layout_forms.C:508
+#: src/layout_forms.C:598
 msgid "Multicolumn|#M"
 msgstr "Veèstolpèna|#M"
 
-#: src/layout_forms.C:510
+#: src/layout_forms.C:600
 msgid "Append Column|#A"
 msgstr "Dodaj stolpec|#A"
 
-#: src/layout_forms.C:513
+#: src/layout_forms.C:603
 msgid "Delete Column|#O"
 msgstr "Odstrani stolpec|#O"
 
-#: src/layout_forms.C:516
+#: src/layout_forms.C:606
 msgid "Append Row|#p"
 msgstr "Dodaj vrsto|#p"
 
-#: src/layout_forms.C:519
+#: src/layout_forms.C:609
 msgid "Delete Row|#w"
 msgstr "Odstrani vrsto|#w"
 
-#: src/layout_forms.C:522
+#: src/layout_forms.C:612
 msgid "Delete Table|#D"
 msgstr "Odstrani tabelo|#D"
 
-#: src/layout_forms.C:525
+#: src/layout_forms.C:615
 msgid "Column"
 msgstr "Stolpec"
 
-#: src/layout_forms.C:528
+#: src/layout_forms.C:618
 msgid "Row"
 msgstr "Vrsta"
 
-#: src/layout_forms.C:531
+#: src/layout_forms.C:621
 msgid "Set Borders|#S"
 msgstr "Nastavi meje|#S"
 
-#: src/layout_forms.C:534
+#: src/layout_forms.C:624
 msgid "Unset Borders|#U"
 msgstr "Iznièi meje|#U"
 
-#: src/layout_forms.C:537 src/layout_forms.C:551
+#: src/layout_forms.C:627 src/layout_forms.C:641
 msgid "Longtable"
 msgstr "Dolga tabela"
 
-#: src/layout_forms.C:542
+#: src/layout_forms.C:632
 msgid "Rotate 90°|#9"
 msgstr "Zavrti 90°|#9"
 
-#: src/layout_forms.C:544
+#: src/layout_forms.C:634
 msgid "Linebreaks|#N"
 msgstr "Prelomi vrstic|#N"
 
-#: src/layout_forms.C:546
+#: src/layout_forms.C:636
 msgid "Spec. Table"
 msgstr "Posebna tabela"
 
-#: src/layout_forms.C:555
+#: src/layout_forms.C:645
 msgid "First Head"
 msgstr "Prva glava"
 
-#: src/layout_forms.C:557
+#: src/layout_forms.C:647
 msgid "Head"
 msgstr "Glava"
 
-#: src/layout_forms.C:559
+#: src/layout_forms.C:649
 msgid "Foot"
 msgstr "Noga"
 
-#: src/layout_forms.C:561
+#: src/layout_forms.C:651
 msgid "Last Foot"
 msgstr "Zadnja noga"
 
-#: src/layout_forms.C:563
+#: src/layout_forms.C:653
 msgid "New Page"
 msgstr "Nova stran"
 
-#: src/layout_forms.C:565
+#: src/layout_forms.C:655
 msgid "Rotate 90°"
 msgstr "Zavrti 90°"
 
-#: src/layout_forms.C:567
+#: src/layout_forms.C:657
 msgid "Extra|#X"
 msgstr "Dodatno|#X"
 
-#: src/layout_forms.C:570
+#: src/layout_forms.C:660
 msgid "Left|#e"
 msgstr "Levo|#e"
 
-#: src/layout_forms.C:573
+#: src/layout_forms.C:663
 msgid "Right|#i"
 msgstr "Desno|#i"
 
-#: src/layout_forms.C:576
+#: src/layout_forms.C:666
 msgid "Center|#C"
 msgstr "Sredina|#S"
 
-#: src/layout_forms.C:600
+#: src/layout_forms.C:690
 msgid "Extra Options"
 msgstr "Dodatne izbire"
 
-#: src/layout_forms.C:604
+#: src/layout_forms.C:694
 msgid "Length|#L"
 msgstr "Dol¾ina|#L"
 
-#: src/layout_forms.C:619
+#: src/layout_forms.C:709
 msgid "or %|#o"
 msgstr "ali %|#o"
 
-#: src/layout_forms.C:635
+#: src/layout_forms.C:725
 msgid "Middle|#d"
 msgstr "Sredina|#d"
 
-#: src/layout_forms.C:647
+#: src/layout_forms.C:737
 msgid "HFill between Minipage paragraphs|#H"
 msgstr "HFill med odstavki ministrani"
 
-#: src/layout_forms.C:649
+#: src/layout_forms.C:739
 msgid "Start new Minipage|#S"
 msgstr "Zaèni novo ministran"
 
-#: src/layout_forms.C:653
+#: src/layout_forms.C:743
 msgid "Indented Paragraph|#I"
 msgstr "Zamaknjen odstavek|#I"
 
-#: src/layout_forms.C:656
+#: src/layout_forms.C:746
 msgid "Minipage|#M"
 msgstr "Ministran|#M"
 
-#: src/layout_forms.C:659
+#: src/layout_forms.C:749
 msgid "Floatflt|#F"
 msgstr "Floatflt|#F"
 
-#: src/layout_forms.C:682
+#: src/layout_forms.C:774
 msgid "Special Multicolumn Alignment"
 msgstr "Posebna veèstolpèna poravnava"
 
-#: src/layout_forms.C:695
+#: src/layout_forms.C:794
 msgid "Special Column Alignment"
 msgstr "Posebna stolpèna poravnava"
 
@@ -2026,39 +2037,39 @@ msgstr "Tip"
 msgid "Roman Font|#R"
 msgstr "Pokonèna pisava|#R"
 
-#: src/lyx.C:77
+#: src/lyx.C:79
 msgid "Sans Serif Font|#S"
 msgstr "Pisava brez serifov|#S"
 
-#: src/lyx.C:79
+#: src/lyx.C:83
 msgid "Typewriter Font|#T"
 msgstr "Pisava pisalnega stroja|#T"
 
-#: src/lyx.C:81
+#: src/lyx.C:87
 msgid "Font Norm|#N"
 msgstr "Kodna tabela|#N"
 
-#: src/lyx.C:83
+#: src/lyx.C:91
 msgid "Font Zoom|#Z"
 msgstr "Poveèava pisave|#Z"
 
-#: src/lyx.C:116
+#: src/lyx.C:129
 msgid "Update|Uu#u"
 msgstr "Osve¾i|Uu#u"
 
-#: src/lyx.C:138
+#: src/lyx.C:151
 msgid "Update|#U"
 msgstr "Osve¾i|#U"
 
-#: src/lyx.C:146
+#: src/lyx.C:159
 msgid "Insert Reference|#I^M"
 msgstr "Vstavi referenco|#I^M"
 
-#: src/lyx.C:150
+#: src/lyx.C:163
 msgid "Insert Page Number|#P"
 msgstr "Vstavi ¹tevilko strani|#P"
 
-#: src/lyx.C:154
+#: src/lyx.C:167
 msgid "Go to Reference|#G"
 msgstr "Pojdi na referenco|#G"
 
@@ -2070,7 +2081,7 @@ msgstr "Shranjevanju spodletelo. Preimenujem in poskusim ponovno?"
 msgid "(If not, document is not saved.)"
 msgstr "(Sicer spis ne bo shranjen.)"
 
-#: src/lyx_cb.C:364 src/lyxfunc.C:2474
+#: src/lyx_cb.C:364 src/lyxfunc.C:2450
 msgid "Templates"
 msgstr "Vzorci"
 
@@ -2079,9 +2090,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Vnesite ime datoteke pod katerim naj shranim spis"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:376 src/lyxfunc.C:2480 src/lyxfunc.C:2507 src/lyxfunc.C:2572
-#: src/lyxfunc.C:2621 src/lyxfunc.C:2646 src/lyxfunc.C:2656 src/lyxfunc.C:2701
-#: src/lyxfunc.C:2726 src/lyxfunc.C:2736 src/lyxfunc.C:2795
+#: src/lyx_cb.C:376 src/lyxfunc.C:2456 src/lyxfunc.C:2483 src/lyxfunc.C:2548
+#: src/lyxfunc.C:2597 src/lyxfunc.C:2622 src/lyxfunc.C:2632 src/lyxfunc.C:2677
+#: src/lyxfunc.C:2702 src/lyxfunc.C:2712 src/lyxfunc.C:2771
 msgid "Canceled."
 msgstr "Preklicano."
 
@@ -2117,23 +2128,23 @@ msgstr "Spis ¾e obstaja:"
 msgid "Replace file?"
 msgstr "Nadomestim datoteko?"
 
-#: src/lyx_cb.C:438 src/lyxvc.C:360
+#: src/lyx_cb.C:438 src/lyxvc.C:378
 msgid "Sorry, can't do this while pictures are being rendered."
 msgstr "®al, tega ne morem storiti med upodabljanjem slik."
 
-#: src/lyx_cb.C:439 src/lyxvc.C:362
+#: src/lyx_cb.C:439 src/lyxvc.C:380
 msgid "Please wait a few seconds for this to finish and try again."
 msgstr "Prosim, poèakajte nekaj sekund, da se to konèa, in poskusite ponovno."
 
-#: src/lyx_cb.C:440 src/lyxvc.C:364
+#: src/lyx_cb.C:440 src/lyxvc.C:382
 msgid "(or kill runaway gs processes by hand and try again.)"
 msgstr "(ali roèno pobijte pobegli proces gs in poskusite ponovno)."
 
-#: src/lyx_cb.C:446 src/lyxvc.C:370
+#: src/lyx_cb.C:446 src/lyxvc.C:388
 msgid "Can't do this while the spellchecker is running."
 msgstr "Tega ne morem storiti med tekom èrkovalnika."
 
-#: src/lyx_cb.C:447 src/lyxvc.C:372
+#: src/lyx_cb.C:447 src/lyxvc.C:390
 msgid "Stop the spellchecker first."
 msgstr "Najprej ustavite èrkovalnik."
 
@@ -2207,7 +2218,7 @@ msgid "Executing command:"
 msgstr "Izvajam ukaz:"
 
 #: src/lyx_cb.C:841 src/lyx_cb.C:878 src/lyx_cb.C:911 src/lyx_cb.C:938
-#: src/lyxfunc.C:2516
+#: src/lyxfunc.C:2492
 msgid "File already exists:"
 msgstr "Datoteka ¾e obstaja:"
 
@@ -2274,257 +2285,257 @@ msgstr "Datoteka za vstavek"
 msgid "Error! Cannot open specified file:"
 msgstr "Napaka! Ne morem odpreti doloèene datoteke:"
 
-#: src/lyx_cb.C:1156
+#: src/lyx_cb.C:1158
 msgid "Table Of Contents"
 msgstr "Kazalo vsebine"
 
-#: src/lyx_cb.C:1167 src/mathed/formula.C:1028
+#: src/lyx_cb.C:1174 src/mathed/formula.C:1028
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
-#: src/lyx_cb.C:1185
+#: src/lyx_cb.C:1194
 msgid "Insert Reference"
 msgstr "Vstavi referenco"
 
-#: src/lyx_cb.C:1214
+#: src/lyx_cb.C:1228
 msgid "Inserting Footnote..."
 msgstr "Vstavi opombo v nogi..."
 
 #. Import file
-#: src/lyx_cb.C:1270
+#: src/lyx_cb.C:1284
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Uvozi datoteko LinuxDoc SGML `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1278
+#: src/lyx_cb.C:1292
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko za TeX..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1285
+#: src/lyx_cb.C:1299
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1342
+#: src/lyx_cb.C:1356
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
-#: src/lyx_cb.C:1465
+#: src/lyx_cb.C:1481
 msgid "Character Style"
 msgstr "Znakovni stil"
 
-#: src/lyx_cb.C:1668
+#: src/lyx_cb.C:1689
 msgid "Paragraph Environment"
 msgstr "Okolje odstavka"
 
-#: src/lyx_cb.C:1920
+#: src/lyx_cb.C:1940
 msgid "Document Layout"
 msgstr "Izgled spisa"
 
-#: src/lyx_cb.C:1959
+#: src/lyx_cb.C:1978
 msgid "Quotes"
 msgstr "Narekovaji"
 
-#: src/lyx_cb.C:2004
+#: src/lyx_cb.C:2025
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/lyx_cb.C:2014
+#: src/lyx_cb.C:2041
 msgid "Do you want to save the current settings"
 msgstr "Ali ¾elite shraniti trenutne nastavitve"
 
-#: src/lyx_cb.C:2015
+#: src/lyx_cb.C:2042
 msgid "for Character, Document, Paper and Quotes"
 msgstr "za Znake, Spis, Papir in Narekovaje"
 
-#: src/lyx_cb.C:2016
+#: src/lyx_cb.C:2043
 msgid "as default for new documents?"
 msgstr "kot privzete za nove spise?"
 
-#: src/lyx_cb.C:2033 src/lyx_cb.C:2045
+#: src/lyx_cb.C:2060 src/lyx_cb.C:2072
 msgid "Open/Close..."
 msgstr "Odpri/Zapri..."
 
-#: src/lyx_cb.C:2068
+#: src/lyx_cb.C:2095
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih informacij"
 
-#: src/lyx_cb.C:2078
+#: src/lyx_cb.C:2105
 msgid "Redo not yet supported in math mode"
 msgstr "Ponovitev ¹e ni podprta v matematiènem naèinu"
 
-#: src/lyx_cb.C:2088
+#: src/lyx_cb.C:2115
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih informacij"
 
-#: src/lyx_cb.C:2279
+#: src/lyx_cb.C:2306
 msgid "Font: "
 msgstr "Pisava: "
 
-#: src/lyx_cb.C:2283
+#: src/lyx_cb.C:2310
 msgid ", Depth: "
 msgstr ", globina: "
 
-#: src/lyx_cb.C:2311
+#: src/lyx_cb.C:2338
 msgid "Inserting margin note..."
 msgstr "Vstavljam opombo na robu..."
 
-#: src/lyx_cb.C:2352
+#: src/lyx_cb.C:2379
 msgid "Paragraph environment type copied"
 msgstr "Prekopiran tip okolja odstavka"
 
-#: src/lyx_cb.C:2361
+#: src/lyx_cb.C:2388
 msgid "Paragraph environment type set"
 msgstr "Nastavljen tip okolja odstavka"
 
-#: src/lyx_cb.C:2452
+#: src/lyx_cb.C:2479
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Spremenjena globina okolja (v mo¾nem razponu, morda tudi ne)"
 
-#: src/lyx_cb.C:2692
+#: src/lyx_cb.C:2719
 msgid "Paragraph layout set"
 msgstr "Nastavljen izgled odstavka"
 
-#: src/lyx_cb.C:2762
+#: src/lyx_cb.C:2789
 msgid "Should I set some parameters to"
 msgstr "Ali naj nastavim nekatere parametre"
 
-#: src/lyx_cb.C:2764
+#: src/lyx_cb.C:2791
 msgid "the defaults of this document class?"
 msgstr "na privzete vrednosti tega razreda spisa?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2773 src/lyx_cb.C:2892 src/lyx_cb.C:2899
+#: src/lyx_cb.C:2800 src/lyx_cb.C:2919 src/lyx_cb.C:2926
 msgid "Conversion Errors!"
 msgstr "Napake pri pretvarjanju!"
 
-#: src/lyx_cb.C:2774 src/lyx_cb.C:2900
+#: src/lyx_cb.C:2801 src/lyx_cb.C:2927
 msgid "Unable to switch to new document class."
 msgstr "Ne morem preklopiti na novi razred spisa."
 
-#: src/lyx_cb.C:2775 src/lyx_cb.C:2901
+#: src/lyx_cb.C:2802 src/lyx_cb.C:2928
 msgid "Reverting to original document class."
 msgstr "Vraèam se na izvorni razred spisa."
 
-#: src/lyx_cb.C:2875
+#: src/lyx_cb.C:2902
 msgid "Converting document to new document class..."
 msgstr "Pretvarjam spis v nov razred spisa..."
 
-#: src/lyx_cb.C:2887
+#: src/lyx_cb.C:2914
 msgid "One paragraph couldn't be converted"
 msgstr "En odstavek ne more biti pretvorjen"
 
-#: src/lyx_cb.C:2890
+#: src/lyx_cb.C:2917
 msgid " paragraphs couldn't be converted"
 msgstr " odstavkov ne more biti pretvorjenih"
 
-#: src/lyx_cb.C:2893
+#: src/lyx_cb.C:2920
 msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
-#: src/lyx_cb.C:2979
+#: src/lyx_cb.C:3006
 msgid "Document layout set"
 msgstr "Nastavitev izgleda spisa"
 
-#: src/lyx_cb.C:3029 src/lyx_cb.C:3033
+#: src/lyx_cb.C:3056 src/lyx_cb.C:3060
 msgid "No more notes"
 msgstr "Ni veè opomb"
 
-#: src/lyx_cb.C:3064
+#: src/lyx_cb.C:3091
 msgid "Quotes type set"
 msgstr "Nastavitev vrste narekovajev"
 
-#: src/lyx_cb.C:3128
+#: src/lyx_cb.C:3155
 msgid "LaTeX preamble set"
 msgstr "Nastavitev vzglavja LaTeXa"
 
-#: src/lyx_cb.C:3150
+#: src/lyx_cb.C:3177
 msgid "Cannot insert table in table."
 msgstr "Ne morem vstaviti tabele v tabelo."
 
-#: src/lyx_cb.C:3155
+#: src/lyx_cb.C:3182
 msgid "Inserting table..."
 msgstr "Vstavljam tabelo..."
 
-#: src/lyx_cb.C:3215
+#: src/lyx_cb.C:3242
 msgid "Table inserted"
 msgstr "Tabela vstavljena"
 
-#: src/lyx_cb.C:3273 src/lyx_cb.C:3291
+#: src/lyx_cb.C:3300 src/lyx_cb.C:3318
 msgid "ERROR!  Unable to print!"
 msgstr "NAPAKA!  Ne morem tiskati!"
 
-#: src/lyx_cb.C:3274
+#: src/lyx_cb.C:3301
 msgid "Check 'range of pages'!"
 msgstr "Preverite 'obseg strani'!"
 
-#: src/lyx_cb.C:3292
+#: src/lyx_cb.C:3319
 msgid "Check 'number of copies'!"
 msgstr "Preverite '¹tevilo izvodov'!"
 
-#: src/lyx_cb.C:3403
+#: src/lyx_cb.C:3430
 msgid "Error:"
 msgstr "Napaka:"
 
-#: src/lyx_cb.C:3404
+#: src/lyx_cb.C:3431
 msgid "Unable to print"
 msgstr "Ne morem tiskati"
 
-#: src/lyx_cb.C:3405
+#: src/lyx_cb.C:3432
 msgid "Check that your parameters are correct"
 msgstr "Preverite, da so va¹i parametri pravilni"
 
-#: src/lyx_cb.C:3427
+#: src/lyx_cb.C:3454
 msgid "Inserting figure..."
 msgstr "Vstavljam sliko..."
 
-#: src/lyx_cb.C:3432 src/lyx_cb.C:3484
+#: src/lyx_cb.C:3459 src/lyx_cb.C:3511
 msgid "Figure inserted"
 msgstr "Slika vstavljena"
 
-#: src/lyx_cb.C:3513
+#: src/lyx_cb.C:3540
 msgid "Screen options set"
 msgstr "Nastavitev zaslonskih izbir"
 
-#: src/lyx_cb.C:3543
+#: src/lyx_cb.C:3570
 msgid "LaTeX Options"
 msgstr "Izbire za LaTeX"
 
-#: src/lyx_cb.C:3552
+#: src/lyx_cb.C:3579
 msgid "Running configure..."
 msgstr "Poganjam prikrojitev..."
 
-#: src/lyx_cb.C:3559
+#: src/lyx_cb.C:3586
 msgid "Reloading configuration..."
 msgstr "Ponovno nalagam prikrojitev..."
 
-#: src/lyx_cb.C:3561
+#: src/lyx_cb.C:3588
 msgid "The system has been reconfigured."
 msgstr "Sistem je bil ponovno prikrojen."
 
-#: src/lyx_cb.C:3562
+#: src/lyx_cb.C:3589
 msgid "You need to restart LyX to make use of any"
 msgstr "Ponovno morate zagnati LyX, da uporabite katerekoli"
 
-#: src/lyx_cb.C:3563
+#: src/lyx_cb.C:3590
 msgid "updated document class specifications."
 msgstr "osve¾ene doloèitve razreda spisa."
 
-#: src/lyx_cb.C:3683
+#: src/lyx_cb.C:3710
 msgid "Couldn't find this label"
 msgstr "Ne najdem te oznake"
 
-#: src/lyx_cb.C:3684
+#: src/lyx_cb.C:3711
 msgid "in current document."
 msgstr "v trenutnem spisu."
 
-#: src/lyx_cb.C:3715
+#: src/lyx_cb.C:3742
 msgid "*** No Document ***"
 msgstr "*** Ni spisa ***"
 
-#: src/lyx_cb.C:3884
+#: src/lyx_cb.C:3911
 msgid "*** No labels found in document ***"
 msgstr "*** Nobene oznake najdete v spisu ***"
 
@@ -2566,15 +2577,15 @@ msgstr ""
 " Brez spremembe %l| Brezbarvno | Èrna | Bela | Rdeèa | Zelena | Modra | Cian "
 "| Violièna | Rumena %l| Reset "
 
-#: src/lyx_gui.C:431
+#: src/lyx_gui.C:434
 msgid " Single | OneHalf | Double | Other "
 msgstr " Enojno | Polovièno | Dvojno | Drugo "
 
-#: src/lyx_gui.C:470
+#: src/lyx_gui.C:473
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Majhen preskok | Srednji preskok | Veliki preskok | Dol¾ina "
 
-#: src/lyx_gui.C:479
+#: src/lyx_gui.C:485
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
@@ -2582,7 +2593,7 @@ msgstr ""
 " Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
 "B3 | B4 | B5 "
 
-#: src/lyx_gui.C:482
+#: src/lyx_gui.C:488
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -2590,13 +2601,13 @@ msgstr ""
 " Noben | A4 z majhnimi robovi (le pokonèen) | A4 z zelo majhnimi robovi (le "
 "pokonèen) | A4 z zelo ¹irokimi robovi (le pokonèen) "
 
-#: src/lyx_gui.C:528
+#: src/lyx_gui.C:534
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr ""
 " ``besedilo'' | ''besedilo'' | ,,besedilo`` | ,,besedilo'' | «besedilo» | "
 "»besedilo« "
 
-#: src/lyx_gui.C:606
+#: src/lyx_gui.C:614
 msgid "LyX Banner"
 msgstr "Zaèetni logo LyXa"
 
@@ -3026,8 +3037,8 @@ msgstr "Violièna"
 msgid "Yellow"
 msgstr "Rumena"
 
-#: src/lyxfont.C:65 src/menus.C:120 src/menus.C:221 src/menus.C:222
-#: src/menus.C:223
+#: src/lyxfont.C:65 src/menus.C:168 src/menus.C:269 src/menus.C:270
+#: src/menus.C:271
 msgid "Math"
 msgstr "Matematika"
 
@@ -3083,124 +3094,124 @@ msgstr ""
 msgid "Found."
 msgstr "odprt."
 
-#: src/lyxfunc.C:292
+#: src/lyxfunc.C:280
 msgid "Unknown sequence:"
 msgstr "Neznano zaporedje:"
 
-#: src/lyxfunc.C:392 src/lyxfunc.C:2423
+#: src/lyxfunc.C:372 src/lyxfunc.C:2399
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
-#: src/lyxfunc.C:395
+#: src/lyxfunc.C:375
 msgid "Command not allowed without any document open"
 msgstr "Ukaz ni dovoljen brez odprtega spisa"
 
-#: src/lyxfunc.C:456
+#: src/lyxfunc.C:434
 msgid "Document is read-only"
 msgstr "Spis je le za branje"
 
-#: src/lyxfunc.C:498
+#: src/lyxfunc.C:474
 msgid "Text mode"
 msgstr "Tekstovni naèin"
 
-#: src/lyxfunc.C:749
+#: src/lyxfunc.C:723
 msgid "Document exported as HTML to file: "
 msgstr ""
 
-#: src/lyxfunc.C:752
+#: src/lyxfunc.C:726
 msgid "An unexpected error occured while converting document to HTML in file:"
 msgstr ""
 
-#: src/lyxfunc.C:756
+#: src/lyxfunc.C:730
 msgid "Unknown export type: "
 msgstr "Neznani tip izvoza: "
 
-#: src/lyxfunc.C:780
+#: src/lyxfunc.C:754
 msgid "Unknown import type: "
 msgstr "Neznani tip uvoza: "
 
-#: src/lyxfunc.C:1116
+#: src/lyxfunc.C:1094
 msgid "Layout "
 msgstr "Izgled "
 
-#: src/lyxfunc.C:1117
+#: src/lyxfunc.C:1095
 msgid " not known"
 msgstr " ni znan"
 
-#: src/lyxfunc.C:1259
+#: src/lyxfunc.C:1237
 msgid "No cross-reference to toggle"
 msgstr "Ni navzkri¾ne-reference za preklop"
 
-#: src/lyxfunc.C:1612
+#: src/lyxfunc.C:1590
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/lyxfunc.C:1617
+#: src/lyxfunc.C:1595
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/lyxfunc.C:1720
+#: src/lyxfunc.C:1698
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/lyxfunc.C:1730
+#: src/lyxfunc.C:1708
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/lyxfunc.C:2030
+#: src/lyxfunc.C:2008
 msgid "Push-toolbar needs argument > 0"
 msgstr ""
 
-#: src/lyxfunc.C:2048
+#: src/lyxfunc.C:2026
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:2072 src/mathed/formula.C:852
+#: src/lyxfunc.C:2050 src/mathed/formula.C:852
 msgid "Math greek mode on"
 msgstr "Naèin matematiène gr¹èine vkljuèen"
 
-#: src/lyxfunc.C:2083 src/mathed/formula.C:863
+#: src/lyxfunc.C:2061 src/mathed/formula.C:863
 msgid "Math greek keyboard on"
 msgstr "Tipkovnica za matematièno gr¹èino vkljuèena"
 
-#: src/lyxfunc.C:2085 src/mathed/formula.C:865
+#: src/lyxfunc.C:2063 src/mathed/formula.C:865
 msgid "Math greek keyboard off"
 msgstr "Tipkovnica za matematièno gr¹èino izkljuèena"
 
-#: src/lyxfunc.C:2120
+#: src/lyxfunc.C:2098
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2136 src/mathed/formula.h:74
+#: src/lyxfunc.C:2114 src/mathed/formula.h:74
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/lyxfunc.C:2143
+#: src/lyxfunc.C:2121
 msgid "This is only allowed in math mode!"
 msgstr "To je dovoljeno le v matematiènem naèinu!"
 
-#: src/lyxfunc.C:2298
+#: src/lyxfunc.C:2276
 msgid "Opening child document "
 msgstr "Odpiram podrejeni spis "
 
-#: src/lyxfunc.C:2331
+#: src/lyxfunc.C:2308
 msgid "Unknown kind of footnote"
 msgstr "Neznana vrsta opombe v nogi"
 
-#: src/lyxfunc.C:2383
+#: src/lyxfunc.C:2359
 msgid "Document is read only"
 msgstr "Spis je le za branje"
 
-#: src/lyxfunc.C:2475
+#: src/lyxfunc.C:2451
 msgid "Enter Filename for new document"
 msgstr "Vstavite ime datoteke za novi spis"
 
-#: src/lyxfunc.C:2476
+#: src/lyxfunc.C:2452
 msgid "newfile"
 msgstr "novadatoteka"
 
-#: src/lyxfunc.C:2495 src/lyxfunc.C:2634 src/lyxfunc.C:2713
+#: src/lyxfunc.C:2471 src/lyxfunc.C:2610 src/lyxfunc.C:2689
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -3208,105 +3219,105 @@ msgstr ""
 "Ali ¾elite zdaj zapreti ta spis?\n"
 "('Ne' bo le preklopilo na odprto razlièico)"
 
-#: src/lyxfunc.C:2518
+#: src/lyxfunc.C:2494
 msgid "Do you want to open the document?"
 msgstr "Ali ¾elite odpreti spis?"
 
 #. loads document
-#: src/lyxfunc.C:2520 src/lyxfunc.C:2583
+#: src/lyxfunc.C:2496 src/lyxfunc.C:2559
 msgid "Opening document"
 msgstr "Odpiram spis"
 
-#: src/lyxfunc.C:2527 src/lyxfunc.C:2590
+#: src/lyxfunc.C:2503 src/lyxfunc.C:2566
 msgid "opened."
 msgstr "odprt."
 
-#: src/lyxfunc.C:2536
+#: src/lyxfunc.C:2512
 msgid "Choose template"
 msgstr "Izberi vzorec"
 
-#: src/lyxfunc.C:2564 src/lyxfunc.C:2613 src/lyxfunc.C:2686 src/lyxfunc.C:2787
+#: src/lyxfunc.C:2540 src/lyxfunc.C:2589 src/lyxfunc.C:2662 src/lyxfunc.C:2763
 msgid "Examples"
 msgstr "Primeri"
 
-#: src/lyxfunc.C:2566
+#: src/lyxfunc.C:2542
 msgid "Select Document to Open"
 msgstr "Izberi spis za odprtje"
 
-#: src/lyxfunc.C:2592
+#: src/lyxfunc.C:2568
 msgid "Could not open document"
 msgstr "Ne morem odpreti spisa"
 
-#: src/lyxfunc.C:2615
+#: src/lyxfunc.C:2591
 msgid "Select ASCII file to Import"
 msgstr "Izberi datoteko ASCII za uvoz"
 
-#: src/lyxfunc.C:2653 src/lyxfunc.C:2733
+#: src/lyxfunc.C:2629 src/lyxfunc.C:2709
 msgid "A document by the name"
 msgstr "Spis z imenom"
 
-#: src/lyxfunc.C:2655 src/lyxfunc.C:2735
+#: src/lyxfunc.C:2631 src/lyxfunc.C:2711
 msgid "already exists. Overwrite?"
 msgstr "¾e obstaja. Prepi¹em?"
 
-#: src/lyxfunc.C:2661
+#: src/lyxfunc.C:2637
 msgid "Importing ASCII file"
 msgstr "Uvoz datoteke ASCII"
 
-#: src/lyxfunc.C:2665
+#: src/lyxfunc.C:2641
 msgid "ASCII file "
 msgstr "Datoteka ASCII "
 
-#: src/lyxfunc.C:2667 src/lyxfunc.C:2758
+#: src/lyxfunc.C:2643 src/lyxfunc.C:2734
 msgid "imported."
 msgstr "uvo¾ena."
 
-#: src/lyxfunc.C:2690
+#: src/lyxfunc.C:2666
 msgid "Select Noweb file to Import"
 msgstr "Izberi datoteko Noweb za uvoz"
 
-#: src/lyxfunc.C:2693
+#: src/lyxfunc.C:2669
 msgid "Select LaTeX file to Import"
 msgstr "Izberi datoteko LaTeX za uvoz"
 
-#: src/lyxfunc.C:2743
+#: src/lyxfunc.C:2719
 msgid "Importing LaTeX file"
 msgstr "Uva¾am datoteko za LaTeX"
 
-#: src/lyxfunc.C:2748
+#: src/lyxfunc.C:2724
 msgid "Importing Noweb file"
 msgstr "Uva¾am datoteko za Noweb"
 
-#: src/lyxfunc.C:2756
+#: src/lyxfunc.C:2732
 msgid "Noweb file "
 msgstr "Datoteka za Noweb "
 
-#: src/lyxfunc.C:2756
+#: src/lyxfunc.C:2732
 msgid "LateX file "
 msgstr "Datoteka za LaTeX "
 
-#: src/lyxfunc.C:2761
+#: src/lyxfunc.C:2737
 msgid "Could not import Noweb file"
 msgstr "Ne morem uvoziti datoteke za Noweb"
 
-#: src/lyxfunc.C:2762
+#: src/lyxfunc.C:2738
 msgid "Could not import LaTeX file"
 msgstr "Ne morem uvoziti datoteke za LaTeX"
 
-#: src/lyxfunc.C:2789
+#: src/lyxfunc.C:2765
 msgid "Select Document to Insert"
 msgstr "Izberite spis za vstavitev"
 
 #. Inserts document
-#: src/lyxfunc.C:2807
+#: src/lyxfunc.C:2783
 msgid "Inserting document"
 msgstr "Vstavljam spis"
 
-#: src/lyxfunc.C:2813
+#: src/lyxfunc.C:2789
 msgid "inserted."
 msgstr "vstavljen."
 
-#: src/lyxfunc.C:2815
+#: src/lyxfunc.C:2791
 msgid "Could not insert document"
 msgstr "Ne morem vstaviti spisa"
 
@@ -3353,11 +3364,11 @@ msgstr ""
 msgid "Do you still want to do it?"
 msgstr "Ali to ¹e vedno ¾elite storiti?"
 
-#: src/lyxvc.C:342
+#: src/lyxvc.C:355
 msgid "No RCS History!"
 msgstr "Ni zgodovine sistema RCS!"
 
-#: src/lyxvc.C:349
+#: src/lyxvc.C:362
 msgid "RCS History"
 msgstr "Zgodovina RCS"
 
@@ -3485,65 +3496,65 @@ msgstr "Zgoraj | Sredina | Spodaj"
 msgid "Math Panel"
 msgstr "Matematièna plo¹èa"
 
-#: src/menus.C:116 src/menus.C:127 src/menus.C:165 src/menus.C:166
-#: src/menus.C:167 src/menus.C:296 src/menus.C:297 src/menus.C:298
+#: src/menus.C:164 src/menus.C:175 src/menus.C:213 src/menus.C:214
+#: src/menus.C:215 src/menus.C:344 src/menus.C:345 src/menus.C:346
 msgid "File"
 msgstr "Datoteka"
 
-#: src/menus.C:117 src/menus.C:179 src/menus.C:180 src/menus.C:181
+#: src/menus.C:165 src/menus.C:227 src/menus.C:228 src/menus.C:229
 msgid "Edit"
 msgstr "Uredi"
 
-#: src/menus.C:118 src/menus.C:193 src/menus.C:194 src/menus.C:195
+#: src/menus.C:166 src/menus.C:241 src/menus.C:242 src/menus.C:243
 msgid "Layout"
 msgstr "Izgled"
 
-#: src/menus.C:119 src/menus.C:207 src/menus.C:208 src/menus.C:209
+#: src/menus.C:167 src/menus.C:255 src/menus.C:256 src/menus.C:257
 msgid "Insert"
 msgstr "Vstavi"
 
-#: src/menus.C:123 src/menus.C:129 src/menus.C:263 src/menus.C:264
-#: src/menus.C:265 src/menus.C:324 src/menus.C:325 src/menus.C:326
+#: src/menus.C:171 src/menus.C:177 src/menus.C:311 src/menus.C:312
+#: src/menus.C:313 src/menus.C:372 src/menus.C:373 src/menus.C:374
 msgid "Help"
 msgstr "Pomoè"
 
-#: src/menus.C:169 src/menus.C:300
+#: src/menus.C:217 src/menus.C:348
 msgid "MB|#F"
 msgstr "MB|#D"
 
-#: src/menus.C:183
+#: src/menus.C:231
 msgid "MB|#E"
 msgstr "MB|#U"
 
-#: src/menus.C:197
+#: src/menus.C:245
 msgid "MB|#L"
 msgstr "MB|#I"
 
-#: src/menus.C:211
+#: src/menus.C:259
 msgid "MB|#I"
 msgstr "MB|#V"
 
-#: src/menus.C:225
+#: src/menus.C:273
 msgid "MB|#M"
 msgstr "MB|#M"
 
-#: src/menus.C:239 src/menus.C:314
+#: src/menus.C:287 src/menus.C:362
 msgid "MB|#O"
 msgstr "MB|#B"
 
-#: src/menus.C:253
+#: src/menus.C:301
 msgid "MB|#D"
 msgstr "MB|#S"
 
-#: src/menus.C:267 src/menus.C:328
+#: src/menus.C:315 src/menus.C:376
 msgid "MB|#H"
 msgstr "MB|#P"
 
-#: src/menus.C:368
+#: src/menus.C:418
 msgid "Screen Options"
 msgstr "Zaslonske izbire"
 
-#: src/menus.C:404
+#: src/menus.C:459
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
 "Paragraphs%x32|Noweb%x33"
@@ -3551,23 +3562,23 @@ msgstr ""
 "Uvoz%t|LaTeX...%x30|Tekst ASCII kot vrstice...%x31|Tekst ASCII kot "
 "odstavki%x32|Noweb%x33"
 
-#: src/menus.C:409 src/menus.C:645
+#: src/menus.C:464 src/menus.C:700
 msgid "FIM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:410 src/menus.C:646
+#: src/menus.C:465 src/menus.C:701
 msgid "FIM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:411 src/menus.C:647
+#: src/menus.C:466 src/menus.C:702
 msgid "FIM|Pp#p#P"
 msgstr "FIM|oO#o#O"
 
-#: src/menus.C:412 src/menus.C:648
+#: src/menus.C:467 src/menus.C:703
 msgid "FIM|Nn#n#N"
 msgstr "FIM|Nn#n#N"
 
-#: src/menus.C:421
+#: src/menus.C:476
 #, fuzzy
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -3576,7 +3587,7 @@ msgstr ""
 "Izvoz%t|kot LaTeX...%x40|kot DVI...%x41|kot PostScript...%x42|kot tekst "
 "ASCII...%x43|Prilagojeno...%x44"
 
-#: src/menus.C:430
+#: src/menus.C:485
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43"
@@ -3584,7 +3595,7 @@ msgstr ""
 "Izvoz%t|kot LinuxDoc...%x40|kot DVI...%x41|kot PostScript...%x42|kot tekst "
 "ASCII...%x43"
 
-#: src/menus.C:437
+#: src/menus.C:492
 #, fuzzy
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -3593,32 +3604,32 @@ msgstr ""
 "Izvoz%t|kot LinuxDoc...%x40|kot DVI...%x41|kot PostScript...%x42|kot tekst "
 "ASCII...%x43"
 
-#: src/menus.C:443
+#: src/menus.C:498
 msgid "FEX|Ll#l#L"
 msgstr "FEX|Ll#l#L"
 
-#: src/menus.C:444
+#: src/menus.C:499
 msgid "FEX|Dd#d#D"
 msgstr "FEX|Dd#d#D"
 
-#: src/menus.C:445
+#: src/menus.C:500
 msgid "FEX|Pp#p#P"
 msgstr "FEX|Pp#p#P"
 
-#: src/menus.C:446
+#: src/menus.C:501
 msgid "FEX|Tt#t#T"
 msgstr "FEX|Aa#a#A"
 
-#: src/menus.C:448
+#: src/menus.C:503
 #, fuzzy
 msgid "FEX|Hh#h#H"
 msgstr "FEX|Ll#l#L"
 
-#: src/menus.C:449
+#: src/menus.C:504
 msgid "FEX|mM#m#M"
 msgstr "FEX|rR#r#R"
 
-#: src/menus.C:453
+#: src/menus.C:508
 msgid ""
 "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
 "saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build "
@@ -3628,90 +3639,90 @@ msgstr ""
 "shranjeni%l|Glej dvi|Glej PostScript|Osve¾i dvi|Osve¾i PostScript|Zgradi "
 "program%l|Tiskaj...|Faks..."
 
-#: src/menus.C:468 src/menus.C:664
+#: src/menus.C:523 src/menus.C:719
 msgid "FM|Nn#n#N"
 msgstr "FM|Nn#n#N"
 
-#: src/menus.C:469 src/menus.C:665
+#: src/menus.C:524 src/menus.C:720
 msgid "FM|tT#t#T"
 msgstr "FM|vV#v#V"
 
-#: src/menus.C:470 src/menus.C:666
+#: src/menus.C:525 src/menus.C:721
 msgid "FM|Oo#o#O"
 msgstr "FM|Oo#o#O"
 
-#: src/menus.C:471
+#: src/menus.C:526
 msgid "FM|Cc#c#C"
 msgstr "FM|Zz#z#Z"
 
-#: src/menus.C:472
+#: src/menus.C:527
 msgid "FM|Ss#s#S"
 msgstr "FM|Ss#s#S"
 
-#: src/menus.C:473
+#: src/menus.C:528
 msgid "FM|Aa#a#A"
 msgstr "FM|kK#k#K"
 
-#: src/menus.C:474
+#: src/menus.C:529
 msgid "FM|Rr#r#R"
 msgstr "FM|rR#r#R"
 
-#: src/menus.C:475
+#: src/menus.C:530
 msgid "FM|dD#d#D"
 msgstr "FM|dD#d#D"
 
-#: src/menus.C:476
+#: src/menus.C:531
 msgid "FM|wW#w#W"
 msgstr "FM|Pp#p#P"
 
-#: src/menus.C:477
+#: src/menus.C:532
 msgid "FM|vV#v#V"
 msgstr "FM|vV#v#V"
 
-#: src/menus.C:478
+#: src/menus.C:533
 msgid "FM|Uu#u#U"
 msgstr "FM|eE#e#E"
 
-#: src/menus.C:479
+#: src/menus.C:534
 msgid "FM|Bb#b#B"
 msgstr "FM|gG#g#G"
 
-#: src/menus.C:480
+#: src/menus.C:535
 msgid "FM|Pp#p#P"
 msgstr "FM|Tt#t#T"
 
-#: src/menus.C:481
+#: src/menus.C:536
 msgid "FM|Ff#f#F"
 msgstr "FM|Ff#f#F"
 
-#: src/menus.C:521
+#: src/menus.C:576
 #, no-c-format
 msgid "|Import%m"
 msgstr "|Uvoz%m"
 
-#: src/menus.C:523
+#: src/menus.C:578
 #, no-c-format
 msgid "|Export%m%l"
 msgstr "|Izvoz%m%l"
 
-#: src/menus.C:525
+#: src/menus.C:580
 #, no-c-format
 msgid "|Exit%l"
 msgstr "|Izhod%l"
 
-#: src/menus.C:526 src/menus.C:667
+#: src/menus.C:581 src/menus.C:722
 msgid "FM|Ii#i#I"
 msgstr "FM|Uu#u#U"
 
-#: src/menus.C:527
+#: src/menus.C:582
 msgid "FM|Ee#e#E"
 msgstr "FM|Ii#i#I"
 
-#: src/menus.C:528 src/menus.C:668
+#: src/menus.C:583 src/menus.C:723
 msgid "FM|xX#x#X"
 msgstr "FM|hH#h#H"
 
-#: src/menus.C:640
+#: src/menus.C:695
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
 "Paragraphs...%x17|Noweb...%x18"
@@ -3719,11 +3730,11 @@ msgstr ""
 "Uvoz%t|LaTeX...%x15|tekst ASCII kot vrstice...%x16|tekst ASCII kot "
 "odstavki...%x17|Noweb...%x18"
 
-#: src/menus.C:659
+#: src/menus.C:714
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr "Nova...|Nova po vzorcu...|Odpri...%l|Uvozi%m%l|Izhod%l"
 
-#: src/menus.C:749
+#: src/menus.C:804
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -3734,265 +3745,265 @@ msgstr ""
 "slike/tabele%x25|Zapri vse slike/tabele%x26%l|Odstrani vse ¹katle o "
 "napakah%x27"
 
-#: src/menus.C:758
+#: src/menus.C:813
 msgid "EMF|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:759
+#: src/menus.C:814
 msgid "EMF|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:760
+#: src/menus.C:815
 msgid "EMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:761
+#: src/menus.C:816
 msgid "EMF|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:762
+#: src/menus.C:817
 msgid "EMF|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:763
+#: src/menus.C:818
 msgid "EMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:764
+#: src/menus.C:819
 msgid "EMF|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:772 src/menus.C:870
+#: src/menus.C:827 src/menus.C:925
 msgid "Table%t"
 msgstr "Tabela%t"
 
-#: src/menus.C:780
+#: src/menus.C:835
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Veèstolpèno%B%x44%l"
 
-#: src/menus.C:782
+#: src/menus.C:837
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Veèstolpèno%b%x44%l"
 
-#: src/menus.C:783
+#: src/menus.C:838
 msgid "EMT|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:791
+#: src/menus.C:846
 msgid "|Line Top%B%x36"
 msgstr ""
 
-#: src/menus.C:793
+#: src/menus.C:848
 msgid "|Line Top%b%x36"
 msgstr ""
 
-#: src/menus.C:794
+#: src/menus.C:849
 msgid "EMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:802
+#: src/menus.C:857
 msgid "|Line Bottom%B%x37"
 msgstr ""
 
-#: src/menus.C:804
+#: src/menus.C:859
 msgid "|Line Bottom%b%x37"
 msgstr ""
 
-#: src/menus.C:805
+#: src/menus.C:860
 msgid "EMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:813
+#: src/menus.C:868
 msgid "|Line Left%B%x38"
 msgstr ""
 
-#: src/menus.C:815
+#: src/menus.C:870
 msgid "|Line Left%b%x38"
 msgstr ""
 
-#: src/menus.C:816
+#: src/menus.C:871
 msgid "EMT|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:824
+#: src/menus.C:879
 msgid "|Line Right%B%x39%l"
 msgstr ""
 
-#: src/menus.C:826
+#: src/menus.C:881
 msgid "|Line Right%b%x39%l"
 msgstr ""
 
-#: src/menus.C:827
+#: src/menus.C:882
 msgid "EMT|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:836
+#: src/menus.C:891
 msgid "|Align Left%R%x40"
 msgstr "|Poravnaj levo%R%x40"
 
-#: src/menus.C:838
+#: src/menus.C:893
 msgid "|Align Left%r%x40"
 msgstr "|Poravnaj levo%r%x40"
 
-#: src/menus.C:839
+#: src/menus.C:894
 msgid "EMT|eE#e#E"
 msgstr ""
 
-#: src/menus.C:842
+#: src/menus.C:897
 msgid "|Align Right%R%x41"
 msgstr "|Poravnaj desno%R%x41"
 
-#: src/menus.C:844
+#: src/menus.C:899
 msgid "|Align Right%r%x41"
 msgstr "|Poravnaj desno%r%x41"
 
-#: src/menus.C:845
+#: src/menus.C:900
 msgid "EMT|iI#i#I"
 msgstr ""
 
-#: src/menus.C:848
+#: src/menus.C:903
 msgid "|Align Center%R%x42%l"
 msgstr "|Centriraj%R%x42%l"
 
-#: src/menus.C:850
+#: src/menus.C:905
 msgid "|Align Center%r%x42%l"
 msgstr "|Centriraj%r%x42%l"
 
-#: src/menus.C:851
+#: src/menus.C:906
 msgid "EMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:854
+#: src/menus.C:909
 #, no-c-format
 msgid "|Append Row%x32"
 msgstr "|Dodaj vrstico%x32"
 
-#: src/menus.C:855
+#: src/menus.C:910
 msgid "EMT|oO#o#O"
 msgstr ""
 
-#: src/menus.C:857
+#: src/menus.C:912
 #, no-c-format
 msgid "|Append Column%x33%l"
 msgstr "|Dodaj stolpec%x33%l"
 
-#: src/menus.C:858
+#: src/menus.C:913
 msgid "EMT|uU#u#U"
 msgstr ""
 
-#: src/menus.C:860
+#: src/menus.C:915
 #, no-c-format
 msgid "|Delete Row%x34"
 msgstr "|Odstrani vrstico%x34"
 
-#: src/menus.C:861
+#: src/menus.C:916
 msgid "EMT|wW#w#W"
 msgstr ""
 
-#: src/menus.C:863
+#: src/menus.C:918
 #, no-c-format
 msgid "|Delete Column%x35%l"
 msgstr "|Odstrani stolpec%x35%l"
 
-#: src/menus.C:864
+#: src/menus.C:919
 msgid "EMT|nN#n#N"
 msgstr ""
 
-#: src/menus.C:866
+#: src/menus.C:921
 #, no-c-format
 msgid "|Delete Table%x43"
 msgstr "|Odstrani tabelo%x43"
 
-#: src/menus.C:867
+#: src/menus.C:922
 msgid "EMT|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:872
+#: src/menus.C:927
 #, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Vstavi tabelo%x31"
 
-#: src/menus.C:873
+#: src/menus.C:928
 msgid "EMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:877
+#: src/menus.C:932
 msgid "Version Control%t"
 msgstr "Nadzor razlièic%t"
 
-#: src/menus.C:880
+#: src/menus.C:935
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Prijavi%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:884
+#: src/menus.C:939
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|Zapi¹i spremembe%d%x52"
 
-#: src/menus.C:886
+#: src/menus.C:941
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|Vzemi za urejanje%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:890
+#: src/menus.C:945
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|Zapi¹i spremembe%x52"
 
-#: src/menus.C:892
+#: src/menus.C:947
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|Vzemi za urejanje%d%x53"
 
-#: src/menus.C:895
+#: src/menus.C:950
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|Vrni zadnjo razlièico%x54"
 
-#: src/menus.C:897
+#: src/menus.C:952
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Razveljavi zadnje spremembe%x55"
 
-#: src/menus.C:899
+#: src/menus.C:954
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|Prika¾i zgodovino%x56"
 
-#: src/menus.C:902
+#: src/menus.C:957
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Prijavi%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:905
+#: src/menus.C:960
 msgid "EMV|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:906
+#: src/menus.C:961
 msgid "EMV|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:907
+#: src/menus.C:962
 msgid "EMV|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:908
+#: src/menus.C:963
 msgid "EMV|lL#l#l"
 msgstr ""
 
-#: src/menus.C:909
+#: src/menus.C:964
 msgid "EMV|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:910
+#: src/menus.C:965
 msgid "EMV|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:913
+#: src/menus.C:968
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4004,75 +4015,75 @@ msgstr ""
 "TeX|Kazalo vsebine...%l|Nadzor razlièic%m%l|Poglej dnevnik LaTeXa%l|Prilepi "
 "prvotno izbiro kot vrstice|Prilepi prvotno izbiro kot odstavke"
 
-#: src/menus.C:932
+#: src/menus.C:987
 msgid "EM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:933
+#: src/menus.C:988
 msgid "EM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:934
+#: src/menus.C:989
 msgid "EM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:935
+#: src/menus.C:990
 msgid "EM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:936
+#: src/menus.C:991
 msgid "EM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:937
+#: src/menus.C:992
 msgid "EM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:938
+#: src/menus.C:993
 msgid "EM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:939
+#: src/menus.C:994
 msgid "EM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:940
+#: src/menus.C:995
 msgid "EM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:941
+#: src/menus.C:996
 msgid "EM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:942
+#: src/menus.C:997
 msgid "EM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:943
+#: src/menus.C:998
 msgid "EM|hH#h#H"
 msgstr ""
 
-#: src/menus.C:944
+#: src/menus.C:999
 msgid "EM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:945
+#: src/menus.C:1000
 msgid "EM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:946
+#: src/menus.C:1001
 msgid "EM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:947
+#: src/menus.C:1002
 msgid "EM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:948
+#: src/menus.C:1003
 msgid "EM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1073
+#: src/menus.C:1128
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4082,71 +4093,71 @@ msgstr ""
 "stil%b|Velike èrke%b|Polkrepki stil%b|Stil TeXa%b|Spremeni globino "
 "okolja|Vzglavje za LaTeX...%l|Shrani izgled kot privzetega"
 
-#: src/menus.C:1086
+#: src/menus.C:1141
 msgid "LM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1087
+#: src/menus.C:1142
 msgid "LM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1088
+#: src/menus.C:1143
 msgid "LM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1089
+#: src/menus.C:1144
 msgid "LM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1090
+#: src/menus.C:1145
 msgid "LM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1091
+#: src/menus.C:1146
 msgid "LM|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1092
+#: src/menus.C:1147
 msgid "LM|mM#m#M"
 msgstr ""
 
-#: src/menus.C:1093
+#: src/menus.C:1148
 msgid "LM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1094
+#: src/menus.C:1149
 msgid "LM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1095
+#: src/menus.C:1150
 msgid "LM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1096
+#: src/menus.C:1151
 msgid "LM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:1097
+#: src/menus.C:1152
 msgid "LM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1098
+#: src/menus.C:1153
 msgid "LM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1168
+#: src/menus.C:1223
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Uvoz datoteke ASCII%t|Po vrsticah%x41|Po odstavkih%x42"
 
-#: src/menus.C:1171
+#: src/menus.C:1226
 msgid "IMA|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1172
+#: src/menus.C:1227
 msgid "IMA|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1175
+#: src/menus.C:1230
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4154,31 +4165,31 @@ msgstr ""
 "Seznami & kazala%t|Kazalo vsebine%x21|Seznam slik%x22|Seznam "
 "tabel%x23|Seznam algoritmov%x24|Stvarno kazalo%x25|Viri iz BibTeXa%x26"
 
-#: src/menus.C:1182
+#: src/menus.C:1237
 msgid "IMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1183
+#: src/menus.C:1238
 msgid "IMT|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1184
+#: src/menus.C:1239
 msgid "IMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1185
+#: src/menus.C:1240
 msgid "IMT|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1186
+#: src/menus.C:1241
 msgid "IMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1187
+#: src/menus.C:1242
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1199
+#: src/menus.C:1254
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4187,27 +4198,27 @@ msgstr ""
 "sliko%x73|Plovka s ¹iroko tabelo%l%x74|Plovka z algoritmom%x75"
 
 #. }
-#: src/menus.C:1206
+#: src/menus.C:1261
 msgid "IMF|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1207
+#: src/menus.C:1262
 msgid "IMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1208
+#: src/menus.C:1263
 msgid "IMF|Ww#w#W"
 msgstr ""
 
-#: src/menus.C:1209
+#: src/menus.C:1264
 msgid "IMF|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1210
+#: src/menus.C:1265
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1213
+#: src/menus.C:1268
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4217,39 +4228,39 @@ msgstr ""
 "vrstice%x34|Tropièje (...)%x35|Pika na koncu stavka%x36|Navadni narekovaj "
 "(\")%x37|Loènica v menuju %x38"
 
-#: src/menus.C:1223
+#: src/menus.C:1278
 msgid "IMS|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1224
+#: src/menus.C:1279
 msgid "IMS|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1225
+#: src/menus.C:1280
 msgid "IMS|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1226
+#: src/menus.C:1281
 msgid "IMS|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1227
+#: src/menus.C:1282
 msgid "IMS|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1228
+#: src/menus.C:1283
 msgid "IMS|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1229
+#: src/menus.C:1284
 msgid "IMS|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1230
+#: src/menus.C:1285
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1233
+#: src/menus.C:1288
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4262,79 +4273,79 @@ msgstr ""
 "sklicevanje...|Citiranje...|Postavka stvarnega kazala...|Postavka stvarnega "
 "kazala - zadnja beseda"
 
-#: src/menus.C:1254
+#: src/menus.C:1309
 msgid "IM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1255
+#: src/menus.C:1310
 msgid "IM|bB#b#B"
 msgstr ""
 
-#: src/menus.C:1256
+#: src/menus.C:1311
 msgid "IM|cC#c#C"
 msgstr ""
 
-#: src/menus.C:1257
+#: src/menus.C:1312
 msgid "IM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1258
+#: src/menus.C:1313
 msgid "IM|Xx#x#X"
 msgstr ""
 
-#: src/menus.C:1259
+#: src/menus.C:1314
 msgid "IM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1260
+#: src/menus.C:1315
 msgid "IM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1261
+#: src/menus.C:1316
 msgid "IM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1262
+#: src/menus.C:1317
 msgid "IM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1263
+#: src/menus.C:1318
 msgid "IM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1264
+#: src/menus.C:1319
 msgid "IM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1265
+#: src/menus.C:1320
 msgid "IM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1266
+#: src/menus.C:1321
 msgid "IM|rR#r#R"
 msgstr ""
 
-#: src/menus.C:1267
+#: src/menus.C:1322
 msgid "IM|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1268
+#: src/menus.C:1323
 msgid "IM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:1269
+#: src/menus.C:1324
 msgid "IM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1275
+#: src/menus.C:1330
 msgid "|URL..."
 msgstr "|URL..."
 
-#: src/menus.C:1276
+#: src/menus.C:1331
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1390
+#: src/menus.C:1445
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -4342,69 +4353,69 @@ msgstr ""
 "Ulomek|Kvadratni koren|Eksponent|Indeks|Vsota|Integral%l|Matematièni "
 "naèin|Prikaz%l|Matematièna plo¹èa..."
 
-#: src/menus.C:1400
+#: src/menus.C:1455
 msgid "MM|Ff#f#F"
 msgstr "MM|Uu#u#U"
 
-#: src/menus.C:1401
+#: src/menus.C:1456
 msgid "MM|Ss#s#S"
 msgstr "MM|Kk#k#K"
 
-#: src/menus.C:1402
+#: src/menus.C:1457
 msgid "MM|Ee#e#E"
 msgstr "MM|Ee#e#E"
 
-#: src/menus.C:1403
+#: src/menus.C:1458
 msgid "MM|xX#x#X"
 msgstr "MM|nN#n#N"
 
-#: src/menus.C:1404
+#: src/menus.C:1459
 msgid "MM|uU#u#U"
 msgstr "MM|Vv#v#V"
 
-#: src/menus.C:1405
+#: src/menus.C:1460
 msgid "MM|Ii#i#I"
 msgstr "MM|Ii#i#I"
 
-#: src/menus.C:1406
+#: src/menus.C:1461
 msgid "MM|Mm#m#M"
 msgstr "MM|Mm#m#M"
 
-#: src/menus.C:1407
+#: src/menus.C:1462
 msgid "MM|Dd#d#D"
 msgstr "MM|Pp#p#P"
 
-#: src/menus.C:1408
+#: src/menus.C:1463
 msgid "MM|Pp#p#P"
 msgstr "MM|Ll#l#L"
 
-#: src/menus.C:1474
+#: src/menus.C:1529
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "Zaslonske pisave...|Izbire èrkovalnika...|Tipkovnica|LaTeX...%l|Prikroji"
 
-#: src/menus.C:1480
+#: src/menus.C:1535
 msgid "OM|Ff#f#F"
 msgstr "OM|pP#p#P"
 
-#: src/menus.C:1481
+#: src/menus.C:1536
 msgid "OM|Ss#s#S"
 msgstr "OM|Ii#i#I"
 
-#: src/menus.C:1482
+#: src/menus.C:1537
 msgid "OM|Kk#k#K"
 msgstr "OM|Tt#t#T"
 
-#: src/menus.C:1483
+#: src/menus.C:1538
 msgid "OM|Ll#l#L"
 msgstr "OM|Ll#l#L"
 
-#: src/menus.C:1484
+#: src/menus.C:1539
 msgid "OM|Rr#r#R"
 msgstr "OM|rR#r#R"
 
-#: src/menus.C:1553
+#: src/menus.C:1608
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
@@ -4414,80 +4425,80 @@ msgstr ""
 "priroènik|Znani hro¹èi|Nastavitev LaTeXa%l|Pravice raz¹irjanja in "
 "jamstvo...|Zasluge...|Razlièica..."
 
-#: src/menus.C:1565
+#: src/menus.C:1620
 msgid "HM|Ii#I#i"
 msgstr "HM|Uu#U#u"
 
-#: src/menus.C:1566
+#: src/menus.C:1621
 msgid "HM|Tt#T#t"
 msgstr "HM|bB#B#b"
 
-#: src/menus.C:1567
+#: src/menus.C:1622
 msgid "HM|Uu#U#u"
 msgstr "HM|vV#V#v"
 
-#: src/menus.C:1568
+#: src/menus.C:1623
 msgid "HM|xX#x#X"
 msgstr "HM|oO#o#O"
 
-#: src/menus.C:1569
+#: src/menus.C:1624
 msgid "HM|Cc#C#c"
 msgstr "HM|Pp#P#p"
 
-#: src/menus.C:1570
+#: src/menus.C:1625
 msgid "HM|Rr#R#r"
 msgstr "HM|Rr#R#r"
 
-#: src/menus.C:1571
+#: src/menus.C:1626
 msgid "HM|Kk#K#k"
 msgstr "HM|hH#H#h"
 
-#: src/menus.C:1572
+#: src/menus.C:1627
 msgid "HM|Ll#L#l"
 msgstr "HM|Ll#L#l"
 
-#: src/menus.C:1573
+#: src/menus.C:1628
 msgid "HM|oO#o#O"
 msgstr "HM|jJ#j#J"
 
-#: src/menus.C:1574
+#: src/menus.C:1629
 msgid "HM|eE#e#E"
 msgstr "HM|Zz#z#Z"
 
-#: src/menus.C:1575
+#: src/menus.C:1630
 msgid "HM|Vv#v#V"
 msgstr "HM|iI#i#I"
 
-#: src/menus.C:1598
+#: src/menus.C:1653
 msgid "LyX Version "
 msgstr "Razlièica LyXa "
 
-#: src/menus.C:1599
+#: src/menus.C:1654
 msgid " of "
 msgstr " z dne "
 
-#: src/menus.C:1600
+#: src/menus.C:1655
 msgid "Library directory: "
 msgstr "Knji¾nièni imenik: "
 
-#: src/menus.C:1602
+#: src/menus.C:1657
 msgid "User directory: "
 msgstr "Uporabni¹ki imenik: "
 
-#: src/menus.C:1614
+#: src/menus.C:1669
 msgid "Opening help file"
 msgstr "Odpiram datoteko s pomoèjo"
 
-#: src/minibuffer.C:50
+#: src/minibuffer.C:54
 msgid "Executing:"
 msgstr "Izvajam:"
 
-#: src/minibuffer.C:187 src/minibuffer.h:22
+#: src/minibuffer.C:232 src/minibuffer.h:22
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
 #. this is a hack
-#: src/minibuffer.C:188
+#: src/minibuffer.C:233
 msgid "* No document open *"
 msgstr "* Noben spis ni odprt *"
 
@@ -4661,11 +4672,11 @@ msgstr "Nadomesti besedo|#R"
 msgid "Spellchecker Options"
 msgstr "Izbire èrkovalnika"
 
-#: src/spellchecker.C:553
+#: src/spellchecker.C:548
 msgid "Spellchecker"
 msgstr "Èrkovalnik"
 
-#: src/spellchecker.C:660
+#: src/spellchecker.C:655
 msgid ""
 "\n"
 "\n"
@@ -4683,19 +4694,19 @@ msgstr ""
 "Preverite /usr/lib/ispell ali doloèite drug slovar\n"
 "v menuju Èrkovalnik Izbire."
 
-#: src/spellchecker.C:776
+#: src/spellchecker.C:771
 msgid " words checked."
 msgstr " pregledanih besed."
 
-#: src/spellchecker.C:778
+#: src/spellchecker.C:773
 msgid " word checked."
 msgstr " pregledana beseda."
 
-#: src/spellchecker.C:780
+#: src/spellchecker.C:775
 msgid "Spellchecking completed!"
 msgstr "Èrkovanje zakljuèeno!"
 
-#: src/spellchecker.C:784
+#: src/spellchecker.C:779
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
@@ -4844,6 +4855,9 @@ msgstr "Ne morem prilepiti plovke v plovko!"
 #: src/text2.C:2139
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "Celica tabele ne more vkljuèevati veè kot enega odstavka!"
+
+#~ msgid "Close|#C^[^M"
+#~ msgstr "Zapri|#Z^[^M"
 
 #~ msgid "Run #"
 #~ msgstr "Tek #"

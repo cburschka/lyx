@@ -1,5 +1,11 @@
 1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* acinclude.m4 (VERSION): new rules for when a version is
+	development, added also a variable for prerelease.
+	(warnings): we set with_warnings=yes for prereleases
+	(lyx_opt): prereleases compile with same optimization as development 
+	(CXXFLAGS): only use pedantic if we are a development version 
+
 	* src/BufferView.C (restorePosition): don't do anything if the
 	backstack is empty.
 
