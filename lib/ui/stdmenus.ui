@@ -169,11 +169,11 @@ Menuset
 		Item "Inline Formula|I" "math-mutate simple"
 		Item "Displayed Formula|D" "math-mutate equation"
 		Item "Eqnarray Environment|q" "math-mutate eqnarray"
-		Item "Align Environment|A" "math-mutate align"
-		Item "AlignAt Environment" "math-mutate alignat"
-		Item "Flalign Environment|f" "math-mutate flalign"
-		Item "Gather Environment" "math-mutate gather"
-		Item "Multline Environment" "math-mutate multline"
+		Item "AMS align Environment|A" "math-mutate align"
+		Item "AMS alignat Environment|t" "math-mutate alignat"
+		Item "AMS flalign Environment|f" "math-mutate flalign"
+		Item "AMS gather Environment|g" "math-mutate gather"
+		Item "AMS multline Environment|m" "math-mutate multline"
 	End
 
 	Menu "edit_math_align"
@@ -237,7 +237,7 @@ Menuset
 		Item "Minipage|p" "minipage-insert"
 		Item "Short Title" "optional-insert"
 		Item "TeX|X" "ert-insert"
-		Item "External Material...|x" "dialog-show-new-inset external"
+		Item "External Material..." "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"
 	End
 
@@ -261,17 +261,17 @@ Menuset
 		Item "Inline Formula|I" "math-mode"
 		Item "Display Formula|D" "math-display"
 		Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
-		Item "AMS align Environment|A" "command-sequence math-mode; math-mutate align;"
+		Item "AMS align Environment|a" "command-sequence math-mode; math-mutate align;"
 		Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
 		Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
-		Item "AMS gather Environment" "command-sequence math-mode; math-mutate gather;"
-		Item "AMS multline Environment" "command-sequence math-mode; math-mutate multline;"
+		Item "AMS gather Environment|g" "command-sequence math-mode; math-mutate gather;"
+		Item "AMS multline Environment|m" "command-sequence math-mode; math-mutate multline;"
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
 		Separator
-		Submenu "Font Change|f" "insert_math_font"
-		Item "Math Panel|l" "dialog-show mathpanel"
+		Submenu "Font Change|o" "insert_math_font"
+		Item "Math Panel|P" "dialog-show mathpanel"
 	End
 
 	Menu "insert_math_font"
