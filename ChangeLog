@@ -1,3 +1,9 @@
+1999-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* development/lyx.spec.in (%build): add CFLAGS also.
+
+	* src/screen.C (drawFrame): removed another warning.
+
 1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BackStack.h: fixed initialization order in constructor

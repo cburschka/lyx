@@ -789,9 +789,7 @@ void LyXScreen::drawVerticalTableLine(int x, int y1, int y2, bool on_off)
 void LyXScreen::drawFrame(int /*ft*/, int x, int y, int w, int h,
 			  FL_COLOR /*col*/, int /*b*/)
 {
-#ifdef WITH_WARNINGS
-#warning Implement this using X11 calls, and the repaint problems are gone!
-#endif
+// Implement this using X11 calls, and the repaint problems are gone!
 // At least, I think that should do it since we only have them after
 // one of these buttons are displayed now! Lars, it seems you've hit the
 // nail :-) (Asger)

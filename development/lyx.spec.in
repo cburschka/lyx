@@ -36,7 +36,7 @@ place that the Redhat tetex package is installed and would see it.
 %setup
 
 %build
-CXXFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr 
+CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr 
 make
 
 %install
