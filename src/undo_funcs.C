@@ -53,7 +53,7 @@ Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
 		if (result)
 			return result;
 	}
-	return bv->text->ownerParagraph();
+	return &*bv->text->ownerParagraphs().begin();
 }
 
 

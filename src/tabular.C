@@ -129,7 +129,7 @@ LyXTabular::LyXTabular(BufferParams const & bp,
 		for (int i = 0; i < rows_; ++i) {
 			for (int j = 0; j < columns_; ++j) {
 				cell_info[i][j].inset.id(lt.cell_info[i][j].inset.id());
-				cell_info[i][j].inset.setParagraphData(lt.cell_info[i][j].inset.paragraph(),true);
+				cell_info[i][j].inset.setParagraphData(&*lt.cell_info[i][j].inset.paragraphs.begin(), true);
 			}
 		}
 	}
@@ -1338,7 +1338,7 @@ void LyXTabular::SetMultiColumn(Buffer * buffer, int cell, int number)
 	for (int i = 1; i < number; ++i) {
 		cellinfo_of_cell(cell+i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer,
-			cellinfo_of_cell(cell+i)->inset.paragraph());
+			&*cellinfo_of_cell(cell+i)->inset.paragraphs.begin());
 		cellinfo_of_cell(cell+i)->inset.clear(false);
 	}
 #else
@@ -1983,8 +1983,8 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText * inset = GetCellInset(cell);
 
-		bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
-			!inset->paragraph()->empty() && GetPWidth(cell).zero();
+		bool rtl = inset->paragraphs.begin()->isRightToLeftPar(buf->params) &&
+			!inset->paragraphs.begin()->empty() && GetPWidth(cell).zero();
 
 		if (rtl)
 			os << "\\R{";

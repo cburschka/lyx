@@ -137,7 +137,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraph()->layout(tclass[caplayout]);
+		inset.paragraphs.begin()->layout(tclass[caplayout]);
 }
 
 
@@ -364,7 +364,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 {
-	ParIterator pit(inset.paragraph());
+	ParIterator pit(&*inset.paragraphs.begin());
 	ParIterator end;
 
 	// Find a caption layout in one of the (child inset's) pars

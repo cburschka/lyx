@@ -88,12 +88,13 @@ void LyXText::init(BufferView * bview, bool reinit)
 	} else if (!rowlist_.empty())
 		return;
 
-	Paragraph * par = ownerParagraph();
-	current_font = getFont(bview->buffer(), par, 0);
+	ParagraphList::iterator par = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
 
-	while (par) {
-		insertParagraph(par, rowlist_.end());
-		par = par->next();
+	current_font = getFont(bview->buffer(), &*par, 0);
+
+	for (; par != end; ++par) {
+		insertParagraph(&*par, rowlist_.end());
 	}
 	setCursorIntern(rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
@@ -694,7 +695,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		// changed the ownerParagrah() so the paragraph inside
 		// the row is NOT my really first par anymore.
 		// Got it Lars ;) (Jug 20011206)
-		first_phys_par = ownerParagraph();
+		first_phys_par = &*ownerParagraphs().begin();
 #warning FIXME
 		// In here prevrit could be set to rows().end(). (Lgb)
 	} else {
@@ -1646,15 +1647,17 @@ bool LyXText::updateInset(Inset * inset)
 
 	// check every paragraph
 
-	Paragraph * par = ownerParagraph();
+	ParagraphList::iterator par = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
+
 	do {
 		pos = par->getPositionOfInset(inset);
 		if (pos != -1) {
-			checkParagraph(par, pos);
+			checkParagraph(&*par, pos);
 			return true;
 		}
-		par = par->next();
-	} while (par);
+		++par;
+	} while (par != end);
 
 	return false;
 }
@@ -2283,8 +2286,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 			// delete old row
 			removeRow(old_cursor.row());
-			if (ownerParagraph() == old_cursor.par()) {
-				ownerParagraph(ownerParagraph()->next());
+			if (ownerParagraphs().begin() == old_cursor.par()) {
+				ownerParagraph(&*boost::next(ownerParagraphs().begin()));
 			}
 			// delete old par
 			delete old_cursor.par();
@@ -2319,8 +2322,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			// delete old row
 			removeRow(old_cursor.row());
 			// delete old par
-			if (ownerParagraph() == old_cursor.par()) {
-				ownerParagraph(ownerParagraph()->next());
+			if (ownerParagraphs().begin() == old_cursor.par()) {
+				ownerParagraph(&*boost::next(ownerParagraphs().begin()));
 			}
 
 			delete old_cursor.par();
@@ -2357,12 +2360,12 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 }
 
 
-Paragraph * LyXText::ownerParagraph() const
+ParagraphList & LyXText::ownerParagraphs() const
 {
 	if (inset_owner) {
-		return inset_owner->paragraph();
+		return inset_owner->paragraphs;
 	}
-	return &*(bv_owner->buffer()->paragraphs.begin());
+	return bv_owner->buffer()->paragraphs;
 }
 
 

@@ -1,3 +1,26 @@
+2003-04-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* undo_funcs.C (firstUndoParagraph): adjust
+
+	* text3.C (gotoInset): adjust
+	(dispatch): adjust, and rewrite loop.
+
+	* text2.C (init): adjust, and rewrite loop.
+	(redoParagraphs): adjust
+	(updateInset): adjust, and rewrite loop.
+	(deleteEmptyParagraphMechanism): adjust
+
+	* tabular.C (LyXTabular): adjust
+	(SetMultiColumn): adjust
+	(TeXRow): adjust
+
+	* lyxtext.[Ch] (ownerParagraph): delete function
+	(ownerParagraphs): new function returns a ParagraphList.
+
+	* BufferView.C (removeAutoInsets): adjust
+	(insertErrors): adjust
+	(setCursorFromRow): adjust
+
 2003-04-01  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (buffer): ensure that the Layout is correct
@@ -20,7 +43,7 @@
 	* text.C: adjust
 	* text2.C: adjust
 	* text3.C: adjust
-	
+
 	* lyxrow_funcs. [Ch]: new files
 
 	* lyxrow.[Ch]: remove next and previous pointers

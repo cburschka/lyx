@@ -208,8 +208,6 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	Paragraph * paragraph() const;
-	///
 	void paragraph(Paragraph *);
 	///
 	bool allowSpellcheck() const { return true; }

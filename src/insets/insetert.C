@@ -95,7 +95,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
 	for (; cit != end; ++cit) {
-		inset.paragraph()->insertChar(pos++, *cit, font);
+		inset.paragraphs.begin()->insertChar(pos++, *cit, font);
 	}
 	// the init has to be after the initialization of the paragraph
 	// because of the label settings (draw_label for ert insets).
@@ -200,8 +200,9 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 
 	//inset.writeParagraphData(buf, os);
 	string const layout(buf->params.getLyXTextClass().defaultLayoutName());
-	Paragraph * par = inset.paragraph();
-	while (par) {
+	ParagraphList::iterator par = inset.paragraphs.begin();
+	ParagraphList::iterator end = inset.paragraphs.end();
+	for (; par != end; ++par) {
 		os << "\n\\layout " << layout << "\n";
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
@@ -224,7 +225,6 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 				break;
 			}
 		}
-		par = par->next();
 	}
 }
 
@@ -349,9 +349,11 @@ void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
-	Paragraph * par = inset.paragraph();
+	ParagraphList::iterator par = inset.paragraphs.begin();
+	ParagraphList::iterator end = inset.paragraphs.end();
+
 	int lines = 0;
-	while (par) {
+	while (par != end) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			// ignore all struck out text
@@ -365,8 +367,8 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 				os << par->getChar(i);
 			}
 		}
-		par = par->next();
-		if (par) {
+		++par;
+		if (par != end) {
 			os << "\n\n";
 			lines += 2;
 		}
@@ -384,9 +386,11 @@ int InsetERT::ascii(Buffer const *, ostream &, int /*linelen*/) const
 
 int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 {
-	Paragraph * par = inset.paragraph();
+	ParagraphList::iterator par = inset.paragraphs.begin();
+	ParagraphList::iterator end = inset.paragraphs.end();
+
 	int lines = 0;
-	while (par) {
+	while (par != end) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			if (par->isNewline(i)) {
@@ -396,8 +400,8 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 				os << par->getChar(i);
 			}
 		}
-		par = par->next();
-		if (par) {
+		++par;
+		if (par != end) {
 			os << "\n";
 			lines ++;
 		}
@@ -409,9 +413,11 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 
 int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 {
-	Paragraph * par = inset.paragraph();
+	ParagraphList::iterator par = inset.paragraphs.begin();
+	ParagraphList::iterator end = inset.paragraphs.end();
+
 	int lines = 0;
-	while (par) {
+	while (par != end) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			if (par->isNewline(i)) {
@@ -421,8 +427,8 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 				os << par->getChar(i);
 			}
 		}
-		par = par->next();
-		if (par) {
+		++par;
+		if (par != end) {
 			os << "\n";
 			lines ++;
 		}
@@ -437,7 +443,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 	Inset::RESULT result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
 
-	if (inset.paragraph()->empty()) {
+	if (inset.paragraphs.begin()->empty()) {
 		set_latex_font(bv);
 	}
 
@@ -480,7 +486,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraph()->layout()->name());
+		bv->owner()->setLayout(inset.paragraphs.begin()->layout()->name());
 		result = DISPATCHED_NOUPDATE;
 		break;
 
@@ -511,17 +517,18 @@ string const InsetERT::get_new_label() const
 {
 	string la;
 	pos_type const max_length = 15;
-	pos_type const p_siz = inset.paragraph()->size();
+	pos_type const p_siz = inset.paragraphs.begin()->size();
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
 	for(; i < n && j < p_siz; ++j) {
-		if (inset.paragraph()->isInset(j))
+		if (inset.paragraphs.begin()->isInset(j))
 			continue;
-		la += inset.paragraph()->getChar(j);
+		la += inset.paragraphs.begin()->getChar(j);
 		++i;
 	}
-	if (inset.paragraph()->next() || (i > 0 && j < p_siz)) {
+	if (boost::next(inset.paragraphs.begin()) != inset.paragraphs.end() ||
+	    (i > 0 && j < p_siz)) {
 		la += "...";
 	}
 	if (la.empty()) {

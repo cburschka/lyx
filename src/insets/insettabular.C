@@ -1631,7 +1631,7 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 		++actcell;
 	}
 	if (lock) {
-		bool rtl = tabular->GetCellInset(actcell)->paragraph()->
+		bool rtl = tabular->GetCellInset(actcell)->paragraphs.begin()->
 			isRightToLeftPar(bv->buffer()->params);
 		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
@@ -1660,7 +1660,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 		--actcell;
 	}
 	if (lock) {
-		bool rtl = tabular->GetCellInset(actcell)->paragraph()->
+		bool rtl = tabular->GetCellInset(actcell)->paragraphs.begin()->
 			isRightToLeftPar(bv->buffer()->params);
 		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
@@ -2852,8 +2852,8 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText * ti = loctab->GetCellInset(cell);
 				LyXFont const font = ti->getLyXText(bv)->
-					getFont(bv->buffer(), ti->paragraph(), 0);
-				ti->setText(buf.substr(op, p-op), font);
+					getFont(bv->buffer(), &*ti->paragraphs.begin(), 0);
+				ti->setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
 			}
@@ -2863,8 +2863,8 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText * ti = loctab->GetCellInset(cell);
 				LyXFont const font = ti->getLyXText(bv)->
-					getFont(bv->buffer(), ti->paragraph(), 0);
-				ti->setText(buf.substr(op, p-op), font);
+					getFont(bv->buffer(), &*ti->paragraphs.begin(), 0);
+				ti->setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
 			++row;
@@ -2879,8 +2879,8 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	if ((cell < cells) && (op < len)) {
 		InsetText * ti = loctab->GetCellInset(cell);
 		LyXFont const font = ti->getLyXText(bv)->
-			getFont(bv->buffer(), ti->paragraph(), 0);
-		ti->setText(buf.substr(op, len-op), font);
+			getFont(bv->buffer(), &*ti->paragraphs.begin(), 0);
+		ti->setText(buf.substr(op, len - op), font);
 	}
 
 	return true;

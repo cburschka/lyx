@@ -2428,12 +2428,6 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 }
 
 
-Paragraph * InsetText::paragraph() const
-{
-	return &*(paragraphs.begin());
-}
-
-
 void InsetText::paragraph(Paragraph * p)
 {
 	// GENERAL COMMENT: We don't have to free the old paragraphs as the

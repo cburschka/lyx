@@ -67,7 +67,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraph()->layout(tclass[caplayout]);
+		inset.paragraphs.begin()->layout(tclass[caplayout]);
 }
 
 
@@ -269,8 +269,10 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 	// Now find the caption in the float...
 	// We now tranverse the paragraphs of
 	// the inset...
-	Paragraph * tmp = inset.paragraph();
-	while (tmp) {
+	ParagraphList::iterator tmp = inset.paragraphs.begin();
+	ParagraphList::iterator end = inset.paragraphs.end();
+
+	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {
 			string const name = floatname(params_.type, buf->params);
 			string const str =
@@ -279,7 +281,7 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			toc::TocItem const item(tmp->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
-		tmp = tmp->next();
+		++tmp;
 	}
 }
 

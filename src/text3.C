@@ -214,9 +214,9 @@ void LyXText::gotoInset(vector<Inset::Code> const & codes,
 	}
 
 	if (!gotoNextInset(codes, contents)) {
-		if (cursor.pos() || cursor.par() != ownerParagraph()) {
+		if (cursor.pos() || cursor.par() != ownerParagraphs().begin()) {
 			LyXCursor tmp = cursor;
-			cursor.par(ownerParagraph());
+			cursor.par(&*ownerParagraphs().begin());
 			cursor.pos(0);
 			if (!gotoNextInset(codes, contents)) {
 				cursor = tmp;
@@ -411,13 +411,15 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bool start = !par->params().startOfAppendix();
 
 		// ensure that we have only one start_of_appendix in this document
-		Paragraph * tmp = ownerParagraph();
-		for (; tmp; tmp = tmp->next()) {
+		ParagraphList::iterator tmp = ownerParagraphs().begin();
+		ParagraphList::iterator end = ownerParagraphs().end();
+
+		for (; tmp != end; ++tmp) {
 			if (tmp->params().startOfAppendix()) {
-				setUndo(bv, Undo::EDIT, tmp, tmp->next());
+				setUndo(bv, Undo::EDIT, &*tmp, &*boost::next(tmp));
 				tmp->params().startOfAppendix(false);
 				int tmpy;
-				setHeightOfRow(getRow(tmp, 0, tmpy));
+				setHeightOfRow(getRow(&*tmp, 0, tmpy));
 				break;
 			}
 		}

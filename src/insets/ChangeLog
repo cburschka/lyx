@@ -1,8 +1,30 @@
+2003-04-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetwrap.C (InsetWrap): adjust
+	(addToToc): adjust and rewrite loop
+
+	* insettext.[Ch] (paragraph): delete function
+
+	* insettabular.C (moveNextCell): adjust
+	(movePrevCell): adjust
+	(insertAsciiString): adjust
+
+	* insetfloat.C (InsetFloat): adjust
+	(addToToc): adjust
+
+	* insetert.C (InsetERT): adjust
+	(write): adjust, and rewrite loop
+	(latex): adjust, and rewrite loop
+	(linuxdoc): adjust, and rewrite loop
+	(docbook): adjust, and rewrite loop
+	(localDispatch): adjust
+	(get_new_label): adjust
+
 2003-04-01  John Levon  <levon@movementarian.org>
 
 	From Alfredo Braunstein
 
-	* insetbutton.h:	
+	* insetbutton.h:
 	* insetbutton.C: add localDispatch()
 
 	* insetcommand.C: return DISPATCHED when edit() called
@@ -12,7 +34,7 @@
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C: adjust
-	
+
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C (draw): adjust

@@ -472,7 +472,7 @@ bool BufferView::removeAutoInsets()
 	// It is possible that the last line is empty if it was cursor_par
 	// and/or only had an error inset on it.  So we set the cursor to the
 	// start of the doc to force its removal and ensure a valid saved cursor
-	if (text->setCursor(text->ownerParagraph(), 0)
+	if (text->setCursor(&*text->ownerParagraphs().begin(), 0)
 	    && 0 == cursor_par_next) {
 		cursor_par = cursor_par_prev;
 		cursor_pos = cursor_par->size();
@@ -515,7 +515,7 @@ void BufferView::insertErrors(TeXErrors & terr)
 		Paragraph * texrowpar = 0;
 
 		if (tmpid == -1) {
-			texrowpar = text->ownerParagraph();
+			texrowpar = &*text->ownerParagraphs().begin();
 			tmppos = 0;
 		} else {
 			texrowpar = buffer()->getParFromID(tmpid);
@@ -546,7 +546,7 @@ void BufferView::setCursorFromRow(int row)
 	Paragraph * texrowpar;
 
 	if (tmpid == -1) {
-		texrowpar = text->ownerParagraph();
+		texrowpar = &*text->ownerParagraphs().begin();
 		tmppos = 0;
 	} else {
 		texrowpar = buffer()->getParFromID(tmpid);

@@ -626,7 +626,7 @@ public:
 	//
 	// special owner functions
 	///
-	Paragraph * ownerParagraph() const;
+	ParagraphList & ownerParagraphs() const;
 	//
 	void ownerParagraph(Paragraph *) const;
 	// set it searching first for the right owner using the paragraph id
