@@ -1406,6 +1406,10 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
 	setHeightOfRow(bview, cursor.row());
 
+#warning Trouble Point! (Lgb)
+	// When ::breakParagraph is called from within an inset we must
+	// ensure that the correct ParagraphList is used. Today that is not
+	// the case and the Buffer::paragraphs is used. Not good. (Lgb)
 	while (!cursor.par()->next()->empty()
 	  && cursor.par()->next()->isNewline(0))
 	   cursor.par()->next()->erase(0);

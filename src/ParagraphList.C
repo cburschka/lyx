@@ -88,11 +88,20 @@ ParagraphList::ParagraphList()
 ParagraphList::iterator
 ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 {
-	Paragraph * prev = it->previous();
-	par->next(&*it);
-	par->previous(prev);
-	prev->next(par);
-	it->previous(par);
+	if (it != end()) {
+		Paragraph * prev = it->previous();
+		par->next(&*it);
+		par->previous(prev);
+		prev->next(par);
+		it->previous(par);
+	} else {
+		// Find last par.
+		Paragraph * last = parlist;
+		while (last->next())
+			last = last->next();
+		last->next(par);
+		par->previous(last);
+	}
 	return iterator(par);
 }
 
@@ -112,8 +121,10 @@ void ParagraphList::erase(ParagraphList::iterator it)
 	Paragraph * prev = it->previous();
 	Paragraph * next = it->next();
 
-	prev->next(next);
-	next->previous(prev);
+	if (prev)
+		prev->next(next);
+	if (next)
+		next->previous(prev);
 
 	delete &*it;
 }

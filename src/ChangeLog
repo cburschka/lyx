@@ -1,3 +1,8 @@
+2003-03-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ParagraphList.C (insert): handle insert right before end()
+	(erase): fix cases where it can be first or last paragraph.
+
 2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph_funcs.C (TeXEnvironment): remove all usage of
