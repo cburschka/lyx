@@ -891,7 +891,8 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		tmp->setLabelWidthString(params().labelWidthString());
 	}
 
-	bool isempty = textclasslist[bparams.textclass][layout()].keepempty;
+	bool isempty = (textclasslist[bparams.textclass][layout()].keepempty &&
+	                !size());
 	if (!isempty && (size() > pos || !size() || flag == 2)) {
 		tmp->layout(layout());
 		tmp->params().align(params().align());

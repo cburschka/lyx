@@ -1,3 +1,13 @@
+2002-05-14  Juergen Vigna  <jug@sad.it>
+
+	* text.C (breakParagraph): fixed function to honor the keepempty
+	layout in the right maner and also to permit the right breaking
+	algorithm on empty or non empyt keepempty paragraphs.
+
+	* paragraph.C (breakParagraph): we have to check also if the par
+	is really empty (!size()) for isempty otherwise we do the wrong
+	paragraph break.
+
 2002-05-10  Juergen Vigna  <jug@sad.it>
 
 	* buffer.[Ch] : The following are only changes to the ert

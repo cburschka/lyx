@@ -1755,6 +1755,12 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
      keep_layout = 2;
    else
      keep_layout = layout.isEnvironment();
+
+   // we need to set this before we insert the paragraph. IMO the
+   // breakParagraph call should return a bool if it inserts the
+   // paragraph before or behind and we should react on that one
+   // but we can fix this in 1.3.0 (Jug 20020509)
+   bool const isempty = (layout.keepempty && !cursor.par()->size());
    cursor.par()->breakParagraph(bview->buffer()->params, cursor.pos(),
 				keep_layout);
 
@@ -1807,7 +1813,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
    /* This check is necessary. Otherwise the new empty paragraph will
     * be deleted automatically. And it is more friendly for the user! */
-   if (cursor.pos() || layout.keepempty)
+   if (cursor.pos() || isempty)
 	   setCursor(bview, cursor.par()->next(), 0);
    else
 	   setCursor(bview, cursor.par(), 0);
