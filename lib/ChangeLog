@@ -1,3 +1,8 @@
+2003-02-01  Angus Leeming  <leeming@lyx.org>
+
+	* reLyX/Text/TeX.pm: fix bug 9: reLyX thinks \)* is a starred version
+	of the \) command. (End of math environment.)
+
 2003-01-28  Edwin Leuven <e.leuven@uva.nl>
 
 	* layouts/amsbook.layout:
