@@ -43,6 +43,7 @@
 #include "QLImage.h"
 #include "qfont_loader.h"
 #include "io_callback.h"
+#include "lcolorcache.h"
 
 #include <qapplication.h>
 #include <qwidget.h>
@@ -208,14 +209,14 @@ FuncStatus getStatus(FuncRequest const & ev)
 
 string const hexname(LColor::color col)
 {
-	QColor color(toqstr(lcolor.getX11Name(col)));
-	return ltrim(fromqstr(color.name()), "#");
+	return ltrim(fromqstr(lcolorcache.get(col).name()), "#");
 }
 
 
 void update_color(LColor::color)
 {
-	// no need
+	// FIXME: Bleh, can't we just clear them all at once ?
+	lcolorcache.clear();
 }
 
 

@@ -39,6 +39,7 @@
 #include "frnt_lang.h"
 #include "helper_funcs.h"
 #include "qt_helpers.h"
+#include "lcolorcache.h"
 #include "debug.h"
 
 #include <boost/tuple/tuple.hpp>
@@ -296,7 +297,7 @@ void QPrefs::apply()
 		QColorItem * ci(static_cast<QColorItem*>(ib));
 
 		LColor::color const col(dialog_->colors_[i]);
-		QColor const qcol(toqstr(lcolor.getX11Name(col)));
+		QColor const & qcol(lcolorcache.get(col));
 
 		// FIXME: dubious, but it's what xforms does
 		if (qcol != ci->color()) {

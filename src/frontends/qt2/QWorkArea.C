@@ -21,6 +21,7 @@
 
 #include "QWorkArea.h"
 #include "qt_helpers.h"
+#include "lcolorcache.h"
 
 #include <qapplication.h>
 #include <qevent.h>
@@ -53,7 +54,7 @@ QWorkArea::QWorkArea(int, int, int, int)
 
 	content_->show();
 
-	content_->setBackgroundColor(toqstr(lcolor.getX11Name(LColor::background)));
+	content_->setBackgroundColor(lcolorcache.get(LColor::background));
 
 	QHBoxLayout * vl = new QHBoxLayout(this);
 	vl->addWidget(content_, 5);

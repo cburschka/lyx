@@ -69,6 +69,7 @@ libqt2_la_SOURCES = \
 	QtLyXView.h \
 	WorkAreaFactory.C \
 	lyx_gui.C \
+	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \
 	qcoloritem.h qcoloritem.C \
 	qfontexample.h qfontexample.C \

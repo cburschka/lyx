@@ -24,6 +24,7 @@
 #include "QLPainter.h"
 #include "QLImage.h"
 #include "qt_helpers.h"
+#include "lcolorcache.h"
 
 #include <boost/scoped_array.hpp>
 
@@ -77,7 +78,7 @@ QPainter & QLPainter::setPen(LColor::color c,
 {
 	QPen pen = qp_->pen();
 
-	pen.setColor(toqstr(lcolor.getX11Name(c)));
+	pen.setColor(lcolorcache.get(c));
 
 	switch (ls) {
 		case line_solid: pen.setStyle(QPen::SolidLine); break;
@@ -149,7 +150,7 @@ Painter & QLPainter::fillRectangle(int x, int y,
 	int w, int h,
 	LColor::color col)
 {
-	qp_->fillRect(x, y, w, h, QColor(toqstr(lcolor.getX11Name(col))));
+	qp_->fillRect(x, y, w, h, lcolorcache.get(col));
 	return *this;
 }
 
@@ -168,7 +169,7 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 	}
 
 	setPen(col);
-	qp_->setBrush(toqstr(lcolor.getX11Name(col)));
+	qp_->setBrush(lcolorcache.get(col));
 	qp_->drawPolygon(QPointArray(np, points.get()));
 	qp_->setBrush(Qt::NoBrush);
 

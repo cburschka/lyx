@@ -1,3 +1,14 @@
+2003-05-24  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* lcolorcache.h:
+	* lcolorcache.C: add LColor::color -> QColor cache
+
+	* QLPainter.C:
+	* QPrefs.C:
+	* QWorkArea.C:
+	* lyx_gui.C: use it
+
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
 	compile fixes.
