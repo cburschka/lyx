@@ -40,7 +40,7 @@
 
 #if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB)
 #define BOOST_BIG_ENDIAN
-#elif defined(__i386__)
+#elif defined(__i386__) || defined(__alpha__)
 #define BOOST_LITTLE_ENDIAN
 #else
 #error The file boost/detail/limits.hpp needs to be set up for your CPU type.
