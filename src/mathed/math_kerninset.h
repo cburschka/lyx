@@ -13,7 +13,7 @@
 #define MATH_CHEATINSET_H
 
 #include "math_inset.h"
-#include "vspace.h"
+#include "lyxlength.h"
 #include "support/std_string.h"
 
 

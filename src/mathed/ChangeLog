@@ -1,3 +1,10 @@
+2003-09-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_kerninset.h: 
+	* math_gridinset.h: include "lyxlength.h", not "vspace.h"
+
+	* math_cursor.C: "lyxrc.h", not <lyxrc.h>
+
 2003-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.C:

@@ -11,8 +11,7 @@
 
 #include <config.h>
 
-#include <lyxrc.h>
-
+#include "lyxrc.h"
 #include "support/LAssert.h"
 #include "support/limited_stack.h"
 #include "debug.h"
