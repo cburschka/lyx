@@ -44,12 +44,14 @@ void InsetCharStyle::init()
 {
 	setInsetName("CharStyle");
 	setStatus(Inlined);
+	setDrawFrame(false);
+	has_label_ = true;
 }
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
-	: InsetCollapsable(bp), has_label_(true)
+	: InsetCollapsable(bp)
 {
 	params_.type = cs->name;
 	params_.latextype = cs->latextype;
@@ -62,7 +64,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 
 
 InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
-	: InsetCollapsable(in), params_(in.params_), has_label_(true)
+	: InsetCollapsable(in), params_(in.params_)
 {
 	init();
 }
@@ -98,7 +100,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
-	InsetCollapsable::metrics(mi, dim);
+	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	dim_ = dim;
 	if (has_label_)
@@ -110,19 +112,20 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
-	// FIXME: setStatus(Inlined); this is not a const operation
 	LyXFont tmpfont = pi.base.font;
-	//setDrawFrame(InsetText::NEVER);
 	getDrawFont(pi.base.font);
 	InsetText::draw(pi, x, y);
 	pi.base.font = tmpfont;
 
-	pi.pain.line(x + 2, y + InsetText::descent() - 4, x + 2,
-		y + InsetText::descent(), params_.labelfont.color());
-	pi.pain.line(x + 2, y + InsetText::descent(), x + dim_.wid - 2,
-		y + InsetText::descent(), params_.labelfont.color());
-	pi.pain.line(x + dim_.wid - 2, y + InsetText::descent(), x + dim_.wid - 2,
-		y + InsetText::descent() - 4, params_.labelfont.color());
+	int desc = InsetText::descent();
+	if (has_label_)
+		desc -= ascent();
+	
+	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
+	pi.pain.line(x, y + desc, x + dim_.wid - 2, y + desc, 
+		params_.labelfont.color());
+	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4, 
+		params_.labelfont.color());
 
 	if (has_label_) {
 		LyXFont font(params_.labelfont);
@@ -133,8 +136,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int a = 0;
 		int d = 0;
 		font_metrics::rectText(params_.type, font, w, a, d);
-		pi.pain.rectText(x + (dim_.wid - w) / 2,
-			y + InsetText::descent() + a,
+		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			params_.type, font, LColor::none, LColor::none);
 	}
 }
