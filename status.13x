@@ -36,7 +36,7 @@ What's new
 
 - updated french translation of menus
 
-- updates to Extended Manual and Customization Manual.
+- updates to Extended Manual and Customization Manual
 
 ** Bug fixes
 
@@ -66,6 +66,8 @@ What's new
 
 - duplicate 'a' shortcut in graphics dialog fixed [XForms only]
 
+- revert is now disabled for an unchanged or unsaved document [bug #783]
+
 - fix bug where changing encoding of screen fonts would not work
   immediately [XForms only]
 
@@ -78,4 +80,5 @@ What's new
 
 - fix strerror() build problem with some gcc/glibc versions [bug #874]
 
-- revert is now disabled for an unchanged or unsaved document [bug #783]
+- mention in INSTALL file that the qt frontend is selected using
+  --with-frontend=qt
