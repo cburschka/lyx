@@ -61,7 +61,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
-"POT-Creation-Date: 2003-12-16 14:01+0100\n"
+"POT-Creation-Date: 2003-12-29 15:38+0100\n"
 "PO-Revision-Date: 2003-12-12 23:36+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -4120,7 +4120,7 @@ msgid "Send output to a file"
 msgstr "Syötä tuloste tiedostoon"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Viite"
@@ -5052,7 +5052,7 @@ msgstr "Tekijä"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -5074,7 +5074,7 @@ msgstr "Posti"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -5386,21 +5386,21 @@ msgid "Send_To_Address"
 msgstr "Lähetysosoite"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Aloitus"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
 #: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Allekirjoitus"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -5415,13 +5415,12 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr "jakelu"
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
-#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr "Aihe"
 
@@ -5430,7 +5429,6 @@ msgid "Stadt"
 msgstr "Kaupunki"
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
-#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr "Päiväys"
 
@@ -5587,17 +5585,17 @@ msgstr "Väittämä*"
 msgid "Definition*"
 msgstr "Määritelmä*"
 
-#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
+#: ../lib/layouts/g-brief-de.layout:31
 msgid "Brieftext"
 msgstr "Kirjeteksti"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
-#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:126
+#: ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Nimi"
 
-#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
+#: ../lib/layouts/g-brief-de.layout:73
 msgid "Unterschrift"
 msgstr "Allekirjoitus"
 
@@ -5617,19 +5615,19 @@ msgstr "Postitoimipaikka"
 msgid "Land"
 msgstr "Maa"
 
-#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
+#: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
 msgstr "Palautusosoite"
 
-#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
+#: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
+#: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
+#: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
 msgstr "IhrSchreiben"
 
@@ -5666,31 +5664,31 @@ msgstr "BLZ"
 msgid "Konto"
 msgstr "Tili"
 
-#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
+#: ../lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
 msgstr "Postimerkintä"
 
-#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
+#: ../lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
 msgstr "Osoite"
 
-#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
+#: ../lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
 msgstr "Puhuttelu"
 
-#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
+#: ../lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
 msgstr "Laitos"
 
-#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
+#: ../lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
 msgstr "Jakelija"
 
-#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
+#: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
 msgstr "Lopuksi"
 
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr "Kirje"
@@ -5711,19 +5709,19 @@ msgstr "Kaupunki"
 msgid "State"
 msgstr "Maa"
 
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
 msgid "ReturnAddress"
 msgstr "Palautusosoite"
 
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
 msgid "MyRef"
 msgstr "Viitteeni"
 
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
 msgid "YourRef"
 msgstr "Viitteesi"
 
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
 msgid "YourMail"
 msgstr "Vastaanottajan osoite"
 
@@ -5739,263 +5737,145 @@ msgstr "Pankkikoodi"
 msgid "BankAccount"
 msgstr "Pankkitili"
 
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
 msgid "PostalComment"
 msgstr "Postihuomautus"
 
-#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
+#: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr "Postimerkintä"
 
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
 msgid "Encl."
 msgstr "Liitteet"
 
-#: ../lib/layouts/g-brief2-de.layout:75
-msgid "NameZeileA"
-msgstr "Nimirivi A"
-
-#: ../lib/layouts/g-brief2-de.layout:95
-msgid "NameZeileB"
-msgstr "Nimirivi B"
-
-#: ../lib/layouts/g-brief2-de.layout:114
-msgid "NameZeileC"
-msgstr "Nimirivi C"
-
-#: ../lib/layouts/g-brief2-de.layout:133
-msgid "NameZeileD"
-msgstr "Nimirivi D"
-
-#: ../lib/layouts/g-brief2-de.layout:152
-msgid "NameZeileE"
-msgstr "Nimirivi E"
-
-#: ../lib/layouts/g-brief2-de.layout:171
-msgid "NameZeileF"
-msgstr "Nimirivi F"
-
-#: ../lib/layouts/g-brief2-de.layout:190
-msgid "NameZeileG"
-msgstr "Nimirivi G"
-
-#: ../lib/layouts/g-brief2-de.layout:230
-msgid "AdressZeileA"
-msgstr "Osoiterivi A"
-
-#: ../lib/layouts/g-brief2-de.layout:250
-msgid "AdressZeileB"
-msgstr "Osoiterivi B"
-
-#: ../lib/layouts/g-brief2-de.layout:269
-msgid "AdressZeileC"
-msgstr "Osoiterivi C"
-
-#: ../lib/layouts/g-brief2-de.layout:288
-msgid "AdressZeileD"
-msgstr "Osoiterivi D"
-
-#: ../lib/layouts/g-brief2-de.layout:307
-msgid "AdressZeileE"
-msgstr "Osoiterivi E"
-
-#: ../lib/layouts/g-brief2-de.layout:326
-msgid "AdressZeileF"
-msgstr "Osoiterivi F"
-
-#: ../lib/layouts/g-brief2-de.layout:345
-msgid "TelefonZeileA"
-msgstr "Puhelinrivi A"
-
-#: ../lib/layouts/g-brief2-de.layout:365
-msgid "TelefonZeileB"
-msgstr "Puhelinrivi B"
-
-#: ../lib/layouts/g-brief2-de.layout:384
-msgid "TelefonZeileC"
-msgstr "Puhelinrivi C"
-
-#: ../lib/layouts/g-brief2-de.layout:403
-msgid "TelefonZeileD"
-msgstr "Puhelinrivi D"
-
-#: ../lib/layouts/g-brief2-de.layout:422
-msgid "TelefonZeileE"
-msgstr "Puhelinrivi E"
-
-#: ../lib/layouts/g-brief2-de.layout:441
-msgid "TelefonZeileF"
-msgstr "Puhelinrivi F"
-
-#: ../lib/layouts/g-brief2-de.layout:460
-msgid "InternetZeileA"
-msgstr "Internetrivi A"
-
-#: ../lib/layouts/g-brief2-de.layout:480
-msgid "InternetZeileB"
-msgstr "Internetrivi B"
-
-#: ../lib/layouts/g-brief2-de.layout:498
-msgid "InternetZeileC"
-msgstr "Internetrivi C"
-
-#: ../lib/layouts/g-brief2-de.layout:516
-msgid "InternetZeileD"
-msgstr "Internetrivi D"
-
-#: ../lib/layouts/g-brief2-de.layout:534
-msgid "InternetZeileE"
-msgstr "Internetrivi E"
-
-#: ../lib/layouts/g-brief2-de.layout:552
-msgid "InternetZeileF"
-msgstr "Internetrivi F"
-
-#: ../lib/layouts/g-brief2-de.layout:571
-msgid "BankZeileA"
-msgstr "Pankkirivi A"
-
-#: ../lib/layouts/g-brief2-de.layout:591
-msgid "BankZeileB"
-msgstr "Pankkirivi B"
-
-#: ../lib/layouts/g-brief2-de.layout:610
-msgid "BankZeileC"
-msgstr "Pankkirivi C"
-
-#: ../lib/layouts/g-brief2-de.layout:629
-msgid "BankZeileD"
-msgstr "Pankkirivi D"
-
-#: ../lib/layouts/g-brief2-de.layout:648
-msgid "BankZeileE"
-msgstr "Pankkirivi E"
-
-#: ../lib/layouts/g-brief2-de.layout:667
-msgid "BankZeileF"
-msgstr "Pankkirivi F"
-
-#: ../lib/layouts/g-brief2-en.layout:75
+#: ../lib/layouts/g-brief2.layout:75
 msgid "NameRowA"
 msgstr "Nimirivi A"
 
-#: ../lib/layouts/g-brief2-en.layout:95
+#: ../lib/layouts/g-brief2.layout:95
 msgid "NameRowB"
 msgstr "Nimirivi B"
 
-#: ../lib/layouts/g-brief2-en.layout:114
+#: ../lib/layouts/g-brief2.layout:114
 msgid "NameRowC"
 msgstr "Nimirivi C"
 
-#: ../lib/layouts/g-brief2-en.layout:133
+#: ../lib/layouts/g-brief2.layout:133
 msgid "NameRowD"
 msgstr "Nimirivi D"
 
-#: ../lib/layouts/g-brief2-en.layout:152
+#: ../lib/layouts/g-brief2.layout:152
 msgid "NameRowE"
 msgstr "Nimirivi E"
 
-#: ../lib/layouts/g-brief2-en.layout:171
+#: ../lib/layouts/g-brief2.layout:171
 msgid "NameRowF"
 msgstr "Nimirivi F"
 
-#: ../lib/layouts/g-brief2-en.layout:190
+#: ../lib/layouts/g-brief2.layout:190
 msgid "NameRowG"
 msgstr "Nimirivi G"
 
-#: ../lib/layouts/g-brief2-en.layout:230
+#: ../lib/layouts/g-brief2.layout:230
 msgid "AdressRowA"
 msgstr "Osoiterivi A"
 
-#: ../lib/layouts/g-brief2-en.layout:250
+#: ../lib/layouts/g-brief2.layout:250
 msgid "AdressRowB"
 msgstr "Osoiterivi B"
 
-#: ../lib/layouts/g-brief2-en.layout:269
+#: ../lib/layouts/g-brief2.layout:269
 msgid "AdressRowC"
 msgstr "Osoiterivi C"
 
-#: ../lib/layouts/g-brief2-en.layout:288
+#: ../lib/layouts/g-brief2.layout:288
 msgid "AdressRowD"
 msgstr "Osoiterivi D"
 
-#: ../lib/layouts/g-brief2-en.layout:307
+#: ../lib/layouts/g-brief2.layout:307
 msgid "AdressRowE"
 msgstr "Osoiterivi E"
 
-#: ../lib/layouts/g-brief2-en.layout:326
+#: ../lib/layouts/g-brief2.layout:326
 msgid "AdressRowF"
 msgstr "Osoiterivi F"
 
-#: ../lib/layouts/g-brief2-en.layout:345
-msgid "TelefonRowA"
+#: ../lib/layouts/g-brief2.layout:345
+#, fuzzy
+msgid "TelephoneRowA"
 msgstr "Puhelinrivi A"
 
-#: ../lib/layouts/g-brief2-en.layout:365
-msgid "TelefonRowB"
+#: ../lib/layouts/g-brief2.layout:365
+#, fuzzy
+msgid "TelephoneRowB"
 msgstr "Puhelinrivi B"
 
-#: ../lib/layouts/g-brief2-en.layout:384
-msgid "TelefonRowC"
+#: ../lib/layouts/g-brief2.layout:384
+#, fuzzy
+msgid "TelephoneRowC"
 msgstr "Puhelinrivi C"
 
-#: ../lib/layouts/g-brief2-en.layout:403
-msgid "TelefonRowD"
+#: ../lib/layouts/g-brief2.layout:403
+#, fuzzy
+msgid "TelephoneRowD"
 msgstr "Puhelinrivi D"
 
-#: ../lib/layouts/g-brief2-en.layout:422
-msgid "TelefonRowE"
+#: ../lib/layouts/g-brief2.layout:422
+#, fuzzy
+msgid "TelephoneRowE"
 msgstr "Puhelinrivi E"
 
-#: ../lib/layouts/g-brief2-en.layout:441
-msgid "TelefonRowF"
+#: ../lib/layouts/g-brief2.layout:441
+#, fuzzy
+msgid "TelephoneRowF"
 msgstr "Puhelinrivi F"
 
-#: ../lib/layouts/g-brief2-en.layout:460
+#: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
 msgstr "Internetrivi A"
 
-#: ../lib/layouts/g-brief2-en.layout:480
+#: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
 msgstr "Internetrivi B"
 
-#: ../lib/layouts/g-brief2-en.layout:498
+#: ../lib/layouts/g-brief2.layout:498
 msgid "InternetRowC"
 msgstr "Internetrivi C"
 
-#: ../lib/layouts/g-brief2-en.layout:516
+#: ../lib/layouts/g-brief2.layout:516
 msgid "InternetRowD"
 msgstr "Internetrivi D"
 
-#: ../lib/layouts/g-brief2-en.layout:534
+#: ../lib/layouts/g-brief2.layout:534
 msgid "InternetRowE"
 msgstr "Internetrivi E"
 
-#: ../lib/layouts/g-brief2-en.layout:552
+#: ../lib/layouts/g-brief2.layout:552
 msgid "InternetRowF"
 msgstr "Internetrivi F"
 
-#: ../lib/layouts/g-brief2-en.layout:571
+#: ../lib/layouts/g-brief2.layout:571
 msgid "BankRowA"
 msgstr "Pankkirivi A"
 
-#: ../lib/layouts/g-brief2-en.layout:591
+#: ../lib/layouts/g-brief2.layout:591
 msgid "BankRowB"
 msgstr "Pankkirivi B"
 
-#: ../lib/layouts/g-brief2-en.layout:610
+#: ../lib/layouts/g-brief2.layout:610
 msgid "BankRowC"
 msgstr "Pankkirivi C"
 
-#: ../lib/layouts/g-brief2-en.layout:629
+#: ../lib/layouts/g-brief2.layout:629
 msgid "BankRowD"
 msgstr "Pankkirivi D"
 
-#: ../lib/layouts/g-brief2-en.layout:648
+#: ../lib/layouts/g-brief2.layout:648
 msgid "BankRowE"
 msgstr "Pankkirivi E"
 
-#: ../lib/layouts/g-brief2-en.layout:667
+#: ../lib/layouts/g-brief2.layout:667
 msgid "BankRowF"
 msgstr "Pankkirivi F"
 
@@ -6534,7 +6414,8 @@ msgid "Basque"
 msgstr "baski"
 
 #: ../lib/languages:9
-msgid "Portuguese"
+#, fuzzy
+msgid "Portuguese (Brazil)"
 msgstr "portugali"
 
 #: ../lib/languages:10
@@ -6553,9 +6434,10 @@ msgstr "bulgaria"
 msgid "Canadian"
 msgstr "kanadanenglanti"
 
-#: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
-msgid "French"
-msgstr "ranska"
+#: ../lib/languages:14
+#, fuzzy
+msgid "French Canadian"
+msgstr "kanadanenglanti"
 
 #: ../lib/languages:15
 msgid "Catalan"
@@ -6593,13 +6475,25 @@ msgstr "viro"
 msgid "Finnish"
 msgstr "suomi"
 
+#: ../lib/languages:25
+msgid "French"
+msgstr "ranska"
+
+#: ../lib/languages:26
+msgid "French (GUTenberg)"
+msgstr ""
+
 #: ../lib/languages:27
 msgid "Galician"
 msgstr "galicia"
 
-#: ../lib/languages:30 ../lib/languages:31
+#: ../lib/languages:30
 msgid "German"
 msgstr "saksa"
+
+#: ../lib/languages:31
+msgid "German (new spelling)"
+msgstr ""
 
 #: ../lib/languages:33
 msgid "Hebrew"
@@ -11135,52 +11029,58 @@ msgstr "Virhe! Ei voi tulostaa!"
 msgid "Check `range of pages'!"
 msgstr "Tarkista sivualue."
 
-#: src/frontends/xforms/xforms_helpers.C:356
-#: src/frontends/xforms/xforms_helpers.C:380
-#: src/frontends/xforms/xforms_helpers.C:415
-#: src/frontends/xforms/xforms_helpers.C:461
+#: src/frontends/xforms/xforms_helpers.C:287
+#: src/frontends/xforms/xforms_helpers.C:332
+#, fuzzy
+msgid "Failed to open file."
+msgstr "Ei voi avata tiedostoa"
+
+#: src/frontends/xforms/xforms_helpers.C:364
+#: src/frontends/xforms/xforms_helpers.C:388
+#: src/frontends/xforms/xforms_helpers.C:423
+#: src/frontends/xforms/xforms_helpers.C:469
 msgid "The absolute path is required."
 msgstr "Koko hakemistopolku vaaditaan."
 
-#: src/frontends/xforms/xforms_helpers.C:362
-#: src/frontends/xforms/xforms_helpers.C:386
-#: src/frontends/xforms/xforms_helpers.C:426
-#: src/frontends/xforms/xforms_helpers.C:472
+#: src/frontends/xforms/xforms_helpers.C:370
+#: src/frontends/xforms/xforms_helpers.C:394
+#: src/frontends/xforms/xforms_helpers.C:434
+#: src/frontends/xforms/xforms_helpers.C:480
 msgid "Directory does not exist."
 msgstr "Hakemistoa ei ole olemassa."
 
-#: src/frontends/xforms/xforms_helpers.C:367
-#: src/frontends/xforms/xforms_helpers.C:431
+#: src/frontends/xforms/xforms_helpers.C:375
+#: src/frontends/xforms/xforms_helpers.C:439
 msgid "Cannot write to this directory."
 msgstr "Tähän hakemistoon ei voi kirjoittaa."
 
-#: src/frontends/xforms/xforms_helpers.C:391
+#: src/frontends/xforms/xforms_helpers.C:399
 msgid "Cannot read this directory."
 msgstr "Tätä hakemistoa ei voi lukea."
 
-#: src/frontends/xforms/xforms_helpers.C:409
-#: src/frontends/xforms/xforms_helpers.C:455
+#: src/frontends/xforms/xforms_helpers.C:417
+#: src/frontends/xforms/xforms_helpers.C:463
 msgid "No file input."
 msgstr "Tiedostoa ei ole annettu."
 
-#: src/frontends/xforms/xforms_helpers.C:437
-#: src/frontends/xforms/xforms_helpers.C:483
+#: src/frontends/xforms/xforms_helpers.C:445
+#: src/frontends/xforms/xforms_helpers.C:491
 msgid "A file is required, not a directory."
 msgstr "Tiedosto tarvitaan, ei hakemistoa."
 
-#: src/frontends/xforms/xforms_helpers.C:442
+#: src/frontends/xforms/xforms_helpers.C:450
 msgid "Cannot write to this file."
 msgstr "Tähän tiedostoon ei voi kirjoittaa."
 
-#: src/frontends/xforms/xforms_helpers.C:477
+#: src/frontends/xforms/xforms_helpers.C:485
 msgid "Cannot read from this directory."
 msgstr "Tästä hakemistosta ei voi lukea."
 
-#: src/frontends/xforms/xforms_helpers.C:488
+#: src/frontends/xforms/xforms_helpers.C:496
 msgid "File does not exist."
 msgstr "Tiedostoa ei ole olemassa."
 
-#: src/frontends/xforms/xforms_helpers.C:493
+#: src/frontends/xforms/xforms_helpers.C:501
 msgid "Cannot read from this file."
 msgstr "Tästä tiedostosta ei voi lukea."
 
@@ -11776,129 +11676,129 @@ msgstr "Varoitus: Ei saanut selville binaarin polkua."
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Jos ongelmia esiintyy, yritä käynnistää LyX täydellisellä polulla."
 
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Ympäristömuuttuja LYX_DIR_13x on epäkelpo."
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "Järjestelmähakemisto: "
 
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "LyX-varoitus! Ei voinut määrittää järjestelmähakemistoa. "
 
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Kokeile '-sysdir'-valitsinta tai "
 
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "aseta ympäristömuuttujaan LYX_DIR_13x LyXin järjestelmähakemisto "
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr ", joka sisältää tiedoston `chkconfig.ltx'."
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr ""
 "Sisäänrakennettu oletusarvo %1$s on käytössä, mutta ongelmia voi seurata."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 msgid "Using built-in default "
 msgstr "Käytetään sisäänrakennettua oletusta "
 
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 msgid " but expect problems."
 msgstr " mutta odota ongelmia."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Odota ongelmia."
 
-#: src/lyx_main.C:593
+#: src/lyx_main.C:615
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:619 src/lyx_main.C:667
 msgid "Done!"
 msgstr "Valmis!"
 
-#: src/lyx_main.C:607
+#: src/lyx_main.C:629
 msgid "You have specified an invalid LyX directory."
 msgstr "Olet antanut virheellisen käyttäjän LyX-hakemiston."
 
-#: src/lyx_main.C:608
+#: src/lyx_main.C:630
 msgid "It is needed to keep your own configuration."
 msgstr "Tarvitset sitä omien asetustesi säilyttämiseen."
 
-#: src/lyx_main.C:609
+#: src/lyx_main.C:631
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Haluatko sellaisen? (suositeltavaa)"
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:632
 msgid "Running without personal LyX directory."
 msgstr "Käynnissä ilman henkilökohtaista LyX-hakemistoa."
 
-#: src/lyx_main.C:617
+#: src/lyx_main.C:639
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Luo hakemiston %1$s ja käynnistää komennon \"configure\"..."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:644
 msgid "LyX: Creating directory "
 msgstr "LyX: Luo hakemiston "
 
-#: src/lyx_main.C:623
+#: src/lyx_main.C:645
 msgid " and running configure..."
 msgstr " ja käynnistetään \"configure\"..."
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:653
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Epäonnistui. %1$s on käytössä sen sijaan."
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:657
 msgid "Failed. Will use "
 msgstr "Epäonnistui. Käytetään "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:658
 msgid " instead."
 msgstr " sen sijaan."
 
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:681 src/lyx_main.C:685
 msgid "LyX Warning!"
 msgstr "LyX-varoitus!"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:682
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Tiedoston %1$s luku epäonnistui."
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:683 src/lyx_main.C:687
 msgid "Using built-in defaults."
 msgstr "Sisäänrakennetut oletusarvot ovat käytössä."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:686
 msgid "Error while reading "
 msgstr "Virhe luettaessa "
 
-#: src/lyx_main.C:774
+#: src/lyx_main.C:796
 msgid "List of supported debug flags:"
 msgstr "Luettelo mahdollisista virheilmoitusasetuksista:"
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:801
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Virheilmoitustaso on nyt %1$s"
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:805
 msgid "Setting debug level to "
 msgstr "Virheilmoitustaso on nyt "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:816
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11940,29 +11840,29 @@ msgstr ""
 "        -version           näytä yhteenveto versio- ja käännöstiedoista\n"
 "Katso lisätietoja LyXin manuaalisivulta."
 
-#: src/lyx_main.C:830
+#: src/lyx_main.C:852
 msgid "Missing directory for -sysdir switch"
 msgstr "Komento puuttuu -sysdir-valitsimelta"
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:862
 msgid "Missing directory for -userdir switch"
 msgstr "Komento puuttuu -userdir-valitsimelta"
 
-#: src/lyx_main.C:850
+#: src/lyx_main.C:872
 msgid "Missing command string after --execute switch"
 msgstr "Komento puuttuu --execute-valitsimelta"
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:885
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --export-valitsimen jäljestä"
 
-#: src/lyx_main.C:875
+#: src/lyx_main.C:897
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --import-valitsimen jäljestä"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:902
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
@@ -12905,20 +12805,98 @@ msgstr "Merkintä asetettu"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyXin funktio \"layout\" vaatii parametrin."
 
-#~ msgid "­ Û"
-#~ msgstr "­ Û"
+#~ msgid "NameZeileA"
+#~ msgstr "Nimirivi A"
 
-#~ msgid "± ´"
-#~ msgstr "± ´"
+#~ msgid "NameZeileB"
+#~ msgstr "Nimirivi B"
 
-#~ msgid "£ @"
-#~ msgstr "£ @"
+#~ msgid "NameZeileC"
+#~ msgstr "Nimirivi C"
 
-#~ msgid "S  ò"
-#~ msgstr "S  ò"
+#~ msgid "NameZeileD"
+#~ msgstr "Nimirivi D"
 
-#~ msgid "!(£ @)"
-#~ msgstr "!(£ @)"
+#~ msgid "NameZeileE"
+#~ msgstr "Nimirivi E"
+
+#~ msgid "NameZeileF"
+#~ msgstr "Nimirivi F"
+
+#~ msgid "NameZeileG"
+#~ msgstr "Nimirivi G"
+
+#~ msgid "AdressZeileA"
+#~ msgstr "Osoiterivi A"
+
+#~ msgid "AdressZeileB"
+#~ msgstr "Osoiterivi B"
+
+#~ msgid "AdressZeileC"
+#~ msgstr "Osoiterivi C"
+
+#~ msgid "AdressZeileD"
+#~ msgstr "Osoiterivi D"
+
+#~ msgid "AdressZeileE"
+#~ msgstr "Osoiterivi E"
+
+#~ msgid "AdressZeileF"
+#~ msgstr "Osoiterivi F"
+
+#~ msgid "TelefonZeileA"
+#~ msgstr "Puhelinrivi A"
+
+#~ msgid "TelefonZeileB"
+#~ msgstr "Puhelinrivi B"
+
+#~ msgid "TelefonZeileC"
+#~ msgstr "Puhelinrivi C"
+
+#~ msgid "TelefonZeileD"
+#~ msgstr "Puhelinrivi D"
+
+#~ msgid "TelefonZeileE"
+#~ msgstr "Puhelinrivi E"
+
+#~ msgid "TelefonZeileF"
+#~ msgstr "Puhelinrivi F"
+
+#~ msgid "InternetZeileA"
+#~ msgstr "Internetrivi A"
+
+#~ msgid "InternetZeileB"
+#~ msgstr "Internetrivi B"
+
+#~ msgid "InternetZeileC"
+#~ msgstr "Internetrivi C"
+
+#~ msgid "InternetZeileD"
+#~ msgstr "Internetrivi D"
+
+#~ msgid "InternetZeileE"
+#~ msgstr "Internetrivi E"
+
+#~ msgid "InternetZeileF"
+#~ msgstr "Internetrivi F"
+
+#~ msgid "BankZeileA"
+#~ msgstr "Pankkirivi A"
+
+#~ msgid "BankZeileB"
+#~ msgstr "Pankkirivi B"
+
+#~ msgid "BankZeileC"
+#~ msgstr "Pankkirivi C"
+
+#~ msgid "BankZeileD"
+#~ msgstr "Pankkirivi D"
+
+#~ msgid "BankZeileE"
+#~ msgstr "Pankkirivi E"
+
+#~ msgid "BankZeileF"
+#~ msgstr "Pankkirivi F"
 
 #~ msgid "«text»"
 #~ msgstr "«teksti»"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.3 eu.po\n"
-"POT-Creation-Date: 2003-12-16 14:01+0100\n"
+"POT-Creation-Date: 2003-12-29 15:38+0100\n"
 "PO-Revision-Date: 2003-12-16 18:40+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: basque <itzulpena@euskalgnu.org>\n"
@@ -4069,7 +4069,7 @@ msgid "Send output to a file"
 msgstr "Bidali irteera fitxategi batera"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Erreferentzia"
@@ -5004,7 +5004,7 @@ msgstr "Egilea"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -5026,7 +5026,7 @@ msgstr "Posta"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -5338,21 +5338,21 @@ msgid "Send_To_Address"
 msgstr "Bidali_Helbidera"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Irekitzen"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
 #: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Sinadura"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -5367,13 +5367,12 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr "cc"
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
-#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr "Betreff"
 
@@ -5382,7 +5381,6 @@ msgid "Stadt"
 msgstr "Stadt"
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
-#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr "Datum"
 
@@ -5538,17 +5536,17 @@ msgstr "Proposizioa*"
 msgid "Definition*"
 msgstr "Definizioa*"
 
-#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
+#: ../lib/layouts/g-brief-de.layout:31
 msgid "Brieftext"
 msgstr "Testu laburra"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
-#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:126
+#: ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
+#: ../lib/layouts/g-brief-de.layout:73
 msgid "Unterschrift"
 msgstr "Sinadura"
 
@@ -5568,19 +5566,19 @@ msgstr "Tokia"
 msgid "Land"
 msgstr "Herrialdea"
 
-#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
+#: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
 msgstr "ItzulHelbidea"
 
-#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
+#: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
+#: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
+#: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
 msgstr "IdatziHari"
 
@@ -5617,31 +5615,31 @@ msgstr "BLZ"
 msgid "Konto"
 msgstr "Kontua"
 
-#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
+#: ../lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
 msgstr "Posta-kodea"
 
-#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
+#: ../lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
+#: ../lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
 msgstr "Tratamendua"
 
-#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
+#: ../lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
 msgstr "Inbertsioa"
 
-#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
+#: ../lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
 msgstr "Banatzailea"
 
-#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
+#: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
 msgstr "Agurra"
 
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr "Eskutitza"
@@ -5662,19 +5660,19 @@ msgstr "Herria"
 msgid "State"
 msgstr "Estatua"
 
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
 msgid "ReturnAddress"
 msgstr "ItzuleraHelbidea"
 
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
 msgid "MyRef"
 msgstr "Nire erref"
 
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
 msgid "YourRef"
 msgstr "Zure erref"
 
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
 msgid "YourMail"
 msgstr "Zure posta"
 
@@ -5690,305 +5688,163 @@ msgstr "Banku-kodea"
 msgid "BankAccount"
 msgstr "BankuKontua"
 
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
 msgid "PostalComment"
 msgstr "GutunIruzkina"
 
-#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
+#: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr "PostalCommend"
 
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
 msgid "Encl."
 msgstr "Inguratu."
 
-#: ../lib/layouts/g-brief2-de.layout:75
-msgid "NameZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:95
-msgid "NameZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:114
-msgid "NameZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:133
-msgid "NameZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:152
-msgid "NameZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:171
-msgid "NameZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:190
-msgid "NameZeileG"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:230
-#, fuzzy
-msgid "AdressZeileA"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:250
-#, fuzzy
-msgid "AdressZeileB"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:269
-#, fuzzy
-msgid "AdressZeileC"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:288
-#, fuzzy
-msgid "AdressZeileD"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:307
-#, fuzzy
-msgid "AdressZeileE"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:326
-#, fuzzy
-msgid "AdressZeileF"
-msgstr "Helbidea"
-
-#: ../lib/layouts/g-brief2-de.layout:345
-#, fuzzy
-msgid "TelefonZeileA"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:365
-#, fuzzy
-msgid "TelefonZeileB"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:384
-#, fuzzy
-msgid "TelefonZeileC"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:403
-#, fuzzy
-msgid "TelefonZeileD"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:422
-#, fuzzy
-msgid "TelefonZeileE"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:441
-#, fuzzy
-msgid "TelefonZeileF"
-msgstr "Telefonoa"
-
-#: ../lib/layouts/g-brief2-de.layout:460
-#, fuzzy
-msgid "InternetZeileA"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:480
-#, fuzzy
-msgid "InternetZeileB"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:498
-#, fuzzy
-msgid "InternetZeileC"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:516
-#, fuzzy
-msgid "InternetZeileD"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:534
-#, fuzzy
-msgid "InternetZeileE"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:552
-#, fuzzy
-msgid "InternetZeileF"
-msgstr "Banatzailea"
-
-#: ../lib/layouts/g-brief2-de.layout:571
-msgid "BankZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:591
-msgid "BankZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:610
-msgid "BankZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:629
-msgid "BankZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:648
-msgid "BankZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:667
-msgid "BankZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-en.layout:75
+#: ../lib/layouts/g-brief2.layout:75
 #, fuzzy
 msgid "NameRowA"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:95
+#: ../lib/layouts/g-brief2.layout:95
 #, fuzzy
 msgid "NameRowB"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:114
+#: ../lib/layouts/g-brief2.layout:114
 #, fuzzy
 msgid "NameRowC"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:133
+#: ../lib/layouts/g-brief2.layout:133
 #, fuzzy
 msgid "NameRowD"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:152
+#: ../lib/layouts/g-brief2.layout:152
 #, fuzzy
 msgid "NameRowE"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:171
+#: ../lib/layouts/g-brief2.layout:171
 #, fuzzy
 msgid "NameRowF"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:190
+#: ../lib/layouts/g-brief2.layout:190
 #, fuzzy
 msgid "NameRowG"
 msgstr "Izena"
 
-#: ../lib/layouts/g-brief2-en.layout:230
+#: ../lib/layouts/g-brief2.layout:230
 #, fuzzy
 msgid "AdressRowA"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:250
+#: ../lib/layouts/g-brief2.layout:250
 #, fuzzy
 msgid "AdressRowB"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:269
+#: ../lib/layouts/g-brief2.layout:269
 #, fuzzy
 msgid "AdressRowC"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:288
+#: ../lib/layouts/g-brief2.layout:288
 #, fuzzy
 msgid "AdressRowD"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:307
+#: ../lib/layouts/g-brief2.layout:307
 #, fuzzy
 msgid "AdressRowE"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:326
+#: ../lib/layouts/g-brief2.layout:326
 #, fuzzy
 msgid "AdressRowF"
 msgstr "Helbidea"
 
-#: ../lib/layouts/g-brief2-en.layout:345
+#: ../lib/layouts/g-brief2.layout:345
 #, fuzzy
-msgid "TelefonRowA"
+msgid "TelephoneRowA"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:365
+#: ../lib/layouts/g-brief2.layout:365
 #, fuzzy
-msgid "TelefonRowB"
+msgid "TelephoneRowB"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:384
+#: ../lib/layouts/g-brief2.layout:384
 #, fuzzy
-msgid "TelefonRowC"
+msgid "TelephoneRowC"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:403
+#: ../lib/layouts/g-brief2.layout:403
 #, fuzzy
-msgid "TelefonRowD"
+msgid "TelephoneRowD"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:422
+#: ../lib/layouts/g-brief2.layout:422
 #, fuzzy
-msgid "TelefonRowE"
+msgid "TelephoneRowE"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:441
+#: ../lib/layouts/g-brief2.layout:441
 #, fuzzy
-msgid "TelefonRowF"
+msgid "TelephoneRowF"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/g-brief2-en.layout:460
+#: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:480
+#: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:498
+#: ../lib/layouts/g-brief2.layout:498
 msgid "InternetRowC"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:516
+#: ../lib/layouts/g-brief2.layout:516
 msgid "InternetRowD"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:534
+#: ../lib/layouts/g-brief2.layout:534
 msgid "InternetRowE"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:552
+#: ../lib/layouts/g-brief2.layout:552
 msgid "InternetRowF"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:571
+#: ../lib/layouts/g-brief2.layout:571
 #, fuzzy
 msgid "BankRowA"
 msgstr "Bankua"
 
-#: ../lib/layouts/g-brief2-en.layout:591
+#: ../lib/layouts/g-brief2.layout:591
 #, fuzzy
 msgid "BankRowB"
 msgstr "Bankua"
 
-#: ../lib/layouts/g-brief2-en.layout:610
+#: ../lib/layouts/g-brief2.layout:610
 #, fuzzy
 msgid "BankRowC"
 msgstr "Bankua"
 
-#: ../lib/layouts/g-brief2-en.layout:629
+#: ../lib/layouts/g-brief2.layout:629
 #, fuzzy
 msgid "BankRowD"
 msgstr "Bankua"
 
-#: ../lib/layouts/g-brief2-en.layout:648
+#: ../lib/layouts/g-brief2.layout:648
 #, fuzzy
 msgid "BankRowE"
 msgstr "Bankua"
 
-#: ../lib/layouts/g-brief2-en.layout:667
+#: ../lib/layouts/g-brief2.layout:667
 #, fuzzy
 msgid "BankRowF"
 msgstr "Bankua"
@@ -6528,7 +6384,8 @@ msgid "Basque"
 msgstr "Euskara"
 
 #: ../lib/languages:9
-msgid "Portuguese"
+#, fuzzy
+msgid "Portuguese (Brazil)"
 msgstr "Portugesa"
 
 #: ../lib/languages:10
@@ -6547,9 +6404,10 @@ msgstr "Bulgariera"
 msgid "Canadian"
 msgstr "Kanadiera"
 
-#: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
-msgid "French"
-msgstr "Frantzesa"
+#: ../lib/languages:14
+#, fuzzy
+msgid "French Canadian"
+msgstr "Kanadiera"
 
 #: ../lib/languages:15
 msgid "Catalan"
@@ -6587,13 +6445,25 @@ msgstr "Estoniera"
 msgid "Finnish"
 msgstr "Finlandiera"
 
+#: ../lib/languages:25
+msgid "French"
+msgstr "Frantzesa"
+
+#: ../lib/languages:26
+msgid "French (GUTenberg)"
+msgstr ""
+
 #: ../lib/languages:27
 msgid "Galician"
 msgstr "Galiziera"
 
-#: ../lib/languages:30 ../lib/languages:31
+#: ../lib/languages:30
 msgid "German"
 msgstr "Alemana"
+
+#: ../lib/languages:31
+msgid "German (new spelling)"
+msgstr ""
 
 #: ../lib/languages:33
 msgid "Hebrew"
@@ -11140,52 +11010,58 @@ msgstr "ERROREA! Ezin da inprimatu!"
 msgid "Check `range of pages'!"
 msgstr "Egiaztatu 'orrialde barrutia'!"
 
-#: src/frontends/xforms/xforms_helpers.C:356
-#: src/frontends/xforms/xforms_helpers.C:380
-#: src/frontends/xforms/xforms_helpers.C:415
-#: src/frontends/xforms/xforms_helpers.C:461
+#: src/frontends/xforms/xforms_helpers.C:287
+#: src/frontends/xforms/xforms_helpers.C:332
+#, fuzzy
+msgid "Failed to open file."
+msgstr "Ezin fitxategia ireki"
+
+#: src/frontends/xforms/xforms_helpers.C:364
+#: src/frontends/xforms/xforms_helpers.C:388
+#: src/frontends/xforms/xforms_helpers.C:423
+#: src/frontends/xforms/xforms_helpers.C:469
 msgid "The absolute path is required."
 msgstr "Bide-izen osoa eskatzen da."
 
-#: src/frontends/xforms/xforms_helpers.C:362
-#: src/frontends/xforms/xforms_helpers.C:386
-#: src/frontends/xforms/xforms_helpers.C:426
-#: src/frontends/xforms/xforms_helpers.C:472
+#: src/frontends/xforms/xforms_helpers.C:370
+#: src/frontends/xforms/xforms_helpers.C:394
+#: src/frontends/xforms/xforms_helpers.C:434
+#: src/frontends/xforms/xforms_helpers.C:480
 msgid "Directory does not exist."
 msgstr "Direktorioa ez da existitzen."
 
-#: src/frontends/xforms/xforms_helpers.C:367
-#: src/frontends/xforms/xforms_helpers.C:431
+#: src/frontends/xforms/xforms_helpers.C:375
+#: src/frontends/xforms/xforms_helpers.C:439
 msgid "Cannot write to this directory."
 msgstr "Ezin da direktorio honetan idatzi."
 
-#: src/frontends/xforms/xforms_helpers.C:391
+#: src/frontends/xforms/xforms_helpers.C:399
 msgid "Cannot read this directory."
 msgstr "Ezin da direktorio hau irakurri."
 
-#: src/frontends/xforms/xforms_helpers.C:409
-#: src/frontends/xforms/xforms_helpers.C:455
+#: src/frontends/xforms/xforms_helpers.C:417
+#: src/frontends/xforms/xforms_helpers.C:463
 msgid "No file input."
 msgstr "Ez dago sarrera fitxategirik."
 
-#: src/frontends/xforms/xforms_helpers.C:437
-#: src/frontends/xforms/xforms_helpers.C:483
+#: src/frontends/xforms/xforms_helpers.C:445
+#: src/frontends/xforms/xforms_helpers.C:491
 msgid "A file is required, not a directory."
 msgstr "Fitxategia eskatzen da, ez direktorio bat."
 
-#: src/frontends/xforms/xforms_helpers.C:442
+#: src/frontends/xforms/xforms_helpers.C:450
 msgid "Cannot write to this file."
 msgstr "Ezin da fitxategi honetan idatzi."
 
-#: src/frontends/xforms/xforms_helpers.C:477
+#: src/frontends/xforms/xforms_helpers.C:485
 msgid "Cannot read from this directory."
 msgstr "Ezin da direktorio honetatik irakurri."
 
-#: src/frontends/xforms/xforms_helpers.C:488
+#: src/frontends/xforms/xforms_helpers.C:496
 msgid "File does not exist."
 msgstr "Fitxategia ez da existitzen."
 
-#: src/frontends/xforms/xforms_helpers.C:493
+#: src/frontends/xforms/xforms_helpers.C:501
 msgid "Cannot read from this file."
 msgstr "Ezin da fitxategia irakurri."
 
@@ -11781,129 +11657,129 @@ msgstr "Abisua: ezin izan da bitarraren bide-izena zehaztu."
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Arazoak badituzu, saiatu LyX-a bide-izen absolutoarekin exekutatzen."
 
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Inguruneko LYX_DIR_11x aldagaia ez da ona."
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "Sistema-direktorioa: "
 
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "LyX abisua! Ezin sistemaren direktorioa zehaztu. "
 
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Saiatu komandoaren '-sysdir' parametroarekin edo "
 
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr ""
 "ezarri inguruneko LYX_DIR_11x aldagaia  `chkconfig.ltx' fitxategia daukan "
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr " LyX sistemaren direktoriora ."
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "%1$s eraikin lehenetsia erabiltzen, arazoak egotea espero da."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 msgid "Using built-in default "
 msgstr "Eraiki lehenetsia erabiltzen "
 
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 msgid " but expect problems."
 msgstr " arazoak egon daitekeen arren."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Arazoak egon daiteke."
 
-#: src/lyx_main.C:593
+#: src/lyx_main.C:615
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:619 src/lyx_main.C:667
 msgid "Done!"
 msgstr "Eginda!"
 
-#: src/lyx_main.C:607
+#: src/lyx_main.C:629
 msgid "You have specified an invalid LyX directory."
 msgstr "LyX-en direktorio erabilkaitz bat zehaztu duzu."
 
-#: src/lyx_main.C:608
+#: src/lyx_main.C:630
 msgid "It is needed to keep your own configuration."
 msgstr "Beharrezkoa du egindako konfigurazioak mantentzeko."
 
-#: src/lyx_main.C:609
+#: src/lyx_main.C:631
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Zure ordez konfigura dezaket (ahokatua)?"
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:632
 msgid "Running without personal LyX directory."
 msgstr "LyX direktorio pertsonalik gabe exekutatzen."
 
-#: src/lyx_main.C:617
+#: src/lyx_main.C:639
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX:%1$s direktorioa sortzen eta konfigurazioa exekutatzen..."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:644
 msgid "LyX: Creating directory "
 msgstr "LyX: Direktorioa sortzen "
 
-#: src/lyx_main.C:623
+#: src/lyx_main.C:645
 msgid " and running configure..."
 msgstr " eta konfigurazioa exekutatzen..."
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:653
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Huts egin du. Horren ordez %1$s erabiliko da."
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:657
 msgid "Failed. Will use "
 msgstr "Huts egin du. Horren ordez "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:658
 msgid " instead."
 msgstr " erabiliko da."
 
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:681 src/lyx_main.C:685
 msgid "LyX Warning!"
 msgstr "LyX-en abisua!"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:682
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Errorea %1$s irakurtzean."
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:683 src/lyx_main.C:687
 msgid "Using built-in defaults."
 msgstr "Eraikin lehenetsiak erabiltzen."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:686
 msgid "Error while reading "
 msgstr "Errorea irakurtzean "
 
-#: src/lyx_main.C:774
+#: src/lyx_main.C:796
 msgid "List of supported debug flags:"
 msgstr "Onartutako araztatze-ikurren zerrenda:"
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:801
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Araztatze maila %1$s-ra ezartzen"
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:805
 msgid "Setting debug level to "
 msgstr "Araztatze maila honela ezartzen "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:816
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11944,29 +11820,29 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/lyx_main.C:830
+#: src/lyx_main.C:852
 msgid "Missing directory for -sysdir switch"
 msgstr "Direktorioa falta, -sysdir aukerarentzat"
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:862
 msgid "Missing directory for -userdir switch"
 msgstr "Direktorioa falta, -userdir aukerarentzat"
 
-#: src/lyx_main.C:850
+#: src/lyx_main.C:872
 msgid "Missing command string after --execute switch"
 msgstr "Agindua falta da, --execute aukeraren atzetik"
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:885
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Fitxategi mota falta, --export aukeraren atzetik [adibidez latex, ps...]"
 
-#: src/lyx_main.C:875
+#: src/lyx_main.C:897
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Fitxategi mota falta, --import aukeraren atzetik [adibidez latex, ps...]"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:902
 msgid "Missing filename for --import"
 msgstr "Fitxategi-izena falta --import egiteko"
 
@@ -12911,20 +12787,77 @@ msgstr "Marka ezarrita"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-en 'layout' funtzioak argumentua behar du"
 
-#~ msgid "­ Û"
-#~ msgstr "­ Û"
+#, fuzzy
+#~ msgid "AdressZeileA"
+#~ msgstr "Helbidea"
 
-#~ msgid "± ´"
-#~ msgstr "± ´"
+#, fuzzy
+#~ msgid "AdressZeileB"
+#~ msgstr "Helbidea"
 
-#~ msgid "£ @"
-#~ msgstr "£ @"
+#, fuzzy
+#~ msgid "AdressZeileC"
+#~ msgstr "Helbidea"
 
-#~ msgid "S  ò"
-#~ msgstr "S  ò"
+#, fuzzy
+#~ msgid "AdressZeileD"
+#~ msgstr "Helbidea"
 
-#~ msgid "!(£ @)"
-#~ msgstr "!(£ @)"
+#, fuzzy
+#~ msgid "AdressZeileE"
+#~ msgstr "Helbidea"
+
+#, fuzzy
+#~ msgid "AdressZeileF"
+#~ msgstr "Helbidea"
+
+#, fuzzy
+#~ msgid "TelefonZeileA"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "TelefonZeileB"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "TelefonZeileC"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "TelefonZeileD"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "TelefonZeileE"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "TelefonZeileF"
+#~ msgstr "Telefonoa"
+
+#, fuzzy
+#~ msgid "InternetZeileA"
+#~ msgstr "Banatzailea"
+
+#, fuzzy
+#~ msgid "InternetZeileB"
+#~ msgstr "Banatzailea"
+
+#, fuzzy
+#~ msgid "InternetZeileC"
+#~ msgstr "Banatzailea"
+
+#, fuzzy
+#~ msgid "InternetZeileD"
+#~ msgstr "Banatzailea"
+
+#, fuzzy
+#~ msgid "InternetZeileE"
+#~ msgstr "Banatzailea"
+
+#, fuzzy
+#~ msgid "InternetZeileF"
+#~ msgstr "Banatzailea"
 
 #~ msgid "«text»"
 #~ msgstr "«testua»"

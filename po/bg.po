@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2003-12-16 14:01+0100\n"
+"POT-Creation-Date: 2003-12-29 15:38+0100\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -5603,7 +5603,7 @@ msgstr "Избор на файл"
 # src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
 # src/frontends/xforms/FormRef.C:36
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Препратка"
@@ -6803,7 +6803,7 @@ msgstr "Автор"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -6828,7 +6828,7 @@ msgstr ""
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -7213,7 +7213,7 @@ msgstr ""
 
 # src/ext_l10n.h:298
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
@@ -7221,7 +7221,7 @@ msgstr "Отваряне"
 
 # src/ext_l10n.h:351
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
 #: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
@@ -7229,7 +7229,7 @@ msgstr "Подпис"
 
 # src/ext_l10n.h:200
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -7247,14 +7247,13 @@ msgstr ""
 
 # src/ext_l10n.h:418
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr ""
 
 # src/ext_l10n.h:185
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
-#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr ""
 
@@ -7265,7 +7264,6 @@ msgstr ""
 
 # src/ext_l10n.h:218
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
-#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr ""
 
@@ -7459,19 +7457,19 @@ msgid "Definition*"
 msgstr "Дефиниция*"
 
 # src/ext_l10n.h:188
-#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
+#: ../lib/layouts/g-brief-de.layout:31
 msgid "Brieftext"
 msgstr ""
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
-#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:126
+#: ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Име"
 
 # src/ext_l10n.h:407
-#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
+#: ../lib/layouts/g-brief-de.layout:73
 msgid "Unterschrift"
 msgstr ""
 
@@ -7496,22 +7494,22 @@ msgid "Land"
 msgstr ""
 
 # src/ext_l10n.h:333
-#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
+#: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
 msgstr ""
 
 # src/ext_l10n.h:283
-#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
+#: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
 msgstr ""
 
 # src/ext_l10n.h:255
-#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
+#: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
 msgstr ""
 
 # src/ext_l10n.h:254
-#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
+#: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
 msgstr ""
 
@@ -7557,37 +7555,37 @@ msgid "Konto"
 msgstr ""
 
 # src/ext_l10n.h:314
-#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
+#: ../lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
 msgstr ""
 
 # src/ext_l10n.h:166
-#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
+#: ../lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
 msgstr "Адрес"
 
 # src/ext_l10n.h:172
-#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
+#: ../lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
 msgstr ""
 
 # src/ext_l10n.h:171
-#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
+#: ../lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
 msgstr "Подравняване"
 
 # src/ext_l10n.h:411
-#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
+#: ../lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
 msgstr ""
 
 # src/ext_l10n.h:250
-#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
+#: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
 msgstr ""
 
 # src/ext_l10n.h:273
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr ""
@@ -7613,22 +7611,22 @@ msgid "State"
 msgstr "Държава"
 
 # src/ext_l10n.h:334
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
 msgid "ReturnAddress"
 msgstr ""
 
 # src/ext_l10n.h:285
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
 msgid "MyRef"
 msgstr "Препратка"
 
 # src/ext_l10n.h:414
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
 msgid "YourRef"
 msgstr ""
 
 # src/ext_l10n.h:413
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
 msgid "YourMail"
 msgstr ""
 
@@ -7648,328 +7646,180 @@ msgid "BankAccount"
 msgstr ""
 
 # src/ext_l10n.h:202
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
 #, fuzzy
 msgid "PostalComment"
 msgstr "Коментар"
 
 # src/ext_l10n.h:313
-#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
+#: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr ""
 
 # src/ext_l10n.h:229
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
 msgid "Encl."
 msgstr ""
 
-#: ../lib/layouts/g-brief2-de.layout:75
-msgid "NameZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:95
-msgid "NameZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:114
-msgid "NameZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:133
-msgid "NameZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:152
-msgid "NameZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:171
-msgid "NameZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:190
-msgid "NameZeileG"
-msgstr ""
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:230
-#, fuzzy
-msgid "AdressZeileA"
-msgstr "Адрес"
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:250
-#, fuzzy
-msgid "AdressZeileB"
-msgstr "Адрес"
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:269
-#, fuzzy
-msgid "AdressZeileC"
-msgstr "Адрес"
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:288
-#, fuzzy
-msgid "AdressZeileD"
-msgstr "Адрес"
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:307
-#, fuzzy
-msgid "AdressZeileE"
-msgstr "Адрес"
-
-# src/ext_l10n.h:166
-#: ../lib/layouts/g-brief2-de.layout:326
-#, fuzzy
-msgid "AdressZeileF"
-msgstr "Адрес"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:345
-#, fuzzy
-msgid "TelefonZeileA"
-msgstr "Телефон"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:365
-#, fuzzy
-msgid "TelefonZeileB"
-msgstr "Телефон"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:384
-#, fuzzy
-msgid "TelefonZeileC"
-msgstr "Телефон"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:403
-#, fuzzy
-msgid "TelefonZeileD"
-msgstr "Телефон"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:422
-#, fuzzy
-msgid "TelefonZeileE"
-msgstr "Телефон"
-
-# src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-de.layout:441
-#, fuzzy
-msgid "TelefonZeileF"
-msgstr "Телефон"
-
-#: ../lib/layouts/g-brief2-de.layout:460
-msgid "InternetZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:480
-msgid "InternetZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:498
-msgid "InternetZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:516
-msgid "InternetZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:534
-msgid "InternetZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:552
-msgid "InternetZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:571
-msgid "BankZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:591
-msgid "BankZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:610
-msgid "BankZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:629
-msgid "BankZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:648
-msgid "BankZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:667
-msgid "BankZeileF"
-msgstr ""
-
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:75
+#: ../lib/layouts/g-brief2.layout:75
 #, fuzzy
 msgid "NameRowA"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:95
+#: ../lib/layouts/g-brief2.layout:95
 #, fuzzy
 msgid "NameRowB"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:114
+#: ../lib/layouts/g-brief2.layout:114
 #, fuzzy
 msgid "NameRowC"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:133
+#: ../lib/layouts/g-brief2.layout:133
 #, fuzzy
 msgid "NameRowD"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:152
+#: ../lib/layouts/g-brief2.layout:152
 #, fuzzy
 msgid "NameRowE"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:171
+#: ../lib/layouts/g-brief2.layout:171
 #, fuzzy
 msgid "NameRowF"
 msgstr "Име"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../lib/layouts/g-brief2-en.layout:190
+#: ../lib/layouts/g-brief2.layout:190
 #, fuzzy
 msgid "NameRowG"
 msgstr "Име"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:230
+#: ../lib/layouts/g-brief2.layout:230
 #, fuzzy
 msgid "AdressRowA"
 msgstr "Адреси"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:250
+#: ../lib/layouts/g-brief2.layout:250
 #, fuzzy
 msgid "AdressRowB"
 msgstr "Адреси"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:269
+#: ../lib/layouts/g-brief2.layout:269
 #, fuzzy
 msgid "AdressRowC"
 msgstr "Адреси"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:288
+#: ../lib/layouts/g-brief2.layout:288
 #, fuzzy
 msgid "AdressRowD"
 msgstr "Адреси"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:307
+#: ../lib/layouts/g-brief2.layout:307
 #, fuzzy
 msgid "AdressRowE"
 msgstr "Адреси"
 
 # src/ext_l10n.h:163
-#: ../lib/layouts/g-brief2-en.layout:326
+#: ../lib/layouts/g-brief2.layout:326
 #, fuzzy
 msgid "AdressRowF"
 msgstr "Адреси"
 
 # src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-en.layout:345
+#: ../lib/layouts/g-brief2.layout:345
 #, fuzzy
-msgid "TelefonRowA"
+msgid "TelephoneRowA"
 msgstr "Телефон"
 
 # src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-en.layout:365
+#: ../lib/layouts/g-brief2.layout:365
 #, fuzzy
-msgid "TelefonRowB"
+msgid "TelephoneRowB"
 msgstr "Телефон"
 
 # src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-en.layout:384
+#: ../lib/layouts/g-brief2.layout:384
 #, fuzzy
-msgid "TelefonRowC"
+msgid "TelephoneRowC"
 msgstr "Телефон"
 
 # src/ext_l10n.h:74
-#: ../lib/layouts/g-brief2-en.layout:403
+#: ../lib/layouts/g-brief2.layout:403
 #, fuzzy
-msgid "TelefonRowD"
+msgid "TelephoneRowD"
 msgstr "Изтрий ред(w)|w"
 
 # src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-en.layout:422
+#: ../lib/layouts/g-brief2.layout:422
 #, fuzzy
-msgid "TelefonRowE"
+msgid "TelephoneRowE"
 msgstr "Телефон"
 
 # src/ext_l10n.h:384
-#: ../lib/layouts/g-brief2-en.layout:441
+#: ../lib/layouts/g-brief2.layout:441
 #, fuzzy
-msgid "TelefonRowF"
+msgid "TelephoneRowF"
 msgstr "Телефон"
 
-#: ../lib/layouts/g-brief2-en.layout:460
+#: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:480
+#: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:498
+#: ../lib/layouts/g-brief2.layout:498
 msgid "InternetRowC"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:516
+#: ../lib/layouts/g-brief2.layout:516
 msgid "InternetRowD"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:534
+#: ../lib/layouts/g-brief2.layout:534
 msgid "InternetRowE"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:552
+#: ../lib/layouts/g-brief2.layout:552
 msgid "InternetRowF"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:571
+#: ../lib/layouts/g-brief2.layout:571
 msgid "BankRowA"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:591
+#: ../lib/layouts/g-brief2.layout:591
 msgid "BankRowB"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:610
+#: ../lib/layouts/g-brief2.layout:610
 msgid "BankRowC"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:629
+#: ../lib/layouts/g-brief2.layout:629
 msgid "BankRowD"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:648
+#: ../lib/layouts/g-brief2.layout:648
 msgid "BankRowE"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:667
+#: ../lib/layouts/g-brief2.layout:667
 msgid "BankRowF"
 msgstr ""
 
@@ -8659,7 +8509,7 @@ msgstr "син"
 # src/ext_l10n.h:454
 #: ../lib/languages:9
 #, fuzzy
-msgid "Portuguese"
+msgid "Portuguese (Brazil)"
 msgstr "Португалски"
 
 # src/ext_l10n.h:428
@@ -8682,10 +8532,11 @@ msgstr "Унгарски"
 msgid "Canadian"
 msgstr "Канадски"
 
-# src/ext_l10n.h:441
-#: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
-msgid "French"
-msgstr "Френски"
+# src/ext_l10n.h:430
+#: ../lib/languages:14
+#, fuzzy
+msgid "French Canadian"
+msgstr "Канадски"
 
 # src/ext_l10n.h:432
 #: ../lib/languages:15
@@ -8732,15 +8583,28 @@ msgstr "Естонски"
 msgid "Finnish"
 msgstr "Финландски"
 
+# src/ext_l10n.h:441
+#: ../lib/languages:25
+msgid "French"
+msgstr "Френски"
+
+#: ../lib/languages:26
+msgid "French (GUTenberg)"
+msgstr ""
+
 # src/ext_l10n.h:443
 #: ../lib/languages:27
 msgid "Galician"
 msgstr "Галски?"
 
 # src/ext_l10n.h:444
-#: ../lib/languages:30 ../lib/languages:31
+#: ../lib/languages:30
 msgid "German"
 msgstr "Немски"
+
+#: ../lib/languages:31
+msgid "German (new spelling)"
+msgstr ""
 
 # src/ext_l10n.h:447
 #: ../lib/languages:33
@@ -14453,14 +14317,21 @@ msgstr "ГРЕШКА! Невъзможност за печат!"
 msgid "Check `range of pages'!"
 msgstr "Проверете поредицата от страници!"
 
+# src/converter.C:165 src/converter.C:195
+#: src/frontends/xforms/xforms_helpers.C:287
+#: src/frontends/xforms/xforms_helpers.C:332
+#, fuzzy
+msgid "Failed to open file."
+msgstr "Не мога да покажа файла."
+
 # src/frontends/xforms/xform_helpers.C:217
 # src/frontends/xforms/xform_helpers.C:241
 # src/frontends/xforms/xform_helpers.C:276
 # src/frontends/xforms/xform_helpers.C:321
-#: src/frontends/xforms/xforms_helpers.C:356
-#: src/frontends/xforms/xforms_helpers.C:380
-#: src/frontends/xforms/xforms_helpers.C:415
-#: src/frontends/xforms/xforms_helpers.C:461
+#: src/frontends/xforms/xforms_helpers.C:364
+#: src/frontends/xforms/xforms_helpers.C:388
+#: src/frontends/xforms/xforms_helpers.C:423
+#: src/frontends/xforms/xforms_helpers.C:469
 msgid "The absolute path is required."
 msgstr "Необходим е абсолютен път."
 
@@ -14468,56 +14339,56 @@ msgstr "Необходим е абсолютен път."
 # src/frontends/xforms/xform_helpers.C:247
 # src/frontends/xforms/xform_helpers.C:286
 # src/frontends/xforms/xform_helpers.C:331
-#: src/frontends/xforms/xforms_helpers.C:362
-#: src/frontends/xforms/xforms_helpers.C:386
-#: src/frontends/xforms/xforms_helpers.C:426
-#: src/frontends/xforms/xforms_helpers.C:472
+#: src/frontends/xforms/xforms_helpers.C:370
+#: src/frontends/xforms/xforms_helpers.C:394
+#: src/frontends/xforms/xforms_helpers.C:434
+#: src/frontends/xforms/xforms_helpers.C:480
 msgid "Directory does not exist."
 msgstr "Директорията не съществува."
 
 # src/frontends/xforms/xform_helpers.C:228
 # src/frontends/xforms/xform_helpers.C:291
-#: src/frontends/xforms/xforms_helpers.C:367
-#: src/frontends/xforms/xforms_helpers.C:431
+#: src/frontends/xforms/xforms_helpers.C:375
+#: src/frontends/xforms/xforms_helpers.C:439
 msgid "Cannot write to this directory."
 msgstr "Невъзможност за запис в тази директория."
 
 # src/frontends/xforms/xform_helpers.C:252
-#: src/frontends/xforms/xforms_helpers.C:391
+#: src/frontends/xforms/xforms_helpers.C:399
 msgid "Cannot read this directory."
 msgstr "Невъзможност за четене на тази директория."
 
 # src/frontends/xforms/xform_helpers.C:270
 # src/frontends/xforms/xform_helpers.C:315
-#: src/frontends/xforms/xforms_helpers.C:409
-#: src/frontends/xforms/xforms_helpers.C:455
+#: src/frontends/xforms/xforms_helpers.C:417
+#: src/frontends/xforms/xforms_helpers.C:463
 msgid "No file input."
 msgstr "Няма входен файл."
 
 # src/frontends/xforms/xform_helpers.C:297
 # src/frontends/xforms/xform_helpers.C:342
-#: src/frontends/xforms/xforms_helpers.C:437
-#: src/frontends/xforms/xforms_helpers.C:483
+#: src/frontends/xforms/xforms_helpers.C:445
+#: src/frontends/xforms/xforms_helpers.C:491
 msgid "A file is required, not a directory."
 msgstr "Необходим е файл, а не директория."
 
 # src/frontends/xforms/xform_helpers.C:302
-#: src/frontends/xforms/xforms_helpers.C:442
+#: src/frontends/xforms/xforms_helpers.C:450
 msgid "Cannot write to this file."
 msgstr "Невъзможност за запис в този файл."
 
 # src/frontends/xforms/xform_helpers.C:336
-#: src/frontends/xforms/xforms_helpers.C:477
+#: src/frontends/xforms/xforms_helpers.C:485
 msgid "Cannot read from this directory."
 msgstr "Невъзможност за четене от тази директория."
 
 # src/frontends/xforms/xform_helpers.C:347
-#: src/frontends/xforms/xforms_helpers.C:488
+#: src/frontends/xforms/xforms_helpers.C:496
 msgid "File does not exist."
 msgstr "Файлът не съществува."
 
 # src/frontends/xforms/xform_helpers.C:352
-#: src/frontends/xforms/xforms_helpers.C:493
+#: src/frontends/xforms/xforms_helpers.C:501
 msgid "Cannot read from this file."
 msgstr "Невъзможност за четене от този файл."
 
@@ -15301,169 +15172,169 @@ msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Ако имате проблеми, опитайте да стартирате LyX с абсолютен път."
 
 # src/lyx_main.C:311
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 #, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Променливата на средата LYX_DIR_11x не е добра."
 
 # src/lyx_main.C:313
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "Системната директория е установена на: "
 
 # src/lyx_main.C:321
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Внимание! Не мога да определя системна директория."
 
 # src/lyx_main.C:322
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Опитайте с параметър `-sysdir' на командния ред или "
 
 # src/lyx_main.C:323
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 #, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "установете променливата на средата LYX_DIR_11x към системната"
 
 # src/lyx_main.C:325
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr "директория, съдържаща `chkconfig.ltx'."
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, fuzzy, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 #, fuzzy
 msgid "Using built-in default "
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:331
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 #, fuzzy
 msgid " but expect problems."
 msgstr "Очаквайте проблеми."
 
 # src/lyx_main.C:331
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Очаквайте проблеми."
 
 # src/lyx_main.C:575
-#: src/lyx_main.C:593
+#: src/lyx_main.C:615
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Създавам директория "
 
 # src/lyx_main.C:590
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:619 src/lyx_main.C:667
 msgid "Done!"
 msgstr "Готов!"
 
 # src/lyx_main.C:563
-#: src/lyx_main.C:607
+#: src/lyx_main.C:629
 msgid "You have specified an invalid LyX directory."
 msgstr "Указали сте невалидна LyX директория."
 
 # src/lyx_main.C:566
-#: src/lyx_main.C:608
+#: src/lyx_main.C:630
 msgid "It is needed to keep your own configuration."
 msgstr "Тя е необходима, за да запазите своята конфигурация."
 
 # src/lyx_main.C:567
-#: src/lyx_main.C:609
+#: src/lyx_main.C:631
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Да опитам ли да я установя за Вас (препоръчително)?"
 
 # src/lyx_main.C:568
-#: src/lyx_main.C:610
+#: src/lyx_main.C:632
 msgid "Running without personal LyX directory."
 msgstr "Стартирам без лична LyX директория."
 
 # src/lyx_main.C:576
-#: src/lyx_main.C:617
+#: src/lyx_main.C:639
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr " и конфигурирам..."
 
 # src/lyx_main.C:575
-#: src/lyx_main.C:622
+#: src/lyx_main.C:644
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Създавам директория "
 
 # src/lyx_cb.C:977
-#: src/lyx_main.C:623
+#: src/lyx_main.C:645
 #, fuzzy
 msgid " and running configure..."
 msgstr "Стартирам конфигуриране..."
 
 # src/lyx_main.C:582
-#: src/lyx_main.C:631
+#: src/lyx_main.C:653
 #, fuzzy, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Неуспех. Ще използвам "
 
 # src/lyx_main.C:582
-#: src/lyx_main.C:635
+#: src/lyx_main.C:657
 #, fuzzy
 msgid "Failed. Will use "
 msgstr "Неуспех. Ще използвам "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:658
 msgid " instead."
 msgstr ""
 
 # src/lyx_main.C:604
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:681 src/lyx_main.C:685
 msgid "LyX Warning!"
 msgstr "LyX Предупреждение!"
 
 # src/lyx_main.C:605
-#: src/lyx_main.C:660
+#: src/lyx_main.C:682
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Грешка при четене "
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:683 src/lyx_main.C:687
 msgid "Using built-in defaults."
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:605
-#: src/lyx_main.C:664
+#: src/lyx_main.C:686
 #, fuzzy
 msgid "Error while reading "
 msgstr "Грешка при четене "
 
 # src/lyx_main.C:749
-#: src/lyx_main.C:774
+#: src/lyx_main.C:796
 msgid "List of supported debug flags:"
 msgstr "Списък на поддържаните debug опции:"
 
 # src/lyx_main.C:704
-#: src/lyx_main.C:779
+#: src/lyx_main.C:801
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Установявам debug ниво на  "
 
 # src/lyx_main.C:704
-#: src/lyx_main.C:783
+#: src/lyx_main.C:805
 #, fuzzy
 msgid "Setting debug level to "
 msgstr "Установявам debug ниво на  "
 
 # src/lyx_main.C:716
-#: src/lyx_main.C:794
+#: src/lyx_main.C:816
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15504,37 +15375,37 @@ msgstr ""
 "Вижте man страницата на LyX за повече информация."
 
 # src/lyx_main.C:761
-#: src/lyx_main.C:830
+#: src/lyx_main.C:852
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Липсваща директория за -sysdir опцията!"
 
 # src/lyx_main.C:772
-#: src/lyx_main.C:840
+#: src/lyx_main.C:862
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Липсваща директория за -userdir опцията!"
 
 # src/lyx_main.C:795
-#: src/lyx_main.C:850
+#: src/lyx_main.C:872
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Липсваща команда след -x опцията!"
 
 # src/lyx_main.C:808
-#: src/lyx_main.C:863
+#: src/lyx_main.C:885
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Липсващ тип на файл [напр. latex, ps...] след "
 
 # src/lyx_main.C:808
-#: src/lyx_main.C:875
+#: src/lyx_main.C:897
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Липсващ тип на файл [напр. latex, ps...] след "
 
 # src/lyxfunc.C:3216
-#: src/lyx_main.C:880
+#: src/lyx_main.C:902
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr " Файл за импортиране"
@@ -16668,6 +16539,66 @@ msgstr "Маркиране установено"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileA"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileB"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileC"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileD"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileE"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#, fuzzy
+#~ msgid "AdressZeileF"
+#~ msgstr "Адрес"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileA"
+#~ msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileB"
+#~ msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileC"
+#~ msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileD"
+#~ msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileE"
+#~ msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#, fuzzy
+#~ msgid "TelefonZeileF"
+#~ msgstr "Телефон"
 
 # src/LColor.C:63
 #, fuzzy

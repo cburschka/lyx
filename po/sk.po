@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.3.0\n"
-"POT-Creation-Date: 2003-12-16 14:01+0100\n"
+"POT-Creation-Date: 2003-12-29 15:38+0100\n"
 "PO-Revision-Date: 2003-02-10 21:20+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -4072,7 +4072,7 @@ msgid "Send output to a file"
 msgstr "Výstup do súboru"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Referencia"
@@ -5008,7 +5008,7 @@ msgstr "Autor"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -5030,7 +5030,7 @@ msgstr "Po¹ta"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -5342,21 +5342,21 @@ msgid "Send_To_Address"
 msgstr "Posla»_na_adresu"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Otvorenie"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/g-brief2.layout:211 ../lib/layouts/heb-letter.layout:24
 #: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
 #: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Podpis"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -5371,13 +5371,12 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr ""
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
-#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr ""
 
@@ -5386,7 +5385,6 @@ msgid "Stadt"
 msgstr ""
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
-#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr "Dátum"
 
@@ -5543,17 +5541,17 @@ msgstr ""
 msgid "Definition*"
 msgstr "Definícia*"
 
-#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
+#: ../lib/layouts/g-brief-de.layout:31
 msgid "Brieftext"
 msgstr "Krátky_text"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
-#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
+#: ../lib/layouts/g-brief2.layout:55 ../lib/layouts/scrlettr.layout:126
+#: ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
+#: ../lib/layouts/g-brief-de.layout:73
 msgid "Unterschrift"
 msgstr ""
 
@@ -5573,19 +5571,19 @@ msgstr ""
 msgid "Land"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
+#: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
+#: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
+#: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
+#: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
 msgstr ""
 
@@ -5622,31 +5620,31 @@ msgstr ""
 msgid "Konto"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
+#: ../lib/layouts/g-brief-de.layout:424
 msgid "Postvermerk"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
+#: ../lib/layouts/g-brief-de.layout:445
 msgid "Adresse"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
+#: ../lib/layouts/g-brief-de.layout:510
 msgid "Anrede"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
+#: ../lib/layouts/g-brief-de.layout:536
 msgid "Anlagen"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
+#: ../lib/layouts/g-brief-de.layout:559
 msgid "Verteiler"
 msgstr ""
 
-#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
+#: ../lib/layouts/g-brief-de.layout:584
 msgid "Gruss"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2.layout:33
 #: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr "List"
@@ -5667,19 +5665,19 @@ msgstr "Mesto"
 msgid "State"
 msgstr "Stav"
 
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
 msgid "ReturnAddress"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
 msgid "MyRef"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
 msgid "YourRef"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
 msgid "YourMail"
 msgstr "Vá¹ mail"
 
@@ -5695,299 +5693,163 @@ msgstr "Bankový_kód"
 msgid "BankAccount"
 msgstr "Bankový úèet"
 
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
 msgid "PostalComment"
 msgstr "Po¹tový_komentár"
 
-#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
+#: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
 msgstr ""
 
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
 msgid "Encl."
 msgstr ""
 
-#: ../lib/layouts/g-brief2-de.layout:75
-msgid "NameZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:95
-msgid "NameZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:114
-msgid "NameZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:133
-msgid "NameZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:152
-msgid "NameZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:171
-msgid "NameZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:190
-msgid "NameZeileG"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:230
-#, fuzzy
-msgid "AdressZeileA"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:250
-#, fuzzy
-msgid "AdressZeileB"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:269
-#, fuzzy
-msgid "AdressZeileC"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:288
-#, fuzzy
-msgid "AdressZeileD"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:307
-#, fuzzy
-msgid "AdressZeileE"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:326
-#, fuzzy
-msgid "AdressZeileF"
-msgstr "Adresa"
-
-#: ../lib/layouts/g-brief2-de.layout:345
-#, fuzzy
-msgid "TelefonZeileA"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:365
-#, fuzzy
-msgid "TelefonZeileB"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:384
-#, fuzzy
-msgid "TelefonZeileC"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:403
-#, fuzzy
-msgid "TelefonZeileD"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:422
-#, fuzzy
-msgid "TelefonZeileE"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:441
-#, fuzzy
-msgid "TelefonZeileF"
-msgstr "Telefón"
-
-#: ../lib/layouts/g-brief2-de.layout:460
-msgid "InternetZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:480
-msgid "InternetZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:498
-msgid "InternetZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:516
-msgid "InternetZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:534
-msgid "InternetZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:552
-msgid "InternetZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:571
-msgid "BankZeileA"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:591
-msgid "BankZeileB"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:610
-msgid "BankZeileC"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:629
-msgid "BankZeileD"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:648
-msgid "BankZeileE"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-de.layout:667
-msgid "BankZeileF"
-msgstr ""
-
-#: ../lib/layouts/g-brief2-en.layout:75
+#: ../lib/layouts/g-brief2.layout:75
 #, fuzzy
 msgid "NameRowA"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:95
+#: ../lib/layouts/g-brief2.layout:95
 #, fuzzy
 msgid "NameRowB"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:114
+#: ../lib/layouts/g-brief2.layout:114
 #, fuzzy
 msgid "NameRowC"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:133
+#: ../lib/layouts/g-brief2.layout:133
 #, fuzzy
 msgid "NameRowD"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:152
+#: ../lib/layouts/g-brief2.layout:152
 #, fuzzy
 msgid "NameRowE"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:171
+#: ../lib/layouts/g-brief2.layout:171
 #, fuzzy
 msgid "NameRowF"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:190
+#: ../lib/layouts/g-brief2.layout:190
 #, fuzzy
 msgid "NameRowG"
 msgstr "Názov"
 
-#: ../lib/layouts/g-brief2-en.layout:230
+#: ../lib/layouts/g-brief2.layout:230
 #, fuzzy
 msgid "AdressRowA"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:250
+#: ../lib/layouts/g-brief2.layout:250
 #, fuzzy
 msgid "AdressRowB"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:269
+#: ../lib/layouts/g-brief2.layout:269
 #, fuzzy
 msgid "AdressRowC"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:288
+#: ../lib/layouts/g-brief2.layout:288
 #, fuzzy
 msgid "AdressRowD"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:307
+#: ../lib/layouts/g-brief2.layout:307
 #, fuzzy
 msgid "AdressRowE"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:326
+#: ../lib/layouts/g-brief2.layout:326
 #, fuzzy
 msgid "AdressRowF"
 msgstr "Adresa"
 
-#: ../lib/layouts/g-brief2-en.layout:345
+#: ../lib/layouts/g-brief2.layout:345
 #, fuzzy
-msgid "TelefonRowA"
+msgid "TelephoneRowA"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:365
+#: ../lib/layouts/g-brief2.layout:365
 #, fuzzy
-msgid "TelefonRowB"
+msgid "TelephoneRowB"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:384
+#: ../lib/layouts/g-brief2.layout:384
 #, fuzzy
-msgid "TelefonRowC"
+msgid "TelephoneRowC"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:403
+#: ../lib/layouts/g-brief2.layout:403
 #, fuzzy
-msgid "TelefonRowD"
+msgid "TelephoneRowD"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:422
+#: ../lib/layouts/g-brief2.layout:422
 #, fuzzy
-msgid "TelefonRowE"
+msgid "TelephoneRowE"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:441
+#: ../lib/layouts/g-brief2.layout:441
 #, fuzzy
-msgid "TelefonRowF"
+msgid "TelephoneRowF"
 msgstr "Telefón"
 
-#: ../lib/layouts/g-brief2-en.layout:460
+#: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:480
+#: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:498
+#: ../lib/layouts/g-brief2.layout:498
 msgid "InternetRowC"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:516
+#: ../lib/layouts/g-brief2.layout:516
 msgid "InternetRowD"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:534
+#: ../lib/layouts/g-brief2.layout:534
 msgid "InternetRowE"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:552
+#: ../lib/layouts/g-brief2.layout:552
 msgid "InternetRowF"
 msgstr ""
 
-#: ../lib/layouts/g-brief2-en.layout:571
+#: ../lib/layouts/g-brief2.layout:571
 #, fuzzy
 msgid "BankRowA"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief2-en.layout:591
+#: ../lib/layouts/g-brief2.layout:591
 #, fuzzy
 msgid "BankRowB"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief2-en.layout:610
+#: ../lib/layouts/g-brief2.layout:610
 #, fuzzy
 msgid "BankRowC"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief2-en.layout:629
+#: ../lib/layouts/g-brief2.layout:629
 #, fuzzy
 msgid "BankRowD"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief2-en.layout:648
+#: ../lib/layouts/g-brief2.layout:648
 #, fuzzy
 msgid "BankRowE"
 msgstr "Banka"
 
-#: ../lib/layouts/g-brief2-en.layout:667
+#: ../lib/layouts/g-brief2.layout:667
 #, fuzzy
 msgid "BankRowF"
 msgstr "Banka"
@@ -6539,7 +6401,8 @@ msgid "Basque"
 msgstr "Baskitsky"
 
 #: ../lib/languages:9
-msgid "Portuguese"
+#, fuzzy
+msgid "Portuguese (Brazil)"
 msgstr "Portugalsky"
 
 #: ../lib/languages:10
@@ -6558,9 +6421,10 @@ msgstr "Bulharsky"
 msgid "Canadian"
 msgstr "Kanadsky"
 
-#: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
-msgid "French"
-msgstr "Francúzsky"
+#: ../lib/languages:14
+#, fuzzy
+msgid "French Canadian"
+msgstr "Kanadsky"
 
 #: ../lib/languages:15
 msgid "Catalan"
@@ -6598,13 +6462,25 @@ msgstr "Estónsky"
 msgid "Finnish"
 msgstr "Fínsky"
 
+#: ../lib/languages:25
+msgid "French"
+msgstr "Francúzsky"
+
+#: ../lib/languages:26
+msgid "French (GUTenberg)"
+msgstr ""
+
 #: ../lib/languages:27
 msgid "Galician"
 msgstr "Halièsky"
 
-#: ../lib/languages:30 ../lib/languages:31
+#: ../lib/languages:30
 msgid "German"
 msgstr "Nemecky"
+
+#: ../lib/languages:31
+msgid "German (new spelling)"
+msgstr ""
 
 #: ../lib/languages:33
 msgid "Hebrew"
@@ -11093,52 +10969,58 @@ msgstr "Chyba!  Nemô¾em tlaèi»!"
 msgid "Check `range of pages'!"
 msgstr "Skontrolujte 'rozsah strán'!"
 
-#: src/frontends/xforms/xforms_helpers.C:356
-#: src/frontends/xforms/xforms_helpers.C:380
-#: src/frontends/xforms/xforms_helpers.C:415
-#: src/frontends/xforms/xforms_helpers.C:461
+#: src/frontends/xforms/xforms_helpers.C:287
+#: src/frontends/xforms/xforms_helpers.C:332
+#, fuzzy
+msgid "Failed to open file."
+msgstr "Nie je mo¾né otvori» súbor"
+
+#: src/frontends/xforms/xforms_helpers.C:364
+#: src/frontends/xforms/xforms_helpers.C:388
+#: src/frontends/xforms/xforms_helpers.C:423
+#: src/frontends/xforms/xforms_helpers.C:469
 msgid "The absolute path is required."
 msgstr "Je po¾adovaná absolútna cesta."
 
-#: src/frontends/xforms/xforms_helpers.C:362
-#: src/frontends/xforms/xforms_helpers.C:386
-#: src/frontends/xforms/xforms_helpers.C:426
-#: src/frontends/xforms/xforms_helpers.C:472
+#: src/frontends/xforms/xforms_helpers.C:370
+#: src/frontends/xforms/xforms_helpers.C:394
+#: src/frontends/xforms/xforms_helpers.C:434
+#: src/frontends/xforms/xforms_helpers.C:480
 msgid "Directory does not exist."
 msgstr "Prieèinok neexistuje."
 
-#: src/frontends/xforms/xforms_helpers.C:367
-#: src/frontends/xforms/xforms_helpers.C:431
+#: src/frontends/xforms/xforms_helpers.C:375
+#: src/frontends/xforms/xforms_helpers.C:439
 msgid "Cannot write to this directory."
 msgstr "Chyba! Nemô¾em zapisova» do tohoto prieèinku."
 
-#: src/frontends/xforms/xforms_helpers.C:391
+#: src/frontends/xforms/xforms_helpers.C:399
 msgid "Cannot read this directory."
 msgstr "Chyba! Nemô¾em èíta» z tohoto prieèinku."
 
-#: src/frontends/xforms/xforms_helpers.C:409
-#: src/frontends/xforms/xforms_helpers.C:455
+#: src/frontends/xforms/xforms_helpers.C:417
+#: src/frontends/xforms/xforms_helpers.C:463
 msgid "No file input."
 msgstr "Bez súboru na vstupe."
 
-#: src/frontends/xforms/xforms_helpers.C:437
-#: src/frontends/xforms/xforms_helpers.C:483
+#: src/frontends/xforms/xforms_helpers.C:445
+#: src/frontends/xforms/xforms_helpers.C:491
 msgid "A file is required, not a directory."
 msgstr "Po¾adovaný je súbor, nie prieèinok."
 
-#: src/frontends/xforms/xforms_helpers.C:442
+#: src/frontends/xforms/xforms_helpers.C:450
 msgid "Cannot write to this file."
 msgstr "Nemô¾em zapisova» do tohoto súboru."
 
-#: src/frontends/xforms/xforms_helpers.C:477
+#: src/frontends/xforms/xforms_helpers.C:485
 msgid "Cannot read from this directory."
 msgstr "Chyba! Nemô¾em èíta» z tohoto prieèinka."
 
-#: src/frontends/xforms/xforms_helpers.C:488
+#: src/frontends/xforms/xforms_helpers.C:496
 msgid "File does not exist."
 msgstr "Súbor neexistuje."
 
-#: src/frontends/xforms/xforms_helpers.C:493
+#: src/frontends/xforms/xforms_helpers.C:501
 msgid "Cannot read from this file."
 msgstr "Nemô¾em èíta» z tohoto súboru."
 
@@ -11733,128 +11615,128 @@ msgstr "Varovanie: nemô¾em urèi» cestu k binárke."
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Ak máte problémy, pokúste sa spusti» LyX s absolútnou cestou."
 
-#: src/lyx_main.C:342
+#: src/lyx_main.C:347
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "LYX_DIR_13x nastavenie prostredia nie je správne."
 
-#: src/lyx_main.C:344
+#: src/lyx_main.C:349
 msgid "System directory set to: "
 msgstr "Nastavenie systémového adresára: "
 
-#: src/lyx_main.C:352
+#: src/lyx_main.C:357
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Varovanie LyXu! Nemô¾em urèi» systémový prieèinok. "
 
-#: src/lyx_main.C:353
+#: src/lyx_main.C:358
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Skúste '-sysdir' ako parameter v príkazovom riadku alebo"
 
-#: src/lyx_main.C:354
+#: src/lyx_main.C:359
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "nastavte premennú prostredia LYX_DIR_13x na systémový prieèinok LyXu "
 
-#: src/lyx_main.C:356
+#: src/lyx_main.C:361
 msgid "containing the file `chkconfig.ltx'."
 msgstr "obsahujúci súbor `chkconfig.ltx'."
 
-#: src/lyx_main.C:365
+#: src/lyx_main.C:370
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Pou¾ijú sa ¹tandardné hodnoty .%1$s, ale oèakávajte problémy."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:375
 msgid "Using built-in default "
 msgstr "Pou¾ijú sa ¹tandardné hodnoty "
 
-#: src/lyx_main.C:371
+#: src/lyx_main.C:376
 msgid " but expect problems."
 msgstr " ale oèakávajte problémy."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:380
 msgid "Expect problems."
 msgstr "Oèakávajte problémy."
 
-#: src/lyx_main.C:593
+#: src/lyx_main.C:615
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem pou¾ívateµov prieèinok"
 
-#: src/lyx_main.C:597 src/lyx_main.C:645
+#: src/lyx_main.C:619 src/lyx_main.C:667
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:607
+#: src/lyx_main.C:629
 msgid "You have specified an invalid LyX directory."
 msgstr "©pecifikovali ste neplatný LyX prieèinok."
 
-#: src/lyx_main.C:608
+#: src/lyx_main.C:630
 msgid "It is needed to keep your own configuration."
 msgstr "Potrebujete ho pre uchovávanie vá¹ho nastavenia."
 
-#: src/lyx_main.C:609
+#: src/lyx_main.C:631
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Mám ho pre vás vytvori» (doporuèené)?"
 
-#: src/lyx_main.C:610
+#: src/lyx_main.C:632
 msgid "Running without personal LyX directory."
 msgstr "Spú¹»am bez osobného prieèinku LyXu."
 
-#: src/lyx_main.C:617
+#: src/lyx_main.C:639
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Vytváram prieèinok  %1$s a spú¹»am konfiguráciu..."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:644
 msgid "LyX: Creating directory "
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:623
+#: src/lyx_main.C:645
 msgid " and running configure..."
 msgstr " a spú¹»am konfiguráciu..."
 
-#: src/lyx_main.C:631
+#: src/lyx_main.C:653
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Nepodarilo sa. Pou¾ije sa %1$s."
 
-#: src/lyx_main.C:635
+#: src/lyx_main.C:657
 msgid "Failed. Will use "
 msgstr "Nepodarilo sa. Pou¾ije sa "
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:658
 msgid " instead."
 msgstr " namiesto toho."
 
-#: src/lyx_main.C:659 src/lyx_main.C:663
+#: src/lyx_main.C:681 src/lyx_main.C:685
 msgid "LyX Warning!"
 msgstr "Varovanie LyXu!"
 
-#: src/lyx_main.C:660
+#: src/lyx_main.C:682
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Chyba pri èítaní %1$s."
 
-#: src/lyx_main.C:661 src/lyx_main.C:665
+#: src/lyx_main.C:683 src/lyx_main.C:687
 msgid "Using built-in defaults."
 msgstr "Pou¾ijú sa prednastavené hodnoty."
 
-#: src/lyx_main.C:664
+#: src/lyx_main.C:686
 msgid "Error while reading "
 msgstr "Chyba pri èítaní "
 
-#: src/lyx_main.C:774
+#: src/lyx_main.C:796
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:801
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:805
 msgid "Setting debug level to "
 msgstr "Nastavenie úroveò ladenia na "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:816
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11893,27 +11775,27 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/lyx_main.C:830
+#: src/lyx_main.C:852
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/lyx_main.C:840
+#: src/lyx_main.C:862
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/lyx_main.C:850
+#: src/lyx_main.C:872
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/lyx_main.C:863
+#: src/lyx_main.C:885
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi  --export"
 
-#: src/lyx_main.C:875
+#: src/lyx_main.C:897
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:902
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -12844,6 +12726,54 @@ msgstr "Znaèka nastavená"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "Funkcia Lyxu 'vrstva' (layout) potrebuje argument."
+
+#, fuzzy
+#~ msgid "AdressZeileA"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "AdressZeileB"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "AdressZeileC"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "AdressZeileD"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "AdressZeileE"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "AdressZeileF"
+#~ msgstr "Adresa"
+
+#, fuzzy
+#~ msgid "TelefonZeileA"
+#~ msgstr "Telefón"
+
+#, fuzzy
+#~ msgid "TelefonZeileB"
+#~ msgstr "Telefón"
+
+#, fuzzy
+#~ msgid "TelefonZeileC"
+#~ msgstr "Telefón"
+
+#, fuzzy
+#~ msgid "TelefonZeileD"
+#~ msgstr "Telefón"
+
+#, fuzzy
+#~ msgid "TelefonZeileE"
+#~ msgstr "Telefón"
+
+#, fuzzy
+#~ msgid "TelefonZeileF"
+#~ msgstr "Telefón"
 
 #~ msgid "«text»"
 #~ msgstr "«text»"
