@@ -1,5 +1,5 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+\lyxformat 218
 \textclass article
 \language english
 \inputencoding default
@@ -517,6 +517,32 @@ jadetex
 \family default 
 ).
  You need the sgmltools v2.0 package installed to use this.
+\layout Subsection
+
+encts
+\layout Description
+
+Found: @chk_encts@
+\layout Description
+
+CTAN: N/A
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand \url{http://math.tulane.edu/~entcs/}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: The document class 
+\family sans 
+entcs
+\family default 
+ is Elsevier Science's Electronic Notes in Theoretical Computer Science
+ article style, used for the ENTCS series, and many conference proceedings.
+ 
 \layout Subsection
 
 g-brief-en
