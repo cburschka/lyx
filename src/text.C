@@ -777,7 +777,6 @@ int LyXText::LeftMargin(Row const * row) const
 				atoi(row->par->pextra_widthp.c_str()) / 100;
 		} else if (!row->par->pextra_width.empty()) {
 			int xx = VSpace(row->par->pextra_width).inPixels(owner_);
-			
 			if (xx > paperwidth)
 				xx = paperwidth * 80 / 100;
 			x += xx;

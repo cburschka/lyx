@@ -287,7 +287,8 @@ void MathParInset::Write(ostream & os, bool fragile)
 	}
 #else
 	// Something like this should work too:
-	os << string(brace, '}'); // not one-off error I hope.
+	if (brace > 0)
+		os << string(brace, '}'); // not one-off error I hope.
 #endif
 }
 

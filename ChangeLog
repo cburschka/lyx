@@ -1,3 +1,50 @@
+2000-05-15  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetcollapsable.C (draw): enhancements in drawing and
+	width calculating.
+
+	* src/insets/insettext.C (computeTextRows): redone completely this
+	function in a much cleaner way, because of problems when having a
+	fixed maxWidth.
+	(draw): added a frame border when the inset is locked.
+	(SetDrawLockedFrame): this sets if we draw the border or not.
+	(SetFrameColor): this sets the frame color (default=insetframe).
+
+	* src/insets/lyxinset.h: added x() and y() functions which return
+	the top_x and top_baseline values. Added a GetFirstLockingInsetOfType
+	function which is needed to see if we have a locking inset of some
+	type in this inset (needed for now in insettabular).
+
+	* src/vspace.C (inPixels): the same function also without a BufferView
+	parameter as so it is easier to use it in some ocasions.
+
+	* src/lyxfunc.C: changed all places where insertInset was used so
+	that now if it couldn't be inserted it is deleted!
+
+	* src/TabularLayout.C: 
+	* src/TableLayout.C: added support for new tabular-inset!
+
+	* src/BufferView2.C (insertInset): this now returns a bool if the
+	inset was really inserted!!!
+
+	* src/tabular.C (GetLastCellInRow): 
+	(GetFirstCellInRow): new helper functions.
+	(Latex): implemented for new tabular class.
+	(TeXCellPostamble): 
+	(TeXCellPreamble): 
+	(TeXBottomHLine): 
+	(TeXTopHLine): new Latex() helper functions.
+
+2000-05-12  Juergen Vigna  <jug@sad.it>
+
+	* src/mathed/formulamacro.C (Read): 
+	* src/mathed/formula.C (Read): read also the \end_inset here!
+
+2000-05-10  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_write.C (MathParInset::Write): Fixed a bug:
+	crush when saving formulae with unbalanced parenthesis.
+
 20000-05-11  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/layout.C: Add new keyword "endlabelstring" to layout file

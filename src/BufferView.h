@@ -22,6 +22,7 @@
 class LyXView;
 class LyXText;
 class TeXErrors;
+class Buffer;
 
 ///
 class BufferView {
@@ -151,7 +152,7 @@ public:
 	/** Insert an inset into the buffer
 	    Insert inset into buffer, placing it in a layout of lout,
 	    if no_table make sure that it doesn't end up in a table. */
-	void insertInset(Inset * inset, string const & lout = string(),
+	bool insertInset(Inset * inset, string const & lout = string(),
 			 bool no_table = false);
 	/// open and lock an updatable inset
 	void open_new_inset(UpdatableInset * new_inset);

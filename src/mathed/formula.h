@@ -27,6 +27,7 @@
 
 class MathParInset;
 class MathedCursor;
+class Buffer;
 
 ///
 class InsetFormula: public UpdatableInset {

@@ -145,7 +145,7 @@ void UpdatableInset::draw(Painter &, LyXFont const &,
 			  int /* baseline */, float & x) const
 {
     if (scx) x += float(scx);
-// ATTENTION: this is not good doing here
+// ATTENTION: don't do the following here!!!
 //    top_x = int(x);
 //    top_baseline = baseline;
 }
@@ -179,9 +179,9 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
     return UNDISPATCHED; 
 }
 
-int UpdatableInset::getMaxWidth(Painter & pain, UpdatableInset const *inset) const
+int UpdatableInset::getMaxWidth(Painter & pain, UpdatableInset const *) const
 {
     if (owner())
-        return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain, inset);
+        return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain, this);
     return pain.paperWidth();
 }

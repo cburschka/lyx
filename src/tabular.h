@@ -20,8 +20,8 @@
 #include "lyxlex.h"
 #include "LString.h"
 
+class InsetTabular;
 class InsetText;
-class Buffer;
 
 /* The features the text class offers for tables */ 
 
@@ -69,19 +69,19 @@ public:
     };
     /* konstruktor */
     ///
-    LyXTabular(int columns_arg, int rows_arg, Buffer *buf);
+    LyXTabular(InsetTabular *, int columns_arg, int rows_arg);
     ///
     ///
-    LyXTabular(LyXTabular const &, Buffer *buf);
+    LyXTabular(InsetTabular *, LyXTabular const &);
     ///
     explicit
-    LyXTabular(LyXLex & lex, Buffer *buf);
+    LyXTabular(InsetTabular *, LyXLex & lex);
     ///
     ~LyXTabular();
     ///
     LyXTabular & operator=(LyXTabular const &);
     ///
-    LyXTabular * Clone(Buffer * buf);
+    LyXTabular * Clone(InsetTabular *);
     
     /// Returns true if there is a topline, returns false if not
     bool TopLine(int cell) const;
@@ -158,7 +158,11 @@ public:
     ///
     bool IsFirstCellInRow(int cell) const;
     ///
+    int GetFirstCellInRow(int row) const;
+    ///
     bool IsLastCellInRow(int cell) const;
+    ///
+    int GetLastCellInRow(int row) const;
     ///
     int GetNumberOfCells() const;
     ///
@@ -168,22 +172,20 @@ public:
     ///
     int NumberOfCellsInRow(int cell) const;
     ///
-    void Reinit();
-    ///
-    void Init(Buffer * buf, int columns_arg, int rows_arg);
-    ///
     void Write(std::ostream &) const;
     ///
     void Read(LyXLex &);
     ///
     void OldFormatRead(std::istream &, string);
     ///
-    int Latex(std::ostream &) const;
-
-    // cell <0 will tex the preamble
-    // returns the number of printed newlines
+    /// helper function for Latex returns number of newlines
     ///
-    int TexEndOfCell(std::ostream &, int cell) const;
+    int TeXTopHLine(std::ostream &, int row) const;
+    int TeXBottomHLine(std::ostream &, int row) const;
+    int TeXCellPreamble(std::ostream &, int cell) const;
+    int TeXCellPostamble(std::ostream &, int cell) const;
+    ///
+    int Latex(std::ostream &, bool, bool) const;
     ///
     int DocBookEndOfCell(std::ostream &, int cell, int & depth) const;
 #if 0
@@ -224,7 +226,7 @@ public:
     ///
     int GetCellAbove(int cell) const;
     ///
-    int GetCellNumber(int column, int row) const;
+    int GetCellNumber(int row, int column) const;
     ///
     void SetLinebreaks(int cell, bool what);
     ///
@@ -253,6 +255,8 @@ public:
     int rows() const { return rows_; }
     ///
     int columns() const { return columns_;}
+    ///
+    InsetTabular * owner() const { return owner_; }
 
 private: //////////////////////////////////////////////////////////////////
     ///
@@ -346,8 +350,12 @@ private: //////////////////////////////////////////////////////////////////
     int endfoot; // row of endfoot
     int endlastfoot; // row of endlastfoot
     ///
-    Buffer * buffer;
+    InsetTabular * owner_;
    
+    ///
+    void Init(int columns_arg, int rows_arg);
+    ///
+    void Reinit();
     ///
     void set_row_column_number_info();
     /// Returns true if a complete update is necessary, otherwise false

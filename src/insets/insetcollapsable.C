@@ -30,7 +30,7 @@ InsetCollapsable::InsetCollapsable(Buffer * bf)
     autocollapse = true;
     autoBreakRows = true;
     framecolor = LColor::footnoteframe;
-    widthOffset = 10;
+    widthOffset = 6; // 2+2 (behind+back), 1+1 (frame)
     button_length = button_top_y = button_bottom_y = 0;
     setInsetName("Collapsable");
 }
@@ -120,15 +120,17 @@ int InsetCollapsable::width(Painter & pain, LyXFont const & font) const
     if (collapsed) 
 	return width_collapsed(pain, font);
 
-    return getMaxWidth(pain, this) - widthOffset + 2;
+    return InsetText::width(pain, font) + width_collapsed(pain,font) +
+	    widthOffset;
 }
 
 
-void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const &,
+void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const & font,
 				      int baseline, float & x) const
 {
     int width = 0;
-    pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET, baseline,
+    pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
+		    baseline-ascent(pain, font)+ascent_collapsed(pain, font),
 		    label.c_str(), labelfont, true, width);
     x += width + (2 * TEXT_TO_INSET_OFFSET);
 }
@@ -148,14 +150,14 @@ void InsetCollapsable::draw(Painter & pain, LyXFont const & f,
     int top_x = int(x);
 
     draw_collapsed(pain, f, baseline, x);
-    x += 2;
+    x -= TEXT_TO_INSET_OFFSET;
 
-    int w =  getMaxTextWidth(pain, this);
+    int w =  InsetText::width(pain, f) + TEXT_TO_INSET_OFFSET;
     int h = ascent(pain,f) + descent(pain, f);
     
     pain.rectangle(int(x), baseline - ascent(pain, f), w, h, framecolor);
 
-    x += 4;
+    x += TEXT_TO_INSET_OFFSET;
     drawTextXOffset = int(x) - top_x;
     InsetText::draw(pain, f, baseline, x);
 }
@@ -243,15 +245,15 @@ int InsetCollapsable::getMaxWidth(Painter & pain,
         return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain,inset);
     if (owner())
         return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain,inset)-
-		width_collapsed(pain, labelfont) - 2 - widthOffset;
+		width_collapsed(pain, labelfont) - widthOffset;
 
-    return pain.paperWidth()-width_collapsed(pain, labelfont)-2-widthOffset;
+    return pain.paperWidth()-width_collapsed(pain, labelfont) - widthOffset;
 }
 
 
 int InsetCollapsable::getMaxTextWidth(Painter & pain,
-				      UpdatableInset const * inset, int) const
+				      UpdatableInset const * inset) const
 {
     return getMaxWidth(pain, inset) -
-	width_collapsed(pain, labelfont) - widthOffset - 2;
+	width_collapsed(pain, labelfont) - widthOffset;
 }

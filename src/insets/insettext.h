@@ -20,12 +20,14 @@
 
 #include "lyxinset.h"
 #include "LString.h"
-#include "lyxparagraph.h"
 #include "lyxcursor.h"
 
 class Painter;
 class BufferView;
 class Buffer;
+class LyXCursor;
+class LyXParagraph;
+class LColor;
 
 /** A text inset is like a TeX box
   
@@ -35,7 +37,7 @@ class Buffer;
 class InsetText : public UpdatableInset {
 public:
     ///
-    enum { TEXT_TO_INSET_OFFSET = 1 };
+    enum { TEXT_TO_INSET_OFFSET = 2 };
     ///
     explicit
     InsetText(Buffer *);
@@ -104,11 +106,21 @@ public:
     ///
     UpdatableInset * GetLockingInset();
     ///
+    UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+    ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
     void init(Buffer *, InsetText const * ins = 0);
     ///
     void SetParagraphData(LyXParagraph *);
+    ///
+    void SetAutoBreakRows(bool);
+    ///
+    void SetDrawLockedFrame(bool);
+    ///
+    void SetFrameColor(LColor::color);
+    ///
+    void computeTextRows(Painter &) const;
 
     LyXParagraph * par;
 
@@ -131,8 +143,7 @@ protected:
     ///
     virtual LyXFont GetDrawFont(LyXParagraph * par, int pos) const;
     ///
-    virtual int getMaxTextWidth(Painter &, UpdatableInset const *,
-				int x=0) const;
+    virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
     Buffer * buffer;
     ///
@@ -150,6 +161,9 @@ protected:
     mutable int drawTextYOffset;
     ///
     bool autoBreakRows;
+    bool drawLockedFrame;
+    ///
+    LColor::color frame_color;
 
 private:
     ///
@@ -158,8 +172,6 @@ private:
     ///
     void drawRowText(Painter &, int startpos, int endpos, int baseline,
                      float x) const;
-    ///
-    void computeTextRows(Painter &, float x = 0.0) const;
     ///
     void computeBaselines(int) const;
     ///
@@ -191,6 +203,8 @@ private:
 			       int button = 0);
 	
     /* Private structures and variables */
+    ///
+    bool locked;
     ///
     int inset_pos;
     ///

@@ -87,7 +87,7 @@ protected:
     ///
     void UpdateLocal(BufferView *, bool);
     ///
-    int getMaxTextWidth(Painter & pain, UpdatableInset const *, int x=0) const;
+    int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
     
     ///
     bool collapsed;

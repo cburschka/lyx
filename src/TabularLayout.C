@@ -24,6 +24,7 @@ extern FD_form_table_extra * fd_form_table_extra;
 extern BufferView * current_view;
 
 extern void OpenLayoutTableExtra();
+extern bool UpdateLayoutTabular(bool);
 
 static int Confirmed = false;
 static int ActCell;
@@ -38,20 +39,38 @@ static int extra_col_cursor_x; // need no y's, one-line input fields
 static int extra_multicol_cursor_x;
 // Joacim
 
+static InsetTabular * inset = 0;
 
-bool UpdateLayoutTabular(int flag)
+void MenuLayoutTabular(bool flag, InsetTabular * ins)
 {
+    inset = ins;
+    if (!inset)
+	return;
+    if (UpdateLayoutTabular(flag)) {
+        if (fd_form_table_options->form_table_options->visible) {
+            fl_raise_form(fd_form_table_options->form_table_options);
+        }
+        else {
+            fl_show_form(fd_form_table_options->form_table_options,
+                         FL_PLACE_MOUSE, FL_FULLBORDER,
+                         _("Table Layout"));
+        }
+    }
+}
+
+bool UpdateLayoutTabular(bool flag)
+{
+    if (!inset)
+	return false;
+
     bool update = true;
     if (!current_view->available())
         update = false;
     
-    if (update && current_view->the_locking_inset &&
-	(current_view->the_locking_inset->LyxCode() == Inset::TABULAR_CODE)) {
+    if (update) {
         char buf[12];
         string pwidth, special;
    
-	InsetTabular * inset = static_cast<InsetTabular *>
-	    (current_view->the_locking_inset);
 	LyXTabular * table = inset->tabular;
 
         int cell = inset->GetActCell();
@@ -226,16 +245,13 @@ bool UpdateLayoutTabular(int flag)
 
 void TabularOptionsCB(FL_OBJECT * ob, long)
 {
-    if (!current_view->available() || !current_view->the_locking_inset ||
-	(current_view->the_locking_inset->LyxCode() != Inset::TABULAR_CODE)) {
+    if (!inset) {
         MenuLayoutTable(0);
 	return;
     }
     int s, num = 0;
     string special, str;
 
-    InsetTabular * inset = static_cast<InsetTabular *>
-	    (current_view->the_locking_inset);
     LyXTabular * table = inset->tabular;
     
     int cell = inset->GetActCell();
@@ -407,12 +423,9 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
 
 void SetPWidthTabularCB(FL_OBJECT * ob, long)
 {
-    if (!current_view->available() || !current_view->the_locking_inset ||
-	(current_view->the_locking_inset->LyxCode() != Inset::TABULAR_CODE)) {
+    if (!inset) {
 	return;
     }
-    InsetTabular * inset = static_cast<InsetTabular *>
-	    (current_view->the_locking_inset);
 
     fl_set_object_label(fd_form_table_options->text_warning, "");
     Confirmed = false;

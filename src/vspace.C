@@ -536,7 +536,18 @@ int VSpace::inPixels(BufferView * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = bv->text->DefaultHeight(); // [pixels]
+	int skip = 0;
+	if (kin == DEFSKIP)
+	    skip = bv->buffer()->params.getDefSkip().inPixels(bv);
 
+	return inPixels(height, skip);
+}
+
+int VSpace::inPixels(int default_height, int default_skip) const
+{
+	// Height of a normal line in pixels (zoom factor considered)
+	int height = default_height; // [pixels]
+	
 	// Zoom factor specified by user in percent
 	float const zoom = lyxrc.zoom / 100.0; // [percent]
 
@@ -550,7 +561,7 @@ int VSpace::inPixels(BufferView * bv) const
 	case NONE: return 0;
 
 	case DEFSKIP:
-		return bv->buffer()->params.getDefSkip().inPixels(bv);
+		return default_skip;
 
 		// This is how the skips are normally defined by
 		// LateX.  But there should be some way to change

@@ -98,6 +98,12 @@ public:
     ///
     int InsetInInsetY();
     ///
+    UpdatableInset * GetLockingInset();
+    ///
+    UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+    ///
+    bool InsertInset(BufferView *, Inset *);
+    ///
     bool display() const { return tabular->IsLongTabular(); }
     ///
     void InsetButtonRelease(BufferView *, int, int, int);
@@ -132,6 +138,11 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
+    int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+    ///
+    Buffer * BufferOwner() const { return buffer; }
+
+    ///
     /// Public structures and variables
     ///
     LyXTabular * tabular;
@@ -157,6 +168,7 @@ private:
     bool movePrevCell();
     bool Delete();
     ///
+    int getCellXPos(int cell) const;
     void resetPos(Painter &) const;
     ///
     void RemoveTabularRow();
@@ -165,9 +177,14 @@ private:
     bool hasCellSelection() const {return hasCharSelection() &&
 				 (sel_cell_start != sel_cell_end);}
     ///
-    bool ActivateCellInset(BufferView *, int x=0, int y=0, int button=0);
+    bool ActivateCellInset(BufferView *, int x=0, int y=0, int button=0,
+			   bool behind = false);
     ///
     bool InsetHit(BufferView * bv, int x, int y) const;
+    ///
+    int GetMaxWidthOfCell(Painter &, int cell) const;
+    ///
+    void recomputeTextInsets(Painter &, const LyXFont &) const;
 
     ///
     /// Private structures and variables
@@ -192,6 +209,6 @@ private:
     bool
         no_selection;
     mutable bool
-        init;
+        init_inset;
 };
 #endif

@@ -40,9 +40,7 @@ static int extra_col_cursor_x; // need no y's, one-line input fields
 static int extra_multicol_cursor_x;
 // Joacim
 
-#define IS_TABULAR  (current_view->the_locking_inset && \
-	            (current_view->the_locking_inset->LyxCode() == \
-		     Inset::TABULAR_CODE))
+#define IS_TABULAR  (current_view->the_locking_inset != 0)
 
 bool UpdateLayoutTable(int flag)
 {
@@ -219,8 +217,6 @@ bool UpdateLayoutTable(int flag)
 		      table->RotateTable());
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
-    } else if (update && IS_TABULAR) {
-	UpdateLayoutTabular(flag);
     } else if (fd_form_table_options->form_table_options->visible) {
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
@@ -248,7 +244,6 @@ void OpenLayoutTableExtra()
 				    ow, oh);
 	}
 }
-
 
 void MenuLayoutTable(int flag)
 {
@@ -475,7 +470,7 @@ void TableSpeCloseCB(FL_OBJECT *, long)
 void SetPWidthCB(FL_OBJECT * ob, long l)
 {
     if (IS_TABULAR) {
-	SetPWidthCB(ob, l);
+	SetPWidthTabularCB(ob, l);
 	return;
     }
 

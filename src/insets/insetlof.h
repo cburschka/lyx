@@ -21,6 +21,8 @@
 #pragma interface
 #endif
 
+class Buffer;
+
 /** Used to insert table of contents
  */
 class InsetLOF : public InsetCommand {

@@ -825,28 +825,32 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_TOC_INSERT:
 	{
 		Inset * new_inset = new InsetTOC(owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 		break;
 	}
 	
 	case LFUN_LOF_INSERT:
 	{
 		Inset * new_inset = new InsetLOF(owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 		break;
 	}
 	
 	case LFUN_LOA_INSERT:
 	{
 		Inset * new_inset = new InsetLOA(owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 		break;
 	}
 
 	case LFUN_LOT_INSERT:
 	{
 		Inset * new_inset = new InsetLOT(owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 		break;
 	}
 		
@@ -861,7 +865,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_GRAPHICS:
 	{
 		Inset * new_inset = new InsetGraphics;
-		owner->view()->insertInset(new_inset);
+		if (!owner->view()->insertInset(new_inset))
+			delete new_inset;
 		break;
 	}
 	
@@ -1377,11 +1382,12 @@ string LyXFunc::Dispatch(int ac,
 		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == Inset::HIGHLY_EDITABLE) {
 			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
 			setMessage(tmpinset->EditMessage());
+			LyXFont font = txt->GetFont(txt->cursor.par,
+						    txt->cursor.pos);
 			tmpinset->Edit(owner->view(),
-				       tmpinset->width(owner->view()->painter(),
-						       txt->GetFont(txt->cursor.par,
-								    txt->cursor.pos)),
-				       0, 0);
+				       tmpinset->x() + tmpinset->width(owner->view()->painter(),font),
+				       tmpinset->descent(owner->view()->painter(),font),
+				       0);
 			break;
 		}
 		if  (is_rtl)
@@ -1986,31 +1992,39 @@ string LyXFunc::Dispatch(int ac,
 			new_inset = new InsetUrl("htmlurl", "", "");
 		else
 			new_inset = new InsetUrl("url", "", "");
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 	
 	case LFUN_INSET_TEXT:
 	{
 		InsetText * new_inset = new InsetText(owner->buffer());
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 	case LFUN_INSET_ERT:
 	{
 		InsetERT * new_inset = new InsetERT(owner->buffer());
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 	
 	case LFUN_INSET_FOOTNOTE:
 	{
 		InsetFoot * new_inset = new InsetFoot(owner->buffer());
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 
@@ -2020,8 +2034,10 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty())
 			sscanf(argument.c_str(),"%d%d",&r,&c);
 		InsetTabular * new_inset = new InsetTabular(owner->buffer(),r,c);
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 
@@ -2314,10 +2330,13 @@ string LyXFunc::Dispatch(int ac,
 				new_inset->setOptions(token(lsarg, '|', 1));
 			} else
 				new_inset->setContents(lsarg);
-			owner->view()->insertInset(new_inset);
+			if (!owner->view()->insertInset(new_inset))
+				delete new_inset;
 		} else {
-			owner->view()->insertInset(new_inset);
-			new_inset->Edit(owner->view(), 0, 0, 0);
+			if (owner->view()->insertInset(new_inset))
+				new_inset->Edit(owner->view(), 0, 0, 0);
+			else
+				delete new_inset;
 		}
 	}
 	break;
@@ -2336,10 +2355,11 @@ string LyXFunc::Dispatch(int ac,
 					  bibstyle,
 					  owner->buffer());
 		
-		owner->view()->insertInset(new_inset);
-		if (lsarg.empty()) {
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		}
+		if (owner->view()->insertInset(new_inset)) {
+			if (lsarg.empty())
+				new_inset->Edit(owner->view(), 0, 0, 0);
+		} else
+			delete new_inset;
 	}
 	break;
 		
@@ -2385,7 +2405,8 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty()) {
   			string lsarg(argument);
 			new_inset->setContents(lsarg);
-			owner->view()->insertInset(new_inset);
+			if (!owner->view()->insertInset(new_inset))
+				delete new_inset;
 		} else {
 			//reh 98/09/21
 			//get the current word for an argument
@@ -2417,7 +2438,8 @@ string LyXFunc::Dispatch(int ac,
 			//put the new inset into the buffer.
 			// there should be some way of knowing the user
 			//cancelled & avoiding this, but i don't know how
-			owner->view()->insertInset(new_inset);
+			if (!owner->view()->insertInset(new_inset))
+				delete new_inset;
 		}
 	}
 	break;
@@ -2425,7 +2447,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_PRINT:
 	{
 		Inset * new_inset = new InsetPrintIndex(owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 	}
 	break;
 
@@ -2433,7 +2456,8 @@ string LyXFunc::Dispatch(int ac,
 	{
 		lyxerr << "arg " << argument << endl;
 		Inset * new_inset = new InsetParent(argument, owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
+		if (!owner->view()->insertInset(new_inset, "Standard", true))
+			delete new_inset;
 	}
 	break;
 
@@ -2441,8 +2465,10 @@ string LyXFunc::Dispatch(int ac,
 	{
 		Inset * new_inset = new InsetInclude(argument,
 						     owner->buffer());
-		owner->view()->insertInset(new_inset, "Standard", true);
-		new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(new_inset, "Standard", true))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
 	}
 	break;
 

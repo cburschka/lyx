@@ -184,16 +184,26 @@ void BufferView::setCursorFromRow(int row)
 	text->SetCursor(texrowpar, tmppos);
 }
 
-void BufferView::insertInset(Inset * inset, string const & lout,
+bool BufferView::insertInset(Inset * inset, string const & lout,
 			 bool no_table)
 {
+	// if we are in a locking inset we should try to insert the
+	// inset there otherwise this is a illegal function now
+	if (the_locking_inset) {
+		if (the_locking_inset->InsertInsetAllowed(inset) &&
+		    the_locking_inset->InsertInset(this, inset))
+			return true;
+		return false;
+	}
+
 	// check for table/list in tables
 	if (no_table && text->cursor.par->table){
 		WriteAlert(_("Impossible Operation!"),
 			   _("Cannot insert table/list in table."),
 			   _("Sorry."));
-		return;
+		return false;
 	}
+
 	// not quite sure if we want this...
 	text->SetCursorParUndo();
 	text->FreezeUndo();
@@ -252,7 +262,8 @@ void BufferView::insertInset(Inset * inset, string const & lout,
 #endif
 	update(-1);
 
-	text->UnFreezeUndo();	
+	text->UnFreezeUndo();
+	return true;
 }
 
 

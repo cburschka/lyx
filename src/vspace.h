@@ -211,6 +211,8 @@ public:
 	string asLatexCommand(BufferParams const & params) const;
 	///
 	int inPixels(BufferView * bv) const;
+	///
+	int inPixels(int default_height, int default_skip) const;
 private:
 	///
 	vspace_kind  kin;

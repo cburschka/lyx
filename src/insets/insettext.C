@@ -21,40 +21,27 @@
 #endif
 
 #include "insettext.h"
+#include "lyxparagraph.h"
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxfont.h"
-#include "lyxlex.h"
 #include "commandtags.h"
 #include "buffer.h"
 #include "LyXView.h"
 #include "BufferView.h"
-#include "support/textutils.h"
 #include "layout.h"
-#include "insetlatexaccent.h"
-#include "insetquotes.h"
-#include "mathed/formulamacro.h"
-#include "figinset.h"
-#include "insetinfo.h"
-#include "insetinclude.h"
-#include "insetbib.h"
-#include "insetcommand.h"
-#include "insetindex.h"
-#include "insetlabel.h"
-#include "insetref.h"
-//#include "insettabular.h"
-#include "insetert.h"
-#include "insetspecialchar.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
 #include "lyx_gui_misc.h"
-#include "support/LAssert.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
 #include "font.h"
 #include "minibuffer.h"
 #include "toolbar.h"
+#include "LColor.h"
+#include "support/textutils.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 using std::ifstream;
@@ -92,7 +79,7 @@ void InsetText::init(Buffer * buf, InsetText const * ins)
     init_inset = true;
     maxAscent = maxDescent = insetWidth = 0;
     drawTextXOffset = drawTextYOffset = 0;
-    autoBreakRows = false;
+    autoBreakRows = drawLockedFrame = false;
     xpos = 0.0;
     if (ins) {
 	SetParagraphData(ins->par);
@@ -102,6 +89,8 @@ void InsetText::init(Buffer * buf, InsetText const * ins)
     cursor.par = par;
     cursor.pos = 0;
     selection_start_cursor = selection_end_cursor = cursor;
+    frame_color = LColor::insetframe;
+    locked = false;
 }
 
 
@@ -172,12 +161,12 @@ void InsetText::Read(LyXLex & lex)
 int InsetText::ascent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
-	computeTextRows(pain, xpos);
+	computeTextRows(pain);
 	resetPos(pain);
 	init_inset = false;
     }
     if (maxAscent)
-	return maxAscent;
+	return maxAscent + 2;
     return lyxfont::maxAscent(font);
 }
 
@@ -185,12 +174,12 @@ int InsetText::ascent(Painter & pain, LyXFont const & font) const
 int InsetText::descent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
-	computeTextRows(pain, xpos);
+	computeTextRows(pain);
 	resetPos(pain);
 	init_inset = false;
     }
     if (maxDescent)
-	return maxDescent;
+	return maxDescent + 2;
     return lyxfont::maxDescent(font);
 }
 
@@ -198,7 +187,7 @@ int InsetText::descent(Painter & pain, LyXFont const & font) const
 int InsetText::width(Painter & pain, LyXFont const &) const
 {
     if (init_inset) {
-	computeTextRows(pain, xpos);
+	computeTextRows(pain);
 	resetPos(pain);
 	init_inset = false;
     }
@@ -216,7 +205,7 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
 	top_baseline = baseline;
 	if (init_inset || (top_x != int(x))) {
 	    top_x = int(x);
-	    computeTextRows(pain, x);
+	    computeTextRows(pain);
 	    init_inset = false;
 	}
 	computeBaselines(baseline);
@@ -226,12 +215,17 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
 	inset_x = cursor.x - top_x + drawTextXOffset;
 	inset_y = cursor.y + drawTextYOffset;
     }
+    if (drawLockedFrame && locked) {
+	pain.rectangle(int(x), baseline - ascent(pain, f), insetWidth,
+		       ascent(pain,f) + descent(pain, f), frame_color);
+    }
+    x += TEXT_TO_INSET_OFFSET; // place for border
     for(RowList::size_type r = 0; r < rows.size() - 1; ++r) {
         drawRowSelection(pain, rows[r].pos, rows[r + 1].pos, r, 
                          rows[r].baseline, x);
         drawRowText(pain, rows[r].pos, rows[r + 1].pos, rows[r].baseline, x);
     }
-    x += insetWidth;
+    x += insetWidth - TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -351,6 +345,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 	lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 	return;
     }
+    locked = true;
     the_locking_inset = 0;
     inset_pos = inset_x = inset_y = 0;
     setPos(bv->painter(), x, y);
@@ -371,11 +366,10 @@ void InsetText::InsetUnlock(BufferView * bv)
     HideInsetCursor(bv);
     lyxerr[Debug::INSETS] << "InsetText::InsetUnlock(" << this <<
 	    ")" << endl;
-    if (hasSelection()) {
-	selection_start_cursor = selection_end_cursor = cursor;
-	UpdateLocal(bv, false);
-    }
+    selection_start_cursor = selection_end_cursor = cursor;
     no_selection = false;
+    locked = false;
+    UpdateLocal(bv, true);
 }
 
 
@@ -766,12 +760,6 @@ InsetText::LocalDispatch(BufferView * bv,
     }
     resetPos(bv->painter());
     break;
-    case LFUN_MATH_MODE:
-	InsertInset(bv, new InsetFormula);
-	return DISPATCHED;
-    case LFUN_INSET_ERT:
-	InsertInset(bv, new InsetERT(buffer));
-	return DISPATCHED;
     case LFUN_BREAKPARAGRAPH:
     case LFUN_BREAKLINE:
 	if (!autoBreakRows)
@@ -1060,8 +1048,8 @@ void InsetText::setPos(Painter & pain, int x, int y) const
 	actrow = i;
     }
     cursor.y -= top_baseline;
-    cursor.x = top_x;
-    x += top_x;
+    cursor.x = top_x + 2; // 2 = frame width
+    x += cursor.x;
 
     int swh;
     int sw = swh = SingleWidth(pain, par,cursor.pos);
@@ -1099,7 +1087,7 @@ void InsetText::resetPos(Painter & pain) const
     }
     cursor.y -= top_baseline;
     setPos(pain, 0, cursor.y);
-    cursor.x = top_x;
+    cursor.x = top_x + 2; // 2 = frame width
     while(cursor.pos < old_pos) {
 	cursor.x += SingleWidth(pain, par,cursor.pos);
 	++cursor.pos;
@@ -1175,6 +1163,11 @@ bool InsetText::Delete()
 
 bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 {
+    if (the_locking_inset) {
+	if (the_locking_inset->InsertInsetAllowed(inset))
+	    return the_locking_inset->InsertInset(bv, inset);
+	return false;
+    }
     bv->text->SetUndo(Undo::INSERT, 
 	      bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->previous,
 	      bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->next);
@@ -1198,6 +1191,16 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 UpdatableInset * InsetText::GetLockingInset()
 {
     return the_locking_inset ? the_locking_inset->GetLockingInset() : this;
+}
+
+
+UpdatableInset * InsetText::GetFirstLockingInsetOfType(Inset::Code c)
+{
+    if (c == LyxCode())
+	return this;
+    if (the_locking_inset)
+	return the_locking_inset->GetFirstLockingInsetOfType(c);
+    return 0;
 }
 
 
@@ -1274,7 +1277,7 @@ void InsetText::SetCharFont(int pos, LyXFont const & f)
 }
 
 
-void InsetText::computeTextRows(Painter & pain, float x) const
+void InsetText::computeTextRows(Painter & pain) const
 {
     int p,
 	nwp = 0,
@@ -1282,7 +1285,6 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	desc = 0,
 	oasc = 0,
 	odesc = 0,
-	owidth = 0,
 	wordAscent,
 	wordDescent;
     row_struct row;
@@ -1303,6 +1305,7 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    maxAscent = max(maxAscent, asc);
 	    maxDescent = max(maxDescent, desc);
 	}
+	insetWidth += (2 * TEXT_TO_INSET_OFFSET);
 	rows[0].asc = maxAscent;
 	rows[0].desc = maxDescent;
 	// alocate a dummy row for the endpos
@@ -1313,99 +1316,100 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 
     bool is_first_word_in_row = true;
     int cw, lastWordWidth = 0;
-    int maxWidth = getMaxTextWidth(pain, this, x);
+    int maxWidth = getMaxTextWidth(pain, this);
+    // if we auto break rows than the insetwidth should be always the max
+    // width as the display is stable it may get larger if we have a really
+    // large word below and we draw it!!!
+    insetWidth = maxWidth;
 
     for(p = 0; p < par->Last(); ++p) {
+	if (par->IsNewline(p)) {
+	    rows.back().asc = wordAscent;
+	    rows.back().desc = wordDescent;
+	    row.pos = ++p;
+	    rows.push_back(row);
+	    nwp = p;
+	    width = lastWordWidth = 0;
+	    oasc = odesc = wordAscent = wordDescent = 0;
+	    is_first_word_in_row = true;
+	    continue;
+	}
 	cw = SingleWidth(pain, par, p);
+	Inset * inset = 0;
+	if (par->GetChar(p) == LyXParagraph::META_INSET)
+	    inset = par->GetInset(p);
+	if (inset && inset->display()) {
+	    inset->setOwner(const_cast<InsetText *>(this));
+	    if (cw > maxWidth)
+		insetWidth = cw;
+	    if (!is_first_word_in_row || (p != nwp)) {
+		oasc = max(oasc, wordAscent);
+		odesc = max(odesc, wordDescent);
+		rows.back().asc = oasc;
+		rows.back().desc = odesc;
+		row.pos = p;
+		rows.push_back(row);
+	    }
+	    SingleHeight(pain, par, p, asc, desc);
+	    rows.back().asc = asc;
+	    rows.back().desc = desc;
+	    row.pos = nwp = p + 1;
+	    rows.push_back(row);
+	    width = lastWordWidth = 0;
+	    oasc = odesc = wordAscent = wordDescent = 0;
+	    is_first_word_in_row = true;
+	    continue;
+	}
+	SingleHeight(pain, par, p, asc, desc);
 	width += cw;
 	lastWordWidth += cw;
-	SingleHeight(pain, par, p, asc, desc);
-	wordAscent = max(wordAscent, asc);
-	wordDescent = max(wordDescent, desc);
-	if (par->IsNewline(p)) {
-	    if (!is_first_word_in_row && (width >= maxWidth)) {
-		// we have to split also the row above
+	if (width > maxWidth) {
+	    if (is_first_word_in_row) {
+		if (!(width-cw)) { // only this character in word
+		    rows.back().asc = asc;
+		    rows.back().desc = desc;
+		    row.pos = p+1;
+		    rows.push_back(row);
+		    oasc = 0;
+		    odesc = 0;
+		    wordAscent = 0;
+		    wordDescent = 0;
+		    nwp = p + 1;
+		    lastWordWidth = width = 0;
+		} else {
+		    rows.back().asc = wordAscent;
+		    rows.back().desc = wordDescent;
+		    row.pos = p;
+		    rows.push_back(row);
+		    oasc = 0;
+		    odesc = 0;
+		    wordAscent = asc;
+		    wordDescent = desc;
+		    lastWordWidth = width = cw;
+		    nwp = p;
+		}
+	    } else {
 		rows.back().asc = oasc;
 		rows.back().desc = odesc;
 		row.pos = nwp;
 		rows.push_back(row);
 		oasc = wordAscent;
 		odesc = wordDescent;
-		insetWidth = max(insetWidth, owidth);
-		width = lastWordWidth;
-		lastWordWidth = 0;
-	    }
-	    rows.back().asc = wordAscent;
-	    rows.back().desc = wordDescent;
-	    row.pos = ++p;
-	    rows.push_back(row);
-	    SingleHeight(pain, par, p, oasc, odesc);
-	    insetWidth = max(insetWidth, owidth);
-	    width = 0;
-	    is_first_word_in_row = true;
-	    wordAscent = wordDescent = lastWordWidth = 0;
-	    nwp = p;
-	    continue;
-	}
-	Inset * inset = 0;
-	if (((p + 1) < par->Last()) &&
-	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
-	    inset = par->GetInset(p + 1);
-	if (inset) {
-		inset->setOwner(const_cast<InsetText*>(this)); // is this safe?
-	    if (inset->display()) {
-		if (!is_first_word_in_row && (width >= maxWidth)) {
-		    // we have to split also the row above
-		    rows.back().asc = oasc;
-		    rows.back().desc = odesc;
-		    row.pos = nwp;
-		    rows.push_back(row);
-		    oasc = wordAscent;
-		    odesc = wordDescent;
-		    insetWidth = max(insetWidth, owidth);
-		    width = lastWordWidth;
-		    lastWordWidth = 0;
-		} else {
-		    oasc = max(oasc, wordAscent);
-		    odesc = max(odesc, wordDescent);
-		}
-		rows.back().asc = oasc;
-		rows.back().desc = odesc;
-		row.pos = ++p;
-		rows.push_back(row);
-		SingleHeight(pain, par, p, asc, desc);
-		rows.back().asc = asc;
-		rows.back().desc = desc;
-		row.pos = nwp = p + 1;
-		rows.push_back(row);
-		oasc = odesc = width = lastWordWidth = 0;
+		width = lastWordWidth;	
+		wordAscent = max(wordAscent, asc);
+		wordDescent = max(wordDescent, desc);
 		is_first_word_in_row = true;
-		wordAscent = wordDescent = 0;
-		continue;
 	    }
-	} else if (par->IsSeparator(p)) {
-	    if (width >= maxWidth) {
-		if (is_first_word_in_row) {
-		    rows.back().asc = wordAscent;
-		    rows.back().desc = wordDescent;
-		    row.pos = p + 1;
-		    rows.push_back(row);
-		    oasc = odesc = width = 0;
-		} else {
-		    rows.back().asc = oasc;
-		    rows.back().desc = odesc;
-		    row.pos = nwp;
-		    rows.push_back(row);
-		    oasc = wordAscent;
-		    odesc = wordDescent;
-		    insetWidth = max(insetWidth, owidth);
-		    width = lastWordWidth;
-		}
-		wordAscent = wordDescent = lastWordWidth = 0;
-		nwp = p + 1;
-		continue;
+	} else {
+	    wordAscent = max(wordAscent, asc);
+	    wordDescent = max(wordDescent, desc);
+	}
+	if (par->IsSeparator(p) || inset) {
+	    if (inset) {
+		inset->setOwner(const_cast<InsetText *>(this));
+		if (cw > maxWidth)
+		    insetWidth = cw;
 	    }
-	    owidth = width;
 	    oasc = max(oasc, wordAscent);
 	    odesc = max(odesc, wordDescent);
 	    wordAscent = wordDescent = lastWordWidth = 0;
@@ -1415,23 +1419,11 @@ void InsetText::computeTextRows(Painter & pain, float x) const
     }
     // if we have some data in the paragraph we have ascent/descent
     if (p) {
-	if (width >= maxWidth) {
-	    // assign upper row
-	    rows.back().asc = oasc;
-	    rows.back().desc = odesc;
-	    // assign and allocate lower row
-	    row.pos = nwp;
-	    rows.push_back(row);
-	    rows.back().asc = wordAscent;
-	    rows.back().desc = wordDescent;
-	    width -= lastWordWidth;
-	} else {
-	    // assign last row data
-	    rows.back().asc = max(oasc, wordAscent);
-	    rows.back().desc = max(odesc, wordDescent);
-	}
+	// assign last row data
+	rows.back().asc = max(oasc, wordAscent);
+	rows.back().desc = max(odesc, wordDescent);
     }
-    insetWidth = max(insetWidth, width);
+    insetWidth += (2 * TEXT_TO_INSET_OFFSET);
     // alocate a dummy row for the endpos
     row.pos = par->Last();
     rows.push_back(row);
@@ -1457,7 +1449,7 @@ void InsetText::computeBaselines(int baseline) const
 void InsetText::UpdateLocal(BufferView * bv, bool flag)
 {
     if (flag) {
-	computeTextRows(bv->painter(), xpos);
+	computeTextRows(bv->painter());
 	computeBaselines(top_baseline);
     }
     bv->updateInset(this, flag);
@@ -1548,10 +1540,11 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 }
 
 
-int InsetText::getMaxTextWidth(Painter & pain, UpdatableInset const * inset,
-			       int x) const
+int InsetText::getMaxTextWidth(Painter & pain, UpdatableInset const * inset) const
 {
-    return getMaxWidth(pain, inset) - x;
+//    int w=getMaxWidth(pain, inset);
+//    return (w - x);
+    return getMaxWidth(pain, inset) - 4; // 2+2 width of eventual border
 }
 
 void InsetText::SetParagraphData(LyXParagraph *p)
@@ -1561,4 +1554,28 @@ void InsetText::SetParagraphData(LyXParagraph *p)
     par = p->Clone();
     par->SetInsetOwner(this);
     init_inset = true;
+}
+
+void InsetText::SetAutoBreakRows(bool flag)
+{
+    if (flag != autoBreakRows) {
+	autoBreakRows = flag;
+	init_inset = true;
+    }
+}
+
+void InsetText::SetDrawLockedFrame(bool flag)
+{
+    if (flag != drawLockedFrame) {
+	drawLockedFrame = flag;
+	init_inset = true;
+    }
+}
+
+void InsetText::SetFrameColor(LColor::color col)
+{
+    if (frame_color != col) {
+	frame_color = col;
+	init_inset = true;
+    }
 }

@@ -22,7 +22,6 @@
 #include "lyxlex.h"
 
 class Painter;
-class Buffer;
 class BufferView;
 
 struct LaTeXFeatures;
@@ -101,7 +100,7 @@ public:
 	};
 
 	///
-	Inset() { owner_ = 0; }
+	Inset() { owner_ = 0; top_x = top_baseline = 0; }
 	///
 	virtual ~Inset() {}
 	///
@@ -187,6 +186,15 @@ public:
 	///
 	virtual Inset * owner() const { return owner_; }
 	///
+	int x() const { return top_x; }
+	///
+	int y() const { return top_baseline; }
+
+protected:
+	///
+	mutable int top_x;
+	mutable int top_baseline;
+
 private:
 	///
 	Inset * owner_;
@@ -289,6 +297,9 @@ public:
 	///
 	virtual UpdatableInset * GetLockingInset() { return this; }
 	///
+	virtual UpdatableInset * GetFirstLockingInsetOfType(Inset::Code c)
+		{ return (c == LyxCode()) ? this : 0; }
+	///
 	virtual int InsetInInsetY() { return 0; }
 	///
 	virtual bool UpdateInsetInInset(BufferView *, Inset *)
@@ -309,10 +320,6 @@ public:
 
 protected:
 	///
-	// virtual void UpdateLocal(bool flag=true);
-	///
-	mutable int top_x;
-	mutable int top_baseline;
 	mutable bool cursor_visible;
 
 private:

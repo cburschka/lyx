@@ -369,6 +369,12 @@ void InsetFormula::Read(LyXLex & lex)
 		label = mathed_label;
 		mathed_label = 0;
 	}
+	// reading of end_inset in the inset!!!
+	while (lex.IsOK()) {
+		lex.nextToken();
+		if (lex.GetString() == "\\end_inset")
+			break;
+	}
    
 #ifdef DEBUG
 	Write(lyxerr);

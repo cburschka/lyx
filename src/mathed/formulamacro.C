@@ -105,6 +105,12 @@ void InsetFormulaMacro::Read(LyXLex & lex)
 	MathMacroTable::mathMTable.addTemplate(tmacro);
 	name = tmacro->GetName();
 	par = tmacro;
+	// reading of end_inset in the inset!!!
+	while (lex.IsOK()) {
+		lex.nextToken();
+		if (lex.GetString() == "\\end_inset")
+			break;
+	}
 }
 
 

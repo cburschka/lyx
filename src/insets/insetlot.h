@@ -21,6 +21,8 @@
 
 // Created by Lgb 970527
 
+class Buffer;
+
 /** Used to insert table of contents
  */
 class InsetLOT : public InsetCommand {
