@@ -14,24 +14,30 @@ step like this:
 3. Install xforms 0.88 and rename
       forms.a   -> forms_d.a
       forms_s.a -> forms.a
-   // Ever since 1.1.5pre1, you cannot link xforms dynamically.
+   // Ever since 1.1.5pre1, you cannot link xforms 0.88 dynamically.
    // If you don't like this, please ask Holger Veit to export
    // fl_get_scrollbar_bounds, fl_get_scrollbar_increment and
    // fl_get_scrollbar_value from the DLL.  They're already there!
+   // I will try to release xforms 0.89 ASAP.
 4. Install Hung-Chi Chu's port of GNU gettext.  Other ports will
    not work.
 5. Set environment variables
       MAKE_SHELL=sh
       LIBS=-lulib -lsocket -lbsd -lshm -lstdcpp
-   // ulib must be linked if we use static xforms library.
+      CXXFLAGS=-g -O2 -m486 -Zmt -DOS2 -fno-rtti -fno-exceptions
+   // ulib must be linked if we use static xforms library 0.88.
+   // If xforms 0.89 is used -lulib must be removed from above.
    // Unless you are using pgcc, we use gcc rather than g++.
    // Hence stdc++ must be linked explicitely.  Also please
    // note that ld for pgcc often fails to link big executables
    // like unstripped lyx.exe
+   // Due to a bug (actually a limitation) of autoconf/2,
+   // you have to set CXXFLAGS explicitely in order to compile
+   // CVS version newer than 11 Oct. 2000.
 6. From sh prompt, type
-      autogen.sh
+      autogen.sh; rm -f config.cache
    and then
-      configure --prefix=/XFree86 --datadir=/XFree86/lib/X11
+      configure --prefix=/XFree86 --datadir=/XFree86/lib/X11 --with-included-string
       x11make
    // Please do not use make.cmd  make.exe should be OK.
    // x11make.exe is the safest choice
@@ -44,15 +50,9 @@ step like this:
    // If the synchronization to the children breaks, configure
    // often detects wrongfully.
 
-> Or it is possible to download the compiled program?
-
 7. If you are going to make a binary distribution, you have
    to prepare lib/configure.cmd noweb2lyx.cmd and reLyX.cmd,
    since end users may not have a UNIX type shell installed.
-   At this stage, lib/configure.cmd in the 1.1.5pre1 should work
-   without change.
-   // If Dekel Tsur introduces the converter_command tag to lyxrc,
-   // the situation changes.
    In order to create noweb2lyx.cmd and reLyX.cmd, first rename
    noweb2lyx and reLyX and open them in a text editor.  You
    have to remove hardcoded path in the first line:
@@ -265,4 +265,3 @@ Some suggestions in case of problems:
   window manager, so that LyX' messages appear in the 
   console window and LyX does not appear in the PM task list.
 
-
