@@ -387,6 +387,7 @@ int DeleteAllFilesInDir (string const & path)
 		return -1;
 	}
 	struct dirent * de;
+	int return_value = 0;
 	while ((de = readdir(dir))) {
 		string temp = de->d_name;
 		if (temp == "." || temp == "..") 
@@ -395,12 +396,18 @@ int DeleteAllFilesInDir (string const & path)
 
 		lyxerr.debug() << "Deleting file: " << unlinkpath << endl;
 
- 		if (remove(unlinkpath.c_str()))
+		bool deleted = true;
+		if (FileInfo(unlinkpath).isDir())
+			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
+		deleted &= (remove(unlinkpath.c_str()) == 0);
+ 		if (!deleted) {
 			WriteFSAlert (_("Error! Could not remove file:"), 
 				      unlinkpath);
+			return_value = -1;
+		}
         }
 	closedir(dir);
-	return 0;
+	return return_value;
 }
 
 

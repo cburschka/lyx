@@ -49,7 +49,7 @@ int GUIRunTime::initApplication(int argc, char * argv[])
 	// }
 	int xforms_lib_version = fl_library_version(0, 0);
 	if (xforms_include_version != xforms_lib_version) {
-		cerr << "You are either running LyX with wrong "
+		lyxerr << "You are either running LyX with wrong "
 			"version of a dynamic XForms library\n"
 			"or you have build LyX with conflicting header "
 			"and library (different\n"

@@ -1,3 +1,32 @@
+2000-09-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/GUIRunTime.C (initApplication): use lyxerr,
+	not cerr.
+
+2000-09-09  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/converter.C (Add, Convert): Added support for converter flags:
+	needaux, resultdir, resultfile.
+	(Convert): Added new parameter view_file.
+	(dvips_options): Fixed letter paper option.
+
+	* src/exporter.C (Export, BufferExtension): Added support for Docbook.
+	(Export, GetExportableFormats, GetViewableFormats): Added support
+	for Ascii.
+
+	* src/lyx_main.C (LyX): Call to QuitLyX() to remove temporary
+ 	directory!
+	(easyParse): Fixed to work with new export code.
+	
+	* src/support/filetools.C (DeleteAllFilesInDir) Fixed to delete
+	directories.
+
+	* lyx-devel-export/lib/configure.m4: Changed flags of tth.
+
+	* lib/bind/*.bind: Replaced
+	buffer-view,buffer-view-ps,buffer-typeset,buffer-typeset-ps by
+	buffer-view dvi,buffer-view ps,buffer-update dvi,buffer-update ps
+
 2000-09-11  Juergen Vigna  <jug@sad.it>
 
 	* src/lyx_gui.C (runTime): uses global guiruntime variable.

@@ -19,17 +19,19 @@
 #include "buffer.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
+#include "lyxrc.h"
 
 using std::vector;
 using std::pair;
 
 bool Exporter::Export(Buffer * buffer, string const & format0,
-		      bool put_in_tempdir)
+		      bool put_in_tempdir, string * view_file)
 {
 	string format;
 	string using_format = Converter::SplitFormat(format0, format);
 
-	string backend_format = BufferExtension(buffer);
+	string backend_format = (format == "txt") 
+		? format : BufferExtension(buffer);
 	bool only_backend = backend_format == format;
 
 	string filename = buffer->getLatexName(false);
@@ -37,8 +39,16 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 		filename = AddName(buffer->tmppath, filename);
 	filename = ChangeExtension(filename, backend_format);
 
-	if (buffer->isLinuxDoc())
-		buffer->makeLinuxDocFile(filename, only_backend);
+	// Ascii backend
+	if (backend_format == "txt")
+		buffer->writeFileAscii(filename, lyxrc.ascii_linelen);
+	// Linuxdoc backend
+	else if (buffer->isLinuxDoc())
+		buffer->makeLinuxDocFile(filename, true);
+	// Docbook backend
+	else if (buffer->isDocBook())
+		buffer->makeDocBookFile(filename, true);
+	// LaTeX backend
 	else if (only_backend)
 		buffer->makeLaTeXFile(filename, string(), true);
 	else
@@ -48,7 +58,8 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 		? ChangeExtension(filename, format)
 		: ChangeExtension(buffer->getLatexName(false), format);
 
-	if (!Converter::Convert(buffer, filename, outfile, using_format))
+	if (!Converter::Convert(buffer, filename, outfile, using_format, 
+				view_file))
 		return false;
 
 	if (!put_in_tempdir)
@@ -63,31 +74,33 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 
 bool Exporter::Preview(Buffer * buffer, string const & format0)
 {
-	if (!Export(buffer, format0, true))
+	string view_file;
+	if (!Export(buffer, format0, true, &view_file))
 		return false;
 
-	string format;
-	Converter::SplitFormat(format0, format);
-
-	string filename = buffer->getLatexName(false);
-	if (!buffer->tmppath.empty())
-		filename = AddName(buffer->tmppath, filename);
-	filename = ChangeExtension(filename, format);
-	return Formats::View(buffer, filename);
+	return Formats::View(buffer, view_file);
 }
 
 
 vector<pair<string, string> > const
 Exporter::GetExportableFormats(Buffer const * buffer)
 {
-	return Converter::GetReachable(BufferExtension(buffer), false);
+	vector<pair<string, string> > result = 
+		Converter::GetReachable(BufferExtension(buffer), false);
+	result.push_back(pair<string,string>("txt", "Ascii"));
+	return result;
 }
 
 
 vector<pair<string, string> > const
 Exporter::GetViewableFormats(Buffer const * buffer)
 {
-	return Converter::GetReachable(BufferExtension(buffer), true);
+	vector<pair<string, string> > result = 
+		Converter::GetReachable(BufferExtension(buffer), false);
+	Format * format = Formats::GetFormat("txt");
+	if (format && !format->viewer.empty())
+		result.push_back(pair<string,string>("txt", "Ascii"));
+	return result;
 }
 
 
@@ -95,6 +108,8 @@ string const Exporter::BufferExtension(Buffer const * buffer)
 {
 	if (buffer->isLinuxDoc())
 		return "sgml";
+	else if (buffer->isDocBook())
+		return "docbook";
 	else
 		return "tex";
 }

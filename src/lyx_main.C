@@ -40,10 +40,15 @@
 #endif
 #include "ToolbarDefaults.h"
 #include "lyxlex.h"
+#if 1
+// only to get access to NEW_EXPORT
+#include "exporter.h"
+#endif
 
 using std::endl;
 
 extern void LoadLyXFile(string const &);
+extern void QuitLyX();
 
 string system_lyxdir;
 string build_lyxdir;
@@ -151,6 +156,7 @@ LyX::LyX(int * argc, char * argv[])
 		// Maybe we could do something more clever than aborting...
 		if (dispatched) {
 			lyxerr << "We are done!" << endl;
+			QuitLyX();
 			return;
 		}
 
@@ -750,7 +756,9 @@ bool LyX::easyParse(int * argc, char * argv[])
 			if (i + 1 < *argc) {
 				string type(argv[i+1]);
 				removeargs = 2;
-
+#ifdef NEW_EXPORT
+				batch_command = "buffer-export " + type;
+#else
 				if (type == "tex")
 					type = "latex";
 				else if (type == "ps")
@@ -766,6 +774,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 					lyxerr << _("Unknown file type '")
 					       << type << _("' after ")
 					       << arg << _(" switch!") << endl;
+#endif
 			} else
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")

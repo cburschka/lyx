@@ -44,10 +44,10 @@
 \bind "C-s"			"buffer-write"
 \bind "C-S-S"			"buffer-write-as"
 \bind "C-p"			"buffer-print" 
-\bind "C-d"			"buffer-view"		# 'd' for dvi
-\bind "C-t"			"buffer-view-ps"
-\bind "C-S-D"			"buffer-typeset"	# 'd' for dvi
-\bind "C-S-T"			"buffer-typeset-ps"
+\bind "C-d"			"buffer-view dvi"	# 'd' for dvi
+\bind "C-t"			"buffer-view ps"
+\bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
+\bind "C-S-T"			"buffer-update ps"
 \bind "C-q"			"lyx-quit"
 
 \bind "C-b"			"font-bold"

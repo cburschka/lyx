@@ -25,17 +25,25 @@ class Buffer;
 ///
 struct Command {
 	///
-	Command(string const & f, string const & t, string const & c,
-		bool o)
-		: from(f), to(t), command(c), original_dir(o) {}
+	Command(string const & f, string const & t, string const & c)
+		: from(f), to(t), command(c),
+		  original_dir(false), need_aux(false) {}
 	///
 	string from;
 	///
 	string to;
 	///
 	string command;
-	///
+	/// Do we need to run the converter in the original directory?
 	bool original_dir;
+	/// This converter needs the .aux files
+	bool need_aux;
+	/// If the converter put the result in a directory, then result_dir
+	/// is the name of the directory
+	string result_dir;
+	/// If the converter put the result in a directory, then result_file
+	/// is the name of the main file in that directory
+	string result_file;
 	///
 	bool visited;
 	///
@@ -98,7 +106,8 @@ public:
 	///
 	static
 	bool Convert(Buffer * buffer, string const & from_file,
-		     string const & to_file, string const & using_format);
+		     string const & to_file, string const & using_format,
+		     string * view_file = 0);
 	static
 	string const SplitFormat(string const & str, string & format);
 	///
@@ -114,6 +123,9 @@ private:
 	///
 	static
 	std::vector<Command> commands;
+	///
+	static
+	string latex_command;
 };
 
 #endif

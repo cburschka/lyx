@@ -252,13 +252,13 @@
 \bind "M-f o"                  "buffer-open"
 \bind "M-f p"                  "buffer-print"
 \bind "M-f q"                  "lyx-quit"
-\bind "M-f r"                  "buffer-typeset"
+\bind "M-f r"                  "buffer-update dvi"
         # Obsolete
 \bind "M-f s"                  "buffer-write"
-\bind "M-f t"                  "buffer-typeset"
+\bind "M-f t"                  "buffer-update dvi"
 
-\bind "M-f x"                  "buffer-view"
-\bind "M-f g"                  "buffer-view-ps"
+\bind "M-f x"                  "buffer-view dvi"
+\bind "M-f g"                  "buffer-view ps"
 \bind "M-f space"              "menu-open File"
 
 

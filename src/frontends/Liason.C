@@ -145,8 +145,6 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 			command2 += QuoteName(psname);
 			// First run dvips.
 			// If successful, then spool command
-			lyxerr << "command1 = " << command << endl;
-			lyxerr << "command2 = " << command2 << endl;
 			res = one.startscript(Systemcalls::System, command);
 			if (res == 0)
 				res = one.startscript(Systemcalls::SystemDontWait,
@@ -161,7 +159,6 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		command += lyxrc.print_to_file
 			+ QuoteName(MakeAbsPath(pp.file_name, path));
 		command += ' ' + QuoteName(dviname);
-		lyxerr << "command1 = " << command << endl;
 		res = one.startscript(Systemcalls::SystemDontWait, command);
 		break;
 	}

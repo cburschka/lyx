@@ -34,10 +34,10 @@
 \bind "M-f e"			"buffer-write"		#Enregistrer
 \bind "M-f s"			"buffer-write-as"	#Enregistrer Sous
 \bind "M-f r"			"buffer-reload"		#Recharger
-\bind "M-f S-D"			"buffer-view"		#Visualiser DVI
-\bind "M-f S-P"			"buffer-view-ps"	#Visualiser Postscript
-\bind "M-f d"			"buffer-typeset"	#Mise à jour dvi
-\bind "M-f p"			"buffer-typeset-ps"	#Mise à jour Postscript
+\bind "M-f S-D"			"buffer-view dvi"	#Visualiser DVI
+\bind "M-f S-P"			"buffer-view ps"	#Visualiser Postscript
+\bind "M-f d"			"buffer-update dvi"	#Mise à jour dvi
+\bind "M-f p"			"buffer-update ps"	#Mise à jour Postscript
 \bind "M-f c"			"build-program"		#Compiler programme
 \bind "M-f i"			"buffer-print" 		#Imprimer
 \bind "M-f v"			"buffer-fax"		#Fax

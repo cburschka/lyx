@@ -75,13 +75,13 @@
 # not currently supported
 #\bind "C-x b"                 "buffer-previous"
 \bind "C-x d"                  "buffer-new"
-\bind "C-x g"                  "buffer-view-ps"
+\bind "C-x g"                  "buffer-view ps"
 \bind "C-x k"                  "buffer-close"
-\bind "C-x p"                  "buffer-view"
-\bind "C-x r"                  "buffer-typeset"
+\bind "C-x p"                  "buffer-view dvi"
+\bind "C-x r"                  "buffer-update dvi"
 # Should have been "buffer-write-some"
 # \bind "C-x s"                  "buffer-write"
-\bind "C-x t"                  "buffer-typeset"
+\bind "C-x t"                  "buffer-update dvi"
 \bind "C-x u"                  "undo"
 \bind "C-x v h"                "vc-history"
 \bind "C-x v v"                "vc-check-in"
@@ -97,13 +97,13 @@
 \bind "C-x C-c"                "lyx-quit"
 \bind "C-x C-d"                "buffer-new"
 \bind "C-x C-f"                "buffer-open"
-\bind "C-x C-g"                "buffer-view-ps"
+\bind "C-x C-g"                "buffer-view ps"
 \bind "C-x C-l"			"word-lowcase"		# downcase-region!
-\bind "C-x C-p"                "buffer-view"
+\bind "C-x C-p"                "buffer-view dvi"
 \bind "C-x C-q"                "buffer-toggle-read-only"
-#\bind "C-x C-r"                "buffer-typeset"
+#\bind "C-x C-r"                "buffer-update dvi"
 \bind "C-x C-s"                "buffer-write"
-\bind "C-x C-t"                "buffer-typeset"
+\bind "C-x C-t"                "buffer-update dvi"
 \bind "C-x C-u"			"word-upcase"		# upcase-region!
 \bind "C-x C-w"                "buffer-write-as"
 
@@ -285,9 +285,9 @@
 #
 ## Start TeX mode, some overlap with AucTeX mode
 #
-\bind "C-c C-b"			"buffer-typeset"
+\bind "C-c C-b"			"buffer-update dvi"
 \bind "C-c C-p"			"buffer-print"
-\bind "C-c C-r"			"buffer-typeset"	# tex region
+\bind "C-c C-r"			"buffer-update dvi"	# tex region
 #
 ## End TeX mode
 #

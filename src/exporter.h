@@ -27,7 +27,7 @@ public:
 	///
 	static
 	bool Export(Buffer * buffer, string const & format,
-		    bool put_in_tempdir);
+		    bool put_in_tempdir, string * view_file = 0);
 	///
 	static
 	bool Preview(Buffer * buffer, string const & format);

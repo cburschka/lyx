@@ -291,7 +291,7 @@ esac
 SEARCH_PROG([for an HTML converter], TOHTML, tth latex2html hevea)
 latex_to_html_command = $TOHTML
 case $TOHTML in
-	tth) latex_to_html_command="tth -t < \$\$FName > \$\$OutName";;
+	tth) latex_to_html_command="tth -t -e2 -L\$\$BaseName < \$\$FName > \$\$OutName";;
  latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;
       hevea) latex_to_html_command="hevea -s \$\$FName";;
 esac
@@ -367,15 +367,16 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\converter tex dvi "$LATEX" noflags
-\\converter tex pdf "$PDFLATEX" noflags
-\\converter dvi ps "$dvi_to_ps_command" noflags
-\\converter ps pdf "$ps_to_pdf_command" noflags
-\\converter sgml tex "$linuxdoc_to_latex_command" noflags
-\\converter sgml html "$linuxdoc_to_html_command" noflags
-\\converter docbook dvi "$docbook_to_dvi_command" noflags
-\\converter docbook html "$docbook_to_html_command" noflags
-\\converter tex html "$latex_to_html_command" noflags
+\\converter tex dvi "$LATEX" ""
+\\converter tex pdf "$PDFLATEX" ""
+\\converter dvi ps "$dvi_to_ps_command" ""
+\\converter ps pdf "$ps_to_pdf_command" ""
+\\converter sgml tex "$linuxdoc_to_latex_command" ""
+\\converter sgml html "$linuxdoc_to_html_command" ""
+\\converter docbook dvi "$docbook_to_dvi_command" ""
+\\converter docbook html "$docbook_to_html_command" ""
+\\converter tex html "$latex_to_html_command"
+	"originaldir,needaux"
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
