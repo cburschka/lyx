@@ -1,3 +1,15 @@
+
+2003-06-04  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.h: use Undo directly instead of shared_ptr<Undo>
+
+	* paragraph_pimpl.h:	
+	* paragraph.[Ch]: some Inset -> UpdatableInset changes
+
+	* undo.[Ch]: use ParagraphList instead of vector<Paragraph>
+
+	* undo_funcs.C: make some simple cases of undo work again
+
 2003-06-03  John Levon  <levon@movementarian.org>
 
 	* ispell.C: HPUX doesn't have sys/select.h

@@ -22,6 +22,8 @@
 #include "dimension.h"
 #include "metricsinfo.h"
 
+#include "insets/updatableinset.h"
+
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
 

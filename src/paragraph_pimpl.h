@@ -84,7 +84,7 @@ struct Paragraph::Pimpl {
 	/// erase the given range
 	int erase(lyx::pos_type start, lyx::pos_type end);
 	///
-	Inset * inset_owner;
+	UpdatableInset * inset_owner;
 
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.

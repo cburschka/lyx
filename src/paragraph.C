@@ -97,6 +97,32 @@ Paragraph::Paragraph(Paragraph const & lp)
 }
 
 
+void Paragraph::operator=(Paragraph const & lp)
+{
+	// needed as we will destroy the pimpl_ before copying it
+	if (&lp != this)
+		return;
+	lyxerr << "Paragraph::operator=()\n";
+	delete pimpl_;
+	pimpl_ = new Pimpl(*lp.pimpl_, this);
+
+	enumdepth = lp.enumdepth;
+	itemdepth = lp.itemdepth;
+	// this is because of the dummy layout of the paragraphs that
+	// follow footnotes
+	layout_ = lp.layout();
+
+	// copy everything behind the break-position to the new paragraph
+	insetlist = lp.insetlist;
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		it->inset = it->inset->clone();
+		// tell the new inset who is the boss now
+		it->inset->parOwner(this);
+	}
+}
+
 // the destructor removes the new paragraph from the list
 Paragraph::~Paragraph()
 {
@@ -1205,14 +1231,14 @@ string const Paragraph::asString(Buffer const * buffer,
 }
 
 
-void Paragraph::setInsetOwner(Inset * i)
+void Paragraph::setInsetOwner(UpdatableInset * inset)
 {
-	pimpl_->inset_owner = i;
+	pimpl_->inset_owner = inset;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
 		if (it->inset)
-			it->inset->setOwner(i);
+			it->inset->setOwner(inset);
 }
 
 
@@ -1350,7 +1376,7 @@ void Paragraph::layout(LyXLayout_ptr const & new_layout)
 }
 
 
-Inset * Paragraph::inInset() const
+UpdatableInset * Paragraph::inInset() const
 {
 	return pimpl_->inset_owner;
 }

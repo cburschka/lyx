@@ -33,7 +33,7 @@ public:
 	}
 
 	/// Return the top element.
-	value_type top() {
+	value_type & top() {
 		return c_.front();
 	}
 

@@ -501,7 +501,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		// jump back to owner if an InsetText, so
 		// we get back to the InsetTabular or whatever
 		if (inset->lyxCode() == Inset::TEXT_CODE)
-			inset = static_cast<UpdatableInset*>(inset->owner());
+			inset = inset->owner();
 
 		Inset::Code code = inset->lyxCode();
 		switch (code) {

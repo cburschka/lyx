@@ -20,11 +20,6 @@
 #include "support/LAssert.h"
 #include "iterators.h"
 
-#include <vector>
-
-using std::vector;
-using boost::shared_ptr;
-
 
 /// The flag used by FinishUndo().
 bool undo_finished;
@@ -32,31 +27,6 @@ bool undo_finished;
 bool undo_frozen;
 
 namespace {
-
-/// Utility to return the cursor.
-LyXCursor const & undoCursor(BufferView * bv)
-{
-	if (bv->theLockingInset())
-		return bv->theLockingInset()->cursor(bv);
-	return bv->text->cursor;
-}
-
-
-/**
- * Returns a pointer to the very first Paragraph depending of where
- * we are so it will return the first paragraph of the buffer or the
- * first paragraph of the textinset we're in.
- */
-ParagraphList * undoParagraphs(BufferView * bv, int inset_id)
-{
-	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
-	if (inset) {
-		ParagraphList * result = inset->getParagraphs(0);
-		if (result && !result->empty())
-			return result;
-	}
-	return &bv->text->ownerParagraphs();
-}
 
 
 /**
@@ -76,120 +46,111 @@ void finishNoUndo(BufferView * bv)
 // Returns false if no undo possible.
 bool textHandleUndo(BufferView * bv, Undo & undo)
 {
-	Buffer * b = bv->buffer();
+	Buffer * buf = bv->buffer();
 
-	ParIterator const before = b->getParFromID(undo.number_of_before_par);
-	ParIterator const behind = b->getParFromID(undo.number_of_behind_par);
-	ParIterator const null   = b->par_iterator_end();
+	ParIterator const before = buf->getParFromID(undo.number_of_before_par);
+	ParIterator const behind = buf->getParFromID(undo.number_of_behind_par);
+	ParIterator const null   = buf->par_iterator_end();
 
 	int const before_id = (before == null) ? -1 : before->id();
 	int const behind_id = (behind == null) ? -1 : behind->id();
 	int const inset_id  = undo.number_of_inset_id;
 
-	ParagraphList * plist = undoParagraphs(bv, inset_id);
+	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
+	LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
+
+	ParagraphList * plist = &bv->text->ownerParagraphs();
+	if (inset) {
+		ParagraphList * tmp = inset->getParagraphs(0);
+		if (tmp && !tmp->empty())
+			plist = tmp;
+	}
 
 	ParagraphList::iterator first;
 	if (before == null) {
 		// if there's no before take the beginning of parlist.
 		first = plist->begin();
-		LyXText * t = bv->text;
-		if (inset_id >= 0)
-			if (Inset * in = bv->buffer()->getInsetFromID(inset_id))
-				t = in->getLyXText(bv);
-		t->setCursorIntern(plist->begin(), 0);
+		text->setCursorIntern(plist->begin(), 0);
 	} else {
 		first = *before;
 		++first;
 	}
 	int const first_id  = first->id();
 
-	int after_id;
-	ParagraphList::iterator after;
-	if (behind == null) {
-		// if there's no behind take the end of parlist.
-		after = plist->end();
-		after_id = -1;
-	} else {
-		after = *behind;
-		after_id = after->id();
-	}
-
-	lyxerr << "\nbefore_id: " << before_id << "\n";
-	lyxerr << "first_id:  " << first_id  << "\n";
-	lyxerr << "after_id: " << after_id << "\n";
-	lyxerr << "behind_id: " << behind_id << "\n";
-	lyxerr << "inset_id: " << inset_id << "\n";
+	lyxerr << "\nhandle: before_id: " << before_id << "\n";
+	lyxerr << "handle: first_id:  " << first_id  << "\n";
+	lyxerr << "handle: behind_id: " << behind_id << "\n";
+	lyxerr << "handle: inset_id: " << inset_id << "\n";
 
 	// Set the right(new) inset-owner of the paragraph if there is any.
-	if (!undo.pars.empty()) {
-		Inset * in = 0;
-		if (before != null)
-			in = before->inInset();
-		else if (inset_id >= 0)
-			in = bv->buffer()->getInsetFromID(inset_id);
-		for (size_t i = 0, n = undo.pars.size(); i < n; ++i)
-			undo.pars[i]->setInsetOwner(in);
+	UpdatableInset * in = 0;
+	if (before != null)
+		in = before->inInset();
+	else if (inset_id >= 0) {
+		Inset * inset = bv->buffer()->getInsetFromID(inset_id);
+		in = static_cast<UpdatableInset *>(inset);
 	}
+	ParagraphList::iterator pit = undo.pars.begin();
+	ParagraphList::iterator end = undo.pars.end();
+	for ( ; pit != end; ++pit)
+		pit->setInsetOwner(in);
+	lyxerr << "in: " << in << "\n";
+	lyxerr << "undo.pars.size(): " << undo.pars.size() << "\n";
 
+	// remove stuff between first and behind
+	if (behind == null) 
+		plist->erase(first, plist->end());
+	else
+		plist->erase(first, *behind);
+	lyxerr << "after erase\n";
 
-	// quick hack to make the common case work
-	if (undo.pars.size() == 1 && boost::next(first) == after) {
-	//	first = *undo.pars[0];
-		lyxerr << "could use special case...\n";
-	}
-
-#if 0
-	// remove stuff between first and after
-	plist->erase(first, after);
 	// re-create first
 	if (before == null) {
 		// if there's no before take the beginning of parlist.
+		lyxerr << "no 'before'\n";
 		first = plist->begin();
 	} else {
+		lyxerr << "have 'before'\n";
 		first = *before;
 		++first;
 	}
 
-#endif
 
 	// inset saved paragraphs
-	for (size_t i = 0, n = undo.pars.size(); i < n; ++i) {
-		lyxerr << " inserting par " << undo.pars[i]->id() << "\n";
-		lyxerr << " inserting plist: " << plist << "\n";
-		//plist->insert(first, new Paragraph(*undo.pars[i], true));
-		/*
-			// A memory optimization for edit:
-			// Only layout information
-			// is stored in the undo. So restore
-			// the text informations.
-			if (undo.kind == Undo::EDIT) {
-				undo.pars[par]->setContentsFromPar(*deletelist.back());
-				++par;
-			}
-		*/
-	}
+	lyxerr << "undo.pars.size(): " << undo.pars.size() << "\n";
+	plist->insert(first, undo.pars.begin(), undo.pars.end());
+	lyxerr << "after insert\n";
+	/*
+		// A memory optimization for edit:
+		// Only layout information
+		// is stored in the undo. So restore
+		// the text informations.
+		if (undo.kind == Undo::EDIT) {
+			undo.pars[par]->setContentsFromPar(*deletelist.back());
+			++par;
+		}
+	*/
 
 	// Set the cursor for redoing
 	// if we have a par before the first.
 	if (before != null) {
 		Inset * it = before->inInset();
-		if (it)
-			it->getLyXText(bv)->setCursorIntern(*before, 0);
-		else
-			bv->text->setCursorIntern(*before, 0);
+		LyXText * text = it ? it->getLyXText(bv) : bv->text;
+		text->setCursorIntern(*before, 0);
 	}
 
 	UpdatableInset * it = 0;
-	if (first != plist->begin())
-		it = static_cast<UpdatableInset*>(first->inInset());
+	if (first != plist->end())
+		it = first->inInset();
+	lyxerr << "it: " << it << "\n";
 
-	LyXText * text = it ? it->getLyXText(bv) : bv->text;
 
 	text->redoParagraphs(text->cursor, plist->end());
 
 	ParIterator tmppar = bv->buffer()->getParFromID(inset_id);
 
 	if (tmppar != null) {
+		lyxerr << "tmppar: " << tmppar->id() << "\n";
 		LyXText * t;
 		Inset * it = tmppar->inInset();
 		if (it) {
@@ -205,9 +166,12 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		t->clearSelection();
 		t->selection.cursor = t->cursor;
 		t->updateCounters();
+	} else {
+		lyxerr << "tmppar == null \n";
 	}
 
 	if (it) {
+		lyxerr << "fit cursor...\n";
 		bv->fitCursor();
 		bv->updateInset(it);
 		bv->text->setCursorIntern(bv->text->cursor.par(),
@@ -217,28 +181,30 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	finishUndo();
 	bv->text->postPaint(0);
 
+	lyxerr << "finished  textHandleUndo...\n";
 	return true;
 }
 
 
-bool createUndo(BufferView * bv, Undo::undo_kind kind,
-	int first_id, int last_id, shared_ptr<Undo> & u)
+void createUndo(BufferView * bv, Undo::undo_kind kind,
+	int first_id, int last_id,
+	limited_stack<Undo> & stack)
 {
-	Buffer * b = bv->buffer();
+	Buffer * buf = bv->buffer();
 
-	ParIterator null    = b->par_iterator_end();
+	ParIterator null    = buf->par_iterator_end();
 	ParIterator prev    = null;
 	ParIterator before  = null;
 	ParIterator first   = null;
 	ParIterator last    = null;
 	ParIterator behind  = null;
 
-	for (ParIterator it = b->par_iterator_begin(); it != null; ++it) {
-		if ((*it)->id() == first_id) {
+	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
+		if (it->id() == first_id) {
 			first = it;
 			before = prev;
 		}
-		if ((*it)->id() == last_id) {
+		if (it->id() == last_id) {
 			last = it;
 			behind = last;
 			++behind;
@@ -253,11 +219,12 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	int const behind_id = (behind == null) ? -1 : behind->id();
 	int inset_id        = (first->inInset()) ? first->inInset()->id() : -1;
 
-	lyxerr << "\nbefore_id: " << before_id << "\n";
-	lyxerr << "first_id:  " << first_id  << "\n";
-	lyxerr << "last_id:   " << last_id   << "\n";
-	lyxerr << "behind_id: " << behind_id << "\n";
-	lyxerr << "inset_id:  " << inset_id  << "\n";
+	lyxerr << "\ncreate: before_id: " << before_id << "\n";
+	lyxerr << "create: first_id:  " << first_id  << "\n";
+	lyxerr << "create: last_id:   " << last_id   << "\n";
+	lyxerr << "create: behind_id: " << behind_id << "\n";
+	lyxerr << "create: inset_id:  " << inset_id  << "\n";
+	lyxerr << "create: kind:  " << kind  << "\n";
 
 	ParagraphList * plist = 0;
 	if (first != null)
@@ -266,7 +233,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 		plist = &behind.plist();
 	else if (!plist) {
 		lyxerr << "plist from buffer (should this happen?)\n";
-		plist = &b->paragraphs;
+		plist = &buf->paragraphs;
 	}
 
 	// Undo::EDIT and Undo::FINISH are
@@ -276,32 +243,32 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	// appear one by one when undoing.
 	// EDIT is special since only layout information, not the
 	// contents of a paragaph are stored.
-	if (!undo_finished && (kind != Undo::EDIT) && (kind != Undo::FINISH)) {
+	if (!undo_finished && kind != Undo::EDIT && kind != Undo::FINISH) {
 		// Check whether storing is needed.
-		if (!b->undostack.empty() &&
-		    b->undostack.top()->kind == kind &&
-		    b->undostack.top()->number_of_before_par == before_id &&
-		    b->undostack.top()->number_of_behind_par == behind_id) {
+		if (!buf->undostack.empty() &&
+		    buf->undostack.top().kind == kind &&
+		    buf->undostack.top().number_of_before_par == before_id &&
+		    buf->undostack.top().number_of_behind_par == behind_id) {
 			// No undo needed.
-			return false;
+			return;
 		}
 	}
 
 	// Create a new Undo.
-#warning FIXME Why is this a vector and not a ParagraphList?
-	std::vector<Paragraph *> undo_pars;
+	LyXCursor const & cur = bv->theLockingInset() ?
+			bv->theLockingInset()->cursor(bv) : bv->text->cursor;
+
+	stack.push(Undo(kind, inset_id,
+		before_id, behind_id, cur.par()->id(), cur.pos(), ParagraphList()));
+
+	ParagraphList & undo_pars = stack.top().pars;
 
 	for (ParagraphList::iterator it = *first; it != *last; ++it) {
-		int id = it->id();
-		Paragraph * tmp = new Paragraph(*it);
-		tmp->id(id);
-		undo_pars.push_back(tmp);
+		undo_pars.push_back(*it);
+		undo_pars.back().id(it->id());
 	}
-
-	int const id = last->id();
-	Paragraph * tmp = new Paragraph(**last);
-	tmp->id(id);
-	undo_pars.push_back(tmp);
+	undo_pars.push_back(**last);
+	undo_pars.back().id(last->id());
 
 	// A memory optimization: Just store the layout
 	// information when only edit.
@@ -310,36 +277,29 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	//	for (size_t i = 0, n = undo_pars.size(); i < n; ++i)
 	//		undo_pars[i]->clearContents();
 
-	int cursor_par = undoCursor(bv).par()->id();
-	int cursor_pos = undoCursor(bv).pos();
-
-	u.reset(new Undo(kind, inset_id,
-		before_id, behind_id, cursor_par, cursor_pos, undo_pars));
-
 	undo_finished = false;
-	return true;
 }
 
 
 // Returns false if no undo possible.
 bool textUndoOrRedo(BufferView * bv,
-	limited_stack<boost::shared_ptr<Undo> > & stack,
-		    limited_stack<boost::shared_ptr<Undo> > & /*otherstack*/)
+	limited_stack<Undo> & stack,
+	limited_stack<Undo> & /*otherstack*/)
 {
 	if (stack.empty()) {
 		finishNoUndo(bv);
 		return false;
 	}
 
-	shared_ptr<Undo> undo = stack.top();
+	Undo undo = stack.top();
 	stack.pop();
 	finishUndo();
 
 /*
 	if (!undo_frozen) {
 		Buffer * buf = bv->buffer();
-		ParIterator p = b->getParFromID(undo->number_of_before_par);
-		ParIterator const end = b->par_iterator_end();
+		ParIterator p = buf->getParFromID(undo->number_of_before_par);
+		ParIterator const end = buf->par_iterator_end();
 		bool ok = false;
 		ParagraphList::iterator first;
 		// default constructed?
@@ -347,13 +307,21 @@ bool textUndoOrRedo(BufferView * bv,
 			first = p.par();
 			if (first->next())
 				first = first->next();
-		} else
-			first = undoParagraphs(bv, undo->number_of_inset_id)->begin();
+		} else {
+			// Set first to the very first Paragraph depending of where
+			// we are so it will return the first paragraph of the buffer or the
+			// first paragraph of the textinset we're in.
+			first = bv->text->ownerParagraphs()->begin();
+			Inset * inset = bv->buffer()->getInsetFromID(inset_id);
+			if (inset) {
+				ParagraphList * result = inset->getParagraphs(0);
+				if (result && !result->empty())
+					first = result->begin();
+			}
+		}
 		if (ok) {
-			shared_ptr<Undo> u;
-			ParIterator behind = b->getParFromID(undo->number_of_behind_par);
-			if (createUndo(bv, undo->kind, first, behind.par(), u))
-				otherstack.push(u);
+			ParIterator behind = buf->getParFromID(undo.number_of_behind_par);
+			createUndo(bv, undo.kind, first, behind.par(), otherstack);
 		}
 	}
 */
@@ -364,7 +332,7 @@ bool textUndoOrRedo(BufferView * bv,
 	// is requested.
 	freezeUndo();
 	bv->unlockInset(bv->theLockingInset());
-	bool const ret = textHandleUndo(bv, *undo.get());
+	bool const ret = textHandleUndo(bv, undo);
 	unFreezeUndo();
 	return ret;
 }
@@ -417,12 +385,8 @@ void setUndo(BufferView * bv, Undo::undo_kind kind,
 void setUndo(BufferView * bv, Undo::undo_kind kind,
 	     ParagraphList::iterator first, ParagraphList::iterator last)
 {
-#warning DISABLED
-	//return;
 	if (!undo_frozen) {
-		shared_ptr<Undo> u;
-		if (createUndo(bv, kind, first->id(), last->id(), u))
-			bv->buffer()->undostack.push(u);
+		createUndo(bv, kind, first->id(), last->id(), bv->buffer()->undostack);
 		bv->buffer()->redostack.clear();
 	}
 }

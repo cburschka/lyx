@@ -330,7 +330,7 @@ void LyXText::toggleInset()
 		// No, try to see if we are inside a collapsable inset
 		if (inset_owner && inset_owner->owner()
 		    && inset_owner->owner()->isOpen()) {
-			bv()->unlockInset(static_cast<UpdatableInset *>(inset_owner->owner()));
+			bv()->unlockInset(inset_owner->owner());
 			inset_owner->owner()->close(bv());
 			bv()->getLyXText()->cursorRight(bv());
 		}
@@ -1772,7 +1772,7 @@ float LyXText::getCursorX(RowList::iterator rit,
 void LyXText::setCursorIntern(ParagraphList::iterator pit,
 			      pos_type pos, bool setfont, bool boundary)
 {
-	InsetText * it = static_cast<InsetText *>(pit->inInset());
+	UpdatableInset * it = pit->inInset();
 	if (it) {
 		if (it != inset_owner) {
 			lyxerr[Debug::INSETS] << "InsetText   is " << it

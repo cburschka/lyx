@@ -12,9 +12,7 @@
 #ifndef UNDO_H
 #define UNDO_H
 
-#include <vector>
-
-class Paragraph;
+#include "ParagraphList.h"
 
 ///
 class Undo {
@@ -43,14 +41,14 @@ public:
 	///
 	int cursor_pos; // valid if >= 0
 	///
-	std::vector<Paragraph *> pars;
+	ParagraphList pars;
+
 	///
-	Undo(undo_kind kind_arg, int id_inset_arg,
-	     int number_before_arg, int number_behind_arg,
-	     int cursor_par_arg, int cursor_pos_arg,
-	     std::vector<Paragraph *> const & par_arg);
-	///
-	~Undo();
+	Undo(undo_kind kind, int inset_id,
+	     int before_par_id, int behind_par_id,
+	     int cursor_par_id, int cursor_pos,
+	     ParagraphList const & par_arg);
+
 };
 
 

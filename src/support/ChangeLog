@@ -1,3 +1,8 @@
+
+2003-06-04  André Pönitz  <poenitz@gmx.net>
+
+	* limited_stack.h (top): return reference instead of value
+
 2003-06-02  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.[Ch] (copyFileToDir): new helper function.

@@ -17,7 +17,7 @@
 Undo::Undo(undo_kind kind_arg, int id_inset_arg,
 	   int number_before_arg, int number_behind_arg,
 	   int cursor_par_arg, int cursor_pos_arg,
-	   std::vector<Paragraph *> const & par_arg)
+	   ParagraphList const & par_arg)
 	: pars(par_arg)
 {
 	kind = kind_arg;
@@ -28,11 +28,3 @@ Undo::Undo(undo_kind kind_arg, int id_inset_arg,
 	cursor_pos = cursor_pos_arg;
 }
 
-
-Undo::~Undo()
-{
-	std::vector<Paragraph *>::iterator it = pars.begin();
-	std::vector<Paragraph *>::iterator end = pars.end();
-	for ( ; it != end; ++it)
-		delete *it;
-}

@@ -23,7 +23,6 @@
 #include "author.h"
 #include "iterators.h"
 
-#include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 
 class BufferView;
@@ -273,10 +272,10 @@ public:
 	bool isMultiLingual();
 
 	/// Does this mean that this is buffer local?
-	limited_stack<boost::shared_ptr<Undo> > undostack;
+	limited_stack<Undo> undostack;
 
 	/// Does this mean that this is buffer local?
-	limited_stack<boost::shared_ptr<Undo> > redostack;
+	limited_stack<Undo> redostack;
 
 	///
 	BufferParams params;

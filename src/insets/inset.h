@@ -33,6 +33,7 @@ class LyXCursor;
 class FuncRequest;
 class WordLangTuple;
 class ParagraphList;
+class UpdatableInset;
 
 namespace grfx {
 	class PreviewLoader;
@@ -216,9 +217,9 @@ public:
 	///
 	string const & getInsetName() const { return name_; }
 	///
-	void setOwner(Inset * inset) { owner_ = inset; }
+	void setOwner(UpdatableInset * inset) { owner_ = inset; }
 	///
-	Inset * owner() const { return owner_; }
+	UpdatableInset * owner() const { return owner_; }
 	///
 	void parOwner(Paragraph * par) { par_owner_ = par; }
 	///
@@ -342,7 +343,7 @@ protected:
 
 private:
 	///
-	Inset * owner_;
+	UpdatableInset * owner_;
 	/// the paragraph in which this inset has been inserted
 	Paragraph * par_owner_;
 	///

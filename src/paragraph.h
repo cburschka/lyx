@@ -31,6 +31,7 @@ class LatexRunParams;
 class ParagraphParameters;
 class TexRow;
 class ParagraphList;
+class UpdatableInset;
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
@@ -55,7 +56,7 @@ public:
 	///
 	Paragraph(Paragraph const &);
 	///
-	//void operator=(Paragraph const &);
+	void operator=(Paragraph const &);
 	/// the destructor removes the new paragraph from the list
 	~Paragraph();
 
@@ -105,9 +106,9 @@ public:
 	void makeSameLayout(Paragraph const & par);
 
 	///
-	Inset * inInset() const;
+	UpdatableInset * inInset() const;
 	///
-	void setInsetOwner(Inset * i);
+	void setInsetOwner(UpdatableInset * inset);
 	///
 	void deleteInsetsLyXText(BufferView *);
 	///

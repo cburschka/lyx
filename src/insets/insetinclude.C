@@ -528,14 +528,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 	if (!preview_->monitoring())
 		preview_->startMonitoring();
 
-	Dimension dim;
-	MetricsInfo mi;
-	mi.base.bv = pi.base.bv;
-	mi.base.font = pi.base.font;
-	metrics(mi, dim);
-	dim_ = dim;
-
-	pi.pain.image(x, y - dim.asc, dim.wid, dim.height(),
+	pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
 			    *(preview_->pimage()->image()));
 }
 
