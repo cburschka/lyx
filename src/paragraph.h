@@ -311,9 +311,6 @@ public:
 	*/ 
 	void pasteParagraph(BufferParams const &);
 
-	/// used to remove the error messages
-	int autoDeleteInsets();
-
 	/// returns -1 if inset not found
 	int getPositionOfInset(Inset const * inset) const;
 
@@ -370,6 +367,9 @@ public:
 		}
 		///
 		Inset * operator*() { return it->inset; }
+		///
+		Inset * operator->() { return it->inset; }
+		
 		///
 		lyx::pos_type getPos() const { return it->pos; }
 		///

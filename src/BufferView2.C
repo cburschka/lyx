@@ -33,11 +33,14 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h" //equal_1st_in_pair
+#include "support/types.h"
 
 #include <fstream>
 #include <algorithm>
 
 extern BufferList bufferlist;
+
+using lyx::pos_type;
 
 using std::pair;
 using std::endl;
@@ -106,34 +109,42 @@ bool BufferView::insertLyXFile(string const & filen)
 bool BufferView::removeAutoInsets()
 {
 	LyXCursor tmpcursor = text->cursor;
-	LyXCursor cursor;
+	Paragraph * cur_par = tmpcursor.par();
+	pos_type cur_pos = tmpcursor.pos();
+	
 	bool found = false;
 
+	ParIterator it = buffer()->par_iterator_begin();
 	ParIterator end = buffer()->par_iterator_end();
-	for (ParIterator it = buffer()->par_iterator_begin();
-	     it != end; ++it) {
+	for (; it != end; ++it) {
 		Paragraph * par = *it;
-		// this has to be done before the delete
-		if (par->autoDeleteInsets()) {
-			found = true;
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
-			// The test it.size()==1 was needed to prevent crashes.
-			if (it.size() == 1) {
-				text->setCursor(this, cursor, par, 0);
-				text->redoParagraphs(this, cursor,
-						     cursor.par()->next());
-				text->fullRebreak(this);
+		bool removed = false;
+
+		text->setCursor(this, par, 0);
+		
+		Paragraph::inset_iterator pit = par->inset_iterator_begin();
+		Paragraph::inset_iterator pend = par->inset_iterator_end();
+		while (pit != pend) {
+			if (pit->autoDelete()) {
+				removed = true;
+				pos_type const pos = pit.getPos();
+				
+				par->erase(pos);
+				if (cur_par == par) {
+					if (cur_pos > pos)
+						--cur_pos;
+				}
+			} else {
+				++pit;
 			}
+		}
+		if (removed) {
+			found = true;
+			text->redoParagraph(this);
 		}
 	}
 
-	// avoid forbidden cursor positions caused by error removing
-	if (tmpcursor.pos() > tmpcursor.par()->size())
-		tmpcursor.pos(tmpcursor.par()->size());
-
-	text->setCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
+	text->setCursorIntern(this, cur_par, cur_pos);
 
 	return found;
 }
@@ -144,9 +155,9 @@ void BufferView::insertErrors(TeXErrors & terr)
 	// Save the cursor position
 	LyXCursor cursor = text->cursor;
 
-	for (TeXErrors::Errors::const_iterator cit = terr.begin();
-	     cit != terr.end();
-	     ++cit) {
+	TeXErrors::Errors::const_iterator cit = terr.begin();
+	TeXErrors::Errors::const_iterator end = terr.end();
+	for (; cit != end; ++cit) {
 		string const desctext(cit->error_desc);
 		string const errortext(cit->error_text);
 		string const msgtxt = desctext + '\n' + errortext;

@@ -245,10 +245,11 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 // Returns the paragraph position of the last character in the specified row
 pos_type LyXText::rowLast(Row const * row) const
 {
-	if (!row->next() || row->next()->par() != row->par())
+	if (!row->next() || row->next()->par() != row->par()) {
 		return row->par()->size() - 1;
-	else 
+	} else {
 		return row->next()->pos() - 1;
+	}
 }
 
 
@@ -1134,16 +1135,19 @@ int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
 {
 	pos_type const last = rowLast(row);
 	pos_type first = row->pos();
+	
 	if (first) { /* hfill *DO* count at the beginning 
 		      * of paragraphs! */
-		while (first <= last && row->par()->isHfill(first))
+		while (first <= last && row->par()->isHfill(first)) {
 			++first;
+		}
 	}
 
 	first = max(first, beginningOfMainBody(buf, row->par()));
 	int n = 0;
 	for (pos_type p = first; p <= last; ++p) {
 		// last, because the end is ignored!
+		
 		if (row->par()->isHfill(p)) {
 			++n;
 		}

@@ -1,5 +1,17 @@
 2001-12-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* text2.C (setCursor): add a couple of asserts.
+
+	* paragraph.h (inset_iterator): add -> operator 
+
+	* paragraph.[Ch] (autoDeleteInsets): remove member function 
+
+	* BufferView2.C (removeAutoInsets): rewrite to handle the old
+	cursor pos correctly and handle inset deletion by itself.
+	(insertErrors): move iterator declaration out of for expression
+
+	* lyxtextclass.C: add <algorithm>
+
 	* Makefile.am: added the new files to sources, removed layout.C
 	
 	* layout.C: removed file

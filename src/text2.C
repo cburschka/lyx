@@ -2100,9 +2100,12 @@ void LyXText::setCursor(BufferView * bview, Paragraph * par,
 }
 
 
-void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
+void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 			pos_type pos, bool boundary) const
 {
+	lyx::Assert(par);
+	lyx::Assert(bview);
+	
 	cur.par(par);
 	cur.pos(pos);
 	cur.boundary(boundary);
@@ -2125,11 +2128,15 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 	pos_type cursor_vpos = 0;
 	pos_type last = rowLastPrintable(row);
 
-	if (pos > last + 1)   // This shouldn't happen.
+	if (pos > last + 1) {
+		// This shouldn't happen.
 		pos = last + 1;
-	else if (pos < row->pos())
+		cur.pos(pos);
+	} else if (pos < row->pos()) {
 		pos = row->pos();
-
+		cur.pos(pos);
+	}
+	
 	if (last < row->pos())
                 cursor_vpos = row->pos();
 	else if (pos > last && !boundary)

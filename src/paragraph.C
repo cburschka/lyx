@@ -1191,22 +1191,6 @@ Paragraph const * Paragraph::outerHook() const
 	return depthHook(depth_type(getDepth() - 1));
 }
 
-int Paragraph::autoDeleteInsets()
-{
-	int count = 0;
-	InsetList::size_type index = 0;
-	while (index < insetlist.size()) {
-		if (insetlist[index].inset && insetlist[index].inset->autoDelete()) {
-			erase(insetlist[index].pos); 
-			// erase() calls to insetlist.erase(&insetlist[index])
-			// so index shouldn't be increased.
-			++count;
-		} else
-			++index;
-	}
-	return count;
-}
-
 
 Paragraph::inset_iterator
 Paragraph::InsetIterator(pos_type pos)
