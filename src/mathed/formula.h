@@ -71,24 +71,25 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void handleExtern(string const & arg);
-	///
-	bool display() const;
-	///
-	bool ams() const;
-	///
 	MathInsetTypes getType() const;
 	///
 	MathAtom const & par() const { return par_; }
 	///
 	MathAtom & par() { return par_; }
-public:
-	///
-	MathAtom par_;
 
+private:
+	/// Is this a displayed environment?
+	bool display() const;
+	/// available in AMS only?
+	bool ams() const;
 	/// Access
 	MathHullInset * mat();
 	/// Access
 	MathHullInset const * mat() const;
+	///
+	void handleExtern(string const & arg);
+
+	///
+	MathAtom par_;
 };
 #endif
