@@ -21,17 +21,29 @@
 #include "FormBase.h"
 #include "xform_macros.h"
 
-C_RETURNCB(FormBase, WMHideCB)
+C_RETURNCB (FormBase, WMHideCB)
 C_GENERICCB(FormBase, ApplyCB)
-C_GENERICCB(FormBase, CancelCB)
+C_GENERICCB(FormBase, ApplyHideCB)
+C_GENERICCB(FormBase, HideCB)
 C_GENERICCB(FormBase, InputCB)
-C_GENERICCB(FormBase, OKCB)
-
-FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t)
-	: lv_(lv), d_(d), u_(0), h_(0), title(t), dialogIsOpen(false)
-{}
 
 
+FormBase::FormBase(LyXView * lv, Dialogs * d, BufferDependency bd, string const & t)
+	: dialogIsOpen(false), lv_(lv), u_(0), h_(0), title(t)
+{
+	switch( bd ) {
+	case BUFFER_DEPENDENT:
+		hSignal_ = &d->hideBufferDependent;
+		uSignal_ = &d->updateBufferDependent;
+		break;
+	case BUFFER_INDEPENDENT:
+		hSignal_ = &d->hideAll;
+		uSignal_ = 0;
+		break;
+	}
+}
+
+		
 void FormBase::show()
 {
 	if (!form()) {
@@ -52,10 +64,9 @@ void FormBase::show()
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     FL_TRANSIENT,
 			     title.c_str());
-		u_ = d_->updateBufferDependent.
-		         connect(slot(this, &FormBase::update));
-		h_ = d_->hideBufferDependent.
-		         connect(slot(this, &FormBase::hide));
+		if( uSignal_ )
+			u_ = uSignal_->connect(slot(this, &FormBase::update));
+		h_ = hSignal_->connect(slot(this, &FormBase::hide));
 	}
 }
 
@@ -91,7 +102,15 @@ void FormBase::ApplyCB(FL_OBJECT * ob, long)
 }
 
 
-void FormBase::CancelCB(FL_OBJECT * ob, long)
+void FormBase::ApplyHideCB(FL_OBJECT * ob, long)
+{
+	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
+	pre->apply();
+	pre->hide();
+}
+
+
+void FormBase::HideCB(FL_OBJECT * ob, long)
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	pre->hide();
@@ -102,12 +121,4 @@ void FormBase::InputCB(FL_OBJECT * ob, long data )
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	pre->input( data );
-}
-
-
-void FormBase::OKCB(FL_OBJECT * ob, long)
-{
-	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
 }

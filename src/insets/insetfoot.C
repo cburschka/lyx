@@ -24,7 +24,6 @@
 #include "debug.h"
 
 using std::ostream;
-using std::endl;
 
 
 InsetFoot::InsetFoot()

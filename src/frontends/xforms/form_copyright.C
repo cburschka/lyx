@@ -38,7 +38,7 @@ FD_form_copyright * FormCopyright::build_copyright()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormCopyrightOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
   obj = fl_add_text(FL_NORMAL_TEXT, 10, 190, 430, 190, _("LyX is distributed in the hope that it will\nbe useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of\nthe GNU General Public License\nalong with this program; if not, write to\nthe Free Software Foundation, Inc., \n675 Mass Ave, Cambridge, MA 02139, USA."));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -44,10 +44,10 @@ FD_form_url * FormUrl::build_url()
     fl_set_button_shortcut(obj, _("^["), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
   fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 300, 100, 100, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyHideCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

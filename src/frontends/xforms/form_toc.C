@@ -27,21 +27,21 @@ FD_form_toc * FormToc::build_toc()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 420, 340, "");
   fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 10, 400, 280, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   obj = fl_add_button(FL_RETURN_BUTTON, 310, 300, 100, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseHideCB, 0);
   obj = fl_add_button(FL_NORMAL_BUTTON, 200, 300, 100, 30, _("Update"));
     fl_set_button_shortcut(obj, scex(_("Update|#U#u")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   fdui->type = obj = fl_add_choice(FL_NORMAL_CHOICE, 60, 300, 130, 30, _("Type"));
     fl_set_object_shortcut(obj, scex(_("Type|#T#t")), 1);
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormCommandApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

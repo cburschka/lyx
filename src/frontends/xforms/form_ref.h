@@ -5,9 +5,9 @@
 #define FD_form_ref_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormCommandInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormCommandOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyHideCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseHideCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

@@ -24,30 +24,41 @@ class LyXView;
 #pragma interface
 #endif
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
+
 /** This class is an XForms GUI base class
  */
 class FormBase : public DialogBase, public noncopyable {
 public:
+	///
+	enum BufferDependency {
+		///
+		BUFFER_DEPENDENT,
+		///
+		BUFFER_INDEPENDENT
+	};
+
 	/// Constructor
-	FormBase(LyXView *, Dialogs *, string const &);
+	FormBase(LyXView *, Dialogs *, BufferDependency, string const &);
 
 	/// Callback functions
 	static  int WMHideCB(FL_FORM *, void *);
 	///
 	static void ApplyCB(FL_OBJECT *, long);
 	///
-	static void CancelCB(FL_OBJECT *, long);
+	static void ApplyHideCB(FL_OBJECT *, long);
+	///
+	static void HideCB(FL_OBJECT *, long);
 	///
 	static void InputCB(FL_OBJECT *, long);
-	///
-	static void OKCB(FL_OBJECT *, long);
 
 protected:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
-
 	/// Build the dialog
 	virtual void build() = 0;
 	/// Filter the inputs on callback from xforms
@@ -61,26 +72,25 @@ protected:
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * const form() const = 0;
 
+	/// block opening of form twice at the same time
+	bool dialogIsOpen;
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
 	*/
 	LyXView * lv_;
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
+
 private:
+	/// Hide signal
+	Signal0<void> * hSignal_;
+	/// Update signal
+	Signal0<void> * uSignal_;
 	/// Update connection.
 	Connection u_;
 	/// Hide connection.
 	Connection h_;
 	/// dialog title, displayed by WM.
   	string title;
-
-protected:
-	/// block opening of form twice at the same time
-	bool dialogIsOpen;
 };
 
 #endif

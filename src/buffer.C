@@ -937,107 +937,17 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		       << endl;
 	}
 	
+	Inset * inset = 0;
+
 	lex.next();
 	string const tmptok = lex.GetString();
 	last_inset_read = tmptok;
+
 	// test the different insets
-	if (tmptok == "Quotes") {
-		Inset * inset = new InsetQuotes;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "External") {
-		Inset * inset = new InsetExternal;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "FormulaMacro") {
-		Inset * inset = new InsetFormulaMacro;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Formula") {
-		Inset * inset = new InsetFormula;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Figure") {
-		Inset * inset = new InsetFig(100, 100, this);
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Info") {
-		Inset * inset = new InsetInfo;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Include") {
-		InsetCommandParams p( "Include" );
-		Inset * inset = new InsetInclude(p, this);
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "ERT") {
-		Inset * inset = new InsetERT;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Tabular") {
-		Inset * inset = new InsetTabular(this);
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Text") {
-		Inset * inset = new InsetText;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Foot") {
-		Inset * inset = new InsetFoot;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Marginal") {
-		Inset * inset = new InsetMarginal;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Minipage") {
-		Inset * inset = new InsetMinipage;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Float") {
-		lex.next();
-		string const tmptok = lex.GetString();
-		Inset * inset = new InsetFloat(tmptok);
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "List") {
-		Inset * inset = new InsetList;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Theorem") {
-		Inset * inset = new InsetList;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "Caption") {
-		Inset * inset = new InsetCaption;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "GRAPHICS") {
-		Inset * inset = new InsetGraphics;
-		inset->Read(this, lex);
-		par->InsertInset(pos, inset, font);
-		++pos;
-	} else if (tmptok == "LatexCommand") {
+	if (tmptok == "LatexCommand") {
 		InsetCommandParams inscmd;
 		inscmd.Read(lex);
-		Inset * inset = 0;
+
 		if (inscmd.getCmdName() == "cite") {
 			inset = new InsetCitation(inscmd);
 		} else if (inscmd.getCmdName() == "bibitem") {
@@ -1073,11 +983,54 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		} else if (inscmd.getCmdName() == "lyxparent") {
 			inset = new InsetParent(inscmd, this);
 		}
-		
-		if (inset) {
-			par->InsertInset(pos, inset, font);
-			++pos;
+	} else {
+		if (tmptok == "Quotes") {
+			inset = new InsetQuotes;
+		} else if (tmptok == "External") {
+			inset = new InsetExternal;
+		} else if (tmptok == "FormulaMacro") {
+			inset = new InsetFormulaMacro;
+		} else if (tmptok == "Formula") {
+			inset = new InsetFormula;
+		} else if (tmptok == "Figure") {
+			inset = new InsetFig(100, 100, this);
+		} else if (tmptok == "Info") {
+			inset = new InsetInfo;
+		} else if (tmptok == "Include") {
+			InsetCommandParams p( "Include" );
+			inset = new InsetInclude(p, this);
+		} else if (tmptok == "ERT") {
+			inset = new InsetERT;
+		} else if (tmptok == "Tabular") {
+			inset = new InsetTabular(this);
+		} else if (tmptok == "Text") {
+			inset = new InsetText;
+		} else if (tmptok == "Foot") {
+			inset = new InsetFoot;
+		} else if (tmptok == "Marginal") {
+			inset = new InsetMarginal;
+		} else if (tmptok == "Minipage") {
+			inset = new InsetMinipage;
+		} else if (tmptok == "Float") {
+			lex.next();
+			string tmptok = lex.GetString();
+			inset = new InsetFloat(tmptok);
+		} else if (tmptok == "List") {
+			inset = new InsetList;
+		} else if (tmptok == "Theorem") {
+			inset = new InsetList;
+		} else if (tmptok == "Caption") {
+			inset = new InsetCaption;
+		} else if (tmptok == "GRAPHICS") {
+			inset = new InsetGraphics;
 		}
+		
+		if (inset) inset->Read(this, lex);
+	}
+	
+	if (inset) {
+		par->InsertInset(pos, inset, font);
+		++pos;
 	}
 }
 

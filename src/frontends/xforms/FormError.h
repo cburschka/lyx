@@ -17,8 +17,8 @@
 #endif
 
 #include "FormBase.h"
-#include "insets/inseterror.h"
 
+class InsetError;
 struct FD_form_error;
 
 /** This class provides an XForms implementation of the FormError Dialog.

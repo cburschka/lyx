@@ -5,8 +5,8 @@
 #define FD_form_toc_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormCommandApplyCB(FL_OBJECT *, long);
-extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseHideCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

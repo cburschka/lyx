@@ -18,11 +18,12 @@
 #include "Dialogs.h"
 #include "FormError.h"
 #include "form_error.h"
+#include "insets/inseterror.h"
 
 static int minh, minw;
 
-FormError::FormError(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, _("LaTeX Error")),
+FormError::FormError( LyXView * lv, Dialogs * d )
+	: FormBase( lv, d, BUFFER_DEPENDENT, _("LaTeX Error") ),
 	  dialog_(0), ih_(0), message_("")
 {
 	// let the dialog be shown

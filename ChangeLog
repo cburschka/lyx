@@ -1,3 +1,31 @@
+2000-09-26  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/buffer.C (readFile): block-if statement rearranged to minimise
+	bloat. Patch does not reverse Jean-Marc's change ;-)
+
+	* src/frontends/xforms/FormBase.[Ch]: Renamed some of the callbacks.
+	Class rewritten to store pointers to hide/update signals directly,
+	rather than Dialogs *. Also defined an enum to ease use. All xforms
+	forms can now be derived from this class.
+
+	* src/frontends/xforms/FormCommand.[Ch]
+	* src/frontends/xforms/FormCopyright.[Ch]: now derived from FormBase.
+
+	* src/frontends/xforms/FormError.[Ch]: moved inclusion of inseterror.h
+	out of header file.
+
+	* src/frontends/xforms/forms/form_citation.fd
+	* src/frontends/xforms/forms/form_copyright.fd
+	* src/frontends/xforms/forms/form_error.fd
+	* src/frontends/xforms/forms/form_index.fd
+	* src/frontends/xforms/forms/form_ref.fd
+	* src/frontends/xforms/forms/form_toc.fd
+	* src/frontends/xforms/forms/form_url.fd: remamed callbacks
+
+	* src/frontends/xforms/forms/makefile: small change to work with DEC sh.
+
+	* src/insets/insetfoot.C: removed redundent using directive.
+
 2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/siamltex.layout: new textclass for SIAM journals,

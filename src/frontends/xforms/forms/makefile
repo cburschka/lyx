@@ -44,15 +44,15 @@ all:
 test: clean $(OBJS)
 
 updatesrc: test
-	for fil in *.C *.h ; do \
-		cmp -s $$fil ../$$fil || mv $$fil .. \
+	for fil in *.C *.h; \
+		do cmp -s $$fil ../$$fil || mv $$fil ..; \
 	done
 
 .fd.C:
 	${SHELL} ./fdfix.sh $<
 
 clean:
-	rm -f *.[hcC] *.bak
+	rm -f *.[hHcC] *.bak
 
 distclean: clean
 	rm -f *.orig *.rej *~
