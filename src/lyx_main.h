@@ -44,7 +44,7 @@ extern LastFiles * lastfiles; /* we should hopefully be able to move this
 /**
   This is the main LyX object it encapsulates most of the other objects.
 */
-class LyX : public boost::noncopyable {
+class LyX : boost::noncopyable {
 public:
 	/// the only allowed constructor
 	LyX(int * argc, char * argv[]); // constructor

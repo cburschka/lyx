@@ -28,7 +28,7 @@ class Buffer;
    have not clearly figured out how this class is going to be, suggestions
    are welcome. (Lgb)
 */
-class LyXGUI : public boost::noncopyable {
+class LyXGUI : boost::noncopyable {
 public:
 	/** The only constructor allowed.
 	    If gui is false, LyX will operate in non-X mode

@@ -29,7 +29,7 @@ struct keyword_item {
     texclass and others to come.
     @see lyxrc.C for an example of usage.
   */
-class LyXLex : public boost::noncopyable { 
+class LyXLex : boost::noncopyable { 
 public:
 	///
 	LyXLex (keyword_item *, int);

@@ -547,7 +547,7 @@ std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
 
 
 ///
-class LyXTextClassList : public boost::noncopyable {
+class LyXTextClassList : boost::noncopyable {
 public:
 	///
 	typedef std::vector<LyXTextClass> ClassList;

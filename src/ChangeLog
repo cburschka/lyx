@@ -1,5 +1,12 @@
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* lastfiles.h: inherit privately from noncopyable
+	* layout.h: ditto
+	* lyx_gui.h: ditto
+	* lyx_main.h: ditto
+	* lyxlex.h: ditto
+	* lyxlex_pimpl.h: ditto
+
 	* commandtags.h: comment out LFUN_FOOTMELT, LFUN_MARGINMELT,
 	LFUN_FLOATSOPERATE, LFUN_MELT, add LFUN_MESSAGE,
 	LFUN_MESSAGE_PUSH, LFUN_MESSAGE_POP
