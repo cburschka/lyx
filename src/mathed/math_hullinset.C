@@ -515,7 +515,11 @@ void MathHullInset::mutate(string const & newtype)
 			}
 			setType("eqnarray");
 			mutate(newtype);
-		} else {
+		} else if (newtype == "multline" || newtype == "gather") {
+			setType("multline");
+			numbered(0, false);
+			mutate(newtype);
+		} else {			
 			MathGridInset::addCol(1);
 			// split it "nicely"
 			pos_type pos = firstRelOp(cell(0));
