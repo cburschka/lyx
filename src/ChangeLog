@@ -1,3 +1,18 @@
+2002-09-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (setCounter): lookup the counter with layouts latexname
+	instead of by section number.
+	(setCounter): use a hackish way to lookup the correct enum
+	counter.
+	a float name->type change
+	reset enum couners with counter name directly instead of depth value.
+
+	* counters.C (Counters): remove the push_backs, change to use the
+	float type not the float name.
+	(labelItem): remove unused string, float name->type change
+
+	* counters.h: don't include vector, loose the enums and sects vectors
+
 2002-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxtextclass.C (TextClassTags): add TC_FLOAT 

@@ -83,30 +83,18 @@ Counters::Counters()
 	newCounter("paragraph", "subsubsection");
 	newCounter("subparagraph", "paragraph");
 
-	sects.push_back("chapter");
-	sects.push_back("section");
-	sects.push_back("subsection");
-	sects.push_back("subsubsection");
-	sects.push_back("paragraph");
-	sects.push_back("subparagraph");
-
 	// Enumeration counters:
 	newCounter("enumi");
 	newCounter("enumii", "enumi");
 	newCounter("enumiii", "enumii");
 	newCounter("enumiv", "enumiii");
 
-	enums.push_back("enumi");
-	enums.push_back("enumii");
-	enums.push_back("enumiii");
-	enums.push_back("enumiv");
-
 	// Biblio:
 	newCounter("bibitem");
 
 	// Float counters:
-	newCounter("Figure");
-	newCounter("Table");
+	newCounter("figure");
+	newCounter("table");
 }
 
 
@@ -295,13 +283,15 @@ string Counters::labelItem(string const & ctr,
 			   string const & langtype,
 			   bool first)
 {
-	ostringstream s, o;
+	ostringstream s;
+	ostringstream o;
+
 	CounterList::iterator it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "Counter does not exist." << endl;
 		return "";
 	}
-	string mstr = it->second.master();
+
 	if (!first) {
 		s << "." << value(ctr);
 	} else {
@@ -344,7 +334,7 @@ string Counters::numberLabel(string const & ctr,
 		} else if (ctr == "subparagraph" && head <= 5) {
 			s << numberLabel("paragraph", numbertype, langtype, head)
 			  << labelItem("subparagraph", numbertype, langtype, head == 5);
-		} else if (ctr == "Figure" || ctr == "Table") {
+		} else if (ctr == "figure" || ctr == "table") {
 			// figure, table, ...
 			lyxerr << "Counter:" << ctr << endl;
 			s << numberLabel("chapter", numbertype, langtype, head)

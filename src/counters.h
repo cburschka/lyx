@@ -20,7 +20,7 @@
 
 #include "LString.h"
 #include <map>
-#include <vector>
+
 
 /// This represents a single counter.
 class Counter {
@@ -41,9 +41,8 @@ public:
 	string master() const;
 	/// sets the master counter for this counter
 	void setMaster(string const & m);
-	///
-
 private:
+	///
 	int value_;
 	/// contains master counter name; master counter is the counter
 	/// that, if stepped (incremented) zeroes this counter. E.g.
@@ -96,10 +95,6 @@ public:
 			string const & labeltype,
 			string const & langtype = "latin",
 			int head = 0);
-	/// Maps numbers to enumeration of sectioning counter name strings.
-	std::vector<string> enums;
-	std::vector<string> sects;
-
 private:
 	/// Maps counter (layout) names to actual counters.
 	typedef std::map<string, Counter> CounterList;
