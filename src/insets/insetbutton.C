@@ -122,7 +122,8 @@ void InsetButton::cache(BufferView * bv) const
 }
 
 
+#warning Shouldnt this really return a shared_ptr<BufferView>? (Lgb)
 BufferView * InsetButton::view() const
 {
-	return view_.get();
+	return view_.lock().get();
 }

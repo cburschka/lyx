@@ -1,5 +1,9 @@
 2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insetbutton.C (view): adjust for boost 1.30.0
+	* insetcollapsable.C (view): ditto
+	* insetgraphics.C (statusChanged): ditto
+
 	* insettext.h: move paragraphs to be public.
 
 2003-03-02  Lars Gullik Bjønnes  <larsbj@gullik.net>

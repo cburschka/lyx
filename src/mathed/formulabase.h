@@ -89,7 +89,11 @@ public:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 	///
-	BufferView * view() const { return view_.get(); }
+#warning move this to formulabase.C (Lgb)
+	// And shouldn't this really return a shared_ptr<BufferView> instead?
+	BufferView * view() const {
+		return view_.lock().get();
+	}
 
 	///
 	virtual bool searchForward(BufferView *, string const &,

@@ -589,7 +589,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		if (formats.getFormat(to)->extension() == GetExtension(orig_file))
 			return RemoveExtension(orig_file_with_path);
 		return orig_file_with_path;
-	} 
+	}
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
@@ -635,12 +635,12 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		if (from == to) {
 			// No conversion is needed. LaTeX can handle the
 			// graphic file as is.
-			if (formats.getFormat(to)->extension() == GetExtension(orig_file)) 
+			if (formats.getFormat(to)->extension() == GetExtension(orig_file))
 				return RemoveExtension(temp_file);
 			return temp_file;
 		}
 	}
-	
+
 	string const outfile_base = RemoveExtension(temp_file);
 	lyxerr[Debug::GRAPHICS]
 		<< "\tThe original file is " << orig_file << "\n"
@@ -806,8 +806,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 void InsetGraphics::statusChanged()
 {
-	if (cache_->view.get())
-		cache_->view.get()->updateInset(this, false);
+	if (!cache_->view.expired())
+		cache_->view.lock()->updateInset(this, false);
 }
 
 

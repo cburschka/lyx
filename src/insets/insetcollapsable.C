@@ -665,11 +665,11 @@ void InsetCollapsable::markErased()
 	inset.markErased();
 }
 
- 
+
 bool InsetCollapsable::nextChange(BufferView * bv, lyx::pos_type & length)
 {
 	bool found = inset.nextChange(bv, length);
- 
+
 	if (first_after_edit && !found)
 		close(bv);
 	else if (!found)
@@ -677,7 +677,7 @@ bool InsetCollapsable::nextChange(BufferView * bv, lyx::pos_type & length)
 	return found;
 }
 
- 
+
 bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
 				     bool cs, bool mw)
 {
@@ -727,7 +727,5 @@ void InsetCollapsable::cache(BufferView * bv) const
 
 BufferView * InsetCollapsable::view() const
 {
-	return view_.get();
+	return view_.lock().get();
 }
-
-

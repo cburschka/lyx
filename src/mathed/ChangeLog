@@ -1,3 +1,7 @@
+2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* formulabase.h: adjust for boost 1.30.0
+
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.C (localDispatch): collapse LFUN_REF_APPLY to
@@ -16,7 +20,7 @@
 
 2003-02-26  Alfredo Braunstein <abraunst@libero.it>
 
-	* formula.C (draw): strip also the other argument (the owner inset) in 
+	* formula.C (draw): strip also the other argument (the owner inset) in
 	the call to PreviewImage::image
 
 2003-02-26  Angus Leeming  <leeming@lyx.org>
@@ -30,7 +34,7 @@
 
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
 
-	* formula.C (draw): eliminate BufferView argument in call to 
+	* formula.C (draw): eliminate BufferView argument in call to
 	PreviewImage::image
 
 2003-02-25  Angus Leeming  <leeming@lyx.org>
@@ -55,11 +59,11 @@
 	* math_parser.C (parse1): Do not remove braces for {<expr>}^
 
 2003-02-13  Bo Peng <bpeng@rice.edu>
- 
+
 	* math_cursor.h:
 	* math_cursor.C (backspace, erase): return false for empty mathboxes.
 
-	* formulabase.C: When LFUN_DELETE, LFUN_BACKSPACE return false, delete 
+	* formulabase.C: When LFUN_DELETE, LFUN_BACKSPACE return false, delete
 		the empty mathbox. Fix Bug 686.
 
 2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
