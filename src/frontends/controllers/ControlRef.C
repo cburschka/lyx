@@ -26,6 +26,7 @@
 #include "buffer.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
+#include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
 using SigC::slot;
 using std::vector;
@@ -43,7 +44,7 @@ ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 
 vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer * buffer = bufferlist.getBuffer(name);
+	Buffer * buffer = bufferlist.getBuffer(MakeAbsPath(name));
 	if (!buffer)
 		buffer = lv_.buffer();
 	return buffer->getLabelList();
@@ -65,7 +66,14 @@ void ControlRef::gotoBookmark() const
 
 vector<string> const ControlRef::getBufferList() const
 {
-	return bufferlist.getFileNames();
+	
+	vector<string> buffers = bufferlist.getFileNames();
+	for (vector<string>::iterator it = buffers.begin();
+	     it != buffers.end(); ++it) {
+		*it = MakeDisplayPath(*it);
+	}
+
+	return buffers;
 }
 
 

@@ -1,3 +1,8 @@
+2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlRef.C (getBufferList): use MakeDisplayPath on the list.
+	* (getLabelList): use MakeAbsPath on the buffer name passed to it.
+
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlRef.h (disconnectOnApply): new method. Set to true.
