@@ -55,6 +55,45 @@ int prompt_pimpl(string const & tit, string const & question,
 }
 
 
+void warning_pimpl(string const & tit, string const & message)
+{
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("LyX: %1$s"));
+	fmt % tit;
+	string const title = fmt.str();
+#else
+	string const title = _("LyX: ") + tit;
+#endif
+	QMessageBox::warning(0, toqstr(title), toqstr(formatted(message)));
+}
+
+
+void error_pimpl(string const & tit, string const & message)
+{
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("LyX: %1$s"));
+	fmt % tit;
+	string const title = fmt.str();
+#else
+	string const title = _("LyX: ") + tit;
+#endif
+	QMessageBox::critical(0, toqstr(title), toqstr(formatted(message)));
+}
+
+
+void information_pimpl(string const & tit, string const & message)
+{
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("LyX: %1$s"));
+	fmt % tit;
+	string const title = fmt.str();
+#else
+	string const title = _("LyX: ") + tit;
+#endif
+	QMessageBox::information(0, toqstr(title), toqstr(formatted(message)));
+}
+
+
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {

@@ -21,10 +21,10 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
+#include "support/LAssert.h"
 
 #include "filetools.h"
 #include "lstrings.h"
-#include "frontends/Alert.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
@@ -379,7 +379,6 @@ int DeleteAllFilesInDir(string const & path)
 	// directory_iterator dit(path);
 	// directory_iterator dend;
 	// if (dit == dend) {
-	//         Alert::err_alert(_("Error! Cannot open directory:"), path);
 	//         return -1;
 	// }
 	// for (; dit != dend; ++dit) {
@@ -387,16 +386,13 @@ int DeleteAllFilesInDir(string const & path)
 	//         if (filename == "." || filename == "..")
 	//                 continue;
 	//         string unlinkpath(AddName(path, filename));
-	//         if (lyx::unlink(unlinkpath))
-	//                 Alert::err_alert(_("Error! Could not remove file:"),
-	//                              unlinkpath);
+	//         lyx::unlink(unlinkpath);
 	// }
 	// return 0;
 	DIR * dir = ::opendir(path.c_str());
-	if (!dir) {
-		Alert::err_alert (_("Error! Cannot open directory:"), path);
+	if (!dir)
 		return -1;
-	}
+
 	struct dirent * de;
 	int return_value = 0;
 	while ((de = readdir(dir))) {
@@ -413,11 +409,8 @@ int DeleteAllFilesInDir(string const & path)
 		if (fi.isOK() && fi.isDir())
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
 		deleted &= (lyx::unlink(unlinkpath) == 0);
-		if (!deleted) {
-			Alert::err_alert(_("Error! Could not remove file:"),
-				unlinkpath);
+		if (!deleted)
 			return_value = -1;
-		}
 	}
 	closedir(dir);
 	return return_value;
@@ -437,32 +430,28 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 	// safe because of the gap between unlink and mkdir. (Lgb)
 	lyx::unlink(tmpfl.c_str());
 
-	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700)) {
-		Alert::err_alert(_("Error! Couldn't create temporary directory:"),
-			     tempdir);
+	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700))
 		return string();
-	}
+
 	return MakeAbsPath(tmpfl);
 }
 
+} // namespace anon
 
-int DestroyTmpDir(string const & tmpdir, bool Allfiles)
+
+int destroyDir(string const & tmpdir)
 {
 #ifdef __EMX__
 	Path p(user_lyxdir);
 #endif
-	if (Allfiles && DeleteAllFilesInDir(tmpdir)) {
+	if (DeleteAllFilesInDir(tmpdir))
 		return -1;
-	}
-	if (lyx::rmdir(tmpdir)) {
-		Alert::err_alert(_("Error! Couldn't delete temporary directory:"),
-			     tmpdir);
+
+	if (lyx::rmdir(tmpdir))
 		return -1;
-	}
+
 	return 0;
 }
-
-} // namespace anon
 
 
 string const CreateBufferTmpDir(string const & pathfor)
@@ -474,17 +463,9 @@ string const CreateBufferTmpDir(string const & pathfor)
 	// of EMX mkstemp().
 	string const tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
 	if (lyx::mkdir(tmpfl, 0777)) {
-		Alert::err_alert(_("Error! Couldn't create temporary directory:"),
-			     tmpdir);
 		return string();
 	}
 	return tmpfl;
-}
-
-
-int DestroyBufferTmpDir(string const & tmpdir)
-{
-	return DestroyTmpDir(tmpdir, true);
 }
 
 
@@ -507,28 +488,15 @@ string const CreateLyXTmpDir(string const & deflt)
 }
 
 
-// FIXME: no need for separate method like this ...
-int DestroyLyXTmpDir(string const & tmpdir)
-{
-	return DestroyTmpDir(tmpdir, true);
-}
-
-
-// Creates directory. Returns true if succesfull
 bool createDirectory(string const & path, int permission)
 {
 	string temp(rtrim(os::slashify_path(path), "/"));
 
-	if (temp.empty()) {
-		Alert::alert(_("Internal error!"),
-			   _("Call to createDirectory with invalid name"));
-		return false;
-	}
+	lyx::Assert(!temp.empty());
 
-	if (lyx::mkdir(temp, permission)) {
-		Alert::err_alert (_("Error! Couldn't create directory:"), temp);
+	if (lyx::mkdir(temp, permission))
 		return false;
-	}
+
 	return true;
 }
 
@@ -1303,11 +1271,8 @@ void removeAutosaveFile(string const & filename)
 	a += OnlyFilename(filename);
 	a += '#';
 	FileInfo const fileinfo(a);
-	if (fileinfo.exist()) {
-		if (lyx::unlink(a) != 0) {
-			Alert::err_alert(_("Could not delete auto-save file!"), a);
-		}
-	}
+	if (fileinfo.exist())
+		lyx::unlink(a);
 }
 
 

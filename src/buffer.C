@@ -149,8 +149,15 @@ Buffer::~Buffer()
 	if (users)
 		users->buffer(0);
 
-	if (!tmppath.empty()) {
-		DestroyBufferTmpDir(tmppath);
+	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
+#if USE_BOOST_FORMAT
+		boost::format fmt = _("Could not remove the temporary directory %1$s");
+		fmt % tmppath;
+		string msg = fmt.str();
+#else
+		string msg = _("Could not remove the temporary directory ") + tmppath;
+#endif
+		Alert::warning(_("Could not remove temporary directory"), msg);
 	}
 
 	paragraphs.clear();
@@ -954,7 +961,19 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 {
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		Alert::err_alert(_("Error: Cannot write file:"), fname);
+		string const error = strerror(errno);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not save the document\n%1$s\ndue to the error: %2$s"));
+		fmt % file;
+		fmt % error;
+		string text = fmt.str();
+#else
+		string text = _("Could not save the document\n");
+		text += file + _(" due to the error: ");
+		text += error;
+#endif
+		Alert::error(_("Could not save document"), text);
 		return;
 	}
 	writeFileAscii(ofs, linelen);
@@ -982,7 +1001,19 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		Alert::err_alert(_("Error: Cannot open file: "), fname);
+		string const error = strerror(errno);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not open the specified document\n%1$s\ndue to the error: %2$s"));
+		fmt % file;
+		fmt % error;
+		string text = fmt.str();
+#else
+		string text = _("Could not open the specified document\n");
+		text += file + _(" due to the error: ");
+		text += error;
+#endif
+		Alert::error(_("Could not open file"), text);
 		return;
 	}
 

@@ -2,6 +2,13 @@
 
 	* Alert.h:
 	* Alert.C:
+	* Alert_pimpl.h: kill err_alert. Add information(),
+	warning(), error()
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* Alert.h:
+	* Alert.C:
 	* Alert_pimpl.h: fix up askQuestion/askConfirmation
 	into prompt, to discourage Yes/No questions.
 

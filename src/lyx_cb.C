@@ -229,7 +229,16 @@ void QuitLyX()
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << system_tempdir << endl;
 
-	DestroyLyXTmpDir(system_tempdir);
+	if (destroyDir(system_tempdir) != 0) {
+#if USE_BOOST_FORMAT
+		boost::format fmt = _("Could not remove the temporary directory %1$s");
+		fmt % system_tempdir;
+		string msg = fmt.str();
+#else
+		string msg = _("Could not remove the temporary directory ") + system_tempdir;
+#endif
+		Alert::warning(_("Could not remove temporary directory"), msg);
+	}
 
 	lyx_gui::exit();
 }
@@ -426,15 +435,37 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	FileInfo fi(fname);
 
 	if (!fi.readable()) {
-		Alert::err_alert(_("Error! Specified file is unreadable: "),
-			     MakeDisplayPath(fname, 50));
+		string const error = strerror(errno);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not read the specified document\n%1$s\ndue to the error: %2$s"));
+		fmt % file;
+		fmt % error;
+		string text = fmt.str();
+#else
+		string text = _("Could not read the specified document\n");
+		text += file + _(" due to the error: ");
+		text += error;
+#endif
+		Alert::error(_("Could not read file"), text);
 		return string();
 	}
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		Alert::err_alert(_("Error! Cannot open specified file:"),
-			     MakeDisplayPath(fname, 50));
+		string const error = strerror(errno);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not open the specified document\n%1$s\ndue to the error: %2$s"));
+		fmt % file;
+		fmt % error;
+		string text = fmt.str();
+#else
+		string text = _("Could not open the specified document\n");
+		text += file + _(" due to the error: ");
+		text += error;
+#endif
+		Alert::error(_("Could not open file"), text);
 		return string();
 	}
 
@@ -513,7 +544,9 @@ void Reconfigure(BufferView * bv)
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
-	Alert::alert(_("The system has been reconfigured."),
-		   _("You need to restart LyX to make use of any"),
-		   _("updated document class specifications."));
+
+	Alert::information(_("System reconfigured"),
+		_("The system has been reconfigured.\n"
+		"You need to restart LyX to make use of any \n"
+		"updated document class specifications."));
 }

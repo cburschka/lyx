@@ -188,8 +188,11 @@ void FileDialog::Private::Reread()
 	// Opens directory
 	DIR * dir = ::opendir(directory_.c_str());
 	if (!dir) {
+// FIXME: re-add ...
+#if 0
 		Alert::err_alert(_("Warning! Couldn't open directory."),
 			directory_);
+#endif
 		directory_ = lyx::getcwd();
 		dir = ::opendir(directory_.c_str());
 	}
@@ -357,7 +360,10 @@ void FileDialog::Private::SetDirectory(string const & path)
 	// must check the directory exists
 	DIR * dir = ::opendir(tmp.c_str());
 	if (!dir) {
+// FIXME: re-add ...
+#if 0
 		Alert::err_alert(_("Warning! Couldn't open directory."), tmp);
+#endif
 	} else {
 		::closedir(dir);
 		directory_ = tmp;

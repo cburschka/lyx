@@ -17,16 +17,9 @@
 
 #include "Alert_pimpl.h"
 
-#include <cerrno>
-
-#ifndef CXX_GLOBAL_CSTD
-using std::strerror;
-#endif
-
 using std::endl;
 using std::pair;
 using std::make_pair;
-
 
 void Alert::alert(string const & s1, string const & s2, string const & s3)
 {
@@ -37,12 +30,6 @@ void Alert::alert(string const & s1, string const & s2, string const & s3)
 	} else {
 		alert_pimpl(s1, s2, s3);
 	}
-}
-
-
-void Alert::err_alert(string const & s1, string const & s2)
-{
-	alert(s1, s2, strerror(errno));
 }
 
 
@@ -63,6 +50,39 @@ int Alert::prompt(string const & title, string const & question,
 		case 2: lyxerr << b3 << endl;
 	}
 	return default_button;
+}
+
+
+void Alert::warning(string const & title, string const & message)
+{
+	if (lyxrc.use_gui)
+		return warning_pimpl(title, message);
+
+	lyxerr << "Warning: " << title << endl;
+	lyxerr << "----------------------------------------" << endl;
+	lyxerr << message << endl;
+}
+
+
+void Alert::error(string const & title, string const & message)
+{
+	if (lyxrc.use_gui)
+		return error_pimpl(title, message);
+
+	lyxerr << "Error: " << title << endl;
+	lyxerr << "----------------------------------------" << endl;
+	lyxerr << message << endl;
+}
+
+
+void Alert::information(string const & title, string const & message)
+{
+	if (lyxrc.use_gui)
+		return information_pimpl(title, message);
+
+	lyxerr << title << endl;
+	lyxerr << "----------------------------------------" << endl;
+	lyxerr << message << endl;
 }
 
 

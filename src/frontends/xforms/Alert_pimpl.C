@@ -32,6 +32,24 @@ void alert_pimpl(string const & s1, string const & s2, string const & s3)
 }
 
 
+void warning_pimpl(string const &, string const & message)
+{
+	fl_show_messages(message.c_str());
+}
+
+
+void error_pimpl(string const &, string const & message)
+{
+	fl_show_messages(message.c_str());
+}
+
+
+void information_pimpl(string const &, string const & message)
+{
+	fl_show_messages(message.c_str());
+}
+
+
 int prompt_pimpl(string const &, string const & question,
            int default_button,
 	   string const & b1, string const & b2, string const & b3)

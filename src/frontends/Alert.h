@@ -32,14 +32,31 @@ int prompt(string const & title, string const & question,
            int default_button,
 	   string const & b1, string const & b2, string const & b3 = string());
 
-/// show an alert message
+/**
+ * Display a warning to the user. Title should be a short summary.
+ * Only use this if the user cannot perform some remedial action.
+ */
+void warning(string const & title, string const & message);
+
+/**
+ * Display a warning to the user. Title should be a short summary.
+ * Only use this if the user cannot perform some remedial action.
+ */
+void error(string const & title, string const & message);
+
+/**
+ * Informational message. Use very very sparingly. That is, you must
+ * apply to me, in triplicate, under the sea, breathing in petrol
+ * and reciting the Nicene Creed, whilst running uphill and also
+ * eating.
+ */
+void information(string const & title, string const & message);
+
+/// show an alert message. DO NOT USE !!
 void alert(string const & title, string const & s1 = string(),
 	   string const & s2 = string());
 
-/// show an alert message and strerror(errno)
-void err_alert(string const & s1, string const & s2 = string());
-
-/// Asks for a text
+/// Asks for a text. DO NOT USE !!
 std::pair<bool, string> const
 askForText(string const & msg,
 	   string const & dflt = string());

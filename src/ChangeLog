@@ -1,5 +1,12 @@
 2003-03-29  John Levon  <levon@movementarian.org>
 
+	* lyx_cb.C:
+	* BufferView.C:
+	* buffer.C: warnings pushed down from support/,
+	kill err_alert
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
 	* lyxfunc.C: safety check for C-r (revert)
 
 2003-03-29  John Levon  <levon@movementarian.org>

@@ -18,4 +18,8 @@ int prompt_pimpl(string const & title, string const & question,
            int default_button,
 	   string const & b1, string const & b2, string const & b3);
 
+void warning_pimpl(string const & title, string const & warning);
+void error_pimpl(string const & title, string const & warning);
+void information_pimpl(string const & title, string const & warning);
+
 std::pair<bool, string> const askForText_pimpl(string const & msg, string const & dflt);

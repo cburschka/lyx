@@ -13,20 +13,17 @@
 #include "LString.h"
 
 
+/// remove directory and all contents, returns 0 on success
+int destroyDir(string const & tmpdir);
+
 ///
 string const CreateBufferTmpDir(string const & pathfor = string());
 
-/// Creates directory. Returns true on succes.
+/// Creates directory. Returns true on success
 bool createDirectory(string const & name, int permissions);
 
 ///
 string const CreateLyXTmpDir(string const & deflt);
-
-///
-int DestroyBufferTmpDir(string const & tmpdir);
-
-///
-int DestroyLyXTmpDir(string const & tmpdir);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
