@@ -80,7 +80,7 @@ void begin_inset(ostream & os, string const & name)
 
 void end_inset(ostream & os)
 {
-	os << "\n\\end_inset\n\n";
+	os << "\n\\end_inset \n\n";
 }
 
 
@@ -158,10 +158,12 @@ void output_layout(ostream & os, LyXLayout_ptr const & layout_ptr,
 	string name = layout_ptr->name();
 	os << "\n\n\\layout " << name << "\n\n";
 	if (layout_ptr->optionalargs > 0) {
-		string opt = p.getOpt();
-		if (opt.size()) {
+		string s; 
+		if (p.next_token().character() == '[') {
+			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
-			os << "collapsed true\n\n\\layout Standard\n\n" << opt;
+			os << "collapsed true\n\n\\layout Standard\n\n";
+			parse_text(p, os, FLAG_BRACK_LAST, outer, textclass);
 			end_inset(os);
 		}
 	}
@@ -309,6 +311,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
+			const bool is_starred = suffixIs(name, '*');
+			string const unstarred_name = rtrim(name, "*");
 			active_environments.push_back(name);
 			if (is_math_env(name)) {
 				begin_inset(os, "Formula ");
@@ -316,23 +320,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_math(p, os, FLAG_END, MATH_MODE);
 				os << "\\end{" << name << "}";
 				end_inset(os);
-				continue;
-			}
-
-			if (name == "tabular") {
+			} else if (name == "tabular") {
 				begin_inset(os, "Tabular ");
 				handle_tabular(p, os, textclass);
 				end_inset(os);
-				continue;
-			}
-
-			bool is_starred = suffixIs(name, '*');
-			string unstarred_name = rtrim(name, "*");
-			if (textclass.floats().typeExist(unstarred_name)) {
-				string opts = p.getOpt();
+			} else if (textclass.floats().typeExist(unstarred_name)) {
 				begin_inset(os, "Float " + unstarred_name + "\n");
-				if (opts.size())
-					os << "placement " << opts << '\n';
+				if (p.next_token().asInput() == "[") {
+					os << "placement " 
+					   << p.getArg('[', ']') << '\n';
+				}
 				os << "wide " << tostr(is_starred)
 				   << "\ncollapsed false\n\n"
 				   << "\\layout Standard\n";
@@ -383,7 +380,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "item") {
-			p.skip_spaces();
+			// should be done automatically by Parser::tokenize
+			//p.skip_spaces();
 			string s; 
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
@@ -527,7 +525,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << '\\' << t.cs();
 			os << p.getOpt();
 			os << p.getOpt();
-			os << '{' << p.verbatim_item() << '}';
+			os << '{' << p.verbatim_item() << "}\n";
 			end_inset(os);
 		}
 
