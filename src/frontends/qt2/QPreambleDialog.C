@@ -25,6 +25,8 @@
 #include "QtLyXView.h"
 #include "ControlPreamble.h" 
 
+using std::getline;
+
 QPreambleDialog::QPreambleDialog(QPreamble * form)
 	: QPreambleDialogBase(0, 0, false, 0),
 	form_(form)

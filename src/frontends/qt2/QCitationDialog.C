@@ -243,7 +243,7 @@ void QCitationDialog::slotNextClicked()
 }
 
 
-void QCitationDialog::doFind(biblio::Direction const dir)
+void QCitationDialog::doFind(biblio::Direction dir)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
 	string const str = searchED->text().latin1();

@@ -46,6 +46,11 @@ QDocument::QDocument(ControlDocument & c)
 	: base_class(c, _("Document Settings"))
 {
 }
+
+#else
+QDocument::QDocument(LyXView *, Dialogs *)
+{
+}
 #endif 
 
 

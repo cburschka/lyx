@@ -23,14 +23,16 @@
 #include "lyxfunc.h"
 #include "debug.h"
 
+#include <qlistview.h>
+#include <qcombobox.h>
+
 using std::vector;
 using std::pair;
 using std::stack;
 using std::endl;
+using SigC::slot;
 
-#include <qlistview.h>
-#include <qcombobox.h>
- 
+
 QToc::QToc(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
 	/*toclist(0),*/ depth(1)

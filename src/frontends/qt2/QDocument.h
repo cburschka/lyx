@@ -33,7 +33,7 @@ class QDocument
 {
 public:
 	// FIXME!!!!!!! 
-	QDocument(LyXView *, Dialogs *) {};
+	QDocument(LyXView *, Dialogs *);
 private:
 	///
 	enum State {

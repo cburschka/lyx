@@ -1,3 +1,20 @@
+2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* QAbout.C: added a using std::getline directive.
+
+	* QCitationDialog.C (doFind): removed const from argument to make it
+	consistent with the header file.
+
+	* QDocument.[Ch] (c-tor): moved declaration of into .C file. Compilation
+	was failing with "incomplete type is not allowed" in instantiation
+	of boost::scoped_ptr<QDocumentDialog> dialog_.
+
+	* QLog.C: added a couple of using std::xyz directives.
+
+	* QPreambleDialog.C: added a using std::getline directive.
+
+	* QToc.C: using SigC::slot directive.
+
 2001-08-29  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ui/QURLDialog.ui : minor layout tweak

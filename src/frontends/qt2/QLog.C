@@ -24,6 +24,9 @@
 #include "QtLyXView.h"
 #include "ControlLog.h"
 
+using std::ifstream;
+using std::getline;
+
 typedef Qt2CB<ControlLog, Qt2DB<QLogDialog> > base_class;
 
 QLog::QLog(ControlLog & c)
