@@ -1,5 +1,19 @@
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
+	* ExternalSupport.[Ch]: new files, moving the private member functions
+	and namespace anon functions out of insetexternal.C to here, so making
+	it easier to understand what is going on in insetexternal itself.
+
+	* Makefile.am: add new files.
+
+ 	* insetexternal.[Ch]: InsetExternal::Params -> InsetExternalParams,
+ 	allowing the class to be forward declared. (Also consistent with
+ 	all other Params classes.)
+ 	(write): moved out of the class. Move this function and those in
+ 	namespace anon to ExternalSupport.[Ch].
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
 	* ExternalTemplate.[Ch] (TemplateManager::getTemplates): remove
 	non-const member function.
 
@@ -139,7 +153,7 @@
 
 2003-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* insetgraphics.C: 
+	* insetgraphics.C:
 	* insetbibtex.C: use namespace alias for lyx::support::os
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>

@@ -41,7 +41,7 @@ Template RasterImage
 		In the parameters box, you can provide optional
 		parameters for the ImageMagick convert program.
 		E.g., use `-border 10x10 -bordercolor black'
-		to surround the picture with a black border 
+		to surround the picture with a black border
 		when you export to LaTeX.
 		When you export to Ascii, you can provide a
 		number describing how many columns the picture
@@ -62,7 +62,7 @@ Template RasterImage
 		Product "\\includegraphics{$$Basename}"
 		UpdateFormat png
 		UpdateResult "$$Basename.png"
-		Requirement "graphicx"	
+		Requirement "graphicx"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
@@ -102,7 +102,7 @@ Template XFig
 		Product "\\inputOrWarn{$$Basename.pdftex_t}"
 		UpdateFormat pdftex
 		UpdateResult "$$Basename.pdftex_t"
-		Requirement "graphicx"	
+		Requirement "graphicx"
 		Preamble WarnNotFound
 		Preamble InputOrWarn
 	FormatEnd
@@ -127,7 +127,7 @@ Template ChessDiagram
 	HelpText
 		A chess position diagram.
 		This template will use XBoard to edit the position.
-		Use the 'File->Save Position' in XBoard to save 
+		Use the 'File->Save Position' in XBoard to save
 		the position that you want to display.
 		Make sure to give it a '.fen' extension
 		and remember to type in a relative path
@@ -136,7 +136,7 @@ Template ChessDiagram
 		to enable general editing of the board.
 		You might also check out the
 		'Options->Test legality' option, and
-		remember to middle and right click to 
+		remember to middle and right click to
 		insert new material in the board.
 		In order for this to work, you have to
 		put the bundled lyxskak.sty in a place
@@ -195,4 +195,3 @@ Template Date
 		UpdateResult "$$Tempname"
 	FormatEnd
 TemplateEnd
-

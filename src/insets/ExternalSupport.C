@@ -29,12 +29,12 @@
 
 #include "support/std_ostream.h"
 
-
 namespace support = lyx::support;
 
 using std::endl;
-using std::string;
+
 using std::ostream;
+using std::string;
 
 
 namespace lyx {
@@ -49,11 +49,10 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	external::Template const * const et_ptr =
-		external::getTemplatePtr(params);
+	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
 		return;
-	external::Template const & et = *et_ptr;
+	Template const & et = *et_ptr;
 
 	if (et.editCommand.empty())
 		return;
@@ -118,21 +117,19 @@ void updateExternal(InsetExternalParams const & params,
 		    Buffer const & buffer,
 		    bool external_in_tmpdir)
 {
-	external::Template const * const et_ptr =
-		external::getTemplatePtr(params);
+	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
 		return; // FAILURE
-	external::Template const & et = *et_ptr;
+	Template const & et = *et_ptr;
 
 	if (!et.automaticProduction)
 		return; // NOT_NEEDED
 
-	external::Template::Formats::const_iterator cit =
-		et.formats.find(format);
+	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end())
 		return; // FAILURE
 
-	external::Template::Format const & outputFormat = cit->second;
+	Template::Format const & outputFormat = cit->second;
 	if (outputFormat.updateResult.empty())
 		return; // NOT_NEEDED
 
@@ -158,7 +155,7 @@ void updateExternal(InsetExternalParams const & params,
 
 	if (!converters.isReachable(from_format, to_format)) {
 		lyxerr[Debug::EXTERNAL]
-			<< "InsetExternal::updateExternal. "
+			<< "external::updateExternal. "
 			<< "Unable to convert from "
 			<< from_format << " to " << to_format << endl;
 		return; // FAILURE
@@ -208,14 +205,12 @@ int writeExternal(InsetExternalParams const & params,
 		  Buffer const & buffer, ostream & os,
 		  bool external_in_tmpdir)
 {
-	external::Template const * const et_ptr =
-		external::getTemplatePtr(params);
+	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
 		return 0;
-	external::Template const & et = *et_ptr;
+	Template const & et = *et_ptr;
 
-	external::Template::Formats::const_iterator cit =
-		et.formats.find(format);
+	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end()) {
 		lyxerr[Debug::EXTERNAL]
 			<< "External template format '" << format
