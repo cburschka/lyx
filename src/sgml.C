@@ -99,9 +99,6 @@ int openTag(ostream & os, Paragraph::depth_type depth,
 		os << '>';
 	}
 
-	if (!mixcont)
-		os << endl;
-
 	return !mixcont;
 }
 
@@ -111,31 +108,14 @@ int closeTag(ostream & os, Paragraph::depth_type depth,
 {
 	if (!latexname.empty() && latexname != "!-- --") {
 		if (!mixcont)
-			os << endl << string(depth, ' ');
+			os << '\n' << string(depth, ' ');
 		os << "</" << latexname << '>';
 	}
 
 	if (!mixcont)
-		os << endl;
+		os << '\n';
 
 	return !mixcont;
 }
-
-
-unsigned int closeEnvTags(ostream & os, bool mixcont,
-			string const & environment_inner_depth,
-			string const & itemtag,
-			lyx::depth_type total_depth)
-{
-	unsigned int lines = 0;
-	if (environment_inner_depth != "!-- --") {
-		lines += closeTag(os, total_depth, mixcont, itemtag);
-		if (!environment_inner_depth.empty())
-			lines += closeTag(os, total_depth, mixcont,
-				environment_inner_depth);
-	}
-	return lines;
-}
-
 
 } // namespace sgml

@@ -1,3 +1,14 @@
+2004-10-23  José Matos  <jamatos@lyx.org>
+
+	* buffer.C (makeDocBookFile): reorganize the comments about lyx.
+	* output_docbook.[Ch]: new functions to encapsulate the way lyx exports
+	docbook. The new scheme is recursive and makes use of iterators, the
+	same as latex export works.
+	* paragraph.C (simpleDocBookOnePar): removed coud that does not deal
+	directly with the paragraph contents. This code was moved up to
+	output_docbook.C (docbookParagraphs).
+	* sgml.C (openTag, closeTag): removed unneeded newlines.
+	(closeEnvTags) removed.
 
 2003-10-23  André Pönitz  <poenitz@gmx.net>
 

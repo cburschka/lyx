@@ -1354,6 +1354,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    lyx::depth_type depth) const
 {
 	bool emph_flag = false;
+	int char_line_count = 0;
 
 	LyXLayout_ptr const & style = layout();
 	LyXLayout_ptr const & defaultstyle =
@@ -1362,31 +1363,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	int char_line_count = depth;
 	bool label_closed = true;
-	bool para_closed = true;
-
-	if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
-		string ls = "";
-		Counters & counters = buf.params().getLyXTextClass().counters();
-		if (!style->free_spacing)
-			os << string(depth,' ');
-		if (!style->labeltag().empty()) {
-			os << "<" << style->labeltag() << ">\n";
-			label_closed = false;
-		} else {
-			if (!defaultstyle->latexparam().empty()) {
-				counters.step("para");
-				ls = tostr(counters.value("para"));
-				ls = " id=\""
-					+ subst(defaultstyle->latexparam(), "#", ls) + '"';
-			}
-			os << "<" << style->itemtag() << ">\n"
-			   << string(depth, ' ') << "<"
-			   << defaultstyle->latexname() << ls << ">\n";
-			para_closed = false;
-		}
-	}
 
 	// parsing main loop
 	for (pos_type i = 0; i < size(); ++i) {
@@ -1434,7 +1411,6 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				   << style->itemtag() << "><"
 				   << defaultstyle->latexname() << ">";
 				label_closed = true;
-				para_closed = false;
 			} else {
 				os << ' ';
 			}
@@ -1456,10 +1432,6 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		os << "</" << style->labeltag() << ">\n<"
 		   << style->itemtag() << "><"
 		   << defaultstyle->latexname() << ">&nbsp;";
-	}
-	if (!para_closed) {
-		os << "\n" << string(depth, ' ') << "</"
-		   << defaultstyle->latexname() << ">\n";
 	}
 	if (style->free_spacing)
 		os << '\n';

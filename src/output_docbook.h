@@ -20,9 +20,8 @@ class OutputParams;
 class ParagraphList;
 
 ///
-void docbookParagraphs(Buffer const & buf,
-		       ParagraphList const & paragraphs,
+void docbookParagraphs(ParagraphList const & subset,
+		       Buffer const & buf,
 		       std::ostream & os,
 		       OutputParams const & runparams);
-
 #endif

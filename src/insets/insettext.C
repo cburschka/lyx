@@ -352,7 +352,7 @@ int InsetText::linuxdoc(Buffer const & buf, ostream & os,
 int InsetText::docbook(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
-	docbookParagraphs(buf, paragraphs(), os, runparams);
+	docbookParagraphs(paragraphs(), buf, os, runparams);
 	return 0;
 }
 

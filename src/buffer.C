@@ -1119,16 +1119,16 @@ void Buffer::makeDocBookFile(string const & fname,
 		top += ' ';
 		top += params().options;
 	}
-	sgml::openTag(ofs, 0, false, top);
 
 	ofs << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
 	    << " file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	params().getLyXTextClass().counters().reset();
-	docbookParagraphs(*this, paragraphs(), ofs, runparams);
 
-	ofs << "\n\n";
+	sgml::openTag(ofs, 0, false, top);
+	ofs << '\n';
+	docbookParagraphs(paragraphs(), *this, ofs, runparams);
 	sgml::closeTag(ofs, 0, false, top_element);
 
 	ofs.close();
