@@ -24,6 +24,9 @@
 #include "language.h"
 #include "lyxtextclasslist.h"
 #include "paragraph.h"
+#include "funcrequest.h"
+#include "lfuns.h"
+#include "LColor.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -115,6 +118,14 @@ void ControlDocument::setLanguage()
 		else
 		    lv_.buffer()->updateDocLang(newL);
 	}
+}
+
+
+void ControlDocument::setBranchColor(string const & branch, string const & hex)
+{
+	lcolor.setColor(branch, hex);
+	string const s = branch + ' ' + hex;
+	lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));
 }
 
 

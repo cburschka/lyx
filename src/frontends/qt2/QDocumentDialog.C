@@ -426,7 +426,6 @@ void QDocumentDialog::updateBranchView()
 	BufferParams & params = cntrl.params();
 
 	string const all_branches = params.branchlist().allBranches();
-	string const all_selected = params.branchlist().allSelected();
 	branchesModule->branchesLV->clear();
 	if (!all_branches.empty()) {
 		std::vector<string> all = getVectorFromString(all_branches, "|");
@@ -445,6 +444,7 @@ void QDocumentDialog::updateBranchView()
 			newItem->setPixmap(2, coloritem);
 		}
 	}
+	form_->branchlist_ = params.branchlist();
 	form_->changed();
 }
 
@@ -514,16 +514,14 @@ void QDocumentDialog::toggleBranchColor()
 		sel_branch = selItem->text(0);
 	if (sel_branch) {
 		QColor initial;
-		string x11hexname = params.branchlist().getColor(fromqstr(sel_branch));
+		string current_branch = fromqstr(sel_branch);
+		string x11hexname = params.branchlist().getColor(current_branch);
 		if (x11hexname[0] == '#')
 			initial.setNamedColor(toqstr(x11hexname));
 		QColor ncol(QColorDialog::getColor(initial));
 		if (ncol.isValid()){
-			// FIXME: The color does not apply unless buffer restart
-			// XForms has this hack. What can we do?
-			// lyxColorHandler->getGCForeground(c);
-			// lyxColorHandler->updateColor(c);
-			params.branchlist().setColor(fromqstr(sel_branch), fromqstr(ncol.name()));
+			// add the color to the branchlist
+			params.branchlist().setColor(current_branch, fromqstr(ncol.name()));
 			branchesModule->newBranchLE->clear();
 			updateBranchView();
 		}

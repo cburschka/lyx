@@ -27,6 +27,7 @@
 #include "support/lstrings.h"
 #include "lyxtextclasslist.h"
 #include "floatplacement.h"
+#include "LColor.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
@@ -38,6 +39,7 @@
 
 
 using lyx::support::bformat;
+using lyx::support::getVectorFromString;
 
 using std::vector;
 using std::string;
@@ -375,6 +377,25 @@ void QDocument::apply()
 	params.headsep = widgetsToLength(m->headsepLE, m->headsepUnit);
 
 	params.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
+
+	// branches
+	string const all_branches = params.branchlist().allBranches();
+	if (!all_branches.empty()) {
+		std::vector<string> all = getVectorFromString(all_branches, "|");
+		for (unsigned i = 0; i < all.size(); ++i) {
+			string const current_branch = all[i].c_str();
+			string x11hexname = params.branchlist().getColor(current_branch);
+			// check that we have a valid color!
+			if (x11hexname.empty() || x11hexname[0] != '#')
+				x11hexname = lcolor.getX11Name(LColor::background);
+			// display the new color
+			controller().setBranchColor(current_branch, x11hexname);
+		}
+	}
+	if (branchlist_.empty())
+		branchlist_ = params.branchlist();
+	params.branchlist() = branchlist_;
+	branchlist_.clear();
 }
 
 
