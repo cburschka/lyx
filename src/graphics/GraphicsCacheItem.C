@@ -68,7 +68,7 @@ struct CacheItem::Impl : public boost::signals::trackable {
 
 	/** Get a notification when the image loading is done.
 	 *  Connected to a signal on_finish_ which is passed to
-	 *  grfx::Image::loadImage.
+	 *  lyx::graphics::Image::loadImage.
 	 */
 	void imageLoaded(bool);
 
@@ -318,12 +318,10 @@ void CacheItem::Impl::imageLoaded(bool success)
 
 namespace {
 
-namespace grfx = lyx::graphics;
-
 string const findTargetFormat(string const & from)
 {
-	typedef grfx::Image::FormatList FormatList;
-	FormatList const formats = grfx::Image::loadableFormats();
+	typedef lyx::graphics::Image::FormatList FormatList;
+	FormatList const formats = lyx::graphics::Image::loadableFormats();
 
 	// There must be a format to load from.
 	Assert(!formats.empty());
@@ -339,7 +337,7 @@ string const findTargetFormat(string const & from)
 	// So, we have to convert to a loadable format. Can we?
 	it = formats.begin();
 	for (; it != end; ++it) {
-		if (grfx::Converter::isReachable(from, *it))
+		if (lyx::graphics::Converter::isReachable(from, *it))
 			return *it;
 		else
 			lyxerr[Debug::GRAPHICS]

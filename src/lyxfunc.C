@@ -1586,7 +1586,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #warning FIXME!! The graphics cache no longer has a changeDisplay method.
 #endif
 #if 0
-			grfx::GCache & gc = grfx::GCache::get();
+			lyx::graphics::GCache & gc =
+				lyx::graphics::GCache::get();
 			gc.changeDisplay(true);
 #endif
 		}

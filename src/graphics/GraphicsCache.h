@@ -9,10 +9,11 @@
  *
  * Full author contact details are available in file CREDITS
  *
- *  grfx::Cache is the manager of the image cache.
- *  It is responsible for creating the grfx::CacheItem's and maintaining them.
+ *  lyx::graphics::Cache is the manager of the image cache.
+ *  It is responsible for creating the lyx::graphics::CacheItem's
+ *  and maintaining them.
  *
- *  grfx::Cache is a singleton class. It is possible to have only one
+ *  lyx::graphics::Cache is a singleton class. It is possible to have only one
  *  instance of it at any moment.
  */
 

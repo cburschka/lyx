@@ -371,8 +371,6 @@ void xformsImage::errorCB(string const & error_message)
 
 namespace {
 
-namespace grfx = lyx::graphics;
-
 extern "C" {
 
 int status_report(FL_IMAGE * ob, const char *s)
@@ -386,8 +384,8 @@ int status_report(FL_IMAGE * ob, const char *s)
 	lyxerr[Debug::GRAPHICS]
 		<< "xforms image loader. Status: " << str << std::endl;
 
-	grfx::xformsImage * ptr =
-		static_cast<grfx::xformsImage *>(ob->u_vdata);
+	lyx::graphics::xformsImage * ptr =
+		static_cast<lyx::graphics::xformsImage *>(ob->u_vdata);
 	ptr->statusCB(str);
 
 	return 0;
@@ -405,8 +403,8 @@ static void error_report(FL_IMAGE * ob, const char *s)
 	lyxerr[Debug::GRAPHICS]
 		<< "xforms image loader. Error: " << str << std::endl;
 
-	grfx::xformsImage * ptr =
-		static_cast<grfx::xformsImage *>(ob->u_vdata);
+	lyx::graphics::xformsImage * ptr =
+		static_cast<lyx::graphics::xformsImage *>(ob->u_vdata);
 	ptr->errorCB(str);
 }
 

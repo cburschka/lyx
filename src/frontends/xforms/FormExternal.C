@@ -32,8 +32,6 @@
 
 using namespace lyx::support;
 
-namespace grfx = lyx::graphics;
-
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
 FormExternal::FormExternal(Dialog & parent)
@@ -56,19 +54,19 @@ void FormExternal::apply()
 
 	switch (fl_get_choice(dialog_->choice_display)) {
 	case 5:
-		params.display = grfx::NoDisplay;
+		params.display = lyx::graphics::NoDisplay;
 		break;
 	case 4:
-		params.display = grfx::ColorDisplay;
+		params.display = lyx::graphics::ColorDisplay;
 		break;
 	case 3:
-		params.display = grfx::GrayscaleDisplay;
+		params.display = lyx::graphics::GrayscaleDisplay;
 		break;
 	case 2:
-		params.display = grfx::MonochromeDisplay;
+		params.display = lyx::graphics::MonochromeDisplay;
 		break;
 	case 1:
-		params.display = grfx::DefaultDisplay;
+		params.display = lyx::graphics::DefaultDisplay;
 	}
 
 	controller().setParams(params);
@@ -135,19 +133,19 @@ void FormExternal::update()
 	fl_set_input(dialog_->input_lyxscale, tostr(params.lyxscale).c_str());
 
 	switch (params.display) {
-	case grfx::NoDisplay:
+	case lyx::graphics::NoDisplay:
 		fl_set_choice(dialog_->choice_display, 5);
 		break;
-	case grfx::ColorDisplay:
+	case lyx::graphics::ColorDisplay:
 		fl_set_choice(dialog_->choice_display, 4);
 		break;
-	case grfx::GrayscaleDisplay:
+	case lyx::graphics::GrayscaleDisplay:
 		fl_set_choice(dialog_->choice_display, 3);
 		break;
-	case grfx::MonochromeDisplay:
+	case lyx::graphics::MonochromeDisplay:
 		fl_set_choice(dialog_->choice_display, 2);
 		break;
-	case grfx::DefaultDisplay:
+	case lyx::graphics::DefaultDisplay:
 		fl_set_choice(dialog_->choice_display, 1);
 	}
 }

@@ -1,3 +1,12 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* FormExternal.C (update, apply):
+	* FormGraphics.C (update, apply):
+	* FormPrefences.C (LnFmisc::update, LnFmisc::apply):
+	* XPainter.C (image):
+	* xformsImage.C (status_report, error_report): use namespace
+	lyx::graphics rather than grfx shortcut.
+
 2003-07-18  Angus Leeming  <leeming@lyx.org>
 
 	* FormNote.C (build): add a tooltip.

@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS
  *
- *  grfx::PreviewLoader collects latex snippets together. Then, on a
+ *  lyx::graphics::PreviewLoader collects latex snippets together. Then, on a
  *  startLoading() call, these are dumped to file and processed, converting
  *  each snippet to a separate bitmap image file. Once a bitmap file is ready
  *  to be loaded back into LyX, the PreviewLoader emits a signal to inform
@@ -72,7 +72,7 @@ public:
 
 	/** Connect and you'll be informed when the bitmap image file
 	 *  has been created and is ready for loading through
-	 *  grfx::PreviewImage::image().
+	 *  lyx::graphics::PreviewImage::image().
 	 */
 	typedef boost::signal1<void, PreviewImage const &>::slot_type slot_type;
 	///

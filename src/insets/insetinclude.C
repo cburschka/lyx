@@ -50,12 +50,10 @@ using std::endl;
 using std::vector;
 using std::pair;
 
-namespace grfx = lyx::graphics;
-
 extern BufferList bufferlist;
 
 
-class InsetInclude::PreviewImpl : public grfx::PreviewedInset {
+class InsetInclude::PreviewImpl : public lyx::graphics::PreviewedInset {
 public:
 	///
 	PreviewImpl(InsetInclude & p) : PreviewedInset(p) {}
@@ -203,7 +201,7 @@ void InsetInclude::set(Params const & p)
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
-	if (grfx::PreviewedInset::activated() && params_.flag == INPUT)
+	if (lyx::graphics::PreviewedInset::activated() && params_.flag == INPUT)
 		preview_->generatePreview();
 }
 
@@ -560,7 +558,7 @@ BufferView * InsetInclude::view() const
 // preview stuff
 //
 
-void InsetInclude::addPreview(grfx::PreviewLoader & ploader) const
+void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	preview_->addPreview(ploader);
 }

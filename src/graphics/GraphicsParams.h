@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS
  *
- *  Used internally by the grfx::Image.
+ *  Used internally by the lyx::graphics::Image.
  */
 
 #ifndef GRAPHICSPARAMS_H

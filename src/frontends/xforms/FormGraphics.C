@@ -301,19 +301,19 @@ void FormGraphics::apply()
 
 	switch (fl_get_choice(file_->choice_display)) {
 	case 5:
-		igp.display = grfx::NoDisplay;
+		igp.display = lyx::graphics::NoDisplay;
 		break;
 	case 4:
-		igp.display = grfx::ColorDisplay;
+		igp.display = lyx::graphics::ColorDisplay;
 		break;
 	case 3:
-		igp.display = grfx::GrayscaleDisplay;
+		igp.display = lyx::graphics::GrayscaleDisplay;
 		break;
 	case 2:
-		igp.display = grfx::MonochromeDisplay;
+		igp.display = lyx::graphics::MonochromeDisplay;
 		break;
 	case 1:
-		igp.display = grfx::DefaultDisplay;
+		igp.display = lyx::graphics::DefaultDisplay;
 	}
 
 	// first item in choice_width means scaling
@@ -428,19 +428,19 @@ void FormGraphics::update() {
 	fl_set_input(file_->input_lyxscale, tostr(igp.lyxscale).c_str());
 
 	switch (igp.display) {
-	case grfx::NoDisplay:
+	case lyx::graphics::NoDisplay:
 		fl_set_choice(file_->choice_display, 5);
 		break;
-	case grfx::ColorDisplay:
+	case lyx::graphics::ColorDisplay:
 		fl_set_choice(file_->choice_display, 4);
 		break;
-	case grfx::GrayscaleDisplay:
+	case lyx::graphics::GrayscaleDisplay:
 		fl_set_choice(file_->choice_display, 3);
 		break;
-	case grfx::MonochromeDisplay:
+	case lyx::graphics::MonochromeDisplay:
 		fl_set_choice(file_->choice_display, 2);
 		break;
-	case grfx::DefaultDisplay:
+	case lyx::graphics::DefaultDisplay:
 		fl_set_choice(file_->choice_display, 1);
 	}
 

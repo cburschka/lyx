@@ -110,9 +110,9 @@ string const ControlGraphics::readBB(string const & file)
 	int width = 0;
 	int height = 0;
 
-	grfx::Cache & gc = grfx::Cache::get();
+	lyx::graphics::Cache & gc = lyx::graphics::Cache::get();
 	if (gc.inCache(abs_file)) {
-		grfx::Image const * image = gc.item(abs_file)->image();
+		lyx::graphics::Image const * image = gc.item(abs_file)->image();
 
 		if (image) {
 			width  = image->getWidth();

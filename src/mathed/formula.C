@@ -52,9 +52,8 @@
 using std::ostream;
 using std::vector;
 
-namespace grfx = lyx::graphics;
 
-class InsetFormula::PreviewImpl : public grfx::PreviewedInset {
+class InsetFormula::PreviewImpl : public lyx::graphics::PreviewedInset {
 public:
 	///
 	PreviewImpl(InsetFormula & p) : PreviewedInset(p) {}
@@ -306,7 +305,7 @@ void InsetFormula::mutate(string const & type)
 // preview stuff
 //
 
-void InsetFormula::addPreview(grfx::PreviewLoader & ploader) const
+void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	preview_->addPreview(ploader);
 }

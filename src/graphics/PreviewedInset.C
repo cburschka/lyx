@@ -73,7 +73,7 @@ void PreviewedInset::addPreview(PreviewLoader & ploader)
 		return;
 
 	// If this is the first time of calling, connect to the
-	// grfx::PreviewLoader signal that'll inform us when the preview image
+	// PreviewLoader signal that'll inform us when the preview image
 	// is ready for loading.
 	if (!connection_.connected()) {
 		connection_ = ploader.connect(

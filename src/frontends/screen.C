@@ -48,8 +48,6 @@ using std::min;
 using std::max;
 using std::endl;
 
-namespace grfx = lyx::graphics;
-
 namespace {
 
 class SplashScreen : boost::noncopyable, boost::signals::trackable {
@@ -57,18 +55,18 @@ public:
 	/// This is a singleton class. Get the instance.
 	static SplashScreen const & get();
 	///
-	grfx::Image const * image() const { return loader_.image(); }
+	lyx::graphics::Image const * image() const { return loader_.image(); }
 	///
 	string const & text() const { return text_; }
 	///
 	LyXFont const & font() const { return font_; }
 	///
-	void connect(grfx::Loader::slot_type const & slot) const {
+	void connect(lyx::graphics::Loader::slot_type const & slot) const {
 		loader_.connect(slot);
 	}
 	///
 	void startLoading() const {
-		if (loader_.status() == grfx::WaitingToLoad)
+		if (loader_.status() == lyx::graphics::WaitingToLoad)
 			loader_.startLoading();
 	}
 
@@ -79,7 +77,7 @@ private:
 	SplashScreen();
 
 	///
-	grfx::Loader loader_;
+	lyx::graphics::Loader loader_;
 	/// The text to be written on top of the pixmap
 	string const text_;
 	/// in this font...
@@ -419,7 +417,7 @@ void LyXScreen::greyOut()
 
 	// Add a splash screen to the centre of the work area
 	SplashScreen const & splash = SplashScreen::get();
-	grfx::Image const * const splash_image = splash.image();
+	lyx::graphics::Image const * const splash_image = splash.image();
 	if (splash_image) {
 		int const w = splash_image->getWidth();
 		int const h = splash_image->getHeight();

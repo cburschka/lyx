@@ -36,7 +36,6 @@
 
 using std::endl;
 
-namespace grfx = lyx::graphics;
 
 QLPainter::QLPainter(QWorkArea & qwa)
 	: Painter(), owner_(qwa), paint_check_(0)
@@ -190,9 +189,9 @@ Painter & QLPainter::arc(int x, int y,
 
 Painter & QLPainter::image(int x, int y,
 	int w, int h,
-	grfx::Image const & i)
+	lyx::graphics::Image const & i)
 {
-	qp_->drawPixmap(x, y, static_cast<grfx::QLImage const &>(i).qpixmap(), 0, 0, w, h);
+	qp_->drawPixmap(x, y, static_cast<lyx::graphics::QLImage const &>(i).qpixmap(), 0, 0, w, h);
 	return *this;
 }
 

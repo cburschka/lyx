@@ -35,7 +35,6 @@ using namespace lyx::support;
 using std::endl;
 using std::max;
 
-namespace grfx = lyx::graphics;
 
 XPainter::XPainter(XWorkArea & xwa)
 	: Painter(), owner_(xwa)
@@ -150,11 +149,11 @@ Painter & XPainter::arc(int x, int y,
 
 
 Painter & XPainter::image(int x, int y,
-	int w, int h,
-	grfx::Image const & i)
+			  int w, int h,
+			  lyx::graphics::Image const & i)
 {
-	grfx::xformsImage const & image =
-		static_cast<grfx::xformsImage const &>(i);
+	lyx::graphics::xformsImage const & image =
+		static_cast<lyx::graphics::xformsImage const &>(i);
 
 	XGCValues val;
 	val.function = GXcopy;

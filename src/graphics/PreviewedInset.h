@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- *  \file PreviewedInset.h
+ * \file PreviewedInset.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -8,9 +8,9 @@
  *
  * Full author contact details are available in file CREDITS
  *
- *  grfx::PreviewedInset is an abstract base class that can help insets to
- *  generate previews. The daughter class must instantiate three small
- *  methods. The Inset would own an instance of this daughter class.
+ * lyx::graphics::PreviewedInset is an abstract base class that can help
+ * insets to generate previews. The daughter class must instantiate three small
+ * methods. The Inset would own an instance of this daughter class.
  */
 
 #ifndef PREVIEWEDINSET_H
@@ -67,9 +67,7 @@ protected:
 	BufferView * view() const;
 
 private:
-	/** This method is connected to the grfx::PreviewLoader::imageReady
-	 *  signal.
-	 */
+	/// This method is connected to the PreviewLoader::imageReady signal.
 	void imageReady(PreviewImage const &) const;
 
 	/// Does the owning inset want a preview?

@@ -61,7 +61,7 @@ void InsetGraphicsParams::init()
 {
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
-	display = grfx::DefaultDisplay;	// display mode; see preferences
+	display = lyx::graphics::DefaultDisplay; // display mode; see preferences
 	scale = 100.0;			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
@@ -148,8 +148,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
-	if (display != grfx::DefaultDisplay)
-		os << "\tdisplay " << grfx::displayTranslator.find(display) << '\n';
+	if (display != lyx::graphics::DefaultDisplay)
+		os << "\tdisplay " << lyx::graphics::displayTranslator.find(display) << '\n';
 	if (!float_equal(scale, 0.0, 0.05)) {
 		if (!float_equal(scale, 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
@@ -196,7 +196,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-		display = grfx::displayTranslator.find(type);
+		display = lyx::graphics::displayTranslator.find(type);
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getFloat();
@@ -256,9 +256,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 }
 
 
-grfx::Params InsetGraphicsParams::as_grfxParams() const
+lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
-	grfx::Params pars;
+	lyx::graphics::Params pars;
 	pars.filename = filename;
 	pars.scale = lyxscale;
 	pars.angle = rotateAngle;
@@ -307,7 +307,7 @@ grfx::Params InsetGraphicsParams::as_grfxParams() const
 		}
 	}
 
-	if (display == grfx::DefaultDisplay) {
+	if (display == lyx::graphics::DefaultDisplay) {
 		pars.display = lyxrc.display_graphics;
 	} else {
 		pars.display = display;
@@ -315,7 +315,7 @@ grfx::Params InsetGraphicsParams::as_grfxParams() const
 
 	// Override the above if we're not using a gui
 	if (!lyx_gui::use_gui) {
-		pars.display = grfx::NoDisplay;
+		pars.display = lyx::graphics::NoDisplay;
 	}
 
 	return pars;

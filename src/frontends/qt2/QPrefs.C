@@ -63,7 +63,6 @@ using std::setfill;
 using std::setw;
 using std::endl;
 
-namespace grfx = lyx::graphics;
 
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
@@ -172,13 +171,13 @@ void QPrefs::apply()
 
 	rc.preview = displaymod->previewCB->isChecked();
 
-	grfx::DisplayType dtype(grfx::ColorDisplay);
+	lyx::graphics::DisplayType dtype(lyx::graphics::ColorDisplay);
 
 	switch (displaymod->displayGraphicsCO->currentItem()) {
-		case 3:	dtype = grfx::NoDisplay; break;
-		case 2:	dtype = grfx::ColorDisplay; break;
-		case 1: dtype = grfx::GrayscaleDisplay;	break;
-		case 0: dtype = grfx::MonochromeDisplay; break;
+		case 3:	dtype = lyx::graphics::NoDisplay; break;
+		case 2:	dtype = lyx::graphics::ColorDisplay; break;
+		case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
+		case 0: dtype = lyx::graphics::MonochromeDisplay; break;
 	}
 	rc.display_graphics = dtype;
 
@@ -187,7 +186,7 @@ void QPrefs::apply()
 #endif
 #if 0
 	if (old_value != rc.display_graphics) {
-		grfx::GCache & gc = grfx::GCache::get();
+		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();
 		gc.changeDisplay();
 	}
 #endif
@@ -474,10 +473,10 @@ void QPrefs::update_contents()
 	int item = 2;
 
 	switch (rc.display_graphics) {
-		case grfx::NoDisplay:		item = 3; break;
-		case grfx::ColorDisplay:	item = 2; break;
-		case grfx::GrayscaleDisplay:	item = 1; break;
-		case grfx::MonochromeDisplay:	item = 0; break;
+		case lyx::graphics::NoDisplay:		item = 3; break;
+		case lyx::graphics::ColorDisplay:	item = 2; break;
+		case lyx::graphics::GrayscaleDisplay:	item = 1; break;
+		case lyx::graphics::MonochromeDisplay:	item = 0; break;
 		default: break;
 	}
 	displaymod->displayGraphicsCO->setCurrentItem(item);

@@ -59,8 +59,6 @@ using std::signal;
 using std::system;
 #endif
 
-namespace grfx = lyx::graphics;
-
 extern void LoadLyXFile(string const &);
 extern void QuitLyX();
 
@@ -106,7 +104,7 @@ LyX::LyX(int & argc, char * argv[])
 	// set the DisplayTranslator only once; should that be done here??
 	// if this should not be in this file, please also remove
 	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
-	grfx::setDisplayTranslator();
+	lyx::graphics::setDisplayTranslator();
 
 	if (want_gui) {
 		lyx_gui::parse_init(argc, argv);

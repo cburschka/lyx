@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- *  \file Previews.h
+ * \file Previews.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -8,8 +8,8 @@
  *
  * Full author contact details are available in file CREDITS
  *
- *  grfx::Previews is a singleton class that stores the grfx::PreviewLoader
- *  for each buffer requiring one.
+ * lyx::graphics::Previews is a singleton class that stores the
+ * lyx::graphics::PreviewLoader for each buffer requiring one.
  */
 
 #ifndef PREVIEWS_H

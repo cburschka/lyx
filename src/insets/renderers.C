@@ -28,7 +28,6 @@
 
 using namespace lyx::support;
 
-namespace grfx = lyx::graphics;
 
 RenderInset::RenderInset()
 {}
@@ -128,7 +127,7 @@ RenderInset * GraphicRenderer::clone() const
 }
 
 
-void GraphicRenderer::update(grfx::Params const & params)
+void GraphicRenderer::update(lyx::graphics::Params const & params)
 {
 	params_ = params;
 
@@ -158,27 +157,27 @@ boost::signals::connection GraphicRenderer::connect(slot_type const & slot) cons
 string const GraphicRenderer::statusMessage() const
 {
 	switch (loader_.status()) {
-		case grfx::WaitingToLoad:
+		case lyx::graphics::WaitingToLoad:
 			return _("Not shown.");
-		case grfx::Loading:
+		case lyx::graphics::Loading:
 			return _("Loading...");
-		case grfx::Converting:
+		case lyx::graphics::Converting:
 			return _("Converting to loadable format...");
-		case grfx::Loaded:
+		case lyx::graphics::Loaded:
 			return _("Loaded into memory. Must now generate pixmap.");
-		case grfx::ScalingEtc:
+		case lyx::graphics::ScalingEtc:
 			return _("Scaling etc...");
-		case grfx::Ready:
+		case lyx::graphics::Ready:
 			return _("Ready to display");
-		case grfx::ErrorNoFile:
+		case lyx::graphics::ErrorNoFile:
 			return _("No file found!");
-		case grfx::ErrorConverting:
+		case lyx::graphics::ErrorConverting:
 			return _("Error converting to loadable format");
-		case grfx::ErrorLoading:
+		case lyx::graphics::ErrorLoading:
 			return _("Error loading file into memory");
-		case grfx::ErrorGeneratingPixmap:
+		case lyx::graphics::ErrorGeneratingPixmap:
 			return _("Error generating the pixmap");
-		case grfx::ErrorUnknown:
+		case lyx::graphics::ErrorUnknown:
 			return _("No image");
 	}
 	return string();
@@ -187,7 +186,7 @@ string const GraphicRenderer::statusMessage() const
 
 bool GraphicRenderer::readyToDisplay() const
 {
-	if (!loader_.image() || loader_.status() != grfx::Ready)
+	if (!loader_.image() || loader_.status() != lyx::graphics::Ready)
 		return false;
 	return loader_.image()->isDrawable();
 }
@@ -259,11 +258,12 @@ void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
 	}
 #endif
 
-	if (params_.display != grfx::NoDisplay &&
-	    loader_.status() == grfx::WaitingToLoad)
+	if (params_.display != lyx::graphics::NoDisplay &&
+	    loader_.status() == lyx::graphics::WaitingToLoad)
 		loader_.startLoading();
 
-	if (params_.display != grfx::NoDisplay && !loader_.monitoring())
+	if (params_.display != lyx::graphics::NoDisplay &&
+	    !loader_.monitoring())
 		loader_.startMonitoring();
 
 	// This will draw the graphics. If the graphics has not been loaded yet,

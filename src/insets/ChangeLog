@@ -1,3 +1,10 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.C:
+	* insetgraphicsParams.[Ch]:
+	* insetinclude.C:
+	* renderers.C: use namespace lyx::graphics rather than grfx shortcut.
+
 2003-07-21  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetnote.C: fixed greyout and conditionals layout foul-ups.

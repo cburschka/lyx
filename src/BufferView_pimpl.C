@@ -326,8 +326,8 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		owner_->setLayout(layoutname);
 	}
 
-	if (grfx::Previews::activated() && buffer_)
-		grfx::Previews::get().generateBufferPreviews(*buffer_);
+	if (lyx::graphics::Previews::activated() && buffer_)
+		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
 

@@ -18,8 +18,6 @@
 #include "LString.h"
 #include "lyxlength.h"
 
-namespace grfx = lyx::graphics;
-
 class LyXLex;
 
 namespace lyx {
@@ -37,7 +35,7 @@ struct InsetGraphicsParams
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
 	/// How to display the image inside LyX
-	grfx::DisplayType display;
+	lyx::graphics::DisplayType display;
 	/// Scaling for output (LaTeX)
 	float scale;
 	/// sizes for output (LaTeX)
@@ -81,7 +79,7 @@ struct InsetGraphicsParams
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.
-	grfx::Params as_grfxParams() const;
+	lyx::graphics::Params as_grfxParams() const;
 
 private:
 	/// Initialize the object to a default status.

@@ -1,3 +1,8 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (c-tor, addPreview): use namespace lyx::graphics rather
+	than grfx shortcut.
+
 2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_parser.C (catInit): dont use unprintable control chars in

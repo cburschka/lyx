@@ -9,11 +9,11 @@
  *
  * Full author contact details are available in file CREDITS
  *
- * The graphics cache is a container of grfx::CacheItems.
- * Each grfx::CacheItem, defined here represents a separate image file.
+ * The graphics cache is a container of lyx::graphics::CacheItems.
+ * Each lyx::graphics::CacheItem, defined here represents a separate image file.
  *
  * The routines here can be used to load the graphics file into memory at
- * which point (status() == grfx::Loaded).
+ * which point (status() == lyx::graphics::Loaded).
  * The user is then free to access image() in order to copy it and to then
  * transform the copy (rotate, scale, clip) and to generate the pixmap.
  *
@@ -21,8 +21,8 @@
  * file conversion to a loadable format;
  * file loading.
  *
- * Whether you get that, of course, depends on grfx::Converter and on the
- * grfx::Image-derived image class.
+ * Whether you get that, of course, depends on lyx::graphics::Converter and
+ * on the lyx::graphics::Image-derived image class.
  */
 
 #ifndef GRAPHICSCACHEITEM_H
@@ -43,7 +43,7 @@ namespace graphics {
 class Image;
 class Converter;
 
-/// A grfx::Cache item holder.
+/// A lyx::graphics::Cache item holder.
 class CacheItem : boost::noncopyable {
 public:
 	///

@@ -1,3 +1,12 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCache.h:
+	* GraphicsCacheItem.[Ch]:
+	* GraphicsParams.h:
+	* PreviewLoader.h:
+	* PreviewedInset.[Ch]:
+	* Previews.h: use namespace lyx::graphics rather than grfx shortcut.
+
 2003-07-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Change namespace grfx to lyx::graphics.

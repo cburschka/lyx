@@ -33,7 +33,6 @@
 
 using namespace lyx::support;
 
-namespace grfx = lyx::graphics;
 
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
@@ -75,17 +74,17 @@ void QExternal::update_contents()
 
 	int item = 0;
 	switch (params.display) {
-		case grfx::DefaultDisplay: item = 0; break;
-		case grfx::MonochromeDisplay: item = 1; break;
-		case grfx::GrayscaleDisplay: item = 2; break;
-		case grfx::ColorDisplay: item = 3; break;
-		case grfx::NoDisplay: item = 0; break;
+		case lyx::graphics::DefaultDisplay: item = 0; break;
+		case lyx::graphics::MonochromeDisplay: item = 1; break;
+		case lyx::graphics::GrayscaleDisplay: item = 2; break;
+		case lyx::graphics::ColorDisplay: item = 3; break;
+		case lyx::graphics::NoDisplay: item = 0; break;
 	}
 	dialog_->showCB->setCurrentItem(item);
-	dialog_->showCB->setEnabled(params.display != grfx::NoDisplay &&
+	dialog_->showCB->setEnabled(params.display != lyx::graphics::NoDisplay &&
 				    !readOnly());
-	dialog_->displayCB->setChecked(params.display != grfx::NoDisplay);
-	dialog_->displayscale->setEnabled(params.display != grfx::NoDisplay &&
+	dialog_->displayCB->setChecked(params.display != lyx::graphics::NoDisplay);
+	dialog_->displayscale->setEnabled(params.display != lyx::graphics::NoDisplay &&
 					  !readOnly());
 	dialog_->displayscale->setText(toqstr(tostr(params.lyxscale)));
 
@@ -111,15 +110,15 @@ void QExternal::apply()
 		controller().getTemplate(dialog_->externalCO->currentItem()).lyxName;
 
 	switch (dialog_->showCB->currentItem()) {
-		case 0: params.display = grfx::DefaultDisplay; break;
-		case 1: params.display = grfx::MonochromeDisplay; break;
-		case 2: params.display = grfx::GrayscaleDisplay; break;
-		case 3: params.display = grfx::ColorDisplay; break;
+		case 0: params.display = lyx::graphics::DefaultDisplay; break;
+		case 1: params.display = lyx::graphics::MonochromeDisplay; break;
+		case 2: params.display = lyx::graphics::GrayscaleDisplay; break;
+		case 3: params.display = lyx::graphics::ColorDisplay; break;
 		default:;
 	}
 
 	if (!dialog_->displayCB->isChecked())
-		params.display = grfx::NoDisplay;
+		params.display = lyx::graphics::NoDisplay;
 
 	params.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 

@@ -1,3 +1,7 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* screen.C (c-tor, greyOut): use namespace lyx::graphics
+	rather than the grfx shortcut.
 
 2003-07-15  André Pönitz  <poenitz@gmx.net>
 

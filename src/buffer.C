@@ -109,8 +109,6 @@ using std::for_each;
 using lyx::pos_type;
 using lyx::textclass_type;
 
-namespace grfx = lyx::graphics;
-
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 
@@ -155,7 +153,7 @@ Buffer::~Buffer()
 	paragraphs.clear();
 
 	// Remove any previewed LaTeX snippets assocoated with this buffer.
-	grfx::Previews::get().removeLoader(this);
+	lyx::graphics::Previews::get().removeLoader(this);
 }
 
 

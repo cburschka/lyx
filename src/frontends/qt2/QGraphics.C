@@ -223,16 +223,16 @@ void QGraphics::update_contents()
 
 	int item = 0;
 	switch (igp.display) {
-		case grfx::DefaultDisplay: item = 0; break;
-		case grfx::MonochromeDisplay: item = 1; break;
-		case grfx::GrayscaleDisplay: item = 2; break;
-		case grfx::ColorDisplay: item = 3; break;
-		case grfx::NoDisplay: item = 0; break;
+		case lyx::graphics::DefaultDisplay: item = 0; break;
+		case lyx::graphics::MonochromeDisplay: item = 1; break;
+		case lyx::graphics::GrayscaleDisplay: item = 2; break;
+		case lyx::graphics::ColorDisplay: item = 3; break;
+		case lyx::graphics::NoDisplay: item = 0; break;
 	}
 	dialog_->showCB->setCurrentItem(item);
-	dialog_->showCB->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
-	dialog_->displayCB->setChecked(igp.display != grfx::NoDisplay);
-	dialog_->displayscale->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
+	dialog_->showCB->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
+	dialog_->displayCB->setChecked(igp.display != lyx::graphics::NoDisplay);
+	dialog_->displayscale->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(toqstr(tostr(igp.lyxscale)));
 
 	//// the output section (width/height)
@@ -339,15 +339,15 @@ void QGraphics::apply()
 	igp.subcaptionText = fromqstr(dialog_->subcaption->text());
 
 	switch (dialog_->showCB->currentItem()) {
-		case 0: igp.display = grfx::DefaultDisplay; break;
-		case 1: igp.display = grfx::MonochromeDisplay; break;
-		case 2: igp.display = grfx::GrayscaleDisplay; break;
-		case 3: igp.display = grfx::ColorDisplay; break;
+		case 0: igp.display = lyx::graphics::DefaultDisplay; break;
+		case 1: igp.display = lyx::graphics::MonochromeDisplay; break;
+		case 2: igp.display = lyx::graphics::GrayscaleDisplay; break;
+		case 3: igp.display = lyx::graphics::ColorDisplay; break;
 		default:;
 	}
 
 	if (!dialog_->displayCB->isChecked())
-		igp.display = grfx::NoDisplay;
+		igp.display = lyx::graphics::NoDisplay;
 
 	string value(fromqstr(dialog_->width->text()));
 	if (dialog_->widthUnit->currentItem() > 0) {

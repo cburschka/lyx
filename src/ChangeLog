@@ -1,3 +1,11 @@
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (buffer):
+	* buffer.C (d-tor):
+	* lyx_main.C (LyX):
+	* lyxfunc.C (dispatch):
+	* lyxrc.C (setDefaults, read, output): use namespace lyx::graphics
+	rather than the grfx shortcut.
 
 2003-07-21  André Pönitz  <poenitz@gmx.net>
 

@@ -40,8 +40,6 @@ using std::ios;
 using std::endl;
 using std::vector;
 
-namespace grfx = lyx::graphics;
-
 class kb_keymap;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
@@ -232,7 +230,7 @@ void LyXRC::setDefaults() {
 	check_lastfiles = true;
 	make_backup = true;
 	backupdir_path.erase();
-	display_graphics = grfx::ColorDisplay;
+	display_graphics = lyx::graphics::ColorDisplay;
 	// Spellchecker settings:
 	use_spell_lib = true;
 	isp_command = "ispell";
@@ -378,7 +376,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next()) {
-				display_graphics = grfx::displayTranslator.find(lexrc.getString());
+				display_graphics = lyx::graphics::displayTranslator.find(lexrc.getString());
 			}
 			break;
 
@@ -1203,7 +1201,8 @@ void LyXRC::output(ostream & os) const
 		if (display_graphics != system_lyxrc.display_graphics) {
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
-			   << "\\display_graphics " << grfx::displayTranslator.find(display_graphics)
+			   << "\\display_graphics "
+			   << lyx::graphics::displayTranslator.find(display_graphics)
 			   << '\n';
 		}
 

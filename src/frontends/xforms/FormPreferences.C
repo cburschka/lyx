@@ -68,8 +68,6 @@ extern string user_lyxdir;
 
 using namespace lyx::support;
 
-namespace grfx = lyx::graphics;
-
 namespace {
 
 // These should probably go inside the class definition...
@@ -1843,22 +1841,22 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 		(fl_get_counter_value(dialog_->counter_wm_jump));
 
 	// See FIXME below
-	// grfx::DisplayType old_value = rc.display_graphics;
+	// lyx::graphics::DisplayType old_value = rc.display_graphics;
 	switch (fl_get_choice(dialog_->choice_display)) {
 	case 4:
-		rc.display_graphics = grfx::NoDisplay;
+		rc.display_graphics = lyx::graphics::NoDisplay;
 		break;
 	case 3:
-		rc.display_graphics = grfx::ColorDisplay;
+		rc.display_graphics = lyx::graphics::ColorDisplay;
 		break;
 	case 2:
-		rc.display_graphics = grfx::GrayscaleDisplay;
+		rc.display_graphics = lyx::graphics::GrayscaleDisplay;
 		break;
 	case 1:
-		rc.display_graphics = grfx::MonochromeDisplay;
+		rc.display_graphics = lyx::graphics::MonochromeDisplay;
 		break;
 	default:
-		rc.display_graphics = grfx::ColorDisplay;
+		rc.display_graphics = lyx::graphics::ColorDisplay;
 		break;
 	}
 
@@ -1867,7 +1865,7 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 #endif
 #if 0
 	if (old_value != rc.display_graphics) {
-		grfx::GCache & gc = grfx::GCache::get();
+		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();
 		gc.changeDisplay();
 	}
 #endif
@@ -1932,16 +1930,16 @@ void FormPreferences::LnFmisc::update(LyXRC const & rc)
 	fl_set_counter_value(dialog_->counter_wm_jump, rc.wheel_jump);
 
 	switch (rc.display_graphics) {
-	case grfx::NoDisplay:
+	case lyx::graphics::NoDisplay:
 		fl_set_choice(dialog_->choice_display, 4);
 		break;
-	case grfx::ColorDisplay:
+	case lyx::graphics::ColorDisplay:
 		fl_set_choice(dialog_->choice_display, 3);
 		break;
-	case grfx::GrayscaleDisplay:
+	case lyx::graphics::GrayscaleDisplay:
 		fl_set_choice(dialog_->choice_display, 2);
 		break;
-	case grfx::MonochromeDisplay:
+	case lyx::graphics::MonochromeDisplay:
 		fl_set_choice(dialog_->choice_display, 1);
 		break;
 	default:

@@ -49,11 +49,9 @@ using namespace lyx::support;
 using std::ostream;
 using std::endl;
 
-namespace grfx = lyx::graphics;
-
 namespace {
 
-grfx::DisplayType const defaultDisplayType = grfx::NoDisplay;
+lyx::graphics::DisplayType const defaultDisplayType = lyx::graphics::NoDisplay;
 
 unsigned int defaultLyxScale = 100;
 
@@ -182,10 +180,10 @@ void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 
 namespace {
 
-grfx::Params get_grfx_params(InsetExternal::Params const & eparams,
+lyx::graphics::Params get_grfx_params(InsetExternal::Params const & eparams,
 			     string const & filepath)
 {
-	grfx::Params gparams;
+	lyx::graphics::Params gparams;
 
 	if (!eparams.filename.empty()) {
 		Assert(AbsolutePath(filepath));
@@ -195,12 +193,12 @@ grfx::Params get_grfx_params(InsetExternal::Params const & eparams,
 	gparams.scale = eparams.lyxscale;
 	gparams.display = eparams.display;
 
-	if (gparams.display == grfx::DefaultDisplay)
+	if (gparams.display == lyx::graphics::DefaultDisplay)
 		gparams.display = lyxrc.display_graphics;
 
 	// Override the above if we're not using a gui
 	if (!lyx_gui::use_gui)
-		gparams.display = grfx::NoDisplay;
+		gparams.display = lyx::graphics::NoDisplay;
 
 	return gparams;
 }
@@ -240,7 +238,7 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 	bool display_button = (!getTemplatePtr(params_) ||
 			       params_.filename.empty() ||
 			       filepath.empty() ||
-			       params_.display == grfx::NoDisplay);
+			       params_.display == lyx::graphics::NoDisplay);
 
 	if (display_button) {
 		ButtonRenderer * button_ptr =
@@ -282,7 +280,7 @@ void InsetExternal::write(Buffer const *, ostream & os) const
 		os << "\tfilename " << params_.filename << '\n';
 
 	if (params_.display != defaultDisplayType)
-		os << "\tdisplay " << grfx::displayTranslator.find(params_.display)
+		os << "\tdisplay " << lyx::graphics::displayTranslator.find(params_.display)
 		   << '\n';
 
 	if (params_.lyxscale != defaultLyxScale)
@@ -332,7 +330,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		case EX_DISPLAY: {
 			lex.next();
 			string const name = lex.getString();
-			params.display = grfx::displayTranslator.find(name);
+			params.display = lyx::graphics::displayTranslator.find(name);
 			break;
 		}
 
