@@ -41,12 +41,19 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 	else
 		temp = _("HtmlUrl: ");
 
+	string url;
+ 
 	if (!getOptions().empty())
-		temp += getOptions();
+		url += getOptions();
 	else
-		temp += getContents();
+		url += getContents();
 
-	return temp;
+	// elide if long
+	if (url.length() > 30) {
+		url = url.substr(0, 10) + "..."
+			+ url.substr(url.length() - 17, url.length());
+	}
+	return temp + url;
 }
 
 
