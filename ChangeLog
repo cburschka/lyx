@@ -1,3 +1,29 @@
+2000-07-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (getStatus): add missing break for build-program
+	function; add test for Literate for export functions.
+
+	* lib/ui/default.ui: fix Insert->TOC->TOC; comment out invalid
+	entries in Options menu.
+
+2000-07-31  Baruch Even <baruch.even@writeme.com>
+
+	* src/frontends/xforms/Toolbar_pimpl.C (toolbarItem::operator=):
+	protect against auto-allocation; release icon when needed.
+
+2000-07-31  Matej Cepl <CeplM@seznam.cz>
+
+	* lib/kbd/czech.kmap: new file. standard Czech keyboard as found
+	on usual typewriter.
+
+	* lib/kbd/czech-prg.kmap: simpler czech kmap (which was the
+	earlier czech.kmap), useful only for programming.
+
+2000-07-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormCitation.h: fix conditioning around
+	#pragma. 
+
 2000-07-31  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/xforms/FormTabular.C (local_update): changed
@@ -16,34 +42,36 @@
 
 2000-07-31  Baruch Even <baruch.even@writeme.com>
 
-    * src/frontends/Dialogs.h: Added showGraphics signals.
+	* src/frontends/Dialogs.h: Added showGraphics signals.
     
-    * src/frontends/xforms/forms/form_graphics.fd: Added file, the xforms
-                    form definition of the graphics dialog.
+	* src/frontends/xforms/forms/form_graphics.fd: Added file, the
+	            xforms form definition of the graphics dialog.
 
-    * src/frontends/xforms/FormGraphics.h:
-    * src/frontends/xforms/FormGraphics.C: Added files, the GUIndependent
-                    code of InsetGraphics
+	* src/frontends/xforms/FormGraphics.h: 
+	* src/frontends/xforms/FormGraphics.C: Added files, the
+	GUIndependent code of InsetGraphics
     
-    * src/insets/insetgraphics.h:
-    * src/insets/insetgraphics.C: Major writing to make it work.
+	* src/insets/insetgraphics.h: 
+	* src/insets/insetgraphics.C: Major writing to make it work.
 
-    * src/insets/insetgraphicsParams.h:
-    * src/insets/insetgraphicsParams.C: Added files, parameter passing struct
-                    between InsetGraphics and GUI.
+	* src/insets/insetgraphicsParams.h:	
+	* src/insets/insetgraphicsParams.C: Added files, parameter passing
+	struct between InsetGraphics and GUI.
 
-    * src/LaTeXFeatures.h:
-    * src/LaTeXFeatures.C (c-tor, require, getPackages):
-                    Enabled support for graphicx package.
+	* src/LaTeXFeatures.h:
+	* src/LaTeXFeatures.C (c-tor, require, getPackages): Enabled
+	support for graphicx package. 
 
-    * src/buffer.C (parseSingleLyXformat2Token):
-                    Fixed read support for the graphics inset.
+	* src/buffer.C (parseSingleLyXformat2Token): Fixed read support
+	for the graphics inset.
 
-    * src/support/translator.h: Added file, used in InsetGraphicsParams. this                       is a template to translate between two types.
+	* src/support/translator.h: Added file, used in
+	InsetGraphicsParams. this is a template to translate between two
+	types.
 
-    * src/frontends/xforms/RadioButtonGroup.h:
-    * src/frontends/xforms/RadioButtonGroup.C: Added files, Comprise a way to
-                    easily control a radio button group.
+	* src/frontends/xforms/RadioButtonGroup.h: 
+	* src/frontends/xforms/RadioButtonGroup.C: Added files, Comprise a
+	way to easily control a radio button group.
 
 2000-07-28  Juergen Vigna  <jug@sad.it>
 

@@ -18,7 +18,7 @@
 #include "LString.h"
 #include "support/utility.hpp"
 
-#ifndef __GNUG__
+#ifdef __GNUG__
 #pragma interface
 #endif
 

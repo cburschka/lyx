@@ -182,7 +182,7 @@ Menuset
     End
 
     Menu "insert_toc"
-	Item "Table of Contents|C" "toc-view"
+	Item "Table of Contents|C" "toc-insert"
 	Item "List of Figures|F" "lof-insert"
 	Item "List of Tables|T" "lot-insert"
 	Item "List of Algorithms|A" "loa-insert"
@@ -216,10 +216,10 @@ Menuset
     End
 
     Menu "options"
-	Item "Screen Fonts...|F" "screen-options"
-	Item "Spellchecker Options...|S" "spellchecker-options"
-	Item "Keyboard...|K" "keyboard-options"
-	Separator
+#	Item "Screen Fonts...|F" "screen-options"
+#	Item "Spellchecker Options...|S" "spellchecker-options"
+#	Item "Keyboard...|K" "keyboard-options"
+#	Separator
 	Item "Reconfigure|R" "reconfigure"
 	Item "Preferences|P" "dialog-preferences"
     End

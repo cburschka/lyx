@@ -388,7 +388,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		break;
 	case LFUN_EXPORT:
 		if (argument == "latex")
-			disable = ! buf->isLatex();
+			disable = (! buf->isLatex() && ! buf->isLiterate()) ;
 		else if (argument == "linuxdoc")
 			disable = ! buf->isLinuxDoc();
 		else if (argument == "docbook")
@@ -403,7 +403,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 				|| (! buf->isLinuxDoc() && ! buf->isDocBook() 
 				    && lyxrc.html_command == "none");
 		else if (argument == "custom")
-			disable = ! buf->isLatex();
+			disable = (! buf->isLatex() && ! buf->isLiterate());
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -420,6 +420,8 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_BUILDPROG:
 		disable = (lyxrc.literate_command == "none" 
 			   || ! buf->isLiterate());
+		break;
+
 #ifndef NEW_TABULAR
 	case LFUN_LAYOUT_TABLE:
 		disable = ! owner->view()->text->cursor.par()->table;

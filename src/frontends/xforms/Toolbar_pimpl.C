@@ -64,6 +64,13 @@ void Toolbar::Pimpl::toolbarItem::clean() {
 
 Toolbar::Pimpl::toolbarItem & 
 Toolbar::Pimpl::toolbarItem::operator=(const toolbarItem & ti) {
+	// Are we assigning the object onto itself?
+	if (this == &ti)
+		return *this;
+
+	// If we already have an icon, release it.
+	clean();
+    
 	// do we have to check icon too?
 	action = ti.action;
 	icon = 0; // locally we need to get the icon anew
