@@ -454,7 +454,7 @@ void Reconfigure(BufferView * bv)
 	bv->owner()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir);
+	Path p(user_lyxdir());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			AddName(system_lyxdir(), "configure"));

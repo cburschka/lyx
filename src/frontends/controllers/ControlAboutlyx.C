@@ -27,9 +27,6 @@ using namespace lyx::support;
 
 using std::ostream;
 
-// needed for the browser
-extern string user_lyxdir;
-
 
 ControlAboutlyx::ControlAboutlyx(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -88,7 +85,7 @@ string const ControlAboutlyx::getVersion() const
 	   << MakeDisplayPath(system_lyxdir())
 	   << "\n"
 	   << _("User directory: ")
-	   << MakeDisplayPath(user_lyxdir);
+	   << MakeDisplayPath(user_lyxdir());
 
 	return STRCONV(ss.str());
 }

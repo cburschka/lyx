@@ -1,7 +1,7 @@
 2003-07-27  Angus Leeming  <leeming@lyx.org>
 
-	* path_defines.{h,C.in} (build_lyxdir, system_lyxdir): are now 
-	functions, not global vars.
+	* path_defines.{h,C.in} (build_lyxdir, system_lyxdir, 
+	user_lyxdir): are now functions, not global vars.
 
 	* Makefile.am: set build_lyxdir at make time.
 

@@ -64,8 +64,6 @@ extern void QuitLyX();
 
 extern LyXServer * lyxserver;
 
-extern string user_lyxdir;
-
 DebugStream lyxerr;
 
 boost::scoped_ptr<LastFiles> lastfiles;
@@ -253,7 +251,7 @@ void LyX::init(bool gui)
 	}
 
 	if (lyxrc.lastfiles.empty()) {
-		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
+		lyxrc.lastfiles = AddName(user_lyxdir(), "lastfiles");
 	}
 
 	if (lyxrc.roman_font_name.empty())
@@ -415,16 +413,16 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	string const configure_script = AddName(system_lyxdir(), "configure");
 
 	// Does user directory exist?
-	FileInfo fileInfo(user_lyxdir);
+	FileInfo fileInfo(user_lyxdir());
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
 		FileInfo script(configure_script);
-		FileInfo defaults(AddName(user_lyxdir, "lyxrc.defaults"));
+		FileInfo defaults(AddName(user_lyxdir(), "lyxrc.defaults"));
 		if (defaults.isOK() && script.isOK()
 		    && defaults.getModificationTime() < script.getModificationTime()) {
 			lyxerr << _("LyX: reconfiguring user directory")
 			       << endl;
-			Path p(user_lyxdir);
+			Path p(user_lyxdir());
 			::system(configure_script.c_str());
 			lyxerr << "LyX: " << _("Done!") << endl;
 		}
@@ -434,18 +432,18 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	first_start = !explicit_userdir;
 
 	lyxerr << bformat(_("LyX: Creating directory %1$s"
-				  " and running configure..."), user_lyxdir) << endl;
+				  " and running configure..."), user_lyxdir()) << endl;
 
-	if (!createDirectory(user_lyxdir, 0755)) {
+	if (!createDirectory(user_lyxdir(), 0755)) {
 		// Failed, let's use $HOME instead.
-		user_lyxdir = GetEnvPath("HOME");
+		user_lyxdir(GetEnvPath("HOME"));
 		lyxerr << bformat(_("Failed. Will use %1$s instead."),
-			user_lyxdir) << endl;
+			user_lyxdir()) << endl;
 		return;
 	}
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir);
+	Path p(user_lyxdir());
 	::system(configure_script.c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
@@ -656,7 +654,7 @@ int parse_userdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -userdir switch") << endl;
 		exit(1);
 	}
-	user_lyxdir = arg;
+	user_lyxdir(arg);
 	return 1;
 }
 

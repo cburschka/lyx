@@ -38,9 +38,6 @@ using std::pair;
 using std::make_pair;
 using std::vector;
 
-// We need these in the file browser.
-extern string user_lyxdir;
-
 
 ControlGraphics::ControlGraphics(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -76,7 +73,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	string const title = _("Select graphics file");
 
 	// Does user clipart directory exist?
-	string clipdir = AddName (user_lyxdir, "clipart");
+	string clipdir = AddName (user_lyxdir(), "clipart");
 	FileInfo fileInfo(clipdir);
 	if (!(fileInfo.isOK() && fileInfo.isDir()))
 		// No - bail out to system clipart directory

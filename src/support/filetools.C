@@ -80,7 +80,6 @@ using std::ifstream;
 using std::vector;
 using std::getline;
 
-extern string user_lyxdir;
 
 namespace lyx {
 namespace support {
@@ -187,7 +186,7 @@ string const FileOpenSearch(string const & path, string const & name,
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
 		path_element = subst(path_element, "$$LyX", system_lyxdir());
-		path_element = subst(path_element, "$$User", user_lyxdir);
+		path_element = subst(path_element, "$$User", user_lyxdir());
 
 		real_file = FileSearch(path_element, name, ext);
 
@@ -292,7 +291,7 @@ string const FileSearch(string const & path, string const & name,
 string const LibFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	string fullname = FileSearch(AddPath(user_lyxdir, dir), name, ext);
+	string fullname = FileSearch(AddPath(user_lyxdir(), dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
 
@@ -465,7 +464,7 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 int destroyDir(string const & tmpdir)
 {
 #ifdef __EMX__
-	Path p(user_lyxdir);
+	Path p(user_lyxdir());
 #endif
 	if (DeleteAllFilesInDir(tmpdir))
 		return -1;
@@ -497,14 +496,14 @@ string const CreateLyXTmpDir(string const & deflt)
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (mkdir(deflt, 0777)) {
 #ifdef __EMX__
-		Path p(user_lyxdir);
+		Path p(user_lyxdir());
 #endif
 			return CreateTmpDir(deflt, "lyx_tmpdir");
 		} else
 			return deflt;
 	} else {
 #ifdef __EMX__
-		Path p(user_lyxdir);
+		Path p(user_lyxdir());
 #endif
 		return CreateTmpDir("/tmp", "lyx_tmpdir");
 	}

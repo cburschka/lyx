@@ -27,13 +27,14 @@
 using std::endl;
 
 
-string user_lyxdir;
-
-
 namespace {
 
 // Store for the path to the lyx support files we're actually going to use.
 string system_lyxdir_;
+
+// Store for the path to the user-level support files.
+string user_lyxdir_;
+
 
 /* The absolute path to the system-level lyx support files.
  * (Make-time value.)
@@ -86,6 +87,18 @@ string const & system_lyxdir()
 void system_lyxdir(string const & sld)
 {
 	system_lyxdir_ = sld;
+}
+
+
+string const & user_lyxdir()
+{
+	return user_lyxdir_;
+}
+
+
+void user_lyxdir(string const & uld)
+{
+	user_lyxdir_ = uld;
 }
 
 
@@ -241,22 +254,22 @@ bool setLyxPaths()
 	// 2) LYX_USERDIR_14x environment variable
 	// 3) $HOME/.<name of binary>
 
-	// If we had a command line switch, user_lyxdir is already set
+	// If we had a command line switch, user_lyxdir_ is already set
 	bool explicit_userdir = true;
-	if (user_lyxdir.empty()) {
+	if (user_lyxdir_.empty()) {
 
 		// LYX_USERDIR_14x environment variable
-		user_lyxdir = GetEnvPath("LYX_USERDIR_14x");
+		user_lyxdir_ = GetEnvPath("LYX_USERDIR_14x");
 
 		// default behaviour
-		if (user_lyxdir.empty())
-			user_lyxdir = AddPath(GetEnvPath("HOME"),
-					      string(".") + PACKAGE);
+		if (user_lyxdir_.empty())
+			user_lyxdir_ = AddPath(GetEnvPath("HOME"),
+					       string(".") + PACKAGE);
 			explicit_userdir = false;
 	}
 
 	lyxerr[Debug::INIT] << "User LyX directory: '"
-			    <<  user_lyxdir << '\'' << endl;
+			    <<  user_lyxdir_ << '\'' << endl;
 	return explicit_userdir;
 }
 

@@ -40,6 +40,7 @@
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
 #include "support/tostr.h"
+#include "support/path_defines.h"
 #include "support/filetools.h"
 #include "support/LAssert.h"
 
@@ -63,8 +64,6 @@ using std::min;
 using std::vector;
 using std::setw;
 using std::setfill;
-
-extern string user_lyxdir;
 
 using namespace lyx::support;
 
@@ -330,7 +329,7 @@ void FormPreferences::apply()
 	// The "Save" button has been pressed.
 	if (controller().isClosing() && colors_.modifiedXformsPrefs) {
 		string const filename =
-			AddName(user_lyxdir, "preferences.xform");
+			AddName(user_lyxdir(), "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 }

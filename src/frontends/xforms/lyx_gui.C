@@ -16,6 +16,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 
 #include "debug.h"
 #include "gettext.h"
@@ -187,7 +188,7 @@ void parse_init(int & argc, char * argv[])
 
 void parse_lyxrc()
 {
-	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
+	XformsColor::read(AddName(user_lyxdir(), "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
 		lyxrc.popup_font_encoding = lyxrc.font_norm;

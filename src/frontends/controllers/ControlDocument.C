@@ -33,6 +33,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 
 using namespace lyx::support;
 
@@ -161,7 +162,7 @@ void ControlDocument::saveAsDefault()
 
 	lv_.buffer()->params.preamble = bp_->preamble;
 
-	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
+	string const fname = AddName(AddPath(user_lyxdir(), "templates/"),
 				     "defaults.lyx");
 	Buffer defaults(fname);
 	defaults.params = params();

@@ -20,6 +20,7 @@
 #include "support/systemcall.h"
 #include "support/path.h"
 #include "support/lyxalgo.h"
+#include "support/path_defines.h"
 
 #include <boost/cregex.hpp>
 #include <vector>
@@ -33,15 +34,13 @@ using std::endl;
 using std::sort;
 using std::unique;
 
-extern string user_lyxdir; // home of *Files.lst
-
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
-	Path p(user_lyxdir);
+	Path p(user_lyxdir());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
@@ -51,7 +50,7 @@ void rescanTexStyles()
 void texhash()
 {
 	// Run texhash in user lyx directory
-	Path p(user_lyxdir);
+	Path p(user_lyxdir());
 
 	//path to texhash through system
 	Systemcall one;

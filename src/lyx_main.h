@@ -25,8 +25,6 @@ class Buffer;
 class kb_keymap;
 
 
-/// e.g. $HOME/.lyx/
-extern string user_lyxdir;
 /// last files loaded
 extern boost::scoped_ptr<LastFiles> lastfiles;
 

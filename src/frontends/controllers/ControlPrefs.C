@@ -27,7 +27,6 @@
 #include "format.h"
 #include "debug.h"
 
-extern string user_lyxdir;
 extern BufferList bufferlist;
 
 using namespace lyx::support;
@@ -67,7 +66,7 @@ string const ControlPrefs::browsebind(string const & file)
 	string name = _("System Bind|#S#s");
 	pair<string,string> dir1(name, dir);
 
-	dir = AddName(user_lyxdir, "bind");
+	dir = AddName(user_lyxdir(), "bind");
 	// FIXME: stupid name
 	name = _("User Bind|#U#u");
 	pair<string,string> dir2(name, dir);
@@ -83,7 +82,7 @@ string const ControlPrefs::browseUI(string const & file)
 	string name = _("Sys UI|#S#s");
 	pair<string,string> dir1(name, dir);
 
-	dir = AddName(user_lyxdir, "ui");
+	dir = AddName(user_lyxdir(), "ui");
 	// FIXME: stupid name
 	name = _("User UI|#U#u");
 	pair<string,string> dir2(name, dir);

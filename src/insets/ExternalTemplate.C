@@ -20,15 +20,13 @@
 #include "support/path.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 
 using namespace lyx::support;
 
 using std::endl;
 using std::ostream;
 using std::for_each;
-
-extern string user_lyxdir;
-
 
 // We have to have dummy default commands for security reasons!
 
@@ -44,7 +42,7 @@ ExternalTemplate::FormatTemplate::FormatTemplate()
 ExternalTemplateManager::ExternalTemplateManager()
 {
 	// gimp gnuchess gnuplot ical netscape tetris xpaint
-	readTemplates(user_lyxdir);
+	readTemplates(user_lyxdir());
 	if (lyxerr.debugging())
 		dumpTemplates();
 }
