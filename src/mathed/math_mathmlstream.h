@@ -25,6 +25,8 @@ public:
 	///
 	explicit WriteStream(std::ostream & os_);
 	///
+	~WriteStream();
+	///
 	int line() const { return line_; }
 	///
 	bool fragile() const { return fragile_; }
@@ -37,7 +39,7 @@ public:
 	///
 	void addlines(unsigned int);
 	/// writes space if next thing is isalpha()
-	void pendingSpace(bool how) { pendingspace_ = how; }
+	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
 	bool pendingSpace() const { return pendingspace_; }
 private:
