@@ -21,6 +21,7 @@
 #include "buffer.h"
 #include "ParagraphParameters.h"
 #include "gettext.h"
+#include "factory.h"
 #include "intl.h"
 #include "language.h"
 #include "support/lstrings.h"
@@ -1053,6 +1054,37 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		tmp.push_back(Inset::LABEL_CODE);
 		tmp.push_back(Inset::REF_CODE);
 		gotoInset(bv, tmp, true);
+		break;
+	}
+
+#if 0
+	case LFUN_INSET_LIST:
+	case LFUN_INSET_THEOREM:
+#endif
+	case LFUN_INSERT_NOTE:
+	case LFUN_INSET_ERT:
+	case LFUN_INSET_EXTERNAL:
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_FOOTNOTE:
+	case LFUN_INSET_MARGINAL:
+	case LFUN_INSET_MINIPAGE:
+	case LFUN_INSET_OPTARG:
+	case LFUN_INSET_WIDE_FLOAT: {
+		Inset * inset = createInset(cmd);
+		if (inset) {
+			bool gotsel = false;
+			if (selection.set()) {
+				cutSelection(bv, true, false);
+				gotsel = true;
+			}
+			if (bv->insertInset(inset)) {
+				inset->edit(bv);
+				if (gotsel)
+					bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
+			}
+			else
+				delete inset;
+		}
 		break;
 	}
 

@@ -40,7 +40,6 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "funcrequest.h"
-#include "factory.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -1540,42 +1539,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			updateInset(inset, true);
 	}
 	break;
-
-#if 0
-	case LFUN_INSET_LIST:
-	case LFUN_INSET_THEOREM:
-#endif
-	case LFUN_INSERT_NOTE:
-	case LFUN_INSET_ERT:
-	case LFUN_INSET_EXTERNAL:
-	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_FOOTNOTE:
-	case LFUN_INSET_MARGINAL:
-	case LFUN_INSET_MINIPAGE:
-	case LFUN_INSET_OPTARG:
-	case LFUN_INSET_WIDE_FLOAT:
-	{
-		FuncRequest cmd = ev;
-		cmd.setView(bv_);
-		Inset * inset = createInset(cmd);
-		if (inset) {
-			bool gotsel = false;
-
-			if (bv_->getLyXText()->selection.set()) {
-				bv_->getLyXText()->cutSelection(bv_, true, false);
-				gotsel = true;
-			}
-
-			if (insertInset(inset)) {
-				inset->edit(bv_);
-				if (gotsel)
-					owner_->dispatch(FuncRequest(LFUN_PASTESELECTION));
-			}
-			else
-				delete inset;
-		}
-		break;
-	}
 
 	case LFUN_INSET_CAPTION:
 	{
