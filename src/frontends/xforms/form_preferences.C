@@ -1141,6 +1141,7 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 375, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 10, 435, 165, "");
   {
     char const * const dummy = N_("Ascii line length|#A");
     fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 330, 25, 100, 30, idex(_(dummy)));
@@ -1170,7 +1171,6 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 190, 435, 135, _("Outside code interaction"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("ascii roff|#r");
     fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 145, 205, 285, 30, idex(_(dummy)));
@@ -1192,7 +1192,6 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 10, 435, 165, "");
   {
     char const * const dummy = N_("Autoreset Class Options on change|#u");
     fdui->check_autoreset_classopt = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 140, 30, 30, idex(_(dummy)));

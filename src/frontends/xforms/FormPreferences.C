@@ -1981,7 +1981,7 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
 	fl_addto_choice(dialog_->choice_default_papersize,
-			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
+			_(" default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "));
 
 	// set up the feedback mechanism
 	setPrehandler(dialog_->counter_line_len);

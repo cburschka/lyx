@@ -126,7 +126,7 @@ void FormParagraph::build()
 			  "| Medskip | Bigskip | VFill | Length "));
 
 	fl_addto_choice(dialog_->choice_linespacing,
-			_(" Default | Single | OneHalf | Double | Other "));
+			_(" Default | Single | OneHalf | Double | Custom "));
 
 	fl_set_input_return(dialog_->input_space_above, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_space_below, FL_RETURN_CHANGED);

@@ -107,8 +107,8 @@ void FormDocument::build()
 	// the document paper form
 	paper_.reset(build_doc_paper());
 	fl_addto_choice(paper_->choice_papersize,
-			_(" Default | Custom | USletter | USlegal "
-			  "| USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "));
+			_(" Default | Custom | US letter | US legal "
+			  "| US executive | A3 | A4 | A5 | B3 | B4 | B5 "));
 	fl_addto_choice(paper_->choice_paperpackage,
 			_(" None "
 			  "| Small Margins "
@@ -198,7 +198,7 @@ void FormDocument::build()
 	}
 
 	fl_addto_choice(class_->choice_doc_spacing,
-			_(" Single | OneHalf | Double | Other "));
+			_(" Single | OneHalf | Double | Custom "));
 	fl_addto_choice(class_->choice_doc_fontsize, "default|10|11|12");
 	for (n=0; tex_fonts[n][0]; ++n) {
 		fl_addto_choice(class_->choice_doc_fonts,tex_fonts[n]);

@@ -3173,6 +3173,24 @@ callback:
 argument: 
 
 --------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 10 435 165
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
 box: 330 25 100 30
@@ -3237,7 +3255,7 @@ box: 10 190 435 135
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
-style: FL_BOLD_STYLE
+style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Outside code interaction
@@ -3301,24 +3319,6 @@ gravity: FL_NoGravity FL_NoGravity
 name: input_paperoption
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 10 10 435 165
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
 
 --------------------
 class: FL_CHECKBUTTON

@@ -91,9 +91,9 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 225, 120, _("Papersize"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 225, 120, _("Paper size"));
   {
-    char const * const dummy = N_("Papersize:|#P");
+    char const * const dummy = N_("Paper size:|#P");
     fdui->choice_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 110, 25, 115, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
@@ -252,14 +252,8 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 245, 400, 85, _("Separation"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 120, 75, _("Page cols"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 20, 120, 75, _("Sides"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Fonts:|#F");
     fdui->choice_doc_fonts = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 90, 160, 30, idex(_(dummy)));
@@ -285,7 +279,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, CHECKCHOICECLASS);
   {
-    char const * const dummy = N_("Pagestyle:|#P");
+    char const * const dummy = N_("Page style:|#P");
     fdui->choice_doc_pagestyle = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 55, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
