@@ -17,44 +17,9 @@
 #endif
 
 #include "insetcommand.h"
+#include <vector>
 
 class Buffer;
-
-/** Used to insert citations  
- */
-class InsetCitation: public InsetCommand {
-public:
-	///
-	InsetCitation() : InsetCommand("cite") {}
-	///
-	explicit
-	InsetCitation(string const & key, string const & note = string());
-        ///
-	~InsetCitation();
-        ///
-        Inset * Clone() const {
-		return new InsetCitation(contents, options);
-	}
-    	///
-	string getScreenLabel()const;
-        ///
-	void Edit(BufferView *, int x, int y, unsigned int button);
-        ///
-	EDITABLE Editable() const {
-		return IS_EDITABLE;
-	}
-	int Ascii(std::ostream &) const;
-	///
-	struct Holder {
-		InsetCitation * inset;
-		BufferView * view;
-	};
-
-private:
-	///
-	Holder holder;
-};
-
 
 /** Used to insert bibitem's information (key and label)
   
@@ -122,7 +87,7 @@ public:
 
         ///
 	Inset * Clone() const {
-		return new InsetBibtex(contents, options, 0);
+		return new InsetBibtex(getCmdName(), getOptions(), 0);
 	}
 	///  
 	Inset::Code LyxCode() const
@@ -136,7 +101,7 @@ public:
 	/// 
 	int Latex(std::ostream &, bool fragile, bool freespace) const;
 	///
-	string getKeys(char delim);
+	std::vector< std::pair<string,string> > getKeys() const;
 	///
 	EDITABLE Editable() const {
 		return IS_EDITABLE;

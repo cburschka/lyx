@@ -24,48 +24,28 @@ using std::ostream;
 using std::ifstream;
 using std::getline;
 using std::endl;
+using std::vector;
+using std::pair;
 
 extern BufferView * current_view;
 
-FD_citation_form * citation_form = 0;
 FD_bibitem_form * bibitem_form = 0;
-static Combox * bibcombox = 0;
 
-void BibitemUpdate(Combox *);
-FD_citation_form * create_form_citation_form(void);
 FD_bibitem_form * create_form_bibitem_form(void);
 
 
 extern "C" void bibitem_cb(FL_OBJECT *, long data)
 {
-	switch (data) {
-	case 1: // OK, citation
-        {
-		InsetCitation::Holder * holder =
-			static_cast<InsetCitation::Holder*>
-			(citation_form->citation_form->u_vdata);
-		if(!holder->view->buffer()->isReadonly()) {
-			
-			InsetCitation * inset = holder->inset;
-			inset->setContents(bibcombox->getline());
-			inset->setOptions(fl_get_input(citation_form->label));
-			fl_hide_form(citation_form->citation_form);
-			// shouldn't mark the buffer dirty unless something
-			// was actually altered
-			holder->view->updateInset(inset, true);
-			break;
-		}
-		// fall through to Cancel on RO-mode
-        }       
-	case 0: fl_hide_form(citation_form->citation_form);
-                break;
-	case 3: // OK, bibitem
-        {
+	switch (data)
+	{
+	case 1:
+	{
 		InsetBibKey::Holder * holder =
 			static_cast<InsetBibKey::Holder*>
 			(bibitem_form->bibitem_form->u_vdata);
 		
-		if(!holder->view->buffer()->isReadonly()) {
+		if(!holder->view->buffer()->isReadonly())
+		{
 			InsetBibKey * inset = holder->inset;
 			inset->setContents(fl_get_input(bibitem_form->key));
 			inset->setOptions(fl_get_input(bibitem_form->label));
@@ -75,45 +55,13 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 			holder->view->update(1);
 			break;
 		} // fall through to Cancel on RO-mode
-        }
-	case 2: // Cancel, bibitem
-		fl_hide_form(bibitem_form->bibitem_form); // Cancel, bibitem
+	}
+	case 0:
+		fl_hide_form(bibitem_form->bibitem_form);
 		break;
         }
 }
 
-
-FD_citation_form * create_form_citation_form(void)
-{
-	FL_OBJECT * obj;
-	FD_citation_form * fdui = (FD_citation_form *) fl_calloc(1, sizeof(FD_citation_form));
-
-	fdui->citation_form = fl_bgn_form(FL_NO_BOX, 220, 130);
-	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
-	fdui->key = obj = fl_add_text(FL_NORMAL_TEXT, 20, 10, 60, 30, _("Key:"));
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
-
-	bibcombox = new Combox(FL_COMBOX_INPUT);
-	bibcombox->add(80, 10, 130, 30, 300);
-
-	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 1);
-	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
-	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 0);
-	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Remark:|#R")));
-	fl_set_input_shortcut(obj, scex(_("Remark:|#R")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_end_form();
-
-	//fdui->citation_form->fdui = fdui;
-
-	return fdui;
-}
-/*---------------------------------------*/
 
 FD_bibitem_form * create_form_bibitem_form(void)
 {
@@ -127,11 +75,11 @@ FD_bibitem_form * create_form_bibitem_form(void)
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 3);
+	fl_set_object_callback(obj, bibitem_cb, 1);
 	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
 	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 2);
+	fl_set_object_callback(obj, bibitem_cb, 0);
 	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Label:|#L")));
 	fl_set_input_shortcut(obj, scex(_("Label:|#L")), 1);
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -141,86 +89,19 @@ FD_bibitem_form * create_form_bibitem_form(void)
 
 	return fdui;
 }
-/*---------------------------------------*/
 
-
-InsetCitation::InsetCitation(string const & key, string const & note)
-	: InsetCommand("cite", key, note)
-{
-
-}
-
-
-InsetCitation::~InsetCitation()
-{
-	if(citation_form && citation_form->citation_form
-	   && citation_form->citation_form->visible
-	   && citation_form->citation_form->u_vdata == &holder)
-		fl_hide_form(citation_form->citation_form);
-}
-
-
-void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
-{
-	if(bv->buffer()->isReadonly())
-		WarnReadonly(bv->buffer()->fileName());
-
-	if (!citation_form) {
-		citation_form = create_form_citation_form();
-		fl_set_form_atclose(citation_form->citation_form, 
-				    CancelCloseBoxCB, 0);
-	}
-
-	holder.inset = this;
-	holder.view = bv;
-		
-	citation_form->citation_form->u_vdata = &holder;
-
-	BibitemUpdate(bibcombox);
-	if (!bibcombox->select_text(getContents().c_str()))
-		bibcombox->addline(getContents().c_str());
-	    
-	fl_set_input(citation_form->label, getOptions().c_str());
-	if (citation_form->citation_form->visible) {
-		fl_raise_form(citation_form->citation_form);
-	} else {
-		fl_show_form(citation_form->citation_form,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("Citation"));
-	}   
-}
-
-
-string InsetCitation::getScreenLabel() const
-{
-	string temp("[");
-
-	temp += contents;
-
-	if (!options.empty()) {
-		temp += ", " + options;
-	}
-
-	return temp + ']';
-}
-
-int InsetCitation::Ascii(ostream & os) const
-{
-	os << getScreenLabel();;
-	return 0;
-}
 
 InsetBibKey::InsetBibKey(string const & key, string const & label):
 	InsetCommand("bibitem", key, label)
 {
 	counter = 1;
 	if (key.empty())
-		contents = ' ';
+		setCmdName(" ");
 }
 
 
 InsetBibKey::InsetBibKey(InsetBibKey const * b):
-	InsetCommand("bibitem", b->contents, b->options)
+	InsetCommand("bibitem", b->getContents(), b->getOptions())
 {
 	counter = b->counter;
 }
@@ -238,8 +119,8 @@ void InsetBibKey::setCounter(int c)
 { 
 	counter = c; 
     
-	if (contents.empty())
-		contents += tostr(counter);
+	if (getCmdName().empty())
+		setCmdName( tostr(counter) );
 }
 
 
@@ -250,19 +131,19 @@ void InsetBibKey::setCounter(int c)
 void InsetBibKey::Write(ostream & os) const
 {
 	os << "\\bibitem ";
-	if (!options.empty()) {
+	if (! getOptions().empty()) {
 		os << '['
-		   << options << ']';
+		   << getOptions() << ']';
 	}
 	os << '{'
-	   << contents << "}\n";
+	   << getContents() << "}\n";
 }
 
 
 string InsetBibKey::getScreenLabel() const
 {
-	if (!options.empty())
-		return options;
+	if (! getOptions().empty())
+		return getOptions();
     
 	return tostr(counter);
 }
@@ -304,7 +185,6 @@ void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 			     _("Bibliography item"));
 	}   
 }
-
 
 
 InsetBibtex::InsetBibtex(string const & dbase, string const & style,
@@ -370,7 +250,7 @@ int InsetBibtex::Latex(ostream & os,
 
 
 // This method returns a comma separated list of Bibtex entries
-string InsetBibtex::getKeys(char delim)
+vector<pair<string,string> > InsetBibtex::getKeys() const
 {
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
@@ -384,7 +264,8 @@ string InsetBibtex::getKeys(char delim)
 	
 	Path p(owner->filepath);
 
-	string tmp, keys;
+	vector<pair<string,string> > keys;
+	string tmp;
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
@@ -398,23 +279,24 @@ string InsetBibtex::getKeys(char delim)
 			// in @ and not being @preamble and @string entries.
 			// It does NOT do any syntax checking!
 			ifstream ifs(fil.c_str());
-			string linebuf;
-			while (getline(ifs, linebuf)) {
-				linebuf = frontStrip(linebuf);
+			string linebuf0;
+			while (getline(ifs, linebuf0)) {
+				string linebuf = frontStrip(strip(linebuf0));
+				if( linebuf.empty() ) continue;
 				if (prefixIs(linebuf, "@")) {
 					linebuf = subst(linebuf, '{', '(');
 					linebuf = split(linebuf, tmp, '(');
 					tmp = lowercase(tmp);
 					if (!prefixIs(tmp, "@string")
 					    && !prefixIs(tmp, "@preamble")) {
-						linebuf = split(linebuf,
-								tmp, ',');
-						tmp = frontStrip(strip(tmp));
+						linebuf = split(linebuf, tmp, ',');
+						tmp = frontStrip(tmp);
 						if (!tmp.empty()) {
-							keys += tmp;
-							keys += delim;
+							keys.push_back(pair<string,string>(tmp,string()));
 						}
 					}
+				} else if( !keys.empty() ) {
+					keys.back().second += linebuf + "\n";
 				}
 			}
 		}
@@ -454,10 +336,10 @@ void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 
 bool InsetBibtex::addDatabase(string const & db)
 {
-	if (!contains(contents, db.c_str())) {
-		if (!contents.empty()) 
-			contents += ',';
-		contents += db;
+	if (!contains(getContents(), db.c_str())) {
+		if (!getContents().empty()) 
+			addContents(",");
+		addContents(db);
 		return true;
 	}
 	return false;
@@ -466,38 +348,21 @@ bool InsetBibtex::addDatabase(string const & db)
 
 bool InsetBibtex::delDatabase(string const & db)
 {
-	if (contains(contents, db.c_str())) {
+	if (contains(getContents(), db.c_str())) {
 		string bd = db;
-		int n = tokenPos(contents, ',', bd);
+		int n = tokenPos(getContents(), ',', bd);
 		if (n > 0) {
 			// Weird code, would someone care to explain this?(Lgb)
 			string tmp(", ");
 			tmp += bd;
-			contents = subst(contents, tmp.c_str(), ", ");
+			setContents(subst(getContents(), tmp.c_str(), ", "));
 		} else if (n == 0)
-			contents = split(contents, bd, ',');
+			setContents(split(getContents(), bd, ','));
 		else 
 			return false;
 	}
 	return true;
 }
-
-
-// This function should be in LyXView when multiframe works ale970302
-void BibitemUpdate(Combox * combox)
-{
-	combox->clear();
-	
-	if (!current_view->available()) return;
-	
-	string tmp, bibkeys = current_view->buffer()->getBibkeyList(',');
-	bibkeys = split(bibkeys, tmp,',');
-	while (!tmp.empty()) {
-		combox->addto(tmp.c_str());
-		bibkeys = split(bibkeys, tmp,',');
-	}
-}
-
 
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
@@ -519,7 +384,7 @@ int bibitemMaxWidth(Painter & pain, LyXFont const & font)
 
 
 // ale070405
-string bibitemWidthest(Painter & pain)
+string bibitemWidest(Painter & pain)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)

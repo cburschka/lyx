@@ -26,6 +26,7 @@
 using std::ostream;
 using std::endl;
 using std::vector;
+using std::pair;
 
 extern BufferView * current_view;
 
@@ -216,7 +217,7 @@ InsetInclude::~InsetInclude()
 
 Inset * InsetInclude::Clone() const
 { 
-	InsetInclude * ii = new InsetInclude (contents, master); 
+	InsetInclude * ii = new InsetInclude (getContents(), master); 
 	ii->setNoLoad(isNoLoad());
 	// By default, the newly created inset is of `include' type,
 	// so we do not test this case.
@@ -241,7 +242,7 @@ void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 	}
         form->include->u_vdata = this;
     
-        fl_set_input(form->input, contents.c_str());
+        fl_set_input(form->input, getContents().c_str());
 	fl_set_button(form->flag1, int(isNoLoad()));
 	fl_set_button(form->flag2, int(isInput()));
 	fl_set_button(form->flag3, int(isInclude()));
@@ -302,10 +303,10 @@ string InsetInclude::getScreenLabel() const
 	} else temp += _("Include");
 	temp += ": ";
 	
-	if (contents.empty()) {
+	if (getContents().empty()) {
 		temp+= "???";
 	} else {
-		temp+= contents;
+		temp+= getContents();
 	}
 	return temp;
 }
@@ -314,7 +315,7 @@ string InsetInclude::getScreenLabel() const
 void InsetInclude::setContents(string const & c)
 {
 	InsetCommand::setContents(c);
-	filename = MakeAbsPath(contents, 
+	filename = MakeAbsPath(getContents(), 
 			       OnlyPath(getMasterFilename())); 
 }
 
@@ -337,12 +338,12 @@ int InsetInclude::Latex(ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	// Do nothing if no file name has been specified
-	if (contents.empty())
+	if (getContents().empty())
 		return 0;
     
 	// Use += to force a copy of contents (JMarc)
 	// How does that force anything? (Lgb)
-	string incfile(contents);
+	string incfile(getContents());
 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
@@ -381,21 +382,21 @@ int InsetInclude::Latex(ostream & os,
 	} 
 
 	if (isVerb()) {
-		os << '\\' << command << '{' << incfile << '}';
+		os << '\\' << getCmdName() << '{' << incfile << '}';
 	} 
 	else if (isInput()) {
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(getFileName())) {
-			os << '\\' << command << '{' << incfile << '}';
+			os << '\\' << getCmdName() << '{' << incfile << '}';
 		} else {
-			os << '\\' << command << '{'
+			os << '\\' << getCmdName() << '{'
 			   << ChangeExtension(incfile, ".tex")
 			   <<  '}';
 		}
 	} else {
 		// \include don't want extension and demands that the
 		// file really have .tex
-		os << '\\' << command << '{'
+		os << '\\' << getCmdName() << '{'
 		   << ChangeExtension(incfile, string())
 		   << '}';
 	}
@@ -436,16 +437,16 @@ vector<string> InsetInclude::getLabelList() const
 }
 
 
-string InsetInclude::getKeys(char delim) const
+vector<pair<string,string> > InsetInclude::getKeys() const
 {
-	string lst;
+	vector<pair<string,string> > keys;
 	
 	if (loadIfNeeded()) {
 		Buffer *tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName(""); 
-		lst =  tmp->getBibkeyList(delim);
+		keys =  tmp->getBibkeyList();
 		tmp->setParentName(getMasterFilename());
 	}
 	
-	return lst;
+	return keys;
 }

@@ -314,7 +314,7 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 
 void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
 {	
-  //extern Colormap color_map;
+  /* extern Colormap color_map; */
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
@@ -343,7 +343,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 				XFreePixmap(fl_display, dummy_shapemask);
 			}
 		}
-		//XFlush(fl_display);
+		/* XFlush(fl_display); */
 	}
 }
 

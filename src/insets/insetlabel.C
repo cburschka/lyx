@@ -42,7 +42,7 @@ Inset * InsetLabel::Clone() const
 
 vector<string> InsetLabel::getLabelList() const
 {
-	return vector<string>(1,contents);
+	return vector<string>(1,getContents());
 }
 
 
@@ -53,15 +53,14 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 		return;
 	}
 
-	pair<bool, string> result = askForText(_("Enter label:"),
-					       contents);
+	pair<bool, string> result = askForText(_("Enter label:"), getContents());
 	if (result.first) {
 		string new_contents = frontStrip(strip(result.second));
 		if (!new_contents.empty() &&
-		    contents != new_contents) {
+		    getContents() != new_contents) {
 			bv->buffer()->markDirty();
-			bool flag = bv->ChangeRefs(contents,new_contents);
-			contents = new_contents;
+			bool flag = bv->ChangeRefs(getContents(),new_contents);
+			setContents( new_contents );
 			bv->text->RedoParagraph();
 			if (flag) {
 				bv->redraw();

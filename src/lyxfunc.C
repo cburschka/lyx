@@ -49,6 +49,7 @@ using std::istringstream;
 #include "insets/insetindex.h"
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
+#include "insets/insetcite.h"
 #include "insets/insettext.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"

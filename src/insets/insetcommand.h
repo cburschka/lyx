@@ -74,12 +74,12 @@ public:
 	{
 		return getCommand();
 	}
-	
+
 	/// Build the complete LaTeX command
 	string getCommand() const;
 	///
 	string const & getCmdName() const {
-		return command;
+		return cmdname;
 	}
 	///
 	string const & getOptions() const {
@@ -91,7 +91,7 @@ public:
 	}
 	///
 	void setCmdName(string const & n) {
-		command = n;
+		cmdname = n;
 	}
 	///
 	void setOptions(string const & o) {
@@ -101,9 +101,13 @@ public:
 	virtual void setContents(string const & c) {
 		contents = c;
 	}
-protected:
+	///
+	void addContents(string const & c) {
+		contents += c;
+	}
+private:
 	///    
-	string command;
+	string cmdname;
 	///    
 	string options;
 	///    

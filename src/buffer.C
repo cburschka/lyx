@@ -60,6 +60,7 @@
 #include "insets/insetquotes.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insetbib.h" 
+#include "insets/insetcite.h" 
 #include "insets/insetindex.h" 
 #include "insets/insetinclude.h"
 #include "insets/insettoc.h"
@@ -3833,49 +3834,43 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 }
 
 // This is also a buffer property (ale)
-string Buffer::getBibkeyList(char delim)
+vector<pair<string,string> > Buffer::getBibkeyList()
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]
         if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
 		Buffer * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
-			return tmp->getBibkeyList(delim);
+			return tmp->getBibkeyList();
 	}
 
-	string bibkeys;
+	vector<pair<string,string> > keys;
 	LyXParagraph * par = paragraph;
 	while (par) {
-		if (par->bibkey) {
-			if (!bibkeys.empty())
-				bibkeys += delim;
-			bibkeys += par->bibkey->getContents();
-		}
+		if (par->bibkey)
+			keys.push_back(pair<string,string>(par->bibkey->getContents(),
+							   par->String(false)));
 		par = par->next;
 	}
 
 	// Might be either using bibtex or a child has bibliography
-	if (bibkeys.empty()) {
+	if (keys.empty()) {
 		for (inset_iterator it = inset_iterator_begin();
-		     it != inset_iterator_end(); ++it) {
+			it != inset_iterator_end(); ++it) {
 			// Search for Bibtex or Include inset
 			if ((*it)->LyxCode() == Inset::BIBTEX_CODE) {
-				if (!bibkeys.empty())
-					bibkeys += delim;
-				bibkeys += static_cast<InsetBibtex *>(*it)->getKeys(delim);
+				vector<pair<string,string> > tmp =
+					static_cast<InsetBibtex*>(*it)->getKeys();
+				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			} else if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
-				string bk(static_cast<InsetInclude *>(*it)->getKeys(delim));
-				if (!bk.empty()) {
-					if (!bibkeys.empty())
-						bibkeys += delim;
-					bibkeys += bk;
-				}
+				vector<pair<string,string> > tmp =
+					static_cast<InsetInclude*>(*it)->getKeys();
+				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			}
 		}
 	}
  
-	lyxerr.debug() << "Bibkeys(" << bibkeys << ")" << endl;
-	return bibkeys;
+	return keys;
 }
 
 

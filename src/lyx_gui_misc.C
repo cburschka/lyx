@@ -175,8 +175,8 @@ void CloseAllBufferRelatedPopups()
 		}
 	}
 	if (citation_form) {
-		if (citation_form->citation_form->visible) {
-			fl_hide_form(citation_form->citation_form);
+		if (citation_form->form->visible) {
+			fl_hide_form(citation_form->form);
 		}
 	}
 	if (bibitem_form) {
@@ -323,8 +323,8 @@ void updateAllVisibleBufferRelatedPopups()
 	}
 #endif
 	if (citation_form) {
-		if (citation_form->citation_form->visible) {
-			fl_hide_form(citation_form->citation_form);
+		if (citation_form->form->visible) {
+			fl_hide_form(citation_form->form);
 		}
 	}
 	if (bibitem_form) {

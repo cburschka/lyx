@@ -46,10 +46,7 @@ int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
 // parameters? (JMarc)
 extern BufferView * current_view;
-
-
-// ale970405
-extern string bibitemWidthest(Painter &);
+extern string bibitemWidest(Painter &);
 
 // this is a minibuffer
 static char minibuffer_char;
@@ -3644,7 +3641,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 		} else if (style.labeltype == LABEL_BIBLIO) {
 			// ale970405
 			os << "\\begin{" << style.latexname() << "}{"
-			   << bibitemWidthest(current_view->painter())
+			   <<  bibitemWidest(current_view->painter())
 			   << "}\n";
 		} else if (style.latextype == LATEX_ITEM_ENVIRONMENT) {
 #ifdef FANCY_FOOTNOTE_CODE

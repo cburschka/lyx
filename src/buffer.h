@@ -291,7 +291,7 @@ public:
 	///
 	string getIncludeonlyList(char delim = ',');
 	///
-	string getBibkeyList(char delim = '|');
+	std::vector<std::pair<string,string> > getBibkeyList();
 	///
 	struct TocItem {
 		LyXParagraph * par;

@@ -29,7 +29,7 @@ InsetCommand::InsetCommand()
 
 InsetCommand::InsetCommand(string const & cmd, string const & arg, 
 			   string const & opt)
-	: command(cmd), options(opt), contents(arg)
+	: cmdname(cmd), options(opt), contents(arg)
 {
 }
 
@@ -125,46 +125,46 @@ void InsetCommand::Write(ostream & os) const
 
 void InsetCommand::scanCommand(string const & cmd)
 {
-	string tcommand, toptions, tcontents;
+	string tcmdname, toptions, tcontents;
 
 	if (cmd.empty()) return;
 
-	enum { WS, Command, Option, Content } state = WS;
+	enum { WS, CMDNAME, OPTION, CONTENT } state = WS;
 	
 	// Used to handle things like \command[foo[bar]]{foo{bar}}
 	int nestdepth = 0;
 
 	for (string::size_type i = 0; i < cmd.length(); ++i) {
 		char c = cmd[i];
-		if ((state == Command && c == ' ') ||
-		    (state == Command && c == '[') ||
-		    (state == Command && c == '{')) {
+		if ((state == CMDNAME && c == ' ') ||
+		    (state == CMDNAME && c == '[') ||
+		    (state == CMDNAME && c == '{')) {
 			state = WS;
 		}
-		if ((state == Option  && c == ']') ||
-		    (state == Content && c == '}')) {
+		if ((state == OPTION  && c == ']') ||
+		    (state == CONTENT && c == '}')) {
 			if (nestdepth == 0) {
 				state = WS;
 			} else {
 				--nestdepth;
 			}
 		}
-		if ((state == Option  && c == '[') ||
-		    (state == Content && c == '{')) {
+		if ((state == OPTION  && c == '[') ||
+		    (state == CONTENT && c == '{')) {
 		    	++nestdepth;
 		}
 		switch (state) {
-		case Command:	tcommand += c; break;
-		case Option: 	toptions += c; break;
-		case Content:	tcontents += c; break;
+		case CMDNAME:	tcmdname += c; break;
+		case OPTION: 	toptions += c; break;
+		case CONTENT:	tcontents += c; break;
 		case WS:
 			if (c == '\\') {
-				state = Command;
+				state = CMDNAME;
 			} else if (c == '[') {
-				state = Option;
+				state = OPTION;
 				nestdepth = 0; // Just to be sure
 			} else if (c == '{') {
-				state = Content;
+				state = CONTENT;
 				nestdepth = 0; // Just to be sure
 			}
 			break;
@@ -172,7 +172,7 @@ void InsetCommand::scanCommand(string const & cmd)
 	}
 
 	// Don't mess with this.
-	if (!tcommand.empty()) command = tcommand;
+	if (!tcmdname.empty()) cmdname = tcmdname;
 	if (!toptions.empty()) options = toptions;
 	if (!tcontents.empty()) setContents(tcontents); 
                 	// setContents is overloaded in InsetInclude
@@ -224,14 +224,14 @@ int InsetCommand::DocBook(ostream &) const
 
 Inset * InsetCommand::Clone() const
 {
-	return new InsetCommand(command, contents, options);
+	return new InsetCommand(cmdname, contents, options);
 }
 
 
 string InsetCommand::getCommand() const
 {	
 	string s;
-	if (!command.empty()) s += "\\"+command;
+	if (!cmdname.empty()) s += "\\"+cmdname;
 	if (!options.empty()) s += "["+options+']';
 	s += "{"+contents+'}';
 	return s;

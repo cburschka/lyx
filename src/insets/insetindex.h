@@ -36,7 +36,7 @@ public:
 	///
 	~InsetIndex();
 	///
-	Inset * Clone() const { return new InsetIndex(contents);}
+	Inset * Clone() const { return new InsetIndex(getContents());}
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///

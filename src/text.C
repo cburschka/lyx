@@ -40,9 +40,6 @@ using std::endl;
 using std::pair;
 
 static const int LYX_PAPER_MARGIN = 20;
-
-
-// ale070405
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
 
 static int iso885968x[] = {

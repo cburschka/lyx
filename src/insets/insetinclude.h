@@ -43,7 +43,7 @@ public:
 	/// This returns the list of labels on the child buffer
 	std::vector<string> getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
-	string getKeys(char delim) const;
+	std::vector< std::pair<string,string> > getKeys() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///

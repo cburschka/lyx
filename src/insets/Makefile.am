@@ -16,6 +16,8 @@ libinsets_la_SOURCES = \
 	inset.C \
 	insetbib.C \
 	insetbib.h \
+	insetcite.C \
+	insetcite.h \
 	insetcollapsable.C \
 	insetcollapsable.h \
 	insetcommand.C \

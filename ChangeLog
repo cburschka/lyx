@@ -1,3 +1,15 @@
+2000-06-06  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* forms/cite.fd: new citation dialog
+
+	* src/insetcite.[Ch]: the new citation dialog is moved into
+	its own files.
+
+	* src/insetbib.C: InsetBibtex::getKeys() uses STL containers
+	(Dekel).
+
+	* src/insets/insetcommand.h: data members made private. 
+
 2000-06-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* LyX 1.1.5 released
