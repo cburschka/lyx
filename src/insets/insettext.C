@@ -596,12 +596,9 @@ RowList::iterator InsetText::crow() const
 
 void InsetText::setViewCache(BufferView const * bv) const
 {
-	if (bv) {
-		if (bv != text_.bv_owner) {
-			//lyxerr << "setting view cache from "
-			//	<< text_.bv_owner << " to " << bv << "\n";
-			text_.init(const_cast<BufferView *>(bv));
-		}
+	if (bv && bv != text_.bv_owner) {
+		//lyxerr << "setting view cache from "
+		//	<< text_.bv_owner << " to " << bv << "\n";
 		text_.bv_owner = const_cast<BufferView *>(bv);
 	}
 }
