@@ -1,3 +1,8 @@
+2005-02-20  André Pönitz  <poenitz@gmx.net>
+
+	* insetcollapsable.C: Prevent problems on double-/
+	tripleclick on collapsable label (bug 1797).
+
 2005-02-13  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.[Ch] (border_): new 
