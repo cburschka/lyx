@@ -105,6 +105,8 @@ MathArray::iterator extractArgument(MathArray & ar,
 
 MathScriptInset const * asScript(MathArray::const_iterator it)
 {
+	if (!it->nucleus())
+		return 0;
 	if (it->nucleus()->asScriptInset())
 		return 0;
 	++it;

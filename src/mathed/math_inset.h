@@ -204,14 +204,11 @@ public:
 	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
 	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
 	virtual MathXYMatrixInset const* asXYMatrixInset() const{ return 0; }
-	virtual UpdatableInset     * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
 	/// thing that can be moved into
 	virtual bool isActive() const { return nargs() > 0; }
-	/// identifies insets from the outer world
-	virtual bool isHyperActive() const { return 0; }
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
 

@@ -249,12 +249,6 @@ bool MathCursor::popRight()
 #endif
 
 
-UpdatableInset * MathCursor::asHyperActiveInset() const
-{
-	return par()->asHyperActiveInset();
-}
-
-
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i)
@@ -266,9 +260,6 @@ bool MathCursor::isInside(MathInset const * p) const
 
 bool MathCursor::openable(MathAtom const & t, bool sel) const
 {
-	if (t->isHyperActive())
-		return true;
-
 	if (!t->isActive())
 		return false;
 
@@ -316,9 +307,6 @@ bool MathCursor::left(bool sel)
 	lastcode_ = LM_TC_MIN;
 
 	if (hasPrevAtom() && openable(prevAtom(), sel)) {
-		if (prevAtom()->isHyperActive()) {
-			lyxerr << "entering hyperactive inset\n";
-		}
 		pushRight(prevAtom());
 		return true;
 	}
@@ -339,12 +327,6 @@ bool MathCursor::right(bool sel)
 	lastcode_ = LM_TC_MIN;
 
 	if (hasNextAtom() && openable(nextAtom(), sel)) {
-		if (nextAtom()->isHyperActive()) {
-			lyxerr << "entering hyperactive inset\n";
-			int x, y;
-			getPos(x, y);
-			nextAtom()->edit(formula()->view(), x, y, 0);
-		}
 		pushLeft(nextAtom());
 		return true;
 	}
@@ -982,12 +964,14 @@ void MathCursor::normalize()
 	pos() = min(pos(), size());
 
 	// remove empty scripts if possible
-	for (pos_type i = 0; i < size(); ++i) {
-		MathScriptInset * p = array().at(i)->asScriptInset();
-		if (p) {
-			p->removeEmptyScripts();
-			if (p->empty())
-				array().erase(i);
+	if (1) {
+		for (pos_type i = 0; i < size(); ++i) {
+			MathScriptInset * p = array().at(i)->asScriptInset();
+			if (p) {
+				p->removeEmptyScripts();
+				//if (p->empty())
+				//	array().erase(i);
+			}
 		}
 	}
 
