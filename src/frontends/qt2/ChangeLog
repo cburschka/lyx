@@ -1,3 +1,8 @@
+2003-03-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (available): Rewrite as the old version did not
+	work properly.
+
 2003-02-28  Alfredo Braunstein <abraunst@libero.it>
 
 	* QLImage.C 
