@@ -2458,6 +2458,14 @@ Paragraph * InsetTabular::firstParagraph() const
 }
 
 
+Paragraph * InsetTabular::getFirstParagraph(int i) const
+{
+	return (i < tabular->GetNumberOfCells())
+		? tabular->GetCellInset(i)->getFirstParagraph(0)
+		: 0;
+}
+
+
 LyXCursor const & InsetTabular::cursor(BufferView * bv) const
 {
 	if (the_locking_inset)

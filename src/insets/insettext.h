@@ -221,6 +221,8 @@ public:
 	///
 	Paragraph * firstParagraph() const;
 	///
+	Paragraph * getFirstParagraph(int) const;
+	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	Paragraph * paragraph() const;

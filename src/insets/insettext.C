@@ -2122,6 +2122,12 @@ Paragraph * InsetText::firstParagraph() const
 }
 
 
+Paragraph * InsetText::getFirstParagraph(int i) const
+{
+	return (i == 0) ? par : 0;
+}
+
+
 LyXCursor const & InsetText::cursor(BufferView * bv) const
 {
 		if (the_locking_inset)

@@ -577,6 +577,12 @@ Paragraph * InsetCollapsable::firstParagraph() const
 }
 
 
+Paragraph * InsetCollapsable::getFirstParagraph(int i) const
+{
+	return inset.getFirstParagraph(i);
+}
+
+
 LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
 {
 	return inset.cursor(bv);

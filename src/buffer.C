@@ -107,6 +107,7 @@
 #include "converter.h"
 #include "BufferView.h"
 #include "ParagraphParameters.h"
+#include "iterators.h"
 
 using std::ostream;
 using std::ofstream;
@@ -3755,22 +3756,19 @@ void Buffer::redraw()
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
 
-	Paragraph * par = paragraph;
-	while (par) {
-		par->changeLanguage(params, from, to);
-		par = par->next();
-	}
+	ParIterator end = par_iterator_end();
+	for (ParIterator it = par_iterator_begin(); it != end; ++it)
+		(*it)->changeLanguage(params, from, to);
 }
 
 
 bool Buffer::isMultiLingual()
 {
-	Paragraph * par = paragraph;
-	while (par) {
-		if (par->isMultiLingual(params))
+	ParIterator end = par_iterator_end();
+	for (ParIterator it = par_iterator_begin(); it != end; ++it)
+		if ((*it)->isMultiLingual(params))
 			return true;
-		par = par->next();
-	}
+
 	return false;
 }
 
@@ -3830,4 +3828,16 @@ Paragraph * Buffer::getParFromID(int id) const
 		par = par->next();
 	}
 	return 0;
+}
+
+
+ParIterator Buffer::par_iterator_begin()
+{
+        return ParIterator(paragraph);
+}
+
+
+ParIterator Buffer::par_iterator_end()
+{
+        return ParIterator();
 }

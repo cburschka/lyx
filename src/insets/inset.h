@@ -264,6 +264,12 @@ public:
 	virtual Paragraph * firstParagraph() const {
 		return 0;
 	}
+
+	///
+	virtual Paragraph * getFirstParagraph(int /*num*/) const {
+		return 0;
+	}
+
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
 	virtual LyXCursor const & cursor(BufferView * bview) const;

@@ -208,6 +208,8 @@ public:
 	///
 	Paragraph * firstParagraph() const;
 	///
+	Paragraph * getFirstParagraph(int) const;
+	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	string const selectNextWord(BufferView *, float & value) const;

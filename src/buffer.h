@@ -30,6 +30,7 @@ class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
 class Language;
+class ParIterator;
 
 // When lyx 1.3.x starts we should enable this
 // btw. we should also test this with 1.2 so that we
@@ -451,6 +452,12 @@ public:
 	inset_iterator inset_const_iterator_end() const {
 		return inset_iterator();
 	}
+
+	///
+	ParIterator par_iterator_begin();
+	///
+	ParIterator par_iterator_end();
+
 	///
 	Inset * getInsetFromID(int id_arg) const;
 };
@@ -600,4 +607,5 @@ bool operator!=(Buffer::inset_iterator const & iter1,
 		Buffer::inset_iterator const & iter2) {
 	return !(iter1 == iter2);
 }
+
 #endif

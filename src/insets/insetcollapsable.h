@@ -165,6 +165,8 @@ public:
 	///
 	Paragraph * firstParagraph() const;
 	///
+	Paragraph * getFirstParagraph(int) const;
+	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	bool isOpen() const { return !collapsed_; }

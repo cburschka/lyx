@@ -1,3 +1,12 @@
+2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* iterators.[Ch]: New files. Provide paragraph iterators.
+
+	* buffer.C (changeLanguage): Use paragraph iterators.
+	(isMultiLingual): ditto 
+
+	* BufferView2.C (ChangeInsets): Use paragraph iterators.
+
 2001-09-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FontLoader.C: Support for cmr font.

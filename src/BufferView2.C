@@ -32,6 +32,7 @@
 #include "gettext.h"
 #include "undo_funcs.h"
 #include "debug.h"
+#include "iterators.h"
 
 extern BufferList bufferlist;
 
@@ -494,18 +495,20 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			      string const & from, string const & to)
 {
 	bool flag = false;
-	Paragraph * par = buffer()->paragraph;
 	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
 	cursor.par(tmpcursor.par());
 	cursor.pos(tmpcursor.pos());
 
-	while (par) {
+	ParIterator end = buffer()->par_iterator_end();
+	for (ParIterator it = buffer()->par_iterator_begin();
+	     it != end; ++it) {
+		Paragraph * par = *it;
 		bool flag2 = false;
-		for (Paragraph::inset_iterator it = par->inset_iterator_begin();
-		     it != par->inset_iterator_end(); ++it) {
-			if ((*it)->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(*it);
+		for (Paragraph::inset_iterator it2 = par->inset_iterator_begin();
+		     it2 != par->inset_iterator_end(); ++it2) {
+			if ((*it2)->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(*it2);
 				if (inset->getContents() == from) {
 					inset->setContents(to);
 					flag2 = true;
@@ -514,14 +517,16 @@ bool BufferView::ChangeInsets(Inset::Code code,
 		}
 		if (flag2) {
 			flag = true;
-			// this is possible now, since SetCursor takes
-			// care about footnotes
-			text->setCursorIntern(this, par, 0);
-			text->redoParagraphs(this, text->cursor,
-					     text->cursor.par()->next());
-			text->fullRebreak(this);
+#warning Fix me
+			// The test it.size()==1 was needed to prevent crashes.
+			// How to set the cursor corretly when it.size()>1 ??
+			if (it.size() == 1) {
+				text->setCursorIntern(this, par, 0);
+				text->redoParagraphs(this, text->cursor,
+						     text->cursor.par()->next());
+				text->fullRebreak(this);
+			}
 		}
-		par = par->next();
 	}
 	text->setCursorIntern(this, cursor.par(), cursor.pos());
 	return flag;

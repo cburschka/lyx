@@ -124,6 +124,8 @@ lyx_SOURCES = \
 	importer.h \
 	intl.C \
 	intl.h \
+	iterators.C \
+	iterators.h \
 	kbmap.C \
 	kbmap.h \
 	kbsequence.C \
