@@ -103,145 +103,147 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// preamble
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	// biblio
 	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	// language & quote
 	connect(langModule->singleQuoteRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(langModule->doubleQuoteRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(langModule->languageCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
+		 this, SLOT(change_adaptor()));
 	connect(langModule->encodingCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	// numbering
 	connect(numberingModule->sectionnrDepthSB,
 		 SIGNAL(valueChanged(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(numberingModule->tocDepthSB,
 		 SIGNAL(valueChanged(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	// packages
 	connect(packagesModule->amsCB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(packagesModule->psdriverCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	// layout
 	connect(layoutModule->classCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->optionsLE,
 		 SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->pagestyleCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->fontsCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->fontsizeCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
-		 this , SLOT(setLSpacing(int)));
+		 this, SLOT(setLSpacing(int)));
 	connect(layoutModule->lspacingLE,
 		 SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->floatPlacementLE,
 		 SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->skipRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->indentRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->skipCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->skipLE,
 		 SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(layoutModule->skipLengthCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 
 	connect(layoutModule->classCO, SIGNAL(activated(int)),
-		 this , SLOT(classChanged()));
+		 this, SLOT(classChanged()));
 	connect(layoutModule->skipCO, SIGNAL(activated(int)),
-		 this , SLOT(setSkip(int)));
+		 this, SLOT(setSkip(int)));
 	connect(layoutModule->skipRB, SIGNAL(toggled(bool)),
-		 this , SLOT(enableSkip(bool)));
+		 this, SLOT(enableSkip(bool)));
 
 	// margins
 	connect(marginsModule->marginCO, SIGNAL(activated(int)),
-		 this , SLOT(setCustomMargins(int)));
+		 this, SLOT(setCustomMargins(int)));
 
 	connect(marginsModule->marginCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->topUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->bottomUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->innerUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->outerUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->headheightUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->headsepUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 
 	// paper
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this , SLOT(setMargins(int)));
+		 this, SLOT(setMargins(int)));
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this , SLOT(setCustomPapersize(int)));
+		 this, SLOT(setCustomPapersize(int)));
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this , SLOT(setCustomPapersize(int)));
+		 this, SLOT(setCustomPapersize(int)));
 	connect(paperModule->portraitRB, SIGNAL(toggled(bool)),
-		 this , SLOT(portraitChanged()));
+		 this, SLOT(portraitChanged()));
 
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->paperheightLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->paperwidthLE, SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->paperwidthUnitCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->paperheightUnitCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->portraitRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->landscapeRB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->twoColumnCB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 
 	// bullets 
 	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()),
-		 this , SLOT(change_adaptor()));
+		 this, SLOT(change_adaptor()));
 }
 
 

@@ -13,15 +13,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>373</width>
-            <height>332</height>
+            <width>448</width>
+            <height>451</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Form1</string>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,7 +30,114 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>languageL</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Language:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>languageCO</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>languageCO</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>defaultencodingCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Use language's default encoding</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout2</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>encodingL</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Encoding:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>encodingCO</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>encodingCO</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>duplicatesEnabled</name>
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
             <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
@@ -44,155 +151,134 @@
                 <name>exclusive</name>
                 <bool>true</bool>
             </property>
-            <grid>
+            <widget>
+                <class>QRadioButton</class>
                 <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
+                    <name>name</name>
+                    <cstring>singleQuoteRB</cstring>
                 </property>
                 <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
+                    <name>geometry</name>
+                    <rect>
+                        <x>11</x>
+                        <y>26</y>
+                        <width>65</width>
+                        <height>26</height>
+                    </rect>
                 </property>
-                <widget row="0"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>singleQuoteRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Single</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>doubleQuoteRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Double</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="1" >
-                    <class>QComboBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>quoteStyleCO</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>typeL</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Type:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>quoteStyleCO</cstring>
-                    </property>
-                </widget>
-                <spacer row="3"  column="1" >
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer7</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Vertical</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </grid>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Single</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QRadioButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>doubleQuoteRB</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>11</x>
+                        <y>58</y>
+                        <width>65</width>
+                        <height>26</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Double</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QComboBox</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>quoteStyleCO</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>82</x>
+                        <y>90</y>
+                        <width>337</width>
+                        <height>34</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>sizePolicy</name>
+                    <sizepolicy>
+                        <hsizetype>7</hsizetype>
+                        <vsizetype>0</vsizetype>
+                    </sizepolicy>
+                </property>
+            </widget>
+            <widget>
+                <class>QLabel</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>typeL</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>11</x>
+                        <y>90</y>
+                        <width>65</width>
+                        <height>34</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Type:</string>
+                </property>
+                <property>
+                    <name>buddy</name>
+                    <cstring>quoteStyleCO</cstring>
+                </property>
+            </widget>
         </widget>
-        <widget row="0"  column="1" >
-            <class>QComboBox</class>
-            <property stdset="1">
+        <spacer>
+            <property>
                 <name>name</name>
-                <cstring>languageCO</cstring>
+                <cstring>Spacer7</cstring>
             </property>
             <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>languageL</cstring>
+                <name>orientation</name>
+                <enum>Vertical</enum>
             </property>
             <property stdset="1">
-                <name>text</name>
-                <string>&amp;Language:</string>
+                <name>sizeType</name>
+                <enum>Expanding</enum>
             </property>
             <property>
-                <name>buddy</name>
-                <cstring>languageCO</cstring>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
             </property>
-        </widget>
-        <widget row="1"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>encodingL</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Encoding:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>encodingCO</cstring>
-            </property>
-        </widget>
-        <widget row="1"  column="1" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>encodingCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>duplicatesEnabled</name>
-                <bool>false</bool>
-            </property>
-        </widget>
-    </grid>
+        </spacer>
+    </vbox>
 </widget>
+<connections>
+    <connection>
+        <sender>defaultencodingCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>encodingL</receiver>
+        <slot>setDisabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>defaultencodingCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>encodingCO</receiver>
+        <slot>setDisabled(bool)</slot>
+    </connection>
+</connections>
 <tabstops>
     <tabstop>languageCO</tabstop>
+    <tabstop>defaultencodingCB</tabstop>
     <tabstop>encodingCO</tabstop>
     <tabstop>singleQuoteRB</tabstop>
     <tabstop>doubleQuoteRB</tabstop>

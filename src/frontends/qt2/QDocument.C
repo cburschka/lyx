@@ -57,6 +57,16 @@ QDocument::QDocument()
 	lang_ = getSecond(langs);
 }
 
+namespace {
+
+char const * encodings[] = { "LaTeX default", "latin1", "latin2",
+	"latin3", "latin4", "latin5", "latin9",
+	"koi8-r", "koi8-u", "cp866", "cp1251",
+	"iso88595", "pt154", 0
+};
+
+}
+
 
 void QDocument::build_dialog()
 {
@@ -76,11 +86,10 @@ void QDocument::build_dialog()
 			toqstr(lit->first));
 	}
 
-	char const * items[] = {"default", "auto", "latin1", "latin2",
-			     "latin3", "latin4", "latin5", "latin9",
-			     "koi8-r", "koi8-u", "cp866", "cp1251",
-			     "iso88595", "pt154", 0};
-	dialog_->langModule->encodingCO->insertStrList(items);
+	int i = 0;
+	while (encodings[i]) {
+		dialog_->langModule->encodingCO->insertItem(qt_(encodings[i++]));
+	}
 
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("``text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("''text''"));
@@ -176,8 +185,16 @@ void QDocument::apply()
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
-	params.inputenc =
-		fromqstr(dialog_->langModule->encodingCO->currentText());
+	if (dialog_->langModule->defaultencodingCB->isChecked()) {
+		params.inputenc = "auto";
+	} else {
+		int i = dialog_->langModule->encodingCO->currentItem();
+		if (i == 0) {
+			params.inputenc = "default";
+		} else {
+			params.inputenc = encodings[i];
+		}
+	}
 
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 	switch (dialog_->langModule->quoteStyleCO->currentItem()) {
@@ -420,13 +437,20 @@ void QDocument::update_contents()
 	dialog_->langModule->quoteStyleCO->setCurrentItem(
 		params.quotes_language);
 		
-	char const * enc[] = {
-		"default" , "auto" , "latin1" , "latin2" , "latin3" ,
-		"latin4" , "latin5" , "latin9" , "koi8-r" , "koi8-u" ,
-		"cp866" , "cp1251" , "iso88595" , "pt154" };
-	for (size_t i = 0; i < sizeof(enc)/sizeof(char *); ++i) {
-		if (params.inputenc == enc[i])
-			dialog_->langModule->encodingCO->setCurrentItem(i);
+	dialog_->langModule->defaultencodingCB->setChecked(true);
+
+	if (params.inputenc != "auto") {
+		dialog_->langModule->defaultencodingCB->setChecked(false);
+		if (params.inputenc == "default") {
+			dialog_->langModule->encodingCO->setCurrentItem(0);
+		} else {
+			int i = 0;
+			while (encodings[i]) {
+				if (encodings[i] == params.inputenc)
+					dialog_->langModule->encodingCO->setCurrentItem(i);
+				++i;
+			}
+		}
 	}
 
 	// numbering

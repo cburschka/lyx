@@ -6,6 +6,24 @@
 
 2003-02-15  John Levon  <levon@movementarian.org>
 
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* ui/LanguageModuleBase.ui: improve UI of language encoding
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* ui/BulletsModuleBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/LanguageModuleBase.ui:
+	* ui/MarginsModuleBase.ui:
+	* ui/NumberingModuleBase.ui:
+	* ui/QPrefScreenFontsModule.ui:
+	* ui/QPrefsDialogBase.ui: tab ordering fixes
+
+	* README: add some rules
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
 	* QPrefs.C: fix silly typo that screwed up the print
 	  parameters
 
