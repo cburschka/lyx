@@ -420,7 +420,7 @@ Style BankAccount
 End
 
 # Postvermerk
-Style PostalCommend
+Style PostalComment
   Margin		Static
   LatexType		Command
   LatexName		Postvermerk
@@ -430,13 +430,20 @@ Style PostalCommend
   Align 		Block
   AlignPossible 	Block, Left
   LabelType		Static
-  LabelString		PostalCommend:
+  LabelString		PostalComment:
   # label font definition
   LabelFont 
     Series		Bold
     Shape		Italic
     Color               Blue
   EndFont
+End
+
+
+# the layout above used to be misspelled like that. Keep the old
+# name for compatibility
+Style PostalCommend
+  ObsoletedBy		PostalComment
 End
 
 
