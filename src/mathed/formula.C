@@ -1202,7 +1202,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 		    result = FINISHED;
 	      }
 	   } else
-	   if (c == '\'') {
+	   if (c == '\'' || c == '@') {
 	      mathcursor->Insert (c, LM_TC_VAR);
 	   } else
 	   if (c == '\\') {
