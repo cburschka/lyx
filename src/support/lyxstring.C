@@ -25,6 +25,12 @@
 
 using std::min;
 
+// This class is supposed to be functionaly equivalent to a
+// standard conformant string. This mean among others that we
+// are useing the same requirements. Before you change anything
+// in this file consult me and/or the standard to discover the
+// right behavior.
+
 // Reference count has been checked, empty_rep removed and
 // introduced again in a similar guise. Where is empty_rep _really_
 // needed?
@@ -36,103 +42,61 @@ using std::min;
 // I have so far not tested them extensively and would be
 // happy if others took the time to have a peek.
 
-#ifdef WITH_WARNINGS
-#warning temporarily here for debugging purposes only
-#endif
-lyxstring::size_type lyxstring::size() const
-{ 
-	return rep->sz;
-}
 
+///////////////////////////////////////
+// The internal string representation
+///////////////////////////////////////
 
-//--------------------------------------------------------------------------
-// lyxstringInvariant
-#ifdef DEVEL_VERSION
-
-/** Testing of the lyxstring invariant
- * By creating an object that tests the lyxstring invariant during its
- * construction *and* its deconstruction we greatly simplify our code.
- * Calling TestlyxstringInvariant() upon entry to an lyxstring method 
- * will test the invariant upon entry to the code.  If the Asserts fail
- * then we know from the stack trace that the corruption occurred *before*
- * entry to this method.  We can also be sure it didn't happen in any of
- * the tested lyxstring methods.  It is therefore likely to be due to some
- * other external force.
- * Several lyxstring methods have multiple exit points which would otherwise
- * require us to insert a separate test before each return.  But since we
- * created an object its destructor will be called upon exit (any exit!).
- * We thus get testing at both start and end of a method with one line of
- * code at the head of a method.  More importantly,  we get good testing
- * everytime we run the code.
- * NOTE:  just because we test the invariant doesn't mean we can forget
- * about testing pre and post conditions specific to any given method.
- * This test simply proves that the lyxstring/Srep is in a valid state it
- * does *not* prove that the method did what it was supposed to.
- */
-class lyxstringInvariant
-{
-public:
-	lyxstringInvariant(lyxstring const *);
-	~lyxstringInvariant();
+struct lyxstring::Srep {
+	///
+	static lyxstring::size_type const xtra = 
+	static_cast<lyxstring::size_type>(8);
+	/// size
+	lyxstring::size_type sz;
+	/// Reference count
+	unsigned short ref;
+	/// The total amount of data reserved for this representaion
+	lyxstring::size_type res;
+	/// Data. At least 1 char for trailing null.
+	lyxstring::value_type * s;
+	
+	///
+	Srep(lyxstring::size_type nsz, const lyxstring::value_type * p);
+	///
+	Srep(lyxstring::size_type nsz, lyxstring::value_type ch);
+	///
+	~Srep() { delete[] s; }
+	///
+	Srep * get_own_copy()
+		{
+			if (ref == 1) return this;
+			ref--;
+			return new Srep(sz, s);
+		}
+	
+	///
+	void assign(lyxstring::size_type nsz, const lyxstring::value_type * p);
+	///
+	void assign(lyxstring::size_type nsz, lyxstring::value_type ch);
+	///
+	void append(lyxstring::size_type asz, const lyxstring::value_type * p);
+	///
+	void push_back(lyxstring::value_type c);
+	///
+	void insert(lyxstring::size_type pos,
+		    const lyxstring::value_type * p,
+		    lyxstring::size_type n);
+	///
+	void resize(lyxstring::size_type n, lyxstring::value_type c);
+	///
+	void reserve(lyxstring::size_type res_arg);
+	///
+	void replace(lyxstring::size_type i, lyxstring::size_type n,
+		     lyxstring::value_type const * p, lyxstring::size_type n2);
 private:
-	void helper() const;
-	lyxstring const * object;
+	Srep(const Srep &);
+	Srep & operator=(const Srep &);
 };
-
-// To test if this scheme works "as advertised" uncomment the printf's in
-// the constructor and destructor below and then uncomment the printf and the
-// call to TestlyxstringInvariant() in lyxstring::operator=(char const *).
-// The correct output when LyX has been recompiled and run is:
-//     lyxstringInvariant constructor
-//     lyxstring::operator=(char const *)
-//     lyxstringInvariant constructor
-//     lyxstringInvariant destructor completed
-//     lyxstringInvariant destructor completed
-// NOTE: The easiest way to catch this snippet of the output is to wait for
-//       the splash screen to disappear and then open and close Help->Credits
-//
-lyxstringInvariant::lyxstringInvariant(lyxstring const * ls) : object(ls)
-{
-//	printf("lyxstringInvariant constructor\n");
-	helper();
-}
-
-lyxstringInvariant::~lyxstringInvariant()
-{
-	helper();
-//	printf("lyxstringInvariant destructor completed\n");
-}
-
-void lyxstringInvariant::helper() const
-{
-	// Some of these tests might look pointless but they are
-	// all part of the invariant and if we want to make sure
-	// we have a bullet proof implementation then we need to
-	// test every last little thing we *know* should be true.
-	// I may have missed a test or two, so feel free to fill
-	// in the gaps.  ARRae.
-	// NOTE:  Don't put TestlyxstringInvariant() in any of the
-	// lyxstring methods used below otherwise you'll get an
-	// infinite recursion and a crash.
-	Assert(object);
-	Assert(object->rep);
-	Assert(object->rep->s);    // s is never 0
-	Assert(object->rep->res);  // always some space allocated
-	Assert(object->size() <= object->rep->res);
-	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < (1 << 8*sizeof(object->rep->ref)) - 1);
-	// if it does ever == then we should be generating a new copy
-	// and starting again.  (Is char always 8-bits?)
-}
-#define TestlyxstringInvariant(s) lyxstringInvariant lyxstring_invariant(s);
-#else
-#define TestlyxstringInvariant(s)
-#endif //DEVEL_VERSION
-//-------------------------------------------------------------------------
-
-///////////////////////////////////////
-// Constructors and Deconstructors.
-///////////////////////////////////////
 
 
 lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
@@ -313,6 +277,96 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 }
 
 
+///////////////////////////////////////
+// The lyxstring Invariant tester
+///////////////////////////////////////
+#ifdef DEVEL_VERSION
+
+/** Testing of the lyxstring invariant
+ * By creating an object that tests the lyxstring invariant during its
+ * construction *and* its deconstruction we greatly simplify our code.
+ * Calling TestlyxstringInvariant() upon entry to an lyxstring method 
+ * will test the invariant upon entry to the code.  If the Asserts fail
+ * then we know from the stack trace that the corruption occurred *before*
+ * entry to this method.  We can also be sure it didn't happen in any of
+ * the tested lyxstring methods.  It is therefore likely to be due to some
+ * other external force.
+ * Several lyxstring methods have multiple exit points which would otherwise
+ * require us to insert a separate test before each return.  But since we
+ * created an object its destructor will be called upon exit (any exit!).
+ * We thus get testing at both start and end of a method with one line of
+ * code at the head of a method.  More importantly,  we get good testing
+ * everytime we run the code.
+ * NOTE:  just because we test the invariant doesn't mean we can forget
+ * about testing pre and post conditions specific to any given method.
+ * This test simply proves that the lyxstring/Srep is in a valid state it
+ * does *not* prove that the method did what it was supposed to.
+ */
+class lyxstringInvariant {
+public:
+	lyxstringInvariant(lyxstring const *);
+	~lyxstringInvariant();
+private:
+	void helper() const;
+	lyxstring const * object;
+};
+
+
+// To test if this scheme works "as advertised" uncomment the printf's in
+// the constructor and destructor below and then uncomment the printf and the
+// call to TestlyxstringInvariant() in lyxstring::operator=(char const *).
+// The correct output when LyX has been recompiled and run is:
+//     lyxstringInvariant constructor
+//     lyxstring::operator=(char const *)
+//     lyxstringInvariant constructor
+//     lyxstringInvariant destructor completed
+//     lyxstringInvariant destructor completed
+// NOTE: The easiest way to catch this snippet of the output is to wait for
+//       the splash screen to disappear and then open and close Help->Credits
+//
+lyxstringInvariant::lyxstringInvariant(lyxstring const * ls) : object(ls)
+{
+	// printf("lyxstringInvariant constructor\n");
+	helper();
+}
+
+lyxstringInvariant::~lyxstringInvariant()
+{
+	helper();
+	// printf("lyxstringInvariant destructor completed\n");
+}
+
+void lyxstringInvariant::helper() const
+{
+	// Some of these tests might look pointless but they are
+	// all part of the invariant and if we want to make sure
+	// we have a bullet proof implementation then we need to
+	// test every last little thing we *know* should be true.
+	// I may have missed a test or two, so feel free to fill
+	// in the gaps.  ARRae.
+	// NOTE:  Don't put TestlyxstringInvariant() in any of the
+	// lyxstring methods used below otherwise you'll get an
+	// infinite recursion and a crash.
+	Assert(object);
+	Assert(object->rep);
+	Assert(object->rep->s);    // s is never 0
+	Assert(object->rep->res);  // always some space allocated
+	Assert(object->size() <= object->rep->res);
+	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
+	Assert(object->rep->ref < (1 << 8*sizeof(object->rep->ref)) - 1);
+	// if it does ever == then we should be generating a new copy
+	// and starting again.  (Is char always 8-bits?)
+}
+#define TestlyxstringInvariant(s) lyxstringInvariant lyxstring_invariant(s);
+#else
+#define TestlyxstringInvariant(s)
+#endif //DEVEL_VERSION
+
+
+///////////////////////////////////////
+// Constructors and Deconstructors.
+///////////////////////////////////////
+
 lyxstring::size_type const lyxstring::npos = static_cast<lyxstring::size_type>(-1);
 
 lyxstring::lyxstring()
@@ -373,6 +427,11 @@ lyxstring::lyxstring(iterator first, iterator last)
 }
 
 
+lyxstring::~lyxstring()
+{
+	if (--rep->ref == 0) delete rep;
+}
+
 ///////////////////////
 // Iterators
 ///////////////////////
@@ -425,9 +484,16 @@ const_reverse_iterator lyxstring::rend() const
 }
 #endif
 
+
 ///////////////////////
 // Size and Capacity
 ///////////////////////
+
+lyxstring::size_type lyxstring::size() const
+{ 
+	return rep->sz;
+}
+
 
 void lyxstring::resize(size_type n, value_type c)
 {
@@ -563,7 +629,6 @@ lyxstring & lyxstring::assign(iterator first, iterator last)
 lyxstring::const_reference lyxstring::operator[](size_type pos) const
 {
 	Assert(pos < rep->sz);
-
 	return rep->s[pos];
 }
 
@@ -581,7 +646,6 @@ lyxstring::reference lyxstring::operator[](size_type pos)
 lyxstring::const_reference lyxstring::at(size_type n) const
 {
 	Assert(n < rep->sz);
-	
 	return rep->s[n];
 }
 
@@ -1103,7 +1167,8 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 }
 
 
-lyxstring::size_type lyxstring::find_first_not_of(value_type c, size_type i) const
+lyxstring::size_type lyxstring::find_first_not_of(value_type c,
+						  size_type i) const
 {
 	if (!rep->sz) return npos;
 	Assert(i < rep->sz);
@@ -1117,7 +1182,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type c, size_type i) con
 
 
 lyxstring::size_type lyxstring::find_last_not_of(lyxstring const & a,
-					     size_type i) const
+						 size_type i) const
 {
 	TestlyxstringInvariant(this);
 
@@ -1147,7 +1212,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 
 
 lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
-					     size_type i) const
+						 size_type i) const
 {
 	Assert(ptr);
 	TestlyxstringInvariant(this);
@@ -1160,7 +1225,8 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 }
 
 
-lyxstring::size_type lyxstring::find_last_not_of(value_type c, size_type i) const
+lyxstring::size_type lyxstring::find_last_not_of(value_type c,
+						 size_type i) const
 {
 	TestlyxstringInvariant(this);
 
@@ -1185,8 +1251,8 @@ lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x)
 }
 
 
-lyxstring &  lyxstring::replace(size_type i,size_type n, lyxstring const & x,
-			    size_type i2, size_type n2)
+lyxstring & lyxstring::replace(size_type i,size_type n, lyxstring const & x,
+			       size_type i2, size_type n2)
 {
 	Assert((i < rep->sz || i == 0) && (i2 < x.rep->sz || i2 == 0));
 	TestlyxstringInvariant(this);
@@ -1197,8 +1263,8 @@ lyxstring &  lyxstring::replace(size_type i,size_type n, lyxstring const & x,
 }
 
 
-lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p,
-			   size_type n2)
+lyxstring & lyxstring::replace(size_type i, size_type n,
+			       value_type const * p, size_type n2)
 {
 	Assert(p && i < rep->sz);
 	TestlyxstringInvariant(this);
@@ -1218,7 +1284,8 @@ lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p)
 }
 
 
-lyxstring & lyxstring::replace(size_type i, size_type n, size_type n2, value_type c)
+lyxstring & lyxstring::replace(size_type i, size_type n,
+			       size_type n2, value_type c)
 {
 	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
@@ -1241,7 +1308,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, const lyxstring & str)
 
 
 lyxstring & lyxstring::replace(iterator i, iterator i2,
-			   value_type const * p, size_type n)
+			       value_type const * p, size_type n)
 {
 	Assert(p);
 	TestlyxstringInvariant(this);
@@ -1259,7 +1326,8 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, value_type const * p)
 }
 
 
-lyxstring & lyxstring::replace(iterator i, iterator i2, size_type n , value_type c)
+lyxstring & lyxstring::replace(iterator i, iterator i2,
+			       size_type n , value_type c)
 {
 	TestlyxstringInvariant(this);
 
@@ -1267,7 +1335,8 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, size_type n , value_type
 }
 	
 
-lyxstring & lyxstring::replace(iterator i, iterator i2, iterator j, iterator j2)
+lyxstring & lyxstring::replace(iterator i, iterator i2,
+			       iterator j, iterator j2)
 {
 	TestlyxstringInvariant(this);
 
@@ -1329,7 +1398,8 @@ lyxstring::value_type const * lyxstring::data() const
 }
 
 
-lyxstring::size_type lyxstring::copy(value_type * buf, size_type len, size_type pos) const
+lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
+				     size_type pos) const
 {
 	Assert(buf);
 	TestlyxstringInvariant(this);
@@ -1419,7 +1489,6 @@ lyxstring lyxstring::substr(size_type i, size_type n) const
 
 	return lyxstring(*this, i, n);
 }
-
 
 
 /////////////////////////////////////////////

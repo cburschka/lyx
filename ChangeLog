@@ -1,5 +1,13 @@
 1999-10-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/lyxstring.C: moved the definition of lyxstring::Srep
+	to lyxstring.C, and only keep a forward declaration in
+	lyxstring.h. Simplifies the header file a bit and should help a
+	bit on compile time too. Also changes to Srep will not mandate a
+	recompile of code just using string.
+	(~lyxstring): definition moved here since it uses srep.
+	(size): definition moved here since it uses srep.
+
 	* src/support/lyxstring.h: removed a couple of "inline" that should
 	not be there.
 
