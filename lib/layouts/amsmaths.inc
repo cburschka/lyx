@@ -26,13 +26,16 @@
 # - Example
 # - Example*
 # - Condition
+# - Condition*
 # - Problem
+# - Problem*
 # - Exercise
 # - Remark
 # - Remark*
 # - Note
 # - Note*
 # - Notation
+# - Notation*
 # - Claim
 # - Claim*
 # - Summary
@@ -88,6 +91,7 @@ Style Theorem*
 	CopyStyle             Theorem
 	LatexName             thm*
 	LabelString           "Theorem."
+	LabelCounter          ""
 	Preamble
 	  \theoremstyle{plain}    
 	  \newtheorem*{thm*}{Theorem} 
@@ -279,7 +283,7 @@ End
 
 
 Style Example*
-	CopyStyle             Definition
+	CopyStyle             Definition*
 	LatexName             example*
 	LabelString           "Example."
 	Preamble
@@ -300,6 +304,17 @@ Style Condition
 End  
 
 
+Style Condition*
+	CopyStyle             Definition*
+	LatexName             condition*
+	LabelString           "Condition."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem*{condition*}{Condition}
+	EndPreamble
+End  
+
+
 Style Problem
 	CopyStyle             Definition
 	LatexName             problem
@@ -307,6 +322,17 @@ Style Problem
 	Preamble
 	  \theoremstyle{definition}
 	  \newtheorem{problem}[thm]{Problem}
+	EndPreamble
+End  
+
+
+Style Problem*
+	CopyStyle             Definition*
+	LatexName             problem*
+	LabelString           "Problem."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem*{problem*}{Problem}
 	EndPreamble
 End  
 
@@ -319,6 +345,17 @@ Style Exercise
 	  \theoremstyle{definition}
 	  %%Delete [section] for sequential numbering
 	  \newtheorem{xca}[section]{Exercise}
+	EndPreamble
+End  
+
+
+Style Exercise*
+	CopyStyle             Definition*
+	LatexName             xca
+	LabelString           "Exercise."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem*{xca*}{Exercise}
 	EndPreamble
 End  
 
@@ -346,6 +383,7 @@ Style Remark*
 	CopyStyle             Remark
 	LatexName             rem*
 	LabelString           "Remark."
+	LabelCounter          ""
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}
@@ -365,7 +403,7 @@ End
 
 
 Style Claim*
-	CopyStyle             Remark
+	CopyStyle             Remark*
 	LatexName             claim*
 	LabelString           "Claim."
 	Preamble
@@ -387,7 +425,7 @@ End
 
 
 Style Note*
-	CopyStyle             Remark
+	CopyStyle             Remark*
 	LatexName             note*
 	LabelString           "Note."
 	Preamble
@@ -404,6 +442,17 @@ Style Notation
 	Preamble
 	  \theoremstyle{remark}    
 	  \newtheorem{notation}[thm]{Notation} 
+	EndPreamble
+End  
+
+
+Style Notation*
+	CopyStyle             Remark*
+	LatexName             notation*
+	LabelString           "Notation."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{notation*}[thm]{Notation} 
 	EndPreamble
 End  
 
@@ -431,7 +480,7 @@ End
 
 
 Style Acknowledgement*
-	CopyStyle             Remark
+	CopyStyle             Remark*
 	LatexName             acknowledgement*
 	LabelString           "Acknowledgement."
 	Preamble
@@ -455,7 +504,7 @@ End
 Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
-	LabelString           "Conclusion #."
+	LabelString           "Conclusion @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}    
 	  \newtheorem{conclusion}[thm]{Conclusion} 
@@ -464,9 +513,9 @@ End
 
 
 Style Conclusion*
-	CopyStyle             Remark
+	CopyStyle             Remark*
 	LatexName             conclusion*
-	LabelString           "Conclusion @Section@.\arabic{theorem}."
+	LabelString           "Conclusion."
 	Preamble
 	  \theoremstyle{remark}    
 	  \newtheorem*{conclusion*}{Conclusion} 
