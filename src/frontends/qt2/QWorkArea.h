@@ -48,8 +48,6 @@ public:
 	virtual int workWidth() const { return content_->width(); }
 	/// return the height of the content pane
 	virtual int workHeight() const { return content_->height(); }
-	/// resize this widget
-	virtual void resize(int xpos, int ypos, int width, int height);
 	/// FIXME: makes no sense ?
 	virtual void redraw() const { }
 	/// 

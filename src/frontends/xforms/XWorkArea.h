@@ -34,8 +34,6 @@ public:
 	///
 	virtual int workHeight() const { return work_area->h; }
 	///
-	virtual void resize(int xpos, int ypos, int width, int height);
-	///
 	virtual void redraw() const {
 		fl_redraw_object(work_area);
 		fl_redraw_object(scrollbar);

@@ -3,6 +3,14 @@
 	* BufferView.h:
 	* BufferView.C:
 	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: clean up resize() stuff,
+	  and unnecessary updateScreen()s
+ 
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView_pimpl.h:
 	* BufferView_pimpl.C:
 	* lyxfind.h:
 	* lyxfind.C: 

@@ -256,33 +256,6 @@ XWorkArea::~XWorkArea()
 }
 
 
-void XWorkArea::resize(int xpos, int ypos, int width, int height)
-{
-	fl_freeze_all_forms();
-
-	int const bw = int(abs(fl_get_border_width()));
-
-	// a box
-	fl_set_object_geometry(backgroundbox, xpos, ypos, width - 15, height);
-
-	//
-	// THE SCROLLBAR
-	//
-	fl_set_object_geometry(scrollbar, xpos + width - 15,
-			       ypos, 17, height);
-
-	// Create the workarea pixmap
-	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
-
-	// the free object
-	fl_set_object_geometry(work_area, xpos + bw, ypos + bw,
-			       width - 15 - 2 * bw,
-			       height - 2 * bw);
-
-	fl_unfreeze_all_forms();
-}
-
-
 namespace {
 void destroy_object(FL_OBJECT * obj)
 {
@@ -407,7 +380,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->workHeight());
-		area->workAreaExpose();
+		area->workAreaResize();
 		break;
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;

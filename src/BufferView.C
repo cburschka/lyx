@@ -65,15 +65,9 @@ void BufferView::buffer(Buffer * b)
 }
 
 
-void BufferView::resize(int xpos, int ypos, int width, int height)
-{
-	pimpl_->resize(xpos, ypos, width, height);
-}
-
-
 void BufferView::resize()
 {
-	pimpl_->resize();
+	pimpl_->resizeCurrentBuffer();
 }
 
 
@@ -116,12 +110,6 @@ Inset * BufferView::checkInsetHit(LyXText * text, int & x, int & y)
 void BufferView::redoCurrentBuffer()
 {
 	pimpl_->redoCurrentBuffer();
-}
-
-
-int BufferView::resizeCurrentBuffer()
-{
-	return pimpl_->resizeCurrentBuffer();
 }
 
 

@@ -133,8 +133,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
  
 	// Setup the signals
 	workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
-	workarea().workAreaExpose
-		.connect(boost::bind(&BufferView::Pimpl::workAreaExpose, this));
+	workarea().workAreaResize
+		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
 	workarea().workAreaButtonPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonPress, this, _1, _2, _3));
 	workarea().workAreaButtonRelease
@@ -244,21 +244,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 }
 
 
-void BufferView::Pimpl::resize(int xpos, int ypos, int width, int height)
-{
-	workarea().resize(xpos, ypos, width, height);
-	update(bv_->text, SELECT);
-	redraw();
-}
-
-
-void BufferView::Pimpl::resize()
-{
-	if (buffer_)
-		resizeCurrentBuffer();
-}
-
-
 void BufferView::Pimpl::redraw()
 {
 	lyxerr[Debug::INFO] << "BufferView::redraw()" << endl;
@@ -288,7 +273,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "BufferView::redoCurrentBuffer" << endl;
 	if (buffer_ && bv_->text) {
-		resize();
+		resizeCurrentBuffer();
 		owner_->updateLayoutChoice();
 	}
 }
@@ -348,8 +333,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			//buffer_->resizeInsets(bv_);
 		}
 	}
-
-	updateScreen();
 
 	if (par) {
 		bv_->text->selection.set(true);
@@ -916,7 +899,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 }
 
 
-void BufferView::Pimpl::workAreaExpose()
+void BufferView::Pimpl::workAreaResize()
 {
 	static int work_area_width;
 	static unsigned int work_area_height;
@@ -930,7 +913,7 @@ void BufferView::Pimpl::workAreaExpose()
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// The visible LyXView need a resize
-			owner_->view()->resize();
+			resizeCurrentBuffer();
 
 			// Remove all texts from the textcache
 			// This is not _really_ what we want to do. What
@@ -941,10 +924,9 @@ void BufferView::Pimpl::workAreaExpose()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
+			// FIXME: this is aalready done in resizeCurrentBuffer() ?? 
 			buffer_->resizeInsets(bv_);
 		} else if (heightChange) {
-			// Rebuild image of current screen
-			updateScreen();
 			// fitCursor() ensures we don't jump back
 			// to the start of the document on vertical
 			// resize

@@ -47,8 +47,6 @@ public:
 	virtual int workHeight() const = 0;
   
 	/// FIXME: GUII
-	virtual void resize(int xpos, int ypos, int width, int height) = 0;
-	/// FIXME: GUII
 	virtual void redraw() const = 0;
  
 	/**
@@ -67,8 +65,8 @@ public:
 	/// fill the clipboard
 	virtual void putClipboard(string const &) const = 0;
  
-	/// FIXME: GUII
-	boost::signal0<void> workAreaExpose;
+	/// work area dimensions have changed
+	boost::signal0<void> workAreaResize;
 	/// the scrollbar has changed
 	boost::signal1<void, int> scrollDocView;
 	/// a key combination has been pressed

@@ -58,8 +58,6 @@ public:
 	///
 	void buffer(Buffer * b);
 	///
-	void resize(int, int, int, int);
-	///
 	void resize();
 	///
 	void redraw();
@@ -75,8 +73,6 @@ public:
 	Inset * checkInsetHit(LyXText *, int & x, int & y);
 	///
 	void redoCurrentBuffer();
-	///
-	int resizeCurrentBuffer();
 	///
 	void cursorPrevious(LyXText *);
 	///

@@ -45,10 +45,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void buffer(Buffer *);
 	///
-	void resize(int xpos, int ypos, int width, int height);
-	///
-	void resize();
-	///
 	void redraw();
 	/// Return true if the cursor was fitted.
 	bool fitCursor();
@@ -63,7 +59,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// Update pixmap of screen
 	void updateScreen();
 	///
-	void workAreaExpose();
+	void workAreaResize();
 	///
 	void updateScrollbar();
 	///
