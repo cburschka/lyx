@@ -1,3 +1,8 @@
+2004-12-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxfind.C (findChange): do not search for end of pars, because
+	the change tracker cannot handle this (fixes bug 1719).
+
 2004-12-17  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* paragraph.[Ch] (autoBreakRows): remove

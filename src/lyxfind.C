@@ -128,7 +128,7 @@ bool findBackwards(DocIterator & cur, MatchString const & match)
 bool findChange(DocIterator & cur)
 {
 	for (; cur; cur.forwardChar())
-		if (cur.inTexted() && !cur.paragraph().empty() &&
+		if (cur.inTexted() && cur.pos() != cur.paragraph().size() &&
 		    cur.paragraph().lookupChange(cur.pos())
 		    != Change::UNCHANGED)
 			return true;
