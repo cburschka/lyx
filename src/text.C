@@ -3788,7 +3788,7 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 		}
 
 		if (hfillExpansion(bview->buffer(), row, c)) {
-			x += singleWidth(bview, row->par(), c);
+			tmpx += singleWidth(bview, row->par(), c);
 			if (c >= main_body)
 				tmpx += fill_hfill;
 			else
