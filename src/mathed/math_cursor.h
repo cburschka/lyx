@@ -123,8 +123,6 @@ public:
 	size_type size() const;
 	///
 	bool script(bool);
-	///
-	bool interpret(string const &);
 	/// 
 	bool interpret(char);
 	/// interpret name a name of a macro

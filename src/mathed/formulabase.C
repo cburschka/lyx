@@ -621,7 +621,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_GREEK:
 		handleFont(bv, cmd.argument, "lyxgreek1");
 		if (cmd.argument.size())
-			mathcursor->interpret(cmd.argument);
+			mathcursor->insert(asArray(cmd.argument));
 		break;
 
 	case LFUN_MATH_MODE:
@@ -644,13 +644,22 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 #endif
 		break;
 
-	case LFUN_INSERT_MATRIX:
-		if (!cmd.argument.empty()) {
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			mathcursor->interpret("matrix " + cmd.argument);
+	case LFUN_INSERT_MATRIX: {
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		unsigned int m = 1;
+		unsigned int n = 1;
+		string v_align;
+		string h_align;
+		istringstream is(argument);
+		is >> m >> n >> v_align >> h_align;
+		m = max(1u, m);
+		n = max(1u, n);
+		v_align += 'c';
+		mathcursor->niceInsert(
+			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
 			updateLocal(bv, true);
-		}
 		break;
+	}
 
 	case LFUN_SUPERSCRIPT:
 	case LFUN_SUBSCRIPT:
@@ -707,15 +716,23 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		argument = "\n";
 		// fall through
 
-	case -1:
+// FIXME: We probably should swap parts of "math-insert" and "self-insert"
+// handling such that "self-insert" works on "arbitrary stuff" too, and
+// math-insert only handles special math things like "matrix".
 	case LFUN_INSERT_MATH:
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->insert(asArray(argument));
+		updateLocal(bv, true);
+		break;
+	
+	case -1:
 	case LFUN_SELFINSERT:
 		if (!argument.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			if (argument.size() == 1)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
 			else
-				result = mathcursor->interpret(argument) ? DISPATCHED : FINISHED_RIGHT;
+				mathcursor->insert(asArray(argument));
 			updateLocal(bv, true);
 		}
 		break;

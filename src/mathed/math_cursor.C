@@ -32,13 +32,12 @@
 #include "formulabase.h"
 #include "funcrequest.h"
 #include "math_autocorrect.h"
-#include "math_arrayinset.h"
 #include "math_braceinset.h"
 #include "math_commentinset.h"
 #include "math_charinset.h"
 #include "math_extern.h"
 #include "math_factory.h"
-#include "math_hullinset.h"
+#include "math_gridinset.h"
 #include "math_iterator.h"
 #include "math_macroarg.h"
 #include "math_macrotemplate.h"
@@ -431,20 +430,6 @@ void MathCursor::backspace()
 		}
 	}
 
-/*
-	if (prevAtom()->asScriptInset()) {
-		// simply enter nucleus
-		left();
-		return;
-	}
-
-	if (inNucleus()) {
-		// we are in nucleus
-		if (pos() == 1) {
-		}
-	}
-*/
-
 	--pos();
 	plainErase();
 }
@@ -471,29 +456,6 @@ void MathCursor::erase()
 		par()->idxGlue(idx());
 		return;
 	}
-
-/*
-	// if we are standing in front of a script inset, grab item before us and
-	// move it into nucleus
-	// and remove first thing.
-	if (hasNextAtom() && nextAtom()->asScriptInset()) {
-		if (hasPrevAtom()) {
-			MathAtom at = prevAtom();
-			--pos();
-			array().erase(pos());
-			pushLeft(nextAtom());
-			if (array().empty())
-				array().push_back(at);
-			else
-				array()[0] = at;
-			pos() = 1;
-		} else {
-			pushLeft(nextAtom());
-			array().clear();
-		}
-		return;
-	}
-*/
 
 	plainErase();
 }
@@ -536,8 +498,19 @@ void MathCursor::macroModeClose()
 	string s = p->name();
 	--pos();
 	array().erase(pos());
-	if (s != "\\")
-		interpret(s);
+
+	// do nothing if the macro name is empty
+	if (s == "\\")
+		return;
+
+	string name = s.substr(1);
+
+	// prevent entering of recursive macros
+	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
+			&& formula()->getInsetName() == name)
+		lyxerr << "can't enter recursive macro\n";
+
+	niceInsert(createMathInset(name));
 }
 
 
@@ -1111,68 +1084,6 @@ bool MathCursor::idxRight()
 }
 
 
-bool MathCursor::interpret(string const & s)
-{
-	//lyxerr << "interpret 1: '" << s << "'\n";
-	if (s.empty())
-		return true;
-
-	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
-	//owner_->getIntl()->getTransManager().TranslateAndInsert(s[0], lt);
-	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
-
-	if (s.size() >= 6 && s.substr(0, 6) == "matrix") {
-		unsigned int m = 1;
-		unsigned int n = 1;
-		string v_align;
-		string h_align;
-		istringstream is(s.substr(6).c_str());
-		is >> m >> n >> v_align >> h_align;
-		m = max(1u, m);
-		n = max(1u, n);
-		v_align += 'c';
-		niceInsert(MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
-		return true;
-	}
-
-	if (s.size() >= 7 && s.substr(0, 7) == "replace") {
-		ReplaceData rep;
-		istringstream is(s.substr(7).c_str());
-		string from, to;
-		is >> from >> to;
-		mathed_parse_cell(rep.from, from);
-		mathed_parse_cell(rep.to, to);
-		lyxerr << "replacing '" << from << "' with '" << to << "'\n";
-		par()->replace(rep);
-		return true;
-	}
-
-	string name = s.substr(1);
-
-	if (name == "over" || name == "choose" || name == "atop") {
-		MathAtom t(createMathInset(name));
-		t.nucleus()->asNestInset()->cell(0) = array();
-		array().clear();
-		pos() = 0;
-		niceInsert(t);
-		popRight();
-		left();
-		return true;
-	}
-
-	// prevent entering of recursive macros
-	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
-		&& formula()->getInsetName() == name)
-	{
-		lyxerr << "can't enter recursive macro\n";
-		return true;
-	}
-
-	niceInsert(createMathInset(name));
-	return true;
-}
-
-
 bool MathCursor::script(bool up)
 {
 	// Hack to get \\^ and \\_ working
@@ -1548,3 +1459,4 @@ void releaseMathCursor(BufferView * bv)
 	delete mathcursor;
 	mathcursor = 0;
 }
+
