@@ -67,6 +67,8 @@ void FormParagraph::update(bool switched)
 	if (align==LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
+#if 0
+	// Just remove this and change physpar to par
 	LyXParagraph const * physpar = par;
 
 	if (physpar->params.spaceTop().kind() == VSpace::LENGTH) {
@@ -102,6 +104,53 @@ void FormParagraph::update(bool switched)
 			  physpar->params.spaceBottom().kind(),
 			  physpar->params.spaceTop().keep(),
 			  physpar->params.spaceBottom().keep());
+#else
+	if (par->params.spaceTop().kind() == VSpace::LENGTH) {
+		LyXGlueLength above = par->params.spaceTop().length();
+		lyxerr[Debug::GUI] << "Reading above space : \"" 
+			<< par->params.spaceTop().length().asString() << "\"" << endl;
+ 
+		dialog_->setAboveLength(above.value(), above.plusValue(),
+					above.minusValue(),
+					above.unit(), above.plusUnit(),
+					above.minusUnit());
+	} else
+		dialog_->setAboveLength(0.0, 0.0, 0.0,
+					LyXLength::UNIT_NONE,
+					LyXLength::UNIT_NONE,
+					LyXLength::UNIT_NONE);
+
+	if (par->params.spaceBottom().kind() == VSpace::LENGTH) {
+		LyXGlueLength below = par->params.spaceBottom().length();
+		lyxerr[Debug::GUI] << "Reading below space : \"" 
+			<< below.asString() << "\"" << endl;
+
+		dialog_->setBelowLength(below.value(),
+					below.plusValue(),
+					below.minusValue(),
+					below.unit(),
+					below.plusUnit(),
+					below.minusUnit());
+	} else
+		dialog_->setBelowLength(0.0, 0.0, 0.0,
+					LyXLength::UNIT_NONE,
+					LyXLength::UNIT_NONE,
+					LyXLength::UNIT_NONE);
+
+	dialog_->setLabelWidth(text->cursor.par()->GetLabelWidthString());
+	dialog_->setAlign(align);
+
+	dialog_->setChecks(par->params.lineTop(),
+			   par->params.lineBottom(),
+			   par->params.pagebreakTop(),
+			   par->params.pagebreakBottom(),
+			   par->params.noindent());
+ 
+	dialog_->setSpace(par->params.spaceTop().kind(),
+			  par->params.spaceBottom().kind(),
+			  par->params.spaceTop().keep(),
+			  par->params.spaceBottom().keep());
+#endif
 }
 
 

@@ -54,7 +54,7 @@ int InsetFoot::Latex(Buffer const * buf,
 	os << "\\footnote{%\n";
 	
 	int const i = inset.Latex(buf, os, fragile, fp);
-	os << "}%\n";
+	os << "}\n";
 	
 	return i + 2;
 }

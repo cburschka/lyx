@@ -34,10 +34,16 @@ class InsetBibKey;
 class BufferView;
 class Language;
 
-// I dare you to enable this and help me find all the bugs that then show
-// up. (Lgb)
-#define NEW_INSETS 1
-#define NO_PEXTRA 1
+// After 1.2.0 is released, during 1.3.0cvs, we enable this. And after
+// a while we verify that reading of 1.2.x files work perfectly we remove
+// this code completely. (Lgb)
+//#define NO_PEXTRA_REALLY 1
+
+// Define this if you want to try out the new storage container for
+// paragraphs. std::container instead of obfuscated homegrown
+// linked list. (Lgb)
+// This is non working and far from finished.
+// #define NO_NEXT 1
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {

@@ -1832,7 +1832,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		use_babel = false;
-		string language_options;
+		ostringstream language_options;
 		if (params.language->babel() == "hebrew"
 		    && default_language->babel() != "hebrew")
 			 // This seems necessary
@@ -1845,10 +1845,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
 				     features.UsedLanguages.begin();
 			     cit != features.UsedLanguages.end(); ++cit)
-				language_options += (*cit)->babel() + ',';
-			language_options += params.language->babel();
+				language_options << (*cit)->babel() << ',';
+			language_options << params.language->babel();
 			if (lyxrc.language_global_options)
-				options << language_options << ',';
+				options << language_options.str() << ',';
 		}
 
 		// the user-defined options
@@ -2035,8 +2035,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 			string tmp = lyxrc.language_package;
 			if (!lyxrc.language_global_options
 			    && tmp == "\\usepackage{babel}")
-				tmp = "\\usepackage[" +
-					language_options + "]{babel}";
+				tmp = string("\\usepackage[") +
+					language_options.str().c_str() +
+					"]{babel}";
 			ofs << tmp << "\n";
 			texrow.newline();
 		}

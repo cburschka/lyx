@@ -40,7 +40,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	makeidx = false;
 	verbatim = false;
 	longtable = false;
-	algorithm = false;
+	//algorithm = false;
 	rotating = false;
 	amssymb = false;
 	latexsym = false;
@@ -95,8 +95,8 @@ void LaTeXFeatures::require(string const & name)
 		verbatim = true;
 	} else if (name == "longtable") {
 		longtable = true;
-	} else if (name == "algorithm") {
-		algorithm = true;
+	//} else if (name == "algorithm") {
+	//algorithm = true;
 	} else if (name == "rotating") {
 		rotating = true;
 	} else if (name == "amssymb") {
@@ -182,9 +182,9 @@ string const LaTeXFeatures::getPackages() const
 	if (verbatim)
 		packages << "\\usepackage{verbatim}\n";
 
-	if (algorithm) {
-		packages << "\\usepackage{algorithm}\n";
-	}
+	//if (algorithm) {
+	//	packages << "\\usepackage{algorithm}\n";
+	//}
 
 	// lyxchess.sty
 	if (chess) {

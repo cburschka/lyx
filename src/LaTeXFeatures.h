@@ -72,7 +72,7 @@ struct LaTeXFeatures {
 	///
 	bool longtable; // longtable.sty
 	///
-	bool algorithm; // algorithm.sty
+	//bool algorithm; // algorithm.sty
 	///
 	bool rotating;  // rotating.sty
 	///

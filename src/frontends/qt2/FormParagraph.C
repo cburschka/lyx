@@ -72,7 +72,7 @@ void FormParagraph::update(bool switched)
 	if (align==LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
-	ParagraphParameters *params = &(par->params);
+	ParagraphParameters * params = &(par->params);
 
 	if (params->spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = params->spaceTop().length();
