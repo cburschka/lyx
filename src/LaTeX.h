@@ -206,6 +206,9 @@ protected:
 
 	/// used by scanLogFile
 	int num_errors;
+	
+	/// The name of the final output file.
+	string output_file;
 };
 
 #endif

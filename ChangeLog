@@ -1,3 +1,15 @@
+2001-11-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/examples/Math_macros.lyx:
+	* lib/examples/fr_Macros_Math.lyx: removed, since this information
+	is in the UserGuide.
+
+2001-11-29 Ben Stanley <bds02@uow.edu.au>
+
+	* src/LaTeX.C
+	* src/LaTeX.h Fixed bug in LaTeX class where it would not
+	re-run latex if no depfiles were changed, but the .dvi was removed.
+
 2001-11-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* README: fix ghostscript comment
