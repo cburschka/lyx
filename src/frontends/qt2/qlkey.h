@@ -13,12 +13,14 @@
 #include <qnamespace.h>
 
 #include "LString.h"
+#include "debug.h"
  
 /**
  * Return true if the key event is a modifier.
  */
 bool q_is_modifier(int qkey)
 {
+	lyxerr[Debug::GUI] << "check modifier " << qkey << std::endl;
 	switch (qkey) {
 		case Qt::Key_Hyper_L:
 		case Qt::Key_Hyper_R:
