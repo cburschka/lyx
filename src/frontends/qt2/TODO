@@ -23,7 +23,6 @@ QCommandBuffer
  
 QContentPane 
 
-	- triple click
 	- figure out why a scroll doesn't update quickly, which leaves cursor artifacts
 	  whilst holding down page down etc. 
  
@@ -35,10 +34,6 @@ qfont_loader
 
 	- use lyxrc, check for failure, implement available()
  
-qfont_metrics
-
-	- per char ascent/descent
- 
 QForks
 
 	- don't implement me
@@ -47,10 +42,6 @@ QGraphics
 	
 	- remaining UI cleanups and fixes
  
-QInclude
-
-	- check no load stuff works ?
-
 QLImage
 
 	- get jpeg etc. to work

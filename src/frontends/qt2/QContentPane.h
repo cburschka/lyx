@@ -25,6 +25,26 @@
 
 class QWorkArea; 
  
+/// for emulating triple click
+struct double_click {
+	int x;
+	int y;
+	Qt::ButtonState state;
+	bool active;
+
+	bool operator==(QMouseEvent const & e) {
+		return x == e.x() && y == e.y()
+			&& state == e.button();
+	}
+
+	double_click()
+		: x(0), y(0), state(Qt::NoButton), active(false) {}
+ 
+	double_click(QMouseEvent * e)
+		: x(e->x()), y(e->y()),
+		state(e->button()), active(true) {}
+};
+
 /**
  * Widget for actually drawing the document on
  */
@@ -56,6 +76,8 @@ protected:
 	void keyPressEvent(QKeyEvent * e);
  
 public slots:
+	void doubleClickTimeout();
+ 
 	void scrollBarChanged(int);
  
 private:
@@ -64,6 +86,8 @@ private:
  
 	/// the double buffered pixmap
 	boost::scoped_ptr<QPixmap> pixmap_;
+
+	double_click dc_event_;
 };
 
 #endif // QCONTENTPANE_H

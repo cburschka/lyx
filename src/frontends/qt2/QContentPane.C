@@ -20,6 +20,8 @@
 
 #include <qevent.h>
 #include <qpainter.h>
+#include <qtimer.h>
+#include <qapplication.h>
  
 using std::endl;
 
@@ -97,6 +99,15 @@ void QContentPane::scrollBarChanged(int val)
  
 void QContentPane::mousePressEvent(QMouseEvent * e)
 {
+	if (dc_event_.active && dc_event_ == *e) {
+		dc_event_.active = false;
+		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
+			dc_event_.x, dc_event_.y,
+			q_button_state(dc_event_.state));
+		wa_->dispatch(cmd);
+		return;
+	}
+ 
 	FuncRequest cmd
 		(LFUN_MOUSE_PRESS, e->x(), e->y(), q_button_state(e->button()));
 	wa_->dispatch(cmd);
@@ -130,12 +141,27 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
 }
 
  
+void QContentPane::doubleClickTimeout()
+{
+	if (!dc_event_.active)
+		return;
+
+	dc_event_.active = false;
+ 
+	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
+		dc_event_.x, dc_event_.y,
+		q_button_state(dc_event_.state));
+	wa_->dispatch(cmd);
+}
+
+
 void QContentPane::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	FuncRequest cmd
-		(LFUN_MOUSE_DOUBLE, e->x(), e->y(), q_button_state(e->button()));
-	wa_->dispatch(cmd);
-	// FIXME: triple click 
+	dc_event_ = double_click(e);
+
+	// doubleClickInterval() is just too long.
+	QTimer::singleShot(QApplication::doubleClickInterval() / 1.5,
+		this, SLOT(doubleClickTimeout()));
 }
  
  
