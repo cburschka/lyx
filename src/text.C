@@ -727,16 +727,21 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			if (point == last || chunkwidth >= width - left) {
 				if (pos < i) {
 					point = i - 1;
+					// exit on last registered breakpoint:
+					break;  
 				}
 			}
-			break;
+		// emergency exit:
+		if (i + 1 < last)		
+			break;  
 		}
 
 		InsetOld * in = pit->getInset(i);
 		if (!in || in->isChar()) {
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
-				point = i;
+				// register breakpoint:
+				point = i; 
 				chunkwidth = 0;
 			}
 		}
@@ -1453,7 +1458,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		// Display-style insets should always be on a centred row
 		// The test on pit->size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
-		inset = pit->size() ? pit->getInset(rit->pos()) : 0;
+		//inset = pit->size() ? pit->getInset(rit->pos()) : 0;
+		inset = pit->isInset(rit->pos()) ? pit->getInset(rit->pos()) : 0;
 		if (inset && inset->display()) {
 			align = LYX_ALIGN_CENTER;
 		}
