@@ -20,7 +20,9 @@
 
 #include "graphics/GraphicsImage.h"
 #include FORMS_H_LOCATION
-#include <flimage.h> 
+#if FL_VERSION > 0
+#include FORMS_IMAGE_H_LOCATION
+#endif
 
 namespace grfx {
 
