@@ -1,3 +1,46 @@
+2000-08-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/Makefile.am (libxforms_la_SOURCES): add
+	GUIRunTime.C remove GUIRunTime_pimpl.[Ch]
+
+	* src/frontends/xforms/GUIRunTime_pimpl.[Ch]: removed file
+
+	* src/frontends/xforms/GUIRunTime.C: new file
+
+	* src/frontends/kde/Makefile.am (libkde_la_SOURCES): add
+	GUIRunTime.C and remove GUIRunTime_pimpl.[Ch]
+
+	* src/frontends/kde/GUIRunTime_pimpl.[Ch]: removed file
+
+	* src/frontends/kde/GUIRunTime.C: new file
+
+	* src/frontends/gnome/Makefile.am (libgnome_la_SOURCES): add
+	GUIRunTime.C and remove GUIRunTime_pimpl.[Ch]
+
+	* src/frontends/gnome/GUIRunTime_pimpl.[Ch]: removed file
+
+	* src/frontends/gnome/GUIRunTime.C: new file
+
+	* src/frontends/Makefile.am (libfrontends_la_SOURCES): removed
+	GUIRunTime.C 
+
+	* src/frontends/GUIRunTime.h: removed constructor and destructor,
+	small change to documetentation.
+
+	* src/frontends/GUIRunTime.C: removed file
+
+	* src/text2.C (MeltFootnoteEnvironment): add some NEW_TABULAR
+
+	* src/lyxparagraph.h: enable NEW_TABULAR as default
+
+	* src/lyxfunc.C (processKeySym): remove some commented code
+
+	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs): add
+	NEW_TABULAR around the fd_form_table_options.
+
+	* src/lyx_gui.C (runTime): call the static member function as
+	GUIRunTime::runTime().
+
 2000-08-21  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormDocument.h: D'oh.  Forgot to change the
