@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli, pdenapo@dm.uba.ar
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -64,7 +64,7 @@
 
 using std::vector;
 
-FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
+FormMathsPanel::FormMathsPanel(LyXView & lv, Dialogs & d)
 	: FormBaseBD(lv, d, _("Maths Panel"), false),
 	  active_(0), bc_(_("Close"))
 {
@@ -318,17 +318,17 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		break;
 
 	case MM_SUPER:
-		lv_->dispatch(FuncRequest(LFUN_SUPERSCRIPT));
+		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
 		break;
 
 	case MM_SUB:
-		lv_->dispatch(FuncRequest(LFUN_SUBSCRIPT));
+		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
 		break;
 
 	case MM_SUBSUPER:
-		lv_->dispatch(FuncRequest(LFUN_SUBSCRIPT));
-		lv_->dispatch(FuncRequest(LFUN_LEFT));
-		lv_->dispatch(FuncRequest(LFUN_SUPERSCRIPT));
+		lv_.dispatch(FuncRequest(LFUN_SUBSCRIPT));
+		lv_.dispatch(FuncRequest(LFUN_LEFT));
+		lv_.dispatch(FuncRequest(LFUN_SUPERSCRIPT));
 		break;
 
 	case MM_DELIM:
@@ -378,26 +378,26 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 {
 	if (bs)
-		lv_->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
+		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
 	else
-		lv_->dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
+		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
 }
 
 
 void FormMathsPanel::dispatchFunc(kb_action action) const
 {
-	lv_->dispatch(FuncRequest(action));
+	lv_.dispatch(FuncRequest(action));
 }
 
 
 void FormMathsPanel::mathDisplay() const
 {
-	lv_->dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+	lv_.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
 }
 
 
 
-FormMathsSub::FormMathsSub(LyXView * lv, Dialogs * d, FormMathsPanel const & p,
+FormMathsSub::FormMathsSub(LyXView & lv, Dialogs & d, FormMathsPanel const & p,
 			   string const & t, bool allowResize)
 	: FormBaseBD(lv, d, t, allowResize), parent_(p), bc_(_("Close"))
 {}

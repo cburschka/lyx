@@ -4,7 +4,7 @@
  * See the file COPYING.
  *
  * \author Edwin Leuven, leuven@fee.uva.nl
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>

@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORM_MATHSMATRIX_H
@@ -27,7 +27,7 @@ struct FD_maths_matrix;
  */
 class FormMathsMatrix : public FormMathsSub {
 public:
-	FormMathsMatrix(LyXView *, Dialogs *, FormMathsPanel const &);
+	FormMathsMatrix(LyXView &, Dialogs &, FormMathsPanel const &);
 	///
 	int AlignFilter(char const *, int);
 

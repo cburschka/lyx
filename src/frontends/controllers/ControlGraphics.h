@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file ControlGraphics.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  * \author Herbert Voss <voss@perce.de>
 */
 

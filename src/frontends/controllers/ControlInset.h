@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file ControlInsets.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  * ControlInset is to be used as a parent class for dialogs that display and
  * can perhaps modify the contents of an individual inset. An example being the

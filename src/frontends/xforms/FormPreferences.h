@@ -6,7 +6,7 @@
  * Read the file COPYING
  *
  * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORMPREFERENCES_H

@@ -4,7 +4,7 @@
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  **/
 
 /* A common interface for posting feedback messages to a message widget in

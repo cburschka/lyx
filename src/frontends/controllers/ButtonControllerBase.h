@@ -30,7 +30,7 @@
  * state machine.
  * Author: Allan Rae <rae@lyx.org>.
  * This abstract base class stripped of xforms-specific code by
- * Angus Leeming <a.leeming@ic.ac.uk>
+ * Angus Leeming <leeming@lyx.org>
  */
 class ButtonControllerBase : boost::noncopyable
 {

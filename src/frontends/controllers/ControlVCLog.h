@@ -10,7 +10,7 @@
  *
  * \file ControlVCLog.h
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef CONTROLVCLOG_H

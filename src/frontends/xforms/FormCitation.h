@@ -4,7 +4,7 @@
  * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORMCITATION_H

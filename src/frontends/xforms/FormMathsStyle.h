@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORM_MATHSSTYLE_H
@@ -28,7 +28,7 @@ struct FD_maths_style;
 class FormMathsStyle : public FormMathsSub {
 public:
 	///
-	FormMathsStyle(LyXView *, Dialogs *, FormMathsPanel const &);
+	FormMathsStyle(LyXView &, Dialogs &, FormMathsPanel const &);
 
 private:
 	/// Build the dialog

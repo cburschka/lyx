@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli, pdenapo@dm.uba.ar
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -35,7 +35,7 @@ static char const * decoration_names[] = {
 
 static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char const *);
 
-FormMathsDeco::FormMathsDeco(LyXView * lv, Dialogs * d,
+FormMathsDeco::FormMathsDeco(LyXView & lv, Dialogs & d,
 			     FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Decorations & Accents"), false)
 {}

@@ -327,7 +327,7 @@ void XWorkArea::scroll_cb()
 
 
 int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
-				FL_Coord, FL_Coord ,
+				FL_Coord, FL_Coord,
 				int key, void * xev)
 {
 	static int x_old = -1;

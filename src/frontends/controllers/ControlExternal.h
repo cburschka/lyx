@@ -11,7 +11,7 @@
  * \file ControlExternal.h
  * \author Asger Alstrup
  * \author John Levon
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef CONTROLEXTERNAL_H

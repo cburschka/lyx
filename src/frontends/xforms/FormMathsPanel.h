@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORM_MATHSPANEL_H
@@ -38,7 +38,7 @@ struct FD_maths_panel;
 class FormMathsPanel : public FormBaseBD {
 public:
 	///
-	FormMathsPanel(LyXView *, Dialogs *);
+	FormMathsPanel(LyXView &, Dialogs &);
 	///
 	void setActive(FormMathsSub *) const;
 	/// dispatch a symbol insert
@@ -95,7 +95,7 @@ class FormMathsSub : public FormBaseBD {
 
 public:
 	///
-	FormMathsSub(LyXView *, Dialogs *, FormMathsPanel const &,
+	FormMathsSub(LyXView &, Dialogs &, FormMathsPanel const &,
 		     string const &, bool allowResize = true);
 
 protected:

@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -34,7 +34,7 @@ using std::max;
 extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 
-FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,
+FormMathsBitmap::FormMathsBitmap(LyXView & lv, Dialogs & d,
 				 FormMathsPanel const & p, string const & t,
 				 vector<string> const & l)
 	: FormMathsSub(lv, d, p, t, false),

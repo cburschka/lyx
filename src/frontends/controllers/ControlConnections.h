@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file ControlConnections.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  * ControlConnections.h contains the definition of three controller classes,
  * ControlConnectBase, ControlConnectBI and ControlConnectBD.

@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file ControlButtons.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  * ControlButtons serves only to control the activation of the Ok, Apply, Cancel
  * and Restore buttons on the View dialog.

@@ -49,7 +49,7 @@ GC createGC()
 	val.line_width = 0;
 	return XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
 			 GCForeground | GCFunction | GCGraphicsExposures
-			 | GCLineWidth | GCLineStyle , &val);
+			 | GCLineWidth | GCLineStyle, &val);
 }
 
 } // namespace anon

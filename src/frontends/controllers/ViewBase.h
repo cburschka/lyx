@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * Author: Angus Leeming <a.leeming@ic.ac.uk>
+ * Author: Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef VIEWBASE_H

@@ -5,7 +5,7 @@
  * Copyright 1995-2002 The LyX Team.
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 /* structs RGBColor and HSVColor to enable simple conversion between

@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli, pdenapo@dm.uba.ar
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -57,7 +57,7 @@ extern "C" {
 }
 
 
-FormMathsMatrix::FormMathsMatrix(LyXView * lv, Dialogs * d,
+FormMathsMatrix::FormMathsMatrix(LyXView & lv, Dialogs & d,
 				 FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Matrix"), false)
 {}
@@ -104,7 +104,7 @@ void FormMathsMatrix::apply()
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	lv_->dispatch(FuncRequest(LFUN_INSERT_MATRIX, os.str().c_str()));
+	lv_.dispatch(FuncRequest(LFUN_INSERT_MATRIX, os.str().c_str()));
 }
 
 

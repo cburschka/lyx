@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORM_MATHSBITMAP_H
@@ -36,7 +36,7 @@ public:
 	typedef lyx::shared_c_ptr<FL_FORM> fl_ptr;
 
 	///
-	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
+	FormMathsBitmap(LyXView &, Dialogs & d, FormMathsPanel const &,
 			string const &, std::vector<string> const &);
 	///
 	~FormMathsBitmap();

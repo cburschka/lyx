@@ -8,7 +8,7 @@
  * ======================================================
  *
  * \file helper_funcs.C
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <vector>

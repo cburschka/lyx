@@ -3,7 +3,7 @@
  * Copyright 2000-2002 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>

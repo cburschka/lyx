@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file ControlCommand.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  * ControlCommand is a controller class for dialogs that create or modify
  * an inset derived from InsetCommand.

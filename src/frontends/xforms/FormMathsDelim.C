@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli, pdenapo@dm.uba.ar
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -52,7 +52,7 @@ static char const * delim_values[] = {
 
 using std::endl;
 
-FormMathsDelim::FormMathsDelim(LyXView * lv, Dialogs * d,
+FormMathsDelim::FormMathsDelim(LyXView & lv, Dialogs & d,
 			       FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Delimiters"), false)
 {}
@@ -101,7 +101,7 @@ void FormMathsDelim::apply()
 	ostringstream os;
 	os << delim_values[left] << ' ' << delim_values[right];
 
-	lv_->dispatch(FuncRequest(LFUN_MATH_DELIM, os.str().c_str()));
+	lv_.dispatch(FuncRequest(LFUN_MATH_DELIM, os.str().c_str()));
 }
 
 

@@ -8,7 +8,7 @@
  * ======================================================
  *
  * \author Jürgen Vigna, jug@sad.it
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>

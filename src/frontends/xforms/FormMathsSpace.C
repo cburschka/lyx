@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli, pdenapo@dm.uba.ar
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -21,7 +21,7 @@
 
 extern char * latex_mathspace[];
 
-FormMathsSpace::FormMathsSpace(LyXView * lv, Dialogs * d,
+FormMathsSpace::FormMathsSpace(LyXView & lv, Dialogs & d,
 			       FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Spacing"), false),
 	  space_(-1)

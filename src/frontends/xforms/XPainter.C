@@ -208,7 +208,7 @@ Painter & XPainter::text(int x, int y,
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
 		}
-		text(x , y, xs.get(), ls, font);
+		text(x, y, xs.get(), ls, font);
 		return *this;
 	}
 

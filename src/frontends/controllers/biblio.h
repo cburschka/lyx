@@ -9,7 +9,7 @@
  * ======================================================
  *
  * \file biblio.h
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef BIBLIOHELPERS_H

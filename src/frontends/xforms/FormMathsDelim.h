@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef FORM_MATHSDELIM_H
@@ -28,7 +28,7 @@ struct FD_maths_delim;
 class FormMathsDelim : public FormMathsSub {
 public:
 	///
-	FormMathsDelim(LyXView *, Dialogs *, FormMathsPanel const &);
+	FormMathsDelim(LyXView &, Dialogs &, FormMathsPanel const &);
 
 private:
 	/// Build the dialog
