@@ -120,8 +120,11 @@ void LCursor::push(InsetOld * inset, LyXText * text)
 
 void LCursor::pop()
 {
-	BOOST_ASSERT(!data_.empty());
-	data_.pop_back();
+	//BOOST_ASSERT(!data_.empty());
+	if (data_.empty())
+		lyxerr << "### TRYING TO POP FROM EMPTY CURSOR" << endl;
+	else
+		data_.pop_back();
 }
 
 

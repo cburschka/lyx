@@ -17,6 +17,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "errorlist.h"
@@ -719,6 +720,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			if (result.val() >= FINISHED) {
 				updateLocal(bv, false);
 				bv->unlockInset(this);
+				bv->cursor().pop();
 			}
 			break;
 		case FINISHED_DOWN:
@@ -726,6 +728,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			if (result.val() >= FINISHED) {
 				updateLocal(bv, false);
 				bv->unlockInset(this);
+				bv->cursor().pop();
 			}
 			break;
 		default:
@@ -951,6 +954,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 	if (result.val() >= FINISHED) {
 		result.val(NONE);
 		bv->unlockInset(this);
+		bv->cursor().pop();
 	}
 
 	return result;
