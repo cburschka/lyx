@@ -627,6 +627,12 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 }
 
 
+string bformat(string const & fmt, int arg1, int arg2)
+{
+	return STRCONV((boost::format(STRCONV(fmt)) % arg1 % arg2).str());
+}
+
+
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
@@ -667,6 +673,16 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 	Assert(contains(fmt, "%2$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
+	return subst(str, "%%", "%");
+}
+
+
+string bformat(string const & fmt, int arg1, int arg2)
+{
+	Assert(contains(fmt, "%1$d"));
+	Assert(contains(fmt, "%2$d"));
+	string str = subst(fmt, "%1$d", arg1);
+	str = subst(str, "%2$d", arg2);
 	return subst(str, "%%", "%");
 }
 

@@ -364,6 +364,8 @@ string const currentState(BufferView * bv)
 #ifdef DEVEL_VERSION
 	state << _(", Paragraph: ") << text->cursor.par()->id();
 	state << _(", Position: ") << text->cursor.pos();
+	RowList::iterator rit = text->cursorRow();
+	state << bformat(_(", Row b:%1$d e:%2$d"), rit->pos(), rit->end());
 	state << _(", Inset: ") <<
 		(text->cursor.par()->inInset() ? text->cursor.par()->inInset()->id() : -1);
 #endif

@@ -206,6 +206,8 @@ string const getStringFromVector(std::vector<string> const & vec,
 string bformat(string const & fmt, string const & arg1);
 // arguments %1$s and %2$s
 string bformat(string const & fmt, string const & arg1, string const & arg2);
+// arguments %1$d and %2$d
+string bformat(string const & fmt, int arg1, int arg2);
 // arguments %1$s and %2$s and %3$s
 string bformat(string const & fmt, string const & arg1, string const & arg2,
                string const & arg3);
