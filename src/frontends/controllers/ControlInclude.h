@@ -40,6 +40,9 @@ public:
 	/// Browse for a file
 	string const Browse(string const &, Type);
 
+	/// load a file
+	void load(string const & file); 
+
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

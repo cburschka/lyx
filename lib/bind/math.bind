@@ -90,9 +90,10 @@
 # Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq, 
 # and \leq just by typing them. However it's easier to remember these:
 
-\bind "M-m ~S-plus"		"math-insert pm" 
-\bind "M-m ~S-equal"		"math-insert neq"
+\bind "M-m ~S-plus"    "math-insert pm" 
+\bind "M-m ~S-equal"   "math-insert neq"
 
-\bind "Escape"			"escape"
-\bind "C-Tab"			"tab-insert"
+\bind "Escape"         "escape"
+\bind "C-Tab"          "tab-insert"
+\bind "M-m space"      "math-space"
 

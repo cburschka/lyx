@@ -1,3 +1,12 @@
+2001-07-25  André Pönitz <poenitz@gmx.net>
+
+	* bind/math.bind:  new LFUN 'math-space'
+
+2001-07-23  Baruch Even <baruch@lyx.org>
+
+	* configure.m4: Added conversion of images support, used when
+	exporting images in formats (PDF)Latex cannot handle directly.
+
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (dist-hook): only try to get lyxdoc if not already

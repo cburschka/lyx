@@ -129,6 +129,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_filename);
 		if (!strip(in_name).empty()) {
 			ApplyButton();
+			controller().load(strip(in_name));
 			action = ButtonPolicy::SMI_NOOP;
 		}
 

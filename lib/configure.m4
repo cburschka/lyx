@@ -331,6 +331,19 @@ case $TOHTML in
       hevea) latex_to_html_command="hevea -s \$\$i";;
 esac
 
+#### Search for image conversion ####
+SEARCH_PROG([for an Image -> EPS converter], TOEPS, convert pnmtops)
+case $TOEPS in
+	convert) gif_to_eps="convert GIF:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o";;
+	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
+esac
+
+SEARCH_PROG([for a GIF -> PNG converter], TOPNG, convert pnmtopng)
+case $TOPNG in
+	convert) gif_to_png="convert GIF:\$\$i PNG:\$\$o" eps_to_png="convert EPS:\$\$i PNG:\$\$o" jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
+	pnmtopng) gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o" eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o" jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
+esac
+
 #### Explore the LaTeX configuration
 MSG_CHECKING(LaTeX configuration)
 # First, remove the files that we want to re-create
@@ -423,7 +436,6 @@ cat >lyxrc.defaults <<EOF
 \\Format program  ""	Program		""
 \\Format word	  doc	Word		W
 
-
 \\converter latex dvi "$LATEX \$\$i" "latex"
 \\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
@@ -444,10 +456,13 @@ cat >lyxrc.defaults <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\converter gif eps "$image_command" ""
-\converter png eps "$image_command" ""
-\converter jpg eps "$image_command" ""
-\converter gif png "$image_command" ""
+\\converter gif eps "$gif_to_eps" ""
+\\converter png eps "$png_to_eps" ""
+\\converter jpg eps "$jpg_to_eps" ""
+
+\\converter gif png "$gif_to_png" ""
+\\converter eps png "$eps_to_png" ""
+\\converter jpg png "$jpg_to_png" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"

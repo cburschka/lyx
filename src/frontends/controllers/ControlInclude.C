@@ -22,6 +22,7 @@
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
 #include "gettext.h"
 
 #include "helper_funcs.h"
@@ -70,4 +71,10 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 	return browseFile(&lv_, in_name, title, pattern, dir1,
 			  make_pair(string(), string()));
+}
+
+
+void ControlInclude::load(string const & file)
+{
+	lv_.getLyXFunc()->dispatch(LFUN_CHILDOPEN, file);
 }

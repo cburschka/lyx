@@ -580,6 +580,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 
 	// we just need to be in math mode to enable that
 	case LFUN_MATH_SIZE: 
+	case LFUN_MATH_SPACE:
 	case LFUN_MATH_LIMITS: 
 	case LFUN_MATH_NONUMBER: 
 	case LFUN_MATH_NUMBER:
