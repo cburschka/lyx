@@ -1,14 +1,9 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{article (ENTCS)}
 # Based on LyX article class; modified to support ENTCS class
-# Reuben Thomas (rrt@sc3d.org)   27/5-2/6/01
+# R.R.T.   27/5-2/6/01
 
 Input article.layout
-
-# only font size 11pt is really available
-ClassOptions
-  FontSize   11
-End  
 
 Style Title
   LatexType             Command

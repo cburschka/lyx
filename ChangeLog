@@ -1,3 +1,26 @@
+2001-09-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/layouts/entcs.layout: renamed from encts.layout (stupid typo!);
+	restrict font size to `11pt'
+
+	* lib/layouts/cv.layout: rename SubSection layout to Subsection
+
+2001-08-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/formula.C (LocalDispatch): fix insertion of Upsilon
+
+	* src/mathed/symbol_def.h (LM_Upsilon): change character for Upsilon
+
+	* src/mathed/formula.C (LocalDispatch): fix insertion of \Upsilon
+
+	* config/lyxinclude.m4 (LYX_CXX_GLOBAL_CSTD): the test only makes
+	sense if we support namespaces (fixes gcc 2.8.1 compile problems)
+
+2001-08-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/bufferlist.C (loadLyXFile): add .lyx to file name if
+	necessary. 
+
 2001-08-31  Juergen Vigna  <jug@sad.it>
 
 	* src/lyx_gui.C (create_forms): fixed crash if banner-file was

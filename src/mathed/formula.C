@@ -1176,7 +1176,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 		    char greek[26] = 
 		    {'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
 		     'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
-		     'Y',  0,   0,   0,   0 , 'Z' };
+		     0,  0,   0,   0,   0 , 'Z' };
 		    if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
 			    char_code = LM_TC_RM;
 			    c = greek[c - 'A'];

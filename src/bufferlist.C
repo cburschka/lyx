@@ -468,8 +468,12 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 
 Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 {
-	// make sure our path is absolute
-	string const s = MakeAbsPath(filename);
+	// get absolute path of file and add ".lyx" to the filename if
+	// necessary
+	string s = FileSearch(string(), filename, "lyx");
+	if (s.empty()) {
+		s = filename;
+	}
 
 	// file already open?
 	if (exists(s)) {

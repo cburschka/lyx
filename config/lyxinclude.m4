@@ -545,6 +545,10 @@ AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
     [AC_TRY_COMPILE([
     #include <cctype>
     using std::tolower;
+    dnl the test only makes sense if we support namespaces
+    namespace foo {
+      int bar;
+    }
     ],[
     return 0;
     ],[lyx_cv_cxx_global_cstd=no],[lyx_cv_cxx_global_cstd=yes])])

@@ -18,9 +18,9 @@
 #define LM_Pi 0x50
 ///
 #define LM_Sigma 0x53
-//#define LM_Upsilon 0x55
+#define LM_Upsilon 0x55
 ///
-#define LM_Upsilon 0xa1
+//#define LM_Upsilon 0xa1
 ///
 #define LM_Phi 0x46
 ///
