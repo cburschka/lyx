@@ -218,7 +218,7 @@ Menuset
 	Item "AMS gather environment" "command-sequence math-mode; math-mutate gather;"
 	Item "AMS multline environment" "command-sequence math-mode; math-mutate multline;"
   Separator
-	Item "Array environment|y" "math-insert matrix 2 2"
+	Item "Array environment|y" "math-matrix 2 2"
 	Item "Cases environment|C" "math-insert \cases"
   Separator
 	Submenu "Font Change|f" "insert_math_font"
