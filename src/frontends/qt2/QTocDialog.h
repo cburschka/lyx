@@ -17,12 +17,11 @@ class QTocDialog : public QTocDialogBase
 { Q_OBJECT
 
 public:
-	QTocDialog(QToc * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
+	QTocDialog(QToc * form);
 	~QTocDialog();
 
 public slots:
 	void activate_adaptor(int);
-	void close_adaptor();
 	void depth_adaptor(int);
 	void select_adaptor(QListViewItem *);
 	void update_adaptor();

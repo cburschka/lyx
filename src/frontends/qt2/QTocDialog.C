@@ -7,17 +7,19 @@
  */
 
 #include <config.h>
-#include <debug.h>
 #include "QTocDialog.h"
 #include "Dialogs.h"
 #include "QToc.h"
 
 #include <qlistview.h>
+#include <qpushbutton.h>
 
-QTocDialog::QTocDialog(QToc * form, QWidget * parent, const char * name, bool modal, WFlags fl)
-	: QTocDialogBase(parent, name, modal, fl),
+QTocDialog::QTocDialog(QToc * form)
+	: QTocDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
 }
  
 
@@ -26,43 +28,21 @@ QTocDialog::~QTocDialog()
 }
  
 
-void QTocDialog::activate_adaptor(int index)
+void QTocDialog::activate_adaptor(int)
 {
-	switch (index) {
-	case 0:
-		//form_->set_type(Buffer::TOC_TOC);
-		break;
-	case 1:
-		//form_->set_type(Buffer::TOC_LOF);
-		break;
-	case 2:
-		//form_->set_type(Buffer::TOC_LOT);
-		break;
-	case 3:
-		//form_->set_type(Buffer::TOC_LOA);
-		break;
-	default:
-		lyxerr[Debug::GUI] << "Unknown TOC combo selection." << std::endl;
-		break;
-	}
+	form_->updateToc(form_->depth_);
 }
  
-void QTocDialog::close_adaptor()
+ 
+void QTocDialog::depth_adaptor(int depth)
 {
-	form_->close();
-	hide();
+	form_->set_depth(depth);
 }
 
 
-void QTocDialog::depth_adaptor(int /*depth*/)
+void QTocDialog::select_adaptor(QListViewItem * item)
 {
-	//form_->set_depth(depth);
-}
-
-
-void QTocDialog::select_adaptor(QListViewItem * /*item*/)
-{
-	//form_->select(item->text(0));
+	form_->select(item->text(0).latin1());
 }
 
 
@@ -74,6 +54,6 @@ void QTocDialog::update_adaptor()
  
 void QTocDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->slotWMHide();
 	e->accept();
 }

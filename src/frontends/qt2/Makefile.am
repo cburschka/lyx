@@ -26,7 +26,6 @@ libqt2_la_LIBADD = \
 	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBrowser.lo \
-	../xforms/FormERT.lo \
 	../xforms/FormFloat.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDeco.lo \
@@ -41,7 +40,6 @@ libqt2_la_LIBADD = \
 	../xforms/FormTabular.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormInset.lo \
-	../xforms/FormToc.lo \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
@@ -49,11 +47,9 @@ libqt2_la_LIBADD = \
 	../xforms/bmtable.lo \
 	../xforms/form_browser.lo \
 	../xforms/form_document.lo \
-	../xforms/form_ert.lo \
 	../xforms/form_float.lo \
 	../xforms/form_preferences.lo \
 	../xforms/form_tabular.lo \
-	../xforms/form_toc.lo \
 	../xforms/form_maths_deco.lo \
 	../xforms/form_maths_delim.lo \
 	../xforms/form_maths_matrix.lo \

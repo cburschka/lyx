@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>369</width>
+            <width>361</width>
             <height>313</height>
         </rect>
     </property>
@@ -31,11 +31,78 @@
             <number>6</number>
         </property>
         <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout3</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>typeLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Type</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>typeCO</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>typeCO</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget>
             <class>QListView</class>
             <column>
                 <property>
                     <name>text</name>
-                    <string>Table Of Contents</string>
+                    <string>Contents list</string>
                 </property>
                 <property>
                     <name>clickable</name>
@@ -58,10 +125,6 @@
                 <cstring>depthSL</cstring>
             </property>
             <property stdset="1">
-                <name>orientation</name>
-                <enum>Horizontal</enum>
-            </property>
-            <property stdset="1">
                 <name>maxValue</name>
                 <number>5</number>
             </property>
@@ -69,12 +132,16 @@
                 <name>pageStep</name>
                 <number>1</number>
             </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout39</cstring>
+                <cstring>Layout2</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -85,10 +152,21 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>updatePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Update</string>
+                    </property>
+                </widget>
                 <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer11</cstring>
+                        <cstring>Spacer2</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -106,63 +184,6 @@
                         </size>
                     </property>
                 </spacer>
-                <widget>
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>typeLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Type</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>typeCO</cstring>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Table of Contents</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>List of Figures</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>List of Tables</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>List of Algorithms</string>
-                        </property>
-                    </item>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>typeCO</cstring>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>updatePB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Update</string>
-                    </property>
-                </widget>
                 <widget>
                     <class>QPushButton</class>
                     <property stdset="1">
@@ -200,12 +221,6 @@
         <signal>clicked()</signal>
         <receiver>QTocDialogBase</receiver>
         <slot>update_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>closePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTocDialogBase</receiver>
-        <slot>close_adaptor()</slot>
     </connection>
     <connection>
         <sender>depthSL</sender>

@@ -11,68 +11,51 @@
 #ifndef QTOC_H
 #define QTOC_H
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "boost/utility.hpp"
-#include "insets/insetcommand.h"
-#include "buffer.h"
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-class Dialogs;
+#include "Qt2Base.h"
+
+#include "ControlToc.h"
+ 
+class ControlToc;
 class QTocDialog;
 
-class QToc : public DialogBase {
+class QToc : 
+	public Qt2CB<ControlToc, Qt2DB<QTocDialog> > 
+{
 public:
-	QToc(LyXView *, Dialogs *);
-	~QToc();
+	QToc(ControlToc &);
 
-	// Build the dialog
-	virtual void build();
-	/// Update the dialog before showing it.
-	virtual void update();
-	/// close the connections
-	virtual void close();
-
+	friend class QTocDialog;
+ 
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
+	/// update the listview
+	void updateToc(int newdepth);
 
-	/// create a Toc inset
-	void createTOC(string const &);
-	/// view a Toc inset
-	void showTOC(InsetCommand * const);
-	
-	/// update the Toc
-	void updateToc(int);
+	/// update the float types
+	void updateType();
 
-	/// Real GUI implementation.
-	QTocDialog * dialog_;
+	/// select an entry
+	void select(string const & text);
+ 
+	/// set the depth
+	void set_depth(int depth);
+ 
+	virtual void apply() {};
+ 
+	/// update dialog 
+	virtual void update_contents();
 
-	/// the LyXView we belong to
-	LyXView * lv_;
-
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	/// pointer to the inset if any
-	InsetCommand * inset_;
-	/// insets params
-	InsetCommandParams params;
-	
-	/// Hide connection.
-	SigC::Connection h_;
-	/// Update connection.
-	SigC::Connection u_;
-	/// Inset hide connection.
-	SigC::Connection ih_;
+	/// build dialog
+	virtual void build_dialog();
 
 	/// the toc list
-	//std::vector <Buffer::TocItem> toclist;
+	Buffer::SingleList toclist;
 
 	/// depth of list shown
-	int depth;
+	int depth_;
 };
 
 #endif // QTOC_H

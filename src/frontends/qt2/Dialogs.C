@@ -33,6 +33,7 @@
 #include "QTabularCreateDialog.h"
 #include "QTexinfoDialog.h"
 #include "QThesaurusDialog.h"
+#include "QTocDialog.h"
 #include "QURLDialog.h"
 #include "QVCLogDialog.h"
 
@@ -57,6 +58,7 @@
 #include "QSpellchecker.h"
 #include "QTabularCreate.h"
 #include "QTexinfo.h"
+#include "QToc.h"
 #include "QThesaurus.h"
 #include "QURL.h"
 #include "QVCLog.h"
@@ -71,8 +73,6 @@
 #include "xforms/FormBrowser.h"
 #include "xforms/form_browser.h"
 #include "xforms/FormDocument.h"
-#include "xforms/FormERT.h"
-#include "xforms/form_ert.h"
 #include "xforms/FormFloat.h"
 #include "xforms/form_float.h"
 #include "xforms/FormMathsPanel.h"
@@ -80,8 +80,6 @@
 #include "xforms/FormPreferences.h"
 #include "xforms/FormShowFile.h"
 #include "xforms/FormTabular.h"
-#include "xforms/FormToc.h"
-#include "xforms/form_toc.h"
  
 #include "GUI.h"
 
@@ -113,14 +111,13 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUITexinfo<QTexinfo, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this));
+	add(new GUIToc<QToc, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
 	// dialogs not yet converted
-	add(new GUIERT<FormERT, xformsBC>(*lv, *this));
 	add(new GUIFloat<FormFloat, xformsBC>(*lv, *this));
 	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
-	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
 
 	// dialogs not yet MVCd
 	add(new FormDocument(lv, this));
