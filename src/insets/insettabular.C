@@ -76,7 +76,7 @@ InsetTabular::~InsetTabular()
 }
 
 
-InsetTabular * InsetTabular::Clone() const
+Inset * InsetTabular::Clone() const
 {
     InsetTabular * t = new InsetTabular(*this, buffer);
     return t;

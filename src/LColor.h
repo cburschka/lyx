@@ -76,6 +76,9 @@ public:
 		noteframe,
 
 
+		/// Color for the depth bars in the margin
+		depthbar,
+
 		/// Text color for command insets
 		command,
 		/// Background color for command insets

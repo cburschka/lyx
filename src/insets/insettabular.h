@@ -68,7 +68,7 @@ public:
     ///
     ~InsetTabular();
     ///
-    InsetTabular * InsetTabular::Clone() const;
+    Inset * Clone() const;
     ///
     void Read(LyXLex &);
     ///

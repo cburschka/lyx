@@ -3735,6 +3735,29 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			  paperwidth - 2, offset + row_ptr->height,
 			  LColor::appendixline);
 	}
+
+	int depth = row_ptr->par->GetDepth();
+	if (depth > 0) {
+		int next_depth = (row_ptr->next)
+			? next_depth = row_ptr->next->par->GetDepth() : 0; 
+		int prev_depth = (row_ptr->previous)
+		        ? row_ptr->previous->par->GetDepth() : 0;
+
+		for (int i = 1; i <= depth; ++i)
+			pain.line(4*i, offset,
+				  4*i, offset + row_ptr->height - 1 - (i-next_depth-1)*3,
+				  LColor::depthbar);
+
+		for (int i = prev_depth + 1; i <= depth; ++i)
+			pain.fillRectangle(4*i, offset,
+					   4, 2,
+					   LColor::depthbar);
+
+		for (int i = next_depth + 1; i <= depth; ++i)
+			pain.fillRectangle(4*i, offset + row_ptr->height - 2 - (i-next_depth-1)*3,
+					   4, 2,
+					   LColor::depthbar);
+	}
 	
 	if (row_ptr->par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 		/* draw a marker at the left margin! */ 

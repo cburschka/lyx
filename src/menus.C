@@ -1277,11 +1277,11 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 	int SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
 					   _("Floats%t"
-					     "|Figure%x71"
-					     "|Table%x72"
-					     "|Wide Figure%x73"
-					     "|Wide Table%l%x74"
-					     "|Algorithm%x75"));
+					     "|Figure Float%x71"
+					     "|Table Float%x72"
+					     "|Wide Figure Float%x73"
+					     "|Wide Table Float%l%x74"
+					     "|Algorithm Float%x75"));
 	
 	fl_setpup_shortcut(SubInsertFloatList, 71, scex(_("IMF|gG#g#G")));
 	fl_setpup_shortcut(SubInsertFloatList, 72, scex(_("IMF|Tt#t#T")));
@@ -1310,14 +1310,14 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubInsertSpecial, 38, scex(_("IMS|Mm#m#M")));
 	
 	int InsertMenu = fl_defpup(FL_ObjWin(ob),
-				   _("Graphic..."
-				     "|Table Box...%l"
+				   _("Figure..."
+				     "|Table...%l"
 				     "|Include File..." 
 				     "|Import ASCII File%m"
 				     "|Insert LyX File...%l"
 				     "|Footnote"
 				     "|Margin Note"
-				     "|Floating Material%m%l"      
+				     "|Floats%m%l"      
 				     "|Lists & TOC%m%l"
 				     "|Special Character%m%l"
 				     "|Note..."

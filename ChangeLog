@@ -1,3 +1,20 @@
+2000-04-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insettabular.[Ch]: fix the Clone() declaration.
+
+	* src/menus.C: revert the change of naming (Figure->Graphic...)
+	from 2000-04-11. It was incomplete and bad.
+	
+	* src/LColor.[Ch]: add LColor::depthbar.
+	* src/text.C (GetVisibleRow): use it.
+
+	* README: update the languages list.
+
+2000-04-25  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/text.C (GetVisibleRow): show the depth of paragraphs using
+	vertical bars.
+
 2000-04-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* README: remove sections that were just wrong.
