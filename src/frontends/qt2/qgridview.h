@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qgridview.h,v 1.2 2002/12/01 22:59:19 larsbj Exp $
+** $Id: qgridview.h,v 1.2.2.1 2004/12/14 11:07:08 leeming Exp $
 **
 ** Definition of QGridView class
 **
@@ -44,7 +44,7 @@
 
 class QGridViewPrivate;
 
-class Q_EXPORT QGridView : public QScrollView
+class QGridView : public QScrollView
 {
     Q_OBJECT
     Q_PROPERTY( int numRows READ numRows WRITE setNumRows )

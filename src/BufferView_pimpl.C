@@ -63,7 +63,6 @@
 #include "BoostFormat.h"
 
 #include <unistd.h>
-#include <sys/wait.h>
 
 
 using std::vector;
