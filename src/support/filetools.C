@@ -1134,7 +1134,18 @@ cmdret const do_popen(string const & cmd)
 	// of course the best would be to have a
 	// pstream (process stream), with the
 	// variants ipstream, opstream
-	FILE * inf = ::popen(cmd.c_str(), "r");
+
+	// CYGWIN needs 'b', but linux only works without it
+#ifdef __CYGWIN__
+	FILE * inf = ::popen(cmd.c_str(), "rb");
+#else
+        FILE * inf = ::popen(cmd.c_str(), "r");
+#endif
+
+	// (Claus Hentschel) Check if popen was succesful ;-)
+	if (!inf)
+		return make_pair(-1, string());
+	
 	string ret;
 	int c = fgetc(inf);
 	while (c != EOF) {

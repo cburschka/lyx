@@ -1,10 +1,15 @@
+2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* filetools.C (do_popen): fix for cygwin compatibility (from Claus
+	Hentschel). This code should maybe be moved to os:: class.
+
 2002-02-08  Herbert Voss  <voss@perce.de>
 
-	* filetools.[C]: (unzipFile) fix typo
+	* filetools.C: (unzipFile) fix typo
 
 2002-02-06  Herbert Voss  <voss@perce.de>
 
-	* filetools.[Ch]: fix sume bugs for detecting zipped files 
+	* filetools.[Ch]: fix some bugs for detecting zipped files 
 	adding unzipFile()
 
 2002-02-04  Herbert Voss  <voss@perce.de>
