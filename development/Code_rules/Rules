@@ -28,9 +28,9 @@ that you:
   This eases maintenance a lot.
 - write good C++ code: Readable, well commented and taking advantage of the 
   OO model. Follow the formatting guidelines. See Formatting.
-- adapt the code to the structures already existing in LyX, or in the case that 
-  you have better ideas, discuss them on the developer's list before writing 
-  the code.
+- adapt the code to the structures already existing in LyX, or in the case
+  that you have better ideas, discuss them on the developer's list before
+  writing the code.
 - take advantage of the C++ standard library. especially don't use
   custom containers when a standard container is usable; learn to use
   the algorithms and functors in the standard library.
@@ -61,7 +61,7 @@ lot easier to read than the other diff formats. Also please do not
 send patches that implements or fixes several different things; several
 patches is a much better option.
 
-We also expect you to provide a ChangeLog entry with every patch, this
+We also require you to provide a ChangeLog entry with every patch, this
 describes shortly what the patch is doing. The ChangeLog entry follows
 this syntax:
 
@@ -95,7 +95,7 @@ in C++.
 
 - Prefer preincrement to postincrement whenever possible.
   Preincrement has potential of being faster than postincrement. Just
-  thing about the obvious implementations of pre/post-increment. This
+  think about the obvious implementations of pre/post-increment. This
   rule applies to decrement too.
 
 	++T;
@@ -247,6 +247,20 @@ Formatting
 	-NOT-
 	void mangle ()  // wrong
 
+* Use of braces
+
+  We use braces a lot, even if this lowers the density of the code in
+  some cases. In particular we use braces for one-liners in relation
+  to if, while, etc.
+
+	if (true) {
+		do_that();
+	}
+	-NOT-
+	if (true)
+		do_that();
+
+
 * Enumerators
 	enum {
 		one = 1,
@@ -314,7 +328,8 @@ Formatting
 
 * File headers
 
-  - If you create a new file, the top of the file should look something like this :
+  - If you create a new file, the top of the file should look something
+    like this :
 
   /**
    * \file NewFile.C
