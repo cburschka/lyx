@@ -408,24 +408,18 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 	if (!par || c1 == c2)
 		return ret;
 
+	LyXTextClass const & tclass1 = textclasslist[c1];
+	LyXTextClass const & tclass2 = textclasslist[c2];
 	ParIterator end = ParIterator();
 	for (ParIterator it = ParIterator(par); it != end; ++it) {
 		par = *it;
 		string const name = par->layout();
-		LyXTextClass const & tclass = textclasslist[c2];
+		bool hasLayout = tclass2.hasLayout(name);
 
-		bool hasLayout = tclass.hasLayout(name);
+		if (!hasLayout)
+			par->layout(tclass2.defaultLayoutName());
 
-		string lay = tclass.defaultLayoutName();
-		if (hasLayout) {
-			lay = name;
-		} else {
-			// not found: use default layout
-			lay = tclass.defaultLayoutName();
-		}
-		par->layout(lay);
-
-		if (name != par->layout()) {
+		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			++ret;
 			string const s = _("Layout had to be changed from\n")
 				+ name + _(" to ")

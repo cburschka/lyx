@@ -1,3 +1,9 @@
+2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): when converting a
+	non-existing layout, do not complain if it was the default layout
+	of the original class (bug #342)
+
 2002-04-24  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (workAreaButtonPress): fix handling of mouse-wheel
