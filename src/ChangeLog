@@ -1,5 +1,7 @@
 2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* lyxfunc.C (getStatus): Fix the LFUN_EXPORT case.
+
 	* text2.C (SetCurrentFont): Disable number property at boundary.
 
 2001-02-26  Juergen Vigna  <jug@sad.it>

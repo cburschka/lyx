@@ -390,9 +390,8 @@ LyXFunc::func_status LyXFunc::getStatus(int ac, string const & not_to_use_arg) c
 			|| lyxrc.print_command == "none";
 		break;
 	case LFUN_EXPORT:
-		disable = (argument != "custom") ||
-		    (argument == "fax" &&
-		     !Exporter::IsExportable(buf, argument));
+		disable = argument == "fax" &&
+			!Exporter::IsExportable(buf, argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
