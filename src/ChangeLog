@@ -1,5 +1,11 @@
 2002-10-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lyxrc.C (read): treat a viewer or converter command of "none" as
+	if it were empty.
+
+	* MenuBackend.C (expandFormats): for an update, also allow the
+	formats that are not viewable
+
 	* lyx_main.C (queryUserLyXDir): re-run automatically the configure
 	script if it is newer than the lyxrc.defaults in user directory
 
