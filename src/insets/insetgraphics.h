@@ -127,6 +127,8 @@ private:
 	mutable grfx::ImagePtr cached_image_;
 	///
 	mutable bool cache_filled_;
+	///
+	mutable int old_asc;
 };
 
 #endif 

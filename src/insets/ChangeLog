@@ -1,5 +1,7 @@
 2002-03-11  Juergen Vigna  <jug@sad.it>
 
+	* insetgraphics.C (draw): hack to fix the redrawing bug.
+
 	* insettext.C (updateInsetInInset): fixed for updates in insets inside
 	this inset text (don't know why I missed this earlier).
 

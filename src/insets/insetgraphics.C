@@ -96,6 +96,7 @@ TODO Before initial production release:
 #include "graphics/GraphicsImage.h"
 
 #include "LyXView.h"
+#include "lyxtext.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
@@ -107,7 +108,6 @@ TODO Before initial production release:
 #include "LaTeXFeatures.h"
 
 #include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
 #include "frontends/controllers/helper_funcs.h" // getVectorFromString
 
 #include "support/LAssert.h"
@@ -156,7 +156,7 @@ string const unique_id()
 
 InsetGraphics::InsetGraphics()
 	: graphic_label(unique_id()),
-	  cached_status_(grfx::ErrorUnknown), cache_filled_(false)
+	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 	  
 {}
 
@@ -165,7 +165,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
 	: Inset(ig, same_id),
 	  SigC::Object(),
 	  graphic_label(unique_id()),
-	  cached_status_(grfx::ErrorUnknown), cache_filled_(false)
+	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 {
 	setParams(ig.params());
 	if (same_id)
@@ -249,10 +249,10 @@ bool InsetGraphics::drawImage() const
 	
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
+	old_asc = 50;
 	if (drawImage())
-		return cached_image_->getHeight();
-	else
-		return 50;
+		old_asc = cached_image_->getHeight();
+	return old_asc;
 }
 
 
@@ -293,9 +293,21 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
                          int baseline, float & x, bool) const
 {
+	int oasc = old_asc;
+	
 	int ldescent = descent(bv, font);
 	int lascent  = ascent(bv, font);
 	int lwidth   = width(bv, font);
+
+	// we may have changed while someone other was drawing us so better
+	// to not draw anything as we surely call to redraw ourself soon.
+	// This is not a nice thing to do and should be fixed properly somehow.
+	// But I still don't know the best way to go. So let's do this like this
+	// for now (Jug 20020311)
+	if (lascent != oasc) {
+//		lyxerr << "IG(" << this << "): " << x << endl;
+		return;
+	}
 
 	// Make sure now that x is updated upon exit from this routine
 	int old_x = int(x);
@@ -312,12 +324,12 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	Painter & paint = bv->painter();
 
 	if (drawImage()) {
-
+//		lyxerr << "IG(" << this << "): " << old_x << endl;
 		paint.image(old_x + 2, baseline - lascent,
 		            lwidth - 4, lascent + ldescent,
 			    *cached_image_.get());
 
-	} else {	
+	} else {
 
 		paint.rectangle(old_x + 2, baseline - lascent,
 		                lwidth - 4,
