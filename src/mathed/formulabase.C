@@ -251,11 +251,7 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 		mathcursor->setPos(x + xo_, y + yo_);
 		//lyxerr << "insetButtonRelease: " << x + xo_ << " " << y + yo_ << "\n";
 		showInsetCursor(bv);
-		if (sel_flag) {
-			sel_flag = false;
-			sel_x = 0;
-			sel_y = 0;
-		}
+		sel_flag = false;
 		bv->updateInset(this, false);
 	}
 }
@@ -264,35 +260,30 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, int /*button*/)
 {
+	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_ << "\n";
 	sel_flag = false;
-	sel_x = x;
-	sel_y = y;
-	if (mathcursor && mathcursor->selection()) {
-		mathcursor->selClear();
-		bv->updateInset(this, false);
-	}
+	sel_x = x + xo_;
+	sel_y = y + yo_;
+	if (mathcursor) 
+		mathcursor->selStart();
+	bv->updateInset(this, false);
 }
 
 
 void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 					 int x, int y, int /*button*/)
 {
-	if (sel_x && sel_y && abs(x-sel_x) > 4 && !sel_flag) {
+	//lyxerr << "insetMotionNotify: " << x + xo_ << " " << y + yo_ << "\n";
+	if (abs(x - sel_x) > 4 && !sel_flag) 
 		sel_flag = true;
+
+	if (sel_flag) {
 		hideInsetCursor(bv);
-		mathcursor->setPos(sel_x, sel_y);
-		mathcursor->selStart();
-		showInsetCursor(bv);
-		mathcursor->getPos(sel_x, sel_y);
-	} else if (sel_flag) {
-		hideInsetCursor(bv);
-		mathcursor->setPos(x, y);
+		mathcursor->setPos(x + xo_, y + xo_);
 		showInsetCursor(bv);
 		mathcursor->getPos(x, y);
 		if (sel_x != x || sel_y != y)
 			bv->updateInset(this, false);
-		sel_x = x;
-		sel_y = y;
 	}
 }
 
