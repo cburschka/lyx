@@ -231,7 +231,9 @@ typedef float matriz_data[2][2];
 
 const matriz_data MATIDEN= { {1, 0}, {0, 1}};
 
+#ifndef USE_PAINTER
 extern void mathed_set_font(short type, int style);
+#endif
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_char_height(short, int, byte, int&, int&);
 
@@ -288,7 +290,9 @@ void Matriz::transf(float xp, float yp, float &x, float &y)
    y = m[1][0]*xp + m[1][1]*yp;
 }
 
+#ifndef USE_PAINTER
 extern GC latexGC, mathGC, mathLineGC, cursorGC;
+#endif
 
 static int search_deco(int code)
 {

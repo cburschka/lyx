@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#ifdef USE_PAINTER
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -172,5 +170,3 @@ LColor::color LColor::getFromLyXName(string const & lyxname) const
 
 // The evil global LColor instance
 LColor lcolor;
-
-#endif

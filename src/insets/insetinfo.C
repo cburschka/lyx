@@ -19,12 +19,14 @@
 #include "insetinfo.h"
 #include "lyxparagraph.h"
 #include "debug.h"
-#include "lyxdraw.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "Painter.h"
+#ifndef USE_PAINTER
+#include "lyxdraw.h"
+#endif
 
 /* Info, used for the Info boxes */
 

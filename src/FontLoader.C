@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997 Asger Alstrup
+ *	    Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
  * ====================================================== */

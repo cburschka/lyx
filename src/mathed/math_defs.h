@@ -24,6 +24,8 @@
 #pragma interface
 #endif
 
+#define USE_PAINTER 1
+
 #include "support/LIstream.h"
 
 #include "LString.h"

@@ -22,7 +22,9 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "FontLoader.h"
 #include "support/lstrings.h"
 

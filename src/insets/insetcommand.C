@@ -15,7 +15,9 @@
 #endif
 
 #include "insetcommand.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "debug.h"
 #include "Painter.h"
 

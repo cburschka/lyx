@@ -8,8 +8,6 @@
  *
  *======================================================*/
 
-#ifdef USE_PAINTER
-
 #ifndef LCOLOR_H
 #define LCOLOR_H
 
@@ -204,7 +202,5 @@ private:
 };
 
 extern LColor lcolor;
-
-#endif
 
 #endif

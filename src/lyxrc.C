@@ -36,7 +36,10 @@ using std::ios;
 // this is crappy... why are those colors command line arguments and
 // not in lyxrc?? (Matthias) 
 // Because nobody put them there. (Asger)
+#ifdef MONO
 extern int fast_selection;
+#endif
+
 extern string background_color;
 extern char selection_color[];
 extern bool cursor_follows_scrollbar;
@@ -97,7 +100,9 @@ enum LyXRCTags {
 	RC_KBMAP,
 	RC_KBMAP_PRIMARY,
 	RC_KBMAP_SECONDARY,
+#ifdef MONO
 	RC_FAST_SELECTION,
+#endif
 	RC_SELECTION_COLOR,
 	RC_BACKGROUND_COLOR,
 	RC_FAX_COMMAND,
@@ -165,7 +170,9 @@ static keyword_item lyxrcTags[] = {
 	{ "\\dvi_to_ps_command", RC_DVI_TO_PS_COMMAND },
 	{ "\\escape_chars", RC_ESC_CHARS },
 	{ "\\exit_confirmation", RC_EXIT_CONFIRMATION },
+#ifdef MONO
 	{ "\\fast_selection", RC_FAST_SELECTION },
+#endif	
 	{ "\\fax_command", RC_FAX_COMMAND },
 	{ "\\fax_program", RC_FAXPROGRAM },
 	{ "\\font_encoding", RC_FONT_ENCODING },
@@ -831,10 +838,12 @@ int LyXRC::read(string const & filename)
 				cursor_follows_scrollbar = lexrc.GetBool();
 			break;
 
+#ifdef MONO
 		case RC_FAST_SELECTION:
 			if (lexrc.next())
 				fast_selection = lexrc.GetBool();
 			break;
+#endif
 
 		case RC_BACKGROUND_COLOR:
 			if (lexrc.next())
@@ -1167,9 +1176,11 @@ void LyXRC::output(ostream & os) const
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		os << "\\cursor_follows_scrollbar "
 		   << tostr(cursor_follows_scrollbar) << "\n";
+#ifdef MONO
 	case RC_FAST_SELECTION:
 		os << "\\fast_selection "
 		   << tostr(static_cast<bool>(fast_selection)) << "\n";
+#endif
 	case RC_BACKGROUND_COLOR:
 		os << "\\background_color \"" << background_color << "\"\n";
 	case RC_SELECTION_COLOR:

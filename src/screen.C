@@ -15,14 +15,18 @@
 #endif
 
 #include "lyxscreen.h"
-#include "lyxdraw.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
 #include "BufferView.h"
 #include "Painter.h"
+#ifndef USE_PAINTER
+#include "lyxdraw.h"
+#endif
 
+#ifdef MONO
 extern int mono_video;
 extern int fast_selection;
+#endif
 
 #ifdef USE_PAINTER
 static
@@ -407,9 +411,11 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 
 void  LyXScreen::HideManualCursor(long x, long y, int asc, int desc)
 {
+#ifdef MONO
 	if (fast_selection || mono_video)
 		ShowManualCursor(x, y, asc, desc);
 	else
+#endif
 		HideCursor();
 }
 

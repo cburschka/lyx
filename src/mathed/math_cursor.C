@@ -31,9 +31,13 @@
 #include "LColor.h"
 #include "Painter.h"
 
+#ifndef USE_PAINTER
 extern void mathed_set_font(short type, int style);
+#endif
 
+#ifndef USE_PAINTER
 extern GC canvasGC, mathGC, latexGC, cursorGC, mathFrameGC;
+#endif
 
 static LyxArrayBase * selarray = 0;
 

@@ -18,7 +18,12 @@
 
 #include FORMS_H_LOCATION
 #include <X11/Xlib.h>
+
+#define USE_PAINTER 1
+
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 
 class LyXText;
 struct Row;
@@ -48,11 +53,13 @@ public:
 	///
 	~LyXScreen();
 
+#ifndef USE_PAINTER
 	/** Return the forground pixmap. This function is a _hack_,
 	    we should be rid of it as soon as possible. But to do that
 	    a lot in the mathcode and the figinset has to be rewritten.
 	    Tasks for 0.13. */
 	Pixmap getForeground() { return foreground; };
+#endif
 	
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
@@ -189,7 +196,7 @@ private:
 	///
 	Row * screen_refresh_row;
 	///
-	friend class InsetFormula;
+	//friend class InsetFormula;
 #ifdef USE_PAINTER
 	///
 	GC gc_copy;

@@ -31,7 +31,9 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxserver.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
@@ -77,9 +79,11 @@ FL_CMD_OPT cmdopt[] =
 	{"-height", "*.height", XrmoptionSepArg, "510"},
 	{"-xpos", "*.xpos", XrmoptionSepArg, "-1"},
 	{"-ypos", "*.ypos", XrmoptionSepArg, "-1"},
+#ifdef MONO
 	{"-Reverse", "*.Reverse", XrmoptionNoArg, "1"},
 	{"-Mono", "*.Mono", XrmoptionNoArg, "1"},
 	{"-FastSelection", "*.FastSelection", XrmoptionNoArg, "1"},
+#endif
 	{"-MathColor", "*.MathColor", XrmoptionSepArg, "blue"},
 	{"-MathFrameColor", "*.MathFrameColor", XrmoptionSepArg, "magenta"},
 	{"-FootColor", "*.FootColor", XrmoptionSepArg, "red"}, 
@@ -99,9 +103,11 @@ static int width;
 static int height;
 static int xpos;
 static int ypos;
+#ifdef MONO
 int	   reverse_video;
 int	   mono_video;
 int	   fast_selection;
+#endif
 bool	   cursor_follows_scrollbar;
 char	   math_color[32];
 char	   math_frame_color[32];
@@ -125,9 +131,11 @@ FL_resource res[] =
 	{"height", "heightClass", FL_INT, &height, "510", 0},
 	{"xpos", "xposClass", FL_INT, &xpos, "-1", 0},
 	{"ypos", "yposClass", FL_INT, &ypos, "-1", 0},
+#ifdef MONO
 	{"Reverse", "reverseClass", FL_INT, &reverse_video, "0", 0},
 	{"Mono", "monoClass", FL_INT, &mono_video, "0", 0},
 	{"FastSelection", "selectionClass", FL_INT, &fast_selection, "0", 0},
+#endif
 	{"MathColor", "colorClass", FL_STRING, math_color, "blue", 31},
 	{"MathFrameColor", "colorClass", FL_STRING, math_frame_color, "magenta", 31},
 	{"FootColor", "colorClass", FL_STRING, foot_color, "red", 31},

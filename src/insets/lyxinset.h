@@ -16,6 +16,8 @@
 #pragma interface
 #endif
 
+#define USE_PAINTER 1
+
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"

@@ -15,6 +15,8 @@
 #pragma interface
 #endif
 
+#define USE_PAINTER 1
+
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include "debug.h"

@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#ifdef USE_PAINTER
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -35,7 +33,7 @@ Painter::Painter(WorkArea & wa)
 {
 	colormap = fl_state[fl_get_vclass()].colormap;
 	// Clear the GC cache
-	for (int i=0; i <= LColor::ignore; ++i) {
+	for (int i = 0; i <= LColor::ignore; ++i) {
 		colorGCcache[i] = 0;
 	}
 }
@@ -43,14 +41,14 @@ Painter::Painter(WorkArea & wa)
 
 Painter::~Painter() {
 	// Release all the registered GCs
-	for (int i=0; i <= LColor::ignore; ++i) {
+	for (int i = 0; i <= LColor::ignore; ++i) {
 		if (colorGCcache[i] != 0) {
 			XFreeGC(display, colorGCcache[i]);
 		}
 	}
 	// Iterate over the line cache and Free the GCs
-	LineGCCache::iterator lit = lineGCcache.begin();
-	for (; lit != lineGCcache.end(); ++lit) {
+	for (LineGCCache::iterator lit = lineGCcache.begin();
+	     lit != lineGCcache.end(); ++lit) {
 		XFreeGC(display, (*lit).second);
 	}
 }
@@ -258,18 +256,14 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 
 PainterBase & Painter::text(int x, int y, string const & s, LyXFont const & f)
 {
-	if (lyxerr.debugging()) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "text not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
-	}
-	
-	GC gc = getGCForeground(f.realColor());
-	XSetFont(display, gc, f.getFontID());
-	XDrawString(display, drawable, gc, x, y, s.c_str(), s.length());
-	underline(f, x, y, this->width(s, f));
-	return *this;
+	return text(x, y, s.c_str(), s.length(), f);
+}
+
+
+PainterBase & Painter::text(int x, int y, char c, LyXFont const & f)
+{
+	char s[2] = { c, '\0' };
+	return text(x, y, s, 1, f);
 }
 
 
@@ -291,26 +285,8 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 }
 
 
-PainterBase & Painter::text(int x, int y, char c, LyXFont const & f)
+void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	if (lyxerr.debugging()) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "text not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
-	}
-	
-	GC gc = getGCForeground(f.realColor());
-	XSetFont(display, gc, f.getFontID());
-	char s[2];
-	s[0] = c; s[1] = '\0';
-	XDrawString(display, drawable, gc, x, y, s, 1);
-	underline(f, x, y, this->width(c, f));
-	return *this;
-}
-
-
-void Painter::underline(LyXFont const & f, int x, int y, int width) {
 	// What about underbars?
 	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON) {
 		int below = f.maxDescent() / 2;
@@ -347,9 +323,11 @@ GC Painter::getGCForeground(LColor::color c)
 		val.foreground = bla;
 	// Try the exact RGB values first, then the approximate.
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
-		lyxerr << _("LyX: X11 color ") << s
-		       << _(" allocated for ") 
-		       << lcolor.getGUIName(c) << endl;
+		if (lyxerr.debugging()) {
+			lyxerr << _("LyX: X11 color ") << s
+			       << _(" allocated for ") 
+			       << lcolor.getGUIName(c) << endl;
+		}
 		val.foreground = xcol.pixel;
 	} else if (XAllocColor(display, colormap, &ccol)) {
 		lyxerr << _("LyX: Using approximated X11 color ") << s
@@ -451,5 +429,3 @@ GC Painter::getGCLinepars(enum line_style ls,
 			  GCForeground | GCLineStyle | GCLineWidth | 
 			  GCCapStyle | GCJoinStyle | GCFunction, &val);
 }
-
-#endif

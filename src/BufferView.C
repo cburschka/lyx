@@ -41,7 +41,6 @@ using std::for_each;
 #endif
 
 #include "debug.h"
-#include "lyxdraw.h"
 #include "lyx_gui_misc.h"
 #include "BackStack.h"
 #include "lyxtext.h"
@@ -53,6 +52,9 @@ using std::for_each;
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "WorkArea.h"
+#ifndef USE_PAINTER
+#include "lyxdraw.h"
+#endif
 
 using std::find_if;
 

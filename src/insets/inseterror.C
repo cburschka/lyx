@@ -15,7 +15,9 @@
 #endif
 
 #include "inseterror.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "Painter.h"

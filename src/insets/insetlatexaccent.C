@@ -17,7 +17,9 @@
 #include "insetlatexaccent.h"
 #include "debug.h"
 #include "lyxrc.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "support/lstrings.h"
 #include "Painter.h"
 
@@ -534,6 +536,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		}
 		case TILDE:     // tilde
 		{
+#if 0
 			if (hg35 > 2.0) hg35 -= 1.0;
 			x2 += (hg35 / 2.0);
 			int xp[4], yp[4];
@@ -551,6 +554,11 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			yp[3] = int(y + hg35);
 			
 			pain.lines(xp, yp, 4);
+#else
+			pain.text(x2 - font.width('~') / 2,
+				  baseline - font.ascent('~'),
+				  "~", 1, font);
+#endif
 			break;
 		}
 		case UNDERBAR:     // underbar
@@ -665,6 +673,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		}
 		case UMLAUT:    // umlaut
 		{
+#if 0
 			float rad = hg / 2.0;
 			if (rad <= 1.0) {
 				pain.point(int(x2 - 4.0 * hg / 7.0),
@@ -683,6 +692,10 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 					    y + hg35,
 					    rad, rad, 0, 360*64);
 			}
+#else
+			pain.text(x2 - font.width('¨') / 2, baseline,
+				  "¨", 1, font);
+#endif
 			break;
 		}
 		case CIRCUMFLEX:    // circumflex
@@ -964,7 +977,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 					    y + hg35,
 					    rad, rad, 0, 360*64);
 			}
-			//scr.drawText(font, "¨", 1, y + hg, x2);
+			//scr.drawText(font, "¨", 1, baseline, x2);
 			break;
 		}
 		case CIRCUMFLEX:    // circumflex

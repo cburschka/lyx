@@ -47,7 +47,9 @@ ostream & operator<<(ostream & o, MathedMacroFlag mmf)
 	return o << int(mmf);
 }
 
+#ifndef USE_PAINTER
 extern GC mathGC, mathFrameGC, latexGC;
+#endif
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
 extern int mathed_string_height(short, int, byte const*, int, int&, int&);
 
@@ -126,7 +128,7 @@ void MathMacro::draw(Painter & pain, int x, int y)
     Metrics();
     tmplate->update(this);
     tmplate->SetStyle(size);
-    mathGC = latexGC;
+    //mathGC = latexGC;
     tmplate->draw(pain, x, y);
     for (int i = 0; i < nargs; ++i)
       tmplate->GetMacroXY(i, args[i].x, args[i].y);

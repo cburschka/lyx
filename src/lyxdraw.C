@@ -1,8 +1,6 @@
 
 #include <config.h>
 
-#ifndef USE_PAINTER
-
 #include "lyxdraw.h"
 #include "debug.h"
 
@@ -556,5 +554,3 @@ GC getGC(gc_type typ)
 	}
 	return gc;
 }
-
-#endif

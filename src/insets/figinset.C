@@ -2,7 +2,9 @@
  *	figinset.C - part of LyX project
  */
 
+#ifdef MONO
 extern int	reverse_video;
+#endif
 extern long int background_pixels;
 
 /*  Rework of path-handling (Matthias 04.07.1996 )
@@ -58,7 +60,9 @@ using std::flush;
 #include "support/filetools.h"
 #include "LyXView.h" // just because of form_main
 #include "debug.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "LaTeXFeatures.h"
 #include "lyxrc.h"
 #include "gettext.h"
@@ -644,15 +648,19 @@ static void runqueue()
 			}
 
 #ifdef USE_PAINTER
+#ifdef MONO
 			if (reverse_video) {
 				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(
 					DefaultScreenOfDisplay(fl_display)),
 					fl_get_pixel(FL_BLACK));
 			} else {
+#endif
 				sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
 					DefaultScreenOfDisplay(fl_display)),
 					fl_get_pixel(FL_WHITE));
+#ifdef MONO
 			}
+#endif
 #else
 			if (reverse_video) {
 				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(

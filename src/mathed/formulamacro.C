@@ -29,7 +29,9 @@
 #include "lyx_cb.h"
 #include "BufferView.h"
 #include "lyxscreen.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "gettext.h"
 #include "Painter.h"
 

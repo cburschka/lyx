@@ -21,7 +21,6 @@
 #include "lyxtext.h"
 #include "support/textutils.h"
 #include "lyx_gui_misc.h"
-#include "lyxdraw.h"
 #include "gettext.h"
 #include "bufferparams.h"
 #include "buffer.h"
@@ -32,15 +31,21 @@
 #include "LyXView.h"
 #include "lyxrow.h"
 #include "Painter.h"
+#ifndef USE_PAINTER
+#include "lyxdraw.h"
+#endif
 
 using std::max;
 using std::min;
 
 static const int LYX_PAPER_MARGIN = 20;
 
+#ifdef MONO
 extern int mono_video;
 extern int reverse_video;
 extern int fast_selection;
+#endif
+
 extern BufferView * current_view;
 extern LyXRC * lyxrc;
 
@@ -2779,16 +2784,17 @@ void LyXText::InsertCharInTable(char c)
 
 	jumped_over_space = false;
 	if (IsLineSeparatorChar(c)) {
-		
+
+#ifndef FIX_DOUBLE_SPACE
 		/* avoid double blanks but insert the new blank because
 		 * of a possible font change */
 		if (cursor.pos < lastpos &&
-		    cursor.par->IsLineSeparator(cursor.pos))
-		{
+		    cursor.par->IsLineSeparator(cursor.pos)) {
 			cursor.par->Erase(cursor.pos);
 			jumped_over_space = true;
-		}
-		else if ((cursor.pos > 0 && 
+		} else
+#endif
+			if ((cursor.pos > 0 && 
 			  cursor.par->IsLineSeparator(cursor.pos - 1))
 			 || (cursor.pos > 0 && cursor.par->IsNewline(cursor.pos - 1))
 			  || (cursor.pos == 0 &&
@@ -2796,8 +2802,7 @@ void LyXText::InsertCharInTable(char c)
 			      && cursor.par->Previous()->footnoteflag
 			      == LyXParagraph::OPEN_FOOTNOTE)))
 			return;
-	}
-	else if (IsNewlineChar(c)) {
+	} else if (IsNewlineChar(c)) {
             if (!IsEmptyTableCell()) {
                 TableFeatures(LyXTable::APPEND_CONT_ROW);
                 CursorDown();
@@ -2897,13 +2902,12 @@ void LyXText::BackspaceInTable()
 		/* no pasting of table paragraphs */
 		
 		CursorLeft();
-	}
-	else {
+	} else {
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
-	  SetUndo(Undo::DELETE, 
-		  cursor.par->ParFromPos(cursor.pos)->previous, 
-		  cursor.par->ParFromPos(cursor.pos)->next); 
+		SetUndo(Undo::DELETE, 
+			cursor.par->ParFromPos(cursor.pos)->previous, 
+			cursor.par->ParFromPos(cursor.pos)->next); 
 	  
 		CursorLeftIntern();
 		
@@ -2930,7 +2934,8 @@ void LyXText::BackspaceInTable()
 				tmprow = tmprow->next;
 				tmprow->pos--;
 			}
-			
+
+#ifndef FIX_DOUBLE_SPACE
 			/* delete superfluous blanks */ 
 			if (cursor.pos < cursor.par->Last() - 1 &&
 			(cursor.par->IsLineSeparator(cursor.pos))) {
@@ -2950,6 +2955,7 @@ void LyXText::BackspaceInTable()
 						cursor.pos--;
 				}
 			}
+#endif
 		}
       
 		CheckParagraphInTable(cursor.par, cursor.pos);
@@ -4106,7 +4112,11 @@ void LyXText::GetVisibleRow(int offset,
 	pain.fillRectangle(0, offset, paperwidth, row_ptr->height);
 	
 	// check for NOT FAST SELECTION
-	if (!fast_selection && !mono_video && selection) {
+	if (
+#ifdef MONO
+		!fast_selection && !mono_video &&
+#endif
+		selection) {
 		/* selection code */ 
 		if (sel_start_cursor.row == row_ptr &&
 		    sel_end_cursor.row == row_ptr) {
@@ -4120,8 +4130,7 @@ void LyXText::GetVisibleRow(int offset,
 						   sel_start_cursor.x - sel_end_cursor.x,
 						   row_ptr->height,
 						   LColor::selection);
-		}
-		else if (sel_start_cursor.row == row_ptr) {
+		} else if (sel_start_cursor.row == row_ptr) {
 		     if (direction == LYX_DIR_LEFT_TO_RIGHT)
 			     pain.fillRectangle(sel_start_cursor.x, offset,
 						paperwidth - sel_start_cursor.x,
@@ -4447,7 +4456,7 @@ void LyXText::GetVisibleRow(int offset,
 			pain.line(0, offset + y_bottom - 2 * DefaultHeight(),
 				  paperwidth,
 				  offset + y_bottom - 2 * DefaultHeight(),
-				  LColor::pagebreak);
+				  LColor::pagebreak, Painter::line_onoffdash);
 			y_bottom -= 3 * DefaultHeight();
 		}
 		

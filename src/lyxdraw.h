@@ -1,5 +1,4 @@
 // -*- C++ -*-
-#ifndef USE_PAINTER
 
 #ifndef LYX_DRAW_H
 #define LYX_DRAW_H
@@ -51,7 +50,5 @@ extern GC getGC(gc_type typ);
 extern GC GetAccentGC(LyXFont const &f, int line_width);
 ///
 extern GC GetColorGC(LyXFont::FONT_COLOR color);
-
-#endif
 
 #endif

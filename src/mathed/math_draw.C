@@ -32,8 +32,10 @@ extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
 extern int mathed_string_height(short, int, byte const*, int, int&, int&);
 extern int mathed_char_height(short, int, byte, int&, int&);
-   
+
+#ifndef USE_PAINTER
 GC canvasGC= 0, mathGC= 0, mathLineGC= 0, latexGC= 0, cursorGC= 0, mathFrameGC= 0;
+#endif
 
 
 #ifndef USE_PAINTER

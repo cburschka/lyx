@@ -9,8 +9,6 @@
 
 #include <config.h>
 
-#ifdef USE_PAINTER
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -141,5 +139,3 @@ PainterBase & PainterBase::buttonText(int x, int baseline,
 	text(x + 4, baseline, str, font);
 	return *this;
 }
-
-#endif

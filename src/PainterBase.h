@@ -8,8 +8,6 @@
  *
  *======================================================*/
 
-#ifdef USE_PAINTER
-
 #ifndef PAINTERBASE_H
 #define PAINTERBASE_H
 
@@ -200,7 +198,5 @@ public:
 private:
 	WorkArea & owner;
 };
-
-#endif
 
 #endif

@@ -14,10 +14,12 @@
 #endif
 
 #include "insetspecialchar.h"
-#include "lyxdraw.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
+#ifndef USE_PAINTER
+#include "lyxdraw.h"
+#endif
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
 	: kind(k)

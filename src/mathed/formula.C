@@ -31,7 +31,9 @@
 #include "minibuffer.h"
 #include "BufferView.h"
 #include "lyxscreen.h"
+#ifndef USE_PAINTER
 #include "lyxdraw.h"
+#endif
 #include "lyxtext.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -43,11 +45,16 @@
 
 extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
+#ifndef USE_PAINTER
 extern GC canvasGC, mathGC, mathLineGC, latexGC, cursorGC, mathFrameGC;
+#endif
+
 extern char * mathed_label;
 
+#ifdef MONO
 extern int mono_video;
 extern int fast_selection;
+#endif
 
 extern BufferView * current_view;
 extern char const * latex_special_chars;
@@ -857,8 +864,10 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
    static MathSpaceInset * sp= 0;
 
    HideInsetCursor();
+#ifdef MONO
    if (mathcursor->Selection() && (fast_selection || mono_video))
 	   ToggleInsetSelection();
+#endif
 
     if (mathcursor->getLastCode() == LM_TC_TEX) { 
 	varcode = LM_TC_TEX;
@@ -1316,7 +1325,11 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
        && action != LFUN_BACKSPACE)
 	   UpdateLocal();
    if (sp && !space_on) sp = 0;
-   if (mathcursor->Selection() || (was_selection && !(fast_selection || mono_video)))
+   if (mathcursor->Selection() || (was_selection
+#ifdef MONO
+				   && !(fast_selection || mono_video)
+#endif
+	   ))
        ToggleInsetSelection();
     
    if (result)
@@ -1336,11 +1349,13 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
 		font.setLatex(LyXFont::ON);
 	        x += (font.textWidth("I", 1) + 3) / 4;
+#ifdef MONO
 		if (mono_video) {
 			int a = font.maxAscent();
 			int d = font.maxDescent();
 			pain.fillRectangle(x, y - a, font.textWidth(name, strlen(name)), a + d);
 		}
+#endif
 		pain.text(x, y, name, font);
 	}
 }
