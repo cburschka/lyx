@@ -697,7 +697,7 @@ string bformat(char const * fmt, string const & arg1, string const & arg2,
 
 string bformat(char const * fmt, string const & arg1)
 {
-	Assert(contains(fmt, "%1$s"));
+	lyx::Assert(contains(fmt, "%1$s"));
 	string const str = subst(fmt, "%1$s", arg1);
 	return subst(str, "%%", "%");
 }
@@ -705,8 +705,8 @@ string bformat(char const * fmt, string const & arg1)
 
 string bformat(char const * fmt, string const & arg1, string const & arg2)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
+	lyx::Assert(contains(fmt, "%1$s"));
+	lyx::Assert(contains(fmt, "%2$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	return subst(str, "%%", "%");
@@ -716,10 +716,10 @@ string bformat(char const * fmt, string const & arg1, string const & arg2)
 string bformat(char const * fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
-	Assert(contains(fmt, "%1$s"));
-	Assert(contains(fmt, "%2$s"));
-	Assert(contains(fmt, "%3$s"));
-	Assert(contains(fmt, "%4$s"));
+	lyx::Assert(contains(fmt, "%1$s"));
+	lyx::Assert(contains(fmt, "%2$s"));
+	lyx::Assert(contains(fmt, "%3$s"));
+	lyx::Assert(contains(fmt, "%4$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
