@@ -236,7 +236,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (collapsed_ && cmd.button() != mouse_button::button3) {
 		collapsed_ = false;
-		inset.setUpdateStatus(bv, InsetText::FULL);
+		inset.setUpdateStatus(InsetText::FULL);
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 		return;
@@ -247,7 +247,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 	{
 		if (collapsed_) {
 			collapsed_ = false;
-			inset.setUpdateStatus(bv, InsetText::FULL);
+			inset.setUpdateStatus(InsetText::FULL);
 			bv->updateInset(this);
 			bv->buffer()->markDirty();
 		} else {
@@ -317,7 +317,7 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				if (collapsed_) {
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
-						inset.setUpdateStatus(bv, InsetText::FULL);
+						inset.setUpdateStatus(InsetText::FULL);
 						bv->updateInset(this);
 						bv->buffer()->markDirty();
 						inset.localDispatch(cmd);

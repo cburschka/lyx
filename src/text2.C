@@ -764,7 +764,7 @@ void LyXText::setSelection()
 	bool const lsel = TextCursor::setSelection();
 
 	if (inset_owner && (selection.set() || lsel))
-		inset_owner->setUpdateStatus(bv(), InsetText::SELECTION);
+		inset_owner->setUpdateStatus(InsetText::SELECTION);
 }
 
 
@@ -851,7 +851,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 		selection.cursor = cursor;
 	}
 	if (inset_owner)
-		inset_owner->setUpdateStatus(bv(), InsetText::CURSOR_PAR);
+		inset_owner->setUpdateStatus(InsetText::CURSOR_PAR);
 }
 
 

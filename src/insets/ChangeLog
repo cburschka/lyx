@@ -1,6 +1,13 @@
 
 2003-07-14  André Pönitz  <poenitz@gmx.net>
 
+	* insets/insetcollapsable.C:
+	* insets/insetert.C:
+	* insets/insettext.[Ch] (cy, ciy, setUpdateStatus):
+	remove unused BufferView * argument
+
+2003-07-14  André Pönitz  <poenitz@gmx.net>
+
 	* insettext.[Ch]: used cached metrics a bit more
 
 2003-07-10  Alfredo Brauntein  <abraunst@libero.it>

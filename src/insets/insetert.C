@@ -585,7 +585,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 		switch (st) {
 		case Inlined:
 			if (bv)
-				inset.setUpdateStatus(bv, InsetText::INIT);
+				inset.setUpdateStatus(InsetText::INIT);
 			break;
 		case Open:
 			collapsed_ = false;

@@ -1,3 +1,9 @@
+
+2003-07-14  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView_pimpl.C:
+	* text2.C: adjust after removing unused BufferView * argument
+
 2003-07-14  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (init): fix a crash fired on resize

@@ -94,7 +94,7 @@ public:
 	///
 	void update(BufferView *, bool = false);
 	///
-	void setUpdateStatus(BufferView *, int what) const;
+	void setUpdateStatus(int what) const;
 	///
 	string const editMessage() const;
 	///
@@ -306,9 +306,9 @@ private:
 	///
 	int cix(BufferView *) const;
 	///
-	int cy(BufferView *) const;
+	int cy() const;
 	///
-	int ciy(BufferView *) const;
+	int ciy() const;
 	///
 	lyx::pos_type cpos() const;
 	///

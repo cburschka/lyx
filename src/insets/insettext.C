@@ -337,7 +337,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
 		inset_x = cix(bv) - int(x) + drawTextXOffset;
-		inset_y = ciy(bv) + drawTextYOffset;
+		inset_y = ciy() + drawTextYOffset;
 	}
 
 	x += TEXT_TO_INSET_OFFSET;
@@ -435,7 +435,7 @@ void InsetText::update(BufferView * bv, bool reinit)
 
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy(bv) + drawTextYOffset;
+		inset_y = ciy() + drawTextYOffset;
 		the_locking_inset->update(bv, reinit);
 	}
 
@@ -457,7 +457,7 @@ void InsetText::update(BufferView * bv, bool reinit)
 }
 
 
-void InsetText::setUpdateStatus(BufferView *, int what) const
+void InsetText::setUpdateStatus(int what) const
 {
 	need_update |= what;
 	// we have to redraw us full if our LyXText REFRESH_AREA or
@@ -486,7 +486,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 		collapseParagraphs(bv);
 
 	text_.partialRebreak();
-	setUpdateStatus(bv, what);
+	setUpdateStatus(what);
 	bool flag = mark_dirty ||
 		(((need_update != CURSOR) && (need_update != NONE)) ||
 		 (text_.refreshStatus() != LyXText::REFRESH_NONE) || text_.selection.set());
@@ -548,7 +548,7 @@ void InsetText::insetUnlock(BufferView * bv)
 	updateLocal(bv, code, false);
 #else
 	if (code != NONE)
-		setUpdateStatus(bv, code);
+		setUpdateStatus(code);
 #endif
 }
 
@@ -575,7 +575,7 @@ void InsetText::lockInset(BufferView * bv)
 	int code = CURSOR;
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
-	setUpdateStatus(bv, code);
+	setUpdateStatus(code);
 }
 
 
@@ -583,7 +583,7 @@ void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
 	inset_x = cix(bv) - top_x + drawTextXOffset;
-	inset_y = ciy(bv) + drawTextYOffset;
+	inset_y = ciy() + drawTextYOffset;
 	inset_pos = cpos();
 	inset_par = cpar();
 	inset_boundary = cboundary();
@@ -630,7 +630,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		if (cpar() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
 			inset_x = cix(bv) - top_x + drawTextXOffset;
-			inset_y = ciy(bv) + drawTextYOffset;
+			inset_y = ciy() + drawTextYOffset;
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
 		}
@@ -691,17 +691,17 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		if (found)
 			text_.updateInset(tl_inset);
 		if (found)
-			setUpdateStatus(bv, ustat);
+			setUpdateStatus(ustat);
 		return found;
 	}
 	bool found = text_.updateInset(inset);
 	if (found) {
-		setUpdateStatus(bv, CURSOR_PAR);
+		setUpdateStatus(CURSOR_PAR);
 		if (the_locking_inset &&
 		    cpar() == inset_par && cpos() == inset_pos)
 		{
 			inset_x = cix(bv) - top_x + drawTextXOffset;
-			inset_y = ciy(bv) + drawTextYOffset;
+			inset_y = ciy() + drawTextYOffset;
 		}
 	}
 	return found;
@@ -822,7 +822,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 			ret = inset->localDispatch(cmd1);
 		else {
 			inset_x = cix(bv) - top_x + drawTextXOffset;
-			inset_y = ciy(bv) + drawTextYOffset;
+			inset_y = ciy() + drawTextYOffset;
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
@@ -1534,7 +1534,7 @@ void InsetText::getCursor(BufferView & bv, int & x, int & y) const
 		return;
 	}
 	x = cx(&bv);
-	y = cy(&bv) + InsetText::y();
+	y = cy() + InsetText::y();
 }
 
 
@@ -1545,7 +1545,7 @@ void InsetText::getCursorPos(BufferView * bv, int & x, int & y) const
 		return;
 	}
 	x = cx(bv) - top_x - TEXT_TO_INSET_OFFSET;
-	y = cy(bv) - TEXT_TO_INSET_OFFSET;
+	y = cy() - TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -1570,7 +1570,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
 
-	if (bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc))
+	if (bv->fitLockedInsetCursor(cx(bv), cy(), asc, desc))
 		need_update |= FULL;
 }
 
@@ -1801,7 +1801,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		if (y < 0)
 			y = dim_.des;
 		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy(bv) + drawTextYOffset;
+		inset_y = ciy() + drawTextYOffset;
 		FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
 		inset->localDispatch(cmd);
 		if (!the_locking_inset)
@@ -1936,13 +1936,13 @@ int InsetText::cix(BufferView * bv) const
 }
 
 
-int InsetText::cy(BufferView * bv) const
+int InsetText::cy() const
 {
 	return text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 
-int InsetText::ciy(BufferView * bv) const
+int InsetText::ciy() const
 {
 	return text_.cursor.iy() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
@@ -2032,7 +2032,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy(bv) + drawTextYOffset;
+		inset_y = ciy() + drawTextYOffset;
 	}
 
 	text_.top_y(bv->screen().topCursorVisible(&text_));
@@ -2063,7 +2063,7 @@ void InsetText::reinitLyXText() const
 	restoreLyXTextState();
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy(bv) + drawTextYOffset;
+		inset_y = ciy() + drawTextYOffset;
 	}
 	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
@@ -2192,7 +2192,7 @@ InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	if (the_locking_inset) {
 		word = the_locking_inset->selectNextWordToSpellcheck(bv, value);
 		if (!word.word().empty()) {
-			value += cy(bv);
+			value += cy();
 			return word;
 		}
 		// we have to go on checking so move cursor to the next char
@@ -2202,7 +2202,7 @@ InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	if (word.word().empty())
 		bv->unlockInset(const_cast<InsetText *>(this));
 	else
-		value = cy(bv);
+		value = cy();
 	return word;
 }
 
