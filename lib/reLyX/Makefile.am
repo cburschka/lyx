@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES= *.orig *.rej *~ *.bak reLyX reLyX.1
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+DISTCLEANFILES= *.orig *.rej *~ *.bak reLyX reLyX.1 config.log config.status
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/configure
 bin_SCRIPTS = reLyX noweb2lyx
 LYXDATADIRS = reLyX reLyX/Text
 LYXDISTDIRS = Text

@@ -1,5 +1,5 @@
 SUBDIRS =  macros
-DISTCLEANFILES= *.orig *.rej *~ *.bak core 
+DISTCLEANFILES= *.orig *.rej *~ *.bak core config.log config.status
 MAINTAINERCLEANFILES= $(srcdir)/Makefile.in $(srcdir)/configure $(srcdir)/sigc++config* $(srcdir)/stamp* $(srcdir)/aclocal.m4 $(srcdir)/acinclude.m4 
 ETAGS_ARGS = --lang=c++
 

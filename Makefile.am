@@ -1,5 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES = -r *.orig *.rej *~ *.bak lyx.1 core $(srcdir)/sourcedoc/*~ \
+DISTCLEANFILES = -r *.orig *.rej *~ *.bak lyx.1 core \
+	config.status config.cache config.log \
+	$(srcdir)/sourcedoc/*~ \
 	$(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
 	$(srcdir)/sourcedoc/man $(srcdir)/sourcedoc/Doxyfile
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/aclocal.m4 \
