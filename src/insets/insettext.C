@@ -274,10 +274,10 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	BufferView * bv = mi.base.bv;
-	LyXText * text = getLyXText(bv);
-	dim.asc = text->rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
-	dim.des = text->height - dim.asc + TEXT_TO_INSET_OFFSET;
-	dim.wid = max(textWidth(bv), int(text->width)) + 2 * TEXT_TO_INSET_OFFSET;
+	setViewCache(bv);
+	dim.asc = text_.rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
+	dim.des = text_.height - dim.asc + TEXT_TO_INSET_OFFSET;
+	dim.wid = max(textWidth(bv), int(text_.width)) + 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = max(dim.wid, 10);
 	dim_ = dim;
 }
@@ -1938,15 +1938,13 @@ int InsetText::cix(BufferView * bv) const
 
 int InsetText::cy(BufferView * bv) const
 {
-	LyXFont font;
-	return text_.cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
+	return text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 
 int InsetText::ciy(BufferView * bv) const
 {
-	LyXFont font;
-	return text_.cursor.iy() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
+	return text_.cursor.iy() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 
