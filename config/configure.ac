@@ -1,7 +1,7 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
 AC_INIT(lyx,1.3.0cvs,lyx-devel@lists.lyx.org)
-AC_PREREQ(2.53)
+AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.C)
 AM_CONFIG_HEADER([src/config.h])
 

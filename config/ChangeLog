@@ -1,5 +1,8 @@
 2002-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* relyx_configure.ac: 
+	* configure.ac: only require autoconf 2.52
+
 	* Makefile.am (EXTRA_DIST): distribute also xforms.m4
 
 2002-08-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

@@ -7,10 +7,15 @@ case $autoversion in
     *2.13)
 	cp config/acconfig.h .
 	cp config/configure.in .
+	rm -f configure.ac
 	cp config/relyx_configure.in lib/reLyX/configure.in
+	rm -f lib/reLyX/configure.ac
 	;;
-    *2.53)
+    *2.5[23])
+	rm -f acconfig.h
+	rm -f configure.in
 	cp config/configure.ac .
+	rm -f lib/reLyX/configure.in
 	cp config/relyx_configure.ac lib/reLyX/configure.ac
 	;;
     *)

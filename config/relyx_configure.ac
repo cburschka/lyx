@@ -1,7 +1,7 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 AC_INIT
 AC_CONFIG_SRCDIR(reLyX.in)
-AC_PREREQ(2.53)
+AC_PREREQ(2.52)
 AC_CONFIG_AUX_DIR(../../config)
 
 dnl PACKAGE=reLyX
