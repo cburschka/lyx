@@ -2,6 +2,8 @@
 
 	* lyxfind.C (replaceAll): mark the buffer dirty if something was
 	replaced
+	* paragraph_funcs.C (readParToken): put the correct id in the
+	error item, not the id of the top paragraph
 
 2003-11-06  Alfredo Braunstein  <abraunst@libero.it>
 

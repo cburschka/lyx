@@ -369,8 +369,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			lex.eatLine();
 			string line = lex.getString();
 			buf.error(ErrorItem(_("Unknown Inset"), line,
-					    buf.paragraphs().back().id(),
-					    0, par.size()));
+					    par.id(), 0, par.size()));
 			return 1;
 		}
 	} else if (token == "\\family") {
@@ -498,8 +497,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			token, lex.getString());
 
 		buf.error(ErrorItem(_("Unknown token"), s,
-				    buf.paragraphs().back().id(),
-				    0, par.size()));
+				    par.id(), 0, par.size()));
 		return 1;
 	}
 	return 0;

@@ -13,10 +13,12 @@
 #include "ControlErrorList.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "debug.h"
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "PosIterator.h"
 
 
 using std::endl;
@@ -67,17 +69,11 @@ void ControlErrorList::goTo(int item)
 		return;
 	}
 
-	int range = err.pos_end - err.pos_start;
-
-	if (err.pos_end > pit->size() || range <= 0)
-		range = pit->size() - err.pos_start;
+	int const end = std::min(err.pos_end, pit->size());
+	int const start = std::min(err.pos_start, end);
+	int const range = end - start;
 
 	// Now make the selection.
-	BufferView * const bv = kernel().bufferview();
-	bv->insetUnlock();
-	bv->text->clearSelection();
-	bv->text->setCursor(pit.pit(), err.pos_start);
-	bv->text->setSelectionRange(range);
-	bv->fitCursor();
-	bv->update();
+	PosIterator const pos = pit.asPosIterator(start);
+	bv_funcs::put_selection_at(kernel().bufferview(), pos, range, false);
 }
