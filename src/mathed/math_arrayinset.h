@@ -15,6 +15,8 @@ public:
 	MathArrayInset(int m, int n);
 	///
 	MathArrayInset(int m, int n, char valign, string const & halign);
+	/// convienience constructor from whitespace/newline seperated data
+	MathArrayInset(string const & str);
 	///
 	MathInset * clone() const;
 	///

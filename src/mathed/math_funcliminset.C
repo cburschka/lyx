@@ -1,13 +1,12 @@
 #include "math_funcliminset.h"
-#include "mathed/math_parser.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "support/LOstream.h"
 
 
 using std::ostream;
 
-MathFuncLimInset::MathFuncLimInset(const latexkeys * l)
-	: sym_(l)
+MathFuncLimInset::MathFuncLimInset(string const & name)
+	: name_(name)
 {}
 
 
@@ -25,24 +24,24 @@ bool MathFuncLimInset::isScriptable() const
 
 void MathFuncLimInset::write(MathWriteInfo & os) const
 {
-	os << '\\' << sym_->name << ' ';
+	os << '\\' << name_ << ' ';
 }
 
 
 void MathFuncLimInset::writeNormal(ostream & os) const
 {
-	os << "[" << sym_->name << "] ";
+	os << "[" << name_ << "] ";
 }
 
 
 void MathFuncLimInset::metrics(MathMetricsInfo const & mi) const
 {
 	mi_ = mi;
-	mathed_string_dim(LM_TC_TEXTRM, mi_, sym_->name, ascent_, descent_, width_);
+	mathed_string_dim(LM_TC_TEXTRM, mi_, name_, ascent_, descent_, width_);
 }
 
 
 void MathFuncLimInset::draw(Painter & pain, int x, int y) const
 {  
-	drawStr(pain, LM_TC_TEXTRM, mi_, x, y, sym_->name);
+	drawStr(pain, LM_TC_TEXTRM, mi_, x, y, name_);
 }

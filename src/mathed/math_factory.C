@@ -26,7 +26,7 @@ MathAtom createMathInset(latexkeys const * l)
 {
 	switch (l->token) {
 	case LM_TK_FUNCLIM:
-		return MathAtom(new MathFuncLimInset(l));
+		return MathAtom(new MathFuncLimInset(l->name));
 	case LM_TK_SPECIAL:
 		return MathAtom(new MathSpecialCharInset(l->id));
 	case LM_TK_SYM:

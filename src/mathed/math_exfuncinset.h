@@ -1,16 +1,16 @@
 // -*- C++ -*-
-#ifndef MATH_FUNCLIMINSET_H
-#define MATH_FUNCLIMINSET_H
+#ifndef MATH_EXFUNCINSET_H
+#define MATH_EXFUNCINSET_H
 
-#include "math_diminset.h"
+#include "math_nestinset.h"
 
-// "normal" symbols that don't take limits and don't grow in displayed
-// formulae
+// f(x) in one block (as opposed to 'f','(','x',')' or 'f','x')
+// for interfacing external programs
 
-class MathFuncLimInset : public MathDimInset {
+class MathExFuncInset : public MathNestInset {
 public:
 	///
-	explicit MathFuncLimInset(string const & name);
+	explicit MathExFuncInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
@@ -22,7 +22,7 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	bool isScriptable() const;
+	string octavize() const;
 
 private:
 	///

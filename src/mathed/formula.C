@@ -24,6 +24,8 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_charinset.h"
+#include "math_arrayinset.h"
+#include "math_deliminset.h"
 #include "lyx_main.h"
 #include "BufferView.h"
 #include "gettext.h"
@@ -63,7 +65,7 @@ namespace {
 	}
 
 
-	string pipeThroughMaple(string const & extra, MathArray const & ar)
+	MathArray pipeThroughMaple(string const & extra, MathArray const & ar)
 	{
 		string header = 
 			"readlib(latex):\n"
@@ -101,12 +103,35 @@ namespace {
 		}
 
 		string full = "latex(" +  extra + '(' + expr + "));";
-		string res = captureOutput("maple -q", header + full + trailer);
+		string out = captureOutput("maple -q", header + full + trailer);
 
 		// change \_ into _
+
+		//
+		MathArray res;
+		mathed_parse_cell(res, out);
 		return res;
 	}
 		
+	
+	MathArray pipeThroughOctave(string const &, MathArray const & ar)
+	{
+		string out = captureOutput("octave -q", ar.octavize());
+		if (out.size() > 6) // remove 'ans = '
+			out = out.substr(6);
+
+		// parse output as matrix or single number
+		MathAtom at(new MathArrayInset(out));
+		MathArrayInset const * mat = at.nucleus()->asArrayInset();
+		MathArray res;
+		if (mat->ncols() == 1 && mat->nrows() == 1)
+			res.push_back(mat->cell(0));
+		else {
+			res.push_back(MathAtom(new MathDelimInset("(", ")")));
+			res.back()->cell(0).push_back(at);
+		}
+		return res;
+	}
 
 
 	MathArray pipeThroughExtern(string const & arg, MathArray const & ar)
@@ -118,40 +143,30 @@ namespace {
 		if (extra.empty())
 			extra = "noextra";	
 
-		MathArray res;
+		if (lang == "octave")
+			return pipeThroughOctave(extra, ar);
 
-		if (lang == "octave") {
+		if (lang == "maple")
+			return pipeThroughMaple(extra, ar);
 
-			string out = captureOutput("octave -q", ar.octavize());
-			if (out.size() > 6)
-				out = out.substr(6);
-			mathed_parse_cell(res, out);
+		// create normalized expression
+		ostringstream os;
+		os << "[" << extra << ' ';
+		ar.writeNormal(os); 
+		os << "]";
+		string data = os.str().c_str();
 
-		} else if (lang == "maple") {
-
-			mathed_parse_cell(res, pipeThroughMaple(extra, ar));
-
-		} else {
-
-			// create normalized expression
-			ostringstream os;
-			os << "[" << extra << ' ';
-			ar.writeNormal(os); 
-			os << "]";
-			string data = os.str().c_str();
-
-			// search external script
-			string file = LibFileSearch("mathed", "extern_" + lang);
-			if (file.empty()) {
-				lyxerr << "converter to '" << lang << "' not found\n";
-				return MathArray();
-			}
-		
-			// run external sript
-			string out = captureOutput(file, data);
-			mathed_parse_cell(res, out);
+		// search external script
+		string file = LibFileSearch("mathed", "extern_" + lang);
+		if (file.empty()) {
+			lyxerr << "converter to '" << lang << "' not found\n";
+			return MathArray();
 		}
-
+		
+		// run external sript
+		string out = captureOutput(file, data);
+		MathArray res;
+		mathed_parse_cell(res, out);
 		return res;
 	}
 
@@ -425,6 +440,7 @@ void InsetFormula::handleExtern(const string & arg)
 		mathcursor->selGet(ar);
 		lyxerr << "use selection: " << ar << "\n";
 	} else {
+		mathcursor->end();
 		mathcursor->stripFromLastEqualSign();
 		ar = mathcursor->cursor().cell();
 		mathcursor->insert(MathAtom(new MathCharInset('=', LM_TC_VAR)));

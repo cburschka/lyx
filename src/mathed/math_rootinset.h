@@ -43,6 +43,8 @@ public:
 	bool idxUp(int & idx, int & pos) const;
 	///
 	bool idxDown(int & idx, int & pos) const;
+	///
+	string octavize() const;
 };
 
 #endif

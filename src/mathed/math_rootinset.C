@@ -92,3 +92,9 @@ bool MathRootInset::idxDown(int & idx, int & pos) const
 	pos = 0;
 	return true;
 }
+
+
+string MathRootInset::octavize() const
+{
+	return "root(" + cell(1).octavize() + ',' + cell(0).octavize() + ')';
+}
