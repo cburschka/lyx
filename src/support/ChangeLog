@@ -1,3 +1,8 @@
+2001-06-01  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxsum.C (do_crc): switch to use boost::crc for generating the
+	checksum.
+
 2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lstrings.C: 
