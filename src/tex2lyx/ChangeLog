@@ -1,3 +1,7 @@
+2003-02-20  Angus Leeming  <leeming@lyx.org>
+
+	* tex2lyx.C: swap <sstream> for "Lsstream.h".
+
 2003-02-11  Angus Leeming  <leeming@lyx.org>
 
 	* tex2lyx.C (handle_opt): prevent infinite loop if opts is empty.
