@@ -732,79 +732,6 @@ Paragraph const * Paragraph::previous() const
 #endif
 
 
-void Paragraph::breakParagraph(BufferParams const & bparams,
-				  pos_type pos,
-				  int flag)
-{
-	// create a new paragraph
-	Paragraph * tmp = new Paragraph(this);
-	tmp->layout(bparams.getLyXTextClass().defaultLayout());
-	// remember to set the inset_owner
-	tmp->setInsetOwner(inInset());
-
-	// this is an idea for a more userfriendly layout handling, I will
-	// see what the users say
-
-	// layout stays the same with latex-environments
-	if (flag) {
-		tmp->layout(layout());
-		tmp->setLabelWidthString(params().labelWidthString());
-	}
-
-	bool isempty = (layout()->keepempty && empty());
-
-	if (!isempty && (size() > pos || empty() || flag == 2)) {
-		tmp->layout(layout());
-		tmp->params().align(params().align());
-		tmp->setLabelWidthString(params().labelWidthString());
-
-		tmp->params().lineBottom(params().lineBottom());
-		params().lineBottom(false);
-		tmp->params().pagebreakBottom(params().pagebreakBottom());
-		params().pagebreakBottom(false);
-		tmp->params().spaceBottom(params().spaceBottom());
-		params().spaceBottom(VSpace(VSpace::NONE));
-
-		tmp->params().depth(params().depth());
-		tmp->params().noindent(params().noindent());
-
-		// copy everything behind the break-position
-		// to the new paragraph
-		pos_type pos_end = size() - 1;
-		pos_type i = pos;
-		pos_type j = pos;
-		for (; i <= pos_end; ++i) {
-			cutIntoMinibuffer(bparams, i);
-			if (tmp->insertFromMinibuffer(j - pos))
-				++j;
-		}
-		for (i = pos_end; i >= pos; --i) {
-			erase(i);
-		}
-	}
-
-	// just an idea of me
-	if (!isempty && !pos) {
-		tmp->params().lineTop(params().lineTop());
-		tmp->params().pagebreakTop(params().pagebreakTop());
-		tmp->params().spaceTop(params().spaceTop());
-		tmp->bibkey = bibkey;
-
-		bibkey = 0;
-		params().clear();
-
-		layout(bparams.getLyXTextClass().defaultLayout());
-
-		// layout stays the same with latex-environments
-		if (flag) {
-			layout(tmp->layout());
-			setLabelWidthString(tmp->params().labelWidthString());
-			params().depth(tmp->params().depth());
-		}
-	}
-}
-
-
 void Paragraph::makeSameLayout(Paragraph const * par)
 {
 	layout(par->layout());
@@ -835,35 +762,6 @@ bool Paragraph::hasSameLayout(Paragraph const * par) const
 	return
 		par->layout() == layout() &&
 		params().sameLayout(par->params());
-}
-
-
-void Paragraph::breakParagraphConservative(BufferParams const & bparams,
-					   pos_type pos)
-{
-	// create a new paragraph
-	Paragraph * tmp = new Paragraph(this);
-	tmp->makeSameLayout(this);
-
-	// When can pos > Last()?
-	// I guess pos == Last() is possible.
-	if (size() > pos) {
-		// copy everything behind the break-position to the new
-		// paragraph
-		pos_type pos_end = size() - 1;
-
-		//pos_type i = pos;
-		//pos_type j = pos;
-		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			cutIntoMinibuffer(bparams, i);
-			if (tmp->insertFromMinibuffer(j - pos))
-				++j;
-		}
-
-		for (pos_type k = pos_end; k >= pos; --k) {
-			erase(k);
-		}
-	}
 }
 
 

@@ -18,15 +18,8 @@ LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 BOOST_LIBS = ../boost/libs/regex/src/libboostregex.la \
 	../boost/libs/signals/src/libboostsignals.la
 
-#lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(INCLUDED_SIGC)
-
 lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
 	$(PSPELL_LIBS) $(AIKSAURUS_LIBS)
-
-#lyx_LDADD = $(LYX_CONV_LIBS) $(SIGC_LIBS) $(BOOST_LIBS) $(INCLUDED_SIGC) $(INTLLIBS) \
-#	$(PSPELL_LIBS) $(AIKSAURUS_LIBS)
-
-#  $(FRONTEND_LDFLAGS) $(FRONTEND_LIBS)
 
 #lyx_LDFLAGS=-Wl,-O1
 
@@ -38,8 +31,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	tracer.C \
 	tracer.h
 
-INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
-#INCLUDES = $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
+INCLUDES = $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
 
 localedir = $(datadir)/locale
 
@@ -79,6 +71,8 @@ lyx_SOURCES = \
 	LyXAction.h \
 	MenuBackend.C \
 	MenuBackend.h \
+	paragraph_funcs.C \
+	paragraph_funcs.h \
 	ParagraphList.C \
 	ParagraphList.h \
 	ParagraphParameters.C \

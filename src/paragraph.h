@@ -226,11 +226,6 @@ public:
 	void applyLayout(LyXLayout_ptr const & new_layout);
 	///
 	void erase(lyx::pos_type pos);
-	/** the flag determines wether the layout should be copied
-	 */
-	void breakParagraph(BufferParams const &, lyx::pos_type pos, int flag);
-	///
-	void breakParagraphConservative(BufferParams const &, lyx::pos_type pos);
 	/** Get unistantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable

@@ -31,6 +31,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
+#include "paragraph_funcs.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -1758,8 +1759,8 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
 	bool const isempty = (layout->keepempty && cursor.par()->empty());
-	cursor.par()->breakParagraph(bview->buffer()->params, cursor.pos(),
-				keep_layout);
+	::breakParagraph(bview->buffer()->params, cursor.par(), cursor.pos(),
+		       keep_layout);
 
 	// well this is the caption hack since one caption is really enough
 	if (layout->labeltype == LABEL_SENSITIVE) {
@@ -3948,4 +3949,3 @@ int LyXText::getDepth() const
 {
 	return cursor.par()->getDepth();
 }
-

@@ -1,3 +1,7 @@
+2002-08-20  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Dialogs.h (noncopyable): ws changes only
+
 2002-08-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Makefile.am: use $(variables) instead of @substitutions@
@@ -43,7 +47,7 @@
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* Toolbar.C:
- 
+
 2002-08-06  André Poenitz  <poenitz@gmx.net>
 
 	* Screen.C: Honor \show_banner lyxrc setting
@@ -51,7 +55,7 @@
 2002-08-04  John Levon  <levon@movementarian.org>
 
 	* LyXView.C: isLyxClean->isClean
- 
+
 2002-08-02  Edwin Leuven <leuven@fee.uva.nl>
 
 	* Dialogs.[Ch] (updateParagraph): converted back to a signal again.
@@ -70,25 +74,25 @@
 	* Dialogs.h:
 	* Dialogs.C:
 	* guiapi.h: remove options from spell dialog
- 
+
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.h: add remove_read_callback()
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.h: add exit()
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar.h:
 	* Toolbar.C: remove other unused code
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar.h:
 	* Toolbar.C: remove ->push()
- 
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* LyXView.C: use BufferParams::getLyXTextClass
@@ -96,10 +100,10 @@
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXView.C: move autosave connect here
- 
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* LyXView.C (updateMenubar): remove code to set different menubars 
+	* LyXView.C (updateMenubar): remove code to set different menubars
 
 	* Menubar.C (set): remove
 
@@ -108,52 +112,52 @@
 	* LyXView.h:
 	* LyXView.C: use ControlCommandBuffer, related
 	  cleanup
- 
+
 	* MiniBuffer.h:
 	* MiniBuffer.C: remove
- 
+
 2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXView.h:
 	* LyXView.C:
 	* MiniBuffer.h:
 	* MiniBuffer.C: remove messagePush/Pop, addSet
- 
+
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXView.h:
 	* LyXView.C: change showState to view_state_changed signal
- 
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.h: add set_read_callback()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.h: remove init_graphics()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar.h:
 	* Toolbar.C: remove unused (de)activate()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* font_loader.h: remove
- 
+
 	* lyx_gui.h: add update_fonts(), font_available()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.h: add update_color
- 
+
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Painter.C:
 	* Painter.h: make frame/background painting optional
 	  for rectText
- 
+
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.h (hexname): new function.

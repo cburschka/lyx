@@ -168,10 +168,10 @@ public:
 	//@}
 
 private:
-        /// Use the Pimpl idiom to hide the internals.
-        class Impl;
-        /// The pointer never changes although *pimpl_'s contents may.
-        boost::scoped_ptr<Impl> const pimpl_;
+	/// Use the Pimpl idiom to hide the internals.
+	class Impl;
+	/// The pointer never changes although *pimpl_'s contents may.
+	boost::scoped_ptr<Impl> const pimpl_;
 };
 
 #endif

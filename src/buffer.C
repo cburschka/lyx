@@ -31,7 +31,6 @@
 #include "version.h"
 #include "LaTeX.h"
 #include "Chktex.h"
-#include "frontends/LyXView.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "lyxtext.h"
@@ -46,6 +45,9 @@
 #include "iterators.h"
 #include "lyxtextclasslist.h"
 #include "sgml.h"
+#include "paragraph_funcs.h"
+
+#include "frontends/LyXView.h"
 
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
@@ -1495,8 +1497,8 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
 			if (autobreakrows && (!par->empty() || layout->keepempty)) {
-				par->breakParagraph(params, pos,
-						    layout->isEnvironment());
+				breakParagraph(params, par, pos,
+					       layout->isEnvironment());
 				par = par->next();
 				pos = 0;
 				space_inserted = true;
@@ -4080,7 +4082,7 @@ lyx::pos_type Buffer::inset_iterator::getPos() const
 
 
 bool operator==(Buffer::inset_iterator const & iter1,
-                Buffer::inset_iterator const & iter2)
+		Buffer::inset_iterator const & iter2)
 {
 	return iter1.pit == iter2.pit
 		&& (iter1.pit == iter1.pend || iter1.it == iter2.it);
@@ -4088,8 +4090,7 @@ bool operator==(Buffer::inset_iterator const & iter1,
 
 
 bool operator!=(Buffer::inset_iterator const & iter1,
-                Buffer::inset_iterator const & iter2)
+		Buffer::inset_iterator const & iter2)
 {
 	return !(iter1 == iter2);
 }
-

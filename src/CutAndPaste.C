@@ -25,6 +25,8 @@
 #include "iterators.h"
 #include "lyxtextclasslist.h"
 #include "undo_funcs.h"
+#include "paragraph_funcs.h"
+
 #include "insets/inseterror.h"
 
 using std::pair;
@@ -111,13 +113,15 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		end = start - 1;
 	} else {
 		// more than one paragraph
-		(*endpar)->breakParagraphConservative(current_view->buffer()->params,
-						      end);
+		breakParagraphConservative(current_view->buffer()->params,
+					   *endpar,
+					   end);
 		*endpar = (*endpar)->next();
 		end = 0;
 
-		startpar->breakParagraphConservative(current_view->buffer()->params,
-						     start);
+		breakParagraphConservative(current_view->buffer()->params,
+					   startpar,
+					   start);
 
 		// store the selection
 		if (realcut) {
@@ -342,8 +346,10 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// open the paragraph for inserting the buf
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
-			(*par)->breakParagraphConservative(current_view->buffer()->params,
-							   pos);
+			breakParagraphConservative(
+				current_view->buffer()->params,
+				*par,
+				pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later
