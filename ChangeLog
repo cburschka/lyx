@@ -1,3 +1,10 @@
+2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/lyxrc.example: remove obsolete entries.
+
+	* src/buffer.C (parseSingleLyXformat2Token): patch from dekel, fix
+	reading of protected_separator for free_spacing.
+
 2000-05-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (draw): do not display an exclamation mark in the

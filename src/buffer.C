@@ -987,7 +987,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				if (next_token == "\\-") {
 					par->InsertChar(pos, '-');
 					par->SetFont(pos, font);
-				} else if (next_token == "\\protected_separator") {
+				} else if (next_token == "\\protected_separator"
+					|| next_token == '~') {
 					par->InsertChar(pos, ' ');
 					par->SetFont(pos, font);
 				} else {
