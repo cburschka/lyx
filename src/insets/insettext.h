@@ -92,8 +92,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void update(BufferView *, bool = false);
-	///
 	void setUpdateStatus(int what) const;
 	///
 	string const editMessage() const;

@@ -453,7 +453,6 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		 * taken by the text).
 		 */
 		inset.getLyXText(cmd.view())->fullRebreak();
-		inset.update(cmd.view(), true);
 		bv->updateInset(this);
 		result = DISPATCHED;
 	}
@@ -550,6 +549,7 @@ bool InsetERT::checkInsertChar(LyXFont & /* font */)
 
 void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	setButtonLabel();
 	if (inlined())
 		inset.metrics(mi, dim);
 	else
@@ -659,17 +659,6 @@ int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 	if (text->rows().size() == 1 && rw < w)
 		return -1;
 	return w;
-}
-
-
-void InsetERT::update(BufferView * bv, bool reinit)
-{
-	if (inset.need_update & InsetText::INIT ||
-	    inset.need_update & InsetText::FULL) {
-		setButtonLabel();
-	}
-
-	InsetCollapsable::update(bv, reinit);
 }
 
 

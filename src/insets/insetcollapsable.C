@@ -289,23 +289,6 @@ int InsetCollapsable::docbook(Buffer const * buf, ostream & os, bool mixcont) co
 }
 
 
-void InsetCollapsable::update(BufferView * bv, bool reinit)
-{
-	if (in_update) {
-		if (reinit && owner()) {
-			owner()->update(bv, true);
-		}
-		return;
-	}
-	in_update = true;
-	inset.update(bv, reinit);
-	if (reinit && owner()) {
-		owner()->update(bv, true);
-	}
-	in_update = false;
-}
-
-
 Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
 	lyxerr << "InsetCollapsable::localDispatch: "

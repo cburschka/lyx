@@ -162,9 +162,6 @@ public:
 	int descent(BufferView *, LyXFont const &) const;
 	///
 	int width(BufferView *, LyXFont const &) const;
-	/// update the inset representation
-	virtual void update(BufferView *, bool = false)
-		{}
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///

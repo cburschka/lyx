@@ -86,8 +86,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void update(BufferView *, bool = false);
-	///
 	string const editMessage() const;
 	//
 	void insetUnlock(BufferView *);

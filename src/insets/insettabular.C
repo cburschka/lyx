@@ -410,11 +410,6 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 }
 
 
-void InsetTabular::update(BufferView * bv, bool reinit)
-{
-}
-
-
 string const InsetTabular::editMessage() const
 {
 	return _("Opened table");
@@ -1270,8 +1265,6 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 				continue;
 			++cell;
 			inset = tabular.getCellInset(cell);
-			if (!reinit && !tabular.getPWidth(cell).zero())
-				inset->update(bv, false);
 			maxAsc = max(maxAsc, inset->ascent(bv, font));
 			maxDesc = max(maxDesc, inset->descent(bv, font));
 			changed = tabular.setWidthOfCell(cell, inset->width(bv, font)) || changed;

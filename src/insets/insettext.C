@@ -403,12 +403,6 @@ void InsetText::drawFrame(Painter & pain, int x) const
 }
 
 
-void InsetText::update(BufferView * bv, bool reinit)
-{
-	setViewCache(bv);
-}
-
-
 void InsetText::setUpdateStatus(int what) const
 {
 	need_update |= what;

@@ -114,8 +114,6 @@ public:
 	}
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
-	void update(BufferView *, bool =false);
 
 private:
 	///

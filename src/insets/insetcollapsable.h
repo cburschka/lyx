@@ -51,8 +51,6 @@ public:
 	/// draw, either inlined (no button) or collapsed/open
 	void draw(PainterInfo & pi, int x, int y, bool inlined) const;
 	///
-	void update(BufferView *, bool = false);
-	///
 	EDITABLE editable() const;
 	///
 	bool insertInset(BufferView *, Inset * inset);

@@ -35,6 +35,7 @@
 #include "paragraph_funcs.h"
 #include "rowpainter.h"
 #include "lyxrow_funcs.h"
+#include "metricsinfo.h"
 
 #include "insets/insettext.h"
 
@@ -319,9 +320,15 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 			// this IS needed otherwise on initialitation we don't get the fill
 			// of the row right (ONLY on initialization if we read a file!)
 			// should be changed! (Jug 20011204)
-			tmpinset->update(bv());
+			//tmpinset->update(bv());
+			Dimension dim;
+			MetricsInfo mi;
+			mi.base.bv = bv();
+			mi.base.font = font;
+			tmpinset->metrics(mi, dim);
 #endif
-			return tmpinset->width(bv(), font);
+			//return tmpinset->width(bv(), font);
+			return dim.wid;
 		}
 		return 0;
 	}
@@ -1079,13 +1086,21 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 				if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
 #warning inset->update FIXME
-					tmpinset->update(bv());
+					//tmpinset->update(bv());
+					Dimension dim;
+					MetricsInfo mi;
+					mi.base.bv = bv();
+					mi.base.font = tmpfont;
+					tmpinset->metrics(mi, dim);
 #endif
-					maxwidth += tmpinset->width(bv(), tmpfont);
-					maxasc = max(maxasc,
-						     tmpinset->ascent(bv(), tmpfont));
-					maxdesc = max(maxdesc,
-						      tmpinset->descent(bv(), tmpfont));
+					//maxwidth += tmpinset->width(bv(), tmpfont);
+					//maxasc = max(maxasc,
+					//	     tmpinset->ascent(bv(), tmpfont));
+					//maxdesc = max(maxdesc,
+					//	      tmpinset->descent(bv(), tmpfont));
+					maxwidth += dim.wid;
+					maxasc = max(maxasc, dim.asc);
+					maxdesc = max(maxdesc, dim.des);
 				}
 			} else {
 				maxwidth += singleWidth(pit, pos);
