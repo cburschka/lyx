@@ -1,3 +1,9 @@
+2001-04-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfunc.C (Dispatch): 
+	* minibuffer.C: 
+	* minibuffer.h: add a few std:: qualifiers
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* minibuffer.[Ch]: reimplement so that commands is initiated and

@@ -44,8 +44,8 @@ public:
 	    emitted.
 	*/
 	void getString(State space,
-		       vector<string> const & completion,
-		       vector<string> & history);
+		       std::vector<string> const & completion,
+		       std::vector<string> & history);
 	///
 	void redraw();
 	///
@@ -88,11 +88,11 @@ private:
 	///
 	FL_OBJECT * the_buffer;
 	///
-	vector<string> completion_;
+	std::vector<string> completion_;
 	///
-	vector<string> * history_;
+	std::vector<string> * history_;
 	///
-	vector<string>::iterator hist_iter;
+	std::vector<string>::iterator hist_iter;
 	///
 	State state_;
 };

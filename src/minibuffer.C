@@ -28,6 +28,7 @@
 
 using std::endl;
 using SigC::slot;
+using std::vector;
 
 extern LyXAction lyxaction;
 
@@ -121,7 +122,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			vector<string> comp;
 			lyx::copy_if(completion_.begin(),
 				     completion_.end(),
-				     back_inserter(comp), prefix(input));
+				     std::back_inserter(comp), prefix(input));
 
 			if (comp.empty()) {
 				// No matches
@@ -144,7 +145,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 					vector<string> vtmp;
 					lyx::copy_if(comp.begin(),
 						     comp.end(),
-						     back_inserter(vtmp),
+						     std::back_inserter(vtmp),
 						     prefix(test));
 					if (vtmp.size() != comp.size()) {
 						test.erase(test.length() - 1);
@@ -157,7 +158,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				// How should the possible matches
 				// be visualized?
 				std::copy(comp.begin(), comp.end(),
-					  ostream_iterator<string>(cerr, "\n"));
+					  std::ostream_iterator<string>(std::cerr, "\n"));
 			}
 			return 1; 
 		}

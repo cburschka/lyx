@@ -809,10 +809,10 @@ string const LyXFunc::Dispatch(int ac,
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
 	{
-		vector<string> allCmds;
-		transform(lyxaction.func_begin(), lyxaction.func_end(),
-			  back_inserter(allCmds), lyx::firster());
-		static vector<string> hist;
+		std::vector<string> allCmds;
+		std::transform(lyxaction.func_begin(), lyxaction.func_end(),
+			       std::back_inserter(allCmds), lyx::firster());
+		static std::vector<string> hist;
 		owner->getMiniBuffer()->getString(MiniBuffer::nospaces,
 						  allCmds, hist);
 	}
