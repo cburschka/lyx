@@ -104,8 +104,10 @@ void Debug::showLevel(ostream & os, Debug::type level)
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level) {
+			// avoid _(...) re-entrance problem
+			const string s = _(errorTags[i].desc);
 			os << bformat(_("Debugging `%1$s' (%2$s)"),
-					errorTags[i].name, _(errorTags[i].desc));
+					errorTags[i].name, s);
 		}
 	}
 }

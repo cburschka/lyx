@@ -319,7 +319,11 @@ string const currentState(BufferView * bv)
 		buffer->params.getLyXTextClass().defaultfont();
 	font.reduce(defaultfont);
 
-	state << bformat(_("Font: %1$s"), font.stateText(&buffer->params));
+	// avoid _(...) re-entrance problem
+	string const s = font.stateText(&buffer->params);
+	state << bformat(_("Font: %1$s"), s);
+
+	// state << bformat(_("Font: %1$s"), font.stateText(&buffer->params));
 
 	// The paragraph depth
 	int depth = text->getDepth();
