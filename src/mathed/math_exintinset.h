@@ -10,26 +10,37 @@
 class MathExIntInset : public MathInset {
 public:
 	///
-	MathExIntInset(MathScriptInset const &, MathArray const &, MathArray const &);
+	MathExIntInset();
 	///
 	MathInset * clone() const;
+	///
+	void differential(MathArray const &);
+	///
+	void core(MathArray const &);
+	///
+	void scripts(MathAtom const &);
+	///
+	void symbol(MathAtom const &);
+	///
+	bool hasScripts() const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
-	///
-	void write(WriteStream & os) const;
+
 	///
 	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
+	///
+	void write(WriteStream & os) const;
 private:
 	///
 	MathAtom int_;
 	///
-	MathScriptInset scripts_;
+	MathAtom scripts_;
 	///
 	MathArray core_;
 	///

@@ -5,10 +5,8 @@
 #include "math_symbolinset.h"
 
 
-MathExIntInset::MathExIntInset(MathScriptInset const & scripts,
-		MathArray const & core, MathArray const & diff)
-	: int_(new MathSymbolInset("int")),
-		scripts_(scripts), core_(core), diff_(diff)
+MathExIntInset::MathExIntInset()
+	: int_(new MathSymbolInset("int"))
 {}
 
 
@@ -18,16 +16,45 @@ MathInset * MathExIntInset::clone() const
 }
 
 
-void MathExIntInset::write(WriteStream & os) const
+void MathExIntInset::differential(MathArray const & ar)
 {
-	scripts_.write(int_.nucleus(), os);
-	os << core_ << "d" << diff_;
+	diff_ = ar;
 }
+
+
+void MathExIntInset::core(MathArray const & ar)
+{
+	core_ = ar;
+}
+
+
+void MathExIntInset::scripts(MathAtom const & at)
+{
+	scripts_ = at;
+}
+
+
+void MathExIntInset::symbol(MathAtom const & at)
+{
+	int_ = at;
+}
+
+
+bool MathExIntInset::hasScripts() const
+{
+	return scripts_.hasNucleus();
+}
+
 
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	//os << "[int " << scripts_ << ' ' << core_ << ' ' << diff_ << ']'
+	os << "[int ";
+	if (hasScripts())
+		os << scripts_.nucleus();
+	else 
+		os << "{}";
+	os << ' ' << core_ << ' ' << diff_ << ']';
 }
 
 
@@ -45,10 +72,25 @@ void MathExIntInset::draw(Painter &, int, int) const
 
 void MathExIntInset::maplize(MapleStream & os) const
 {
-	//os << name_.c_str() << '(' << cell(0) << ')';
+	os << int_.nucleus() << '(' << core_ << ',' << diff_;
+	if (hasScripts()) {
+		MathScriptInset * p = scripts_->asScriptInset();
+		os << '=' << p->down().data_ << ".." << p->up().data_;
+	}
+	os << ')';
 }
+
 
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
 	//os << name_.c_str() << '(' << cell(0) << ')';
 }
+
+
+void MathExIntInset::write(WriteStream & os) const
+{
+	if (hasScripts())
+		os << scripts_.nucleus();
+	os << core_ << "d" << diff_;
+}
+

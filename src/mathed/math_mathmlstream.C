@@ -2,6 +2,7 @@
 #include "math_inset.h"
 #include "math_mathmlstream.h"
 #include "math_extern.h"
+#include "debug.h"
 
 
 MathMLStream::MathMLStream(std::ostream & os)
@@ -11,7 +12,10 @@ MathMLStream::MathMLStream(std::ostream & os)
 
 MathMLStream & MathMLStream::operator<<(MathInset const * p)
 {
-	p->mathmlize(*this);
+	if (p)
+		p->mathmlize(*this);
+	else
+		lyxerr << "MathMLStream::operator<<(NULL) called\n";
 	return *this;		
 }
 
@@ -70,7 +74,10 @@ void MathMLStream::cr()
 
 MapleStream & MapleStream::operator<<(MathInset const * p)
 {
-	p->maplize(*this);
+	if (p)
+		p->maplize(*this);
+	else
+		lyxerr << "MathMLStream::operator<<(NULL) called\n";
 	return *this;		
 }
 
@@ -108,7 +115,10 @@ MapleStream & MapleStream::operator<<(int i)
 
 OctaveStream & OctaveStream::operator<<(MathInset const * p)
 {
-	p->octavize(*this);
+	if (p)
+		p->octavize(*this);
+	else
+		lyxerr << "MathMLStream::operator<<(NULL) called\n";
 	return *this;		
 }
 
@@ -139,7 +149,10 @@ OctaveStream & OctaveStream::operator<<(char c)
 
 NormalStream & NormalStream::operator<<(MathInset const * p)
 {
-	p->normalize(*this);
+	if (p)
+		p->normalize(*this);
+	else
+		lyxerr << "MathMLStream::operator<<(NULL) called\n";
 	return *this;		
 }
 
@@ -182,7 +195,10 @@ WriteStream::WriteStream(std::ostream & os_)
 
 WriteStream & WriteStream::operator<<(MathInset const * p)
 {
-	p->write(*this);
+	if (p)
+		p->write(*this);
+	else
+		lyxerr << "MathMLStream::operator<<(NULL) called\n";
 	return *this;		
 }
 

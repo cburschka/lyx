@@ -136,6 +136,18 @@ MathAtom & MathArray::back()
 }
 
 
+MathAtom & MathArray::front()
+{
+	return bf_.front();
+}
+
+
+MathAtom const & MathArray::front() const
+{
+	return bf_.front();
+}
+
+
 void MathArray::dump2() const
 {
 	NormalStream ns(lyxerr);

@@ -15,7 +15,7 @@
 class MathStringInset : public MathInset {
 public:
 	///
-	MathStringInset(string const & s, MathTextCodes t);
+	MathStringInset(string const & s, MathTextCodes t = LM_TC_TEXTRM);
 	///
 	MathInset * clone() const;
 	///

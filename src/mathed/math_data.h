@@ -94,6 +94,11 @@ public:
 	MathAtom & back();
 
 	///
+	MathAtom & front();
+	///
+	MathAtom const & front() const;
+
+	///
 	void dump() const;
 	///
 	void dump2() const;

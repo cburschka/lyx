@@ -269,14 +269,6 @@ bool differentialTest(MathInset * p)
 }
 
 
-MathInset * intReplacement(const MathArray & ar)
-{
-	MathDelimInset * del = new MathDelimInset("(", ")");
-	del->cell(0) = ar;
-	return del;
-}
-
-
 // replace '\int' ['_^'] x 'd''x'(...)' sequences by a real MathExIntInset
 // assume 'extractDelims' ran before
 void extractIntegrals(MathArray & ar)
@@ -298,12 +290,33 @@ void extractIntegrals(MathArray & ar)
 			endNestSearch(it, ar.end(), intSymbolTest, differentialTest);
 
 		// create a proper inset as replacement
-		MathInset * p = intReplacement(MathArray(it + 1, jt));
+		MathExIntInset * p = new MathExIntInset;
 
-		// replace the original stuff by the new inset
-		ar.erase(it + 1, jt + 1);
+		// collect scripts
+		MathArray::iterator st = it + 1;
+		if ((*st)->asScriptInset()) {
+			p->scripts(*st);
+			p->core(MathArray(st + 1, jt));
+		} else {
+			p->core(MathArray(st, jt));
+		}
+
+		// is the differential just 'd' oder 'dsomething'?
+		// and replace the original stuff by the new inset
+		string s = extractString(jt->nucleus());
+		MathArray diff;
+		if (s.size() == 1 && jt + 1 != ar.end()) {
+			// use the next atom as differential
+			diff.push_back(*(jt + 1));
+			ar.erase(it + 1, jt + 2);
+		} else {
+			diff.push_back(MathAtom(new MathStringInset(s.substr(1))));
+			ar.erase(it + 1, jt + 1);
+		}
+		p->differential(diff);
 		(*it).reset(p);
 	}
+	lyxerr << "\nIntegrals to: " << ar << "\n";
 }
 
 

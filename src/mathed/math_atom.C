@@ -85,6 +85,12 @@ MathInset * MathAtom::nucleus() const
 }
 
 
+bool MathAtom::hasNucleus() const
+{
+	return nucleus_;
+}
+
+
 MathInset * MathAtom::operator->() const
 {
 	return nucleus();

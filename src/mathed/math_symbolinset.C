@@ -10,6 +10,12 @@ MathSymbolInset::MathSymbolInset(const latexkeys * l)
 {}
 
 
+MathSymbolInset::MathSymbolInset(const char * name)
+	: sym_(in_word_set(name)), h_(0)
+{}
+
+
+
 MathInset * MathSymbolInset::clone() const
 {
 	return new MathSymbolInset(*this);
