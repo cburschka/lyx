@@ -67,8 +67,6 @@ enum MathFont {
 	FONT_SYMBOL,
 	FONT_SYMBOLI,
 	FONT_BF,
-	FONT_BB,
-	FONT_CAL,
 	FONT_TT,
 	FONT_RM,
 	FONT_SF,
@@ -79,6 +77,9 @@ enum MathFont {
 	FONT_MSA,
 	FONT_MSB,
 	FONT_EUFRAK,
+	FONT_FAKEBB,
+	FONT_FAKECAL,
+	FONT_FAKEFRAK,
 	FONT_NUM
 };
 
@@ -100,16 +101,8 @@ void mathed_init_fonts()
 
 	MathFonts[FONT_BF].setSeries(LyXFont::BOLD_SERIES);
 
-	MathFonts[FONT_BB].setSeries(LyXFont::BOLD_SERIES);
-	MathFonts[FONT_BB].setFamily(LyXFont::TYPEWRITER_FAMILY);
-
-	MathFonts[FONT_CAL].setFamily(LyXFont::SANS_FAMILY);
-	MathFonts[FONT_CAL].setShape(LyXFont::ITALIC_SHAPE);
-
 	MathFonts[FONT_TT].setFamily(LyXFont::TYPEWRITER_FAMILY);
-
 	MathFonts[FONT_RM].setFamily(LyXFont::ROMAN_FAMILY);
-
 	MathFonts[FONT_SF].setFamily(LyXFont::SANS_FAMILY);
 
 	MathFonts[FONT_CMR].setFamily(LyXFont::CMR_FAMILY);
@@ -120,12 +113,21 @@ void mathed_init_fonts()
 	MathFonts[FONT_MSB].setFamily(LyXFont::MSB_FAMILY);
 	MathFonts[FONT_EUFRAK].setFamily(LyXFont::EUFRAK_FAMILY);
 
+	MathFonts[FONT_FAKEBB].setFamily(LyXFont::TYPEWRITER_FAMILY);
+	MathFonts[FONT_FAKEBB].setSeries(LyXFont::BOLD_SERIES);
+
+	MathFonts[FONT_FAKECAL].setFamily(LyXFont::SANS_FAMILY);
+	MathFonts[FONT_FAKECAL].setShape(LyXFont::ITALIC_SHAPE);
+
+	MathFonts[FONT_FAKEFRAK].setFamily(LyXFont::SANS_FAMILY);
+	MathFonts[FONT_FAKEFRAK].setSeries(LyXFont::BOLD_SERIES);
+
 	for (int i = 0; i < LM_FONT_END; ++i)
 		font_available_initialized[i] = false;
 }
 
 
-LyXFont const & whichFontBase(MathTextCodes type)
+LyXFont const & whichFontBaseIntern(MathTextCodes type)
 {
 	if (!MathFonts)
 		mathed_init_fonts();
@@ -143,16 +145,10 @@ LyXFont const & whichFontBase(MathTextCodes type)
 		return MathFonts[FONT_BF];
 
 	case LM_TC_BB:
-		if (math_font_available(LM_TC_MSB))
-			return MathFonts[FONT_MSB];
-		else
-			return MathFonts[FONT_BB];
+		return MathFonts[FONT_MSB];
 
 	case LM_TC_CAL:
-		if (math_font_available(LM_TC_CMSY))
-			return MathFonts[FONT_CMSY];
-		else
-			return MathFonts[FONT_CAL];
+		return MathFonts[FONT_CMSY];
 
 	case LM_TC_TT:
 		return MathFonts[FONT_TT];
@@ -185,15 +181,42 @@ LyXFont const & whichFontBase(MathTextCodes type)
 		return MathFonts[FONT_MSB];
 
 	case LM_TC_EUFRAK:
-		if (math_font_available(LM_TC_EUFRAK))
-			return MathFonts[FONT_EUFRAK];
-		else
-			return MathFonts[FONT_BB];
+		return MathFonts[FONT_EUFRAK];
 
 	default:
 		break;
 	}
 	return MathFonts[1];
+}
+
+LyXFont const & whichFontBase(MathTextCodes type)
+{
+	if (!MathFonts)
+		mathed_init_fonts();
+
+	switch (type) {
+	case LM_TC_BB:
+		if (math_font_available(LM_TC_MSB))
+			return MathFonts[FONT_MSB];
+		else
+			return MathFonts[FONT_FAKEBB];
+
+	case LM_TC_CAL:
+		if (math_font_available(LM_TC_CMSY))
+			return MathFonts[FONT_CMSY];
+		else
+			return MathFonts[FONT_FAKECAL];
+
+	case LM_TC_EUFRAK:
+		if (math_font_available(LM_TC_EUFRAK))
+			return MathFonts[FONT_EUFRAK];
+		else
+			return MathFonts[FONT_FAKEFRAK];
+
+	default:
+		break;
+	}
+	return whichFontBaseIntern(type);
 }
 
 
@@ -246,7 +269,7 @@ bool math_font_available(MathTextCodes type)
 {
 	if (!font_available_initialized[type]) {
 		font_available_initialized[type] = true;
-		font_available[type] = fontloader.available(whichFontBase(type));
+		font_available[type] = fontloader.available(whichFontBaseIntern(type));
 	}
 	return font_available[type];
 }
