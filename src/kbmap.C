@@ -121,9 +121,9 @@ int kb_keymap::lookup(unsigned int key,
 		unsigned int const msk0 = ((*cit).mod >> 16) & 0xffff;
 		if ((*cit).code == key && (mod & ~msk0) == msk1) {
 			// math found:
-			if ((*cit).table) {
+			if ((*cit).table.get()) {
 				// this is a prefix key - set new map
-				seq->curmap = (*cit).table;
+				seq->curmap = (*cit).table.get();
 				return 0;
 			} else {
 				// final key - reset map
@@ -191,13 +191,12 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 					<< buf
 					<< "' is overriding old binding..."
 					<< endl;
-				if ((*it).table) {
-					delete (*it).table;
-					(*it).table = 0;
+				if ((*it).table.get()) {
+					(*it).table.reset(0);
 				}
 				(*it).action = action;
 				return 0;
-			} else if (!(*it).table) {
+			} else if (!(*it).table.get()) {
 				string buf;
 				seq->print(buf, true);
 				lyxerr << "Error: New binding for '" << buf
@@ -217,29 +216,11 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	(*newone).mod = modmsk;
 	if (idx + 1 == seq->length) {
 		(*newone).action = action;
-		(*newone).table = 0;
+		(*newone).table.reset(0);
 		return 0;
 	} else {
-		(*newone).table = new kb_keymap;
+		(*newone).table.reset(new kb_keymap);
 		return (*newone).table->defkey(seq, action, idx + 1);
-	}
-}
-
-
-/* ---F+------------------------------------------------------------------ *\
-    Function  : kb_keymap::~kb_keymap
-    Called by : [destructor]
-    Purpose   : free keymap and its descendents
-    Parameters: none
-    Returns   : nothing
-\* ---F------------------------------------------------------------------- */
-
-kb_keymap::~kb_keymap()
-{
-	// This could be done by a destructor in kb_key.
-	Table::iterator end = table.end();
-	for (Table::iterator it = table.begin(); it != end; ++it) {
-		delete (*it).table;
 	}
 }
 
@@ -261,7 +242,7 @@ string const kb_keymap::findbinding(int act) const
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
-		if ((*cit).table) {
+		if ((*cit).table.get()) {
 			string suffix = (*cit).table->findbinding(act);
 			suffix = strip(suffix, ' ');
 			suffix = strip(suffix, ']');

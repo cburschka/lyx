@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <map>
+#include <boost/smart_ptr.hpp>
 #include "LString.h"
 #include "frontends/Menubar.h"
 #include "commandtags.h"
@@ -36,8 +37,6 @@ struct Menubar::Pimpl {
 public:
 	///
 	Pimpl(LyXView *, MenuBackend const &);
-	///
-	~Pimpl();
 	///
 	void set(string const &);
 	/// Opens a top-level submenu given its name
@@ -71,18 +70,19 @@ private:
 	struct ItemInfo {
 		///
 		ItemInfo(Menubar::Pimpl * p, MenuItem const * i, 
-			   FL_OBJECT * o) 
-			: pimpl_(p), item_(i), obj_(o) {}
+			 FL_OBJECT * o)
+		
+			: pimpl_(p), obj_(o) { item_.reset(i); }
 		///
 		Menubar::Pimpl * pimpl_;
 		///
-		MenuItem const * item_;
+		boost::shared_ptr<MenuItem const> item_;
 		///
 		FL_OBJECT * obj_;
 	};
 
 	///
-	typedef std::vector<ItemInfo *> ButtonList;
+	typedef std::vector<boost::shared_ptr<ItemInfo> > ButtonList;
 	///
 	ButtonList buttonlist_;
 

@@ -226,4 +226,4 @@ void LyXColorHandler::updateColor (LColor::color c)
 }
 
 //
-LyXColorHandler * lyxColorHandler;
+boost::scoped_ptr<LyXColorHandler> lyxColorHandler;

@@ -56,13 +56,14 @@ Intl::Intl()
 
 Intl::~Intl()
 {
+	fl_free(fd_form_keymap);
 	r_.disconnect();
 }
 
 
 void Intl::redraw()
 {
-	if (fd_form_keymap.get() && fd_form_keymap->KeyMap->visible)
+	if (fd_form_keymap && fd_form_keymap->KeyMap->visible)
 		fl_redraw_form(fd_form_keymap->KeyMap);
 }
 
@@ -110,7 +111,7 @@ void Intl::KeyMapOn(bool on)
 {
 	keymapon = on;
 
-	if (!fd_form_keymap.get()) return;
+	if (!fd_form_keymap) return;
 	
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
@@ -249,7 +250,7 @@ void Intl::InitKeyMapper(bool on)
 	Language->setcallback(LCombo, this);
 	Language2->setcallback(LCombo, this);
 
-	fd_form_keymap.reset(create_form_KeyMap());
+	fd_form_keymap = create_form_KeyMap();
 
 	// Add the Intl* pointer
 	fd_form_keymap->AcceptChset->u_vdata =

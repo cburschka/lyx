@@ -64,7 +64,7 @@ LyXServer * lyxserver = 0;
 bool finished = false;	// flag, that we are quitting the program
 
 // convenient to have it here.
-kb_keymap * toplevel_keymap;
+boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 
 LyX::LyX(int * argc, char * argv[])
@@ -78,8 +78,8 @@ LyX::LyX(int * argc, char * argv[])
 	bool gui = easyParse(argc, argv);
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
-	toplevel_keymap = new kb_keymap;
-	defaultKeyBindings(toplevel_keymap);
+	toplevel_keymap.reset(new kb_keymap);
+	defaultKeyBindings(toplevel_keymap.get());
 	
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
@@ -432,7 +432,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// Bind the X dead keys to the corresponding LyX functions if
 	// necessary. 
 	if (lyxrc.override_x_deadkeys)
-		deadKeyBindings(toplevel_keymap);
+		deadKeyBindings(toplevel_keymap.get());
 
 	if (lyxerr.debugging(Debug::LYXRC)) {
 		lyxrc.print();

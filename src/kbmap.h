@@ -14,6 +14,7 @@
 #endif
 
 #include <list>
+#include <boost/smart_ptr.hpp>
 
 #include "LString.h"
 
@@ -22,9 +23,6 @@ class kb_sequence;
 /// Defines key maps and actions for key sequences
 class kb_keymap {
 public:
-	///
-	~kb_keymap();
-	
 	/** Bind a key-sequence to an action.
 	    Returns 0 on success. Otherwise, position in string where
 	    error occured. */
@@ -49,7 +47,7 @@ private:
 		unsigned int mod;
 		
 		/// Keymap for prefix keys
-		kb_keymap * table;
+		boost::shared_ptr<kb_keymap> table;
 		
 		/// Action for !prefix keys
 		int action;

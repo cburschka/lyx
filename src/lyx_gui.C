@@ -151,7 +151,7 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 		ypos += HeightOfScreen(ScreenOfDisplay(fl_get_display(), fl_screen)) - height; //DefaultScreen(fl_get_display())) - height;
 
 	// Initialize the LyXColorHandler
-	lyxColorHandler = new LyXColorHandler;
+	lyxColorHandler.reset(new LyXColorHandler);
 }
 
 

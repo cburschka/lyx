@@ -32,7 +32,7 @@ using std::min;
 
 typedef vector<int>::size_type size_type;
 
-extern kb_keymap * toplevel_keymap;
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern LyXAction lyxaction;
 
 // Some constants
@@ -87,12 +87,6 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 }
 
 
-Menubar::Pimpl::~Pimpl() 
-{
-	// Should we do something here?
-}
-
-
 void Menubar::Pimpl::makeMenubar(Menu const &menu)
 {
 	FL_FORM * form = owner_->getForm(); 
@@ -132,10 +126,10 @@ void Menubar::Pimpl::makeMenubar(Menu const &menu)
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
 		fl_set_object_callback(obj, C_Menubar_Pimpl_MenuCallback, 1);
 
-		ItemInfo * iteminfo = new ItemInfo(this, 
-						   new MenuItem(*i), obj);
+		boost::shared_ptr<ItemInfo> iteminfo(new ItemInfo(this, 
+						   new MenuItem(*i), obj));
 		buttonlist_.push_back(iteminfo);
-		obj->u_vdata = iteminfo;
+		obj->u_vdata = iteminfo.get();
 	}
 
 }
@@ -541,7 +535,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 //  	       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
 
 	LyXView * view = iteminfo->pimpl_->owner_;
-	MenuItem const * item = iteminfo->item_;
+	MenuItem const * item = iteminfo->item_.get();
 
 	if (button == 1) {
 		// set the pseudo menu-button

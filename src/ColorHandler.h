@@ -15,6 +15,8 @@
 #pragma interface
 #endif
 
+#include <boost/smart_ptr.hpp>
+
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
@@ -56,6 +58,6 @@ private:
 };
 
 ///
-extern LyXColorHandler * lyxColorHandler;
+extern boost::scoped_ptr<LyXColorHandler> lyxColorHandler;
 
 #endif

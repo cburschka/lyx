@@ -45,7 +45,7 @@ using std::endl;
 extern GLyxAppWin * mainAppWin;
 
 // Some constants
-extern kb_keymap * toplevel_keymap;
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern LyXAction lyxaction;
 extern BufferList bufferlist;
 extern LastFiles * lastfiles; 

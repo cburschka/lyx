@@ -40,7 +40,7 @@ using std::endl;
 using std::vector;
 
 extern LyXAction lyxaction;
-extern kb_keymap * toplevel_keymap;
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 
 static

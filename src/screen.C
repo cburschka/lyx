@@ -65,7 +65,7 @@ LyXScreen::LyXScreen(WorkArea & o)
 
 void LyXScreen::setCursorColor() 
 {
-	if (!lyxColorHandler) return;
+	if (!lyxColorHandler.get()) return;
 
 	GC gc = lyxColorHandler->getGCForeground(LColor::cursor);
 	

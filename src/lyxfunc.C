@@ -102,7 +102,7 @@ extern int greek_kb_flag;
 extern bool selection_possible;
 extern void MenuSendto();
 
-extern kb_keymap * toplevel_keymap;
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 extern void show_symbols_form(LyXFunc *);
 
@@ -1519,8 +1519,8 @@ exit_with_message:
 
 void LyXFunc::setupLocalKeymap()
 {
-	keyseq.stdmap = keyseq.curmap = toplevel_keymap;
-	cancel_meta_seq.stdmap = cancel_meta_seq.curmap = toplevel_keymap;
+	keyseq.stdmap = keyseq.curmap = toplevel_keymap.get();
+	cancel_meta_seq.stdmap = cancel_meta_seq.curmap = toplevel_keymap.get();
 }
 
 

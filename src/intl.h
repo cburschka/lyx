@@ -89,7 +89,7 @@ private:
 	int otherkeymap;
 	
 	///
-	boost::scoped_ptr<FD_KeyMap> fd_form_keymap;
+	FD_KeyMap * fd_form_keymap;
 	///
 	boost::scoped_ptr<Combox> Language;
 	///
