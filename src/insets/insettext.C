@@ -1001,7 +1001,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		if (clear)
 			lt = 0;
 	} else {
-		lt->clearSelection();
+		getLyXText(bv)->clearSelection();
 	}
 	showInsetCursor(bv);
 	no_selection = false;
