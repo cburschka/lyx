@@ -55,7 +55,7 @@ public:
 	void initMiniBuffer();
 		
 	///
-	int processKeySym(KeySym k, unsigned int state);
+	void processKeySym(KeySym k, unsigned int state);
 
 	/// we need one internall which is called from inside LyXAction and
 	/// can contain the string argument.

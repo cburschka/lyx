@@ -214,12 +214,12 @@ void LyXFunc::handleKeyFunc(kb_action action)
 }
 
 
-int LyXFunc::processKeySym(KeySym keysym, unsigned int state) 
+void LyXFunc::processKeySym(KeySym keysym, unsigned int state) 
 {
 	string argument;
 	
 	if (lyxerr.debugging(Debug::KEY)) {
-		char * tmp = XKeysymToString(keysym);
+		char const * tmp = XKeysymToString(keysym);
 		string const stm = (tmp ? tmp : "");
 		lyxerr << "KeySym is "
 		       << stm
@@ -233,7 +233,8 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
 				   << endl;
 		//return 0;
-		return FL_PREEMPT;
+		//return FL_PREEMPT;
+		return;
 	}
 
 	if (owner->view()->available()) {
@@ -251,7 +252,8 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 							true);
 			}
 			//return 0;
-			return FL_PREEMPT;
+			//return FL_PREEMPT;
+			return;
 		}
 	}
 	
@@ -260,9 +262,11 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// This code snippet makes lyx ignore some keys. Perhaps
 	// all of them should be explictly mentioned?
 	if ((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
-	   || keysym == XK_Mode_switch || keysym == 0x0)
-		return 0;
-
+	    || keysym == XK_Mode_switch || keysym == 0x0) {
+		//return 0;
+		return;
+	}
+	
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
 	cancel_meta_seq.reset();
@@ -338,10 +342,28 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			return 0;
 		}
 #else
-		owner->message(_("Unknown function."));
-		return 0;
+		// It is unknown, but what if we remove all
+		// the modifiers? (Lgb)
+		action = keyseq.addkey(keysym, 0);
+
+		// We keep the shift state, but remove the others.
+		// This is for the sake of the LFUN_SELFINSERT below.
+		state &= ShiftMask;
+		
+		if (lyxerr.debugging(Debug::KEY)) {
+			lyxerr << "Removing modifiers...\n"
+			       << "Action now set to ["
+			       << action << "]" << endl;
+		}
+		if (action == -1) {
+			owner->message(_("Unknown function."));
+			//return 0;
+			return;
+		}
 #endif
-	} else if (action == LFUN_SELFINSERT) {
+	}
+
+	if (action == LFUN_SELFINSERT) {
 		// We must set the argument to the char looked up by
 		// XKeysymToString
 		XKeyEvent xke;
@@ -369,6 +391,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		
 		if (res > 0)
 			argument = string(ret, res);
+
 		lyxerr[Debug::KEY] << "SelfInsert arg["
 				   << argument << "]" << endl;
 	}
@@ -379,7 +402,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	Dispatch(action, argument);
 	show_sc = tmp_sc;
 	
-	return 0;
+	//return 0;
 } 
 
 
