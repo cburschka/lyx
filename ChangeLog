@@ -1,3 +1,11 @@
+1999-10-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/Makefile.am (libsupport_a_SOURCES): added LIstream.h
+	and LOstream.h
+
+	* src/lyxfunc.C (processKeyEvent): removed faulty line that made
+	lyx insert double chars. Fix spotted by Kayvan.
+
 1999-10-23  Asger Alstrup Nielsen  <alstrup@alstrup.galaxy.dk>
 
 	* Fixed the tth support. I messed up with the Emacs patch apply feature

@@ -285,7 +285,6 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 		if (!(keyevent->state&ControlMask) &&
 		    !(keyevent->state&Mod1Mask) &&
 		    (isochar && keysym_return < 0xF000)) {
-			argument = s_r[0]; // shall this be here
 			argument += isochar;
 		}
 		if (argument.empty()) {

@@ -14,6 +14,8 @@ libsupport_a_SOURCES = \
 	FileInfo.C \
 	FileInfo.h \
 	LAssert.h \
+	LIstream.h \
+	LOstream.h \
 	filetools.C \
 	filetools.h \
 	lstrings.C \
@@ -27,4 +29,3 @@ libsupport_a_SOURCES = \
 	syscontr.h \
 	syssingleton.C \
 	textutils.h
-
