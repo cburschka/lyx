@@ -211,9 +211,11 @@ string const FileOpenSearch(string const & path, string const & name,
 vector<string> const DirList(string const & dir, string const & ext)
 {
 	// This is a non-error checking C/system implementation
-	string extension(ext);
-	if (!extension.empty() && extension[0] != '.')
-		extension.insert(string::size_type(0), 1, '.');
+	string extension;
+	if (!ext.empty() && ext[0] != '.')
+		extension += '.';
+	extension += ext;
+	
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	if (!dirp) {
