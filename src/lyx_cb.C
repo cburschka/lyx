@@ -331,10 +331,12 @@ void QuitLyX()
 {
 	lyxerr.debug() << "Running QuitLyX." << endl;
 
-	if (!bufferlist.QwriteAll())
-		return;
+	if (lyxrc.use_gui) {
+		if (!bufferlist.QwriteAll())
+			return;
 
-	lastfiles->writeFile(lyxrc.lastfiles);
+		lastfiles->writeFile(lyxrc.lastfiles);
+	}
 
 	// Set a flag that we do quitting from the program,
 	// so no refreshes are necessary.
