@@ -57,7 +57,9 @@ public:
 	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
-	bool insetAllowed(InsetOld::Code code) const { return code == InsetOld::NEWLINE_CODE; }
+	bool insetAllowed(InsetOld::Code code) const {
+		return code == InsetOld::NEWLINE_CODE;
+	}
 	///
 	void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);
@@ -102,9 +104,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
-	bool forceDefaultParagraphs(InsetOld const *) const {
-		return true;
-	}
+	bool forceDefaultParagraphs(InsetOld const *) const { return true; }
 protected:
 	///
 	virtual
@@ -124,11 +124,11 @@ private:
 	///
 	void init();
 	///
-	std::string const get_new_label() const;
+	std::string const getNewLabel() const;
 	///
 	void setButtonLabel() const;
 	///
-	void set_latex_font(BufferView *);
+	void setLatexFont(BufferView *);
 	/// update status on button
 	void updateStatus(bool = false) const;
 	///

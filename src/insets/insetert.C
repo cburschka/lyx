@@ -408,7 +408,7 @@ void InsetERT::edit(BufferView * bv, bool left)
 	} else {
 		InsetCollapsable::edit(bv, left);
 	}
-	set_latex_font(bv);
+	setLatexFont(bv);
 	updateStatus();
 }
 
@@ -419,7 +419,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraphs.begin()->empty())
-		set_latex_font(bv);
+		setLatexFont(bv);
 
 	switch (cmd.action) {
 
@@ -455,7 +455,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 	case LFUN_DELETE_SKIP:
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_CUT:
-		set_latex_font(bv);
+		setLatexFont(bv);
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 
 	default:
@@ -464,7 +464,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 }
 
 
-string const InsetERT::get_new_label() const
+string const InsetERT::getNewLabel() const
 {
 	string la;
 	pos_type const max_length = 15;
@@ -490,7 +490,7 @@ string const InsetERT::get_new_label() const
 
 void InsetERT::setButtonLabel() const
 {
-	setLabel(status_ == Collapsed ? get_new_label() : _("ERT"));
+	setLabel(status_ == Collapsed ? getNewLabel() : _("ERT"));
 }
 
 
@@ -526,7 +526,7 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetERT::set_latex_font(BufferView * /*bv*/)
+void InsetERT::setLatexFont(BufferView * /*bv*/)
 {
 #ifdef SET_HARD_FONT
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);

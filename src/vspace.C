@@ -453,9 +453,6 @@ string const VSpace::asLyXCommand() const
 string const VSpace::asLatexCommand(BufferParams const & params) const
 {
 	switch (kind_) {
-	case NONE:
-		return string();
-
 	case DEFSKIP:
 		return params.getDefSkip().asLatexCommand(params);
 
@@ -474,6 +471,13 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	case LENGTH: 
 		return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
 			: "\\vspace{" + len_.asLatexString() + '}';
+
+	case NONE:
+		return string();
+
+	default:
+		BOOST_ASSERT(false);
+		return string();
 	}
 }
 
@@ -485,10 +489,6 @@ int VSpace::inPixels(BufferView const & bv) const
 	int const default_height = defaultRowHeight(); 
 
 	switch (kind_) {
-
-	case NONE:
-		// value for this is already set
-		return 0;
 
 	case DEFSKIP:
 		return bv.buffer()->params().getDefSkip().inPixels(bv);
@@ -510,5 +510,12 @@ int VSpace::inPixels(BufferView const & bv) const
 
 	case LENGTH:
 		return len_.len().inPixels(bv.workWidth());
+
+	case NONE:
+		return 0;
+
+	default:
+		BOOST_ASSERT(false);
+		return 0;
 	}
 }
