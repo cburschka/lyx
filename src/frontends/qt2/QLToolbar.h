@@ -7,95 +7,75 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLTOOLBAR__H
+#ifndef QLTOOLBAR_H
 #define QLTOOLBAR_H
 
-#include "frontends/Toolbar.h"
-
-#include "qt_helpers.h"
-
+#include "frontends/Toolbars.h"
 #include <boost/scoped_ptr.hpp>
 
-#include <map>
-
 #include <qobject.h>
-#include <qtoolbutton.h>
 
+
+class QComboBox;
+class QToolBar;
+class QToolButton;
 
 class QtView;
-class QToolBar;
-class QLComboBox;
-class ToolbarProxy;
-
-class QLToolbar : public Toolbar {
-public:
-	friend class ToolbarProxy;
-
-	QLToolbar(LyXView * o);
-
-	/// add a new toolbar
-	void add(ToolbarBackend::Toolbar const & tb);
-
-	/// add an item to a toolbar
-	void add(QToolBar * tb, FuncRequest const &, std::string const & tooltip);
-
-	/// show or hide a toolbar
-	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
-
-	/// update the state of the icons
-	void update();
-
-	/// select the right layout in the combox
-	void setLayout(std::string const & layout);
-	/// Populate the layout combox.
-	void updateLayoutList();
-	/// Drop down the layout list
-	void openLayoutList();
-	/// Erase the layout list
-	void clearLayoutList();
-private:
-	void changed_layout(std::string const & sel);
-
-	void button_selected(QToolButton * button);
-
-	QtView * owner_;
-
-	boost::scoped_ptr<ToolbarProxy> proxy_;
-
-	std::map<std::string, QToolBar *> toolbars_;
-
-	QLComboBox * combo_;
-
-	typedef std::map<QToolButton *, FuncRequest> ButtonMap;
-
-	ButtonMap map_;
-};
+class QLayoutBox;
+class QLToolbar;
 
 
-// moc is mind-numbingly stupid
-class ToolbarProxy : public QObject {
+class QLayoutBox : public QObject, public LayoutBox {
 	Q_OBJECT
 public:
-	ToolbarProxy(QLToolbar & owner)
-		: owner_(owner) {}
-public slots:
+	QLayoutBox(QWidget *, QtView &);
 
-	void layout_selected(const QString & str) {
-		owner_.changed_layout(fromqstr(str));
-	}
+	/// select the right layout in the combox.
+	void set(std::string const & layout);
+	/// Populate the layout combox.
+	void update();
+	/// Erase the layout list.
+	void clear();
+	/// Display the layout list.
+	void open();
+	///
+	void setEnabled(bool);
 
-	void button_selected() {
-		owner_.button_selected(
-			const_cast<QToolButton *>(
-			static_cast<QToolButton const *>(sender()))
-		);
-	}
+private slots:
+	void selected(const QString & str);
+
 private:
-	QLToolbar & owner_;
+	QComboBox * combo_;
+	QtView & owner_;
 };
 
-#endif
+
+class QLToolbar : public QObject, public Toolbar {
+	Q_OBJECT
+public:
+	QLToolbar(ToolbarBackend::Toolbar const &, LyXView &);
+	void add(FuncRequest const & func, std::string const & tooltip);
+	void hide(bool);
+	void show(bool);
+	void update();
+	LayoutBox * layout() const { return layout_.get(); }
+
+private slots:
+	void clicked();
+
+private:
+	typedef std::map<QToolButton *, FuncRequest> ButtonMap;
+
+	QtView & owner_;
+	QToolBar * toolbar_;
+	ButtonMap map_;
+
+	boost::scoped_ptr<QLayoutBox> layout_;
+};
+
+#endif // NOT QLTOOLBAR_H

@@ -11,21 +11,25 @@
 
 #include <config.h>
 
-#include "lyx_cb.h"
-#include "support/filetools.h"
-#include "MenuBackend.h"
-#include "lyxfunc.h"
 #include "BufferView.h"
+#include "lyx_cb.h"
+#include "lyxfunc.h"
+#include "MenuBackend.h"
+
+#include "frontends/Toolbars.h"
+
+#include "support/filetools.h"
 
 #include <boost/bind.hpp>
 
 #include "QtView.h"
-#include "QLToolbar.h"
 #include "QLMenubar.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
+#include "qt_helpers.h"
 
 #include <qapplication.h>
+#include <qpixmap.h>
 #include <qstatusbar.h>
 
 using lyx::support::LibFileSearch;
@@ -52,8 +56,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	bufferview_.reset(new BufferView(this, width, height));
 
 	menubar_.reset(new QLMenubar(this, menubackend));
-	toolbar_.reset(new QLToolbar(this));
-	toolbar_->init();
+	getToolbars().init();
 
 	statusBar()->setSizeGripEnabled(false);
 
@@ -66,7 +69,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 		setIcon(QPixmap(toqstr(iconname)));
 
 	// make sure the buttons are disabled if needed
-	updateToolbar();
+	updateToolbars();
 
 	// allowing the toolbars to tear off is too easily done,
 	// and we don't save their orientation anyway. Disable the handle.

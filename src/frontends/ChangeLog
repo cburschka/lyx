@@ -1,5 +1,18 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* LyXView.[Ch]:
+	s/Toolbar.h/Toolbars.h/
+	s/toolbar_/toolbars_/
+	s/getToolbar()/getToolbars()/
+	s/updateToolbar()/updateToolbars()/
+	Make the toolbars_ private.
+
+	* Toolbar.[Ch]: removed.
+	* Toolbars.[Ch]: new files. The old Toolbar class is split into
+	three new classes, LayoutBox, Toolbar and Toolbars.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* WorkAreaFactory.h (create): passed a LyXView &.
 	No longer passed x, y data.
 

@@ -17,7 +17,6 @@
 
 #include "Tooltips.h"
 #include "xforms_helpers.h"
-#include "XFormsView.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -46,6 +45,30 @@ const int sepspace = 6; // extra space
 const int buttonwidth = 30; // the standard button width
 const int height = 30; // the height of all items in the toolbar
 
+namespace {
+
+XFormsView::Position getPosition(ToolbarBackend::Flags const & flags)
+{
+	if (flags & ToolbarBackend::TOP)
+		return XFormsView::Top;
+	if (flags & ToolbarBackend::BOTTOM)
+		return XFormsView::Bottom;
+	if (flags & ToolbarBackend::LEFT)
+		return XFormsView::Left;
+	if (flags & ToolbarBackend::RIGHT)
+		return XFormsView::Right;
+	return XFormsView::Top;
+}
+
+
+LyXTextClass const & getTextClass(LyXView const & lv)
+{
+	return lv.buffer()->params().getLyXTextClass();
+}
+
+} // namespace anon
+
+
 XFormsToolbar::toolbarItem::toolbarItem()
 	: icon(0)
 {}
@@ -59,13 +82,6 @@ XFormsToolbar::toolbarItem::~toolbarItem()
 	// FIXME
 	//kill_icon();
 }
-
-
-/// Display toolbar, not implemented. But moved out of line so that
-/// linking will work properly.
-void XFormsToolbar::displayToolbar(ToolbarBackend::Toolbar const & /*tb*/,
-				    bool /*show*/)
-{}
 
 
 void XFormsToolbar::toolbarItem::kill_icon()
@@ -95,30 +111,180 @@ XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 
 
 
-XFormsToolbar::XFormsToolbar(LyXView * o)
+Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
+				  LyXView & owner)
+{
+	return Toolbars::ToolbarPtr(new XFormsToolbar(tbb, owner));
+}
+
+
+XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
+			     LyXView & o)
 	: toolbar_(0),
 	  toolbar_buttons_(0),
-	  owner_(static_cast<XFormsView *>(o)),
-	  combox_(0)
+	  owner_(static_cast<XFormsView &>(o)),
+	  tooltip_(new Tooltips)
 {
-	tooltip_ = new Tooltips;
+	position_ = getPosition(tbb.flags);
+	BoxList & boxlist = owner_.getBox(position_).children();
+	toolbar_ = &boxlist.push_back(Box(0,0));
+
+	// If the toolbar is horizontal, then it contains three
+	// vertically-aligned Boxes,the center one of which is to
+	// contain the buttons, aligned horizontally.
+	// The other two provide some visual padding.
+
+	// If it is vertical, then this is swapped around.
+
+	Box::Orientation const toolbar_orientation =
+		(position_ == XFormsView::Left ||
+		 position_ == XFormsView::Right)
+		? Box::Vertical : Box::Horizontal;
+
+	Box::Orientation const padding_orientation =
+		(toolbar_orientation == Box::Vertical)
+		? Box::Horizontal : Box::Vertical;
+
+	toolbar_->set(padding_orientation);
+
+	// A bit of a hack, but prevents 'M-x' causing the addition of
+	// visible borders.
+	int const padding =
+		(tbb.name == "minibuffer") ?
+		0 : 2 + abs(fl_get_border_width());
+
+	toolbar_->children().push_back(Box(padding, padding));
+
+	Box & toolbar_center = toolbar_->children().push_back(Box(0,0));
+	toolbar_center.set(toolbar_orientation);
+	toolbar_buttons_ = &toolbar_center.children();
+
+	toolbar_->children().push_back(Box(padding, padding));
 
 	using lyx::frontend::WidgetMap;
-	owner_->metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
-						   &widgets_));
+	owner_.metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
+						  &widgets_));
+
+	// Populate the toolbar.
+	ToolbarBackend::item_iterator it = tbb.items.begin();
+	ToolbarBackend::item_iterator end = tbb.items.end();
+	for (; it != end; ++it)
+		add(it->first, it->second);
+
 }
 
 
 XFormsToolbar::~XFormsToolbar()
 {
-	fl_freeze_form(owner_->getForm());
+	fl_freeze_form(owner_.getForm());
 
 	// G++ vector does not have clear defined
 	//toollist.clear();
 	toollist_.erase(toollist_.begin(), toollist_.end());
 
-	fl_unfreeze_form(owner_->getForm());
-	delete tooltip_;
+	fl_unfreeze_form(owner_.getForm());
+}
+
+
+namespace {
+
+extern "C" {
+
+void C_ToolbarCB(FL_OBJECT * ob, long ac)
+{
+	if (!ob || !ob->u_vdata)
+		return;
+
+	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
+	XFormsView & owner = ptr->owner_;
+	owner.getLyXFunc().dispatch(ptr->funcs[ac], true);
+}
+
+} // extern "C"
+
+} // namespace anon
+
+
+void XFormsToolbar::hide(bool update_metrics)
+{
+ 	toolbar_->set(Box::Invisible);
+	if (update_metrics)
+		owner_.updateMetrics();
+}
+
+
+void XFormsToolbar::show(bool update_metrics)
+{
+ 	toolbar_->set(Box::Visible);
+	toolbar_->show();
+	if (update_metrics)
+		owner_.updateMetrics();
+}
+
+
+void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
+{
+	toolbarItem item;
+	item.func = func;
+
+	switch (func.action) {
+	case ToolbarBackend::SEPARATOR:
+		toolbar_buttons_->push_back(Box(sepspace, sepspace));
+		break;
+
+	case ToolbarBackend::MINIBUFFER:
+		// Not implemented.
+		// XForms uses the same widget to display the buffer messages
+		// and to input commands.
+		break;
+
+	case ToolbarBackend::LAYOUTS:
+		layout_.reset(new XLayoutBox(owner_, *this));
+		break;
+
+	default: {
+		FL_OBJECT * obj;
+
+		toolbar_buttons_->push_back(Box(standardspacing,
+						standardspacing));
+
+		item.icon = obj =
+			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
+					    0, 0, 0, 0, "");
+
+		widgets_.add(obj, *toolbar_buttons_, buttonwidth, height);
+
+		fl_set_object_resize(obj, FL_RESIZE_ALL);
+
+		int gravity = 0;
+		if (position_ == XFormsView::Top ||
+		    position_ == XFormsView::Left)
+			gravity = NorthWestGravity;
+		else if (position_ == XFormsView::Right)
+			gravity = NorthEastGravity;
+		else if (position_ == XFormsView::Bottom)
+			gravity = SouthWestGravity;
+		
+		fl_set_object_gravity(obj, gravity, gravity);
+
+		Funcs::iterator fit = funcs.insert(funcs.end(), func);
+		int const index = distance(funcs.begin(), fit);
+		fl_set_object_callback(obj, C_ToolbarCB, index);
+		// Remove the blue feedback rectangle
+		fl_set_pixmapbutton_focus_outline(obj, 0);
+
+		tooltip_->init(obj, tooltip);
+
+		// The view that this object belongs to.
+		obj->u_vdata = this;
+
+		string const xpm = toolbarbackend.getIcon(func);
+		fl_set_pixmapbutton_file(obj, xpm.c_str());
+		break;
+	}
+	}
+
+	toollist_.push_back(item);
 }
 
 
@@ -127,18 +293,12 @@ void XFormsToolbar::update()
 	ToolbarList::const_iterator p = toollist_.begin();
 	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
-		if (p->func.action == int(ToolbarBackend::LAYOUTS) && combox_) {
-			LyXFunc const & lf = owner_->getLyXFunc();
-			bool const enable =
-				lf.getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
-			setEnabled(combox_, enable);
-			continue;
-		}
-
 		if (!p->icon)
 			continue;
 
-		FuncStatus const status = owner_->getLyXFunc().getStatus(p->func);
+		FuncStatus const status =
+			owner_.getLyXFunc().getStatus(p->func);
+
 		if (status.onoff(true)) {
 			// I'd like to use a different color
 			// here, but then the problem is to
@@ -160,50 +320,54 @@ void XFormsToolbar::update()
 			fl_deactivate_object(p->icon);
 		}
 	}
+
+	bool const enable = owner_.getLyXFunc().
+		getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
+
+	if (layout_.get())
+		layout_->setEnabled(enable);
 }
 
 
 namespace {
 
-void C_layoutSelectedCB(FL_OBJECT * ob, long)
+extern "C"
+void C_LayoutBoxSelectedCB(FL_OBJECT * ob, long)
 {
 	if (!ob || !ob->u_vdata)
 		return;
-	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
-	ptr->layoutSelected();
+	XLayoutBox * ptr = static_cast<XLayoutBox *>(ob->u_vdata);
+	ptr->selected();
 }
 
 } // namespace anon
 
 
-void XFormsToolbar::layoutSelected()
+XLayoutBox::XLayoutBox(LyXView & owner, XFormsToolbar & toolbar)
+	: owner_(owner)
 {
-	if (!combox_)
-		return;
+	toolbar.toolbar_buttons_->push_back(Box(standardspacing, 0));
 
-	string const & layoutguiname = getString(combox_);
-	LyXTextClass const & tc =
-		owner_->buffer()->params().getLyXTextClass();
+	combox_ = fl_add_combox(FL_DROPLIST_COMBOX,
+				0, 0, 135, height, "");
 
-	LyXTextClass::const_iterator end = tc.end();
-	for (LyXTextClass::const_iterator cit = tc.begin();
-	     cit != end; ++cit) {
-		if (_((*cit)->name()) == layoutguiname) {
-			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()), true);
-			return;
-		}
-	}
-	lyxerr << "ERROR (XFormsToolbar::layoutSelected): layout not found!"
-	       << endl;
+	toolbar.widgets_.add(combox_, *toolbar.toolbar_buttons_, 135, height);
+
+	fl_set_combox_browser_height(combox_, 400);
+	fl_set_object_boxtype(combox_, FL_DOWN_BOX);
+	fl_set_object_color(combox_, FL_MCOL, FL_MCOL);
+	fl_set_object_gravity(combox_, FL_NorthWest, FL_NorthWest);
+	fl_set_object_resize(combox_, FL_RESIZE_ALL);
+
+	combox_->u_vdata = this;
+	fl_set_object_callback(combox_, C_LayoutBoxSelectedCB, 0);
 }
 
 
-void XFormsToolbar::setLayout(string const & layout)
+void XLayoutBox::set(string const & layout)
 {
-	if (!combox_)
-		return;
+	LyXTextClass const & tc = getTextClass(owner_);
 
-	LyXTextClass const & tc = owner_->buffer()->params().getLyXTextClass();
 	string const layoutname = _(tc[layout]->name());
 
 	int const nnames = fl_get_combox_maxitems(combox_);
@@ -217,19 +381,18 @@ void XFormsToolbar::setLayout(string const & layout)
 }
 
 
-void XFormsToolbar::updateLayoutList()
+void XLayoutBox::update()
 {
-	if (!combox_)
-		return;
+	LyXTextClass const & tc = getTextClass(owner_);
 
 	fl_clear_combox(combox_);
-	LyXTextClass const & tc = owner_->buffer()->params().getLyXTextClass();
-	LyXTextClass::const_iterator end = tc.end();
-	for (LyXTextClass::const_iterator cit = tc.begin();
-	     cit != end; ++cit) {
+
+	LyXTextClass::const_iterator it = tc.begin();
+	LyXTextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
 		// ignore obsolete entries
-		if ((*cit)->obsoleted_by().empty()) {
-			string const & name = _((*cit)->name());
+		if ((*it)->obsoleted_by().empty()) {
+			string const & name = _((*it)->name());
 			fl_addto_combox(combox_, name.c_str());
 		}
 	}
@@ -239,145 +402,41 @@ void XFormsToolbar::updateLayoutList()
 }
 
 
-void XFormsToolbar::clearLayoutList()
+void XLayoutBox::clear()
 {
-	if (!combox_)
-		return;
-
-	Toolbar::clearLayoutList();
 	fl_clear_combox(combox_);
 	fl_redraw_object(combox_);
 }
 
 
-void XFormsToolbar::openLayoutList()
+void XLayoutBox::open()
 {
-	if (!combox_)
-		return;
-
 	fl_show_combox_browser(combox_);
 }
 
 
-namespace {
-
-void ToolbarCB(FL_OBJECT * ob, long ac)
+void XLayoutBox::setEnabled(bool enable)
 {
-	if (!ob || !ob->u_vdata)
-		return;
-
-	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
-	XFormsView * owner = ptr->owner_;
-	owner->getLyXFunc().dispatch(ptr->funcs[ac], true);
+	::setEnabled(combox_, enable);
 }
 
 
-extern "C" {
-
-void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
+void XLayoutBox::selected()
 {
-	ToolbarCB(ob, data);
-}
+	string const layoutguiname = getString(combox_);
 
-}
+	LyXTextClass const & tc = getTextClass(owner_);
 
-} // namespace anon
-
-
-void XFormsToolbar::add(ToolbarBackend::Toolbar const & tb)
-{
-	// we can only handle one toolbar
-	if (!toollist_.empty())
-		return;
-
-	// The toolbar contains three vertically-aligned Boxes,
-	// the center one of which is to contain the buttons,
-	// aligned horizontally.
-	// The other two provide some visual padding.
-	BoxList & boxlist = owner_->getBox(XFormsView::Top).children();
-	toolbar_ = &boxlist.push_back(Box(0,0));
-
-	int const padding = 2 + abs(fl_get_border_width());
-	toolbar_->children().push_back(Box(0, padding));
-
-	Box & toolbar_center = toolbar_->children().push_back(Box(0,0));
-	toolbar_center.set(Box::Horizontal);
-	toolbar_buttons_ = &toolbar_center.children();
-
-	toolbar_->children().push_back(Box(0, padding));
-
-	// Add the buttons themselves.
-	funcs.clear();
-
-	ToolbarBackend::item_iterator it = tb.items.begin();
-	ToolbarBackend::item_iterator end = tb.items.end();
-	for (; it != end; ++it)
-		add(it->first, it->second);
-}
-
-
-void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
-{
-	toolbarItem item;
-	item.func = func;
-
-	switch (func.action) {
-	case ToolbarBackend::SEPARATOR:
-		toolbar_buttons_->push_back(Box(sepspace, 0));
-		break;
-	case ToolbarBackend::MINIBUFFER:
-		// Not implemented
-		break;
-	case ToolbarBackend::LAYOUTS:
-		toolbar_buttons_->push_back(Box(standardspacing, 0));
-		if (combox_)
-			break;
-
-		combox_ = fl_add_combox(FL_DROPLIST_COMBOX,
-					0, 0, 135, height, "");
-
-		widgets_.add(combox_, *toolbar_buttons_, 135, height);
-
-		fl_set_combox_browser_height(combox_, 400);
-		fl_set_object_boxtype(combox_, FL_DOWN_BOX);
-		fl_set_object_color(combox_, FL_MCOL, FL_MCOL);
-		fl_set_object_gravity(combox_, FL_NorthWest, FL_NorthWest);
-		fl_set_object_resize(combox_, FL_RESIZE_ALL);
-
-		combox_->u_vdata = this;
-		fl_set_object_callback(combox_, C_layoutSelectedCB, 0);
-		break;
-	default: {
-		FL_OBJECT * obj;
-
-		toolbar_buttons_->push_back(Box(standardspacing, 0));
-		item.icon = obj =
-			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-					    0, 0, 0, 0, "");
-
-		widgets_.add(obj, *toolbar_buttons_, buttonwidth, height);
-
-		fl_set_object_resize(obj, FL_RESIZE_ALL);
-		fl_set_object_gravity(obj,
-				      NorthWestGravity,
-				      NorthWestGravity);
-
-		Funcs::iterator fit = funcs.insert(funcs.end(), func);
-		int const index = distance(funcs.begin(), fit);
-		fl_set_object_callback(obj, C_Toolbar_ToolbarCB, index);
-		// Remove the blue feedback rectangle
-		fl_set_pixmapbutton_focus_outline(obj, 0);
-
-		tooltip_->init(obj, tooltip);
-
-		// The view that this object belongs to.
-		obj->u_vdata = this;
-
-		string const xpm = toolbarbackend.getIcon(func);
-		fl_set_pixmapbutton_file(obj, xpm.c_str());
-		break;
+	LyXTextClass::const_iterator it  = tc.begin();
+	LyXTextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
+		string const & name = (*it)->name();
+		if (_(name) == layoutguiname) {
+			owner_.getLyXFunc()
+				.dispatch(FuncRequest(LFUN_LAYOUT, name),
+					  true);
+			return;
+		}
 	}
-	}
-
-	toollist_.push_back(item);
+	lyxerr << "ERROR (XLayoutBox::selected): layout not found!" << endl;
 }

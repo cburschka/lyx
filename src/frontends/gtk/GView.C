@@ -14,12 +14,13 @@
 #include "GView.h"
 #include "GMenubar.h"
 #include "GMiniBuffer.h"
-#include "GToolbar.h"
 
 #include "BufferView.h"
 #include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "MenuBackend.h"
+
+#include "frontends/Toolbars.h"
 
 #include "support/filetools.h"
 
@@ -81,8 +82,7 @@ GView::GView()
 
 	// Define the components making up the window.
 	menubar_.reset(new GMenubar(this, menubackend));
-	toolbar_.reset(new GToolbar(this, 0, 0));
-	toolbar_->init();
+	getToolbars().init();
 	bufferview_.reset(new BufferView(this, 300, 300));
 	minibuffer_.reset(new GMiniBuffer(this, *controlcommand_));
 
@@ -92,7 +92,7 @@ GView::GView()
 	signal_focus_in_event().connect(SigC::slot(*this, &GView::onFocusIn));
 	set_default_size(500, 550);
 	// Make sure the buttons are disabled if needed.
-	updateToolbar();
+	updateToolbars();
 	string const iconName =
 		lyx::support::LibFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())

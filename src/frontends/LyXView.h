@@ -20,7 +20,7 @@
 #include <boost/signals/signal0.hpp>
 
 class Buffer;
-class Toolbar;
+class Toolbars;
 class InsetBase;
 class Intl;
 class Menubar;
@@ -80,9 +80,9 @@ public:
 	LyXFunc const & getLyXFunc() const { return *lyxfunc_.get(); }
 
 	/// return the toolbar for this view
-	Toolbar & getToolbar() { return *toolbar_.get(); }
+	Toolbars & getToolbars() { return *toolbars_.get(); }
 	///
-	Toolbar const & getToolbar() const { return *toolbar_.get(); }
+	Toolbars const & getToolbasr() const { return *toolbars_.get(); }
 
 	/// return the menubar for this view
 	Menubar & getMenubar() { return *menubar_.get(); }
@@ -107,7 +107,7 @@ public:
 	void updateLayoutChoice();
 
 	/// update the toolbar
-	void updateToolbar();
+	void updateToolbars();
 	/// update the menubar
 	void updateMenubar();
 
@@ -143,8 +143,6 @@ protected:
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;
-	/// view's toolbar
-	boost::scoped_ptr<Toolbar> toolbar_;
 
 private:
 	/**
@@ -157,6 +155,8 @@ private:
 	/// called on timeout
 	void autoSave();
 
+	/// view's toolbar
+	boost::scoped_ptr<Toolbars> toolbars_;
 	/// keyboard mapping object
 	boost::scoped_ptr<Intl> const intl_;
 	/// auto-saving of buffers

@@ -6,6 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -22,108 +23,56 @@
 
 #include "QtView.h"
 #include "QLToolbar.h"
+#include "qt_helpers.h"
 
 #include <qcombobox.h>
 #include <qtoolbar.h>
+#include <qtoolbutton.h>
 
 using std::endl;
 using std::string;
 
 
-class QLComboBox : public QComboBox {
-public:
-	QLComboBox(QWidget * parent) : QComboBox(parent) {}
-	void popup() { QComboBox::popup(); }
-};
+namespace {
 
-
-QLToolbar::QLToolbar(LyXView * o)
-	: owner_(static_cast<QtView *>(o)),
-	  combo_(0)
+LyXTextClass const & getTextClass(LyXView const & lv)
 {
-	proxy_.reset(new ToolbarProxy(*this));
+	return lv.buffer()->params().getLyXTextClass();
+}
+
+QMainWindow::ToolBarDock getPosition(ToolbarBackend::Flags const & flags)
+{
+	if (flags & ToolbarBackend::TOP)
+		return QMainWindow::Top;
+	if (flags & ToolbarBackend::BOTTOM)
+		return QMainWindow::Bottom;
+	if (flags & ToolbarBackend::LEFT)
+		return QMainWindow::Left;
+	if (flags & ToolbarBackend::RIGHT)
+		return QMainWindow::Right;
+	return QMainWindow::Top;
+}
+
+} // namespace anon
+
+
+QLayoutBox::QLayoutBox(QWidget * parent, QtView & owner)
+	: combo_(new QComboBox(parent)),
+	  owner_(owner)
+{
+	QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
+	combo_->setSizePolicy(p);
+	combo_->setFocusPolicy(QWidget::ClickFocus);
+	combo_->setMinimumWidth(combo_->sizeHint().width());
+
+	QObject::connect(combo_, SIGNAL(activated(const QString &)),
+			 this, SLOT(selected(const QString &)));
 }
 
 
-void QLToolbar::displayToolbar(ToolbarBackend::Toolbar const & tb, bool show)
+void QLayoutBox::set(string const & layout)
 {
-	QToolBar * qtb = toolbars_[tb.name];
-	if (show) {
-		qtb->show();
-	} else {
-		qtb->hide();
-	}
-}
-
-
-void QLToolbar::update()
-{
-	ButtonMap::const_iterator p = map_.begin();
-	ButtonMap::const_iterator end = map_.end();
-
-	for (; p != end; ++p) {
-		QToolButton * button = p->first;
-		FuncRequest const & func = p->second;
-
-		FuncStatus const status =
-			owner_->getLyXFunc().getStatus(func);
-
-		button->setToggleButton(true);
-		button->setOn(status.onoff(true));
-		button->setEnabled(status.enabled());
-	}
-
-	bool const enable = owner_->getLyXFunc().
-		getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
-
-	// Workaround for Qt bug where setEnabled(true) closes
-	// the popup
-	if (combo_ && enable != combo_->isEnabled())
-		combo_->setEnabled(enable);
-}
-
-
-void QLToolbar::button_selected(QToolButton * button)
-{
-	ButtonMap::const_iterator cit = map_.find(button);
-
-	if (cit == map_.end()) {
-		lyxerr << "non existent tool button selected !" << endl;
-		return;
-	}
-
-	owner_->getLyXFunc().dispatch(cit->second, true);
-}
-
-
-void QLToolbar::changed_layout(string const & sel)
-{
-	owner_->centralWidget()->setFocus();
-
-	LyXTextClass const & tc =
-		owner_->buffer()->params().getLyXTextClass();
-
-	LyXTextClass::const_iterator end = tc.end();
-	for (LyXTextClass::const_iterator cit = tc.begin();
-	     cit != end; ++cit) {
-		// Yes, the _() is correct
-		if (_((*cit)->name()) == sel) {
-			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()), true);
-			return;
-		}
-	}
-	lyxerr << "ERROR (QLToolbar::layoutSelected): layout not found!"
-	       << endl;
-}
-
-
-void QLToolbar::setLayout(string const & layout)
-{
-	if (!combo_)
-		return;
-
-	LyXTextClass const & tc =
-		owner_->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tc = getTextClass(owner_);
 
 	QString const & name = qt_(tc[layout]->name());
 
@@ -143,24 +92,20 @@ void QLToolbar::setLayout(string const & layout)
 }
 
 
-void QLToolbar::updateLayoutList()
+void QLayoutBox::update()
 {
-	if (!combo_)
-		return;
-
-	LyXTextClass const & tc =
-		owner_->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tc = getTextClass(owner_);
 
 	combo_->setUpdatesEnabled(false);
 
 	combo_->clear();
 
-	LyXTextClass::const_iterator cit = tc.begin();
-	LyXTextClass::const_iterator end = tc.end();
-	for (; cit != end; ++cit) {
+	LyXTextClass::const_iterator it = tc.begin();
+	LyXTextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
 		// ignore obsolete entries
-		if ((*cit)->obsoleted_by().empty())
-			combo_->insertItem(qt_((*cit)->name()));
+		if ((*it)->obsoleted_by().empty())
+			combo_->insertItem(qt_((*it)->name()));
 	}
 
 	// needed to recalculate size hint
@@ -173,93 +118,143 @@ void QLToolbar::updateLayoutList()
 }
 
 
-void QLToolbar::clearLayoutList()
+void QLayoutBox::clear()
 {
-	if (!combo_)
-		return;
-
-	Toolbar::clearLayoutList();
 	combo_->clear();
 }
 
 
-void QLToolbar::openLayoutList()
+void QLayoutBox::open()
 {
-	if (!combo_)
-		return;
-
 	combo_->popup();
 }
 
 
-namespace {
-
-QMainWindow::ToolBarDock getPosition(ToolbarBackend::Flags const & flags)
+void QLayoutBox::setEnabled(bool enable)
 {
-	if (flags & ToolbarBackend::TOP)
-		return QMainWindow::Top;
-	if (flags & ToolbarBackend::BOTTOM)
-		return QMainWindow::Bottom;
-	if (flags & ToolbarBackend::LEFT)
-		return QMainWindow::Left;
-	if (flags & ToolbarBackend::RIGHT)
-		return QMainWindow::Right;
-	return QMainWindow::Top;
+	// Workaround for Qt bug where setEnabled(true) closes
+	// the popup
+	if (enable != combo_->isEnabled())
+		combo_->setEnabled(enable);
 }
 
-};
 
-
-void QLToolbar::add(ToolbarBackend::Toolbar const & tb)
+void QLayoutBox::selected(const QString & str)
 {
-	QToolBar * qtb = new QToolBar(qt_(tb.gui_name), owner_,
-		getPosition(tb.flags));
+	string const sel = fromqstr(str);
+
+	owner_.centralWidget()->setFocus();
+
+	LyXTextClass const & tc = getTextClass(owner_);
+
+	LyXTextClass::const_iterator it  = tc.begin();
+	LyXTextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
+		string const & name = (*it)->name();
+		// Yes, the _() is correct
+		if (_(name) == sel) {
+			owner_.getLyXFunc()
+				.dispatch(FuncRequest(LFUN_LAYOUT, name),
+					  true);
+			return;
+		}
+	}
+	lyxerr << "ERROR (QLayoutBox::selected): layout not found!" << endl;
+}
+
+
+Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
+				  LyXView & owner)
+{
+	return Toolbars::ToolbarPtr(new QLToolbar(tbb, owner));
+}
+
+
+QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
+	: owner_(dynamic_cast<QtView &>(owner)),
+	  toolbar_(new QToolBar(qt_(tbb.gui_name), &owner_,
+				getPosition(tbb.flags)))
+{
 	// give visual separation between adjacent toolbars
-	qtb->addSeparator();
+	toolbar_->addSeparator();
 
-	ToolbarBackend::item_iterator it = tb.items.begin();
-	ToolbarBackend::item_iterator end = tb.items.end();
+	ToolbarBackend::item_iterator it = tbb.items.begin();
+	ToolbarBackend::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
-		add(qtb, it->first, it->second);
-
-	toolbars_[tb.name] = qtb;
-	displayToolbar(tb, tb.flags & ToolbarBackend::ON);
-
+		add(it->first, it->second);
 }
 
 
-void QLToolbar::add(QToolBar * tb,
-		    FuncRequest const & func, string const & tooltip)
+void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 {
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
-		tb->addSeparator();
+		toolbar_->addSeparator();
 		break;
-	case ToolbarBackend::LAYOUTS: {
-		combo_ = new QLComboBox(tb);
-		QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
-		combo_->setSizePolicy(p);
-		combo_->setFocusPolicy(QWidget::ClickFocus);
-		combo_->setMinimumWidth(combo_->sizeHint().width());
-
-		QObject::connect(combo_, SIGNAL(activated(const QString &)),
-			proxy_.get(), SLOT(layout_selected(const QString &)));
+	case ToolbarBackend::LAYOUTS:
+		layout_.reset(new QLayoutBox(toolbar_, owner_));
 		break;
-	}
 	case ToolbarBackend::MINIBUFFER:
-		owner_->addCommandBuffer(tb);
-		tb->setHorizontalStretchable(true);
+		owner_.addCommandBuffer(toolbar_);
+		toolbar_->setHorizontalStretchable(true);
 		break;
 	default: {
-		if (owner_->getLyXFunc().getStatus(func).unknown())
+		if (owner_.getLyXFunc().getStatus(func).unknown())
 			break;
 		QPixmap p = QPixmap(toolbarbackend.getIcon(func).c_str());
 		QToolButton * button =
 			new QToolButton(p, toqstr(tooltip), "",
-			proxy_.get(), SLOT(button_selected()), tb);
+			this, SLOT(clicked()), toolbar_);
 
 		map_[button] = func;
 		break;
 	}
 	}
+}
+
+
+void QLToolbar::hide(bool)
+{
+	toolbar_->hide();
+}
+
+
+void QLToolbar::show(bool)
+{
+	toolbar_->show();
+}
+
+
+void QLToolbar::update()
+{
+	ButtonMap::const_iterator p = map_.begin();
+	ButtonMap::const_iterator end = map_.end();
+
+	for (; p != end; ++p) {
+		QToolButton * button = p->first;
+		FuncRequest const & func = p->second;
+
+		FuncStatus const status =
+			owner_.getLyXFunc().getStatus(func);
+
+		button->setToggleButton(true);
+		button->setOn(status.onoff(true));
+		button->setEnabled(status.enabled());
+	}
+}
+
+
+void QLToolbar::clicked()
+{
+	QToolButton const * const_button =
+		static_cast<QToolButton const *>(sender());
+	QToolButton  * button =
+		const_cast<QToolButton *>(const_button);
+
+	ButtonMap::const_iterator it = map_.find(button);
+
+	if (it != map_.end())
+		owner_.getLyXFunc().dispatch(it->second, true);
+	else
+		lyxerr << "non existent tool button selected !" << endl;
 }

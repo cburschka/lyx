@@ -1,5 +1,12 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* QLToolbar.[Ch]: rewrite code to derive from a single Toolbar or
+	LayoutBox.
+
+	* QtView.C: small changes due to changed Toolbar API.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* WorkAreaFactory.C (create): No longer passed x, y data.
 
 	* QWorkArea.[Ch] (c-tor): No longer receives x, y data.

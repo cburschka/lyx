@@ -168,7 +168,7 @@ public:
 
 	/// \returns the just-added Box.
 	Box & add(FL_OBJECT * widget, BoxList & container,
-		  dimension_t min_w, dimension_t min_h); 
+		  dimension_t min_w, dimension_t min_h);
 	void updateMetrics() const;
 
 private:

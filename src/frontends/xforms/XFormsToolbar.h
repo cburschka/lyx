@@ -13,49 +13,59 @@
 #ifndef XFORMSTOOLBAR_H
 #define XFROMSTOOLBAR_H
 
-#include <vector>
-#include "forms_fwd.h"
-
 #include "LayoutEngine.h"
+#include "XFormsView.h"
 
-#include "frontends/Toolbar.h"
-#include "ToolbarBackend.h"
+#include "frontends/Toolbars.h"
 
+#include <boost/scoped_ptr.hpp>
+#include <vector>
+
+
+class XFormsToolbar;
 class XFormsView;
 class Tooltips;
+
+
+class XLayoutBox: public LayoutBox {
+public:
+	XLayoutBox(LyXView & owner, XFormsToolbar & toolbar);
+
+	/// select the right layout in the combox.
+	void set(std::string const & layout);
+	/// Populate the layout combox.
+	void update();
+	/// Erase the layout list.
+	void clear();
+	/// Display the layout list.
+	void open();
+	///
+	void setEnabled(bool);
+	///
+	void selected();
+
+private:
+
+	FL_OBJECT * combox_;
+	LyXView & owner_;
+};
+
+
 
 /** The LyX xforms toolbar class
  */
 class XFormsToolbar : public Toolbar {
-public:
-	/// create an empty toolbar
-	XFormsToolbar(LyXView * o);
+	friend class XLayoutBox;
 
-	///
+public:
+	XFormsToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & o);
 	~XFormsToolbar();
 
-	/// add a new toolbar
-	void add(ToolbarBackend::Toolbar const & tb);
-
-	/// add an item to a toolbar
-	void add(FuncRequest const &, std::string const & tooltip);
-
-	/// display toolbar, not implemented
-	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
-
-	/// update the state of the icons
-	void update();
-
-	/// select the right layout in the combox
-	void setLayout(std::string const & layout);
-	/// Populate the layout combox.
-	void updateLayoutList();
-	/// Drop down the layout list
-	void openLayoutList();
-	/// Erase the layout list
-	void clearLayoutList();
-	///
-	void layoutSelected();
+	void add(FuncRequest const & func, std::string const & tooltip);
+	void hide(bool);
+	void show(bool);
+ 	void update();
+	LayoutBox * layout() const { return layout_.get(); }
 
 	/// an item on the toolbar
 	struct toolbarItem
@@ -76,6 +86,8 @@ public:
 	};
 
 	///
+	XFormsView::Position position_;
+	///
 	lyx::frontend::Box * toolbar_;
 	///
 	lyx::frontend::BoxList * toolbar_buttons_;
@@ -91,11 +103,11 @@ public:
 	/// The list containing all the buttons
 	ToolbarList toollist_;
 	/// owning view
-	XFormsView * owner_;
+	XFormsView & owner_;
 	/// tooltips manager
-	Tooltips * tooltip_;
+	boost::scoped_ptr<Tooltips> tooltip_;
 	/// layout combo
-	FL_OBJECT * combox_;
+	boost::scoped_ptr<XLayoutBox> layout_;
 };
 
 #endif

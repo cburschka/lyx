@@ -259,7 +259,7 @@ void InsetText::updateLocal(LCursor & cur)
 	LyXView * lv = cur.bv().owner();
 	lv->view_state_changed();
 	lv->updateMenubar();
-	lv->updateToolbar();
+	lv->updateToolbars();
 	if (old_par != cur.par()) {
 		lv->setLayout(text_.getPar(cur.par()).layout()->name());
 		old_par = cur.par();

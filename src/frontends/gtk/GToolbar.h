@@ -5,58 +5,62 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef TOOLBAR_PIMPL_H
-#define TOOLBAR_PIMPL_H
+#ifndef GTOOLBAR_H
+#define GTOOLBAR_H
 
 #include <gtkmm.h>
-#include "frontends/Toolbar.h"
-#include "ToolbarBackend.h"
-#include <map>
+#include "frontends/Toolbars.h"
+#include <boost/scoped_ptr.hpp>
 
 
-class GToolbar : public Toolbar, public SigC::Object
-{
+class GView;
+
+
+class GLayoutBox: public LayoutBox, public SigC::Object {
 public:
-	GToolbar(LyXView * o, int x, int y);
+	GLayoutBox(LyXView &, Gtk::Toolbar &, FuncRequest const &);
 
-	~GToolbar();
-
-	// add a new toolbar
-	void add(ToolbarBackend::Toolbar const & tb);
-
-	/// add a new button to the toolbar.
-	void add(Gtk::Toolbar * toolbar,
-		 ToolbarBackend::Item const & item);
-
-	/// display toolbar, not implemented
-	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
-
-	/// update the state of the icons
+	/// select the right layout in the combox.
+	void set(std::string const & layout);
+	/// Populate the layout combox.
 	void update();
+	/// Erase the layout list.
+	void clear();
+	/// Display the layout list.
+	void open();
+	///
+	void setEnabled(bool);
 
-	/// select the right layout in the combox
-	void setLayout(std::string const & layout);
-
-	/// Populate the layout combox; re-do everything if force is true.
-	void updateLayoutList();
-
-	/// Drop down the layout list
-	void openLayoutList();
-
-	/// Erase the layout list
-	void clearLayoutList();
 private:
-	void onButtonClicked(FuncRequest);
-	void onLayoutSelected();
-	typedef std::map<std::string, Gtk::Toolbar*> ToolbarMap;
-	ToolbarMap toolbars_;
+	///
+	void selected();
+
 	Gtk::Combo combo_;
-	LyXView * view_;
+	LyXView & owner_;
 	bool internal_;
 };
 
-#endif
+
+class GToolbar : public Toolbar, public SigC::Object {
+public:
+	GToolbar(ToolbarBackend::Toolbar const &, LyXView &);
+	void add(FuncRequest const & func, std::string const & tooltip);
+	void hide(bool);
+	void show(bool);
+ 	void update();
+	LayoutBox * layout() const { return layout_.get(); }
+
+private:
+	void clicked(FuncRequest);
+
+	GView & owner_;
+	Gtk::Toolbar toolbar_;
+	boost::scoped_ptr<GLayoutBox> layout_;
+};
+
+#endif // NOT GTOOLBAR_H

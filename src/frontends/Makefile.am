@@ -25,8 +25,8 @@ libfrontends_la_SOURCES = \
 	Painter.h \
 	Timeout.C \
 	Timeout.h \
-	Toolbar.C \
-	Toolbar.h \
+	Toolbars.C \
+	Toolbars.h \
 	WorkArea.h \
 	WorkAreaFactory.h \
 	font_metrics.h \

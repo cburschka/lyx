@@ -116,7 +116,7 @@ void Box::setMinimumDimensions(dimension_t min_w, dimension_t min_h)
 	min_h_ = min_h;
 }
 
-	
+
 Box::Orientation Box::orientation() const
 {
 	return orientation_;
@@ -443,9 +443,17 @@ void WidgetMap::updateMetrics() const
 	for (; it != end; ++it) {
 		FL_OBJECT * ob = it->first;
 		Box & box = *it->second;
-		fl_set_object_geometry(ob,
-				       box.xorigin(), box.yorigin(),
-				       box.width(), box.height());
+
+		if (box.visible()) {
+			fl_set_object_geometry(ob,
+					       box.xorigin(), box.yorigin(),
+					       box.width(), box.height());
+			if (!ob->visible)
+				fl_show_object(ob);
+		} else {
+			if (ob->visible)
+				fl_hide_object(ob);
+		}
 	}
 }
 

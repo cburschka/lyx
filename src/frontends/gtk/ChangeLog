@@ -1,5 +1,12 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* GToolbar.[Ch]: rewrite code to derive from a single Toolbar or
+	LayoutBox.
+
+	* GView.C: small changes due to changed Toolbar API.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* WorkAreaFactory.C (create): No longer passed x, y data.
 
 	* GView.[Ch] (c-tor): no longer passes x, y data to BufferView c-tor.

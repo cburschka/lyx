@@ -71,6 +71,9 @@ public:
 	/// clear back to normal status message
 	virtual void clearMessage();
 
+	///
+	void updateMetrics(bool resize_form = false);
+	///
 	boost::signal0<void> metricsUpdated;
 
 private:
@@ -84,8 +87,6 @@ private:
 	/// update the minibuffer state message
 	void show_view_state();
 
-	///
-	void updateMetrics();
 	/// The top-most box of the layout engine containing all other boxes.
 	lyx::frontend::Box window_;
 

@@ -4,6 +4,14 @@
 
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C:
+	* lyxfunc.C:
+	* text3.C:
+	s/updateToolbar()/updateToolbars()/
+	s/Toolbar.h/Toolbars.h/
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView.[Ch] (c-tor):
 	* BufferView_pimpl.[Ch] (c-tor): no longer receives x,y position.
 	No longer passes these data to the WorkArea generator.

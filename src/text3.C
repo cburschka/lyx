@@ -1191,7 +1191,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		bv->switchKeyMap();
 		bv->owner()->updateMenubar();
-		bv->owner()->updateToolbar();
+		bv->owner()->updateToolbars();
 		break;
 	}
 

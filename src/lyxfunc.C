@@ -76,7 +76,7 @@
 #include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
-#include "frontends/Toolbar.h"
+#include "frontends/Toolbars.h"
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
@@ -631,7 +631,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_EXEC_COMMAND:
-			owner->getToolbar().display("minibuffer", true);
+			owner->getToolbars().display("minibuffer", true);
 			owner->focus_command_buffer();
 			break;
 
@@ -955,7 +955,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_DROP_LAYOUTS_CHOICE:
-			owner->getToolbar().openLayoutList();
+			owner->getToolbars().openLayoutList();
 			break;
 
 		case LFUN_MENU_OPEN_BY_NAME:
@@ -1399,7 +1399,7 @@ void LyXFunc::sendDispatchMessage(string const & msg,
 				  FuncRequest const & cmd, bool verbose)
 {
 	owner->updateMenubar();
-	owner->updateToolbar();
+	owner->updateToolbars();
 
 	if (cmd.action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;

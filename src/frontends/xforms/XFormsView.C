@@ -13,7 +13,6 @@
 #include "XFormsView.h"
 
 #include "XFormsMenubar.h"
-#include "XFormsToolbar.h"
 #include "XMiniBuffer.h"
 
 #include "BufferView.h"
@@ -22,6 +21,7 @@
 #include "MenuBackend.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/Toolbars.h"
 
 #include "support/filetools.h"        // OnlyFilename()
 
@@ -96,10 +96,7 @@ XFormsView::XFormsView(int width, int height)
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 
 	menubar_.reset(new XFormsMenubar(this, menubackend));
-
-	toolbar_.reset(new XFormsToolbar(this));
-	toolbar_->init();
-
+	getToolbars().init();
 	bufferview_.reset(new BufferView(this, width, height));
 	minibuffer_.reset(new XMiniBuffer(*this, *controlcommand_));
 
@@ -122,15 +119,15 @@ XFormsView::XFormsView(int width, int height)
 
 	// Update the layout so that all widgets fit.
 	window_.show();
-	updateMetrics();
-	
+	updateMetrics(true);
+
 	view_state_con =
 		view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
 	focus_con =
 		focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
 
 	// Make sure the buttons are disabled if needed.
-	updateToolbar();
+	updateToolbars();
 	redraw_con =
 		getDialogs().redrawGUI().connect(boost::bind(&XFormsView::redraw, this));
 }
@@ -198,16 +195,25 @@ void XFormsView::show(int x, int y, string const & title)
 }
 
 
-void XFormsView::updateMetrics()
+void XFormsView::updateMetrics(bool resize_form)
 {
+	FL_FORM * form = getForm();
+
+	// We don't want the window to be downsized.
+	if (!resize_form)
+		window_.setMinimumDimensions(form->w, form->h);
+
 	window_.updateMetrics();
 
-	FL_FORM * form = getForm();
-	fl_set_form_size(form, window_.width(), window_.height());
+	fl_freeze_form(form);
+
+	if (resize_form)
+		fl_set_form_size(form, window_.width(), window_.height());
 
 	// Emit a signal so that all daughter widgets are layed-out
 	// correctly.
 	metricsUpdated();
+	fl_unfreeze_form(form);
 }
 
 

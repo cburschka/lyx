@@ -349,7 +349,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	update();
 	updateScrollbar();
 	owner_->updateMenubar();
-	owner_->updateToolbar();
+	owner_->updateToolbars();
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
 
@@ -902,7 +902,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
 		owner_->updateLayoutChoice();
-		owner_->updateToolbar();
+		owner_->updateToolbars();
 	}
 
 	// slight hack: this is only called currently when we

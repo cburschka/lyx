@@ -14,7 +14,7 @@
 #include "LyXView.h"
 #include "Dialogs.h"
 #include "Timeout.h"
-#include "Toolbar.h"
+#include "Toolbars.h"
 #include "Menubar.h"
 
 #include "buffer.h"
@@ -53,7 +53,8 @@ string current_layout;
 
 
 LyXView::LyXView()
-	: intl_(new Intl),
+	: toolbars_(new Toolbars(*this)),
+	  intl_(new Intl),
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
@@ -98,16 +99,16 @@ boost::shared_ptr<BufferView> const & LyXView::view() const
 
 void LyXView::setLayout(string const & layout)
 {
-	toolbar_->setLayout(layout);
+	toolbars_->setLayout(layout);
 }
 
 
-void LyXView::updateToolbar()
+void LyXView::updateToolbars()
 {
 	bool const math = bufferview_->cursor().inMathed();
 	bool const table =
 		getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
-	toolbar_->update(math, table);
+	toolbars_->update(math, table);
 }
 
 
@@ -138,12 +139,12 @@ void LyXView::updateLayoutChoice()
 {
 	// don't show any layouts without a buffer
 	if (!view()->buffer()) {
-		toolbar_->clearLayoutList();
+		toolbars_->clearLayoutList();
 		return;
 	}
 
 	// update the layout display
-	if (toolbar_->updateLayoutList(buffer()->params().textclass)) {
+	if (toolbars_->updateLayoutList(buffer()->params().textclass)) {
 		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
 	}
 
@@ -154,7 +155,7 @@ void LyXView::updateLayoutChoice()
 		bufferview_->cursor().paragraph().layout()->name();
 
 	if (layout != current_layout) {
-		toolbar_->setLayout(layout);
+		toolbars_->setLayout(layout);
 		current_layout = layout;
 	}
 }

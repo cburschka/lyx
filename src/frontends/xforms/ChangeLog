@@ -1,5 +1,16 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* LayoutEngine.C (updateMetrics): respect the visible() flag when
+	positioning the widgets.
+
+	* XFormsToolbar.[Ch]: rewrite code to derive from a single Toolbar or
+	LayoutBox. Leads to multiple, dynamically visible toolbars in the
+	xforms frontend.
+
+	* XFormsView.[Ch]: small changes due to changed Toolbar API.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* LayoutEngine.[Ch]: a layout engine for xforms, drawing heavily
 	on GTK+ code for inspiration.
 
