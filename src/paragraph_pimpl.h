@@ -18,6 +18,7 @@
 #include "paragraph.h"
 
 #include "changes.h"
+#include "lyxfont.h"
 #include "ParagraphParameters.h"
 
 #include <boost/scoped_ptr.hpp>

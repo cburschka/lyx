@@ -1,3 +1,9 @@
+2003-09-22  Angus Leeming  <leeming@lyx.org>
+
+	* paragraph_pimpl.h: add #include "lyxfont.h". Needed by earlier versions
+	of g++ which otherwise complain that the scoped_ptr destructor can't delete
+	an incomplete class LyXFont.
+
 2003-09-22  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* factory.C: bug fix in branches
