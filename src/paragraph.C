@@ -4038,6 +4038,10 @@ string const LyXParagraph::String(Buffer const * buffer,
 		value_type c = GetUChar(buffer->params, i);
 		if (IsPrintable(c))
 			s += c;
+		else if (c == META_NEWLINE)
+			s += '\n';
+		else if (c == META_HFILL)
+			s += '\t';
 		else if (c == META_INSET) {
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
