@@ -247,44 +247,6 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 }
 
 
-// Returns the paragraph position of the last character in the specified row
-pos_type LyXText::rowLast(Row const * row) const
-{
-	if (!row->par()->size())
-		return 0;
- 
-	if (!row->next() || row->next()->par() != row->par()) {
-		return row->par()->size() - 1;
-	} else {
-		return row->next()->pos() - 1;
-	}
-}
-
-
-pos_type LyXText::rowLastPrintable(Row const * row) const
-{
-	pos_type const last = rowLast(row);
-	bool ignore_the_space_on_the_last_position = true;
-	Inset * ins;
-	// we have to consider a space on the last position in this case!
-	if (row->next() && row->par() == row->next()->par() &&
-	    row->next()->par()->getChar(last + 1) == Paragraph::META_INSET &&
-	    (ins=row->next()->par()->getInset(last + 1)) &&
-	    (ins->needFullRow() || ins->display()))
-	{
-		ignore_the_space_on_the_last_position = false;
-	}
-	if (last >= row->pos()
-	    && row->next()
-	    && row->next()->par() == row->par()
-	    && row->par()->isSeparator(last)
-		&& ignore_the_space_on_the_last_position)
-		return last - 1;
-	else
-		return last;
-}
-
-
 void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 {
 	bidi_same_direction = true;
@@ -301,7 +263,7 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 	}
 
 	bidi_start = row->pos();
-	bidi_end = rowLastPrintable(row);
+	bidi_end = row->lastPrintablePos();
 
 	if (bidi_start > bidi_end) {
 		bidi_start = -1;
@@ -327,7 +289,7 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 	int level = 0;
 	bool rtl = false;
 	bool rtl0 = false;
-	pos_type const main_body = beginningOfMainBody(buf, row->par());
+	pos_type const main_body = row->par()->beginningOfMainBody();
 
 	for (pos_type lpos = bidi_start; lpos <= bidi_end; ++lpos) {
 		bool is_space = row->par()->isLineSeparator(lpos);
@@ -616,7 +578,7 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 			bool hebrew, bool arabic)
 {
 	pos_type pos = vis2log(vpos);
-	pos_type const last = rowLastPrintable(p.row);
+	pos_type const last = p.row->lastPrintablePos();
 	LyXFont orig_font(getFont(p.bv->buffer(), p.row->par(), pos));
 
 	// first character
@@ -800,7 +762,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		break;
 	case MARGIN_MANUAL:
 		x += font_metrics::signedWidth(layout->labelindent, labelfont);
-		if (row->pos() >= beginningOfMainBody(bview->buffer(), row->par())) {
+		if (row->pos() >= row->par()->beginningOfMainBody()) {
 			if (!row->par()->getLabelWidthString().empty()) {
 				x += font_metrics::width(row->par()->getLabelWidthString(),
 					       labelfont);
@@ -814,7 +776,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		break;
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
-			if (row->pos() >= beginningOfMainBody(bview->buffer(), row->par())) {
+			if (row->pos() >= row->par()->beginningOfMainBody()) {
 				x += font_metrics::signedWidth(layout->leftmargin,
 							  labelfont);
 			} else {
@@ -997,8 +959,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	pos_type last_separator = -1;
 	width -= rightMargin(bview->buffer(), row);
 
-	pos_type const main_body =
-		beginningOfMainBody(bview->buffer(), par);
+	pos_type const main_body = par->beginningOfMainBody();
 	LyXLayout_ptr const & layout = par->layout();
 
 	pos_type i = pos;
@@ -1038,7 +999,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				if (in->display() &&
 				    (layout->isCommand() ||
 				     (layout->labeltype == LABEL_MANUAL
-				      && i < beginningOfMainBody(bview->buffer(), par))))
+				      && i < par->beginningOfMainBody())))
 				{
 					// display istn't allowd
 					in->display(false);
@@ -1115,7 +1076,7 @@ int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 
 	int w;
 	// get the pure distance
-	pos_type const last = rowLastPrintable(row);
+	pos_type const last = row->lastPrintablePos();
 
 	// special handling of the right address boxes
 	if (row->par()->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
@@ -1128,8 +1089,7 @@ int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 
 	LyXLayout_ptr const & layout = row->par()->layout();
 
-	pos_type const main_body =
-		beginningOfMainBody(bview->buffer(), row->par());
+	pos_type const main_body = row->par()->beginningOfMainBody();
 	pos_type i = row->pos();
 
 	while (i <= last) {
@@ -1161,7 +1121,7 @@ int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 // returns the minimum space a manual label needs on the screen in pixel
 int LyXText::labelFill(BufferView * bview, Row const * row) const
 {
-	pos_type last = beginningOfMainBody(bview->buffer(), row->par()) - 1;
+	pos_type last = row->par()->beginningOfMainBody() - 1;
 	// -1 because a label ends either with a space that is in the label,
 	// or with the beginning of a footnote that is outside the label.
 
@@ -1194,117 +1154,6 @@ int LyXText::labelFill(BufferView * bview, Row const * row) const
 }
 
 
-// returns the number of separators in the specified row. The separator
-// on the very last column doesnt count
-int LyXText::numberOfSeparators(Buffer const * buf, Row const * row) const
-{
-	pos_type last = rowLastPrintable(row);
-	pos_type p = max(row->pos(), beginningOfMainBody(buf, row->par()));
-
-	int n = 0;
-	for (; p <= last; ++p) {
-		if (row->par()->isSeparator(p)) {
-			++n;
-		}
-	}
-	return n;
-}
-
-
-// returns the number of hfills in the specified row. The LyX-Hfill is
-// a LaTeX \hfill so that the hfills at the beginning and at the end were
-// ignored. This is *MUCH* more usefull than not to ignore!
-int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
-{
-	pos_type const last = rowLast(row);
-	pos_type first = row->pos();
-
-	if (first) {
-		// hfill *DO* count at the beginning of paragraphs!
-		while (first <= last && row->par()->isHfill(first)) {
-			++first;
-		}
-	}
-
-	first = max(first, beginningOfMainBody(buf, row->par()));
-	int n = 0;
-	for (pos_type p = first; p <= last; ++p) {
-		// last, because the end is ignored!
-
-		if (row->par()->isHfill(p)) {
-			++n;
-		}
-	}
-	return n;
-}
-
-
-// like NumberOfHfills, but only those in the manual label!
-int LyXText::numberOfLabelHfills(Buffer const * buf, Row const * row) const
-{
-	pos_type last = rowLast(row);
-	pos_type first = row->pos();
-	if (first) {
-		// hfill *DO* count at the beginning of paragraphs!
-		while (first < last && row->par()->isHfill(first))
-			++first;
-	}
-
-	last = min(last, beginningOfMainBody(buf, row->par()));
-	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		// last, because the end is ignored!
-		if (row->par()->isHfill(p)) {
-			++n;
-		}
-	}
-	return n;
-}
-
-
-// returns true, if a expansion is needed.
-// Rules are given by LaTeX
-bool LyXText::hfillExpansion(Buffer const * buf, Row const * row_ptr,
-			     pos_type pos) const
-{
-	// by the way, is it a hfill?
-	if (!row_ptr->par()->isHfill(pos))
-		return false;
-
-	// at the end of a row it does not count
-	// unless another hfill exists on the line
-	if (pos >= rowLast(row_ptr)) {
-		pos_type i = row_ptr->pos();
-		while (i < pos && !row_ptr->par()->isHfill(i)) {
-			++i;
-		}
-		if (i == pos) {
-			return false;
-		}
-	}
-
-	// at the beginning of a row it does not count, if it is not
-	// the first row of a paragaph
-	if (!row_ptr->pos())
-		return true;
-
-	// in some labels  it does not count
-	if (row_ptr->par()->layout()->margintype != MARGIN_MANUAL
-	    && pos < beginningOfMainBody(buf, row_ptr->par()))
-		return false;
-
-	// if there is anything between the first char of the row and
-	// the sepcified position that is not a newline and not a hfill,
-	// the hfill will count, otherwise not
-	pos_type i = row_ptr->pos();
-	while (i < pos && (row_ptr->par()->isNewline(i)
-			   || row_ptr->par()->isHfill(i)))
-		++i;
-
-	return i != pos;
-}
-
-
 LColor::color LyXText::backgroundColor()
 {
 	if (inset_owner)
@@ -1313,7 +1162,7 @@ LColor::color LyXText::backgroundColor()
 		return LColor::background;
 }
 
-void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
+void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 {
 	// get the maximum ascent and the maximum descent
 	int asc = 0;
@@ -1331,15 +1180,15 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 
 	// Correction: only the fontsize count. The other properties
 	//  are taken from the layoutfont. Nicer on the screen :)
-	Paragraph * par = row_ptr->par();
-	Paragraph * firstpar = row_ptr->par();
+	Paragraph * par = row->par();
+	Paragraph * firstpar = row->par();
 
 	LyXLayout_ptr const & layout = firstpar->layout();
 
 	// as max get the first character of this row then it can increase but not
 	// decrease the height. Just some point to start with so we don't have to
 	// do the assignment below too often.
-	LyXFont font = getFont(bview->buffer(), par, row_ptr->pos());
+	LyXFont font = getFont(bview->buffer(), par, row->pos());
 	LyXFont::FONT_SIZE const tmpsize = font.size();
 	font = getLayoutFont(bview->buffer(), par);
 	LyXFont::FONT_SIZE const size = font.size();
@@ -1348,8 +1197,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	LyXFont labelfont = getLabelFont(bview->buffer(), par);
 
 	float spacing_val = 1.0;
-	if (!row_ptr->par()->params().spacing().isDefault()) {
-		spacing_val = row_ptr->par()->params().spacing().getValue();
+	if (!row->par()->params().spacing().isDefault()) {
+		spacing_val = row->par()->params().spacing().getValue();
 	} else {
 		spacing_val = bview->buffer()->params.spacing.getValue();
 	}
@@ -1362,15 +1211,15 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 			  layout->spacing.getValue() *
 			  spacing_val);
 
-	pos_type const pos_end = rowLast(row_ptr);
+	pos_type const pos_end = row->lastPos();
 	int labeladdon = 0;
 	int maxwidth = 0;
 
 	// Check if any insets are larger
-	for (pos_type pos = row_ptr->pos(); pos <= pos_end; ++pos) {
-		if (row_ptr->par()->isInset(pos)) {
-			tmpfont = getFont(bview->buffer(), row_ptr->par(), pos);
-			tmpinset = row_ptr->par()->getInset(pos);
+	for (pos_type pos = row->pos(); pos <= pos_end; ++pos) {
+		if (row->par()->isInset(pos)) {
+			tmpfont = getFont(bview->buffer(), row->par(), pos);
+			tmpinset = row->par()->getInset(pos);
 			if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
 				tmpinset->update(bview, tmpfont);
@@ -1382,7 +1231,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 				maxdesc = max(maxdesc, desc);
 			}
 		} else {
-			maxwidth += singleWidth(bview, row_ptr->par(), pos);
+			maxwidth += singleWidth(bview, row->par(), pos);
 		}
 	}
 
@@ -1390,7 +1239,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	// This is not completely correct, but we can live with the small,
 	// cosmetic error for now.
 	LyXFont::FONT_SIZE maxsize =
-		row_ptr->par()->highestFontInRange(row_ptr->pos(), pos_end, size);
+		row->par()->highestFontInRange(row->pos(), pos_end, size);
 	if (maxsize > font.size()) {
 		font.setSize(maxsize);
 
@@ -1406,10 +1255,10 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	++maxasc;
 	++maxdesc;
 
-	row_ptr->ascent_of_text(maxasc);
+	row->ascent_of_text(maxasc);
 
 	// is it a top line?
-	if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
+	if (!row->pos() && (row->par() == firstpar)) {
 
 		// some parksips VERY EASY IMPLEMENTATION
 		if (bview->buffer()->params.paragraph_separation ==
@@ -1429,8 +1278,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 			}
 		}
 
-		// the paper margins
-		if (!row_ptr->par()->previous() && bv_owner)
+		// the top margin
+		if (!row->par()->previous() && isTopLevel())
 			maxasc += PAPER_MARGIN;
 
 		// add the vertical spaces, that the user added
@@ -1444,7 +1293,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 					firstpar, 0));
 		// and now the pagebreaks
 		if (firstpar->params().pagebreakTop())
-			maxasc += 3 * defaultHeight();
+			maxasc += 3 * defaultRowHeight();
 
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
@@ -1452,8 +1301,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 			&& bview->buffer()->params.secnumdepth >= 0)
 		{
 			float spacing_val = 1.0;
-			if (!row_ptr->par()->params().spacing().isDefault()) {
-				spacing_val = row_ptr->par()->params().spacing().getValue();
+			if (!row->par()->params().spacing().isDefault()) {
+				spacing_val = row->par()->params().spacing().getValue();
 			} else {
 				spacing_val = bview->buffer()->params.spacing.getValue();
 			}
@@ -1470,12 +1319,12 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 		if ((layout->labeltype == LABEL_TOP_ENVIRONMENT
 		     || layout->labeltype == LABEL_BIBLIO
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-		    && row_ptr->par()->isFirstInSequence()
-		    && !row_ptr->par()->getLabelstring().empty())
+		    && row->par()->isFirstInSequence()
+		    && !row->par()->getLabelstring().empty())
 		{
 			float spacing_val = 1.0;
-			if (!row_ptr->par()->params().spacing().isDefault()) {
-				spacing_val = row_ptr->par()->params().spacing().getValue();
+			if (!row->par()->params().spacing().isDefault()) {
+				spacing_val = row->par()->params().spacing().getValue();
 			} else {
 				spacing_val = bview->buffer()->params.spacing.getValue();
 			}
@@ -1487,40 +1336,40 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 				+(font_metrics::maxDescent(labelfont) *
 				  layout->spacing.getValue() *
 				  spacing_val)
-				+ layout->topsep * defaultHeight()
-				+ layout->labelbottomsep *  defaultHeight());
+				+ layout->topsep * defaultRowHeight()
+				+ layout->labelbottomsep * defaultRowHeight());
 		}
 
 		// and now the layout spaces, for example before and after a section,
 		// or between the items of a itemize or enumerate environment
 
 		if (!firstpar->params().pagebreakTop()) {
-			Paragraph * prev = row_ptr->par()->previous();
+			Paragraph * prev = row->par()->previous();
 			if (prev)
-				prev = row_ptr->par()->depthHook(row_ptr->par()->getDepth());
+				prev = row->par()->depthHook(row->par()->getDepth());
 			if (prev && prev->layout() == firstpar->layout() &&
 				prev->getDepth() == firstpar->getDepth() &&
 				prev->getLabelWidthString() == firstpar->getLabelWidthString())
 			{
-				layoutasc = (layout->itemsep * defaultHeight());
-			} else if (row_ptr->previous()) {
+				layoutasc = (layout->itemsep * defaultRowHeight());
+			} else if (row->previous()) {
 				tmptop = layout->topsep;
 
-				if (row_ptr->previous()->par()->getDepth() >= row_ptr->par()->getDepth())
-					tmptop -= row_ptr->previous()->par()->layout()->bottomsep;
+				if (row->previous()->par()->getDepth() >= row->par()->getDepth())
+					tmptop -= row->previous()->par()->layout()->bottomsep;
 
 				if (tmptop > 0)
-					layoutasc = (tmptop * defaultHeight());
-			} else if (row_ptr->par()->params().lineTop()) {
+					layoutasc = (tmptop * defaultRowHeight());
+			} else if (row->par()->params().lineTop()) {
 				tmptop = layout->topsep;
 
 				if (tmptop > 0)
-					layoutasc = (tmptop * defaultHeight());
+					layoutasc = (tmptop * defaultRowHeight());
 			}
 
-			prev = row_ptr->par()->outerHook();
+			prev = row->par()->outerHook();
 			if (prev)  {
-				maxasc += int(prev->layout()->parsep * defaultHeight());
+				maxasc += int(prev->layout()->parsep * defaultRowHeight());
 			} else {
 				if (firstpar->previous() &&
 					firstpar->previous()->getDepth() == 0 &&
@@ -1529,18 +1378,18 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 				{
 					// avoid parsep
 				} else if (firstpar->previous()) {
-					maxasc += int(layout->parsep * defaultHeight());
+					maxasc += int(layout->parsep * defaultRowHeight());
 				}
 			}
 		}
 	}
 
 	// is it a bottom line?
-	if (row_ptr->par() == par
-		&& (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par()))
+	if (row->par() == par
+		&& (!row->next() || row->next()->par() != row->par()))
 	{
-		// the paper margins
-		if (!par->next() && bv_owner)
+		// the bottom margin
+		if (!par->next() && isTopLevel())
 			maxdesc += PAPER_MARGIN;
 
 		// add the vertical spaces, that the user added
@@ -1556,26 +1405,26 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 
 		// and now the pagebreaks
 		if (firstpar->params().pagebreakBottom())
-			maxdesc += 3 * defaultHeight();
+			maxdesc += 3 * defaultRowHeight();
 
 		// and now the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
 		if (!firstpar->params().pagebreakBottom()
-		    && row_ptr->par()->next()) {
-			Paragraph * nextpar = row_ptr->par()->next();
-			Paragraph * comparepar = row_ptr->par();
+		    && row->par()->next()) {
+			Paragraph * nextpar = row->par()->next();
+			Paragraph * comparepar = row->par();
 			float usual = 0;
 			float unusual = 0;
 
 			if (comparepar->getDepth() > nextpar->getDepth()) {
-				usual = (comparepar->layout()->bottomsep * defaultHeight());
+				usual = (comparepar->layout()->bottomsep * defaultRowHeight());
 				comparepar = comparepar->depthHook(nextpar->getDepth());
 				if (comparepar->layout()!= nextpar->layout()
 					|| nextpar->getLabelWidthString() !=
 					comparepar->getLabelWidthString())
 				{
-					unusual = (comparepar->layout()->bottomsep * defaultHeight());
+					unusual = (comparepar->layout()->bottomsep * defaultRowHeight());
 				}
 				if (unusual > usual)
 					layoutdesc = unusual;
@@ -1586,7 +1435,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 				if (comparepar->layout() != nextpar->layout()
 					|| nextpar->getLabelWidthString() !=
 					comparepar->getLabelWidthString())
-					layoutdesc = int(comparepar->layout()->bottomsep * defaultHeight());
+					layoutdesc = int(comparepar->layout()->bottomsep * defaultRowHeight());
 			}
 		}
 	}
@@ -1596,23 +1445,23 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	maxdesc += int(layoutdesc * 2 / (2 + firstpar->getDepth()));
 
 	// calculate the new height of the text
-	height -= row_ptr->height();
+	height -= row->height();
 
-	row_ptr->height(maxasc + maxdesc + labeladdon);
-	row_ptr->baseline(maxasc + labeladdon);
+	row->height(maxasc + maxdesc + labeladdon);
+	row->baseline(maxasc + labeladdon);
 
-	height += row_ptr->height();
+	height += row->height();
  
-	row_ptr->top_of_text(row_ptr->baseline() - font_metrics::maxAscent(font));
+	row->top_of_text(row->baseline() - font_metrics::maxAscent(font));
 
 	float x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
 		float dummy;
 		// this IS needed
-		row_ptr->width(maxwidth);
-		prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
+		row->width(maxwidth);
+		prepareToPrint(bview, row, x, dummy, dummy, dummy, false);
 	}
-	row_ptr->width(int(maxwidth + x));
+	row->width(int(maxwidth + x));
 	if (inset_owner) {
 		Row * r = firstrow;
 		width = max(0,workWidth(bview));
@@ -1962,9 +1811,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			return;
 		}
 	} else if (IsNewlineChar(c)) {
-		if (cursor.pos() <= beginningOfMainBody(bview->buffer(),
-							cursor.par()))
-		{
+		if (cursor.pos() <= cursor.par()->beginningOfMainBody()) {
 			charInserted();
 			return;
 		}
@@ -2067,7 +1914,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 		status(bview, LyXText::NEED_MORE_REFRESH);
 		breakAgainOneRow(bview, row);
 		// will the cursor be in another row now?
-		if (rowLast(row) <= cursor.pos() + 1 && row->next()) {
+		if (row->lastPos() <= cursor.pos() + 1 && row->next()) {
 			if (row->next() && row->next()->par() == row->par())
 				// this should always be true
 				row = row->next();
@@ -2164,14 +2011,14 @@ void LyXText::prepareToPrint(BufferView * bview,
 	if (layout->margintype == MARGIN_MANUAL
 	    && layout->labeltype == LABEL_MANUAL) {
 		// one more since labels are left aligned
-		nlh = numberOfLabelHfills(bview->buffer(), row) + 1;
+		nlh = row->numberOfLabelHfills() + 1;
 		if (nlh && !row->par()->getLabelWidthString().empty()) {
 			fill_label_hfill = labelFill(bview, row) / nlh;
 		}
 	}
 
 	// are there any hfills in the row?
-	float const nh = numberOfHfills(bview->buffer(), row);
+	float const nh = row->numberOfHfills();
 
 	if (nh) {
 		if (w > 0)
@@ -2206,7 +2053,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
-			ns = numberOfSeparators(bview->buffer(), row);
+			ns = row->numberOfSeparators();
 			if (ns && row->next() && row->next()->par() == row->par() &&
 			    !(row->next()->par()->isNewline(row->next()->pos() - 1))
 			    && !(row->next()->par()->isInset(row->next()->pos())
@@ -2232,9 +2079,8 @@ void LyXText::prepareToPrint(BufferView * bview,
 
 	computeBidiTables(bview->buffer(), row);
 	if (is_rtl) {
-		pos_type main_body =
-			beginningOfMainBody(bview->buffer(), row->par());
-		pos_type last = rowLast(row);
+		pos_type main_body = row->par()->beginningOfMainBody();
+		pos_type last = row->lastPos();
 
 		if (main_body > 0 &&
 		    (main_body - 1 > last ||
@@ -2946,7 +2792,7 @@ void LyXText::backspace(BufferView * bview)
 		pos_type z;
 		// remember that a space at the end of a row doesnt count
 		// when calculating the fill
-		if (cursor.pos() < rowLast(row) ||
+		if (cursor.pos() < row->lastPos() ||
 		    !cursor.par()->isLineSeparator(cursor.pos())) {
 			row->fill(row->fill() + singleWidth(bview,
 							    cursor.par(),
@@ -2992,8 +2838,7 @@ void LyXText::backspace(BufferView * bview)
 			// delete newlines at the beginning of paragraphs
 			while (!cursor.par()->empty() &&
 			       cursor.par()->isNewline(cursor.pos()) &&
-			       cursor.pos() == beginningOfMainBody(bview->buffer(),
-								   cursor.par())) {
+			       cursor.pos() == cursor.par()->beginningOfMainBody()) {
 				cursor.par()->erase(cursor.pos());
 				// refresh the positions
 				tmprow = row;
@@ -3051,14 +2896,14 @@ void LyXText::backspace(BufferView * bview)
 
 		// break the cursor row again
 		if (row->next() && row->next()->par() == row->par() &&
-		    (rowLast(row) == row->par()->size() - 1 ||
-		     nextBreakPoint(bview, row, workWidth(bview)) != rowLast(row))) {
+		    (row->lastPos() == row->par()->size() - 1 ||
+		     nextBreakPoint(bview, row, workWidth(bview)) != row->lastPos())) {
 
 			// it can happen that a paragraph loses one row
 			// without a real breakup. This is when a word
 			// is to long to be broken. Well, I don t care this
 			// hack ;-)
-			if (rowLast(row) == row->par()->size() - 1)
+			if (row->lastPos() == row->par()->size() - 1)
 				removeRow(row->next());
 
 			refresh_y = y;
@@ -3068,7 +2913,7 @@ void LyXText::backspace(BufferView * bview)
 			breakAgainOneRow(bview, row);
 			// will the cursor be in another row now?
 			if (row->next() && row->next()->par() == row->par() &&
-			    rowLast(row) <= cursor.pos()) {
+			    row->lastPos() <= cursor.pos()) {
 				row = row->next();
 				breakAgainOneRow(bview, row);
 			}
@@ -3126,7 +2971,7 @@ bool LyXText::paintRowBackground(DrawRowParams & p)
 	Inset * inset = 0;
 	LyXFont font(LyXFont::ALL_SANE);
 
-	pos_type const last = rowLastPrintable(p.row);
+	pos_type const last = p.row->lastPrintablePos();
 
 	if (!p.bv->screen().forceClear() && last == p.row->pos()
 		&& p.row->par()->isInset(p.row->pos())) {
@@ -3234,8 +3079,8 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 
 	Buffer const * buffer = p.bv->buffer();
 	Paragraph * par = row->par();
-	pos_type main_body = beginningOfMainBody(buffer, par);
-	pos_type const last = rowLastPrintable(row);
+	pos_type const main_body = par->beginningOfMainBody();
+	pos_type const last = row->lastPrintablePos();
 	float tmpx = p.x;
 
 	for (pos_type vpos = row->pos(); vpos <= last; ++vpos)  {
@@ -3251,7 +3096,7 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 				tmpx -= singleWidth(p.bv, par, main_body - 1);
 		}
 
-		if (hfillExpansion(buffer, row, pos)) {
+		if (row->hfillExpansion(pos)) {
 			tmpx += singleWidth(p.bv, par, pos);
 			if (pos >= main_body)
 				tmpx += p.hfill;
@@ -3287,7 +3132,7 @@ void LyXText::paintRowSelection(DrawRowParams & p)
 void LyXText::paintChangeBar(DrawRowParams & p)
 {
 	pos_type const start = p.row->pos();
-	pos_type const end = rowLastPrintable(p.row);
+	pos_type const end = p.row->lastPrintablePos();
 
 	if (!p.row->par()->isChanged(start, end)) 
 		return;
@@ -3460,7 +3305,7 @@ int LyXText::paintPageBreak(string const & label, int y, DrawRowParams & p)
 	p.pain->line(text_end, y, p.xo + p.width, y,
 		LColor::pagebreak, Painter::line_onoffdash);
 
-	return 3 * defaultHeight();
+	return 3 * defaultRowHeight();
 }
 
 
@@ -3476,14 +3321,14 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 
 	int y_top = 0;
 
-	// think about the margins
-	if (!p.row->previous() && bv_owner)
+	// the top margin
+	if (!p.row->previous() && isTopLevel())
 		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
 	if (parparams.pagebreakTop()) {
 		y_top += paintPageBreak(_("Page Break (top)"),
-			p.yo + y_top + 2 * defaultHeight(), p);
+			p.yo + y_top + 2 * defaultRowHeight(), p);
 	}
 
 	// draw the additional space if needed:
@@ -3558,7 +3403,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 
 					int const maxdesc =
 						int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
-						+ int(layout->parsep) * defaultHeight();
+						+ int(layout->parsep) * defaultRowHeight();
 
 					if (is_rtl) {
 						x = ww - leftMargin(p.bv, p.row) -
@@ -3600,7 +3445,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 
 			int maxdesc =
 				int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val
-				+ (layout->labelbottomsep * defaultHeight()));
+				+ (layout->labelbottomsep * defaultRowHeight()));
 
 			float x = p.x;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
@@ -3638,8 +3483,8 @@ void LyXText::paintLastRow(DrawRowParams & p)
 	ParagraphParameters const & parparams = par->params();
 	int y_bottom = p.row->height() - 1;
 
-	// think about the margins
-	if (!p.row->next() && bv_owner)
+	// the bottom margin
+	if (!p.row->next() && isTopLevel())
 		y_bottom -= PAPER_MARGIN;
 
 	int const ww = p.bv->workWidth();
@@ -3647,7 +3492,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 	// draw a bottom pagebreak
 	if (parparams.pagebreakBottom()) {
 		y_bottom -= paintPageBreak(_("Page Break (bottom)"),
-			p.yo + y_bottom - 2 * defaultHeight(), p);
+			p.yo + y_bottom - 2 * defaultRowHeight(), p);
 	}
 
 	// draw the additional space if needed:
@@ -3727,9 +3572,8 @@ void LyXText::paintRowText(DrawRowParams & p)
 	Paragraph * par = p.row->par();
 	Buffer const * buffer = p.bv->buffer();
 
-	pos_type const last = rowLastPrintable(p.row);
-	pos_type main_body =
-		beginningOfMainBody(buffer, par);
+	pos_type const last = p.row->lastPrintablePos();
+	pos_type main_body = par->beginningOfMainBody();
 	if (main_body > 0 &&
 		(main_body - 1 > last ||
 		!par->isLineSeparator(main_body - 1))) {
@@ -3786,12 +3630,12 @@ void LyXText::paintRowText(DrawRowParams & p)
 			p.x += 1;
 
 			int const y0 = p.yo + p.row->baseline();
-			int const y1 = y0 - defaultHeight() / 2;
+			int const y1 = y0 - defaultRowHeight() / 2;
 
 			p.pain->line(int(p.x), y1, int(p.x), y0,
 				     LColor::added_space);
 
-			if (hfillExpansion(buffer, p.row, pos)) {
+			if (p.row->hfillExpansion(pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= main_body) {
@@ -3894,14 +3738,6 @@ void LyXText::getVisibleRow(BufferView * bv, int y_offset, int x_offset,
 }
 
 
-int LyXText::defaultHeight() const
-{
-	LyXFont font(LyXFont::ALL_SANE);
-	return int(font_metrics::maxAscent(font)
-		 + font_metrics::maxDescent(font) * 1.5);
-}
-
-
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type
@@ -3917,14 +3753,14 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 		       fill_hfill, fill_label_hfill);
 
 	pos_type vc = row->pos();
-	pos_type last = rowLastPrintable(row);
+	pos_type last = row->lastPrintablePos();
 	pos_type c = 0;
 
 	LyXLayout_ptr const & layout = row->par()->layout();
 
 	bool left_side = false;
 
-	pos_type main_body = beginningOfMainBody(bview->buffer(), row->par());
+	pos_type main_body = row->par()->beginningOfMainBody();
 	float last_tmpx = tmpx;
 
 	if (main_body > 0 &&
@@ -3949,19 +3785,19 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 				tmpx -= singleWidth(bview, row->par(), main_body-1);
 		}
 
-		if (hfillExpansion(bview->buffer(), row, c)) {
+		if (row->hfillExpansion(c)) {
 			tmpx += singleWidth(bview, row->par(), c);
 			if (c >= main_body)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
-		}
-		else if (row->par()->isSeparator(c)) {
+		} else if (row->par()->isSeparator(c)) {
 			tmpx += singleWidth(bview, row->par(), c);
 			if (c >= main_body)
 				tmpx+= fill_separator;
-		} else
+		} else {
 			tmpx += singleWidth(bview, row->par(), c);
+		}
 		++vc;
 	}
 

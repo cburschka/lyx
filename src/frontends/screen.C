@@ -436,7 +436,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	force_clear_ = false;
 
 	// maybe we have to clear the screen at the bottom
-	if ((y < y2) && text->bv_owner) {
+	if ((y < y2) && text->isTopLevel()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);

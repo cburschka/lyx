@@ -82,8 +82,6 @@ public:
 	// unsigned is wrong here for text-insets!
 	int first_y;
 	///
-	BufferView * bv_owner;
-	///
 	InsetText * inset_owner;
 	///
 	UpdatableInset * the_locking_inset;
@@ -182,6 +180,9 @@ public:
 	Inset::RESULT dispatch(FuncRequest const & cmd);
 
 private:
+	/// only the top-level LyXText has this non-zero
+	BufferView * bv_owner;
+
 	/** wether the screen needs a refresh,
 	   starting with refresh_y
 	   */
@@ -209,10 +210,6 @@ public:
 	    the first row
 	*/
 	Row * firstRow() { return firstrow; }
-
-	/** returns the height of a default row, needed  for scrollbar
-	 */
-	int defaultHeight() const;
 
 	/** The cursor.
 	  Later this variable has to be removed. There should be now internal
@@ -674,9 +671,6 @@ private:
 	  screen in pixel */
 	int labelFill(BufferView *, Row const * row) const;
 
-	///
-	lyx::pos_type beginningOfMainBody(Buffer const *, Paragraph const * par) const;
-
 	/**
 	 * Returns the left beginning of the text.
 	 * This information cannot be taken from the layout object, because
@@ -689,25 +683,6 @@ private:
 	///
 	int labelEnd (BufferView *, Row const * row) const;
 
-	/** returns the number of separators in the specified row.
-	  The separator on the very last column doesnt count
-	  */
-	int numberOfSeparators(Buffer const *, Row const * row) const;
-
-	/** returns the number of hfills in the specified row. The
-	  LyX-Hfill is a LaTeX \hfill so that the hfills at the
-	  beginning and at the end were ignored. This is {\em MUCH}
-	  more usefull than not to ignore!
-	  */
-	int numberOfHfills(Buffer const *, Row const * row) const;
-
-	/// like NumberOfHfills, but only those in the manual label!
-	int numberOfLabelHfills(Buffer const *, Row const * row) const;
-	/** returns true, if a expansion is needed. Rules are given by
-	  LaTeX
-	  */
-	bool hfillExpansion(Buffer const *, Row const * row_ptr,
-			    lyx::pos_type pos) const;
 	///
 	LColor::color backgroundColor();
 
@@ -734,13 +709,6 @@ private:
 	unsigned char transformChar(unsigned char c, Paragraph * par,
 				    lyx::pos_type pos) const;
 
-	/** returns the paragraph position of the last character in the
-	  specified row
-	  */
-	lyx::pos_type rowLast(Row const * row) const;
-	///
-	lyx::pos_type rowLastPrintable(Row const * row) const;
-
 	///
 	void charInserted();
 public:
@@ -752,6 +720,12 @@ public:
 	void ownerParagraph(Paragraph *) const;
 	// set it searching first for the right owner using the paragraph id
 	void ownerParagraph(int id, Paragraph *) const;
+
+	/// return true if this is the outer-most lyxtext
+	bool isTopLevel() const;
 };
 
-#endif
+/// return the default height of a row in pixels, considering font zoom
+extern int defaultRowHeight();
+
+#endif // LYXTEXT_H

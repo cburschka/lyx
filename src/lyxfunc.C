@@ -120,7 +120,7 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
 	if (selecting || TEXT(flag)->selection.mark()) {
 		TEXT(flag)->setSelection(view());
-		if (TEXT(flag)->bv_owner)
+		if (TEXT(flag)->isTopLevel())
 		    view()->toggleToggle();
 	}
 	view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);

@@ -354,9 +354,9 @@ void BufferView::Pimpl::updateScrollbar()
 	LyXText const & t = *bv_->text;
 
 	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", first_y "
-		<< t.first_y << ", default height " << t.defaultHeight() << endl;
+		<< t.first_y << ", default height " << defaultRowHeight() << endl;
 
-	workarea().setScrollbarParams(t.height, t.first_y, t.defaultHeight());
+	workarea().setScrollbarParams(t.height, t.first_y, defaultRowHeight());
 }
 
 
@@ -374,7 +374,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	LyXText * vbt = bv_->text;
 
-	int const height = vbt->defaultHeight();
+	int const height = defaultRowHeight();
 	int const first = static_cast<int>((bv_->text->first_y + height));
 	int const last = static_cast<int>((bv_->text->first_y + workarea().workHeight() - height));
 
@@ -392,7 +392,7 @@ void BufferView::Pimpl::scroll(int lines)
 	}
 
 	LyXText const * t = bv_->text;
-	int const line_height = t->defaultHeight();
+	int const line_height = defaultRowHeight();
 
 	// The new absolute coordinate
 	int new_first_y = t->first_y + lines * line_height;
@@ -404,7 +404,7 @@ void BufferView::Pimpl::scroll(int lines)
 	scrollDocView(new_first_y);
 
 	// Update the scrollbar.
-	workarea().setScrollbarParams(t->height, t->first_y, t->defaultHeight());
+	workarea().setScrollbarParams(t->height, t->first_y, defaultRowHeight());
 }
 
 

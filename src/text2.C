@@ -158,7 +158,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 	// We specialize the 95% common case:
 	if (!par->getDepth()) {
 		if (layout->labeltype == LABEL_MANUAL
-		    && pos < beginningOfMainBody(buf, par)) {
+		    && pos < par->beginningOfMainBody()) {
 			// 1% goes here
 			LyXFont f = par->getFontSettings(buf->params, pos);
 			if (par->inInset())
@@ -176,7 +176,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 
 	LyXFont layoutfont;
 
-	if (pos < beginningOfMainBody(buf, par)) {
+	if (pos < par->beginningOfMainBody()) {
 		// 1% goes here
 		layoutfont = layout->labelfont;
 	} else {
@@ -251,7 +251,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 	// Get concrete layout font to reduce against
 	LyXFont layoutfont;
 
-	if (pos < beginningOfMainBody(buf, par))
+	if (pos < par->beginningOfMainBody())
 		layoutfont = layout->labelfont;
 	else
 		layoutfont = layout->font;
@@ -419,7 +419,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 
 	LyXFont layoutfont;
 	for (pos_type pos = 0; pos < par->size(); ++pos) {
-		if (pos < beginningOfMainBody(buf, par))
+		if (pos < par->beginningOfMainBody())
 			layoutfont = layout->labelfont;
 		else
 			layoutfont = layout->font;
@@ -640,8 +640,7 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor.pos() < beginningOfMainBody(bview->buffer(),
-						       cursor.par())) {
+		if (cursor.pos() < cursor.par()->beginningOfMainBody()) {
 			layoutfont = getLabelFont(bview->buffer(),
 						  cursor.par());
 		} else {
@@ -969,15 +968,15 @@ void LyXText::cursorEnd(BufferView * bview) const
 {
 	if (!cursor.row()->next()
 	    || cursor.row()->next()->par() != cursor.row()->par()) {
-		setCursor(bview, cursor.par(), rowLast(cursor.row()) + 1);
+		setCursor(bview, cursor.par(), cursor.row()->lastPos() + 1);
 	} else {
 		if (!cursor.par()->empty() &&
-		    (cursor.par()->getChar(rowLast(cursor.row())) == ' '
-		     || cursor.par()->isNewline(rowLast(cursor.row())))) {
-			setCursor(bview, cursor.par(), rowLast(cursor.row()));
+		    (cursor.par()->getChar(cursor.row()->lastPos()) == ' '
+		     || cursor.par()->isNewline(cursor.row()->lastPos()))) {
+			setCursor(bview, cursor.par(), cursor.row()->lastPos());
 		} else {
 			setCursor(bview,cursor.par(),
-				  rowLast(cursor.row()) + 1);
+				  cursor.row()->lastPos() + 1);
 		}
 	}
 }
@@ -1059,16 +1058,6 @@ string LyXText::getStringToIndex(BufferView * bview)
 		clearSelection();
 
 	return idxstring;
-}
-
-
-pos_type LyXText::beginningOfMainBody(Buffer const * /*buf*/,
-			     Paragraph const * par) const
-{
-	if (par->layout()->labeltype != LABEL_MANUAL)
-		return 0;
-	else
-		return par->beginningOfMainBody();
 }
 
 
@@ -1676,12 +1665,12 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 	}
 
 	int const tmpheight = row->height();
-	pos_type const tmplast = rowLast(row);
+	pos_type const tmplast = row->lastPos();
 	refresh_y = y;
 	refresh_row = row;
 
 	breakAgain(bview, row);
-	if (row->height() == tmpheight && rowLast(row) == tmplast)
+	if (row->height() == tmpheight && row->lastPos() == tmplast)
 		status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
 	else
 		status(bview, LyXText::NEED_MORE_REFRESH);
@@ -1795,7 +1784,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = rowLastPrintable(old_row);
+	pos_type last = old_row->lastPrintablePos();
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > par->size()) {
@@ -1849,8 +1838,7 @@ float LyXText::getCursorX(BufferView * bview, Row * row,
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
-	pos_type main_body =
-		beginningOfMainBody(bview->buffer(), row->par());
+	pos_type main_body = row->par()->beginningOfMainBody();
 	if ((main_body > 0) &&
 	    ((main_body-1 > last) ||
 	     !row->par()->isLineSeparator(main_body-1)))
@@ -1868,7 +1856,7 @@ float LyXText::getCursorX(BufferView * bview, Row * row,
 				x -= singleWidth(bview,
 						 row->par(), main_body - 1);
 		}
-		if (hfillExpansion(bview->buffer(), row, pos)) {
+		if (row->hfillExpansion(pos)) {
 			x += singleWidth(bview, row->par(), pos);
 			if (pos >= main_body)
 				x += fill_hfill;
@@ -2006,7 +1994,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.row(row);
 
 	if (beforeFullRowInset(*row, cur)) {
-		pos_type last = rowLastPrintable(row);
+		pos_type last = row->lastPrintablePos();
 		float x = getCursorX(bview, row->next(), cur.pos(), last, bound);
 		cur.ix(int(x));
 		cur.iy(y + row->height() + row->next()->baseline());
@@ -2386,4 +2374,19 @@ void LyXText::status(BufferView * bview, LyXText::text_status st) const
 			}
 		}
 	}
+}
+
+
+bool LyXText::isTopLevel() const
+{
+	/// only the top-level lyxtext has a non-null bv owner
+	return bv_owner;
+}
+
+
+int defaultRowHeight()
+{
+	LyXFont const font(LyXFont::ALL_SANE);
+	return int(font_metrics::maxAscent(font)
+		 + font_metrics::maxDescent(font) * 1.5);
 }

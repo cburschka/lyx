@@ -13,6 +13,7 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "BufferView.h"
+#include "lyxtext.h"
 #include "support/LAssert.h"
 
 #include "support/lstrings.h"
@@ -467,7 +468,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView const * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int const default_height = bv->defaultHeight(); // [pixels]
+	int const default_height = defaultRowHeight(); // [pixels]
 
 	int retval = 0;
 

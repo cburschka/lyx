@@ -1,3 +1,39 @@
+2003-02-13  John Levon  <levon@movementarian.org>
+
+	* text.h:
+	* text.C:
+	* text2.C: move hfillExpansion(), numberOfSeparators(),
+	  rowLast(), rowLastPrintable(), numberofHfills(), 
+	  numberOfLabelHfills() ...
+
+	* lyxrow.h:
+	* lyxrow.C: ... to member functions here.
+
+	* paragraph.h:
+	* paragraph.C:
+	* lyxtext.h:
+	* text.C: remove LyXText::beginningOfMainBody(), and call
+	  p->beginningOfMainBody() directly. Move the check for
+	  LABEL_MANUAL into the latter.
+
+	* text.h:
+	* text.C:
+	* text2.C:
+	* vspace.C:
+	* BufferView.h:
+	* BufferView.C: make defaultHeight() be a free defaultRowHeight()
+
+	* text.h:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* frontends/screen.C: move bv_owner private, introduce isTopLevel()
+	  to make it clear we're testing for outmost-lyxtext vs. inset's lyxtext
+
+2003-02-13  John Levon  <levon@movementarian.org>
+
+	* CutAndPaste.C: remove debug
+
 2003-02-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* paragraph.C (asString): remove two unused variables
@@ -7,10 +43,6 @@
 	(LyXTextClass): handle new members titletype_ and titlename_
 
 	* buffer.C (latexParagraphs): honor LyXTextClass::titletype
-
-2003-02-13  John Levon  <levon@movementarian.org>
-
-	* CutAndPaste.C: remove debug
 
 2003-02-09  John Levon  <levon@movementarian.org>
 

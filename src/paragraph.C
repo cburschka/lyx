@@ -519,9 +519,7 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 
 	LyXLayout_ptr const & lout = layout();
 
-	pos_type main_body = 0;
-	if (lout->labeltype == LABEL_MANUAL)
-		main_body = beginningOfMainBody();
+	pos_type const main_body = beginningOfMainBody();
 
 	LyXFont layoutfont;
 	if (pos < main_body)
@@ -866,6 +864,9 @@ void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 
 int Paragraph::beginningOfMainBody() const
 {
+	if (layout()->labeltype != LABEL_MANUAL)
+		return 0;
+
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
@@ -1356,10 +1357,14 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 	// Maybe we have to create a optional argument.
 	pos_type main_body;
-	if (style->labeltype != LABEL_MANUAL)
+
+	// FIXME: can we actually skip this check and just call
+	// beginningOfMainBody() ??
+	if (style->labeltype != LABEL_MANUAL) {
 		main_body = 0;
-	else
+	} else {
 		main_body = beginningOfMainBody();
+	}
 
 	unsigned int column = 0;
 

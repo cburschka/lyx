@@ -447,5 +447,4 @@ bool operator!=(LyXFont const & font1, LyXFont const & font2)
 	return !(font1 == font2);
 }
 
-
 #endif

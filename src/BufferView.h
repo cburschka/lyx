@@ -193,8 +193,6 @@ public:
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int);
 
-	/// height of a normal line in pixels (zoom factor considered)
-	int defaultHeight() const;
 	/// return the pixel width of the document view
 	int workWidth() const;
 	/// return the pixel height of the document view

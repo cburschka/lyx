@@ -59,12 +59,12 @@ namespace {
 
 		if (selecting || lt->selection.mark()) {
 			lt->setSelection(bv);
-			if (lt->bv_owner)
+			if (lt->isTopLevel())
 				bv->toggleToggle();
 			else
 				bv->updateInset(lt->inset_owner, false);
 		}
-		if (lt->bv_owner) {
+		if (lt->isTopLevel()) {
 			//if (fitcur)
 			//	bv->update(lt, BufferView::SELECT|BufferView::FITCUR);
 			//else
@@ -1241,10 +1241,10 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_MOUSE_TRIPLE:
 		if (!bv->buffer())
 			break;
-		if (bv_owner && bv->theLockingInset())
+		if (isTopLevel() && bv->theLockingInset())
 			break;
 		if (cmd.button() == mouse_button::button1) {
-			if (bv_owner) {
+			if (isTopLevel()) {
 				bv->screen().hideCursor();
 				bv->screen().toggleSelection(this, bv);
 			}
@@ -1252,7 +1252,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			selection.cursor = cursor;
 			cursorEnd(bv);
 			setSelection(bv);
-			if (bv_owner)
+			if (isTopLevel())
 				bv->screen().toggleSelection(this, bv, false);
 			update(bv, false);
 			bv->haveSelection(selection.set());
@@ -1262,10 +1262,10 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_MOUSE_DOUBLE:
 		if (!bv->buffer())
 			break;
-		if (bv_owner && bv->theLockingInset())
+		if (isTopLevel() && bv->theLockingInset())
 			break;
 		if (cmd.button() == mouse_button::button1) {
-			if (bv_owner) {
+			if (isTopLevel()) {
 				bv->screen().hideCursor();
 				bv->screen().toggleSelection(this, bv);
 				selectWord(bv, LyXText::WHOLE_WORD_STRICT);

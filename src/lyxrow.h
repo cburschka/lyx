@@ -1,13 +1,15 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxrow.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
+ * Full author contact details are available in file CREDITS
  *
- * ====================================================== */
+ * Metrics for an on-screen text row.
+ */
 
 #ifndef LYXROW_H
 #define LYXROW_H
@@ -64,6 +66,34 @@ public:
 	void previous(Row * r);
 	///
 	Row * previous() const;
+
+	/// return the position of the last character in this row
+	lyx::pos_type lastPos() const;
+	/// return the position of the last normal, printable character in this row
+	lyx::pos_type lastPrintablePos() const;
+	
+	/**
+	 * Returns the number of separators.
+	 * The separator on the very last column doesnt count.
+	 */
+	int numberOfSeparators() const;
+
+	/** 
+	 * Returns the number of hfills. It works like a LaTeX \hfill:
+	 * the hfills at the beginning and at the end are ignored.
+	 * This is much more useful than not to ignore!
+	 */
+	int numberOfHfills() const;
+
+	/// Returns the number of hfills in the manual label. See numberOfHfills().
+	int numberOfLabelHfills() const;
+
+	/**
+	 * Returns true if a expansion is needed at the given position.
+	 * Rules are given by LaTeX
+	 */
+	bool hfillExpansion(lyx::pos_type pos) const;
+
 private:
 	///
 	Paragraph * par_;

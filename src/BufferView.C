@@ -267,13 +267,6 @@ void BufferView::scroll(int lines)
 }
 
 
-int BufferView::defaultHeight() const
-{
-	return text->defaultHeight();
-}
-
-
-
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
 	//

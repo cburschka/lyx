@@ -1,17 +1,26 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxrow.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
+ * Full author contact details are available in file CREDITS
  *
- * ====================================================== */
+ * Metrics for an on-screen text row.
+ */
 
 #include <config.h>
 
 #include "lyxrow.h"
+#include "paragraph.h"
+#include "layout.h"
+#include "lyxlayout.h"
 
+using lyx::pos_type;
+
+using std::max;
+using std::min;
 
 Row::Row()
 	: par_(0), pos_(0), fill_(0), height_(0), width_(0),
@@ -25,13 +34,13 @@ void Row::par(Paragraph * p)
 }
 
 
-void Row::pos(lyx::pos_type p)
+void Row::pos(pos_type p)
 {
 	pos_ = p;
 }
 
 
-lyx::pos_type Row::pos() const
+pos_type Row::pos() const
 {
 	return pos_;
 }
@@ -118,4 +127,151 @@ void Row::previous(Row * r)
 Row * Row::previous() const
 {
 	return previous_;
+}
+
+
+pos_type Row::lastPos() const
+{
+	if (!par()->size())
+		return 0;
+
+	if (!next() || next()->par() != par()) {
+		return par()->size() - 1;
+	} else {
+		return next()->pos() - 1;
+	}
+}
+
+
+namespace {
+
+bool nextRowIsAllInset(Row const & row, pos_type last)
+{
+	if (!row.next())
+		return false;
+
+	if (row.par() != row.next()->par())
+		return false;
+
+	if (!row.par()->isInset(last + 1))
+		return false;
+
+	Inset * i = row.par()->getInset(last + 1);
+	return i->needFullRow() || i->display();
+}
+
+};
+
+
+pos_type Row::lastPrintablePos() const
+{
+	pos_type const last = lastPos();
+	bool const ignore_space_at_last = !nextRowIsAllInset(*this, last);
+
+	if (ignore_space_at_last && par()->isSeparator(last))
+		return last - 1;
+
+	return last;
+}
+
+
+int Row::numberOfSeparators() const
+{
+	pos_type const last = lastPrintablePos();
+	pos_type p = max(pos(), par()->beginningOfMainBody());
+
+	int n = 0;
+	for (; p <= last; ++p) {
+		if (par()->isSeparator(p)) {
+			++n;
+		}
+	}
+	return n;
+}
+
+
+int Row::numberOfHfills() const
+{
+	pos_type const last = lastPos();
+	pos_type first = pos();
+
+	// hfill *DO* count at the beginning of paragraphs!
+	if (first) {
+		while (first <= last && par()->isHfill(first)) {
+			++first;
+		}
+	}
+
+	first = max(first, par()->beginningOfMainBody());
+
+	int n = 0;
+
+	// last, because the end is ignored!
+	for (pos_type p = first; p <= last; ++p) {
+		if (par()->isHfill(p))
+			++n;
+	}
+	return n;
+}
+
+
+int Row::numberOfLabelHfills() const
+{
+	pos_type last = lastPos();
+	pos_type first = pos();
+
+	// hfill *DO* count at the beginning of paragraphs!
+	if (first) {
+		while (first < last && par()->isHfill(first))
+			++first;
+	}
+
+	last = min(last, par()->beginningOfMainBody());
+	int n = 0;
+
+	// last, because the end is ignored!
+	for (pos_type p = first; p < last; ++p) {
+		if (par()->isHfill(p))
+			++n;
+	}
+	return n;
+}
+
+
+bool Row::hfillExpansion(pos_type pos) const
+{
+	if (!par()->isHfill(pos))
+		return false;
+
+	// at the end of a row it does not count
+	// unless another hfill exists on the line
+	if (pos >= lastPos()) {
+		pos_type i = this->pos();
+		while (i < pos && !par()->isHfill(i)) {
+			++i;
+		}
+		if (i == pos) {
+			return false;
+		}
+	}
+
+	// at the beginning of a row it does not count, if it is not
+	// the first row of a paragaph
+	if (!this->pos())
+		return true;
+
+	// in some labels  it does not count
+	if (par()->layout()->margintype != MARGIN_MANUAL
+	    && pos < par()->beginningOfMainBody())
+		return false;
+
+	// if there is anything between the first char of the row and
+	// the sepcified position that is not a newline and not a hfill,
+	// the hfill will count, otherwise not
+	pos_type i = this->pos();
+	while (i < pos && (par()->isNewline(i)
+			   || par()->isHfill(i)))
+		++i;
+
+	return i != pos;
 }

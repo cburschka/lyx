@@ -59,7 +59,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void scrollDocView(int value);
 	/**
-	 * Wheel mouse scroll, move by multiples of text->defaultHeight().
+	 * Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	 */
 	void scroll(int lines);
 	///

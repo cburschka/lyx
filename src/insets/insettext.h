@@ -300,8 +300,6 @@ private:
 	///
 	typedef Cache::value_type value_type;
 	///
-	int beginningOfMainBody(Paragraph * par) const;
-	///
 	RESULT moveRight(BufferView *,
 					 bool activate_inset = true,
 					 bool selecting = false);

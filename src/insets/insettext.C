@@ -1773,15 +1773,6 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetText::beginningOfMainBody(Paragraph * p) const
-{
-	if (p->layout()->labeltype != LABEL_MANUAL)
-		return 0;
-	else
-		return p->beginningOfMainBody();
-}
-
-
 void InsetText::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	if (the_locking_inset) {
