@@ -306,7 +306,6 @@ void InsetText::edit(LCursor & cur, bool left)
 
 InsetBase * InsetText::editXY(LCursor & cur, int x, int y) const
 {
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
 	old_par = -1;
 	return text_.editXY(cur, x, y);
 	//sanitizeEmptyText(cur.bv());

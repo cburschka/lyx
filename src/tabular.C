@@ -1683,8 +1683,7 @@ int LyXTabular::getAscentOfRow(int row) const
 
 int LyXTabular::getDescentOfRow(int row) const
 {
-	if (row >= rows_)
-		return 0;
+	BOOST_ASSERT(row < rows_);
 	return row_info[row].descent_of_row;
 }
 
@@ -1701,16 +1700,16 @@ int LyXTabular::getHeightOfTabular() const
 
 bool LyXTabular::isPartOfMultiColumn(int row, int column) const
 {
-	if (row >= rows_ || column >= columns_)
-		return false;
+	BOOST_ASSERT(row < rows_);
+	BOOST_ASSERT(column < columns_);
 	return cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN;
 }
 
 
 int LyXTabular::TeXTopHLine(ostream & os, int row) const
 {
-	if (row < 0 || row >= rows_)
-		return 0;
+	BOOST_ASSERT(row >= 0);
+	BOOST_ASSERT(row < rows_);
 
 	int const fcell = getFirstCellInRow(row);
 	int const n = numberOfCellsInRow(fcell) + fcell;

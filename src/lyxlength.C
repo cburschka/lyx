@@ -22,7 +22,6 @@
 #include <sstream>
 
 
-using std::abs;
 using std::ostringstream;
 using std::string;
 
@@ -145,10 +144,6 @@ int LyXLength::inPixels(int text_width, int em_width_base) const
 	// Pixel values are scaled so that the ratio
 	// between lengths and font sizes on the screen
 	// is the same as on paper.
-
-#ifdef WITH_WARNINGS
-#warning if you don't care than either call this function differently or let it return negative values and call abs() explicitly when needed (Andre')
-#endif
 
 	double result = 0.0;
 

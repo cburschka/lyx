@@ -1,5 +1,7 @@
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* insettext.C (editXY): compilation fix
+
 	* insetinclude.C (priv_dispatch): fix showing dialog on mouse
 	release
 	(metrics): the insets is not full width any more. 
