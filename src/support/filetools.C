@@ -1294,7 +1294,7 @@ cmd_ret const RunCommand(string const & cmd)
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
-	FILE * inf = ::popen(cmd.c_str(), os::read_mode());
+	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
 	if (!inf)

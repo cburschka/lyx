@@ -119,9 +119,16 @@ bool os::is_absolute_path(string const & p)
 	return isDosPath | isUnixPath;
 }
 
-// returns a string suitable to be passed to fopen/popen when
+// returns a string suitable to be passed to fopen when
 // reading a file
 char const * os::read_mode()
 {
 	return "rb";
+}
+
+// returns a string suitable to be passed to popen when
+// reading a pipe
+char const * os::popen_read_mode()
+{
+	return "r";
 }
