@@ -75,9 +75,19 @@ def change_insetgraphics(lines):
 	
 	i = i+1
 
+def change_tabular(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "<column", i)
+        if i == -1:
+            break
+        if not re.search('width="0pt"', lines[i]):
+            lines[i] = re.sub(' alignment=".*?"',' alignment="block"',lines[i])
+        i = i+1
 
 def convert(header, body):
     change_insetgraphics(body)
+    change_tabular(body)
 
 if __name__ == "__main__":
     pass
