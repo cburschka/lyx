@@ -267,7 +267,7 @@ if test $use_compression=true ; then
 	AC_CHECK_HEADERS(zlib.h, use_compression=true, use_compression=false)
 	AC_CHECK_LIB(z, gzopen,[use_compression=true;LIBS="$LIBS -lz"], use_compression=false)
 	if test $use_compression = true ; then
-		AC_DEFINE(USE_COMRESSION, 1, [Define as 1 if you want to supprot compressed files.])
+		AC_DEFINE(USE_COMRESSION, 1, [Define as 1 if you want to support compressed files.])
 		lyx_flags="$lyx_flags compression"
 	fi
 fi
