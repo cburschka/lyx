@@ -1,3 +1,8 @@
+2001-08-13  Juergen Vigna  <jug@sad.it>
+
+	* text.C (fill): return 0 instead of 20 as this seems to be the more
+	correct value.
+
 2001-08-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* encoding.C (TransformChar): Use lyxrc.font_norm_type instead of

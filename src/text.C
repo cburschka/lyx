@@ -978,7 +978,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 {
 	if (paper_width < 0)
-		return 20;
+		return 0;
 
 	int w;
 	// get the pure distance

@@ -1,5 +1,7 @@
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
+	* inset.C (getMaxWidth): fixed bug of returning the wrong max width.
+
 	* insetcollapsable.C (edit): don't recollapse an already open inset.
 
 	* insettext.C: fixed problem when reinitializing LyXText by not doing

@@ -323,11 +323,14 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	// check for margins left/right and extra right margin "const 5"
 	if ((w - ((2 * TEXT_TO_INSET_OFFSET) + 5)) >= 0)
 		w -= (2 * TEXT_TO_INSET_OFFSET) + 5;
-	if (topx_set) {
+	if (topx_set && owner()) {
 		w -= top_x;
-		if (owner()) {
-			w += owner()->x();
-		}
+		w += owner()->x();
+	} else if (!owner()) {
+		// give some left margin this should be made better!
+		// Idea: LyXText::giveLeftMargin(Inset * inset) will search the
+		//       inset in the text and return the LeftMargin of that row!
+		w -= 20;
 	}
 	if (w < 10) {
 		w = 10;
