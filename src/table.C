@@ -872,13 +872,36 @@ void LyXTable::Read(FILE * file)
 #ifdef WITH_WARNINGS
 #warning Insert a error message window here that this format is not supported anymore
 #endif
+    a = b = c = d = -1;
     if (version < 5) {
-	    lyxerr << "Tabular format < 5 is not supported anymore\n"
-		    "Get an older version of LyX (< 1.1.x) for conversion!"
-		   << endl;
+	lyxerr << "Tabular format < 5 is not supported anymore\n"
+	    "Get an older version of LyX (< 1.1.x) for conversion!"
+	       << endl;
+	if (version > 2) {
+	    fgets(vtmp,sizeof(vtmp),file);
+	    sscanf(vtmp, "%d %d %d %d %d %d %d %d\n",
+		   &rows_arg, &columns_arg,
+		   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
+	} else
+	    fscanf(file, "%d %d\n",
+		   &rows_arg, &columns_arg);
+	Init(rows_arg, columns_arg);
+	SetLongTable(is_long_table_arg);
+	SetRotateTable(rotate_arg);
+	for (i = 0; i<rows; i++){
+	    fgets(vtmp, sizeof(vtmp), file);
+	}
+	for (i = 0; i<columns; i++){
+	    fgets(vtmp, sizeof(vtmp), file);
+	}
+	for (i = 0; i < rows; ++i) {
+	    for (j = 0; j < columns; ++j) {
+		fgets(vtmp, sizeof(vtmp), file);
+	    }
+	}
+	set_row_column_number_info();
 	return;
     }
-    a = b = c = d = -1;
     fgets(vtmp, sizeof(vtmp), file);
     sscanf(vtmp, "%d %d %d %d %d %d %d %d\n", &rows_arg, &columns_arg,
 	   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);

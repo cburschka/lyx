@@ -1,3 +1,10 @@
+1999-12-21  Juergen Vigna  <jug@sad.it>
+
+	* src/table.C (Read): Now read bogus row format informations
+		if the format is < 5 so that afterwards the table can
+		be read by lyx but without any format-info. Fixed the
+		crash we experienced when not doing this.
+
 1999-12-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (RedoHeightOfParagraph): rename arg cursor -> cur
