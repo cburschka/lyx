@@ -28,13 +28,16 @@ What's new
 
 - add support for entering cyrillic and greek alphabets
 
-- update template for IEEEtran
+- update template for IEEEtran; update hebrew article class
 
 ** Bugfixes
 
 - fix positionning of cursor after undo
 
 - fix bug where error insets were not correctly removed
+
+- in commands that operate on words (Insert>Index...), make sure not
+  to include insets in words
 
 - save preamble too when using 'save as document defaults' in document
   layout dialog
@@ -49,9 +52,21 @@ What's new
 - fix support for 1.1.6 graphics files scaled as percentage of width
   or height
 
-- do not ignore zero-length vertical spacing with 'keep' flag.
+- fix the default tgif format entry to use .obj as file extension and
+  not .tgif
+
+- fix reading of xpm files produced by some versions of imagemagick
+
+- fix conversion of some eps files
+
+- do not ignore zero-length vertical spacing with 'keep' flag
 
 - fix drawing problems for collapsed ERT insets
+
+- fix drawing of math delimiters in the math panel
+
+- fix drawing of double quotes when they are not available in the
+  screen font
 
 - fix bug where toolbar tips would not work at startup
 
@@ -61,11 +76,6 @@ What's new
 
 - fix translation of "reset" and "no change" in language combobox
 
-- fix drawing of math delimiters in the math panel
-
-- fix drawing of double quotes when they are not available in the
-  screen font
-
 - when a document is registered though version control, make sure it
   has been saved
 
@@ -74,10 +84,7 @@ What's new
 - make sure to use the graphicx package with the RasterBitmap and XFig
   external templates.
 
-- fix the default tgif format entry to use .obj as file extension and
-  not .tgif
-
-- fix reading of xpm files produced by some versions of imagemagick
+- fix use of alignment commands in moving arguments (for LaTeX output)
 
 - fix interaction between sixpack and LyX via lyxserver
 

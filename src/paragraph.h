@@ -125,10 +125,10 @@ public:
 				 bool moving_arg);
 
 	///
-	int startTeXParParams(BufferParams const &, std::ostream &) const;
+	int startTeXParParams(BufferParams const &, std::ostream &, bool) const;
 
 	///
-	int endTeXParParams(BufferParams const &, std::ostream &) const;
+	int endTeXParParams(BufferParams const &, std::ostream &, bool) const;
 
 
 	///

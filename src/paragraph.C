@@ -1469,7 +1469,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
-				 ostream & os) const
+				 ostream & os, bool moving_arg) const
 {
 	int column = 0;
 
@@ -1478,6 +1478,22 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		column += 10;
 	}
 
+	switch (params().align()) {
+	case LYX_ALIGN_NONE:
+	case LYX_ALIGN_BLOCK:
+	case LYX_ALIGN_LAYOUT:
+	case LYX_ALIGN_SPECIAL:
+		break;
+	case LYX_ALIGN_LEFT:
+	case LYX_ALIGN_RIGHT:
+	case LYX_ALIGN_CENTER:
+		if (moving_arg) {
+			os << "\\protect";
+			column = 8;
+		}
+		break;
+	}
+	
 	switch (params().align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
@@ -1513,10 +1529,26 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::endTeXParParams(BufferParams const & bparams,
-			       ostream & os) const
+			       ostream & os, bool moving_arg) const
 {
 	int column = 0;
 
+	switch (params().align()) {
+	case LYX_ALIGN_NONE:
+	case LYX_ALIGN_BLOCK:
+	case LYX_ALIGN_LAYOUT:
+	case LYX_ALIGN_SPECIAL:
+		break;
+	case LYX_ALIGN_LEFT:
+	case LYX_ALIGN_RIGHT:
+	case LYX_ALIGN_CENTER:
+		if (moving_arg) {
+			os << "\\protect";
+			column = 8;
+		}
+		break;
+	}
+	
 	switch (params().align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
@@ -1610,7 +1642,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os);
+			column += startTeXParParams(bparams, os, moving_arg);
 
 	}
 
@@ -1634,7 +1666,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			}
 
 			if (!asdefault)
-				column += startTeXParParams(bparams, os);
+				column += startTeXParParams(bparams, os,
+							    moving_arg);
 		}
 
 		value_type c = getChar(i);
@@ -1748,7 +1781,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os);
+		column += endTeXParParams(bparams, os, moving_arg);
 	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
