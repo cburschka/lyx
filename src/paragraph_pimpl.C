@@ -112,6 +112,15 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 {
 	lyx::Assert(pos <= size());
 
+	// This is actually very common when parsing buffers (and
+	// maybe inserting ascii text)
+	if (pos == size()) {
+		// when appending characters, no need to update tables
+		text.push_back(c);
+		owner_->setFont(pos, font);
+		return;
+	}
+
 	text.insert(text.begin() + pos, c);
 
 	// Update the font table.

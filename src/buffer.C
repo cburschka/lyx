@@ -484,6 +484,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	static Paragraph * parBeforeMinipage;
 #endif
 #endif
+
+	// The order of the tags tested may seem unnatural, but this
+	// has been done in order to reduce the number of string
+	// comparisons needed to recognize a given token. This leads
+	// on large documents like UserGuide to a reduction of a
+	// factor 5! (JMarc)
 	if (token[0] != '\\') {
 #ifndef NO_COMPABILITY
 		if (ert_comp.active) {
@@ -498,11 +504,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		}
 #endif
-	} else if (token == "\\i") {
-		Inset * inset = new InsetLatexAccent;
-		inset->read(this, lex);
-		par->insertInset(pos, inset, font);
-		++pos;
 	} else if (token == "\\layout") {
 #ifndef NO_COMPABILITY
 		bool old_fromlayout = ert_comp.fromlayout;
@@ -644,6 +645,134 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 #endif
 
+	} else if (token == "\\end_inset") {
+		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
+		       << "Last inset read was: " << last_inset_read
+		       << endl;
+		// Simply ignore this. The insets do not have
+		// to read this.
+		// But insets should read it, it is a part of
+		// the inset isn't it? Lgb.
+	} else if (token == "\\begin_inset") {
+#ifndef NO_COMPABILITY
+		insertErtContents(par, pos, false);
+		ert_stack.push(ert_comp);
+		ert_comp = ErtComp();
+#endif
+		readInset(lex, par, pos, font);
+#ifndef NO_COMPABILITY
+		ert_comp = ert_stack.top();
+		ert_stack.pop();
+		insertErtContents(par, pos);
+#endif
+	} else if (token == "\\family") {
+		lex.next();
+		font.setLyXFamily(lex.getString());
+	} else if (token == "\\series") {
+		lex.next();
+		font.setLyXSeries(lex.getString());
+	} else if (token == "\\shape") {
+		lex.next();
+		font.setLyXShape(lex.getString());
+	} else if (token == "\\size") {
+		lex.next();
+		font.setLyXSize(lex.getString());
+#ifndef NO_COMPABILITY
+	} else if (token == "\\latex") {
+		lex.next();
+		string const tok = lex.getString();
+		if (tok == "no_latex") {
+			// Do the insetert.
+			insertErtContents(par, pos);
+		} else if (tok == "latex") {
+			ert_comp.active = true;
+			ert_comp.font = font;
+		} else if (tok == "default") {
+			// Do the insetert.
+			insertErtContents(par, pos);
+		} else {
+			lex.printError("Unknown LaTeX font flag "
+				       "`$$Token'");
+		}
+#endif
+	} else if (token == "\\lang") {
+		lex.next();
+		string const tok = lex.getString();
+		Language const * lang = languages.getLanguage(tok);
+		if (lang) {
+			font.setLanguage(lang);
+		} else {
+			font.setLanguage(params.language);
+			lex.printError("Unknown language `$$Token'");
+		}
+	} else if (token == "\\numeric") {
+		lex.next();
+		font.setNumber(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\emph") {
+		lex.next();
+		font.setEmph(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\bar") {
+		lex.next();
+		string const tok = lex.getString();
+		// This is dirty, but gone with LyX3. (Asger)
+		if (tok == "under")
+			font.setUnderbar(LyXFont::ON);
+		else if (tok == "no")
+			font.setUnderbar(LyXFont::OFF);
+		else if (tok == "default")
+			font.setUnderbar(LyXFont::INHERIT);
+		else
+			lex.printError("Unknown bar font flag "
+				       "`$$Token'");
+	} else if (token == "\\noun") {
+		lex.next();
+		font.setNoun(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\color") {
+		lex.next();
+		font.setLyXColor(lex.getString());
+	} else if (token == "\\SpecialChar") {
+		LyXLayout const & layout =
+			textclasslist[params.textclass][par->layout()];
+
+		// Insets don't make sense in a free-spacing context! ---Kayvan
+		if (layout.free_spacing || par->isFreeSpacing()) {
+			if (lex.isOK()) {
+				lex.next();
+				string next_token = lex.getString();
+				if (next_token == "\\-") {
+					par->insertChar(pos, '-', font);
+				} else if (next_token == "\\protected_separator"
+					|| next_token == "~") {
+					par->insertChar(pos, ' ', font);
+				} else {
+					lex.printError("Token `$$Token' "
+						       "is in free space "
+						       "paragraph layout!");
+					--pos;
+				}
+			}
+		} else {
+			Inset * inset = new InsetSpecialChar;
+			inset->read(this, lex);
+			par->insertInset(pos, inset, font);
+		}
+		++pos;
+	} else if (token == "\\i") {
+		Inset * inset = new InsetLatexAccent;
+		inset->read(this, lex);
+		par->insertInset(pos, inset, font);
+		++pos;
+	} else if (token == "\\backslash") {
+#ifndef NO_COMPABILITY
+		if (ert_comp.active) {
+			ert_comp.contents += "\\";
+		} else {
+#endif
+		par->insertChar(pos, '\\', font);
+		++pos;
+#ifndef NO_COMPABILITY
+		}
+#endif
 #ifndef NO_COMPABILITY
 	} else if (token == "\\begin_float") {
 		insertErtContents(par, pos);
@@ -1040,79 +1169,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\float_placement") {
 		lex.nextToken();
 		params.float_placement = lex.getString();
-	} else if (token == "\\family") {
-		lex.next();
-		font.setLyXFamily(lex.getString());
-	} else if (token == "\\series") {
-		lex.next();
-		font.setLyXSeries(lex.getString());
-	} else if (token == "\\shape") {
-		lex.next();
-		font.setLyXShape(lex.getString());
-	} else if (token == "\\size") {
-		lex.next();
-		font.setLyXSize(lex.getString());
-#ifndef NO_COMPABILITY
-	} else if (token == "\\latex") {
-		lex.next();
-		string const tok = lex.getString();
-		if (tok == "no_latex") {
-			// Do the insetert.
-			insertErtContents(par, pos);
-		} else if (tok == "latex") {
-			ert_comp.active = true;
-			ert_comp.font = font;
-		} else if (tok == "default") {
-			// Do the insetert.
-			insertErtContents(par, pos);
-		} else {
-			lex.printError("Unknown LaTeX font flag "
-				       "`$$Token'");
-		}
-#endif
-	} else if (token == "\\lang") {
-		lex.next();
-		string const tok = lex.getString();
-		Language const * lang = languages.getLanguage(tok);
-		if (lang) {
-			font.setLanguage(lang);
-		} else {
-			font.setLanguage(params.language);
-			lex.printError("Unknown language `$$Token'");
-		}
-#ifndef NO_COMPABILITY
-		// if the contents is still empty we're just behind the
-		// latex font change and so this inset should also be
-		// inserted with that language tag!
-		if (ert_comp.active && ert_comp.contents.empty()) {
-			ert_comp.font.setLanguage(font.language());
-		}
-#endif
-	} else if (token == "\\numeric") {
-		lex.next();
-		font.setNumber(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\emph") {
-		lex.next();
-		font.setEmph(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\bar") {
-		lex.next();
-		string const tok = lex.getString();
-		// This is dirty, but gone with LyX3. (Asger)
-		if (tok == "under")
-			font.setUnderbar(LyXFont::ON);
-		else if (tok == "no")
-			font.setUnderbar(LyXFont::OFF);
-		else if (tok == "default")
-			font.setUnderbar(LyXFont::INHERIT);
-		else
-			lex.printError("Unknown bar font flag "
-				       "`$$Token'");
-	} else if (token == "\\noun") {
-		lex.next();
-		font.setNoun(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\color") {
-		lex.next();
-		font.setLyXColor(lex.getString());
 	} else if (token == "\\align") {
 		int tmpret = lex.findToken(string_align);
 		if (tmpret == -1) ++tmpret;
@@ -1159,52 +1215,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.eatLine();
 		par->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
-	} else if (token == "\\end_inset") {
-		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
-		       << "Last inset read was: " << last_inset_read
-		       << endl;
-		// Simply ignore this. The insets do not have
-		// to read this.
-		// But insets should read it, it is a part of
-		// the inset isn't it? Lgb.
-	} else if (token == "\\begin_inset") {
-#ifndef NO_COMPABILITY
-		insertErtContents(par, pos, false);
-		ert_stack.push(ert_comp);
-		ert_comp = ErtComp();
-#endif
-		readInset(lex, par, pos, font);
-#ifndef NO_COMPABILITY
-		ert_comp = ert_stack.top();
-		ert_stack.pop();
-#endif
-	} else if (token == "\\SpecialChar") {
-		LyXLayout const & layout =
-			textclasslist[params.textclass][par->layout()];
-
-		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout.free_spacing || par->isFreeSpacing()) {
-			if (lex.isOK()) {
-				lex.next();
-				string next_token = lex.getString();
-				if (next_token == "\\-") {
-					par->insertChar(pos, '-', font);
-				} else if (next_token == "\\protected_separator"
-					|| next_token == "~") {
-					par->insertChar(pos, ' ', font);
-				} else {
-					lex.printError("Token `$$Token' "
-						       "is in free space "
-						       "paragraph layout!");
-					--pos;
-				}
-			}
-		} else {
-			Inset * inset = new InsetSpecialChar;
-			inset->read(this, lex);
-			par->insertInset(pos, inset, font);
-		}
-		++pos;
 	} else if (token == "\\newline") {
 #ifndef NO_COMPABILITY
 		if (!ert_comp.in_tabular && ert_comp.active) {
@@ -1253,17 +1263,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->bibkey = new InsetBibKey(p);
 		}
 		par->bibkey->read(this, lex);
-	} else if (token == "\\backslash") {
-#ifndef NO_COMPABILITY
-		if (ert_comp.active) {
-			ert_comp.contents += "\\";
-		} else {
-#endif
-		par->insertChar(pos, '\\', font);
-		++pos;
-#ifndef NO_COMPABILITY
-		}
-#endif
 	} else if (token == "\\the_end") {
 #ifndef NO_COMPABILITY
 		// If we still have some ert active here we have to insert

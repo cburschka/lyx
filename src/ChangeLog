@@ -1,10 +1,18 @@
- 
+2002-05-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* paragraph_pimpl.C (insertChar): do not try to update tables when
+	appending (pos == size())
+
+	* buffer.C (parseSingleLyXformat2Token): reorder a bit the tests
+	in order to reduce drastically the number of comparisons needed to
+	parse a large document
+
 2002-05-29  André Pönitz <poenitz@gmx.net>
 
 	* text.C:
 	* text2.C:
 	* lyxtextclass.C:
-	*	sp_pspell.h:
+	* sp_pspell.h:
 	* textclasslist.[Ch]:
 	* sp_ispell.h: whitespace change
 
