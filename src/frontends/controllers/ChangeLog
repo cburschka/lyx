@@ -1,7 +1,3 @@
-2003-03-13  Angus Leeming  <angus@localhost.localdomain>
-
-	* ButtonController.h: 
-
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* Dialog.h (initialiseParams): return a bool to indicate successful
@@ -12,6 +8,10 @@
 	* ControlAbout.h: a serious attempt at documenting the code.
 
 	* ButtonController.[Ch] (readWrite): it wasn't used, so remove it.
+	(invalid): ditto.
+
+	* ButtonController.[Ch]:
+	* BCView.[Ch], BCView.tmpl: make many methods const.
 
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
