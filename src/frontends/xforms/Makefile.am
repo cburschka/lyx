@@ -184,7 +184,7 @@ lyx_forms.h: stamp-forms
 	@:
 
 stamp-forms: lyx_forms.h-tmp
-	cmp -s $< lyx_forms.h || {
+	cmp -s $< lyx_forms.h || {\
 		rm -f lyx_forms.h ;\
 		cp $< lyx_forms.h ;\
 	}
@@ -194,7 +194,7 @@ lyx_xpm.h: stamp-xpm
 	@:
 
 stamp-xpm: lyx_xpm.h-tmp
-	if cmp -s $< lyx_xpm.h || {
+	if cmp -s $< lyx_xpm.h || {\
 		rm -f lyx_xpm.h ;\
 		cp $< lyx_xpm.h ;\
 	}
