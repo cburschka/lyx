@@ -314,7 +314,7 @@ lyxpreview_to_bitmap_command='python $$s/lyxpreview2bitmap.py'
 SEARCH_PROG([for dvipng],DVIPNG,dvipng)
 
 test "$DVIPNG" = "dvipng" && \
-	lyxpreview_to_png_command = $lyxpreview_to_bitmap_command
+	lyxpreview_to_png_command=$lyxpreview_to_bitmap_command
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
