@@ -217,9 +217,3 @@ int InsetCommand::docbook(Buffer const *, ostream &) const
 {
 	return 0;
 }
-
-
-bool InsetCommand::insetButtonRelease(BufferView *, int, int, int)
-{
-	return true;
-}

@@ -160,11 +160,10 @@ public:
 	virtual void insetButtonPress(BufferView *, int, int, int) {}
 	/// This is called when the user releases the button inside an inset
 	// the bool return is used to see if we opened a dialog so that we can
-	// check this from an outer inset and open the dialog of the outer inset
-	// if that one has one!
-	///
+	// check this from an outer inset and open the dialog of the
+	// outer inset if that one has one!
 	virtual bool insetButtonRelease(BufferView *, int, int, int)
-		{ return false; }
+		{ return editable() == IS_EDITABLE; }
 	/// This is called when the user moves the mouse inside an inset
 	virtual void insetMotionNotify(BufferView *, int , int , int) {}
 	///

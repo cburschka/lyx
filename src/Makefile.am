@@ -229,7 +229,6 @@ lyx_SOURCES = \
 	vc-backend.h \
 	version.C \
 	version.h \
-	vms_defines.h \
 	vspace.C \
 	vspace.h
 
