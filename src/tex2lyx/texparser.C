@@ -13,26 +13,18 @@ using std::string;
 using std::vector;
 
 
-// 
-// catcodes
-//
-
-mode_type asMode(mode_type oldmode, string const & str)
-{
-	if (str == "mathmode")
-		return MATH_MODE;
-	if (str == "textmode" || str == "forcetext")
-		return TEXT_MODE;
-	return oldmode;
-}
-
+namespace {
 
 CatCode theCatcode[256];
 
-
-CatCode catcode(unsigned char c)
+void skipSpaceTokens(istream & is, char c)
 {
-	return theCatcode[c];
+	// skip trailing spaces
+	while (catcode(c) == catSpace || catcode(c) == catNewline)
+		if (!is.get(c))
+			break;
+	//cerr << "putting back: " << c << "\n";
+	is.putback(c);
 }
 
 
@@ -59,6 +51,29 @@ void catInit()
 	theCatcode['%']  = catComment;
 }
 
+}
+
+
+// 
+// catcodes
+//
+
+mode_type asMode(mode_type oldmode, string const & str)
+{
+	if (str == "mathmode")
+		return MATH_MODE;
+	if (str == "textmode" || str == "forcetext")
+		return TEXT_MODE;
+	return oldmode;
+}
+
+
+CatCode catcode(unsigned char c)
+{
+	return theCatcode[c];
+}
+
+
 
 //
 // Token
@@ -72,6 +87,7 @@ ostream & operator<<(ostream & os, Token const & t)
 		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
 }
+
 
 
 //
@@ -162,18 +178,6 @@ string Parser::getArg(char left, char right)
 
 	return result;
 }
-
-
-void Parser::skipSpaceTokens(istream & is, char c)
-{
-	// skip trailing spaces
-	while (catcode(c) == catSpace || catcode(c) == catNewline)
-		if (!is.get(c))
-			break;
-	//cerr << "putting back: " << c << "\n";
-	is.putback(c);
-}
-
 
 
 void Parser::tokenize(istream & is)

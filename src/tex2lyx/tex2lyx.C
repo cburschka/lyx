@@ -2,6 +2,8 @@
     \author André Pönitz (2003)
  */
 
+// {[(
+
 #include <config.h>
 
 #include <algorithm>
@@ -53,7 +55,7 @@ const char * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 
 // some ugly stuff
-string h_preamble;
+ostringstream h_preamble;
 string h_textclass               = "FIXME";
 string h_options                 = "FIXME";
 string h_language                = "FIXME";
@@ -73,7 +75,7 @@ string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
 string h_paragraph_separation    = "indent";
 string h_defskip                 = "medskip";
-string h_quotes_language         = "2";
+string h_quotes_language         = "FIXME";
 string h_quotes_times            = "1";
 string h_papercolumns            = "1";
 string h_papersides              = "1";
@@ -144,11 +146,29 @@ void handle_opt(vector<string> & opts, char const ** what, string & target)
 }
 
 
+void inset_header(ostream & os, string const & name)
+{
+	os << "\n\\begin_inset " << name;
+}
+
+
+void inset_footer(ostream & os)
+{
+	os << "\n\\end_inset\n";
+}
+
+
 void handle_ert(ostream & os, string const & s)
 {
-	os << "\n\\begin_inset ERT\nstatus Collapsed\n\n\\layout Standard\n\n";
-	os << s;
-	os << "\n\\end_inset\n";
+	inset_header(os, "ERT");
+	os << "\nstatus Collapsed\n\n\\layout Standard\n\n";
+	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+		if (*it == '\\')
+			os << "\n\\backslash\n";
+		else
+			os << *it;
+	}
+	inset_footer(os);
 }
 
 
@@ -158,18 +178,20 @@ void handle_par(ostream & os)
 		return;
 	os << "\n\\layout ";
 	string s = active_environments.top();
-	if (s == "document")
-		os << "Standard";
-	else
-		os << s;
-	os << "\n\n";
+	if (s == "document") {
+		os << "Standard\n\n";
+		return;
+	}
+	if (s.size()) 
+		s[0] = toupper(s[0]);	
+	os << s << "\n\n";
 }
 
 
 void handle_package(string const & name, string const & options)
 {
 	if (name == "a4wide") {
-		h_papersize = "a4";
+		h_papersize = "a4paper";
 		h_paperpackage = "widemarginsa4";
 	} else if (name == "ae") 
 		h_fontscheme = "ae";
@@ -191,9 +213,9 @@ void handle_package(string const & name, string const & options)
 		; // ignore this
 	else {
 		if (options.size())
-			h_preamble += "\\usepackage[" + options + "]{" + name + "}\n";
+			h_preamble << "\\usepackage[" << options << "]{" << name << "}\n";
 		else
-			h_preamble += "\\usepackage{" + name + "}\n";
+			h_preamble << "\\usepackage{" << name << "}\n";
 	}
 }
 
@@ -204,24 +226,49 @@ string wrap(string const & cmd, string const & str)
 }
 
 
-string wrap(string const & cmd, string const & str, string const & str2)
+void end_preamble(ostream & os)
 {
-	return OPEN + cmd + ' ' + str + ' ' + str2 + CLOSE;
+	in_preamble = false;
+	os << "# tex2lyx 0.0.2 created this file\n"
+	   << "\\lyxformat 222\n"
+	   << "\\textclass " << h_textclass << "\n"
+	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n"
+	   << "\\options " << h_options << "\n"
+	   << "\\language " << h_language << "\n"
+	   << "\\inputencoding " << h_inputencoding << "\n"
+	   << "\\fontscheme " << h_fontscheme << "\n"
+	   << "\\graphics " << h_graphics << "\n"
+	   << "\\paperfontsize " << h_paperfontsize << "\n"
+	   << "\\spacing " << h_spacing << "\n"
+	   << "\\papersize " << h_papersize << "\n"
+	   << "\\paperpackage " << h_paperpackage << "\n"
+	   << "\\use_geometry " << h_use_geometry << "\n"
+	   << "\\use_amsmath " << h_use_amsmath << "\n"
+	   << "\\use_natbib " << h_use_natbib << "\n"
+	   << "\\use_numerical_citations " << h_use_numerical_citations << "\n"
+	   << "\\paperorientation " << h_paperorientation << "\n"
+	   << "\\secnumdepth " << h_secnumdepth << "\n"
+	   << "\\tocdepth " << h_tocdepth << "\n"
+	   << "\\paragraph_separation " << h_paragraph_separation << "\n"
+	   << "\\defskip " << h_defskip << "\n"
+	   << "\\quotes_language " << h_quotes_language << "\n"
+	   << "\\quotes_times " << h_quotes_times << "\n"
+	   << "\\papercolumns " << h_papercolumns << "\n"
+	   << "\\papersides " << h_papersides << "\n"
+	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
+	   << "\\tracking_changes " << h_tracking_changes << "\n"
+	   << h_preamble.str() << "\n";
 }
 
 
-string parse(Parser & p, unsigned flags, mode_type mode)
+void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 {
-	//int limits = 0;
-
-	ostringstream result;
 	while (p.good()) {
 		Token const & t = p.getToken();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
 		//cell->dump();
-		cerr << "\n";
 #endif
 
 		if (flags & FLAG_ITEM) {
@@ -247,7 +294,7 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 
 			if (t.cat() != catBegin) {
 				p.error("opening brace expected");
-				return result.str();
+				return;
 			}
 
 			// skip the brace and collect everything to the next matching
@@ -258,75 +305,87 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				result << parse(p, FLAG_BRACK_LAST, mode);
+				parse(p, os, FLAG_BRACK_LAST, mode);
 			} else {
 				// no option found, put back token and we are done
 				p.putback();
 			}
-			return result.str();
+			return;
 		}
 
 		//
 		// cat codes
 		//
 		if (t.cat() == catMath) {
-			if (mode != MATH_MODE) {
+			if (mode == TEXT_MODE || mode == MATHTEXT_MODE || mode == UNDECIDED_MODE){
 				// we are inside some text mode thingy, so opening new math is allowed
+				if (mode == TEXT_MODE)
+					inset_header(os, "Formula ");
 				Token const & n = p.getToken();
 				if (n.cat() == catMath) {
 					// TeX's $$...$$ syntax for displayed math
-					result << wrap("equation", parse(p, FLAG_SIMPLE, MATH_MODE));
+					os << "\\[";
+					parse(p, os, FLAG_SIMPLE, MATH_MODE);
+					os << "\\]";
 					p.getToken(); // skip the second '$' token
 				} else {
 					// simple $...$  stuff
 					p.putback();
-					result << wrap("simple", parse(p, FLAG_SIMPLE, MATH_MODE));
+					os << '$';
+					parse(p, os, FLAG_SIMPLE, MATH_MODE);
+					os << '$';
 				}
+				if (mode == TEXT_MODE)
+					inset_footer(os);
 			}
 
 			else if (flags & FLAG_SIMPLE) {
 				// this is the end of the formula
-				return result.str();
+				return;
 			}
 
 			else {
+				cerr << "mode: " << mode << endl;
 				p.error("something strange in the parser\n");
 				break;
 			}
 		}
 
 		else if (t.cat() == catLetter)
-			result << t.character();
+			os << t.character();
 
-		else if (t.cat() == catSpace && mode != MATH_MODE) {
-			//if (result.empty() || result[result.size() - 1] != ' ')
-				result << t.character();
-		}
+		else if (t.cat() == catSpace) 
+			os << t.character();
 
-		else if (t.cat() == catNewline && mode != MATH_MODE)
-			result << t.character();
+		else if (t.cat() == catNewline)
+			os << t.character();
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= p.getToken();
-			result << wrap("macroarg", string(1, n.character()));
+			os << wrap("macroarg", string(1, n.character()));
 		}
 
 		else if (t.cat() == catActive)
-			result << wrap("active", string(1, t.character()));
+			os << wrap("active", string(1, t.character()));
 
-		else if (t.cat() == catBegin)
-			result << wrap("braced", parse(p, FLAG_BRACE_LAST, mode));
+		else if (t.cat() == catBegin) {
+			os << '{';
+			parse(p, os, FLAG_BRACE_LAST, mode);	
+			os << '}';
+		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
-				return result.str();
+				return;
 			p.error("found '}' unexpectedly");
 			//lyx::Assert(0);
 			//add(cell, '}', LM_TC_TEX);
 		}
 
+		else if (t.cat() == catAlign) 
+			os << t.character();
+
 /*
-		else if (t.cat() == catAlign) {
 			++cellcol;
 			//cerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
 			if (cellcol == grid.ncols()) {
@@ -339,11 +398,11 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
 			//cerr << "finished reading option\n";
-			return result.str();
+			return;
 		}
 
 		else if (t.cat() == catOther)
-			result << string(1, t.character());
+			os << string(1, t.character());
 
 		else if (t.cat() == catComment) {
 			string s;
@@ -353,7 +412,7 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 					break;
 				s += t.asString();
 			}
-			//result << wrap("comment", s);
+			//os << wrap("comment", s);
 			p.skipSpaces();
 		}
 
@@ -371,22 +430,44 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 			string const body = p.verbatimItem();
 			// only non-lyxspecific stuff
 			if (name != "noun" && name != "tabularnewline") {
-				h_preamble += "\\" + t.cs() + "{" + name + "}";
+				h_preamble << "\\" << t.cs() << "{" << name << "}";
 				if (opts.size()) 
-					h_preamble += "[" + opts + "]";
-				h_preamble += "{" + body + "}\n";
+					h_preamble << "[" << opts << "]";
+				h_preamble << "{" << body << "}\n";
 			}
 		}
 
-		else if (t.cs() == "(") 
-			result << wrap("simple", parse(p, FLAG_SIMPLE2, MATH_MODE));
+		else if (t.cs() == "(") {
+			inset_header(os, "Formula");
+			os << " \\(";
+			parse(p, os, FLAG_SIMPLE2, MATH_MODE);
+			os << "\\)";
+			inset_footer(os);
+		}
 
-		else if (t.cs() == "[")
-			result << wrap("equation", parse(p, FLAG_EQUATION, MATH_MODE));
+		else if (t.cs() == "[") {
+			inset_header(os, "Formula");
+			os << " \\[";
+			parse(p, os, FLAG_EQUATION, MATH_MODE);
+			os << "\\]";
+			inset_footer(os);
+		}
 
 		else if (t.cs() == "protect")
 			// ignore \\protect, will hopefully be re-added during output
 			;
+
+		else if (t.cs() == "begin") {
+			string const name = p.getArg('{', '}');
+			active_environments.push(name);
+			if (name == "document") 
+				end_preamble(os);
+			else if (name == "abstract")
+				handle_par(os);
+			else
+				os << "\\begin{" << name << "}";
+			parse(p, os, FLAG_END, mode);
+		}
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -396,40 +477,33 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 					p.error("\\end{" + name + "} does not match \\begin{"
 						+ active_environments.top() + "}");
 				active_environments.pop();
-				return result.str();
+				if (name == "document" || name == "abstract")
+					;
+				else
+					os << "\\end{" << name << "}";
+				return;
 			}
 			p.error("found 'end' unexpectedly");
 		}
 
 		else if (t.cs() == ")") {
 			if (flags & FLAG_SIMPLE2)
-				return result.str();
+				return;
 			p.error("found '\\)' unexpectedly");
 		}
 
 		else if (t.cs() == "]") {
 			if (flags & FLAG_EQUATION)
-				return result.str();
+				return;
 			p.error("found '\\]' unexpectedly");
 		}
 
-/*
-		else if (t.cs() == "\\") {
-			grid.vcrskip(LyXLength(getArg('[', ']')), cellrow);
-			++cellrow;
-			cellcol = 0;
-			if (cellrow == grid.nrows())
-				grid.addRow(cellrow - 1);
-			if (grid.asHullstring())
-				grid.asHullstring()->numbered(cellrow, numbered);
-			cell = &grid.cell(grid.index(cellrow, cellcol));
-		}
-*/
 		else if (t.cs() == "documentclass") {
 			vector<string> opts;
 			split(p.getArg('[', ']'), opts, ',');
 			handle_opt(opts, known_languages, h_language); 
 			handle_opt(opts, known_fontsizes, h_paperfontsize); 
+			h_quotes_language = h_language;
 			h_options = join(opts, ',');
 			h_textclass = p.getArg('{', '}');
 		}
@@ -442,9 +516,8 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 				split(name, vecnames, ',');
 				vector<string>::const_iterator it  = vecnames.begin();
 				vector<string>::const_iterator end = vecnames.end();
-				for (; it != end; ++it) {
+				for (; it != end; ++it)
 					handle_package(trim(*it), string());
-				}
 			} else {
 				handle_package(name, options);
 			}
@@ -458,15 +531,14 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 			string const end = p.verbatimItem();
 			// ignore out mess
 			if (name != "lyxcode") 
-				result << wrap("newenvironment", begin + end); 
+				os << wrap("newenvironment", begin + end); 
 		}
 
 		else if (t.cs() == "def") {
-			string const name = p.getToken().cs();
-			string res;
+			string name = p.getToken().cs();
 			while (p.nextToken().cat() != catBegin)
-				res += p.getToken().asString();
-			handle_ert(result, "\\def" + res + '{' + p.verbatimItem() + '}');
+				name += p.getToken().asString();
+			handle_ert(os, "\\def\\" + name + '{' + p.verbatimItem() + '}');
 		}
 
 		else if (t.cs() == "setcounter") {
@@ -477,7 +549,7 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 			else if (name == "tocdepth") 
 				h_tocdepth = content;
 			else
-				h_preamble += "\\setcounter{" + name + "}{" + content + "}\n";
+				h_preamble << "\\setcounter{" << name << "}{" << content << "}\n";
 		}
 
 		else if (t.cs() == "setlength") {
@@ -488,35 +560,37 @@ string parse(Parser & p, unsigned flags, mode_type mode)
 			else if (name == "parindent")
 				h_paragraph_separation = "skip";
 			else
-				h_preamble += "\\setcounter{" + name + "}{" + content + "}\n";
+				h_preamble << "\\setlength{" << name << "}{" << content << "}\n";
 		}
 	
 		else if (t.cs() == "par")
-			handle_par(result);
+			handle_par(os);
 
 		else if (t.cs() == "title")
-			result << "\\layout Title\n\n" + p.verbatimItem();
+			os << "\\layout Title\n\n" + p.verbatimItem();
 
 		else if (t.cs() == "author")
-			result << "\\layout Author\n\n" + p.verbatimItem();
+			os << "\\layout Author\n\n" + p.verbatimItem();
 
-		else if (t.cs() == "abstract")
-			result << "\\layout Abstract\n\n" + p.verbatimItem();
+		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
+			; // swallow this
 
-		else if (t.cs() == "begin") {
-			string const name = p.getArg('{', '}');
-			active_environments.push(name);
-			result << parse(p, FLAG_END, mode);
+		else if (t.cs() == "textrm") {
+			os << '\\' << t.cs() << '{';
+			parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+			os << '}';
 		}
+
+		else 
+			(in_preamble ? h_preamble : os) << '\\' << t.asString();
 
 		if (flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;
 			break;
 		}
 	}
-
-	return result.str();
 }
+
 
 
 } // anonymous namespace
@@ -531,37 +605,10 @@ int main(int argc, char * argv[])
 
 	ifstream is(argv[1]);
 	Parser p(is);
-	string s = parse(p, 0, UNDECIDED_MODE);
-	cout << "# tex2lyx 0.0.2 created this file\n"
-	     << "\\lyxformat 222\n"
-	     << "\\textclass " << h_textclass << "\n"
-	     << "\\begin_preamble\n" << h_preamble << "\\end_preamble\n"
-	     << "\\options " << h_options << "\n"
-	     << "\\language " << h_language << "\n"
-	     << "\\inputencoding " << h_inputencoding << "\n"
-	     << "\\fontscheme " << h_fontscheme << "\n"
-	     << "\\graphics " << h_graphics << "\n"
-	     << "\\paperfontsize " << h_paperfontsize << "\n"
-	     << "\\spacing " << h_spacing << "\n"
-	     << "\\papersize " << h_papersize << "\n"
-	     << "\\paperpackage " << h_paperpackage << "\n"
-	     << "\\use_geometry " << h_use_geometry << "\n"
-	     << "\\use_amsmath " << h_use_amsmath << "\n"
-	     << "\\use_natbib " << h_use_natbib << "\n"
-	     << "\\use_numerical_citations " << h_use_numerical_citations << "\n"
-	     << "\\paperorientation " << h_paperorientation << "\n"
-	     << "\\secnumdepth " << h_secnumdepth << "\n"
-	     << "\\tocdepth " << h_tocdepth << "\n"
-	     << "\\paragraph_separation " << h_paragraph_separation << "\n"
-	     << "\\defskip " << h_defskip << "\n"
-	     << "\\quotes_language " << h_quotes_language << "\n"
-	     << "\\quotes_times " << h_quotes_times << "\n"
-	     << "\\papercolumns " << h_papercolumns << "\n"
-	     << "\\papersides " << h_papersides << "\n"
-	     << "\\paperpagestyle " << h_paperpagestyle << "\n"
-	     << "\\tracking_changes " << h_tracking_changes << "\n"
-	     << s << "\n"
-	     << "\\the_end";
+	parse(p, cout, 0, UNDECIDED_MODE);
+	cout << "\n\\the_end";
 
 	return 0;	
 }	
+
+// }])

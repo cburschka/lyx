@@ -5,7 +5,7 @@
 #include "LString.h"
 #include <vector>
 
-enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
+enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE};
 
 mode_type asMode(mode_type oldmode, string const & str);
 
@@ -72,6 +72,8 @@ public:
 	char character() const { return char_; }
 	///
 	string asString() const { return cs_.size() ? cs_ : string(1, char_); }
+	///
+	string asInput() const;
 
 private:
 	///
@@ -110,8 +112,6 @@ public:
 	void error(string const & msg);
 	///
 	void tokenize(istream & is);
-	///
-	void skipSpaceTokens(istream & is, char c);
 	///
 	void push_back(Token const & t);
 	///
