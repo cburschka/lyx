@@ -1,5 +1,9 @@
 2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* InsetList.C: replace functor MathcIt with adaptable functor
+	InsetTablePosLess
+	(insetIterator): modify accordingly
+
 	* BranchList.h: move the BranchNamesEqual functor here from...
 	* BranchList.C: ... to here
 

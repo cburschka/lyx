@@ -26,21 +26,18 @@ using lyx::pos_type;
 using std::endl;
 using std::lower_bound;
 
-
 namespace {
 
-struct MatchIt {
-	/// used by lower_bound
-	inline
-	int operator()(InsetList::InsetTable const & a,
-		       InsetList::InsetTable const & b) const
+class InsetTablePosLess : public std::binary_function<InsetList::InsetTable, InsetList::InsetTable, bool> {
+public:
+	bool operator()(InsetList::InsetTable const & t1,
+		      InsetList::InsetTable const & t2) const
 	{
-		return a.pos < b.pos;
+		return t1.pos < t2.pos;
 	}
 };
 
 } // namespace anon
-
 
 InsetList::~InsetList()
 {
@@ -57,14 +54,16 @@ InsetList::~InsetList()
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
-	return lower_bound(list.begin(), list.end(), search_elem, MatchIt());
+	return lower_bound(list.begin(), list.end(), search_elem,
+			   InsetTablePosLess());
 }
 
 
 InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 {
 	InsetTable search_elem(pos, 0);
-	return lower_bound(list.begin(), list.end(), search_elem, MatchIt());
+	return lower_bound(list.begin(), list.end(), search_elem,
+			   InsetTablePosLess());
 }
 
 
