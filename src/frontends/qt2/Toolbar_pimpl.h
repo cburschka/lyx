@@ -54,10 +54,6 @@ public:
     	void add(int, bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
-	/// activates the toolbar
-	void activate();
-	/// deactivates the toolbar
-        void deactivate();
 	/// update the state of the icons
 	void update();
 

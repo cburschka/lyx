@@ -103,30 +103,6 @@ Toolbar::Pimpl::~Pimpl()
 }
 
 
-void Toolbar::Pimpl::activate()
-{
-	ToolbarList::const_iterator p = toollist.begin();
-	ToolbarList::const_iterator end = toollist.end();
-	for (; p != end; ++p) {
-		if (p->icon) {
-			fl_activate_object(p->icon);
-		}
-	}
-}
-
-
-void Toolbar::Pimpl::deactivate()
-{
-	ToolbarList::const_iterator p = toollist.begin();
-	ToolbarList::const_iterator end = toollist.end();
-	for (; p != end; ++p) {
-		if (p->icon) {
-			fl_deactivate_object(p->icon);
-		}
-	}
-}
-
-
 void Toolbar::Pimpl::update()
 {
 	ToolbarList::const_iterator p = toollist.begin();

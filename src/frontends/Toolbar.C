@@ -53,18 +53,6 @@ void Toolbar::set(bool doingmain)
 }
 
 
-void Toolbar::activate()
-{
-	pimpl_->activate();
-}
-
-
-void Toolbar::deactivate()
-{
-	pimpl_->deactivate();
-}
-
-
 void Toolbar::update()
 {
 	pimpl_->update();

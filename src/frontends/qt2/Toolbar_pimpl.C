@@ -103,18 +103,6 @@ Toolbar::Pimpl::~Pimpl()
 }
 
 
-void Toolbar::Pimpl::activate()
-{
-	// FIXME
-}
-
-
-void Toolbar::Pimpl::deactivate()
-{
-	// FIXME
-}
-
-
 void Toolbar::Pimpl::update()
 {
 	ButtonMap::const_iterator p = map_.begin();

@@ -58,7 +58,6 @@ QDocument
 qfont_loader
 
 	- use lyxrc, check for failure, implement available()
-	- fix usage outside of qt2/ (frontends/font_laoder.h)
  
 qfont_metrics
 
@@ -140,7 +139,6 @@ QtView
 Toolbar_pimpl (variously maybe *)
 
 	- mathed symbols
-	- activate/deactivate
 	- openLayoutList() (?)
 	- ::set() ???
 	- push() ??
