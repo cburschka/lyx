@@ -122,3 +122,7 @@ string const mathcircumflex_def =
 string const tabularnewline_def =
 	"%% Because html converters don't know tabularnewline\n"
 	"\\providecommand{\\tabularnewline}{\\\\}\n";
+
+string const lyxgreyedout_def =
+	"%% The greyedout annotation environment\n"
+	"\\newenvironment{lyxgreyedout}{\\color[gray]{0.8}}{}\n";

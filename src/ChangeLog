@@ -1,3 +1,9 @@
+2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* LaTeXFeatures.C:
+	* lay_sty.[Ch]:h: Implement a newenvironment in preamble for
+	greyedout. Patch provided by Jürgen Spitzmüller.
+
 2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbmap.C (read): fix error message when reading bind files

@@ -350,6 +350,10 @@ string const LaTeXFeatures::getMacros() const
 	if (isRequired("NeedTabularnewline"))
 		macros << tabularnewline_def;
 
+	// greyedout environment (note inset)
+	if (isRequired("lyxgreyedout"))
+		macros << lyxgreyedout_def;
+
 	// floats
 	getFloatDefinitions(macros);
 

@@ -151,9 +151,11 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 
 	int i = 0;
 	if (pt == "Comment")
-		os << "%\n\\begin{comment}\n"; // remember to validate
+		 // verbatim
+		os << "%\n\\begin{comment}\n";
 	else if (pt == "Greyedout")
-		os << "%\n\\color[gray]{0.8}";
+		 // we roll our own macro
+		os << "%\n\\begin{lyxgreyedout}\n";
 
 	if (pt != "Note")
 		i = inset.latex(buf, os, runparams);
@@ -162,7 +164,7 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 		os << "%\n\\end{comment}\n";
 		i += 3;
 	} else if (pt == "Greyedout") {
-		os << "\\normalcolor%\n";
+		os << "%\n\\end{lyxgreyedout}\n";
 		i += 2;
 	}
 	return i;
@@ -224,8 +226,10 @@ void InsetNote::validate(LaTeXFeatures & features) const
 {
 	if (params_.type == "Comment")
 		features.require("verbatim");
-	if (params_.type == "Greyedout")
+	if (params_.type == "Greyedout") {
 		features.require("color");
+		features.require("lyxgreyedout");
+	}
 	inset.validate(features);
 }
 

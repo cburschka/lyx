@@ -51,5 +51,7 @@ extern string const binom_def;
 extern string const mathcircumflex_def;
 ///
 extern string const tabularnewline_def;
+///
+extern string const lyxgreyedout_def;
 
 #endif // LYX_STY_H
