@@ -68,11 +68,15 @@ bool moveItem(Paragraph & from, Paragraph & to,
 		if (from.getInset(i)) {
 			// the inset is not in a paragraph anymore
 			tmpinset = from.insetlist.release(i);
+			from.insetlist.erase(i);
 		}
 
-		if (!to.insetAllowed(tmpinset->lyxCode()))
+		if (!to.insetAllowed(tmpinset->lyxCode())) {
+			delete tmpinset;
 			return false;
-		to.insertInset(j, tmpinset, tmpfont);
+		}
+		if (tmpinset)
+			to.insertInset(j, tmpinset, tmpfont);
 	} else {
 		if (!to.checkInsertChar(tmpfont))
 			return false;
