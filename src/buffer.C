@@ -2481,7 +2481,7 @@ void Buffer::pop_tag(ostream & os, char const * tag,
 	os << "</" << tag << ">";
 
 	// push all tags, but the specified one
-	for (int i = i + 1; i <= pos; ++i) {
+	for (int i = 0; i <= pos; ++i) {
 		os << "<" << stack[i] << ">";
 		strcpy(stack[i - 1], stack[i]);
 	}
