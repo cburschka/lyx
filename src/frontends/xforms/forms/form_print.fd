@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_print
 Width: 290
-Height: 370
+Height: 390
 Number of Objects: 25
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 290 370
+box: 0 0 290 390
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,14 +34,14 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 5 125 280 115
+box: 5 125 280 165
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Range
+label: Pages
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_West FL_East
@@ -70,7 +70,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 5 250 280 50
+box: 5 300 280 50
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -80,7 +80,7 @@ lcol: FL_BLACK
 label: Copies
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_East
 name: 
 callback: 
 argument: 
@@ -124,7 +124,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 195 340 90 25
+box: 195 360 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -152,7 +152,7 @@ lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_NoGravity
 name: input_from_page
 callback: C_FormBaseInputCB
 argument: 0
@@ -160,7 +160,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 175 265 100 25
+box: 175 315 100 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -214,17 +214,17 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 5 305 200 25
+box: 10 260 270 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Reverse page order|#R
+label: Reverse order|#R
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_West
 name: check_reverse_order
 callback: C_FormBaseInputCB
 argument: 0
@@ -232,7 +232,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 80 265 90 25
+box: 80 315 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -242,7 +242,7 @@ lcol: FL_BLACK
 label: Number:|#N
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_NoGravity
 name: counter_copies
 callback: C_FormBaseInputCB
 argument: 0
@@ -255,7 +255,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 5 340 90 25
+box: 5 360 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -273,7 +273,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 100 340 90 25
+box: 100 360 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -291,17 +291,17 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 210 100 25
+box: 10 210 270 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Odd|#O
+label: Odd numbered pages|#O
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_West
 name: check_odd_pages
 callback: C_FormBaseInputCB
 argument: 0
@@ -309,17 +309,17 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 110 210 100 25
+box: 10 235 270 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Even|#E
+label: Even numbered pages|#E
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_West FL_West
 name: check_even_pages
 callback: C_FormBaseInputCB
 argument: 0
@@ -417,14 +417,14 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 140 100 25
+box: 10 140 270 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: All pages|#g
+label: All|#l
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_West FL_West
