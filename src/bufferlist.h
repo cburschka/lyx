@@ -19,6 +19,7 @@
 #include <vector>
 
 class Buffer;
+class LatexRunParams;
 
 /**
  * The class holds all all open buffers, and handles construction
@@ -60,7 +61,7 @@ public:
 	std::vector<string> const getFileNames() const;
 
 	/// FIXME
-	void updateIncludedTeXfiles(string const &);
+	void updateIncludedTeXfiles(string const &, LatexRunParams const &);
 
 	/// emergency save for all buffers
 	void emergencyWriteAll();

@@ -906,6 +906,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				BufferParams const & bparams,
 				LyXFont const & outerfont,
 				ostream & os, TexRow & texrow,
+				LatexRunParams const & runparams,
 				bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
@@ -1052,7 +1053,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		running_change = change;
 
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
-					      os, texrow, moving_arg,
+					      os, texrow, runparams, moving_arg,
 					      font, running_font,
 					      basefont, outerfont, open_font,
 					      running_change,

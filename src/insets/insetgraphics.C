@@ -69,6 +69,7 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -99,7 +100,6 @@ TODO
 
 extern string system_tempdir;
 // set by Exporters
-extern bool pdf_mode;
 
 using std::ostream;
 using std::endl;
@@ -127,12 +127,10 @@ string const uniqueID()
 }
 
 
-string findTargetFormat(string const & suffix)
+string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 {
-	// pdf_mode means:
-	// Are we creating a PDF or a PS file?
-	// (Should actually mean, are we using latex or pdflatex).
-	if (pdf_mode) {
+	// Are we using latex or pdflatex).
+	if (runparams.flavor == LatexRunParams::PDFLATEX) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
 		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";
@@ -516,7 +514,8 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
-string const InsetGraphics::prepareFile(Buffer const * buf) const
+string const InsetGraphics::prepareFile(Buffer const * buf,
+					LatexRunParams const & runparams) const
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.
@@ -577,7 +576,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 	}
 
 	string const from = getExtFromContents(orig_file_with_path);
-	string const to   = findTargetFormat(from);
+	string const to   = findTargetFormat(from, runparams);
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
 
@@ -673,7 +672,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 }
 
 
-int InsetGraphics::latex(Buffer const * buf, ostream & os,
+int InsetGraphics::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
 			 bool /*fragile*/, bool/*fs*/) const
 {
 	// If there is no file specified or not existing,
@@ -736,7 +735,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
 	string const latex_str = message.empty() ?
-		(before + '{' + os::external_path(prepareFile(buf)) + '}' + after) :
+		(before + '{' + os::external_path(prepareFile(buf, runparams)) + '}' + after) :
 		(before + '{' + params().filename + " not found!}" + after);
 	os << latex_str;
 

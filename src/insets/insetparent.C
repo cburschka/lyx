@@ -54,10 +54,10 @@ dispatch_result InsetParent::localDispatch(FuncRequest const & cmd)
 
 
 // LaTeX must just ignore this command
-int InsetParent::latex(Buffer const * buf, ostream & os,
+int InsetParent::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
 		       bool fragile, bool free_spc) const
 {
 	os << "%%#{lyx}";
-	InsetCommand::latex(buf, os, fragile, free_spc);
+	InsetCommand::latex(buf, os, runparams, fragile, free_spc);
 	return 0;
 }

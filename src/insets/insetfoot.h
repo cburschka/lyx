@@ -31,7 +31,8 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
+		  bool fragile, bool fp) const;
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///

@@ -79,8 +79,8 @@ void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile,
-			     bool /*free_spacing*/) const
+int InsetFormulaMacro::latex(Buffer const *, ostream & os, LatexRunParams const &,
+			     bool fragile, bool /*free_spacing*/) const
 {
 	WriteStream wi(os, fragile, true);
 	par()->write(wi);

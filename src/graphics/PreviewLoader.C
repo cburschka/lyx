@@ -564,7 +564,9 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Why on earth is Buffer::makeLaTeXFile a non-const method?
 	Buffer & tmp = const_cast<Buffer &>(buffer_);
 	// Dump the preamble only.
-	tmp.makeLaTeXFile(os, buffer_.filePath(), true, false, true);
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
+	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, true, false, true);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
@@ -585,7 +587,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	for (; it != end; ++it)
 		if (it->lyxCode() == Inset::MATHMACRO_CODE)
-			it->latex(&buffer_, os, true, true);
+			it->latex(&buffer_, os, runparams, true, true);
 
 	// All equation lables appear as "(#)" + preview.sty's rendering of
 	// the label name

@@ -274,13 +274,15 @@ ParagraphList::iterator
 TeXEnvironment(Buffer const * buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
-	       ostream & os, TexRow & texrow);
+	       ostream & os, TexRow & texrow,
+	       LatexRunParams const & runparams);
 
 ParagraphList::iterator
 TeXOnePar(Buffer const * buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
+	  LatexRunParams const & runparams,
 	  bool moving_arg,
 	  string const & everypar = string());
 
@@ -289,7 +291,8 @@ ParagraphList::iterator
 TeXDeeper(Buffer const * buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
-	  ostream & os, TexRow & texrow)
+	  ostream & os, TexRow & texrow,
+	  LatexRunParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
 	ParagraphList::iterator par = pit;
@@ -298,10 +301,10 @@ TeXDeeper(Buffer const * buf,
 		     par->params().depth() == pit->params().depth()) {
 		if (par->layout()->isEnvironment()) {
 			par = TeXEnvironment(buf, paragraphs, par,
-						  os, texrow);
+					     os, texrow, runparams);
 		} else {
 			par = TeXOnePar(buf, paragraphs, par,
-					     os, texrow, false);
+					     os, texrow, runparams, false);
 		}
 	}
 	lyxerr[Debug::LATEX] << "TeXDeeper...done " << &*par << endl;
@@ -314,7 +317,8 @@ ParagraphList::iterator
 TeXEnvironment(Buffer const * buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
-	       ostream & os, TexRow & texrow)
+	       ostream & os, TexRow & texrow,
+	       LatexRunParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
 
@@ -374,7 +378,7 @@ TeXEnvironment(Buffer const * buf,
 	}
 	ParagraphList::iterator par = pit;
 	do {
-		par = TeXOnePar(buf, paragraphs, par, os, texrow, false);
+		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams, false);
 
 		if (par != paragraphs.end()&& par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
@@ -396,7 +400,8 @@ TeXEnvironment(Buffer const * buf,
 				os << '\n';
 				texrow.newline();
 			}
-			par = TeXDeeper(buf, paragraphs, par, os, texrow);
+			par = TeXDeeper(buf, paragraphs, par, os, texrow,
+					runparams);
 		}
 	} while (par != paragraphs.end()
 		 && par->layout() == pit->layout()
@@ -438,6 +443,7 @@ TeXOnePar(Buffer const * buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
+	  LatexRunParams const & runparams,
 	  bool moving_arg,
 	  string const & everypar)
 {
@@ -547,7 +553,8 @@ TeXOnePar(Buffer const * buf,
 		if (style->optionalargs == 1) {
 			InsetOptArg * it = optArgInset(*pit);
 			if (it)
-				it->latexOptional(buf, os, false, false);
+				it->latexOptional(buf, os, runparams,
+						  false, false);
 		}
 		else
 			os << style->latexparam();
@@ -566,7 +573,7 @@ TeXOnePar(Buffer const * buf,
 	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(pit, paragraphs),
-					     os, texrow, moving_arg);
+					     os, texrow, runparams, moving_arg);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
@@ -689,6 +696,7 @@ void latexParagraphs(Buffer const * buf,
 		     ParagraphList const & paragraphs,
 		     ostream & os,
 		     TexRow & texrow,
+		     LatexRunParams const & runparams,
 		     bool moving_arg,
          string const & everypar)
 {
@@ -738,18 +746,19 @@ void latexParagraphs(Buffer const * buf,
 
 			if (layout->is_environment) {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                moving_arg, everypar);
+				                runparams, moving_arg, everypar);
 			} else if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
-				par = TeXEnvironment(buf, paragraphs, par, os, texrow);
+				par = TeXEnvironment(buf, paragraphs, par, os,
+						     texrow, runparams);
 			} else {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                moving_arg, everypar);
+				                runparams, moving_arg, everypar);
 			}
 		} else {
 			par = TeXOnePar(buf, paragraphs, par, os, texrow,
-			                moving_arg, everypar);
+			                runparams, moving_arg, everypar);
 		}
 	}
 	// It might be that we only have a title in this document

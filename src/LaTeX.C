@@ -107,8 +107,9 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
  * CLASS LaTeX
  */
 
-LaTeX::LaTeX(string const & latex, string const & f, string const & p)
-		: cmd(latex), file(f), path(p)
+LaTeX::LaTeX(string const & latex, LatexRunParams const & rp,
+	     string const & f, string const & p)
+	: cmd(latex), file(f), path(p), runparams(rp)
 {
 	num_errors = 0;
 	depfile = file + ".dep";
@@ -163,7 +164,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	bufferlist.updateIncludedTeXfiles(lyx::getcwd());
+	bufferlist.updateIncludedTeXfiles(lyx::getcwd(), runparams);
 
 	// Never write the depfile if an error was encountered.
 

@@ -156,8 +156,8 @@ void InsetSpace::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetSpace::latex(Buffer const *, ostream & os, bool /*fragile*/,
-			    bool free_space) const
+int InsetSpace::latex(Buffer const *, ostream & os, LatexRunParams const &,
+		      bool /*fragile*/, bool free_space) const
 {
 	switch (kind_) {
 	case NORMAL:

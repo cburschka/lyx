@@ -37,7 +37,7 @@ public:
 	virtual void draw(BufferView * bv, LyXFont const & f,
 			  int baseline, float & x) const;
 	///
-	virtual int latex(Buffer const * buf, std::ostream & os,
+	virtual int latex(Buffer const * buf, std::ostream & os, LatexRunParams const &,
 			  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;

@@ -256,6 +256,9 @@ bool Converters::convert(Buffer const * buffer,
 	if (edgepath.empty()) {
 		return false;
 	}
+	LatexRunParams runparams;
+	runparams.flavor = usePdflatex(edgepath) ?
+		LatexRunParams::PDFLATEX : LatexRunParams::LATEX;
 
 	string path = OnlyPath(from_file);
 	Path p(path);
@@ -292,7 +295,7 @@ bool Converters::convert(Buffer const * buffer,
 			run_latex = true;
 			string command = subst(conv.command, token_from, "");
 			lyxerr[Debug::FILES] << "Running " << command << endl;
-			if (!runLaTeX(buffer, command))
+			if (!runLaTeX(buffer, command, runparams))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
@@ -300,7 +303,7 @@ bool Converters::convert(Buffer const * buffer,
 				lyxerr[Debug::FILES]
 					<< "Running " << latex_command_
 					<< " to update aux file"<<  endl;
-				runLaTeX(buffer, latex_command_);
+				runLaTeX(buffer, latex_command_, runparams);
 			}
 
 			string infile2 = (conv.original_dir)
@@ -467,7 +470,9 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		return false;
 
 	BufferView * bv = buffer->getUser();
-	LaTeX latex("", filename, "");
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
+	LaTeX latex("", runparams, filename, "");
 	TeXErrors terr;
 	int result = latex.scanLogFile(terr);
 
@@ -481,7 +486,8 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 }
 
 
-bool Converters::runLaTeX(Buffer const * buffer, string const & command)
+bool Converters::runLaTeX(Buffer const * buffer, string const & command,
+			  LatexRunParams const & runparams)
 {
 	if (!buffer)
 		return false;
@@ -496,7 +502,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	// do the LaTeX run(s)
 	string name = buffer->getLatexName();
-	LaTeX latex(command, name, buffer->filePath());
+	LaTeX latex(command, runparams, name, buffer->filePath());
 	TeXErrors terr;
 	int result = latex.run(terr,
 			       bv ? &bv->owner()->getLyXFunc() : 0);

@@ -82,7 +82,7 @@ string const InsetBibtex::getScreenLabel(Buffer const *) const
 }
 
 
-int InsetBibtex::latex(Buffer const * buffer, ostream & os,
+int InsetBibtex::latex(Buffer const * buffer, ostream & os, LatexRunParams const &,
 		       bool /*fragile*/, bool/*fs*/) const
 {
 	// changing the sequence of the commands

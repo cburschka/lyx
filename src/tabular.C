@@ -1872,6 +1872,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 
 
 int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
+					 LatexRunParams const & runparams,
 					 bool fragile, bool fp) const
 {
 	if (!is_long_tabular)
@@ -1886,7 +1887,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
 		}
 		for (int i = 0; i < rows_; ++i) {
 			if (row_info[i].endhead) {
-				ret += TeXRow(os, i, buf, fragile, fp);
+				ret += TeXRow(os, i, buf, runparams, fragile, fp);
 			}
 		}
 		if (endhead.bottomDL) {
@@ -1908,7 +1909,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
 		}
 		for (int i = 0; i < rows_; ++i) {
 			if (row_info[i].endfirsthead) {
-				ret += TeXRow(os, i, buf, fragile, fp);
+				ret += TeXRow(os, i, buf, runparams, fragile, fp);
 			}
 		}
 		if (endfirsthead.bottomDL) {
@@ -1926,7 +1927,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
 		}
 		for (int i = 0; i < rows_; ++i) {
 			if (row_info[i].endfoot) {
-				ret += TeXRow(os, i, buf, fragile, fp);
+				ret += TeXRow(os, i, buf, runparams, fragile, fp);
 			}
 		}
 		if (endfoot.bottomDL) {
@@ -1948,7 +1949,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
 		}
 		for (int i = 0; i < rows_; ++i) {
 			if (row_info[i].endlastfoot) {
-				ret += TeXRow(os, i, buf, fragile, fp);
+				ret += TeXRow(os, i, buf, runparams, fragile, fp);
 			}
 		}
 		if (endlastfoot.bottomDL) {
@@ -1972,7 +1973,7 @@ bool LyXTabular::isValidRow(int const row) const
 
 
 int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
-		       bool fragile, bool fp) const
+		       LatexRunParams const & runparams, bool fragile, bool fp) const
 {
 	int ret = 0;
 	int cell = GetCellNumber(i, 0);
@@ -1989,7 +1990,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 
 		if (rtl)
 			os << "\\R{";
-		ret += inset->latex(buf, os, fragile, fp);
+		ret += inset->latex(buf, os, runparams, fragile, fp);
 		if (rtl)
 			os << '}';
 
@@ -2007,8 +2008,8 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 }
 
 
-int LyXTabular::latex(Buffer const * buf,
-					  ostream & os, bool fragile, bool fp) const
+int LyXTabular::latex(Buffer const * buf, ostream & os,
+		      LatexRunParams const & runparams, bool fragile, bool fp) const
 {
 	int ret = 0;
 
@@ -2082,7 +2083,7 @@ int LyXTabular::latex(Buffer const * buf,
 	os << "}\n";
 	++ret;
 
-	ret += TeXLongtableHeaderFooter(os, buf, fragile, fp);
+	ret += TeXLongtableHeaderFooter(os, buf, runparams, fragile, fp);
 
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
@@ -2090,7 +2091,7 @@ int LyXTabular::latex(Buffer const * buf,
 
 	for (int i = 0; i < rows_; ++i) {
 		if (isValidRow(i)) {
-			ret += TeXRow(os, i, buf, fragile, fp);
+			ret += TeXRow(os, i, buf, runparams, fragile, fp);
 			if (is_long_tabular && row_info[i].newpage) {
 				os << "\\newpage\n";
 				++ret;

@@ -127,7 +127,8 @@ void InsetFormula::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
+int InsetFormula::latex(Buffer const *, ostream & os, LatexRunParams const &,
+			bool fragile, bool) const
 {
 	WriteStream wi(os, fragile, true);
 	par_->write(wi);

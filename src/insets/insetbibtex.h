@@ -39,7 +39,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
 		  bool fragile, bool freespace) const;
 	///
 	void fillWithBibKeys(Buffer const *,

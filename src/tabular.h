@@ -24,6 +24,7 @@
 class InsetTabular;
 class BufferParams;
 class LaTeXFeatures;
+class LatexRunParams;
 class Buffer;
 class LyXLex;
 
@@ -290,7 +291,7 @@ public:
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
-	int latex(Buffer const *, std::ostream &, bool, bool) const;
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &, bool, bool) const;
 	///
 	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
 	///
@@ -559,12 +560,12 @@ private:
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
 	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
-				     bool fragile, bool fp) const;
+				     LatexRunParams const &, bool fragile, bool fp) const;
 	///
 	bool isValidRow(int const row) const;
 	///
 	int TeXRow(std::ostream &, int const row, Buffer const * buf,
-		   bool fragile, bool fp) const;
+		   LatexRunParams const &, bool fragile, bool fp) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///

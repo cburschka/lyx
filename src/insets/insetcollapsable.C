@@ -272,9 +272,10 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 
 int InsetCollapsable::latex(Buffer const * buf, ostream & os,
+			    LatexRunParams const & runparams,
 			    bool fragile, bool free_spc) const
 {
-	return inset.latex(buf, os, fragile, free_spc);
+	return inset.latex(buf, os, runparams, fragile, free_spc);
 }
 
 

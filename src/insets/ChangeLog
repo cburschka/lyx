@@ -1,3 +1,10 @@
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	* inset*.[Ch] (latex):
+	passed a LatexRunParams parameter.
+
+	* insetgraphics.C (latex): actually use it ;-)
+
 2003-05-22  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insetfloat.C (addToToc): trivial compile fix

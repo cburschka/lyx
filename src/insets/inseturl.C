@@ -70,7 +70,7 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 }
 
 
-int InsetUrl::latex(Buffer const *, ostream & os,
+int InsetUrl::latex(Buffer const *, ostream & os, LatexRunParams const &,
 		    bool fragile, bool /*free_spc*/) const
 {
 	if (!getOptions().empty())

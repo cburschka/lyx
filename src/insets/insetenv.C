@@ -65,12 +65,13 @@ string const InsetEnvironment::editMessage() const
 }
 
 
-int InsetEnvironment::latex(Buffer const * buf,
-			 ostream & os, bool fragile, bool) const
+int InsetEnvironment::latex(Buffer const * buf, ostream & os,
+			    LatexRunParams const & runparams,
+			    bool fragile, bool) const
 {
 	os << layout_->latexheader;
 	TexRow texrow;
-	latexParagraphs(buf, paragraphs, os, texrow, fragile,
+	latexParagraphs(buf, paragraphs, os, texrow, runparams, fragile,
 		layout_->latexparagraph);
 	os << layout_->latexfooter;
 	return texrow.rows();

@@ -239,7 +239,7 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 
 extern bool use_babel;
 
-int InsetQuotes::latex(Buffer const * buf, ostream & os,
+int InsetQuotes::latex(Buffer const * buf, ostream & os, LatexRunParams const &,
 		       bool /*fragile*/, bool /* free_spc */) const
 {
 	// How do we get the local language here??

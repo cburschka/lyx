@@ -38,11 +38,11 @@ public:
 	string const editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
-	int latex(Buffer const *, std::ostream &,
-					bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
+		  bool fragile, bool fp) const;
 	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(Buffer const *, std::ostream &,
-					bool fragile, bool fp) const;
+	int latexOptional(Buffer const *, std::ostream &, LatexRunParams const &,
+			  bool fragile, bool fp) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const * buf, std::ostream & os) const;
 };

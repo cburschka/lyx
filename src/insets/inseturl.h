@@ -43,7 +43,7 @@ public:
 	///
 	bool display() const { return false; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
 		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;

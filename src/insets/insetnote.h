@@ -33,7 +33,8 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	int latex(Buffer const *, std::ostream &, bool, bool) const
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
+		  bool, bool) const
 		{ return 0; }
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const

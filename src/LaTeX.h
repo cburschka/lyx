@@ -15,6 +15,7 @@
 #ifndef LATEX_H
 #define LATEX_H
 
+#include "latexrunparams.h"
 #include "LString.h"
 #include "DepTable.h"
 #include <vector>
@@ -129,7 +130,8 @@ public:
 	   cmd = the latex command, file = name of the (temporary) latex file,
 	   path = name of the files original path.
 	*/
-	LaTeX(string const & cmd, string const & file, string const & path);
+	LaTeX(string const & cmd, LatexRunParams const &,
+	      string const & file, string const & path);
 
 	/// runs LaTeX several times
 	int run(TeXErrors &, LyXFunc *);
@@ -186,6 +188,9 @@ private:
 
 	/// The name of the final output file.
 	string output_file;
+
+	///
+	LatexRunParams runparams;
 };
 
 #endif

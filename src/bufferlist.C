@@ -224,7 +224,8 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 }
 
 
-void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
+void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
+					LatexRunParams const & runparams)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
@@ -234,7 +235,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 			writefile += '/';
 			writefile += (*it)->getLatexName();
 			(*it)->makeLaTeXFile(writefile, mastertmpdir,
-					     false, true);
+					     runparams, false, true);
 			(*it)->markDepClean(mastertmpdir);
 		}
 	}

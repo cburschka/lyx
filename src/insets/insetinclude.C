@@ -18,6 +18,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -285,6 +286,7 @@ bool InsetInclude::loadIfNeeded() const
 
 
 int InsetInclude::latex(Buffer const * buffer, ostream & os,
+			LatexRunParams const & runparams,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	string incfile(params_.cparams.getContents());
@@ -328,6 +330,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 
 		tmp->makeLaTeXFile(writefile,
 				   OnlyPath(getMasterFilename()),
+				   runparams,
 				   buffer->niceFile, true);
 	}
 
@@ -573,7 +576,9 @@ string const InsetInclude::PreviewImpl::latexString() const
 		return string();
 
 	ostringstream os;
-	parent().latex(view()->buffer(), os, false, false);
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
+	parent().latex(view()->buffer(), os, runparams, false, false);
 
 	return STRCONV(os.str());
 }

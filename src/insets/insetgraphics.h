@@ -49,7 +49,7 @@ public:
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.
 	 */
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
 		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
@@ -101,7 +101,7 @@ private:
 	/// Create the options for the latex command.
 	string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
-	string const prepareFile(Buffer const * buf) const;
+	string const prepareFile(Buffer const * buf, LatexRunParams const &) const;
 
 	///
 	InsetGraphicsParams params_;

@@ -57,8 +57,8 @@ string const InsetFoot::editMessage() const
 }
 
 
-int InsetFoot::latex(Buffer const * buf,
-		     ostream & os, bool fragile, bool fp) const
+int InsetFoot::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
+		     bool fragile, bool fp) const
 {
 	if (buf && parOwner()) {
 		LyXLayout_ptr const & layout = parOwner()->layout();
@@ -67,7 +67,7 @@ int InsetFoot::latex(Buffer const * buf,
 
 	os << "%\n\\footnote{";
 
-	int const i = inset.latex(buf, os, fragile, fp);
+	int const i = inset.latex(buf, os, runparams, fragile, fp);
 	os << "%\n}";
 
 	return i + 2;

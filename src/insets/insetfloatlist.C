@@ -107,7 +107,8 @@ dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetFloatList::latex(Buffer const * buf, ostream & os, bool, bool) const
+int InsetFloatList::latex(Buffer const * buf, ostream & os, LatexRunParams const &,
+			  bool, bool) const
 {
 	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats[getCmdName()];

@@ -483,6 +483,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
 					     ostream & os,
 					     TexRow & texrow,
+					     LatexRunParams const & runparams,
 					     bool moving_arg,
 					     LyXFont & font,
 					     LyXFont & running_font,
@@ -579,7 +580,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			running_font = basefont;
 		}
 
-		int tmp = inset->latex(buf, os, moving_arg,
+		int tmp = inset->latex(buf, os, runparams, moving_arg,
 				       style.free_spacing);
 
 		if (close)

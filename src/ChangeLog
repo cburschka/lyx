@@ -1,3 +1,21 @@
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	* latexrunparams.h: new file containing struct LatexRunParams.
+	* Makefile.am: add new file.
+
+	* LaTeX.[Ch] (c-tor, run):
+	* buffer.[Ch] (makeLaTeXFile):
+	* bufferlist.[Ch] (updateIncludedTeXfiles):
+	* converter.C (convert, scanLog):
+	* converter.[Ch] (runLaTeX):
+	* exporter.C (Export):
+	* paragraph.[Ch] (simpleTeXOnePar):
+	* paragraph_funcs.C (TeXEnvironment, TeXOnePar, TeXDeeper):
+	* paragraph_funcs.[Ch] (latexParagraphs):
+	* paragraph_pimpl.[Ch] (simpleTeXSpecialChars):
+	* tabular.[Ch] (TeXLongtableHeaderFooter, TeXRow, latex):
+	pass around a LatexRunParams parameter.
+
 2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.[Ch]: remove unused constructor
@@ -38,7 +56,6 @@
 	* undo_funcs.C: return a ParIterator from getParFromID.
 
 	* iterators.[Ch]: add two const's
-
 
 2003-05-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

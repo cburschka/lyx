@@ -951,6 +951,7 @@ void Buffer::writeFileAscii(ostream & os, int linelen)
 
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
+			   LatexRunParams const & runparams,
 			   bool nice, bool only_body, bool only_preamble)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
@@ -964,7 +965,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		return;
 	}
 
-	makeLaTeXFile(ofs, original_path, nice, only_body, only_preamble);
+	makeLaTeXFile(ofs, original_path,
+		      runparams, nice, only_body, only_preamble);
 
 	ofs.close();
 	if (ofs.fail()) {
@@ -975,6 +977,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 void Buffer::makeLaTeXFile(ostream & os,
 			   string const & original_path,
+			   LatexRunParams const & runparams,
 			   bool nice, bool only_body, bool only_preamble)
 {
 	niceFile = nice; // this will be used by Insetincludes.
@@ -1044,7 +1047,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(this, paragraphs, os, texrow, false);
+	latexParagraphs(this, paragraphs, os, texrow, runparams, false);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1958,7 +1961,9 @@ int Buffer::runChktex()
 	bool const removedErrorInsets = users->removeAutoInsets();
 
 	// Generate the LaTeX file if neccessary
-	makeLaTeXFile(name, org_path, false);
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
+	makeLaTeXFile(name, org_path, runparams, false);
 
 	TeXErrors terr;
 	Chktex chktex(lyxrc.chktex_command, name, filePath());

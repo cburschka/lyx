@@ -71,6 +71,7 @@ lyx_SOURCES = \
 	LaTeX.h \
 	LaTeXFeatures.C \
 	LaTeXFeatures.h \
+	latexrunparams.h \
 	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \

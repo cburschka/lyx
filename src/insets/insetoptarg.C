@@ -66,17 +66,18 @@ void InsetOptArg::write(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetOptArg::latex(Buffer const *, ostream &, bool, bool) const
+int InsetOptArg::latex(Buffer const *, ostream &, LatexRunParams const &,
+		       bool, bool) const
 {
 	return 0;
 }
 
 
 int InsetOptArg::latexOptional(Buffer const * buf, ostream & os,
-				bool, bool fp) const
+			       LatexRunParams const & runparams, bool, bool fp) const
 {
 	os << '[';
-	int const i = inset.latex(buf, os, false, fp);
+	int const i = inset.latex(buf, os, runparams, false, fp);
 	os << ']';
 	return i + 2;
 }

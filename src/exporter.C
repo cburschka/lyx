@@ -26,8 +26,6 @@
 using std::vector;
 using std::find;
 
-bool pdf_mode = false;
-
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
@@ -45,6 +43,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	}
 
 	string backend_format;
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
 	vector<string> backends = Backends(buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
@@ -52,7 +52,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			Graph::EdgePath p =
 				converters.getPath(*it,	format);
 			if (!p.empty()) {
-				pdf_mode = converters.usePdflatex(p);
+				if (converters.usePdflatex(p))
+					runparams.flavor = LatexRunParams::PDFLATEX;
 				backend_format = *it;
 				break;
 			}
@@ -83,13 +84,14 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->makeDocBookFile(filename, !put_in_tempdir);
 	// LaTeX backend
 	else if (backend_format == format)
-		buffer->makeLaTeXFile(filename, string(), true);
+		buffer->makeLaTeXFile(filename, string(), runparams, true);
 	else if (contains(buffer->filePath(), ' ')) {
 		Alert::error(_("File name error"),
 			   _("The directory path to the document cannot contain spaces."));
 		return false;
 	} else
-		buffer->makeLaTeXFile(filename, buffer->filePath(), false);
+		buffer->makeLaTeXFile(filename, buffer->filePath(),
+				      runparams, false);
 
 	string outfile_base = (put_in_tempdir)
 		? filename : buffer->getLatexName(false);

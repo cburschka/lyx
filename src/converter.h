@@ -13,6 +13,7 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include "latexrunparams.h"
 #include "graph.h"
 
 #include <vector>
@@ -133,7 +134,8 @@ private:
 	bool scanLog(Buffer const * buffer, string const & command,
 		     string const & filename);
 	///
-	bool runLaTeX(Buffer const * buffer, string const & command);
+	bool runLaTeX(Buffer const * buffer, string const & command,
+		      LatexRunParams const &);
 	///
 	ConverterList converterlist_;
 	///

@@ -27,7 +27,8 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
+		  bool fragile, bool fp) const;
 	///
 	string const editMessage() const;
 };

@@ -27,6 +27,7 @@ class Counters;
 class InsetBibitem;
 class Language;
 class LaTeXFeatures;
+class LatexRunParams;
 class ParagraphParameters;
 class TexRow;
 
@@ -99,7 +100,8 @@ public:
 	///
 	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
 			     LyXFont const & outerfont, std::ostream &,
-			     TexRow & texrow, bool moving_arg);
+			     TexRow & texrow, LatexRunParams const &,
+			     bool moving_arg);
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;

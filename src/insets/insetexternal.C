@@ -166,8 +166,8 @@ int InsetExternal::write(string const & format,
 }
 
 
-int InsetExternal::latex(Buffer const * buf,
-			 ostream & os, bool, bool) const
+int InsetExternal::latex(Buffer const * buf, ostream & os, LatexRunParams const &,
+			 bool, bool) const
 {
 	return write("LaTeX", buf, os);
 }
