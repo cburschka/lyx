@@ -1,3 +1,6 @@
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (copyFileToDir): ensure that temp files have unique names.
 
 2003-06-04  André Pönitz  <poenitz@gmx.net>
 
