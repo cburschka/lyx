@@ -1,3 +1,11 @@
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* insetgraphicsParams.h (scale): is now a float, not an unsigned int.
+
+	* insetgraphicsParams.C (init, Write): associated changes
+	* insetgraphics.C (createLatexOptions): use lyx::float_equal with
+	InsetGraphicsParams::scale.
+
 2002-10-21  John Levon  <levon@movementarian.org>
 
 	* inset.h: remove unused DISPATCH_RESULT

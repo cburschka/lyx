@@ -58,7 +58,7 @@ void InsetGraphicsParams::init()
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
 	display = grfx::DefaultDisplay;	// display mode; see preferences
-	scale = 100;			// output scaling in percentage
+	scale = 100.0;			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
 	keepAspectRatio = false;	// for LaTeX output
@@ -143,7 +143,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 	if (display != grfx::DefaultDisplay)
 		os << "\tdisplay " << grfx::displayTranslator.find(display) << '\n';
 	if (scale) {
-		if (scale != 100)
+		if (!lyx::float_equal(scale, 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())
@@ -191,11 +191,11 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		display = grfx::displayTranslator.find(type);
 	} else if (token == "scale") {
 		lex.next();
-		scale = lex.getInteger();
+		scale = lex.getFloat();
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
-		scale = 0;
+		scale = 0.0;
 	} else if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
@@ -228,11 +228,14 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		special = lex.getString();
 
 	// catch and ignore following two old-format tokens and their arguments.
-	// e.g. "size_kind scale" clashes with the setting of the "scale" keyword.
+	// e.g. "size_kind scale" clashes with the setting of the
+	// "scale <value>" keyword.
 	} else if (token == "size_kind" || token == "lyxsize_kind") {
 		lex.next();
 		lex.getString();
-	} else {	// If it's none of the above, it's not ours.
+
+	} else {
+		// If it's none of the above, it's not ours.
 		return false;
 	}
 	return true;

@@ -37,7 +37,7 @@ struct InsetGraphicsParams
 	/// How to display the image inside LyX
 	grfx::DisplayType display;
 	/// Scaling for output (LaTeX)
-	unsigned int scale;
+	float scale;
 	/// sizes for output (LaTeX)
 	LyXLength width;
 	///

@@ -85,6 +85,7 @@ TODO
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
+#include "support/lyxlib.h" // float_equal
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/os.h"
@@ -469,9 +470,10 @@ string const InsetGraphics::createLatexOptions() const
 	if (params().clip)
 	    options << "  clip,\n";
 	
-	if (params().scale) {
-		if (params().scale != 100)
-			options << "  scale=" << params().scale / 100.0 << ",\n";
+	if (!lyx::float_equal(params().scale, 0.0, 0.05)) {
+		if (!lyx::float_equal(params().scale, 100.0, 0.05))
+			options << "  scale=" << params().scale / 100.0
+				<< ",\n";
 	} else {
 		if (!params().width.zero())
 			options << "  width=" << params().width.asLatexString() << ",\n";

@@ -1,5 +1,13 @@
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
+	* FormGraphics.C: use checkedWidgets to ensure that the lengths and
+	glue lengths are valid. Improve code documentation and layout.
+	InsetGraphicsParams::scale is now a float; modify dialog to suit.
+
+	* forms/form_graphics.fd: remove text_warning widget. Reshape.
+	
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
 	* FormFloat.C (input): fix the radio buttongroup behaviour.
 
 	* RadioButtonGroup.C (init): Assert on ROUND3DBUTTON and RADIO_BUTTON
