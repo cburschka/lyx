@@ -158,13 +158,11 @@ void LyXView::AutoSave()
 
 
 // Wrapper for the above
-extern "C" {
-	static
-	void C_LyXView_AutosaveTimerCB(void * ob)
-	{
-		LyXView * view = static_cast<LyXView*>(ob);
-		view->AutoSave();
-	}
+static
+void LyXView_AutosaveTimerCB(void * ob)
+{
+	LyXView * view = static_cast<LyXView*>(ob);
+	view->AutoSave();
 }
 
 /// Reset autosave timer
@@ -265,7 +263,7 @@ void LyXView::create_form_form_main(int width, int height)
 	// TIMERS
 	//
 
-	autosave_timeout.callback(C_LyXView_AutosaveTimerCB, this);
+	autosave_timeout.callback(LyXView_AutosaveTimerCB, this);
 
 	//
 	// Misc

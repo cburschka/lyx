@@ -1,3 +1,15 @@
+2000-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Timeout.C (TimeOut): remove default argument.
+
+	* src/LyXView.C (LyXView_AutosaveTimerCB): this should not have
+	"C" linkage.
+
+	* src/insets/ExternalTemplate.C: add a "using" directive.
+
+	* src/lyx_main.h: remove the act_ struct, which seems unused
+	anyway. 
+
 2000-06-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* LyX Developers Meeting: All files changed, due to random C++ (by

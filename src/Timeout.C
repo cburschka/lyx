@@ -22,7 +22,7 @@ Timeout::Timeout()
 	 callback_(0), data_(0) {}
 
 
-Timeout::Timeout(int msec, Type t = ONETIME)
+Timeout::Timeout(int msec, Type t)
 	: type(t), timeout(msec), timeout_id(-1),
 	  callback_(0), data_(0) {}
 

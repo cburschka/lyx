@@ -24,6 +24,7 @@
 
 using std::endl;
 using std::ostream;
+using std::for_each;
 
 extern string user_lyxdir;
 

@@ -66,8 +66,8 @@ private:
 	bool first_start;
 	///
 	string batch_command;
-	///
-	struct sigaction act_;
+	/// 
+	// struct sigaction act_; // seems to be unused
 	//@}
 	/**@name Private Members */
 	//@{
