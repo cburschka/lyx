@@ -1,3 +1,7 @@
+2005-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C: remove unnecessary "#include support/FileInfo.h".
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* qt_helpers.C (fromqstr): Don't use std::string(0) to construct

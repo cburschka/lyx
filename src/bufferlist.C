@@ -45,6 +45,7 @@
 #include <algorithm>
 #include <functional>
 
+using lyx::FileInfo;
 
 using std::vector;
 using std::find;

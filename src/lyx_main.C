@@ -44,6 +44,8 @@
 #include <cstdlib>
 #include <csignal>
 
+using lyx::FileInfo;
+
 using std::vector;
 using std::endl;
 

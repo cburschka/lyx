@@ -18,10 +18,6 @@
 #include <map>
 #include <algorithm>
 
-using std::map;
-using std::max;
-using std::sort;
-
 #include "frontends/Alert.h"
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
@@ -58,6 +54,12 @@ using std::sort;
 #include "FormFiledialog.h"
 #include "forms/form_filedialog.h"
 #include FORMS_H_LOCATION
+
+using lyx::FileInfo;
+
+using std::map;
+using std::max;
+using std::sort;
 
 namespace {
 

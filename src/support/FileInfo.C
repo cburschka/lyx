@@ -86,6 +86,8 @@
 #endif
 
 
+namespace lyx {
+
 namespace {
 
 // builds 'rwx' string describing file access rights
@@ -381,3 +383,5 @@ bool FileInfo::access(int p) const
 	// the file access failed.
 	return ::access(fname_.c_str(), p) == 0;
 }
+ 
+} // namespace lyx

@@ -19,7 +19,6 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/systemcall.h"
 #include "support/path.h"

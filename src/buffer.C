@@ -115,6 +115,8 @@
 #include <locale>
 #endif
 
+using lyx::FileInfo;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif

@@ -16,7 +16,6 @@
 #include "ControlGraphics.h"
 #include "controllers/helper_funcs.h"
 #include "support/lstrings.h"
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"

@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <iterator>
 
+using lyx::FileInfo;
 
 using std::ifstream;
 using std::ofstream;

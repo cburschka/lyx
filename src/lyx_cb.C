@@ -42,6 +42,8 @@
 #include <algorithm>
 #include <utility>
 
+using lyx::FileInfo;
+
 using std::vector;
 using std::ifstream;
 using std::copy;

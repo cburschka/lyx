@@ -1,3 +1,8 @@
+2005-01-05  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C:
+	* xforms_helpers.C: add "using lyx::FileInfo;" directive.
+
 2004-12-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormMathsBitmap.C: Do not split strings with blank into two

@@ -33,6 +33,8 @@
 #include <utility>
 
 
+using lyx::FileInfo;
+
 using std::ostream;
 using std::endl;
 

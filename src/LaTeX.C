@@ -37,6 +37,8 @@
 using std::sscanf;
 #endif
 
+using lyx::FileInfo;
+
 using std::ifstream;
 using std::getline;
 using std::endl;

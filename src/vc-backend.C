@@ -17,6 +17,8 @@
 
 #include <fstream>
 
+using lyx::FileInfo;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::asctime;
 using std::gmtime;

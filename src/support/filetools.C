@@ -61,6 +61,8 @@
 # endif
 #endif
 
+using lyx::FileInfo;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::fgetc;
 using std::isalpha;

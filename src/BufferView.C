@@ -45,6 +45,7 @@
 
 extern BufferList bufferlist;
 
+using lyx::FileInfo;
 using lyx::pos_type;
 
 using std::pair;

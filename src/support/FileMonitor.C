@@ -20,6 +20,9 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
+using lyx::FileInfo;
+
+
 struct FileMonitor::Impl : public boost::signals::trackable {
 
 	///

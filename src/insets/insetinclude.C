@@ -35,6 +35,8 @@
 #include <cstdlib>
 
 
+using lyx::FileInfo;
+
 using std::ostream;
 using std::endl;
 using std::vector;

@@ -31,7 +31,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
-#include "support/FileInfo.h"
 #include "support/LAssert.h"
 #include "support/textutils.h"
 

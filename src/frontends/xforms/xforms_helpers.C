@@ -29,6 +29,8 @@
 
 #include FORMS_H_LOCATION
 
+using lyx::FileInfo;
+
 using std::ofstream;
 using std::pair;
 using std::vector;

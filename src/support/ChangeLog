@@ -2,6 +2,11 @@
 
 	* os_win32.C (external_path, internal_path): s/MAX_PATH/PATH_MAX/.
 
+	* FileInfo.[Ch]: move inside "namespace lyx".
+
+	* FileMonitor.C:
+	* filetools.C: add "using lyx::FileInfo;" directive.
+
 2005-01-04  Angus Leeming  <leeming@lyx.org>
 
 	* os_win32.C (current_root): use _getdrive on Win32.
