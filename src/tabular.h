@@ -545,9 +545,6 @@ public:
 	///
 	BoxType useParbox(idx_type cell) const;
 	///
-	void setHeaderFooterRows(row_type header, row_type fheader,
-	                         row_type footer, row_type lfooter);
-	///
 	// helper function for Latex returns number of newlines
 	///
 	int TeXTopHLine(std::ostream &, row_type row) const;

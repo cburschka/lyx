@@ -1199,85 +1199,6 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 }
 
 
-void LyXTabular::setHeaderFooterRows(row_type hr, row_type fhr,
-                                     row_type fr, row_type lfr)
-{
-	// set header info
-	while (hr > 0) {
-		row_info[--hr].endhead = true;
-	}
-	// set firstheader info
-	if (fhr && fhr < rows_) {
-		if (row_info[fhr].endhead) {
-			while (fhr > 0) {
-				row_info[--fhr].endfirsthead = true;
-				row_info[fhr].endhead = false;
-			}
-		} else if (row_info[fhr - 1].endhead) {
-			endfirsthead.empty = true;
-		} else {
-			while (fhr > 0 && !row_info[--fhr].endhead) {
-				row_info[fhr].endfirsthead = true;
-			}
-		}
-	}
-	// set footer info
-	if (fr && fr < rows_) {
-		if (row_info[fr].endhead && row_info[fr-1].endhead) {
-			while (fr > 0 && !row_info[--fr].endhead) {
-				row_info[fr].endfoot = true;
-				row_info[fr].endhead = false;
-			}
-		} else if (row_info[fr].endfirsthead && row_info[fr-1].endfirsthead) {
-			while (fr > 0 && !row_info[--fr].endfirsthead) {
-				row_info[fr].endfoot = true;
-				row_info[fr].endfirsthead = false;
-			}
-		} else if (!row_info[fr - 1].endhead && !row_info[fr - 1].endfirsthead) {
-			while (fr > 0 && !row_info[--fr].endhead &&
-				  !row_info[fr].endfirsthead)
-			{
-				row_info[fr].endfoot = true;
-			}
-		}
-	}
-	// set lastfooter info
-	if (lfr && lfr < rows_) {
-		if (row_info[lfr].endhead && row_info[lfr - 1].endhead) {
-			while (lfr > 0 && !row_info[--lfr].endhead) {
-				row_info[lfr].endlastfoot = true;
-				row_info[lfr].endhead = false;
-			}
-		} else if (row_info[lfr].endfirsthead &&
-				   row_info[lfr - 1].endfirsthead)
-		{
-			while (lfr > 0 && !row_info[--lfr].endfirsthead) {
-				row_info[lfr].endlastfoot = true;
-				row_info[lfr].endfirsthead = false;
-			}
-		} else if (row_info[lfr].endfoot
-			   && row_info[lfr - 1].endfoot) {
-			while (lfr > 0 && !row_info[--lfr].endfoot) {
-				row_info[lfr].endlastfoot = true;
-				row_info[lfr].endfoot = false;
-			}
-		} else if (!row_info[fr - 1].endhead
-			   && !row_info[fr - 1].endfirsthead &&
-				   !row_info[fr - 1].endfoot)
-		{
-			while (lfr > 0 &&
-				  !row_info[--lfr].endhead && !row_info[lfr].endfirsthead &&
-				  !row_info[lfr].endfoot)
-			{
-				row_info[lfr].endlastfoot = true;
-			}
-		} else if (haveLTFoot()) {
-			endlastfoot.empty = true;
-		}
-	}
-}
-
-
 void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 {
 	string line;
@@ -1310,37 +1231,17 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 	}
 	getTokenValue(line, "rotate", rotate);
 	getTokenValue(line, "islongtable", is_long_tabular);
-	// compatibility read for old longtable options. Now we can make any
-	// row part of the header/footer type we want before it was strict
-	// sequential from the first row down (as LaTeX does it!). So now when
-	// we find a header/footer line we have to go up the rows and set it
-	// on all preceding rows till the first or one with already a h/f option
-	// set. If we find a firstheader on the same line as a header or a
-	// lastfooter on the same line as a footer then this should be set empty.
-	// (Jug 20011220)
-	if (version < 3) {
-		int hrow;
-		int fhrow;
-		int frow;
-		int lfrow;
+	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
+	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
+	getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
+	getTokenValue(line, "headTopDL", endhead.topDL);
+	getTokenValue(line, "headBottomDL", endhead.bottomDL);
+	getTokenValue(line, "footTopDL", endfoot.topDL);
+	getTokenValue(line, "footBottomDL", endfoot.bottomDL);
+	getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
+	getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
+	getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
 
-		getTokenValue(line, "endhead", hrow);
-		getTokenValue(line, "endfirsthead", fhrow);
-		getTokenValue(line, "endfoot", frow);
-		getTokenValue(line, "endlastfoot", lfrow);
-		setHeaderFooterRows(abs(hrow), abs(fhrow), abs(frow), abs(lfrow));
-	} else {
-		getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
-		getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
-		getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
-		getTokenValue(line, "headTopDL", endhead.topDL);
-		getTokenValue(line, "headBottomDL", endhead.bottomDL);
-		getTokenValue(line, "footTopDL", endfoot.topDL);
-		getTokenValue(line, "footBottomDL", endfoot.bottomDL);
-		getTokenValue(line, "lastFootTopDL", endlastfoot.topDL);
-		getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
-		getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
-	}
 	for (col_type j = 0; j < columns_; ++j) {
 		l_getline(is,line);
 		if (!prefixIs(line,"<column")) {

@@ -292,7 +292,7 @@ def remove_oldert(lines):
 		    k = k+1
 		    new.append("")
             elif hfill:
-                new = new+["\hfill", ""]
+                new = new + ["\\hfill", ""]
                 k = k2
 	    elif specialchar:
 		if new == []:
@@ -456,10 +456,13 @@ def remove_figinset(lines):
 	write_attribute(new, "lyxsize_type", "1")
 	write_attribute(new, "lyxwidth", lyxwidth)
 	write_attribute(new, "lyxheight", lyxheight)
-	new = new + ["\end_inset"]
+	new = new + ["\\end_inset"]
 	lines[i:j+1] = new
 
 
+##
+# Convert tabular format 2 to 3
+#
 attr_re = re.compile(r' \w*="(false|0|)"')
 line_re = re.compile(r'<(features|column|row|cell)')
 
@@ -480,6 +483,182 @@ def update_tabular(lines):
 		lines[k] = re.sub(attr_re, "", lines[k])
 
 	i = i+1
+
+
+##
+# Convert tabular format 2 to 3
+#
+# compatibility read for old longtable options. Now we can make any
+# row part of the header/footer type we want before it was strict
+# sequential from the first row down (as LaTeX does it!). So now when
+# we find a header/footer line we have to go up the rows and set it
+# on all preceding rows till the first or one with already a h/f option
+# set. If we find a firstheader on the same line as a header or a
+# lastfooter on the same line as a footer then this should be set empty.
+# (Jug 20011220)
+
+# just for compatibility with old python versions
+# python >= 2.3 has real booleans (False and True)
+false = 0
+true = 1
+
+# simple data structure to deal with long table info
+class row:
+    def __init__(self):
+        self.endhead = false		# header row
+        self.endfirsthead = false	# first header row
+        self.endfoot = false		# footer row
+        self.endlastfoot = false	# last footer row
+
+
+def haveLTFoot(row_info):
+    for row_ in row_info:
+        if row_.endfoot:
+            return true
+    return false
+
+
+def setHeaderFooterRows(hr, fhr, fr, lfr, rows_, row_info):
+    endfirsthead_empty = false
+    endlastfoot_empty = false
+    # set header info
+    while (hr > 0):
+        hr = hr - 1
+        row_info[hr].endhead = true
+
+    # set firstheader info
+    if fhr and fhr < rows_:
+        if row_info[fhr].endhead:
+            while fhr > 0:
+                fhr = fhr - 1
+                row_info[fhr].endfirsthead = true
+                row_info[fhr].endhead = false
+        elif row_info[fhr - 1].endhead:
+            endfirsthead_empty = true
+        else:
+            while fhr > 0 and not row_info[fhr - 1].endhead:
+                fhr = fhr - 1
+                row_info[fhr].endfirsthead = true
+
+    # set footer info
+    if fr and fr < rows_:
+        if row_info[fr].endhead and row_info[fr - 1].endhead:
+            while fr > 0 and not row_info[fr - 1].endhead:
+                fr = fr - 1
+                row_info[fr].endfoot = true
+                row_info[fr].endhead = false
+        elif row_info[fr].endfirsthead and row_info[fr - 1].endfirsthead:
+            while fr > 0 and not row_info[fr - 1].endfirsthead:
+                fr = fr - 1
+                row_info[fr].endfoot = true
+                row_info[fr].endfirsthead = false
+        elif not row_info[fr - 1].endhead and not row_info[fr - 1].endfirsthead:
+            while fr > 0 and not row_info[fr - 1].endhead and not row_info[fr - 1].endfirsthead:
+                fr = fr - 1
+                row_info[fr].endfoot = true
+
+    # set lastfooter info
+    if lfr and lfr < rows_:
+        if row_info[lfr].endhead and row_info[lfr - 1].endhead:
+            while lfr > 0 and not row_info[lfr - 1].endhead:
+                lfr = lfr - 1
+                row_info[lfr].endlastfoot = true
+                row_info[lfr].endhead = false
+        elif row_info[lfr].endfirsthead and row_info[lfr - 1].endfirsthead:
+            while lfr > 0 and not row_info[lfr - 1].endfirsthead:
+                lfr = lfr - 1
+                row_info[lfr].endlastfoot = true
+                row_info[lfr].endfirsthead = false
+        elif row_info[lfr].endfoot and row_info[lfr - 1].endfoot:
+            while lfr > 0 and not row_info[lfr - 1].endfoot:
+                lfr = lfr - 1
+                row_info[lfr].endlastfoot = true
+                row_info[lfr].endfoot = false
+        elif not row_info[fr - 1].endhead and not row_info[fr - 1].endfirsthead and not row_info[fr - 1].endfoot:
+            while lfr > 0 and not row_info[lfr - 1].endhead and not row_info[lfr - 1].endfirsthead and not row_info[lfr - 1].endfoot:
+                lfr = lfr - 1
+                row_info[lfr].endlastfoot = true
+        elif haveLTFoot(row_info):
+            endlastfoot_empty = true
+
+    return endfirsthead_empty, endlastfoot_empty
+
+
+def insert_attribute(lines, i, attribute):
+    last = string.find(lines[i],'>')
+    lines[i] = lines[i][:last] + ' ' + attribute + lines[i][last:]
+
+
+rows_re = re.compile(r'rows="(\d*)"')
+longtable_re = re.compile(r'islongtable="(\w)"')
+ltvalues_re = re.compile(r'endhead="(-?\d*)" endfirsthead="(-?\d*)" endfoot="(-?\d*)" endlastfoot="(-?\d*)"')
+lt_features_re = re.compile(r'(endhead="-?\d*" endfirsthead="-?\d*" endfoot="-?\d*" endlastfoot="-?\d*")')
+def update_longtables(file):
+    body = file.body
+    i = 0
+    while 1:
+        i = find_token(body, '\\begin_inset  Tabular', i)
+        if i == -1:
+            break
+        i = i + 1
+        i = find_token(body, "<lyxtabular", i)
+        if i == -1:
+            break
+
+        # get number of rows in the table
+        rows = int(rows_re.search(body[i]).group(1))
+
+        i = i + 1
+        i = find_token(body, '<features', i)
+        if i == -1:
+            break
+    
+        # is this a longtable?
+        longtable = longtable_re.search(body[i])
+
+        if not longtable:
+            # islongtable is missing add it
+            body[i] = body[i][:10] + 'islongtable="false" ' + body[i][10:]
+
+        if not longtable or longtable.group(1) != "true":
+            # remove longtable elements from features
+            features = lt_features_re.search(body[i])
+            if features:
+                body[i] = string.replace(body[i], features.group(1), "")
+            continue
+
+        row_info = row() * rows
+        res = ltvalues_re.search(body[i])
+        if not res:
+            continue
+
+        endfirsthead_empty, endlastfoot_empty = setHeaderFooterRows(res.group(1), res.group(2), res.group(3), res.group(4), rows, row_info)
+
+        if endfirsthead_empty:
+            insert_attribute(body, i, 'firstHeadEmpty="true"')
+
+        if endfirsthead_empty:
+            insert_attribute(body, i, 'lastFootEmpty="true"')
+
+        i = i + 1
+        for j in range(rows):
+            i = find_token(body, '<row', i)
+
+            self.endfoot = false		# footer row
+            self.endlastfoot = false	# last footer row
+            if row_info[j].endhead:
+                insert_attribute(body, i, 'endhead="true"')
+
+            if row_info[j].endfirsthead:
+                insert_attribute(body, i, 'endfirsthead="true"')
+
+            if row_info[j].endfoot:
+                insert_attribute(body, i, 'endfoot="true"')
+
+            if row_info[j].endlastfoot:
+                insert_attribute(body, i, 'endlastfoot="true"')
+
+            i = i + 1
 
 
 # Figure insert are hidden feature of lyx 1.1.6. This might be removed in the future.
@@ -545,6 +724,7 @@ def convert(file):
     change_listof(file.body)
     fix_oldfloatinset(file.body)
     update_tabular(file.body)
+    update_longtables(file)
     remove_pextra(file.body)
     remove_oldfloat(file.body, file)
     remove_figinset(file.body)
