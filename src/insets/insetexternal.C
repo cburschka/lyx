@@ -333,7 +333,9 @@ void InsetExternal::Read(Buffer const *, LyXLex & lex)
 	filename = format.substr(pos1 + 2, pos2 - (pos1 + 2));
 	parameters = format.substr(pos2 + 3, format.length() - (pos2 + 4));
 
-	lyxerr << templatename << " " << filename << " " << parameters << endl;
+	lyxerr[Debug::INFO] << "InsetExternal::Read: " << templatename
+			    << " " << filename
+			    << " " << parameters << endl;
 }
 
 

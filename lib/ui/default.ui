@@ -49,8 +49,6 @@ Menuset
 	Submenu "Version Control|V" "file_vc"
 	Separator
 	Submenu "Import|I" "file_import"
-	Submenu "Insert|r" "file_insert"
-	Separator
 	Submenu "Export|E" "file_export"
 	Item "Print...|P" "buffer-print"
 	OptItem "Fax...|F" "buffer-export fax"
@@ -72,15 +70,6 @@ Menuset
     Menu "file_import"
 	ImportFormats
     End
-
-    Menu "file_insert"
-	Item "File...|F" "buffer-child-insert"
-	Item "LyX Document...|X" "file-insert"
-	Item "Ascii as Lines...|L" "file-insert-ascii lines"
-	Item "Ascii as Paragraphs...|P" "file-insert-ascii paragraphs"
-	Item "External Material...|E" "external-insert"
-    End
-
 
     Menu "file_export"
 	ExportFormats
@@ -106,6 +95,7 @@ Menuset
 	Item "Find & Replace...|F" "find-replace"
 	Submenu "Tabular|T" "edit_tabular"
 	Submenu "Floats & Insets|I" "edit_floats"
+	Item "Math Panel|l" "math-panel"
 	Separator
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
@@ -156,9 +146,8 @@ Menuset
 # INSERT MENU
 #
     Menu "insert"
-	Item "Math Text|T" "math-mode"
-	Item "Math Display|D" "math-display"
-	Item "Math Panel...|P" "math-panel"
+	Item "Math Formula|h" "math-mode"
+	Item "Display Formula|D" "math-display"
 	Separator
 	Submenu "Special Character|S" "insert_special"
 	Item "Citation Reference...|C" "citation-insert"
@@ -170,12 +159,15 @@ Menuset
 	Item "Index Entry of Preceeding Word|W" "index-insert-last"
 	Item "URL...|U" "url-insert"
 	Item "Note...|N" "note-insert"
+	Submenu "Lists & TOC|O" "insert_toc"
 	Separator
 	Item "Figure...|g" "figure-insert"
 	Item "Tabular...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
-	Submenu "Lists & TOC|O" "insert_toc"
+	Item "Include File|e" "buffer-child-insert"
+	Submenu "Insert File|t" "insert_file"
+	Item "External Material...|x" "external-insert"
     End
 
     Menu "insert_special"
@@ -207,6 +199,12 @@ Menuset
 	Item "List of Algorithms|A" "loa-insert"
 	Item "Index List|I" "index-print"
 	Item "BibTeX Reference...|B" "bibtex-insert"
+    End
+
+    Menu "insert_file"
+	Item "LyX Document...|X" "file-insert"
+	Item "Ascii as Lines...|L" "file-insert-ascii lines"
+	Item "Ascii as Paragraphs...|P" "file-insert-ascii paragraphs"
     End
 
 #

@@ -46,7 +46,8 @@ ExternalTemplateManager::ExternalTemplateManager()
 {
 	// gimp gnuchess gnuplot ical netscape tetris xpaint
 	readTemplates(user_lyxdir);
-	dumpTemplates();
+	if (lyxerr.debugging())
+		dumpTemplates();
 }
 
 
@@ -144,13 +145,15 @@ void ExternalTemplateManager::readTemplates(string const & path)
 
 	string filename = LibFileSearch("", "external_templates");
 	if (filename.empty()) {
-		lyxerr << "No template file" << endl;
+		lyxerr << "ExternalTemplateManager::readTemplates: "
+			"No template file" << endl;
 		return;
 	}
 
 	LyXLex lex(templatetags, TM_END);
 	if (!lex.setFile(filename)) {
-		lyxerr << "No template file" << endl;
+		lyxerr << "ExternalTemplateManager::readTemplates: "
+			"No template file" << endl;
 		return;
 	}
 	
@@ -166,8 +169,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 		break;
 		
 		case TM_END:
-			lyxerr << "TemplateEnd: " << lex.GetString() << endl;
-			lyxerr << "Warning: End outside Template." << endl;
+			lex.printError("Warning: End outside Template.");
 		break;
 		}
 	}
@@ -246,7 +248,8 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			return;
 			
 		default:
-			lyxerr << "Default: " << lex.GetString() << endl;
+			lex.printError("ExternalTemplate::readTemplate: "
+				       "Wrong tag: $$Token");
 			Assert(false);
 			break;
 		}
@@ -299,7 +302,8 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 			break;
 			
 		case FO_END:
-			lyxerr << "FormatEnd: " << lex.GetString() << endl;
+			if (lyxerr.debugging())
+				lex.printError("FormatEnd");
 			return;
 		}
 	}

@@ -422,6 +422,14 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 }
 
 
+int InsetInclude::Ascii(Buffer const *, std::ostream & os, int) const
+{
+	if (isVerb())
+		os << GetFileContents(getFileName());
+	return 0;
+}
+
+
 int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 {
 	string incfile(getContents());

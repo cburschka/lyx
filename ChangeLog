@@ -1,3 +1,24 @@
+2000-12-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/ui/default.ui: menu structure cleanup.
+
+	* lib/languages: add description of entries.
+
+2000-12-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/ExternalTemplate.C (readTemplates): change debug
+	messages a bit.
+	(readTemplate): use lyxlex.printError to report read errors.
+	(readFormat): ditto.
+
+	* src/insets/insetexternal.C (Read): suppress debug message when
+	not needed.
+
+2000-12-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/insetinclude.C (Ascii): New method. Currently
+	supports only verbatim input.
+
 2000-12-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/fi_menus.bind: update from Pauli Virtanen.
