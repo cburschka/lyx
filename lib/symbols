@@ -549,12 +549,6 @@ hslash             msb         125   0 mathord  x
 hbar               msb         126   0 mathord  x
 backepsilon        msb         127   0 mathrel  x
                                
-neq                x             0 185 mathrel  x
-ne                 x             0 185 mathrel  x
-textdegree         x             0 176 mathord  x
-cong               x             0  64 mathrel  x
-surd               x             0 214 mathord  x
-                               
 lyxbar             cmsy        161   0 mathord  x
 lyxeq              cmr          61   0 mathord  x
 lyxdabar           msa          57   0 mathord  x
@@ -776,5 +770,12 @@ $                  mathnormal    0   0 special  x
 \def\dasharrow{\dashrightarrow}
 \def\Join{\ltimes\kern-2mm\rtimes}
 \def\mathcircumflex{\mbox{\^{}}}
+
+neq                lyxsymbol             185 0 mathrel  x
+ne                 lyxsymbol             185 0 mathrel  x
+textdegree         lyxsymbol             176 0 mathord  x
+cong               lyxsymbol             64  0 mathrel  x
+surd               lyxsymbol             214 0 mathord  x
+                               
 #"{\hat{}}
 
