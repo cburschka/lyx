@@ -1,3 +1,9 @@
+2003-02-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text.C (getLengthMarkerHeight): 
+	(drawLengthMarker): make the `symbolic' lengths (small/med/big)
+	visible on screen too.
+
 2003-02-05  Angus Leeming  <leeming@lyx.org>
 
 	* lyxserver.C (read_ready): revert my patch of 11 September last year

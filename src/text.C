@@ -3235,12 +3235,11 @@ void LyXText::paintRowDepthBar(DrawRowParams & p)
 
 int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
 {
+	if (vsp.kind() == VSpace::NONE)
+		return 0;
+
 	int const arrow_size = 4;
 	int const space_size = int(vsp.inPixels(bv));
-
-	if (vsp.kind() != VSpace::LENGTH) {
-		return space_size;
-	}
 
 	LyXFont font;
 	font.decSize();
@@ -3258,6 +3257,9 @@ int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
 int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 			      VSpace const & vsp, int start)
 {
+	if (vsp.kind() == VSpace::NONE)
+		return 0;
+
 	int const arrow_size = 4;
 	int const size = getLengthMarkerHeight(p.bv, vsp);
 	int const end = start + size;
@@ -3268,10 +3270,11 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	int ty1, ty2;
 	// y-values for bottom arrow
 	int by1, by2;
+
+	str = prefix + " (" + vsp.asLyXCommand() + ")";
+
 	switch (vsp.kind()) {
-	case VSpace::LENGTH:
-	{
-		str = prefix + " (" + vsp.asLyXCommand() + ')';
+	case VSpace::LENGTH: {
 		// adding or removing space
 		bool const added = !(vsp.length().len().value() < 0.0);
 		ty1 = added ? (start + arrow_size) : start;
@@ -3280,14 +3283,10 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 		by2 = added ? end : (end - arrow_size);
 		break;
 	}
-	case VSpace::VFILL:
-		str = prefix + _(" (vertical fill)");
+	default:
 		ty1 = ty2 = start;
 		by1 = by2 = end;
 		break;
-	default:
-		// nothing to draw here
-		return size;
 	}
 
 	int const leftx = p.xo + leftMargin(p.bv, p.row);
@@ -3306,6 +3305,9 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	p.pain->rectText(leftx + 2 * arrow_size + 5,
 			 start + ((end - start) / 2) + d,
 			 str, font);
+
+	if (vsp.kind() != VSpace::LENGTH && vsp.kind() != VSpace::VFILL )
+		return size;
 
 	// top arrow
 	p.pain->line(leftx, ty1, midx, ty2, LColor::added_space);
