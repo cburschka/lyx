@@ -16,10 +16,10 @@
 # to generate ${base}.pdftex_t
 # Thereafter, you need only '\input{${base}.pdftex_t}' in your latex document.
 
-# These are the external programs we use
+# The external programs
 FIG2DEV=fig2dev
-# If using "legacy_xfig" only
-EPSTOPDF=epstopdf
+# Used only by legacy_xfig
+GS=gs
 
 find_exe() {
     test $# -eq 1 || exit 1
@@ -49,12 +49,46 @@ modern_xfig() {
     exit 0;
 }
 
+
+# This function is used only by legacy_xfig.
+# It manipulates the Bounding Box info to enable gs to produce
+# the appropriate PDF file from an EPS one.
+# The generated PostScript commands are extracted from epstopdf, distributed
+# with tetex.
+clean_epsfile() {
+    test $# -eq 1 || exit 1
+
+    # No bounding box info
+    grep '%%BoundingBox' $1 > /dev/null || return 1;
+
+    bbox=`sed -n '/^%%BoundingBox/p' $1`
+    llx=`echo ${bbox} | cut -d' ' -f2`
+    lly=`echo ${bbox} | cut -d' ' -f3`
+    urx=`echo ${bbox} | cut -d' ' -f4`
+    ury=`echo ${bbox} | cut -d' ' -f5`
+
+    width=`expr $urx - $llx`
+    height=`expr $ury - $lly`
+    xoffset=`expr 0 - $llx`
+    yoffset=`expr 0 - $lly`
+
+    temp=$1.??
+    sed "/^%%BoundingBox/{
+s/^\(%%BoundingBox:\).*/\1 0 0 ${width} ${height}\\
+<< \/PageSize  [${width} ${height}] >> setpagedevice\\
+gsave ${xoffset} ${yoffset} translate/
+}" $1 > $temp
+
+    mv -f $temp $1
+}
+
+
 # Older versions of xfig cannot do this, so we emulate the behaviour using
 # pstex and pstex_t output.
 legacy_xfig() {
     # Can we find fig2dev and epstopdf?
     find_exe ${FIG2DEV}
-    find_exe ${EPSTOPDF}
+    find_exe ${GS}
 
     input=$1
     pdftex_t=$2
@@ -65,8 +99,10 @@ legacy_xfig() {
     ${FIG2DEV} -Lpstex_t -p${outbase} ${input} ${pdftex_t}
 
     # Convert the ${pstex} EPS file (free of "special" text) to PDF format
-    # using epstopdf.
-    ${EPSTOPDF} --outfile=${pdf} ${pstex}
+    # using gs
+    clean_epsfile ${pstex}
+    ${GS} -q -dNOPAUSE -dBATCH -dSAFER \
+	-sDEVICE=pdfwrite -sOutputFile=${pdf} ${pstex}
     rm -f ${pstex}
 
     exit 0;
@@ -87,9 +123,9 @@ outbase=`echo ${output} | sed 's/[.][^.]*$//'`
 # Ascertain whether fig2dev is "modern enough".
 # If it is, then the help info will mention "pdftex_t" as one of the
 # available outputs.
-FUNCTION=modern_xfig
-${FIG2DEV} -h | grep 'pdftex_t' > /dev/null || FUNCTION=legacy_xfig
+CONVERT_IT=modern_xfig
+${FIG2DEV} -h | grep 'pdftex_t' > /dev/null || CONVERT_IT=legacy_xfig
 
-${FUNCTION} ${input} ${output} ${outbase}
+${CONVERT_IT} ${input} ${output} ${outbase}
 
 # The end
