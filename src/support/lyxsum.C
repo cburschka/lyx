@@ -23,6 +23,10 @@
 #warning lyx::sum() using mmap (lightning fast)
 #endif
 
+// Make sure we get modern version of mmap and friends with void*,
+// not `compatibility' version with caddr_t.
+#define _POSIX_C_SOURCE 199506L
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -40,7 +44,8 @@ unsigned long lyx::sum(string const & file)
 	
 	void * mm = mmap(0, info.st_size, PROT_READ,
 			 MAP_PRIVATE, fd, 0);
-	if (mm == MAP_FAILED) {
+	// Some platforms have the wrong type for MAP_FAILED (compaq cxx).
+	if (mm == reinterpret_cast<void*>(MAP_FAILED)) {
 		close(fd);
 		return 0;
 	}
