@@ -23,7 +23,7 @@
 //#     define BOOST_NO_FUNCTION_TEMPLATE_ORDERING
 #   endif
 
-#   if(__MWERKS__ <= 0x2406) || !defined(BOOST_STRICT_CONFIG)  // 7.0 & 7.1
+#   if(__MWERKS__ <= 0x2407)  // 7.x
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
 #   endif
@@ -32,8 +32,15 @@
 #   define BOOST_NO_INTRINSIC_WCHAR_T
 #endif
 
+#   if __MWERKS__ == 0x3000
+#     define BOOST_COMPILER_VERSION 8.0
+#   elif __MWERKS__ == 0x3001
+#     define BOOST_COMPILER_VERSION 8.1
+#   else
+#     define BOOST_COMPILER_VERSION __MWERKS__
+#   endif 
 
-#define BOOST_COMPILER "Metrowerks CodeWarrior C++ version " BOOST_STRINGIZE(__MWERKS__)
+#define BOOST_COMPILER "Metrowerks CodeWarrior C++ version " BOOST_STRINGIZE(BOOST_COMPILER_VERSION)
 
 //
 // versions check:
@@ -42,8 +49,8 @@
 #  error "Compiler not supported or configured - please reconfigure"
 #endif
 //
-// last known and checked version is 0x2406:
-#if (__MWERKS__ > 0x2406)
+// last known and checked version is 0x3001:
+#if (__MWERKS__ > 0x3001)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  endif

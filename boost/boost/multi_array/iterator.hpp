@@ -1,3 +1,15 @@
+// Copyright (C) 2002 Ronald Garcia
+//
+// Permission to copy, use, sell and distribute this software is granted
+// provided this copyright notice appears in all copies. 
+// Permission to modify the code and to distribute modified code is granted
+// provided this copyright notice appears in all copies, and a notice 
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty, 
+// and with no claim as to its suitability for any purpose.
+//
+
 #ifndef ITERATOR_RG071801_HPP
 #define ITERATOR_RG071801_HPP
 
@@ -33,8 +45,8 @@ struct iterator_base : private multi_array_base {
   const index* index_base_;
 
   iterator_base(int idx, TPtr base, const size_type* extents,
-		const index* strides,
-		const index* index_base) :
+                const index* strides,
+                const index* index_base) :
     idx_(idx), base_(base), extents_(extents),
     strides_(strides), index_base_(index_base) {
   }
@@ -61,11 +73,11 @@ public:
   dereference(const IteratorAdaptor& iter) const {
     typedef typename IteratorAdaptor::reference reference;
     return super_type::access(boost::type<reference>(),
-			      iter.base().idx_,
-			      iter.base().base_,
-			      iter.base().extents_,
-			      iter.base().strides_,
-			      iter.base().index_base_);
+                              iter.base().idx_,
+                              iter.base().base_,
+                              iter.base().extents_,
+                              iter.base().strides_,
+                              iter.base().index_base_);
   }
   
   template <class IteratorAdaptor>

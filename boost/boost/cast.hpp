@@ -48,6 +48,7 @@
 # include <typeinfo>
 # include <boost/type.hpp>
 # include <boost/limits.hpp>
+# include <boost/detail/select_type.hpp>
 
 //  It has been demonstrated numerous times that MSVC 6.0 fails silently at link
 //  time if you use a template function which has template parameters that don't
@@ -125,54 +126,77 @@ namespace boost
   
     namespace detail
     {
-       template <bool is_signed> struct numeric_min_select;
-    
-       template<>
-       struct numeric_min_select<true>
-       {
-         template <class T>
-         struct limits : std::numeric_limits<T>
+      template <class T>
+      struct signed_numeric_limits : std::numeric_limits<T>
+      {
+             static inline T min()
          {
-         static inline T min()
-# ifndef __GNUC__ // bug workaround courtesy Jens Maurer
-             {
-                 return std::numeric_limits<T>::min() >= 0
+             return std::numeric_limits<T>::min() >= 0
                      // unary minus causes integral promotion, thus the static_cast<>
                      ? static_cast<T>(-std::numeric_limits<T>::max())
                      : std::numeric_limits<T>::min();
-             }
-# else
-                 ;
-# endif
          };
-       };
-
-# ifdef __GNUC__ // bug workaround courtesy Jens Maurer
-      template<> template<class T>
-      inline T numeric_min_select<true>::limits<T>::min()
-      {
-           return std::numeric_limits<T>::min() >= 0
-               // unary minus causes integral promotion, thus the static_cast<>
-               ? static_cast<T>(-std::numeric_limits<T>::max())
-               : std::numeric_limits<T>::min();
-      }
-# endif
-    
-      template<>
-      struct numeric_min_select<false>
-      {
-          template <class T>
-          struct limits : std::numeric_limits<T> {};
       };
-      
+   
       // Move to namespace boost in utility.hpp?
+      template <class T, bool specialized>
+      struct fixed_numeric_limits_base
+          : public if_true< std::numeric_limits<T>::is_signed >
+           ::template then< signed_numeric_limits<T>,
+                            std::numeric_limits<T>
+                   >::type
+      {};
+      
       template <class T>
       struct fixed_numeric_limits
-          : public numeric_min_select<
-                       std::numeric_limits<T>::is_signed 
-                   >::template limits<T>
+          : fixed_numeric_limits_base<T,(std::numeric_limits<T>::is_specialized)>
+      {};
+
+# ifdef BOOST_HAS_LONG_LONG
+      // cover implementations which supply no specialization for long
+      // long / unsigned long long. Not intended to be full
+      // numeric_limits replacements, but good enough for numeric_cast<>
+      template <>
+      struct fixed_numeric_limits_base<long long, false>
       {
+          BOOST_STATIC_CONSTANT(bool, is_specialized = true);
+          BOOST_STATIC_CONSTANT(bool, is_signed = true);
+          static long long max()
+          {
+#  ifdef LONGLONG_MAX
+              return LONGLONG_MAX;
+#  else
+              return 9223372036854775807LL; // hope this is portable
+#  endif 
+          }
+
+          static long long min()
+          {
+#  ifdef LONGLONG_MIN
+              return LONGLONG_MIN;
+#  else  
+              return -9223372036854775808LL; // hope this is portable
+#  endif 
+          }
       };
+
+      template <>
+      struct fixed_numeric_limits_base<unsigned long long, false>
+      {
+          BOOST_STATIC_CONSTANT(bool, is_specialized = true);
+          BOOST_STATIC_CONSTANT(bool, is_signed = false);
+          static unsigned long long max()
+          {
+#  ifdef ULONGLONG_MAX
+              return ULONGLONG_MAX;
+#  else
+              return 0xffffffffffffffffULL; // hope this is portable
+#  endif 
+          }
+
+          static unsigned long long min() { return 0; }
+      };
+# endif 
     } // namespace detail
   
 // less_than_type_min -
@@ -236,6 +260,24 @@ namespace boost
         template <class X, class Y>
         static inline bool check(X x, Y)
             { return x >= 0 && static_cast<X>(static_cast<Y>(x)) != x; }
+        
+# if defined(BOOST_MSVC) && BOOST_MSVC <= 1200
+        // MSVC6 can't static_cast  unsigned __int64 -> floating types
+#  define BOOST_UINT64_CAST(src_type)                                   \
+        static inline bool check(src_type x, unsigned __int64)          \
+        {                                                               \
+            if (x < 0) return false;                                    \
+            unsigned __int64 y = static_cast<unsigned __int64>(x);      \
+            bool odd = y & 0x1;                                         \
+            __int64 div2 = static_cast<__int64>(y >> 1);                \
+            return ((static_cast<src_type>(div2) * 2.0) + odd) != x;    \
+        }
+
+        BOOST_UINT64_CAST(long double);
+        BOOST_UINT64_CAST(double);
+        BOOST_UINT64_CAST(float);
+#  undef BOOST_UINT64_CAST
+# endif 
     };
 
     template<>
@@ -292,7 +334,7 @@ namespace boost
     inline Target numeric_cast(Source arg BOOST_EXPLICIT_DEFAULT_TARGET)
     {
         // typedefs abbreviating respective trait classes
-        typedef std::numeric_limits<Source> arg_traits;
+        typedef detail::fixed_numeric_limits<Source> arg_traits;
         typedef detail::fixed_numeric_limits<Target> result_traits;
         
 #if !defined(BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS) || defined(BOOST_SGI_CPP_LIMITS)

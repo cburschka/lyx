@@ -1,3 +1,15 @@
+// Copyright (C) 2002 Ronald Garcia
+//
+// Permission to copy, use, sell and distribute this software is granted
+// provided this copyright notice appears in all copies. 
+// Permission to modify the code and to distribute modified code is granted
+// provided this copyright notice appears in all copies, and a notice 
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty, 
+// and with no claim as to its suitability for any purpose.
+//
+
 #ifndef BOOST_INDEX_RANGE_RG071801_HPP
 #define BOOST_INDEX_RANGE_RG071801_HPP
 
@@ -41,7 +53,7 @@ namespace multi_array {
 
     explicit index_range(index start, index finish, index stride=1)
       : start_(start), finish_(finish), stride_(stride),
-	degenerate_(start_ == finish_)
+        degenerate_(start_ == finish_)
     { }
 
 
@@ -68,7 +80,7 @@ namespace multi_array {
     index get_start(index low_index_range = 0) const
     { 
       if (start_ == from_start())
-	return low_index_range;
+        return low_index_range;
       return start_; 
     }
 
@@ -80,16 +92,16 @@ namespace multi_array {
     index get_finish(index high_index_range = 0) const
     {
       if (finish_ == to_end())
-	return high_index_range;
+        return high_index_range;
       return finish_;
     }
 
     size_type size(index recommended_length = 0) const
     {
       if ((start_ == from_start()) || (finish_ == to_end()))
-	return recommended_length;
+        return recommended_length;
       else 
-	return (finish_ - start_) / stride_;
+        return (finish_ - start_) / stride_;
     }
 
     index stride() const { return stride_; }

@@ -133,8 +133,8 @@ public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_quiet_NaN,     false);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_signaling_NaN, false);
   BOOST_STL_DECLARE_LIMITS_MEMBER(float_denorm_style,
-			      has_denorm,
-			      denorm_absent);
+                              has_denorm,
+                              denorm_absent);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_denorm_loss,   false);
 
   static __number infinity() throw()      { return __number(); }
@@ -149,17 +149,17 @@ public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, traps,            false);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, tinyness_before,  false);
   BOOST_STL_DECLARE_LIMITS_MEMBER(float_round_style,
-			      round_style,
-			      round_toward_zero);
+                              round_style,
+                              round_toward_zero);
 };
 
 // Base class for integers.
 
 template <class _Int,
-	  _Int __imin,
-	  _Int __imax,
-	  int __idigits = -1>
-class _Integer_limits : public _Numeric_limits_base<_Int>
+          _Int __imin,
+          _Int __imax,
+          int __idigits = -1>
+class _Integer_limits : public _Numeric_limits_base<_Int> 
 {
 public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, is_specialized, true);
@@ -168,12 +168,12 @@ public:
   static _Int max() throw() { return __imax; }
 
   BOOST_STL_DECLARE_LIMITS_MEMBER(int,
-			      digits,
-			      (__idigits < 0) ? (int)(sizeof(_Int) * CHAR_BIT)
-						   - (__imin == 0 ? 0 : 1)
-					      : __idigits);
-  BOOST_STL_DECLARE_LIMITS_MEMBER(int, digits10, (digits * 301) / 1000);
-				// log 2 = 0.301029995664...
+                              digits,
+                              (__idigits < 0) ? (int)(sizeof(_Int) * CHAR_BIT)
+                                                   - (__imin == 0 ? 0 : 1) 
+                                              : __idigits);
+  BOOST_STL_DECLARE_LIMITS_MEMBER(int, digits10, (digits * 301) / 1000); 
+                                // log 2 = 0.301029995664...
 
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, is_signed,  __imin != 0);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, is_integer, true);
@@ -192,7 +192,7 @@ public:
     // sizeof(long double) == 16
     const unsigned int _S_word[4] = { Word, 0, 0, 0 };
     return *reinterpret_cast<const Number*>(&_S_word);
-  }
+  } 
 };
 
 #else
@@ -203,22 +203,22 @@ public:
     // sizeof(long double) == 12, but only 10 bytes significant
     const unsigned int _S_word[4] = { 0, 0, 0, Word };
     return *reinterpret_cast<const Number*>(
-	reinterpret_cast<const char *>(&_S_word)+16-
-		(sizeof(Number) == 12 ? 10 : sizeof(Number)));
-  }
+        reinterpret_cast<const char *>(&_S_word)+16-
+                (sizeof(Number) == 12 ? 10 : sizeof(Number)));
+  } 
 };
 
 #endif
 
 // Base class for floating-point numbers.
 template <class __number,
-	 int __Digits, int __Digits10,
-	 int __MinExp, int __MaxExp,
-	 int __MinExp10, int __MaxExp10,
-	 unsigned int __InfinityWord,
-	 unsigned int __QNaNWord, unsigned int __SNaNWord,
-	 bool __IsIEC559,
-	 float_round_style __RoundStyle>
+         int __Digits, int __Digits10,
+         int __MinExp, int __MaxExp,
+         int __MinExp10, int __MaxExp10,
+         unsigned int __InfinityWord,
+         unsigned int __QNaNWord, unsigned int __SNaNWord,
+         bool __IsIEC559,
+         float_round_style __RoundStyle>
 class _Floating_limits : public _Numeric_limits_base<__number>
 {
 public:
@@ -240,11 +240,11 @@ public:
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_quiet_NaN,     true);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_signaling_NaN, true);
   BOOST_STL_DECLARE_LIMITS_MEMBER(float_denorm_style,
-			      has_denorm,
-			      denorm_indeterminate);
+                              has_denorm,
+                              denorm_indeterminate);
   BOOST_STL_DECLARE_LIMITS_MEMBER(bool, has_denorm_loss,   false);
 
-
+ 
   static __number infinity() throw() {
     return float_helper<__number, __InfinityWord>::get_word();
   }
@@ -267,7 +267,7 @@ public:
 
 // The unspecialized class.
 
-template<class T>
+template<class T> 
 class numeric_limits : public _Numeric_limits_base<T> {};
 
 // Specializations for all built-in integral types.
@@ -356,41 +356,36 @@ class numeric_limits<unsigned long>
 
 #if !defined(LONGLONG_MIN)
 # define LONGLONG_MIN (-LONGLONG_MAX - 1)
-#endif
+#endif 
 
-template<>
-class numeric_limits<long long>
-  : public _Integer_limits<long long, LONGLONG_MIN, LONGLONG_MAX>
-{};
 
-template<>
-class numeric_limits<unsigned long long>
-  : public _Integer_limits<unsigned long long, 0, ULONGLONG_MAX>
-{};
+#if !defined(ULONGLONG_MIN)
+# define ULONGLONG_MIN 0
+#endif 
 
 #endif /* __GNUC__ */
 
 // Specializations for all built-in floating-point type.
 
 template<> class numeric_limits<float>
-  : public _Floating_limits<float,
-			    FLT_MANT_DIG,   // Binary digits of precision
-			    FLT_DIG,        // Decimal digits of precision
-			    FLT_MIN_EXP,    // Minimum exponent
-			    FLT_MAX_EXP,    // Maximum exponent
-			    FLT_MIN_10_EXP, // Minimum base 10 exponent
-			    FLT_MAX_10_EXP, // Maximum base 10 exponent
+  : public _Floating_limits<float, 
+                            FLT_MANT_DIG,   // Binary digits of precision
+                            FLT_DIG,        // Decimal digits of precision
+                            FLT_MIN_EXP,    // Minimum exponent
+                            FLT_MAX_EXP,    // Maximum exponent
+                            FLT_MIN_10_EXP, // Minimum base 10 exponent
+                            FLT_MAX_10_EXP, // Maximum base 10 exponent
 #if defined(BOOST_BIG_ENDIAN)
-			    0x7f80 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
-			    0x7f81 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
-			    0x7fc1 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
+                            0x7f80 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
+                            0x7f81 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
+                            0x7fc1 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
 #else
-			    0x7f800000u,    // Last word of +infinity
-			    0x7f810000u,    // Last word of quiet NaN
-			    0x7fc10000u,    // Last word of signaling NaN
+                            0x7f800000u,    // Last word of +infinity
+                            0x7f810000u,    // Last word of quiet NaN
+                            0x7fc10000u,    // Last word of signaling NaN
 #endif
-			    true,           // conforms to iec559
-			    round_to_nearest>
+                            true,           // conforms to iec559
+                            round_to_nearest>
 {
 public:
   static float min() throw() { return FLT_MIN; }
@@ -401,24 +396,24 @@ public:
 };
 
 template<> class numeric_limits<double>
-  : public _Floating_limits<double,
-			    DBL_MANT_DIG,   // Binary digits of precision
-			    DBL_DIG,        // Decimal digits of precision
-			    DBL_MIN_EXP,    // Minimum exponent
-			    DBL_MAX_EXP,    // Maximum exponent
-			    DBL_MIN_10_EXP, // Minimum base 10 exponent
-			    DBL_MAX_10_EXP, // Maximum base 10 exponent
+  : public _Floating_limits<double, 
+                            DBL_MANT_DIG,   // Binary digits of precision
+                            DBL_DIG,        // Decimal digits of precision
+                            DBL_MIN_EXP,    // Minimum exponent
+                            DBL_MAX_EXP,    // Maximum exponent
+                            DBL_MIN_10_EXP, // Minimum base 10 exponent
+                            DBL_MAX_10_EXP, // Maximum base 10 exponent
 #if defined(BOOST_BIG_ENDIAN)
-			    0x7ff0 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
-			    0x7ff1 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
-			    0x7ff9 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
+                            0x7ff0 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
+                            0x7ff1 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
+                            0x7ff9 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
 #else
-			    0x7ff00000u,    // Last word of +infinity
-			    0x7ff10000u,    // Last word of quiet NaN
-			    0x7ff90000u,    // Last word of signaling NaN
+                            0x7ff00000u,    // Last word of +infinity
+                            0x7ff10000u,    // Last word of quiet NaN
+                            0x7ff90000u,    // Last word of signaling NaN
 #endif
-			    true,           // conforms to iec559
-			    round_to_nearest>
+                            true,           // conforms to iec559
+                            round_to_nearest>
 {
 public:
   static double min() throw() { return DBL_MIN; }
@@ -429,24 +424,24 @@ public:
 };
 
 template<> class numeric_limits<long double>
-  : public _Floating_limits<long double,
-			    LDBL_MANT_DIG,  // Binary digits of precision
-			    LDBL_DIG,       // Decimal digits of precision
-			    LDBL_MIN_EXP,   // Minimum exponent
-			    LDBL_MAX_EXP,   // Maximum exponent
-			    LDBL_MIN_10_EXP,// Minimum base 10 exponent
-			    LDBL_MAX_10_EXP,// Maximum base 10 exponent
+  : public _Floating_limits<long double, 
+                            LDBL_MANT_DIG,  // Binary digits of precision
+                            LDBL_DIG,       // Decimal digits of precision
+                            LDBL_MIN_EXP,   // Minimum exponent
+                            LDBL_MAX_EXP,   // Maximum exponent
+                            LDBL_MIN_10_EXP,// Minimum base 10 exponent
+                            LDBL_MAX_10_EXP,// Maximum base 10 exponent
 #if defined(BOOST_BIG_ENDIAN)
-			    0x7ff0 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
-			    0x7ff1 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
-			    0x7ff9 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
+                            0x7ff0 << (sizeof(int)*CHAR_BIT-16),    // Last word of +infinity
+                            0x7ff1 << (sizeof(int)*CHAR_BIT-16),    // Last word of quiet NaN
+                            0x7ff9 << (sizeof(int)*CHAR_BIT-16),    // Last word of signaling NaN
 #else
-			    0x7fff8000u,    // Last word of +infinity
-			    0x7fffc000u,    // Last word of quiet NaN
-			    0x7fff9000u,    // Last word of signaling NaN
+                            0x7fff8000u,    // Last word of +infinity
+                            0x7fffc000u,    // Last word of quiet NaN
+                            0x7fff9000u,    // Last word of signaling NaN
 #endif
-			    false,          // Doesn't conform to iec559
-			    round_to_nearest>
+                            false,          // Doesn't conform to iec559
+                            round_to_nearest>
 {
 public:
   static long double min() throw() { return LDBL_MIN; }
@@ -463,3 +458,6 @@ public:
 // Local Variables:
 // mode:C++
 // End:
+
+
+

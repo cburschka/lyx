@@ -38,7 +38,7 @@
 
 namespace boost{
 
-#ifdef BOOST_MSVC
+#if defined(BOOST_MSVC) 
 
 //
 // MS specific version:

@@ -26,6 +26,18 @@
 // representations about the suitability of this software for any
 // purpose.  It is provided "as is" without express or implied warranty.
 //
+// Copyright (C) 2002 Ronald Garcia
+//
+// Permission to copy, use, sell and distribute this software is granted
+// provided this copyright notice appears in all copies. 
+// Permission to modify the code and to distribute modified code is granted
+// provided this copyright notice appears in all copies, and a notice 
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty, 
+// and with no claim as to its suitability for any purpose.
+//
+
 
 #include "boost/iterator.hpp"
 
@@ -37,7 +49,7 @@ namespace boost {
 
 template <class InputIter, class Size, class OutputIter>
 OutputIter copy_n(InputIter first, Size count,
-		  OutputIter result) {
+                  OutputIter result) {
   for ( ; count > 0; --count) {
     *result = *first;
     ++first;
@@ -71,7 +83,7 @@ copy_n__(RAIter first, Size count,
 template <class InputIter, class Size, class OutputIter>
 inline OutputIter
 copy_n__(InputIter first, Size count, OutputIter result) {
-  typedef std::iterator_traits<InputIter>::iterator_category cat;
+  typedef typename std::iterator_traits<InputIter>::iterator_category cat;
   return copy_n__(first, count, result, cat());
 }
 

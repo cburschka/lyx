@@ -19,9 +19,6 @@
 #  define BOOST_NO_VOID_RETURNS
    // disable min/max macro defines on vc6:
    //
-#  ifndef NOMINMAX
-#     define NOMINMAX
-#  endif
 #endif
 
 #if (_MSC_VER <= 1300) // || !defined(BOOST_STRICT_CONFIG) // VC7 Beta 2 or later
@@ -50,15 +47,6 @@
 #  define BOOST_NO_TEMPLATE_TEMPLATES
 #  if (_MSC_VER > 1200)
 #     define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
-#  endif
-   //
-   // disable min/max macros if defined:
-   //
-#  ifdef min
-#     undef min
-#  endif
-#  ifdef max
-#     undef max
 #  endif
 
 #endif
@@ -91,9 +79,15 @@
 #  define BOOST_DISABLE_WIN32
 #endif
 
+# if _MSC_VER == 1200
+#   define BOOST_COMPILER_VERSION 6.0
+# elif _MSC_VER == 1300
+#   define BOOST_COMPILER_VERSION 7.0
+# else
+#   define BOOST_COMPILER_VERSION _MSC_VER
+# endif
 
-
-#define BOOST_COMPILER "Microsoft Visual C++ version " BOOST_STRINGIZE(_MSC_VER)
+#define BOOST_COMPILER "Microsoft Visual C++ version " BOOST_STRINGIZE(BOOST_COMPILER_VERSION)
 
 //
 // versions check:
@@ -102,8 +96,8 @@
 #error "Compiler not supported or configured - please reconfigure"
 #endif
 //
-// last known and checked version is 1301:
-#if (_MSC_VER > 1301)
+// last known and checked version is 1310:
+#if (_MSC_VER > 1310)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  else

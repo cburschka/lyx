@@ -1,3 +1,15 @@
+// Copyright (C) 2002 Ronald Garcia
+//
+// Permission to copy, use, sell and distribute this software is granted
+// provided this copyright notice appears in all copies. 
+// Permission to modify the code and to distribute modified code is granted
+// provided this copyright notice appears in all copies, and a notice 
+// that the code was modified is included with the copyright notice.
+//
+// This software is provided "as is" without express or implied warranty, 
+// and with no claim as to its suitability for any purpose.
+//
+
 #ifndef BASE_RG071801_HPP
 #define BASE_RG071801_HPP
 
@@ -130,9 +142,9 @@ protected:
   // used by array operator[] and iterators to get reference types.
   template <typename Reference, typename TPtr>
   Reference access(boost::type<Reference>,index idx,TPtr base,
-		   const size_type* extents,
-		   const index* strides,
-		   const index* index_base) const {
+                   const size_type* extents,
+                   const index* strides,
+                   const index* index_base) const {
 
     // return a sub_array<T,NDims-1> proxy object
     TPtr newbase = base + idx * strides[0];
@@ -168,9 +180,9 @@ protected:
   // used by array operator[] and iterators to get reference types.
   template <typename Reference, typename TPtr>
   Reference access(boost::type<Reference>,index idx,TPtr base,
-		   const size_type*,
-		   const index* strides,
-		   const index*) const {
+                   const size_type*,
+                   const index* strides,
+                   const index*) const {
     return *(base + idx * strides[0]);
   }
 
@@ -304,8 +316,8 @@ protected:
   // Used by operator() in our array classes
   template <typename Reference, typename IndexList, typename TPtr>
   Reference access_element(boost::type<Reference>, TPtr base,
-			   const IndexList& indices,
-			   const index* strides) const {
+                           const IndexList& indices,
+                           const index* strides) const {
     index offset = 0;
     for (size_type n = 0; n != NumDims; ++n) 
       offset += indices[n] * strides[n];
@@ -315,7 +327,7 @@ protected:
 
   template <typename StrideList, typename ExtentList>
   void compute_strides(StrideList& stride_list, ExtentList& extent_list,
-		       const general_storage_order<NumDims>& storage)
+                       const general_storage_order<NumDims>& storage)
   {
     // invariant: stride = the stride for dimension n
     index stride = 1;
@@ -323,7 +335,7 @@ protected:
       index stride_sign = +1;
       
       if (!storage.ascending(storage.ordering(n)))
-	stride_sign = -1;
+        stride_sign = -1;
       
       // The stride for this dimension is the product of the
       // lengths of the ranks minor to it.
@@ -339,13 +351,13 @@ protected:
   template <typename StrideList, typename ExtentList, typename BaseList>
   index
   calculate_origin_offset(const StrideList& stride_list,
-			  const ExtentList& extent_list,
-			  const general_storage_order<NumDims>& storage,
-			  const BaseList& index_base_list)
+                          const ExtentList& extent_list,
+                          const general_storage_order<NumDims>& storage,
+                          const BaseList& index_base_list)
   {
     return
       calculate_descending_dimension_offset(stride_list,extent_list,
-					    storage) +
+                                            storage) +
       calculate_indexing_offset(stride_list,index_base_list);
   }
 
@@ -354,14 +366,14 @@ protected:
   template <typename StrideList, typename ExtentList>
   index
   calculate_descending_dimension_offset(const StrideList& stride_list,
-				const ExtentList& extent_list,
-				const general_storage_order<NumDims>& storage)
+                                const ExtentList& extent_list,
+                                const general_storage_order<NumDims>& storage)
   {
     index offset = 0;
     if (!storage.all_dims_ascending()) 
       for (size_type n = 0; n != NumDims; ++n)
-	if (!storage.ascending(n))
-	  offset -= (extent_list[n] - 1) * stride_list[n];
+        if (!storage.ascending(n))
+          offset -= (extent_list[n] - 1) * stride_list[n];
 
     return offset;
   }
@@ -373,11 +385,11 @@ protected:
   template <typename StrideList, typename BaseList>
   index
   calculate_indexing_offset(const StrideList& stride_list,
-			  const BaseList& index_base_list)
+                          const BaseList& index_base_list)
   {
     index offset = 0;
     for (size_type n = 0; n != NumDims; ++n)
-	offset -= stride_list[n] * index_base_list[n];
+        offset -= stride_list[n] * index_base_list[n];
     return offset;
   }
 
@@ -393,12 +405,12 @@ protected:
   template <typename ArrayRef, int NDims, typename TPtr>
   ArrayRef
   generate_array_view(boost::type<ArrayRef>,
-		      const boost::detail::multi_array::
-		      index_gen<NumDims,NDims>& indices,
-		      const size_type* extents,
-		      const index* strides,
-		      const index* index_bases,
-		      TPtr base) const {
+                      const boost::detail::multi_array::
+                      index_gen<NumDims,NDims>& indices,
+                      const size_type* extents,
+                      const index* strides,
+                      const index* index_bases,
+                      TPtr base) const {
 
     boost::array<index,NDims> new_strides;
     boost::array<index,NDims> new_extents;
@@ -420,23 +432,23 @@ protected:
 
       if (!current_range.is_degenerate()) {
 
-	// The index_factor for each dimension is included into the
-	// strides for the array_view (see [Garcia] for the math involved).
-	new_strides[dim] = index_factor * strides[n];
-	
-	// calculate new extents
-	new_extents[dim] = len;
-	++dim;
+        // The index_factor for each dimension is included into the
+        // strides for the array_view (see [Garcia] for the math involved).
+        new_strides[dim] = index_factor * strides[n];
+        
+        // calculate new extents
+        new_extents[dim] = len;
+        ++dim;
       }
     }
     assert (dim == NDims);
 
     return
       ArrayRef(base+offset,
-	       new_extents,
-	       new_strides);
+               new_extents,
+               new_strides);
   }
-		     
+                     
 
 };
 

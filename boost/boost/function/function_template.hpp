@@ -14,7 +14,7 @@
 // For more information, see http://www.boost.org
 
 // Note: this header is a header template and must NOT have multiple-inclusion
-// protection. 
+// protection.
 
 #ifndef BOOST_FUNCTION_FUNCTION_TEMPLATE_HPP
 #define BOOST_FUNCTION_FUNCTION_TEMPLATE_HPP
@@ -34,7 +34,7 @@
 
 // Comma if nonzero number of arguments
 #if BOOST_FUNCTION_NUM_ARGS == 0
-#  define BOOST_FUNCTION_COMMA 
+#  define BOOST_FUNCTION_COMMA
 #else
 #  define BOOST_FUNCTION_COMMA ,
 #endif // BOOST_FUNCTION_NUM_ARGS > 0
@@ -44,7 +44,7 @@
 #define BOOST_FUNCTION_FUNCTION_INVOKER \
   BOOST_JOIN(function_invoker,BOOST_FUNCTION_NUM_ARGS)
 #define BOOST_FUNCTION_VOID_FUNCTION_INVOKER \
-  BOOST_JOIN(void_function_invoker,BOOST_FUNCTION_NUM_ARGS) 
+  BOOST_JOIN(void_function_invoker,BOOST_FUNCTION_NUM_ARGS)
 #define BOOST_FUNCTION_FUNCTION_OBJ_INVOKER \
   BOOST_JOIN(function_obj_invoker,BOOST_FUNCTION_NUM_ARGS)
 #define BOOST_FUNCTION_VOID_FUNCTION_OBJ_INVOKER \
@@ -64,163 +64,163 @@ namespace boost {
   namespace detail {
     namespace function {
       template<
-        typename FunctionPtr,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
-        >
+	typename FunctionPtr,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
+	>
       struct BOOST_FUNCTION_FUNCTION_INVOKER
       {
-        static R invoke(any_pointer function_ptr BOOST_FUNCTION_COMMA
-                        BOOST_FUNCTION_PARMS)
-        {
-          FunctionPtr f = reinterpret_cast<FunctionPtr>(function_ptr.func_ptr);
-          return f(BOOST_FUNCTION_ARGS);
-        }
+	static R invoke(any_pointer function_ptr BOOST_FUNCTION_COMMA
+			BOOST_FUNCTION_PARMS)
+	{
+	  FunctionPtr f = reinterpret_cast<FunctionPtr>(function_ptr.func_ptr);
+	  return f(BOOST_FUNCTION_ARGS);
+	}
       };
 
       template<
-        typename FunctionPtr,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
-        >
+	typename FunctionPtr,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
+	>
       struct BOOST_FUNCTION_VOID_FUNCTION_INVOKER
       {
-        static unusable invoke(any_pointer function_ptr BOOST_FUNCTION_COMMA
-                               BOOST_FUNCTION_PARMS)
+	static unusable invoke(any_pointer function_ptr BOOST_FUNCTION_COMMA
+			       BOOST_FUNCTION_PARMS)
 
-        {
-          FunctionPtr f = reinterpret_cast<FunctionPtr>(function_ptr.func_ptr);
-          f(BOOST_FUNCTION_ARGS);
-          return unusable();
-        }
+	{
+	  FunctionPtr f = reinterpret_cast<FunctionPtr>(function_ptr.func_ptr);
+	  f(BOOST_FUNCTION_ARGS);
+	  return unusable();
+	}
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
       >
       struct BOOST_FUNCTION_FUNCTION_OBJ_INVOKER
       {
-        static R invoke(any_pointer function_obj_ptr BOOST_FUNCTION_COMMA
-                        BOOST_FUNCTION_PARMS)
+	static R invoke(any_pointer function_obj_ptr BOOST_FUNCTION_COMMA
+			BOOST_FUNCTION_PARMS)
 
-        {
-          FunctionObj* f = (FunctionObj*)(function_obj_ptr.obj_ptr);
-          return (*f)(BOOST_FUNCTION_ARGS);
-        }
+	{
+	  FunctionObj* f = (FunctionObj*)(function_obj_ptr.obj_ptr);
+	  return (*f)(BOOST_FUNCTION_ARGS);
+	}
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
       >
       struct BOOST_FUNCTION_VOID_FUNCTION_OBJ_INVOKER
       {
-        static unusable invoke(any_pointer function_obj_ptr 
-                               BOOST_FUNCTION_COMMA
-                               BOOST_FUNCTION_PARMS)
+	static unusable invoke(any_pointer function_obj_ptr
+			       BOOST_FUNCTION_COMMA
+			       BOOST_FUNCTION_PARMS)
 
-        {
-          FunctionObj* f = (FunctionObj*)(function_obj_ptr.obj_ptr);
-          (*f)(BOOST_FUNCTION_ARGS);
-          return unusable();
-        }
+	{
+	  FunctionObj* f = (FunctionObj*)(function_obj_ptr.obj_ptr);
+	  (*f)(BOOST_FUNCTION_ARGS);
+	  return unusable();
+	}
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
       >
       struct BOOST_FUNCTION_STATELESS_FUNCTION_OBJ_INVOKER
       {
-        static R invoke(any_pointer BOOST_FUNCTION_COMMA BOOST_FUNCTION_PARMS)
-        {
-          FunctionObj f = FunctionObj();
-          return f(BOOST_FUNCTION_ARGS);
-        }
+	static R invoke(any_pointer BOOST_FUNCTION_COMMA BOOST_FUNCTION_PARMS)
+	{
+	  FunctionObj f = FunctionObj();
+	  return f(BOOST_FUNCTION_ARGS);
+	}
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
       >
       struct BOOST_FUNCTION_STATELESS_VOID_FUNCTION_OBJ_INVOKER
       {
-        static unusable invoke(any_pointer BOOST_FUNCTION_COMMA 
-                               BOOST_FUNCTION_PARMS)
+	static unusable invoke(any_pointer BOOST_FUNCTION_COMMA
+			       BOOST_FUNCTION_PARMS)
 
-        {
-          FunctionObj f = FunctionObj();
-          f(BOOST_FUNCTION_ARGS);
-          return unusable();
-        }
+	{
+	  FunctionObj f = FunctionObj();
+	  f(BOOST_FUNCTION_ARGS);
+	  return unusable();
+	}
       };
 
       template<
-        typename FunctionPtr,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionPtr,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
       >
       struct BOOST_FUNCTION_GET_FUNCTION_INVOKER
       {
-        typedef typename ct_if<(is_void<R>::value),
-                            BOOST_FUNCTION_VOID_FUNCTION_INVOKER<
-                            FunctionPtr,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >,
-                          BOOST_FUNCTION_FUNCTION_INVOKER<
-                            FunctionPtr,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >
-                       >::type type;
+	typedef typename ct_if<(is_void<R>::value),
+			    BOOST_FUNCTION_VOID_FUNCTION_INVOKER<
+			    FunctionPtr,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >,
+			  BOOST_FUNCTION_FUNCTION_INVOKER<
+			    FunctionPtr,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >
+		       >::type type;
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
        >
       struct BOOST_FUNCTION_GET_FUNCTION_OBJ_INVOKER
       {
-        typedef typename ct_if<(is_void<R>::value),
-                            BOOST_FUNCTION_VOID_FUNCTION_OBJ_INVOKER<
-                            FunctionObj,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >,
-                          BOOST_FUNCTION_FUNCTION_OBJ_INVOKER<
-                            FunctionObj,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >
-                       >::type type;
+	typedef typename ct_if<(is_void<R>::value),
+			    BOOST_FUNCTION_VOID_FUNCTION_OBJ_INVOKER<
+			    FunctionObj,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >,
+			  BOOST_FUNCTION_FUNCTION_OBJ_INVOKER<
+			    FunctionObj,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >
+		       >::type type;
       };
 
       template<
-        typename FunctionObj,
-        typename R BOOST_FUNCTION_COMMA
-        BOOST_FUNCTION_TEMPLATE_PARMS
+	typename FunctionObj,
+	typename R BOOST_FUNCTION_COMMA
+	BOOST_FUNCTION_TEMPLATE_PARMS
        >
       struct BOOST_FUNCTION_GET_STATELESS_FUNCTION_OBJ_INVOKER
       {
-        typedef typename ct_if<(is_void<R>::value),
-                            BOOST_FUNCTION_STATELESS_VOID_FUNCTION_OBJ_INVOKER<
-                            FunctionObj,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >,
-                          BOOST_FUNCTION_STATELESS_FUNCTION_OBJ_INVOKER<
-                            FunctionObj,
-                            R BOOST_FUNCTION_COMMA
-                            BOOST_FUNCTION_TEMPLATE_ARGS
-                          >
-                       >::type type;
+	typedef typename ct_if<(is_void<R>::value),
+			    BOOST_FUNCTION_STATELESS_VOID_FUNCTION_OBJ_INVOKER<
+			    FunctionObj,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >,
+			  BOOST_FUNCTION_STATELESS_FUNCTION_OBJ_INVOKER<
+			    FunctionObj,
+			    R BOOST_FUNCTION_COMMA
+			    BOOST_FUNCTION_TEMPLATE_ARGS
+			  >
+		       >::type type;
       };
 
     } // end namespace function
@@ -235,12 +235,12 @@ namespace boost {
   >
   class BOOST_FUNCTION_FUNCTION : public function_base, public Mixin
   {
-    typedef typename detail::function::function_return_type<R>::type 
+    typedef typename detail::function::function_return_type<R>::type
       internal_result_type;
 
   public:
     BOOST_STATIC_CONSTANT(int, args = BOOST_FUNCTION_NUM_ARGS);
-    
+
 #if BOOST_FUNCTION_NUM_ARGS == 1
     typedef T0 argument_type;
 #elif BOOST_FUNCTION_NUM_ARGS == 2
@@ -260,8 +260,8 @@ namespace boost {
 
     BOOST_FUNCTION_FUNCTION() : function_base(), Mixin(), invoker(0) {}
 
-    explicit BOOST_FUNCTION_FUNCTION(const Mixin& m) : 
-      function_base(), Mixin(m), invoker(0) 
+    explicit BOOST_FUNCTION_FUNCTION(const Mixin& m) :
+      function_base(), Mixin(m), invoker(0)
     {
     }
 
@@ -296,9 +296,9 @@ namespace boost {
       policy_type policy;
       policy.precall(this);
 
-      internal_result_type result = invoker(function_base::functor 
-                                            BOOST_FUNCTION_COMMA
-                                            BOOST_FUNCTION_ARGS);
+      internal_result_type result = invoker(function_base::functor
+					    BOOST_FUNCTION_COMMA
+					    BOOST_FUNCTION_ARGS);
 
       policy.postcall(this);
 #ifndef BOOST_NO_VOID_RETURNS
@@ -311,10 +311,10 @@ namespace boost {
     // The distinction between when to use BOOST_FUNCTION_FUNCTION and
     // when to use self_type is obnoxious. MSVC cannot handle self_type as
     // the return type of these assignment operators, but Borland C++ cannot
-    // handle BOOST_FUNCTION_FUNCTION as the type of the temporary to 
+    // handle BOOST_FUNCTION_FUNCTION as the type of the temporary to
     // construct.
     template<typename Functor>
-    BOOST_FUNCTION_FUNCTION& 
+    BOOST_FUNCTION_FUNCTION&
     operator=(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
     {
       self_type(f, static_cast<const Mixin&>(*this)).swap(*this);
@@ -324,6 +324,7 @@ namespace boost {
     template<typename Functor>
     void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
     {
+      int deprecated;
       self_type(f, static_cast<const Mixin&>(*this)).swap(*this);
     }
 
@@ -331,7 +332,7 @@ namespace boost {
     BOOST_FUNCTION_FUNCTION& operator=(const BOOST_FUNCTION_FUNCTION& f)
     {
       if (&f == this)
-        return *this;
+	return *this;
 
       self_type(f).swap(*this);
       return *this;
@@ -340,8 +341,9 @@ namespace boost {
     // Assignment from another BOOST_FUNCTION_FUNCTION
     void set(const BOOST_FUNCTION_FUNCTION& f)
     {
+      //int deprecated;
       if (&f == this)
-        return;
+	return;
 
       self_type(f).swap(*this);
     }
@@ -349,7 +351,7 @@ namespace boost {
     void swap(BOOST_FUNCTION_FUNCTION& other)
     {
       if (&other == this)
-        return;
+	return;
 
       std::swap(function_base::manager, other.manager);
       std::swap(function_base::functor, other.functor);
@@ -361,9 +363,9 @@ namespace boost {
     void clear()
     {
       if (function_base::manager) {
-        function_base::functor = 
-          function_base::manager(function_base::functor, 
-                                 detail::function::destroy_functor_tag);
+	function_base::functor =
+	  function_base::manager(function_base::functor,
+				 detail::function::destroy_functor_tag);
       }
 
       function_base::manager = 0;
@@ -374,11 +376,11 @@ namespace boost {
     void assign_to_own(const BOOST_FUNCTION_FUNCTION& f)
     {
       if (!f.empty()) {
-        invoker = f.invoker;
-        function_base::manager = f.manager;
-        function_base::functor = 
-          f.manager(f.functor, detail::function::clone_functor_tag);
-      }          
+	invoker = f.invoker;
+	function_base::manager = f.manager;
+	function_base::functor =
+	  f.manager(f.functor, detail::function::clone_functor_tag);
+      }
     }
 
     template<typename Functor>
@@ -392,27 +394,27 @@ namespace boost {
     void assign_to(FunctionPtr f, detail::function::function_ptr_tag)
     {
       clear();
-        
+
       if (f) {
-        typedef typename detail::function::BOOST_FUNCTION_GET_FUNCTION_INVOKER<
-                           FunctionPtr,
-                           R BOOST_FUNCTION_COMMA
-                           BOOST_FUNCTION_TEMPLATE_ARGS
-                         >::type
-          invoker_type;
-    
-        invoker = &invoker_type::invoke;
-        function_base::manager = 
-          &detail::function::functor_manager<FunctionPtr, Allocator>::manage;
-        function_base::functor = 
-          function_base::manager(detail::function::any_pointer(
-                            // should be a reinterpret cast, but some compilers
-                            // insist on giving cv-qualifiers to free functions
-                            (void (*)())(f)
-                          ),
-                          detail::function::clone_functor_tag);
+	typedef typename detail::function::BOOST_FUNCTION_GET_FUNCTION_INVOKER<
+			   FunctionPtr,
+			   R BOOST_FUNCTION_COMMA
+			   BOOST_FUNCTION_TEMPLATE_ARGS
+			 >::type
+	  invoker_type;
+
+	invoker = &invoker_type::invoke;
+	function_base::manager =
+	  &detail::function::functor_manager<FunctionPtr, Allocator>::manage;
+	function_base::functor =
+	  function_base::manager(detail::function::any_pointer(
+			    // should be a reinterpret cast, but some compilers
+			    // insist on giving cv-qualifiers to free functions
+			    (void (*)())(f)
+			  ),
+			  detail::function::clone_functor_tag);
       }
-    }  
+    }
 
 #if BOOST_FUNCTION_NUM_ARGS > 0
     template<typename MemberPtr>
@@ -421,102 +423,102 @@ namespace boost {
       this->assign_to(mem_fn(f));
     }
 #endif // BOOST_FUNCTION_NUM_ARGS > 0
-        
+
     template<typename FunctionObj>
     void assign_to(FunctionObj f, detail::function::function_obj_tag)
     {
       if (!detail::function::has_empty_target(addressof(f))) {
-        typedef 
-          typename detail::function::BOOST_FUNCTION_GET_FUNCTION_OBJ_INVOKER<
-                                       FunctionObj,
-                                       R BOOST_FUNCTION_COMMA
-                                       BOOST_FUNCTION_TEMPLATE_ARGS
-                                     >::type
-          invoker_type;
-    
-        invoker = &invoker_type::invoke;
-        function_base::manager = &detail::function::functor_manager<
-                                    FunctionObj, Allocator>::manage;
-#ifndef BOOST_NO_STD_ALLOCATOR
-        typedef typename Allocator::template rebind<FunctionObj>::other 
-          allocator_type;
-        typedef typename allocator_type::pointer pointer_type;
-        allocator_type allocator;
-        pointer_type copy = allocator.allocate(1);
-        allocator.construct(copy, f);
+	typedef
+	  typename detail::function::BOOST_FUNCTION_GET_FUNCTION_OBJ_INVOKER<
+				       FunctionObj,
+				       R BOOST_FUNCTION_COMMA
+				       BOOST_FUNCTION_TEMPLATE_ARGS
+				     >::type
+	  invoker_type;
 
-        // Get back to the original pointer type
-        FunctionObj* new_f = static_cast<FunctionObj*>(copy);
+	invoker = &invoker_type::invoke;
+	function_base::manager = &detail::function::functor_manager<
+				    FunctionObj, Allocator>::manage;
+#ifndef BOOST_NO_STD_ALLOCATOR
+	typedef typename Allocator::template rebind<FunctionObj>::other
+	  allocator_type;
+	typedef typename allocator_type::pointer pointer_type;
+	allocator_type allocator;
+	pointer_type copy = allocator.allocate(1);
+	allocator.construct(copy, f);
+
+	// Get back to the original pointer type
+	FunctionObj* new_f = static_cast<FunctionObj*>(copy);
 #else
-        FunctionObj* new_f = new FunctionObj(f);
+	FunctionObj* new_f = new FunctionObj(f);
 #endif // BOOST_NO_STD_ALLOCATOR
-        function_base::functor = 
-          detail::function::any_pointer(static_cast<void*>(new_f));
+	function_base::functor =
+	  detail::function::any_pointer(static_cast<void*>(new_f));
       }
     }
-    
+
     template<typename FunctionObj>
-    void assign_to(const reference_wrapper<FunctionObj>& f, 
-                   detail::function::function_obj_ref_tag)
+    void assign_to(const reference_wrapper<FunctionObj>& f,
+		   detail::function::function_obj_ref_tag)
     {
       if (!detail::function::has_empty_target(f.get_pointer())) {
-        typedef 
-          typename detail::function::BOOST_FUNCTION_GET_FUNCTION_OBJ_INVOKER<
-                                       FunctionObj,
-                                       R BOOST_FUNCTION_COMMA
-                                       BOOST_FUNCTION_TEMPLATE_ARGS
-                                     >::type
-          invoker_type;
-    
-        invoker = &invoker_type::invoke;
-        function_base::manager = &detail::function::trivial_manager;
-        function_base::functor = 
-          function_base::manager(
-            detail::function::any_pointer(
-              const_cast<FunctionObj*>(f.get_pointer())),
-            detail::function::clone_functor_tag);
+	typedef
+	  typename detail::function::BOOST_FUNCTION_GET_FUNCTION_OBJ_INVOKER<
+				       FunctionObj,
+				       R BOOST_FUNCTION_COMMA
+				       BOOST_FUNCTION_TEMPLATE_ARGS
+				     >::type
+	  invoker_type;
+
+	invoker = &invoker_type::invoke;
+	function_base::manager = &detail::function::trivial_manager;
+	function_base::functor =
+	  function_base::manager(
+	    detail::function::any_pointer(
+	      const_cast<FunctionObj*>(f.get_pointer())),
+	    detail::function::clone_functor_tag);
       }
     }
-    
+
     template<typename FunctionObj>
     void assign_to(FunctionObj, detail::function::stateless_function_obj_tag)
     {
-      typedef 
-          typename detail::function::
-                     BOOST_FUNCTION_GET_STATELESS_FUNCTION_OBJ_INVOKER<
-                       FunctionObj,
-                       R BOOST_FUNCTION_COMMA
-                       BOOST_FUNCTION_TEMPLATE_ARGS
-                     >::type
-          invoker_type;
+      typedef
+	  typename detail::function::
+		     BOOST_FUNCTION_GET_STATELESS_FUNCTION_OBJ_INVOKER<
+		       FunctionObj,
+		       R BOOST_FUNCTION_COMMA
+		       BOOST_FUNCTION_TEMPLATE_ARGS
+		     >::type
+	  invoker_type;
       invoker = &invoker_type::invoke;
       function_base::manager = &detail::function::trivial_manager;
       function_base::functor = detail::function::any_pointer(this);
     }
 
     typedef internal_result_type (*invoker_type)(detail::function::any_pointer
-                                                 BOOST_FUNCTION_COMMA
-                                                 BOOST_FUNCTION_TEMPLATE_ARGS);
-    
+						 BOOST_FUNCTION_COMMA
+						 BOOST_FUNCTION_TEMPLATE_ARGS);
+
     invoker_type invoker;
   };
 
   template<typename R BOOST_FUNCTION_COMMA BOOST_FUNCTION_TEMPLATE_PARMS ,
-           typename Policy, typename Mixin, typename Allocator>
+	   typename Policy, typename Mixin, typename Allocator>
   inline void swap(BOOST_FUNCTION_FUNCTION<
-                     R BOOST_FUNCTION_COMMA
-                     BOOST_FUNCTION_TEMPLATE_ARGS ,
-                     Policy,
-                     Mixin,
-                     Allocator
-                   >& f1,
-                   BOOST_FUNCTION_FUNCTION<
-                     R BOOST_FUNCTION_COMMA 
-                     BOOST_FUNCTION_TEMPLATE_ARGS,
-                     Policy,
-                     Mixin,
-                     Allocator
-                   >& f2)
+		     R BOOST_FUNCTION_COMMA
+		     BOOST_FUNCTION_TEMPLATE_ARGS ,
+		     Policy,
+		     Mixin,
+		     Allocator
+		   >& f1,
+		   BOOST_FUNCTION_FUNCTION<
+		     R BOOST_FUNCTION_COMMA
+		     BOOST_FUNCTION_TEMPLATE_ARGS,
+		     Policy,
+		     Mixin,
+		     Allocator
+		   >& f2)
   {
     f1.swap(f2);
   }

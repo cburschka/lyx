@@ -17,7 +17,7 @@
 
 #include <boost/config.hpp>   // for broken compiler workarounds
 
-#ifndef BOOST_MSVC6_MEMBER_TEMPLATES
+#if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 #include <boost/detail/shared_ptr_nmt.hpp>
 #else
 
@@ -55,6 +55,15 @@ template<> struct shared_ptr_traits<void>
 {
     typedef void reference;
 };
+
+#if !defined(BOOST_NO_CV_VOID_SPECIALIZATIONS)
+
+template<> struct shared_ptr_traits<void const>
+{
+    typedef void reference;
+};
+
+#endif
 
 } // namespace detail
 
@@ -126,19 +135,19 @@ public:
     template<typename Y>
     shared_ptr(shared_ptr<Y> const & r, detail::dynamic_cast_tag): px(dynamic_cast<element_type *>(r.px)), pn(r.pn)
     {
-        if (px == 0) // need to allocate new counter -- the cast failed
-        {
-            pn = detail::shared_count();
-        }
+	if (px == 0) // need to allocate new counter -- the cast failed
+	{
+	    pn = detail::shared_count();
+	}
     }
 
     template<typename Y>
     shared_ptr(shared_ptr<Y> const & r, detail::polymorphic_cast_tag): px(dynamic_cast<element_type *>(r.px)), pn(r.pn)
     {
-        if (px == 0)
-        {
-            throw std::bad_cast();
-        }
+	if (px == 0)
+	{
+	    throw std::bad_cast();
+	}
     }
 
 #ifndef BOOST_NO_AUTO_PTR
@@ -155,9 +164,9 @@ public:
     template<typename Y>
     shared_ptr & operator=(shared_ptr<Y> const & r) // never throws
     {
-        px = r.px;
-        pn = r.pn; // shared_count::op= doesn't throw
-        return *this;
+	px = r.px;
+	pn = r.pn; // shared_count::op= doesn't throw
+	return *this;
     }
 
 #endif
@@ -167,73 +176,73 @@ public:
     template<typename Y>
     shared_ptr & operator=(std::auto_ptr<Y> & r)
     {
-        this_type(r).swap(*this);
-        return *this;
+	this_type(r).swap(*this);
+	return *this;
     }
 
 #endif
 
     void reset()
     {
-        this_type().swap(*this);
+	this_type().swap(*this);
     }
 
     template<typename Y> void reset(Y * p) // Y must be complete
     {
-        BOOST_ASSERT(p == 0 || p != px); // catch self-reset errors
-        this_type(p).swap(*this);
+	BOOST_ASSERT(p == 0 || p != px); // catch self-reset errors
+	this_type(p).swap(*this);
     }
 
     template<typename Y, typename D> void reset(Y * p, D d)
     {
-        this_type(p, d).swap(*this);
+	this_type(p, d).swap(*this);
     }
 
     typename detail::shared_ptr_traits<T>::reference operator* () const // never throws
     {
-        BOOST_ASSERT(px != 0);
-        return *px;
+	BOOST_ASSERT(px != 0);
+	return *px;
     }
 
     T * operator-> () const // never throws
     {
-        BOOST_ASSERT(px != 0);
-        return px;
+	BOOST_ASSERT(px != 0);
+	return px;
     }
-    
+
     T * get() const // never throws
     {
-        return px;
-    }
-
-    bool unique() const // never throws
-    {
-        return pn.unique();
-    }
-
-    long use_count() const // never throws
-    {
-        return pn.use_count();
+	return px;
     }
 
     // implicit conversion to "bool"
 
-    typedef long (this_type::*bool_type)() const;
+    typedef T * (this_type::*unspecified_bool_type)() const;
 
-    operator bool_type() const // never throws
+    operator unspecified_bool_type() const // never throws
     {
-        return px == 0? 0: &this_type::use_count;
+	return px == 0? 0: &this_type::get;
     }
 
     bool operator! () const // never throws
     {
-        return px == 0;
+	return px == 0;
+    }
+
+    bool unique() const // never throws
+    {
+	return pn.unique();
+    }
+
+    long use_count() const // never throws
+    {
+	return pn.use_count();
     }
 
     void swap(shared_ptr<T> & other) // never throws
     {
-        std::swap(px, other.px);
-        pn.swap(other.pn);
+	std::swap(px, other.px);
+	pn.swap(other.pn);
     }
 
 // Tasteless as this may seem, making all members public allows member templates
@@ -313,12 +322,34 @@ template<typename T> inline T * get_pointer(shared_ptr<T> const & p)
     return p.get();
 }
 
+// shared_from_this() creates a shared_ptr from a raw pointer (usually 'this')
+
+namespace detail
+{
+
+inline void sp_assert_counted_base(boost::counted_base const *)
+{
+}
+
+template<class T> inline T * sp_remove_const(T const * p)
+{
+    return const_cast<T *>(p);
+}
+
+} // namespace detail
+
+template<class T> shared_ptr<T> shared_from_this(T * p)
+{
+    detail::sp_assert_counted_base(p);
+    return shared_ptr<T>(detail::sp_remove_const(p));
+}
+
 } // namespace boost
 
 #ifdef BOOST_MSVC
 # pragma warning(pop)
-#endif    
+#endif
 
-#endif  // #ifndef BOOST_MSVC6_MEMBER_TEMPLATES
+#endif  // #if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 
 #endif  // #ifndef BOOST_SHARED_PTR_HPP_INCLUDED

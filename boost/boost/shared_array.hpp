@@ -17,7 +17,7 @@
 
 #include <boost/config.hpp>   // for broken compiler workarounds
 
-#ifndef BOOST_MSVC6_MEMBER_TEMPLATES
+#if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 #include <boost/detail/shared_array_nmt.hpp>
 #else
 
@@ -92,6 +92,20 @@ public:
         return px;
     }
 
+    // implicit conversion to "bool"
+
+    typedef T * (this_type::*unspecified_bool_type)() const;
+
+    operator unspecified_bool_type() const // never throws
+    {
+        return px == 0? 0: &this_type::get;
+    }
+
+    bool operator! () const // never throws
+    {
+        return px == 0;
+    }
+
     bool unique() const // never throws
     {
         return pn.unique();
@@ -137,6 +151,6 @@ template<typename T> void swap(shared_array<T> & a, shared_array<T> & b) // neve
 
 } // namespace boost
 
-#endif  // #ifndef BOOST_MSVC6_MEMBER_TEMPLATES
+#endif  // #if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 
 #endif  // #ifndef BOOST_SHARED_ARRAY_HPP_INCLUDED

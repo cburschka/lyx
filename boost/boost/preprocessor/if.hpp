@@ -13,7 +13,6 @@
  * See http://www.boost.org for most recent version.
  */
 
-#include <boost/preprocessor/detail/cat.hpp>
 #include <boost/preprocessor/logical/bool.hpp>
 
 /** <p>Expands to <code>THEN</code> if <code>COND != 0</code> and <code>ELSE</code> if
@@ -33,7 +32,11 @@
   <li><a href="../../test/preprocessor_test.cpp">preprocessor_test.cpp</a></li>
 </ul>
 */
-#define BOOST_PP_IF(COND,THEN,ELSE) BOOST_PP_DETAIL_CAT2(BOOST_PP_IF,BOOST_PP_BOOL(COND))(ELSE,THEN)
+#define BOOST_PP_IF(COND,THEN,ELSE) BOOST_PP_IF_BOOL(BOOST_PP_BOOL(COND),ELSE,THEN)
+
+#define BOOST_PP_IF_BOOL(C,E,T) BOOST_PP_IF_BOOL_DELAY(C,E,T)
+#define BOOST_PP_IF_BOOL_DELAY(C,E,T) BOOST_PP_IF##C(E,T)
+
 #define BOOST_PP_IF0(E,T) E
 #define BOOST_PP_IF1(E,T) T
 #endif

@@ -151,7 +151,7 @@ namespace boost {
     inline void
     connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)
     {
-      assert(con.get() != 0);
+      assert(con.get());
       con->bound_objects.push_back(b);
     }
 
