@@ -1141,8 +1141,7 @@ int Paragraph::beginningOfMainBody() const
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
 	pos_type i = 0;
-	if (i < size()
-	    && getChar(i) != Paragraph::META_NEWLINE) {
+	if (i < size() && getChar(i) != Paragraph::META_NEWLINE) {
 		++i;
 		char previous_char = 0;
 		char temp = 0;
