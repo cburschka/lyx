@@ -43,7 +43,7 @@ void QSpellcheckerDialog:: replaceChanged(const QString & str)
 	if (suggestionsLB->currentText() == str)
 		return;
 
-	int i = 0;
+	unsigned int i = 0;
 	for (; i < suggestionsLB->count(); ++i) {
 		if (suggestionsLB->text(i) == str)
 			break;

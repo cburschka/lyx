@@ -21,6 +21,7 @@ libqt2_la_LIBADD = \
 	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
+	../xforms/DropDown.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBrowser.lo \
 	../xforms/FormDocument.lo \
