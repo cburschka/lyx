@@ -133,6 +133,13 @@ flags:
     You can use this feature to install more than one version of LyX on
     the same system. You can optionally specify a "version" of your own,
     by doing something like : ./configure --with-version-suffix=-latestcvs
+
+  o --enable-optimization=VALUE enables you to set optimization to a
+    higher level as the default (-O), for example --enable-optimization=-O3.
+
+  o --disable-optimization - you can use this to disable compiler
+    optimization of LyX. The compile may be much quicker with some
+    compilers, but LyX will run more slowly. 
  
 There are also flags to control the internationalization support in
 LyX:
@@ -190,8 +197,8 @@ this file.
 In particular, the following options could be useful in some
 desperate cases:
 
-  o --with-warnings that make the compiler output more warnings during
-    the compilation of LyX.  Opposite is --without-warnings.  By default,
+  o --enable-warnings that make the compiler output more warnings during
+    the compilation of LyX.  Opposite is --disable-warnings.  By default,
     this flag is on for development versions only.
 
   o --enable-assertions that make the compilier generater run-time

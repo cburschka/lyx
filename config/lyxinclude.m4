@@ -176,27 +176,30 @@ AC_MSG_RESULT($cross_compiling)
 
 AC_PROG_CXX_GNU
 
-dnl We might want to get or shut warnings.
-AC_ARG_WITH(warnings,
-  [  --with-warnings         tell the compiler to display more warnings],,
+### We might want to get or shut warnings.
+AC_ARG_ENABLE(warnings,
+  [  --enable-warnings       tell the compiler to display more warnings],,
   [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
-	with_warnings=yes;
+	enable_warnings=yes;
     else
-	with_warnings=no;
+	enable_warnings=no;
     fi;])
-if test x$with_warnings = xyes ; then
+if test x$enable_warnings = xyes ; then
   lyx_flags="$lyx_flags warnings"
   AC_DEFINE(WITH_WARNINGS, 1,
   [Define this if you want to see the warning directives put here and
    there by the developpers to get attention])
 fi
 
-# optimize less for development versions
-if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
-  lyx_opt="-O"
-else
-  lyx_opt="-O2"
-fi
+### set up optimization
+AC_ARG_ENABLE(optimization,
+  [  --enable-optimization[=value]   enable compiler optimisation],,
+        enable_optimization=yes;)
+case $enable_optimization in
+  yes) lyx_opt=-O;;
+   no) lyx_opt=;;
+    *) lyx_opt=${enable_optimization};;
+esac
 
 # set the debug flags correctly.
 if test $ac_cv_prog_gxx = yes; then
@@ -226,18 +229,17 @@ dnl Check the version of g++
   else
     CXXFLAGS="$lyx_opt"
   fi
-  if test x$with_warnings = xyes ; then
+  if test x$enable_warnings = xyes ; then
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
-	2.97*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
     esac
     if test $lyx_devel_version = yes ; then
 	case $gxx_version in
 	    2.95.*) ;;
 	    2.96*) ;;
-	    2.97*) CXXFLAGS="$CXXFLAGS -Wconversion -Winline";;
+	    2.97*) ;;
 	    *2.91*) ;;
 	    *) ;;
         esac

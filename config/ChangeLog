@@ -1,3 +1,12 @@
+2001-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4 (LYX_PROG_CXX): do not handle gcc 2.97. Rename
+	--with-warnings to --enable-warnings.
+
+2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxinclude.m4: honour --disable-optimization
+ 
 2001-07-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4 (LYX_PATH_XFORMS): do not warn against xforms

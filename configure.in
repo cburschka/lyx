@@ -74,11 +74,6 @@ esac
 AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
 AC_PROG_CXXCPP
-AC_DISABLE_SHARED
-AC_LIBTOOL_WIN32_DLL
-#AM_PROG_LIBTOOL
-LYX_PROG_LIBTOOL
-
 ### Some checks on what the C++ compiler can(not) do
 dnl we do not need that currently (and probably all our supported
 dnl compiler allow that)  
@@ -93,6 +88,20 @@ dnl we disable rtti for now
 dnl LYX_CXX_RTTI
 AC_CHECK_HEADERS(ostream istream sstream locale limits)
 LYX_CXX_STL_MODERN_STREAMS
+
+### and now some special lyx flags.
+AC_ARG_ENABLE(assertions,
+  [  --enable-assertions     add runtime sanity checks in the program],,
+  [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+	enable_assertions=yes;
+    else
+	enable_assertions=no;
+    fi;])
+if test "x$enable_assertions" = xyes ; then
+   lyx_flags="$lyx_flags assertions"
+   AC_DEFINE(ENABLE_ASSERTIONS,1,
+    [Define if you want assertions to be enabled in the code])
+fi
 
 ### We need a regex implementation, so we provide our own if none is found.
 LYX_REGEX
@@ -128,6 +137,12 @@ if test x$lyx_use_liberty = xyes; then
   # AC_CHECK_LIB(iberty,main,LIBS="-liberty $LIBS")
   AC_CHECK_LIB(iberty,main)
 fi
+
+### Setup libtool
+AC_DISABLE_SHARED
+AC_LIBTOOL_WIN32_DLL
+#AM_PROG_LIBTOOL
+LYX_PROG_LIBTOOL
 
 ### Check which libsigc++ we're using
 LYX_WITH_SIGC
@@ -278,20 +293,6 @@ LYX_FUNC_PUTENV_ARGTYPE
 AC_REPLACE_FUNCS(strerror atexit)
 
 LYX_CHECK_DECL_HDRS(mkstemp,[unistd.h stdlib.h])
-
-### and now some special lyx flags.
-AC_ARG_ENABLE(assertions,
-  [  --enable-assertions     add runtime sanity checks in the program],,
-  [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
-	enable_assertions=yes;
-    else
-	enable_assertions=no;
-    fi;])
-if test "x$enable_assertions" = xyes ; then
-   lyx_flags="$lyx_flags assertions"
-   AC_DEFINE(ENABLE_ASSERTIONS,1,
-    [Define if you want assertions to be enabled in the code])
-fi
 
 ### Finish the work.
 AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
