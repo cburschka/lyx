@@ -34,9 +34,9 @@
 using std::endl;
 
 InsetExternal::InsetExternal() 
-	: view(0)
+	: view_(0)
 {
-	tempname = lyx::tempName(string(), "lyxext");
+	tempname_ = lyx::tempName(string(), "lyxext");
 	//ExternalTemplateManager::Templates::const_iterator i1;
 	params_.templ = ExternalTemplateManager::get().getTemplates().begin()->second;
 }
@@ -44,7 +44,7 @@ InsetExternal::InsetExternal()
 
 InsetExternal::~InsetExternal()
 {
-	lyx::unlink(tempname);
+	lyx::unlink(tempname_);
 	hideDialog();
 }
 
@@ -72,8 +72,8 @@ string const InsetExternal::EditMessage() const
 void InsetExternal::Edit(BufferView * bv,
 			 int /*x*/, int /*y*/, unsigned int /*button*/)
 {
-	view = bv;
-	view->owner()->getDialogs()->showExternal(this);
+	view_ = bv;
+	view_->owner()->getDialogs()->showExternal(this);
 }
 
 
@@ -189,6 +189,7 @@ Inset * InsetExternal::Clone(Buffer const &) const
 {
 	InsetExternal * inset = new InsetExternal();
 	inset->params_ = params_;
+	inset->view_ = view_;
 	return inset;
 }
 
@@ -227,7 +228,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$Parameters", params_.parameters);
 	result = ReplaceEnvironmentPath(result);
-	result = subst(result, "$$Tempname", tempname);
+	result = subst(result, "$$Tempname", tempname_);
 	result = subst(result, "$$Sysdir", system_lyxdir);
 	
 	// Handle the $$Contents(filename) syntax
@@ -263,9 +264,9 @@ void InsetExternal::updateExternal() const
 	if (cit == et.formats.end())
 		return;
 	
-	executeCommand(doSubstitution(view->buffer(),
+	executeCommand(doSubstitution(view_->buffer(),
 				      (*cit).second.updateCommand),
-		       view->buffer());
+		       view_->buffer());
 }
 
 
@@ -275,9 +276,9 @@ void InsetExternal::viewExternal() const
 	if (et.automaticProduction)
 		updateExternal();
 
-	executeCommand(doSubstitution(view->buffer(),
+	executeCommand(doSubstitution(view_->buffer(),
 				      et.viewCommand),
-		       view->buffer());
+		       view_->buffer());
 }
 
 
@@ -287,9 +288,9 @@ void InsetExternal::editExternal() const
 	if (et.automaticProduction)
 		updateExternal();
 
-	executeCommand(doSubstitution(view->buffer(),
+	executeCommand(doSubstitution(view_->buffer(),
 				      et.editCommand),
-		       view->buffer());
+		       view_->buffer());
 }
 
 

@@ -1,3 +1,8 @@
+2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ControlExternal.C: from Angus, clone the new InsetExternal
+	  before acting on it
+
 2001-04-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* helper_funcs.C (getStringFromVector, getVectorFromString): fixed bugs

@@ -60,6 +60,7 @@ FD_form_external * FormExternal::build_external()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Edit file|#E");
     fdui->button_edit = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 50, 110, 30, idex(_(dummy)));

@@ -111,13 +111,13 @@ private:
 	string const doSubstitution(Buffer const *, string const & s) const;
 
 	/// our owning view
-	BufferView * view;
+	BufferView * view_;
 
 	/// the current params
 	Params params_;
 
 	/// A temp filename
-	string tempname;
+	string tempname_;
 };
 
 ///

@@ -9,7 +9,7 @@
  *
  * \file ControlExternal.C
  * \author Asger Alstrup
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
@@ -68,30 +68,33 @@ void ControlExternal::editExternal()
 
 	// Create a local copy of the inset and initialise it with this
 	// params struct.
-	InsetExternal ie;
-	ie.setFromParams(params());
+	boost::scoped_ptr<InsetExternal> ie;
+	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie->setFromParams(params());
 
-	ie.editExternal();
+	ie->editExternal();
 }
 
 void ControlExternal::viewExternal()
 {
 	view().apply();
 
-	InsetExternal ie;
-	ie.setFromParams(params());
+	boost::scoped_ptr<InsetExternal> ie;
+	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie->setFromParams(params());
 
-	ie.viewExternal();
+	ie->viewExternal();
 }
 
 void ControlExternal::updateExternal()
 {
 	view().apply();
 
-	InsetExternal ie;
-	ie.setFromParams(params());
+	boost::scoped_ptr<InsetExternal> ie;
+	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie->setFromParams(params());
 
-	ie.updateExternal();
+	ie->updateExternal();
 }
 
 vector<string> const ControlExternal::getTemplates() const

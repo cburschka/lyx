@@ -117,8 +117,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_SouthWest FL_SouthEast
 name: input_parameters
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
