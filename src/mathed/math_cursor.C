@@ -73,9 +73,9 @@ struct Selection
 		MathCursorPos i1;
 		MathCursorPos i2;
 		cursor.getSelection(i1, i2); 
-		if (i1.idx_ == i2.idx_) {
+		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
-		} else {
+		else {
 			std::vector<MathInset::idx_type> indices =
 				(*i1.par_)->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
@@ -1366,6 +1366,11 @@ void MathCursor::interpret(char c)
 		selDel();
 
 	if (lastcode_ == LM_TC_TEXTRM) {
+		// suppress direct insertion of to spaces in a row
+		// the still allows typing  '<space>a<space>' and deleting the 'a', but
+		// it is better than nothing
+		if (hasPrevAtom() && prevAtom()->getChar() == ' ')
+			return;
 		insert(c, LM_TC_TEXTRM);
 		return;
 	}
@@ -1376,13 +1381,7 @@ void MathCursor::interpret(char c)
 			return;
 		}
 
-		if (mathcursor->popRight())
-			return;
-
-#warning look here
-			// this would not work if the inset is in an table!
-			//bv->text->cursorRight(bv, true);
-			//result = FINISHED;
+		mathcursor->popRight();
 		return;
 	}
 
