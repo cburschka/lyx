@@ -32,8 +32,8 @@ void MathXArray::touch() const
 
 void MathXArray::metrics(MathMetricsInfo const & mi) const
 {
-	if (clean_)
-		return;
+	//if (clean_)
+	//	return;
 
 	size_   = mi;
 	clean_  = true;
