@@ -1510,16 +1510,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		InsetCommandParams p;
 		
 		if (action == LFUN_TOC_INSERT )
-			p.setCmdName( "tableofcontents" );
+			p.setCmdName("tableofcontents");
 		else if (action == LFUN_LOA_INSERT )
-			p.setCmdName( "listofalgorithms" );
+			p.setCmdName("listof{algorithm}{List of Algorithms}");
 		else if (action == LFUN_LOF_INSERT )
-			p.setCmdName( "listoffigures" );
+			p.setCmdName("listoffigures");
 		else
-			p.setCmdName( "listoftables" );
+			p.setCmdName("listoftables");
 
-		Inset * inset = new InsetTOC( p );
-		if (!bv_->insertInset( inset, "Standard", true ) )
+		Inset * inset = new InsetTOC(p);
+		if (!bv_->insertInset(inset, "Standard", true))
 			delete inset;
 		break;
 	}

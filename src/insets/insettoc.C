@@ -16,12 +16,13 @@ using std::vector;
 
 string const InsetTOC::getScreenLabel() const 
 {
-	string const cmdname( getCmdName() );
-	if (cmdname == "tableofcontents" )
+	string const cmdname(getCmdName());
+	
+	if (cmdname == "tableofcontents")
 		return _("Table of Contents");
-	else if (cmdname == "listofalgorithms" )
+	else if (cmdname == "listof{algorithm}{List of Algorithms}")
 		return _("List of Algorithms");
-	else if (cmdname == "listoffigures" )
+	else if (cmdname == "listoffigures")
 		return _("List of Figures");
 	else
 		return _("List of Tables");
@@ -33,7 +34,7 @@ Inset::Code InsetTOC::LyxCode() const
 	string const cmdname(getCmdName());
 	if (cmdname == "tableofcontents")
 		return Inset::TOC_CODE;
-	else if (cmdname == "listofalgorithms")
+	else if (cmdname == "listof{algorithm}{List of Algorithms}")
 		return Inset::LOA_CODE;
 	else if (cmdname == "listoffigures")
 		return Inset::LOF_CODE; 
@@ -44,7 +45,7 @@ Inset::Code InsetTOC::LyxCode() const
 
 void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 {
-	bv->owner()->getDialogs()->showTOC( this );
+	bv->owner()->getDialogs()->showTOC(this);
 }
 
 
@@ -55,11 +56,11 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 #if 0
 	Buffer::TocType type;
 	string cmdname = getCmdName();
-	if (cmdname == "tableofcontents" )
+	if (cmdname == "tableofcontents")
 		type = Buffer::TOC_TOC;
-	else if (cmdname == "listofalgorithms" )
+	else if (cmdname == "listof{algorithm}{List of Algorithms}")
 		type = Buffer::TOC_LOA;
-	else if (cmdname == "listoffigures" )
+	else if (cmdname == "listoffigures")
 		type = Buffer::TOC_LOF; 
 	else
 		type = Buffer::TOC_LOT;
@@ -76,11 +77,11 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 #endif
 	string type;
 	string const cmdname = getCmdName();
-	if (cmdname == "tableofcontents" )
+	if (cmdname == "tableofcontents")
 		type = "TOC";
-	else if (cmdname == "listofalgorithms" )
+	else if (cmdname == "listof{algorithm}{List of Algorithms}")
 		type = "LOA";
-	else if (cmdname == "listoffigures" )
+	else if (cmdname == "listoffigures")
 		type = "LOF";
 	else 
 		type = "LOT";
@@ -103,7 +104,7 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 
 int InsetTOC::Linuxdoc(Buffer const *, std::ostream & os) const
 {
-	if (getCmdName() == "tableofcontents" )
+	if (getCmdName() == "tableofcontents")
 		os << "<toc>";
 	return 0;
 }
@@ -111,7 +112,7 @@ int InsetTOC::Linuxdoc(Buffer const *, std::ostream & os) const
 
 int InsetTOC::DocBook(Buffer const *, std::ostream & os) const
 {
-	if (getCmdName() == "tableofcontents" )
+	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";
 	return 0;
 }

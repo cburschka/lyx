@@ -924,16 +924,16 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		InsetCommandParams p;
 		
-		if (action == LFUN_TOCVIEW )
-			p.setCmdName( "tableofcontents" );
+		if (action == LFUN_TOCVIEW)
+			p.setCmdName("tableofcontents");
 		else if (action == LFUN_LOAVIEW )
-			p.setCmdName( "listofalgorithms" );
-		else if (action == LFUN_LOFVIEW )
-			p.setCmdName( "listoffigures" );
+			p.setCmdName("listof{algorithm}{List of Algorithms}");
+		else if (action == LFUN_LOFVIEW)
+			p.setCmdName("listoffigures");
 		else
-			p.setCmdName( "listoftables" );
+			p.setCmdName("listoftables");
 
-		owner->getDialogs()->createTOC( p.getAsString() );
+		owner->getDialogs()->createTOC(p.getAsString());
 		break;
 	}	
 

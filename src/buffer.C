@@ -1293,7 +1293,8 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		} else if (inscmd.getCmdName() == "tableofcontents"
 			   || inscmd.getCmdName() == "listofalgorithms"
 			   || inscmd.getCmdName() == "listoffigures"
-			   || inscmd.getCmdName() == "listoftables") {
+			   || inscmd.getCmdName() == "listoftables"
+			   || inscmd.getCmdName() == "listof{algorithm}{List of Algorithms}") {
 			inset = new InsetTOC(inscmd);
 		} else if (inscmd.getCmdName() == "printindex") {
 			inset = new InsetPrintIndex(inscmd);

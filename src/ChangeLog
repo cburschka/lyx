@@ -1,3 +1,11 @@
+2001-04-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfunc.C (Dispatch): hack to make listof algorithm work
+
+	* buffer.C (readInset): hack to make listof algorithm work
+
+	* BufferView_pimpl.C: hack to make listof algorithm work
+
 2001-04-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* LyXAction.C: removed all !NEW_INSETS cruft
