@@ -1,15 +1,15 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor 	 
+ * ======================================================
+ *
+ *           LyX, The Document Processor
  *           Copyright 1995 Matthias Ettrich
  *
  *           This file is Copyleft 1996
  *           Lars Gullik Bjønnes
  *
  * ====================================================== */
- 
+
 #ifndef BUFFER_H
 #define BUFFER_H
 
@@ -66,7 +66,7 @@ public:
 	    \param b  optional \c false by default
 	*/
 	explicit Buffer(string const & file, bool b = false);
-	
+
 	/// Destructor
 	~Buffer();
 
@@ -78,7 +78,7 @@ public:
 	/// Maybe we know the function already by number...
 	bool dispatch(int ac, string const & argument);
 
-	/// 
+	///
 	void resizeInsets(BufferView *);
 
 	/// Update window titles of all users.
@@ -97,19 +97,19 @@ public:
 	    Since we only can have one at the moment, we just reset it.
 	*/
 	void delUser(BufferView *);
-	
+
 	///
 	void redraw();
 
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
-	
-	/** Reads a file. 
+
+	/** Reads a file.
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
 	bool readFile(LyXLex &, Paragraph * par = 0);
-	
+
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
@@ -120,7 +120,7 @@ public:
 	bool parseSingleLyXformat2Token(LyXLex &, Paragraph *& par,
 					Paragraph *& return_par,
 					string const & token, int & pos,
-					Paragraph::depth_type & depth, 
+					Paragraph::depth_type & depth,
 					LyXFont &);
 	///
 	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
@@ -141,17 +141,17 @@ public:
 	    Returns \c true if the save is successful, \c false otherwise.
 	*/
 	bool save() const;
-	
+
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(string const &, bool) const;
-	
+
 	///
 	void writeFileAscii(string const & , int);
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
 	string const asciiParagraph(Paragraph const *, unsigned int linelen,
-	                            bool noparbreak = false) const;
+				    bool noparbreak = false) const;
 	///
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
@@ -160,13 +160,13 @@ public:
 	    \param \a endpar if == 0 then to the end
 	*/
 	void latexParagraphs(std::ostream & os, Paragraph * par,
-	                     Paragraph * endpar, TexRow & texrow) const;
+			     Paragraph * endpar, TexRow & texrow) const;
 	///
 	void simpleDocBookOnePar(std::ostream &,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
 	///
-	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
+	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par,
 				  Paragraph::depth_type depth);
 	///
 	void makeLinuxDocFile(string const & filename,
@@ -193,16 +193,16 @@ public:
 	bool isBakClean() const;
 	///
 	bool isDepClean(string const & name) const;
-	
+
 	///
 	void markLyxClean() const;
 
 	///
 	void markBakClean();
-	
+
 	///
 	void markDepClean(string const & name);
-	
+
 	///
 	void setUnnamed(bool flag = true);
 
@@ -216,7 +216,7 @@ public:
 	string const & fileName() const;
 
 	/// Returns the the path where the buffer lives.
-	/// It is always an absolute path. 
+	/// It is always an absolute path.
 	string const & filePath() const;
 
 	/** A transformed version of the file name, adequate for LaTeX.
@@ -226,7 +226,7 @@ public:
 
 	/// Get the name and type of the log.
 	std::pair<LogType, string> const getLogName() const;
- 
+
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(string const & newfile);
 
@@ -248,8 +248,8 @@ public:
 	/** returns \c true if the buffer contains either a LinuxDoc
 	    or DocBook document */
 	bool isSGML() const;
-        /// returns \c true if the buffer contains a Wed document
-        bool isLiterate() const;
+	/// returns \c true if the buffer contains a Wed document
+	bool isLiterate() const;
 
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
@@ -297,13 +297,13 @@ public:
 
 	/// Does this mean that this is buffer local?
 	UndoStack undostack;
-	
-	/// Does this mean that this is buffer local? 
+
+	/// Does this mean that this is buffer local?
 	UndoStack redostack;
-	
+
 	///
 	BufferParams params;
-	
+
 	/** The list of paragraphs.
 	    This is a linked list of paragraph, this list holds the
 	    whole contents of the document.
@@ -326,10 +326,10 @@ public:
 private:
 	/// is save needed
 	mutable bool lyx_clean;
-	
+
 	/// is autosave needed
 	mutable bool bak_clean;
-	
+
 	/// is this a unnamed file (New...)
 	bool unnamed;
 
@@ -365,8 +365,8 @@ public:
 		typedef ptrdiff_t difference_type;
 		typedef Inset * pointer;
 		typedef Inset & reference;
-		
-		
+
+
 		///
 		inset_iterator() : par(0) /*, it(0)*/ {}
 		//
@@ -400,7 +400,7 @@ public:
 		}
 		///
 		Inset * operator*() { return *it; }
-		
+
 		///
 		Paragraph * getPar() { return par; }
 		///
@@ -457,21 +457,21 @@ void Buffer::delUser(BufferView *)
 {
 	users = 0;
 }
-	
+
 
 inline
 Language const * Buffer::getLanguage() const
 {
 	return params.language;
 }
-	
+
 
 inline
 bool Buffer::isLyxClean() const
 {
 	return lyx_clean;
 }
-	
+
 
 inline
 bool Buffer::isBakClean() const
@@ -482,13 +482,13 @@ bool Buffer::isBakClean() const
 
 inline
 void Buffer::markLyxClean() const
-{ 
+{
 	if (!lyx_clean) {
-		lyx_clean = true; 
+		lyx_clean = true;
 		updateTitles();
 	}
 	// if the .lyx file has been saved, we don't need an
-	// autosave 
+	// autosave
 	bak_clean = true;
 }
 
@@ -558,10 +558,10 @@ BufferView * Buffer::getUser() const
 }
 
 
-inline  
+inline
 void Buffer::setParentName(string const & name)
 {
-	params.parentname = name;    
+	params.parentname = name;
 }
 
 
