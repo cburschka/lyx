@@ -247,6 +247,8 @@ public:
 	void seldump(char const * str) const;
 	///
 	void dump(char const * str) const;
+	///
+	void stripFromLastEqualSign();
 
 	///
 	friend class Selection;

@@ -52,11 +52,17 @@ void MathFuncInset::writeNormal(std::ostream & os) const
 void MathFuncInset::metrics(MathMetricsInfo const & mi) const 
 {
 	mi_ = mi;
-	mathed_string_dim(LM_TC_TEX, mi_, name_, ascent_, descent_, width_);
+	mathed_string_dim(LM_TC_TEXTRM, mi_, name_, ascent_, descent_, width_);
 }
 
 
 void MathFuncInset::draw(Painter & pain, int x, int y) const
 { 
-	drawStr(pain, LM_TC_TEX, mi_, x, y, name_);
+	drawStr(pain, LM_TC_TEXTRM, mi_, x, y, name_);
+}
+
+
+string MathFuncInset::octavize() const
+{
+	return name_;
 }

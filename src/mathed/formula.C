@@ -51,19 +51,6 @@ using std::vector;
 
 namespace {
 
-	void stripFromLastEqualSign(MathArray & ar)
-	{
-		// find position of last '=' in the array
-		MathArray::size_type pos = ar.size();
-		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			if ((*it)->getChar() == '=')
-				pos = it - ar.begin();
-
-		// delete everything behind this position
-		ar.erase(pos, ar.size());
-	}
-
-
 	string captureOutput(string const & cmd, string const & data)
 	{
 		string outfile = lyx::tempName(string(), "mathextern");
@@ -438,9 +425,8 @@ void InsetFormula::handleExtern(const string & arg)
 		mathcursor->selGet(ar);
 		lyxerr << "use selection: " << ar << "\n";
 	} else {
-		mathcursor->end();
+		mathcursor->stripFromLastEqualSign();
 		ar = mathcursor->cursor().cell();
-		stripFromLastEqualSign(ar);
 		mathcursor->insert(MathAtom(new MathCharInset('=', LM_TC_VAR)));
 		//lyxerr << "use whole cell: " << ar << "\n";
 	}

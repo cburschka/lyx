@@ -1499,3 +1499,18 @@ MathCursorPos MathCursor::normalAnchor() const
 }
 
 
+void MathCursor::stripFromLastEqualSign()
+{
+	// find position of last '=' in the array
+	MathArray & ar = cursor().cell();
+	MathArray::const_iterator et = ar.end();
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		if ((*it)->getChar() == '=')
+			et = it;
+
+	// delete everything behind this position
+	ar.erase(et - ar.begin(), ar.size());
+	pos() = ar.size(); 
+}
+
+

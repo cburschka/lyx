@@ -4,7 +4,6 @@
 
 #include "math_diminset.h"
 #include "math_defs.h"
-#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -31,6 +30,8 @@ public:
 	string const & name() const;
 	///
 	void setName(string const & n);
+	///
+	string octavize() const;
 private:
 	///
 	string name_;
