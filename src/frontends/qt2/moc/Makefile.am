@@ -5,8 +5,8 @@ DISTCLEANFILES += *.C
 
 noinst_LTLIBRARIES = libqt2moc.la
 
-INCLUDES = -I$(top_srcdir)/src/ \
-	-I$(top_srcdir)/src/frontends/ \
+INCLUDES = -I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
 	-I$(top_builddir)/src/frontends/qt2 \
 	$(FRONTEND_INCLUDES) \

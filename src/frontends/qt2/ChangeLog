@@ -1,3 +1,9 @@
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (INCLUDES):
+	* moc/Makefile.am (INCLUDES): Remove trailing slash from -Ifoo/
+	to overcome bug in the MinGW port of g++ 3.4.2.
+
 2004-12-07  Angus Leeming  <leeming@lyx.org>
 
 	* *.[Ch]: remove all traces of #pragma interface/implementation
