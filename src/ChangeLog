@@ -1,3 +1,15 @@
+
+2003-10-13  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView_pimpl.C:
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo_funcs.[Ch]: use paroffset_type instead of
+	  ParagraphList::iterators to prevent multiple conversion
+	  (and get a more robust interface)
+
 2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (dispatch): RESULT -> dispatch_result

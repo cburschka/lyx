@@ -276,7 +276,7 @@ void LyXText::toggleInset()
 
 	// do we want to keep this?? (JMarc)
 	if (!isHighlyEditableInset(inset))
-		recordUndo(bv(), Undo::ATOMIC);
+		recUndo(cursor.par());
 
 	if (inset->isOpen())
 		inset->close(bv());
@@ -328,7 +328,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 		++endpit;
 	}
 
-	recordUndo(bv(), Undo::ATOMIC, getPar(sstart_cur), boost::prior(undoendpit));
+	recUndo(sstart_cur.par(), parOffset(undoendpit) - 1);
 
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor
@@ -421,7 +421,7 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 	ParagraphList::iterator pastend = boost::next(end);
 
 	if (!test_only)
-		recordUndo(bv(), Undo::ATOMIC, start, end);
+		recUndo(parOffset(start), parOffset(end));
 
 	bool changed = false;
 
@@ -514,7 +514,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
 
-	recordUndo(bv(), Undo::ATOMIC, getPar(selection.start), getPar(selection.end));
+	recUndo(selection.start.par(), selection.end.par());
 	freezeUndo();
 	cursor = selection.start;
 	while (cursor.par() != selection.end.par() ||
@@ -787,8 +787,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 		++endpit;
 	}
 
-	recordUndo(bv(), Undo::ATOMIC, getPar(selection.start),
-		boost::prior(undoendpit));
+	recUndo(selection.start.par(), parOffset(undoendpit) - 1);
 
 
 	int tmppit = selection.end.par();
@@ -1125,7 +1124,7 @@ void LyXText::insertInset(InsetOld * inset)
 {
 	if (!cursorPar()->insetAllowed(inset->lyxCode()))
 		return;
-	recordUndo(bv(), Undo::ATOMIC, cursorPar());
+	recUndo(cursor.par());
 	freezeUndo();
 	cursorPar()->insertInset(cursor.pos(), inset);
 	// Just to rebreak and refresh correctly.
@@ -1175,8 +1174,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 		++endpit;
 	}
 
-	recordUndo(bv(), Undo::DELETE, getPar(selection.start),
-		   boost::prior(undoendpit));
+	recUndo(selection.start.par(), parOffset(undoendpit) - 1);
 
 	endpit = getPar(selection.end.par());
 	int endpos = selection.end.pos();
@@ -1246,7 +1244,7 @@ void LyXText::pasteSelection(size_t sel_index)
 	if (!CutAndPaste::checkPastePossible())
 		return;
 
-	recordUndo(bv(), Undo::INSERT, cursorPar());
+	recUndo(cursor.par());
 
 	ParagraphList::iterator endpit;
 	PitPosPair ppp;
@@ -1289,7 +1287,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 // simple replacing. The font of the first selected character is used
 void LyXText::replaceSelectionWithString(string const & str)
 {
-	recordUndo(bv(), Undo::ATOMIC);
+	recUndo(cursor.par());
 	freezeUndo();
 
 	if (!selection.set()) { // create a dummy selection
@@ -1325,7 +1323,7 @@ void LyXText::insertStringAsLines(string const & str)
 	pos_type pos = cursor.pos();
 	ParagraphList::iterator endpit = boost::next(cursorPar());
 
-	recordUndo(bv(), Undo::ATOMIC);
+	recUndo(cursor.par());
 
 	// only to be sure, should not be neccessary
 	clearSelection();
@@ -1905,7 +1903,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		while (endpit != ownerParagraphs().end() && endpit->getDepth())
 			++endpit;
 
-		recordUndo(bv(), Undo::DELETE, old_pit, boost::prior(endpit));
+		recUndo(parOffset(old_pit), parOffset(endpit) - 1);
 		cursor = tmpcursor;
 
 		// delete old par
@@ -1935,6 +1933,18 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 ParagraphList & LyXText::ownerParagraphs() const
 {
 	return *paragraphs_;
+}
+
+
+void LyXText::recUndo(paroffset_type first, paroffset_type last) const
+{
+	recordUndo(bv(), Undo::ATOMIC, ownerParagraphs(), first, last);
+}
+
+
+void LyXText::recUndo(lyx::paroffset_type par) const
+{
+	recordUndo(bv(), Undo::ATOMIC, ownerParagraphs(), par, par);
 }
 
 

@@ -18,6 +18,7 @@
 
 #include "undo.h"
 #include "ParagraphList_fwd.h"
+#include "support/types.h"
 
 class BufferView;
 class Paragraph;
@@ -48,10 +49,11 @@ void unFreezeUndo();
  * will record the original information of the paragraphs in the undo stack.
  */
 void recordUndo(BufferView *, Undo::undo_kind kind,
-		    ParagraphList::iterator first, ParagraphList::iterator last);
+	ParagraphList & plist, lyx::paroffset_type first, lyx::paroffset_type last);
+
 /// Convienience: Prepare undo when change in a single paragraph.
 void recordUndo(BufferView *, Undo::undo_kind kind,
-		    ParagraphList::iterator first);
+	ParagraphList & plist, lyx::paroffset_type par);
 
 /// Convienience: Prepare undo for the paragraph that contains the cursor
 void recordUndo(BufferView *, Undo::undo_kind kind);

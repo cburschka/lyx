@@ -1336,7 +1336,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 
 	if (text_.selection.set())
-		recordUndo(bv, Undo::ATOMIC, text_.cursorPar());
+		text_.recUndo(text_.cursor.par());
 
 	if (selectall) {
 		text_.cursorTop();

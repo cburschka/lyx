@@ -1340,7 +1340,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 	}
 
 	// not quite sure if we want this...
-	recordUndo(bv_, Undo::ATOMIC);
+	bv_->text->recUndo(bv_->text->cursor.par());
 	freezeUndo();
 
 	beforeChange(bv_->text);

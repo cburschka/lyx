@@ -259,6 +259,10 @@ public:
 			 LyXFont const & font) const;
 
 	///
+	void recUndo(lyx::paroffset_type first, lyx::paroffset_type last) const;
+	///
+	void recUndo(lyx::paroffset_type first) const;
+	///
 	void setCursorFromCoordinates(int x, int y);
 	///
 	void setCursorFromCoordinates(LyXCursor &,

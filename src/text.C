@@ -1206,7 +1206,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	   && layout->labeltype != LABEL_SENSITIVE)
 		return;
 
-	recordUndo(bv(), Undo::ATOMIC, cursorPar());
+	recUndo(cursor.par());
 
 	// Always break behind a space
 	//
@@ -1284,7 +1284,7 @@ void LyXText::redoParagraph()
 // same Paragraph one to the right and make a rebreak
 void LyXText::insertChar(char c)
 {
-	recordUndo(bv(), Undo::INSERT, cursorPar());
+	recordUndo(bv(), Undo::INSERT, ownerParagraphs(), cursor.par(), cursor.par());
 
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
@@ -1568,7 +1568,7 @@ void LyXText::acceptChange()
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;
 		LyXCursor & endc = selection.end;
-		recordUndo(bv(), Undo::INSERT, getPar(startc));
+		recordUndo(bv(), Undo::INSERT, ownerParagraphs(), startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
@@ -1587,7 +1587,7 @@ void LyXText::rejectChange()
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;
 		LyXCursor & endc = selection.end;
-		recordUndo(bv(), Undo::INSERT, getPar(startc));
+		recordUndo(bv(), Undo::INSERT, ownerParagraphs(), startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
@@ -1797,7 +1797,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 		setCursor(to.par(), to.pos() + 1);
 	}
 
-	recordUndo(bv(), Undo::ATOMIC, getPar(from), getPar(to));
+	recordUndo(bv(), Undo::ATOMIC, ownerParagraphs(), from.par(), to.par());
 
 	pos_type pos = from.pos();
 	int par = from.par();
@@ -1858,11 +1858,7 @@ void LyXText::Delete()
 
 	// if you had success make a backspace
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {
-		LyXCursor tmpcursor = cursor;
-		// to make sure undo gets the right cursor position
-		cursor = old_cursor;
-		recordUndo(bv(), Undo::DELETE, cursorPar());
-		cursor = tmpcursor;
+		recordUndo(bv(), Undo::DELETE, ownerParagraphs(), old_cursor.par());
 		backspace();
 	}
 }
@@ -1911,11 +1907,9 @@ void LyXText::backspace()
 			}
 		}
 
-		if (cursorPar() != ownerParagraphs().begin()) {
-			recordUndo(bv(), Undo::DELETE,
-				boost::prior(cursorPar()),
-				cursorPar());
-		}
+		if (cursor.par() != 0)
+			recordUndo(bv(), Undo::DELETE, ownerParagraphs(),
+				cursor.par() - 1, cursor.par());
 
 		ParagraphList::iterator tmppit = cursorPar();
 		// We used to do cursorLeftIntern() here, but it is
@@ -1954,7 +1948,7 @@ void LyXText::backspace()
 	} else {
 		// this is the code for a normal backspace, not pasting
 		// any paragraphs
-		recordUndo(bv(), Undo::DELETE, cursorPar());
+		recordUndo(bv(), Undo::DELETE, ownerParagraphs(), cursor.par());
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
@@ -1988,7 +1982,7 @@ ParagraphList::iterator LyXText::getPar(LyXCursor const & cur) const
 ParagraphList::iterator LyXText::getPar(int par) const
 {
 	BOOST_ASSERT(par >= 0);
-	BOOST_ASSERT(par < ownerParagraphs().size());
+	BOOST_ASSERT(par < int(ownerParagraphs().size()));
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	std::advance(pit, par);
 	return pit;

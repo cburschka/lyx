@@ -412,14 +412,14 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 
 		for (; tmp != end; ++tmp) {
 			if (tmp->params().startOfAppendix()) {
-				recordUndo(bv, Undo::ATOMIC, tmp);
+				recUndo(parOffset(tmp));
 				tmp->params().startOfAppendix(false);
 				redoParagraph(tmp);
 				break;
 			}
 		}
 
-		recordUndo(bv, Undo::ATOMIC, pit);
+		recUndo(parOffset(pit));
 		pit->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
@@ -964,7 +964,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_TRANSPOSE_CHARS:
-		recordUndo(bv, Undo::ATOMIC, cursorPar());
+		recUndo(cursor.par());
 		redoParagraph();
 		bv->update();
 		break;
@@ -1434,7 +1434,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			// ...or maybe the recordUndo()
 			// below isn't necessary at all anylonger?
 			if (inset_hit->lyxCode() == InsetOld::REF_CODE)
-				recordUndo(bv, Undo::ATOMIC);
+				recUndo(cursor.par());
 
 			bv->owner()->message(inset_hit->editMessage());
 

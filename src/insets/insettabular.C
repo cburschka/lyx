@@ -635,8 +635,12 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 
 	if (cmd.action == LFUN_INSET_EDIT) {
 
+		lyxerr << "InsetTabular::edit: " << this << " args: '"
+			<< cmd.argument << "'  first cell: "
+			<< &tabular.cell_info[0][0].inset << endl;
+
 		if (!bv->lockInset(this)) {
-			lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
+			lyxerr << "InsetTabular::Cannot lock inset" << endl;
 			return DISPATCHED;
 		}
 
@@ -2537,6 +2541,11 @@ bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 
 	if (cell != -1)
 		return tabular.getPWidth(cell).zero();
+
+	// this is a workaround for a crash (New, Insert->Tabular,
+	// Insert->FootNote)
+	if (!owner()) 
+		return false;
 
 	// well we didn't obviously find it so maybe our owner knows more
 	BOOST_ASSERT(owner());

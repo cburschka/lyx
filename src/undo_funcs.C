@@ -17,6 +17,7 @@
 #include "undo_funcs.h"
 
 #include "buffer.h"
+#include "debug.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "iterators.h"
@@ -25,8 +26,13 @@
 
 #include "insets/updatableinset.h"
 
+#include <iostream>
 
-/// The flag used by FinishUndo().
+using std::endl;
+using lyx::paroffset_type;
+
+
+/// The flag used by finishUndo().
 bool undo_finished;
 
 /// Whether actions are not added to the undo stacks.
@@ -36,10 +42,15 @@ namespace {
 
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind,
-	ParagraphList::iterator first, ParagraphList::iterator last,
+	ParagraphList & plist, paroffset_type firstpar, paroffset_type lastpar,
 	limited_stack<Undo> & stack)
 {
 	Buffer * buf = bv->buffer();
+
+	ParagraphList::iterator first = plist.begin();
+	advance(first, firstpar);
+	ParagraphList::iterator last = plist.begin();
+	advance(last, lastpar);
 
 	// First, record inset id, if cursor is in one
 	UpdatableInset * inset = first->inInset();
@@ -47,7 +58,6 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	int const inset_id = inset ? inset->id() : -1;
 
 	// We simply record the entire outer paragraphs
-	ParagraphList & plist = buf->paragraphs();
 	ParIterator null = buf->par_iterator_end();
 
 	// First, identify the outer paragraphs
@@ -59,8 +69,8 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// And calculate a stable reference to them
-	int const first_offset = std::distance(plist.begin(), first);
-	int const last_offset = std::distance(last, plist.end());
+	int const first_offset = firstpar;
+	int const last_offset = plist.size() - lastpar;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 
@@ -87,6 +97,7 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 		cursor_offset, text->cursor.pos(),
 		ParagraphList()));
 
+	lyxerr << "G" << endl;
 	// Record the relevant paragraphs
 	ParagraphList & undo_pars = stack.top().pars;
 
@@ -103,7 +114,7 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 
 
 // Returns false if no undo possible.
-bool performUndoOrRedo(BufferView * bv, Undo & undo)
+bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 {
 	Buffer * buf = bv->buffer();
 	ParagraphList & plist = buf->paragraphs();
@@ -141,10 +152,17 @@ bool performUndoOrRedo(BufferView * bv, Undo & undo)
 		LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
 		text->setCursorIntern(undo.cursor_par_offset, undo.cursor_pos);
 
+		lyxerr << "undo, inset: " << inset << endl;
+
 		if (inset) {
+			lyxerr << "undo, inset owner: " << inset->owner() << endl;
+
 			// Magic needed to update inset internal state
 			FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-			inset->localDispatch(cmd);
+			if (inset->owner())
+				inset->owner()->localDispatch(cmd);
+			else
+				inset->localDispatch(cmd);
 		}
 
 		// set cursor again to force the position to be the right one
@@ -247,24 +265,23 @@ bool textRedo(BufferView * bv)
 
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind,
-	     ParagraphList::iterator first, ParagraphList::iterator last)
+	ParagraphList & plist, paroffset_type first, paroffset_type last)
 {
 	if (!undo_frozen) {
-		recordUndo(bv, kind, first, last, bv->buffer()->undostack());
+		recordUndo(bv, kind, plist, first, last, bv->buffer()->undostack());
 		bv->buffer()->redostack().clear();
 	}
 }
 
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind,
-	     ParagraphList::iterator first)
+	ParagraphList & plist, paroffset_type par)
 {
-	recordUndo(bv, kind, first, first);
+	recordUndo(bv, kind, plist, par, par);
 }
 
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(bv, kind, bv->text->cursorPar());
+	recordUndo(bv, kind, bv->text->ownerParagraphs(), bv->text->cursor.par());
 }
-
