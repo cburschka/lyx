@@ -59,14 +59,11 @@ BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 		       int width, int height)
 	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height)),
 	  x_target_(0)
-{
-	text_ = 0;
-}
+{}
 
 
 BufferView::~BufferView()
 {
-	delete text_;
 	delete pimpl_;
 }
 
@@ -256,10 +253,10 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	string const fname = MakeAbsPath(filen);
 
-	text_->clearSelection();
-	text_->breakParagraph(buffer()->paragraphs());
+	text()->clearSelection();
+	text()->breakParagraph(buffer()->paragraphs());
 
-	bool res = buffer()->readFile(fname, text_->cursorPar());
+	bool res = buffer()->readFile(fname, text()->cursorPar());
 	resize();
 	return res;
 }
@@ -290,9 +287,9 @@ void BufferView::setCursorFromRow(int row)
 	buffer()->texrow().getIdFromRow(row, tmpid, tmppos);
 
 	if (tmpid == -1)
-		text_->setCursor(0, 0);
+		text()->setCursor(0, 0);
 	else
-		text_->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
+		text()->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
 }
 
 
@@ -309,11 +306,11 @@ void BufferView::gotoLabel(string const & label)
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
-			text_->clearSelection();
-			text_->setCursor(
-				std::distance(text_->ownerParagraphs().begin(), it.getPar()),
+			text()->clearSelection();
+			text()->setCursor(
+				std::distance(text()->ownerParagraphs().begin(), it.getPar()),
 				it.getPos());
-			text_->selection.cursor = text_->cursor;
+			text()->selection.cursor = text()->cursor;
 			update();
 			return;
 		}
@@ -327,7 +324,7 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	text_->clearSelection();
+	text()->clearSelection();
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	update();
@@ -341,7 +338,7 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	text_->clearSelection();
+	text()->clearSelection();
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	update();
@@ -460,4 +457,10 @@ int BufferView::x_target() const
 void BufferView::updateParagraphDialog()
 {
 	pimpl_->updateParagraphDialog();
+}
+
+
+LyXText * BufferView::text() const
+{
+	return pimpl_->buffer_ ? &pimpl_->buffer_->text() : 0;
 }

@@ -287,12 +287,15 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			    << b << ')' << endl;
 	if (buffer_) {
 		disconnectBuffer();
-		delete bv_->text();
-		bv_->setText(0);
+		//delete bv_->text();
+		//bv_->setText(0);
 	}
 
 	// set current buffer
 	buffer_ = b;
+	buffer_->text().init(bv_);
+	buffer_->text().textwidth_ = workarea().workWidth();
+	buffer_->text().fullRebreak();
 
 	top_y_ = 0;
 
@@ -380,7 +383,11 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	owner_->message(_("Formatting document..."));
 
-	if (bv_->text()) {
+	lyxerr << "### resizeCurrentBuffer: text" << bv_->text() << endl;
+	if (!bv_->text())
+		return;
+
+	//if (bv_->text()) {
 		par = bv_->text()->cursor.par();
 		pos = bv_->text()->cursor.pos();
 		selstartpar = bv_->text()->selection.start.par();
@@ -391,10 +398,10 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		mark_set = bv_->text()->selection.mark();
 		bv_->text()->fullRebreak();
 		update();
-	} else {
-		bv_->setText(new LyXText(bv_, 0, false, bv_->buffer()->paragraphs()));
-		bv_->text()->init(bv_);
-	}
+	//} else {
+	//	bv_->setText(new LyXText(bv_, 0, false, bv_->buffer()->paragraphs()));
+	//	bv_->text()->init(bv_);
+	//}
 
 	if (par != -1) {
 		bv_->text()->selection.set(true);

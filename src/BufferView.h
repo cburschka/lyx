@@ -189,9 +189,7 @@ public:
 	///
 	UpdatableInset * innerInset() const;
 	///
-	LyXText * text() const { return text_; }
-	///
-	void setText(LyXText * t) { text_ = t; }
+	LyXText * text() const;
 
 private:
 	///
@@ -200,9 +198,6 @@ private:
 	friend struct BufferView::Pimpl;
 	///
 	Pimpl * pimpl_;
-
-	/// This holds the mapping between buffer paragraphs and screen rows.
-	LyXText * text_;
 
 	/**
 	 * The target x position of the cursor. This is used for when

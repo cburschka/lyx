@@ -31,6 +31,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXAction.h"
 #include "lyxlex.h"
+#include "lyxtext.h"
 #include "lyxrc.h"
 #include "lyxvc.h"
 #include "messages.h"
@@ -179,13 +180,17 @@ struct Buffer::Impl
 	 *  and by the citation inset.
 	 */
 	bool file_fully_loaded;
+
+	/// our Text
+	LyXText text;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: nicefile(true),
 	  lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false)
+	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
+		text(0, 0, 0, paragraphs)
 {
 	lyxvc.buffer(&parent);
 	if (readonly_ || lyxrc.use_tempdir)
@@ -217,6 +222,12 @@ Buffer::~Buffer()
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	lyx::graphics::Previews::get().removeLoader(*this);
+}
+
+
+LyXText & Buffer::text() const
+{
+	return const_cast<LyXText &>(pimpl_->text);
 }
 
 

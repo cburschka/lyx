@@ -34,6 +34,7 @@ class FuncRequest;
 class LyXFont;
 class LyXLex;
 class LyXRC;
+class LyXText;
 class LyXVC;
 class LaTeXFeatures;
 class OutputParams;
@@ -366,6 +367,9 @@ public:
 	bool fully_loaded() const;
 	/// Set by buffer_funcs' newFile.
 	void fully_loaded(bool);
+
+	///
+	LyXText & text() const;
 
 private:
 	/** Inserts a file into a document
