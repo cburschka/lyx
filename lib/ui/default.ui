@@ -234,24 +234,8 @@ Menuset
   Separator
 	Item "Array environment|y" "math-insert matrix 2 2"
 	Item "Cases environment|C" "math-insert cases 2"
-	Separator
-	Submenu "Symbols|S" "insert_math_symbol"
   Separator
 	Item "Math Panel...|l" "math-panel"
-    End
-
-    Menu "insert_math_symbol"
-	Item "Blackboard bold N (Natural)" "command-sequence math-mode; font-noun; math-insert N;"
-	Item "Blackboard bold Z (Integer)" "command-sequence math-mode; font-noun; math-insert Z;"
-	Item "Blackboard bold Q (Rational)" "command-sequence math-mode; font-noun; math-insert Q;"
-	Item "Blackboard bold R (Real)" "command-sequence math-mode; font-noun; math-insert R;"
-	Item "Blackboard bold C (Complex)" "command-sequence math-mode; font-noun; math-insert C;"
-	Item "Blackboard bold H (Quaternions)" "command-sequence math-mode; font-noun; math-insert H;"
-	Separator
-	Item "Calligraphic F (Fourier)" "command-sequence math-mode; font-emph; math-insert F;"
-	Item "Calligraphic L (Laplace)" "command-sequence math-mode; font-emph; math-insert L;"
-	Item "Calligraphic H (Hankel)" "command-sequence math-mode; font-emph; math-insert H;"
-	Item "Calligraphic O (Landau)" "command-sequence math-mode; font-emph; math-insert O;"
     End
 
     Menu "insert_floats"

@@ -62,5 +62,7 @@ extern string const minipageindent_def;
 extern string const boldsymbol_def;
 ///
 extern string const binom_def;
+///
+extern string const mathcircumflex_def;
 
 #endif

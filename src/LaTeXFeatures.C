@@ -297,7 +297,9 @@ string const LaTeXFeatures::getMacros() const
 		macros << boldsymbol_def << '\n';
 	if (isRequired("binom") && !isRequired("amsmath"))
 		macros << binom_def << '\n';
-
+	if (isRequired("mathcircumflex"))
+		macros << mathcircumflex_def << '\n';
+		
 	// other
 	if (isRequired("NeedLyXMinipageIndent"))
 		macros << minipageindent_def;

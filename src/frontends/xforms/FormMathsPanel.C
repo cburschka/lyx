@@ -212,6 +212,7 @@ void FormMathsPanel::build()
 	greek_->addBitmap(28, 7, 4, greek_width, greek_height, greek_bits);
 
 	misc_->addBitmap(29, 5, 6, misc_width, misc_height, misc_bits);
+	misc_->addBitmap(5, 5, 1, misc4_width, misc4_height, misc4_bits);
 	misc_->addBitmap(6, 3, 2, misc2_width, misc2_height, misc2_bits, false);
 	misc_->addBitmap(4, 2, 2, misc3_width, misc3_height, misc3_bits);
  

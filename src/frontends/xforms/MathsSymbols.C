@@ -137,10 +137,12 @@ char const * latex_misc[] = {
 	"angle", "top", "bot", "Vert", "neg",
 	"flat", "natural", "sharp", "surd", "triangle",
 	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", 
+	"textrm Å", "textrm Ø", "mathcircumflex", "_", 
+	"mathrm T",
 	"mathbb N", "mathbb Z", "mathbb Q", 
 	"mathbb R", "mathbb C", "mathbb H",
 	"mathcal F", "mathcal L", 
-	"mathcal H", "mathcal O",""
+	"mathcal H", "mathcal O", ""
 };
 
 int const nr_latex_misc = sizeof(latex_misc) / sizeof(char const *);

@@ -28,8 +28,14 @@
 
 \bind "M-m f"			"math-insert \frac"
 \bind "M-m s"			"math-insert \sqrt"
-\bind "M-m e"			"math-insert ^"
-\bind "M-m x"			"math-insert _"
+\bind "M-m e"			"math-insert \mathcircumflex"
+\bind "M-m S-X"			"math-insert \mathcircumflex"
+\bind "M-m x"			"math-insert \_ "
+
+\bind "M-m S-A"		"command-sequence math-mode; font-roman; math-insert Å;"
+\bind "M-m S-O"		"command-sequence math-mode; font-roman; math-insert Ø;"
+\bind "M-m S-T"		"command-sequence math-mode; math-insert \mathrm; math-insert T;"
+
 \bind "M-m u"			"math-insert \sum"
 \bind "M-m i"			"math-insert \int"
 \bind "M-m m"			"math-mode"

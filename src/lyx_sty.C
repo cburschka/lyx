@@ -122,3 +122,8 @@ string const binom_def =
 	"%% Binom macro for standard LaTeX users\n"
 	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n";
 
+string const mathcircumflex_def = 
+	"%% For printing a cirumflex inside a formula\n"
+	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n";
+
+
