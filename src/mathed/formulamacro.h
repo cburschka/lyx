@@ -68,12 +68,12 @@ public:
 	///
 	MathInsetTypes getType() const;
 	///
-	MathInset const * par() const;
-	///
 	void metrics() const;
-private:
 	///
-	MathMacroTemplate const & tmacro() const;
+	MathAtom const & par() const;
+	///
+	MathAtom & par();
+private:
 	/// prefix in inset
 	string prefix() const;
 };

@@ -25,7 +25,9 @@ public:
 	///
 	void metrics(MathStyles st) const;
 	///
-	bool isSpaceInset() const { return true; }
+	MathSpaceInset const * asSpaceInset() const { return this; }
+	///
+	MathSpaceInset * asSpaceInset() { return this; }
 	///
 	void incSpace();
 private:

@@ -4,34 +4,30 @@
 
 #include <map>
 #include "LString.h"
-#include "math_macrotemplate.h"
+#include "math_atom.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-
-class MathMacro;
-
+class MathArray;
 
 ///
 struct MathMacroTable {
 public:
 	///
-	static void insertTemplate(MathMacroTemplate const &);
+	static void create(string const &, int, string const &);
 	///
-	static MathMacroTemplate & provideTemplate(string const &);
+	static void create(string const &, int, MathArray const &);
 	///
-	static bool hasTemplate(string const &);
+	static MathAtom & provide(string const &);
 	///
-	static MathMacro * cloneTemplate(string const &);
-	///
-	static void createTemplate(string const &, int, string const &);
+	static bool has(string const &);
 	///
 	static void builtinMacros();
 private:
 	///
-	typedef std::map<string, MathMacroTemplate> table_type;
+	typedef std::map<string, MathAtom> table_type;
 	//
 	static table_type macro_table;
 public:

@@ -2,11 +2,12 @@
 #define MATH_FACTORY_H
 
 #include "LString.h"
+#include "math_atom.h"
 
 class MathInset;
 class latexkeys;
 
-MathInset * createMathInset(string const &);
-MathInset * createMathInset(latexkeys const *);
+MathAtom createMathInset(string const &);
+MathAtom createMathInset(latexkeys const *);
 
 #endif

@@ -62,6 +62,8 @@ public:
 	/// Note: columns first!
 	MathGridInset(col_type m, row_type n);
 	///
+	MathGridInset(int m, int n, char valign, string const & halign);
+	///
 	void write(std::ostream &, bool fragile) const;
 	///
 	void metrics(MathStyles st) const;
@@ -87,8 +89,8 @@ public:
 	const RowInfo & rowinfo(row_type row) const;
 	///
 	RowInfo & rowinfo(row_type row);
-	///
-	bool isGrid() const { return true; }
+	/// identifies GridInset
+	virtual MathGridInset * asGridInset() { return this; }
 
 	///
 	col_type ncols() const { return colinfo_.size(); }

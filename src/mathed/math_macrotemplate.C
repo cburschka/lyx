@@ -24,7 +24,7 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
 
 MathInset * MathMacroTemplate::clone() const
 {
-	lyxerr << "cloning MacroTemplate!\n";
+	//lyxerr << "cloning MacroTemplate!\n";
 	return new MathMacroTemplate(*this);
 }
 

@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "array.h"
 #include "mathed/support.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 using std::endl;
@@ -25,28 +26,38 @@ MathArray::MathArray(MathArray const & array, size_type from, size_type to)
 void MathArray::substitute(MathMacro const & m)
 {
 	for (iterator it = begin(); it != end(); ++it)
-		it->substitute(m);
+		it->nucleus()->substitute(m);
 }
 
 
-MathAtom * MathArray::at(size_type pos)
+MathScriptInset const * MathArray::asScript(const_iterator it) const
 {
-	return pos < size() ? &bf_[pos] : 0;
+	if (it->nucleus()->asScriptInset())
+		return 0;
+	const_iterator jt = it + 1;
+	if (jt == end())
+		return 0;
+	return jt->nucleus()->asScriptInset();
 }
 
 
-MathAtom const * MathArray::at(size_type pos) const
+MathAtom & MathArray::at(size_type pos)
 {
-	return pos < size() ? &bf_[pos] : 0;
+	lyx::Assert(pos < size());
+	return bf_[pos];
 }
 
 
-void MathArray::insert(size_type pos, MathInset * p)
+MathAtom const & MathArray::at(size_type pos) const
 {
-	//cerr << "\n  1: "; p->write(cerr, true); cerr << p << "\n";
-	// inserting here invalidates the pointer!
-	bf_.insert(begin() + pos, MathAtom(p));
-	//cerr << "\n  2: "; p->write(cerr, true); cerr << p << "\n";
+	lyx::Assert(pos < size());
+	return bf_[pos];
+}
+
+
+void MathArray::insert(size_type pos, MathAtom const & t)
+{
+	bf_.insert(begin() + pos, t);
 }
 
 
@@ -59,12 +70,6 @@ void MathArray::insert(size_type pos, MathArray const & array)
 void MathArray::push_back(MathAtom const & t)
 {	
 	bf_.push_back(t);
-}
-
-
-void MathArray::push_back(MathInset * p)
-{	
-	bf_.push_back(MathAtom(p));
 }
 
 
@@ -127,14 +132,14 @@ MathAtom & MathArray::back()
 void MathArray::dump2(ostream & os) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		os << *it << ' ';
+		os << it->nucleus() << ' ';
 }
 
 
 void MathArray::dump(ostream & os) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		os << "<" << *it << ">";
+		os << "<" << it->nucleus() << ">";
 }
 
 
@@ -158,7 +163,7 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 		if (!it->nucleus())
 			break;
 		p = it->nucleus()->asCharInset();
-		if (!p || it->up() || it->down() || p->code() != c)
+		if (!p || p->code() != c)
 			break;
 		s += p->getChar();
 	}
@@ -168,19 +173,27 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 
 void MathArray::write(ostream & os, bool fragile) const
 {
-	for (const_iterator it = begin(); it != end(); ++it) {
-		if (it->nucleus() && it->nucleus()->asCharInset()
-				&& !it->up() && !it->down())
-		{
-			MathCharInset const * p = it->nucleus()->asCharInset();
+	for (const_iterator it = begin(); it != end(); ++it) {	
+		MathInset * p = it->nucleus();
+		if (!p)
+			continue;
+
+/*
+		if (p->asCharInset()) {
+			MathCharInset const * c = p->asCharInset();
 			// special handling for character sequences with the same code
 			string s = charSequence(it, end());
-			p->writeHeader(os);
+			c->writeHeader(os);
 			os << s;
-			p->writeTrailer(os);
+			c->writeTrailer(os);
 			it += s.size() - 1;
+		} else
+*/
+		if (MathScriptInset const * q = asScript(it)) {
+			q->write(p, os, fragile);
+			++it;
 		} else {
-			it->write(os, fragile);
+			p->write(os, fragile);
 		}
 	}
 }
@@ -200,7 +213,7 @@ void MathArray::writeNormal(ostream & os) const
 void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		it->validate(features);
+		it->nucleus()->validate(features);
 }
 
 

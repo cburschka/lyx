@@ -1,6 +1,8 @@
 #include <config.h>
 #include "debug.h"
+#include "support.h"
 #include "support/LOstream.h"
+#include "support/LAssert.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -9,9 +11,21 @@
 #include "math_scriptinset.h"
 
 
+MathScriptInset::MathScriptInset()
+	: MathNestInset(2), limits_(0)
+{
+	script_[0] = false;
+	script_[1] = false;
+}
+
+
 MathScriptInset::MathScriptInset(bool up)
-	: MathNestInset(1), up_(up)
-{}
+	: MathNestInset(2), limits_(0)
+{
+	script_[0] = !up;
+	script_[1] = up;
+}
+
 
 
 MathInset * MathScriptInset::clone() const
@@ -25,27 +39,258 @@ MathScriptInset const * MathScriptInset::asScriptInset() const
 	return this;
 }
 
-void MathScriptInset::write(std::ostream & os, bool fragile) const
+
+MathScriptInset * MathScriptInset::asScriptInset()
 {
-	cell(0).write(os, fragile);
+	return this;
+}
+
+
+MathXArray const & MathScriptInset::up() const
+{
+	return xcell(1);
+}
+
+
+MathXArray const & MathScriptInset::down() const
+{
+	return xcell(0);
+}
+
+
+MathXArray & MathScriptInset::up()
+{
+	return xcell(1);
+}
+
+
+MathXArray & MathScriptInset::down()
+{
+	return xcell(0);
+}
+
+
+void MathScriptInset::ensure(bool up)
+{
+	script_[up] = true;
+}
+
+
+int MathScriptInset::dy0(MathInset const * nuc) const
+{
+	int nd = ndes(nuc);
+	if (!hasDown())
+		return nd;
+	int des = down().ascent();
+	if (hasLimits(nuc))
+		des += nd + 2;
+	else 
+		des = std::max(des, nd);
+	return des;
+}
+
+
+int MathScriptInset::dy1(MathInset const * nuc) const
+{
+	int na = nasc(nuc);
+	if (!hasUp())
+		return na;
+	int asc = up().descent();
+	if (hasLimits(nuc))
+		asc += na + 2;
+	else 
+		asc = std::max(asc, na);
+	asc = std::max(asc, mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I'));
+	return asc;
+}
+
+
+int MathScriptInset::dx0(MathInset const * nuc) const
+{
+	lyx::Assert(hasDown());
+	return hasLimits(nuc) ? (width(nuc) - down().width()) / 2 : nwid(nuc);
+}
+
+
+int MathScriptInset::dx1(MathInset const * nuc) const
+{
+	lyx::Assert(hasUp());
+	return hasLimits(nuc) ? (width(nuc) - up().width()) / 2 : nwid(nuc);
+}
+
+
+int MathScriptInset::dxx(MathInset const * nuc) const
+{
+	//lyx::Assert(nuc());
+	return hasLimits(nuc)  ?  (width(nuc) - nwid(nuc)) / 2  :  0;
+}
+
+
+int MathScriptInset::ascent(MathInset const * nuc) const
+{
+	return dy1(nuc) + (hasUp() ? up().ascent() : 0);
+}
+
+
+int MathScriptInset::descent(MathInset const * nuc) const
+{
+	return dy0(nuc) + (hasDown() ? down().descent() : 0);
+}
+
+
+int MathScriptInset::width(MathInset const * nuc) const
+{
+	int wid = 0;
+	if (hasLimits(nuc)) {
+		wid = nwid(nuc);
+		if (hasUp())
+			wid = std::max(wid, up().width());
+		if (hasDown())
+			wid = std::max(wid, down().width());
+	} else {
+		if (hasUp())
+			wid = std::max(wid, up().width());
+		if (hasDown())
+			wid = std::max(wid, down().width());
+		wid += nwid(nuc);
+	}
+	return wid;
+}
+
+
+int MathScriptInset::nwid(MathInset const * nuc) const
+{
+	return nuc ?
+		nuc->width() :
+		mathed_char_width(LM_TC_TEX, LM_ST_TEXT, '.');
+}
+
+
+int MathScriptInset::nasc(MathInset const * nuc) const
+{
+	return nuc ? nuc->ascent()
+		: mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I');
+}
+
+
+int MathScriptInset::ndes(MathInset const * nuc) const
+{
+	return nuc ? nuc->descent()
+		: mathed_char_descent(LM_TC_VAR, LM_ST_TEXT, 'I');
 }
 
 
 void MathScriptInset::metrics(MathStyles st) const
-{
-	size_    = st;
-	xcell(0).metrics(st);	
-	width_   = xcell(0).width();
-	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent();
-	//lyxerr << "MathScriptInset::metrics: w: " << width_ << " a: " << ascent_
-	//	<< " d: " << descent_ << "\n";
+{	
+	metrics(0, st);
+}
+
+
+void MathScriptInset::metrics(MathInset const * nuc, MathStyles st) const
+{	
+	MathNestInset::metrics(st);
+	if (nuc)
+		nuc->metrics(st);
+
+	ascent_  = ascent(nuc);
+	descent_ = descent(nuc);
+	width_   = width(nuc);
 }
 
 
 void MathScriptInset::draw(Painter & pain, int x, int y) const
-{
+{  
+	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
+	draw(0, pain, x, y);
+}
+
+
+void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
+	int x, int y) const
+{  
 	xo(x);
 	yo(y);
-	xcell(0).draw(pain, x, y);
+	if (nuc)
+		nuc->draw(pain, x + dxx(nuc), y);
+	else
+		drawStr(pain, LM_TC_TEX, LM_ST_TEXT, x + dxx(nuc), y, ".");
+	if (hasUp())
+		up().draw(pain, x + dx1(nuc), y - dy1(nuc));
+	if (hasDown())
+		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
+}
+
+
+void MathScriptInset::write(std::ostream & os, bool fragile) const
+{  
+	//lyxerr << "unexpected call to MathScriptInset::write()\n";
+	write(0, os, fragile);
+}
+
+
+void MathScriptInset::write(MathInset const * nuc, std::ostream & os,
+	bool fragile) const
+{
+	if (nuc) {
+		nuc->write(os, fragile);
+		if (nuc->takesLimits()) {
+			if (limits_ == -1)
+				os << "\\nolimits ";
+			if (limits_ == 1)
+				os << "\\limits ";
+		}
+	}
+	else
+		os << "{}";
+
+	if (hasDown() && down().data_.size()) {
+		os << "_{";
+		down().data_.write(os, fragile);
+		os << "}";
+	}
+
+	if (hasUp() && up().data_.size()) {
+		os << "^{";
+		up().data_.write(os, fragile);
+		os << "}";
+	}
+}
+
+
+bool MathScriptInset::hasLimits(MathInset const * nuc) const
+{
+	return limits_ == 1 || (limits_ == 0 && nuc && nuc->isScriptable());
+}
+
+
+void MathScriptInset::removeEmptyScripts()
+{
+	for (int i = 0; i <= 1; ++i)
+		if (script_[i] && !cell(i).size())
+			script_[i] = false;
+}
+
+
+void MathScriptInset::removeScript(bool up)
+{
+	cell(up).clear();
+	script_[up] = false;
+}
+
+
+bool MathScriptInset::has(bool up) const
+{
+	return script_[up];
+}
+
+
+bool MathScriptInset::hasUp() const
+{
+	return script_[1];
+}
+
+
+bool MathScriptInset::hasDown() const
+{
+	return script_[0];
 }

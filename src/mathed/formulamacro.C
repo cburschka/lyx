@@ -52,16 +52,14 @@ InsetFormulaMacro::InsetFormulaMacro()
 InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 {
 	setInsetName(nm);
-	MathMacroTable::createTemplate(nm, na, string());
+	MathMacroTable::create(nm, na, string());
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
-	MathMacroTemplate * t = mathed_parse_macro(s);
-	MathMacroTable::insertTemplate(*t);
-	setInsetName(t->name());
-	delete t;
+	string name = mathed_parse_macro(s);
+	setInsetName(name);
 	metrics();
 }
 
@@ -75,20 +73,20 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
-	tmacro().write(os, false);
+	par()->write(os, false);
 }
 
 
 int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
-	tmacro().write(os, fragile);
+	par()->write(os, fragile);
 	return 2;
 }
 
 int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
 {
-	tmacro().write(os, false);
+	par()->write(os, false);
 	return 0;
 }
 
@@ -107,38 +105,34 @@ int InsetFormulaMacro::docbook(Buffer const * buf, ostream & os) const
 
 void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
-	MathMacroTemplate * t = mathed_parse_macro(lex);
-	if (!t) 
-		t = new MathMacroTemplate("{parse error}", 0);
-	MathMacroTable::insertTemplate(*t);
-	setInsetName(t->name());
-	delete t;
+	string name = mathed_parse_macro(lex);
+	setInsetName(name);
 	metrics();
 }
 
 
 string InsetFormulaMacro::prefix() const
 {
-	return string(" ") + _("Macro: ") + tmacro().name() + ": ";
+	return string(" ") + _("Macro: ") + getInsetName() + ": ";
 }
 
 
 int InsetFormulaMacro::ascent(BufferView *, LyXFont const &) const
 {
-	return tmacro().ascent() + 5;
+	return par()->ascent() + 5;
 }
 
 
 int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 {
-	return tmacro().descent() + 5;
+	return par()->descent() + 5;
 }
 
 
 int InsetFormulaMacro::width(BufferView *, LyXFont const & f) const
 {
 	metrics();
-	return 10 + lyxfont::width(prefix(), f) + tmacro().width();
+	return 10 + lyxfont::width(prefix(), f) + par()->width();
 }
 
 
@@ -152,12 +146,12 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 		case LFUN_MATH_MACROARG: {
 			int const i = lyx::atoi(arg);
 			lyxerr << "inserting macro arg " << i << "\n";
-			if (i > 0 && i <= tmacro().numargs()) {
-				mathcursor->insert(new MathMacroArgument(i));
+			//if (i > 0 && i <= par()->numargs()) {
+				mathcursor->insert(MathAtom(new MathMacroArgument(i)));
 				updateLocal(bv, true);
-			} else {
-				lyxerr << "not in range 0.." << tmacro().numargs() << "\n";
-			}
+			//} else {
+			//	lyxerr << "not in range 0.." << par()->numargs() << "\n";
+			//}
 			break;
 		}
 		
@@ -168,9 +162,15 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 }
 
 
-MathMacroTemplate const & InsetFormulaMacro::tmacro() const
+MathAtom const & InsetFormulaMacro::par() const
 {
-	return MathMacroTable::provideTemplate(getInsetName());
+	return MathMacroTable::provide(getInsetName());
+}
+
+
+MathAtom & InsetFormulaMacro::par()
+{
+	return MathMacroTable::provide(getInsetName());
 }
 
 
@@ -186,15 +186,9 @@ MathInsetTypes InsetFormulaMacro::getType() const
 }
 
 
-MathInset const * InsetFormulaMacro::par() const
-{
-	return &tmacro();
-}
-
-
 void InsetFormulaMacro::metrics() const
 {
-	tmacro().metrics(LM_ST_TEXT);
+	par()->metrics(LM_ST_TEXT);
 }
 
 
@@ -222,9 +216,9 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	x += width(bv, font);
 
 	// formula
-	float t = tmacro().width() + 5;
+	float t = par()->width() + 5;
 	x -= t;
-	tmacro().draw(pain, int(x), baseline);
+	par()->draw(pain, int(x), baseline);
 	x += t;
 }
 

@@ -28,6 +28,8 @@
 
 class MathMatrixInset;
 class MathMacroTemplate;
+class MathAtom;
+class MathArray;
 class LyXLex;
 
 ///
@@ -133,12 +135,12 @@ latexkeys const * in_word_set(string const & str);
 ///
 void ReadSymbols(string const & file);
 
-MathMatrixInset * mathed_parse_normal(string const &);
-MathMatrixInset * mathed_parse_normal(std::istream &);
-MathMatrixInset * mathed_parse_normal(LyXLex &);
+bool mathed_parse_normal(MathAtom &, string const &);
+bool mathed_parse_normal(MathAtom &, std::istream &);
+bool mathed_parse_normal(MathAtom &, LyXLex &);
 
-MathMacroTemplate * mathed_parse_macro(string const &);
-MathMacroTemplate * mathed_parse_macro(std::istream &);
-MathMacroTemplate * mathed_parse_macro(LyXLex &);
+string mathed_parse_macro(string const &);
+string mathed_parse_macro(std::istream &);
+string mathed_parse_macro(LyXLex &);
 
 #endif

@@ -62,6 +62,11 @@ bool stared(string const & s)
 }
 
 
+void add(MathArray & ar, char c, MathTextCodes code)
+{
+	ar.push_back(MathAtom(new MathCharInset(c, code)));
+}
+
 
 // These are TeX's catcodes
 enum CatCode {
@@ -199,9 +204,9 @@ public:
 	Parser(istream & is);
 
 	///
-	MathMacroTemplate * parse_macro();
+	string parse_macro();
 	///
-	MathMatrixInset * parse_normal();
+	bool parse_normal(MathAtom &);
 	///
 	void parse_into(MathArray & array, unsigned flags, MathTextCodes = LM_TC_MIN);
 	///
@@ -217,7 +222,7 @@ private:
 	///
 	void error(string const & msg);
 	///
-	void parse_lines(MathGridInset * p, bool numbered, bool outmost);
+	bool parse_lines(MathAtom & t, bool numbered, bool outmost);
 
 private:
 	///
@@ -426,8 +431,14 @@ void Parser::error(string const & msg)
 }
 
 
-void Parser::parse_lines(MathGridInset * p, bool numbered, bool outmost)
-{
+bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
+{	
+	MathGridInset * p = t->asGridInset();
+	if (!p) {
+		lyxerr << "error in Parser::parse_lines() 1\n";
+		return false;
+	}
+
 	const int cols = p->ncols();
 
 	// save global variables
@@ -453,7 +464,11 @@ void Parser::parse_lines(MathGridInset * p, bool numbered, bool outmost)
 		}
 
 		if (outmost) {
-			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
+			MathMatrixInset * m = t->asMatrixInset();
+			if (!m) {
+				lyxerr << "error in Parser::parse_lines() 2\n";
+				return false;
+			}
 			m->numbered(row, curr_num_);
 			m->label(row, curr_label_);
 			if (curr_skip_.size()) {
@@ -474,41 +489,46 @@ void Parser::parse_lines(MathGridInset * p, bool numbered, bool outmost)
 	// restore "global" variables
 	curr_num_   = saved_num;
 	curr_label_ = saved_label;
+
+	return true;
 }
 
 
-MathMacroTemplate * Parser::parse_macro()
+string Parser::parse_macro()
 {
+	string name = "{error}";
+
 	while (nextToken().cat() == catSpace)
 		getToken();
 
 	if (getToken().cs() != "newcommand") {
 		lyxerr << "\\newcommand expected\n";
-		return 0;
+		return name;
 	}
 
 	if (getToken().cat() != catBegin) {
 		lyxerr << "'{' expected\n";
-		return 0;
+		return name;
 	}
 
-	string name = getToken().cs();
+	name = getToken().cs();
 
 	if (getToken().cat() != catEnd) {
 		lyxerr << "'}' expected\n";
-		return 0;
+		return name;
 	}
 
-	string arg  = getArg('[', ']');
-	int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
-	//lyxerr << "creating macro " << name << " with " << narg <<  "args\n";
-	MathMacroTemplate * p = new MathMacroTemplate(name, narg);
-	parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-	return p;
+	string    arg  = getArg('[', ']');
+	int       narg = arg.empty() ? 0 : atoi(arg.c_str()); 
+	MathArray ar;
+	parse_into(ar, FLAG_BRACE | FLAG_BRACE_LAST);
+	MathMacroTable::create(name, narg, ar);
+	
+	return name;
 }
 
 
-MathMatrixInset * Parser::parse_normal()
+bool Parser::parse_normal(MathAtom & matrix)
 {
 	while (nextToken().cat() == catSpace)
 		getToken();
@@ -516,14 +536,14 @@ MathMatrixInset * Parser::parse_normal()
 	Token const & t = getToken();
 
 	if (t.cat() == catMath || t.cs() == "(") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_SIMPLE);
-		parse_into(p->cell(0), 0);
-		return p;
+		matrix = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+		parse_into(matrix->cell(0), 0);
+		return true;
 	}
 
 	if (!t.cs().size()) {
 		lyxerr << "start of math expected, got '" << t << "'\n";
-		return 0;
+		return false;
 	}
 
 	string const & cs = t.cs();
@@ -531,7 +551,8 @@ MathMatrixInset * Parser::parse_normal()
 	if (cs == "[") {
 		curr_num_ = 0;
 		curr_label_.erase();
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQUATION);
+		matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
+		MathMatrixInset * p = matrix->asMatrixInset();
 		parse_into(p->cell(0), 0);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
@@ -540,7 +561,7 @@ MathMatrixInset * Parser::parse_normal()
 
 	if (cs != "begin") {
 		lyxerr << "'begin' of un-simple math expected, got '" << cs << "'\n";
-		return 0;
+		return false;
 	}
 
 	string const name = getArg('{', '}');
@@ -548,60 +569,54 @@ MathMatrixInset * Parser::parse_normal()
 	if (name == "equation" || name == "equation*") {
 		curr_num_ = !stared(name);
 		curr_label_.erase();
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQUATION);
+		matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
+		MathMatrixInset * p = matrix->asMatrixInset();
 		parse_into(p->cell(0), FLAG_END);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
-		return p;
+		return true;
 	}
 
 	if (name == "eqnarray" || name == "eqnarray*") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQNARRAY);
-		parse_lines(p, !stared(name), true);
-		return p;
+		matrix = MathAtom(new MathMatrixInset(LM_OT_EQNARRAY));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "align" || name == "align*") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGN);
-		parse_lines(p, !stared(name), true);
-		return p;
+		matrix = MathAtom(new MathMatrixInset(LM_OT_ALIGN));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "alignat" || name == "alignat*") {
-		MathMatrixInset * p =
-			new MathMatrixInset(LM_OT_ALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
-		parse_lines(p, !stared(name), true);
-		return p;
+		int nc = 2 * atoi(getArg('{', '}').c_str());
+		matrix = MathAtom(new MathMatrixInset(LM_OT_ALIGNAT, nc));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "xalignat" || name == "xalignat*") {
-		MathMatrixInset * p =
-			new MathMatrixInset(LM_OT_XALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
-		parse_lines(p, !stared(name), true);
-		return p;
+		int nc = 2 * atoi(getArg('{', '}').c_str());
+		matrix = MathAtom(new MathMatrixInset(LM_OT_XALIGNAT, nc));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "xxalignat") {
-		MathMatrixInset * p =
-			new MathMatrixInset(LM_OT_XXALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
-		parse_lines(p, !stared(name), true);
-		return p;
+		int nc = 2 * atoi(getArg('{', '}').c_str());
+		matrix = MathAtom(new MathMatrixInset(LM_OT_XXALIGNAT, nc));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "multline" || name == "multline*") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_MULTLINE);
-		parse_lines(p, !stared(name), true);
-		return p;
+		matrix = MathAtom(new MathMatrixInset(LM_OT_MULTLINE));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "gather" || name == "gather*") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_GATHER);
-		parse_lines(p, !stared(name), true);
-		return p;
+		matrix = MathAtom(new MathMatrixInset(LM_OT_GATHER));
+		return parse_lines(matrix, !stared(name), true);
 	}
 
 	lyxerr[Debug::MATHED] << "1: unknown math environment: " << name << "\n";
-	return 0;
+	return false;
 }
 
 
@@ -610,6 +625,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 	MathTextCodes yyvarcode = LM_TC_MIN;
 
 	bool panic  = false;
+	int  limits = 0;
 
 	while (good()) {
 		Token const & t = getToken();
@@ -658,45 +674,52 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break;
 
 		else if (t.cat() == catLetter)
-			array.push_back(new MathCharInset(t.character(), yyvarcode));
+			add(array, t.character(), yyvarcode);
 
 		else if (t.cat() == catSpace &&
 				(yyvarcode == LM_TC_TEXTRM || code == LM_TC_TEXTRM))
-			array.push_back(new MathCharInset(' ', yyvarcode));
+			add(array, ' ', yyvarcode);
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
-			MathMacroArgument * p = new MathMacroArgument(n.character() - '0');
-			array.push_back(p);
+			array.push_back(MathAtom(new MathMacroArgument(n.character() - '0')));
 		}
 
 		else if (t.cat() == catBegin) {
-			array.push_back(new MathCharInset('{', LM_TC_TEX));
+			add(array, '{', LM_TC_TEX);
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			array.push_back(new MathCharInset('}', LM_TC_TEX));
+			add(array, '}', LM_TC_TEX);
 		}
 		
 		else if (t.cat() == catAlign) {
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
-			array.push_back(new MathCharInset('&', LM_TC_TEX));
+			add(array, '&', LM_TC_TEX);
 		}
 		
 		else if (t.cat() == catSuper || t.cat() == catSub) {
 			bool up = (t.cat() == catSuper);
-			if (array.empty())
-				array.push_back(new MathCharInset(' '));
-			parse_into(array.back().ensure(up)->cell(0), FLAG_ITEM);
+			MathScriptInset * p = 0; 
+			if (array.size()) 
+				p = array.back()->asScriptInset();
+			if (!p || p->has(up)) {
+				array.push_back(MathAtom(new MathScriptInset(up)));
+				p = array.back()->asScriptInset();
+			}
+			p->ensure(up);
+			parse_into(p->cell(up), FLAG_ITEM);
+			p->limits(limits);
+			limits = 0;
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
 			return;
 
 		else if (t.cat() == catOther)
-			array.push_back(new MathCharInset(t.character(), yyvarcode));
+			add(array, t.character(), yyvarcode);
 		
 		//
 		// codesequences
@@ -722,11 +745,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(createMathInset("\\"));
 		}
 	
-		else if (t.cs() == "limits" && array.size())
-			array.back().limits(1);
+		else if (t.cs() == "limits")
+			limits = 1;
 		
-		else if (t.cs() == "nolimits" && array.size())
-			array.back().limits(-1);
+		else if (t.cs() == "nolimits")
+			limits = -1;
 		
 		else if (t.cs() == "nonumber")
 			curr_num_ = false;
@@ -737,13 +760,13 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cs() == "sqrt") {
 			char c = getChar();
 			if (c == '[') {
-				array.push_back(new MathRootInset);
-				parse_into(array.back().nucleus()->cell(0), FLAG_BRACK_END);
-				parse_into(array.back().nucleus()->cell(1), FLAG_ITEM);
+				array.push_back(MathAtom(new MathRootInset));
+				parse_into(array.back()->cell(0), FLAG_BRACK_END);
+				parse_into(array.back()->cell(1), FLAG_ITEM);
 			} else {
 				putback();
-				array.push_back(new MathSqrtInset);
-				parse_into(array.back().nucleus()->cell(0), FLAG_ITEM);
+				array.push_back(MathAtom(new MathSqrtInset));
+				parse_into(array.back()->cell(0), FLAG_ITEM);
 			}
 		}
 		
@@ -752,7 +775,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			MathArray ar;
 			parse_into(ar, FLAG_RIGHT);
 			string r = getToken().asString();
-			MathDelimInset * dl = new MathDelimInset(l, r);
+			MathAtom dl(new MathDelimInset(l, r));
 			dl->cell(0) = ar;
 			array.push_back(dl);
 		}
@@ -783,15 +806,12 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			if (name == "array") {
 				string const valign = getArg('[', ']') + 'c';
 				string const halign = getArg('{', '}');
-				MathArrayInset * m = new MathArrayInset(halign.size(), 1);
-				m->valign(valign[0]);
-				m->halign(halign);
-				parse_lines(m, false, false);
-				array.push_back(m);
+				array.push_back(
+					MathAtom(new MathArrayInset(halign.size(), 1, valign[0], halign)));
+				parse_lines(array.back(), false, false);
 			} else if (name == "split") {
-				MathSplitInset * m = new MathSplitInset(1);
-				parse_lines(m, false, false);
-				array.push_back(m);
+				array.push_back(MathAtom(new MathSplitInset(1)));
+				parse_lines(array.back(), false, false);
 			} else 
 				lyxerr[Debug::MATHED] << "unknow math inset begin '" << name << "'\n";	
 		}
@@ -811,7 +831,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				if (isValidLength(s))
 					break;
 			}
-			array.push_back(new MathKernInset(s));
+			array.push_back(MathAtom(new MathKernInset(s)));
 		}
 
 		else if (t.cs() == "label") {
@@ -825,11 +845,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
-			MathInset * p = createMathInset(t.cs());
+			MathAtom p = createMathInset(t.cs());
 			// search backward for position of last '{' if any
 			int pos;
 			for (pos = array.size() - 1; pos >= 0; --pos)
-				if (array.at(pos)->nucleus()->getChar() == '{')
+				if (array.at(pos)->getChar() == '{')
 					break;
 			if (pos >= 0) {
 				// found it -> use the part after '{' as "numerator"
@@ -849,7 +869,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				p->cell(0).swap(array);
 				parse_into(p->cell(1), FLAG_BLOCK);
 			}
-			array.push_back(p);
+			array.push_back(MathAtom(p));
 		}
 	
 		else if (t.cs().size()) {
@@ -867,7 +887,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					MathArray ar;
 					parse_into(ar, FLAG_ITEM, t);
 					for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
-						it->nucleus()->handleFont(t);
+						(*it)->handleFont(t);
 					array.push_back(ar);
 
 					// undo catcode changes
@@ -879,7 +899,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					yyvarcode = static_cast<MathTextCodes>(l->id);
 
 				else {
-					MathInset * p = createMathInset(t.cs());
+					MathAtom p = createMathInset(t.cs());
 					for (MathInset::idx_type i = 0; i < p->nargs(); ++i) 
 						parse_into(p->cell(i), FLAG_ITEM);
 					array.push_back(p);
@@ -887,16 +907,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			}
 
 			else {
-				MathInset * p = createMathInset(t.cs());
-				if (p) {
-					for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
-						parse_into(p->cell(i), FLAG_ITEM);
-					array.push_back(p);
-				} else {
-					error("Unrecognized token");
-					//lyxerr[Debug::MATHED] << "[" << t << "]\n";
-					lyxerr << t << "\n";
-				}	
+				MathAtom p = createMathInset(t.cs());
+				for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
+					parse_into(p->cell(i), FLAG_ITEM);
+				array.push_back(p);
 			}
 		}
 
@@ -917,6 +931,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 	}
 }
 
+
+
 } // anonymous namespace
 
 
@@ -932,20 +948,20 @@ MathArray mathed_parse_cell(string const & str)
 
 
 
-MathMacroTemplate * mathed_parse_macro(string const & str)
+string mathed_parse_macro(string const & str)
 {
 	istringstream is(str.c_str());
 	Parser parser(is);
 	return parser.parse_macro();
 }
 
-MathMacroTemplate * mathed_parse_macro(istream & is)
+string mathed_parse_macro(istream & is)
 {
 	Parser parser(is);
 	return parser.parse_macro();
 }
 
-MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
+string mathed_parse_macro(LyXLex & lex)
 {
 	Parser parser(lex);
 	return parser.parse_macro();
@@ -953,21 +969,21 @@ MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
 
 
 
-MathMatrixInset * mathed_parse_normal(string const & str)
+bool mathed_parse_normal(MathAtom & t, string const & str)
 {
 	istringstream is(str.c_str());
 	Parser parser(is);
-	return parser.parse_normal();
+	return parser.parse_normal(t);
 }
 
-MathMatrixInset * mathed_parse_normal(istream & is)
+bool mathed_parse_normal(MathAtom & t, istream & is)
 {
 	Parser parser(is);
-	return parser.parse_normal();
+	return parser.parse_normal(t);
 }
 
-MathMatrixInset * mathed_parse_normal(LyXLex & lex)
+bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
 {
 	Parser parser(lex);
-	return parser.parse_normal();
+	return parser.parse_normal(t);
 }

@@ -36,7 +36,7 @@ int getCols(MathInsetTypes type)
 int firstRelOp(MathArray const & array)
 {
 	for (MathArray::const_iterator it = array.begin(); it != array.end(); ++it)
-		if (it->nucleus()->isRelOp())
+		if ((*it)->isRelOp())
 			return it - array.begin();
 	return array.size();
 }

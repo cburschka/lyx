@@ -17,7 +17,9 @@ class MathXArray
 {
 public:
 	///
-	typedef MathArray::size_type    size_type;
+	typedef MathArray::size_type       size_type;
+	///
+	typedef MathArray::const_iterator  const_iterator;
 
 	///
 	MathXArray();
@@ -31,13 +33,9 @@ public:
 	///
 	int yo() const { return yo_; }
 	///
-	int pos2x(size_type pos, bool inner) const;
+	int pos2x(size_type pos) const;
 	///
 	size_type x2pos(int pos) const;
-	///
-	int width(size_type pos) const;
-	///
-	int innerwidth(size_type pos) const;
 
 	///
 	int ascent() const { return ascent_; }
@@ -49,8 +47,13 @@ public:
 	int width() const { return width_; }
 	///
 	MathStyles style() const { return style_; }
-	
 
+	///
+	const_iterator begin() const { return data_.begin(); }
+	///
+	const_iterator end() const { return data_.end(); }
+	
+public:
 	///
 	MathArray data_;
 	///

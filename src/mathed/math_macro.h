@@ -26,6 +26,7 @@
 
 #include "math_nestinset.h"
 #include "math_macroarg.h"
+#include "LString.h"
 
 class MathMacroTemplate;
 
@@ -37,7 +38,7 @@ class MathMacroTemplate;
 class MathMacro : public MathNestInset {
 public:
 	/// A macro can be built from an existing template
-	explicit MathMacro(MathMacroTemplate const &);
+	explicit MathMacro(string const &);
 	///
 	MathMacro(MathMacro const &);
 	///
@@ -74,7 +75,7 @@ private:
 	char const * name() const;
 
 	///
-	MathMacroTemplate const * const tmplate_;
+	MathAtom & tmplate_;
 	///
 	mutable MathXArray expanded_;
 };

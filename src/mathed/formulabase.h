@@ -27,7 +27,7 @@
 
 class Buffer;
 class BufferView;
-class MathInset;
+class MathAtom;
 
 ///
 class InsetFormulaBase : public UpdatableInset {
@@ -85,10 +85,11 @@ public:
 	///
 	virtual std::vector<string> const getLabelList() const;
 	///
-	virtual MathInset const * par() const = 0;
+	virtual MathAtom const & par() const = 0;
+	///
+	virtual MathAtom & par() = 0;
 	///
 	virtual void metrics() const = 0;
-protected:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 private:

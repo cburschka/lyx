@@ -36,6 +36,8 @@ public:
 	void draw(Painter &, int x, int y) const;
 	///
 	void metrics(MathStyles st) const;
+	/// identifies macro templates
+	MathMacroTemplate * asMacroTemplate() { return this; }
 private:
 	///
 	int numargs_;

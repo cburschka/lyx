@@ -79,14 +79,16 @@ void MathRootInset::writeNormal(std::ostream & os) const
 	os << "] ";
 }
 
+
 bool MathRootInset::idxUp(int & idx, int & pos) const
 {
 	if (idx == 0)
 		return false;
 	idx = 0;
-	pos = 0;
+	pos = cell(0).size();
 	return true;
 }
+
 
 bool MathRootInset::idxDown(int & idx, int & pos) const
 {

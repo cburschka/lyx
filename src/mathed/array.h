@@ -20,7 +20,7 @@
 #include <iosfwd>
 #include "math_atom.h"
 
-class MathInset;
+class MathScriptInset;
 class MathMacro;
 class LaTeXFeatures;
 
@@ -64,7 +64,7 @@ public:
 	void swap(MathArray &);
 	
 	///
-	void insert(size_type pos, MathInset * inset);
+	void insert(size_type pos, MathAtom const &);
 	///
 	void insert(size_type pos, MathArray const &);
 
@@ -76,11 +76,9 @@ public:
 	void erase();
 
 	///
-	void push_back(MathInset * inset);
+	void push_back(MathAtom const &);
 	///
 	void push_back(MathArray const &);
-	///
-	void push_back(MathAtom const &);
 	///
 	void pop_back();
 	///
@@ -94,9 +92,9 @@ public:
 	void substitute(MathMacro const &);
 
 	///
-	MathAtom * at(size_type pos);
+	MathAtom & at(size_type pos);
 	///
-	MathAtom const * at(size_type pos) const;
+	MathAtom const & at(size_type pos) const;
 	///
 	void write(std::ostream &, bool) const;
 	///
@@ -111,6 +109,8 @@ public:
 	iterator begin();
 	///
 	iterator end();
+	///
+	MathScriptInset const * asScript(const_iterator it) const;
 private:
 	/// Buffer
 	buffer_type bf_;

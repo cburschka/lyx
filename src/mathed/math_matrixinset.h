@@ -50,6 +50,10 @@ public:
 	std::vector<string> const getLabelList() const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	/// identifies MatrixInsets
+	virtual MathMatrixInset const * asMatrixInset() const { return this; }
+	/// identifies MatrixInsets
+	virtual MathMatrixInset * asMatrixInset() { return this; }
 
 	///
 	void addRow(row_type);

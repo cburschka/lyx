@@ -11,6 +11,11 @@ MathArrayInset::MathArrayInset(int m, int n)
 {}
 
 
+MathArrayInset::MathArrayInset(int m, int n, char valign, string const & halign)
+	: MathGridInset(m, n, valign, halign)
+{}
+
+
 MathInset * MathArrayInset::clone() const
 {
 	return new MathArrayInset(*this);

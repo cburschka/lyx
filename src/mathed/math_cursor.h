@@ -35,18 +35,17 @@ class InsetFormulaBase;
 class MathArray;
 class MathXArray;
 class Painter;
+class Selection;
 class latexkeys;
 
 /// Description of a position 
 struct MathCursorPos {
 	/// inset
-	MathInset * par_;
+	MathAtom * par_;
 	/// cell index
 	MathInset::idx_type idx_;
 	/// cell position
 	MathInset::pos_type pos_;
-	/// faked position "inside an atom"
-	bool inner_;
 
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
@@ -56,9 +55,6 @@ struct MathCursorPos {
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell(MathInset::idx_type idx) const;
-
-	/// returns atom corresponding to this position
-	MathAtom * at() const;
 };
 
 /// 
@@ -82,11 +78,13 @@ public:
 	typedef MathInset::col_type     col_type;
 
 	///
-	explicit MathCursor(InsetFormulaBase *);
+	explicit MathCursor(InsetFormulaBase *, bool left);
 	///
-	void insert(MathInset *);
+	void insert(MathAtom const &);
 	///
 	void insert(MathArray const &);
+	///
+	void paste(MathArray const &);
 	///
 	void erase();
 	///
@@ -114,9 +112,9 @@ public:
 	///
 	void plainErase();
 	///
-	void plainInsert(MathInset * p);
+	void plainInsert(MathAtom const &);
 	///
-	void niceInsert(MathInset * p);
+	void niceInsert(MathAtom const &);
 
 	///
 	void delLine();
@@ -125,13 +123,11 @@ public:
 	///
 	void getPos(int & x, int & y);
 	///
-	MathInset * par() const;
+	MathAtom & par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathArrayInset * enclosingArray(idx_type &) const;
 	///
 	InsetFormulaBase const * formula();
-	///
-	bool inner() const;
 	///
 	pos_type pos() const;
 	///
@@ -202,11 +198,13 @@ public:
 	MathStyles style() const;
 	/// Make sure cursor position is valid
 	void normalize() const;
-	
+
+	/// enter a MathInset 
+	void push(MathAtom & par);
 	/// enter a MathInset from the front
-	void pushLeft(MathInset * par);
+	void pushLeft(MathAtom & par);
 	/// enter a MathInset from the back
-	void pushRight(MathInset * par);
+	void pushRight(MathAtom & par);
 	/// leave current MathInset to the left
 	bool popLeft();
 	/// leave current MathInset to the left
@@ -217,13 +215,17 @@ public:
 	///
 	MathXArray & xarray() const;
 	///
-	MathAtom const * prevAtom() const;
+	bool hasPrevAtom() const;
 	///
-	MathAtom * prevAtom();
+	bool hasNextAtom() const;
 	///
-	MathAtom const * nextAtom() const;
+	MathAtom const & prevAtom() const;
 	///
-	MathAtom * nextAtom();
+	MathAtom & prevAtom();
+	///
+	MathAtom const & nextAtom() const;
+	///
+	MathAtom & nextAtom();
 
 	/// returns the selection
 	void getSelection(MathCursorPos &, MathCursorPos &) const;
@@ -244,8 +246,6 @@ public:
 	///  
 	pos_type last() const;
 	///
-	MathMatrixInset * outerPar() const;
-	///
 	void seldump(char const * str) const;
 	///
 	void dump(char const * str) const;
@@ -253,13 +253,14 @@ public:
 	///
 	void merge(MathArray const & arr);
 	///
-	MathInset * nextInset() const;
-	///
-	MathInset * prevInset() const;
-	///
 	MathScriptInset * prevScriptInset() const;
 	///
 	MathSpaceInset * prevSpaceInset() const;
+	/// glue adjacent atoms if possible
+	bool glueAdjacentAtoms();
+
+	///
+	friend class Selection;
 
 private:
 	/// moves cursor position one cell to the left
@@ -274,8 +275,6 @@ private:
 	bool goUp();
 	/// moves position somehow down
 	bool goDown();
-	/// glue adjacent atoms if possible
-	void glueAdjacentAtoms();
 
 	///
 	string macroName() const;
@@ -284,11 +283,9 @@ private:
 	///
 	void insert(char, MathTextCodes t);
 	/// can we enter the inset? 
-	bool openable(MathInset *, bool selection) const;
+	bool openable(MathAtom const &, bool selection) const;
 	/// can the setPos routine enter that inset?
-	MathInset * positionable(MathAtom *, int x, int y) const;
-	/// write access to "inner" flag
-	bool & inner();
+	bool positionable(MathAtom const &, int x, int y) const;
 	/// write access to cursor cell position
 	pos_type & pos();
 	/// write access to cursor cell index

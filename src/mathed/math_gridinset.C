@@ -19,6 +19,9 @@ int const MATH_BORDER = 2;
 }
 
 
+////////////////////////////////////////////////////////////// 
+
+
 MathGridInset::RowInfo::RowInfo()
 	: upperline_(false), lowerline_(false)
 {}
@@ -35,19 +38,30 @@ int MathGridInset::RowInfo::skipPixels() const
 
 
 
+////////////////////////////////////////////////////////////// 
+
+
 MathGridInset::ColInfo::ColInfo()
 	: align_('c'), leftline_(false), rightline_(false), skip_(MATH_COLSEP)
 {}
 
 
+////////////////////////////////////////////////////////////// 
+
+
 MathGridInset::MathGridInset(col_type m, row_type n)
 	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_('c')
 {
-	if (m <= 0)
-		lyxerr << "positve number of columns expected\n";
-	if (n <= 0)
-		lyxerr << "positve number of rows expected\n";
 	setDefaults();
+}
+
+
+MathGridInset::MathGridInset(int m, int n, char v, string const & h)
+	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_(v)
+{
+	setDefaults();
+ 	valign(v);
+	halign(h);
 }
 
 
@@ -59,6 +73,10 @@ MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
 
 void MathGridInset::setDefaults()
 {
+	if (ncols() <= 0)
+		lyxerr << "positve number of columns expected\n";
+	if (nrows() <= 0)
+		lyxerr << "positve number of rows expected\n";
 	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
@@ -268,7 +286,7 @@ string MathGridInset::eolString(row_type row) const
 
 	// make sure an upcoming '[' does not break anything
 	MathArray const & c = cell(index(row + 1, 0));
-	if (c.size() && c.begin()->nucleus()->getChar() == '[')
+	if (c.size() && (*c.begin())->getChar() == '[')
 		return "\\\\[0pt]\n";
 
 	return "\\\\\n";
@@ -367,8 +385,9 @@ bool MathGridInset::idxUp(idx_type & idx, pos_type & pos) const
 {
 	if (idx < ncols())
 		return false;
+	int x = cellXOffset(idx) + xcell(idx).pos2x(pos);
 	idx -= ncols();
-	pos = 0;
+	pos = xcell(idx).x2pos(x - cellXOffset(idx));
 	return true;
 }
 
@@ -377,8 +396,9 @@ bool MathGridInset::idxDown(idx_type & idx, pos_type & pos) const
 {
 	if (idx >= ncols() * (nrows() - 1))
 		return false;
+	int x = cellXOffset(idx) + xcell(idx).pos2x(pos);
 	idx += ncols();
-	pos = 0;
+	pos = xcell(idx).x2pos(x - cellXOffset(idx));
 	return true;
 }
 	

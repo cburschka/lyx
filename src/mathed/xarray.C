@@ -6,6 +6,7 @@
 
 #include "xarray.h"
 #include "math_inset.h"
+#include "math_scriptinset.h"
 #include "mathed/support.h"
 #include "math_defs.h"
 #include "Painter.h"
@@ -29,12 +30,21 @@ void MathXArray::metrics(MathStyles st) const
 	width_   = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
-	for (size_type pos = 0; pos < data_.size(); ++pos) {
-		MathAtom const * p = data_.at(pos);
-		p->metrics(st);
-		ascent_  = std::max(ascent_,  p->ascent());
-		descent_ = std::max(descent_, p->descent());
-		width_  += p->width();
+	
+	for (const_iterator it = begin(); it != end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = data_.asScript(it)) {
+			q->metrics(p, st);
+			ascent_  = std::max(ascent_,  q->ascent(p));
+			descent_ = std::max(descent_, q->descent(p));
+			width_  += q->width(p);	
+			++it;
+		} else {
+			p->metrics(st);
+			ascent_  = std::max(ascent_,  p->ascent());
+			descent_ = std::max(descent_, p->descent());
+			width_  += p->width();	
+		}
 	}
 	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " " 
 	//	<< descent_ << " " << width_ << "'\n";
@@ -51,52 +61,60 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 		return;
 	}
 
-	for (size_type pos = 0; pos < data_.size(); ++pos) {
-		MathAtom const * p = data_.at(pos);
-		p->draw(pain, x, y);
-		x += p->width();
+	for (const_iterator it = begin(); it != end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = data_.asScript(it)) {
+			q->draw(p, pain, x, y);
+			x += q->width(p);
+			++it;
+		} else {
+			p->draw(pain, x, y);
+			x += p->width();
+		}
 	}
 }
 
 
-int MathXArray::pos2x(size_type targetpos, bool inner) const
+int MathXArray::pos2x(size_type targetpos) const
 {
 	int x = 0;
-	targetpos = std::min(targetpos, data_.size());
-	for (size_type pos = 0; pos < targetpos; ++pos) 
-		x += width(pos);	
-	if (inner)
-		x += innerwidth(targetpos);
+	const_iterator target = std::min(begin() + targetpos, end());
+	for (const_iterator it = begin(); it < target; ++it) {
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = data_.asScript(it)) {
+			++it;
+			if (it < target)
+				x += q->width(p);
+			else  // "half" position
+				x += q->dxx(p) + q->nwid(p);
+		} else
+			x += p->width();
+	}
 	return x;
 }
 
 
 MathArray::size_type MathXArray::x2pos(int targetx) const
 {
-	size_type pos  = 0;
-	int lastx      = 0;
-	int currx      = 0;
-	for ( ; currx < targetx && pos < data_.size(); ++pos) {
+	const_iterator it = begin();
+	int lastx = 0;
+	int currx = 0;
+	for ( ; currx < targetx && it < end(); ++it) {
 		lastx = currx;
-		currx += width(pos);
+
+		int wid = 0;
+		MathInset const * p = it->nucleus();
+		if (MathScriptInset const * q = data_.asScript(it)) {
+			wid = q->width(p);
+			++it;
+		} else
+			wid = p->width();
+
+		currx += wid;
 	}
-	if (abs(lastx - targetx) < abs(currx - targetx) && pos > 0)
-		--pos;
-	return pos;
-}
-
-
-int MathXArray::width(size_type pos) const
-{
-	MathAtom const * t = data_.at(pos);
-	return t ? t->width() : 0;
-}
-
-
-int MathXArray::innerwidth(size_type pos) const
-{
-	MathAtom const * t = data_.at(pos);
-	return t ? t->nwid() : 0;
+	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
+		--it;
+	return it - begin();
 }
 
 

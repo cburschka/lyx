@@ -14,13 +14,15 @@ public:
 	///
 	MathArrayInset(int m, int n);
 	///
+	MathArrayInset(int m, int n, char valign, string const & halign);
+	///
 	MathInset * clone() const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
 	void metrics(MathStyles st) const;
 	///
-	bool isArray() const { return true; }
+	MathArrayInset * asArrayInset() { return this; }
 };
 
 #endif

@@ -20,34 +20,18 @@
 #endif
 
 #include "math_atom.h"
-#include "math_scriptinset.h"
-#include "debug.h"
-#include "support.h"
+#include "math_inset.h"
 #include "support/LAssert.h"
 
 
 MathAtom::MathAtom()
-	: nucleus_(0), limits_(0), xo_(0), yo_(0)
-{
-	script_[0] = 0;
-	script_[1] = 0;
-}
+	: nucleus_(0)
+{}
 
 
 MathAtom::MathAtom(MathInset * p)
-	: nucleus_(p), limits_(0), xo_(0), yo_(0)
-{
-	script_[0] = 0;
-	script_[1] = 0;
-}
-
-
-MathAtom::MathAtom(MathInset * p, MathScriptInset * up, MathScriptInset * down)
-	: nucleus_(p), limits_(0), xo_(0), yo_(0)
-{
-	script_[0] = down;
-	script_[1] = up;
-}
+	: nucleus_(p)
+{}
 
 
 MathAtom::MathAtom(MathAtom const & p)
@@ -74,72 +58,29 @@ MathAtom::~MathAtom()
 void MathAtom::done()
 {
 	delete nucleus_;
-	delete script_[0];
-	delete script_[1];
 }
 
 
 void MathAtom::copy(MathAtom const & p)
 {
 	//cerr << "calling MathAtom::copy\n";
-	xo_        = p.xo_;
-	yo_        = p.yo_;
-	limits_    = p.limits_;
 	nucleus_   = p.nucleus_;
-	script_[0] = p.script_[0];
-	script_[1] = p.script_[1];
 	if (nucleus_)
 		nucleus_ = nucleus_->clone();
-	if (script_[0])
-		script_[0]  = new MathScriptInset(*script_[0]);
-	if (script_[1])
-		script_[1]  = new MathScriptInset(*script_[1]);
 }
 
 
-int MathAtom::height() const
+MathInset * MathAtom::nucleus() const
 {
-	return ascent() + descent();
+	lyx::Assert(nucleus_);
+	return nucleus_;
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathAtom const & atom)
+MathInset * MathAtom::operator->() const
 {
-	atom.write(os, false);
-	return os;
+	return nucleus();
 }
-
-
-int MathAtom::xo() const
-{
-	return xo_;
-}
-
-
-int MathAtom::yo() const
-{
-	return yo_;
-}
-
-
-void MathAtom::xo(int x) const
-{
-	xo_ = x;
-}
-
-
-void MathAtom::yo(int y) const
-{
-	yo_ = y;
-}
-
-
-void MathAtom::getXY(int & x, int & y) const
-{
-   x = xo();
-   y = yo();
-}
-
 
 /*
 void MathAtom::userSetSize(MathStyles sz)
@@ -150,273 +91,3 @@ void MathAtom::userSetSize(MathStyles sz)
 	}
 }
 */
-
-void MathAtom::writeNormal(std::ostream & os) const
-{
-	os << "[unknown] ";
-}
-
-
-void MathAtom::dump() const
-{
-	lyxerr << "---------------------------------------------\n";
-	write(lyxerr, false);
-	lyxerr << "\n---------------------------------------------\n";
-}
-
-
-bool MathAtom::covers(int x, int y) const
-{
-	return
-		x >= xo_ &&
-		x <= xo_ + width() &&
-		y >= yo_ - ascent() &&
-		y <= yo_ + descent();
-}
-
-
-MathScriptInset * MathAtom::ensure(bool up)
-{
-	if (!script_[up])
-		script_[up] = new MathScriptInset(up);
-	return script_[up];
-}
-
-
-void MathAtom::validate(LaTeXFeatures &) const
-{}
-
-
-void MathAtom::metrics(MathStyles st) const
-{
-	MathStyles tt = smallerStyleScript(st);
-	if (nucleus())
-		nucleus()->metrics(st);
-	if (up())
-		up()->metrics(tt);
-	if (down())
-		down()->metrics(tt);
-}
-
-
-MathScriptInset * MathAtom::up() const
-{
-	return script_[1];
-}
-
-
-MathScriptInset * MathAtom::down() const
-{
-	return script_[0];
-}
-
-
-MathScriptInset * & MathAtom::up()
-{
-	return script_[1];
-}
-
-
-MathScriptInset * & MathAtom::down()
-{
-	return script_[0];
-}
-
-
-int MathAtom::dy0() const
-{
-	if (!down())
-		return ndes();
-	int des = down()->ascent();
-	if (hasLimits())
-		des += ndes() + 2;
-	else 
-		des = std::max(des, ndes());
-	return des;
-}
-
-
-int MathAtom::dy1() const
-{
-	if (!up())
-		return nasc();
-	int asc = up()->descent();
-	if (hasLimits())
-		asc += nasc() + 2;
-	else 
-		asc = std::max(asc, nasc());
-	asc = std::max(asc, mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I'));
-	return asc;
-}
-
-
-int MathAtom::dx0() const
-{
-	lyx::Assert(down());
-	return hasLimits() ? (width() - down()->width()) / 2 : nwid();
-}
-
-
-int MathAtom::dx1() const
-{
-	lyx::Assert(up());
-	return hasLimits() ? (width() - up()->width()) / 2 : nwid();
-}
-
-
-int MathAtom::dxx() const
-{
-	//lyx::Assert(nucleus());
-	return hasLimits() ?  (width() - nwid()) / 2 : 0;
-}
-
-
-int MathAtom::ascent() const
-{
-	return dy1() + (up() ? up()->ascent() : 0);
-}
-
-
-int MathAtom::descent() const
-{
-	return dy0() + (down() ? down()->descent() : 0);
-}
-
-
-int MathAtom::width() const
-{
-	int wid = 0;
-	if (hasLimits()) {
-		wid = nwid();
-		if (up())
-			wid = std::max(wid, up()->width());
-		if (down())
-			wid = std::max(wid, down()->width());
-	} else {
-		if (up())
-			wid = std::max(wid, up()->width());
-		if (down())
-			wid = std::max(wid, down()->width());
-		wid += nwid();
-	}
-	return wid;
-}
-
-
-int MathAtom::nwid() const
-{
-	return nucleus() ?
-		nucleus()->width() :
-		mathed_char_width(LM_TC_TEX, LM_ST_TEXT, '.');
-}
-
-
-int MathAtom::nasc() const
-{
-	return nucleus() ? nucleus()->ascent()
-		: mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I');
-}
-
-
-int MathAtom::ndes() const
-{
-	return nucleus() ? nucleus()->descent()
-		: mathed_char_descent(LM_TC_VAR, LM_ST_TEXT, 'I');
-}
-
-
-void MathAtom::draw(Painter & pain, int x, int y) const
-{  
-	xo(x);
-	yo(y);
-	if (nucleus())
-		nucleus()->draw(pain, x + dxx(), y);
-	else
-		drawStr(pain, LM_TC_TEX, LM_ST_TEXT, x + dxx(), y, ".");
-	if (up())
-		up()->draw(pain, x + dx1(), y - dy1());
-	if (down())
-		down()->draw(pain, x + dx0(), y + dy0());
-}
-
-
-void MathAtom::write(std::ostream & os, bool fragile) const
-{
-	if (nucleus()) {
-		nucleus()->write(os, fragile);
-		if (nucleus()->takesLimits()) {
-			if (limits_ == -1)
-				os << "\\nolimits ";
-			if (limits_ == 1)
-				os << "\\limits ";
-		}
-	} else
-		os << "{}";
-
-	if (down()) {
-		os << "_{";
-		down()->write(os, fragile);
-		os << "}";
-	}
-
-	if (up()) {
-		os << "^{";
-		up()->write(os, fragile);
-		os << "}";
-	}
-}
-
-
-bool MathAtom::hasLimits() const
-{
-	return
-		limits_ == 1 || (limits_ == 0 && nucleus() && nucleus()->isScriptable());
-}
-
-
-bool MathAtom::hasInner() const
-{
-	return nucleus_ && (script_[0] || script_[1]);
-}
-
-
-void MathAtom::substitute(MathMacro const & m)
-{
-	if (nucleus())
-		nucleus()->substitute(m);
-	if (up())
-		up()->substitute(m);
-	if (down())
-		down()->substitute(m);
-}
-
-
-void MathAtom::removeEmptyScripts()
-{
-	for (int i = 0; i <= 1; ++i)
-		if (script_[i] && !script_[i]->cell(0).size()) {
-			delete script_[i];
-			script_[i] = 0;
-		}
-}
-
-
-void MathAtom::removeNucleus()
-{
-	delete nucleus_;
-	nucleus_ = 0;
-}
-
-
-void MathAtom::removeUp()
-{
-	delete script_[1];
-	script_[1] = 0;
-}
-
-
-void MathAtom::removeDown()
-{
-	delete script_[0];
-	script_[0] = 0;
-}

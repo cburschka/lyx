@@ -20,13 +20,13 @@
 #include "math_stackrelinset.h"
 
 
-MathInset * createMathInset(latexkeys const * l)
+MathAtom createMathInset(latexkeys const * l)
 {
 	switch (l->token) {
 	case LM_TK_FUNCLIM:
-		return new MathFuncLimInset(l);
+		return MathAtom(new MathFuncLimInset(l));
 	case LM_TK_SPECIAL:
-		return new MathSpecialCharInset(l->id);
+		return MathAtom(new MathSpecialCharInset(l->id));
 	case LM_TK_SYM:
 	case LM_TK_CMR:
 	case LM_TK_CMSY:
@@ -34,51 +34,51 @@ MathInset * createMathInset(latexkeys const * l)
 	case LM_TK_CMEX:
 	case LM_TK_MSA:
 	case LM_TK_MSB:
-		return new MathSymbolInset(l);
+		return MathAtom(new MathSymbolInset(l));
 	case LM_TK_STACK:
-		return new MathStackrelInset;
+		return MathAtom(new MathStackrelInset);
 	case LM_TK_KERN: 
-		return new MathKernInset;
+		return MathAtom(new MathKernInset);
 	case LM_TK_BINOM:
 	case LM_TK_CHOOSE:
-		return new MathBinomInset;
+		return MathAtom(new MathBinomInset);
 	case LM_TK_OVER:
 	case LM_TK_FRAC:
-		return new MathFracInset;
+		return MathAtom(new MathFracInset);
 	case LM_TK_ATOP:
-		return new MathFracInset(true);
+		return MathAtom(new MathFracInset(true));
 	case LM_TK_NOT:
-		return new MathNotInset;
+		return MathAtom(new MathNotInset);
 	case LM_TK_SQRT:
-		return new MathSqrtInset;
+		return MathAtom(new MathSqrtInset);
 	case LM_TK_ROOT:
-		return new MathRootInset;
+		return MathAtom(new MathRootInset);
 	case LM_TK_DECORATION:
-		return new MathDecorationInset(l->name);
+		return MathAtom(new MathDecorationInset(l->name));
 	case LM_TK_SPACE:
-		return new MathSpaceInset(l->id);
+		return MathAtom(new MathSpaceInset(l->id));
 	case LM_TK_DOTS:
-		return new MathDotsInset(l->name);
+		return MathAtom(new MathDotsInset(l->name));
 	}
-	return new MathFuncInset(l->name);
+	return MathAtom(new MathFuncInset(l->name));
 }
 
 
-MathInset * createMathInset(string const & s)
+MathAtom createMathInset(string const & s)
 {
 	//cerr << "creating inset with name: '" << s << "'\n";
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
-		return new MathMacroArgument(s[1] - '0');
+		return MathAtom(new MathMacroArgument(s[1] - '0'));
 
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#' && s[2] >= '1' && s[2] <= '9')
-		return new MathMacroArgument(s[2] - '0');
+		return MathAtom(new MathMacroArgument(s[2] - '0'));
 
 	latexkeys const * l = in_word_set(s);
 	if (l)
 		return createMathInset(l);
 
-	if (MathMacroTable::hasTemplate(s)) 
-		return new MathMacro(MathMacroTable::provideTemplate(s));
+	if (MathMacroTable::has(s)) 
+		return MathAtom(new MathMacro(s));
 
-	return new MathFuncInset(s);
+	return MathAtom(new MathFuncInset(s));
 }

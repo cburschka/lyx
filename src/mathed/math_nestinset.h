@@ -24,6 +24,8 @@ public:
 	void draw(Painter &, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro); 
+	/// identifies NestInsets
+	MathNestInset * asNestInset() { return this; }
 
 	/// The left key
 	bool idxLeft(idx_type & idx, pos_type & pos) const;
@@ -60,7 +62,7 @@ public:
 	///
 	bool isActive() const { return nargs() > 0; }
 	///
-	void push_back(MathInset *);
+	void push_back(MathAtom const &);
 	///
 	void dump() const;
 

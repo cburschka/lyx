@@ -38,8 +38,14 @@
 
 
 class LaTeXFeatures;
+class MathArrayInset;
 class MathCharInset;
+class MathGridInset;
+class MathNestInset;
 class MathScriptInset;
+class MathMatrixInset;
+class MathSpaceInset;
+class MathMacroTemplate;
 
 class MathInset {
 public: 
@@ -166,26 +172,37 @@ public:
 	virtual void getXY(int & x, int & y) const;
 	///
 	virtual bool covers(int x, int y) const;
-	/// identifies things that can get scripts
-	virtual bool isScriptable() const { return false; }
-	/// identifies ScriptInsets
-	virtual bool isScriptInset() const { return false; }
-	/// identifies SpaceInsets
-	virtual bool isSpaceInset() const { return false; }
-	/// identifies GridInsets
-	virtual bool isGrid() const { return false; }
-	/// identifies ArrayInsets
-	virtual bool isArray() const { return false; }
+
+	/// identifies NestInsets
+	virtual MathNestInset * asNestInset() { return 0; }
 	/// identifies CharInsets
 	virtual MathCharInset const * asCharInset() const { return 0; }
 	/// identifies ScriptInsets
 	virtual MathScriptInset const * asScriptInset() const { return 0; }
+	/// identifies ScriptInsets
+	virtual MathScriptInset * asScriptInset() { return 0; }
+	/// identifies MatrixInsets
+	virtual MathMatrixInset const * asMatrixInset() const { return 0; }
+	/// identifies MatrixInsets
+	virtual MathMatrixInset * asMatrixInset() { return 0; }
+	/// identifies SpaceInset
+	virtual MathSpaceInset * asSpaceInset() { return 0; }
+	/// identifies GridInset
+	virtual MathGridInset * asGridInset() { return 0; }
+	/// identifies ArrayInsets
+	virtual MathArrayInset * asArrayInset() { return 0; }
+	/// identifies macro templates
+	virtual MathMacroTemplate * asMacroTemplate() { return 0; }
+
+	/// identifies things that can get scripts
+	virtual bool isScriptable() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 	///
 	virtual bool isRelOp() const { return false; }
 	///
 	virtual bool isMacro() const { return false; }
+
 	///
 	virtual char getChar() const { return 0; }
 	///

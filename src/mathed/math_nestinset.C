@@ -148,10 +148,10 @@ void MathNestInset::dump() const
 }
 
 
-void MathNestInset::push_back(MathInset * p)
+void MathNestInset::push_back(MathAtom const & t)
 {
 	if (nargs())
-		cells_.back().data_.push_back(p);
+		cells_.back().data_.push_back(t);
 	else
 		lyxerr << "can't push without a cell\n";
 }

@@ -32,13 +32,15 @@
 
 using std::endl;
 
-MathMacro::MathMacro(MathMacroTemplate const & t)
-	: MathNestInset(t.numargs()), tmplate_(&t)
+MathMacro::MathMacro(string const & name)
+	: MathNestInset(MathMacroTable::provide(name)->asMacroTemplate()->numargs()),
+		tmplate_(MathMacroTable::provide(name))
 {}
 
 
-MathMacro::MathMacro(MathMacro const & t)
-	: MathNestInset(t), tmplate_(t.tmplate_) // don't copy 'expanded_'!
+MathMacro::MathMacro(MathMacro const & m)
+	: MathNestInset(m),
+		tmplate_(m.tmplate_) // don't copy 'expanded_'!
 {}
 
 
@@ -51,7 +53,7 @@ MathInset * MathMacro::clone() const
 
 const char * MathMacro::name() const
 {
-	return tmplate_->name().c_str();
+	return tmplate_->asMacroTemplate()->name().c_str();
 }
 
 
@@ -139,10 +141,10 @@ void MathMacro::dump() const
 	MathMacroTable::dump();
 	lyxerr << "\n macro: '" << this << "'\n";
 	lyxerr << " name: '" << name() << "'\n";
-	lyxerr << " template: '" << tmplate_ << "'\n";
-	lyxerr << " template: '" << *tmplate_ << "'\n";
+	lyxerr << " template: '"; tmplate_->write(lyxerr, false); lyxerr << "'\n";
 	lyxerr << endl;
 }
+
 
 void MathMacro::write(std::ostream & os, bool fragile) const
 {

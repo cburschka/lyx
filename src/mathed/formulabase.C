@@ -123,19 +123,14 @@ string const InsetFormulaBase::editMessage() const
 
 void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 {
-	mathcursor = new MathCursor(this);
-
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
+	mathcursor = new MathCursor(this, x == 0);
 	metrics();
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
-	if (x == 0)
-		mathcursor->first();
-	else
-		mathcursor->last();
 	sel_x = 0;
 	sel_y = 0;
 	sel_flag = false;
@@ -467,7 +462,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_VECTOR:       handleAccent(bv, "vec"); break;
 
 	//  Math fonts
-	case LFUN_GREEK:        handleFont(bv, LM_TC_GREEK1); break;
 	case LFUN_GREEK_TOGGLE: handleFont(bv, LM_TC_GREEK); break;
 	case LFUN_BOLD:         handleFont(bv, LM_TC_BF); break;
 	case LFUN_SANS:         handleFont(bv, LM_TC_SF); break;
@@ -476,6 +470,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
 	case LFUN_NOUN:         handleFont(bv, LM_TC_BB); break;
 	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
+
+	case LFUN_GREEK: 
+		handleFont(bv, LM_TC_GREEK1);
+		if (arg.size())
+			mathcursor->interpret(arg[0]);
+		break;
 
 	case LFUN_MATH_MODE:
 		handleFont(bv, LM_TC_TEXTRM);
@@ -513,7 +513,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//	p->incSpace();
 		//else
 		//	mathcursor->insert(new MathSpaceInset(1));
-		mathcursor->insert(new MathSpaceInset(1));
+		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
 		updateLocal(bv, true);
 		break;
 	}
@@ -539,7 +539,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PROTECTEDSPACE:
 		//lyxerr << " called LFUN_PROTECTEDSPACE\n";
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		mathcursor->insert(new MathSpaceInset(1));
+		mathcursor->insert(MathAtom(new MathSpaceInset(1)));
 		updateLocal(bv, true);
 		break;
 
@@ -776,8 +776,7 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 	if (bv->available()) { 
 		InsetFormula * f = new InsetFormula;
 		if (openNewInset(bv, f)) {
-			bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, string());
-			bv->theLockingInset()->localDispatch(bv, LFUN_SELFINSERT, arg);
+			bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, arg);
 			bv->unlockInset(f);
 		}
 	}

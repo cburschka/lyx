@@ -23,6 +23,7 @@
 
 #include "mathed/formulabase.h"
 #include "math_defs.h"
+#include "math_atom.h"
 
 class MathMatrixInset;
 
@@ -32,15 +33,9 @@ public:
 	///
 	InsetFormula();
 	///
-	InsetFormula(InsetFormula const &);
-	///
 	explicit InsetFormula(MathInsetTypes);
 	///
 	explicit InsetFormula(string const &);
-	///
-	~InsetFormula();
-	///
-	void operator=(InsetFormula const &);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -80,17 +75,22 @@ public:
 	///
 	void handleExtern(string const & arg, BufferView * bv);
 	///
-	MathInset const * par() const;
-	///
 	bool display() const;
 	///
 	bool ams() const;
 	///
 	MathInsetTypes getType() const;
-private:
-	/// Safe setting of contents
-	void par(MathMatrixInset *);
 	///
-	MathMatrixInset * par_;
+	MathAtom const & par() const { return par_; }
+	///
+	MathAtom & par() { return par_; }
+public:
+	///
+	MathAtom par_;
+
+	/// Access
+	MathMatrixInset * mat();
+	/// Access
+	MathMatrixInset const * mat() const;
 };
 #endif

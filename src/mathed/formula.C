@@ -30,6 +30,7 @@
 #include "debug.h"
 #include "lyx_gui_misc.h"
 #include "support/LOstream.h"
+#include "support/LAssert.h"
 #include "support/lyxlib.h"
 #include "support/syscall.h"
 #include "support/lstrings.h"
@@ -48,37 +49,29 @@ using std::vector;
 
 
 InsetFormula::InsetFormula()
-	: par_(new MathMatrixInset)
-{}
-
-
-InsetFormula::InsetFormula(const InsetFormula & f)
-	: InsetFormulaBase(f), par_(static_cast<MathMatrixInset *>(f.par_->clone()))
+	: par_(MathAtom(new MathMatrixInset))
 {}
 
 
 InsetFormula::InsetFormula(MathInsetTypes t)
-	: par_(new MathMatrixInset(t))
+	: par_(MathAtom(new MathMatrixInset(t)))
 {}
 
 
 InsetFormula::InsetFormula(string const & s) 
-	: par_(mathed_parse_normal(s))
 {
-	if (!par_)
-		par_ = mathed_parse_normal("$" + s + "$");
+	if (s.size()) {
+		bool res = mathed_parse_normal(par_, s);
 
-	if (!par_) {
-		lyxerr << "cannot interpret '" << s << "' as math\n";
-		par_ = new MathMatrixInset(LM_OT_SIMPLE);
+		if (!res)
+			res = mathed_parse_normal(par_, "$" + s + "$");
+
+		if (!res) {
+			lyxerr << "cannot interpret '" << s << "' as math\n";
+			par_ = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+		}
 	}
 	metrics();
-}
-
-
-InsetFormula::~InsetFormula()
-{
-	delete par_;
 }
 
 
@@ -123,7 +116,7 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 
 void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
-	par(mathed_parse_normal(lex));
+	mathed_parse_normal(par_, lex);
 	metrics();
 }
 
@@ -163,7 +156,7 @@ void InsetFormula::metrics() const
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	return par_->getLabelList();
+	return mat()->getLabelList();
 }
 
 
@@ -187,9 +180,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = par_->numberedType();
+				bool old = mat()->numberedType();
 				for (MathInset::row_type row = 0; row < par_->nrows(); ++row)
-					par_->numbered(row, !old);
+					mat()->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				updateLocal(bv, true);
 			}
@@ -202,9 +195,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
 				MathCursor::row_type row = mathcursor->row();
-				bool old = par_->numbered(row);
+				bool old = mat()->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
-				par_->numbered(row, !old);
+				mat()->numbered(row, !old);
 				updateLocal(bv, true);
 			}
 			break;
@@ -215,7 +208,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
 			MathCursor::row_type row = mathcursor->row();
-			string old_label = par_->label(row);
+			string old_label = mat()->label(row);
 			string new_label = arg;
 
 			if (new_label.empty()) {
@@ -236,13 +229,13 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 			if (!new_label.empty()) {
 				lyxerr << "setting label to '" << new_label << "'\n";
-				par_->numbered(row, true);
+				mat()->numbered(row, true);
 			}
 
 			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 				bv->redraw();
 
-			par_->label(row, new_label);
+			mat()->label(row, new_label);
 
 			updateLocal(bv, true);
 			break;
@@ -260,7 +253,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			par_->mutate(arg);
+			mat()->mutate(arg);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -272,10 +265,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			if (par_->getType() == LM_OT_SIMPLE)
-				par_->mutate(LM_OT_EQUATION);
+			if (mat()->getType() == LM_OT_SIMPLE)
+				mat()->mutate(LM_OT_EQUATION);
 			else
-				par_->mutate(LM_OT_SIMPLE);
+				mat()->mutate(LM_OT_SIMPLE);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -286,15 +279,15 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			string const clip = bv->getClipboard();
   		if (!clip.empty())
-				par(mathed_parse_normal(clip));
+				mathed_parse_normal(par_, clip);
 			break;
 		}
 
 		case LFUN_MATH_COLUMN_INSERT:
 		{
-			if (par_->getType() == LM_OT_ALIGN)
-				par_->mutate(LM_OT_ALIGNAT);
-			par_->addCol(par_->ncols());
+			if (mat()->getType() == LM_OT_ALIGN)
+				mat()->mutate(LM_OT_ALIGNAT);
+			mat()->addCol(mat()->ncols());
 			mathcursor->normalize();
 			updateLocal(bv, true);
 		}
@@ -312,33 +305,35 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 	//string outfile = lyx::tempName("maple.out");
 	string outfile = "/tmp/lyx2" + arg + ".out";
 	ostringstream os;
-	par_->writeNormal(os); 
+	mat()->writeNormal(os); 
 	string code = os.str().c_str();
 	string script = "lyx2" + arg + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
 	Systemcalls cmd(Systemcalls::System, script, 0);
 
 	ifstream is(outfile.c_str());
-	par(mathed_parse_normal(is));
+	mathed_parse_normal(par_, is);
 	metrics();
 }
 
+
 bool InsetFormula::display() const
 {
-	return par_->getType() != LM_OT_SIMPLE;
+	return mat()->getType() != LM_OT_SIMPLE;
 }
 
 
-MathInset const * InsetFormula::par() const
+MathMatrixInset const * InsetFormula::mat() const
 {
-	return par_;
+	lyx::Assert(par_->asMatrixInset());
+	return par_->asMatrixInset();
 }
 
 
-void InsetFormula::par(MathMatrixInset * p)
-{ 
-	delete par_;
-	par_ = p ? static_cast<MathMatrixInset *>(p) : new MathMatrixInset;
+MathMatrixInset * InsetFormula::mat()
+{
+	lyx::Assert(par_->asMatrixInset());
+	return par_->asMatrixInset();
 }
 
 
@@ -381,5 +376,5 @@ int InsetFormula::width(BufferView *, LyXFont const &) const
 
 MathInsetTypes InsetFormula::getType() const
 {
-	return par_->getType();
+	return mat()->getType();
 }
