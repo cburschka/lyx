@@ -1,3 +1,8 @@
+2001-09-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in (VERSION_INFO): use AC_SUBST instead of AC_DEFINE
+	for VERSION_INFO
+
 2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: do not set FRONTENDS to "xforms" when frontend is

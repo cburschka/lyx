@@ -327,7 +327,7 @@ ${FRONTEND_INFO}\
   LyX files dir:                  ${real_datadir}\n
 `
 
-AC_DEFINE_UNQUOTED(VERSION_INFO, "${VERSION_INFO}", Version information on the current build of LyX)
+AC_SUBST(VERSION_INFO)
 
 ### Finish the work.
 AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
@@ -339,6 +339,7 @@ AC_OUTPUT([Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
        src/Makefile \
+       src/version_info.h \
        src/mathed/Makefile \
        src/graphics/Makefile \
        src/insets/Makefile \

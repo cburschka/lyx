@@ -18,6 +18,7 @@
 #endif
 
 #include "version.h"
+#include <version_info.h>
 #include "lyx_main.h"
 #include "lyx_gui.h"
 #include "LyXView.h"
@@ -779,7 +780,7 @@ void commandLineVersionInfo()
 	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
 	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
 
-	lyxerr << VERSION_INFO << endl;
+	lyxerr << version_info << endl;
 }
 
 

@@ -13,7 +13,7 @@ lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
 	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
-EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h
+EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version_info.h.in
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
@@ -213,6 +213,7 @@ lyx_SOURCES = \
 	vc-backend.C \
 	vc-backend.h \
 	version.h \
+	version_info.h.in \
 	vms_defines.h \
 	vspace.C \
 	vspace.h
@@ -220,7 +221,8 @@ lyx_SOURCES = \
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h lyx_gui.h \
 	lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h
+	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h \
+	version_info.h.in
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
 	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 

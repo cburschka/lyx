@@ -1,3 +1,16 @@
+2001-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* .cvsignore: add version_info.h
+
+2001-09-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* version_info.h.in: new file
+
+	* Makefile.am: add version_info.h.in
+
+	* lyx_main.C (commandLineVersionInfo): use version_info defined in
+	version_info.h instead of VERSION_INFO
+
 2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* text.C (selectNextWordToSpellcheck): reverted change to if-block.
