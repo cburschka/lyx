@@ -34,6 +34,11 @@ void nextState(ButtonPolicy::State & state,
 	if (ButtonPolicy::SMI_NOOP == in) return;
 
 	ButtonPolicy::State tmp = s_m[state][in];
+
+	lyxerr[Debug::GUI] << "Transition from state "
+		<< state << " to state " << tmp << " after input "
+		<< in << std::endl;
+ 
 	if (ButtonPolicy::BOGUS != tmp) {
 		state = tmp;
 	} else {

@@ -96,13 +96,17 @@ private:
 	    Memory is allocated only whilst the dialog is visible.
 	*/
 	Params * params_;
+
+	/// is the dialog built ?
+	bool dialog_built_;
+ 
 };
 
 
 template <class Inset, class Params>
 ControlInset<Inset, Params>::ControlInset(LyXView & lv, Dialogs & d)
 	: ControlConnectBD(lv, d),
-	  inset_(0), ih_(0), params_(0)
+	  inset_(0), ih_(0), params_(0), dialog_built_(false)
 {}
 
 
@@ -121,7 +125,7 @@ void ControlInset<Inset, Params>::createInset(string const & arg)
 {
 	connectInset();
 
-	if ( !arg.empty() )
+	if (!arg.empty())
 		bc().valid(); // so that the user can press Ok
 
 	show(getParams(arg));
@@ -136,10 +140,9 @@ void ControlInset<Inset, Params>::show(Params const & params)
 
 	setDaughterParams();
 
-	static bool isBuilt = false;
-	if (!isBuilt) {
-		isBuilt = true;
+	if (!dialog_built_) {
 		view().build();
+		dialog_built_ = true;
 	}
 
 	bc().readOnly(isReadonly());
@@ -175,10 +178,6 @@ void ControlInset<Inset, Params>::update()
 		params_ = new Params();
 
 	bc().readOnly(isReadonly());
-	// Reset the Button Controller to it's initial state
-	bc().invalid();
-	bc().restore();
-
 	view().update();
 }
 

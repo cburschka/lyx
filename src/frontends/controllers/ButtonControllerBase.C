@@ -18,6 +18,7 @@
 #include <config.h>
 #include "ButtonControllerBase.h"
 #include "support/LAssert.h"
+#include "debug.h" 
 
 
 ButtonControllerBase::ButtonControllerBase(string const & cancel,
@@ -82,12 +83,15 @@ void ButtonControllerBase::invalid()
 
 bool ButtonControllerBase::readOnly(bool ro)
 {
+	lyxerr[Debug::GUI] << "Setting controller ro: " << ro << std::endl;
+ 
 	if (ro) {
 		bp().input(ButtonPolicy::SMI_READ_ONLY);
 	} else {
 		bp().input(ButtonPolicy::SMI_READ_WRITE);
 	}
 	refreshReadOnly();
+	refresh();
 	return ro;
 }
 

@@ -159,11 +159,11 @@ class ControlExternal;
 
 template <class GUIview, class GUIbc>
 class GUIExternal :
-	public GUI<ControlExternal, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
+	public GUI<ControlExternal, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc> {
 public:
 	///
 	GUIExternal(LyXView & lv, Dialogs & d)
-		: GUI<ControlExternal, GUIview, OkCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+		: GUI<ControlExternal, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
 

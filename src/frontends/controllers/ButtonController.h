@@ -21,6 +21,7 @@
 
 #include "gettext.h"
 #include "ButtonControllerBase.h"
+#include "debug.h" 
 
 template <class Button, class Widget>
 class GuiBC : public ButtonControllerBase
@@ -75,6 +76,8 @@ GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
 template <class Button, class Widget>
 void GuiBC<Button, Widget>::refresh()
 {
+	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl; 
+ 
 	if (okay_) {
 		bool const enabled = bp().buttonStatus(ButtonPolicy::OKAY);
 		setButtonEnabled(okay_, enabled);

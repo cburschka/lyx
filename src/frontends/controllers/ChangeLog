@@ -1,7 +1,19 @@
-2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
 
-	* character.C (getBarData): fix bar array.
+	* ControlInset.h:
+	* ControlDialogs.h: remove bc() hack, now fixed in
+	  Qt2 frontend. use member dialog_built_ instead of shared
+	  static.
+ 
+	* ButtonController.h: 
+	* ButtonPolicies.C: more debug info
+ 
+	* ButtonControllerBase.C: call refresh() when setting readOnly !
+ 
+	* GUI.h: External form has apply, use the right policy
 
+	* character.C: fix two off-by-one errors when latex font was removed
+ 
 2001-08-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlInset.h (apply): tentative fix for the press Apply multiple

@@ -21,6 +21,7 @@
 #define CONTROLDIALOGS_H
 
 #include "ControlConnections.h"
+#include "debug.h"
 
 /** Base class to control connection/disconnection of signals with the LyX
     kernel for dialogs NOT used with insets.
@@ -45,6 +46,9 @@ protected:
 	virtual void clearParams() {}
 	/// set the params before show or update
 	virtual void setParams() {}
+
+	/// is the dialog built ?
+	bool dialog_built_;
 };
 
 
@@ -52,7 +56,7 @@ protected:
 
 template <class Base>
 ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)
-	: Base(lv, d)
+	: Base(lv, d), dialog_built_(false)
 {}
 
 
@@ -64,10 +68,9 @@ void ControlDialog<Base>::show()
 
 	setParams();
 
-	static bool isBuilt = false;
-	if (!isBuilt) {
-		isBuilt = true;
+	if (!dialog_built_) {
 		view().build();
+		dialog_built_ = true;
 	}
 
 	bc().readOnly(isReadonly());
@@ -83,10 +86,6 @@ void ControlDialog<Base>::update()
 	setParams();
 
 	bc().readOnly(isReadonly());
-	// Reset the Button Controller to it's initial state
-	bc().invalid();
-	bc().restore();
-
 	view().update();
 }
 
