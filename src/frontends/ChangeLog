@@ -1,3 +1,11 @@
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* PrinterParams.h (to): default value changed to 0 (from 1).
+
+	* Liason.[Ch]: removed. Code moved into ControlPrint.[Ch].
+
+	* makefile.am: remove Liason.[Ch].
+
 2002-10-21  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
 
 	* LyXKeySym.h (operator==): compilation fix. The two args should have

@@ -21,9 +21,10 @@
 #include "forms/form_texinfo.h"
 #include "Tooltips.h"
 #include "gettext.h"
-#include "debug.h"
 #include "xforms_helpers.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
+
 #include FORMS_H_LOCATION
 
 
@@ -37,73 +38,98 @@ FormTexinfo::FormTexinfo()
 void FormTexinfo::build() {
 	dialog_.reset(build_texinfo(this));
 
-	updateStyles(ControlTexinfo::cls);
+	// callback for double click in browser to view the selected file
+	fl_set_browser_dblclick_callback(dialog_->browser, C_FormBaseInputCB, 2);
 
 	string const classes_List = _("LaTeX classes|LaTeX styles|BibTeX styles");
 	fl_addto_choice(dialog_->choice_classes, classes_List.c_str());
 
+	updateStyles(activeStyle);
+
 	// set up the tooltips
-	string str = _("Shows the installed classses and styles for LaTeX/BibTeX. These classes are only available in LyX if a corresponding LyX layout file exists.");
+	string str = _("Shows the installed classses and styles for LaTeX/BibTeX; "
+			"available only if the corresponding LyX layout file exists.");
 	tooltips().init(dialog_->choice_classes, str);
 
-	str = _("View full path or only file name.");
+	str = _("Show full path or only file name.");
 	tooltips().init(dialog_->check_fullpath, str);
 
 	str = _("Runs the script \"TexFiles.sh\" to build new file lists.");
 	tooltips().init(dialog_->button_rescan, str);
 
-	str = _("Shows the contents of the marked file. Only possible in full path mode.");
-	tooltips().init(dialog_->button_view, str);
+	str = _("Double click to view contents of file.");
+	tooltips().init(dialog_->browser, str);
 
-	str = _("Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you install a new TeX class or style. You need write permissions for the TeX-dirs, often /var/lib/texmf and others.");
+	str = _("Runs the script \"texhash\" which builds a new LaTeX tree. "
+		"Needed if you install a new TeX class or style. You need write "
+		"permissions for the TeX-dirs, often /var/lib/texmf and others.");
 	tooltips().init(dialog_->button_texhash, str);
 }
 
 
-ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
+ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 
-	if (ob == dialog_->choice_classes) {
-		switch (fl_get_choice(dialog_->choice_classes)) {
-		case 1:
-			updateStyles(ControlTexinfo::cls);
-			break;
-		case 2:
-			updateStyles(ControlTexinfo::sty);
-			break;
-		case 3:
-		default:
-			updateStyles(ControlTexinfo::bst);
+	if (ob == dialog_->button_texhash) {
+		// makes only sense if the rights are set well for
+		// users (/var/lib/texmf/ls-R)
+		controller().runTexhash();
+		// texhash requires a rescan and an update of the styles
+		controller().rescanStyles();
+		updateStyles(activeStyle);
+
+
+	} else if (ob == dialog_->browser && ob_value == 2) {
+		// double click in browser: view selected file
+		string selection = string();
+		if (fl_get_button(dialog_->check_fullpath)) {
+			// contents in browser has full path
+			selection = getString(dialog_->browser);
+		} else {
+			// contents in browser has filenames without path
+			// reconstruct path from controller getContents
+			string const files = controller().getContents(activeStyle, true);
+			vector<string> const vec = getVectorFromString(files, "\n");
+
+			// find line in files vector
+			vector<string>::const_iterator it = vec.begin();
+			int const line = fl_get_browser(dialog_->browser);
+			for (int i = line; it != vec.end() && i > 0; ++it, --i) {
+				if (i == 1) selection = *it;
+			}
 		}
 
+		if (!selection.empty()) {
+			controller().viewFile(selection);
+		}
+
+		// reset the browser so that the following single-click callback doesn't do anything
+		fl_deselect_browser(dialog_->browser);
+		
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst
 		controller().rescanStyles();
 		updateStyles(activeStyle);
 
 	} else if (ob == dialog_->check_fullpath) {
-		setEnabled(dialog_->button_view,
-			   fl_get_button(dialog_->check_fullpath));
 		updateStyles(activeStyle);
 
-	} else if (ob == dialog_->button_texhash) {
-		// makes only sense if the rights are set well for
-		// users (/var/lib/texmf/ls-R)
-		controller().runTexhash();
-		// update files in fact of texhash
-		controller().rescanStyles();
-
-	} else if (ob == dialog_->button_view) {
-		unsigned int selection = fl_get_browser(dialog_->browser);
-		// a valid entry?
-		if (selection > 0) {
-			controller().viewFile(
-				fl_get_browser_line(dialog_->browser,
-						    selection));
+	} else if (ob == dialog_->choice_classes) {
+		switch (fl_get_choice(dialog_->choice_classes)) {
+		case 3:
+			updateStyles(ControlTexinfo::bst);
+			break;
+		case 2:
+			updateStyles(ControlTexinfo::sty);
+			break;
+		case 1:
+		default:
+			updateStyles(ControlTexinfo::cls);
 		}
 	}
 
 	return ButtonPolicy::SMI_VALID;
 }
+
 
 void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {

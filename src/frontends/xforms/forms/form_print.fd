@@ -160,7 +160,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 175 315 100 25
+box: 170 315 100 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -214,7 +214,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 260 270 25
+box: 10 260 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -231,8 +231,8 @@ argument: 0
 
 --------------------
 class: FL_COUNTER
-type: NORMAL_COUNTER
-box: 80 315 90 25
+type: SIMPLE_COUNTER
+box: 90 315 70 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -291,7 +291,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 210 270 25
+box: 10 210 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -309,7 +309,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 235 270 25
+box: 10 235 200 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -417,7 +417,7 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 140 270 25
+box: 10 140 85 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -435,7 +435,7 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 170 100 25
+box: 10 170 85 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER

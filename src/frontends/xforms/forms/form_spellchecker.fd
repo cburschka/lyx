@@ -9,14 +9,14 @@ SnapGrid: 5
 
 =============== FORM ===============
 Name: form_spellchecker
-Width: 215
-Height: 310
-Number of Objects: 12
+Width: 320
+Height: 245
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 215 310
+box: 0 0 320 245
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -27,6 +27,24 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 5 198 205 25
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Word count
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
 name: 
 callback: 
 argument: 
@@ -63,7 +81,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
-name: text
+name: text_unknown
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -81,14 +99,14 @@ label: Replacement:|#R
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
-name: input
+name: input_replacement
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 5 185 205 75
+box: 5 125 205 70
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -99,14 +117,14 @@ label: Suggestions:|#g
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
-name: browser
+name: browser_suggestions
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 280 90 25
+box: 215 10 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -116,7 +134,7 @@ lcol: FL_BLACK
 label: Start|#S
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: button_start
 callback: C_FormBaseInputCB
 argument: 0
@@ -124,7 +142,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 135 100 25
+box: 215 130 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -133,8 +151,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Add|#d
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_North FL_NorthEast
+resize: FL_RESIZE_NONE
+gravity: FL_NorthEast FL_NorthEast
 name: button_add
 callback: C_FormBaseInputCB
 argument: 0
@@ -142,7 +160,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 105 100 25
+box: 215 40 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -152,7 +170,7 @@ lcol: FL_BLACK
 label: Ignore|#I
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_North FL_NorthEast
+gravity: FL_NorthEast FL_NorthEast
 name: button_ignore
 callback: C_FormBaseInputCB
 argument: 0
@@ -160,7 +178,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 135 100 25
+box: 215 100 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -170,7 +188,7 @@ lcol: FL_BLACK
 label: Accept|#A
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_North
+gravity: FL_NorthEast FL_NorthEast
 name: button_accept
 callback: C_FormBaseInputCB
 argument: 0
@@ -178,7 +196,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 120 280 90 25
+box: 225 215 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -196,7 +214,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 105 100 25
+box: 215 70 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -205,32 +223,33 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Replace|#R
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_North
+resize: FL_RESIZE_NONE
+gravity: FL_NorthEast FL_NorthEast
 name: button_replace
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_SLIDER
+class: FL_VALSLIDER
 type: HOR_FILL_SLIDER
-box: 5 265 205 10
-boxtype: FL_DOWN_BOX
-colors: FL_BLUE FL_COL1
-alignment: FL_ALIGN_LEFT
+box: 5 220 205 20
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: 0
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: 
+label: 0 %
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_SouthWest FL_SouthEast
-name: slider
+name: slider_progress
 callback: 
 argument: 
 	bounds: 0 100
+	precision: 0
 	value: 0
-	step: 1
+	slsize: 0.00
 
 ==============================
 create_the_forms

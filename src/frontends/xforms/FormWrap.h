@@ -17,6 +17,7 @@
 #endif
 
 #include "FormBase.h"
+#include "RadioButtonGroup.h"
 
 class ControlWrap;
 struct FD_wrap;
@@ -36,8 +37,9 @@ private:
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
-	/// Filter the inputs on callback from xforms
-	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// placement
+	RadioButtonGroup placement_;
 };
 
 #endif // FORMWRAP_H

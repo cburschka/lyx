@@ -39,13 +39,14 @@ private:
 	virtual void build();
 	/// Update the dialog.
 	virtual void update();
+
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/// print target
 	RadioButtonGroup target_;
-	/// which pages
-	RadioButtonGroup which_pages_;
+	/// all pages or from/to
+	RadioButtonGroup all_pages_;
 };
 
 #endif // FORMPRINT_H

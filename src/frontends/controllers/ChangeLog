@@ -1,3 +1,10 @@
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* ControlPrint.[Ch]: move code here from Liason.[Ch].
+
+	* ControlSpellchecker.h (getCount): new method.
+	* ControlSpellchecker.[Ch]: constify some accessor methods.
+
 2002-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (libcontrollers_la_SOURCES): arrange list into

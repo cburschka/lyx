@@ -5,17 +5,18 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_wrap
-Width: 430
-Height: 200
-Number of Objects: 16
+Width: 395
+Height: 115
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 430 200
+box: 0 0 395 115
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,35 +34,17 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 20 20 200 60
+box: 175 10 215 65
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
-style: FL_BOLD_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Width
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_LABELFRAME
-type: ENGRAVED_FRAME
-box: 240 20 180 130
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_TOP_LEFT
-style: FL_BOLD_STYLE
+style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Placement
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NoGravity FL_SouthEast
 name: 
 callback: 
 argument: 
@@ -69,17 +52,17 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 30 30 110 30
+box: 5 30 85 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: 
+label: Width:|#W
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_West FL_NoGravity
 name: input_width
 callback: C_FormBaseInputCB
 argument: 0
@@ -87,7 +70,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 150 30 60 30
+box: 90 30 75 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -96,7 +79,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: choice_width_units
 callback: C_FormBaseInputCB
@@ -105,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -123,16 +106,16 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 249 30 152 30
+box: 260 45 25 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Left|#L
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_left
 callback: C_FormBaseInputCB
@@ -141,16 +124,16 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 249 60 152 30
+box: 285 45 95 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Right|#R
+label: Right|#i
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_right
 callback: C_FormBaseInputCB
@@ -159,7 +142,7 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 249 90 152 30
+box: 285 20 95 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -168,7 +151,7 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Outer|#O
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_outer
 callback: C_FormBaseInputCB
@@ -177,16 +160,16 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 250 120 152 30
+box: 260 20 25 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Default (outer)|#D
+label: Default|#D
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_default
 callback: C_FormBaseInputCB
@@ -213,7 +196,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 330 160 90 30
+box: 300 85 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -222,8 +205,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
@@ -231,7 +214,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 230 160 90 30
+box: 205 85 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -240,8 +223,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Apply|#A
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_apply
 callback: C_FormBaseApplyCB
 argument: 0
@@ -249,7 +232,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 130 160 90 30
+box: 110 85 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -258,8 +241,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
 argument: 0
@@ -267,7 +250,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 160 90 30
+box: 5 85 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -276,29 +259,11 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Restore|#R
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
 name: button_restore
 callback: C_FormBaseRestoreCB
 argument: 0
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 20 90 210 30
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_warning
-callback: 
-argument: 
 
 ==============================
 create_the_forms

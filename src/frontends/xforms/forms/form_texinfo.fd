@@ -9,14 +9,14 @@ SnapGrid: 5
 
 =============== FORM ===============
 Name: form_texinfo
-Width: 250
+Width: 245
 Height: 215
-Number of Objects: 8
+Number of Objects: 7
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 250 215
+box: 0 0 245 215
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 5 35 240 110
+box: 5 35 235 110
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 150 110 25
+box: 5 150 115 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -68,27 +68,9 @@ callback: C_FormBaseInputCB
 argument: 2
 
 --------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 135 150 110 25
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: View|#V
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: button_view
-callback: C_FormBaseInputCB
-argument: 2
-
---------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 140 5 105 25
+box: 135 5 105 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -106,7 +88,7 @@ argument: 2
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 160 185 85 25
+box: 150 185 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +106,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 5 5 130 25
+box: 5 5 125 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -142,7 +124,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 185 110 25
+box: 125 150 115 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -35,14 +35,8 @@ private:
 	///
 	void update();
 
-	/// enable/disable widgets when start/stop; return running status
-	bool start(bool init = false);
-
-	/// update progress bar, set suggestions, exit message
+	/// set suggestions and exit message
 	void partialUpdate(int);
-
-	/// show an error message
-	void showMessage(const char * msg);
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);

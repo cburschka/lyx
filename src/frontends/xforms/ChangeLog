@@ -1,7 +1,22 @@
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
+	* forms/form_print.fd:
+	* FormPrint.[Ch]: clean-up, reflecting discussion on the list.
+
+	* forms/form_spellchecker.fd:
+	* FormSpellchecker.[Ch]: add tooltips; general clean-up.
+	 add word count to dialog and improve progress status;
+         implement single Start/Stop button;
+
 	* FormTabular.C (build): rearrange lines tab by tab.
 	Use getString not fl_get_inout.
+
+	* FormTexinfo.C: replace View-button by catching double click in
+	browser; allow viewing of files, irrespective of full path.
+
+	* forms/form_wrap.fd: resized. Remove text_warning widget. Fix gravity.
+	* FormWrap.[Ch]: simplification through the use of RadioButtonGroup
+	and CheckedGlueLength. Add tooltips.
 
 2002-10-24  Angus Leeming  <leeming@lyx.org>
 

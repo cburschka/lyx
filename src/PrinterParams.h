@@ -105,7 +105,7 @@ struct PrinterParams {
 		      string const & fname = string(),
 		      bool const all = true,
 		      unsigned int const & from = 1,
-		      unsigned int const & to = 1,
+		      unsigned int const & to = 0,
 		      bool const odd = true,
 		      bool const even = true,
 		      unsigned int const & copies = 1,

@@ -148,7 +148,7 @@ void ControlSpellchecker::insert()
 }
 
 
-string ControlSpellchecker::getSuggestion()
+string const ControlSpellchecker::getSuggestion() const
 {
 	string miss(speller_->nextMiss());
 
@@ -159,7 +159,7 @@ string ControlSpellchecker::getSuggestion()
 }
 
 
-string ControlSpellchecker::getWord()
+string const ControlSpellchecker::getWord() const
 {
 	string tmp = word_.word();
 	if (rtl_)

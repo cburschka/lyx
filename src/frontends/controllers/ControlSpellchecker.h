@@ -48,20 +48,20 @@ public:
 	void check();
 
 	/// get suggestion
-	string getSuggestion();
+	string const getSuggestion() const;
 
 	/// get word
-	string getWord();
+	string const getWord() const;
 
 	/// returns progress value
-	int getProgress() {
-		return oldval_;
-	}
+	int getProgress() const { return oldval_; }
 
 	/// returns exit message
-	string getMessage() {
-		return message_;
-	}
+	string const getMessage()  const { return message_; }
+
+	/// returns word count
+	int getCount()  const { return count_; }
+
 private:
 	/// set the params before show or update
 	void setParams();
