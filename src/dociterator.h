@@ -54,6 +54,11 @@ public:
 	///
 	explicit DocumentIterator(InsetBase & inset);
 
+	/// is the iterator valid?
+	operator const void*() const { return empty() ? 0 : this; }
+	/// is this iterator invalid?
+	bool operator!() const { return empty(); }
+
 	//
 	// access to slice at tip
 	//

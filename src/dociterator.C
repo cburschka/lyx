@@ -302,6 +302,14 @@ void DocumentIterator::forwardChar()
 }
 
 
+void DocumentIterator::forwardInset()
+{
+	forwardPos(); 
+	while (size() != 0 && (pos() == lastpos() || nextInset() == 0))
+		forwardPos();
+}
+
+
 void DocumentIterator::backwardChar()
 {
 	lyxerr << "not implemented" << endl;
