@@ -412,7 +412,6 @@ private:
 		bool selendboundary;
 		bool selection;
 		bool mark_set;
-		bool refresh;
 	};
 	///
 	mutable save_state sstate;
