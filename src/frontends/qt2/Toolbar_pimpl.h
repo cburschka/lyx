@@ -18,12 +18,12 @@
 
 #include "frontends/Toolbar.h"
 
-#include <qobject.h>
-#include <qtoolbutton.h>
-
 #include <boost/scoped_ptr.hpp>
 #include <map>
 #include <vector>
+
+#include <qobject.h>
+#include <qtoolbutton.h>
 
 class QtView;
 class QToolBar;

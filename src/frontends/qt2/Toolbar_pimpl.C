@@ -28,12 +28,12 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include "QtView.h"
-
 #include "ControlMath.h" 
-#include "Toolbar_pimpl.h"
 
 #include <boost/tuple/tuple.hpp>
+
+#include "QtView.h"
+#include "Toolbar_pimpl.h"
 
 #include <qtoolbar.h>
 #include <qcombobox.h>

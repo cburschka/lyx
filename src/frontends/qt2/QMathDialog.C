@@ -18,10 +18,11 @@
 #include "gettext.h"
 #include "debug.h"
 
+#include "ControlMath.h"
+ 
 #include "QMathDialog.h"
 #include "QMath.h"
 
-#include "ControlMath.h"
 #include "iconpalette.h"
 #include "QDelimiterDialog.h"
 #include "QMathMatrixDialog.h"
