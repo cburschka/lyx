@@ -67,6 +67,7 @@ latexkeys wordlist[] =
 	{"arctan",  LM_TK_FUNC, 0, LMB_NONE},
 	{"arg",  LM_TK_FUNC, 0, LMB_NONE},
 	{"asymp",  LM_TK_NOGLYPH, 0, LMB_RELATION},
+	{"atop",  LM_TK_ATOP, 0, LMB_NONE},
 	{"backslash",  LM_TK_SPECIAL, '\\', LMB_NONE},
 	{"bar",  LM_TK_DECORATION, LM_bar, LMB_NONE},
 	{"begin",  LM_TK_BEGIN, 0, LMB_NONE},

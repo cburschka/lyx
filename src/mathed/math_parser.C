@@ -820,7 +820,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			//curr_label_ = getArg('{', '}');
 		}
 
-		else if (t.cs() == "choose" || t.cs() == "over") {
+		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
 			limits = 0;
 			MathInset * p = createMathInset(t.cs());
 			p->cell(0).swap(array);

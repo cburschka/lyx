@@ -14,7 +14,7 @@
 class MathFracInset : public MathFracbaseInset {
 public:
 	///
-	MathFracInset();
+	explicit MathFracInset(bool atop = false);
 	///
 	MathInset * clone() const;
 	///
@@ -25,6 +25,12 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+public:
+	///
+	char const name() const;
+
+	///
+	const bool atop_;
 };
 
 #endif

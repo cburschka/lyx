@@ -8,7 +8,8 @@
 #include "support/LOstream.h"
 
 
-MathFracInset::MathFracInset()
+MathFracInset::MathFracInset(bool atop)
+	: atop_(atop)
 {}
 
 
@@ -36,23 +37,35 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 	int m = x + width() / 2;
 	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
-	pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::mathline);
+	if (!atop_)
+		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::mathline);
 }
 
 
 void MathFracInset::write(std::ostream & os, bool fragile) const
 {
-	os << "\\frac{";
-	cell(0).write(os, fragile);
-	os << "}{";
-	cell(1).write(os, fragile);
-	os << '}';
+	if (atop_) {
+		os << "{";
+		cell(0).write(os, fragile);
+		os << "\\atop ";
+		cell(1).write(os, fragile);
+		os << '}';
+	} else {
+		os << "\\frac{";
+		cell(0).write(os, fragile);
+		os << "}{";
+		cell(1).write(os, fragile);
+		os << '}';
+	}
 }
 
 
 void MathFracInset::writeNormal(std::ostream & os) const
 {
-	os << "[frac ";
+	if (atop_) 
+		os << "[atop ";
+	else
+		os << "[frac ";
 	cell(0).writeNormal(os);
 	os << " ";
 	cell(1).writeNormal(os);

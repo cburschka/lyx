@@ -43,6 +43,8 @@ enum MathTokenEnum
 	///
 	LM_TK_BINOM,
 	///
+	LM_TK_ATOP,
+	///
 	LM_TK_OVER,
 	///
 	LM_TK_FRAC,

@@ -1188,7 +1188,7 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (s == "\\over" || s == "\\choose") {
+	if (s == "\\over" || s == "\\choose" || s == "\\atop") {
 		MathArray ar = array();
 		MathInset * p = createMathInset(in_word_set(s.substr(1)));
 		p->cell(0).swap(array());

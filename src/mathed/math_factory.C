@@ -39,6 +39,8 @@ MathInset * createMathInset(latexkeys const * l)
 		case LM_TK_OVER:
 		case LM_TK_FRAC:
 			return new MathFracInset;
+		case LM_TK_ATOP:
+			return new MathFracInset(true);
 		case LM_TK_NOT:
 			return new MathNotInset;
 		case LM_TK_SQRT:
