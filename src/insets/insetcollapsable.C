@@ -287,8 +287,8 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 		case Collapsed:
 			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
-			setStatus(Open);
-			edit(cur, true);
+			open();
+			InsetText::edit(cur, true);
 			cur.bv().cursor() = cur;
 			break;
 
