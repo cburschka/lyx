@@ -3,6 +3,8 @@
 	* buffer.C (parseSingleLyXformat2Token): Insert an error inset
 	when encountering an unknown token.
 	(readLyXformat2): Show an error message if there were unknown tokens.
+	(makeLaTeXFile): Use the twoside option for the geometry
+	package when necessary.
 
 2001-11-22  John Levon  <moz@compsoc.man.ac.uk>
 
