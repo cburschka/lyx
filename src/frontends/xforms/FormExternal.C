@@ -41,7 +41,7 @@ void FormExternal::apply()
 	controller().params().parameters =
 		fl_get_input(dialog_->input_parameters);
 
-	int const choice = fl_get_choice(dialog_->choice_template);
+	int const choice = fl_get_choice(dialog_->choice_template) - 1;
 	controller().params().templ = controller().getTemplate(choice);
 }
 
@@ -93,7 +93,7 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->choice_template) {
 
 		// set to the chosen template
-		int const choice = fl_get_choice(dialog_->choice_template);
+		int const choice = fl_get_choice(dialog_->choice_template) - 1;
 		controller().params().templ = controller().getTemplate(choice);
 
 		updateComboChange();
