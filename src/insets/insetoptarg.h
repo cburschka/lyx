@@ -32,6 +32,13 @@ public:
 	/// Standard LaTeX output -- short-circuited
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
+	/// Standard DocBook output -- short-circuited
+	int docbook(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+	/// Standard LinuxDoc output -- short-circuited
+	int linuxdoc(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(Buffer const &, std::ostream &,
 			  OutputParams const &) const;

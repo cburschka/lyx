@@ -1,3 +1,8 @@
+2005-02-25  Andreas Vox  <avox@arcor.de>
+
+	* output_docbook.C (makeParagraph): suppress trailing newline
+	after a run of paragraphs
+
 2005-02-28  Johnathan Burchill  <jkerrb@users.sourceforge.net>
 
 	* paragraph.C: fix for confused change tracker when pasting

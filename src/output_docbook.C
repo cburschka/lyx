@@ -105,13 +105,14 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 {
 	LyXLayout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
 	for(ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
+		if (par != pbegin)
+			os << '\n';
 		if (par->layout() == defaultstyle && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
 		} else {
 			sgml::openTag(buf, os, runparams, *par);
 			par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs));
 			sgml::closeTag(os, *par);
-			os << '\n';
 		}
 	}
 	return pend;

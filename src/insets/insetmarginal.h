@@ -29,6 +29,9 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
+	int docbook(Buffer const &, std::ostream &,
+		    OutputParams const & runparams) const;
+	///
 	std::string const editMessage() const;
 protected:
 	InsetMarginal(InsetMarginal const &);
