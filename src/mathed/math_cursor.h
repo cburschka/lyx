@@ -65,8 +65,6 @@ public:
 	///
 	void insert(MathArray const &);
 	///
-	void paste(MathArray const &);
-	///
 	void paste(MathGridInset const & data);
 	///
 	void erase();

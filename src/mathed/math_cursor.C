@@ -400,7 +400,7 @@ void MathCursor::insert(MathArray const & ar)
 	pos() += ar.size();
 }
 
-
+/*
 void MathCursor::paste(MathArray const & ar)
 {
 	Anchor_ = Cursor_;
@@ -408,6 +408,7 @@ void MathCursor::paste(MathArray const & ar)
 	array().insert(pos(), ar);
 	pos() += ar.size();
 }
+*/
 
 
 void MathCursor::paste(MathGridInset const & data)
