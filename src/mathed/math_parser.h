@@ -144,11 +144,11 @@ bool mathed_parse_normal(MathAtom &, std::istream &);
 bool mathed_parse_normal(MathAtom &, LyXLex &);
 
 /// parse a macro definition from a string, enter it into the macro table
-string mathed_parse_macro(string const &);
+bool mathed_parse_macro(string &, string const &);
 /// ... a stream
-string mathed_parse_macro(std::istream &);
+bool mathed_parse_macro(string &, std::istream &);
 /// ... the LyX lexxer
-string mathed_parse_macro(LyXLex &);
+bool mathed_parse_macro(string &, LyXLex &);
 
 /// parse a single cell from a string
 void mathed_parse_cell(MathArray & ar, string const &);

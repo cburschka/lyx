@@ -819,8 +819,12 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 			// formula otherwise
 			if (sel.find("\\newcommand") == string::npos) 
 				f = new InsetFormula(sel);
-			else
+			else {
+				string name;
+				if (!mathed_parse_macro(name, sel))
+					return;
 				f = new InsetFormulaMacro(sel);
+			}
 			bv->getLyXText()->cutSelection(bv);
 			openNewInset(bv, f);
 		}

@@ -38,6 +38,13 @@ void MathUnknownInset::setName(string const & n)
 }
 
 
+bool MathUnknownInset::match(MathInset * p) const
+{
+	MathUnknownInset const * q = p->asUnknownInset();
+	return q && name_ == q->name_;
+}
+
+
 void MathUnknownInset::write(WriteStream & os) const
 {
 	os << "\\" << name_ << ' ';
@@ -46,7 +53,7 @@ void MathUnknownInset::write(WriteStream & os) const
 
 void MathUnknownInset::normalize(NormalStream & os) const
 {
-	os << "[func " << name_ << ']';
+	os << "[unknown " << name_ << ']';
 }
 
 

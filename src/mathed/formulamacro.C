@@ -47,16 +47,17 @@ InsetFormulaMacro::InsetFormulaMacro()
 }
 
 
-InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
+InsetFormulaMacro::InsetFormulaMacro(string name, int nargs)
 {
-	setInsetName(nm);
-	MathMacroTable::create(nm, na, string());
+	setInsetName(name);
+	MathMacroTable::create(name, nargs, string());
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
-	string name = mathed_parse_macro(s);
+	string name;
+	mathed_parse_macro(name, s);
 	setInsetName(name);
 }
 
@@ -106,7 +107,8 @@ int InsetFormulaMacro::docbook(Buffer const * buf, ostream & os) const
 
 void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
-	string name = mathed_parse_macro(lex);
+	string name;
+	mathed_parse_macro(name, lex);
 	setInsetName(name);
 	//lyxerr << "metrics disabled";
 	metrics();

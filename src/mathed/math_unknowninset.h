@@ -28,6 +28,8 @@ public:
 	MathUnknownInset const * asUnknownInset() const { return this; }
 	///
 	void setName(string const &);
+	///
+	bool match(MathInset * p) const;
 
 	///
 	void normalize(NormalStream &) const;

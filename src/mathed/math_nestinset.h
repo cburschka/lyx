@@ -70,6 +70,8 @@ public:
 	bool match(MathInset *) const;
 	/// replace in all cells
 	void replace(ReplaceData &);
+	/// do we contain a given pattern?
+	bool contains(MathArray const &);
 
 	/// debug helper
 	void dump() const;

@@ -60,6 +60,7 @@ class MathScriptInset;
 class MathStringInset;
 class MathSpaceInset;
 class MathSymbolInset;
+class MathUnknownInset;
 
 class NormalStream;
 class OctaveStream;
@@ -176,26 +177,27 @@ public:
 	virtual int cellYOffset(idx_type) const { return 0; }
 
 	/// identifies certain types of insets
-	virtual MathArrayInset        * asArrayInset()        { return 0; }
-	virtual MathBoxInset          * asBoxInset()          { return 0; }
-	virtual MathBoxInset const    * asBoxInset() const    { return 0; }
-	virtual MathCharInset const   * asCharInset() const   { return 0; }
-	virtual MathDelimInset        * asDelimInset()        { return 0; }
-	virtual MathDelimInset const  * asDelimInset() const  { return 0; }
-	virtual MathFuncInset         * asFuncInset()         { return 0; }
-	virtual MathFracInset         * asFracInset()         { return 0; }
-	virtual MathGridInset         * asGridInset()         { return 0; }
-	virtual MathHullInset         * asHullInset()         { return 0; }
-	virtual MathHullInset const   * asHullInset() const   { return 0; }
-	virtual MathMacroTemplate     * asMacroTemplate()     { return 0; }
-	virtual MathMatrixInset const * asMatrixInset() const { return 0; }
-	virtual MathNestInset         * asNestInset()         { return 0; }
-	virtual MathScriptInset       * asScriptInset()       { return 0; }
-	virtual MathScriptInset const * asScriptInset() const { return 0; }
-	virtual MathSpaceInset        * asSpaceInset()        { return 0; }
-	virtual MathStringInset       * asStringInset()       { return 0; }
-	virtual MathSymbolInset const * asSymbolInset() const { return 0; }
-	virtual UpdatableInset   * asHyperActiveInset() const { return 0; }
+	virtual MathArrayInset         * asArrayInset()         { return 0; }
+	virtual MathBoxInset           * asBoxInset()           { return 0; }
+	virtual MathBoxInset const     * asBoxInset() const     { return 0; }
+	virtual MathCharInset const    * asCharInset() const    { return 0; }
+	virtual MathDelimInset         * asDelimInset()         { return 0; }
+	virtual MathDelimInset const   * asDelimInset() const   { return 0; }
+	virtual MathFuncInset          * asFuncInset()          { return 0; }
+	virtual MathFracInset          * asFracInset()          { return 0; }
+	virtual MathGridInset          * asGridInset()          { return 0; }
+	virtual MathHullInset          * asHullInset()          { return 0; }
+	virtual MathHullInset const    * asHullInset() const    { return 0; }
+	virtual MathMacroTemplate      * asMacroTemplate()      { return 0; }
+	virtual MathMatrixInset const  * asMatrixInset() const  { return 0; }
+	virtual MathNestInset          * asNestInset()          { return 0; }
+	virtual MathScriptInset        * asScriptInset()        { return 0; }
+	virtual MathScriptInset const  * asScriptInset() const  { return 0; }
+	virtual MathSpaceInset         * asSpaceInset()         { return 0; }
+	virtual MathStringInset        * asStringInset()        { return 0; }
+	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
+	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
+	virtual UpdatableInset     * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
@@ -226,6 +228,8 @@ public:
 	virtual bool match(MathInset *) const { return false; }
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
+	/// do we contain a given subsequence?
+	virtual bool contains(MathArray const &) { return false; }
 
 	/// write LaTeX and Lyx code
 	virtual void write(WriteStream & os) const;

@@ -115,7 +115,7 @@ public:
 	/// looks for inclusion match starting at pos
 	bool matchpart(MathArray const &, pos_type pos) const;
 	/// looks for containment
-	const_iterator find(MathArray const &) const;
+	bool contains(MathArray const &) const;
 	///
 	void replace(ReplaceData &);
 

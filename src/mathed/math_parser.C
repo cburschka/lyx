@@ -244,7 +244,7 @@ public:
 	Parser(istream & is);
 
 	///
-	string parse_macro();
+	bool parse_macro(string & name);
 	///
 	bool parse_normal(MathAtom &);
 	///
@@ -582,26 +582,26 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 }
 
 
-string Parser::parse_macro()
+bool Parser::parse_macro(string & name)
 {
-	string name = "{error}";
+	name = "{error}";
 	skipSpaces();
 
 	if (getToken().cs() != "newcommand") {
 		lyxerr << "\\newcommand expected\n";
-		return name;
+		return false;
 	}
 
 	if (getToken().cat() != catBegin) {
 		lyxerr << "'{' in \\newcommand expected (1)\n";
-		return name;
+		return false;
 	}
 
 	name = getToken().cs();
 
 	if (getToken().cat() != catEnd) {
 		lyxerr << "'}' expected\n";
-		return name;
+		return false;
 	}
 
 	string    arg  = getArg('[', ']');
@@ -609,13 +609,22 @@ string Parser::parse_macro()
 
 	if (getToken().cat() != catBegin) {
 		lyxerr << "'{' in \\newcommand expected (2)\n";
-		return name;
+		return false;
 	}
 
 	MathArray ar;
 	parse_into(ar, FLAG_BRACE_LAST);
+
+	// we cannot handle recursive stuff at all
+	MathArray test;
+	test.push_back(createMathInset(name));
+	if (ar.contains(test)) {
+		lyxerr << "we cannot handle recursive macros at all.\n";
+		return false;
+	}
+
 	MathMacroTable::create(name, narg, ar);
-	return name;
+	return true;
 }
 
 
@@ -1059,23 +1068,23 @@ void mathed_parse_cell(MathArray & ar, istream & is)
 
 
 
-string mathed_parse_macro(string const & str)
+bool mathed_parse_macro(string & name, string const & str)
 {
 	istringstream is(str.c_str());
 	Parser parser(is);
-	return parser.parse_macro();
+	return parser.parse_macro(name);
 }
 
-string mathed_parse_macro(istream & is)
+bool mathed_parse_macro(string & name, istream & is)
 {
 	Parser parser(is);
-	return parser.parse_macro();
+	return parser.parse_macro(name);
 }
 
-string mathed_parse_macro(LyXLex & lex)
+bool mathed_parse_macro(string & name, LyXLex & lex)
 {
 	Parser parser(lex);
-	return parser.parse_macro();
+	return parser.parse_macro(name);
 }
 
 

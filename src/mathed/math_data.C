@@ -247,3 +247,24 @@ void MathArray::replace(ReplaceData & rep)
 	for (const_iterator it = begin(); it != end(); ++it)
 		it->nucleus()->replace(rep);
 }
+
+
+bool MathArray::contains(MathArray const & ar) const
+{
+	for (size_type i = 0; i + ar.size() <= size(); ++i) {
+		const_iterator it = begin() + i;
+		const_iterator rt = ar.begin();
+		const_iterator et = ar.end();
+		for (const_iterator jt = it; rt != et; ++jt, ++rt)
+			if (!jt->nucleus()->match(rt->nucleus()))
+				break;
+		if (rt == et)
+			return true;
+	}
+
+	for (const_iterator it = begin(); it != end(); ++it)
+		if (it->nucleus()->contains(ar))
+			return true;
+	
+	return false;
+}
