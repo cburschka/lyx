@@ -2,7 +2,7 @@
 
 # Only checks for "new" aspell, > 0.50
 
-AC_DEFUN(CHECK_WITH_ASPELL,
+AC_DEFUN([CHECK_WITH_ASPELL],
 [
     AC_ARG_WITH(aspell,
 	AC_HELP_STRING([--with-aspell],[use ASpell libraries]),

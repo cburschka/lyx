@@ -1,6 +1,12 @@
+2004-05-25  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	* update m4 files from automake 1.8 autoconf 2.59 and update other
+	m4 files to avoid auto warnings.
+
 2004-05-18  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
-	* lyxinclude.m4 (lyx_warning): change debug mode setup to use AC_DEFINE
+	* lyxinclude.m4 (lyx_warning): change debug mode setup to use
+	AC_DEFINE
 
 2004-05-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

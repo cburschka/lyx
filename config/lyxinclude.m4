@@ -6,7 +6,7 @@ dnl         Allan Rae (rae@lyx.org)
 
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variables "lyx_devel_version" and "lyx_prerelease"
-AC_DEFUN(LYX_CHECK_VERSION,[
+AC_DEFUN([LYX_CHECK_VERSION],[
 changequote(, ) dnl
 echo "configuring LyX version $VERSION"
 if echo "$VERSION" | grep 'cvs' >/dev/null ; then
@@ -31,7 +31,7 @@ fi])
 dnl Define the option to set a LyX version on installed executables and directories
 dnl
 dnl
-AC_DEFUN(LYX_VERSION_SUFFIX,[
+AC_DEFUN([LYX_VERSION_SUFFIX],[
 AC_MSG_CHECKING([for install target ... ])
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
@@ -49,7 +49,7 @@ AC_MSG_RESULT([$lyxname])
 
 dnl Usage: LYX_ERROR(message)  Displays the warning "message" and sets the
 dnl flag lyx_error to yes.
-AC_DEFUN(LYX_ERROR,[
+AC_DEFUN([LYX_ERROR],[
 lyx_error_txt="$lyx_error_txt
 ** $1
 "
@@ -58,7 +58,7 @@ lyx_error=yes])
 
 dnl Usage: LYX_WARNING(message)  Displays the warning "message" and sets the
 dnl flag lyx_warning to yes.
-AC_DEFUN(LYX_WARNING,[
+AC_DEFUN([LYX_WARNING],[
 lyx_warning_txt="$lyx_warning_txt
 == $1
 "
@@ -67,14 +67,14 @@ lyx_warning=yes])
 
 dnl Usage: LYX_LIB_ERROR(file,library)  Displays an error message indication
 dnl  that 'file' cannot be found because 'lib' may be uncorrectly installed.
-AC_DEFUN(LYX_LIB_ERROR,[
+AC_DEFUN([LYX_LIB_ERROR],[
 LYX_ERROR([Cannot find $1. Please check that the $2 library
    is correctly installed on your system.])])
 
 
 dnl Usage: LYX_CHECK_ERRORS  Displays a warning message if a LYX_ERROR
 dnl   has occured previously.
-AC_DEFUN(LYX_CHECK_ERRORS,[
+AC_DEFUN([LYX_CHECK_ERRORS],[
 if test x$lyx_error = xyes; then
 cat <<EOF
 **** The following problems have been detected by configure.
@@ -150,7 +150,7 @@ rm -f conftest.C conftest.o conftest.obj || true
 ])
 
 
-AC_DEFUN(LYX_PROG_CXX,
+AC_DEFUN([LYX_PROG_CXX],
 [AC_MSG_CHECKING([for a good enough C++ compiler])
 LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
 
@@ -240,7 +240,7 @@ fi])dnl
 dnl NOT USED CURRENTLY*************************************
 dnl Usage: LYX_CXX_RTTI : checks whether the C++ compiler
 dnl   supports RTTI
-AC_DEFUN(LYX_CXX_RTTI,[
+AC_DEFUN([LYX_CXX_RTTI],[
 ### Check whether the compiler supports runtime type information
 AC_CACHE_CHECK(whether the C++ compiler supports RTTI,lyx_cv_rtti,
  [AC_TRY_RUN([
@@ -279,7 +279,7 @@ fi])
 
 dnl Usage: LYX_CXX_EXPLICIT : checks whether the C++ compiler
 dnl   understands the "explicit" directive.
-AC_DEFUN(LYX_CXX_EXPLICIT,[
+AC_DEFUN([LYX_CXX_EXPLICIT],[
 ### Check whether the compiler understands the keyword `explicit'
 AC_CACHE_CHECK(whether the C++ compiler understands explicit,lyx_cv_explicit,
  [AC_TRY_COMPILE([
@@ -298,7 +298,7 @@ fi])
 dnl NOT USED CURRENTLY*************************************
 dnl Usage: LYX_CXX_STL_STACK : checks whether the C++ compiler
 dnl   has a working stl stack template
-AC_DEFUN(LYX_CXX_STL_STACK,[
+AC_DEFUN([LYX_CXX_STL_STACK],[
 AC_CACHE_CHECK(for broken STL stack template,lyx_cv_broken_stack,
  [AC_TRY_COMPILE([
 #include <stack>
@@ -317,7 +317,7 @@ fi])
 
 dnl Usage: LYX_STD_COUNT : checks wherer the C++ library have a conforming
 dnl    count template, if not the old HP version is assumed.
-AC_DEFUN(LYX_STD_COUNT,[
+AC_DEFUN([LYX_STD_COUNT],[
 AC_CACHE_CHECK(for conforming std::count,lyx_cv_std_count,
  [AC_TRY_COMPILE([
 #include <algorithm>
@@ -339,7 +339,7 @@ fi])
 
 dnl Usage: LYX_CXX_STL_MODERN_STREAMS : checks whether the C++ compiler
 dnl   supports modern STL streams
-AC_DEFUN(LYX_CXX_STL_MODERN_STREAMS,[
+AC_DEFUN([LYX_CXX_STL_MODERN_STREAMS],[
 AC_CACHE_CHECK(for modern STL streams,lyx_cv_modern_streams,
  [AC_TRY_COMPILE([
 #include <iostream>
@@ -356,7 +356,7 @@ fi])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
-AC_DEFUN(LYX_USE_INCLUDED_BOOST,[
+AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_ARG_WITH(included-boost,
 	    [  --with-included-boost  use the boost lib supplied with LyX],
 	    [lyx_cv_with_included_boost=$withval
@@ -368,7 +368,7 @@ AC_DEFUN(LYX_USE_INCLUDED_BOOST,[
 
 dnl NOT USED CURRENTLY*************************************
 dnl LYX_CXX_PARTIAL
-AC_DEFUN(LYX_CXX_PARTIAL, [
+AC_DEFUN([LYX_CXX_PARTIAL], [
     AC_REQUIRE([AC_PROG_CXX])
     AC_CACHE_CHECK([if C++ compiler supports partial specialization],
 	[lyx_cv_cxx_partial_specialization],
@@ -397,7 +397,7 @@ AC_DEFUN(LYX_CXX_PARTIAL, [
 
 dnl Usage: LYX_CXX_CHEADERS : checks whether the C++ compiler
 dnl   provides wrappers for C headers and use our alternate version otherwise.
-AC_DEFUN(LYX_CXX_CHEADERS,[
+AC_DEFUN([LYX_CXX_CHEADERS],[
 AC_CACHE_CHECK(for C headers wrappers,lyx_cv_cxx_cheaders,
  [AC_TRY_CPP([
 #include <clocale>
@@ -416,7 +416,7 @@ fi])
 
 dnl Usage: LYX_CXX_GLOBAL_CSTD: checks whether C library functions
 dnl   are already in the global namespace
-AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
+AC_DEFUN([LYX_CXX_GLOBAL_CSTD],[
     AC_CACHE_CHECK(whether C library functions are already in the global namespace,
     lyx_cv_cxx_global_cstd,
     [AC_TRY_COMPILE([
@@ -436,7 +436,7 @@ dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value,
 dnl                       [default-yes-value])
 dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the
 dnl  resulting directory name in 'dir-var-name'.
-AC_DEFUN(LYX_WITH_DIR,[
+AC_DEFUN([LYX_WITH_DIR],[
   AC_ARG_WITH($1,[  --with-$1        specify $2])
   AC_MSG_CHECKING([for $2])
   if test -z "$with_$3"; then
@@ -451,7 +451,7 @@ AC_DEFUN(LYX_WITH_DIR,[
 dnl Usage: LYX_LOOP_DIR(value,action)
 dnl Executes action for values of variable `dir' in `values'. `values' can
 dnl use ":" as a separator.
-AC_DEFUN(LYX_LOOP_DIR,[
+AC_DEFUN([LYX_LOOP_DIR],[
 IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
 for dir in `eval "echo $1"`; do
   if test ! "$dir" = NONE; then
@@ -465,7 +465,7 @@ IFS=$ac_save_ifs
 
 dnl Usage: LYX_ADD_LIB_DIR(var-name,dir) Adds a -L directive to variable
 dnl var-name.
-AC_DEFUN(LYX_ADD_LIB_DIR,[
+AC_DEFUN([LYX_ADD_LIB_DIR],[
 $1="${$1} -L$2"
 if test "`(uname) 2>/dev/null`" = SunOS &&
     uname -r | grep '^5' >/dev/null; then
@@ -479,7 +479,7 @@ fi])
 
 dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable
 dnl var-name.
-AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
+AC_DEFUN([LYX_ADD_INC_DIR],[$1="${$1} -I$2 "])
 
 ### Check for a headers existence and location iff it exists
 ## This is supposed to be a generalised version of LYX_STL_STRING_FWD
@@ -492,7 +492,7 @@ AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
 ## the config.h.in file so we need to write our own entries there -- one for
 ## each header in the form PATH_HEADER_NAME_H
 ##
-AC_DEFUN(LYX_PATH_HEADER,
+AC_DEFUN([LYX_PATH_HEADER],
 [ AC_CHECK_HEADER($1,[
   ac_tr_safe=PATH_`echo $ac_safe | sed 'y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%'`
 ### the only remaining problem is getting the second parameter to this
@@ -516,7 +516,7 @@ rm -f conftest*])
 
 ### Check which frontends we want to use. The default is XForms only
 ###
-AC_DEFUN(LYX_USE_FRONTENDS,
+AC_DEFUN([LYX_USE_FRONTENDS],
 [AC_MSG_CHECKING([what frontend should be used for the GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
@@ -534,7 +534,7 @@ AC_SUBST(FRONTENDS_PROGS)
 ## Find a file (or one of more files in a list of dirs)
 ## ------------------------------------------------------------------------
 ##
-AC_DEFUN(AC_FIND_FILE,
+AC_DEFUN([AC_FIND_FILE],
 [
 $3=NO
 for i in $2;
@@ -550,7 +550,7 @@ done
 ])
 
 dnl just a wrapper to clean up configure.in
-AC_DEFUN(LYX_PROG_LIBTOOL,
+AC_DEFUN([LYX_PROG_LIBTOOL],
 [
 AC_REQUIRE([AC_ENABLE_SHARED])
 AC_REQUIRE([AC_ENABLE_STATIC])

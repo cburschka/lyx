@@ -1,3 +1,8 @@
+2004-05-25  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	* * update m4 files from automake 1.8 autoconf 2.59 and update
+	other m4 files to avoid auto warnings.
+
 2004-05-19  Uwe Stöhr  <uwestoehr@web.de>
 
 	* lib/math.bind: fix some bindings to work with german keyboard;
@@ -171,7 +176,7 @@
 
 	* configure.m4: if lyx_check_config is false (no latex), use some
 	ugly sed code to parse the textclasses and produce a reasonable
-	textclass.lst. 
+	textclass.lst.
 
 2004-03-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
@@ -196,7 +201,7 @@
 	* bind/sciword.bind:
 	* bind/xemacs.bind: added binding for "quote-insert single"
 	NB: Still TODO for aqua.bind (see FIXME)
-	
+
 	* ui/classic.ui:
 	* ui/stdmenus.ui: added "quote-insert single"
 
@@ -248,22 +253,22 @@
 	* examples/g-brief2-de.lyx: removed
 
 	* examples/g-brief2-en.lyx: renamed to examples/g-brief2.lyx
-	
+
 2004-01-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* CREDITS: add Roman Maurer
 
 2003-12-31  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* layouts/agu_stdclass.inc: 
-	* layouts/agu_std sections.inc: 
+	* layouts/agu_stdclass.inc:
+	* layouts/agu_std sections.inc:
 	* layouts/agu_stdtitle.inc: moving LatexParam functionality into
 	.layout files
 
 2003-12-22  Michael Schmitt  <michael.schmitt@teststep.org>
 
-	* layouts/g-brief2-en.layout: fix spelling, 
- 	remove obsolete style; rename file to g-brief2.layout
+	* layouts/g-brief2-en.layout: fix spelling,
+	remove obsolete style; rename file to g-brief2.layout
 	* layouts/g-brief2-de.layout: remove file
 
 2003-12-22  Martin Vermeer  <martin.vermeer@hut.fi>
@@ -383,7 +388,7 @@
 
 2003-11-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* Makefile.am (install-xfonts): 
+	* Makefile.am (install-xfonts):
 	* configure.m4: create a resource list file for Display Postscript
 
 2003-11-03  Angus Leeming  <leeming@lyx.org>

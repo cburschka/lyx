@@ -5,9 +5,9 @@ dnl Test for GNOMEMM, and define GNOMEMM_INCLUDEDIR, GNOMEMM_LIBDIR, GNOMEMM_LIB
 dnl   to be used as follows:
 dnl AM_PATH_GNOMEMM([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl
-AC_DEFUN(AM_PATH_GNOMEMM,
+AC_DEFUN([AM_PATH_GNOMEMM],
 [
-dnl 
+dnl
 dnl Get the cflags and libraries from the gtkmm-config script
 dnl
 AC_ARG_WITH(gnomemm-config-path,[  --with-gnomemm-config-path=PREFIX
@@ -19,7 +19,7 @@ AC_ARG_WITH(gnomemm-config-path,[  --with-gnomemm-config-path=PREFIX
   if test x$gnomemm_config_prefix != x; then
     if test -r $gnomemm_config_prefix; then
 	source $gnomemm_config_prefix
-    else 
+    else
         no_gnomemm=yes
     fi
   else
@@ -29,14 +29,14 @@ AC_ARG_WITH(gnomemm-config-path,[  --with-gnomemm-config-path=PREFIX
 	source /opt/gnome/lib/gnomemmConf.sh
     elif test -r /usr/local/lib/gnomemmConf.sh ; then
 	source /usr/local/lib/gnomemmConf.sh
-    else 
+    else
         no_gnomemm=yes
     fi
   fi
 
   if test "x$no_gnomemm" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      AC_MSG_ERROR(Cannot find GNOME-- configuration file gnomemmConf.sh)
@@ -46,4 +46,3 @@ AC_ARG_WITH(gnomemm-config-path,[  --with-gnomemm-config-path=PREFIX
   AC_SUBST(GNOMEMM_LIBDIR)
   AC_SUBST(GNOMEMM_LIBS)
 ])
-

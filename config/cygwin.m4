@@ -1,7 +1,7 @@
 # Macro added for some Cygwin-specific support     -*- sh -*-
 # @author@: Kayvan Sylvan
 
-AC_DEFUN(CHECK_WITH_CYGWIN,
+AC_DEFUN([CHECK_WITH_CYGWIN],
 [
   case $host_os in
   cygwin* | mingw* | pw32* )
