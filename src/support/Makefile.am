@@ -32,6 +32,8 @@ libsupport_la_SOURCES = \
 	filetools.h \
 	forkedcall.C \
 	forkedcall.h \
+	forkedcallqueue.C \
+	forkedcallqueue.h \
 	forkedcontr.C \
 	forkedcontr.h \
 	getcwd.C \

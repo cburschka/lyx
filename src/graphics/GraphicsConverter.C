@@ -17,6 +17,7 @@
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/forkedcallqueue.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
@@ -191,21 +192,12 @@ void Converter::Impl::startConversion()
 		return;
 	}
 
-	// Initiate the conversion
-	Forkedcall::SignalTypePtr convert_ptr;
-	convert_ptr.reset(new Forkedcall::SignalType);
+	Forkedcall::SignalTypePtr 
+		ptr = ForkedCallQueue::get().add(script_command_);
 
-	convert_ptr->connect(
-		boost::bind(&Impl::converted, this, _1, _2));
+	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
 
-	Forkedcall call;
-	int retval = call.startscript(script_command_, convert_ptr);
-	if (retval > 0) {
-		// Unable to even start the script, so clean-up the mess!
-		converted(0, 1);
-	}
 }
-
 
 void Converter::Impl::converted(pid_t /* pid */, int retval)
 {
