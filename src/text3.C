@@ -382,6 +382,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
 	CursorSlice sl = cur.top();
+	bool sel = cur.selection();
+	bool moving = false;
 
 	switch (cmd.action) {
 
@@ -427,6 +429,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORDRIGHT:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		if (isRTL(cur.paragraph()))
@@ -437,6 +440,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORDLEFT:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		if (isRTL(cur.paragraph()))
@@ -461,6 +465,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_RIGHT:
+		moving = true;
 	case LFUN_RIGHTSEL:
 		//lyxerr << "handle LFUN_RIGHT[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
@@ -475,6 +480,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_LEFT:
+		moving = true;
 	case LFUN_LEFTSEL:
 		//lyxerr << "handle LFUN_LEFT[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
@@ -489,6 +495,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_UP:
+		moving = true;
 	case LFUN_UPSEL:
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_UPSEL);
@@ -500,6 +507,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_DOWN:
+		moving = true;
 	case LFUN_DOWNSEL:
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
@@ -579,6 +587,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_UP_PARAGRAPH:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		cursorUpParagraph(cur);
@@ -586,6 +595,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_DOWN_PARAGRAPH:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		cursorDownParagraph(cur);
@@ -593,6 +603,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_PRIOR:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
@@ -605,6 +616,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_NEXT:
+		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
@@ -1586,6 +1598,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 	}
+
+	// avoid to update when navigating
+	if (moving
+	    && &sl.inset() == &cur.inset()
+	    && sl.idx() == cur.idx()
+	    && sel == false
+	    && cur.selection() == false)
+		cur.noUpdate();
 }
 
 

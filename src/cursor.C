@@ -386,14 +386,8 @@ void LCursor::info(std::ostream & os) const
 void LCursor::selHandle(bool sel)
 {
 	//lyxerr << "LCursor::selHandle" << endl;
-	if (sel == selection()) {
-#ifdef WITH_WARNINGS
-#warning Alfredo: This is too strong (Andre)
-#endif
-		//if (!sel)
-		//	noUpdate();
+	if (sel == selection())
 		return;
-	}
 
 	resetAnchor();
 	selection() = sel;
