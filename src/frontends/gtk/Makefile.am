@@ -36,6 +36,8 @@ libgtk_la_SOURCES = \
 	GMiniBuffer.h \
 	GPainter.C \
 	GPainter.h \
+	GPrint.C \
+	GPrint.h \
 	GScreen.C \
 	GScreen.h \
 	GSearch.C \
@@ -75,9 +77,6 @@ libgtk_la_SOURCES = \
 	xftFontMetrics.C 
 
 
-#	GPrint.h
-#	GPrint.C
-
 xforms_objects = \
 	../xforms/bmtable.lo \
 	../xforms/checkedwidgets.lo \
@@ -112,7 +111,6 @@ xforms_objects = \
 	../xforms/FormParagraph.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
-	../xforms/FormPrint.lo \
 	../xforms/FormRef.lo \
 	../xforms/FormSendto.lo \
 	../xforms/forms_gettext.lo \

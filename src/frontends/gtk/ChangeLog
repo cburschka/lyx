@@ -1,3 +1,12 @@
+2004-09-25  John Spray  <spray_john@users.sourceforge.net>
+
+	* GPrint.C: minor fixes to make it compile and work, get rid of
+	"Apply"
+	* Dialogs.C: move from FormPrint to GPrint
+	* Makefile.am: move from FormPrint to GPrint
+	* glade/print.glade: rearrange, gtk stock button for Print, get
+	rid of "Apply"
+
 2004-09-24  John Spray  <spray_john@users.sourceforge.net>
 
 	* GSearch.[Ch]: new files

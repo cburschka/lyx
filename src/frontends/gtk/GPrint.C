@@ -18,6 +18,10 @@
 
 #include "PrinterParams.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
+
+using std::string;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -33,7 +37,7 @@ void GPrint::apply()
 	PrinterParams pp;
 	pp.target = printer_->get_active() ? PrinterParams::PRINTER : PrinterParams::FILE;
 	pp.printer_name = printerEntry_->get_text();
-	pp.file_name = printerEntry_->get_text();
+	pp.file_name = fileEntry_->get_text();
 	pp.all_pages = all_->get_active();
 	pp.from_page = pp.to_page = 0;
 	if (!fromEntry_->get_text().empty()) {
@@ -97,7 +101,7 @@ void GPrint::updateUI()
 void GPrint::onBrowse()
 {
 	string const inName = fileEntry_->get_text();
-	string const outName = Glib::locale_to_utf8(controller().Browse(Glib::locale_from_utf8(inName)));
+	string const outName = Glib::locale_to_utf8(controller().browse(Glib::locale_from_utf8(inName)));
 	if (outName != inName && !outName.empty())
 		fileEntry_->set_text(outName);
 	if (!outName.empty())
@@ -135,26 +139,24 @@ void GPrint::doBuild()
 	xml_->get_widget("Even", even_);
 	xml_->get_widget("Reverse", reverse_);
 	xml_->get_widget("Number", number_);
-	xml_->get_widget("Sorted", sorted_);
+	xml_->get_widget("Collate", sorted_);
 	xml_->get_widget("FromEntry", fromEntry_);
 	xml_->get_widget("ToEntry", toEntry_);
 	xml_->get_widget("PrinterEntry", printerEntry_);
 	xml_->get_widget("FileEntry", fileEntry_);
+	
 	Gtk::Button * ok;
 	Gtk::Button * cancel;
 	Gtk::Button * apply;
-	xml_->get_widget("OkButton", ok);
+	xml_->get_widget("PrintButton", ok);
 	xml_->get_widget("CancelButton", cancel);
-	xml_->get_widget("ApplyButton", apply);
-	bc().setOK(ok);
-	bc().setApply(apply);
-	bc().setCancel(cancel);
-	ok->signal_clicked().connect(SigC::slot(*this, &GViewBase::onOK));
-	apply->signal_clicked().connect(SigC::slot(*this, &GViewBase::onApply));
-	cancel->signal_clicked().connect(SigC::slot(*this, &GViewBase::onCancel));
+	setOK(ok);
+	setCancel(cancel);
+	
 	Gtk::Button * browse;
 	xml_->get_widget("Browse", browse);
 	browse->signal_clicked().connect(SigC::slot(*this, &GPrint::onBrowse));
+	
 	fileEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), fileEntry_));
 	printerEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), printerEntry_));
 	fromEntry_->signal_changed().connect(SigC::slot(*this, &GPrint::onFromToEdit));
@@ -164,6 +166,10 @@ void GPrint::doBuild()
 	all_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
 	fromTo_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
 	number_->signal_changed().connect(SigC::slot(*this, &GPrint::updateUI));
+	
+	controller().initialiseParams("");
+	update();
+	updateUI();
 }
 
 } // namespace frontend

@@ -76,7 +76,7 @@
 #include "FormParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
-#include "FormPrint.h"
+#include "GPrint.h"
 #include "FormRef.h"
 #include "GSearch.h"
 #include "FormSendto.h"
@@ -463,9 +463,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormPreferences(*dialog));
 		dialog->bc().bp(new PreferencesPolicy);
 	} else if (name == "print") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlPrint(*dialog));
-		dialog->setView(new FormPrint(*dialog));
-		dialog->bc().bp(new OkApplyCancelPolicy);
+		dialog->setView(new GPrint(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));
