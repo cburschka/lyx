@@ -1,5 +1,15 @@
 2003-12-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
+	* QBox.[Ch]: (new)
+	* QBoxDialog.[Ch]: (new)
+	* ui/QBoxDialogBase.ui: (new)
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: new VSpace dialog.
+	* lengthcommon.[Ch]: add insertItem(int) method
+
+2003-12-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
 	* QDocument.C: use geometry on custom, A3, B3 and B4
 	papersizes.
 

@@ -46,6 +46,12 @@ void LengthCombo::setCurrentItem(LyXLength::UNIT unit)
 }
 
 
+void LengthCombo::setCurrentItem(int item)
+{
+	QComboBox::setCurrentItem(item);
+}
+
+
 void LengthCombo::setEnabled(bool b)
 {
 	QComboBox::setEnabled(b);

@@ -14,6 +14,7 @@
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
+#include "ControlBox.h"
 #include "ControlBranch.h"
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
@@ -42,6 +43,7 @@
 #include "QAbout.h"
 #include "QBibitem.h"
 #include "QBibtex.h"
+#include "QBox.h"
 #include "QBranch.h"
 #include "QChanges.h"
 #include "QCharacter.h"
@@ -84,9 +86,9 @@ using std::string;
 
 namespace {
 
-char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch",
-"changes", "character", "citation", "error", "errorlist", "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log",
+char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "box",
+"branch", "changes", "character", "citation", "error", "errorlist", "ert", "external",
+"file", "float", "graphics", "include", "index", "label", "log",
 "mathpanel", "mathdelimiter", "mathmatrix",
 "minipage", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
@@ -139,6 +141,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new QBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "box") {
+		dialog->setController(new ControlBox(*dialog));
+		dialog->setView(new QBox(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "branch") {
 		dialog->setController(new ControlBranch(*dialog));
 		dialog->setView(new QBranch(*dialog));

@@ -25,8 +25,10 @@ class LengthCombo : public QComboBox {
 public:
 	LengthCombo(QWidget * parent, char * name);
 
-	/// set the current item
+	/// set the current item from unit
 	virtual void setCurrentItem(LyXLength::UNIT unit);
+	/// set the current item from int
+	virtual void setCurrentItem(int item);
 	/// get the current item
 	LyXLength::UNIT currentLengthItem() const;
 	/// enable the widget

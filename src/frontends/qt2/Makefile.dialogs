@@ -17,6 +17,7 @@ UIFILES = \
 	QBibitemDialogBase.ui \
 	QBibtexDialogBase.ui \
 	QBibtexAddDialogBase.ui \
+	QBoxDialogBase.ui \
 	QBranchDialogBase.ui \
 	QChangesDialogBase.ui \
 	QCharacterDialogBase.ui \
@@ -80,6 +81,7 @@ MOCFILES = \
 	QAboutDialog.C QAboutDialog.h \
 	QBibitemDialog.C QBibitemDialog.h \
 	QBibtexDialog.C QBibtexDialog.h \
+	QBoxDialog.C QBoxDialog.h \
 	QBranchDialog.C QBranchDialog.h \
 	QBrowseBox.C QBrowseBox.h \
 	QChangesDialog.C QChangesDialog.h \
