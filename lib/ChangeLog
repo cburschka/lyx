@@ -1,3 +1,15 @@
+2001-02-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: fix permissions on configure and configure.cmd
+	(from Albert Chin) 
+
+	* CREDITS: add Albert Chin
+
+2001-02-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* bind/cua.bind: change the bookmark bindings to C-[123] and
+	C-M-[123]. 
+
 2001-01-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* examples/fr_MathLabeling.lyx: 

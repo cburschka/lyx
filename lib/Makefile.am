@@ -19,7 +19,7 @@ TEXSUPPORT = tex/*.cls
 UI = ui/*.ui
 
 LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI) $(LYXSCRIPTS)
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
 
 LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
 	$(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
@@ -44,6 +44,12 @@ install-data-local: libinstalldirs
 	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
+	done
+
+install-exec-local: libinstalldirs
+	files=`cd ${srcdir} ; echo $(LYXSCRIPTS)` ; \
+	for i in $${files} ; do \
+	   $(INSTALL_SCRIPT) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
 uninstall-local:

@@ -121,12 +121,12 @@
 \bind "C-Insert"		"copy"
 \bind "S-Insert"		"paste"
 \bind "S-Delete"		"cut"
-\bind "C-1"			"bookmark-goto 1"
-\bind "C-2"			"bookmark-goto 2"
-\bind "C-3"			"bookmark-goto 3"
-\bind "C-S-exclam"		"bookmark-save 1"
-\bind "C-S-at"			"bookmark-save 2"
-\bind "C-S-numbersign"		"bookmark-save 3"
+\bind "C-~S-1"			"bookmark-goto 1"
+\bind "C-~S-2"			"bookmark-goto 2"
+\bind "C-~S-3"			"bookmark-goto 3"
+\bind "C-M-~S-1"		"bookmark-save 1"
+\bind "C-M-~S-2"		"bookmark-save 2"
+\bind "C-M-~S-3"		"bookmark-save 3"
 
 
 #
