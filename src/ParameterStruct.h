@@ -12,10 +12,11 @@
 #ifndef PARAMETERSTRUCT_H
 #define PARAMETERSTRUCT_H
 
-#include "vspace.h"
-#include "Spacing.h"
 #include "layout.h"
 #include "lyxlength.h"
+#include "Spacing.h"
+#include "vspace.h"
+
 #include "support/types.h"
 
 

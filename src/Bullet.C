@@ -47,9 +47,7 @@ Bullet::Bullet(int f, int c, int s)
 		size = MIN;
 	}
 	generateText();
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -57,9 +55,7 @@ Bullet::Bullet(int f, int c, int s)
 Bullet::Bullet(string const & t)
 	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -71,9 +67,7 @@ void Bullet::setCharacter(int c)
 		character = c;
 	}
 	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -85,9 +79,7 @@ void Bullet::setFont(int f)
 		font = f;
 	}
 	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -99,9 +91,7 @@ void Bullet::setSize(int s)
 		size = s;
 	}
 	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -110,9 +100,7 @@ void Bullet::setText(string const & t)
 	font = character = size = MIN;
 	user_text = 1;
 	text = t;
-#ifdef ENABLE_ASSERTIONS
 	testInvariant();
-#endif
 }
 
 
@@ -136,17 +124,13 @@ int Bullet::getSize() const
 
 Bullet & Bullet::operator=(Bullet const & b)
 {
-#ifdef ENABLE_ASSERTIONS
 	b.testInvariant();
-#endif
 	font = b.font;
 	character = b.character;
 	size = b.size;
 	user_text = b.user_text;
 	text = b.text;
-#ifdef ENABLE_ASSERTIONS
 	this->testInvariant();
-#endif
 	return *this;
 }
 
@@ -367,8 +351,9 @@ string const Bullet::bulletEntry(int f, int c)
 	return BulletPanels[f][c];
 }
 
+void Bullet::testInvariant() const
+{
 #ifdef ENABLE_ASSERTIONS
-void Bullet::testInvariant() const {
 	Assert(font >= MIN);
 	Assert(font < FONTMAX);
 	Assert(character >= MIN);
@@ -389,5 +374,5 @@ void Bullet::testInvariant() const {
 	//        // user_text == 0
 	//        Assert(text.empty()); // not usually true
 	//      }
-}
 #endif
+}

@@ -14,12 +14,6 @@
 
 #include "lyxrc.h"
 
-#ifdef ENABLE_ASSERTIONS
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#endif
-
-
 /**
   This struct contains (or should contain) all the parameters required for
   printing a buffer.  Some work still needs to be done on this struct and
@@ -79,65 +73,21 @@ struct PrinterParams {
 	    xforms code anyway) however new ports and external scripts
 	    might drive the wrong values in.
 	 */
-	void testInvariant() const
-		{
-#ifdef ENABLE_ASSERTIONS
-			switch (target) {
-			case PRINTER:
-				//lyx::support::Assert(!printer_name.empty());
-				break;
-			case FILE:
-				lyx::support::Assert(!file_name.empty());
-				break;
-			default:
-				lyx::support::Assert(false);
-				break;
-			}
-#endif
-		}
-
+	void testInvariant() const;
 	///
-	PrinterParams(Target const & t = PRINTER,
+	PrinterParams(Target t = PRINTER,
 		      string const & pname = lyxrc.printer,
 		      string const & fname = string(),
-		      bool const all = true,
-		      unsigned int const & from = 1,
-		      unsigned int const & to = 0,
-		      bool const odd = true,
-		      bool const even = true,
-		      unsigned int const & copies = 1,
-		      bool const sorted = false,
-		      bool const reverse = false)
-		: target(t),
-		  printer_name(pname),
-		  file_name(fname),
-		  all_pages(all),
-		  from_page(from),
-		  to_page(to),
-		  odd_pages(odd),
-		  even_pages(even),
-		  count_copies(copies),
-		  sorted_copies(sorted),
-		  reverse_order(reverse)
-		{
-			testInvariant();
-		}
+		      bool all = true,
+		      unsigned int from = 1,
+		      unsigned int to = 0,
+		      bool odd = true,
+		      bool even = true,
+		      unsigned int copies = 1,
+		      bool sorted = false,
+		      bool reverse = false);
 	///
-	PrinterParams(PrinterParams const & pp)
-		: target(pp.target),
-		  printer_name(pp.printer_name),
-		  file_name(pp.file_name),
-		  all_pages(pp.all_pages),
-		  from_page(pp.from_page),
-		  to_page(pp.to_page),
-		  odd_pages(pp.odd_pages),
-		  even_pages(pp.even_pages),
-		  count_copies(pp.count_copies),
-		  sorted_copies(pp.sorted_copies),
-		  reverse_order(pp.reverse_order)
-		{
-			testInvariant();
-		}
+	PrinterParams(PrinterParams const & pp);
 };
 
 #endif

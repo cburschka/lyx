@@ -45,10 +45,8 @@ public:
 	///
 	friend bool operator==(Bullet const &, Bullet const &);
 protected:
-#ifdef ENABLE_ASSERTIONS
 	///
 	void testInvariant() const;
-#endif
 private:
 	/**
 	   This enum makes adding additional panels or changing panel sizes

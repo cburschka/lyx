@@ -96,6 +96,7 @@ lyx_SOURCES = \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
 	ParameterStruct.h \
+	PrinterParams.C \
 	PrinterParams.h \
 	RowList.h \
 	ShareContainer.h \

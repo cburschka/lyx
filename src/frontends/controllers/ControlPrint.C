@@ -25,6 +25,7 @@
 
 #include "support/tostr.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 
