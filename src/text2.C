@@ -1199,8 +1199,10 @@ void LyXText::updateCounters()
 
 		string const & newLabel = pit->params().labelString();
 
-		if (oldLabel != newLabel)
-			redoParagraph(pit);
+		if (oldLabel.empty() && !newLabel.empty()) {
+			removeParagraph(rowit);
+			appendParagraph(rowit);
+		}
 	}
 }
 
