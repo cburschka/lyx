@@ -1313,7 +1313,7 @@ int MathHullInset::plaintext(Buffer const &, ostream & os,
 		return tpain.textheight();
 	} else {
 		WriteStream wi(os, false, true);
-		wi << ' ' << cell(0) << ' ';
+		wi << cell(0);
 		return wi.line();
 	}
 }
