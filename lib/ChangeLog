@@ -1,3 +1,11 @@
+2002-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyxconvert_218.py: Handle end_deeper "inside" ERT.
+	(remove_oldert): Fix for ERT inside tabulars.
+	(change_listof): New function. Convert LatexCommand inset to
+	FloatList inset.
+	(fix_oldfloatinset): New function. Add "wide false" to float insets.
+
 2002-09-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Makefile.am: Patch from Georg Baum for installing lyx2lyx files.

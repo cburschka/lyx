@@ -205,7 +205,7 @@ def remove_oldert(lines):
 	    break
 	j = i+1
 	while 1:
-	    j = find_tokens(lines, ["\\latex default", "\\begin_inset", "\\layout", "\\end_float", "\\the_end"],
+	    j = find_tokens(lines, ["\\latex default", "\\begin_inset", "\\layout", "\\end_inset", "\\end_float", "\\the_end"],
 			    j)
 	    if check_token(lines[j], "\\begin_inset"):
 		j = find_end_of_inset(lines, j)
@@ -295,7 +295,7 @@ def remove_oldert(lines):
 	    break
 	del lines[i]
 
-
+# ERT insert are hidden feature of lyx 1.1.6. This might be removed in the future.
 def remove_oldertinset(lines):
     i = 0
     while 1:
@@ -437,6 +437,28 @@ def update_tabular(lines):
 
 	i = i+1
 
+# Figure insert are hidden feature of lyx 1.1.6. This might be removed in the future.
+def fix_oldfloatinset(lines):
+    i = 0
+    while 1:
+	i = find_token(lines, "\\begin_inset Float", i)
+	if i == -1:
+	    break
+        j = find_token(lines, "collapsed", i)
+        if j != -1:
+            lines[j:j] = ["wide false"]
+        i = i+1
+
+def change_listof(lines):
+    i = 0
+    while 1:
+	i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
+	if i == -1:
+	    break
+        type = lines[i][33:-3]
+        lines[i] = "\\begin_inset FloatList "+type
+        i = i+1
+
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
@@ -450,6 +472,8 @@ def convert(header, body):
 	language = "english"
 
     change_preamble(header)
+    change_listof(body)
+    fix_oldfloatinset(body)
     update_tabular(body)
     remove_oldminipage(body)
     remove_oldfloat(body, language)
