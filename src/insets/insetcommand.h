@@ -78,7 +78,7 @@ public:
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
-	virtual ~InsetCommand() { hide(); };
+	virtual ~InsetCommand() { /*hide();*/ };
 	///
 	void Write(Buffer const *, std::ostream &) const;
 
@@ -129,7 +129,7 @@ public:
 	///
 	void setParams(InsetCommandParams const &);
 	///
-	Signal0<void> hide;
+	//Signal0<void> hide;
 private:
 	///
 	InsetCommandParams p_;

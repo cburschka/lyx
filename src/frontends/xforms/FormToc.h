@@ -21,7 +21,7 @@ struct FD_form_toc;
 
 /** This class provides an XForms implementation of the FormToc Dialog.
  */
-class FormToc : public FormCommand, public noncopyable {
+class FormToc : public FormCommand {
 public:
 	/**@name Constructors and Destructors */
 	//@{

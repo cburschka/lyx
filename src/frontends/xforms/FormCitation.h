@@ -21,7 +21,7 @@ struct FD_form_citation;
 
 /** This class provides an XForms implementation of the FormCitation Dialog.
  */
-class FormCitation : public FormCommand, public noncopyable {
+class FormCitation : public FormCommand {
 public:
 	///
 	enum State {

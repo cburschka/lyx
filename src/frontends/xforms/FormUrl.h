@@ -21,7 +21,7 @@ struct FD_form_url;
 
 /** This class provides an XForms implementation of the FormUrl Dialog.
  */
-class FormUrl : public FormCommand, public noncopyable {
+class FormUrl : public FormCommand {
 public:
 	/**@name Constructors and Destructors */
 	//@{

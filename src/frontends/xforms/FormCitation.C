@@ -13,6 +13,8 @@
 
 #include FORMS_H_LOCATION
 
+#include <algorithm>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif

@@ -1,3 +1,15 @@
+2000-08-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetcommand.h: Signals is not copyable so anoter
+	scheme for automatic hiding of forms must be used.
+
+	* src/frontends/xforms/FormCitation.h: don't inerit from
+	noncopyable, FormCommand already does that.
+	* src/frontends/xforms/FormToc.h: ditto
+	* src/frontends/xforms/FormUrl.h: ditto
+
+	* src/frontends/xforms/FormCitation.C: add include <algorithm>
+
 2000-08-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/insets/insetcommand.h (hide): new SigC::Signal0
