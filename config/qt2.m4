@@ -1,4 +1,4 @@
-# Configure paths and libs when using Qt2 GUI
+# Configure paths and libs when using Qt GUI
 ##    -*- shell-script -*-
 
 ##    Based on KDE file written by :
@@ -172,28 +172,28 @@ LIBS="$ac_libs_safe"
 ##
 AC_DEFUN(QT2_AC_PATH,
 [
-AC_MSG_CHECKING([for Qt 2])
+AC_MSG_CHECKING([for Qt])
 ac_qt2_includes=NO ac_qt2_libraries=NO ac_qt2_bindir=NO
 qt2_libraries=""
 qt2_includes=""
  
-AC_ARG_WITH(qt2-dir,
-    [  --with-qt2-dir           where the root of Qt2 is installed ],
+AC_ARG_WITH(qt-dir,
+    [  --with-qt-dir           where the root of Qt 2/3 is installed ],
     [  ac_qt2_includes=`eval echo "$withval"/include`
        ac_qt2_libraries=`eval echo "$withval"/lib`
        ac_qt2_bindir=`eval echo "$withval"/bin`
     ])
 
-AC_ARG_WITH(qt2-includes,
-    [  --with-qt2-includes      where the Qt2 includes are. ],
+AC_ARG_WITH(qt-includes,
+    [  --with-qt-includes      where the Qt 2/3 includes are. ],
     [ 
        ac_qt2_includes=`eval echo "$withval"`
     ])
    
 qt2_libs_given=no
 
-AC_ARG_WITH(qt2-libraries,
-    [  --with-qt2-libraries     where the Qt2 library is installed.],
+AC_ARG_WITH(qt-libraries,
+    [  --with-qt-libraries     where the Qt 2/3 library is installed.],
     [  ac_qt2_libraries=`eval echo "$withval"`
        qt2_libs_given=yes
     ])
@@ -224,7 +224,7 @@ done
 
 ac_qt2_name="-lqt"
  
-AC_FIND_FILE(libqt.so.2.2.3 libqt.so.2.2 libqt.so.2 libqt2.so libqt.a libqt.sl, $qt2_libdirs, qt2_libdir)
+AC_FIND_FILE(libqt.so.3 libqt.so.2.2.3 libqt.so.2.2 libqt.so.2 libqt2.so libqt.a libqt.sl, $qt2_libdirs, qt2_libdir)
  
 ac_qt2_libraries="$qt2_libdir"
 
