@@ -1,5 +1,5 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 233
 \textclass docbook
 \language english
 \inputencoding auto
@@ -12,6 +12,8 @@
 \use_amsmath 0
 \use_natbib 0
 \use_numerical_citations 0
+\use_jurabib 0
+\use_bibtopic 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -22,44 +24,59 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes 0
+\end_header
 
-\layout Title
-\added_space_top vfill \added_space_bottom vfill 
+\begin_layout Title
+
 Title
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 Date 
-\layout Author
+\end_layout
+
+\begin_layout Author
 
 
-\begin_inset ERT
-status Collapsed
+\begin_inset CharStyle Firstname
+status inlined
 
-\layout Standard
-<firstname>
-\end_inset 
+\begin_layout Standard
 
 Joe
-\begin_inset ERT
-status Collapsed
+\end_layout
 
-\layout Standard
-</firstname><surname>
 \end_inset 
+
+
+\begin_inset CharStyle Surname
+status inlined
+
+\begin_layout Standard
 
 Doe
-\begin_inset ERT
-status Collapsed
+\end_layout
 
-\layout Standard
-</surname>
 \end_inset 
 
 
-\layout Abstract
+\end_layout
+
+\begin_layout Abstract
 
 Abstract
-\layout Section
+\end_layout
+
+\begin_layout Section
 
 First Section
-\the_end
+\end_layout
+
+\begin_layout Standard
+
+First paragraph.
+\end_layout
+
+\end_document

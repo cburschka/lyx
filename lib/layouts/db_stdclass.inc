@@ -44,9 +44,6 @@ End
 CharStyle Firstname
 	LatexType             Command
 	LatexName             firstname
-	Font
-	  Shape               SmallCaps	
-	EndFont
 	LabelFont
 	  Shape               Up
 	  Color               blue
@@ -56,9 +53,6 @@ End
 CharStyle Surname
 	LatexType             Command
 	LatexName             surname
-	Font
-	  Shape               SmallCaps	
-	EndFont
 	LabelFont
 	  Shape               Up
 	  Color               blue

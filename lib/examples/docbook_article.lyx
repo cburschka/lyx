@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 225
+\lyxformat 233
 \textclass docbook
 \language english
 \inputencoding default
@@ -13,6 +13,8 @@
 \use_amsmath 0
 \use_natbib 0
 \use_numerical_citations 0
+\use_jurabib 0
+\use_bibtopic 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -29,8 +31,8 @@
 \begin_layout SGML
 
  
-\begin_inset Note
-collapsed true
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Standard
 
@@ -84,57 +86,20 @@ Docbook with LyX
 
 \begin_layout Author
 
-\end_layout
-
-\begin_deeper 
-\begin_layout SGML
-\align center 
-
-\begin_inset Note
-collapsed true
-
-\begin_layout Standard
-
-The author name is always composed of:
-\end_layout
-
-\begin_layout Standard
-
-* first name
-\end_layout
-
-\begin_layout Standard
-
-* surname
-\end_layout
-
-\begin_layout Standard
-
-It is always possible to have more than one author.
-\end_layout
-
-\end_inset 
-
-
-\end_layout
-
-\end_deeper 
-\begin_layout Author
-
 
 \begin_inset CharStyle Firstname
-collapsed true
+status inlined
 
 \begin_layout Standard
 
-Jose'
+José
 \end_layout
 
 \end_inset 
 
 
 \begin_inset CharStyle Surname
-collapsed true
+status inlined
 
 \begin_layout Standard
 
@@ -320,7 +285,7 @@ Emphasis
 \emph default 
  and 
 \begin_inset CharStyle Literal
-collapsed true
+status inlined
 
 \begin_layout Standard
 
@@ -360,7 +325,8 @@ Notice that when the docbook code is exported the filename extension is
 \begin_inset Float figure
 placement htbp
 wide false
-collapsed false
+sideways false
+status open
 
 \begin_layout Standard
 
@@ -399,7 +365,8 @@ Wide figures are treated as normal figures.
 \begin_inset Float figure
 placement htbp
 wide true
-collapsed false
+sideways false
+status open
 
 \begin_layout Standard
 
@@ -439,7 +406,8 @@ There is also basic support for tables.
 \begin_inset Float table
 placement htbp
 wide false
-collapsed false
+sideways false
+status open
 
 \begin_layout Standard
 \align center 
@@ -653,7 +621,7 @@ It is also possible to insert margin notes inside some environments.
 
 
 \begin_inset Marginal
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -680,7 +648,7 @@ third par -> margin note
 
 Notice that the previous layout is at level 1 
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -704,7 +672,7 @@ These environments are easily added to the docbook layout.
 
 
 \begin_inset Marginal
-collapsed true
+status collapsed
 
 \begin_layout Standard
 
@@ -779,7 +747,7 @@ book
 
 set (very unlikely)
 \begin_inset Foot
-collapsed true
+status collapsed
 
 \begin_layout Standard
 

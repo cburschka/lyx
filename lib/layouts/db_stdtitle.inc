@@ -34,7 +34,7 @@ End
 Style Date
 	LatexType             Paragraph
 	LatexName             date
-	Align                 Left
+	Align                 Center
 	AlignPossible         Left,Center
 End
 
