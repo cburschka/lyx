@@ -56,10 +56,11 @@ pextra_rexp = re.compile(r"\\pextra_type\s+(\S+)"+\
 			 r"(\s+(\\pextra_widthp?)\s+(\S*))?")
 
 def get_width(mo):
-    if mo.group(9) == "\\pextra_widthp":
-	return mo.group(10)+"col%"
-    elif mo.group(10):
-	return mo.group(10)
+    if mo.group(10):
+	if mo.group(9) == "\\pextra_widthp":
+	    return mo.group(10)+"col%"
+	else:
+	    return mo.group(10)
     else:
 	return "100col%"
 
@@ -157,11 +158,9 @@ def remove_oldminipage(lines):
 
 	j = find_token_backwards(lines,"\\layout", i-1)
 	j0 = j
-	mid = lines[j:i]
 
 	j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
-	# j can be -1, but this is still ok
-	mid = mid+lines[i+1:j]
+	# j can be -1
 
 	count = 0
 	while 1:
@@ -178,11 +177,10 @@ def remove_oldminipage(lines):
 	    if mo.group(7) == "1":
 		flag = 1
 		break
-	    j = find_token_backwards(lines,"\\layout", i-1)
-	    mid = mid+lines[j:i]
+	    lines[i] = re.sub(pextra_rexp, "", lines[i])
 	    j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
-	    mid = mid+lines[i+1:j]
 
+	mid = lines[j0:j]
 	end = ["\\end_inset "]
 
 	lines[j0:j] = start+mid+end
