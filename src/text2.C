@@ -553,9 +553,9 @@ void LyXText::clearSelection()
 {
 	TextCursor::clearSelection();
 
-	// reset this in the bv_owner!
-	if (bv_owner && bv_owner->text)
-		bv_owner->text->xsel_cache.set(false);
+	// reset this in the bv()!
+	if (bv() && bv()->text)
+		bv()->text->xsel_cache.set(false);
 }
 
 
@@ -1623,7 +1623,7 @@ void LyXText::cursorUp(bool selecting)
 	int y = cursor.y() - crow.baseline() - 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
-		int topy = bv_owner->top_y();
+		int topy = bv()->top_y();
 		int y1 = cursor.y() - topy;
 		int y2 = y1;
 		y -= topy;
@@ -1649,7 +1649,7 @@ void LyXText::cursorDown(bool selecting)
 	int y = cursor.y() - crow.baseline() + crow.height() + 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
-		int topy = bv_owner->top_y();
+		int topy = bv()->top_y();
 		int y1 = cursor.y() - topy;
 		int y2 = y1;
 		y -= topy;
