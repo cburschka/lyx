@@ -62,3 +62,9 @@ void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getDialogs()->showCitation(this);
 }
 
+
+int InsetCitation::Ascii(Buffer const *, ostream & os, int) const
+{
+        os << "[" << getContents() << "]";
+        return 0;
+}

@@ -35,6 +35,8 @@ public:
 	Inset::Code LyxCode() const { return Inset::CITE_CODE; }
         ///
 	void Edit(BufferView *, int, int, unsigned int);
+	///
+	int Ascii(Buffer const *, std::ostream &, int linelen) const;
 };
 
 #endif // INSET_CITE_H
