@@ -1456,57 +1456,9 @@ void LyXText::insertStringAsParagraphs(string const & str)
 
 void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
 {
-	LyXCursor tmpcursor;
-
-	pos_type z;
-	RowList::iterator row = getRow(pit, pos);
-	RowList::iterator beg = rows().begin();
-
-	// is there a break one row above
-	if (row != beg && boost::prior(row)->par() == row->par()) {
-		z = rowBreakPoint(*boost::prior(row));
-		if (z >= row->pos()) {
-			// set the dimensions of the row above
-			postPaint();
-
-			breakAgain(boost::prior(row));
-
-			// set the cursor again. Otherwise
-			// dangling pointers are possible
-			setCursor(cursor.par(), cursor.pos(),
-				  false, cursor.boundary());
-			selection.cursor = cursor;
-			return;
-		}
-	}
-
-	breakAgain(row);
+	breakAgain(getRow(pit, pos));
 	postPaint();
-
-	// set the cursor again. Otherwise dangling pointers are possible
-	// also set the selection
-
-	if (selection.set()) {
-		tmpcursor = cursor;
-		setCursorIntern(selection.cursor.par(), selection.cursor.pos(),
-				false, selection.cursor.boundary());
-		selection.cursor = cursor;
-		setCursorIntern(selection.start.par(),
-				selection.start.pos(),
-				false, selection.start.boundary());
-		selection.start = cursor;
-		setCursorIntern(selection.end.par(),
-				selection.end.pos(),
-				false, selection.end.boundary());
-		selection.end = cursor;
-		setCursorIntern(last_sel_cursor.par(),
-				last_sel_cursor.pos(),
-				false, last_sel_cursor.boundary());
-		last_sel_cursor = cursor;
-		cursor = tmpcursor;
-	}
-	setCursorIntern(cursor.par(), cursor.pos(),
-			false, cursor.boundary());
+	setCursorIntern(cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
 
@@ -1521,7 +1473,6 @@ bool LyXText::updateInset(InsetOld * inset)
 	}
 
 	// check every paragraph
-
 	ParagraphList::iterator par = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 	for (; par != end; ++par) {
@@ -1530,7 +1481,7 @@ bool LyXText::updateInset(InsetOld * inset)
 			checkParagraph(par, pos);
 			return true;
 		}
-	};
+	}
 
 	return false;
 }
