@@ -61,7 +61,7 @@
 #include "FormCitation.h"
 #include "FormDocument.h"
 #include "GErrorList.h"
-#include "FormERT.h"
+#include "GERT.h"
 #include "FormExternal.h"
 #include "FormFloat.h"
 #include "GGraphics.h"
@@ -218,8 +218,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GErrorList(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "ert") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlERT(*dialog));
-		dialog->setView(new FormERT(*dialog));
+		dialog->setView(new GERT(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
