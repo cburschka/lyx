@@ -4,6 +4,13 @@
         * insetnote.C: add add i18n support. Use Prefs-definable
 	colours for Comment and Greyedout.
 
+2003-07-30	Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insetcollapsable.[Ch]:
+	* insetnote.C:
+	* insetert.C: factor out the detection of clicking on the inset
+      button as 'hitButton'. John Levon contributed.
+
 2003-07-30  André Pönitz  <poenitz@gmx.net>
 
 	* insetcollapsable.C:
