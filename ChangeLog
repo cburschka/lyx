@@ -1,3 +1,8 @@
+2005-02-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am: remove hack for making bindist work with autoconf
+	<=1.4. This broke non GNU make programs.
+
 2005-01-24  Angus Leeming  <leeming@lyx.org>
 
 	* mkinstalldirs: removed. Duplicates the file in the config
