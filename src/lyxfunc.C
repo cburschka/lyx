@@ -637,7 +637,7 @@ string const LyXFunc::Dispatch(int ac,
 				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				return string();
 			else {
-				setMessage(N_("Text mode"));
+				//setMessage(N_("Text mode"));
 				switch (action) {
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
@@ -1468,7 +1468,15 @@ string const LyXFunc::Dispatch(int ac,
 		    && tmptext->cursor.par()->GetInset(tmptext->cursor.pos())->Editable() == Inset::HIGHLY_EDITABLE){
 			Inset * tmpinset = tmptext->cursor.par()->GetInset(tmptext->cursor.pos());
 			setMessage(tmpinset->EditMessage());
-			tmpinset->Edit(owner->view(), 0, 0, 0);
+			int y = 0;
+			if (is_rtl) {
+				LyXFont font = 
+					tmptext->GetFont(owner->view()->buffer(),
+							 tmptext->cursor.par(),
+							 tmptext->cursor.pos());	
+				y = tmpinset->descent(owner->view(),font);
+			}
+			tmpinset->Edit(owner->view(), 0, y, 0);
 			break;
 		}
 		if (!is_rtl)
@@ -1490,7 +1498,7 @@ string const LyXFunc::Dispatch(int ac,
 		LyXCursor cur = txt->cursor;
 		if (!is_rtl)
 			txt->CursorLeft(owner->view(), false);
-		if ((cur != txt->cursor) && // only if really moved!
+		if ((is_rtl || cur != txt->cursor) && // only if really moved!
 		    txt->cursor.pos() < txt->cursor.par()->Last() &&
 		    (txt->cursor.par()->GetChar(txt->cursor.pos()) ==
 		     LyXParagraph::META_INSET) &&
@@ -1503,11 +1511,12 @@ string const LyXFunc::Dispatch(int ac,
 			LyXFont font = txt->GetFont(owner->view()->buffer(),
 						    txt->cursor.par(),
 						    txt->cursor.pos());
+			int y = is_rtl ? 0 
+				: tmpinset->descent(owner->view(),font);
 			tmpinset->Edit(owner->view(),
 				       tmpinset->x() +
 				       tmpinset->width(owner->view(),font),
-				       tmpinset->descent(owner->view(),font),
-				       0);
+				       y, 0);
 			break;
 		}
 		if  (is_rtl)
@@ -2265,9 +2274,9 @@ string const LyXFunc::Dispatch(int ac,
 			::sscanf(argument.c_str(),"%d%d", &r, &c);
 		InsetTabular * new_inset =
 			new InsetTabular(*owner->buffer(), r, c);
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
+		bool rtl =
+			owner->view()->getLyXText()->real_current_font.isRightToLeft();
+		if (!owner->view()->open_new_inset(new_inset, rtl))
 			delete new_inset;
 	}
 	break;

@@ -208,6 +208,15 @@ private:
     UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true,
 				    bool selecting = false);
     ///
+    UpdatableInset::RESULT moveRightIntern(BufferView *, bool behind,
+					   bool activate_inset = true,
+					   bool selecting = false);
+    ///
+    UpdatableInset::RESULT moveLeftIntern(BufferView *, bool behind, 
+					  bool activate_inset = true,
+					  bool selecting = false);
+
+    ///
     UpdatableInset::RESULT moveUp(BufferView *);
     ///
     UpdatableInset::RESULT moveDown(BufferView *);

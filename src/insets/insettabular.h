@@ -206,9 +206,9 @@ private:
     ///
     UpdatableInset::RESULT moveDown(BufferView *);
     ///
-    bool moveNextCell(BufferView *);
+    bool moveNextCell(BufferView *, bool lock = false);
     ///
-    bool movePrevCell(BufferView *);
+    bool movePrevCell(BufferView *, bool lock = false);
     ///
     bool Delete();
     ///
@@ -239,6 +239,8 @@ private:
     bool pasteSelection(BufferView *);
     ///
     bool cutSelection();
+    ///
+    bool isRightToLeft(BufferView *);
 
     //
     // Private structures and variables

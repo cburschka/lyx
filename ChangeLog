@@ -1,3 +1,37 @@
+2001-01-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* BufferView2.C (open_new_inset): Added 2nd argument.
+	(getParentText, getParentLanguage): New methods.
+
+	* src/lyxfunc.C (Dispatch): Fixed handling of LFUN_LEFT and
+ 	LFUN_INSET_TABULAR for RTL text.
+
+	* src/tabular.C (Latex): Put \R{} around RTL cells.
+
+	* src/text2.C (InsertInset): Change cursor position for highly
+	editable insets.
+
+	* src/frontends/xforms/FormTabularCreate.C (apply): Create the
+	tabular inset by calling to LyXFunc::Dispatch(LFUN_INSET_TABULAR,...)
+
+	* src/insets/insettabular.C (LocalDispatch): When dispatching
+	LFUN_TAB/LFUN_SHIFT_TAB, if the insettext of the old cell was
+	locked, then the insettext of the new cell will be locked. 
+ 	(moveLeft, moveRight): Fixed for RTL tabulars.
+ 	(moveNextCell, movePrevCell): Ditto.
+	(isRightToLeft): New method.
+
+	* src/insets/insettext.C (LocalDispatch): Fixed handling of
+	non-dispatched function in the locking inset.
+	(Edit): If the inset is empty set the language of the current font
+ 	to the language to the surronding text (this code was moved from
+	LocalDispatch to allow the user to change the languaeg before 
+	inserting text).
+	(moveRight, moveLeft): Fixed for RTL text.
+	(checkAndActivateInset): Fixed.
+	
+	* src/tabular.C (OldFormatRead): Use ALL_INHERIT font as the base font.
+
 2001-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Toolbar_pimpl.C (BubbleTimerCB): translate

@@ -2145,16 +2145,13 @@ void LyXText::InsertInset(BufferView * bview, Inset * inset)
 				      * The character will not be inserted a
 				      * second time */
 #if 1
-	// if we enter a text-inset the cursor should be to the left side
-	// of it! This couldn't happen before as Undo was not handled inside
+	// If we enter a highly editable inset the cursor should be to before
+	// the inset. This couldn't happen before as Undo was not handled inside
 	// inset now after the Undo LyX tries to call inset->Edit(...) again
 	// and cannot do this as the cursor is behind the inset and GetInset
 	// does not return the inset!
-	if (inset->IsTextInset()) {
-		if (cursor.par()->isRightToLeftPar(bview->buffer()->params))
-			CursorRight(bview);
-		else
-			CursorLeft(bview);
+	if (inset->Editable() == Inset::HIGHLY_EDITABLE) {
+		CursorLeft(bview, true);
 	}
 #endif
 }

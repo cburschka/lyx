@@ -25,6 +25,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "insets/insettabular.h"
+#include "support/lstrings.h"
 
 FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Insert Tabular"),
@@ -86,10 +87,8 @@ void FormTabularCreate::apply()
 	int ysize = int(fl_get_slider_value(dialog_->slider_columns) + 0.5);
 	int xsize = int(fl_get_slider_value(dialog_->slider_rows) + 0.5);
 
-	InsetTabular * in = new InsetTabular( *lv_->buffer(), xsize, ysize );
-	if (!lv_->view()->open_new_inset(in)) {
-		delete in;
-	}
+	string tmp = tostr(xsize) + " " + tostr(ysize);
+	lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
 }
 
 

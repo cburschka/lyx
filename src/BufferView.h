@@ -26,6 +26,7 @@ class TeXErrors;
 class Buffer;
 class LyXScreen;
 class WorkArea;
+class Language;
 
 ///
 class BufferView : public noncopyable {
@@ -101,6 +102,10 @@ public:
 	LyXText * text;
 	///
 	LyXText * getLyXText() const;
+	///
+	LyXText * getParentText(Inset * inset) const;
+	///
+	Language const * getParentLanguage(Inset * inset) const;
 	///
 	int workWidth() const;
 	///
@@ -188,7 +193,7 @@ public:
 	bool insertInset(Inset * inset, string const & lout = string(),
 			 bool no_table = false);
 	/// open and lock an updatable inset
-	bool open_new_inset(UpdatableInset * new_inset);
+	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	/** Inserts a lyx file at cursor position.
 	    @return #false# if it fails.
 	*/

@@ -501,6 +501,14 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     bv->text->FinishUndo();
     ShowInsetCursor(bv);
     UpdateLocal(bv, FULL, false);
+
+    // If the inset is empty set the language of the current font to the
+    // language to the surronding text.
+    if (par->Last() == 0 && !par->next) {
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setLanguage(bv->getParentLanguage(this));
+	SetFont(bv, font, false);
+    }
 }
 
 
@@ -747,17 +755,27 @@ InsetText::LocalDispatch(BufferView * bv,
 	    UpdateLocal(bv, CURSOR_PAR, false);
             return result;
         } else if (result == FINISHED) {
+	    bool dispatched = false;
 	    switch (action) {
-	    case -1:
+	    case LFUN_UNKNOWN_ACTION:
+	    case LFUN_BREAKPARAGRAPH:
+	    case LFUN_BREAKLINE:
+	       moveRightIntern(bv, false, false);
+	       break;
 	    case LFUN_RIGHT:
-		moveRight(bv, false);
+		if (!TEXT(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		    moveRightIntern(bv, false, false);
+		dispatched = true;
 		break;
-	    case LFUN_DOWN:
-		moveDown(bv);
+	    case LFUN_LEFT:
+		if (TEXT(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		    moveRightIntern(bv, false, false);
+		dispatched = true;
 		break;
 	    }
 	    the_locking_inset = 0;
-	    return DISPATCHED;
+	    if (dispatched)
+		return DISPATCHED;
 	}
     }
     HideInsetCursor(bv);
@@ -785,23 +803,6 @@ InsetText::LocalDispatch(BufferView * bv,
 			      bv->text->cursor.par()->next
 #endif
 		    );
-	    // if an empty paragraph set the language to the surronding
-	    // paragraph language on insertion of the first character!
-	    if (!par->Last() && !par->next) {
-		LyXText * text = 0;
-		if (owner()) {
-		    Inset * inset = owner();
-		    while(inset && inset->getLyXText(bv) == TEXT(bv))
-			inset = inset->owner();
-		    if (inset)
-			text = inset->getLyXText(bv);
-		}
-		if (!text)
-		    text = bv->text;
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(text->cursor.par()->getParLanguage(bv->buffer()->params));
-		SetFont(bv, font, false);
-	    }
 	    bv->setState();
 	    if (lyxrc.auto_region_delete) {
 		if (TEXT(bv)->selection){
@@ -853,7 +854,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	break;
     case LFUN_LEFT:
 	bv->text->FinishUndo();
-	result= moveLeft(bv);
+	result = moveLeft(bv);
 	TEXT(bv)->ClearSelection();
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
@@ -1235,9 +1236,29 @@ void InsetText::HideInsetCursor(BufferView * bv)
 UpdatableInset::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
+    if (TEXT(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	return moveLeftIntern(bv, false, activate_inset, selecting);
+    else
+	return moveRightIntern(bv, false, activate_inset, selecting);
+}
+
+UpdatableInset::RESULT
+InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
+{
+    if (TEXT(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	return moveRightIntern(bv, true, activate_inset, selecting);
+    else
+	return moveLeftIntern(bv, true, activate_inset, selecting);
+}
+
+
+UpdatableInset::RESULT
+InsetText::moveRightIntern(BufferView * bv, bool behind, 
+			   bool activate_inset, bool selecting)
+{
     if (!cpar(bv)->next && (cpos(bv) >= cpar(bv)->Last()))
 	return FINISHED;
-    if (activate_inset && checkAndActivateInset(bv, false))
+    if (activate_inset && checkAndActivateInset(bv, behind))
 	return DISPATCHED;
     TEXT(bv)->CursorRight(bv, selecting);
     return DISPATCHED_NOUPDATE;
@@ -1245,12 +1266,13 @@ InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 
 
 UpdatableInset::RESULT
-InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
+InsetText::moveLeftIntern(BufferView * bv, bool behind,
+			  bool activate_inset, bool selecting)
 {
     if (!cpar(bv)->previous && (cpos(bv) <= 0))
 	return FINISHED;
     TEXT(bv)->CursorLeft(bv, selecting);
-    if (activate_inset && checkAndActivateInset(bv, true))
+    if (activate_inset && checkAndActivateInset(bv, behind))
 	return DISPATCHED;
     return DISPATCHED_NOUPDATE;
 }
@@ -1352,13 +1374,14 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 		TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
 	if (behind) {
 	    x = inset->width(bv, font);
-	    y = inset->descent(bv, font);
+	    y = font.isRightToLeft() ? 0 : inset->descent(bv, font);
 	} else {
-	    x = y = 0;
+	    x = 0;
+	    y = font.isRightToLeft() ? inset->descent(bv, font) : 0;
 	}
-	inset_x = cx(bv) - top_x + drawTextXOffset;
-	inset_y = cy(bv) + drawTextYOffset;
-	inset->Edit(bv, x - inset_x, y - inset_y, 0);
+	//inset_x = cx(bv) - top_x + drawTextXOffset;
+	//inset_y = cy(bv) + drawTextYOffset;
+	inset->Edit(bv, x, y, 0);
 	if (!the_locking_inset)
 	    return false;
 	UpdateLocal(bv, CURSOR_PAR, false);

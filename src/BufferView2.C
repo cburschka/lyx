@@ -262,7 +262,7 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 
 
 // Open and lock an updatable inset
-bool BufferView::open_new_inset(UpdatableInset * new_inset)
+bool BufferView::open_new_inset(UpdatableInset * new_inset, bool behind)
 {
 	beforeChange();
 	text->FinishUndo();
@@ -270,7 +270,11 @@ bool BufferView::open_new_inset(UpdatableInset * new_inset)
 		delete new_inset;
 		return false;
 	}
-    	new_inset->Edit(this, 0, 0, 0);
+	if (behind) {
+		LyXFont & font = getLyXText()->real_current_font;
+		new_inset->Edit(this, new_inset->width(this, font), 0, 0);
+	} else
+		new_inset->Edit(this, 0, 0, 0);
 	return true;
 }
 
@@ -945,3 +949,23 @@ LyXText * BufferView::getLyXText() const
 	return text;
 }
 
+
+LyXText * BufferView::getParentText(Inset * inset) const
+{
+	if (inset->owner()) {
+		LyXText * txt = inset->getLyXText(this);
+		inset = inset->owner();
+		while (inset && inset->getLyXText(this) == txt)
+			inset = inset->owner();
+		if (inset)
+			return inset->getLyXText(this);
+	}
+	return text;
+}
+
+Language const * BufferView::getParentLanguage(Inset * inset) const
+{
+	LyXText * text = getParentText(inset);
+	return text->cursor.par()->GetFontSettings(buffer()->params,
+						   text->cursor.pos()).language();
+}

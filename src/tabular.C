@@ -1367,7 +1367,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     string tmptok;
     int pos = 0;
     char depth = 0;
-    LyXFont font(LyXFont::ALL_SANE);
+    LyXFont font(LyXFont::ALL_INHERIT);
     font.setLanguage(owner_->BufferOwner()->GetLanguage());
 
     while (lex.IsOK()) {
@@ -2195,7 +2195,16 @@ int LyXTabular::Latex(Buffer const * buf,
 	    if (IsPartOfMultiColumn(i,j))
 		continue;
 	    ret += TeXCellPreamble(os, cell);
-	    ret += GetCellInset(cell)->Latex(buf, os, fragile, fp);
+	    InsetText * inset = GetCellInset(cell);
+
+	    bool rtl = inset->par->isRightToLeftPar(buf->params) &&
+		    inset->par->Last() > 0 && GetPWidth(cell).empty();
+	    if (rtl)
+		os << "\\R{";
+	    ret += inset->Latex(buf, os, fragile, fp);
+	    if (rtl)
+		os << "}";
+
 	    ret += TeXCellPostamble(os, cell);
 	    if (!IsLastCellInRow(cell)) { // not last cell in row
 		os << "&\n";
