@@ -50,12 +50,12 @@ EXTRACT_ALL            = YES
 # If the EXTRACT_PRIVATE tag is set to YES all private members of a class 
 # will be included in the documentation. 
 
-EXTRACT_PRIVATE        = NO
+EXTRACT_PRIVATE        = YES
 
 # If the EXTRACT_STATIC tag is set to YES all static members of a file 
 # will be included in the documentation. 
 
-EXTRACT_STATIC         = NO
+EXTRACT_STATIC         = YES
 
 # If the HIDE_UNDOC_MEMBERS tag is set to YES, Doxygen will hide all 
 # undocumented members of documented classes, files or namespaces. 
@@ -500,7 +500,7 @@ MAN_EXTENSION          = .3
 # the code including all documentation. Warning: This feature 
 # is still experimental and very incomplete.
 
-GENERATE_XML           = NO
+# GENERATE_XML           = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the preprocessor   
