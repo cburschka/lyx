@@ -1241,7 +1241,9 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
 	MathMLStream ms(os);
-	ms << MTag("equation");
+	string name="equation";
+	if (! label(0).empty()) name += " id=\"" + label(0)+ "\"";
+	ms << MTag(name.c_str());
 	ms <<   MTag("alt");
 	ms <<    "<[CDATA[";
 	int res = plaintext(buf, ms.os(), runparams);
