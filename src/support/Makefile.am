@@ -37,6 +37,7 @@ libsupport_la_SOURCES = \
 	lstrings.C \
 	lstrings.h \
 	lyxlib.h \
+	lyxmanip.h \
 	$(LYXSTRING) lyxsum.C \
 	mkdir.C \
 	path.h \

@@ -18,6 +18,7 @@
 #include "LaTeXFeatures.h"
 #include "Painter.h"
 
+using std::max;
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
 	: kind(k)

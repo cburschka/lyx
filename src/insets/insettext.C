@@ -13,6 +13,8 @@
 
 #include <fstream>
 using std::ifstream;
+using std::min;
+using std::max;
 
 #include <cstdlib>
 

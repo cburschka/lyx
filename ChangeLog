@@ -1,3 +1,13 @@
+2000-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/Makefile.am (libsupport_la_SOURCES): add lyxmanip.h.
+
+	* src/buffer.C (makeLaTeXFile): add a .c_str(), since
+	ostringstream uses STL strings, and we might not.
+
+	* src/insets/insetspecialchar.C: add using directive.
+	* src/insets/insettext.C: ditto.
+
 2000-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lib/layouts/seminar.layout: feeble attempt at a layout for

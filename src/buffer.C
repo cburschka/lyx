@@ -2006,7 +2006,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 			ofs << ftnote.str();
 			texrow += ft_texrow;
 #ifdef HAVE_SSTREAM
-			ftnote.str(string());
+			// The extra .c_str() is needed when we use
+			// lyxstring instead of the STL string class. 
+			ftnote.str(string().c_str());
 #else
 			delete [] ftnote.str();
 #endif
