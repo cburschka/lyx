@@ -218,9 +218,10 @@ void BulletPanelCB(FL_OBJECT * /*ob*/, long data)
 			new_panel = "standard";
 			break;
 		}
-		new_panel += ".xpm";
-		fl_set_bmtable_pixmap_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
-					   LibFileSearch("images", new_panel.c_str()).c_str());
+		fl_set_bmtable_pixmap_file(fd_form_bullet->bmtable_bullet_panel, 
+					   6, 6,
+					   LibFileSearch("images", new_panel, 
+							 "xpm").c_str());
 		fl_redraw_object(fd_form_bullet->bmtable_bullet_panel);
 		fl_unfreeze_form(fd_form_bullet->form_bullet);
 	}

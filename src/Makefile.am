@@ -10,7 +10,7 @@ lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
 	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${top_srcdir}/images $(SIGC_CFLAGS) @FRONTEND_INCLUDES@
+INCLUDES = $(SIGC_CFLAGS) @FRONTEND_INCLUDES@
 localedir = $(datadir)/locale
 lyx_SOURCES = \
 	BackStack.h \

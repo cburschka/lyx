@@ -24,7 +24,6 @@
 #include "toolbar.h"
 #include "minibuffer.h"
 #include "lyxfunc.h"
-#include "lyx.xpm"
 #include "debug.h"
 #include "layout_forms.h"
 #include "intl.h"
@@ -254,17 +253,20 @@ void LyXView::create_form_form_main(int width, int height)
 	//
 
         //  assign an icon to main form
-        unsigned int w, h;
-        Pixmap lyx_p, lyx_mask;
-        lyx_p = fl_create_from_pixmapdata(fl_root,
-					  const_cast<char**>(lyx_xpm),
-					  &w,
-					  &h,
-					  &lyx_mask,
-					  0,
-					  0,
-					  0); // this leaks
-        fl_set_form_icon(form_, lyx_p, lyx_mask);
+	string iconname = LibFileSearch("images", "lyx", "xpm");
+	if (!iconname.empty()) {
+		unsigned int w, h;
+		Pixmap lyx_p, lyx_mask;
+		lyx_p = fl_read_pixmapfile(fl_root,
+					   iconname.c_str(),
+					   &w,
+					   &h,
+					   &lyx_mask,
+					   0,
+					   0,
+					   0); // this leaks
+		fl_set_form_icon(form_, lyx_p, lyx_mask);
+	}
 
 	// set min size
 	fl_set_form_minsize(form_, 50, 50);

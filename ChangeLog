@@ -1,5 +1,22 @@
 2000-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/Makefile.am (INCLUDES): remove image directory from include
+	path. 
+
+	* src/bullet_forms.C (create_form_form_bullet): small cleanup.
+	* src/bullet_forms_cb.C (BulletPanelCB): ditto.
+
+	* src/LyXView.C (create_form_form_main): read the application icon
+	from the disk.
+
+	* lib/images/*.xpm: change the icons to use transparent color for
+	background. 
+
+	* src/toolbar.C (update): change the color of the button when it
+	is toggled on.
+
+2000-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
 	* src/lyxfunc.C (Dispatch): use LyXView::ShowState instead of
 	setting explicitely the minibuffer.
 	* src/BufferView_pimpl.C (workAreaButtonRelease): ditto.

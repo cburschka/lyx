@@ -29,7 +29,7 @@ FD_form_bullet *create_form_form_bullet(void)
      fl_set_object_boxtype(obj, FL_UP_BOX);
      fl_set_bmtable_pixmap_file(obj, 6, 6,
 				LibFileSearch("images",
-					      "standard.xpm").c_str());
+					      "standard", "xpm").c_str());
 
   fl_set_border_width(-1);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 95, 20, 255, 70, "");

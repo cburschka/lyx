@@ -145,8 +145,10 @@ void Toolbar::update()
 				// know how to use transparency with
 				// Xpm library. It seems pretty
 				// complicated to me (JMarc)
+				fl_set_object_color(p->icon, FL_LEFT_BCOL, FL_BLUE);
 				fl_set_object_boxtype(p->icon, FL_DOWN_BOX);
 			} else {
+				fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
 				fl_set_object_boxtype(p->icon, FL_UP_BOX);
 			}
 
@@ -287,7 +289,6 @@ void Toolbar::set(bool doingmain)
 					      NorthWestGravity);
 			fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
 					       static_cast<long>(item->action));
-			fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 			// Remove the blue feedback rectangle
 			fl_set_pixmapbutton_focus_outline(obj, 0);
 
