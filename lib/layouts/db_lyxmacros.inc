@@ -19,7 +19,7 @@ End
 # Comment style definition
 Style Comment
   LatexType		Paragraph
-  LatexName		comment
+  LatexName		remark
 End
 
 Style LyX-Code

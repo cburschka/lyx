@@ -2720,30 +2720,6 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 }
 
 
-void Buffer::docbookHandleCaption(ostream & os, string & inner_tag,
-				  Paragraph::depth_type depth, int desc_on,
-				  Paragraph * & par)
-{
-	Paragraph * tpar = par;
-	while (tpar
-	       && (tpar->layout != textclasslist.NumberOfLayout(params.textclass,
-								"Caption").second))
-		tpar = tpar->next();
-
-	if (tpar &&
-	    tpar->layout == textclasslist.NumberOfLayout(params.textclass,
-							 "Caption").second) {
-		sgmlOpenTag(os, depth + 1, inner_tag);
-		string extra_par;
-		simpleDocBookOnePar(os, extra_par, tpar,
-				    desc_on, depth + 2);
-		sgmlCloseTag(os, depth+1, inner_tag);
-		if (!extra_par.empty())
-			os << extra_par;
-	}
-}
-
-
 // checks, if newcol chars should be put into this line
 // writes newline, if necessary.
 namespace {
@@ -2797,8 +2773,6 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 }
 
 } // namespace anon
-
-
 
 
 // Handle internal paragraph parsing -- layout already processed.
@@ -3028,7 +3002,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	if (!only_body) {
 		ofs << "<!DOCTYPE " << top_element
-		    << "  PUBLIC \"-//OASIS//DTD DocBook V3.1//EN\"";
+		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
 		string preamble = params.preamble;
 		preamble += features.getIncludedFiles(fname);

@@ -327,10 +327,6 @@ public:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 private:
-        ///
-	void docbookHandleCaption(std::ostream & os, string & inner_tag,
-				  Paragraph::depth_type depth, int desc_on,
-				  Paragraph * & par);
 	/// Open SGML/XML tag.
         void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
 			 string const & latexname) const;

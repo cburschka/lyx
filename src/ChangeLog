@@ -1,5 +1,11 @@
 2001-10-24  José Matos  <jamatos@fep.up.pt>
 
+	* buffer.h (docbookHandleCaption):
+	* buffer.C (docbookHandleCaption): removed unused function.
+	(makeDocBookFile): moved docbook supported version to v4.1.
+
+2001-10-24  José Matos  <jamatos@fep.up.pt>
+
 	* tabular.h:
 	* tabular.C (docbookRow): new function to export docbook code of a row.
 	(DocBook): now honors the longtable flags.

@@ -10,7 +10,7 @@ Input stdtitle.inc
 # Title style definition
 Style Title
   LatexType		Command
-  LatexName		artheader
+  LatexName		articleinfo
   LatexParam		"2|"
 End
 
