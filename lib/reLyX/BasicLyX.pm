@@ -1028,38 +1028,60 @@ sub basic_lyx {
 		# The minipage environment is defined as:
 		# \begin{minipage}[pos][height][inner-pos]{width} <text>
 		# \end{minipage}
-		my $pos = foo bar....
 
-		# Read any optional argument.
+		# Read the position optional argument, if it exists
 		$tok = $fileobject->eatOptionalArgument;
-		my $arg = $tok->print if defined($tok->print);
+		my $pos = $tok->print if defined($tok->print);
 
 		my %map = ('t' => '0', 'c' => '1', 'b' => '2');
-		if ($debug_on && $arg ne '' && !defined($map{$arg})) {
-		    print "\nIgnoring unknown positioning arg '$arg'\n";
+		if ($debug_on && $pos ne '' && !defined($map{$pos})) {
+		    print "\nIgnoring unknown positioning arg '$pos'\n";
 		}
 
 		# The minipage is centred by default.
-		$arg = '1' if (!defined($map{$arg}) ||
-			       ($arg = $map{$arg}) eq '');
+		$pos = '1' if (!defined($map{$pos}) ||
+				  ($pos = $map{$pos}) eq '');
+
+		# Read the height optional argument, if it exists
+		my $height = '0pt';
+		$tok = $fileobject->eatOptionalArgument;
+		if (defined($tok->print)) {
+		    $height = $tok->print;
+		    # if something like '4.5\columnwidth', translate into
+		    # LyXese.
+		    if ($height =~ /([0-9.]*)\s*(\\[a-z]*)/) {
+			if (defined($lengthAsLyXString{$2})) {
+			    $height = ($1 * 100) . $lengthAsLyXString{$2};
+			}
+		    }
+		}
+
+		# Read the inner-pos optional argument, if it exists
+		my $innerpos = $pos;
+		$tok = $fileobject->eatOptionalArgument;
+		if (defined($tok->print)) {
+		    my $arg = $tok->print;
+		    print("\nMinipage inner-pos argument, $arg, is ",
+		          "currently ignored\n");
+		}
 
 		# Read the width as (a reference to) an array of tokens.
 		$tok = $fileobject->eatBalanced;
-		# $arg is Something like either '4.5cm' or '\columnwidth'.
-		$arg = pop(@{$tok})->print;
-		# If $arg is something like '\columnwidth', then manipulate
+		# $width is Something like either '4.5cm' or '\columnwidth'.
+		my $width = pop(@{$tok})->print;
+		# If $width is something like '\columnwidth', then manipulate
 		# it into LyX format and also extract the length itself.
-		if (defined($lengthAsLyXString{$arg})) {
-		    $arg = $lengthAsLyXString{$arg};
+		if (defined($lengthAsLyXString{$width})) {
+		    $width = $lengthAsLyXString{$width};
 		    my $val = pop(@{$tok});
 		    $val = (defined($val)) ? $val->print : '0';
-		    $arg = ($val * 100) . $arg;
+		    $width = ($val * 100) . $width;
 		}
 
-		print OUTFILE "position $arg\n";
-		print OUTFILE "inner_position 0\n";
-		print OUTFILE "height \"0pt\"\n";
-		print OUTFILE "width \"$arg\"\n";
+		print OUTFILE "position $pos\n";
+		print OUTFILE "inner_position $innerpos\n";
+		print OUTFILE "height $height\n";
+		print OUTFILE "width $width\n";
 		print OUTFILE "collapsed false\n";
 
 	    # \begin document

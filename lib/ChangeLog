@@ -1,3 +1,17 @@
+2003-02-11  Angus Leeming  <leeming@lyx.org>
+
+	* reLyX/BasicLyX.pm: add support for minipages. The inner-pos optional
+	argument is currently parsed but ignored because I'm not sure how
+	LyX wants it.
+	Known bug: if the paragraph ends '\end{minipage}%', then the '%'
+	causes the next paragraph to be concatenated with this one. This is
+	a generic reLyX bug that I'll try and track down.
+
+2003-02-10  Angus Leeming  <leeming@lyx.org>
+
+	* reLyX/syntax.default: fix natbib commands that LyX will only allow
+	a single optional arg for.
+
 2003-02-08  John Levon  <levon@movementarian.org>
 
 	* chkconfig.ltx: look for dvipost package
