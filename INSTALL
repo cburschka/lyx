@@ -313,8 +313,19 @@ notify us.
     then you need to upgrade the version of the xforms library you have
     installed.
 
+  o If you are using RedHat 7.0 and the option --with-frontend=kde, you
+    will need to configure LyX as follows :
+
+	export QTDIR=/usr/lib/qt-1.45
+	export CC="egcs -L/usr/lib"
+	export CXX="egcs++ -L/usr/lib"
+	./configure --with-frontend=kde 
+
+    If you your version of gcc-c++ is > 2.96-69, you may not need to do
+    this.
+
   o If you have GNU gettext installed on your system (e.g. on linux),
-    you will get tons of warnings like:
+    you may get tons of warnings like:
 
     bullet_forms.C:101: warning: passing `char *' to argument 1 of
     `__builtin_constant_p(int)' lacks a cast
