@@ -21,9 +21,7 @@ LYX_LIB_ERROR(forms.h,forms)])])
 lyx_cv_flimage_h_location="<flimage.h>"
 AC_CHECK_HEADER(X11/flimage.h,[
   ac_cv_header_flimage_h=yes
-  lyx_cv_flimage_h_location="<X11/flimage.h>"],[
-AC_CHECK_HEADER(flimage.h,[],[
-LYX_LIB_ERROR(flimage.h,forms)])])
+  lyx_cv_flimage_h_location="<X11/flimage.h>"],)
 AC_DEFINE_UNQUOTED(FORMS_IMAGE_H_LOCATION,$lyx_cv_flimage_h_location)
  
 AC_DEFINE_UNQUOTED(FORMS_H_LOCATION,$lyx_cv_forms_h_location)
