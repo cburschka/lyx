@@ -357,6 +357,9 @@ void QPrefsDialog::updateConverters()
 			ccit->To->prettyname());
 		convertmod->convertersLB->insertItem(toqstr(name));
 	}
+
+	if (convertmod->convertersLB->currentItem() == -1)
+		convertmod->convertersLB->setCurrentItem(0);
 }
 
 
@@ -423,6 +426,9 @@ void QPrefsDialog::updateFormats()
 	for (; cit != end; ++cit) {
 		formatmod->formatsLB->insertItem(toqstr(cit->prettyname()));
 	}
+
+	if (formatmod->formatsLB->currentItem() == -1)
+		formatmod->formatsLB->setCurrentItem(0);
 }
 
 

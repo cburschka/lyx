@@ -261,8 +261,8 @@ void QPrefs::apply()
 		controller().updateScreenFonts();
 	}
 
-	controller().setConverters(converters_);
 	controller().setFormats(formats_);
+	controller().setConverters(converters_);
 
 	QPrefColorsModule * colmod(dialog_->colorsModule);
 
