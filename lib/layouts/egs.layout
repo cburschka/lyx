@@ -643,8 +643,7 @@ End
 Style Bibliography
   Margin		First_Dynamic
   LatexType		Item_Environment
-#  LatexName		lyxsectionbibliography
-  LatexName		lyxbibliography
+  LatexName		thebibliography
   NextNoIndent		1
   LeftMargin		MM
   ParSkip		0.4
@@ -654,7 +653,7 @@ Style Bibliography
   ParSep		0.5
   Align			Block
   AlignPossible		Block, Left
-  LabelType		Top_Environment
+  LabelType		Bibliography
   LabelString		References 
   LabelBottomSep    0.7
 
