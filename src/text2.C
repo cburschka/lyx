@@ -1769,7 +1769,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	bool left_side = false;
 
 	pos_type body_pos = rit_par->beginningOfBody();
-	float last_tmpx = tmpx;
+	int last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
 	    (body_pos - 1 > last ||
@@ -1778,7 +1778,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 
 	// check for empty row
 	if (!rit_par->size()) {
-		x = int(tmpx);
+		x = tmpx;
 		return 0;
 	}
 
@@ -1802,7 +1802,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		} else if (rit_par->isSeparator(c)) {
 			tmpx += singleWidth(rit_par, c);
 			if (c >= body_pos)
-				tmpx+= fill_separator;
+				tmpx += fill_separator;
 		} else {
 			tmpx += singleWidth(rit_par, c);
 		}
@@ -1865,8 +1865,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 
 void LyXText::setCursorFromCoordinates(int x, int y)
 {
-	LyXCursor old_cursor = cursor;
-
+	//LyXCursor old_cursor = cursor;
 	setCursorFromCoordinates(cursor, x, y);
 	setCurrentFont();
 #warning DEPM disabled, otherwise crash when entering new table

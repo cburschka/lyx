@@ -814,7 +814,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
 
-	if (cmd.action == LFUN_INSET_EDIT) {
+	switch (cmd.action) {
+	case LFUN_INSET_EDIT: {
 		UpdatableInset::localDispatch(cmd);
 
 		if (!bv->lockInset(this)) {
@@ -878,18 +879,19 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
+	case LFUN_MOUSE_PRESS:
+		lfunMousePress(cmd);
+		return DISPATCHED;
 
-	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
-			lfunMousePress(cmd);
-			return DISPATCHED;
-		case LFUN_MOUSE_MOTION:
-			lfunMouseMotion(cmd);
-			return DISPATCHED;
-		case LFUN_MOUSE_RELEASE:
-			return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
-		default:
-			break;
+	case LFUN_MOUSE_MOTION:
+		lfunMouseMotion(cmd);
+		return DISPATCHED;
+
+	case LFUN_MOUSE_RELEASE:
+		return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
+
+	default:
+		break;
 	}
 
 	bool was_empty = (paragraphs.begin()->empty() &&

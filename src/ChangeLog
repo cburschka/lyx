@@ -3,6 +3,14 @@
 
 	* rowpainter.C: remove unused variables
 
+	* tabular_funcs.C:
+	* tabular_funcs.h: move to tabular.C
+	* Makefile.am: adjust
+
+	* tabular.[Ch]: basic optical cleaning
+
+	* author.h: pass references, not values
+
 2003-07-18  André Pönitz  <poenitz@gmx.net>
 
 	* lyxtext.h:

@@ -20,8 +20,8 @@ class Author {
 public:
 	Author() {}
 
-	Author(string n, string e)
-		: name_(n), email_(e) {}
+	Author(string const & name, string const & email)
+		: name_(name), email_(email) {}
 
 	string const name() const {
 		return name_;

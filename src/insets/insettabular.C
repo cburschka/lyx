@@ -320,7 +320,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				drawCellSelection(pi.pain, nx, y, i, j, cell);
 			}
 
-			tabular.getCellInset(cell)->draw(pi, cx, y);
+			tabular.getCellInset(cell).draw(pi, cx, y);
 			drawCellLines(pi.pain, nx, y, i, cell);
 			nx += tabular.getWidthOfColumn(cell);
 			++cell;
@@ -457,16 +457,16 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (!inset)
 		return false;
 	oldcell = -1;
-	if (inset == tabular.getCellInset(actcell)) {
+	if (inset == &tabular.getCellInset(actcell)) {
 		lyxerr[Debug::INSETTEXT] << "OK" << endl;
-		the_locking_inset = tabular.getCellInset(actcell);
+		the_locking_inset = &tabular.getCellInset(actcell);
 		resetPos(bv);
 		return true;
 	} else if (!the_locking_inset) {
 		int const n = tabular.getNumberOfCells();
 		int const id = inset->id();
 		for (int i = 0; i < n; ++i) {
-			InsetText * in = tabular.getCellInset(i);
+			InsetText * in = &tabular.getCellInset(i);
 			if (inset == in) {
 				actcell = i;
 				the_locking_inset = in;
@@ -633,9 +633,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	}
 
 	if (inset_hit && bv->theLockingInset()) {
-		if (!bv->lockInset(static_cast<UpdatableInset*>
-				(tabular.getCellInset(actcell))))
-		{
+		if (!bv->lockInset(&tabular.getCellInset(actcell))) {
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			return;
 		}
@@ -1230,7 +1228,7 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 	// change so I'll try this to have a boost, but who knows ;) (Jug?)
 	// This is _really_ important (André)
 	if (need_update != INIT &&
-	    the_locking_inset == tabular.getCellInset(actcell)) {
+	    the_locking_inset == &tabular.getCellInset(actcell)) {
 		int maxAsc = 0;
 		int maxDesc = 0;
 		for (int j = 0; j < tabular.columns(); ++j) {
@@ -1238,7 +1236,7 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 			MetricsInfo m = mi;
 			m.base.textwidth =
 				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
-			tabular.getCellInset(actrow, j)->metrics(m, dim);
+			tabular.getCellInset(actrow, j).metrics(m, dim);
 			maxAsc  = max(dim.asc, maxAsc);
 			maxDesc = max(dim.des, maxDesc);
 		}
@@ -1262,7 +1260,7 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 			MetricsInfo m = mi;
 			m.base.textwidth =
 				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
-			tabular.getCellInset(cell)->metrics(m, dim);
+			tabular.getCellInset(cell).metrics(m, dim);
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
 			changed = tabular.setWidthOfCell(cell, dim.wid) || changed;
@@ -1543,7 +1541,7 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 		++actcell;
 	}
 	if (lock) {
-		bool rtl = tabular.getCellInset(actcell)->paragraphs.begin()->
+		bool rtl = tabular.getCellInset(actcell).paragraphs.begin()->
 			isRightToLeftPar(bv->buffer()->params);
 		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
@@ -1572,7 +1570,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 		--actcell;
 	}
 	if (lock) {
-		bool rtl = tabular.getCellInset(actcell)->paragraphs.begin()->
+		bool rtl = tabular.getCellInset(actcell).paragraphs.begin()->
 			isRightToLeftPar(bv->buffer()->params);
 		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
@@ -1598,11 +1596,10 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 		int sel_col_start;
 		int sel_col_end;
 		getSelection(sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-		for(int i = sel_row_start; i <= sel_row_end; ++i) {
-			for(int j = sel_col_start; j <= sel_col_end; ++j) {
-				tabular.getCellInset(i, j)->setFont(bv, font, tall, true);
-			}
-		}
+		for(int i = sel_row_start; i <= sel_row_end; ++i)
+			for(int j = sel_col_start; j <= sel_col_end; ++j)
+				tabular.getCellInset(i, j).setFont(bv, font, tall, true);
+
 		if (!frozen)
 			unFreezeUndo();
 		if (selectall)
@@ -1731,11 +1728,8 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			// until later (see InsetText::do_resize)
 			unlockInsetInInset(bv, the_locking_inset);
 
-			int cell;
-			for (int i = 0; i < tabular.rows(); ++i) {
-				cell = tabular.getCellNumber(i,column);
-				tabular.getCellInset(cell)->resizeLyXText(bv);
-			}
+			for (int i = 0; i < tabular.rows(); ++i)
+				tabular.getCellInset(i, column).resizeLyXText(bv);
 			updateLocal(bv, INIT);
 		}
 
@@ -1760,10 +1754,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			// until later (see InsetText::do_resize)
 			unlockInsetInInset(bv, the_locking_inset);
 
-			for (int i = 0; i < tabular.rows(); ++i) {
-				tabular.getCellInset(tabular.getCellNumber(i, column))->
-					resizeLyXText(bv);
-			}
+			for (int i = 0; i < tabular.rows(); ++i)
+				tabular.getCellInset(i, column).resizeLyXText(bv);
+
 			updateLocal(bv, INIT);
 		}
 	}
@@ -2030,16 +2023,15 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
 	mouse_button::state button, bool behind)
 {
-	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular.getCellInset(actcell));
+	UpdatableInset & inset = tabular.getCellInset(actcell);
 	if (behind) {
 #warning metrics?
-		x = inset->x() + inset->width();
-		y = inset->descent();
+		x = inset.x() + inset.width();
+		y = inset.descent();
 	}
 	//inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
 	//inset_y = cursory_;
-	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
+	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, CELL);
@@ -2071,13 +2063,10 @@ void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
 {
-	if (force) {
-		for(int i = 0; i < tabular.rows(); ++i) {
-			for(int j = 0; j < tabular.columns(); ++j) {
-				tabular.getCellInset(i, j)->resizeLyXText(bv, true);
-			}
-		}
-	}
+	if (force)
+		for(int i = 0; i < tabular.rows(); ++i)
+			for(int j = 0; j < tabular.columns(); ++j)
+				tabular.getCellInset(i, j).resizeLyXText(bv, true);
 	need_update = FULL;
 }
 
@@ -2102,10 +2091,10 @@ bool InsetTabular::showInsetDialog(BufferView * bv) const
 void InsetTabular::openLayoutDialog(BufferView * bv) const
 {
 	if (the_locking_inset) {
-		InsetTabular * i = static_cast<InsetTabular *>
+		InsetTabular * inset = static_cast<InsetTabular *>
 			(the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE));
-		if (i) {
-			i->openLayoutDialog(bv);
+		if (inset) {
+			inset->openLayoutDialog(bv);
 			return;
 		}
 	}
@@ -2326,28 +2315,27 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 		return false;
 
 	for (int r1 = 0, r2 = actrow;
-	     (r1 < paste_tabular->rows()) && (r2 < tabular.rows());
+	     r1 < paste_tabular->rows() && r2 < tabular.rows();
 	     ++r1, ++r2) {
-		for(int c1 = 0, c2 = actcol;
-		    (c1 < paste_tabular->columns()) && (c2 < tabular.columns());
+		for (int c1 = 0, c2 = actcol;
+		    c1 < paste_tabular->columns() && c2 < tabular.columns();
 		    ++c1, ++c2) {
-			if (paste_tabular->isPartOfMultiColumn(r1,c1) &&
-			    tabular.isPartOfMultiColumn(r2,c2))
+			if (paste_tabular->isPartOfMultiColumn(r1, c1) &&
+			    tabular.isPartOfMultiColumn(r2, c2))
 				continue;
-			if (paste_tabular->isPartOfMultiColumn(r1,c1)) {
+			if (paste_tabular->isPartOfMultiColumn(r1, c1)) {
 				--c2;
 				continue;
 			}
-			if (tabular.isPartOfMultiColumn(r2,c2)) {
+			if (tabular.isPartOfMultiColumn(r2, c2)) {
 				--c1;
 				continue;
 			}
-			int const n1 = paste_tabular->getCellNumber(r1, c1);
-			int const n2 = tabular.getCellNumber(r2, c2);
-			*(tabular.getCellInset(n2)) = *(paste_tabular->getCellInset(n1));
-			tabular.getCellInset(n2)->setOwner(this);
-			tabular.getCellInset(n2)->deleteLyXText(bv);
-			tabular.getCellInset(n2)->markNew();
+			InsetText & inset = tabular.getCellInset(r2, c2);
+			inset = paste_tabular->getCellInset(r1, c1);
+			inset.setOwner(this);
+			inset.deleteLyXText(bv);
+			inset.markNew();
 		}
 	}
 	return true;
@@ -2375,11 +2363,9 @@ bool InsetTabular::cutSelection(BufferParams const & bp)
 	if (sel_cell_start > sel_cell_end) {
 		swap(sel_cell_start, sel_cell_end);
 	}
-	for (int i = sel_row_start; i <= sel_row_end; ++i) {
-		for (int j = sel_col_start; j <= sel_col_end; ++j) {
-			tabular.getCellInset(tabular.getCellNumber(i, j))->clear(bp.tracking_changes);
-		}
-	}
+	for (int i = sel_row_start; i <= sel_row_end; ++i)
+		for (int j = sel_col_start; j <= sel_col_end; ++j)
+			tabular.getCellInset(tabular.getCellNumber(i, j)).clear(bp.tracking_changes);
 	return true;
 }
 
@@ -2434,7 +2420,7 @@ void InsetTabular::getSelection(int & srow, int & erow,
 ParagraphList * InsetTabular::getParagraphs(int i) const
 {
 	return (i < tabular.getNumberOfCells())
-		? tabular.getCellInset(i)->getParagraphs(0)
+		? tabular.getCellInset(i).getParagraphs(0)
 		: 0;
 }
 
@@ -2454,7 +2440,7 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 
 	for (int i = 0; i < tabular.rows(); ++i) {
 		for (int j = 0; j < tabular.columns(); ++j) {
-			Inset * inset = tabular.getCellInset(i, j)->getInsetFromID(id_arg);
+			Inset * inset = tabular.getCellInset(i, j).getInsetFromID(id_arg);
 			if (inset)
 				return inset;
 		}
@@ -2482,7 +2468,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	}
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	tabular.getCellInset(actcell)
-		->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+		.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	WordLangTuple word(selectNextWordInt(bv, value));
 	nodraw(false);
 	if (!word.word().empty())
@@ -2508,7 +2494,7 @@ WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) co
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	++actcell;
 	tabular.getCellInset(actcell)
-		->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+		.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	return selectNextWordInt(bv, value);
 }
 
@@ -2530,7 +2516,7 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 void InsetTabular::markErased()
 {
 	for (int cell = 0; cell < tabular.getNumberOfCells(); ++cell)
-		tabular.getCellInset(cell)->markErased();
+		tabular.getCellInset(cell).markErased();
 }
 
 
@@ -2545,15 +2531,15 @@ bool InsetTabular::nextChange(BufferView * bv, lyx::pos_type & length)
 			return false;
 		++actcell;
 	}
-	InsetText * inset = tabular.getCellInset(actcell);
-	if (inset->nextChange(bv, length)) {
+	InsetText & inset = tabular.getCellInset(actcell);
+	if (inset.nextChange(bv, length)) {
 		updateLocal(bv, FULL);
 		return true;
 	}
 	while (!tabular.isLastCell(actcell)) {
 		++actcell;
-		inset = tabular.getCellInset(actcell);
-		if (inset->nextChange(bv, length)) {
+		InsetText & inset = tabular.getCellInset(actcell);
+		if (inset.nextChange(bv, length)) {
 			updateLocal(bv, FULL);
 			return true;
 		}
@@ -2575,15 +2561,15 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 			return false;
 		cell = actcell + 1;
 	}
-	InsetText * inset = tabular.getCellInset(cell);
-	if (inset->searchForward(bv, str, cs, mw)) {
+	InsetText & inset = tabular.getCellInset(cell);
+	if (inset.searchForward(bv, str, cs, mw)) {
 		updateLocal(bv, FULL);
 		return true;
 	}
 	while (!tabular.isLastCell(cell)) {
 		++cell;
-		inset = tabular.getCellInset(cell);
-		if (inset->searchForward(bv, str, cs, mw)) {
+		InsetText & inset = tabular.getCellInset(cell);
+		if (inset.searchForward(bv, str, cs, mw)) {
 			updateLocal(bv, FULL);
 			return true;
 		}
@@ -2606,8 +2592,8 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 
 	while (cell) {
 		--cell;
-		InsetText * inset = tabular.getCellInset(cell);
-		if (inset->searchBackward(bv, str, cs, mw)) {
+		InsetText & inset = tabular.getCellInset(cell);
+		if (inset.searchBackward(bv, str, cs, mw)) {
 			updateLocal(bv, CELL);
 			return true;
 		}
@@ -2704,10 +2690,10 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		case '\t':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				InsetText * ti = loctab->getCellInset(cell);
-				LyXFont const font = ti->getLyXText(bv)->
-					getFont(bv->buffer(), ti->paragraphs.begin(), 0);
-				ti->setText(buf.substr(op, p - op), font);
+				InsetText & inset = loctab->getCellInset(cell);
+				LyXFont const font = inset.getLyXText(bv)->
+					getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+				inset.setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
 			}
@@ -2715,10 +2701,10 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		case '\n':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				InsetText * ti = loctab->getCellInset(cell);
-				LyXFont const font = ti->getLyXText(bv)->
-					getFont(bv->buffer(), ti->paragraphs.begin(), 0);
-				ti->setText(buf.substr(op, p - op), font);
+				InsetText & inset = tabular.getCellInset(cell);
+				LyXFont const font = inset.getLyXText(bv)->
+					getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+				inset.setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
 			++row;
@@ -2731,10 +2717,10 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	}
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
-		InsetText * ti = loctab->getCellInset(cell);
-		LyXFont const font = ti->getLyXText(bv)->
-			getFont(bv->buffer(), ti->paragraphs.begin(), 0);
-		ti->setText(buf.substr(op, len - op), font);
+		InsetText & inset = loctab->getCellInset(cell);
+		LyXFont const font = inset.getLyXText(bv)->
+			getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+		inset.setText(buf.substr(op, len - op), font);
 	}
 
 	return true;
@@ -2745,11 +2731,9 @@ void InsetTabular::addPreview(PreviewLoader & loader) const
 {
 	int const rows = tabular.rows();
 	int const columns = tabular.columns();
-	for (int i = 0; i < rows; ++i) {
-		for (int j = 0; j < columns; ++j) {
-			tabular.getCellInset(i,j)->addPreview(loader);
-		}
-	}
+	for (int i = 0; i < rows; ++i)
+		for (int j = 0; j < columns; ++j)
+			tabular.getCellInset(i, j).addPreview(loader);
 }
 
 

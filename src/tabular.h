@@ -12,21 +12,14 @@
 #ifndef TABULAR_H
 #define TABULAR_H
 
-#include "layout.h"
-#include "LString.h"
 #include "lyxlength.h"
-
 #include "insets/insettext.h"
 
 #include <iosfwd>
 #include <vector>
 
 class InsetTabular;
-class BufferParams;
-class LaTeXFeatures;
 class LatexRunParams;
-class Buffer;
-class LyXLex;
 
 /* The features the text class offers for tables */
 
@@ -183,8 +176,6 @@ public:
 	///
 	explicit
 	LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
-	///
-	LyXTabular * clone(BufferParams const &, InsetTabular *);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(int cell, bool onlycolumn = false) const;
@@ -224,28 +215,28 @@ public:
 	bool setDescentOfRow(int row, int height);
 	/// Returns true if a complete update is necessary, otherwise false
 	bool setWidthOfCell(int cell, int new_width);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setAllLines(int cell, bool line);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setTopLine(int cell, bool line, bool onlycolumn = false);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setBottomLine(int cell, bool line, bool onlycolumn = false);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setLeftLine(int cell, bool line, bool onlycolumn = false);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setRightLine(int cell, bool line, bool onlycolumn = false);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setAlignment(int cell, LyXAlignment align,
+	///
+	void setAllLines(int cell, bool line);
+	///
+	void setTopLine(int cell, bool line, bool onlycolumn = false);
+	///
+	void setBottomLine(int cell, bool line, bool onlycolumn = false);
+	///
+	void setLeftLine(int cell, bool line, bool onlycolumn = false);
+	///
+	void setRightLine(int cell, bool line, bool onlycolumn = false);
+	/// 
+	void setAlignment(int cell, LyXAlignment align,
 			  bool onlycolumn = false);
-	/// Returns true if a complete update is necessary, otherwise false
-	bool setVAlignment(int cell, VAlignment align,
+	/// 
+	void setVAlignment(int cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	bool setColumnPWidth(int cell, LyXLength const & width);
+	void setColumnPWidth(int cell, LyXLength const & width);
 	///
 	bool setMColumnPWidth(int cell, LyXLength const & width);
 	///
-	bool setAlignSpecial(int cell, string const & special, Feature what);
+	void setAlignSpecial(int cell, string const & special, Feature what);
 	///
 	LyXAlignment getAlignment(int cell, bool onlycolumn = false) const;
 	///
@@ -369,9 +360,9 @@ public:
 	///
 	// end longtable support
 	///
-	InsetText * getCellInset(int cell) const;
+	InsetText & getCellInset(int cell) const;
 	///
-	InsetText * getCellInset(int row, int column) const;
+	InsetText & getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
 	/// additional hint that it could be at \param maybe_cell
 	int getCellFromInset(Inset const * inset, int maybe_cell = -1) const;
@@ -423,7 +414,7 @@ public:
 		///
 		InsetText inset;
 	};
-	cellstruct * cellinfo_of_cell(int cell) const;
+	cellstruct & cellinfo_of_cell(int cell) const;
 	///
 	typedef std::vector<cellstruct> cell_vector;
 	///
@@ -520,15 +511,13 @@ public:
 	///
 	void Reinit(bool reset_widths = true);
 	///
-	LyXTabular & operator=(LyXTabular const &);
-	///
 	void set_row_column_number_info(bool oldformat = false);
 	/// Returns true if a complete update is necessary, otherwise false
 	bool setWidthOfMulticolCell(int cell, int new_width);
 	///
 	void recalculateMulticolumnsOfColumn(int column);
 	/// Returns true if change
-	bool calculate_width_of_column(int column);
+	void calculate_width_of_column(int column);
 	///
 	bool calculate_width_of_column_NMC(int column); // no multi cells
 	///
