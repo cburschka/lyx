@@ -216,6 +216,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 		return;
 	}
 	mathcursor->getPos(x, y);
+	x = mathcursor->targetX();
 	x -= xo_;
 	y -= yo_;
 	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
@@ -238,9 +239,9 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 		return;
 	fitInsetCursor(bv);
 	int x, y, asc, des;
-	getCursorPos(bv, x, y);
+	mathcursor->getPos(x, y);
 	math_font_max_dim(font_, asc, des);
-	bv->showLockedInsetCursor(x + xo_, y, asc, des);
+	bv->showLockedInsetCursor(x, y - yo_, asc, des);
 	setCursorVisible(true);
 	//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
 }
