@@ -52,7 +52,7 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: height(0), width(0), top_row_(0), top_row_offset_(0),
+	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
 	  inset_owner(0), the_locking_inset(0), need_break_row(0),
 	  bv_owner(bv), firstrow(0), lastrow(0)
 {
@@ -61,7 +61,7 @@ LyXText::LyXText(BufferView * bv)
 
 
 LyXText::LyXText(BufferView * bv, InsetText * inset)
-	: height(0), width(0), top_row_(0), top_row_offset_(0),
+	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
 	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
 	  bv_owner(bv), firstrow(0), lastrow(0)
 {
@@ -331,13 +331,13 @@ void LyXText::removeRow(Row * row)
 		// what about refresh_y
 	}
 
-	if (top_row_ == row) {
-		if (row->next()) {
-			top_row_ = row->next();
-			top_row_offset_ -= row->height();
+	if (anchor_row_ == row) {
+		if (row_prev) {
+			anchor_row_ = row_prev;
+			anchor_row_offset_ = 0;
 		} else {
-			top_row_ = row_prev;
-			top_row_offset_ = 0;
+			anchor_row_ = row->next();
+			anchor_row_offset_ -= row->height();
 		}
 	}
 
@@ -1793,6 +1793,10 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 		cur.ix(int(x));
 	} else
 		cur.ix(cur.x());
+	//if the cursor is in a visible row, anchor to it
+	int topy = top_y();
+	if (topy < y && y < topy + bv()->workHeight()) 
+		anchor_row(row);
 }
 
 

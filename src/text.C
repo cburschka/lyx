@@ -74,14 +74,15 @@ BufferView * LyXText::bv() const
 
 int LyXText::top_y() const
 {
-	if (!top_row_)
+	if (!anchor_row_)
 		return 0;
 
 	int y = 0;
-	for (Row * row = firstrow; row && row != top_row_; row = row->next()) {
+	for (Row * row = firstrow; 
+	     row && row != anchor_row_; row = row->next()) {
 		y += row->height();
 	}
-	return y + top_row_offset_;
+	return y + anchor_row_offset_;
 }
 
 
@@ -92,10 +93,22 @@ void LyXText::top_y(int newy)
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
 	int y = newy;
-	top_row_ = getRowNearY(y);
-	top_row_offset_ = newy - y;
-	lyxerr[Debug::GUI] << "changing reference to row: " << top_row_
-	       << " offset: " << top_row_offset_ << endl;
+	anchor_row_ = getRowNearY(y);
+	anchor_row_offset_ = newy - y;
+	lyxerr[Debug::GUI] << "changing reference to row: " << anchor_row_
+	       << " offset: " << anchor_row_offset_ << endl;
+}
+
+
+void LyXText::anchor_row(Row * row)
+{
+	int old_y = top_y();
+	anchor_row_offset_ = 0;
+	anchor_row_ = row; 
+	anchor_row_offset_ = old_y - top_y();
+	lyxerr[Debug::GUI] << "anchor_row(): changing reference to row: " 
+			   << anchor_row_ << " offset: " << anchor_row_offset_ 
+			   << endl;
 }
 
 

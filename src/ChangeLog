@@ -1,4 +1,10 @@
 2003-03-18  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxtext.h:
+	* text.C:
+	* text2.C: anchor row on setCursor
+
+2003-03-18  Alfredo Braunstein  <abraunst@libero.it>
  
  	* lyxtext.h: remove almost all mutable keywords
  	* text.C:

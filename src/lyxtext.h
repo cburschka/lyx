@@ -84,17 +84,20 @@ public:
 	/// the current font
 	LyXFont real_current_font;
 private:
-	/** the first visible row on screen
+	/** the 'anchor' row: the position of this row remains constant
+	 *  with respect to the top of the screen
 	 */
-	Row * top_row_;
+	Row * anchor_row_;
 	/** the pixel offset with respect to this row of top_y
 	 */
-	int top_row_offset_;
+	int anchor_row_offset_;
 public:
 	/// get the y coord. of the top of the screen (relative to doc start)
 	int top_y() const;
-	/// set it
+	/// set the y coord. of the top of the screen (relative to doc start)
 	void top_y(int newy);
+	/// set the anchoring row. top_y will be computed relative to this
+	void anchor_row(Row * row);
 	///
 	InsetText * inset_owner;
 	///
