@@ -815,7 +815,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #else
 			int const tmpret2 = int(pow(2.0, tmpret));
 #endif
-			lyxerr << "Tmpret2 = " << tmpret2 << endl;
+			//lyxerr << "Tmpret2 = " << tmpret2 << endl;
 			par->align = LyXAlignment(tmpret2);
 		}
 	} else if (token == "\\added_space_top") {
