@@ -1,3 +1,8 @@
+2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView2.C (ChangeRefsIfUnique): use standard version of
+	count.
+
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* bufferlist.C (readFile): create the buffer _after_ checking that

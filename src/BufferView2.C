@@ -650,9 +650,10 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 {
 	// Check if the label 'from' appears more than once
 	vector<string> labels = buffer()->getLabelList();
-	// count is broken on some systems, so use the HP version
-	int res;
-	count(labels.begin(), labels.end(), from, res);
+	// count is broken on some systems, so use the HP version (anon)
+	// Which does not exist on certain systems, so _we_
+	// use the standard version. (Lgb)
+	int res = count(labels.begin(), labels.end(), from);
 	if (res > 1)
 		return false;
 
