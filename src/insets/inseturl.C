@@ -10,6 +10,7 @@
 #include "LyXView.h"
 #include "debug.h"
 #include "frontends/Dialogs.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 
 using std::ostream;
@@ -83,8 +84,8 @@ int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
 
 int InsetUrl::docbook(Buffer const *, ostream & os) const
 {
-	os << "<ulink url=\"" << getContents() << "\">"
-	   << getOptions() << "</ulink>";
+	os << "<ulink url=\"" << subst(getContents(),"&","&amp;")
+	   << "\">" << getOptions() << "</ulink>";
 	return 0;
 }
 

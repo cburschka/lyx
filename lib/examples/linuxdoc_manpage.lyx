@@ -1,0 +1,193 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass manpage
+\options title="LyX" sectnum="1"
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth -2
+\tocdepth -1
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Section
+
+Name
+\layout Standard
+
+lyx - A Document Processor
+\layout Section
+
+Synopsis
+\layout Standard
+
+lyx [ command-line switches] [name.lyx ...
+ ] 
+\layout Section
+
+Description
+\layout Standard
+
+
+\emph on 
+LyX
+\emph default 
+ is too complex to be described completely in the "man" page format.
+ If your system is properly configured, you can access the full documentation
+ within 
+\emph on 
+LyX
+\emph default 
+ under the Help menu.
+ 
+\layout Standard
+
+
+\emph on 
+LyX
+\emph default 
+ is a modern approach of writing documents with a computer which breaks
+ with the tradition of the obsolete typewriter concept.
+ It is designed for people who want a professional output with a minimum
+ of time effort, without becoming specialists in typesetting.
+ Compared to common word processors, 
+\emph on 
+LyX
+\emph default 
+ will increase the productivity a lot, since most of the typesetting will
+ be done by the computer, not the author.
+ With 
+\emph on 
+LyX
+\emph default 
+ the author can concentrate on the contents of his writing, since the computer
+ will take care of the look.
+ Read more about this concept in the online documentation under the Help
+ menu.
+ 
+\layout Standard
+
+Currently, 
+\emph on 
+LyX
+\emph default 
+ uses the XForms library as a toolkit.
+ 
+\emph on 
+LyX
+\emph default 
+ should run everywhere, where XForms runs.
+ This is on all major Unix platforms as well as some PC platforms, including
+ Sun, SGI, HP, Compaq Tru64, IBM RS6000, Convex, Cray, i386/Linux, Alpha/Linux,
+ i386/FreeBSD, i386/NetBSD, DecSystem(mips)/Ultrix, OS/2 with XFree or PMX
+ and others.
+ 
+\layout Section
+
+Options
+\layout Standard
+
+
+\emph on 
+LyX
+\emph default 
+ supports the following command-line switches, which can also be specified
+ as X resources (e.
+ g.
+ in .Xdefaults) with class name 
+\emph on 
+LyX
+\emph default 
+: 
+\layout Description
+
+-help summarizes LyX usage
+\layout Description
+
+-sysdir directory sets system directory.
+ Normally not needed.
+\layout Description
+
+-userdir directory sets user directory.
+ Needed if you want to use LyX with different lyxrc settings.
+\layout Description
+
+-geometry WxH+X+Y specifies the preferred size and position of the main
+ LyX window; see X(1).
+\layout Description
+
+-dbg feature[,feature...] where feature is a name or number.
+ Use "lyx -dbg" to see the list of available debug features.
+\layout Description
+
+-x [--execute] command where command is a lyx command.
+\layout Description
+
+-e [--export] fmt where fmt is the export format of choice.
+\layout Description
+
+-i [--import] fmt file.xxx where fmt is the import format of choice and file.xxx
+ is the file to be imported.
+ 
+\layout Standard
+
+Furthermore, LyX understands the following generic command line options
+ from the Forms Library: 
+\layout Description
+
+-display host:display specifies the server to connect to.
+\layout Description
+
+-bw borderwidth specifies the border width to use to built-in objects.
+\layout Description
+
+-visual visualName requests a visual by name such as TrueColor etc.
+ By default the Forms Library always selects the visual that has the most
+ depth.
+\layout Description
+
+-depth depth requests a specific depth.
+ Try "-depth best" or "-depth 8" if you get a bad match.
+\layout Description
+
+-debug level generates some info about the state of the XForms.
+ where level is an integer between 1-5 and controls the amount of information
+ to output.
+ Depending on the options used when the Forms Library was built, a level
+ more than 3 might not be available.
+\layout Description
+
+-sync runs the application in synchronous mode with debug level set to 4.
+\layout Description
+
+-private requests a private colormap for the application.
+\layout Description
+
+-shared requests a shared colormap even if the application needs more colors
+ than available.
+ For those colors that can't be allocated in the shared colormap, substitutions
+ are made so the closest matching color is used.
+\layout Description
+
+-stdcmap requests a standard colormap.
+\layout Description
+
+-name newname specifies the application name under which resources are to
+ be obtained, rather than the default executable file name.
+ 
+\the_end
