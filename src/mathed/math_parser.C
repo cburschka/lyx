@@ -69,14 +69,12 @@ following hack as starting point to write some macros:
 #include "support/lstrings.h"
 
 #include <cctype>
-#include <stack>
 #include <algorithm>
 
 using std::istream;
 using std::ostream;
 using std::ios;
 using std::endl;
-using std::stack;
 using std::fill;
 using std::vector;
 using std::atoi;
@@ -156,7 +154,7 @@ void catInit()
 	theCatcode[''] = catIgnore;
 	theCatcode[' ']  = catSpace;
 	theCatcode['\t'] = catSpace;
-	theCatcode['\r'] = catSpace;
+	theCatcode['\r'] = catNewline;
 	theCatcode['~']  = catActive;
 	theCatcode['%']  = catComment;
 }
@@ -184,8 +182,6 @@ public:
 	char character() const { return char_; }
 	///
 	string asString() const;
-	///
-	bool isCR() const;
 
 private:
 	///
@@ -195,11 +191,6 @@ private:
 	///
 	CatCode cat_;
 };
-
-bool Token::isCR() const
-{
-	return cs_ == "\\" || cs_ == "cr" || cs_ == "crcr";
-}
 
 string Token::asString() const
 {
@@ -371,6 +362,17 @@ string Parser::getArg(char left, char right)
 }
 
 
+void Parser::skipSpaceTokens(istream & is, char c)
+{
+	// skip trailing spaces
+	while (catcode(c) == catSpace || catcode(c) == catNewline)
+		if (!is.get(c))
+			break;
+	//lyxerr << "putting back: " << c << "\n";
+	is.putback(c);
+}
+
+
 void Parser::tokenize(istream & is)
 {
 	// eat everything up to the next \end_inset or end of stream
@@ -387,17 +389,6 @@ void Parser::tokenize(istream & is)
 
 	// tokenize buffer
 	tokenize(s);
-}
-
-
-void Parser::skipSpaceTokens(istream & is, char c)
-{
-	// skip trailing spaces
-	while (catcode(c) == catSpace || catcode(c) == catNewline)
-		if (!is.get(c))
-			break;
-	//lyxerr << "putting back: " << c << "\n";
-	is.putback(c);
 }
 
 
@@ -423,7 +414,7 @@ void Parser::tokenize(string const & buffer)
 				if (catcode(c) == catNewline)
 					; //push_back(Token("par"));
 				else {
-					push_back(Token(' ', catSpace));
+					push_back(Token('\n', catNewline));
 					is.putback(c);
 				}
 				break;
@@ -618,6 +609,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathCharInset(t.character())));
 
 		else if (t.cat() == catSpace && !mathmode)
+			cell->push_back(MathAtom(new MathCharInset(t.character())));
+
+		else if (t.cat() == catNewline && !mathmode)
 			cell->push_back(MathAtom(new MathCharInset(t.character())));
 
 		else if (t.cat() == catParameter) {
@@ -1065,8 +1059,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 			else {
 				MathAtom p = createMathInset(t.cs());
+				bool mode = mathmode;
+				if (mathmode && p->currentMode() == MathInset::TEXT_MODE)
+					mode = false;
+				if (!mathmode && p->currentMode() == MathInset::MATH_MODE)
+					mode = true;
 				for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
-					parse(p->cell(i), FLAG_ITEM, mathmode);
+					parse(p->cell(i), FLAG_ITEM, mode);
 				cell->push_back(p);
 			}
 		}

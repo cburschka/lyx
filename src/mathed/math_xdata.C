@@ -50,38 +50,11 @@ Dimension const & MathXArray::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathXArray::metricsExternal(MathMetricsInfo & mi,
-	std::vector<Dimension> & v) const
-{
-	//if (clean_)
-	//	return;
-
-	clean_  = true;
-	drawn_  = false;
-
-	if (empty()) {
-		mathed_char_dim(mi.base.font, 'I', dim_);
-		return;
-	}
-
-	dim_.clear();
-	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		MathInset const * p = it->nucleus();
-		p->metrics(mi);
-		v.push_back(p->dimensions());
-	}
-	//for (int i = 0; i < size(); ++i)
-	//	lyxerr << "i: " << i << "  dim: " << v[i] << endl;
-	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
-}
-
-
 void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
-
-	//lyxerr << "x: " << x << " y: " << y << " " << pain.workAreaHeight() << endl;
+	//lyxerr << "MathXArray::draw: x: " << x << " y: " << y << endl;
 
 	xo_    = x;
 	yo_    = y;
@@ -96,44 +69,14 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 	if (x >= pi.pain.paperWidth())              // don't draw right of workarea
 		return;
 
-	const_iterator it = begin(), et = end();
-
-	if (it == et) {
+	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
 		return;
 	}
 
-	for (; it != et; ++it) {
+	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->draw(pi, x, y);
 		x += (*it)->width();
-	}
-}
-
-
-void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
-	std::vector<Row> const & v) const
-{
-	//for (size_type r = 0; r < v.size(); ++r)
-	//	lyxerr << "row " << r << " to: " << v[r].end << endl; 
-	//lyxerr << " data: " << *this << endl;
-
-	xo_    = x;
-	yo_    = y;
-
-	for (size_type r = 0; r < v.size(); ++r) {
-		int xx = x;
-		int yy = y + v[r].yo;
-		for (size_type pos = v[r].begin; pos < v[r].end && pos < size(); ++pos) {
-			//lyxerr << "drawing pos " << pos << " of " << size() 
-			//	<< " " << int(operator[](pos)->getChar()) << endl;
-			MathInset const * p = operator[](pos).nucleus();
-			// insert extra glue if necessary
-			if (p->getChar() == ' ') 
-				xx += v[r].glue;
-			// ordinary case
-			p->draw(pi, xx, yy);
-			xx += p->width();
-		}
 	}
 }
 
@@ -155,19 +98,14 @@ void MathXArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
-
 	//lyxerr << "x: " << x << " y: " << y << " " << pain.workAreaHeight() << endl;
-
 	xo_    = x;
 	yo_    = y;
 	drawn_ = true;
 
-	const_iterator it = begin(), et = end();
-
-	for (; it != et; ++it) {
-		MathInset const * p = it->nucleus();
-		p->drawT(pain, x, y);
-		x += p->width();
+	for (const_iterator it = begin(), et = end(); it != et; ++it) {
+		(*it)->drawT(pain, x, y);
+		x += (*it)->width();
 	}
 }
 
@@ -282,3 +220,10 @@ void MathXArray::towards(int & x, int & y) const
 	x = cx + int(r * (x - cx));
 	y = cy + int(r * (y - cy));
 }
+
+
+std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
+{
+	os << ar.data();
+}
+

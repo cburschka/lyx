@@ -8,6 +8,7 @@
 #include "math_casesinset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
+#include "math_ertinset.h"
 #include "math_fboxinset.h"
 #include "math_fontinset.h"
 #include "math_fontoldinset.h"
@@ -180,9 +181,39 @@ latexkeys const * in_word_set(string const & str)
 MathAtom createMathInset(string const & s)
 {
 	lyxerr[Debug::MATHED] << "creating inset with name: '" << s << "'\n";
+	latexkeys const * l = in_word_set(s);
+	if (l) {
+		string const & inset = l->inset;
+		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'\n";
+		if (inset == "ref")
+			return MathAtom(new RefInset(l->name));
+		if (inset == "underset")
+			return MathAtom(new MathUndersetInset);
+		if (inset == "decoration")
+			return MathAtom(new MathDecorationInset(l));
+		if (inset == "space")
+			return MathAtom(new MathSpaceInset(l->name));
+		if (inset == "dots")
+			return MathAtom(new MathDotsInset(l));
+		if (inset == "mbox")
+			return MathAtom(new MathBoxInset(l->name));
+		if (inset == "parbox")
+			return MathAtom(new MathParboxInset);
+		if (inset == "fbox")
+			return MathAtom(new MathFboxInset(l));
+		if (inset == "style")
+			return MathAtom(new MathSizeInset(l));
+		if (inset == "font")
+			return MathAtom(new MathFontInset(l));
+		if (inset == "oldfont")
+			return MathAtom(new MathFontOldInset(l));
+		if (inset == "matrix")
+			return MathAtom(new MathAMSArrayInset(s));
+		return MathAtom(new MathSymbolInset(l));
+	}
+
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
 		return MathAtom(new MathMacroArgument(s[1] - '0'));
-
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
@@ -214,37 +245,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathFracInset(true));
 	if (s == "lefteqn")
 		return MathAtom(new MathLefteqnInset);
-
-	latexkeys const * l = in_word_set(s);
-	if (l) {
-		string const & inset = l->inset;
-		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'\n";
-		if (inset == "ref")
-			return MathAtom(new RefInset(l->name));
-		if (inset == "underset")
-			return MathAtom(new MathUndersetInset);
-		if (inset == "decoration")
-			return MathAtom(new MathDecorationInset(l));
-		if (inset == "space")
-			return MathAtom(new MathSpaceInset(l->name));
-		if (inset == "dots")
-			return MathAtom(new MathDotsInset(l));
-		if (inset == "mbox")
-			return MathAtom(new MathBoxInset(l->name));
-		if (inset == "parbox")
-			return MathAtom(new MathParboxInset);
-		if (inset == "fbox")
-			return MathAtom(new MathFboxInset(l));
-		if (inset == "style")
-			return MathAtom(new MathSizeInset(l));
-		if (inset == "font")
-			return MathAtom(new MathFontInset(l));
-		if (inset == "oldfont")
-			return MathAtom(new MathFontOldInset(l));
-		if (inset == "matrix")
-			return MathAtom(new MathAMSArrayInset(s));
-		return MathAtom(new MathSymbolInset(l));
-	}
+	if (s == "lyxert")
+		return MathAtom(new MathErtInset);
 
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));

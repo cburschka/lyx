@@ -1,9 +1,11 @@
 #ifndef MATH_PARBOXINSET_H
 #define MATH_PARBOXINSET_H
 
-#include "math_nestinset.h"
+#include "math_textinset.h"
 
-class MathParboxInset : public MathNestInset {
+// implements support for \parbox
+
+class MathParboxInset : public MathTextInset {
 public:
 	///
 	MathParboxInset();
@@ -13,15 +15,10 @@ public:
 	MathInset * clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
-	/// get cursor position
-	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
-	/// draw selection background
-	void drawSelection(MathPainterInfo & pi,
-		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	///
 	void infoize(std::ostream & os) const;
 	///
@@ -30,21 +27,13 @@ public:
 	void setWidth(string const & width);
 	///
 	void setPosition(string const & pos);
-	/// moves cursor up or down
-	bool idxUpDown(idx_type &, pos_type & pos, bool up, int targetx) const;
 private:
-	/// number of rows on screen
-	int screenrows() const;
-	/// row corresponding to given position 
-	int pos2row(pos_type pos) const;
 	/// width on screen
 	int lyx_width_;
 	/// width for TeX
 	string tex_width_;
-	/// htb
+	/// one of htb
 	char position_;
-	/// cached metrics
-	mutable std::vector<MathXArray::Row> rows_;
 };
 
 #endif

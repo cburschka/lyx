@@ -1399,6 +1399,12 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
+	if (c == '\n') {
+		if (currentMode() == MathInset::TEXT_MODE) 
+			insert(c);
+		return true;
+	}
+
 	if (c == ' ') {
 		if (currentMode() == MathInset::TEXT_MODE) {
 			// insert spaces in text mode,

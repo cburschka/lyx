@@ -355,10 +355,10 @@ void MathScriptInset::write(WriteStream & os) const
 			os << "{}";
 	}
 
-	if (hasDown() && down().data().size())
+	if (hasDown() && down().size())
 		os << "_{" << down().data() << '}';
 
-	if (hasUp() && up().data().size())
+	if (hasUp() && up().size())
 		os << "^{" << up().data() << '}';
 }
 
@@ -423,8 +423,8 @@ void MathScriptInset::mathematicize(MathematicaStream & os) const
 
 void MathScriptInset::mathmlize( MathMLStream & os) const
 {
-	bool d = hasDown() && down().data().size();
-	bool u = hasUp() && up().data().size();
+	bool d = hasDown() && down().size();
+	bool u = hasUp() && up().size();
 
 	if (u && d)
 		os << MTag("msubsup");

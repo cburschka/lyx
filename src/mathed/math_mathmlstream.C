@@ -280,7 +280,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	ws.os() << s;
-	ws.addlines(int(lyx::count(s, s+strlen(s), '\n')));
+	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
 	return ws;
 }
 
@@ -288,8 +288,10 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 WriteStream & operator<<(WriteStream & ws, char c)
 {
 	ws.os() << c;
-	if (c == '\n')
+	if (c == '\n') {
+		lyxerr << "writing a newline\n";
 		ws.addlines(1);
+	}
 	return ws;
 }
 

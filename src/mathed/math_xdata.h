@@ -36,34 +36,12 @@ public:
 	MathArray & data() { return *this; }
 	MathArray const & data() const { return *this; }
 
-	// helper structure for external metrics computations as done
-	// in parboxes
-	struct Row {
-		/// constructor
-		Row() {}
-		/// first position of this row
-		size_type begin; 
-		/// last position of this row plus one
-		size_type end; 
-		/// y offset relative to yo
-		int yo;
-		/// dimensions of this row
-		Dimension dim;
-		/// glue between words
-		int glue;
-	};
-
 	/// constructor
 	MathXArray();
 	/// rebuild cached metrics information
 	Dimension const & metrics(MathMetricsInfo & mi) const;
-	/// rebuild cached metrics information
-	void metricsExternal(MathMetricsInfo & mi, std::vector<Dimension> &) const;
 	/// redraw cell using cache metrics information
 	void draw(MathPainterInfo & pi, int x, int y) const;
-	/// redraw cell using external metrics information
-	void drawExternal(MathPainterInfo & pi, int x, int y,
-		std::vector<MathXArray::Row> const &) const;
 	/// rebuild cached metrics information
 	Dimension const & metricsT(TextMetricsInfo const & mi) const;
 	/// redraw cell using cache metrics information

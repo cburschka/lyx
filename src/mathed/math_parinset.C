@@ -4,12 +4,6 @@
 #include "debug.h"
 
 
-MathParInset::MathParInset()
-{
-	lyxerr << "constructing MathParInset\n";
-}
-
-
 void MathParInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy1(mi.base, "textnormal");

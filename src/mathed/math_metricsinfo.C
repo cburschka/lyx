@@ -3,7 +3,6 @@
 
 #include "math_metricsinfo.h"
 #include "math_support.h"
-#include "debug.h"
 #include "frontends/Painter.h"
 
 

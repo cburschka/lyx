@@ -208,9 +208,11 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 }
 
 
-void InsetFormulaBase::getCursorPos(BufferView * bv, int & x, int & y) const
+void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
-	metrics(bv);
+	// calling metrics here destroys the cached xo,yo positions e.g. in
+	// MathParboxinset. And it would be too expensive anyway...
+	//metrics(bv);
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
@@ -403,6 +405,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	if (!mathcursor)
 		return UNDISPATCHED;
+	string argument  = arg;
 
 	RESULT result      = DISPATCHED;
 	bool sel           = false;
@@ -696,11 +699,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 		break;
 
-	case LFUN_BREAKPARAGRAPH:
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		//lyxerr << "LFUN ignored\n";
-		break;
-
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		bv->lockedInsetStoreUndo(Undo::EDIT);
@@ -708,15 +706,21 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAKPARAGRAPH_SKIP:
+		argument = "\n";
+		// fall through
+
 	case -1:
 	case LFUN_INSERT_MATH:
 	case LFUN_SELFINSERT:
-		if (!arg.empty()) {
+		if (!argument.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			if (arg.size() == 1)
-				result = mathcursor->interpret(arg[0]) ? DISPATCHED : FINISHED_RIGHT;
+			if (argument.size() == 1)
+				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
 			else
-				result = mathcursor->interpret(arg) ? DISPATCHED : FINISHED_RIGHT;
+				result = mathcursor->interpret(argument) ? DISPATCHED : FINISHED_RIGHT;
 			updateLocal(bv, true);
 		}
 		break;

@@ -26,6 +26,13 @@ class MathGridInset : public MathNestInset {
 		int dummy_;
 		/// special multi colums alignment
 		string align_;
+		/// these should be a per-cell property, but ok to have it here
+		/// for single-column grids like paragraphs
+		mutable int glue_;
+		///
+		mutable pos_type begin_;
+		///
+		mutable pos_type end_;
 	};
 
 	/// additional per-row information
@@ -198,9 +205,9 @@ public:
 	//void octavize(OctaveStream &) const;
 
 protected:
-	/// returns x offset of cell comapared to inset
+	/// returns x offset of cell compared to inset
 	int cellXOffset(idx_type idx) const;
-	/// returns y offset of cell comapared to inset
+	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
 	string eolString(row_type row, bool fragile = false) const;
@@ -209,6 +216,7 @@ protected:
 	/// extract number of columns from alignment string
 	col_type guessColumns(string const & halign) const;
 
+public:
 	/// row info
 	std::vector<RowInfo> rowinfo_;
 	/// column info

@@ -7,9 +7,9 @@
 
 using std::vector;
 
+
 MathParboxInset::MathParboxInset()
-	: MathNestInset(1), lyx_width_(0), tex_width_("0mm"),
-	  position_('c')
+	: lyx_width_(0), tex_width_("0mm"), position_('c')
 {
 	lyxerr << "constructing MathParboxInset\n";
 }
@@ -35,204 +35,20 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
-int MathParboxInset::screenrows() const
-{
-	return rows_.size();
-}
-
-
-int MathParboxInset::pos2row(pos_type pos) const
-{
-	for (int r = 0, n = rows_.size(); r < n; ++r) 
-		if (pos >= rows_[r].begin && pos <= rows_[r].end)
-			return r;
-	lyxerr << "illegal row for pos " << pos << "\n";
-	return 0;
-}
-
-
-void MathParboxInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
-{
-	int const r = pos2row(pos);
-	MathXArray const & ar = cells_[idx];
-	x = ar.xo() + ar.pos2x(rows_[r].begin, pos, rows_[r].glue);
-	y = ar.yo() + rows_[r].yo;
-	// move cursor visually into empty cells ("blue rectangles");
-	if (cell(0).empty())
-		x += 2;
-	//lyxerr << "getPos cursor at pos " << pos << " in row " << r
-	//	<< "  x: " << x << " y: " << y << "\n";
-}
-
-
-bool MathParboxInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
-	int targetx) const
-{
-	// try to move only one screen row up or down if possible
-	int row = pos2row(pos);
-	int const x = cells_[idx].pos2x(rows_[row].begin, pos, rows_[row].glue);
-	if (up) {
-		if (row == 0)
-			return false;
-		--row;
-	} else {
-		++row;
-		if (row == screenrows())
-			return false;
-	}
-	pos = xcell(0).x2pos(rows_[row].begin, x, rows_[row].glue);
-	return true;
-}
-
-
 void MathParboxInset::metrics(MathMetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "textnormal");
-
-	// we do our own metrics fiddling
-	// delete old cache
-	rows_.clear();
-
-#if 0
-
-	dim_ = xcell(0).metrics(mi);
-
-#else
-
-	vector<Dimension> dims;	
-	xcell(0).metricsExternal(mi, dims);
-
-	int spaces = 0;
-	Dimension safe;
-	Dimension curr;
-	safe.clear(mi.base.font);
-	curr.clear(mi.base.font);
-	int begin = 0;
-	int safepos = 0;
-	int yo = 0;
-	for (size_type i = 0, n = cell(0).size(); i < n; ++i) {
-		//lyxerr << "at pos: " << i << " of " << n << " safepos: " << safepos
-		//	<< " curr: " << curr << " safe: " << safe
-		//	<< " spaces: " << spaces << endl;
-
-
-		//   0      1      2      3       4      5      6
-		// <char> <char> <char> <space> <char> <char> <char>
-		// ................... <safe>
-		//                      ..........................<curr>
-		// ....................<safepos>
-
-		// Special handling of spaces. We reached a safe position for breaking.
-		if (cell(0)[i]->getChar() == ' ') {
-			//lyxerr << "reached safe pos\n";
-			// we don't count the space into the safe pos
-			safe += curr;
-			// we reset to this safepos if the next chunk does not fit
-			safepos = i;
-			++spaces;
-			// restart chunk with size of the space
-			curr.clear(mi.base.font);
-			curr += dims[i];
-			continue;
-		}
-
-		// This is a regular char. Go on if we either don't care for
-		// the width limit or have not reached that limit.
-		curr += dims[i];
-		if (curr.w + safe.w <= lyx_width_) 
-			continue;
-
-		// We passed the limit. Create a row entry.
-		//lyxerr << "passed limit\n";
-		MathXArray::Row row;
-		if (spaces) {
-			// but we had a space break before this position.
-			// so retreat to this position
-			int glue  = lyx_width_ - safe.w + dims[safepos].w;
-			row.dim   = safe;
-			row.glue  = glue / spaces;
-			row.begin = begin;
-			row.end   = safepos;  // this is position of the safe space
-			i         = safepos;  // i gets incremented at end of loop
-			begin     = i + 1;    // next chunk starts after the space
-			//lyxerr << "... but had safe pos. glue: " << row.glue << "\n";
-			//lyxerr << " safe.w: " << safe.w
-			//	<< "  dim.w: " << dims[safepos].w << " spaces: " << spaces << "\n";
-			spaces   = 0;
-		} else {
-			lyxerr << "... without safe pos\n";
-			// This item is too large and it is the only one.
-			// We have no choice but to produce an overfull box.
-			row.dim   = curr;   // safe should be 0.
-			row.glue  = 0;      // does not matter
-			row.begin = begin;
-			row.end   = i + 1;
-			begin     = i + 1;
-		}
-		row.yo   = yo;
-		yo      += row.dim.height();
-		rows_.push_back(row);
-		// in any case, start the new row with empty boxes
-		curr.clear(mi.base.font);
-		safe.clear(mi.base.font);
-	}
-	// last row: put in everything else
-	MathXArray::Row row;
-	row.dim   = safe;
-	row.dim  += curr;
-	row.begin = begin;
-	row.end   = cell(0).size();
-	row.glue  = 0; // last line is left aligned
-	row.yo    = yo;
-	rows_.push_back(row);
-
-	// what to report?
-	dim_.w = lyx_width_;
-	dim_.a = rows_.front().dim.a;
-	dim_.d = rows_.back().dim.d + yo;
+	MathFontSetChanger dummy1(mi.base, "textnormal");
+	MathWidthChanger dummy2(mi.base, lyx_width_);
+	MathTextInset::metrics(mi);
 	metricsMarkers2();
-	xcell(0).setDim(dim_);
-#endif
 }
 
 
 void MathParboxInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathFontSetChanger dummy(pi.base, "textnormal");
-#if 0
-	xcell(0).draw(pi, x + 1, y);
-#else
-	xcell(0).drawExternal(pi, x + 1, y, rows_);
-#endif
+	MathTextInset::draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
-}
-
-
-void MathParboxInset::drawSelection(MathPainterInfo & pi,
-		idx_type, pos_type pos1, idx_type, pos_type pos2) const
-{
-	int row1 = pos2row(pos1);
-	int row2 = pos2row(pos2);
-	if (row1 == row2) {
-/*
-		MathXArray & c = xcell(0);
-		int x1 = c.xo() + c.pos2x(i1.pos_);
-		int y1 = c.yo() - c.ascent();
-		int x2 = c.xo() + c.pos2x(i2.pos_);
-		int y2 = c.yo() + c.descent();
-		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-	} else {
-		vector<MathInset::idx_type> indices = idxBetween(idx1, idx2);
-		for (unsigned i = 0; i < indices.size(); ++i) {
-			MathXArray & c = i1.xcell(indices[i]);
-			int x1 = c.xo();
-			int y1 = c.yo() - c.ascent();
-			int x2 = c.xo() + c.width();
-			int y2 = c.yo() + c.descent();
-			pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-		}
-*/
-	}
 }
 
 

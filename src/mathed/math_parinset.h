@@ -6,7 +6,7 @@
 class MathParInset : public MathHullInset {
 public:
 	///
-	MathParInset();
+	MathParInset() {}
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

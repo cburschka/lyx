@@ -128,8 +128,8 @@ void MathGridInset::setDefaults()
 {
 	if (ncols() <= 0)
 		lyxerr << "positive number of columns expected\n";
-	if (nrows() <= 0)
-		lyxerr << "positive number of rows expected\n";
+	//if (nrows() <= 0)
+	//	lyxerr << "positive number of rows expected\n";
 	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
