@@ -43,11 +43,6 @@ public:
 		clean();
 	}
 	
-#if 0
-	///
-	int get_toolbar_func(string const & func);
-#endif
-	
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
 

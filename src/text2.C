@@ -423,15 +423,14 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 	LyXLayout const & layout =
 		textclasslist.Style(buf->params.textclass, par->getLayout());
 
-	LyXFont layoutfont, tmpfont;
-	for (Paragraph::size_type pos = 0;
-	     pos < par->size(); ++pos) {
+	LyXFont layoutfont;
+	for (Paragraph::size_type pos = 0; pos < par->size(); ++pos) {
 		if (pos < beginningOfMainBody(buf, par))
 			layoutfont = layout.labelfont;
 		else
 			layoutfont = layout.font;
       
-		tmpfont = par->getFontSettings(buf->params, pos);
+		LyXFont tmpfont = par->getFontSettings(buf->params, pos);
 		tmpfont.reduce(layoutfont);
 		par->setFont(pos, tmpfont);
 	}
@@ -2162,19 +2161,24 @@ void LyXText::setCurrentFont(BufferView * bview) const
 void LyXText::setCursorFromCoordinates(BufferView * bview, int x, int y) const
 {
 	LyXCursor old_cursor = cursor;
-   
+
+#if 0
 	// Get the row first. 
    
 	Row * row = getRowNearY(y);
-	cursor.par(row->par());
 
 	bool bound = false;
 	int column = getColumnNearX(bview, row, x, bound);
+
+	cursor.par(row->par());
 	cursor.pos(row->pos() + column);
 	cursor.x(x);
 	cursor.y(y + row->baseline());
 	cursor.row(row);
 	cursor.boundary(bound);
+#else
+	setCursorFromCoordinates(bview, cursor, x, y);
+#endif
 	setCurrentFont(bview);
 	deleteEmptyParagraphMechanism(bview, old_cursor);
 }
@@ -2187,7 +2191,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
    
 	Row * row = getRowNearY(y);
 	bool bound = false;
-	int column = getColumnNearX(bview, row, x, bound);
+	int const column = getColumnNearX(bview, row, x, bound);
    
 	cur.par(row->par());
 	cur.pos(row->pos() + column);

@@ -20,11 +20,14 @@
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "support/lstrings.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "Floating.h"
 #include "buffer.h"
+#include "LyXView.h"
+#include "frontends/Dialogs.h"
 
 using std::ostream;
 using std::endl;
@@ -118,6 +121,12 @@ InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
 {}
 
 
+InsetFloat::~InsetFloat()
+{
+	hideDialog();
+}
+
+
 void InsetFloat::write(Buffer const * buf, ostream & os) const
 {
 	os << "Float " // getInsetName()
@@ -175,6 +184,10 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
+	if (contains(placement(), "H")) {
+		features.floats = true;
+	}
+	
 	features.usedFloats.insert(floatType_);
 	InsetCollapsable::validate(features);
 }
@@ -249,8 +262,18 @@ bool InsetFloat::insetAllowed(Inset::Code code) const
 }
 
 
+bool InsetFloat::showInsetDialog(BufferView * bv) const
+{
+	if (!inset.showInsetDialog(bv)) {
+		bv->owner()->getDialogs()->showFloat(const_cast<InsetFloat *>(this)); 
+	}
+	return true;
+}
+
+
 void InsetFloat::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
+#if 0
 	if (x >= top_x
 	    && x < button_length
 	    && y >= button_top_y
@@ -263,6 +286,13 @@ void InsetFloat::insetButtonRelease(BufferView * bv, int x, int y, int button)
 	} else {
 		InsetCollapsable::insetButtonRelease(bv, x, y, button);
 	}
+#else
+	if (button == 3) {
+		showInsetDialog(bv);
+		return;
+	}
+	InsetCollapsable::insetButtonRelease(bv, x, y, button);
+#endif
 }
 
 

@@ -26,9 +26,10 @@
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
-#include "ControlExternal.h" 
+#include "ControlExternal.h"
+#include "ControlFloat.h"
 #include "ControlGraphics.h"
-#include "insets/insetgraphicsParams.h" 
+#include "insets/insetgraphicsParams.h"
 #include "ControlInclude.h"
 #include "ControlIndex.h"
 #include "ControlLog.h"
@@ -55,7 +56,8 @@
 #include "form_character.h"
 #include "form_citation.h"
 #include "form_error.h"
-#include "form_external.h" 
+#include "form_external.h"
+#include "form_float.h"
 #include "form_graphics.h"
 #include "form_include.h"
 #include "form_index.h"
@@ -77,7 +79,8 @@
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormError.h"
-#include "FormExternal.h" 
+#include "FormExternal.h"
+#include "FormFloat.h"
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
@@ -121,6 +124,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIIndex<FormIndex, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIMinipage<FormMinipage, xformsBC>(*lv, *this));
+	add(new GUIFloat<FormFloat, xformsBC>(*lv, *this));
 	add(new GUIPreamble<FormPreamble, xformsBC>(*lv, *this));
 	add(new GUIPrint<FormPrint, xformsBC>(*lv, *this));
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));

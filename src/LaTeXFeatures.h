@@ -95,7 +95,9 @@ struct LaTeXFeatures {
 	bool chess;	// chess.sty
 	///
 	bool natbib;    // natbib.sty
-
+	///
+	bool floats;    // float.sty
+	
 	///
 	bool lyx;
 	///

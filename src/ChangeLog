@@ -1,3 +1,18 @@
+2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* converter.[hC] + affected fiels: move to (inital-char)lowercase
+	function names.
+
+	* ParagraphParameters.C (ParagraphParameters): remove commented code
+
+	* PainterBase.[Ch]: remove commented code
+
+	* LaTeXFeatures.h: add "bool floats" for float.sty
+
+	* LaTeXFeatures.C (LaTeXFeatures): init floats
+	(require): handle float
+	(getPackages): do it with floats
+
 2001-07-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* BufferView_pimpl.C (Dispatch): improve handling of

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.2\n"
-"POT-Creation-Date: 2001-07-25 22:56+0200\n"
+"POT-Creation-Date: 2001-07-30 11:37+0200\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator: Ludek Brukner <ludek.brukner@regionet.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Formát odstavce nastaven."
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:380 src/buffer.C:660
+#: src/buffer.C:380 src/buffer.C:661
 msgid "Textclass Loading Error!"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
@@ -41,251 +41,251 @@ msgstr "Chyba pøi nahrávání textové tøídy"
 msgid "When reading "
 msgstr "Mapování klávesnice"
 
-#: src/CutAndPaste.C:343 src/buffer.C:526
+#: src/CutAndPaste.C:343 src/buffer.C:525
 msgid "Layout had to be changed from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:344 src/CutAndPaste.C:347 src/buffer.C:527
-#: src/converter.C:559 src/graphics/GraphicsCacheItem.C:115
+#: src/CutAndPaste.C:344 src/CutAndPaste.C:347 src/buffer.C:526
+#: src/converter.C:580
 #, fuzzy
 msgid " to "
 msgstr " z "
 
-#: src/buffer.C:648
+#: src/buffer.C:649
 #, fuzzy
 msgid "Textclass error"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
-#: src/buffer.C:649
+#: src/buffer.C:650
 msgid "The document uses an unknown textclass \""
 msgstr ""
 
-#: src/buffer.C:651
+#: src/buffer.C:652
 msgid "LyX will not be able to produce output correctly."
 msgstr ""
 
-#: src/buffer.C:661
+#: src/buffer.C:662
 msgid "Can't load textclass "
 msgstr "Nemohu naèíst textovou tøídu"
 
-#: src/buffer.C:663
+#: src/buffer.C:664
 msgid "-- substituting default"
 msgstr "-- nahrazuji implicitní hodnotou"
 
 #. future format
-#: src/buffer.C:1517 src/buffer.C:1537
+#: src/buffer.C:1528 src/buffer.C:1548
 msgid "Warning!"
 msgstr "Varování!"
 
-#: src/buffer.C:1518
+#: src/buffer.C:1529
 msgid "LyX file format is newer that what"
 msgstr ""
 
-#: src/buffer.C:1519
+#: src/buffer.C:1530
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1524 src/buffer.C:1542 src/buffer.C:1545
+#: src/buffer.C:1535 src/buffer.C:1553 src/buffer.C:1556
 msgid "ERROR!"
 msgstr "CHYBA!"
 
-#: src/buffer.C:1525
+#: src/buffer.C:1536
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Nalezen starý formát LyXu. Naètìte jej LyXem 0.10.x!"
 
-#: src/buffer.C:1538
+#: src/buffer.C:1549
 msgid "Reading of document is not complete"
 msgstr "Dokument nebyl pøeèten úplný"
 
-#: src/buffer.C:1539
+#: src/buffer.C:1550
 msgid "Maybe the document is truncated"
 msgstr "Je mo¾né, ¾e dokument byl zkrácen"
 
-#: src/buffer.C:1542
+#: src/buffer.C:1553
 msgid "Not a LyX file!"
 msgstr "Toto není soubor ve formátu LyXu!"
 
-#: src/buffer.C:1545
+#: src/buffer.C:1556
 msgid "Unable to read file!"
 msgstr "Nemohu èíst soubor!"
 
-#: src/buffer.C:1638 src/buffer.C:1641
+#: src/buffer.C:1649 src/buffer.C:1652
 msgid "Error! Document is read-only: "
 msgstr "Chyba! Dokument je pouze ke ètení: "
 
-#: src/buffer.C:1651 src/buffer.C:1654
+#: src/buffer.C:1662 src/buffer.C:1665
 msgid "Error! Cannot write file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1662 src/buffer.C:1665
+#: src/buffer.C:1673 src/buffer.C:1676
 #, fuzzy
 msgid "Error! Cannot open file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1920
+#: src/buffer.C:1931
 msgid "Error: Cannot write file:"
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1954
+#: src/buffer.C:1965
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:2540 src/buffer.C:3006
+#: src/buffer.C:2551 src/buffer.C:3017
 msgid "LYX_ERROR:"
 msgstr "CHYBA LYXU:"
 
-#: src/buffer.C:2540 src/buffer.C:3006
+#: src/buffer.C:2551 src/buffer.C:3017
 msgid "Cannot write file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/buffer.C:2627 src/buffer.C:3120
+#: src/buffer.C:2638 src/buffer.C:3131
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávné zanoøení pøíkazù LaTeXu.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3422
+#: src/buffer.C:3433
 msgid "Running chktex..."
 msgstr "Pracuje chktex..."
 
-#: src/buffer.C:3435
+#: src/buffer.C:3446
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3436
+#: src/buffer.C:3447
 msgid "Could not run with file:"
 msgstr "Nemohu pracovat se souborem:"
 
-#: src/bufferlist.C:113 src/bufferlist.C:185 src/lyxvc.C:86 src/lyxvc.C:119
+#: src/bufferlist.C:114 src/bufferlist.C:186 src/lyxvc.C:86 src/lyxvc.C:119
 #: src/lyxvc.C:149
 msgid "Changes in document:"
 msgstr "Zmìny v dokumentu:"
 
-#: src/bufferlist.C:115 src/bufferlist.C:187
+#: src/bufferlist.C:116 src/bufferlist.C:188
 msgid "Save document?"
 msgstr "Ulo¾it dokument?"
 
-#: src/bufferlist.C:143
+#: src/bufferlist.C:144
 msgid "Some documents were not saved:"
 msgstr "Nìkteré dokumenty nebyly ulo¾eny:"
 
-#: src/bufferlist.C:144
+#: src/bufferlist.C:145
 msgid "Exit anyway?"
 msgstr "Pøesto ukonèit?"
 
-#: src/bufferlist.C:294
+#: src/bufferlist.C:295
 #, fuzzy, c-format
 msgid "lyx: Attempting to save document %s as..."
 msgstr "lyx: Zkou¹ím ulo¾it dokument "
 
-#: src/bufferlist.C:307 src/bufferlist.C:320 src/bufferlist.C:334
+#: src/bufferlist.C:308 src/bufferlist.C:321 src/bufferlist.C:335
 msgid "  Save seems successful. Phew."
 msgstr "  Zdá se, ¾e se ulo¾il správnì. Vida."
 
-#: src/bufferlist.C:310 src/bufferlist.C:324
+#: src/bufferlist.C:311 src/bufferlist.C:325
 msgid "  Save failed! Trying..."
 msgstr "Ukládání neprobìhlo správnì! Zkou¹ím..."
 
-#: src/bufferlist.C:337
+#: src/bufferlist.C:338
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "Ukládání neprobìhlo správnì!. Oj. Dokument je ztracen."
 
-#: src/bufferlist.C:361
+#: src/bufferlist.C:362
 msgid "An emergency save of this document exists!"
 msgstr "Existuje zálo¾ní kopie tohoto dokumentu!"
 
-#: src/bufferlist.C:363
+#: src/bufferlist.C:364
 msgid "Try to load that instead?"
 msgstr "Chcete ji pou¾ít?"
 
-#: src/bufferlist.C:385
+#: src/bufferlist.C:386
 msgid "Autosave file is newer."
 msgstr "Zálo¾ní kopie je novìj¹í."
 
-#: src/bufferlist.C:387
+#: src/bufferlist.C:388
 msgid "Load that one instead?"
 msgstr "Chcete ji pou¾ít?"
 
-#: src/BufferView2.C:64 src/BufferView2.C:74 src/bufferlist.C:457
-#: src/lyx_cb.C:271
+#: src/BufferView2.C:65 src/BufferView2.C:75 src/bufferlist.C:458
+#: src/lyx_cb.C:274
 msgid "Error!"
 msgstr "Chyba!"
 
-#: src/bufferlist.C:457
+#: src/bufferlist.C:458
 msgid "Unable to open template"
 msgstr "Nemohu otevøít ¹ablonu"
 
-#: src/bufferlist.C:484 src/lyxfunc.C:1757 src/lyxfunc.C:1962
+#: src/bufferlist.C:485 src/lyxfunc.C:1747 src/lyxfunc.C:1952
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otevøen:"
 
-#: src/bufferlist.C:486
+#: src/bufferlist.C:487
 msgid "Do you want to reload that document?"
 msgstr "Opravdu ho chcete otevøít znovu?"
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:515
+#: src/bufferlist.C:516
 #, fuzzy
 msgid "Do you want to retrieve file under version control?"
 msgstr "Chcete otevøít dokument?"
 
-#: src/bufferlist.C:523
+#: src/bufferlist.C:524
 msgid "Cannot open specified file:"
 msgstr "Nemohu otevøít soubor:"
 
-#: src/bufferlist.C:525
+#: src/bufferlist.C:526
 msgid "Create new document with this name?"
 msgstr "Vytvoøit nový dokument s tímto jménem?"
 
-#: src/BufferView2.C:65
+#: src/BufferView2.C:66
 msgid "Specified file is unreadable: "
 msgstr ""
 
-#: src/BufferView2.C:75
+#: src/BufferView2.C:76
 #, fuzzy
 msgid "Cannot open specified file: "
 msgstr "Nemohu otevøít soubor:"
 
-#: src/BufferView2.C:227 src/LyXAction.C:396
+#: src/BufferView2.C:228 src/LyXAction.C:397
 msgid "Undo"
 msgstr "Zpìt"
 
-#: src/BufferView2.C:232
+#: src/BufferView2.C:233
 #, fuzzy
 msgid "No forther undo information"
 msgstr "Není k dispozici dal¹í informace pro funkci Zpìt"
 
-#: src/BufferView2.C:243
+#: src/BufferView2.C:244
 msgid "Redo not yet supported in math mode"
 msgstr "Vrácení funkce zpìt je¹tì není v matematickém re¾imu podporováno."
 
-#: src/BufferView2.C:248 src/LyXAction.C:343
+#: src/BufferView2.C:249 src/LyXAction.C:343
 msgid "Redo"
 msgstr "Opakovat"
 
-#: src/BufferView2.C:253
+#: src/BufferView2.C:254
 msgid "No further redo information"
 msgstr "Není k dispozici dal¹í informace pro vrácení funkce Zpìt."
 
-#: src/BufferView2.C:269
+#: src/BufferView2.C:270
 msgid "Paragraph environment type copied"
 msgstr "Parametry odstavce zkopírovány"
 
-#: src/BufferView2.C:278
+#: src/BufferView2.C:279
 msgid "Paragraph environment type set"
 msgstr "Parametry odstavce nastaveny"
 
-#: src/BufferView2.C:292 src/LyXAction.C:160 src/MenuBackend.C:499
+#: src/BufferView2.C:293 src/LyXAction.C:160 src/MenuBackend.C:510
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/BufferView2.C:304 src/LyXAction.C:161 src/MenuBackend.C:498
+#: src/BufferView2.C:305 src/LyXAction.C:161 src/MenuBackend.C:509
 msgid "Cut"
 msgstr "Vystøihni"
 
-#: src/BufferView2.C:313 src/LyXAction.C:332 src/MenuBackend.C:500
+#: src/BufferView2.C:314 src/LyXAction.C:332 src/MenuBackend.C:511
 msgid "Paste"
 msgstr "Vlo¾it"
 
@@ -329,114 +329,124 @@ msgstr "Dvojité|#D"
 msgid "Other ("
 msgstr ""
 
-#: src/BufferView_pimpl.C:304
+#: src/BufferView_pimpl.C:306
 msgid "Formatting document..."
 msgstr "Formátuji dokument..."
 
-#: src/BufferView_pimpl.C:1140
+#: src/BufferView_pimpl.C:1142
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1172
+#: src/BufferView_pimpl.C:1174
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1395
+#: src/BufferView_pimpl.C:1397
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Vyberte dokument, který chcete vlo¾it"
 
-#: src/BufferView_pimpl.C:1397 src/frontends/controllers/ControlInclude.C:70
-#: src/insets/figinset.C:1981 src/lyx_cb.C:166 src/lyxfunc.C:1733
-#: src/lyxfunc.C:1817 src/lyxfunc.C:1858 src/lyxfunc.C:1929
+#: src/BufferView_pimpl.C:1399 src/frontends/controllers/ControlInclude.C:70
+#: src/insets/figinset.C:1982 src/lyx_cb.C:169 src/lyxfunc.C:1723
+#: src/lyxfunc.C:1807 src/lyxfunc.C:1848 src/lyxfunc.C:1919
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: src/BufferView_pimpl.C:1399 src/lyxfunc.C:1860 src/lyxfunc.C:1931
+#: src/BufferView_pimpl.C:1401 src/lyxfunc.C:1850 src/lyxfunc.C:1921
 msgid "Examples"
 msgstr "Pøíklady"
 
-#: src/BufferView_pimpl.C:1404 src/frontends/controllers/ControlInclude.C:66
+#: src/BufferView_pimpl.C:1406 src/frontends/controllers/ControlInclude.C:66
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1413 src/lyxfunc.C:1744 src/lyxfunc.C:1771
-#: src/lyxfunc.C:1874 src/lyxfunc.C:1948 src/lyxfunc.C:1976
+#: src/BufferView_pimpl.C:1415 src/lyxfunc.C:1734 src/lyxfunc.C:1761
+#: src/lyxfunc.C:1864 src/lyxfunc.C:1938 src/lyxfunc.C:1966
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView_pimpl.C:1425
+#: src/BufferView_pimpl.C:1427
 msgid "Inserting document"
 msgstr "Vkládám dokument"
 
-#: src/BufferView_pimpl.C:1431 src/frontends/controllers/ControlExternal.C:163
-#: src/frontends/xforms/FormDocument.C:239 src/lyxfunc.C:1792
-#: src/lyxfunc.C:1896
+#: src/BufferView_pimpl.C:1433 src/frontends/controllers/ControlExternal.C:164
+#: src/frontends/xforms/FormDocument.C:241 src/lyxfunc.C:1782
+#: src/lyxfunc.C:1886
 msgid "Document"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:1432
+#: src/BufferView_pimpl.C:1434
 msgid "inserted."
 msgstr "vlo¾en."
 
-#: src/BufferView_pimpl.C:1436
+#: src/BufferView_pimpl.C:1438
 msgid "Could not insert document"
 msgstr "Nemohu vlo¾it dokument"
 
-#: src/BufferView_pimpl.C:1626 src/insets/insettext.C:1176
+#: src/BufferView_pimpl.C:1628 src/insets/insettext.C:1177
 msgid "Layout "
 msgstr "Formát "
 
-#: src/BufferView_pimpl.C:1627 src/insets/insettext.C:1176
+#: src/BufferView_pimpl.C:1629 src/insets/insettext.C:1177
 msgid " not known"
 msgstr " není znám"
 
-#: src/BufferView_pimpl.C:1810 src/insets/inseterror.C:54
+#: src/BufferView_pimpl.C:1812 src/insets/inseterror.C:54
 #: src/insets/inseterror.C:76
 msgid "Error"
 msgstr "Chyba"
 
-#: src/BufferView_pimpl.C:1811
+#: src/BufferView_pimpl.C:1813
 msgid "Couldn't find this label"
 msgstr "Nemohu tuto znaèku"
 
-#: src/BufferView_pimpl.C:1812
+#: src/BufferView_pimpl.C:1814
 msgid "in current document."
 msgstr "v aktuálním dokumentu nalézt."
 
-#: src/BufferView_pimpl.C:2316
+#: src/BufferView_pimpl.C:2318
 msgid "Mark removed"
 msgstr "Znaèka odstranìna"
 
-#: src/BufferView_pimpl.C:2323
+#: src/BufferView_pimpl.C:2325
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView_pimpl.C:2453
+#: src/BufferView_pimpl.C:2455
 msgid "Mark off"
 msgstr "Znaèka vypnuta"
 
-#: src/BufferView_pimpl.C:2466
+#: src/BufferView_pimpl.C:2468
 msgid "Mark on"
 msgstr "Znaèka zapnuta"
 
-#: src/BufferView_pimpl.C:2638 src/insets/insettext.C:1228
+#: src/BufferView_pimpl.C:2640 src/insets/insettext.C:1229
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Chybìjící parametr"
 
-#: src/BufferView_pimpl.C:3156
+#: src/BufferView_pimpl.C:2991 src/BufferView_pimpl.C:3028
+#, fuzzy
+msgid "Nothing to index!"
+msgstr "Nic na práci"
+
+#: src/BufferView_pimpl.C:2995 src/BufferView_pimpl.C:3032
+#, fuzzy
+msgid "Cannot index more than one paragraph!"
+msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"
+
+#: src/BufferView_pimpl.C:3192
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznámá akce"
 
-#: src/BufferView_pimpl.C:3413 src/BufferView_pimpl.C:3416
+#: src/BufferView_pimpl.C:3449 src/BufferView_pimpl.C:3452
 #, fuzzy
 msgid "No more insets"
 msgstr "®ádné dal¹í poznámky"
 
-#: src/Chktex.C:83
+#: src/Chktex.C:84
 msgid "ChkTeX warning id #"
 msgstr "Varování ChkTeXu #"
 
@@ -496,99 +506,99 @@ msgstr ""
 msgid "] is used."
 msgstr "."
 
-#: src/converter.C:170 src/converter.C:200
+#: src/converter.C:171 src/converter.C:201
 #, fuzzy
 msgid "Can not view file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/converter.C:171
+#: src/converter.C:172
 msgid "No information for viewing "
 msgstr ""
 
-#: src/converter.C:193 src/converter.C:624
+#: src/converter.C:194 src/converter.C:645
 msgid "Executing command:"
 msgstr "Provádím pøíkaz:"
 
-#: src/converter.C:201
+#: src/converter.C:202
 #, fuzzy
 msgid "Error while executing"
 msgstr "Chyba pøi ètení "
 
-#: src/converter.C:557 src/converter.C:651
+#: src/converter.C:578 src/converter.C:672
 #, fuzzy
 msgid "Can not convert file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/converter.C:558
+#: src/converter.C:579
 msgid "No information for converting from "
 msgstr ""
 
-#: src/converter.C:648
+#: src/converter.C:669
 msgid "There were errors during the Build process."
 msgstr "Bìhem zpracování LaTeXem se vyskytly chyby."
 
-#: src/converter.C:649 src/converter.C:795 src/converter.C:865
+#: src/converter.C:670 src/converter.C:818 src/converter.C:888
 msgid "You should try to fix them."
 msgstr "Mìl byste se pokusit je opravit."
 
-#: src/converter.C:674
+#: src/converter.C:695
 #, fuzzy
 msgid "Error while trying to move directory:"
 msgstr "Chyba! Nemohu otevøít adresáø:"
 
-#: src/converter.C:710
+#: src/converter.C:731
 #, fuzzy
 msgid "Error while trying to move file:"
 msgstr "Chyba! Nemohu odstranit soubor:"
 
-#: src/converter.C:711
+#: src/converter.C:732
 #, fuzzy
 msgid "to "
 msgstr " z "
 
-#: src/converter.C:790 src/converter.C:860
+#: src/converter.C:813 src/converter.C:883
 msgid "One error detected"
 msgstr "Nalezena jedna chyba"
 
-#: src/converter.C:791 src/converter.C:861
+#: src/converter.C:814 src/converter.C:884
 msgid "You should try to fix it."
 msgstr "Mìl byste se ji pokusit opravit."
 
-#: src/converter.C:794 src/converter.C:864
+#: src/converter.C:817 src/converter.C:887
 msgid " errors detected."
 msgstr " chyb nalezeno."
 
-#: src/converter.C:799
+#: src/converter.C:822
 #, fuzzy
 msgid "There were errors during running of "
 msgstr "Bìhem zpracování LaTeXem se vyskytly chyby."
 
-#: src/converter.C:803 src/converter.C:870
+#: src/converter.C:826 src/converter.C:893
 msgid "The operation resulted in"
 msgstr ""
 
-#: src/converter.C:804 src/converter.C:871
+#: src/converter.C:827 src/converter.C:894
 #, fuzzy
 msgid "an empty file."
 msgstr "vlo¾en."
 
-#: src/converter.C:805 src/converter.C:872
+#: src/converter.C:828 src/converter.C:895
 msgid "Resulting file is empty"
 msgstr ""
 
-#: src/converter.C:823
+#: src/converter.C:846
 msgid "Running LaTeX..."
 msgstr "Pracuje LaTeX..."
 
-#: src/converter.C:853
+#: src/converter.C:876
 msgid "LaTeX did not work!"
 msgstr "LaTeX nefunguje!"
 
-#: src/converter.C:854
+#: src/converter.C:877
 msgid "Missing log file:"
 msgstr "Chybí soubor hlá¹ení:"
 
-#: src/converter.C:867
+#: src/converter.C:890
 msgid "There were errors during the LaTeX run."
 msgstr "Bìhem zpracování LaTeXem se vyskytly chyby."
 
@@ -598,99 +608,99 @@ msgid ""
 "because of class conversion from\n"
 msgstr ""
 
-#: src/debug.C:35
+#: src/debug.C:36
 msgid "No debugging message"
 msgstr ""
 
-#: src/debug.C:36
+#: src/debug.C:37
 #, fuzzy
 msgid "General information"
 msgstr "Není k dispozici dal¹í informace pro funkci Zpìt"
 
-#: src/debug.C:37
+#: src/debug.C:38
 #, fuzzy
 msgid "Program initialisation"
 msgstr "(Poèáteèní popis chybí)"
 
-#: src/debug.C:38
+#: src/debug.C:39
 msgid "Keyboard events handling"
 msgstr ""
 
-#: src/debug.C:39
+#: src/debug.C:40
 msgid "GUI handling"
 msgstr ""
 
-#: src/debug.C:40
+#: src/debug.C:41
 msgid "Lyxlex grammer parser"
 msgstr ""
 
-#: src/debug.C:41
+#: src/debug.C:42
 msgid "Configuration files reading"
 msgstr ""
 
-#: src/debug.C:42
+#: src/debug.C:43
 msgid "Custom keyboard definition"
 msgstr ""
 
-#: src/debug.C:43
+#: src/debug.C:44
 msgid "LaTeX generation/execution"
 msgstr ""
 
-#: src/debug.C:44
+#: src/debug.C:45
 #, fuzzy
 msgid "Math editor"
 msgstr "Re¾im matematického editoru"
 
-#: src/debug.C:45
+#: src/debug.C:46
 msgid "Font handling"
 msgstr ""
 
-#: src/debug.C:46
+#: src/debug.C:47
 #, fuzzy
 msgid "Textclass files reading"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
-#: src/debug.C:47
+#: src/debug.C:48
 #, fuzzy
 msgid "Version control"
 msgstr "Správa verzí%t"
 
-#: src/debug.C:48
+#: src/debug.C:49
 msgid "External control interface"
 msgstr ""
 
-#: src/debug.C:49
+#: src/debug.C:50
 msgid "Keep *roff temporary files"
 msgstr ""
 
-#: src/debug.C:50
+#: src/debug.C:51
 #, fuzzy
 msgid "User commands"
 msgstr "Patkové"
 
-#: src/debug.C:51
+#: src/debug.C:52
 msgid "The LyX Lexxer"
 msgstr ""
 
-#: src/debug.C:52
+#: src/debug.C:53
 #, fuzzy
 msgid "Dependency information"
 msgstr "Svorky"
 
-#: src/debug.C:53
+#: src/debug.C:54
 #, fuzzy
 msgid "LyX Insets"
 msgstr "Rejstøík"
 
-#: src/debug.C:54
+#: src/debug.C:55
 msgid "Files used by LyX"
 msgstr ""
 
-#: src/debug.C:55
+#: src/debug.C:56
 msgid "All debugging messages"
 msgstr ""
 
-#: src/debug.C:105
+#: src/debug.C:106
 msgid "Debugging `"
 msgstr ""
 
@@ -722,13 +732,13 @@ msgstr "Dokument pøejmenován na '"
 msgid " to file `"
 msgstr "[¾ádný soubor]"
 
-#: src/MenuBackend.C:510 src/MenuBackend.C:517 src/ext_l10n.h:1
+#: src/MenuBackend.C:521 src/MenuBackend.C:528 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 #, fuzzy
 msgid "File|F"
 msgstr "Souboru|#S"
 
-#: src/MenuBackend.C:511 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:522 src/ext_l10n.h:2 src/ext_l10n.h:5
 #, fuzzy
 msgid "Edit|E"
 msgstr "Úpravy"
@@ -758,12 +768,12 @@ msgstr "Prohlí¾ení DVI"
 msgid "Navigate|N"
 msgstr "Záporná"
 
-#: src/MenuBackend.C:513 src/ext_l10n.h:10
+#: src/MenuBackend.C:524 src/ext_l10n.h:10
 #, fuzzy
 msgid "Documents|D"
 msgstr "Dokumenty"
 
-#: src/MenuBackend.C:480 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:491 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr ""
 
@@ -772,12 +782,12 @@ msgstr ""
 msgid "New from Template...|T"
 msgstr "Nový dokument podle ¹ablony"
 
-#: src/MenuBackend.C:481 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:492 src/ext_l10n.h:14 src/ext_l10n.h:19
 #, fuzzy
 msgid "Open...|O"
 msgstr "Jiný..."
 
-#: src/MenuBackend.C:482 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:493 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
 msgstr "Import%m"
@@ -862,11 +872,11 @@ msgstr "Uka¾ historii"
 msgid "Custom...|C"
 msgstr "Atypický rozmìr"
 
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
+#: src/ext_l10n.h:37 src/ext_l10n.h:55
 msgid "Preferences...|P"
 msgstr ""
 
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
+#: src/ext_l10n.h:38 src/ext_l10n.h:56
 #, fuzzy
 msgid "Reconfigure|R"
 msgstr "Rekonfigurace"
@@ -934,2007 +944,2012 @@ msgstr "(pouze ke ètení)"
 msgid "Spellchecker...|S"
 msgstr "Kontrola pravopisu"
 
-#: src/ext_l10n.h:52
+#: src/ext_l10n.h:52 src/ext_l10n.h:440
+msgid "Thesaurus"
+msgstr ""
+
+#: src/ext_l10n.h:53
 #, fuzzy
 msgid "Check TeX|h"
 msgstr "Kontrola TeXu"
 
-#: src/ext_l10n.h:53
+#: src/ext_l10n.h:54
 #, fuzzy
 msgid "Remove All Error Boxes|E"
 msgstr "Odstranìní v¹ech chybových hlá¹ení"
 
-#: src/ext_l10n.h:56
+#: src/ext_l10n.h:57
 #, fuzzy
 msgid "as Lines|L"
 msgstr "Linky"
 
-#: src/ext_l10n.h:57
+#: src/ext_l10n.h:58
 #, fuzzy
 msgid "as Paragraphs|P"
 msgstr "Odsazený odstavec"
 
-#: src/ext_l10n.h:58
+#: src/ext_l10n.h:59
 #, fuzzy
 msgid "Open/Close|O"
 msgstr "Otevøení/zavøení..."
 
-#: src/ext_l10n.h:59
+#: src/ext_l10n.h:60
 #, fuzzy
 msgid "Melt|M"
 msgstr "Spojeno"
 
-#: src/ext_l10n.h:60
+#: src/ext_l10n.h:61
 msgid "Open All Figures/Tables|F"
 msgstr ""
 
-#: src/ext_l10n.h:61
+#: src/ext_l10n.h:62
 msgid "Close All Figures/Tables|T"
 msgstr ""
 
-#: src/ext_l10n.h:62
+#: src/ext_l10n.h:63
 #, fuzzy
 msgid "Open All Footnotes/Marginal Notes|A"
 msgstr "Otevøený objekt"
 
-#: src/ext_l10n.h:63
+#: src/ext_l10n.h:64
 msgid "Close All Footnotes/Marginal Notes|C"
 msgstr ""
 
-#: src/ext_l10n.h:64
+#: src/ext_l10n.h:65
 #, fuzzy
 msgid "Multicolumn|M"
 msgstr "Vícesloupcová"
 
-#: src/ext_l10n.h:65
+#: src/ext_l10n.h:66
 #, fuzzy
 msgid "Line Top|T"
 msgstr "Linka nahoøe"
 
-#: src/ext_l10n.h:66
+#: src/ext_l10n.h:67
 #, fuzzy
 msgid "Line Bottom|B"
 msgstr "Linka dole"
 
-#: src/ext_l10n.h:67
+#: src/ext_l10n.h:68
 #, fuzzy
 msgid "Line Left|L"
 msgstr "Vlevo|#l"
 
-#: src/ext_l10n.h:68
+#: src/ext_l10n.h:69
 #, fuzzy
 msgid "Line Right|R"
 msgstr "Vpravo"
 
-#: src/ext_l10n.h:69
+#: src/ext_l10n.h:70
 #, fuzzy
 msgid "Align Left|e"
 msgstr "Zarovnání vlevo"
 
-#: src/ext_l10n.h:70 src/ext_l10n.h:94
+#: src/ext_l10n.h:71 src/ext_l10n.h:95
 #, fuzzy
 msgid "Align Center|C"
 msgstr "Zarovnání"
 
-#: src/ext_l10n.h:71
+#: src/ext_l10n.h:72
 #, fuzzy
 msgid "Align Right|i"
 msgstr "Zarovnání vpravo"
 
-#: src/ext_l10n.h:72
+#: src/ext_l10n.h:73
 msgid "V.Align Top|o"
 msgstr ""
 
-#: src/ext_l10n.h:73
+#: src/ext_l10n.h:74
 #, fuzzy
 msgid "V.Align Center|n"
 msgstr "Zarovnání na støed"
 
-#: src/ext_l10n.h:74
+#: src/ext_l10n.h:75
 #, fuzzy
 msgid "V.Align Bottom|V"
 msgstr "Linka dole"
 
-#: src/ext_l10n.h:75
+#: src/ext_l10n.h:76
 #, fuzzy
 msgid "Append Row|A"
 msgstr "Pøídání øádku"
 
-#: src/ext_l10n.h:76
+#: src/ext_l10n.h:77
 #, fuzzy
 msgid "Append Column|u"
 msgstr "Pøidání sloupce"
 
-#: src/ext_l10n.h:77
+#: src/ext_l10n.h:78
 #, fuzzy
 msgid "Delete Row|w"
 msgstr "Vymazání øádku"
 
-#: src/ext_l10n.h:78
+#: src/ext_l10n.h:79
 #, fuzzy
 msgid "Delete Column|D"
 msgstr "Vymazání sloupce"
 
-#: src/ext_l10n.h:79
+#: src/ext_l10n.h:80
 msgid "Make eqnarray|e"
 msgstr ""
 
-#: src/ext_l10n.h:80
+#: src/ext_l10n.h:81
 msgid "Make multline|m"
 msgstr ""
 
-#: src/ext_l10n.h:81
+#: src/ext_l10n.h:82
 msgid "Make align 1 column|1"
 msgstr ""
 
-#: src/ext_l10n.h:82
+#: src/ext_l10n.h:83
 msgid "Make align 2 columns|2"
 msgstr ""
 
-#: src/ext_l10n.h:83
+#: src/ext_l10n.h:84
 msgid "Make align 3 columns|3"
 msgstr ""
 
-#: src/ext_l10n.h:84
+#: src/ext_l10n.h:85
 msgid "Make alignat 2 columns|2"
 msgstr ""
 
-#: src/ext_l10n.h:85
+#: src/ext_l10n.h:86
 msgid "Make alignat 3 columns|3"
 msgstr ""
 
-#: src/ext_l10n.h:86
+#: src/ext_l10n.h:87
 #, fuzzy
 msgid "Toggle numbering|n"
 msgstr "Pøepnutí podtr¾ení"
 
-#: src/ext_l10n.h:87
+#: src/ext_l10n.h:88
 #, fuzzy
 msgid "Toggle numbering of line|u"
 msgstr "Pøepnutí podtr¾ení"
 
-#: src/ext_l10n.h:88
+#: src/ext_l10n.h:89
 #, fuzzy
 msgid "Toggle limits|l"
 msgstr "Pøepnutí tuènì"
 
-#: src/ext_l10n.h:89
+#: src/ext_l10n.h:90
 #, fuzzy
 msgid "Inline formula|I"
 msgstr "Vlo¾ení obrázku"
 
-#: src/ext_l10n.h:90
+#: src/ext_l10n.h:91
 #, fuzzy
 msgid "Displayed formula|D"
 msgstr "Zobraz rámeèek"
 
-#: src/ext_l10n.h:91
+#: src/ext_l10n.h:92
 #, fuzzy
 msgid "Eqnarray environment|q"
 msgstr "Parametry odstavce nastaveny"
 
-#: src/ext_l10n.h:92
+#: src/ext_l10n.h:93
 #, fuzzy
 msgid "Align environment|A"
 msgstr "Zarovnání"
 
-#: src/ext_l10n.h:93
+#: src/ext_l10n.h:94
 #, fuzzy
 msgid "Align Left|f"
 msgstr "Zarovnání vlevo"
 
-#: src/ext_l10n.h:95
+#: src/ext_l10n.h:96
 #, fuzzy
 msgid "Align Right|R"
 msgstr "Zarovnání vpravo"
 
-#: src/ext_l10n.h:96
+#: src/ext_l10n.h:97
 #, fuzzy
 msgid "V.Align Top|T"
 msgstr "Linka nahoøe"
 
-#: src/ext_l10n.h:97
+#: src/ext_l10n.h:98
 #, fuzzy
 msgid "V.Align Center|e"
 msgstr "Zarovnání na støed"
 
-#: src/ext_l10n.h:98
+#: src/ext_l10n.h:99
 #, fuzzy
 msgid "V.Align Bottom|B"
 msgstr "Linka dole"
 
-#: src/ext_l10n.h:99
+#: src/ext_l10n.h:100
 #, fuzzy
 msgid "Add Row"
 msgstr "Pøídání øádku"
 
-#: src/ext_l10n.h:100
+#: src/ext_l10n.h:101
 #, fuzzy
 msgid "Delete Row"
 msgstr "Vymazání øádku"
 
-#: src/ext_l10n.h:101
+#: src/ext_l10n.h:102
 #, fuzzy
 msgid "Add Column"
 msgstr "Pøidání sloupce"
 
-#: src/ext_l10n.h:102
+#: src/ext_l10n.h:103
 #, fuzzy
 msgid "Delete Column"
 msgstr "Vymazání sloupce"
 
-#: src/ext_l10n.h:103
+#: src/ext_l10n.h:104
 msgid "Math Formula|h"
 msgstr ""
 
-#: src/ext_l10n.h:104 src/ext_l10n.h:105
+#: src/ext_l10n.h:105 src/ext_l10n.h:106
 #, fuzzy
 msgid "Display Formula|D"
 msgstr "Zobraz rámeèek"
 
-#: src/ext_l10n.h:106
+#: src/ext_l10n.h:107
 msgid "Change to Inline Math Formula|q"
 msgstr ""
 
-#: src/ext_l10n.h:107
+#: src/ext_l10n.h:108
 #, fuzzy
 msgid "Change to Displayed Math Formula|q"
 msgstr "Zobraz rámeèek"
 
-#: src/ext_l10n.h:108
+#: src/ext_l10n.h:109
 #, fuzzy
 msgid "Change to Eqnarray Environment|q"
 msgstr "Výbìr prostøedí odstavce"
 
-#: src/ext_l10n.h:109
+#: src/ext_l10n.h:110
 #, fuzzy
 msgid "Change to Align Environment|g"
 msgstr "Zmìna hloubky zanoøení"
 
-#: src/ext_l10n.h:110
+#: src/ext_l10n.h:111
 #, fuzzy
 msgid "Special Character|S"
 msgstr "Speciál:|#S"
 
-#: src/ext_l10n.h:111
+#: src/ext_l10n.h:112
 #, fuzzy
 msgid "Citation Reference...|C"
 msgstr "Jdi na znaèku"
 
-#: src/ext_l10n.h:112
+#: src/ext_l10n.h:113
 #, fuzzy
 msgid "Cross Reference...|R"
 msgstr "Vlo¾ení odkazu"
 
-#: src/ext_l10n.h:113
+#: src/ext_l10n.h:114
 #, fuzzy
 msgid "Label...|L"
 msgstr "Znaèka:"
 
-#: src/ext_l10n.h:114
+#: src/ext_l10n.h:115
 #, fuzzy
 msgid "Footnote|F"
 msgstr "Vlo¾ení poznámky pod èarou"
 
-#: src/ext_l10n.h:115
+#: src/ext_l10n.h:116
 #, fuzzy
 msgid "Marginal Note|M"
 msgstr "Vlo¾ení poznámky na okraji"
 
-#: src/ext_l10n.h:116
+#: src/ext_l10n.h:117
 #, fuzzy
 msgid "Index Entry...|I"
 msgstr "Odsazení"
 
-#: src/ext_l10n.h:117
+#: src/ext_l10n.h:118
 msgid "Index Entry of Preceding Word|W"
 msgstr ""
 
-#: src/ext_l10n.h:118
+#: src/ext_l10n.h:119
 #, fuzzy
 msgid "URL...|U"
 msgstr "URL..."
 
-#: src/ext_l10n.h:119
+#: src/ext_l10n.h:120
 #, fuzzy
 msgid "Note...|N"
 msgstr "jiný..."
 
-#: src/ext_l10n.h:120
+#: src/ext_l10n.h:121
 msgid "Lists & TOC|O"
 msgstr ""
 
-#: src/ext_l10n.h:121
+#: src/ext_l10n.h:122
 #, fuzzy
 msgid "TeX|T"
 msgstr "LaTeX|#T"
 
-#: src/ext_l10n.h:122
+#: src/ext_l10n.h:123
 #, fuzzy
 msgid "Minipage|p"
 msgstr "Minipage"
 
-#: src/ext_l10n.h:123
+#: src/ext_l10n.h:124
+#, fuzzy
+msgid "Old-Graphics..."
+msgstr "Souboru|#S"
+
+#: src/ext_l10n.h:125
 #, fuzzy
 msgid "Graphics...|G"
 msgstr "Souboru|#S"
 
-#: src/ext_l10n.h:124
+#: src/ext_l10n.h:126
 #, fuzzy
 msgid "Tabular Material...|b"
 msgstr "Formát tabulky"
 
-#: src/ext_l10n.h:125
+#: src/ext_l10n.h:127
 #, fuzzy
 msgid "Floats|a"
 msgstr "Floatflt"
 
-#: src/ext_l10n.h:126
+#: src/ext_l10n.h:128
 #, fuzzy
 msgid "Include File|e"
 msgstr "Vlo¾ení"
 
-#: src/ext_l10n.h:127
+#: src/ext_l10n.h:129
 #, fuzzy
 msgid "Insert File|t"
 msgstr "Vlo¾ení obrázku"
 
-#: src/ext_l10n.h:128
+#: src/ext_l10n.h:130
 msgid "External Material...|x"
 msgstr ""
 
-#: src/ext_l10n.h:129
+#: src/ext_l10n.h:131
 #, fuzzy
 msgid "Superscript|S"
 msgstr "PostScript|#P"
 
-#: src/ext_l10n.h:130
+#: src/ext_l10n.h:132
 #, fuzzy
 msgid "Subscript|u"
 msgstr "PostScript|#P"
 
-#: src/ext_l10n.h:131
+#: src/ext_l10n.h:133
 msgid "HFill|H"
 msgstr ""
 
-#: src/ext_l10n.h:132
+#: src/ext_l10n.h:134
 #, fuzzy
 msgid "Hyphenation Point|P"
 msgstr "Vlo¾ení místa dìlení slova"
 
-#: src/ext_l10n.h:133
+#: src/ext_l10n.h:135
 #, fuzzy
 msgid "Ligature break|k"
 msgstr "Oddìlovaèe øádkù|#N"
 
-#: src/ext_l10n.h:134
-msgid "Protected Blank|B"
-msgstr ""
-
-#: src/ext_l10n.h:135
-#, fuzzy
-msgid "Linebreak|L"
-msgstr "Oddìlovaèe øádkù|#N"
-
 #: src/ext_l10n.h:136
-msgid "Ellipsis|i"
+msgid "Protected Blank|B"
 msgstr ""
 
 #: src/ext_l10n.h:137
 #, fuzzy
-msgid "End of Sentence|E"
-msgstr "Vlo¾ení teèky na koci vìty"
+msgid "Linebreak|L"
+msgstr "Oddìlovaèe øádkù|#N"
 
 #: src/ext_l10n.h:138
-msgid "Ordinary Quote|Q"
+msgid "Ellipsis|i"
 msgstr ""
 
 #: src/ext_l10n.h:139
 #, fuzzy
+msgid "End of Sentence|E"
+msgstr "Vlo¾ení teèky na koci vìty"
+
+#: src/ext_l10n.h:140
+msgid "Ordinary Quote|Q"
+msgstr ""
+
+#: src/ext_l10n.h:141
+#, fuzzy
 msgid "Menu Separator|M"
 msgstr "Zaè. odstavce"
 
-#: src/ext_l10n.h:140
+#: src/ext_l10n.h:142
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Obsah"
 
-#: src/ext_l10n.h:141
+#: src/ext_l10n.h:143
 #, fuzzy
 msgid "Index List|I"
 msgstr "Odsazení|#O"
 
-#: src/ext_l10n.h:142
+#: src/ext_l10n.h:144
 #, fuzzy
 msgid "BibTeX Reference...|B"
 msgstr "Citace generované BibTeXem"
 
-#: src/ext_l10n.h:143
+#: src/ext_l10n.h:145
 #, fuzzy
 msgid "LyX Document...|X"
 msgstr "Dokument"
 
-#: src/ext_l10n.h:144
+#: src/ext_l10n.h:146
 #, fuzzy
 msgid "Ascii as Lines...|L"
 msgstr "Linky"
 
-#: src/ext_l10n.h:145
+#: src/ext_l10n.h:147
 #, fuzzy
 msgid "Ascii as Paragraphs...|P"
 msgstr "Výbìr následujícího odstavce"
 
-#: src/ext_l10n.h:146
+#: src/ext_l10n.h:148
 #, fuzzy
 msgid "Character...|C"
 msgstr "Znaková sada:|#Z"
 
-#: src/ext_l10n.h:147
-msgid "Paragraph...|P"
-msgstr ""
-
-#: src/ext_l10n.h:148
-#, fuzzy
-msgid "Document...|D"
-msgstr "Dokument"
-
 #: src/ext_l10n.h:149
-msgid "Tabular...|T"
+msgid "Paragraph...|P"
 msgstr ""
 
 #: src/ext_l10n.h:150
 #, fuzzy
-msgid "Emphasize Style|E"
-msgstr "Zvýraznìní "
+msgid "Document...|D"
+msgstr "Dokument"
 
 #: src/ext_l10n.h:151
-msgid "Noun Style|N"
+msgid "Tabular...|T"
 msgstr ""
 
 #: src/ext_l10n.h:152
-msgid "Bold Style|B"
-msgstr ""
+#, fuzzy
+msgid "Emphasize Style|E"
+msgstr "Zvýraznìní "
 
 #: src/ext_l10n.h:153
-msgid "TeX Style|X"
+msgid "Noun Style|N"
 msgstr ""
 
 #: src/ext_l10n.h:154
+msgid "Bold Style|B"
+msgstr ""
+
+#: src/ext_l10n.h:155
+msgid "TeX Style|X"
+msgstr ""
+
+#: src/ext_l10n.h:156
 #, fuzzy
 msgid "Change Environment Depth|v"
 msgstr "Zmìna hloubky zanoøení"
 
-#: src/ext_l10n.h:155
+#: src/ext_l10n.h:157
 #, fuzzy
 msgid "LaTeX Preamble...|L"
 msgstr "Preambule LaTeXu"
 
-#: src/ext_l10n.h:156
+#: src/ext_l10n.h:158
 #, fuzzy
 msgid "Toggle Appendix|A"
 msgstr "Otevøený objekt"
 
-#: src/ext_l10n.h:157
+#: src/ext_l10n.h:159
 #, fuzzy
 msgid "Save Layout as Default|S"
 msgstr "Formát stránky nastaven"
 
-#: src/ext_l10n.h:158
+#: src/ext_l10n.h:160
 #, fuzzy
 msgid "Build Program|B"
 msgstr "Vytváøím program"
 
-#: src/ext_l10n.h:159
+#: src/ext_l10n.h:161
 #, fuzzy
 msgid "Update|U"
 msgstr "Obnovit"
 
-#: src/ext_l10n.h:160
+#: src/ext_l10n.h:162
 #, fuzzy
 msgid "LaTeX Logfile|L"
 msgstr "Zprávy LaTeXu"
 
-#: src/ext_l10n.h:161
+#: src/ext_l10n.h:163
 #, fuzzy
 msgid "Table of Contents|T"
 msgstr "Obsah"
 
-#: src/ext_l10n.h:162
+#: src/ext_l10n.h:164
 #, fuzzy
 msgid "Error|E"
 msgstr "Chyba"
 
-#: src/ext_l10n.h:163
+#: src/ext_l10n.h:165
 #, fuzzy
 msgid "Note|N"
 msgstr "jiný..."
 
-#: src/ext_l10n.h:164
+#: src/ext_l10n.h:166
 #, fuzzy
 msgid "Refs|R"
 msgstr "Odkaz: "
 
-#: src/ext_l10n.h:165
+#: src/ext_l10n.h:167
 #, fuzzy
 msgid "Bookmarks|B"
 msgstr "Dole|#D"
 
-#: src/ext_l10n.h:166
+#: src/ext_l10n.h:168
 msgid "Save Bookmark 1|S"
 msgstr ""
 
-#: src/ext_l10n.h:167
+#: src/ext_l10n.h:169
 msgid "Save Bookmark 2"
 msgstr ""
 
-#: src/ext_l10n.h:168
+#: src/ext_l10n.h:170
 msgid "Save Bookmark 3"
 msgstr ""
 
-#: src/ext_l10n.h:169
+#: src/ext_l10n.h:171
 msgid "Goto Bookmark 1|1"
 msgstr ""
 
-#: src/ext_l10n.h:170
+#: src/ext_l10n.h:172
 msgid "Goto Bookmark 2|2"
 msgstr ""
 
-#: src/ext_l10n.h:171
+#: src/ext_l10n.h:173
 msgid "Goto Bookmark 3|3"
 msgstr ""
 
-#: src/ext_l10n.h:172
+#: src/ext_l10n.h:174
 msgid "Introduction|I"
 msgstr ""
 
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr ""
-
-#: src/ext_l10n.h:174
-#, fuzzy
-msgid "User's Guide|U"
-msgstr "Zru¹ okraje"
-
 #: src/ext_l10n.h:175
-msgid "Extended Features|E"
+msgid "Tutorial|T"
 msgstr ""
 
 #: src/ext_l10n.h:176
 #, fuzzy
-msgid "Customization|C"
-msgstr "Citace"
+msgid "User's Guide|U"
+msgstr "Zru¹ okraje"
 
 #: src/ext_l10n.h:177
-msgid "Reference Manual|R"
+msgid "Extended Features|E"
 msgstr ""
 
 #: src/ext_l10n.h:178
+#, fuzzy
+msgid "Customization|C"
+msgstr "Citace"
+
+#: src/ext_l10n.h:179
+msgid "Reference Manual|R"
+msgstr ""
+
+#: src/ext_l10n.h:180
 msgid "FAQ|F"
 msgstr ""
 
-#: src/ext_l10n.h:179
+#: src/ext_l10n.h:181
 #, fuzzy
 msgid "Table of Contents|a"
 msgstr "Obsah"
 
-#: src/ext_l10n.h:180
+#: src/ext_l10n.h:182
 msgid "Known Bugs|K"
 msgstr ""
 
-#: src/ext_l10n.h:181
+#: src/ext_l10n.h:183
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: src/ext_l10n.h:182
+#: src/ext_l10n.h:184
 msgid "About LyX|X"
 msgstr ""
 
-#: src/ext_l10n.h:183
+#: src/ext_l10n.h:185
 msgid "Abstract"
 msgstr ""
 
-#: src/ext_l10n.h:184
+#: src/ext_l10n.h:186
 msgid "Accepted"
 msgstr ""
 
-#: src/ext_l10n.h:185
+#: src/ext_l10n.h:187
 msgid "Acknowledgement"
 msgstr ""
 
-#: src/ext_l10n.h:186
+#: src/ext_l10n.h:188
 msgid "Acknowledgement*"
 msgstr ""
 
-#: src/ext_l10n.h:187
+#: src/ext_l10n.h:189
 msgid "Acknowledgements"
 msgstr ""
 
-#: src/ext_l10n.h:188
+#: src/ext_l10n.h:190
 msgid "Acknowledgments"
 msgstr ""
 
-#: src/ext_l10n.h:189
+#: src/ext_l10n.h:191
 msgid "ACT"
 msgstr ""
 
-#: src/ext_l10n.h:190
+#: src/ext_l10n.h:192
 msgid "Addchap"
 msgstr ""
 
-#: src/ext_l10n.h:191
+#: src/ext_l10n.h:193
 msgid "Addchap*"
 msgstr ""
 
-#: src/ext_l10n.h:192
+#: src/ext_l10n.h:194
 #, fuzzy
 msgid "Addition"
 msgstr "Citace"
 
-#: src/ext_l10n.h:193
+#: src/ext_l10n.h:195
 msgid "Address"
 msgstr ""
 
-#: src/ext_l10n.h:194
+#: src/ext_l10n.h:196
 msgid "Addsec"
 msgstr ""
 
-#: src/ext_l10n.h:195
+#: src/ext_l10n.h:197
 msgid "Addsec*"
 msgstr ""
 
-#: src/ext_l10n.h:196
+#: src/ext_l10n.h:198
 msgid "Adresse"
 msgstr ""
 
-#: src/ext_l10n.h:197
+#: src/ext_l10n.h:199
 msgid "Affil"
 msgstr ""
 
-#: src/ext_l10n.h:198
+#: src/ext_l10n.h:200
 #, fuzzy
 msgid "Affiliation"
 msgstr "Citace"
 
-#: src/ext_l10n.h:199
+#: src/ext_l10n.h:201
 #, fuzzy
 msgid "Algorithm"
 msgstr "Seznam algoritmù"
 
-#: src/ext_l10n.h:200
+#: src/ext_l10n.h:202
 msgid "AMS"
 msgstr ""
 
-#: src/ext_l10n.h:201
+#: src/ext_l10n.h:203
 msgid "And"
 msgstr ""
 
-#: src/ext_l10n.h:202
+#: src/ext_l10n.h:204
 #, fuzzy
 msgid "Anlagen"
 msgstr "Zarovnání"
 
-#: src/ext_l10n.h:203
+#: src/ext_l10n.h:205
 #, fuzzy
 msgid "Anrede"
 msgstr "Èervvená"
 
-#: src/ext_l10n.h:204
+#: src/ext_l10n.h:206
 #, fuzzy
 msgid "Appendices"
 msgstr "Otevøený objekt"
 
-#: src/ext_l10n.h:205
+#: src/ext_l10n.h:207
 #, fuzzy
 msgid "Appendix"
 msgstr "Otevøený objekt"
 
-#: src/ext_l10n.h:206
+#: src/ext_l10n.h:208
 msgid "AT_RISE:"
 msgstr ""
 
-#: src/ext_l10n.h:207
+#: src/ext_l10n.h:209
 msgid "Author"
 msgstr ""
 
-#: src/ext_l10n.h:208
+#: src/ext_l10n.h:210
 msgid "Author_Email"
 msgstr ""
 
-#: src/ext_l10n.h:209
+#: src/ext_l10n.h:211
 msgid "Author_Running"
 msgstr ""
 
-#: src/ext_l10n.h:210
+#: src/ext_l10n.h:212
 msgid "Author_URL"
 msgstr ""
 
-#: src/ext_l10n.h:211
+#: src/ext_l10n.h:213
 msgid "Axiom"
 msgstr ""
 
-#: src/ext_l10n.h:212
+#: src/ext_l10n.h:214
 msgid "Backaddress"
 msgstr ""
 
-#: src/ext_l10n.h:213
+#: src/ext_l10n.h:215
 msgid "Bank"
 msgstr ""
 
-#: src/ext_l10n.h:214
+#: src/ext_l10n.h:216
 msgid "BankAccount"
 msgstr ""
 
-#: src/ext_l10n.h:215
+#: src/ext_l10n.h:217
 msgid "BankCode"
 msgstr ""
 
-#: src/ext_l10n.h:216
+#: src/ext_l10n.h:218
 msgid "Betreff"
 msgstr ""
 
-#: src/ext_l10n.h:217
+#: src/ext_l10n.h:219
 #, fuzzy
 msgid "Bibliography"
 msgstr "Polo¾ka literatury"
 
-#: src/ext_l10n.h:218
+#: src/ext_l10n.h:220
 #, fuzzy
 msgid "Biography"
 msgstr "Polo¾ka literatury"
 
-#: src/ext_l10n.h:219
+#: src/ext_l10n.h:221
 msgid "BLZ"
 msgstr ""
 
-#: src/ext_l10n.h:220
+#: src/ext_l10n.h:222
 msgid "Brieftext"
 msgstr ""
 
-#: src/ext_l10n.h:221
+#: src/ext_l10n.h:223
 #, fuzzy
 msgid "Caption"
 msgstr "Popiska"
 
-#: src/ext_l10n.h:222
+#: src/ext_l10n.h:224
 #, fuzzy
 msgid "Case"
 msgstr "Vlo¾it"
 
-#: src/ext_l10n.h:223
+#: src/ext_l10n.h:225
 msgid "cc"
 msgstr ""
 
-#: src/ext_l10n.h:224
+#: src/ext_l10n.h:226
 msgid "CC"
 msgstr ""
 
-#: src/ext_l10n.h:225
+#: src/ext_l10n.h:227
 #, fuzzy
 msgid "CenteredCaption"
 msgstr "Orientace"
 
-#: src/ext_l10n.h:226
+#: src/ext_l10n.h:228
 msgid "Chapter"
 msgstr ""
 
-#: src/ext_l10n.h:227
+#: src/ext_l10n.h:229
 msgid "Chapter*"
 msgstr ""
 
-#: src/ext_l10n.h:228
+#: src/ext_l10n.h:230
 msgid "Chapter_Exercises"
 msgstr ""
 
-#: src/ext_l10n.h:229
+#: src/ext_l10n.h:231
 #, fuzzy
 msgid "Citta"
 msgstr "Citace"
 
-#: src/ext_l10n.h:230
+#: src/ext_l10n.h:232
 msgid "Claim"
 msgstr ""
 
-#: src/ext_l10n.h:231
+#: src/ext_l10n.h:233
 msgid "Claim*"
 msgstr ""
 
-#: src/ext_l10n.h:232
+#: src/ext_l10n.h:234
 #, fuzzy
 msgid "Closing"
 msgstr "Zavøít"
 
-#: src/ext_l10n.h:233
+#: src/ext_l10n.h:235
 #, fuzzy
 msgid "Code"
 msgstr "Zavøít"
 
-#: src/ext_l10n.h:234
+#: src/ext_l10n.h:236
 #, fuzzy
 msgid "Comment"
 msgstr "Komentáø:"
 
-#: src/ext_l10n.h:235 src/ext_l10n.h:237
+#: src/ext_l10n.h:237 src/ext_l10n.h:239
 #, fuzzy
 msgid "Conclusion"
 msgstr "Sloupcù"
 
-#: src/ext_l10n.h:236
+#: src/ext_l10n.h:238
 msgid "Conclusion*"
 msgstr ""
 
-#: src/ext_l10n.h:238
+#: src/ext_l10n.h:240
 #, fuzzy
 msgid "Condition"
 msgstr "Citace"
 
-#: src/ext_l10n.h:239 src/ext_l10n.h:241
+#: src/ext_l10n.h:241 src/ext_l10n.h:243
 msgid "Conjecture"
 msgstr ""
 
-#: src/ext_l10n.h:240
+#: src/ext_l10n.h:242
 msgid "Conjecture*"
 msgstr ""
 
-#: src/ext_l10n.h:242
+#: src/ext_l10n.h:244
 #, fuzzy
 msgid "CopNum"
 msgstr "Sloupcù"
 
-#: src/ext_l10n.h:243
+#: src/ext_l10n.h:245
 #, fuzzy
 msgid "Copyright"
 msgstr "Vzpøímené"
 
-#: src/ext_l10n.h:244
+#: src/ext_l10n.h:246
 msgid "Corollary"
 msgstr ""
 
-#: src/ext_l10n.h:245
+#: src/ext_l10n.h:247
 msgid "Corollary*"
 msgstr ""
 
-#: src/ext_l10n.h:246
+#: src/ext_l10n.h:248
 #, fuzzy
 msgid "Criterion"
 msgstr "Citace"
 
-#: src/ext_l10n.h:247
+#: src/ext_l10n.h:249
 msgid "CrossList"
 msgstr ""
 
-#: src/ext_l10n.h:248
+#: src/ext_l10n.h:250
 msgid "Current_Address"
 msgstr ""
 
-#: src/ext_l10n.h:249
+#: src/ext_l10n.h:251
 msgid "CURTAIN"
 msgstr ""
 
-#: src/ext_l10n.h:250
+#: src/ext_l10n.h:252
 #, fuzzy
 msgid "Customer"
 msgstr "Atypický rozmìr"
 
-#: src/ext_l10n.h:251
+#: src/ext_l10n.h:253
 #, fuzzy
 msgid "Data"
 msgstr "Databáze:"
 
-#: src/ext_l10n.h:252
+#: src/ext_l10n.h:254
 #, fuzzy
 msgid "Date"
 msgstr "Vlo¾it"
 
-#: src/ext_l10n.h:253
+#: src/ext_l10n.h:255
 msgid "Datum"
 msgstr ""
 
-#: src/ext_l10n.h:254
+#: src/ext_l10n.h:256
 #, fuzzy
 msgid "Dedication"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:255
+#: src/ext_l10n.h:257
 #, fuzzy
 msgid "Dedicatory"
 msgstr "Slovník"
 
-#: src/ext_l10n.h:256 src/ext_l10n.h:258 src/ext_l10n.h:260 src/ext_l10n.h:262
+#: src/ext_l10n.h:258 src/ext_l10n.h:260 src/ext_l10n.h:262 src/ext_l10n.h:264
 #, fuzzy
 msgid "Definition"
 msgstr "Cíl:"
 
-#: src/ext_l10n.h:257 src/ext_l10n.h:259 src/ext_l10n.h:261
+#: src/ext_l10n.h:259 src/ext_l10n.h:261 src/ext_l10n.h:263
 #, fuzzy
 msgid "Definition*"
 msgstr "Cíl:"
 
-#: src/ext_l10n.h:263
+#: src/ext_l10n.h:265
 #, fuzzy
 msgid "Description"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:264
-msgid "Dialogue"
-msgstr ""
-
-#: src/ext_l10n.h:265
-#, fuzzy
-msgid "Email"
-msgstr "Malé"
-
 #: src/ext_l10n.h:266
-msgid "EMail"
+msgid "Dialogue"
 msgstr ""
 
 #: src/ext_l10n.h:267
 #, fuzzy
-msgid "encl"
-msgstr "Zru¹it"
+msgid "Email"
+msgstr "Malé"
 
 #: src/ext_l10n.h:268
-msgid "Encl."
+msgid "EMail"
 msgstr ""
 
 #: src/ext_l10n.h:269
 #, fuzzy
-msgid "Encl"
+msgid "encl"
 msgstr "Zru¹it"
 
 #: src/ext_l10n.h:270
-msgid "End_All_Slides"
+msgid "Encl."
 msgstr ""
 
 #: src/ext_l10n.h:271
+#, fuzzy
+msgid "Encl"
+msgstr "Zru¹it"
+
+#: src/ext_l10n.h:272
+msgid "End_All_Slides"
+msgstr ""
+
+#: src/ext_l10n.h:273
 msgid "Enumerate"
 msgstr ""
 
-#: src/ext_l10n.h:272
+#: src/ext_l10n.h:274
 #, fuzzy
 msgid "Example"
 msgstr "Pøíklady"
 
-#: src/ext_l10n.h:273
+#: src/ext_l10n.h:275
 #, fuzzy
 msgid "Example*"
 msgstr "Pøíklady"
 
-#: src/ext_l10n.h:274
+#: src/ext_l10n.h:276
 msgid "Exercise"
 msgstr ""
 
-#: src/ext_l10n.h:275
+#: src/ext_l10n.h:277
 msgid "EXT."
 msgstr ""
 
-#: src/ext_l10n.h:276
+#: src/ext_l10n.h:278
 #, fuzzy
 msgid "Extratitle"
 msgstr "Dal¹í volby"
 
-#: src/ext_l10n.h:277
+#: src/ext_l10n.h:279
 #, fuzzy
 msgid "Fact"
 msgstr "Rodiè:"
 
-#: src/ext_l10n.h:278
+#: src/ext_l10n.h:280
 msgid "Fact*"
 msgstr ""
 
-#: src/ext_l10n.h:279
+#: src/ext_l10n.h:281
 msgid "FADE_IN:"
 msgstr ""
 
-#: src/ext_l10n.h:280
-msgid "FADE_OUT:"
-msgstr ""
-
-#: src/ext_l10n.h:281
-#, fuzzy
-msgid "FigCaption"
-msgstr "Popiska"
-
 #: src/ext_l10n.h:282
-msgid "FirstAuthor"
+msgid "FADE_OUT:"
 msgstr ""
 
 #: src/ext_l10n.h:283
 #, fuzzy
-msgid "FirstName"
-msgstr "První hlav."
+msgid "FigCaption"
+msgstr "Popiska"
 
 #: src/ext_l10n.h:284
-msgid "FitBitmap"
+msgid "FirstAuthor"
 msgstr ""
 
 #: src/ext_l10n.h:285
 #, fuzzy
+msgid "FirstName"
+msgstr "První hlav."
+
+#: src/ext_l10n.h:286
+msgid "FitBitmap"
+msgstr ""
+
+#: src/ext_l10n.h:287
+#, fuzzy
 msgid "FitFigure"
 msgstr "Obrázek"
 
-#: src/ext_l10n.h:286
+#: src/ext_l10n.h:288
 #, fuzzy
 msgid "Foilhead"
 msgstr "Soubor"
 
-#: src/ext_l10n.h:287
+#: src/ext_l10n.h:289
 #, fuzzy
 msgid "Footernote"
 msgstr "Vlo¾ení poznámky pod èarou"
 
-#: src/ext_l10n.h:288
+#: src/ext_l10n.h:290
 msgid "FourAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:289
+#: src/ext_l10n.h:291
 msgid "FourAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:290
+#: src/ext_l10n.h:292
 msgid "FrontMatter"
 msgstr ""
 
-#: src/ext_l10n.h:291
+#: src/ext_l10n.h:293
 msgid "Gruss"
 msgstr ""
 
-#: src/ext_l10n.h:292
+#: src/ext_l10n.h:294
 #, fuzzy
 msgid "Headnote"
 msgstr "Hlavièka"
 
-#: src/ext_l10n.h:293
+#: src/ext_l10n.h:295
 msgid "HTTP"
 msgstr ""
 
-#: src/ext_l10n.h:294
+#: src/ext_l10n.h:296
 msgid "IhrSchreiben"
 msgstr ""
 
-#: src/ext_l10n.h:295
+#: src/ext_l10n.h:297
 msgid "IhrZeichen"
 msgstr ""
 
-#: src/ext_l10n.h:296
+#: src/ext_l10n.h:298
 #, fuzzy
 msgid "Institute"
 msgstr "Vlo¾ení uvozovky"
 
-#: src/ext_l10n.h:297
+#: src/ext_l10n.h:299
 #, fuzzy
 msgid "Institution"
 msgstr "Vlo¾ení citace"
 
-#: src/ext_l10n.h:298
+#: src/ext_l10n.h:300
 msgid "INT."
 msgstr ""
 
-#: src/ext_l10n.h:299
+#: src/ext_l10n.h:301
 msgid "InvisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:300
+#: src/ext_l10n.h:302
 #, fuzzy
 msgid "Invoice"
 msgstr "Ingorováno"
 
-#: src/ext_l10n.h:301
+#: src/ext_l10n.h:303
 msgid "Itemize"
 msgstr ""
 
-#: src/ext_l10n.h:302 src/frontends/gnome/FormCitation.C:534
+#: src/ext_l10n.h:304 src/frontends/gnome/FormCitation.C:534
 #, fuzzy
 msgid "Journal"
 msgstr "Normální"
 
-#: src/ext_l10n.h:303 src/frontends/gnome/FormIndex.C:86
+#: src/ext_l10n.h:305 src/frontends/gnome/FormIndex.C:86
 #, fuzzy
 msgid "Keyword"
 msgstr "Klíè:|#K"
 
-#: src/ext_l10n.h:304
+#: src/ext_l10n.h:306
 #, fuzzy
 msgid "Keywords"
 msgstr "Klíè:|#K"
 
-#: src/ext_l10n.h:305
-msgid "Konto"
-msgstr ""
-
-#: src/ext_l10n.h:306
-#, fuzzy
-msgid "Labeling"
-msgstr "Tabulka vlo¾ena"
-
 #: src/ext_l10n.h:307
-msgid "Land"
+msgid "Konto"
 msgstr ""
 
 #: src/ext_l10n.h:308
 #, fuzzy
+msgid "Labeling"
+msgstr "Tabulka vlo¾ena"
+
+#: src/ext_l10n.h:309
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:310
+#, fuzzy
 msgid "LandscapeSlide"
 msgstr "Nale¾ato|#N"
 
-#: src/ext_l10n.h:309
+#: src/ext_l10n.h:311
 #, fuzzy
 msgid "LaTeX"
 msgstr "LaTeX|#L"
 
-#: src/ext_l10n.h:310
+#: src/ext_l10n.h:312
 #, fuzzy
 msgid "LaTeX_Title"
 msgstr "LaTeX|#T"
 
-#: src/ext_l10n.h:311
+#: src/ext_l10n.h:313
 #, fuzzy
 msgid "Left_Header"
 msgstr "Hlavièka"
 
-#: src/ext_l10n.h:312
+#: src/ext_l10n.h:314
 msgid "Lemma"
 msgstr ""
 
-#: src/ext_l10n.h:313
+#: src/ext_l10n.h:315
 msgid "Lemma*"
 msgstr ""
 
-#: src/ext_l10n.h:314
+#: src/ext_l10n.h:316
 #, fuzzy
 msgid "Letter"
 msgstr "Vlevo|#l"
 
-#: src/ext_l10n.h:315
+#: src/ext_l10n.h:317
 #, fuzzy
 msgid "List"
 msgstr "Linky"
 
-#: src/ext_l10n.h:316
+#: src/ext_l10n.h:318
 #, fuzzy
 msgid "ListOfSlides"
 msgstr "Seznam tabulek"
 
-#: src/ext_l10n.h:317
+#: src/ext_l10n.h:319
 msgid "Literal"
 msgstr ""
 
-#: src/ext_l10n.h:318
+#: src/ext_l10n.h:320
 #, fuzzy
 msgid "Location"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:319
+#: src/ext_l10n.h:321
 msgid "Lowertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:320
+#: src/ext_l10n.h:322
 msgid "LyX-Code"
 msgstr ""
 
-#: src/ext_l10n.h:321
+#: src/ext_l10n.h:323
 #, fuzzy
 msgid "Mail"
 msgstr "Matice"
 
-#: src/ext_l10n.h:322
+#: src/ext_l10n.h:324
 #, fuzzy
 msgid "MarkBoth"
 msgstr "Znaèka zapnuta"
 
-#: src/ext_l10n.h:323
+#: src/ext_l10n.h:325
 msgid "MathLetters"
 msgstr ""
 
-#: src/ext_l10n.h:324
+#: src/ext_l10n.h:326
 #, fuzzy
 msgid "MeinZeichen"
 msgstr "palce"
 
-#: src/ext_l10n.h:325
+#: src/ext_l10n.h:327
 #, fuzzy
 msgid "Minisec"
 msgstr "Dal¹í"
 
-#: src/ext_l10n.h:326
+#: src/ext_l10n.h:328
 #, fuzzy
 msgid "msnumber"
 msgstr "Èíslo"
 
-#: src/ext_l10n.h:327
+#: src/ext_l10n.h:329
 msgid "My_Address"
 msgstr ""
 
-#: src/ext_l10n.h:328
+#: src/ext_l10n.h:330
 msgid "Myref"
 msgstr ""
 
-#: src/ext_l10n.h:329
+#: src/ext_l10n.h:331
 #, fuzzy
 msgid "MyRef"
 msgstr "Odkaz: "
 
-#: src/ext_l10n.h:330
+#: src/ext_l10n.h:332
 #, fuzzy
 msgid "Name"
 msgstr "Jméno cíle|#J"
 
-#: src/ext_l10n.h:331
+#: src/ext_l10n.h:333
 #, fuzzy
 msgid "Narrative"
 msgstr "Záporná"
 
-#: src/ext_l10n.h:332
+#: src/ext_l10n.h:334
 #, fuzzy
 msgid "Notation"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:333 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
+#: src/ext_l10n.h:335 src/insets/insetinfo.C:86 src/insets/insetinfo.C:106
 #: src/insets/insetinfo.C:236
 msgid "Note"
 msgstr "Komentáø"
 
-#: src/ext_l10n.h:334
+#: src/ext_l10n.h:336
 #, fuzzy
 msgid "Note*"
 msgstr "Komentáø"
 
-#: src/ext_l10n.h:335
+#: src/ext_l10n.h:337
 msgid "NoteToEditor"
 msgstr ""
 
-#: src/ext_l10n.h:336
+#: src/ext_l10n.h:338
 #, fuzzy
 msgid "Offprint"
 msgstr "Tisk"
 
-#: src/ext_l10n.h:337
+#: src/ext_l10n.h:339
 #, fuzzy
 msgid "Offprints"
 msgstr "Nastavení"
 
-#: src/ext_l10n.h:338
+#: src/ext_l10n.h:340
 #, fuzzy
 msgid "Offsets"
 msgstr "Vyp"
 
-#: src/ext_l10n.h:339
+#: src/ext_l10n.h:341
 msgid "Oggetto"
 msgstr ""
 
-#: src/ext_l10n.h:340
+#: src/ext_l10n.h:342
 #, fuzzy
 msgid "Opening"
 msgstr "Otevøít"
 
-#: src/ext_l10n.h:341
+#: src/ext_l10n.h:343
 #, fuzzy
 msgid "Ort"
 msgstr "Vlo¾ení"
 
-#: src/ext_l10n.h:342
+#: src/ext_l10n.h:344
 msgid "Overlay"
 msgstr ""
 
-#: src/ext_l10n.h:343
+#: src/ext_l10n.h:345
 msgid "PACS"
 msgstr ""
 
-#: src/ext_l10n.h:344
+#: src/ext_l10n.h:346
 #, fuzzy
 msgid "Paragraph"
 msgstr "Formát odstavce nastaven."
 
-#: src/ext_l10n.h:345
+#: src/ext_l10n.h:347
 #, fuzzy
 msgid "Paragraph*"
 msgstr "Formát odstavce nastaven."
 
-#: src/ext_l10n.h:346
+#: src/ext_l10n.h:348
 #, fuzzy
 msgid "Part"
 msgstr "Rodiè:"
 
-#: src/ext_l10n.h:347
+#: src/ext_l10n.h:349
 #, fuzzy
 msgid "Part*"
 msgstr "Rodiè:"
 
-#: src/ext_l10n.h:348
+#: src/ext_l10n.h:350
 #, fuzzy
 msgid "Petit"
 msgstr "Tisk"
 
-#: src/ext_l10n.h:349
+#: src/ext_l10n.h:351
 #, fuzzy
 msgid "Phone"
 msgstr "Telefonní seznam"
 
-#: src/ext_l10n.h:350
+#: src/ext_l10n.h:352
 #, fuzzy
 msgid "Place"
 msgstr "Zamìnit"
 
-#: src/ext_l10n.h:351
+#: src/ext_l10n.h:353
 #, fuzzy
 msgid "PlaceFigure"
 msgstr "Obrázek"
 
-#: src/ext_l10n.h:352
+#: src/ext_l10n.h:354
 msgid "PlaceTable"
 msgstr ""
 
-#: src/ext_l10n.h:353
+#: src/ext_l10n.h:355
 #, fuzzy
 msgid "PortraitSlide"
 msgstr "Portrét|#P"
 
-#: src/ext_l10n.h:354
+#: src/ext_l10n.h:356
 msgid "PostalCommend"
 msgstr ""
 
-#: src/ext_l10n.h:355
+#: src/ext_l10n.h:357
 msgid "Postvermerk"
 msgstr ""
 
-#: src/ext_l10n.h:356
+#: src/ext_l10n.h:358
 #, fuzzy
 msgid "Preprint"
 msgstr "Tisk"
 
-#: src/ext_l10n.h:357
+#: src/ext_l10n.h:359
 #, fuzzy
 msgid "Problem"
 msgstr "Dvojité|#D"
 
-#: src/ext_l10n.h:358
+#: src/ext_l10n.h:360
 msgid "ProgressContents"
 msgstr ""
 
-#: src/ext_l10n.h:359
+#: src/ext_l10n.h:361
 msgid "Proof"
 msgstr ""
 
-#: src/ext_l10n.h:360
+#: src/ext_l10n.h:362
 msgid "Property"
 msgstr ""
 
-#: src/ext_l10n.h:361
+#: src/ext_l10n.h:363
 msgid "Proposition"
 msgstr ""
 
-#: src/ext_l10n.h:362
+#: src/ext_l10n.h:364
 msgid "Proposition*"
 msgstr ""
 
-#: src/ext_l10n.h:363
+#: src/ext_l10n.h:365
 msgid "ps"
 msgstr ""
 
-#: src/ext_l10n.h:364
+#: src/ext_l10n.h:366
 msgid "PS"
 msgstr ""
 
-#: src/ext_l10n.h:365
+#: src/ext_l10n.h:367
 msgid "Publishers"
 msgstr ""
 
-#: src/ext_l10n.h:366
+#: src/ext_l10n.h:368
 #, fuzzy
 msgid "Question"
 msgstr "Cíl:"
 
-#: src/ext_l10n.h:367
+#: src/ext_l10n.h:369
 #, fuzzy
 msgid "Quotation"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:368
+#: src/ext_l10n.h:370
 #, fuzzy
 msgid "Quote"
 msgstr "Uvozovky"
 
-#: src/ext_l10n.h:369
+#: src/ext_l10n.h:371
 msgid "Received"
 msgstr ""
 
-#: src/ext_l10n.h:370 src/frontends/xforms/FormRef.C:36
+#: src/ext_l10n.h:372 src/frontends/xforms/FormRef.C:36
 #, fuzzy
 msgid "Reference"
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/ext_l10n.h:371
+#: src/ext_l10n.h:373
 #, fuzzy
 msgid "References"
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/ext_l10n.h:372
+#: src/ext_l10n.h:374
 #, fuzzy
 msgid "Remark"
 msgstr "Poznámka:"
 
-#: src/ext_l10n.h:373
+#: src/ext_l10n.h:375
 #, fuzzy
 msgid "Remark*"
 msgstr "Poznámka:"
 
-#: src/ext_l10n.h:374
+#: src/ext_l10n.h:376
 #, fuzzy
 msgid "Remarks"
 msgstr "Poznámka:"
 
-#: src/ext_l10n.h:375
+#: src/ext_l10n.h:377
 msgid "RetourAdresse"
 msgstr ""
 
-#: src/ext_l10n.h:376
+#: src/ext_l10n.h:378
 msgid "ReturnAddress"
 msgstr ""
 
-#: src/ext_l10n.h:377
+#: src/ext_l10n.h:379
 msgid "REVTEX_Title"
 msgstr ""
 
-#: src/ext_l10n.h:378
+#: src/ext_l10n.h:380
 msgid "Right_Address"
 msgstr ""
 
-#: src/ext_l10n.h:379
+#: src/ext_l10n.h:381
 #, fuzzy
 msgid "Right_Header"
 msgstr "Hlavièka"
 
-#: src/ext_l10n.h:380
+#: src/ext_l10n.h:382
 msgid "RightHeader"
 msgstr ""
 
-#: src/ext_l10n.h:381
+#: src/ext_l10n.h:383
 msgid "Rotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:382
+#: src/ext_l10n.h:384
 #, fuzzy
 msgid "Running_LaTeX_Title"
 msgstr "Pracuje LaTeX..."
 
-#: src/ext_l10n.h:383
+#: src/ext_l10n.h:385
 msgid "SCENE"
 msgstr ""
 
-#: src/ext_l10n.h:384
+#: src/ext_l10n.h:386
 msgid "SCENE*"
 msgstr ""
 
-#: src/ext_l10n.h:385
+#: src/ext_l10n.h:387
 msgid "Scrap"
 msgstr ""
 
-#: src/ext_l10n.h:386
+#: src/ext_l10n.h:388
 #, fuzzy
 msgid "Section"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:387
+#: src/ext_l10n.h:389
 #, fuzzy
 msgid "Section*"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:388
+#: src/ext_l10n.h:390
 msgid "Send_To_Address"
 msgstr ""
 
-#: src/ext_l10n.h:389
+#: src/ext_l10n.h:391
 #, fuzzy
 msgid "Seriate"
 msgstr "Vlo¾ení"
 
-#: src/ext_l10n.h:390
+#: src/ext_l10n.h:392
 msgid "SGML"
 msgstr ""
 
-#: src/ext_l10n.h:391
+#: src/ext_l10n.h:393
 msgid "ShortFoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:392
+#: src/ext_l10n.h:394
 msgid "ShortRotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:393
+#: src/ext_l10n.h:395
 msgid "ShortTitle"
 msgstr ""
 
-#: src/ext_l10n.h:394
+#: src/ext_l10n.h:396
 #, fuzzy
 msgid "Signature"
 msgstr "Obrázek"
 
-#: src/ext_l10n.h:395
+#: src/ext_l10n.h:397
 #, fuzzy
 msgid "Slide"
 msgstr "Strany"
 
-#: src/ext_l10n.h:396
+#: src/ext_l10n.h:398
 #, fuzzy
 msgid "Slide*"
 msgstr "Strany"
 
-#: src/ext_l10n.h:397
+#: src/ext_l10n.h:399
 #, fuzzy
 msgid "SlideContents"
 msgstr "Obsah"
 
-#: src/ext_l10n.h:398
+#: src/ext_l10n.h:400
 msgid "SlideHeading"
 msgstr ""
 
-#: src/ext_l10n.h:399
+#: src/ext_l10n.h:401
 msgid "SlideSubHeading"
 msgstr ""
 
-#: src/ext_l10n.h:400
+#: src/ext_l10n.h:402
 #, fuzzy
 msgid "Solution"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:401
+#: src/ext_l10n.h:403
 #, fuzzy
 msgid "Speaker"
 msgstr "Kontrola pravopisu"
 
-#: src/ext_l10n.h:402
+#: src/ext_l10n.h:404
 #, fuzzy
 msgid "Specialmail"
 msgstr "Zvlá¹tní buòka"
 
-#: src/ext_l10n.h:403
+#: src/ext_l10n.h:405
 msgid "Stadt"
 msgstr ""
 
-#: src/ext_l10n.h:404 src/insets/insetref.C:110
+#: src/ext_l10n.h:406 src/insets/insetref.C:110
 #, fuzzy
 msgid "Standard"
 msgstr "Standardní"
 
-#: src/ext_l10n.h:405
+#: src/ext_l10n.h:407
 #, fuzzy
 msgid "State"
 msgstr "Ulo¾it"
 
-#: src/ext_l10n.h:406
+#: src/ext_l10n.h:408
 msgid "Strasse"
 msgstr ""
 
-#: src/ext_l10n.h:407
+#: src/ext_l10n.h:409
 msgid "Street"
 msgstr ""
 
-#: src/ext_l10n.h:408
+#: src/ext_l10n.h:410
 msgid "Subject"
 msgstr ""
 
-#: src/ext_l10n.h:409
+#: src/ext_l10n.h:411
 msgid "Subjectclass"
 msgstr ""
 
-#: src/ext_l10n.h:410
+#: src/ext_l10n.h:412
 #, fuzzy
 msgid "Subparagraph"
 msgstr "Výbìr následujícího odstavce"
 
-#: src/ext_l10n.h:411
+#: src/ext_l10n.h:413
 msgid "Subparagraph*"
 msgstr ""
 
-#: src/ext_l10n.h:412 src/ext_l10n.h:414 src/ext_l10n.h:416 src/ext_l10n.h:418
-#: src/ext_l10n.h:420
+#: src/ext_l10n.h:414 src/ext_l10n.h:416 src/ext_l10n.h:418 src/ext_l10n.h:420
+#: src/ext_l10n.h:422
 #, fuzzy
 msgid "Subsection"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:413 src/ext_l10n.h:415 src/ext_l10n.h:417 src/ext_l10n.h:419
+#: src/ext_l10n.h:415 src/ext_l10n.h:417 src/ext_l10n.h:419 src/ext_l10n.h:421
 #, fuzzy
 msgid "Subsection*"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:421
+#: src/ext_l10n.h:423
 #, fuzzy
 msgid "SubSection"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:422
+#: src/ext_l10n.h:424
 #, fuzzy
 msgid "Subsubsection"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:423
+#: src/ext_l10n.h:425
 #, fuzzy
 msgid "Subsubsection*"
 msgstr "Svorky"
 
-#: src/ext_l10n.h:424
+#: src/ext_l10n.h:426
 msgid "Subtitle"
 msgstr ""
 
-#: src/ext_l10n.h:425
+#: src/ext_l10n.h:427
 msgid "SubTitle"
 msgstr ""
 
-#: src/ext_l10n.h:426
+#: src/ext_l10n.h:428
 msgid "Summary"
 msgstr ""
 
-#: src/ext_l10n.h:427
+#: src/ext_l10n.h:429
 msgid "Surname"
 msgstr ""
 
-#: src/ext_l10n.h:428
+#: src/ext_l10n.h:430
 #, fuzzy
 msgid "TableComments"
 msgstr "Obsah"
 
-#: src/ext_l10n.h:429
+#: src/ext_l10n.h:431
 #, fuzzy
 msgid "TableRefs"
 msgstr "Tabulka%t"
 
-#: src/ext_l10n.h:430
-msgid "Telefax"
-msgstr ""
-
-#: src/ext_l10n.h:431
-#, fuzzy
-msgid "Telefon"
-msgstr "Svorky"
-
 #: src/ext_l10n.h:432
-msgid "Telephone"
+msgid "Telefax"
 msgstr ""
 
 #: src/ext_l10n.h:433
 #, fuzzy
-msgid "Telex"
-msgstr "Text"
+msgid "Telefon"
+msgstr "Svorky"
 
 #: src/ext_l10n.h:434
-msgid "Thanks"
+msgid "Telephone"
 msgstr ""
 
 #: src/ext_l10n.h:435
-msgid "Theorem"
-msgstr ""
+#, fuzzy
+msgid "Telex"
+msgstr "Text"
 
 #: src/ext_l10n.h:436
-msgid "Theorem*"
+msgid "Thanks"
 msgstr ""
 
 #: src/ext_l10n.h:437
+msgid "Theorem"
+msgstr ""
+
+#: src/ext_l10n.h:438
+msgid "Theorem*"
+msgstr ""
+
+#: src/ext_l10n.h:439
 #, fuzzy
 msgid "TheoremTemplate"
 msgstr "©ablony"
 
-#: src/ext_l10n.h:438
-msgid "Thesaurus"
-msgstr ""
-
-#: src/ext_l10n.h:439
+#: src/ext_l10n.h:441
 msgid "ThickLine"
 msgstr ""
 
-#: src/ext_l10n.h:440
+#: src/ext_l10n.h:442
 msgid "ThreeAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:441
+#: src/ext_l10n.h:443
 msgid "ThreeAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:442
+#: src/ext_l10n.h:444
 msgid "TickList"
 msgstr ""
 
-#: src/ext_l10n.h:443 src/frontends/gnome/FormCitation.C:532
+#: src/ext_l10n.h:445 src/frontends/gnome/FormCitation.C:532
 #, fuzzy
 msgid "Title"
 msgstr "Soubor"
 
-#: src/ext_l10n.h:444
+#: src/ext_l10n.h:446
 msgid "Titlehead"
 msgstr ""
 
-#: src/ext_l10n.h:445
+#: src/ext_l10n.h:447
 msgid "TOC_Author"
 msgstr ""
 
-#: src/ext_l10n.h:446
+#: src/ext_l10n.h:448
 msgid "TOC_Title"
 msgstr ""
 
-#: src/ext_l10n.h:447
+#: src/ext_l10n.h:449
 #, fuzzy
 msgid "Topic"
 msgstr "Nahoøe|#N"
 
-#: src/ext_l10n.h:448
+#: src/ext_l10n.h:450
 #, fuzzy
 msgid "Town"
 msgstr "Dva"
 
-#: src/ext_l10n.h:449
+#: src/ext_l10n.h:451
 #, fuzzy
 msgid "Transition"
 msgstr "Proveï transformace"
 
-#: src/ext_l10n.h:450
+#: src/ext_l10n.h:452
 msgid "Trans_Keywords"
 msgstr ""
 
-#: src/ext_l10n.h:451
+#: src/ext_l10n.h:453
 msgid "TranslatedAbstract"
 msgstr ""
 
-#: src/ext_l10n.h:452
+#: src/ext_l10n.h:454
 msgid "Translated_Title"
 msgstr ""
 
-#: src/ext_l10n.h:453
+#: src/ext_l10n.h:455
 #, fuzzy
 msgid "Translator"
 msgstr "Proveï transformace"
 
-#: src/ext_l10n.h:454
+#: src/ext_l10n.h:456
 msgid "TwoAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:455
+#: src/ext_l10n.h:457
 msgid "TwoAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:456
+#: src/ext_l10n.h:458
 msgid "Unterschrift"
 msgstr ""
 
-#: src/ext_l10n.h:457
+#: src/ext_l10n.h:459
 msgid "Uppertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:458
+#: src/ext_l10n.h:460
 #, fuzzy
 msgid "URL"
 msgstr "URL..."
 
-#: src/ext_l10n.h:459
+#: src/ext_l10n.h:461
 #, fuzzy
 msgid "Verbatim"
 msgstr "Pøesnì|#V"
 
-#: src/ext_l10n.h:460
+#: src/ext_l10n.h:462
 #, fuzzy
 msgid "Verse"
 msgstr "Men¹í"
 
-#: src/ext_l10n.h:461
+#: src/ext_l10n.h:463
 msgid "Verteiler"
 msgstr ""
 
-#: src/ext_l10n.h:462
+#: src/ext_l10n.h:464
 msgid "VisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:463
+#: src/ext_l10n.h:465
 #, fuzzy
 msgid "Yourmail"
 msgstr "Normální"
 
-#: src/ext_l10n.h:464
+#: src/ext_l10n.h:466
 msgid "YourMail"
 msgstr ""
 
-#: src/ext_l10n.h:465
+#: src/ext_l10n.h:467
 msgid "Yourref"
 msgstr ""
 
-#: src/ext_l10n.h:466
+#: src/ext_l10n.h:468
 msgid "YourRef"
 msgstr ""
 
-#: src/ext_l10n.h:467
+#: src/ext_l10n.h:469
 msgid "Zusatz"
 msgstr ""
 
-#: src/ext_l10n.h:468
+#: src/ext_l10n.h:470
 msgid "Afrikaans"
 msgstr ""
 
-#: src/ext_l10n.h:469
+#: src/ext_l10n.h:471
 msgid "American"
 msgstr ""
 
-#: src/ext_l10n.h:470
+#: src/ext_l10n.h:472
 msgid "Arabic"
 msgstr ""
 
-#: src/ext_l10n.h:471
+#: src/ext_l10n.h:473
 msgid "Austrian"
 msgstr ""
 
-#: src/ext_l10n.h:472
+#: src/ext_l10n.h:474
 msgid "Bahasa"
 msgstr ""
 
-#: src/ext_l10n.h:473
-msgid "Portuguese (Brazil)"
-msgstr ""
-
-#: src/ext_l10n.h:474
-#, fuzzy
-msgid "Breton"
-msgstr "Svorky"
-
 #: src/ext_l10n.h:475
-msgid "British"
+msgid "Portuguese (Brazil)"
 msgstr ""
 
 #: src/ext_l10n.h:476
 #, fuzzy
-msgid "Canadian"
-msgstr "Natoèení"
+msgid "Breton"
+msgstr "Svorky"
 
 #: src/ext_l10n.h:477
-msgid "French Canadian"
+msgid "British"
 msgstr ""
 
 #: src/ext_l10n.h:478
+#, fuzzy
+msgid "Canadian"
+msgstr "Natoèení"
+
+#: src/ext_l10n.h:479
+msgid "French Canadian"
+msgstr ""
+
+#: src/ext_l10n.h:480
 msgid "Catalan"
 msgstr ""
 
-#: src/ext_l10n.h:479
+#: src/ext_l10n.h:481
 #, fuzzy
 msgid "Croatian"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:480
+#: src/ext_l10n.h:482
 msgid "Czech"
 msgstr ""
 
-#: src/ext_l10n.h:481
+#: src/ext_l10n.h:483
 msgid "Danish"
 msgstr ""
 
-#: src/ext_l10n.h:482
+#: src/ext_l10n.h:484
 msgid "Dutch"
 msgstr ""
 
-#: src/ext_l10n.h:483 src/language.C:35
+#: src/ext_l10n.h:485 src/language.C:37
 msgid "English"
 msgstr ""
 
-#: src/ext_l10n.h:484
+#: src/ext_l10n.h:486
 msgid "Esperanto"
 msgstr ""
 
-#: src/ext_l10n.h:485
+#: src/ext_l10n.h:487
 msgid "Estonian"
 msgstr ""
 
-#: src/ext_l10n.h:486
+#: src/ext_l10n.h:488
 msgid "Finnish"
 msgstr ""
 
-#: src/ext_l10n.h:487
+#: src/ext_l10n.h:489
 msgid "French"
 msgstr ""
 
-#: src/ext_l10n.h:488
+#: src/ext_l10n.h:490
 msgid "French (GUTenberg)"
 msgstr ""
 
-#: src/ext_l10n.h:489
+#: src/ext_l10n.h:491
 msgid "Galician"
 msgstr ""
 
-#: src/ext_l10n.h:490
+#: src/ext_l10n.h:492
 msgid "German"
 msgstr ""
 
-#: src/ext_l10n.h:491
+#: src/ext_l10n.h:493
 msgid "German (new spelling)"
 msgstr ""
 
-#: src/ext_l10n.h:492 src/frontends/xforms/form_maths_panel.C:35
+#: src/ext_l10n.h:494 src/frontends/xforms/form_maths_panel.C:35
 msgid "Greek"
 msgstr "Øeètina"
 
-#: src/ext_l10n.h:493
+#: src/ext_l10n.h:495
 msgid "Hebrew"
 msgstr ""
 
-#: src/ext_l10n.h:494
-msgid "Irish"
-msgstr ""
-
-#: src/ext_l10n.h:495
-#, fuzzy
-msgid "Italian"
-msgstr "Kurzíva"
-
 #: src/ext_l10n.h:496
-msgid "Lsorbian"
+msgid "Irish"
 msgstr ""
 
 #: src/ext_l10n.h:497
 #, fuzzy
-msgid "Magyar"
-msgstr "Purpurová"
+msgid "Italian"
+msgstr "Kurzíva"
 
 #: src/ext_l10n.h:498
-msgid "Norsk"
+msgid "Lsorbian"
 msgstr ""
 
 #: src/ext_l10n.h:499
-msgid "Polish"
-msgstr ""
+#, fuzzy
+msgid "Magyar"
+msgstr "Purpurová"
 
 #: src/ext_l10n.h:500
-msgid "Portugese"
+msgid "Norsk"
 msgstr ""
 
 #: src/ext_l10n.h:501
+msgid "Polish"
+msgstr ""
+
+#: src/ext_l10n.h:502
+msgid "Portugese"
+msgstr ""
+
+#: src/ext_l10n.h:503
 #, fuzzy
 msgid "Romanian"
 msgstr "Patkové"
 
-#: src/ext_l10n.h:502
+#: src/ext_l10n.h:504
 msgid "Russian"
 msgstr ""
 
-#: src/ext_l10n.h:503
+#: src/ext_l10n.h:505
 msgid "Scottish"
 msgstr ""
 
-#: src/ext_l10n.h:504
+#: src/ext_l10n.h:506
 #, fuzzy
 msgid "Serbian"
 msgstr "Vlo¾ení"
 
-#: src/ext_l10n.h:505
+#: src/ext_l10n.h:507
 #, fuzzy
 msgid "Serbo-Croatian"
 msgstr "Natoèení"
 
-#: src/ext_l10n.h:506
+#: src/ext_l10n.h:508
 msgid "Spanish"
 msgstr ""
 
-#: src/ext_l10n.h:507
+#: src/ext_l10n.h:509
 msgid "Slovak"
 msgstr ""
 
-#: src/ext_l10n.h:508
+#: src/ext_l10n.h:510
 msgid "Slovene"
 msgstr ""
 
-#: src/ext_l10n.h:509
+#: src/ext_l10n.h:511
 msgid "Swedish"
 msgstr ""
 
-#: src/ext_l10n.h:510
+#: src/ext_l10n.h:512
 msgid "Thai"
 msgstr ""
 
-#: src/ext_l10n.h:511
+#: src/ext_l10n.h:513
 msgid "Turkish"
 msgstr ""
 
-#: src/ext_l10n.h:512
+#: src/ext_l10n.h:514
 #, fuzzy
 msgid "Ukrainian"
 msgstr "Proveï transformace"
 
-#: src/ext_l10n.h:513
+#: src/ext_l10n.h:515
 msgid "Usorbian"
 msgstr ""
 
-#: src/ext_l10n.h:514
+#: src/ext_l10n.h:516
 msgid "Welsh"
 msgstr ""
 
@@ -2955,7 +2970,8 @@ msgstr "Proch."
 #: src/frontends/xforms/form_character.C:83
 #: src/frontends/xforms/form_citation.C:148
 #: src/frontends/xforms/form_document.C:41
-#: src/frontends/xforms/form_graphics.C:144
+#: src/frontends/xforms/form_float.C:61
+#: src/frontends/xforms/form_graphics.C:137
 #: src/frontends/xforms/form_index.C:48
 #: src/frontends/xforms/form_maths_delim.C:59
 #: src/frontends/xforms/form_maths_matrix.C:63
@@ -2977,7 +2993,8 @@ msgstr "Proveï|#P"
 #: src/frontends/xforms/form_document.C:47
 #: src/frontends/xforms/form_external.C:91
 #: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_float.C:67 src/frontends/xforms/form_include.C:42
+#: src/frontends/xforms/form_index.C:44
 #: src/frontends/xforms/form_maths_delim.C:65
 #: src/frontends/xforms/form_minipage.C:78
 #: src/frontends/xforms/form_paragraph.C:330
@@ -2993,7 +3010,8 @@ msgstr "OK"
 #: src/frontends/xforms/form_citation.C:155
 #: src/frontends/xforms/form_document.C:34
 #: src/frontends/xforms/form_filedialog.C:93
-#: src/frontends/xforms/form_graphics.C:150
+#: src/frontends/xforms/form_float.C:54
+#: src/frontends/xforms/form_graphics.C:143
 #: src/frontends/xforms/form_include.C:46 src/frontends/xforms/form_index.C:56
 #: src/frontends/xforms/form_maths_delim.C:49
 #: src/frontends/xforms/form_maths_matrix.C:70
@@ -3004,8 +3022,8 @@ msgstr "OK"
 #: src/frontends/xforms/form_preferences.C:40
 #: src/frontends/xforms/form_print.C:63 src/frontends/xforms/form_ref.C:75
 #: src/frontends/xforms/form_tabular_create.C:39
-#: src/frontends/xforms/form_url.C:57 src/lyx_gui_misc.C:199
-#: src/lyx_gui_misc.C:203 src/lyx_gui_misc.C:219 src/print_form.C:34
+#: src/frontends/xforms/form_url.C:57 src/lyx_gui_misc.C:200
+#: src/lyx_gui_misc.C:204 src/lyx_gui_misc.C:220 src/print_form.C:34
 msgid "Cancel|^["
 msgstr "Zru¹it|^["
 
@@ -3042,15 +3060,15 @@ msgstr "cm|#c"
 msgid "inches|#h"
 msgstr "palce|#p"
 
-#: src/figure_form.C:81 src/frontends/xforms/form_graphics.C:54
+#: src/figure_form.C:81 src/frontends/xforms/form_graphics.C:53
 msgid "Display"
 msgstr "Zobrazit"
 
-#: src/figure_form.C:85 src/frontends/xforms/form_graphics.C:46
+#: src/figure_form.C:85 src/frontends/xforms/form_graphics.C:45
 msgid "Height"
 msgstr "Vý¹ka"
 
-#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:44
+#: src/figure_form.C:89 src/frontends/xforms/form_graphics.C:43
 #: src/frontends/xforms/form_minipage.C:28
 #: src/frontends/xforms/form_paragraph.C:219
 msgid "Width"
@@ -3156,7 +3174,7 @@ msgstr "Jméno cíle|#J"
 #. /
 #: src/LyXAction.C:148 src/frontends/controllers/ButtonController.h:120
 #: src/frontends/qt2/FormIndex.C:83 src/frontends/qt2/FormUrl.C:93
-#: src/lyxfunc.C:995
+#: src/lyxfunc.C:991
 msgid "Cancel"
 msgstr "Zru¹it"
 
@@ -3420,17 +3438,17 @@ msgstr "Adresáø u¾ivatele: "
 msgid "Character set"
 msgstr "Znaková sada:|#Z"
 
-#: src/frontends/controllers/ControlExternal.C:161
+#: src/frontends/controllers/ControlExternal.C:162
 #, fuzzy
 msgid "Select external file"
 msgstr "Výbìr následujícího øádku"
 
-#: src/frontends/controllers/ControlExternal.C:195
-#: src/frontends/controllers/helper_funcs.C:100 src/insets/figinset.C:2000
+#: src/frontends/controllers/ControlExternal.C:196
+#: src/frontends/controllers/helper_funcs.C:100 src/insets/figinset.C:2001
 msgid "Filename can't contain any of these characters:"
 msgstr "Jméno souboru nesmí obsahovat tyto znaky:"
 
-#: src/frontends/controllers/ControlExternal.C:198
+#: src/frontends/controllers/ControlExternal.C:199
 #, fuzzy, no-c-format
 msgid "'#', '~', '$' or '%'."
 msgstr "mezera, '#', '~', '$' a '%'."
@@ -3458,7 +3476,7 @@ msgstr ""
 msgid "*| All files "
 msgstr "[¾ádný soubor]"
 
-#: src/frontends/controllers/ControlPreamble.C:43
+#: src/frontends/controllers/ControlPreamble.C:44
 msgid "LaTeX preamble set"
 msgstr "Preambule LaTeXu nastavena"
 
@@ -3482,20 +3500,22 @@ msgstr "Zkontrolujte, zda jsou va¹e parametry správnì"
 msgid "Print to file"
 msgstr "Tisk do"
 
-#: src/frontends/controllers/ControlSearch.C:53
-#: src/frontends/controllers/ControlSearch.C:65
+#: src/frontends/controllers/ControlSearch.C:54
+#: src/frontends/controllers/ControlSearch.C:66
+#: src/frontends/controllers/ControlThesaurus.C:56
 #: src/frontends/qt2/FormSearch.C:68 src/frontends/qt2/FormSearch.C:80
 #, fuzzy
 msgid "String not found!"
 msgstr "Znaková sada nenalezena!"
 
-#: src/frontends/controllers/ControlSearch.C:68
+#: src/frontends/controllers/ControlSearch.C:69
+#: src/frontends/controllers/ControlThesaurus.C:58
 #: src/frontends/qt2/FormSearch.C:83
 #, fuzzy
 msgid "String has been replaced."
 msgstr "Systém je pøekonfigurován."
 
-#: src/frontends/controllers/ControlSearch.C:71
+#: src/frontends/controllers/ControlSearch.C:72
 #: src/frontends/qt2/FormSearch.C:86
 msgid " strings have been replaced."
 msgstr ""
@@ -3522,7 +3542,7 @@ msgstr ""
 "Korektor pravopisu pøestal pracovat.\n"
 "Mo¾ná byl zru¹en (kill)."
 
-#: src/frontends/controllers/helper_funcs.C:102 src/insets/figinset.C:2003
+#: src/frontends/controllers/helper_funcs.C:102 src/insets/figinset.C:2004
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "mezera, '#', '~', '$' a '%'."
@@ -3721,12 +3741,12 @@ msgstr "Citace"
 msgid "Credits"
 msgstr "Kredit"
 
-#: src/frontends/qt2/FormDocument.C:50 src/frontends/xforms/FormDocument.C:47
+#: src/frontends/qt2/FormDocument.C:50 src/frontends/xforms/FormDocument.C:49
 msgid "Document Layout"
 msgstr "Formát dokumentu"
 
-#: src/frontends/qt2/FormDocument.C:72 src/frontends/xforms/form_graphics.C:61
-#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:584
+#: src/frontends/qt2/FormDocument.C:72 src/frontends/xforms/form_graphics.C:60
+#: src/frontends/xforms/form_graphics.C:81 src/lyxfont.C:593
 msgid "Default"
 msgstr "Implicitní "
 
@@ -3794,6 +3814,7 @@ msgid "OneHalf"
 msgstr ""
 
 #: src/frontends/qt2/FormDocument.C:114
+#: src/frontends/xforms/FormThesaurus.C:54
 #, fuzzy
 msgid "Other"
 msgstr "Jiný..."
@@ -3979,69 +4000,69 @@ msgid "huge"
 msgstr "Obrovské"
 
 #: src/frontends/qt2/FormDocument.C:230
-#: src/frontends/xforms/FormDocument.C:274
+#: src/frontends/xforms/FormDocument.C:276
 msgid "Document layout set"
 msgstr "Formát dokumentu nastaven"
 
 #: src/frontends/qt2/FormDocument.C:348
-#: src/frontends/xforms/FormDocument.C:388
+#: src/frontends/xforms/FormDocument.C:390
 msgid "Converting document to new document class..."
 msgstr "Pøevádím dokument do nové tøídy dokumentù..."
 
 #: src/frontends/qt2/FormDocument.C:355
-#: src/frontends/xforms/FormDocument.C:395
+#: src/frontends/xforms/FormDocument.C:397
 msgid "One paragraph couldn't be converted"
 msgstr "Jeden odstavec se nepodaøilo zkonvertovat"
 
 #: src/frontends/qt2/FormDocument.C:358
-#: src/frontends/xforms/FormDocument.C:398
+#: src/frontends/xforms/FormDocument.C:400
 msgid " paragraphs couldn't be converted"
 msgstr " odstavce se nepodaøilo zkonvertovat"
 
 #. problem changing class -- warn user and retain old style
 #: src/frontends/qt2/FormDocument.C:360 src/frontends/qt2/FormDocument.C:367
 #: src/frontends/qt2/FormDocument.C:999
-#: src/frontends/xforms/FormDocument.C:400
-#: src/frontends/xforms/FormDocument.C:407
-#: src/frontends/xforms/FormDocument.C:1054
+#: src/frontends/xforms/FormDocument.C:402
+#: src/frontends/xforms/FormDocument.C:409
+#: src/frontends/xforms/FormDocument.C:1056
 msgid "Conversion Errors!"
 msgstr "Chyby konverze!"
 
 #: src/frontends/qt2/FormDocument.C:361
-#: src/frontends/xforms/FormDocument.C:401
+#: src/frontends/xforms/FormDocument.C:403
 msgid "into chosen document class"
 msgstr "do vybrané tøídy dokumentu"
 
 #: src/frontends/qt2/FormDocument.C:368
-#: src/frontends/xforms/FormDocument.C:408
+#: src/frontends/xforms/FormDocument.C:410
 #, fuzzy
 msgid "Errors loading new document class."
 msgstr "Neleze pøepnout do vybrané tøídy dokumentu"
 
 #: src/frontends/qt2/FormDocument.C:369 src/frontends/qt2/FormDocument.C:1001
-#: src/frontends/xforms/FormDocument.C:409
-#: src/frontends/xforms/FormDocument.C:1056
+#: src/frontends/xforms/FormDocument.C:411
+#: src/frontends/xforms/FormDocument.C:1058
 msgid "Reverting to original document class."
 msgstr "Zpìt do pùvodní tøídy dokumentu"
 
 #: src/frontends/qt2/FormDocument.C:722
-#: src/frontends/xforms/FormDocument.C:778
+#: src/frontends/xforms/FormDocument.C:780
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Dokument je pouze ke ètení. Nejsou povoleny ¾ádné zmìny formátu."
 
 #: src/frontends/qt2/FormDocument.C:991
-#: src/frontends/xforms/FormDocument.C:1046
+#: src/frontends/xforms/FormDocument.C:1048
 msgid "Should I set some parameters to"
 msgstr "Mám nìkteré parametry nastavit na"
 
 #: src/frontends/qt2/FormDocument.C:992
-#: src/frontends/xforms/FormDocument.C:1047
+#: src/frontends/xforms/FormDocument.C:1049
 msgid "the defaults of this document class?"
 msgstr "inplicitní hodnoty této tøídy dokumentù?"
 
 #: src/frontends/qt2/FormDocument.C:1000
-#: src/frontends/xforms/FormDocument.C:1055
+#: src/frontends/xforms/FormDocument.C:1057
 msgid "Unable to switch to new document class."
 msgstr "Neleze pøepnout do vybrané tøídy dokumentu"
 
@@ -4128,7 +4149,7 @@ msgid "LyX: Url"
 msgstr ""
 
 #. FIXME: should be cleverer here
-#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1028
+#: src/frontends/qt2/paragraphdlgimpl.C:56 src/paragraph.C:1051
 msgid "Senseless with this layout!"
 msgstr "Toto je v tomto formátu nesmyslné!"
 
@@ -4152,7 +4173,7 @@ msgid "Close|^["
 msgstr "Zavøít"
 
 #: src/frontends/xforms/form_aboutlyx.C:60
-#: src/frontends/xforms/form_aboutlyx.C:64
+#: src/frontends/xforms/form_aboutlyx.C:63
 #: src/frontends/xforms/form_aboutlyx.C:116
 #: src/frontends/xforms/form_aboutlyx.C:119
 #, fuzzy
@@ -4197,7 +4218,7 @@ msgstr "Databáze:"
 msgid "Style:|#S"
 msgstr "Styl:"
 
-#: src/frontends/xforms/FormBibtex.C:25
+#: src/frontends/xforms/FormBibtex.C:26
 #, fuzzy
 msgid "BibTeX Database"
 msgstr "Databáze:"
@@ -4358,7 +4379,7 @@ msgstr "Textový re¾im"
 
 #: src/frontends/xforms/form_citation.C:138
 #: src/frontends/xforms/form_document.C:53
-#: src/frontends/xforms/form_index.C:37
+#: src/frontends/xforms/form_float.C:71 src/frontends/xforms/form_index.C:37
 #: src/frontends/xforms/form_minipage.C:82
 #: src/frontends/xforms/form_paragraph.C:334
 #: src/frontends/xforms/form_preferences.C:50
@@ -4375,6 +4396,7 @@ msgstr "Vrácení funkce zpìt je¹tì není v matematickém re¾imu podporováno."
 #: src/frontends/xforms/form_document.C:31
 #: src/frontends/xforms/form_paragraph.C:314
 #: src/frontends/xforms/form_tabular.C:28
+#: src/frontends/xforms/form_thesaurus.C:29
 msgid "Tabbed folder"
 msgstr ""
 
@@ -4624,7 +4646,7 @@ msgstr "Dal¹í 4"
 msgid "Ding 1|#D"
 msgstr "Dal¹í 1"
 
-#: src/frontends/xforms/FormDocument.C:92
+#: src/frontends/xforms/FormDocument.C:94
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
@@ -4632,7 +4654,7 @@ msgstr ""
 "Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
 
-#: src/frontends/xforms/FormDocument.C:95
+#: src/frontends/xforms/FormDocument.C:97
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -4640,23 +4662,23 @@ msgstr ""
 "Nic | A4 malé okraje (jen portrét) | A4 velmi malé okraje (jen portrét) | A4 "
 "velmi ¹iroké okraje (jen portrét) "
 
-#: src/frontends/xforms/FormDocument.C:146
+#: src/frontends/xforms/FormDocument.C:148
 msgid " Single | OneHalf | Double | Other "
 msgstr "Jeden | Jeden a pùl | Dva | Jiné "
 
-#: src/frontends/xforms/FormDocument.C:154
+#: src/frontends/xforms/FormDocument.C:156
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr "Malá | Støední | Velká | Jiná "
 
-#: src/frontends/xforms/FormDocument.C:198
+#: src/frontends/xforms/FormDocument.C:200
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 
-#: src/frontends/xforms/FormDocument.C:216
+#: src/frontends/xforms/FormDocument.C:218
 msgid " Author-year | Numerical "
 msgstr ""
 
-#: src/frontends/xforms/FormDocument.C:229
+#: src/frontends/xforms/FormDocument.C:231
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -4664,27 +4686,27 @@ msgstr ""
 " implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | "
 "nejvìt¹í | obrovské | obrovité"
 
-#: src/frontends/xforms/FormDocument.C:241
+#: src/frontends/xforms/FormDocument.C:243
 #, fuzzy
 msgid "Paper"
 msgstr "Vlo¾it"
 
-#: src/frontends/xforms/FormDocument.C:243
-#: src/frontends/xforms/FormPreferences.C:272
+#: src/frontends/xforms/FormDocument.C:245
+#: src/frontends/xforms/FormPreferences.C:273
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/frontends/xforms/FormDocument.C:245
+#: src/frontends/xforms/FormDocument.C:247
 #, fuzzy
 msgid "Extra"
 msgstr "Dal¹í volby|#D"
 
-#: src/frontends/xforms/FormDocument.C:247
+#: src/frontends/xforms/FormDocument.C:249
 #, fuzzy
 msgid "Bullets"
 msgstr "Hloubka znaèek"
 
-#: src/frontends/xforms/FormDocument.C:250
+#: src/frontends/xforms/FormDocument.C:252
 msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
@@ -4766,89 +4788,117 @@ msgstr "U¾ivatel1"
 msgid "User2|#2"
 msgstr "U¾ivatel2"
 
-#: src/frontends/xforms/FormFiledialog.C:203
+#: src/frontends/xforms/FormFiledialog.C:204
 msgid "Warning! Couldn't open directory."
 msgstr "Varování! Nemohu otevøít adresáø."
 
-#: src/frontends/xforms/form_graphics.C:33
+#: src/frontends/xforms/form_float.C:29
+#, fuzzy
+msgid "Placement"
+msgstr "Umístìní objektù:"
+
+#: src/frontends/xforms/form_float.C:33
+#, fuzzy
+msgid "Top of the page|#T"
+msgstr "% strany"
+
+#: src/frontends/xforms/form_float.C:40
+#, fuzzy
+msgid "Bottom of the page|#B"
+msgstr "% strany"
+
+#: src/frontends/xforms/form_float.C:47
+#, fuzzy
+msgid "Page of floats|#P"
+msgstr "Strany: "
+
+#: src/frontends/xforms/form_float.C:77
+msgid "Here, if possible#i"
+msgstr ""
+
+#: src/frontends/xforms/form_float.C:81
+msgid "Here, definitely|#H"
+msgstr ""
+
+#: src/frontends/xforms/FormFloat.C:28
+#, fuzzy
+msgid "Float Options"
+msgstr "Nastavení"
+
+#: src/frontends/xforms/form_graphics.C:32
 #, fuzzy
 msgid "Graphics File|#F"
 msgstr "Souboru|#S"
 
-#: src/frontends/xforms/form_graphics.C:39
+#: src/frontends/xforms/form_graphics.C:38
 #: src/frontends/xforms/form_include.C:30
 #: src/frontends/xforms/form_print.C:142
 msgid "Browse|#B"
 msgstr "Proch."
 
-#: src/frontends/xforms/form_graphics.C:59
-#: src/frontends/xforms/form_graphics.C:76
+#: src/frontends/xforms/form_graphics.C:58
+#: src/frontends/xforms/form_graphics.C:75
 #, fuzzy, no-c-format
 msgid "% of Page"
 msgstr "% strany"
 
-#: src/frontends/xforms/form_graphics.C:64
-#: src/frontends/xforms/form_graphics.C:80
+#: src/frontends/xforms/form_graphics.C:63
+#: src/frontends/xforms/form_graphics.C:79
 msgid "cm"
 msgstr ""
 
-#: src/frontends/xforms/form_graphics.C:66
-#: src/frontends/xforms/form_graphics.C:78
+#: src/frontends/xforms/form_graphics.C:65
+#: src/frontends/xforms/form_graphics.C:77
 msgid "Inch"
 msgstr ""
 
-#: src/frontends/xforms/form_graphics.C:69
+#: src/frontends/xforms/form_graphics.C:68
 #, fuzzy, no-c-format
 msgid "% of Column"
 msgstr "% sloupce"
 
-#: src/frontends/xforms/form_graphics.C:90
+#: src/frontends/xforms/form_graphics.C:89
 #, fuzzy
 msgid "in Monochrome|#M"
 msgstr "Èernobíle"
 
-#: src/frontends/xforms/form_graphics.C:96
+#: src/frontends/xforms/form_graphics.C:95
 #, fuzzy
 msgid "in Grayscale|#G"
 msgstr "V odstínech ¹edi"
 
-#: src/frontends/xforms/form_graphics.C:101
+#: src/frontends/xforms/form_graphics.C:100
 #, fuzzy
 msgid "in Color|#C"
 msgstr "Barva:|#B"
 
-#: src/frontends/xforms/form_graphics.C:106
+#: src/frontends/xforms/form_graphics.C:105
 #, fuzzy
 msgid "Don't display|#D"
 msgstr "[nezobrazeno]"
 
-#: src/frontends/xforms/form_graphics.C:112
+#: src/frontends/xforms/form_graphics.C:111
 #, fuzzy
 msgid "Rotate"
 msgstr "Otoè o 90°"
 
-#: src/frontends/xforms/form_graphics.C:114
+#: src/frontends/xforms/form_graphics.C:113
 #, fuzzy
 msgid "Angle|#A"
 msgstr "Úhel"
 
-#: src/frontends/xforms/form_graphics.C:120
-#, fuzzy
-msgid "Inline Figure|#I"
-msgstr "Vlo¾ení obrázku"
-
-#: src/frontends/xforms/form_graphics.C:128
+#: src/frontends/xforms/form_graphics.C:121
 #, fuzzy
 msgid "Subcaption|#S"
 msgstr "Popiska"
 
-#: src/frontends/xforms/form_graphics.C:135 src/frontends/xforms/form_ref.C:33
+#: src/frontends/xforms/form_graphics.C:128 src/frontends/xforms/form_ref.C:33
 #: src/frontends/xforms/form_toc.C:32
 #, fuzzy
 msgid "Update|#U"
 msgstr "Obnov"
 
-#: src/frontends/xforms/form_graphics.C:141
+#: src/frontends/xforms/form_graphics.C:134
 msgid "Ok"
 msgstr ""
 
@@ -4932,7 +4982,7 @@ msgstr "Vpravo"
 msgid "Left|#L"
 msgstr "Vlevo|#l"
 
-#: src/frontends/xforms/FormMathsDelim.C:45
+#: src/frontends/xforms/FormMathsDelim.C:46
 #, fuzzy
 msgid "Maths Delimiters"
 msgstr "Oddìlovaè"
@@ -4991,9 +5041,9 @@ msgstr "£ @"
 msgid "S  ò"
 msgstr "S  ò"
 
-#: src/frontends/xforms/FormPreferences.C:239
-#: src/frontends/xforms/FormPreferences.C:256
-#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:240
+#: src/frontends/xforms/FormPreferences.C:257
+#: src/frontends/xforms/FormPreferences.C:265
 #: src/frontends/xforms/form_maths_panel.C:55
 msgid "Misc"
 msgstr "Dal¹í"
@@ -5187,7 +5237,7 @@ msgstr ""
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Varování: Neplatná délka (platný pøíklad: 10mm)"
 
-#: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:220
+#: src/frontends/xforms/form_preamble.C:29 src/lyx_gui_misc.C:221
 msgid "OK|#O"
 msgstr "OK"
 
@@ -5370,14 +5420,14 @@ msgstr "Floatflt"
 msgid "LyX objects|#L"
 msgstr "LyX|#L"
 
-#: src/frontends/xforms/FormPreferences.C:1095
 #: src/frontends/xforms/FormPreferences.C:1096
-#: src/frontends/xforms/FormPreferences.C:1134
-#: src/frontends/xforms/FormPreferences.C:1136
-#: src/frontends/xforms/FormPreferences.C:1364
+#: src/frontends/xforms/FormPreferences.C:1097
+#: src/frontends/xforms/FormPreferences.C:1135
+#: src/frontends/xforms/FormPreferences.C:1137
 #: src/frontends/xforms/FormPreferences.C:1365
-#: src/frontends/xforms/FormPreferences.C:1408
-#: src/frontends/xforms/FormPreferences.C:1410
+#: src/frontends/xforms/FormPreferences.C:1366
+#: src/frontends/xforms/FormPreferences.C:1409
+#: src/frontends/xforms/FormPreferences.C:1411
 #: src/frontends/xforms/form_preferences.C:522
 #, fuzzy
 msgid "Modify|#M"
@@ -5422,10 +5472,10 @@ msgstr ""
 msgid "Delete|#D"
 msgstr "Vyma¾ z|#m"
 
-#: src/frontends/xforms/FormPreferences.C:1126
-#: src/frontends/xforms/FormPreferences.C:1128
-#: src/frontends/xforms/FormPreferences.C:1399
-#: src/frontends/xforms/FormPreferences.C:1401
+#: src/frontends/xforms/FormPreferences.C:1127
+#: src/frontends/xforms/FormPreferences.C:1129
+#: src/frontends/xforms/FormPreferences.C:1400
+#: src/frontends/xforms/FormPreferences.C:1402
 #: src/frontends/xforms/form_preferences.C:625
 #: src/frontends/xforms/form_preferences.C:712
 #, fuzzy
@@ -5670,286 +5720,286 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:71
+#: src/frontends/xforms/FormPreferences.C:72
 #, fuzzy
 msgid "Preferences"
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/frontends/xforms/FormPreferences.C:212
+#: src/frontends/xforms/FormPreferences.C:213
 msgid "Look & Feel"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:215
+#: src/frontends/xforms/FormPreferences.C:216
 msgid "Lang Opts"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:218
-#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:219
+#: src/frontends/xforms/FormPreferences.C:248
 #, fuzzy
 msgid "Converters"
 msgstr "Na støed"
 
-#: src/frontends/xforms/FormPreferences.C:221
+#: src/frontends/xforms/FormPreferences.C:222
 #, fuzzy
 msgid "Inputs"
 msgstr "Vstup"
 
-#: src/frontends/xforms/FormPreferences.C:224
+#: src/frontends/xforms/FormPreferences.C:225
 msgid "Outputs"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:230
+#: src/frontends/xforms/FormPreferences.C:231
 #, fuzzy
 msgid "Screen Fonts"
 msgstr "Parametry obrazovky"
 
-#: src/frontends/xforms/FormPreferences.C:233
+#: src/frontends/xforms/FormPreferences.C:234
 msgid "Interface"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:236
+#: src/frontends/xforms/FormPreferences.C:237
 #, fuzzy
 msgid "Colors"
 msgstr "Zavøít"
 
-#: src/frontends/xforms/FormPreferences.C:244
+#: src/frontends/xforms/FormPreferences.C:245
 #, fuzzy
 msgid "Formats"
 msgstr "Floatflt"
 
-#: src/frontends/xforms/FormPreferences.C:253
+#: src/frontends/xforms/FormPreferences.C:254
 #, fuzzy
 msgid "Paths"
 msgstr "Matematika"
 
-#: src/frontends/xforms/FormPreferences.C:261
+#: src/frontends/xforms/FormPreferences.C:262
 #, fuzzy
 msgid "Printer"
 msgstr "Tisk"
 
-#: src/frontends/xforms/FormPreferences.C:269
+#: src/frontends/xforms/FormPreferences.C:270
 #, fuzzy
 msgid "Spell checker"
 msgstr "Kontrola pravopisu"
 
-#: src/frontends/xforms/FormPreferences.C:528
+#: src/frontends/xforms/FormPreferences.C:529
 msgid "LyX objects that can be assigned a color."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:531
+#: src/frontends/xforms/FormPreferences.C:532
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:539
+#: src/frontends/xforms/FormPreferences.C:540
 msgid "Find a new color."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:542
+#: src/frontends/xforms/FormPreferences.C:543
 msgid "Toggle between RGB and HSV color spaces."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:724
+#: src/frontends/xforms/FormPreferences.C:725
 msgid "GUI background"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:730
+#: src/frontends/xforms/FormPreferences.C:731
 msgid "GUI text"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:739
+#: src/frontends/xforms/FormPreferences.C:740
 #, fuzzy
 msgid "GUI selection"
 msgstr "Svorky"
 
-#: src/frontends/xforms/FormPreferences.C:745
+#: src/frontends/xforms/FormPreferences.C:746
 #, fuzzy
 msgid "GUI pointer"
 msgstr "Nemohu tisknout"
 
-#: src/frontends/xforms/FormPreferences.C:875
+#: src/frontends/xforms/FormPreferences.C:876
 msgid "HSV"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:907
+#: src/frontends/xforms/FormPreferences.C:908
 msgid "RGB"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:988
+#: src/frontends/xforms/FormPreferences.C:989
 msgid "All the currently defined converters known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:990
+#: src/frontends/xforms/FormPreferences.C:991
 msgid "Convert \"from\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:992
+#: src/frontends/xforms/FormPreferences.C:993
 msgid "Convert \"to\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:994
+#: src/frontends/xforms/FormPreferences.C:995
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:996
+#: src/frontends/xforms/FormPreferences.C:997
 msgid "Flags that control the converter behavior"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:998
+#: src/frontends/xforms/FormPreferences.C:999
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1000
-#: src/frontends/xforms/FormPreferences.C:1265
+#: src/frontends/xforms/FormPreferences.C:1001
+#: src/frontends/xforms/FormPreferences.C:1266
 #, fuzzy
 msgid "Add"
 msgstr "Pøidej k|#P"
 
-#: src/frontends/xforms/FormPreferences.C:1001
+#: src/frontends/xforms/FormPreferences.C:1002
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1003
+#: src/frontends/xforms/FormPreferences.C:1004
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1251
+#: src/frontends/xforms/FormPreferences.C:1252
 msgid "All the currently defined formats known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1253
+#: src/frontends/xforms/FormPreferences.C:1254
 msgid "The format identifier."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1255
+#: src/frontends/xforms/FormPreferences.C:1256
 msgid "The format name as it will appear in the menus."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1257
+#: src/frontends/xforms/FormPreferences.C:1258
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1259
+#: src/frontends/xforms/FormPreferences.C:1260
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1261
+#: src/frontends/xforms/FormPreferences.C:1262
 msgid "The command used to launch the viewer application."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1263
+#: src/frontends/xforms/FormPreferences.C:1264
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1266
+#: src/frontends/xforms/FormPreferences.C:1267
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1268
+#: src/frontends/xforms/FormPreferences.C:1269
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1380
+#: src/frontends/xforms/FormPreferences.C:1381
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1550
+#: src/frontends/xforms/FormPreferences.C:1551
 msgid "Sys Bind"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1554
+#: src/frontends/xforms/FormPreferences.C:1555
 #, fuzzy
 msgid "User Bind"
 msgstr "Zru¹ okraje"
 
-#: src/frontends/xforms/FormPreferences.C:1558
+#: src/frontends/xforms/FormPreferences.C:1559
 #, fuzzy
 msgid "Bind file"
 msgstr "Soubor EPS"
 
-#: src/frontends/xforms/FormPreferences.C:1562
+#: src/frontends/xforms/FormPreferences.C:1563
 msgid "Sys UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1566
+#: src/frontends/xforms/FormPreferences.C:1567
 msgid "User UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1570
+#: src/frontends/xforms/FormPreferences.C:1571
 #, fuzzy
 msgid "UI file"
 msgstr "[¾ádný soubor]"
 
-#: src/frontends/xforms/FormPreferences.C:1758
-#: src/frontends/xforms/FormPreferences.C:1766
+#: src/frontends/xforms/FormPreferences.C:1759
+#: src/frontends/xforms/FormPreferences.C:1767
 #, fuzzy
 msgid "Key maps"
 msgstr "Mapování klávesnice"
 
-#: src/frontends/xforms/FormPreferences.C:1762
-#: src/frontends/xforms/FormPreferences.C:1770
+#: src/frontends/xforms/FormPreferences.C:1763
+#: src/frontends/xforms/FormPreferences.C:1771
 #, fuzzy
 msgid "Keyboard map"
 msgstr "Klíè:|#K"
 
-#: src/frontends/xforms/FormPreferences.C:1956
+#: src/frontends/xforms/FormPreferences.C:1957
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgstr ""
 "Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2191
+#: src/frontends/xforms/FormPreferences.C:2192
 #, fuzzy
 msgid "Default path"
 msgstr "Implicitní "
 
-#: src/frontends/xforms/FormPreferences.C:2196
+#: src/frontends/xforms/FormPreferences.C:2197
 #, fuzzy
 msgid "Template path"
 msgstr "©ablony"
 
-#: src/frontends/xforms/FormPreferences.C:2201
+#: src/frontends/xforms/FormPreferences.C:2202
 msgid "Temp dir"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2205
+#: src/frontends/xforms/FormPreferences.C:2206
 #, fuzzy
 msgid "User"
 msgstr "U¾ivatel1"
 
-#: src/frontends/xforms/FormPreferences.C:2208
+#: src/frontends/xforms/FormPreferences.C:2209
 #, fuzzy
 msgid "Lastfiles"
 msgstr "Seznam tabulek"
 
-#: src/frontends/xforms/FormPreferences.C:2212
+#: src/frontends/xforms/FormPreferences.C:2213
 msgid "Backup path"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2217
+#: src/frontends/xforms/FormPreferences.C:2218
 msgid "LyX Server pipes"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2671
+#: src/frontends/xforms/FormPreferences.C:2672
 msgid "Fonts must be positive!"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2694
+#: src/frontends/xforms/FormPreferences.C:2695
 #, fuzzy
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
@@ -5958,16 +6008,16 @@ msgstr ""
 " implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | "
 "nejvìt¹í | obrovské | obrovité"
 
-#: src/frontends/xforms/FormPreferences.C:2816
+#: src/frontends/xforms/FormPreferences.C:2817
 msgid " none | ispell | aspell "
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2907
+#: src/frontends/xforms/FormPreferences.C:2908
 #, fuzzy
 msgid "Personal dictionary"
 msgstr "Vlo¾it do osobního slovníku|#V"
 
-#: src/frontends/xforms/FormPreferences.C:2963
+#: src/frontends/xforms/FormPreferences.C:2964
 msgid "WARNING!"
 msgstr ""
 
@@ -6370,12 +6420,54 @@ msgstr "Sloupce"
 msgid "Insert Tabular"
 msgstr "Vlo¾ení tabulky"
 
+#: src/frontends/xforms/form_thesaurus.C:32
+#, fuzzy
+msgid "Replace|^R"
+msgstr "Zamìnit"
+
+#: src/frontends/xforms/form_thesaurus.C:40
+#, fuzzy
+msgid "Close|^C"
+msgstr "Zavøít"
+
+#: src/frontends/xforms/form_thesaurus.C:47
+#, fuzzy
+msgid "Entry : "
+msgstr "Vlo¾ení znaèky"
+
+#: src/frontends/xforms/form_thesaurus.C:50
+#, fuzzy
+msgid "Selection :"
+msgstr "Svorky"
+
+#: src/frontends/xforms/FormThesaurus.C:27
+msgid "LyX: Thesaurus"
+msgstr ""
+
+#: src/frontends/xforms/FormThesaurus.C:50
+#, fuzzy
+msgid "Nouns"
+msgstr "Slovo "
+
+#: src/frontends/xforms/FormThesaurus.C:51
+#, fuzzy
+msgid "Verbs"
+msgstr "Men¹í"
+
+#: src/frontends/xforms/FormThesaurus.C:52
+msgid "Adjectives"
+msgstr ""
+
+#: src/frontends/xforms/FormThesaurus.C:53
+msgid "Adverbs"
+msgstr ""
+
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Typ"
 
-#: src/frontends/xforms/FormToc.C:100
+#: src/frontends/xforms/FormToc.C:107
 #, fuzzy
 msgid "*** No Lists ***"
 msgstr "*** ®ádný dokument ***"
@@ -6403,12 +6495,12 @@ msgstr "Url: "
 msgid "Version Control Log"
 msgstr "Správa verzí%t"
 
-#: src/frontends/xforms/input_validators.C:102
+#: src/frontends/xforms/input_validators.C:122
 #, fuzzy
 msgid "ERROR!  Unable to print!"
 msgstr "Nemohu tisknout"
 
-#: src/frontends/xforms/input_validators.C:103
+#: src/frontends/xforms/input_validators.C:123
 msgid "Check 'range of pages'!"
 msgstr ""
 
@@ -6478,14 +6570,6 @@ msgstr "Soubor u¾ existuje:"
 msgid "Cannot read from this file."
 msgstr "Nemohu zapsat soubor"
 
-#: src/graphics/GraphicsCacheItem.C:113
-msgid "Cannot convert image to display format"
-msgstr ""
-
-#: src/graphics/GraphicsCacheItem.C:114
-msgid "Need converter from "
-msgstr ""
-
 #: src/importer.C:42
 #, fuzzy
 msgid "Importing"
@@ -6505,64 +6589,64 @@ msgstr ""
 msgid "imported."
 msgstr "vlo¾en."
 
-#: src/insets/figinset.C:1025
+#: src/insets/figinset.C:1026
 msgid "[render error]"
 msgstr "[chyba vykreslování]"
 
-#: src/insets/figinset.C:1026
+#: src/insets/figinset.C:1027
 msgid "[rendering ... ]"
 msgstr "[vykresluji ... ]"
 
-#: src/insets/figinset.C:1029
+#: src/insets/figinset.C:1030
 msgid "[no file]"
 msgstr "[¾ádný soubor]"
 
-#: src/insets/figinset.C:1031
+#: src/insets/figinset.C:1032
 msgid "[bad file name]"
 msgstr ""
 
-#: src/insets/figinset.C:1033
+#: src/insets/figinset.C:1034
 msgid "[not displayed]"
 msgstr "[nezobrazeno]"
 
-#: src/insets/figinset.C:1035
+#: src/insets/figinset.C:1036
 msgid "[no ghostscript]"
 msgstr "[chybí ghostscript]"
 
-#: src/insets/figinset.C:1037
+#: src/insets/figinset.C:1038
 msgid "[unknown error]"
 msgstr "[neznámá chyba]"
 
-#: src/insets/figinset.C:1210
+#: src/insets/figinset.C:1211
 #, fuzzy
 msgid "Opened figure"
 msgstr "Otevøený objekt"
 
-#: src/insets/figinset.C:1238
+#: src/insets/figinset.C:1239
 msgid "Figure"
 msgstr "Obrázek"
 
-#: src/insets/figinset.C:1341 src/insets/figinset.C:1406
-#: src/insets/insetgraphics.C:500
+#: src/insets/figinset.C:1342 src/insets/figinset.C:1407
+#: src/insets/insetgraphics.C:610
 msgid "empty figure path"
 msgstr "prázdná cesta k obrázku"
 
-#: src/insets/figinset.C:1978
+#: src/insets/figinset.C:1979
 #, fuzzy
 msgid "Select an EPS figure"
 msgstr "Výbìr následujícího øádku"
 
-#: src/insets/figinset.C:1980
+#: src/insets/figinset.C:1981
 #, fuzzy
 msgid "Clip art"
 msgstr "Clipart"
 
-#: src/insets/figinset.C:1987
+#: src/insets/figinset.C:1988
 #, fuzzy
 msgid "*ps| PostScript documents"
 msgstr "Vkládám dokument"
 
-#: src/insets/insetbib.C:133
+#: src/insets/insetbib.C:134
 msgid "BibTeX Generated References"
 msgstr "Citace generované BibTeXem"
 
@@ -6570,12 +6654,12 @@ msgstr "Citace generované BibTeXem"
 msgid "Opened inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetcaption.C:63
+#: src/insets/insetcaption.C:64
 #, fuzzy
 msgid "Opened Caption Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetcaption.C:81
+#: src/insets/insetcaption.C:82
 #, fuzzy
 msgid "Float"
 msgstr "Floatflt"
@@ -6584,46 +6668,46 @@ msgstr "Floatflt"
 msgid "Opened error"
 msgstr "Otevøená chyba"
 
-#: src/insets/insetert.C:81
+#: src/insets/insetert.C:93
 #, fuzzy
 msgid "Opened ERT Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetert.C:96 src/insets/insettabular.C:1778
+#: src/insets/insetert.C:108 src/insets/insettabular.C:1780
 msgid "Impossible Operation!"
 msgstr "Nemo¾ná operace!"
 
-#: src/insets/insetert.C:97
+#: src/insets/insetert.C:109
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
-#: src/insets/insetert.C:98 src/insets/insettabular.C:1780
-#: src/insets/insettext.C:1114
+#: src/insets/insetert.C:110 src/insets/insettabular.C:1782
+#: src/insets/insettext.C:1115
 msgid "Sorry."
 msgstr "Lituji."
 
-#: src/insets/insetert.C:126 src/insets/insetert.C:227
-#: src/insets/insetert.C:238
+#: src/insets/insetert.C:138 src/insets/insetert.C:239
+#: src/insets/insetert.C:250
 msgid "666"
 msgstr ""
 
-#: src/insets/insetexternal.C:209
+#: src/insets/insetexternal.C:210
 #, fuzzy
 msgid "External"
 msgstr "Dal¹í volby|#D"
 
-#: src/insets/insetfloat.C:102 src/insets/insetfloat.C:296
-#: src/insets/insetfloat.C:301
+#: src/insets/insetfloat.C:105 src/insets/insetfloat.C:326
+#: src/insets/insetfloat.C:331
 #, fuzzy
 msgid "float:"
 msgstr "Patièka"
 
-#: src/insets/insetfloat.C:191
+#: src/insets/insetfloat.C:204
 #, fuzzy
 msgid "Opened Float Inset"
 msgstr "Otevøený objekt"
 
-#: src/MenuBackend.C:358 src/insets/insetfloatlist.C:19
+#: src/MenuBackend.C:369 src/insets/insetfloatlist.C:19
 #: src/insets/insetfloatlist.C:95 src/insets/insetfloatlist.C:99
 #, fuzzy
 msgid "List of "
@@ -6633,49 +6717,49 @@ msgstr "Seznam tabulek"
 msgid "ERROR nonexistant float type!"
 msgstr ""
 
-#: src/insets/insetfoot.C:30
+#: src/insets/insetfoot.C:30 src/insets/insetfoot.C:38
 #, fuzzy
 msgid "foot"
 msgstr "Patièka"
 
-#: src/insets/insetfoot.C:37
+#: src/insets/insetfoot.C:51
 #, fuzzy
 msgid "Opened Footnote Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetgraphics.C:194
+#: src/insets/insetgraphics.C:200
 #, fuzzy
 msgid "Unknown Error"
 msgstr "[neznámá chyba]"
 
-#: src/insets/insetgraphics.C:198
+#: src/insets/insetgraphics.C:204
 msgid "Loading..."
 msgstr ""
 
-#: src/insets/insetgraphics.C:202
+#: src/insets/insetgraphics.C:208
 #, fuzzy
 msgid "Error reading"
 msgstr "Chyba pøi ètení "
 
-#: src/insets/insetgraphics.C:206
+#: src/insets/insetgraphics.C:212
 #, fuzzy
 msgid "Error converting"
 msgstr "Chyba pøi ètení "
 
-#: src/insets/insetinclude.C:170
+#: src/insets/insetinclude.C:171
 msgid "Input"
 msgstr "Vstup"
 
-#: src/insets/insetinclude.C:171
+#: src/insets/insetinclude.C:172
 msgid "Verbatim Input"
 msgstr "Pøesný vstup"
 
-#: src/insets/insetinclude.C:172
+#: src/insets/insetinclude.C:173
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Pøesný vstup"
 
-#: src/insets/insetinclude.C:173
+#: src/insets/insetinclude.C:174
 msgid "Include"
 msgstr "Vlo¾ení"
 
@@ -6692,7 +6776,7 @@ msgstr "Otevøený objekt"
 msgid "Close|#C^["
 msgstr "Zavøít"
 
-#: src/insets/insetlabel.C:52 src/mathed/formula.C:216
+#: src/insets/insetlabel.C:52 src/mathed/formula.C:217
 #, fuzzy
 msgid "Enter label:"
 msgstr "Vlo¾ení znaèky"
@@ -6707,32 +6791,32 @@ msgstr "Objekt"
 msgid "Opened List Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetmarginal.C:30
+#: src/insets/insetmarginal.C:30 src/insets/insetmarginal.C:38
 #, fuzzy
 msgid "margin"
 msgstr "Okraje"
 
-#: src/insets/insetmarginal.C:37
+#: src/insets/insetmarginal.C:51
 #, fuzzy
 msgid "Opened Marginal Note Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetminipage.C:65
+#: src/insets/insetminipage.C:66
 #, fuzzy
 msgid "minipage"
 msgstr "Minipage"
 
-#: src/insets/insetminipage.C:225
+#: src/insets/insetminipage.C:220
 #, fuzzy
 msgid "Opened Minipage Inset"
 msgstr "Otevøený objekt"
 
-#: src/LColor.C:65 src/insets/insetnote.C:41
+#: src/LColor.C:65 src/insets/insetnote.C:37
 #, fuzzy
 msgid "note"
 msgstr "Komentáø"
 
-#: src/insets/insetnote.C:68
+#: src/insets/insetnote.C:77
 #, fuzzy
 msgid "Opened Note Inset"
 msgstr "Otevøený objekt"
@@ -6779,25 +6863,25 @@ msgstr ""
 msgid "PrettyRef: "
 msgstr "Odkaz: "
 
-#: src/insets/insettabular.C:491
+#: src/insets/insettabular.C:493
 #, fuzzy
 msgid "Opened Tabular Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insettabular.C:1779
+#: src/insets/insettabular.C:1781
 msgid "Multicolumns can only be horizontally."
 msgstr "Vícesloupcové buòky mohou být pouze horizontálnì."
 
-#: src/insets/insettext.C:575
+#: src/insets/insettext.C:576
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insettext.C:1112
+#: src/insets/insettext.C:1113
 msgid "Impossible operation"
 msgstr "Nemo¾ná operace"
 
-#: src/insets/insettext.C:1113
+#: src/insets/insettext.C:1114
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"
@@ -6828,40 +6912,40 @@ msgstr "HtmlUrl: "
 msgid "   options: "
 msgstr "   volby: "
 
-#: src/LaTeX.C:179 src/LaTeX.C:261 src/LaTeX.C:317
+#: src/LaTeX.C:180 src/LaTeX.C:262 src/LaTeX.C:318
 #, fuzzy
 msgid "LaTeX run number"
 msgstr "Èíslo bìhu LaTeXu "
 
-#: src/LaTeX.C:217 src/LaTeX.C:293
+#: src/LaTeX.C:218 src/LaTeX.C:294
 msgid "Running MakeIndex."
 msgstr "Bì¾í MakeIndex."
 
-#: src/LaTeX.C:230
+#: src/LaTeX.C:231
 msgid "Running BibTeX."
 msgstr "Bì¾í BibTeX."
 
-#: src/layout.C:1357
+#: src/layout.C:1359
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX nena¹el popisy formátù!"
 
-#: src/layout.C:1358
+#: src/layout.C:1360
 msgid "Check that the file \"textclass.lst\""
 msgstr "Zkontrolujte, ¾e soubor \"textclass.lst\""
 
-#: src/layout.C:1359
+#: src/layout.C:1361
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "je správnì nainstalován. Lituji, musím konèit :-("
 
-#: src/layout.C:1421
+#: src/layout.C:1423
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX nena¹el popisy formátù!"
 
-#: src/layout.C:1422
+#: src/layout.C:1424
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Zkontrolujte, ¾e soubor \"textclass.lst\""
 
-#: src/layout.C:1423
+#: src/layout.C:1425
 msgid "Sorry, has to exit :-("
 msgstr "je správnì nainstalován. Lituji, musím konèit :-("
 
@@ -7528,202 +7612,207 @@ msgstr "Pøepnutí stylu TeX"
 msgid "Insert a new Text Inset"
 msgstr "Vlo¾ení bibtexu"
 
-#: src/LyXAction.C:388
+#: src/LyXAction.C:387
+#, fuzzy
+msgid "Open thesaurus"
+msgstr "Otevøený objekt"
+
+#: src/LyXAction.C:389
 #, fuzzy
 msgid "Insert table of contents"
 msgstr "Obsah"
 
-#: src/LyXAction.C:390
+#: src/LyXAction.C:391
 #, fuzzy
 msgid "View table of contents"
 msgstr "Obsah"
 
-#: src/LyXAction.C:392
+#: src/LyXAction.C:393
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Pøepnutí kurzoru ne/kopíruje posuvník"
 
-#: src/LyXAction.C:405
+#: src/LyXAction.C:406
 msgid "Register document under version control"
 msgstr ""
 
-#: src/LyXAction.C:421
+#: src/LyXAction.C:422
 msgid "Show message in minibuffer"
 msgstr ""
 
-#: src/LyXAction.C:423
+#: src/LyXAction.C:424
 msgid "Push old message and show this one in minibuffer"
 msgstr ""
 
-#: src/LyXAction.C:426
+#: src/LyXAction.C:427
 msgid "Pop old message and show it in the minibuffer"
 msgstr ""
 
-#: src/LyXAction.C:432
+#: src/LyXAction.C:433
 msgid "Display information about LyX"
 msgstr ""
 
-#: src/LyXAction.C:656
+#: src/LyXAction.C:657
 msgid "No description available!"
 msgstr "®ádný popis není k dispozici!"
 
-#: src/lyx_cb.C:141
+#: src/lyx_cb.C:144
 msgid "Save failed. Rename and try again?"
 msgstr "Soubor se nepodaøilo ulo¾it. Pøejmenovat a zkusit znovu?"
 
-#: src/lyx_cb.C:143
+#: src/lyx_cb.C:146
 msgid "(If not, document is not saved.)"
 msgstr "(Pokud ne, dokument není ulo¾en.)"
 
-#: src/lyx_cb.C:164
+#: src/lyx_cb.C:167
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Zadejte jméno pod kterým má být dokument ulo¾en"
 
-#: src/lyx_cb.C:168 src/lyxfunc.C:1735 src/lyxfunc.C:1819
+#: src/lyx_cb.C:171 src/lyxfunc.C:1725 src/lyxfunc.C:1809
 msgid "Templates"
 msgstr "©ablony"
 
-#: src/lyx_cb.C:176 src/lyxfunc.C:1740 src/lyxfunc.C:1824
+#: src/lyx_cb.C:179 src/lyxfunc.C:1730 src/lyxfunc.C:1814
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/lyx_cb.C:196
+#: src/lyx_cb.C:199
 msgid "Same name as document already has:"
 msgstr "Stejné jméno jako dokument u¾ má:"
 
-#: src/lyx_cb.C:198
+#: src/lyx_cb.C:201
 msgid "Save anyway?"
 msgstr "Pøesto ulo¾it?"
 
-#: src/lyx_cb.C:204
+#: src/lyx_cb.C:207
 msgid "Another document with same name open!"
 msgstr "Je otevøen jiný dokument stejného jména!"
 
-#: src/lyx_cb.C:206
+#: src/lyx_cb.C:209
 msgid "Replace with current document?"
 msgstr "Nahradit aktuálním?"
 
-#: src/lyx_cb.C:214
+#: src/lyx_cb.C:217
 msgid "Document renamed to '"
 msgstr "Dokument pøejmenován na '"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:218
 msgid "', but not saved..."
 msgstr "', ale neulo¾en..."
 
-#: src/lyx_cb.C:221
+#: src/lyx_cb.C:224
 msgid "Document already exists:"
 msgstr "Dokument u¾ existuje:"
 
-#: src/lyx_cb.C:223
+#: src/lyx_cb.C:226
 msgid "Replace file?"
 msgstr "Nahradit soubor?"
 
-#: src/lyx_cb.C:236
+#: src/lyx_cb.C:239
 #, fuzzy
 msgid "Document could not be saved!"
 msgstr "Formát dokumentu nastaven"
 
-#: src/lyx_cb.C:237
+#: src/lyx_cb.C:240
 msgid "Holding the old name."
 msgstr ""
 
-#: src/lyx_cb.C:251
+#: src/lyx_cb.C:254
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex se nedá pou¾ít pro dokumenty v SGML."
 
-#: src/lyx_cb.C:260
+#: src/lyx_cb.C:263
 msgid "No warnings found."
 msgstr "Bez varování."
 
-#: src/lyx_cb.C:262
+#: src/lyx_cb.C:265
 msgid "One warning found."
 msgstr "Vyskytlo se jedno varování."
 
-#: src/lyx_cb.C:263
+#: src/lyx_cb.C:266
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Pou¾ijte 'Úpravy->Jdi na chybu', abyste je na¹el."
 
-#: src/lyx_cb.C:266
+#: src/lyx_cb.C:269
 msgid " warnings found."
 msgstr " varování."
 
-#: src/lyx_cb.C:267
+#: src/lyx_cb.C:270
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Pou¾ijte 'Úpravy->Jdi na chybu', abyste je na¹el."
 
-#: src/lyx_cb.C:269
+#: src/lyx_cb.C:272
 msgid "Chktex run successfully"
 msgstr "Chktex probìhl v poøádku."
 
-#: src/lyx_cb.C:271
+#: src/lyx_cb.C:274
 msgid "It seems chktex does not work."
 msgstr "Zdá se, ¾e chktex nefunguje."
 
-#: src/lyx_cb.C:318
+#: src/lyx_cb.C:321
 msgid "Autosaving current document..."
 msgstr "Automatické ukládání dokumentu..."
 
-#: src/lyx_cb.C:358
+#: src/lyx_cb.C:361
 msgid "Autosave Failed!"
 msgstr "Automatické ulo¾ení se nepovedlo!"
 
-#: src/lyx_cb.C:413
+#: src/lyx_cb.C:416
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Vyberte dokument, který chcete vlo¾it"
 
-#: src/lyx_cb.C:430
+#: src/lyx_cb.C:433
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:437
+#: src/lyx_cb.C:440
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Chyba! Nemohu otevøít specifikovaný soubor:"
 
-#: src/lyx_cb.C:512 src/mathed/formula.C:215
+#: src/lyx_cb.C:515 src/mathed/formula.C:216
 msgid "Enter new label to insert:"
 msgstr "Zadej novou znaèku"
 
-#: src/lyx_cb.C:531
+#: src/lyx_cb.C:534
 msgid "Do you want to save the current settings"
 msgstr "Chcete ulo¾it souèasná nastavení"
 
-#: src/lyx_cb.C:532
+#: src/lyx_cb.C:535
 msgid "for Character, Document, Paper and Quotes"
 msgstr "písma, dokumentu, formátu stránky a uvozovek"
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:536
 msgid "as default for new documents?"
 msgstr "jako implicitní?"
 
-#: src/lyx_cb.C:542
+#: src/lyx_cb.C:545
 msgid "Running configure..."
 msgstr "Bì¾í configure..."
 
-#: src/lyx_cb.C:549
+#: src/lyx_cb.C:552
 msgid "Reloading configuration..."
 msgstr "Nové naètení konfigurace..."
 
-#: src/lyx_cb.C:551
+#: src/lyx_cb.C:554
 msgid "The system has been reconfigured."
 msgstr "Systém je pøekonfigurován."
 
-#: src/lyx_cb.C:552
+#: src/lyx_cb.C:555
 msgid "You need to restart LyX to make use of any"
 msgstr "Musíte LyX spustit znovu, aby jste mohl pou¾ívat"
 
-#: src/lyx_cb.C:553
+#: src/lyx_cb.C:556
 msgid "updated document class specifications."
 msgstr "upravené tøídy dokumentù."
 
-#: src/lyxfind.C:61
+#: src/lyxfind.C:56
 #, fuzzy
 msgid "Sorry!"
 msgstr "Lituji."
 
-#: src/lyxfind.C:61
+#: src/lyxfind.C:56
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
@@ -7761,113 +7850,113 @@ msgstr "Zap"
 msgid "Toggle"
 msgstr "Pøepnout"
 
-#: src/lyxfont.C:572
+#: src/lyxfont.C:581
 msgid "Emphasis "
 msgstr "Zvýraznìní "
 
-#: src/lyxfont.C:575
+#: src/lyxfont.C:584
 msgid "Underline "
 msgstr "Podtr¾ení "
 
-#: src/lyxfont.C:578
+#: src/lyxfont.C:587
 msgid "Noun "
 msgstr "Slovo "
 
-#: src/lyxfont.C:581
+#: src/lyxfont.C:590
 msgid "Latex "
 msgstr "LaTeX "
 
-#: src/lyxfont.C:586
+#: src/lyxfont.C:595
 #, fuzzy
 msgid "Language: "
 msgstr "Jazyk:"
 
-#: src/lyxfont.C:588
+#: src/lyxfont.C:597
 #, fuzzy
 msgid "  Number "
 msgstr "Èíslo"
 
-#: src/lyxfunc.C:319
+#: src/lyxfunc.C:315
 #, fuzzy
 msgid "Unknown function."
 msgstr "Neznámá akce"
 
-#: src/lyxfunc.C:385
+#: src/lyxfunc.C:381
 msgid "Unknown action"
 msgstr "Neznámá akce"
 
 #. no
-#: src/lyxfunc.C:399
+#: src/lyxfunc.C:395
 msgid "Document is read-only"
 msgstr "Dokument je pouze ke ètení"
 
 #. no
-#: src/lyxfunc.C:404
+#: src/lyxfunc.C:400
 msgid "Command not allowed without any document open"
 msgstr "Pøíkaz není povolen pokud není otevøen dokument"
 
-#: src/lyxfunc.C:1036
+#: src/lyxfunc.C:1032
 msgid "Saving document"
 msgstr "Ukládám dokument"
 
-#: src/lyxfunc.C:1199 src/mathed/formulabase.C:1028
+#: src/lyxfunc.C:1195 src/mathed/formulabase.C:1032
 msgid "Missing argument"
 msgstr "Chybìjící parametr"
 
-#: src/lyxfunc.C:1211
+#: src/lyxfunc.C:1207
 msgid "Opening help file"
 msgstr "Otevírám soubor s nápovìdou"
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1429
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-toolbar potøebuje parametr > 0"
 
-#: src/lyxfunc.C:1456
+#: src/lyxfunc.C:1446
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Pou¾ití: toolbar-add-to <pøíkaz LyXu>"
 
-#: src/lyxfunc.C:1473 src/mathed/formulabase.C:553
+#: src/lyxfunc.C:1463 src/mathed/formulabase.C:557
 msgid "Math greek mode on"
 msgstr "Je aktivován re¾im øeckých písmen"
 
-#: src/lyxfunc.C:1484 src/mathed/formulabase.C:562
+#: src/lyxfunc.C:1474 src/mathed/formulabase.C:566
 msgid "Math greek keyboard on"
 msgstr "Je aktivován re¾im øecké klávesnice"
 
-#: src/lyxfunc.C:1486 src/mathed/formulabase.C:564
+#: src/lyxfunc.C:1476 src/mathed/formulabase.C:568
 msgid "Math greek keyboard off"
 msgstr "Re¾im øecké klávesnice je deaktivován"
 
-#: src/lyxfunc.C:1496
+#: src/lyxfunc.C:1486
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povoleno pouze v matematickém re¾imu!"
 
-#: src/lyxfunc.C:1530
+#: src/lyxfunc.C:1520
 msgid "Opening child document "
 msgstr "Otvírám podøízený dokument "
 
-#: src/lyxfunc.C:1604
+#: src/lyxfunc.C:1594
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1610
+#: src/lyxfunc.C:1600
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:1612
+#: src/lyxfunc.C:1602
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1731
+#: src/lyxfunc.C:1721
 #, fuzzy
 msgid "Enter filename for new document"
 msgstr "Zadejte jméno nového dokumentu"
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1731
 msgid "newfile"
 msgstr "novy"
 
-#: src/lyxfunc.C:1759 src/lyxfunc.C:1964
+#: src/lyxfunc.C:1749 src/lyxfunc.C:1954
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -7875,213 +7964,213 @@ msgstr ""
 "Chcete teï uzavøít tento dokument?\n"
 "('Ne' pouze pøepne do otevøené verze)"
 
-#: src/lyxfunc.C:1778
+#: src/lyxfunc.C:1768
 msgid "File already exists:"
 msgstr "Soubor u¾ existuje:"
 
-#: src/lyxfunc.C:1780
+#: src/lyxfunc.C:1770
 msgid "Do you want to open the document?"
 msgstr "Chcete otevøít dokument?"
 
-#: src/lyxfunc.C:1785
+#: src/lyxfunc.C:1775
 #, fuzzy
 msgid "Opening  document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:1793 src/lyxfunc.C:1896
+#: src/lyxfunc.C:1783 src/lyxfunc.C:1886
 msgid "opened."
 msgstr "otevøen."
 
-#: src/lyxfunc.C:1815
+#: src/lyxfunc.C:1805
 #, fuzzy
 msgid "Select template file"
 msgstr "Výbìr následujícího øádku"
 
-#: src/lyxfunc.C:1856
+#: src/lyxfunc.C:1846
 #, fuzzy
 msgid "Select document to open"
 msgstr "Vyberte dokument, který chcete naèíst"
 
-#: src/lyxfunc.C:1888
+#: src/lyxfunc.C:1878
 msgid "Opening document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1890
 #, fuzzy
 msgid "Could not open docuent"
 msgstr "Nemohu otevøít dokument"
 
-#: src/lyxfunc.C:1924
+#: src/lyxfunc.C:1914
 #, fuzzy
 msgid "Select "
 msgstr "Vyber z|#V"
 
-#: src/lyxfunc.C:1925
+#: src/lyxfunc.C:1915
 #, fuzzy
 msgid " file to import"
 msgstr "Zvolte soubor LaTeX pro import"
 
-#: src/lyxfunc.C:1983
+#: src/lyxfunc.C:1973
 msgid "A document by the name"
 msgstr "Je otevøen jiný dokument stejného jména!"
 
-#: src/lyxfunc.C:1985
+#: src/lyxfunc.C:1975
 msgid "already exists. Overwrite?"
 msgstr "Pøepsat?"
 
-#: src/lyxfunc.C:1986
+#: src/lyxfunc.C:1976
 #, fuzzy
 msgid "Canceled"
 msgstr "Zru¹eno."
 
-#: src/lyxfunc.C:2039 src/lyxfunc.C:2075
+#: src/lyxfunc.C:2029 src/lyxfunc.C:2065
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/LyXView.C:230 src/lyxfunc.C:2073
+#: src/LyXView.C:230 src/lyxfunc.C:2063
 msgid " (Changed)"
 msgstr "(zmìneno)"
 
 #. this is a hack
-#: src/lyxfunc.C:2076
+#: src/lyxfunc.C:2066
 msgid "* No document open *"
 msgstr "* Není otevøen ¾ádný dokument *"
 
-#: src/lyx_gui_misc.C:132
+#: src/lyx_gui_misc.C:133
 msgid "Dismiss"
 msgstr "Zmiz"
 
-#: src/lyx_gui_misc.C:168 src/lyx_gui_misc.C:197 src/lyx_gui_misc.C:201
+#: src/lyx_gui_misc.C:169 src/lyx_gui_misc.C:198 src/lyx_gui_misc.C:202
 msgid "Yes|Yy#y"
 msgstr "Ano|Aa#a"
 
-#: src/lyx_gui_misc.C:169 src/lyx_gui_misc.C:198 src/lyx_gui_misc.C:202
+#: src/lyx_gui_misc.C:170 src/lyx_gui_misc.C:199 src/lyx_gui_misc.C:203
 msgid "No|Nn#n"
 msgstr "Ne|Nn#n"
 
-#: src/lyx_gui_misc.C:221
+#: src/lyx_gui_misc.C:222
 msgid "Clear|#e"
 msgstr "Smazat|#a"
 
-#: src/lyx_gui_misc.C:234
+#: src/lyx_gui_misc.C:235
 msgid "Any changes will be ignored"
 msgstr "V¹echny zmìny se budou ignorovat"
 
-#: src/lyx_gui_misc.C:235
+#: src/lyx_gui_misc.C:236
 msgid "The document is read-only:"
 msgstr "Dokument je pouze ke ètení:"
 
-#: src/lyx_main.C:105
+#: src/lyx_main.C:106
 msgid "Wrong command line option `"
 msgstr ""
 
-#: src/lyx_main.C:107
+#: src/lyx_main.C:108
 msgid "'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:211
+#: src/lyx_main.C:212
 msgid "Warning: could not determine path of binary."
 msgstr "Varování: nemohu najít cestu k binárnímu souboru."
 
-#: src/lyx_main.C:213
+#: src/lyx_main.C:214
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Jestli¾e máte tyto problémy, zkuste startoval LyX s absolutní cestou."
 
-#: src/lyx_main.C:303
+#: src/lyx_main.C:304
 #, fuzzy
 msgid "LYX_DIR_11x environment variable no good."
 msgstr "Promìnná prostøedí LYX_DIR_10x není dobøe nastavena"
 
-#: src/lyx_main.C:305
+#: src/lyx_main.C:306
 msgid "System directory set to: "
 msgstr "Systémový adresáø nastaven na: "
 
-#: src/lyx_main.C:313
+#: src/lyx_main.C:314
 #, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Varování! Nemohu otevøít systémový adresáø."
 
-#: src/lyx_main.C:314
+#: src/lyx_main.C:315
 #, fuzzy
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Pou¾ijte pøepínaè -sysdir nebo"
 
-#: src/lyx_main.C:315
+#: src/lyx_main.C:316
 #, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "nastavte promìnnou prostøedí LYX_DIR_10x na adresáø s LyXem"
 
-#: src/lyx_main.C:317
+#: src/lyx_main.C:318
 msgid "containing the file `chkconfig.ltx'."
 msgstr "obsahujícím soubor `chkconfig.ltx'."
 
-#: src/lyx_main.C:325
+#: src/lyx_main.C:326
 msgid "Using built-in default "
 msgstr "Pou¾ijí se implicitní hodnoty."
 
-#: src/lyx_main.C:326
+#: src/lyx_main.C:327
 msgid " but expect problems."
 msgstr " ale oèekávejte problémy."
 
-#: src/lyx_main.C:329
+#: src/lyx_main.C:330
 msgid "Expect problems."
 msgstr "Oèekávejte problémy."
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:560
 #, fuzzy
 msgid "You have specified an invalid LyX directory."
 msgstr "Nemáte vytvoøen osobní adresáø LyXu."
 
-#: src/lyx_main.C:560
+#: src/lyx_main.C:561
 msgid "It is needed to keep your own configuration."
 msgstr "Potøebujete ho pro uchování va¹eho nastavení."
 
-#: src/lyx_main.C:561
+#: src/lyx_main.C:562
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Mám ho pro vás vytvoøit (doporuèeno)"
 
-#: src/lyx_main.C:562
+#: src/lyx_main.C:563
 msgid "Running without personal LyX directory."
 msgstr "Nemáte vytvoøen osobní adresáø LyXu."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:569
+#: src/lyx_main.C:570
 msgid "LyX: Creating directory "
 msgstr "LyX: Vytváøím adresáø "
 
-#: src/lyx_main.C:570
+#: src/lyx_main.C:571
 msgid " and running configure..."
 msgstr " a spou¹tím konfiguraci..."
 
-#: src/lyx_main.C:576
+#: src/lyx_main.C:577
 msgid "Failed. Will use "
 msgstr "Ukonèenou chybou. Místo toho bude pou¾it "
 
-#: src/lyx_main.C:577
+#: src/lyx_main.C:578
 msgid " instead."
 msgstr "."
 
-#: src/lyx_main.C:584
+#: src/lyx_main.C:585
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:599
 msgid "LyX Warning!"
 msgstr "Varování LyXu!"
 
-#: src/lyx_main.C:599
+#: src/lyx_main.C:600
 msgid "Error while reading "
 msgstr "Chyba pøi ètení "
 
-#: src/lyx_main.C:600
+#: src/lyx_main.C:601
 msgid "Using built-in defaults."
 msgstr "Pou¾ijí se implicitní hodnoty."
 
-#: src/lyx_main.C:700
+#: src/lyx_main.C:701
 msgid "Setting debug level to "
 msgstr "Nastavují debug level na "
 
-#: src/lyx_main.C:711
+#: src/lyx_main.C:712
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -8102,33 +8191,33 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:746
+#: src/lyx_main.C:747
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:758
+#: src/lyx_main.C:759
 msgid "Missing directory for -sysdir switch!"
 msgstr "Chybí adresáø pro pøepínaè -switch!"
 
-#: src/lyx_main.C:769
+#: src/lyx_main.C:770
 #, fuzzy
 msgid "Missing directory for -userdir switch!"
 msgstr "Chybí adresáø pro pøepínaè -switch!"
 
-#: src/lyx_main.C:792
+#: src/lyx_main.C:793
 #, fuzzy
 msgid "Missing command string after  -x switch!"
 msgstr "Chybí èíslo pro pøepínaè -dbg!"
 
-#: src/lyx_main.C:805
+#: src/lyx_main.C:806
 msgid "Missing file type [eg latex, ps...] after "
 msgstr ""
 
-#: src/lyx_main.C:807 src/lyx_main.C:822
+#: src/lyx_main.C:808 src/lyx_main.C:823
 msgid " switch!"
 msgstr ""
 
-#: src/lyx_main.C:820
+#: src/lyx_main.C:821
 msgid "Missing type [eg latex, ps...] after "
 msgstr ""
 
@@ -8508,7 +8597,7 @@ msgstr ""
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXSendto.C:41
+#: src/LyXSendto.C:42
 msgid "Send Document to Command"
 msgstr "Pøedej dokument pøíkazu"
 
@@ -8563,82 +8652,82 @@ msgstr "Stále to chcete udìlat?"
 msgid " (read only)"
 msgstr "(pouze ke ètení)"
 
-#: src/mathed/formulabase.C:182 src/mathed/formulabase.C:1006
+#: src/mathed/formulabase.C:188 src/mathed/formulabase.C:1010
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/mathed/formulabase.C:686
+#: src/mathed/formulabase.C:690
 msgid "Invalid action in math mode!"
 msgstr "Tato akce je v matematickém re¾imu neplatná!"
 
-#: src/mathed/formulabase.C:885
+#: src/mathed/formulabase.C:889
 msgid "TeX mode"
 msgstr "Re¾im TeXu"
 
-#: src/mathed/formula.C:183 src/mathed/formula.C:196
+#: src/mathed/formula.C:184 src/mathed/formula.C:197
 msgid "No number"
 msgstr "Toto není èíslo"
 
-#: src/mathed/formula.C:183 src/mathed/formula.C:196
+#: src/mathed/formula.C:184 src/mathed/formula.C:197
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/formulamacro.C:106
+#: src/mathed/formulamacro.C:107
 msgid "Macro: "
 msgstr "Makro: "
 
-#: src/MenuBackend.C:280
+#: src/MenuBackend.C:291
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Nejsou otevøeny ¾ádné dokumenty!%t"
 
-#: src/MenuBackend.C:336
+#: src/MenuBackend.C:347
 #, fuzzy
 msgid "Ascii text as lines"
 msgstr "Výbìr následujícího odstavce"
 
-#: src/MenuBackend.C:338
+#: src/MenuBackend.C:349
 #, fuzzy
 msgid "Ascii text as paragraphs"
 msgstr "Výbìr následujícího odstavce"
 
-#: src/MenuBackend.C:383
+#: src/MenuBackend.C:394
 #, fuzzy
 msgid "Wide "
 msgstr "©íøka"
 
-#: src/MenuBackend.C:483
+#: src/MenuBackend.C:494
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:491
+#: src/MenuBackend.C:502
 #, fuzzy
 msgid "LaTeX...|L"
 msgstr "LaTeX|#L"
 
-#: src/MenuBackend.C:493
+#: src/MenuBackend.C:504
 msgid "LinuxDoc...|L"
 msgstr ""
 
-#: src/MenuBackend.C:501
+#: src/MenuBackend.C:512
 #, fuzzy
 msgid "Emphasize"
 msgstr "Zvýraznìní "
 
-#: src/minibuffer.C:104
+#: src/minibuffer.C:105
 msgid "[End of history]"
 msgstr ""
 
-#: src/minibuffer.C:113
+#: src/minibuffer.C:114
 msgid "[Beginning of history]"
 msgstr ""
 
 #. No matches
-#: src/minibuffer.C:131 src/minibuffer.C:190 src/minibuffer.C:214
+#: src/minibuffer.C:132 src/minibuffer.C:191 src/minibuffer.C:215
 msgid " [no match]"
 msgstr ""
 
-#: src/minibuffer.C:137
+#: src/minibuffer.C:138
 msgid " [sole completion]"
 msgstr ""
 
@@ -8670,43 +8759,43 @@ msgstr "LyX|#L"
 msgid "Ascii|#s"
 msgstr "Ascii|#A"
 
-#: src/support/filetools.C:149
+#: src/support/filetools.C:155
 msgid "LyX Internal Error!"
 msgstr "Vnitøní chyba LyXu!"
 
-#: src/support/filetools.C:150
+#: src/support/filetools.C:156
 msgid "Could not test if directory is writeable"
 msgstr "Nelze otestovat jestli je do adresáøe povolen zápis"
 
-#: src/support/filetools.C:400
+#: src/support/filetools.C:406
 msgid "Error! Cannot open directory:"
 msgstr "Chyba! Nemohu otevøít adresáø:"
 
-#: src/support/filetools.C:419
+#: src/support/filetools.C:425
 msgid "Error! Could not remove file:"
 msgstr "Chyba! Nemohu odstranit soubor:"
 
-#: src/support/filetools.C:443 src/support/filetools.C:477
+#: src/support/filetools.C:449 src/support/filetools.C:483
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Chyba! Nemohu vytvoøit doèasný adresáø:"
 
-#: src/support/filetools.C:458
+#: src/support/filetools.C:464
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Chyba! Nemohu smazat doèasný adresáø:"
 
-#: src/support/filetools.C:524
+#: src/support/filetools.C:530
 msgid "Internal error!"
 msgstr "Vnitøní chyba!"
 
-#: src/support/filetools.C:525
+#: src/support/filetools.C:531
 msgid "Call to createDirectory with invalid name"
 msgstr "Volání 'createDirectory' s neplatným jménem"
 
-#: src/support/filetools.C:530
+#: src/support/filetools.C:536
 msgid "Error! Couldn't create directory:"
 msgstr "Chyba! Nemohu vytvoøit adresáø:"
 
-#: src/support/filetools.C:1092
+#: src/support/filetools.C:1098
 msgid "Could not delete auto-save file!"
 msgstr "Nemohu vymazat zálo¾ní soubor!"
 
@@ -8714,44 +8803,48 @@ msgstr "Nemohu vymazat zálo¾ní soubor!"
 msgid "unknown"
 msgstr "neznámý"
 
-#: src/tabular.C:1385
+#: src/tabular.C:1386
 #, fuzzy
 msgid "Warning:"
 msgstr "Varování!"
 
-#: src/tabular.C:1386
+#: src/tabular.C:1387
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr ""
 
-#: src/tabular.C:1387
+#: src/tabular.C:1388
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr ""
 
 #. Could only happen with user style
-#: src/text2.C:1028
+#: src/text2.C:1033
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr "Není nastavena ¾ádná zmìna písma. Nastavte ji v menu Formát/písmo."
 
-#: src/text.C:1796
+#: src/text.C:1803
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr "Nemù¾ete napsat mezeru na zaèátku odstavce. Pøeètìte si Prùvodce."
 
-#: src/text.C:1798
+#: src/text.C:1805
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Nemù¾ete takto napsat dvì mezery. Pøeètìte si Prùvodce."
 
-#: src/text.C:3171 src/text.C:3177 src/text.C:3182
+#: src/text.C:3183 src/text.C:3187
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Zlom strany"
 
-#: src/text.C:3367 src/text.C:3373 src/text.C:3377
+#: src/text.C:3370 src/text.C:3373
 msgid "Page Break (bottom)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Inline Figure|#I"
+#~ msgstr "Vlo¾ení obrázku"
 
 #, fuzzy
 #~ msgid "Add reference to current citation"
@@ -8796,10 +8889,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Text after : "
 #~ msgstr "Textový re¾im"
-
-#, fuzzy
-#~ msgid "Float Placement"
-#~ msgstr "Umístìní objektù:"
 
 #, fuzzy
 #~ msgid "Section number depth :"
@@ -9080,14 +9169,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Here"
 #~ msgstr "Men¹í"
-
-#, fuzzy
-#~ msgid "Bottom of page"
-#~ msgstr "% strany"
-
-#, fuzzy
-#~ msgid "Top of page"
-#~ msgstr "% strany"
 
 #, fuzzy
 #~ msgid "Separate page"
@@ -9612,9 +9693,6 @@ msgstr ""
 
 #~ msgid "Closed float"
 #~ msgstr "Uzavøený objekt"
-
-#~ msgid "Nothing to do"
-#~ msgstr "Nic na práci"
 
 #~ msgid "Don't know what to do with half floats."
 #~ msgstr "Nevím co dìlat s polovinou objektu."

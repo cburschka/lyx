@@ -209,7 +209,7 @@ pair<Buffer::LogType, string> const Buffer::getLogName(void) const
 	string const bname =
 		AddName(path, OnlyFilename(
 			ChangeExtension(filename,
-					formats.Extension("literate") + ".out")));
+					formats.extension("literate") + ".out")));
 
 	// If no Latex log or Build log is newer, show Build log
 

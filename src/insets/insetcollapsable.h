@@ -128,13 +128,8 @@ public:
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
                  bool selectall = false);
-#if 0
-	///
-	void setLabel(string const & l, bool flag = false);
-#else
 	///
 	void setLabel(string const & l);
-#endif
 	///
 	void setLabelFont(LyXFont & f) { labelfont = f; }
 #if 0
@@ -173,15 +168,10 @@ public:
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	bool isOpen() const { return !collapsed_; }
-#if 0
-	///
-	void open(BufferView *, bool);
-#else
 	///
 	void open(BufferView *);
 	///
 	void close(BufferView *);
-#endif
 	///
 	string const selectNextWord(BufferView * bv, float & value) const {
 		return inset.selectNextWord(bv, value);
@@ -227,10 +217,6 @@ public:
 	///
 	InsetText inset;
 protected:
-#if 0
-	///
-	string const get_new_label() const;
-#endif
 	///
 	mutable int button_length;
 	///
@@ -240,10 +226,6 @@ protected:
 private:
 	///
 	string label;
-#if 0
-	///
-	mutable string draw_label;
-#endif
 #if 0
 	///
 	bool autocollapse;
@@ -256,10 +238,6 @@ private:
 	mutable UpdateCodes need_update;
 	///
 	bool inlined;
-#if 0
-	///
-	bool change_label_with_text;
-#endif
 };
 
 #endif

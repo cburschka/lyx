@@ -1,3 +1,18 @@
+2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* forms/makefile (SRCS): add form_float.fd
+
+	* forms/form_float.fd: new file
+
+	* form_float.[Ch]: new files
+
+	* Makefile.am (libxforms_la_SOURCES): add FormFloat.C,
+	FormFloat.h, form_float.C and form_float.h
+
+	* FormFloat.[Ch]: new files
+
+	* Dialogs.C: init GUIFloat is well
+
 2001-07-29  Asger Alstrup Nielsen  <alstrup@alstrup>
 
 	* FormToc.C (updateType): Fix problem with TOC that couldn't be

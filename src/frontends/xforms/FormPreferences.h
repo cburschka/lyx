@@ -236,7 +236,7 @@ private:
 		///
 		bool Browser();
 		///
-		bool Delete();
+		bool erase();
 		///
 		bool Input();
 		///
@@ -278,7 +278,7 @@ private:
 		///
 		void UpdateBrowser();
 		///
-		bool Delete();
+		bool erase();
 		///
 		bool Input();
 

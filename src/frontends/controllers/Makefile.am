@@ -40,6 +40,8 @@ libcontrollers_la_SOURCES=\
 	ControlError.C \
 	ControlExternal.h \
 	ControlExternal.C \
+	ControlFloat.h \
+	ControlFloat.C \
 	ControlGraphics.h \
 	ControlGraphics.C \
 	ControlInclude.C \

@@ -957,8 +957,8 @@ FD_form_converters const * FormPreferences::Converters::dialog()
 void FormPreferences::Converters::apply() const
 {
 	converters = local_converters;
-	converters.Update(formats);
-	converters.BuildGraph();
+	converters.update(formats);
+	converters.buildGraph();
 }
 
 
@@ -1023,7 +1023,7 @@ bool FormPreferences::Converters::input(FL_OBJECT const * const ob)
 		return Add();
 
 	} else if (ob == dialog_->button_delete) {
-		return Delete();
+		return erase();
 	}
 
 	return true;
@@ -1033,14 +1033,14 @@ bool FormPreferences::Converters::input(FL_OBJECT const * const ob)
 void FormPreferences::Converters::update()
 {
 	local_converters = converters;
-	local_converters.Update(local_formats);
+	local_converters.update(local_formats);
 	UpdateBrowser();
 }
 
 
 void FormPreferences::Converters::UpdateBrowser()
 {
-	local_converters.Sort();
+	local_converters.sort();
 
 	fl_freeze_form(dialog_->form);
 	fl_clear_browser(dialog_->browser_all);
@@ -1062,10 +1062,10 @@ bool FormPreferences::Converters::Add()
 	string const command = fl_get_input(dialog_->input_converter);
 	string const flags = fl_get_input(dialog_->input_flags);
 
-	Converter const * old = local_converters.GetConverter(from, to);
-	local_converters.Add(from, to, command, flags);
+	Converter const * old = local_converters.getConverter(from, to);
+	local_converters.add(from, to, command, flags);
 	if (!old) {
-		local_converters.UpdateLast(local_formats);
+		local_converters.updateLast(local_formats);
 		UpdateBrowser();
 	}
 	setEnabled(dialog_->button_add, false);
@@ -1081,14 +1081,14 @@ bool FormPreferences::Converters::Browser()
 
 	fl_freeze_form(dialog_->form);
 
-	Converter const & c = local_converters.Get(i-1);
-	int j = local_formats.GetNumber(c.from);
+	Converter const & c = local_converters.get(i - 1);
+	int j = local_formats.getNumber(c.from);
 	if (j >= 0)
-		fl_set_choice(dialog_->choice_from, j+1);
+		fl_set_choice(dialog_->choice_from, j + 1);
 
-	j = local_formats.GetNumber(c.to);
+	j = local_formats.getNumber(c.to);
 	if (j >= 0)
-		fl_set_choice(dialog_->choice_to, j+1);
+		fl_set_choice(dialog_->choice_to, j + 1);
 
 	fl_set_input(dialog_->input_converter, c.command.c_str());
 	fl_set_input(dialog_->input_flags, c.flags.c_str());
@@ -1104,12 +1104,12 @@ bool FormPreferences::Converters::Browser()
 }
 
 
-bool FormPreferences::Converters::Delete()
+bool FormPreferences::Converters::erase()
 {
 	string const from = GetFrom();
 	string const to = GetTo();
 
-	local_converters.Delete(from, to);
+	local_converters.erase(from, to);
 	UpdateBrowser();
 	return true;
 }
@@ -1119,7 +1119,7 @@ bool FormPreferences::Converters::Input()
 {
 	string const from = GetFrom();
 	string const to = GetTo();
-	int const sel = local_converters.GetNumber(from, to);
+	int const sel = local_converters.getNumber(from, to);
 	
 	fl_freeze_form(dialog_->form);
 
@@ -1157,7 +1157,7 @@ string const FormPreferences::Converters::GetFrom() const
 		fl_get_choice(dialog_->choice_from);
 
 	if (i > 0 && i <= local_formats.size())
-		return local_formats.Get(i-1).name();
+		return local_formats.get(i - 1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetFrom: No choice!"
 		       << endl;
@@ -1172,7 +1172,7 @@ string const FormPreferences::Converters::GetTo() const
 		fl_get_choice(dialog_->choice_to);
 
 	if (i > 0 && i <= local_formats.size())
-		return local_formats.Get(i-1).name();
+		return local_formats.get(i - 1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetTo: No choice!"
 		       << endl;
@@ -1289,7 +1289,7 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 		return Add();
 
 	} else if (ob == dialog_->button_delete) {
-		return Delete();
+		return erase();
 	}
 
 	return false;
@@ -1305,7 +1305,7 @@ void FormPreferences::Formats::update()
 
 void FormPreferences::Formats::UpdateBrowser()
 {
-	local_formats.Sort();
+	local_formats.sort();
 
 	fl_freeze_form(dialog_->form);
 	fl_deselect_browser(dialog_->browser_all);
@@ -1320,7 +1320,7 @@ void FormPreferences::Formats::UpdateBrowser()
 
 	// Mustn't forget to update the Formats available to the converters_
 	parent_.converters_.UpdateChoices();
-	local_converters.Update(local_formats);
+	local_converters.update(local_formats);
 }
 
 
@@ -1332,10 +1332,10 @@ bool FormPreferences::Formats::Add()
 	string const shortcut =  fl_get_input(dialog_->input_shrtcut);
 	string const viewer =  fl_get_input(dialog_->input_viewer);
 
-	Format const * old = local_formats.GetFormat(name);
+	Format const * old = local_formats.getFormat(name);
 	string const old_prettyname = old ? old->prettyname() : string();
-	local_formats.Add(name, extension, prettyname, shortcut);
-	local_formats.SetViewer(name, viewer);
+	local_formats.add(name, extension, prettyname, shortcut);
+	local_formats.setViewer(name, viewer);
 	if (!old || prettyname != old_prettyname) {
 		UpdateBrowser();
 		if (old)
@@ -1354,7 +1354,7 @@ bool FormPreferences::Formats::Browser()
 
 	fl_freeze_form(dialog_->form);
 
-	Format const & f = local_formats.Get(i-1);
+	Format const & f = local_formats.get(i - 1);
 
 	fl_set_input(dialog_->input_format, f.name().c_str());
 	fl_set_input(dialog_->input_gui_name, f.prettyname().c_str());
@@ -1373,17 +1373,17 @@ bool FormPreferences::Formats::Browser()
 }
 
 
-bool FormPreferences::Formats::Delete()
+bool FormPreferences::Formats::erase()
 {
 	string const name = fl_get_input(dialog_->input_format);
 
-	if (local_converters.FormatIsUsed(name)) {
+	if (local_converters.formatIsUsed(name)) {
 		parent_.printWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
 		setEnabled(dialog_->button_delete, false);
 		return false;
 	}
 
-	local_formats.Delete(name);
+	local_formats.erase(name);
 	UpdateBrowser();
 	return true;
 }
@@ -1392,7 +1392,7 @@ bool FormPreferences::Formats::Delete()
 bool FormPreferences::Formats::Input()
 {
 	string const name = fl_get_input(dialog_->input_format);
-	int const sel = local_formats.GetNumber(name);
+	int const sel = local_formats.getNumber(name);
 	fl_freeze_form(dialog_->form);
 
 	if (sel < 0) {

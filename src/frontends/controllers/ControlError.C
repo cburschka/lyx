@@ -25,11 +25,13 @@
 #include "buffer.h"
 #include "insets/inseterror.h"
 
+
 ControlError::ControlError(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetError, string>(lv, d)
 {
 	d_.showError.connect(SigC::slot(this, &ControlError::showInset));
 }
+
 
 string const ControlError::getParams(InsetError const & inset)
 {

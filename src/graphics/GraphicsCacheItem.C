@@ -106,7 +106,7 @@ string const findTargetFormat(string const & from)
 	FormatList::const_iterator end  = formats.end();
 
 	for (; iter != end; ++iter) {
-		if (converters.IsReachable(from, *iter))
+		if (converters.isReachable(from, *iter))
 			break;
 	}
 	
@@ -140,7 +140,7 @@ GraphicsCacheItem::convertImage(string const & filename)
 	// Remove the temp file, we only want the name...
 	lyx::unlink(tempfile);
 
-	bool result = converters.Convert(0, filename, tempfile, from, to);
+	bool result = converters.convert(0, filename, tempfile, from, to);
 	tempfile.append(".xpm");
 
 	// For now we are synchronous

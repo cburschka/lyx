@@ -28,6 +28,7 @@ SRCS =  form_aboutlyx.fd \
 	form_error.fd \
 	form_external.fd \
 	form_filedialog.fd \
+	form_float.fd \
 	form_graphics.fd \
 	form_include.fd \
 	form_index.fd \

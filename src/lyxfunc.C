@@ -12,13 +12,8 @@
 
 #include "Lsstream.h"
 
-#if 0
-#include <time.h>
-#include <locale.h>
-#else
 #include <ctime>
 #include <clocale>
-#endif
 
 #include <utility> 
 #include <algorithm> 
@@ -1373,16 +1368,10 @@ string const LyXFunc::dispatch(int ac,
 
 	case LFUN_GOTOFILEROW:
 	{
-#if 0
-	        char file_name[100];
-		int row;
-		::sscanf(argument.c_str(), " %s %d", file_name, &row);
-#else
 		string file_name;
 		int row;
 		istringstream istr(argument.c_str());
 		istr >> file_name >> row;
-#endif
 		// Must replace extension of the file to be .lyx and get full path
 		string const s(ChangeExtension(file_name, ".lyx"));
 
@@ -1922,7 +1911,7 @@ void LyXFunc::doImport(string const & argument)
 				initpath = trypath;
 		}
 
-		string const text = _("Select ") + formats.PrettyName(format)
+		string const text = _("Select ") + formats.prettyName(format)
 			+ _(" file to import");
 
 		FileDialog fileDlg(owner, text, 
@@ -1932,9 +1921,9 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(string(_("Examples")),
 				  string(AddPath(system_lyxdir, "examples"))));
 			
-		string const extension = "*." + formats.Extension(format)
-			+ "| " + formats.PrettyName(format)
-			+ " (*." + formats.Extension(format) + ")";
+		string const extension = "*." + formats.extension(format)
+			+ "| " + formats.prettyName(format)
+			+ " (*." + formats.extension(format) + ")";
 
 		FileDialog::Result result = fileDlg.Select(initpath,
 							   extension);

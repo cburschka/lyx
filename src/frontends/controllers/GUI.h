@@ -223,6 +223,20 @@ public:
 };
 
 
+/** Specialization for Float dialog
+ */
+class ControlFloat;
+
+template <class GUIview, class GUIbc>
+class GUIFloat :
+	public GUI<ControlFloat, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIFloat(LyXView & lv, Dialogs & d)
+		: GUI<ControlFloat, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Preamble dialog
  */
 class ControlPreamble;

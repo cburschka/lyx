@@ -368,11 +368,7 @@ int Trans::Load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				string string_to = lex.text();
-#if 0
 				keymap_[key_from] = string_to;
-#else
-				keymap_[key_from] = string_to;
-#endif
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << string_to << "'"
 					       << endl;

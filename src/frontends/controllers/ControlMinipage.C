@@ -71,15 +71,17 @@ MinipageParams::MinipageParams(InsetMinipage const & inset)
 	: width(inset.width()), pos(inset.pos())
 {}
 
-bool MinipageParams::operator==(MinipageParams const & o) const
+
+bool operator==(MinipageParams const & p1, MinipageParams const & p2)
 {
-	return (width == o.width && pos == o.pos);
+	return (p1.width == p2.width && p1.pos == p2.pos);
 }
 
-bool MinipageParams::operator!=(MinipageParams const & o) const
-{
-	return !(*this == o);
-}
+
+//bool operator!=(MinipageParams const & p1, MinipageParams const & p2)
+//{
+//	return !(p1 == p2);
+//}
 
 namespace minipage {
 
@@ -87,7 +89,7 @@ vector<string> const getUnits()
 {
 	vector<string> units;
 	const char * str;
-	for(int i=0;(str=stringFromUnit(i));++i)
+	for(int i=0; (str = stringFromUnit(i)); ++i)
 	    units.push_back(str);
 
 	return units;

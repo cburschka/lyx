@@ -1,0 +1,63 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *          Copyright 2001 The LyX Team.
+ *
+ *======================================================
+ *
+ * \file ControlFloat.h
+ */
+
+#ifndef CONTROLFLOAT_H
+#define CONTROLFLOAT_H
+
+#include <vector>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "ControlInset.h"
+
+class InsetFloat;
+
+///
+struct FloatParams {
+	///
+	FloatParams();
+	///
+	FloatParams(InsetFloat const &);
+	///
+	string placement;
+};
+
+
+inline
+bool operator==(FloatParams const & p1, FloatParams const & p2) 
+{
+	return p1.placement == p2.placement;
+}
+
+
+/** A controller for Minipage dialogs.
+ */
+class ControlFloat : public ControlInset<InsetFloat, FloatParams>  {
+public:
+	///
+	ControlFloat(LyXView &, Dialogs &);
+private:
+	/// Dispatch the changed parameters to the kernel.
+	virtual void applyParamsToInset();
+	/// 
+	virtual void applyParamsNoInset();
+	/// get the parameters from the string passed to createInset.
+	virtual FloatParams const getParams(string const &)
+		{ return FloatParams(); }
+	/// get the parameters from the inset passed to showInset.
+	virtual FloatParams const getParams(InsetFloat const &);
+};
+
+#endif

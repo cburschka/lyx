@@ -193,6 +193,7 @@ public:
 
 	/// give and set the LyXText status
 	text_status status() const;
+	///
 	void status(BufferView *, text_status) const;
 
 private:	

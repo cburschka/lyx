@@ -109,11 +109,7 @@ bool operator>(LyXCursor const & a, LyXCursor const & b)
 inline
 bool operator>=(LyXCursor const & a, LyXCursor const & b)
 {
-#if 0
-	return (a > b || a == b);
-#else
 	return !(a < b);
-#endif
 }
 
 
@@ -121,11 +117,7 @@ bool operator>=(LyXCursor const & a, LyXCursor const & b)
 inline
 bool operator<=(LyXCursor const & a, LyXCursor const & b)
 {
-#if 0
-	return (a < b || a == b);
-#else
 	return !(a > b);
-#endif
 }
 
 #endif

@@ -52,6 +52,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	prettyref = false;
 	chess = false;
 	natbib = false;
+	floats = false;
 	
 	// commands
 	lyx = false;
@@ -126,6 +127,8 @@ void LaTeXFeatures::require(string const & name)
 		binom = true;
 	} else if (name == "natbib") {
 		natbib = true;
+	} else if (name == "float") {
+		floats = true;
 	}
 }
 
@@ -260,23 +263,24 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{prettyref}\n";
 
 	// float.sty
-	// We only need float.sty if we use non builtin floats. This includes
-	// modified table and figure floats. (Lgb)
+	// We only need float.sty if we use non builtin floats, or if we
+	// use the "H" modifier. This includes modified table and
+	// figure floats. (Lgb)
 	if (!usedFloats.empty()) {
-		bool use_float = false;
 		UsedFloats::const_iterator beg = usedFloats.begin();
 		UsedFloats::const_iterator end = usedFloats.end();
 		for (; beg != end; ++beg) {
 			Floating const & fl = floatList.getType((*beg));
 			if (!fl.type().empty() && !fl.builtin()) {
-				use_float = true;
+				const_cast<LaTeXFeatures *>(this)->floats = true;
 				break;
 			}
 		}
-		if (use_float)
-			packages << "\\usepackage{float}\n";
 	}
-
+	if (floats) {
+		packages << "\\usepackage{float}\n";
+	}
+	
 	// natbib.sty
 	if (natbib) {
 		packages << "\\usepackage[";

@@ -582,7 +582,7 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 		outfile = RemoveExtension(relname);
 	}
 
-	converters.Convert(buf, params.filename, outfile, extension, image_target);
+	converters.convert(buf, params.filename, outfile, extension, image_target);
 	
 	return outfile;
 }

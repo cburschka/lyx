@@ -34,19 +34,17 @@ struct MinipageParams {
 	///
 	MinipageParams(InsetMinipage const &);
 	///
-	bool operator==(MinipageParams const &) const;
-	///
-	bool operator!=(MinipageParams const &) const;
-	
-	///
 	string width;
 	///
 	InsetMinipage::Position pos;
 };
 
 
-class InsetMinipage;
-class MinipageParams;
+///
+bool operator==(MinipageParams const &, MinipageParams const &);
+///
+//bool operator!=(MinipageParams const &, MinipageParams const &);
+
 
 /** A controller for Minipage dialogs.
  */

@@ -37,9 +37,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
 			Converters::EdgePath p =
-				converters.GetPath(*it,	format);
+				converters.getPath(*it,	format);
 			if (!p.empty()) {
-				lyxrc.pdf_mode = converters.UsePdflatex(p);
+				lyxrc.pdf_mode = converters.usePdflatex(p);
 				backend_format = *it;
 				break;
 			}
@@ -47,7 +47,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		if (backend_format.empty()) {
 			WriteAlert(_("Can not export file"),
 				   _("No information for exporting to ")
-				   + formats.PrettyName(format));
+				   + formats.prettyName(format));
 			return false;
 		}
 	} else
@@ -57,7 +57,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	if (!buffer->tmppath.empty())
 		filename = AddName(buffer->tmppath, filename);
 	filename = ChangeExtension(filename, 
-				   formats.Extension(backend_format));
+				   formats.extension(backend_format));
 
 	// Ascii backend
 	if (backend_format == "text")
@@ -81,14 +81,14 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string outfile_base = (put_in_tempdir)
 		? filename : buffer->getLatexName(false);
 
-	if (!converters.Convert(buffer, filename, outfile_base,
+	if (!converters.convert(buffer, filename, outfile_base,
 				backend_format, format, result_file))
 		return false;
 
 	if (!put_in_tempdir)
 		ShowMessage(buffer,
 			    _("Document exported as ")
-			    + formats.PrettyName(format)
+			    + formats.prettyName(format)
 			    + _(" to file `")
 			    + MakeDisplayPath(result_file) +'\'');
 	return true;
@@ -106,7 +106,7 @@ bool Exporter::Preview(Buffer * buffer, string const & format)
 	string result_file;
 	if (!Export(buffer, format, true, result_file))
 		return false;
-	return formats.View(buffer, result_file, format);
+	return formats.view(buffer, result_file, format);
 }
 
 
@@ -115,7 +115,7 @@ bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 	vector<string> backends = Backends(buffer);
 	for (vector<string>::const_iterator it = backends.begin();
 	     it != backends.end(); ++it)
-		if (converters.IsReachable(*it, format))
+		if (converters.isReachable(*it, format))
 			return true;
 	return false;
 }
@@ -126,11 +126,11 @@ Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 {
 	vector<string> backends = Backends(buffer);
 	vector<Format const *> result = 
-		converters.GetReachable(backends[0], only_viewable, true);
+		converters.getReachable(backends[0], only_viewable, true);
 	for (vector<string>::const_iterator it = backends.begin() + 1;
 	     it != backends.end(); ++it) {
 		vector<Format const *>  r =
-			converters.GetReachable(*it, only_viewable, false);
+			converters.getReachable(*it, only_viewable, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;

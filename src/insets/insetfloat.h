@@ -17,6 +17,7 @@
 #endif
 
 #include "insetcollapsable.h"
+#include <sigc++/signal_system.h>
 
 class Painter;
 
@@ -29,6 +30,8 @@ public:
 	InsetFloat(string const &);
 	///
 	InsetFloat(InsetFloat const &, bool same_id = false);
+	///
+	~InsetFloat();
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -59,6 +62,10 @@ public:
 	void wide(bool w);
 	///
 	bool wide() const;
+	///
+	bool  showInsetDialog(BufferView *) const;
+	///
+	SigC::Signal0<void> hideDialog;
 private:
 	///
 	string floatType_;

@@ -8,12 +8,11 @@
  *
  *======================================================
  *
- * \file FormMinipage.h
- * \author Juergen Vigna, jug@sad.it
+ * \file FormFloat.h
  */
 
-#ifndef FORMMINIPAGE_H
-#define FORMMINIPAGE_H
+#ifndef FORMFLOAT_H
+#define FORMFLOAT_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -21,17 +20,17 @@
 
 #include "FormBase.h"
 
-class ControlMinipage;
-struct FD_form_minipage;
+class ControlFloat;
+struct FD_form_float;
 
-/** This class provides an XForms implementation of the Minipage
+/** This class provides an XForms implementation of the Float
     Dialog.
  */
-class FormMinipage
-	: public FormCB<ControlMinipage, FormDB<FD_form_minipage> > {
+class FormFloat : public FormCB<ControlFloat, FormDB<FD_form_float> > {
 public:
 	///
-	FormMinipage(ControlMinipage &);
+	FormFloat(ControlFloat &);
+
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
@@ -41,7 +40,7 @@ private:
 	virtual void update();
 
 	/// Fdesign generated method
-	FD_form_minipage * build_minipage();
+	FD_form_float * build_float();
 };
 
-#endif // FORMMINIPAGE_H
+#endif // FORMFLOAT_H

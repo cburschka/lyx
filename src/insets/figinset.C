@@ -1943,7 +1943,7 @@ void InsetFig::preview(string const & p)
 	    tfname += ".eps";
 	string buf1 = OnlyPath(owner->fileName());
 	string buf2 = os::external_path(MakeAbsPath(tfname, buf1));
-	if (!formats.View(owner, buf2, "eps"))
+	if (!formats.view(owner, buf2, "eps"))
 		lyxerr << "Can't view " << buf2 << endl;
 }
 

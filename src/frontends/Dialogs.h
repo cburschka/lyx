@@ -44,6 +44,7 @@ class InsetInfo;
 class InsetTabular;
 class InsetCommand;
 class InsetMinipage;
+class InsetFloat;
 class Paragraph;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
@@ -123,6 +124,8 @@ public:
 	SigC::Signal1<void, InsetMinipage *> showMinipage;
 	///
 	SigC::Signal1<void, InsetMinipage *> updateMinipage;
+	///
+	SigC::Signal1<void, InsetFloat *> showFloat;
 	///
 	SigC::Signal0<void> showParagraph;
 	///

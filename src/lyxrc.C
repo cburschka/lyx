@@ -875,9 +875,9 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				flags = lexrc.GetString();
 			if (command.empty() || command == "none")
-				converters.Delete(from, to);
+				converters.erase(from, to);
 			else
-				converters.Add(from, to, command, flags);
+				converters.add(from, to, command, flags);
 			break;
 		}
 		case RC_VIEWER: {
@@ -886,7 +886,7 @@ int LyXRC::read(string const & filename)
 				format = lexrc.GetString();
 			if (lexrc.next())
 				command = lexrc.GetString();
-			formats.SetViewer(format, command);
+			formats.setViewer(format, command);
 			break;
 		}
 		case RC_FORMAT: {
@@ -900,14 +900,14 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				shortcut = lexrc.GetString();
 			if (prettyname.empty()) {
-				if (converters.FormatIsUsed(format))
+				if (converters.formatIsUsed(format))
 					lyxerr << "Can't delete format "
 					       << format << endl;
 				else
-					formats.Delete(format);
+					formats.erase(format);
 
 			} else
-				formats.Add(format, extension, prettyname,
+				formats.add(format, extension, prettyname,
 					    shortcut);
 			break;
 		}
@@ -926,8 +926,8 @@ int LyXRC::read(string const & filename)
 	}
 
 	/// Update converters data-structures
-	converters.Update(formats);
-	converters.BuildGraph();
+	converters.update(formats);
+	converters.buildGraph();
 
 	return 0;
 }
@@ -1540,7 +1540,7 @@ void LyXRC::output(ostream & os) const
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
 			Format const * format =
-				system_formats.GetFormat(cit->name());
+				system_formats.getFormat(cit->name());
 			if (!format ||
 			    format->extension() != cit->extension() ||
 			    format->prettyname() != cit->prettyname() ||
@@ -1554,14 +1554,14 @@ void LyXRC::output(ostream & os) const
 		// New/modifed formats
 		for (Formats::const_iterator cit = system_formats.begin();
 		     cit != system_formats.end(); ++cit)
-			if (!formats.GetFormat(cit->name()))
+			if (!formats.getFormat(cit->name()))
 				os << "\\format \"" << cit->name() 
 				   << "\" \"\" \"\" \"\"\n";
 	case RC_VIEWER:
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
 			Format const * format = 
-				system_formats.GetFormat(cit->name());
+				system_formats.getFormat(cit->name());
 			if ((!format || format->viewer() != cit->viewer()) &&
 			    (format || !cit->viewer().empty()))
 				os << "\\viewer \"" << cit->name() << "\" \""
@@ -1577,7 +1577,7 @@ void LyXRC::output(ostream & os) const
 		for (Converters::const_iterator cit = converters.begin();
 		     cit != converters.end(); ++cit) {
 			Converter const * converter =
-				system_converters.GetConverter(cit->from,
+				system_converters.getConverter(cit->from,
 							       cit->to);
 			if (!converter ||
 			    converter->command != cit->command ||
@@ -1591,7 +1591,7 @@ void LyXRC::output(ostream & os) const
 		// New/modifed converters
 		for (Converters::const_iterator cit = system_converters.begin();
 		     cit != system_converters.end(); ++cit)
-			if (!converters.GetConverter(cit->from, cit->to))
+			if (!converters.getConverter(cit->from, cit->to))
 				os << "\\converter \"" << cit->from 
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 	}

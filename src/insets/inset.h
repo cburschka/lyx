@@ -173,9 +173,7 @@ public:
 	/// returns true the inset can hold an inset of given type
 	virtual bool insetAllowed(Inset::Code) const { return false; }
 	/// wrapper around the above
-	bool insetAllowed(Inset * in) const { 
-		return insetAllowed(in->lyxCode()); 
-	}
+	bool insetAllowed(Inset * in) const;
 	///
 	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
@@ -273,24 +271,19 @@ public:
 	virtual LyXCursor const & cursor(BufferView * bview) const;
 	/// id functions
 	int id() const;
+	///
 	void id(int id_arg);
 
 	/// used to toggle insets
 	// is the inset open?
 	virtual bool isOpen() const { return false; }
-#if 0
-	/// open or close the inset, depending on the bool
-	virtual void open(BufferView *, bool) {}
-#else
 	/// open the inset
 	virtual void open(BufferView *) {}
-#endif
 	/// close the inset
 	virtual void close(BufferView *) {}
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont &) { return true; }
-	
+	virtual bool checkInsertChar(LyXFont &);
 protected:
 	///
 	mutable int top_x;
@@ -312,6 +305,19 @@ private:
 	LColor::color background_color_;
 };
 
+
+inline
+bool Inset::insetAllowed(Inset * in) const
+{ 
+	return insetAllowed(in->lyxCode()); 
+}
+
+
+inline
+bool Inset::checkInsertChar(LyXFont &)
+{
+	return true;
+}
 
 //  Updatable Insets. These insets can be locked and receive
 //  directly user interaction. Currently used only for mathed.
@@ -451,7 +457,9 @@ public:
 	// needed for spellchecking text
 	///
 	virtual string const selectNextWord(BufferView *, float & value) const;
+	///
 	virtual void selectSelectedWord(BufferView *) { return; }
+	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
 		return;
 	}
@@ -460,6 +468,7 @@ public:
 	///
 	virtual bool searchForward(BufferView *, string const &,
 	                           bool const & = true, bool const & = false);
+	///
 	virtual bool searchBackward(BufferView *, string const &,
 	                            bool const & = true, bool const & = false);
 

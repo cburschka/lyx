@@ -75,20 +75,6 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 		find_if(rowlist.begin(), rowlist.end(), same_rownumber(vt));
 	
 	if (cit != rowlist.end()) {
-#if 0
-		RowList::iterator kit = rowlist.begin();
-		RowList::iterator end = rowlist.end();
-		// Increase the pos of all rows with the
-		// same id (and where the pos is larger)
-		// to avoid putting errorinsets at the
-		// same pos.
-		for (; kit != end; ++kit) {
-			if (&(*kit) != &(*cit)
-			    && kit->id() == cit->id()
-			    && kit->pos() >= cit->pos())
-				kit->pos(kit->pos() + 1);
-		}
-#endif
 		id = cit->id();
 		pos = cit->pos();
 		return true;

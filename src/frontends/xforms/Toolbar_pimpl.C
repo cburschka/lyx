@@ -285,23 +285,6 @@ extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 }
 
 
-#if 0
-// What are we supposed to do with that??
-int Toolbar::get_toolbar_func(string const & func)
-{
-	int action = lyxaction.LookupFunc(func);
-	if (action == -1) {
-		if (func == "separator"){
-			action = TOOL_SEPARATOR;
-		} else if (func == "layouts"){
-                        action = TOOL_LAYOUTS;
-                } else action = 0;
-	}
-	return action;
-}
-#endif
-
-
 namespace {
 
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {

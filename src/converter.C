@@ -66,7 +66,7 @@ bool Format::dummy() const
 }
 
 
-bool Format::IsChildFormat() const
+bool Format::isChildFormat() const
 {
 	if (name_.empty())
 		return false;
@@ -74,7 +74,7 @@ bool Format::IsChildFormat() const
 }
 
 
-string const Format::ParentFormat() const
+string const Format::parentFormat() const
 {
 	return name_.substr(0, name_.length() - 1);
 }
@@ -83,7 +83,7 @@ string const Format::ParentFormat() const
 
 // This method should return a reference, and throw an exception
 // if the format named name cannot be found (Lgb)
-Format const * Formats::GetFormat(string const & name) const
+Format const * Formats::getFormat(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
@@ -95,7 +95,7 @@ Format const * Formats::GetFormat(string const & name) const
 }
 
 
-int Formats::GetNumber(string const & name) const
+int Formats::getNumber(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
@@ -107,14 +107,14 @@ int Formats::GetNumber(string const & name) const
 }
 
 
-void Formats::Add(string const & name)
+void Formats::add(string const & name)
 {
-	if (!GetFormat(name))
-		Add(name, name, name, string());
+	if (!getFormat(name))
+		add(name, name, name, string());
 }
 
 
-void Formats::Add(string const & name, string const & extension, 
+void Formats::add(string const & name, string const & extension, 
 		  string const & prettyname, string const & shortcut)
 {
 	FormatList::iterator it = 
@@ -130,7 +130,7 @@ void Formats::Add(string const & name, string const & extension,
 }
 
 
-void Formats::Delete(string const & name)
+void Formats::erase(string const & name)
 {
 	FormatList::iterator it = 
 		find_if(formatlist.begin(), formatlist.end(),
@@ -140,15 +140,15 @@ void Formats::Delete(string const & name)
 }
 
 
-void Formats::Sort()
+void Formats::sort()
 {
-	sort(formatlist.begin(), formatlist.end());
+	std::sort(formatlist.begin(), formatlist.end());
 }
 
 
-void Formats::SetViewer(string const & name, string const & command)
+void Formats::setViewer(string const & name, string const & command)
 {
-	Add(name);
+	add(name);
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			lyx::compare_memfun(&Format::name, name));
@@ -157,20 +157,20 @@ void Formats::SetViewer(string const & name, string const & command)
 }
 
 
-bool Formats::View(Buffer const * buffer, string const & filename,
+bool Formats::view(Buffer const * buffer, string const & filename,
 		   string const & format_name) const
 {
 	if (filename.empty())
 		return false;
 
-	Format const * format = GetFormat(format_name);
+	Format const * format = getFormat(format_name);
 	if (format && format->viewer().empty() &&
-	    format->IsChildFormat())
-		format = GetFormat(format->ParentFormat());
+	    format->isChildFormat())
+		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
 		WriteAlert(_("Can not view file"),
 			   _("No information for viewing ")
-			   + PrettyName(format_name));
+			   + prettyName(format_name));
 			   return false;
 	}
 
@@ -207,9 +207,9 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 }
 
 
-string const Formats::PrettyName(string const & name) const
+string const Formats::prettyName(string const & name) const
 {
-	Format const * format = GetFormat(name);
+	Format const * format = getFormat(name);
 	if (format)
 		return format->prettyname();
 	else
@@ -217,9 +217,9 @@ string const Formats::PrettyName(string const & name) const
 }
 
 
-string const Formats::Extension(string const & name) const
+string const Formats::extension(string const & name) const
 {
-	Format const * format = GetFormat(name);
+	Format const * format = getFormat(name);
 	if (format)
 		return format->extension();
 	else
@@ -228,7 +228,7 @@ string const Formats::Extension(string const & name) const
 
 //////////////////////////////////////////////////////////////////////////////
 
-void Converter::ReadFlags()
+void Converter::readFlags()
 {
 	string flag_list(flags);
 	while (!flag_list.empty()) {
@@ -250,7 +250,7 @@ void Converter::ReadFlags()
 			parselog = flag_value;
 	}
 	if (!result_dir.empty() && result_file.empty())
-		result_file = "index." + formats.Extension(to);
+		result_file = "index." + formats.extension(to);
 	//if (!contains(command, token_from))
 	//	latex = true;
 }
@@ -282,57 +282,58 @@ private:
 };
 
 
-Converter const * Converters::GetConverter(string const & from,
+#warning why is a pointer returned and not a const reference? (Lgb)
+Converter const * Converters::getConverter(string const & from,
 					    string const & to)
 {
 	ConverterList::const_iterator cit =
-		find_if(converterlist.begin(), converterlist.end(),
+		find_if(converterlist_.begin(), converterlist_.end(),
 			compare_Converter(from, to));
-	if (cit != converterlist.end())
+	if (cit != converterlist_.end())
 		return &(*cit);
 	else
 		return 0;
 }
 
 
-int Converters::GetNumber(string const & from, string const & to)
+int Converters::getNumber(string const & from, string const & to)
 {
 	ConverterList::const_iterator cit =
-		find_if(converterlist.begin(), converterlist.end(),
+		find_if(converterlist_.begin(), converterlist_.end(),
 			compare_Converter(from, to));
-	if (cit != converterlist.end())
-		return cit - converterlist.begin();
+	if (cit != converterlist_.end())
+		return cit - converterlist_.begin();
 	else
 		return -1;
 }
 
 
-void Converters::Add(string const & from, string const & to,
+void Converters::add(string const & from, string const & to,
 		     string const & command, string const & flags)
 {
-	formats.Add(from);
-	formats.Add(to);
-	ConverterList::iterator it = find_if(converterlist.begin(),
-					     converterlist.end(),
+	formats.add(from);
+	formats.add(to);
+	ConverterList::iterator it = find_if(converterlist_.begin(),
+					     converterlist_.end(),
 					     compare_Converter(from, to));
 
 	Converter converter(from, to, command, flags);
-	if (it != converterlist.end() && !flags.empty() && flags[0] == '*') {
+	if (it != converterlist_.end() && !flags.empty() && flags[0] == '*') {
 		converter = *it;
 		converter.command = command;
 		converter.flags = flags;
 	}
-	converter.ReadFlags();
+	converter.readFlags();
 	
-	if (converter.latex && (latex_command.empty() || to == "dvi"))
-		latex_command = subst(command, token_from, "");
+	if (converter.latex && (latex_command_.empty() || to == "dvi"))
+		latex_command_ = subst(command, token_from, "");
 	// If we have both latex & pdflatex, we set latex_command to latex.
 	// The latex_command is used to update the .aux file when running
 	// a converter that uses it.
 
-	if (it == converterlist.end())
-		converterlist.push_back(converter);
-	else {
+	if (it == converterlist_.end()) {
+		converterlist_.push_back(converter);
+	} else {
 		converter.From = it->From;
 		converter.To = it->To;
 		*it = converter;
@@ -340,13 +341,13 @@ void Converters::Add(string const & from, string const & to,
 }
 
 
-void Converters::Delete(string const & from, string const & to)
+void Converters::erase(string const & from, string const & to)
 {
-	ConverterList::iterator it = find_if(converterlist.begin(),
-					     converterlist.end(),
+	ConverterList::iterator it = find_if(converterlist_.begin(),
+					     converterlist_.end(),
 					     compare_Converter(from, to));
-	if (it != converterlist.end())
-		converterlist.erase(it);
+	if (it != converterlist_.end())
+		converterlist_.erase(it);
 }
 
 
@@ -357,70 +358,75 @@ void Converters::Delete(string const & from, string const & to)
 // adding/deleting a format in FormPreferences (the latter calls can be
 // eliminated if the formats in the Formats class are stored using a map or
 // a list (instead of a vector), but this will cause other problems). 
-void Converters::Update(Formats const & formats)
+void Converters::update(Formats const & formats)
 {
-	for (ConverterList::iterator it = converterlist.begin();
-	     it != converterlist.end(); ++it) {
-		it->From = formats.GetFormat(it->from);
-		it->To = formats.GetFormat(it->to);
+	ConverterList::iterator it = converterlist_.begin();
+	ConverterList::iterator end = converterlist_.end();
+	for (; it != end; ++it) {
+		it->From = formats.getFormat(it->from);
+		it->To = formats.getFormat(it->to);
 	}
 }
 
 
 // This method updates the pointers From and To in the last converter.
 // It is called when adding a new converter in FormPreferences
-void Converters::UpdateLast(Formats const & formats)
+void Converters::updateLast(Formats const & formats)
 {
-	if (converterlist.begin() != converterlist.end()) {
-		ConverterList::iterator it = converterlist.end()-1;
-		it->From = formats.GetFormat(it->from);
-		it->To = formats.GetFormat(it->to);
+	if (converterlist_.begin() != converterlist_.end()) {
+		ConverterList::iterator it = converterlist_.end() - 1;
+		it->From = formats.getFormat(it->from);
+		it->To = formats.getFormat(it->to);
 	}
 }
 
 
-void Converters::Sort()
+void Converters::sort()
 {
-	sort(converterlist.begin(), converterlist.end());
+	std::sort(converterlist_.begin(), converterlist_.end());
 }
 
 
-int Converters::BFS_init(string const & start, bool clear_visited)
+int Converters::bfs_init(string const & start, bool clear_visited)
 {
-	int const s = formats.GetNumber(start);
+	int const s = formats.getNumber(start);
 	if (s < 0)
 		return s;
 
-	Q = queue<int>();
+	Q_ = queue<int>();
 	if (clear_visited)
-		fill(visited.begin(), visited.end(), false);
-	if (visited[s] == false) {
-		Q.push(s);
-		visited[s] = true;
+		fill(visited_.begin(), visited_.end(), false);
+	if (visited_[s] == false) {
+		Q_.push(s);
+		visited_[s] = true;
 	}
 	return s;
 }
 
 
 vector<Format const *> const
-Converters::GetReachableTo(string const & target, bool clear_visited)
+Converters::getReachableTo(string const & target, bool clear_visited)
 {
 	vector<Format const *> result;
-	int const s = BFS_init(target, clear_visited);
+	int const s = bfs_init(target, clear_visited);
 	if (s < 0)
 		return result;
 
-	while (!Q.empty()) {
-		int const i = Q.front();
-		Q.pop();
-		if (i != s || target != "lyx")
-			result.push_back(&formats.Get(i));
-		for (vector<int>::iterator it = vertices[i].in_vertices.begin();
-		     it != vertices[i].in_vertices.end(); ++it)
-			if (!visited[*it]) {
-				visited[*it] = true;
-				Q.push(*it);
+	while (!Q_.empty()) {
+		int const i = Q_.front();
+		Q_.pop();
+		if (i != s || target != "lyx") {
+			result.push_back(&formats.get(i));
+		}
+		
+		vector<int>::iterator it = vertices_[i].in_vertices.begin();
+		vector<int>::iterator end = vertices_[i].in_vertices.end();
+		for (; it != end; ++it) {
+			if (!visited_[*it]) {
+				visited_[*it] = true;
+				Q_.push(*it);
 			}
+		}
 	}
 
 	return result;
@@ -428,28 +434,32 @@ Converters::GetReachableTo(string const & target, bool clear_visited)
 
 
 vector<Format const *> const
-Converters::GetReachable(string const & from, bool only_viewable,
+Converters::getReachable(string const & from, bool only_viewable,
 			 bool clear_visited)
 {
 	vector<Format const *> result;
 
-	if (BFS_init(from, clear_visited) < 0)
+	if (bfs_init(from, clear_visited) < 0)
 		return result;
 
-	while (!Q.empty()) {
-		int const i = Q.front();
-		Q.pop();
-		Format const & format = formats.Get(i);
+	while (!Q_.empty()) {
+		int const i = Q_.front();
+		Q_.pop();
+		Format const & format = formats.get(i);
 		if (format.name() == "lyx")
 			continue;
 		if (!only_viewable || !format.viewer().empty() ||
-		    format.IsChildFormat())
+		    format.isChildFormat())
 			result.push_back(&format);
-		for (vector<int>::iterator it = vertices[i].out_vertices.begin();
-		     it != vertices[i].out_vertices.end(); ++it)
-			if (!visited[*it]) {
-				visited[*it] = true;
-				Q.push(*it);
+
+		vector<int>::const_iterator cit =
+			vertices_[i].out_vertices.begin();
+		vector<int>::const_iterator end =
+			vertices_[i].out_vertices.end();
+		for (; cit != end; ++cit)
+			if (!visited_[*cit]) {
+				visited_[*cit] = true;
+				Q_.push(*cit);
 			}
 	}
 
@@ -457,27 +467,32 @@ Converters::GetReachable(string const & from, bool only_viewable,
 }
 
 
-bool Converters::IsReachable(string const & from, string const & to)
+bool Converters::isReachable(string const & from, string const & to)
 {
 	if (from == to)
 		return true;
 
-	int const s = BFS_init(from);
-	int const t = formats.GetNumber(to);
+	int const s = bfs_init(from);
+	int const t = formats.getNumber(to);
 	if (s < 0 || t < 0)
 		return false;
 
-	while (!Q.empty()) {
-		int const i = Q.front();
-		Q.pop();
+	while (!Q_.empty()) {
+		int const i = Q_.front();
+		Q_.pop();
 		if (i == t)
 			return true;
-		for (vector<int>::iterator it = vertices[i].out_vertices.begin();
-		     it != vertices[i].out_vertices.end(); ++it)
-			if (!visited[*it]) {
-				visited[*it] = true;
-				Q.push(*it);
+
+		vector<int>::const_iterator cit =
+			vertices_[i].out_vertices.begin();
+		vector<int>::const_iterator end =
+			vertices_[i].out_vertices.end();
+		for (; cit != end; ++cit) {
+			if (!visited_[*cit]) {
+				visited_[*cit] = true;
+				Q_.push(*cit);
 			}
+		}
 	}
 
 	return false;
@@ -485,14 +500,14 @@ bool Converters::IsReachable(string const & from, string const & to)
 
 
 Converters::EdgePath const
-Converters::GetPath(string const & from, string const & to)
+Converters::getPath(string const & from, string const & to)
 {
 	EdgePath path;
 	if (from == to)
 		return path;
 
-	int const s = BFS_init(from);
-	int t = formats.GetNumber(to);
+	int const s = bfs_init(from);
+	int t = formats.getNumber(to);
 	if (s < 0 || t < 0)
 		return path;
 
@@ -500,21 +515,26 @@ Converters::GetPath(string const & from, string const & to)
 	vector<int> prev_vertex(formats.size());
 
 	bool found = false;
-	while (!Q.empty()) {
-		int const i = Q.front();
-		Q.pop();
+	while (!Q_.empty()) {
+		int const i = Q_.front();
+		Q_.pop();
 		if (i == t) {
 			found = true;
 			break;
 		}
-		for (vector<int>::iterator it = vertices[i].out_vertices.begin();
-		     it != vertices[i].out_vertices.end(); ++it)
-			if (!visited[*it]) {
-				int const j = *it;
-				visited[j] = true;
-				Q.push(j);
-				int const k = it - vertices[i].out_vertices.begin();
-				prev_edge[j] = vertices[i].out_edges[k];
+		
+		vector<int>::const_iterator beg =
+			vertices_[i].out_vertices.begin();
+		vector<int>::const_iterator cit = beg;
+		vector<int>::const_iterator end =
+			vertices_[i].out_vertices.end();
+		for (; cit != end; ++cit)
+			if (!visited_[*cit]) {
+				int const j = *cit;
+				visited_[j] = true;
+				Q_.push(j);
+				int const k = cit - beg;
+				prev_edge[j] = vertices_[i].out_edges[k];
 				prev_vertex[j] = i;
 			}
 	}
@@ -530,11 +550,11 @@ Converters::GetPath(string const & from, string const & to)
 }
 
 
-bool Converters::UsePdflatex(EdgePath const & path)
+bool Converters::usePdflatex(EdgePath const & path)
 {
 	for (EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
-		Converter const & conv = converterlist[*cit];
+		Converter const & conv = converterlist_[*cit];
 		if (conv.latex)
 			return contains(conv.to, "pdf");
 	}
@@ -542,23 +562,23 @@ bool Converters::UsePdflatex(EdgePath const & path)
 }
 
 
-bool Converters::Convert(Buffer const * buffer,
+bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
 			 string & to_file)
 {
 	to_file = ChangeExtension(to_file_base,
-				  formats.Extension(to_format));
+				  formats.extension(to_format));
 
 	if (from_format == to_format)
-		return Move(from_file, to_file, false);
+		return move(from_file, to_file, false);
 
-	EdgePath edgepath = GetPath(from_format, to_format);
+	EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
 		WriteAlert(_("Can not convert file"),
 			   _("No information for converting from ")
-			   + formats.PrettyName(from_format) + _(" to ")
-			   + formats.PrettyName(to_format));
+			   + formats.prettyName(from_format) + _(" to ")
+			   + formats.prettyName(to_format));
 		return false;
 	}
 
@@ -572,7 +592,7 @@ bool Converters::Convert(Buffer const * buffer,
 	string outfile = from_file;
 	for (EdgePath::const_iterator cit = edgepath.begin();
 	     cit != edgepath.end(); ++cit) {
-		Converter const & conv = converterlist[*cit];
+		Converter const & conv = converterlist_[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
 		if (!dummy)
 			lyxerr[Debug::FILES] << "Converting from  "
@@ -593,11 +613,11 @@ bool Converters::Convert(Buffer const * buffer,
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
-			    && !latex_command.empty()) {
+			    && !latex_command_.empty()) {
 				lyxerr[Debug::FILES] 
-					<< "Running " << latex_command 
+					<< "Running " << latex_command_ 
 					<< " to update aux file"<<  endl;
-				runLaTeX(buffer, latex_command);
+				runLaTeX(buffer, latex_command_);
 			}
 
 			string infile2 = (conv.original_dir)
@@ -657,7 +677,7 @@ bool Converters::Convert(Buffer const * buffer,
 		}
 	}
 
-	Converter const & conv = converterlist[edgepath.back()];
+	Converter const & conv = converterlist_[edgepath.back()];
 	if (conv.To->dummy())
 		return true;
 
@@ -679,12 +699,12 @@ bool Converters::Convert(Buffer const * buffer,
 		}
 		return true;
 	} else 
-		return Move(outfile, to_file, conv.latex);
+		return move(outfile, to_file, conv.latex);
 }
 
 // If from = /path/file.ext and to = /path2/file2.ext2 then this method 
 // moves each /path/file*.ext file to /path2/file2*.ext2'
-bool Converters::Move(string const & from, string const & to, bool copy)
+bool Converters::move(string const & from, string const & to, bool copy)
 {
 	if (from == to)
 		return true;
@@ -716,39 +736,41 @@ bool Converters::Move(string const & from, string const & to, bool copy)
 	return no_errors;
 }
 
-bool Converters::Convert(Buffer const * buffer,
+
+bool Converters::convert(Buffer const * buffer,
 			string const & from_file, string const & to_file_base,
 			string const & from_format, string const & to_format)
 {
 	string to_file;
-	return Convert(buffer, from_file, to_file_base, from_format, to_format,
+	return convert(buffer, from_file, to_file_base, from_format, to_format,
 		       to_file);
 }
 
 
-
-void Converters::BuildGraph()
+void Converters::buildGraph()
 {
-	vertices = vector<Vertex>(formats.size());
-	visited.resize(formats.size());
+	vertices_ = vector<Vertex>(formats.size());
+	visited_.resize(formats.size());
 
-	for (ConverterList::iterator it = converterlist.begin();
-	     it != converterlist.end(); ++it) {
-		int const s = formats.GetNumber(it->from);
-		int const t = formats.GetNumber(it->to);
-		vertices[t].in_vertices.push_back(s);
-		vertices[s].out_vertices.push_back(t);
-		vertices[s].out_edges.push_back(it - converterlist.begin());
+	for (ConverterList::iterator it = converterlist_.begin();
+	     it != converterlist_.end(); ++it) {
+		int const s = formats.getNumber(it->from);
+		int const t = formats.getNumber(it->to);
+		vertices_[t].in_vertices.push_back(s);
+		vertices_[s].out_vertices.push_back(t);
+		vertices_[s].out_edges.push_back(it - converterlist_.begin());
 	}
 }
 
 
-bool Converters::FormatIsUsed(string const & format)
+bool Converters::formatIsUsed(string const & format)
 {
-	for (ConverterList::const_iterator cit = converterlist.begin();
-	    cit != converterlist.end(); ++cit)
+	ConverterList::const_iterator cit = converterlist_.begin();
+	ConverterList::const_iterator end = converterlist_.end();
+	for (; cit != end; ++cit) {
 		if (cit->from == format || cit->to == format)
 			return true;
+	}
 	return false;
 }
 
@@ -928,7 +950,7 @@ string const Converters::dvips_options(Buffer const * buffer)
 		result += ' ' + buffer->params.paperwidth;
 		result += ',' + buffer->params.paperheight;
 	} else {
-		string paper_option = papersize(buffer);
+		string const paper_option = papersize(buffer);
 		if (paper_option != "letter" ||
 		    buffer->params.orientation != BufferParams::ORIENTATION_LANDSCAPE) {
 			// dvips won't accept -t letter -t landscape.  In all other
@@ -951,7 +973,7 @@ string const Converters::dvipdfm_options(Buffer const * buffer)
 		return result;
 
 	if (buffer->params.papersize2 != BufferParams::VM_PAPER_CUSTOM) {
-		string paper_size = papersize(buffer);
+		string const paper_size = papersize(buffer);
 		if (paper_size != "b5" && paper_size != "foolscap")
 			result = "-p "+ paper_size;
 
@@ -963,7 +985,7 @@ string const Converters::dvipdfm_options(Buffer const * buffer)
 }
 
 
-vector<Converters::Vertex> Converters::vertices;
+vector<Converters::Vertex> Converters::vertices_;
 
 
 /// The global instance

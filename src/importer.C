@@ -49,8 +49,8 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
 		for (vector<string>::const_iterator it = loaders.begin();
 		     it != loaders.end(); ++it) {
-			if (converters.IsReachable(format, *it)) {
-				if (!converters.Convert(0, filename, filename,
+			if (converters.isReachable(format, *it)) {
+				if (!converters.convert(0, filename, filename,
 							format, *it))
 					return false;
 				loader_format = *it;
@@ -60,7 +60,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		if (loader_format.empty()) {
 			WriteAlert(_("Can not import file"),
 				   _("No information for importing from ")
-				   + formats.PrettyName(format));
+				   + formats.prettyName(format));
 			return false;
 		}
 	} else
@@ -76,7 +76,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename
 			: ChangeExtension(filename,
-					  formats.Extension(loader_format));
+					  formats.extension(loader_format));
 		InsertAsciiFile(lv->view(), filename2, as_paragraphs);
 		lv->getLyXFunc()->dispatch(LFUN_MARK_OFF);
 	}
@@ -104,11 +104,11 @@ vector<Format const *> const Importer::GetImportableFormats()
 {
 	vector<string> loaders = Loaders();
 	vector<Format const *> result = 
-		converters.GetReachableTo(loaders[0], true);
+		converters.getReachableTo(loaders[0], true);
 	for (vector<string>::const_iterator it = loaders.begin() + 1;
 	     it != loaders.end(); ++it) {
 		vector<Format const *> r =
-			converters.GetReachableTo(*it, false);
+			converters.getReachableTo(*it, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;

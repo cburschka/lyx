@@ -15,10 +15,6 @@ ShareContainer<ParameterStruct> ParagraphParameters::container;
 ParagraphParameters::ParagraphParameters()
 {
 	ParameterStruct tmp;
-#if 0
-	tmp.appendix = false;
-	tmp.align = LYX_ALIGN_BLOCK;
-#endif
 	set_from_struct(tmp);
 }
 
