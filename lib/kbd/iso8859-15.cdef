@@ -12,12 +12,12 @@
 
 160	"\nobreakspace{}"
 161	"\textexclamdown{}"
-162	"\cent{}" # cent sign, to use with package wasysym
+162	"\textcent{}"	# with package "eurofont"
 163	"\pounds{}"	# pound sign
-#164	"\textcurrency{}"
-164	"\euro{}" # euro sign, to use with package eurofont
-165	"\yen{}" # yen sign, to use with package amssymb
-#166	"\textbrokenbar{}"
+#164	"\textcurrency{}"	# with package "eurofont"
+164	"\texteuro{}"	# with package "eurofont"
+165	"\textyen{}"	# with package "eurofont"
+#166	"\textbrokenbar{}"	# with package "eurofont"
 166	"\v{S}"
 167	"\S{}"		# paragraph
 #168	"\"{}"	# umlaut

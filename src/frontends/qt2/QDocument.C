@@ -153,6 +153,7 @@ void QDocument::build_dialog()
 	dialog->inputEncCO->insertItem( _( "auto" ) );
 	dialog->inputEncCO->insertItem( _( "latin1" ) );
 	dialog->inputEncCO->insertItem( _( "latin2" ) );
+	dialog->inputEncCO->insertItem( _( "latin3" ) );
 	dialog->inputEncCO->insertItem( _( "latin5" ) );
 	dialog->inputEncCO->insertItem( _( "latin9" ) );
 	dialog->inputEncCO->insertItem( _( "koi8-r" ) );
