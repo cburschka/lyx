@@ -5,6 +5,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "LaTeXFeatures.h"
 #include "support/LOstream.h"
 
 
@@ -64,4 +65,11 @@ void MathCasesInset::maple(MapleStream & os) const
 void MathCasesInset::infoize(std::ostream & os) const
 {
 	os << "Cases ";
+}
+
+
+void MathCasesInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	MathGridInset::validate(features);
 }

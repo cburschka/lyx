@@ -331,7 +331,7 @@ void MathHullInset::validate(LaTeXFeatures & features) const
 	features.require("boldsymbol");
 	//features.binom      = true;
 
-	MathNestInset::validate(features);
+	MathGridInset::validate(features);
 }
 
 

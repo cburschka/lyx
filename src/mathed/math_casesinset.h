@@ -5,6 +5,7 @@
 #include "math_gridinset.h"
 
 
+class LaTeXFeatures;
 
 class MathCasesInset : public MathGridInset {
 public:
@@ -25,6 +26,8 @@ public:
 	void maple(MapleStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif

@@ -140,7 +140,12 @@ void InsetFormulaBase::handleFont
 }
 
 
-// Check if uses AMS macros
+BufferView * InsetFormulaBase::view() const
+{
+	return view_.lock().get();
+}
+
+
 void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
 

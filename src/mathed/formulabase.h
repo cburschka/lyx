@@ -49,6 +49,8 @@ public:
 
 public:
 	///
+	// Don't use this for AMS validation as long as there is no
+	// user-accessible way to override "false positives"
 	virtual void validate(LaTeXFeatures &) const;
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const = 0;
@@ -89,11 +91,8 @@ public:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 	///
-#warning move this to formulabase.C (Lgb)
 	// And shouldn't this really return a shared_ptr<BufferView> instead?
-	BufferView * view() const {
-		return view_.lock().get();
-	}
+	BufferView * view() const;
 
 	///
 	virtual bool searchForward(BufferView *, string const &,
