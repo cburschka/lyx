@@ -427,11 +427,10 @@ public:
 	/// needed to insert the selection
 	void InsertStringB(BufferView *, string const & str);
 
-	/// usefull when texing from within LyX
-	bool GotoNextError(BufferView *) const;
-
-	/// just another feature :)
-	bool GotoNextNote(BufferView *) const;
+	/// Find next inset of some specified type.
+	bool GotoNextInset(BufferView *, std::vector<Inset::Code> const & codes,
+			   string const & contents = string()) const;
+	///
 
 	/* for the greater insets */
   

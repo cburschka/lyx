@@ -2602,9 +2602,12 @@ void LyXText::InsertStringB(BufferView * bview, string const & s)
 }
 
 
-bool LyXText::GotoNextError(BufferView * bview) const
+bool LyXText::GotoNextInset(BufferView * bview,
+			    std::vector<Inset::Code> const & codes,
+			    string const & contents) const
 {
 	LyXCursor res = cursor;
+	Inset * inset;
 	do {
 		if (res.pos() < res.par()->Last() - 1) {
 			res.pos(res.pos() + 1);
@@ -2615,31 +2618,13 @@ bool LyXText::GotoNextError(BufferView * bview) const
       
 	} while (res.par() && 
 		 !(res.par()->GetChar(res.pos()) == LyXParagraph::META_INSET
-		   && res.par()->GetInset(res.pos())->AutoDelete()));
-   
-	if (res.par()) {
-		SetCursor(bview, res.par(), res.pos());
-		return true;
-	}
-	return false;
-}
+		   && (inset = res.par()->GetInset(res.pos())) != 0
+		   && find(codes.begin(), codes.end(), inset->LyxCode())
+		      != codes.end()
+		   && (contents.empty() ||
+		       static_cast<InsetCommand *>(res.par()->GetInset(res.pos()))->getContents()
+		       == contents)));
 
-
-bool LyXText::GotoNextNote(BufferView * bview) const
-{
-	LyXCursor res = cursor;
-	do {
-		if (res.pos() < res.par()->Last() - 1) {
-			res.pos(res.pos() + 1);
-		} else  {
-			res.par(res.par()->Next());
-			res.pos(0);
-		}
-      
-	} while (res.par() && 
-		 !(res.par()->GetChar(res.pos()) == LyXParagraph::META_INSET
-		   && res.par()->GetInset(res.pos())->LyxCode() == Inset::IGNORE_CODE));
-   
 	if (res.par()) {
 		SetCursor(bview, res.par(), res.pos());
 		return true;

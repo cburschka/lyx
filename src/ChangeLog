@@ -1,5 +1,13 @@
 2001-01-15  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* BufferView2.C (gotoInset): New method. Replaces gotoNote() and
+	gotoError().
+
+	* text2.C (GotoNextInset): New method. Replaces GotoNextError()
+	and GotoNextNote().
+
+	* src/LyXAction.C: Added reference-next.
+
 	* text.C (InsertChar): Use contains instead of strchr.
 
 	* lyx_cb.C (MenuInsertLabel): Enable default value code.

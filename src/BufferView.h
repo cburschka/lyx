@@ -79,7 +79,10 @@ public:
 	///
 	int resizeCurrentBuffer();
 	///
-	void gotoError();
+	void gotoInset(std::vector<Inset::Code> const & codes,
+		       bool same_content);
+	///
+	void gotoInset(Inset::Code codes, bool same_content);
 	///
 	void cursorPrevious(LyXText *);
 	///
@@ -136,8 +139,6 @@ public:
 	string const nextWord(float & value);
 	///
 	void insertCorrectQuote();
-	///
-	void gotoNote();
 	///
 	bool gotoLabel(string const & label);
 	///

@@ -45,8 +45,6 @@ struct BufferView::Pimpl : public Object {
 	void update();
 	//
 	void update(BufferView::UpdateCodes);
-	///
-	void gotoError();
   	/// Update pixmap of screen
 	void updateScreen();
 	///

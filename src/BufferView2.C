@@ -616,33 +616,49 @@ void BufferView::paste()
 }
 
 
-void BufferView::gotoNote()
+void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
+			   bool same_content)
 {
 	if (!available()) return;
    
 	hideCursor();
 	beforeChange();
 	update(BufferView::SELECT|BufferView::FITCUR);
-	LyXCursor tmp;
-   
-	if (!text->GotoNextNote(this)) {
+
+	string contents;
+	if (same_content &&
+	    text->cursor.par()->GetChar(text->cursor.pos()) == LyXParagraph::META_INSET) {
+		Inset const * inset = text->cursor.par()->GetInset(text->cursor.pos());
+		if (find(codes.begin(), codes.end(), inset->LyxCode())
+		    != codes.end())
+			contents =
+				static_cast<InsetCommand const *>(inset)->getContents();
+	}
+	
+	if (!text->GotoNextInset(this, codes, contents)) {
 		if (text->cursor.pos() 
 		    || text->cursor.par() != text->FirstParagraph()) {
-				tmp = text->cursor;
+				LyXCursor tmp = text->cursor;
 				text->cursor.par(text->FirstParagraph());
 				text->cursor.pos(0);
-				if (!text->GotoNextNote(this)) {
+				if (!text->GotoNextInset(this, codes, contents)) {
 					text->cursor = tmp;
-					owner()->getMiniBuffer()->Set(_("No more notes"));
+					owner()->getMiniBuffer()->Set(_("No more insets"));
 					LyXBell();
 				}
 			} else {
-				owner()->getMiniBuffer()->Set(_("No more notes"));
+				owner()->getMiniBuffer()->Set(_("No more insets"));
 				LyXBell();
 			}
 	}
 	update(BufferView::SELECT|BufferView::FITCUR);
 	text->sel_cursor = text->cursor;
+}
+
+
+void BufferView::gotoInset(Inset::Code code, bool same_content)
+{
+	gotoInset(vector<Inset::Code>(1, code), same_content);
 }
 
 

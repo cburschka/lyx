@@ -318,38 +318,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 }
 
 
-void BufferView::Pimpl::gotoError()
-{
-	if (!screen_)
-		return;
-   
-	screen_->HideCursor();
-	bv_->beforeChange();
-	update(BufferView::SELECT|BufferView::FITCUR);
-	LyXCursor tmp;
-
-	if (!bv_->text->GotoNextError(bv_)) {
-		if (bv_->text->cursor.pos() 
-		    || bv_->text->cursor.par() != bv_->text->FirstParagraph()) {
-			tmp = bv_->text->cursor;
-			bv_->text->cursor.par(bv_->text->FirstParagraph());
-			bv_->text->cursor.pos(0);
-			if (!bv_->text->GotoNextError(bv_)) {
-				bv_->text->cursor = tmp;
-				owner_->getMiniBuffer()
-					->Set(_("No more errors"));
-				LyXBell();
-			}
-		} else {
-			owner_->getMiniBuffer()->Set(_("No more errors"));
-			LyXBell();
-		}
-	}
-	update(BufferView::SELECT|BufferView::FITCUR);
-	bv_->text->sel_cursor = bv_->text->cursor;
-}
-
-
 void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.

@@ -135,12 +135,6 @@ int BufferView::resizeCurrentBuffer()
 }
 
 
-void BufferView::gotoError()
-{
-	pimpl_->gotoError();
-}
-
-
 #if 0
 void BufferView::enterView()
 {

@@ -976,7 +976,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_GOTOERROR:
-		owner->view()->gotoError();
+		owner->view()->gotoInset(Inset::ERROR_CODE, false);
 		break;
 		
 	case LFUN_REMOVEERRORS:
@@ -987,8 +987,17 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_GOTONOTE:
-		owner->view()->gotoNote();
+		owner->view()->gotoInset(Inset::IGNORE_CODE, false);
 		break;
+
+	case LFUN_REFERENCE_GOTO:
+	{
+		vector<Inset::Code> tmp;
+		tmp.push_back(Inset::LABEL_CODE);
+		tmp.push_back(Inset::REF_CODE);
+		owner->view()->gotoInset(tmp, true);
+		break;
+	}
 
 #ifndef NEW_INSETS
 	case LFUN_OPENSTUFF:

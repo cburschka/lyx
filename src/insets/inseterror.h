@@ -67,7 +67,7 @@ public:
 	///
 	Inset * Clone(Buffer const &) const { return new InsetError(contents); }
 	///
-	Inset::Code LyxCode() const { return Inset::NO_CODE; }
+	Inset::Code LyxCode() const { return Inset::ERROR_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file
 	bool DirectWrite() const { return true; };
 	///

@@ -273,6 +273,7 @@ enum kb_action {
 	LFUN_SCREEN_FONT_UPDATE,	// ARRae 20000813
 	LFUN_DIALOG_TABULAR_INSERT, // 250 // Jug 20000825 (old table-insert)
 	LFUN_GOTO_PARAGRAPH,             // Dekel 20000826
+	LFUN_REFERENCE_GOTO,             // Dekel 20010114
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

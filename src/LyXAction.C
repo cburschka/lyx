@@ -359,6 +359,7 @@ void LyXAction::init()
 		{ LFUN_REF_GOTO, "reference-goto", "", ReadOnly },
 		{ LFUN_REF_INSERT, "reference-insert",
 		  N_("Insert cross reference"), ReadOnly },
+		{ LFUN_REFERENCE_GOTO, "reference-next", "", ReadOnly },
 		{ LFUN_NEXT, "screen-down", "", ReadOnly },
 		{ LFUN_NEXTSEL, "screen-down-select", "", ReadOnly },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update",

@@ -105,7 +105,9 @@ public:
 		///
 		CAPTION_CODE,
 		///
-		MATHMACRO_CODE
+		MATHMACRO_CODE,
+		///
+		ERROR_CODE,
 	};
 
 	///
