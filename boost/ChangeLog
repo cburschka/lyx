@@ -1,3 +1,7 @@
+2004-11-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* boost/format/feed_args.hpp: do not use a static string (bug 1702)
+
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* boost/format/format_implementation.hpp: 
