@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxfunc.h"
 #include "version.h"
 #include "kbmap.h"
@@ -221,7 +217,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		owner->message(keyseq.print());
 	}
 
- 
+
 	// Maybe user can only reach the key via holding down shift.
 	// Let's see. But only if shift is the only modifier
 	if (action == LFUN_UNKNOWN_ACTION && state == key_modifier::shift) {
@@ -229,7 +225,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		action = keyseq.addkey(keysym, key_modifier::none);
 		lyxerr[Debug::KEY] << "Action now " << action << endl;
 	}
- 
+
 	if (action == LFUN_UNKNOWN_ACTION) {
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
@@ -286,7 +282,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	default:
 		flag |= lyx_gui::getStatus(ev);
 	}
-	
+
 	if (flag.unknown()) {
 		setStatusMessage(N_("Unknown action"));
 		return flag;

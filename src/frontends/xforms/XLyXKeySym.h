@@ -12,9 +12,6 @@
 #ifndef XLYXKEYSYM_H
 #define XLYXKEYSYM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 #include <X11/Xlib.h>

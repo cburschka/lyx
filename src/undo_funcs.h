@@ -11,10 +11,6 @@
 #ifndef UNDO_FUNCS_H
 #define UNDO_FUNCS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "undo.h"
 
 class BufferView;

@@ -16,9 +16,6 @@
 
 #include "forms_fwd.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ButtonController.h"
 

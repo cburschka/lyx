@@ -26,9 +26,6 @@
 #ifndef CONTROLBUTTONS_H
 #define CONTROLBUTTONS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <boost/utility.hpp>
 

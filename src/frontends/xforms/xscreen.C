@@ -11,9 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include <algorithm>
 #include <X11/Xlib.h>

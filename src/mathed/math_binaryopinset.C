@@ -1,8 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_binaryopinset.h"
 #include "MathPainterInfo.h"

@@ -11,9 +11,6 @@
 #ifndef TEX_HELPERS_H
 #define TEX_HELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

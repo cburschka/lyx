@@ -13,9 +13,6 @@
 #ifndef QTABULARCREATEDIALOG_H
 #define QTABULARCREATEDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QTabularCreateDialogBase.h"
 

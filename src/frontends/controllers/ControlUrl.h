@@ -12,9 +12,6 @@
 #ifndef CONTROLURL_H
 #define CONTROLURL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlCommand.h"
 

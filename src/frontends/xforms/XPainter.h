@@ -13,9 +13,6 @@
 #ifndef XPAINTER_H
 #define XPAINTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <config.h>
 

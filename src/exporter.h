@@ -12,10 +12,6 @@
 #ifndef EXPORTER_H
 #define EXPORTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 #include "LString.h"
 

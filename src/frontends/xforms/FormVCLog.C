@@ -11,9 +11,6 @@
 #include <config.h>
 #include "Lsstream.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "xformsBC.h"
 #include "ControlVCLog.h"

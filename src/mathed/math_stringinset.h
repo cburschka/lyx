@@ -4,9 +4,6 @@
 
 #include "math_diminset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** Some collection of chars with similar properties
  *  maily for math-extern

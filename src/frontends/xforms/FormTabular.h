@@ -15,9 +15,6 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

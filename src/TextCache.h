@@ -14,10 +14,6 @@
 #ifndef TEXT_CACHE_H
 #define TEXT_CACHE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "lyxtext.h"
 #include "buffer.h"

@@ -12,9 +12,6 @@
 #ifndef FORMTEXINFO_H
 #define FORMTEXINFO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "ControlTexinfo.h"

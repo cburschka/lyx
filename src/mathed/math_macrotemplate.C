@@ -1,6 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"

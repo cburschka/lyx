@@ -12,9 +12,6 @@
 #ifndef FORMS_FWD_H
 #define FORMS_FWD_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /// Can't forward declare the typedef, but this works fine.
 class forms_;

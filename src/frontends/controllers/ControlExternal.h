@@ -14,9 +14,6 @@
 #ifndef CONTROLEXTERNAL_H
 #define CONTROLEXTERNAL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlInset.h"
 #include "insets/insetexternal.h"

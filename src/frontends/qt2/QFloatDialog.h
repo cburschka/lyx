@@ -12,9 +12,6 @@
 #ifndef QFLOATDIALOG_H
 #define QFLOATDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QFloatDialogBase.h"
 

@@ -3,9 +3,6 @@
 #ifndef MATH_ATOM_H
 #define MATH_ATOM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /**
  * Wrapper for MathInset * with copy-semantics

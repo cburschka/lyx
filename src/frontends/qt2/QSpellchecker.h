@@ -13,9 +13,6 @@
 #ifndef QSPELLCHECKER_H
 #define QSPELLCHECKER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

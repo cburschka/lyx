@@ -14,9 +14,6 @@
 #ifndef MATH_BIGINSET_H
 #define MATH_BIGINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "math_diminset.h"
 #include "LString.h"

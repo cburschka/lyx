@@ -12,9 +12,6 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

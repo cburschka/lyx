@@ -12,9 +12,6 @@
 #ifndef LyXView_H
 #define LyXView_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "forms_fwd.h"
 

@@ -12,9 +12,6 @@
 #ifndef TOOLBAR_PIMPL_H
 #define TOOLBAR_PIMPL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/Toolbar.h"
 

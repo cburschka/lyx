@@ -12,9 +12,6 @@
 #ifndef QREF_H
 #define QREF_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 #include <vector>

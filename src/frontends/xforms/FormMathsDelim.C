@@ -13,9 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
@@ -36,8 +33,8 @@
 
 
 static int const delim_rversion[] = {
-	1,1,3,3,4,5,7,7,9,9,10,11,
-	13,13,14,15,16,17,19,19,20,21,22,23
+1,1,3,3,4,5,7,7,9,9,10,11,
+
 };
 
 

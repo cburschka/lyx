@@ -12,9 +12,6 @@
 #ifndef INSET_TOC_H
 #define INSET_TOC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcommand.h"
 

@@ -12,9 +12,6 @@
 #ifndef GFLOAT_H
 #define GFLOAT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlFloat.h"
 #include "GnomeBase.h"

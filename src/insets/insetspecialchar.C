@@ -12,9 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "insetspecialchar.h"
 #include "debug.h"

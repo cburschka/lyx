@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxtext.h"
 #include "lyxfind.h"
 #include "paragraph.h"

@@ -3,15 +3,12 @@
 #ifndef LYXLEX_PIMPL_H
 #define LYXLEX_PIMPL_H
 
-#include <fstream>
-#include <stack>
-#include <boost/utility.hpp>
-
 #include "lyxlex.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
+#include <boost/utility.hpp>
+
+#include <fstream>
+#include <stack>
 
 ///
 struct LyXLex::Pimpl : boost::noncopyable {

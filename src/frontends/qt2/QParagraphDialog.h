@@ -13,9 +13,6 @@
 #ifndef QPARAGRAPHDIALOG_H
 #define QPARAGRAPHDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QParagraphDialogBase.h"
 

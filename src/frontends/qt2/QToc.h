@@ -13,9 +13,6 @@
 #ifndef QTOC_H
 #define QTOC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 #include "toc.h"

@@ -12,10 +12,6 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <map>
 

@@ -9,10 +9,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "debug.h"
 #include "LColor.h"
 #include "support/LAssert.h"

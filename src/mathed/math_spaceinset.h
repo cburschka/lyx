@@ -4,9 +4,6 @@
 
 #include "math_diminset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /// Smart spaces
 class MathSpaceInset : public MathDimInset {

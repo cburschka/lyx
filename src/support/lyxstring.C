@@ -12,10 +12,6 @@
 #include <config.h>
 #endif
 
-#ifdef __GNUG__
-#pragma implementation "lyxstring.h"
-#endif
-
 #include "lyxstring.h"
 #include <cstdlib>
 #include <cctype>

@@ -13,9 +13,6 @@
 #ifndef CONTROLBIBTEX_H
 #define CONTROLBIBTEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlCommand.h"
 

@@ -12,10 +12,6 @@
 #ifndef QCHANGESDIALOG_H
 #define QCHANGESDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QChangesDialogBase.h"
 
 class QChanges;

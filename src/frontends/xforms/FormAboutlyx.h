@@ -13,9 +13,6 @@
 #ifndef FORMABOUTLYX_H
 #define FORMABOUTLYX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

@@ -14,9 +14,6 @@
 #ifndef BUTTON_INSET_H
 #define BUTTON_INSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "math_nestinset.h"
 

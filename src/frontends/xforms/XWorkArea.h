@@ -13,9 +13,6 @@
 #ifndef XWORKAREA_H
 #define XWORKAREA_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/WorkArea.h"
 #include "XPainter.h"

@@ -12,9 +12,6 @@
 #ifndef InsetTheorem_H
 #define InsetTheorem_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 

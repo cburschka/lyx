@@ -12,9 +12,6 @@
 #ifndef CONTROLSEARCH_H
 #define CONTROLSEARCH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 #include "LString.h"

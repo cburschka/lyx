@@ -12,9 +12,6 @@
 #ifndef QSCREEN_H
 #define QSCREEN_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "screen.h"
 #include <qrect.h>

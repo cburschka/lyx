@@ -13,9 +13,6 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

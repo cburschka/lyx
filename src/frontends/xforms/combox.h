@@ -26,9 +26,6 @@
 #ifndef COMBOX_H
 #define COMBOX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include FORMS_H_LOCATION
 #include <cstdlib>

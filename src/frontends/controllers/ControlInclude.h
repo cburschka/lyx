@@ -14,9 +14,6 @@
 #ifndef CONTROLINCLUDE_H
 #define CONTROLINCLUDE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlInset.h"
 #include "insets/insetinclude.h" // InsetIncludeParams

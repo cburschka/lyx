@@ -1,6 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_undersetinset.h"
 #include "math_mathmlstream.h"

@@ -13,9 +13,6 @@
 #ifndef FORMINCLUDE_H
 #define FORMINCLUDE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

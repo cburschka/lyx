@@ -4,9 +4,6 @@
 
 #include "math_fracbase.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** Binom like objects
  *  \author André Pönitz

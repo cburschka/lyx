@@ -12,9 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "ControlBibtex.h"
 #include "buffer.h"

@@ -4,9 +4,6 @@
 
 #include "math_gridinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 
 class MathXYMatrixInset : public MathGridInset {

@@ -13,9 +13,6 @@
 #ifndef FORMBIBTEX_H
 #define FORMBIBTEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

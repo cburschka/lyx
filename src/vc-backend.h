@@ -11,10 +11,6 @@
 #ifndef VC_BACKEND_H
 #define VC_BACKEND_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 class Buffer;

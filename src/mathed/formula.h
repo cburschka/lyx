@@ -15,9 +15,6 @@
 #ifndef INSET_FORMULA_H
 #define INSET_FORMULA_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "formulabase.h"
 #include "math_atom.h"

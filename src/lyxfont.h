@@ -12,10 +12,6 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <iosfwd>
 
 #include "LString.h"

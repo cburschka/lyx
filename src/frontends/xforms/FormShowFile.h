@@ -12,9 +12,6 @@
 #ifndef FORMSHOWFILE_H
 #define FORMSHOWFILE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBrowser.h"
 

@@ -14,9 +14,6 @@
 #include "ControlDocument.h"
 #include "QDocument.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "QDocumentDialog.h"
 

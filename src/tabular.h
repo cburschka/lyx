@@ -12,10 +12,6 @@
 #ifndef TABULAR_H
 #define TABULAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "layout.h"
 #include "LString.h"
 #include "lyxlength.h"

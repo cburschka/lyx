@@ -12,9 +12,6 @@
 #ifndef CONTROLPREAMBLE_H
 #define CONTROLPREAMBLE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 

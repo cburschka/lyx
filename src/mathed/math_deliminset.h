@@ -5,9 +5,6 @@
 #include "math_nestinset.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** A delimiter
  *  \author Alejandro Aguilar Sierra

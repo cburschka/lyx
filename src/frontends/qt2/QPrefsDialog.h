@@ -12,9 +12,6 @@
 #ifndef QPREFSDIALOG_H
 #define QPREFSDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LColor.h"
 

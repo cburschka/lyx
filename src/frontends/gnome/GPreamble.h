@@ -12,9 +12,6 @@
 #ifndef GPREAMBLE_H
 #define GPREAMBLE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlPreamble.h"
 #include "GnomeBase.h"

@@ -22,9 +22,9 @@ following hack as starting point to write some macros:
   ...
 
   \[\begin{array}{ccc}
-   1 & 2\b & 3^2\\
-   4 & 5\e & 6\\
-   7 & 8 & 9
+1
+&
+
   \end{array}\]
 
 */
@@ -32,9 +32,6 @@ following hack as starting point to write some macros:
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_parser.h"
 #include "math_inset.h"

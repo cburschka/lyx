@@ -1,9 +1,6 @@
 #ifndef MATH_TEXTINSET_H
 #define MATH_TEXTINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "math_gridinset.h"
 

@@ -15,9 +15,6 @@
 #ifndef INSET_H
 #define INSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <vector>
 #include "LString.h"

@@ -13,9 +13,6 @@
 #ifndef INSET_LATEXCOMMAND_H
 #define INSET_LATEXCOMMAND_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetbutton.h"
 #include "insetcommandparams.h"

@@ -12,9 +12,6 @@
 #ifndef QT2BASE_H
 #define QT2BASE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ViewBase.h"
 #include <boost/scoped_ptr.hpp>

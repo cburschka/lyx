@@ -26,10 +26,6 @@
 #ifndef FORKEDCALL_H
 #define FORKEDCALL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <boost/shared_ptr.hpp>

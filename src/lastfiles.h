@@ -12,10 +12,6 @@
 #ifndef LASTFILES_H
 #define LASTFILES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <deque>
 
 #include "LString.h"

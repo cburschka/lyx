@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "encoding.h"
 #include "lyxlex.h"
 #include "debug.h"

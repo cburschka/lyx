@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "Lsstream.h"
 #include "qt_helpers.h"

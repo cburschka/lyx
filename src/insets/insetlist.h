@@ -12,9 +12,6 @@
 #ifndef InsetList_H
 #define InsetList_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 

@@ -1,8 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_frameboxinset.h"
 #include "math_support.h"

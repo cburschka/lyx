@@ -10,10 +10,6 @@
 
 #include "gettext.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "frontends/mouse_state.h"
 #include "frontends/LyXKeySymFactory.h"
 #include "kbsequence.h"

@@ -12,9 +12,6 @@
 #ifndef QLPOPUPMENU_H
 #define QLPOPUPMENU_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Menubar_pimpl.h"
 

@@ -32,9 +32,6 @@ class TextMetricsInfo;
 class TextPainter;
 
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 
 class MathArray : private std::vector<MathAtom> {

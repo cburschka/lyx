@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "FormSendto.h"
 #include "forms/form_sendto.h"

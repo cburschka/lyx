@@ -11,10 +11,6 @@
 #ifndef LCOLOR_H
 #define LCOLOR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 
 #include "LString.h"

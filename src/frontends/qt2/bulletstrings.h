@@ -12,9 +12,6 @@
 #ifndef BULLET_STRINGS
 #define BULLET_STRINGS
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 extern char const * bullets_standard[];
 extern char const * bullets_amssymb[];

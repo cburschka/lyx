@@ -1,7 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_gridinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"

@@ -12,9 +12,6 @@
 #ifndef INSETNOTE_H
 #define INSETNOTE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 

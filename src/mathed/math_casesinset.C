@@ -1,8 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_casesinset.h"
 #include "math_parser.h"

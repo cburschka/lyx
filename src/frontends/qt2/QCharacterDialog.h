@@ -13,9 +13,6 @@
 #ifndef QCHARACTERDIALOG_H
 #define QCHARACTERDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "QCharacter.h"
 #include "ui/QCharacterDialogBase.h"

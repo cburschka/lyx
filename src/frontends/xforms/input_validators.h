@@ -19,9 +19,6 @@
 #ifndef INPUT_VALIDATORS_H
 #define INPUT_VALIDATORS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #if defined(__cplusplus)
 extern "C"

@@ -12,10 +12,6 @@
 #ifndef FORMCHANGES_H
 #define FORMCHANGES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlChanges;

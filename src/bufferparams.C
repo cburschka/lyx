@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "bufferparams.h"
 #include "tex-strings.h"
 #include "layout.h"

@@ -13,9 +13,6 @@
 #ifndef QCHARACTER_H
 #define QCHARACTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 #include "controllers/character.h"

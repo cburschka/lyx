@@ -9,10 +9,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "undo_funcs.h"
 #include "lyxtext.h"
 #include "BufferView.h"

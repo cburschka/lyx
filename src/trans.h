@@ -10,10 +10,6 @@
 #ifndef TRANS_H
 #define TRANS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 
 #include "tex-accent.h"

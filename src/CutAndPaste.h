@@ -11,10 +11,6 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 
 class Paragraph;

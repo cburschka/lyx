@@ -12,9 +12,6 @@
 #ifndef GnomeBase_H
 #define GnomeBase_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "gnome_helpers.h"
 

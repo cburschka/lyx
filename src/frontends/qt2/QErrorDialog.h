@@ -12,9 +12,6 @@
 #ifndef QERRORDIALOG_H
 #define QERRORDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QErrorDialogBase.h"
 

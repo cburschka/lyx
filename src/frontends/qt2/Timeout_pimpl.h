@@ -12,9 +12,6 @@
 #ifndef TIMEOUTPIMPL_H
 #define TIMEOUTPIMPL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/Timeout.h"
 #include <qobject.h>

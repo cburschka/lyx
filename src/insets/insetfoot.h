@@ -13,9 +13,6 @@
 #ifndef INSETFOOT_H
 #define INSETFOOT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LaTeXFeatures.h"
 #include "insetfootlike.h"

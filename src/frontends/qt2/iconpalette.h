@@ -12,9 +12,6 @@
 #ifndef ICONPALETTE_H
 #define ICONPALETTE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <qwidget.h>
 #include "LString.h"

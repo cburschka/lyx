@@ -12,10 +12,6 @@
 #ifndef LYXTEXT_H
 #define LYXTEXT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxfont.h"
 #include "lyxcursor.h"
 #include "layout.h"

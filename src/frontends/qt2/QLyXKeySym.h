@@ -13,9 +13,6 @@
 #ifndef QLYXKEYSYM_H
 #define QLYXKEYSYM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 #include "frontends/LyXKeySym.h"

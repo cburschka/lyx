@@ -11,10 +11,6 @@
 #ifndef KBMAP_H
 #define KBMAP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"

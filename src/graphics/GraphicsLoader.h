@@ -24,10 +24,6 @@
 #ifndef GRAPHICSLOADER_H
 #define GRAPHICSLOADER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "GraphicsTypes.h"
 #include "LString.h"
 

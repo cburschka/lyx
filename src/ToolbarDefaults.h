@@ -14,10 +14,6 @@
 #ifndef TOOLBARDEFAULTS_H
 #define TOOLBARDEFAULTS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 
 #include "LString.h"

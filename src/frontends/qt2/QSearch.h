@@ -12,9 +12,6 @@
 #ifndef QSEARCH_H
 #define QSEARCH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

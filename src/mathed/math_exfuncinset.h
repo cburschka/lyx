@@ -2,9 +2,6 @@
 #ifndef MATH_EXFUNCINSET_H
 #define MATH_EXFUNCINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "math_nestinset.h"
 

@@ -14,9 +14,6 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "Color.h" // NamedColor

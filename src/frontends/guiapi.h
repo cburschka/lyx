@@ -12,9 +12,6 @@
 #ifndef GUIAPI_H
 #define GUIAPI_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

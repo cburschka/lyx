@@ -12,9 +12,6 @@
 #ifndef CONTROLCITATION_H
 #define CONTROLCITATION_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlCommand.h"
 #include "biblio.h" // biblio::InfoMap

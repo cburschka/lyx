@@ -5,9 +5,6 @@
 #include "math_nestinset.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** Decorations and accents over (below) a math object
  *  \author Alejandro Aguilar Sierra

@@ -12,9 +12,6 @@
 #ifndef FORMTOC_H
 #define FORMTOC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "toc.h"

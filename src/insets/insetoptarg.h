@@ -12,9 +12,6 @@
 #ifndef INSETOPTARG_H
 #define INSETOPTARG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insettext.h"
 #include "insetcollapsable.h"

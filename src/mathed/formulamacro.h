@@ -17,9 +17,6 @@
 
 #include "formulabase.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 class MathMacroTemplate;
 

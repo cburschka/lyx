@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "Alert.h"
 #include "Alert_pimpl.h"

@@ -9,10 +9,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "kbmap.h"
 #include "commandtags.h"
 #include "kbsequence.h"

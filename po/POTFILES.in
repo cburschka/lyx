@@ -5,7 +5,6 @@ src/bufferview_funcs.C
 src/BufferView_pimpl.C
 src/Chktex.C
 src/converter.C
-src/CutAndPaste.bak.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
@@ -38,6 +37,7 @@ src/frontends/qt2/QAbout.C
 src/frontends/qt2/QBibitem.C
 src/frontends/qt2/QBibtex.C
 src/frontends/qt2/QBibtexDialog.C
+src/frontends/qt2/QChanges.C
 src/frontends/qt2/QCharacter.C
 src/frontends/qt2/QCitation.C
 src/frontends/qt2/QCitationDialog.C
@@ -60,6 +60,8 @@ src/frontends/qt2/QMathDialog.C
 src/frontends/qt2/QMathMatrixDialog.C
 src/frontends/qt2/QMinipage.C
 src/frontends/qt2/QParagraph.C
+src/frontends/qt2/QPreamble.C
+src/frontends/qt2/QPreambleDialog.C
 src/frontends/qt2/QPrefs.C
 src/frontends/qt2/QPrefsDialog.C
 src/frontends/qt2/QPrint.C
@@ -181,4 +183,3 @@ src/tabular.C
 src/text2.C
 src/text3.C
 src/text.C
-src/ext_l10n.h

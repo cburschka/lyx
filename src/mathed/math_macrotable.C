@@ -2,9 +2,6 @@
 
 #include <iostream>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_macrotable.h"
 #include "math_macro.h"

@@ -15,9 +15,6 @@
 #ifndef FORMBASE_H
 #define FORMBASE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ViewBase.h"
 #include "ButtonPolicies.h"

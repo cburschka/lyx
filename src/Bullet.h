@@ -15,10 +15,6 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 ///

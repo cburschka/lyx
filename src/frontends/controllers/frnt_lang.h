@@ -12,9 +12,6 @@
 #ifndef FRNT_LANG_H
 #define FRNT_LANG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 #include <utility>

@@ -12,10 +12,6 @@
 #ifndef LYXLAYOUT_PTR_FWD_H
 #define LYXLAYOUT_PTR_FWD_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <boost/shared_ptr.hpp>
 
 class LyXLayout;

@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "lyxlex.h"
-#endif
-
 #include "lyxlex.h"
 #include "lyxlex_pimpl.h"
 #include "debug.h"

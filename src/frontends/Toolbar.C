@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "Toolbar.h"
-#endif
 
 #include "Toolbar.h"
 #include "ToolbarDefaults.h"

@@ -4,9 +4,6 @@
 
 #include "math_fracbase.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** Fraction like objects (frac, binom)
  *  \author Alejandro Aguilar Sierra

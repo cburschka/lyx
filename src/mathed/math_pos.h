@@ -1,9 +1,6 @@
 #ifndef MATH_POS_H
 #define MATH_POS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <iosfwd>
 #include "math_data.h"

@@ -13,9 +13,6 @@
 #ifndef QGRAPHICSDIALOG_H
 #define QGRAPHICSDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QGraphicsDialogBase.h"
 

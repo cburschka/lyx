@@ -12,9 +12,6 @@
 #ifndef QMINIPAGEDIALOG_H
 #define QMINIPAGEDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QMinipageDialogBase.h"
 

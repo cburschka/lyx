@@ -12,9 +12,6 @@
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "forms_fwd.h"
 #include <X11/Xlib.h>

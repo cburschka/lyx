@@ -22,9 +22,6 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <config.h>
 

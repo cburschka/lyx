@@ -12,9 +12,6 @@
 #ifndef FORMSEARCH_H
 #define FORMSEARCH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

@@ -12,10 +12,6 @@
 #ifndef FLOATLIST_H
 #define FLOATLIST_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 
 #include "LString.h"

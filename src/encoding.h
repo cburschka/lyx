@@ -12,10 +12,6 @@
 #ifndef ENCODING_H
 #define ENCODING_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "lyxrc.h"
 

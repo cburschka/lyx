@@ -14,10 +14,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "lastfiles.h"

@@ -14,9 +14,6 @@
 
 #include "frontends/Timeout.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /**
  * This class executes the callback when the timeout expires

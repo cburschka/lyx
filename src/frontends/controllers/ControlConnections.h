@@ -28,9 +28,6 @@
 #ifndef CONTROLCONNECTIONS_H
 #define CONTROLCONNECTIONS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlButtons.h"
 

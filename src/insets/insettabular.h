@@ -45,9 +45,6 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "inset.h"
 #include "tabular.h"

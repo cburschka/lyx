@@ -12,9 +12,6 @@
 #ifndef FORMSPELLCHECKER_H
 #define FORMSPELLCHECKER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

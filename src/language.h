@@ -12,10 +12,6 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 #include "LString.h"
 

@@ -14,10 +14,6 @@
 #ifndef GRAPHICSPARAMS_H
 #define GRAPHICSPARAMS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "GraphicsTypes.h"
 #include "LString.h"
 

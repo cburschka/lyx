@@ -9,9 +9,6 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include <config.h>
 

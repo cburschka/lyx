@@ -12,9 +12,6 @@
 #ifndef QBIBTEX_H
 #define QBIBTEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

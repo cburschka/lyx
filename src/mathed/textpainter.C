@@ -1,6 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "textpainter.h"
 #include "support/LOstream.h"

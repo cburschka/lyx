@@ -12,9 +12,6 @@
 #ifndef CONTROLREF_H
 #define CONTROLREF_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlCommand.h"
 

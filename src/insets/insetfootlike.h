@@ -12,9 +12,6 @@
 #ifndef INSETFOOTLIKE_H
 #define INSETFOOTLIKE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 

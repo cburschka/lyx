@@ -12,9 +12,6 @@
 #ifndef FORMURL_H
 #define FORMURL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

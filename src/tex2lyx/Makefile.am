@@ -15,4 +15,4 @@ bin_PROGRAMS = tex2lyx
 tex2lyx_SOURCES = \
 	tex2lyx.C
 	texparser.C \
-	texparser.h 
+	texparser.h

@@ -12,9 +12,6 @@
 #ifndef LENGTHCOMBO_H
 #define LENGTHCOMBO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <qcombobox.h>
 

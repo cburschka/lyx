@@ -13,9 +13,6 @@
 #ifndef QLPRINTDIALOG_H
 #define QLPRINTDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QPrintDialogBase.h"
 

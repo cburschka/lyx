@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "trans_mgr.h"
-#endif
-
 #include "trans_mgr.h"
 #include "trans.h"
 #include "lyxtext.h"

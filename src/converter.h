@@ -12,10 +12,6 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 #include <queue>
 #include "LString.h"

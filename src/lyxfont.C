@@ -12,11 +12,6 @@
 #include <clocale>
 #include <cctype>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
-
 #include "gettext.h"
 #include "lyxfont.h"
 #include "debug.h"

@@ -12,9 +12,6 @@
 #ifndef INSET_BIB_H
 #define INSET_BIB_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <vector>
 #include "insetcommand.h"

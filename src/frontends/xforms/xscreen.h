@@ -13,9 +13,6 @@
 #ifndef XSCREEN_H
 #define XSCREEN_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "screen.h"
 #include <X11/Xlib.h> // for Pixmap, GC

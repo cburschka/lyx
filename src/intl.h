@@ -12,10 +12,6 @@
 #ifndef INTL_H
 #define INTL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "trans_mgr.h"
 

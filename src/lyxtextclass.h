@@ -10,10 +10,6 @@
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxlayout.h"
 #include "LString.h"
 #include "lyxlayout_ptr_fwd.h"

@@ -12,10 +12,6 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 /** This is a "float layout" object. It contains the parameters for how to

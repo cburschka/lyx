@@ -12,9 +12,6 @@
 #ifndef CONTROLWRAP_H
 #define CONTROLWRAP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlInset.h"
 #include "lyxlength.h"

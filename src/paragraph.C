@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "paragraph.h"
 #include "paragraph_pimpl.h"
 #include "lyxrc.h"

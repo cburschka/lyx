@@ -11,9 +11,6 @@
 #include <config.h>
 #include <cmath>	// fabs()
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "xfont_loader.h"
 #include "FontInfo.h"

@@ -17,10 +17,6 @@
 
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /**
  * An instance of Class Systemcall represents a single child process.
  *

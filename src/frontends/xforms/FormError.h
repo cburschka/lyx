@@ -12,9 +12,6 @@
 #ifndef FORMERROR_H
 #define FORMERROR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

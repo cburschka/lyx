@@ -1,15 +1,13 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-#include <algorithm>
-
 #include "lyxlex_pimpl.h"
+#include "debug.h"
+
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "debug.h"
+
+#include <algorithm>
 
 using std::sort;
 using std::ostream;

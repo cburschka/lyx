@@ -12,11 +12,6 @@
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H
 
-
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 
 #include "LString.h"

@@ -12,9 +12,6 @@
 #ifndef CHECKEDWIDGETS_H
 #define CHECKEDWIDGETS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ButtonControllerBase.h"
 #include "forms_fwd.h"

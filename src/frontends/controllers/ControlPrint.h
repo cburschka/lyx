@@ -13,9 +13,6 @@
 #ifndef CONTROLPRINT_H
 #define CONTROLPRINT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 

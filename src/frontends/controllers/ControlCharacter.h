@@ -12,9 +12,6 @@
 #ifndef CONTROLCHARACTER_H
 #define CONTROLCHARACTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 #include "character.h"

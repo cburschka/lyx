@@ -8,13 +8,9 @@
  *
  * Full author contact details are available in file CREDITS
  */
- 
+
 #ifndef CONTROLCHANGES_H
 #define CONTROLCHANGES_H
-
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 #include "LString.h"
@@ -34,7 +30,7 @@ public:
 
 	/// return author of change
 	string const getChangeAuthor();
- 
+
 	/// accept the current merge
 	void accept();
 

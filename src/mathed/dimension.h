@@ -14,9 +14,6 @@
 #ifndef DIMENSION_H
 #define DIMENSION_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <iosfwd>
 

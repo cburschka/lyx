@@ -13,9 +13,6 @@
 #ifndef FORM_CHARACTER_H
 #define FORM_CHARACTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "lyxfont.h"          // for LyXFont enums

@@ -8,10 +8,6 @@
 #include "layout.h"
 #include "lyxlength.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 ///
 struct ParameterStruct {
 	///

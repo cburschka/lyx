@@ -14,9 +14,6 @@
 #ifndef INSET_BUTTON_H
 #define INSET_BUTTON_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "inset.h"
 #include "LString.h"

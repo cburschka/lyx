@@ -12,9 +12,6 @@
 #ifndef XFORMSHELPERS_H
 #define XFORMSHELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "forms_fwd.h"
 

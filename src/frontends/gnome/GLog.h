@@ -12,9 +12,6 @@
 #ifndef GLOG_H
 #define GLOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlLog.h"
 #include "GnomeBase.h"

@@ -10,9 +10,6 @@
  * Splash screen code added by Angus Leeming
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include <config.h>
 

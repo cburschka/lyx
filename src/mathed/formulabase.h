@@ -13,9 +13,6 @@
 #ifndef INSET_FORMULABASE_H
 #define INSET_FORMULABASE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insets/inset.h"
 #include "frontends/mouse_state.h"

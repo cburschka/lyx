@@ -12,9 +12,6 @@
 #ifndef FORMABOUT_H
 #define FORMABOUT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

@@ -12,9 +12,6 @@
 #ifndef QTEXINFODIALOG_H
 #define QTEXINFODIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QTexinfoDialogBase.h"
 

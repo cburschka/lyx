@@ -15,10 +15,6 @@
 #ifndef LATEX_H
 #define LATEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "DepTable.h"
 #include <vector>

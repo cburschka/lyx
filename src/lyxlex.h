@@ -7,10 +7,6 @@
 #ifndef LYXLEX_H
 #define LYXLEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <iosfwd>
 
 #include "LString.h"

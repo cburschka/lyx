@@ -14,9 +14,6 @@
 #ifndef MENUBAR_PIMPL_H
 #define MENUBAR_PIMPL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 #include "frontends/Menubar.h"

@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 // temporary until verified (08/08/2001 Jug)
 #define SPECIAL_COLUM_HANDLING 1
 

@@ -12,10 +12,6 @@
 #ifndef TRACER_H
 #define TRACER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "debug.h"
 #include "LString.h"
 

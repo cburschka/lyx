@@ -7,12 +7,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
- 
-#include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
+#include <config.h>
 
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
@@ -54,11 +50,11 @@ string const ControlChanges::getChangeAuthor()
 	Change c(bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED)
 		return string();
- 
+
 	Author const & a(bufferview()->buffer()->authors().get(c.author));
 
 	string author(a.name());
- 
+
 	if (!a.email().empty()) {
 		author += " (";
 		author += a.email() + ")";
@@ -67,13 +63,13 @@ string const ControlChanges::getChangeAuthor()
 	return author;
 }
 
- 
+
 void ControlChanges::accept()
 {
 	lv_.dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
 	lyxfind::findNextChange(bufferview());
 }
- 
+
 
 void ControlChanges::reject()
 {

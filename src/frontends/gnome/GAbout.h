@@ -12,9 +12,6 @@
 #ifndef GABOUT_H
 #define GABOUT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlAboutlyx.h"
 #include "GnomeBase.h"

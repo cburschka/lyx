@@ -16,9 +16,6 @@
 #ifndef XFORMSIMAGE_H
 #define XFORMSIMAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "graphics/GraphicsImage.h"
 

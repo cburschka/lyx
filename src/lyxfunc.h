@@ -2,11 +2,6 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
-
 #include "FuncStatus.h"
 #include "kbsequence.h"
 #include "commandtags.h"

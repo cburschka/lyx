@@ -16,9 +16,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "Tooltips.h"
 #include "xforms_helpers.h" // formatted

@@ -12,9 +12,6 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

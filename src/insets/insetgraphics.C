@@ -52,9 +52,6 @@ TODO
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"

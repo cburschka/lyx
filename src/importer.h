@@ -10,10 +10,6 @@
 #ifndef IMPORTER_H
 #define IMPORTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 #include "LString.h"
 

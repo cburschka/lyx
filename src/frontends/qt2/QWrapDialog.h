@@ -12,9 +12,6 @@
 #ifndef QWRAPDIALOG_H
 #define QWRAPDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QWrapDialogBase.h"
 

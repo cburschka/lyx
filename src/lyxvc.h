@@ -3,10 +3,6 @@
 #ifndef LYX_VC_H
 #define LYX_VC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 class VCS;

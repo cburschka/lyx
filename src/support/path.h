@@ -13,14 +13,8 @@
 #define PATH_H
 
 #include "LString.h"
-//#include "filetools.h"
 #include "lyxlib.h"
 #include <boost/utility.hpp>
-
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 
 /**
  * Path - utility closs for stackable working directories

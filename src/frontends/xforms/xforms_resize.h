@@ -12,9 +12,6 @@
 #ifndef XFORMS_RESIZE_H
 #define XFORMS_RESIZE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "forms_fwd.h"
 

@@ -13,10 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "LaTeX.h"
 #include "bufferlist.h"
 #include "gettext.h"

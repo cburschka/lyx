@@ -12,9 +12,6 @@
 #ifndef FILEDIALOG_PRIVATE_H
 #define FILEDIALOG_PRIVATE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/FileDialog.h"
 #include <qfiledialog.h>

@@ -4,9 +4,6 @@
 
 #include "math_diminset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** The base character inset.
  *  \author André Pönitz

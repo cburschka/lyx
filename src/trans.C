@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "trans.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

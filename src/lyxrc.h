@@ -10,10 +10,6 @@
 #ifndef LYXRC_H
 #define LYXRC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "bufferparams.h" // Just to get the enum BufferParams::PAPER_SIZE (sic)
 #include "graphics/GraphicsTypes.h"
 

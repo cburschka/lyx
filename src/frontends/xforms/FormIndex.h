@@ -12,9 +12,6 @@
 #ifndef FORMINDEX_H
 #define FORMINDEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

@@ -4,9 +4,6 @@
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** Inset for end-of-line comments
  *  \author André Pönitz

@@ -14,9 +14,6 @@
 #ifndef FORM_MATHSDELIM_H
 #define FORM_MATHSDELIM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 

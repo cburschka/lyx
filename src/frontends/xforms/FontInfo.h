@@ -13,9 +13,6 @@
 #ifndef FONTINFO_H
 #define FONTINFO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "LString.h"
 

@@ -11,9 +11,6 @@
 #include <config.h>
 #include <utility>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "xformsBC.h"
 #include "ControlTabularCreate.h"

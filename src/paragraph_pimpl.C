@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "paragraph_pimpl.h"
 #include "LaTeXFeatures.h"
 #include "texrow.h"

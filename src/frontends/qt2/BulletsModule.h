@@ -12,9 +12,6 @@
 #ifndef QBULLETSMODULE_H
 #define QBULLETSMODULE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/BulletsModuleBase.h"
 #include "LString.h"

@@ -12,10 +12,6 @@
 #ifndef LYX_LAYOUT_H
 #define LYX_LAYOUT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxfont.h"
 #include "layout.h"
 #include "Spacing.h"

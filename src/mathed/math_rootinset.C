@@ -11,9 +11,6 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_rootinset.h"
 #include "math_mathmlstream.h"

@@ -8,10 +8,6 @@
 #ifndef LYX_FILETOOL_H
 #define LYX_FILETOOL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 #include <utility>
 #include "LString.h"

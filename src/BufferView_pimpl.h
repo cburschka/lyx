@@ -19,9 +19,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 class Change;
 class LyXView;

@@ -12,9 +12,6 @@
 #ifndef QVCLOGDIALOG_H
 #define QVCLOGDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QVCLogDialogBase.h"
 

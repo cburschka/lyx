@@ -13,9 +13,6 @@
 #ifndef INSETGRAPHICSPARAMS_H
 #define INSETGRAPHICSPARAMS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "graphics/GraphicsTypes.h"
 #include "LString.h"

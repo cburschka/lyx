@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "TextCache.h"
 #include "buffer.h"
 #include "bufferlist.h"

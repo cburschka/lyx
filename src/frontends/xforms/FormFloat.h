@@ -12,9 +12,6 @@
 #ifndef FORMFLOAT_H
 #define FORMFLOAT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "RadioButtonGroup.h"

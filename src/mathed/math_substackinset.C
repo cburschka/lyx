@@ -1,8 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_substackinset.h"
 #include "math_mathmlstream.h"

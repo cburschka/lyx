@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"

@@ -52,9 +52,6 @@ using std::sort;
 # endif
 #endif
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "support/filetools.h"
 #include "FormFiledialog.h"

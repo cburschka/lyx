@@ -12,9 +12,6 @@
 #ifndef COLOR_HANDLER_H
 #define COLOR_HANDLER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/Painter.h"
 

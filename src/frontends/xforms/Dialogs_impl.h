@@ -11,9 +11,6 @@
 #ifndef DIALOGS_IMPL_H
 #define DIALOGS_IMP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Dialogs.h"
 #include "controllers/GUI.h"

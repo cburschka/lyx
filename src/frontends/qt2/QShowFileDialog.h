@@ -12,9 +12,6 @@
 #ifndef QSHOWFILEDIALOG_H
 #define QSHOWFILEDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QShowFileDialogBase.h"
 

@@ -12,9 +12,6 @@
 #ifndef QTHESAURUS_H
 #define QTHESAURUS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

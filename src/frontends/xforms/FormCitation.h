@@ -12,9 +12,6 @@
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "FormBase.h"
 #include "biblio.h"

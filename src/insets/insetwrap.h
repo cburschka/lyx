@@ -11,9 +11,6 @@
 #ifndef InsetWrap_H
 #define InsetWrap_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 #include "toc.h"

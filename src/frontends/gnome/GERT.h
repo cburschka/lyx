@@ -12,9 +12,6 @@
 #ifndef GERT_H
 #define GERT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlERT.h"
 #include "GnomeBase.h"

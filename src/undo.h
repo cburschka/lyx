@@ -12,10 +12,6 @@
 #ifndef UNDO_H
 #define UNDO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class Paragraph;
 
 ///

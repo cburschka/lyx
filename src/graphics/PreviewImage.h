@@ -12,10 +12,6 @@
 #ifndef PREVIEWIMAGE_H
 #define PREVIEWIMAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <boost/scoped_ptr.hpp>
 

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "tex-strings.h"
 
 // this file should perhaps be split into even smaller parts

@@ -12,9 +12,6 @@
 #ifndef QPREFS_H
 #define QPREFS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "converter.h"
 

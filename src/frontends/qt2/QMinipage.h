@@ -12,9 +12,6 @@
 #ifndef QMINIPAGE_H
 #define QMINIPAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "Qt2Base.h"
 

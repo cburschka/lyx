@@ -13,9 +13,6 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 class LyXText;
 class LyXCursor;

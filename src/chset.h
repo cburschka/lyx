@@ -8,10 +8,6 @@
 #ifndef CHSET_H
 #define CHSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 #include <utility>
 

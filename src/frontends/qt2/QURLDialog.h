@@ -12,9 +12,6 @@
 #ifndef QURLDIALOG_H
 #define QURLDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QURLDialogBase.h"
 

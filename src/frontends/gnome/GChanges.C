@@ -8,10 +8,6 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 
 #include "gnomeBC.h"
@@ -61,7 +57,7 @@ void GChanges::accept()
 	controller().accept();
 }
 
-void GChanges::reject() 
+void GChanges::reject()
 {
 	controller().reject();
 }
@@ -95,24 +91,23 @@ bool GChanges::validate() const
 {
 	return true;
 }
-Gtk::Button * GChanges::next_btn() const 
+Gtk::Button * GChanges::next_btn() const
 {
-        return getWidget<Gtk::Button>("r_next_btn");
+	return getWidget<Gtk::Button>("r_next_btn");
 }
-Gtk::Button * GChanges::cancel_btn() const 
+Gtk::Button * GChanges::cancel_btn() const
 {
-        return getWidget<Gtk::Button>("r_cancel_btn");
+	return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::TextView * GChanges::changes() const 
+Gtk::TextView * GChanges::changes() const
 {
-        return getWidget<Gtk::TextView>("r_changes");
+	return getWidget<Gtk::TextView>("r_changes");
 }
-Gtk::Button * GChanges::accept_btn() const 
+Gtk::Button * GChanges::accept_btn() const
 {
-        return getWidget<Gtk::Button>("r_accept_btn");
+	return getWidget<Gtk::Button>("r_accept_btn");
 }
-Gtk::Button * GChanges::reject_btn() const 
+Gtk::Button * GChanges::reject_btn() const
 {
-        return getWidget<Gtk::Button>("r_reject_btn");
+	return getWidget<Gtk::Button>("r_reject_btn");
 }
-

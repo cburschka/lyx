@@ -3,10 +3,6 @@
 #ifndef SECTIONING_H
 #define SECTIONING_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 
 #include "LString.h"

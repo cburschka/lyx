@@ -5,9 +5,6 @@
 #include "math_nestinset.h"
 #include "math_metricsinfo.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /** An inset for \scriptsize etc
  *  \author André Pönitz

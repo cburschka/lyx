@@ -15,9 +15,6 @@
 
 #include <vector>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlInset.h"
 #include "insets/insetminipage.h" // InsetMinipage::Position

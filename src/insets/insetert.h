@@ -13,9 +13,6 @@
 #ifndef INSETERT_H
 #define INSETERT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 

@@ -14,9 +14,6 @@
 
 #include "ui/QERTDialogBase.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 class QERT;
 

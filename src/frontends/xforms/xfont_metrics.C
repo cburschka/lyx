@@ -11,11 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "frontends/font_metrics.h"
-#pragma implementation "frontends/xfont_metrics.h"
-#endif
-
 #include "support/lstrings.h"
 #include "xfont_metrics.h"
 #include "xfont_loader.h"

@@ -12,9 +12,6 @@
 #ifndef INSET_INDEX_H
 #define INSET_INDEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcommand.h"
 

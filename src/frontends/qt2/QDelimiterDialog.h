@@ -12,9 +12,6 @@
 #ifndef QDELIMITERDIALOG_H
 #define QDELIMITERDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QDelimiterDialogBase.h"
 #include "LString.h"

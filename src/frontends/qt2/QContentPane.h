@@ -12,9 +12,6 @@
 #ifndef QCONTENTPANE_H
 #define QCONTENTPANE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <qwidget.h>
 #include <qevent.h>

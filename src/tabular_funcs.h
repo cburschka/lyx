@@ -14,10 +14,6 @@
 #ifndef TABULAR_FUNCS_H
 #define TABULAR_FUNCS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "tabular.h"
 #include "support/lstrings.h" // for tostr

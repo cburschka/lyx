@@ -17,9 +17,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "math_inset.h"
 #include "Lsstream.h"

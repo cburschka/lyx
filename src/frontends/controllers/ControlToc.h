@@ -12,9 +12,6 @@
 #ifndef CONTROLTOC_H
 #define CONTROLTOC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include <vector>
 #include "ControlCommand.h"

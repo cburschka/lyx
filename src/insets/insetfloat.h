@@ -13,9 +13,6 @@
 #ifndef InsetFloat_H
 #define InsetFloat_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 #include "toc.h"

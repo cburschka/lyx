@@ -9,9 +9,6 @@
 #ifndef MATH_UNDERSETINSET_H
 #define MATH_UNDERSETINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "math_fracbase.h"
 

@@ -12,9 +12,6 @@
 #ifndef CHARACTERHELPERS_H
 #define CHARACTERHELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "lyxfont.h"
 #include "LColor.h"

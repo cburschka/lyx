@@ -13,9 +13,6 @@
 #ifndef InsetMinipage_H
 #define InsetMinipage_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "insetcollapsable.h"
 #include "lyxlength.h"

@@ -4,9 +4,6 @@
 
 #include "math_diminset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 /**
  Unknowntions or LaTeX names for objects that we really don't know

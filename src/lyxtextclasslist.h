@@ -12,10 +12,6 @@
 #ifndef LYXTEXTCLASSLIST_H
 #define LYXTEXTCLASSLIST_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 
 #include <boost/utility.hpp>

@@ -12,9 +12,6 @@
 #ifndef QINCLUDEDIALOG_H
 #define QINCLUDEDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ui/QIncludeDialogBase.h"
 

@@ -13,9 +13,6 @@
 #ifndef CONTROLVCLOG_H
 #define CONTROLVCLOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "ControlDialog_impl.h"
 
