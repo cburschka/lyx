@@ -38,7 +38,9 @@ void GBC::setWidgetEnabled(Gtk::Widget * widget, bool enabled) const
 
 void GBC::setButtonLabel(Gtk::Button * btn, string const & label) const
 {
-	btn->set_label(Glib::locale_to_utf8(label));
+	//GTK+ Stock buttons take precedence
+	if (!btn->get_use_stock())
+		btn->set_label(Glib::locale_to_utf8(label));
 }
 
 } // namespace frontend

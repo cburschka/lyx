@@ -1,3 +1,10 @@
+2004-09-27  John Spray  <spray_john@users.sourceforge.net>
+
+	* GBC.C: Don't let the button controller set the label on GTK+
+	stock icons
+	* GMathPanel.C: resize-friendly packing
+	* glade/*.glade: misc tweaks
+
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Reordered and a lot of includes in a lot of files.

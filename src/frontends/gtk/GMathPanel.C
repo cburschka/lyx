@@ -120,8 +120,8 @@ void GMathPanel::doBuild()
 	tableDown_.show();
 
 	xml_->get_widget("Vbox", vbox);
-	vbox->children().push_back(Gtk::Box_Helpers::Element(tableUp_));
-	vbox->children().push_back(Gtk::Box_Helpers::Element(tableDown_));
+	vbox->pack_start(tableUp_, false, false, 0);
+	vbox->pack_start(tableDown_, false, false, 0);
 
 	// Functions ListView
 	xml_->get_widget("Functions", functions_);
@@ -129,6 +129,7 @@ void GMathPanel::doBuild()
 	listStore_ = Gtk::ListStore::create(listCols_);
 	functions_->set_model(listStore_);
 	functions_->append_column("Functions", listCol_);
+		
 	listSel_ = functions_->get_selection();
 	listSel_->signal_changed().connect(
 		sigc::mem_fun(*this, &GMathPanel::onFunctionSelected));
