@@ -8,24 +8,25 @@
 
 #include <config.h>
 
-#include FORMS_H_LOCATION
-
-#include <fstream> // ofstream
-#include <vector>
-
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
 #include "xforms_helpers.h"
+
 #include "lyxlex.h"
 #include "gettext.h"
 #include "lyxlength.h"
 #include "lyxgluelength.h"
+
 #include "support/LAssert.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
+
+#include <algorithm>
+#include <fstream>
+#include <vector>
 
 using std::ofstream;
 using std::pair;
