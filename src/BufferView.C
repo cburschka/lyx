@@ -23,6 +23,7 @@
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "insetiterator.h"
 #include "language.h"
@@ -238,6 +239,12 @@ string const BufferView::getClipboard() const
 void BufferView::stuffClipboard(string const & stuff) const
 {
 	pimpl_->stuffClipboard(stuff);
+}
+
+
+FuncStatus BufferView::getStatus(FuncRequest const & cmd)
+{
+	return pimpl_->getStatus(cmd);
 }
 
 

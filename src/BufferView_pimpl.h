@@ -40,6 +40,7 @@ class LyXView;
 class WorkArea;
 class LyXScreen;
 class FuncRequest;
+class FuncStatus;
 
 
 ///
@@ -99,6 +100,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void center();
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
+	/// return true for events that will handle
+	FuncStatus getStatus(FuncRequest const & cmd);
 	/// a function should be executed
 	bool dispatch(FuncRequest const & ev);
 	///

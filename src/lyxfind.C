@@ -75,7 +75,7 @@ public:
 		for (i = 0; pos + i < parsize; ++i) {
 			if (string::size_type(i) >= size)
 				break;
-		  if (cs && str[i] != par.getChar(pos + i))
+			if (cs && str[i] != par.getChar(pos + i))
 				break;
 			if (!cs && uppercase(str[i]) != uppercase(par.getChar(pos + i)))
 				break;
@@ -86,7 +86,7 @@ public:
 
 		// if necessary, check whether string matches word
 		if (mw) {
-			if (pos > 0	&& IsLetterCharOrDigit(par.getChar(pos - 1)))
+			if (pos > 0 && IsLetterCharOrDigit(par.getChar(pos - 1)))
 				return false;
 			if (pos + lyx::pos_type(size) < parsize
 					&& IsLetterCharOrDigit(par.getChar(pos + size)));
@@ -108,8 +108,8 @@ private:
 
 bool findForward(DocIterator & cur, MatchString const & match)
 {
-	for (; cur.size(); cur.forwardChar())
-		if (match(cur.paragraph(), cur.pos()))
+	for (; cur; cur.forwardChar())
+		if (cur.inTexted() && match(cur.paragraph(), cur.pos()))
 			return true;
 	return false;
 }
@@ -117,8 +117,8 @@ bool findForward(DocIterator & cur, MatchString const & match)
 
 bool findBackwards(DocIterator & cur, MatchString const & match)
 {
-	for (; cur.size(); cur.backwardChar())
-		if (match(cur.paragraph(), cur.pos()))
+	for (; cur; cur.backwardChar())
+		if (cur.inTexted() && match(cur.paragraph(), cur.pos()))
 			return true;
 	return false;
 }
@@ -126,9 +126,10 @@ bool findBackwards(DocIterator & cur, MatchString const & match)
 
 bool findChange(DocIterator & cur)
 {
-	for (; cur.size(); cur.forwardChar())
-		if ((cur.paragraph().empty() || !cur.empty())
-		    && cur.paragraph().lookupChange(cur.pos()) != Change::UNCHANGED)
+	for (; cur; cur.forwardChar())
+		if (cur.inTexted() && !cur.paragraph().empty() &&
+		    cur.paragraph().lookupChange(cur.pos())
+		    != Change::UNCHANGED)
 			return true;
 	return false;
 }
@@ -179,7 +180,7 @@ int replaceAll(BufferView * bv,
 	int const rsize = replacestr.size();
 	int const ssize = searchstr.size();
 
-	DocIterator cur = DocIterator(buf.inset());
+	DocIterator cur = doc_iterator_begin(buf.inset());
 	while (findForward(cur, match)) {
 		lyx::pos_type pos = cur.pos();
 		LyXFont const font
@@ -192,7 +193,7 @@ int replaceAll(BufferView * bv,
 	}
 
 	bv->text()->init(bv);
-	bv->putSelectionAt(DocIterator(buf.inset()), 0, false);
+	bv->putSelectionAt(doc_iterator_begin(buf.inset()), 0, false);
 	if (num)
 		buf.markDirty();
 	return num;
@@ -337,7 +338,7 @@ bool findNextChange(BufferView * bv)
 	if (!bv->available())
 		return false;
 
-	DocIterator cur = DocIterator(bv->buffer()->inset());
+	DocIterator cur = DocIterator(bv->cursor());
 
 	if (!findChange(cur))
 		return false;

@@ -29,6 +29,7 @@
 #include "factory.h"
 #include "FloatList.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "intl.h"
 #include "insetiterator.h"
@@ -918,6 +919,61 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 }
 
 
+FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
+{
+	Buffer * buf = bv_->buffer();
+
+	FuncStatus flag;
+	
+	switch (cmd.action) {
+
+	case LFUN_UNDO:
+		flag.enabled(!buf->undostack().empty());
+		break;
+	case LFUN_REDO:
+		flag.enabled(!buf->redostack().empty());
+		break;
+	case LFUN_FILE_INSERT:
+	case LFUN_FILE_INSERT_ASCII_PARA:
+	case LFUN_FILE_INSERT_ASCII:
+	case LFUN_FONT_STATE:
+	case LFUN_INSERT_LABEL:
+	case LFUN_BOOKMARK_SAVE:
+	case LFUN_REF_GOTO:
+	case LFUN_WORD_FIND:
+	case LFUN_WORD_REPLACE:
+	case LFUN_MARK_OFF:
+	case LFUN_MARK_ON:
+	case LFUN_SETMARK:
+	case LFUN_CENTER:
+	case LFUN_BEGINNINGBUFSEL:
+	case LFUN_ENDBUFSEL:
+		flag.enabled(true);
+		break;
+	case LFUN_BOOKMARK_GOTO:
+		flag.enabled(bv_->isSavedPosition(strToUnsignedInt(cmd.argument)));
+		break;
+	case LFUN_TRACK_CHANGES:
+		flag.enabled(true);
+		flag.setOnOff(buf->params().tracking_changes);
+		break;
+
+	case LFUN_MERGE_CHANGES:
+	case LFUN_ACCEPT_CHANGE: // what about these two
+	case LFUN_REJECT_CHANGE: // what about these two
+	case LFUN_ACCEPT_ALL_CHANGES:
+	case LFUN_REJECT_ALL_CHANGES:
+		flag.enabled(buf && buf->params().tracking_changes);
+		break;
+	default:
+		flag.enabled(false);
+	}
+
+	return flag;
+}
+
+
+
 bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 {
 	//lyxerr << "BufferView::Pimpl::dispatch  cmd: " << cmd << std::endl;
@@ -1066,10 +1122,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		}
 		cur.resetAnchor();
 		update();
-		break;
-
-	case LFUN_UNKNOWN_ACTION:
-		cur.errorMessage(N_("Unknown function!"));
 		break;
 
 	case LFUN_CENTER:

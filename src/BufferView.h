@@ -27,6 +27,7 @@ class DocIterator;
 class Encoding;
 class ErrorList;
 class FuncRequest;
+class FuncStatus;
 class InsetBase;
 class InsetOld;
 class Language;
@@ -158,6 +159,8 @@ public:
 	/// tell the window system we have a selection
 	void haveSelection(bool sel);
 
+	/// return true for events that will handle
+	FuncStatus getStatus(FuncRequest const & cmd);
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
 	

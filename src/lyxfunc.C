@@ -328,19 +328,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			flag.setOnOff(true);
 		break;
 
-	case LFUN_TRACK_CHANGES:
-		flag.setOnOff(buf->params().tracking_changes);
-		break;
-
 	case LFUN_EXPORT:
 		enable = cmd.argument == "custom"
 			|| Exporter::IsExportable(*buf, cmd.argument);
-		break;
-	case LFUN_UNDO:
-		enable = !buf->undostack().empty();
-		break;
-	case LFUN_REDO:
-		enable = !buf->redostack().empty();
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
@@ -380,17 +370,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_MENURELOAD:
 		enable = !buf->isUnnamed() && !buf->isClean();
 		break;
-	case LFUN_BOOKMARK_GOTO:
-		enable = view()->isSavedPosition(strToUnsignedInt(cmd.argument));
-		break;
 
-	case LFUN_MERGE_CHANGES:
-	case LFUN_ACCEPT_CHANGE:
-	case LFUN_REJECT_CHANGE:
-	case LFUN_ACCEPT_ALL_CHANGES:
-	case LFUN_REJECT_ALL_CHANGES:
-		enable = buf && buf->params().tracking_changes;
-		break;
 
 	case LFUN_INSET_SETTINGS: {
 		enable = false;
@@ -497,9 +477,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
 	case LFUN_EXTERNAL_EDIT:
-	case LFUN_FILE_INSERT:
-	case LFUN_FILE_INSERT_ASCII:
-	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_LANGUAGE_BUFFER:
 	case LFUN_TEXTCLASS_APPLY:
@@ -507,13 +484,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SAVE_AS_DEFAULT:
 	case LFUN_BUFFERPARAMS_APPLY:
 	case LFUN_LYXRC_APPLY:
-	case LFUN_WORD_FIND:
-	case LFUN_WORD_REPLACE:
 		// these are handled in our dispatch()
 		break;
 
 	default:
+		
 		cur.getStatus(cmd, flag);
+		if (!flag.enabled())
+			flag = view()->getStatus(cmd);
 	}
 
 	if (!enable)

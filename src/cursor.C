@@ -371,8 +371,7 @@ void LCursor::setSelection()
 
 void LCursor::setSelection(DocIterator const & where, size_t n)
 {
-	selection() = true;
-	setCursor(where, false);
+	setCursor(where, true);
 	anchor_ = where;
 	pos() += n;
 }
