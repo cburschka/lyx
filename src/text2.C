@@ -3293,7 +3293,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 
 	// if free-spacing, then return also.
 	if (textclasslist.Style(parameters->textclass,
-				old_cursor.row->par->GetLayout()).free_spacing)
+				old_cursor.par->GetLayout()).free_spacing)
 		return;
 
 #ifdef FIX_DOUBLE_SPACE
