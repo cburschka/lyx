@@ -355,7 +355,7 @@ esac
 #### Search for image conversion ####
 SEARCH_PROG([for an Image -> EPS converter], TOEPS, convert pnmtops)
 case $TOEPS in
-	convert) bmp_to_eps="convert BMP:\$\$i EPS:\$\$o" fits_to_eps="convert FITS:\$\$i EPS:\$\$o" gif_to_eps="convert GIF:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o" pbm_to_eps="convert PBM:\$\$i EPS:\$\$o" pgm_to_eps="convert PGM:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" ppm_to_eps="convert PPM:\$\$i EPS:\$\$o" sgi_to_eps="convert SGI:\$\$i EPS:\$\$o" xwd_to_eps="convert XWD:\$\$i EPS:\$\$o" ;;
+	convert) bmp_to_eps="convert BMP:\$\$i EPS:\$\$o" fits_to_eps="convert FITS:\$\$i EPS:\$\$o" gif_to_eps="convert GIF:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o" pbm_to_eps="convert PBM:\$\$i EPS:\$\$o" pgm_to_eps="convert PGM:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" ppm_to_eps="convert PPM:\$\$i EPS:\$\$o" sgi_to_eps="convert SGI:\$\$i EPS:\$\$o" xbm_to_eps="convert XBM:\$\$i EPS:\$\$o" xwd_to_eps="convert XWD:\$\$i EPS:\$\$o" ;;
 	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
 esac
 
@@ -372,6 +372,7 @@ if test "$TOXPM" = "convert"; then
 	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
 	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
 	ps_to_xpm="convert PS:\$\$i XPM:\$\$o" 
+	xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o" 
 fi
 
 SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
@@ -478,6 +479,7 @@ cat >$outfile <<EOF
 \\Format sgi      sgi	SGI		""
 \\Format tgif     tgif	TGIF		""
 \\Format tiff     tif	TIFF		""
+\\Format xbm      xbm   XBM             ""
 \\Format xpm      xpm   XPM             ""
 \\Format xwd      xwd	XWD		""
 \\Format word	  doc	Word		W
@@ -514,6 +516,7 @@ cat >$outfile <<EOF
 \\converter sgi  eps "$sgi_to_eps" ""
 \\converter tgif eps "tgif -print -eps \$\$i" ""
 \\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
+\\converter xbm  eps "$xbm_to_eps" ""
 \\converter xwd  eps "$xwd_to_eps" ""
 
 \\converter tgif gif "tgif -print -gif \$\$i" ""
@@ -529,6 +532,8 @@ cat >$outfile <<EOF
 \\converter epsi xpm "$eps_to_xpm" ""
 \\converter jpg  xpm "$jpg_to_xpm" ""
 \\converter png  xpm "$png_to_xpm" ""
+\\converter ps  xpm "$ps_to_xpm" ""
+\\converter xbm  xpm "$xbm_to_xpm" ""
  
 \\converter eps  pdf "$eps_to_pdf" ""
 \\converter epsi pdf "$eps_to_pdf" ""
