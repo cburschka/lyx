@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: klyx-0.10.0\n"
-"POT-Creation-Date: 2000-05-19 21:52+0200\n"
+"POT-Creation-Date: 2000-05-19 23:10+0200\n"
 "PO-Revision-Date: 2000-04-28 23:42+02:00\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian Team <ro-kde@egroups.com>\n"
@@ -169,7 +169,7 @@ msgstr "Eroare! Nu pot deschide fiºierul temporar:"
 
 #: src/BufferView2.C:61 src/BufferView2.C:71 src/buffer.C:3605
 #: src/bufferlist.C:408 src/lyx_cb.C:393 src/lyx_cb.C:756 src/lyx_cb.C:782
-#: src/lyx_sendfax_main.C:264 src/menus.C:2020
+#: src/lyx_sendfax_main.C:264 src/menus.C:2028
 msgid "Error!"
 msgstr "Eroare!"
 
@@ -4857,218 +4857,218 @@ msgstr ""
 msgid "EM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1332
-#, fuzzy, c-format
+#: src/menus.C:1333
+#, fuzzy, no-c-format
 msgid "List of Figures%m%l"
 msgstr "Lista de figuri"
 
-#: src/menus.C:1333
-#, fuzzy, c-format
+#: src/menus.C:1335
+#, fuzzy, no-c-format
 msgid "List of Tables%m%l"
 msgstr "Lista de tabele"
 
-#: src/menus.C:1334
-#, fuzzy, c-format
+#: src/menus.C:1337
+#, fuzzy, no-c-format
 msgid "List of Algorithms%m%l"
 msgstr "Lista de algoritmi"
 
-#: src/menus.C:1421
-#, fuzzy, c-format
+#: src/menus.C:1425
+#, fuzzy, no-c-format
 msgid "Insert Page Number%m"
 msgstr "Insereazã numãr de &paginã"
 
-#: src/menus.C:1422
-#, fuzzy, c-format
+#: src/menus.C:1427
+#, fuzzy, no-c-format
 msgid "Insert vref%m"
 msgstr "Inseraþi eticheta"
 
-#: src/menus.C:1423
-#, fuzzy, c-format
+#: src/menus.C:1429
+#, fuzzy, no-c-format
 msgid "Insert vpageref%m"
 msgstr "Insereazã figurã"
 
-#: src/menus.C:1424
-#, fuzzy, c-format
+#: src/menus.C:1431
+#, fuzzy, no-c-format
 msgid "Insert Pretty Ref%m"
 msgstr "Inseraþi indexul de intrare"
 
-#: src/menus.C:1425
-#, fuzzy, c-format
+#: src/menus.C:1433
+#, fuzzy, no-c-format
 msgid "Goto Reference%m%l"
 msgstr "&Du-te la referinþa"
 
-#: src/menus.C:1434
+#: src/menus.C:1442
 #, fuzzy, c-format
 msgid "Insert Reference:%d%x0"
 msgstr "&Insereazã referinþã"
 
-#: src/menus.C:1488
+#: src/menus.C:1496
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
 "Depth|LaTeX Preamble...%l|Save layout as default"
 msgstr ""
 
-#: src/menus.C:1501
+#: src/menus.C:1509
 msgid "LM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1502
+#: src/menus.C:1510
 msgid "LM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1503
+#: src/menus.C:1511
 msgid "LM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1504
+#: src/menus.C:1512
 msgid "LM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1505
+#: src/menus.C:1513
 msgid "LM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1506
+#: src/menus.C:1514
 msgid "LM|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1507
+#: src/menus.C:1515
 msgid "LM|mM#m#M"
 msgstr ""
 
-#: src/menus.C:1508
+#: src/menus.C:1516
 msgid "LM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1509
+#: src/menus.C:1517
 msgid "LM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1510
+#: src/menus.C:1518
 msgid "LM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1511
+#: src/menus.C:1519
 msgid "LM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:1512
+#: src/menus.C:1520
 msgid "LM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1513
+#: src/menus.C:1521
 msgid "LM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1578
+#: src/menus.C:1586
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr ""
 
-#: src/menus.C:1582
+#: src/menus.C:1590
 msgid "IMA|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1583
+#: src/menus.C:1591
 msgid "IMA|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1586
+#: src/menus.C:1594
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
 msgstr ""
 
-#: src/menus.C:1594
+#: src/menus.C:1602
 msgid "IMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1595
+#: src/menus.C:1603
 msgid "IMT|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1596
+#: src/menus.C:1604
 msgid "IMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1597
+#: src/menus.C:1605
 msgid "IMT|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1598
+#: src/menus.C:1606
 msgid "IMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1599
+#: src/menus.C:1607
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1602
+#: src/menus.C:1610
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
 msgstr ""
 
-#: src/menus.C:1609
+#: src/menus.C:1617
 msgid "IMF|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1610
+#: src/menus.C:1618
 msgid "IMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1611
+#: src/menus.C:1619
 msgid "IMF|Ww#w#W"
 msgstr ""
 
-#: src/menus.C:1612
+#: src/menus.C:1620
 msgid "IMF|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1613
+#: src/menus.C:1621
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1616
+#: src/menus.C:1624
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
 "period%x36|Ordinary Quote (\")%x37|Menu Separator %x38"
 msgstr ""
 
-#: src/menus.C:1626
+#: src/menus.C:1634
 msgid "IMS|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1627
+#: src/menus.C:1635
 msgid "IMS|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1628
+#: src/menus.C:1636
 msgid "IMS|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1629
+#: src/menus.C:1637
 msgid "IMS|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1630
+#: src/menus.C:1638
 msgid "IMS|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1631
+#: src/menus.C:1639
 msgid "IMS|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1632
+#: src/menus.C:1640
 msgid "IMS|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1633
+#: src/menus.C:1641
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1636
+#: src/menus.C:1644
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -5076,231 +5076,231 @@ msgid ""
 "Reference...|Index entry...|Index entry of last word"
 msgstr ""
 
-#: src/menus.C:1657
+#: src/menus.C:1665
 msgid "IM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1658
+#: src/menus.C:1666
 msgid "IM|bB#b#B"
 msgstr ""
 
-#: src/menus.C:1659
+#: src/menus.C:1667
 msgid "IM|cC#c#C"
 msgstr ""
 
-#: src/menus.C:1660
+#: src/menus.C:1668
 msgid "IM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1661
+#: src/menus.C:1669
 msgid "IM|Xx#x#X"
 msgstr ""
 
-#: src/menus.C:1662
+#: src/menus.C:1670
 msgid "IM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1663
+#: src/menus.C:1671
 msgid "IM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1664
+#: src/menus.C:1672
 msgid "IM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1665
+#: src/menus.C:1673
 msgid "IM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1666
+#: src/menus.C:1674
 msgid "IM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1667
+#: src/menus.C:1675
 msgid "IM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1668
+#: src/menus.C:1676
 msgid "IM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1669
+#: src/menus.C:1677
 msgid "IM|rR#r#R"
 msgstr ""
 
-#: src/menus.C:1670
+#: src/menus.C:1678
 msgid "IM|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1671
+#: src/menus.C:1679
 msgid "IM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:1672
+#: src/menus.C:1680
 msgid "IM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1674
+#: src/menus.C:1682
 msgid "|URL..."
 msgstr ""
 
-#: src/menus.C:1675
+#: src/menus.C:1683
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1781
+#: src/menus.C:1789
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
 msgstr ""
 
-#: src/menus.C:1791
+#: src/menus.C:1799
 msgid "MM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1792
+#: src/menus.C:1800
 msgid "MM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1793
+#: src/menus.C:1801
 msgid "MM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1794
+#: src/menus.C:1802
 msgid "MM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1795
+#: src/menus.C:1803
 msgid "MM|uU#u#U"
 msgstr ""
 
-#: src/menus.C:1796
+#: src/menus.C:1804
 msgid "MM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1797
+#: src/menus.C:1805
 msgid "MM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1798
+#: src/menus.C:1806
 msgid "MM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1799
+#: src/menus.C:1807
 msgid "MM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1865
+#: src/menus.C:1873
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 
-#: src/menus.C:1871
+#: src/menus.C:1879
 msgid "OM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1872
+#: src/menus.C:1880
 msgid "OM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1873
+#: src/menus.C:1881
 msgid "OM|Kk#k#K"
 msgstr ""
 
-#: src/menus.C:1874
+#: src/menus.C:1882
 msgid "OM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1875
+#: src/menus.C:1883
 msgid "OM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:1919
+#: src/menus.C:1927
 #, fuzzy
 msgid "No Documents Open!%t"
 msgstr "* Nici un document deschis *"
 
-#: src/menus.C:1954
+#: src/menus.C:1962
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and "
 "Warranty...|Credits...|Version..."
 msgstr ""
 
-#: src/menus.C:1968
+#: src/menus.C:1976
 msgid "HM|Ii#I#i"
 msgstr ""
 
-#: src/menus.C:1969
+#: src/menus.C:1977
 msgid "HM|Tt#T#t"
 msgstr ""
 
-#: src/menus.C:1970
+#: src/menus.C:1978
 msgid "HM|Uu#U#u"
 msgstr ""
 
-#: src/menus.C:1971
+#: src/menus.C:1979
 msgid "HM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1972
+#: src/menus.C:1980
 msgid "HM|Cc#C#c"
 msgstr ""
 
-#: src/menus.C:1973
+#: src/menus.C:1981
 msgid "HM|Rr#R#r"
 msgstr ""
 
-#: src/menus.C:1974
+#: src/menus.C:1982
 msgid "HM|Ff#F#f"
 msgstr ""
 
-#: src/menus.C:1975
+#: src/menus.C:1983
 msgid "HM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1976
+#: src/menus.C:1984
 msgid "HM|Kk#K#k"
 msgstr ""
 
-#: src/menus.C:1977
+#: src/menus.C:1985
 msgid "HM|Ll#L#l"
 msgstr ""
 
-#: src/menus.C:1978
+#: src/menus.C:1986
 msgid "HM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1979
+#: src/menus.C:1987
 msgid "HM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1980
+#: src/menus.C:1988
 msgid "HM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:2003
+#: src/menus.C:2011
 msgid "LyX Version "
 msgstr ""
 
-#: src/menus.C:2004
+#: src/menus.C:2012
 msgid " of "
 msgstr ""
 
-#: src/menus.C:2005
+#: src/menus.C:2013
 msgid "Library directory: "
 msgstr ""
 
-#: src/menus.C:2007
+#: src/menus.C:2015
 msgid "User directory: "
 msgstr ""
 
-#: src/menus.C:2021
+#: src/menus.C:2029
 #, fuzzy
 msgid "Could not find requested Documentation file"
 msgstr "Nu pot insera documentul"
 
-#: src/menus.C:2025
+#: src/menus.C:2033
 msgid "Opening help file"
 msgstr "Deschid fiºierul de ajutor"
 

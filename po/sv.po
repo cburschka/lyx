@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
-"POT-Creation-Date: 2000-05-19 21:52+0200\n"
+"POT-Creation-Date: 2000-05-19 23:10+0200\n"
 "PO-Revision-Date: 2000-01-20 02:51+01:00\n"
 "Last-Translator: Joacim Persson <sp2joap1@ida.his.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -167,7 +167,7 @@ msgstr "Fel! Kan inte öppna tillfällig fil:"
 
 #: src/BufferView2.C:61 src/BufferView2.C:71 src/buffer.C:3605
 #: src/bufferlist.C:408 src/lyx_cb.C:393 src/lyx_cb.C:756 src/lyx_cb.C:782
-#: src/lyx_sendfax_main.C:264 src/menus.C:2020
+#: src/lyx_sendfax_main.C:264 src/menus.C:2028
 msgid "Error!"
 msgstr "Fel!"
 
@@ -4678,52 +4678,52 @@ msgstr "EM|pP#p#P"
 msgid "EM|gG#g#G"
 msgstr "EM|mM#m#M"
 
-#: src/menus.C:1332
-#, fuzzy, c-format
+#: src/menus.C:1333
+#, fuzzy, no-c-format
 msgid "List of Figures%m%l"
 msgstr "Figurer"
 
-#: src/menus.C:1333
-#, fuzzy, c-format
+#: src/menus.C:1335
+#, fuzzy, no-c-format
 msgid "List of Tables%m%l"
 msgstr "Tabeller"
 
-#: src/menus.C:1334
-#, fuzzy, c-format
+#: src/menus.C:1337
+#, fuzzy, no-c-format
 msgid "List of Algorithms%m%l"
 msgstr "Lista över algoritmer"
 
-#: src/menus.C:1421
-#, fuzzy, c-format
+#: src/menus.C:1425
+#, fuzzy, no-c-format
 msgid "Insert Page Number%m"
 msgstr "Lägg in sidnummer|#N"
 
-#: src/menus.C:1422
-#, fuzzy, c-format
+#: src/menus.C:1427
+#, fuzzy, no-c-format
 msgid "Insert vref%m"
 msgstr "Lägg in URL"
 
-#: src/menus.C:1423
-#, fuzzy, c-format
+#: src/menus.C:1429
+#, fuzzy, no-c-format
 msgid "Insert vpageref%m"
 msgstr "Lägg in figur"
 
-#: src/menus.C:1424
-#, fuzzy, c-format
+#: src/menus.C:1431
+#, fuzzy, no-c-format
 msgid "Insert Pretty Ref%m"
 msgstr "Lägg in marginalanteckning"
 
-#: src/menus.C:1425
-#, fuzzy, c-format
+#: src/menus.C:1433
+#, fuzzy, no-c-format
 msgid "Goto Reference%m%l"
 msgstr "Gå till märke|#G"
 
-#: src/menus.C:1434
+#: src/menus.C:1442
 #, fuzzy, c-format
 msgid "Insert Reference:%d%x0"
 msgstr "Lägg in hänvisning"
 
-#: src/menus.C:1488
+#: src/menus.C:1496
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4734,83 +4734,83 @@ msgstr ""
 "preamble...%l|Spara stil som förvald"
 
 # Tecken...
-#: src/menus.C:1501
+#: src/menus.C:1509
 msgid "LM|Cc#c#C"
 msgstr "LM|Tt#t#T"
 
 # Stycke...
-#: src/menus.C:1502
+#: src/menus.C:1510
 msgid "LM|Pp#p#P"
 msgstr "LM|Ss#s#S"
 
 # Dokument...
-#: src/menus.C:1503
+#: src/menus.C:1511
 msgid "LM|Dd#d#D"
 msgstr ""
 
 # Papper...
-#: src/menus.C:1504
+#: src/menus.C:1512
 msgid "LM|aA#a#A"
 msgstr "LM|Pp#p#P"
 
 # Tabell...
-#: src/menus.C:1505
+#: src/menus.C:1513
 msgid "LM|eE#e#E"
 msgstr "LM|aA#a#A"
 
 # Citattecken...
-#: src/menus.C:1506
+#: src/menus.C:1514
 msgid "LM|Qq#q#Q"
 msgstr "LM|Cc#c#C"
 
 # Betonad stil
-#: src/menus.C:1507
+#: src/menus.C:1515
 msgid "LM|mM#m#M"
 msgstr "LM|Bb#b#B"
 
 # Namnstil
-#: src/menus.C:1508
+#: src/menus.C:1516
 msgid "LM|Nn#n#N"
 msgstr ""
 
 # Fet stil
-#: src/menus.C:1509
+#: src/menus.C:1517
 msgid "LM|Bb#b#B"
 msgstr "LM|Ff#f#F"
 
 # TeX-stil
-#: src/menus.C:1510
+#: src/menus.C:1518
 msgid "LM|Tt#t#T"
 msgstr "LM|Xx#x#X"
 
 # Ändra miljödjup
-#: src/menus.C:1511
+#: src/menus.C:1519
 msgid "LM|vV#v#V"
 msgstr "LM|mM#m#M"
 
 # LaTeX preamble
-#: src/menus.C:1512
+#: src/menus.C:1520
 msgid "LM|Ll#l#L"
 msgstr ""
 
 # Spara stil som förvald
-#: src/menus.C:1513
+#: src/menus.C:1521
 msgid "LM|Ss#s#S"
 msgstr "LM|rR#r#R"
 
-#: src/menus.C:1578
+#: src/menus.C:1586
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Importera ASCII-fil%t|Som rader%x41|Som stycken%x42"
 
-#: src/menus.C:1582
+#: src/menus.C:1590
 msgid "IMA|Ll#l#L"
 msgstr "IMA|rR#r#R"
 
-#: src/menus.C:1583
+#: src/menus.C:1591
 msgid "IMA|Pp#p#P"
 msgstr "IMA|sS#s#S"
 
-#: src/menus.C:1586
+#: src/menus.C:1594
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4819,36 +4819,36 @@ msgstr ""
 "algoritmer%x24|Sakregister%x25|BibTeX-Referenser%x26"
 
 # Innehållsförteckning
-#: src/menus.C:1594
+#: src/menus.C:1602
 msgid "IMT|Cc#c#C"
 msgstr "IMT|Ii#i#I"
 
 # Figurer
-#: src/menus.C:1595
+#: src/menus.C:1603
 msgid "IMT|Ff#f#F"
 msgstr ""
 
 # Tabeller
-#: src/menus.C:1596
+#: src/menus.C:1604
 msgid "IMT|Tt#t#T"
 msgstr ""
 
 # Lista över algoritmer
-#: src/menus.C:1597
+#: src/menus.C:1605
 msgid "IMT|Aa#a#A"
 msgstr "IMT|aA#a#A"
 
 # Sakregister
-#: src/menus.C:1598
+#: src/menus.C:1606
 msgid "IMT|Ii#i#I"
 msgstr "IMT|Ss#s#S"
 
 # BiBTeX-referenser
-#: src/menus.C:1599
+#: src/menus.C:1607
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1602
+#: src/menus.C:1610
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4856,32 +4856,32 @@ msgstr ""
 "Flytande%t|Figur%x71|Tabell%x72|Bred figur%x73|Bred tabell%l%x74|Algoritm%x75"
 
 # Figur...
-#: src/menus.C:1609
+#: src/menus.C:1617
 #, fuzzy
 msgid "IMF|gG#g#G"
 msgstr "IM|Ff#f#F"
 
 # Tabell
-#: src/menus.C:1610
+#: src/menus.C:1618
 msgid "IMF|Tt#t#T"
 msgstr ""
 
 # Bred figur
-#: src/menus.C:1611
+#: src/menus.C:1619
 msgid "IMF|Ww#w#W"
 msgstr "IMF|Bb#b#B"
 
 # Bred tabell
-#: src/menus.C:1612
+#: src/menus.C:1620
 msgid "IMF|iI#i#I"
 msgstr "IMF|rR#r#R"
 
 # Algoritm
-#: src/menus.C:1613
+#: src/menus.C:1621
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1616
+#: src/menus.C:1624
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4892,46 +4892,46 @@ msgstr ""
 "meningsslut%x36|Vanligt citattecken (\")%x37|Menyseparator %x38"
 
 # Hfyllning
-#: src/menus.C:1626
+#: src/menus.C:1634
 msgid "IMS|Hh#h#H"
 msgstr ""
 
 # Avstavningspunkt
-#: src/menus.C:1627
+#: src/menus.C:1635
 msgid "IMS|Pp#p#P"
 msgstr "IMS|Aa#a#A"
 
 # Skyddat blanktecken
-#: src/menus.C:1628
+#: src/menus.C:1636
 msgid "IMS|Bb#b#B"
 msgstr "IMS|Ss#s#S"
 
 # Radbrytning
-#: src/menus.C:1629
+#: src/menus.C:1637
 msgid "IMS|Ll#l#L"
 msgstr "IMS|Rr#r#R"
 
 # Ellips (...)
-#: src/menus.C:1630
+#: src/menus.C:1638
 msgid "IMS|iI#i#I"
 msgstr "IMS|Ee#e#E"
 
 # Punkt för meningsslut
-#: src/menus.C:1631
+#: src/menus.C:1639
 msgid "IMS|Ee#e#E"
 msgstr "IMS|Pp#p#P"
 
 # Vanligt citattecken (\")
-#: src/menus.C:1632
+#: src/menus.C:1640
 msgid "IMS|Qq#q#Q"
 msgstr "IMS|cC#c#C"
 
 # Menyseparator
-#: src/menus.C:1633
+#: src/menus.C:1641
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1636
+#: src/menus.C:1644
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4944,94 +4944,94 @@ msgstr ""
 "änvisning...|Citatreferens...|Sakord...|Sakord senaste ord"
 
 # Figur...
-#: src/menus.C:1657
+#: src/menus.C:1665
 msgid "IM|gG#g#G"
 msgstr "IM|Ff#f#F"
 
 # Tabell...
-#: src/menus.C:1658
+#: src/menus.C:1666
 msgid "IM|bB#b#B"
 msgstr "IM|Tt#t#T"
 
 # Inkludera fil...
-#: src/menus.C:1659
+#: src/menus.C:1667
 msgid "IM|cC#c#C"
 msgstr "IM|Ii#i#I"
 
 # Importera textfil
-#: src/menus.C:1660
+#: src/menus.C:1668
 msgid "IM|Aa#a#A"
 msgstr "IM|mM#m#M"
 
 # Läs in LyXfil...
-#: src/menus.C:1661
+#: src/menus.C:1669
 msgid "IM|Xx#x#X"
 msgstr ""
 
 # Fotnot
-#: src/menus.C:1662
+#: src/menus.C:1670
 msgid "IM|Ff#f#F"
 msgstr "IM|oO#o#O"
 
 # Marginalnotis
-#: src/menus.C:1663
+#: src/menus.C:1671
 msgid "IM|Mm#m#M"
 msgstr "IM|aA#a#A"
 
 # Flytande objekt
-#: src/menus.C:1664
+#: src/menus.C:1672
 msgid "IM|oO#o#O"
 msgstr "IM|yY#y#Y"
 
 # Förteckningar
-#: src/menus.C:1665
+#: src/menus.C:1673
 msgid "IM|Tt#t#T"
 msgstr "IM|rR#r#R"
 
 # Specialtecken
-#: src/menus.C:1666
+#: src/menus.C:1674
 msgid "IM|Ss#s#S"
 msgstr "IM|pP#p#P"
 
 # Notering
-#: src/menus.C:1667
+#: src/menus.C:1675
 msgid "IM|Nn#n#N"
 msgstr ""
 
 # Referensmärke...
-#: src/menus.C:1668
+#: src/menus.C:1676
 msgid "IM|Ll#l#L"
 msgstr "IM|eE##e#E"
 
 # Hänvisning...
-#: src/menus.C:1669
+#: src/menus.C:1677
 msgid "IM|rR#r#R"
 msgstr "IM|vV#v#V"
 
 # Citatreferens
-#: src/menus.C:1670
+#: src/menus.C:1678
 msgid "IM|iI#i#I"
 msgstr "IM|Cc#c#C"
 
 # Sakord
-#: src/menus.C:1671
+#: src/menus.C:1679
 msgid "IM|dD#d#D"
 msgstr "IM|kK#k#K"
 
 # Sakord senaste ord
-#: src/menus.C:1672
+#: src/menus.C:1680
 msgid "IM|wW#w#W"
 msgstr "IM|dD#d#D"
 
-#: src/menus.C:1674
+#: src/menus.C:1682
 msgid "|URL..."
 msgstr "|URL..."
 
-#: src/menus.C:1675
+#: src/menus.C:1683
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1781
+#: src/menus.C:1789
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -5040,85 +5040,85 @@ msgstr ""
 "rad%l|Matematikpanel..."
 
 # Bråk
-#: src/menus.C:1791
+#: src/menus.C:1799
 msgid "MM|Ff#f#F"
 msgstr "MM|Bb#b#B"
 
 # Kvadratrot
-#: src/menus.C:1792
+#: src/menus.C:1800
 msgid "MM|Ss#s#S"
 msgstr "MM|Kk#k#K"
 
 # Exponent
-#: src/menus.C:1793
+#: src/menus.C:1801
 msgid "MM|Ee#e#E"
 msgstr ""
 
 # Index
-#: src/menus.C:1794
+#: src/menus.C:1802
 msgid "MM|xX#x#X"
 msgstr ""
 
 # Summa
-#: src/menus.C:1795
+#: src/menus.C:1803
 msgid "MM|uU#u#U"
 msgstr "MM|Ss#s#S"
 
 # Integral
-#: src/menus.C:1796
+#: src/menus.C:1804
 msgid "MM|Ii#i#I"
 msgstr ""
 
 # Matematikläge
-#: src/menus.C:1797
+#: src/menus.C:1805
 msgid "MM|Mm#m#M"
 msgstr ""
 
 # På egen rad
-#: src/menus.C:1798
+#: src/menus.C:1806
 msgid "MM|Dd#d#D"
 msgstr "MM|Pp#p#P"
 
 # Matematikpanel
-#: src/menus.C:1799
+#: src/menus.C:1807
 msgid "MM|Pp#p#P"
 msgstr "MM|aA#a#A"
 
-#: src/menus.C:1865
+#: src/menus.C:1873
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr "Skärmfonter...|Rättstavning...|Tangentbord...|LaTeX...%l|Omkonfigurera"
 
 # Skärmfonter...
-#: src/menus.C:1871
+#: src/menus.C:1879
 msgid "OM|Ff#f#F"
 msgstr "OM|Ss#s#S"
 
 # Rättstavning...
-#: src/menus.C:1872
+#: src/menus.C:1880
 msgid "OM|Ss#s#S"
 msgstr "OM|Rr#r#R"
 
 # Tangentbord...
-#: src/menus.C:1873
+#: src/menus.C:1881
 msgid "OM|Kk#k#K"
 msgstr "OM|Tt#t#T"
 
 # LaTeX...
-#: src/menus.C:1874
+#: src/menus.C:1882
 msgid "OM|Ll#l#L"
 msgstr ""
 
 # Omkonfigurera
-#: src/menus.C:1875
+#: src/menus.C:1883
 msgid "OM|Rr#r#R"
 msgstr "OM|Oo#o#O"
 
-#: src/menus.C:1919
+#: src/menus.C:1927
 msgid "No Documents Open!%t"
 msgstr "Inga dokument öppnade!%t"
 
-#: src/menus.C:1954
+#: src/menus.C:1962
 #, fuzzy
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
@@ -5130,94 +5130,94 @@ msgstr ""
 "fel|LaTeX-Konfiguration%l|Upphovsrätt och garanti...|Tack...|Version..."
 
 # Introduktion
-#: src/menus.C:1968
+#: src/menus.C:1976
 msgid "HM|Ii#I#i"
 msgstr ""
 
 # Nybörjarkurs
-#: src/menus.C:1969
+#: src/menus.C:1977
 msgid "HM|Tt#T#t"
 msgstr "HM|Nn#N#n"
 
 # Handbok
-#: src/menus.C:1970
+#: src/menus.C:1978
 msgid "HM|Uu#U#u"
 msgstr "HM|Hh#H#h"
 
 # Avancerad redigering
-#: src/menus.C:1971
+#: src/menus.C:1979
 msgid "HM|xX#x#X"
 msgstr "HM|Aa#A#a"
 
 # Anpassning
-#: src/menus.C:1972
+#: src/menus.C:1980
 msgid "HM|Cc#C#c"
 msgstr "HM|pP#P#p"
 
 # Referensmanual
-#: src/menus.C:1973
+#: src/menus.C:1981
 msgid "HM|Rr#R#r"
 msgstr ""
 
 # Sök & Byt...
-#: src/menus.C:1974
+#: src/menus.C:1982
 #, fuzzy
 msgid "HM|Ff#F#f"
 msgstr "EM|Ss#s#S"
 
 # Innehållsförteckning...
-#: src/menus.C:1975
+#: src/menus.C:1983
 #, fuzzy
 msgid "HM|aA#a#A"
 msgstr "EM|hH#h#H"
 
 # Kända fel
-#: src/menus.C:1976
+#: src/menus.C:1984
 msgid "HM|Kk#K#k"
 msgstr ""
 
 # LaTeX-konfiguration
-#: src/menus.C:1977
+#: src/menus.C:1985
 msgid "HM|Ll#L#l"
 msgstr ""
 
 # Upphovsrätt och garanti
-#: src/menus.C:1978
+#: src/menus.C:1986
 msgid "HM|oO#o#O"
 msgstr "HM|Uu#U#u"
 
 # Tack
-#: src/menus.C:1979
+#: src/menus.C:1987
 msgid "HM|eE#e#E"
 msgstr "HM|Tt#T#t"
 
 # Version
-#: src/menus.C:1980
+#: src/menus.C:1988
 msgid "HM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:2003
+#: src/menus.C:2011
 msgid "LyX Version "
 msgstr ""
 
-#: src/menus.C:2004
+#: src/menus.C:2012
 msgid " of "
 msgstr " av "
 
-#: src/menus.C:2005
+#: src/menus.C:2013
 msgid "Library directory: "
 msgstr "Bibliotekskatalog "
 
-#: src/menus.C:2007
+#: src/menus.C:2015
 msgid "User directory: "
 msgstr "Användarkatalog: "
 
-#: src/menus.C:2021
+#: src/menus.C:2029
 #, fuzzy
 msgid "Could not find requested Documentation file"
 msgstr "Kunde inte läsa in dokumentet"
 
-#: src/menus.C:2025
+#: src/menus.C:2033
 msgid "Opening help file"
 msgstr "Öppnar hjälpfil"
 
