@@ -37,8 +37,8 @@ namespace {
 
 // Bound the number of input characters
 int const SCALE_MAXDIGITS = 3;
-int const WIDTH_MAXDIGITS = 3;
-int const HEIGHT_MAXDIGITS = 3;
+int const WIDTH_MAXDIGITS = 10;
+int const HEIGHT_MAXDIGITS = 10;
 int const ROTATE_MAXCHARS = 4;
 int const FILENAME_MAXCHARS = 1024;
  
@@ -432,10 +432,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_help) {
     	    controller().help();
 	}
-		// Put verifications that the dialog shows some sane values,
-	// if not disallow clicking on ok/apply.
-	// Possibly use a label in the bottom of the dialog to give the reason.
-	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
 
 	// check if the input is valid
 	bool invalid = !isValid(bbox_->input_bb_x0);
@@ -461,13 +457,12 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			fl_set_object_label(dialog_->text_warning,
 				_("Warning: Invalid Length!"));
 			fl_show_object(dialog_->text_warning);
-			activate = ButtonPolicy::SMI_INVALID;
+			return ButtonPolicy::SMI_INVALID;
 		} else {
 			fl_hide_object(dialog_->text_warning);
-			activate = ButtonPolicy::SMI_VALID;
 		}
-		return activate;
 	}
+
 	return checkInput();
 }
 
