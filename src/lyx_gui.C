@@ -10,6 +10,7 @@
 
 #include <config.h>
 #include <cstdlib>
+#include <clocale>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -108,7 +109,10 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	
 	static const int num_res = sizeof(res)/sizeof(FL_resource);
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
-	fl_get_app_resources(res, num_res);
+	// It appears that, in xforms >=0.89.5, fl_initialize()
+	// calls setlocale() and ruins our LC_NUMERIC setting.
+	setlocale(LC_NUMERIC, "C");
+     	fl_get_app_resources(res, num_res);
 
 	static const int geometryBitmask =
 		XParseGeometry( geometry,

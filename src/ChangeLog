@@ -1,3 +1,9 @@
+2001-01-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_gui.C (LyXGUI): force the LC_NUMERIC locale to "C" after
+	calling fl_initialize(). This fixes the problem with ',' as
+	decimal separator in text files.
+
 2001-01-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* trans.C (process): Fix the keymap bug.
