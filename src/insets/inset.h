@@ -17,7 +17,6 @@
 
 #include "insetbase.h"
 #include "dimension.h"
-#include "LColor.h"
 #include "ParagraphList_fwd.h"
 
 class Buffer;
@@ -326,8 +325,10 @@ private:
 	UpdatableInset * owner_;
 	///
 	string name_;
-	///
-	LColor::color background_color_;
+	/** We store the LColor::color value as an int to get LColor.h out
+	 *  of the header file.
+	 */
+	int background_color_;
 };
 
 

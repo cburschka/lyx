@@ -16,12 +16,16 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
+
 #include "gettext.h"
 #include "latexrunparams.h"
+#include "LColor.h"
+#include "lyxlex.h"
+
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
+
 #include "support/lstrings.h"
-#include "lyxlex.h"
 #include "support/std_sstream.h"
 
 using lyx::support::bformat;

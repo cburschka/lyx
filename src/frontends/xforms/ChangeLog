@@ -1,5 +1,9 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* FormDocument.C: add #include "LColor.h".
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* FormCharacter.C, FormPreferences.C, lyx_gui.C, xfont_loader.C:
 	add #include "LColor.h".
 

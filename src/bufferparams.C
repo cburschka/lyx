@@ -26,6 +26,7 @@
 #include "language.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"

@@ -18,6 +18,7 @@
 
 #include "BufferView.h"
 #include "gettext.h"
+#include "LColor.h"
 
 
 // Initialization of the counter for the inset id's,
@@ -98,7 +99,7 @@ EnumLColor InsetOld::backgroundColor() const
 		else
 			return LColor::background;
 	} else
-		return background_color_;
+		return LColor::color(background_color_);
 }
 
 

@@ -1,5 +1,13 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* formula.C:
+	* formulamacro.C:
+	add #include "LColor.h".
+
+	* math_cursor.C: add #include <boost/assert.hpp>.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* math_braceinset.C, math_data.C, math_fboxinset.C, math_frameboxinset.C,
 	math_gridinset.C, math_hullinset.C, math_macrotemplate.C, math_nestinset.C,
 	math_rootinset.C, math_spaceinset.C, math_sqrtinset.C, math_support.C:

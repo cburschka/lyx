@@ -34,6 +34,7 @@
 #include "Bullet.h"
 #include "bufferparams.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"

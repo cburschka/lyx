@@ -18,6 +18,7 @@
 #include "bufferview_funcs.h"
 #include "funcrequest.h"
 #include "language.h"
+#include "LColor.h"
 
 using bv_funcs::font2string;
 

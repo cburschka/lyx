@@ -20,13 +20,14 @@
 
 #include "debug.h"
 #include "latexrunparams.h"
-#include "support/std_sstream.h"
-
+#include "LColor.h"
 
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
+
+#include "support/std_sstream.h"
 
 
 using std::ostream;

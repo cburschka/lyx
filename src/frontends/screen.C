@@ -23,6 +23,7 @@
 #include "bufferparams.h"
 #include "debug.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"

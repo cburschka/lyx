@@ -14,6 +14,7 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "LColor.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "paragraph.h"

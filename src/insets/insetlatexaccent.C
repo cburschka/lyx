@@ -14,6 +14,7 @@
 
 #include "debug.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"

@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "format.h"
 #include "latexrunparams.h"
+#include "LColor.h"
 #include "lyxrc.h"
 
 #include "frontends/lyx_gui.h" // hexname

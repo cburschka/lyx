@@ -17,6 +17,7 @@
 
 #include "debug.h"
 #include "latexrunparams.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 

@@ -31,6 +31,7 @@
 #include "math_support.h"
 #include "math_unknowninset.h"
 
+#include <boost/assert.hpp>
 
 //#define FILEDEBUG 1
 

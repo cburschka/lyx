@@ -16,6 +16,7 @@
 
 #include "BufferView.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"

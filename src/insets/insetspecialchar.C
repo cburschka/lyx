@@ -16,6 +16,7 @@
 
 #include "debug.h"
 #include "LaTeXFeatures.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
