@@ -2444,107 +2444,101 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 				 old_cursor.par()->getLayout())).keepempty)
 		return;
 
-	LyXCursor tmpcursor;
-
-	if (old_cursor.par() != cursor.par()) {
-		if ((old_cursor.par()->size() == 0
-		     || (old_cursor.par()->size() == 1
-			 && old_cursor.par()->isLineSeparator(0)))) {
-			// ok, we will delete anything
-			
-			// make sure that you do not delete any environments
-			status(bview, LyXText::NEED_MORE_REFRESH);
-			deleted = true;
+	// only do our magic if we changed paragraph
+	if (old_cursor.par() == cursor.par()) 
+		return;
+	
+	if ((old_cursor.par()->size() == 0
+	     || (old_cursor.par()->size() == 1
+		 && old_cursor.par()->isLineSeparator(0)))) {
+		// ok, we will delete anything
+		LyXCursor tmpcursor;
+		
+		// make sure that you do not delete any environments
+		status(bview, LyXText::NEED_MORE_REFRESH);
+		deleted = true;
 				
-			if (old_cursor.row()->previous()) {
-				refresh_row = old_cursor.row()->previous();
-				refresh_y = old_cursor.y() - old_cursor.row()->baseline() - refresh_row->height();
-				tmpcursor = cursor;
-				cursor = old_cursor; // that undo can restore the right cursor position
-				Paragraph * endpar = old_cursor.par()->next();
-				if (endpar && endpar->getDepth()) {
-					while (endpar && endpar->getDepth()) {
-						endpar = endpar->next();
-					}
-				}
-				setUndo(bview, Undo::DELETE,
-					old_cursor.par(),
-					endpar);
-				cursor = tmpcursor;
-
-				// delete old row
-				removeRow(old_cursor.row());
-				if (ownerParagraph() == old_cursor.par()) {
-					ownerParagraph(ownerParagraph()->next());
-				}
-				// delete old par
-				delete old_cursor.par();
-					
-				/* Breakagain the next par. Needed
-				 * because of the parindent that
-				 * can occur or dissappear. The
-				 * next row can change its height,
-				 * if there is another layout before */
-				if (refresh_row->next()) {
-					breakAgain(bview, refresh_row->next());
-					updateCounters(bview, refresh_row);
-				}
-				setHeightOfRow(bview, refresh_row);
-			} else {
-				refresh_row = old_cursor.row()->next();
-				refresh_y = old_cursor.y() - old_cursor.row()->baseline();
-					
-				tmpcursor = cursor;
-				cursor = old_cursor; // that undo can restore the right cursor position
-				Paragraph * endpar = old_cursor.par()->next();
-				if (endpar && endpar->getDepth()) {
-					while (endpar && endpar->getDepth()) {
-						endpar = endpar->next();
-					}
-				}
-				setUndo(bview, Undo::DELETE,
-					old_cursor.par(),
-					endpar);
-				cursor = tmpcursor;
-
-				// delete old row
-				removeRow(old_cursor.row());
-				// delete old par
-				if (ownerParagraph() == old_cursor.par()) {
-					ownerParagraph(ownerParagraph()->next());
-				}
-
-				delete old_cursor.par();
-					
-				/* Breakagain the next par. Needed
-				   because of the parindent that can
-				   occur or dissappear.
-				   The next row can change its height,
-				   if there is another layout before
-				*/ 
-				if (refresh_row) {
-					breakAgain(bview, refresh_row);
-					updateCounters(bview, refresh_row->previous());
+		if (old_cursor.row()->previous()) {
+			refresh_row = old_cursor.row()->previous();
+			refresh_y = old_cursor.y() - old_cursor.row()->baseline() - refresh_row->height();
+			tmpcursor = cursor;
+			cursor = old_cursor; // that undo can restore the right cursor position
+			Paragraph * endpar = old_cursor.par()->next();
+			if (endpar && endpar->getDepth()) {
+				while (endpar && endpar->getDepth()) {
+					endpar = endpar->next();
 				}
 			}
-				
-				// correct cursor y
+			setUndo(bview, Undo::DELETE, old_cursor.par(), endpar);
+			cursor = tmpcursor;
 
-			setCursorIntern(bview, cursor.par(), cursor.pos());
+				// delete old row
+			removeRow(old_cursor.row());
+			if (ownerParagraph() == old_cursor.par()) {
+				ownerParagraph(ownerParagraph()->next());
+			}
+				// delete old par
+			delete old_cursor.par();
+					
+			/* Breakagain the next par. Needed because of
+			 * the parindent that can occur or dissappear.
+			 * The next row can change its height, if
+			 * there is another layout before */
+			if (refresh_row->next()) {
+				breakAgain(bview, refresh_row->next());
+				updateCounters(bview, refresh_row);
+			}
+			setHeightOfRow(bview, refresh_row);
+		} else {
+			refresh_row = old_cursor.row()->next();
+			refresh_y = old_cursor.y() - old_cursor.row()->baseline();
+					
+			tmpcursor = cursor;
+			cursor = old_cursor; // that undo can restore the right cursor position
+			Paragraph * endpar = old_cursor.par()->next();
+			if (endpar && endpar->getDepth()) {
+				while (endpar && endpar->getDepth()) {
+					endpar = endpar->next();
+				}
+			}
+			setUndo(bview, Undo::DELETE, old_cursor.par(), endpar);
+			cursor = tmpcursor;
 
-			if (selection.cursor.par()  == old_cursor.par()
-			    && selection.cursor.pos() == selection.cursor.pos()) {
-				// correct selection
-				selection.cursor = cursor;
+			// delete old row
+			removeRow(old_cursor.row());
+			// delete old par
+			if (ownerParagraph() == old_cursor.par()) {
+				ownerParagraph(ownerParagraph()->next());
+			}
+
+			delete old_cursor.par();
+					
+			/* Breakagain the next par. Needed because of
+			   the parindent that can occur or dissappear.
+			   The next row can change its height, if
+			   there is another layout before */
+			if (refresh_row) {
+				breakAgain(bview, refresh_row);
+				updateCounters(bview, refresh_row->previous());
 			}
 		}
-		if (!deleted) {
-			if (old_cursor.par()->stripLeadingSpaces(bview->buffer()->params.textclass)) {
-				redoParagraphs(bview, old_cursor, old_cursor.par()->next());
-				// correct cursor y
-				setCursorIntern(bview, cursor.par(), cursor.pos());
-				selection.cursor = cursor;
-			}
+				
+		// correct cursor y
+		setCursorIntern(bview, cursor.par(), cursor.pos());
+
+		if (selection.cursor.par()  == old_cursor.par()
+		    && selection.cursor.pos() == selection.cursor.pos()) {
+			// correct selection
+			selection.cursor = cursor;
+		}
+	}
+	if (!deleted) {
+		if (old_cursor.par()->stripLeadingSpaces(bview->buffer()->params.textclass)) {
+			redoParagraphs(bview, old_cursor,
+				       old_cursor.par()->next());
+			// correct cursor y
+			setCursorIntern(bview, cursor.par(), cursor.pos());
+			selection.cursor = cursor;
 		}
 	}
 }
