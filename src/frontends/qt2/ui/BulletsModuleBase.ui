@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>416</width>
-            <height>276</height>
+            <width>414</width>
+            <height>268</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,9 +34,9 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout23</cstring>
+                <cstring>Layout54</cstring>
             </property>
-            <hbox>
+            <vbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>0</number>
@@ -49,9 +49,9 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout22</cstring>
+                        <cstring>Layout49</cstring>
                     </property>
-                    <vbox>
+                    <hbox>
                         <property stdset="1">
                             <name>margin</name>
                             <number>0</number>
@@ -64,7 +64,7 @@
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout18</cstring>
+                                <cstring>Layout34</cstring>
                             </property>
                             <hbox>
                                 <property stdset="1">
@@ -76,219 +76,87 @@
                                     <number>6</number>
                                 </property>
                                 <widget>
-                                    <class>QLayoutWidget</class>
+                                    <class>QPushButton</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>Layout9</cstring>
+                                        <cstring>bullet1PB</cstring>
                                     </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLayoutWidget</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>Layout3</cstring>
-                                            </property>
-                                            <hbox>
-                                                <property stdset="1">
-                                                    <name>margin</name>
-                                                    <number>0</number>
-                                                </property>
-                                                <property stdset="1">
-                                                    <name>spacing</name>
-                                                    <number>6</number>
-                                                </property>
-                                                <widget>
-                                                    <class>QPushButton</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>bullet1PB</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizePolicy</name>
-                                                        <sizepolicy>
-                                                            <hsizetype>5</hsizetype>
-                                                            <vsizetype>5</vsizetype>
-                                                        </sizepolicy>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>minimumSize</name>
-                                                        <size>
-                                                            <width>50</width>
-                                                            <height>50</height>
-                                                        </size>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string></string>
-                                                    </property>
-                                                </widget>
-                                                <widget>
-                                                    <class>QLabel</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>sadsa</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string>&amp;First level</string>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>alignment</name>
-                                                        <set>AlignVCenter|AlignLeft</set>
-                                                    </property>
-                                                    <property>
-                                                        <name>buddy</name>
-                                                        <cstring>bullet1PB</cstring>
-                                                    </property>
-                                                    <property>
-                                                        <name>vAlign</name>
-                                                    </property>
-                                                </widget>
-                                            </hbox>
-                                        </widget>
-                                        <spacer>
-                                            <property>
-                                                <name>name</name>
-                                                <cstring>Spacer13</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>orientation</name>
-                                                <enum>Horizontal</enum>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizeType</name>
-                                                <enum>Expanding</enum>
-                                            </property>
-                                            <property>
-                                                <name>sizeHint</name>
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>20</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </hbox>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>minimumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>maximumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>32767</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
                                 </widget>
                                 <widget>
-                                    <class>QLayoutWidget</class>
+                                    <class>QLabel</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>Layout12</cstring>
+                                        <cstring>sadsa</cstring>
                                     </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLabel</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>TextLabel1</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string>Size:</string>
-                                            </property>
-                                            <property>
-                                                <name>buddy</name>
-                                                <cstring>bulletsizeCO</cstring>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QComboBox</class>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>default</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Tiny</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smallest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smaller</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Small</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Normal</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Large</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Larger</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Largest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huge</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huger</string>
-                                                </property>
-                                            </item>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>bulletsize1CO</cstring>
-                                            </property>
-                                        </widget>
-                                    </hbox>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>&amp;First level</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>alignment</name>
+                                        <set>AlignVCenter|AlignLeft</set>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bullet1PB</cstring>
+                                    </property>
+                                    <property>
+                                        <name>vAlign</name>
+                                    </property>
                                 </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer13</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
                             </hbox>
                         </widget>
                         <widget>
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout19</cstring>
+                                <cstring>Layout40</cstring>
                             </property>
                             <hbox>
                                 <property stdset="1">
@@ -300,812 +168,883 @@
                                     <number>6</number>
                                 </property>
                                 <widget>
-                                    <class>QLayoutWidget</class>
+                                    <class>QLabel</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>Layout8</cstring>
+                                        <cstring>TextLabel1</cstring>
                                     </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLayoutWidget</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>Layout2</cstring>
-                                            </property>
-                                            <hbox>
-                                                <property stdset="1">
-                                                    <name>margin</name>
-                                                    <number>0</number>
-                                                </property>
-                                                <property stdset="1">
-                                                    <name>spacing</name>
-                                                    <number>6</number>
-                                                </property>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <widget>
-                                                    <class>QPushButton</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>bullet2PB</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizePolicy</name>
-                                                        <sizepolicy>
-                                                            <hsizetype>5</hsizetype>
-                                                            <vsizetype>5</vsizetype>
-                                                        </sizepolicy>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>minimumSize</name>
-                                                        <size>
-                                                            <width>50</width>
-                                                            <height>50</height>
-                                                        </size>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string></string>
-                                                    </property>
-                                                </widget>
-                                                <widget>
-                                                    <class>QLabel</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>sadsa_2</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string>&amp;Second level</string>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>alignment</name>
-                                                        <set>AlignVCenter|AlignLeft</set>
-                                                    </property>
-                                                    <property>
-                                                        <name>buddy</name>
-                                                        <cstring>bullet2PB</cstring>
-                                                    </property>
-                                                    <property>
-                                                        <name>vAlign</name>
-                                                    </property>
-                                                </widget>
-                                            </hbox>
-                                        </widget>
-                                        <spacer>
-                                            <property>
-                                                <name>name</name>
-                                                <cstring>Spacer14</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>orientation</name>
-                                                <enum>Horizontal</enum>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizeType</name>
-                                                <enum>Expanding</enum>
-                                            </property>
-                                            <property>
-                                                <name>sizeHint</name>
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>20</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </hbox>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Size:</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bulletsizeCO</cstring>
+                                    </property>
                                 </widget>
                                 <widget>
-                                    <class>QLayoutWidget</class>
+                                    <class>QComboBox</class>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>default</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Tiny</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smallest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smaller</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Small</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Normal</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Large</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Larger</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Largest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huge</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huger</string>
+                                        </property>
+                                    </item>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>Layout12_2</cstring>
+                                        <cstring>bulletsize1CO</cstring>
                                     </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLabel</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>TextLabel1_2</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string>Size:</string>
-                                            </property>
-                                            <property>
-                                                <name>buddy</name>
-                                                <cstring>bulletsizeCO</cstring>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QComboBox</class>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>default</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Tiny</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smallest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smaller</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Small</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Normal</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Large</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Larger</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Largest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huge</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huger</string>
-                                                </property>
-                                            </item>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>bulletsize2CO</cstring>
-                                            </property>
-                                        </widget>
-                                    </hbox>
                                 </widget>
                             </hbox>
                         </widget>
-                        <widget>
-                            <class>QLayoutWidget</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>Layout20</cstring>
-                            </property>
-                            <hbox>
-                                <property stdset="1">
-                                    <name>margin</name>
-                                    <number>0</number>
-                                </property>
-                                <property stdset="1">
-                                    <name>spacing</name>
-                                    <number>6</number>
-                                </property>
-                                <widget>
-                                    <class>QLayoutWidget</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>Layout7</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLayoutWidget</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>Layout4</cstring>
-                                            </property>
-                                            <hbox>
-                                                <property stdset="1">
-                                                    <name>margin</name>
-                                                    <number>0</number>
-                                                </property>
-                                                <property stdset="1">
-                                                    <name>spacing</name>
-                                                    <number>6</number>
-                                                </property>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7_2</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7_2_2</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <widget>
-                                                    <class>QPushButton</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>bullet3PB</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizePolicy</name>
-                                                        <sizepolicy>
-                                                            <hsizetype>5</hsizetype>
-                                                            <vsizetype>5</vsizetype>
-                                                        </sizepolicy>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>minimumSize</name>
-                                                        <size>
-                                                            <width>50</width>
-                                                            <height>50</height>
-                                                        </size>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string></string>
-                                                    </property>
-                                                </widget>
-                                                <widget>
-                                                    <class>QLabel</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>sadsa_3</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string>&amp;Third level</string>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>alignment</name>
-                                                        <set>AlignVCenter|AlignLeft</set>
-                                                    </property>
-                                                    <property>
-                                                        <name>buddy</name>
-                                                        <cstring>bullet3PB</cstring>
-                                                    </property>
-                                                    <property>
-                                                        <name>vAlign</name>
-                                                    </property>
-                                                </widget>
-                                            </hbox>
-                                        </widget>
-                                        <spacer>
-                                            <property>
-                                                <name>name</name>
-                                                <cstring>Spacer15</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>orientation</name>
-                                                <enum>Horizontal</enum>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizeType</name>
-                                                <enum>Expanding</enum>
-                                            </property>
-                                            <property>
-                                                <name>sizeHint</name>
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>20</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </hbox>
-                                </widget>
-                                <widget>
-                                    <class>QLayoutWidget</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>Layout12_3</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLabel</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>TextLabel1_3</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string>Size:</string>
-                                            </property>
-                                            <property>
-                                                <name>buddy</name>
-                                                <cstring>bulletsizeCO</cstring>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QComboBox</class>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>default</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Tiny</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smallest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smaller</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Small</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Normal</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Large</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Larger</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Largest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huge</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huger</string>
-                                                </property>
-                                            </item>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>bulletsize3CO</cstring>
-                                            </property>
-                                        </widget>
-                                    </hbox>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget>
-                            <class>QLayoutWidget</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>Layout21</cstring>
-                            </property>
-                            <hbox>
-                                <property stdset="1">
-                                    <name>margin</name>
-                                    <number>0</number>
-                                </property>
-                                <property stdset="1">
-                                    <name>spacing</name>
-                                    <number>6</number>
-                                </property>
-                                <widget>
-                                    <class>QLayoutWidget</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>Layout10</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLayoutWidget</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>Layout5</cstring>
-                                            </property>
-                                            <hbox>
-                                                <property stdset="1">
-                                                    <name>margin</name>
-                                                    <number>0</number>
-                                                </property>
-                                                <property stdset="1">
-                                                    <name>spacing</name>
-                                                    <number>6</number>
-                                                </property>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7_2_3</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7_2_4</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <spacer>
-                                                    <property>
-                                                        <name>name</name>
-                                                        <cstring>Spacer7_2_2_2</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>orientation</name>
-                                                        <enum>Horizontal</enum>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizeType</name>
-                                                        <enum>Fixed</enum>
-                                                    </property>
-                                                    <property>
-                                                        <name>sizeHint</name>
-                                                        <size>
-                                                            <width>20</width>
-                                                            <height>20</height>
-                                                        </size>
-                                                    </property>
-                                                </spacer>
-                                                <widget>
-                                                    <class>QPushButton</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>bullet4PB</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>sizePolicy</name>
-                                                        <sizepolicy>
-                                                            <hsizetype>5</hsizetype>
-                                                            <vsizetype>5</vsizetype>
-                                                        </sizepolicy>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>minimumSize</name>
-                                                        <size>
-                                                            <width>50</width>
-                                                            <height>50</height>
-                                                        </size>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string></string>
-                                                    </property>
-                                                </widget>
-                                                <widget>
-                                                    <class>QLabel</class>
-                                                    <property stdset="1">
-                                                        <name>name</name>
-                                                        <cstring>sadsa_4</cstring>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>text</name>
-                                                        <string>Fou&amp;rth level</string>
-                                                    </property>
-                                                    <property stdset="1">
-                                                        <name>alignment</name>
-                                                        <set>AlignVCenter|AlignLeft</set>
-                                                    </property>
-                                                    <property>
-                                                        <name>buddy</name>
-                                                        <cstring>bullet4PB</cstring>
-                                                    </property>
-                                                    <property>
-                                                        <name>vAlign</name>
-                                                    </property>
-                                                </widget>
-                                            </hbox>
-                                        </widget>
-                                        <spacer>
-                                            <property>
-                                                <name>name</name>
-                                                <cstring>Spacer16</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>orientation</name>
-                                                <enum>Horizontal</enum>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizeType</name>
-                                                <enum>Expanding</enum>
-                                            </property>
-                                            <property>
-                                                <name>sizeHint</name>
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>20</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </hbox>
-                                </widget>
-                                <widget>
-                                    <class>QLayoutWidget</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>Layout12_4</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QLabel</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>TextLabel1_4</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string>Size:</string>
-                                            </property>
-                                            <property>
-                                                <name>buddy</name>
-                                                <cstring>bulletsizeCO</cstring>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QComboBox</class>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>default</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Tiny</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smallest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Smaller</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Small</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Normal</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Large</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Larger</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Largest</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huge</string>
-                                                </property>
-                                            </item>
-                                            <item>
-                                                <property>
-                                                    <name>text</name>
-                                                    <string>Huger</string>
-                                                </property>
-                                            </item>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>bulletsize4CO</cstring>
-                                            </property>
-                                        </widget>
-                                    </hbox>
-                                </widget>
-                            </hbox>
-                        </widget>
-                    </vbox>
+                    </hbox>
                 </widget>
-                <spacer>
-                    <property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
                         <name>name</name>
-                        <cstring>Spacer29</cstring>
+                        <cstring>Layout50</cstring>
                     </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout33</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer7</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>16</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet2PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>minimumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>maximumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>32767</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>sadsa_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>&amp;Second level</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>alignment</name>
+                                        <set>AlignVCenter|AlignLeft</set>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bullet2PB</cstring>
+                                    </property>
+                                    <property>
+                                        <name>vAlign</name>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer14</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </hbox>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout44</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>TextLabel1_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Size:</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bulletsizeCO</cstring>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QComboBox</class>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>default</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Tiny</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smallest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smaller</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Small</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Normal</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Large</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Larger</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Largest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huge</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huger</string>
+                                        </property>
+                                    </item>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bulletsize2CO</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
+                        <name>name</name>
+                        <cstring>Layout51</cstring>
                     </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout32</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer7_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>16</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer7_2_2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>16</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bullet3PB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>minimumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>maximumSize</name>
+                                        <size>
+                                            <width>78</width>
+                                            <height>32767</height>
+                                        </size>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string></string>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>sadsa_3</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>&amp;Third level</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>alignment</name>
+                                        <set>AlignVCenter|AlignLeft</set>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bullet3PB</cstring>
+                                    </property>
+                                    <property>
+                                        <name>vAlign</name>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer15</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </hbox>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout45</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>TextLabel1_3</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Size:</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bulletsizeCO</cstring>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QComboBox</class>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>default</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Tiny</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smallest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smaller</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Small</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Normal</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Large</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Larger</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Largest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huge</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huger</string>
+                                        </property>
+                                    </item>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bulletsize3CO</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
+                        <name>name</name>
+                        <cstring>Layout52</cstring>
                     </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout36</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLayoutWidget</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>Layout31</cstring>
+                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer7_2_3</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Fixed</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>16</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer7_2_4</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Fixed</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>16</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer7_2_2_2</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Fixed</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>16</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget>
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>bullet4PB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>5</hsizetype>
+                                                    <vsizetype>5</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>minimumSize</name>
+                                                <size>
+                                                    <width>78</width>
+                                                    <height>50</height>
+                                                </size>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>maximumSize</name>
+                                                <size>
+                                                    <width>78</width>
+                                                    <height>32767</height>
+                                                </size>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>QLabel</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>sadsa_4</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string>Fou&amp;rth level</string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>alignment</name>
+                                                <set>AlignVCenter|AlignLeft</set>
+                                            </property>
+                                            <property>
+                                                <name>buddy</name>
+                                                <cstring>bullet4PB</cstring>
+                                            </property>
+                                            <property>
+                                                <name>vAlign</name>
+                                            </property>
+                                        </widget>
+                                    </hbox>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer27</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </hbox>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout46</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>TextLabel1_4</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Size:</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>bulletsizeCO</cstring>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QComboBox</class>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>default</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Tiny</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smallest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Smaller</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Small</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Normal</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Large</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Larger</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Largest</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huge</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
+                                            <string>Huger</string>
+                                        </property>
+                                    </item>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>bulletsize4CO</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
         </widget>
         <spacer>
             <property>
