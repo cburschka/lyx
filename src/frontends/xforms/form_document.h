@@ -96,6 +96,8 @@ struct FD_form_doc_options {
 	FL_OBJECT *slider_tocdepth;
 	FL_OBJECT *choice_postscript_driver;
 	FL_OBJECT *check_use_amsmath;
+	FL_OBJECT *check_use_natbib;
+	FL_OBJECT *choice_citation_format;
 };
 struct FD_form_doc_bullet {
 	~FD_form_doc_bullet();

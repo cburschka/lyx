@@ -37,6 +37,10 @@ public:
 	void edit(BufferView *, int, int, unsigned int);
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
+        ///
+	int latex(Buffer const *, std::ostream &, bool, bool) const;
+	///
+	void validate(LaTeXFeatures &) const;
 };
 
 #endif // INSET_CITE_H

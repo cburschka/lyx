@@ -212,12 +212,16 @@ void FormDocument::build()
     for (n=0; tex_graphics[n][0]; ++n) {
 	fl_addto_choice(options_->choice_postscript_driver, tex_graphics[n]);
     }
+    fl_addto_choice(options_->choice_citation_format,
+		    _(" Author-year | Numerical "));
 
-    bc().addReadOnly (options_->slider_secnumdepth);
-    bc().addReadOnly (options_->slider_tocdepth);
-    bc().addReadOnly (options_->check_use_amsmath);
-    bc().addReadOnly (options_->input_float_placement);
-    bc().addReadOnly (options_->choice_postscript_driver);
+    bc_.addReadOnly (options_->slider_secnumdepth);
+    bc_.addReadOnly (options_->slider_tocdepth);
+    bc_.addReadOnly (options_->check_use_amsmath);
+    bc_.addReadOnly (options_->check_use_natbib);
+    bc_.addReadOnly (options_->choice_citation_format);
+    bc_.addReadOnly (options_->input_float_placement);
+    bc_.addReadOnly (options_->choice_postscript_driver);
 
     // the document bullets form
     bullets_.reset(build_doc_bullet());
@@ -561,6 +565,9 @@ bool FormDocument::options_apply()
     params.graphicsDriver =
 	fl_get_choice_text(options_->choice_postscript_driver);
     params.use_amsmath = fl_get_button(options_->check_use_amsmath);
+    params.use_natbib  = fl_get_button(options_->check_use_natbib);
+    params.use_numerical_citations  =
+	    fl_get_choice(options_->choice_citation_format)-1;
 
     int tmpchar = int(fl_get_counter_value(options_->slider_secnumdepth));
     if (params.secnumdepth != tmpchar)
@@ -704,6 +711,9 @@ void FormDocument::options_update(BufferParams const & params)
     fl_set_choice_text(options_->choice_postscript_driver,
 		       params.graphicsDriver.c_str());
     fl_set_button(options_->check_use_amsmath, params.use_amsmath);
+    fl_set_button(options_->check_use_natbib,  params.use_natbib);
+    fl_set_choice(options_->choice_citation_format,
+		  int(params.use_numerical_citations)+1);
     fl_set_counter_value(options_->slider_secnumdepth, params.secnumdepth);
     fl_set_counter_value(options_->slider_tocdepth, params.tocdepth);
     if (!params.float_placement.empty())

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -35,6 +36,64 @@ using std::pair;
 using std::sort;
 using std::vector;
 
+namespace {
+
+// shamelessly stolen from Menubar_pimpl.C
+int string_width(string const & str) 
+{
+	return fl_get_string_widthTAB(FL_NORMAL_STYLE, FL_NORMAL_SIZE,
+				      str.c_str(),
+				      static_cast<int>(str.length()));
+}
+
+
+void fillChoice(FL_OBJECT * choice, vector<string> const & vec)
+{
+	string const str = " " + getStringFromVector(vec, " | ") + " ";
+
+	fl_clear_choice(choice);
+	fl_addto_choice(choice, str.c_str());
+
+	int width = 0;
+	for (vector<string>::const_iterator it = vec.begin();
+	     it != vec.end(); ++it) {
+		width = max(width, string_width(*it));
+	}
+
+	// Paranoia checks
+	int const x = max(5, int(choice->x + 0.5 * (choice->w - width)));
+	if (x + width > choice->form->w)
+		width = choice->form->w - 10;
+	
+	fl_set_object_geometry(choice, x, choice->y, width + 5, choice->h);
+}
+
+void updateStyle(FL_OBJECT * choice, FL_OBJECT * full, FL_OBJECT * force,
+		 string command)
+{
+	// Find the style of the citekeys
+	vector<biblio::CiteStyle> const & styles =
+		ControlCitation::getCiteStyles();
+	biblio::CitationStyle cs = biblio::getCitationStyle(command);
+
+	vector<biblio::CiteStyle>::const_iterator cit =
+		find(styles.begin(), styles.end(), cs.style);
+
+	// Use this to initialise the GUI
+	if (cit == styles.end()) {
+		fl_set_choice(choice, 1);
+		fl_set_button(full, 0);
+		fl_set_button(force, 0);
+	} else {
+		int const i = int(cit - styles.begin());
+		fl_set_choice(choice, i+1);
+		fl_set_button(full,  cs.full);
+		fl_set_button(force, cs.forceUCase);
+	}
+}
+
+} // namespace anon
+
 typedef FormCB<ControlCitation, FormDB<FD_form_citation> > base_class;
 
 FormCitation::FormCitation(ControlCitation & c)
@@ -44,7 +103,17 @@ FormCitation::FormCitation(ControlCitation & c)
 
 void FormCitation::apply()
 {
-	controller().params().setCmdName("cite");
+	vector<biblio::CiteStyle> const & styles =
+		ControlCitation::getCiteStyles();
+
+	int const choice = fl_get_choice(dialog_->choice_style) - 1;
+	bool const full  = fl_get_button(dialog_->button_full_author_list);
+	bool const force = fl_get_button(dialog_->button_force_uppercase);
+
+	string const command =
+		biblio::getCiteCommand(styles[choice], full, force);
+
+	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
 	string const after  = fl_get_input(dialog_->input_after);
@@ -92,6 +161,9 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
 
 	biblio::InfoMap const & theMap = controller().bibkeysInfo();
+
+	string topCitekey;
+	if (!citekeys.empty()) topCitekey = citekeys[0];
 
 	if (ob == dialog_->browser_bib) {
 		fl_deselect_browser(dialog_->browser_cite);
@@ -154,7 +226,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			fl_clear_browser(dialog_->browser_info);
 			string const tmp =
 				formatted(biblio::getInfo(theMap,
-							  bibkeys[sel-1]),
+							  citekeys[sel-1]),
 					  dialog_->browser_info->w-10);
 			fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 		}
@@ -270,9 +342,22 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		input(dialog_->browser_bib, 0);
 
 	} else if (ob == dialog_->choice_style ||
+		   ob == dialog_->button_full_author_list ||
+		   ob == dialog_->button_force_uppercase ||
 		   ob == dialog_->input_before ||
 		   ob == dialog_->input_after) {
 		activate = ButtonPolicy::SMI_VALID;
+	}
+
+	string currentCitekey;
+	if (!citekeys.empty())
+		currentCitekey = citekeys[0];
+
+	if (topCitekey != currentCitekey) {
+		int choice = fl_get_choice(dialog_->choice_style);
+		fillChoice(dialog_->choice_style,
+			   controller().getCiteStrings(currentCitekey));
+		fl_set_choice(dialog_->choice_style, choice);
 	}
 
 	return activate;
@@ -289,23 +374,30 @@ void FormCitation::update()
 	citekeys = getVectorFromString(controller().params().getContents());
 	updateBrowser(dialog_->browser_cite, citekeys);
 
+	// Use the first citekey to fill choice_style
+	string key;
+	if (!citekeys.empty()) key = citekeys[0];
+
+	fillChoice(dialog_->choice_style, controller().getCiteStrings(key));
+
+	// Use the citation command to update the GUI
+	updateStyle(dialog_->choice_style, 
+		    dialog_->button_full_author_list,
+		    dialog_->button_force_uppercase,
+		    controller().params().getCmdName());
+	
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);
 	setBibButtons(OFF);
 	setCiteButtons(OFF);
 
-	int noKeys = int(max(bibkeys.size(), citekeys.size()));
-
-	// Place bounds, so that 4 <= noKeys <= 10
-	noKeys = max(4, min(10, noKeys));
-
-	// Re-size the form to accommodate the new browser size
-	int const size = 20 * noKeys;
-	bool const bibPresent = (bibkeys.size() > 0);
-	setSize(size, bibPresent);
-
+	// Natbib can have comments before and after the citation.
+	// This is not yet supported. After only.
 	fl_set_input(dialog_->input_after,
 		     controller().params().getOptions().c_str());
+
+	fl_set_input(dialog_->input_before, _("Not yet supported"));
+	setEnabled(dialog_->input_before, false);
 }
 
 
@@ -340,126 +432,4 @@ void FormCitation::setCiteButtons(State status) const
 	setEnabled(dialog_->button_del,  activate);
 	setEnabled(dialog_->button_up,   activate_up);
 	setEnabled(dialog_->button_down, activate_down);
-}
-
-
-void FormCitation::setSize(int hbrsr, bool bibPresent) const
-{
-	bool const natbib = false; // will eventually be input
-	hbrsr = max(hbrsr, 175); // limit max size of cite/bib brsrs
-
-	// dh1, dh2, dh3 are the vertical separation between elements.
-	// These can be specified because the browser height is fixed
-	// so they are not changed by dynamic resizing
-	static int const dh1 = 30; // top of form to top of cite/bib brsrs;
-	                           // bottom of cite/bib brsrs to top of info;
-	                           // bottom of info to top search frame;
-	                           // bottom of search frame to top next elemnt;
-	                           // bottom of style to top input_before;
-	                           // bottom of text to top ok/cancel buttons.
-	static int const dh2 = 10; // bottom of input_before to top input_after;
-	                           // bottom of ok/cancel buttons to bottom form
-	static int const dh3 = 5;  // spacing between add/delete/... buttons.
-
-	int const wbrsr  = dialog_->browser_cite->w;
-	static int const hinfo  = dialog_->browser_info->h;
-	static int const hframe = dialog_->frame_search->h;
-	static int const hstyle = dialog_->choice_style->h;
-	static int const htext  = dialog_->input_after->h;
-	static int const hok    = dialog_->button_ok->h;
-
-	int hform = dh1 + hbrsr + dh1 + hframe + dh1;
-	if (bibPresent) hform += hinfo + dh1;
-	if (natbib) hform += hstyle + dh1 + htext + dh2;
-	hform += htext + dh1 + hok + dh2;
-
-	if (hform != minh_) {
-		minh_ = hform;
-		fl_set_form_size(dialog_->form, minw_, minh_);
-	} else
-		return;
-
-	int x = 0;
-	int y = 0;
-	fl_set_object_geometry(dialog_->box, x, y, minw_, minh_);
-
-	x = dialog_->browser_cite->x;
-	y += dh1; 
-	fl_set_object_geometry(dialog_->browser_cite, x, y, wbrsr, hbrsr);
-	x = dialog_->browser_bib->x;
-	fl_set_object_geometry(dialog_->browser_bib,  x, y, wbrsr, hbrsr);
-
-	x = dialog_->button_add->x;
-	fl_set_object_position(dialog_->button_add,  x, y);
-	y += dh3 + dialog_->button_add->h;
-	fl_set_object_position(dialog_->button_del,  x, y);
-	y += dh3 + dialog_->button_del->h;
-	fl_set_object_position(dialog_->button_up,   x, y);
-	y += dh3 + dialog_->button_up->h;
-	fl_set_object_position(dialog_->button_down, x, y);
-
-	y = dh1 + hbrsr + dh1; // in position for next element
-
-	if (bibPresent) {
-		x = dialog_->browser_info->x;
-		fl_set_object_position(dialog_->browser_info, x, y);
-		fl_show_object(dialog_->browser_info);
-		y += hinfo + dh1;
-	} else
-		fl_hide_object(dialog_->browser_info);
-
-	x = dialog_->frame_search->x;
-	// ??? The frame height seems to be reduced. Use geometry to enforce it.
-	fl_set_object_geometry(dialog_->frame_search, x, y,
-			       dialog_->frame_search->w, hframe);
-	//fl_set_object_position(dialog_->frame_search, x, y);
-
-	x = dialog_->input_search->x;
-	y += 15;
-	fl_set_object_position(dialog_->input_search, x, y);
-
-	x = dialog_->button_previous->x;
-	y += dialog_->input_search->h + 5;
-	fl_set_object_position(dialog_->button_previous, x, y);
-
-	x = dialog_->button_next->x;
-	y += dialog_->button_previous->h + 5;
-	fl_set_object_position(dialog_->button_next, x, y);
-
-	x = dialog_->button_search_type->x;
-	y = dialog_->button_previous->y;
-	fl_set_object_position(dialog_->button_search_type, x, y);
-
-	x = dialog_->button_search_case->x;
-	y = dialog_->button_next->y;
-	fl_set_object_position(dialog_->button_search_case, x, y);
-
-	y = dialog_->frame_search->y + hframe + dh1;
-	
-	if (natbib) {
-		x = dialog_->choice_style->x;
-		fl_set_object_position(dialog_->choice_style, x, y);
-		fl_show_object(dialog_->choice_style);
-		x = dialog_->input_before->x;
-		y += hstyle + dh1;
-		fl_set_object_position(dialog_->input_before, x, y);
-		fl_show_object(dialog_->input_before);
-		y += htext + dh2;
-	} else {
-		fl_hide_object(dialog_->choice_style);
-		fl_hide_object(dialog_->input_before);
-	}
-
-	x = dialog_->input_after->x;
-	fl_set_object_position(dialog_->input_after, x, y);
-
-	y += htext + dh1;
-	x = dialog_->button_restore->x;
-	fl_set_object_position(dialog_->button_restore, x, y);
-	x = dialog_->button_ok->x;
-	fl_set_object_position(dialog_->button_ok, x, y);
-	x = dialog_->button_apply->x;
-	fl_set_object_position(dialog_->button_apply, x, y);
-	x = dialog_->button_cancel->x;
-	fl_set_object_position(dialog_->button_cancel, x, y);
 }

@@ -201,6 +201,10 @@ public:
 	void readGraphicsDriver(LyXLex &);
 	///
         bool use_amsmath;
+	///
+        bool use_natbib;
+	///
+        bool use_numerical_citations;
 	/// Time ago we agreed that this was a buffer property [ale990407]
         string parentname;
 private:

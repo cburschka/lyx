@@ -93,6 +93,8 @@ struct LaTeXFeatures {
 	bool prettyref; // prettyref.sty
 	///
 	bool chess;	// chess.sty
+	///
+	bool natbib;    // natbib.sty
 
 	///
 	bool lyx;

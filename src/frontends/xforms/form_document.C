@@ -457,22 +457,22 @@ FD_form_doc_options * FormDocument::build_doc_options()
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
   {
     char const * const dummy = N_("Float Placement:|#L");
-    fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 155, 60, 120, 30, idex(_(dummy)));
+    fdui->input_float_placement = obj = fl_add_input(FL_NORMAL_INPUT, 220, 45, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 155, 110, 80, 30, _("Section number depth"));
+  fdui->slider_secnumdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 220, 85, 80, 30, _("Section number depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->slider_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 155, 150, 80, 30, _("Table of contents depth"));
+  fdui->slider_tocdepth = obj = fl_add_counter(FL_SIMPLE_COUNTER, 220, 125, 80, 30, _("Table of contents depth"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
-    char const * const dummy = N_("PS Driver:|#S");
-    fdui->choice_postscript_driver = obj = fl_add_choice(FL_NORMAL_CHOICE, 155, 205, 190, 30, idex(_(dummy)));
+    char const * const dummy = N_("PS Driver|#S");
+    fdui->choice_postscript_driver = obj = fl_add_choice(FL_NORMAL_CHOICE, 220, 165, 190, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -480,11 +480,28 @@ FD_form_doc_options * FormDocument::build_doc_options()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Use AMS Math|#M");
-    fdui->check_use_amsmath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 250, 200, 30, idex(_(dummy)));
+    fdui->check_use_amsmath = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 220, 205, 35, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  {
+    char const * const dummy = N_("Use Natbib|#N");
+    fdui->check_use_natbib = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 220, 245, 35, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  {
+    char const * const dummy = N_("Citation style|#C");
+    fdui->choice_citation_format = obj = fl_add_choice(FL_NORMAL_CHOICE, 220, 285, 190, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

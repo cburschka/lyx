@@ -346,7 +346,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -874,7 +874,7 @@ argument: INPUT
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -946,7 +946,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1018,7 +1018,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1187,7 +1187,7 @@ argument: INPUT
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1278,7 +1278,7 @@ argument: INPUT
 Name: form_doc_options
 Width: 440
 Height: 345
-Number of Objects: 6
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
@@ -1301,7 +1301,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 155 60 120 30
+box: 220 45 120 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1319,7 +1319,7 @@ argument: INPUT
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 155 110 80 30
+box: 220 85 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1337,7 +1337,7 @@ argument: INPUT
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 155 150 80 30
+box: 220 125 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1355,14 +1355,14 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 155 205 190 30
+box: 220 165 190 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: PS Driver:|#S
+label: PS Driver|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -1373,10 +1373,10 @@ argument: INPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 140 250 200 30
+box: 220 205 35 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1387,6 +1387,42 @@ gravity: FL_NoGravity FL_NoGravity
 name: check_use_amsmath
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 220 245 35 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Use Natbib|#N
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_use_natbib
+callback: C_FormBaseDeprecatedInputCB
+argument: INPUT
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 220 285 190 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Citation style|#C
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_citation_format
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_doc_bullet
@@ -1430,6 +1466,7 @@ name: bmtable_bullet_panel
 callback: 
 argument: 
 	file: /nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm
+	focus_file: 
 	fullpath: 1
 
 --------------------
@@ -1489,7 +1526,7 @@ argument: INPUTBULLETLATEX
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1616,7 +1653,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -29,6 +30,8 @@ using std::pair;
 using std::vector;
 using SigC::slot;
 
+vector<biblio::CiteStyle> ControlCitation::citeStyles_;
+
 ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_CITATION_INSERT)
 {
@@ -55,10 +58,40 @@ void ControlCitation::setDaughterParams()
 		bibkeysInfo_.insert(InfoMapValue(blist[i].first,
 						 blist[i].second));
 	}
+
+	if (citeStyles_.empty())
+		citeStyles_ = biblio::getCiteStyles(usingNatbib());
+	else {
+		if ((usingNatbib() && citeStyles_.size() == 1) ||
+		    (!usingNatbib() && citeStyles_.size() != 1))
+			citeStyles_ = biblio::getCiteStyles(usingNatbib());
+	}
 }
 
 
 biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 {
 	return bibkeysInfo_;
+}
+
+
+bool ControlCitation::usingNatbib() const
+{
+    return lv_.buffer()->params.use_natbib;
+}
+
+
+vector<string> const ControlCitation::getCiteStrings(string const & key) const
+{
+	vector<string> styles;
+
+	vector<biblio::CiteStyle> const cs =
+		biblio::getCiteStyles(usingNatbib());
+
+	if (lv_.buffer()->params.use_numerical_citations)
+		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
+	else
+		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);
+
+	return styles;
 }

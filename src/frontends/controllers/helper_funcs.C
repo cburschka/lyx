@@ -50,6 +50,9 @@ vector<string> const getVectorFromString(string const & str,
 					 string const & delim)
 {
 	vector<string> vec;
+	if (str.empty())
+		return vec;
+
 	string keys(str);
 
 	for(;;) {

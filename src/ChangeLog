@@ -1,3 +1,19 @@
+2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* LaTeXFeatures.[Ch]: add variable "bool natbib" and set it
+	approriately in the c-tor and in require().
+	(getPackages): output the appropriate LaTeX for natbib support.
+
+	* buffer.C (parseSingleLyXformat2Token): set the new bufferparams
+	variables "use_natbib" and "use_numerical_citations" when reading the
+	LyX file.
+	(readInset): read the various natbib cite commands.
+	(validate): white-space change.
+
+	* bufferparams.[Ch]: new variables "bool use_natbib" and
+	"bool use_numerical_citations".
+	(writeFile): output them in the LyX file.
+
 2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): add support for all the inset insertion

@@ -33,6 +33,15 @@ public:
 	/// Returns a reference to the map of stored keys
 	biblio::InfoMap const & bibkeysInfo() const;
 
+	///
+	bool usingNatbib() const;
+	/// Possible citations based on this key
+	std::vector<string> const getCiteStrings(string const & key) const;
+
+	/// available CiteStyle-s (depends on availability of Natbib
+	static std::vector<biblio::CiteStyle> const & getCiteStyles()
+		{ return citeStyles_; }
+
 private:
 	/// create the InfoMap of keys and data
 	virtual void setDaughterParams();
@@ -41,6 +50,10 @@ private:
 
 	/// The info associated with each key
 	biblio::InfoMap bibkeysInfo_;
+
+	///
+	static std::vector<biblio::CiteStyle> citeStyles_;
 };
+
 
 #endif // CONTROLCITATION_H

@@ -25,6 +25,17 @@
 namespace biblio 
 {
 	///
+	enum CiteStyle {
+		CITE,
+		CITET,
+		CITEP,
+		CITEALT,
+		CITEALP,
+		CITEAUTHOR,
+		CITEYEAR,
+		CITEYEARPAR
+	};
+	///
 	enum Search {
 		///
 		SIMPLE,
@@ -66,32 +77,74 @@ namespace biblio
 	*/
 
 	std::vector<string>::const_iterator
-	    searchKeys(InfoMap const & map,
-		       std::vector<string> const & keys_to_search,
-		       string const & search_expression,
-		       std::vector<string>::const_iterator start,
-		       Search,
-		       Direction,
-		       bool caseSensitive=false);
+		searchKeys(InfoMap const & map,
+			   std::vector<string> const & keys_to_search,
+			   string const & search_expression,
+			   std::vector<string>::const_iterator start,
+			   Search,
+			   Direction,
+			   bool caseSensitive=false);
 
-	/** Do the dirty work for the search.
-	    Should use through the function above */
-	std::vector<string>::const_iterator
-	    simpleSearch(InfoMap const & map,
-			 std::vector<string> const & keys_to_search,
-			 string const & search_expression,
-			 std::vector<string>::const_iterator start,
-			 Direction,
-			 bool caseSensitive=false);
+	/// Type returned by getCitationStyle, below
+	struct CitationStyle {
+		///
+		CitationStyle() : style(CITE), full(false), forceUCase(false) {}
+		///
+		CiteStyle style;
+		///
+		bool full;
+		///
+		bool forceUCase;
+	};
+	/// Given the LaTeX command, return the appropriate CitationStyle
+	CitationStyle const getCitationStyle(string const & command);
 
-	/// Should use through the function above
-	std::vector<string>::const_iterator
-	    regexSearch(InfoMap const & map,
-			std::vector<string> const & keys_to_search,
-			string const & search_expression,
-			std::vector<string>::const_iterator start,
-			Direction);
+	/** Returns the LaTeX citation command
 
+	    User supplies :
+	    The CiteStyle enum,
+	    a flag forcing the full author list,
+	    a flag forcing upper case, e.g. "della Casa" becomes "Della Case"
+	 */
+	string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
+
+	/// Returns a vector of available Citation styles.
+	std::vector<CiteStyle> const getCiteStyles(bool usingNatbib);
+
+	/**
+	   "Translates" the available Citation Styles into strings for this key.
+	   The returned string is displayed by the GUI.
+
+
+	   [XX] is used in place of the actual reference
+	   Eg, the vector will contain: [XX], Jones et al. [XX], ...
+	   
+	   User supplies :
+	   the key,
+	   the InfoMap of bibkeys info,
+	   the available citation styles
+	 */
+	std::vector<string> const
+		getNumericalStrings(string const & key,
+				    InfoMap const & map,
+				    std::vector<CiteStyle> const & styles);
+
+	/**
+	   "Translates" the available Citation Styles into strings for this key.
+	   The returned string is displayed by the GUI.
+	   
+	   Eg, the vector will contain:
+	   Jones et al. (1990), (Jones et al. 1990), Jones et al. 1990, ...
+	   
+	   User supplies :
+	   the key,
+	   the InfoMap of bibkeys info,
+	   the available citation styles
+	 */
+	std::vector<string> const
+		getAuthorYearStrings(string const & key,
+				     InfoMap const & map,
+				     std::vector<CiteStyle> const & styles);
 } // namespace biblio 
 
 #endif // BIBLIOHELPERS_H

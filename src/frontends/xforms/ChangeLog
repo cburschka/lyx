@@ -1,3 +1,20 @@
+2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.[Ch]: changes associated with adding natbib support.
+	New helper functions, string_width, fillChoice, updateStyle.
+	(apply): set the citation command appropriately.
+	(input): deal with the citation command choices.
+	(update): parse the citation command and deal with it. Nuke the
+	setSize stuff.
+	(setSize): nuked!
+
+	* FormDocument.C (build): add options to use natbib.
+
+	* forms/form_citation.fd: add natbib support. Rearrange dialog to
+	fit onto shorter screens.
+
+	* forms/form_document.fd: add natbib support.
+
 2001-07-16  Juergen Vigna  <jug@sad.it>
 
 	* form_aboutlyx.C: set default for "Close" button to "ESC"-key.

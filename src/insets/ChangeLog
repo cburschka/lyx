@@ -1,3 +1,8 @@
+2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetcite.[Ch] (latex, validate): new methods, required for natbib
+	support.
+
 2001-07-19  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* figinset.C (RegisterFigure): Print debug message only when

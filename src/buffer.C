@@ -762,6 +762,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\use_amsmath") {
 		lex.nextToken();
 		params.use_amsmath = lex.GetInteger();
+	} else if (token == "\\use_natbib") {
+		lex.nextToken();
+		params.use_natbib = lex.GetInteger();
+	} else if (token == "\\use_numerical_citations") {
+		lex.nextToken();
+		params.use_numerical_citations = lex.GetInteger();
 	} else if (token == "\\paperorientation") {
 		int tmpret = lex.FindToken(string_orientation);
 		if (tmpret == -1) ++tmpret;
@@ -1331,7 +1337,9 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 
 		string const cmdName = inscmd.getCmdName();
 		
-		if (cmdName == "cite") {
+		// This strange command allows LyX to recognize "natbib" style
+		// citations: citet, citep, Citet etc.
+		if (compare_no_case(cmdName, "cite", 4) == 0) {
 			inset = new InsetCitation(inscmd);
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
@@ -3386,7 +3394,6 @@ void Buffer::validate(LaTeXFeatures & features) const
 		textclasslist.TextClass(params.textclass);
     
         // AMS Style is at document level
-    
         features.amsstyle = (params.use_amsmath ||
 			     tclass.provides(LyXTextClass::amsmath));
     

@@ -60,8 +60,6 @@ private:
 	void setBibButtons(State) const;
 	///
 	void setCiteButtons(State) const;
-	///
-	void setSize(int, bool) const;
 
 	///
 	std::vector<string> citekeys;

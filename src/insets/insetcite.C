@@ -14,7 +14,9 @@
 #endif
 
 #include "insetcite.h"
+#include "buffer.h"
 #include "BufferView.h"
+#include "LaTeXFeatures.h"
 #include "LyXView.h"
 #include "frontends/Dialogs.h"
 #include "support/lstrings.h"
@@ -61,9 +63,37 @@ void InsetCitation::edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getDialogs()->showCitation(this);
 }
 
-
 int InsetCitation::ascii(Buffer const *, std::ostream & os, int) const
 {
         os << "[" << getContents() << "]";
         return 0;
 }
+
+// Have to overwrite the default InsetCommand method in order to check that
+// the \cite command is valid. Eg, the user has natbib enabled, inputs some
+// citations and then changes his mind, turning natbib support off. The output
+// should revert to \cite[]{}
+int InsetCitation::latex(Buffer const * buffer, std::ostream & os,
+			bool /*fragile*/, bool/*fs*/) const
+{
+	os << "\\";
+	if (buffer->params.use_natbib)
+		os << getCmdName();
+	else
+		os << "cite";
+
+	if (!getOptions().empty())
+		os << "[" << getOptions() << "]";
+
+	os << "{" << getContents() << "}";
+
+	return 0;
+}
+
+
+void InsetCitation::validate(LaTeXFeatures & features) const
+{
+	if (getCmdName() != "cite" && features.bufferParams().use_natbib)
+		features.natbib = true;
+}
+

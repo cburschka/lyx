@@ -50,6 +50,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	varioref = false;
 	prettyref = false;
 	chess = false;
+	natbib = false;
 	
 	// commands
 	lyx = false;
@@ -122,6 +123,8 @@ void LaTeXFeatures::require(string const & name)
 		boldsymbol = true;
 	} else if (name == "binom") {
 		binom = true;
+	} else if (name == "natbib") {
+		natbib = true;
 	}
 }
 
@@ -272,7 +275,18 @@ string const LaTeXFeatures::getPackages() const
 		if (use_float)
 			packages << "\\usepackage{float}\n";
 	}
+
+	// natbib.sty
+	if (natbib) {
+		string options("[]");
+		if (params.use_numerical_citations)
+			options.insert(1, "numbers");
+		else
+			options.insert(1, "authoryear");
+		packages << "\\usepackage" << options << "{natbib}\n";
+	}
 	
+
 	packages << externalPreambles;
 
 	return packages.str().c_str();

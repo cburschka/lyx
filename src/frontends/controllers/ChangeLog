@@ -1,3 +1,18 @@
+2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCitation.[Ch]: changes associated with adding natbib support.
+	New public methods, usingNatbib, getCiteStrings and getCiteStyles.
+	New static variable citeStyles_.
+
+	* biblio.[Ch]: large internal rearrangement.
+	New public enum CiteStyle.
+	New public struct CitationStyle.
+	New public functions getCitationStyle, getCiteCommand, getCiteStyles,
+	getNumericalStrings, getAuthorYearStrings
+	(simpleSearch, regexSearch): no longer publicly accessible.
+
+	* helper_funcs.C (getStringFromVector): bug fix.
+
 2001-07-16  Baruch Even  <baruch@lyx.org>
 
 	* ControlVCLog.h: Added Lsstream.h to includes.

@@ -48,6 +48,8 @@ BufferParams::BufferParams()
 	orientation = ORIENTATION_PORTRAIT;
         use_geometry = false;
         use_amsmath = false;
+        use_natbib = false;
+	use_numerical_citations = false;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -103,6 +105,8 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << use_geometry
 	   << "\n\\use_amsmath " << use_amsmath
+	   << "\n\\use_natbib " << use_natbib
+	   << "\n\\use_numerical_citations " << use_numerical_citations
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
         if (!paperwidth.empty())
