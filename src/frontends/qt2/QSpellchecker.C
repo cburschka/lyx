@@ -19,6 +19,7 @@
 #include "QSpellchecker.h"
 #include "Qt2BC.h"
 #include "gettext.h"
+#include "debug.h"
 
 #include <qprogressbar.h>
 #include <qmessagebox.h>
@@ -114,6 +115,7 @@ void QSpellchecker::partialUpdate(int id)
 	case 2:
 		dialog_->spellcheckPB->setEnabled(true);
 		hide();
+		lyxerr << controller().getMessage() << endl; 
 		QMessageBox::information(0, _("Spellcheck complete"),
 					 controller().getMessage().c_str(),
 					 _("OK"));

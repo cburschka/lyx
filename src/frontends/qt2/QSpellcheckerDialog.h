@@ -33,6 +33,8 @@ protected slots:
 	virtual void ignoreClicked();
 	virtual void suggestionChanged(const QString &);
 	virtual void replaceChanged(const QString &);
+	virtual void reject();
+ 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 

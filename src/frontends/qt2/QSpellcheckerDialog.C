@@ -102,3 +102,10 @@ void QSpellcheckerDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+
+void QSpellcheckerDialog::reject()
+{
+	form_->slotWMHide();
+	QSpellcheckerDialogBase::reject();
+}
