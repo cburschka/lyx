@@ -13,18 +13,20 @@
 #define QEXTERNAL_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlExternal;
 class QExternalDialog;
 
+
 class QExternal
-	: public Qt2CB<ControlExternal, Qt2DB<QExternalDialog> >
+	: public QController<ControlExternal, QView<QExternalDialog> >
 {
 public:
 	friend class QExternalDialog;
 
-	QExternal();
+	QExternal(Dialog &);
 
 private:
 	/// Apply changes
@@ -35,7 +37,7 @@ private:
 	virtual void build_dialog();
 
 	/// get the right helptext
-	string const & helpText();
+	string const helpText() const;
 };
 
 #endif // QEXTERNAL_H

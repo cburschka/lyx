@@ -46,12 +46,6 @@ void Dialogs::showDocument()
 }
 
 
-void Dialogs::showExternal(InsetExternal * ie)
-{
-	pimpl_->external.controller().showInset(ie);
-}
-
-
 void Dialogs::showFile(string const & f)
 {
 	pimpl_->file.controller().showFile(f);

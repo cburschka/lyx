@@ -1,5 +1,15 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* QExternal.[Ch]: changes to use the new Dialog-based scheme.
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove external dialog.
+
+	* Dialogs3.C: add external dialog.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* QIndex.[Ch]: minimal changes needed to use this dialog
 	for both the Index and the Label dialogs.
 

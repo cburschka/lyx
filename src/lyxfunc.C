@@ -519,9 +519,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_TABULAR_INSERT:
 		code = Inset::TABULAR_CODE;
 		break;
-	case LFUN_INSET_EXTERNAL:
-		code = Inset::EXTERNAL_CODE;
-		break;
 	case LFUN_INSET_MARGINAL:
 		code = Inset::MARGIN_CODE;
 		break;
@@ -578,7 +575,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_HTMLURL:
 	case LFUN_URL:
-	case LFUN_INSERT_URL:
 		code = Inset::URL_CODE;
 		break;
 	case LFUN_QUOTE:

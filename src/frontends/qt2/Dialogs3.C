@@ -18,6 +18,7 @@
 #include "ControlCitation.h"
 #include "ControlError.h"
 #include "ControlERT.h"
+#include "ControlExternal.h"
 #include "ControlIndex.h"
 #include "ControlLabel.h"
 #include "ControlRef.h"
@@ -34,6 +35,8 @@
 #include "QErrorDialog.h"
 #include "QERT.h"
 #include "QERTDialog.h"
+#include "QExternal.h"
+#include "QExternalDialog.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
@@ -58,6 +61,9 @@ typedef ButtonController<OkCancelPolicy, Qt2BC>
 typedef ButtonController<OkCancelReadOnlyPolicy, Qt2BC>
 	OkCancelReadOnlyBC;
 
+typedef ButtonController<OkApplyCancelReadOnlyPolicy, Qt2BC>
+	OkApplyCancelReadOnlyBC;
+
 typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 	NoRepeatedApplyReadOnlyBC;
 
@@ -65,8 +71,8 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "index", "label", "ref",
-				     "toc", "url" };
+				     "error", "ert", "external", "index",
+				     "label", "ref", "toc", "url" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -118,6 +124,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new QERT(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "external") {
+		dialog->setController(new ControlExternal(*dialog));
+		dialog->setView(new QExternal(*dialog));
+		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));
 		dialog->setView(new QIndex(*dialog,

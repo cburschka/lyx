@@ -30,7 +30,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  changes(lv, d),
 	  character(lv, d),
 	  document(lv, d),
-	  external(lv, d),
 	  file(lv, d),
 	  floats(lv, d),
 	  graphics(lv, d),

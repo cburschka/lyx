@@ -215,7 +215,7 @@ Menuset
 	Separator
 	Item "Include File...|d" "buffer-child-insert"
 	Submenu "Insert File|e" "insert_file"
-	Item "External Material...|x" "external-insert"
+	Item "External Material...|x" "dialog-show-new-inset external"
     End
 
     Menu "insert_special"

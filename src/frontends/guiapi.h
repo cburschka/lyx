@@ -16,7 +16,6 @@
 #include "LString.h"
 
 class Dialogs;
-class InsetExternal;
 class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
@@ -32,7 +31,6 @@ void gui_ShowAboutlyx(Dialogs &);
 void gui_ShowCharacter(Dialogs &);
 void gui_SetUserFreeFont(Dialogs &);
 void gui_ShowDocument(Dialogs &);
-void gui_ShowExternal(InsetExternal *, Dialogs &);
 void gui_ShowFile(string const &, Dialogs &);
 void gui_ShowFloat(InsetFloat *, Dialogs &);
 void gui_ShowForks(Dialogs &);

@@ -19,7 +19,6 @@
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlDocument.h"
-#include "ControlExternal.h"
 #include "ControlFloat.h"
 #include "ControlForks.h"
 #include "ControlGraphics.h"
@@ -48,8 +47,6 @@
 #include "QCharacterDialog.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
-#include "QExternal.h"
-#include "QExternalDialog.h"
 #include "QFloat.h"
 #include "QFloatDialog.h"
 //#include "QForks.h"
@@ -112,9 +109,6 @@ CharacterDialog;
 
 typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 DocumentDialog;
-
-typedef GUI<ControlExternal, QExternal, OkApplyCancelReadOnlyPolicy, Qt2BC>
-ExternalDialog;
 
 typedef GUI<ControlShowFile, QShowFile, OkCancelPolicy, Qt2BC>
 FileDialog;
@@ -180,7 +174,6 @@ struct Dialogs::Impl {
 	ChangesDialog       changes;
 	CharacterDialog     character;
 	DocumentDialog      document;
-	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
 	GraphicsDialog      graphics;

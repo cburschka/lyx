@@ -1,3 +1,14 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C (init):
+	* src/factory.C (createInset):
+	* lyxfunc.C (getStatus):
+	* text3.C (dispatch):
+	remove LFUN_INSET_EXTERNAL and LFUN_INSERT_URL
+
+	* factory.C (createInset): add "external" to LFUN_INSET_APPLY.
+
 2003-03-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ParagraphList.C (insert): handle insert right before end()

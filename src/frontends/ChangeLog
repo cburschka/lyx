@@ -1,3 +1,8 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h: remove showExternal.
+	* guiapi.[Ch]: remove gui_ShowExternal.
+
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C (redraw, greyOut): ensure that the painter is started

@@ -62,9 +62,6 @@ Inset * createInset(FuncRequest const & cmd)
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);
 
-	case LFUN_INSET_EXTERNAL:
-		return new InsetExternal;
-
 	case LFUN_INSET_FOOTNOTE:
 		return new InsetFoot(params);
 
@@ -152,13 +149,6 @@ Inset * createInset(FuncRequest const & cmd)
 		return new InsetParent(
 			InsetCommandParams("lyxparent", cmd.argument), *bv->buffer());
 
-	case LFUN_INSERT_URL:
-	{
-		InsetCommandParams p;
-		p.setFromString(cmd.argument);
-		return new InsetUrl(p);
-	}
-
 #if 0
 	case LFUN_INSET_LIST:
 		return new InsetList;
@@ -192,6 +182,13 @@ Inset * createInset(FuncRequest const & cmd)
 			InsetERT::ERTStatus s;
 			InsetERTMailer::string2params(cmd.argument, s);
 			inset->status(bv, s);
+			return inset;
+
+		} else if (name == "external") {
+			InsetExternal::Params iep;			
+			InsetExternalMailer::string2params(cmd.argument, iep);
+			InsetExternal * inset = new InsetExternal;
+			inset->setFromParams(iep);
 			return inset;
 
 		} else if (name == "index") {

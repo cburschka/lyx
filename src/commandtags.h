@@ -243,7 +243,6 @@ enum kb_action {
 	LFUN_LOTVIEW,                   // Dekel 20000519
 	LFUN_LOAVIEW,                   // Dekel 20000519
 	LFUN_SET_COLOR,                 // SLior 20000611
-	LFUN_INSET_EXTERNAL,            // Alstrup 20000609
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
@@ -255,7 +254,6 @@ enum kb_action {
 #endif
 	LFUN_INSET_CAPTION,             // Lgb 20000718
 	LFUN_SWITCHBUFFER,  // and where is this coming from?
-	LFUN_INSERT_URL,                // Angus 20000726
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
 	LFUN_SCROLL_INSET,              // Jug 20000801

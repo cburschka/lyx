@@ -23,9 +23,6 @@ class Dialog;
 class InsetBase;
 class LyXView;
 
-class InsetCommand;
-class InsetError;
-class InsetExternal;
 class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
@@ -89,8 +86,6 @@ public:
 	void setUserFreeFont();
 	///
 	void showDocument();
-	/// show the external inset dialog
-	void showExternal(InsetExternal *);
 	/// show the contents of a file.
 	void showFile(string const &);
 	///

@@ -1,3 +1,8 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.[Ch]: define a new class InsetExternalMailer and use
+	it to communicate with the frontend dialogs.
+
 2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C (collapseParagraphs): adjust

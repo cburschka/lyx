@@ -45,12 +45,6 @@ void gui_ShowDocument(Dialogs & d)
 }
 
 
-void gui_ShowExternal(InsetExternal * ie, Dialogs & d)
-{
-	d.showExternal(ie);
-}
-
-
 void gui_ShowFile(string const & f, Dialogs & d)
 {
 	d.showFile(f);

@@ -15,17 +15,29 @@
 #define CONTROLEXTERNAL_H
 
 
-#include "ControlInset.h"
+#include "Dialog.h"
 #include "insets/insetexternal.h"
+#include <boost/scoped_ptr.hpp>
 
-/** A controller for External dialogs.
- */
-class ControlExternal
-	: public ControlInset<InsetExternal, InsetExternal::Params>
-{
+
+class ControlExternal : public Dialog::Controller {
 public:
 	///
-	ControlExternal(LyXView &, Dialogs &);
+	ControlExternal(Dialog &);
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+
+	///
+	InsetExternal::Params const & params() const
+		{ return inset_->params(); }
+	///
+	void setParams(InsetExternal::Params const &);
 
 	///
 	void editExternal();
@@ -43,13 +55,7 @@ public:
 	string const Browse(string const &) const;
 private:
 	///
-	virtual void applyParamsToInset();
-	/// not needed.
-	virtual void applyParamsNoInset() {}
-	/// get the parameters from the string passed to createInset.
-	virtual InsetExternal::Params const getParams(string const &);
-	/// get the parameters from the inset passed to showInset.
-	virtual InsetExternal::Params const getParams(InsetExternal const &);
+	boost::scoped_ptr<InsetExternal> inset_;
 };
 
 #endif // CONTROLEXTERNAL_H

@@ -12,82 +12,70 @@
 
 #include <config.h>
 
-
 #include "ControlExternal.h"
 #include "buffer.h"
-#include "BufferView.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
-#include "support/filetools.h"
-
 #include <vector>
 
 using std::vector;
 
 
-ControlExternal::ControlExternal(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetExternal, InsetExternal::Params>(lv, d)
+ControlExternal::ControlExternal(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-InsetExternal::Params const ControlExternal::getParams(string const &)
+void ControlExternal::initialiseParams(string const & data)
 {
-	return InsetExternal::Params();
+	inset_.reset(new InsetExternal);
+	InsetExternal::Params params;
+	InsetExternalMailer::string2params(data, params);
+	inset_->setFromParams(params);
+	inset_->setView(kernel().bufferview());
 }
 
 
-InsetExternal::Params const
-ControlExternal::getParams(InsetExternal const & inset)
+void ControlExternal::clearParams()
 {
-	return inset.params();
+	inset_.reset();
 }
 
 
-void ControlExternal::applyParamsToInset()
+void ControlExternal::dispatchParams()
 {
-	inset()->setFromParams(params());
-	bufferview()->updateInset(inset(), true);
+	InsetExternal::Params p = params();
+	string const lfun = InsetExternalMailer::params2string("external", p);
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+}
+
+
+void ControlExternal::setParams(InsetExternal::Params const & p)
+{
+	inset_->setFromParams(p);
 }
 
 
 void ControlExternal::editExternal()
 {
-	// fill the local, controller's copy of the Params struct with
-	// the contents of the dialog's fields.
-	view().apply();
-
-	// Create a local copy of the inset and initialise it with this
-	// params struct.
-	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
-	ie->setFromParams(params());
-
-	ie->editExternal();
+	dialog().view().apply();
+	inset_->editExternal();
 }
 
 
 void ControlExternal::viewExternal()
 {
-	view().apply();
-
-	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
-	ie->setFromParams(params());
-
-	ie->viewExternal();
+	dialog().view().apply();
+	inset_->viewExternal();
 }
 
 
 void ControlExternal::updateExternal()
 {
-	view().apply();
-
-	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
-	ie->setFromParams(params());
-
-	ie->updateExternal();
+	dialog().view().apply();
+	inset_->updateExternal();
 }
 
 
@@ -137,7 +125,7 @@ string const ControlExternal::Browse(string const & input) const
 {
 	string const title =  _("Select external file");
 
-	string const bufpath = buffer()->filePath();
+	string const bufpath = kernel().buffer()->filePath();
 
 	/// Determine the template file extension
 	ExternalTemplate const & et = params().templ;

@@ -38,10 +38,6 @@
 #include "FormDocument.h"
 #include "forms/form_document.h"
 
-#include "ControlExternal.h"
-#include "FormExternal.h"
-#include "forms/form_external.h"
-
 #include "ControlFloat.h"
 #include "FormFloat.h"
 #include "forms/form_float.h"
@@ -138,9 +134,6 @@ CharacterDialog;
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
-typedef GUI<ControlExternal, FormExternal, OkApplyCancelReadOnlyPolicy, xformsBC>
-ExternalDialog;
-
 typedef GUI<ControlShowFile, FormShowFile, OkCancelPolicy, xformsBC>
 FileDialog;
 
@@ -213,7 +206,6 @@ struct Dialogs::Impl {
 	ChangesDialog       changes;
         CharacterDialog     character;
 	DocumentDialog      document;
-	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
 	ForksDialog         forks;

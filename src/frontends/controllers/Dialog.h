@@ -101,11 +101,11 @@ public:
 	Controller & controller() const;
 	///
 	ButtonControllerBase & bc() const;
-private:
 	///
 	View & view() const;
 	//@}
 
+private:
 	///
 	void apply();
 
@@ -140,6 +140,10 @@ public:
 	virtual bool isBufferDependent() const = 0;
 	///
 	virtual bool disconnectOnApply() const { return false; }
+	///
+	Dialog & dialog() { return parent_; }
+	///
+	Dialog const & dialog() const { return parent_; }
 	///
 	Kernel & kernel() { return parent_.kernel(); }
 	///

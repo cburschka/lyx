@@ -24,22 +24,24 @@
 #include "support/lstrings.h"
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlExternal, FormDB<FD_external> > base_class;
+typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
-FormExternal::FormExternal()
-	: base_class(_("Edit external file"))
+FormExternal::FormExternal(Dialog & parent)
+	: base_class(parent, _("Edit external file"))
 {}
 
 
 void FormExternal::apply()
 {
-	controller().params().filename =
-		fl_get_input(dialog_->input_filename);
-	controller().params().parameters =
-		fl_get_input(dialog_->input_parameters);
+	InsetExternal::Params params = controller().params();
+
+	params.filename = fl_get_input(dialog_->input_filename);
+	params.parameters = fl_get_input(dialog_->input_parameters);
 
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
-	controller().params().templ = controller().getTemplate(choice);
+	params.templ = controller().getTemplate(choice);
+
+	controller().setParams(params);
 }
 
 
@@ -91,7 +93,9 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 
 		// set to the chosen template
 		int const choice = fl_get_choice(dialog_->choice_template) - 1;
-		controller().params().templ = controller().getTemplate(choice);
+		InsetExternal::Params params = controller().params();
+		params.templ = controller().getTemplate(choice);
+		controller().setParams(params);
 
 		updateComboChange();
 

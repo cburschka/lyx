@@ -15,13 +15,14 @@
 #include "ExternalTemplate.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "frontends/LyXView.h"
+#include "funcrequest.h"
 #include "lyx_main.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "debug.h"
 #include "lyxlex.h"
 
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
 #include "support/filetools.h"
@@ -50,13 +51,30 @@ InsetExternal::InsetExternal()
 InsetExternal::~InsetExternal()
 {
 	lyx::unlink(tempname_);
-	hideDialog();
+	InsetExternalMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
-InsetExternal::Params InsetExternal::params() const
+InsetExternal::Params const & InsetExternal::params() const
 {
 	return params_;
+}
+
+
+dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
+{
+	if (cmd.action != LFUN_INSET_MODIFY)
+		return UNDISPATCHED;
+
+	InsetExternal::Params p;
+	InsetExternalMailer::string2params(cmd.argument, p);
+	if (p.filename.empty())
+		return UNDISPATCHED;
+
+	setFromParams(p);
+	cmd.view()->updateInset(this, true);
+	return DISPATCHED;
 }
 
 
@@ -74,11 +92,10 @@ string const InsetExternal::editMessage() const
 }
 
 
-void InsetExternal::edit(BufferView * bv,
-			 int /*x*/, int /*y*/, mouse_button::state)
+void InsetExternal::edit(BufferView *, int, int, mouse_button::state)
 {
-	view_ = bv;
-	view_->owner()->getDialogs().showExternal(this);
+	InsetExternalMailer mailer(*this);
+	mailer.showDialog();
 }
 
 
@@ -340,4 +357,58 @@ bool operator!=(InsetExternal::Params const & left,
 		InsetExternal::Params const & right)
 {
 	return	!(left == right);
+}
+
+
+InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)
+	: name_("external"), inset_(inset)
+{}
+
+
+string const InsetExternalMailer::inset2string() const
+{
+	
+	return params2string(name(), inset_.params());
+}
+
+
+void InsetExternalMailer::string2params(string const & in,
+					InsetExternal::Params & params)
+{
+	params = InsetExternal::Params();
+
+	string name;
+	string body = split(in, name, ' ');
+
+	if (name != "external" || body.empty())
+		return;
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	body = split(body, name, ' ');
+	if (name != "External")
+		return;
+
+	istringstream data(body);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	InsetExternal inset;	
+	inset.read(0, lex);
+	params = inset.params();
+}
+
+
+string const
+InsetExternalMailer::params2string(string const & name,
+				   InsetExternal::Params const & params)
+{
+	InsetExternal inset;
+	inset.setFromParams(params);
+	ostringstream data;
+	data << name << ' ';
+	inset.write(0, data);
+	data << "\\end_inset\n";
+
+	return data.str();
 }

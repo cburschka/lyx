@@ -25,11 +25,11 @@
 
 #include <vector>
 
-typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
+typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
 
-QExternal::QExternal()
-	: base_class(qt_("LyX: Insert External Material"))
+QExternal::QExternal(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert External Material"))
 {
 }
 
@@ -67,21 +67,22 @@ void QExternal::update_contents()
 }
 
 
-string const & QExternal::helpText()
+string const QExternal::helpText() const
 {
-	InsetExternal::Params & params = controller().params();
-
-	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
-	return params.templ.helpText;
+	ExternalTemplate templ =
+		controller().getTemplate(dialog_->externalCO->currentItem());
+	return templ.helpText;
 }
 
 
 void QExternal::apply()
 {
-	InsetExternal::Params & params = controller().params();
+	InsetExternal::Params params = controller().params();
 
 	params.filename = fromqstr(dialog_->fileED->text());
 	params.parameters = fromqstr(dialog_->paramsED->text());
 
 	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
+
+	controller().setParams(params);
 }

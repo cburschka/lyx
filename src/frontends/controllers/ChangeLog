@@ -1,3 +1,9 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.[Ch]: rewrite to use the Dialog-based scheme.
+
+	* Dialog.h: make view() public. Add dialog() methods.
+
 2003-02-28  Alfredo Braunstein  <abraunst@libero.it>
 
 	* ControlGraphics.C: removed #include "converter.h"

@@ -35,6 +35,10 @@
 #include "FormERT.h"
 #include "forms/form_ert.h"
 
+#include "ControlExternal.h"
+#include "FormExternal.h"
+#include "forms/form_external.h"
+
 #include "ControlIndex.h"
 #include "ControlLabel.h"
 
@@ -63,9 +67,11 @@ typedef ButtonController<OkCancelPolicy, xformsBC>
 typedef ButtonController<OkCancelReadOnlyPolicy, xformsBC>
 	OkCancelReadOnlyBC;
 
+typedef ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC>
+	OkApplyCancelReadOnlyBC;
+
 typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC>
 	NoRepeatedApplyReadOnlyBC;
-
 
 namespace {
 
@@ -75,8 +81,8 @@ namespace {
 // 				     "minipage", "ref", "tabular", "toc",
 // 				     "url", "wrap" };
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "index", "label", "ref",
-				     "toc", "url" };
+				     "error", "ert", "external", "index",
+				     "label", "ref", "toc", "url" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -128,6 +134,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new FormERT(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "external") {
+		dialog->setController(new ControlExternal(*dialog));
+		dialog->setView(new FormExternal(*dialog));
+		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));
 		dialog->setView(new FormText(*dialog,

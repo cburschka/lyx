@@ -15,17 +15,18 @@
 #define FORMEXTERNAL_H
 
 
-#include "FormBase.h"
-#include "insets/insetexternal.h"
+#include "FormDialogView.h"
+
 
 class ControlExternal;
 struct FD_external;
 
 /// The class for editing External insets via a dialog
-class FormExternal : public FormCB<ControlExternal, FormDB<FD_external> > {
+class FormExternal
+	: public FormController<ControlExternal, FormView<FD_external> > {
 public:
 	///
-	FormExternal();
+	FormExternal(Dialog &);
 private:
 	/// apply changes
 	virtual void apply();
