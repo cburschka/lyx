@@ -1,3 +1,13 @@
+2001-12-19  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (tabularFeatures): fix the row setting of ltt as
+	this has to be always row + 1 as 0 means not selected!
+	(checkLongtableSpecial): added
+	(tabularFeatures): better longtable options support
+
+	* insettext.C (resizeLyXText): reinit the text always also on a
+	empty insettext!
+
 2001-12-18  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (updateInsetInInset): look if we have to autocollapse

@@ -59,6 +59,8 @@ private:
 	virtual bool input(FL_OBJECT *, long);
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
+	///
+	virtual int checkLongtableOptions(FL_OBJECT *, string &);
 
 	/// Fdesign generated methods
 	FD_form_tabular * build_tabular();

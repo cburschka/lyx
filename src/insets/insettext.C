@@ -2187,8 +2187,14 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 	do_resize = 0;
 //	lyxerr << "InsetText::resizeLyXText\n";
-	if (!par->next() && !par->size()) // no data, resize not neccessary!
+	if (!par->next() && !par->size()) { // no data, resize not neccessary!
+		// we have to do this as a fixed width may have changed!
+		LyXText * t = getLyXText(bv);
+		saveLyXTextState(t);
+		t->init(bv, true);
+		restoreLyXTextState(bv, t);
 		return;
+	}
 	// one endless line, resize normally not necessary
 	if (!force && getMaxWidth(bv, this) < 0)
 		return;

@@ -98,6 +98,7 @@ LyXTabular::lttype::lttype()
 	row = 0;
 	topDL = false;
 	bottomDL = false;
+	empty = false;
 }
 
 
@@ -1915,15 +1916,15 @@ bool LyXTabular::GetRowOfLTLastFoot(int row, ltType & fd) const
 }
 
 
-void LyXTabular::SetLTNewPage(int cell, bool what)
+void LyXTabular::SetLTNewPage(int row, bool what)
 {
-	row_info[row_of_cell(cell)].newpage = what;
+	row_info[row].newpage = what;
 }
 
 
-bool LyXTabular::GetLTNewPage(int cell) const
+bool LyXTabular::GetLTNewPage(int row) const
 {
-	return row_info[row_of_cell(cell)].newpage;
+	return row_info[row].newpage;
 }
 
 

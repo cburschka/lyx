@@ -118,13 +118,13 @@ void FormTabular::build()
 			    FL_RETURN_END);
 
 	fl_addto_tabfolder(dialog_->tabFolder, _("Tabular"),
-			   tabular_options_->form);
+	                   tabular_options_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Column/Row"),
-			   column_options_->form);
+	                   column_options_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Cell"),
-			   cell_options_->form);
+	                   cell_options_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("LongTable"),
-			   longtable_options_->form);
+	                   longtable_options_->form);
 
 	// We should set these input filters on width fields to make them accept
 	// only unsigned numbers.
@@ -173,8 +173,8 @@ void FormTabular::update()
 	sprintf(buf, "%d", column);
 	fl_set_input(dialog_->input_tabular_column, buf);
 	fl_deactivate_object(dialog_->input_tabular_column);
-	int row = tabular->row_of_cell(cell) + 1;
-	sprintf(buf, "%d", row);
+	int row = tabular->row_of_cell(cell);
+	sprintf(buf, "%d", row + 1);
 	fl_set_input(dialog_->input_tabular_row, buf);
 	fl_deactivate_object(dialog_->input_tabular_row);
 	if (tabular->IsMultiColumn(cell)) {
@@ -351,33 +351,104 @@ void FormTabular::update()
 		      tabular->IsLongTabular());
 
 	bool const enable = tabular->IsLongTabular();
+	    
 	setEnabled(longtable_options_->radio_lt_firsthead, enable);
-	setEnabled(longtable_options_->radio_lt_head,      enable);
-	setEnabled(longtable_options_->radio_lt_foot,      enable);
-	setEnabled(longtable_options_->radio_lt_lastfoot,  enable);
-	setEnabled(longtable_options_->radio_lt_newpage,   enable);
+	setEnabled(longtable_options_->check_1head_2border_above, enable);
+	setEnabled(longtable_options_->check_1head_2border_below, enable);
+	setEnabled(longtable_options_->check_1head_empty, enable);
+	setEnabled(longtable_options_->radio_lt_head, enable);
+	setEnabled(longtable_options_->check_head_2border_above, enable);
+	setEnabled(longtable_options_->check_head_2border_below, enable);
+	setEnabled(longtable_options_->radio_lt_foot, enable);
+	setEnabled(longtable_options_->check_foot_2border_above, enable);
+	setEnabled(longtable_options_->check_foot_2border_below, enable);
+	setEnabled(longtable_options_->radio_lt_lastfoot, enable);
+	setEnabled(longtable_options_->check_lastfoot_2border_above, enable);
+	setEnabled(longtable_options_->check_lastfoot_2border_below, enable);
+	setEnabled(longtable_options_->check_lastfoot_empty, enable);
+	setEnabled(longtable_options_->radio_lt_newpage, enable);
 
 	if (enable) {
-		LyXTabular::ltType dummyltt;
+		LyXTabular::ltType ltt;
 		fl_set_button(longtable_options_->radio_lt_firsthead,
-		              tabular->GetRowOfLTFirstHead(row - 1, dummyltt));
+					  tabular->GetRowOfLTFirstHead(row, ltt));
+		if (ltt.row && !ltt.empty) {
+			fl_set_button(longtable_options_->check_1head_2border_above,
+			              ltt.topDL);
+			fl_set_button(longtable_options_->check_1head_2border_above,
+				          ltt.topDL);
+		} else {
+			setEnabled(longtable_options_->check_1head_2border_above, 0);
+			setEnabled(longtable_options_->check_1head_2border_below, 0);
+			fl_set_button(longtable_options_->check_1head_2border_above,0);
+			fl_set_button(longtable_options_->check_1head_2border_above,0);
+			fl_set_button(longtable_options_->check_1head_empty,ltt.empty);
+			if (ltt.empty)
+				setEnabled(longtable_options_->radio_lt_firsthead, 0);
+		}
 		fl_set_button(longtable_options_->radio_lt_head,
-		              tabular->GetRowOfLTHead(row - 1, dummyltt));
+		              tabular->GetRowOfLTHead(row, ltt));
+		if (ltt.row) {
+			fl_set_button(longtable_options_->check_head_2border_above,
+				          ltt.topDL);
+			fl_set_button(longtable_options_->check_head_2border_above,
+			              ltt.topDL);
+		} else {
+			setEnabled(longtable_options_->check_head_2border_above, 0);
+			setEnabled(longtable_options_->check_head_2border_below, 0);
+			fl_set_button(longtable_options_->check_head_2border_above,0);
+			fl_set_button(longtable_options_->check_head_2border_above,0);
+		}
 		fl_set_button(longtable_options_->radio_lt_foot,
-		              tabular->GetRowOfLTFoot(row - 1, dummyltt));
+		              tabular->GetRowOfLTFoot(row, ltt));
+		if (ltt.row) {
+			fl_set_button(longtable_options_->check_foot_2border_above,
+			              ltt.topDL);
+			fl_set_button(longtable_options_->check_foot_2border_above,
+			              ltt.topDL);
+		} else {
+			setEnabled(longtable_options_->check_foot_2border_above, 0);
+			setEnabled(longtable_options_->check_foot_2border_below, 0);
+			fl_set_button(longtable_options_->check_foot_2border_above,0);
+			fl_set_button(longtable_options_->check_foot_2border_above,0);
+		}
 		fl_set_button(longtable_options_->radio_lt_lastfoot,
-		              tabular->GetRowOfLTLastFoot(row - 1, dummyltt));
+		              tabular->GetRowOfLTLastFoot(row, ltt));
+		if (ltt.row && !ltt.empty) {
+			fl_set_button(longtable_options_->check_lastfoot_2border_above,
+			              ltt.topDL);
+			fl_set_button(longtable_options_->check_lastfoot_2border_above,
+			              ltt.topDL);
+		} else {
+			setEnabled(longtable_options_->check_lastfoot_2border_above,0);
+			setEnabled(longtable_options_->check_lastfoot_2border_below,0);
+			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+			fl_set_button(longtable_options_->check_lastfoot_empty, ltt.empty);
+			if (ltt.empty)
+				setEnabled(longtable_options_->radio_lt_lastfoot, 0);
+		}
 		fl_set_button(longtable_options_->radio_lt_newpage,
-		              tabular->GetLTNewPage(cell));
+		              tabular->GetLTNewPage(row));
 	} else {
 		fl_set_button(longtable_options_->radio_lt_firsthead, 0);
+		fl_set_button(longtable_options_->check_1head_2border_above, 0);
+		fl_set_button(longtable_options_->check_1head_2border_above, 0);
+		fl_set_button(longtable_options_->check_1head_empty, 0);
 		fl_set_button(longtable_options_->radio_lt_head, 0);
+		fl_set_button(longtable_options_->check_head_2border_above, 0);
+		fl_set_button(longtable_options_->check_head_2border_above, 0);
 		fl_set_button(longtable_options_->radio_lt_foot, 0);
+		fl_set_button(longtable_options_->check_foot_2border_above, 0);
+		fl_set_button(longtable_options_->check_foot_2border_above, 0);
 		fl_set_button(longtable_options_->radio_lt_lastfoot, 0);
+		fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+		fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+		fl_set_button(longtable_options_->check_lastfoot_empty, 0);
 		fl_set_button(longtable_options_->radio_lt_newpage, 0);
 	}
 	fl_set_button(tabular_options_->radio_rotate_tabular,
-		      tabular->GetRotateTabular());
+	              tabular->GetRotateTabular());
 }
 
 
@@ -386,13 +457,11 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     if (!inset_)
         return false;
 
-    LyXTabular * tabular = inset_->tabular.get();
     int s;
     LyXTabular::Feature num = LyXTabular::LAST_ACTION;
     string special;;
 
     int cell = inset_->getActCell();
-	int row = tabular->row_of_cell(cell);
 	
     if (actCell_ != cell) {
         update();
@@ -407,7 +476,9 @@ bool FormTabular::input(FL_OBJECT * ob, long)
       update();
       return false;
     }
-    if (ob == column_options_->input_column_width) {
+    if ((ob == column_options_->input_column_width) ||
+		(ob == column_options_->choice_value_column_width))
+	{
 	    string const str =
 		    getLengthFromWidgets(column_options_->input_column_width,
 					 column_options_->choice_value_column_width);
@@ -415,7 +486,9 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         update(); // update for alignment
         return true;
     }
-    if (ob == cell_options_->input_mcolumn_width) {
+    if ((ob == cell_options_->input_mcolumn_width) ||
+		(ob == cell_options_->choice_value_mcolumn_width))
+	{
 	    string const str =
 		    getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					 cell_options_->choice_value_mcolumn_width);
@@ -459,71 +532,41 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     else if (ob == cell_options_->radio_multicolumn)
         num = LyXTabular::MULTICOLUMN;
     else if (ob == tabular_options_->radio_longtable) {
-	    bool const enable =
-		    fl_get_button(tabular_options_->radio_longtable);
-	    
-	    setEnabled(longtable_options_->radio_lt_firsthead, enable);
-	    setEnabled(longtable_options_->radio_lt_head,      enable);
-	    setEnabled(longtable_options_->radio_lt_foot,      enable);
-	    setEnabled(longtable_options_->radio_lt_lastfoot,  enable);
-	    setEnabled(longtable_options_->radio_lt_newpage,   enable);
-
-	    if (enable) {
+	    if (fl_get_button(tabular_options_->radio_longtable))
 		    num = LyXTabular::SET_LONGTABULAR;
-		    LyXTabular::ltType dummyltt;
-		    fl_set_button(longtable_options_->radio_lt_firsthead,
-				  tabular->GetRowOfLTFirstHead(row, dummyltt));
-		    fl_set_button(longtable_options_->radio_lt_head,
-				  tabular->GetRowOfLTHead(row, dummyltt));
-		    fl_set_button(longtable_options_->radio_lt_foot,
-				  tabular->GetRowOfLTFoot(row, dummyltt));
-		    fl_set_button(longtable_options_->radio_lt_lastfoot,
-				  tabular->GetRowOfLTLastFoot(row, dummyltt));
-		    fl_set_button(longtable_options_->radio_lt_firsthead,
-				  tabular->GetLTNewPage(cell));
-	    } else {
-		    num = LyXTabular::UNSET_LONGTABULAR;
-		    fl_set_button(longtable_options_->radio_lt_firsthead, 0);
-		    fl_set_button(longtable_options_->radio_lt_head, 0);
-		    fl_set_button(longtable_options_->radio_lt_foot, 0);
-		    fl_set_button(longtable_options_->radio_lt_lastfoot, 0);
-		    fl_set_button(longtable_options_->radio_lt_newpage, 0);
-	    }
+		else
+			num = LyXTabular::UNSET_LONGTABULAR;
     } else if (ob == tabular_options_->radio_rotate_tabular) {
-        s = fl_get_button(tabular_options_->radio_rotate_tabular);
-	if (s)
-            num = LyXTabular::SET_ROTATE_TABULAR;
-	else
-	    num = LyXTabular::UNSET_ROTATE_TABULAR;
+		s = fl_get_button(tabular_options_->radio_rotate_tabular);
+		if (s)
+			num = LyXTabular::SET_ROTATE_TABULAR;
+		else
+			num = LyXTabular::UNSET_ROTATE_TABULAR;
     } else if (ob == cell_options_->radio_rotate_cell) {
-        s = fl_get_button(cell_options_->radio_rotate_cell);
-	if (s)
-            num = LyXTabular::SET_ROTATE_CELL;
-	else
-	    num = LyXTabular::UNSET_ROTATE_CELL;
+		s = fl_get_button(cell_options_->radio_rotate_cell);
+		if (s)
+			num = LyXTabular::SET_ROTATE_CELL;
+		else
+			num = LyXTabular::UNSET_ROTATE_CELL;
     } else if (ob == cell_options_->radio_useminipage) {
-        num = LyXTabular::SET_USEBOX;
-	special = "2";
-    } else if (ob == longtable_options_->radio_lt_firsthead) {
-		if (fl_get_button(ob))
-			num = LyXTabular::SET_LTFIRSTHEAD;
-		else
-			num = LyXTabular::UNSET_LTFIRSTHEAD;
-    } else if (ob == longtable_options_->radio_lt_head) {
-		if (fl_get_button(ob))
-			num = LyXTabular::SET_LTHEAD;
-		else
-			num = LyXTabular::UNSET_LTHEAD;
-    } else if (ob == longtable_options_->radio_lt_foot) {
-		if (fl_get_button(ob))
-			num = LyXTabular::SET_LTFOOT;
-		else
-			num = LyXTabular::UNSET_LTFOOT;
-    } else if (ob == longtable_options_->radio_lt_lastfoot) {
-		if (fl_get_button(ob))
-			num = LyXTabular::SET_LTLASTFOOT;
-		else
-			num = LyXTabular::UNSET_LTLASTFOOT;
+		num = LyXTabular::SET_USEBOX;
+		special = "2";
+    } else if ((ob == longtable_options_->radio_lt_firsthead) ||
+			   (ob == longtable_options_->check_1head_2border_above) ||
+			   (ob == longtable_options_->check_1head_2border_below) ||
+			   (ob == longtable_options_->check_1head_empty) ||
+			   (ob == longtable_options_->radio_lt_head) ||
+			   (ob == longtable_options_->check_head_2border_above) ||
+			   (ob == longtable_options_->check_head_2border_below) ||
+			   (ob == longtable_options_->radio_lt_foot) ||
+			   (ob == longtable_options_->check_foot_2border_above) ||
+			   (ob == longtable_options_->check_foot_2border_below) ||
+			   (ob == longtable_options_->radio_lt_lastfoot) ||
+			   (ob == longtable_options_->check_lastfoot_2border_above) ||
+			   (ob == longtable_options_->check_lastfoot_2border_below) ||
+			   (ob == longtable_options_->check_lastfoot_empty))
+	{
+		num = static_cast<LyXTabular::Feature>(checkLongtableOptions(ob, special));
     } else if (ob == longtable_options_->radio_lt_newpage) {
         num = LyXTabular::SET_LTNEWPAGE;
     } else if (ob == column_options_->input_special_alignment) {
@@ -559,4 +602,54 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     update();
 
     return true;
+}
+
+int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
+{
+	bool flag = fl_get_button(ob);
+	if ((ob == longtable_options_->check_1head_2border_above) ||
+		(ob == longtable_options_->check_head_2border_above) ||
+		(ob == longtable_options_->check_foot_2border_above) ||
+		(ob == longtable_options_->check_lastfoot_2border_above))
+	{
+		special = "dl_above";
+	} else if ((ob == longtable_options_->check_1head_2border_below) ||
+			   (ob == longtable_options_->check_head_2border_below) ||
+			   (ob == longtable_options_->check_foot_2border_below) ||
+			   (ob == longtable_options_->check_lastfoot_2border_below))
+	{
+		special = "dl_below";
+	} else if ((ob == longtable_options_->check_1head_empty) ||
+			   (ob == longtable_options_->check_lastfoot_empty))
+	{
+		special = "empty";
+	} else {
+		special = "";
+	}
+	if ((ob == longtable_options_->radio_lt_firsthead) ||
+		(ob == longtable_options_->check_1head_2border_above) ||
+		(ob == longtable_options_->check_1head_2border_below) ||
+		(ob == longtable_options_->check_1head_empty))
+	{
+		return (flag ? LyXTabular::SET_LTFIRSTHEAD :
+				LyXTabular::UNSET_LTFIRSTHEAD);
+    } else if ((ob == longtable_options_->radio_lt_head) ||
+			   (ob == longtable_options_->check_head_2border_above) ||
+			   (ob == longtable_options_->check_head_2border_below))
+	{
+		return (flag ? LyXTabular::SET_LTHEAD : LyXTabular::UNSET_LTHEAD);
+    } else if ((ob == longtable_options_->radio_lt_foot) ||
+			   (ob == longtable_options_->check_foot_2border_above) ||
+			   (ob == longtable_options_->check_foot_2border_below))
+	{
+		return (flag ? LyXTabular::SET_LTFOOT : LyXTabular::UNSET_LTFOOT);
+    } else if ((ob == longtable_options_->radio_lt_lastfoot) ||
+			   (ob == longtable_options_->check_lastfoot_2border_above) ||
+			   (ob == longtable_options_->check_lastfoot_2border_below) ||
+			   (ob == longtable_options_->check_lastfoot_empty))
+	{
+		return (flag ? LyXTabular::SET_LTLASTFOOT :
+				LyXTabular::UNSET_LTLASTFOOT);
+	}
+	return LyXTabular::LAST_ACTION;
 }

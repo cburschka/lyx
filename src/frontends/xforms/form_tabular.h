@@ -44,6 +44,7 @@ struct FD_form_column_options {
 	~FD_form_column_options();
 
 	FL_FORM *form;
+	FL_OBJECT *input_column_width;
 	FL_OBJECT *radio_border_top;
 	FL_OBJECT *radio_border_bottom;
 	FL_OBJECT *radio_border_left;
@@ -54,7 +55,6 @@ struct FD_form_column_options {
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
-	FL_OBJECT *input_column_width;
 	FL_OBJECT *input_special_alignment;
 	FL_OBJECT *choice_value_column_width;
 };
@@ -88,6 +88,16 @@ struct FD_form_longtable_options {
 	FL_OBJECT *radio_lt_foot;
 	FL_OBJECT *radio_lt_lastfoot;
 	FL_OBJECT *radio_lt_newpage;
+	FL_OBJECT *check_head_2border_above;
+	FL_OBJECT *check_head_2border_below;
+	FL_OBJECT *check_1head_2border_above;
+	FL_OBJECT *check_foot_2border_above;
+	FL_OBJECT *check_lastfoot_2border_above;
+	FL_OBJECT *check_1head_2border_below;
+	FL_OBJECT *check_foot_2border_below;
+	FL_OBJECT *check_lastfoot_2border_below;
+	FL_OBJECT *check_1head_empty;
+	FL_OBJECT *check_lastfoot_empty;
 };
 
 #endif /* FD_form_tabular_h_ */

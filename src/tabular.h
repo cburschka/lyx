@@ -167,6 +167,9 @@ public:
 		bool topDL;
 		// double borders on bottom
 		bool bottomDL;
+		// used for FirstHeader & LastFooter and if this is true
+		// row HAS to be 0!
+		bool empty;
 	};
 	///
 	typedef struct lttype ltType;
@@ -377,9 +380,9 @@ public:
 	///
 	bool GetRowOfLTLastFoot(int row, ltType &) const;
 	///
-	void SetLTNewPage(int cell, bool what);
+	void SetLTNewPage(int row, bool what);
 	///
-	bool GetLTNewPage(int cell) const;
+	bool GetLTNewPage(int row) const;
 	///
 	InsetText * GetCellInset(int cell) const;
 	///
