@@ -1,3 +1,10 @@
+2002-07-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxinclude.m4 (LYX_SCO):
+	(LYX_HPUX):
+	(LYX_SUNOS4): remove macros
+	(LYX_PATH_XPM): add description of XPM_H_LOCATION here
+
 2002-07-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): add -Wno-non-template-friend for

@@ -512,7 +512,8 @@ AC_CHECK_HEADER(X11/xpm.h,[
   lyx_cv_xpm_h_location="<X11/xpm.h>"],[
 AC_CHECK_HEADER(xpm.h,[],[
 LYX_LIB_ERROR(xpm.h,Xpm)])])
-AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location)
+AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location,
+  [define this to the location of xpm.h to be used with #include, e.g. <xpm.h>])
 
 ### Test for the header version
 if test $ac_cv_header_xpm_h = yes; then
@@ -549,53 +550,6 @@ changequote([,])
   esac
 fi])
 
-
-dnl Usage: LYX_HPUX  Checks for HP-UX and update CXXFLAGS accordingly
-AC_DEFUN(LYX_HPUX,
-[#It seems that HPUX requires using -fpcc-struct-return with gcc.
-AC_CACHE_CHECK(for HP-UX,ac_cv_hpux,[
-os=`uname -s | tr '[A-Z]' '[a-z]'`
-ac_cv_hpux=no
-test "$os" = hp-ux && ac_cv_hpux=yes])
-if test "$ac_cv_hpux" = yes; then
- test "x$GXX" = xyes && CXXFLAGS="$CXXFLAGS -fpcc-struct-return"
-fi])
-
-
-dnl Usage: LYX_SUNOS4 Checks for SunOS 4.x and sets the flag lyx_broken_headers
-dnl   if necessary
-AC_DEFUN(LYX_SUNOS4,
-[#The headers are not correct under SunOS4
-AC_CACHE_CHECK(for SunOS 4.x,ac_cv_sunos4,[
-changequote(, ) dnl
-os=`uname -a | sed -e 's/^\([^ ]*\) [^ ]* \([0-9]\)\..*/\1\2/'`
-changequote([, ]) dnl
-ac_cv_sunos4=no
-test "$os" = SunOS4 && ac_cv_sunos4=yes])
-if test "$ac_cv_sunos4" = yes; then
- test "x$GXX" = xyes && lyx_broken_headers=yes
-fi])
-
-
-dnl Usage: LYX_SCO Checks for SCO and sets the flag lyx_broken_headers
-dnl   if necessary
-AC_DEFUN(LYX_SCO,
-[AC_CACHE_CHECK(for SCO 3.2v4,ac_cv_sco,[
-ac_cv_sco=no
-if test `uname -s` != "SCO_SV"; then
-  lyx_machine_rel=`uname -m`:`uname -r`
-  if test $lyx_machine_rel = i386:3.2 || test $lyx_machine_rel = i486:3.2;
-  then
-    if test -f /usr/options/cb.name; then
-      ac_cv_sco=no
-    elif /bin/uname -X 2>/dev/null >/dev/null ; then
-      ac_cv_sco=yes
-    fi
-  fi
-fi])
-if test "$ac_cv_sco" = yes; then
- test "x$GXX" = xyes && lyx_broken_headers=yes
-fi])
 
 dnl Usage: LYX_FUNC_PUTENV_ARGTYPE
 dnl Checks whether putenv() takes 'char const *' or 'char *' as

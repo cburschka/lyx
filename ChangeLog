@@ -1,3 +1,17 @@
+2002-07-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* acconfig.h: do not include broken_headers.h; remove descriptions
+	of HAVE_LIBSM and XPM_H_LOCATION
+
+	* INSTALL: remove documentation for --with-broken-headers and
+	--with-liberty 
+
+	* configure.in: do not invoke LYX_SCO, LYX_HPUX, LYX_SUNOS4,
+	AC_STRUCT_ST_BLKSIZE, AC_STRUCT_ST_BLOCKS, AC_STRUCT_ST_RDEV;
+	remove --with-broken-headers option; do not test for strerror and
+	atexit 
+	(VERSION_INFO): add EOF at the end
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: remove xforms from qt

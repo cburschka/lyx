@@ -18,12 +18,6 @@
 
 @TOP@
 
-/* define this to the location of xpm.h to be used with #include,
-  e.g. <xpm.h> */
-#undef XPM_H_LOCATION
-
-#undef HAVE_LIBSM
-
 /* Define as 1 if the MKSTEMP function is declared */
 #undef HAVE_DECL_MKSTEMP
 
@@ -48,17 +42,6 @@
 
 #ifndef HAVE_MEMMOVE
 #define memmove(a, b, c)  bcopy(b, a, c)
-#endif
-
-#ifndef HAVE_STRERROR
-#if defined (__cplusplus)
-extern "C"
-#endif
-char * strerror(int n);
-#endif
-
-#ifdef BROKEN_HEADERS
-#include "broken_headers.h"
 #endif
 
 #ifdef HAVE_MKSTEMP
