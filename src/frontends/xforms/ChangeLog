@@ -1,9 +1,11 @@
-2003-02-27 Rob Lahaye  <lahaye@snu.ac.kr>
+2003-02-27  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormInclude.[Ch]: use RadiobuttonGroup code, add tooltips and add
+	comments.
 
 	* xformsImage.C: use lyx::float_equal() for comparing floats & doubles
 
-2003-02-26  Rob Lahaye  <lahaye@snu.ac.kr>
-
+	* forms/form_include.fd: nicer layout and add proper Gravity.
 	* forms/form_external.fd:
 	* forms/form_forks.fd: prettifying layout.
 

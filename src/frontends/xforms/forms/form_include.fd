@@ -5,22 +5,23 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_include
-Width: 340
-Height: 250
+Width: 305
+Height: 185
 Number of Objects: 14
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 340 250
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 305 185
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 10 70 160 90
+box: 5 60 165 85
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -42,8 +43,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NorthWest
 name: 
 callback: 
 argument: 
@@ -51,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 230 30 100 30
+box: 210 25 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -60,8 +61,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Browse...|#B
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthEast FL_NorthEast
 name: button_browse
 callback: C_FormBaseInputCB
 argument: 0
@@ -69,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 120 210 100 30
+box: 115 155 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -78,8 +79,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
 argument: 0
@@ -87,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 230 210 100 30
+box: 210 155 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -96,8 +97,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
 argument: 0
@@ -105,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 230 170 100 30
+box: 210 120 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -114,8 +115,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Load|#L
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_North
 name: button_load
 callback: C_FormBaseInputCB
 argument: 0
@@ -123,7 +124,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 10 30 210 30
+box: 5 25 205 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP_LEFT
@@ -132,8 +133,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: File name:|#F
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NorthEast
 name: input_filename
 callback: C_FormBaseInputCB
 argument: 0
@@ -141,7 +142,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 180 70 150 30
+box: 175 60 125 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -150,8 +151,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Visible space|#s
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_North
 name: check_visiblespace
 callback: C_FormBaseInputCB
 argument: 0
@@ -177,7 +178,7 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 130 160 30
+box: 10 115 160 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -186,8 +187,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Verbatim|#V
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NorthWest
 name: radio_verbatim
 callback: C_FormBaseInputCB
 argument: 0
@@ -195,35 +196,36 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 70 160 30
+box: 10 65 160 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Use input|#i
+label: Use input|#U
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NorthWest
 name: radio_useinput
 callback: C_FormBaseInputCB
 argument: 0
+	value: 1
 
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 10 100 160 30
+box: 10 90 160 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Use include|#U
+label: Use include|#i
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NorthWest
 name: radio_useinclude
 callback: C_FormBaseInputCB
 argument: 0
@@ -249,17 +251,17 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 180 100 150 30
+box: 175 85 125 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Preview|#p
+label: Preview|#P
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_North
 name: check_preview
 callback: C_FormBaseInputCB
 argument: 0

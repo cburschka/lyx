@@ -15,6 +15,7 @@
 
 
 #include "FormBase.h"
+#include "RadioButtonGroup.h"
 
 class ControlInclude;
 struct FD_include;
@@ -34,6 +35,9 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// include type
+	RadioButtonGroup type_;
 };
 
-#endif
+#endif // FORMINCLUDE_H

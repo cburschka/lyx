@@ -21,6 +21,7 @@
 #include "FormInclude.h"
 #include "forms/form_include.h"
 #include "insets/insetinclude.h"
+#include "Tooltips.h"
 #include "xforms_helpers.h" // setEnabled
 #include "support/lstrings.h" // strip
 #include FORMS_H_LOCATION
@@ -36,40 +37,70 @@ void FormInclude::build()
 {
 	dialog_.reset(build_include(this));
 
-	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
-	setPrehandler(dialog_->input_filename);
-
 	// Manage the ok and cancel buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_close);
 
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(dialog_->input_filename);
+
+	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
+
+	// disable for read-only documents
 	bc().addReadOnly(dialog_->button_browse);
-	bc().addReadOnly(dialog_->radio_verbatim);
 	bc().addReadOnly(dialog_->radio_useinput);
 	bc().addReadOnly(dialog_->radio_useinclude);
+	bc().addReadOnly(dialog_->radio_verbatim);
+
+	type_.init(dialog_->radio_useinput,   ControlInclude::INPUT);
+	type_.init(dialog_->radio_useinclude, ControlInclude::INCLUDE);
+	type_.init(dialog_->radio_verbatim,   ControlInclude::VERBATIM);
+
+	// set up the tooltips
+	string str = _("File name to include.");
+	tooltips().init(dialog_->input_filename, str);
+	str = _("Browse directories for file name.");
+	tooltips().init(dialog_->button_browse, str);
+	str = _("Use LaTeX \\input.");
+	tooltips().init(dialog_->radio_useinput, str);
+	str = _("Use LaTeX \\include.");
+	tooltips().init(dialog_->radio_useinclude, str);
+	str = _("Use LaTeX \\verbatiminput.");
+	tooltips().init(dialog_->radio_verbatim, str);
+	str = _("Underline spaces in generated output.");
+	tooltips().init(dialog_->check_visiblespace, str);
+	str = _("Show LaTeX preview.");
+	tooltips().init(dialog_->check_preview, str);
+	str = _("Load the file.");
+	tooltips().init(dialog_->button_load, str);
 }
 
 
 void FormInclude::update()
 {
-	fl_set_input(dialog_->input_filename,
-		     controller().params().cparams.getContents().c_str());
-
+	string const filename = controller().params().cparams.getContents();
 	string const cmdname = controller().params().cparams.getCmdName();
+	bool const preview = static_cast<bool>((controller().params().cparams.preview()));
 
-	if (cmdname == "input")
-		fl_set_button(dialog_->check_preview,
-			      int(controller().params().cparams.preview()));
-	else
-		fl_set_button(dialog_->check_preview, 0);
+	fl_set_input(dialog_->input_filename, filename.c_str());
 
-	setEnabled(dialog_->check_preview, (cmdname == "input"));
+	bool const inputCommand = cmdname == "input";
+	bool const includeCommand = cmdname == "include";
+	bool const verbatimStarCommand = cmdname == "verbatiminput*";
+	bool const verbatimCommand = cmdname == "verbatiminput";
 
-	fl_set_button(dialog_->radio_useinput, cmdname == "input");
-	fl_set_button(dialog_->radio_useinclude, cmdname == "include");
-	if (cmdname == "verbatiminput" || cmdname == "verbatiminput*") {
-		fl_set_button(dialog_->radio_verbatim, 1);
-		fl_set_button(dialog_->check_visiblespace, cmdname == "verbatiminput*");
+	setEnabled(dialog_->check_preview, inputCommand);
+	fl_set_button(dialog_->check_preview, inputCommand ? preview : 0);
+
+	if (cmdname.empty())
+		type_.set(ControlInclude::INPUT);
+
+	if (includeCommand)
+		type_.set(ControlInclude::INCLUDE);
+
+	if (verbatimCommand || verbatimStarCommand) {
+		type_.set(ControlInclude::VERBATIM);
+		fl_set_button(dialog_->check_visiblespace, verbatimStarCommand);
 		setEnabled(dialog_->check_visiblespace, true);
 		setEnabled(dialog_->button_load, false);
 	} else {
@@ -77,9 +108,6 @@ void FormInclude::update()
 		setEnabled(dialog_->check_visiblespace, false);
 		setEnabled(dialog_->button_load, true);
 	}
-
-	if (cmdname.empty())
-		fl_set_button(dialog_->radio_useinclude, 1);
 }
 
 
@@ -94,11 +122,12 @@ void FormInclude::apply()
 	else
 		controller().params().cparams.setContents("");
 
-	if (fl_get_button(dialog_->radio_useinput))
+	ControlInclude::Type const type = ControlInclude::Type(type_.get());
+	if (type == ControlInclude::INPUT)
 		controller().params().flag = InsetInclude::INPUT;
-	else if (fl_get_button(dialog_->radio_useinclude))
+	else if (type == ControlInclude::INCLUDE)
 		controller().params().flag = InsetInclude::INCLUDE;
-	else if (fl_get_button(dialog_->radio_verbatim)) {
+	else if (type == ControlInclude::VERBATIM) {
 		if (fl_get_button(dialog_->check_visiblespace))
 			controller().params().flag = InsetInclude::VERBAST;
 		else
@@ -112,16 +141,9 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 	ButtonPolicy::SMInput action = ButtonPolicy::SMI_VALID;
 
 	if (ob == dialog_->button_browse) {
-		ControlInclude::Type type;
-		if (fl_get_button(dialog_->radio_useinput))
-			type = ControlInclude::INPUT;
-		else if (fl_get_button(dialog_->radio_verbatim))
-			type = ControlInclude::VERBATIM;
-		else
-			type = ControlInclude::INCLUDE;
-
-		string const in_name  = fl_get_input(dialog_->input_filename);
+		string const in_name = fl_get_input(dialog_->input_filename);
 		fl_freeze_form(form());
+		ControlInclude::Type const type = ControlInclude::Type(type_.get());
 		string const out_name = controller().Browse(in_name, type);
 		fl_set_input(dialog_->input_filename, out_name.c_str());
 		fl_unfreeze_form(form());
