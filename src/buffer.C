@@ -490,23 +490,30 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetMarginal;
 		} else if (tmptok == "fig") {
 			inset = new InsetFloat("figure");
-			old_float << "placement htbp\n";
+			old_float << "placement htbp\n"
+				  << "wide false\n";
 		} else if (tmptok == "tab") {
 			inset = new InsetFloat("table");
-			old_float << "placement htbp\n";
+			old_float << "placement htbp\n"
+				  << "wide false\n";
 		} else if (tmptok == "alg") {
 			inset = new InsetFloat("algorithm");
-			old_float << "placement htbp\n";
+			old_float << "placement htbp\n"
+				  << "wide false\n";
 		} else if (tmptok == "wide-fig") {
-			InsetFloat * tmp = new InsetFloat("figure");
-			tmp->wide(true);
-			inset = tmp;
-			old_float << "placement htbp\n";
+			inset = new InsetFloat("figure");
+			//InsetFloat * tmp = new InsetFloat("figure");
+			//tmp->wide(true);
+			//inset = tmp;
+			old_float << "placement htbp\n"
+				  << "wide true\n";
 		} else if (tmptok == "wide-tab") {
-			InsetFloat * tmp = new InsetFloat("table");
-			tmp->wide(true);
-			inset = tmp;
-			old_float << "placement htbp\n";
+			inset = new InsetFloat("table");
+			//InsetFloat * tmp = new InsetFloat("table");
+			//tmp->wide(true);
+			//inset = tmp;
+			old_float << "placement htbp\n"
+				  << "wide true\n";
 		}
 
 		if (!inset) {
