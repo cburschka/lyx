@@ -155,11 +155,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 	inset.read(buf, lex);
 
 #ifdef SET_HARD_FONT
-#ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-#else
-	LyXFont font(LyXFont::ALL_INHERIT);
-#endif
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 	Paragraph * par = inset.paragraph();
@@ -526,11 +522,7 @@ void InsetERT::setButtonLabel() const
 bool InsetERT::checkInsertChar(LyXFont & /* font */)
 {
 #ifdef SET_HARD_FONT
-#ifndef INHERIT_LANG
 	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-#else
-	LyXFont f(LyXFont::ALL_INHERIT);
-#endif
 	font = f;
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
@@ -619,11 +611,7 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 void InsetERT::set_latex_font(BufferView * /* bv */)
 {
 #ifdef SET_HARD_FONT
-#ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-#else
-	LyXFont font(LyXFont::ALL_INHERIT);
-#endif
 
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
@@ -695,11 +683,7 @@ InsetERT::selectNextWordToSpellcheck(BufferView * bv, float &) const
 
 void InsetERT::getDrawFont(LyXFont & font) const
 {
-#ifndef INHERIT_LANG
 	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-#else
-	LyXFont f(LyXFont::ALL_INHERIT);
-#endif
 	font = f;
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);

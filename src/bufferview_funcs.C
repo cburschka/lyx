@@ -119,11 +119,7 @@ void roman(BufferView * bv)
 
 void styleReset(BufferView * bv)
 {
-#ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
-#else
-	LyXFont font(LyXFont::ALL_INHERIT);
-#endif
 	toggleAndShow(bv, font);
 }
 
@@ -151,7 +147,7 @@ string const currentState(BufferView * bv)
 
 	if (!bv->available())
 		return "";
- 
+
 	// I think we should only show changes from the default
 	// font. (Asger)
 	LyXText * text = bv->getLyXText();
@@ -209,14 +205,14 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
 	if (!bv->available())
 		return;
- 
+
 	if (bv->theLockingInset()) {
 		bv->theLockingInset()->setFont(bv, font, toggleall);
 		return;
 	}
- 
+
 	LyXText * text = bv->getLyXText();
-	// FIXME: can this happen ?? 
+	// FIXME: can this happen ??
 	if (!text)
 		return;
 

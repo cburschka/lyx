@@ -30,10 +30,6 @@ Language ignore_lang("ignore", "ignore", "Ignore", false, 0, "ignore", "");
 Language const * ignore_language = &ignore_lang;
 Language latex_lang("latex", "latex", "Latex", false, 0, "latex", "");
 Language const * latex_language = &latex_lang;
-#ifdef INHERIT_LANG
-Language inherit_lang("inherit", "inherit", "Inherit", false, 0, "inherit", "");
-Language const * inherit_language = &inherit_lang;
-#endif
 
 void Languages::setDefaults()
 {

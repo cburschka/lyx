@@ -129,21 +129,12 @@ LyXFont const realizeFont(LyXFont const & font,
 	while (par && par_depth && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
-#ifndef INHERIT_LANGUAGE
 			tmpfont.realize(par->layout()->font);
-#else
-			tmpfont.realize(tclass[par->layout()]->font,
-					buf->params.language);
-#endif
 			par_depth = par->getDepth();
 		}
 	}
 
-#ifndef INHERIT_LANGUAGE
 	tmpfont.realize(tclass.defaultfont());
-#else
-	tmpfont.realize(tclass.defaultfont(), buf->params.language);
-#endif
 
 	return tmpfont;
 }
@@ -173,20 +164,12 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 			LyXFont f = par->getFontSettings(buf->params, pos);
 			if (par->inInset())
 				par->inInset()->getDrawFont(f);
-#ifndef INHERIT_LANGUAGE
 			return f.realize(layout->reslabelfont);
-#else
-			return f.realize(layout.reslabelfont, buf->params.language);
-#endif
 		} else {
 			LyXFont f = par->getFontSettings(buf->params, pos);
 			if (par->inInset())
 				par->inInset()->getDrawFont(f);
-#ifndef INHERIT_LANGUAGE
 			return f.realize(layout->resfont);
-#else
-			return f.realize(layout.resfont, buf->params.language);
-#endif
 		}
 	}
 
@@ -203,11 +186,8 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 	}
 
 	LyXFont tmpfont = par->getFontSettings(buf->params, pos);
-#ifndef INHERIT_LANGUAGE
 	tmpfont.realize(layoutfont);
-#else
-	tmpfont.realize(layoutfont, buf->params.language);
-#endif
+
 	if (par->inInset())
 		par->inInset()->getDrawFont(tmpfont);
 
@@ -283,20 +263,11 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 		while (!layoutfont.resolved() && tp && tp->getDepth()) {
 			tp = tp->outerHook();
 			if (tp)
-#ifndef INHERIT_LANGUAGE
 				layoutfont.realize(tp->layout()->font);
-#else
-				layoutfont.realize(tclass[tp->layout()].font,
-						   buf->params.language);
-#endif
 		}
 	}
 
-#ifndef INHERIT_LANGUAGE
 	layoutfont.realize(tclass.defaultfont());
-#else
-	layoutfont.realize(tclass.defaultfont(), buf->params.language);
-#endif
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
@@ -700,12 +671,8 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 		current_font = real_current_font;
 		current_font.reduce(layoutfont);
 		// And resolve it completely
-#ifndef INHERIT_LANGUAGE
 		real_current_font.realize(layoutfont);
-#else
-		real_current_font.realize(layoutfont,
-					  bview->buffer()->params.language);
-#endif
+
 		return;
 	}
 

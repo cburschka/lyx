@@ -591,9 +591,6 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		Language const * language = fcit->font().language();
 		if (language->babel() != doc_language->babel() &&
 		    language != ignore_language &&
-#ifdef INHERIT_LANGUAGE
-		    language != inherit_language &&
-#endif
 		    language != latex_language)
 		{
 			features.useLanguage(language);
@@ -656,19 +653,11 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
-			tmpfont.realize(par->layout()->font
-#ifdef INHERIT_LANGUAGE
-					, bparams.language
-#endif
-					);
+			tmpfont.realize(par->layout()->font);
 			par_depth = par->getDepth();
 		}
 	}
 
-	tmpfont.realize(tclass.defaultfont()
-#ifdef INHERIT_LANGUAGE
-		, bparams.language
-#endif
-		);
+	tmpfont.realize(tclass.defaultfont());
 	return tmpfont;
 }

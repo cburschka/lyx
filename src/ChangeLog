@@ -1,5 +1,7 @@
 2002-09-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* remove all INHERIT_LANG and INHERIT_LANGUAGE commented code
+
 	* LaTeXFeatures.C (useLayout): let tclass and lyt be a const
 	references, ws changes.
 

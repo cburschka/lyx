@@ -690,13 +690,6 @@ bool LyXText::draw(DrawRowParams & p, pos_type & vpos)
 
 	drawForeignMark(p, orig_x, orig_font);
 
-#ifdef INHERIT_LANGUAGE
-#ifdef WITH_WARNINGS
-	if ((font.language() == inherit_language) ||
-		(font.language() == ignore_language))
-		lyxerr << "No this shouldn't happen!\n";
-#endif
-#endif
 	return true;
 }
 
