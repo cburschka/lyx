@@ -1,4 +1,4 @@
-2002-07-08  Angus Leeming  <leeming@lyx.org>
+2002-07-09  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: Further refactoring of the code. Should now be
 	pretty clean.
@@ -6,6 +6,8 @@
 	* PreviewMetrics.[Ch]: removed. Had a v. short shelf life and is now
 	past its sell-by date. The code to read the metrics file is now found
 	as a helper function in PreviewLoader.C.
+
+	* GraphicsImageXPM.C (scale): use boost::tie.
 
 2002-07-08  Herbert Voss  <voss@lyx.org>
 

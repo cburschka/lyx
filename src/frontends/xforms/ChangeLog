@@ -1,3 +1,8 @@
+2002-07-09  Angus Leeming  <leeming@lyx.org>
+
+	* xformsImage.C (scale): use boost::tie.
+	(statusCB): fudge to fix bug in image width for xforms <= 0.89.6.
+
 2002-07-08  Angus Leeming  <leeming@lyx.org>
 
 	* forms/fdfix.sh: whitespace.

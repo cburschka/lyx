@@ -30,6 +30,8 @@
 # endif
 #endif
 
+#include <boost/tuple/tuple.hpp>
+
 using std::find_if;
 
 namespace {
@@ -150,7 +152,14 @@ unsigned int xformsImage::getWidth() const
 {
 	if (!image_)
 		return 0;
+
+#if FL_VERSION == 0 && FL_REVISION == 89 && FL_FIXLEVEL <= 6
+	// Used to fix a bug in xforms <= 0.89.6 which 
+	// crops the image unnecessarily.
+	return image_->w + 5;
+#else
 	return image_->w;
+#endif
 }
 
 
@@ -305,11 +314,9 @@ void xformsImage::scale(Params const & params)
 	if (!image_)
 		return;
 
-	// boost::tie produces horrible compilation errors on my machine
-	// Angus 25 Feb 2002
-	std::pair<unsigned int, unsigned int> d = getScaledDimensions(params);
-	unsigned int const width  = d.first;
-	unsigned int const height = d.second;
+	unsigned int width;
+	unsigned int height;
+	boost::tie(width, height) = getScaledDimensions(params);
 
 	if (width == getWidth() && height == getHeight())
 		// No scaling needed

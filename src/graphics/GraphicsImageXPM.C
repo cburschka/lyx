@@ -24,6 +24,8 @@
 #include <cmath>                  // cos, sin
 #include <cstdlib>                // malloc, free
 
+#include <boost/tuple/tuple.hpp>
+
 #include FORMS_H_LOCATION
  
 #ifndef CXX_GLOBAL_CSTD
@@ -356,11 +358,10 @@ void ImageXPM::scale(Params const & params)
 
 	typedef unsigned int dimension;
 
-	// boost::tie produces horrible compilation errors on my machine
-	// Angus 25 Feb 2002
-	std::pair<dimension, dimension> d = getScaledDimensions(params);
-	dimension const new_width  = d.first;
-	dimension const new_height = d.second;
+	dimension new_width;
+	dimension new_height;
+	boost::tie(new_width, new_height) = getScaledDimensions(params);
+
 	if (new_width == getWidth() && new_height == getHeight())
 		// No scaling needed
 		return;
