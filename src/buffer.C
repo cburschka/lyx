@@ -180,15 +180,15 @@ struct Buffer::Impl
 	 */
 	bool file_fully_loaded;
 
-	/// our text
-	LyXText text;
+	/// our LyXText that should be wrapped in an InsetText
+	InsetText inset;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
-		text(0, 0)
+		inset(params)
 {
 	lyxvc.buffer(&parent);
 	temppath = createBufferTmpDir();
@@ -202,6 +202,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	: pimpl_(new Impl(*this, file, ronly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
+	lyxerr << "Buffer::Buffer()" << endl;
 }
 
 
@@ -225,7 +226,13 @@ Buffer::~Buffer()
 
 LyXText & Buffer::text() const
 {
-	return const_cast<LyXText &>(pimpl_->text);
+	return const_cast<LyXText &>(pimpl_->inset.text_);
+}
+
+
+InsetBase & Buffer::inset() const
+{
+	return const_cast<InsetText &>(pimpl_->inset);
 }
 
 
@@ -267,13 +274,13 @@ BufferParams const & Buffer::params() const
 
 ParagraphList & Buffer::paragraphs()
 {
-	return pimpl_->text.paragraphs();
+	return text().paragraphs();
 }
 
 
 ParagraphList const & Buffer::paragraphs() const
 {
-	return pimpl_->text.paragraphs();
+	return text().paragraphs();
 }
 
 
@@ -414,13 +421,8 @@ int Buffer::readHeader(LyXLex & lex)
 }
 
 
-// candidate for move to BufferView
-// (at least some parts in the beginning of the func)
-//
 // Uwe C. Schroeder
 // changed to be public and have one parameter
-// if par = 0 normal behavior
-// else insert behavior
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readBody(LyXLex & lex)
 {
@@ -516,7 +518,9 @@ bool Buffer::readFile(string const & filename)
 		params().compressed = true;
 	}
 
-	bool ret = readFile(filename, paragraphs().begin());
+	// remove dummy empty par
+	paragraphs().clear();
+	bool ret = readFile(filename, paragraphs().end());
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
@@ -641,12 +645,18 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 	bool the_end = readBody(lex);
 	params().setPaperStuff();
 
+#warning Look here!
+#if 0
+	if (token == "\\end_document")
+		the_end_read = true;
+
 	if (!the_end) {
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 				       " that it is probably corrupted."),
 				       filename));
 	}
+#endif 
 	pimpl_->file_fully_loaded = true;
 	return true;
 }

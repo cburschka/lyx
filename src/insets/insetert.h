@@ -74,7 +74,7 @@ public:
 	bool forceDefaultParagraphs(InsetBase const *) const { return true; }
 protected:
 	///
-	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	///
 	void init();

@@ -174,7 +174,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		return;
 	}
 
-	Encoding const * encoding = view()->getEncoding();
+	Encoding const * encoding = view()->cursor().getEncoding();
 
 	encoded_last_key = keysym->getISOEncoded(encoding ? encoding->Name() : "");
 
@@ -309,8 +309,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		}
 	}
 
-	UpdatableInset * tli = cur.inset() ? cur.inset()->asUpdatableInset() : 0;
-
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
 	bool disable = false;
@@ -352,8 +350,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
-		disable = cur.inset()
-			&& cur.inset()->forceDefaultParagraphs(cur.inset());
+		disable = cur.inset().forceDefaultParagraphs(&cur.inset());
 		break;
 
 	case LFUN_INSET_OPTARG:
@@ -383,7 +380,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		} else {
 			disable = true;
 
-			char align = mathcursor::halign();
+			char const align = mathcursor::halign();
 			if (align == '\0') {
 				disable = true;
 				break;
@@ -402,7 +399,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			break;
 		}
 
-		if (tli) {
+		if (!cur.empty() && cur.inset().asUpdatableInset()) {
 			FuncStatus ret;
 			//ret.disabled(true);
 			InsetTabular * tab = static_cast<InsetTabular *>
@@ -455,9 +452,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
-		if (!cur.inset())
-			break;
-		UpdatableInset * inset = cur.inset()->asUpdatableInset();
+		UpdatableInset * inset = cur.inset().asUpdatableInset();
 		if (!inset)
 			break;
 
@@ -515,25 +510,20 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
-		if (!buf) {
+		if (!buf)
 			disable = !(name == "aboutlyx" ||
 				    name == "file" ||
 				    name == "preferences" ||
 				    name == "texinfo");
-			break;
-		}
-
-		if (name == "print") {
+		else if (name == "print")
 			disable = !Exporter::IsExportable(*buf, "dvi") ||
 				lyxrc.print_command == "none";
-		} else if (name == "character") {
-			InsetBase * inset = cur.inset();
-			disable = inset && inset->lyxCode() == InsetOld::ERT_CODE;
-		} else if (name == "vclog") {
+		else if (name == "character")
+			disable = cur.inset().lyxCode() == InsetOld::ERT_CODE;
+		else if (name == "vclog")
 			disable = !buf->lyxvc().inUse();
-		} else if (name == "latexlog") {
+		else if (name == "latexlog")
 			disable = !IsFileReadable(buf->getLogName().second);
-		}
 		break;
 	}
 
@@ -687,7 +677,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	default:
 		break;
 	}
-	if (code != InsetOld::NO_CODE && tli && !tli->insetAllowed(code))
+
+	if (code != InsetOld::NO_CODE
+			&& (cur.empty() || !cur.inset().insetAllowed(code)))
 		disable = true;
 
 	if (disable)
@@ -815,8 +807,8 @@ bool ensureBufferClean(BufferView * bv)
 
 void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 {
-	string argument = cmd.argument;
-	kb_action action = cmd.action;
+	string const argument = cmd.argument;
+	kb_action const action = cmd.action;
 
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
@@ -1044,7 +1036,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		// --- buffers ----------------------------------------
 		case LFUN_SWITCHBUFFER:
-			view()->buffer(bufferlist.getBuffer(argument));
+			view()->setBuffer(bufferlist.getBuffer(argument));
 			break;
 
 		case LFUN_FILE_NEW:
@@ -1084,14 +1076,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			if (prefixIs(file_name, getTmpDir())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
-				view()->buffer(bufferlist.getBufferFromTmp(file_name));
+				view()->setBuffer(bufferlist.getBufferFromTmp(file_name));
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				string const s = ChangeExtension(file_name, ".lyx");
 				// Either change buffer or load the file
 				if (bufferlist.exists(s)) {
-					view()->buffer(bufferlist.getBuffer(s));
+					view()->setBuffer(bufferlist.getBuffer(s));
 				} else {
 					view()->loadLyXFile(s);
 				}
@@ -1228,13 +1220,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_DIALOG_SHOW_NEXT_INSET:
 			break;
 
-		case LFUN_INSET_DIALOG_SHOW: {
-			InsetBase * inset = view()->cursor().nextInset();
-			if (inset)
-				inset->dispatch(view()->cursor(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
-			break;
-		}
-
 		case LFUN_DIALOG_UPDATE: {
 			string const & name = argument;
 			// Can only update a dialog connected to an existing inset
@@ -1264,7 +1249,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
 			if (bufferlist.exists(filename))
-				view()->buffer(bufferlist.getBuffer(filename));
+				view()->setBuffer(bufferlist.getBuffer(filename));
 			else
 				view()->loadLyXFile(filename);
 			// Set the parent name of the child document.
@@ -1297,13 +1282,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_REPEAT: {
 			// repeat command
 			string countstr;
-			argument = split(argument, countstr, ' ');
+			string rest = split(argument, countstr, ' ');
 			istringstream is(countstr);
 			int count = 0;
 			is >> count;
-			lyxerr << "repeat: count: " << count << " cmd: " << argument << endl;
+			lyxerr << "repeat: count: " << count << " cmd: " << rest << endl;
 			for (int i = 0; i < count; ++i)
-				dispatch(lyxaction.lookupFunc(argument));
+				dispatch(lyxaction.lookupFunc(rest));
 			break;
 		}
 
@@ -1311,8 +1296,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			// argument contains ';'-terminated commands
 			while (!argument.empty()) {
 				string first;
-				argument = split(argument, first, ';');
-				dispatch(lyxaction.lookupFunc(first));
+				string rest = split(argument, first, ';');
+				dispatch(lyxaction.lookupFunc(rest));
 			}
 			break;
 
@@ -1373,20 +1358,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			owner->getDialogs().toggleTooltips();
 			break;
 
-		case LFUN_EXTERNAL_EDIT:
-			InsetExternal().dispatch(view()->cursor(), FuncRequest(action, argument));
+		case LFUN_EXTERNAL_EDIT: {
+			FuncRequest fr(action, argument);
+			InsetExternal().dispatch(view()->cursor(), fr);
 			break;
+		}
 
-		default:
+		default: {
 			DispatchResult res = view()->cursor().dispatch(cmd);
 			if (!res.dispatched());
 				view()->dispatch(cmd);
 			break;
 		}
+		}
 	}
-
-	if (view()->cursor().inTexted())
-		view()->owner()->updateLayoutChoice();
 
 	if (view()->available()) {
 		view()->fitCursor();
@@ -1399,8 +1384,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			view()->buffer()->markDirty();
 	}
 
-	if (view()->cursor().inTexted())
+	if (view()->cursor().inTexted()) {
+		view()->owner()->updateLayoutChoice();
 		sendDispatchMessage(getMessage(), cmd, verbose);
+	}
 }
 
 
@@ -1673,7 +1660,7 @@ void LyXFunc::closeBuffer()
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {
-			view()->buffer(bufferlist.first());
+			view()->setBuffer(bufferlist.first());
 		}
 	}
 }

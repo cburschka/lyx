@@ -40,7 +40,7 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
-void InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetRef::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:

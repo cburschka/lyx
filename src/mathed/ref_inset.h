@@ -43,7 +43,7 @@ public:
 	int docbook(std::ostream & os, OutputParams const &) const;
 
 	/// small wrapper for the time being
-	DispatchResult localDispatch(FuncRequest const & cmd);
+	DispatchResult localDispatch(FuncRequest & cmd);
 
 	struct ref_type_info {
 		///
@@ -60,7 +60,7 @@ public:
 	static std::string const & getName(int type);
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 };
 
 #endif

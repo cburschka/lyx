@@ -112,7 +112,7 @@ InsetInclude::~InsetInclude()
 }
 
 
-void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

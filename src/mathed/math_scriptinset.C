@@ -513,7 +513,7 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-void MathScriptInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathScriptInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "MathScriptInset: request: " << cmd << std::endl;
 

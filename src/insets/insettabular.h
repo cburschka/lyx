@@ -151,7 +151,7 @@ public:
 
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	///
 	void drawCellLines(Painter &, int x, int baseline,

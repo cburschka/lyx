@@ -156,7 +156,7 @@ public:
 
 private:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	void updateLocal(LCursor &);
 	///

@@ -107,7 +107,7 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 {
 	LCursor & cur = bv.cursor();
 	lyxerr << "undo, performing: " << undo << std::endl;
-	cur.setCursor(undo.cursor.asDocumentIterator(bv), false);
+	cur.setCursor(undo.cursor.asDocumentIterator(&bv.buffer()->inset()), false);
 
 	if (cur.inMathed()) {
 		// We stored the full cell here as there is not much to be
@@ -155,7 +155,8 @@ bool textUndoOrRedo(BufferView & bv,
 	// this implements redo
 	if (!undo_frozen) {
 		otherstack.push(undo);
-		DocumentIterator dit = undo.cursor.asDocumentIterator(bv);
+		DocumentIterator dit =
+			undo.cursor.asDocumentIterator(&bv.buffer()->inset());
 		if (dit.inMathed()) {
 			// not much to be done
 		} else {

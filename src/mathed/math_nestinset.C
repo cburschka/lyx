@@ -87,7 +87,7 @@ MathArray const & MathNestInset::cell(idx_type i) const
 void MathNestInset::getCursorPos(CursorSlice const & cur,
 	int & x, int & y) const
 {
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
+	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	MathArray const & ar = cur.cell();
 	x = ar.xo() + ar.pos2x(cur.pos());
 	y = ar.yo();
@@ -114,7 +114,7 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 
 bool MathNestInset::idxNext(LCursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
+	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == cur.lastidx())
 		return false;
 	++cur.idx();
@@ -131,7 +131,7 @@ bool MathNestInset::idxRight(LCursor & cur) const
 
 bool MathNestInset::idxPrev(LCursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
+	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
@@ -148,7 +148,7 @@ bool MathNestInset::idxLeft(LCursor & cur) const
 
 bool MathNestInset::idxFirst(LCursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
+	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
 		return false;
 	cur.idx() = 0;
@@ -159,7 +159,7 @@ bool MathNestInset::idxFirst(LCursor & cur) const
 
 bool MathNestInset::idxLast(LCursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(cur.inset(), this));
+	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
 		return false;
 	cur.idx() = cur.lastidx();
@@ -197,7 +197,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
 		return;
-	if (!ptr_cmp(cur.inset(), this))
+	if (!ptr_cmp(&cur.inset(), this))
 		return;
 	CursorSlice & s1 = cur.selBegin();
 	CursorSlice & s2 = cur.selEnd();
@@ -309,7 +309,7 @@ void MathNestInset::handleFont
 	// changes...
 	recordUndo(cur, Undo::ATOMIC);
 
-	if (cur.inset()->asMathInset()->name() == font)
+	if (cur.inset().asMathInset()->name() == font)
 		cur.handleFont(font);
 	else {
 		cur.handleNest(createMathInset(font));
@@ -332,12 +332,20 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 }
 
 
-void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "MathNestInset: request: " << cmd << std::endl;
 	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
+
+	case LFUN_PASTESELECTION: {
+		MathArray ar;
+		mathed_parse_cell(ar, cur.bv().getClipboard());
+		cur.cell().insert(cur.pos(), ar);
+		cur.pos() += ar.size();
+		break;
+	}
 
 	case LFUN_PASTE:
 		if (!cmd.argument.empty()) {
@@ -360,10 +368,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 */
 
-	case LFUN_PASTESELECTION:
-		dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard()));
-		break;
-
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cur, cmd);
 		break;
@@ -374,13 +378,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cur, cmd);
-		break;
-
-	case LFUN_MOUSE_DOUBLE:
-	case LFUN_MOUSE_TRIPLE:
-		//lyxerr << "Mouse double" << endl;
-		//lyxerr << "Mouse triple" << endl;
-		dispatch(cur, FuncRequest(LFUN_WORDSEL));
 		break;
 
 	case LFUN_FINISHED_LEFT:
@@ -411,13 +408,13 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cur.inMacroMode())
 			cur.macroModeClose();
 		else if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
-			cur.pushLeft(cur.nextAtom().nucleus());
-			cur.inset()->idxFirst(cur);
+			cur.pushLeft(*cur.nextAtom().nucleus());
+			cur.inset().idxFirst(cur);
 		} else if (cur.posRight() || idxRight(cur)
 			|| cur.popRight() || cur.selection())
 			;
 		else
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		lyxerr << "mathnest RIGHT: to:\n" << cur << endl;
 		break;
 
@@ -430,29 +427,31 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.macroModeClose();
 		else if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
 			cur.posLeft();
-			cur.push(cur.nextAtom().nucleus());
-			cur.inset()->idxLast(cur);
+			cur.push(*cur.nextAtom().nucleus());
+			cur.inset().idxLast(cur);
 		} else if (cur.posLeft() || idxLeft(cur)
 			|| cur.popLeft() || cur.selection())
 			;
 		else
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_UPSEL:
 	case LFUN_UP:
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		if (!cur.up())
-			cur.dispatched(FINISHED_UP);
+			cmd = FuncRequest(LFUN_FINISHED_UP);
 		break;
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		if (!cur.down())
-			cur.dispatched(FINISHED_DOWN);
+			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		break;
 
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
 	case LFUN_WORDSEL:
 		cur.pos() = 0;
 		cur.idx() = 0;
@@ -483,7 +482,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.idx() = 0;
 			cur.pos() = 0;
 		} else {
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		}
 		break;
 
@@ -503,7 +502,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		}
 		break;
 
@@ -511,22 +510,22 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_PRIOR:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
-		cur.dispatched(FINISHED_LEFT);
+		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
-		cur.dispatched(FINISHED_RIGHT);
+		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
 	case LFUN_CELL_FORWARD:
-		cur.inset()->idxNext(cur);
+		cur.inset().idxNext(cur);
 		break;
 
 	case LFUN_CELL_BACKWARD:
-		cur.inset()->idxPrev(cur);
+		cur.inset().idxPrev(cur);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
@@ -539,14 +538,14 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DELETE:
 		recordUndo(cur, Undo::ATOMIC);
 		cur.erase();
-		cur.dispatched(FINISHED_LEFT);
+		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_ESCAPE:
 		if (cur.selection()) 
 			cur.selClear();
 		else 
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -563,7 +562,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_SELFINSERT:
 		if (cmd.argument.empty()) {
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			break;
 		}
 		recordUndo(cur, Undo::ATOMIC);
@@ -572,7 +571,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			break;
 		}
 		if (!interpret(cur, cmd.argument[0]))
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
 #if 0
@@ -682,7 +681,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.selClearOrDel();
 		cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
 		cur.posLeft();
-		cur.pushLeft(cur.nextInset());
+		cur.pushLeft(*cur.nextInset());
 #else
 		if (currentMode() == InsetBase::TEXT_MODE)
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
@@ -776,7 +775,8 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetBase * base = cur.bv().owner()->getDialogs().getOpenInset(name);
 
 		if (base) {
-			base->dispatch(cur, FuncRequest(LFUN_INSET_MODIFY, cmd.argument));
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
+			base->dispatch(cur, fr);
 			break;
 		}
 		MathArray ar;
@@ -821,7 +821,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 void MathNestInset::edit(LCursor & cur, bool left)
 {
-	cur.push(this);
+	cur.push(*this);
 	cur.idx() = left ? 0 : cur.lastidx();
 	cur.pos() = left ? 0 : cur.lastpos();
 	cur.resetAnchor();
@@ -840,7 +840,7 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 		}
 	}
 	MathArray & ar = cell(idx_min);
-	cur.push(this);
+	cur.push(*this);
 	cur.idx() = idx_min;
 	cur.pos() = ar.x2pos(x - ar.xo());
 	lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
@@ -854,7 +854,7 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 }
 
 
-void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
@@ -884,7 +884,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 }
 
 
-void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
 	if (cmd.button() == mouse_button::button1) {
@@ -897,12 +897,12 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	if (cmd.button() == mouse_button::button2) {
-		priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
+		cur.dispatch(FuncRequest(LFUN_PASTESELECTION));
 	}
 }
 
 
-void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 {
 	// only select with button 1
 	if (cmd.button() != mouse_button::button1)
@@ -1083,20 +1083,20 @@ bool MathNestInset::script(LCursor & cur, bool up)
 	} else if (cur.pos() != 0 && cur.prevAtom()->asScriptInset()) {
 		--cur.pos();
 		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
-		cur.push(cur.nextInset());
+		cur.push(*cur.nextInset());
 		cur.idx() = up;
 		cur.pos() = cur.lastpos();
 	} else if (cur.pos() != 0) {
 		--cur.pos();
 		cur.cell()[cur.pos()] = MathAtom(new MathScriptInset(cur.nextAtom(), up));
-		cur.push(cur.nextInset());
+		cur.push(*cur.nextInset());
 		cur.idx() = up;
 		cur.pos() = 0;
 	} else {
 		cur.plainInsert(MathAtom(new MathScriptInset(up)));
 		--cur.pos();
 		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
-		cur.push(cur.nextInset());
+		cur.push(*cur.nextInset());
 		cur.idx() = up;
 		cur.pos() = 0;
 	}

@@ -205,7 +205,7 @@ bool InsetCollapsable::descendable() const
 }
 
 
-void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 {
 	if (cmd.button() == mouse_button::button3) {
 		showInsetDialog(&cur.bv());
@@ -225,7 +225,7 @@ void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		if (hitButton(cmd1)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			break;
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
@@ -268,7 +268,7 @@ int InsetCollapsable::docbook(Buffer const & buf, ostream & os,
 }
 
 
-bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
+bool InsetCollapsable::hitButton(FuncRequest & cmd) const
 {
 	return button_dim.contains(cmd.x, cmd.y);
 }
@@ -298,7 +298,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 void InsetCollapsable::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetCollapsable: edit left/right" << endl;
-	cur.push(this);
+	cur.push(*this);
 	inset.edit(cur, left);
 	open();
 }
@@ -306,7 +306,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
-	cur.push(this);
+	cur.push(*this);
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (status_ == Collapsed) {
 		setStatus(Open);
@@ -320,7 +320,7 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 }
 
 
-void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
 	//	<< "  button y: " << button_dim.y2 << endl;
@@ -351,7 +351,7 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				break;
 			}
 			setStatus(Collapsed);
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			break;
 
 		default:

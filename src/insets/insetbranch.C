@@ -110,7 +110,7 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {

@@ -208,7 +208,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-void InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetERT::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "\nInsetERT::priv_dispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {

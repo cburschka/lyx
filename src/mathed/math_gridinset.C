@@ -1002,7 +1002,7 @@ void MathGridInset::splitCell(LCursor & cur)
 }
 
 
-void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -1057,7 +1057,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.idx() = cur.lastpos();
 
 		//mathcursor->normalize();
-		cur.dispatched(FINISHED_LEFT);
+		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		return;
 	}
 
@@ -1164,7 +1164,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		else if (cur.idx() != 0)
 			cur.idx() = 0;
 		else
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_WORDRIGHTSEL:
@@ -1179,7 +1179,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		else if (cur.idx() != cur.lastidx())
 			cur.idx() = cur.lastidx();
 		else
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
 	default:

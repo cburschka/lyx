@@ -117,7 +117,7 @@ public:
 
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 
@@ -133,7 +133,7 @@ private:
 	///
 	std::string nicelabel(row_type row) const;
 	///
-	void doExtern(LCursor & cur, FuncRequest const & func);
+	void doExtern(LCursor & cur, FuncRequest & func);
 	///
 	void glueall();
 	///
@@ -172,7 +172,7 @@ public:
 	virtual void insetUnlock(BufferView & bv);
 
 	/// To allow transparent use of math editing functions
-	//virtual void status(FuncRequest const &);
+	//virtual void status(FuncRequest &);
 
 	///
 	virtual bool searchForward(BufferView *, std::string const &,
@@ -216,5 +216,5 @@ protected:
 
 // We don't really want to mess around with mathed stuff outside mathed.
 // So do it here.
-void mathDispatch(LCursor & cur, FuncRequest const & cmd);
+void mathDispatch(LCursor & cur, FuncRequest & cmd);
 #endif

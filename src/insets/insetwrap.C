@@ -80,7 +80,7 @@ InsetWrap::~InsetWrap()
 }
 
 
-void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {

@@ -1,7 +1,6 @@
 
 #include "dociterator.h"
 
-#include "BufferView.h"
 #include "debug.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
@@ -11,17 +10,6 @@
 #include "mathed/math_inset.h"
 
 #include <boost/assert.hpp>
-
-
-
-DocumentIterator::DocumentIterator()
-	: bv_(0)
-{}
-
-
-DocumentIterator::DocumentIterator(BufferView & bv)
-	: std::vector<CursorSlice>(1), bv_(&bv)
-{}
 
 
 InsetBase * DocumentIterator::nextInset()
@@ -84,21 +72,21 @@ MathAtom & DocumentIterator::nextAtom()
 
 LyXText * DocumentIterator::text() const
 {
-	return size() > 1 ? top().text() : bv().text();
+	return top().text();
 }
 
 
 Paragraph & DocumentIterator::paragraph()
 {
 	BOOST_ASSERT(inTexted());
-	return size() > 1 ? top().paragraph() : *bv().text()->getPar(par());
+	return top().paragraph();
 }
 
 
 Paragraph const & DocumentIterator::paragraph() const
 {
 	BOOST_ASSERT(inTexted());
-	return size() > 1 ? top().paragraph() : *bv().text()->getPar(par());
+	return top().paragraph();
 }
 
 
@@ -140,100 +128,84 @@ DocumentIterator::row_type DocumentIterator::lastcrow() const
 
 DocumentIterator::idx_type DocumentIterator::lastidx() const
 {
-	return size() > 1 ? top().lastidx() : 0;
+	return top().lastidx();
 }
 
 
 size_t DocumentIterator::nargs() const
 {
 	// assume 1x1 grid for main text
-	return size() > 1 ? top().nargs() : 1;
+	return top().nargs();
 }
 
 
 size_t DocumentIterator::ncols() const
 {
 	// assume 1x1 grid for main text
-	return size() > 1 ? top().ncols() : 1;
+	return top().ncols();
 }
 
 
 size_t DocumentIterator::nrows() const
 {
 	// assume 1x1 grid for main text
-	return size() > 1 ? top().nrows() : 1;
+	return top().nrows();
 }
 
 
 DocumentIterator::row_type DocumentIterator::row() const
 {
-	return size() > 1 ? top().row() : 0;
+	return top().row();
 }
 
 
 DocumentIterator::col_type DocumentIterator::col() const
 {
-	return size() > 1 ? top().col() : 0;
+	return top().col();
 }
 
 
 MathArray const & DocumentIterator::cell() const
 {
-	BOOST_ASSERT(size() > 1);
+	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
 MathArray & DocumentIterator::cell()
 {
-	BOOST_ASSERT(size() > 1);
+	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
 bool DocumentIterator::inMathed() const
 {
-	return size() > 1 && inset()->inMathed();
+	return !empty() && inset().inMathed();
 }
 
 
 bool DocumentIterator::inTexted() const
 {
-	return !inMathed();
+	return !empty() && !inset().inMathed();
 }
 
 
 LyXText * DocumentIterator::innerText() const
 {
 	BOOST_ASSERT(!empty());
-	if (size() > 1) {
-		// go up until first non-0 text is hit
-		// (innermost text is 0 in mathed)
-		for (int i = size() - 1; i >= 1; --i)
-			if (operator[](i).text())
-				return operator[](i).text();
-	}
-	return bv().text();
-}
-
-
-CursorSlice const & DocumentIterator::innerTextSlice() const
-{
-	BOOST_ASSERT(!empty());
-	if (size() > 1) {
-		// go up until first non-0 text is hit
-		// (innermost text is 0 in mathed)
-		for (int i = size() - 1; i >= 1; --i)
-			if (operator[](i).text())
-				return operator[](i);
-	}
-	return operator[](0);
+	// go up until first non-0 text is hit
+	// (innermost text is 0 in mathed)
+	for (int i = size() - 1; i >= 0; --i)
+		if (operator[](i).text())
+			return operator[](i).text();
+	return 0;
 }
 
 
 InsetBase * DocumentIterator::innerInsetOfType(int code) const
 {
-	for (int i = size() - 1; i >= 1; --i)
+	for (int i = size() - 1; i >= 0; --i)
 		if (operator[](i).inset_->lyxCode() == code)
 			return operator[](i).inset_;
 	return 0;
@@ -259,7 +231,7 @@ void DocumentIterator::forwardPos()
 
 	if (n && n->isActive()) {
 		//lyxerr << "... descend" << std::endl;
-		push_back(CursorSlice(n));
+		push_back(CursorSlice(*n));
 		return;
 	}
 
@@ -287,7 +259,7 @@ void DocumentIterator::forwardPos()
 		++top.idx();
 		top.par() = 0;
 		top.pos() = 0;
-		if (top.inset() && top.inset()->validCell(top.idx())) {
+		if (top.inset().validCell(top.idx())) {
 			//lyxerr << "     ... ok" << std::endl;
 			return;
 		}
@@ -323,7 +295,7 @@ void DocumentIterator::forwardPar()
 
 	if (n && n->isActive()) {
 		lyxerr << "... descend" << std::endl;
-		push_back(CursorSlice(n));
+		push_back(CursorSlice(*n));
 		return;
 	}
 
@@ -350,7 +322,7 @@ void DocumentIterator::forwardPar()
 		++top.idx();
 		top.par() = 0;
 		top.pos() = 0;
-		if (top.inset() && top.inset()->validCell(top.idx())) {
+		if (top.inset().validCell(top.idx())) {
 			lyxerr << "     ... ok" << std::endl;
 			return;
 		}
@@ -364,22 +336,10 @@ void DocumentIterator::forwardPar()
 }
 
 
-DocumentIterator bufferBegin(BufferView & bv)
+DocumentIterator insetBegin(InsetBase & inset)
 {
-	return DocumentIterator(bv);
-}
-
-
-DocumentIterator bufferEnd()
-{
-	return DocumentIterator();
-}
-
-
-DocumentIterator insetBegin(BufferView & bv, InsetBase * p)
-{
-	DocumentIterator it(bv);
-	it.back() = CursorSlice(p);
+	DocumentIterator it;
+	it.push_back(CursorSlice(inset));
 	return it;
 }
 
@@ -392,7 +352,6 @@ DocumentIterator insetEnd()
 
 std::ostream & operator<<(std::ostream & os, DocumentIterator const & dit)
 {
-	os << "bv: " << &dit.bv() << "\n";
 	for (size_t i = 0, n = dit.size(); i != n; ++i)
 		os << " " << dit.operator[](i) << "\n";
 	return os;
@@ -411,13 +370,11 @@ StableDocumentIterator::StableDocumentIterator(const DocumentIterator & dit)
 
 
 DocumentIterator
-StableDocumentIterator::asDocumentIterator(BufferView & bv) const
+StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << std::endl;
-	DocumentIterator dit(bv);
-	dit.clear();
-	InsetBase * inset = 0;
+	DocumentIterator dit;
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		dit.push_back(data_[i]);
 		dit.back().inset_ = inset;

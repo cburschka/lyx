@@ -155,7 +155,7 @@ InsetFloat::~InsetFloat()
 }
 
 
-void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

@@ -71,7 +71,7 @@ public:
 	virtual bool inMathed() const { return false; }
 
 	// the real dispatcher
-	void dispatch(LCursor & cur, FuncRequest const & cmd);
+	void dispatch(LCursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status);
@@ -351,7 +351,7 @@ public:
 	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
 protected:
 	// the real dispatcher
-	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Code lyxCode() const { return NO_CODE; }

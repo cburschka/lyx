@@ -60,7 +60,7 @@ std::auto_ptr<InsetBase> InsetVSpace::clone() const
 }
 
 
-void InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

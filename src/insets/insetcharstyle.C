@@ -146,7 +146,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 }
 
 
-void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	setStatus(Inlined);
 	switch (cmd.action) {

@@ -53,7 +53,7 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-void RefInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void RefInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:

@@ -396,7 +396,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 	cur.selection() = false;
 	resetPos(cur);
 	cur.bv().fitCursor();
-	cur.push(this);
+	cur.push(*this);
 	cur.idx() = cell;
 }
 
@@ -405,13 +405,13 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
-	cur.push(this);
+	cur.push(*this);
 	return setPos(cur, x, y);
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 }
 
 
-void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "  cur:\n" << cur << endl;
@@ -469,27 +469,28 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cell(cur.idx()).dispatch(cur, cmd);
-		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.top())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-		if (sl == cur.top())
-			cur.dispatched(FINISHED_RIGHT);
+		if (sl == cur.top()) {
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_LEFTSEL: 
 	case LFUN_LEFT:
 		cell(cur.idx()).dispatch(cur, cmd);
-		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.top())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-		if (sl == cur.top())
-			cur.dispatched(FINISHED_LEFT);
+		if (sl == cur.top()) {
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
 		cell(cur.idx()).dispatch(cur, cmd);
-		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
@@ -497,14 +498,15 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				cur.pos() = 0;
 				resetPos(cur);
 			}
-		if (sl == cur.top())
-			cur.dispatched(FINISHED_DOWN);
+		if (sl == cur.top()) {
+			cmd = FuncRequest(LFUN_FINISHED_DOWN);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_UPSEL:
 	case LFUN_UP:
 		cell(cur.idx()).dispatch(cur, cmd);
-		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
@@ -512,8 +514,10 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				cur.pos() = cur.lastpos();
 				resetPos(cur);
 			}
-		if (sl == cur.top())
-			cur.dispatched(FINISHED_UP);
+		if (sl == cur.top()) {
+			cmd = FuncRequest(LFUN_FINISHED_UP);
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_NEXT: {

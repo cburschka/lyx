@@ -1740,25 +1740,17 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 		if (token.empty())
 			continue;
 
-		if (in_inset_) {
+		if (token == "\\end_inset") {
+			the_end_read = true;
+			break;
+		}
 
-			if (token == "\\end_inset") {
-				the_end_read = true;
-				break;
-			}
-
-			if (token == "\\end_document") {
-				lex.printError("\\end_document read in inset! Error in document!");
-				return false;
-			}
-
-		} else {
-
-			if (token == "\\end_document") {
-				the_end_read = true;
-				continue;
-			}
-
+		if (token == "\\end_document") {
+#warning Look here!
+#if 0
+			lex.printError("\\end_document read in inset! Error in document!");
+#endif
+			return false;
 		}
 
 		// FIXME: ugly.
@@ -1771,8 +1763,7 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 			par.params().depth(depth);
 			if (buf.params().tracking_changes)
 				par.trackChanges();
-			LyXFont f(LyXFont::ALL_INHERIT, buf.params().language);
-			par.setFont(0, f);
+			par.setFont(0, LyXFont(LyXFont::ALL_INHERIT, buf.params().language));
 
 			// insert after
 			if (pit != paragraphs().end())

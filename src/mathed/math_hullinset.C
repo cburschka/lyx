@@ -29,6 +29,7 @@
 #include "lyxrc.h"
 #include "outputparams.h"
 #include "textpainter.h"
+#include "undo.h"
 
 #include "frontends/Alert.h"
 
@@ -705,7 +706,7 @@ void MathHullInset::check() const
 }
 
 
-void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
+void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 {
 	string lang;
 	string extra;
@@ -784,7 +785,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 }
 
 
-void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -803,7 +804,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MATH_NUMBER:
 		//lyxerr << "toggling all numbers" << endl;
 		if (display()) {
-			////recordUndo(cur, Undo::INSERT);
+			recordUndo(cur);
 			bool old = numberedType();
 			if (type_ == "multline")
 				numbered(nrows() - 1, !old);
@@ -817,7 +818,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MATH_NONUMBER:
 		if (display()) {
 			row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-			////recordUndo(cur, Undo::INSERT);
+			recordUndo(cur);
 			bool old = numbered(r);
 			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
@@ -954,14 +955,13 @@ void MathHullInset::mutateToText()
 }
 
 
-void MathHullInset::handleFont
-	(LCursor & cur, string const & arg, string const & font)
+void MathHullInset::handleFont(LCursor & cur, string const & arg,
+	string const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	//recordUndo(cur, Undo::ATOMIC);
-
-	if (cur.inset()->asMathInset()->name() == font)
+	recordUndo(cur);
+	if (cur.inset().asMathInset()->name() == font)
 		cur.handleFont(font);
 	else {
 		cur.handleNest(createMathInset(font));
@@ -972,7 +972,7 @@ void MathHullInset::handleFont
 
 void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 {
-	//recordUndo(cur, Undo::ATOMIC);
+	recordUndo(cur);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);

@@ -65,7 +65,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	///
 	bool isLatex;

@@ -177,12 +177,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 			string const text  = bformat(_("The specified document template\n%1$s\ncould not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
-			b->paragraphs().push_back(Paragraph());
-			b->paragraphs().begin()->layout(b->params().getLyXTextClass().defaultLayout());
 		}
-	} else {  // start with empty buffer
-		b->paragraphs().push_back(Paragraph());
-		b->paragraphs().begin()->layout(b->params().getLyXTextClass().defaultLayout());
 	}
 
 	if (!isNamed) {

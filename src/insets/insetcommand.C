@@ -98,7 +98,7 @@ int InsetCommand::docbook(Buffer const &, ostream &,
 }
 
 
-void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {

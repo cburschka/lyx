@@ -27,13 +27,13 @@
 
 
 
-void InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	priv_dispatch(cur, cmd);
 }
 
 
-void InsetBase::priv_dispatch(LCursor & cur, FuncRequest const &)
+void InsetBase::priv_dispatch(LCursor & cur, FuncRequest &)
 {
 	cur.noUpdate();
 	cur.undispatched();

@@ -85,7 +85,7 @@ public:
 
 protected:
 	///
-	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 
 private:
 	friend class InsetCharStyleParams;

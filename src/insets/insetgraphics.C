@@ -188,7 +188,7 @@ void InsetGraphics::statusChanged() const
 }
 
 
-void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {

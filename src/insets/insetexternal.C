@@ -442,7 +442,7 @@ void InsetExternal::statusChanged() const
 }
 
 
-void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

@@ -32,6 +32,7 @@ class BufferParams;
 class ErrorItem;
 class FuncRequest;
 class InsetBase;
+class InsetText;
 class LyXFont;
 class LyXLex;
 class LyXRC;
@@ -359,6 +360,8 @@ public:
 
 	///
 	LyXText & text() const;
+	///
+	InsetBase & inset() const;
 
 private:
 	/** Inserts a file into a document

@@ -53,7 +53,7 @@ auto_ptr<InsetBase> InsetBibitem::clone() const
 }
 
 
-void InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

@@ -131,7 +131,8 @@ namespace {
 		lyxerr << "selection is: '" << sel << "'" << endl;
 
 		if (sel.empty()) {
-			cur.insert(new MathHullInset); // activates inset
+			cur.insert(new MathHullInset);
+			cur.dispatch(FuncRequest(LFUN_RIGHT));
 			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -143,14 +144,16 @@ namespace {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise
 			text->cutSelection(cur, true, true);
-			if (sel.find("\\newcommand") == string::npos &&
-					sel.find("\\def") == string::npos)
+			if (sel.find("\\newcommand") == string::npos
+			    && sel.find("\\def") == string::npos)
 			{
 				cur.insert(new MathHullInset);
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
 				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
 			} else {
 				cur.insert(new InsetFormulaMacro(sel));
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
 			}
 		}
 		cur.message(N_("Math editor mode"));
@@ -367,7 +370,7 @@ bool LyXText::isRTL(Paragraph const & par) const
 }
 
 
-void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
+void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
@@ -464,7 +467,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		else
 			cursorRight(cur);
 		if (sl == cur.top())
-			cur.dispatched(FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
 	case LFUN_LEFT:
@@ -475,7 +478,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		else
 			cursorLeft(cur);
 		if (sl == cur.top())
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_UP:
@@ -483,7 +486,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		cursorUp(cur);
 		if (sl == cur.top())
-			cur.dispatched(FINISHED_UP);
+			cmd = FuncRequest(LFUN_FINISHED_UP);
 		break;
 
 	case LFUN_DOWN:
@@ -491,7 +494,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		cursorDown(cur);
 		if (sl == cur.top())
-			cur.dispatched(FINISHED_DOWN);
+			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -581,7 +584,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.clearSelection();
 		finishChange(cur, false);
 		if (cur.par() == 0 && cur.textRow().pos() == 0)
-			cur.dispatched(FINISHED_UP);
+			cmd = FuncRequest(LFUN_FINISHED_UP);
 		else
 			cursorPrevious(cur);
 		break;
@@ -592,7 +595,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		finishChange(cur, false);
 		if (cur.par() == cur.lastpar()
 			  && cur.textRow().endpos() == cur.lastpos())
-			cur.dispatched(FINISHED_DOWN);
+			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		else
 			cursorNext(cur);
 		break;
@@ -758,10 +761,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
 		InsetBase * inset = bv->owner()->getDialogs().getOpenInset(name);
-		if (inset)
-			inset->dispatch(cur, FuncRequest(LFUN_INSET_MODIFY, cmd.argument));
-		else
-			dispatch(cur, FuncRequest(LFUN_INSET_INSERT, cmd.argument));
+		if (inset) {
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
+			inset->dispatch(cur, fr);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument);
+			dispatch(cur, fr);
+		}
 		break;
 	}
 
@@ -774,8 +780,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		if (cur.inset() && cur.inset()->asUpdatableInset())
-			cur.inset()->asUpdatableInset()->showInsetDialog(bv);
+		if (cur.inset().asUpdatableInset())
+			cur.inset().asUpdatableInset()->showInsetDialog(bv);
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -858,28 +864,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_COPY:
 		copySelection(cur);
 		cur.message(_("Copy"));
-		break;
-
-	case LFUN_BEGINNINGBUFSEL:
-		if (in_inset_) {
-			cur.undispatched();
-		} else {
-			if (!cur.selection())
-				cur.resetAnchor();
-			cursorTop(cur);
-			finishChange(cur, true);
-		}
-		break;
-
-	case LFUN_ENDBUFSEL:
-		if (in_inset_) {
-			cur.undispatched();
-		} else {
-			if (!cur.selection())
-				cur.resetAnchor();
-			cursorBottom(cur);
-			finishChange(cur, true);
-		}
 		break;
 
 	case LFUN_GETXY:
@@ -1029,7 +1013,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 				    InsetQuotes::DoubleQ));
 			else
 		  		cur.insert(new InsetQuotes(c, bufparams));
-			}
+		}
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;
@@ -1093,7 +1077,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		// This is to allow jumping over large insets
 		// FIXME: shouldn't be top-text-specific
-		if (!in_inset_ && cur.top() == old) {
+		if (isMainText() && cur.top() == old) {
 			if (cmd.y - bv->top_y() >= bv->workHeight())
 				cursorDown(cur);
 			else if (cmd.y - bv->top_y() < 0)
@@ -1461,9 +1445,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		params2string(cur.paragraph(), data);
 
 		// Will the paragraph accept changes from the dialog?
-		InsetBase * const inset = cur.inset();
-		bool const accept =
-			!(inset && inset->forceDefaultParagraphs(inset));
+		InsetBase & inset = cur.inset();
+		bool const accept = !inset.forceDefaultParagraphs(&inset);
 
 		data = "update " + tostr(accept) + '\n' + data;
 		bv->owner()->getDialogs().update("paragraph", data);
@@ -1562,11 +1545,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_INSET_DIALOG_SHOW: {
+		InsetBase * inset = cur.nextInset();
+		if (inset) {
+			FuncRequest fr(LFUN_INSET_DIALOG_SHOW);
+			inset->dispatch(cur, fr);
+		}
+		break;
+	}
+
 	case LFUN_ESCAPE:
 		if (cur.selection())
 			cur.selection() = false;
 		else
-			cur.dispatched(FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	default:

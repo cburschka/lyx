@@ -55,7 +55,7 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	bool hitButton(FuncRequest const &) const;
+	bool hitButton(FuncRequest &) const;
 	///
 	std::string const getNewLabel(std::string const & l) const;
 	///
@@ -123,7 +123,7 @@ public:
 
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -139,7 +139,7 @@ protected:
 
 private:
 	///
-	void lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
+	void lfunMouseRelease(LCursor & cur, FuncRequest & cmd);
 
 public:
 	///

@@ -184,7 +184,7 @@ bool InsetNote::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetNote::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetNote::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

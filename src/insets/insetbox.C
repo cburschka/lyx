@@ -169,7 +169,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetBox::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBox::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 

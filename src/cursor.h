@@ -18,16 +18,15 @@
 #include <iosfwd>
 #include <vector>
 
-class UpdatableInset;
-class DispatchResult;
+class BufferView;
 class FuncStatus;
 class FuncRequest;
-class InsetTabular;
 
 // these should go
 class MathHullInset;
 class MathUnknownInset;
 class MathGridInset;
+class Encoding;
 
 
 /// The cursor class describes the position of a cursor within a document.
@@ -36,18 +35,18 @@ class MathGridInset;
 // (or maybe private inheritance) at some point of time.
 class LCursor : public DocumentIterator {
 public:
-
 	/// create the cursor of a BufferView
 	explicit LCursor(BufferView & bv);
+
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
 	/// are we willing to handle this event?
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 
 	/// add a new cursor slice
-	void push(InsetBase * inset);
+	void push(InsetBase & inset);
 	/// add a new cursor slice, place cursor on left end
-	void pushLeft(InsetBase * inset);
+	void pushLeft(InsetBase & inset);
 	/// pop one level off the cursor
 	void pop();
 	/// pop one slice off the cursor stack and go left
@@ -167,9 +166,7 @@ public:
 	void replaceWord(std::string const & replacestring);
 	/// update our view
 	void update();
-	/// set dispatch result
-	void dispatched(dispatch_result_t res);
-	/// assume event was not (yet) dispatched
+	/// the event was not (yet) dispatched
 	void undispatched();
 	/// don't call update() when done
 	void noUpdate();
@@ -178,7 +175,10 @@ public:
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
+
 public:
+	///
+	BufferView * bv_;
 //private:
 	/// the anchor position
 	DocumentIterator anchor_;
@@ -202,11 +202,12 @@ private:
 	 * shorter than x()
 	 */
 	int x_target_;
-	// do we have a selection?
+	/// do we have a selection?
 	bool selection_;
-	// are we on the way to get one?
+	/// are we on the way to get one?
 	bool mark_;
-	///
+	/// Reset cursor to the value it had at the beginning of the latest
+	// dispatch() once the event is fully handled.
 	bool nopop_;
 
 	//
@@ -316,6 +317,8 @@ public:
 	int macroNamePos();
 	/// can we enter the inset?
 	bool openable(MathAtom const &) const;
+	///
+	Encoding const * getEncoding() const;
 };
 
 #endif // LYXCURSOR_H

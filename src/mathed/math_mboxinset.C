@@ -26,7 +26,7 @@ using std::endl;
 
 
 MathMBoxInset::MathMBoxInset(BufferView & bv)
-	: text_(&bv, true), bv_(&bv)
+	: text_(&bv), bv_(&bv)
 {
 	text_.paragraphs().push_back(Paragraph());
 	text_.paragraphs().back().
@@ -64,7 +64,7 @@ void MathMBoxInset::write(WriteStream & os) const
 }
 
 
-void MathMBoxInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathMBoxInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	text_.dispatch(cur, cmd);
 }

@@ -259,7 +259,7 @@ void LyXScreen::redraw(BufferView & bv)
 
 	// maybe we have to clear the screen at the bottom
 	int const y2 = workarea().workHeight();
-	if (y < y2 && !bv.text()->isInInset()) {
+	if (y < y2 && bv.text()->isMainText()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);

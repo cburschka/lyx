@@ -70,18 +70,18 @@ using std::vector;
 
 InsetText::InsetText(BufferParams const & bp)
 	: autoBreakRows_(false), drawFrame_(NEVER),
-	  frame_color_(LColor::insetframe), text_(0, true)
+	  frame_color_(LColor::insetframe), text_(0)
 {
 	paragraphs().push_back(Paragraph());
-	paragraphs().begin()->layout(bp.getLyXTextClass().defaultLayout());
+	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
-		paragraphs().begin()->trackChanges();
+		paragraphs().back().trackChanges();
 	init();
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), text_(in.text_.bv_owner, true)
+	: UpdatableInset(in), text_(in.text_.bv_owner)
 {
 	// this is ugly...
 	operator=(in);
@@ -94,7 +94,7 @@ void InsetText::operator=(InsetText const & in)
 	autoBreakRows_ = in.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
-	text_ = LyXText(in.text_.bv_owner, true);
+	text_ = LyXText(in.text_.bv_owner);
 	text_.paragraphs() = in.text_.paragraphs();
 	init();
 }
@@ -294,7 +294,6 @@ void InsetText::edit(LCursor & cur, bool left)
 	finishUndo();
 	sanitizeEmptyText(cur.bv());
 	updateLocal(cur);
-	dispatch(cur, FuncRequest(LFUN_PARAGRAPH_UPDATE));
 }
 
 
@@ -305,11 +304,10 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 	return text_.editXY(cur, x, y);
 	//sanitizeEmptyText(cur.bv());
 	//updateLocal(cur);
-	//dispatch(cur, FuncRequest(LFUN_PARAGRAPH_UPDATE));
 }
 
 
-void InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetText::priv_dispatch (begin), act: "
 	//      << cmd.action << " " << endl;
@@ -393,12 +391,10 @@ bool InsetText::insetAllowed(InsetOld::Code code) const
 	// to allow us to call the owner's insetAllowed
 	// without stack overflow, which can happen
 	// when the owner uses InsetCollapsable::insetAllowed()
-	bool ret = true;
 	if (in_insetAllowed)
-		return ret;
+		return true;
 	in_insetAllowed = true;
-	if (owner())
-		ret = owner()->insetAllowed(code);
+	bool const ret = owner() && owner()->insetAllowed(code);
 	in_insetAllowed = false;
 	return ret;
 }

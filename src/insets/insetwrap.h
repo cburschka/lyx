@@ -68,7 +68,7 @@ public:
 	InsetWrapParams const & params() const { return params_; }
 protected:
 	///
-	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	///
 	InsetWrapParams params_;
