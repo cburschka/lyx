@@ -122,6 +122,10 @@ public:
 	void status(BufferView *, ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
+	///
+	bool forceDefaultParagraphs(Inset const *) const {
+		return true;
+	}
 
 private:
 	///
