@@ -18,6 +18,9 @@
 
 using std::endl;
 
+using std::string;
+
+
 // OK, this is ugly, but it is the only workaround I found to compile
 // with gcc (any version) on a system which uses a non-GNU toolchain.
 // The problem is that gcc uses a weak symbol for a particular
@@ -40,9 +43,6 @@ template class boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/mman.h>
-
-
-using std::string;
 
 
 unsigned long lyx::support::sum(string const & file)

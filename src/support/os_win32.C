@@ -23,6 +23,7 @@
 
 using namespace lyx::support;
 using std::endl;
+using std::string;
 
 
 namespace {
