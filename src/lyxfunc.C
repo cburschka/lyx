@@ -308,10 +308,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		return flag;
 	}
 
-	// the default error message if we disable the command
-	flag.message(N_("Command disabled"));
-	if (!flag.enabled())
+	if (!flag.enabled()) {
+		if (flag.message().empty())
+			flag.message(N_("Command disabled"));
 		return flag;
+	}
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
@@ -523,7 +524,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	default:
 
 		if (!cur.getStatus(cmd, flag))
-			flag = view()->getStatus(cmd);
+			flag |= view()->getStatus(cmd);
 	}
 
 	if (!enable)
@@ -537,7 +538,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.enabled(false);
 	}
 
-	//lyxerr << "LyXFunc::getStatus: got: " << flag.enabled() << endl;
+	// the default error message if we disable the command
+	if (!flag.enabled() && flag.message().empty())
+		flag.message(N_("Command disabled"));
+
 	return flag;
 }
 

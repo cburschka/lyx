@@ -79,9 +79,13 @@ public:
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 
-	// the real dispatcher
+	/// the real dispatcher
 	void dispatch(LCursor & cur, FuncRequest & cmd);
-	/// do we want to handle this event?
+	/**
+	 * \returns true if this function made a definitive decision on
+	 * whether the inset wants to handle the request \p cmd or not.
+	 * The result of this decision is put into \p status.
+	 */
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 

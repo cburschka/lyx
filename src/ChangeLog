@@ -1,3 +1,17 @@
+2004-12-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus): do not lose previous information when
+	calling BufferView::getStatus; do not set a default "Command
+	disabled" message at the beginning, but just before returning.
+
+2004-11-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* cursor.h (getStatus): add better comment from src/cursor.C
+
+2004-11-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (getStatus): return false when the lfun is not handled
+
 2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* broken_headers.h: remove
@@ -21,7 +35,7 @@
 
 	* bufferview_funcs.[Ch]: introduce coordOffset, getPos, status,
 	CurStatus enum.
-  	
+
 	* coordcache.[Ch]: add paragraph cache and helpers
 
 	* CursorSlice.[Ch]: rename CursorSlice::par to CursorSlice::pit,

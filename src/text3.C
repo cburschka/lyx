@@ -1627,7 +1627,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 
 bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
-	FuncStatus & flag) const
+			FuncStatus & flag) const
 {
 	BOOST_ASSERT(cur.text() == this);
 	LyXFont const & font = real_current_font;
@@ -1969,8 +1969,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	default:
-		enable = false;
-		break;
+		return false;
 	}
 	flag.enabled(enable);
 	return true;
