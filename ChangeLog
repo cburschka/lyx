@@ -1,3 +1,8 @@
+2000-05-05  Juergen Vigna  <jug@sad.it>
+
+	* src/table.[Ch]: removed the inset and buffer stuff as this is now
+	neede only in tabular.[Ch].
+
 2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetspecialchar.C (Read): allow command == '~' for

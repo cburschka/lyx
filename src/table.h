@@ -20,9 +20,6 @@
 #include "lyxlex.h"
 #include "LString.h"
 
-class InsetText;
-class Buffer;
-
 /* The features the text class offers for tables */ 
 
 ///
@@ -70,13 +67,13 @@ public:
     };
     /* konstruktor */
     ///
-    LyXTable(int columns_arg, int rows_arg, Buffer *buf = 0);
+    LyXTable(int columns_arg, int rows_arg);
     ///
     ///
-    LyXTable(LyXTable const &, Buffer *buf = 0);
+    LyXTable(LyXTable const &);
     ///
     explicit
-    LyXTable(LyXLex & lex, Buffer *buf = 0);
+    LyXTable(LyXLex & lex);
     ///
     ~LyXTable();
     ///
@@ -271,20 +268,16 @@ public:
     ///
     bool LTNewPage(int cell);
     ///
-    InsetText * GetCellInset(int cell) const;
-    ///
 
 private: //////////////////////////////////////////////////////////////////
     ///
     struct cellstruct {
 	///
-        cellstruct(Buffer * buf = 0);
+        cellstruct();
 	///
 	~cellstruct();
 	///
         cellstruct & operator=(cellstruct const &);
-	///
-	void setBuffer(Buffer * buf);
 	///
 	int cellno;
 	///
@@ -307,8 +300,6 @@ private: //////////////////////////////////////////////////////////////////
 	string align_special;
 	///
 	string p_width; // this is only set for multicolumn!!!
-	///
-	InsetText *inset;
     };
     ///
     struct rowstruct {
@@ -365,9 +356,7 @@ private: //////////////////////////////////////////////////////////////////
     int endfoot; // row of endfoot
     int endlastfoot; // row of endlastfoot
     ///
-    Buffer *buffer;
-   
-    ///
+
     void set_row_column_number_info();
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfMulticolCell(int cell, int new_width);

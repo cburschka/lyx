@@ -24,8 +24,8 @@
 #include "layout.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
+#include "support/LAssert.h"
 #include "lyx_gui_misc.h"
-#include "insets/insettext.h"
 
 using std::ostream;
 using std::istream;
@@ -37,7 +37,7 @@ static int const WIDTH_OF_LINE = 5;
 
 /// Define a few methods for the inner structs
 
-LyXTable::cellstruct::cellstruct(Buffer * buf) 
+LyXTable::cellstruct::cellstruct() 
 {
 	cellno = 0; //should be initilaized correctly later.
 	width_of_cell = 0;
@@ -48,14 +48,10 @@ LyXTable::cellstruct::cellstruct(Buffer * buf)
 	has_cont_row = false;
 	rotate = false;
 	linebreaks = false;
-	buf ? inset = new InsetText(buf): inset = 0;
-	
 }
 
 LyXTable::cellstruct::~cellstruct() 
 {
-    if (inset)
-	delete inset;
 }
 
 LyXTable::cellstruct & 
@@ -125,25 +121,22 @@ LyXTable::columnstruct &
 }
 
 /* konstruktor */
-LyXTable::LyXTable(int rows_arg, int columns_arg, Buffer *buf)
+LyXTable::LyXTable(int rows_arg, int columns_arg)
 {
-    buffer = buf;
     Init(rows_arg, columns_arg);
 }
 
 
-LyXTable::LyXTable(LyXTable const & lt, Buffer * buf)
+LyXTable::LyXTable(LyXTable const & lt)
 {
-    buffer = buf;
     Init(lt.rows, lt.columns);
     
     operator=(lt);
 }
 
-LyXTable::LyXTable(LyXLex & lex, Buffer *buf)
+LyXTable::LyXTable(LyXLex & lex)
 {
     istream & is = lex.getStream();
-    buffer = buf;
     Read(is);
 }
 
@@ -233,7 +226,7 @@ void LyXTable::Init(int rows_arg, int columns_arg)
 
     int cellno = 0;
     for (i = 0; i < rows; ++i) {
-        cell_info[i] = new cellstruct[columns](buffer);
+        cell_info[i] = new cellstruct[columns];
         for (j = 0; j < columns; ++j) {
             cell_info[i][j].cellno = cellno++;
         }
@@ -2083,9 +2076,4 @@ bool LyXTable::IsPartOfMultiColumn(int row, int column)
 int LyXTable::Latex(ostream &)
 {
     return 0;
-}
-
-InsetText * LyXTable::GetCellInset(int cell) const
-{
-    return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
