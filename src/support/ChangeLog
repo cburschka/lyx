@@ -1,3 +1,7 @@
+2002-02-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* syscall.C (Systemcalls): include <cstdlib>
+
 2002-02-08  Herbert Voss  <voss@perce.de>
 
 	* filetools.C: (getExtFromContents) adding Grace-format

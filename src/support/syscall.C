@@ -22,9 +22,10 @@
 #pragma implementation
 #endif
 
+#include <cstdlib> //for ::system
+
 #include "syscall.h"
 #include "os.h"
-
 
 #if 0
 Systemcalls::Systemcalls(Starttype how, string const & what)
