@@ -12,6 +12,7 @@
 
 #include "PreviewLoader.h"
 #include "PreviewImage.h"
+#include "GraphicsCache.h"
 
 #include "buffer.h"
 #include "converter.h"
@@ -492,10 +493,12 @@ void PreviewLoader::Impl::startLoading()
 
 	// The conversion command.
 	ostringstream cs;
-	cs << pconverter_->command << ' ' << latexfile << ' '
-	   << int(font_scaling_factor_) << ' ' << pconverter_->to;
+	cs << pconverter_->command << ' ' << pconverter_->to << ' '
+	   << latexfile << ' ' << int(font_scaling_factor_) << ' '
+	   << lyx_gui::hexname(LColor::preview) << ' '
+	   << lyx_gui::hexname(LColor::background);
 
-	string const command = "sh " + support::LibScriptSearch(cs.str());
+	string const command = support::LibScriptSearch(cs.str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	support::Forkedcall::SignalTypePtr
@@ -616,21 +619,8 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Use the preview style file to ensure that each snippet appears on a
 	// fresh page.
 	os << "\n"
-	   << "\\usepackage[active,delayed,dvips,tightpage,showlabels,lyx]{preview}\n"
+	   << "\\usepackage[active,delayed,dvips,showlabels,lyx]{preview}\n"
 	   << "\n";
-
-	// This piece of PostScript magic ensures that the foreground and
-	// background colors are the same as the LyX screen.
-	string fg = lyx_gui::hexname(LColor::preview);
-	if (fg.empty()) fg = "000000";
-
-	string bg = lyx_gui::hexname(LColor::background);
-	if (bg.empty()) bg = "ffffff";
-
-	os << "\\AtBeginDocument{\\AtBeginDvi{%\n"
-	   << "\\special{!userdict begin/bop-hook{//bop-hook exec\n"
-	   << '<' << fg << bg << ">{255 div}forall setrgbcolor\n"
-	   << "clippath fill setrgbcolor}bind def end}}}\n";
 }
 
 
@@ -667,11 +657,14 @@ Converter const * setConverter()
 {
 	string const from = "lyxpreview";
 
-	Formats::FormatList::const_iterator it  = formats.begin();
-	Formats::FormatList::const_iterator end = formats.end();
+	typedef vector<string> FmtList;
+	typedef lyx::graphics::Cache GCache;
+	FmtList const loadableFormats = GCache::get().loadableFormats();
+	FmtList::const_iterator it  = loadableFormats.begin();
+	FmtList::const_iterator const end = loadableFormats.end();
 
 	for (; it != end; ++it) {
-		string const to = it->name();
+		string const to = *it;
 		if (from == to)
 			continue;
 
@@ -712,56 +705,30 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 	bool error = false;
 
-	// Tightpage dimensions affect all subsequent dimensions
-	int tp_ascent;
-	int tp_descent;
+	int snippet_counter = 1;
+	while (!in.eof() && it != end) {
+		string snippet;
+		int id;
+		double ascent_fraction;
 
-	int snippet_counter = 0;
-	while (!in.eof()) {
-		// Expecting lines of the form
-		// Preview: Tightpage tp_bl_x tp_bl_y tp_tr_x tp_tr_y
-		// Preview: Snippet id ascent descent width
-		string preview;
-		string type;
-		in >> preview >> type;
+		in >> snippet >> id >> ascent_fraction;
 
 		if (!in.good())
 			// eof after all
 			break;
 
-		error = preview != "Preview:"
-			|| (type != "Tightpage" && type != "Snippet");
+		error = snippet != "Snippet";
 		if (error)
 			break;
 
-		if (type == "Tightpage") {
-			int dummy;
-			in >> dummy >> tp_descent >> dummy >> tp_ascent;
+		error = id != snippet_counter;
+		if (error)
+			break;
 
-			error = !in.good();
-			if (error)
-				break;
+		*it = ascent_fraction;
 
-		} else {
-			int dummy;
-			int snippet_id;
-			int ascent;
-			int descent;
-			in >> snippet_id >> ascent >> descent >> dummy;
-
-			error = !in.good() || ++snippet_counter != snippet_id;
-			if (error)
-				break;
-
-			double const a = ascent + tp_ascent;
-			double const d = descent - tp_descent;
-
-			if (!support::float_equal(a + d, 0, 0.1))
-				*it = a / (a + d);
-
-			if (++it == end)
-				break;
-		}
+		++snippet_counter;
+		++it;
 	}
 
 	if (error) {

@@ -1,3 +1,9 @@
+2004-04-15  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.sh: removed.
+	* scripts/lyxpreview2bitmap.py: added. Uses Jan-Åke Larsson's dvipng
+	to perform the conversion.
+
 2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* configure.m4: merge \viewer and \format. Add editor to \format
