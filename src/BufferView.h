@@ -237,6 +237,7 @@ public:
 	void stuffClipboard(string const &) const;
 private:
 	struct Pimpl;
+	friend struct BufferView::Pimpl;
 	Pimpl * pimpl_;
 };
 

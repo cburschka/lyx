@@ -1,3 +1,8 @@
+2000-06-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/BufferView.h: add a magic "friend" declaration to please
+	compaq cxx.
+
 2000-06-23  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* forms/cite.fd: modified to allow resizing without messing
