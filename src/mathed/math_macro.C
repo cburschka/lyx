@@ -66,7 +66,7 @@ MathMacro::MathMacro(MathMacroTemplate* t):
 	  args[i].row = 0;
 /*	int k = tmplate->getMacroPar(i)->GetColumns();
 	if (k>0) {
-	    args[i].array = new LyxArrayBase;
+	    args[i].array = new MathedArray;
 	    for (int j= 0; j<k-1; ++j) args[i].array->Insert(j, LM_TC_TAB);
 	}*/
     }
@@ -375,7 +375,7 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 }
 
 
-void MathMacroTemplate::setArgument(LyxArrayBase * a, int i)
+void MathMacroTemplate::setArgument(MathedArray * a, int i)
 {
     args[i].SetData(a);
 }
@@ -449,7 +449,7 @@ void MathMacroTable::builtinMacros()
 {
     MathedIter iter;
     MathParInset * inset;// *arg;
-    LyxArrayBase * array2;
+    MathedArray * array2;
     
     built = true;
     
@@ -458,7 +458,7 @@ void MathMacroTable::builtinMacros()
     // This macro doesn't have arguments
     MathMacroTemplate * m = new MathMacroTemplate("notin");  // this leaks
     addTemplate(m);
-    LyxArrayBase * array = new LyxArrayBase; // this leaks
+    MathedArray * array = new MathedArray; // this leaks
     iter.SetData(array);
     iter.Insert(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not)); // this leaks
     m->SetData(array);
@@ -466,14 +466,14 @@ void MathMacroTable::builtinMacros()
     // These two are only while we are still with LyX 2.x
     m = new MathMacroTemplate("emptyset"); // this leaks
     addTemplate(m);
-    array = new LyxArrayBase; // this leaks
+    array = new MathedArray; // this leaks
     iter.SetData(array);
     iter.Insert(new MathAccentInset('O', LM_TC_RM, LM_not)); // this leaks
     m->SetData(array);
     
     m = new MathMacroTemplate("perp"); // this leaks
     addTemplate(m);
-    array = new LyxArrayBase; // this leaks
+    array = new MathedArray; // this leaks
     iter.SetData(array);
     iter.Insert(LM_bot, LM_TC_BOP);
     m->SetData(array);
@@ -481,18 +481,18 @@ void MathMacroTable::builtinMacros()
     // binom has two arguments
     m = new MathMacroTemplate("binom", 2);
     addTemplate(m);
-    array = new LyxArrayBase; 
+    array = new MathedArray; 
     m->SetData(array);
     iter.SetData(array);
     inset = new MathDelimInset('(', ')');
     iter.Insert(inset, LM_TC_ACTIVE_INSET);
-    array = new LyxArrayBase; 
+    array = new MathedArray; 
     iter.SetData(array);
     MathFracInset *frac = new MathFracInset(LM_OT_ATOP);
     iter.Insert(frac, LM_TC_ACTIVE_INSET);
     inset->SetData(array);
-    array = new LyxArrayBase;
-    array2 = new LyxArrayBase;  
+    array = new MathedArray;
+    array2 = new MathedArray;  
     iter.SetData(array);
     iter.Insert(m->getMacroPar(0));
     iter.SetData(array2);
@@ -503,7 +503,7 @@ void MathMacroTable::builtinMacros()
     // Cases has 1 argument
     m = new MathMacroTemplate("cases", 1, MMF_Env); // this leaks
     addTemplate(m);
-    array = new LyxArrayBase; // this leaks
+    array = new MathedArray; // this leaks
     iter.SetData(array);
     arg = new MathMatrixInset(2, 1); // this leaks
 
@@ -512,7 +512,7 @@ void MathMacroTable::builtinMacros()
     iter.Insert(arg, LM_TC_ACTIVE_INSET);
     inset = new MathDelimInset('{', '.'); // this leaks
     inset->SetData(array);
-    array = new LyxArrayBase; // this leaks
+    array = new MathedArray; // this leaks
     iter.SetData(array);
     iter.Insert(inset, LM_TC_ACTIVE_INSET);
     m->SetData(array);
@@ -524,7 +524,7 @@ void MathMacroTable::builtinMacros()
     arg = new MathMatrixInset(1, 1); // this leaks
     m->setArgument(arg);
     arg->SetType(LM_OT_MACRO);
-    array = new LyxArrayBase; // this leaks
+    array = new MathedArray; // this leaks
     iter.SetData(array);
     iter.Insert(arg, LM_TC_ACTIVE_INSET);
     m->SetData(array);*/

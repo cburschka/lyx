@@ -201,12 +201,12 @@ public:
 	///
 	void Metrics();
 	
-	/** This does the same that SetData(LyxArrayBase*) but for both
+	/** This does the same that SetData(MathedArray*) but for both
 	    numerator and denominator at once.
 	*/
-	void SetData(LyxArrayBase *, LyxArrayBase *);
+	void SetData(MathedArray *, MathedArray *);
 	///
-	void SetData(LyxArrayBase *);
+	void SetData(MathedArray *);
 	///
 	void GetXY(int & x, int & y) const;
 	///
@@ -214,7 +214,7 @@ public:
 	///
 	bool Inside(int, int);
 	///
-	LyxArrayBase * GetData();
+	MathedArray * GetData();
 	///
 	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///

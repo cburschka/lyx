@@ -384,7 +384,7 @@ MathedInset * doAccent(MathedInset * p)
 }
 
 
-LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
+MathedArray * mathed_parse(unsigned flags, MathedArray * array,
 			    MathParInset ** mtx)
 {
    int t = yylex();
@@ -403,7 +403,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     MathedRowSt * crow = (mt) ? mt->getRowSt() : 0;
 
    ++plevel;
-   if (!array) array = new LyxArrayBase;
+   if (!array) array = new MathedArray;
    MathedIter data(array);
    while (t) {
       if ((flags & FLAG_BRACE) && t != LM_TK_OPEN) {
@@ -538,7 +538,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case '^':
       {  
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
+	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 	 data.Insert (p, LM_TC_UP);
@@ -547,7 +547,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case '_':
       {
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
+	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
 	 data.Insert (p, LM_TC_DOWN);
 	 break;
@@ -645,8 +645,8 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case LM_TK_FRAC:
       {
 	 MathFracInset * fc = new MathFracInset(fractype);
-	 LyxArrayBase * num = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
-	 LyxArrayBase * den = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
+	 MathedArray * num = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
+	 MathedArray * den = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
 	 fc->SetData(num, den);
 	 data.Insert(fc, LM_TC_ACTIVE_INSET);
 	 break;
@@ -677,7 +677,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 if (lfd == LM_TK_SYM || lfd == LM_TK_STR || lfd == LM_TK_BOP|| lfd == LM_TK_SPECIAL)
 	   lfd = (lfd == LM_TK_SYM) ? yylval.l->id: yylval.i;
 //	 lyxerr << "L[" << lfd << " " << lfd << "]";
-	 LyxArrayBase * a = mathed_parse(FLAG_RIGHT);
+	 MathedArray * a = mathed_parse(FLAG_RIGHT);
 	 int rgd = yylex();
 //	 lyxerr << "R[" << rgd << "]";
 	 if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)

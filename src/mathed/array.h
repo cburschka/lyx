@@ -1,6 +1,5 @@
 // -*- C++ -*-
 /*
- *  File:        array.h
  *  Purpose:     A general purpose resizable array.  
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
  *  Created:     January 1996
@@ -14,21 +13,38 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
+#ifndef MATHEDARRAY_H
+#define MATHEDARRAY_H
+
 #include <vector>
+
+
+class MathedInset;
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #ifndef byte
 #define byte unsigned char
 #endif
 
-/** A resizable array.
+/** \class MathedArray
+    \brief A resizable array.
+    
     A general purpose resizable array.
-    @author Alejandro Aguilar Sierra
-    @version January 1996
+    
+    \author Alejandro Aguilar Sierra
+    \author André Pönitz
+    \author Lars Gullik Bjønnes
+    \version February 2001
   */
-class LyxArrayBase  {
+class MathedArray  {
 public:
 	///
-	typedef std::vector<byte> buffer_type;
+	typedef std::vector<byte>         buffer_type;
+	typedef byte                      value_type;
+	typedef buffer_type::size_type    size_type;
 	///
 	enum {
 		///
@@ -41,148 +57,47 @@ public:
 
 	///
 	explicit
-	LyxArrayBase(int size = ARRAY_STEP);
+	MathedArray(int size = ARRAY_STEP);
 
 	///
-	int empty() const { return (last == 0); }
+	int empty() const;
    
 	///
-	int Last() { return last; }
+	int last() const;
+	///
+	void last(int l);
    
-	/// Make the allocated memory fit the needed size
-	void Fit();     
+	/// Merge \a dx elements from array \a a at \apos.
+	/// This doesn't changes the size (dangerous)
+	void mergeF(MathedArray * a, int pos, int dx); 
 
-	/// Remove dx elements from position pos. Don't changes the size
-	void Remove(int pos, int dx);   
+	/// Insert a character at position \a pos
+	void insert(int pos, byte);
 
-	/// Merge dx elements from array a at pos. Changes the size if necessary.
-	void Merge(LyxArrayBase * a, int pos, int dx); 
-
-	/// Same as Merge but doesn't changes the size (dangerous)
-	void MergeF(LyxArrayBase * a, int pos, int dx); 
-
-	/// Copy dx byts from an array at position pos
-	void Copy(void *, int pos, int dx); 
-
-	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase * Extract(int pos, int dx); 
-
-	/// Insert a character at position pos
-	void Insert(int pos, byte);
-
-	/// Constructs a new array with dx elements starting at pos 
-	byte operator[](const int);
-
-protected:
 	///
-	void Resize(int newsize);
+	void raw_pointer_copy(MathedInset ** p, int pos) const;
 	///
-	bool Move(int p, int shift);
+	void raw_pointer_insert(void * p, int pos, int len);
+	///
+	void strange_copy(MathedArray * dest, int dpos, int spos, int len);
+	///
+	byte operator[](int) const;
+	///
+	byte & operator[](int i);
+	
+	///
+	void move(int p, int shift);
+	///
+	void resize(int newsize);
+	///
+	int maxsize() const;
+private:
 
 	/// Buffer
-	buffer_type bf;
+	buffer_type bf_;
 	/// Last position inserted.
-	int last;
+	int last_;
 	/// Max size of the array.
-	int maxsize;
-private:
-	///
-	friend class MathedIter;
+	int maxsize_;
 };
-   
-
-
-/************************ Inline functions *****************************/
-
-inline // Hmmm, Hp-UX's CC can't handle this inline. Asger.
-void LyxArrayBase::Resize(int newsize)
-{
-	if (newsize<ARRAY_MIN_SIZE)
-		newsize = ARRAY_MIN_SIZE;
-	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
-	bf.resize(newsize);
-	if (last >= newsize) last = newsize-1;
-	maxsize = newsize;
-	bf[last] = 0;
-}
-
-inline
-LyxArrayBase::LyxArrayBase(int size) 
-{
-	maxsize = (size<ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE: size;
-	bf.resize(maxsize);
-	last = 0;
-}
-
-inline   
-bool LyxArrayBase::Move(int p, int shift) 
-{
-	bool result = false;
-	if (p <= last) {
-		if (last + shift >= maxsize) { 
-		    Resize(last + shift);
-		}
-		memmove(&bf[p + shift], &bf[p], last - p);
-		last += shift;
-		bf[last] = 0;
-		result = true;
-	}
-	return result;
-}
-
-inline
-void LyxArrayBase::Fit()
-{
-	Resize(last);
-}
-
-inline
-void LyxArrayBase::Remove(int pos, int dx)
-{
-	Move(pos + dx, -dx);
-}    
-
-inline
-void LyxArrayBase::Merge(LyxArrayBase * a, int p, int dx)
-{
-	Move(p, dx);
-	memcpy(&bf[p], &a->bf[0], dx);
-}
- 
-inline
-void LyxArrayBase::MergeF(LyxArrayBase * a, int p, int dx)
-{
-	memcpy(&bf[p], &a->bf[0], dx);
-}
- 
-inline
-void LyxArrayBase::Copy(void * a, int p, int dx)
-{
-	memcpy(&bf[p], a, dx);
-}
-
-inline
-LyxArrayBase * LyxArrayBase::Extract(int, int dx)
-{
-	LyxArrayBase * a = new LyxArrayBase(dx);
-	a->Merge(this, 0, dx);
-	return a;
-}
- 
-inline
-byte LyxArrayBase::operator[](const int i)
-{
-	return bf[i];
-}
-
-
-inline
-void LyxArrayBase::Insert(int pos, byte c)
-{
-	if (pos < 0) pos = last;
-	if (pos >= maxsize) 
-		Resize(maxsize + ARRAY_STEP);
-	bf[pos] = c;
-	if (pos >= last)
-		last = pos + 1;
-}
+#endif

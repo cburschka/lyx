@@ -115,7 +115,7 @@ MathedInset * MathParInset::Clone()
 }
 
 
-void MathParInset::SetData(LyxArrayBase * a)
+void MathParInset::SetData(MathedArray * a)
 {
     array = a;
    
@@ -236,14 +236,14 @@ void MathFracInset::SetStyle(short st)
 }
 
 
-void MathFracInset::SetData(LyxArrayBase * n, LyxArrayBase * d)
+void MathFracInset::SetData(MathedArray * n, MathedArray * d)
 {
    den->SetData(d);
    MathParInset::SetData(n);
 }
 
 
-void MathFracInset::SetData(LyxArrayBase * d)
+void MathFracInset::SetData(MathedArray * d)
 {
    if (idx == 0)
      MathParInset::SetData(d);
@@ -262,7 +262,7 @@ void MathFracInset::GetXY(int & x, int & y) const
 }
 
 
-LyxArrayBase * MathFracInset::GetData()
+MathedArray * MathFracInset::GetData()
 {
    if (idx == 0)
      return array;
@@ -368,7 +368,7 @@ void MathMatrixInset::SetAlign(char vv, string const & hh)
 
 
 // Check the number of tabs and crs
-void MathMatrixInset::SetData(LyxArrayBase * a)
+void MathMatrixInset::SetData(MathedArray * a)
 {
     if (!a) return;
     MathedIter it(a);

@@ -193,7 +193,7 @@ void InsetFormulaMacro::Edit(BufferView * bv, int x, int y,unsigned int button)
 void InsetFormulaMacro::InsetUnlock(BufferView * bv)
 {
     opened = false;
-    LyxArrayBase * tarray = tmacro->GetData();
+    MathedArray * tarray = tmacro->GetData();
     MathedIter it(tarray);
     it.Clear();
     tmacro->SetData(par->GetData());

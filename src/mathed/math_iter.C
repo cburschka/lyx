@@ -35,25 +35,11 @@ extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, string const & s);
 extern int mathed_char_height(short, int, byte, int &, int &);
 
-// the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
-// stations. We provide a hand-made version instead. 
-static inline
-void my_memcpy( void * ps_in, void const * pt_in, size_t n )
-{
-    char * ps = static_cast<char *>(ps_in);
-    char const * pt = static_cast<char const *>(pt_in);
-    /*
-    for (size_t i = n; i--;)
-	*ps++ = *pt++;
-	*/
-    while (n--) *ps++ = *pt++;
-}
-
 
 void MathedIter::Reset()
 {
-    if (array->last > 0 && MathIsFont(array->bf[0])) {
-	fcode = array->bf[0];
+    if (array->last() > 0 && MathIsFont((*array)[0])) {
+	fcode = (*array)[0];
 	pos = 1;
     } else {
 	fcode = -1;
@@ -66,38 +52,40 @@ void MathedIter::Reset()
 byte MathedIter::GetChar() const
 {
     if (IsFont()) { 
-	fcode = array->bf[pos];
+	fcode = (*array)[pos];
 	++pos;
     }
-    return array->bf[pos];
+    return (*array)[pos];
 }
 
 
 string const MathedIter::GetString() const
 {
 	if (IsFont()) { 
-		fcode = array->bf[++pos];
+		fcode = (*array)[++pos];
 		++pos;
 	}
 	string s;
-	for ( ; array->bf[pos] >= ' ' && pos < array->last; ++pos)
-		s += array->bf[pos];
+	for (; (*array)[pos] >= ' ' && pos < array->last(); ++pos)
+		s += (*array)[pos];
 
 	return s;
 }
-	
+
+
 MathedInset * MathedIter::GetInset() const
 {
    if (IsInset()) {
       MathedInset * p;
-      my_memcpy(&p, &array->bf[pos + 1], sizeof(p));
+      array->raw_pointer_copy(&p, pos + 1);
       return p;
    } else {
 	   lyxerr << "Math Error: This is not an inset["
-		  << array->bf[pos] << "]" << endl;
+		  << (*array)[pos] << "]" << endl;
      return 0;
    }
 }
+
 
 // An active math inset MUST be derived from MathParInset because it 
 // must have at least one paragraph to edit
@@ -111,11 +99,12 @@ MathParInset * MathedIter::GetActiveInset() const
     return 0;
 }
 
+
 bool MathedIter::Next()
 {  
     if (!OK()) return false;
    
-    if (array->bf[pos] < ' ') {
+    if ((*array)[pos] < ' ') {
 	fcode = -1;     
 	if (IsTab()) ++col;
 	if (IsCR())  {
@@ -130,7 +119,7 @@ bool MathedIter::Next()
       ++pos;
     
     if (IsFont()) {
-	fcode = array->bf[pos++];
+	fcode = (*array)[pos++];
     }
 
     return true;   
@@ -140,7 +129,7 @@ bool MathedIter::Next()
 bool MathedIter::goNextCode(MathedTextCodes code)
 {  
     while (Next()) {
-	if (array->bf[pos] == code) 
+	if ((*array)[pos] == code) 
 	  return true;
     }
     
@@ -176,20 +165,20 @@ void MathedIter::Insert(byte c, MathedTextCodes t)
     // Never more than one space // array->bf[pos-1] gives error from purify:
     //       Reading 1 byte from 0x47b857 in the heap.
     //  Address 0x47b857 is 1 byte before start of malloc'd block at 0x47b858 of 16 bytes.
-    if (c == ' ' && (array->bf[pos] == ' ' || array->bf[pos - 1] == ' ')) 
+    if (c == ' ' && ((*array)[pos] == ' ' || (*array)[pos - 1] == ' ')) 
       return;
 	
-    if (IsFont() && array->bf[pos] == t) {
+    if (IsFont() && (*array)[pos] == t) {
 	fcode = t;
 	++pos;
     } else
-      if (t != fcode && pos > 0 && MathIsFont(array->bf[pos - 1])) {
+      if (t != fcode && pos > 0 && MathIsFont((*array)[pos - 1])) {
 	  --pos;
 	  int k = pos - 1;
-	  for (; k >= 0 && array->bf[k] >= ' '; --k);
-	  fcode = (k >= 0 && MathIsFont(array->bf[k])) ? array->bf[k] : -1;
+	  for (; k >= 0 && (*array)[k] >= ' '; --k);
+	  fcode = (k >= 0 && MathIsFont((*array)[k])) ? (*array)[k] : -1;
       }
-    short const f = (array->bf[pos] < ' ') ? 0 : fcode;
+    short const f = ((*array)[pos] < ' ') ? 0 : fcode;
     int shift = (t == fcode) ? 1 : ((f) ? 3 : 2);
     
     if (t == LM_TC_TAB || t == LM_TC_CR) {
@@ -202,78 +191,79 @@ void MathedIter::Insert(byte c, MathedTextCodes t)
 	  ++col;
     }
  
-    if (pos < array->last)
-        array->Move(pos, shift);
+    if (pos < array->last())
+        array->move(pos, shift);
     else {
-	if (array->last+shift >= array->maxsize) {
-	    array->Resize(array->last+shift);
+	if (array->last() + shift >= array->maxsize()) {
+	    array->resize(array->last() + shift);
 	}
-	array->last += shift;
-	array->bf[array->last] = '\0';
+	array->last(array->last() + shift);
+	(*array)[array->last()] = '\0';
     }
     if (t != fcode) {
 	if (f)  
-	  array->bf[pos + shift - 1] = fcode;
+	  (*array)[pos + shift - 1] = fcode;
  	if (c >= ' ') {
-	    array->bf[pos++] = t;
+	    (*array)[pos++] = t;
 	    fcode = t;
 	} else {
 	    fcode = 0;
 	}
-    }      
-    array->bf[pos++] = c;
+    }
+    (*array)[pos++] = c;
 }
 
 
 // Prepare to insert a non-char object
 void MathedIter::split(int shift)
 {
-   if (pos < array->last) {
+   if (pos < array->last()) {
       bool fg = false;
-      if (array->bf[pos] >= ' ') {
-	 if (pos> 0 && MathIsFont(array->bf[pos - 1]))
+      if ((*array)[pos] >= ' ') {
+	 if (pos> 0 && MathIsFont((*array)[pos - 1]))
 	   --pos;
 	 else { 
-	    fg = true; 
+	    fg = true;
 	    ++shift;
 	 }
       }      
-      array->Move(pos, shift);
-      if (fg) array->bf[pos + shift - 1] = fcode;
+      array->move(pos, shift);
+      if (fg) (*array)[pos + shift - 1] = fcode;
    } else {
-      if (array->last + shift >= array->maxsize) {
-	  array->Resize(array->last + shift);
+      if (array->last() + shift >= array->maxsize()) {
+	  array->resize(array->last() + shift);
       }
-      array->last += shift;
+      array->last(array->last() + shift);
    }
-   array->bf[array->last] = '\0';
+   (*array)[array->last()] = '\0';
 }
 
 
 // I assume that both pos and pos2 are legal positions
 void MathedIter::join(int pos2)
 {   
-    if (!OK() || pos2<= pos)
+    if (!OK() || pos2 <= pos)
       return;    
 
     short f = fcode;
-    if (pos > 0 && array->bf[pos] >= ' ' && MathIsFont(array->bf[pos - 1]))
+    if (pos > 0 && (*array)[pos] >= ' ' && MathIsFont((*array)[pos - 1]))
       --pos;	
     	    
-    if (MathIsFont(array->bf[pos2 - 1]))
+    if (MathIsFont((*array)[pos2 - 1]))
       --pos2;
     
-    if (array->bf[pos2] >= ' ') {
+    if ((*array)[pos2] >= ' ') {
 	for (int p = pos2; p > 0; --p) 
-	  if (MathIsFont(array->bf[p])) {
-	      f = array->bf[p];
+	  if (MathIsFont((*array)[p])) {
+	      f = (*array)[p];
 	      break;
 	  }
-	array->bf[pos++] = f;
+	(*array)[pos++] = f;
     }    
 
-    array->Move(pos2, pos - pos2);
+    array->move(pos2, pos - pos2);
 }
+
 
 void MathedIter::Insert(MathedInset * p, int type)
 {
@@ -281,11 +271,11 @@ void MathedIter::Insert(MathedInset * p, int type)
     if (!MathIsInset(type))
       type = LM_TC_INSET;
     split(shift);
-    array->bf[pos] = type;
-    my_memcpy(&array->bf[pos + 1], &p, sizeof(p));
+    (*array)[pos] = type;
+    array->raw_pointer_insert(p, pos + 1, sizeof(p));
     pos += SizeInset;
-    array->bf[pos - 1] = type;
-    array->bf[array->last] = '\0';
+    (*array)[pos - 1] = type;
+    (*array)[array->last()] = '\0';
     fcode = -1;
 }
 
@@ -297,18 +287,18 @@ bool MathedIter::Delete()
    
    int shift = 0;
    byte c = GetChar();
-   if (c >= ' ') { 
-      if (MathIsFont(array->bf[pos - 1]) && array->bf[pos + 1] < ' ') {
+   if (c >= ' ') {
+      if (MathIsFont((*array)[pos - 1]) && (*array)[pos + 1] < ' ') {
 	 shift = 2;
 	 pos--;
 	 int i = pos - 1;
-	 for (; i > 0 && !MathIsFont(array->bf[i]); --i);
-	 if (i > 0 && MathIsFont(array->bf[i]))
-	   fcode = array->bf[i];
+	 for (; i > 0 && !MathIsFont((*array)[i]); --i);
+	 if (i > 0 && MathIsFont((*array)[i]))
+	   fcode = (*array)[i];
       } else
-	shift = 1;      
+	shift = 1;
    } else {
-      if (MathIsInset(array->bf[pos]))
+      if (MathIsInset((*array)[pos]))
 	shift = sizeof(char*) + 2;
      else if (c == LM_TC_TAB || c == LM_TC_CR) {
 	 ++shift;
@@ -319,65 +309,64 @@ bool MathedIter::Delete()
    } 
     
    if (shift != 0) {
-      array->Move(pos + shift, -shift);
-      if (pos >= array->last) 
-	 pos = (array->last > 0) ? array->last : 0;
+      array->move(pos + shift, -shift);
+      if (pos >= array->last()) 
+	 pos = (array->last() > 0) ? array->last() : 0;
        return true;
    } else
      return false;
 }
 
 
-LyxArrayBase * MathedIter::Copy(int pos1, int pos2)
+MathedArray * MathedIter::Copy(int pos1, int pos2)
 {
    if (!array) {
 //      lyxerr << "Math error: Attempting to copy a void array." << endl;
       return 0;
    }
       
-//   int posx = pos;
    ipush(); 
-   LyxArrayBase * t = array, * a;
+   MathedArray * t = array;
+   MathedArray * a;
     
-   if (pos1 > 0 || pos2 <= array->last) {       
+   if (pos1 > 0 || pos2 <= array->last()) {       
        short fc = 0;
-       if (pos1 > 0 && array->bf[pos1] > ' ') {
+       if (pos1 > 0 && (*array)[pos1] > ' ') {
 	   for (int p = pos1; p >= 0; --p) 
-	     if (MathIsFont(array->bf[p])) {
+	     if (MathIsFont((*array)[p])) {
 		 if (p != pos1 - 1)
-		   fc = array->bf[p];
+		   fc = (*array)[p];
 		 else
 		   --pos1;
 		 break;
 	     }
        }
 
-       if (pos2 > 0 && array->bf[pos2] >= ' '
-	   && MathIsFont(array->bf[pos2 - 1])) 
+       if (pos2 > 0 && (*array)[pos2] >= ' '
+	   && MathIsFont((*array)[pos2 - 1])) 
 	 --pos2;
 
        int dx = pos2 - pos1;
-       a = new LyxArrayBase(dx + LyxArrayBase::ARRAY_MIN_SIZE);
+       a = new MathedArray(dx + MathedArray::ARRAY_MIN_SIZE);
 //       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
-       my_memcpy(&a->bf[(fc) ? 1 : 0], &array->bf[pos1], dx);
+       array->strange_copy(a, (fc) ? 1 : 0, pos1, dx);
        if (fc) {
-	   a->bf[0] = fc;
+	   (*a)[0] = fc;
 	   ++dx;
        }
-       a->last = dx;
-       a->bf[dx] = '\0';
+       a->last(dx);
+       (*a)[dx] = '\0';
    }  else   
-      a = new LyxArrayBase(*array);
+      a = new MathedArray(*array);
    SetData(a);
    while (OK()) {
       if (IsInset()) {
 	 MathedInset * inset = GetInset();
 	 inset = inset->Clone();
-	 my_memcpy(&array->bf[pos + 1], &inset, sizeof(inset));
+	 array->raw_pointer_insert(inset, pos + 1, sizeof(inset));
       }
       Next();
    }
-//   pos = posx;
    array = t;
    ipop(); 
    return a;
@@ -389,7 +378,7 @@ void MathedIter::Clear()
    if (!array) {
 	   lyxerr << "Math error: Attempting to clean a void array." << endl;
       return;
-   }   
+   }
    Reset();  
    while (OK()) {
       if (IsInset()) {
@@ -477,7 +466,7 @@ void MathedXIter::Clean(int pos2)
     }    
     ipop();
     
-    if (pos2 <= array->Last()) {
+    if (pos2 <= array->last()) {
 	pos = pos1;
 	join(pos2);
 	checkTabs();
@@ -485,7 +474,7 @@ void MathedXIter::Clean(int pos2)
 }
 
 
-void MathedXIter::Merge(LyxArrayBase * a0)
+void MathedXIter::Merge(MathedArray * a0)
 {
     if (!a0) {
 	    lyxerr[Debug::MATHED]
@@ -495,15 +484,14 @@ void MathedXIter::Merge(LyxArrayBase * a0)
     }
     // All insets must be clonned
     MathedIter it(a0);
-    LyxArrayBase * a = it.Copy();
+    MathedArray * a = it.Copy();
     
     // make room for the data 
-    split(a->Last());
-    array->MergeF(a, pos, a->Last());
+    split(a->last());
+    array->mergeF(a, pos, a->last());
 
     int pos1 = pos;
-    int pos2 = pos + a->Last();
-    // int pos3 = 0;
+    int pos2 = pos + a->last();
 
     goPosAbs(pos1);
     
@@ -553,6 +541,7 @@ MathedXIter::MathedXIter(MathParInset * pp)
     }
 }
 
+
 void MathedXIter::SetData(MathParInset * pp)
 {
     p = pp;
@@ -570,7 +559,7 @@ void MathedXIter::SetData(MathParInset * pp)
 	y = crow->getBaseline();
     } 
     if (!array) {
-	    array = new LyxArrayBase; // this leaks
+	    array = new MathedArray; // this leaks
 	p->SetData(array);
     }
     size = p->GetStyle();
@@ -653,6 +642,7 @@ void MathedXIter::GoBegin()
    }
 }
 
+
 void MathedXIter::GoLast()
 {
    while (Next());
@@ -699,7 +689,7 @@ bool MathedXIter::Up()
     if (row == 0) return false;
     int xp = x;
     int rowp = row;
-    int colp= col;
+    int colp = col;
     GoBegin();
     while (row < rowp - 1) Next();
     while (x < xp && OK() && !IsCR()) {
@@ -802,6 +792,7 @@ void MathedXIter::delRow()
     
     checkTabs();    
 }
+
 
 void MathedXIter::ipush()
 { 

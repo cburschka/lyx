@@ -31,7 +31,7 @@
 #include "LColor.h"
 #include "Painter.h"
 
-static LyxArrayBase * selarray = 0;
+static MathedArray * selarray = 0;
 
 using std::endl;
 
@@ -776,7 +776,7 @@ bool MathedCursor::pullArg()
 	if (!p) { 
 	    return false;
 	}
-	LyxArrayBase * a = p->GetData();
+	MathedArray * a = p->GetData();
 	p->SetData(0);
 	Delete();
 	if (a) {

@@ -50,7 +50,7 @@ MathedInset * MathRootInset::Clone()
 }
 
 
-void MathRootInset::SetData(LyxArrayBase * d)
+void MathRootInset::SetData(MathedArray * d)
 {
    if (idx == 1)
      MathParInset::SetData(d);
@@ -79,7 +79,7 @@ void MathRootInset::GetXY(int & x, int & y) const
 }
 
 
-LyxArrayBase * MathRootInset::GetData()
+MathedArray * MathRootInset::GetData()
 {
    if (idx == 1)
      return array;

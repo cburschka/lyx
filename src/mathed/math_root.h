@@ -45,11 +45,11 @@ public:
     ///
     void SetFocus(int, int);
     ///
-    void SetData(LyxArrayBase *);
+    void SetData(MathedArray *);
     ///
     void GetXY(int & x, int & y) const;
     ///
-    LyxArrayBase * GetData();
+    MathedArray * GetData();
     ///
     bool setArgumentIdx(int i);
     ///

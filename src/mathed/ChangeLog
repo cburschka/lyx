@@ -1,3 +1,16 @@
+2001-02-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* array.h: made all variables private, removed friend, added new
+	methods: raw_pointer_insert, raw_pointer_copy, strange_copy, added
+	non const operator[] added setter for last and getter for maxsize.
+	changed name from LyxArrayBase to MathedArray.
+	changed name of some methods to start with lowerchar.
+	moved inline methods to array.C
+	
+	* math_iter.C + several file: changes because of the above.
+
+	* array.C: new file with the prev inline methods.
+	
 2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Many files: add support for the align environment from amsmath.

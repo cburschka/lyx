@@ -27,7 +27,7 @@
 ///
 typedef MathParInset * MathParInsetP;
 ///
-typedef LyxArrayBase * LyxArrayBaseP;
+typedef MathedArray * MathedArrayP;
 
 class MathMacroTemplate;
 
@@ -65,11 +65,11 @@ public:
     ///
     void SetFocus(int, int);
     ///
-    LyxArrayBase * GetData();
+    MathedArray * GetData();
     ///
     MathedRowSt * getRowSt() const { return args[idx].row; }
     ///
-    void SetData(LyxArrayBase *);
+    void SetData(MathedArray *);
     ///
     MathedTextCodes getTCode() const { return tcode; }
     ///
@@ -85,7 +85,7 @@ private:
 	///
 	MathedRowSt * row;
 	///
-	LyxArrayBase * array;
+	MathedArray * array;
 	///
 	MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
     };
@@ -156,7 +156,7 @@ public:
     ///
     MathedTextCodes getTCode() const { return tcode; }
     /// 
-    void setArgument(LyxArrayBase *, int i= 0);
+    void setArgument(MathedArray *, int i= 0);
     /// Number of arguments
     int getNoArgs() const { return nargs; }
     ///
@@ -248,14 +248,14 @@ int MathMacro::getMaxArgumentIdx() const
 
 
 inline
-LyxArrayBase * MathMacro::GetData() 
+MathedArray * MathMacro::GetData() 
 { 
     return args[idx].array; 
 } 
 
 
 inline
-void MathMacro::SetData(LyxArrayBase * a)
+void MathMacro::SetData(MathedArray * a)
 {
    args[idx].array = a;
 }

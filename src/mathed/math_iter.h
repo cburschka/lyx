@@ -50,7 +50,7 @@ class MathedIter {
     }
     ///
     explicit
-    MathedIter(LyxArrayBase *);
+    MathedIter(MathedArray *);
     ///
     virtual ~MathedIter() {}
     ///
@@ -60,9 +60,9 @@ class MathedIter {
     ///
     void goPosAbs(int);
     ///
-    int Empty() const { return array->Last()<= 1; }
+    int Empty() const { return array->last() <= 1; }
     ///
-    int OK() const { return array && (pos < array->Last()); }
+    int OK() const { return array && (pos < array->last()); }
     ///
     int IsFirst() const { return (pos == 0); }
     ///
@@ -110,12 +110,12 @@ class MathedIter {
     ///
     void setNumCols(int n) { ncols = n; }
     ///
-    void SetData(LyxArrayBase * a) { array = a; Reset(); }
+    void SetData(MathedArray * a) { array = a; Reset(); }
     ///
-    LyxArrayBase * GetData() const { return array; }
+    MathedArray * GetData() const { return array; }
     
     /// Copy every object from position p1 to p2
-    LyxArrayBase * Copy(int p1 = 0, int p2 = 10000);
+    MathedArray * Copy(int p1 = 0, int p2 = 10000);
    
     /// Delete every object from position p1 to p2
     void Clear();
@@ -134,7 +134,7 @@ class MathedIter {
     ///
     int row, col, ncols;
     ///
-    LyxArrayBase * array;
+    MathedArray * array;
     // one element stack
     struct MIState {
 	///
@@ -229,7 +229,7 @@ class MathedXIter: public MathedIter {
     ///
     void setTab(int, int);
     /// Merge the array at current position
-    void Merge(LyxArrayBase *);
+    void Merge(MathedArray *);
     /// Delete every object from current position to pos2
     void Clean(int pos2);
     ///
@@ -312,14 +312,14 @@ bool MathedIter::IsCR() const
 
 
 inline
-MathedIter::MathedIter(LyxArrayBase * d)
+MathedIter::MathedIter(MathedArray * d)
 	: array(d)
 {
     pos = 0;
     row = col = 0;
     fcode = (array && IsFont()) ? (*array)[0]: 0;
 }
-     
+
 
 inline
 void MathedIter::ipush()
@@ -346,10 +346,13 @@ void MathedXIter::GetPos(int & xx, int & yy) const
 { 
     if (p) 
       p->GetXY(xx, yy);
-    else
-      { xx = 0;  yy = 0; }        
+    else {
+	    xx = 0;
+	    yy = 0;
+    }        
     xx += x;  yy += y;
 }
+
 
 inline 
 int MathedXIter::GetX() const
@@ -359,6 +362,7 @@ int MathedXIter::GetX() const
     GetPos(xx, dummy_y);
     return xx; 
 }
+
 
 inline 
 int MathedXIter::GetY() const
@@ -373,7 +377,8 @@ int MathedXIter::GetY() const
 inline
 void MathedXIter::GetIncPos(int & xx, int & yy) const
 { 
-    xx = x;  yy = y; 
+    xx = x;
+    yy = y; 
 }
 
 

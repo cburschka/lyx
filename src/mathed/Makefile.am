@@ -7,7 +7,9 @@ ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
-libmathed_la_SOURCES = array.h \
+libmathed_la_SOURCES = \
+	array.C \
+	array.h \
 	formula.C \
 	formula.h \
 	formulamacro.C \

@@ -147,7 +147,7 @@ class MathedCursor {
     ///
     MathedXIter cursel, * anchor;
     ///
-//    LyxArrayBase *selarray; 
+//    MathedArray *selarray; 
     ///
     bool is_visible;
     ///

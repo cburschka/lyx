@@ -337,9 +337,9 @@ class MathParInset: public MathedInset  {
     virtual void UserSetSize(short);
  
     /// Data is stored in a LyXArray
-    virtual void SetData(LyxArrayBase *);
+    virtual void SetData(MathedArray *);
     ///
-    virtual LyxArrayBase * GetData() { return array; }
+    virtual MathedArray * GetData() { return array; }
 
     /// Paragraph position
     virtual void GetXY(int &, int &) const;
@@ -379,7 +379,7 @@ class MathParInset: public MathedInset  {
     
  protected:
     /// Paragraph data is stored here
-    LyxArrayBase * array;
+    MathedArray * array;
     /// Cursor start position
     int xo;
     ///
@@ -397,8 +397,8 @@ class MathParInset: public MathedInset  {
     ///
     friend class MathedCursor;
     ///
-    friend LyxArrayBase * mathed_parse(unsigned flags = 0,
-				       LyxArrayBase * a = 0,
+    friend MathedArray * mathed_parse(unsigned flags = 0,
+				       MathedArray * a = 0,
 				       MathParInset ** p = 0);
 };
 
@@ -488,7 +488,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void Metrics();
     ///
-    void SetData(LyxArrayBase *);
+    void SetData(MathedArray *);
     ///
     void SetAlign(char, string const &);
     ///
@@ -523,7 +523,7 @@ class MathMatrixInset: public MathParInset {
 
 /*************************  Prototypes  **********************************/
 /// 
-LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
+MathedArray * mathed_parse(unsigned flags, MathedArray * data,
 			    MathParInset ** mt);
 ///
 void mathed_write(MathParInset *, std::ostream &, int *, bool fragile,
