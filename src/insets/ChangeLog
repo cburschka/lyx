@@ -1,8 +1,12 @@
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
+	* insetcollapsable.C (edit): don't recollapse an already open inset.
+
 	* insettext.C: fixed problem when reinitializing LyXText by not doing
 	it while lt is in use and post this to the next possible time in
 	getLyXText().
+	(searchForward): fixed not unlocking of inset if nothing found.
+	(edit): set cursor behind right (was set -1 pos).
 
 	* insetert.C (InsetERT): init status_ also in the 3rd constructor.
 

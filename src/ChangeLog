@@ -2,6 +2,8 @@
 
 	* lyxfind.C (LyXReplace): fixed not single-replacing characters with
 	casesensitive off.
+	(SearchBackward): comment out the unlocking of the inset_owner this
+	should not be needed!
 
 2001-08-11  Dekel Tsur  <dekelts@tau.ac.il>
 

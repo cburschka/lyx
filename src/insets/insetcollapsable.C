@@ -238,6 +238,9 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 
 	if (collapsed_) {
 		collapsed_ = false;
+		// set this only here as it should be recollapsed only if
+		// it was already collapsed!
+		first_after_edit = true;
 		if (!bv->lockInset(this))
 			return;
 		bv->updateInset(this, true);
@@ -256,7 +259,6 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 			inset.edit(bv, xp, yy, button);
 		}
 	}
-	first_after_edit = true;
 }
 
 

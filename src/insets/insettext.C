@@ -708,8 +708,8 @@ void InsetText::edit(BufferView * bv, bool front)
 		Paragraph * p = par;
 		while(p->next())
 			p = p->next();
-		int const pos = (p->size() ? p->size()-1 : p->size());
-		lt->setCursor(bv, p, pos);
+//		int const pos = (p->size() ? p->size()-1 : p->size());
+		lt->setCursor(bv, p, p->size());
 	}
 	lt->clearSelection();
 	finishUndo();
@@ -2272,6 +2272,8 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 		if (!lpar) {
 			if (clear)
 				lt = 0;
+			// we have to unlock ourself in this function by default!
+			bv->unlockInset(const_cast<InsetText *>(this));
 			return false;
 		}
 		lt->setCursor(bv, lpar, pos);

@@ -311,7 +311,9 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
-	} else if (text->inset_owner) {
+	}
+#if 0
+	else if (text->inset_owner) {
 		// test if we're inside an inset if yes unlock the inset
 		// and recall us with the outside LyXText!
 		bv->unlockInset((UpdatableInset *)text->inset_owner);
@@ -319,6 +321,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			return SearchBackward(bv, bv->getLyXText(), str, cs, mw);
 		}
 	}
+#endif
 	return SR_NOT_FOUND;
 }
 
