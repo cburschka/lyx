@@ -33,6 +33,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 #include "lyxfunc.h"
+#include "lyxtext.h"
 
 #include "formula.h"
 
@@ -349,8 +350,10 @@ bool math_insert_greek(BufferView * bv, char c)
 //	 Update(1);//BUG
 	 new_inset->Edit(bv, 0, 0, 0);
 	 new_inset->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
-	 if (greek_kb_flag_save < 2)
+	 if (greek_kb_flag_save < 2) {
 		 bv->unlockInset(new_inset); // bv->theLockingInset());
+		 bv->text->CursorRight(bv, true);
+	 }
       } else
 	 if (bv->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
 	     bv->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
