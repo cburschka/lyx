@@ -130,20 +130,20 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 		params_.branch = params.branch;
 		setButtonLabel();
 		bv->updateInset(this);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 		}
 	case LFUN_INSET_EDIT:
 		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 
-		return DispatchResult(UNDISPATCHED);
+		return DispatchResult(false);
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBranchMailer("branch", *this).updateDialog(bv);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 		    InsetBranchMailer("branch", *this).showDialog(bv);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		}
 		// fallthrough:
 	default:

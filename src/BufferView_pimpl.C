@@ -1279,7 +1279,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	default:
-		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_)) >= DispatchResult(DISPATCHED);
+		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_)).dispatched();
 	} // end of switch
 
 	return true;

@@ -299,7 +299,7 @@ MathNestInset::priv_dispatch(FuncRequest const & cmd,
 			mathed_parse_cell(ar, cmd.argument);
 			cell(idx).insert(pos, ar);
 			pos += ar.size();
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		}
 
 		case LFUN_PASTESELECTION:
@@ -310,7 +310,7 @@ MathNestInset::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button2)
 				return priv_dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
-			return DispatchResult(UNDISPATCHED);
+			return DispatchResult(false);
 
 		default:
 			return MathInset::priv_dispatch(cmd, idx, pos);

@@ -1,12 +1,16 @@
+2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insets: adjust for DispatchResult changes.
+
 2003-11-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetpagebreak.C: fix screen representation & ascii output.
 
 2003-11-01  Alfredo Braunstein  <abraunst@libero.it>
 
-	* inset.[Ch]: 
-	* insettext.[Ch]: 
-	* insettabular.[Ch]: 
+	* inset.[Ch]:
+	* insettext.[Ch]:
+	* insettabular.[Ch]:
 	* insetcollapsable.[Ch]: bool haveParagraphs() -> int numParagraphs()
 
 2003-10-31  José Matos  <jamatos@lyx.org>

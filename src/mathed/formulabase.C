@@ -215,7 +215,7 @@ void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 {
 	if (!mathcursor)
-		return DispatchResult(UNDISPATCHED);
+		return DispatchResult(false);
 
 	BufferView * bv = cmd.view();
 	bv->updateInset(this);
@@ -223,12 +223,12 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(cmd) == DispatchResult(UNDISPATCHED)) {
+		if (!mathcursor->dispatch(cmd).dispatched()) {
 			// launch math panel for right mouse button
 			lyxerr << "lfunMouseRelease: undispatched: " << cmd.button() << endl;
 			bv->owner()->getDialogs().show("mathpanel");
 		}
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
 	if (cmd.button() == mouse_button::button2) {
@@ -238,7 +238,7 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->insert(ar);
 		bv->updateInset(this);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
 	if (cmd.button() == mouse_button::button1) {
@@ -250,10 +250,10 @@ DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		//mathcursor = new MathCursor(this, x == 0);
 		//metrics(bv);
 		//mathcursor->setPos(x + xo_, y + yo_);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
-	return DispatchResult(UNDISPATCHED);
+	return DispatchResult(false);
 }
 
 
@@ -272,7 +272,7 @@ DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		mathcursor->dispatch(cmd);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
 	if (cmd.button() == mouse_button::button1) {
@@ -281,28 +281,28 @@ DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->dispatch(cmd);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
 	bv->updateInset(this);
-	return DispatchResult(DISPATCHED);
+	return DispatchResult(true);
 }
 
 
 DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (!mathcursor)
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
-	if (mathcursor->dispatch(FuncRequest(cmd)) != DispatchResult(UNDISPATCHED))
-		return DispatchResult(DISPATCHED);
+	if (mathcursor->dispatch(FuncRequest(cmd)).dispatched())
+		return DispatchResult(true);
 
 	// only select with button 1
 	if (cmd.button() != mouse_button::button1)
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	first_x = cmd.x;
 	first_y = cmd.y;
@@ -313,7 +313,7 @@ DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 	bv->updateInset(this);
-	return DispatchResult(DISPATCHED);
+	return DispatchResult(true);
 }
 
 
@@ -349,7 +349,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 			// if that is removed, we won't get the magenta box when entering an
 			// inset for the first time
 			bv->updateInset(this);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		case LFUN_MOUSE_PRESS:
 			//lyxerr << "Mouse single press" << endl;
@@ -368,10 +368,10 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	}
 
 	if (!mathcursor)
-		return DispatchResult(UNDISPATCHED);
+		return DispatchResult(false);
 
 	string argument    = cmd.argument;
-	DispatchResult result      = DispatchResult(DISPATCHED);
+	DispatchResult result(true);
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
 	bool was_selection = mathcursor->selection();
@@ -400,7 +400,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
 	case LFUN_RIGHT:
-		result = mathcursor->right(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED_RIGHT);
+		result = mathcursor->right(sel) ? DispatchResult(true) : DispatchResult(false, FINISHED_RIGHT);
 		//lyxerr << "calling scroll 20" << endl;
 		//scroll(bv, 20);
 		// write something to the minibuffer
@@ -410,19 +410,19 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
 	case LFUN_LEFT:
-		result = mathcursor->left(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED);
+		result = mathcursor->left(sel) ? DispatchResult(true) : DispatchResult(true, FINISHED);
 		break;
 
 	case LFUN_UPSEL:
 		sel = true; // fall through
 	case LFUN_UP:
-		result = mathcursor->up(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED_UP);
+		result = mathcursor->up(sel) ? DispatchResult(true) : DispatchResult(false, FINISHED_UP);
 		break;
 
 	case LFUN_DOWNSEL:
 		sel = true; // fall through
 	case LFUN_DOWN:
-		result = mathcursor->down(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED_DOWN);
+		result = mathcursor->down(sel) ? DispatchResult(true) : DispatchResult(false, FINISHED_DOWN);
 		break;
 
 	case LFUN_WORDSEL:
@@ -434,7 +434,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_UP_PARAGRAPH:
 	case LFUN_DOWN_PARAGRAPHSEL:
 	case LFUN_DOWN_PARAGRAPH:
-		result = DispatchResult(FINISHED);
+		result = DispatchResult(true, FINISHED);
 		break;
 
 	case LFUN_HOMESEL:
@@ -442,7 +442,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		sel = true; // fall through
 	case LFUN_HOME:
 	case LFUN_WORDLEFT:
-		result = mathcursor->home(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED);
+		result = mathcursor->home(sel) ? DispatchResult(true) : DispatchResult(true, FINISHED);
 		break;
 
 	case LFUN_ENDSEL:
@@ -450,21 +450,21 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		sel = true; // fall through
 	case LFUN_END:
 	case LFUN_WORDRIGHT:
-		result = mathcursor->end(sel) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED_RIGHT);
+		result = mathcursor->end(sel) ? DispatchResult(true) : DispatchResult(false, FINISHED_RIGHT);
 		break;
 
 	case LFUN_PRIORSEL:
 	case LFUN_PRIOR:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
-		result = DispatchResult(FINISHED);
+		result = DispatchResult(true, FINISHED);
 		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
-		result = DispatchResult(FINISHED_RIGHT);
+		result = DispatchResult(false, FINISHED_RIGHT);
 		break;
 
 	case LFUN_CELL_FORWARD:
@@ -479,7 +479,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_BACKSPACE:
 		recordUndo(bv, Undo::ATOMIC);
 		if (!mathcursor->backspace()) {
-			result = DispatchResult(FINISHED);
+			result = DispatchResult(true, FINISHED);
 			remove_inset = true;
 		}
 		break;
@@ -488,7 +488,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_DELETE:
 		recordUndo(bv, Undo::ATOMIC);
 		if (!mathcursor->erase()) {
-			result = DispatchResult(FINISHED);
+			result = DispatchResult(true, FINISHED);
 			remove_inset = true;
 		}
 		break;
@@ -641,7 +641,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 
 
 	case LFUN_EXEC_COMMAND:
-		result = DispatchResult(UNDISPATCHED);
+		result = DispatchResult(false);
 		break;
 
 	case LFUN_INSET_ERT:
@@ -669,7 +669,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		if (!argument.empty()) {
 			recordUndo(bv, Undo::ATOMIC);
 			if (argument.size() == 1)
-				result = mathcursor->interpret(argument[0]) ? DispatchResult(DISPATCHED) : DispatchResult(FINISHED_RIGHT);
+				result = mathcursor->interpret(argument[0]) ? DispatchResult(true) : DispatchResult(false, FINISHED_RIGHT);
 			else
 				mathcursor->insert(argument);
 		}
@@ -679,7 +679,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		if (mathcursor->selection())
 			mathcursor->selClear();
 		else
-			result = DispatchResult(UNDISPATCHED);
+			result = DispatchResult(false);
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -687,7 +687,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		break;
 
 	case LFUN_DIALOG_SHOW:
-		result = DispatchResult(UNDISPATCHED);
+		result = DispatchResult(false);
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
@@ -699,7 +699,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		}
 
 		if (data.empty())
-			result = DispatchResult(UNDISPATCHED);
+			result = DispatchResult(false);
 		else {
 			bv->owner()->getDialogs().show(name, data, 0);
 		}
@@ -718,19 +718,19 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 			MathArray ar;
 			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
 				mathcursor->insert(ar);
-				result = DispatchResult(DISPATCHED);
+				result = DispatchResult(true);
 			} else {
-				result = DispatchResult(UNDISPATCHED);
+				result = DispatchResult(false);
 			}
 		}
 	}
 	break;
 
 	default:
-		result = DispatchResult(UNDISPATCHED);
+		result = DispatchResult(false);
 	}
 
-	if (result == DispatchResult(DISPATCHED))
+	if (result == DispatchResult(true))
 		bv->updateInset(this);
 
 	mathcursor->normalize();
@@ -741,8 +741,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	if (mathcursor->selection() || was_selection)
 		toggleInsetSelection(bv);
 
-	if (result == DispatchResult(DISPATCHED) || result == DispatchResult(DISPATCHED_NOUPDATE) ||
-	    result == DispatchResult(UNDISPATCHED)) {
+	if (result.val() <= NOUPDATE) {
 		fitInsetCursor(bv);
 		revealCodes(bv);
 		cmd.view()->stuffClipboard(mathcursor->grabSelection());

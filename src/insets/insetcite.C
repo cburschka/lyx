@@ -316,7 +316,7 @@ InsetCitation::priv_dispatch(FuncRequest const & cmd,
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT:
 		InsetCommandMailer("citation", *this).showDialog(cmd.view());
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	default:
 		return InsetCommand::priv_dispatch(cmd, idx, pos);

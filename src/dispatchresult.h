@@ -14,24 +14,23 @@
 #define DISPATCH_RESULT_H
 
 /** Dispatch result codes
-	DISPATCHED          = the inset catched the action
-	DISPATCHED_NOUPDATE = the inset catched the action and no update
-			is needed here to redraw the inset
+	DISPATCHED          = the inset caught the action
+	DISPATCHED_NOUPDATE = the inset caught the action and no update
+			is needed to redraw the inset
 	FINISHED            = the inset must be unlocked as a result
 			of the action
-	FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
+	FINISHED_RIGHT      = FINISHED, but move the cursor RIGHT from
 			the inset.
-	FINISHED_UP         = FINISHED, but put the cursor UP of
+	FINISHED_UP         = FINISHED, but move the cursor UP from
 			the inset.
-	FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
+	FINISHED_DOWN       = FINISHED, but move the cursor DOWN from
 			the inset.
 	UNDISPATCHED        = the action was not catched, it should be
 			dispatched by lower level insets
 */
 enum dispatch_result_t {
-	UNDISPATCHED = 0,
-	DISPATCHED,
-	DISPATCHED_NOUPDATE,
+	NONE = 0,
+	NOUPDATE,
 	FINISHED,
 	FINISHED_RIGHT,
 	FINISHED_UP,
@@ -45,11 +44,18 @@ enum dispatch_result_t {
 class DispatchResult {
 public:
 	DispatchResult()
-		: val_(UNDISPATCHED) {}
+		: dispatched_(false), val_(NONE) {}
 	explicit
-	DispatchResult(dispatch_result_t val) : val_(val) {}
+	DispatchResult(bool dis)
+		: dispatched_(dis), val_(NONE) {}
+	DispatchResult(bool dis, dispatch_result_t val)
+		: dispatched_(dis), val_(val) {}
 	dispatch_result_t val() const { return val_; }
+	bool dispatched() const {
+		return dispatched_;
+	}
 private:
+	bool dispatched_;
 	dispatch_result_t val_;
 };
 
@@ -57,7 +63,7 @@ private:
 inline
 bool operator==(DispatchResult const & lhs, DispatchResult const & rhs)
 {
-	return lhs.val() == rhs.val();
+	return lhs.dispatched() == rhs.dispatched() && lhs.val() == rhs.val();
 }
 
 
@@ -65,15 +71,6 @@ inline
 bool operator!=(DispatchResult const & lhs, DispatchResult const & rhs)
 {
 	return !(lhs == rhs);
-}
-
-
-// This operator is temporary, will be removed with the introduction of
-// a status field in DispatchResult.
-inline
-bool operator>=(DispatchResult const & lhs, DispatchResult const & rhs)
-{
-	return lhs.val() >= rhs.val();
 }
 
 #endif // DISPATCH_RESULT_H

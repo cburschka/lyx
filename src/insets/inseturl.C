@@ -51,7 +51,7 @@ InsetUrl::priv_dispatch(FuncRequest const & cmd,
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT:
 			InsetCommandMailer("url", *this).showDialog(cmd.view());
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		default:
 			return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}

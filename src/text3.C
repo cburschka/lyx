@@ -982,14 +982,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BEGINNINGBUFSEL:
 		if (inset_owner)
-			return DispatchResult(UNDISPATCHED);
+			return DispatchResult(false);
 		cursorTop();
 		finishChange(bv, true);
 		break;
 
 	case LFUN_ENDBUFSEL:
 		if (inset_owner)
-			return DispatchResult(UNDISPATCHED);
+			return DispatchResult(false);
 		cursorBottom();
 		finishChange(bv, true);
 		break;
@@ -1534,8 +1534,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	default:
-		return DispatchResult(UNDISPATCHED);
+		return DispatchResult(false);
 	}
 
-	return DispatchResult(DISPATCHED);
+	return DispatchResult(true);
 }

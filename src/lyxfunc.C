@@ -885,11 +885,11 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
-		if (cursor.dispatch(FuncRequest(func, view())) == DispatchResult(DISPATCHED)) {
+		if (cursor.dispatch(FuncRequest(func, view())).dispatched()) {
 			lyxerr << "dispatched by Cursor::dispatch()\n";
 			goto exit_with_message;
 		}
-		lyxerr << "### NOT DispatchResult(DISPATCHED) BY Cursor::dispatch() ###\n";
+		lyxerr << "### NOT DispatchResult(true) BY Cursor::dispatch() ###\n";
 	}
 #endif
 
@@ -933,27 +933,27 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 			// Hand-over to inset's own dispatch:
 			result = inset->dispatch(FuncRequest(view(), action, argument));
-			if (result == DispatchResult(DISPATCHED) || result == DispatchResult(DISPATCHED_NOUPDATE)) {
+			if (result.dispatched()) {
 				goto exit_with_message;
 			}
 
-			// If DispatchResult(UNDISPATCHED), just soldier on
-			if (result == DispatchResult(FINISHED)) {
+			// If DispatchResult(false), just soldier on
+			if (result.val() == FINISHED) {
 				owner->clearMessage();
 				goto exit_with_message;
 				// We do not need special RTL handling here:
-				// DispatchResult(FINISHED) means that the cursor should be
+				// FINISHED means that the cursor should be
 				// one position after the inset.
 			}
 
-			if (result == DispatchResult(FINISHED_RIGHT)) {
+			if (result.val() == FINISHED_RIGHT) {
 				view()->text->cursorRight(view());
 				moveCursorUpdate();
 				owner->clearMessage();
 				goto exit_with_message;
 			}
 
-			if (result == DispatchResult(FINISHED_UP)) {
+			if (result.val() == FINISHED_UP) {
 				LyXText * text = view()->text;
 				ParagraphList::iterator pit = text->cursorPar();
 				Row const & row = *pit->getRow(text->cursor.pos());
@@ -975,7 +975,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				goto exit_with_message;
 			}
 
-			if (result == DispatchResult(FINISHED_DOWN)) {
+			if (result.val() == FINISHED_DOWN) {
 				LyXText * text = view()->text;
 				ParagraphList::iterator pit = text->cursorPar();
 				Row const & row = *pit->getRow(text->cursor.pos());

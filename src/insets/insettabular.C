@@ -599,18 +599,18 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 {
-	DispatchResult ret = DispatchResult(UNDISPATCHED);
+	DispatchResult ret(false);
 	if (the_locking_inset) {
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
 		ret = the_locking_inset->dispatch(cmd1);
 	}
-	if (cmd.button() == mouse_button::button3 && ret == DispatchResult(UNDISPATCHED)) {
+	if (cmd.button() == mouse_button::button3 && ret == DispatchResult(false)) {
 		InsetTabularMailer(*this).showDialog(cmd.view());
 		return true;
 	}
-	return ret >= DispatchResult(DISPATCHED);
+	return ret.dispatched() || ret.val() > FINISHED;
 }
 
 
@@ -680,7 +680,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 
 		if (!bv->lockInset(this)) {
 			lyxerr << "InsetTabular::Cannot lock inset" << endl;
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		}
 
 		finishUndo();
@@ -716,34 +716,34 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 				activateCellInset(bv, cmd.x - inset_x, cmd.y - inset_y, cmd.button());
 			}
 		}
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
-	if (result == DispatchResult(DISPATCHED) || result == DispatchResult(DISPATCHED_NOUPDATE)) {
+	if (result.dispatched()) {
 		resetPos(bv);
 		return result;
 	}
 
 	if (cmd.action < 0 && cmd.argument.empty())
-		return DispatchResult(FINISHED);
+		return DispatchResult(false, FINISHED);
 
 	bool hs = hasSelection();
 
-	result = DispatchResult(DISPATCHED);
+	result = DispatchResult(true);
 	// this one have priority over the locked InsetText, if we're not already
 	// inside another tabular then that one get's priority!
 	if (getFirstLockingInsetOfType(InsetOld::TABULAR_CODE) == this) {
 		switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			lfunMousePress(cmd);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		case LFUN_MOUSE_MOTION:
 			lfunMouseMotion(cmd);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		case LFUN_MOUSE_RELEASE:
-			return lfunMouseRelease(cmd) ? DispatchResult(DISPATCHED) : DispatchResult(UNDISPATCHED);
+			return DispatchResult(lfunMouseRelease(cmd));
 
 		case LFUN_CELL_BACKWARD:
 		case LFUN_CELL_FORWARD:
@@ -756,7 +756,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			if (hs)
 				updateLocal(bv);
 			if (!the_locking_inset)
-				return DispatchResult(DISPATCHED_NOUPDATE);
+				return DispatchResult(true, NOUPDATE);
 			return result;
 		// this to avoid compiler warnings.
 		default:
@@ -768,33 +768,35 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 	string    arg    = cmd.argument;
 	if (the_locking_inset) {
 		result = the_locking_inset->dispatch(cmd);
-		if (result == DispatchResult(DISPATCHED_NOUPDATE)) {
-			int sc = scroll();
-			resetPos(bv);
-			if (sc != scroll()) { // inset has been scrolled
+		if (result.dispatched()) {
+			if (result.val() == NOUPDATE) {
+				int const sc = scroll();
+				resetPos(bv);
+				if (sc != scroll()) {
+					// inset has been scrolled
+					updateLocal(bv);
+				}
+			} else {
 				updateLocal(bv);
 			}
 			return result;
-		} else if (result == DispatchResult(DISPATCHED)) {
-			updateLocal(bv);
-			return result;
-		} else if (result == DispatchResult(FINISHED_UP)) {
+		} else if (result.val() == FINISHED_UP) {
 			action = LFUN_UP;
 			// Make sure to reset status message after
 			// exiting, e.g. math inset
 			bv->owner()->clearMessage();
-		} else if (result == DispatchResult(FINISHED_DOWN)) {
+		} else if (result.val() == FINISHED_DOWN) {
 			action = LFUN_DOWN;
 			bv->owner()->clearMessage();
-		} else if (result == DispatchResult(FINISHED_RIGHT)) {
+		} else if (result.val() == FINISHED_RIGHT) {
 			action = LFUN_RIGHT;
 			bv->owner()->clearMessage();
-		} else if (result == DispatchResult(FINISHED)) {
+		} else if (result.val() == FINISHED) {
 			bv->owner()->clearMessage();
 		}
 	}
 
-	result = DispatchResult(DISPATCHED);
+	result = DispatchResult(true);
 	switch (action) {
 		// --- Cursor Movements ----------------------------------
 	case LFUN_RIGHTSEL: {
@@ -960,7 +962,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		break;
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(bv, arg))
-			result = DispatchResult(UNDISPATCHED);
+			result = DispatchResult(false);
 		break;
 		// insert file functions
 	case LFUN_FILE_INSERT_ASCII_PARA:
@@ -972,7 +974,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		if (insertAsciiString(bv, tmpstr, false))
 			updateLocal(bv);
 		else
-			result = DispatchResult(UNDISPATCHED);
+			result = DispatchResult(false);
 		break;
 	}
 	// cut and paste functions
@@ -1073,7 +1075,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 	default:
 		// handle font changing stuff on selection before we lock the inset
 		// in the default part!
-		result = DispatchResult(UNDISPATCHED);
+		result = DispatchResult(false);
 		if (hs) {
 			switch(action) {
 			case LFUN_LANGUAGE:
@@ -1087,7 +1089,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			case LFUN_UNDERLINE:
 			case LFUN_FONT_SIZE:
 				if (bv->dispatch(FuncRequest(bv, action, arg)))
-					result = DispatchResult(DISPATCHED);
+					result = DispatchResult(true);
 				break;
 			default:
 				break;
@@ -1095,15 +1097,15 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		}
 		// we try to activate the actual inset and put this event down to
 		// the insets dispatch function.
-		if (result == DispatchResult(DISPATCHED) || the_locking_inset)
+		if (result.dispatched() || the_locking_inset)
 			break;
 		if (activateCellInset(bv)) {
 			result = the_locking_inset->dispatch(FuncRequest(bv, action, arg));
-			if (result == DispatchResult(UNDISPATCHED) || result >= DispatchResult(FINISHED)) {
+			if (!result.dispatched()) {
 				unlockInsetInInset(bv, the_locking_inset);
 				// we need to update if this was requested before
 				updateLocal(bv);
-				return DispatchResult(UNDISPATCHED);
+				return DispatchResult(false);
 			}
 			if (hs)
 				clearSelection();
@@ -1112,11 +1114,12 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		}
 		break;
 	}
-	if (!(result >= DispatchResult(FINISHED))) {
-		if (!the_locking_inset && bv->fitCursor())
-			updateLocal(bv);
-	} else
+
+	if (result.val() >= FINISHED)
 		bv->unlockInset(this);
+	else if (!the_locking_inset && bv->fitCursor())
+		updateLocal(bv);
+
 	return result;
 }
 
@@ -1404,17 +1407,17 @@ DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 	} else {
 		bool moved = isRightToLeft(bv)
 			? movePrevCell(bv) : moveNextCell(bv);
 		if (!moved)
-			return DispatchResult(FINISHED_RIGHT);
+			return DispatchResult(false, FINISHED_RIGHT);
 		if (lock && activateCellInset(bv))
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 	}
 	resetPos(bv);
-	return DispatchResult(DISPATCHED_NOUPDATE);
+	return DispatchResult(true, NOUPDATE);
 }
 
 
@@ -1422,12 +1425,12 @@ DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
-		return DispatchResult(FINISHED);
+		return DispatchResult(false, FINISHED);
 	// behind the inset
 	if (lock && activateCellInset(bv, 0, 0, mouse_button::none, true))
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	resetPos(bv);
-	return DispatchResult(DISPATCHED_NOUPDATE);
+	return DispatchResult(true, NOUPDATE);
 }
 
 
@@ -1436,7 +1439,7 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
 	if (actcell == ocell) // we moved out of the inset
-		return DispatchResult(FINISHED_UP);
+		return DispatchResult(false, FINISHED_UP);
 	resetPos(bv);
 	if (lock) {
 		int x = 0;
@@ -1446,9 +1449,9 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 	}
-	return DispatchResult(DISPATCHED_NOUPDATE);
+	return DispatchResult(true, NOUPDATE);
 }
 
 
@@ -1457,7 +1460,7 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);
 	if (actcell == ocell) // we moved out of the inset
-		return DispatchResult(FINISHED_DOWN);
+		return DispatchResult(false, FINISHED_DOWN);
 	resetPos(bv);
 	if (lock) {
 		int x = 0;
@@ -1467,9 +1470,9 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 	}
-	return DispatchResult(DISPATCHED_NOUPDATE);
+	return DispatchResult(true, NOUPDATE);
 }
 
 

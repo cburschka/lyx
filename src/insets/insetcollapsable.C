@@ -234,7 +234,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
-		ret = inset.dispatch(adjustCommand(cmd)) == DispatchResult(DISPATCHED);
+		ret = inset.dispatch(adjustCommand(cmd)) == DispatchResult(true);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
 		showInsetDialog(bv);
@@ -310,14 +310,14 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 					if (bv->lockInset(this))
 						inset.dispatch(cmd);
 				}
-				return DispatchResult(DISPATCHED);
+				return DispatchResult(true);
 			}
 
 #ifdef WITH_WARNINGS
 #warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
 #endif
 			if (cmd.button() == mouse_button::button3)
-				return DispatchResult(DISPATCHED);
+				return DispatchResult(true);
 
 			UpdatableInset::priv_dispatch(cmd, idx, pos);
 
@@ -327,13 +327,13 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 				// it was already collapsed!
 				first_after_edit = true;
 				if (!bv->lockInset(this))
-					return DispatchResult(DISPATCHED);
+					return DispatchResult(true);
 				bv->updateInset(this);
 				bv->buffer()->markDirty();
 				inset.dispatch(cmd);
 			} else {
 				if (!bv->lockInset(this))
-					return DispatchResult(DISPATCHED);
+					return DispatchResult(true);
 				if (cmd.y <= button_dim.y2) {
 					FuncRequest cmd1 = cmd;
 					cmd1.y = 0;
@@ -341,26 +341,26 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 				} else
 					inset.dispatch(adjustCommand(cmd));
 			}
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		}
 
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		case LFUN_MOUSE_MOTION:
 			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		case LFUN_MOUSE_RELEASE:
 			lfunMouseRelease(cmd);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 
 		default:
-			DispatchResult result = inset.dispatch(cmd);
-			if (result >= DispatchResult(FINISHED))
+			DispatchResult const result = inset.dispatch(cmd);
+			if (result.val() >= FINISHED)
 				bv->unlockInset(this);
 			first_after_edit = false;
 			return result;

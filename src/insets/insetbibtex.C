@@ -96,19 +96,19 @@ InsetBibtex::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	case LFUN_MOUSE_RELEASE:
 		if (button().box().contains(cmd.x, cmd.y))
 			InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		setParams(p);
-		return  DispatchResult(DISPATCHED);
+		return  DispatchResult(true);
 	}
 
 	default:

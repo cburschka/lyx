@@ -1,3 +1,7 @@
+2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* adjust for DispatchResult changes
+
 2003-10-31  José Matos  <jamatos@lyx.org>
 
 	* formula.[Ch] (ascii, linuxdoc, docbook):
@@ -9,13 +13,13 @@
 
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* math_scriptinset.C (priv_dispatch): 
-	* math_nestinset.C (priv_dispatch): 
-	* math_hullinset.C (priv_dispatch): 
-	* math_gridinset.C (priv_dispatch): 
-	* math_cursor.C (dispatch): 
-	* formulabase.C (lfunMouseRelease, lfunMousePress) 
-	(lfunMouseMotion, priv_dispatch): 
+	* math_scriptinset.C (priv_dispatch):
+	* math_nestinset.C (priv_dispatch):
+	* math_hullinset.C (priv_dispatch):
+	* math_gridinset.C (priv_dispatch):
+	* math_cursor.C (dispatch):
+	* formulabase.C (lfunMouseRelease, lfunMousePress)
+	(lfunMouseMotion, priv_dispatch):
 	* command_inset.C (priv_dispatch): explict DispatchResult ctor fallout.
 
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>

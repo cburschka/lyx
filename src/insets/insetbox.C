@@ -177,16 +177,16 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 		InsetBoxMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
 		bv->updateInset(this);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBoxMailer(*this).updateDialog(bv);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetBoxMailer(*this).showDialog(bv);
-			return DispatchResult(DISPATCHED);
+			return DispatchResult(true);
 		}
 		// fallthrough:
 

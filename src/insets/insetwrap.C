@@ -98,12 +98,12 @@ InsetWrap::priv_dispatch(FuncRequest const & cmd,
 		params_.width     = params.width;
 
 		cmd.view()->updateInset(this);
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetWrapMailer(*this).updateDialog(cmd.view());
-		return DispatchResult(DISPATCHED);
+		return DispatchResult(true);
 
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
