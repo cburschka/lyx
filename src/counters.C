@@ -18,6 +18,7 @@
 #include "counters.h"
 #include "debug.h"
 #include "support/lstrings.h"
+#include "support/LAssert.h"
 
 using std::endl;
 using std::vector;
@@ -198,12 +199,25 @@ void Counters::step(string const & ctr)
 	}
 }
 
-void Counters::reset(string const & match)
+
+void Counters::reset()
 {
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator end = counterList.end();
 	for (; it != end; ++it) {
-		if (it->first.find(match) != string::npos || match == "")
+		it->second.reset();
+	}
+}
+
+
+void Counters::reset(string const & match)
+{
+	lyx::Assert(!match.empty());
+
+	CounterList::iterator it = counterList.begin();
+	CounterList::iterator end = counterList.end();
+	for (; it != end; ++it) {
+		if (it->first.find(match) != string::npos)
 			it->second.reset();
 	}
 }

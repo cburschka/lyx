@@ -984,12 +984,6 @@ string const & Paragraph::getLabelstring() const
 }
 
 
-int Paragraph::getFirstCounter(int i) const
-{
-	return pimpl_->counter_[i];
-}
-
-
 // the next two functions are for the manual labels
 string const Paragraph::getLabelWidthString() const
 {

@@ -1,20 +1,33 @@
+2002-08-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph_pimpl.h: remove inclusion of boost/array.hpp, remove
+	unused class variable counter_,
+
+	* paragraph.[Ch] (getFirstCounter): delete unused function 
+
+	* counters.C: include LAssert.h
+	(reset): add a new function with no arg, change other version to
+	not have def. arg and to not allow empty arg.
+
+	* text2.C (setCounter): remove empty arg from call to Counters::reset
+
 2002-08-11  John Levon  <levon@movementarian.org>
 
 	* Makefile.am: add WordLangTuple.h
- 
+
 2002-08-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.C, ToolbarDefaults.h, kbsequence.h, lyx_main.C,
-	lyxfunc.C lyxlex_pimpl.C: ws changes only. 
+	lyxfunc.C lyxlex_pimpl.C: ws changes only.
 
 	* insets/insettext.C: InsetList changes
-	
+
 	* graphics/GraphicsSupport.C (operator()): InsetList changes
-	
+
 	* toc.C (getTocList): InsetList changes
-	
+
 	* paragraph_pimpl.[Ch]: InsetList changes
-	
+
 	* paragraph.[Ch]: InsetList changes
 
 	* buffer.C (inset_iterator): InsetList changes

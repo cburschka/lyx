@@ -1227,12 +1227,12 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
-			par->counters().reset("");
+			par->counters().reset();
 		}
 		par->enumdepth = par->previous()->enumdepth;
 		par->itemdepth = par->previous()->itemdepth;
 	} else {
-		par->counters().reset("");
+		par->counters().reset();
 		par->params().appendix(par->params().startOfAppendix());
 		par->enumdepth = 0;
 		par->itemdepth = 0;

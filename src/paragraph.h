@@ -222,8 +222,6 @@ public:
 	///
 	void applyLayout(LyXLayout_ptr const & new_layout);
 	///
-	int getFirstCounter(int i) const;
-	///
 	void erase(lyx::pos_type pos);
 	/** the flag determines wether the layout should be copied
 	 */

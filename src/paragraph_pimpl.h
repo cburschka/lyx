@@ -20,8 +20,6 @@
 #include "ParagraphParameters.h"
 #include "counters.h"
 
-#include <boost/array.hpp>
-
 class LyXLayout;
 
 struct Paragraph::Pimpl {
@@ -59,9 +57,7 @@ struct Paragraph::Pimpl {
 				  BufferParams const & bparams) const;
 	///
 	Inset * inset_owner;
-	///
-	boost::array<int, 10> counter_;
-
+	
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.
 	    I don't think it's worth the effort to implement a more effective
@@ -151,7 +147,6 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 	///
 	Counters ctrs;
-
 private:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, lyx::pos_type pos) const;
