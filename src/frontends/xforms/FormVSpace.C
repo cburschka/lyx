@@ -67,44 +67,57 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 VSpace const setVSpaceFromWidgets(FL_OBJECT * choice_type,
 				  FL_OBJECT * input_length,
-				  FL_OBJECT * choice_length)
+				  FL_OBJECT * choice_length,
+				  bool keep)
 {
 	// Paranoia check!
 	BOOST_ASSERT(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		     input_length  && input_length->objclass  == FL_INPUT &&
 		     choice_length && choice_length->objclass == FL_CHOICE);
 
+	VSpace space = VSpace(VSpace::NONE);
+
 	switch (fl_get_choice(choice_type)) {
 	case 1:
-		return VSpace(VSpace::NONE);
+		space = VSpace(VSpace::NONE);
+		break;
 	case 2:
-		return VSpace(VSpace::DEFSKIP);
+		space = VSpace(VSpace::DEFSKIP);
+		break;
 	case 3:
-		return VSpace(VSpace::SMALLSKIP);
+		space = VSpace(VSpace::SMALLSKIP);
+		break;
 	case 4:
-		return VSpace(VSpace::MEDSKIP);
+		space = VSpace(VSpace::MEDSKIP);
+		break;
 	case 5:
-		return VSpace(VSpace::BIGSKIP);
+		space = VSpace(VSpace::BIGSKIP);
+		break;
 	case 6:
-		return VSpace(VSpace::VFILL);
+		space = VSpace(VSpace::VFILL);
+		break;
 	case 7:
-		return VSpace(LyXGlueLength(
-				      getLengthFromWidgets(input_length, choice_length)));
+		space = VSpace(LyXGlueLength(
+			getLengthFromWidgets(input_length, choice_length)));
+		break;
 	}
 
-	return VSpace(VSpace::NONE);
+	space.setKeep(keep);
+	return space;
 }
 
 
 void setWidgetsFromVSpace(VSpace const & space,
 			  FL_OBJECT * choice_type,
 			  FL_OBJECT * input_length,
-			  FL_OBJECT * choice_length)
+			  FL_OBJECT * choice_length,
+			  FL_OBJECT * check_keep)
 {
 	// Paranoia check!
 	BOOST_ASSERT(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		     input_length  && input_length->objclass  == FL_INPUT &&
-		     choice_length && choice_length->objclass == FL_CHOICE);
+		     choice_length && choice_length->objclass == FL_CHOICE &&
+		     check_keep    && check_keep->objclass   == FL_CHECKBUTTON);
 
 	int pos = 1;
 	switch (space.kind()) {
@@ -131,6 +144,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 		break;
 	}
 	fl_set_choice(choice_type, pos);
+	fl_set_button(check_keep, space.keep());
 
 	bool const custom_vspace = space.kind() == VSpace::LENGTH;
 	if (custom_vspace) {
@@ -170,10 +184,10 @@ void FormVSpace::build()
 	bcview().addReadOnly(dialog_->choice_unit_space);
 
 	// check validity of "length + unit" input.
-	// If invalid, the label of choice_space is displayed in red.
+	// If invalid, the label of input_space is displayed in red.
 	addCheckedGlueLength(bcview(),
 			     dialog_->input_space,
-			     dialog_->choice_space);
+			     dialog_->input_space);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_space);
@@ -229,7 +243,8 @@ void FormVSpace::apply()
 	VSpace const space =
 		setVSpaceFromWidgets(dialog_->choice_space,
 				     dialog_->input_space,
-				     dialog_->choice_unit_space);
+				     dialog_->choice_unit_space,
+				     fl_get_button(dialog_->check_keep));
 
 	controller().params() = space;
 }
@@ -240,7 +255,8 @@ void FormVSpace::update()
 	setWidgetsFromVSpace(controller().params(),
 			     dialog_->choice_space,
 			     dialog_->input_space,
-			     dialog_->choice_unit_space);
+			     dialog_->choice_unit_space,
+			     dialog_->check_keep);
 
 	bool const custom_length =
 		fl_get_choice(dialog_->choice_space) == 7;
