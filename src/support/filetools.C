@@ -1008,7 +1008,7 @@ static cmdret do_popen(string const & cmd)
 }
 
 
-string findtexfile(string const & fil, string const & format)
+string findtexfile(string const & fil, string const & /*format*/)
 {
 	/* There is no problem to extend this function too use other
 	   methods to look for files. It could be setup to look
@@ -1019,15 +1019,13 @@ string findtexfile(string const & fil, string const & format)
 	   Lgb
 	*/
 	
-        // If fil is a file with absolute path we just return it
-        if (AbsolutePath(fil)) return fil;
-	
-        // Check in the current dir.
-        if (FileInfo(OnlyFilename(fil)).exist())
-		return OnlyFilename(fil);
-	
+	// If the file can be found directly, we just return a
+	// absolute path version of it. 
+        if (FileInfo(fil).exist())
+		return MakeAbsPath(fil);
+
         // No we try to find it using kpsewhich.
-        string kpsecmd = "kpsewhich --format=" + format + " " + OnlyFilename(fil);
+        string kpsecmd = "kpsewhich " + fil;
 
         cmdret c = do_popen(kpsecmd);
 	

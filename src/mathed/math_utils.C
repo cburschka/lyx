@@ -86,11 +86,11 @@ int MathedLookupBOP(short id)
 		issorted = true;
 	}
 	
-	int result = 0;
 	binary_op_pair * res = lower_bound(binary_op_table,
 					   binary_op_table + bopCount,
 					   id, compara());
-	if (res != (binary_op_table + bopCount))
-		result = res->isrel;
-	return result;
+	if (res->id == id)
+		return res->isrel;
+	else
+		return LMB_NONE;
 }

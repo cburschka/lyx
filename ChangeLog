@@ -1,3 +1,18 @@
+2000-03-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_utils.C (MathedLookupBOP): fix the search
+	routine (this fixes bug where greek letters were surrounded by too
+	much white space).
+
+	* src/support/filetools.C (findtexfile): change a bit the search
+	algorithm, to fix bug introduced in 1.1.4. Note that --format is
+	no longer passed to kpsewhich, we may have to change that later.
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): better version-dependent
+	warning options to avoid problems with X header files (from Angus
+	Leeming).
+	* acinclude.m4: regenerated.
+
 2000-03-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (WriteParagraphData): Using the

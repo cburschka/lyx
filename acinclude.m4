@@ -183,11 +183,11 @@ dnl Check the version of g++
     CXXFLAGS="$ac_save_CXXFLAGS"
   elif test $ac_cv_prog_cxx_g = yes; then
     case $gxx_version in
-      2.95.1) CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti";;
-      2.95.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      2.96*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      *2.91.*) CXXFLAGS="-g $lyx_opt -Wno-return-type -fno-exceptions -fno-rtti";;
-      *)    CXXFLAGS="-g $lyx_opt -fno-exceptions -fno-rtti";;
+      2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti";;
+      2.95.*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.96*)   CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
     esac
   else
     CXXFLAGS="$lyx_opt"
@@ -195,13 +195,14 @@ dnl Check the version of g++
   if test x$with_warnings = xyes ; then
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -Wall -W -Wconversion";;
-	2.96*) CXXFLAGS="$CXXFLAGS -Wall -W -Wconversion";;
-	*) CXXFLAGS="$CXXFLAGS -ansi -Wall -W";;
+	2.96*)  CXXFLAGS="$CXXFLAGS -Wall -W -Wconversion";;
+	*)      CXXFLAGS="$CXXFLAGS -ansi -Wall -W -Wno-return-type";;
     esac
     if test $lyx_devel_version = yes ; then
 	case $gxx_version in
 	    2.95.*) ;;
 	    2.96*) ;;
+	    *2.91*) ;;
 	    *) CXXFLAGS="$CXXFLAGS -pedantic";;
         esac
     fi
