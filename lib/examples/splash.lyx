@@ -1,5 +1,5 @@
-#This file was created by <karger> Fri Feb 26 14:30:20 1999
-#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+#This file was created by <larsbj> Tue Nov  9 04:47:40 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
 \language default
@@ -20,7 +20,7 @@
 \quotes_language english
 \quotes_times 2
 \papercolumns 1
-\papersides 1
+\papersides 0
 \paperpagestyle default
 
 \layout Title
@@ -36,7 +36,8 @@ LyX comes with excellent documentation---please use it! Start with the
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 I
 \bar default 
@@ -49,7 +50,8 @@ ntroduction
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 T
 \bar default 
@@ -83,7 +85,8 @@ The output from LyX looks great! Select
 \bar under 
 F
 \bar default 
-ile->View
+ile\SpecialChar \menuseparator
+View
 \protected_separator 
 
 \bar under 
@@ -125,7 +128,8 @@ lyxrc
 \bar under 
 H
 \bar default 
-elp->
+elp\SpecialChar \menuseparator
+
 \bar under 
 C
 \bar default 
@@ -136,7 +140,12 @@ ustomization
 
 The LyX home page is at 
 \family typewriter 
-www.lyx.org
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
 \family default 
 .
  Get information about LyX, subscribe to the LyX mailing list(s), take the

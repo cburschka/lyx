@@ -121,7 +121,7 @@ LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
 ## Check whether X is new enough to handle the input method stuff
-AC_CHECK_FUNC(XOpenIM)
+AC_CHECK_FUNCS(XOpenIM)
 
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = yes ; then

@@ -1,3 +1,66 @@
+1999-11-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (operator[] const): make it standard
+	conforming. 
+
+	* src/minibuffer.C (Init): changed to reflect that more
+	information is given from the lyxvc and need not be provided here.
+
+	* src/lyxvc.[Ch]: rewrote to use the vc-backend.
+	
+	* src/Makefile.am (lyx_SOURCES): add vc-backend.[Ch]
+
+	* src/LyXView.C (UpdateTimerCB): use static_cast
+	(KeyPressMask_raw_callback): ditto
+
+	* src/BufferView.[Ch]: name change _owner -> owner_ and _buffer ->
+	buffer_, a lot of changes because of this. currentBuffer() ->
+	buffer(), setBuffer(...) -> buffer(...), getOwner() -> owner(),
+	also changes to other files because of this.
+
+1999-11-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/vc-backend.[Ch]: new files. The backends for vc handling,
+	have no support for RCS and partial support for CVS, will be
+	improved later.
+	
+	* src/insets/ several files: changes because of function name
+	changes in Bufferview and LyXView.
+	
+	* src/mathed/math_symbols.C (math_insert_symbol): use static_cast
+
+	* src/support/LSubstring.[Ch]: new files. These implement a
+	Substring that can be very convenient to use. i.e. is this
+	possible:
+	string a = "Mary had a little sheep";
+	Substring(a, "sheep") = "lamb";
+	a is now "Mary has a little lamb".
+
+	* src/support/LRegex.[Ch]: a regex class that can be used to pick
+	out patterns and subpatterns of strings. It is used by LSubstring
+	and also by vc-backend.C
+	
+	* src/support/lyxstring.C: went over all the assertions used and
+	tried to correct the wrong ones and flag which of them is required
+	by the standard. some bugs found because of this. Also removed a
+	couple of assertions.
+
+	* src/support/Makefile.am (libsupport_a_SOURCES): added
+	LSubstring.[Ch] and LRegex.[Ch]
+
+	* src/support/FileInfo.h: have struct stat buf as an object and
+	not a pointer to one, some changes because of this.
+
+	* src/LaTeXFeatures.C (getTClassPreamble): also use the
+	information in layout when addint he layouts preamble to the
+	textclass preamble.
+
+	* src/LaTeXFeatures.h: use a vector<bool> to store the layout
+	usage in.
+
+	* configure.in (CPPFLAGS): use AC_CHECK_FUNCS to check for XOpenIM
+	because of bug in OS/2.
+
 1999-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/lyxmacros.inc (lyxcode): set the font with
