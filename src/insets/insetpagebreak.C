@@ -1,5 +1,5 @@
 /**
- * \file insetline.C
+ * \file insetpagebreak.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -49,8 +49,6 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
 	static std::string const label = _("Page Break");
-	pi.pain.line(x, y, x + dim_.wid, y, LColor::topline, Painter::line_solid,
-			Painter::line_thick);
 
 	LyXFont font;
 	font.setColor(LColor::pagebreak);
@@ -85,7 +83,7 @@ int InsetPagebreak::latex(Buffer const &, ostream & os,
 int InsetPagebreak::ascii(Buffer const &, ostream & os,
 			  LatexRunParams const &) const
 {
-	os << "-------------------------------------------";
+	os << '\n';
 	return 0;
 }
 
