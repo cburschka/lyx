@@ -236,7 +236,7 @@ msgstr "Einfügung Schlüssel|#E"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 msgid "Bibliography keys|#k"
-msgstr "Literaturliste Schlüssel|#S"
+msgstr "Literaturliste Schlüssel|#L"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
@@ -246,19 +246,19 @@ msgstr "Informationen"
 #: ../src/frontends/xforms/forms/form_citation.fd:116
 #: ../src/frontends/xforms/forms/form_forks.fd:115
 msgid "@4->"
-msgstr ""
+msgstr "@4->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:134
 msgid "@9+"
-msgstr ""
+msgstr "@9+"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:152
 msgid "@8->"
-msgstr ""
+msgstr "@8->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:170
 msgid "@2->"
-msgstr ""
+msgstr "@2->"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:205
@@ -267,46 +267,37 @@ msgid "Search"
 msgstr "Suchen"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:224
-#, fuzzy
 msgid "Regular Expression|#x"
-msgstr "Regulärer Ausdruck"
+msgstr "Regulärer Ausdruck|#R"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:242
 #: ../src/frontends/xforms/forms/form_search.fd:134
-#, fuzzy
 msgid "Case sensitive|#C"
-msgstr ""
-"&Groß/klein\n"
-" beachten"
+msgstr "Groß/Kleinschr.\n unterscheiden|#G"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:260
 msgid "Previous|#P"
-msgstr ""
+msgstr "Rückwärts|#c"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:278
-#, fuzzy
 msgid "Next|#N"
-msgstr "Neu|N"
+msgstr "Vorwärts|#V"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:314
-#, fuzzy
 msgid "Full author list|#F"
-msgstr "&Alle Autoren"
+msgstr "Alle Autoren|#A"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:332
-#, fuzzy
 msgid "Force upper case|#u"
-msgstr "Großschreibung"
+msgstr "Großbuchstabe am Anfang|#o"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:350
-#, fuzzy
 msgid "Text before:|#b"
-msgstr "Text vor"
+msgstr "Text zuvor:|#z"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:368
-#, fuzzy
 msgid "Text after:|#T"
-msgstr "Text nach"
+msgstr "Text danach:|#d"
 
 #: ../src/frontends/xforms/forms/form_document.fd:152
 #, fuzzy
@@ -828,7 +819,7 @@ msgstr "Einheiten"
 #: ../src/frontends/xforms/forms/form_graphics.fd:560
 #, fuzzy
 msgid "Clip to bounding box|#C"
-msgstr "Auf BoundingBox begrenzen"
+msgstr "Auf Begrenzungsbox zuschneiden"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
 #, fuzzy
@@ -1010,14 +1001,12 @@ msgid "!(£ @)"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:62
-#, fuzzy
 msgid "Negative|#N"
-msgstr "Navigieren|N"
+msgstr "Negativ|#N"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:80
-#, fuzzy
 msgid "Neg Medium|#E"
-msgstr "Mittel"
+msgstr "Neg Mittel|#E"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:98
 msgid "Neg Thick|#T"
@@ -1029,20 +1018,19 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:134
 msgid "2Quadratin|#2"
-msgstr ""
+msgstr "2Quadratin|#2"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:188
 msgid "Quadratin|#Q"
-msgstr ""
+msgstr "Quadratin|#Q"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:206
 msgid "Thin|#I"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:224
-#, fuzzy
 msgid "Medium|#M"
-msgstr "Mittel"
+msgstr "Mittel|#M"
 
 #: ../src/frontends/xforms/forms/form_maths_style.fd:134
 #: src/frontends/controllers/character.C:47
@@ -1061,7 +1049,6 @@ msgid "textrm"
 msgstr "Text"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:43
-#, fuzzy
 msgid "Width"
 msgstr "Breite"
 
@@ -1179,9 +1166,8 @@ msgid "Roman|#R"
 msgstr "Normal"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:290
-#, fuzzy
 msgid "Sans Serif|#S"
-msgstr "Serifenfrei"
+msgstr "Serifenfrei|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:308
 #, fuzzy
@@ -1201,7 +1187,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
 #, fuzzy
 msgid "Zoom %|#Z"
-msgstr "&Vergrößerung %:"
+msgstr "Vergrößerung %|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:385
 #, fuzzy
@@ -2064,9 +2050,8 @@ msgstr "Unten"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
-#, fuzzy
 msgid "LaTeX Argument|#A"
-msgstr "LaTe&X-Argument:"
+msgstr "LaTeX-Argument|#A"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
 #: ../src/frontends/xforms/forms/form_tabular.fd:1218
@@ -3291,14 +3276,12 @@ msgid "&Clipping"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:622
-#, fuzzy
 msgid "Clip to &bounding box"
-msgstr "Auf BoundingBox begrenzen"
+msgstr "Auf &Begrenzungsbox zuschneiden"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:626
-#, fuzzy
 msgid "Clip to bounding box values"
-msgstr "Auf BoundingBox begrenzen"
+msgstr "Auf die Werte der Begrenzungsbox zuschneiden"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:658
 #, fuzzy
@@ -3306,9 +3289,8 @@ msgid "&Get from file"
 msgstr "Lese Werte aus Datei|#L"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:662
-#, fuzzy
 msgid "Get bounding box from the (EPS) file"
-msgstr "BoundingBox aus Datei lesen"
+msgstr "Begrenzungsbox aus der (EPS-)Datei ermitteln"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:709
 msgid "Right &top:"
@@ -8204,7 +8186,7 @@ msgstr "LaTeX nicht erfolgreich!"
 
 #: src/converter.C:918
 msgid "Missing log file:"
-msgstr "Fehlende Protokoll-Datei: "
+msgstr "Fehlende Protokoll-Datei:"
 
 #: src/converter.C:931
 msgid "There were errors during the LaTeX run."
@@ -8472,7 +8454,7 @@ msgstr "Lesezeichen|L"
 
 #: src/ext_l10n.h:229
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugisisch (Brasilien)"
 
 #: src/ext_l10n.h:234
 msgid "French Canadian"
@@ -8494,20 +8476,19 @@ msgstr "%1$s und %2$s"
 #: src/frontends/controllers/biblio.C:104
 #, c-format
 msgid "%1$s et al."
-msgstr ""
+msgstr "%1$s et al."
 
 #: src/frontends/controllers/biblio.C:111
 msgid " and "
-msgstr ""
+msgstr " und "
 
 #: src/frontends/controllers/biblio.C:113
 msgid "et al."
-msgstr ""
+msgstr "et al."
 
 #: src/frontends/controllers/biblio.C:152
-#, fuzzy
 msgid "No year"
-msgstr "Keine Formelnummer"
+msgstr "Kein Jahr"
 
 #: src/frontends/controllers/character.C:31
 #: src/frontends/controllers/character.C:61
@@ -8788,7 +8769,7 @@ msgstr "Unten links"
 
 #: src/frontends/controllers/ControlGraphics.C:157
 msgid "Left baseline"
-msgstr ""
+msgstr "Grundlinie links"
 
 #: src/frontends/controllers/ControlGraphics.C:158
 msgid "Top center"
@@ -8800,7 +8781,7 @@ msgstr "Unten Mitte"
 
 #: src/frontends/controllers/ControlGraphics.C:158
 msgid "Center baseline"
-msgstr ""
+msgstr "Grundlinie Mitte"
 
 #: src/frontends/controllers/ControlGraphics.C:159
 msgid "Top right"
@@ -8812,7 +8793,7 @@ msgstr "Unten rechts"
 
 #: src/frontends/controllers/ControlGraphics.C:159
 msgid "Right baseline"
-msgstr ""
+msgstr "Grundlinie rechts"
 
 #: src/frontends/controllers/ControlInclude.C:52
 msgid "Select document to include"
@@ -9074,35 +9055,35 @@ msgstr "Eineinhalb"
 
 #: src/frontends/qt2/QDocument.C:112
 msgid "US letter"
-msgstr ""
+msgstr "US letter"
 
 #: src/frontends/qt2/QDocument.C:112
 msgid "US legal"
-msgstr ""
+msgstr "US legal"
 
 #: src/frontends/qt2/QDocument.C:113
 msgid "US executive"
-msgstr ""
+msgstr "US executive"
 
 #: src/frontends/qt2/QDocument.C:114
 msgid "B3"
-msgstr ""
+msgstr "B3"
 
 #: src/frontends/qt2/QDocument.C:114
 msgid "B4"
-msgstr ""
+msgstr "B4"
 
 #: src/frontends/qt2/QDocument.C:129
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: src/frontends/qt2/QDocument.C:130
 msgid "11"
-msgstr ""
+msgstr "11"
 
 #: src/frontends/qt2/QDocument.C:131
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: src/frontends/qt2/QDocument.C:133
 msgid "Smallskip"
@@ -9122,7 +9103,7 @@ msgstr "Länge"
 
 #: src/frontends/qt2/QDocument.C:139
 msgid "empty"
-msgstr ""
+msgstr "leer"
 
 #: src/frontends/qt2/QDocument.C:140
 msgid "plain"
@@ -9196,7 +9177,7 @@ msgstr "A4 sehr schmale Ränder (nur Portrait)"
 
 #: src/frontends/qt2/QDocumentDialog.C:341
 msgid "Very wide Margins "
-msgstr ""
+msgstr "Sehr breite Rände"
 
 #: src/frontends/qt2/QERT.C:31
 msgid "LaTeX ERT"
@@ -9274,21 +9255,20 @@ msgid "Negative space\t\\!"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:131
-#, fuzzy
 msgid "LyX: Insert root"
-msgstr "LyX Einfügungen"
+msgstr "LyX: Wurzel einfügen"
 
 #: src/frontends/qt2/QMathDialog.C:133
 msgid "Square root\t\\sqrt"
-msgstr ""
+msgstr "Quadratwurzel\t\\sqrt"
 
 #: src/frontends/qt2/QMathDialog.C:134
 msgid "Cube root\t\\root"
-msgstr ""
+msgstr "Kubikwurzel\t\\root"
 
 #: src/frontends/qt2/QMathDialog.C:135
 msgid "Other root\t\\root"
-msgstr ""
+msgstr "Andere Wurzel\t\\root"
 
 #: src/frontends/qt2/QMathDialog.C:140
 msgid "LyX: Set math style"
@@ -9957,12 +9937,12 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:123
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
-msgstr ""
+msgstr "Standard|Monochrom|Graustufen|Farbe|Nicht darstellen"
 
 #: src/frontends/xforms/FormGraphics.C:127
-#, fuzzy, c-format
+#, c-format
 msgid "Scale%%%%|%1$s"
-msgstr "Größe%%|%1$s"
+msgstr "Größe%%%%|%1$s"
 
 #: src/frontends/xforms/FormGraphics.C:130
 #, no-c-format
@@ -10042,7 +10022,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:208
 msgid "Select unit for the bounding box values."
-msgstr "Wählen Sie eine Einheit für die Bounding-Box-Werte."
+msgstr "Wählen Sie eine Einheit für die Werte der Begrenzungsbox."
 
 #: src/frontends/xforms/FormGraphics.C:211
 msgid ""
@@ -10053,7 +10033,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:216
 msgid "Clip image to the bounding box values."
-msgstr "Schneide das Bild auf die Bounding-Box zu."
+msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 
 #. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:249
@@ -10087,7 +10067,7 @@ msgstr "Datei"
 
 #: src/frontends/xforms/FormGraphics.C:265
 msgid "Bounding Box"
-msgstr ""
+msgstr "Begrenzungsbox"
 
 #: src/frontends/xforms/FormInclude.C:34
 msgid "Include file"
@@ -11081,9 +11061,8 @@ msgid "opt"
 msgstr "Oben"
 
 #: src/insets/insetoptarg.C:61
-#, fuzzy
 msgid "Opened Optional Argument Inset"
-msgstr "Einfügung geöffnet"
+msgstr "Einfügung für optionales Argument geöffnet"
 
 #: src/insets/insetparent.C:46
 #, c-format
@@ -11776,9 +11755,8 @@ msgid "Insert Label"
 msgstr "Marke einfügen"
 
 #: src/LyXAction.C:250
-#, fuzzy
 msgid "Insert Optional Argument"
-msgstr "Füge Dokument ein"
+msgstr "Füge optionales Argument ein"
 
 #: src/LyXAction.C:252
 msgid "Change language"
@@ -12224,17 +12202,15 @@ msgstr "Unbekannte Funktion ("
 #: src/lyxfunc.C:968
 #, c-format
 msgid "Saving document %1$s..."
-msgstr "Dokument %1$s wird gespeichert..."
+msgstr "Speichere Dokument %1$s..."
 
 #: src/lyxfunc.C:971
-#, fuzzy
 msgid "Saving document "
-msgstr "Dokument wird gespeichert"
+msgstr "Speichere Dokument "
 
 #: src/lyxfunc.C:977
-#, fuzzy
 msgid " done."
-msgstr "Abwärts bewegen"
+msgstr " fertig."
 
 #: src/lyxfunc.C:1119 src/mathed/formulabase.C:1036
 msgid "Missing argument"
@@ -12246,9 +12222,8 @@ msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
 #: src/lyxfunc.C:1135
-#, fuzzy
 msgid "Opening help file "
-msgstr "Öffne Hilfe-Datei"
+msgstr "Öffne Hilfe-Datei "
 
 #: src/lyxfunc.C:1341
 msgid "This is only allowed in math mode!"
@@ -12271,13 +12246,12 @@ msgstr ""
 
 #: src/lyxfunc.C:1476
 msgid "Set-color "
-msgstr ""
+msgstr "Set-color "
 
 #: src/lyxfunc.C:1477
-#, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
-"\" gescheitert - die Farbe ist nicht definiert oder darf nicht umdefiniert "
+" ist gescheitert - die Farbe ist nicht definiert oder darf nicht umdefiniert "
 "werden."
 
 #: src/lyxfunc.C:1627
@@ -12289,12 +12263,10 @@ msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
 #: src/lyxfunc.C:1702
-#, fuzzy
 msgid "No such file"
-msgstr "Lade die  Datei"
+msgstr "Datei nicht vorhanden"
 
 #: src/lyxfunc.C:1703
-#, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Möchten Sie ein neues Dokument mit diesem Namen anlegen?"
 
@@ -12308,9 +12280,8 @@ msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
 #: src/lyxfunc.C:1717
-#, fuzzy
 msgid "Opening document "
-msgstr "Öffne Unterdokument "
+msgstr "Öffne Dokument "
 
 #: src/lyxfunc.C:1727
 #, c-format
@@ -12318,9 +12289,8 @@ msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
 #: src/lyxfunc.C:1729
-#, fuzzy
 msgid " opened."
-msgstr "Abwärts bewegen"
+msgstr " geöffnet."
 
 #: src/lyxfunc.C:1733
 #, c-format
@@ -12328,9 +12298,8 @@ msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
 #: src/lyxfunc.C:1736
-#, fuzzy
 msgid "Could not open document "
-msgstr "Das Dokument konnte nicht geöffnet werden"
+msgstr "Das Dokument konnte nicht geöffnet werden: "
 
 #: src/lyxfunc.C:1763
 #, c-format
@@ -12338,14 +12307,12 @@ msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
 #: src/lyxfunc.C:1767
-#, fuzzy
 msgid "Select "
-msgstr "Wählen Sie die "
+msgstr "Wählen Sie "
 
 #: src/lyxfunc.C:1768
-#, fuzzy
 msgid " file to import"
-msgstr "Wählen Sie das einzufügende Dokument"
+msgstr "die einzufügende Datei"
 
 #: src/lyxfunc.C:1807
 msgid ""
@@ -12373,13 +12340,12 @@ msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Kommandozeilenoption `%1$s'. Das Programm terminiert."
 
 #: src/lyx_main.C:109
-#, fuzzy
 msgid "Wrong command line option `"
 msgstr "Falsche Kommandozeilenoption `"
 
 #: src/lyx_main.C:110
 msgid "'. Exiting."
-msgstr ""
+msgstr "'. Das Programm terminiert."
 
 #: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
@@ -12388,12 +12354,11 @@ msgstr "Achtung: Der volle Pfad des Programmes konnte nicht ermittelt werden."
 #: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr ""
-"Falls Probleme auftreten, starten Sie LyX unter angabe des vollen Pfades."
+"Falls Probleme auftreten, starten Sie LyX unter Angabe des vollen Pfades."
 
 #: src/lyx_main.C:342
-#, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
-msgstr "Die Umgebungsvariable LYX_DIR_12x ist unbrauchbar."
+msgstr "Die Umgebungsvariable LYX_DIR_13x ist unbrauchbar."
 
 #: src/lyx_main.C:344
 msgid "System directory set to: "
@@ -12405,12 +12370,11 @@ msgstr "Warnung! Das Systemverzeichnis konnte nicht bestimmt werden."
 
 #: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
-msgstr "Verwenden Sie die Kommandozeilenoption `-sysdir' oder setzen"
+msgstr "Verwenden Sie die Kommandozeilenoption '-sysdir' oder "
 
 #: src/lyx_main.C:354
-#, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr "Sie die Umgebungsvariable LYX_DIR_12x auf das LyX Systemverzeichnis,"
+msgstr "setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-Systemverzeichnis,"
 
 #: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
@@ -12422,23 +12386,20 @@ msgid "Using built-in default %1$s but expect problems."
 msgstr "Benutze Standardwert %1$s, aber rechnen Sie mit Problemen."
 
 #: src/lyx_main.C:370
-#, fuzzy
 msgid "Using built-in default "
-msgstr "Benutze Standardwerte."
+msgstr "Benutze Standardwert "
 
 #: src/lyx_main.C:371
-#, fuzzy
 msgid " but expect problems."
-msgstr "Rechnen Sie mit Problemen."
+msgstr ", aber rechnen Sie mit Problemen."
 
 #: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr "Rechnen Sie mit Problemen."
 
 #: src/lyx_main.C:593
-#, fuzzy
 msgid "LyX: reconfiguring user directory"
-msgstr "LyX: Verzeichnis anlegen "
+msgstr "LyX: Konfiguriere das Benutzerverzeichnis neu"
 
 #: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
@@ -12466,14 +12427,12 @@ msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Erzeuge Verzeichnis %1$s und führe configure aus..."
 
 #: src/lyx_main.C:622
-#, fuzzy
 msgid "LyX: Creating directory "
-msgstr "LyX: Verzeichnis anlegen "
+msgstr "LyX: Erzeuge Verzeichnis "
 
 #: src/lyx_main.C:623
-#, fuzzy
 msgid " and running configure..."
-msgstr "Neukonfiguration wird durchgeführt..."
+msgstr "und führe configure aus..."
 
 #: src/lyx_main.C:631
 #, c-format
@@ -12481,13 +12440,12 @@ msgid "Failed. Will use %1$s instead."
 msgstr "Fehlgeschlagen. Verwende %1$s stattdessen."
 
 #: src/lyx_main.C:635
-#, fuzzy
 msgid "Failed. Will use "
 msgstr "Fehlgeschlagen. Verwende stattdessen "
 
 #: src/lyx_main.C:636
 msgid " instead."
-msgstr ""
+msgstr "."
 
 #: src/lyx_main.C:659 src/lyx_main.C:663
 msgid "LyX Warning!"
@@ -12503,23 +12461,21 @@ msgid "Using built-in defaults."
 msgstr "Benutze Standardwerte."
 
 #: src/lyx_main.C:664
-#, fuzzy
 msgid "Error while reading "
 msgstr "Fehler beim Lesen von "
 
 #: src/lyx_main.C:774
 msgid "List of supported debug flags:"
-msgstr "Liste der unterstützten Debug Optionen:"
+msgstr "Liste der unterstützten Debug-Optionen:"
 
 #: src/lyx_main.C:779
 #, c-format
 msgid "Setting debug level to %1$s"
-msgstr "Setze Debug-Level auf %1$s"
+msgstr "Setze den Debug-Level auf %1$s"
 
 #: src/lyx_main.C:783
-#, fuzzy
 msgid "Setting debug level to "
-msgstr "Setze Debug-Level auf "
+msgstr "Setze den Debug-Level auf "
 
 #: src/lyx_main.C:794
 msgid ""
@@ -12565,41 +12521,35 @@ msgstr ""
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
 #: src/lyx_main.C:830
-#, fuzzy
 msgid "Missing directory for -sysdir switch"
-msgstr "Die Option -sysdir benötigt ein Verzeichnis!"
+msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
 #: src/lyx_main.C:840
-#, fuzzy
 msgid "Missing directory for -userdir switch"
-msgstr "Die Option -userdir benötigt ein Verzeichnis!"
+msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
 #: src/lyx_main.C:850
-#, fuzzy
 msgid "Missing command string after --execute switch"
-msgstr "Die Option -x benötigt einen Befehl als Argument!"
+msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
 #: src/lyx_main.C:863
-#, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Fehlender Datei-Typ [zB latex, ps...] nach "
+msgstr "Die Option --export verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
 
 #: src/lyx_main.C:875
-#, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr "Fehlender Datei-Typ [zB latex, ps...] nach "
+msgstr "Die Option --import verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
 
 #: src/lyx_main.C:880
-#, fuzzy
 msgid "Missing filename for --import"
-msgstr " Datei zum Einfügen"
+msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
 #: src/lyxrc.C:1832
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Die Zeichensatzkodierung für das LaTeX2e Paket fontenc.  Für nicht englische "
+"Die Zeichensatzkodierung für das LaTeX2e-Paket fontenc.  Für nicht englische "
 "Sprachen wird unbedingt T1 empfohlen."
 
 #: src/lyxrc.C:1836
@@ -13346,7 +13296,7 @@ msgstr ""
 
 #: src/text.C:3284
 msgid " (vertical fill)"
-msgstr ""
+msgstr " (variabler, vertikaler Leerraum)"
 
 #: src/text.C:3367
 msgid "Page Break (top)"
