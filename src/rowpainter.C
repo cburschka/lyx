@@ -1083,10 +1083,9 @@ int paintRows(BufferView const & bv, LyXText const & text,
 int paintText(BufferView & bv, LyXText & text)
 {
 	int const topy = text.top_y();
-	int y_text = topy;
 	ParagraphList::iterator pit;
-	RowList::iterator rit = text.getRowNearY(y_text, pit);
-	int y = y_text - topy;
+	RowList::iterator rit = text.getRowNearY(topy, pit);
+	int y = rit->y() - topy;
 	return paintRows(bv, text, pit, rit, 0, y, y, 0);
 }
 

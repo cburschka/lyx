@@ -131,8 +131,13 @@ public:
 			    ParagraphList::iterator end);
 	/// rebreaks the given par
 	void redoParagraph(ParagraphList::iterator pit);
+
 	/// rebreaks the cursor par
 	void redoParagraph();
+private:
+	/// rebreaks the given par
+	void redoParagraphInternal(ParagraphList::iterator pit);
+public:
 
 	///
 	void toggleFree(LyXFont const &, bool toggleall = false);
@@ -186,7 +191,7 @@ public:
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
 	  */
-	RowList::iterator getRowNearY(int & y,
+	RowList::iterator getRowNearY(int y,
 		ParagraphList::iterator & pit) const;
 
 	/** returns the column near the specified x-coordinate of the row
@@ -194,12 +199,6 @@ public:
 	 */
 	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
 		RowList::iterator rit, int & x, bool & boundary) const;
-
-	/** returns a pointer to a specified row. y is set to the beginning
-	 of the row
-	 */
-	RowList::iterator
-	getRow(ParagraphList::iterator pit, lyx::pos_type pos, int & y) const;
 
 	/// need the selection cursor:
 	void setSelection();

@@ -544,17 +544,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 }
 
 
-// rebreaks all paragraphs between the specified pars
-// This function is needed after SetLayout and SetFont etc.
-void LyXText::redoParagraphs(ParagraphList::iterator start,
-  ParagraphList::iterator end)
-{
-	for ( ; start != end; ++start)
-		redoParagraph(start);
-}
-
-
-void LyXText::redoParagraph(ParagraphList::iterator pit)
+void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 {
 	RowList::iterator rit = pit->rows.begin();
 	RowList::iterator end = pit->rows.end();
@@ -593,6 +583,24 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 }
 
 
+// rebreaks all paragraphs between the specified pars
+// This function is needed after SetLayout and SetFont etc.
+void LyXText::redoParagraphs(ParagraphList::iterator start,
+  ParagraphList::iterator end)
+{
+	for ( ; start != end; ++start)
+		redoParagraphInternal(start);
+	updateRowPositions();
+}
+
+
+void LyXText::redoParagraph(ParagraphList::iterator pit)
+{
+	redoParagraphInternal(pit);
+	updateRowPositions();
+}
+
+
 void LyXText::fullRebreak()
 {
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
@@ -613,7 +621,6 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 
 	//anchor_y_ = 0;
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
-	updateRowPositions();
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
@@ -1340,8 +1347,10 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 		return;
 
 	// get the cursor y position in text
-	int y = 0;
-	RowList::iterator row = getRow(pit, pos, y);
+
+	RowList::iterator row = getRow(pit, pos);
+	int y = row->y();
+	
 	RowList::iterator old_row = row;
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
@@ -1655,6 +1664,8 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	// Get the row first.
 	ParagraphList::iterator pit;
 	RowList::iterator rit = getRowNearY(y, pit);
+	y = rit->y();
+
 	bool bound = false;
 	pos_type const column = getColumnNearX(pit, rit, x, bound);
 	cur.par(pit);

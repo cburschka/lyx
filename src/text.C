@@ -2047,46 +2047,11 @@ RowList::iterator LyXText::getRow(LyXCursor const & cur) const
 RowList::iterator
 LyXText::getRow(ParagraphList::iterator pit, pos_type pos) const
 {
-	RowList::iterator rit = pit->rows.begin();
-	RowList::iterator end = pit->rows.end();
+	RowList::iterator rit = boost::prior(pit->rows.end());
+	RowList::iterator const begin = pit->rows.begin();
 
-#warning Why is this next thing needed? (Andre)
-	while (rit != end
-		     && rit->pos() < pos
-		     && boost::next(rit) != end
-		     && boost::next(rit)->pos() <= pos)
-		++rit;
-
-	return rit;
-}
-
-
-// returns pointer to a specified row
-RowList::iterator
-LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
-{
-	y = 0;
-
-	if (noRows())
-		return firstRow();
-
-	ParagraphList::iterator it = ownerParagraphs().begin();
-	for ( ; it != pit; ++it) {
-		RowList::iterator beg = it->rows.begin();
-		RowList::iterator end = it->rows.end();
-		for (RowList::iterator rit = beg; rit != end; ++rit)
-			y += rit->height();
-	}
-
-	RowList::iterator rit = pit->rows.begin();
-	RowList::iterator end = pit->rows.end();
-	while (rit != end
-	       && rit->pos() < pos
-	       && boost::next(rit) != end
-	       && boost::next(rit)->pos() <= pos) {
-		y += rit->height();
-		++rit;
-	}
+	while (rit != begin && rit->pos() > pos)
+		--rit;
 
 	return rit;
 }
@@ -2095,25 +2060,23 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 // returns pointer to some fancy row 'below' specified row
 RowList::iterator LyXText::cursorIRow() const
 {
-	int y = 0;
-	return getRow(cursor.par(), cursor.pos(), y);
+	return getRow(cursor.par(), cursor.pos());
 }
 
 
-RowList::iterator LyXText::getRowNearY(int & y,
+RowList::iterator LyXText::getRowNearY(int y,
 	ParagraphList::iterator & pit) const
 {
 	//lyxerr << "getRowNearY: y " << y << endl;
-	pit = ownerParagraphs().begin();
-	RowList::iterator rit = firstRow();
-	RowList::iterator rend = endRow();
 
-	for (; rit != rend; nextRow(pit, rit))
-		if (rit->y() > y)
-			break;
+	pit = boost::prior(ownerParagraphs().end());
 
-	previousRow(pit, rit);
-	y = rit->y();
+	RowList::iterator rit = lastRow();
+	RowList::iterator rbegin = firstRow();
+
+	while (rit != rbegin && static_cast<int>(rit->y()) > y)
+		previousRow(pit, rit);
+
 	return rit;
 }
 
