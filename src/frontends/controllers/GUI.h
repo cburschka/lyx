@@ -86,13 +86,13 @@ class ControlCharacter;
 
 template <class GUIview, class GUIbc>
 class GUICharacter : public GUI<ControlCharacter, GUIview,
-				NoRepeatedApplyReadOnlyPolicy, GUIbc>
+				OkApplyCancelReadOnlyPolicy, GUIbc>
 {
 public:
 	///
 	GUICharacter(LyXView & lv, Dialogs & d)
 		: GUI<ControlCharacter, GUIview,
-		      NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
 

@@ -56,7 +56,7 @@ void ControlCharacter::clearParams()
 
 void ControlCharacter::apply()
 {
-	if (!lv_.view()->available())
+	if (!(font_ && lv_.view()->available()))
 		return;
    
 	view().apply();

@@ -1,3 +1,11 @@
+2001-06-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCharacter.C (apply): test that font_ exists, thereby preventing
+	crash when the Font button on the Toolbar is pressed.
+
+	* GUI.h: change policy of Character button controller to
+	OkApplyCancelReadOnlyPolicy.
+
 2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ControlToc.C (getContents): don't add anything to the list if it

@@ -8,6 +8,9 @@
 	(Converters::GetTo): get the contents of "to" not "from"! Thus fix bug
 	that disabled addition of new converters.
 
+	* FormCharacter.C (input, update): new methods. Activate the Apply
+	button when any of the input fileds are not IGNORE.
+
 2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormToc.C (input): change test slightly.

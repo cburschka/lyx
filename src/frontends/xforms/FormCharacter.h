@@ -43,8 +43,11 @@ private:
 	/// Build the dialog
 	virtual void build();
    
-	/// Nothing to update...
-	virtual void update() {}
+	/// Update the dialog.
+	virtual void update();
+
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/** Callback method (used only to activate Apply button when
 	    combox is changed */

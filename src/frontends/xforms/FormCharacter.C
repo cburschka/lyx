@@ -111,6 +111,8 @@ void FormCharacter::build()
 
 void FormCharacter::apply()
 {
+	if (!form()) return;
+
 	int pos = fl_get_choice(dialog_->choice_family);
 	controller().setFamily(family_[pos-1]);
 
@@ -133,4 +135,47 @@ void FormCharacter::apply()
 
 	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
 	controller().setToggleAll(toggleall);
+}
+
+
+void FormCharacter::update()
+{
+	if (input(0,0) == ButtonPolicy::SMI_VALID)
+		bc().valid(); // so that the user can press Ok
+}
+
+
+ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
+{
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
+
+	int pos = fl_get_choice(dialog_->choice_family);
+	if (family_[pos-1] != LyXFont::IGNORE_FAMILY)
+		activate = ButtonPolicy::SMI_VALID;
+	
+	pos = fl_get_choice(dialog_->choice_series);
+	if (series_[pos-1] != LyXFont::IGNORE_SERIES)
+		activate = ButtonPolicy::SMI_VALID;
+
+	pos = fl_get_choice(dialog_->choice_shape);
+	if (shape_[pos-1] != LyXFont::IGNORE_SHAPE)
+		activate = ButtonPolicy::SMI_VALID;
+
+	pos = fl_get_choice(dialog_->choice_size);
+	if (size_[pos-1] != LyXFont::IGNORE_SIZE)
+		activate = ButtonPolicy::SMI_VALID;
+
+	pos = fl_get_choice(dialog_->choice_bar);
+	if (bar_[pos-1] != character::IGNORE)
+		activate = ButtonPolicy::SMI_VALID;
+
+	pos = fl_get_choice(dialog_->choice_color);
+	if (color_[pos-1] != LColor::ignore)
+		activate = ButtonPolicy::SMI_VALID;
+
+	string const language = combo_language2_->getline();
+	if (language != _("No change"))
+		activate = ButtonPolicy::SMI_VALID;
+
+	return activate;
 }

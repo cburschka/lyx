@@ -3,6 +3,9 @@
 	* converter.h (Get): changed argument type from int to
 	FormatList::size_type to avoid unnecessary conversion.
 
+	* bufferview_funcs.C (ToggleAndShow): check state of LyXText pointer
+	before using it.
+
 2001-06-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* gettext.h: include LString.h even when --disable-nls is on. 

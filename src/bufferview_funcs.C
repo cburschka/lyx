@@ -250,6 +250,8 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 			return;
 		}
 		LyXText * text = bv->getLyXText();
+		if (!text)
+			return;
 
 		bv->hideCursor();
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
