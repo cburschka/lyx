@@ -1,3 +1,11 @@
+2001-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_document.fd: rearrangement of the paper tab;
+	rename "use geometry" to "custom margins/sizes".
+
+	* FormDocument.C: add code to avoid the input of senseless data
+	in document -> paper.
+
 2001-10-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormDocument.C: Disable choice "Special" if landscape
