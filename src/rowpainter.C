@@ -200,6 +200,7 @@ void RowPainter::paintInset(pos_type const pos)
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	pi.base.font = getFont(pos);
+	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	theCoords.insets_.add(inset, int(x_), yo_ + row_.baseline());
 	inset->drawSelection(pi, int(x_), yo_ + row_.baseline());
 	inset->draw(pi, int(x_), yo_ + row_.baseline());

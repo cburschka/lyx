@@ -441,9 +441,6 @@ int LyXText::height() const
 
 int LyXText::singleWidth(par_type par, pos_type pos) const
 {
-	if (pos >= pars_[par].size())
-		return 0;
-
 	char const c = pars_[par].getChar(pos);
 	return singleWidth(par, pos, c, getFont(par, pos));
 }

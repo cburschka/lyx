@@ -86,11 +86,6 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 	int const wid = font_metrics::width('n', pi.base.font);
 	int const asc = font_metrics::maxAscent(pi.base.font);
 
-	// hack, and highly dubious
-	lyx::pos_type pos = ownerPar(*pi.base.bv->buffer(), this)
-		.getPositionOfInset(this);
-	bool const ltr_pos = (pi.base.bv->text()->bidi.level(pos) % 2 == 0);
-
 	int xp[3];
 	int yp[3];
 
@@ -98,7 +93,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 	yp[1] = int(y - 0.500 * asc * 0.75);
 	yp[2] = int(y - 0.125 * asc * 0.75);
 
-	if (ltr_pos) {
+	if (pi.ltr_pos) {
 		xp[0] = int(x + wid * 0.375);
 		xp[1] = int(x);
 		xp[2] = int(x + wid * 0.375);
@@ -114,7 +109,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 	yp[1] = int(y - 0.500 * asc * 0.75);
 	yp[2] = int(y - asc * 0.75);
 
-	if (ltr_pos) {
+	if (pi.ltr_pos) {
 		xp[0] = int(x);
 		xp[1] = int(x + wid);
 		xp[2] = int(x + wid);

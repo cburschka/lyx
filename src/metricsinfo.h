@@ -84,6 +84,8 @@ struct PainterInfo {
 	MetricsBase base;
 	///
 	Painter & pain;
+	/// Whether the text at this point is right-to-left (for InsetNewline)
+	bool ltr_pos;
 };
 
 

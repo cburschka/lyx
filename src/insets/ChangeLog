@@ -1,3 +1,6 @@
+2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetnewline.C (draw): use PainterInfo::ltr_pos instead of ownerPar.
 
 2004-08-14  André Pönitz  <poenitz@gmx.net>
 
