@@ -108,7 +108,7 @@ void FormRef::goto_ref()
 			QToolTip::add(dialog_->buttonGoto,_("Jump back to original position"));
 			break;
 		case GOTOBACK:
-			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 			gotowhere=GOTOREF;
 			dialog_->buttonGoto->setText(_("&Goto reference"));
 			QToolTip::remove(dialog_->buttonGoto); 
@@ -121,7 +121,7 @@ void FormRef::updateRefs()
 {
 	// list will be re-done, should go back if necessary
 	if (gotowhere==GOTOBACK) {
-		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 		gotowhere = GOTOREF;
 		dialog_->buttonGoto->setText(_("&Goto reference"));
 		QToolTip::remove(dialog_->buttonGoto); 
@@ -176,6 +176,7 @@ void FormRef::update(bool switched)
 	if (inset_)
 		dialog_->type->setCurrentItem(InsetRef::getType(params.getCmdName()));
 
+	lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
 	dialog_->buttonGoto->setText(_("&Goto reference"));
 	QToolTip::remove(dialog_->buttonGoto); 
 	QToolTip::add(dialog_->buttonGoto,_("Jump to selected reference"));

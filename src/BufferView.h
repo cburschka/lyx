@@ -94,11 +94,11 @@ public:
 	///
 	void beforeChange();
         ///
-        void savePosition();
+        void savePosition(unsigned int i);
         ///
-        void restorePosition();
+        void restorePosition(unsigned int i);
 	///
-	bool NoSavedPositions();
+	bool isSavedPosition(unsigned int i);
 	/** This holds the mapping between buffer paragraphs and screen rows.
 	    This should be private...but not yet. (Lgb)
 	*/

@@ -446,9 +446,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_VC_HISTORY:
 		disable = !buf->lyxvc.inUse();
 		break;
-	case LFUN_REF_BACK:
-		disable = owner->view()->NoSavedPositions();
-		break;
+	case LFUN_BOOKMARK_GOTO:
+		disable =  !owner->view()->
+			isSavedPosition(strToUnsignedInt(argument));
 	default:
 		break;
         }
@@ -1423,11 +1423,13 @@ string const LyXFunc::Dispatch(int ac,
 		}
 		break;
 
-	case LFUN_REF_BACK:
-	{
-		owner->view()->restorePosition();
-	}
-	break;
+	case LFUN_BOOKMARK_SAVE:
+		owner->view()->savePosition(strToUnsignedInt(argument));
+		break;
+
+	case LFUN_BOOKMARK_GOTO:
+		owner->view()->restorePosition(strToUnsignedInt(argument));
+		break;
 
 	case LFUN_REF_GOTO:
 	{
@@ -1435,12 +1437,14 @@ string const LyXFunc::Dispatch(int ac,
 		if (label.empty()) {
 			InsetRef * inset = 
 				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
-			if (inset)
+			if (inset) {
                                 label = inset->getContents();
+				owner->view()->savePosition(0);
+			}
 		}
 		
 		if (!label.empty()) {
-			owner->view()->savePosition();
+			//owner->view()->savePosition(0);
 			if (!owner->view()->gotoLabel(label))
 				WriteAlert(_("Error"), 
 					   _("Couldn't find this label"), 
@@ -2765,7 +2769,7 @@ string const LyXFunc::Dispatch(int ac,
 				    OnlyPath(owner->buffer()->fileName()));
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
-		owner->view()->savePosition();
+		owner->view()->savePosition(0);
 		if (bufferlist.exists(filename))
 			owner->view()->buffer(bufferlist.getBuffer(filename));
 		else

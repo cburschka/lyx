@@ -5,7 +5,6 @@
 
 #include "BufferView.h"
 #include "UpdateInset.h"
-#include "BackStack.h"
 #include "Timeout.h"
 
 #ifdef __GNUG__
@@ -87,11 +86,11 @@ struct BufferView::Pimpl : public Object {
 	///
 	void beforeChange();
 	///
-	void savePosition();
+	void savePosition(unsigned int i);
 	///
-	void restorePosition();
+	void restorePosition(unsigned int i);
 	///
-	bool NoSavedPositions();
+	bool isSavedPosition(unsigned int i);
 	///
 	void setState();
 	///
@@ -133,8 +132,6 @@ struct BufferView::Pimpl : public Object {
 	///
 	Timeout cursor_timeout;
         ///
-        BackStack backstack;
-	///
 	int last_click_x;
 	///
 	int last_click_y;
@@ -149,5 +146,20 @@ struct BufferView::Pimpl : public Object {
 private:
 	///
 	bool using_xterm_cursor;
+
+	struct Position {
+		/// Filename
+                string filename;
+                /// Cursor paragraph Id
+                int par_id;
+                /// Cursor position
+                int par_pos;
+		///
+		Position() : par_id(0), par_pos(0) {}
+		///
+		Position(string const & f, int id, int pos)
+                        : filename(f), par_id(id), par_pos(pos) {}
+	};
+	vector<Position> saved_positions;
 };
 #endif

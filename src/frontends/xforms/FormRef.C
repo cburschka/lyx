@@ -102,6 +102,8 @@ void FormRef::update()
 			      InsetRef::getType(params.getCmdName()) + 1);
 	}
 
+	lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
+
 	toggle = GOBACK;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
@@ -157,9 +159,10 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		string ref = fl_get_input(dialog_->ref);
 		vector<string>::const_iterator cit =
 			find(keys.begin(), keys.end(), ref);
-		if (cit == keys.end())
+		if (cit == keys.end()) {
 			cit = keys.begin();
-		if (ref.empty())
+			fl_set_input(dialog_->ref, (*cit).c_str());
+		} else if (ref.empty())
 			fl_set_input(dialog_->ref, (*cit).c_str());
 
 		int const i = static_cast<int>(cit - keys.begin());
@@ -218,7 +221,7 @@ bool FormRef::input(FL_OBJECT *, long data)
 
 		case GOBACK:
 		{
-			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 			fl_set_object_label(dialog_->button_go,
 					    _("Goto reference"));
 		}
@@ -242,7 +245,7 @@ bool FormRef::input(FL_OBJECT *, long data)
 		}
 
 		toggle = GOBACK;
-		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 		fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
 		fl_activate_object(dialog_->type);

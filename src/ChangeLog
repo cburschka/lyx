@@ -1,5 +1,14 @@
 2001-01-27  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* BufferView_pimpl.C (savePosition, restorePosition): Use a vector of 
+	saved positions instrad of a stack. Furthermore, a position is
+	stored using paragraph id/paragraph position.
+
+	* commandtags.h: Add LFUN_BOOKMARK_SAVE and LFUN_BOOKMARK_GOTO.
+	Remove LFUN_REF_BACK.
+
+2001-01-27  Dekel Tsur  <dekelts@tau.ac.il>
+
 	* converter.C (dvipdfm_options): New method.
 
 2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>

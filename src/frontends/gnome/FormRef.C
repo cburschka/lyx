@@ -364,7 +364,7 @@ void FormRef::gotoRef()
     }
   case GOBACK:
     {
-      lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+      lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 
       gototype_ = GOREF;
       b_goto->set_text(GOTO_REF_LABEL);

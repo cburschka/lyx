@@ -217,21 +217,21 @@ void BufferView::beforeChange()
 }
 
 
-void BufferView::savePosition()
+void BufferView::savePosition(unsigned int i)
 {
-	pimpl_->savePosition();
+	pimpl_->savePosition(i);
 }
 
 
-void BufferView::restorePosition()
+void BufferView::restorePosition(unsigned int i)
 {
-	pimpl_->restorePosition();
+	pimpl_->restorePosition(i);
 }
 
 
-bool BufferView::NoSavedPositions()
+bool BufferView::isSavedPosition(unsigned int i)
 {
-	return pimpl_->NoSavedPositions();
+	return pimpl_->isSavedPosition(i);
 }
 
 

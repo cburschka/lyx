@@ -35,6 +35,7 @@ using std::pair;
 using std::endl;
 using std::vector;
 using std::make_pair;
+using std::min;
 
 /* the selection possible is needed, that only motion events are 
  * used, where the bottom press event was on the drawing area too */
@@ -47,6 +48,7 @@ extern "C" void TimerCB(FL_OBJECT *, long);
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
+const unsigned int saved_positions_num = 20;
 
 static inline
 void waitForX()
@@ -110,6 +112,7 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	cursor_timeout.start();
 	workarea_->setFocus();
 	using_xterm_cursor = false;
+	saved_positions.resize(saved_positions_num);
 }
 
 
@@ -1171,20 +1174,23 @@ void BufferView::Pimpl::beforeChange()
 }
 
 
-void BufferView::Pimpl::savePosition()
+void BufferView::Pimpl::savePosition(unsigned int i)
 {
-	backstack.push(buffer_->fileName(),
-		       bv_->text->cursor.x(),
-		       bv_->text->cursor.y());
+	if (i >= saved_positions_num)
+		return;
+	saved_positions[i] = Position(buffer_->fileName(),
+				      bv_->text->cursor.par()->id(),
+				      bv_->text->cursor.pos());
 }
 
 
-void BufferView::Pimpl::restorePosition()
+void BufferView::Pimpl::restorePosition(unsigned int i)
 {
-	if (backstack.empty()) return;
-	
-	int  x, y;
-	string fname = backstack.pop(&x, &y);
+	if (i >= saved_positions_num)
+		return;
+
+
+	string fname = saved_positions[i].filename;
 
 	beforeChange();
 
@@ -1195,14 +1201,22 @@ void BufferView::Pimpl::restorePosition()
 		if (b != 0 ) buffer(b);
 	}
 
-	bv_->text->SetCursorFromCoordinates(bv_, x, y);
+	LyXParagraph * par = bv_->text->GetParFromID(saved_positions[i].par_id);
+	if (!par)
+		return;
+
+	bv_->text->SetCursor(bv_, par,
+			     min(par->Last(), saved_positions[i].par_pos));
 	update(BufferView::SELECT|BufferView::FITCUR);
 }
 
 
-bool BufferView::Pimpl::NoSavedPositions()
+bool BufferView::Pimpl::isSavedPosition(unsigned int i)
 {
-	return backstack.empty();
+	if (i >= saved_positions_num)
+		return false;
+
+	return !saved_positions[i].filename.empty();
 }
 
 

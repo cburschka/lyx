@@ -222,7 +222,7 @@ enum kb_action {
 	LFUN_EXPORT,                    // Lgb 97-07-29
 	LFUN_INSERTFOOTNOTE,            // Bernhard 97-08-07
 	LFUN_REF_GOTO, // 200           // Ale 970806
-	LFUN_REF_BACK,                  // Ale 970806
+	//LFUN_REF_BACK,                  // Ale 970806
 	LFUN_PARENTINSERT,		// Ale 970813
 	LFUN_REMOVEERRORS,              // Asger 970906
 	LFUN_LDOTS,                     // Asger 970929
@@ -274,6 +274,8 @@ enum kb_action {
 	LFUN_DIALOG_TABULAR_INSERT, // 250 // Jug 20000825 (old table-insert)
 	LFUN_GOTO_PARAGRAPH,             // Dekel 20000826
 	LFUN_REFERENCE_GOTO,             // Dekel 20010114
+	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
+	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
