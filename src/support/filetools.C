@@ -208,6 +208,13 @@ vector<string> const DirList(string const & dir, string const & ext)
 		extension.insert(0, ".");
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
+	if (!dirp) {
+		lyxerr[Debug::FILES] 
+			<< "Directory \"" << dir
+			<< "\" does not exist to DirList." << endl;
+		return dirlist;
+	}
+ 
 	dirent * dire;
 	while ((dire = ::readdir(dirp))) {
 		string const fil = dire->d_name;
