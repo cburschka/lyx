@@ -6,6 +6,9 @@
 
 2001-09-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormMathsSpace.C: Fix bug: the "Maths spacing" dialog is broken
+	("Apply" does not work without former user change in the dialog).
+
 	* FormPreferences.C (build): Fix bug: if you start LyX and open the
 	Preferences dialog, "Apply" is activated even though no change has been
 	made so far.

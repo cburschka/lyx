@@ -40,6 +40,7 @@ void FormMathsSpace::build()
 	dialog_.reset(build_maths_space());
 
 	fl_set_button(dialog_->radio_thin, 1);
+	space_ = 1;
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
@@ -56,7 +57,7 @@ void FormMathsSpace::build()
 
 void FormMathsSpace::apply()
 {
-	if (space_ > 0)
+	if (space_ >= 0)
 		parent_.insertSymbol(latex_mathspace[space_]);
 }
 
