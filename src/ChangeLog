@@ -1,5 +1,14 @@
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
+	* BufferView.h: 
+	* BufferView.C: remove active() and belowMouse()
+
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: use workarea() not workarea_,
+	  and make it use a scoped_ptr instead
+
+2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
+
 	* lyx_gui.C: add debug message on BadWindow
  
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>

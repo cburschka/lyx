@@ -8,8 +8,6 @@
 #include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
 #include "frontends/Timeout.h"
-// FIXME remove me
-#include "frontends/WorkArea.h"
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
@@ -25,6 +23,9 @@ class LyXView;
 class WorkArea;
 class LyXScreen;
 
+// FIXME: remove
+#include <X11/Xlib.h>
+ 
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
@@ -32,6 +33,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	      int xpos, int ypos, int width, int height);
 	///
 	Painter & painter();
+	/// return the work area for this bview
+	WorkArea & workarea() const;
 	///
 	void buffer(Buffer *);
 	///
@@ -119,10 +122,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void focus(bool);
 	///
-	bool active() const;
-	///
-	bool belowMouse() const;
-	///
 	void showCursor();
 	///
 	void hideCursor();
@@ -178,11 +177,11 @@ private:
 	///
 	boost::scoped_ptr<LyXScreen> screen_;
 	///
+	boost::scoped_ptr<WorkArea> workarea_;
+	///
 	long current_scrollbar_value;
 	///
 	Timeout cursor_timeout;
-	///
-	WorkArea workarea_;
 	///
 	void pasteClipboard(bool asPara);
 	///

@@ -245,21 +245,6 @@ WorkArea::~WorkArea()
 }
 
 
-bool WorkArea::belowMouse() const
-{
-	FL_Coord x, y;
-	unsigned int button;
-	fl_get_mouse(&x, &y, &button);
-	FL_Coord ulx = work_area->form->x + work_area->x;
-	FL_Coord uly = work_area->form->y + work_area->y;
-	FL_Coord w = work_area->w;
-	FL_Coord h = work_area->h;
-	if (x > ulx && y > uly && x < ulx + h && y < uly + w)
-		return true;
-	return false;
-}
-
-
 void WorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();

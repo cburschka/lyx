@@ -18,6 +18,7 @@
 #include "BufferView_pimpl.h"
 #include "lyxtext.h"
 #include "frontends/screen.h"
+#include "frontends/WorkArea.h"
 
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,
@@ -210,21 +211,9 @@ void BufferView::focus(bool f)
 }
 
 
-bool BufferView::active() const
-{
-	return pimpl_->active();
-}
-
-
 int BufferView::workWidth() const
 {
-    return pimpl_->workarea_.workWidth();
-}
-
-
-bool BufferView::belowMouse() const
-{
-	return pimpl_->belowMouse();
+	return pimpl_->workarea().workWidth();
 }
 
 
@@ -266,7 +255,7 @@ void BufferView::pasteClipboard(bool asPara)
 
 string const BufferView::getClipboard() const
 {
-	return pimpl_->workarea_.getClipboard();
+	return pimpl_->workarea().getClipboard();
 }
 
 

@@ -65,10 +65,6 @@ public:
 	///
 	bool hasFocus() const { return work_area->focus; }
 	///
-	bool active() const { return work_area->active; }
-	///
-	bool belowMouse() const;
-	///
 	bool visible() const { return work_area->form->visible; }
 	///
 	void greyOut() const;

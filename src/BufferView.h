@@ -191,10 +191,6 @@ public:
 	bool focus() const;
 	///
 	void focus(bool);
-	///
-	bool active() const;
-	///
-	bool belowMouse() const;
 	/// A callback for the slider in the scrollbar.
 	void scrollCB(double);
 

@@ -1,5 +1,10 @@
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
+	* XWorkArea.h:
+	* XWorkArea.C: remove belowMouse() and active()
+ 
+2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
+
 	* xfont_metrics.h:
 	* xfont_metrics.C:
 	* XPainter.C: X-specific metrics stuff moved into xforms/ only
