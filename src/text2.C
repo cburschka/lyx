@@ -858,7 +858,82 @@ string expandLabel(LyXTextClass const & textclass,
 	return textclass.counters().counterLabel(fmt);
 }
 
+
+void incrementItemDepth(ParagraphList::iterator pit,
+			ParagraphList::iterator first_pit)
+{
+	int const cur_labeltype = pit->layout()->labeltype;
+
+	if (cur_labeltype != LABEL_ENUMERATE &&
+	    cur_labeltype != LABEL_ITEMIZE)
+		return;
+
+	int const cur_depth = pit->getDepth();
+
+	ParagraphList::iterator prev_pit = boost::prior(pit);
+	while (true) {
+		int const prev_depth = prev_pit->getDepth();
+		int const prev_labeltype = prev_pit->layout()->labeltype;
+		if (prev_depth == 0 && cur_depth > 0) {
+			if (prev_labeltype == cur_labeltype) {
+				pit->itemdepth = prev_pit->itemdepth + 1;
+			}
+			break;
+		} else if (prev_depth < cur_depth) {
+			if (prev_labeltype == cur_labeltype) {
+				pit->itemdepth = prev_pit->itemdepth + 1;
+				break;
+			}
+		} else if (prev_depth == cur_depth) {
+			if (prev_labeltype == cur_labeltype) {
+				pit->itemdepth = prev_pit->itemdepth;
+				break;
+			}
+		}
+		if (prev_pit == first_pit)
+			break;
+
+		--prev_pit;
+	}
 }
+
+
+void resetEnumCounterIfNeeded(ParagraphList::iterator pit,
+			      ParagraphList::iterator firstpit,
+			      Counters & counters)
+{
+	if (pit == firstpit)
+		return;
+
+	int const cur_depth = pit->getDepth();
+	ParagraphList::iterator prev_pit = boost::prior(pit);
+	while (true) {
+		int const prev_depth = prev_pit->getDepth();
+		int const prev_labeltype = prev_pit->layout()->labeltype;
+		if (prev_depth <= cur_depth) {
+			if (prev_labeltype != LABEL_ENUMERATE) {
+				switch (pit->itemdepth) {
+				case 0:
+					counters.reset("enumi");
+				case 1:
+					counters.reset("enumii");
+				case 2:
+					counters.reset("enumiii");
+				case 3:
+					counters.reset("enumiv");
+				}
+			}
+			break;
+		}
+
+		if (prev_pit == firstpit)
+			break;
+
+		--prev_pit;
+	}
+}
+
+} // anon namespace
 
 
 // set the counter of a paragraph. This includes the labels
@@ -867,50 +942,24 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	BufferParams const & bufparams = buf.params();
 	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
+	ParagraphList::iterator first_pit = ownerParagraphs().begin();
+	Counters & counters = textclass.counters();
 
-	if (pit != ownerParagraphs().begin()) {
+	// Always reset
+	pit->itemdepth = 0;
+
+	if (pit == first_pit) {
+		pit->params().appendix(pit->params().startOfAppendix());
+	} else {
 		pit->params().appendix(boost::prior(pit)->params().appendix());
 		if (!pit->params().appendix() &&
 		    pit->params().startOfAppendix()) {
 			pit->params().appendix(true);
 			textclass.counters().reset();
 		}
-		pit->enumdepth = boost::prior(pit)->enumdepth;
-		pit->itemdepth = boost::prior(pit)->itemdepth;
-	} else {
-		pit->params().appendix(pit->params().startOfAppendix());
-		pit->enumdepth = 0;
-		pit->itemdepth = 0;
-	}
 
-	// Maybe we have to increment the enumeration depth.
-	// Bibliographies can't have their depth changed ie. they
-	//	are always of depth 0
-	if (pit != ownerParagraphs().begin()
-	    && boost::prior(pit)->getDepth() < pit->getDepth()
-	    && boost::prior(pit)->layout()->labeltype == LABEL_ENUMERATE
-	    && pit->enumdepth < 3
-	    && layout->labeltype != LABEL_BIBLIO) {
-		pit->enumdepth++;
-	}
-
-	// Maybe we have to increment the enumeration depth.
-	// Bibliographies can't have their depth changed ie. they
-	//	are always of depth 0
-	if (pit != ownerParagraphs().begin()
-	    && boost::prior(pit)->getDepth() < pit->getDepth()
-	    && boost::prior(pit)->layout()->labeltype == LABEL_ITEMIZE
-	    && pit->itemdepth < 3
-	    && layout->labeltype != LABEL_BIBLIO) {
-		pit->itemdepth++;
-	}
-
-	// Maybe we have to decrement the enumeration depth, see note above
-	if (pit != ownerParagraphs().begin()
-	    && boost::prior(pit)->getDepth() > pit->getDepth()
-	    && layout->labeltype != LABEL_BIBLIO) {
-		pit->enumdepth = depthHook(pit, ownerParagraphs(),
-							 pit->getDepth())->enumdepth;
+		// Maybe we have to increment the item depth.
+		incrementItemDepth(pit, first_pit);
 	}
 
 	// erase what was there before
@@ -927,25 +976,42 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 	if (layout->labeltype == LABEL_COUNTER) {
 		BufferParams const & bufparams = buf.params();
 		LyXTextClass const & textclass = bufparams.getLyXTextClass();
-		textclass.counters().step(layout->counter);
+		counters.step(layout->counter);
 		string label = expandLabel(textclass, layout, pit->params().appendix());
 		pit->params().labelString(label);
-		textclass.counters().reset("enum");
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
-		// At some point of time we should do something more clever here,
-		// like:
+		// At some point of time we should do something more
+		// clever here, like:
 		//   pit->params().labelString(
-		//     bufparams.user_defined_bullet(pit->itemdepth).getText());
-		// for now, use a static label
-		pit->params().labelString("*");
-		textclass.counters().reset("enum");
+		//    bufparams.user_defined_bullet(pit->itemdepth).getText());
+		// for now, use a simple hardcoded label
+		string itemlabel;
+		switch (pit->itemdepth) {
+		case 0:
+			itemlabel = "*";
+			break;
+		case 1:
+			itemlabel = "-";
+			break;
+		case 2:
+			itemlabel = "@";
+			break;
+		case 3:
+			itemlabel = "·";
+			break;
+		}
+
+		pit->params().labelString(itemlabel);
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
+		// Maybe we have to reset the enumeration counter.
+		resetEnumCounterIfNeeded(pit, first_pit, counters);
+
 		// FIXME
 		// Yes I know this is a really, really! bad solution
 		// (Lgb)
 		string enumcounter = "enum";
 
-		switch (pit->enumdepth) {
+		switch (pit->itemdepth) {
 		case 2:
 			enumcounter += 'i';
 		case 1:
@@ -961,12 +1027,12 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 			break;
 		}
 
-		textclass.counters().step(enumcounter);
+		counters.step(enumcounter);
 
-		pit->params().labelString(textclass.counters().enumLabel(enumcounter));
+		pit->params().labelString(counters.enumLabel(enumcounter));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		textclass.counters().step("bibitem");
-		int number = textclass.counters().value("bibitem");
+		counters.step("bibitem");
+		int number = counters.value("bibitem");
 		if (pit->bibitem()) {
 			pit->bibitem()->setCounter(number);
 			pit->params().labelString(layout->labelstring());
@@ -991,7 +1057,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 					break;
 				} else {
 					Paragraph const * owner = &ownerPar(buf, in);
-					tmppit = ownerParagraphs().begin();
+					tmppit = first_pit;
 					for ( ; tmppit != end; ++tmppit)
 						if (&*tmppit == owner)
 							break;
@@ -1010,7 +1076,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 
 				Floating const & fl = textclass.floats().getType(type);
 
-				textclass.counters().step(fl.type());
+				counters.step(fl.type());
 
 				// Doesn't work... yet.
 				s = bformat(_("%1$s #:"), buf.B_(fl.name()));
@@ -1022,20 +1088,6 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 		}
 		pit->params().labelString(s);
 
-		// reset the enumeration counter. They are always reset
-		// when there is any other layout between
-		// Just fall-through between the cases so that all
-		// enum counters deeper than enumdepth is also reset.
-		switch (pit->enumdepth) {
-		case 0:
-			textclass.counters().reset("enumi");
-		case 1:
-			textclass.counters().reset("enumii");
-		case 2:
-			textclass.counters().reset("enumiii");
-		case 3:
-			textclass.counters().reset("enumiv");
-		}
 	}
 }
 

@@ -135,11 +135,8 @@ public:
 	///
 	void layout(LyXLayout_ptr const & new_layout);
 
-	///
-	char enumdepth;
-
-	///
-	char itemdepth;
+	/// This is the item depth, only used by enumerate and itemize
+	signed char itemdepth;
 
 	///
 	InsetBibitem * bibitem() const;  // ale970302

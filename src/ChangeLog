@@ -1,3 +1,18 @@
+2003-10-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (incrementItemDepth): new function, use a backtracking
+	algorithm to discover the correct item depth.
+	(resetEnumCounterIfNeeded): new function, use a backtracking
+	algorithm to discover if counter reset is needed.
+	(setCounter): use them. Simplify a bit. Add different labels for
+	different item depths for itemize.
+
+	* paragraph.C (Paragraph): remove initialization of enumdepth
+	(operator=): ditto 
+
+	* paragraph.h: get rid of enumdepth, and use itemdepth both for
+	enumerate and itemize. Change the type of itemdepth to signed char.
+
 2003-10-08  André Pönitz  <poenitz@gmx.net>
 
 	* lyxtext.h: make the paragraphs_ a pointer instead a ref to make the

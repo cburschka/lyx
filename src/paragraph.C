@@ -54,7 +54,6 @@ using std::ostringstream;
 Paragraph::Paragraph()
 	: y(0), pimpl_(new Paragraph::Pimpl(this))
 {
-	enumdepth = 0;
 	itemdepth = 0;
 	params().clear();
 }
@@ -63,7 +62,6 @@ Paragraph::Paragraph()
 Paragraph::Paragraph(Paragraph const & lp)
 	: y(0), text_(lp.text_), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
-	enumdepth = 0;
 	itemdepth = 0;
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
@@ -93,7 +91,6 @@ void Paragraph::operator=(Paragraph const & lp)
 	delete pimpl_;
 	pimpl_ = new Pimpl(*lp.pimpl_, this);
 
-	enumdepth = lp.enumdepth;
 	itemdepth = lp.itemdepth;
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
