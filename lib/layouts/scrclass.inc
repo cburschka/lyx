@@ -5,6 +5,7 @@
 # General textclass parameters
 SecNumDepth             2
 TocDepth                2
+DefaultStyle            Standard
 
 # Standard style definition
 Style Standard
