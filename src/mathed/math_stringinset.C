@@ -46,7 +46,7 @@ void MathStringInset::normalize(NormalStream & os) const
 
 void MathStringInset::maplize(MapleStream & os) const
 {
-	if (/*code_ != LM_TC_VAR || */ str_.size() <= 1) {
+	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
 		return;
 	}
@@ -55,6 +55,12 @@ void MathStringInset::maplize(MapleStream & os) const
 	os << str_[0];
 	for (string::size_type i = 1; i < str_.size(); ++i)
 		os << str_[i];
+}
+
+
+void MathStringInset::mathematicize(MathematicaStream & os) const
+{
+	os << ' ' << str_ << ' ';
 }
 
 

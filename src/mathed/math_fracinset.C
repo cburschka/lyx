@@ -89,12 +89,15 @@ void MathFracInset::normalize(NormalStream & os) const
 	os << cell(0) << ' ' << cell(1) << ']';
 }
 
-
 void MathFracInset::maplize(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
+void MathFracInset::mathematicize(MathematicaStream & os) const
+{
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
+}
 
 void MathFracInset::octavize(OctaveStream & os) const
 {

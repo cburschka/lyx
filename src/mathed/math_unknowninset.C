@@ -84,6 +84,11 @@ void MathUnknownInset::maplize(MapleStream & os) const
 	os << name_;
 }
 
+void MathUnknownInset::mathematicize(MathematicaStream & os) const
+{
+	os << name_;
+}
+
 
 void MathUnknownInset::mathmlize(MathMLStream & os) const
 {

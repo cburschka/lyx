@@ -55,6 +55,17 @@ void MathDiffInset::maplize(MapleStream & os) const
 	os << ')';
 }
 
+void MathDiffInset::mathematicize(MathematicaStream & os) const
+{
+	os << "Dt[";
+	for (idx_type idx = 0; idx < nargs(); ++idx) {
+		if (idx != 0)
+			os << ',';
+		os << cell(idx);
+	}
+	os << ']';
+}
+
 
 void MathDiffInset::mathmlize(MathMLStream & os) const
 {

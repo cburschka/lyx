@@ -51,6 +51,34 @@ void MathExFuncInset::maplize(MapleStream & os) const
 }
 
 
+string asMathematicaName(string const & name)
+{
+	if (name == "sin")    return "Sin";
+	if (name == "sinh")   return "Sinh";
+	if (name == "arcsin") return "ArcSin";
+	if (name == "cos")    return "Cos";
+	if (name == "cosh")   return "Cosh";
+	if (name == "arcos")  return "ArcCos";
+	if (name == "tan")    return "Tan";
+	if (name == "tanh")   return "Tanh";
+	if (name == "arctan") return "ArcTan";
+	if (name == "cot")    return "Cot";
+	if (name == "coth")   return "Coth";
+	if (name == "csc")    return "Csc";
+	if (name == "sec")    return "Sec";
+	if (name == "exp")    return "Exp";
+	if (name == "log")    return "Log";
+	if (name == "ln" )    return "Log";
+	return name;
+}
+
+
+void MathExFuncInset::mathematicize(MathematicaStream & os) const
+{
+	os << asMathematicaName(name_) << '[' << cell(0) << ']';
+}
+
+
 void MathExFuncInset::mathmlize(MathMLStream & os) const
 {
 	os << MTag(name_.c_str()) << cell(0) << ETag(name_.c_str());

@@ -93,6 +93,7 @@ public:
 	virtual void normalize2(MathInset const * nuc, NormalStream & os) const;
 	virtual void octavize2(MathInset const * nuc, OctaveStream & os) const;
 	virtual void maplize2(MathInset const * nuc, MapleStream & os) const;
+	virtual void mathematicize2(MathInset const * nuc, MathematicaStream & os) const;
 	virtual void mathmlize2(MathInset const * nuc, MathMLStream & os) const;
 
 public:

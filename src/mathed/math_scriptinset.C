@@ -409,6 +409,25 @@ void MathScriptInset::maplize2(MathInset const * nuc, MapleStream & os) const
 }
 
 
+void MathScriptInset::mathematicize2(MathInset const * nuc, MathematicaStream & os) const
+{
+	bool d = hasDown() && down().data_.size();
+	bool u = hasUp() && up().data_.size();
+
+	if (nuc)
+		if (d)  //subscript only if nuc !
+			os << "Subscript[" << nuc;
+		else
+			os << nuc;
+	if (u)
+		os << "^(" << up().data_ << ")";
+
+	if (nuc)
+		if (d)
+		os << "," << down().data_ << "]"; 
+}
+
+
 void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 {
 	bool d = hasDown() && down().data_.size();

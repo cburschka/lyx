@@ -539,19 +539,20 @@ LyXFont::FONT_SERIES const inh_series = LyXFont::INHERIT_SERIES;
 LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE; 
 
 
-
+// mathnormal should be the first, otherwise the fallback fuerther down
+// does not work
 fontinfo fontinfos[] = {
+	{"mathnormal", inh_family,inh_series, LyXFont::UP_SHAPE, LColor::math},
+	{"mathbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
+	{"mathcal",LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathfrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathrm", LyXFont::ROMAN_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::math},
 	{"cmex",   LyXFont::CMEX_FAMILY, inh_series, inh_shape, LColor::math},
 	{"cmm",    LyXFont::CMM_FAMILY, inh_series, inh_shape, LColor::math},
 	{"cmr",    LyXFont::CMR_FAMILY, inh_series, inh_shape, LColor::math},
 	{"cmsy",   LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
 	{"eufrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
-	{"mathbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
-	{"mathcal",LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
-	{"mathfrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
-	{"mathnormal", inh_family,inh_series, LyXFont::UP_SHAPE, LColor::math},
-	{"mathrm", LyXFont::ROMAN_FAMILY, inh_series, inh_shape, LColor::math},
-	{"mathsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::math},
 	{"msa",    LyXFont::MSA_FAMILY, inh_series, inh_shape, LColor::math},
 	{"msb",    LyXFont::MSB_FAMILY, inh_series, inh_shape, LColor::math},
 	{"textbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::black},
@@ -593,7 +594,9 @@ fontinfo * searchFont(string const & name)
 			//lyxerr << "found '" << i << "'\n"; 
 			return fontinfos + i;
 		}
-	return searchFont("mathnormal");
+	// this should be mathnormal
+	return fontinfos;
+	//return searchFont("mathnormal");
 }
 
 
@@ -618,6 +621,7 @@ void fakeFont(string const & orig, string const & fake)
 		lyxerr << "Can't fake font '" << orig << "' with '" << fake << "'\n";
 	}
 }
+
 
 void augmentFont(LyXFont & font, string const & name)
 {

@@ -144,6 +144,22 @@ void MathDelimInset::maplize(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
+void MathDelimInset::mathematicize(MathematicaStream & os) const
+{
+	if (isAbs()) {
+		bool mat =
+			cell(0).size() == 1 && cell(0).begin()->nucleus()
+					&& cell(0).begin()->nucleus()->asMatrixInset();
+		if (mat)
+			os << "Det" << cell(0) << ']';
+		else
+			os << "Abs[" << cell(0) << ']';
+	}
+	else
+		os << left_ << cell(0) << right_;
+}
+
+
 
 void MathDelimInset::mathmlize(MathMLStream & os) const
 {

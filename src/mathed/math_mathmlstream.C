@@ -119,6 +119,48 @@ MapleStream & operator<<(MapleStream & ms, int i)
 //////////////////////////////////////////////////////////////////////
 
 
+MathematicaStream & operator<<(MathematicaStream & ms, MathInset const * p)
+{
+	if (p)
+		p->mathematicize(ms);
+	else
+		lyxerr << "operator<<(MathematicaStream, NULL) called\n";
+	return ms;
+}
+
+
+MathematicaStream & operator<<(MathematicaStream & ms, MathArray const & ar)
+{
+	mathematicize(ar, ms);
+	return ms;
+}
+
+
+MathematicaStream & operator<<(MathematicaStream & ms, char const * s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
+MathematicaStream & operator<<(MathematicaStream & ms, char c)
+{
+	ms.os() << c;
+	return ms;
+}
+
+
+MathematicaStream & operator<<(MathematicaStream & ms, int i)
+{
+	ms.os() << i;
+	return ms;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
 OctaveStream & operator<<(OctaveStream & ns, MathInset const * p)
 {
 	if (p)

@@ -121,6 +121,13 @@ void MathSymbolInset::maplize(MapleStream & os) const
 		os << name();
 }
 
+void MathSymbolInset::mathematicize(MathematicaStream & os) const
+{
+	if ( name() == "pi")    { os << "Pi"; return;}
+	if ( name() == "infty") { os << "Infinity"; return;}
+	os << name();
+}
+
 
 char const * MathMLtype(string const & s)
 {

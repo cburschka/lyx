@@ -28,6 +28,13 @@ MapleStream & operator<<(MapleStream & ms, string const & s)
 }
 
 
+MathematicaStream & operator<<(MathematicaStream & ms, string const & s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
 MathMLStream & operator<<(MathMLStream & ms, string const & s)
 {
 	ms.os() << s;

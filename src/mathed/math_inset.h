@@ -71,6 +71,7 @@ class MathXYMatrixInset;
 class NormalStream;
 class OctaveStream;
 class MapleStream;
+class MathematicaStream;
 class MathMLStream;
 class WriteStream;
 class InfoStream;
@@ -251,6 +252,8 @@ public:
 	virtual void normalize(NormalStream &) const;
 	/// write content as something readable by Maple
 	virtual void maplize(MapleStream &) const;
+	/// write content as something readable by Mathematica
+	virtual void mathematicize(MathematicaStream &) const;
 	/// write content as something resembling MathML
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave

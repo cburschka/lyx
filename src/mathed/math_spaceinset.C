@@ -87,6 +87,11 @@ void MathSpaceInset::maplize(MapleStream & os) const
 	os << ' ';
 }
 
+void MathSpaceInset::mathematicize(MathematicaStream & os) const
+{
+	os << ' ';
+}
+
 
 void MathSpaceInset::octavize(OctaveStream & os) const
 {

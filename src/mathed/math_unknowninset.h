@@ -38,6 +38,8 @@ public:
 	///
 	void maplize(MapleStream &) const;
 	///
+	void mathematicize(MathematicaStream &) const;
+	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;

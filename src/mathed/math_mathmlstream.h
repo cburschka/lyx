@@ -127,6 +127,35 @@ MapleStream & operator<<(MapleStream &, int);
 
 
 //
+// Mathematica
+//
+
+
+class MathematicaStream {
+public:
+	///
+	explicit MathematicaStream(std::ostream & os) : os_(os) {}
+	///
+	std::ostream & os() { return os_; }
+private:
+	///
+	std::ostream & os_;
+};
+
+
+///
+MathematicaStream & operator<<(MathematicaStream &, MathInset const *);
+///
+MathematicaStream & operator<<(MathematicaStream &, MathArray const &);
+///
+MathematicaStream & operator<<(MathematicaStream &, char const *);
+///
+MathematicaStream & operator<<(MathematicaStream &, char);
+///
+MathematicaStream & operator<<(MathematicaStream &, int);
+
+
+//
 // Octave
 //
 

@@ -35,6 +35,8 @@ public:
 	///
 	void maplize(MapleStream &) const;
 	///
+	void mathematicize(MathematicaStream &) const;
+	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void write(WriteStream & os) const;

@@ -73,10 +73,14 @@ void MathSqrtInset::normalize(NormalStream & os) const
 	os << "[sqrt " << cell(0) << ']';
 }
 
-
 void MathSqrtInset::maplize(MapleStream & os) const
 {
 	os << "sqrt(" << cell(0) << ')';
+}
+
+void MathSqrtInset::mathematicize(MathematicaStream & os) const
+{
+	os << "Sqrt[" << cell(0) << ']';
 }
 
 

@@ -844,6 +844,24 @@ void maplize(MathArray const & dat, MapleStream & os)
 }
 
 
+void mathematicize(MathArray const & dat, MathematicaStream & os)
+{
+	MathArray ar = dat;
+	extractStructure(ar);
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathInset const * p = it->nucleus();
+		if (it + 1 != ar.end()) {
+			if (MathScriptInset const * q = asScript(it)) {
+				q->mathematicize2(p, os);
+				++it;
+				continue;
+			}
+		}
+		p->mathematicize(os);
+	}
+}
+
+
 void mathmlize(MathArray const & dat, MathMLStream & os)
 {
 	MathArray ar = dat;

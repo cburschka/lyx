@@ -5,6 +5,7 @@
 
 class NormalStream;
 class MapleStream;
+class MathematicaStream;
 class MathMLStream;
 class OctaveStream;
 class WriteStream;
@@ -13,6 +14,7 @@ class MathArray;
 void write(MathArray const &, WriteStream &);
 void normalize(MathArray const &, NormalStream &);
 void maplize(MathArray const &, MapleStream &);
+void mathematicize(MathArray const &, MathematicaStream &);
 void mathmlize(MathArray const &, MathMLStream &);
 void octavize(MathArray const &, OctaveStream &);
 

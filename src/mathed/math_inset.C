@@ -240,6 +240,13 @@ void MathInset::maplize(MapleStream & os) const
 }
 
 
+void MathInset::mathematicize(MathematicaStream & os) const
+{
+	NormalStream ns(os.os());
+	normalize(ns);
+}
+
+
 void MathInset::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os());
