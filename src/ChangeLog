@@ -1,3 +1,22 @@
+2002-01-03	Martin Vermeer <martin.vermeer@hut.fi>
+
+	* FormMathsPanel.C:
+	* FormMathsPanel.h
+	* MathsSymbols.C:
+	* form_maths_panel.C:
+	* form_maths_panel.h:
+	* form_maths_panel.fd:
+	implemented sub- and super- buttons in math panel.
+
+	* lyx_main.C:
+	Revised hardwired bindings to allow original _ and ^ (or ^ space)
+	to be used as in TeX (req'd byAndré).
+
+	* lyxfunc.C:
+	Allow ^and _ again to be used both as super/subscript (mathed)
+	and as themselves (in text).
+
+
 2002-01-03  Allan Rae  <rae@lyx.org>
 
 	* LyXView.C (updateWindowTitle): Setup a short icon title of either

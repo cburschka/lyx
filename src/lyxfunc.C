@@ -559,8 +559,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_MATH_LIMITS: 
 	case LFUN_MATH_NONUMBER: 
 	case LFUN_MATH_NUMBER:
-	case LFUN_SUBSCRIPT:
-	case LFUN_SUPERSCRIPT:
 		disable = !mathcursor;
 		break;
 
@@ -1436,12 +1434,18 @@ string const LyXFunc::dispatch(int ac,
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_LIMITS:
-	case LFUN_SUBSCRIPT:
-	case LFUN_SUPERSCRIPT:
 	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
 	}
 	break;
+
+	// passthrough hat and underscore outside mathed:
+	case LFUN_SUBSCRIPT:
+		dispatch(LFUN_SELFINSERT, "_");
+		break;
+	case LFUN_SUPERSCRIPT:
+		dispatch(LFUN_SELFINSERT, "^");
+		break;
 
 	case LFUN_MATH_PANEL:
 		owner->getDialogs()->showMathPanel();
