@@ -219,6 +219,9 @@ void ControlSpellchecker::clearParams()
 		speller_->cleanUp();
 		message_ = _("The spell checker has died for some reason.\n"
 			     "Maybe it has been killed.");
+
+		// make sure that the dialog is not launched
+		emergency_exit_ = true;
 	}
 	
 	delete speller_;
@@ -239,9 +242,6 @@ void ControlSpellchecker::clearParams()
 	stop_ = false;
 	result_ = SpellBase::ISP_UNKNOWN;
 	speller_ = 0;
-
-	// make sure that the dialog is not launched
-	emergency_exit_ = true;
 }
 
 
