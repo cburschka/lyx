@@ -1,3 +1,7 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (EXTRA_DIST): fix for distcheck
+
 2003-01-06  Angus Leeming  <leeming@lyx.org>
 
 	* configure.m4: added a few graphics formats (gif, jpg etc).
@@ -7,9 +11,9 @@
 
 2003-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* layouts/jgrga.layout: 
+	* layouts/jgrga.layout:
 	* layouts/aguplus.inc: new class for the AGU Journal of
-	Geophysical Research 
+	Geophysical Research
 
 2003-01-08  José Abílio Oliveira Matos  <jamatos@lyx.org>
 
@@ -18,7 +22,7 @@
 
 2003-01-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* bind/xemacs.bind: 
+	* bind/xemacs.bind:
 	* bind/emacs.bind: move keypad bindings later so that the binding
 	for "copy" shown in menus is not C-KP_Insert
 
@@ -50,8 +54,8 @@
 
 2002-12-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* layouts/cl2emult.layout: 
-	* layouts/broadway.layout: 
+	* layouts/cl2emult.layout:
+	* layouts/broadway.layout:
 	* layouts/hollywood.layout: remove spurious spaces
 
 2002-12-20  Dekel Tsur  <dekelts@tau.ac.il>
@@ -94,18 +98,18 @@
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* images/math/: implement missing math icons
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* images/math/: renames for stupid OSes
- 
+
 2002-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/ru_splash.lyx: update from Vitaly Lipatov
 
 2002-11-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* configure.m4 (removing font links): use -f not -r 
+	* configure.m4 (removing font links): use -f not -r
 
 2002-11-01  Dekel Tsur  <dekelts@tau.ac.il>
 

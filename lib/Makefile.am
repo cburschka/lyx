@@ -34,8 +34,9 @@ LYXLIBDIRS = bind clipart doc examples help images images/math kbd layouts lyx2l
 	     templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates $(LYXLIBDIRS) \
-	encodings languages symbols configure configure.m4
+	external_templates bind clipart doc examples help images \
+	kbd layouts lyx2lyx scripts templates tex ui encodings \
+	languages symbols configure configure.m4
 
 $(srcdir)/configure: $(srcdir)/configure.m4
 	$(M4) $< > $@
