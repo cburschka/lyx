@@ -16,7 +16,7 @@
 
 #include "controllers/Dialog.h"
 
-#include <boost/signals/signal2.hpp>
+#include <boost/signal.hpp>
 #include <boost/bind.hpp>
 
 
@@ -44,16 +44,16 @@ private:
 };
 
 
-boost::signal0<void> & Dialogs::redrawGUI()
+boost::signal<void()> & Dialogs::redrawGUI()
 {
-	static BugfixSignal<boost::signal0<void> > thesignal;
+	static BugfixSignal<boost::signal<void()> > thesignal;
 	return thesignal();
 }
 
 
 namespace {
 
-BugfixSignal<boost::signal2<void, string const &, InsetBase*> > hideSignal;
+BugfixSignal<boost::signal<void(string const &, InsetBase*)> > hideSignal;
 
 }
 

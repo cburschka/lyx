@@ -67,7 +67,7 @@ struct Converter::Impl : public boost::signals::trackable {
 	/** At the end of the conversion process inform the outside world
 	 *  by emitting a signal.
 	 */
-	typedef boost::signal1<void, bool> SignalType;
+	typedef boost::signal<void(bool)> SignalType;
 	///
 	SignalType finishedConversion;
 

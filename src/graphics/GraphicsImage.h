@@ -26,7 +26,7 @@
 
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp>
 
 #include <vector>
 #include <utility>
@@ -66,9 +66,9 @@ public:
 	bool isDrawable() const;
 
 	/** At the end of the loading process inform the outside world
-	 *  by emitting a signal.
+	 *  by emitting a signal
 	 */
-	typedef boost::signal1<void, bool> SignalType;
+	typedef boost::signal<void(bool)> SignalType;
 	///
 	SignalType finishedLoading;
 

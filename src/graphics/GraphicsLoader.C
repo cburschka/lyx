@@ -51,7 +51,7 @@ struct Loader::Impl : boost::signals::trackable {
 	/// We modify a local copy of the image once it is loaded.
 	Image::ImagePtr image_;
 	/// This signal is emitted when the image loading status changes.
-	boost::signal0<void> signal_;
+	boost::signal<void()> signal_;
 
 private:
 	///

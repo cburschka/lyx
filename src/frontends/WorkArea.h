@@ -16,9 +16,7 @@
 #include "frontends/key_state.h"
 
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/signal1.hpp>
-#include <boost/signals/signal2.hpp>
+#include <boost/signal.hpp>
 
 
 class Painter;
@@ -65,17 +63,17 @@ public:
 	virtual void putClipboard(std::string const &) const = 0;
 
 	/// work area dimensions have changed
-	boost::signal0<void> workAreaResize;
+	boost::signal<void()> workAreaResize;
 	/// the scrollbar has changed
-	boost::signal1<void, int> scrollDocView;
+	boost::signal<void(int)> scrollDocView;
 	/// a key combination has been pressed
-	boost::signal2<void, LyXKeySymPtr, key_modifier::state> workAreaKeyPress;
+	boost::signal<void(LyXKeySymPtr, key_modifier::state)> workAreaKeyPress;
 	/// some mouse event
-	boost::signal1<void, FuncRequest> dispatch;
+	boost::signal<void(FuncRequest)> dispatch;
 	/// emitted when an X client has requested our selection
-	boost::signal0<void> selectionRequested;
+	boost::signal<void()> selectionRequested;
 	/// emitted when another X client has stolen our selection
-	boost::signal0<void> selectionLost;
+	boost::signal<void()> selectionLost;
 };
 
 #endif // WORKAREA_H

@@ -3,8 +3,7 @@
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp>
 #include <boost/utility.hpp>
 
 #include <fstream>

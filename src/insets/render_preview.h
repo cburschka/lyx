@@ -20,7 +20,7 @@
 
 #include "support/FileMonitor.h"
 
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
@@ -116,7 +116,7 @@ public:
 
 
 	/// Connect and you'll be informed when the file changes.
-	typedef boost::signal0<void>::slot_type slot_type;
+	typedef lyx::support::FileMonitor::slot_type slot_type;
 	boost::signals::connection fileChanged(slot_type const &);
 
 	/// equivalent to dynamic_cast

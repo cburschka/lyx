@@ -20,7 +20,7 @@
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp>
 
 class Buffer;
 
@@ -73,7 +73,8 @@ public:
 	 *  has been created and is ready for loading through
 	 *  lyx::graphics::PreviewImage::image().
 	 */
-	typedef boost::signal1<void, PreviewImage const &>::slot_type slot_type;
+	typedef boost::signal<void(PreviewImage const &)> sig_type;
+	typedef sig_type::slot_type slot_type;
 	///
 	boost::signals::connection connect(slot_type const &) const;
 

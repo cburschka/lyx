@@ -122,7 +122,7 @@ struct CacheItem::Impl : public boost::signals::trackable {
 	ImageStatus status_;
 
 	/// This signal is emitted when the image loading status changes.
-	boost::signal0<void> statusChanged;
+	boost::signal<void()> statusChanged;
 
 	/// The connection to the signal Image::finishedLoading
 	boost::signals::connection cl_;

@@ -1,5 +1,16 @@
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* pch.h: use proper signal include
+
+	* forkedcallqueue.C: remove unused include
+
+	* FileMonitor.h: Use the preferred calling for Boost.Signal
+	* forkedcall.h: ditto
+
+	* FileMonitor.C: use the new signal typedef
+
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* forkedcall.h: remove include of <boost/function/funtion0.hpp>
 	* pch.h: ditto
 

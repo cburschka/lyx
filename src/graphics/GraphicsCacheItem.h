@@ -32,7 +32,7 @@
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 
 
 class InsetGraphics;
@@ -84,7 +84,8 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef boost::signal0<void>::slot_type slot_type;
+	typedef boost::signal<void()> sig_type;
+	typedef sig_type::slot_type slot_type;
 	///
 	boost::signals::connection connect(slot_type const &) const;
 

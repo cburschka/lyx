@@ -17,7 +17,7 @@
 #include "outputparams.h"
 
 #include <boost/utility.hpp>
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp>
 
 #include <vector>
 #include <set>
@@ -125,7 +125,7 @@ public:
 	};
 
 	/// This signal emits an informative message
-	boost::signal1<void, std::string> message;
+	boost::signal<void(std::string)> message;
 
 
 	/**

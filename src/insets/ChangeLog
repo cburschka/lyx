@@ -1,5 +1,11 @@
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* render_preview.h: Use preferred calling of Boost.Signal
+
+	* pch.h: use proper signal include
+
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* ExternalTransforms.h: User preferred calling of Boost.Function
 
 2004-09-24  Andreas Vox  <vox@isp.uni-luebeck.de>

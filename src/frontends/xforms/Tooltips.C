@@ -38,7 +38,7 @@ namespace frontend {
 
 bool Tooltips::enabled_ = true;
 
-boost::signal0<void> Tooltips::toggled;
+boost::signal<void()> Tooltips::toggled;
 
 
 Tooltips::Tooltips()

@@ -8,7 +8,7 @@
 #include <boost/regex.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/connection.hpp>
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/utility.hpp>

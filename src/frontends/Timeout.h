@@ -13,7 +13,7 @@
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 
 
 /**
@@ -39,7 +39,7 @@ public:
 	/// restart the timer
 	void restart();
 	/// signal emitted on timer expiry
-	boost::signal0<void> timeout;
+	boost::signal<void()> timeout;
 	/// emit the signal
 	void emit();
 	/// set the timer type

@@ -17,7 +17,7 @@
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 
 namespace lyx {
 namespace support {
@@ -52,7 +52,8 @@ public:
 	unsigned long checksum() const;
 
 	/// Connect and you'll be informed when the file has changed.
-	typedef boost::signal0<void>::slot_type slot_type;
+	typedef boost::signal<void()> FileChangedSig;
+	typedef FileChangedSig::slot_type slot_type;
 	///
 	boost::signals::connection connect(slot_type const &) const;
 

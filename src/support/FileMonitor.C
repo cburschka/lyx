@@ -42,7 +42,7 @@ struct FileMonitor::Impl : public boost::signals::trackable {
 	Timeout timer_;
 
 	/// This signal is emitted if the file is modified (has a new checksum).
-	boost::signal0<void> fileChanged_;
+	FileMonitor::FileChangedSig fileChanged_;
 
 	/** We use these to ascertain whether a file (once loaded successfully)
 	 *  has changed.

@@ -34,7 +34,7 @@
 // Dear Lord, deliver us from Evil, aka the Qt headers
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp> // FIXME: Is this needed? (Lgb)
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -179,13 +179,13 @@ void parse_init(int & argc, char * argv[])
 	// algorithm on some entries. It lists the menu names that
 	// should not be moved to the LyX menu
 	static QTranslator aqua_trans(0);
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0, 
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
 					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0, 
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
 					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0, 
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0,
 					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0, 
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
 					     "do_not_merge_me"));
 
 	app.installTranslator(&aqua_trans);

@@ -18,7 +18,7 @@
 #include "frontends/LyXView.h"
 #include <X11/Xlib.h> // for Pixmap
 
-#include <boost/signals/signal0.hpp>
+#include <boost/signal.hpp>
 
 #include <map>
 
@@ -77,7 +77,7 @@ public:
 	///
 	void updateMetrics(bool resize_form = false);
 	///
-	boost::signal0<void> metricsUpdated;
+	boost::signal<void()> metricsUpdated;
 
 private:
 	/**

@@ -13,8 +13,8 @@
 #ifndef DIALOGS_H
 #define DIALOGS_H
 
+#include <boost/signal.hpp>
 #include <boost/utility.hpp>
-#include <boost/signals/signal0.hpp>
 
 class InsetBase;
 class LyXView;
@@ -27,8 +27,7 @@ class Dialog;
 
 /** Container of all dialogs.
  */
-class Dialogs : boost::noncopyable
-{
+class Dialogs : boost::noncopyable {
 public:
 	///
 	Dialogs(LyXView &);
@@ -39,7 +38,7 @@ public:
 	 *  Note that static boost signals break some compilers, so we return a
 	 *  reference to some hidden magic ;-)
 	 */
-	static boost::signal0<void> & redrawGUI();
+	static boost::signal<void()> & redrawGUI();
 
 	/// Toggle tooltips on/off in all dialogs.
 	static void toggleTooltips();

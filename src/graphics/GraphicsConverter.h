@@ -17,8 +17,8 @@
 #ifndef GRAPHICSCONVERTER_H
 #define GRAPHICSCONVERTER_H
 
-#include <boost/signals/signal1.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/signal.hpp>
 #include <boost/utility.hpp>
 
 namespace lyx {
@@ -46,7 +46,8 @@ public:
 	 *  finished.
 	 *  If the conversion is succesful, then the listener is passed \c true.
 	 */
-	typedef boost::signal1<void, bool>::slot_type slot_type;
+	typedef boost::signal<void(bool)> sig_type;
+	typedef sig_type::slot_type slot_type;
 	///
 	boost::signals::connection connect(slot_type const &) const;
 

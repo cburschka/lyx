@@ -139,7 +139,7 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	void startLoading();
 
 	/// Emit this signal when an image is ready for display.
-	boost::signal1<void, PreviewImage const &> imageReady;
+	boost::signal<void(PreviewImage const &)> imageReady;
 
 	Buffer const & buffer() const { return buffer_; }
 

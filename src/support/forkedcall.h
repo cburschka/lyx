@@ -27,7 +27,7 @@
 #define FORKEDCALL_H
 
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal2.hpp>
+#include <boost/signal.hpp>
 
 #include <sys/types.h>
 
@@ -60,7 +60,7 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef boost::signal2<void, pid_t, int> SignalType;
+	typedef boost::signal<void(pid_t, int)> SignalType;
 
 	/** The signal is connected in the calling routine to the desired
 	 *  slot. We pass a shared_ptr rather than a reference to the signal

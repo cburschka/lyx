@@ -1,3 +1,10 @@
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: use proper signal include
+
+	* Tooltips.[Ch]: Use preffered calling of Boost.Signal
+	* XFormsView.h: ditto
+
 2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* forms/pch.h: make it better

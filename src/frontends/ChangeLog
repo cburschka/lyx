@@ -1,3 +1,12 @@
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: include proper signal include
+
+	* Dialogs.[Ch]: User preferred calling of Boost.Signal
+	* LyXView.h: ditto
+	* Timeout.h: ditto
+	* WorkArea.h: ditto
+
 2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: new file

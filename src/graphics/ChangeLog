@@ -1,5 +1,15 @@
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* pch.h: use proper signal include
+
+	* GraphicsCacheItem.[Ch]: Use preferred calling of Boost.Signal
+	* GraphicsConverter.C: ditto
+	* GraphicsImage.h: ditto
+	* GraphicsLoader.[Ch]: ditto
+	* PreviewLoader.[Ch]: ditto
+
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* pch.h: include <boost/function.hpp> instead of
 	<boost/function/function0.hpp>
 

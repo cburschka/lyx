@@ -8,8 +8,7 @@
 #include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/signal2.hpp>
+#include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/test/detail/nullstream.hpp>
 #include <boost/tokenizer.hpp>

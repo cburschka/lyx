@@ -18,8 +18,7 @@
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/signal1.hpp>
+#include <boost/signal.hpp>
 
 #include <iosfwd>
 #include <map>
@@ -107,19 +106,19 @@ public:
 	bool hasParWithID(int id) const;
 
 	/// This signal is emitted when a parsing error shows up.
-	boost::signal1<void, ErrorItem> error;
+	boost::signal<void(ErrorItem)> error;
 	/// This signal is emitted when some message shows up.
-	boost::signal1<void, std::string> message;
+	boost::signal<void(std::string)> message;
 	/// This signal is emitted when the buffer busy status change.
-	boost::signal1<void, bool> busy;
+	boost::signal<void(bool)> busy;
 	/// This signal is emitted when the buffer readonly status change.
-	boost::signal1<void, bool> readonly;
+	boost::signal<void(bool)> readonly;
 	/// Update window titles of all users.
-	boost::signal0<void> updateTitles;
+	boost::signal<void()> updateTitles;
 	/// Reset autosave timers for all users.
-	boost::signal0<void> resetAutosaveTimers;
+	boost::signal<void()> resetAutosaveTimers;
 	/// This signal is emitting if the buffer is being closed.
-	boost::signal0<void> closing;
+	boost::signal<void()> closing;
 
 
 	/** Save file.

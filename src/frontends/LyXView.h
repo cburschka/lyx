@@ -13,11 +13,11 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-#include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
-#include <boost/signals/signal0.hpp>
+#include <boost/utility.hpp>
 
 class Buffer;
 class Toolbars;
@@ -117,10 +117,10 @@ public:
 	void updateMenubar();
 
 	/// focus the command buffer (minibuffer)
-	boost::signal0<void> focus_command_buffer;
+	boost::signal<void()> focus_command_buffer;
 
 	/// view state string changed
-	boost::signal0<void> view_state_changed;
+	boost::signal<void()> view_state_changed;
 
 	/// display a message in the view
 	virtual void message(std::string const &) = 0;
