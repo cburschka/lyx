@@ -6,8 +6,6 @@
  *
  *           Copyright 1998-2000 The LyX Team.
  *
- *           @author: Jürgen Vigna
- *
  * ======================================================
  */
 
@@ -79,6 +77,7 @@ InsetText & InsetText::operator=(InsetText const & it)
     autoBreakRows = it.autoBreakRows;
     return * this;
 }
+
 
 void InsetText::init(InsetText const * ins)
 {
@@ -434,7 +433,7 @@ void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 }
 
 
-char const * InsetText::EditMessage() const
+string const InsetText::EditMessage() const
 {
     return _("Opened Text Inset");
 }
@@ -926,11 +925,11 @@ InsetText::LocalDispatch(BufferView * bv,
 		    cur_value = par->spacing.getValue();
 	    }
 	    		
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	    std::istringstream istr(arg.c_str());
-#else
-	    istrstream istr(arg.c_str());
-#endif
+//#else
+//	    istrstream istr(arg.c_str());
+//#endif
 	    string tmp;
 	    istr >> tmp;
 	    Spacing::Space new_spacing = cur_spacing;
@@ -1354,6 +1353,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
     }
 }
 
+
 void InsetText::resizeLyXText(BufferView * bv) const
 {
     if (!par->next && !par->size()) // resize not neccessary!
@@ -1408,8 +1408,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 	/// then resize all LyXText in text-insets
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
-	LyXParagraph * p = par;
-	for(;p;p = p->next) {
+	for(LyXParagraph * p = par; p; p = p->next) {
 	    p->resizeInsetsLyXText(bv);
 	}
     }
@@ -1419,9 +1418,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 
 void InsetText::removeNewlines()
 {
-    LyXParagraph * p = par;
-
-    for(;p; p = p->next) {
+    for(LyXParagraph * p = par; p; p = p->next) {
 	for(int i = 0; i < p->Last(); ++i) {
 	    if (p->GetChar(i) == LyXParagraph::META_NEWLINE)
 		p->Erase(i);

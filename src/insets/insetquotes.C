@@ -141,7 +141,7 @@ void InsetQuotes::ParseString(string const & s)
 }
 
 
-string InsetQuotes::DispString() const
+string const InsetQuotes::DispString() const
 {
  	string disp;
 	disp += quote_char[quote_index[side][language]];
@@ -188,9 +188,7 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 }
 
 
-//LyXFont InsetQuotes::ConvertFont(LyXFont font)
-// I really belive this should be
-LyXFont InsetQuotes::ConvertFont(LyXFont const & f) const
+LyXFont const InsetQuotes::ConvertFont(LyXFont const & f) const
 {
 	LyXFont font(f);
 	// quotes-insets cannot be latex of any kind

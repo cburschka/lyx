@@ -43,7 +43,7 @@ public:
 		stakk.push(bit);
 	}
 	///
-	string pop(int * x, int * y) {
+	string const pop(int * x, int * y) {
 		BackStackItem bit = stakk.top();
 		*x = bit.x;
 		*y = bit.y;

@@ -79,7 +79,7 @@ public:
 	explicit
 	RCS(string const & m);
 	///
-	static string find_file(string const & file);
+	static string const find_file(string const & file);
 	///
 	static void retrive(string const & file);
 	///
@@ -106,7 +106,7 @@ public:
 	explicit
 	CVS(string const & m, string const & f);
 	///
-	static string find_file(string const & file);
+	static string const find_file(string const & file);
 	///
 	virtual void scanMaster();
 	///

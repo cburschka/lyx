@@ -47,7 +47,7 @@ void FloatList::newFloat(Floating const & fl)
 }
 
 
-string FloatList::defaultPlacement(string const & t) const
+string const FloatList::defaultPlacement(string const & t) const
 {
 	List::const_iterator cit = list.find(t);
 	if (cit != list.end())

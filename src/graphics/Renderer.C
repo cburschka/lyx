@@ -23,11 +23,13 @@
 Renderer::Renderer()
 	: width_(0), height_(0), pixmapLoaded_(false)
 {}
-	
+
+
 Renderer::~Renderer()
 {
 	freePixmap();
 }
+
 
 bool Renderer::setFilename(string const & filename)
 {
@@ -45,17 +47,21 @@ bool Renderer::setFilename(string const & filename)
 	return true;
 }
 
+
 bool Renderer::renderImage()
 {
 	return false;
 }
+
 
 bool Renderer::isImageFormatOK(string const & /*filename*/) const
 {
 	return false;
 }
 
-void Renderer::setPixmap(Pixmap pixmap, unsigned int width, unsigned int height)
+
+void Renderer::setPixmap(Pixmap pixmap,
+			 unsigned int width, unsigned int height)
 {
 	freePixmap();
 
@@ -65,17 +71,30 @@ void Renderer::setPixmap(Pixmap pixmap, unsigned int width, unsigned int height)
 	pixmapLoaded_ = true;
 }
 
+
 Pixmap Renderer::getPixmap() const
-{ return pixmap_; }
+{
+	return pixmap_;
+}
+
 
 unsigned int Renderer::getWidth() const
-{ return width_; }
+{
+	return width_;
+}
+
 
 unsigned int Renderer::getHeight() const
-{ return height_; }
+{
+	return height_;
+}
+
 
 string const & Renderer::getFilename() const
-{ return filename_; }
+{
+	return filename_;
+}
+
 
 void Renderer::freePixmap()
 {

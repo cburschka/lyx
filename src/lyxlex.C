@@ -55,7 +55,7 @@ int LyXLex::GetLineNo() const
 }
 
 
-char const * const LyXLex::text() const
+string const LyXLex::text() const
 {
 	return &pimpl_->buff[0];
 }

@@ -176,7 +176,8 @@ void BitmapMenu::Show()
 }
 
 FL_OBJECT *
-BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char const * data, Bool vert)
+BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh,
+		      unsigned char const * data, Bool vert)
 {
    if (i >= nb)
      return 0;
@@ -359,7 +360,7 @@ bool math_insert_greek(char c)
 }
 
 
-void math_insert_symbol(char const * s)
+void math_insert_symbol(string const & s)
 {
    if (current_view->available())   {
       if (!current_view->the_locking_inset) {

@@ -31,7 +31,7 @@ public:
 	///
 	void newFloat(Floating const & fl);
 	///
-	string defaultPlacement(string const & t) const;
+	string const defaultPlacement(string const & t) const;
 	///
 	bool typeExist(string const & t) const;
 	///

@@ -28,6 +28,7 @@
 
 using std::ostream;
 
+
 InsetParent::InsetParent(InsetCommandParams const & p, Buffer * bf)
 	: InsetCommand(p)
 {
@@ -39,7 +40,7 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer * bf)
 }
 
 
-string InsetParent::getScreenLabel() const 
+string const InsetParent::getScreenLabel() const 
 {
 	return string(_("Parent:")) + getContents();
 }

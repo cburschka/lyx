@@ -170,9 +170,9 @@ public:
     ///
     char GetAlignment(int cell); // add approp. signedness
     ///
-    string GetPWidth(int cell);
+    string const GetPWidth(int cell);
     ///
-    string GetAlignSpecial(int cell, int what);
+    string const GetAlignSpecial(int cell, int what);
     
     ///
     int GetWidthOfCell(int cell);

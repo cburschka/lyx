@@ -818,7 +818,7 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 
 // Gets uninstantiated font setting at position.
 // Optimized after profiling. (Asger)
-LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
+LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 				      LyXParagraph::size_type pos) const
 {
 #ifdef NEW_INSETS
@@ -871,7 +871,7 @@ LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
 }
 
 // Gets uninstantiated font setting at position 0
-LyXFont LyXParagraph::GetFirstFontSettings() const
+LyXFont const LyXParagraph::GetFirstFontSettings() const
 {
 	if (size() > 0) {
 		if (!fontlist.empty())
@@ -893,7 +893,7 @@ LyXFont LyXParagraph::GetFirstFontSettings() const
 // the true picture of the buffer. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont LyXParagraph::getFont(BufferParams const & bparams,
+LyXFont const LyXParagraph::getFont(BufferParams const & bparams,
 			      LyXParagraph::size_type pos) const
 {
 	LyXFont tmpfont;
@@ -1034,7 +1034,7 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 
 
 // return an string of the current word, and the end of the word in lastpos.
-string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
+string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 {
 	Assert(lastpos >= 0);
 
@@ -1926,7 +1926,7 @@ int LyXParagraph::GetFirstCounter(int i) const
 
 
 // the next two functions are for the manual labels
-string LyXParagraph::GetLabelWidthString() const
+string const LyXParagraph::GetLabelWidthString() const
 {
 #ifndef NEW_INSETS
 	if (!FirstPhysicalPar()->labelwidthstring.empty())
@@ -3219,18 +3219,18 @@ void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer,
 				column = 0;
 		} else if (c == LyXParagraph::META_INSET) {
 			inset = GetInset(i);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			inset->DocBook(buffer, ost);
 			string tmp_out = ost.str().c_str();
-#else
-			ostrstream ost;
-			inset->DocBook(buffer, ost);
-			ost << '\0';
-			char * ctmp = ost.str();
-			string tmp_out(ctmp);
-			delete [] ctmp;
-#endif
+//#else
+//			ostrstream ost;
+//			inset->DocBook(buffer, ost);
+//			ost << '\0';
+//			char * ctmp = ost.str();
+//			string tmp_out(ctmp);
+//			delete [] ctmp;
+//#endif
 			//
 			// This code needs some explanation:
 			// Two insets are treated specially
@@ -3392,18 +3392,18 @@ void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
 			}
 			if (c == LyXParagraph::META_INSET) {
 				inset = GetInset(i);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 				std::ostringstream ost;
 				inset->DocBook(buffer, ost);
 				string tmp_out = ost.str().c_str();
-#else
-				ostrstream ost;
-				inset->DocBook(buffer, ost);
-				ost << '\0';
-				char * ctmp = ost.str();
-				string tmp_out(ctmp);
-				delete [] ctmp;
-#endif
+//#else
+//				ostrstream ost;
+//				inset->DocBook(buffer, ost);
+//				ost << '\0';
+//				char * ctmp = ost.str();
+//				string tmp_out(ctmp);
+//				delete [] ctmp;
+//#endif
 				//
 				// This code needs some explanation:
 				// Two insets are treated specially
@@ -4297,11 +4297,11 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		// process footnotes > depth 0 or in environments separately
 		// NOTE: Currently don't support footnotes within footnotes
 		//       even though that is possible using the \footnotemark
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		std::ostringstream dummy;
-#else
-		ostrstream dummy;
-#endif
+//#else
+//		ostrstream dummy;
+//#endif
 		TexRow dummy_texrow;
 		int dummy_count = 0;
 		do {
@@ -4342,9 +4342,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 				"Footnote in a Footnote -- not supported"
 			       << endl;
 		}
-#ifndef HAVE_OSTREAM
-		delete [] dummy.str();
-#endif
+//#ifndef HAVE_OSTREAM
+//		delete [] dummy.str();
+//#endif
 	}
 
 	switch (footnotekind) {
@@ -4408,8 +4408,8 @@ bool LyXParagraph::IsDummy() const
 #endif
 
 void LyXParagraph::SetPExtraType(BufferParams const & bparams,
-				 int type, char const * width,
-				 char const * widthp)
+				 int type, string const & width,
+				 string const & widthp)
 {
 	pextra_type = type;
 	pextra_width = width;
@@ -4655,7 +4655,7 @@ bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string LyXParagraph::String(Buffer const * buffer, bool label)
+string const LyXParagraph::String(Buffer const * buffer, bool label)
 {
 	BufferParams const & bparams = buffer->params;
 	string s;
@@ -4673,14 +4673,14 @@ string LyXParagraph::String(Buffer const * buffer, bool label)
 			s += c;
 		else if (c == META_INSET &&
 			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-#else
-			ostrstream ost;
-			GetInset(i)->Ascii(buffer, ost);
-			ost << '\0';
-#endif
+//#else
+//			ostrstream ost;
+//			GetInset(i)->Ascii(buffer, ost);
+//			ost << '\0';
+//#endif
 			s += subst(ost.str(),'\n',' ');
 		}
 	}
@@ -4701,7 +4701,7 @@ string LyXParagraph::String(Buffer const * buffer, bool label)
 }
 
 
-string LyXParagraph::String(Buffer const * buffer, 
+string const LyXParagraph::String(Buffer const * buffer, 
 			    LyXParagraph::size_type beg,
 			    LyXParagraph::size_type end)
 {
@@ -4732,14 +4732,14 @@ string LyXParagraph::String(Buffer const * buffer,
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET) {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-#else
-			ostrstream ost;
-			GetInset(i)->Ascii(buffer, ost);
-			ost << '\0';
-#endif
+//#else
+//			ostrstream ost;
+//			GetInset(i)->Ascii(buffer, ost);
+//			ost << '\0';
+//#endif
 			s += ost.str();
 		}
 #ifndef NEW_TABULAR

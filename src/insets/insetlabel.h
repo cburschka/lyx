@@ -25,7 +25,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetLabel(params()); }
 	///
-	string getScreenLabel() const { return getContents(); }
+	string const getScreenLabel() const { return getContents(); }
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
@@ -33,7 +33,7 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	std::vector<string> getLabelList() const;
+	std::vector<string> const getLabelList() const;
 	///
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
@@ -45,7 +45,7 @@ public:
 	int DocBook(Buffer const *, std::ostream &) const;
 private:
 	/// This function escapes 8-bit characters
-	string escape(string const &) const;
+	string const escape(string const &) const;
 };
 
 #endif

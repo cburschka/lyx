@@ -37,9 +37,6 @@ extern char const * string_align[];
 // used all over. As it happens, that meant that these strings were included 
 // 27 times in the object file. (Asger)
 
-//
-// extern char const * tex_babel[];
-
 ///
 extern char const * tex_graphics[];
 

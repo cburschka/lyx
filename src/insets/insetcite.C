@@ -24,7 +24,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
 
-string InsetCitation::getScreenLabel() const
+string const InsetCitation::getScreenLabel() const
 {
 	string keys(getContents());
 
@@ -55,6 +55,7 @@ string InsetCitation::getScreenLabel() const
 
 	return '[' + label + ']';
 }
+
 
 void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 {

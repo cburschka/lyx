@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright (C) 2000 The LyX Team.
+ *           Copyright 2000 The LyX Team.
  *
  *           @author Jürgen Vigna
  *
@@ -63,6 +63,7 @@ C_GENERICCB(FormDocument, BulletDepthCB)
 C_GENERICCB(FormDocument, InputBulletLaTeXCB)
 C_GENERICCB(FormDocument, ChoiceBulletSizeCB)
 
+	
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: dialog_(0), paper_(0), class_(0), language_(0), options_(0),
 	  bullets_(0), lv_(lv), d_(d), u_(0), h_(0),
@@ -78,11 +79,13 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
     current_bullet_panel = 0;
 }
 
+
 FormDocument::~FormDocument()
 {
     free();
     delete bc_;
 }
+
 
 void FormDocument::build()
 {
@@ -267,6 +270,7 @@ void FormDocument::build()
     }
 }
 
+
 void FormDocument::show()
 {
     if (!dialog_)
@@ -286,6 +290,7 @@ void FormDocument::show()
     }
 }
 
+
 void FormDocument::hide()
 {
     if (dialog_->form->visible) {
@@ -295,15 +300,13 @@ void FormDocument::hide()
     }
 }
 
+
 void FormDocument::apply()
 {
     if (!lv_->view()->available() || !dialog_)
 	return;
 
-    bool
-	redo;
-
-    redo = class_apply();
+    bool redo = class_apply();
     paper_apply();
     redo = language_apply() || redo;
     redo = options_apply() || redo;
@@ -441,10 +444,10 @@ bool FormDocument::class_apply()
 	return redo;
 }
 
+
 void FormDocument::paper_apply()
 {
-    BufferParams
-	&params = lv_->buffer()->params;
+    BufferParams & params = lv_->buffer()->params;
     
     params.papersize2 = fl_get_choice(paper_->choice_papersize2)-1;
     params.paperpackage = fl_get_choice(paper_->choice_paperpackage)-1;
@@ -465,12 +468,11 @@ void FormDocument::paper_apply()
     lv_->buffer()->setPaperStuff();
 }
 
+
 bool FormDocument::language_apply()
 {
-    BufferParams
-	&params = lv_->buffer()->params;
-    InsetQuotes::quote_language
-	lga = InsetQuotes::EnglishQ;
+    BufferParams & params = lv_->buffer()->params;
+    InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
     bool redo = false;
 
     switch(fl_get_choice(language_->choice_quotes_language) - 1) {
@@ -522,12 +524,11 @@ bool FormDocument::language_apply()
     return redo;
 }
 
+
 bool FormDocument::options_apply()
 {
-    BufferParams
-	&params = lv_->buffer()->params;
-    bool
-	redo = false;
+    BufferParams & params = lv_->buffer()->params;
+    bool redo = false;
 
     params.graphicsDriver =
 	fl_get_choice_text(options_->choice_postscript_driver);
@@ -546,6 +547,7 @@ bool FormDocument::options_apply()
     return redo;
 }
 
+
 void FormDocument::bullets_apply()
 {
     /* update the bullet settings */
@@ -558,6 +560,7 @@ void FormDocument::bullets_apply()
     param.user_defined_bullets[3] = param.temp_bullets[3];
 }
 
+
 void FormDocument::cancel()
 {
     // this avoids confusion when reopening
@@ -568,6 +571,7 @@ void FormDocument::cancel()
     param.temp_bullets[3] = param.user_defined_bullets[3];
 }
 
+
 void FormDocument::update()
 {
     if (!dialog_)
@@ -575,8 +579,7 @@ void FormDocument::update()
 
     checkReadOnly();
 
-    BufferParams
-	const & params = lv_->buffer()->params;
+    BufferParams const & params = lv_->buffer()->params;
 
     class_update(params);
     paper_update(params);
@@ -585,12 +588,13 @@ void FormDocument::update()
     bullets_update(params);
 }
 
+
 void FormDocument::class_update(BufferParams const & params)
 {
     if (!class_)
         return;
-    LyXTextClass
-	const & tclass = textclasslist.TextClass(params.textclass);
+
+    LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 
 #ifdef USE_CLASS_COMBO
     combo_doc_class->select_text(
@@ -679,6 +683,7 @@ void FormDocument::class_update(BufferParams const & params)
 	fl_set_input(class_->input_doc_extra, "");
 }
 
+
 void FormDocument::language_update(BufferParams const & params)
 {
     if (!language_)
@@ -694,6 +699,7 @@ void FormDocument::language_update(BufferParams const & params)
     else
 	fl_set_button(language_->radio_double, 1);
 }
+
 
 void FormDocument::options_update(BufferParams const & params)
 {
@@ -711,6 +717,7 @@ void FormDocument::options_update(BufferParams const & params)
     else
 	fl_set_input(options_->input_float_placement, "");
 }
+
 
 void FormDocument::paper_update(BufferParams const & params)
 {
@@ -738,6 +745,7 @@ void FormDocument::paper_update(BufferParams const & params)
     fl_set_focus_object(paper_->form, paper_->choice_papersize2);
 }
 
+
 void FormDocument::bullets_update(BufferParams const & params)
 {
     if (!bullets_ || ((XpmVersion<4) || (XpmVersion==4 && XpmRevision<7)))
@@ -763,10 +771,11 @@ void FormDocument::bullets_update(BufferParams const & params)
 
     fl_set_button(bullets_->radio_bullet_depth_1, 1);
     fl_set_input(bullets_->input_bullet_latex,
-		 params.user_defined_bullets[0].c_str());
+		 params.user_defined_bullets[0].getText().c_str());
     fl_set_choice(bullets_->choice_bullet_size,
 		  params.user_defined_bullets[0].getSize() + 2);
 }
+
 
 void FormDocument::free()
 {
@@ -807,38 +816,43 @@ void FormDocument::free()
     }
 }
 
+
 int FormDocument::WMHideCB(FL_FORM * form, void *)
 {
     // Ensure that the signals (u and h) are disconnected even if the
     // window manager is used to close the popup.
-    FormDocument * pre = (FormDocument*)form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(form->u_vdata);
     pre->hide();
     pre->bc_->hide();
     return FL_CANCEL;
 }
 
+
 void FormDocument::OKCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->apply();
     pre->hide();
     pre->bc_->ok();
 }
 
+
 void FormDocument::ApplyCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->apply();
     pre->bc_->apply();
 }
 
+
 void FormDocument::CancelCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->cancel();
     pre->hide();
     pre->bc_->cancel();
 }
+
 
 void FormDocument::RestoreCB(FL_OBJECT * ob, long)
 {
@@ -847,11 +861,13 @@ void FormDocument::RestoreCB(FL_OBJECT * ob, long)
     pre->bc_->undoAll();
 }
 
+
 void FormDocument::InputCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
+
 
 void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 {
@@ -861,12 +877,14 @@ void FormDocument::ComboInputCB(int, void * v, Combox * combox)
     pre->bc_->valid(pre->CheckDocumentInput(0,0));
 }
 
+
 void FormDocument::ChoiceClassCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->CheckChoiceClass(ob,0);
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
+
 
 void FormDocument::checkReadOnly()
 {
@@ -884,11 +902,10 @@ void FormDocument::checkReadOnly()
     }	
 }
 
+
 void FormDocument::checkMarginValues()
 {
-    int allEmpty;
-    
-    allEmpty = (!strlen(fl_get_input(paper_->input_top_margin)) &&
+    int const allEmpty = (!strlen(fl_get_input(paper_->input_top_margin)) &&
 		!strlen(fl_get_input(paper_->input_bottom_margin)) &&
 		!strlen(fl_get_input(paper_->input_left_margin)) &&
 		!strlen(fl_get_input(paper_->input_right_margin)) &&
@@ -990,12 +1007,14 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
     return ok;
 }
 
+
 void FormDocument::ChoiceBulletSizeCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->ChoiceBulletSize(ob,0);
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
+
 
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
 {
@@ -1004,15 +1023,17 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
     // convert from 1-6 range to -1-4 
     param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
     fl_set_input(bullets_->input_bullet_latex,
-		 param.temp_bullets[current_bullet_depth].c_str());
+		 param.temp_bullets[current_bullet_depth].getText().c_str());
 }
+
 
 void FormDocument::InputBulletLaTeXCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->InputBulletLaTeX(ob,0);
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
+
 
 void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 {
@@ -1022,11 +1043,13 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 	setText(fl_get_input(bullets_->input_bullet_latex));
 }
 
+
 void FormDocument::BulletDepthCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->BulletDepth(ob,0);
 }
+
 
 void FormDocument::BulletDepth(FL_OBJECT * ob, long data)
 {
@@ -1047,17 +1070,19 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, long data)
     default:
 	current_bullet_depth = data;
 	fl_set_input(bullets_->input_bullet_latex,
-		     param.temp_bullets[data].c_str());
+		     param.temp_bullets[data].getText().c_str());
 	fl_set_choice(bullets_->choice_bullet_size,
 		      param.temp_bullets[data].getSize() + 2);
     }
 }
 
+
 void FormDocument::BulletPanelCB(FL_OBJECT * ob, long data)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->BulletPanel(ob,data);
 }
+
 
 void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
 {
@@ -1106,12 +1131,14 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
     }
 }
 
+
 void FormDocument::BulletBMTableCB(FL_OBJECT * ob, long)
 {
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
     pre->BulletBMTable(ob,0);
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
+
 
 void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
 {
@@ -1127,8 +1154,9 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
     param.temp_bullets[current_bullet_depth].setFont(current_bullet_panel);
     param.temp_bullets[current_bullet_depth].setCharacter(bmtable_button);
     fl_set_input(bullets_->input_bullet_latex,
-		 param.temp_bullets[current_bullet_depth].c_str());
+		 param.temp_bullets[current_bullet_depth].getText().c_str());
 }
+
 
 void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 {
@@ -1137,7 +1165,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 
     ProhibitInput(lv_->view());
     int tc;
-    const char * tct;
+    string tct;
 
 #ifdef USE_CLASS_COMBO
     tc = combo_doc_class->get();
@@ -1169,6 +1197,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     }
     AllowInput(lv_->view());
 }
+
 
 void FormDocument::UpdateLayoutDocument(BufferParams const & params)
 {

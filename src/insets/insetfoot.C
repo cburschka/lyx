@@ -45,7 +45,7 @@ Inset * InsetFoot::Clone() const
 }
 
 
-char const * InsetFoot::EditMessage() const
+string const InsetFoot::EditMessage() const
 {
     return _("Opened Footnote Inset");
 }

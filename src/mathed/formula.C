@@ -15,11 +15,15 @@
 
 #include <config.h>
 
+#if 0
 #ifdef HAVE_SSTREAM
 #include <sstream>
 using std::istringstream;
 #else
 #include <strstream>
+#endif
+#else
+#include "Lsstream.h"
 #endif
 
 #ifdef __GNUG__
@@ -216,6 +220,11 @@ int mathed_string_width(short type, int size, byte const * s, int ls)
     return lyxfont::width(reinterpret_cast<char const *>(s), ls, f);
 }
 
+int mathed_string_width(short type, int size, string const & str)
+{
+	return mathed_string_width(type, size, reinterpret_cast<unsigned char const *>(str.c_str()), str.length());
+}
+
 
 int mathed_char_width(short type, int size, byte c)
 {
@@ -240,10 +249,18 @@ int mathed_string_height(short type, int size, byte const * s,
 }
 
 
+int mathed_string_height(short type, int size, string const & str,
+			 int & asc, int & des)
+{
+	return mathed_string_height(type, size,
+				    reinterpret_cast<unsigned char const *>(str.c_str()), str.length(),
+				    asc, des);
+}
+
+
 int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 {
    LyXFont font = WhichFont(type, size);
-   asc = des = 0;
    des = lyxfont::descent(c, font);
    asc = lyxfont::ascent(c, font);
    return asc + des;
@@ -262,7 +279,7 @@ void MathedInset::drawStr(Painter & pain, short type, int siz,
 	} else {
 		st = string(reinterpret_cast<char const *>(s), ls);
 	}
-	LyXFont mf = mathed_get_font(type, siz);
+	LyXFont const mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);
 }
 
@@ -453,7 +470,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 				y = baseline + crow->getBaseline();
 				if (crow->isNumbered()) {
 					string str;
-					if (crow->getLabel())
+					if (!crow->getLabel().empty())
 						str = string("(") + crow->getLabel() + ")";
 					else
 						str = "(#)";
@@ -467,7 +484,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-char const * InsetFormula::EditMessage() const 
+string const InsetFormula::EditMessage() const 
 {
 	return _("Math editor mode");
 }
@@ -503,20 +520,21 @@ void InsetFormula::InsetUnlock(BufferView * bv)
 
 
 // Now a symbol can be inserted only if the inset is locked
-void InsetFormula::InsertSymbol(BufferView * bv, char const * s)
+void InsetFormula::InsertSymbol(BufferView * bv, string const & s)
 { 
-   if (!s || !mathcursor) return;   
+   if (s.empty() || !mathcursor) return;   
    mathcursor->Interpret(s);
    UpdateLocal(bv);
 }
 
    
-void InsetFormula::GetCursorPos(BufferView *, int& x, int& y) const
+void InsetFormula::GetCursorPos(BufferView *, int & x, int & y) const
 {
     mathcursor->GetPos(x, y);
     x -= par->xo; 
     y -= par->yo;
 }
+
 
 void InsetFormula::ToggleInsetCursor(BufferView * bv)
 {
@@ -607,7 +625,7 @@ void InsetFormula::display(bool dspf)
 }
 
 
-vector<string> InsetFormula::getLabelList() const
+vector<string> const InsetFormula::getLabelList() const
 {
 //#warning This is dirty, I know. Ill clean it at 0.11
 // Correction, the only way to clean this is with a new kernel: 0.13.
@@ -618,7 +636,7 @@ vector<string> InsetFormula::getLabelList() const
 		MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
 		MathedRowSt const * crow = mt->getRowSt();
 		while (crow) {
-			if (crow->getLabel())
+			if (!crow->getLabel().empty())
 				label_list.push_back(crow->getLabel());
 			crow = crow->getNext();
 		}
@@ -815,11 +833,11 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_SETXY:
       {
 	 int x, y, x1, y1;
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	 istringstream ist(arg.c_str());
-#else
-	 istrstream ist(arg.c_str());
-#endif
+//#else
+//	 istrstream ist(arg.c_str());
+//#endif
 	 ist >> x >> y;
 	 par->GetXY(x1, y1);
 	 mathcursor->SetPos(x1 + x, y1 + y);
@@ -1229,7 +1247,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 void
 MathFuncInset::draw(Painter & pain, int x, int y)
 { 
-	if (name && name[0] > ' ') {
+	if (!name.empty() && name[0] > ' ') {
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
 		font.setLatex(LyXFont::ON);
 	        x += (lyxfont::width('I', font) + 3) / 4;
@@ -1240,14 +1258,12 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 
 void MathFuncInset::Metrics() 
 {
-	ln = (name) ? strlen(name): 0;
+	//ln = (name) ? strlen(name): 0;
 	LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
 	font.setLatex(LyXFont::ON);
-	width = lyxfont::width(name, ln, font)
+	width = lyxfont::width(name, font)
 		+ lyxfont::width('I', font) / 2;
-	mathed_string_height(LM_TC_TEXTRM, size,
-			     reinterpret_cast<unsigned char const *>(name),
-			     strlen(name), ascent, descent);
+	mathed_string_height(LM_TC_TEXTRM, size, name, ascent, descent);
 }
 
 
@@ -1261,7 +1277,7 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 	    if(it.IsActive()) {
 		MathParInset * p = it.GetActiveInset();
 		if (!features.binom && p->GetType() == LM_OT_MACRO && 
-		    strcmp(p->GetName(), "binom") == 0) {
+		    p->GetName() == "binom") {
 		    features.binom = true;
 		} else {
 		    for (int i = 0; i <= p->getMaxArgumentIdx(); ++i) {
@@ -1271,8 +1287,8 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 		}
 	    } else {
 		MathedInset* p = it.GetInset();
-		if (!features.boldsymbol && p->GetName() &&
-		    strcmp(p->GetName(), "boldsymbol") == 0) {
+		if (!features.boldsymbol &&
+		    p->GetName() == "boldsymbol") {
 		    features.boldsymbol = true;
 		}
 	    }	    

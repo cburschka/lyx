@@ -21,10 +21,14 @@
 #include <utility>
 #include <fstream>
 
+#if 0
 #ifdef HAVE_SSTREAM
 #include <sstream>
 #else
 #include <strstream>
+#endif
+#else
+#include "Lsstream.h"
 #endif
 
 #ifdef __GNUG__
@@ -739,24 +743,24 @@ string const GetFileContents(string const & fname)
 	FileInfo finfo(fname);
 	if (finfo.exist()) {
 		ifstream ifs(fname.c_str());
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		std::ostringstream ofs;
-#else
-#warning The rumour goes that this might leak, but who really cares?
-		ostrstream ofs;
-#endif
+//#else
+//#warning The rumour goes that this might leak, but who really cares?
+//		ostrstream ofs;
+//#endif
 		if (ifs && ofs) {
 			ofs << ifs.rdbuf();
 			ifs.close();
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			return ofs.str().c_str();
-#else
-			ofs << '\0';
-			char const * tmp = ofs.str();
-			string ret(tmp);
-			delete[] tmp;
-			return ret;
-#endif
+//#else
+//			ofs << '\0';
+//			char const * tmp = ofs.str();
+//			string ret(tmp);
+//			delete[] tmp;
+//			return ret;
+//#endif
 		}
 	}
 	lyxerr << "LyX was not able to read file '" << fname << "'" << endl;
@@ -964,8 +968,9 @@ ChangeExtension(string const & oldname, string const & extension)
 	return CleanupPath(oldname.substr(0, last_dot) + ext);
 }
 
+
 /// Return the extension of the file (not including the .)
-string GetExtension(string const & name)
+string const GetExtension(string const & name)
 {
 	string::size_type last_slash = name.rfind('/');
 	string::size_type last_dot = name.rfind('.');
@@ -976,6 +981,7 @@ string GetExtension(string const & name)
 	else
 		return string();
 }
+
 
 // Creates a nice compact path for displaying
 string const
@@ -1108,6 +1114,7 @@ findtexfile(string const & fil, string const & /*format*/)
 			     << "'" << endl;
         return c.first != -1 ? strip(c.second, '\n') : string();
 }
+
 
 void removeAutosaveFile(string const & filename)
 {

@@ -24,6 +24,10 @@
 
 #include <algorithm>
 
+#ifdef HAVE_LOCALE
+#include <locale>
+#endif
+
 #ifdef __GNUG__
 #pragma implementation "buffer.h"
 #endif
@@ -100,9 +104,9 @@ using std::pair;
 using std::vector;
 using std::max;
 using std::set;
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 using std::istringstream;
-#endif
+//#endif
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
@@ -163,7 +167,7 @@ Buffer::~Buffer()
 }
 
 
-string Buffer::getLatexName(bool no_path) const
+string const Buffer::getLatexName(bool no_path) const
 {
 	if (no_path)
 		return OnlyFilename(ChangeExtension(MakeLatexName(filename), 
@@ -461,11 +465,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		old_float += "\n\\end_inset\n";
 		//lyxerr << "float body: " << old_float << endl;
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		istringstream istr(old_float);
-#else
-		istrstream istr(old_float.c_str());
-#endif
+//#else
+//		istrstream istr(old_float.c_str());
+//#endif
 		
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
@@ -1261,6 +1265,12 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 				     fname);
 		return false;
 	}
+
+#ifdef HAVE_LOCALE
+	// Use the standard "C" locale for file output.
+	ofs.imbue(locale::classic());
+#endif
+
 	// The top of the file should not be written by params.
 
 	// write out a comment in the top of the file
@@ -1268,8 +1278,13 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	    << " created this file. For more info see http://www.lyx.org/\n";
 	ofs.setf(ios::showpoint|ios::fixed);
 	ofs.precision(2);
+#ifndef HAVE_LOCALE
+	char dummy_format[512];
+	sprintf(dummy_format, "%.2f", LYX_FORMAT);
+	ofs << "\\lyxformat " <<  dummy_format << "\n";
+#else
 	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
-
+#endif
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 
@@ -1428,19 +1443,19 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				c = par->GetChar(i);
 				if (c == LyXParagraph::META_INSET) {
 					if ((inset = par->GetInset(i))) {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 						std::ostringstream ost;
 						inset->Ascii(this, ost);
 						h += ost.str().length();
-#else
-						ostrstream ost;
-						inset->Ascii(this, ost);
-						ost << '\0';
-						char * tmp = ost.str();
-						string tstr(tmp);
-						h += tstr.length();
-						delete [] tmp;
-#endif
+//#else
+//						ostrstream ost;
+//						inset->Ascii(this, ost);
+//						ost << '\0';
+//						char * tmp = ost.str();
+//						string tstr(tmp);
+//						h += tstr.length();
+//						delete [] tmp;
+//#endif
 					}
 				} else if (c == LyXParagraph::META_NEWLINE) {
 					if (clen[j] < h)
@@ -2135,24 +2150,24 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 {
 	bool was_title = false;
 	bool already_title = false;
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream ftnote;
-#else
-	char * tmpholder = 0;
-#endif
+//#else
+//	char * tmpholder = 0;
+//#endif
 	TexRow ft_texrow;
 	int ftcount = 0;
 
 	// if only_body
 	while (par != endpar) {
-#ifndef HAVE_SSTREAM
-		ostrstream ftnote;
-		if (tmpholder) {
-			ftnote << tmpholder;
-			delete [] tmpholder;
-			tmpholder = 0;
-		}
-#endif
+//#ifndef HAVE_SSTREAM
+//		ostrstream ftnote;
+//		if (tmpholder) {
+//			ftnote << tmpholder;
+//			delete [] tmpholder;
+//			tmpholder = 0;
+//		}
+//#endif
 #ifndef NEW_INSETS
 		if (par->IsDummy())
 			lyxerr[Debug::LATEX] << "Error in latexParagraphs."
@@ -2204,26 +2219,26 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 			}
 			ofs << ftnote.str();
 			texrow += ft_texrow;
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			// The extra .c_str() is needed when we use
 			// lyxstring instead of the STL string class. 
 			ftnote.str(string().c_str());
-#else
-			delete [] ftnote.str();
-#endif
+//#else
+//			delete [] ftnote.str();
+//#endif
 			ft_texrow.reset();
 			ftcount = 0;
 		}
-#ifndef HAVE_SSTREAM
-		else {
-			// I hate strstreams
-			tmpholder = ftnote.str();
-		}
-#endif
+//#ifndef HAVE_SSTREAM
+//		else {
+//			// I hate strstreams
+//			tmpholder = ftnote.str();
+//		}
+//#endif
 	}
-#ifndef HAVE_SSTREAM
-	delete [] tmpholder;
-#endif
+//#ifndef HAVE_SSTREAM
+//	delete [] tmpholder;
+//#endif
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		ofs << "\\maketitle\n";
@@ -2597,21 +2612,21 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		if (par->layout != textclasslist
 		    .NumberOfLayout(params.textclass,
 				    "Caption").second) {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
-#else
-			ostrstream ost;
-#endif
+//#else
+//			ostrstream ost;
+//#endif
 			SimpleDocBookOnePar(ost, extra_par, par,
 					    desc_on, depth + 2);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			tmp_par += ost.str().c_str();
-#else
-			ost << '\0';
-			char * ctmp = ost.str();
-			tmp_par += ctmp;
-			delete [] ctmp;
-#endif
+//#else
+//			ost << '\0';
+//			char * ctmp = ost.str();
+//			tmp_par += ctmp;
+//			delete [] ctmp;
+//#endif
 		}
 		tmp_par = frontStrip(strip(tmp_par));
 
@@ -2627,15 +2642,16 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 
 
 // push a tag in a style stack
-void Buffer::push_tag(ostream & os, char const * tag,
+void Buffer::push_tag(ostream & os, string const & tag,
 		      int & pos, char stack[5][3])
 {
+#warning Use a real stack! (Lgb)
 	// pop all previous tags
 	for (int j = pos; j >= 0; --j)
 		os << "</" << stack[j] << ">";
 
 	// add new tag
-	sprintf(stack[++pos], "%s", tag);
+	sprintf(stack[++pos], "%s", tag.c_str());
 
 	// push all tags
 	for (int i = 0; i <= pos; ++i)
@@ -2643,20 +2659,19 @@ void Buffer::push_tag(ostream & os, char const * tag,
 }
 
 
-void Buffer::pop_tag(ostream & os, char const * tag,
+void Buffer::pop_tag(ostream & os, string const & tag,
                      int & pos, char stack[5][3])
 {
-        int j;
-
+#warning Use a real stack! (Lgb)
         // pop all tags till specified one
-        for (j = pos; (j >= 0) && (strcmp(stack[j], tag)); --j)
+        for (int j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
                 os << "</" << stack[j] << ">";
 
         // closes the tag
         os << "</" << tag << ">";
 
         // push all tags, but the specified one
-        for (j = j + 1; j <= pos; ++j) {
+        for (int j = j + 1; j <= pos; ++j) {
                 os << "<" << stack[j] << ">";
                 strcpy(stack[j-1], stack[j]);
         }
@@ -2879,7 +2894,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 
 // Print an error message.
 void Buffer::LinuxDocError(LyXParagraph * par, int pos,
-			   char const * message) 
+			   string const & message) 
 {
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
@@ -3242,18 +3257,18 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 
 		if (c == LyXParagraph::META_INSET) {
 			Inset * inset = par->GetInset(i);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream ost;
 			inset->DocBook(this, ost);
 			string tmp_out = ost.str().c_str();
-#else
-			ostrstream ost;
-			inset->DocBook(this, ost);
-			ost << '\0';
-			char * ctmp = ost.str();
-			string tmp_out(ctmp);
-			delete [] ctmp;
-#endif
+//#else
+//			ostrstream ost;
+//			inset->DocBook(this, ost);
+//			ost << '\0';
+//			char * ctmp = ost.str();
+//			string tmp_out(ctmp);
+//			delete [] ctmp;
+//#endif
 			//
 			// This code needs some explanation:
 			// Two insets are treated specially
@@ -3661,7 +3676,7 @@ void Buffer::setPaperStuff()
 
 
 // This function should be in Buffer because it's a buffer's property (ale)
-string Buffer::getIncludeonlyList(char delim)
+string const Buffer::getIncludeonlyList(char delim)
 {
 	string lst;
 	for (inset_iterator it = inset_iterator_begin();
@@ -3682,7 +3697,7 @@ string Buffer::getIncludeonlyList(char delim)
 }
 
 
-vector<string> Buffer::getLabelList()
+vector<string> const Buffer::getLabelList()
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
@@ -3703,7 +3718,7 @@ vector<string> Buffer::getLabelList()
 }
 
 
-vector<vector<Buffer::TocItem> > Buffer::getTocList()
+vector<vector<Buffer::TocItem> > const Buffer::getTocList()
 {
 	vector<vector<TocItem> > l(4);
 	LyXParagraph * par = paragraph;
@@ -3758,8 +3773,9 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 	return l;
 }
 
+
 // This is also a buffer property (ale)
-vector<pair<string,string> > Buffer::getBibkeyList()
+vector<pair<string,string> > const Buffer::getBibkeyList()
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]

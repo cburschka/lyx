@@ -36,31 +36,36 @@ public:
 	typedef Files::const_iterator const_iterator;
 	
 	/** Read the lastfiles file.
-	   @param file The file to read the lastfiles form.
-	   @param dostat Whether to check for file existance.
-	   @param num number of files to remember.
+	    @param file The file to read the lastfiles form.
+	    @param dostat Whether to check for file existance.
+	    @param num number of files to remember.
 	*/
 	explicit
 	LastFiles(string const & file,
 		  bool dostat = true, unsigned int num = 4);
 	
-	/**
-	   This funtion inserts #file# into the last files list. If the file
-	   already exist it is moved to the top of the list, else exist it
-	   is placed on the top of the list. If the list is full the last
-	   file in the list is popped from the end.
+	/** Insert #file# into the list.
+	    This funtion inserts #file# into the last files list. If the file
+	    already exist it is moved to the top of the list, else exist it
+	    is placed on the top of the list. If the list is full the last
+	    file in the list is popped from the end.
+	    @param file the file to insert in the list.
 	*/
 	void newFile(string const & file);
-	/**  Writes the lastfiles table to disk. One file on each line, this
-	     way we can at least have some special chars (e.g. space), but
-	     newline in filenames are thus not allowed.
+	/** Writes the lastfiles table to disk.
+	    Writes one file on each line, this way we can at least have
+	    some special chars (e.g. space), but newline in filenames
+	    are thus not allowed.
+	    @param file the file we write the lastfiles list to.
 	*/
-	void writeFile(string const &) const;
-	///
-	string const operator[](unsigned int) const;
-	///
+	void writeFile(string const & file) const;
+	/** Return file #n# in the lastfiles list.
+	    @param n number in the list to get
+	*/
+	string const operator[](unsigned int n) const;
+	/// Iterator to the beginning of the list.
 	Files::const_iterator begin() const { return files.begin(); }
-	///
+	/// Iterator to the end of the list.
 	Files::const_iterator end() const { return files.end(); }
 private:
 	/** Local constants.
@@ -88,13 +93,16 @@ private:
 	bool dostat;
 	
 	/** Read the lastfiles file.
-	    Reads the .lyx_lastfiles at the beginning of the LyX session.
-	    This will read the lastfiles file (usually .lyx_lastfiles). It
+	    Reads the #.lyx_lastfiles# at the beginning of the LyX session.
+	    This will read the lastfiles file (usually #.lyx_lastfiles#). It
 	    will normally discard files that don't exist anymore, unless
-	    LastFiles has been initialized with dostat = false. 
+	    LastFiles has been initialized with #dostat = false#.
+	    @param file the file containing the lastfiles.
 	*/
-	void readFile(string const &);
-	/// used by the constructor to set the number of stored last files.
+	void readFile(string const & file);
+	/** Used by the constructor to set the number of stored last files.
+	    @param num the number of lastfiles to set.
+	*/
         void setNumberOfFiles(unsigned int num);
 };
 #endif

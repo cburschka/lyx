@@ -61,7 +61,7 @@ public:
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///

@@ -63,7 +63,7 @@ Inset * InsetTheorem::Clone() const
 }
 
 
-char const * InsetTheorem::EditMessage() const
+string const InsetTheorem::EditMessage() const
 {
 	return _("Opened Theorem Inset");
 }

@@ -32,12 +32,8 @@
 #include "buffer.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
-#ifdef NEW_MENUBAR
-# include "frontends/Menubar.h"
-# include "MenuBackend.h"
-#else
-# include "menus.h"
-#endif
+#include "frontends/Menubar.h"
+#include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyx_gui_misc.h"	// [update,Close]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
@@ -83,11 +79,7 @@ LyXView::LyXView(int width, int height)
 
 LyXView::~LyXView()
 {
-#ifdef NEW_MENUBAR
 	delete menubar;
-#else
-	delete menus;
-#endif
 	delete toolbar;
 	delete bufferview;
 	delete minibuffer;
@@ -155,7 +147,6 @@ MiniBuffer * LyXView::getMiniBuffer() const
 }
 
 
-#ifdef NEW_MENUBAR
 Menubar * LyXView::getMenubar() const
 {
 	return menubar;
@@ -170,13 +161,6 @@ void LyXView::updateMenubar()
 	else
 		menubar->set("main");
 }
-
-#else
-Menus * LyXView::getMenus() const
-{
-	return menus;
-}
-#endif
 
 
 Intl * LyXView::getIntl() const
@@ -224,9 +208,9 @@ void LyXView::setPosition(int x, int y)
 }
 
 
-void LyXView::show(int place, int border, char const * title)
+void LyXView::show(int place, int border, string const & title)
 {
-	fl_show_form(form_, place, border, title);
+	fl_show_form(form_, place, border, title.c_str());
 	minibuffer->Init();
 	InitLyXLookup(fl_display, form_->window);
 }
@@ -254,11 +238,7 @@ void LyXView::create_form_form_main(int width, int height)
 	//
 	// THE MENUBAR
 	//
-#ifdef NEW_MENUBAR
 	menubar = new Menubar(this, menubackend);
-#else	
-	menus = new Menus(this, air);
-#endif
 
 	//
 	// TOOLBAR
@@ -332,9 +312,7 @@ void LyXView::init()
 	invalidateLayoutChoice();
 	updateLayoutChoice();
 	UpdateDocumentClassChoice();
-#ifdef NEW_MENUBAR
 	updateMenubar();
-#endif
 	
 	// Start autosave timer
 	if (lyxrc.autosave) {

@@ -25,11 +25,11 @@
 
 using std::endl;
 
-extern LyXFont mathed_get_font(short type, int size);
+extern LyXFont const mathed_get_font(short type, int size);
 extern int mathed_char_width(short type, int style, byte c);
-extern int mathed_string_width(short type, int style, byte const* s, int ls);
-extern int mathed_string_height(short, int, byte const*, int, int&, int&);
-extern int mathed_char_height(short, int, byte, int&, int&);
+extern int mathed_string_width(short type, int style, string const &);
+extern int mathed_string_height(short, int, string const &, int &, int &);
+extern int mathed_char_height(short, int, byte, int &, int &);
 
 void
 MathSpaceInset::draw(Painter & pain, int x, int y)
@@ -141,10 +141,14 @@ MathParInset::draw(Painter & pain, int x, int y)
 void 
 MathParInset::Metrics()
 {
-    byte cx, cxp= 0, *s;
+    byte cx;
+    byte cxp = 0;
+    string s;
     int ls;
-    int asc= df_asc, des= 0;
-    int tb = 0, tab= 0;
+    int asc = df_asc;
+    int des = 0;
+    int tb = 0;
+    int tab = 0;
 
     bool limits = false;
     
@@ -160,23 +164,23 @@ MathParInset::Metrics()
     while (data.OK()) {
 	cx = data.GetChar();      
 	if (cx >= ' ') {
-	    s = data.GetString(ls);
-	    mathed_string_height(data.FCode(), size, s, ls, asc, des);
+	    s = reinterpret_cast<char *>(data.GetString(ls));
+	    mathed_string_height(data.FCode(), size, s, asc, des);
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
 	    limits = false;
 	    mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
 	} else
 	  if (MathIsInset(cx)) {
-	      MathedInset *p = data.GetInset();
+	      MathedInset * p = data.GetInset();
 	      p->SetStyle(size);   
 	      p->Metrics();
 	      if (cx == LM_TC_UP) {
-		  asc += (limits) ? p->Height()+4: p->Ascent() + 
-		    ((p->Descent()>asc) ? p->Descent()-asc+4: 0);
+		  asc += (limits) ? p->Height() + 4: p->Ascent() + 
+		    ((p->Descent()>asc) ? p->Descent() - asc + 4: 0);
 	      } else
 		if (cx == LM_TC_DOWN) {
-		    des += ((limits) ? p->Height()+4: p->Height()-p->Ascent()/2);
+		    des += ((limits) ? p->Height() + 4: p->Height() - p->Ascent() / 2);
 		} else {
 		    asc = p->Ascent();
 		    des = p->Descent();
@@ -201,14 +205,14 @@ MathParInset::Metrics()
 	      data.Next();
 	  } else
 	  if (cx == LM_TC_CR) {
-	      if (tb>0) {
+	      if (tb > 0) {
 		  int x, y;
 		  data.GetIncPos(x, y);
 		  if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
 		      if (ascent<df_asc) ascent = df_asc;
 		      tb = x;
 		  } 
-		  data.setTab(x-tb, tab);
+		  data.setTab(x - tb, tab);
 	      } else //if (GetColumns() == 1) 
 		    {
 		  int x, y;
@@ -216,13 +220,12 @@ MathParInset::Metrics()
 		  data.setTab(x, tab);
 		  if (ascent<df_asc) ascent = df_asc;
 	      } 
-	      tb= tab= 0;
+	      tb = tab = 0;
 	      data.subMetrics(ascent, descent);
 	      ascent = df_asc;   
 	      descent = 0;
 	      data.Next();
-	  }      
-	else {
+	  } else {
 		lyxerr << "Mathed Error: Unrecognized code[" << cx
 		       << "]" << endl;
 	    break;
@@ -237,7 +240,7 @@ MathParInset::Metrics()
 	    if (ascent<df_asc) ascent = df_asc;
 	    data.setTab(0, tab);
 	} else {
-	  data.setTab(width-tb, tab);
+	  data.setTab(width - tb, tab);
 	}
     }
     	  
@@ -321,19 +324,14 @@ MathFracInset::Metrics()
 void
 MathBigopInset::draw(Painter & pain, int x, int y)
 {
-   int ls;
-   char c;
-   char const *s;
+   string s;
    short t;
    
    if (sym < 256 || sym == LM_oint) {
-      ls = 1;
-      c = (sym == LM_oint) ? LM_int : sym;
-      s = &c;
+      s += (sym == LM_oint) ? LM_int : sym;
       t = LM_TC_BSYM;
    } else {
       s = name;
-      ls = strlen(name);
       t = LM_TC_TEXTRM;
    }
    if (sym == LM_oint) {
@@ -341,33 +339,26 @@ MathBigopInset::draw(Painter & pain, int x, int y)
 		    LColor::mathline);
 	   ++x;
    }
-   pain.text(x, y, s, ls, mathed_get_font(t, size));
+   pain.text(x, y, s, mathed_get_font(t, size));
 }
 
 
 void
 MathBigopInset::Metrics()
 {   
-	int ls;
 	char c;
-	char const *s;
+	string s;
 	short t;
 	
 	if (sym < 256 || sym == LM_oint) {
-		ls = 1;
 		c = (sym == LM_oint) ? LM_int: sym;
-		s = &c;
+		s += c;
 		t = LM_TC_BSYM;
 	} else {
 		s = name;
-		ls = strlen(name);
 		t = LM_TC_TEXTRM;
 	}
-	mathed_string_height(t, size,
-			     reinterpret_cast<const unsigned char*>(s),
-			     ls, ascent, descent);
-	width = mathed_string_width(t, size,
-				    reinterpret_cast<const unsigned char*>(s),
-				    ls);
+	mathed_string_height(t, size, s, ascent, descent);
+	width = mathed_string_width(t, size, s);
 	if (sym == LM_oint) width += 2;
 }

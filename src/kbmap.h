@@ -28,7 +28,7 @@ public:
 	/** Bind a key-sequence to an action.
 	    Returns 0 on success. Otherwise, position in string where
 	    error occured. */
-	int bind(char const * seq, int action);
+	int bind(string const & seq, int action);
 
 	///
 	void print(string & buf) const;
@@ -38,7 +38,7 @@ public:
 		   unsigned int mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
-	string findbinding(int action) const;
+	string const findbinding(int action) const;
 private:
 	///
 	struct kb_key {
@@ -59,7 +59,7 @@ private:
 	/// Define a new key sequence
 	int defkey(kb_sequence * seq, int action, int idx = 0);
 	///
-	static string keyname(kb_key const & k);
+	static string const keyname(kb_key const & k);
 	
 	///
 	static

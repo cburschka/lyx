@@ -40,6 +40,7 @@ void waitForX()
 	XSync(fl_get_display(), 0);
 }
 
+
 extern "C" {
 // Just a bunch of C wrappers around static members of WorkArea
 	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
@@ -125,10 +126,9 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 				      width - 15 - 2 * bw, // scrollbarwidth
 				      height - 2 * bw, "",
 				      C_WorkArea_work_area_handler);
-	//obj->wantkey = FL_KEY_TAB;
 	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this; /* This is how we pass the WorkArea
-				       to the work_area_handler. */
+				to the work_area_handler. */
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
@@ -265,6 +265,7 @@ void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 	waitForX();
 }
 
+
 bool Lgb_bug_find_hack = false;
 
 int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
@@ -355,19 +356,35 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		}
 		KeySym ret_key = keysym;
 #else
-		// Ok, this is a bit simplistic...seems that the rules
-		// need to be a bit more...
-		if (!key) break;
-		KeySym ret_key = (keysym ? keysym : key);
+		// Note that we need this handling because of a bug
+		// in XForms 0.89, if this bug is resolved in the way I hope
+		// we can just use the keysym directly with out looking
+		// at key at all. (Lgb)
+		KeySym ret_key = 0;
+		if (!key) {
+			// We migth have to add more keysyms here also,
+			// we will do that as the issues arise. (Lgb)
+			if (keysym == XK_space)
+				ret_key = keysym;
+			else
+				break;
+		} else {
+			ret_key = (keysym ? keysym : key);
+		}
+		
 #endif	
 		unsigned int ret_state = xke->state;
-		
+
+		// If you have a better way to handle "wild-output" of
+		// characters after the key has been released than the one
+		// below, please contact me. (Lgb)
 		static Time last_time_pressed = 0;
 		static unsigned int last_key_pressed = 0;
 		static unsigned int last_state_pressed = 0;
-		//lyxerr << "Workarea Diff: " << xke->time - last_time_pressed
-		//       << endl;
-		if (xke->time - last_time_pressed < 40 // should perhaps be tunable
+		lyxerr[Debug::KEY] << "Workarea Diff: "
+				   << xke->time - last_time_pressed
+				   << endl;
+		if (xke->time - last_time_pressed < 35 // should perhaps be tunable
 		    && xke->state == last_state_pressed
 		    && xke->keycode == last_key_pressed) {
 			lyxerr[Debug::KEY]
@@ -449,9 +466,10 @@ int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 	clipboard_read = true;
 	return 0;
 }
-}
+} // extern "C"
 
-string WorkArea::getClipboard() const 
+
+string const WorkArea::getClipboard() const 
 {
 	clipboard_read = false;
 	

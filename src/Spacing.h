@@ -49,25 +49,33 @@ public:
 	///
 	void set(Spacing::Space sp, float val = 1.0);
 	///
-	void set(Spacing::Space sp, char const * val) ;
+	void set(Spacing::Space sp, string const & val) ;
 	///
 	void writeFile(std::ostream &, bool para = false) const;
 	///
-	string writeEnvirBegin() const;
+	string const writeEnvirBegin() const;
 	///
-	string writeEnvirEnd() const;
-	///
-	friend bool operator==(Spacing const & a, Spacing const & b) {
-		return a.space == b.space && a.getValue() == b.getValue();
-	}
-	///
-	friend bool operator!=(Spacing const & a, Spacing const & b) {
-		return !(a == b);
-	}
+	string const writeEnvirEnd() const;
 private:
 	///
 	Space space;
 	///
 	float value;
 };
+
+
+///
+inline
+bool operator==(Spacing const & a, Spacing const & b)
+{
+	return a.getSpace() == b.getSpace()
+		&& a.getValue() == b.getValue();
+}
+
+///
+inline
+bool operator!=(Spacing const & a, Spacing const & b)
+{
+	return !(a == b);
+}
 #endif

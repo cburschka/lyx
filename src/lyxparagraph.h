@@ -150,9 +150,9 @@ public:
 	bool isMultiLingual(BufferParams const &);
 	///
 
-	string String(Buffer const *, bool label);
+	string const String(Buffer const *, bool label);
 	///
-	string String(Buffer const *, size_type beg, size_type end);
+	string const String(Buffer const *, size_type beg, size_type end);
 	
 	///
 	void writeFile(Buffer const *, std::ostream &, BufferParams const &,
@@ -388,7 +388,7 @@ public:
 	string const & GetLabelstring() const;
 	
 	/// the next two functions are for the manual labels
-	string GetLabelWidthString() const;
+	string const GetLabelWidthString() const;
 	///
 	void SetLabelWidthString(string const & s);
 	///
@@ -418,9 +418,10 @@ public:
 	  between the characters font and the layoutfont.
 	  This is what is stored in the fonttable
 	 */
-	LyXFont GetFontSettings(BufferParams const &, size_type pos) const;
+	LyXFont const
+	GetFontSettings(BufferParams const &, size_type pos) const;
 	///
-	LyXFont GetFirstFontSettings() const;
+	LyXFont const GetFirstFontSettings() const;
 
 	/** Get fully instantiated font. If pos == -1, use the layout
 	    font attached to this paragraph.
@@ -429,7 +430,7 @@ public:
 	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
 	    LyXFont::TOGGLE.
 	*/
-	LyXFont getFont(BufferParams const &, size_type pos) const;
+	LyXFont const getFont(BufferParams const &, size_type pos) const;
 	///
 	value_type GetChar(size_type pos) const;
 	/// The position must already exist.
@@ -440,7 +441,7 @@ public:
 	///
 	void SetFont(size_type pos, LyXFont const & font);
 	///
-        string GetWord(size_type &) const;
+        string const GetWord(size_type &) const;
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE HighestFontInRange(size_type startpos,
 					      size_type endpos) const;
@@ -533,8 +534,8 @@ public:
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
 	///
-        void SetPExtraType(BufferParams const &,
-			   int type, char const * width, char const * widthp);
+        void SetPExtraType(BufferParams const &, int type,
+			   string const & width, string const & widthp);
 	///
         void UnsetPExtraType(BufferParams const &);
 	///

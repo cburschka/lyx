@@ -219,7 +219,7 @@ bool BufferList::close(Buffer * buf)
 }
 
 
-vector<string> BufferList::getFileNames() const
+vector<string> const BufferList::getFileNames() const
 {
 	vector<string> nvec;
 	for(BufferStorage::const_iterator cit = bstore.begin();
@@ -456,14 +456,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			// no template, start with empty buffer
 			b->paragraph = new LyXParagraph;
 		}
-	}
-	else {  // start with empty buffer
+	} else {  // start with empty buffer
 		b->paragraph = new LyXParagraph;
 	}
 
-#warning Why mark a new document dirty? I deactivate this (Jug)
 	if (!lyxrc.new_ask_filename) {
-//		b->markDirty();
 		if (!isNamed)
 			b->setUnnamed();
 	}

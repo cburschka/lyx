@@ -609,7 +609,7 @@ int LyXAction::getApproxFunc(string const & func) const
 }
 
 
-string LyXAction::getApproxFuncName(string const & func) const
+string const LyXAction::getApproxFuncName(string const & func) const
 {
 	int f = getApproxFunc(func);
 	// This will return empty string if f isn't an action.
@@ -617,7 +617,7 @@ string LyXAction::getApproxFuncName(string const & func) const
 }
 
 
-string LyXAction::getActionName(int action) const
+string const LyXAction::getActionName(int action) const
 {
 	kb_action ac;
 	string arg;
@@ -639,7 +639,7 @@ string LyXAction::getActionName(int action) const
 
 // Returns one line help associated with a (pseudo)action, i.e. appends
 // the argument of the action if necessary
-string LyXAction::helpText(int pseudoaction) const
+string const LyXAction::helpText(int pseudoaction) const
 {
 	string help, arg;
 	kb_action action;

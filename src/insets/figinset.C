@@ -72,9 +72,9 @@ using std::vector;
 using std::find;
 using std::flush;
 using std::endl;
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 using std::ostringstream;
-#endif
+//#endif
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -538,31 +538,31 @@ void runqueue()
 			ofs.close(); // Don't remove this.
 
 			// gs process - set ghostview environment first
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			ostringstream t2;
-#else
-			char tbuf2[80];
-			ostrstream t2(tbuf2, sizeof(tbuf2));
-#endif
+//#else
+//			char tbuf2[80];
+//			ostrstream t2(tbuf2, sizeof(tbuf2));
+//#endif
 			t2 << "GHOSTVIEW=" << fl_get_canvas_id(figinset_canvas)
 			   << ' ' << p->data->bitmap;
-#ifndef HAVE_SSTREAM
-			t2 << '\0';
-#endif
+//#ifndef HAVE_SSTREAM
+//			t2 << '\0';
+//#endif
 			// now set up ghostview property on a window
 			// #warning BUG seems that the only bug here
 			// might be the hardcoded dpi.. Bummer!
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			ostringstream t1;
-#else
-			char tbuf[384];
-			ostrstream t1(tbuf, sizeof(tbuf));
-#endif
+//#else
+//			char tbuf[384];
+//			ostrstream t1(tbuf, sizeof(tbuf));
+//#endif
 			t1 << "0 0 0 0 " << p->data->wid << ' '
 			   << p->data->hgh << " 72 72 0 0 0 0";
-#ifndef HAVE_SSTREAM
-			t1 << '\0';
-#endif
+//#ifndef HAVE_SSTREAM
+//			t1 << '\0';
+//#endif
 			
 			if (lyxerr.debugging()) {
 				lyxerr << "Will set GHOSTVIEW property to ["
@@ -613,7 +613,7 @@ void runqueue()
 				::sleep(1);
 				XGrabServer(tempdisp);
 			}
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
@@ -621,25 +621,25 @@ void runqueue()
 					8, PropModeAppend, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str().c_str())),
 					t1.str().size());
-#else
-			
-			XChangeProperty(tempdisp, 
-					fl_get_canvas_id(figinset_canvas),
-					XInternAtom(tempdisp, "GHOSTVIEW", false),
-					XInternAtom(tempdisp, "STRING", false),
-					8, PropModeAppend, 
-					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str())),
-					::strlen(t1.str()));
-#endif
+//#else
+//			
+//			XChangeProperty(tempdisp, 
+//					fl_get_canvas_id(figinset_canvas),
+//					XInternAtom(tempdisp, "GHOSTVIEW", false),
+//					XInternAtom(tempdisp, "STRING", false),
+//					8, PropModeAppend, 
+//					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str())),
+//					::strlen(t1.str()));
+//#endif
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			ostringstream t3;
-#else
-			//char tbuf[384];
-			ostrstream t3(tbuf, sizeof(tbuf));
-#endif
+//#else
+//			//char tbuf[384];
+//			ostrstream t3(tbuf, sizeof(tbuf));
+//#endif
 			switch (p->data->flags & 3) {
 			case 0: t3 << 'H'; break; // Hidden
 			case 1: t3 << 'M'; break; // Mono
@@ -654,12 +654,12 @@ void runqueue()
 	
 			t3 << ' ' << BlackPixelOfScreen(DefaultScreenOfDisplay(tempdisp))
 			   << ' ' << background_pixel;
-#ifndef HAVE_SSTREAM
-			t3 << '\0';
-#endif
+//#ifndef HAVE_SSTREAM
+//			t3 << '\0';
+//#endif
 
 			XGrabServer(tempdisp);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp,
@@ -668,16 +668,16 @@ void runqueue()
 					8, PropModeReplace, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str().c_str())),
 					t3.str().size());
-#else
-			XChangeProperty(tempdisp, 
-					fl_get_canvas_id(figinset_canvas),
-					XInternAtom(tempdisp,
-						    "GHOSTVIEW_COLORS", false),
-					XInternAtom(tempdisp, "STRING", false),
-					8, PropModeReplace, 
-					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str())),
-					::strlen(t3.str()));
-#endif
+//#else
+//			XChangeProperty(tempdisp, 
+//					fl_get_canvas_id(figinset_canvas),
+//					XInternAtom(tempdisp,
+//						    "GHOSTVIEW_COLORS", false),
+//					XInternAtom(tempdisp, "STRING", false),
+//					8, PropModeReplace, 
+//					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str())),
+//					::strlen(t3.str()));
+//#endif
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			
@@ -691,14 +691,14 @@ void runqueue()
 				++ne;
 			typedef char * char_p;
 			env = new char_p[ne + 2];
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			string tmp = t2.str().c_str();
 			env[0] = new char[tmp.size() + 1];
 			std::copy(tmp.begin(), tmp.end(), env[0]);
 			env[0][tmp.size()] = '\0';
-#else
-			env[0] = tbuf2;
-#endif
+//#else
+//			env[0] = tbuf2;
+//#endif
 			::memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
 
@@ -1250,7 +1250,7 @@ bool InsetFig::Deletable() const
 }
 
 
-char const * InsetFig::EditMessage() const 
+string const InsetFig::EditMessage() const 
 {
 	return _("Opened figure");
 }
@@ -1957,7 +1957,7 @@ void InsetFig::RestoreForm()
 }
 
 
-void InsetFig::Preview(char const * p)
+void InsetFig::Preview(string const & p)
 {
  	int pid = fork();
 

@@ -108,14 +108,15 @@ public:
 	bool Convert(Buffer * buffer, string const & from_file,
 		     string const & to_file, string const & using_format,
 		     string * view_file = 0);
+	///
 	static
 	string const SplitFormat(string const & str, string & format);
 	///
 	static
-	string dvi_papersize(Buffer * buffer);
+	string const dvi_papersize(Buffer const * buffer);
 	///
 	static
-	string dvips_options(Buffer * buffer);
+	string const dvips_options(Buffer const * buffer);
 private:
 	///
 	static

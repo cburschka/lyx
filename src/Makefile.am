@@ -56,6 +56,7 @@ lyx_SOURCES = \
 	LaTeXLog.C \
 	Literate.C \
 	Literate.h \
+	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \
 	LyXSendto.C \
@@ -192,8 +193,6 @@ lyx_SOURCES = \
 	lyxvc.C \
 	lyxvc.h \
 	main.C \
-	menus.C \
-	menus.h \
 	minibuffer.C \
 	minibuffer.h \
 	nt_defines.h \
@@ -208,8 +207,6 @@ lyx_SOURCES = \
 	spellchecker.C \
 	spellchecker.h \
 	stl_string_fwd.h \
-	table.C \
-	table.h \
 	tabular.C \
 	tabular.h \
 	tex-accent.C \

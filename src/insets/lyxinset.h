@@ -132,9 +132,9 @@ public:
 	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
 	///
-	virtual LyXFont ConvertFont(LyXFont const & font) const;
+	virtual LyXFont const ConvertFont(LyXFont const & font) const;
 	/// what appears in the minibuffer when opening
-	virtual const char * EditMessage() const;
+	virtual string const EditMessage() const;
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -177,7 +177,7 @@ public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code LyxCode() const { return NO_CODE; }
   
-	virtual std::vector<string> getLabelList() const {
+	virtual std::vector<string> const getLabelList() const {
 		return std::vector<string>();
 	}
 

@@ -68,7 +68,7 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::MATH_CODE; }
 	///
-	LyXFont ConvertFont(LyXFont const & f) const {
+	LyXFont const ConvertFont(LyXFont const & f) const {
 		// We have already discussed what was here
 		LyXFont font(f);
 	        font.setLatex(LyXFont::OFF);
@@ -76,7 +76,7 @@ public:
 	}
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -108,11 +108,11 @@ public:
 	virtual RESULT LocalDispatch(BufferView *, int, string const &);
     
 	///
-	void InsertSymbol(BufferView *, char const *);
+	void InsertSymbol(BufferView *, string const &);
 	///
 	bool SetNumber(bool);
 	///
-	std::vector<string> getLabelList() const;
+	std::vector<string> const getLabelList() const;
    
 protected:
 	///

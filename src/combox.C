@@ -109,28 +109,30 @@ void Combox::remove()
 }
 
 
-void Combox::addline(char const* text)
+void Combox::addline(string const & text)
 {
 	if (!browser) return;
-	fl_add_browser_line(browser, text);
+	fl_add_browser_line(browser, text.c_str());
 	
 	// By default the first item is selected
 	if (!sel) {
 		sel = 1;
 		if (type == FL_COMBOX_INPUT)
-			fl_set_input(label, text);
+			fl_set_input(label, text.c_str());
 		else
-			fl_set_object_label(label, text); 
+			fl_set_object_label(label, text.c_str()); 
 	}
 	is_empty = false;
 }
 
 
-bool Combox::select_text(char const* t)
+bool Combox::select_text(string const & t)
 {
-	if (!browser || !t) return false;
-	for (int i = 1; i <= fl_get_browser_maxline(browser); ++i) {
-		if (!strcmp(t, fl_get_browser_line(browser, i))) {
+	if (!browser || t.empty()) return false;
+	int const maxline = fl_get_browser_maxline(browser);
+	
+	for (int i = 1; i <= maxline; ++i) {
+		if (t == fl_get_browser_line(browser, i)) {
 			select(i);
 			return true;
 		}
@@ -142,7 +144,7 @@ bool Combox::select_text(char const* t)
 void Combox::select(int i)
 {
 	if (!browser || !button) return;
-	if (i>0 && i<= fl_get_browser_maxline(browser)) sel = i; 
+	if (i > 0 && i <= fl_get_browser_maxline(browser)) sel = i; 
 	fl_deactivate_object(button);
 	
 	if (type == FL_COMBOX_INPUT)
@@ -155,7 +157,7 @@ void Combox::select(int i)
 
 void Combox::add(int x, int y, int w, int hmin, int hmax)
 {  
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	
 	switch(type) {
 	case FL_COMBOX_DROPLIST:
@@ -311,7 +313,7 @@ void Combox::deactivate()
 	if (label) fl_deactivate_object(label);
 }
 
-void Combox::input_cb(FL_OBJECT *ob, long)
+void Combox::input_cb(FL_OBJECT * ob, long)
 {
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 

@@ -14,7 +14,6 @@
 #include <algorithm>
 #include <iostream>
 
-//#include "LString.h"
 #include FORMS_H_LOCATION
 #include "lyx.h"
 #include "layout_forms.h"
@@ -1153,9 +1152,9 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 }
 
 
-void MenuInsertLabel(char const * arg)
+void MenuInsertLabel(string const & arg)
 {
-	string label = arg;
+	string label(arg);
 	ProhibitInput(current_view);
 	if (label.empty()) {
 		pair<bool, string>
@@ -1321,7 +1320,7 @@ void MenuLayoutCharacter()
 }
 
 
-inline
+static inline
 void DeactivateParagraphButtons ()
 {
 	fl_deactivate_object (fd_form_paragraph->button_ok);
@@ -1331,7 +1330,7 @@ void DeactivateParagraphButtons ()
 }
 
 
-inline
+static inline
 void ActivateParagraphButtons ()
 {
 	fl_activate_object (fd_form_paragraph->button_ok);
@@ -1341,7 +1340,7 @@ void ActivateParagraphButtons ()
 }
 
 
-inline
+static inline
 void DisableParagraphLayout ()
 {
         DeactivateParagraphButtons();
@@ -1365,7 +1364,7 @@ void DisableParagraphLayout ()
 }
 
 
-inline
+static inline
 void EnableParagraphLayout ()
 {
         ActivateParagraphButtons();
@@ -1576,7 +1575,7 @@ void MenuLayoutParagraph()
 }
 
 #ifdef USE_OLD_DOCUMENT_LAYOUT
-inline
+static inline
 void DeactivateDocumentButtons ()
 {
 	fl_deactivate_object (fd_form_document->button_ok);
@@ -1586,7 +1585,7 @@ void DeactivateDocumentButtons ()
 }
 
 
-inline
+static inline
 void ActivateDocumentButtons ()
 {
 	fl_activate_object (fd_form_document->button_ok);
@@ -1596,7 +1595,7 @@ void ActivateDocumentButtons ()
 }
 
 
-inline
+static inline
 void DisableDocumentLayout ()
 {
         DeactivateDocumentButtons ();
@@ -1629,7 +1628,7 @@ void DisableDocumentLayout ()
 }
 
 
-inline
+static inline
 void EnableDocumentLayout ()
 {
         ActivateDocumentButtons ();
@@ -1779,17 +1778,17 @@ bool UpdateLayoutDocument(BufferParams * params)
 		fl_set_choice(fd_form_document->choice_spacing, 4);
 		//char sval[20];
 		//sprintf(sval, "%g", params->spacing.getValue()); 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		std::ostringstream sval;
 		sval << params->spacing.getValue(); // setw?
 		fl_set_input(fd_form_document->input_spacing,
 			     sval.str().c_str());
-#else
-		char tval[20];
-		ostrstream sval(tval, 20);
-		sval << params->spacing.getValue() << '\0'; // setw?
-		fl_set_input(fd_form_document->input_spacing, sval.str());
-#endif
+//#else
+//		char tval[20];
+//		ostrstream sval(tval, 20);
+//		sval << params->spacing.getValue() << '\0'; // setw?
+//		fl_set_input(fd_form_document->input_spacing, sval.str());
+//#endif
 		break;
 	}
 	}
@@ -1953,7 +1952,7 @@ void MenuLayoutSave()
 
 // This is both GUI and LyXFont dependent. Don't know where to put it. (Asger)
 // Well, it's mostly GUI dependent, so I guess it will stay here. (Asger)
-LyXFont UserFreeFont(BufferParams const & params)
+LyXFont const UserFreeFont(BufferParams const & params)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 

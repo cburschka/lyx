@@ -14,7 +14,7 @@
 using std::ostream;
 
 
-string InsetTOC::getScreenLabel() const 
+string const InsetTOC::getScreenLabel() const 
 {
 	string cmdname( getCmdName() );
 	if( cmdname == "tableofcontents" )

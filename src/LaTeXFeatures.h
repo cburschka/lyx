@@ -36,13 +36,13 @@ struct LaTeXFeatures {
 	///
 	LaTeXFeatures(BufferParams const &, int n) ;
 	/// The packaes needed by the document
-	string getPackages();
+	string const getPackages();
 	/// The macros definitions needed by the document
-	string getMacros();
+	string const getMacros();
 	/// The definitions needed by the document's textclass
-	string getTClassPreamble();
+	string const getTClassPreamble();
 	///
-	string getIncludedFiles();
+	string const getIncludedFiles();
 
 	///
 	void showStruct();

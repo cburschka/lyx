@@ -74,7 +74,7 @@ public:
 
         /** Returns an action name the most similar to a string.
 	    Don't include arguments, they would be ignored. */
-        string getApproxFuncName(string const & func) const;
+        string const getApproxFuncName(string const & func) const;
 
 	/// Returns a pseudo-action given an action and its argument.
 	int getPseudoAction(kb_action action, string const & arg) const;
@@ -89,10 +89,10 @@ public:
 	bool isPseudoAction(int) const;
     
 	/// Return the name associated with command
-	string getActionName(int action) const;
+	string const getActionName(int action) const;
 
 	/// Return one line help text associated with (pseudo)action
-	string helpText(int action) const;
+	string const helpText(int action) const;
 
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;

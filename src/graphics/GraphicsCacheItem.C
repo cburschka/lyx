@@ -19,16 +19,19 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsCacheItem_pimpl.h"
 
+
 GraphicsCacheItem::GraphicsCacheItem()
 	: pimpl(new GraphicsCacheItem_pimpl)
 {
 	pimpl->refCount = 1;
 }
 
+
 GraphicsCacheItem::~GraphicsCacheItem()
 {
 	destroy();
 }
+
 
 bool
 GraphicsCacheItem::setFilename(string const & filename)
@@ -37,20 +40,21 @@ GraphicsCacheItem::setFilename(string const & filename)
 	return pimpl->setFilename(filename);
 }
 
+
 GraphicsCacheItem::GraphicsCacheItem(GraphicsCacheItem const & gci)
 {
 	pimpl = 0;
 	copy(gci);
 }
 
-GraphicsCacheItem const &
+GraphicsCacheItem &
 GraphicsCacheItem::operator=(GraphicsCacheItem const & gci)
 {
 	// Are we trying to copy the object onto itself.
 	if (this == &gci)
 		return *this;
 
-	// Destory old copy 
+	// Destroy old copy 
 	destroy();
 
 	// And then copy new object.
@@ -59,12 +63,14 @@ GraphicsCacheItem::operator=(GraphicsCacheItem const & gci)
 	return *this;
 }
 
+
 void
 GraphicsCacheItem::copy(GraphicsCacheItem const & gci)
 {
 	pimpl = gci.pimpl;
 	++(pimpl->refCount);
 }
+
 
 void
 GraphicsCacheItem::destroy()
@@ -79,14 +85,18 @@ GraphicsCacheItem::destroy()
 	}
 }
 
+
 GraphicsCacheItem::ImageStatus 
 GraphicsCacheItem::getImageStatus() const { return pimpl->imageStatus_; }
 
+
 int 
 GraphicsCacheItem::getHeight() const { return pimpl->height_; }	
-	
+
+
 int 
 GraphicsCacheItem::getWidth() const { return pimpl->width_; }
+
 
 Pixmap 
 GraphicsCacheItem::getImage() const { return pimpl->pixmap_; }

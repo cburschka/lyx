@@ -18,22 +18,17 @@
 
 #include FORMS_H_LOCATION
 
+#include "LString.h"
 #include "Timeout.h"
 #include "support/utility.hpp"
 
-// uncomment this line to try out the new menus
-#define NEW_MENUBAR 1
 
 class LyXFunc;
 class Toolbar;
 class MiniBuffer;
 class Intl;
 class Buffer;
-#ifdef NEW_MENUBAR
 class Menubar;
-#else
-class Menus;
-#endif
 
 class BufferView;
 class Dialogs;
@@ -60,7 +55,7 @@ public:
 	void setPosition(int, int);
 
 	/// Show the main form.
-	void show(int, int, char const * t = "LyX");
+	void show(int, int, string const & t = string("LyX"));
 
 	/// init (should probably be removed later) (Lgb)
 	void init();
@@ -92,16 +87,12 @@ public:
 	/// return a pointer to the minibuffer
 	MiniBuffer * getMiniBuffer() const;
 
-#ifdef NEW_MENUBAR
 	///
 	Menubar * getMenubar() const;
 
 	///
 	void updateMenubar();
-#else
-	///
-	Menus * getMenus() const;
-#endif
+
 	///
 	Intl * getIntl() const;
 
@@ -127,13 +118,8 @@ private:
 	Toolbar * toolbar;
 	/// 
 	MiniBuffer * minibuffer;
-#ifdef NEW_MENUBAR
 	///
 	Menubar * menubar;
-#else
-	///
-	Menus * menus;
-#endif
 	///
 	Intl * intl;
 	///

@@ -27,7 +27,7 @@ public:
 	///
         Inset * Clone() const { return new InsetTOC(params()); }
     	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
 	///
 	void Edit(BufferView * bv, int, int, unsigned int);
         ///

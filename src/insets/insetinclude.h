@@ -35,9 +35,9 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
-	std::vector<string> getLabelList() const;
+	std::vector<string> const getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
-	std::vector< std::pair<string,string> > getKeys() const;
+	std::vector< std::pair<string,string> > const getKeys() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -63,11 +63,11 @@ public:
 	*/
 	bool display() const;
 	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
         ///
-        string getMasterFilename() const;
+        string const getMasterFilename() const;
         ///
-        string getFileName() const;
+        string const getFileName() const;
 
         ///  In "input" mode uses \input instead of \include.
 	bool isInput() const { return flag == InsetInclude::INPUT; }

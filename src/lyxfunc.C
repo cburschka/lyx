@@ -10,11 +10,15 @@
 
 #include <config.h>
 
+#if 0
 #ifdef HAVE_SSTREAM
 #include <sstream>
 using std::istringstream;
 #else
 #include <strstream>
+#endif
+#else
+#include "Lsstream.h"
 #endif
 
 #include <time.h>
@@ -86,11 +90,7 @@ using std::istringstream;
 #include "bufferview_funcs.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
-#ifdef NEW_MENUBAR
 #include "frontends/Menubar.h"
-#else
-#include "menus.h"
-#endif
 #include "FloatList.h"
 #include "exporter.h"
 #include "FontLoader.h"
@@ -102,7 +102,7 @@ using std::endl;
 extern bool cursor_follows_scrollbar;
 
 extern void InsertAsciiFile(BufferView *, string const &, bool);
-extern void math_insert_symbol(char const *);
+extern void math_insert_symbol(string const &);
 extern bool math_insert_greek(char);
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
@@ -113,9 +113,7 @@ extern kb_keymap * toplevel_keymap;
 
 extern bool MenuWrite(Buffer *);
 extern bool MenuWriteAs(Buffer *);
-#ifdef NEW_MENUBAR
 extern int  MenuRunLaTeX(Buffer *);
-#endif
 extern int  MenuBuildProg(Buffer *);
 extern int  MenuRunChktex(Buffer *);
 #ifndef NEW_EXPORT
@@ -139,7 +137,7 @@ extern void AutoSave(BufferView *);
 extern bool PreviewDVI(Buffer *);
 extern bool PreviewPostscript(Buffer *);
 #endif
-extern void MenuInsertLabel(char const *);
+extern void MenuInsertLabel(string const &);
 extern void MenuLayoutCharacter();
 extern void MenuLayoutParagraph();
 extern void MenuLayoutDocument();
@@ -658,7 +656,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 }
 
 
-string LyXFunc::Dispatch(string const & s) 
+string const LyXFunc::Dispatch(string const & s) 
 {
 	// Split command string into command and argument
 	string cmd, line = frontStrip(s);
@@ -668,8 +666,8 @@ string LyXFunc::Dispatch(string const & s)
 }
 
 
-string LyXFunc::Dispatch(int ac,
-			 char const * do_not_use_this_arg)
+string const LyXFunc::Dispatch(int ac,
+			 string const & do_not_use_this_arg)
 {
 	string argument;
 	kb_action action;
@@ -687,7 +685,7 @@ string LyXFunc::Dispatch(int ac,
 			argument = tmparg;
 	} else {
 		action = static_cast<kb_action>(ac);
-		if (do_not_use_this_arg)
+		if (!do_not_use_this_arg.empty())
 			argument = do_not_use_this_arg; // except here
 	}
     
@@ -1630,11 +1628,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_MENU_OPEN_BY_NAME:
-#ifdef NEW_MENUBAR
 		owner->getMenubar()->openByName(argument);
-#else
-		owner->getMenus()->openByName(argument);
-#endif
 		break; // RVDK_PATCH_5
 		
 	case LFUN_SPELLCHECK:
@@ -2232,11 +2226,11 @@ string LyXFunc::Dispatch(int ac,
 			cur_value = par->spacing.getValue();
 		}
 		
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		istringstream istr(argument);
-#else
-		istrstream istr(argument.c_str());
-#endif
+//#else
+//		istrstream istr(argument.c_str());
+//#endif
 		string tmp;
 		istr >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -2534,11 +2528,11 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
                 istringstream istr(argument);
-#else
-                istrstream istr(argument.c_str());
-#endif
+//#else
+//                istrstream istr(argument.c_str());
+//#endif
 
 		int id;
 		istr >> id;

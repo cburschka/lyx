@@ -36,11 +36,10 @@ class Dialogs;
 ///
 #ifdef SIGC_CXX_NAMESPACES
 class InsetGraphics : public Inset, public SigC::Object
-{
 #else
 class InsetGraphics : public Inset, public Object
+#endif
 {
-#endif 
 public:
 	///
 	InsetGraphics();
@@ -66,8 +65,8 @@ public:
 	void Read(Buffer const *, LyXLex & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
-	 fragile == true means, that the inset should take care about
-	 fragile commands by adding a \protect before.
+	 #fragile == true# means, that the inset should take care about
+	 fragile commands by adding a #\protect# before.
 	 */
 	int Latex(Buffer const *, std::ostream &,
 	          bool fragile, bool free_spc) const;
@@ -79,8 +78,8 @@ public:
 	int DocBook(Buffer const *, std::ostream &) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
-	    * you need to be included.
-	    */
+	    you need to be included.
+	 */
 	void Validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
@@ -89,16 +88,18 @@ public:
 	///
 	Inset * Clone() const;
 
-	/// Set the inset parameters, used by the GUIndependent dialog.
-	/// Return true of new params are different from what was so far.
+	/** Set the inset parameters, used by the GUIndependent dialog.
+	    Return true of new params are different from what was so far.
+	*/
 	bool setParams(InsetGraphicsParams const & params);
 
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams getParams() const;
 
-	/// This signal is connected by our dialog and called when the inset
-	/// is deleted.
-	Signal0 < void > hide;
+	/** This signal is connected by our dialog and called when the inset
+	    is deleted.
+	*/
+	Signal0 <void> hide;
 private:
 	/// Update the inset after parameter change.
 	void updateInset();

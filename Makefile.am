@@ -49,3 +49,8 @@ bindist:
 	@echo "*** distribution and refer to *you* in case of problem."
 	@echo "*** $(bindistfile) has been created."
 
+
+sourcedoc:
+	mkdir sourcedoc
+	cd sourcedoc
+	doc++ -p $(srcdir)/src/*.h

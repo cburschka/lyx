@@ -26,7 +26,7 @@
 #include "symbol_def.h"
 
 
-inline
+static inline
 char * strnew(char const * s)
 {
    char * s1 = new char[strlen(s)+1];
@@ -47,21 +47,21 @@ MathedInset::MathedInset(MathedInset * inset)
       objtype = LM_OT_UNDEF;
       size = LM_ST_TEXT;
       width = ascent = descent = 0;
-      name = 0;
+      //name = 0;
    }
 }
 
 
-MathFuncInset::MathFuncInset(char const * nm, short ot, short st)
+MathFuncInset::MathFuncInset(string const & nm, short ot, short st)
 	: MathedInset("", ot, st)
 {
    ln = 0;
    lims = (GetType() == LM_OT_FUNCLIM);
     if (GetType() == LM_OT_UNDEF) {
-	fname = strnew(nm);
+	fname = nm;
 	SetName(fname);
     } else {
-	fname = 0;
+	//fname = 0;
 	SetName(nm);
     }
 }
@@ -84,7 +84,7 @@ MathedInset * MathSpaceInset::Clone()
 }
 
 
-MathParInset::MathParInset(short st, char const * nm, short ot)
+MathParInset::MathParInset(short st, string const & nm, short ot)
 	: MathedInset(nm, ot, st)
 {
     array = 0;
@@ -338,8 +338,8 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 	while (mrow) {
 	    r = new MathedRowSt(nc + 1);
 	    r->numbered = mrow->numbered;
-	    if (mrow->label) 
-	      r->label = strnew(mrow->label);
+	    //if (mrow->label) 
+	      r->label = mrow->label;
 	    if (!ro) 
 	      row = r;
 	    else
@@ -534,7 +534,7 @@ MathedInset * MathAccentInset::Clone()
 }
 
 
-MathBigopInset::MathBigopInset(char const* nam, int id, short st)
+MathBigopInset::MathBigopInset(string const & nam, int id, short st)
 	: MathedInset(nam, LM_OT_BIGOP, st), sym(id)
 {
    lims = -1;
@@ -547,7 +547,7 @@ MathedInset * MathBigopInset::Clone()
 }
 
 
-MathDotsInset::MathDotsInset(char const * nam, int id, short st)
+MathDotsInset::MathDotsInset(string const & nam, int id, short st)
 	: MathedInset(nam, LM_OT_DOTS, st), code(id) {}
 
 

@@ -34,7 +34,7 @@ public:
 	///
 	Inset * Clone() const;
 	///
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	///
 	bool InsertInset(BufferView *, Inset *) { return false; }
 	///

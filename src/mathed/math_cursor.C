@@ -35,14 +35,14 @@ static LyxArrayBase * selarray = 0;
 
 using std::endl;
 
-inline
+static inline
 bool IsAlpha(char c)
 {
    return ('A' <= c  && c <= 'Z' || 'a' <= c  && c <= 'z');
 }
 
 // This was very smaller, I'll change it later 
-inline
+static inline
 bool IsMacro(short tok, int id)
 {
    return (tok != LM_TK_STACK && tok != LM_TK_FRAC && tok != LM_TK_SQRT
@@ -55,7 +55,7 @@ bool IsMacro(short tok, int id)
 
 
 // Yes, mathed isn't using string yet.
-inline
+static inline
 char * strnew(char const * s)
 {
     char * s1 = new char[strlen(s)+1];
@@ -65,7 +65,8 @@ char * strnew(char const * s)
 
 
 
-#define MAX_STACK_ITEMS 32
+static int const MAX_STACK_ITEMS = 32;
+
 
 struct MathStackXIter {
     
@@ -596,9 +597,9 @@ void MathedCursor::SetSize(short size)
 }
 
 
-void MathedCursor::setLabel(char const * label)
+void MathedCursor::setLabel(string const & label)
 {  // ugly hack and possible bug
-    if (!cursor->setLabel(strnew(label)))
+    if (!cursor->setLabel(label))
 	    lyxerr << "MathErr: Bad place to set labels." << endl;
 }
 
@@ -611,10 +612,10 @@ void MathedCursor::setNumbered()
 }
 
 
-void MathedCursor::Interpret(char const * s)
+void MathedCursor::Interpret(string const & s)
 {
     MathedInset * p = 0;
-    latexkeys * l = 0;   
+    latexkeys * l = 0;
     MathedTextCodes tcode = LM_TC_INSET;
     
     if (s[0] == '^' || s[0] == '_') {
@@ -643,13 +644,13 @@ void MathedCursor::Interpret(char const * s)
 	  Insert(p);
 	  return;
       } else  
-      l = in_word_set (s, strlen(s));
+      l = in_word_set(s);
     
     if (!l) {       
 	p = MathMacroTable::mathMTable.getMacro(s);
 	if (!p) {
 	    lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
-	    if (strcmp("root", s) == 0) {
+	    if (s == "root") {
 		p = new MathRootInset();
 		tcode = LM_TC_ACTIVE_INSET;
 	    } else

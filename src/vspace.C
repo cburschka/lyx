@@ -55,52 +55,48 @@ int number_index, unit_index;
 
 
 static inline
-void lyx_advance (string & data, unsigned int n)
+void lyx_advance(string & data, unsigned int n)
 {
 	data.erase(0, n);
 }
 
 
 static inline
-bool isEndOfData (string const & data)
+bool isEndOfData(string const & data)
 {
-	return frontStrip (data).empty();
+	return frontStrip(data).empty();
 }
 
 
 static
-char nextToken (string & data)
+char nextToken(string & data)
 {
 	data = frontStrip(data);
 	if (data.empty())
 		return '\0';
 	else if (data[0] == '+') {
-		lyx_advance (data, 1);
+		lyx_advance(data, 1);
 		return '+';
-	}
-	else if (prefixIs(data, "plus")) {
-		lyx_advance (data, 4);
+	} else if (prefixIs(data, "plus")) {
+		lyx_advance(data, 4);
 		return '+';
-	}
-	else if (data[0] == '-') {
-		lyx_advance (data, 1);
+	} else if (data[0] == '-') {
+		lyx_advance(data, 1);
 		return '-';
-	}
-        else if (prefixIs(data, "minus")) {
-		lyx_advance (data, 5);
+	} else if (prefixIs(data, "minus")) {
+		lyx_advance(data, 5);
 		return '-';
-	}
-	else {
+	} else {
 		string::size_type i;
 
 		// I really mean assignment ("=") below, not equality!
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
-                        string buffer = data.substr(0, i + 1).c_str();
+                        string buffer = data.substr(0, i + 1);
 			double x = strToDbl(buffer);
 			if (x || (buffer[0] == '0')) {
 				number[number_index] = x;
-				lyx_advance (data, i + 1);
+				lyx_advance(data, i + 1);
 				++number_index;
 				return 'n';
 			} else 
@@ -109,9 +105,9 @@ char nextToken (string & data)
 			   != string::npos) {
 			if (unit_index > 3) return 'E';  // Error
 			string buffer = data.substr(0, i + 1);
-			unit[unit_index] = unitFromString (buffer);
+			unit[unit_index] = unitFromString(buffer);
 			if (unit[unit_index] != LyXLength::UNIT_NONE) {
-				lyx_advance (data, i + 1);
+				lyx_advance(data, i + 1);
 				++unit_index;
 				return 'u';
 			} else
@@ -230,7 +226,7 @@ bool isValidLength(string const & data, LyXLength * result)
 	/// glue, but since we already have it, using it is
 	/// easier than writing something from scratch.
 
-        string   buffer = data;
+        string   buffer(data);
 	int       pattern_index = 0;
 	char      pattern[3];
 
@@ -290,18 +286,18 @@ LyXLength::LyXLength(string const & data)
 }
 
 
-string LyXLength::asString() const
+string const LyXLength::asString() const
 {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
 	buffer << val << unit_name[uni]; // setw?
 	return buffer.str().c_str();
-#else
-	char tbuf[20];
-	ostrstream buffer(tbuf, 20);
-	buffer << val << unit_name[uni] << '\0'; // setw?
-	return buffer.str();
-#endif
+//#else
+//	char tbuf[20];
+//	ostrstream buffer(tbuf, 20);
+//	buffer << val << unit_name[uni] << '\0'; // setw?
+//	return buffer.str();
+//#endif
 }
 
 
@@ -325,14 +321,14 @@ LyXGlueLength::LyXGlueLength (string const & data)
 }
 
 
-string LyXGlueLength::asString() const
+string const LyXGlueLength::asString() const
 {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
-#else
-	char tbuf[20];
-	ostrstream buffer(tbuf, 20);
-#endif
+//#else
+//	char tbuf[20];
+//	ostrstream buffer(tbuf, 20);
+//#endif
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
 			if ((uni == plus_uni) && (uni == minus_uni))
@@ -378,23 +374,23 @@ string LyXGlueLength::asString() const
 				       << unit_name[minus_uni];
 		else
 			buffer << val << unit_name[uni];
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	return buffer.str().c_str();
-#else
-	buffer << '\0';
-	return buffer.str();
-#endif
+//#else
+//	buffer << '\0';
+//	return buffer.str();
+//#endif
 }
 
 
-string LyXGlueLength::asLatexString() const
+string const LyXGlueLength::asLatexString() const
 {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream buffer;
-#else
-	char tbuf[40];
-	ostrstream buffer(tbuf, 40);
-#endif
+//#else
+//	char tbuf[40];
+//	ostrstream buffer(tbuf, 40);
+//#endif
 
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
@@ -414,12 +410,12 @@ string LyXGlueLength::asLatexString() const
 			       << minus_val << unit_name[minus_uni];
 		else
 			buffer << val << unit_name[uni];
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	return buffer.str().c_str();
-#else
-	buffer << '\0';
-	return buffer.str();
-#endif
+//#else
+//	buffer << '\0';
+//	return buffer.str();
+//#endif
 }
 
 
@@ -474,7 +470,7 @@ bool VSpace::operator==(VSpace const & other) const
 }
 
 
-string VSpace::asLyXCommand() const
+string const VSpace::asLyXCommand() const
 {
         string result;
 
@@ -494,7 +490,7 @@ string VSpace::asLyXCommand() const
 }
 
 
-string VSpace::asLatexCommand(BufferParams const & params) const
+string const VSpace::asLatexCommand(BufferParams const & params) const
 {
 	switch (kin) {
 	case NONE:      return string();

@@ -29,7 +29,7 @@ public:
 	///
 	virtual ~InsetExternal();
 	/// what appears in the minibuffer when opening
-	virtual char const * EditMessage() const;
+	virtual string const EditMessage() const;
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -62,7 +62,7 @@ public:
 	virtual Inset * Clone() const;
 
 	/// returns the text of the button
-	virtual string getScreenLabel() const;
+	virtual string const getScreenLabel() const;
 
 	/// Callback function for the template drop-down
 	static void templateCB(FL_OBJECT *, long);
@@ -106,27 +106,27 @@ private:
 	void doView(BufferView const *) const;
 
 	/// Substitute meta-variables in this string
-	string doSubstitution(Buffer const *, string const & s) const;
+	string const doSubstitution(Buffer const *, string const & s) const;
 
 	/** Get the LyX name of the currently selected
 	    template in the choice list
 	*/
-	string getCurrentTemplate() const;
+	string const getCurrentTemplate() const;
 
 	/// Get a certain template from a LyX name
-	ExternalTemplate getTemplate(string const & lyxname) const;
+	ExternalTemplate const getTemplate(string const & lyxname) const;
 
 	/**
-	 * Get the number starting from 1 of a template with a 
-	 * specific LyX name for the choice list
+	  Get the number starting from 1 of a template with a 
+	  specific LyX name for the choice list
 	 */
 	int getTemplateNumber(string const & guiname) const;
 
 	/// Get the LyX name of a template with a given number starting from 1
-	string getTemplateName(int n) const;
+	string const getTemplateName(int n) const;
 
 	/// Get a string with all the GUI template names separated by |
-	string getTemplateString() const;
+	string const getTemplateString() const;
 
 	///
 	struct Holder {

@@ -31,10 +31,14 @@ class Systemcalls {
 public:
 	///
 	enum Starttype {
-		System, // Uses system() which uses /bin/sh
-		SystemDontWait, // Uses system() which uses /bin/sh
-		Wait, // Uses fork() and execvp()
-		DontWait // Uses fork() and execvp()
+		/// Uses system() which uses /bin/sh
+		System,
+		/// Uses system() which uses /bin/sh
+		SystemDontWait,
+		/// Uses fork() and execvp()
+		Wait,
+		/// Uses fork() and execvp()
+		DontWait
 	};
 	
 	/// Callback function gets commandline and return value from child
@@ -44,27 +48,29 @@ public:
 	Systemcalls();
 	
 	/** Generate instance and start child process.
-	  The string "what" contains a commandline with arguments separated 
-	  by spaces.
-	  When the requested program finishes, the callback-function is 
-	  called with the commandline and the return value from the program.
-	  The instance is automatically added to a timer check if starttype 
-	  is DontWait (i.e. background execution). When a background child
-	  finishes, the timer check will automatically call the callback
-	  function.
-	  */
+	    The string "what" contains a commandline with arguments separated 
+	    by spaces.
+	    When the requested program finishes, the callback-function is 
+	    called with the commandline and the return value from the program.
+	    The instance is automatically added to a timer check if starttype 
+	    is DontWait (i.e. background execution). When a background child
+	    finishes, the timer check will automatically call the callback
+	    function.
+	*/
 	Systemcalls(Starttype how, string const & what, Callbackfct call = 0);
 	
 	///
 	~Systemcalls();
 	
 	/** Start childprocess. "what" contains a command at system level.
-	 * This is for reuse of the Systemcalls instance.
-	 */
+	    This is for reuse of the Systemcalls instance.
+	*/
 	int startscript(Starttype how, string const & what, 
 			Callbackfct call = 0);
 	
-	/** gets PID of childprocess. Used by timer */
+	/** gets PID of childprocess.
+	    Used by timer
+	*/
 	pid_t getpid() { return pid; }
 	
 	/// Start callback
@@ -74,10 +80,10 @@ public:
 	void setRetValue(int r) { retval = r; }
 
 	/** Kill child prematurely.
-	First, a SIGHUP is sent to the child.
-	If that does not end the child process within "tolerance"
-	seconds, the SIGKILL signal is sent to the child.
-	When the child is dead, the callback is called.
+	    First, a SIGHUP is sent to the child.
+	    If that does not end the child process within "tolerance"
+	    seconds, the SIGKILL signal is sent to the child.
+	    When the child is dead, the callback is called.
 	*/
 	void kill(int tolerance = 5);
 private:

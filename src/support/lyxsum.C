@@ -17,11 +17,15 @@
 
 #include <fstream>
 
+#if 0
 #ifdef HAVE_SSTREAM
 #include <sstream>
 using std::ostringstream;
 #else
 #include <strstream>
+#endif
+#else
+#include "Lsstream.h"
 #endif
 
 #include "support/lyxlib.h"
@@ -116,22 +120,22 @@ unsigned long lyx::sum(char const * file)
 	ifstream ifs(file);
 	if (!ifs) return 0;
 	ifs.unsetf(ios::skipws);
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	ostringstream ostr;
 	ostr << ifs.rdbuf();
 	// The .c_str() is here in case we use our lyxstring class
 	// instead of standard string. 
 	string w = ostr.str().c_str();
 	return do_crc(w.begin(), w.end());
-#else
-	ostrstream ostr;
-	ostr << ifs.rdbuf();
-	ostr << '\0';
-	char * tmp = ostr.str();
-	if (!tmp) return 0; // empty file
-	string w(tmp, ostr.tellp());
-	unsigned long crc = do_crc(w.begin(), w.end());
-	delete tmp;
-	return crc;
-#endif
+//#else
+//	ostrstream ostr;
+//	ostr << ifs.rdbuf();
+//	ostr << '\0';
+//	char * tmp = ostr.str();
+//	if (!tmp) return 0; // empty file
+//	string w(tmp, ostr.tellp());
+//	unsigned long crc = do_crc(w.begin(), w.end());
+//	delete tmp;
+//	return crc;
+//#endif
 }

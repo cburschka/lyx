@@ -678,16 +678,14 @@ void BufferView::insertCorrectQuote()
 
 
 /* these functions are for the spellchecker */ 
-char * BufferView::nextWord(float & value)
+string const BufferView::nextWord(float & value)
 {
 	if (!available()) {
 		value = 1;
 		return 0;
 	}
 
-	char * string = text->SelectNextWord(this, value);
-
-	return string;
+	return text->SelectNextWord(this, value);
 }
 
   

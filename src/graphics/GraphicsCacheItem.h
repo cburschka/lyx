@@ -47,7 +47,7 @@ public:
 	/// copy c-tor.
 	GraphicsCacheItem(GraphicsCacheItem const &);
 	/// Assignment operator.
-	GraphicsCacheItem const & operator=(GraphicsCacheItem const &);
+	GraphicsCacheItem & operator=(GraphicsCacheItem const &);
 	
 	/// Get the height of the image. Returns -1 on error.
 	int getHeight() const; 

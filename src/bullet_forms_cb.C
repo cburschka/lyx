@@ -84,7 +84,7 @@ bool updateBulletForm()
 		fl_set_button(fd_form_bullet->radio_bullet_depth_1, 1);
 		fl_set_input(fd_form_bullet->input_bullet_latex,
 		             current_view->buffer()
-			     ->params.user_defined_bullets[0].c_str());
+			     ->params.user_defined_bullets[0].getText().c_str());
 		fl_set_choice(fd_form_bullet->choice_bullet_size,
 			      current_view->buffer()
 			      ->params.user_defined_bullets[0].getSize() + 2);
@@ -149,7 +149,7 @@ void ChoiceBulletSizeCB(FL_OBJECT * ob, long /*data*/ )
 	// convert from 1-6 range to -1-4 
 	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
 	fl_set_input(fd_form_bullet->input_bullet_latex,
-				 param.temp_bullets[current_bullet_depth].c_str());
+				 param.temp_bullets[current_bullet_depth].getText().c_str());
 }
 
 
@@ -172,7 +172,7 @@ void BulletDepthCB(FL_OBJECT * ob, long data)
 	default:
 		current_bullet_depth = data;
 		fl_set_input(fd_form_bullet->input_bullet_latex,
-		             param.temp_bullets[data].c_str());
+		             param.temp_bullets[data].getText().c_str());
 		fl_set_choice(fd_form_bullet->choice_bullet_size,
 		              param.temp_bullets[data].getSize() + 2);
 	}
@@ -242,5 +242,5 @@ void BulletBMTableCB(FL_OBJECT *ob, long /*data*/ )
 	param.temp_bullets[current_bullet_depth].setFont(current_bullet_panel);
 	param.temp_bullets[current_bullet_depth].setCharacter(bmtable_button);
 	fl_set_input(fd_form_bullet->input_bullet_latex,
-	             param.temp_bullets[current_bullet_depth].c_str());
+	             param.temp_bullets[current_bullet_depth].getText().c_str());
 }

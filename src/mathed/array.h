@@ -46,7 +46,7 @@ public:
 	~LyxArrayBase();
    
 	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase & operator= (LyxArrayBase const &); 
+	LyxArrayBase & operator=(LyxArrayBase const &); 
 
 	///
 	int empty() const { return (last == 0); }
@@ -142,7 +142,7 @@ LyxArrayBase::~LyxArrayBase()
 }
 
 inline
-LyxArrayBase::LyxArrayBase(const LyxArrayBase& a) 
+LyxArrayBase::LyxArrayBase(LyxArrayBase const & a) 
 {
 	maxsize = a.maxsize;
 	bf = new byte[maxsize];
@@ -151,7 +151,7 @@ LyxArrayBase::LyxArrayBase(const LyxArrayBase& a)
 }
 
 inline
-LyxArrayBase& LyxArrayBase::operator= (const LyxArrayBase& a)
+LyxArrayBase & LyxArrayBase::operator=(LyxArrayBase const & a)
 {
 	if (this != &a) {
 		Resize(a.maxsize);
@@ -164,11 +164,11 @@ inline
 bool LyxArrayBase::Move(int p, int shift) 
 {
 	bool result = false;
-	if (p<= last) {
-		if (last+shift>= maxsize) { 
+	if (p <= last) {
+		if (last + shift >= maxsize) { 
 		    Resize(last + shift);
 		}
-		memmove(&bf[p+shift], &bf[p], last-p);
+		memmove(&bf[p + shift], &bf[p], last - p);
 		last += shift;
 		bf[last] = 0;
 		result = true;
@@ -185,32 +185,32 @@ void LyxArrayBase::Fit()
 inline
 void LyxArrayBase::Remove(int pos, int dx)
 {
-	Move(pos+dx, -dx);
+	Move(pos + dx, -dx);
 }    
 
 inline
-void LyxArrayBase::Merge(LyxArrayBase *a, int p, int dx)
+void LyxArrayBase::Merge(LyxArrayBase * a, int p, int dx)
 {
 	Move(p, dx);
 	memcpy(&bf[p], &a->bf[0], dx);
 }
  
 inline
-void LyxArrayBase::MergeF(LyxArrayBase *a, int p, int dx)
+void LyxArrayBase::MergeF(LyxArrayBase * a, int p, int dx)
 {
 	memcpy(&bf[p], &a->bf[0], dx);
 }
  
 inline
-void LyxArrayBase::Copy(void *a, int p, int dx)
+void LyxArrayBase::Copy(void * a, int p, int dx)
 {
 	memcpy(&bf[p], a, dx);
 }
 
 inline
-LyxArrayBase *LyxArrayBase::Extract(int, int dx)
+LyxArrayBase * LyxArrayBase::Extract(int, int dx)
 {
-	LyxArrayBase *a = new LyxArrayBase(dx);
+	LyxArrayBase * a = new LyxArrayBase(dx);
 	a->Merge(this, 0, dx);
 	return a;
 }
@@ -225,10 +225,10 @@ byte LyxArrayBase::operator[](const int i)
 inline
 void LyxArrayBase::Insert(int pos, byte c)
 {
-	if (pos<0) pos = last;
-	if (pos>= maxsize) 
-		Resize(maxsize+ARRAY_STEP);
+	if (pos < 0) pos = last;
+	if (pos >= maxsize) 
+		Resize(maxsize + ARRAY_STEP);
 	bf[pos] = c;
-	if (pos>= last)
-		last = pos+1;
+	if (pos >= last)
+		last = pos + 1;
 }

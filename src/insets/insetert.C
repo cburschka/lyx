@@ -54,7 +54,7 @@ Inset * InsetERT::Clone() const
 }
 
 
-char const * InsetERT::EditMessage() const 
+string const InsetERT::EditMessage() const 
 {
     return _("Opened ERT Inset");
 }

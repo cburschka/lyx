@@ -45,7 +45,7 @@ Inset * InsetMarginal::Clone() const
 }
 
 
-char const * InsetMarginal::EditMessage() const
+string const InsetMarginal::EditMessage() const
 {
 	return _("Opened Marginal Note Inset");
 }

@@ -102,7 +102,7 @@ static tabular_features tabularFeatures[] =
     { LyXTabular::LAST_ACTION, "" }
 };
 
-//#define cellstart(p) ((p % 2) == 0)
+
 static inline
 bool cellstart(LyXParagraph::size_type p) 
 {
@@ -398,7 +398,7 @@ void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 }
 
 
-char const * InsetTabular::EditMessage() const
+string const InsetTabular::EditMessage() const
 {
     return _("Opened Tabular Inset");
 }
@@ -1209,8 +1209,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string value)
         setLines = 0,
         setAlign = LYX_ALIGN_LEFT,
         lineSet;
-    bool
-        what;
+    bool what;
 
     switch (feature) {
       case LyXTabular::M_ALIGN_LEFT:

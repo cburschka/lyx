@@ -102,7 +102,7 @@ void SearchForm::StartSearch(LyXFindReplace * lfr)
 
 
 // Returns the value of the replace string in the form
-string SearchForm::ReplaceString() const
+string const SearchForm::ReplaceString() const
 {
 	return fl_get_input(search_form->input_replace);
 }

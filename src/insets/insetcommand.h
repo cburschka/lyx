@@ -50,7 +50,7 @@ public:
 	///
 	void Write(std::ostream &) const;
 	/// Build the complete LaTeX command
-	string getCommand() const;
+	string const getCommand() const;
 	///
 	string const & getCmdName() const { return cmdname; }
 	///
@@ -64,7 +64,7 @@ public:
 	///
 	void setContents(string const & c) { contents = c; }
 	///
-	string getAsString() const;
+	string const getAsString() const;
 	///
 	void setFromString( string const & );
 private:
@@ -111,9 +111,9 @@ public:
          confusion with lyxinset::getLabel(int), but I've seen that
          it wasn't. I hope you never confuse again both methods.  (ale)
 	 */
-	virtual string getScreenLabel() const = 0;
+	virtual string const getScreenLabel() const = 0;
 	///
-	string getCommand() const { return p_.getCommand(); }
+	string const getCommand() const { return p_.getCommand(); }
 	///
 	string const & getCmdName() const { return p_.getCmdName(); }
 	///

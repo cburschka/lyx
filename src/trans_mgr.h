@@ -20,11 +20,11 @@ public:
 	///
 	virtual ~TransState() {}
 	///
-	virtual string normalkey(char, char *) = 0;
+	virtual string const normalkey(char, string const &) = 0;
 	///
 	virtual bool backspace() = 0;
 	///
-	virtual string deadkey(char, KmodInfo) = 0;
+	virtual string const deadkey(char, KmodInfo) = 0;
 	///
 	static char const TOKEN_SEP;
 };
@@ -66,11 +66,11 @@ public:
 	///
 	TransInitState();
 	///
-	virtual string normalkey(char, char *);
+	virtual string const normalkey(char, string const &);
 	///
 	virtual bool backspace() { return true; }
 	///
-	virtual string deadkey(char, KmodInfo);
+	virtual string const deadkey(char, KmodInfo);
 };
 
 
@@ -80,14 +80,14 @@ public:
 	///
 	TransDeadkeyState();
 	///
-	virtual string normalkey(char, char *);
+	virtual string const normalkey(char, string const &);
 	///
 	virtual bool backspace() {
 		currentState = init_state_;
 		return false;
 	}
 	///
-	virtual string deadkey(char, KmodInfo);
+	virtual string const deadkey(char, KmodInfo);
 };
 
 
@@ -97,7 +97,7 @@ public:
 	///
 	TransCombinedState();
 	///
-	virtual string normalkey(char, char *);
+	virtual string const normalkey(char, string const &);
 	///
 	virtual bool backspace() {
 		// cancel the second deadkey
@@ -108,7 +108,7 @@ public:
 		return false;
 	}
 	///
-	virtual string deadkey(char, KmodInfo);
+	virtual string const deadkey(char, KmodInfo);
 };
 
 
@@ -158,7 +158,7 @@ public:
 	///
 	void DisableKeymap();
 	///
-	bool setCharset(const char *);
+	bool setCharset(string const &);
 	///
 	bool backspace() {
 		return trans_fsm_.currentState->backspace();
@@ -166,21 +166,21 @@ public:
 	///
 	void TranslateAndInsert(char, LyXText *);
 	///
-	inline string deadkey(char, KmodInfo);
+	inline string const deadkey(char, KmodInfo);
 	///
-	inline string normalkey(char, char *);
+	inline string const normalkey(char, string const &);
 	///
 	void deadkey(char, tex_accent, LyXText *);
 };
 
 
-string TransManager::normalkey(char c, char * t)
+string const TransManager::normalkey(char c, string const & t)
 {
 	return trans_fsm_.currentState->normalkey(c, t);
 }
 
 
-string TransManager::deadkey(char c, KmodInfo t)
+string const TransManager::deadkey(char c, KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c, t);
 }

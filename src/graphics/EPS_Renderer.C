@@ -26,21 +26,21 @@
 using std::endl;
 using std::ios;
 
+
 EPS_Renderer::EPS_Renderer()
 	: Renderer()
 {}
 
-EPS_Renderer::~EPS_Renderer()
-{}
 
 bool EPS_Renderer::renderImage()
 {
 	return false;
 }
 
+
 bool EPS_Renderer::isImageFormatOK(string const & filename) const
 {
-	std::ifstream is(filename.c_str(), ios::in);
+	std::ifstream is(filename.c_str());
 
 	// The signature of the file without the spaces.
 	static const char str[] = "%!PS";

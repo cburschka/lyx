@@ -37,7 +37,7 @@ RCS::RCS(string const & m)
 }
 
 
-string RCS::find_file(string const & file)
+string const RCS::find_file(string const & file)
 {
 	string tmp(file);
 	// Check if *,v exists.
@@ -200,7 +200,7 @@ CVS::CVS(string const & m, string const & f)
 }
 
 
-string CVS::find_file(string const & file)
+string const CVS::find_file(string const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.

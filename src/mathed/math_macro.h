@@ -201,9 +201,9 @@ public:
     ///
     void addTemplate(MathMacroTemplate *);
     ///
-    MathMacro * getMacro(char const *) const;
+    MathMacro * getMacro(string const &) const;
     ///
-    MathMacroTemplate * getTemplate(char const *) const;
+    MathMacroTemplate * getTemplate(string const &) const;
     ///
     void builtinMacros();
     ///
@@ -262,7 +262,7 @@ void MathMacro::SetData(LyxArrayBase * a)
 
 
 inline 
-MathMacro * MathMacroTable::getMacro(char const * name) const
+MathMacro * MathMacroTable::getMacro(string const & name) const
 {
 	MathMacroTemplate * mt = getTemplate(name);
 	return (mt) ? new MathMacro(mt): 0;

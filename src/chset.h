@@ -19,7 +19,7 @@ public:
 	///
 	string const & getName() const;
 	///
-	std::pair<bool, int> encodeString(string const &) const;
+	std::pair<bool, int> const encodeString(string const &) const;
 private:
 	///
 	string name_;

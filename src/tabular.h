@@ -232,13 +232,13 @@ public:
     ///
     char GetVAlignment(int cell, bool onlycolumn = false) const;
     ///
-    string GetPWidth(int cell) const;
+    string const GetPWidth(int cell) const;
     ///
-    string GetColumnPWidth(int cell) const;
+    string const GetColumnPWidth(int cell) const;
     ///
-    string GetMColumnPWidth(int cell) const;
+    string const GetMColumnPWidth(int cell) const;
     ///
-    string GetAlignSpecial(int cell, int what) const;
+    string const GetAlignSpecial(int cell, int what) const;
     ///
     int GetWidthOfCell(int cell) const;
     ///
@@ -288,7 +288,7 @@ public:
     int RoffEndOfCell(std::ostream &, int cell);
 #endif
     ///
-    char const * GetDocBookAlign(int cell, bool isColumn = false) const;
+    string const  GetDocBookAlign(int cell, bool isColumn = false) const;
 
     ///
     bool IsMultiColumn(int cell, bool real = false) const;
@@ -485,6 +485,7 @@ private: //////////////////////////////////////////////////////////////////
     void set_row_column_number_info();
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfMulticolCell(int cell, int new_width);
+    ///
     void recalculateMulticolCells(int cell, int new_width);
     /// Returns true if change
     bool calculate_width_of_column(int column);

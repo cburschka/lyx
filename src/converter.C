@@ -43,7 +43,7 @@ vector<Command> Converter::commands;
 string Converter::latex_command;
 
 inline
-string add_options(string const & command, string const & options)
+string const add_options(string const & command, string const & options)
 {
 	string head;
 	string tail = split(command, head, ' ');
@@ -492,7 +492,7 @@ bool Converter::runLaTeX(Buffer * buffer, string const & command)
 }
 
 
-string Converter::dvi_papersize(Buffer * buffer)
+string const Converter::dvi_papersize(Buffer const * buffer)
 {
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
@@ -518,7 +518,7 @@ string Converter::dvi_papersize(Buffer * buffer)
 }
 
 
-string Converter::dvips_options(Buffer * buffer)
+string const Converter::dvips_options(Buffer const * buffer)
 {
 	string result;
 	if (buffer->params.use_geometry

@@ -18,6 +18,7 @@
 #include <cstring>
 #include <map>
 #include <algorithm>
+
 using std::map;
 using std::sort;
 
@@ -427,7 +428,7 @@ void LyXFileDlg::SetButton(int iIndex, string const & pszName,
 
 
 // GetDirectory: gets last dialog directory
-string LyXFileDlg::GetDirectory() const
+string const LyXFileDlg::GetDirectory() const
 {
 	if (!pszDirectory.empty())
 		return pszDirectory;
@@ -666,7 +667,7 @@ void LyXFileDlg::Force(bool cancel)
 
 
 // Select: launches dialog and returns selected file
-string LyXFileDlg::Select(string const & title, string const & path, 
+string const LyXFileDlg::Select(string const & title, string const & path, 
 			  string const & mask, string const & suggested)
 {
 	// handles new mask and path

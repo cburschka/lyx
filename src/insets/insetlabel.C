@@ -33,7 +33,7 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-vector<string> InsetLabel::getLabelList() const
+vector<string> const InsetLabel::getLabelList() const
 {
 	return vector<string>(1,getContents());
 }
@@ -96,7 +96,7 @@ int InsetLabel::DocBook(Buffer const *, ostream & os) const
 
 // This function escapes 8-bit characters and other problematic characters
 // It's exactly the same code as in insetref.C.
-string InsetLabel::escape(string const & lab) const {
+string const InsetLabel::escape(string const & lab) const {
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	string enc;

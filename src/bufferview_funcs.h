@@ -68,7 +68,7 @@ extern void Underline(BufferView *);
 ///
 extern void FontSize(BufferView *, string const &);
 /// Returns the current font and depth as a message. 
-extern string CurrentState(BufferView *);
+extern string const CurrentState(BufferView *);
 ///
 extern void ToggleAndShow(BufferView *, LyXFont const &);
 #endif

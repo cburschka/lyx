@@ -28,7 +28,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetRef(params()); }
 	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
@@ -50,6 +50,6 @@ public:
 	void Validate(LaTeXFeatures & features) const;
 private:
 	/// This function escapes 8-bit characters
-	string escape(string const &) const;
+	string const escape(string const &) const;
 };
 #endif

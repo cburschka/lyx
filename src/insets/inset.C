@@ -64,13 +64,13 @@ void Inset::Edit(BufferView *, int, int, unsigned int)
 }
 
 
-LyXFont Inset::ConvertFont(LyXFont const & font) const
+LyXFont const Inset::ConvertFont(LyXFont const & font) const
 {
     return LyXFont(font);
 }
 
 
-char const * Inset::EditMessage() const 
+string const Inset::EditMessage() const 
 {
     return _("Opened inset");
 }

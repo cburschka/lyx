@@ -52,6 +52,7 @@ libsupport_la_SOURCES = \
 	path.h \
 	putenv.C \
 	rename.C \
+	sstream.h \
 	$(REGEX) syscall.C \
 	syscall.h \
 	syscontr.C \

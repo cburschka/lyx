@@ -3266,7 +3266,8 @@ bool LyXText::SelectWordWhenUnderCursor(BufferView * bview)
 
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
-char * LyXText::SelectNextWord(BufferView * bview, float & value)
+string const LyXText::SelectNextWord(BufferView * bview,
+				     float & value) const
 {
 	LyXParagraph * tmppar = cursor.par();
 	
@@ -3301,11 +3302,11 @@ char * LyXText::SelectNextWord(BufferView * bview, float & value)
 	// Start the selection from here
 	sel_cursor = cursor;
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream latex;
-#else
-	ostrstream latex;
-#endif
+//#else
+//	ostrstream latex;
+//#endif
 	// and find the end of the word 
 	// (optional hyphens are part of a word)
 	while (cursor.pos() < cursor.par()->Last()
@@ -3313,29 +3314,26 @@ char * LyXText::SelectNextWord(BufferView * bview, float & value)
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
 		       && cursor.par()->GetInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
-#else
-		       && latex.str() // protect against null pointers	       
-		       && string(latex.str(), 3) == "\\-" // this is not nice at all
-#endif
+//#else
+//		       && latex.str() // protect against null pointers	       
+//		       && string(latex.str(), 3) == "\\-" // this is not nice at all
+//#endif
 			   ))
 		cursor.pos(cursor.pos() + 1);
 
-#ifndef HAVE_SSTREAM
-	delete [] latex.str();
-#endif
+//#ifndef HAVE_SSTREAM
+//	delete [] latex.str();
+//#endif
 	// Finally, we copy the word to a string and return it
-	char * str = 0;
-
+	string str;
 	if (sel_cursor.pos() < cursor.pos()) {
-		str = new char [cursor.pos() - sel_cursor.pos() + 2];
-		LyXParagraph::size_type i, j;
-		for (i = sel_cursor.pos(), j = 0; i < cursor.pos(); ++i) {
+		LyXParagraph::size_type i;
+		for (i = sel_cursor.pos(); i < cursor.pos(); ++i) {
 			if (cursor.par()->GetChar(i) != LyXParagraph::META_INSET)
-				str[j++] = cursor.par()->GetChar(i);
+				str += cursor.par()->GetChar(i);
 		}
-		str[j] = '\0';
 	}
 	return str;
 }
@@ -3350,11 +3348,11 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	// set the sel cursor
 	sel_cursor = cursor;
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream latex;
-#else
-	ostrstream latex;
-#endif
+//#else
+//	ostrstream latex;
+//#endif
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->Last()
@@ -3362,17 +3360,17 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
 		       && cursor.par()->GetInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
-#else
-		       && string(latex.str(), 3) == "\\-"
-#endif
+//#else
+//		       && string(latex.str(), 3) == "\\-"
+//#endif
 			   )))
 		cursor.pos(cursor.pos() + 1);
 	
-#ifndef HAVE_SSTREAM
-	delete [] latex.str();
-#endif
+//#ifndef HAVE_SSTREAM
+//	delete [] latex.str();
+//#endif
 	SetCursor(bview, cursor.par(), cursor.pos());
 	
 	// finally set the selection

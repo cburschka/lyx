@@ -68,13 +68,13 @@ struct lyxfont {
 	int signedWidth(string const & s, LyXFont const & f);
 	///
 	static
-	int XTextWidth(LyXFont const & f, char * str, int count);
+	int XTextWidth(LyXFont const & f, char const * str, int count);
 	///
 	static
 	int width(XChar2b const * s, int n, LyXFont const & f);
 	///
 	static
-	int XTextWidth16(LyXFont const & f, XChar2b * str, int count);
+	int XTextWidth16(LyXFont const & f, XChar2b const * str, int count);
 	///
 	static
 	void XSetFont(Display * display, GC gc, LyXFont const & f);

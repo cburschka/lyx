@@ -31,7 +31,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetParent(params()); }
     	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
         ///
 	EDITABLE Editable() const { return IS_EDITABLE; }
         ///

@@ -252,7 +252,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 						if (!crow->isNumbered()) {  
 							os << "\\nonumber ";
 						}
-						if (crow->getLabel()) {
+						if (!crow->getLabel().empty()) {
 							os << "\\label{"
 							   << crow->getLabel()
 							   << "} ";
@@ -276,7 +276,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 		if (!crow->isNumbered()) {
 			os << "\\nonumber ";
 		}
-		if (crow->getLabel()) {
+		if (!crow->getLabel().empty()) {
 			os << "\\label{"
 			   << crow->getLabel()
 			   << "} ";
@@ -320,7 +320,7 @@ void MathMatrixInset::Write(ostream & os, bool fragile)
 
 
 void mathed_write(MathParInset * p, ostream & os, int * newlines,
-		  bool fragile, char const * label)
+		  bool fragile, string const & label)
 {
    number_of_newlines = 0;
    short mathed_env = p->GetType();
@@ -340,7 +340,7 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
      ++number_of_newlines;
    }
    
-   if (label && label[0] > ' ' && mathed_env == LM_EN_EQUATION){
+   if (!label.empty() && label[0] > ' ' && mathed_env == LM_EN_EQUATION){
 	   os << "\\label{"
 	      << label
 	      << "}\n";

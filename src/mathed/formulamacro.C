@@ -175,7 +175,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-char const * InsetFormulaMacro::EditMessage() const 
+string const InsetFormulaMacro::EditMessage() const 
 {
 	return _("Math macro editor mode");
 }

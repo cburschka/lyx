@@ -31,7 +31,7 @@ public:
 		 string const & = string(),
 		 int delay_secs= 6);
 	/// 
-	string GetText() const { return text; }
+	string const GetText() const { return text; }
 	///
 	void Init();
 	///
@@ -71,11 +71,13 @@ private:
         ///
         enum{ MAX_HISTORY = 10 };
         ///
-        string history[MAX_HISTORY];
+        mutable string history[MAX_HISTORY];
         ///
-        int history_idx, history_cnt;
+        mutable int history_idx;
+	///
+	mutable int history_cnt;
         ///
-        void addHistory(string const &cmd) { 
+        void addHistory(string const &cmd) const { 
 	        if (history_cnt == 0
 		    || (history_cnt > 0
 			&& cmd != history[(history_cnt - 1) % MAX_HISTORY])) {
@@ -85,6 +87,6 @@ private:
 	        history_idx = history_cnt;
 	}
         ///
-        string getHistory() { return history[history_idx % MAX_HISTORY]; }
+        string const getHistory() const { return history[history_idx % MAX_HISTORY]; }
 };
 #endif

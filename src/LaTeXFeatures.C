@@ -32,7 +32,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	array = false;
 	color = false;
 	graphics = false; // INSET_GRAPHICS: remove this when InsetFig is thrown.
-    graphicx = false;
+	graphicx = false;
 	setspace = false;
 	makeidx = false;
 	verbatim = false;
@@ -74,7 +74,9 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	NeedLyXMinipageIndent = false;
 }
 
-void LaTeXFeatures::require(string const & name) {
+
+void LaTeXFeatures::require(string const & name)
+{
 	if (name == "array") {
 		array = true;
 	} else if (name == "color") {
@@ -121,7 +123,8 @@ void LaTeXFeatures::require(string const & name) {
 	}
 }
 
-string LaTeXFeatures::getPackages()
+
+string const LaTeXFeatures::getPackages()
 {
 	string packages;
 	LyXTextClass const & tclass =
@@ -158,7 +161,7 @@ string LaTeXFeatures::getPackages()
 				+ params.graphicsDriver + "]{graphicx}\n";
 	}
 
-    // INSET_GRAPHICS: remove this when InsetFig is thrown.
+	// INSET_GRAPHICS: remove this when InsetFig is thrown.
 	// graphics.sty
 	if (graphics && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")
@@ -200,22 +203,22 @@ string LaTeXFeatures::getPackages()
 		packages += "\\doublespacing\n";
 		break;
 	case Spacing::Other:
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		std::ostringstream value;
-#else
-		char val[30];
-		ostrstream value(val, 30);
-		
-#endif
+//#else
+//		char val[30];
+//		ostrstream value(val, 30);
+//		
+//#endif
 		value << params.spacing.getValue(); // setw?
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 		packages += string("\\setstretch{") 
 			  + value.str().c_str() + "}\n";
-#else
-		value << '\0';
-		packages += string("\\setstretch{") 
-			  + value.str() + "}\n";
-#endif
+//#else
+//		value << '\0';
+//		packages += string("\\setstretch{") 
+//			  + value.str() + "}\n";
+//#endif
 		break;
 	}
 
@@ -273,7 +276,7 @@ string LaTeXFeatures::getPackages()
 }
 
 
-string LaTeXFeatures::getMacros()
+string const LaTeXFeatures::getMacros()
 {
 	string macros;
 
@@ -330,7 +333,7 @@ string LaTeXFeatures::getMacros()
 }
 
 
-string LaTeXFeatures::getTClassPreamble()
+string const LaTeXFeatures::getTClassPreamble()
 {
 	// the text class specific preamble 
 	LyXTextClass const & tclass =
@@ -347,7 +350,7 @@ string LaTeXFeatures::getTClassPreamble()
 }	
 
 
-string LaTeXFeatures::getIncludedFiles()
+string const LaTeXFeatures::getIncludedFiles()
 {
 	string sgmlpreamble;
 	FileMap::const_iterator end = IncludedFiles.end();

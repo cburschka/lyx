@@ -73,7 +73,7 @@ public:
 	InsetText * inset_owner;
 
 	///
-	LyXFont GetFont(Buffer const *, LyXParagraph * par,
+	LyXFont const GetFont(Buffer const *, LyXParagraph * par,
 			LyXParagraph::size_type pos) const;
 	///
 	void SetCharFont(Buffer const *, LyXParagraph * par,
@@ -232,7 +232,7 @@ public:
 	///
 	void ClearSelection() const;
 	///
-	string selectionAsString(Buffer const *) const;
+	string const selectionAsString(Buffer const *) const;
 	
 	/// just selects the word the cursor is in
 	void SelectWord(BufferView *);
@@ -242,7 +242,7 @@ public:
 	 to the beginning of this word. 
 	 With SelectSelectedWord can this be highlighted really
 	 */ 
-	char * SelectNextWord(BufferView *, float & value);
+	string const SelectNextWord(BufferView *, float & value) const;
 	///
 	void SelectSelectedWord(BufferView *);
 	///
@@ -394,8 +394,8 @@ public:
 			  bool noindent);
 	///
 	void SetParagraphExtraOpt(BufferView *, int type,
-				  char const * width,
-				  char const * widthp,
+				  string const & width,
+				  string const & widthp,
 				  int alignment, bool hfill,
 				  bool start_minipage);
 
@@ -406,22 +406,22 @@ public:
 	  */
 	bool IsStringInText(LyXParagraph * par,
 			    LyXParagraph::size_type pos,
-			    char const * str) const;
+			    string const & str) const;
 	/** sets the selection over the number of characters of string,
 	  no check!!
 	  */
-	void SetSelectionOverString(BufferView *, char const * str);
+	void SetSelectionOverString(BufferView *, string const & str);
 
 	/** simple replacing. The font of the first selected character
 	  is used
 	  */
-	void ReplaceSelectionWithString(BufferView *, char const * str);
+	void ReplaceSelectionWithString(BufferView *, string const & str);
 
 	/** if the string can be found: return true and set the cursor to
 	  the new position */
-	bool SearchForward(BufferView *, char const * str) const;
+	bool SearchForward(BufferView *, string const & str) const;
 	///
-	bool SearchBackward(BufferView *, char const * str) const;
+	bool SearchBackward(BufferView *, string const & str) const;
 
 	/// needed to insert the selection
 	void InsertStringA(BufferView *, string const & str);

@@ -247,7 +247,7 @@ void FontSize(BufferView * bv, string const & size)
 
 
 // Returns the current font and depth as a message. 
-string CurrentState(BufferView * bv)
+string const CurrentState(BufferView * bv)
 {
 	string state;
 	if (bv->available()) { 

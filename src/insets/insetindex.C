@@ -15,7 +15,7 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 {}
 
 
-string InsetIndex::getScreenLabel() const
+string const InsetIndex::getScreenLabel() const
 {
 	return _("Idx");
 }
@@ -31,7 +31,7 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
 
-string InsetPrintIndex::getScreenLabel() const
+string const InsetPrintIndex::getScreenLabel() const
 {
 	return _("Index");
 }

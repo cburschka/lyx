@@ -1210,7 +1210,7 @@ void LyXTextClass::load()
 //////////////////////////////////////////
 
 // Gets textclass number from name
-pair<bool, LyXTextClassList::size_type>
+pair<bool, LyXTextClassList::size_type> const
 LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	for (ClassList::const_iterator cit = classlist.begin();
@@ -1236,7 +1236,7 @@ LyXTextClassList::Style(LyXTextClassList::size_type textclass,
 
 
 // Gets layout number from name and textclass number
-pair<bool, LyXTextClass::size_type>
+pair<bool, LyXTextClass::size_type> const
 LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
 				 string const & name) const
 {
@@ -1450,3 +1450,4 @@ std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
 	}
 	return os;
 }
+

@@ -42,7 +42,7 @@ public:
 	///
 	void Read(Buffer const *, LyXLex & lex);
 	///
-	virtual string getScreenLabel() const;
+	virtual string const getScreenLabel() const;
         ///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
@@ -84,7 +84,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetBibtex(params(), owner); }
 	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
@@ -95,7 +95,7 @@ public:
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool freespace) const;
 	///
-	std::vector<std::pair<string,string> > getKeys() const;
+	std::vector<std::pair<string,string> > const getKeys() const;
         ///
         bool addDatabase(string const &);
         ///

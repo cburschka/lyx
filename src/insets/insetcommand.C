@@ -33,7 +33,7 @@ InsetCommandParams::InsetCommandParams( string const & n,
 {}
 
 
-string InsetCommandParams::getAsString() const
+string const InsetCommandParams::getAsString() const
 {
 	string b(cmdname);
 	b += "|++|" + options + "|++|" + contents;
@@ -66,19 +66,14 @@ void InsetCommandParams::setFromString( string const & b )
 
 bool InsetCommandParams::operator==(InsetCommandParams const & o) const
 {
-	if( cmdname  != o.cmdname )  return false;
-	if( contents != o.contents ) return false;
-	if( options  != o.options )  return false;
-	return true;
+	if (cmdname == o.cmdname && contents == o.contents && options == o.options) return true;
+	return false;
 }
 
 
 bool InsetCommandParams::operator!=(InsetCommandParams const & o) const
 {
-	if( cmdname  != o.cmdname )  return true;
-	if( contents != o.contents ) return true;
-	if( options  != o.options )  return true;
-	return false;
+	return !(*this == o);
 }
 
 
@@ -173,7 +168,7 @@ void InsetCommandParams::Write(ostream & os) const
 }
 
 
-string InsetCommandParams::getCommand() const
+string const InsetCommandParams::getCommand() const
 {	
 	string s;
 	if (!getCmdName().empty()) s += "\\"+getCmdName();

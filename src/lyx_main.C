@@ -35,9 +35,7 @@
 #include "layout.h"
 #include "gettext.h"
 #include "kbmap.h"
-#ifdef NEW_MENUBAR
-# include "MenuBackend.h"
-#endif
+#include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxlex.h"
 #if 1
@@ -635,18 +633,8 @@ void LyX::ReadUIFile(string const & name)
 	while (lex.IsOK()) {
 		switch(lex.lex()) {
 		case ui_menuset: 
-#ifdef NEW_MENUBAR
 			menubackend.read(lex);
 			break;
-#else
-			// Skip any menu definition and fall over to toolbar.
-			// This is a hack, but it is supposed to go away...
-			do {
-				lex.next();
-				if (!lex.IsOK()) return;
-			}
-			while (lex.lex() != ui_toolbar);
-#endif
 
 		case ui_toolbar:
 			toolbardefaults.read(lex);

@@ -1317,7 +1317,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p)
 lyxstring & lyxstring::replace(size_type i, size_type n,
 			       size_type n2, value_type c)
 {
-	Assert(i < rep->sz);  // OURS!
+	Assert(i <= rep->sz);  // OURS!
 	TestlyxstringInvariant(this);
 
 	rep = rep->get_own_copy();

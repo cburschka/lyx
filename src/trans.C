@@ -35,7 +35,7 @@ DefaultTrans::DefaultTrans()
 }
 
 
-string DefaultTrans::process(char c, TransManager & k)
+string const DefaultTrans::process(char c, TransManager & k)
 {
 	char dummy[2] = "?";
 	dummy[0] = c;
@@ -49,9 +49,6 @@ string DefaultTrans::process(char c, TransManager & k)
 Trans::Trans()
 {
 	int i = 0;
-	for(; i < 256; ++i)
-		keymap_[i] = 0;
-
 	for(i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		kmod_list_[i] = 0;
 }
@@ -91,13 +88,12 @@ void Trans::FreeException(Trans::keyexc & exclist)
 
 void Trans::FreeKeymap()
 {
-	int i = 0;
-	for(; i < 256; ++i)
-		if (keymap_[i]) {
-			delete keymap_[i];
-			keymap_[i] = 0;
+	for(int i = 0; i < 256; ++i)
+		if (!keymap_[i].empty()) {
+			//delete keymap_[i];
+			keymap_[i].erase();
 		}
-	for(i = 0; i < TEX_MAX_ACCENT + 1; ++i)
+	for(int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		if (kmod_list_[i]) {
 			FreeException(kmod_list_[i]->exception_list);
 			delete kmod_list_[i];
@@ -106,13 +102,13 @@ void Trans::FreeKeymap()
 }
 
 
-bool Trans::IsDefined()
+bool Trans::IsDefined() const
 {
 	return !name_.empty();
 }
 
 
-string const & Trans::GetName()
+string const & Trans::GetName() const
 {
 	return name_;
 }
@@ -157,10 +153,9 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	}
 	
 	for(string::size_type i = 0; i < keys.length(); ++i) {
-		char * temp =
-			keymap_[static_cast<unsigned char>(keys[i])] =
-			new char[2];
-		temp[0] = 0; temp[1] = accent;
+		string * temp =
+			&keymap_[static_cast<unsigned char>(keys[i])];
+		(*temp)[0] = 0; (*temp)[1] = accent;
 	}
 	kmod_list_[accent]->exception_list = 0;
 }
@@ -210,7 +205,7 @@ int Trans::Load(LyXLex & lex)
 			break;
 		}	
 		case KCOMB: {
-			char const * str;
+			string str;
 
 			lyxerr[Debug::KBMAP] << "KCOMB:" << endl;
 			if (lex.next(true)) {
@@ -239,7 +234,8 @@ int Trans::Load(LyXLex & lex)
 			// check about accent_1 also
 			int key = 0;
 			for(; key < 256; ++key) {
-				if (keymap_[key] && keymap_[key][0] == 0
+				if (!keymap_[key].empty()
+				    && keymap_[key][0] == 0
 				    && keymap_[key][1] == accent_2)
 					break;
 			}
@@ -271,9 +267,9 @@ int Trans::Load(LyXLex & lex)
 				return -1;
 
 			if (lex.next(true)) {
-				char const * t = lex.text();
-				char * string_to =
-					strcpy(new char[strlen(t)+1], t);
+				string string_to = lex.text();
+				//char * string_to =
+				//	strcpy(new char[strlen(t)+1], t);
 				keymap_[key_from] = string_to;
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << string_to << "'"
@@ -286,7 +282,7 @@ int Trans::Load(LyXLex & lex)
 		case KXMOD: {
 			tex_accent accent;
 			char key;
-			char const * str;
+			string str;
 
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "KXMOD:\t" << lex.text() << endl;
@@ -331,9 +327,9 @@ int Trans::Load(LyXLex & lex)
 }
 
 
-bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i)
+bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 {
-	if (kmod_list_[accent]!= 0) {
+	if (kmod_list_[accent] != 0) {
 		i = *kmod_list_[accent];
 		return true;
 	}
@@ -341,13 +337,17 @@ bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i)
 }
 
 
-string Trans::process(char c, TransManager & k)
+string const Trans::process(char c, TransManager & k)
 {
-	char dummy[2] = "?";
-	char * dt = dummy;
-	char * t = Match(static_cast<unsigned char>(c));
-    
-	if ((t == 0 && (*dt = c)) || (t[0] != 0 && (dt = t)) ){
+	string dummy("?");
+	string dt = dummy;
+	string const t = Match(static_cast<unsigned char>(c));
+
+	if (t.empty() && c != 0) {
+		dt[0] = c;
+		return k.normalkey(c, dt);
+	} else if (!t.empty()) {
+		dt = t;
 		return k.normalkey(c, dt);
 	} else {
 		return k.deadkey(c,

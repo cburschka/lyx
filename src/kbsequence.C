@@ -96,15 +96,15 @@ int kb_sequence::addkey(unsigned int key,
                 Prefixes are S-, C-, M- for shift, control, meta
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::parse(char const * s)
+int kb_sequence::parse(string const & s)
 {
-	if(!s[0]) return 1;
+	if(s.empty()) return 1;
 
 	int i = 0;
 	unsigned int mod = 0, nmod = 0;
-	while(s[i]) {
+	while (i < s.length()) {
 		if(s[i] && (s[i]) <= ' ') ++i;
-		if(!s[i]) break;
+		if(i >= s.length()) break;
 		
 		if(s[i + 1] == '-')	{ // is implicit that s[i] == true
 			switch(s[i]) {
@@ -143,7 +143,7 @@ int kb_sequence::parse(char const * s)
 		} else {
 			string tbuf;
 			int j = i;
-			for(; s[j] && s[j] > ' '; ++j)
+			for(; j < s.length() && s[j] > ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 			
 			KeySym key = XStringToKeysym(tbuf.c_str());

@@ -51,7 +51,7 @@ public:
 	}
 
 	///
-	string SearchString() const {
+	string const SearchString() const {
 		return fl_get_input(search_form->input_search);
 	}
 
@@ -71,7 +71,7 @@ public:
 	///
 	void SetSearchString(string const & ls);
 	///
-	string ReplaceString() const;
+	string const ReplaceString() const;
 
 	///
 	bool ValidSearchData() const { return !(SearchString().empty()); }

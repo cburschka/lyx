@@ -72,7 +72,7 @@ bool XPM_Renderer::renderImage()
 
 bool XPM_Renderer::isImageFormatOK(string const & filename) const
 {
-	std::ifstream is(filename.c_str(), ios::in);
+	std::ifstream is(filename.c_str());
 
 	// The signature of the file without the spaces.
 	static const char str[] = "/*XPM*/";

@@ -30,32 +30,32 @@
 */
 class GraphicsCache : public noncopyable {
 public:
-    /// Get the instance of the class.
-    static GraphicsCache * getInstance();
+	/// Get the instance of the class.
+	static GraphicsCache * getInstance();
 
-    /// Add a file to the cache.
-    GraphicsCacheItem * addFile(string const & filename);
+	/// Add a file to the cache.
+	GraphicsCacheItem * addFile(string const & filename);
 
 private:
-    /// Remove a cache item if it's count has gone to zero.
-    void removeFile(string const & filename);
-    
-    /// Private c-tor so we can control how many objects are instantiated.
-    GraphicsCache() {}
-
-    /// Private d-tor so that no-one will destroy us.
-    ~GraphicsCache();
-
-    /// Holder of the single instance of the class.
-    static GraphicsCache * singleton;
-    ///
-    typedef std::map<string, GraphicsCacheItem *> CacheType;
-    ///
-    CacheType cache;
-
-	// We need this so that an Item can tell the cache that it should be
-	// deleted. (to call removeFile).
-	// It also helps removing a warning gcc emits.
+	/// Remove a cache item if it's count has gone to zero.
+	void removeFile(string const & filename);
+	
+	/// Private c-tor so we can control how many objects are instantiated.
+	GraphicsCache() {}
+	
+	/// Private d-tor so that no-one will destroy us.
+	~GraphicsCache();
+	
+	/// Holder of the single instance of the class.
+	static GraphicsCache * singleton;
+	///
+	typedef std::map<string, GraphicsCacheItem *> CacheType;
+	///
+	CacheType cache;
+	
+	/** We need this so that an Item can tell the cache that it should be
+	    deleted. (to call removeFile).
+	    It also helps removing a warning gcc emits. */
 	friend class GraphicsCacheItem;
 };
 #endif

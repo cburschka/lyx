@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1995-2000 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  *======================================================
  */
@@ -95,7 +95,7 @@ public:
     ///
     void update(BufferView *, LyXFont const &, bool = false);
     ///
-    const char * EditMessage() const;
+    string const EditMessage() const;
     ///
     void Edit(BufferView *, int x, int y, unsigned int);
     ///
@@ -166,13 +166,13 @@ public:
     void OpenLayoutDialog(BufferView *) const;
     LyXFunc::func_status getStatus(string argument) const;
 
-    ///
-    /// Public structures and variables
+    //
+    // Public structures and variables
     ///
     LyXTabular * tabular;
 
 private:
-	
+    ///
     bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
 				       bool =false) const;
     ///
@@ -189,14 +189,21 @@ private:
     void setPos(BufferView *, int x, int y) const;
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool lock = true);
+    ///
     UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
+    ///
     UpdatableInset::RESULT moveUp(BufferView *);
+    ///
     UpdatableInset::RESULT moveDown(BufferView *);
+    ///
     bool moveNextCell(BufferView *);
+    ///
     bool movePrevCell(BufferView *);
+    ///
     bool Delete();
     ///
     int getCellXPos(int cell) const;
+    ///
     void resetPos(BufferView *) const;
     ///
     void RemoveTabularRow();
@@ -214,32 +221,52 @@ private:
     bool hasPasteBuffer() const { return (paste_tabular != 0); }
     ///
     bool copySelection();
+    ///
     bool pasteSelection(BufferView *);
+    ///
     bool cutSelection();
 
-    ///
-    /// Private structures and variables
+    //
+    // Private structures and variables
     ///
     InsetText * the_locking_inset;
+    ///
     Buffer * buffer;
-    mutable LyXCursor
-        cursor,
-	old_cursor;
-    mutable int
-        inset_pos,
-        inset_x, inset_y,
-        sel_pos_start,
-	sel_pos_end,
-	sel_cell_start,
-	sel_cell_end,
-        actcell,
-	oldcell,
-        actcol,
-        actrow;
+    ///
+    mutable LyXCursor cursor;
+    ///
+    mutable LyXCursor old_cursor;
+    ///
+    mutable int inset_pos;
+    ///
+    mutable int inset_x;
+    ///
+    mutable int inset_y;
+    ///
+    mutable int sel_pos_start;
+    ///
+    mutable int sel_pos_end;
+    ///
+    mutable int sel_cell_start;
+    ///
+    mutable int sel_cell_end;
+    ///
+    mutable int actcell;
+    ///
+    mutable int oldcell;
+    ///
+    mutable int actcol;
+    ///
+    mutable int actrow;
+    ///
     bool no_selection;
+    ///
     mutable bool locked;
+    ///
     mutable UpdateCodes need_update;
+    ///
     mutable Dialogs * dialogs_;
+    ///
     LyXTabular * paste_tabular;
 };
 #endif

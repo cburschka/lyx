@@ -85,7 +85,7 @@ Inset * InsetMinipage::Clone() const
 }
 
 
-char const * InsetMinipage::EditMessage() const
+string const InsetMinipage::EditMessage() const
 {
 	return _("Opened Minipage Inset");
 }

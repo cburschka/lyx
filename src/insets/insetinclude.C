@@ -190,23 +190,24 @@ void include_cb(FL_OBJECT *, long arg)
 }
 
 
-static string unique_id() {
+static inline
+string unique_id() {
 	static unsigned int seed=1000;
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream ost;
 	ost << "file" << ++seed;
 
 	// Needed if we use lyxstring.
 	return ost.str().c_str();
-#else
-	char ctmp[16];
-	ostrstream ost(ctmp,16);
-	ost << "file" << ++seed << '\0';
-
-	// Needed if we use lyxstring.
-	return ost.str();
-#endif
+//#else
+//	char ctmp[16];
+//	ostrstream ost(ctmp,16);
+//	ost << "file" << ++seed << '\0';
+//
+//	// Needed if we use lyxstring.
+//	return ost.str();
+//#endif
 }
 
 
@@ -313,7 +314,7 @@ bool InsetInclude::display() const
 }
 
 
-string InsetInclude::getScreenLabel() const
+string const InsetInclude::getScreenLabel() const
 {
 	string temp;
 	if (isInput())
@@ -333,14 +334,14 @@ string InsetInclude::getScreenLabel() const
 }
 
 
-string InsetInclude::getFileName() const
+string const InsetInclude::getFileName() const
 {
 	return MakeAbsPath(getContents(), 
 			   OnlyPath(getMasterFilename()));
 }
 
 
-string InsetInclude::getMasterFilename() const
+string const InsetInclude::getMasterFilename() const
 {
 	return master->fileName();
 }
@@ -535,7 +536,7 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 }
 
 
-vector<string> InsetInclude::getLabelList() const
+vector<string> const InsetInclude::getLabelList() const
 {
     vector<string> l;
     string parentname;
@@ -551,7 +552,7 @@ vector<string> InsetInclude::getLabelList() const
 }
 
 
-vector<pair<string,string> > InsetInclude::getKeys() const
+vector<pair<string,string> > const InsetInclude::getKeys() const
 {
 	vector<pair<string,string> > keys;
 	

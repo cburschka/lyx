@@ -27,7 +27,7 @@ void Variables::set(string const & var, string const & val)
 }
 
 
-string Variables::get(string const & var) const
+string const Variables::get(string const & var) const
 {
   Vars::const_iterator cit = vars_.find(var);
   if (cit != vars_.end()) 
@@ -44,7 +44,7 @@ bool Variables::isset(string const & var) const
 }
 
 
-string Variables::expand(string const & s) const
+string const Variables::expand(string const & s) const
 {
   string str(s);
   LRegex reg("\\$\\{\\(.*\\)\\}");

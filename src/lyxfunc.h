@@ -41,10 +41,10 @@ public:
 	LyXFunc(LyXView *);
     
 	/// LyX dispatcher, executes lyx actions.
-	string Dispatch(int action, char const * arg = 0);
+	string const Dispatch(int action, string const & arg = string());
 			 
 	/// The same but uses the name of a lyx command.
-	string Dispatch(string const & cmd);
+	string const Dispatch(string const & cmd);
 
 	/// Same again but for xtl buffers.  Still looking for better idea.
 	bool Dispatch(int action, auto_mem_buffer &);
@@ -65,13 +65,13 @@ public:
 	// These can't be global because are part of the
 	// internal state (ale970227)
 	/// Get the current keyseq string
-	string keyseqStr() const;
+	string const keyseqStr() const;
 
 	/// Is the key sequence uncomplete?
 	bool keyseqUncomplete() const;
 
 	/// get options for the current keyseq
-	string keyseqOptions() const;
+	string const keyseqOptions() const;
 
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
@@ -80,7 +80,7 @@ public:
         /// Buffer to store result messages
         void setErrorMessage(string const &) const; 
         /// Buffer to store result messages
-        string getMessage() const { return dispatch_buffer; }
+        string const getMessage() const { return dispatch_buffer; }
         /// Get next inset of this class from current cursor position  
         Inset * getInsetByCode(Inset::Code);
 	
@@ -151,7 +151,7 @@ bool LyXFunc::wasMetaKey() const
      
 
 inline
-string LyXFunc::keyseqStr() const
+string const LyXFunc::keyseqStr() const
 {
 	// Why not just remove this function
 	string text;
@@ -161,7 +161,7 @@ string LyXFunc::keyseqStr() const
 
 
 inline
-string LyXFunc::keyseqOptions() const
+string const LyXFunc::keyseqOptions() const
 {
 	// Why not just remove this function
 	string text;

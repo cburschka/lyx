@@ -59,7 +59,7 @@ public:
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///

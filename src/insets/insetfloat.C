@@ -146,7 +146,7 @@ Inset * InsetFloat::Clone() const
 }
 
 
-char const * InsetFloat::EditMessage() const
+string const InsetFloat::EditMessage() const
 {
 	return _("Opened Float Inset");
 }

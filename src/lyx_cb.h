@@ -16,7 +16,7 @@ extern bool toggleall;
 ///
 extern bool BindFileSet;
 ///
-extern LyXFont UserFreeFont(BufferParams const & params);
+extern LyXFont const UserFreeFont(BufferParams const & params);
 ///
 void ShowMessage(Buffer * buf,
 		 string const & msg1,

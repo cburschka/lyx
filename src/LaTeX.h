@@ -23,6 +23,8 @@
 #include "DepTable.h"
 #include <vector>
 
+#include "support/utility.hpp"
+
 class MiniBuffer;
 
 ///
@@ -61,7 +63,7 @@ private:
 
 
 ///
-class LaTeX {
+class LaTeX : public noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)
 	    
@@ -122,11 +124,6 @@ protected:
 	/// The dependency file.
 	string depfile;
 
-	/// unavail
-	LaTeX(LaTeX const &);
-	/// unavail
-	LaTeX & operator= (LaTeX const &);
-	
 	///
 	void deplog(DepTable & head);
 

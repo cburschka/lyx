@@ -86,7 +86,7 @@ public:
 		return fl_get_scrollbar_value(scrollbar);
 	}
 	///
-	std::pair<float, float> getScrollbarBounds() const {
+	std::pair<float, float> const getScrollbarBounds() const {
 		std::pair<float, float> p;
 		fl_get_scrollbar_bounds(scrollbar, &p.first, &p.second);
 		return p;
@@ -100,7 +100,7 @@ public:
 	/// xforms callback
 	static void scroll_cb(FL_OBJECT *, long);
 	///
-	string getClipboard() const;
+	string const getClipboard() const;
 	///
 	void putClipboard(string const &) const;
 	///

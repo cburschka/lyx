@@ -245,10 +245,10 @@ void InsetExternal::cancelCB(FL_OBJECT * ob, long)
 }
 
 
-char const * InsetExternal::EditMessage() const
+string const InsetExternal::EditMessage() const
 {
 	ExternalTemplate const & et = getTemplate(templatename);
-	return doSubstitution(0, et.guiName).c_str();
+	return doSubstitution(0, et.guiName);
 }
 
 
@@ -402,7 +402,7 @@ Inset * InsetExternal::Clone() const
 }
 
 
-string InsetExternal::getScreenLabel() const
+string const InsetExternal::getScreenLabel() const
 {
 	if (templatename.empty()) {
 		return _("External");
@@ -469,7 +469,7 @@ void InsetExternal::automaticUpdate(BufferView const * bv) const
 }
 
 
-string InsetExternal::doSubstitution(Buffer const * buffer,
+string const InsetExternal::doSubstitution(Buffer const * buffer,
 				     string const & s) const
 {
 	string result;
@@ -506,13 +506,13 @@ string InsetExternal::doSubstitution(Buffer const * buffer,
 }
 
 
-string InsetExternal::getCurrentTemplate() const
+string const InsetExternal::getCurrentTemplate() const
 {
 	return getTemplateName(fl_get_choice(form_external->templatechoice));
 }
 
 
-ExternalTemplate InsetExternal::getTemplate(string const & name) const
+ExternalTemplate const InsetExternal::getTemplate(string const & name) const
 {
 	ExternalTemplateManager::Templates::const_iterator i = 
 		ExternalTemplateManager::get().getTemplates().find(name);
@@ -543,7 +543,7 @@ int InsetExternal::getTemplateNumber(string const & name) const
 }
 
 
-string InsetExternal::getTemplateName(int i) const
+string const InsetExternal::getTemplateName(int i) const
 {
 	ExternalTemplateManager::Templates::const_iterator i1;
 	i1 = ExternalTemplateManager::get().getTemplates().begin();
@@ -554,7 +554,7 @@ string InsetExternal::getTemplateName(int i) const
 }
 
 
-string InsetExternal::getTemplateString() const
+string const InsetExternal::getTemplateString() const
 {
 	string result;
 	bool first = true;

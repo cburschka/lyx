@@ -26,9 +26,6 @@
 #include "intl.h"
 #include "support/LAssert.h"
 #include "frontends/Dialogs.h"
-#ifndef NEW_MENUBAR
-# include "menus.h"
-#endif
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -162,22 +159,14 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			updateScrollbar();
 		}
 		bv_->text->first = screen_->TopCursorVisible(bv_->text);
-#ifdef NEW_MENUBAR
 		owner_->updateMenubar();
-#else
-		owner_->getMenus()->showMenus();
-#endif
 		owner_->updateToolbar();
 		redraw();
 		owner_->getDialogs()->updateBufferDependent();
 		bv_->insetWakeup();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-#ifdef NEW_MENUBAR
 		owner_->updateMenubar();
-#else
-		owner_->getMenus()->hideMenus();
-#endif
 		owner_->updateToolbar();
 		updateScrollbar();
 		workarea_->redraw();

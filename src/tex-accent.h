@@ -97,11 +97,11 @@ struct tex_accent_struct {
 	///
 	tex_accent accent;
 	///
-	char const *cmd;
+	char const * cmd;
 	///
-	char const *native;
+	char const * native;
 	///
-	char const *name;
+	char const * name;
 	///
 	kb_action action;
 };

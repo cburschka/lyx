@@ -119,7 +119,7 @@ LColor::LColor()
 }
 
 
-string LColor::getGUIName(LColor::color c) const
+string const LColor::getGUIName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
@@ -129,7 +129,7 @@ string LColor::getGUIName(LColor::color c) const
 }
 
 
-string LColor::getX11Name(LColor::color c) const
+string const LColor::getX11Name(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end()) 
@@ -142,7 +142,7 @@ string LColor::getX11Name(LColor::color c) const
 }
 
 
-string LColor::getLaTeXName(LColor::color c) const
+string const LColor::getLaTeXName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
@@ -151,7 +151,7 @@ string LColor::getLaTeXName(LColor::color c) const
 }
 
 
-string LColor::getLyXName(LColor::color c) const
+string const LColor::getLyXName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
@@ -196,7 +196,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 		if (!compare_no_case((*ici).second.guiname, guiname))
 			return (*ici).first;
 	}
-	return LColor::ignore;
+	return LColor::inherit;
 }
 
 

@@ -62,7 +62,7 @@ string const & Bullet::getText() const
 }
 
 
-bool operator == (const Bullet & b1, const Bullet & b2)
+bool operator==(const Bullet & b1, const Bullet & b2)
 {
 	bool result = false;
 
@@ -109,7 +109,7 @@ void Bullet::generateText() const
 }
 
 
-string Bullet::bulletSize(short int s)
+string const Bullet::bulletSize(short int s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
@@ -125,7 +125,7 @@ string Bullet::bulletSize(short int s)
 }
 
 
-string Bullet::bulletEntry(short int f, short int c)
+string const Bullet::bulletEntry(short int f, short int c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..

@@ -137,7 +137,9 @@ struct BufferView::Pimpl : public Object {
         ///
         BackStack backstack;
 	///
-	int last_click_x, last_click_y;
+	int last_click_x;
+	///
+	int last_click_y;
 	///
 	WorkArea * workarea_;
 	///

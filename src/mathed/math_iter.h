@@ -60,31 +60,33 @@ class MathedIter {
     ///
     void goPosAbs(int);
     ///
-    int Empty() { return array->Last()<= 1; }
+    int Empty() const { return array->Last()<= 1; }
     ///
-    int OK() { return array && (pos < array->Last()); }
+    int OK() const { return array && (pos < array->Last()); }
     ///
-    int IsFirst() { return (pos == 0); }
+    int IsFirst() const { return (pos == 0); }
     ///
-    byte GetChar();
+    byte GetChar() const;
     ///
-    byte * GetString(int& len);
+    byte * GetString(int & len) const;
     ///
-    MathedInset * GetInset();
+    string const GetString() const;
     ///
-    MathParInset * GetActiveInset();
+    MathedInset * GetInset() const;
     ///
-    bool IsInset();
+    MathParInset * GetActiveInset() const;
     ///
-    bool IsActive();
+    bool IsInset() const;
     ///
-    bool IsFont();
+    bool IsActive() const;
     ///
-    bool IsScript();
+    bool IsFont() const;
     ///
-    bool IsTab();
+    bool IsScript() const;
     ///
-    bool IsCR();
+    bool IsTab() const;
+    ///
+    bool IsCR() const;
     ///
     virtual void Reset();
     ///
@@ -112,10 +114,10 @@ class MathedIter {
     ///
     void SetData(LyxArrayBase * a) { array = a; Reset(); }
     ///
-    LyxArrayBase * GetData() { return array; }
+    LyxArrayBase * GetData() const { return array; }
     
     /// Copy every object from position p1 to p2
-    LyxArrayBase * Copy(int p1= 0, int p2= 10000);
+    LyxArrayBase * Copy(int p1 = 0, int p2 = 10000);
    
     /// Delete every object from position p1 to p2
     void Clear();
@@ -128,13 +130,13 @@ class MathedIter {
     ///
     int flags;
     ///
-    short fcode;
+    mutable short fcode;
     ///
-    int pos;
+    mutable int pos;
     ///
     int row, col, ncols;
     ///
-    LyxArrayBase *array;
+    LyxArrayBase * array;
     // one element stack
     struct MIState {
 	///
@@ -174,7 +176,7 @@ class MathedXIter: public MathedIter {
     ///
     void SetData(MathParInset *);
     ///
-    MathParInset * getPar() { return p; }
+    MathParInset * getPar() const { return p; }
     ///
     bool Next();
     ///
@@ -193,22 +195,24 @@ class MathedXIter: public MathedIter {
     void Adjust();
     ///
     inline
-    void GetPos(int &, int &);
+    void GetPos(int &, int &) const;
     ///
     inline
-    void GetIncPos(int &, int &);
+    void GetIncPos(int &, int &) const;
     ///
-    byte * GetString(int &);
+    byte * GetString(int &) const ;
     ///
-    int GetX();
+    string const GetString() const;
     ///
-    int GetY();
+    int GetX() const;
+    ///
+    int GetY() const;
     ///
     void subMetrics(int, int);
     ///
     void fitCoord(int, int);
     /// 
-    void getAD(int & a, int & d);
+    void getAD(int & a, int & d) const;
     
     /// Create a new row and insert #ncols# tabs.
     void addRow();
@@ -216,29 +220,30 @@ class MathedXIter: public MathedIter {
     void delRow();
     
     ///
-    bool setLabel(char* label);
+    bool setLabel(string const & label);
     ///
     bool setNumbered(bool);
 	
     ///
     void setTab(int, int);
     /// Merge the array at current position
-    void Merge(LyxArrayBase*);
+    void Merge(LyxArrayBase *);
     /// Delete every object from current position to pos2
     void Clean(int pos2);
-    MathedRowSt *adjustVerticalSt();
+    ///
+    MathedRowSt * adjustVerticalSt();
     
 private:
     /// This function is not recursive, as MathPar::Metrics is
-    void IMetrics(int, int&, int&, int&);
+    void IMetrics(int, int &, int &, int &);
     /// Font size (display, text, script, script2) 
     int size;
     /// current position
-    int x, y;
-//    /// max ascent and descent
-//    int asc, des;
-	///
-    MathParInset *p;
+    mutable int x;
+    ///
+    int y;
+    ///
+    MathParInset * p;
     
     // Limits auxiliary variables
     /// Position and max width of a script
@@ -254,7 +259,7 @@ private:
 
 protected:
     /// 
-    MathedRowSt *crow;
+    MathedRowSt * crow;
     
 private:
     ///
@@ -266,46 +271,47 @@ private:
 
 
 inline
-bool MathedIter::IsInset()
+bool MathedIter::IsInset() const
 {
     return MathIsInset((*array)[pos]);
 }
  
 inline
-bool MathedIter::IsActive()
+bool MathedIter::IsActive() const
 {
     return MathIsActive((*array)[pos]);
 }
 
 inline
-bool MathedIter::IsFont()
+bool MathedIter::IsFont() const
 {
     return MathIsFont((*array)[pos]);
 }
 
 
 inline
-bool MathedIter::IsScript()
+bool MathedIter::IsScript() const
 {
     return MathIsScript((*array)[pos]);
 }   
 
 inline
-bool MathedIter::IsTab()
+bool MathedIter::IsTab() const
 {
     return ((*array)[pos] == LM_TC_TAB);
 }  
 
 
 inline
-bool MathedIter::IsCR()
+bool MathedIter::IsCR() const
 {
     return ((*array)[pos] == LM_TC_CR);
 }  
 
 
 inline
-MathedIter::MathedIter(LyxArrayBase * d): array(d)
+MathedIter::MathedIter(LyxArrayBase * d)
+	: array(d)
 {
     pos = 0;
     row = col = 0;
@@ -334,7 +340,7 @@ void MathedIter::ipop()
 
 
 inline
-void MathedXIter::GetPos(int&xx, int& yy)
+void MathedXIter::GetPos(int & xx, int & yy) const
 { 
     if (p) 
       p->GetXY(xx, yy);
@@ -344,7 +350,7 @@ void MathedXIter::GetPos(int&xx, int& yy)
 }
 
 inline 
-int MathedXIter::GetX() 
+int MathedXIter::GetX() const
 { 
     int xx, yy;
     GetPos(xx, yy);
@@ -352,7 +358,7 @@ int MathedXIter::GetX()
 }
 
 inline 
-int MathedXIter::GetY() 
+int MathedXIter::GetY() const
 { 
     int xx, yy;
     GetPos(xx, yy);
@@ -361,14 +367,14 @@ int MathedXIter::GetY()
 
 
 inline
-void MathedXIter::GetIncPos(int& xx, int& yy) 
+void MathedXIter::GetIncPos(int & xx, int & yy) const
 { 
     xx = x;  yy = y; 
 }
 
 
 inline
-void MathedXIter::getAD(int& a, int& d) 
+void MathedXIter::getAD(int & a, int & d) const
 { 
     if (crow) {
 	a = crow->asc;

@@ -85,7 +85,7 @@ LyXTable::rowstruct::~rowstruct()
 }
 
 LyXTable::rowstruct & 
-  LyXTable::rowstruct::operator=(rowstruct const & rs)
+LyXTable::rowstruct::operator=(rowstruct const & rs)
 {
 	top_line = rs.top_line;
 	bottom_line = rs.bottom_line;
@@ -109,7 +109,7 @@ LyXTable::columnstruct::~columnstruct()
 }
 
 LyXTable::columnstruct & 
-  LyXTable::columnstruct::operator=(columnstruct const & cs)
+LyXTable::columnstruct::operator=(columnstruct const & cs)
 {
         left_line = cs.left_line;
         right_line = cs.right_line;

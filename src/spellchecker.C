@@ -491,22 +491,21 @@ void sc_clean_up_after_error()
 
 // Send word to ispell and get reply
 static
-isp_result * sc_check_word(char *word)
+isp_result * sc_check_word(string const & word)
 {
 	//Please rewrite to use string.
-	isp_result *result;
-	char buf[1024];
 
-	fputs(word, out); 
+	fputs(word.c_str(), out);
 	fputc('\n', out);
   
+	char buf[1024];
 	fgets(buf, 1024, in); 
   
 	/* I think we have to check if ispell is still alive here because
 	   the signal-handler could have disabled blocking on the fd */
-	if (isp_pid == -1) return 0;
+	if (!sc_still_alive()) return 0;
 
-	result = new isp_result;
+	isp_result * result = new isp_result;
   
 	switch (*buf) {
 	case '*': // Word found
@@ -562,27 +561,27 @@ void close_spell_checker()
 
 
 static inline 
-void sc_insert_word(char const *word)
+void sc_insert_word(string const & word)
 {
 	fputc('*', out); // Insert word in personal dictionary
-	fputs(word, out);
+	fputs(word.c_str(), out);
 	fputc('\n', out);
 }
 
 
 static inline 
-void sc_accept_word(char const *word) 
+void sc_accept_word(string const & word) 
 {
 	fputc('@', out); // Accept in this session
-	fputs(word, out);
+	fputs(word.c_str(), out);
 	fputc('\n', out);
 }
 
 static inline
-void sc_store_replacement(char const *mis, string const & cor) {
+void sc_store_replacement(string const & mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
                 fputs("$$ra ", out);
-                fputs(mis, out);
+                fputs(mis.c_str(), out);
                 fputc(',', out);
                 fputs(cor.c_str(), out);
                 fputc('\n', out);
@@ -622,26 +621,23 @@ void sc_clean_up_after_error()
 
 // Send word to ispell and get reply
 static
-isp_result * sc_check_word(char *word)
+isp_result * sc_check_word(string const & word)
 {
 	isp_result * result = new isp_result;
 	int word_ok = pspell_manager_check(sc, word);
-	assert(word_ok != -1);
+	Assert(word_ok != -1);
 
 	if (word_ok) {
-
 		result->flag = ISP_OK;
-
 	} else {
 
-		const PspellWordList * sugs = pspell_manager_suggest(sc, word);
-		assert(sugs != 0);
+		PspellWordList const * sugs = pspell_manager_suggest(sc, word);
+		Assert(sugs != 0);
 		result->els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs)) 
 			result->flag = ISP_UNKNOWN;
 		else 
 			result->flag = ISP_MISSED;
-		
 	}
 	return result;
 }
@@ -653,22 +649,25 @@ void close_spell_checker()
 	pspell_manager_save_all_word_lists(sc);
 }
 
+
 static inline 
-void sc_insert_word(char const *word)
+void sc_insert_word(string const & word)
 {
 	pspell_manager_add_to_personal(sc, word);
 }
 
 
 static inline 
-void sc_accept_word(char const *word) 
+void sc_accept_word(string const & word) 
 {
 	pspell_manager_add_to_session(sc, word);
 }
 
+
 static inline 
-void sc_store_replacement(char const *mis, string const & cor) {
-	pspell_manager_store_replacement(sc, mis, cor.c_str());
+void sc_store_replacement(string const & mis, string const & cor)
+{
+	pspell_manager_store_replacement(sc, mis.c_str(), cor.c_str());
 }
 
 #endif
@@ -814,8 +813,8 @@ bool RunSpellChecker(BufferView * bv)
 	unsigned int word_count = 0;
 
 	while (true) {
-		char * word = bv->nextWord(newval);
-		if (word == 0) break;
+		string const word = bv->nextWord(newval);
+		if (word.empty()) break;
 		++word_count;
 		
 		// Update slider if and only if value has changed
@@ -828,12 +827,10 @@ bool RunSpellChecker(BufferView * bv)
 		if (word_count%1000 == 0) {
 			obj =  fl_check_forms();
 			if (obj == fd_form_spell_check->stop) {
-				delete[] word;
 				close_spell_checker();
 				return true;
 			}
 			if (obj == fd_form_spell_check->done) {
-				delete[] word;
 				close_spell_checker();
 				return false;
 			}
@@ -842,7 +839,6 @@ bool RunSpellChecker(BufferView * bv)
 		result = sc_check_word(word);
 		if (!sc_still_alive()) {
 			delete result;
-			delete[] word;
 			break;
 		}
 
@@ -856,8 +852,8 @@ bool RunSpellChecker(BufferView * bv)
 				reverse(tmp.begin(),tmp.end());
 				fl_set_object_label(fd_form_spell_check->text, tmp.c_str());
 			} else
-				fl_set_object_label(fd_form_spell_check->text, word);
-			fl_set_input(fd_form_spell_check->input, word);
+				fl_set_object_label(fd_form_spell_check->text, word.c_str());
+			fl_set_input(fd_form_spell_check->input, word.c_str());
 			fl_clear_browser(fd_form_spell_check->browser);
 			const char * w;
 			while ((w = result->next_miss()) != 0) {
@@ -913,14 +909,12 @@ bool RunSpellChecker(BufferView * bv)
 				}
 				if (obj == fd_form_spell_check->stop) {
 					delete result;
-					delete[] word;
 					close_spell_checker();
 					return true;
 				}
 	    
 				if (obj == fd_form_spell_check->done) {
 					delete result;
-					delete[] word;
 					close_spell_checker();
 					return false;
 				}
@@ -928,7 +922,6 @@ bool RunSpellChecker(BufferView * bv)
 		}
 		default:
 			delete result;
-			delete[] word;
 		}
 	}
    

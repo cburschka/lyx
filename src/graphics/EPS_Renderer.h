@@ -23,12 +23,9 @@ class EPS_Renderer : public Renderer {
 public:
 	/// c-tor.
 	EPS_Renderer();
-	/// d-tor.
-	virtual ~EPS_Renderer();
 
 	/// Load the EPS image and create a pixmap out of it.
 	virtual bool renderImage();
-
 private:
 	/// Verify that filename is really an EPS file.
 	virtual bool isImageFormatOK(string const & filename) const;

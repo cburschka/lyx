@@ -4,7 +4,7 @@
 #include "support/filetools.h"
 #include "gettext.h"
 
-string lyx::getUserName()
+string const lyx::getUserName()
 {
 	string userName(GetEnv("LOGNAME"));
 	if (userName.empty())

@@ -221,7 +221,7 @@ class MathParInset;
 class MathedInset  {
  public: 
     /// A math inset has a name (usually its LaTeX name), type and font-size
-    MathedInset(char const * nm, short ot, short st);
+    MathedInset(string const & nm, short ot, short st);
     ///
     explicit
     MathedInset(MathedInset *);
@@ -254,7 +254,7 @@ class MathedInset  {
     virtual void SetLimits(bool) {}   
    
     ///
-    char const * GetName() const { return name; }
+    string const & GetName() const { return name; }
     ///
     short GetType() const { return objtype; }
     ///
@@ -266,10 +266,10 @@ class MathedInset  {
     ///
     virtual void  SetStyle(short st) { size = st; } // Metrics();
     ///
-    virtual void  SetName(char const * n) { name = n; }
+    virtual void  SetName(string const & n) { name = n; }
  protected:
     ///
-    char const * name;
+    string name;
     ///
     short objtype;
     ///
@@ -319,7 +319,7 @@ enum MathedParFlag {
 class MathParInset: public MathedInset  {
  public: 
     ///
-    MathParInset(short st = LM_ST_TEXT, char const * nm = 0,
+    MathParInset(short st = LM_ST_TEXT, string const & nm = string(),
 		 short ot = LM_OT_MIN);
     ///
     explicit
@@ -356,21 +356,13 @@ class MathParInset: public MathedInset  {
    
     // Tab stuff used by Matrix.
     ///
-    virtual void SetAlign(char, char const *) {}
-//    ///
-//    virtual int GetTabPos() { return 0; }
-//    ///
-//    virtual int GetTab(int) { return 0; }
+    virtual void SetAlign(char, string const &) {}
     ///
     virtual int GetColumns() { return 1; }
     ///
     virtual int GetRows() { return 1; }
     ///
     virtual bool isMatrix() { return false; }
-//    /// These functions should report an error
-//    virtual char const* GetLabel() { return 0; }
-//    virtual char const* GetLabel(int) { return 0; }
-
     // Vertical switching
     ///
     virtual bool setArgumentIdx(int i) { return (i == 0); }
@@ -380,8 +372,6 @@ class MathParInset: public MathedInset  {
     virtual int  getArgumentIdx() { return 0; }
     ///
     virtual int  getMaxArgumentIdx() { return 0; }
-//    ///
-//    virtual void SetLabel(char const *) {}
     ///
     virtual void SetStyle(short);
     ///
@@ -430,20 +420,20 @@ struct MathedRowSt {
 	    for (int i = 0 ; i < n + 1 ; ++i)
 	      w[i] = 0;
 	    next = 0;
-	    label = 0;
+	    //label = 0;
 	    numbered = true;
     }
     ///
     ~MathedRowSt() {
 	    delete[] w;
-	    delete[] label;
+	    //delete[] label;
     }
     /// Should be const but...
     MathedRowSt * getNext() const  { return next; }
     /// ...we couldn't use this.
     void setNext(MathedRowSt * n) { next = n; }
     ///
-    char const * getLabel() const { return label; }
+    string const & getLabel() const { return label; }
     ///
     bool isNumbered() const { return numbered; }
     ///
@@ -451,7 +441,7 @@ struct MathedRowSt {
     ///
     int  getTab(int i) { return w[i]; }
     /// 
-    void setLabel(char * l) { label = l; }
+    void setLabel(string const & l) { label = l; }
     ///
     void setNumbered(bool nf) { numbered = nf; }
     ///
@@ -463,7 +453,7 @@ struct MathedRowSt {
     /// widths 
     int * w;
     /// 
-    char * label;
+    string label;
     ///
     bool numbered;
     ///
@@ -506,8 +496,6 @@ class MathMatrixInset: public MathParInset {
 	*vv = v_align;
 	return h_align;
     }
-//    ///
-//    int GetTab(int);
     ///
     int GetColumns() { return nc; }
     ///
@@ -528,7 +516,7 @@ class MathMatrixInset: public MathParInset {
     /// tab sizes
     int * ws;   
     /// 
-    char v_align; // add approp. signedness
+    char v_align; // add approp. type
     ///
     char * h_align;
     /// Vertical structure
@@ -544,7 +532,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 			    MathParInset ** mt);
 ///
 void mathed_write(MathParInset *, std::ostream &, int *, bool fragile,
-		  char const * label = 0);
+		  string const & label = string());
 
 ///
 void mathed_parser_file(std::istream &, int);
@@ -626,7 +614,7 @@ bool MathIsSymbol(short x) {
      
 
 inline
-MathedInset::MathedInset(char const * nm, short ot, short st):
+MathedInset::MathedInset(string const & nm, short ot, short st):
   name(nm), objtype(ot), size(st) 
 {
    width = ascent = descent = 0;

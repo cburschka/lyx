@@ -45,9 +45,9 @@ public:
 	void SetButton(int iIndex, string const & pszName = string(), 
 		       string const & pszPath = string());
 	/// gets last dialog directory
-	string GetDirectory() const;
+	string const GetDirectory() const;
 	/// launches dialog and returns selected file
-	string Select(string const & pszTitle = string(),
+	string const Select(string const & pszTitle = string(),
 		       string const & pszPath = string(),
 		       string const & pszMask = string(), 
 		       string const & pszSuggested = string());

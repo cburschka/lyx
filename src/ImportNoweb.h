@@ -39,7 +39,7 @@ private:
 	///
 	string file;
 	///
-	string documentclass();
+	string const documentclass();
 	///
 	enum {
 		///

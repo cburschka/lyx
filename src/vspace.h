@@ -64,20 +64,21 @@ public:
         LyXLength(string const & data);
 	
 	///
-	float value() const         { return val; };
+	float value() const         { return val; }
 	///
-	LyXLength::UNIT unit() const { return uni; };
+	LyXLength::UNIT unit() const { return uni; }
 
 	/// conversion
-	virtual string asString() const;
+	virtual string const asString() const;
 	///
-	virtual string asLatexString() const { return this->asString(); };
-
+	virtual string const asLatexString() const {
+		return this->asString();
+	}
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
 	friend bool isValidLength(string const & data, 
-				  LyXLength * result= 0);
+				  LyXLength * result = 0);
 
 protected:
 	///
@@ -123,30 +124,34 @@ public:
         LyXGlueLength(string const & data);
 	
 	///
-	float plusValue() const         { return plus_val; };
+	float plusValue() const         { return plus_val; }
 	///
-	LyXLength::UNIT plusUnit() const { return plus_uni; };
+	LyXLength::UNIT plusUnit() const { return plus_uni; }
 	///
-	float minusValue() const         { return minus_val; };
+	float minusValue() const         { return minus_val; }
 	///
-	LyXLength::UNIT minusUnit() const { return minus_uni; };
+	LyXLength::UNIT minusUnit() const { return minus_uni; }
 
 	/// conversion
-	virtual string asString() const;
+	virtual string const asString() const;
 	///
-	virtual string asLatexString() const;
+	virtual string const asLatexString() const;
 
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
 	friend bool isValidGlueLength(string const & data, 
-				      LyXGlueLength* result= 0);
+				      LyXGlueLength* result = 0);
 
 protected:
 	///
-	float           plus_val, minus_val;
+	float plus_val;
 	///
-	LyXLength::UNIT plus_uni, minus_uni;
+	float minus_val;
+	///
+	LyXLength::UNIT plus_uni;
+	///
+	LyXLength::UNIT minus_uni;
 };
 
 ///
@@ -224,22 +229,22 @@ public:
 	///
 	void setKeep(bool val) { kp = val; } 
 	///
-        bool operator == (VSpace const &) const;
+        bool operator==(VSpace const &) const;
 
 	// conversion
 	///
-	string asLyXCommand() const;  // how it goes into the LyX file
+	string const asLyXCommand() const;  // how it goes into the LyX file
 	///
-	string asLatexCommand(BufferParams const & params) const;
+	string const asLatexCommand(BufferParams const & params) const;
 	///
 	int inPixels(BufferView * bv) const;
 	///
 	int inPixels(int default_height, int default_skip) const;
 private:
 	///
-	vspace_kind  kin;
+	vspace_kind kin;
 	///
-	LyXGlueLength    len;
+	LyXGlueLength len;
 	///
 	bool kp;
 };

@@ -6,7 +6,6 @@
  *
  *           Copyright 1998 The LyX Team.
  *
- *           @author: Jürgen Vigna
  *
  *======================================================
  */
@@ -34,26 +33,38 @@ class LyXText;
 class LyXScreen;
 
 /**
- * A text inset is like a TeX box to write full text
- * (including styles and other insets) in a given space. 
+ A text inset is like a TeX box to write full text
+ (including styles and other insets) in a given space. 
+ @author: Jürgen Vigna
  */
 class InsetText : public UpdatableInset {
 public:
     ///
     enum UpdateCodes {
+	///
 	NONE = 0,
+	///
 	INIT,
+	///
 	FULL,
+	///
 	CURSOR_PAR,
+	///
 	CURSOR,
+	///
 	SELECTION,
+	///
 	DRAW_FRAME,
+	///
 	CLEAR_FRAME
     };
     ///
     enum DrawFrame {
+	///
 	NEVER = 0,
+	///
 	LOCKED,
+	///
 	ALWAYS
     };
     ///
@@ -66,7 +77,7 @@ public:
     ///
     Inset * Clone() const;
     ///
-    InsetText & operator= (InsetText const & it);
+    InsetText & operator=(InsetText const & it);
     ///
     void clear();
     ///
@@ -86,7 +97,7 @@ public:
     ///
     void update(BufferView *, LyXFont const &, bool =false);
     ///
-    char const * EditMessage() const;
+    string const EditMessage() const;
     ///
     void Edit(BufferView *, int, int, unsigned int);
     ///
@@ -153,8 +164,6 @@ public:
     ///
     void SetFrameColor(BufferView *, LColor::color);
     ///
-//    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
-    ///
     LyXText * getLyXText(BufferView *) const;
     ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
@@ -201,7 +210,7 @@ private:
     ///
     void SetCharFont(Buffer const *, int pos, LyXFont const & font);
     ///
-    string getText(int);
+    string const getText(int);
     ///
     bool checkAndActivateInset(BufferView * bv, bool behind);
     ///

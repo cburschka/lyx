@@ -71,7 +71,7 @@ void kb_keymap::printKey(kb_key const & key, string & buf)
 
 
 // This binds a key to an action
-int kb_keymap::bind(char const * seq, int action)
+int kb_keymap::bind(string const & seq, int action)
 {
 	kb_sequence k;
 
@@ -238,7 +238,7 @@ kb_keymap::~kb_keymap()
 }
 
 
-string kb_keymap::keyname(kb_key const & k)
+string const kb_keymap::keyname(kb_key const & k)
 {
 	string buf;
 	printKeysym(k.code, k.mod, buf);
@@ -247,7 +247,7 @@ string kb_keymap::keyname(kb_key const & k)
 
 
 // Finds a key for a keyaction, if possible
-string kb_keymap::findbinding(int act) const
+string const kb_keymap::findbinding(int act) const
 {
 	string res;
 	if (table.empty()) return res;

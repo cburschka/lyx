@@ -181,7 +181,7 @@ public:
 			     bool nice, bool only_body = false);
 
 	/// returns the main language for the buffer (document)
-	string GetLanguage() const {
+	string const GetLanguage() const {
 		return params.language;
 	}
 	
@@ -247,7 +247,7 @@ public:
 	/** A transformed version of the file name, adequate for LaTeX  
 	    The path is stripped if no_path is true (default)
 	*/
-	string getLatexName(bool no_path = true) const;
+	string const getLatexName(bool no_path = true) const;
 
 	/// Change name of buffer. Updates "read-only" flag.
 	void fileName(string const & newfile);
@@ -288,9 +288,9 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	string getIncludeonlyList(char delim = ',');
+	string const getIncludeonlyList(char delim = ',');
 	///
-	std::vector<std::pair<string,string> > getBibkeyList();
+	std::vector<std::pair<string,string> > const getBibkeyList();
 	///
 	struct TocItem {
 		///
@@ -312,9 +312,9 @@ public:
 		TOC_LOA
 	};
 	///
-	std::vector<std::vector<TocItem> > getTocList();
+	std::vector<std::vector<TocItem> > const getTocList();
 	///
-	std::vector<string> getLabelList();
+	std::vector<string> const getLabelList();
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */
@@ -375,7 +375,8 @@ private:
         void sgmlCloseTag(std::ostream & os, int depth,
 			  string const & latexname) const;
 	///
-	void LinuxDocError(LyXParagraph * par, int pos, char const * message);
+	void LinuxDocError(LyXParagraph * par, int pos,
+			   string const & message);
         ///
 	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par,
 				  int desc_on, int const depth);
@@ -385,11 +386,11 @@ private:
 				 int const depth);
 
 	/// LinuxDoc.
-	void push_tag(std::ostream & os, char const * tag,
+	void push_tag(std::ostream & os, string const & tag,
 		      int & pos, char stack[5][3]);
 	
 	/// LinuxDoc.
-	void pop_tag(std::ostream & os, char const * tag,
+	void pop_tag(std::ostream & os, string const & tag,
 		     int & pos, char stack[5][3]);
 
 	/// is save needed
@@ -459,10 +460,10 @@ public:
 		friend
 		bool operator==(inset_iterator const & iter1,
 				inset_iterator const & iter2);
-		///
-		friend
-		bool operator!=(inset_iterator const & iter1,
-				inset_iterator const & iter2);
+		//
+		//friend
+		//bool operator!=(inset_iterator const & iter1,
+		//		inset_iterator const & iter2);
 	private:
 		///
 		void SetParagraph();

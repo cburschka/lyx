@@ -59,13 +59,13 @@ public:
 	/// Is the pixmap ready for display?
 	ImageStatus getImageStatus() const; 
 
-	/// Get a notification when the image conversion is done.
-	/// used by an internal callback mechanism.
+	/** Get a notification when the image conversion is done.
+	    used by an internal callback mechanism. */
 	void imageConverted(int retval);
 
 private:
-    /// Private c-tor so that only GraphicsCache can create an instance.
-    GraphicsCacheItem_pimpl();
+	/// Private c-tor so that only GraphicsCache can create an instance.
+	GraphicsCacheItem_pimpl();
 
 	/// Set the filename this item will be pointing too.
 	bool setFilename(string const & filename);
@@ -76,8 +76,8 @@ private:
 	/// Load the image from XPM to memory Pixmap
 	void loadXPMImage();
 	
-    ///
-    friend class GraphicsCacheItem;
+	///
+	friend class GraphicsCacheItem;
 
 	/// The file name of the XPM file.
 	string xpmfile;

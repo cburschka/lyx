@@ -29,13 +29,13 @@ namespace lyx {
 	/// Returns false it it fails
 	bool rename(char const * from, char const * to);
 	/// Returns false it it fails
-	bool copy(char const * from, char const * to);
+	bool copy(string const & from, string const & to);
 	/// generates a checksum
 	unsigned long sum(char const * file);
 	/// returns a date string (not used currently)
 	char * date(); 
 	/// returns the name of the user (not used currently)
-	string getUserName();
+	string const getUserName();
 	///
 	int kill(long int pid, int sig);
 	///
@@ -55,13 +55,13 @@ struct lyx {
 	/// Returns false it it fails
 	static bool rename(char const * from, char const * to);
 	/// Returns false it it fails
-	static bool copy(char const * from, char const * to);
+	static bool copy(string const & from, string const & to);
 	/// generates a checksum
 	static unsigned long sum(char const * file);
 	/// returns a date string (not used currently)
 	static char * date(); 
 	/// returns the name of the user (not used currently)
-	static string getUserName();
+	static string const getUserName();
 	///
 	static int kill(long int pid, int sig);
 	///

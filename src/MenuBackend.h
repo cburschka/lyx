@@ -61,9 +61,9 @@ public:
 		 string const & command = string(), 
 		 bool optional = false);
 	/// The label of a given menuitem
-	string label() const { return token(label_, '|', 0); }
+	string const label() const { return token(label_, '|', 0); }
 	///
-	string shortcut() const { return token(label_, '|', 1); }
+	string const shortcut() const { return token(label_, '|', 1); }
 	/// The kind of entry
 	Kind kind() const { return kind_; } 
 	/// the action (if relevant)

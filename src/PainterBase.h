@@ -153,7 +153,7 @@ public:
 	
 	/// Draw a string at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y,
-				   string const &str, LyXFont const & f) = 0;
+				   string const & str, LyXFont const & f) = 0;
 
 	/** Draw a string at position x, y (y is the baseline)
 	    This is just for fast drawing */

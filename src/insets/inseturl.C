@@ -25,7 +25,7 @@ void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-string InsetUrl::getScreenLabel() const
+string const InsetUrl::getScreenLabel() const
 {
 	string temp;
 	if( getCmdName() == "url" )

@@ -22,9 +22,9 @@ class TransManager;
 class TransInterface {
 public:
 	///
-	virtual string process(char, TransManager &) = 0;
+	virtual string const process(char, TransManager &) = 0;
 	///
-	virtual bool isAccentDefined(tex_accent, KmodInfo &) = 0;
+	virtual bool isAccentDefined(tex_accent, KmodInfo &) const = 0;
 };
 
 /**
@@ -36,7 +36,7 @@ public:
 	///
 	DefaultTrans();
 	///
-	virtual string process(char, TransManager &);
+	virtual string const process(char, TransManager &);
 private:
 	///
 	static bool init_;
@@ -56,13 +56,13 @@ public:
 	///
 	int Load(string const & language);
 	///
-	bool IsDefined();
+	bool IsDefined() const;
 	///
-	string const & GetName();
+	string const & GetName() const;
 	///
-	string process(char, TransManager &);
+	string const process(char, TransManager &);
 	///
-	bool isAccentDefined(tex_accent, KmodInfo &);
+	bool isAccentDefined(tex_accent, KmodInfo &) const;
     
 private:
 	///
@@ -77,7 +77,7 @@ private:
 	///
 	int Load(LyXLex &);
 	///
-	inline char * Match(unsigned char c);
+	inline string const & Match(unsigned char c);
 	///
 	void InsertException(keyexc & exclist, char c,
 			     string const & data, bool = false,
@@ -88,7 +88,7 @@ private:
 	///
 	string name_;
 	///
-	char * keymap_[256];
+	string keymap_[256];
 	///
 	kmod_list_decl * kmod_list_[TEX_MAX_ACCENT+1];
 
@@ -96,7 +96,7 @@ private:
 
 
 ///
-char * Trans::Match(unsigned char c)
+string const & Trans::Match(unsigned char c)
 {
 	return keymap_[c];
 }

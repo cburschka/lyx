@@ -11,6 +11,12 @@
 
 #include <config.h>
 
+#include <map>
+
+#include <unistd.h> // unlink
+
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -23,11 +29,6 @@
 #include "support/filetools.h"
 #include "debug.h"
 #include "support/LAssert.h"
-#include <unistd.h> // unlink
-
-#include <map>
-
-#include FORMS_H_LOCATION
 
 using std::endl;
 using std::map;
@@ -38,6 +39,7 @@ GraphicsCacheItem_pimpl::GraphicsCacheItem_pimpl()
 	  pixmap_(0), renderer(0), refCount(0)
 {}
 
+
 GraphicsCacheItem_pimpl::~GraphicsCacheItem_pimpl()
 {
 	if (imageStatus_ == GraphicsCacheItem::Loaded) {
@@ -46,6 +48,7 @@ GraphicsCacheItem_pimpl::~GraphicsCacheItem_pimpl()
 
 	delete renderer;
 }
+
 
 bool
 GraphicsCacheItem_pimpl::setFilename(string const & filename)
@@ -59,15 +62,17 @@ GraphicsCacheItem_pimpl::setFilename(string const & filename)
 	return false;
 }
 
+
 /*** Callback method ***/
 
 typedef map<string, GraphicsCacheItem_pimpl*> CallbackMap;
 static CallbackMap callbackMap;
 
+
 void
 callback(string cmd, int retval)
 {
-	lyxerr << "callback, cmd="<<cmd<<", retval="<<retval<<endl;
+	lyxerr << "callback, cmd=" << cmd << ", retval=" << retval << endl;
 
 	GraphicsCacheItem_pimpl * item = callbackMap[cmd];
 	callbackMap.erase(cmd);
@@ -75,10 +80,11 @@ callback(string cmd, int retval)
 	item->imageConverted(retval);
 }
 
+
 void
 GraphicsCacheItem_pimpl::imageConverted(int retval)
 {
-	lyxerr << "imageConverted, retval="<<retval<<endl;
+	lyxerr << "imageConverted, retval=" << retval << endl;
 
 	if (retval) {
 		imageStatus_ = GraphicsCacheItem::ErrorConverting;
@@ -102,7 +108,7 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 
 	// Take only the filename part of the file, without path or extension.
 	string temp = OnlyFilename(filename);
-	temp = ChangeExtension(filename , string());
+	temp = ChangeExtension(filename, string());
 	
 	// Add some stuff to have it a unique temp file.
 	xpmfile = TmpFileName(string(), temp);
@@ -117,19 +123,20 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 	// There is a problem with running it asyncronously, it doesn't return
 	// to call the callback, so until the Systemcalls mechanism is fixed
 	// I use the syncronous method.
-	lyxerr << "Launching convert to xpm, command="<<command<<endl;
+	lyxerr << "Launching convert to xpm, command=" << command << endl;
 //	syscall.startscript(Systemcalls::DontWait, command, &callback);
 	syscall.startscript(Systemcalls::Wait, command, &callback);
 
 	return true;
 }
 
+
 // This function gets called from the callback after the image has been
 // converted successfully.
 void
 GraphicsCacheItem_pimpl::loadXPMImage()
 {
-	if (! renderer->setFilename(xpmfile)) {
+	if (!renderer->setFilename(xpmfile)) {
 		return;
 	}
 

@@ -26,7 +26,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetCitation(params()); }
 	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
         ///

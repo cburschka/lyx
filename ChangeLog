@@ -1,3 +1,32 @@
+2000-09-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (writeFile): try to fix the locale modified format
+	number to always be as we want it.
+
+	* src/WorkArea.C (work_area_handler): try to workaround the bugs
+	in XForms 0.89. C-space is now working again.
+
+	* src/Lsstream.h src/support/sstream.h: new files.
+
+	* also commented out all cases where strstream were used.
+	
+	* src/Bullet.h (c_str): remove method.
+	
+	* remove all stuff that is irrelevant when NEW_MENUBAR is defined
+	
+	* a lot of files: get rid of "char const *" and "char *" is as
+	many places as possible. We only want to use them in interaction
+	with system of other libraries, not inside lyx.
+	
+	* a lot of files: return const object is not of pod type. This
+	helps ensure that temporary objects is not modified. And fits well
+	with "programming by contract".
+
+	* configure.in: check for the locale header too 
+
+	* Makefile.am (sourcedoc): new tag for generation of doc++
+	documentation 
+
 2000-09-14  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/xforms/FormDocument.C (ComboInputCB): fixed the

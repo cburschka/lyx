@@ -51,14 +51,14 @@ public:
 	}
 
 	/// Get existing pattern
-	string getPattern() const { return pattern; }
+	string const getPattern() const { return pattern; }
 
 	/// Set new pattern
 	void setPattern(string const & pat);
 
 	/** Return full name of font close to this size.
 	  If impossible, result is the empty string */
-	string getFontname(int size);
+	string const getFontname(int size);
 private:
 	/// Font pattern (with wildcard for size)
 	string pattern;
@@ -91,6 +91,6 @@ private:
 	void query();
 
 	/// Build newly sized font string 
-	string resize(string const &, int size) const;
+	string const resize(string const &, int size) const;
 };
 #endif

@@ -162,7 +162,7 @@ void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
 }
 
 
-char const * InsetError::EditMessage() const 
+string const InsetError::EditMessage() const 
 {
 	return _("Opened error");
 }

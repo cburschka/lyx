@@ -176,16 +176,16 @@ public:
 	///
 	bool setColor(string const & lyxname, string const & x11name);
 	/// Get GUI name of color
-	string getGUIName(LColor::color c) const;
+	string const getGUIName(LColor::color c) const;
 
 	/// Get X11 name of color
-	string getX11Name(LColor::color c) const;
+	string const getX11Name(LColor::color c) const;
 
 	/// Get LaTeX name of color
-	string getLaTeXName(LColor::color c) const;
+	string const getLaTeXName(LColor::color c) const;
 
 	/// Get LyX name of color
-	string getLyXName(LColor::color c) const;
+	string const getLyXName(LColor::color c) const;
 	///
 	LColor::color getFromGUIName(string const & guiname) const;
 	///

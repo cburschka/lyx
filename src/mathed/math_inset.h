@@ -37,7 +37,7 @@ class MathFuncInset: public MathedInset  {
 public:
 	///
 	explicit
-	MathFuncInset(char const * nm,
+	MathFuncInset(string const & nm,
 		      short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
 	///
 	~MathFuncInset();
@@ -57,7 +57,7 @@ protected:
 	///
 	bool lims;
 	///
-	char * fname;
+	string fname;
 };
 
 
@@ -99,7 +99,7 @@ protected:
 class MathDotsInset: public MathedInset {
 public:
 	///
-	MathDotsInset(char const *, int, short st = LM_ST_TEXT);
+	MathDotsInset(string const &, int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
 	///
@@ -141,7 +141,7 @@ protected:
 class MathBigopInset: public MathedInset {
 public:
 	///
-	MathBigopInset(char const *, int, short st = LM_ST_TEXT);
+	MathBigopInset(string const &, int, short st = LM_ST_TEXT);
 	///
 	MathedInset * Clone();
 	///
@@ -284,9 +284,7 @@ protected:
  
 inline
 MathFuncInset::~MathFuncInset()
-{
-    if (fname && GetType() == LM_OT_UNDEF) delete[] fname;
-}
+{}
 
 
 inline

@@ -59,17 +59,13 @@ public:
 	Inset * Clone() const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	void InsetUnlock(BufferView *);
 	///
 	RESULT LocalDispatch(BufferView *, int, string const &);
-
-protected:
-	///
-	//void UpdateLocal();
 
 private:
 	///

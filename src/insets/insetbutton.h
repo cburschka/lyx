@@ -34,7 +34,7 @@ public:
 
 protected:
 	/// This should provide the text for the button
-	virtual string getScreenLabel() const = 0;
+	virtual string const getScreenLabel() const = 0;
 };
 
 #endif

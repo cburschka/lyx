@@ -124,7 +124,7 @@ public:
 	///
 	void selectLastWord();
 	///
-	char * nextWord(float & value);
+	string const nextWord(float & value);
 	///
 	void insertCorrectQuote();
 	///

@@ -52,7 +52,7 @@ Buffer * ImportNoweb::run()
 
 
 // Provide the literate documentclass by parsing the file.
-string ImportNoweb::documentclass()
+string const ImportNoweb::documentclass()
 {
 	string result = "literate-article"; // Default
 

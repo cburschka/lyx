@@ -108,7 +108,7 @@ public:
 	/// Make a new file (buffer) using a template
 	Buffer * newFile(string const &, string, bool isNamed=false);
 	/// returns a vector with all the buffers filenames
-	std::vector<string> getFileNames() const;
+	std::vector<string> const getFileNames() const;
 
 	///
 	int unlockInset(UpdatableInset *);

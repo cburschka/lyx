@@ -162,6 +162,7 @@ int lyxfont::signedWidth(string const & s, LyXFont const & f)
 }
 
 
+//int lyxfont::width(wstring const & s, int n, LyXFont const & f)
 int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
@@ -187,13 +188,13 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 	}
 }
 
-int lyxfont::XTextWidth(LyXFont const & f, char * str, int count)
+int lyxfont::XTextWidth(LyXFont const & f, char const * str, int count)
 {
 	return ::XTextWidth(getXFontstruct(f), str, count);
 }
 
 
-int lyxfont::XTextWidth16(LyXFont const & f, XChar2b * str, int count)
+int lyxfont::XTextWidth16(LyXFont const & f, XChar2b const * str, int count)
 {
 	return ::XTextWidth16(getXFontstruct(f), str, count);
 }

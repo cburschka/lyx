@@ -94,8 +94,8 @@ InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
 	copy(igp);
 }
 
-InsetGraphicsParams const &
-InsetGraphicsParams::operator=(InsetGraphicsParams const &params)
+InsetGraphicsParams &
+InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 {
 	// Are we assigning the object into itself?
 	if (this == &params)
@@ -197,7 +197,9 @@ bool operator==(InsetGraphicsParams const & left,
 	return false;
 }
 
-static void writeResize(ostream & os, char const * key,
+
+static
+void writeResize(ostream & os, string const & key,
                         InsetGraphicsParams::Resize resize, double size)
 {
 	os << ' ' << key << "Resize ";

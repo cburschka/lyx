@@ -30,6 +30,7 @@
 
 #include FORMS_H_LOCATION
 #include <cstdlib>
+#include "LString.h"
 
 ///
 enum combox_type {
@@ -63,20 +64,20 @@ public:
 	void add(int x, int y, int w, int hmin, int hmax);
 	
 	/// Add lines. Same as for fl_browser object
-	void addline(char const *);
+	void addline(string const &);
 	/// Add lines. Same as for fl_browser object
-	void addto(char const *);
+	void addto(string const &);
 	
 	/// Returns the selected item
 	int get();
    
 	/// Returns a pointer to the selected line of text
-	char const * getline();
+	string const getline();
    
 	///  Select an arbitrary item
 	void select(int);
 	///
-        bool select_text(char const *);
+        bool select_text(string const &);
    
 	///  Clear all the list
 	void clear();
@@ -106,7 +107,7 @@ public:
 	///
 	void deactivate();
 	///
-        void shortcut(char const *, int);
+        void shortcut(string const &, int);
 	///
 	void Redraw();
 	///
@@ -152,10 +153,10 @@ public:
 //-----------------  Inline methods  --------------------------- 
 
 inline
-void Combox::addto(char const * text)
+void Combox::addto(string const & text)
 {
 	if (browser) {
-		fl_addto_browser(browser, text);
+		fl_addto_browser(browser, text.c_str());
 		is_empty = false;
 	}
 }
@@ -178,10 +179,10 @@ void Combox::gravity(unsigned g1, unsigned g2)
 
 
 inline
-void Combox::shortcut(char const * s, int i)
+void Combox::shortcut(string const & s, int i)
 {
    if (button)
-      fl_set_object_shortcut(button, s, i);
+      fl_set_object_shortcut(button, s.c_str(), i);
 }
 
 
@@ -215,7 +216,7 @@ int Combox::get()
 
 
 inline
-char const * Combox::getline()
+string const Combox::getline()
 {
     if (type == FL_COMBOX_INPUT) 
       return fl_get_input(label);

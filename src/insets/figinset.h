@@ -47,7 +47,7 @@ public:
 	void Validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const;
+	string const EditMessage() const;
 	
 	///
 	void Edit(BufferView *, int, int, unsigned int);
@@ -62,7 +62,7 @@ public:
 	///
 	void CallbackFig(long arg);
 	///
-	void Preview(char const * p);
+	void Preview(string const & p);
 	/// browse for file
 	void BrowseFile();
 

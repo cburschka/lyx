@@ -63,7 +63,7 @@ void Toolbar::Pimpl::toolbarItem::clean() {
 
 
 Toolbar::Pimpl::toolbarItem & 
-Toolbar::Pimpl::toolbarItem::operator=(const toolbarItem & ti) {
+Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti) {
 	// Are we assigning the object onto itself?
 	if (this == &ti)
 		return *this;

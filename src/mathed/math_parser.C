@@ -92,7 +92,7 @@ static int yylineno;
 static istream * yyis;
 static bool yy_mtextmode= false;
 	    
-inline
+static inline
 char * strnew(char const * s)
 {
 	char * s1 = new char[strlen(s) + 1]; // this leaks when not delete[]'ed
@@ -102,7 +102,7 @@ char * strnew(char const * s)
 
 
 static
-void mathPrintError(char const * msg) 
+void mathPrintError(string const & msg) 
 {
 	lyxerr << "Line ~" << yylineno << ": Math parse error: "
 	       << msg << endl;

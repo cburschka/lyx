@@ -193,7 +193,7 @@ void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data)
 }
 
 
-char const * InsetInfo::EditMessage() const 
+string const InsetInfo::EditMessage() const 
 {
 	return _("Opened note");
 }

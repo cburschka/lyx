@@ -49,15 +49,9 @@ public:
 	///
 	string const & getText() const;
 	///
-	char const * c_str() const;
-	///
-	Bullet & operator = (Bullet const &);
+	Bullet & operator=(Bullet const &);
 	///
 	friend bool operator==(Bullet const &, Bullet const &);
-	///
-	friend bool operator!=(Bullet const & b1, Bullet const & b2) {
-		return !(b1 == b2);
-	}
 protected:
 #ifdef ENABLE_ASSERTIONS
 	///
@@ -107,9 +101,9 @@ private:
 	///
 	void generateText() const;
 	///
-	static string bulletSize(short int);
+	static string const bulletSize(short int);
 	///
-	static string bulletEntry(short int, short int);
+	static string const bulletEntry(short int, short int);
 	
 	///
 	short font;
@@ -245,15 +239,13 @@ Bullet & Bullet::operator=(Bullet const & b)
 	return *this;
 }
 
+/*-----------------End Bullet Member Functions-----------------*/
 
 inline
-char const * Bullet::c_str() const
+bool operator!=(Bullet const & b1, Bullet const & b2)
 {
-	return getText().c_str();
+	return !(b1 == b2);
 }
-
-
-/*-----------------End Bullet Member Functions-----------------*/
 
 ///
 extern

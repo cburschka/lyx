@@ -565,7 +565,7 @@ public:
 				LyXTextClass::size_type layout) const;
 
 	/// Gets layout number from textclass number and layout name
-	std::pair<bool, LyXTextClass::size_type>
+	std::pair<bool, LyXTextClass::size_type> const
 	NumberOfLayout(size_type textclass,
 		       string const & name) const;
 
@@ -577,7 +577,7 @@ public:
 	/** Gets textclass number from name.
 	    Returns -1 if textclass name does not exist
 	*/
-	std::pair<bool, size_type>
+	std::pair<bool, size_type> const
 	NumberOfClass(string const & textclass) const;
 
 	///

@@ -27,7 +27,7 @@
 using std::endl;
 
 /// Load font close to this size
-string FontInfo::getFontname(int size)
+string const FontInfo::getFontname(int size)
 {
 	if (!exist())
 		return string();
@@ -71,7 +71,7 @@ string FontInfo::getFontname(int size)
 
 
 /// Build newly sized font string 
-string FontInfo::resize(string const & font, int size) const
+string const FontInfo::resize(string const & font, int size) const
 {
 	string ret(font);
 	// Find the position of the size spec

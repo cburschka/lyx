@@ -381,14 +381,14 @@ bool LyXFont::resolved() const
 
 
 /// Build GUI description of font state
-string LyXFont::stateText(BufferParams * params) const
+string const LyXFont::stateText(BufferParams * params) const
 {
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	std::ostringstream ost;
-#else
-	char str[1024];
-	ostrstream ost(str, 1024);
-#endif
+//#else
+//	char str[1024];
+//	ostrstream ost(str, 1024);
+//#endif
 	if (family() != INHERIT_FAMILY)
 		ost << _(GUIFamilyNames[family()]) << ", ";
 	if (series() != INHERIT_SERIES)
@@ -414,12 +414,12 @@ string LyXFont::stateText(BufferParams * params) const
 	if (!params || (language() != params->language_info &&
 			language()->lang() != "default"))
 		ost << _("Language: ") << _(language()->display().c_str());
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 	string buf(ost.str().c_str());
-#else
-	ost << '\0';
-	string buf(ost.str());
-#endif
+//#else
+//	ost << '\0';
+//	string buf(ost.str());
+//#endif
 	buf = strip(buf, ' ');
 	buf = strip(buf, ',');
 	return buf;
@@ -524,7 +524,7 @@ LyXFont & LyXFont::setGUISize(string const & siz)
 
 
 // Returns size in latex format
-string LyXFont::latexSize() const
+string const LyXFont::latexSize() const
 {
 	return LaTeXSizeNames[size()];
 }
@@ -729,7 +729,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
 		env = true; //We have opened a new environment
 	}
-	if (f.color() != LColor::inherit) {
+	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
 		os << "\\textcolor{"
 		   << lcolor.getLaTeXName(f.color())
 		   << "}{";
@@ -804,7 +804,7 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.color() != LColor::inherit) {
+	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
 		os << '}';
 		++count;
 		env = true; // Size change need not bother about closing env.

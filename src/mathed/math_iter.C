@@ -38,7 +38,7 @@ extern int mathed_char_height(short, int, byte, int&, int&);
 
 // the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
 // stations. We provide a hand-made version instead. 
-inline
+static inline
 void my_memcpy( void * ps_in, const void * pt_in, size_t n )
 {
     char * ps = static_cast<char *>(ps_in);
@@ -64,7 +64,7 @@ void MathedIter::Reset()
 }
 
 
-byte MathedIter::GetChar()
+byte MathedIter::GetChar() const
 {
     if (IsFont()) { 
 	fcode = array->bf[pos];
@@ -74,25 +74,33 @@ byte MathedIter::GetChar()
 }
 
 
-byte* MathedIter::GetString(int& len)
+byte * MathedIter::GetString(int& len) const
 {
     if (IsFont()) { 
 	fcode = array->bf[++pos];
-	pos++;
+	++pos;
     }
-    byte *s = &array->bf[pos];
+    byte * s = &array->bf[pos];
     len = pos;
-    while (array->bf[pos]>= ' ' && pos<array->last) pos++;
-    len = pos-len;   
+    while (array->bf[pos] >= ' ' && pos < array->last) ++pos;
+    len = pos - len;
    
    return s;
 }
 
-MathedInset* MathedIter::GetInset()
+string const MathedIter::GetString() const
+{
+	int ls = 0;
+	byte * s = GetString(ls);
+	return string(reinterpret_cast<char *>(s), ls);
+}
+
+	
+MathedInset * MathedIter::GetInset() const
 {
    if (IsInset()) {
-      MathedInset* p;
-      my_memcpy(&p, &array->bf[pos+1], sizeof(p));
+      MathedInset * p;
+      my_memcpy(&p, &array->bf[pos + 1], sizeof(p));
       return p;
    } else {
 	   lyxerr << "Math Error: This is not an inset["
@@ -103,7 +111,7 @@ MathedInset* MathedIter::GetInset()
 
 // An active math inset MUST be derived from MathParInset because it 
 // must have at least one paragraph to edit
-MathParInset * MathedIter::GetActiveInset()
+MathParInset * MathedIter::GetActiveInset() const
 {
     if (IsActive()) {
 	return static_cast<MathParInset*>(GetInset());
@@ -576,16 +584,26 @@ void MathedXIter::SetData(MathParInset *pp)
     Reset();
 }
 
-byte* MathedXIter::GetString(int& ls)
+
+byte * MathedXIter::GetString(int & ls) const
 {  
    static byte s[255];
-   byte const *sxs =  MathedIter::GetString(ls);
-   if (ls>0) {
-       strncpy(reinterpret_cast<char*>(s), reinterpret_cast<const char*>(sxs), ls);
+   byte const * sxs =  MathedIter::GetString(ls);
+   if (ls > 0) {
+       strncpy(reinterpret_cast<char*>(s),
+	       reinterpret_cast<const char*>(sxs), ls);
        x += mathed_string_width(fcode, size, s, ls);
        return &s[0];
    } 	    
     return 0;
+}
+
+
+string const MathedXIter::GetString() const
+{
+	int ls;
+	byte * s = GetString(ls);
+	return string(reinterpret_cast<char*>(s), ls);
 }
 
 
@@ -940,9 +958,9 @@ bool MathedXIter::setNumbered(bool numb)
 }
 
 
-bool MathedXIter::setLabel(char* label)
+bool MathedXIter::setLabel(string const & label)
 {  
-    if (label && crow) {
+    if (!label.empty() && crow) {
 	crow->setLabel(label);
 	return true;
     }
@@ -951,19 +969,19 @@ bool MathedXIter::setLabel(char* label)
 }
 
 
-MathedRowSt *MathedXIter::adjustVerticalSt()
+MathedRowSt * MathedXIter::adjustVerticalSt()
 {
     GoBegin();
     if (!crow) {
 //	lyxerr << " CRW" << ncols << " ";
-	    crow = new MathedRowSt(ncols+1); // this leaks
+	    crow = new MathedRowSt(ncols + 1); // this leaks
     }
 //    lyxerr<< " CRW[" << crow << "] ";
-    MathedRowSt *mrow = crow;
+    MathedRowSt * mrow = crow;
     while (OK()) {
 	if (IsCR()) {
-	    if (col>= ncols) ncols = col+1; 
-	    MathedRowSt *r = new MathedRowSt(ncols+1); // this leaks
+	    if (col >= ncols) ncols = col + 1; 
+	    MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
 //	    r->next = crow->next;
 	    crow->next = r;
 	    crow = r;

@@ -262,7 +262,7 @@ public:
 	LyXFont & setGUISize(string const &);
  
 	/// Returns size of font in LaTeX text notation
-	string latexSize() const;
+	string const latexSize() const;
  
 	/** Updates font settings according to request.
 	    If an attribute is IGNORE, the attribute is left as it is.
@@ -309,7 +309,7 @@ public:
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
-	string stateText(BufferParams * params) const;
+	string const stateText(BufferParams * params) const;
 
 	///
 	LColor::color realColor() const;

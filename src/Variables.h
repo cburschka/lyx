@@ -26,11 +26,11 @@ public:
   /// 
   void set(string const &, string const &);
   /// 
-  string get(string const &) const;
+  string const get(string const &) const;
   ///
   bool isset(string const & var) const;
   /// 
-  string expand(string const &) const;
+  string const expand(string const &) const;
 private:
   ///
   typedef std::map<string, string> Vars;

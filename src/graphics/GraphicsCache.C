@@ -25,12 +25,12 @@ GraphicsCache * GraphicsCache::singleton = 0;
 GraphicsCache * 
 GraphicsCache::getInstance()
 {
-    if (! singleton) {
-        singleton = new GraphicsCache;
+	if (!singleton) {
+		singleton = new GraphicsCache;
 		Assert(singleton != 0);
-    }
+	}
 
-    return singleton;
+	return singleton;
 }
 
 
@@ -38,34 +38,37 @@ GraphicsCache::~GraphicsCache()
 {
 	// Free the map.
 	//std::foreach(map.begin(), map.end(), ...);
+#warning This is a bogus reason to not clean up after your self. (Lgb)
+	// Clean up and be done with it. (Lgb)
+	
 	// This is not really needed, it will only happen on program close and in
 	// any case the OS will release those resources (not doing it may have 
 	// a good effect on closing time).
-
-    delete singleton;
+	
+	delete singleton;
 }
 
 
 GraphicsCacheItem *
 GraphicsCache::addFile(string const & filename)
 {
-    CacheType::const_iterator it = cache.find(filename);
-    
-    if (it != cache.end()) {
-        return new GraphicsCacheItem( *((*it).second) );
-    }
+	CacheType::const_iterator it = cache.find(filename);
+	
+	if (it != cache.end()) {
+		return new GraphicsCacheItem( *((*it).second) );
+	}
 	
 	GraphicsCacheItem * cacheItem = new GraphicsCacheItem();
 	if (cacheItem == 0)
 		return 0;
-
+	
 	cacheItem->setFilename(filename);
-
+	
 	cache[filename] = cacheItem;
-
+	
 	// We do not want to return the main cache object, otherwise when the
 	// will destroy their copy they will destroy the main copy.
-    return new GraphicsCacheItem( *cacheItem );
+	return new GraphicsCacheItem( *cacheItem );
 }
 
 

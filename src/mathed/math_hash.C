@@ -354,45 +354,48 @@ static short lookup[] =
        276,
 };
 
-struct latexkeys *
+
+latexkeys *
 in_word_set (register char const *str, register int len)
 {
-  if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
-    {
-      register int key = math_hash (str, len);
-
-      if (key <= MAX_HASH_VALUE && key >= 0)
-        {
-          register int idx = lookup[key];
-
-          if (idx >= 0 && idx < MAX_HASH_VALUE)
-            {
-              register char const * s = wordlist[idx].name;
-
-              if (*s == *str && !strcmp (str + 1, s + 1))
-                return &wordlist[idx];
-            }
-          else if (idx < 0 && idx >= -MAX_HASH_VALUE)
-            return 0;
-          else
-            {
-              register int offset = key + idx + (idx > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
-              register struct latexkeys *base = &wordlist[-lookup[offset]];
-              register struct latexkeys *ptr = base + -lookup[offset + 1];
-
-              while (--ptr >= base)
-                if (*str == *ptr->name && !strcmp (str + 1, ptr->name + 1))
-                  return ptr;
-            }
-        }
-    }
-  return 0;
+	if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH) {
+		int key = math_hash (str, len);
+		
+		if (key <= MAX_HASH_VALUE && key >= 0) {
+			int idx = lookup[key];
+			
+			if (idx >= 0 && idx < MAX_HASH_VALUE) {
+				char const * s = wordlist[idx].name;
+				
+				if (*s == *str && !strcmp (str + 1, s + 1))
+					return &wordlist[idx];
+			} else if (idx < 0 && idx >= -MAX_HASH_VALUE) {
+				return 0;
+			} else {
+				int offset = key + idx + (idx > 0 ? -MAX_HASH_VALUE : MAX_HASH_VALUE);
+				latexkeys * base = &wordlist[-lookup[offset]];
+				latexkeys * ptr = base + -lookup[offset + 1];
+				
+				while (--ptr >= base)
+					if (*str == *ptr->name && !strcmp (str + 1, ptr->name + 1))
+						return ptr;
+			}
+		}
+	}
+	return 0;
 }
+
+
+latexkeys * in_word_set(string const & str) 
+{
+	return in_word_set(str.c_str(), str.length());
+}
+
 
 latexkeys *lm_get_key_by_id(int t, short tk)
 {
-   latexkeys* l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
-   latexkeys* base = &wordlist[MIN_HASH_VALUE];
+   latexkeys * l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
+   latexkeys * base = &wordlist[MIN_HASH_VALUE];
    while (--l >= base) {
      if (t == l->id && tk == l->token)
        return l;
@@ -400,9 +403,10 @@ latexkeys *lm_get_key_by_id(int t, short tk)
    return 0;
 }
 
+
 latexkeys *lm_get_key_by_index(int i)
 {
-   if (i>0 && i<TOTAL_KEYWORDS+2)
+   if (i > 0 && i < TOTAL_KEYWORDS + 2)
      return &wordlist[i];
    else
      return 0;

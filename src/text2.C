@@ -172,7 +172,7 @@ LyXText::~LyXText()
 // smaller. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
+LyXFont const LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
 			 LyXParagraph::size_type pos) const
 {
 	LyXLayout const & layout = 
@@ -190,11 +190,14 @@ LyXFont LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
 			if (layout.labeltype == LABEL_MANUAL
 			    && pos < BeginningOfMainBody(buf, par)) {
 				// 1% goes here
-				return par->GetFontSettings(buf->params, pos).
-					realize(layout.reslabelfont);
-			} else
-				return par->GetFontSettings(buf->params, pos).
-					realize(layout.resfont);
+				LyXFont f = par->GetFontSettings(buf->params,
+								 pos);
+				return f.realize(layout.reslabelfont);
+			} else {
+				LyXFont f = par->GetFontSettings(buf->params, pos);
+				return f.realize(layout.resfont);
+			}
+			
 		} else {
 			// 5% goes here.
 			// process layoutfont for pos == -1 and labelfont for pos < -1
@@ -1161,7 +1164,7 @@ void LyXText::SetSelection()
 }
 
 
-string LyXText::selectionAsString(Buffer const * buffer) const
+string const LyXText::selectionAsString(Buffer const * buffer) const
 {
 	if (!selection) return string();
 	string result;
@@ -1542,8 +1545,8 @@ void LyXText::SetParagraph(BufferView * bview,
 
 
 void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
-                                   char const * width,
-                                   char const * widthp,
+                                   string const & width,
+                                   string const & widthp,
                                    int alignment, bool hfill,
                                    bool start_minipage)
 {
@@ -1661,8 +1664,8 @@ char hebrewCounter(int n)
 }
 
 
-static
-char const * romanCounter(int n)
+static inline
+string const romanCounter(int n)
 {
 	static char const * roman[20] = {
 		"i",   "ii",  "iii", "iv", "v",
@@ -1829,11 +1832,11 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					par->labelstring.erase();
 			}
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream s;
-#else
-			ostrstream s;
-#endif
+//#else
+//			ostrstream s;
+//#endif
 			if (!par->appendix) {
 				switch (2 * LABEL_COUNTER_CHAPTER -
 					textclass.maxcounter() + i) {
@@ -1956,16 +1959,16 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					break;
 				}
 			}
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			par->labelstring += s.str().c_str();
 			// We really want to remove the c_str as soon as
 			// possible...
-#else
-			s << '\0';
-			char * tmps = s.str();
-			par->labelstring += tmps;
-			delete [] tmps;
-#endif
+//#else
+//			s << '\0';
+//			char * tmps = s.str();
+//			par->labelstring += tmps;
+//			delete [] tmps;
+//#endif
 			
 			for (i++; i < 10; ++i) {
 				// reset the following counters
@@ -1980,11 +1983,11 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->incCounter(i + par->enumdepth);
 			int number = par->getCounter(i + par->enumdepth);
 
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			std::ostringstream s;
-#else
-			ostrstream s;
-#endif
+//#else
+//			ostrstream s;
+//#endif
 			switch (par->enumdepth) {
 			case 1:
 				if (par->isRightToLeftPar(buf->params))
@@ -2017,15 +2020,15 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					s << number << '.';
 				break;
 			}
-#ifdef HAVE_SSTREAM
+//#ifdef HAVE_SSTREAM
 			par->labelstring = s.str().c_str();
 			// we really want to get rid of that c_str()
-#else
-			s << '\0';
-			char * tmps = s.str();
-			par->labelstring = tmps;
-			delete [] tmps;
-#endif
+//#else
+//			s << '\0';
+//			char * tmps = s.str();
+//			par->labelstring = tmps;
+//			delete [] tmps;
+//#endif
 
 			for (i += par->enumdepth + 1; i < 10; ++i)
 				par->setCounter(i, 0);  /* reset the following counters  */
@@ -2428,15 +2431,15 @@ LyXParagraph * LyXText::FirstParagraph() const
 // returns true if the specified string is at the specified position
 bool LyXText::IsStringInText(LyXParagraph * par,
 			     LyXParagraph::size_type pos,
-			     char const * str) const
+			     string const & str) const
 {
 	if (par) {
-		int i = 0;
-		while (pos + i < par->Last() && str[i] && 
+		unsigned int i = 0;
+		while (pos + i < par->Last() && i < str.length()&& 
 		       str[i] == par->GetChar(pos + i)) {
 			++i;
 		}
-		if (!str[i])
+		if (str.length() == i)
 			return true;
 	}
 	return false;
@@ -2444,17 +2447,18 @@ bool LyXText::IsStringInText(LyXParagraph * par,
 
 
 // sets the selection over the number of characters of string, no check!!
-void LyXText::SetSelectionOverString(BufferView * bview, char const * string)
+void LyXText::SetSelectionOverString(BufferView * bview, string const & str)
 {
 	sel_cursor = cursor;
-	for (int i = 0; string[i]; ++i)
+	for (int i = 0; str[i]; ++i)
 		CursorRight(bview);
 	SetSelection();
 }
 
 
 // simple replacing. The font of the first selected character is used
-void LyXText::ReplaceSelectionWithString(BufferView * bview, char const * str)
+void LyXText::ReplaceSelectionWithString(BufferView * bview,
+					 string const & str)
 {
 	SetCursorParUndo(bview->buffer());
 	FreezeUndo();
@@ -2466,15 +2470,16 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview, char const * str)
 
 	// Get font setting before we cut
 	LyXParagraph::size_type pos = sel_end_cursor.pos();
-	LyXFont font = sel_start_cursor.par()->GetFontSettings(bview->buffer()->params,
-							     sel_start_cursor.pos());
+	LyXFont const font = sel_start_cursor.par()
+		->GetFontSettings(bview->buffer()->params,
+				  sel_start_cursor.pos());
 
 	// Insert the new string
-	for (int i = 0; str[i]; ++i) {
-		sel_end_cursor.par()->InsertChar(pos, str[i], font);
+	for (string::const_iterator cit = str.begin(); cit != str.end(); ++cit) {
+		sel_end_cursor.par()->InsertChar(pos, (*cit), font);
 		++pos;
 	}
-
+	
 	// Cut the selection
 	CutSelection(bview);
 
@@ -2484,7 +2489,7 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview, char const * str)
 
 // if the string can be found: return true and set the cursor to
 // the new position
-bool LyXText::SearchForward(BufferView * bview, char const * str) const
+bool LyXText::SearchForward(BufferView * bview, string const & str) const
 {
 	LyXParagraph * par = cursor.par();
 	LyXParagraph::size_type pos = cursor.pos();
@@ -2505,7 +2510,7 @@ bool LyXText::SearchForward(BufferView * bview, char const * str) const
 }
 
 
-bool LyXText::SearchBackward(BufferView * bview, char const * string) const
+bool LyXText::SearchBackward(BufferView * bview, string const & str) const
 {
 	LyXParagraph * par = cursor.par();
 	int pos = cursor.pos();
@@ -2521,7 +2526,7 @@ bool LyXText::SearchBackward(BufferView * bview, char const * string) const
 					pos = par->Last() - 1;
 			} while (par && pos < 0);
 		}
-	} while (par && !IsStringInText(par, pos, string));
+	} while (par && !IsStringInText(par, pos, str));
   
 	if (par) {
 		SetCursor(bview, par, pos);

@@ -153,7 +153,7 @@ void InsetBibKey::Read(Buffer const *, LyXLex & lex)
 }
 
 
-string InsetBibKey::getScreenLabel() const
+string const InsetBibKey::getScreenLabel() const
 {
 	if (! getOptions().empty())
 		return getOptions();
@@ -214,7 +214,7 @@ InsetBibtex::~InsetBibtex()
 }
 
 
-string InsetBibtex::getScreenLabel() const
+string const InsetBibtex::getScreenLabel() const
 {
 	return _("BibTeX Generated References");
 }
@@ -262,7 +262,7 @@ int InsetBibtex::Latex(Buffer const *, ostream & os,
 
 
 // This method returns a comma separated list of Bibtex entries
-vector<pair<string,string> > InsetBibtex::getKeys() const
+vector<pair<string, string> > const InsetBibtex::getKeys() const
 {
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
@@ -397,7 +397,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 
 
 // ale070405
-string bibitemWidest(BufferView * bv)
+string const bibitemWidest(BufferView * bv)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)

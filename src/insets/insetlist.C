@@ -67,7 +67,7 @@ Inset * InsetList::Clone() const
 }
 
 
-char const * InsetList::EditMessage() const
+string const InsetList::EditMessage() const
 {
 	return _("Opened List Inset");
 }

@@ -33,7 +33,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	string getScreenLabel() const;
+	string const getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///

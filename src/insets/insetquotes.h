@@ -80,8 +80,7 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	LyXFont ConvertFont(LyXFont const & font) const;
-	//LyXFont ConvertFont(LyXFont font);
+	LyXFont const ConvertFont(LyXFont const & font) const;
 	///
 	void Write(Buffer const *, std::ostream &) const;
 	///
@@ -116,7 +115,7 @@ private:
 	///
 	void ParseString(string const &);
 	///
-	string DispString() const;
+	string const DispString() const;
 };
 #endif
 

@@ -76,12 +76,13 @@ class MathedCursor {
     ///
     void SetPar(MathParInset *);
     ///
-    void Interpret(char const *);
+    void Interpret(string const &);
     ///
     void SetSize(short);
     ///
     void setNumbered();
-    void setLabel(char const *);
+    ///
+    void setLabel(string const &);
     ///
     bool Limits();
     /// Set accent: if argument = 0 it's considered consumed 

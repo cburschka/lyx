@@ -19,8 +19,8 @@
 using std::endl;
 using std::pair;
 
-extern string DoAccent(string const &, tex_accent);
-extern string DoAccent(char, tex_accent);
+extern string const DoAccent(string const &, tex_accent);
+extern string const DoAccent(char, tex_accent);
 extern BufferView * current_view;
 
 
@@ -44,17 +44,17 @@ TransInitState::TransInitState()
 }
 
 
-string TransInitState::normalkey(char c, char * t)
+string const TransInitState::normalkey(char c, string const & t)
 {
 	string res;
-	if (t) 	res = t;
+	if (!t.empty()) res = t;
 	else res = c;
 	
 	return res;
 }
 
 
-string TransInitState::deadkey(char c, KmodInfo d)
+string const TransInitState::deadkey(char c, KmodInfo d)
 {
 	deadkey_ = c;
 	deadkey_info_ = d;
@@ -70,7 +70,7 @@ TransDeadkeyState::TransDeadkeyState()
 }
 
 
-string TransDeadkeyState::normalkey(char c, char * trans)
+string const TransDeadkeyState::normalkey(char c, string const & trans)
 {
 	string res;
 	
@@ -100,7 +100,7 @@ string TransDeadkeyState::normalkey(char c, char * trans)
 }
 
 
-string TransDeadkeyState::deadkey(char c, KmodInfo d)
+string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 {
 	string res;
 	
@@ -153,7 +153,7 @@ TransCombinedState::TransCombinedState()
 }
 
 
-string TransCombinedState::normalkey(char c, char * trans)
+string const TransCombinedState::normalkey(char c, string const & trans)
 {
 	string res;
 	
@@ -177,7 +177,7 @@ string TransCombinedState::normalkey(char c, char * trans)
 }
 
 
-string TransCombinedState::deadkey(char c, KmodInfo d)
+string const TransCombinedState::deadkey(char c, KmodInfo d)
 {
 	// Third key in a row. Output the first one and
 	// reenter with shifted deadkeys
@@ -238,9 +238,9 @@ int TransManager::SetSecondary(string const & language)
 }
 
 
-bool TransManager::setCharset(char const * set)
+bool TransManager::setCharset(string const & str)
 {
-	return chset_.loadFile(set);
+	return chset_.loadFile(str);
 }
 
 

@@ -23,6 +23,8 @@
 #pragma interface
 #endif
 
+#include "LString.h"
+
 #include "symbol_def.h"
 
 ///
@@ -112,6 +114,9 @@ struct latexkeys {
 ///
 latexkeys *
 in_word_set (register char const * str, register int len);
+
+///
+latexkeys * in_word_set(string const & str);
 
 ///
 latexkeys * lm_get_key(int index);

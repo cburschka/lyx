@@ -71,8 +71,8 @@ struct InsetGraphicsParams
 	    REFERENCE_POINT = LEFTBASELINE
 	};
 
-	/// The resize of the image, is it the default size, in cm, inch or
-	/// percentage of the page/column width/height
+	/** The resize of the image, is it the default size, in cm, inch or
+	    percentage of the page/column width/height */
 	enum Resize {
 	    DEFAULT_SIZE,
 	    CM,
@@ -85,24 +85,25 @@ struct InsetGraphicsParams
 	/// Keep the ratio between height and width when resizing.
 	bool keepAspectRatio;
 
-	// What width resize to do?
+	/// What width resize to do?
 	Resize widthResize;
-	// Value of width resize
+	/// Value of width resize
 	float widthSize;
-	// What height resize to do?
+	/// What height resize to do?
 	Resize heightResize;
-	// Value of height resize
+	/// Value of height resize
 	float heightSize;
 
-	// Origin point of rotation
+	/// Origin point of rotation
 	Origin rotateOrigin;
-	// Rotation angle.
+	/// Rotation angle.
 	int rotateAngle;
-
+	///
 	InsetGraphicsParams();
-
+	///
 	InsetGraphicsParams(InsetGraphicsParams const &);
-	InsetGraphicsParams const & operator=(InsetGraphicsParams const &);
+	///
+	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 
 	/// Save the parameters in the LyX format stream.
 	void Write(Buffer const * buf, ostream & os) const;
@@ -121,6 +122,7 @@ private:
 	void copy(InsetGraphicsParams const & params);
 };
 
-bool operator==(InsetGraphicsParams const&, InsetGraphicsParams const &);
+///
+bool operator==(InsetGraphicsParams const &, InsetGraphicsParams const &);
 
 #endif 

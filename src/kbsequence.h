@@ -62,7 +62,7 @@ public:
 	void reset();
 	
 	///
-	int parse(char const * s);
+	int parse(string const & s);
 	
 	/// Keymap to use if a new sequence is starting
 	kb_keymap * stdmap;

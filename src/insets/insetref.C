@@ -34,7 +34,7 @@ void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
 }
 
 
-string InsetRef::getScreenLabel() const
+string const InsetRef::getScreenLabel() const
 {
 	string temp;
 	if (getCmdName() == "ref")
@@ -97,7 +97,7 @@ int InsetRef::DocBook(Buffer const *, ostream & os) const
 
 // This function escapes 8-bit characters and other problematic characters
 // It's exactly the same code as in insetlabel.C.
-string InsetRef::escape(string const & lab) const
+string const InsetRef::escape(string const & lab) const
 {
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
@@ -114,6 +114,7 @@ string InsetRef::escape(string const & lab) const
 	}
 	return enc;
 }
+
 
 void InsetRef::Validate(LaTeXFeatures & features) const
 {
