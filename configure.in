@@ -171,7 +171,7 @@ case "$lyx_use_frontend" in
 	FRONTEND="xforms"
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
-	FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
+	FRONTEND_LIBS="@XFORMS_LIB@ @XFORMS_IMAGE_LIB@ @XPM_LIB@"
 	FRONTEND_INFO=`cat <<EOF
     libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n
