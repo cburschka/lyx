@@ -314,7 +314,6 @@ void FormDialogView::clearMessage()
 }
 
 
-#warning isnt this the same as in FormBase?
 void FormDialogView::postMessage(string const & message)
 {
 	Assert(message_widget_);
