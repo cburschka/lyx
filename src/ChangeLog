@@ -1,3 +1,9 @@
+2001-06-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* LaTeX.C (scanAuxFile):
+	(deplog): remove trailing \r when reading stream (useful under
+	win32)  
+
 2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (fitCursor): emit a signal updateParagraph.

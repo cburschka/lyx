@@ -1,3 +1,8 @@
+2001-06-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* filetools.C (findtexfile): strip final \r if necessary (for
+	cygwin)
+
 2001-06-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FileInfo.C:

@@ -1072,7 +1072,10 @@ findtexfile(string const & fil, string const & /*format*/)
         lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
 			     << "kpse result = `" << strip(c.second, '\n') 
 			     << "'" << endl;
-        return c.first != -1 ? strip(c.second, '\n') : string();
+	if (c.first != -1) 
+		return strip(strip(c.second, '\n'), '\r');
+	else
+		return string();
 }
 
 

@@ -407,6 +407,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 	LRegex reg4("\\\\@input\\{([^}]+)\\}");
 
 	while (getline(ifs, token)) {
+		token = strip(token, '\r');
 		if (reg1.exact_match(token)) {
 			LRegex::SubMatches const & sub = reg1.exec(token);
 			string data = LSubstring(token, sub[1].first,
@@ -645,6 +646,7 @@ void LaTeX::deplog(DepTable & head)
 		string foundfile;
 		string token;
 		getline(ifs, token);
+		token = strip(token, '\r');
 		if (token.empty()) continue;
 		
 		if (reg1.exact_match(token)) {
