@@ -20,7 +20,9 @@
 
 #include "LyXView.h"
 #include "lyx_main.h"
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
+#endif
 #include "toolbar.h"
 #include "minibuffer.h"
 #include "lyxfunc.h"
@@ -208,7 +210,9 @@ void LyXView::show(int place, int border, char const * title)
 {
 	fl_show_form(form_, place, border, title);
 	minibuffer->Init();
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 	InitLyXLookup(fl_display, form_->window);
+#endif
 }
 
 

@@ -333,38 +333,46 @@ fi])
 
 
 dnl Usage: LYX_CXX_STL_STRING : checks whether the C++ compiler
-dnl   has a working stl string container, the check is really stupid
-dnl   and could need some improvement.
+dnl   has a std::string that is usable for LyX. LyX does not require this
+dnl   std::string to be standard.
 AC_DEFUN(LYX_CXX_STL_STRING,[
     AC_REQUIRE([LYX_PROG_CXX])
     AC_MSG_CHECKING(whether the included std::string should be used)
     AC_ARG_WITH(included-string,
        [  --with-included-string  use LyX string class instead of STL string],
-       [with_included_string=$withval],
-       [AC_TRY_COMPILE([
+       [lyx_cv_with_included_string=$withval],
+       [AC_CACHE_CHECK([],lyx_cv_with_included_string,
+	[AC_TRY_COMPILE([
 	    #include <string>
 	    using std::string;
 	],[
+	    // LyX has reduced its requirements on the basic_string
+	    // implementation so that the basic_string supplied
+	    // with gcc is usable. In particular this means that
+	    // lyx does not use std::string::clear and not the
+	    // strncmp version of std::string::compare. This is mainly
+	    // done so that LyX can use precompiled C++ libraries that
+	    // already uses the systems basic_string, e.g. gtk--
 	    string a("hello there");
 	    a.erase();
 	    a = "hey";
-	    char s[] = "y";
-	    int t = a.compare(a.length() - 1, 1, s);
+	    //char s[] = "y";
+	    //int t = a.compare(a.length() - 1, 1, s);
 	    a.erase();
 	],[
-	    with_included_string=no
+	    lyx_cv_with_included_string=no
 	],[
-	    with_included_string=yes
-	    
+	    lyx_cv_with_included_string=yes
+	])
 	])
     ])
-    if test x$with_included_string = xyes ; then
+    if test x$lyx_cv_with_included_string = xyes ; then
 	AC_DEFINE(USE_INCLUDED_STRING, 1,
 	    [Define to use the lyxstring class bundled with LyX.])
 	    lyx_flags="$lyx_flags included-string"
     fi
-    AM_CONDITIONAL(USE_LYXSTRING, test x$with_included_string = xyes)
-    AC_MSG_RESULT([$with_included_string])
+    AM_CONDITIONAL(USE_LYXSTRING, test x$lyx_cv_with_included_string = xyes)
+dnl    AC_MSG_RESULT([$with_included_string])
 ])
 
 

@@ -1,3 +1,21 @@
+2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: Update the PROBLEMS section.
+
+	* config/lyxinclude.m4 (LYX_CXX_STL_STRING): use a less strict test.
+
+2000-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/insets/figinset.C: use pre-emptive callback to avoid
+	gs hangs by xforms discarding ClientMessage events
+
+2000-12-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LyXView.C (show): use stuff in lyxlookup.h when
+	xforms version is strictly less than 0.89.5.
+	* src/lyxfunc.C (processKeyEvent): ditto.
+	* src/lyx_gui.C (LyXGUI): ditto.
+
 2000-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lstrings.C (prefixIs): make it compile with

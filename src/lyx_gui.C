@@ -34,7 +34,9 @@
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
+#endif
 #include "bufferlist.h"
 #include "language.h"
 #include "ColorHandler.h"
@@ -46,6 +48,7 @@
 #endif
 
 #include <vector>
+using std::vector;
 extern vector<int>::size_type max_number_of_menus;
 
 using std::endl;
@@ -163,7 +166,9 @@ LyXGUI::~LyXGUI()
 	delete lyxViews;
 	lyxViews = 0;
 
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 	CloseLyXLookup();
+#endif
 }
 
 

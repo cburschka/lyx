@@ -95,6 +95,10 @@ using std::pair;
 using std::vector;
 using std::max;
 
+#ifdef HAVE_LOCALE
+	using std::locale;
+#endif
+
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 

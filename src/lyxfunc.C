@@ -28,7 +28,9 @@ using std::istringstream;
 #pragma implementation
 #endif
 
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
+#endif
 #include "kbmap.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
@@ -193,7 +195,13 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	XKeyEvent * keyevent = &ev->xkey;
 	KeySym keysym_return = 0;
 
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)	
+	// XForms < 0.89.5 does not have compose support
+	// so we are using our own compose support
 	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
+#else
+	int num_bytes = XLookupString(keyevent, s_r, 10, &keysym_return, 0);
+#endif
 	s_r[num_bytes] = '\0';
 
 	if (lyxerr.debugging(Debug::KEY)) {
