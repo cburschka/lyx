@@ -29,6 +29,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
+#include "ControlMath2.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
@@ -53,6 +54,10 @@
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormLog.h"
+#include "FormMathsDelim.h"
+#include "FormMathsMatrix.h"
+#include "FormMathsSpace.h"
+#include "FormMathsStyle.h"
 #include "FormMinipage.h"
 #include "FormParagraph.h"
 #include "FormRef.h"
@@ -76,7 +81,11 @@
 
 namespace {
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes", "character", "citation", "error", "errorlist" , "ert", "external", "file", "float", "graphics", "include", "index", "label", "log", "minipage", "paragraph", "ref", "tabular", "tabularcreate",
+char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
+"character", "citation", "error", "errorlist" , "ert", "external", "file",
+"float", "graphics", "include", "index", "label", "log",
+"mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
+"minipage", "paragraph", "ref", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -185,6 +194,22 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "mathdelimiter") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new FormMathsDelim(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "mathmatrix") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new FormMathsMatrix(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "mathspace") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new FormMathsSpace(*dialog));
+		dialog->bc().bp(new IgnorantPolicy);
+	} else if (name == "mathstyle") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new FormMathsStyle(*dialog));
+		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new FormMinipage(*dialog));

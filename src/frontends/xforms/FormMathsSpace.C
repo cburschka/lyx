@@ -16,17 +16,17 @@
 
 #include "FormMathsSpace.h"
 #include "forms/form_maths_space.h"
-#include "ControlMath.h"
+#include "ControlMath2.h"
 #include "xformsBC.h"
 
 #include "lyx_forms.h"
 
 extern char * latex_mathspace[];
 
-typedef FormCB<ControlMathSub, FormDB<FD_maths_space> > base_class;
+typedef FormController<ControlMath2, FormView<FD_maths_space> > base_class;
 
-FormMathsSpace::FormMathsSpace()
-	: base_class(_("Math Spacing"), false),
+FormMathsSpace::FormMathsSpace(Dialog & parent)
+	: base_class(parent, _("Math Spacing"), false),
 	  space_(-1)
 {}
 
@@ -53,7 +53,7 @@ void FormMathsSpace::build()
 void FormMathsSpace::apply()
 {
 	if (space_ >= 0)
-		controller().insertSymbol(latex_mathspace[space_]);
+		controller().dispatchInsert(latex_mathspace[space_]);
 }
 
 ButtonPolicy::SMInput FormMathsSpace::input(FL_OBJECT *, long data)

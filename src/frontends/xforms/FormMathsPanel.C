@@ -20,10 +20,6 @@
 #include "xformsBC.h"
 
 #include "FormMathsBitmap.h"
-#include "FormMathsDelim.h"
-#include "FormMathsMatrix.h"
-#include "FormMathsSpace.h"
-#include "FormMathsStyle.h"
 
 #include "forms/form_maths_delim.h"
 #include "forms/form_maths_matrix.h"
@@ -111,23 +107,6 @@ void FormMathsPanel::build()
 	fl_set_pixmap_data(dialog_->button_equation,
 			   const_cast<char**>(equation));
 
-	controller().addDaughter(dialog_->button_delim,
-				 new FormMathsDelim,
-				 new xformsBC(controller().bc()),
-				 new OkApplyCancelReadOnlyPolicy);
-	controller().addDaughter(dialog_->button_matrix,
-				 new FormMathsMatrix,
-				 new xformsBC(controller().bc()),
-				 new OkApplyCancelReadOnlyPolicy);
-	controller().addDaughter(dialog_->button_space,
-				 new FormMathsSpace,
-				 new xformsBC(controller().bc()),
-				 new IgnorantPolicy);
-	controller().addDaughter(dialog_->button_style,
-				 new FormMathsStyle,
-				 new xformsBC(controller().bc()),
-				 new IgnorantPolicy);
-
 	FormMathsBitmap * bitmap;
 	bitmap = addDaughter(dialog_->button_deco,
 			     _("Maths Decorations & Accents"),
@@ -212,12 +191,20 @@ ButtonPolicy::SMInput FormMathsPanel::input(FL_OBJECT * ob, long)
 	    ob == dialog_->button_ams_brel ||
 	    ob == dialog_->button_ams_nrel ||
 	    ob == dialog_->button_ams_ops ||
-	    ob == dialog_->button_delim ||
-	    ob == dialog_->button_matrix ||
-	    ob == dialog_->button_deco ||
-	    ob == dialog_->button_space ||
-	    ob == dialog_->button_style) {
+	    ob == dialog_->button_deco) {
 		controller().showDaughter(ob);
+		
+	} else if (ob == dialog_->button_delim) {
+		controller().showDialog("mathdelimiter");
+
+	} else if (ob == dialog_->button_matrix) {
+		controller().showDialog("mathmatrix");
+
+	} else if (ob == dialog_->button_space) {
+		controller().showDialog("mathspace");
+
+	} else if (ob == dialog_->button_style) {
+		controller().showDialog("mathstyle");
 
 	} else if (ob == dialog_->button_super) {
 		controller().dispatchFunc(LFUN_SUPERSCRIPT);

@@ -15,18 +15,20 @@
 #define FORM_MATHSSTYLE_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
-class ControlMathSub;
+
+class ControlMath2;
 struct FD_maths_style;
 
 /**
  * This class provides an XForms implementation of the maths style.
  */
-class FormMathsStyle : public FormCB<ControlMathSub, FormDB<FD_maths_style> > {
+class FormMathsStyle
+	: public FormController<ControlMath2, FormView<FD_maths_style> > {
 public:
 	///
-	FormMathsStyle();
+	FormMathsStyle(Dialog &);
 
 private:
 	///

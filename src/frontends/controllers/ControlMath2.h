@@ -16,6 +16,7 @@
 
 
 #include "Dialog.h"
+#include "lfuns.h" // for kb_action
 
 
 class ControlMath2 : public Dialog::Controller {
@@ -27,6 +28,8 @@ public:
 	virtual void dispatchParams() {}
 	virtual bool isBufferDependent() const { return true; }
 
+	/// dispatch an LFUN
+	void dispatchFunc(kb_action action, string const & arg = string()) const;
 	/// Insert a math symbol into the doc.
 	void dispatchInsert(string const & name) const;
 	/// Insert a subscript.

@@ -43,6 +43,8 @@ public:
 			 BCView * bc, ButtonPolicy * bcpolicy);
 	///
 	void showDaughter(void *);
+	/// a request to launch dialog \param name.
+	void showDialog(string const & name) const;
 
 private:
 	///

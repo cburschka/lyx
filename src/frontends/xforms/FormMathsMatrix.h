@@ -15,19 +15,20 @@
 #define FORM_MATHSMATRIX_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
-class ControlMathSub;
+
+class ControlMath2;
 struct FD_maths_matrix;
 
 /**
  * This class provides an XForms implementation of the maths matrix.
  */
-class FormMathsMatrix : public FormCB<ControlMathSub, FormDB<FD_maths_matrix> >
-{
+class FormMathsMatrix
+	: public FormController<ControlMath2, FormView<FD_maths_matrix> > {
 public:
 	///
-	FormMathsMatrix();
+	FormMathsMatrix(Dialog &);
 	///
 	int AlignFilter(char const *, int);
 

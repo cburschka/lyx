@@ -15,18 +15,20 @@
 #define FORM_MATHSSPACE_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
-class ControlMathSub;
+
+class ControlMath2;
 struct FD_maths_space;
 
 /**
  * This class provides an XForms implementation of the maths space.
  */
-class FormMathsSpace : public FormCB<ControlMathSub, FormDB<FD_maths_space> > {
+class FormMathsSpace
+	: public FormController<ControlMath2, FormView<FD_maths_space> > {
 public:
 	///
-	FormMathsSpace();
+	FormMathsSpace(Dialog &);
 
 private:
 	///

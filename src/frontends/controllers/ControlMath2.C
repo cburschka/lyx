@@ -20,52 +20,57 @@ ControlMath2::ControlMath2(Dialog & dialog)
 {}
 
 
+void ControlMath2::dispatchFunc(kb_action action, string const & arg) const
+{
+	kernel().dispatch(FuncRequest(action, arg));
+}
+
+
 void ControlMath2::dispatchInsert(string const & name) const
 {
-	kernel().dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
+	dispatchFunc(LFUN_INSERT_MATH, '\\' + name);
 }
 
 
 void ControlMath2::dispatchSubscript() const
 {
-	kernel().dispatch(FuncRequest(LFUN_SUBSCRIPT));
+	dispatchFunc(LFUN_SUBSCRIPT);
 }
 
 
 void ControlMath2::dispatchSuperscript() const
 {
-	kernel().dispatch(FuncRequest(LFUN_SUPERSCRIPT));
+	dispatchFunc(LFUN_SUPERSCRIPT);
 }
 
 
 void ControlMath2::dispatchCubeRoot() const
 {
-	kernel().dispatch(FuncRequest(LFUN_INSERT_MATH, "\\root"));
-	kernel().dispatch(FuncRequest(LFUN_SELFINSERT, "3"));
-	kernel().dispatch(FuncRequest(LFUN_RIGHT));
+	dispatchFunc(LFUN_INSERT_MATH, "\\root");
+	dispatchFunc(LFUN_SELFINSERT, "3");
+	dispatchFunc(LFUN_RIGHT);
 }
 
 
 void ControlMath2::dispatchMatrix(string const & str) const
 {
-	kernel().dispatch(FuncRequest(LFUN_INSERT_MATRIX, str));
+	dispatchFunc(LFUN_INSERT_MATRIX, str);
 }
 
 
 void ControlMath2::dispatchDelim(string const & str) const
 {
-	kernel().dispatch(FuncRequest(LFUN_MATH_DELIM, str));
+	dispatchFunc(LFUN_MATH_DELIM, str);
 }
 
 
 void ControlMath2::dispatchToggleDisplay() const
 {
-	kernel().dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+	dispatchFunc(LFUN_MATH_DISPLAY);
 }
 
 
 void ControlMath2::showDialog(string const & name) const
 {
-	kernel().dispatch(FuncRequest(LFUN_DIALOG_SHOW, name));
+	dispatchFunc(LFUN_DIALOG_SHOW, name);
 }
-

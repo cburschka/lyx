@@ -51,6 +51,12 @@ void ControlMath::insertSymbol(string const & sym, bool bs) const
 }
 
 
+void ControlMath::showDialog(string const & name) const
+{
+	lv_.dispatch(FuncRequest(LFUN_DIALOG_SHOW, name));
+}
+
+
 void ControlMath::addDaughter(void * key, ViewBase * v,
 			      BCView * bcview, ButtonPolicy * bcpolicy)
 {

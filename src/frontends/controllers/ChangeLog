@@ -1,6 +1,10 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
-	* ControlMath2.[Ch] (showDialog): new member function.
+	* ControlMath.[Ch] (showDialog):
+	* ControlMath2.[Ch] (showDialog, dispatchFunc): new member functions.
+
+	* ControlMath2.C: wrap all other calls to the kernel diapatcher into
+	dispatchFunc.
 
 2003-06-12  Angus Leeming  <leeming@lyx.org>
 

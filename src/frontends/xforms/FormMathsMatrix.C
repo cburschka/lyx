@@ -16,7 +16,7 @@
 
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
-#include "ControlMath.h"
+#include "ControlMath2.h"
 #include "xformsBC.h"
 #include "ButtonController.h"
 
@@ -54,10 +54,10 @@ extern "C" {
 }
 
 
-typedef FormCB<ControlMathSub, FormDB<FD_maths_matrix> > base_class;
+typedef FormController<ControlMath2, FormView<FD_maths_matrix> > base_class;
 
-FormMathsMatrix::FormMathsMatrix()
-	: base_class(_("Math Matrix"), false)
+FormMathsMatrix::FormMathsMatrix(Dialog & parent)
+	: base_class(parent, _("Math Matrix"), false)
 {}
 
 
@@ -94,7 +94,7 @@ void FormMathsMatrix::apply()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	controller().dispatchFunc(LFUN_INSERT_MATRIX, STRCONV(os.str()));
+	controller().dispatchMatrix(STRCONV(os.str()));
 }
 
 

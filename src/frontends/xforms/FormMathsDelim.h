@@ -15,18 +15,20 @@
 #define FORM_MATHSDELIM_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
-class ControlMathSub;
+
+class ControlMath2;
 struct FD_maths_delim;
 
 /**
  * This class provides an XForms implementation of the maths delim.
  */
-class FormMathsDelim : public FormCB<ControlMathSub, FormDB<FD_maths_delim> > {
+class FormMathsDelim
+	: public FormController<ControlMath2, FormView<FD_maths_delim> > {
 public:
 	///
-	FormMathsDelim();
+	FormMathsDelim(Dialog &);
 
 private:
 	///

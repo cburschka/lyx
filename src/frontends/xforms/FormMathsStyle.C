@@ -17,7 +17,7 @@
 
 #include "FormMathsStyle.h"
 #include "forms/form_maths_style.h"
-#include "ControlMath.h"
+#include "ControlMath2.h"
 #include "xformsBC.h"
 
 #include "bmtable.h"
@@ -37,10 +37,10 @@ kb_action latex_mathfontcmds[] = {
 };
 
 
-typedef FormCB<ControlMathSub, FormDB<FD_maths_style> > base_class;
+typedef FormController<ControlMath2, FormView<FD_maths_style> > base_class;
 
-FormMathsStyle::FormMathsStyle()
-	: base_class(_("Math Styles & Fonts"), false),
+FormMathsStyle::FormMathsStyle(Dialog & parent)
+	: base_class(parent, _("Math Styles & Fonts"), false),
 	  style_(-1)
 {}
 
@@ -76,7 +76,7 @@ void FormMathsStyle::build()
 void FormMathsStyle::apply()
 {
 	if ((style_ >= 0) && (style_ < 4))
-		controller().insertSymbol(latex_mathstyle[style_]);
+		controller().dispatchInsert(latex_mathstyle[style_]);
 	else if ((style_ >= 4) && (style_ < 14))
 		controller().dispatchFunc(latex_mathfontcmds[style_-4]);
 }
