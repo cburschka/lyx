@@ -838,8 +838,8 @@ def convert_ertbackslash(lines, i, ert):
     for c in ert:
 	if c == '\\':
 	    lines[i] = lines[i] + '\\backslash '
-	    lines.insert(i, '')
 	    i = i + 1
+	    lines.insert(i, '')
 	else:
 	    lines[i] = lines[i] + c
     return i

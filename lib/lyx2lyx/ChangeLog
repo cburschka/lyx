@@ -1,6 +1,8 @@
 2004-09-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
-	* lyx_1_4.lyx: unify warning messages
+	* lyx_1_4.py (convert_ertbackslash): insert the new line after the
+	backslash, this did only work by accident in most cases
+	* lyx_1_4.py: unify warning messages
 
 2004-08-19  José Matos  <jamatos@lyx.org>
 
