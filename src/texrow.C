@@ -69,6 +69,8 @@ void TexRow::getIdFromRow(int row, int & id, int & pos)
 			    && (*kit).pos >= (*cit).pos)
 				(*kit).pos++;
 		}
+		id = (*cit).id;
+		pos = (*cit).pos;
 	} else {
 		id = -1;
 		pos = 0;

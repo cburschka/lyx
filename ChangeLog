@@ -1,5 +1,9 @@
 2000-01-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/texrow.C (getIdFromRow): actually return something useful in
+	id and pos. Hopefully fixes the bug with positionning of errorbox
+	insets. 
+
 	* src/lyx_main.C (easyParse): output an error and exit if an
 	incorrect command line option has been given.
 
