@@ -417,28 +417,22 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 	if (!l)
 		return 0;
 
-	switch (l->token) {
-	case LM_TK_FRAC:
+	if (l->inset == "frac")
 		data = mathed_get_pixmap_from_icon(MM_FRAC);
-		break;
-	case LM_TK_SQRT:
+	else if (l->inset == "sqrt")
 		data = mathed_get_pixmap_from_icon(MM_SQRT);
-		break;
-	case LM_TK_SYM:
-	case LM_TK_CMR:
-	case LM_TK_CMSY:
-	case LM_TK_CMEX:
-	case LM_TK_CMM:
-	case LM_TK_MSA:
-	case LM_TK_MSB:
-		// I have to use directly the bitmap data since the
-		// bitmap tables are not yet created when this
-		// function is called.
+	else if (
+		l->inset == "lyxsymb" ||
+		l->inset == "cmr" ||
+		l->inset == "cmsy" ||
+		l->inset == "cmex" ||
+		l->inset == "cmm" ||
+		l->inset == "msa" ||
+		l->inset == "msb" )
+			// I have to use directly the bitmap data since the
+			// bitmap tables are not yet created when this
+			// function is called.
 		data = pixmapFromBitmapData(arg, wx, hx);
-		break;
-	default:
-		break;
-	}
 
 	return data;
 }
