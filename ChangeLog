@@ -1,3 +1,11 @@
+2002-06-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* acconfig.h: add FORMS_IMAGE_H_LOCATION
+
+	* autogen.sh: add xforms.m4
+ 
+	* configure.in: use XFORMS_IMAGE_LIB
+ 
 2002-05-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* INSTALL: document that frontends are not supported,

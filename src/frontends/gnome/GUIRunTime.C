@@ -31,14 +31,6 @@
 
 using std::endl;
 
-// I keep these here so that it will be processed as early in
-// the compilation process as possible.
-#if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
-#error LyX will not compile with this version of XForms.\
-       Please get version 0.89.\
-       If you want to try to compile anyway, delete this test in src/frontends/gnome/GUIRunTime.C.
-#endif
-
 extern bool finished;
 
 namespace {
