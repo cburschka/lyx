@@ -11,7 +11,7 @@
 /** A macro argument
     \author Alejandro Aguilar Sierra
 */
-class MathMacroArgument: public MathParInset {
+class MathMacroArgument : public MathParInset {
 public:
 	///
 	MathMacroArgument();
