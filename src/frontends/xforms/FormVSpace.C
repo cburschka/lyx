@@ -226,10 +226,6 @@ void FormVSpace::build()
 
 void FormVSpace::apply()
 {
-	if (!form())
-		return;
-
-	// spacing
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, insert nothing.
 	validateVSpaceWidgets(dialog_->choice_space, dialog_->input_space);
@@ -261,8 +257,8 @@ void FormVSpace::update()
 
 ButtonPolicy::SMInput FormVSpace::input(FL_OBJECT * ob, long)
 {
-	// Enable input when custum length is choosen,
-	// disable 'keep' when no space is choosen
+	// Enable input when custom length is chosen,
+	// disable 'keep' when no space is chosen
 	if (ob == dialog_->choice_space) {
 		bool const custom_length =
 			fl_get_choice(dialog_->choice_space) == 6;

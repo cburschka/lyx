@@ -178,6 +178,10 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 				   string const & str,
 				   string const & default_unit)
 {
+	// Paranoia check
+	BOOST_ASSERT(input  && input->objclass  == FL_INPUT &&
+		     choice && choice->objclass == FL_CHOICE);
+
 	// use input field only for gluelengths
 	if (!isValidLength(str) && !isStrDbl(str)) {
 		fl_set_input(input, str.c_str());
@@ -198,7 +202,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 {
 	// Paranoia check
 	BOOST_ASSERT(input  && input->objclass  == FL_INPUT &&
-		    choice && choice->objclass == FL_CHOICE);
+		     choice && choice->objclass == FL_CHOICE);
 
 	if (len.empty()) {
 		fl_set_input(input, "");
