@@ -53,7 +53,7 @@ extern string const guilsinglleft_def;
 ///
 extern string const guilsinglright_def;
 ///
-extern string const paragraphindent_def;
+extern string const paragraphleftindent_def;
 ///
 extern string const floatingfootnote_def;
 ///

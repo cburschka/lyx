@@ -231,7 +231,11 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	// Noindent?
 	if (params().noindent())
 		os << "\\noindent ";
-
+	
+	// Do we have a manual left indent?
+	if (!params().leftIndent().zero())
+		os << "\\leftindent " << params().leftIndent().asString() << " ";
+	
 	// Alignment?
 	if (params().align() != LYX_ALIGN_LAYOUT) {
 		int h = 0;
@@ -388,6 +392,9 @@ void Paragraph::validate(LaTeXFeatures & features) const
 					     << language->babel() << endl;
 		}
 	}
+
+	if (!params().leftIndent().zero())
+		features.require("ParagraphLeftIndent");
 
 	// then the insets
 	LyXLayout const & lout = textclasslist[bparams.textclass][layout()];
@@ -1843,6 +1850,14 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 			texrow.newline();
 		}
 	}
+	
+	bool leftindent_open = false;
+	if (!params().leftIndent().zero()) {
+		os << "\\begin{LyXParagraphLeftIndent}{" <<
+			params().leftIndent().asLatexString() << "}\n";
+		texrow.newline();
+		leftindent_open = true;
+	}
 
 	if (style.isEnvironment()) {
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
@@ -1888,13 +1903,19 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 		}
 	} while (par
 		 && par->layout() == layout()
-		 && par->params().depth() == params().depth());
+		 && par->params().depth() == params().depth()
+		 && par->params().leftIndent() == params().leftIndent());
 
 	if (style.isEnvironment()) {
 		os << "\\end{" << style.latexname() << "}\n";
 		texrow.newline();
 	}
 
+	if (leftindent_open) {
+		os << "\\end{LyXParagraphLeftIndent}\n";
+		texrow.newline();
+	}
+	
 	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
 	return par;  // ale970302
 }

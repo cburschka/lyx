@@ -87,6 +87,11 @@ public:
 	string const & labelWidthString() const;
 	///
 	void labelWidthString(string const &);
+	///
+	LyXLength const & leftIndent() const;
+	///
+	void leftIndent(LyXLength const &);
+	///
 #ifndef NO_PEXTRA_REALLY
 	///
 	int pextraType() const;

@@ -303,8 +303,8 @@ string const LaTeXFeatures::getMacros() const
 	// other
 	if (isRequired("NeedLyXMinipageIndent"))
 		macros << minipageindent_def;
-	if (isRequired("ParagraphIndent"))
-		macros << paragraphindent_def;
+	if (isRequired("ParagraphLeftIndent"))
+		macros << paragraphleftindent_def;
 	if (isRequired("NeedLyXFootnoteCode"))
 		macros << floatingfootnote_def;
 

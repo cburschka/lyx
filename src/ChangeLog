@@ -1,3 +1,25 @@
+2002-05-08  Juergen Vigna  <jug@sad.it>
+
+	* text.C (leftMargin): handle paragraph leftindent.
+
+	* paragraph.C (writeFile): write the new \\leftindent tag.
+	(validate): handle leftindent code.
+	(TeXEnvironment): handle paragraphleftindent code again.
+
+	* lyx_sty.h: changed ParagraphIndent to ParagraphLeftIndent.
+
+	* buffer.C (parseSingleLyXformat2Token): added compatibility code
+	for paragrap_extra indent code and new token \\leftindent.
+	(latexParagraphs): handle the leftindent as environment.
+
+	* ParameterStruct.h: added leftindent support.
+
+	* ParagraphParameters.C (leftIndent): added support functions for
+	the paragraph left indent.
+
+	* LaTeXFeatures.C: change paragraphindent to paragraphleftindent seems
+	more appropriate.
+
 2002-05-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* paragraph.C (isRightToLeftPar): Return false for a paragraph

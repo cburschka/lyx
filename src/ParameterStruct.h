@@ -6,6 +6,7 @@
 #include "vspace.h"
 #include "Spacing.h"
 #include "layout.h"
+#include "lyxlength.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -45,6 +46,9 @@ struct ParameterStruct {
 	string labelstring;
 	///
 	string labelwidthstring;
+	///
+	LyXLength leftindent;
+	///
 #ifndef NO_PEXTRA_REALLY
 	///
 	int pextra_type;
@@ -93,6 +97,7 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.appendix == ps2.appendix
 		&& ps1.labelstring == ps2.labelstring
 		&& ps1.labelwidthstring == ps2.labelwidthstring
+		&& ps1.leftindent == ps2.leftindent
 #ifndef NO_PEXTRA_REALLY
 		&& ps1.pextra_type == ps2.pextra_type
 		&& ps1.pextra_width == ps2.pextra_width

@@ -718,6 +718,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.fonts = lex.getString();
 	} else if (token == "\\noindent") {
 		par->params().noindent(true);
+	} else if (token == "\\leftindent") {
+		lex.nextToken();
+		LyXLength value(lex.getString());
+		par->params().leftIndent(value);
 	} else if (token == "\\fill_top") {
 		par->params().spaceTop(VSpace(VSpace::VFILL));
 	} else if (token == "\\fill_bottom") {
@@ -1385,6 +1389,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			}
 			parBeforeMinipage->insertInset
 				(parBeforeMinipage->size(), mini, font);
+		} else if (par->params().pextraType() == Paragraph::PEXTRA_INDENT) {
+			par->params().leftIndent(LyXLength(par->params().pextraWidth()));
+			if (!par->params().pextraWidthp().empty()) {
+				par->params().leftIndent(LyXLength((par->params().pextraWidthp())+"col%"));
+			}
 		}
 	}
 	// End of pextra_minipage compability
@@ -2587,7 +2596,9 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 				was_title = false;
 			}
 
-			if (layout.isEnvironment()) {
+			if (layout.isEnvironment() ||
+				!par->params().leftIndent().zero())
+			{
 				par = par->TeXEnvironment(this, params, ofs, texrow);
 			} else {
 				par = par->TeXOnePar(this, params, ofs, texrow, false);

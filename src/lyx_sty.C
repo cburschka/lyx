@@ -75,8 +75,8 @@ string const guilsinglright_def =
 	"  {\\usefont{U}{lasy}{m}{n}\\char'51}%\n"
 	"}";
 
-string const paragraphindent_def =
-	"\\newenvironment{LyXParagraphIndent}[1]%\n"
+string const paragraphleftindent_def =
+	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
 	"{\n"
 	"  \\begin{list}{}{%\n"
 	"    \\setlength\\topsep{0pt}%\n"

@@ -268,6 +268,21 @@ void ParagraphParameters::labelWidthString(string const & lws)
 	set_from_struct(tmp);
 }
 
+
+
+LyXLength const & ParagraphParameters::leftIndent() const
+{
+	return param->leftindent;
+}
+
+
+void ParagraphParameters::leftIndent(LyXLength const & li)
+{
+	ParameterStruct tmp(*param);
+	tmp.leftindent = li;
+	set_from_struct(tmp);
+}
+
 #ifndef NO_PEXTRA_REALLY
 int ParagraphParameters::pextraType() const
 {

@@ -849,6 +849,15 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	break;
 	}
 
+	if ((workWidth(bview) > 0) &&
+		!row->par()->params().leftIndent().zero())
+	{
+		LyXLength const len = row->par()->params().leftIndent();
+		int const tw = inset_owner ?
+			inset_owner->latexTextWidth(bview) : workWidth(bview);
+		x += len.inPixels(tw, bview->text->defaultHeight());
+	}
+
 	LyXAlignment align; // wrong type
 
 	if (row->par()->params().align() == LYX_ALIGN_LAYOUT)
