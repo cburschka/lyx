@@ -126,7 +126,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		params_.labelfont.color());
 	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4, 
 		params_.labelfont.color());
-
+		
 	if (has_label_) {
 		LyXFont font(params_.labelfont);
 		font.realize(LyXFont(LyXFont::ALL_SANE));
@@ -157,6 +157,12 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 				has_label_ = !has_label_;
 			else
 				InsetText::priv_dispatch(cur, cmd);
+			break;
+		// supress these
+		// paragraph breaks not allowed in charstyle insets!
+		case LFUN_BREAKPARAGRAPH:
+		case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+		case LFUN_BREAKPARAGRAPH_SKIP:
 			break;
 
 		default:
