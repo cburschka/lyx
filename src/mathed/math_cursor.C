@@ -1470,3 +1470,12 @@ void MathCursor::setSelection(cursor_type const & where, size_type n)
 	Cursor_ = where;
 	cursor().pos_ += n;
 }
+
+
+string MathCursor::info() const
+{
+	std::ostringstream os;
+	if (pos() > 0)
+		prevAtom()->infoize(os);
+	return os.str();
+}

@@ -378,6 +378,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_RIGHT:
 		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
 		updateLocal(bv, false);
+		// write something to the minibuffer
+		//bv->owner()->message(mathcursor->info());
 		break;
 
 

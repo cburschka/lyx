@@ -46,6 +46,8 @@ public:
 	void octavize(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	void infoize(std::ostream & os) const;
 
 private:
 	///

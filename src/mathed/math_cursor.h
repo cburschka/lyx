@@ -231,6 +231,8 @@ public:
 	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos const & cursor() const;
 
+	/// describe the situation
+	string info() const;
 	/// dump selection information for debugging
 	void seldump(char const * str) const;
 	/// dump selection information for debugging

@@ -66,6 +66,7 @@ class OctaveStream;
 class MapleStream;
 class MathMLStream;
 class WriteStream;
+class InfoStream;
 class MathArray;
 
 class LaTeXFeatures;
@@ -234,6 +235,8 @@ public:
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
 	virtual void octavize(OctaveStream &) const;
+	/// describe content
+	virtual void infoize(std::ostream &) const {}
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;

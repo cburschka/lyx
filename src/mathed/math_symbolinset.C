@@ -177,3 +177,9 @@ void MathSymbolInset::write(WriteStream & os) const
 }
 
 
+void MathSymbolInset::infoize(std::ostream & os) const
+{
+	os << '\\' << name();
+}
+
+
