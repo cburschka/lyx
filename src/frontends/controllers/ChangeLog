@@ -1,5 +1,10 @@
 2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlInset.h:
+	* ControlSearch.h: #include LString.h
+
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ButtonController.h: split into two. The definition remains in
 	ButtonController.h, the declaration is now in ButtonController.tmpl.
 	These template methods should be #included when the derived class is

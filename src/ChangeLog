@@ -1,3 +1,7 @@
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* sp_base.h: #include LString.h
+
 2002-01-16  Allan Rae  <rae@lyx.org>
 
 	* text2.C (removeRow): refresh_row needs a valid row.  Or does it?

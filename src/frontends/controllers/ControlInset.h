@@ -20,6 +20,7 @@
 #define CONTROLINSET_H
 
 #include "ControlConnections.h"
+#include "LString.h"
 
 class Inset;
 

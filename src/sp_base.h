@@ -3,6 +3,7 @@
 
 // needed for pid_t typedef
 #include <sys/types.h>
+#include "LString.h" // can't forward declare...
 
 class BufferParams;
 
