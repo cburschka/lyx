@@ -1,3 +1,10 @@
+2002-02-28  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormBase.C:
+	* FormBaseDeprecated.C:
+	* FormFiledialog.C: possible fix to the Bad Window problems that some
+	people have been experiencing.
+
 2002-02-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormForks.C (input_button_all): resolve comparison between signed

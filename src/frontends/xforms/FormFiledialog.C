@@ -509,25 +509,34 @@ string const FileDialog::Private::GetDirectory() const
 		return string(".");
 }
 
+namespace {
+	bool x_sync_kludge(bool ret) 
+	{
+		XSync(fl_get_display(), false);
+		return ret;
+	}
+} // namespace anon
 
 // RunDialog: handle dialog during file selection
 bool FileDialog::Private::RunDialog()
 {
 	force_cancel = false;
 	force_ok = false;
-	
+
         // event loop
         while (true) {
                 FL_OBJECT * pObject = fl_do_forms();
 
                 if (pObject == pFileDlgForm->Ready) {
 			if (HandleOK())
-				return true;
+				return x_sync_kludge(true);
+
 		} else if (pObject == pFileDlgForm->Cancel
 			   || force_cancel)
-			return false;
+			return x_sync_kludge(false);
+
 		else if (force_ok)
-			return true;
+			return x_sync_kludge(true);
 	}
 }
 

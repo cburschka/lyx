@@ -19,6 +19,7 @@
 #include "Dialogs.h"
 #include "FormBaseDeprecated.h"
 #include "LyXView.h"
+#include "GUIRunTime.h"
 #include "support/LAssert.h"
 #include "xformsBC.h"
 #include "lyxrc.h"
@@ -113,6 +114,13 @@ void FormBaseDeprecated::show()
 
 void FormBaseDeprecated::hide()
 {
+	// xforms sometimes tries to process a hint-type MotionNotify, and
+	// use XQueryPointer, without verifying if the window still exists.
+	// So we try to clear out motion events in the queue before the
+	// DestroyNotify
+	XSync(fl_get_display(), false);
+	GUIRunTime::processEvents();
+
 	if (form() && form()->visible) {
 		// some dialogs might do things to the form first
 		// such as the nested tabfolder problem in Preferences

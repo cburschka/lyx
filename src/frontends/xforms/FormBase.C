@@ -19,6 +19,7 @@
 #include "Dialogs.h"
 #include "FormBase.h"
 #include "xformsBC.h"
+#include "GUIRunTime.h"
 #include "support/LAssert.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h" // formatted
@@ -109,6 +110,13 @@ void FormBase::show()
 
 void FormBase::hide()
 {
+	// xforms sometimes tries to process a hint-type MotionNotify, and
+	// use XQueryPointer, without verifying if the window still exists.
+	// So we try to clear out motion events in the queue before the
+	// DestroyNotify
+	XSync(fl_get_display(), false);
+	GUIRunTime::processEvents();
+
 	if (form() && form()->visible)
 		fl_hide_form(form());
 }
