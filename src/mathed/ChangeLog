@@ -1,3 +1,7 @@
+2002-07-17  Angus Leeming  <leeming@lyx.org>
+
+	* math_parboxinset.C: add using std::vector directive.
+
 2002-07-16  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (ascent, descent, draw): remove the extra pixels

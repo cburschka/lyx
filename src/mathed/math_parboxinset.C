@@ -5,6 +5,7 @@
 #include "lyxlength.h"
 #include "debug.h"
 
+using std::vector;
 
 MathParboxInset::MathParboxInset()
 	: MathNestInset(1), lyx_width_(0), tex_width_("0mm"),
