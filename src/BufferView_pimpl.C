@@ -698,7 +698,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a line
-	if (buffer_)
+	if (!buffer_)
 		return;
 
 	LyXText * text = bv_->getLyXText();

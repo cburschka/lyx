@@ -1,5 +1,7 @@
 2001-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* BufferView_pimpl.C (tripleClick): fix stupid logic error.
+
 	* LaTeXFeatures.C: remove special case of french and index
 
 	* buffer.C (makeLaTeXFile): _really_ load babel late (i.e. just
