@@ -54,7 +54,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the input
-	virtual bool input( long );
+	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
 	virtual void update();
 	/// Not used but must be instantiated

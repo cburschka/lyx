@@ -206,7 +206,7 @@ void FormPrint::update()
 // It would be nice if we checked for cases like:
 // Print only-odd-pages and from_page == an even number
 //
-bool FormPrint::input(long)
+bool FormPrint::input(FL_OBJECT *, long)
 {
 	bool activate = true;
 

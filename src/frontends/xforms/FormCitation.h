@@ -50,7 +50,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
-	virtual bool input( long );
+	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
 	virtual void update();
 	/// Apply from dialog (modify or create inset)

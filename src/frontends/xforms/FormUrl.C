@@ -42,6 +42,13 @@ FormUrl::~FormUrl()
 }
 
 
+FL_FORM * FormUrl::form() const
+{
+	if ( dialog_ ) return dialog_->form;
+	return 0;
+}
+
+
 void FormUrl::build()
 {
 	dialog_ = build_url();
@@ -49,13 +56,6 @@ void FormUrl::build()
 	// XFORMS bug workaround
 	// Define the min/max dimensions. Actually applied in update()
 	minw = form()->w; minh = form()->h;
-}
-
-
-FL_FORM * FormUrl::form() const
-{
-	if ( dialog_ ) return dialog_->form;
-	return 0;
 }
 
 

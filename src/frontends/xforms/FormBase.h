@@ -80,7 +80,7 @@ protected:
 	/** Filter the inputs on callback from xforms
 	    Return true if inputs are valid.
 	 */
-	virtual bool input( long ) {
+	virtual bool input( FL_OBJECT *, long ) {
 		return true;
 	}
 	/// Update dialog before showing it

@@ -249,7 +249,7 @@ void FormRef::apply()
 // Seems okay except that goref and goback shouldn't
 // affect the status of ok.
 #endif
-bool FormRef::input( long data )
+bool FormRef::input( FL_OBJECT *, long data )
 {
 	bool activate( true );
 	switch( data ) {

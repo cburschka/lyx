@@ -461,7 +461,7 @@ void FormPreferences::update()
 }
 
 
-bool FormPreferences::input(long)
+bool FormPreferences::input(FL_OBJECT *, long)
 {
 	bool activate = true;
 	//

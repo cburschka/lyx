@@ -44,7 +44,7 @@ private:
 	/// Apply from dialog
 	virtual void apply();
 	/// Filter the inputs
-	virtual bool input(long);
+	virtual bool input(FL_OBJECT *, long);
 	///
 	virtual void connect();
 	/// Pointer to the actual instantiation of the xform's form

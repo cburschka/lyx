@@ -27,4 +27,10 @@ if [ -f $dir/examples/Literate.nw ]
 then
    mv $dir/examples/Literate.nw Literate.nw
    which notangle 2>/dev/null && notangle -Rbuild-script Literate.nw | sh
+else
+   # you don't have noweb installed so we'll produce a dummy file
+   # just so make doesn't keep trying to output it.
+   touch listerrors
 fi
+
+exit 0

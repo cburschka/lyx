@@ -21,7 +21,6 @@
 
 #include "FormDocument.h"
 #include "form_document.h"
-#include "xform_macros.h"
 #include "Dialogs.h"
 #include "layout.h"
 #include "combox.h"
@@ -39,24 +38,12 @@
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
 #endif
 
 #define USE_CLASS_COMBO 1
 
-C_GENERICCB(FormDocument, InputCB)
-C_GENERICCB(FormDocument, ChoiceClassCB)
-C_GENERICCB(FormDocument, BulletPanelCB)
-C_GENERICCB(FormDocument, BulletDepthCB)
-C_GENERICCB(FormDocument, InputBulletLaTeXCB)
-C_GENERICCB(FormDocument, ChoiceBulletSizeCB)
-
-	
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: FormBase(lv, d, BUFFER_DEPENDENT, _("Document Layout"),
 		   new NoRepeatedApplyReadOnlyPolicy),
@@ -297,6 +284,94 @@ void FormDocument::apply()
     }
     lv_->buffer()->markDirty();
     setMinibuffer(lv_, _("Document layout set"));
+}
+
+
+void FormDocument::cancel()
+{
+    // this avoids confusion when reopening
+    BufferParams & param = lv_->buffer()->params;
+    param.temp_bullets[0] = param.user_defined_bullets[0];
+    param.temp_bullets[1] = param.user_defined_bullets[1];
+    param.temp_bullets[2] = param.user_defined_bullets[2];
+    param.temp_bullets[3] = param.user_defined_bullets[3];
+    hide();
+}
+
+
+void FormDocument::update()
+{
+    if (!dialog_)
+        return;
+
+    checkReadOnly();
+
+    BufferParams const & params = lv_->buffer()->params;
+
+    class_update(params);
+    paper_update(params);
+    language_update(params);
+    options_update(params);
+    bullets_update(params);
+}
+
+
+bool FormDocument::input( FL_OBJECT * ob, long data )
+{
+	State cb = static_cast<State>( data );
+
+	switch( cb ) {
+	case CHECKCHOICECLASS:
+		CheckChoiceClass(ob, 0);
+		break;
+	case CHOICEBULLETSIZE:
+		ChoiceBulletSize(ob, 0);
+		break;
+	case INPUTBULLETLATEX:
+		InputBulletLaTeX(ob, 0);
+		break;
+	case BULLETDEPTH1:
+	case BULLETDEPTH2:
+	case BULLETDEPTH3:
+	case BULLETDEPTH4:
+		BulletDepth(ob, cb);
+		break;
+	case BULLETPANEL1:
+	case BULLETPANEL2:
+	case BULLETPANEL3:
+	case BULLETPANEL4:
+	case BULLETPANEL5:
+	case BULLETPANEL6:
+		BulletPanel(ob, cb);
+		break;
+	case BULLETBMTABLE:
+		BulletBMTable(ob, 0);
+		break;
+	default:
+		break;
+	}
+	
+	switch( data ) {
+	case INPUT:
+	case CHECKCHOICECLASS:
+	case CHOICEBULLETSIZE:
+	case INPUTBULLETLATEX:
+	case BULLETBMTABLE:
+		return CheckDocumentInput(ob, 0);
+	default:
+		break;
+	}
+
+	return true;
+}
+
+
+void FormDocument::ComboInputCB(int, void * v, Combox * combox)
+{
+    FormDocument * pre = static_cast<FormDocument*>(v);
+    if (combox == pre->combo_doc_class)
+	pre->CheckChoiceClass(0, 0);
+    pre->bc_.valid(pre->CheckDocumentInput(0,0));
 }
 
 
@@ -541,35 +616,6 @@ void FormDocument::bullets_apply()
 }
 
 
-void FormDocument::cancel()
-{
-    // this avoids confusion when reopening
-    BufferParams & param = lv_->buffer()->params;
-    param.temp_bullets[0] = param.user_defined_bullets[0];
-    param.temp_bullets[1] = param.user_defined_bullets[1];
-    param.temp_bullets[2] = param.user_defined_bullets[2];
-    param.temp_bullets[3] = param.user_defined_bullets[3];
-    hide();
-}
-
-
-void FormDocument::update()
-{
-    if (!dialog_)
-        return;
-
-    checkReadOnly();
-
-    BufferParams const & params = lv_->buffer()->params;
-
-    class_update(params);
-    paper_update(params);
-    language_update(params);
-    options_update(params);
-    bullets_update(params);
-}
-
-
 void FormDocument::class_update(BufferParams const & params)
 {
     if (!class_)
@@ -749,30 +795,6 @@ void FormDocument::bullets_update(BufferParams const & params)
 }
 
 
-void FormDocument::InputCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
-}
-
-
-void FormDocument::ComboInputCB(int, void * v, Combox * combox)
-{
-    FormDocument * pre = static_cast<FormDocument*>(v);
-    if (combox == pre->combo_doc_class)
-	pre->CheckChoiceClass(0, 0);
-    pre->bc_.valid(pre->CheckDocumentInput(0,0));
-}
-
-
-void FormDocument::ChoiceClassCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->CheckChoiceClass(ob,0);
-    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
-}
-
-
 void FormDocument::checkReadOnly()
 {
     if (bc_.readOnly(lv_->buffer()->isReadonly())) {
@@ -895,14 +917,6 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 }
 
 
-void FormDocument::ChoiceBulletSizeCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->ChoiceBulletSize(ob,0);
-    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
-}
-
-
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
 {
     BufferParams & param = lv_->buffer()->params;
@@ -911,14 +925,6 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
     param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
     fl_set_input(bullets_->input_bullet_latex,
 		 param.temp_bullets[current_bullet_depth].getText().c_str());
-}
-
-
-void FormDocument::InputBulletLaTeXCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->InputBulletLaTeX(ob,0);
-    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 
@@ -931,14 +937,7 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 }
 
 
-void FormDocument::BulletDepthCB(FL_OBJECT * ob, long data)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->BulletDepth(ob, data);
-}
-
-
-void FormDocument::BulletDepth(FL_OBJECT * ob, long data)
+void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
 {
     /* Should I do the following:                                 */
     /*  1. change to the panel that the current bullet belongs in */
@@ -950,9 +949,19 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, long data)
     /* maybe try to support the others later                      */
     BufferParams & param = lv_->buffer()->params;
 
+    int data;
+    if( cb == BULLETDEPTH1 )
+	    data = 0;
+    else if ( cb == BULLETDEPTH2 )
+	    data = 1;
+    else if ( cb == BULLETDEPTH3 )
+	    data = 2;
+    else if ( cb == BULLETDEPTH4 )
+	    data = 3;
+
     switch (fl_get_button_numb(ob)) {
     case 3:
-	// right mouse button resets to default
+	    // right mouse button resets to default
 	param.temp_bullets[data] = ITEMIZE_DEFAULTS[data];
     default:
 	current_bullet_depth = data;
@@ -964,18 +973,25 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, long data)
 }
 
 
-void FormDocument::BulletPanelCB(FL_OBJECT * ob, long data)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->BulletPanel(ob,data);
-}
-
-
-void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
+void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 {
     /* Here we have to change the background pixmap to that selected */
     /* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
     
+    int data;
+    if( cb == BULLETPANEL1 )
+	    data = 0;
+    else if ( cb == BULLETPANEL2 )
+	    data = 1;
+    else if ( cb == BULLETPANEL3 )
+	    data = 2;
+    else if ( cb == BULLETPANEL4 )
+	    data = 3;
+    else if ( cb == BULLETPANEL5 )
+	    data = 4;
+    else if ( cb == BULLETPANEL6 )
+	    data = 5;
+
     if (data != current_bullet_panel) {
 	fl_freeze_form(bullets_->form);
 	current_bullet_panel = data;
@@ -983,24 +999,24 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
 	/* free the current pixmap */
 	fl_free_bmtable_pixmap(bullets_->bmtable_bullet_panel);
 	string new_panel;
-	switch (data) {
+	switch (cb) {
 	    /* display the new one */
-	case 0 :
+	case BULLETPANEL1 :
 	    new_panel = "standard";
 	    break;
-	case 1 :
+	case BULLETPANEL2 :
 	    new_panel = "amssymb";
 	    break;
-	case 2 :
+	case BULLETPANEL3 :
 	    new_panel = "psnfss1";
 	    break;
-	case 3 :
+	case BULLETPANEL4 :
 	    new_panel = "psnfss2";
 	    break;
-	case 4 :
+	case BULLETPANEL5 :
 	    new_panel = "psnfss3";
 	    break;
-	case 5 :
+	case BULLETPANEL6 :
 	    new_panel = "psnfss4";
 	    break;
 	default :
@@ -1016,14 +1032,6 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, long data)
 	fl_redraw_object(bullets_->bmtable_bullet_panel);
 	fl_unfreeze_form(bullets_->form);
     }
-}
-
-
-void FormDocument::BulletBMTableCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
-    pre->BulletBMTable(ob,0);
-    pre->bc_.valid(pre->CheckDocumentInput(ob,0));
 }
 
 

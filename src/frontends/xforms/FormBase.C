@@ -145,7 +145,7 @@ void FormBase::CancelCB(FL_OBJECT * ob, long)
 void FormBase::InputCB(FL_OBJECT * ob, long data )
 {
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
-	pre->bc_.valid( pre->input( data ) );
+	pre->bc_.valid( pre->input( ob, data ) );
 }
 
 

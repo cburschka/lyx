@@ -94,14 +94,6 @@
 # seems slow to you, by uncommenting this line:
 #\display_shortcuts false
 
-# Define which program to use to view dvi files here.
-# You can include any options you need by "quoting" the entire command.
-# The default is "xdvi".
-# Example: the next line would use xdvi and display with shrink 2:
-#\view_dvi_command "xdvi -s 2"
-# It can get more involved. Expert users might prefer something like:
-#\view_dvi_command "xdvi -s 2 -expert -geometry 1014x720+0+0 -keep -margins 1.5"
-
 # \view_dvi_paper_option allows to specify a paper option to the dvi
 # viewer. By default LyX specifies the paper size of the document to
 # the dvi viewer via the command line option -paper size, where size
@@ -119,24 +111,6 @@
 # executive, a3, a4, a5, or b5 as the default papersize.
 #\default_papersize "a4"
 
-# Define which program to use to view pdf files here.
-# You can include any options you need by "quoting" the entire command
-# The default is auto-detected, but you might want to override it.
-# Usual values are: xpdf, acroread, gv, ghostscript.
-# Warning: This option is not functional!
-#\view_pdf_command "xpdf"
-
-# Define which program to use to view postscript files here.
-# You can include any options you need by "quoting" the entire command
-# The default is auto-detected, but you might want to override it.
-# It is possible to get nice anti-aliased text (slower, but as nice as
-# xdvi) by using something like
-#\view_ps_command "ghostview -swap -sDEVICE=x11alpha"
-
-# Define which program to use to full screen view included postscript
-# pictures. You can not include any options. The default is auto-detected.
-#\view_pspic_command ghostview
-
 # Define which program to use to use as postscript interpreter for included
 # images.
 # You can not include any options. The default is "gs" if it can be found.
@@ -150,18 +124,6 @@
 # Check the ChkTeX documentation for info on what the flags mean.
 # Example: use this to ignore warnings about using "\ldots" instead of "..."
 #\chktex_command "chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38"
-
-# Define which program to use to translate latex to HTML.
-# You should include options. The default is autodetected: the programs 
-# checked are tth, latex2html and hevea, and the default command lines
-# used are:  
-#\html_command "tth -t < '$$FName' > '$$OutName'"
-#\html_command "latex2html -no_subdir -split 0 -show_section_numbers '$$FName'"
-#\html_command "hevea -s '$$FName'"
-# The variable name $$FName is replaced with the name of the .tex
-# file, and $$OutName is replaced with the name of the html file.
-# Example: use this to let math be italic with tth.
-#\html_command "tth -t -i < '$$FName' > '$$OutName'"
 
 # Keyboard Mapping. Use this to set the correct mapping file for your
 # keyboard, that is if you need one. You'll need one if you for instance
@@ -375,49 +337,47 @@
 #\print_collcopies_flag -c
 #\print_adapt_output false
 
-
 #
 # EXPORT SECTION ########################################################
 #
 
+# The \converter command defines a converter between two formats. 
+# LyX uses the defined converters for generating output in varius formats.
+# The converter command has 4 arguments: The source format, the target format,
+# the command, and additional flags.
+# For example, the following defines a DVI->Postscript converter:
+#\converter dvi ps "dvips -o $$OutName $$FName" ""
+# The variable name $$FName is replaced with the name of the source file,
+# and $$OutName is replaced with the name of the target file.
+# The flags argument is a list of comma separated flags.
+# Known flags are
+# - originaldir : The converter must be invoked in the directory of the lyx
+#   file and not in the temporary directory. This is needed for tex->html
+#   converters in order to be able to read the eps files.
+# - needaux : The converted uses the .aux file, so we need to call latex
+#   before running the converter.
+# - resultdir=dir : The converter put all the files in dir.
+#   Using "resultdir" is same as "resultdir=$$Basename".
+#   Note: When exporting, the whole directory will be moved from the temporary
+#   directory to the target directory.
+# - resultfile=file : Name of main file in the result directory, for example
+#  "index.html" or "$$BaseName.html"
+#   If "resultfile" is omitted, the name of this file is assumed to be
+#   "index.format"
+# For example:
+# \converter tex html "latex2html -split 0 $$FName"
+#            "originaldir,needaux,resultdir"
 
-# With this you can send a LyX-Document to a User-defined program. You
-# can specify by adding the tag $$FName where the filename should be
-# put on the defined command. if no $$FName is specified the file is
-# sent in standard input (stdin). There is no default command
-# specified.  Example: 
-#\custom_export_command "kghostview $$FName"
-#
-# A more elaborate example to create pdf files with ps2pdf would be: 
-#\custom_export_command "ps2pdf '$$FName' `basename '$$FName' .ps_tmp`.pdf"  
-
-
-# This is the default for the type of contents to be sent to the export
-# command: possible values are lyx, dvi, tex, ps and ascii.
-#\custom_export_format ps
+# The \viewer command is used to define viewers for new file-formats,
+# or to change the already defined viewers.
+# For example, to use xdvi as the viewer to dvi files use
+#\viewer dvi "xdvi"
+# It can get more involved. Expert users might prefer something like:
+#\viewer dvi "xdvi -s 2 -expert -geometry 1014x720+0+0 -keep -margins 1.5"
 
 #
 # TEX SECTION  ###########################################################
 #
-
-# LyX tries to auto-detect which command to use to invoke LaTeX(2e).
-# If the auto-detection for some reasons fail, you can override it
-# here:
-#\latex_command latex2e
-
-# The command used to generate pdf files directly from a latex file.
-# A program that works in anyother way is not guarantied to work.
-# Warning: This option is not functional!
-#\pdflatex_command pdflatex
-
-# The command used to generate postscript files from pdf files.
-# Warning: This option is not functional!
-#\pdf_to_ps_command pdf2ps
-
-# If to use pdf as native export format instead of dvi. This makes LyX use
-# pdflatex, pdf2ps and other utility programs. Default is false.
-# Warning: This option is not functional!
-#\pdf_mode false
 
 # The font encoding used for the LaTeX2e fontenc package.
 # T1 is highly recommended for non-English languages. LyX uses T1 as a
@@ -426,36 +386,12 @@
 # Choose "default" if T1 doesn't work for you for some reason:
 #\font_encoding default
 
-
 #
 # LINUXDOC SECTION #######################################################
 #
 
-# If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
-# here. 
-# Example: the next line activates iso-latin1 support:
-#\linuxdoc_to_latex_command "sgml2latex -c latin"
-
-# Here you have the command to convert from linuxdoc to html.
-# Example: one html file only.
-#\linuxdoc_to_html_command "sgml2html -s 0 '$$FName'"
-
 # The LinuxDoc to LyX converter
 #\linuxdoc_to_lyx_command "sgml2lyx"
-
-#
-# DOCBOOK SECTION ########################################################
-#
-
-# Command to convert a docbook file to dvi
-#\docbook_to_dvi_command "sgmltools -b dvi"
-
-# Command to convert a docbook file to html
-#\docbook_to_html_command "sgmltools -b html '$$FName'"
-
-# Command to convert a docbook file to pdf
-#\docbook_to_pdf_command ""
-
 
 #
 # FILE SECTION  ##########################################################

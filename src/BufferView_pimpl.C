@@ -143,6 +143,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	delete screen_;
 	screen_ = 0;
 
+	// Similarly, buffer-dependent dialogs should be updated.
+	owner_->getDialogs()->updateBufferDependent();
+
 	// If we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
 		buffer_ = bufferlist.first();

@@ -289,9 +289,9 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 #ifdef WITH_WARNINGS
 #warning convert this to use the buttoncontroller
 #endif
-bool FormCitation::input( long data )
+bool FormCitation::input( FL_OBJECT *, long data )
 {
-	State cb = static_cast<FormCitation::State>( data );
+	State cb = static_cast<State>( data );
 
 	switch( cb ) {
 	case BIBBRSR:

@@ -55,7 +55,7 @@ private:
 	/// Restore from dialog
 	virtual void restore();
 	/// Filter the inputs -- return true if entries are valid
-	virtual bool input(long);
+	virtual bool input(FL_OBJECT *, long);
 	/// Build the dialog
 	virtual void build();
 	///

@@ -10,19 +10,15 @@ extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentChoiceClassCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormDocumentChoiceBulletSizeCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentInputBulletLaTeXCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentBulletDepthCB(FL_OBJECT *, long);
-extern  "C" void C_FormDocumentBulletPanelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
