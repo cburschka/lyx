@@ -247,15 +247,16 @@ int getEndLabel(Paragraph * para, BufferParams const & bparams)
 #endif
 
 
-Paragraph * TeXDeeper(Buffer const * buf,
-		      BufferParams const & bparams,
-		      Paragraph * pit,
-		      ostream & os, TexRow & texrow)
+ParagraphList::iterator
+TeXDeeper(Buffer const * buf,
+	  BufferParams const & bparams,
+	  ParagraphList::iterator pit,
+	  ostream & os, TexRow & texrow)
 {
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << pit << endl;
-	Paragraph * par = pit;
+	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
+	ParagraphList::iterator par = pit;
 
-	while (par && par->params().depth() == pit->params().depth()) {
+	while (par != buf->paragraphs.end()&& par->params().depth() == pit->params().depth()) {
 		if (par->layout()->isEnvironment()) {
 			par = TeXEnvironment(buf, bparams, par,
 						  os, texrow);
@@ -264,18 +265,19 @@ Paragraph * TeXDeeper(Buffer const * buf,
 					     os, texrow, false);
 		}
 	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << &*par << endl;
 
 	return par;
 }
 
 
-Paragraph * TeXEnvironment(Buffer const * buf,
-			   BufferParams const & bparams,
-			   Paragraph * pit,
-			   ostream & os, TexRow & texrow)
+ParagraphList::iterator
+TeXEnvironment(Buffer const * buf,
+	       BufferParams const & bparams,
+	       ParagraphList::iterator pit,
+	       ostream & os, TexRow & texrow)
 {
-	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << pit << endl;
+	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
 
 	LyXLayout_ptr const & style = pit->layout();
 
@@ -327,11 +329,11 @@ Paragraph * TeXEnvironment(Buffer const * buf,
 			   << style->latexparam() << '\n';
 		texrow.newline();
 	}
-	Paragraph * par = pit;
+	ParagraphList::iterator par = pit;
 	do {
 		par = TeXOnePar(buf, bparams, par, os, texrow, false);
 
-		if (par && par->params().depth() > pit->params().depth()) {
+		if (par != buf->paragraphs.end()&& par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
 
 			    // Thinko!
@@ -353,7 +355,7 @@ Paragraph * TeXEnvironment(Buffer const * buf,
 			}
 			par = TeXDeeper(buf, bparams, par, os, texrow);
 		}
-	} while (par
+	} while (par != buf->paragraphs.end()
 		 && par->layout() == pit->layout()
 		 && par->params().depth() == pit->params().depth()
 		 && par->params().leftIndent() == pit->params().leftIndent());
@@ -368,7 +370,7 @@ Paragraph * TeXEnvironment(Buffer const * buf,
 		texrow.newline();
 	}
 
-	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
+	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << &*par << endl;
 	return par;  // ale970302
 }
 
@@ -392,13 +394,14 @@ InsetOptArg * optArgInset(Paragraph const & par)
 } // end namespace
 
 
-Paragraph * TeXOnePar(Buffer const * buf,
-		      BufferParams const & bparams,
-		      Paragraph * pit,
-		      ostream & os, TexRow & texrow,
-		      bool moving_arg)
+ParagraphList::iterator
+TeXOnePar(Buffer const * buf,
+	  BufferParams const & bparams,
+	  ParagraphList::iterator pit,
+	  ostream & os, TexRow & texrow,
+	  bool moving_arg)
 {
-	lyxerr[Debug::LATEX] << "TeXOnePar...     " << pit << endl;
+	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << endl;
 	Inset const * in = pit->inInset();
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
@@ -416,7 +419,7 @@ Paragraph * TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (!pit->previous() || !pit->previous()->hasSameLayout(pit))) {
+			&& (!pit->previous() || !pit->previous()->hasSameLayout(&*pit))) {
 			os << pit->params().spacing().writeEnvirBegin() << '\n';
 			texrow.newline();
 		}
@@ -586,7 +589,7 @@ Paragraph * TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (!pit->next() || !pit->next()->hasSameLayout(pit))) {
+			&& (!pit->next() || !pit->next()->hasSameLayout(&*pit))) {
 			os << pit->params().spacing().writeEnvirEnd() << '\n';
 			texrow.newline();
 		}
@@ -617,5 +620,5 @@ Paragraph * TeXOnePar(Buffer const * buf,
 	}
 
 	lyxerr[Debug::LATEX] << "TeXOnePar...done " << pit->next() << endl;
-	return pit->next();
+	return ++pit;
 }

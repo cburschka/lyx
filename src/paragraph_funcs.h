@@ -12,6 +12,7 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
+#include "ParagraphList.h"
 #include "support/types.h"
 
 class Buffer;
@@ -51,20 +52,23 @@ bool isFirstInSequence(Paragraph * par);
 int getEndLabel(Paragraph * para, BufferParams const & bparams);
 #endif
 
-Paragraph * TeXDeeper(Buffer const * buf,
-		      BufferParams const & bparams,
-		      Paragraph * pit,
-		      std::ostream & os, TexRow & texrow);
+ParagraphList::iterator
+TeXDeeper(Buffer const * buf,
+	  BufferParams const & bparams,
+	  ParagraphList::iterator pit,
+	  std::ostream & os, TexRow & texrow);
 
-Paragraph * TeXEnvironment(Buffer const * buf,
-			   BufferParams const & bparams,
-			   Paragraph * pit,
-			   std::ostream & os, TexRow & texrow);
+ParagraphList::iterator
+TeXEnvironment(Buffer const * buf,
+	       BufferParams const & bparams,
+	       ParagraphList::iterator pit,
+	       std::ostream & os, TexRow & texrow);
 
-Paragraph * TeXOnePar(Buffer const * buf,
-		      BufferParams const & bparams,
-		      Paragraph * pit,
-		      std::ostream & os, TexRow & texrow,
-		      bool moving_arg);
+ParagraphList::iterator
+TeXOnePar(Buffer const * buf,
+	  BufferParams const & bparams,
+	  ParagraphList::iterator pit,
+	  std::ostream & os, TexRow & texrow,
+	  bool moving_arg);
 
 #endif // PARAGRAPH_FUNCS_H

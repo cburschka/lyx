@@ -380,7 +380,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 {
 	Inset * inset = createInset(cmd);
 	BufferView * bv = cmd.view();
-	
+
 	if (inset) {
 		bool gotsel = false;
 		if (lt->selection.set()) {

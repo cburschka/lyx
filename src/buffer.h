@@ -150,8 +150,10 @@ public:
 	/** LaTeX all paragraphs from par to endpar.
 	    \param \a endpar if == 0 then to the end
 	*/
-	void latexParagraphs(std::ostream & os, Paragraph * par,
-			     Paragraph * endpar, TexRow & texrow, bool moving_arg = false) const;
+	void latexParagraphs(std::ostream & os,
+			     ParagraphList::iterator par,
+			     ParagraphList::iterator endpar,
+			     TexRow & texrow, bool moving_arg = false) const;
 	///
 	void simpleDocBookOnePar(std::ostream &,
 				 Paragraph * par, int & desc_on,

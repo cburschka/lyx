@@ -62,9 +62,9 @@ string const add_options(string const & command, string const & options)
 
 
 Converter::Converter(string const & f, string const & t, string const & c,
-	  string const & l): from(f), to(t), command(c), flags(l), 
-			     From(0), To(0), latex(false), 
-			     original_dir(false), need_aux(false) 
+	  string const & l): from(f), to(t), command(c), flags(l),
+			     From(0), To(0), latex(false),
+			     original_dir(false), need_aux(false)
 {}
 
 void Converter::readFlags()
@@ -669,7 +669,7 @@ Converters::intToFormat(std::vector<int> const & input)
 vector<Format const *> const
 Converters::getReachableTo(string const & target, bool clear_visited)
 {
-	vector<int> const & reachablesto = 
+	vector<int> const & reachablesto =
 		G_.getReachableTo(formats.getNumber(target), clear_visited);
 
 	return intToFormat(reachablesto);
@@ -679,9 +679,9 @@ vector<Format const *> const
 Converters::getReachable(string const & from, bool only_viewable,
 	     bool clear_visited)
 {
-	vector<int> const & reachables = 
-		G_.getReachable(formats.getNumber(from), 
-				only_viewable, 
+	vector<int> const & reachables =
+		G_.getReachable(formats.getNumber(from),
+				only_viewable,
 				clear_visited);
 
 	return intToFormat(reachables);
@@ -693,7 +693,7 @@ bool Converters::isReachable(string const & from, string const & to)
 			      formats.getNumber(to));
 }
 
-Graph::EdgePath const 
+Graph::EdgePath const
 Converters::getPath(string const & from, string const & to)
 {
 	return G_.getPath(formats.getNumber(from),

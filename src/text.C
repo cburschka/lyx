@@ -1156,7 +1156,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 	row->baseline(maxasc + labeladdon);
 
 	height += row->height();
- 
+
 	row->top_of_text(row->baseline() - font_metrics::maxAscent(font));
 
 	float x = 0;
@@ -1998,7 +1998,7 @@ void LyXText::acceptChange(BufferView * bv)
 		return;
 
 	bv->hideCursor();
- 
+
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;
 		LyXCursor & endc = selection.end;
@@ -2017,9 +2017,9 @@ void LyXText::rejectChange(BufferView * bv)
 {
 	if (!selection.set() && cursor.par()->size())
 		return;
- 
+
 	bv->hideCursor();
- 
+
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;
 		LyXCursor & endc = selection.end;
@@ -2033,7 +2033,7 @@ void LyXText::rejectChange(BufferView * bv)
 #warning handle multi par selection
 }
 
- 
+
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
 WordLangTuple const
@@ -2070,7 +2070,7 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 	while (1) {
 		Paragraph * cpar(cursor.par());
 		pos_type const cpos(cursor.pos());
- 
+
 		if (cpos == cpar->size()) {
 			if (cpar->next()) {
 				cursor.par(cpar->next());
@@ -2081,15 +2081,15 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 		}
 
 		bool const is_bad_inset(cpar->isInset(cpos)
-			&& !cpar->getInset(cpos)->allowSpellcheck()); 
- 
+			&& !cpar->getInset(cpos)->allowSpellcheck());
+
 		if (cpar->isLetter(cpos) && !isDeletedText(*cpar, cpos)
 			&& !is_bad_inset)
 			break;
- 
+
 		cursor.pos(cpos + 1);
 	}
- 
+
 	// now check if we hit an inset so it has to be a inset containing text!
 	if (cursor.pos() < cursor.par()->size() &&
 	    cursor.par()->isInset(cursor.pos())) {
@@ -2288,7 +2288,7 @@ void LyXText::transposeChars(BufferView & bview)
 	pos_type tmppos = cursor.pos();
 
 	// First decide if it is possible to transpose at all
- 
+
 	if (tmppos == 0 || tmppos == tmppar->size())
 		return;
 
@@ -2301,9 +2301,9 @@ void LyXText::transposeChars(BufferView & bview)
 
 	// We should have an implementation that handles insets
 	// as well, but that will have to come later. (Lgb)
-	if (c1 == Paragraph::META_INSET || c2 == Paragraph::META_INSET) 
+	if (c1 == Paragraph::META_INSET || c2 == Paragraph::META_INSET)
 		return;
- 
+
 	bool const erased = tmppar->erase(tmppos - 1, tmppos + 1);
 	pos_type const ipos(erased ? tmppos - 1 : tmppos + 1);
 
@@ -2367,7 +2367,7 @@ void LyXText::backspace(BufferView * bview)
 		// but it's not allowed unless it's new
 		if (cursor.par()->isChangeEdited(0, cursor.par()->size()))
 			return;
- 
+
 		// we may paste some paragraphs
 
 		// is it an empty paragraph?
@@ -2705,7 +2705,7 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 		x = int(tmpx);
 		return 0;
 	}
- 
+
 	while (vc <= last && tmpx <= x) {
 		c = vis2log(vc);
 		last_tmpx = tmpx;

@@ -1829,7 +1829,7 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 }
 
 namespace {
- 
+
 void checkLongtableSpecial(LyXTabular::ltType & ltt,
 			  string const & special, bool & flag)
 {
@@ -2774,7 +2774,7 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 void InsetTabular::markErased()
 {
 	int cell = 0;
- 
+
 	while (!tabular->IsLastCell(cell)) {
 		++cell;
 		InsetText * inset = tabular->GetCellInset(cell);
@@ -2782,7 +2782,7 @@ void InsetTabular::markErased()
 	}
 }
 
- 
+
 bool InsetTabular::nextChange(BufferView * bv, lyx::pos_type & length)
 {
 	if (the_locking_inset) {
@@ -2941,7 +2941,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	cols = ocol;
 	rows = loctab->rows();
 	int const columns = loctab->columns();
- 
+
 	while ((cell < cells) && (p < len) && (row < rows) &&
 	       (p = buf.find_first_of("\t\n", p)) != string::npos)
 	{

@@ -1778,7 +1778,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(os, &*(paragraphs.begin()), 0, texrow);
+	latexParagraphs(os, paragraphs.begin(), paragraphs.end(), texrow);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1816,8 +1816,10 @@ void Buffer::makeLaTeXFile(ostream & os,
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
-void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
-			     Paragraph * endpar, TexRow & texrow,
+void Buffer::latexParagraphs(ostream & ofs,
+			     ParagraphList::iterator par,
+			     ParagraphList::iterator endpar,
+			     TexRow & texrow,
 			     bool moving_arg) const
 {
 	bool was_title = false;

@@ -1,3 +1,12 @@
+2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph_funcs.C (TeXOnePar): take ParagraphList::iterator as args
+	(TeXEnvironment): ditto
+	(TeXDeeper): ditto
+
+	* buffer.C (makeLaTeXFile): adjust
+	(latexParagraphs): make it take ParagraphList::iterator as args
+
 2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C (latexParagraphs): adjust

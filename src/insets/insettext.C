@@ -220,7 +220,7 @@ void InsetText::clear(bool just_mark_erased)
 		need_update = FULL;
 		return;
 	}
- 
+
 	// This is a gross hack...
 	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
 
@@ -270,7 +270,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 	if (buf->params.tracking_changes)
 		paragraphs.begin()->trackChanges();
- 
+
 	while (lex.isOK()) {
 		lex.nextToken();
 		token = lex.getString();
@@ -1140,7 +1140,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 			inset_y = ciy(bv) + drawTextYOffset;
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
-// note that we should do ret = inset->localDispatch(cmd1) 
+// note that we should do ret = inset->localDispatch(cmd1)
 // and fix this instead (Alfredo);
 			ret = true;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
@@ -1595,7 +1595,7 @@ int InsetText::latex(Buffer const * buf, ostream & os,
 		     bool moving_arg, bool) const
 {
 	TexRow texrow;
-	buf->latexParagraphs(os, &*(paragraphs.begin()), 0,
+	buf->latexParagraphs(os, paragraphs.begin(), paragraphs.end(),
 			     texrow, moving_arg);
 	return texrow.rows();
 }
@@ -2150,7 +2150,7 @@ void InsetText::markNew(bool track_changes)
 	}
 }
 
- 
+
 void InsetText::setText(string const & data, LyXFont const & font)
 {
 	clear(false);
@@ -2693,7 +2693,7 @@ bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
 	return result != lyxfind::SR_NOT_FOUND;
 }
 
- 
+
 bool InsetText::searchForward(BufferView * bv, string const & str,
 			      bool cs, bool mw)
 {
