@@ -26,7 +26,4 @@ std::ostream & operator<<(std::ostream & os, NewLineAndDepth_ const & nlad_)
 	return os;
 }
 
-///
-std::string fmt(char const * fmtstr ...);
-
 #endif

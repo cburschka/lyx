@@ -28,6 +28,7 @@
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 
+using std::endl;
 
 extern string current_layout;
 
@@ -114,7 +115,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->finishChange();
 		break;
 
-	case LFUN_WORDRIGHT: 
+	case LFUN_WORDRIGHT:
 		if (!selection.mark())
 			bv->beforeChange(this);
 		update(bv, false);
@@ -763,7 +764,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!clip.empty()) {
 			if (cmd.argument == "paragraph")
 				insertStringAsParagraphs(bv, clip);
-			else 
+			else
 				insertStringAsLines(bv, clip);
 			clearSelection();
 			update(bv);
