@@ -17,6 +17,7 @@
 #include "ControlMath.h"
 #include "iconpalette.h"
  
+#include <qapplication.h>
 #include <qwidgetstack.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
@@ -35,7 +36,6 @@ public:
 		setResizePolicy(Manual);
 		setHScrollBarMode(AlwaysOff);
 		setVScrollBarMode(AlwaysOn);
-		setMinimumHeight(200);
 		setBackgroundMode(PaletteBackground);
 		viewport()->setBackgroundMode(PaletteBackground);
 	}
@@ -53,8 +53,9 @@ protected:
 			return;
  
 		w_->resize(viewport()->width(), w_->height());
+		// force the resize to get accurate scrollbars
+		qApp->processEvents();
 		resizeContents(w_->width(), w_->height());
-		setMinimumHeight(200);
 	}
 
 private:
@@ -98,6 +99,7 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
+ 
 	return p;
 }
 
@@ -107,6 +109,7 @@ void QMathDialog::addPanel(char const ** entries)
 	static int id = 0;
  
 	QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
+ 
 	IconPalette * p = makePanel(view->viewport(), entries);
 	view->setChild(p);
 	symbolsWS->addWidget(view, id++);
