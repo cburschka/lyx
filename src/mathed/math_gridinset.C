@@ -1004,6 +1004,9 @@ MathInset::result_type MathGridInset::dispatch
 			// split cell
 			splitCell(idx, pos);
 			std::swap(cell(idx), cell(idx + ncols() - 1));
+			if (idx > 0)
+				--idx;
+			pos = cell(idx).size();
 		
 			//mathcursor->normalize();
 			//updateLocal(bv, true);
