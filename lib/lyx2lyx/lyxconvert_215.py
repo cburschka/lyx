@@ -38,15 +38,11 @@ def replace_protected_separator(lines):
                 result = result + " "
                 del lines[i]
 
-            if lines[i-1] != "":
-                lines[i-1] = lines[i-1] + result + lines[i]
-                del lines[i]
-            else:
-                lines[i] = result + lines[i]
-                del lines[i-1]
+            lines[i-1] = lines[i-1] + result + lines[i]
         else:
-            del lines[i]
             lines[i-1] = lines[i-1]+ "\\SpecialChar ~"
+
+        del lines[i]
 
 def merge_formula_inset(lines):
     i=0
