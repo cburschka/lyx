@@ -1202,7 +1202,9 @@ int LyXText::Fill(BufferView * bview, Row * row, int paper_width) const
 	}
 	
 	int const fill = paper_width - w - RightMargin(bview->buffer(), row);
-#waring Please fix me (Jug!)
+#ifdef WITH_WARNINGS
+#warning Please fix me (Jug!)
+#endif
 #if 0
 	if (fill < 0)
 		return 0;
