@@ -1,3 +1,24 @@
+2001-02-06  albert chin  <china@thewrittenword.com>
+
+	* acconfig.h:
+	* configure.in: check declarations of snprintf and vsnprintf.
+
+	* src/support/snprintf.h: 
+	* src/support/fmt.C: use HAVE_DECL_SNPRINTF
+	
+2001-02-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: update description of command line to use with compaq
+	cxx. 
+
+2001-02-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Variables.C (set): renamed from isset(), because this clashes
+	with some HP-UX macros (grr).
+
+	* lib/kbd/thai-kedmanee.kmap: new Thai keymap, contributed by
+	Chanop Silpa-Anan. 
+
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/mathed/math_symbols.C (math_insert_greek): Move cursor right

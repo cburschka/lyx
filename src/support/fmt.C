@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdarg>
 
-#ifndef HAVE_VSNPRINTF
+#ifndef HAVE_DECL_VSNPRINTF
 #include "support/snprintf.h"
 #endif
 

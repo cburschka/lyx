@@ -8,10 +8,13 @@
 extern "C" {
 #endif
   
-#ifdef HAVE_SNPRINTF
+#if defined(HAVE_DECL_SNPRINTF) || defined(HAVE_DECL_VSNPRINTF)
 #include <stdio.h>
-#else
+#endif
+#ifndef HAVE_DECL_SNPRINTF
 int snprintf(char *, size_t, const char *, /*args*/ ...);
+#endif
+#ifndef HAVE_DECL_VSNPRINTF
 int vsnprintf(char *, size_t, const char *, va_list);
 #endif
 

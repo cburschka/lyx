@@ -47,6 +47,12 @@
 /* Define as 1 if the MKSTEMP function is declared */
 #undef HAVE_DECL_MKSTEMP
 
+/* Define if you have the function prototype for snprintf().  */
+#undef HAVE_DECL_SNPRINTF
+
+/* Define if you have the function prototype for vsnprintf().  */
+#undef HAVE_DECL_VSNPRINTF
+
 @BOTTOM@ 
 
 /************************************************************ 
