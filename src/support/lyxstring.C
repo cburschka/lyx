@@ -12,6 +12,9 @@
 #include <config.h>
 #endif
 
+// If we use STL string, there is no need to compile this class.
+#ifdef USE_INCLUDED_STRING
+
 #ifdef __GNUG__
 #pragma implementation "lyxstring.h"
 #endif
@@ -1620,3 +1623,5 @@ istream & getline(istream & is, lyxstring & s,
 	}
 	return is;
 }
+
+#endif /* USE_INCLUDED_STRING */
