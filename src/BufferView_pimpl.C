@@ -225,7 +225,8 @@ bool BufferView::Pimpl::fitCursor()
 		ret = screen().fitCursor(bv_->text, bv_);
 	}
 
-	bv_->owner()->getDialogs().updateParagraph();
+	dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+
 	if (ret)
 		updateScrollbar();
 	return ret;
@@ -1189,6 +1190,41 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		}
 		break;
 
+	case LFUN_LAYOUT_PARAGRAPH: {
+		Paragraph const * par = bv_->getLyXText()->cursor.par();
+		if (!par)
+			break;
+
+		string data;
+		params2string(*par, data);
+
+		data = "show\n" + data;
+		bv_->owner()->getDialogs().show("paragraph", data);
+		break;
+	}
+
+	case LFUN_PARAGRAPH_UPDATE: {
+		Paragraph const * par = bv_->getLyXText()->cursor.par();
+		if (!par)
+			break;
+
+		string data;
+		params2string(*par, data);
+
+		// Will the paragraph accept changes from the dialog?
+		Inset * const inset = par->inInset();
+		bool const accept =
+			!(inset && inset->forceDefaultParagraphs(inset));
+
+		data = "update " + tostr(accept) + '\n' + data;
+		bv_->owner()->getDialogs().update("paragraph", data);
+		break;
+	}
+
+	case LFUN_PARAGRAPH_APPLY:
+		setParagraphParams(*bv_, ev.argument);
+		break;
+		
 	case LFUN_THESAURUS_ENTRY:
 	{
 		string arg = ev.argument;

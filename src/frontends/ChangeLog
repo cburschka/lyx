@@ -1,3 +1,8 @@
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h: remove showParagraph and updateParagraph.
+	* guiapi.[Ch]: remove gui_ShowParagraph and gui_UpdateParagraph.
+	
 2003-03-12  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.[Ch] (hide): rejig as a static method. Hide the signal

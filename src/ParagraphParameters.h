@@ -14,6 +14,7 @@
 class VSpace;
 class Spacing;
 class LyXLex;
+class Paragraph;
 
 
 ///
@@ -109,4 +110,18 @@ ParagraphParameters::depth_type ParagraphParameters::depth() const
 {
 	return param->depth;
 }
+
+
+/** Generate a string \param data from \param par's ParagraphParameters.
+    The function also generates some additional info needed by the
+    Paragraph dialog.
+ */
+void params2string(Paragraph const & par, string & data);
+
+/** Given \param data, an encoding of the ParagraphParameters generated
+    in the Paragraph dialog, this function sets the current paragraph
+    appropriately.
+ */
+void setParagraphParams(BufferView & bv, string const & data);
+
 #endif

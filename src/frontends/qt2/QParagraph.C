@@ -39,11 +39,11 @@ using std::vector;
 using std::bind2nd;
 using std::remove_if;
 
-typedef Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> > base_class;
+typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 
 
-QParagraph::QParagraph()
-	: base_class(qt_("LyX: Paragraph Settings"))
+QParagraph::QParagraph(Dialog & parent)
+	: base_class(parent, qt_("LyX: Paragraph Settings"))
 {}
 
 

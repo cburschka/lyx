@@ -12,42 +12,37 @@
 #ifndef CONTROLPARAGRAPH_H
 #define CONTROLPARAGRAPH_H
 
-#include <boost/scoped_ptr.hpp>
-
-
-#include "ControlDialog_impl.h"
+#include "Dialog.h"
 #include "layout.h" // for LyXAlignment
 
 class ParagraphParameters;
 
-/** A controller for Paragraph dialogs.
- */
-class ControlParagraph : public ControlDialogBD {
+class ControlParagraph : public Dialog::Controller {
 public:
 	///
-	ControlParagraph(LyXView &, Dialogs &);
-	/** Declaring this out of line allows us to forward declare
-	    ParagraphParameters without upsetting boost::scoped_ptr. */
-	~ControlParagraph();
-
+	ControlParagraph(Dialog &);
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 	///
 	ParagraphParameters & params();
+	///
+	ParagraphParameters const & params() const;
 	///
 	bool inInset() const;
 	///
 	LyXAlignment alignPossible() const;
 	///
 	LyXAlignment alignDefault() const;
-	///
-	void changedParagraph();
-private:
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
-	/// set the params before show or update.
-	virtual void setParams();
 
+private:
 	///
-	boost::scoped_ptr<ParagraphParameters> pp_;
+	boost::scoped_ptr<ParagraphParameters> params_;
 	///
 	bool ininset_;
 	///

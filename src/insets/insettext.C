@@ -730,7 +730,7 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	showInsetCursor(bv);
 
 	// Tell the paragraph dialog that we've entered an insettext.
-	bv->owner()->getDialogs().updateParagraph();
+	bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 }
 
 

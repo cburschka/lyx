@@ -28,6 +28,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlMinipage.h"
+#include "ControlParagraph.h"
 #include "ControlRef.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -60,6 +61,8 @@
 #include "forms/form_include.h"
 #include "FormMinipage.h"
 #include "forms/form_minipage.h"
+#include "FormParagraph.h"
+#include "forms/form_paragraph.h"
 #include "FormRef.h"
 #include "forms/form_ref.h"
 #include "FormTabular.h"
@@ -83,8 +86,8 @@ namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "ert", "external", "float", "graphics",
-"include", "index", "label", "minipage", "ref", "tabular", "tabularcreate",
-"toc", "url", "wrap" };
+"include", "index", "label", "minipage", "paragraph", "ref", "tabular",
+"tabularcreate", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -179,6 +182,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new FormMinipage(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "paragraph") {
+		dialog->setController(new ControlParagraph(*dialog));
+		dialog->setView(new FormParagraph(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));

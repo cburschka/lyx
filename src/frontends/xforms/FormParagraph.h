@@ -13,7 +13,7 @@
 #define FORM_PARAGRAPH_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
 struct FD_paragraph;
@@ -22,10 +22,10 @@ class ControlParagraph;
 /** This class provides an XForms implementation of the FormParagraph dialog.
  */
 class FormParagraph
-	: public FormCB<ControlParagraph, FormDB<FD_paragraph> > {
+	: public FormController<ControlParagraph, FormView<FD_paragraph> > {
 public:
 	///
-	FormParagraph();
+	FormParagraph(Dialog &);
 private:
 	/// Build the dialog
 	virtual void build();

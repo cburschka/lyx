@@ -24,8 +24,6 @@ class Dialog;
 class InsetBase;
 class LyXView;
 
-class Paragraph;
-
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
     for any future additions.  Remember don't go overboard -- think minimal.
@@ -82,10 +80,6 @@ public:
 	void showLogFile();
 	/// display the top-level maths panel
 	void showMathPanel();
-	///
-	void showParagraph();
-	///
-	void updateParagraph();
 	///
 	void showPreamble();
 	///

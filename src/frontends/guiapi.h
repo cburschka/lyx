@@ -26,8 +26,6 @@ void gui_ShowFile(string const &, Dialogs &);
 void gui_ShowForks(Dialogs &);
 void gui_ShowLogFile(Dialogs &);
 void gui_ShowMathPanel(Dialogs &);
-void gui_ShowParagraph(Dialogs &);
-void gui_UpdateParagraph(Dialogs &);
 void gui_ShowPreamble(Dialogs &);
 void gui_ShowPreferences(Dialogs &);
 void gui_ShowPrint(Dialogs &);

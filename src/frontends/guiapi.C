@@ -51,18 +51,6 @@ void gui_ShowMathPanel(Dialogs & d)
 }
 
 
-void gui_ShowParagraph(Dialogs & d)
-{
-	d.showParagraph();
-}
-
-
-void gui_UpdateParagraph(Dialogs & d)
-{
-	d.updateParagraph();
-}
-
-
 void gui_ShowPreamble(Dialogs & d)
 {
 	d.showPreamble();

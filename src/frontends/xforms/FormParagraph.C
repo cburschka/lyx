@@ -61,10 +61,10 @@ void setWidgetsFromVSpace(VSpace const & space,
 } // namespace anon
 
 
-typedef FormCB<ControlParagraph, FormDB<FD_paragraph> > base_class;
+typedef FormController<ControlParagraph, FormView<FD_paragraph> > base_class;
 
-FormParagraph::FormParagraph()
-	: base_class(_("Paragraph Layout"))
+FormParagraph::FormParagraph(Dialog & parent)
+	: base_class(parent, _("Paragraph Layout"))
 {}
 
 

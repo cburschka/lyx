@@ -1,5 +1,17 @@
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove paragraph dialog.
+
+	* Dialogs3.C: addparagraph  dialog.
+
+	* FormParagraph.[Ch]:
+	* forms/form_paragraph.[Ch]: changes to use the new Dialog-based
+	scheme.
+
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
 	* forms/fdfix.sh: 
 	* forms/fdfixh.sed: fix #944 by making the temporary filenames unique
 	and so enable reentrant builds on SMP machines.

@@ -30,7 +30,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: document(lv, d),
 	  file(lv, d),
 	  logfile(lv, d),
-	  paragraph(lv, d),
 	  prefs(lv, d),
 	  print(lv, d),
 	  search(lv, d),

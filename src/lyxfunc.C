@@ -920,7 +920,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			}
 			finishUndo();
 			// Tell the paragraph dialog that we changed paragraph
-			owner->getDialogs().updateParagraph();
+			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		}
 	}
 	break;
@@ -1235,10 +1235,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->getDialogs().showDocument();
 		break;
 
-	case LFUN_LAYOUT_PARAGRAPH:
-		owner->getDialogs().showParagraph();
-		break;
-
         case LFUN_LAYOUT_CHARACTER: {
                 string data = freefont2string();
                 if (!data.empty())
@@ -1414,6 +1410,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			FuncRequest fr(view(), LFUN_INSET_DIALOG_UPDATE,
 				       ev.argument);
 			inset->localDispatch(fr);
+		} else if (name == "paragraph") {
+			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		}
 	}
 	break;

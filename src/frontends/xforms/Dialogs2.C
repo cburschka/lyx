@@ -45,18 +45,6 @@ void Dialogs::showMathPanel()
 }
 
 
-void Dialogs::showParagraph()
-{
-	pimpl_->paragraph.controller().show();
-}
-
-
-void Dialogs::updateParagraph()
-{
-	pimpl_->paragraph.controller().changedParagraph();
-}
-
-
 void Dialogs::showPreamble()
 {
 	pimpl_->preamble.controller().show();

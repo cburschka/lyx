@@ -39,10 +39,6 @@
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
 
-#include "ControlParagraph.h"
-#include "FormParagraph.h"
-#include "forms/form_paragraph.h"
-
 #include "ControlPreamble.h"
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
@@ -95,9 +91,6 @@ LogFileDialog;
 typedef GUI<ControlMath, FormMathsPanel, OkCancelReadOnlyPolicy, xformsBC>
 MathPanelDialog;
 
-typedef GUI<ControlParagraph, FormParagraph, OkApplyCancelReadOnlyPolicy, xformsBC>
-ParagraphDialog;
-
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
 
@@ -135,7 +128,6 @@ struct Dialogs::Impl {
 	ForksDialog         forks;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
-	ParagraphDialog     paragraph;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;

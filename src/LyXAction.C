@@ -417,6 +417,9 @@ void LyXAction::init()
 		{ LFUN_INSET_APPLY, "inset-apply", "", Noop },
 		{ LFUN_INSET_MODIFY, "", "internal only", Noop },
 		{ LFUN_INSET_DIALOG_UPDATE, "", "internal only", Noop },
+		{ LFUN_PARAGRAPH_APPLY, "paragraph-params-apply",
+		   N_("Apply these params to the paragraph"), Noop },
+		{ LFUN_PARAGRAPH_UPDATE, "", "internal only", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

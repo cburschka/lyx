@@ -25,6 +25,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlMinipage.h"
+#include "ControlParagraph.h"
 #include "ControlRef.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -63,6 +64,8 @@
 #include "QIndexDialog.h"
 #include "QMinipage.h"
 #include "QMinipageDialog.h"
+#include "QParagraph.h"
+#include "QParagraphDialog.h"
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "QTabular.h"
@@ -85,8 +88,8 @@ namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "ert", "external", "float", "graphics",
-"include", "index", "label", "minipage", "ref", "tabular", "tabularcreate",
-"toc", "url", "wrap" };
+"include", "index", "label", "minipage", "paragraph", "ref", "tabular",
+"tabularcreate", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -183,6 +186,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new QMinipage(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "paragraph") {
+		dialog->setController(new ControlParagraph(*dialog));
+		dialog->setView(new QParagraph(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new QRef(*dialog));

@@ -1,3 +1,22 @@
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C (init): new LFUNs PARAGRAPH_APPLY and PARAGRAPH_UPDATE.
+	Probably only temporary. Let's see how things pan out.
+
+	* BufferView.C (unlockInset):
+	* BufferView_pimpl.C (fitCursor): 
+	replace Dialogs::updateParagraph with dispatch(LFUN_PARAGRAPH_UPDATE).
+
+	* BufferView_pimpl.C (dispatch): code for LFUNs LAYOUT_PARAGRAPH,
+	PARAGRAPH_UPDATE, PARAGRAPH_APPLY.
+
+	* ParagraphParameters.[Ch] (setParagraphParams, params2string):
+	new functions that convert ParagraphParameters to and from a string.
+
+	* lyxfunc.C (dispatch): move LFUN_LAYOUT_PARAGRAPH to
+	BufferView::Pimpl's dispatch.
+	In LFUN_ESCAPE, dispatch LFUN_PARAGRAPH_UPDATE.
 
 2003-03-13 André Pönitz <poenitz@gmx.net>
 

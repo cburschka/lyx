@@ -1,3 +1,7 @@
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* insettext.C (edit): replace Dialogs::updateParagraph with
+	BufferView::dispatch(LFUN_PARAGRAPH_UPDATE).
 
 2003-03-13 André Pönitz <poenitz@gmx.net>
 

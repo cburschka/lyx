@@ -3070,7 +3070,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();
-		if (token != "active_cell")
+		if (token != "\\active_cell")
 			return -1;
 		lex.next();
 		cell = lex.getInteger();
@@ -3108,7 +3108,7 @@ InsetTabularMailer::params2string(InsetTabular const & inset)
 		return string();
 
 	ostringstream data;
-	data << name_ << " active_cell " << inset.getActCell() << '\n';
+	data << name_ << " \\active_cell " << inset.getActCell() << '\n';
 	inset.write(buffer, data);
 	data << "\\end_inset\n";
 

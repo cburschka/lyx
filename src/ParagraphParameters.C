@@ -5,6 +5,13 @@
 #include "tex-strings.h"
 #include "lyxlex.h"
 
+#include "buffer.h"
+#include "BufferView.h"
+#include "gettext.h"
+#include "paragraph.h"
+#include "lyxtext.h"
+#include "frontends/LyXView.h"
+
 #include "support/lstrings.h"
 
 #include <iostream>
@@ -406,4 +413,67 @@ void ParagraphParameters::write(ostream & os) const
 		}
 		os << "\\align " << string_align[h] << ' ';
 	}
+}
+
+
+void setParagraphParams(BufferView & bv, string const & data)
+{
+	istringstream is(data);
+	LyXLex lex(0,0);
+	lex.setStream(is);
+
+	ParagraphParameters params;
+	params.read(lex);
+
+	LyXText * text = bv.getLyXText();
+	text->setParagraph(&bv,
+			   params.lineTop(),
+			   params.lineBottom(),
+			   params.pagebreakTop(),
+			   params.pagebreakBottom(),
+			   params.spaceTop(),
+			   params.spaceBottom(),
+			   params.spacing(),
+			   params.align(),
+			   params.labelWidthString(),
+			   params.noindent());
+
+	// Actually apply these settings
+	bv.update(text,
+		  BufferView::SELECT |
+		  BufferView::FITCUR |
+		  BufferView::CHANGE);
+
+	bv.buffer()->markDirty();
+
+	bv.owner()->message(_("Paragraph layout set"));
+}
+
+
+void params2string(Paragraph const & par, string & data)
+{
+	// A local copy
+	ParagraphParameters params = par.params();
+
+	// This needs to be done separately
+	params.labelWidthString(par.getLabelWidthString());
+
+	// Alignment
+	LyXLayout_ptr const & layout = par.layout();
+	if (params.align() == LYX_ALIGN_LAYOUT)
+		params.align(layout->align);
+
+	ostringstream os;
+	params.write(os);
+
+	// Is alignment possible
+	os << '\n' << "\\alignpossible " << layout->alignpossible << '\n';
+
+	/// set default alignment
+	os << "\\aligndefault " << layout->align << '\n';
+
+	/// is paragraph in inset
+	os << "\\ininset " << par.inInset() << '\n';
+
+	data = os.str();
 }

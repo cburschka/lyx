@@ -5,41 +5,129 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
 
-
 #include "ControlParagraph.h"
-
 #include "ButtonController.h"
-#include "ViewBase.h"
-
-#include "buffer.h"
-#include "BufferView.h"
-#include "gettext.h"
-#include "lyxtext.h"
+#include "funcrequest.h"
+#include "lyxlex.h"
 #include "ParagraphParameters.h"
-
-#include "frontends/LyXView.h"
 #include "support/LAssert.h"
+#include "Lsstream.h"
 
 
-ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d), pp_(0), ininset_(false)
+ControlParagraph::ControlParagraph(Dialog & parent)
+	: Dialog::Controller(parent), ininset_(false)
 {}
 
 
-ControlParagraph::~ControlParagraph()
-{}
+void ControlParagraph::initialiseParams(string const & data)
+{
+	istringstream is(data);
+	LyXLex lex(0,0);
+	lex.setStream(is);
+
+	// Set tri-state flag:
+	// action == 0: show dialog
+	// action == 1: update dialog, accept changes
+	// action == 2: update dialog, do not accept changes
+	int action = 0;
+	
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+
+		if (token == "show") {
+			action = 0;
+		} else if (token == "update") {
+			lex.next();
+			bool const accept = lex.getBool();
+			action = accept ? 1 : 2;
+		} else {
+			// Unrecognised token
+			lyx::Assert(0);
+		}
+	}
+
+	ParagraphParameters * tmp = new ParagraphParameters;
+	tmp->read(lex);
+
+	// For now, only reset the params on "show".
+	// Don't bother checking if the params are different on "update"
+	if (action == 0) {
+		params_.reset(tmp);
+	} else {
+		delete tmp;
+	}
+
+	// Read the rest of the data irrespective of "show" or "update"
+	int nset = 0;
+	while (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+
+		int Int = 0;
+		if (token == "\\alignpossible" ||
+		    token == "\\aligndefault" ||
+		    token == "\\ininset") {
+			lex.next();
+			Int = lex.getInteger();
+		} else {
+			// Unrecognised token
+			break;
+		}
+		    
+		++nset;
+
+		if (token == "\\alignpossible") {
+			alignpossible_ = static_cast<LyXAlignment>(Int);
+		} else if (token == "\\aligndefault") {
+			aligndefault_ = static_cast<LyXAlignment>(Int);
+		} else {
+			ininset_ = Int;
+		}
+	}
+	lyx::Assert(nset == 3);
+
+	// If "update", then set the activation status of the button controller
+	if (action > 0) {
+		bool const accept = action == 1;
+		dialog().bc().valid(accept);
+	}
+}
+
+
+void ControlParagraph::clearParams()
+{
+	params_.reset();
+}
+
+
+void ControlParagraph::dispatchParams()
+{
+	ostringstream data;
+	params().write(data);
+	FuncRequest const fr(LFUN_PARAGRAPH_APPLY, data.str());
+	kernel().dispatch(fr);
+}
 
 
 ParagraphParameters & ControlParagraph::params()
 {
-	lyx::Assert(pp_.get());
-	return *pp_;
+	lyx::Assert(params_.get());
+	return *params_;
+}
+
+
+ParagraphParameters const & ControlParagraph::params() const
+{
+	lyx::Assert(params_.get());
+	return *params_;
 }
 
 
@@ -58,82 +146,4 @@ LyXAlignment ControlParagraph::alignPossible() const
 LyXAlignment ControlParagraph::alignDefault() const
 {
 	return aligndefault_;
-}
-
-
-void ControlParagraph::apply()
-{
-	if (!bufferIsAvailable())
-		return;
-
-	view().apply();
-
-	LyXText * text(bufferview()->getLyXText());
-	text->setParagraph(bufferview(),
-			   pp_->lineTop(),
-			   pp_->lineBottom(),
-			   pp_->pagebreakTop(),
-			   pp_->pagebreakBottom(),
-			   pp_->spaceTop(),
-			   pp_->spaceBottom(),
-			   pp_->spacing(),
-			   pp_->align(),
-			   pp_->labelWidthString(),
-			   pp_->noindent());
-
-	// Actually apply these settings
-	bufferview()->update(text,
-			     BufferView::SELECT |
-			     BufferView::FITCUR |
-			     BufferView::CHANGE);
-
-	buffer()->markDirty();
-
-	lv_.message(_("Paragraph layout set"));
-}
-
-
-void ControlParagraph::setParams()
-{
-	if (!pp_.get())
-		pp_.reset(new ParagraphParameters());
-
-	/// get paragraph
-	Paragraph const * par_ = bufferview()->getLyXText()->cursor.par();
-
-	/// Set the paragraph parameters
-	*pp_ = par_->params();
-
-	/// this needs to be done separately
-	pp_->labelWidthString(par_->getLabelWidthString());
-
-	/// alignment
-	LyXLayout_ptr const & layout = par_->layout();
-	if (pp_->align() == LYX_ALIGN_LAYOUT)
-		pp_->align(layout->align);
-
-	/// is alignment possible
-	alignpossible_ = layout->alignpossible;
-
-	/// set default alignment
-	aligndefault_ = layout->align;
-
-	/// is paragraph in inset
-	ininset_ = par_->inInset();
-}
-
-
-void ControlParagraph::changedParagraph()
-{
-	/// get paragraph
-	Paragraph const * p = bufferview()->getLyXText()->cursor.par();
-
-	if (p == 0) // this is wrong as we don't set par_ here! /* || p == par_) */
-		return;
-
-	// For now, don't bother checking if the params are different.
-	// Will the underlying paragraph accept our changes?
-	Inset * const inset = p->inInset();
-	bool const accept = !(inset && inset->forceDefaultParagraphs(inset));
-	bc().valid(accept);
 }

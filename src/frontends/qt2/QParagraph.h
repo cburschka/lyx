@@ -14,7 +14,7 @@
 #define QPARAGRAPH_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 #include "LString.h"
 #include <vector>
 
@@ -23,12 +23,12 @@ class QParagraphDialog;
 
 
 class QParagraph
-	: public Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> >
+	: public QController<ControlParagraph, QView<QParagraphDialog> >
 {
 public:
 	friend class QParagraphDialog;
 
-	QParagraph();
+	QParagraph(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

@@ -296,6 +296,8 @@ enum kb_action {
 	LFUN_INSET_APPLY,
 	LFUN_INSET_MODIFY,
 	LFUN_INSET_DIALOG_UPDATE,
+	LFUN_PARAGRAPH_APPLY,
+	LFUN_PARAGRAPH_UPDATE,
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

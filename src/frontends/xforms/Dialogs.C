@@ -32,7 +32,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  forks(lv, d),
 	  logfile(lv, d),
 	  mathpanel(lv, d),
-	  paragraph(lv, d),
 	  preamble(lv, d),
 	  preferences(lv, d),
 	  print(lv, d),

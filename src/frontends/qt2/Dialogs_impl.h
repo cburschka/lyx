@@ -17,7 +17,6 @@
 #include "ControlDocument.h"
 #include "ControlForks.h"
 #include "ControlLog.h"
-#include "ControlParagraph.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlSearch.h"
@@ -38,8 +37,6 @@
 #undef signals
 #include "QLog.h"
 #include "QLogDialog.h"
-#include "QParagraph.h"
-#include "QParagraphDialog.h"
 #include "QPrefs.h"
 #include "QPrefsDialog.h"
 #include "QPrint.h"
@@ -77,9 +74,6 @@ FileDialog;
 typedef GUI<ControlLog, QLog, OkCancelPolicy, Qt2BC>
 LogFileDialog;
 
-typedef GUI<ControlParagraph, QParagraph, OkApplyCancelReadOnlyPolicy, Qt2BC>
-ParagraphDialog;
-
 typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
 PrefsDialog;
 
@@ -113,7 +107,6 @@ struct Dialogs::Impl {
 	DocumentDialog      document;
 	FileDialog          file;
 	LogFileDialog       logfile;
-	ParagraphDialog     paragraph;
 	PrefsDialog         prefs;
 	PrintDialog         print;
 	SearchDialog        search;
