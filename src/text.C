@@ -717,9 +717,8 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 		}
 
 		x += thiswidth;
+		//lyxerr << "i: " << i << " x: " << x << " width: " << width << endl;
 		chunkwidth += thiswidth;
-
-		InsetOld * in = pit->getInset(i);
 
 		// break before a character that will fall off
 		// the right of the row
@@ -728,11 +727,12 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			if (point == last || chunkwidth >= width - left) {
 				if (pos < i) {
 					point = i - 1;
-					break;
 				}
 			}
+			break;
 		}
 
+		InsetOld * in = pit->getInset(i);
 		if (!in || in->isChar()) {
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
@@ -2143,6 +2143,7 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		Row row(z);
 		z = rowBreakPoint(pit, row) + 1;
 		row.end(z);
+		lyxerr << "break point at " << z << "/" << pit->size() << endl;
 		pit->rows.push_back(row);
 		RowList::iterator rit = boost::prior(pit->rows.end());
 		int const f = fill(pit, *rit, ww);
