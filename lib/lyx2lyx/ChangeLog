@@ -1,3 +1,12 @@
+2005-02-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py (convert_ertbackslash): convert '\n', too
+	* lyx_1_4.py (convert_len): new, split from convert_ertlen
+	* lyx_1_4.py (insert_ert): new
+	* lyx_1_4.py (add_to_preamble): new
+	* lyx_1_4.py (convert_frameless_box): better conversion of parboxes
+	and minipages with unsupported parameters
+
 2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* LyX.py: format up to 241

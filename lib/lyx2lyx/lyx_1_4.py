@@ -2,6 +2,7 @@
 # -*- coding: iso-8859-1 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
+# Copyright (C) 2004-2005 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -653,7 +654,7 @@ def convert_collapsable(file):
                 file.body[i] = "status collapsed"
                 break
             elif (file.body[i][:13] == "\\begin_layout"):
-                file.warning("Malformed LyX file.")
+                file.warning("Malformed LyX file: Missing 'collapsed'.")
                 break
             i = i + 1
 
@@ -688,7 +689,7 @@ def revert_collapsable(file):
                 file.body[i] = "collapsed true"
                 break
             elif (file.body[i][:13] == "\\begin_layout"):
-                file.warning("Malformed LyX file.")
+                file.warning("Malformed LyX file: Missing 'status'.")
                 break
             i = i + 1
 
@@ -720,7 +721,7 @@ def convert_ert(file):
                 file.body[i] = "status inlined"
                 break
             elif (file.body[i][:13] == "\\begin_layout"):
-                file.warning("Malformed LyX file.")
+                file.warning("Malformed LyX file: Missing 'status'.")
                 break
             i = i + 1
 
@@ -749,7 +750,7 @@ def revert_ert(file):
                 file.body[i] = "status Inlined"
                 break
             elif (file.body[i][:13] == "\\begin_layout"):
-                file.warning("Malformed LyX file.")
+                file.warning("Malformed LyX file : Missing 'status'.")
                 break
             i = i + 1
 
@@ -835,14 +836,17 @@ def convert_minipage(file):
 
 
 # -------------------------------------------------------------------------------------------
-# Convert backslashes into valid ERT code, append the converted text to
-# file.body[i] and return the (maybe incremented) line index i
+# Convert backslashes and '\n' into valid ERT code, append the converted
+# text to body[i] and return the (maybe incremented) line index i
 def convert_ertbackslash(body, i, ert):
     for c in ert:
 	if c == '\\':
 	    body[i] = body[i] + '\\backslash '
 	    i = i + 1
 	    body.insert(i, '')
+	elif c == '\n':
+	    body[i+1:i+1] = ['\\newline ', '']
+	    i = i + 2
 	else:
 	    body[i] = body[i] + c
     return i
@@ -936,9 +940,8 @@ def convert_vspace(file):
         i = i + 1
 
 
-# Convert a LyX length into valid ERT code and append it to body[i]
-# Return the (maybe incremented) line index i
-def convert_ertlen(body, i, len, special):
+# Convert a LyX length into a LaTeX length
+def convert_len(len, special):
     units = {"text%":"\\textwidth", "col%":"\\columnwidth",
              "page%":"\\pagewidth", "line%":"\\linewidth",
              "theight%":"\\textheight", "pheight%":"\\pageheight"}
@@ -953,8 +956,14 @@ def convert_ertlen(body, i, len, special):
 	    len = '%f' % (len2value(len) / 100) + units[unit]
 	    break
 
+    return len
+
+
+# Convert a LyX length into valid ERT code and append it to body[i]
+# Return the (maybe incremented) line index i
+def convert_ertlen(body, i, len, special):
     # Convert backslashes and insert the converted length into body
-    return convert_ertbackslash(body, i, len)
+    return convert_ertbackslash(body, i, convert_len(len, special))
 
 
 # Return the value of len without the unit in numerical form
@@ -964,6 +973,34 @@ def len2value(len):
 	return float(result.group(1))
     # No number means 1.0
     return 1.0
+
+
+# Convert text to ERT and insert it at body[i]
+# Return the index of the line after the inserted ERT
+def insert_ert(body, i, status, text):
+    body[i:i] = ['\\begin_inset ERT', 'status ' + status, '',
+                 '\\layout Standard', '']
+    i = i + 5
+    i = convert_ertbackslash(body, i, text) + 1
+    body[i:i] = ['', '\\end_inset', '']
+    i = i + 3
+    return i
+
+
+# Add text to the preamble if it is not already there.
+# Only the first line is checked!
+def add_to_preamble(file, text):
+    i = find_token(file.header, '\\begin_preamble', 0)
+    if i == -1:
+        file.warning("Malformed LyX file: Missing '\\begin_preamble'.")
+        return
+    j = find_token(file.header, '\\end_preamble', i)
+    if j == -1:
+        file.warning("Malformed LyX file: Missing '\\end_preamble'.")
+        return
+    if find_token(file.header, text[0], i, j) != -1:
+        return
+    file.header[j:j] = text
 
 
 def convert_frameless_box(file):
@@ -980,6 +1017,7 @@ def convert_frameless_box(file):
 	    i = i + 1
 	    continue
 	del file.body[i]
+	j = j - 1
 
 	# Gather parameters
 	params = {'position':'0', 'hor_pos':'c', 'has_inner_box':'1',
@@ -1019,49 +1057,130 @@ def convert_frameless_box(file):
 	    params['height_special'] != 'totalheight' or
 	    len2value(params['height']) != 1.0):
 
-	    # Convert to ERT
-	    if params['collapsed'] == 'true':
-		params['collapsed'] = 'Collapsed'
-	    else:
-		params['collapsed'] = 'Open'
-	    file.body[i : i] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
-	                    '', '\\layout Standard', '', '\\backslash ']
-	    i = i + 6
-	    if params['use_parbox'] == '1':
-		file.body.insert(i, 'parbox')
-	    else:
-		file.body.insert(i, 'begin{minipage}')
-	    file.body[i] = file.body[i] + '[' + pos[params['position']] + ']['
-	    i = convert_ertlen(file.body, i, params['height'], params['height_special'])
-	    file.body[i] = file.body[i] + '][' + inner_pos[params['inner_pos']] + ']{'
-	    i = convert_ertlen(file.body, i, params['width'], params['special'])
-            if params['use_parbox'] == '1':
-                file.body[i] = file.body[i] + '}{'
+            # Here we know that this box is not supported in file format 224.
+            # Therefore we need to convert it to ERT. We can't simply convert
+            # the beginning and end of the box to ERT, because the
+            # box inset may contain layouts that are different from the
+            # surrounding layout. After the conversion the contents of the
+            # box inset is on the same level as the surrounding text, and
+            # paragraph layouts and align parameters can get mixed up.
+
+            # A possible solution for this problem:
+            # Convert the box to a minipage and redefine the minipage
+            # environment in ERT so that the original box is simulated.
+            # For minipages we could do this in a way that the width and
+            # position can still be set from LyX, but this did not work well.
+            # This is not possible for parboxes either, so we convert the
+            # original box to ERT, put the minipage inset inside the box
+            # and redefine the minipage environment to be empty.
+
+            # Commands that are independant of a particular box can go to
+            # the preamble.
+            # We need to define lyxtolyxrealminipage with 3 optional
+            # arguments although LyX 1.3 uses only the first one.
+            # Otherwise we will get LaTeX errors if this document is
+            # converted to format 225 or above again (LyX 1.4 uses all
+            # optional arguments).
+            add_to_preamble(file,
+                ['% Commands inserted by lyx2lyx for frameless boxes',
+                 '% Save the original minipage environment',
+                 '\\let\\lyxtolyxrealminipage\\minipage',
+                 '\\let\\endlyxtolyxrealminipage\\endminipage',
+                 '% Define an empty lyxtolyximinipage environment',
+                 '% with 3 optional arguments',
+                 '\\newenvironment{lyxtolyxiiiminipage}[4]{}{}',
+                 '\\newenvironment{lyxtolyxiiminipage}[2][\\lyxtolyxargi]%',
+                 '  {\\begin{lyxtolyxiiiminipage}{\\lyxtolyxargi}{\\lyxtolyxargii}{#1}{#2}}%',
+                 '  {\\end{lyxtolyxiiiminipage}}',
+                 '\\newenvironment{lyxtolyximinipage}[1][\\totalheight]%',
+                 '  {\\def\\lyxtolyxargii{{#1}}\\begin{lyxtolyxiiminipage}}%',
+                 '  {\\end{lyxtolyxiiminipage}}',
+                 '\\newenvironment{lyxtolyxminipage}[1][c]%',
+                 '  {\\def\\lyxtolyxargi{{#1}}\\begin{lyxtolyximinipage}}',
+                 '  {\\end{lyxtolyximinipage}}'])
+
+            if params['use_parbox'] != '0':
+                ert = '\\parbox'
             else:
-                file.body[i] = file.body[i] + '}'
-	    i = i + 1
-	    file.body[i:i] = ['', '\\end_inset']
-	    i = i + 2
-	    j = find_end_of_inset(file.body, i)
-	    if j == -1:
-		file.warning("Malformed LyX file: Missing '\\end_inset'.")
-		break
-            file.body[j-1:j-1] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
-	                       '', '\\layout Standard', '']
-	    j = j + 4
-	    if params['use_parbox'] == '1':
-		file.body.insert(j, '}')
-	    else:
-		file.body[j:j] = ['\\backslash ', 'end{minipage}']
+                ert = '\\begin{lyxtolyxrealminipage}'
+
+            # convert optional arguments only if not latex default
+            if (pos[params['position']] != 'c' or
+                inner_pos[params['inner_pos']] != pos[params['position']] or
+                params['height_special'] != 'totalheight' or
+                len2value(params['height']) != 1.0):
+                ert = ert + '[' + pos[params['position']] + ']'
+            if (inner_pos[params['inner_pos']] != pos[params['position']] or
+                params['height_special'] != 'totalheight' or
+                len2value(params['height']) != 1.0):
+                ert = ert + '[' + convert_len(params['height'],
+                                              params['height_special']) + ']'
+            if inner_pos[params['inner_pos']] != pos[params['position']]:
+                ert = ert + '[' + inner_pos[params['inner_pos']] + ']'
+
+            ert = ert + '{' + convert_len(params['width'],
+                                          params['special']) + '}'
+
+            if params['use_parbox'] != '0':
+                ert = ert + '{'
+            ert = ert + '\\let\\minipage\\lyxtolyxminipage%\n'
+            ert = ert + '\\let\\endminipage\\endlyxtolyxminipage%\n'
+
+            old_i = i
+            i = insert_ert(file.body, i, 'Collapsed', ert)
+            j = j + i - old_i - 1
+
+            file.body[i:i] = ['\\begin_inset Minipage',
+                              'position %d' % params['position'],
+                              'inner_position 1',
+                              'height "1in"',
+                              'width "' + params['width'] + '"',
+                              'collapsed ' + params['collapsed']]
+            i = i + 6
+            j = j + 6
+
+            # Restore the original minipage environment since we may have
+            # minipages inside this box.
+            # Start a new paragraph because the following may be nonstandard
+            file.body[i:i] = ['\\layout Standard', '', '']
+            i = i + 2
+            j = j + 3
+            ert = '\\let\\minipage\\lyxtolyxrealminipage%\n'
+            ert = ert + '\\let\\endminipage\\lyxtolyxrealendminipage%'
+            old_i = i
+            i = insert_ert(file.body, i, 'Collapsed', ert)
+            j = j + i - old_i - 1
+
+            # Redefine the minipage end before the inset end.
+            # Start a new paragraph because the previous may be nonstandard
+            file.body[j:j] = ['\\layout Standard', '', '']
+            j = j + 2
+            ert = '\\let\\endminipage\\endlyxtolyxminipage'
+            j = insert_ert(file.body, j, 'Collapsed', ert)
+	    j = j + 1
+            file.body.insert(j, '')
+	    j = j + 1
+
+            # LyX writes '%\n' after each box. Therefore we need to end our
+            # ERT with '%\n', too, since this may swallow a following space.
+            if params['use_parbox'] != '0':
+                ert = '}%\n'
+            else:
+                ert = '\\end{lyxtolyxrealminipage}%\n'
+            j = insert_ert(file.body, j, 'Collapsed', ert)
+
+            # We don't need to restore the original minipage after the inset
+            # end because the scope of the redefinition is the original box.
+
 	else:
 
 	    # Convert to minipage
 	    file.body[i:i] = ['\\begin_inset Minipage',
-	                  'position %d' % params['position'],
-			  'inner_position %d' % params['inner_pos'],
-			  'height "' + params['height'] + '"',
-	                  'width "' + params['width'] + '"',
-	                  'collapsed ' + params['collapsed']]
+	                      'position %d' % params['position'],
+			      'inner_position %d' % params['inner_pos'],
+			      'height "' + params['height'] + '"',
+	                      'width "' + params['width'] + '"',
+	                      'collapsed ' + params['collapsed']]
 	    i = i + 6
 
 ##
@@ -1128,7 +1247,7 @@ def convert_float(file):
                 file.body.insert(i + 1, 'sideways false')
                 break
             elif (file.body[i][:13] == "\\begin_layout"):
-                file.warning("Malformed lyx file.")
+                file.warning("Malformed lyx file: Missing 'wide'.")
                 break
             i = i + 1
         i = i + 1
