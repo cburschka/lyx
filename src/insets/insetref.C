@@ -126,6 +126,8 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		features.require("varioref");
 	else if (getCmdName() == "prettyref")
 		features.require("prettyref");
+	else if (getCmdName() == "eqref")
+		features.require("amsmath");
 }
 
 
