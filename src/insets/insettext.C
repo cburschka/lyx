@@ -561,19 +561,16 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 		 (lt->status() != LyXText::UNCHANGED) || lt->selection.set());
 	if (!lt->selection.set())
 		lt->selection.cursor = lt->cursor;
+
+	bv->fitCursor();
+
+	if (flag) {
+		lt->postPaint(0);
+		bv->updateInset(const_cast<InsetText *>(this));
+	}
+
 	if (clear)
 		lt = 0;
-#if 0
-	// IMO this is not anymore needed as we do this in fitInsetCursor!
-	// and we always get "true" as returnvalue of this function in the
-	// case of a locking inset (Jug 20020412)
-	if (locked && (need_update & CURSOR) && bv->fitCursor())
-		need_update |= FULL;
-#else
-	bv->fitCursor();
-#endif
-	if (flag)
-		bv->updateInset(const_cast<InsetText *>(this));
 
 	if (need_update == CURSOR)
 		need_update = NONE;
@@ -931,20 +928,6 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			the_locking_inset->localDispatch(cmd1);
 			return;
 		}
-#if 0
-		else if (inset) {
-			// otherwise unlock the_locking_inset and lock the new inset
-			the_locking_inset->insetUnlock(bv);
-			inset_x = cix(bv) - top_x + drawTextXOffset;
-			inset_y = ciy(bv) + drawTextYOffset;
-			the_locking_inset = 0;
-			inset->localDispatch(cmd1);
-//			inset->edit(bv, x - inset_x, y - inset_y, button);
-			if (the_locking_inset)
-				updateLocal(bv, CURSOR, false);
-			return;
-		}
-#endif
 		// otherwise only unlock the_locking_inset
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
@@ -966,7 +949,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			return;
 		}
 	}
-	if (!inset) { // && (button == mouse_button::button2)) {
+	if (!inset) {
 		bool paste_internally = false;
 		if (cmd.button() == mouse_button::button2 && getLyXText(bv)->selection.set()) {
 			localDispatch(FuncRequest(bv, LFUN_COPY));
@@ -987,15 +970,14 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 
 		if (lt->selection.set()) {
 			lt->clearSelection();
-			if (clear)
-				lt = 0;
 			updateLocal(bv, FULL, false);
 		} else {
 			lt->clearSelection();
-			if (clear)
-				lt = 0;
 			updateLocal(bv, CURSOR, false);
 		}
+
+		if (clear)
+			lt = 0;
 
 		bv->owner()->setLayout(cpar(bv)->layout()->name());
 
@@ -1163,6 +1145,13 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	}
 	int updwhat = 0;
 	int updflag = false;
+
+	// what type of update to do on a cursor movement
+	int cursor_update = CURSOR;
+
+	if (lt->selection.set())
+		cursor_update = SELECTION;
+
 	switch (ev.action) {
 
 	// Normal chars
@@ -1199,78 +1188,52 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		updflag = true;
 		result = DISPATCHED_NOUPDATE;
 		break;
-		// --- Cursor Movements -----------------------------------
-	case LFUN_RIGHTSEL:
-		finishUndo();
-		moveRight(bv, false, true);
-		lt->setSelection();
-		updwhat = SELECTION;
-		break;
+
+	// cursor movements that need special handling
+
 	case LFUN_RIGHT:
 		result = moveRight(bv);
 		finishUndo();
-		updwhat = CURSOR;
-		break;
-	case LFUN_LEFTSEL:
-		finishUndo();
-		moveLeft(bv, false, true);
-		lt->setSelection();
-		updwhat = SELECTION;
+		updwhat = cursor_update;
 		break;
 	case LFUN_LEFT:
 		finishUndo();
 		result = moveLeft(bv);
-		updwhat = CURSOR;
-		break;
-	case LFUN_DOWNSEL:
-		finishUndo();
-		moveDown(bv);
-		lt->setSelection();
-		updwhat = SELECTION;
+		updwhat = cursor_update;
 		break;
 	case LFUN_DOWN:
 		finishUndo();
 		result = moveDown(bv);
-		updwhat = CURSOR;
-		break;
-	case LFUN_UPSEL:
-		finishUndo();
-		moveUp(bv);
-		lt->setSelection();
-		updwhat = SELECTION;
+		updwhat = cursor_update;
 		break;
 	case LFUN_UP:
 		finishUndo();
 		result = moveUp(bv);
-		updwhat = CURSOR;
+		updwhat = cursor_update;
 		break;
-	case LFUN_HOME:
-		finishUndo();
-		lt->cursorHome();
-		updwhat = CURSOR;
-		break;
-	case LFUN_END:
-		lt->cursorEnd();
-		updwhat = CURSOR;
-		break;
+
 	case LFUN_PRIOR:
 		if (!crow(bv)->previous())
 			result = FINISHED_UP;
 		else {
 			lt->cursorPrevious();
+			lt->clearSelection();
 			result = DISPATCHED_NOUPDATE;
 		}
-		updwhat = CURSOR;
+		updwhat = cursor_update;
 		break;
+
 	case LFUN_NEXT:
 		if (!crow(bv)->next())
 			result = FINISHED_DOWN;
 		else {
 			lt->cursorNext();
+			lt->clearSelection();
 			result = DISPATCHED_NOUPDATE;
 		}
-		updwhat = CURSOR;
+		updwhat = cursor_update;
 		break;
+
 	case LFUN_BACKSPACE: {
 		if (lt->selection.set())
 			lt->cutSelection(true, false);
@@ -1278,8 +1241,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			lt->backspace();
 		updwhat = CURSOR_PAR;
 		updflag = true;
+		break;
 	}
-	break;
 
 	case LFUN_DELETE: {
 		if (lt->selection.set()) {
@@ -1289,21 +1252,22 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		}
 		updwhat = CURSOR_PAR;
 		updflag = true;
+		break;
 	}
-	break;
 
 	case LFUN_CUT: {
 		lt->cutSelection(bv);
 		updwhat = CURSOR_PAR;
 		updflag = true;
+		break;
 	}
-	break;
 
 	case LFUN_COPY:
 		finishUndo();
 		lt->copySelection();
 		updwhat = CURSOR_PAR;
 		break;
+
 	case LFUN_PASTESELECTION:
 	{
 		string const clip(bv->getClipboard());
@@ -1322,28 +1286,27 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		updflag = true;
 		break;
 	}
+
 	case LFUN_PASTE: {
 		if (!autoBreakRows) {
-
 			if (CutAndPaste::nrOfParagraphs() > 1) {
+#ifdef WITH_WARNINGS
+#warning FIXME horrendously bad UI
+#endif
 				Alert::alert(_("Impossible operation!"),
 						   _("Cannot include more than one paragraph!"),
 						   _("Sorry."));
 				break;
 			}
 		}
-#if 0
-		// This should not be needed here and is also WRONG!
-		setUndo(bv, Undo::INSERT,
-			lt->cursor.par(), lt->cursor.par()->next());
-#endif
+
 		lt->pasteSelection();
 		// bug 393
 		lt->clearSelection();
 		updwhat = CURSOR_PAR;
 		updflag = true;
+		break;
 	}
-	break;
 
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows) {
@@ -1354,6 +1317,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		updwhat = CURSOR | FULL;
 		updflag = true;
 		break;
+
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		if (!autoBreakRows) {
 			result = DISPATCHED;
@@ -1369,16 +1333,12 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			result = DISPATCHED;
 			break;
 		}
-#if 0
-		// This should not be needed here and is also WRONG!
-		setUndo(bv, Undo::INSERT,
-			lt->cursor.par(), lt->cursor.par()->next());
-#endif
+
 		lt->insertInset(new InsetNewline);
 		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;
+		break;
 	}
-	break;
 
 	case LFUN_LAYOUT:
 		// do not set layouts on non breakable textinsets
@@ -1423,6 +1383,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		// This one is absolutely not working. When fiddling with this
 		// it also seems to me that the paragraphs inside the insettext
 		// inherit bufferparams/paragraphparams in a strange way. (Lgb)
+		// FIXME: how old is this comment ? ...
 	{
 		Paragraph * par = lt->cursor.par();
 		Spacing::Space cur_spacing = par->params().spacing().getSpace();
@@ -1465,6 +1426,34 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		}
 	}
 	break;
+
+	// These need to do repaints but don't require
+	// special handling otherwise. A *lot* of the
+	// above could probably be done similarly ...
+
+	case LFUN_HOME:
+	case LFUN_END:
+	case LFUN_WORDLEFT:
+	case LFUN_WORDRIGHT:
+	// these two are really unhandled ...
+	case LFUN_ENDBUF:
+	case LFUN_BEGINNINGBUF:
+		updwhat = cursor_update;
+		if (!bv->dispatch(ev))
+			result = UNDISPATCHED;
+		break;
+
+	case LFUN_RIGHTSEL:
+	case LFUN_UPSEL:
+	case LFUN_DOWNSEL:
+	case LFUN_LEFTSEL:
+	case LFUN_HOMESEL:
+	case LFUN_ENDSEL:
+	case LFUN_WORDLEFTSEL:
+	case LFUN_WORDRIGHTSEL:
+		updwhat = SELECTION;
+
+		// fallthrough
 
 	default:
 		if (!bv->dispatch(ev))
@@ -1799,7 +1788,7 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 		return DISPATCHED;
 	getLyXText(bv)->cursorRight(bv);
 	if (!selecting)
-		getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
+		getLyXText(bv)->clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
@@ -1812,7 +1801,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 		return FINISHED;
 	getLyXText(bv)->cursorLeft(bv);
 	if (!selecting)
-		getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
+		getLyXText(bv)->clearSelection();
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
 	return DISPATCHED_NOUPDATE;
@@ -1824,6 +1813,7 @@ Inset::RESULT InsetText::moveUp(BufferView * bv)
 	if (!crow(bv)->previous())
 		return FINISHED_UP;
 	getLyXText(bv)->cursorUp(bv);
+	getLyXText(bv)->clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
@@ -1833,6 +1823,7 @@ Inset::RESULT InsetText::moveDown(BufferView * bv)
 	if (!crow(bv)->next())
 		return FINISHED_DOWN;
 	getLyXText(bv)->cursorDown(bv);
+	getLyXText(bv)->clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 

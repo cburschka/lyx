@@ -1,3 +1,9 @@
+2003-03-24  John Levon  <levon@movementarian.org>
+
+	* insettext.C: remove some dead code. Fix bug 972 and
+	  related by posting a repaint in updateLocal(), and making
+	  the SEL functions set SELECTION.
+
 2003-03-22  John Levon  <levon@movementarian.org>
 
 	* inset.h:
