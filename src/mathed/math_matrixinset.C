@@ -276,7 +276,7 @@ void MathMatrixInset::header_write(std::ostream & os) const
 			break;
 
 		case LM_OT_ALIGN:
-			os << "\\begin{align" << star(n) << "}";
+			os << "\\begin{align" << star(n) << "}\n";
 			break;
 
 		case LM_OT_ALIGNAT:
@@ -322,31 +322,31 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 			break;
 
 		case LM_OT_EQNARRAY:
-			os << "\\end{eqnarray" << star(n) << "}\n";
+			os << "\n\\end{eqnarray" << star(n) << "}\n";
 			break;
 
 		case LM_OT_ALIGN:
-			os << "\\end{align" << star(n) << "}\n";
+			os << "\n\\end{align" << star(n) << "}\n";
 			break;
 
 		case LM_OT_ALIGNAT:
-			os << "\\end{alignat" << star(n) << "}\n";
+			os << "\n\\end{alignat" << star(n) << "}\n";
 			break;
 
 		case LM_OT_XALIGNAT:
-			os << "\\end{xalignat" << star(n) << "}\n";
+			os << "\n\\end{xalignat" << star(n) << "}\n";
 			break;
 
 		case LM_OT_XXALIGNAT:
-			os << "\\end{xxalignat}\n";
+			os << "\n\\end{xxalignat}\n";
 			break;
 
 		case LM_OT_MULTLINE:
-			os << "\\end{multline}\n";
+			os << "\n\\end{multline}\n";
 			break;
 
 		case LM_OT_GATHER:
-			os << "\\end{gather}\n";
+			os << "\n\\end{gather}\n";
 			break;
 
 		default:

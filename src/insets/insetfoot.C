@@ -62,8 +62,3 @@ int InsetFoot::latex(Buffer const * buf,
 	
 	return i + 2;
 }
-
-void InsetFoot::validate(LaTeXFeatures & features) const
-{
-        features.NeedLyXFootnoteCode = true;
-}

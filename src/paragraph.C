@@ -381,10 +381,18 @@ void Paragraph::validate(LaTeXFeatures & features) const
 	}
 
 	// then the insets
+	LyXLayout const & layout =
+                textclasslist.Style(bparams.textclass,
+                                    getLayout());
+
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
-		if (cit->inset)
+		if (cit->inset) {
 			cit->inset->validate(features);
+			if (layout.needprotect &&
+			    cit->inset->lyxCode() == Inset::FOOT_CODE)
+				features.NeedLyXFootnoteCode = true;
+		}
 	}
 }
 

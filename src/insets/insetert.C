@@ -315,6 +315,7 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
 	Paragraph * par = inset.paragraph();
+	int lines = 0;
 	while (par) {
 		Paragraph::size_type siz = par->size();
 		for (Paragraph::size_type i = 0; i < siz; ++i) {
@@ -322,6 +323,7 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 			switch (c) {
 			case Paragraph::META_NEWLINE:
 				os << '\n';
+				++lines;
 				break;
 			default:
 				os << c;
@@ -329,11 +331,13 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 			}
 		}
 		par = par->next();
-		if (par)
+		if (par) {
 			os << "\n\n";
+			lines += 2;
+		}
 	}
 	
-	return 1;
+	return lines;
 }
 
 

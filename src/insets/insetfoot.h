@@ -38,8 +38,6 @@ public:
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	string const editMessage() const;
-	///
-	void validate(LaTeXFeatures & features) const;
 };
 
 #endif
