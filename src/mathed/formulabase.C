@@ -652,6 +652,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 		break;
 
+	case LFUN_ESCAPE:
+		if (mathcursor->selection())
+			mathcursor->selClear();
+		else
+			result = UNDISPATCHED;
+		break;
+
 	default:
 		result = UNDISPATCHED;
 	}
