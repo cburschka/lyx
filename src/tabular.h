@@ -533,7 +533,7 @@ private:
 	/// Returns true if a complete update is necessary, otherwise false
 	bool SetWidthOfMulticolCell(int cell, int new_width);
 	///
-	void recalculateMulticolCells(int cell, int new_width);
+	void recalculateMulticolumnsOfColumn(int column);
 	/// Returns true if change
 	bool calculate_width_of_column(int column);
 	///

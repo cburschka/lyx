@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright 2000-2001 The LyX Team.
+ *           Copyright 2000-2002 The LyX Team.
  *
  *           @author: Jürgen Vigna
  *
@@ -620,14 +620,14 @@ bool LyXTabular::SetWidthOfMulticolCell(int cell, int new_width)
 	int const row = row_of_cell(cell);
 	int const column1 = column_of_cell(cell);
 	int const column2 = right_column_of_cell(cell);
-
+	int const old_val = cell_info[row][column2].width_of_cell;
+	
 	// first set columns to 0 so we can calculate the right width
 	for (int i = column1; i <= column2; ++i) {
 		cell_info[row][i].width_of_cell = 0;
 	}
 	// set the width to MAX_WIDTH until width > 0
 	int width = (new_width + 2 * WIDTH_OF_LINE);
-
 	int i = column1;
 	for (; i < column2 && width > column_info[i].width_of_column; ++i) {
 		cell_info[row][i].width_of_cell = column_info[i].width_of_column;
@@ -636,25 +636,36 @@ bool LyXTabular::SetWidthOfMulticolCell(int cell, int new_width)
 	if (width > 0) {
 		cell_info[row][i].width_of_cell = width;
 	}
+	if (old_val != cell_info[row][column2].width_of_cell) {
+		// in this case we have to recalculate all multicolumn cells which
+		// have this column as one of theirs but not as last one
+		recalculateMulticolumnsOfColumn(i);
+	}
 	return true;
 }
 
 
-void LyXTabular::recalculateMulticolCells(int cell, int new_width)
+void LyXTabular::recalculateMulticolumnsOfColumn(int column)
 {
-	int const row = row_of_cell(cell);
-	int const column1 = column_of_cell(cell);
-	int const column2 = right_column_of_cell(cell);
-
-	// first set columns to 0 so we can calculate the right width
-	int i = column1;
-	for (; i <= column2; ++i)
-		cell_info[row][i].width_of_cell = 0;
-	for (i = cell + 1; (i < numberofcells) && (!IsMultiColumn(i)); ++i)
-		;
-	if (i < numberofcells)
-		recalculateMulticolCells(i, GetWidthOfCell(i) - (2 * WIDTH_OF_LINE));
-	SetWidthOfMulticolCell(cell, new_width);
+	// the last column does not have to be recalculated because all
+	// multicolumns will have here there last multicolumn cell which
+	// always will have the whole rest of the width of the cell.
+	if (column > (columns_ - 2))
+		return;
+	for(int row = 0; row < rows_; ++row) {
+		int mc = cell_info[row][column].multicolumn;
+		int nmc = cell_info[row][column+1].multicolumn;
+		// we only have to update multicolumns which do not have this
+		// column as their last column!
+		if (mc == CELL_BEGIN_OF_MULTICOLUMN ||
+			((mc == CELL_PART_OF_MULTICOLUMN) &&
+			 (nmc == CELL_PART_OF_MULTICOLUMN)))
+		{
+			int const cellno = cell_info[row][column].cellno;
+			SetWidthOfMulticolCell(cellno,
+			                       GetWidthOfCell(cellno)-(2 * WIDTH_OF_LINE));
+		}
+	}
 }
 
 
@@ -688,16 +699,11 @@ bool LyXTabular::SetWidthOfCell(int cell, int new_width)
 		width = (new_width + 2*WIDTH_OF_LINE + add_width);
 		cell_info[row][column1].width_of_cell = width;
 		tmp = calculate_width_of_column_NMC(column1);
+		if (tmp)
+			recalculateMulticolumnsOfColumn(column1);
 	}
 	if (tmp) {
-		int i = 0;
-		for (; i<columns_; ++i)
-			calculate_width_of_column_NMC(i);
-		for (i = 0; (i < numberofcells) && !IsMultiColumn(i); ++i)
-			;
-		if (i < numberofcells)
-			recalculateMulticolCells(i, GetWidthOfCell(i)-(2 * WIDTH_OF_LINE));
-		for (i = 0; i < columns_; ++i)
+		for (int i = 0; i < columns_; ++i)
 			calculate_width_of_column(i);
 		calculate_width_of_tabular();
 		return true;

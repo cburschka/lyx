@@ -1,3 +1,11 @@
+2002-03-01  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (SetWidthOfMulticolCell): changed to something better
+	I hope but still work in progress.
+	(recalculateMulticolumnsOfColumn): renamed function from
+	recalculateMulticolCells as it is more appropriate now.
+	(SetWidthOfCell): calculate multicols better.
+
 2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* minibuffer.C (MiniBuffer): reset timout to 6000, as it was before.
