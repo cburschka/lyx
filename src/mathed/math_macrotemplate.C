@@ -4,7 +4,7 @@
 
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "debug.h"
 
 

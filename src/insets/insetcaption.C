@@ -15,7 +15,7 @@
 #endif
 
 #include "insetcaption.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "BufferView.h"
 #include "FloatList.h"

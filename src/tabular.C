@@ -25,7 +25,7 @@
 #include "layout.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "LaTeXFeatures.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"

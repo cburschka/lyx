@@ -17,7 +17,7 @@
 #include "insetbutton.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "support/LAssert.h"
 #include "lyxfont.h"
 #include "font.h"

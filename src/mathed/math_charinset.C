@@ -6,7 +6,7 @@
 
 #include "math_charinset.h"
 #include "LColor.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "support/LOstream.h"
 #include "font.h"
 #include "debug.h"

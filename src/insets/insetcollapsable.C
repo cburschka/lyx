@@ -18,7 +18,7 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "debug.h"
 #include "lyxtext.h"
 #include "font.h"

@@ -10,7 +10,7 @@
 #include "math_defs.h"
 #include "math_inset.h"
 #include "math_parser.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "debug.h"
 #include "commandtags.h"
 

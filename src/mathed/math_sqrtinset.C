@@ -5,7 +5,7 @@
 #include "math_sqrtinset.h"
 #include "math_mathmlstream.h"
 #include "LColor.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "textpainter.h"
 
 

@@ -18,7 +18,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "support/lstrings.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "commandtags.h"
 #include "support/lstrings.h"
 #include "gettext.h"

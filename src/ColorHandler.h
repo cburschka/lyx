@@ -15,7 +15,7 @@
 #pragma interface
 #endif
 
-#include "PainterBase.h"
+#include "frontends/Painter.h"
 
 #include <boost/scoped_ptr.hpp>
 

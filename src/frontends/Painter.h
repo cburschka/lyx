@@ -172,4 +172,7 @@ protected:
 	WorkArea & owner;
 };
 
+// VERY temporary
+#include "xforms/XPainter.h"
+ 
 #endif

@@ -208,6 +208,8 @@ libxforms_la_SOURCES = \
 	Toolbar_pimpl.h \
 	Tooltips.C \
 	Tooltips.h \
+	XPainter.h \
+	XPainter.C \
 	xforms_helpers.C \
 	xforms_helpers.h \
 	xforms_resize.C \

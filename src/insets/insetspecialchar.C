@@ -17,7 +17,7 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "BufferView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "lyxlex.h"
 #include "lyxfont.h"

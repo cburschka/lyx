@@ -20,7 +20,7 @@
 #include "support/lstrings.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "buffer.h"
 #include "debug.h"
 #include "font.h"

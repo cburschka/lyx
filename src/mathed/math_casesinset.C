@@ -8,7 +8,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 
 
 MathCasesInset::MathCasesInset(row_type n)

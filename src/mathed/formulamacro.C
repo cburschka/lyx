@@ -27,7 +27,7 @@
 #include "math_mathmlstream.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"

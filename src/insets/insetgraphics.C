@@ -86,7 +86,7 @@ TODO Before initial production release:
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "lyxrc.h"
 #include "font.h"    // For the lyxfont class.
 #include "debug.h"

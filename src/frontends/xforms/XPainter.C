@@ -13,7 +13,7 @@
 #pragma implementation
 #endif
 
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "LString.h"
 #include "debug.h"
 #include "lyxfont.h"

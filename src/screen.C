@@ -19,7 +19,7 @@
 #include "lyxscreen.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "WorkArea.h"
 #include "buffer.h"
 #include "BufferView.h"

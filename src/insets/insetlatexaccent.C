@@ -19,7 +19,7 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "language.h"
 

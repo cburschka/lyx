@@ -9,7 +9,7 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "debug.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "textpainter.h"
 #include "Lsstream.h"
 #include "LaTeXFeatures.h"

@@ -8,7 +8,7 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "LColor.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "math_support.h"
 #include "math_parser.h"
 #include "LaTeXFeatures.h"

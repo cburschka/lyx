@@ -1,3 +1,19 @@
+2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* inset.C:
+	* insetbutton.C:
+	* insetcaption.C:
+	* insetcollapsable.C:
+	* insetcommand.C:
+	* inseterror.C:
+	* insetgraphics.C:
+	* insetgraphicsParams.C:
+	* insetlatexaccent.C:
+	* insetquotes.C:
+	* insetspecialchar.C:
+	* insettabular.C:
+	* insettext.C: move Painter to frontends/
+ 
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettabular.h: use more specific smart_ptr header.

@@ -21,7 +21,7 @@
 #include <sigc++/signal_system.h>
 
 #include FORMS_H_LOCATION
-#include "Painter.h"
+#include "frontends/Painter.h"
 
 ///
 class WorkArea {

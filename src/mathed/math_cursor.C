@@ -26,7 +26,7 @@
 #include "support/LAssert.h"
 #include "debug.h"
 #include "LColor.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
 #include "math_arrayinset.h"

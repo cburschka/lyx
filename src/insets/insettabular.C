@@ -22,7 +22,7 @@
 #include "lyxfunc.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "lyxtext.h"
 #include "LyXView.h"

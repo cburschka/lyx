@@ -17,7 +17,7 @@
 
 #include "math_rootinset.h"
 #include "math_mathmlstream.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 
 
 using std::max;

@@ -20,7 +20,7 @@
 #include "gettext.h"
 #include "inseterror.h"
 #include "LyXView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "frontends/Dialogs.h"
 
 using std::ostream;

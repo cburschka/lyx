@@ -20,7 +20,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "LyXView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "tracer.h"
 #include "font.h"
 #include "encoding.h"

@@ -30,7 +30,9 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	Variables.C \
 	Variables.h \
 	counters.C \
-	counters.h
+	counters.h \
+	tracer.C \
+	tracer.h
 
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
 
@@ -78,10 +80,6 @@ lyx_SOURCES = \
 	LyXView.h \
 	MenuBackend.C \
 	MenuBackend.h \
-	Painter.C \
-	Painter.h \
-	PainterBase.C \
-	PainterBase.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
 	ParameterStruct.h \
@@ -211,8 +209,6 @@ lyx_SOURCES = \
 	texrow.h \
 	text.C \
 	text2.C \
-	tracer.C \
-	tracer.h \
 	trans.C \
 	trans.h \
 	trans_decl.h \
@@ -222,8 +218,6 @@ lyx_SOURCES = \
 	undo.h \
 	undo_funcs.C \
 	undo_funcs.h \
-	undostack.C \
-	undostack.h \
 	vc-backend.C \
 	vc-backend.h \
 	version.C \

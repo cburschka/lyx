@@ -5,7 +5,7 @@
 #endif
 
 #include "math_binaryopinset.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "support/LOstream.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"

@@ -13,7 +13,7 @@
 #pragma implementation
 #endif
 
-#include "PainterBase.h"
+#include "Painter.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
 #include "font.h"

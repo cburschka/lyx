@@ -34,7 +34,7 @@
 #include "math_support.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"

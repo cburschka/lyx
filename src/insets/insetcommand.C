@@ -16,7 +16,7 @@
 
 #include "insetcommand.h"
 #include "debug.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "lyxlex.h"
 
 using std::ostream;

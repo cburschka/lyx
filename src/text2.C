@@ -26,7 +26,7 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "CutAndPaste.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "font.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -739,11 +739,10 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	freezeUndo();
 	cursor = selection.start;
 	while (cursor.par() != selection.end.par() ||
-	       (cursor.pos() < selection.end.pos()))
+	       cursor.pos() < selection.end.pos()) 
 	{
 		if (cursor.pos() < cursor.par()->size()) {
-			// an open footnote should behave
-			// like a closed one
+			// an open footnote should behave like a closed one
 			setCharFont(bview, cursor.par(), cursor.pos(),
 				    font, toggleall);
 			cursor.pos(cursor.pos() + 1);
@@ -2662,9 +2661,6 @@ LyXText::text_status LyXText::status() const
 
 void LyXText::status(BufferView * bview, LyXText::text_status st) const
 {
-	// well as much as I know && binds more then || so the above and the
-	// below are identical (this for your known use of parentesis!)
-	// Now some explanation:
 	// We should only go up with refreshing code so this means that if
 	// we have a MORE refresh we should never set it to LITTLE if we still
 	// didn't handle it (and then it will be UNCHANGED. Now as long as

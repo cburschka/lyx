@@ -28,7 +28,7 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "LaTeXFeatures.h"
 
 

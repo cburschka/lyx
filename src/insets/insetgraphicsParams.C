@@ -215,7 +215,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 }
 
 
-bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
+bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 {
 	if (token == "filename") {
 		lex.next();

@@ -20,7 +20,7 @@
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
-#include "PainterBase.h"
+#include "frontends/Painter.h"
 
 class LyXFont;
 class WorkArea;

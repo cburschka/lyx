@@ -4,7 +4,7 @@
 
 #include "math_fracinset.h"
 #include "math_support.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 

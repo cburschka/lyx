@@ -5,7 +5,7 @@
 #include "math_spaceinset.h"
 #include "math_support.h"
 #include "LColor.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "math_mathmlstream.h"
 
 

@@ -6,7 +6,7 @@
 
 #include "math_scriptinset.h"
 #include "math_support.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "textpainter.h"
 #include "debug.h"
 

@@ -25,7 +25,7 @@
 #include "BufferView.h"
 #include "lyxtextclasslist.h"
 #include "LaTeXFeatures.h"
-#include "Painter.h"
+#include "frontends/Painter.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
@@ -2505,7 +2505,7 @@ void InsetText::clearInset(BufferView * bv, int baseline, bool & cleared) const
 	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
 		w = pain.paperWidth();
 //	w -= TEXT_TO_INSET_OFFSET;
-	pain.fillRectangle(top_x, ty, w+1, h+1, backgroundColor());
+	pain.fillRectangle(top_x + 1, ty + 1, w - 1, h - 1, backgroundColor());
 	cleared = true;
 	need_update = FULL;
 	frame_is_visible = false;
