@@ -20,7 +20,7 @@ extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
 MathXArray::MathXArray()
-	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), size_(),
+	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0),
 	  clean_(false), drawn_(false)
 {}
 
@@ -46,26 +46,33 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 		return;
 	}
 
-	ascent_  = 0;
-	descent_ = 0;
 	width_   = 0;
 
+	int a = 0;
+	int d = 0;
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		int w = 0;
 		if (q) {
 			q->metrics(p, mi);
-			ascent_  = max(ascent_,  q->ascent2(p));
-			descent_ = max(descent_, q->descent2(p));
-			width_  += q->width2(p);
+			a = max(a, q->ascent2(p));
+			d = max(d, q->descent2(p));
+			w = q->width2(p);
 			++it;
 		} else {
 			p->metrics(mi);
-			ascent_  = max(ascent_,  p->ascent());
-			descent_ = max(descent_, p->descent());
-			width_  += p->width();
+			a = max(a, p->ascent());
+			d = max(d, p->descent());
+			w = p->width();
 		}
+		width_ += w;
 	}
+
+	ascent_  = a;
+	descent_ = d;
+	//width_   = 0;
+
 	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " "
 	//	<< descent_ << " " << width_ << "'\n";
 
