@@ -55,6 +55,17 @@ FormPreferences::~FormPreferences()
 }
 
 
+void FormPreferences::hide()
+{
+	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder_prefs);
+	if (outer_form
+	    && outer_form->visible) {
+		fl_hide_form(outer_form);
+	}
+	FormBase::hide();
+}
+
+
 void FormPreferences::build()
 {
 	dialog_ = build_preferences();

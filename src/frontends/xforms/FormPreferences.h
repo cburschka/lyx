@@ -48,6 +48,8 @@ private:
 	virtual void connect();
 	/// Update the dialog.
 	virtual void update();
+	///
+	virtual void hide();
 	/// OK from dialog
 	virtual void ok();
 	/// Apply from dialog

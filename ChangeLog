@@ -1,11 +1,16 @@
 2000-10-10  Allan Rae  <rae@lyx.org>
 
-	* src/BufferView_pimpl.C (buffer): don't call upadteBufferDependent
+	* src/frontends/xforms/FormPreferences.[Ch] (hide): Fix the problem
+	with closing dialog.  It seems that nested tabfolders require hiding
+	of inner tabfolders before hiding the dialog itself.  Actually all I
+	did was hide the active outer folder.
+
+	* src/BufferView_pimpl.C (buffer): don't call updateBufferDependent
 	unless there really is a buffer.  hideBufferDependent is called
 	instead.
 
-	* Makefile.in.in (POTFILES.in): one little tweak to ensure POTFILES.in
-	stays in $(srcdir).
+	* po/Makefile.in.in (POTFILES.in): one little tweak to ensure
+	POTFILES.in stays in $(srcdir).
 
 2000-10-09  Dekel Tsur  <dekelts@tau.ac.il>
 
