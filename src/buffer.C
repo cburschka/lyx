@@ -77,10 +77,10 @@
 #include "gettext.h"
 
 
-// 	$Id: buffer.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
+// 	$Id: buffer.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $	
 
 #if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: buffer.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
+static char vcid[] = "$Id: buffer.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $";
 #endif /* lint */
 
 
@@ -2934,14 +2934,22 @@ void Buffer::makeDocBookFile(LString const & filename, int column)
 	}
 
 	// Close open tags
-	for(;depth>0;depth--)
-	        sgmlCloseTag(file,depth+command_depth,
-			     environment_stack[depth]);
-
-	if(!environment_stack[depth].empty())
-	        sgmlCloseTag(file,depth+command_depth,
-			     environment_stack[depth]);
-
+	for(;depth>=0;depth--) {
+		if(!environment_stack[depth].empty()) {
+			if(environment_inner[depth] != "!-- --") {
+				item_name="listitem";
+				sgmlCloseTag(file,command_depth+depth,
+					     item_name);
+                               if( environment_inner[depth] == "varlistentry")
+				       sgmlCloseTag(file,depth+command_depth,
+						    environment_inner[depth]);
+			}
+			
+			sgmlCloseTag(file,depth+command_depth,
+				     environment_stack[depth]);
+		}
+	}
+	
 	for(int j=command_depth;j>=command_base;j--)
 		if(!command_stack[j].empty())
 			sgmlCloseTag(file,j,command_stack[j]);

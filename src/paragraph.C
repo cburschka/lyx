@@ -27,10 +27,10 @@
 #include "lyx_gui_misc.h"
 #include "texrow.h"
 
-// 	$Id: paragraph.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
+// 	$Id: paragraph.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $	
 
 #if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: paragraph.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
+static char vcid[] = "$Id: paragraph.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $";
 #endif /* lint */
 
 #define INITIAL_SIZE_PAR 10 /*Number of bytes in one paragraph*/
@@ -2579,7 +2579,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, LString &sgml_string)
 		sgml_string = "&tilde;";
 		break;
 	case '"': 
-		sgml_string = "&dquot;";
+		sgml_string = "&quot;";
 		break;
 	case '\\': 
 		sgml_string = "&bsol;";

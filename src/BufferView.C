@@ -38,10 +38,10 @@
 #include "lyx_cb.h"
 #include "gettext.h"
 
-// 	$Id: BufferView.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
+// 	$Id: BufferView.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $	
 
 #if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: BufferView.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
+static char vcid[] = "$Id: BufferView.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $";
 #endif /* lint */
 
 extern BufferList bufferlist;
@@ -1006,10 +1006,10 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT *ob, Window,
 	int diff = ev->xbutton.time - lastTime;
 	int scroll = int(1.0 + (4.0/(abs(diff)+1.0))*200.0);
 	switch (button) {
-	case 5:
+	case 4:
 		ScrollUp(scroll);
 		break;
-	case 4:
+	case 5:
 		ScrollDown(scroll);
 		break;
 	}

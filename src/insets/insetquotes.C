@@ -22,10 +22,10 @@
 #include "buffer.h"
 #include "LaTeXFeatures.h"
 
-// 	$Id: insetquotes.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
+// 	$Id: insetquotes.C,v 1.2 1999/10/02 14:01:04 larsbj Exp $	
 
 #if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetquotes.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
+static char vcid[] = "$Id: insetquotes.C,v 1.2 1999/10/02 14:01:04 larsbj Exp $";
 #endif /* lint */
 
 // Quotes. Used for the various quotes. German, English, French,
@@ -285,14 +285,14 @@ int InsetQuotes::DocBook(LString &file)
 {
 	if(times == InsetQuotes::DoubleQ) {
 		if (side == InsetQuotes::LeftQ)
-			file += "&ldquor;";
+			file += "&ldquo;";
 		else
-			file += "&rdquor;";
+			file += "&rdquo;";
 	} else {
 		if (side == InsetQuotes::LeftQ)
-			file += "&lsquor;";
+			file += "&lsquo;";
 		else
-			file += "&rsquor;";
+			file += "&rsquo;";
 	}
 	return 0;
 }

@@ -88,10 +88,10 @@ End
 # Verbatim style definition
 Style Literal
   LatexType		Environment
-  LatexName		literal
+  LatexName		literallayout
   Font
     Latex               Latex
-  EndFont                                                                                     
+  EndFont
 End
 
 # Code style definition
@@ -103,7 +103,7 @@ Style Code
   EndPreamble
   Font
     Latex               Latex
-  EndFont                                                                                     
+  EndFont
 End
 
 # Author style definition

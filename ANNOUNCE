@@ -1,10 +1,10 @@
-Public release of LyX version 1.0.1
+Public release of LyX version 1.0.4
 ===================================
 
 What is LyX?
 ------------
 
-LyX is an advanced open-source "document processor".   Unlike standard
+LyX is an advanced open-source "document processor". Unlike standard
 word processors, LyX encourages writing based on the structure of your
 documents, not their appearance, It lets you concentrate on writing,
 leaving details of visual layout to the software.
@@ -15,7 +15,7 @@ strength typesetting engine. No knowledge of LaTeX is required to
 use LyX; however, there is also a "TeX mode" which allows you to enter
 plain LaTeX commands.
 
-All in all, LyX is a complete environment for writing documents.  It has
+All in all, LyX is a complete environment for writing documents. It has
 superior support for scientific writing, but works well for any kind of
 document.
 
@@ -34,7 +34,7 @@ A very incomplete feature list:
 - automatic, multilevel outline support (enumerated or bullets)
 - tables and embedded postscript figures support
 - import LaTeX or ASCII
-- export LaTeX, ASCII, DVI, PostScript, LinuxDoc-SGML
+- export LaTeX, ASCII, DVI, PostScript, LinuxDoc-SGML, DocBook-SGML
 - fair support for non-English documents and/or menus
 - extensive documentation, including a tutorial
 - version control using RCS
@@ -73,21 +73,22 @@ with mirrors at
 	
 The source code package is available at:
 
-        ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.0.0.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.0.0.tar.gz
+        ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.0.4.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.0.4.tar.gz
 
 and at the mirrors listed above.
 
 You need to have XForms version 0.81, 0.86 or 0.88 to compile your own 
-version.  Version 0.88 is highly recomended.
+version.  Version 0.88 is highly recomended. LyX should also compile
+with 0.89.
 
 Ready-to-run precompiled binaries for various platforms are available at:
 
-        ftp://ftp.lyx.org/pub/lyx/bin/1.0.0/
+        ftp://ftp.lyx.org/pub/lyx/bin/1.0.4/
 
 Binaries for i386-Linux are also available at your local sunsite mirror:
 
-        ftp://sunsite.unc.edu/pub/Linux/apps/editors/lyx-1.0.0-bin.tar.gz
+        ftp://sunsite.unc.edu/pub/Linux/apps/editors/lyx-1.0.4-bin.tar.gz
 
 Credits
 -------

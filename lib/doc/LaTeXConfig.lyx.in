@@ -1,4 +1,4 @@
-#This file was created by <mike> Wed Jun  9 15:30:54 1999
+#This file was created by <lasgoutt> Tue Sep 28 15:13:47 1999
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
@@ -714,7 +714,7 @@ article
 linuxdoc
 \layout Description
 
-Found: @chk_sgmltools@
+Found: @chk_linuxdoc@
 \layout Description
 
 CTAN: N/A
@@ -749,7 +749,22 @@ Found: @chk_docbook@
 CTAN: N/A
 \layout Description
 
-Notes: fill in here please.
+WWW: 
+\begin_inset LatexCommand \url{http://www.sgmltools.org}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: The class docbook is not a LaTeX document class.
+ It is designed to produce Docbook SGML documents, which, in turn, can be
+ exported as HTML, RTF, text, or dvi (through 
+\family typewriter 
+jadetex
+\family default 
+).
+ You need the sgmltools v2.0 package installed to use this.
 \layout Subsection
 
 paper
@@ -832,6 +847,24 @@ revtex.cls
 tex/
 \family default 
  subdirectory of LyX source distribution.
+\layout Subsection
+
+REVTeX 4
+\layout Description
+
+Found: @chk_revtex4@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/revtex4-beta/
+\layout Description
+
+Notes: RevTeX 4 is a class used for submitting manuscripts to journals including
+ APS (Physical Review A-E and Letters, Reviews in Modern Physics, Special
+ Topics---Accelerators and Beams), the American Institute of Physics, the
+ Optical Society of America, and the Society for Exploration Geophysicists.
+ [It is in BETA release as of September, 1999.]
 \layout Section
 
 Paper layout packages
