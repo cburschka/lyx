@@ -247,10 +247,7 @@ public:
 	RowList::iterator
 	getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
 
-	RowList & rows() {
-		return rowlist_;
-	}
-	RowList const & rows() const {
+	RowList & rows() const {
 		return rowlist_;
 	}
 

@@ -1,3 +1,11 @@
+2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (redoParagraphs): rewrite (with help from Alfredo) for
+	RowList::iterator.
+
+	* lyxtext.h (rows): drop one version and leve a const variant that
+	returns a RowList::iterator.
+
 2003-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* text.C (fill): ensure that the signature is the same as that in the

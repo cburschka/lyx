@@ -679,83 +679,72 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 void LyXText::redoParagraphs(LyXCursor const & cur,
 			     Paragraph const * endpar)
 {
-	Row * tmprow = cur.row();
+	RowList::iterator tmprit = cur.row();
 
-	int y = cur.y() - tmprow->baseline();
+	int y = cur.y() - tmprit->baseline();
 
 	Paragraph * first_phys_par = 0;
-	if (!tmprow->previous()) {
+	if (tmprit == rows().begin()) {
 		// a trick/hack for UNDO
 		// This is needed because in an UNDO/REDO we could have changed
 		// the ownerParagrah() so the paragraph inside the row is NOT
 		// my really first par anymore. Got it Lars ;) (Jug 20011206)
 		first_phys_par = ownerParagraph();
 	} else {
-		first_phys_par = tmprow->par();
-
-		// Find first row of this paragraph.
-		while (tmprow->previous()
-		       && tmprow->previous()->par() == first_phys_par)
+		first_phys_par = tmprit->par();
+		while (tmprit != rows().begin()
+		       && boost::prior(tmprit)->par() == first_phys_par)
 		{
-			tmprow = tmprow->previous();
-			y -= tmprow->height();
+			--tmprit;
+			y -= tmprit->height();
 		}
 	}
 
-	Row * prevrow = tmprow->previous();
+	RowList::iterator prevrit;
+	if (tmprit != rows().begin()) {
+		prevrit = boost::prior(tmprit);
+	} else {
+		prevrit = tmprit;
+		y = prevrit ->height();
+	}
 
-	// Remove all the rows until we reach endpar
+	// remove it
 	Paragraph * tmppar = 0;
-	if (tmprow->next())
-		tmppar = tmprow->next()->par();
-	while (tmprow->next() && tmppar != endpar) {
-		removeRow(tmprow->next());
-		if (tmprow->next()) {
-			tmppar = tmprow->next()->par();
+	if (boost::next(tmprit) != rows().end())
+		tmppar = boost::next(tmprit)->par();
+	while (boost::next(tmprit) != rows().end() && tmppar != endpar) {
+		removeRow(boost::next(tmprit));
+		if (boost::next(tmprit) != rows().end()) {
+			tmppar = boost::next(tmprit)->par();
 		} else {
 			tmppar = 0;
 		}
 	}
 
-	// Remove the first of the paragraphs rows.
-	// This is because tmprow->previous() can be 0
-	Row * tmprow2 = tmprow;
-	tmprow = tmprow->previous();
-	removeRow(tmprow2);
+	// remove the first one
+	RowList::iterator tmprit2 = tmprit; /* this is because tmprow->previous()
+				 can be 0 */
+	++tmprit;
+	removeRow(tmprit2);
 
 	// Reinsert the paragraphs.
 	tmppar = first_phys_par;
 	do {
 		if (tmppar) {
-			if (!tmprow) {
-				insertParagraph(tmppar, rowlist_.begin());
-			} else {
-				insertParagraph(tmppar, tmprow->next());
-			}
-
-
-			if (!tmprow) {
-				tmprow = &*rows().begin();
-			}
-			while (tmprow->next()
-			       && tmprow->next()->par() == tmppar) {
-				tmprow = tmprow->next();
+			insertParagraph(tmppar, tmprit);
+			while (tmprit != rows().end()
+			       && tmprit->par() == tmppar) {
+				++tmprit;
 			}
 			tmppar = tmppar->next();
 		}
 	} while (tmppar && tmppar != endpar);
 
-	// this is because of layout changes
-	if (prevrow) {
-		setHeightOfRow(prevrow);
-		const_cast<LyXText *>(this)->postPaint(y - prevrow->height());
-	} else {
-		setHeightOfRow(rows().begin());
-		const_cast<LyXText *>(this)->postPaint(0);
-	}
+	setHeightOfRow(prevrit);
+	const_cast<LyXText *>(this)->postPaint(y - prevrit->height());
 
-	if (tmprow && tmprow->next())
-		setHeightOfRow(tmprow->next());
+	if (tmprit != rows().end() && boost::next(tmprit) != rows().end())
+		setHeightOfRow(boost::next(tmprit));
 	updateCounters();
 }
 
@@ -1230,7 +1219,6 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
-#warning use boost.format
 #if USE_BOOST_FORMAT
 				s = boost::io::str(boost::format(_("%1$s #:")) % fl.name());
 				// s << boost::format(_("%1$s %1$d:")
@@ -1877,8 +1865,7 @@ void LyXText::setCurrentFont()
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type
-LyXText::getColumnNearX(RowList::iterator rit, int & x,
-			bool & boundary) const
+LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 {
 	float tmpx = 0.0;
 	float fill_separator;

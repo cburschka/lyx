@@ -455,7 +455,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		 * taken by the text).
 		 */
 		LyXText * t = inset.getLyXText(cmd.view());
-		t->need_break_row = &*t->rows().begin();
+		t->need_break_row = t->rows().begin();
 		t->fullRebreak();
 		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
 		inset.update(cmd.view(), true);
