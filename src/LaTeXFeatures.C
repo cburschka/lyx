@@ -106,9 +106,12 @@ bool LaTeXFeatures::isRequired(string const & name) const
 }
 
 
-void LaTeXFeatures::addExternalPreamble(string const & pream)
+void LaTeXFeatures::addExternalPreamble(string const & preamble)
 {
-	externalPreambles += pream;
+	FeaturesList::const_iterator begin = preamble_snippets.begin();
+	FeaturesList::const_iterator end   = preamble_snippets.end();
+	if (find(begin, end, preamble) == end)
+		preamble_snippets.push_back(preamble);
 }
 
 
@@ -298,7 +301,11 @@ string const LaTeXFeatures::getPackages() const
 		packages << "]{natbib}\n";
 	}
 
-	packages << externalPreambles;
+	FeaturesList::const_iterator pit  = preamble_snippets.begin();
+	FeaturesList::const_iterator pend = preamble_snippets.end();
+	for (; pit != pend; ++pit) {
+		packages << *pit << '\n';
+	}
 
 	return STRCONV(packages.str());
 }

@@ -1,3 +1,8 @@
+2003-09-03  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/fig2pdftex.sh: 
+	* scripts/fig2pstex.sh: fail silently if the input file doesn't exist.
+
 2003-08-22  José Matos  <jamatos@lyx.org>
 
 	* lyx2lyx/lyxconvert_210.py: first attempt to support 0.10.7

@@ -83,16 +83,14 @@ public:
 	bool useBabel() const;
 
 private:
-	string externalPreambles;
-
 	std::list<string> usedLayouts;
 
 	/// Static preamble bits from the external material insets
-
-
 	typedef std::list<string> FeaturesList;
 	///
 	FeaturesList features;
+	///
+	FeaturesList preamble_snippets;
 	///
 	typedef std::set<Language const *> LanguageList;
 	///

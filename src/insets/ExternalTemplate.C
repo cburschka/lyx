@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-
-#include <algorithm>
-
 #include "ExternalTemplate.h"
 
 #include "lyxlex.h"
@@ -21,6 +18,8 @@
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/path_defines.h"
+
+#include <algorithm>
 
 using namespace lyx::support;
 

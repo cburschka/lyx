@@ -117,6 +117,9 @@ test $# -eq 2 || exit 1
 input=$1
 output=$2
 
+# Fail silently if the file doesn't exist
+test -r $input || exit 0
+
 # Strip the extension from ${output}
 outbase=`echo ${output} | sed 's/[.][^.]*$//'`
 

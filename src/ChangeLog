@@ -1,3 +1,9 @@
+2003-09-03  Angus Leeming  <leeming@lyx.org>
+
+	* LaTeXFeatures.[Ch]: replace the externalPreambles string with a
+	preamble_snippets list, enabling us to add snippets to the preamble only
+	if the snippet was not there already.
+
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
 	* Chktex.C, converter.C, lyx_cb.C: add #include "support/lyxlib.h".
