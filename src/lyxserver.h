@@ -58,14 +58,10 @@ public:
 
 private:
 	/// the filename of the in pipe
-	std::string const inPipeName() const {
-		return pipename + std::string(".in");
-	}
+	std::string const inPipeName() const;
 
 	/// the filename of the out pipe
-	std::string const outPipeName() const {
-		return pipename + std::string(".out");
-	}
+	std::string const outPipeName() const;
 
 	/// Open pipes
 	void openConnection();

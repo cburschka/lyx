@@ -1,3 +1,9 @@
+2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* lyx_main.C (init): Compile fix.
+
+	* lyxserver.[Ch] (inPipeName, outPipeName): move out of line.
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* mover.h: change commentary to reflect the changed meaning of

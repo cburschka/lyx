@@ -355,6 +355,18 @@ void LyXComm::send(string const & msg)
 }
 
 
+string const LyXComm::inPipeName() const
+{
+	return pipename + string(".in");
+}
+
+
+string const LyXComm::outPipeName() const
+{
+	return pipename + string(".out");
+}
+
+
 // LyXServer class
 
 LyXServer::~LyXServer()
