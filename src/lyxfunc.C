@@ -356,12 +356,18 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_IMPORT:
 		if (argument == "latex")
 			disable = lyxrc.relyx_command == "none";
+		if (argument == "linuxdoc")
+			disable = lyxrc.linuxdoc_to_lyx_command == "none";
 		break;
 	case LFUN_EXPORT:
 		if (argument == "dvi" || argument == "postscript")
 			disable = noLaTeX;
 		if (argument == "html")
 			disable = lyxrc.html_command == "none";
+		if (argument == "html-linuxdoc")
+			disable = lyxrc.linuxdoc_to_html_command == "none";
+		if (argument == "html-docbook")
+			disable = lyxrc.docbook_to_html_command == "none";
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -769,6 +775,8 @@ string LyXFunc::Dispatch(int ac,
 			// noweb
 		} else if (imtyp == "noweb") {
 			doImportLaTeX(true);
+		} else if (imtyp == "linuxdoc") {
+			doImportLinuxDoc();
 		} else {
 			setErrorMessage(string(N_("Unknown import type: "))
 					+ imtyp);
@@ -2917,6 +2925,95 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 		owner->getMiniBuffer()->Set(isnoweb ?
 					    _("Could not import Noweb file") :
 					    _("Could not import LaTeX file"),
+					    MakeDisplayPath(filename));
+	}
+}
+
+
+void LyXFunc::doImportLinuxDoc()
+{
+	string initpath = lyxrc.document_path;
+	LyXFileDlg fileDlg;
+  
+	if (owner->view()->available()) {
+		string trypath = owner->buffer()->filepath;
+		// If directory is writeable, use this as default.
+		if (IsDirWriteable(trypath) == 1)
+			initpath = trypath;
+	}
+
+	// launches dialog
+	ProhibitInput();
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
+	fileDlg.SetButton(1, _("Examples"), 
+			  AddPath(system_lyxdir, "examples"));
+
+	string filename = fileDlg.Select(_("Select LinuxDoc file to Import"),
+					  initpath, "*.sgml");
+	
+	AllowInput();
+ 
+	// check selected filename
+	if (filename.empty()) {
+		owner->getMiniBuffer()->Set(_("Canceled."));
+		return;
+	}
+
+	// get absolute path of file
+	filename = MakeAbsPath(filename);
+
+	// Check if the document already is open
+	string LyXfilename = ChangeExtension(filename, ".lyx", false);
+	if (bufferlist.exists(LyXfilename)){
+		switch(AskConfirmation(_("Document is already open:"), 
+				       MakeDisplayPath(LyXfilename, 50),
+				       _("Do you want to close that document now?\n"
+					 "('No' will just switch to the open version)")))
+			{
+			case 1: // Yes: close the document
+				if (!bufferlist.close(bufferlist.getBuffer(LyXfilename)))
+				// If close is canceled, we cancel here too.
+					return;
+				break;
+			case 2: // No: switch to the open document
+				owner->view()->buffer(
+					bufferlist.getBuffer(LyXfilename));
+				return;
+			case 3: // Cancel: Do nothing
+				owner->getMiniBuffer()->Set(_("Canceled."));
+				return;
+			}
+	}
+
+	// Check if a LyX document by the same root exists in filesystem
+	FileInfo f(LyXfilename, true);
+	if (f.exist() && !AskQuestion(_("A document by the name"), 
+				      MakeDisplayPath(LyXfilename),
+				      _("already exists. Overwrite?"))) {
+		owner->getMiniBuffer()->Set(_("Canceled."));
+		return;
+	}
+
+	// loads document
+	owner->getMiniBuffer()->Set(_("Importing LinuxDoc file"),
+				    MakeDisplayPath(filename), "...");
+
+	// run sgml2lyx
+	string tmp = lyxrc.linuxdoc_to_lyx_command + filename;
+        Systemcalls one;
+	Buffer * buf = 0;
+
+	int result = one.startscript(Systemcalls::System, tmp);
+	if (result == 0) {
+		string filename = ChangeExtension(filename, ".lyx", false);
+		// File was generated without problems. Load it.
+		buf = bufferlist.loadLyXFile(filename);
+		owner->view()->buffer(buf);
+		owner->getMiniBuffer()->Set(_("LinuxDoc file "),
+					    MakeDisplayPath(filename),
+					    _("imported."));
+	} else {
+		owner->getMiniBuffer()->Set(_("Could not import LinuxDoc file"),
 					    MakeDisplayPath(filename));
 	}
 }

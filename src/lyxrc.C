@@ -86,7 +86,6 @@ enum LyXRCTags {
 	RC_SCREEN_FONT_ENCODING,
 	RC_SCREEN_FONT_ENCODING_MENU,
 	RC_AUTOSAVE,
-	RC_SGML_EXTRA_OPTIONS,
 	RC_DOCUMENTPATH,
 	RC_TEMPLATEPATH,
 	RC_TEMPDIRPATH,
@@ -148,6 +147,12 @@ enum LyXRCTags {
 	RC_DATE_INSERT_FORMAT,
 	RC_SHOW_BANNER,
 	RC_USE_GUI,
+	RC_LINUXDOC_TO_LYX_COMMAND,
+	RC_LINUXDOC_TO_HTML_COMMAND,
+	RC_LINUXDOC_TO_LATEX_COMMAND,
+	RC_DOCBOOK_TO_DVI_COMMAND,
+	RC_DOCBOOK_TO_HTML_COMMAND,
+	RC_DOCBOOK_TO_PDF_COMMAND,
 	RC_LAST
 };
 
@@ -176,6 +181,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\date_insert_format", RC_DATE_INSERT_FORMAT },
 	{ "\\default_papersize", RC_DEFAULT_PAPERSIZE },
 	{ "\\display_shortcuts", RC_DISPLAY_SHORTCUTS },
+	{ "\\docbook_to_dvi_command", RC_DOCBOOK_TO_DVI_COMMAND },
+	{ "\\docbook_to_html_command", RC_DOCBOOK_TO_HTML_COMMAND },
+	{ "\\docbook_to_pdf_command", RC_DOCBOOK_TO_PDF_COMMAND },
 	{ "\\document_path", RC_DOCUMENTPATH },
 	{ "\\dvi_to_ps_command", RC_DVI_TO_PS_COMMAND },
 	{ "\\escape_chars", RC_ESC_CHARS },
@@ -195,6 +203,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_package", RC_LANGUAGE_PACKAGE },
 	{ "\\lastfiles", RC_LASTFILES },
 	{ "\\latex_command", RC_LATEX_COMMAND },
+	{ "\\linuxdoc_to_html_command", RC_LINUXDOC_TO_HTML_COMMAND },
+	{ "\\linuxdoc_to_latex_command", RC_LINUXDOC_TO_LATEX_COMMAND },
+	{ "\\linuxdoc_to_lyx_command", RC_LINUXDOC_TO_LYX_COMMAND },
         { "\\literate_command", RC_LITERATE_COMMAND },
         { "\\literate_error_filter", RC_LITERATE_ERROR_FILTER },
         { "\\literate_extension", RC_LITERATE_EXTENSION },
@@ -239,7 +250,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_zoom", RC_SCREEN_ZOOM },
 	{ "\\selection_color", RC_SELECTION_COLOR },
 	{ "\\serverpipe", RC_SERVERPIPE },
-	{ "\\sgml_extra_options", RC_SGML_EXTRA_OPTIONS },
 	{ "\\show_banner", RC_SHOW_BANNER },
 	{ "\\spell_command", RC_SPELL_COMMAND },
 	{ "\\tempdir_path", RC_TEMPDIRPATH },
@@ -362,6 +372,16 @@ void LyXRC::setDefaults() {
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
 	use_gui = true;
+
+	///
+	linuxdoc_to_latex_command="none";
+	linuxdoc_to_lyx_command="none";
+	linuxdoc_to_html_command="none";
+
+	docbook_to_dvi_command="none";
+	docbook_to_html_command="none";
+	docbook_to_pdf_command="none";
+
 	//
 	defaultKeyBindings();
 }
@@ -740,11 +760,6 @@ int LyXRC::read(string const & filename)
 				autosave = lexrc.GetInteger();
 			break;
 			
-		case RC_SGML_EXTRA_OPTIONS:
-			if (lexrc.next())
-				sgml_extra_options = lexrc.GetString();
-			break;
-			
 		case RC_DOCUMENTPATH:
 			if (lexrc.next()) {
 				document_path = ExpandPath(lexrc.GetString());
@@ -997,6 +1012,30 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				use_gui = lexrc.GetBool();
 			break;
+		case RC_LINUXDOC_TO_LYX_COMMAND:
+			if ( lexrc.next())
+				linuxdoc_to_lyx_command = lexrc.GetString();
+			break;
+		case RC_LINUXDOC_TO_HTML_COMMAND:
+			if ( lexrc.next())
+				linuxdoc_to_html_command = lexrc.GetString();
+			break;
+		case RC_LINUXDOC_TO_LATEX_COMMAND:
+			if ( lexrc.next())
+				linuxdoc_to_latex_command = lexrc.GetString();
+			break;
+		case RC_DOCBOOK_TO_DVI_COMMAND:
+			if ( lexrc.next())
+				docbook_to_dvi_command = lexrc.GetString();
+			break;
+		case RC_DOCBOOK_TO_HTML_COMMAND:
+			if ( lexrc.next())
+				docbook_to_html_command = lexrc.GetString();
+			break;
+		case RC_DOCBOOK_TO_PDF_COMMAND:
+			if ( lexrc.next())
+				docbook_to_pdf_command = lexrc.GetString();
+			break;
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1201,9 +1240,6 @@ void LyXRC::output(ostream & os) const
 		os << "\\chktex_command \"" << chktex_command << "\"\n";
 	case RC_HTML_COMMAND:
 		os << "\\html_command \"" << html_command << "\"\n";
-	case RC_SGML_EXTRA_OPTIONS:
-		os << "\\sgml_extra_options \"" << sgml_extra_options
-		   << "\"\n";
 	case RC_KBMAP:
 		os << "\\kbmap " << tostr(use_kbmap) << "\n";
 	case RC_KBMAP_PRIMARY:
@@ -1316,6 +1352,24 @@ void LyXRC::output(ostream & os) const
 		os << "\\show_banner " << tostr(show_banner) << "\n";
 	case RC_USE_GUI:
 		os << "\\use_gui " << tostr(show_banner) << "\n";
+	case RC_LINUXDOC_TO_LYX_COMMAND:
+		os << "\\linuxdoc_to_lyx_command \"" << linuxdoc_to_lyx_command
+		   << "\"\n";
+	case RC_LINUXDOC_TO_HTML_COMMAND:
+		os << "\\linuxdoc_to_html_command \"" << linuxdoc_to_html_command
+		   << "\"\n";
+	case RC_LINUXDOC_TO_LATEX_COMMAND:
+		os << "\\linuxdoc_to_latex_command \"" << linuxdoc_to_latex_command
+		   << "\"\n";
+	case RC_DOCBOOK_TO_DVI_COMMAND:
+		os << "\\docbook_to_dvi_command \"" << docbook_to_dvi_command
+		   << "\"\n";
+	case RC_DOCBOOK_TO_HTML_COMMAND:
+		os << "\\docbook_to_html_command \"" << docbook_to_html_command
+		   << "\"\n";
+	case RC_DOCBOOK_TO_PDF_COMMAND:
+		os << "\\docbook_to_pdf_command \"" << docbook_to_pdf_command
+		   << "\"\n";
 	}
 	os.flush();
 }

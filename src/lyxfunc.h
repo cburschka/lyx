@@ -115,6 +115,9 @@ private:
 	void doImportASCII(bool);
 
 	///
+	void doImportLinuxDoc();
+
+	///
 	void MenuInsertLyXFile(string const &);
 
 	///

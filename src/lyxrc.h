@@ -121,8 +121,6 @@ public:
 	/// command to run an html converter incl. options
 	string html_command;
 	///
-	string sgml_extra_options;
-	///
 	string document_path;
 	///
 	string template_path;
@@ -228,6 +226,18 @@ public:
 	bool show_banner;
 	/// Do we have to use a GUI?
 	bool use_gui;
+	///
+	string linuxdoc_to_lyx_command;
+	///
+	string linuxdoc_to_html_command;
+	///
+	string linuxdoc_to_latex_command;
+	///
+	string docbook_to_dvi_command;
+	///
+	string docbook_to_html_command;
+	///
+	string docbook_to_pdf_command;
 	///
 	typedef map<string, int> Bindings;
 	///

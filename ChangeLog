@@ -1,3 +1,18 @@
+2000-03-20 José Abílio Matos <jamatos@lyx.org>
+
+	* src/lyxrc.[Ch] Removed \sgml_extra_options, added 6 other flags
+	for linuxdoc and docbook import and export format options.
+
+	* lib/lyxrc.example Example of default values for the previous flags.
+
+	* src/lyx_cb.C Use those flags instead of the hardwired values for
+	linuxdoc and docbook export.
+
+	* src/lyxfunc.[Ch] Added HTML export for linuxdoc and docbook, added
+	linuxdoc import.
+
+	* src/menus.C Added menus entries for the new import/exports formats.
+	
 2000-03-09 André Pönitz <poenitz@mathematik.tu-chemnitz.de>
 
 	* src/lyxrc.*: Added support for running without Gui 

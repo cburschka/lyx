@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include <fstream>
+#include <algorithm>
 
 using std::ifstream;
 using std::copy;
@@ -947,6 +948,57 @@ void MenuMakeHTML(Buffer * buffer)
 
 }
 
+void MenuMakeHTML_LinuxDoc(Buffer * buffer)
+{
+	// First, create LinuxDoc file
+	MenuMakeLinuxDoc(buffer);
+
+	// And now, run the converter
+	string file = buffer->fileName();
+
+	string result = ChangeExtension(file, ".html", false);
+	string infile = ChangeExtension(file, ".sgml", false);
+	string tmp = lyxrc.linuxdoc_to_html_command;
+	tmp = subst(tmp, "$$FName", infile);
+	tmp = subst(tmp, "$$OutName", result);
+	Systemcalls one;
+	int res = one.startscript(Systemcalls::System, tmp);
+	if (res == 0) {
+		ShowMessage(buffer,_("Document exported as HTML to file `")
+						  + MakeDisplayPath(result) +'\'');
+	} else {
+		ShowMessage(buffer,_("Unable to convert to HTML the file `")
+						  + MakeDisplayPath(infile) 
+						  + '\'');
+	}
+
+}
+
+void MenuMakeHTML_DocBook(Buffer * buffer)
+{
+	// First, create LaTeX file
+	MenuMakeDocBook(buffer);
+
+	// And now, run the converter
+	string file = buffer->fileName();
+	string result = ChangeExtension(file, ".html", false);
+	string infile = ChangeExtension(file, ".sgml", false);
+	string tmp = lyxrc.docbook_to_html_command;
+	tmp = subst(tmp, "$$FName", infile);
+	tmp = subst(tmp, "$$OutName", result);
+	Systemcalls one;
+	int res = one.startscript(Systemcalls::System, tmp);
+	if (res == 0) {
+		ShowMessage(buffer,_("Document exported as HTML to file `")
+						  + MakeDisplayPath(result) +'\'');
+	} else {
+		ShowMessage(buffer,_("Unable to convert to HTML the file `")
+						  + MakeDisplayPath(infile) 
+						  + '\'');
+	}
+
+}
+
 void MenuExport(Buffer * buffer, string const & extyp) 
 {
 	// latex
@@ -995,6 +1047,14 @@ void MenuExport(Buffer * buffer, string const & extyp)
 	// HTML
 	else if (extyp == "html") {
 		MenuMakeHTML(buffer);
+	}
+	// HTML from linuxdoc
+	else if (extyp == "html-linuxdoc") {
+		MenuMakeHTML_LinuxDoc(buffer);
+	}
+	// HTML from docbook
+	else if (extyp == "html-docbook") {
+		MenuMakeHTML_DocBook(buffer);
 	}
 	else {
 		ShowMessage(buffer, _("Unknown export type: ") + extyp);
@@ -1327,15 +1387,13 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	switch (flag) {
 	case 0: /* TeX output asked */
 	      bv->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
-		s2 = "sgml2latex " + add_flags + " -o tex "
-			+ lyxrc.sgml_extra_options + ' ' + name;
+		s2 = lyxrc.linuxdoc_to_latex_command + ' ' + add_flags + " -o tex " + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 1: /* dvi output asked */
 		bv->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to dvi file..."));
-		s2 = "sgml2latex " + add_flags + " -o dvi "
-			+ lyxrc.sgml_extra_options + ' ' + name;
+		s2 = lyxrc.linuxdoc_to_latex_command + ' ' + add_flags + " -o dvi " + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
@@ -1372,6 +1430,7 @@ int RunDocBook(int flag, string const & filename)
 	current_view->buffer()->makeDocBookFile(name, 0);
 
 	// Shall this code go or should it stay? (Lgb)
+	// This code is a placeholder for future implementation. (Jose')
 //  	string add_flags;
 //  	LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->buffer()->params.papersize;
 //  	switch (ps) {
@@ -1387,7 +1446,7 @@ int RunDocBook(int flag, string const & filename)
 	case 1: /* dvi output asked */
 	{
 		current_view->owner()->getMiniBuffer()->Set(_("Converting DocBook SGML to dvi file..."));
-		string s2 = "sgmltools --backend dvi " + name;
+		string s2 = lyxrc.docbook_to_dvi_command + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else

@@ -150,11 +150,6 @@
 # Example: use this to let math be italic with tth.
 #\html_command "tth -t -i < '$$FName' > '$$OutName'"
 
-# If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
-# here. 
-# Example: the next line activates iso-latin1 support:
-#\sgml_extra_options -l
-
 # Keyboard Mapping. Use this to set the correct mapping file for your
 # keyboard, that is if you need one. You'll need one if you for instance
 # want to type German documents on an American keyboard. In that case,
@@ -458,6 +453,36 @@
 #\font_encoding T1
 # Choose "default" if T1 doesn't work for you for some reason:
 #\font_encoding default
+
+
+#
+# LINUXDOC SECTION #######################################################
+#
+
+# If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
+# here. 
+# Example: the next line activates iso-latin1 support:
+#\linuxdoc_to_latex_command "sgml2latex -c latin"
+
+# Here you have the command to convert from linuxdoc to html.
+# Example: one html file only.
+#\linuxdoc_to_html_command "sgml2html -s 0"
+
+# The LinuxDoc to LyX converter
+#\linuxdoc_to_lyx_command "sgml2lyx"
+
+#
+# DOCBOOK SECTION ########################################################
+#
+
+# Command to convert a docbook file to dvi
+#\docbook_to_dvi_command "sgmltools -b dvi"
+
+# Command to convert a docbook file to html
+#\docbook_to_html_command "sgmltools -b html"
+
+# Command to convert a docbook file to pdf
+#\docbook_to_pdf_command ""
 
 
 #

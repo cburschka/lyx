@@ -467,12 +467,14 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 					"|LaTeX...%x30"
 					"|Ascii Text as Lines...%x31"
 					"|Ascii Text as Paragraphs%x32"
-					"|Noweb%x33"));
-	
+					"|Noweb%x33"
+					"|LinuxDoc%x34"));
+
 	fl_setpup_shortcut(SubFileImport, 30, scex(_("FIM|Ll#l#L")));
 	fl_setpup_shortcut(SubFileImport, 31, scex(_("FIM|Aa#a#A")));
 	fl_setpup_shortcut(SubFileImport, 32, scex(_("FIM|Pp#p#P")));
 	fl_setpup_shortcut(SubFileImport, 33, scex(_("FIM|Nn#n#N")));
+	fl_setpup_shortcut(SubFileImport, 34, scex(_("FIM|Dd#d#D")));
 
 	// Export sub-menu
 
@@ -494,21 +496,24 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 					   "|as LinuxDoc...%x40"
 					   "|as DVI...%x41"
 					   "|as PostScript...%x42"
-					   "|as Ascii Text...%x43"));
+					   "|as Ascii Text...%x43"
+					   "|as HTML...%x44"));
         else if(DocBook)
 		SubFileExport= fl_defpup(FL_ObjWin(ob),
 					 _("Export%t"
 					   "|as DocBook...%x40"
 					   "|as DVI...%x41"
 					   "|as PostScript...%x42"
-					   "|as Ascii Text...%x43"));
+					   "|as Ascii Text...%x43"
+					   "|as HTML...%x44"));
 
 	fl_setpup_shortcut(SubFileExport, 40, scex(_("FEX|Ll#l#L")));
 	fl_setpup_shortcut(SubFileExport, 41, scex(_("FEX|Dd#d#D")));
 	fl_setpup_shortcut(SubFileExport, 42, scex(_("FEX|Pp#p#P")));
 	fl_setpup_shortcut(SubFileExport, 43, scex(_("FEX|Tt#t#T")));
+	fl_setpup_shortcut(SubFileExport, 44, scex(_("FEX|Hh#h#H")));
+
 	if (!LinuxDoc && !DocBook) {
-		fl_setpup_shortcut(SubFileExport, 44, scex(_("FEX|Hh#h#H")));
 		fl_setpup_shortcut(SubFileExport, 45, scex(_("FEX|mM#m#M")));
 	}
 	
@@ -575,13 +580,18 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(SubFileImport, 33, FL_PUP_GREY);
 	}
 
+	if ( lyxrc.linuxdoc_to_lyx_command == "none")
+		fl_setpup_mode(SubFileImport, 34, FL_PUP_GREY);
+
 	if (!hasLaTeX) {
 		// Disable export dvi and export postscript
 		fl_setpup_mode(SubFileExport, 41, FL_PUP_GREY);
 		fl_setpup_mode(SubFileExport, 42, FL_PUP_GREY);
 	}
 
-	if (lyxrc.html_command == "none") {
+	if ((!LinuxDoc && !DocBook && lyxrc.html_command == "none") ||
+	    ( LinuxDoc && lyxrc.linuxdoc_to_html_command == "none") ||
+	    ( DocBook  && lyxrc.docbook_to_html_command  == "none")) {
 		// Disable export HTML
 		fl_setpup_mode(SubFileExport, 44, FL_PUP_GREY);
 	}
@@ -644,6 +654,8 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		break;
 	case 33: tmpfunc->Dispatch(LFUN_IMPORT, "noweb");
 		break;
+	case 34: tmpfunc->Dispatch(LFUN_IMPORT, "linuxdoc");
+		break;
 	case 16: // export menu
 	case 40:
 		if (!LinuxDoc && !DocBook)
@@ -659,7 +671,13 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		break;
 	case 43: tmpfunc->Dispatch(LFUN_EXPORT, "ascii");
 		break;
-	case 44: tmpfunc->Dispatch(LFUN_EXPORT, "html");
+	case 44:
+		if (!LinuxDoc && !DocBook)
+			tmpfunc->Dispatch(LFUN_EXPORT, "html");
+		else if(LinuxDoc)
+			tmpfunc->Dispatch(LFUN_EXPORT, "html-linuxdoc");
+		else
+			tmpfunc->Dispatch(LFUN_EXPORT, "html-docbook");
 		break;
 	case 45: tmpfunc->Dispatch(LFUN_EXPORT, "custom"); 
 		break;
@@ -706,12 +724,14 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 					"|LaTeX...%x15"
 					"|Ascii Text as Lines...%x16"
 					"|Ascii Text as Paragraphs...%x17"
-					"|Noweb...%x18"));
+					"|Noweb...%x18"
+					"|LinuxDoc...%x19"));
 	
 	fl_setpup_shortcut(SubFileImport, 15, scex(_("FIM|Ll#l#L")));
 	fl_setpup_shortcut(SubFileImport, 16, scex(_("FIM|Aa#a#A")));
 	fl_setpup_shortcut(SubFileImport, 17, scex(_("FIM|Pp#p#P")));
 	fl_setpup_shortcut(SubFileImport, 18, scex(_("FIM|Nn#n#N")));
+	fl_setpup_shortcut(SubFileImport, 19, scex(_("FIM|Dd#d#D")));
 
 	bool hasReLyX = lyxrc.relyx_command != "none";
 	if (!hasReLyX) {
@@ -719,6 +739,9 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 		fl_setpup_mode(SubFileImport, 15, FL_PUP_GREY);
 		fl_setpup_mode(SubFileImport, 18, FL_PUP_GREY);
 	}
+
+	if ( lyxrc.linuxdoc_to_lyx_command == "none")
+		fl_setpup_mode(SubFileImport, 19, FL_PUP_GREY);
 
 	// This can be done cleaner later.
 	int FileMenu = fl_defpup(FL_ObjWin(ob), 
@@ -776,6 +799,8 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	case 17: tmpfunc->Dispatch(LFUN_IMPORT, "asciiparagraph");
 		break;
 	case 18: tmpfunc->Dispatch(LFUN_IMPORT, "noweb");
+		break;
+	case 19: tmpfunc->Dispatch(LFUN_IMPORT, "linuxdoc");
 		break;
 	case 5:
 		tmpfunc->Dispatch(LFUN_QUIT);
