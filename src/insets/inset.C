@@ -205,7 +205,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 			scx += offset;
 		}
 	}
-	// bv->updateInset(const_cast<UpdatableInset *>(this), false);
+//	bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
 

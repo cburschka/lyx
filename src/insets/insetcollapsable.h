@@ -131,6 +131,17 @@ public:
 	void resizeLyXText(BufferView *) const;
 	///
 	std::vector<string> const getLabelList() const;
+	///
+	bool nodraw() const;
+	///
+	int scroll(bool recursive=true) const;
+	void scroll(BufferView *bv, float sx) const {
+		UpdatableInset::scroll(bv, sx);
+	}
+	void scroll(BufferView *bv, int offset) const {
+		UpdatableInset::scroll(bv, offset);
+	}
+
 protected:
 	///
 	int ascent_collapsed(Painter &, LyXFont const &) const;
