@@ -369,7 +369,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 	bv_->text->first_y = screen_->topCursorVisible(bv_->text);
-#if 0
+	// please tell me WHY the heck you deactivated this code, whoever
+	// 'you' are (Jug 20020311)
+#if 1
 	buffer_->resizeInsets(bv_);
 #endif
 	// this will scroll the screen such that the cursor becomes visible
