@@ -112,6 +112,8 @@ public:
 	virtual bool isTextInset() const { return true; }
 	///
 	virtual void mutateToText();
+	///
+	virtual void revealCodes(BufferView *) const;
 
 
 private:

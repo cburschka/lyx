@@ -428,6 +428,20 @@ void MathCursor::plainErase()
 }
 
 
+void MathCursor::markInsert()
+{
+	//lyxerr << "inserting mark\n";
+	array().insert(pos(), MathAtom(new MathCharInset(0, lastcode_)));
+}
+
+
+void MathCursor::markErase()
+{
+	//lyxerr << "deleting mark\n";
+	array().erase(pos());
+}
+
+
 void MathCursor::plainInsert(MathAtom const & t)
 {
 	array().insert(pos(), t);

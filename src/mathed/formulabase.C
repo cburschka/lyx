@@ -571,10 +571,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_MODE:
-		//handleFont(bv, arg, LM_TC_TEXTRM);
+#if 0
+		handleFont(bv, arg, LM_TC_TEXTRM);
+#endif
 
-		//mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
-		//updateLocal(bv, true);
+#if 0
+		mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+		updateLocal(bv, true);
+#endif
 
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
@@ -729,7 +733,42 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	else
 		bv->unlockInset(this);
 
+	revealCodes(bv);
+
 	return result;  // original version
+}
+
+
+void InsetFormulaBase::revealCodes(BufferView * bv) const
+{
+	if (!mathcursor)
+		return;
+#if 0
+	// write something to the minibuffer
+	// translate to latex
+	mathcursor->markInsert();
+	ostringstream os;
+	write(NULL, os);
+	string str = os.str();
+	mathcursor->markErase();
+	string::size_type pos = 0;
+	string res;
+	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+		if (*it == '\n')
+			res += ' ';
+		else if (*it == '\0') {
+			res += "  -X-  ";
+			pos = it - str.begin();
+		}
+		else
+			res += *it;
+	}
+	if (pos > 30)
+		res = res.substr(pos - 30);
+	if (res.size() > 60)
+		res = res.substr(0, 60);
+	bv->owner()->message(res);
+#endif
 }
 
 

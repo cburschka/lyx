@@ -244,6 +244,10 @@ public:
 	///
 	void insert(char);
 
+	/// hack for reveal codes
+	void markInsert();
+	void markErase();
+	
 	///
 	friend class Selection;
 

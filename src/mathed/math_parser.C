@@ -53,6 +53,7 @@ point to write some macros:
 #include "math_inset.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
+#include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
@@ -73,7 +74,7 @@ point to write some macros:
 
 #include "lyxlex.h"
 #include "debug.h"
-
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 
 #include <cctype>
@@ -86,6 +87,8 @@ using std::ios;
 using std::endl;
 using std::stack;
 using std::fill;
+
+//#define FILEDEBUG
 
 
 namespace {
@@ -539,7 +542,9 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-	//dump();
+#ifdef FILEDEBUG
+	dump();
+#endif
 }
 
 
@@ -895,9 +900,11 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 	while (good()) {
 		Token const & t = getToken();
 	
-		//lyxerr << "t: " << t << " flags: " << flags << "\n";
-		//array.dump(lyxerr);
-		//lyxerr << "\n";
+#ifdef FILEDEBUG
+		lyxerr << "t: " << t << " flags: " << flags << "\n";
+		//array.dump();
+		lyxerr << "\n";
+#endif
 
 		if (flags & FLAG_ITEM) {
 			flags &= ~FLAG_ITEM;
@@ -976,6 +983,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				return;
 			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
 			//lyxerr << "found '}' unexpectedly\n";
+			lyx::Assert(0);
 			add(array, '}', LM_TC_TEX);
 		}
 		
@@ -1157,9 +1165,12 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(MathAtom(p));
 			//lyxerr << "read array: " << array << "\n";
 		}
+#endif
 
-		else if (t.cs() == "mbox") {
-			array.push_back(createMathInset(t.cs()));
+#if 0
+		else if (t.cs() == "mbox" || t.cs() == "text") {
+			//array.push_back(createMathInset(t.cs()));
+			array.push_back(MathAtom(new MathBoxInset(t.cs())));
 			// slurp in the argument of mbox
 	
 			MathBoxInset * p = array.back()->asBoxInset();

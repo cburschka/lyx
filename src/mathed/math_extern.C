@@ -157,7 +157,7 @@ MathInset * singleItem(MathArray & ar)
 
 void extractMatrices(MathArray & ar)
 {
-	lyxerr << "\nMatrices from: " << ar << "\n";
+	//lyxerr << "\nMatrices from: " << ar << "\n";
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathDelimInset * del = (*it)->asDelimInset();
 		if (!del)
@@ -167,7 +167,7 @@ void extractMatrices(MathArray & ar)
 			continue;
 		*it = MathAtom(new MathMatrixInset(*(arr->asArrayInset())));
 	}
-	lyxerr << "\nMatrices to: " << ar << "\n";
+	//lyxerr << "\nMatrices to: " << ar << "\n";
 }
 
 
@@ -266,7 +266,7 @@ void replaceNested(
 
 void splitScripts(MathArray & ar)
 {
-	lyxerr << "\nScripts from: " << ar << "\n";
+	//lyxerr << "\nScripts from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -289,7 +289,7 @@ void splitScripts(MathArray & ar)
 		++i;
 		ar.insert(i, MathAtom(q)); 
 	}
-	lyxerr << "\nScripts to: " << ar << "\n";
+	//lyxerr << "\nScripts to: " << ar << "\n";
 }
 
 
@@ -299,7 +299,7 @@ void splitScripts(MathArray & ar)
 
 void extractExps(MathArray & ar)
 {
-	lyxerr << "\nExps from: " << ar << "\n";
+	//lyxerr << "\nExps from: " << ar << "\n";
 
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
@@ -322,7 +322,7 @@ void extractExps(MathArray & ar)
 		(*it).reset(func);
 		ar.erase(it + 1);
 	}
-	lyxerr << "\nExps to: " << ar << "\n";
+	//lyxerr << "\nExps to: " << ar << "\n";
 }
 
 
@@ -353,9 +353,9 @@ MathInset * replaceDelims(const MathArray & ar)
 // replace '('...')' sequences by a real MathDelimInset
 void extractDelims(MathArray & ar)
 {
-	lyxerr << "\nDelims from: " << ar << "\n";
+	//lyxerr << "\nDelims from: " << ar << "\n";
 	replaceNested(ar, testOpenParan, testCloseParan, replaceDelims);
-	lyxerr << "\nDelims to: " << ar << "\n";
+	//lyxerr << "\nDelims to: " << ar << "\n";
 }
 
 
@@ -373,7 +373,7 @@ void extractFunctions(MathArray & ar)
 	if (ar.size() <= 1)
 		return;
 
-	lyxerr << "\nFunctions from: " << ar << "\n";
+	//lyxerr << "\nFunctions from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 		MathArray::iterator jt = it + 1;
@@ -418,7 +418,7 @@ void extractFunctions(MathArray & ar)
 
 		// re-insert exponent
 		ar.insert(i + 1, exp);
-		lyxerr << "\nFunctions to: " << ar << "\n";
+		//lyxerr << "\nFunctions to: " << ar << "\n";
 	}
 } 
 
@@ -453,7 +453,7 @@ void extractIntegrals(MathArray & ar)
 	if (ar.size() <= 2)
 		return;
 
-	lyxerr << "\nIntegrals from: " << ar << "\n";
+	//lyxerr << "\nIntegrals from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -499,7 +499,7 @@ void extractIntegrals(MathArray & ar)
 		ar.erase(it + 1, tt);
 		(*it).reset(p);
 	}
-	lyxerr << "\nIntegrals to: " << ar << "\n";
+	//lyxerr << "\nIntegrals to: " << ar << "\n";
 }
 
 
@@ -528,7 +528,7 @@ void extractSums(MathArray & ar)
 	if (ar.size() <= 1)
 		return;
 
-	lyxerr << "\nSums from: " << ar << "\n";
+	//lyxerr << "\nSums from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i + 1< ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -575,7 +575,7 @@ void extractSums(MathArray & ar)
 		ar.erase(it + 1, tt);
 		(*it).reset(p);
 	}
-	lyxerr << "\nSums to: " << ar << "\n";
+	//lyxerr << "\nSums to: " << ar << "\n";
 }
 
 
@@ -620,7 +620,7 @@ bool extractDiffExponent(MathArray::iterator it, int & i)
 
 void extractDiff(MathArray & ar)
 {
-	lyxerr << "\nDiffs from: " << ar << "\n";
+	//lyxerr << "\nDiffs from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -670,7 +670,7 @@ void extractDiff(MathArray & ar)
 				// things like   d.../dx^n
 				int mult = 1;
 				if (extractNumber(script->up().data_, mult)) {
-					lyxerr << "mult: " << mult << std::endl;
+					//lyxerr << "mult: " << mult << std::endl;
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathArray(dt + 1, st));
 				}
@@ -685,7 +685,7 @@ void extractDiff(MathArray & ar)
 		ar.erase(it + 1, jt);
 		(*it).reset(diff);
 	}
-	lyxerr << "\nDiffs to: " << ar << "\n";
+	//lyxerr << "\nDiffs to: " << ar << "\n";
 }
 
 
