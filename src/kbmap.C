@@ -162,8 +162,8 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 					<< seq->print()
 					<< "' is overriding old binding..."
 					<< endl;
-					if (it->table.get()) {
-					it->table.reset(0);
+				if (it->table.get()) {
+					it->table.reset();
 				}
 				it->action = action;
 				return;
@@ -184,7 +184,7 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 	newone->mod = modmsk;
 	if (r + 1 == seq->length()) {
 		newone->action = action;
-		newone->table.reset(0);
+		newone->table.reset();
 		return;
 	} else {
 		newone->table.reset(new kb_keymap);

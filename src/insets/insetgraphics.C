@@ -163,7 +163,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 
 InsetGraphics::~InsetGraphics()
 {
-	cached_image_.reset(0);
+	cached_image_.reset();
 	grfx::GCache & gc = grfx::GCache::get();
 	gc.remove(*this);
 
@@ -349,7 +349,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	// Reset the cache, ready for the next draw request
 	cached_status_ = grfx::ErrorUnknown;
-	cached_image_.reset(0);
+	cached_image_.reset();
 	cache_filled_ = false;
 }
 
@@ -631,19 +631,19 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 	// Perform all these manipulations on a temporary file if possible.
 	// If we are not using a temp dir, then temp_file contains the
-	// original file. 
+	// original file.
 	// to allow files with the same name in different dirs
-	// we manipulate the original file "any.dir/file.ext" 
-	// to "any_dir_file.ext"! changing the dots in the  
+	// we manipulate the original file "any.dir/file.ext"
+	// to "any_dir_file.ext"! changing the dots in the
 	// dirname is important for the use of ChangeExtension
 	string temp_file(orig_file);
 	if (lyxrc.use_tempdir) {
 		string const ext_tmp = GetExtension(orig_file);
 		// without ext and /
-		temp_file = subst(		
+		temp_file = subst(
 			ChangeExtension(temp_file, string()), "/", "_");
 		// without . and again with ext
-		temp_file = ChangeExtension(	
+		temp_file = ChangeExtension(
 			subst(temp_file, ".", "_"), ext_tmp);
 		// now we have any_dir_file.ext
 		temp_file = MakeAbsPath(temp_file, buf->tmppath);
@@ -656,7 +656,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	if (lyxrc.use_tempdir && !IsFileReadable(temp_file)) {
 		bool const success = lyx::copy(orig_file_with_path, temp_file);
 		lyxerr[Debug::GRAPHICS]
-			<< "InsetGraphics::prepareFile. Copying from " 
+			<< "InsetGraphics::prepareFile. Copying from "
 			<< orig_file << " to " << temp_file
 			<< (success ? " succeeded\n" : " failed\n");
 		if (!success) {
@@ -668,7 +668,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 	// Uncompress the file if necessary. If it has been uncompressed in
 	// a previous call to prepareFile, do nothing.
-        if (zipped) {
+	if (zipped) {
 		// What we want to end up with:
 		string const temp_file_unzipped =
 			ChangeExtension(temp_file, string());
@@ -731,12 +731,12 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
 	string const file_(MakeAbsPath(params().filename, buf->filePath()));
-	bool const file_exists = 
-		!file_.empty() && 
+	bool const file_exists =
+		!file_.empty() &&
 		(IsFileReadable(file_) ||		// original
-		 IsFileReadable(file_ + ".eps") || 	// original.eps
+		 IsFileReadable(file_ + ".eps") ||	// original.eps
 		 IsFileReadable(file_ + ".ps"));	// original.ps
-	string const message = file_exists ? 
+	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps]");
 	// if !message.empty() than there was no existing file
 	// "filename(.(e)ps)" found. In this case LaTeX

@@ -32,12 +32,6 @@ using std::endl;
 #include <unistd.h>
 #include <sys/mman.h>
 
-using std::ifstream;
-using std::for_each;
-using std::istreambuf_iterator;
-using std::istream_iterator;
-using std::ios;
-
 
 unsigned long lyx::sum(string const & file)
 {
@@ -76,6 +70,8 @@ unsigned long lyx::sum(string const & file)
 #include <fstream>
 #include <iterator>
 
+using std::for_each;
+
 namespace {
 
 template<typename InputIterator>
@@ -107,6 +103,10 @@ unsigned long lyx::sum(string const & file)
 	return do_crc(beg,end);
 }
 #else
+
+using std::istream_iterator;
+using std::ios;
+
 unsigned long lyx::sum(string const & file)
 {
 	lyxerr[Debug::FILES]
