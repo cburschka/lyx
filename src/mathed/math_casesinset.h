@@ -24,6 +24,8 @@ public:
 	void maplize(MapleStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif
