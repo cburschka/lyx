@@ -553,6 +553,18 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		finishChange(bv, true);
 		break;
 
+	case LFUN_WORDSEL: {
+		update(bv, false);
+		LyXCursor cur1;	
+		LyXCursor cur2;	
+		getWord(cur1, cur2, WHOLE_WORD);
+		setCursor(bv, cur1.par(), cur1.pos());
+		bv->beforeChange(this);
+		setCursor(bv, cur2.par(), cur2.pos());
+		finishChange(bv, true);
+		break;
+	}
+
 	case LFUN_RIGHT: {
 		bool is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params);
 		if (!selection.mark())

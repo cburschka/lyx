@@ -1126,6 +1126,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	case LFUN_WORDLEFTSEL:
 	case LFUN_WORDRIGHT:
 	case LFUN_WORDRIGHTSEL:
+	case LFUN_WORDSEL:
 	case LFUN_DOWN_PARAGRAPH:
 	case LFUN_DOWN_PARAGRAPHSEL:
 	case LFUN_UP_PARAGRAPH:

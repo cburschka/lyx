@@ -398,6 +398,7 @@ void LyXAction::init()
 		{ LFUN_WORDRIGHT, "word-forward", "", ReadOnly },
 		{ LFUN_WORDRIGHTSEL, "word-forward-select", "", ReadOnly },
 		{ LFUN_LOWCASE_WORD, "word-lowcase", "", Noop },
+		{ LFUN_WORDSEL, "word-select", "", ReadOnly },
 		{ LFUN_UPCASE_WORD, "word-upcase", "", Noop },
 		{ LFUN_MESSAGE, "message",
 		  N_("Show message in minibuffer"), NoBuffer },

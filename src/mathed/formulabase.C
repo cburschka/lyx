@@ -463,6 +463,12 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		updateLocal(bv, false);
 		break;
 
+	case LFUN_WORDSEL:
+		mathcursor->home(false);
+		mathcursor->end(true);
+		updateLocal(bv, false);
+		break;
+
 	case LFUN_HOMESEL:
 		sel = true; // fall through
 	case LFUN_HOME:

@@ -2284,7 +2284,7 @@ void LyXText::cursorLeftOneWord(BufferView * bview)  const
 }
 
 
-void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
+void LyXText::cursorLeftOneWord(LyXCursor & cur) const
 {
 	// treat HFills, floats and Insets as words
 	cur = cursor;
@@ -2306,7 +2306,7 @@ void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
 		}
 	} else {		// Here, cur != 0
 		while (cur.pos() > 0 &&
-		       cur.par()->isWord(cur.pos()-1))
+		       cur.par()->isWord(cur.pos() - 1))
 			cur.pos(cur.pos() - 1);
 	}
 }
@@ -2324,8 +2324,8 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
 		    || cursor.par()->isSeparator(cursor.pos())
 		    || cursor.par()->isKomma(cursor.pos())
-		    || cursor.par()->isSeparator(cursor.pos() -1)
-		    || cursor.par()->isKomma(cursor.pos() -1)) {
+		    || cursor.par()->isSeparator(cursor.pos() - 1)
+		    || cursor.par()->isKomma(cursor.pos() - 1)) {
 			to = from;
 			return;
 		}
