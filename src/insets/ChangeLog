@@ -1,3 +1,8 @@
+2004-10-18  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetgraphics.C (docbook, writeImageObject): write more than one
+	format of imageobjects in <mediaobject>.
+
 2004-10-17  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetcite.[hC] (docbook, latex, cleanupWhitespace): implementing

@@ -1,3 +1,8 @@
+2004-10-18  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* buffer.C (makeDocBookFile): add dsssl stylesheet control
+	entities to preamble.
+
 2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* messages.C (Pimpl): strip off translation context information

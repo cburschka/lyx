@@ -1089,6 +1089,13 @@ void Buffer::makeDocBookFile(string const & fname,
 			ofs << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
 		string preamble = params().preamble;
+		if (runparams.flavor != OutputParams::XML ) {
+			preamble += "<!ENTITY % output.print.png \"IGNORE\">\n";
+			preamble += "<!ENTITY % output.print.pdf \"IGNORE\">\n";
+			preamble += "<!ENTITY % output.print.eps \"IGNORE\">\n";
+			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
+		}
+			
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
