@@ -166,6 +166,7 @@ void readSymbols(string const & filename)
 	lex.setFile(filename);
 	while (lex.isOK() && lex.next()) {
 		latexkeys tmp;
+		string xmlname;
 		tmp.name = lex.getString();
 		if (lex.next())
 			tmp.token = tokenEnum(lex.getString());
@@ -175,6 +176,8 @@ void readSymbols(string const & filename)
 			tmp.id = lex.getInteger();
 		if (lex.next())
 			tmp.type = lex.getString();
+		if (lex.next())
+			xmlname = lex.getString();
 		if (theWordList.find(tmp.name) != theWordList.end())
 			lyxerr << "readSymbols: token " << tmp.name
 			       << " already exists.\n";
