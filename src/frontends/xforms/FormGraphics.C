@@ -578,7 +578,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 		// the bb section
 	} else if (!controller().bbChanged &&
-		   (ob == bbox_->choice_bb_units ||
+		   (ob == bbox_->check_clip  || ob == bbox_->choice_bb_units ||
 		    ob == bbox_->input_bb_x0 || ob == bbox_->input_bb_y0 ||
 		    ob == bbox_->input_bb_x1 || ob == bbox_->input_bb_y1)) {
 		controller().bbChanged = true;

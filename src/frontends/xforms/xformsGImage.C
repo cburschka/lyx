@@ -261,10 +261,10 @@ void xformsGImage::clip(GParams const & params)
 		// Bounds are unchanged.
 		return;
 
-	int const xoffset_l = params.bb.xl;
-	int const xoffset_r = image_->w - params.bb.xr;
-	int const yoffset_t = image_->h - params.bb.yt;
-	int const yoffset_b = params.bb.yb;
+	int const xoffset_l = std::max(0, params.bb.xl);
+	int const xoffset_r = std::max(0, image_->w - params.bb.xr);
+	int const yoffset_t = std::max(0, image_->h - params.bb.yt);
+	int const yoffset_b = std::max(0, params.bb.yb);
 
 	flimage_crop(image_, xoffset_l, yoffset_t, xoffset_r, yoffset_b);
 }

@@ -36,19 +36,21 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 		bb = iparams.bb;
 
 		// Get the original Bounding Box from the file
-		string const bb_orig_str = readBB_from_PSFile(filename);
-		if (!bb_orig_str.empty()) {
-			BoundingBox bb_orig;
-			bb_orig.xl = strToInt(token(bb_orig_str, ' ', 0));
-			bb_orig.yb = strToInt(token(bb_orig_str, ' ', 1));
-			bb_orig.xr = strToInt(token(bb_orig_str, ' ', 2));
-			bb_orig.yt = strToInt(token(bb_orig_str, ' ', 3));
+		string const tmp = readBB_from_PSFile(filename);
+		if (!tmp.empty()) {
+			int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
+			int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
 
-			bb.xl -= bb_orig.xl;
-			bb.xr -= bb_orig.xl;
-			bb.yb -= bb_orig.yb;
-			bb.yt -= bb_orig.yb;
+			bb.xl -= bb_orig_xl;
+			bb.xr -= bb_orig_xl;
+			bb.yb -= bb_orig_yb;
+			bb.yt -= bb_orig_yb;
 		}
+
+		bb.xl = std::max(0, bb.xl);
+		bb.xr = std::max(0, bb.xr);
+		bb.yb = std::max(0, bb.yb);
+		bb.yt = std::max(0, bb.yt);
 
 		// Paranoia check.
 		int const width  = bb.xr - bb.xl;
