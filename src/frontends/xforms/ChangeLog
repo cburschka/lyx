@@ -1,5 +1,9 @@
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
+	* lyx_gui.C (parse_init): exit isn't in namespace lyx_gui!
+
+2002-06-12  Angus Leeming  <leeming@lyx.org>
+
 	* FormParagraph.C: include ParagraphParameters.h now that
 	ParagraphParameters is forward declared in ControlParagraph.h.
 

@@ -42,6 +42,10 @@
 
 #include <boost/bind.hpp>
  
+#ifndef CXX_GLOBAL_CSTD
+using std::exit;
+#endif
+
 using std::vector;
 using std::hex;
 using std::endl;
@@ -135,7 +139,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
 		os::warn("Unable to access X display, exiting");
-		exit(1);
+		::exit(1);
 	}
  
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
