@@ -85,10 +85,10 @@ void QDocument::build_dialog()
 	dialog_->langModule->quoteStyleCO->insertItem(_("»text«"));
 
 	// packages
-	char const * items[] = {"default","auto","latin1","latin2",
-			     "latin3","latin4","latin5","latin9",
-			     "koi8-r","koi8-u","cp866","cp1251",
-			     "iso88595","pt154",0};
+	char const * items[] = {"default", "auto", "latin1", "latin2",
+			     "latin3", "latin4", "latin5", "latin9",
+			     "koi8-r", "koi8-u", "cp866", "cp1251",
+			     "iso88595", "pt154", 0};
 	dialog_->packagesModule->encodingCO->insertStrList(items);
 
 	dialog_->packagesModule->lspacingCO->insertItem(
@@ -109,7 +109,7 @@ void QDocument::build_dialog()
 	char const * sizes[] = { 
 		_("Default") , _("Custom") , _("US letter") , _("US legal")
 		   , _("US executive") , _("A3") , _("A4") , _("A5")
-		   , _("B3") , _("B4") , _("B5") };
+		   , _("B3") , _("B4") , _("B5"), 0 };
 	dialog_->paperModule->papersizeCO->insertStrList(sizes);
 
 	// layout
