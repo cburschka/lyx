@@ -178,7 +178,7 @@ LyXParagraph::~LyXParagraph()
 
 void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & bparams,
-			     char footflag, char dth) const
+			     char dth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
 	if (dth != params.depth()) {
@@ -327,7 +327,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 	
 	// now write the next paragraph
 	if (next_)
-		next_->writeFile(buf, os, bparams, footflag, dth);
+		next_->writeFile(buf, os, bparams, dth);
 }
 
 

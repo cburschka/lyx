@@ -127,23 +127,24 @@ void LaTeXFeatures::require(string const & name)
 }
 
 
-string const LaTeXFeatures::getPackages()
+string const LaTeXFeatures::getPackages() const
 {
-	string packages;
+	ostringstream packages;
 	LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
 
 	// array-package
 	if (array)
-		packages += "\\usepackage{array}\n";
+		packages << "\\usepackage{array}\n";
 
 	// color.sty
 	if (color) {
 		if (params.graphicsDriver == "default")
-			packages += "\\usepackage{color}\n";
+			packages << "\\usepackage{color}\n";
 		else
-			packages += "\\usepackage[" 
-				+ params.graphicsDriver + "]{color}\n";
+			packages << "\\usepackage[" 
+				 << params.graphicsDriver
+				 << "]{color}\n";
 	}
 		
 	// makeidx.sty
@@ -151,47 +152,49 @@ string const LaTeXFeatures::getPackages()
 		if (! tclass.provides(LyXTextClass::makeidx)
 		    && params.language->babel() != "french") // french provides
 						             // \index !
-			packages += "\\usepackage{makeidx}\n";
-		packages += "\\makeindex\n";
+			packages << "\\usepackage{makeidx}\n";
+		packages << "\\makeindex\n";
 	}
 
 	// graphicx.sty
 	if (graphicx && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")
-			packages += "\\usepackage{graphicx}\n";
+			packages << "\\usepackage{graphicx}\n";
 		else
-			packages += "\\usepackage[" 
-				+ params.graphicsDriver + "]{graphicx}\n";
+			packages << "\\usepackage[" 
+				 << params.graphicsDriver
+				 << "]{graphicx}\n";
 	}
 
 	// INSET_GRAPHICS: remove this when InsetFig is thrown.
 	// graphics.sty
 	if (graphics && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")
-			packages += "\\usepackage{graphics}\n";
+			packages << "\\usepackage{graphics}\n";
 		else
-			packages += "\\usepackage[" 
-				+ params.graphicsDriver + "]{graphics}\n";
+			packages << "\\usepackage[" 
+				 << params.graphicsDriver
+				 << "]{graphics}\n";
 	}
 
 	// verbatim.sty
 	if (verbatim)
-		packages += "\\usepackage{verbatim}\n";
+		packages << "\\usepackage{verbatim}\n";
 
 	if (algorithm) {
-		packages += "\\usepackage{algorithm}\n";
+		packages << "\\usepackage{algorithm}\n";
 	}
 
 	// lyxchess.sty
 	if (chess) {
-		packages += "\\usepackage{lyxchess}\n";
+		packages << "\\usepackage{lyxchess}\n";
 	}
 
 	// setspace.sty
 	if ((params.spacing.getSpace() != Spacing::Single
 	     && !params.spacing.isDefault())
 	    || setspace) {
-		packages += "\\usepackage{setspace}\n";
+		packages << "\\usepackage{setspace}\n";
 	}
 	switch (params.spacing.getSpace()) {
 	case Spacing::Default:
@@ -200,59 +203,57 @@ string const LaTeXFeatures::getPackages()
 		//packages += "\\singlespacing\n";
 		break;
 	case Spacing::Onehalf:
-		packages += "\\onehalfspacing\n";
+		packages << "\\onehalfspacing\n";
 		break;
 	case Spacing::Double:
-		packages += "\\doublespacing\n";
+		packages << "\\doublespacing\n";
 		break;
 	case Spacing::Other:
-		std::ostringstream value;
-		value << params.spacing.getValue(); // setw?
-		packages += string("\\setstretch{") 
-			  + value.str().c_str() + "}\n";
+		packages << "\\setstretch{"
+			 << params.spacing.getValue() << "}\n";
 		break;
 	}
 
 	//longtable.sty
 	if (longtable)
-		packages += "\\usepackage{longtable}\n";
+		packages << "\\usepackage{longtable}\n";
 
 	//rotating.sty
 	if (rotating)
-		packages += "\\usepackage{rotating}\n";
+		packages << "\\usepackage{rotating}\n";
 
 	// amssymb.sty
 	if (amssymb || params.use_amsmath)
-		packages += "\\usepackage{amssymb}\n";
+		packages << "\\usepackage{amssymb}\n";
 
 	// latexsym.sty
 	if (latexsym)
-		packages += "\\usepackage{latexsym}\n";
+		packages << "\\usepackage{latexsym}\n";
 
 	// pifont.sty
 	if (pifont)
-		packages += "\\usepackage{pifont}\n";
+		packages << "\\usepackage{pifont}\n";
 
 	// subfigure.sty
 	if (subfigure)
-		packages += "\\usepackage{subfigure}\n";
+		packages << "\\usepackage{subfigure}\n";
 
 	// floatflt.sty
 	if (floatflt)
-		packages += "\\usepackage{floatflt}\n";
+		packages << "\\usepackage{floatflt}\n";
 
 	// url.sty
 	if (url && ! tclass.provides(LyXTextClass::url))
-		packages += "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
+		packages << "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
 
 	// varioref.sty
 	if (varioref)
-		packages += "\\usepackage{varioref}\n";
+		packages << "\\usepackage{varioref}\n";
 
 	// prettyref.sty
 	if (prettyref)
-		packages += "\\usepackage{prettyref}\n";
+		packages << "\\usepackage{prettyref}\n";
 
 	// float.sty
 	// We only need float.sty if we use non builtin floats. This includes
@@ -269,63 +270,66 @@ string const LaTeXFeatures::getPackages()
 			}
 		}
 		if (use_float)
-			packages += "\\usepackage{float}\n";
+			packages << "\\usepackage{float}\n";
 	}
 	
-	packages += externalPreambles;
+	packages << externalPreambles;
 
-	return packages;
+	return packages.str().c_str();
 }
 
 
-string const LaTeXFeatures::getMacros()
+string const LaTeXFeatures::getMacros() const
 {
-	string macros;
+	ostringstream macros;
 
 	// always include this
 	if (true || lyx) 
-		macros += lyx_def + '\n';
+		macros << lyx_def << '\n';
 
 	if (lyxline) 
-		macros += lyxline_def + '\n';
+		macros << lyxline_def << '\n';
 
 	if (noun) {
-		macros += noun_def + '\n';
+		macros << noun_def << '\n';
 	}
 
 	if (lyxarrow) {
-		macros += lyxarrow_def + '\n';
+		macros << lyxarrow_def << '\n';
 	}
 
 	// quotes. 
 	if (quotesinglbase)
-		macros += quotesinglbase_def + '\n';
+		macros << quotesinglbase_def << '\n';
 	if (quotedblbase)
-		macros += quotedblbase_def + '\n';
+		macros << quotedblbase_def << '\n';
 	if (guilsinglleft)
-		macros += guilsinglleft_def + '\n';
+		macros << guilsinglleft_def << '\n';
 	if (guilsinglright)
-		macros += guilsinglright_def + '\n';
+		macros << guilsinglright_def << '\n';
 	if (guillemotleft)
-		macros += guillemotleft_def + '\n';
+		macros << guillemotleft_def << '\n';
 	if (guillemotright)
-		macros += guillemotright_def + '\n';
+		macros << guillemotright_def << '\n';
     
         // Math mode    
 	if (boldsymbol && !amsstyle)
-		macros += boldsymbol_def + '\n';
+		macros << boldsymbol_def << '\n';
 	if (binom && !amsstyle)
-		macros += binom_def + '\n';
+		macros << binom_def << '\n';
 
 	// other
         if (NeedLyXMinipageIndent) 
-		macros += minipageindent_def;
+		macros << minipageindent_def;
         if (LyXParagraphIndent) 
-		macros += paragraphindent_def;
+		macros << paragraphindent_def;
         if (NeedLyXFootnoteCode) 
-		macros += floatingfootnote_def;
+		macros << floatingfootnote_def;
 
 	// floats
+	getFloatDefinitions(macros);
+
+#if 0
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.
 	// \floatstyle{ruled}
@@ -369,52 +373,55 @@ string const LaTeXFeatures::getMacros()
 		}
 	}
 	macros += floats.str().c_str();
-
+#endif
+	
 	for (LanguageList::const_iterator cit = UsedLanguages.begin();
 	     cit != UsedLanguages.end(); ++cit)
 		if (!(*cit)->latex_options().empty())
-			macros += (*cit)->latex_options() + '\n';
+			macros << (*cit)->latex_options() << '\n';
 	if (!params.language->latex_options().empty())
-		macros += params.language->latex_options() + '\n';
+		macros << params.language->latex_options() << '\n';
 
-	return macros;
+	return macros.str().c_str();
 }
 
 
-string const LaTeXFeatures::getTClassPreamble()
+string const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble 
 	LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
-	string tcpreamble = tclass.preamble();
+	ostringstream tcpreamble;
+	
+	tcpreamble << tclass.preamble();
 
 	for (unsigned int i = 0; i < tclass.numLayouts(); ++i) {
 		if (layout[i]) {
-			tcpreamble += tclass[i].preamble();
+			tcpreamble << tclass[i].preamble();
 		}
 	}
 
-	return tcpreamble;
+	return tcpreamble.str().c_str();
 }	
 
 
-string const LaTeXFeatures::getIncludedFiles(string const fname) const
+string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 {
-	string sgmlpreamble;
-	string basename = OnlyPath(fname);
+	ostringstream sgmlpreamble;
+	string const basename = OnlyPath(fname);
 
 	FileMap::const_iterator end = IncludedFiles.end();
 	for (FileMap::const_iterator fi = IncludedFiles.begin();
 	     fi != end; ++fi)
-	  sgmlpreamble += "\n<!ENTITY " + fi->first
-			+ (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"" )
-			+ MakeRelPath(fi->second,basename) + "\">";
+		sgmlpreamble << "\n<!ENTITY " << fi->first
+			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"" )
+			     << MakeRelPath(fi->second,basename) << "\">";
 
-	return sgmlpreamble;
+	return sgmlpreamble.str().c_str();
 }
 
 
-void LaTeXFeatures::showStruct() {
+void LaTeXFeatures::showStruct() const{
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
 	       << "\n***** Macros:" << getMacros()
@@ -426,4 +433,64 @@ void LaTeXFeatures::showStruct() {
 BufferParams const & LaTeXFeatures::bufferParams() const
 {
 	return params;
+}
+
+
+void LaTeXFeatures::getFloatDefinitions(ostream & os) const
+{
+	// Here we will output the code to create the needed float styles.
+	// We will try to do this as minimal as possible.
+	// \floatstyle{ruled}
+	// \newfloat{algorithm}{htbp}{loa}
+	// \floatname{algorithm}{Algorithm}
+	UsedFloats::const_iterator cit = usedFloats.begin();
+	UsedFloats::const_iterator end = usedFloats.end();
+	// ostringstream floats;
+	for (; cit != end; ++cit) {
+		Floating const & fl = floatList.getType((*cit));
+		
+		// For builtin floats we do nothing.
+		if (fl.builtin()) continue;
+		
+		// We have to special case "table" and "figure"
+		if (fl.type() == "tabular" || fl.type() == "figure") {
+			// Output code to modify "table" or "figure"
+			// but only if builtin == false
+			// and that have to be true at this point in the
+			// function.
+			string const type = fl.type();
+			string const placement = fl.placement();
+			string const style = fl.style();
+			if (!style.empty()) {
+				os << "\\floatstyle{" << style << "}\n"
+				   << "\\restylefloat{" << type << "}\n";
+			}
+			if (!placement.empty()) {
+				os << "\\floatplacement{" << type << "}{"
+				   << placement << "}\n";
+			}
+		} else {
+			// The other non builtin floats.
+			
+			string const type = fl.type();
+			string const placement = fl.placement();
+			string const ext = fl.ext();
+			string const within = fl.within();
+			string const style = fl.style();
+			string const name = fl.name();
+			os << "\\floatstyle{" << style << "}\n"
+			   << "\\newfloat{" << type << "}{" << placement
+			   << "}{" << ext << "}";
+			if (!within.empty())
+				os << "[" << within << "]";
+			os << "\n"
+			   << "\\floatname{" << type << "}{"
+			   << name << "}\n";
+			
+			// What missing here is to code to minimalize the code
+			// outputted so that the same flotastyle will not be
+			// used several times. when the same style is still in
+			// effect. (Lgb)
+		}
+	}
 }

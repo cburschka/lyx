@@ -1,5 +1,15 @@
 2001-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* paragraph.C (writeFile): remove footflag arg
+
+	* buffer.C (makeLaTeXFile): use stringstream
+	(latexParagraphs): remove footnot gurba
+
+	* LaTeXFeatures.C (getPackages): use stringstream
+	(getMacros): likewise
+	(getTClassPreamble): likewise
+	(getFloatDefinitions): new method
+
 	* paragraph.C (writeFile): reindent
 	(Erase): reindent
 

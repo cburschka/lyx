@@ -1762,10 +1762,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			owner_->getLyXFunc()->setMessage(tmpinset->EditMessage());
 			int y = 0;
 			if (is_rtl) {
-				LyXFont font = 
+				LyXFont const font = 
 					TEXT(bv_)->GetFont(buffer_,
-							      TEXT(bv_)->cursor.par(),
-							      TEXT(bv_)->cursor.pos());	
+							   TEXT(bv_)->cursor.par(),
+							   TEXT(bv_)->cursor.pos());	
 				y = tmpinset->descent(bv_,font);
 			}
 			tmpinset->Edit(bv_, 0, y, 0);
@@ -2109,13 +2109,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 	case LFUN_PROTECTEDSPACE:
 	{
-		LyXLayout const & style =
-			textclasslist.Style(buffer_->params.textclass,
-					    TEXT(bv_)->cursor.par()->GetLayout());
+		LyXLayout const & style = textclasslist
+			.Style(buffer_->params.textclass,
+			       TEXT(bv_)->cursor.par()->GetLayout());
 
 		if (style.free_spacing) {
 			TEXT(bv_)->InsertChar(bv_, ' ');
-			update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			update(TEXT(bv_),
+			       BufferView::SELECT
+			       | BufferView::FITCUR
+			       | BufferView::CHANGE);
 		} else {
 			bv_->protectedBlank(TEXT(bv_));
 		}
@@ -2126,12 +2129,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_SETMARK:
 		if (TEXT(bv_)->mark_set) {
 			beforeChange(TEXT(bv_));
-			update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR);
+			update(TEXT(bv_),
+			       BufferView::SELECT|BufferView::FITCUR);
 			owner_->getLyXFunc()->setMessage(N_("Mark removed"));
 		} else {
 			beforeChange(TEXT(bv_));
 			TEXT(bv_)->mark_set = 1;
-			update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR);
+			update(TEXT(bv_),
+			       BufferView::SELECT|BufferView::FITCUR);
 			owner_->getLyXFunc()->setMessage(N_("Mark set"));
 		}
 		TEXT(bv_)->sel_cursor = TEXT(bv_)->cursor;
@@ -2143,7 +2148,9 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			TEXT(bv_)->sel_cursor = 
 				TEXT(bv_)->cursor;
 			update(TEXT(bv_),
-			       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			       BufferView::SELECT
+			       | BufferView::FITCUR
+			       | BufferView::CHANGE);
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 			showCursor();

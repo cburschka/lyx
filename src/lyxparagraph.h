@@ -110,7 +110,7 @@ public:
 	
 	///
 	void writeFile(Buffer const *, std::ostream &, BufferParams const &,
-		       char, char) const;
+		       char) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	

@@ -165,7 +165,7 @@ void InsetText::Write(Buffer const * buf, ostream & os) const
 
 void InsetText::WriteParagraphData(Buffer const * buf, ostream & os) const
 {
-	par->writeFile(buf, os, buf->params, 0, 0);
+	par->writeFile(buf, os, buf->params, 0);
 }
 
 
@@ -947,7 +947,7 @@ InsetText::LocalDispatch(BufferView * bv,
 		break;
 	case LFUN_PASTESELECTION:
 	{
-		string clip(bv->getClipboard());
+		string const clip(bv->getClipboard());
 	
 		if (clip.empty())
 			break;
@@ -1118,9 +1118,8 @@ int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
 	LyXParagraph * p = par;
 	unsigned int lines = 0;
 	
-	string tmp;
 	while (p) {
-		tmp = buf->asciiParagraph(p, linelen);
+		string const tmp = buf->asciiParagraph(p, linelen);
 		lines += countChar(tmp, '\n');
 		os << tmp;
 		p = p->next();
@@ -1133,11 +1132,11 @@ int InsetText::DocBook(Buffer const * buf, ostream & os) const
 {
 	LyXParagraph * p = par;
 	unsigned int lines = 0;
-	int desc=0;
+	int desc = 0;
 	
 	string tmp;
 	while (p) {
-		buf->SimpleDocBookOnePar(os,tmp,p,desc,0);
+		buf->SimpleDocBookOnePar(os, tmp, p, desc, 0);
 		p = p->next();
 	}
 	
@@ -1148,7 +1147,7 @@ int InsetText::DocBook(Buffer const * buf, ostream & os) const
 void InsetText::Validate(LaTeXFeatures & features) const
 {
 	LyXParagraph * p = par;
-	while(p) {
+	while (p) {
 		p->validate(features);
 		p = p->next();
 	}
@@ -1242,6 +1241,7 @@ InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 	else
 		return moveRightIntern(bv, false, activate_inset, selecting);
 }
+
 
 UpdatableInset::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
@@ -1558,6 +1558,7 @@ LyXParagraph * InsetText::cpar(BufferView * bv) const
 	return TEXT(bv)->cursor.par();
 }
 
+
 bool InsetText::cboundary(BufferView * bv) const
 {
 	return TEXT(bv)->cursor.boundary();
@@ -1691,12 +1692,14 @@ void InsetText::removeNewlines()
 	}
 }
 
+
 bool InsetText::nodraw() const
 {
 	if (the_locking_inset)
 		return the_locking_inset->nodraw();
 	return UpdatableInset::nodraw();
 }
+
 
 int InsetText::scroll(bool recursive) const
 {
@@ -1707,6 +1710,7 @@ int InsetText::scroll(bool recursive) const
 
 	return sx;
 }
+
 
 bool InsetText::doClearArea() const
 {

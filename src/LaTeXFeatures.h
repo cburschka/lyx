@@ -36,16 +36,18 @@ struct LaTeXFeatures {
 	///
 	LaTeXFeatures(BufferParams const &, LyXTextClass::size_type n) ;
 	/// The packaes needed by the document
-	string const getPackages();
+	string const getPackages() const;
 	/// The macros definitions needed by the document
-	string const getMacros();
+	string const getMacros() const;
 	/// The definitions needed by the document's textclass
-	string const getTClassPreamble();
+	string const getTClassPreamble() const;
 	///
-	string const getIncludedFiles(string const fname) const;
+	string const getIncludedFiles(string const & fname) const;
+	///
+	void getFloatDefinitions(ostream & os) const;
 
 	///
-	void showStruct();
+	void showStruct() const;
 
 	/// Provide a string name-space to the requirements
 	void require(string const & name);

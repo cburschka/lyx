@@ -1464,12 +1464,11 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 
-	char footnoteflag = 0;
 	char depth = 0;
 
 	// this will write out all the paragraphs
 	// using recursive descent.
-	paragraph->writeFile(this, ofs, params, footnoteflag, depth);
+	paragraph->writeFile(this, ofs, params, depth);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\the_end" << endl;
@@ -1774,13 +1773,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		ofs << "\\documentclass";
 		
-		string options; // the document class options.
+		ostringstream options; // the document class options.
 		
 		if (tokenPos(tclass.opt_fontsize(),
 			     '|', params.fontsize) >= 0) {
 			// only write if existing in list (and not default)
-			options += params.fontsize;
-			options += "pt,";
+			options << params.fontsize;
+			options << "pt,";
 		}
 		
 		
@@ -1788,22 +1787,22 @@ void Buffer::makeLaTeXFile(string const & fname,
 		    (params.paperpackage == BufferParams::PACKAGE_NONE)) {
 			switch (params.papersize) {
 			case BufferParams::PAPER_A4PAPER:
-				options += "a4paper,";
+				options << "a4paper,";
 				break;
 			case BufferParams::PAPER_USLETTER:
-				options += "letterpaper,";
+				options << "letterpaper,";
 				break;
 			case BufferParams::PAPER_A5PAPER:
-				options += "a5paper,";
+				options << "a5paper,";
 				break;
 			case BufferParams::PAPER_B5PAPER:
-				options += "b5paper,";
+				options << "b5paper,";
 				break;
 			case BufferParams::PAPER_EXECUTIVEPAPER:
-				options += "executivepaper,";
+				options << "executivepaper,";
 				break;
 			case BufferParams::PAPER_LEGALPAPER:
-				options += "legalpaper,";
+				options << "legalpaper,";
 				break;
 			}
 		}
@@ -1812,26 +1811,25 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (params.sides != tclass.sides()) {
 			switch (params.sides) {
 			case LyXTextClass::OneSide:
-				options += "oneside,";
+				options << "oneside,";
 				break;
 			case LyXTextClass::TwoSides:
-				options += "twoside,";
+				options << "twoside,";
 				break;
 			}
-
 		}
 
 		// if needed
 		if (params.columns != tclass.columns()) {
 			if (params.columns == 2)
-				options += "twocolumn,";
+				options << "twocolumn,";
 			else
-				options += "onecolumn,";
+				options << "onecolumn,";
 		}
 
 		if (!params.use_geometry 
 		    && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-			options += "landscape,";
+			options << "landscape,";
 		
 		// language should be a parameter to \documentclass
 		use_babel = false;
@@ -1851,17 +1849,18 @@ void Buffer::makeLaTeXFile(string const & fname,
 				language_options += (*cit)->babel() + ',';
 			language_options += params.language->babel();
 			if (lyxrc.language_global_options)
-				options += language_options + ',';
+				options << language_options << ',';
 		}
 
 		// the user-defined options
 		if (!params.options.empty()) {
-			options += params.options + ',';
+			options << params.options << ',';
 		}
-		
-		if (!options.empty()){
-			options = strip(options, ',');
-			ofs << '[' << options << ']';
+
+		string strOptions(options.str().c_str());
+		if (!strOptions.empty()){
+			strOptions = strip(strOptions, ',');
+			ofs << '[' << strOptions << ']';
 		}
 		
 		ofs << '{'
@@ -2219,9 +2218,6 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 {
 	bool was_title = false;
 	bool already_title = false;
-	std::ostringstream ftnote;
-	TexRow ft_texrow;
-	int ftcount = 0;
 
 	// if only_body
 	while (par != endpar) {
@@ -2242,31 +2238,11 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 			already_title = true;
 			was_title = false;		    
 		}
-		// We are at depth 0 so we can just use
-		// ordinary \footnote{} generation
-		// flag this with ftcount
-		ftcount = -1;
+		
 		if (layout.isEnvironment()) {
 			par = par->TeXEnvironment(this, params, ofs, texrow);
 		} else {
 			par = par->TeXOnePar(this, params, ofs, texrow, false);
-		}
-
-		// Write out what we've generated...
-		if (ftcount >= 1) {
-			if (ftcount > 1) {
-				ofs << "\\addtocounter{footnote}{-"
-				    << ftcount - 1
-				    << '}';
-			}
-			ofs << ftnote.str();
-			texrow += ft_texrow;
-
-			// The extra .c_str() is needed when we use
-			// lyxstring instead of the STL string class. 
-			ftnote.str(string().c_str());
-			ft_texrow.reset();
-			ftcount = 0;
 		}
 	}
 	// It might be that we only have a title in this document
