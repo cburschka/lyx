@@ -1538,7 +1538,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	} // end of switch
 
 exit_with_message:
-	sendDispatchMessage(getMessage(), ev, verbose);
+	sendDispatchMessage(_(getMessage()), ev, verbose);
 }
 
 
