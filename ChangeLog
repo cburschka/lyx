@@ -1,5 +1,7 @@
 1999-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/support/DebugStream.C: <config.h> was not included correctly.
+
 	* lib/configure: forgot to re-generate it :( I'll make this file
 	auto generated soon.
 

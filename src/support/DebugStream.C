@@ -7,6 +7,8 @@
 
 //#define TEST_DEBUGSTREAM
 
+#include <config.h>
+
 //#include "DebugStream.h"
 #include "debug.h"
 
