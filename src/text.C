@@ -160,9 +160,8 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 
 
 int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
-	string const & token)
+	string const & token, LyXFont & font)
 {
-	static LyXFont font;
 	static Change change;
 
 	BufferParams const & bp = buf.params();
@@ -358,10 +357,11 @@ int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 
 	lex.nextToken();
 	string token = lex.getString();
+	LyXFont font;
 
 	while (lex.isOK()) {
 
-		unknown += readParToken(buf, par, lex, token);
+		unknown += readParToken(buf, par, lex, token, font);
 
 		lex.nextToken();
 		token = lex.getString();

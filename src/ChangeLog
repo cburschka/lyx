@@ -1,5 +1,10 @@
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text.C (readParToken): remove the static LyXFont variable and
+	pass it as a parameter instead. This fixes a nasty bug where an
+	inset will be inserted with a bad font in some situations
+	(readParagraph): adapt
+
 	* text2.C (setCounter): reduce number of calls to pars_[pit]
 
 	* text.C (singleWidth): add an assert, fix a test
