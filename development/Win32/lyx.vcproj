@@ -38,7 +38,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\..\qt-3\lib\qt-mt3.lib ..\..\..\qt-3\lib\qtmain.lib"
+				AdditionalDependencies="..\..\..\qt-3\lib\qt-mt333.lib ..\..\..\qt-3\lib\qtmain.lib"
 				OutputFile="$(OutDir)/lyx.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
@@ -89,7 +89,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\..\qt-3\lib\qt-mt3.lib ..\..\..\qt-3\lib\qtmain.lib"
+				AdditionalDependencies="..\..\..\qt-3\lib\qt-mt333.lib ..\..\..\qt-3\lib\qtmain.lib"
 				OutputFile="$(OutDir)/lyx.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
