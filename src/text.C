@@ -633,6 +633,8 @@ void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
 		if (orig_font != getFont(p.bv->buffer(), p.row->par(), pos))
 			break;
 
+		if (arabic)
+			c = transformChar(c, p.row->par(), pos);
 		str += c;
 		++vpos;
 	}
@@ -679,7 +681,7 @@ bool LyXText::draw(DrawRowParams & p, pos_type & vpos)
 	if ((!hebrew && !arabic)
 		|| (hebrew && !Encodings::IsComposeChar_hebrew(c))
 		|| (arabic && !Encodings::IsComposeChar_arabic(c))) {
-		drawChars(p, vpos, true, false);
+		drawChars(p, vpos, hebrew, arabic);
 	} else if (hebrew) {
 		drawHebrewComposeChar(p, vpos);
 	} else if (arabic) {
