@@ -150,7 +150,9 @@ void InsetSpecialChar::Write(ostream & os) const
 	case LDOTS:		command = "\\ldots{}";	break;
 	case MENU_SEPARATOR:    command = "\\menuseparator"; break;
 	case PROTECTED_SEPARATOR:
-		                command = "\\protected_separator";          break;
+		//command = "\\protected_separator";
+		command = "~";
+		break;
 	}
 	os << "\\SpecialChar " << command << "\n";
 }
@@ -170,7 +172,8 @@ void InsetSpecialChar::Read(LyXLex & lex)
 		kind = LDOTS;
 	else if (command == "\\menuseparator")
 	        kind = MENU_SEPARATOR;
-	else if (command == "\\protected_separator")
+	else if (command == "\\protected_separator"
+		 || command == "~")
 		kind = PROTECTED_SEPARATOR;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");

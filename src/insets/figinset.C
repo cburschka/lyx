@@ -1919,11 +1919,11 @@ void InsetFig::RestoreForm()
 		fl_activate_object(form->Height);
 	}
 
-	int pflags = flags & 3;
-	fl_set_button(form->Wysiwyg0, (pflags == 0));
-	fl_set_button(form->Wysiwyg1, (pflags == 1));
-	fl_set_button(form->Wysiwyg2, (pflags == 2));
-	fl_set_button(form->Wysiwyg3, (pflags == 3));
+	int piflags = flags & 3;
+	fl_set_button(form->Wysiwyg0, (piflags == 0));
+	fl_set_button(form->Wysiwyg1, (piflags == 1));
+	fl_set_button(form->Wysiwyg2, (piflags == 2));
+	fl_set_button(form->Wysiwyg3, (piflags == 3));
 	fl_set_button(form->Frame, ((flags & 4) != 0));
 	fl_set_button(form->Translations, ((flags & 8) != 0));
 	fl_set_button(form->Subfigure, (subfigure != 0));

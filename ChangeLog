@@ -1,3 +1,20 @@
+2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetspecialchar.C (Read): allow command == '~' for
+	PROTECTED_SEPARATOR 
+	(Write): write '~' for PROTECTED_SEPARATOR
+
+2000-05-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxparagraph.h: add a friend struct matchIT after the struct
+	InsetTable.
+
+	* src/mathed/formula.C (drawStr): rename size to siz.
+
+	* src/insets/figinset.C (RestoreForm): rename pflags to piflags,
+	possibly fix a bug by not changing the pflags = flags to piflags =
+	flags.
+
 2000-05-05  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetbib.C: moved using directive

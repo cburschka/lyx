@@ -69,6 +69,7 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap = new kb_keymap;
+	
 	// Fill the toplevel_keymap with some defaults
 	for (LyXRC::Bindings::const_iterator cit = lyxrc.bindings.begin();
 	     cit != lyxrc.bindings.end(); ++cit) {

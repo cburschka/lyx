@@ -522,6 +522,8 @@ private:
 		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
 	};
 	///
+	friend struct matchIT;
+	///
 	struct matchIT {
 		/// used by lower_bound
 		inline

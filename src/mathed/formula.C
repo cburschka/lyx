@@ -250,7 +250,7 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 
 
 // In a near future maybe we use a better fonts renderer
-void MathedInset::drawStr(Painter & pain, short type, int size,
+void MathedInset::drawStr(Painter & pain, short type, int siz,
 			  int x, int y, byte const * s, int ls)
 {
 	string st;
@@ -261,7 +261,7 @@ void MathedInset::drawStr(Painter & pain, short type, int size,
 	} else {
 		st = string(reinterpret_cast<char const *>(s), ls);
 	}
-	LyXFont mf = mathed_get_font(type, size);
+	LyXFont mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);
 }
 
