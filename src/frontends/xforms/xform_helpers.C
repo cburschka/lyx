@@ -168,7 +168,7 @@ bool XformColor::read(string const & filename)
 
 		fl_mapcolor(le, col.r, col.g, col.b);
 	}
-	
+		
 	return true;
 }
 
@@ -201,6 +201,156 @@ bool XformColor::write(string const & filename)
 
 		os << tag << " "
 		   << color.r << " " << color.g << " " << color.b << "\n";
+	}
+
+	return true;
+}
+
+
+string  RWInfo::error_message;
+
+bool RWInfo::WriteableDir(string const & name)
+{
+	error_message.erase();
+
+	if (!AbsolutePath(name)) {
+		error_message = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo const tp(name);
+	if (!tp.isDir()) {
+		error_message = N_("Directory does not exist.");
+		return false;
+	}
+
+	if (!tp.writable()) {
+		error_message = N_("Cannot write to this directory.");
+		return false;
+	}
+
+	return true;
+}
+
+
+bool RWInfo::ReadableDir(string const & name)
+{
+	error_message.erase();
+
+	if (!AbsolutePath(name)) {
+		error_message = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo const tp(name);
+	if (!tp.isDir()) {
+		error_message = N_("Directory does not exist.");
+		return false;
+	}
+
+	if (!tp.readable()) {
+		error_message = N_("Cannot read this directory.");
+		return false;
+	}
+
+	return true;
+}
+
+
+bool RWInfo::WriteableFile(string const & name)
+{
+	// A writeable file is either:
+	// * An existing file to which we have write access, or
+	// * A file that doesn't yet exist but that would exist in a writeable
+	//   directory.
+
+	error_message.erase();
+
+	if (name.empty()) {
+		error_message = N_("No file input.");
+		return false;
+	}
+
+	string const dir = OnlyPath(name);
+	if (!AbsolutePath(dir)) {
+		error_message = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo d(name);
+	if (!d.isDir()) {
+		d.newFile(dir);
+	}
+
+	if (!d.isDir()) {
+		error_message = N_("Directory does not exist.");
+		return false;
+	}
+	
+	if (!d.writable()) {
+		error_message = N_("Cannot write to this directory.");
+		return false;
+	}
+
+	FileInfo f(name);
+	if (dir == name || f.isDir()) {
+		error_message = N_("A file is required, not a directory.");
+		return false;
+	}
+
+	if (f.exist() && !f.writable()) {
+		error_message = N_("Cannot write to this file.");
+		return false;
+	}
+	
+	return true;
+}
+
+
+bool RWInfo::ReadableFile(string const & name)
+{
+	error_message.erase();
+
+	if (name.empty()) {
+		error_message = N_("No file input.");
+		return false;
+	}
+
+	string const dir = OnlyPath(name);
+	if (!AbsolutePath(dir)) {
+		error_message = N_("The absolute path is required.");
+		return false;
+	}
+
+	FileInfo d(name);
+	if (!d.isDir()) {
+		d.newFile(dir);
+	}
+
+	if (!d.isDir()) {
+		error_message = N_("Directory does not exist.");
+		return false;
+	}
+	
+	if (!d.readable()) {
+		error_message = N_("Cannot read from this directory.");
+		return false;
+	}
+
+	FileInfo f(name);
+	if (dir == name || f.isDir()) {
+		error_message = N_("A file is required, not a directory.");
+		return false;
+	}
+
+	if (!f.exist()) {
+		error_message = N_("File does not exist.");
+		return false;
+	}
+	
+	if (!f.readable()) {
+		error_message = N_("Cannot read from this file.");
+		return false;
 	}
 
 	return true;

@@ -24,6 +24,7 @@
 #include "buffer.h"
 #include "font.h"
 #include "insets/insettext.h"
+#include "ColorHandler.h"
 
 using std::max;
 using std::min;
@@ -35,7 +36,7 @@ GC createGC()
 	val.foreground = BlackPixel(fl_get_display(), 
 				    DefaultScreen(fl_get_display()));
 	
-	val.function=GXcopy;
+	val.function = GXcopy;
 	val.graphics_exposures = false;
 	val.line_style = LineSolid;
 	val.line_width = 0;
@@ -46,8 +47,8 @@ GC createGC()
 
 
 // Constructor
-LyXScreen::LyXScreen(WorkArea & o) //, LyXText * text_ptr)
-	: owner(o), force_clear(true) //, text(text_ptr)
+LyXScreen::LyXScreen(WorkArea & o)
+	: owner(o), force_clear(true)
 {
 	// the cursor isnt yet visible
 	cursor_visible = false;
@@ -59,6 +60,19 @@ LyXScreen::LyXScreen(WorkArea & o) //, LyXText * text_ptr)
 
 	// We need this GC
 	gc_copy = createGC();
+}
+
+
+void LyXScreen::setCursorColor() 
+{
+	if (!lyxColorHandler) return;
+
+	GC gc = lyxColorHandler->getGCForeground(LColor::cursor);
+	
+	XGCValues val;
+	XGetGCValues(fl_get_display(),
+		     gc, GCForeground, &val);
+	XChangeGC(fl_get_display(), gc_copy, GCForeground, &val);
 }
 
 
@@ -102,7 +116,7 @@ void LyXScreen::DrawFromTo(LyXText * text,
 		LyXText::text_status st = text->status;
 		do {
 			text->status = st;
-			text->GetVisibleRow(owner.owner(), y+y_offset,
+			text->GetVisibleRow(owner.owner(), y + y_offset,
 					    x_offset, row, y + text->first);
 		} while (text->status == LyXText::CHANGED_IN_DRAW);
 		text->status = st;
@@ -124,7 +138,7 @@ void LyXScreen::DrawFromTo(LyXText * text,
 void LyXScreen::DrawOneRow(LyXText * text, Row * row, int y_text,
 			   int y_offset, int x_offset)
 {
-	int y = y_text - text->first + y_offset;
+	int const y = y_text - text->first + y_offset;
 
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
@@ -147,7 +161,7 @@ void LyXScreen::Draw(LyXText * text, unsigned int y)
 {
 	if (cursor_visible) HideCursor();
 
-	int old_first = text->first;
+	int const old_first = text->first;
 	text->first = y;
 
 	// is any optimiziation possible?
@@ -241,11 +255,15 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
-	int y1 = max(y - text->first - asc, 0);
-	int y2 = min(y - text->first + desc, static_cast<int>(owner.height()));
+	// Update the cursor color.
+	setCursorColor();
+	
+	int const y1 = max(y - text->first - asc, 0);
+	int const y_tmp = min(y - text->first + desc,
+			      static_cast<int>(owner.height()));
 
 	// Secure against very strange situations
-	y2 = max(y2, y1);
+	int const y2 = max(y_tmp, y1);
 	
 	if (cursor_pixmap){
 		XFreePixmap(fl_get_display(), cursor_pixmap);
@@ -298,7 +316,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 			break;
 		case L_SHAPE:
 		case REVERSED_L_SHAPE:
-			int rectangle_h = (cursor_pixmap_h+10)/20;
+			int const rectangle_h = (cursor_pixmap_h + 10) / 20;
 			XFillRectangle(fl_get_display(),
 				       owner.getWin(),
 				       gc_copy,
@@ -380,8 +398,8 @@ unsigned int LyXScreen::TopCursorVisible(LyXText const * text)
 bool LyXScreen::FitCursor(LyXText * text)
 {
 	// Is a change necessary?
-	int newtop = TopCursorVisible(text);
-	bool result = (newtop != text->first);
+	int const newtop = TopCursorVisible(text);
+	bool const result = (newtop != text->first);
 	if (result)
 		Draw(text, newtop);
 	return result;
@@ -393,7 +411,7 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 	switch (text->status) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
-		int y = max(int(text->refresh_y - text->first), 0);
+		int const y = max(int(text->refresh_y - text->first), 0);
 		DrawFromTo(text, y, owner.height(), y_offset, x_offset);
 		text->refresh_y = 0;
 		text->status = LyXText::UNCHANGED;
@@ -424,15 +442,17 @@ void LyXScreen::ToggleSelection(LyXText * text,  bool kill_selection,
 	// only if there is a selection
 	if (!text->selection) return;
 
-	int bottom = min(max(static_cast<int>(text->sel_end_cursor.y()
-			      - text->sel_end_cursor.row()->baseline()
-			      + text->sel_end_cursor.row()->height()),
-					      text->first),
-			  static_cast<int>(text->first + owner.height()));
-	int top = min(max(static_cast<int>(text->sel_start_cursor.y() -
-			  text->sel_start_cursor.row()->baseline()),
-			  text->first),
-		      static_cast<int>(text->first + owner.height()));
+	int const bottom = min(
+		max(static_cast<int>(text->sel_end_cursor.y()
+				     - text->sel_end_cursor.row()->baseline()
+				     + text->sel_end_cursor.row()->height()),
+		    text->first),
+		static_cast<int>(text->first + owner.height()));
+	int const top = min(
+		max(static_cast<int>(text->sel_start_cursor.y() -
+				     text->sel_start_cursor.row()->baseline()),
+		    text->first),
+		static_cast<int>(text->first + owner.height()));
 
 	if (kill_selection)
 		text->selection = 0;
@@ -450,15 +470,15 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
 		return;
 	
-	int top = text->toggle_cursor.y()
+	int const top_tmp = text->toggle_cursor.y()
 		- text->toggle_cursor.row()->baseline();
-	int bottom = text->toggle_end_cursor.y()
+	int const bottom_tmp = text->toggle_end_cursor.y()
 		- text->toggle_end_cursor.row()->baseline() 
 		+ text->toggle_end_cursor.row()->height();
 	
-	bottom = min(max(bottom, text->first),
+	int const bottom = min(max(bottom_tmp, text->first),
 		     static_cast<int>(text->first + owner.height()));
-	top = min(max(top, text->first),
+	int const top = min(max(top_tmp, text->first),
 		  static_cast<int>(text->first + owner.height()));
 
 	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,

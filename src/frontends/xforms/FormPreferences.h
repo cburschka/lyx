@@ -17,21 +17,19 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-#include <utility> // for pair
-#include "FormBase.h"
-
 #ifdef __GNUG_
 #pragma interface
 #endif
 
+#include <utility> // pair
+#include "FormBase.h"
+#include "Color.h" // NamedColor
+#include "xform_helpers.h" // XformColor
+
 class Combox;
-class Command;
 class Dialogs;
-class Format;
 class LyXView;
-class NamedColor;
 class RGBColor;
-class XformColor;
 struct FD_form_colors;
 struct FD_form_converters;
 struct FD_form_formats;
@@ -162,7 +160,8 @@ private:
 		///
 		bool input(FL_OBJECT const * const);
 		///
-		void update();
+		void update() { LoadBrowserLyX(); }
+		
 		/// Flag whether Xforms colors have changed since last file save
 		bool modifiedXformPrefs;
 
@@ -170,30 +169,40 @@ private:
 		///
 		void AdjustVal( int, int, double ) const;
 		///
-		bool BrowserLyX() const;
+		bool InputBrowserLyX() const;
 		///
-		bool BrowserX11() const;
+		bool InputBrowserX11() const;
 		///
-		bool Database();
+		void InputHSV();
 		///
 		void LoadBrowserLyX();
 		///
-		bool LoadBrowserX11(string const &) const;
+		bool LoadBrowserX11(string const &);
+		///
+		bool LoadDatabase();
 		///
 		bool Modify() const;
 		///
-		bool RGB() const;
-		///
 		int SearchEntry(RGBColor const &) const;
+		///
+		void Sort();
+		///
+		void SortType();
 
 		///
 		FormPreferences & parent_;
 		///
 		FD_form_colors * dialog_;
-		/// A vector of RGB colors and associated name.
+		/// The usual location of the X11 name database.
+		static string const colorFile;
+		/** A vector of RGB colors and associated name.
+		    Each RGB color is unique. */
 		static std::vector<NamedColor> colorDB;
-		/// A vector of xform RGB colors and associated name.
-		static std::vector<XformColor> xformColorDB;
+
+		/// A vector of LyX LColor GUI name and associated RGB color.
+		std::vector<NamedColor> lyxColorDB;
+		/// A vector of xform color ID, RGB colors and associated name.
+		std::vector<XformColor> xformColorDB;
 	};
 	///
 	friend class Colors;
@@ -569,6 +578,25 @@ private:
 	ScreenFonts screen_fonts_;
 	///
 	SpellChecker spellchecker_;
+
+	/** A couple of helper structs to enable colors to be sorted by name
+	    and by color */
+	///
+	struct SortColorsByName {
+		///
+		int operator()(NamedColor const & a, NamedColor const & b) const
+			{ return (a.getname() < b.getname()); }
+	};
+	///
+	struct SortColorsByColor {
+		///
+		SortColorsByColor(RGBColor c) : col(c) {}
+		///
+		int operator()(RGBColor const &, RGBColor const &) const;
+		///
+		RGBColor col;
+	};
+
 };
 
 #endif

@@ -94,13 +94,12 @@ RGBColor::RGBColor(HSVColor const & hsv)
 
 HSVColor::HSVColor(RGBColor const & rgb)
 {
-	// r, g, b lie in the range 0-1, not 0-255.
 	double const r = rgb.r / 255.0;
 	double const g = rgb.g / 255.0;
 	double const b = rgb.b / 255.0;
 
 	double const maxval = max( max( r, g ), b );
-	double const minval = max( min( r, g ), b );
+	double const minval = min( min( r, g ), b );
 
 	v = maxval;
 

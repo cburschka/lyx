@@ -49,6 +49,9 @@ public:
 	///
 	LyXScreen(WorkArea &);
 
+	/// Sets the cursor color to LColor::cursor.
+	void setCursorColor();
+	
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
 	void Draw(LyXText *, unsigned int y);

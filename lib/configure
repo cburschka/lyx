@@ -367,8 +367,8 @@ if test -z "$word_to_latex_command" ; then
   word_to_latex_command=none
 fi
 
-test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
-test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
+test "$word_to_latex_command" = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
+test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
 
 echo $ac_n "checking for Image converter""... $ac_c"
 echo "$ac_t""(convert)"

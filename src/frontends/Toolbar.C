@@ -44,6 +44,7 @@ Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &tbd)
 	}
 }
 
+
 Toolbar::~Toolbar()
 {
 	delete pimpl_;
@@ -106,7 +107,7 @@ void Toolbar::push(int nth)
 
 void Toolbar::add(string const & func, bool doclean)
 {
-	int tf = lyxaction.LookupFunc(func);
+	int const tf = lyxaction.LookupFunc(func);
 
 	if (tf == -1) {
 		lyxerr << "Toolbar::add: no LyX command called`"
@@ -115,5 +116,3 @@ void Toolbar::add(string const & func, bool doclean)
 		pimpl_->add(tf, doclean);
 	}
 }
-
-

@@ -1,3 +1,56 @@
+2000-11-17  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/LColor.C (c-tor): fixed a couple of items in the ColorEntry
+	array. 
+	* src/LyXAction.C (init): LFUN_SET_COLOR now has the attrib
+	ReadOnly|NoBuffer.
+
+	* src/frontends/xforms/Color.C: (HSVColor c-tor): another bug fix.
+
+	* src/frontends/xforms/FormPreferences.C: re-formatted so that I can
+	see what Lars has changed and what is just white space!
+	Now used X directly to ascertain the RGB color associated with the
+	color name.
+	Replaced the RGB sliders with HSV equivalent. Should be more intuitive
+	to use.
+	Added some sort capability.
+	The X11 color name database input is only displayed if the database
+	isn't found in the standard place.
+	Got rid of struct compare_converter; it wasn't used.
+	Probably some other stuff that I've forgotten.
+
+	* src/frontends/xforms/FormPreferences.h: changed the names of some
+	methods in the Colors struct. Added a couple of structs to help sort
+	colors by name and by RGBColor.
+
+	* src/frontends/xforms/xform_helpers.[Ch]: moved the ReadableDir etc
+	functions into a new class RWInfo.
+
+	* src/frontends/xforms/forms/form_citation.fd: Added some shortcuts.
+	The dialog is now almost navigable using the keyboard. Unfortunately,
+	the cursor has to be inside a browser for it to be activated. There is
+	no visual feedback for the key shortcuts to the arrow keys (use
+	Alt-appropriate arrow key, Alt-x).
+
+	* src/frontends/xforms/forms/form_preferences.fd: hacked the Colors tab
+	around a lot.
+
+	* src/support/filetools.[Ch]: moved out ReadableFile etc and into
+	xform_helpers.[Ch]. See above.
+
+2000-11-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): please somebody
+
+	* src/screen.C (setCursorColor): new method. Sets the color of the
+	cursor. 
+	(ShowManualCursor): call it.
+	Constify some local variables.
+
+	* src/LColor.[Ch] (LColor): add entry for cursor
+	* lib/configure(.m4) (word_to_latex_command): add quotes, removes
+	a warning.
+
 2000-11-19  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (draw): fixed text border redraw problem.

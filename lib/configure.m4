@@ -197,8 +197,8 @@ SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command,html2latex)
 test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$i"
 
 SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command,wvCleanLatex word2x)
-test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
-test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
+test "$word_to_latex_command" = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
+test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
 
 SEARCH_PROG([for Image converter],image_command,convert)
 test $image_command = "convert" && image_command="convert \$\$i \$\$o"

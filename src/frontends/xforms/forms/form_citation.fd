@@ -40,7 +40,7 @@ alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Inset keys
+label: Inset keys|#I
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -58,7 +58,7 @@ alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Bibliography keys
+label: Bibliography keys|#B
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -77,7 +77,7 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @4->
-shortcut: 
+shortcut: #&D
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: addBtn
@@ -95,7 +95,7 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @9+
-shortcut: 
+shortcut: #X
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: delBtn
@@ -113,7 +113,7 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @8->
-shortcut: 
+shortcut: #&A
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: upBtn
@@ -131,7 +131,7 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @2->
-shortcut: 
+shortcut: #&B
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: downBtn
@@ -184,7 +184,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Text before|#b
+label: Text before|#T
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -202,7 +202,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Text after|#a
+label: Text after|#e
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity

@@ -99,7 +99,7 @@ PreferencesPolicy::PreferencesPolicy()
 
 void PreferencesPolicy::input(SMInput input)
 {
-	lyxerr << "PreferencesPolicy::input" << endl;
+	//lyxerr << "PreferencesPolicy::input" << endl;
 	// CANCEL and HIDE always take us to INITIAL for all cases.
 	// Note that I didn't put that special case in the helper function
 	// because it doesn't belong there.  Some other 
@@ -161,7 +161,7 @@ OkCancelPolicy::OkCancelPolicy()
 
 void OkCancelPolicy::input(SMInput input)
 {
-	lyxerr << "OkCancelPolicy::input" << endl;
+	//lyxerr << "OkCancelPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
@@ -235,7 +235,7 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 
 void OkCancelReadOnlyPolicy::input(SMInput input)
 {
-	lyxerr << "OkCancelReadOnlyPolicy" << endl;
+	//lyxerr << "OkCancelReadOnlyPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
@@ -313,7 +313,7 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 
 void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
 {
-	lyxerr << "NoReapeatedApplyReadOnlyPolicy::input" << endl;
+	//lyxerr << "NoReapeatedApplyReadOnlyPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
@@ -405,7 +405,7 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 
 void OkApplyCancelReadOnlyPolicy::input(SMInput input)
 {
-	lyxerr << "OkApplyCancelReadOnlyPolicy::input" << endl;
+	//lyxerr << "OkApplyCancelReadOnlyPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
@@ -471,7 +471,7 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 
 void OkApplyCancelPolicy::input(SMInput input)
 {
-	lyxerr << "OkApplyCancelPolicy::input" << endl;
+	//lyxerr << "OkApplyCancelPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input
@@ -529,7 +529,7 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 
 void NoRepeatedApplyPolicy::input(SMInput input)
 {
-	lyxerr << "NoRepeatedApplyPolicy::input" << endl;
+	//lyxerr << "NoRepeatedApplyPolicy::input" << endl;
 	
 	// CANCEL and HIDE always take us to INITIAL for all cases
 	if (SMI_CANCEL == input

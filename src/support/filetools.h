@@ -205,16 +205,4 @@ string const findtexfile(string const & fil, string const & format);
 /// remove the autosave-file and give a Message if it can't be done
 void removeAutosaveFile(string const & filename);
 
-/** Perform some quite detailed tests to ascertain whether the directory or
-    file is readable or writeable. If not, then an error message is returned.
-*/
-///
-bool WriteableDir(string const & dir, string & errorMessage);
-///
-bool ReadableDir(string const & dir, string & errorMessage);
-///
-bool WriteableFile(string const & file, string & errorMessage);
-///
-bool ReadableFile(string const & file, string & errorMessage);
-
 #endif

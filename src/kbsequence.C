@@ -252,7 +252,7 @@ unsigned int kb_sequence::getsym() const
 
 char kb_sequence::getiso() const
 {
-	int c = getsym();
+	int const c = getsym();
 	
 	if (c > 0xff)
 		return '\0';

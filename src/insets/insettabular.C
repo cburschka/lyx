@@ -1124,8 +1124,8 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     // now search the right column
     int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
-#warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
 #if 0
+#warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
     for (; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +
 	    tabular->GetAdditionalWidth(actcell - 1));

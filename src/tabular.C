@@ -92,7 +92,9 @@ LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
 {
     owner_ = inset;
     Init(lt.rows_, lt.columns_);
+#ifdef WITH_WARNINGS
 #warning Jürgen, can you make it the other way round. So that copy assignment depends on the copy constructor and not the other way. (Lgb)
+#endif
     operator=(lt);
 }
 
@@ -342,7 +344,9 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
     }
 #else
     // Isn't this the same as the while above? (Lgb)
+#ifdef WITH_WARNINGS
 #warning Please check this Jürgen.
+#endif
     // if ok please delete the #if 0 section above. (Lgb)
     for (int row = 0, column = 0, c = 0;
 	 c < numberofcells && row < rows_ && column < columns_;) {
@@ -2386,7 +2390,9 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 	return 0;
 #else
     // Isn't this equivalent? (Lgb)
+#ifdef WITH_WARNINGS
 #warning Please check this Jürgen.
+#endif
     // If ok please delete the abofe #if 0 section. (Lgb)
     for (int i = fcell; i < n; ++i) {
 	    if (TopLine(i))
@@ -2442,7 +2448,9 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 	return 0;
 #else
     // Isn't this equivalent? (Lgb)
+#ifdef WITH_WARNINGS
 #warning Please check this Jürgen.
+#endif
     // If ok, please delete the above #if 0 section. (Lgb)
     for (int i = fcell; i < n; ++i) {
 	if (BottomLine(i))

@@ -379,7 +379,7 @@ void LyXAction::init()
 		{ LFUN_GOTOFILEROW, "server-goto-file-row", "", Noop },
 		{ LFUN_NOTIFY, "server-notify", "", ReadOnly },
 		{ LFUN_SETXY, "server-set-xy", "", ReadOnly },
-		{ LFUN_SET_COLOR, "set-color", "", Noop },
+		{ LFUN_SET_COLOR, "set-color", "", ReadOnly|NoBuffer },
 		{ LFUN_SPELLCHECK, "spellchecker", "", Noop },
 		{ LFUN_SHIFT_TAB, "tab-backward", "", Noop },
 		{ LFUN_TAB, "tab-forward", "", Noop },
@@ -453,7 +453,7 @@ LyXAction::LyXAction()
 // if it doesn't exist.
 int LyXAction::searchActionArg(kb_action action, string const & arg) const
 {
-	// we really want to use const_iterator (Lgb)
+	// BUG we really want to use const_iterator (Lgb)
 	arg_map::iterator pit = lyx_arg_map.find(action);
 
 	if (pit == lyx_arg_map.end()) {
@@ -464,7 +464,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 		return LFUN_UNKNOWN_ACTION;
 	}
 
-	// we really want to use const_iterator (Lgb)
+	// BUG we really want to use const_iterator (Lgb)
 	arg_item::iterator aci = (*pit).second.find(arg);
 
 	if (aci == (*pit).second.end()) {
@@ -488,7 +488,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 // Returns a pseudo-action given an action and its argument.
 int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 {
-	int psdaction = searchActionArg(action, arg);
+	int const psdaction = searchActionArg(action, arg);
 
 	if (isPseudoAction(psdaction)) return psdaction;
 
@@ -521,7 +521,7 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 {
 	arg.erase(); // clear it to be sure.
 
-	// we really want to use const_iterator (Lgb)
+	// BUG we really want to use const_iterator (Lgb)
 	pseudo_map::iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
@@ -544,7 +544,7 @@ int LyXAction::LookupFunc(string const & func) const
 
 	// split action and arg
 	string actstr;
-	string argstr = split(func, actstr, ' ');
+	string const argstr = split(func, actstr, ' ');
 	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n';
 	lyxerr[Debug::ACTION] << "Arg   : " << argstr << '\n';
 
@@ -597,7 +597,7 @@ int LyXAction::getApproxFunc(string const & func) const
 
 string const LyXAction::getApproxFuncName(string const & func) const
 {
-	int f = getApproxFunc(func);
+	int const f = getApproxFunc(func);
 	// This will return empty string if f isn't an action.
 	return getActionName(f);
 }

@@ -38,7 +38,7 @@ GraphicsCache::~GraphicsCache()
 {
 	// Free the map.
 	//std::foreach(map.begin(), map.end(), ...);
-#warning This is a bogus reason to not clean up after your self. (Lgb)
+//#warning This is a bogus reason to not clean up after your self. (Lgb)
 	// TODO: Clean up here (BE)
 	
 	// This is not really needed, it will only happen on program close and in

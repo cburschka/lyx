@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.5\n"
-"POT-Creation-Date: 2000-11-15 14:25+0100\n"
+"POT-Creation-Date: 2000-11-17 18:53+0100\n"
 "PO-Revision-Date: 2000-06-07 11:47+02:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
@@ -321,57 +321,57 @@ msgstr "Keine weiteren Fehler"
 msgid "ChkTeX warning id #"
 msgstr "ChkTeX Warnung Nr. "
 
-#: src/ColorHandler.C:82
+#: src/ColorHandler.C:83
 msgid "LyX: Unknown X11 color "
 msgstr "LyX: Unbekannte X11-Farbe "
 
-#: src/ColorHandler.C:83
+#: src/ColorHandler.C:84
 msgid " for "
 msgstr " für "
 
-#: src/ColorHandler.C:84
+#: src/ColorHandler.C:85
 msgid "     Using black instead, sorry!."
 msgstr "    Verwende stattdessen Schwarz! "
 
-#: src/ColorHandler.C:91
+#: src/ColorHandler.C:92
 msgid "LyX: X11 color "
 msgstr "LyX: X11-Farbe "
 
-#: src/ColorHandler.C:92 src/ColorHandler.C:98
+#: src/ColorHandler.C:93 src/ColorHandler.C:99
 msgid " allocated for "
 msgstr " alloziert für "
 
-#: src/ColorHandler.C:97
+#: src/ColorHandler.C:98
 msgid "LyX: Using approximated X11 color "
 msgstr "LyX: Verwende ähnliche X11-Farbe "
 
-#: src/ColorHandler.C:138
+#: src/ColorHandler.C:139
 msgid "LyX: Couldn't allocate '"
 msgstr "LyX: Konnte '"
 
-#: src/ColorHandler.C:139
+#: src/ColorHandler.C:140
 msgid "' for "
 msgstr "' für "
 
-#: src/ColorHandler.C:140
+#: src/ColorHandler.C:141
 msgid " with (r,g,b)=("
 msgstr " mit (r,g,b)=("
 
-#: src/ColorHandler.C:143
+#: src/ColorHandler.C:144
 msgid "     Using closest allocated color with (r,g,b)=("
 msgstr ""
 " nicht allozieren.\n"
 "  Verwende stattdessen ähnliche Farbe (r,g,b)=("
 
-#: src/ColorHandler.C:147
+#: src/ColorHandler.C:148
 msgid ") instead.\n"
 msgstr ".\n"
 
-#: src/ColorHandler.C:148
+#: src/ColorHandler.C:149
 msgid "Pixel ["
 msgstr "Pixel ["
 
-#: src/ColorHandler.C:148
+#: src/ColorHandler.C:149
 msgid "] is used."
 msgstr "] wurde verwendet."
 
@@ -1285,7 +1285,7 @@ msgid "User's Guide|U"
 msgstr "Mit \\include einfügen|#c"
 
 #: src/ext_l10n.h:140
-msgid "Extended Features|x"
+msgid "Extended Features|E"
 msgstr ""
 
 #: src/ext_l10n.h:141
@@ -1321,7 +1321,7 @@ msgstr "Copyright und Gewährleistung..."
 
 #: src/ext_l10n.h:148
 #, fuzzy
-msgid "Credits...|e"
+msgid "Credits...|d"
 msgstr "Ruhm & Ehre"
 
 #: src/ext_l10n.h:149
@@ -3101,7 +3101,7 @@ msgid "Other...|#T"
 msgstr "Andere...|#N"
 
 #: src/form1.C:51 src/frontends/xforms/FormDocument.C:274
-#: src/frontends/xforms/FormPreferences.C:267
+#: src/frontends/xforms/FormPreferences.C:271
 msgid "Language"
 msgstr "Sprache"
 
@@ -4856,7 +4856,7 @@ msgid "Clipart"
 msgstr "Clipart"
 
 #: src/frontends/xforms/FormGraphics.C:376
-#: src/frontends/xforms/FormPreferences.C:3115 src/insets/figinset.C:1963
+#: src/frontends/xforms/xform_helpers.C:107 src/insets/figinset.C:1963
 #: src/insets/insetexternal.C:157
 msgid "Filename can't contain any of these characters:"
 msgstr "Der Dateiname darf keines der folgenden Zeichen enthalten:"
@@ -4864,7 +4864,7 @@ msgstr "Der Dateiname darf keines der folgenden Zeichen enthalten:"
 # , c-format
 # , c-format
 #: src/frontends/xforms/FormGraphics.C:379
-#: src/frontends/xforms/FormPreferences.C:3117 src/insets/figinset.C:1966
+#: src/frontends/xforms/xform_helpers.C:109 src/insets/figinset.C:1966
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "Leerzeichen, '#', '~', '$' oder '%'."
@@ -5108,7 +5108,7 @@ msgstr "Kodierung:|#d"
 msgid "script"
 msgstr "Postscript|#P"
 
-#: src/LColor.C:84 src/frontends/xforms/form_preferences.C:125
+#: src/LColor.C:85 src/frontends/xforms/form_preferences.C:125
 msgid "footnote"
 msgstr "Fußnote"
 
@@ -5338,14 +5338,14 @@ msgstr "Durchsuchen|#s"
 msgid "LyX objects|#L"
 msgstr "LyX|#L"
 
-#: src/frontends/xforms/FormPreferences.C:1006
-#: src/frontends/xforms/FormPreferences.C:1008
-#: src/frontends/xforms/FormPreferences.C:1053
-#: src/frontends/xforms/FormPreferences.C:1055
-#: src/frontends/xforms/FormPreferences.C:1277
-#: src/frontends/xforms/FormPreferences.C:1278
-#: src/frontends/xforms/FormPreferences.C:1327
-#: src/frontends/xforms/FormPreferences.C:1329
+#: src/frontends/xforms/FormPreferences.C:1194
+#: src/frontends/xforms/FormPreferences.C:1196
+#: src/frontends/xforms/FormPreferences.C:1241
+#: src/frontends/xforms/FormPreferences.C:1243
+#: src/frontends/xforms/FormPreferences.C:1465
+#: src/frontends/xforms/FormPreferences.C:1466
+#: src/frontends/xforms/FormPreferences.C:1515
+#: src/frontends/xforms/FormPreferences.C:1517
 #: src/frontends/xforms/form_preferences.C:443
 #: src/frontends/xforms/form_preferences.C:444
 #, fuzzy
@@ -5365,10 +5365,10 @@ msgstr ""
 msgid "Delete|#D"
 msgstr "Löschen|#L"
 
-#: src/frontends/xforms/FormPreferences.C:1042
-#: src/frontends/xforms/FormPreferences.C:1044
-#: src/frontends/xforms/FormPreferences.C:1316
-#: src/frontends/xforms/FormPreferences.C:1318
+#: src/frontends/xforms/FormPreferences.C:1230
+#: src/frontends/xforms/FormPreferences.C:1232
+#: src/frontends/xforms/FormPreferences.C:1504
+#: src/frontends/xforms/FormPreferences.C:1506
 #: src/frontends/xforms/form_preferences.C:479
 #: src/frontends/xforms/form_preferences.C:480
 #: src/frontends/xforms/form_preferences.C:539
@@ -5635,327 +5635,278 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:74
+#: src/frontends/xforms/FormPreferences.C:77
 #, fuzzy
 msgid "Preferences"
 msgstr "Querverweis einfügen"
 
-#: src/frontends/xforms/FormPreferences.C:207
+#: src/frontends/xforms/FormPreferences.C:211
 msgid "Look and Feel"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:210
+#: src/frontends/xforms/FormPreferences.C:214
 #, fuzzy
 msgid "Usage"
 msgstr "Seite: "
 
-#: src/frontends/xforms/FormPreferences.C:213
-#: src/frontends/xforms/FormPreferences.C:242
+#: src/frontends/xforms/FormPreferences.C:217
+#: src/frontends/xforms/FormPreferences.C:246
 #, fuzzy
 msgid "Converters"
 msgstr "Zentriert|#Z"
 
-#: src/frontends/xforms/FormPreferences.C:216
+#: src/frontends/xforms/FormPreferences.C:220
 #, fuzzy
 msgid "Inputs"
 msgstr "Input"
 
-#: src/frontends/xforms/FormPreferences.C:219
+#: src/frontends/xforms/FormPreferences.C:223
 msgid "Outputs"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:225
+#: src/frontends/xforms/FormPreferences.C:229
 #, fuzzy
 msgid "Screen Fonts"
 msgstr "Bildschirmoptionen"
 
-#: src/frontends/xforms/FormPreferences.C:228
+#: src/frontends/xforms/FormPreferences.C:232
 #, fuzzy
 msgid "Interface"
 msgstr "Notiz (Rahmen)"
 
-#: src/frontends/xforms/FormPreferences.C:231
+#: src/frontends/xforms/FormPreferences.C:235
 #, fuzzy
 msgid "Colors"
 msgstr "Schließen"
 
-#: src/frontends/xforms/FormPreferences.C:234
-#: src/frontends/xforms/FormPreferences.C:251
-#: src/frontends/xforms/FormPreferences.C:259 src/mathed/math_forms.C:46
+#: src/frontends/xforms/FormPreferences.C:238
+#: src/frontends/xforms/FormPreferences.C:255
+#: src/frontends/xforms/FormPreferences.C:263 src/mathed/math_forms.C:46
 msgid "Misc"
 msgstr "Diverses"
 
-#: src/frontends/xforms/FormPreferences.C:239
+#: src/frontends/xforms/FormPreferences.C:243
 #, fuzzy
 msgid "Formats"
 msgstr "Floats"
 
-#: src/frontends/xforms/FormPreferences.C:248
+#: src/frontends/xforms/FormPreferences.C:252
 #, fuzzy
 msgid "Paths"
 msgstr "Mathematik"
 
-#: src/frontends/xforms/FormPreferences.C:256
+#: src/frontends/xforms/FormPreferences.C:260
 #, fuzzy
 msgid "Printer"
 msgstr "Drucken"
 
-#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:268
 #, fuzzy
 msgid "Spell checker"
 msgstr "Rechtschreibprüfung"
 
-#: src/frontends/xforms/FormPreferences.C:465
+#: src/frontends/xforms/FormPreferences.C:511
 #, fuzzy
 msgid "No file found"
 msgstr "Keine Warnungen im Dokument."
 
-#: src/frontends/xforms/FormPreferences.C:489
+#: src/frontends/xforms/FormPreferences.C:573
 msgid "The colors listed in the X11 database."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:491
+#: src/frontends/xforms/FormPreferences.C:575
 msgid "LyX objects that can be assigned a color."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:493
+#: src/frontends/xforms/FormPreferences.C:577
 msgid "The file containing the X11 color database."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:495
+#: src/frontends/xforms/FormPreferences.C:579
 msgid ""
 "You will only be able to modify the LyX object if the sliders and X11 "
 "browser agree. Force this by clicking on the highlighted browser name."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:499
+#: src/frontends/xforms/FormPreferences.C:583
 msgid ""
 "Find a new color. The name highlighted in the X11 database is the closest "
 "match to this."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:501
+#: src/frontends/xforms/FormPreferences.C:585
 msgid "Modify the color of the LyX object."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:523
+#: src/frontends/xforms/FormPreferences.C:607
 #, fuzzy
 msgid "X11 color database"
 msgstr "LyX: X11-Farbe "
 
-#: src/frontends/xforms/FormPreferences.C:888
+#: src/frontends/xforms/FormPreferences.C:1076
 msgid "All the currently defined converters known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:890
+#: src/frontends/xforms/FormPreferences.C:1078
 msgid "Convert \"from\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:892
+#: src/frontends/xforms/FormPreferences.C:1080
 msgid "Convert \"to\" this format"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:894
+#: src/frontends/xforms/FormPreferences.C:1082
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:896
+#: src/frontends/xforms/FormPreferences.C:1084
 msgid "Flags that control the converter behavior"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:898
+#: src/frontends/xforms/FormPreferences.C:1086
 msgid "Remove the current converter from the list of available converters."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:900
+#: src/frontends/xforms/FormPreferences.C:1088
 msgid "Add the current converter to the list of available converters."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1166
+#: src/frontends/xforms/FormPreferences.C:1354
 msgid "All the currently defined formats known to LyX."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1168
+#: src/frontends/xforms/FormPreferences.C:1356
 msgid "The format identifier."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1170
+#: src/frontends/xforms/FormPreferences.C:1358
 msgid "The format name as it will appear in the menus."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1172
+#: src/frontends/xforms/FormPreferences.C:1360
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1174
+#: src/frontends/xforms/FormPreferences.C:1362
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1176
+#: src/frontends/xforms/FormPreferences.C:1364
 msgid "The command used to launch the viewer application."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1178
+#: src/frontends/xforms/FormPreferences.C:1366
 msgid "Remove the current format from the list of available formats."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1180
+#: src/frontends/xforms/FormPreferences.C:1368
 msgid "Add the current format to the list of available formats."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1296
-msgid ""
-"WARNING! Cannot remove a Format used by a Converter. Remove the converter "
-"first."
+#: src/frontends/xforms/FormPreferences.C:1484
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1468
+#: src/frontends/xforms/FormPreferences.C:1656
 msgid "Sys Bind"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1472
+#: src/frontends/xforms/FormPreferences.C:1660
 #, fuzzy
 msgid "User Bind"
 msgstr "Mit \\include einfügen|#c"
 
-#: src/frontends/xforms/FormPreferences.C:1476
+#: src/frontends/xforms/FormPreferences.C:1664
 #, fuzzy
 msgid "Bind file"
 msgstr "EPS Datei|#E"
 
-#: src/frontends/xforms/FormPreferences.C:1480
+#: src/frontends/xforms/FormPreferences.C:1668
 msgid "Sys UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1484
+#: src/frontends/xforms/FormPreferences.C:1672
 msgid "User UI"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:1488
+#: src/frontends/xforms/FormPreferences.C:1676
 #, fuzzy
 msgid "UI file"
 msgstr "[keine Datei]"
 
-#: src/frontends/xforms/FormPreferences.C:1679
-#: src/frontends/xforms/FormPreferences.C:1687
+#: src/frontends/xforms/FormPreferences.C:1869
+#: src/frontends/xforms/FormPreferences.C:1877
 #, fuzzy
 msgid "Key maps"
 msgstr "Tastaturtabellen"
 
-#: src/frontends/xforms/FormPreferences.C:1683
-#: src/frontends/xforms/FormPreferences.C:1691
+#: src/frontends/xforms/FormPreferences.C:1873
+#: src/frontends/xforms/FormPreferences.C:1881
 #, fuzzy
 msgid "Keyboard map"
 msgstr "Eintrag:|#E"
 
-#: src/frontends/xforms/FormPreferences.C:1862
+#: src/frontends/xforms/FormPreferences.C:2052
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgstr ""
 " Standard | Benutzer | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
 
-#: src/frontends/xforms/FormPreferences.C:2096
+#: src/frontends/xforms/FormPreferences.C:2311
 #, fuzzy
 msgid "Default path"
 msgstr "Standard"
 
-#: src/frontends/xforms/FormPreferences.C:2101
+#: src/frontends/xforms/FormPreferences.C:2316
 #, fuzzy
 msgid "Template path"
 msgstr "Vorlagen"
 
-#: src/frontends/xforms/FormPreferences.C:2106
+#: src/frontends/xforms/FormPreferences.C:2321
 msgid "Temp dir"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2110
+#: src/frontends/xforms/FormPreferences.C:2325
 #, fuzzy
 msgid "User"
 msgstr "Benutzer1|#1"
 
-#: src/frontends/xforms/FormPreferences.C:2113
+#: src/frontends/xforms/FormPreferences.C:2328
 #, fuzzy
 msgid "Lastfiles"
 msgstr "Liste der Tabellen"
 
-#: src/frontends/xforms/FormPreferences.C:2117
+#: src/frontends/xforms/FormPreferences.C:2332
 msgid "Backup path"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2572
-msgid "WARNING! Fonts must be positive!"
+#: src/frontends/xforms/FormPreferences.C:2787
+msgid "Fonts must be positive!"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2595
+#: src/frontends/xforms/FormPreferences.C:2810
 #, fuzzy
 msgid ""
-"WARNING! Fonts must be input in the order tiny > script> footnote > small > "
-"normal > large > larger > largest > huge > huger."
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
 msgstr ""
 " Standard | winzig | skript | Fußnote | klein | normal | groß | groß 2 | "
 "groß 3 | riesig | riesig 2"
 
-#: src/frontends/xforms/FormPreferences.C:2711
+#: src/frontends/xforms/FormPreferences.C:2926
 msgid " none | ispell | aspell "
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:2826
+#: src/frontends/xforms/FormPreferences.C:3041
 #, fuzzy
 msgid "Personal dictionary"
 msgstr "In pers. Wörterbuch einfügen|#W"
 
-#: src/frontends/xforms/FormPreferences.C:2885
-#: src/frontends/xforms/FormPreferences.C:2913
-#: src/frontends/xforms/FormPreferences.C:2953
-#: src/frontends/xforms/FormPreferences.C:3003
-msgid "WARNING! The absolute path is required."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2891
-#: src/frontends/xforms/FormPreferences.C:2919
-#: src/frontends/xforms/FormPreferences.C:2963
-#: src/frontends/xforms/FormPreferences.C:3013
-msgid "WARNING! Directory does not exist."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2896
-#: src/frontends/xforms/FormPreferences.C:2968
-msgid "WARNING! Cannot write to this directory."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2924
-#, fuzzy
-msgid "WARNING! Cannot read this directory."
-msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
-
-#: src/frontends/xforms/FormPreferences.C:2947
-#: src/frontends/xforms/FormPreferences.C:2997
-msgid "WARNING! No file input."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2974
-#: src/frontends/xforms/FormPreferences.C:3024
-msgid "WARNING! A file is required, not a directory."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2979
-#, fuzzy
-msgid "WARNING! Cannot write to this file."
-msgstr "Die Datei kann nicht geschrieben werden"
-
-#: src/frontends/xforms/FormPreferences.C:3018
-msgid "WARNING! Cannot read from this directory."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:3029
-msgid "WARNING! File does not exist."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:3034
-msgid "WARNING! Cannot read from this file."
+#: src/frontends/xforms/FormPreferences.C:3097
+msgid "WARNING!"
 msgstr ""
 
 #: src/frontends/xforms/form_print.C:42 src/frontends/xforms/form_print.C:43
@@ -6736,7 +6687,7 @@ msgstr "weitere..."
 msgid "Key Mappings"
 msgstr "Tastaturtabellen"
 
-#: src/kbsequence.C:226
+#: src/kbsequence.C:206
 msgid "   options: "
 msgstr "   Optionen: "
 
@@ -6878,182 +6829,187 @@ msgid "yellow"
 msgstr "Gelb"
 
 #: src/LColor.C:61
+#, fuzzy
+msgid "cursor"
+msgstr "Mathematik (Cursor)"
+
+#: src/LColor.C:62
 msgid "background"
 msgstr "Hintergrund"
 
-#: src/LColor.C:62
+#: src/LColor.C:63
 msgid "foreground"
 msgstr "Vordergrund"
 
-#: src/LColor.C:63
+#: src/LColor.C:64
 msgid "selection"
 msgstr "Auswahl"
 
-#: src/LColor.C:64
+#: src/LColor.C:65
 msgid "latex"
 msgstr "Latex"
 
-#: src/LColor.C:65
+#: src/LColor.C:66
 msgid "floats"
 msgstr "Floats"
 
-#: src/LColor.C:66
+#: src/LColor.C:67
 msgid "note"
 msgstr "Notiz"
 
-#: src/LColor.C:67
+#: src/LColor.C:68
 msgid "note background"
 msgstr "Notiz (Hintergrund)"
 
-#: src/LColor.C:68
+#: src/LColor.C:69
 msgid "note frame"
 msgstr "Notiz (Rahmen)"
 
-#: src/LColor.C:69
+#: src/LColor.C:70
 msgid "depth bar"
 msgstr "Umgebungstiefe Balken"
 
-#: src/LColor.C:70
+#: src/LColor.C:71
 msgid "language"
 msgstr "Sprache"
 
-#: src/LColor.C:71
+#: src/LColor.C:72
 msgid "command-inset"
 msgstr "Befehlseinfügung"
 
-#: src/LColor.C:72
+#: src/LColor.C:73
 msgid "command-inset background"
 msgstr "Befehlseinfügung (Hintergrund)"
 
-#: src/LColor.C:73 src/LColor.C:90
+#: src/LColor.C:74 src/LColor.C:91
 msgid "inset frame"
 msgstr "Rahmen Einfügungen"
 
-#: src/LColor.C:74
+#: src/LColor.C:75
 msgid "accent"
 msgstr "Akzent"
 
-#: src/LColor.C:75
+#: src/LColor.C:76
 msgid "accent background"
 msgstr "Akzent (Hintergrund)"
 
-#: src/LColor.C:76
+#: src/LColor.C:77
 msgid "accent frame"
 msgstr "Akzent (Rahmen)"
 
-#: src/LColor.C:77
+#: src/LColor.C:78
 msgid "minipage line"
 msgstr "Minipage Strich"
 
-#: src/LColor.C:78
+#: src/LColor.C:79
 msgid "special char"
 msgstr "Sonderzeichen"
 
-#: src/LColor.C:79
+#: src/LColor.C:80
 msgid "math"
 msgstr "Mathematik"
 
-#: src/LColor.C:80
+#: src/LColor.C:81
 msgid "math background"
 msgstr "Mathematik (Hintergrund)"
 
-#: src/LColor.C:81
+#: src/LColor.C:82
 msgid "math frame"
 msgstr "Mathematik (Rahmen)"
 
-#: src/LColor.C:82
+#: src/LColor.C:83
 msgid "math cursor"
 msgstr "Mathematik (Cursor)"
 
-#: src/LColor.C:83
+#: src/LColor.C:84
 msgid "math line"
 msgstr "Mathematik Strich"
 
-#: src/LColor.C:85
+#: src/LColor.C:86
 msgid "footnote background"
 msgstr "Fußnote (Hintergrund)"
 
-#: src/LColor.C:86
+#: src/LColor.C:87
 msgid "footnote frame"
 msgstr "Fußnote (Rahmen)"
 
-#: src/LColor.C:87
+#: src/LColor.C:88
 msgid "ert"
 msgstr "ERT"
 
-#: src/LColor.C:88
+#: src/LColor.C:89
 msgid "inset"
 msgstr "Inset"
 
-#: src/LColor.C:89
+#: src/LColor.C:90
 msgid "inset background"
 msgstr "Einfügung (Hintergrund)"
 
-#: src/LColor.C:91
+#: src/LColor.C:92
 msgid "error"
 msgstr "Fehler"
 
-#: src/LColor.C:92
+#: src/LColor.C:93
 msgid "end-of-line marker"
 msgstr "Zeilenende-Markierung"
 
-#: src/LColor.C:93
+#: src/LColor.C:94
 msgid "appendix line"
 msgstr "Strich Anhang"
 
-#: src/LColor.C:94
+#: src/LColor.C:95
 msgid "vfill line"
 msgstr "Strich VFill"
 
-#: src/LColor.C:95
+#: src/LColor.C:96
 msgid "top/bottom line"
 msgstr "Obere/untere Linie"
 
-#: src/LColor.C:96
+#: src/LColor.C:97
 msgid "table line"
 msgstr "Strich Tabelle"
 
-#: src/LColor.C:97
+#: src/LColor.C:98
 msgid "tabular line"
 msgstr "Tabulator Strich"
 
-#: src/LColor.C:99
+#: src/LColor.C:100
 msgid "tabularonoff line"
 msgstr "Tabular an/aus Linie"
 
-#: src/LColor.C:101
+#: src/LColor.C:102
 msgid "bottom area"
 msgstr "Unterer Bereich"
 
-#: src/LColor.C:102
+#: src/LColor.C:103
 msgid "page break"
 msgstr "Seitenumbruch"
 
-#: src/LColor.C:103
+#: src/LColor.C:104
 msgid "top of button"
 msgstr "Button (oben)"
 
-#: src/LColor.C:104
+#: src/LColor.C:105
 msgid "bottom of button"
 msgstr "Button (unten)"
 
-#: src/LColor.C:105
+#: src/LColor.C:106
 msgid "left of button"
 msgstr "Button (links)"
 
-#: src/LColor.C:106
+#: src/LColor.C:107
 msgid "right of button"
 msgstr "Button (rechts)"
 
-#: src/LColor.C:107
+#: src/LColor.C:108
 msgid "button background"
 msgstr "Button (Hintergrund)"
 
-#: src/LColor.C:108
+#: src/LColor.C:109
 msgid "inherit"
 msgstr "übernehmen"
 
-#: src/LColor.C:109
+#: src/LColor.C:110
 msgid "ignore"
 msgstr "ignorieren"
 
@@ -8221,64 +8177,64 @@ msgstr "aber es können Probleme auftreten."
 msgid "Expect problems."
 msgstr "Rechnen Sie mit Problemen."
 
-#: src/lyx_main.C:554
+#: src/lyx_main.C:555
 msgid "You have specified an invalid LyX directory."
 msgstr "Sie haben ein ungültiges LyX Verzeichnis angegeben."
 
-#: src/lyx_main.C:555
+#: src/lyx_main.C:556
 msgid "You don't have a personal LyX directory."
 msgstr "Sie haben kein persönliches LyX-Verzeichnis."
 
-#: src/lyx_main.C:557
+#: src/lyx_main.C:558
 msgid "It is needed to keep your own configuration."
 msgstr "Es wird zum Speichern Ihrer Konfiguration benötigt."
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:559
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Möchten Sie eines eingerichtet bekommen (empfohlen)?"
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:560
 msgid "Running without personal LyX directory."
 msgstr "Starte ohne persönliches LyX-Verzeichnis."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:566
+#: src/lyx_main.C:567
 msgid "LyX: Creating directory "
 msgstr "LyX: Verzeichnis anlegen "
 
-#: src/lyx_main.C:567
+#: src/lyx_main.C:568
 msgid " and running configure..."
 msgstr " und konfigurieren..."
 
-#: src/lyx_main.C:573
+#: src/lyx_main.C:574
 msgid "Failed. Will use "
 msgstr "Fehlgeschlagen. Verwende stattdessen "
 
-#: src/lyx_main.C:574
+#: src/lyx_main.C:575
 msgid " instead."
 msgstr "."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:582
 msgid "Done!"
 msgstr "Fertig!"
 
-#: src/lyx_main.C:595
+#: src/lyx_main.C:596
 msgid "LyX Warning!"
 msgstr "LyX Warnung!"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:597
 msgid "Error while reading "
 msgstr "Fehler beim Lesen von "
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:598
 msgid "Using built-in defaults."
 msgstr "Benutze Standardwerte."
 
-#: src/lyx_main.C:695
+#: src/lyx_main.C:696
 msgid "Setting debug level to "
 msgstr "Setze Debug-Level auf "
 
-#: src/lyx_main.C:707
+#: src/lyx_main.C:708
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -8309,352 +8265,352 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:733
+#: src/lyx_main.C:734
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Debug Optionen:"
 
-#: src/lyx_main.C:745
+#: src/lyx_main.C:746
 msgid "Missing directory for -sysdir switch!"
 msgstr "Die Option -sysdir benötigt ein Verzeichnis!"
 
-#: src/lyx_main.C:756
+#: src/lyx_main.C:757
 msgid "Missing directory for -userdir switch!"
 msgstr "Die Option -userdir benötigt ein Verzeichnis!"
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:780
 msgid "Missing command string after  -x switch!"
 msgstr "Die Option -x benötigt einen Befehl als Argument!"
 
-#: src/lyx_main.C:792
+#: src/lyx_main.C:793
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Fehlender Datei-Typ [zB latex, ps...] nach "
 
-#: src/lyx_main.C:794 src/lyx_main.C:809
+#: src/lyx_main.C:795 src/lyx_main.C:810
 msgid " switch!"
 msgstr " Option"
 
-#: src/lyx_main.C:807
+#: src/lyx_main.C:808
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Fehlender Datei-Typ [zB latex, ps...] nach "
 
-#: src/lyxrc.C:1573
+#: src/lyxrc.C:1586
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/lyxrc.C:1577
+#: src/lyxrc.C:1590
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/lyxrc.C:1581
+#: src/lyxrc.C:1594
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/lyxrc.C:1593
+#: src/lyxrc.C:1606
 msgid ""
 "Look at the man page for your favorite print program to learn which options "
 "to use."
 msgstr ""
 
-#: src/lyxrc.C:1597
+#: src/lyxrc.C:1610
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/lyxrc.C:1601
+#: src/lyxrc.C:1614
 msgid ""
 "Set to true for LyX to pass the name of the destination printer to your "
 "print command."
 msgstr ""
 
-#: src/lyxrc.C:1605
+#: src/lyxrc.C:1618
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/lyxrc.C:1609
+#: src/lyxrc.C:1622
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/lyxrc.C:1613
+#: src/lyxrc.C:1626
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/lyxrc.C:1617
+#: src/lyxrc.C:1630
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/lyxrc.C:1621
+#: src/lyxrc.C:1634
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/lyxrc.C:1625
+#: src/lyxrc.C:1638
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/lyxrc.C:1629
+#: src/lyxrc.C:1642
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/lyxrc.C:1633
+#: src/lyxrc.C:1646
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1639
+#: src/lyxrc.C:1652
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/lyxrc.C:1643
+#: src/lyxrc.C:1656
 msgid "The font for menus (and groups titles in popups)."
 msgstr ""
 
-#: src/lyxrc.C:1647
+#: src/lyxrc.C:1660
 msgid "The font for popups."
 msgstr ""
 
-#: src/lyxrc.C:1651
+#: src/lyxrc.C:1664
 msgid "The encoding for the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1655
+#: src/lyxrc.C:1668
 msgid "The encoding for the menu/popups fonts."
 msgstr ""
 
-#: src/lyxrc.C:1662
+#: src/lyxrc.C:1675
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/lyxrc.C:1666
+#: src/lyxrc.C:1679
 #, fuzzy
 msgid "The default path for your documents."
 msgstr "Standard für neue Dokumente verwendet werden?"
 
-#: src/lyxrc.C:1670
+#: src/lyxrc.C:1683
 msgid "The path that LyX will set when offering to choose a template."
 msgstr ""
 
-#: src/lyxrc.C:1674
+#: src/lyxrc.C:1687
 msgid "The path that LyX will use to store temporary TeX output."
 msgstr ""
 
-#: src/lyxrc.C:1678
+#: src/lyxrc.C:1691
 msgid ""
 "Specify to use a temporary directory to store temporary TeX output. This "
 "directory is deleted when you quit LyX."
 msgstr ""
 
-#: src/lyxrc.C:1682
+#: src/lyxrc.C:1695
 msgid "The file where the last-files information should be stored."
 msgstr ""
 
-#: src/lyxrc.C:1686
+#: src/lyxrc.C:1699
 msgid ""
 "Set to false if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/lyxrc.C:1690
+#: src/lyxrc.C:1703
 msgid ""
 "Set to true for LyX to take over the handling of the dead keys (a.k.a. "
 "accent keys) that may be defined for your keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1695
+#: src/lyxrc.C:1708
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/lyxrc.C:1699
+#: src/lyxrc.C:1712
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1703
+#: src/lyxrc.C:1716
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1709
+#: src/lyxrc.C:1722
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1723
+#: src/lyxrc.C:1736
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
 msgstr ""
 
-#: src/lyxrc.C:1727
+#: src/lyxrc.C:1740
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
 msgstr ""
 
-#: src/lyxrc.C:1731
+#: src/lyxrc.C:1744
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
 
-#: src/lyxrc.C:1735
+#: src/lyxrc.C:1748
 msgid "Specify to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/lyxrc.C:1742
+#: src/lyxrc.C:1755
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Format:|#F"
 
-#: src/lyxrc.C:1749
+#: src/lyxrc.C:1762
 msgid ""
 "Consider run-together words, such as \"notthe\" for \"not the\", as legal "
 "words?"
 msgstr ""
 
-#: src/lyxrc.C:1753
+#: src/lyxrc.C:1766
 msgid "What command runs the spell checker?"
 msgstr ""
 
-#: src/lyxrc.C:1757
+#: src/lyxrc.C:1770
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
 msgstr ""
 
-#: src/lyxrc.C:1762
+#: src/lyxrc.C:1775
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1767
+#: src/lyxrc.C:1780
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/lyxrc.C:1772
+#: src/lyxrc.C:1785
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/lyxrc.C:1776
+#: src/lyxrc.C:1789
 msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
 msgstr ""
 
-#: src/lyxrc.C:1780
+#: src/lyxrc.C:1793
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
 "-n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/lyxrc.C:1784
+#: src/lyxrc.C:1797
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/lyxrc.C:1788
+#: src/lyxrc.C:1801
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
 msgstr ""
 
-#: src/lyxrc.C:1792
+#: src/lyxrc.C:1805
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
 msgstr ""
 
-#: src/lyxrc.C:1796
+#: src/lyxrc.C:1809
 msgid "Set to false if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/lyxrc.C:1800
+#: src/lyxrc.C:1813
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/lyxrc.C:1804
+#: src/lyxrc.C:1817
 msgid "Use to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/lyxrc.C:1808
+#: src/lyxrc.C:1821
 msgid ""
 "Use to control the highlighting of words with a language foreign to that of "
 "the document."
 msgstr ""
 
-#: src/lyxrc.C:1812
+#: src/lyxrc.C:1825
 msgid ""
 "The latex command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/lyxrc.C:1816
+#: src/lyxrc.C:1829
 msgid ""
 "Use if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1820
+#: src/lyxrc.C:1833
 msgid ""
 "Use if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/lyxrc.C:1824
+#: src/lyxrc.C:1837
 msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/lyxrc.C:1828
+#: src/lyxrc.C:1841
 msgid "The latex command for changing back to the language of the document."
 msgstr ""
 
-#: src/lyxrc.C:1832
+#: src/lyxrc.C:1845
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/lyxrc.C:1836
+#: src/lyxrc.C:1849
 msgid "Set to false if you don't want the startup banner."
 msgstr ""
 
-#: src/lyxrc.C:1840
+#: src/lyxrc.C:1853
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
 msgstr ""
 
-#: src/lyxrc.C:1853
+#: src/lyxrc.C:1866
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
 msgstr ""
 
-#: src/lyxrc.C:1857
+#: src/lyxrc.C:1870
 msgid "New documents will be assigned this language."
 msgstr ""
 
@@ -9142,19 +9098,68 @@ msgstr "Fehler: Verzeichnis konnte nicht angelegt werden: "
 msgid "Could not delete auto-save file!"
 msgstr "Die automatische Sicherungsdatei konnte nicht gelöscht werden!"
 
+#: src/support/filetools.C:1145 src/support/filetools.C:1169
+#: src/support/filetools.C:1204 src/support/filetools.C:1249
+msgid "The absolute path is required."
+msgstr ""
+
+#: src/support/filetools.C:1151 src/support/filetools.C:1175
+#: src/support/filetools.C:1214 src/support/filetools.C:1259
+msgid "Directory does not exist."
+msgstr ""
+
+#: src/support/filetools.C:1156 src/support/filetools.C:1219
+#, fuzzy
+msgid "Cannot write to this directory."
+msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
+
+#: src/support/filetools.C:1180
+#, fuzzy
+msgid "Cannot read this directory."
+msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
+
+#: src/support/filetools.C:1198 src/support/filetools.C:1243
+#, fuzzy
+msgid "No file input."
+msgstr "Keine Warnungen im Dokument."
+
+#: src/support/filetools.C:1225 src/support/filetools.C:1270
+msgid "A file is required, not a directory."
+msgstr ""
+
+#: src/support/filetools.C:1230
+#, fuzzy
+msgid "Cannot write to this file."
+msgstr "Die Datei kann nicht geschrieben werden"
+
+#: src/support/filetools.C:1264
+#, fuzzy
+msgid "Cannot read from this directory."
+msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
+
+#: src/support/filetools.C:1275
+#, fuzzy
+msgid "File does not exist."
+msgstr "Die Datei existiert bereits:"
+
+#: src/support/filetools.C:1280
+#, fuzzy
+msgid "Cannot read from this file."
+msgstr "Die Datei kann nicht geschrieben werden"
+
 #: src/support/getUserName.C:13
 msgid "unknown"
 msgstr "unbekannt"
 
-#: src/tabular.C:1280
+#: src/tabular.C:1279
 msgid "Warning:"
 msgstr "Achtung:"
 
-#: src/tabular.C:1281
+#: src/tabular.C:1280
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr "Tabular Format < 5 wird nicht mehr unterstützt.\n"
 
-#: src/tabular.C:1282
+#: src/tabular.C:1281
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Verwenden sie eine ältere Version von LyX (< 1.1.x) zum konvertieren!"
 

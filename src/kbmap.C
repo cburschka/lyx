@@ -45,7 +45,7 @@ void printKeysym(unsigned int key, unsigned int mod, string & buf)
 {
 	mod &= ModsMask;
 
-	char * s = XKeysymToString(key);
+	char const * const s = XKeysymToString(key);
 	
 	if (mod & ShiftMask) buf += "S-";
 	if (mod & ControlMask) buf += "C-";
@@ -75,7 +75,7 @@ int kb_keymap::bind(string const & seq, int action)
 {
 	kb_sequence k;
 
-	int res = k.parse(seq);
+	int const res = k.parse(seq);
 	if (!res) {
 		defkey(&k, action);
 	} else
@@ -105,14 +105,14 @@ int kb_keymap::lookup(unsigned int key,
 		return -1;
 	}
 
-	unsigned int msk1, msk0;
+	//unsigned int msk1, msk0;
 	//suppress modifier bits we do not handle
 	mod &= ModsMask;
 
 	for (Table::const_iterator cit = table.begin();
 	     cit != table.end(); ++cit) {
-		msk1 = (*cit).mod & 0xffff;
-		msk0 = ((*cit).mod >> 16) & 0xffff;
+		unsigned int const msk1 = (*cit).mod & 0xffff;
+		unsigned int const msk0 = ((*cit).mod >> 16) & 0xffff;
 		if ((*cit).code == key && (mod & ~msk0) == msk1) {
 			// math found:
 			if ((*cit).table) {
@@ -166,10 +166,10 @@ void kb_keymap::print(string & buf) const
 
 int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 {
-	unsigned int code = seq->sequence[idx];
+	unsigned int const code = seq->sequence[idx];
 	if (code == NoSymbol) return -1;
 
-	unsigned int modmsk = seq->modifiers[idx];
+	unsigned int const modmsk = seq->modifiers[idx];
 
 	// --- check if key is already there --------------------------------
 	if (table.size() != 0) { // without this I get strange crashes

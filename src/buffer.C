@@ -18,6 +18,7 @@
 #include <iomanip>
 
 #include <cstdlib>
+#include <cmath>
 #include <unistd.h>
 #include <sys/types.h>
 #include <utime.h>
@@ -807,9 +808,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		int tmpret = lex.FindToken(string_align);
 		if (tmpret == -1) ++tmpret;
 		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
+#if 0
 			int tmpret2 = 1;
 			for (; tmpret > 0; --tmpret)
 				tmpret2 = tmpret2 * 2;
+#else
+			int const tmpret2 = pow(2.0, tmpret);
+#endif
+			lyxerr << "Tmpret2 = " << tmpret2 << endl;
 			par->align = LyXAlignment(tmpret2);
 		}
 	} else if (token == "\\added_space_top") {
@@ -2495,7 +2501,9 @@ void Buffer::pop_tag(ostream & os, string const & tag,
 #warning Use a real stack! (Lgb)
 #endif
 	// Please, Lars, do not remove the global variable. I already
-	// had to reintroduce it twice! (JMarc) 
+	// had to reintroduce it twice! (JMarc)
+	// but...but... I'll remove it anyway. (well not quite) (Lgb)
+#if 0
 	int j;
 	
         // pop all tags till specified one
@@ -2508,9 +2516,25 @@ void Buffer::pop_tag(ostream & os, string const & tag,
         // push all tags, but the specified one
         for (j = j + 1; j <= pos; ++j) {
                 os << "<" << stack[j] << ">";
-                strcpy(stack[j-1], stack[j]);
+                strcpy(stack[j - 1], stack[j]);
         }
         --pos;
+#else
+        // pop all tags till specified one
+	int j = pos;
+        for (int j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
+                os << "</" << stack[j] << ">";
+
+        // closes the tag
+        os << "</" << tag << ">";
+	
+        // push all tags, but the specified one
+        for (int i = j + 1; i <= pos; ++i) {
+                os << "<" << stack[i] << ">";
+                strcpy(stack[i - 1], stack[i]);
+        }
+        --pos;
+#endif
 }
 
 

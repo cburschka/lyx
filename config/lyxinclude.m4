@@ -203,11 +203,11 @@ dnl Check the version of g++
     esac
     if test $lyx_devel_version = yes ; then
 	case $gxx_version in
-	    2.95.*) CXXFLAGS="$CXXFLAGS -Wconversion -Winline";;
-	    2.96*) CXXFLAGS="$CXXFLAGS -Wconversion -Winline";;
+	    2.95.*) ;;
+	    2.96*) ;;
 	    2.97*) CXXFLAGS="$CXXFLAGS -Wconversion -Winline";;
 	    *2.91*) ;;
-	    *) CXXFLAGS="$CXXFLAGS -pedantic";;
+	    *) ;;
         esac
     fi
   fi

@@ -68,8 +68,9 @@ unsigned int LyXParagraph::paragraph_id = 0;
 
 LyXParagraph::LyXParagraph()
 {
+#ifndef HAVE_ROPE
 	text.reserve(500); // is this number too big?
-
+#endif
 	for (int i = 0; i < 10; ++i) setCounter(i , 0);
 	appendix = false;
 	enumdepth = 0;
@@ -92,9 +93,11 @@ LyXParagraph::LyXParagraph()
 // This konstruktor inserts the new paragraph in a list.
 LyXParagraph::LyXParagraph(LyXParagraph * par)
 {
+#ifndef HAVE_ROPE
 	text.reserve(500);
-	par->text.resize(par->text.size());
-
+#endif
+	par->fitToSize();
+	
 	for (int i = 0; i < 10; ++i) setCounter(i, 0);
 	appendix = false;
 	enumdepth = 0;
@@ -261,7 +264,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			font1 = font2;
 		}
 
-		value_type c = GetChar(i);
+		value_type const c = GetChar(i);
 		switch (c) {
 		case META_INSET:
 		{
@@ -555,8 +558,11 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 				insetlist.erase(it);
 			}
 		}
+#ifndef HAVE_ROPE
 		text.erase(text.begin() + pos);
-
+#else
+		text.erase(text.mutable_begin() + pos);
+#endif
 		// Erase entries in the tables.
 		FontTable search_font(pos, LyXFont());
 		
@@ -566,18 +572,18 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 				    search_font, matchFT());
 		if (it != fontlist.end() && (*it).pos == pos &&
 		    (pos == 0 || 
-		     (it != fontlist.begin() && (*(it-1)).pos == pos - 1))) {
+		     (it != fontlist.begin() && (*(it - 1)).pos == pos - 1))) {
 			// If it is a multi-character font
 			// entry, we just make it smaller
 			// (see update below), otherwise we
 			// should delete it.
-			unsigned int i = it - fontlist.begin();
+			unsigned int const i = it - fontlist.begin();
 			fontlist.erase(fontlist.begin() + i);
 			it = fontlist.begin() + i;
 			if (i > 0 && i < fontlist.size() &&
-			    fontlist[i-1].font == fontlist[i].font) {
-				fontlist.erase(fontlist.begin() + i-1);
-				it = fontlist.begin() + i-1;
+			    fontlist[i - 1].font == fontlist[i].font) {
+				fontlist.erase(fontlist.begin() + i - 1);
+				it = fontlist.begin() + i - 1;
 			}
 		}
 
@@ -607,7 +613,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 			      LyXParagraph::value_type c)
 {
-	LyXFont f(LyXFont::ALL_INHERIT);
+	LyXFont const f(LyXFont::ALL_INHERIT);
 	InsertChar(pos, c, f);
 }
 
@@ -632,7 +638,11 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 #else
 	Assert(pos <= size());
 #endif
+#ifndef HAVE_ROPE
 	text.insert(text.begin() + pos, c);
+#else
+	text.insert(pos, c);
+#endif
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
 	for (FontList::iterator it = lower_bound(fontlist.begin(),
@@ -656,7 +666,7 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset)
 {
-	LyXFont f(LyXFont::ALL_INHERIT);
+	LyXFont const f(LyXFont::ALL_INHERIT);
 	InsertInset(pos, inset, f);
 }
 
@@ -1155,34 +1165,35 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	bool end = !notfound && fontlist[i].pos == pos;
 	// Is position pos is the end of a font block?
 	if (begin && end) { // A single char block
-		if (i+1 < fontlist.size() &&
-		    fontlist[i+1].font == font) {
+		if (i + 1 < fontlist.size() &&
+		    fontlist[i + 1].font == font) {
 			// Merge the singleton block with the next block
 			fontlist.erase(fontlist.begin() + i);
-			if (i > 0 && fontlist[i-1].font == font)
+			if (i > 0 && fontlist[i - 1].font == font)
 				fontlist.erase(fontlist.begin() + i-1);
-		} else if (i > 0 && fontlist[i-1].font == font) {
+		} else if (i > 0 && fontlist[i - 1].font == font) {
 			// Merge the singleton block with the previous block
-			fontlist[i-1].pos = pos;
+			fontlist[i - 1].pos = pos;
 			fontlist.erase(fontlist.begin() + i);
 		} else
 			fontlist[i].font = font;
 	} else if (begin) {
-		if (i > 0 && fontlist[i-1].font == font)
-			fontlist[i-1].pos = pos;
+		if (i > 0 && fontlist[i - 1].font == font)
+			fontlist[i - 1].pos = pos;
 		else
 			fontlist.insert(fontlist.begin() + i,
 					FontTable(pos, font));
 	} else if (end) {
 		fontlist[i].pos = pos - 1;
-		if (!(i+1 < fontlist.size() &&
-		      fontlist[i+1].font == font))
-			fontlist.insert(fontlist.begin() + i+1,
+		if (!(i + 1 < fontlist.size() &&
+		      fontlist[i + 1].font == font))
+			fontlist.insert(fontlist.begin() + i + 1,
 					FontTable(pos, font));
 	} else { // The general case. The block is splitted into 3 blocks
 		fontlist.insert(fontlist.begin() + i, 
 				FontTable(pos - 1, fontlist[i].font));
-		fontlist.insert(fontlist.begin() + i+1, FontTable(pos, font));
+		fontlist.insert(fontlist.begin() + i + 1,
+				FontTable(pos, font));
 	}
 }
 
@@ -1469,11 +1480,13 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 			if (tmp->InsertFromMinibuffer(j - pos))
 				++j;
 		}
-		tmp->text.resize(tmp->text.size());
+
+		tmp->fitToSize();
+
 		for (i = pos_end; i >= pos; --i)
 			par->Erase(i - pos_first);
 
-		par->text.resize(par->text.size());
+		par->fitToSize();
 #else
 		size_type pos_end = text.size() - 1;
 		
@@ -1692,11 +1705,13 @@ void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
 			if (tmp->InsertFromMinibuffer(j - pos))
 				++j;
 		}
-		tmp->text.resize(tmp->text.size());
+
+		tmp->fitToSize();
+
 		for (size_type i = pos_end; i >= pos; --i)
 			par->Erase(i - pos_first);
 
-		par->text.resize(par->text.size());
+		par->fitToSize();
 	}
 #else
 	// create a new paragraph
@@ -1962,9 +1977,8 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
                     npar && (npar->pextra_type != PEXTRA_NONE)) {
-                        string
-                                p1 = npar->pextra_width,
-                                p2 = npar->pextra_widthp;
+                        string const p1 = npar->pextra_width;
+			string const p2 = npar->pextra_widthp;
                         npar->SetPExtraType(bparams, npar->pextra_type,
                                             p1, p2);
                 }
@@ -2023,17 +2037,15 @@ void LyXParagraph::SetLayout(BufferParams const & bparams,
 #endif
                 }
                 if (ppar && (ppar->pextra_type != PEXTRA_NONE)) {
-                        string
-                                p1 = ppar->pextra_width,
-                                p2 = ppar->pextra_widthp;
+                        string const p1 = ppar->pextra_width;
+			string const p2 = ppar->pextra_widthp;
                         ppar->SetPExtraType(bparams, ppar->pextra_type,
                                             p1, p2);
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
                     npar && (npar->pextra_type != PEXTRA_NONE)) {
-                        string
-                                p1 = npar->pextra_width,
-                                p2 = npar->pextra_widthp;
+                        string const p1 = npar->pextra_width;
+			string const p2 = npar->pextra_widthp;
                         npar->SetPExtraType(bparams, npar->pextra_type,
                                             p1, p2);
                 }
@@ -2062,7 +2074,8 @@ int LyXParagraph::BeginningOfMainBody() const
 	    && GetChar(i) != LyXParagraph::META_NEWLINE
 		) {
 		++i;
-		char previous_char = 0, temp = 0; 
+		char previous_char = 0;
+		char temp = 0; 
 		if (i < size()
 		    && (previous_char = GetChar(i)) != LyXParagraph::META_NEWLINE) {
 			// Yes, this  ^ is supposed to be "= " not "=="
@@ -2194,7 +2207,7 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 	// Think about footnotes.
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE 
 	    && next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		int further = 
+		int const further = 
 			NextAfterFootnote()->GetPositionOfInset(inset);
 		if (further != -1)
 			return text.size() + 1 + further;
@@ -2811,7 +2824,7 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 		Inset * inset = GetInset(i);
 		if (inset) {
 			bool close = false;
-			int len = os.tellp();
+			int const len = os.tellp();
 			if ((inset->LyxCode() == Inset::GRAPHICS_CODE
 			     || inset->LyxCode() == Inset::MATH_CODE
 			     || inset->LyxCode() == Inset::URL_CODE)
@@ -3838,14 +3851,14 @@ bool LyXParagraph::IsKomma(size_type pos) const
 /// Used by the spellchecker
 bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 {
-	value_type c = GetChar(pos);
+	value_type const c = GetChar(pos);
 	if (IsLetterChar(c))
 		return true;
 	// '\0' is not a letter, allthough every string contains "" (below)
 	if (c == '\0')
 		return false;
 	// We want to pass the ' and escape chars to ispell
-	string extra = lyxrc.isp_esc_chars + '\'';
+	string const extra = lyxrc.isp_esc_chars + '\'';
 	char ch[2] = { c, 0 };
 	return contains(extra, ch);
 }
@@ -3925,7 +3938,7 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 	if (label && !labelstring.empty())
 #endif
 		s += labelstring + ' ';
-	string::size_type len = s.size();
+	string::size_type const len = s.size();
 
 	for (LyXParagraph::size_type i = 0; i < size(); ++i) {
 		value_type c = GetChar(i);

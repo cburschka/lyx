@@ -72,7 +72,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 		       << width << 'x' << height << endl;
 	//
 	FL_OBJECT * obj;
-	const int bw = int(std::abs(float(fl_get_border_width())));
+	int const bw = int(std::abs(float(fl_get_border_width())));
 
 	// We really want to get rid of figinset_canvas.
 	::figinset_canvas = figinset_canvas = obj =
@@ -169,7 +169,7 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();
 	
-	const int bw = int(std::abs(float(fl_get_border_width())));
+	int const bw = int(std::abs(float(fl_get_border_width())));
 
 	// a box
 	fl_set_object_geometry(backgroundbox, xpos, ypos, width - 15, height);

@@ -60,6 +60,8 @@ public:
 
 		// Needed interface colors
 
+		/// Cursor color
+		cursor,
 		/// Background color
 		background,
 		/// Foreground color

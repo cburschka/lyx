@@ -30,6 +30,7 @@ using std::endl;
 extern LyXAction lyxaction;
 ToolbarDefaults toolbardefaults;
 
+
 ToolbarDefaults::ToolbarDefaults()
 {
 	init();
@@ -40,6 +41,7 @@ void ToolbarDefaults::add(int action)
 {
 	defaults.push_back(action);
 }
+
 
 void ToolbarDefaults::init() 
 {
@@ -159,7 +161,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 
 void ToolbarDefaults::add(string const & func)
 {
-	int tf = lyxaction.LookupFunc(func);
+	int const tf = lyxaction.LookupFunc(func);
 
 	if (tf == -1) {
 		lyxerr << "Toolbar::add: no LyX command called`"

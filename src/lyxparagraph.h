@@ -16,6 +16,12 @@
 #pragma interface
 #endif
 
+//#define HAVE_ROPE 1
+
+#ifdef HAVE_ROPE
+#include <rope>
+#endif
+
 #include <vector>
 #include <list>
 
@@ -122,7 +128,11 @@ public:
 	///
 	typedef char value_type;
 	///
+#ifndef HAVE_ROPE
 	typedef std::vector<value_type> TextContainer;
+#else
+	typedef std::rope<value_type> TextContainer;
+#endif
 	///
 	/* This should be TextContainer::size_type, but we need
 	   signed values for now.
@@ -231,7 +241,9 @@ public:
 	size_type size() const { return text.size(); }
 	///
 	void fitToSize() {
+#ifndef HAVE_ROPE
 		text.resize(text.size());
+#endif
 	}
 	///
 	void setContentsFromPar(LyXParagraph * par) {
@@ -239,7 +251,11 @@ public:
 	}
 	///
 	void clearContents() {
+#ifndef HAVE_ROPE
 		text.clear();
+#else
+		text.erase(text.mutable_begin(), text.mutable_end());
+#endif
 	}
 	
 	/// 
@@ -427,7 +443,11 @@ public:
 	value_type GetChar(size_type pos) const;
 	/// The position must already exist.
 	void SetChar(size_type pos, value_type c) {
+#ifndef HAVE_ROPE
 		text[pos] = c;
+#else
+		text.replace(pos, c);
+#endif
 	}
 	
 	///

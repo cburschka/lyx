@@ -75,7 +75,7 @@ void BufferParams::writeFile(ostream & os) const
 	// then the the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
-		string tmppreamble = strip(preamble, '\n');
+		string const tmppreamble = strip(preamble, '\n');
 		os << "\\begin_preamble\n"
 		   << tmppreamble
 		   << "\n\\end_preamble\n";
@@ -198,7 +198,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 {
 	if (!lex.next()) return;
 	
-	string tmptok = lex.GetString();
+	string const tmptok = lex.GetString();
 
 	// check if tmptok is part of tex_babel in tex-defs.h
 	language = languages.getLanguage(tmptok);
@@ -215,23 +215,18 @@ void BufferParams::readLanguage(LyXLex & lex)
 
 void BufferParams::readGraphicsDriver(LyXLex & lex)
 {
-	string tmptok;
-	string test;
-	int n = 0;
-	
-	
 	if (!lex.next()) return;
 	
-	tmptok = lex.GetString();
+	string const tmptok = lex.GetString();
 	// check if tmptok is part of tex_graphics in tex_defs.h
+	int n = 0;
 	while (true) {
-		test = tex_graphics[n++];
+		string const test = tex_graphics[n++];
 		
 		if (test == tmptok) {	 
 			graphicsDriver = tmptok;
 			break;
-		}      
-		else if (test == "last_item") {
+		} else if (test == "last_item") {
 			lex.printError(
 				"Warning: graphics driver `$$Token' not recognized!\n"
 				"         Setting graphics driver to `default'.\n");

@@ -33,4 +33,24 @@ struct XformColor : public NamedColor {
 	static bool write(string const &);
 };
 
+
+/** Some functions that perform some quite detailed tests to ascertain whether
+    the directory or file is readable or writeable. If not, then an error
+    message is placed in error_message. */
+class RWInfo {
+public:
+	///
+	static bool WriteableDir(string const & dir);
+	///
+	static bool ReadableDir(string const & dir);
+	///
+	static bool WriteableFile(string const & file);
+	///
+	static bool ReadableFile(string const & file);
+	///
+	static string const & ErrorMessage() { return error_message; }
+private:
+	///
+	static string error_message;
+};
 #endif
