@@ -1447,10 +1447,7 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 	set_row_column_number_info(true);
 
 	string tmptok;
-	int pos = 0;
 	Paragraph::depth_type depth = 0;
-	LyXFont font(LyXFont::ALL_INHERIT);
-	font.setLanguage(owner_->bufferOwner()->getLanguage());
 
 	ParagraphList parlist;
 	ParagraphList::iterator pit = parlist.begin();
@@ -1474,9 +1471,7 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 			break;
 		}
 
-		owner_->bufferOwner()->readToken(lex, parlist, pit,
-		                                 token, pos, depth, font);
-
+		owner_->bufferOwner()->readParagraph(lex, token, parlist, pit, depth);
 	}
 
 	Paragraph * par = &(*parlist.begin());

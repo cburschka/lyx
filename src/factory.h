@@ -14,8 +14,13 @@
 
 class Inset;
 class FuncRequest;
+class LyXLex;
+class Buffer;
 
 /// creates inset according to 'cmd'
 Inset * createInset(FuncRequest const & cmd);
 
-#endif
+/// read inset from a file
+Inset * readInset(LyXLex & lex, Buffer const & buf);
+
+#endif // FACTORY_H

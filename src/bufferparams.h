@@ -231,10 +231,8 @@ public:
 	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
 	string parentname;
-private:
-	/// mapping of author IDs
-	std::vector<int> author_ids;
 
+private:
 	/// the author list
 	AuthorList authorlist;
 

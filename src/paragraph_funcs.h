@@ -19,6 +19,7 @@ class Buffer;
 class BufferParams;
 class Paragraph;
 class TexRow;
+class LyXLex;
 
 ///
 void breakParagraph(BufferParams const & bparams,
@@ -85,5 +86,8 @@ void latexParagraphs(Buffer const * buf,
 		     std::ostream & ofs,
 		     TexRow & texrow,
 		     bool moving_arg = false);
+
+/// read a paragraph from a .lyx file. Returns number of unrecognised tokens
+int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 
 #endif // PARAGRAPH_FUNCS_H

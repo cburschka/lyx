@@ -1,5 +1,23 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* buffer.h:
+	* buffer.C: move paragraph read into a separate function,
+	a little renaming to reflect that.
+
+	* bufferparams.h:
+	* bufferparams.C: remove the author_ids map, not necessary now
+
+	* factory.h:
+	* factory.C: moved Buffer::readInset to here
+
+	* paragraph_funcs.h:
+	* paragraph_funcs.C: readParagraph free function moved from
+	buffer.C
+
+	* tabular.C: name change
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* buffer.C:
 	* ParagraphParameters.C: move par params input to
 	a read() method

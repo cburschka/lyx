@@ -261,9 +261,7 @@ void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
 void InsetText::read(Buffer const * buf, LyXLex & lex)
 {
 	string token;
-	int pos = 0;
 	Paragraph::depth_type depth = 0;
-	LyXFont font(LyXFont::ALL_INHERIT);
 
 	clear(false);
 
@@ -289,9 +287,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		}
 
 		// FIXME: ugly.
-
-		const_cast<Buffer*>(buf)->readToken(lex, paragraphs, pit,
-		                                    token, pos, depth, font);
+		const_cast<Buffer*>(buf)->readParagraph(lex, token, paragraphs, pit, depth);
 	}
 
 	pit = paragraphs.begin();

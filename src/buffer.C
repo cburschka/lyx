@@ -47,40 +47,11 @@
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
 
-#include "insets/inset.h"
 #include "insets/inseterror.h"
-#include "insets/insethfill.h"
-#include "insets/insetlabel.h"
-#include "insets/insetref.h"
-#include "insets/inseturl.h"
-#include "insets/insetnote.h"
-#include "insets/insetquotes.h"
-#include "insets/insetlatexaccent.h"
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
-#include "insets/insetcite.h"
-#include "insets/insetexternal.h"
-#include "insets/insetindex.h"
 #include "insets/insetinclude.h"
-#include "insets/insettoc.h"
-#include "insets/insetparent.h"
-#include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
-#include "insets/insetert.h"
-#include "insets/insetgraphics.h"
-#include "insets/insetfoot.h"
-#include "insets/insetmarginal.h"
-#include "insets/insetoptarg.h"
-#include "insets/insetminipage.h"
-#include "insets/insetfloat.h"
-#include "insets/insetwrap.h"
-#include "insets/insettabular.h"
-#if 0
-#include "insets/insettheorem.h"
-#include "insets/insetlist.h"
-#endif
-#include "insets/insetcaption.h"
-#include "insets/insetfloatlist.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
@@ -344,11 +315,8 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 	unknown_layouts = 0;
 	int unknown_tokens = 0;
 
-	int pos = 0;
 	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
-
-	LyXFont font(LyXFont::ALL_INHERIT, params.language);
 
 	if (paragraphs.empty()) {
 		unknown_tokens += readHeader(lex);
@@ -370,7 +338,6 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users, paragraphs);
-		pos = 0;
 		markDirty();
 
 		// We don't want to adopt the parameters from the
@@ -396,7 +363,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 			continue;
 		}
 
-		unknown_tokens += readToken(lex, paragraphs, pit, token, pos, depth, font);
+		unknown_tokens += readParagraph(lex, token, paragraphs, pit, depth);
 	}
 
 	if (unknown_layouts > 0) {
@@ -438,282 +405,42 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 
 int
-Buffer::readToken(LyXLex & lex, ParagraphList & pars,
-                  ParagraphList::iterator & pit,
-                  string const & token, int & pos,
-                  Paragraph::depth_type & depth,
-                  LyXFont & font)
+Buffer::readParagraph(LyXLex & lex, string const & token,
+                      ParagraphList & pars, ParagraphList::iterator & pit,
+                      Paragraph::depth_type & depth)
 {
 	static Change current_change;
 	int unknown = 0;
 
-	// The order of the tags tested may seem unnatural, but this
-	// has been done in order to reduce the number of string
-	// comparisons needed to recognize a given token. This leads
-	// on large documents like UserGuide to a reduction of a
-	// factor 5! (JMarc)
-	if (token[0] != '\\') {
-		for (string::const_iterator cit = token.begin();
-		     cit != token.end(); ++cit) {
-			pit->insertChar(pos, (*cit), font, current_change);
-			++pos;
-		}
-	} else if (token == "\\layout") {
-		// reset the font as we start a new layout and if the font is
-		// not ALL_INHERIT,document_language then it will be set to the
-		// right values after this tag (Jug 20020420)
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+	if (token == "\\layout") {
+		lex.pushToken(token);
 
-		lex.eatLine();
-		string layoutname = lex.getString();
+		Paragraph * par = new Paragraph();
+		par->params().depth(depth);
+		if (params.tracking_changes)
+			par->trackChanges();
+		LyXFont f(LyXFont::ALL_INHERIT, params.language);
+		par->setFont(0, f);
 
-		LyXTextClass const & tclass = params.getLyXTextClass();
+		// FIXME: goddamn InsetTabular makes us pass a Buffer
+		// not BufferParams
+		unknown += ::readParagraph(*this, *par, lex);
 
-		if (layoutname.empty()) {
-			layoutname = tclass.defaultLayoutName();
-		}
-		bool hasLayout = tclass.hasLayout(layoutname);
-		if (!hasLayout) {
-			lyxerr << "Layout '" << layoutname << "' does not"
-			       << " exist in textclass '" << tclass.name()
-			       << "'." << endl;
-			lyxerr << "Trying to use default layout instead."
-			       << endl;
-			layoutname = tclass.defaultLayoutName();
-		}
-
-#ifdef USE_CAPTION
-		// The is the compability reading of layout caption.
-		// It can be removed in LyX version 1.3.0. (Lgb)
-		if (compare_ascii_no_case(layoutname, "caption") == 0) {
-			// We expect that the par we are now working on is
-			// really inside a InsetText inside a InsetFloat.
-			// We also know that captions can only be
-			// one paragraph. (Lgb)
-
-			// We should now read until the next "\layout"
-			// is reached.
-			// This is probably not good enough, what if the
-			// caption is the last par in the document (Lgb)
-			istream & ist = lex.getStream();
-			stringstream ss;
-			string line;
-			int begin = 0;
-			while (true) {
-				getline(ist, line);
-				if (prefixIs(line, "\\layout")) {
-					lex.pushToken(line);
-					break;
-				}
-				if (prefixIs(line, "\\begin_inset"))
-					++begin;
-				if (prefixIs(line, "\\end_inset")) {
-					if (begin)
-						--begin;
-					else {
-						lex.pushToken(line);
-						break;
-					}
-				}
-
-				ss << line << '\n';
-			}
-			// Now we should have the whole layout in ss
-			// we should now be able to give this to the
-			// caption inset.
-			ss << "\\end_inset\n";
-
-			// This seems like a bug in stringstream.
-			// We really should be able to use ss
-			// directly. (Lgb)
-			istringstream is(ss.str());
-			LyXLex tmplex(0, 0);
-			tmplex.setStream(is);
-			Inset * inset = new InsetCaption;
-			inset->Read(this, tmplex);
-			pit->InsertInset(pos, inset, font);
-			++pos;
-		} else {
-#endif
-			Paragraph * par = new Paragraph();
-			if (params.tracking_changes)
-				par->trackChanges();
-			pos = 0;
-			par->layout(params.getLyXTextClass()[layoutname]);
-			// Test whether the layout is obsolete.
-			LyXLayout_ptr const & layout = par->layout();
-			if (!layout->obsoleted_by().empty())
-				par->layout(params.getLyXTextClass()[layout->obsoleted_by()]);
-			par->params().depth(depth);
-
-			par->params().read(lex);
-
-			// insert after
-			if (pit != pars.end())
-				++pit;
-			pit = pars.insert(pit, par);
-#if USE_CAPTION
-		}
-#endif
-
-	} else if (token == "\\end_inset") {
-		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
-		       << "Missing \\begin_inset?.\n";
-		// Simply ignore this. The insets do not have
-		// to read this.
-		// But insets should read it, it is a part of
-		// the inset isn't it? Lgb.
-	} else if (token == "\\begin_inset") {
-		readInset(lex, pit, pos, font, current_change);
-	} else if (token == "\\family") {
-		lex.next();
-		font.setLyXFamily(lex.getString());
-	} else if (token == "\\series") {
-		lex.next();
-		font.setLyXSeries(lex.getString());
-	} else if (token == "\\shape") {
-		lex.next();
-		font.setLyXShape(lex.getString());
-	} else if (token == "\\size") {
-		lex.next();
-		font.setLyXSize(lex.getString());
-	} else if (token == "\\lang") {
-		lex.next();
-		string const tok = lex.getString();
-		Language const * lang = languages.getLanguage(tok);
-		if (lang) {
-			font.setLanguage(lang);
-		} else {
-			font.setLanguage(params.language);
-			lex.printError("Unknown language `$$Token'");
-		}
-	} else if (token == "\\numeric") {
-		lex.next();
-		font.setNumber(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\emph") {
-		lex.next();
-		font.setEmph(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\bar") {
-		lex.next();
-		string const tok = lex.getString();
-		// This is dirty, but gone with LyX3. (Asger)
-		if (tok == "under")
-			font.setUnderbar(LyXFont::ON);
-		else if (tok == "no")
-			font.setUnderbar(LyXFont::OFF);
-		else if (tok == "default")
-			font.setUnderbar(LyXFont::INHERIT);
-		else
-			lex.printError("Unknown bar font flag "
-				       "`$$Token'");
-	} else if (token == "\\noun") {
-		lex.next();
-		font.setNoun(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\color") {
-		lex.next();
-		font.setLyXColor(lex.getString());
-	} else if (token == "\\SpecialChar") {
-		LyXLayout_ptr const & layout = pit->layout();
-
-		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout->free_spacing || pit->isFreeSpacing()) {
-			if (lex.isOK()) {
-				lex.next();
-				string const next_token = lex.getString();
-				if (next_token == "\\-") {
-					pit->insertChar(pos, '-', font, current_change);
-				} else if (next_token == "~") {
-					pit->insertChar(pos, ' ', font, current_change);
-				} else {
-					lex.printError("Token `$$Token' "
-						       "is in free space "
-						       "paragraph layout!");
-					--pos;
-				}
-			}
-		} else {
-			Inset * inset = new InsetSpecialChar;
-			inset->read(this, lex);
-			pit->insertInset(pos, inset, font, current_change);
-		}
-		++pos;
-	} else if (token == "\\i") {
-		Inset * inset = new InsetLatexAccent;
-		inset->read(this, lex);
-		pit->insertInset(pos, inset, font, current_change);
-		++pos;
-	} else if (token == "\\backslash") {
-		pit->insertChar(pos, '\\', font, current_change);
-		++pos;
+		// insert after
+		if (pit != pars.end())
+			++pit;
+		pit = pars.insert(pit, par);
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
 		if (!depth) {
-			lex.printError("\\end_deeper: "
-				       "depth is already null");
-		}
-		else
+			lex.printError("\\end_deeper: " "depth is already null");
+		} else {
 			--depth;
-		// do not delete this token, it is still needed!
-	} else if (token == "\\newline") {
-		pit->insertChar(pos, Paragraph::META_NEWLINE, font, current_change);
-		++pos;
-	} else if (token == "\\LyXTable") {
-		Inset * inset = new InsetTabular(*this);
-		inset->read(this, lex);
-		pit->insertInset(pos, inset, font, current_change);
-		++pos;
-	} else if (token == "\\bibitem") {  // ale970302
-		InsetCommandParams p("bibitem", "dummy");
-		InsetBibitem * inset = new InsetBibitem(p);
-		inset->read(this, lex);
-		pit->insertInset(pos, inset, font, current_change);
-		++pos;
-	} else if (token == "\\hfill") {
-		pit->insertInset(pos, new InsetHFill(),
-			LyXFont(LyXFont::ALL_INHERIT, params.language));
-		++pos;
-	} else if (token == "\\change_unchanged") {
-		// Hack ! Needed for empty paragraphs :/
-		if (!pos)
-			pit->cleanChanges();
-		current_change = Change(Change::UNCHANGED);
-	} else if (token == "\\change_inserted") {
-		lex.nextToken();
-		istringstream istr(lex.getString());
-		int aid;
-		lyx::time_type ct;
-		istr >> aid;
-		istr >> ct;
-		current_change = Change(Change::INSERTED, params.author_ids[aid], ct);
-	} else if (token == "\\change_deleted") {
-		lex.nextToken();
-		istringstream istr(lex.getString());
-		int aid;
-		lyx::time_type ct;
-		istr >> aid;
-		istr >> ct;
-		current_change = Change(Change::DELETED, params.author_ids[aid], ct);
+		}
 	} else {
-		// This should be insurance for the future: (Asger)
 		++unknown;
-		lex.eatLine();
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
-		fmt % token % lex.text();
-		string const s = fmt.str();
-#else
-		string const s = _("Unknown token: ") + token
-			+ ' ' + lex.text() + '\n';
-#endif
-		// we can do this here this way because we're actually reading
-		// the buffer and don't care about LyXText right now.
-		InsetError * new_inset = new InsetError(s);
-		pit->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
-				 params.language));
-
 	}
-
 	return unknown;
 }
 
@@ -773,128 +500,6 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 			space_inserted = (*cit == ' ');
 		}
 
-	}
-}
-
-
-void Buffer::readInset(LyXLex & lex, ParagraphList::iterator pit,
-		       int & pos, LyXFont & font, Change current_change)
-{
-	// consistency check
-	if (lex.getString() != "\\begin_inset") {
-		lyxerr << "Buffer::readInset: Consistency check failed."
-		       << endl;
-	}
-
-	Inset * inset = 0;
-
-	lex.next();
-	string const tmptok = lex.getString();
-
-	// test the different insets
-	if (tmptok == "LatexCommand") {
-		InsetCommandParams inscmd;
-		inscmd.read(lex);
-
-		string const cmdName = inscmd.getCmdName();
-
-		// This strange command allows LyX to recognize "natbib" style
-		// citations: citet, citep, Citet etc.
-		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
-			inset = new InsetCitation(inscmd);
-		} else if (cmdName == "bibitem") {
-			lex.printError("Wrong place for bibitem");
-			inset = new InsetBibitem(inscmd);
-		} else if (cmdName == "BibTeX") {
-			inset = new InsetBibtex(inscmd);
-		} else if (cmdName == "index") {
-			inset = new InsetIndex(inscmd);
-		} else if (cmdName == "include") {
-			inset = new InsetInclude(inscmd, *this);
-		} else if (cmdName == "label") {
-			inset = new InsetLabel(inscmd);
-		} else if (cmdName == "url"
-			   || cmdName == "htmlurl") {
-			inset = new InsetUrl(inscmd);
-		} else if (cmdName == "ref"
-			   || cmdName == "pageref"
-			   || cmdName == "vref"
-			   || cmdName == "vpageref"
-			   || cmdName == "prettyref") {
-			if (!inscmd.getOptions().empty()
-			    || !inscmd.getContents().empty()) {
-				inset = new InsetRef(inscmd, *this);
-			}
-		} else if (cmdName == "tableofcontents") {
-			inset = new InsetTOC(inscmd);
-		} else if (cmdName == "listofalgorithms") {
-			inset = new InsetFloatList("algorithm");
-		} else if (cmdName == "listoffigures") {
-			inset = new InsetFloatList("figure");
-		} else if (cmdName == "listoftables") {
-			inset = new InsetFloatList("table");
-		} else if (cmdName == "printindex") {
-			inset = new InsetPrintIndex(inscmd);
-		} else if (cmdName == "lyxparent") {
-			inset = new InsetParent(inscmd, *this);
-		}
-	} else {
-		if (tmptok == "Quotes") {
-			inset = new InsetQuotes;
-		} else if (tmptok == "External") {
-			inset = new InsetExternal;
-		} else if (tmptok == "FormulaMacro") {
-			inset = new InsetFormulaMacro;
-		} else if (tmptok == "Formula") {
-			inset = new InsetFormula;
-		} else if (tmptok == "Graphics") {
-			inset = new InsetGraphics;
-		} else if (tmptok == "Note") {
-			inset = new InsetNote(params);
-		} else if (tmptok == "Include") {
-			InsetCommandParams p("Include");
-			inset = new InsetInclude(p, *this);
-		} else if (tmptok == "ERT") {
-			inset = new InsetERT(params);
-		} else if (tmptok == "Tabular") {
-			inset = new InsetTabular(*this);
-		} else if (tmptok == "Text") {
-			inset = new InsetText(params);
-		} else if (tmptok == "Foot") {
-			inset = new InsetFoot(params);
-		} else if (tmptok == "Marginal") {
-			inset = new InsetMarginal(params);
-		} else if (tmptok == "OptArg") {
-			inset = new InsetOptArg(params);
-		} else if (tmptok == "Minipage") {
-			inset = new InsetMinipage(params);
-		} else if (tmptok == "Float") {
-			lex.next();
-			string tmptok = lex.getString();
-			inset = new InsetFloat(params, tmptok);
-		} else if (tmptok == "Wrap") {
-			lex.next();
-			string tmptok = lex.getString();
-			inset = new InsetWrap(params, tmptok);
-#if 0
-		} else if (tmptok == "List") {
-			inset = new InsetList;
-		} else if (tmptok == "Theorem") {
-			inset = new InsetList;
-#endif
-		} else if (tmptok == "Caption") {
-			inset = new InsetCaption(params);
-		} else if (tmptok == "FloatList") {
-			inset = new InsetFloatList;
-		}
-
-		if (inset)
-			inset->read(this, lex);
-	}
-
-	if (inset) {
-		pit->insertInset(pos, inset, font, current_change);
-		++pos;
 	}
 }
 

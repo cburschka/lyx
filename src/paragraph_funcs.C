@@ -16,11 +16,22 @@
 #include "ParagraphParameters.h"
 #include "lyxtextclasslist.h"
 #include "debug.h"
+#include "gettext.h"
 #include "language.h"
 #include "encoding.h"
 #include "lyxrc.h"
+#include "lyxlex.h"
+#include "BoostFormat.h"
+#include "factory.h"
 #include "support/lstrings.h"
 #include "insets/insetoptarg.h"
+#include "insets/insetcommandparams.h"
+#include "insets/insetbibitem.h"
+#include "insets/insetspecialchar.h"
+#include "insets/insetlatexaccent.h"
+#include "insets/insettabular.h"
+#include "insets/insethfill.h"
+#include "insets/inseterror.h"
 
 extern string bibitemWidest(Buffer const *);
 
@@ -713,4 +724,286 @@ void latexParagraphs(Buffer const * buf,
 				}
 		texrow.newline();
 	}
+}
+
+
+namespace {
+
+int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & token)
+{
+	static LyXFont font;
+	static Change change;
+
+	BufferParams const & bp = buf.params;
+
+	if (token[0] != '\\') {
+		string::const_iterator cit = token.begin();
+		for (; cit != token.end(); ++cit) {
+			par.insertChar(par.size(), (*cit), font, change);
+		}
+	} else if (token == "\\layout") {
+		lex.eatLine();
+		string layoutname = lex.getString();
+
+		font = LyXFont(LyXFont::ALL_INHERIT, bp.language);
+		change = Change();
+
+		LyXTextClass const & tclass = bp.getLyXTextClass();
+
+		if (layoutname.empty()) {
+			layoutname = tclass.defaultLayoutName();
+		}
+
+		bool hasLayout = tclass.hasLayout(layoutname);
+
+		if (!hasLayout) {
+			lyxerr << "Layout '" << layoutname << "' does not"
+			       << " exist in textclass '" << tclass.name()
+			       << "'." << endl;
+			lyxerr << "Trying to use default layout instead."
+			       << endl;
+			layoutname = tclass.defaultLayoutName();
+		}
+
+#ifdef USE_CAPTION
+		// The is the compability reading of layout caption.
+		if (compare_ascii_no_case(layoutname, "caption") == 0) {
+			// We expect that the par we are now working on is
+			// really inside a InsetText inside a InsetFloat.
+			// We also know that captions can only be
+			// one paragraph. (Lgb)
+
+			// We should now read until the next "\layout"
+			// is reached.
+			// This is probably not good enough, what if the
+			// caption is the last par in the document (Lgb)
+			istream & ist = lex.getStream();
+			stringstream ss;
+			string line;
+			int begin = 0;
+			while (true) {
+				getline(ist, line);
+				if (prefixIs(line, "\\layout")) {
+					lex.pushToken(line);
+					break;
+				}
+				if (prefixIs(line, "\\begin_inset"))
+					++begin;
+				if (prefixIs(line, "\\end_inset")) {
+					if (begin)
+						--begin;
+					else {
+						lex.pushToken(line);
+						break;
+					}
+				}
+
+				ss << line << '\n';
+			}
+
+			// Now we should have the whole layout in ss
+			// we should now be able to give this to the
+			// caption inset.
+			ss << "\\end_inset\n";
+
+			// This seems like a bug in stringstream.
+			// We really should be able to use ss
+			// directly. (Lgb)
+			istringstream is(ss.str());
+			LyXLex tmplex(0, 0);
+			tmplex.setStream(is);
+			Inset * inset = new InsetCaption;
+			inset->Read(this, tmplex);
+			par.insertInset(pos, inset, font);
+			++pos;
+		} else {
+#endif
+			par.layout(bp.getLyXTextClass()[layoutname]);
+
+			// Test whether the layout is obsolete.
+			LyXLayout_ptr const & layout = par.layout();
+			if (!layout->obsoleted_by().empty())
+				par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
+
+			par.params().read(lex);
+#if USE_CAPTION
+		}
+#endif
+
+	} else if (token == "\\end_inset") {
+		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
+		       << "Missing \\begin_inset?.\n";
+		// Simply ignore this. The insets do not have
+		// to read this.
+		// But insets should read it, it is a part of
+		// the inset isn't it? Lgb.
+	} else if (token == "\\begin_inset") {
+		Inset * i = readInset(lex, buf);
+		par.insertInset(par.size(), i, font, change);
+	} else if (token == "\\family") {
+		lex.next();
+		font.setLyXFamily(lex.getString());
+	} else if (token == "\\series") {
+		lex.next();
+		font.setLyXSeries(lex.getString());
+	} else if (token == "\\shape") {
+		lex.next();
+		font.setLyXShape(lex.getString());
+	} else if (token == "\\size") {
+		lex.next();
+		font.setLyXSize(lex.getString());
+	} else if (token == "\\lang") {
+		lex.next();
+		string const tok = lex.getString();
+		Language const * lang = languages.getLanguage(tok);
+		if (lang) {
+			font.setLanguage(lang);
+		} else {
+			font.setLanguage(bp.language);
+			lex.printError("Unknown language `$$Token'");
+		}
+	} else if (token == "\\numeric") {
+		lex.next();
+		font.setNumber(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\emph") {
+		lex.next();
+		font.setEmph(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\bar") {
+		lex.next();
+		string const tok = lex.getString();
+
+		if (tok == "under")
+			font.setUnderbar(LyXFont::ON);
+		else if (tok == "no")
+			font.setUnderbar(LyXFont::OFF);
+		else if (tok == "default")
+			font.setUnderbar(LyXFont::INHERIT);
+		else
+			lex.printError("Unknown bar font flag "
+				       "`$$Token'");
+	} else if (token == "\\noun") {
+		lex.next();
+		font.setNoun(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\color") {
+		lex.next();
+		font.setLyXColor(lex.getString());
+	} else if (token == "\\SpecialChar") {
+		LyXLayout_ptr const & layout = par.layout();
+
+		// Insets don't make sense in a free-spacing context! ---Kayvan
+		if (layout->free_spacing || par.isFreeSpacing()) {
+			if (lex.isOK()) {
+				lex.next();
+				string const next_token = lex.getString();
+				if (next_token == "\\-") {
+					par.insertChar(par.size(), '-', font, change);
+				} else if (next_token == "~") {
+					par.insertChar(par.size(), ' ', font, change);
+				} else {
+					lex.printError("Token `$$Token' "
+						       "is in free space "
+						       "paragraph layout!");
+				}
+			}
+		} else {
+			Inset * inset = new InsetSpecialChar;
+			inset->read(&buf, lex);
+			par.insertInset(par.size(), inset, font, change);
+		}
+	} else if (token == "\\i") {
+		Inset * inset = new InsetLatexAccent;
+		inset->read(&buf, lex);
+		par.insertInset(par.size(), inset, font, change);
+	} else if (token == "\\backslash") {
+		par.insertChar(par.size(), '\\', font, change);
+	// do not delete this token, it is still needed!
+	} else if (token == "\\newline") {
+		par.insertChar(par.size(), Paragraph::META_NEWLINE, font, change);
+	} else if (token == "\\LyXTable") {
+		Inset * inset = new InsetTabular(buf);
+		inset->read(&buf, lex);
+		par.insertInset(par.size(), inset, font, change);
+	} else if (token == "\\bibitem") {
+		InsetCommandParams p("bibitem", "dummy");
+		InsetBibitem * inset = new InsetBibitem(p);
+		inset->read(&buf, lex);
+		par.insertInset(par.size(), inset, font, change);
+	} else if (token == "\\hfill") {
+		par.insertInset(par.size(), new InsetHFill(), font, change);
+	} else if (token == "\\change_unchanged") {
+		// Hack ! Needed for empty paragraphs :/
+		// FIXME: is it still ??
+		if (!par.size())
+			par.cleanChanges();
+		change = Change(Change::UNCHANGED);
+	} else if (token == "\\change_inserted") {
+		lex.nextToken();
+		istringstream istr(lex.getString());
+		int aid;
+		lyx::time_type ct;
+		istr >> aid;
+		istr >> ct;
+		change = Change(Change::INSERTED, aid, ct);
+	} else if (token == "\\change_deleted") {
+		lex.nextToken();
+		istringstream istr(lex.getString());
+		int aid;
+		lyx::time_type ct;
+		istr >> aid;
+		istr >> ct;
+		change = Change(Change::DELETED, aid, ct);
+	} else {
+		lex.eatLine();
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
+		fmt % token % lex.text();
+		string const s = fmt.str();
+#else
+		string const s = _("Unknown token: ") + token
+			+ ' ' + lex.text() + '\n';
+#endif
+		// we can do this here this way because we're actually reading
+		// the buffer and don't care about LyXText right now.
+		InsetError * inset = new InsetError(s);
+		par.insertInset(par.size(), inset, font);
+		return 1;
+	}
+	return 0;
+}
+
+}
+
+
+int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
+{
+	int unknown = 0;
+
+	lex.nextToken();
+	string token = lex.getString();
+
+	while (lex.isOK()) {
+
+		unknown += readParToken(buf, par, lex, token);
+
+		lex.nextToken();
+		token = lex.getString();
+
+		if (token.empty())
+			continue;
+
+		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
+				      << token << '\'' << endl;
+
+		// reached the next paragraph. FIXME: really we should
+		// change the file format to indicate the end of a par
+		// clearly, but for now, this hack will do
+		if (token == "\\layout" || token == "\\the_end"
+		    || token == "\\end_inset" || token == "\\begin_deeper"
+		    || token == "\\end_deeper") {
+			lex.pushToken(token);
+			break;
+		}
+	}
+
+	return unknown;
 }

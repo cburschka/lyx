@@ -112,21 +112,15 @@ public:
 	bool readBody(LyXLex &, ParagraphList::iterator pit);
 
 	/// This parses a single token
-	int readToken(LyXLex &, ParagraphList & pars,
-	              ParagraphList::iterator & pit,
-	              string const & token, int & pos,
-	              Paragraph::depth_type & depth,
-	              LyXFont &);
+	int readParagraph(LyXLex &, string const & token,
+	              ParagraphList & pars, ParagraphList::iterator & pit,
+	              Paragraph::depth_type & depth);
 
 	///
 	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
 				 LyXFont const &, string const &);
 	///
 	Paragraph * getParFromID(int id) const;
-
-private:
-	/// Parse a single inset.
-	void readInset(LyXLex &, ParagraphList::iterator pit, int & pos, LyXFont &, Change current_change);
 
 public:
 	/** Save file.

@@ -17,6 +17,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "lyxtext.h"
+#include "lyxlex.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
@@ -25,6 +26,7 @@
 #include "insets/insetert.h"
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
+#include "insets/insetfloatlist.h"
 #include "insets/insetfoot.h"
 #include "insets/insetgraphics.h"
 #include "insets/insethfill.h"
@@ -42,9 +44,12 @@
 #include "insets/insettoc.h"
 #include "insets/inseturl.h"
 #include "insets/insetwrap.h"
+#include "mathed/formulamacro.h"
+#include "mathed/formula.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
+#include "support/lstrings.h"
 
 #include <cstdio>
 
@@ -243,4 +248,122 @@ Inset * createInset(FuncRequest const & cmd)
 	}
 
 	return 0;
+}
+
+
+Inset * readInset(LyXLex & lex, Buffer const & buf)
+{
+	// consistency check
+	if (lex.getString() != "\\begin_inset") {
+		lyxerr << "Buffer::readInset: Consistency check failed."
+		       << endl;
+	}
+
+	Inset * inset = 0;
+
+	lex.next();
+	string const tmptok = lex.getString();
+
+	// test the different insets
+	if (tmptok == "LatexCommand") {
+		InsetCommandParams inscmd;
+		inscmd.read(lex);
+
+		string const cmdName = inscmd.getCmdName();
+
+		// This strange command allows LyX to recognize "natbib" style
+		// citations: citet, citep, Citet etc.
+		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
+			inset = new InsetCitation(inscmd);
+		} else if (cmdName == "bibitem") {
+			lex.printError("Wrong place for bibitem");
+			inset = new InsetBibitem(inscmd);
+		} else if (cmdName == "BibTeX") {
+			inset = new InsetBibtex(inscmd);
+		} else if (cmdName == "index") {
+			inset = new InsetIndex(inscmd);
+		} else if (cmdName == "include") {
+			inset = new InsetInclude(inscmd, buf);
+		} else if (cmdName == "label") {
+			inset = new InsetLabel(inscmd);
+		} else if (cmdName == "url"
+			   || cmdName == "htmlurl") {
+			inset = new InsetUrl(inscmd);
+		} else if (cmdName == "ref"
+			   || cmdName == "pageref"
+			   || cmdName == "vref"
+			   || cmdName == "vpageref"
+			   || cmdName == "prettyref") {
+			if (!inscmd.getOptions().empty()
+			    || !inscmd.getContents().empty()) {
+				inset = new InsetRef(inscmd, buf);
+			}
+		} else if (cmdName == "tableofcontents") {
+			inset = new InsetTOC(inscmd);
+		} else if (cmdName == "listofalgorithms") {
+			inset = new InsetFloatList("algorithm");
+		} else if (cmdName == "listoffigures") {
+			inset = new InsetFloatList("figure");
+		} else if (cmdName == "listoftables") {
+			inset = new InsetFloatList("table");
+		} else if (cmdName == "printindex") {
+			inset = new InsetPrintIndex(inscmd);
+		} else if (cmdName == "lyxparent") {
+			inset = new InsetParent(inscmd, buf);
+		}
+	} else {
+		if (tmptok == "Quotes") {
+			inset = new InsetQuotes;
+		} else if (tmptok == "External") {
+			inset = new InsetExternal;
+		} else if (tmptok == "FormulaMacro") {
+			inset = new InsetFormulaMacro;
+		} else if (tmptok == "Formula") {
+			inset = new InsetFormula;
+		} else if (tmptok == "Graphics") {
+			inset = new InsetGraphics;
+		} else if (tmptok == "Note") {
+			inset = new InsetNote(buf.params);
+		} else if (tmptok == "Include") {
+			InsetCommandParams p("Include");
+			inset = new InsetInclude(p, buf);
+		} else if (tmptok == "ERT") {
+			inset = new InsetERT(buf.params);
+		} else if (tmptok == "Tabular") {
+			inset = new InsetTabular(buf);
+		} else if (tmptok == "Text") {
+			inset = new InsetText(buf.params);
+		} else if (tmptok == "Foot") {
+			inset = new InsetFoot(buf.params);
+		} else if (tmptok == "Marginal") {
+			inset = new InsetMarginal(buf.params);
+		} else if (tmptok == "OptArg") {
+			inset = new InsetOptArg(buf.params);
+		} else if (tmptok == "Minipage") {
+			inset = new InsetMinipage(buf.params);
+		} else if (tmptok == "Float") {
+			lex.next();
+			string tmptok = lex.getString();
+			inset = new InsetFloat(buf.params, tmptok);
+		} else if (tmptok == "Wrap") {
+			lex.next();
+			string tmptok = lex.getString();
+			inset = new InsetWrap(buf.params, tmptok);
+#if 0
+		} else if (tmptok == "List") {
+			inset = new InsetList;
+		} else if (tmptok == "Theorem") {
+			inset = new InsetList;
+#endif
+		} else if (tmptok == "Caption") {
+			inset = new InsetCaption(buf.params);
+		} else if (tmptok == "FloatList") {
+			inset = new InsetFloatList;
+		}
+
+		if (inset)
+			inset->read(&buf, lex);
+	}
+
+	return inset;
 }
