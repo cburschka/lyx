@@ -67,7 +67,11 @@ Inset * InsetERT::clone(Buffer const &, bool same_id) const
 InsetERT::InsetERT(string const & contents, bool collapsed)
 	: InsetCollapsable(collapsed)
 {
+#ifndef INHERIT_LANG
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+#else 
 	LyXFont font(LyXFont::ALL_INHERIT);
+#endif
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 	string::const_iterator cit = contents.begin();
@@ -354,7 +358,11 @@ void InsetERT::setButtonLabel() const
 
 bool InsetERT::checkInsertChar(LyXFont & font)
 {
+#ifndef INHERIT_LANG
+	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
+#else 
 	LyXFont f(LyXFont::ALL_INHERIT);
+#endif
 	font = f;
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
@@ -442,7 +450,11 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 
 void InsetERT::set_latex_font(BufferView * bv)
 {
+#ifndef INHERIT_LANG
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
+#else 
 	LyXFont font(LyXFont::ALL_INHERIT);
+#endif
 
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);

@@ -252,15 +252,20 @@ public:
 	    a INHERIT_FAMILY was asked for.  This is necessary for the
 	    toggle-user-defined-style button on the toolbar.
 	*/
- 	void update(LyXFont const & newfont, bool toggleall = false);
+	void update(LyXFont const & newfont,
+		    Language const * default_lang,
+		    bool toggleall = false);
  
 	/** Reduce font to fall back to template where possible.
 	    Equal fields are reduced to INHERIT */
 	void reduce(LyXFont const & tmplt);
  
 	/// Realize font from a template (INHERIT are realized)
+#ifndef INHERIT_LANGUAGE
+	LyXFont & realize(LyXFont const & tmplt);
+#else
 	LyXFont & realize(LyXFont const & tmplt, Language const * language);
-
+#endif
 	/// Is a given font fully resolved?
 	bool resolved() const;
  
@@ -268,8 +273,12 @@ public:
 	LyXFont & lyxRead(LyXLex &);
  
 	/// Writes the changes from this font to orgfont in .lyx format in file
+#ifndef INHERIT_LANGUAGE
+	void lyxWriteChanges(LyXFont const & orgfont, std::ostream &) const;
+#else
 	void lyxWriteChanges(LyXFont const & orgfont, Language const * doclang,
 	                     std::ostream &) const;
+#endif
 
 	/** Writes the head of the LaTeX needed to change to this font.
 	    Writes to string, the head of the LaTeX needed to change

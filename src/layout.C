@@ -776,9 +776,15 @@ bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 	if (!lay.Read(lexrc, *this)) {
 		// Reslove fonts
 		lay.resfont = lay.font;
+#ifndef INHERIT_LANGUAGE
+		lay.resfont.realize(defaultfont());
+		lay.reslabelfont = lay.labelfont;
+		lay.reslabelfont.realize(defaultfont());
+#else
 		lay.resfont.realize(defaultfont(), default_language);
 		lay.reslabelfont = lay.labelfont;
 		lay.reslabelfont.realize(defaultfont(), default_language);
+#endif
 		return false; // no errors
 	} 
 	lyxerr << "Error parsing style `" << lay.name() << "'" << endl;
@@ -939,8 +945,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
 						 "be fully instantiated!");
+#ifndef INHERIT_LANGUAGE
+				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
+#else
 				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE),
 				                     default_language);
+#endif
 			}
 			break;
 

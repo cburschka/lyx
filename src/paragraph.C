@@ -252,7 +252,11 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 		// Write font changes
 		LyXFont font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
+#ifndef INHERIT_LANGUAGE
+			font2.lyxWriteChanges(font1, os);
+#else
 			font2.lyxWriteChanges(font1, bparams.language, os);
+#endif
 			column = 0;
 			font1 = font2;
 		}
@@ -363,9 +367,12 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		}
 
 		Language const * language = cit->font().language();
-		if (language != ignore_language &&
-			language != inherit_language &&
-			language->babel() != doc_language->babel())
+		if (language->babel() != doc_language->babel() &&
+		    language != ignore_language &&
+#ifdef INHERIT_LANGUAGE
+		    language != inherit_language &&
+#endif
+		    language != latex_language)
 		{
 			features.UsedLanguages.insert(language);
 			lyxerr[Debug::LATEX] << "Found language "
@@ -584,8 +591,10 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 		retfont = getFontSettings(bparams, pos - 1);
 	} else
 		retfont = LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
+#ifdef INHERIT_LANGUAGE
 	if (retfont.language() == inherit_language)
 		retfont.setLanguage(bparams.language);
+#endif
 
 	return retfont;
 }
@@ -629,7 +638,11 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 		layoutfont = layout.font;
 	
 	LyXFont tmpfont = getFontSettings(bparams, pos);
+#ifndef INHERIT_LANGUAGE
+	tmpfont.realize(layoutfont);
+#else
 	tmpfont.realize(layoutfont, bparams.language);
+#endif
 
 	return pimpl_->realizeFont(tmpfont, bparams);
 }
@@ -1265,8 +1278,6 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	Language const * doc_language = bparams.language;
 	Language const * previous_language = previous_
 		? previous_->getParLanguage(bparams) : doc_language;
-	if (language == ignore_language || language == inherit_language)
-		lyxerr << "1:" << language->lang() << endl;
 	if (language->babel() != doc_language->babel() &&
 	    language->babel() != previous_language->babel()) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
@@ -1837,11 +1848,15 @@ Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const 
 {
 	if (size() > 0) {
+#ifndef INHERIT_LANGUAGE
+		return getFirstFontSettings().language();
+#else
 		Language const * lang = getFirstFontSettings().language();
 #warning We should make this somewhat better, any ideas? (Jug)
 		if (lang == inherit_language || lang == ignore_language)
 			lang = bparams.language;
 		return lang;
+#endif
 	} else if (previous_)
 		return previous_->getParLanguage(bparams);
 	else
@@ -1874,8 +1889,11 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 	Language const * doc_language =	bparams.language;
 	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	     cit != pimpl_->fontlist.end(); ++cit)
-		if (cit->font().language() != inherit_language &&
-			cit->font().language() != ignore_language &&
+		if (cit->font().language() != ignore_language &&
+		    cit->font().language() != latex_language &&
+#ifdef INHERIT_LANGUAGE
+			cit->font().language() != inherit_language &&
+#endif
 			cit->font().language() != doc_language)
 			return true;
 	return false;

@@ -538,15 +538,25 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
+#ifndef INHERIT_LANGUAGE
+			tmpfont.realize(textclasslist.
+					Style(bparams.textclass,
+					      par->getLayout()).font);
+#else
 			tmpfont.realize(textclasslist.
 					Style(bparams.textclass,
 					      par->getLayout()).font, bparams.language);
+#endif
 			par_depth = par->getDepth();
 		}
 	}
 
-	tmpfont.realize(textclasslist
-			.TextClass(bparams.textclass)
+#ifndef INHERIT_LANGUAGE
+	tmpfont.realize(textclasslist.TextClass(bparams.textclass)
+			.defaultfont());
+#else
+	tmpfont.realize(textclasslist.TextClass(bparams.textclass)
 			.defaultfont(), bparams.language);
+#endif
 	return tmpfont;	
 }

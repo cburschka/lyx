@@ -420,8 +420,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 			                cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
-		if (theLockingInset()->getLockingInset()->lyxCode() ==
-		    Inset::TEXT_CODE &&
+		if (theLockingInset()->getLockingInset()->isTextInset() &&
 		    (txt->real_current_font.language() !=
 		     buffer()->params.language
 		     || txt->real_current_font.isVisibleRightToLeft()

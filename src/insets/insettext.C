@@ -987,6 +987,7 @@ UpdatableInset::RESULT
 InsetText::localDispatch(BufferView * bv,
                          kb_action action, string const & arg)
 {
+	bool was_empty = par->size() == 0 && !par->next();
 	no_selection = false;
 	UpdatableInset::RESULT
 		result= UpdatableInset::localDispatch(bv, action, arg);
@@ -1310,7 +1311,7 @@ InsetText::localDispatch(BufferView * bv,
 
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
-	if (par->size() == 0 && !par->next()) {
+	if (!was_empty && par->size() == 0 && !par->next()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);

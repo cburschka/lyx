@@ -452,7 +452,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		++vpos;
 
 		if (lyxrc.mark_foreign_language &&
-			font.language() != ignore_language &&
+			font.language() != latex_language &&
 		    font.language() != bview->buffer()->params.language) {
 			int const y = offset + row->height() - 1;
 			pain.line(int(tmpx), y, int(x), y, LColor::language);
@@ -568,12 +568,15 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		x += lyxfont::width(textstring, font);
 	}
 
+#ifdef INHERIT_LANGUAGE
 #ifdef WITH_WARNINGS
 	if ((font.language() == inherit_language) ||
 		(font.language() == ignore_language))
 		lyxerr << "No this shouldn't happen!\n";
 #endif
+#endif
 	if (lyxrc.mark_foreign_language &&
+	    font.language() != latex_language &&
 	    font.language() != bview->buffer()->params.language) {
 		int const y = offset + row->height() - 1;
 		pain.line(int(tmpx), y, int(x), y,

@@ -1,3 +1,10 @@
+2001-08-11  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* Many files: Remove inherit_language, and add latex_language
+
+	* BufferView2.C (showLockedInsetCursor): Fix cursor shape in
+	collapsible insets.
+
 2001-08-10  Juergen Vigna  <jug@sad.it>
 
 	* text.C (prepareToPrint): fixed hfill-width in draw!
