@@ -5,6 +5,7 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 1
 
 =============== FORM ===============
 Name: form_bibtex
@@ -104,7 +105,7 @@ argument: 0
 
 --------------------
 class: FL_BUTTON
-type: PUSH_BUTTON
+type: NORMAL_BUTTON
 box: 360 10 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
@@ -112,17 +113,17 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Browse
-shortcut: B
+label: Browse...|#B
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: database_browse
-callback: 
-argument: database
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
-type: PUSH_BUTTON
+type: NORMAL_BUTTON
 box: 360 50 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
@@ -130,13 +131,13 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Browse
-shortcut: l
+label: Browse...|#r
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: style_browse
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON

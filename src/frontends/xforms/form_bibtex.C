@@ -49,10 +49,18 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->database_browse = obj = fl_add_button(FL_PUSH_BUTTON, 360, 10, 80, 30, _("Browse"));
-    fl_set_button_shortcut(obj, _("B"), 1);
-  fdui->style_browse = obj = fl_add_button(FL_PUSH_BUTTON, 360, 50, 80, 30, _("Browse"));
-    fl_set_button_shortcut(obj, _("l"), 1);
+  {
+    char const * const dummy = N_("Browse...|#B");
+    fdui->database_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 360, 10, 80, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  {
+    char const * const dummy = N_("Browse...|#r");
+    fdui->style_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 360, 50, 80, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->radio_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 90, 30, 30, _("Add bibliography to TOC"));
     fl_set_button_shortcut(obj, _("T"), 1);
   fl_end_form();

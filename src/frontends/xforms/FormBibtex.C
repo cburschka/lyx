@@ -53,36 +53,40 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->database_browse) {
 		string const in_name  = fl_get_input(dialog_->database);
-		fl_freeze_form(form()); 
 		string out_name = 
 			controller().Browse(in_name,
 					    "Select Database",
 					    "*.bib| BibTeX Databases (*.bib)");
-		if (suffixIs(out_name,".bib")) {
-			// to prevent names like xxxbib.bib
-			// latex needs it without suffix
-			out_name = ChangeExtension(out_name,"");
-		}
+		if (!out_name.empty()) {
+			if (suffixIs(out_name,".bib")) {
+				// to prevent names like xxxbib.bib
+				// latex needs it without suffix
+				out_name = ChangeExtension(out_name,"");
+			}
     
-		fl_set_input(dialog_->database, out_name.c_str());
-		fl_unfreeze_form(form()); 
+			fl_freeze_form(form()); 
+			fl_set_input(dialog_->database, out_name.c_str());
+			fl_unfreeze_form(form()); 
+		}
 	}	
 
 	if (ob == dialog_->style_browse) {
 		string const in_name  = fl_get_input(dialog_->style);
-		fl_freeze_form(form()); 
 		string out_name = 
 			controller().Browse(in_name,
 					    "Select BibTeX-Style",
 					    "*.bst| BibTeX Styles (*.bst)");
-		if (suffixIs(out_name,".bst")) {
-			// to prevent names like xxxbib.bib
-			// name for display only
-			out_name = OnlyFilename(ChangeExtension(out_name,""));
-		}
+		if (!out_name.empty()) {
+			if (suffixIs(out_name,".bst")) {
+				// to prevent names like xxxbib.bib
+				// name for display only
+				out_name = OnlyFilename(ChangeExtension(out_name,""));
+			}
 
-		fl_set_input(dialog_->style, out_name.c_str());
-		fl_unfreeze_form(form()); 
+			fl_freeze_form(form()); 
+			fl_set_input(dialog_->style, out_name.c_str());
+			fl_unfreeze_form(form()); 
+		}
 	}
   
 	if (!compare(fl_get_input(dialog_->database),"")) {
