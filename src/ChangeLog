@@ -1,3 +1,8 @@
+2002-12-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_main.C (init): remove annoying error message when following
+	symbolic links (bug #780)
+
 2002-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text.C (insertChar): 

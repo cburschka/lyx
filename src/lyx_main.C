@@ -294,8 +294,8 @@ void LyX::init(bool gui)
 		FileInfo file(fullbinpath, true);
 		followlink = file.isLink();
 		if (followlink) {
-			lyxerr << " directory " << fullbinpath
-			       << " is a link" << endl;
+			lyxerr[Debug::INIT] << " directory " << fullbinpath
+					    << " is a link" << endl;
 			string link;
 			if (LyXReadLink(fullbinpath, link, true)) {
 				fullbinpath = link;
