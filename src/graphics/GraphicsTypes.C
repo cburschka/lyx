@@ -9,7 +9,10 @@
  * Full author contact details available in file CREDITS
  */
 
+#include <config.h>
+
 #include "graphics/GraphicsTypes.h"
+
 
 namespace grfx {
 
@@ -30,7 +33,7 @@ void setDisplayTranslator()
 		displayTranslator.addPair(GrayscaleDisplay, "grayscale");
 		displayTranslator.addPair(ColorDisplay, "color");
 		displayTranslator.addPair(NoDisplay, "none");
-		
+
 		// backward compatibility for old lyxrc.display_graphics
 		displayTranslator.addPair(MonochromeDisplay, "mono");
 		displayTranslator.addPair(GrayscaleDisplay, "gray");

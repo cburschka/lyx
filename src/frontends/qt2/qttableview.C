@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.C,v 1.3 2002/03/21 21:19:37 larsbj Exp $
+** $Id: qttableview.C,v 1.4 2002/11/04 00:15:54 larsbj Exp $
 **
 ** Implementation of QtTableView class
 **
@@ -11,6 +11,8 @@
 ** may be used, distributed and modified without limitation.
 **
 **********************************************************************/
+
+#include <config.h>
 
 #include "qttableview.h"
 #ifndef QT_NO_QTTABLEVIEW

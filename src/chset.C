@@ -22,6 +22,7 @@ using boost::regex;
 using boost::regex_match;
 using boost::smatch;
 
+
 bool CharacterSet::loadFile(string const & fname)
 {
 	map_.clear();
@@ -51,8 +52,8 @@ bool CharacterSet::loadFile(string const & fname)
 	while (getline(ifs, line)) {
 		smatch sub;
 		if (regex_match(line, sub, reg)) {
-			int const n = lyx::atoi(sub[1]);
-			string const str = sub[2];
+			int const n = lyx::atoi(sub.str(1));
+			string const str = sub.str(2);
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
 				       << " to [" << str << "]" << endl;

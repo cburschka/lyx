@@ -1,8 +1,12 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ControlMath.C: include config.h
+
 2002-10-31  John Levon  <levon@movementarian.org>
 
 	* ControlGraphics.h:
 	* ControlGraphics.C: bb units from Herbert
- 
+
 2002-10-29  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* ControlParagraph.[Ch] (alignDefault): new method, returning the
@@ -11,7 +15,7 @@
 2002-10-25  John Levon  <levon@movementarian.org>
 
 	* ControlPrint.C: using endl
- 
+
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* ControlPrint.[Ch]: move code here from Liason.[Ch].

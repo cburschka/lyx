@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -56,6 +55,8 @@
 
 bool has_math_fonts;
 
+using std::endl;
+
 namespace {
 
 // file scope
@@ -79,7 +80,8 @@ bool math_font_available(string & name)
 	}
 
 	lyxerr[Debug::MATHED]
-		<< "font " << name << " not available and I can't fake it\n";
+		<< "font " << name << " not available and I can't fake it"
+		<< endl;
 	return false;
 }
 
@@ -87,9 +89,9 @@ bool math_font_available(string & name)
 void initSymbols()
 {
 	string const filename = LibFileSearch(string(), "symbols");
-	lyxerr[Debug::MATHED] << "read symbols from " << filename << "\n";
+	lyxerr[Debug::MATHED] << "read symbols from " << filename << endl;
 	if (filename.empty()) {
-		lyxerr << "Could not find symbols file\n";
+		lyxerr << "Could not find symbols file" << endl;
 		return;
 	}
 
@@ -129,14 +131,14 @@ void initSymbols()
 		istringstream is(line);
 		latexkeys tmp;
 		is >> tmp.name >> tmp.inset;
-		if (isFontName(tmp.inset)) 
+		if (isFontName(tmp.inset))
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
 		else
 			is >> tmp.extra;
 		if (!is) {
-			lyxerr[Debug::MATHED] << "skipping line '" << line << "'\n";
+			lyxerr[Debug::MATHED] << "skipping line '" << line << "'" << endl;
 			lyxerr[Debug::MATHED]
-				<< tmp.name << ' ' << tmp.inset << ' ' << tmp.extra << "\n";
+				<< tmp.name << ' ' << tmp.inset << ' ' << tmp.extra << endl;
 			continue;
 		}
 
@@ -144,39 +146,39 @@ void initSymbols()
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
 			if (tmp.extra=="func" || tmp.extra=="funclim" || tmp.extra=="special") {
-				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << "\n";
+				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << endl;
 				tmp.draw = tmp.name;
 			} else if (math_font_available(tmp.inset)) {
-				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << "\n";
+				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << endl;
 				tmp.draw += char(charid);
 			} else if (fallbackid) {
 				if (tmp.inset == "cmex")
 					tmp.inset  = "lyxsymbol";
 				else
 					tmp.inset  = "lyxboldsymbol";
-				lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << "\n";
-				tmp.draw += char(fallbackid); 
+				lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << endl;
+				tmp.draw += char(fallbackid);
 			} else {
-				lyxerr[Debug::MATHED] << "faking " << tmp.name << "\n";
+				lyxerr[Debug::MATHED] << "faking " << tmp.name << endl;
 				tmp.draw = tmp.name;
 				tmp.inset = "lyxtex";
 			}
 		} else {
 			// it's a proper inset
 			lyxerr[Debug::MATHED] << "inset " << tmp.inset << " used for "
-				<< tmp.name << "\n";
+				<< tmp.name << endl;
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
 			lyxerr[Debug::MATHED] << "readSymbols: inset " << tmp.name
-				<< " already exists.\n";
+					      << " already exists." << endl;
 		else
 			theWordList[tmp.name] = tmp;
 		lyxerr[Debug::MATHED] << "read symbol '" << tmp.name
 					<<  "  inset: " << tmp.inset
 					<<  "  draw: " << int(tmp.draw[0])
 					<<  "  extra: " << tmp.extra
-					<< "'\n";
+				      << "'" << endl;
 	}
 	string tmp = "cmm";
 	string tmp2 = "cmsy";
@@ -208,11 +210,11 @@ latexkeys const * in_word_set(string const & str)
 
 MathAtom createMathInset(string const & s)
 {
-	lyxerr[Debug::MATHED] << "creating inset with name: '" << s << "'\n";
+	lyxerr[Debug::MATHED] << "creating inset with name: '" << s << "'" << endl;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
-		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'\n";
+		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'" << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
 		if (inset == "underset")
@@ -283,6 +285,6 @@ MathAtom createMathInset(string const & s)
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
 
-	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << "'\n";
+	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << "'" << endl;
 	return MathAtom(new MathUnknownInset(s));
 }

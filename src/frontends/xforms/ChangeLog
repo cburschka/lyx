@@ -1,3 +1,8 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (start): adjust signature
+	(start): exchange magic integeres for defined values.
+
 2002-10-31  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* xformsImage.C (clip): fix crash caused by uint -> int nastiness.
@@ -30,11 +35,11 @@
 2002-10-26  John Levon  <levon@movementarian.org>
 
 	* forms/form_preamble.fd: OK cannot be a RETURN_BUTTON ;)
- 
+
 2002-10-26  John Levon  <levon@movementarian.org>
 
 	* FormTexinfo.C: using vector
- 
+
 2002-10-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* xfont_loader.C (getFontinfo): Add xfonts to the font path if
@@ -52,7 +57,7 @@
 	* forms/form_spellchecker.fd:
 	* FormSpellchecker.[Ch]: add tooltips; general clean-up.
 	 add word count to dialog and improve progress status;
-         implement single Start/Stop button;
+	 implement single Start/Stop button;
 
 	* FormTabular.C (build): rearrange lines tab by tab.
 	Use getString not fl_get_inout.
@@ -73,7 +78,7 @@
 
 2002-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* FormExternal.C (apply): 
+	* FormExternal.C (apply):
 	(input): fix an off-by-one index (causing a crash)
 
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
@@ -153,7 +158,7 @@
 
 	* forms/form_bibtex.fd:
 	* forms/form_citation.fd: less bulky with proper gravity/resize policy
-         and many other GUI layout improvements.
+	 and many other GUI layout improvements.
 
 	* FormBibtex.C: remove choose button, select directly instead;
 	add Restore/OK/Apply/Cancel buttons; modify tooltip-texts;

@@ -6,6 +6,8 @@
  * \author André Pönitz
  */
 
+#include <config.h>
+
 #include "funcrequest.h"
 #include "BufferView.h"
 #include "lyxfunc.h" // only for setMessage()
@@ -54,13 +56,13 @@ FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg)
 	: view_(cmd.view_), action(cmd.action), argument(arg),
 	  x(cmd.x), y(cmd.y), button_(cmd.button_)
 {}
-	
+
 
 FuncRequest::FuncRequest(FuncRequest const & cmd, BufferView * view)
 	: view_(view), action(cmd.action), argument(cmd.argument),
 	  x(cmd.x), y(cmd.y), button_(cmd.button_)
 {}
-	
+
 
 BufferView * FuncRequest::view() const
 {

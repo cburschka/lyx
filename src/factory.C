@@ -8,6 +8,8 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include <config.h>
+
 #include "funcrequest.h"
 #include "bufferparams.h"
 #include "buffer.h"
@@ -123,7 +125,7 @@ Inset * createInset(FuncRequest const & cmd)
 			}
 			return 0;
 
-		case LFUN_INDEX_PRINT: 
+		case LFUN_INDEX_PRINT:
 			return new InsetPrintIndex(InsetCommandParams("printindex"));
 
 		case LFUN_TOC_INSERT:
@@ -153,5 +155,3 @@ Inset * createInset(FuncRequest const & cmd)
 	}
 	return 0;
 }
-
-

@@ -74,9 +74,9 @@ MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
 
 MathCursor::~MathCursor()
 {
-  // ensure that 'notifyCursorLeave' is called
-  while (popLeft())
-    ;
+	// ensure that 'notifyCursorLeave' is called
+	while (popLeft())
+		;
 }
 
 
@@ -378,7 +378,7 @@ void MathCursor::niceInsert(string const & t)
 	MathArray ar = asArray(t);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
-	else 
+	else
 		insert(ar);
 }
 
@@ -1200,7 +1200,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '\n') {
-		if (currentMode() == MathInset::TEXT_MODE) 
+		if (currentMode() == MathInset::TEXT_MODE)
 			insert(c);
 		return true;
 	}
@@ -1473,4 +1473,3 @@ void releaseMathCursor(BufferView * bv)
 	delete mathcursor;
 	mathcursor = 0;
 }
-

@@ -257,8 +257,8 @@ void CVS::scanMaster()
 
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
-			version_ = sm[2];
-			string file_date = sm[3];
+			version_ = sm.str(2);
+			string file_date = sm.str(3);
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			FileInfo fi(file_);

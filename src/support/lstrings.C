@@ -21,6 +21,7 @@
 #include "debug.h"
 
 #include <boost/regex.hpp>
+#include <boost/tokenizer.hpp>
 
 #include <algorithm>
 
@@ -615,24 +616,31 @@ string const escape(string const & lab)
 vector<string> const getVectorFromString(string const & str,
 					 string const & delim)
 {
-    vector<string> vec;
-    if (str.empty())
-	return vec;
-    string keys(rtrim(str));
-    for(;;) {
-	string::size_type const idx = keys.find(delim);
-	if (idx == string::npos) {
-	    vec.push_back(ltrim(keys));
-	    break;
+#if 0
+	vector<string> vec;
+	if (str.empty())
+		return vec;
+	string keys(rtrim(str));
+	for(;;) {
+		string::size_type const idx = keys.find(delim);
+		if (idx == string::npos) {
+			vec.push_back(ltrim(keys));
+			break;
+		}
+		string const key = trim(keys.substr(0, idx));
+		if (!key.empty())
+			vec.push_back(key);
+		string::size_type const start = idx + delim.size();
+		keys = keys.substr(start);
 	}
-	string const key = trim(keys.substr(0, idx));
-	if (!key.empty())
-	    vec.push_back(key);
-	string::size_type const start = idx + delim.size();
-	keys = keys.substr(start);
-    }
-    return vec;
+	return vec;
+#else
+	boost::char_separator<char> sep(delim.c_str());
+	boost::tokenizer<boost::char_separator<char> > tokens(str, sep);
+	return vector<string>(tokens.begin(), tokens.end());
+#endif
 }
+
 
 // the same vice versa
 string const getStringFromVector(vector<string> const & vec,

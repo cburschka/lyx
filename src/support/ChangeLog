@@ -1,3 +1,10 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* os.C: include config.h
+
+	* lstrings.C (getVectorFromString): rewrite to use
+	boost::tokenizer
+
 2002-10-31  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C (generateChild): clean it up further.

@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -73,10 +73,10 @@ float getDPI()
 {
 	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
 	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
-		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2; 
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
 }
 
- 
+
 /// set default GUI configuration
 void setDefaults()
 {
@@ -179,7 +179,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
 #endif
 
-	// must do this /before/ lyxrc gets read 
+	// must do this /before/ lyxrc gets read
 	lyxrc.dpi = getDPI();
 }
 
@@ -239,7 +239,7 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-void lyx_gui::start(string const & batch, vector<string> files)
+void lyx_gui::start(string const & batch, vector<string> const & files)
 {
 	// initial geometry
 	int xpos = -1;
@@ -247,19 +247,19 @@ void lyx_gui::start(string const & batch, vector<string> files)
 	unsigned int width = 690;
 	unsigned int height = 510;
 
-	static const int geometryBitmask =
+	int const geometryBitmask =
 		XParseGeometry(geometry,
 				&xpos, &ypos, &width, &height);
 
 	// if width is not set by geometry, check it against monitor width
-	if (!(geometryBitmask & 4)) {
+	if (!(geometryBitmask & WidthValue)) {
 		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
 		if (WidthOfScreen(scr) - 8 < int(width))
 			width = WidthOfScreen(scr) - 8;
 	}
 
 	// if height is not set by geometry, check it against monitor height
-	if (!(geometryBitmask & 8)) {
+	if (!(geometryBitmask & HeightValue)) {
 		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
 		if (HeightOfScreen(scr) - 24 < int(height))
 			height = HeightOfScreen(scr) - 24;

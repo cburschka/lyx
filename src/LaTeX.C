@@ -434,7 +434,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 		token = rtrim(token, "\r");
 		smatch sub;
 		if (regex_match(token, sub, reg1)) {
-			string data = sub[1];
+			string data = sub.str(1);
 			while (!data.empty()) {
 				string citation;
 				data = split(data, citation, ',');
@@ -443,7 +443,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 				aux_info.citations.insert(citation);
 			}
 		} else if (regex_match(token, sub, reg2)) {
-			string data = sub[1];
+			string data = sub.str(1);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
 			while (!data.empty()) {
@@ -455,7 +455,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 				aux_info.databases.insert(database);
 			}
 		} else if (regex_match(token, sub, reg3)) {
-			string style = sub[1];
+			string style = sub.str(1);
 			// token is now the style file
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
@@ -463,7 +463,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 					     << style << "'" << endl;
 			aux_info.styles.insert(style);
 		} else if (regex_match(token, sub, reg4)) {
-			string file2 = sub[1];
+			string file2 = sub.str(1);
 			scanAuxFile(file2, aux_info);
 		}
 	}
@@ -685,15 +685,15 @@ void LaTeX::deplog(DepTable & head)
 
 		smatch sub;
 		if (regex_match(token, sub, reg1)) {
-			foundfile = sub[1];
+			foundfile = sub.str(1);
 		} else if (regex_match(token, sub, reg2)) {
-			foundfile = sub[1];
+			foundfile = sub.str(1);
 		} else if (regex_match(token, sub, reg3)) {
-			foundfile = sub[1];
+			foundfile = sub.str(1);
 		} else if (regex_match(token, sub, reg4)) {
-			foundfile = sub[1];
+			foundfile = sub.str(1);
 		} else if (regex_match(token, sub, reg5)) {
-			foundfile = sub[1];
+			foundfile = sub.str(1);
 		} else {
 			continue;
 		}

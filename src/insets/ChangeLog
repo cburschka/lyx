@@ -1,3 +1,7 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetcommandparams.C: include config.h
+
 2002-10-31  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* insetgraphicsParams.C (Write): use lyx::float_equal.
@@ -8,7 +12,7 @@
 
 	* insetfloat.C (addToTOC): recursively traverse all
 	  contents looking for captions (fix #568)
- 
+
 2002-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetexternal.C (doSubstitution): do not try to replace
@@ -32,7 +36,7 @@
 	* inset.h: remove unused DISPATCH_RESULT
 
 	* insettext.C: sgml open/close tag now in sgml namespace
- 
+
 2002-10-21  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C (draw): Fix the drawing of an inset with a relative
@@ -42,7 +46,7 @@
 2002-10-16  John Levon  <levon@movementarian.org>
 
 	* insetspecialchar.C: remove \\protected_separator parsing
- 
+
 2002-09-25  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* insetquote.C: fix LaTeX output of quotation marks.

@@ -1,14 +1,21 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* qttableview.C: include config.h
+
+	* lyx_gui.C: move includes around a bit
+	(start): adjust signature
+
 2002-10-31  John Levon  <levon@movementarian.org>
 
 	* QExternal.C: fix crash, valid check
- 
+
 2002-10-31  John Levon  <levon@movementarian.org>
 
 	* QGraphics.C:
 	* QGraphicsDialog.C:
 	* QGraphicsDialog.h:
 	* ui/QGraphicsDialog.ui: bb unit fixes
- 
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* QPrintDialog.[hC]: move to ...
@@ -17,16 +24,16 @@
 
 	* QPrint.h:
 	* QPrint.C:
-	* Dialogs_impl.h: 
+	* Dialogs_impl.h:
 	* Makefile.dialogs: from above
- 
+
 	* QSpellchecker.C: reset progress
- 
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* QGraphics.C:
 	* ui/QGraphicsDialog.ui: some fixes from Herbert
- 
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* ui/QTabularDialog.ui: initial UI from Juergen Spitzmueller
@@ -35,17 +42,17 @@
 
 	* iconpalette.C:
 	* QMathDialog.C: fix symbol insert breakage from Lars' patch
- 
+
 2002-10-26  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* ui/QMathMatrixDialog.ui:
 	* QMathMatrixDialog.[Ch]:
 	* Makefile.dialogs:
 	* QMath.C:
- 	* QMathDialog.C: implement Matrix dialog
+	* QMathDialog.C: implement Matrix dialog
 
 	* QMathDialog.C: enlarge Symbols combox (prevent scrollbar)
- 
+
 2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (font_info): Add xfonts to the font path if

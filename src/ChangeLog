@@ -1,3 +1,20 @@
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* vc-backend.C (scanMaster): change from submatch[...] to
+	submatch.str(...)
+
+	* funcrequest.C: include config.h
+
+	* factory.C: include config.h
+
+	* chset.C (loadFile): change from submatch[...] to submatch.str(...)
+
+	* box.C: include config.h
+
+	* LaTeX.C (scanAuxFile): change from submatch[...] to
+	submatch.str(...)
+	(deplog): ditto
+
 2002-10-25  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (cursorToggle): remove reapSpellchecker hack.
@@ -12,7 +29,7 @@
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* text3.C: make start appendix undoable
- 
+
 2002-10-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxlength.C (inPixels): Fix returned value.
@@ -28,26 +45,26 @@
 2002-10-21  John Levon  <levon@movementarian.org>
 
 	* BufferView.C: menuUndo ->undo, redo
- 
+
 	* BufferView.h: document, remove dead, make some methods private
- 
+
 	* paragraph_funcs.h:
-	* paragraph_funcs.C: 
+	* paragraph_funcs.C:
 	* CutAndPaste.C: s/pasteParagraph/mergeParagraph
- 
+
 	* buffer.h:
 	* buffer.C:
 	* sgml.h:
 	* sgml.C: move sgml open/close tag into sgml.C
- 
+
 	* bufferview_funcs.h: unused prototype
- 
+
 	* lyxfunc.h:
 	* lyxfunc.C: remove unused
- 
+
 	* lyxtext.h:
 	* text.C: remove unused
- 
+
 2002-10-21  John Levon  <levon@movementarian.org>
 
 	* BufferView.h:
@@ -55,7 +72,7 @@
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: fix mouse wheel handling based on
 	  patch from Darren Freeman
- 
+
 2002-10-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyx_main.C (queryUserLyXDir): Fix automatic reconfiguration.
@@ -68,7 +85,7 @@
 2002-10-16  John Levon  <levon@movementarian.org>
 
 	* buffer.C: remove \\protected_separator parsing done by lyx2lyx now
- 
+
 2002-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* converter.C (view): add support for $$i (file name) and $$p
@@ -129,25 +146,25 @@
 2002-09-16  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: check tabular for cut/copy too
- 
+
 2002-09-12  John Levon  <levon@movementarian.org>
 
 	* LyXAction.C: tidy
 
 	* factory.h:
 	* factory.C: add header
- 
+
 	* paragraph_funcs.h:
 	* paragraph_funcs.C: cleanup
- 
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* PrinterParams.h: odd/even default to true
- 
+
 2002-09-12  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* PrinterParams.h: update printer parameters for new xforms dialog
- 
+
 2002-09-11  Angus Leeming  <leeming@lyx.org>
 
 	* lyxserver.C (read_ready): re-write to make it more transparent

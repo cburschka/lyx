@@ -22,9 +22,6 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include <fcntl.h>
-#include <boost/bind.hpp>
-
 #include "lyx_gui.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
@@ -41,6 +38,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
+#include <boost/bind.hpp>
 
 #include "QtView.h"
 #include "QLImage.h"
@@ -50,6 +48,8 @@
 #include <qapplication.h>
 #include <qwidget.h>
 #include <qpaintdevicemetrics.h>
+
+#include <fcntl.h>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -98,7 +98,7 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-void lyx_gui::start(string const & batch, vector<string> files)
+void lyx_gui::start(string const & batch, vector<string> const & files)
 {
 	// initial geometry
 	int xpos = -1;
