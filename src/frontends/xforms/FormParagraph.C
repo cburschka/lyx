@@ -333,33 +333,19 @@ void FormParagraph::update()
 		  par_->params().noindent());
 
     int linespacing;
-    Spacing space = par_->params().spacing();
-
-    /* 
-    switch (lv_->buffer()->params.spacing.getSpace()) {
-        case Spacing::Default: linespacing = 1; break;
-        case Spacing::Single: linespacing = 2; break;
-        case Spacing::Onehalf: linespacing = 3; break;
-        case Spacing::Double: linespacing = 4; break;
-        case Spacing::Other: linespacing = 5; break;
-    }
-    */
+    Spacing const space = par_->params().spacing();
 
     switch (space.getSpace()) {
-        case Spacing::Default: linespacing = 1; break;
+        default: linespacing = 1; break;
         case Spacing::Single: linespacing = 2; break;
         case Spacing::Onehalf: linespacing = 3; break;
         case Spacing::Double: linespacing = 4; break;
         case Spacing::Other: linespacing = 5; break;
     }
+ 
     fl_set_choice(dialog_->choice_linespacing, linespacing);
     if (space.getSpace() == Spacing::Other) {
-        string sp;
-        
-        if (space.getSpace() == Spacing::Default)
-            sp = tostr(lv_->buffer()->params.spacing.getValue());
-        else 
-            sp = tostr(space.getValue());
+        string const sp = tostr(space.getValue());
         fl_set_input(dialog_->input_linespacing, sp.c_str());
         setEnabled(dialog_->input_linespacing, true);
     } else {
