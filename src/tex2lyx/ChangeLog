@@ -1,3 +1,10 @@
+2004-04-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C: recognize \lyxdot
+	* text.C (parse_text): translate \lyxdot in graphics file names
+	* text.C (handle_ert): translate '\n' (fixes %-newline combinations
+	in \def commands)
+
 2004-03-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): handle vspaces like '1cm' correctly

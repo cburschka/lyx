@@ -253,6 +253,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			    && name != "\\lyxline"
 			    && name != "\\lyxaddress"
 			    && name != "\\lyxrightaddress"
+			    && name != "\\lyxdot"
 			    && name != "\\boldsymbol"
 			    && name != "\\lyxarrow") {
 				ostringstream ss;

@@ -29,6 +29,7 @@
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 using lyx::support::contains;
+using lyx::support::subst;
 
 using std::cerr;
 using std::endl;
@@ -119,7 +120,7 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 		return false;
 	const string::size_type i = len.find_first_not_of(" -+0123456789.,");
 	//'4,5' is a valid LaTeX length number. Change it to '4.5'
-	string const length = lyx::support::subst(len, ',', '.');
+	string const length = subst(len, ',', '.');
 	if (i == string::npos)
 		return false;
 	if (i == 0) {
@@ -258,6 +259,8 @@ void handle_ert(ostream & os, string const & s, Context & context, bool check_la
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash \n";
+		else if (*it == '\n')
+			os << "\n\\newline \n";
 		else
 			os << *it;
 	}
@@ -914,7 +917,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "includegraphics") {
 			map<string, string> opts = split_map(p.getArg('[', ']'));
-			string name = p.verbatim_item();
+			string name = subst(p.verbatim_item(), "\\lyxdot ", ".");
 
 			context.check_layout(os);
 			begin_inset(os, "Graphics ");
