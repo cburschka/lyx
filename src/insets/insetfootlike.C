@@ -45,10 +45,10 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 
 void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-		InsetCollapsable::metrics(mi, dim);
-		if (isOpen()) 
-			dim.wid = mi.base.textwidth;
-		dim_ = dim;
+	InsetCollapsable::metrics(mi, dim);
+	if (isOpen()) 
+		dim.wid = mi.base.textwidth;
+	dim_ = dim;
 }
 
 
