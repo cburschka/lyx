@@ -31,7 +31,10 @@ public:
 	/// stop the timer
 	void stop();
 	/// reset
-	void reset();
+        void reset();
+        /// Is the timer running?
+        bool running() const;
+  
 
 public:
 	/// The timeout signal, this gets called when the timeout passed.
@@ -41,6 +44,8 @@ private:
 	Timeout * owner_;
 	/// Timer connection
 	SigC::Connection conn_;
+        /// Used for running as SigC::Connection::connected() isn't const
+        bool running_;
 };
 
 #endif

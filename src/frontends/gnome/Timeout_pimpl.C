@@ -4,6 +4,7 @@
  * Read COPYING
  *
  * \author Baruch Even
+ * \author Michael Koziarski
  */
 
 #include <config.h>
@@ -28,7 +29,11 @@ void Timeout::Pimpl::reset()
 	stop();
 }
 
-
+bool Timeout::Pimpl::running() const
+{
+        return running_;
+}
+ 
 void Timeout::Pimpl::start()
 {
 	if (conn_.connected()) {
@@ -40,12 +45,14 @@ void Timeout::Pimpl::start()
 			 SigC::slot(this, &Timeout::Pimpl::timeoutEvent),
 			 owner_->timeout_ms
 			);
+	running_ = true;
 }
 
 
 void Timeout::Pimpl::stop()
 {
 	conn_.disconnect();
+	running_ = false;
 }
 
 

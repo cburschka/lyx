@@ -198,6 +198,8 @@ case "$lyx_use_frontend" in
 `
 	;;
   gnome)
+    LYX_PATH_XPM
+    LYX_PATH_XFORMS
     AM_PATH_GTKMM(1.2.1,,
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
     AM_PATH_GNOMEMM
@@ -217,8 +219,8 @@ dnl Ensure gnome-config is available...
     FRONTEND="xforms gnome"
     FRONTEND_GUILIB="gnome/*.lo"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
-    FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) `gnome-config --cflags libglade gnomeui`"
-    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade gnomeui`";;
+    FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) `gnome-config --cflags libglade gnomeui`"
+    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ \$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade gnomeui`";;
   qt2)
 	LYX_PATH_XPM
 	LYX_PATH_XFORMS
