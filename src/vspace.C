@@ -98,7 +98,7 @@ char nextToken (string & data)
 			if (number_index > 3) return 'E';  // Error
                         string buffer = data.substr(0, i + 1).c_str();
 			double x = strToDbl(buffer);
-			if (x) {
+			if (x || (buffer[0] == '0')) {
 				number[number_index] = x;
 				lyx_advance (data, i + 1);
 				++number_index;

@@ -1,3 +1,9 @@
+2000-09-11  Juergen Vigna  <jug@sad.it>
+
+	* src/spellchecker.C (sc_accept_word): change to add_to_session.
+
+	* src/vspace.C (nextToken): fixed error with number 0cm as unvalid.
+
 2000-09-08  Juergen Vigna  <jug@sad.it>
 
 	* src/lyx_gui.C (create_forms): don't display the "default" entry as

@@ -663,7 +663,7 @@ void sc_insert_word(char const *word)
 static inline 
 void sc_accept_word(char const *word) 
 {
-	pspell_manager_add_to_personal(sc, word);
+	pspell_manager_add_to_session(sc, word);
 }
 
 static inline 
