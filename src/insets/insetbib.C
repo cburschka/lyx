@@ -18,6 +18,7 @@
 #include "support/path.h"
 #include "support/os.h"
 #include "support/lstrings.h"
+#include "support/LAssert.h"
 #include "lyxrc.h"
 #include "font.h"
 #include "LyXView.h" 
@@ -137,80 +138,135 @@ string const InsetBibtex::getScreenLabel(Buffer const *) const
 int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		       bool /*fragile*/, bool/*fs*/) const
 {
-	// If we generate in a temp dir, we might need to give an
-	// absolute path there. This is a bit complicated since we can
-	// have a comma-separated list of bibliographies
+	// changing the sequence of the commands
+	// 1. \bibliographystyle{style}
+	// 2. \addcontentsline{...} - if option bibtotoc set
+	// 3. \bibliography{database}
 	string adb, db_out;
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
+
+	// Style-Options
+	string style = getOptions(); // maybe empty! and with bibtotoc
+	string bibtotoc;
+	if (prefixIs(style,"bibtotoc")) {
+		bibtotoc = "bibtotoc";
+		if (contains(style,',')) {
+			style = split(style,bibtotoc,',');
+		}
+	}
+
+  	if (!buffer->niceFile 
+	    && IsFileReadable(MakeAbsPath(style, buffer->filepath) + ".bst")) {
+		style = MakeAbsPath(style, buffer->filepath);
+	}
+
+	if (!style.empty()) { // we want no \biblio...{}
+		os << "\\bibliographystyle{" << style << "}\n";
+	}
+
+	// bibtotoc-Option
+        if (!bibtotoc.empty()) {
+		// maybe a problem when a textclass has no "art" as
+		// part of its name, because it's than book.
+		// For the "official" lyx-layouts it's no problem to support
+		// all well
+		if (!contains(textclasslist.NameOfClass(buffer->params.textclass),"art")) {
+			if (buffer->params.sides == LyXTextClass::OneSide) {
+				// oneside
+				os << "\\clearpage";
+			} else {
+				// twoside
+				os << "\\cleardoublepage";
+			}
+
+			// bookclass
+			os << "\\addcontentsline{toc}{chapter}{\\bibname}";
+
+		} else {
+			// article class
+			os << "\\addcontentsline{toc}{section}{\\refname}";	
+		}
+	}
+
+	// database
+	// If we generate in a temp dir, we might need to give an
+	// absolute path there. This is a bit complicated since we can
+	// have a comma-separated list of bibliographies
 	while(!adb.empty()) {
 		if (!buffer->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb, buffer->filepath)+".bib")) 
                          adb = os::external_path(MakeAbsPath(adb, buffer->filepath));
-
 		db_out += adb;
 		db_out += ',';
 		db_in= split(db_in, adb,',');
 	}
 	db_out = strip(db_out, ',');
-	// Idem, but simpler
-	string style;
-	if (!buffer->niceFile 
-	    && IsFileReadable(MakeAbsPath(getOptions(), buffer->filepath)
-			      + ".bst")) 
-		style = MakeAbsPath(getOptions(), buffer->filepath);
-	else
-		style = getOptions();
-
-	os << "\\bibliographystyle{" << style << "}\n"
-	   << "\\bibliography{" << db_out << "}\n";
+	os   << "\\bibliography{" << db_out << "}\n";
 	return 2;
 }
 
 
-// This method returns a comma separated list of Bibtex entries
-vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) const
+vector<string> const InsetBibtex::getFiles(Buffer const &) const
 {
-	Path p(buffer->filepath);
+	// Doesn't appear to be used (Angus, 31 July 2001)
+	// Path p(buffer->filepath);
 
-	vector<pair<string,string> > keys;
+	vector<string> vec;
+
 	string tmp;
 	string bibfiles = getContents();
 	bibfiles = split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
-		string fil = findtexfile(ChangeExtension(tmp, "bib"),
-					 "bib");
-		lyxerr[Debug::LATEX] << "Bibfile: " << fil << endl;
+		string file = findtexfile(ChangeExtension(tmp, "bib"), "bib");
+		lyxerr[Debug::LATEX] << "Bibfile: " << file << endl;
+
 		// If we didn't find a matching file name just fail silently
-		if (!fil.empty()) {
-			// This is a _very_ simple parser for Bibtex database
-			// files. All it does is to look for lines starting
-			// in @ and not being @preamble and @string entries.
-			// It does NOT do any syntax checking!
-			ifstream ifs(fil.c_str());
-			string linebuf0;
-			while (getline(ifs, linebuf0)) {
-				string linebuf = frontStrip(strip(linebuf0));
-				if (linebuf.empty() ) continue;
-				if (prefixIs(linebuf, "@")) {
-					linebuf = subst(linebuf, '{', '(');
-					linebuf = split(linebuf, tmp, '(');
-					tmp = lowercase(tmp);
-					if (!prefixIs(tmp, "@string")
-					    && !prefixIs(tmp, "@preamble")) {
-						linebuf = split(linebuf, tmp, ',');
-						tmp = frontStrip(tmp);
-						if (!tmp.empty()) {
-							keys.push_back(pair<string,string>(tmp,string()));
-						}
-					}
-				} else if (!keys.empty()) {
-					keys.back().second += linebuf + "\n";
-				}
-			}
-		}
+		if (!file.empty())
+			vec.push_back(file);
+		
 		// Get next file name
     		bibfiles = split(bibfiles, tmp, ',');
+	}
+
+	return vec;
+}
+
+// This method returns a comma separated list of Bibtex entries
+vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) const
+{
+	vector<pair<string,string> > keys;
+
+	lyx::Assert(buffer);
+	vector<string> const files = getFiles(*buffer);
+	for (vector<string>::const_iterator it = files.begin();
+	     it != files.end(); ++ it) {
+		// This is a _very_ simple parser for Bibtex database
+		// files. All it does is to look for lines starting
+		// in @ and not being @preamble and @string entries.
+		// It does NOT do any syntax checking!
+		ifstream ifs(it->c_str());
+		string linebuf0;
+		while (getline(ifs, linebuf0)) {
+			string linebuf = frontStrip(strip(linebuf0));
+			if (linebuf.empty() ) continue;
+			if (prefixIs(linebuf, "@")) {
+				linebuf = subst(linebuf, '{', '(');
+				string tmp;
+				linebuf = split(linebuf, tmp, '(');
+				tmp = lowercase(tmp);
+				if (!prefixIs(tmp, "@string")
+				    && !prefixIs(tmp, "@preamble")) {
+					linebuf = split(linebuf, tmp, ',');
+					tmp = frontStrip(tmp);
+					if (!tmp.empty()) {
+						keys.push_back(pair<string,string>(tmp,string()));
+					}
+				}
+			} else if (!keys.empty()) {
+				keys.back().second += linebuf + "\n";
+			}
+		}
 	}
   	return keys;
 }

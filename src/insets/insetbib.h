@@ -102,6 +102,8 @@ public:
 	///
 	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;
 	///
+	std::vector<string> const getFiles(Buffer const &) const;
+	///
 	bool addDatabase(string const &);
 	///
 	bool delDatabase(string const &);

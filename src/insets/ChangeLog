@@ -1,3 +1,16 @@
+2001-08-20  Herbert Voss  <voss@perce.de>
+	* insetbib.C: added a option bibtotoc which is from "BIB to TOC" 
+	in the the bibtex-database-gui for inserting a line
+	\addcontentsline... 
+
+	If no style is given than there is no tex-output.
+	
+2001-08-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetbib.[Ch] (getFiles): new method, returning the BibTeX database
+	files as a vector.
+	(getKeys): use it.
+
 2001-08-18  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetert.C (latex): Fix output for multiple paragraphs.
