@@ -1159,7 +1159,7 @@ bool MathCursor::script(bool up)
 	// Hack to get \\^ and \\_ working
 	if (inMacroMode() && macroName() == "\\") {
 		if (up)
-			interpret("\\mathcircumflex");
+			niceInsert(createMathInset("mathcircumflex"));
 		else
 			interpret('_');
 		return true;
@@ -1219,12 +1219,6 @@ bool MathCursor::interpret(char c)
 		string name = macroName();
 		//lyxerr << "interpret name: '" << name << "'\n";
 
-		if (name.empty() && c == '\\') {
-			backspace();
-			interpret("\\backslash");
-			return true;
-		}
-
 		if (isalpha(c)) {
 			activeMacro()->setName(activeMacro()->name() + c);
 			return true;
@@ -1234,10 +1228,13 @@ bool MathCursor::interpret(char c)
 		if (name == "\\") {
 			// remove the '\\'
 			backspace();
-			if (c == '\\')
-				interpret("\\backslash");
-			else
-				interpret(string("\\") + c);
+			if (c == '\\') {
+				if (currentMode() == MathInset::TEXT_MODE)
+					niceInsert(createMathInset("textbackslash"));
+				else
+					niceInsert(createMathInset("backslash"));
+			} else
+				niceInsert(createMathInset(string(1, c)));
 			return true;
 		}
 
