@@ -158,10 +158,6 @@ void MathInset::idxDelete(idx_type &, bool & popit, bool & deleteit)
 }
 
 
-void MathInset::idxDeleteRange(idx_type, idx_type)
-{}
-
-
 void MathInset::normalize(NormalStream & os) const
 {
 	os << "[unknown ";

@@ -110,6 +110,8 @@ public:
 	                            bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
+	///
+	virtual void mutateToText();
 
 
 private:

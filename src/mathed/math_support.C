@@ -269,6 +269,8 @@ bool math_font_available(MathTextCodes type)
 	if (!font_available_initialized[type]) {
 		font_available_initialized[type] = true;
 		font_available[type] = fontloader.available(whichFontBaseIntern(type));
+		if (!font_available[type])
+			lyxerr[Debug::FONT] << "Math font " << type << " not available.\n";
 	}
 	return font_available[type];
 }

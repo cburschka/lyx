@@ -129,8 +129,6 @@ public:
 	bool idxEnd(idx_type &, pos_type &) const;
 	///
 	void idxDelete(idx_type &, bool &, bool &);
-	///
-	void idxDeleteRange(idx_type, idx_type);
 			
 	///
 	virtual void addRow(row_type);

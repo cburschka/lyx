@@ -912,6 +912,8 @@ void MathCursor::pullArg(bool goright)
 		array().insert(pos(), a);
 		if (goright)
 			pos() += a.size();
+	} else {
+		formula()->mutateToText();
 	}
 }
 

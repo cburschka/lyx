@@ -637,22 +637,6 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 }
 
 
-void MathGridInset::idxDeleteRange(idx_type /*from*/, idx_type /*to*/)
-{
-// leave this unimplemented unless someone wants to have it.
-/*
-	int n = (to - from) / ncols();
-	int r = from / ncols();
-
-	if (n >= 1) {
-		cells_type::iterator it = cells_.begin() + from;
-		cells_.erase(it, it + n * ncols());
-		rowinfo_.erase(rowinfo_.begin() + r, rowinfo_.begin() + r + n);
-	}
-*/
-}
-
-
 MathGridInset::RowInfo const & MathGridInset::rowinfo(row_type row) const
 {
 	return rowinfo_[row];

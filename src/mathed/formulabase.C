@@ -36,6 +36,7 @@
 #include "LyXView.h"
 #include "Painter.h"
 #include "font.h"
+#include "Lsstream.h"
 #include "math_arrayinset.h"
 #include "math_cursor.h"
 #include "math_factory.h"
@@ -46,6 +47,7 @@
 #include "math_pos.h"
 #include "math_spaceinset.h"
 #include "undo_funcs.h"
+#include "intl.h"
 
 using std::endl;
 using std::ostream;
@@ -96,6 +98,28 @@ InsetFormulaBase::InsetFormulaBase()
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
+}
+
+
+// simply scrap this function if you want
+void InsetFormulaBase::mutateToText()
+{
+#if 0
+	// translate to latex
+	ostringstream os;
+	latex(NULL, os, false, false);
+	string str = os.str();
+
+	// insert this text
+	LyXText * lt = view_->getLyXText();
+	string::const_iterator cit = str.begin();
+	string::const_iterator end = str.end();
+	for (; cit != end; ++cit)
+		view_->owner()->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+
+	// remove ourselves
+	//view_->owner()->getLyXFunc()->dispatch(LFUN_ESCAPE);
+#endif
 }
 
 
