@@ -23,7 +23,7 @@
 #include "debug.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
-#include "func_status.h"
+#include "FuncStatus.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxtextclasslist.h"
@@ -190,8 +190,8 @@ void Toolbar::Pimpl::update()
 	ToolbarList::const_iterator end = toollist.end();
 	for (; p != end; ++p) {
 		if (p->icon) {
-			int status = owner->getLyXFunc()->getStatus(p->action);
-			if (status & func_status::ToggleOn) {
+			FuncStatus status = owner->getLyXFunc()->getStatus(p->action);
+			if (status.onoff(true)) {
 				// I'd like to use a different color
 				// here, but then the problem is to
 				// know how to use transparency with
@@ -203,8 +203,7 @@ void Toolbar::Pimpl::update()
 				fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
 				fl_set_object_boxtype(p->icon, FL_UP_BOX);
 			}
-
-			if (status & func_status::Disabled) {
+			if (status.disabled()) {
 				// Is there a way here to specify a
 				// mask in order to show that the
 				// button is disabled? (JMarc)

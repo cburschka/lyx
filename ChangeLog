@@ -1,3 +1,8 @@
+2002-01-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.in: remove test for -lpt on SCO. Hopefully it is not
+	needed anymore. This fixes bug #137
+
 2001-11-29 Ben Stanley <bds02@uow.edu.au>
 
 	* src/LaTeX.C

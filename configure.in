@@ -161,8 +161,8 @@ LYX_WITH_SIGC
 CHECK_WITH_PSPELL
 
 ### Check for X libraries
-# Check for the pt library (for SCO, needed for X)
-AC_CHECK_LIB(pt,ptsname,X_EXTRA_LIBS="-lpt $X_EXTRA_LIBS")
+dnl # Check for the pt library (for SCO, needed for X)
+dnl AC_CHECK_LIB(pt,ptsname,X_EXTRA_LIBS="-lpt $X_EXTRA_LIBS")
 # The real thing.
 AC_PATH_XTRA
 LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"

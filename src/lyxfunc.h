@@ -10,7 +10,7 @@
 #include <sigc++/signal_system.h>
 
 #include "commandtags.h" // for kb_action enum
-#include "func_status.h"
+#include "FuncStatus.h"
 #include "kbsequence.h"
 #include "LString.h"
 
@@ -47,10 +47,10 @@ public:
 
 	/// we need one internall which is called from inside LyXAction and
 	/// can contain the string argument.
-	func_status::value_type getStatus(int ac) const;
+	FuncStatus getStatus(int ac) const;
 	///
-	func_status::value_type getStatus(int ac, 
-					  string const & not_to_use_arg) const;
+	FuncStatus getStatus(int ac, 
+			     string const & not_to_use_arg) const;
 	
 	/// The last key was meta
 	bool wasMetaKey() const;

@@ -1,3 +1,8 @@
+2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Menubar_pimpl.C (create_submenu): 
+	* Toolbar_pimpl.C (update): use FuncStatus.
+
 2002-01-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xform_helpers.[Ch] (getStringFromBrowser): a littel wrapper function

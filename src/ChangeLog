@@ -1,3 +1,11 @@
+2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* FuncStatus.[Ch]: new files. This is a rewrite as a proper class
+	of the func_satus stuff. Edited and massaged in various ways by
+	JMarc.  
+
+	* lyxfunc.C (getStatus): use FuncStatus
+
 2002-01-08  Juergen Vigna  <jug@sad.it>
 
 	* text.C (nextBreakPoint): use function Inset::isChar().

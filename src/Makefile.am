@@ -50,6 +50,8 @@ lyx_SOURCES = \
 	FontInfo.h \
 	FontLoader.C \
 	FontLoader.h \
+	FuncStatus.C \
+	FuncStatus.h \
 	LColor.C \
 	LColor.h \
 	LString.h \
@@ -119,7 +121,6 @@ lyx_SOURCES = \
 	figureForm.h \
 	font.C \
 	font.h \
-	func_status.h \
 	gettext.C \
 	gettext.h \
 	importer.C \

@@ -22,7 +22,7 @@
 #include "debug.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
-#include "func_status.h"
+#include "FuncStatus.h"
 #include "kbmap.h"
 #include "bufferlist.h"
 #include "lastfiles.h"
@@ -233,7 +233,7 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	if (label.find(item.shortcut()) != string::npos)
 	  label.insert(label.find(item.shortcut()), "_");
 
-	func_status::value_type flag = owner_->getLyXFunc()->getStatus(item.action());
+	FuncStatus flag = owner_->getLyXFunc()->getStatus(item.action());
 
 	Gnome::UI::Info gitem;
 	SigC::Slot0<void> cback = SigC::bind<int>(SigC::slot(this, &Menubar::Pimpl::callback),item.action());
@@ -308,13 +308,13 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	}
 
 	// first handle optional entries.
-	if (item.optional() && (flag & func_status::Disabled)) {
+	if (item.optional() && (flag.disabled())) {
 	    lyxerr[Debug::GUI] 
 		<< "Skipping optional item " << item.label() << endl; 
 	    break;
 	}
-  	if ((flag & func_status::ToggleOn) || 
-			(flag & func_status::ToggleOff))
+  	if ((flag.onoff(true)) || 
+			(flag.onoff(false)))
   	  gitem = Gnome::UI::ToggleItem(label, cback, lyxaction.helpText(item.action()));
 
   	Menus.push_back(gitem);
@@ -386,19 +386,19 @@ void Menubar::Pimpl::update()
   for (vector<GtkWidgetToAction>::const_iterator i = wid_act_.begin(); i != end; ++i)
     {
       GtkWidgetToAction wa = (*i);
-      func_status::value_type flag = owner_->getLyXFunc()->getStatus(wa.action_);
+      FuncStatus flag = owner_->getLyXFunc()->getStatus(wa.action_);
 
-      if ( flag & (func_status::Disabled | func_status::Unknown) ) gtk_widget_set_sensitive(wa.widget_, false);
+      if ( flag.disabled() || flag.unknown()) gtk_widget_set_sensitive(wa.widget_, false);
       else gtk_widget_set_sensitive(wa.widget_, true);
 
-      if ( flag & func_status::ToggleOn )
+      if ( flag.onoff(true))
 	{
 	  ignore_action_=true;
 	  gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(wa.widget_), true);
 	  ignore_action_=false;
 	}
 
-      if ( flag & func_status::ToggleOff )
+      if ( flag.onoff(false))
 	{
 	  ignore_action_=true;
 	  gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(wa.widget_), false);

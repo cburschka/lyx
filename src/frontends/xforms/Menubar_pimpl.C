@@ -426,8 +426,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		if (i->kind() == MenuItem::Separator)
 			*last = "%l";
 		else if (!i->optional() ||
-			 !(view->getLyXFunc()->getStatus(i->action()) 
-			   & func_status::Disabled))
+			 !(view->getLyXFunc()->getStatus(i->action()).disabled()))
 			last = it;
 
 	it = extra_labels.begin();
@@ -437,12 +436,12 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 		switch (item.kind()) {
 		case MenuItem::Command: {
-			func_status::value_type flag = 
+			FuncStatus flag = 
 				view->getLyXFunc()->getStatus(item.action()); 
 
 			// handle optional entries.
 			if (item.optional() 
-			    && (flag & func_status::Disabled)) {
+			    && (flag.disabled())) {
 				lyxerr[Debug::GUI] 
 					<< "Skipping optional item " 
 					<< item.label() << endl; 
@@ -468,12 +467,11 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			
 			// Modify the entry using the function status
 			string pupmode;
-			if (flag & (func_status::Disabled 
-				    | func_status::Unknown))
+			if (flag.disabled() || flag.unknown())
 				pupmode += "%i";
-			if (flag & func_status::ToggleOn)
+			if (flag.onoff(true))
 				pupmode += "%B";
-			if (flag & func_status::ToggleOff)
+			if (flag.onoff(false))
 				pupmode += "%b";
 			label += pupmode;
 

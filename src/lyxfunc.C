@@ -343,16 +343,16 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 } 
 
 
-func_status::value_type LyXFunc::getStatus(int ac) const
+FuncStatus LyXFunc::getStatus(int ac) const
 {
 	return getStatus(ac, string());
 }
 
-func_status::value_type LyXFunc::getStatus(int ac,
-					   string const & not_to_use_arg) const
+FuncStatus LyXFunc::getStatus(int ac,
+			      string const & not_to_use_arg) const
 {
 	kb_action action;
-	func_status::value_type flag = func_status::OK;
+	FuncStatus flag;
 	string argument;
 	Buffer * buf = owner->buffer();
 	
@@ -361,12 +361,12 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	else {
 		action = static_cast<kb_action>(ac);
 		if (!not_to_use_arg.empty())
-			argument = not_to_use_arg; // exept here
+			argument = not_to_use_arg; // except here
 	}
 	
 	if (action == LFUN_UNKNOWN_ACTION) {
 		setErrorMessage(N_("Unknown action"));
-		return func_status::Unknown;
+		return flag.unknown(true);
 	}
 	
 	// Check whether we need a buffer
@@ -380,14 +380,13 @@ func_status::value_type LyXFunc::getStatus(int ac,
 						   LyXAction::ReadOnly)) {
 				// no
 				setErrorMessage(N_("Document is read-only"));
-				flag |= func_status::Disabled;
+				flag.disabled(true);
 			}
 		} else {
 			// no
 			setErrorMessage(N_("Command not allowed with"
 					   "out any document open"));
-			flag |= func_status::Disabled;
-			return flag;
+			return flag.disabled(true);
 		}
 	}
 
@@ -435,7 +434,8 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_TABULAR_FEATURE:
 		disable = true;
 		if (owner->view()->theLockingInset()) {
-			func_status::value_type ret = func_status::Disabled;
+			FuncStatus ret;
+			ret.disabled(true);
 			if (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset())->
@@ -450,13 +450,11 @@ func_status::value_type LyXFunc::getStatus(int ac,
 			disable = false;
 		} else {
 			static InsetTabular inset(*owner->buffer(), 1, 1);
-			func_status::value_type ret;
+			FuncStatus ret;
 
 			disable = true;
 			ret = inset.getStatus(argument);
-			if ((ret & func_status::ToggleOn) ||
-			    (ret & func_status::ToggleOff))
-				flag |= func_status::ToggleOff;
+			if (ret.onoff(true) || ret.onoff(false)) flag.setOnOff(false);
 		}
 		break;
 
@@ -498,14 +496,14 @@ func_status::value_type LyXFunc::getStatus(int ac,
 				break;
 			}
 			if (argument.empty()) {
-				flag = func_status::OK;
+				flag.clear();
 				break;
 			}
 			if (!contains("tcb", argument[0])) {
 				disable = true;
 				break;
 			}
-			func_status::toggle(flag, argument[0] == align);
+			flag.setOnOff(argument[0] == align);
 		} else
 			disable = true;
 		break;
@@ -521,14 +519,14 @@ func_status::value_type LyXFunc::getStatus(int ac,
 				break;
 			}
 			if (argument.empty()) {
-				flag = func_status::OK;
+				flag.clear();
 				break;
 			}
 			if (!contains("lcr", argument[0])) {
 				disable = true;
 				break;
 			}
-			func_status::toggle(flag, argument[0] == align);
+			flag.setOnOff(argument[0] == align);
 		} else
 			disable = true;
 		break;
@@ -538,13 +536,13 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
 			MathInsetTypes type = mathcursor->formula()->getType();
 			if (argument == "inline") {
-				func_status::toggle(flag, type == LM_OT_SIMPLE);
+				flag.setOnOff(type == LM_OT_SIMPLE);
 			} else if (argument == "display") {
-				func_status::toggle(flag, type == LM_OT_EQUATION);
+				flag.setOnOff(type == LM_OT_EQUATION);
 			} else if (argument == "eqnarray") {
-				func_status::toggle(flag, type == LM_OT_EQNARRAY);
+				flag.setOnOff(type == LM_OT_EQNARRAY);
 			} else if (argument == "align") {
-				func_status::toggle(flag, type == LM_OT_ALIGN);
+				flag.setOnOff(type == LM_OT_ALIGN);
 			} else {
 				disable = true;
 			}
@@ -683,15 +681,15 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	}
 
 	if (disable)
-	        flag |= func_status::Disabled;
+			flag.disabled(true);
 	
 	// A few general toggles
 	switch (action) {
 	case LFUN_READ_ONLY_TOGGLE:
-		func_status::toggle(flag, buf->isReadonly());
+		flag.setOnOff(buf->isReadonly());
 		break;
 	case LFUN_APPENDIX:
-		func_status::toggle(flag, TEXT(false)->cursor.par()->params().startOfAppendix());
+		flag.setOnOff(TEXT(false)->cursor.par()->params().startOfAppendix());
 		break;
 	default:
 		break;
@@ -702,22 +700,22 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		LyXFont const & font = TEXT(false)->real_current_font;
 		switch (action) {
 		case LFUN_EMPH:
-			func_status::toggle(flag, font.emph() == LyXFont::ON);
+			flag.setOnOff(font.emph() == LyXFont::ON);
 			break;
 		case LFUN_NOUN:
-			func_status::toggle(flag, font.noun() == LyXFont::ON);
+			flag.setOnOff(font.noun() == LyXFont::ON);
 			break;
 		case LFUN_BOLD:
-			func_status::toggle(flag, font.series() == LyXFont::BOLD_SERIES);
+			flag.setOnOff(font.series() == LyXFont::BOLD_SERIES);
 			break;
 		case LFUN_SANS:
-			func_status::toggle(flag, font.family() == LyXFont::SANS_FAMILY);
+			flag.setOnOff(font.family() == LyXFont::SANS_FAMILY);
 			break;
 		case LFUN_ROMAN:
-			func_status::toggle(flag, font.family() == LyXFont::ROMAN_FAMILY);
+			flag.setOnOff(font.family() == LyXFont::ROMAN_FAMILY);
 			break;
 		case LFUN_CODE:
-			func_status::toggle(flag, font.family() == LyXFont::TYPEWRITER_FAMILY);
+			flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
 			break;
 		default:
 			break;
@@ -727,25 +725,25 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		MathTextCodes tc = mathcursor->getLastCode();
 		switch (action) {
 		case LFUN_BOLD:
-			func_status::toggle(flag, tc == LM_TC_BF);
+			flag.setOnOff(tc == LM_TC_BF);
 			break;
 		case LFUN_SANS:
-			func_status::toggle(flag, tc == LM_TC_SF);
+			flag.setOnOff(tc == LM_TC_SF);
 			break;
 		case LFUN_EMPH:
-			func_status::toggle(flag, tc == LM_TC_CAL);
+			flag.setOnOff(tc == LM_TC_CAL);
 			break;
 		case LFUN_ROMAN:
-			func_status::toggle(flag, tc == LM_TC_RM);
+			flag.setOnOff(tc == LM_TC_RM);
 			break;
 		case LFUN_CODE:
-			func_status::toggle(flag, tc == LM_TC_TT);
+			flag.setOnOff(tc == LM_TC_TT);
 			break;
 		case LFUN_NOUN:
-			func_status::toggle(flag, tc == LM_TC_BB);
+			flag.setOnOff(tc == LM_TC_BB);
 			break;
 		case LFUN_DEFAULT:
-			func_status::toggle(flag, tc == LM_TC_VAR);
+			flag.setOnOff(tc == LM_TC_VAR);
 			break;
 		default:
 			break;
@@ -827,7 +825,7 @@ string const LyXFunc::dispatch(int ac,
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled) {
+	if (getStatus(ac, do_not_use_this_arg).disabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: "
 		       << lyxaction.getActionName(ac)
 		       << " [" << ac << "] is disabled at this location"

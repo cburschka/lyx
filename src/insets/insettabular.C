@@ -2205,16 +2205,13 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 
 
 //
-// functions returns:
-// 0 ... disabled
-// 1 ... enabled
-// 2 ... toggled on
-// 3 ... toggled off
+// function returns an object as defined in func_status.h:
+// states OK, Unknown, Disabled, On, Off.
 //
-func_status::value_type InsetTabular::getStatus(string const & what) const
+FuncStatus InsetTabular::getStatus(string const & what) const
 {
 	int action = LyXTabular::LAST_ACTION;
-	func_status::value_type status = func_status::OK;
+	FuncStatus status;
 	
 	int i = 0;
 	for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
@@ -2227,7 +2224,8 @@ func_status::value_type InsetTabular::getStatus(string const & what) const
 		}
 	}
 	if (action == LyXTabular::LAST_ACTION)
-		return func_status::Unknown;
+		status.clear();
+		return status.unknown(true);
 
 	string const argument = frontStrip(what.substr(tabularFeature[i].feature.length()));
 
@@ -2248,8 +2246,7 @@ func_status::value_type InsetTabular::getStatus(string const & what) const
 	case LyXTabular::SET_MPWIDTH:
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
-		status |= func_status::Disabled;
-		return status;
+		return status.disabled(true);
 
 	case LyXTabular::APPEND_ROW:
 	case LyXTabular::APPEND_COLUMN:
@@ -2257,169 +2254,100 @@ func_status::value_type InsetTabular::getStatus(string const & what) const
 	case LyXTabular::DELETE_COLUMN:
 	case LyXTabular::SET_ALL_LINES:
 	case LyXTabular::UNSET_ALL_LINES:
-		status |= func_status::OK;
-		return status;
+		return status.clear();
 
 	case LyXTabular::MULTICOLUMN:
-		if (tabular->IsMultiColumn(actcell))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->IsMultiColumn(actcell));
 		break;
 	case LyXTabular::M_TOGGLE_LINE_TOP:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_TOP:
-		if (tabular->TopLine(actcell, flag))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->TopLine(actcell, flag));
 		break;
 	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_BOTTOM:
-		if (tabular->BottomLine(actcell, flag))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->BottomLine(actcell, flag));
 		break;
 	case LyXTabular::M_TOGGLE_LINE_LEFT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_LEFT:
-		if (tabular->LeftLine(actcell, flag))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->LeftLine(actcell, flag));
 		break;
 	case LyXTabular::M_TOGGLE_LINE_RIGHT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_RIGHT:
-		if (tabular->RightLine(actcell, flag))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->RightLine(actcell, flag));
 		break;
 	case LyXTabular::M_ALIGN_LEFT:
 		flag = false;
 	case LyXTabular::ALIGN_LEFT:
-		if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_LEFT)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetAlignment(actcell, flag) == LYX_ALIGN_LEFT);
 		break;
 	case LyXTabular::M_ALIGN_RIGHT:
 		flag = false;
 	case LyXTabular::ALIGN_RIGHT:
-		if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_RIGHT)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetAlignment(actcell, flag) == LYX_ALIGN_RIGHT);
 		break;
 	case LyXTabular::M_ALIGN_CENTER:
 		flag = false;
 	case LyXTabular::ALIGN_CENTER:
-		if (tabular->GetAlignment(actcell, flag) == LYX_ALIGN_CENTER)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetAlignment(actcell, flag) == LYX_ALIGN_CENTER);
 		break;
 	case LyXTabular::M_VALIGN_TOP:
 		flag = false;
 	case LyXTabular::VALIGN_TOP:
-		if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
 		break;
 	case LyXTabular::M_VALIGN_BOTTOM:
 		flag = false;
 	case LyXTabular::VALIGN_BOTTOM:
-		if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
 		break;
 	case LyXTabular::M_VALIGN_CENTER:
 		flag = false;
 	case LyXTabular::VALIGN_CENTER:
-		if (tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_CENTER)
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_CENTER);
 		break;
 	case LyXTabular::SET_LONGTABULAR:
-		if (tabular->IsLongTabular())
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->IsLongTabular());
 		break;
 	case LyXTabular::UNSET_LONGTABULAR:
-		if (!tabular->IsLongTabular())
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(!tabular->IsLongTabular());
 		break;
 	case LyXTabular::SET_ROTATE_TABULAR:
-		if (tabular->GetRotateTabular())
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRotateTabular());
 		break;
 	case LyXTabular::UNSET_ROTATE_TABULAR:
-		if (!tabular->GetRotateTabular())
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(!tabular->GetRotateTabular());
 		break;
 	case LyXTabular::SET_ROTATE_CELL:
-		if (tabular->GetRotateCell(actcell))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRotateCell(actcell));
 		break;
 	case LyXTabular::UNSET_ROTATE_CELL:
-		if (!tabular->GetRotateCell(actcell))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(!tabular->GetRotateCell(actcell));
 		break;
 	case LyXTabular::SET_USEBOX:
-		if (strToInt(argument) == tabular->GetUsebox(actcell))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(strToInt(argument) == tabular->GetUsebox(actcell));
 		break;
 	case LyXTabular::SET_LTFIRSTHEAD:
-		if (tabular->GetRowOfLTHead(sel_row_start, dummyltt))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRowOfLTHead(sel_row_start, dummyltt));
 		break;
 	case LyXTabular::SET_LTHEAD:
-		if (tabular->GetRowOfLTHead(sel_row_start, dummyltt))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRowOfLTHead(sel_row_start, dummyltt));
 		break;
 	case LyXTabular::SET_LTFOOT:
-		if (tabular->GetRowOfLTFoot(sel_row_start, dummyltt))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRowOfLTFoot(sel_row_start, dummyltt));
 		break;
 	case LyXTabular::SET_LTLASTFOOT:
-		if (tabular->GetRowOfLTFoot(sel_row_start, dummyltt))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetRowOfLTFoot(sel_row_start, dummyltt));
 		break;
 	case LyXTabular::SET_LTNEWPAGE:
-		if (tabular->GetLTNewPage(sel_row_start))
-			status |= func_status::ToggleOn;
-		else
-			status |= func_status::ToggleOff;
+		status.setOnOff(tabular->GetLTNewPage(sel_row_start));
 		break;
 	default:
-		status = func_status::Disabled;
+		status.clear();
+		status.disabled(true);
 		break;
 	}
 	return status;
