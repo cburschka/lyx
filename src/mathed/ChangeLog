@@ -1,3 +1,8 @@
+2002-04-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* formulabase.C (localDispatch): handle arguments of
+	LFUN_MATH_DELIM better.
+
 2002-04-04 Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* formulabase.C: remove unused variables hack_x, hack_y, hack_button.

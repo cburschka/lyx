@@ -622,15 +622,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_DELIM:
 	{
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
-		string ls = "(";
-		string rs = ")";
-		istringstream is(arg.c_str());
-		is >> ls >> rs;
-		if (!is) {
-			lyxerr << "can't parse delimiters from '" << arg << "'\n";
-			lyxerr << "left: '" << ls << "'  rs: '" << rs << "'\n";
-			break;
-		}
+		string ls;
+		string rs = split(arg, ls, ' ');
+		// Reasonable default values
+		if (ls.empty())
+			ls = '(';
+		if (rs.empty())
+			rs = ')';
+		
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->handleDelim(ls, rs);
 		updateLocal(bv, true);
