@@ -194,6 +194,8 @@ lyx_SOURCES = \
 	texrow.h \
 	text.C \
 	text2.C \
+	toc.C \
+	toc.h \
 	trans.C \
 	trans.h \
 	trans_decl.h \

@@ -46,80 +46,65 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 }
 
 
-// Given an fl_choice, create a vector of its entries
-vector<string> const getVectorFromChoice(FL_OBJECT * ob)
+// Given an fl_choice or an fl_browser, create a vector of its entries
+vector<string> const getVector(FL_OBJECT * ob)
 {
-	vector<string> vec;
-	if (!ob || ob->objclass != FL_CHOICE)
-		return vec;
-
-	for(int i = 0; i < fl_get_choice_maxitems(ob); ++i) {
-		string const text = fl_get_choice_item_text(ob, i+1);
-		vec.push_back(strip(frontStrip(text)));
+	vector <string> vec;
+	
+	switch (ob->objclass) {
+	case FL_CHOICE:
+		for(int i = 0; i < fl_get_choice_maxitems(ob); ++i) {
+			string const text = fl_get_choice_item_text(ob, i+1);
+			vec.push_back(strip(frontStrip(text)));
+		}
+		break;
+	case FL_BROWSER:
+		for(int i = 0; i < fl_get_browser_maxline(ob); ++i) {
+			string const text = fl_get_browser_line(ob, i+1);
+			vec.push_back(strip(frontStrip(text)));
+		}
+		break;
+	default:
+		lyx::Assert(0);
 	}
-
+	
 	return vec;
 }
 
 
-/// Given an fl_input, return its contents.
-string const getStringFromInput(FL_OBJECT * ob)
+///
+string const getString(FL_OBJECT * ob, int line)
 {
-	if (!ob || ob->objclass != FL_INPUT)
-		return string();
+	char const * tmp = 0;
 
-	char const * tmp = fl_get_input(ob);
-	return (tmp) ? tmp : string();
+	switch (ob->objclass) {
+	case FL_INPUT:
+		lyx::Assert(line == -1);
+		tmp = fl_get_input(ob);
+		break;
+	case FL_BROWSER:
+		if (line == -1)
+			line = fl_get_browser(ob);
+			
+		if (line >= 1 && line <= fl_get_browser_maxline(ob))
+			tmp = fl_get_browser_line(ob, line);
+		break;
+			
+	case FL_CHOICE:
+		if (line == -1)
+			line = fl_get_choice(ob);
+			
+		if (line >= 1 && line <= fl_get_choice_maxitems(ob))
+			tmp = fl_get_choice_item_text(ob, line);
+		break;
+			
+	default:
+		lyx::Assert(0);
+	}		
+
+	return (tmp) ? frontStrip(strip(tmp)) : string();
 }
-
-
-// Given an fl_browser, return the contents of line
-string const getStringFromBrowser(FL_OBJECT * ob, int line)
-{
-	if (!ob || ob->objclass != FL_BROWSER ||
-	    line < 1 || line > fl_get_browser_maxline(ob))
-		return string();
-
-	char const * tmp = fl_get_browser_line(ob, line);
-	return (tmp) ? tmp : string();
-}
-
-// Given an fl_browser, return the contents of the currently
-// highlighted line.
-// If nothing is selected, return an empty string
-string const getSelectedStringFromBrowser(FL_OBJECT * ob)
-{
-	if (!ob || ob->objclass != FL_BROWSER)
-		return string();
-
-	int const line = fl_get_browser(ob);
-	if (line < 1 || line > fl_get_browser_maxline(ob))
-		return string();
-
-	if (!fl_isselected_browser_line(ob, line))
-		return string();
-
-	char const * tmp = fl_get_browser_line(ob, line);
-	return (tmp) ? tmp : string();
-}
-
-
-// Given an fl_browser, create a vector of its entries
-vector<string> const getVectorFromBrowser(FL_OBJECT * ob)
-{
-	vector<string> vec;
-	if (!ob || ob->objclass != FL_BROWSER)
-		return vec;
-
-	for(int i = 0; i < fl_get_browser_maxline(ob); ++i) {
-		string const text = fl_get_browser_line(ob, i+1);
-		vec.push_back(strip(frontStrip(text)));
-	}
-
-	return vec;
-}
-
-
+	
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 {
 	// Paranoia check
@@ -179,7 +164,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		// Else set the choice to the default unit.
 		string const unit = subst(stringFromUnit(len.unit()),"%","%%");
 
-		vector<string> const vec = getVectorFromChoice(choice);
+		vector<string> const vec = getVector(choice);
 		vector<string>::const_iterator it =
 			std::find(vec.begin(), vec.end(), unit);
 		if (it != vec.end()) {

@@ -7,10 +7,11 @@
 #include "insetfloatlist.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
+#include "lyxlex.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"
-#include "buffer.h"
+#include "toc.h"
 #include "gettext.h"
 #include "debug.h"
 
@@ -121,16 +122,7 @@ int InsetFloatList::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	Buffer::Lists const toc_list = buffer->getLists();
-	Buffer::Lists::const_iterator cit =
-		toc_list.find(getCmdName());
-	if (cit != toc_list.end()) {
-		Buffer::SingleList::const_iterator ccit = cit->second.begin();
-		Buffer::SingleList::const_iterator end = cit->second.end();
-		for (; ccit != end; ++ccit)
-			os << string(4 * ccit->depth, ' ')
-			   << ccit->str << "\n";
-	}
+	toc::asciiTocList(getCmdName(), buffer, os);
 
 	os << "\n";
 	return 0;

@@ -323,6 +323,7 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 	pars.width    = 0;
 	pars.height   = 0;
 	pars.scale    = 0;
+	pars.keepLyXAspectRatio = false;
 	pars.angle    = 0;
 	pars.filename = filename;
 
@@ -366,73 +367,47 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 	if (rotate)
 		pars.angle = int(rotateAngle);
 
-	if (display == InsetGraphicsParams::DEFAULT) {
-
-		if (lyxrc.display_graphics == "mono")
-			pars.display = grfx::MonochromeDisplay;
-		else if (lyxrc.display_graphics == "gray")
-			pars.display = grfx::GrayscaleDisplay;
-		else if (lyxrc.display_graphics == "color")
-			pars.display = grfx::ColorDisplay;
-		else
+	switch (display) {
+		case InsetGraphicsParams::NONE:
 			pars.display = grfx::NoDisplay;
+		break;
 
-	} else if (display == InsetGraphicsParams::NONE) {
-		pars.display = grfx::NoDisplay;
+		case InsetGraphicsParams::MONOCHROME:
+			pars.display = grfx::MonochromeDisplay;
+		break;
 
-	} else if (display == InsetGraphicsParams::MONOCHROME) {
-		pars.display = grfx::MonochromeDisplay;
+		case InsetGraphicsParams::GRAYSCALE: 
+			pars.display = grfx::GrayscaleDisplay;
 
-	} else if (display == InsetGraphicsParams::GRAYSCALE) {
-		pars.display = grfx::GrayscaleDisplay;
+		case InsetGraphicsParams::COLOR:
+			pars.display = grfx::ColorDisplay;
+		break;
 
-	} else if (display == InsetGraphicsParams::COLOR) {
-		pars.display = grfx::ColorDisplay;
+		default: {
+			if (lyxrc.display_graphics == "mono")
+				pars.display = grfx::MonochromeDisplay;
+			else if (lyxrc.display_graphics == "gray")
+				pars.display = grfx::GrayscaleDisplay;
+			else if (lyxrc.display_graphics == "color")
+				pars.display = grfx::ColorDisplay;
+			else
+				pars.display = grfx::NoDisplay;
+		}
 	}
-
+	
 	// Override the above if we're not using a gui
 	if (!lyxrc.use_gui) {
 		pars.display = grfx::NoDisplay;
 	}
-
+	
 	if (lyxsize_type == InsetGraphicsParams::SCALE) {
 		pars.scale = lyxscale;
-
+		
 	} else if (lyxsize_type == InsetGraphicsParams::WH) {
-		if (!lyxwidth.zero())
-			pars.width  = lyxwidth.inPixels(1, 1);
-		if (!lyxheight.zero())
-			pars.height = lyxheight.inPixels(1, 1);
-
-		// inPixels returns a value scaled by lyxrc.zoom.
-		// We want, therefore, to undo this.
-		double const scaling_factor = 100.0 / double(lyxrc.zoom);
-		pars.width  = uint(scaling_factor * pars.width);
-		pars.height = uint(scaling_factor * pars.height);
-
-#if 0
-#warning Angus, could you please adapt this code? (JMarc)
-		if (keepLyXAspectRatio) {
-			// get the imagesize from the cache
-			grfx::Cache & gc = grfx::Cache::get();
-			float const rw = gc.raw_width(filename);
-			float const rh = gc.raw_height(filename);
-			float const ratio = (rw > 0.001) ? rh/rw : 1.0;
-			lyxerr[Debug::GRAPHICS]
-				<< "Value of LyXAspectRatio: "
-				<< ratio << std::endl;
-			if (!lyxwidth.zero() && !lyxheight.zero()) {
-				if (width < height)
-					height = int(ratio * width);
-				else
-					width = int(ratio * height);
-			} else if (lyxwidth.zero())
-				width = int(ratio * height);
-			else if (lyxheight.zero())
-				height = int(ratio * width);
-		}
-#endif
-	}
+		pars.width = lyxwidth.inBP();
+		pars.height = lyxheight.inBP();
+		pars.keepLyXAspectRatio = keepLyXAspectRatio;
+  	}
 	
 	return pars;
 }

@@ -1,3 +1,21 @@
+2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormSendto.C: 
+	* FormParagraph.C: 
+	* FormMinipage.C: 
+	* FormGraphics.C: 
+	* FormForks.C: 
+	* FormCitation.C:
+	* DropDown.C: update to use new getString and getVector
+
+	* xforms_helpers.[Ch]: replace getVectorFromChoice and
+	getVectorFromBrowser by getVector; replace getStringFromInput,
+	getStringFromBrowser and getSelectedStringFromBrowser with
+	getString, which works with input, choice and browser objects
+
+	* Menubar_pimpl.C: 
+	* FormToc.C: update to use new toc.[Ch]
+
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XFormsView.C: move autosave timer to LyXView.C

@@ -205,12 +205,12 @@ void FormGraphics::apply()
 	InsetGraphicsParams & igp = controller().params();
 
 	// the file section
-	igp.filename = getStringFromInput(file_->input_filename);
+	igp.filename = getString(file_->input_filename);
 	igp.subcaption = fl_get_button(file_->check_subcaption);
-	igp.subcaptionText = getStringFromInput(file_->input_subcaption);
+	igp.subcaptionText = getString(file_->input_subcaption);
 	igp.rotate = fl_get_button(file_->check_rotate);
 	igp.rotateAngle =
-		strToDbl(getStringFromInput(file_->input_rotate_angle));
+		strToDbl(getString(file_->input_rotate_angle));
 	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
 		if (igp.rotateAngle < 0.0) {
 			igp.rotateAngle += 360.0;
@@ -252,7 +252,7 @@ void FormGraphics::apply()
 	igp.lyxheight = getLyXLengthFromWidgets(lyxview_->input_lyxheight,
 						lyxview_->choice_lyxheight);
 
-	igp.lyxscale = strToInt(getStringFromInput(lyxview_->input_lyxscale));
+	igp.lyxscale = strToInt(getString(lyxview_->input_lyxscale));
 	igp.keepLyXAspectRatio = fl_get_button(lyxview_->check_lyxaspectratio);
 
 	// the size section
@@ -269,7 +269,7 @@ void FormGraphics::apply()
 	igp.height = getLyXLengthFromWidgets(size_->input_height,
 				   size_->choice_height);
 
-	igp.scale = strToInt(getStringFromInput(size_->input_scale));
+	igp.scale = strToInt(getString(size_->input_scale));
 	igp.keepAspectRatio = fl_get_button(size_->check_aspectratio);
 
 	// the bb section
@@ -277,22 +277,22 @@ void FormGraphics::apply()
 		igp.bb = string();			// don't write anything
 	else {
 		string bb;
-		if (getStringFromInput(bbox_->input_bb_x0).empty())
+		if (getString(bbox_->input_bb_x0).empty())
 			bb = "0 ";
 		else
 			bb = getLengthFromWidgets(bbox_->input_bb_x0,
 						  bbox_->choice_bb_units)+" ";
-		if (getStringFromInput(bbox_->input_bb_y0).empty())
+		if (getString(bbox_->input_bb_y0).empty())
 			bb += "0 ";
 		else
 			bb += (getLengthFromWidgets(bbox_->input_bb_y0,
 						    bbox_->choice_bb_units)+" ");
-		if (getStringFromInput(bbox_->input_bb_x1).empty())
+		if (getString(bbox_->input_bb_x1).empty())
 			bb += "0 ";
 		else
 			bb += (getLengthFromWidgets(bbox_->input_bb_x1,
 						    bbox_->choice_bb_units)+" ");
-		if (getStringFromInput(bbox_->input_bb_y1).empty())
+		if (getString(bbox_->input_bb_y1).empty())
 			bb += "0 ";
 		else
 			bb += (getLengthFromWidgets(bbox_->input_bb_y1,
@@ -302,7 +302,7 @@ void FormGraphics::apply()
 	igp.clip = fl_get_button(bbox_->check_clip);
 
 	// the special section
-	igp.special = getStringFromInput(special_->input_special);
+	igp.special = getString(special_->input_special);
 }
 
 
@@ -499,7 +499,7 @@ namespace {
 
 bool isValid(FL_OBJECT * ob)
 {
-	string const input = getStringFromInput(ob);
+	string const input = getString(ob);
 	return input.empty() || isValidLength(input) || isStrDbl(input);
 }
 
@@ -512,7 +512,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	// the file section
 	if (ob == file_->button_browse) {
 		// Get the filename from the dialog
-		string const in_name = getStringFromInput(file_->input_filename);
+		string const in_name = getString(file_->input_filename);
 		string const out_name = controller().Browse(in_name);
 		lyxerr[Debug::GRAPHICS] << "[FormGraphics]out_name: " << out_name << endl;
 		if (out_name != in_name && !out_name.empty()) {
@@ -572,7 +572,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			updateWidgetsFromLength(lyxview_->input_lyxheight,
 						lyxview_->choice_lyxheight,
 						dummy, defaultUnit);
-			string const scale = getStringFromInput(size_->input_scale);
+			string const scale = getString(size_->input_scale);
 			fl_set_input(lyxview_->input_lyxscale, scale.c_str());
 			if (fl_get_button (size_->radio_asis) == 1) {
 				fl_set_button (lyxview_->radio_lyxasis, 1);
@@ -610,7 +610,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		    ob == bbox_->input_bb_x1 || ob == bbox_->input_bb_y1)) {
 		controller().bbChanged = true;
 	} else if (ob == bbox_->button_getBB) {
-		string const filename = getStringFromInput(file_->input_filename);
+		string const filename = getString(file_->input_filename);
 		if (!filename.empty()) {
 			string bb = controller().readBB(filename);
 			if (!bb.empty()) {
@@ -663,7 +663,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		updateWidgetsFromLength(size_->input_height,
 					size_->choice_height,
 					dummy, defaultUnit);
-		string const scale = getStringFromInput(lyxview_->input_lyxscale);
+		string const scale = getString(lyxview_->input_lyxscale);
 		fl_set_input(size_->input_scale, scale.c_str());
 		if (fl_get_button (lyxview_->radio_lyxasis) == 1) {
 			fl_set_button (size_->radio_asis, 1);

@@ -27,19 +27,21 @@ Params::Params()
 	  width(0),
 	  height(0),
 	  scale(0),
+	  keepLyXAspectRatio(false),
 	  angle(0)
 {}
 
 
 bool operator==(Params const & a, Params const & b)
 {
-	return (a.filename == b.filename &&
-		a.display  == b.display &&
-		a.bb       == b.bb &&
-		a.width    == b.width &&
-		a.height   == b.height &&
-		a.scale    == b.scale &&
-		a.angle    == b.angle);
+	return (a.filename 	     == b.filename &&
+		a.display  	     == b.display &&
+		a.bb       	     == b.bb &&
+		a.width              == b.width &&
+		a.height             == b.height &&
+		a.scale    	     == b.scale &&
+		a.keepLyXAspectRatio == b.keepLyXAspectRatio &&
+		a.angle        	     == b.angle);
 }
 
 

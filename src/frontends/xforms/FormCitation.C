@@ -49,7 +49,7 @@ void fillChoice(FD_citation * dialog, vector<string> vec)
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of the vec...
 	vector<string> const choice_style =
-		getVectorFromChoice(dialog->choice_style);
+		getVector(dialog->choice_style);
 
 	if (vec == choice_style)
 		return;
@@ -485,7 +485,7 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 {
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of the vec...
-	vector<string> browser_keys = getVectorFromBrowser(browser);
+	vector<string> browser_keys = getVector(browser);
 
 	if (browser_keys == keys)
 		return;

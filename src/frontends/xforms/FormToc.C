@@ -14,9 +14,9 @@
 
 #include "FormToc.h"
 #include "xformsBC.h"
+#include "xforms_helpers.h"
 #include "ControlToc.h"
 #include "forms/form_toc.h"
-#include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
 #include "debug.h"
 #include "gettext.h"
@@ -38,6 +38,9 @@ void FormToc::build()
 {
 	dialog_.reset(build_toc(this));
 
+	vector<string> types = controller().getTypes();
+	
+	
 	string const choice =
 		" " + getStringFromVector(controller().getTypes(), " | ") + " ";
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
@@ -59,8 +62,8 @@ ButtonPolicy::SMInput FormToc::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->browser_toc) {
 		unsigned int const choice = fl_get_browser(dialog_->browser_toc);
 
-		if (choice - 1 < toclist_.size() && choice >= 1) {
-			controller().Goto(toclist_[choice - 1].par->id());
+		if (choice - 1 < toc_.size() && choice >= 1) {
+			controller().goTo(toc_[choice - 1]);
 		}
 		return ButtonPolicy::SMI_VALID;
 	}
@@ -84,62 +87,51 @@ void FormToc::updateType()
 
 	// And select the correct one
 	string const type = toc::getType(controller().params().getCmdName());
-
-	fl_set_choice(dialog_->choice_toc_type, 1);
-	for (int i = 1;
-	     i <= fl_get_choice_maxitems(dialog_->choice_toc_type); ++i) {
-		string const choice =
-			fl_get_choice_item_text(dialog_->choice_toc_type, i);
-
-		if (choice == type) {
-			fl_set_choice(dialog_->choice_toc_type, i);
-			break;
-		}
-	}
+	fl_set_choice_text(dialog_->choice_toc_type, type.c_str());
 }
 
 
 void FormToc::updateContents()
 {
-	char const * tmp = fl_get_choice_text(dialog_->choice_toc_type);
-
-	if (!tmp) {
+	string const type = getString(dialog_->choice_toc_type);
+	if (type.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
 				    _("*** No Lists ***"));
+		setEnabled(dialog_->browser_toc, false);
 		return;
 	}
 
-	string const type = frontStrip(strip(tmp));
+	toc::Toc const contents = controller().getContents(type);
 
-	Buffer::SingleList const contents = controller().getContents(type);
+	// Check if all elements are the same.
+	if (toc_ == contents) {
+		return;
+	}
+
+	// List has changed. Update browser
+	toc_ = contents;
 
 	if (contents.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
 				    _("*** No Lists ***"));
-	}
-
-	// Check if all elements are the same.
-	if (toclist_ == contents) {
+		setEnabled(dialog_->browser_toc, false);
 		return;
 	}
-
-	// List has changed. Update browser
-	toclist_ = contents;
 
 	unsigned int const topline =
 		fl_get_browser_topline(dialog_->browser_toc);
 	unsigned int const line = fl_get_browser(dialog_->browser_toc);
 
 	fl_clear_browser(dialog_->browser_toc);
+	setEnabled(dialog_->browser_toc, true);
 
-	Buffer::SingleList::const_iterator cit = toclist_.begin();
-	Buffer::SingleList::const_iterator end = toclist_.end();
-
+	toc::Toc::const_iterator cit = contents.begin();
+	toc::Toc::const_iterator end = contents.end();
 	for (; cit != end; ++cit) {
-		string const line = string(4 * cit->depth, ' ') + cit->str;
-		fl_add_browser_line(dialog_->browser_toc, line.c_str());
+		fl_add_browser_line(dialog_->browser_toc,
+				    cit->asString().c_str());
 	}
 
 	fl_set_browser_topline(dialog_->browser_toc, topline);

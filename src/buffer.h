@@ -280,23 +280,6 @@ public:
 	///
 	std::vector<std::pair<string, string> > const getBibkeyList() const;
 	///
-	struct TocItem {
-		TocItem(Paragraph * p, int d, string const & s)
-			: par(p), depth(d), str(s) {}
-		///
-		Paragraph * par;
-		///
-		int depth;
-		///
-		string str;
-	};
-	///
-	typedef std::vector<TocItem> SingleList;
-	///
-	typedef std::map<string, SingleList> Lists;
-	///
-	Lists const getLists() const;
-	///
 	std::vector<string> const getLabelList();
 
 	/** This will clearly have to change later. Later we can have more
@@ -575,24 +558,6 @@ inline
 void Buffer::setParentName(string const & name)
 {
 	params.parentname = name;
-}
-
-
-///
-inline
-bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b)
-{
-	return a.par == b.par && a.str == b.str;
-	// No need to compare depth.
-}
-
-
-///
-inline
-bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b)
-{
-	return !(a == b);
-	// No need to compare depth.
 }
 
 

@@ -18,79 +18,47 @@
 #endif
 
 #include "ControlToc.h"
-#include "buffer.h"
+#include "toc.h"
 #include "Dialogs.h"
-#include "lyxfunc.h"
-#include "gettext.h"
 #include "BufferView.h"
 
 #include "support/lstrings.h" // tostr
 
 using std::vector;
 
+class Buffer;
 
 ControlToc::ControlToc(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_TOC_INSERT)
 {}
 
 
-void ControlToc::Goto(int const & id) const
+void ControlToc::goTo(toc::TocItem const & item) const
 {
-	string const tmp = tostr(id);
-	lv_.getLyXFunc()->dispatch(LFUN_GOTO_PARAGRAPH, tmp);
+	item.goTo(lv_);
 }
 
 
 vector<string> const ControlToc::getTypes() const
 {
-	vector<string> types;
-
-	Buffer::Lists const tmp = lv_.view()->buffer()->getLists();
-
-	Buffer::Lists::const_iterator cit = tmp.begin();
-	Buffer::Lists::const_iterator end = tmp.end();
-
-	for (; cit != end; ++cit) {
-		types.push_back(cit->first);
-	}
-
-	return types;
+	return toc::getTypes(lv_.view()->buffer());
 }
 
 
-Buffer::SingleList const ControlToc::getContents(string const & type) const
+toc::Toc const ControlToc::getContents(string const & type) const
 {
-	Buffer::SingleList empty_list;
+	toc::Toc empty_list;
 
 	// This shouldn't be possible...
 	if (!lv_.view()->available()) {
 		return empty_list;
 	}
 
-	Buffer::Lists tmp = lv_.view()->buffer()->getLists();
-
-	Buffer::Lists::iterator it = tmp.find(type);
-
+	toc::TocList tmp = toc::getTocList(lv_.view()->buffer());
+	toc::TocList::iterator it = tmp.find(type);
 	if (it == tmp.end()) {
 		return empty_list;
 	}
 
 	return it->second;
 }
-
-
-namespace toc
-{
-
-string const getType(string const & cmdName)
-{
-	string type = cmdName;
-
-	// special case
-	if (cmdName == "tableofcontents")
-		type = "TOC";
-
-	return type;
-}
-
-} // namespace toc

@@ -1,3 +1,14 @@
+2002-07-21  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphicsParams.C: fet the keepLyXAspectRatio run. Move the
+	image relevant part into graphics/GraphicsImgae.C
+
+2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettoc.C (ascii): 
+	* insetfloatlist.C (ascii): change to use the new Toc functions
+	instead of stuff that was in Buffer
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insettext.C (localDispatch): BufferView::Dispatch has been

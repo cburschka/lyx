@@ -19,8 +19,9 @@
 #pragma interface
 #endif
 
+#include <vector>
 #include "ControlCommand.h"
-#include "buffer.h" // Buffer::SingleList
+#include "toc.h"
 
 /** A controller for TOC dialogs.
  */
@@ -31,21 +32,13 @@ public:
 	ControlToc(LyXView &, Dialogs &);
 
 	/// Goto this paragraph id
-	void Goto(int const & id) const;
+	void goTo(toc::TocItem const &) const;
 
-	/// Returns a vector of list types in the document
+	/// Return the list of types available
 	std::vector<string> const getTypes() const;
 
 	/// Given a type, returns the contents
-	Buffer::SingleList const getContents(string const & type) const;
+	toc::Toc const getContents(string const & type) const;
 };
-
-namespace toc
-{
-    /** Given the cmdName of the TOC param, returns the type used
-	by ControlToc::getContents() */
-	string const getType(string const & cmdName);
-
-} // namespace toc
 
 #endif // CONTROLTOC_H

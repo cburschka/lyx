@@ -1,3 +1,9 @@
+2002-07-21  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsImage.C: get the LyXAspectRatio run.
+
+	* GraphicsParams.[Ch]: add bool keepLyXXAspectRatio
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* PreviewLoader.C (startLoading): pass an interger as resolution

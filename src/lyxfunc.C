@@ -601,7 +601,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	}
 
 	if (disable)
-			flag.disabled(true);
+		flag.disabled(true);
 
 	// A few general toggles
 	switch (action) {
@@ -679,13 +679,21 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		}
 	}
 
+	// this one is difficult to get right. As a half-baked
+	// solution, we consider only the first action of the sequence
+	if (action == LFUN_SEQUENCE) {
+		// argument contains ';'-terminated commands
+		const int ac = lyxaction.LookupFunc(token(argument, ';', 0));
+		flag = getStatus(ac); 
+	}
+
 	return flag;
 }
 
 
 void LyXFunc::dispatch(string const & s, bool verbose)
 {
-	int const action = lyxaction.LookupFunc(frontStrip(strip(s)));
+	int const action = lyxaction.LookupFunc(s);
 
 	if (action == LFUN_UNKNOWN_ACTION) {
 		string const msg = string(_("Unknown function ("))

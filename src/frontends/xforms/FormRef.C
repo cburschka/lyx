@@ -97,7 +97,7 @@ void FormRef::update()
 	// Get the available buffers
 	vector<string> const buffers = controller().getBufferList();
 	vector<string> const choice_buffers =
-		getVectorFromChoice(dialog_->choice_buffer);
+		getVector(dialog_->choice_buffer);
 
 	// If different from the current contents of the choice, then update it
 	if (buffers != choice_buffers) {
@@ -124,8 +124,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 	if (fl_get_button(dialog_->check_sort))
 		sort(keys.begin(), keys.end());
 
-	vector<string> browser_keys =
-		getVectorFromBrowser(dialog_->browser_refs);
+	vector<string> browser_keys = getVector(dialog_->browser_refs);
 
 	if (browser_keys == keys)
 		return;

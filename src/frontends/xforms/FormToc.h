@@ -15,7 +15,7 @@
 #endif
 
 #include "FormBase.h"
-#include "buffer.h"
+#include "toc.h"
 
 class ControlToc;
 struct FD_toc;
@@ -42,7 +42,7 @@ private:
 	void updateContents();
 
 	///
-	Buffer::SingleList toclist_;
+	toc::Toc toc_;
 };
 
 #endif // FORMTOC_H

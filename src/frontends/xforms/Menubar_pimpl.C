@@ -16,7 +16,6 @@
 #include "MenuBackend.h"
 #include "LyXAction.h"
 #include "kbmap.h"
-#include "buffer.h"
 #include "Dialogs.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
@@ -25,6 +24,7 @@
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"
+#include "toc.h"
 #include FORMS_H_LOCATION
 
 #include <boost/scoped_ptr.hpp>
@@ -206,15 +206,13 @@ string const fixlabel(string const & str)
 
 void add_toc2(int menu, string const & extra_label,
 	      vector<int> & smn, Window win,
-	      vector<Buffer::TocItem> const & toc_list,
+	      toc::Toc const & toc_list,
 	      size_type from, size_type to, int depth)
 {
 	int shortcut_count = 0;
 	if (to - from <= max_number_of_items) {
 		for (size_type i = from; i < to; ++i) {
-			int const action = lyxaction.
-				getPseudoAction(LFUN_GOTO_PARAGRAPH,
-						tostr(toc_list[i].par->id()));
+			int const action = toc_list[i].action();
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
 			label += fixlabel(toc_list[i].str);
 			label = limit_string_length(label);
@@ -250,9 +248,7 @@ void add_toc2(int menu, string const & extra_label,
 			       toc_list[new_pos].depth > depth)
 				++new_pos;
 
-			int const action = lyxaction.
-				getPseudoAction(LFUN_GOTO_PARAGRAPH,
-						tostr(toc_list[pos].par->id()));
+			int const action = toc_list[pos].action();
 			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
 			label += fixlabel(toc_list[pos].str);
 			label = limit_string_length(label);
@@ -296,9 +292,9 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 {
 	if (!owner_->buffer())
 		return;
-	Buffer::Lists toc_list = owner_->buffer()->getLists();
-	Buffer::Lists::const_iterator cit = toc_list.begin();
-	Buffer::Lists::const_iterator end = toc_list.end();
+	toc::TocList toc_list = toc::getTocList(owner_->buffer());
+	toc::TocList::const_iterator cit = toc_list.begin();
+	toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this elsewhere
 		if (cit->first == "TOC") continue;
@@ -306,8 +302,8 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 		// All the rest is for floats
 		int menu_first_sub = get_new_submenu(smn, win);
 		int menu_current = menu_first_sub;
-		Buffer::SingleList::const_iterator ccit = cit->second.begin();
-		Buffer::SingleList::const_iterator eend = cit->second.end();
+		toc::Toc::const_iterator ccit = cit->second.begin();
+		toc::Toc::const_iterator eend = cit->second.end();
 		size_type count = 0;
 		for (; ccit != eend; ++ccit) {
 			++count;
@@ -319,10 +315,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 				count = 1;
 				menu_current = menu_tmp;
 			}
-			int const action =
-				lyxaction
-				.getPseudoAction(LFUN_GOTO_PARAGRAPH,
-						 tostr(ccit->par->id()));
+			int const action = ccit->action();
 			string label = fixlabel(ccit->str);
 			label = limit_string_length(label);
 			label += "%x" + tostr(action + action_offset);

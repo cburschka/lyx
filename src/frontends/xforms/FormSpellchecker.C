@@ -62,7 +62,7 @@ void FormSpellchecker::update()
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 {
 	if (obj == dialog_->button_replace) {
-		string const tmp = getStringFromInput(dialog_->input);
+		string const tmp = getString(dialog_->input);
 		controller().replace(tmp);
 
 	} else if (obj == dialog_->button_start) {
@@ -88,7 +88,7 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 	} else if (obj == dialog_->browser) {
 		int const line = fl_get_browser(dialog_->browser);
 		string const tmp =
-			getStringFromBrowser(dialog_->browser, line);
+			getString(dialog_->browser, line);
 		if (tmp.empty())
 			return ButtonPolicy::SMI_NOOP;
 

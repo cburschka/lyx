@@ -64,6 +64,7 @@ struct Params
 	unsigned int width;
 	unsigned int height;
 	unsigned int scale;
+	bool keepLyXAspectRatio;
 
 	/// Rotation angle.
 	int angle;

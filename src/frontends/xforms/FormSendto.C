@@ -69,7 +69,7 @@ void FormSendto::update()
 	}
 
 	vector<string> const browser_keys =
-		getVectorFromBrowser(dialog_->browser_formats);
+		getVector(dialog_->browser_formats);
 
 	if (browser_keys == keys)
 		return;
@@ -92,7 +92,7 @@ ButtonPolicy::SMInput FormSendto::input(FL_OBJECT *, long)
 	if (line < 1 || line > fl_get_browser_maxline(dialog_->browser_formats))
 		return ButtonPolicy::SMI_INVALID;
 
-	string cmd = getStringFromInput(dialog_->input_command);
+	string cmd = getString(dialog_->input_command);
 	cmd = strip(frontStrip(cmd));
 	if (cmd.empty())
 		return ButtonPolicy::SMI_INVALID;
@@ -107,7 +107,7 @@ void FormSendto::apply()
 	if (line < 1 || line > fl_get_browser_maxline(dialog_->browser_formats))
 		return;
 
-	string const cmd = getStringFromInput(dialog_->input_command);
+	string const cmd = getString(dialog_->input_command);
 
 	controller().setFormat(all_formats_[line-1]);
 	controller().setCommand(cmd);

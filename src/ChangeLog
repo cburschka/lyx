@@ -1,3 +1,17 @@
+2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* toc.[Ch]: new files, containing helper functions to handle table
+	of contents
+
+	* lyxfunc.C (dispatch): no need to remove spaces around command
+	given as a string
+	(getStatus): handle LFUN_SEQUENCE by returning the status of the
+	first command of the sequence; it is not very clever, but I do not
+	have a better idea, actually
+
+	* LyXAction.C (LookupFunc): make sure to remove space at the
+	beginning and end of the command
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C (getMenubar): new method: return the menubar of

@@ -178,8 +178,8 @@ bool containsOnly(char const *, string const &);
     Doesn't modify the original string. Similar to strtok.
     Example:
     \code
-    "a;bc;d".token(';', 1) == "bc";
-    "a;bc;d".token(';', 2) == "d";
+    token("a;bc;d", ';', 1) == "bc";
+    token("a;bc;d", ';', 2) == "d";
     \endcode
 */
 string const token(string const & a, char delim, int n);
@@ -190,8 +190,8 @@ string const token(string const & a, char delim, int n);
     failure.
     Example:
     \code
-    "a;bc;d".tokenPos(';', "bc") == 1;
-    "a;bc;d".token(';', "d") == 2;
+    tokenPos("a;bc;d", ';', "bc") == 1;
+    tokenPos("a;bc;d", ';', "d") == 2;
     \endcode
 */
 int tokenPos(string const & a, char delim, string const & tok);

@@ -535,11 +535,12 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 // Returns an action tag from a string.
 int LyXAction::LookupFunc(string const & func) const
 {
-	if (func.empty()) return LFUN_NOACTION;
+	string const func2 = frontStrip(strip(func));
+	if (func2.empty()) return LFUN_NOACTION;
 
 	// split action and arg
 	string actstr;
-	string const argstr = split(func, actstr, ' ');
+	string const argstr = split(func2, actstr, ' ');
 	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n';
 	lyxerr[Debug::ACTION] << "Arg   : " << argstr << '\n';
 

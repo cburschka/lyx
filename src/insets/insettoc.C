@@ -10,8 +10,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "debug.h"
-#include "buffer.h"
-
+#include "toc.h"
 
 using std::vector;
 using std::ostream;
@@ -52,20 +51,7 @@ int InsetTOC::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	string type;
-	string const cmdname = getCmdName();
-	if (cmdname == "tableofcontents")
-		type = "TOC";
-	Buffer::Lists const toc_list = buffer->getLists();
-	Buffer::Lists::const_iterator cit =
-		toc_list.find(type);
-	if (cit != toc_list.end()) {
-		Buffer::SingleList::const_iterator ccit = cit->second.begin();
-		Buffer::SingleList::const_iterator end = cit->second.end();
-		for (; ccit != end; ++ccit)
-			os << string(4 * ccit->depth, ' ')
-			   << ccit->str << "\n";
-	}
+	toc::asciiTocList(toc::getType(getCmdName()), buffer, os);
 
 	os << "\n";
 	return 0;

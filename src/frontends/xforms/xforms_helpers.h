@@ -37,23 +37,12 @@ void setEnabled(FL_OBJECT *, bool enable);
 string formatted(string const &label, int w,
 		 int = 12 /*FL_NORMAL_SIZE*/, int = 0 /*FL_NORMAL_STYLE*/);
 
-/// Given an fl_choice, create a vector of its entries
-std::vector<string> const getVectorFromChoice(FL_OBJECT *);
+/// Given an fl_choice or an fl_browser, create a vector of its entries
+std::vector<string> const getVector(FL_OBJECT *);
 
-/// Given an fl_browser, create a vector of its entries
-std::vector<string> const getVectorFromBrowser(FL_OBJECT *);
-
-/// Given an fl_input, return its contents.
-string const getStringFromInput(FL_OBJECT * ob);
-
-/** Given an fl_browser, return the contents of line
-    (xforms numbering convention; starts at 1).
-*/
-string const getStringFromBrowser(FL_OBJECT * ob, int line);
-/** Given an fl_browser, return the contents of the currently
-    highlighted line.
-*/
-string const getSelectedStringFromBrowser(FL_OBJECT * ob);
+/// Given an fl_input, an fl_choice or an fl_browser, return an entry
+/** \c num is the position for the string, where -1 means "current item" */
+string const getString(FL_OBJECT * ob, int num = -1);
 
 /// Given input and choice widgets, create a string such as "1cm"
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);

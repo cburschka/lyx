@@ -106,7 +106,7 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 	// disallow senseless data
 	// warnings if input is senseless
 	if (ob == dialog_->input_width) {
-		string const input = getStringFromInput(dialog_->input_width);
+		string const input = getString(dialog_->input_width);
 		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
 			postWarning(_("Invalid Length!"));

@@ -171,7 +171,7 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 	// If a vspace kind is "Length" but there's no text in
 	// the input field, reset the kind to "None".
-	string const input = strip(getStringFromInput(input_length));
+	string const input = strip(getString(input_length));
 	if (input.empty())
 		fl_set_choice(choice_type, 1);
 }
@@ -235,7 +235,7 @@ void FormParagraph::apply()
 
 	/* label width */
 	string const labelwidthstring =
-		getStringFromInput(dialog_->input_labelwidth);
+		getString(dialog_->input_labelwidth);
 	controller().params().labelWidthString(labelwidthstring);
 
 	/* indendation */
@@ -260,7 +260,7 @@ void FormParagraph::apply()
 		break;
 	case 5:
 		linespacing = Spacing::Other;
-		other = getStringFromInput(dialog_->input_linespacing);
+		other = getString(dialog_->input_linespacing);
 		break;
 	}
 
@@ -447,7 +447,7 @@ void synchronizeSpaceWidgets(FL_OBJECT * choice_type,
 		setEnabled(input_length, true);
 		setEnabled(choice_length, true);
 
-		string const length = getStringFromInput(input_length);
+		string const length = getString(input_length);
 
 		if (strip(length).empty()) {
 			bool const metric = lyxrc.default_papersize > 3;
@@ -467,7 +467,7 @@ bool validSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 	if (fl_get_choice(choice_type) != 7)
 		return true;
 
-	string const input = getStringFromInput(input_length);
+	string const input = getString(input_length);
 	return (input.empty() ||
 		isValidGlueLength(input) ||
 		isStrDbl(input));
@@ -516,7 +516,7 @@ ButtonPolicy::SMInput FormParagraph::input(FL_OBJECT * ob, long)
 	}
 
 	double const spacing =
-		strToDbl(getStringFromInput(dialog_->input_linespacing));
+		strToDbl(getString(dialog_->input_linespacing));
 
 	if (choice_spacing == 5 && int(spacing) == 0)
 		valid = false;

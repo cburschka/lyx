@@ -75,7 +75,7 @@ void FormForks::update()
 		return;
 
 	string const current_pid_str =
-		getSelectedStringFromBrowser(dialog_->browser_kill);
+		getString(dialog_->browser_kill);
 	pid_t const current_pid = strToInt(current_pid_str);
 
 	vector<pid_t> pids = controller().getPIDs();
@@ -101,7 +101,7 @@ void FormForks::update()
 	for (int i = 1; i <= fl_get_browser_maxline(dialog_->browser_kill);
 	     ++i) {
 		string const pid_str =
-			getStringFromBrowser(dialog_->browser_kill, i);
+			getString(dialog_->browser_kill, i);
 		pid_t const pid = strToInt(pid_str);
 		vector<pid_t>::const_iterator it =
 			find(pids.begin(), pids.end(), pid);
@@ -136,7 +136,7 @@ void FormForks::apply()
 {
 	// Get the list of all processes to kill.
 	vector<string> const kill_vec =
-		getVectorFromBrowser(dialog_->browser_kill);
+		getVector(dialog_->browser_kill);
 
 	if (kill_vec.empty())
 		return;
@@ -145,7 +145,7 @@ void FormForks::apply()
 	for (int i = 1; i <= fl_get_browser_maxline(dialog_->browser_children);
 	     ++i) {
 		string const selection =
-			getStringFromBrowser(dialog_->browser_children, i);
+			getString(dialog_->browser_children, i);
 		string pid_str;
 		split(selection, pid_str, '\t');
 
@@ -209,12 +209,12 @@ ButtonPolicy::SMInput FormForks::input_browser_children()
 	//    be added to this list if so desired.
 
 	string const selection =
-		getSelectedStringFromBrowser(dialog_->browser_children);
+		getString(dialog_->browser_children);
 	string pid_str;
 	split(selection, pid_str, '\t');
 
 	vector<string> const kill_vec =
-		getVectorFromBrowser(dialog_->browser_kill);
+		getVector(dialog_->browser_kill);
 
 	vector<string>::const_iterator it =
 		find(kill_vec.begin(), kill_vec.end(), pid_str);
@@ -268,11 +268,11 @@ ButtonPolicy::SMInput FormForks::input_browser_kill()
 	// 3. Disable the add button.
 
 	string const pid_str =
-		getSelectedStringFromBrowser(dialog_->browser_kill);
+		getString(dialog_->browser_kill);
 
 	// Find this string in the list of all child processes
 	vector<string> const child_vec =
-		getVectorFromBrowser(dialog_->browser_children);
+		getVector(dialog_->browser_children);
 
 	vector<string>::const_iterator it =
 		find_if(child_vec.begin(), child_vec.end(), FindPID(pid_str));
@@ -295,7 +295,7 @@ namespace {
 
 vector<string> const getPIDvector(FL_OBJECT * ob)
 {
-	vector<string> vec = getVectorFromBrowser(ob);
+	vector<string> vec = getVector(ob);
 	if (vec.empty())
 		return vec;
 
@@ -366,13 +366,12 @@ ButtonPolicy::SMInput FormForks::input_button_add()
 
 	// 3. Deactivate the "add" button.
 
-	string const selection =
-		getSelectedStringFromBrowser(dialog_->browser_children);
+	string const selection = getString(dialog_->browser_children);
 	string pid_str;
 	split(selection, pid_str, '\t');
 
 	vector<string> const kill_vec =
-		getVectorFromBrowser(dialog_->browser_kill);
+		getVector(dialog_->browser_kill);
 
 	vector<string>::const_iterator it =
 		find(kill_vec.begin(), kill_vec.end(), pid_str);
