@@ -1,3 +1,8 @@
+2004-12-15  Angus Leeming  <leeming@lyx.org>
+
+	* tempname.C: #include fcntl.h and sys/stat.h if creating a temp
+	file using mktemp and open.
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* os.h, os_os2.C, os_unix.C, os_win32.C:

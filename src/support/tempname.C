@@ -22,6 +22,11 @@
 #include <cstdlib>
 #include <unistd.h>
 
+#if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
+# include <fcntl.h>
+# include <sys/stat.h>
+#endif
+
 using boost::scoped_array;
 
 using std::string;
