@@ -47,8 +47,6 @@ libinsets_la_SOURCES = \
 	insetexternal.h \
 	insetfloat.h \
 	insetfloat.C \
-	insetwrap.h \
-	insetwrap.C \
 	insetfloatlist.C \
 	insetfloatlist.h \
 	insetfoot.C \
@@ -97,6 +95,8 @@ libinsets_la_SOURCES = \
 	insettoc.h \
 	inseturl.C \
 	inseturl.h \
+	insetwrap.h \
+	insetwrap.C \
 	updatableinset.C \
 	updatableinset.h
 #	insetlist.C \
