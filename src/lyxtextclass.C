@@ -107,7 +107,8 @@ enum TextClassTags {
 	TC_PROVIDESMAKEIDX,
 	TC_PROVIDESURL,
 	TC_LEFTMARGIN,
-	TC_RIGHTMARGIN
+	TC_RIGHTMARGIN,
+	TC_FLOAT
 };
 
 
@@ -119,6 +120,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "columns",         TC_COLUMNS },
 		{ "defaultfont",     TC_DEFAULTFONT },
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
+		{ "float",           TC_FLOAT },
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "maxcounter",      TC_MAXCOUNTER },
@@ -146,7 +148,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 
-	LyXLex lexrc(textClassTags, TC_RIGHTMARGIN);
+	LyXLex lexrc(textClassTags, TC_FLOAT);
 	bool error = false;
 
 	lexrc.setFile(filename);
@@ -322,6 +324,9 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			if (lexrc.next())
 				rightmargin_ = lexrc.getString();
 			break;
+		case TC_FLOAT:
+			readFloat(lexrc);
+			break;
 		}
 	}
 
@@ -491,6 +496,106 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 			break;
 		}
 	}
+	lexrc.popTable();
+}
+
+
+enum FloatTags {
+	FT_TYPE = 1,
+	FT_NAME,
+	FT_PLACEMENT,
+	FT_EXT,
+	FT_WITHIN,
+	FT_STYLE,
+	FT_LISTNAME,
+	FT_BUILTIN,
+	FT_END
+};
+
+void LyXTextClass::readFloat(LyXLex & lexrc)
+{
+	keyword_item floatTags[] = {
+		{ "end", FT_END },
+		{ "extension", FT_EXT },
+		{ "guiname", FT_NAME },
+		{ "latexbuiltin", FT_BUILTIN },
+		{ "listname", FT_LISTNAME },
+		{ "numberwithin", FT_WITHIN },
+		{ "placement", FT_PLACEMENT },
+		{ "style", FT_STYLE },
+		{ "type", FT_TYPE }
+	};
+
+	lexrc.pushTable(floatTags, FT_END);
+
+	string type;
+	string placement;
+	string ext;
+	string within;
+	string style;
+	string name;
+	string listname;
+	bool builtin = false;
+
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue;
+		default: break;
+		}
+		switch (static_cast<FloatTags>(le)) {
+		case FT_TYPE:
+			lexrc.next();
+			type = lexrc.getString();
+			// Here we could check if this type is already defined
+			// and modify it with the rest of the vars instead.
+			break;
+		case FT_NAME:
+			lexrc.next();
+			name = lexrc.getString();
+			break;
+		case FT_PLACEMENT:
+			lexrc.next();
+			placement = lexrc.getString();
+			break;
+		case FT_EXT:
+			lexrc.next();
+			ext = lexrc.getString();
+			break;
+		case FT_WITHIN:
+			lexrc.next();
+			within = lexrc.getString();
+			if (within == "none")
+				within.erase();
+			break;
+		case FT_STYLE:
+			lexrc.next();
+			style = lexrc.getString();
+			break;
+		case FT_LISTNAME:
+			lexrc.next();
+			listname = lexrc.getString();
+			break;
+		case FT_BUILTIN:
+			lexrc.next();
+			builtin = lexrc.getBool();
+			break;
+		case FT_END:
+			getout = true;
+			break;
+		}
+	}
+
+	// Here if have a full float if getout == true
+	if (getout) {
+		Floating newfloat(type, placement, ext, within,
+				  style, name, listname, builtin);
+		floatlist_.newFloat(newfloat);
+	}
+
 	lexrc.popTable();
 }
 

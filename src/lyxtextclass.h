@@ -54,6 +54,8 @@ public:
 	///
 	void readClassOptions(LyXLex &);
 	///
+	void readFloat(LyXLex &);
+	///
 	bool hasLayout(string const & name) const;
 
 	///

@@ -1,3 +1,9 @@
+2002-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* layouts/stdclass.inc: include stdfloats.h
+
+	* layouts/stdfloats.inc: new file
+
 2002-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2ppm.sh: test expects integer arguments.
@@ -26,13 +32,13 @@
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* images/math/: add AMS nrel
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* images/: add math sub/super script
 
 	* images/math/: add \brace, \vec etc.
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* Makefile.am: install mathed icons
@@ -40,11 +46,11 @@
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* images/math/: add all icons except AMS nrel
- 
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* images/math/: add most of the normal XPMs
- 
+
 2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* lyx2lyx/lyx2lyx: add new format number "221"
@@ -52,7 +58,7 @@
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* images/find-replace.xpm: add
- 
+
 2002-08-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.m4: fix epsi->eps converter
@@ -81,7 +87,7 @@
 2002-08-15  John Levon  <levon@movementarian.org>
 
 	* scripts/convertDefault.sh: use /bin/sh not /bin/bash
- 
+
 2002-08-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* doc/LaTeXConfig.lyx.in: add description of cl2emult class
@@ -101,20 +107,20 @@
 2002-08-08  Herbert Voss  <voss@perce.de>
 
 	* ui/default.ui: put gather into math menu
-		
+
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* images/layout_LaTeX.xpm: remove - obsolete
- 
+
 2002-08-05  John Levon  <levon@movementarian.org>
 
 	* images/dialog-tabular-insert.xpm: remove unneeded xpm
- 
+
 2002-08-05  John Levon  <levon@movementarian.org>
 
 	* ui/default.ui:
 	* bind/xemacs.bind: back to tabular-insert
- 
+
 2002-08-03  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyx2lyx/lyxconvert_218.py (remove_oldert): Few fixes.
@@ -126,7 +132,7 @@
 	* lyx2lyx/lyxconvert_218.py: Convert ERT and figinsets.
 
 2002-07-30  André Pönitz <poenitz@gmx.net>
-	
+
 	* configure.m4:
 	* ui/default.ui: make math-extern a bit more visible in Edit->Math
 
@@ -153,13 +159,13 @@
 
 	* scripts/convertDefault.sh: defines a converter which is used
 	when no userdefined was found
-		
+
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ui/default.ui: cleanup after change of Menu syntax. the
 	foo_nobuffer menus are gone
 
-	* bind/sv_menus.bind: 
+	* bind/sv_menus.bind:
 	* bind/sciword.bind: remove some cruft
 
 	* tex/iletter.cls:
@@ -176,10 +182,10 @@
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2ppm.sh: clean-up. Get it to work with
-	scary_eqns.lyx. 
+	scary_eqns.lyx.
 
 2002-07-17  André Pönitz <poenitz@gmx.net>
-	
+
 	* configure.m4: fix typo in last change
 	* symbols: add \hbar
 
@@ -194,9 +200,9 @@
 
 2002-07-16  Andrew Zabolotny  <zap@cobra.ru>
 
-	* bind/emacs.bind: 
-	* bind/xemacs.bind: 
-	* bind/sciword.bind: 
+	* bind/emacs.bind:
+	* bind/xemacs.bind:
+	* bind/sciword.bind:
 	* bind/cua.bind: include greekkeys and cyrkeys bindings
 
 	* bind/greekkeys.bind:
@@ -221,15 +227,15 @@
 	* lyxpreview2ppm.sh: use the pnmraw device in preference to pnm.
 
 2002-07-12  André Pönitz <poenitz@gmx.net>
-	
+
 	* ui/default.ui: add menu for font changes
 	* symbols: add textt
 
 2002-07-10  Andrew Zabolotny  <zap@cobra.ru>
 
-	* bind/emacs.bind: 
-	* bind/xemacs.bind: 
-	* bind/sciword.bind: 
+	* bind/emacs.bind:
+	* bind/xemacs.bind:
+	* bind/sciword.bind:
 	* bind/cua.bind: better support for selection from numeric keypad
 
 	* kbd/cp1251.cdef:
@@ -248,7 +254,7 @@
 	as it's not portable apparently.
 
 2002-07-09  André Pönitz <poenitz@gmx.net>
-	
+
 	* symbols: use it to define insets, too
 	* configure.m4:
 	* symbols: wasy symbols added
@@ -259,7 +265,7 @@
 	left and right if so desired.
 
 2002-07-08  André Pönitz <poenitz@gmx.net>
-	
+
 	* symbols: more stuff missing from the Porto changes
 
 2002-07-05  Angus Leeming  <leeming@lyx.org>
@@ -270,7 +276,7 @@
 2002-06-19 Herbert Voss  <voss@perce.de>
 
 	* configure.m4: add converters for epsi and (x)fig
-	
+
 2002-07-03  Vitaly Lipatov  <LAV@VL3143.spb.edu>
 
 	* languages: add support for belarusian and kazakh
@@ -278,7 +284,7 @@
 	* encodings: add pt154
 
 2002-06-27  André Pönitz <poenitz@gmx.net>
-	
+
 	* configure.m4: add support for lyxpreview "format"
 
 	* scripts/lyxpreview2xpm: add file
@@ -295,23 +301,23 @@
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/default.ui: fix ellipses
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/default.ui: remove Index Entry of last word
 
 	* ui/old-default.ui: remove
- 
+
 2002-06-19  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* examples/mathed.lyx: Remove obsolete part.
 
 2002-06-17 Herbert Voss  <voss@perce.de>
- 
- 	* configure.m4: install only those converters which are different
- 	to convert, because this is taken as the default. SO we can get
- 	rid of all problems when user do not have installed the right
- 	converters.
+
+	* configure.m4: install only those converters which are different
+	to convert, because this is taken as the default. SO we can get
+	rid of all problems when user do not have installed the right
+	converters.
 
 2002-06-16  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
@@ -336,7 +342,7 @@
 2002-05-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* templates/IEEEtran.lyx: update to 1.2.0 format from Michael
-	Schmitt 
+	Schmitt
 
 	* reLyX/reLyX.in: honor variable LYX_DIR_13x
 
@@ -352,7 +358,7 @@
 2002-05-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* images/buffer-new.xpm: icon from Vitaly Lipatov
- 
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* CREDITS: kill mention of KDE

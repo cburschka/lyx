@@ -1,3 +1,15 @@
+2002-09-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxtextclass.C (TextClassTags): add TC_FLOAT 
+	(Read): add float->TC_FLOAT to textclassTags
+	(Read): and handle it in the switch
+	(readFloat): new function
+
+	* FloatList.C (FloatList): comment out the hardcoded float
+	definitions.
+
+	* lyxlayout.h: ws change.
+
 2002-08-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (readFile): Look for lyx2lyx in LYXDIR/lyx2lyx/
@@ -34,7 +46,7 @@
 
 	* BufferView_pimpl.C (dispatch): do not continue when
 	  no buffer
- 
+
 2002-08-28  André Pönitz <poenitz@gmx.net>
 
 	* commandtags.h: new LFUN_MOUSE_DOUBLE, LFUN_MOUSE_TRIPLE
@@ -48,23 +60,23 @@
 
 	* lyxrc.[Ch]: declare display_graphics as grfx::DisplayType and use
 	grfx::displayTranslator.find(foo); include graphics/GraphicsTypes.h.
-	
+
 	* lyxrc.C: use more "if (...) { } else { }" style (John's advice).
 
 	* lyx_main.C: call once the setDisplayTranslator(); is that okay here?
-	
+
 2002-08-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* factory.C (createInset): use LyXTextClass::floats
 
-	* MenuBackend.C (expandFloatListInsert): 
-	(expandFloatInsert): 
-	(expandToc): 
+	* MenuBackend.C (expandFloatListInsert):
+	(expandFloatInsert):
+	(expandToc):
 
-	* text2.C (setCounter): 
+	* text2.C (setCounter):
 
-	* LaTeXFeatures.C (useFloat): 
-	(getFloatDefinitions): 
+	* LaTeXFeatures.C (useFloat):
+	(getFloatDefinitions):
 
 	* BufferView_pimpl.C (dispatch): use LyXTextClass::floats()
 
@@ -85,7 +97,7 @@
 2002-08-25  John Levon  <levon@movementarian.org>
 
 	* LyXAction.C: fix margin note description
- 
+
 2002-08-24  John Levon  <levon@movementarian.org>
 
 	* buffer.C:
@@ -95,15 +107,15 @@
 	* undo_funcs.C: cleanups
 
 	* lyxfunc.C: disable CUT/COPY when no selection
- 
+
 2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
- 
- 	* lyxlength.[Ch]: use better (three letters) mnemonics for percentage units
- 	in "enum UNIT"; e.g. PTW for Percent of TextWidth
- 	
- 	* lyxrc.C: graphics display is now monochrome|grayscale|color|none.
- 	Add backward compatibility to "mono", "gray" and "no".
- 
+
+	* lyxlength.[Ch]: use better (three letters) mnemonics for percentage units
+	in "enum UNIT"; e.g. PTW for Percent of TextWidth
+
+	* lyxrc.C: graphics display is now monochrome|grayscale|color|none.
+	Add backward compatibility to "mono", "gray" and "no".
+
 2002-08-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (readFile): Always run lyx2lyx if file_format < LYX_FORMAT
@@ -140,7 +152,7 @@
 
 2002-08-22  Martin Vermeer <martin.vermeer@hut.fi>
 
-	* text2.C (setCounter):  fixed enumeration mis-count as reported by 
+	* text2.C (setCounter):  fixed enumeration mis-count as reported by
 	Dr. Richard Hawkins.
 
 2002-08-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>

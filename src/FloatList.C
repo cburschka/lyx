@@ -26,6 +26,7 @@
 
 FloatList::FloatList()
 {
+#if 0
 	// Insert the latex builtin float-types
 	// (these will later be read from a layout file)
 
@@ -36,7 +37,7 @@ FloatList::FloatList()
 
 	// figure
 	Floating figure("figure", "tbp", "lof",
-			"", "plain", N_("Figure"), 
+			"", "plain", N_("Figure"),
 			N_("List of Figures"), true);
 	newFloat(figure);
 
@@ -47,6 +48,7 @@ FloatList::FloatList()
 			   "", "ruled", N_("Algorithm"),
 			   N_("List of Algorithms"));
 	newFloat(algorithm);
+#endif
 }
 
 
@@ -103,4 +105,3 @@ FloatList::const_iterator FloatList::operator[](string const & t) const
 {
 	return list.find(t);
 }
-
