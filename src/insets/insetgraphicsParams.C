@@ -39,26 +39,6 @@ bool translatorsSet = false;
 Translator< InsetGraphicsParams::DisplayType, string >
 displayTranslator(InsetGraphicsParams::DEFAULT, "default");
 
-// this is only compatibility stuff for the first 1.2 version
-// it is obselete until 1.3
-LyXLength convertResizeValue(string const token, LyXLex & lex) {
-    lex.next();
-    string value = lex.getString();	// "width" or "height"
-    lex.next();				// anyway not interesting
-    value = lex.getString();
-    if (token == "default")
-	return (LyXLength(value+"pt"));
-    else if (token == "cm")
-	return (LyXLength(value+"cm"));
-    else if (token == "inch")
-	return (LyXLength(value+"in"));
-    else if (token == "percentOfColumn")
-	return (LyXLength(value+"col%"));
-    else if (token == "percentOfPage")
-	return (LyXLength(value+"page%"));
-    else return LyXLength("0pt");	// nothing with figinset
-}
-
 } // namespace anon
 
 
@@ -308,26 +288,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
-	// now the compytibility stuff for "old" 1.2.0 files which uses
-	// the first try of the new graphic inset. Can be deleted, when
-	// 1.3 comes out
-	} else if (token == "widthResize") {
-		if (lex.next()) {
-		    string const token = lex.getString();
-		    if (token == "scale") {
-			lex.next();
-			scale = lex.getInteger();
-			size_type = SCALE;
-		    }
-		    else {
-			width = convertResizeValue(token, lex);
-			size_type = WH;
-		    }
-		}
-	} else if (token == "heightResize") {
-		if (lex.next())
-			height = convertResizeValue(lex.getString(), lex);
-	// end compytibility stuff
+	} else if (token == "special") {
+		lex.eatLine();
+		special = lex.getString();
 	} else {	// If it's none of the above, its not ours.
 		return false;
 	}
