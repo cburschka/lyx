@@ -1,3 +1,7 @@
+2004-08-23  José Matos  <jamatos@lyx.org>
+
+	* bufferparams.C (readToken): fix reading of the author field.
+
 2004-08-20  José Matos  <jamatos@lyx.org>
 
 	* lyxrc.C: remove support/translator.h inclusion since it is not used.

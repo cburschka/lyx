@@ -391,7 +391,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			}
 		}
 	} else if (token == "\\author") {
-		lex.next();
+		lex.eatLine();
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
