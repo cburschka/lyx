@@ -104,6 +104,7 @@ void InsetText::saveLyXTextState(LyXText * t) const
 	}
 }
 
+
 void InsetText::restoreLyXTextState(BufferView * bv, LyXText * t) const
 {
 	if (sstate.lpar) {
@@ -2533,9 +2534,9 @@ Paragraph * InsetText::getFirstParagraph(int i) const
 
 LyXCursor const & InsetText::cursor(BufferView * bv) const
 {
-		if (the_locking_inset)
-				return the_locking_inset->cursor(bv);
-		return getLyXText(bv)->cursor;
+	if (the_locking_inset)
+		return the_locking_inset->cursor(bv);
+	return getLyXText(bv)->cursor;
 }
 
 

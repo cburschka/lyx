@@ -261,7 +261,7 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 bool InsetFormula::insetAllowed(Inset::Code code) const
 {
 	return
-		(code == Inset::LABEL_CODE)
+		   code == Inset::LABEL_CODE
 		|| code == Inset::REF_CODE
 		|| code == Inset::ERT_CODE;
 }
@@ -330,3 +330,4 @@ string const InsetFormula::PreviewImpl::latexString() const
 	parent().par_->write(wi);
 	return STRCONV(ls.str());
 }
+

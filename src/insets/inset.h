@@ -234,7 +234,7 @@ public:
 	///
 	void parOwner(Paragraph * par) { par_owner_ = par; }
 	///
-	Paragraph * parOwner() const {return par_owner_; }
+	Paragraph * parOwner() const { return par_owner_; }
 	///
 	void setBackgroundColor(LColor::color);
 	///
@@ -262,19 +262,12 @@ public:
 
 	/// try to get a inset pointer from it's id if we have
 	/// an inset to give back!
-	virtual Inset * getInsetFromID(int /* id */) const {
-		return 0;
-	}
+	virtual Inset * getInsetFromID(int /*id*/) const { return 0; }
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!
-	virtual Paragraph * firstParagraph() const {
-		return 0;
-	}
-
+	virtual Paragraph * firstParagraph() const { return 0; }
 	///
-	virtual Paragraph * getFirstParagraph(int /*num*/) const {
-		return 0;
-	}
+	virtual Paragraph * getFirstParagraph(int /*num*/) const { return 0; }
 
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
@@ -495,9 +488,7 @@ public:
 	///
 	virtual void selectSelectedWord(BufferView *) {}
 	///
-	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
-		return;
-	}
+	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
 
 	/// find the next change in the inset
 	virtual bool nextChange(BufferView * bv, lyx::pos_type & length);
