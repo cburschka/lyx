@@ -33,7 +33,7 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)
 		pair<int, QLPopupMenu *> menu =
 			createMenu(owner_->menuBar(), &(*m), this, true);
 		name_map_[m->submenuname()] = menu.second;
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 		/* The qt/mac menu code has a very silly hack that
 		   moves some menu entries that it recognizes by name
 		   (ex: "Preferences...") to the "LyX" menu. This
