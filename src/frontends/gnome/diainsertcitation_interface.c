@@ -42,6 +42,7 @@ create_DiaInsertCitation (void)
   GtkWidget *search_text;
   GtkWidget *combo_entry1;
   GtkWidget *button_search;
+  GtkWidget *button_regexp;
   GtkWidget *vbox5;
   GtkWidget *alignment2;
   GtkWidget *label16;
@@ -235,6 +236,13 @@ create_DiaInsertCitation (void)
   gtk_widget_show (button_search);
   gtk_box_pack_start (GTK_BOX (hbox3), button_search, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (button_search), 2);
+
+  button_regexp = gtk_check_button_new_with_label (_("Use Regular Expression"));
+  gtk_widget_ref (button_regexp);
+  gtk_object_set_data_full (GTK_OBJECT (DiaInsertCitation), "button_regexp", button_regexp,
+                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_widget_show (button_regexp);
+  gtk_box_pack_start (GTK_BOX (hbox3), button_regexp, FALSE, FALSE, 0);
 
   vbox5 = gtk_vbox_new (FALSE, 1);
   gtk_widget_ref (vbox5);

@@ -25,6 +25,7 @@
 #include "buffer.h"
 #include "lyxfunc.h"
 #include "support/filetools.h"
+#include "support/LRegex.h"
 
 extern "C" {
 #include "diainsertcitation_interface.h"
@@ -62,6 +63,9 @@ using SigC::bind;
 
 #define CONF_COLUMN			"column"
 #define CONF_COLUMN_DEFAULT		"=50"
+
+#define CONF_REGEXP			"regexp"
+#define CONF_REGEXP_DEFAULT		"=0"
 
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
@@ -209,6 +213,8 @@ void FormCitation::show()
       button_down_ = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_down") ) );
       button_search_ = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_search") ) );
 
+      button_regexp_ = Gtk::wrap( GTK_CHECK_BUTTON( lookup_widget(pd, "button_regexp") ) );
+
       paned_info_ = Gtk::wrap( GTK_PANED( lookup_widget(pd, "vpaned_info") ) );
       paned_key_ = Gtk::wrap( GTK_PANED( lookup_widget(pd, "hpaned_key") ) );
       box_keys_ =  Gtk::wrap( GTK_BOX( lookup_widget(pd, "vbox_keys") ) );
@@ -291,6 +297,10 @@ void FormCitation::show()
 	  w = path + "/" + CONF_COLUMN + "_" + tostr(i) + CONF_COLUMN_DEFAULT;
 	  clist_bib_->column(i).set_width( gnome_config_get_int(w.c_str()) );
 	}
+
+      // restoring regexp setting
+      w = path + "/" + CONF_REGEXP + CONF_REGEXP_DEFAULT;
+      button_regexp_->set_active( (gnome_config_get_int(w.c_str()) > 0) );
       
       // ready to go...
       if (!dialog_->is_visible()) dialog_->show_all();
@@ -499,6 +509,9 @@ void FormCitation::free()
 	  gnome_config_set_int(w.c_str(), clist_bib_->get_column_width(i));
 	}
 
+      w = path + "/" + CONF_REGEXP;
+      gnome_config_set_int(w.c_str(), button_regexp_->get_active());
+
       gnome_config_sync();
 
       // cleaning up
@@ -546,8 +559,45 @@ void FormCitation::sortBibList(gint col)
   clist_bib_->sort();
 }
 
-// looking for entries which contain all the words specified in search_text entry
 void FormCitation::search()
+{
+  if (button_regexp_->get_active()) searchReg();
+  else searchSimple();
+}
+
+// looking for entries which match regexp
+void FormCitation::searchReg()
+{
+  string tmp, rexptxt( search_text_->get_entry()->get_text() );
+  rexptxt = frontStrip( strip( rexptxt ) );
+  
+  LRegex reg(rexptxt);
+
+  // populating clist_bib_
+  clist_bib_->rows().clear();
+
+  clist_bib_->freeze();
+
+  int i, sz;
+  bool additem;
+  for ( i = 0, sz = bibkeys.size(); i < sz; ++i )
+    {
+      string data = bibkeys[i] + bibkeysInfo[i];
+
+      if (rexptxt.empty()) additem = true;
+      else additem = (reg.exec(data).size() > 0);
+	     
+      if ( additem ) addItemToBibList(i);
+    }
+
+  clist_bib_->sort();
+  clist_bib_->thaw();
+  // clist_bib_: done
+  updateButtons();
+}
+
+// looking for entries which contain all the words specified in search_text entry
+void FormCitation::searchSimple()
 {
   vector<string> searchwords;
   string tmp, stext( search_text_->get_entry()->get_text() );

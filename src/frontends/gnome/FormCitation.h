@@ -28,6 +28,7 @@
 #include <gtk--/button.h>
 #include <gtk--/paned.h>
 #include <gtk--/box.h>
+#include <gtk--/checkbutton.h>
 
 /** This class provides an Gnome implementation of the FormCitation Dialog.
  */
@@ -74,6 +75,8 @@ private:
   void moveCitationDown();
   /// searches for entries
   void search();
+  void searchReg();
+  void searchSimple();
 
   /// add item to the list 
   void addItemToBibList(int i);
@@ -113,7 +116,8 @@ private:
   Gtk::Button * button_up_;
   Gtk::Button * button_down_;
   Gtk::Button * button_search_;
-
+  Gtk::CheckButton * button_regexp_;
+  
   Gtk::CList * clist_selected_;
   Gtk::CList * clist_bib_;
   

@@ -1,3 +1,10 @@
+2000-09-15  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormCitation.h
+	* src/frontends/gnome/diainsertcitation_interface.c
+	* src/frontends/gnome/dialogs/diainsertcitation.glade: adds
+	regexp support to FormCitation [Gnome].
+            
 2000-09-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* acconfig.h
