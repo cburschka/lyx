@@ -80,9 +80,9 @@ public:
 	///
 	void gotoError();
 	///
-	void cursorPrevious();
+	void cursorPrevious(LyXText *);
 	///
-	void cursorNext();
+	void cursorNext(LyXText *);
 	/// 
 	bool available() const;
 	///

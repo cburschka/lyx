@@ -244,11 +244,11 @@ public:
     ///
     void AppendRow(int cell);
     ///
-    void DeleteRow(int cell);
+    void DeleteRow(int row);
     ///
     void AppendColumn(int cell);
     ///
-    void DeleteColumn(int cell);
+    void DeleteColumn(int column);
     ///
     bool IsFirstCellInRow(int cell) const;
     ///
@@ -279,6 +279,19 @@ public:
     int TeXCellPostamble(std::ostream &, int cell) const;
     ///
     int Latex(Buffer const *, std::ostream &, bool, bool) const;
+    ///
+    // helper function for Latex returns number of newlines
+    ///
+    int AsciiTopHLine(std::ostream &, int row,
+		      vector<unsigned int> const &) const;
+    ///
+    int AsciiBottomHLine(std::ostream &, int row,
+			 vector<unsigned int> const &) const;
+    ///
+    int AsciiPrintCell(Buffer const *, std::ostream &, int cell, int row,
+		       int column, vector<unsigned int> const &) const;
+    ///
+    int Ascii(Buffer const *, std::ostream &) const;
     ///
     int DocBookEndOfCell(std::ostream &, int cell, int & depth) const;
 #if 0

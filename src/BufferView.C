@@ -197,15 +197,15 @@ void BufferView::workAreaExpose()
 }
 
 
-void BufferView::cursorPrevious()
+void BufferView::cursorPrevious(LyXText * text)
 {
-	pimpl_->cursorPrevious();
+	pimpl_->cursorPrevious(text);
 }
 
 
-void BufferView::cursorNext()
+void BufferView::cursorNext(LyXText * text)
 {
-	pimpl_->cursorNext();
+	pimpl_->cursorNext(text);
 }
 
 

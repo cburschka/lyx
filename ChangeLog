@@ -1,3 +1,30 @@
+2000-10-09  Juergen Vigna  <jug@sad.it>
+
+	* src/text.C (GetRow): small fix.
+
+	* src/BufferView_pimpl.C (cursorPrevious): 
+	(cursorNext): added LyXText parameter to function.
+
+	* src/insets/insettabular.C (LocalDispatch): activate cell inset on
+	keypress depending on cursor position.
+
+2000-10-06  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (Ascii): finally call right ascii-function.
+	(copySelection): redone this function and also copy ascii representa-
+	tion to clipboard.
+
+	* src/tabular.C (Ascii): 
+	(AsciiPrintCell): 
+	(AsciiBottomHLine): 
+	(AsciiTopHLine): 
+	(print_n_chars): new functions to realize the ascii export of tabulars.
+
+2000-10-05  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs): small fix
+	if we don't have a buffer.
+
 2000-10-10  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.[Ch] (hide): Fix the problem

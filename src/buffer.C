@@ -1574,7 +1574,8 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !footnoteflag && !noparbreak){
-			buffer << "\n\n";
+			if (linelen > 0)
+				buffer << "\n\n";
 			for(char j = 0; j < depth; ++j)
 				buffer << "  ";
 			currlinelen = depth * 2;
@@ -1584,11 +1585,17 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			case 5: /* Description */
 				break;
 			case 6: /* Abstract */
-				buffer << "Abstract\n\n";
+				if (linelen > 0)
+					buffer << "Abstract\n\n";
+				else
+					buffer << "Abstract: ";
 				break;
 			case 7: /* Bibliography */
 				if (!ref_printed) {
-					buffer << "References\n\n";
+					if (linelen > 0)
+						buffer << "References\n\n";
+					else
+						buffer << "References: ";
 					ref_printed = true;
 				}
 				break;
@@ -1629,9 +1636,11 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			}
 			break;
 		case LyXParagraph::META_NEWLINE:
-			buffer << "\n";
-			for(char j = 0; j < depth; ++j)
-				buffer << "  ";
+			if (linelen > 0) {
+				buffer << "\n";
+				for(char j = 0; j < depth; ++j)
+					buffer << "  ";
+			}
 			currlinelen = depth * 2;
 			if (ltype_depth > depth) {
 				for(char j = ltype_depth;

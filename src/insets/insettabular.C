@@ -857,7 +857,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	    result = UNDISPATCHED;
 	break;
     case LFUN_CUT:
-	if (!copySelection())
+	if (!copySelection(bv))
 	    break;
 	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
 #ifndef NEW_INSETS
@@ -875,7 +875,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	if (!hasSelection())
 	    break;
 	bv->text->FinishUndo();
-	copySelection();
+	copySelection(bv);
 	break;
     case LFUN_PASTE:
 	if (!hasPasteBuffer())
@@ -898,7 +898,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	result = UNDISPATCHED;
 	if (the_locking_inset)
 	    break;
-	if (ActivateCellInset(bv)) {
+	if (ActivateCellInset(bv, 0, 0, 0, !cellstart(cursor.pos()))) {
 	    result=the_locking_inset->LocalDispatch(bv, action, arg);
 	    if (result == DISPATCHED_NOUPDATE)
 		return result;
@@ -933,7 +933,7 @@ int InsetTabular::Latex(Buffer const * buf, ostream & os,
 int InsetTabular::Ascii(Buffer const * buf, ostream & os, int) const
 {
     // This should be changed to a real ascii export
-    return tabular->Latex(buf, os, false, false);
+    return tabular->Ascii(buf, os);
 }
 
 
@@ -1061,7 +1061,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
 #warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
-#if 0
+#if 1
     for(; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +
 	    tabular->GetAdditionalWidth(actcell - 1));
@@ -1904,7 +1904,7 @@ LyXFunc::func_status InsetTabular::getStatus(string const & what) const
 }
 
 
-bool InsetTabular::copySelection()
+bool InsetTabular::copySelection(BufferView * bv)
 {
     if (!hasSelection())
 	return false;
@@ -1933,25 +1933,25 @@ bool InsetTabular::copySelection()
     }
     int rows = sel_row_end - sel_row_start + 1;
 
-    paste_tabular = new LyXTabular(this, rows, columns);
-    
-    if (sel_cell_start > sel_cell_end) {
-	    //int tmp = sel_cell_start;
-	    //sel_cell_start = sel_cell_end;
-	    //sel_cell_end = tmp;
-	swap(sel_cell_start, sel_cell_end);
-    }
-    for(int i = sel_cell_start, j = 0; i <= sel_cell_end; ++i, ++j) {
-	while(paste_tabular->row_of_cell(j) <
-	      (tabular->row_of_cell(i)-sel_row_start)) {
-	    ++j;
-	}
-	while(paste_tabular->row_of_cell(j) >
-	      (tabular->row_of_cell(i)-sel_row_start)) {
-	    ++i;
-	}
-	*(paste_tabular->GetCellInset(j)) = *(tabular->GetCellInset(i));
-    }
+    paste_tabular = new LyXTabular(this, *tabular); // rows, columns);
+    int i;
+    for(i=0; i < sel_row_start; ++i)
+	paste_tabular->DeleteRow(0);
+    while(paste_tabular->rows() > rows)
+	paste_tabular->DeleteRow(rows);
+    paste_tabular->SetTopLine(0, true, true);
+    paste_tabular->SetBottomLine(paste_tabular->GetFirstCellInRow(rows-1),
+				 true, true);
+    for(i=0; i < sel_col_start; ++i)
+	paste_tabular->DeleteColumn(0);
+    while(paste_tabular->columns() > columns)
+	paste_tabular->DeleteColumn(columns);
+    paste_tabular->SetLeftLine(0, true, true);
+    paste_tabular->SetRightLine(paste_tabular->GetLastCellInRow(0),true, true);
+
+    ostringstream sstr;
+    paste_tabular->Ascii(bv->buffer(), sstr);
+    bv->stuffClipboard(sstr.str());
     return true;
 }
 

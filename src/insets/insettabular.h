@@ -224,7 +224,7 @@ private:
     ///
     bool hasPasteBuffer() const;
     ///
-    bool copySelection();
+    bool copySelection(BufferView *);
     ///
     bool pasteSelection(BufferView *);
     ///

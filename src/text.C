@@ -4031,6 +4031,9 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
 Row * LyXText::GetRow(LyXParagraph * par,
 		      LyXParagraph::size_type pos, int & y) const
 {
+	if (!firstrow)
+		return 0;
+
 	Row * tmprow = firstrow;
 	y = 0;
 	

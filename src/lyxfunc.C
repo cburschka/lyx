@@ -687,7 +687,6 @@ string const LyXFunc::Dispatch(int ac,
         }
 
 	if (owner->view()->available() && owner->view()->theLockingInset()) {
-		text = owner->view()->theLockingInset()->getLyXText(owner->view());
 		UpdatableInset::RESULT result;
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (keyseq.length >= -1)))
@@ -771,6 +770,9 @@ string const LyXFunc::Dispatch(int ac,
 				}
 			}
 		}
+		if (owner->view()->theLockingInset())
+			text = owner->view()->theLockingInset()->
+				getLyXText(owner->view());
 	}
 
 	if (!text)
@@ -1644,22 +1646,28 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PRIOR:
-		if(!owner->view()->text->mark_set)
-			owner->view()->beforeChange();
+		if(!text->mark_set)
+		    owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
-		owner->view()->cursorPrevious();
+		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		if (text->inset_owner)
+		    owner->view()->updateInset(text->inset_owner, false);
+		else
+		    moveCursorUpdate(false);
 		owner->showState();
 		break;
 		
 	case LFUN_NEXT:
-		if(!owner->view()->text->mark_set)
+		if(!text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
-		owner->view()->cursorNext();
+		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		if (text->inset_owner)
+		    owner->view()->updateInset(text->inset_owner, false);
+		else
+		    moveCursorUpdate(false);
 		owner->showState();
 		break;
 		
@@ -1802,17 +1810,23 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PRIORSEL:
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->cursorPrevious();
+		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		if (text->inset_owner)
+		    owner->view()->updateInset(text->inset_owner, false);
+		else
+		    moveCursorUpdate(true);
 		owner->showState();
 		break;
 		
 	case LFUN_NEXTSEL:
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->cursorNext();
+		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		if (text->inset_owner)
+		    owner->view()->updateInset(text->inset_owner, false);
+		else
+		    moveCursorUpdate(true);
 		owner->showState();
 		break;
 		

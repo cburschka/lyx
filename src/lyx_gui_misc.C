@@ -151,7 +151,7 @@ void updateAllVisibleBufferRelatedDialogs()
 	if (fd_latex_log->LaTeXLog->visible) {
 		LatexLogUpdate(0,0);
 	}
-	if (current_view->buffer()->isReadonly()) {
+	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
 		if (fd_form_character->form_character->visible) {
 			fl_hide_form(fd_form_character->form_character);

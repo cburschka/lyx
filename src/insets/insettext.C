@@ -315,10 +315,19 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     x += TEXT_TO_INSET_OFFSET;
     int y = 0;
     Row * row = TEXT(bv)->GetRowNearY(y);
-    y += baseline - row->ascent_of_text();
+    int fa = row->ascent_of_text();
+    y += baseline - fa;
+    while (row != 0) {
+	if (((y+row->height()) > 0) && (y < pain.paperHeight()))
+	    break;
+	y += row->height();
+	row = row->next();
+    }
+    TEXT(bv)->first = y - top_baseline + fa;
     if (cleared || !locked || (need_update == FULL)) {
 	while (row != 0) {
-	    TEXT(bv)->GetVisibleRow(bv, int(y), int(x), row, y, cleared);
+	    if (((y+row->height()) > 0) && (y < pain.paperHeight()))
+		TEXT(bv)->GetVisibleRow(bv, int(y), int(x), row, y, cleared);
 	    y += row->height();
 	    row = row->next();
 	}
@@ -466,7 +475,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     old_par = 0;
     if (!checkAndActivateInset(bv, x, y, button))
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-					   y+TEXT(bv)->first+insetAscent);
+					   y+insetAscent);
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
     ShowInsetCursor(bv);
@@ -614,7 +623,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    paste_internally = true;
 	}
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-					   y+TEXT(bv)->first+insetAscent);
+					   y+insetAscent);
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	bv->owner()->setLayout(cpar(bv)->GetLayout());
@@ -669,7 +678,7 @@ void InsetText::InsetMotionNotify(BufferView * bv, int x, int y, int state)
     if (!no_selection) {
 	HideInsetCursor(bv);
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-					   y+TEXT(bv)->first+insetAscent);
+					   y+insetAscent);
 	TEXT(bv)->SetSelection();
 	if (TEXT(bv)->toggle_cursor.par()!=TEXT(bv)->toggle_end_cursor.par() ||
 	    TEXT(bv)->toggle_cursor.pos()!=TEXT(bv)->toggle_end_cursor.pos())
@@ -1057,14 +1066,13 @@ int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
     LyXParagraph * p = par;
     unsigned int lines = 0;
     
+    string tmp;
     while (p) {
-	string const tmp = buf->asciiParagraph(p, linelen);
+	tmp = buf->asciiParagraph(p, linelen);
 	lines += countChar(tmp, '\n');
 	os << tmp;
 	p = p->next;
     }
-    os << "\n";
-    ++lines;
     return lines;
 }
 
