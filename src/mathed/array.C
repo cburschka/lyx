@@ -24,6 +24,7 @@ MathedArray::MathedArray()
 	: bf_(1, '\0'), last_(0)
 {}
 
+
 MathedArray::~MathedArray()
 {
 	// deep destruction
@@ -55,8 +56,7 @@ MathedArray::MathedArray(MathedArray const & array)
 
 	// deep copy
 	// we'll not yet get exeption safety
-	MathedIter it;
-	it.SetData(this);
+	MathedIter it(this);
 	while (it.OK()) {
 		if (it.IsInset()) {
 			MathedInset * inset = it.GetInset();

@@ -109,8 +109,6 @@ public:
 	///
 	void setNumCols(int n) { ncols = n; }
 	///
-	void SetData(MathedArray * a);
-	///
 	MathedArray * GetData() const;
 	/// Copy every object 
 	MathedArray * Copy();

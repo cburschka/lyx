@@ -35,8 +35,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 	  nc_(mt->nc_), nr_(0), ws_(mt->nc_),
 	  v_align_(mt->v_align_), h_align_(mt->h_align_)
 {
-	MathedIter it;
-	it.SetData(mt->GetData());
+	MathedIter it(mt->GetData());
 	array = it.Copy();
 	if (mt->row_ != 0) {
 		MathedRowSt * ro = 0;

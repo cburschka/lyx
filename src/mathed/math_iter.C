@@ -43,11 +43,6 @@ MathedIter::MathedIter()
 {}
 
 
-void MathedIter::SetData(MathedArray * a)
-{
-	array = a; Reset();
-}
-
 
 MathedArray * MathedIter::GetData() const
 {
@@ -403,11 +398,11 @@ MathedArray * MathedIter::Copy(int pos1, int pos2)
 		return 0;
 	}
 
-	ipush();
-	MathedArray * t = array;
-	MathedArray * a;
-
 	if (pos1 > 0 || pos2 <= array->last()) {
+		ipush();
+		MathedArray * t = array;
+		MathedArray * a;
+
 		short fc = 0;
 		if (pos1 > 0 && (*array)[pos1] > ' ') {
 			for (int p = pos1; p >= 0; --p) {
@@ -436,25 +431,26 @@ MathedArray * MathedIter::Copy(int pos1, int pos2)
 		}
 		a->last(dx);
 		(*a)[dx] = '\0';
-	} else
-		a = new MathedArray(*array);
 
-	// this should be unnecessary and leak in some (most?) cases since
-	// a = new MathedArray(*array);  makes already a deep copy...
-	// I guess it'll go soon... (Andre')
+		array = a;
+		Reset();
 
-	SetData(a);
-	while (OK()) {
-		if (IsInset()) {
-			MathedInset * inset = GetInset();
-			inset = inset->Clone();
-			array->raw_pointer_insert(inset, pos + 1, sizeof(inset));
+		while (OK()) {
+			if (IsInset()) {
+				MathedInset * inset = GetInset();
+				inset = inset->Clone();
+				array->raw_pointer_insert(inset, pos + 1, sizeof(inset));
+			}
+			Next();
 		}
-		Next();
+		array = t;
+		ipop();
+
+		return a;
 	}
-	array = t;
-	ipop();
-	return a;
+
+	// otherwise: full copy
+	return new MathedArray(*array);
 }
 
 

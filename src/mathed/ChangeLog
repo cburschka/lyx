@@ -8,6 +8,9 @@
 
 	* math_iter.[Ch]: seperate Copy() from Copy(int, int)
 
+	* math_iter.[Ch]: remove SetData
+	  several files: subsequent changes
+
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 
 	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and ARRAY_STEP

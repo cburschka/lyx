@@ -49,9 +49,7 @@ void MathMacroTable::addTemplate(MathMacroTemplate * m)
 
 void MathMacroTable::builtinMacros()
 {
-	MathedIter iter;
 	MathParInset * inset;// *arg;
-	MathedArray * array2;
     
 	built = true;
     
@@ -60,48 +58,56 @@ void MathMacroTable::builtinMacros()
 	// This macro doesn't have arguments
 	MathMacroTemplate * m = new MathMacroTemplate("notin");  // this leaks
 	addTemplate(m);
-	MathedArray * array = new MathedArray; // this leaks
-	iter.SetData(array);
-	iter.insertInset(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not),
-			 LM_TC_INSET); // this leaks
-	m->setData(array);
+	{
+		MathedArray * array = new MathedArray; // this leaks
+		MathedIter iter(array);
+		iter.insertInset(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not),
+				 LM_TC_INSET); // this leaks
+		m->setData(array);
+	}
     
 	// These two are only while we are still with LyX 2.x
 	m = new MathMacroTemplate("emptyset"); // this leaks
-	addTemplate(m);
-	array = new MathedArray; // this leaks
-	iter.SetData(array);
-	iter.insertInset(new MathAccentInset('O', LM_TC_RM, LM_not),
-			 LM_TC_INSET); // this leaks
-	m->setData(array);
+	addTemplate(m); 
+	{
+		MathedArray * array = new MathedArray; // this leaks
+		MathedIter iter(array);
+		iter.insertInset(new MathAccentInset('O', LM_TC_RM, LM_not),
+				 LM_TC_INSET); // this leaks
+		m->setData(array);
+	}
     
 	m = new MathMacroTemplate("perp"); // this leaks
 	addTemplate(m);
-	array = new MathedArray; // this leaks
-	iter.SetData(array);
-	iter.insert(LM_bot, LM_TC_BOP);
-	m->setData(array);
+	{
+		MathedArray * array = new MathedArray; // this leaks
+		MathedIter iter(array);
+		iter.insert(LM_bot, LM_TC_BOP);
+		m->setData(array);
+	}
 
 	// binom has two arguments
 	m = new MathMacroTemplate("binom", 2);
 	addTemplate(m);
-	array = new MathedArray; 
-	m->setData(array);
-	iter.SetData(array);
-	inset = new MathDelimInset('(', ')');
-	iter.insertInset(inset, LM_TC_ACTIVE_INSET);
-	array = new MathedArray; 
-	iter.SetData(array);
-	MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
-	iter.insertInset(frac, LM_TC_ACTIVE_INSET);
-	inset->setData(array);
-	array = new MathedArray;
-	array2 = new MathedArray;  
-	iter.SetData(array);
-	iter.insertInset(m->getMacroPar(0), LM_TC_INSET);
-	iter.SetData(array2);
-	iter.insertInset(m->getMacroPar(1), LM_TC_INSET);
-	frac->SetData(array, array2);
+	{
+		MathedArray * array = new MathedArray; 
+		m->setData(array);
+		MathedIter iter(array);
+		inset = new MathDelimInset('(', ')');
+		iter.insertInset(inset, LM_TC_ACTIVE_INSET);
+		array = new MathedArray; 
+		MathedIter iter2(array);
+		MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
+		iter2.insertInset(frac, LM_TC_ACTIVE_INSET);
+		inset->setData(array);
+		array = new MathedArray;
+		MathedArray * array2 = new MathedArray;  
+		MathedIter iter3(array);
+		iter3.insertInset(m->getMacroPar(0), LM_TC_INSET);
+		MathedIter iter4(array2);
+		iter4.insertInset(m->getMacroPar(1), LM_TC_INSET);
+		frac->SetData(array, array2);
+	}
 
 /*
   // Cases has 1 argument
