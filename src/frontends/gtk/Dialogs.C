@@ -81,7 +81,7 @@
 #include "GSearch.h"
 #include "FormSendto.h"
 #include "FormTabular.h"
-#include "FormTexinfo.h"
+#include "GTexinfo.h"
 #include "FormShowFile.h"
 #include "GSpellchecker.h"
 #include "GTableCreate.h"
@@ -494,8 +494,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GTableCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "texinfo") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlTexinfo(*dialog));
-		dialog->setView(new FormTexinfo(*dialog));
+		dialog->setView(new GTexinfo(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {

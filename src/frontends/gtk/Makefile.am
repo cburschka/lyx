@@ -54,6 +54,8 @@ libgtk_la_SOURCES = \
 	GSpellchecker.h \
 	GTableCreate.C \
 	GTableCreate.h \
+	GTexinfo.C \
+	GTexinfo.h \
 	GText.C \
 	GText.h \
 	GTimeout.C \
@@ -124,7 +126,6 @@ xforms_objects = \
 	../xforms/forms_gettext.lo \
 	../xforms/FormShowFile.lo \
 	../xforms/FormTabular.lo \
-	../xforms/FormTexinfo.lo \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
 	../xforms/FormVSpace.lo \
