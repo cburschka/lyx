@@ -167,9 +167,9 @@ public:
 	void simpleDocBookOnePar(std::ostream &, string & extra,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
-
-	///
-	int runChktex();
+        ///
+	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
+				  Paragraph::depth_type depth);
 
 	///
 	void makeLinuxDocFile(string const & filename,
@@ -177,9 +177,20 @@ public:
 	///
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
+	/// Open SGML/XML tag.
+        void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
+			 string const & latexname) const;
+        /// Closes SGML/XML tag.
+        void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
+			  string const & latexname) const;
+	///
+	void sgmlError(Paragraph * par, int pos,
+		       string const & message) const;
 
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
+	///
+	int runChktex();
 	///
 	bool isLyxClean() const;
 	///
@@ -316,19 +327,6 @@ public:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 private:
-	/// Open SGML/XML tag.
-        void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
-			 string const & latexname) const;
-        /// Closes SGML/XML tag.
-        void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
-			  string const & latexname) const;
-	///
-	void linuxDocError(Paragraph * par, int pos,
-			   string const & message);
-        ///
-	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
-				  Paragraph::depth_type depth);
-
 	/// is save needed
 	mutable bool lyx_clean;
 	

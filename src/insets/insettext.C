@@ -59,6 +59,7 @@ using std::endl;
 using std::min;
 using std::max;
 using std::make_pair;
+using std::vector;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 extern bool math_insert_greek(BufferView *, char);
@@ -1364,12 +1365,184 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 {
 	Paragraph * p = par;
 	unsigned int lines = 0;
-	int desc = 0;
+
+	vector<string> environment_stack(10);
+	vector<string> environment_inner(10);
 	
-	string tmp;
+	int const command_depth = 0;
+	string item_name;
+	
+	Paragraph::depth_type depth = 0; // paragraph depth
+
 	while (p) {
-		buf->simpleDocBookOnePar(os, tmp, p, desc, 0);
+		string sgmlparam;
+		int desc_on = 0; // description mode
+
+		LyXLayout const & style =
+			textclasslist.Style(buf->params.textclass,
+					    p->layout);
+
+		// environment tag closing
+		for (; depth > p->params().depth(); --depth) {
+			if (environment_inner[depth] != "!-- --") {
+				item_name = "listitem";
+				buf->sgmlCloseTag(os, command_depth + depth,
+					     item_name);
+				if (environment_inner[depth] == "varlistentry")
+					buf->sgmlCloseTag(os, depth+command_depth,
+						     environment_inner[depth]);
+			}
+			buf->sgmlCloseTag(os, depth + command_depth,
+				     environment_stack[depth]);
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
+		}
+
+		if (depth == p->params().depth()
+		   && environment_stack[depth] != style.latexname()
+		   && !environment_stack[depth].empty()) {
+			if (environment_inner[depth] != "!-- --") {
+				item_name= "listitem";
+				buf->sgmlCloseTag(os, command_depth+depth,
+						  item_name);
+				if (environment_inner[depth] == "varlistentry")
+					buf->sgmlCloseTag(os,
+							  depth + command_depth,
+							  environment_inner[depth]);
+			}
+			
+			buf->sgmlCloseTag(os, depth + command_depth,
+					  environment_stack[depth]);
+			
+			environment_stack[depth].erase();
+			environment_inner[depth].erase();
+                }
+
+		// Write opening SGML tags.
+		switch (style.latextype) {
+		case LATEX_PARAGRAPH:
+			buf->sgmlOpenTag(os, depth + command_depth,
+					 style.latexname());
+			break;
+
+		case LATEX_COMMAND:
+			buf->sgmlError(p, 0,
+				       _("Error : LatexType Command not allowed here.\n"));
+			return -1;
+			break;
+
+		case LATEX_ENVIRONMENT:
+		case LATEX_ITEM_ENVIRONMENT:
+			if (depth < p->params().depth()) {
+				depth = p->params().depth();
+				environment_stack[depth].erase();
+			}
+
+			if (environment_stack[depth] != style.latexname()) {
+				if(environment_stack.size() == depth + 1) {
+					environment_stack.push_back("!-- --");
+					environment_inner.push_back("!-- --");
+				}
+				environment_stack[depth] = style.latexname();
+				environment_inner[depth] = "!-- --";
+				buf->sgmlOpenTag(os, depth + command_depth,
+						 environment_stack[depth]);
+			} else {
+				if (environment_inner[depth] != "!-- --") {
+					item_name= "listitem";
+					buf->sgmlCloseTag(os,
+							  command_depth + depth,
+							  item_name);
+					if (environment_inner[depth] == "varlistentry")
+						buf->sgmlCloseTag(os,
+								  depth + command_depth,
+								  environment_inner[depth]);
+				}
+			}
+			
+			if (style.latextype == LATEX_ENVIRONMENT) {
+				if (!style.latexparam().empty()) {
+					if(style.latexparam() == "CDATA")
+						os << "<![CDATA[";
+					else
+						buf->sgmlOpenTag(os, depth + command_depth,
+								 style.latexparam());
+				}
+				break;
+			}
+
+			desc_on = (style.labeltype == LABEL_MANUAL);
+
+			if (desc_on)
+				environment_inner[depth]= "varlistentry";
+			else
+				environment_inner[depth]= "listitem";
+
+			buf->sgmlOpenTag(os, depth + 1 + command_depth,
+					 environment_inner[depth]);
+
+			if (desc_on) {
+				item_name= "term";
+				buf->sgmlOpenTag(os, depth + 1 + command_depth,
+						 item_name);
+			} else {
+				item_name= "para";
+				buf->sgmlOpenTag(os, depth + 1 + command_depth,
+						 item_name);
+			}
+			break;
+		default:
+			buf->sgmlOpenTag(os, depth + command_depth,
+					 style.latexname());
+			break;
+		}
+
+		string extra_par;
+		buf->simpleDocBookOnePar(os, extra_par, p, desc_on,
+					 depth + 1 + command_depth);
 		p = p->next();
+
+		string end_tag;
+		// write closing SGML tags
+		switch (style.latextype) {
+		case LATEX_ENVIRONMENT:
+			if (!style.latexparam().empty()) {
+				if(style.latexparam() == "CDATA")
+					os << "]]>";
+				else
+					buf->sgmlCloseTag(os, depth + command_depth,
+							  style.latexparam());
+			}
+			break;
+		case LATEX_ITEM_ENVIRONMENT:
+			if (desc_on == 1) break;
+			end_tag= "para";
+			buf->sgmlCloseTag(os, depth + 1 + command_depth, end_tag);
+			break;
+		case LATEX_PARAGRAPH:
+			buf->sgmlCloseTag(os, depth + command_depth, style.latexname());
+			break;
+		default:
+			buf->sgmlCloseTag(os, depth + command_depth, style.latexname());
+			break;
+		}
+	}
+
+	// Close open tags
+	for (int d = depth; d >= 0; --d) {
+		if (!environment_stack[depth].empty()) {
+			if (environment_inner[depth] != "!-- --") {
+				item_name = "listitem";
+				buf->sgmlCloseTag(os, command_depth + depth,
+						  item_name);
+                               if (environment_inner[depth] == "varlistentry")
+				       buf->sgmlCloseTag(os, depth + command_depth,
+							 environment_inner[depth]);
+			}
+			
+			buf->sgmlCloseTag(os, depth + command_depth,
+					  environment_stack[depth]);
+		}
 	}
 	
 	return lines;

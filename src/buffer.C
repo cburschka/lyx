@@ -2509,8 +2509,8 @@ void Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type depth,
 			 string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
-		os << "<!-- " << depth << " -->" << "<" << latexname << ">";
-	//os << string(depth, ' ') << "<" << latexname << ">\n";
+		//os << "<!-- " << depth << " -->" << "<" << latexname << ">";
+		os << string(depth, ' ') << "<" << latexname << ">\n";
 }
 
 
@@ -2518,8 +2518,8 @@ void Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type depth,
 			  string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
-		os << "<!-- " << depth << " -->" << "</" << latexname << ">\n";
-	//os << string(depth, ' ') << "</" << latexname << ">\n";
+		//os << "<!-- " << depth << " -->" << "</" << latexname << ">\n";
+		os << string(depth, ' ') << "</" << latexname << ">\n";
 }
 
 
@@ -2616,9 +2616,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_COMMAND:
 			if (depth!= 0)
-				linuxDocError(par, 0,
-					      _("Error : Wrong depth for"
-						" LatexType Command.\n"));
+				sgmlError(par, 0,
+					  _("Error : Wrong depth for"
+					    " LatexType Command.\n"));
 
 			if (!environment_stack[depth].empty()){
 				sgmlCloseTag(ofs, depth,
@@ -2953,8 +2953,8 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 
 // Print an error message.
-void Buffer::linuxDocError(Paragraph * par, int pos,
-			   string const & message) 
+void Buffer::sgmlError(Paragraph * par, int pos,
+		       string const & message) const
 {
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
@@ -3080,9 +3080,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				linuxDocError(par, 0,
-					      _("Error : Wrong depth for "
-						"LatexType Command.\n"));
+				sgmlError(par, 0,
+					  _("Error : Wrong depth for "
+					    "LatexType Command.\n"));
 			
 			command_name = style.latexname();
 			
