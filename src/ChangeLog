@@ -1,3 +1,8 @@
+2001-12-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* tabular_funcs.C: add LIstream.h, move write_attribute to..
+	* tabular_funcs.h: here and include iosfwd
+
 2001-12-20  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fixed crash when undo_cursor not

@@ -79,10 +79,12 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	}
 }
 
+
 string const MenuItem::label() const 
 { 
 	return token(label_, '|', 0); 
 }
+
 
 string const MenuItem::shortcut() const
 { 
@@ -245,6 +247,7 @@ void Menu::checkShortcuts() const
 		}
 	}
 }
+
 
 namespace {
 

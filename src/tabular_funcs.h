@@ -22,11 +22,16 @@
 #include "layout.h"
 #include "tabular.h"
 
+#include <iosfwd>
 
 // Perfect case for a template... (Lgb)
 // or perhaps not...
 template<class T>
-string const write_attribute(string const & name, T const & t);
+string const write_attribute(string const & name, T const & t)
+{
+	string str = " " + name + "=\"" + tostr(t) + "\"";
+	return str;
+}
 template<>
 string const write_attribute(string const & name, bool const & b);
 template<>
@@ -40,17 +45,17 @@ extern bool string2type(string const str, LyXAlignment & num);
 extern bool string2type(string const str, LyXTabular::VAlignment & num);
 extern bool string2type(string const str, LyXTabular::BoxType & num);
 extern bool string2type(string const str, bool & num);
-extern bool getTokenValue(string const & str, const char * token, string &ret);
-extern bool getTokenValue(string const & str, const char * token, int & num);
-extern bool getTokenValue(string const & str, const char * token,
+extern bool getTokenValue(string const & str, char const * token, string &ret);
+extern bool getTokenValue(string const & str, char const * token, int & num);
+extern bool getTokenValue(string const & str, char const * token,
                           LyXAlignment & num);
-extern bool getTokenValue(string const & str, const char * token,
+extern bool getTokenValue(string const & str, char const * token,
                           LyXTabular::VAlignment & num);
-extern bool getTokenValue(string const & str, const char * token,
+extern bool getTokenValue(string const & str, char const * token,
                           LyXTabular::BoxType & num);
-extern bool getTokenValue(string const & str, const char * token, bool & flag);
-extern bool getTokenValue(string const & str, const char * token,
+extern bool getTokenValue(string const & str, char const * token, bool & flag);
+extern bool getTokenValue(string const & str, char const * token,
                           LyXLength & len);
-extern void l_getline(istream & is, string & str);
+extern void l_getline(std::istream & is, string & str);
 
 #endif

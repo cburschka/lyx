@@ -17,17 +17,14 @@
 #endif
 
 #include "tabular_funcs.h"
-#include "support/lstrings.h"
 
+#include "support/lstrings.h"
+#include "support/LIstream.h"
+
+using std::istream;
 
 // Perfect case for a template... (Lgb)
 // or perhaps not...
-template<class T>
-string const write_attribute(string const & name, T const & t)
-{
-	string str = " " + name + "=\"" + tostr(t) + "\"";
-	return str;
-}
 
 template <>
 string const write_attribute(string const & name, bool const & b)
