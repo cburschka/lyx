@@ -337,6 +337,35 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
+string const InsetGraphics::createDocBookAttributes() const
+{
+	// Calculate the options part of the command, we must do it to a string
+	// stream since we copied the code from createLatexParams()
+
+	// FIXME: av: need to translate spec -> Docbook XSL spec (http://www.sagehill.net/docbookxsl/ImageSizing.html)
+	// Right now it only works with my version of db2latex :-)
+
+	ostringstream options;
+	if (!float_equal(params().scale, 0.0, 0.05)) {
+		if (!float_equal(params().scale, 100.0, 0.05))
+			options << " scale=\"" << params().scale / 100.0
+				<< "\" ";
+	} else {
+		if (!params().width.zero())
+			options << " width=\"" << params().width.asLatexString()  << "\" ";
+		if (!params().height.zero())
+			options << " depth=\"" << params().height.asLatexString()  << "\" ";
+	}
+
+	if (!params().special.empty())
+	    options << params().special << " ";
+
+	string opts = options.str();
+	// trailing blanks are ok ...
+	return opts;
+}
+
+
 namespace {
 
 enum CopyStatus {
@@ -706,11 +735,11 @@ int InsetGraphics::docbook(Buffer const &, ostream & os,
 	if (runparams.flavor == OutputParams::XML) {
 		runparams.exportdata->addExternalFile("docbook-xml",
 						      params().filename.absFilename());
-		os << "<graphic fileref=\"&" << graphic_label << ";\"/>";
+		os << "<inlinegraphic fileref=\"&" << graphic_label << ";\" " + createDocBookAttributes() + "/>";
 	} else {
 		runparams.exportdata->addExternalFile("docbook",
 						      params().filename.absFilename());
-		os << "<graphic fileref=\"&" << graphic_label << ";\">";
+		os << "<inlinegraphic fileref=\"&" << graphic_label << ";\" " + createDocBookAttributes() + "/>";
 	}
 	return 0;
 }

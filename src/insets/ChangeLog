@@ -1,3 +1,10 @@
+2004-09-29  Andreas Vox <vox@isp.uni-luebeck.de>
+
+	* insetgraphics.C (docbook): create inlinegraphic instead of graphic. 
+	
+	* insetgraphics.[hC] (createDocBookAttributes): Export parameters
+	as attributes with new method for docbook.
+
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* render_preview.h: Use preferred calling of Boost.Signal
