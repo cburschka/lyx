@@ -331,6 +331,9 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);
+		} else if (tmptok == "Environment") {
+			lex.next();
+			inset = new InsetEnvironment(buf.params, lex.getString());
 		} else if (tmptok == "ERT") {
 			inset = new InsetERT(buf.params);
 		} else if (tmptok == "Tabular") {

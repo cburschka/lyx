@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef InsetMinipage_H
-#define InsetMinipage_H
+#ifndef INSETMINIPAGE_H
+#define INSETMINIPAGE_H
 
 
 #include "insetcollapsable.h"

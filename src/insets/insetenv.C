@@ -35,6 +35,8 @@ InsetEnvironment::InsetEnvironment
 	//LyXLayout_ptr const & layout = tc.getEnv(name);
 	//header_ = layout->latexheader;
 	//footer_ = layout->latexfooter;
+	header_ = "\\begin{" + name + "}";
+	footer_ = "\\end{" + name + "}";
 }
 
 
@@ -51,7 +53,7 @@ Inset * InsetEnvironment::clone(Buffer const &, bool same_id) const
 
 void InsetEnvironment::write(Buffer const * buf, ostream & os) const
 {
-	os << "Environment " << getInsetName() << "\"\n";
+	os << "Environment " << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
