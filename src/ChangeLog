@@ -1,10 +1,23 @@
+2003-05-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* CutAndPaste.h: Update file header.
+
+	* CutAndPaste.C: Update file header.
+	Store the parts cut out of the Document in a limited_stack.
+	(copySelection): adjust
+	(pasteSelection): new function, takes the index in the limited stack.
+	(nrOfParagraphs): adjust
+	(SwitchLayoutsBetweenClasses): Change to take a ParagraphList&,
+	simplify error inset insertion.
+	(checkPastePossible): adjust
+
 2003-05-06  John Levon  <levon@movementarian.org>
 
 	* text2.C: don't cast wrap inset to float
 
 2003-05-05 André Pönitz <poenitz@gmx.net>
 
-	* iterator.C: 
+	* iterator.C:
 	* undo_funcs.C: use getParagraphs() instead of getFirstParagraph()
 
 	* buffer.[Ch]: new function hasParWithId() to help to get rid of a
@@ -19,7 +32,7 @@
 	* lyxtextclass.h:
 	* lyxtextclasslist.C: Handle new textclass.lst format; new method
 	isTeXClassAvailable()
-  
+
 2003-05-03  John Levon  <levon@movementarian.org>
 
 	* BufferView.h:

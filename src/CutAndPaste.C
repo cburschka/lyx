@@ -1,11 +1,12 @@
-/* This file is part of
- * ======================================================
+/* \file CutAndPaste.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Jurgen Vigna
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -27,6 +28,7 @@
 
 #include "support/BoostFormat.h"
 #include "support/LAssert.h"
+#include "support/limited_stack.h"
 
 using std::endl;
 using std::pair;
@@ -59,9 +61,7 @@ extern BufferView * current_view;
 
 namespace {
 
-// FIXME: stupid name
-ParagraphList paragraphs;
-textclass_type textclass = 0;
+limited_stack<pair<ParagraphList, textclass_type> > cuts(10);
 
 } // namespace anon
 
@@ -172,7 +172,7 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 	lyx::Assert(0 <= end && end <= endpit->size());
 	lyx::Assert(startpit != endpit || start <= end);
 
-	textclass = tc;
+	ParagraphList paragraphs;
 
 	// Clone the paragraphs within the selection.
 	ParagraphList::iterator postend = boost::next(endpit);
@@ -188,6 +188,8 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 	Paragraph & front = paragraphs.front();
 	front.erase(0, start);
 
+	cuts.push(make_pair(paragraphs, tc));
+
 	return true;
 }
 
@@ -197,24 +199,31 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
 			    textclass_type tc)
 {
+	return pasteSelection(pars, pit, pos, tc, 0);
+}
+
+pair<PitPosPair, ParagraphList::iterator>
+CutAndPaste::pasteSelection(ParagraphList & pars,
+			    ParagraphList::iterator pit, int pos,
+			    textclass_type tc, size_t cut_index)
+{
 	if (!checkPastePossible())
 		return make_pair(PitPosPair(pit, pos), pit);
 
 	lyx::Assert (pos <= pit->size());
 
 	// Make a copy of the CaP paragraphs.
-	ParagraphList simple_cut_clone = paragraphs;
+	ParagraphList simple_cut_clone = cuts[cut_index].first;
+	textclass_type const textclass = cuts[cut_index].second;
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
 
+	// Make sure there is no class difference.
+	SwitchLayoutsBetweenClasses(textclass, tc, simple_cut_clone);
+
 	ParagraphList::iterator tmpbuf = simple_cut_clone.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
-
-	// Make sure there is no class difference.
-#warning current_view used here
-	SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
-				    current_view->buffer()->params);
 
 	Paragraph::depth_type max_depth = pit->getMaxDepthAfter();
 
@@ -314,16 +323,17 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 int CutAndPaste::nrOfParagraphs()
 {
-	return paragraphs.size();
+	return cuts.empty() ? 0 : cuts[0].first.size();
 }
 
 
 int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     textclass_type c2,
-					     Paragraph * par,
-					     BufferParams const & /*bparams*/)
+					     ParagraphList & pars)
 {
-	lyx::Assert(par);
+	lyx::Assert(!pars.empty());
+
+	Paragraph * par = &*pars.begin();
 
 	int ret = 0;
 	if (c1 == c2)
@@ -363,15 +373,9 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				+ tclass1.name() + _(" to ")
 				+ tclass2.name();
 #endif
-			freezeUndo();
+			// To warn the user that something had to be done.
 			InsetError * new_inset = new InsetError(s);
-			LyXText * txt = current_view->getLyXText();
-			LyXCursor cur = txt->cursor;
-			txt->setCursorIntern(par, 0);
-			txt->insertInset(new_inset);
-			txt->fullRebreak();
-			txt->setCursorIntern(cur.par(), cur.pos());
-			unFreezeUndo();
+			par->insertInset(0, new_inset);
 		}
 	}
 	return ret;
@@ -380,5 +384,5 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 
 bool CutAndPaste::checkPastePossible()
 {
-	return !paragraphs.empty();
+	return !cuts.empty() && !cuts[0].first.empty();
 }

@@ -96,7 +96,7 @@ void ControlDocument::setLanguage()
 	Language const * newL = bp_->language;
 
 	if (oldL != newL) {
-		
+
 		if (oldL->RightToLeft() == newL->RightToLeft()
 		    && !lv_.buffer()->isMultiLingual())
 			lv_.buffer()->changeLanguage(oldL, newL);
@@ -123,8 +123,7 @@ void ControlDocument::classApply()
 	lv_.message(_("Converting document to new document class..."));
 	int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 		old_class, new_class,
-		&*(lv_.buffer()->paragraphs.begin()),
-		lv_.buffer()->params);
+		lv_.buffer()->paragraphs);
 
 	if (!ret)
 		return;

@@ -1,3 +1,7 @@
+2003-05-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* limited_stack.h: Change some comments, simplify a couple of
+	class functions.
 
 2003-02-21  André Pönitz <poenitz@gmx.net>
 
@@ -32,7 +36,7 @@
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
 
 	* forkedcontr.C (timer): remove bogus continue
-	
+
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
 
 	* forkedcallqueue.[Ch]: added

@@ -15,7 +15,7 @@
 #include <deque>
 
 /**
- * limited_stack - a stack of limited size
+ * limited_stack - A stack of limited size.
  *
  * Like a normal stack, but elements falling out
  * of the bottom are destructed.
@@ -32,29 +32,27 @@ public:
 		limit_ = limit;
 	}
 
-	/// return the top element
+	/// Return the top element.
 	value_type top() {
 		return c_.front();
 	}
 
-	/// pop and throw away the top element
+	/// Pop and throw away the top element.
 	void pop() {
 		c_.pop_front();
 	}
 
-	/// return true if the stack is empty
+	/// Return true if the stack is empty.
 	bool empty() const {
-		return c_.size() == 0;
+		return c_.empty();
 	}
 
-	/// clear all elements, deleting them
+	/// Clear all elements, deleting them.
 	void clear() {
-		while (!c_.empty()) {
-			c_.pop_back();
-		}
+		c_.clear();
 	}
 
-	/// push an item on to the stack, deleting the
+	/// Push an item on to the stack, deleting the
 	/// bottom item on overflow.
 	void push(value_type const & v) {
 		c_.push_front(v);
@@ -63,23 +61,23 @@ public:
 		}
 	}
 
-	/// direct read access to intermediate elements
+	/// Direct read access to intermediate elements.
 	T const & operator[](size_type pos) const {
 		return c_[pos];
 	}
 
-	/// read access to used size
+	/// Read access to used size.
 	size_type size() const {
 		return c_.size();
 	}
 private:
-	/// internal contents
+	/// Internal contents.
 	container_type c_;
-	/// the maximum number elements stored
+	/// The maximum number elements stored.
 	size_type limit_;
 };
 
-// make pointer type an error.
+// Make pointer type an error.
 template <typename T>
 class limited_stack<T*>;
 
