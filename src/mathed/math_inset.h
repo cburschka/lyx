@@ -42,6 +42,7 @@ class MathArrayInset;
 class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
+class MathFuncInset;
 class MathGridInset;
 class MathHullInset;
 class MathMatrixInset;
@@ -170,39 +171,38 @@ public:
 	virtual bool covers(int x, int y) const;
 
 	/// identifies NestInsets
-	virtual MathNestInset * asNestInset() { return 0; }
+	virtual MathNestInset         * asNestInset()         { return 0; }
 	/// identifies CharInsets
-	virtual MathCharInset const * asCharInset() const { return 0; }
+	virtual MathCharInset const   * asCharInset() const   { return 0; }
 	/// identifies ScriptInsets
+	virtual MathScriptInset       * asScriptInset()       { return 0; }
 	virtual MathScriptInset const * asScriptInset() const { return 0; }
-	/// identifies ScriptInsets
-	virtual MathScriptInset * asScriptInset() { return 0; }
 	/// identifies HullInsets
-	virtual MathHullInset const * asHullInset() const { return 0; }
-	/// identifies HullInsets
-	virtual MathHullInset * asHullInset() { return 0; }
+	virtual MathHullInset         * asHullInset()         { return 0; }
+	virtual MathHullInset const   * asHullInset() const   { return 0; }
 	/// identifies SpaceInset
-	virtual MathSpaceInset * asSpaceInset() { return 0; }
+	virtual MathSpaceInset        * asSpaceInset()        { return 0; }
 	/// identifies GridInset
-	virtual MathGridInset * asGridInset() { return 0; }
+	virtual MathGridInset         * asGridInset()         { return 0; }
 	/// identifies ArrayInsets
-	virtual MathArrayInset * asArrayInset() { return 0; }
+	virtual MathArrayInset        * asArrayInset()        { return 0; }
 	/// identifies MatrixInsets
 	virtual MathMatrixInset const * asMatrixInset() const { return 0; }
 	/// identifies BoxInsets
-	virtual MathBoxInset * asBoxInset() { return 0; }
+	virtual MathBoxInset          * asBoxInset()          { return 0; }
 	/// identifies DelimInsets
-	virtual MathDelimInset * asDelimInset() { return 0; }
-	/// identifies DelimInsets
-	virtual MathDelimInset const * asDelimInset() const { return 0; }
+	virtual MathDelimInset        * asDelimInset()        { return 0; }
+	virtual MathDelimInset const  * asDelimInset() const  { return 0; }
+	/// identifies FuncInsets
+	virtual MathFuncInset         * asFuncInset()         { return 0; }
 	/// identifies macro templates
-	virtual MathMacroTemplate * asMacroTemplate() { return 0; }
+	virtual MathMacroTemplate     * asMacroTemplate()     { return 0; }
 	/// identifies hyperactive insets
-	virtual UpdatableInset * asHyperActiveInset() const { return 0; }
+	virtual UpdatableInset   * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
-	///
+	/// thing that can be moved into
 	virtual bool isActive() const { return nargs() > 0; }
 	/// identifies insets from the outer world
 	virtual bool isHyperActive() const { return 0; }

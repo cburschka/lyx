@@ -91,9 +91,27 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 }
 
 
+bool MathDelimInset::isParanthesis() const
+{
+	return left_ == "(" && right_ == ")";
+}
+
+
+bool MathDelimInset::isBrackets() const
+{
+	return left_ == "[" && right_ == "]";
+}
+
+
+bool MathDelimInset::isAbs() const
+{
+	return left_ == "|" && right_ == "|";
+}
+
+
 void MathDelimInset::maplize(MapleStream & os) const
 {
-	if (left_ == "|" && right_ == "|") {
+	if (isAbs()) {
 		bool mat =
 			cell(0).size() == 1 && cell(0).begin()->nucleus()
 					&& cell(0).begin()->nucleus()->asMatrixInset();
@@ -116,7 +134,7 @@ void MathDelimInset::mathmlize(MathMLStream & os) const
 
 void MathDelimInset::octavize(OctaveStream & os) const
 {
-	if (left_ == "|" && right_ == "|")
+	if (isAbs())
 		os << "det(" << cell(0) << ")";
 	else
 		os << left_.c_str() << cell(0) << right_.c_str();

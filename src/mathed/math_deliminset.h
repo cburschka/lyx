@@ -23,6 +23,12 @@ public:
 	MathDelimInset * asDelimInset() { return this; }
 	///
 	MathDelimInset const * asDelimInset() const { return this; }
+	/// is it (...)?
+	bool isParanthesis() const;
+	/// is it [...]?
+	bool isBrackets() const;
+	/// is it |...|?
+	bool isAbs() const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///

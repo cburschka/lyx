@@ -110,5 +110,7 @@ libmathed_la_SOURCES = \
 	math_support.h \
 	math_symbolinset.C \
 	math_symbolinset.h \
+	math_unknowninset.C \
+	math_unknowninset.h \
 	math_xdata.C \
 	math_xdata.h

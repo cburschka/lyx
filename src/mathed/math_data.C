@@ -24,6 +24,11 @@ MathArray::MathArray(MathArray const & ar, size_type from, size_type to)
 {}
 
 
+MathArray::MathArray(iterator from, iterator to)
+	: bf_(from, to)
+{}
+
+
 void MathArray::substitute(MathMacro const & m)
 {
 	for (iterator it = begin(); it != end(); ++it)
@@ -96,7 +101,7 @@ MathArray::size_type MathArray::size() const
 
 void MathArray::erase()
 {
-	erase(0, size());
+	bf_.erase(begin(), end());
 }
 
 
@@ -104,6 +109,18 @@ void MathArray::erase(size_type pos)
 {
 	if (pos < size())
 		erase(pos, pos + 1);
+}
+
+
+void MathArray::erase(iterator pos1, iterator pos2)
+{
+	bf_.erase(pos1, pos2);
+}
+
+
+void MathArray::erase(iterator pos)
+{
+	bf_.erase(pos);
 }
 
 

@@ -6,9 +6,11 @@
 using std::ostream;
 
 
-MathExFuncInset::MathExFuncInset(string const & name)
+MathExFuncInset::MathExFuncInset(string const & name, MathArray const & arg)
 	: MathNestInset(1), name_(name)
-{}
+{
+	cell(0) = arg;
+}
 
 
 MathInset * MathExFuncInset::clone() const

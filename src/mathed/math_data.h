@@ -56,6 +56,8 @@ public:
 	MathArray();
 	///
 	MathArray(MathArray const &, size_type from, size_type to);
+	///
+	MathArray(iterator from, iterator to);
 
 	///
 	size_type size() const;
@@ -71,6 +73,10 @@ public:
 	///
 	void insert(size_type pos, MathArray const &);
 
+	///
+	void erase(iterator pos1, iterator pos2);
+	///
+	void erase(iterator pos);
 	///
 	void erase(size_type pos1, size_type pos2);
 	///

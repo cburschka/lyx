@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATH_FUNCINSET_H
-#define MATH_FUNCINSET_H
+#ifndef MATH_UNKNOWNINSET_H
+#define MATH_UNKNOWNINSET_H
 
 #include "math_diminset.h"
 #include "math_defs.h"
@@ -10,12 +10,12 @@
 #endif
 
 /**
- Functions or LaTeX names for objects that I don't know how to draw.
+ Unknowntions or LaTeX names for objects that we really don't know
  */
-class MathFuncInset : public MathDimInset {
+class MathUnknownInset : public MathDimInset {
 public:
 	///
-	explicit MathFuncInset(string const & nm);
+	explicit MathUnknownInset(string const & nm);
 	///
 	MathInset * clone() const;
 	///
@@ -24,8 +24,8 @@ public:
 	void draw(Painter &, int x, int y) const;
 	///
 	string const & name() const;
-	/// identifies FuncInsets
-	MathFuncInset * asFuncInset() { return this; }
+	/// identifies UnknownInsets
+	MathUnknownInset const * asUnknownInset() const { return this; }
 	///
 	void setName(string const &);
 

@@ -18,8 +18,9 @@
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
-#include "math_symbolinset.h"
 #include "math_stackrelinset.h"
+#include "math_symbolinset.h"
+#include "math_unknowninset.h"
 
 
 MathAtom createMathInset(latexkeys const * l)
@@ -65,8 +66,10 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathDotsInset(l->name));
 	case LM_TK_BOX:
 		return MathAtom(new MathBoxInset(l->name));
+	case LM_TK_FUNC:
+		return MathAtom(new MathFuncInset(l->name));
 	}
-	return MathAtom(new MathFuncInset(l->name));
+	return MathAtom(new MathUnknownInset(l->name));
 }
 
 
@@ -88,5 +91,5 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathMacro(s));
 
 	//cerr << "creating inset 2 with name: '" << s << "'\n";
-	return MathAtom(new MathFuncInset(s));
+	return MathAtom(new MathUnknownInset(s));
 }

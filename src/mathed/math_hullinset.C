@@ -532,14 +532,12 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 
 					// split it "nicely" on the firest relop
 					pos_type pos = firstRelOp(cell(0));	
-					cell(1) = cell(0);
+					cell(1) = MathArray(cell(0), pos, cell(0).size());
 					cell(0).erase(pos, cell(0).size());
-					cell(1).erase(0, pos);
 
 					if (cell(1).size()) {
-						cell(2) = cell(1);
+						cell(2) = MathArray(cell(1), 1, cell(1).size());
 						cell(1).erase(1, cell(1).size());
-						cell(2).erase(0);
 					}
 
 					setType(LM_OT_EQNARRAY);
