@@ -52,8 +52,10 @@ public:
 	///
 	int processKeySym(KeySym k, unsigned int state);
 
-	///
+	/// we need one internall which is called from inside LyXAction and
+	/// can contain the string argument.
 	func_status getStatus(int ac) const;
+	func_status getStatus(int ac, string const & not_to_use_arg) const;
 	
 	/// The last key was meta
 	bool wasMetaKey() const;

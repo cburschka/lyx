@@ -1,3 +1,10 @@
+2001-02-26  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (getStatus): added a string argument override function so
+	that this is correctly called from LyXFunc::Dispatch if it contains a
+	do_not_use_argument which is used!
+	(Dispatch): added check for "custom" export and call appropriate func.
+
 2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxrc.C: Add language_command_local, language_use_babel and

@@ -97,6 +97,7 @@ extern BufferList bufferlist;
 extern LyXServer * lyxserver;
 extern int greek_kb_flag;
 extern bool selection_possible;
+extern void MenuSendto();
 
 extern kb_keymap * toplevel_keymap;
 
@@ -333,8 +334,12 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	return 0;
 } 
 
-
 LyXFunc::func_status LyXFunc::getStatus(int ac) const
+{
+	return getStatus(ac, string());
+}
+
+LyXFunc::func_status LyXFunc::getStatus(int ac, string const & not_to_use_arg) const
 {
         kb_action action;
         func_status flag = LyXFunc::OK;
@@ -343,8 +348,11 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	
  	if (lyxaction.isPseudoAction(ac)) 
 		action = lyxaction.retrieveActionArg(ac, argument);
-	else
+	else {
 		action = static_cast<kb_action>(ac);
+		if (!not_to_use_arg.empty())
+			argument = not_to_use_arg; // exept here
+	}
 	
 	if (action == LFUN_UNKNOWN_ACTION) {
 		setErrorMessage(N_("Unknown action"));
@@ -382,8 +390,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			|| lyxrc.print_command == "none";
 		break;
 	case LFUN_EXPORT:
-		disable = argument == "fax" &&
-			!Exporter::IsExportable(buf, argument);
+		disable = (argument != "custom") ||
+		    (argument == "fax" &&
+		     !Exporter::IsExportable(buf, argument));
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -546,7 +555,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(ac) & Disabled)
+	if (getStatus(ac, do_not_use_this_arg) & Disabled)
 		goto exit_with_message;
 
 	commandshortcut.erase();
@@ -839,7 +848,10 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_EXPORT:
-		Exporter::Export(owner->buffer(), argument, false);
+		if (argument == "custom")
+			MenuSendto();
+		else
+			Exporter::Export(owner->buffer(), argument, false);
 		break;
 
 	case LFUN_IMPORT:
