@@ -1,3 +1,8 @@
+2004-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (BOOST_LIBS): fix when using already installed boost.
+	(lyxclient_LDADD): add $(BOOST_LIBS) and $(INTLLIBS)
+
 2004-09-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (INCLUDES): add ${srcdir}/.. to INCLUDES (needed

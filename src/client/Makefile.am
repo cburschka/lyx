@@ -10,10 +10,16 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 
+if USE_INCLUDED_BOOST
+BOOST_LIBS = $(top_builddir)/boost/libs/filesystem/src/libboostfilesystem.la \
+	$(top_builddir)/boost/libs/regex/src/libboostregex.la 
+else
+BOOST_LIBS = -lboost_regex -lboost_filesystem
+endif
+
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(top_builddir)/boost/libs/filesystem/src/libboostfilesystem.la \
-	$(top_builddir)/boost/libs/regex/src/libboostregex.la
+	$(BOOST_LIBS) $(INTLLIBS)
 
 lyxclient_SOURCES = \
 	boost.C \
