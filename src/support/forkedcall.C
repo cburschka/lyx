@@ -235,53 +235,40 @@ int Forkedcall::startscript(string const & what, SignalTypePtr signal)
 // generate child in background
 int Forkedcall::generateChild()
 {
-	const int MAX_ARGV = 255;
-	char *syscmd = 0;
+	// Split command_ up into a char * array
+	int const MAX_ARGV = 255;
 	char *argv[MAX_ARGV];
 
-	string childcommand(command_); // copy
-	bool more = true;
-	string rest = split(command_, childcommand, ' ');
+	string line = command_;
+	int index = 0;
+	for (; index < MAX_ARGV-1; ++index) {
+		string word;
+		line = split(line, word, ' ');
+		if (word.empty())
+			break;
 
-	int  index = 0;
-	while (more) {
-		childcommand = ltrim(childcommand);
-		if (syscmd == 0) {
-			syscmd = new char[childcommand.length() + 1];
-			childcommand.copy(syscmd, childcommand.length());
-			syscmd[childcommand.length()] = '\0';
-		}
-		if (!childcommand.empty()) {
-			char * tmp = new char[childcommand.length() + 1];
-			childcommand.copy(tmp, childcommand.length());
-			tmp[childcommand.length()] = '\0';
-			argv[index++] = tmp;
-		}
+		char * tmp = new char[word.length() + 1];
+		word.copy(tmp, word.length());
+		tmp[word.length()] = '\0';
 
-		// reinit
-		more = !rest.empty();
-		if (more)
-			rest = split(rest, childcommand, ' ');
+		argv[index] = tmp;
 	}
 	argv[index] = 0;
 
 #ifndef __EMX__
-	pid_t cpid = ::fork();
+	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
-		execvp(syscmd, argv);
+		execvp(argv[0], argv);
+
 		// If something goes wrong, we end up here
-		string args;
-		int i = 0;
-		while (argv[i] != 0)
-			args += string(" ") + argv[i++];
-		lyxerr << "execvp of \"" << syscmd << args << "\" failed: "
+		lyxerr << "execvp of \"" << command_ << "\" failed: "
 		       << strerror(errno) << endl;
 		_exit(1);
 	}
 #else
-	pid_t cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-			     syscmd, argv);
+	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
+				   syscmd, argv);
 #endif
 
 	if (cpid < 0) {
@@ -290,7 +277,6 @@ int Forkedcall::generateChild()
 	}
 
 	// Clean-up.
-	delete [] syscmd;
 	for (int i = 0; i < MAX_ARGV; ++i) {
 		if (argv[i] == 0)
 			break;
