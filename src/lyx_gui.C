@@ -194,16 +194,16 @@ void LyXGUI::init()
 
 	create_forms();
 
-	if (lyxrc.font_norm_menu.empty())
-		lyxrc.font_norm_menu = lyxrc.font_norm;
+	if (lyxrc.popup_font_encoding.empty())
+		lyxrc.popup_font_encoding = lyxrc.font_norm;
 	// Set the font name for popups and menus
-        string boldfontname = lyxrc.menu_font_name 
+        string boldfontname = lyxrc.popup_bold_font
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc.font_norm_menu;
+		               + lyxrc.popup_font_encoding;
 		// "?" means "scale that font"
-        string fontname = lyxrc.popup_font_name 
+        string fontname = lyxrc.popup_normal_font 
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc.font_norm_menu;
+		               + lyxrc.popup_font_encoding;
 
 	int bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
 	int normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
@@ -237,7 +237,7 @@ void LyXGUI::init()
 	// in setDefaults() (Matthias 140496)
 	// Moved from ::LyXGUI to ::init to allow popup font customization 
 	// (petr 120997).
- 	fl_setpup_fontstyle(FL_BOLD_STYLE);
+ 	fl_setpup_fontstyle(FL_NORMAL_STYLE);
  	fl_setpup_fontsize(FL_NORMAL_SIZE);
  	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);

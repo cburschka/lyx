@@ -1,3 +1,13 @@
+2002-01-10  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxrc.[Ch]: change names and descriptions of popup font variables to
+	reflect their actual use. Provide compatibility code for older lyxrc
+	files.
+	
+	* lyx_gui.C (init): revoke change of 2002-01-07 of popup font style to
+	FL_NORMAL_STYLE.
+	change names of popup font variables in line with the changes to lyxrc.C
+
 2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (asciiParagraph): avoid outputing a word twice after

@@ -80,9 +80,9 @@ struct FD_form_interface {
 	~FD_form_interface();
 
 	FL_FORM *form;
-	FL_OBJECT *input_popup_font;
-	FL_OBJECT *input_menu_font;
-	FL_OBJECT *input_popup_encoding;
+	FL_OBJECT *input_popup_normal_font;
+	FL_OBJECT *input_popup_bold_font;
+	FL_OBJECT *input_popup_font_encoding;
 	FL_OBJECT *input_ui_file;
 	FL_OBJECT *button_ui_file_browse;
 	FL_OBJECT *input_bind_file;

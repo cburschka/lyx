@@ -43,7 +43,7 @@ namespace {
 
 // Some constants
 int const MENU_LABEL_SIZE = FL_NORMAL_SIZE;
-int const MENU_LABEL_STYLE = FL_BOLD_STYLE;
+int const MENU_LABEL_STYLE = FL_NORMAL_STYLE;
 int const mheight = 30;
 int const mbheight= 22;
 // where to place the menubar?

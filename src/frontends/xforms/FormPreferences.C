@@ -1468,11 +1468,11 @@ FD_form_interface const * FormPreferences::Interface::dialog()
 
 void FormPreferences::Interface::apply() const
 {
-	lyxrc.popup_font_name =
-		fl_get_input(dialog_->input_popup_font);
-	lyxrc.menu_font_name = fl_get_input(dialog_->input_menu_font);
-	lyxrc.font_norm_menu =
-		fl_get_input(dialog_->input_popup_encoding);
+	lyxrc.popup_normal_font =
+		fl_get_input(dialog_->input_popup_normal_font);
+	lyxrc.popup_bold_font = fl_get_input(dialog_->input_popup_bold_font);
+	lyxrc.popup_font_encoding =
+		fl_get_input(dialog_->input_popup_font_encoding);
 	lyxrc.bind_file = fl_get_input(dialog_->input_bind_file);
 	lyxrc.ui_file = fl_get_input(dialog_->input_ui_file);
 	lyxrc.override_x_deadkeys =
@@ -1484,16 +1484,16 @@ void FormPreferences::Interface::build()
 {
 	dialog_.reset(parent_.build_interface());
 
-	fl_set_input_return(dialog_->input_popup_font, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_menu_font, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_popup_encoding, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_popup_normal_font, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_popup_bold_font, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_popup_font_encoding, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_bind_file, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_ui_file, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_popup_font);
-	setPreHandler(dialog_->input_menu_font);
-	setPreHandler(dialog_->input_popup_encoding);
+	setPreHandler(dialog_->input_popup_normal_font);
+	setPreHandler(dialog_->input_popup_bold_font);
+	setPreHandler(dialog_->input_popup_font_encoding);
 	setPreHandler(dialog_->input_bind_file);
 	setPreHandler(dialog_->button_bind_file_browse);
 	setPreHandler(dialog_->input_ui_file);
@@ -1507,12 +1507,12 @@ FormPreferences::Interface::feedback(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if (ob == dialog_->input_popup_font)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_POPUP);
-	else if (ob == dialog_->input_menu_font)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_MENU);
-	else if (ob == dialog_->input_popup_encoding)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ENCODING_MENU);
+	if (ob == dialog_->input_popup_normal_font)
+		str = lyxrc.getDescription(LyXRC::RC_POPUP_NORMAL_FONT);
+	else if (ob == dialog_->input_popup_bold_font)
+		str = lyxrc.getDescription(LyXRC::RC_POPUP_BOLD_FONT);
+	else if (ob == dialog_->input_popup_font_encoding)
+		str = lyxrc.getDescription(LyXRC::RC_POPUP_FONT_ENCODING);
 	else if (ob == dialog_->input_bind_file)
 		str = lyxrc.getDescription(LyXRC::RC_BINDFILE);
 	else if (ob == dialog_->input_ui_file)
@@ -1557,12 +1557,12 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 
 void FormPreferences::Interface::update()
 {
-	fl_set_input(dialog_->input_popup_font,
-		     lyxrc.popup_font_name.c_str());
-	fl_set_input(dialog_->input_menu_font,
-		     lyxrc.menu_font_name.c_str());
-	fl_set_input(dialog_->input_popup_encoding,
-		     lyxrc.font_norm_menu.c_str());
+	fl_set_input(dialog_->input_popup_normal_font,
+		     lyxrc.popup_normal_font.c_str());
+	fl_set_input(dialog_->input_popup_bold_font,
+		     lyxrc.popup_bold_font.c_str());
+	fl_set_input(dialog_->input_popup_font_encoding,
+		     lyxrc.popup_font_encoding.c_str());
 	fl_set_input(dialog_->input_bind_file,
 		     lyxrc.bind_file.c_str());
 	fl_set_input(dialog_->input_ui_file,

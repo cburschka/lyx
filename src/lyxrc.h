@@ -54,10 +54,10 @@ enum LyXRCTags {
 	RC_SCREEN_FONT_ROMAN,
 	RC_SCREEN_FONT_SANS,
 	RC_SCREEN_FONT_TYPEWRITER,
-	RC_SCREEN_FONT_MENU,
-	RC_SCREEN_FONT_POPUP,
 	RC_SCREEN_FONT_ENCODING,
-	RC_SCREEN_FONT_ENCODING_MENU,
+	RC_POPUP_BOLD_FONT,
+	RC_POPUP_NORMAL_FONT,
+	RC_POPUP_FONT_ENCODING,
 	RC_SET_COLOR,
 	RC_AUTOSAVE,
 	RC_DOCUMENTPATH,
@@ -241,9 +241,9 @@ enum LyXRCTags {
 	///
 	string typewriter_font_name;
 	///
-	string menu_font_name;
+	string popup_bold_font;
 	///
-	string popup_font_name;
+	string popup_normal_font;
 	///
 	string font_norm;
 	///
@@ -270,7 +270,7 @@ enum LyXRCTags {
 	///
 	void set_font_norm_type();
 	///
-	string font_norm_menu;
+	string popup_font_encoding;
 	///
 	unsigned int autosave;
 	///

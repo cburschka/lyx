@@ -202,15 +202,17 @@ FD_form_interface * FormPreferences::build_interface()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
-  fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 30, 200, 30, _("Popup Font"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 20, 425, 110, _("Popup Fonts & Encoding"));
+  fdui->input_popup_normal_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 30, 200, 30, _("Normal Font"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 60, 200, 30, _("Menu Font"));
+  fdui->input_popup_bold_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 60, 200, 30, _("Bold Font"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 90, 200, 30, _("Popup Encoding"));
+  fdui->input_popup_font_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 90, 200, 30, _("Popup Encoding"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 150, 425, 85, _("Layout & Bindings"));
   {
     char const * const dummy = N_("User Interface file|#U");
     fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 160, 170, 30, idex(_(dummy)));
@@ -239,6 +241,7 @@ FD_form_interface * FormPreferences::build_interface()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 255, 425, 45, _("Dead Keys"));
   {
     char const * const dummy = N_("Override X Window dead-keys|#O");
     fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 95, 265, 30, 30, idex(_(dummy)));
@@ -247,9 +250,6 @@ FD_form_interface * FormPreferences::build_interface()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_button(obj, 1);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 20, 425, 110, _("Fonts & Encoding"));
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 150, 425, 85, _("Layout & Bindings"));
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 255, 425, 45, _("Dead Keys"));
   fl_end_form();
 
   fdui->form->fdui = fdui;
