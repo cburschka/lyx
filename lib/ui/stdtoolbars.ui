@@ -61,7 +61,7 @@ Toolbar "Standard" "on,top"
 	Item "Insert table" "tabular-insert 4 4"
 End
 
-Toolbar "Extra" "off,top"
+Toolbar "Extra" "on,top"
 	Item "Numbered list" "layout Enumerate"
 	Item "Itemized list" "layout Itemize"
 	Item "List" "layout List"
