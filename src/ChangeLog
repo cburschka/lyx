@@ -1,3 +1,15 @@
+
+2003-06-12  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* buffer.C:
+	* iterators.[Ch]:
+	* lyxfunc.C:
+	* text.C:
+	* toc.C: Return a Paragraph & for ParIterator::operator*()
+
 2003-06-11  John Levon  <levon@movementarian.org>
 
 	* lyx_main.C:

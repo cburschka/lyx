@@ -54,15 +54,12 @@ string const & ControlErrorList::name()
 
 void ControlErrorList::goTo(int item)
 {
-	BufferView * const bv = kernel().bufferview();
-	Buffer * const buf = kernel().buffer();
-
 	ErrorItem const & err = errorlist_[item];
-
 
 	if (err.par_id == -1)
 		return;
 
+	Buffer * const buf = kernel().buffer();
 	ParIterator pit = buf->getParFromID(err.par_id);
 
 	if (pit == buf->par_iterator_end()) {
@@ -72,14 +69,15 @@ void ControlErrorList::goTo(int item)
 
 	int range = err.pos_end - err.pos_start;
 
-	if (err.pos_end > (*pit)->size() || range <= 0)
-		range = (*pit)->size() - err.pos_start;
+	if (err.pos_end > pit->size() || range <= 0)
+		range = pit->size() - err.pos_start;
 
 	// Now make the selection.
+	BufferView * const bv = kernel().bufferview();
 	bv->insetUnlock();
 	bv->toggleSelection();
 	bv->text->clearSelection();
-	bv->text->setCursor(*pit, err.pos_start);
+	bv->text->setCursor(pit.pit(), err.pos_start);
 	bv->text->setSelectionRange(range);
 	bv->toggleSelection(false);
 	bv->fitCursor();

@@ -47,7 +47,7 @@ public:
 ParPosition::ParPosition(ParagraphList::iterator p, ParagraphList const & pl)
 	: pit(p), plist(&pl)
 {
-	if (p != const_cast<ParagraphList&>(pl).end()) {
+	if (p != pl.end()) {
 		it.reset(p->insetlist.begin());
 	}
 }
@@ -129,7 +129,7 @@ ParIterator & ParIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
+		if (next(p.pit) != p.plist->end()
 		    || pimpl_->positions.size() == 1) {
 			++p.pit;
 			p.index.reset();
@@ -145,7 +145,13 @@ ParIterator & ParIterator::operator++()
 }
 
 
-ParagraphList::iterator ParIterator::operator*() const
+Paragraph & ParIterator::operator*() const
+{
+	return *pimpl_->positions.back().pit;
+}
+
+
+ParagraphList::iterator ParIterator::pit() const
 {
 	return pimpl_->positions.back().pit;
 }
@@ -247,7 +253,7 @@ ParConstIterator & ParConstIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
+		if (next(p.pit) != p.plist->end()
 		    || pimpl_->positions.size() == 1) {
 			++p.pit;
 			p.index.reset();
@@ -264,13 +270,19 @@ ParConstIterator & ParConstIterator::operator++()
 }
 
 
-ParagraphList::iterator ParConstIterator::operator*() const
+Paragraph const & ParConstIterator::operator*() const
+{
+	return *pimpl_->positions.back().pit;
+}
+
+
+ParagraphList::const_iterator ParConstIterator::pit() const
 {
 	return pimpl_->positions.back().pit;
 }
 
 
-ParagraphList::iterator ParConstIterator::operator->() const
+ParagraphList::const_iterator ParConstIterator::operator->() const
 {
 	return pimpl_->positions.back().pit;
 }

@@ -770,8 +770,7 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 };
 
 
-pos_type
-LyXText::rowBreakPoint(Row const & row) const
+pos_type LyXText::rowBreakPoint(Row const & row) const
 {
 	ParagraphList::iterator pit = row.par();
 
@@ -800,7 +799,7 @@ LyXText::rowBreakPoint(Row const & row) const
 	// or the end of the par, then choose the possible break
 	// nearest that.
 
-	int const left = leftMargin(const_cast<Row&>(row));
+	int const left = leftMargin(row);
 	int x = left;
 
 	// pixel width since last breakpoint

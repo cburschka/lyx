@@ -1363,18 +1363,18 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					    << id << ']' << endl;
 			break;
 		} else {
-			lyxerr[Debug::INFO] << "Paragraph " << (*par)->id()
+			lyxerr[Debug::INFO] << "Paragraph " << par->id()
 					    << " found." << endl;
 		}
 
 		if (view()->theLockingInset())
 			view()->unlockInset(view()->theLockingInset());
-		if ((*par)->inInset()) {
+		if (par->inInset()) {
 			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
-			(*par)->inInset()->localDispatch(cmd);
+			par->inInset()->localDispatch(cmd);
 		}
 		// Set the cursor
-		view()->getLyXText()->setCursor(*par, 0);
+		view()->getLyXText()->setCursor(par.pit(), 0);
 		view()->switchKeyMap();
 		owner->view_state_changed();
 

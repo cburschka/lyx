@@ -377,25 +377,24 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 	LyXTextClass const & tclass2 = textclasslist[c2];
 	ParIterator end = ParIterator(pars.end(), pars);
 	for (ParIterator it = ParIterator(pars.begin(), pars); it != end; ++it) {
-		Paragraph * par = &*(*it);
-		string const name = par->layout()->name();
+		string const name = it->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
 		if (hasLayout)
-			par->layout(tclass2[name]);
+			it->layout(tclass2[name]);
 		else
-			par->layout(tclass2.defaultLayout());
+			it->layout(tclass2.defaultLayout());
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			++ret;
 			string const s = bformat(
 				_("Layout had to be changed from\n%1$s to %2$s\n"
 				"because of class conversion from\n%3$s to %4$s"),
-			 name, par->layout()->name(), tclass1.name(), tclass2.name());
+			 name, it->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem("Changed Layout", s,
-						      par->id(), 0,
-						      par->size()));
+						      it->id(), 0,
+						      it->size()));
 		}
 	}
 	return ret;

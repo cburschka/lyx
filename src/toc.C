@@ -94,8 +94,8 @@ TocList const getTocList(Buffer const * buf)
 
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE or WRAP_CODE
-		InsetList::iterator it = pit->insetlist.begin();
-		InsetList::iterator end = pit->insetlist.end();
+		InsetList::const_iterator it = pit->insetlist.begin();
+		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
 			if (it->inset->lyxCode() == Inset::FLOAT_CODE) {
 				InsetFloat * il =

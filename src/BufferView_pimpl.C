@@ -651,8 +651,8 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text->setCursor(*par,
-			     min((*par)->size(), saved_positions[i].par_pos));
+	bv_->text->setCursor(par.pit(),
+			     min(par->size(), saved_positions[i].par_pos));
 
 	update(BufferView::SELECT);
 	if (i > 0)
@@ -861,9 +861,8 @@ void BufferView::Pimpl::trackChanges()
 
 	if (!tracking) {
 		ParIterator const end = buf->par_iterator_end();
-		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) {
-			(*it)->trackChanges();
-		}
+		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) 
+			it->trackChanges();
 		buf->params.tracking_changes = true;
 
 		// we cannot allow undos beyond the freeze point
@@ -881,9 +880,8 @@ void BufferView::Pimpl::trackChanges()
 		}
 
 		ParIterator const end = buf->par_iterator_end();
-		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) {
-			(*it)->untrackChanges();
-		}
+		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
+			it->untrackChanges();
 		buf->params.tracking_changes = false;
 	}
 

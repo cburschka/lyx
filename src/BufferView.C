@@ -379,7 +379,7 @@ void BufferView::setCursorFromRow(int row)
 		texrowpar = text->ownerParagraphs().begin();
 		tmppos = 0;
 	} else {
-		texrowpar = *buffer()->getParFromID(tmpid);
+		texrowpar = buffer()->getParFromID(tmpid).pit();
 	}
 	text->setCursor(texrowpar, tmppos);
 }
@@ -645,7 +645,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
-				text->setCursorIntern(*it, 0);
+				text->setCursorIntern(it.pit(), 0);
 				text->redoParagraphs(text->cursor,
 						     boost::next(text->cursor.par()));
 				text->fullRebreak();

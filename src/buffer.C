@@ -2134,7 +2134,7 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 
 	ParIterator end = par_iterator_end();
 	for (ParIterator it = par_iterator_begin(); it != end; ++it)
-		(*it)->changeLanguage(params, from, to);
+		it->changeLanguage(params, from, to);
 }
 
 
@@ -2148,7 +2148,7 @@ bool Buffer::isMultiLingual()
 {
 	ParIterator end = par_iterator_end();
 	for (ParIterator it = par_iterator_begin(); it != end; ++it)
-		if ((*it)->isMultiLingual(params))
+		if (it->isMultiLingual(params))
 			return true;
 
 	return false;
@@ -2195,7 +2195,7 @@ ParIterator Buffer::getParFromID(int id) const
 	}
 
 	for (; it != end; ++it)
-		if ((*it)->id() == id)
+		if (it->id() == id)
 			return it;
 
 	return end;
@@ -2204,8 +2204,8 @@ ParIterator Buffer::getParFromID(int id) const
 
 bool Buffer::hasParWithID(int id) const
 {
-	ParIterator it(const_cast<Buffer*>(this)->par_iterator_begin());
-	ParIterator end(const_cast<Buffer*>(this)->par_iterator_end());
+	ParConstIterator it = par_iterator_begin();
+	ParConstIterator end = par_iterator_end();
 
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
@@ -2214,7 +2214,7 @@ bool Buffer::hasParWithID(int id) const
 	}
 
 	for (; it != end; ++it)
-		if ((*it)->id() == id)
+		if (it->id() == id)
 			return true;
 
 	return false;

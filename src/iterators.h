@@ -29,11 +29,13 @@ public:
 	///
 	ParIterator & operator++();
 	///
-	ParagraphList::iterator operator*() const;
+	Paragraph & operator*() const;
 	///
 	ParagraphList::iterator operator->() const;
 	///
 	ParagraphList::iterator outerPar() const;
+	///
+	ParagraphList::iterator pit() const;
 	///
 	ParagraphList & plist() const;
 	///
@@ -64,11 +66,13 @@ public:
 	///
 	ParConstIterator & operator++();
 	///
-	ParagraphList::iterator operator*() const;
+	ParagraphList::const_iterator pit() const;
 	///
-	ParagraphList::iterator operator->() const;
+	Paragraph const & operator*() const;
+	///
+	ParagraphList::const_iterator operator->() const;
 
-	///
+	/// depth of nesting
 	size_t size() const;
 	///
 	friend
