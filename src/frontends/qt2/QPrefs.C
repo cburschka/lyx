@@ -244,6 +244,7 @@ void QPrefs::apply()
 	rc.template_path = fromqstr(pathsmod->templateDirED->text());
 	rc.backupdir_path = fromqstr(pathsmod->backupDirED->text());
 	rc.tempdir_path = fromqstr(pathsmod->tempDirED->text());
+	rc.path_prefix = fromqstr(pathsmod->pathPrefixED->text());
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = fromqstr(pathsmod->lyxserverDirED->text());
 
@@ -560,9 +561,9 @@ void QPrefs::update_contents()
 	pathsmod->templateDirED->setText(toqstr(rc.template_path));
 	pathsmod->backupDirED->setText(toqstr(rc.backupdir_path));
 	pathsmod->tempDirED->setText(toqstr(rc.tempdir_path));
+	pathsmod->pathPrefixED->setText(toqstr(rc.path_prefix));
 	// FIXME: should be a checkbox only
 	pathsmod->lyxserverDirED->setText(toqstr(rc.lyxpipes));
-
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 

@@ -1,5 +1,11 @@
 2005-01-16  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.[Ch] (prependEnvPath): prepend a list of paths to
+	that returned by the environment variable. Identical paths occurring
+	later in the list are removed.
+
+2005-01-16  Angus Leeming  <leeming@lyx.org>
+
 	* filetools.C (createLyXTmpDir): add some missing brackets to the
 	if-block. OS/2 users will be happier.
 

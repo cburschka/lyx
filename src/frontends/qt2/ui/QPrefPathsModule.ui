@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>294</width>
-            <height>196</height>
+            <width>387</width>
+            <height>329</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,7 +34,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout2</cstring>
+                <cstring>Layout3</cstring>
             </property>
             <grid>
                 <property stdset="1">
@@ -49,110 +49,6 @@
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>tempDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="2" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>templateDirPB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Browse...</string>
-                    </property>
-                    <property stdset="1">
-                        <name>autoDefault</name>
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>workingDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="4"  column="2" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>tempDirPB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Browse...</string>
-                    </property>
-                    <property stdset="1">
-                        <name>autoDefault</name>
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>templateDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>backupDirLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Backup directory:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>backupDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>templateDirLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Document templates:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>templateDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="3"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>lyxserverDirLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Ly&amp;XServer pipe:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>lyxserverDirED</cstring>
-                    </property>
-                </widget>
-                <widget row="4"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>tempDirLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Temporary directory:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
                         <cstring>tempDirED</cstring>
                     </property>
                 </widget>
@@ -171,6 +67,28 @@
                         <bool>false</bool>
                     </property>
                 </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>templateDirLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Document templates:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>templateDirED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>workingDirED</cstring>
+                    </property>
+                </widget>
                 <widget row="2"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
@@ -178,19 +96,49 @@
                         <cstring>backupDirED</cstring>
                     </property>
                 </widget>
-                <widget row="0"  column="2" >
-                    <class>QPushButton</class>
+                <widget row="2"  column="0" >
+                    <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>workingDirPB</cstring>
+                        <cstring>backupDirLA</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Browse...</string>
+                        <string>&amp;Backup directory:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>backupDirED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>tempDirLA</cstring>
                     </property>
                     <property stdset="1">
-                        <name>autoDefault</name>
-                        <bool>false</bool>
+                        <name>text</name>
+                        <string>&amp;Temporary directory:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>tempDirED</cstring>
+                    </property>
+                </widget>
+                <widget row="5"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>pathPrefixLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;PATH prefix:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>pathPrefixED</cstring>
                     </property>
                 </widget>
                 <widget row="0"  column="0" >
@@ -208,11 +156,48 @@
                         <cstring>workingDirED</cstring>
                     </property>
                 </widget>
+                <widget row="0"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>workingDirPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Browse...</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>templateDirED</cstring>
+                    </property>
+                </widget>
                 <widget row="3"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
                         <cstring>lyxserverDirED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>tempDirPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Browse...</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
                     </property>
                 </widget>
                 <widget row="2"  column="2" >
@@ -228,6 +213,43 @@
                     <property stdset="1">
                         <name>autoDefault</name>
                         <bool>false</bool>
+                    </property>
+                </widget>
+                <widget row="5"  column="1"  rowspan="1"  colspan="2" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>pathPrefixED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>templateDirPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Browse...</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget row="3"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lyxserverDirLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Ly&amp;XServer pipe:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>lyxserverDirED</cstring>
                     </property>
                 </widget>
             </grid>

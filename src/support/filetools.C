@@ -428,6 +428,34 @@ void setEnvPath(string const & name, vector<string> const & env)
 }
 
 
+void prependEnvPath(string const & name, string const & prefix)
+{
+	vector<string> env_var = getEnvPath(name);
+
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+	Separator const separator(string(1, os::path_separator()).c_str());
+
+	// Prepend each new element to the list, removing identical elements
+	// that occur later in the list.
+	Tokenizer const tokens(prefix, separator);
+	vector<string> reversed_tokens(tokens.begin(), tokens.end());
+
+	typedef vector<string>::const_reverse_iterator token_iterator;
+	token_iterator it = reversed_tokens.rbegin();
+	token_iterator const end = reversed_tokens.rend();
+	for (; it != end; ++it) {
+		vector<string>::iterator remove_it =
+			std::remove(env_var.begin(), env_var.end(), *it);
+		env_var.erase(remove_it, env_var.end());
+		env_var.insert(env_var.begin(), *it);
+	}
+
+	setEnvPath(name, env_var);
+}
+
+
 bool putEnv(string const & envstr)
 {
 	// CHECK Look at and fix this.

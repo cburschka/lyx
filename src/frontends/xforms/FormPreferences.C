@@ -2193,6 +2193,7 @@ void FormPreferences::Paths::apply(LyXRC & rc)
 	rc.document_path = getString(dialog_->input_default_path);
 	rc.template_path = getString(dialog_->input_template_path);
 	rc.tempdir_path  = getString(dialog_->input_temp_dir);
+	rc.path_prefix  = getString(dialog_->input_path_prefix);
 
 	int button = fl_get_button(dialog_->check_last_files);
 	string str = getString(dialog_->input_lastfiles);
@@ -2225,6 +2226,7 @@ void FormPreferences::Paths::build()
 	fl_set_input_return(dialog_->input_default_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_template_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_temp_dir, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_path_prefix, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_backup_path, FL_RETURN_CHANGED);
 	fl_set_counter_bounds(dialog_->counter_lastfiles, 0, maxlastfiles);
@@ -2235,6 +2237,7 @@ void FormPreferences::Paths::build()
 	setPrehandler(dialog_->input_default_path);
 	setPrehandler(dialog_->counter_lastfiles);
 	setPrehandler(dialog_->input_template_path);
+	setPrehandler(dialog_->input_path_prefix);
 	setPrehandler(dialog_->check_last_files);
 	setPrehandler(dialog_->input_lastfiles);
 	setPrehandler(dialog_->check_make_backups);
@@ -2265,6 +2268,10 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_BACKUPDIR_PATH);
 	if (ob == dialog_->input_serverpipe)
 		return LyXRC::getDescription(LyXRC::RC_SERVERPIPE);
+	if (ob == dialog_->input_path_prefix)
+		return _("Specify those directories which should be"
+			 "prepended to the PATH environment variable. "
+			 "Use the OS native format.");
 	return string();
 }
 
@@ -2400,6 +2407,7 @@ void FormPreferences::Paths::update(LyXRC const & rc)
 	fl_set_input(dialog_->input_backup_path, str.c_str());
 
 	fl_set_input(dialog_->input_temp_dir, rc.tempdir_path.c_str());
+	fl_set_input(dialog_->input_path_prefix, rc.path_prefix.c_str());
 
 	str.erase();
 	if (rc.check_lastfiles)

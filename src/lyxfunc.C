@@ -650,6 +650,9 @@ void loadTextclass(string const & name)
 	}
 }
 
+
+void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
+
 } //namespace anon
 
 
@@ -1486,6 +1489,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYXRC_APPLY: {
+			LyXRC const lyxrc_orig = lyxrc;
+
 			istringstream ss(argument);
 			bool const success = lyxrc.read(ss) == 0;
 
@@ -1493,7 +1498,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
 				       << "Unable to read lyxrc data"
 				       << endl;
+				break;
 			}
+
+			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 			break;
 		}
 
@@ -1854,3 +1862,139 @@ bool LyXFunc::wasMetaKey() const
 {
 	return (meta_fake_bit != key_modifier::none);
 }
+
+
+namespace {
+
+void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
+{
+	// Why the switch you might ask. It is a trick to ensure that all
+	// the elements in the LyXRCTags enum is handled. As you can see
+	// there are no breaks at all. So it is just a huge fall-through.
+	// The nice thing is that we will get a warning from the compiler
+	// if we forget an element.
+	LyXRC::LyXRCTags tag = LyXRC::RC_LAST;
+	switch (tag) {
+	case LyXRC::RC_ACCEPT_COMPOUND:
+	case LyXRC::RC_ALT_LANG:
+	case LyXRC::RC_ASCIIROFF_COMMAND:
+	case LyXRC::RC_ASCII_LINELEN:
+	case LyXRC::RC_AUTOREGIONDELETE:
+	case LyXRC::RC_AUTORESET_OPTIONS:
+	case LyXRC::RC_AUTOSAVE:
+	case LyXRC::RC_AUTO_NUMBER:
+	case LyXRC::RC_BACKUPDIR_PATH:
+	case LyXRC::RC_BIBTEX_COMMAND:
+	case LyXRC::RC_BINDFILE:
+	case LyXRC::RC_CHECKLASTFILES:
+	case LyXRC::RC_CHKTEX_COMMAND:
+	case LyXRC::RC_CONVERTER:
+	case LyXRC::RC_COPIER:
+	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
+	case LyXRC::RC_CUSTOM_EXPORT_COMMAND:
+	case LyXRC::RC_CUSTOM_EXPORT_FORMAT:
+	case LyXRC::RC_CYGWIN_PATH_FIX:
+		if (lyxrc_orig.cygwin_path_fix != lyxrc_new.cygwin_path_fix) {
+			namespace os = lyx::support::os;
+			os::cygwin_path_fix(lyxrc_new.cygwin_path_fix);
+		}
+	case LyXRC::RC_DATE_INSERT_FORMAT:
+	case LyXRC::RC_DEFAULT_LANGUAGE:
+	case LyXRC::RC_DEFAULT_PAPERSIZE:
+	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
+	case LyXRC::RC_DISPLAY_GRAPHICS:
+	case LyXRC::RC_DOCUMENTPATH:
+		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
+			FileInfo fi(lyxrc_new.document_path);
+			if (fi.isOK() && fi.isDir()) {
+				using lyx::support::package;
+				package().document_dir() = lyxrc.document_path;
+			}
+		}
+	case LyXRC::RC_ESC_CHARS:
+	case LyXRC::RC_FONT_ENCODING:
+	case LyXRC::RC_FORMAT:
+	case LyXRC::RC_INDEX_COMMAND:
+	case LyXRC::RC_INPUT:
+	case LyXRC::RC_KBMAP:
+	case LyXRC::RC_KBMAP_PRIMARY:
+	case LyXRC::RC_KBMAP_SECONDARY:
+	case LyXRC::RC_LABEL_INIT_LENGTH:
+	case LyXRC::RC_LANGUAGE_AUTO_BEGIN:
+	case LyXRC::RC_LANGUAGE_AUTO_END:
+	case LyXRC::RC_LANGUAGE_COMMAND_BEGIN:
+	case LyXRC::RC_LANGUAGE_COMMAND_END:
+	case LyXRC::RC_LANGUAGE_COMMAND_LOCAL:
+	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
+	case LyXRC::RC_LANGUAGE_PACKAGE:
+	case LyXRC::RC_LANGUAGE_USE_BABEL:
+	case LyXRC::RC_LASTFILES:
+	case LyXRC::RC_MAKE_BACKUP:
+	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
+	case LyXRC::RC_NUMLASTFILES:
+	case LyXRC::RC_PATH_PREFIX:
+		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
+			using lyx::support::prependEnvPath;
+			prependEnvPath("PATH", lyxrc.path_prefix);
+		}
+	case LyXRC::RC_PERS_DICT:
+	case LyXRC::RC_POPUP_BOLD_FONT:
+	case LyXRC::RC_POPUP_FONT_ENCODING:
+	case LyXRC::RC_POPUP_NORMAL_FONT:
+	case LyXRC::RC_PREVIEW:
+	case LyXRC::RC_PREVIEW_HASHED_LABELS:
+	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
+	case LyXRC::RC_PRINTCOLLCOPIESFLAG:
+	case LyXRC::RC_PRINTCOPIESFLAG:
+	case LyXRC::RC_PRINTER:
+	case LyXRC::RC_PRINTEVENPAGEFLAG:
+	case LyXRC::RC_PRINTEXSTRAOPTIONS:
+	case LyXRC::RC_PRINTFILEEXTENSION:
+	case LyXRC::RC_PRINTLANDSCAPEFLAG:
+	case LyXRC::RC_PRINTODDPAGEFLAG:
+	case LyXRC::RC_PRINTPAGERANGEFLAG:
+	case LyXRC::RC_PRINTPAPERDIMENSIONFLAG:
+	case LyXRC::RC_PRINTPAPERFLAG:
+	case LyXRC::RC_PRINTREVERSEFLAG:
+	case LyXRC::RC_PRINTSPOOL_COMMAND:
+	case LyXRC::RC_PRINTSPOOL_PRINTERPREFIX:
+	case LyXRC::RC_PRINTTOFILE:
+	case LyXRC::RC_PRINTTOPRINTER:
+	case LyXRC::RC_PRINT_ADAPTOUTPUT:
+	case LyXRC::RC_PRINT_COMMAND:
+	case LyXRC::RC_RTL_SUPPORT:
+	case LyXRC::RC_SCREEN_DPI:
+	case LyXRC::RC_SCREEN_FONT_ENCODING:
+	case LyXRC::RC_SCREEN_FONT_ROMAN:
+	case LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY:
+	case LyXRC::RC_SCREEN_FONT_SANS:
+	case LyXRC::RC_SCREEN_FONT_SANS_FOUNDRY:
+	case LyXRC::RC_SCREEN_FONT_SCALABLE:
+	case LyXRC::RC_SCREEN_FONT_SIZES:
+	case LyXRC::RC_SCREEN_FONT_TYPEWRITER:
+	case LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
+	case LyXRC::RC_SCREEN_ZOOM:
+	case LyXRC::RC_SERVERPIPE:
+	case LyXRC::RC_SET_COLOR:
+	case LyXRC::RC_SHOW_BANNER:
+	case LyXRC::RC_SPELL_COMMAND:
+	case LyXRC::RC_TEMPDIRPATH:
+	case LyXRC::RC_TEMPLATEPATH:
+	case LyXRC::RC_UIFILE:
+	case LyXRC::RC_USER_EMAIL:
+	case LyXRC::RC_USER_NAME:
+	case LyXRC::RC_USETEMPDIR:
+	case LyXRC::RC_USE_ALT_LANG:
+	case LyXRC::RC_USE_ESC_CHARS:
+	case LyXRC::RC_USE_INP_ENC:
+	case LyXRC::RC_USE_PERS_DICT:
+	case LyXRC::RC_USE_SPELL_LIB:
+	case LyXRC::RC_VIEWDVI_PAPEROPTION:
+	case LyXRC::RC_VIEWER:
+	case LyXRC::RC_WHEEL_JUMP:
+	case LyXRC::RC_LAST:
+		break;
+	}
+}
+
+} // namespace anon

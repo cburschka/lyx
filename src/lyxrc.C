@@ -36,7 +36,6 @@
 #include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/os.h"
 #include "support/userinfo.h"
 
 using lyx::support::ascii_lowercase;
@@ -45,8 +44,6 @@ using lyx::support::ExpandPath;
 using lyx::support::GetEnv;
 using lyx::support::LibFileSearch;
 using lyx::support::token;
-
-namespace os = lyx::support::os;
 
 using std::cout;
 using std::endl;
@@ -107,6 +104,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
+	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
@@ -394,10 +392,9 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_CYGWIN_PATH_FIX:
 			if (lexrc.next()) {
 				cygwin_path_fix = lexrc.getBool();
-				os::cygwin_path_fix(cygwin_path_fix);
  			}
  			break;
- 
+
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
 				string const kmap(lexrc.getString());
@@ -1131,6 +1128,11 @@ int LyXRC::read(LyXLex & lexrc)
 				user_email = lexrc.getString();
 			break;
 
+		case RC_PATH_PREFIX:
+			if (lexrc.next())
+				path_prefix = lexrc.getString();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1215,6 +1217,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "#\n\n";
 
 		// bind files are not done here.
+
+	case RC_PATH_PREFIX:
+		if (ignore_system_lyxrc ||
+		    path_prefix != system_lyxrc.path_prefix) {
+			os << "\\path_prefix \"" << path_prefix << "\"\n";
+		}
+
 	case RC_UIFILE:
 		if (ignore_system_lyxrc ||
 		    ui_file != system_lyxrc.ui_file) {
@@ -2021,164 +2030,13 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	string str;
 
 	switch (tag) {
-	case RC_FONT_ENCODING:
-		str = _("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
+	case RC_ACCEPT_COMPOUND:
+		str = _("Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?");
 		break;
 
-	case RC_PRINTER:
-		str = _("The default printer to print on. If none is specified, LyX will use the environment variable PRINTER.");
-		break;
-
-	case RC_PRINT_COMMAND:
-		str = _("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
-		break;
-
-	case RC_PRINTEVENPAGEFLAG:
-		str = _("The option to print only even pages.");
-		break;
-
-	case RC_PRINTODDPAGEFLAG:
-		str = _("The option to print only odd pages.");
-		break;
-
-	case RC_PRINTPAGERANGEFLAG:
-		str = _("The option for specifying a comma-separated list of pages to print.");
-		break;
-
-	case RC_PRINTCOPIESFLAG:
-		str = _("The option for specifying the number of copies to print.");
-		break;
-
-	case RC_PRINTCOLLCOPIESFLAG:
-		str = _("The option for specifying whether the copies should be collated.");
-		break;
-
-	case RC_PRINTREVERSEFLAG:
-		str = _("The option to reverse the order of the pages printed.");
-		break;
-
-	case RC_PRINTLANDSCAPEFLAG:
-		str = _("The option to print out in landscape.");
-		break;
-
-	case RC_PRINTPAPERFLAG:
-		str = _("The option to specify paper type.");
-		break;
-
-	case RC_PRINTPAPERDIMENSIONFLAG:
-		str = _("Option to specify the dimensions of the print paper.");
-		break;
-
-	case RC_PRINTTOPRINTER:
-		str = _("Option to pass to the print program to print on a specific printer.");
-		break;
-
-	case RC_PRINT_ADAPTOUTPUT:
-		str = _("Select for LyX to pass the name of the destination printer to your print command.");
-		break;
-
-	case RC_PRINTTOFILE:
-		str = _("Option to pass to the print program to print to a file.");
-		break;
-
-	case RC_PRINTFILEEXTENSION:
-		str = _("Extension of printer program output file. Usually \".ps\".");
-		break;
-
-	case RC_PRINTEXSTRAOPTIONS:
-		str = _("Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed.");
-		break;
-
-	case RC_PRINTSPOOL_COMMAND:
-		str = _("When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments.");
-		break;
-
-	case RC_PRINTSPOOL_PRINTERPREFIX:
-		str = _("If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command.");
-		break;
-
-	case RC_SCREEN_DPI:
-		str = _("DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here.");
-		break;
-
-	case RC_SCREEN_ZOOM:
-		//xgettext:no-c-format
-		str = _("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
-		break;
-
-	case RC_SCREEN_FONT_SIZES:
-		str = _("The font sizes used for calculating the scaling of the screen fonts.");
-		break;
-
-	case RC_SCREEN_FONT_ROMAN:
-	case RC_SCREEN_FONT_SANS:
-	case RC_SCREEN_FONT_TYPEWRITER:
-		str = _("The screen fonts used to display the text while editing.");
-		break;
-
-	case RC_POPUP_BOLD_FONT:
-		str = _("The bold font in the dialogs.");
-		break;
-
-	case RC_POPUP_NORMAL_FONT:
-		str = _("The normal font in the dialogs.");
-		break;
-
-	case RC_SCREEN_FONT_ENCODING:
-		str = _("The encoding for the screen fonts.");
-		break;
-
-	case RC_POPUP_FONT_ENCODING:
-		str = _("The encoding for the menu/popups fonts.");
-		break;
-
-	case RC_SET_COLOR:
-		break;
-
-	case RC_AUTOSAVE:
-		str = _("The time interval between auto-saves (in seconds). 0 means no auto-save.");
-		break;
-
-	case RC_DOCUMENTPATH:
-		str = _("The default path for your documents. An empty value selects the directory LyX was started from.");
-		break;
-
-	case RC_TEMPLATEPATH:
-		str = _("The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from.");
-		break;
-
-	case RC_TEMPDIRPATH:
-		str = _("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
-		break;
-
-	case RC_LASTFILES:
-		str = _("The file where the last-files information should be stored.");
-		break;
-
-	case RC_AUTOREGIONDELETE:
-		str = _("De-select if you don't want the current selection to be replaced automatically by what you type.");
-		break;
-
-	case RC_AUTORESET_OPTIONS:
-		str = _("De-select if you don't want the class options to be reset to defaults after class change.");
-		break;
-
-	case RC_SERVERPIPE:
-		str = _("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");
-		break;
-
-	case RC_BINDFILE:
-		str = _("Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories.");
-		break;
-
-	case RC_UIFILE:
-		str = _("The UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
-		break;
-
-	case RC_KBMAP:
-	case RC_KBMAP_PRIMARY:
-	case RC_KBMAP_SECONDARY:
-		str = _("Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard.");
+	case RC_ALT_LANG:
+	case RC_USE_ALT_LANG:
+		str = _("Specify an alternate language. The default is to use the language of the document.");
 		break;
 
 	case RC_ASCIIROFF_COMMAND:
@@ -2189,67 +2047,71 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("This is the maximum line length of an exported ASCII file (LaTeX, SGML or plain text).");
 		break;
 
-	case RC_NUMLASTFILES:
-		str = bformat(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu."), maxlastfiles);
+	case RC_AUTOREGIONDELETE:
+		str = _("De-select if you don't want the current selection to be replaced automatically by what you type.");
 		break;
 
-	case RC_CHECKLASTFILES:
-		str = _("Select to check whether the lastfiles still exist.");
+	case RC_AUTORESET_OPTIONS:
+		str = _("De-select if you don't want the class options to be reset to defaults after class change.");
 		break;
 
-	case RC_VIEWDVI_PAPEROPTION:
-		str = _("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
+	case RC_AUTOSAVE:
+		str = _("The time interval between auto-saves (in seconds). 0 means no auto-save.");
 		break;
 
-	case RC_DEFAULT_PAPERSIZE:
-		str = _("Specify the default paper size.");
+	case RC_AUTO_NUMBER:
 		break;
 
-	case RC_ACCEPT_COMPOUND:
-		str = _("Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?");
-		break;
-
-	case RC_SPELL_COMMAND:
-		str = _("What command runs the spell checker?");
-		break;
-
-	case RC_USE_INP_ENC:
-		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries.");
-		break;
-
-	case RC_USE_ALT_LANG:
-	case RC_ALT_LANG:
-		str = _("Specify an alternate language. The default is to use the language of the document.");
-		break;
-
-	case RC_USE_PERS_DICT:
-	case RC_PERS_DICT:
-		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
-		break;
-
-	case RC_USE_ESC_CHARS:
-	case RC_ESC_CHARS:
-		str = _("Specify additional chars that can be part of a word.");
-		break;
-
-	case RC_SCREEN_FONT_SCALABLE:
-		str = _("Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling.");
-		break;
-
-	case RC_CHKTEX_COMMAND:
-		str = _("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
+	case RC_BACKUPDIR_PATH:
+		str = _("The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file.");
 		break;
 
 	case RC_BIBTEX_COMMAND:
 		str = _("Define the options of bibtex (cf. man bibtex) or select an alternative compiler (e.g. mlbibtex or bibulus).");
 		break;
 
-	case RC_INDEX_COMMAND:
-		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler. E.g., using xindy/make-rules, the command string would be \"makeindex.sh -m $$lang\".");
+	case RC_BINDFILE:
+		str = _("Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories.");
+		break;
+
+	case RC_CHECKLASTFILES:
+		str = _("Select to check whether the lastfiles still exist.");
+		break;
+
+	case RC_CHKTEX_COMMAND:
+		str = _("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
+		break;
+
+	case RC_CONVERTER:
+		break;
+
+	case RC_COPIER:
 		break;
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = _("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+
+	case RC_CUSTOM_EXPORT_COMMAND:
+		break;
+
+	case RC_CUSTOM_EXPORT_FORMAT:
+		break;
+
+	case RC_CYGWIN_PATH_FIX:
+		break;
+
+	case RC_DATE_INSERT_FORMAT:
+		//xgettext:no-c-format
+		str = _("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
+		break;
+
+	case RC_DEFAULT_LANGUAGE:
+		str = _("New documents will be assigned this language.");
+		break;
+
+	case RC_DEFAULT_PAPERSIZE:
+		str = _("Specify the default paper size.");
 		break;
 
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
@@ -2260,32 +2122,37 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Select how LyX will display any graphics.");
 		break;
 
-	case RC_MAKE_BACKUP:
-		str = _("De-select if you don't want LyX to create backup files.");
+	case RC_DOCUMENTPATH:
+		str = _("The default path for your documents. An empty value selects the directory LyX was started from.");
 		break;
 
-	case RC_BACKUPDIR_PATH:
-		str = _("The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file.");
+	case RC_ESC_CHARS:
+	case RC_USE_ESC_CHARS:
+		str = _("Specify additional chars that can be part of a word.");
 		break;
 
-	case RC_RTL_SUPPORT:
-		str = _("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+	case RC_FONT_ENCODING:
+		str = _("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
 		break;
 
-	case RC_MARK_FOREIGN_LANGUAGE:
-		str = _("Select to control the highlighting of words with a language foreign to that of the document.");
+	case RC_FORMAT:
 		break;
 
-	case RC_LANGUAGE_PACKAGE:
-		str = _("The LaTeX command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
+	case RC_INDEX_COMMAND:
+		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler. E.g., using xindy/make-rules, the command string would be \"makeindex.sh -m $$lang\".");
 		break;
 
-	case RC_LANGUAGE_GLOBAL_OPTIONS:
-		str = _("De-select if you don't want the language(s) used as an argument to \\documentclass.");
+	case RC_INPUT:
 		break;
 
-	case RC_LANGUAGE_USE_BABEL:
-		str = _("De-select if you don't want babel to be used when the language of the document is the default language.");
+	case RC_KBMAP:
+	case RC_KBMAP_PRIMARY:
+	case RC_KBMAP_SECONDARY:
+		str = _("Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard.");
+		break;
+
+	case RC_LABEL_INIT_LENGTH:
+		str = _("Maximum number of words in the initialization string for a new label");
 		break;
 
 	case RC_LANGUAGE_AUTO_BEGIN:
@@ -2308,34 +2175,52 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("The LaTeX command for local changing of the language.");
 		break;
 
-	case RC_DATE_INSERT_FORMAT:
-		//xgettext:no-c-format
-		str = _("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
+	case RC_LANGUAGE_GLOBAL_OPTIONS:
+		str = _("De-select if you don't want the language(s) used as an argument to \\documentclass.");
 		break;
 
-	case RC_SHOW_BANNER:
-		str = _("De-select if you don't want the startup banner.");
+	case RC_LANGUAGE_PACKAGE:
+		str = _("The LaTeX command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
 
-	case RC_WHEEL_JUMP:
-		str = _("The number of lines that are scrolled by mice with wheels or five button mice.");
+	case RC_LANGUAGE_USE_BABEL:
+		str = _("De-select if you don't want babel to be used when the language of the document is the default language.");
 		break;
 
-	case RC_CONVERTER:
+	case RC_LASTFILES:
+		str = _("The file where the last-files information should be stored.");
 		break;
 
-	case RC_VIEWER:
+	case RC_MAKE_BACKUP:
+		str = _("De-select if you don't want LyX to create backup files.");
 		break;
 
-	case RC_FORMAT:
+	case RC_MARK_FOREIGN_LANGUAGE:
+		str = _("Select to control the highlighting of words with a language foreign to that of the document.");
 		break;
 
-	case RC_DEFAULT_LANGUAGE:
-		str = _("New documents will be assigned this language.");
+	case RC_NUMLASTFILES:
+		str = bformat(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu."), maxlastfiles);
 		break;
 
-	case RC_LABEL_INIT_LENGTH:
-		str = _("Maximum number of words in the initialization string for a new label");
+	case RC_PATH_PREFIX:
+		break;
+
+	case RC_PERS_DICT:
+	case RC_USE_PERS_DICT:
+		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
+		break;
+
+	case RC_POPUP_BOLD_FONT:
+		str = _("The bold font in the dialogs.");
+		break;
+
+	case RC_POPUP_FONT_ENCODING:
+		str = _("The encoding for the menu/popups fonts.");
+		break;
+
+	case RC_POPUP_NORMAL_FONT:
+		str = _("The normal font in the dialogs.");
 		break;
 
 	case RC_PREVIEW:
@@ -2350,7 +2235,169 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Scale the preview size to suit.");
 		break;
 
-	default:
+	case RC_PRINTCOLLCOPIESFLAG:
+		str = _("The option for specifying whether the copies should be collated.");
+		break;
+
+	case RC_PRINTCOPIESFLAG:
+		str = _("The option for specifying the number of copies to print.");
+		break;
+
+	case RC_PRINTER:
+		str = _("The default printer to print on. If none is specified, LyX will use the environment variable PRINTER.");
+		break;
+
+	case RC_PRINTEVENPAGEFLAG:
+		str = _("The option to print only even pages.");
+		break;
+
+	case RC_PRINTEXSTRAOPTIONS:
+		str = _("Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed.");
+		break;
+
+	case RC_PRINTFILEEXTENSION:
+		str = _("Extension of printer program output file. Usually \".ps\".");
+		break;
+
+	case RC_PRINTLANDSCAPEFLAG:
+		str = _("The option to print out in landscape.");
+		break;
+
+	case RC_PRINTODDPAGEFLAG:
+		str = _("The option to print only odd pages.");
+		break;
+
+	case RC_PRINTPAGERANGEFLAG:
+		str = _("The option for specifying a comma-separated list of pages to print.");
+		break;
+
+	case RC_PRINTPAPERDIMENSIONFLAG:
+		str = _("Option to specify the dimensions of the print paper.");
+		break;
+
+	case RC_PRINTPAPERFLAG:
+		str = _("The option to specify paper type.");
+		break;
+
+	case RC_PRINTREVERSEFLAG:
+		str = _("The option to reverse the order of the pages printed.");
+		break;
+
+	case RC_PRINTSPOOL_COMMAND:
+		str = _("When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments.");
+		break;
+
+	case RC_PRINTSPOOL_PRINTERPREFIX:
+		str = _("If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command.");
+		break;
+
+	case RC_PRINTTOFILE:
+		str = _("Option to pass to the print program to print to a file.");
+		break;
+
+	case RC_PRINTTOPRINTER:
+		str = _("Option to pass to the print program to print on a specific printer.");
+		break;
+
+	case RC_PRINT_ADAPTOUTPUT:
+		str = _("Select for LyX to pass the name of the destination printer to your print command.");
+		break;
+
+	case RC_PRINT_COMMAND:
+		str = _("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
+		break;
+
+	case RC_RTL_SUPPORT:
+		str = _("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+		break;
+
+	case RC_SCREEN_DPI:
+		str = _("DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here.");
+		break;
+
+	case RC_SCREEN_FONT_ENCODING:
+		str = _("The encoding for the screen fonts.");
+		break;
+
+	case RC_SCREEN_FONT_ROMAN:
+	case RC_SCREEN_FONT_SANS:
+	case RC_SCREEN_FONT_TYPEWRITER:
+		str = _("The screen fonts used to display the text while editing.");
+		break;
+
+	case RC_SCREEN_FONT_ROMAN_FOUNDRY:
+	case RC_SCREEN_FONT_SANS_FOUNDRY:
+	case RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
+		break;
+
+	case RC_SCREEN_FONT_SCALABLE:
+		str = _("Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling.");
+		break;
+
+	case RC_SCREEN_FONT_SIZES:
+		str = _("The font sizes used for calculating the scaling of the screen fonts.");
+		break;
+
+	case RC_SCREEN_ZOOM:
+		//xgettext:no-c-format
+		str = _("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
+		break;
+
+	case RC_SERVERPIPE:
+		str = _("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");
+		break;
+
+	case RC_SET_COLOR:
+		break;
+
+	case RC_SHOW_BANNER:
+		str = _("De-select if you don't want the startup banner.");
+		break;
+
+	case RC_SPELL_COMMAND:
+		str = _("What command runs the spell checker?");
+		break;
+
+	case RC_TEMPDIRPATH:
+		str = _("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
+		break;
+
+	case RC_TEMPLATEPATH:
+		str = _("The path that LyX will set when offering to choose a template. An empty value selects the directory LyX was started from.");
+		break;
+
+	case RC_UIFILE:
+		str = _("The UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
+		break;
+
+	case RC_USER_EMAIL:
+		break;
+
+	case RC_USER_NAME:
+		break;
+
+	case RC_USETEMPDIR:
+		break;
+
+	case RC_USE_INP_ENC:
+		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries.");
+		break;
+
+	case RC_USE_SPELL_LIB:
+		break;
+
+	case RC_VIEWDVI_PAPEROPTION:
+		str = _("Specify the paper command to DVI viewer (leave empty or use \"-paper\")");
+		break;
+
+	case RC_VIEWER:
+		break;
+
+	case RC_WHEEL_JUMP:
+		str = _("The number of lines that are scrolled by mice with wheels or five button mice.");
+		break;
+
+	case RC_LAST:
 		break;
 	}
 

@@ -1,3 +1,8 @@
+2005-01-15  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences.C, forms/form_preferences.fd: add an interface
+	to modify LyXRC::path_prefix.
+
 2005-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* FormPreferences.C: code to get/set the value

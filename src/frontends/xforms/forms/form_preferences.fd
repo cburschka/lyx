@@ -2155,7 +2155,7 @@ argument: 0
 Name: form_preferences_paths
 Width: 450
 Height: 350
-Number of Objects: 16
+Number of Objects: 17
 
 --------------------
 class: FL_BOX
@@ -2448,6 +2448,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_serverpipe_browse
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 170 285 170 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: PATH prefix:|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_path_prefix
 callback: C_FormDialogView_InputCB
 argument: 0
 

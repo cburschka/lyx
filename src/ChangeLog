@@ -1,3 +1,18 @@
+2005-01-16  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.[Ch] (init): rewrite code to prepend the CWD to the PATH
+	for MacOSX and Windows to use prependEnvPath.
+	Strip out the hard-coded block to add elements to the PATH for
+	MacOSX and replace it with a call to prependEnvPath using the
+	contents of LyXRC::path_prefix.
+	(queryUserLyXDir): strip out the code to run reconfigure, instead
+	returning a boolean indicating the necessity to do so.
+	(reconfigureUserLyXDir): contains the code to reconfigure the
+	user support directory. Is now called after the various LyXRC data
+	files have been read.
+
+	* lyxrc.[Ch]: add path_prefix var and code to read/write it.
+
 2005-01-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* converter.[Ch] (convert): take a new parameter try_default. Use
