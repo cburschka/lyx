@@ -377,7 +377,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				int const action =  lyxaction
 					.getPseudoAction(LFUN_FLOAT_LIST,
 							 cit->second.type());
-				string const label = cit->second.name() + _(" List");
+				string const label = _(cit->second.name()) + _(" List");
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
 			}
