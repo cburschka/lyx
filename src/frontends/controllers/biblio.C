@@ -205,7 +205,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 		return author;
 	}
 
-	vector<string> authors = getVectorFromString(author, "and");
+	vector<string> authors = getVectorFromString(author, " and");
 
 	if (!authors.empty()) {
 		author.erase();
@@ -379,24 +379,32 @@ string const parseBibTeX(string data, string const & findkey)
 	string keyvalue;
 	// at first we delete all characters right of '%' and
 	// replace tabs through a space and remove leading spaces
+	// we read the data line by line so that the \n are
+	// ignored, too. 
 	string data_;
 	int Entries = 0;
 	string dummy = token(data,'\n', Entries);
 	while (!dummy.empty()) {
 		dummy = subst(dummy, '\t', ' ');	// no tabs
-		dummy = frontStrip(dummy);	// no leading spaces
+		dummy = frontStrip(dummy);		// no leading spaces
+		// ignore lines with a beginning '%' or ignore all right of %
 		string::size_type const idx =
 			dummy.empty() ? string::npos : dummy.find('%');
-		if (idx != string::npos) {
-			// ignore lines with a beginning '%'
-			if (idx > 0) {
-				data_ += dummy.substr(0,data.find('%'));
-			}
-		} else {
-			data_ += dummy;
+		if (idx != string::npos) 
+			dummy.erase(idx, string::npos);
+		// do we have a new token or a new line of
+		// the same one? In the first case we ignore
+		// the \n and in the second we replace it
+		// with a space
+		if (!dummy.empty()) {
+			if (!contains(dummy, "="))
+		    		data_ += (' ' + dummy); 
+			else
+				data_ += dummy;
 		}
 		dummy = token(data, '\n', ++Entries);
 	}
+
 	// replace double commas with "" for easy scanning
 	data = subst(data_, ",,", "\"\"");
 
@@ -409,9 +417,18 @@ string const parseBibTeX(string data, string const & findkey)
 	data += ',';  // now we have same behaviour for all entries
 		      // because the last one is "blah ... }"
 	Entries = 0;
-	dummy = token(data, ',', Entries);
-	while (!contains(lowercase(dummy), findkey) && !dummy.empty())
-		dummy = token(data, ',', ++Entries);
+	bool found = false;
+	// parsing of title and booktitle is different from the
+	// others, because booktitle contains title
+	do {
+		dummy = token(data, ',', Entries++);
+		if (!dummy.empty()) {
+			found = contains(lowercase(dummy), findkey);
+			if (findkey == "title" && 
+				contains(lowercase(dummy), "booktitle"))
+				found = false;
+		}		
+	} while (!found && !dummy.empty());
 	if (dummy.empty())
 		// no such keyword
 		return string();
@@ -421,10 +438,10 @@ string const parseBibTeX(string data, string const & findkey)
 	// Therefore we read all until the next "=" character, which follows a
 	// new keyword
 	keyvalue = dummy;
-	dummy = token(data, ',', ++Entries);
+	dummy = token(data, ',', Entries++);
 	while (!contains(dummy, '=') && !dummy.empty()) {
 		keyvalue += (',' + dummy);
-		dummy = token(data, ',', ++Entries);
+		dummy = token(data, ',', Entries++);
 	}
 
 	// replace double "" with originals ,, (two commas)

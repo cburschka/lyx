@@ -1,3 +1,11 @@
+2002-05-13  Herbert Voss  <voss@perce.de>
+
+	* biblio.C (getAbbreviatedAuthor): fix bug with "and" for Authors
+	like "Odland, G. and ... "
+	(parseBibTeX): fix bug with title and booktitle 
+	and replace a \n with a space when one entry has more than
+	one line
+
 2002-05-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlCharacter.C: use "ignore" and "reset" as the identifiers, not
