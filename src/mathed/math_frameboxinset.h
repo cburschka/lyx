@@ -1,9 +1,8 @@
 // -*- C++ -*-
-#ifndef MATH_FBOXINSET_H
-#define MATH_FBOXINSET_H
+#ifndef MATH_FRAMEBOXINSET_H
+#define MATH_FRAMEBOXINSET_H
 
 #include "math_nestinset.h"
-#include "math_metricsinfo.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -13,16 +12,12 @@
     \author André Pönitz
 */
 
-class latexkeys;
-
-class MathFboxInset : public MathNestInset {
+class MathFrameboxInset : public MathNestInset {
 public:
 	///
-	MathFboxInset(latexkeys const * key);
+	MathFrameboxInset();
 	///
 	MathInset * clone() const;
-	///
-	mode_type currentMode() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
@@ -32,8 +27,8 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 private:
-	///
-	latexkeys const * key_;
+	/// width of '[' in current font
+	mutable int w_;
 };
 
 #endif

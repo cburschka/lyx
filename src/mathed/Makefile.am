@@ -65,6 +65,8 @@ libmathed_la_SOURCES = \
 	math_factory.h \
 	math_fboxinset.C \
 	math_fboxinset.h \
+	math_frameboxinset.C \
+	math_frameboxinset.h \
 	math_fontinset.C \
 	math_fontinset.h \
 	math_fontoldinset.C \

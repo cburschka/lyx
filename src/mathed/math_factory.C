@@ -10,6 +10,7 @@
 #include "math_dotsinset.h"
 #include "math_ertinset.h"
 #include "math_fboxinset.h"
+#include "math_frameboxinset.h"
 #include "math_fontinset.h"
 #include "math_fontoldinset.h"
 #include "math_fracinset.h"
@@ -218,6 +219,8 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
+	if (s == "framebox")
+		return MathAtom(new MathFrameboxInset);
 	if (s == "kern")
 		return MathAtom(new MathKernInset);
 	if (s == "xymatrix")

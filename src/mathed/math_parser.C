@@ -1149,7 +1149,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				MathInset::mode_type m = mode;
 				if (m == MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
-				for (MathInset::idx_type i = 0; i < at->nargs(); ++i)
+				MathArray opt;
+				parse(opt, FLAG_OPTION, MathInset::VERBATIM_MODE);
+				MathInset::idx_type start = 0;
+				if (opt.size()) {
+					start = 1;
+					at.nucleus()->cell(0) = opt;
+				}
+				for (MathInset::idx_type i = start; i < at->nargs(); ++i)
 					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
 				cell->push_back(at);
 			}
