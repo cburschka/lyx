@@ -41,7 +41,7 @@
 #include "ColorHandler.h"
 #include "frontends/Dialogs.h"
 #include "frontends/GUIRunTime.h"
-#include "frontends/xforms/xform_helpers.h" // for XformColor
+#include "frontends/xforms/xforms_helpers.h" // for XformColor
 
 using std::endl;
 
@@ -287,7 +287,7 @@ void LyXGUI::create_forms()
 	// should a mapping exist.
 	{
 		string filename = AddName(user_lyxdir, "preferences.xform");
-		XformColor::read( filename );
+		XformsColor::read( filename );
 	}
 	
 	// Show the main & title form
