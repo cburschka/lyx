@@ -25,6 +25,7 @@ BUILTSOURCES = \
 	       moc_tabularcreatedlgimpl.C \
 	       moc_emptytable.C
 
+
 		
 LYXDATADIRS = dlg
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
@@ -108,6 +109,10 @@ libqt2_la_SOURCES = \
 	searchdlg.h \
 	searchdlgimpl.C \
 	searchdlgimpl.h \
+	FormSplash.C	\
+	FormSplash.h	\
+	FormSplashImpl.C	\
+	FormSplashImpl.h	\
 	FormTabularCreate.C \
 	FormTabularCreate.h \
 	tabularcreatedlg.C \

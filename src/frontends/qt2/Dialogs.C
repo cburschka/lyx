@@ -25,6 +25,7 @@
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
+#include "FormSplash.h"
 #include "FormTabular.h"
 #include "FormTabularCreate.h"
 #include "FormToc.h"
@@ -43,6 +44,8 @@ Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
+	splash_ = new FormSplash(lv, this);
+   
 	dialogs_.push_back(new FormCharacter(lv, this));
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
@@ -69,9 +72,17 @@ Dialogs::Dialogs(LyXView * lv)
 
 Dialogs::~Dialogs()
 {
-	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
-	     iter != dialogs_.end();
-	     ++iter) {
-		delete *iter;
-	}
+   for (vector<DialogBase *>::iterator iter = dialogs_.begin();
+	iter != dialogs_.end();
+	++iter) {
+      delete *iter;
+   }
+   delete splash_;
+}
+
+
+void Dialogs::destroySplash()
+{
+   delete splash_;
+   splash_ = 0;
 }
