@@ -61,7 +61,6 @@ std::string const currentState(BufferView *);
 void replaceSelection(LyXText * lt);
 
 
-
 }; // namespace bv_funcs
 
 #endif

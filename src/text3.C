@@ -31,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "text_funcs.h"
 #include "undo.h"
@@ -256,11 +257,15 @@ string const freefont2string()
 
 
 
-InsetOld * LyXText::checkInsetHit(int & x, int & y)
+InsetOld * LyXText::checkInsetHit(int x, int y)
 {
-	ParagraphList::iterator pit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
+	ParagraphList::iterator pit;
+	ParagraphList::iterator end;
 
+	getParsInRange(ownerParagraphs(),
+		       bv()->top_y(), bv()->top_y() + bv()->workHeight(),
+		       pit, end);
+	
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
 	for ( ; pit != end; ++pit) {
 		InsetList::iterator iit = pit->insetlist.begin();
@@ -279,7 +284,6 @@ InsetOld * LyXText::checkInsetHit(int & x, int & y)
 			    && y <= inset->y() + inset->descent())
 			{
 				lyxerr << "Hit inset: " << inset << endl;
-				y += bv()->top_y();
 				return inset;
 			}
 		}

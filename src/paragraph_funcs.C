@@ -610,3 +610,24 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 	BOOST_ASSERT(false);
 	return buf.paragraphs().front(); // shut up compiler
 }
+
+
+
+
+void getParsInRange(ParagraphList & pl,
+		    int ystart, int yend,
+		    ParagraphList::iterator & beg,
+		    ParagraphList::iterator & end)
+{
+	ParagraphList::iterator const endpar = pl.end();
+	ParagraphList::iterator const begpar = pl.begin();
+
+	BOOST_ASSERT(begpar != endpar);
+
+	beg = endpar;
+	for (--beg; beg != begpar && beg->y > ystart; --beg)
+		;
+
+	for (end = beg ; end != endpar && end->y < yend; ++end)
+		;
+}

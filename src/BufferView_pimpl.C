@@ -605,8 +605,11 @@ void BufferView::Pimpl::update()
 		bv_->getLyXText()->redoCursor();
 
 		// update all 'visible' paragraphs
-		ParagraphList::iterator beg, end;
-		getVisiblePars(beg, end);
+		ParagraphList::iterator beg;
+		ParagraphList::iterator end;
+		getParsInRange(buffer_->paragraphs(),
+			       top_y(), top_y() + workarea().workHeight(),
+			       beg, end);
 		bv_->text->redoParagraphs(beg, end);
 
 		updateScrollbar();
@@ -968,7 +971,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			lyxerr << "cursor is: " << bv_->cursor() << endl;
 			lyxerr << "dispatching " << cmd1 << " to surrounding LyXText "
 				<< bv_->cursor().innerText() << endl;
-			bv_->cursor().innerText()->dispatch(cmd1);
+			theTempCursor.innerText()->dispatch(cmd1);
+			cursor_ = theTempCursor;
 			//return DispatchResult(true, true);
 		}
 
@@ -979,7 +983,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// FIXME: we should skip these when selecting
 		owner_->updateLayoutChoice();
 		owner_->updateToolbar();
-		fitCursor();
+//		fitCursor();
 
 		// slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
@@ -1341,20 +1345,3 @@ void BufferView::Pimpl::updateParagraphDialog()
 }
 
 
-void BufferView::Pimpl::getVisiblePars
-	(ParagraphList::iterator & beg, ParagraphList::iterator & end)
-{
-	beg = bv_->text->cursorPar();
-	end = beg;
-
-	for ( ; beg != bv_->text->ownerParagraphs().begin(); --beg)
-		if (beg->y - top_y() < 0)
-			break;
-
-	if (beg != bv_->text->ownerParagraphs().begin())
-		--beg;
-
-	for ( ; end != bv_->text->ownerParagraphs().end(); ++end)
-		if (end->y - top_y() > workarea().workHeight())
-			break;
-}

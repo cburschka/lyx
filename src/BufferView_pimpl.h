@@ -193,8 +193,6 @@ private:
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
-	/// range of visible main text paragraphs
-	void getVisiblePars(ParagraphList::iterator &, ParagraphList::iterator &);
 
 	///
 	LCursor cursor_;

@@ -343,9 +343,8 @@ public:
 	void updateCounters();
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
-	 * If hit, the coordinates are changed relative to the inset.
 	 */
-	InsetOld * checkInsetHit(int & x, int & y);
+	InsetOld * checkInsetHit(int x, int y);
 
 	///
 	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;
