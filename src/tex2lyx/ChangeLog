@@ -1,3 +1,9 @@
+2003-10-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (BUILT_SOURCES): use this instead of "linked_files"
+	and the link_files target. make the BUILT_SOURCES dependency
+	automatically link the needed files.
+
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: move boost.C from the linked_files section

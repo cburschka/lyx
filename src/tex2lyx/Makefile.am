@@ -2,6 +2,7 @@ include $(top_srcdir)/config/common.am
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 EXTRA_DIST = test-structure.tex test-insets.tex
+DISTCLEANFILES += $(linked_files)
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -13,7 +14,7 @@ EXTRA_DIST = test-structure.tex test-insets.tex
 
 bin_PROGRAMS = tex2lyx
 
-linked_files = \
+BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \
 	counters.C \
@@ -25,7 +26,7 @@ linked_files = \
 	lyxlex_pimpl.C
 
 tex2lyx_SOURCES = \
-	$(linked_files) \
+	$(BUILT_SOURCES) \
 	Spacing.h \
 	boost.C \
 	context.C \
@@ -47,13 +48,9 @@ tex2lyx_LDADD = \
 	../support/libsupport.la \
 	../../boost/libs/regex/src/libboostregex.la -lz
 
-FloatList.C: link_files
-
-link_files:
-	@for i in $(linked_files); do \
-		rm -f $$i; \
-		ln -s "$(top_srcdir)/src/$$i" . ; \
-	done
+$(BUILT_SOURCES) :
+	@rm -f $@ ; \
+	$(LN_S) $(top_srcdir)/src/$@ .
 
 rm_link_files:
 	rm -f $(linked_files)
