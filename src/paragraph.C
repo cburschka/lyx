@@ -376,6 +376,12 @@ bool Paragraph::insertFromMinibuffer(pos_type pos)
 // end of minibuffer
 
 
+void Paragraph::eraseIntern(lyx::pos_type pos)
+{
+	pimpl_->eraseIntern(pos);
+}
+
+
 void Paragraph::erase(pos_type pos)
 {
 	pimpl_->erase(pos);
@@ -1519,6 +1525,13 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 {
 	return pimpl_->isChangeEdited(start, end);
+}
+
+
+void Paragraph::setChange(lyx::pos_type pos, Change::Type type)
+{
+	pimpl_->setChange(pos, type);
+
 }
 
 

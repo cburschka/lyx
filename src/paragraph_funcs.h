@@ -22,20 +22,21 @@ class TexRow;
 
 ///
 void breakParagraph(BufferParams const & bparams,
-		    Paragraph *,
+		    ParagraphList::iterator par,
 		    lyx::pos_type pos,
 		    int flag);
 
 ///
 void breakParagraphConservative(BufferParams const & bparams,
-				Paragraph *,
+				ParagraphList::iterator par,
 				lyx::pos_type pos);
 
 /**
  * Append the next paragraph onto the tail of this one.
  * Be careful, this doesent make any check at all.
  */
-void mergeParagraph(BufferParams const & bparams, ParagraphList::iterator);
+void mergeParagraph(BufferParams const & bparams,
+		    ParagraphList::iterator par);
 
 
 #if 0

@@ -30,12 +30,12 @@ using std::endl;
 using std::ostream;
 
 void breakParagraph(BufferParams const & bparams,
-		    Paragraph * par,
+		    ParagraphList::iterator par,
 		    pos_type pos,
 		    int flag)
 {
-	// create a new paragraph
-	Paragraph * tmp = new Paragraph(par);
+	// create a new paragraph, and insert into the list
+	Paragraph * tmp = new Paragraph(&*par);
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());
@@ -89,12 +89,12 @@ void breakParagraph(BufferParams const & bparams,
 			Change::Type change(par->lookupChange(i));
 			par->cutIntoMinibuffer(bparams, i);
 			if (tmp->insertFromMinibuffer(j - pos)) {
-				tmp->pimpl_->setChange(j - pos, change);
+				tmp->setChange(j - pos, change);
 				++j;
 			}
 		}
 		for (i = pos_end; i >= pos; --i) {
-			par->pimpl_->eraseIntern(i);
+			par->eraseIntern(i);
 		}
 	}
 
@@ -127,12 +127,12 @@ void breakParagraph(BufferParams const & bparams,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-				Paragraph * par,
+				ParagraphList::iterator par,
 				pos_type pos)
 {
 	// create a new paragraph
-	Paragraph * tmp = new Paragraph(par);
-	tmp->makeSameLayout(par);
+	Paragraph * tmp = new Paragraph(&*par);
+	tmp->makeSameLayout(&*par);
 
 	// When can pos > Last()?
 	// I guess pos == Last() is possible.

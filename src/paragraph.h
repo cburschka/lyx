@@ -183,6 +183,9 @@ public:
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
 
+	/// set change at pos
+	void setChange(lyx::pos_type pos, Change::Type type);
+
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 
@@ -218,6 +221,8 @@ public:
 	///
 	void applyLayout(LyXLayout_ptr const & new_layout);
 
+	/// definite erase
+	void eraseIntern(lyx::pos_type pos);
 	/// erase the char at the given position
 	void erase(lyx::pos_type pos);
 	/// erase the given range. Returns true if actually erased.
@@ -314,10 +319,6 @@ public:
 	InsetList insetlist;
 	///
 	//Counters & counters();
-
-	friend void breakParagraph(BufferParams const & bparams,
-		    Paragraph * par, lyx::pos_type pos, int flag);
-
 private:
 	///
 	LyXLayout_ptr layout_;
