@@ -1,3 +1,11 @@
+
+2003-06-30  André Pönitz  <poenitz@gmx.net>
+
+	* ColorHandler.C:
+	* FormBase.C:
+	* FormDialogView.C:
+	* FormDocument.C: #ifdef BOOSTFORMAT -> bformat
+
 2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* combox.h: fix some usage of \param

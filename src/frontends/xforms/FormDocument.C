@@ -35,7 +35,6 @@
 #include "support/tostr.h"
 #include "support/lstrings.h" // contains_functor, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
-#include "support/BoostFormat.h"
 
 #include "lyx_xpm.h"
 #include "lyx_forms.h"
@@ -139,13 +138,7 @@ void FormDocument::build()
 		if (tit->isTeXClassAvailable()) {
 			fl_addto_combox(obj, tit->description().c_str());
 		} else {
-			string item =
-#if USE_BOOST_FORMAT
-				STRCONV(boost::io::str(boost::format(_("Unavailable: %1$s"))
-					% tit->description()));
-#else
-				_("Unavailable: ") + tit->description();
-#endif
+			string item = bformat(_("Unavailable: %1$s"), tit->description());
 			fl_addto_combox(obj, item.c_str());
 		}
 	}

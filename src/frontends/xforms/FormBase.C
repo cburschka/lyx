@@ -20,8 +20,8 @@
 #include "xforms_helpers.h" // formatted
 
 #include "gettext.h"        // _()
-#include "support/BoostFormat.h"
 
+#include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch
 
@@ -315,20 +315,12 @@ void FormBase::postMessage(string const & message)
 	lyx::Assert(message_widget_);
 
 	int const width = message_widget_->w - 10;
-#if USE_BOOST_FORMAT
-	boost::format fmter = warning_posted_ ?
-		boost::format(_("WARNING! %1$s")) :
-		boost::format("%1$s");
 
-	string const str = formatted(STRCONV(boost::io::str(fmter % message)),
-				     width, FL_NORMAL_SIZE);
-#else
 	string const tmp = warning_posted_ ?
-		_("WARNING!") + string(" ") + message :
+		bformat(_("WARNING! %1$s"), message) :
 		message;
 
 	string const str = formatted(tmp, width, FL_NORMAL_SIZE);
-#endif
 
 	fl_set_object_label(message_widget_, str.c_str());
 	FL_COLOR const label_color = warning_posted_ ? FL_RED : FL_LCOL;
