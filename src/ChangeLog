@@ -1,3 +1,11 @@
+2002-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* LyXSendto.C: remove.
+	* LyXView.C (c-tor): clean-up Jürgen's #if 0 correctly.
+	* lyx_gui.C: remove now-redundant comment.
+	* ColorHandler.h: remove forward declaration of class WorkArea.
+	* lyxfunc.C: remove #include "WorkArea.h".
+
 2002-03-07  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fix problems when the paragraph

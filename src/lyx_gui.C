@@ -264,10 +264,6 @@ void LyXGUI::create_forms()
 
 	// From here down should be done by somebody else. (Lgb)
 
-	//
-	// Create forms
-	//
-
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.
 	string const filename = AddName(user_lyxdir, "preferences.xform");

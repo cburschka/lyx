@@ -23,7 +23,6 @@
 #include "PainterBase.h"
 
 class LyXFont;
-class WorkArea;
 
 /**
  * This is a factory class that can produce GCs with a specific

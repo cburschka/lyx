@@ -33,7 +33,6 @@
 #include "Lsstream.h"
 #include "trans_mgr.h"
 #include "layout.h"
-#include "WorkArea.h"
 #include "bufferview_funcs.h"
 #include "minibuffer.h"
 #include "vspace.h"
@@ -113,7 +112,6 @@ using std::back_inserter;
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
 extern bool selection_possible;
-extern void MenuSendto();
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
@@ -1118,7 +1116,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_EXPORT:
 		if (argument == "custom")
-			owner->getDialogs()->showSendto();//MenuSendto();
+			owner->getDialogs()->showSendto();
 		else
 			Exporter::Export(owner->buffer(), argument, false);
 		break;
