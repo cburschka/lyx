@@ -731,9 +731,9 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 					break;  
 				}
 			}
-		// emergency exit:
-		if (i + 1 < last)		
-			break;  
+			// emergency exit:
+			if (i + 1 < last)		
+				break;  
 		}
 
 		InsetOld * in = pit->getInset(i);
@@ -1468,10 +1468,9 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	    case LYX_ALIGN_BLOCK:
 		{
 			int const ns = numberOfSeparators(*pit, *rit);
-			RowList::iterator next_row = boost::next(rit);
 			bool disp_inset = false;
-			if (next_row != pit->rows.end()) {
-				InsetOld * in = pit->getInset(next_row->pos());
+			if (rit->end() < pit->size()) {
+				InsetOld * in = pit->getInset(rit->end());
 				if (in)
 					disp_inset = in->display();
 			}
@@ -1480,7 +1479,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			// display inset... then stretch it
 			if (ns
 				&& rit->end() < pit->size()
-				&& !pit->isNewline(next_row->pos() - 1)
+				&& !pit->isNewline(rit->end())
 				&& !disp_inset
 				) {
 					fill_separator = w / ns;
