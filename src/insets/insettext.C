@@ -273,7 +273,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     if (!cleared && ((need_update==FULL) || (top_x!=int(x)) ||
 		     (top_baseline!=baseline))) {
 	int w =  insetWidth;
-	unsigned int h = insetAscent + insetDescent;
+	int h = insetAscent + insetDescent;
 	int ty = baseline - insetAscent;
 	
 	if (ty < 0) {
@@ -1225,7 +1225,18 @@ UpdatableInset * InsetText::GetFirstLockingInsetOfType(Inset::Code c)
 
 void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 {
+    bv->text->SetUndo(bv->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	      bv->text->cursor.par()->previous,
+	      bv->text->cursor.par()->next
+#endif
+	    );
     TEXT(bv)->SetFont(bv, font, toggleall);
+    bv->fitCursor(TEXT(bv));
+    UpdateLocal(bv, CURSOR_PAR, true);
 }
 
 

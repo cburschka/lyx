@@ -125,9 +125,10 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, int y_text,
 			   int y_offset, int x_offset)
 {
 	int y = y_text - text->first + y_offset;
-      
-	if (y + row->height() > 0
-	    && y - row->height() <= owner.height()) {
+
+	if (((y+row->height()) > 0) &&
+	    ((y-row->height()) <= (int)owner.height()))
+	{
 		// ok there is something visible
 		LyXText::text_status st = text->status;
 		do {
@@ -222,14 +223,14 @@ bool LyXScreen::FitManualCursor(LyXText * text,
   
 	if (y + desc - text->first >= owner.height())
 		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
-	else if (y - asc < text->first
+	else if (y - asc < (int)text->first
 		&& text->first > 0) {
 		newtop = y - owner.height() / 4;
 	}
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
   
-	if (newtop != text->first) {
+	if (newtop != (int)text->first) {
 		Draw(text, newtop);
 		text->first = newtop;
 		return true;

@@ -280,16 +280,18 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     } else if (need_update == CELL) {
 	nx = int(x);
 	for(i = 0; (cell < actcell) && (i < tabular->rows()); ++i) {
-	    nx = int(x);
 	    for(j = 0; (cell < actcell) && (j < tabular->columns()); ++j) {
 		if (tabular->IsPartOfMultiColumn(i, j))
 		    continue;
 		nx += tabular->GetWidthOfColumn(cell);
 		++cell;
 	    }
-	    baseline += tabular->GetDescentOfRow(i) +
-		tabular->GetAscentOfRow(i + 1) +
-		tabular->GetAdditionalHeight(cell);
+	    if (tabular->row_of_cell(cell) > i) {
+		nx = int(x);
+		baseline += tabular->GetDescentOfRow(i) +
+		    tabular->GetAscentOfRow(i + 1) +
+		    tabular->GetAdditionalHeight(cell);
+	    }
 	}
 	if (the_locking_inset == tabular->GetCellInset(cell)) {
 	    LyXText::text_status st = bv->text->status;
@@ -1019,7 +1021,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     cursor.pos(0);
 	
     actcell = actrow = actcol = 0;
-    unsigned int ly = tabular->GetDescentOfRow(actrow);
+    int ly = tabular->GetDescentOfRow(actrow);
 
     // first search the right row
     while((ly < y) && (actrow < tabular->rows())) {
@@ -1033,7 +1035,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     actcell = tabular->GetCellNumber(actrow, actcol);
 
     // now search the right column
-    unsigned int lx = tabular->GetWidthOfColumn(actcell) -
+    int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
     for(; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +
