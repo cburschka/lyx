@@ -68,7 +68,11 @@ int Chktex::scanLogFile(TeXErrors & terr)
 
 	ifstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {
-		string srcfile, line, pos, warno, warning;
+		string srcfile;
+		string line;
+		string pos;
+		string warno;
+		string warning;
 		token = split(token, srcfile, ':');
 		token = split(token, line, ':');
 		token = split(token, pos, ':');

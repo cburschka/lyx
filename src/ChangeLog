@@ -1,3 +1,19 @@
+2001-06-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfunc.C (Dispatch): use stringstream
+	(MenuNew): use stringstream
+	(Open): use stringstream
+
+	* importer.C (Import): use stringstream
+
+	* bufferview_funcs.C (CurrentState): use stringstream
+
+	* LaTeX.C (run): use stringstream
+
+	* BufferView_pimpl.C (savePosition): use stringstream
+	(restorePosition): use stringstream
+	(MenuInsertLyXFile): use stringstream
+
 2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView.C:

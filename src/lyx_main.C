@@ -587,7 +587,7 @@ bool LyX::ReadRcFile(string const & name)
 				    << " in " << lyxrc_path << endl;
 		if (lyxrc.read(lyxrc_path) < 0) { 
 		        WriteAlert(_("LyX Warning!"), 
-				   _("Error while reading ")+lyxrc_path+".",
+				   _("Error while reading ") + lyxrc_path + ".",
 				   _("Using built-in defaults."));
 			return false;
 		}

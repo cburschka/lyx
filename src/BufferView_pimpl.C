@@ -1122,8 +1122,9 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      bv_->text->cursor.par()->id(),
 				      bv_->text->cursor.pos());
 	if (i > 0) {
-		string const str = _("Saved bookmark") + ' ' + tostr(i);
-		owner_->message(str);
+		ostringstream str;
+		str << _("Saved bookmark") << ' ' << i;
+		owner_->message(str.str().c_str());
 	}
 }
 
@@ -1153,8 +1154,9 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0) {
-		string const str = _("Moved to bookmark") + ' ' + tostr(i);
-		owner_->message(str);
+		ostringstream str;
+		str << _("Moved to bookmark") << ' ' << i;
+		owner_->message(str.str().c_str());
 	}
 }
 
@@ -1390,19 +1392,24 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	if (!IsLyXFilename(filename))
 		filename += ".lyx";
 
+	string const disp_fn(MakeDisplayPath(filename));
+	
 	// Inserts document
-	string const s1 = _("Inserting document") + ' '
-		+ MakeDisplayPath(filename) + " ...";
-	owner_->message(s1);
+	ostringstream s1;
+	s1 << _("Inserting document") << ' '
+	   << disp_fn << " ...";
+	owner_->message(s1.str().c_str());
 	bool const res = bv_->insertLyXFile(filename);
 	if (res) {
-		string const str = _("Document") + ' '
-			+ MakeDisplayPath(filename) + ' ' + _("inserted.");
-		owner_->message(str);
+		ostringstream str;
+		str << _("Document") << ' ' << disp_fn
+		    << ' ' << _("inserted.");
+		owner_->message(str.str().c_str());
 	} else {
-		string const str = _("Could not insert document") + ' '
-			+ MakeDisplayPath(filename);
-		owner_->message(str);
+		ostringstream str;
+		str << _("Could not insert document") << ' '
+		    << disp_fn;
+		owner_->message(str.str().c_str());
 	}
 }
 

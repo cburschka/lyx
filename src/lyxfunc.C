@@ -869,11 +869,10 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_MENUWRITE:
 		if (!owner->buffer()->isUnnamed()) {
-			string const s1 = _("Saving document") + ' '
-				+ MakeDisplayPath(owner->buffer()->fileName()
-						  + "...");
-			
-			owner->message(s1);
+			ostringstream s1;
+			s1 << _("Saving document") << ' '
+			   << MakeDisplayPath(owner->buffer()->fileName() + "...");
+			owner->message(s1.str().c_str());
 			MenuWrite(owner->view(), owner->buffer());
 		} else
 			WriteAs(owner->view(), owner->buffer());
@@ -1043,10 +1042,10 @@ string const LyXFunc::Dispatch(int ac,
 			AllowInput(owner->view());
 			break;
 		}
-		string const str = _("Opening help file") + ' '
-			+ MakeDisplayPath(fname) + "...";
-		
-		owner->message(str);
+		ostringstream str;
+		str << _("Opening help file") << ' '
+		    << MakeDisplayPath(fname) << "...";
+		owner->message(str.str().c_str());
 		owner->view()->buffer(bufferlist.loadLyXFile(fname,false));
 		AllowInput(owner->view());
 		break;
@@ -1568,14 +1567,22 @@ void LyXFunc::MenuNew(bool fromTemplate)
 					MakeDisplayPath(s, 50),
 					_("Do you want to open the document?"))) {
 				// loads document
-				owner->message(_("Opening document") + ' '
-					       + MakeDisplayPath(s) + "...");
-				XFlush(fl_get_display());
+				string const disp_fn(MakeDisplayPath(s));
+				
+				ostringstream str;
+				str << _("Opening  document") << ' '
+				    << disp_fn << "...";
+				
+				owner->message(str.str().c_str());
+				//XFlush(fl_get_display());
 				owner->view()->buffer(
 					bufferlist.loadLyXFile(s));
-				owner->message(_("Document") + ' '
-					       + MakeDisplayPath(s) + ' '
-					       + _("opened."));
+				ostringstream str2;
+				str2 << _("Document") << ' '
+				     << disp_fn << ' ' << _("opened.");
+				
+				owner->message(str2.str().c_str());
+
 				return;
 			}
 		}
@@ -1667,17 +1674,23 @@ void LyXFunc::Open(string const & fname)
 		filename += ".lyx";
 
 	// loads document
-	owner->message(_("Opening document") + ' '
-		       + MakeDisplayPath(filename) + "...");
+	string const disp_fn(MakeDisplayPath(filename));
+
+	ostringstream str;
+	str << _("Opening document") << ' ' << disp_fn << "...";
+	
+	owner->message(str.str().c_str());
+
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
 		owner->view()->buffer(openbuf);
-		owner->message(_("Document") + ' '
-			       + MakeDisplayPath(filename)
-			       + ' ' + _("opened."));
+		ostringstream str;
+		str << _("Document") << ' ' << disp_fn << ' ' << _("opened.");
+		owner->message(str.str().c_str());
 	} else {
-		owner->message(_("Could not open document") + ' '
-			       + MakeDisplayPath(filename));
+		ostringstream str;
+		str << _("Could not open docuent") << ' ' << disp_fn;
+		owner->message(str.str().c_str());
 	}
 }
 

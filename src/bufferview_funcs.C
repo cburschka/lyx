@@ -191,7 +191,8 @@ void FontSize(BufferView * bv, string const & size)
 // Returns the current font and depth as a message. 
 string const CurrentState(BufferView * bv)
 {
-	string state;
+	ostringstream state;
+
 	if (bv->available()) { 
 		// I think we should only show changes from the default
 		// font. (Asger)
@@ -203,31 +204,37 @@ string const CurrentState(BufferView * bv)
 			.TextClass(buffer->params.textclass)
 			.defaultfont();
 		font.reduce(defaultfont);
-		state = _("Font: ") + font.stateText(&buffer->params);
+
+		state << _("Font:") << ' '
+		      << font.stateText(&buffer->params);
+		
 		// The paragraph depth
 		int depth = text->GetDepth();
-		if (depth > 0) 
-			state += string(_(", Depth: ")) + tostr(depth);
+		if (depth > 0)
+			state << _(", Depth: ") << depth;
+		
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
 		if (!text->cursor.par()->params.spacing().isDefault()) {
 			Spacing::Space cur_space =
 				text->cursor.par()->params.spacing().getSpace();
-			state += _(", Spacing: ");
+			state << _(", Spacing: ");
+
 			switch (cur_space) {
 			case Spacing::Single:
-				state += _("Single");
+				state << _("Single");
+				
 				break;
 			case Spacing::Onehalf:
-				state += _("Onehalf");
+				state << _("Onehalf");
 				break;
 			case Spacing::Double:
-				state += _("Double");
+				state << _("Double");
 				break;
 			case Spacing::Other:
-				state += _("Other (");
-				state += tostr(text->cursor.par()->params.spacing().getValue());
-				state += ")";
+				state << _("Other (")
+				      << text->cursor.par()->params.spacing().getValue()
+				      << ")";
 				break;
 			case Spacing::Default:
 				// should never happen, do nothing
@@ -235,7 +242,7 @@ string const CurrentState(BufferView * bv)
 			}
 		}
 	}
-	return state;
+	return state.str().c_str();
 }
 
 

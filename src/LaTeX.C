@@ -174,7 +174,12 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 
 	++count;
 	lyxerr[Debug::LATEX] << "Run #" << count << endl;
-	if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
+	if (lfun) {
+		ostringstream str;
+		str << _("LaTeX run number") << ' ' << count;
+		lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+	}
+	
 	
 	//WriteStatus(lfun, string(_("LaTeX run number ")) + tostr(count));
 	this->operator()();
@@ -251,7 +256,12 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			<< "Dep. file has changed or rerun requested" << endl;
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
-		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
+		if (lfun) {
+			ostringstream str;
+			str << _("LaTeX run number") << ' ' << count;
+			lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+		}
+		
 //		WriteStatus(minib,
 //			    string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
@@ -302,7 +312,12 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		rerun = false;
 		++count;
 		lyxerr[Debug::LATEX] << "Run #" << count << endl;
-		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run numger") + ' ' + tostr(count));
+		if (lfun) {
+			ostringstream str;
+			str << _("LaTeX run number") << ' ' << count;
+			lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+		}
+		
 //		WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
