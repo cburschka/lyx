@@ -1,15 +1,10 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-# xforms has to be fixed here as we still need object files in this directory
-# for the compilation of other frontends, so until that we have to let this
-# here.
+include $(top_srcdir)/config/common.am
+
 SUBDIRS = controllers @FRONTEND@
-ETAGS_ARGS = --lang=c++
-BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(SIGC_CFLAGS) $(BOOST_INCLUDES)
-LIBS =
+
 noinst_LTLIBRARIES = libfrontends.la
+
+INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libfrontends_la_LIBADD= @FRONTEND_GUILIB@ \
 	controllers/*.lo

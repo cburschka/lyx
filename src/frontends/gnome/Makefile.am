@@ -1,19 +1,12 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-ETAGS_ARGS = --lang=c++
+include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgnome.la
-BOOST_INCLUDES = -I$(top_srcdir)/boost
 
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	-I${top_srcdir}/src/frontends/xforms \
 	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
-
-#libgnome_la_LIBADD = \
-#	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 if USE_BASIC_IMAGE_LOADER
 else
@@ -78,7 +71,6 @@ xforms.lo: $(xforms_objects)
 #	../xforms/input_validators.lo \
 #	../xforms/RadioButtonGroup.lo \
 
-LIBS= 
 #LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 
 

@@ -1,7 +1,11 @@
-AUTOMAKE_OPTIONS = foreign
+include $(top_srcdir)/config/common.am
+
+DISTCLEANFILES += config.h libintl.h
+
+MAINTAINERCLEANFILES += $(srcdir)/config.h.in
+
 SUBDIRS = mathed insets graphics support frontends
-DISTCLEANFILES= *.orig *.rej *~ *.bak core libintl.h config.h
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/config.h.in
+
 bin_PROGRAMS = lyx
 
 lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o \
@@ -22,9 +26,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	Variables.h \
 	counters.C \
 	counters.h
- 
-ETAGS_ARGS = --lang=c++
-BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
 localedir = $(datadir)/locale
 BUILT_SOURCES = version.C
@@ -66,7 +68,6 @@ lyx_SOURCES = \
 	LyXAction.h \
 	LyXView.C \
 	LyXView.h \
-	Makefile.in \
 	MenuBackend.C \
 	MenuBackend.h \
 	Painter.C \

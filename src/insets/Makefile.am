@@ -1,10 +1,7 @@
-AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
+
 noinst_LTLIBRARIES = libinsets.la
-LIBS =
-ETAGS_ARGS = --lang=c++
-BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 EXTRA_DIST = \

@@ -1,19 +1,17 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
-ETAGS_ARGS = --lang=c++
+include $(top_srcdir)/config/common.am
+
+DISTCLEANFILES += $(BUILTSOURCES)
+
+SUBDIRS = xforms ui moc
 
 noinst_LTLIBRARIES = libqt2.la
 
-BOOST_INCLUDES = -I$(top_srcdir)/boost
-SUBDIRS=xforms ui moc
-INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} -I$(top_srcdir)/images ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
+INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
+	$(SIGC_CFLAGS) -I$(top_srcdir)/images \
+	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
+
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
-
-
-LIBS=
 
 include Makefile.dialogs
 

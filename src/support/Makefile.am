@@ -1,11 +1,7 @@
-AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
+
 noinst_LTLIBRARIES = libsupport.la
-LIBS =
-ETAGS_ARGS = --lang=c++
-BOOST_INCLUDES = -I$(top_srcdir)/boost
-SIGC_INCLUDES = -I$(top_srcdir) -I$(top_builddir)
+
 INCLUDES = -I${srcdir}/../ $(SIGC_INCLUDES) $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h \

@@ -1,13 +1,10 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
+
 noinst_LTLIBRARIES = libcontrollers.la
-BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
-LIBS =
-ETAGS_ARGS = --lang=c++
 
 EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl
 

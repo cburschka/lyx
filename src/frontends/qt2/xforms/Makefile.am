@@ -1,16 +1,11 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-DISTCLEANFILES = $(XFORMS_SOURCES) $(BUILTSOURCES) *.orig *.rej *~ *.bak core
+include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libqt2xforms.la
 
-BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} -I$(top_srcdir)/images ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
+	${SIGC_CFLAGS} -I$(top_srcdir)/images \
+	${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
-
-LIBS=
-ETAGS_ARGS = --lang=c++
 
 EXTRA_DIST = xformsGImage.C xformsGImage.h
 

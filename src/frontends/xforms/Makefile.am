@@ -1,15 +1,13 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
+
 noinst_LTLIBRARIES = libxforms.la
-BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = -I${top_srcdir}/images -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
-LIBS=
+
 LYXDATADIRS = forms
-ETAGS_ARGS = --lang=c++
 
 EXTRA_DIST = xformsGImage.C xformsGImage.h
 

@@ -1,10 +1,7 @@
-AUTOMAKE_OPTIONS = foreign 1.4
-DISTCLEANFILES= *.orig *.rej *~ *.bak core
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
+
 noinst_LTLIBRARIES = libmathed.la
-LIBS=
-ETAGS_ARGS = --lang=c++
-BOOST_INCLUDES = -I$(top_srcdir)/boost
+
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
