@@ -1,3 +1,9 @@
+2001-01-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetbib.C (bibitemWidest): Use lyxfont::width instead of
+ 	par->bibkey->width. This fixes the crashes when running without
+	gui or when having included documents.
+
 2001-01-22  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetcommand.C (getAsString, setFromString): Cleanup.

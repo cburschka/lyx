@@ -19,6 +19,7 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "lyxrc.h"
+#include "font.h"
 
 using std::ostream;
 using std::ifstream;
@@ -397,7 +398,9 @@ string const bibitemWidest(Buffer const * buffer)
       
 	while (par) {
 		if (par->bibkey) {
-			int const wx = par->bibkey->width(bv, font);
+			int const wx =
+				lyxfont::width(par->bibkey->getScreenLabel(),
+					       font);
 			if (wx > w) {
 				w = wx;
 				bkey = par->bibkey;
