@@ -1,3 +1,16 @@
+2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/layouts/extletter.layout: 
+	* lib/layouts/extreport.layout: 
+	* lib/layouts/extbook.layout: 
+	* lib/layouts/extarticle.layout: new files from Herbert Voss. 
+
+	* lib/bind/menus.bind: fix M-s bindings to use LyX names for fonts and
+	not GUI names.
+
+	* lib/examples/nl_MathLabeling.lyx: 
+	* lib/examples/nl_multicol.lyx: new translations from Tino meinen.
+
 2001-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/insettabular.C (getMaxWidth): do the speedup in a

@@ -378,9 +378,8 @@ Notes: The document class
 \family sans 
 aa
 \family default 
- (Version 5.01) can be used to write articles for submission to the 
- scientific journal
- 
+ (Version 5.01) can be used to write articles for submission to the  scientific
+ journal 
 \emph on 
 Astronomy and Astrophysics
 \emph default 
@@ -540,6 +539,94 @@ entcs
  is Elsevier Science's Electronic Notes in Theoretical Computer Science
  article style, used for the ENTCS series, and many conference proceedings.
  
+\layout Subsection
+
+extarticle
+\layout Description
+
+Found: @chk_extarticle@
+\layout Description
+
+CTAN: 
+\family typewriter 
+tex-archive/macros/latex/contrib/other/extsizes/
+\layout Description
+
+Notes: 
+\family sans 
+extarticle
+\family default 
+ is equivalent to standard 
+\family sans 
+article
+\family default 
+ class with additional document-wide font sizes.
+\layout Subsection
+
+extbook
+\layout Description
+
+Found: @chk_extbook@
+\layout Description
+
+CTAN: 
+\family typewriter 
+tex-archive/macros/latex/contrib/other/extsizes/
+\layout Description
+
+Notes: 
+\family sans 
+extbook
+\family default 
+ is equivalent to standard 
+\family sans 
+book
+\family default 
+ class with additional document-wide font sizes.
+\layout Subsection
+
+extreport
+\layout Description
+
+Found: @chk_extreport@
+\layout Description
+
+CTAN: 
+\family typewriter 
+tex-archive/macros/latex/contrib/other/extsizes/
+\layout Description
+
+Notes: 
+\family sans 
+extreport
+\family default 
+ is equivalent to standard 
+\family sans 
+report
+\family default 
+ class with additional document-wide font sizes.
+\layout Subsection
+
+extletter
+\layout Description
+
+Found: @chk_extletter@
+\layout Description
+
+CTAN: 
+\family typewriter 
+tex-archive/macros/latex/contrib/other/extsizes/
+\layout Description
+
+Notes: 
+\family sans 
+extletter
+\family default 
+ is equivalent to standard 
+\family sans 
+letter
+\family default 
+ class with additional document-wide font sizes.
 \layout Subsection
 
 g-brief-en
