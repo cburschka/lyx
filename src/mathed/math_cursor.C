@@ -637,8 +637,8 @@ void MathCursor::interpret(string const & s)
 				p = new MathScriptInset(up, !up);
 			}
 			insert(p);
-			plainLeft();
 		}
+		plainLeft();
 		push(p, true);
 		if (up)
 			p->up(true);
