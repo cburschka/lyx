@@ -267,10 +267,8 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	bool prev_struckout = isDeletedText(*pit_, pos);
 	bool prev_newtext = isInsertedText(*pit_, pos);
 
-	++vpos;
-
 	// collect as much similar chars as we can
-	while (vpos < end && (pos = text_.bidi.vis2log(vpos)) >= 0) {
+	for (++vpos; vpos < end && (pos = text_.bidi.vis2log(vpos)) >= 0; ++vpos) {
 		char c = pit_->getChar(pos);
 
 		if (!IsPrintableNonspace(c))
@@ -293,8 +291,8 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 
 		if (arabic)
 			c = pit_->transformChar(c, pos);
+
 		str += c;
-		++vpos;
 	}
 
 	if (prev_struckout)
@@ -846,7 +844,7 @@ void RowPainter::paintText()
 	bool is_struckout = false;
 	int last_strikeout_x = 0;
 
-	for (pos_type vpos = row_.pos(); vpos <= end; ) {
+	for (pos_type vpos = row_.pos(); vpos < end; ) {
 		if (x_ > bv_.workWidth())
 			break;
 
