@@ -4,8 +4,8 @@
  * 
  *           LyX, the High Level Word Processor
  *        
- *           Copyright (C) 1995Matthias Ettrich
- *           Copyright (C) 1995-1998 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1998 The LyX Team.
  *
  * ====================================================== 
  A few prototypes and definitions needed for Windows NT */

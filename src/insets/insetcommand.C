@@ -118,12 +118,12 @@ void InsetCommand::scanCommand(string const & cmd)
 			if (nestdepth == 0) {
 				state = WS;
 			} else {
-				nestdepth--;
+				--nestdepth;
 			}
 		}
 		if ((state == Option  && c == '[') ||
 		    (state == Content && c == '{')) {
-		    	nestdepth++;
+		    	++nestdepth;
 		}
 		switch (state) {
 		case Command:	tcommand += c; break;

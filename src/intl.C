@@ -288,7 +288,7 @@ void Intl::InitKeyMapper(bool on)
 		else {
 			Language->addto(tex_babel[n]);
 			Language2->addto(tex_babel[n]);
-			n++;
+			++n;
 		}
 	
 	Language->addto(_("other..."));

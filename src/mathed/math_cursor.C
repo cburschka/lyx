@@ -974,7 +974,7 @@ XPoint * MathedCursor::SelGetArea(int & np)
     np = i;
 //    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
 //    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";
-//    for (i= 0; i<np; i++)
+//    for (i = 0; i < np; ++i)
 //      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
     
     return &point[0];

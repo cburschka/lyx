@@ -208,7 +208,7 @@ void matrix_cb(FL_OBJECT *, long data)
     case 2: 
       {
 	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
-	 for (int i= 0; i<nx; i++) h_align_str[i] = 'c';
+	 for (int i = 0; i < nx; ++i) h_align_str[i] = 'c';
 	 //memset(h_align_str, 'c', nx);
 	 h_align_str[nx] = '\0';
 //	 fl_freeze_form(fd_form_main->form_main);

@@ -518,7 +518,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					<< "Desc: " << desc << '\n'
 					<< "Text: " << errstr << endl;
 				terr.insertError(line, desc, errstr);
-				num_errors++;
+				++num_errors;
 			}
 		} else {
 			// information messages, TeX warnings and other

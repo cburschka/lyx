@@ -210,7 +210,7 @@ void LyXText::Draw(Row const * row, LyXParagraph::size_type & pos,
 		scr.drawLine(gc_foot, offset + row->baseline,
 			     int(tmpx), int(x - tmpx));
 	  
-		pos++;
+		++pos;
 		return;
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = row->par->GetInset(pos);
@@ -576,8 +576,8 @@ int LyXText::NumberOfCell(LyXParagraph * par,
    LyXParagraph::size_type tmp_pos = 0;
    while (tmp_pos < pos) {
       if (par->IsNewline(tmp_pos))
-      	 cell++;
-      tmp_pos++;
+      	 ++cell;
+      ++tmp_pos;
    }
    return cell;
 }
@@ -589,10 +589,10 @@ int LyXText::WidthOfCell(LyXParagraph * par,
    int w = 0;
    while (pos < par->Last() && !par->IsNewline(pos)) {
       w += SingleWidth(par, pos);
-      pos++;
+      ++pos;
    }
    if (par->IsNewline(pos))
-      pos++;
+      ++pos;
    return w;
 }
 
@@ -693,7 +693,7 @@ LyXText::NextBreakPoint(Row const * row, int width) const
 						if (pos < last-1) {
 							last_separator = i;
 							if (IsLineSeparatorChar(par->GetChar(i+1)))
-								last_separator++;
+								++last_separator;
 						} else
 							last_separator = last; // to avoid extra rows
 					} else
@@ -1006,7 +1006,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    labeladdon = 0;
 
    // Check if any insets are larger
-   for (pos = row_ptr->pos; pos <= pos_end; pos++) {
+   for (pos = row_ptr->pos; pos <= pos_end; ++pos) {
       if (row_ptr->par->GetChar(pos) == LyXParagraph::META_INSET) {
 	 tmpfont = GetFont(row_ptr->par, pos);
          tmpinset = row_ptr->par->GetInset(pos);
@@ -1024,7 +1024,8 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    // Check if any custom fonts are larger (Asger)
    // This is not completely correct, but we can live with the small,
    // cosmetic error for now.
-   LyXFont::FONT_SIZE maxsize = row_ptr->par->HighestFontInRange(row_ptr->pos, pos_end);
+   LyXFont::FONT_SIZE maxsize = row_ptr->par->HighestFontInRange(row_ptr->pos,
+								 pos_end);
    if (maxsize > font.size()) {
 	font.setSize(maxsize);
 
@@ -1045,8 +1046,8 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    /* table stuff -- end*/
 
    // This is nicer with box insets:
-   maxasc++;
-   maxdesc++;
+   ++maxasc;
+   ++maxdesc;
 
    row_ptr->ascent_of_text = maxasc;
    
@@ -1252,7 +1253,7 @@ void LyXText::AppendParagraph(Row * row) const
 
       // Insert the new row
       if (z < lastposition) {
-	 z++;
+	 ++z;
 	 InsertRow(row, row->par, z);
 	 row = row->next;
 
@@ -1287,7 +1288,7 @@ void LyXText::BreakAgain(Row * row) const
 	    row->height = 0;
 	 } else  {
 	    row = row->next;
-	    z++;
+	    ++z;
 	    if (row->pos == z)
 		    not_ready = false;     // the rest will not change
 	    else {
@@ -1325,14 +1326,14 @@ void LyXText::BreakAgainOneRow(Row * row)
    if (z < row->par->Last() ) {
       if (!row->next || (row->next && row->next->par != row->par)) {
 	 /* insert a new row */ 
-	 z++;
+	 ++z;
 	 InsertRow(row, row->par, z);
 	 row = row->next;
 	 row->height = 0;
       }
       else  {
 	 row= row->next;
-	 z++;
+	 ++z;
 	 if (row->pos != z)
 	    row->pos = z;
       }
@@ -1483,7 +1484,8 @@ void LyXText::OpenFootnote()
    /* ok, move the cursor right before the footnote */ 
    
    /* just a little faster than using CursorRight() */
-   for (cursor.pos= 0; cursor.par->ParFromPos(cursor.pos)!= par; cursor.pos++);
+   for (cursor.pos = 0;
+	cursor.par->ParFromPos(cursor.pos) != par; cursor.pos++);
    /* now the cursor is at the beginning of the physical par */
    SetCursor(cursor.par,
 	     cursor.pos + cursor.par->ParFromPos(cursor.pos)->text.size());
@@ -1590,31 +1592,31 @@ void LyXText::TableFeatures(int feature) const
                     !cursor.par->table->IsContRow(cell)) {
                   while (pos < cursor.par->Last() &&
                          !cursor.par->IsNewline(pos))
-                      pos++;
+                      ++pos;
                   if (pos < cursor.par->Last())
-                      pos++;
-                  cell++;
+                      ++pos;
+                  ++cell;
               }
               while((pos < cursor.par->Last()) &&
                     cursor.par->table->IsContRow(cell)) {
                   while (pos < cursor.par->Last() &&
                          !cursor.par->IsNewline(pos))
-                      pos++;
+                      ++pos;
                   if (pos < cursor.par->Last())
-                      pos++;
-                  cell++;
+                      ++pos;
+                  ++cell;
               }
               cell_org = --cell;
               if (pos < cursor.par->Last())
-                  pos--;
+                  --pos;
           }
           while (pos < cursor.par->Last() && 
                  (cell == cell_org || !cursor.par->table->IsFirstCell(cell))){
               while (pos < cursor.par->Last() && !cursor.par->IsNewline(pos))
-                  pos++;
+                  ++pos;
               if (pos < cursor.par->Last())
-                  pos++;
-              cell++;
+                  ++pos;
+              ++cell;
           }
 		
           /* insert the new cells */ 
@@ -1646,16 +1648,15 @@ void LyXText::TableFeatures(int feature) const
                  (cell == cell_org
                   || !cursor.par->table->IsFirstCell(cell))){
               while (pos < cursor.par->Last() && !cursor.par->IsNewline(pos))
-                  pos++;
+                  ++pos;
               if (pos < cursor.par->Last())
-                  pos++;
-              cell++;
+                  ++pos;
+              ++cell;
           }
 		
           /* insert the new cells */ 
           int number = cursor.par->table->NumberOfCellsInRow(cell_org);
-          int i;
-          for (i= 0; i<number; i++)
+          for (int i = 0; i < number; ++i)
               cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
 		
           /* append the row into the table */
@@ -1784,9 +1785,9 @@ void LyXText::TableFeatures(int feature) const
           if (!selection){
               cursor.par->table->SetRightLine(actCell, lineSet);
           } else {
-		  LyXParagraph::size_type i;
 		  int n = -1, m = -2;
-              for (i= sel_start_cursor.pos; i<= sel_end_cursor.pos; i++){
+		  LyXParagraph::size_type i = sel_start_cursor.pos;
+              for (; i <= sel_end_cursor.pos; ++i) {
                   if ((n= NumberOfCell(sel_start_cursor.par, i)) != m) {
                       cursor.par->table->SetRightLine(n, lineSet);
                       m = n;
@@ -1802,9 +1803,9 @@ void LyXText::TableFeatures(int feature) const
           if (!selection){
               cursor.par->table->SetAlignment(actCell, setAlign);
           } else {
-		  LyXParagraph::size_type i;
               int n = -1, m = -2;
-              for (i= sel_start_cursor.pos; i<= sel_end_cursor.pos; i++){
+	      LyXParagraph::size_type i = sel_start_cursor.pos;
+              for (; i <= sel_end_cursor.pos; ++i) {
                   if ((n= NumberOfCell(sel_start_cursor.par, i)) != m) {
                       cursor.par->table->SetAlignment(n, setAlign);
                       m = n;
@@ -1840,8 +1841,8 @@ void LyXText::TableFeatures(int feature) const
 	      int newlines = cursor.par->table->UnsetMultiColumn(actCell);
 	      LyXParagraph::size_type pos = cursor.pos;
 	      while (pos < cursor.par->Last() && !cursor.par->IsNewline(pos))
-                  pos++;
-	      for (;newlines;newlines--)
+                  ++pos;
+	      for (; newlines; --newlines)
                   cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
 	      RedoParagraph();
 	      return;
@@ -1871,9 +1872,9 @@ void LyXText::TableFeatures(int feature) const
                                   sel_start_cursor.par->InsertChar(i, ' ');
                               else {
                                   sel_end_cursor.pos--;
-                                  i--;
+                                  --i;
                               }
-                              number++;
+                              ++number;
                           }
                       }
                       cursor.par->table->
@@ -1942,9 +1943,9 @@ void LyXText::TableFeatures(int feature) const
           if (!selection){
               cursor.par->table->SetRotateCell(actCell, false);
           } else {
-		  LyXParagraph::size_type i;
 		  int n = -1, m = -2;
-              for (i= sel_start_cursor.pos; i<= sel_end_cursor.pos; i++){
+		  LyXParagraph::size_type i = sel_start_cursor.pos;
+              for (; i <= sel_end_cursor.pos; ++i) {
                   if ((n= NumberOfCell(sel_start_cursor.par, i)) != m) {
                       cursor.par->table->SetRotateCell(n, false);
                       m = n;
@@ -2088,7 +2089,7 @@ void LyXText::CheckParagraphInTable(LyXParagraph * par,
 	LyXParagraph::size_type tmp_pos = pos;
 	/* update the table information */
 	while (tmp_pos && !par->IsNewline(tmp_pos - 1))
-		tmp_pos--;
+		--tmp_pos;
 	if (par->table->SetWidthOfCell(NumberOfCell(par, pos),
 				       WidthOfCell(par, tmp_pos))) {
 		LyXCursor tmpcursor = cursor;
@@ -2581,7 +2582,7 @@ void LyXText::CursorRightOneWord() const
 		{
 		  //    printf("Current pos1 %d", tmpcursor.pos) ;
 			tmpcursor.pos++;
-			steps++;
+			++steps;
 		}
 		// Advance through word.
 		while ( tmpcursor.pos < tmpcursor.par->Last() &&
@@ -2589,7 +2590,7 @@ void LyXText::CursorRightOneWord() const
 		{
 		  //     printf("Current pos2 %d", tmpcursor.pos) ;
 			tmpcursor.pos++;
-			steps++;
+			++steps;
 		}
 	}
 	SetCursor(tmpcursor.par, tmpcursor.pos);
@@ -2931,7 +2932,8 @@ void LyXText::Delete()
 
 	LyXCursor old_cursor = cursor;
 	int old_cur_par_id = old_cursor.par->id();
-	int old_cur_par_prev_id = old_cursor.par->previous->id();
+	int old_cur_par_prev_id = old_cursor.par->previous ?
+		old_cursor.par->previous->id() : 0;
 	
 	// just move to the right
 	CursorRightIntern();
@@ -2942,7 +2944,8 @@ void LyXText::Delete()
 	// old_cursor. Will a solution where we compare paragraph id's
 	//work better?
 #if 1
-	if (cursor.par->previous->id() == old_cur_par_prev_id
+	if ((cursor.par->previous ? cursor.par->previous->id() : 0)
+	    == old_cur_par_prev_id
 	    && cursor.par->id() != old_cur_par_id)
 		return; // delete-empty-paragraph-mechanism has done it
 #else
@@ -3661,11 +3664,11 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 							  on_off);
 				x_old = x;
                 /* take care about the alignment and other spaces */
-				cell++;
+				++cell;
 				x += row_ptr->par->table->GetBeginningOfTextInCell(cell);
 				if (row_ptr->par->table->IsFirstCell(cell))
-					cell--; // little hack, sorry
-				pos++;
+					--cell; // little hack, sorry
+				++pos;
 			} else if (row_ptr->par->IsHfill(pos)) {
 				x += 1;
 				
@@ -3673,7 +3676,7 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 						     offset + row_ptr->baseline - DefaultHeight()/2, 
 						     offset + row_ptr->baseline);		
 				x += 2;
-				pos++;
+				++pos;
 			} else {
 				if (row_ptr->par->IsSeparator(pos)) {
 					tmpx = x;
@@ -3702,7 +3705,7 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 								     int(x - tmpx));			    
 						}
 					}
-					pos++;
+					++pos;
 				} else
 					Draw(row_ptr, pos, scr, offset, x);
 			}
@@ -3772,7 +3775,7 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 							     offset + row_ptr->baseline);
 				}
 				x += 2;
-				pos++;
+				++pos;
 			} else {
 				if (row_ptr->par->IsSeparator(pos)) {
 					tmpx = x;
@@ -3803,7 +3806,7 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 								     int(x - tmpx));
 						}
 					}
-					pos++;
+					++pos;
 				} else
 					Draw(row_ptr, pos, scr, offset, x);
 			}
@@ -3869,7 +3872,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 
 	int last = RowLast(row);
 	if (row->par->IsNewline(last))
-		last--;
+		--last;
    
 	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
 					   row->par->GetLayout());
@@ -3888,7 +3891,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 				if (x_old + row->par->table->WidthOfColumn(cell) <= x){
 					tmpx = x_old + row->par->table->WidthOfColumn(cell);
 					x_old = tmpx;
-					cell++;
+					++cell;
 					tmpx += row->par->table->GetBeginningOfTextInCell(cell);
 					++c;
 				} else
@@ -3923,7 +3926,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 				 && row->par->IsSeparator(c)) {
 				tmpx+= fill_separator;  
 			}
-			c++;
+			++c;
 			if (c == main_body
 			    && row->par->IsLineSeparator(c - 1)) {
 				tmpx += GetFont(row->par, -2)

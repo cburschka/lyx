@@ -679,7 +679,7 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base) const
 		// If we didn't open an environment above, we open one here
 		if (!env) {
 			file += '{';
-			count++;
+			++count;
 		}
 		file += '\\';
 		file += LaTeXSizeNames[f.size()];

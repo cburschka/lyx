@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _CREDITS_H
-#define _CREDITS_H
+#ifndef CREDITS_H
+#define CREDITS_H
 
 void ShowCredits();
 void ShowCopyright();

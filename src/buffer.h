@@ -49,7 +49,7 @@ struct DEPCLEAN {
 	///
 	string master;
 	///
-	DEPCLEAN *next;
+	DEPCLEAN * next;
 };
 
 /** The buffer object.
@@ -249,7 +249,7 @@ public:
 	void setParentName(string const &);
 
 	/// Is buffer read-only?
-	bool isReadonly() { return read_only; }
+	bool isReadonly() const { return read_only; }
 
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true) {

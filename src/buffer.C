@@ -325,7 +325,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\layout") {
 			if (!return_par) 
 				return_par = par;
@@ -445,7 +445,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			par->start_of_appendix = true;
 		} else if (token == "\\paragraph_separation") {
 			tmpret = lex.FindToken(string_paragraph_separation);
-			if (tmpret == -1) tmpret++;
+			if (tmpret == -1) ++tmpret;
 			if (tmpret != LYX_LAYOUT_DEFAULT) 
 				params.paragraph_separation =
 					static_cast<BufferParams::PARSEP>(tmpret);
@@ -465,7 +465,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			params.readGraphicsDriver(lex);
 		} else if (token == "\\quotes_language") {
 			tmpret = lex.FindToken(string_quotes_language);
-			if (tmpret == -1) tmpret++;
+			if (tmpret == -1) ++tmpret;
 			if (tmpret != LYX_LAYOUT_DEFAULT) {
 				InsetQuotes::quote_language tmpl = 
 					InsetQuotes::EnglishQ;
@@ -511,13 +511,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
                                 tmpret = lex.FindToken(string_oldpapersize);
 #endif
 			if (tmpret == -1)
-                                tmpret++;
+                                ++tmpret;
                         else
                                 params.papersize2 = tmpret;
                 } else if (token == "\\paperpackage") {
 			tmpret = lex.FindToken(string_paperpackages);
 			if (tmpret == -1) {
-                                tmpret++;
+                                ++tmpret;
                                 params.paperpackage = BufferParams::PACKAGE_NONE;
                         } else
                                 params.paperpackage = tmpret;
@@ -529,7 +529,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			params.use_amsmath = lex.GetInteger();
 		} else if (token == "\\paperorientation") {
 			tmpret = lex.FindToken(string_orientation);
-			if (tmpret == -1) tmpret++;
+			if (tmpret == -1) ++tmpret;
 			if (tmpret != LYX_LAYOUT_DEFAULT) 
 				params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
 		} else if (token == "\\paperwidth") {
@@ -701,7 +701,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			font.setLyXColor(lex.GetString());
 		} else if (token == "\\align") {
 			tmpret = lex.FindToken(string_align);
-			if (tmpret == -1) tmpret++;
+			if (tmpret == -1) ++tmpret;
 			if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
 				tmpret2 = 1;
 				for (; tmpret > 0; --tmpret)
@@ -751,7 +751,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 #if 0 // should not be used any more
 			} else if (tmptok == "Latex") {
 				// This one is on its way out
@@ -774,7 +774,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 #endif
 #if 0 // should not be used any more
 			} else if (tmptok == "LatexDel") {
@@ -852,7 +852,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 #endif
 			} else if (tmptok == "\\i") {
 				inset = new InsetLatexAccent;
@@ -860,28 +860,28 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			} else if (tmptok == "FormulaMacro") {
 				inset = new InsetFormulaMacro;
 				inset->Read(lex);
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			} else if (tmptok == "Formula") {
 				inset = new InsetFormula;
 				inset->Read(lex);
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			} else if (tmptok == "Figure") {
 				inset = new InsetFig(100, 100, this);
 				inset->Read(lex);
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 #if 0
 			} else if (tmptok == "Label") {
 				// Kept for compability. Remove in 0.13.
@@ -893,7 +893,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 					par->InsertChar(pos, LyXParagraph::META_INSET); 
 					par->InsertInset(pos, inset);
 					par->SetFont(pos, font);
-					pos++;
+					++pos;
 				}
 #endif
 			} else if (tmptok == "Info") {
@@ -902,14 +902,14 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			} else if (tmptok == "Include") {
 				inset = new InsetInclude(string(), this);
 				inset->Read(lex);
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			} else if (tmptok == "LatexCommand") {
 				InsetCommand inscmd;
 				inscmd.Read(lex);
@@ -1277,12 +1277,12 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			if (depth != par->depth) {
 				if (par->depth > depth) {
 					while (par->depth > depth) {
-						depth++;
+						++depth;
 					}
 				}
 				else {
 					while (par->depth < depth) {
-						depth--;
+						--depth;
 					}
 				}
 			}
@@ -1450,7 +1450,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			case LyXParagraph::META_NEWLINE:
 				if (par->table) {
 					if (par->table->NumberOfCellsInRow(actcell) <= cell) {
-						for(j = actpos; j < clen[cell-1];j++)
+						for(j = actpos; j < clen[cell - 1]; ++j)
 							ofs << ' ';
 						ofs << " |\n";
 						for(j = 0; j < depth; ++j)
@@ -2618,7 +2618,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c!= '\0')
 				os << c; // see LaTeX-Generation...
-			char_line_count++;
+			++char_line_count;
 		} else if (c == LyXParagraph::META_INSET) {
 			inset = par->GetInset(i);
 			string tmp_out;
@@ -2633,7 +2633,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				                     // non-breaking characters
 				// char is ' '
 				if (desc_on == 1) {
-					char_line_count++;
+					++char_line_count;
 					linux_doc_line_break(os, char_line_count, 6);
 					os << "</tag>";
 					desc_on = 2;
@@ -3013,7 +3013,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 
 	char_line_count = depth;
 	if(!style.free_spacing)
-		for (j= 0;j< depth;j++)
+		for (j = 0; j < depth; ++j)
 			file += ' ';
 
 	/* parsing main loop */
@@ -3062,7 +3062,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 			// "TeX"-Mode on ==> SGML-Mode on.
 			if (c!= '\0')
 				file += c;
-			char_line_count++;
+			++char_line_count;
 		}
 		else {
 			string sgml_string;
@@ -3072,7 +3072,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 				                     // non-breaking characters
 				// char is ' '
 				if (desc_on == 1) {
-					char_line_count++;
+					++char_line_count;
 					file += '\n';
 					file += "</term><listitem><para>";
 					desc_on = 2;
@@ -3488,7 +3488,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 		c = par->GetChar(i);
 		if (par->table->IsContRow(cell)) {
 			if (c == LyXParagraph::META_NEWLINE)
-				cell++;
+				++cell;
 			continue;
 		}
 		font2 = par->GetFontSettings(i);
@@ -3524,7 +3524,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 			if (par->table->CellHasContRow(cell)>= 0)
 				par->RoffContTableRows(ofs, i+1, cell);
 			par->table->RoffEndOfCell(ofs, cell);
-			cell++;
+			++cell;
 			break;
 		case LyXParagraph::META_HFILL: 
 			break;
@@ -3809,7 +3809,7 @@ string Buffer::getIncludeonlyList(char delim)
 					lst += ChangeExtension(insetinc->getContents(), string(), true);
 				}
 			}
-			pos++;
+			++pos;
 		} 
 		par = par->next;
 	}
@@ -3836,12 +3836,12 @@ string Buffer::getReferenceList(char delim)
 	while (par){
 		pos = -1;
 		while ((inset = par->ReturnNextInsetPointer(pos))){     
-			for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
+			for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
 				if (!lst.empty())
 					lst += delim;
 				lst += inset->getLabel(i);
 			}
-			pos++;
+			++pos;
 		} 
 		par = par->next;
 	}
@@ -3893,7 +3893,7 @@ string Buffer::getBibkeyList(char delim)
 						bibkeys += bk;
 					}
 				}
-				pos++;
+				++pos;
 			}
 			par = par->next;
 		}
@@ -3918,7 +3918,7 @@ bool BufferView::gotoLabel(string const & label)
         while (par) {
                 pos = -1;
                 while ((inset = par->ReturnNextInsetPointer(pos))){     
-                        for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
+                        for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
 				if (label == inset->getLabel(i)) {
 					beforeChange();
 					text->SetCursor(par, pos);
@@ -3927,7 +3927,7 @@ bool BufferView::gotoLabel(string const & label)
 					return true;
 				}
 			}
-                        pos++;
+                        ++pos;
                 } 
                 par = par->next;
 	}

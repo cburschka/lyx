@@ -199,7 +199,7 @@ MathParInset::Metrics()
 	      }
 	      data.setTab(x-tb, tab);
 	      tb = x;
-	      tab++;
+	      ++tab;
 	      limits = false;                   
 	      data.Next();
 	  } else
@@ -282,7 +282,7 @@ MathFracInset::Draw(int x, int y)
     short sizex = size;
     
     idx = 0;
-    if (size == LM_ST_DISPLAY) size++;
+    if (size == LM_ST_DISPLAY) ++size;
     MathParInset::Draw(x+(width-w0)/2, y - des0);
     den->Draw(x+(width-w1)/2, y + den->Ascent() + 2 - dh);
     size = sizex;
@@ -302,7 +302,7 @@ MathFracInset::Metrics()
     short idxp = idx;
     short sizex = size; 
     idx = 0;
-    if (size == LM_ST_DISPLAY) size++; 
+    if (size == LM_ST_DISPLAY) ++size; 
     MathParInset::Metrics();
     size = sizex;
     w0 = width;
@@ -339,7 +339,7 @@ MathBigopInset::Draw(int x, int y)
    if (sym == LM_oint) {
       XDrawArc(fl_display, pm, mathLineGC, x, y-5*width/4, width, width, 0, 23040);
       XFlush(fl_display);
-      x++;
+      ++x;
    }
    XDrawString(fl_display, pm, mathGC, x, y, s, ls);
    XFlush(fl_display);

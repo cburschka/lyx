@@ -32,6 +32,7 @@ InsetLatexAccent::InsetLatexAccent()
 }
 
 
+#if 0  // the compiler generated version should be ok.
 InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
 	: Inset(), contents(other.contents),
 	  candisp(other.candisp),
@@ -41,7 +42,7 @@ InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
 	  plusdesc(other.plusdesc),
 	  ic(other.ic)
 {}
-
+#endif
 
 InsetLatexAccent::InsetLatexAccent(string const & string)
 	: contents(string)
@@ -289,7 +290,7 @@ int InsetLatexAccent::Descent(LyXFont const & font) const
 	if (candisp) {
 		if (ic == ' ') 
 			max = font.descent('a');
-                else 
+                else
                 	max = font.descent(ic);
                 if (plusdesc)
                 	max += 3;
@@ -549,27 +550,23 @@ void InsetLatexAccent::Draw(LyXFont font,
 		}
 		case UMLAUT:    // umlaut
 		{
-			float tmpadd = y;
-			tmpadd += (remdot) ?
-				asc / 3.0 :
-				asc / 5.0; // if (remdot) -> i or j
 			float rad = hg / 2.0;
 			if (rad <= 1.0) {
 				scr.drawPoint(pgc,
 					      int(x2 - ((4.0 * hg) / 7.0)),
-					      tmpadd);
+					      y);
 				scr.drawPoint(pgc,
 					      int(x2 + ((4.0 * hg) / 7.0)),
-					      tmpadd);
+					      y);
 			} else {
 				rad += .5; // this ensures that f.ex. 1.5 will
 				// not be rounded down to .5 and then
 				// converted to int = 0
 				scr.fillArc(pgc, int(x2 - ((2.0 * hg) / 4.0)),
-					    tmpadd,
+					    y,
 					    rad, rad, 0, 360*64);
 				scr.fillArc(pgc, int(x2 + ((2.0 * hg) / 4.0)),
-					    tmpadd,
+					    y,
 					    rad, rad, 0, 360*64);
 			}
 			break;

@@ -98,15 +98,15 @@ int  strToInt(string const & str)
 string lowercase(string const & a)
 {
 	string tmp(a);
-#ifdef __GLIBCPP__
+//#ifdef __GLIBCPP__
 	string::iterator result = tmp.begin();
 	for (string::iterator first = tmp.begin();
 	     first != tmp.end(); ++first, ++result) {
 		*result = tolower(*first);
 	}
-#else
-	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
-#endif
+//#else
+//	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
+//#endif
 	return tmp;
 }
 
@@ -114,15 +114,15 @@ string lowercase(string const & a)
 string uppercase(string const & a)
 {
 	string tmp(a);
-#ifdef __GLIBCPP__
+//#ifdef __GLIBCPP__
 	string::iterator result = tmp.begin();
 	for (string::iterator first = tmp.begin();
 	     first != tmp.end(); ++first, ++result) {
 		*result = toupper(*first);
 	}
-#else
-	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
-#endif
+//#else
+//	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
+//#endif
 	return tmp;
 }
 

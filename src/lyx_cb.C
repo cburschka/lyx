@@ -3785,7 +3785,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			     pos < (labeltype - 
 				    textclasslist.TextClass(current_view->buffer()->
 							    params.textclass).maxcounter()) * 4 + 2;
-			     pos++)
+			     ++pos)
 				line[pos] = ' ';
 			
 			// Then the labestring
@@ -3793,8 +3793,8 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 				string::size_type i = 0;
 				while (pos < 199 && i < par->labelstring.length()) {
 					line[pos] = par->labelstring[i];
-					i++;
-					pos++;
+					++i;
+					++pos;
 				}
 			}
 	 
@@ -3807,7 +3807,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 				c = par->GetChar(i);
 				if (isprint(c) || c >= 128) {
 					line[pos] = c;
-					pos++;
+					++pos;
 				}
 				++i;
 			}
@@ -3897,7 +3897,7 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 #if FL_REVISION > 85
 	fl_addto_browser_chars(brow, refs.c_str());
 	int total_lines = fl_get_browser_maxline(brow);
-	for (int i = 1; i <= total_lines ; i++) {
+	for (int i = 1; i <= total_lines ; ++i) {
 		if (fl_get_browser_line(brow, i) == currentstr) {
 			topline = i;
 			break;
@@ -3914,7 +3914,7 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 		if (curr_ref.empty())
 			break;
 		fl_add_browser_line(brow, curr_ref.c_str());
-		ref_num++;
+		++ref_num;
 	}
 #endif
 

@@ -127,7 +127,7 @@ void Combox::addline(char const* text)
 bool Combox::select_text(char const* t)
 {
 	if (!browser || !t) return false;
-	for (int i= 1; i<= fl_get_browser_maxline(browser); i++) {
+	for (int i = 1; i <= fl_get_browser_maxline(browser); ++i) {
 		if (!strcmp(t, fl_get_browser_line(browser, i))) {
 			select(i);
 			return true;

@@ -66,7 +66,7 @@ MathMacro::MathMacro(MathMacroTemplate* t):
 /*	int k = tmplate->getMacroPar(i)->GetColumns();
 	if (k>0) {
 	    args[i].array = new LyxArrayBase;
-	    for (int j= 0; j<k-1; j++) args[i].array->Insert(j, LM_TC_TAB);
+	    for (int j= 0; j<k-1; ++j) args[i].array->Insert(j, LM_TC_TAB);
 	}*/
     }
     idx = 0;
@@ -273,11 +273,11 @@ MathMacroTemplate::MathMacroTemplate(char const * nm, int na, int flg):
     MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO), 
     flags(flg), nargs(na)
 {
-    if (nargs>0) {
+    if (nargs > 0) {
 	tcode = LM_TC_ACTIVE_INSET;
 	args = new MathMacroArgument[nargs];
-	for (int i= 0; i<nargs; i++) {
-	    args[i].setNumber(i+1);
+	for (int i = 0; i < nargs; ++i) {
+	    args[i].setNumber(i + 1);
 	}
     } else 
       tcode = LM_TC_INSET;
@@ -287,7 +287,7 @@ MathMacroTemplate::MathMacroTemplate(char const * nm, int na, int flg):
 MathMacroTemplate::~MathMacroTemplate()
 {
     // prevent to delete already deleted objects
-    for (int i= 0; i<nargs; i++) {
+    for (int i = 0; i < nargs; ++i) {
 	args[i].SetData(0);
     }
     delete[] args;
@@ -339,17 +339,17 @@ void MathMacroTemplate::Metrics()
     bool expnd = (nargs>0) ? args[0].getExpand(): false;
     
     if (flags & MMF_Edit) {
-	for (int i= 0; i<nargs; i++) {
+	for (int i = 0; i < nargs; ++i) {
 	    args[i].setExpand(false);
 	}
     } else {
-	for (int i= 0; i<nargs; i++) {
+	for (int i = 0; i < nargs; ++i) {
 	    args[i].setExpand(true);
 	}
     }
     MathParInset::Metrics();
     
-    for (int i= 0; i<nargs; i++) {
+    for (int i = 0; i < nargs; ++i) {
 	args[i].setExpand(expnd);
     }
 }
@@ -358,7 +358,7 @@ void MathMacroTemplate::Metrics()
 void MathMacroTemplate::update(MathMacro * macro)
 {
     int idx = (macro) ? macro->getArgumentIdx(): 0;
-    for (int i= 0; i<nargs; i++) {
+    for (int i = 0; i < nargs; ++i) {
 	if (macro) {
 	    macro->setArgumentIdx(i);
 	    args[i].SetData(macro->GetData());

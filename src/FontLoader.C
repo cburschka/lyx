@@ -109,7 +109,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	FontInfo * fi = new FontInfo();
 	fontinfo[family][series][shape] = fi;
 
-	for (int cfam = 0; cfam < 2; cfam++) {
+	for (int cfam = 0; cfam < 2; ++cfam) {
 		// Determine family name
 		switch (family) {
 		case LyXFont::ROMAN_FAMILY:
@@ -136,7 +136,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 		default: ;
 		}
 
-		for (int cser = 0; cser < 4; cser++) {
+		for (int cser = 0; cser < 4; ++cser) {
 			// Determine series name
 			switch (series) {
 			case LyXFont::MEDIUM_SERIES:
@@ -159,7 +159,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 			default: ;
 			}
 
-			for (int csha = 0; csha < 2; csha++) {
+			for (int csha = 0; csha < 2; ++csha) {
 				// Determine shape name
 				switch (shape) {
 				case LyXFont::UP_SHAPE:

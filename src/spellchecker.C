@@ -341,7 +341,7 @@ void create_ispell_pipe(string const & lang)
 
 		// free the memory used by string::copy in the
 		// setup of argv
-		for (int i= 0; i < argc -1; i++)
+		for (int i= 0; i < argc -1; ++i)
 			delete[] argv[i];
 		
 		lyxerr << "LyX: Failed to start ispell!" << endl;
@@ -449,11 +449,11 @@ isp_result *ispell_check_word(char *word)
 		if (count) result->misses = new char*[count];
 		p = strpbrk(nb, ":");
 		p += 2;
-		for (i = 0; i<count; i++) {
+		for (i = 0; i < count; ++i) {
 			result->misses[i] = p;
 			p = strpbrk(p, ",\n");
 			*p = 0;
-			p+= 2;
+			p += 2;
 		}
 		break;
 	}
@@ -671,7 +671,7 @@ bool RunSpellChecker(string const & lang)
 	while (true) {
 		word = current_view->nextWord(newval);
 		if (word == 0) break;
-		word_count++;
+		++word_count;
 		
 		// Update slider if and only if value has changed
 		newvalue = int(100.0*newval);
@@ -707,7 +707,7 @@ bool RunSpellChecker(string const & lang)
 			fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
-			for (i= 0; i<result->count; i++) {
+			for (i = 0; i < result->count; ++i) {
 				fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
 			}
 

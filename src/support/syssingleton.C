@@ -33,6 +33,6 @@ SystemcallsSingletoncontroller::Startcontroller::getController()
 		// Create the global controller
                 contr = new SystemcallsSingletoncontroller;
 	}
-	refcount++;
+	++refcount;
 	return contr;
 }

@@ -436,7 +436,7 @@ public:
 			       && (IsNewline(0) 
 				   || IsLineSeparator(0))){
 				Erase(0);
-				i++;
+				++i;
 			}
 		}
 		return i;
@@ -448,7 +448,7 @@ public:
 	  one (or more) paragraphs with the footnote, and finally
 	  the a paragraph with the text after the footnote. Only the
 	  first paragraph keeps information  about layoutparameters, */
-	bool IsDummy() const{
+	bool IsDummy() const {
 		return (footnoteflag == LyXParagraph::NO_FOOTNOTE && previous
 			&& previous->footnoteflag != LyXParagraph::NO_FOOTNOTE);
 	}

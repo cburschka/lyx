@@ -401,7 +401,7 @@ LyXServer::~LyXServer()
 	// modified june 1999 by stefano@zool.su.se to send as many bye
 	// messages as there are clients, each with client's name.
 	string message;
-	for (int i= 0; i<numclients; i++) {
+	for (int i= 0; i<numclients; ++i) {
 		message = "LYXSRV:" + clients[i] + ":bye\n";
 		pipes.send(message);
 	}
@@ -440,7 +440,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		string client;
 		while(*p && *p != ':')
 			client += char(*p++);
-		if(*p == ':') p++;
+		if(*p == ':') ++p;
 		if(!*p) return;
 		
 		// --- 3. get function name ---
@@ -453,7 +453,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		if(!server_only && *p == ':' && *(++p)) {
 			while(*p && *p != '\n')
 				arg += char(*p++);
-			if(*p) p++;
+			if(*p) ++p;
 		}
  
 		lyxerr[Debug::LYXSERVER]
@@ -478,7 +478,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				int i= 0; //find place in clients[]
 				while (!serv->clients[i].empty() 
 				       && i<serv->numclients) 
-					i++;
+					++i;
 				serv->clients[i] = client;
 				serv->numclients++;
 				buf = "LYXSRV:" + client + ":hello\n";
@@ -489,11 +489,11 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			} else if (cmd == "bye") {
 				// If clients == 0 maybe we should reset the pipes
 				// to prevent fake callbacks
-				int i; //look if client is registered
-				for (i= 0; i<serv->numclients; i++) {
+				int i = 0; //look if client is registered
+				for (; i < serv->numclients; ++i) {
 					if (serv->clients[i] == client) break;
 				}
-				if (i<serv->numclients) {
+				if (i < serv->numclients) {
 					serv->numclients--;
 					serv->clients[i].clear();
 					lyxerr[Debug::LYXSERVER]

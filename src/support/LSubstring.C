@@ -45,7 +45,7 @@ LSubstring::LSubstring(string & s, LRegex const & r)
 		pos = res.first;
 	} else {
 		n = 0;
-		pos = 0;
+		pos = string::npos;
 	}
 }
 

@@ -46,16 +46,21 @@ towards code quality:
 	o always try to use POSIX commands.
 	o switch to use POSIX signals
 	o make as much as possible of the code reentreanant(?)
-		should make it easier to move to threads later.
-	o signal slot mechanism (borrowed from GTK-- project)
-		better interface, leaner code, typesafe. I have
-		been using this for another project and it works
+		should make it easier to move to threads later. Albeit
+	        this is not a huge goal we have some parts of the code
+	        that would benefit from threads. (forking is not that
+	        nice...) 
+	o signal slot mechanism
+	        We are going to use the signal/slot implementation
+	        found in libsigc++. This will hopefully give us better
+	        interface, leaner code, typesafe "callbacks". I have
+		been using signal/slots for other projects and it works
 		like a charm.
 	o other code rewrites to make multiple buffers/windows
 	  possible, without too much hassle.
-		- get rid of most of the global variables.
+		- get rid of most of the global variables. In
+	          perticular current_view is a problem.
 		- non shared variables in shared structures 
-		  (i.e. the cursor in the text class)
 	o make source documentation better. Remember that the better
 	  we document LyX internals the easier is it for new
 	  developers to begin working on LyX.
@@ -74,6 +79,9 @@ Some other things related to structure and services in the code:
 		  the processes can take place.
 	o pass an inforeceiver around in the object structure.
 	  (this instead of passing minibuffers, and lyxerrors.)
+	o remove code that is never used, or close to never used.
+	        Support for reverse video, fast selection and mono
+	        video comes to mind.
 
 ================
 
@@ -143,7 +151,10 @@ to make it into 0.14:
 		  process.
 	o online configuration
 		So that users should not need to edit lyxrc
-		manualy
+		manualy. This has now been "half" done; it is now
+	        possible to save the current configuration with the
+	        lyx command "preferences-save". We need to add code so
+	        that the preferences can be set from inside LyX too.
 	o better fontsupport
 		T1-lib font renderer.
 	o better latex code quality

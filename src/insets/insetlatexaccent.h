@@ -33,8 +33,10 @@ public:
 	InsetLatexAccent(); 
 	///
 	InsetLatexAccent(string const & string);
+#if 0     // the compiler generated version should be ok.
 	///
 	InsetLatexAccent(InsetLatexAccent const &);
+#endif
 	///
 	int Ascent(LyXFont const & font) const;
 	///

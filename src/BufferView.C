@@ -212,7 +212,8 @@ void BufferView::buffer(Buffer * b)
 		buffer_->delUser(this);
 		// Put the old text into the TextCache.
 		textcache.push_back(text);
-		showTextCache("buffer");
+		if (lyxerr.debugging())
+			showTextCache("buffer");
 		// delete text;
 		text = 0;
 	}
@@ -254,7 +255,8 @@ void BufferView::buffer(Buffer * b)
 		updateScrollbar();
 		fl_redraw_object(work_area);
 		// Also remove all remaining text's from the testcache.
-		showTextCache("buffer delete all");
+		if (lyxerr.debugging())
+			showTextCache("buffer delete all");
 		while (!textcache.empty()) {
 			LyXText * tt = textcache.front();
 			textcache.erase(textcache.begin());
@@ -431,7 +433,8 @@ int BufferView::resizeCurrentBuffer()
 			text = *it;
 			// take it out of textcache.
 			textcache.erase(it);
-			showTextCache("resizeCurrentBuffer");
+			if (lyxerr.debugging())
+				showTextCache("resizeCurrentBuffer");
 		} else {
 			text = new LyXText(work_area->w, buffer_);
 		}
@@ -1407,7 +1410,8 @@ int BufferView::workAreaExpose()
 			bufferlist.resize();
 
 			// Remove all texts from the textcache
-			showTextCache("Expose delete all");
+			if (lyxerr.debugging())
+				showTextCache("Expose delete all");
 			while(!textcache.empty()) {
 				LyXText * tt = textcache.front();
 				textcache.erase(textcache.begin());

@@ -1049,7 +1049,7 @@ string LyXFunc::Dispatch(int ac,
 		if (sel == 0) 
 			return string(); // illegal argument
 
-		sel--; // sel 1..., but layout 0...
+		--sel; // sel 1..., but layout 0...
 
 		// Pretend we got the name instead.
 		Dispatch(int(LFUN_LAYOUT), 

@@ -22,6 +22,10 @@ that you:
   the code.
 - take advantage of the C++ standard library.
 
+- we use the preincrement operator whenever possible, it has potential
+  of beeing faster than postincrement. (same goes for decrement)
+- we try to give variables minimal scope.
+
 These guidelines should save us a lot of work while cleaning up the code and 
 help us to have quality code. LyX has been haunted by problems coming from 
 unfinished projects by people who have left the team. Those problems will 

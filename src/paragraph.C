@@ -153,13 +153,13 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			if (depth > dth) {
 				while (depth > dth) {
 					os << "\n\\begin_deeper ";
-					dth++;
+					++dth;
 				}
 			}
 			else {
 				while (depth < dth) {
 					os << "\n\\end_deeper ";
-					dth--;
+					--dth;
 				}
 			}
 		}
@@ -253,8 +253,8 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 	font1 = LyXFont(LyXFont::ALL_INHERIT);
 
 	column = 0;
-	for (size_type i = 0; i < size(); i++) {
-		if (!i){
+	for (size_type i = 0; i < size(); ++i) {
+		if (!i) {
 			os << "\n";
 			column = 0;
 		}
@@ -320,7 +320,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			else
 				lyxerr << "ERROR (LyXParagraph::writeFile):"
 					" NULL char in structure." << endl;
-			column++;
+			++column;
 			break;
 		}
 	}
@@ -1161,7 +1161,7 @@ string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 	int firstpos = lastpos;
  	
 	while ((firstpos >= 0) && !IsLetter(firstpos))
-		firstpos--;
+		--firstpos;
 
 	// now find the beginning by looking for a nonletter
 	
@@ -1688,19 +1688,19 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		// to the new paragraph
 		pos_first = 0;
 		while (ParFromPos(pos_first) != par)
-			pos_first++;
+			++pos_first;
 
 		pos_end = pos_first + par->text.size() - 1;
 		// The constructor has already reserved 500 elements
 		//if (pos_end > pos)
 		//	tmp->text.reserve(pos_end - pos);
 
-		for (i = pos; i <= pos_end; i++) {
+		for (i = pos; i <= pos_end; ++i) {
 			par->CutIntoMinibuffer(i - pos_first);
 			tmp->InsertFromMinibuffer(i - pos);
 		}
 		tmp->text.resize(tmp->text.size());
-		for (i = pos_end; i >= pos; i--)
+		for (i = pos_end; i >= pos; --i)
 			par->Erase(i - pos_first);
 
 		par->text.resize(par->text.size());
@@ -1794,7 +1794,7 @@ LyXParagraph * LyXParagraph::Clone() const
     
 	// copy everything behind the break-position to the new paragraph
    
-	for (size_type i = 0; i < size(); i++) {
+	for (size_type i = 0; i < size(); ++i) {
 		CopyIntoMinibuffer(i);
 		result->InsertFromMinibuffer(i);
 	}
@@ -1893,10 +1893,9 @@ void LyXParagraph::PasteParagraph()
 
 	size_type pos_end = the_next->text.size() - 1;
 	size_type pos_insert = Last();
-	size_type i;
 
 	// ok, now copy the paragraph
-	for (i = 0; i <= pos_end; i++) {
+	for (size_type i = 0; i <= pos_end; ++i) {
 		the_next->CutIntoMinibuffer(i);
 		InsertFromMinibuffer(pos_insert + i);
 	}
@@ -2182,7 +2181,7 @@ int LyXParagraph::AutoDeleteInsets()
 		tmpi = tmpi->next;
 		if (tmpi2->inset) {
 			if (tmpi2->inset->AutoDelete()) {
-				i++;
+				++i;
 				Erase(tmpi2->pos);
 			}
 		} else {
@@ -2472,10 +2471,10 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	    && !IsDummy()) {
 		if (style.isCommand()) {
 			file += '{';
-			column++;
+			++column;
 		} else if (align != LYX_ALIGN_LAYOUT) {
 			file += '{';
-			column++;
+			++column;
 			return_value = true;
 		}
 	}
@@ -2676,9 +2675,9 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 
 	for (size_type i = 0; i < size(); ++i) {
 		char c = GetChar(i);
-		if (table->IsContRow(current_cell_number+1)) {
+		if (table->IsContRow(current_cell_number + 1)) {
 			if (c == LyXParagraph::META_NEWLINE)
-				current_cell_number++;
+				++current_cell_number;
 			continue;
 		}
 		++column;
@@ -2731,9 +2730,9 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 			}
 			basefont = getFont(-1);
 			running_font = basefont;
-			current_cell_number++;
+			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
-				TeXContTableRows(file, i+1,
+				TeXContTableRows(file, i + 1,
 						 current_cell_number,
 						 column, texrow);
 			}
@@ -2741,20 +2740,20 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 			// put the EndOfCell because it is put after the
 			// for(...)
 			if (table->ShouldBeVeryLastCell(current_cell_number)) {
-				current_cell_number--;
+				--current_cell_number;
 				break;
 			}
 			int tmp = table->TexEndOfCell(file,
 						      current_cell_number);
-			if (tmp>0) {
+			if (tmp > 0) {
 				column = 0;
 			} else if (tmp < 0) {
 				tmp = -tmp;
 			}
-			for (;tmp--;) {
+			for (; tmp--;) {
 				texrow.newline();
 			}
-			texrow.start(this, i+1);
+			texrow.start(this, i + 1);
 		} else {
 			SimpleTeXSpecialChars(file, texrow,
 					      font, running_font, basefont,
@@ -2766,7 +2765,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 	if (open_font) {
 		running_font.latexWriteEndChanges(file, basefont);
 	}
-	current_cell_number++;
+	++current_cell_number;
 	tmp = table->TexEndOfCell(file, current_cell_number);
 	for (; tmp > 0; --tmp)
 		texrow.newline();
@@ -2806,7 +2805,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 		for (; (i < size()) && (current_cell_number<cell); ++i) {
 			c = GetChar(i);
 			if (c == LyXParagraph::META_NEWLINE)
-				current_cell_number++;
+				++current_cell_number;
 		}
 		lastpos = i;
 		c = GetChar(i);
@@ -3016,7 +3015,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 				emph_flag= false;
 			}
 			font1 = font2 = getFont(-1);
-			current_cell_number++;
+			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
 				DocBookContTableRows(file, extra, desc_on, i+1,
 						     current_cell_number,
@@ -3026,11 +3025,12 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 			// put the EndOfCell because it is put after the
 			// for(...)
 			if (table->ShouldBeVeryLastCell(current_cell_number)) {
-				current_cell_number--;
+				--current_cell_number;
 				break;
 			}
-			tmp= table->DocBookEndOfCell(file, current_cell_number,
-						     depth);
+			tmp = table->DocBookEndOfCell(file,
+						      current_cell_number,
+						      depth);
 			
 			if (tmp > 0)
 				column = 0;
@@ -3075,7 +3075,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 				// non-breaking characters
 				// char is ' '
 				if (desc_on == 1) {
-					char_line_count++;
+					++char_line_count;
 					file += '\n';
 					file += "</term><listitem><para>";
 					desc_on = 2;
@@ -3158,7 +3158,7 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 		for (; i < size() && current_cell_number < cell; ++i) {
 			c = GetChar(i);
 			if (c == LyXParagraph::META_NEWLINE)
-				current_cell_number++;
+				++current_cell_number;
 		}
 		lastpos = i;
 		c = GetChar(i);
@@ -3228,7 +3228,7 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 					// non-breaking characters
 					// char is ' '
 					if (desc_on == 1) {
-						char_line_count++;
+						++char_line_count;
 						file += '\n';
 						file += "</term><listitem><para>";
 						desc_on = 2;
@@ -3318,7 +3318,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 			} else {
 				column += file.length() - len;
 			}
-			for (;tmp--;) {
+			for (; tmp--;) {
 				texrow.newline();
 			}
 		}

@@ -256,7 +256,7 @@ void LyXText::InsertRow(Row * row, LyXParagraph * par,
    
 	if (row == lastrow)
 		lastrow = tmprow;
-	number_of_rows++; // one more row
+	++number_of_rows; // one more row
 }
 
 
@@ -1371,13 +1371,13 @@ void LyXText::SetCounter(LyXParagraph * par) const
 				par->Previous()->GetLayout()
 				).labeltype != LABEL_BIBLIO
 		 && layout.labeltype == LABEL_BIBLIO)) {
-		for (int i = 0; i<10; i++) {
+		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, par->Previous()->GetFirstCounter(i));
 		}
 		par->appendix = par->Previous()->FirstPhysicalPar()->appendix;
 		if (!par->appendix && par->start_of_appendix){
 		  par->appendix = true;
-		  for (int i = 0; i<10; i++) {
+		  for (int i = 0; i < 10; ++i) {
 		    par->setCounter(i, 0);
 		  }  
 		}
@@ -1385,7 +1385,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 		par->itemdepth = par->Previous()->FirstPhysicalPar()->itemdepth;
 	}
 	else {
-		for (int i = 0; i<10; i++) {
+		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, 0);
 		}  
 		par->appendix = par->start_of_appendix;
@@ -1448,7 +1448,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 		/* reset the counters.
 		 * A depth change is like a breaking layout
 		 */
-		for (int i = 6 + par->enumdepth + 1; i<10;i++)
+		for (int i = 6 + par->enumdepth + 1; i < 10; ++i)
 			par->setCounter(i, 0);
 	}
    
@@ -2752,7 +2752,7 @@ int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
 		par->layout = lay;
       
 		if (name != textclasslist.NameOfLayout(class2, par->layout)) {
-			ret++;
+			++ret;
 			string s = "Layout had to be changed from\n"
 				+ name + " to " + textclasslist.NameOfLayout(class2, par->layout)
 				+ "\nbecause of class conversion from\n"
@@ -2943,11 +2943,11 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 		int cell = NumberOfCell(row->par, row->pos);
 		float x_old = x;
 		x += row->par->table->GetBeginningOfTextInCell(cell);
-		for (pos = row->pos; pos < cursor.pos; pos++)  {
+		for (pos = row->pos; pos < cursor.pos; ++pos)  {
 			if (row->par->IsNewline(pos)) {
 				x = x_old + row->par->table->WidthOfColumn(cell);
 				x_old = x;
-				cell++;
+				++cell;
 				x += row->par->table->GetBeginningOfTextInCell(cell);
 			} else {
 				x += SingleWidth(row->par, pos);
@@ -2956,7 +2956,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 	} else
 		/* table stuff -- end*/
 
-		for (pos = row->pos; pos < cursor.pos; pos++)  {
+		for (pos = row->pos; pos < cursor.pos; ++pos)  {
 			if (pos && pos == main_body
 			    && !row->par->IsLineSeparator(pos - 1)) {
 				x += GetFont(row->par, -2).stringWidth(

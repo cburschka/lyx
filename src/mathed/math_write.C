@@ -309,8 +309,8 @@ void MathParInset::Write(string & outf)
 		   (data.FCode() == LM_TC_SPECIAL))
 		 outf += '\\';
 	       else {
-		  if (*s == '{') brace++;
-		  if (*s == '}') brace--;
+		  if (*s == '{') ++brace;
+		  if (*s == '}') --brace;
 	       }
 	       if (*s == '}' && data.FCode() == LM_TC_TEX && brace<0) 
 		       lyxerr <<"Math warning: Unexpected closing brace."
@@ -318,7 +318,7 @@ void MathParInset::Write(string & outf)
 	       else	       
 		 outf += char(*s);
 	    }
-	    s++; ls--;
+	    ++s; --ls;
 	 }
 	 if (data.FCode()>= LM_TC_RM && data.FCode()<= LM_TC_TEXTRM)
 	   outf += '}';
@@ -355,7 +355,7 @@ void MathParInset::Write(string & outf)
 		    crow = crow->getNext();
 		}
 	       outf += "\\\\\n";
-	       number_of_newlines++;
+	       ++number_of_newlines;
 	       data.Next();
 	       break;
 	    }
@@ -377,7 +377,7 @@ void MathParInset::Write(string & outf)
     }
    while (brace>0) {
       outf += '}';
-      brace--;
+      --brace;
    }
 }
 
@@ -404,14 +404,14 @@ void MathMatrixInset::Write(string & outf)
 	outf += '{';
 	outf += h_align;
 	outf += "}\n";
-	number_of_newlines++;
+	++number_of_newlines;
     }
     MathParInset::Write(outf);
     if (GetType() == LM_OT_MATRIX){
 	outf += "\n\\end{";
 	outf += name;
 	outf += '}';
-	number_of_newlines++;
+	++number_of_newlines;
     }
 }
 
@@ -446,7 +446,7 @@ void mathed_write(MathParInset * p, string & outf, int * newlines,
        // Modified to work in a cleaner and hopefully more general way
        // (JMarc)
        outf += "\n";
-       number_of_newlines++;
+       ++number_of_newlines;
      }
      if (mathed_env == LM_EN_DISPLAY){
        outf += "\\[\n";
@@ -456,14 +456,14 @@ void mathed_write(MathParInset * p, string & outf, int * newlines,
        outf += latex_mathenv[mathed_env];
        outf += "}\n";
      }
-     number_of_newlines++;
+     ++number_of_newlines;
    }
    
    if (label && label[0]>' ' && mathed_env == LM_EN_EQUATION){
      outf += "\\label{";
      outf += label;
      outf += "}\n";
-     number_of_newlines++;
+     ++number_of_newlines;
    }
 
    p->Write(outf);
@@ -474,13 +474,13 @@ void mathed_write(MathParInset * p, string & outf, int * newlines,
    }
    else if (mathed_env == LM_EN_DISPLAY){
      outf += "\\]\n";
-     number_of_newlines++;
+     ++number_of_newlines;
    }
    else {
      outf += "\n\\end{";
      outf += latex_mathenv[mathed_env];
      outf += "}\n";
-     number_of_newlines+= 2;
+     number_of_newlines += 2;
    }
    *newlines = number_of_newlines;
 }

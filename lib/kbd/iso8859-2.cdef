@@ -4,98 +4,98 @@
 # (c) 1996  by Petr Mejzlík, mejzlik@fi.muni.cz
 # Modified by Asger Alstrup (not checked, but better)
  
-161  "\\c{A}"	# A cedilla
-162  "\\u{}"	# breve
-163  "\\L{}"	# L slash
+161  "\c{A}"	# A cedilla
+162  "\u{}"	# breve
+163  "\L{}"	# L slash
 #164 
-165  "\\q{L}"	# L caron
-166  "\\'{S}"	# S acute
-167  "\\S{}"	# section mark
-168  "\\\"{}"	# umlaut
-169  "\\v{S}"	# S caron
-170  "\\c{S}"	# S cedilla
-171  "\\v{T}"	# T caron
-172  "\\'{Z}"	# Z acute
-173  "\\-{}"	# dash
-174  "\\v{Z}"	# Z caron
-175  "\\.{Z}"	# Z dot
-176  "\\r{}"	# circle
-177  "\\c{a}"	# a cedilla
-178  "\\k{}"	#
-179  "\\l{}"	# l slash
-180  "\\'{}"	# acute
-181  "\\q{l}"	# l caron
-182  "\\'{s}"	# s acute
-183  "\\v{}"	# caron
-184  "\\c{}"	# cedilla
-185  "\\v{s}"	# s caron
-186  "\\c{s}"	# s cedilla
-187  "\\q{t}"	# t caron
-188  "\\'{z}"	# z acute
-189  "\\H{}"	#
-190  "\\v{z}"	# z caron
-191  "\\.{z}"	# z dot
-192  "\\'{R}"	# R acute
-193  "\\'{A}"	# A acute
-194  "\\^{A}"	# A circumflex
-195  "\\u{A}"	# A breve
-196  "\\\"{A}"	# A umlaut
-197  "\\'{L}"	# L acute
-198  "\\'{C}"	# C acute
-199  "\\c{C}"	# C cedilla
-200  "\\v{C}"	# C caron
-201  "\\'{E}"	# E acute
-202  "\\k{E}"
-203  "\\\"{E}"	# E umlaut
-204  "\\v{E}"	# E caron
-205  "\\'{I}"	# I acute
-206  "\\^{I}"	# I circumflex
-207  "\\v{D}"	# D caron
-208  "\\DH{}"	#
-209  "\\'{N}"	# N acute
-210  "\\v{N}"	# N caron
-211  "\\'{O}"	# O acute
-212  "\\^{O}"	# O circumflex
-213  "\\H{O}"	#
-214  "\\\"{O}"	# O umlaut
-215  "$\\times$"
-216  "\\v{R}"	# R caron
-217  "\\r{U}"	# U circle
-218  "\\'{U}"	# U acute
-219  "\\H{U}"	#
-220  "\\\"{U}"	# U umlaut
-221  "\\'{Y}"	# Y acute
-222  "\\c{T}"	# T cedilla
-223  "\\ss{}"	#
-224  "\\'{r}"	# r acute
-225  "\\'{a}"	# a acute
-226  "\\^{a}"	# a circumflex
-227  "\\u{a}"	# a breve
-228  "\\\"{a}"	# a umlaut
-229  "\\'{l}"	# l acute
-230  "\\'{c}"	# c acute
-231  "\\c{c}"	# c cedilla
-232  "\\v{c}"	# c caron
-233  "\\'{e}"	# e acute
-234  "\\k{e}"	#
-235  "\\\"{e}"	# e umlaut
-236  "\\v{e}"	# e caron
-237  "\\'{\\i}"	# i acute
-238  "\\^{\\i}"	# i circumflex
-239  "\\q{d}"	# d caron
-240  "\\dh{}"	#
-241  "\\'{n}"	# n acute
-242  "\\v{n}"	# n caron
-243  "\\'{o}"	# o acute
-244  "\\^{o}"	# o caron
-245  "\\H{o}"	#
-246  "\\\"{o}"	# o umlaut
-247  "$\\div$"
-248  "\\v{r}"	# r caron
-249  "\\r{u}"	# u circle
-250  "\\'{u}"	# u acute
-251  "\\H{u}"	#
-252  "\\\"{u}"	# u umlaut
-253  "\\'{y}"	# y acute
-254  "\\c{t}"	# t cedilla
-255  "\\.{}"	# dot
+165  "\q{L}"	# L caron
+166  "\'{S}"	# S acute
+167  "\S{}"	# section mark
+168  "\"{}"	# umlaut
+169  "\v{S}"	# S caron
+170  "\c{S}"	# S cedilla
+171  "\v{T}"	# T caron
+172  "\'{Z}"	# Z acute
+173  "\-{}"	# dash
+174  "\v{Z}"	# Z caron
+175  "\.{Z}"	# Z dot
+176  "\r{}"	# circle
+177  "\c{a}"	# a cedilla
+178  "\k{}"	#
+179  "\l{}"	# l slash
+180  "\'{}"	# acute
+181  "\q{l}"	# l caron
+182  "\'{s}"	# s acute
+183  "\v{}"	# caron
+184  "\c{}"	# cedilla
+185  "\v{s}"	# s caron
+186  "\c{s}"	# s cedilla
+187  "\q{t}"	# t caron
+188  "\'{z}"	# z acute
+189  "\H{}"	# doubleacute or hungarian umlaut
+190  "\v{z}"	# z caron
+191  "\.{z}"	# z dot
+192  "\'{R}"	# R acute
+193  "\'{A}"	# A acute
+194  "\^{A}"	# A circumflex
+195  "\u{A}"	# A breve
+196  "\"{A}"	# A umlaut
+197  "\'{L}"	# L acute
+198  "\'{C}"	# C acute
+199  "\c{C}"	# C cedilla
+200  "\v{C}"	# C caron
+201  "\'{E}"	# E acute
+202  "\k{E}"
+203  "\"{E}"	# E umlaut
+204  "\v{E}"	# E caron
+205  "\'{I}"	# I acute
+206  "\^{I}"	# I circumflex
+207  "\v{D}"	# D caron
+208  "\DH{}"	#
+209  "\'{N}"	# N acute
+210  "\v{N}"	# N caron
+211  "\'{O}"	# O acute
+212  "\^{O}"	# O circumflex
+213  "\H{O}"	#
+214  "\"{O}"	# O umlaut
+215  "$\times$"
+216  "\v{R}"	# R caron
+217  "\r{U}"	# U circle
+218  "\'{U}"	# U acute
+219  "\H{U}"	#
+220  "\"{U}"	# U umlaut
+221  "\'{Y}"	# Y acute
+222  "\c{T}"	# T cedilla
+223  "\ss{}"	#
+224  "\'{r}"	# r acute
+225  "\'{a}"	# a acute
+226  "\^{a}"	# a circumflex
+227  "\u{a}"	# a breve
+228  "\"{a}"	# a umlaut
+229  "\'{l}"	# l acute
+230  "\'{c}"	# c acute
+231  "\c{c}"	# c cedilla
+232  "\v{c}"	# c caron
+233  "\'{e}"	# e acute
+234  "\k{e}"	#
+235  "\"{e}"	# e umlaut
+236  "\v{e}"	# e caron
+237  "\'{\i}"	# i acute
+238  "\^{\i}"	# i circumflex
+239  "\q{d}"	# d caron
+240  "\dh{}"	#
+241  "\'{n}"	# n acute
+242  "\v{n}"	# n caron
+243  "\'{o}"	# o acute
+244  "\^{o}"	# o caron
+245  "\H{o}"	#
+246  "\"{o}"	# o umlaut
+247  "$\div$"
+248  "\v{r}"	# r caron
+249  "\r{u}"	# u circle
+250  "\'{u}"	# u acute
+251  "\H{u}"	#
+252  "\"{u}"	# u umlaut
+253  "\'{y}"	# y acute
+254  "\c{t}"	# t cedilla
+255  "\.{}"	# dot

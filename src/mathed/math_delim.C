@@ -272,9 +272,8 @@ void Matriz::escala(float x, float y)
 
 void Matriz::matmat(matriz_data& a)
 {
-   int i;
    matriz_data c;   
-   for (i= 0;i<2; i++) {
+   for (int i = 0;i < 2; ++i) {
       c[0][i] = a[0][0]*m[0][i] + a[0][1]*m[1][i];
       c[1][i] = a[1][0]*m[0][i] + a[1][1]*m[1][i];
    }
@@ -293,7 +292,7 @@ static int search_deco(int code)
 {
    int i= 0;
    
-   while (math_deco_table[i].code &&  math_deco_table[i].code!= code) i++;
+   while (math_deco_table[i].code &&  math_deco_table[i].code!= code) ++i;
    if (!math_deco_table[i].code) i = -1;
    return i;
 }
@@ -486,10 +485,10 @@ MathAccentInset::Metrics()
 void
 MathDotsInset::Draw(int x, int y)
 {
-   mathed_draw_deco(pm, x+2, y-dh, width-2, ascent, code);
-   if (code == LM_vdots||code == LM_ddots) x++; 
-   if (code!= LM_vdots) y--;
-   mathed_draw_deco(pm, x+2, y-dh, width-2, ascent, code);
+   mathed_draw_deco(pm, x + 2, y - dh, width - 2, ascent, code);
+   if (code == LM_vdots || code == LM_ddots) ++x; 
+   if (code!= LM_vdots) --y;
+   mathed_draw_deco(pm, x + 2, y - dh, width - 2, ascent, code);
 }     
 
 void

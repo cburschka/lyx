@@ -156,12 +156,12 @@ void cb_select_phoneno(FL_OBJECT *, long)
     char *buf = new char [strlen(line)+1];
 
     strcpy(buf, line);
-    for(i = LEN_PHONE;(i>0) && (buf[i] == ' ');i--)
+    for(i = LEN_PHONE; (i > 0) && (buf[i] == ' '); --i)
         ;
-    buf[i+1] = 0;
-    for(i = LEN_PHONE+LEN_NAME+1;(i>LEN_PHONE) && (buf[i] == ' ');i--)
+    buf[i + 1] = 0;
+    for(i = LEN_PHONE + LEN_NAME + 1; (i > LEN_PHONE) && (buf[i] == ' '); --i)
         ;
-    buf[i+1] = 0;
+    buf[i + 1] = 0;
     fl_set_input(fd_xsendfax->Input_Phone, buf);
     fl_set_input(fd_xsendfax->Input_Name, buf+LEN_PHONE+1);
     fl_set_input(fd_xsendfax->Input_Enterprise, buf+LEN_PHONE+LEN_NAME+2);
@@ -183,7 +183,7 @@ void cb_add_phoneno(FL_OBJECT *, long )
     if (!strlen(phone))
         return;
 
-    char *buf = new char [50+strlen(enterprise)];
+    char * buf = new char [50 + strlen(enterprise)];
 
     sprintf(buf, "%-*.*s %-*.*s %s",
             LEN_PHONE, LEN_PHONE, phone,
@@ -197,7 +197,7 @@ void cb_add_phoneno(FL_OBJECT *, long )
             n = 0;
         }
     }
-    for(i = 1; i <= n; i++) {
+    for(i = 1; i <= n; ++i) {
         line = fl_get_browser_line(fd_phonebook->browser, i);
         if (!strncmp(buf, line, 46))
             break;
@@ -236,7 +236,7 @@ void cb_delete_phoneno(FL_OBJECT *, long )
             n = 0;
         }
     }
-    for(i= 1;i<= n;i++) {
+    for(i = 1; i <= n; ++i) {
         line = fl_get_browser_line(fd_phonebook->browser, i);
         if (!strncmp(buf, line, 46))
             break;
@@ -270,7 +270,7 @@ void cb_save_phoneno(FL_OBJECT *, long )
             n = 0;
         }
     }
-    for(i= 1;i<= n;i++) {
+    for(i = 1; i <= n; ++i) {
         line = fl_get_browser_line(fd_phonebook->browser, i);
         fprintf(fp, "%s\n", line);
     }

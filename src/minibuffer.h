@@ -83,7 +83,7 @@ private:
         void addHistory(string const &cmd) { 
 	        if (history_cnt == 0 || (history_cnt>0 && cmd!= history[(history_cnt-1) % MAX_HISTORY])) {
 		    history[history_cnt % MAX_HISTORY] = cmd;
-		    history_cnt++;
+		    ++history_cnt;
 		}
 	        history_idx = history_cnt;
 	}

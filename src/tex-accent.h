@@ -1,7 +1,7 @@
 // -*- C++ -*-
 
-#ifndef _TEX_ACCENT_
-#define _TEX_ACCENT_
+#ifndef TEX_ACCENT
+#define TEX_ACCENT
 
 #include "commandtags.h"
 

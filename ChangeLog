@@ -1,3 +1,31 @@
+2000-01-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/LSubstring.C (LSubstring): set pos to string::npos
+	when regex was not found.
+
+	* src/support/lstrings.C (lowercase): use handcoded transform always.
+	(uppercase): ditto
+
+	* src/text.C (Delete): fixed the crash. cursor.par->prev and
+	old_cursor.par->prev could be 0.
+
+	* several files: changed post inc/dec to pre inc/dec
+	
+	* src/lastfiles.C (writeFile): use ostream_iterator and copy to
+	write the lastfiles to file.
+
+	* src/BufferView.C (buffer): only show TextCache info when debugging
+	(buffer): ditto
+	(resizeCurrentBuffer): ditto
+	(workAreaExpose): ditto
+
+	* lib/kbd/iso8859-7.cdef: changed to new quoting scheme
+
+	* lib/kbd/iso8859-2.cdef: changed to new quoting scheme
+
+	* src/insets/insetlatexaccent.C (Draw): make the display of UMLAUT
+	a bit better by removing the special case for \i and \j.
+
 2000-01-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_main.C (easyParse): remove test for bad comand line
@@ -7,6 +35,7 @@
 	declared in header. On an alpha, long is _not_ the same as int.
 
 	* src/support/LOstream.h: add a "using std::flush;"
+
 	* src/insets/figinset.C: ditto.
 
 2000-01-21  Lars Gullik Bjønnes  <larsbj@lyx.org>

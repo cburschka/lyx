@@ -16,7 +16,7 @@ public:
 		Startcontroller();
                 ~Startcontroller();
 		static SystemcallsSingletoncontroller * getController();
-                void reduceRefcount() { refcount--; }
+                void reduceRefcount() { --refcount; }
 	private:
 		static SystemcallsSingletoncontroller * contr;
                 static int refcount;

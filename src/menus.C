@@ -1325,7 +1325,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(InsertMenu, 17, scex(_("IM|Uu#u#U")));
 
 	if (tmpbuffer->isReadonly()) {
-                for (int ii = 1; ii <= 16; ii++)
+                for (int ii = 1; ii <= 16; ++ii)
 	                fl_setpup_mode(InsertMenu, ii, FL_PUP_GREY);
 		fl_setpup_mode(InsertMenu, 17, FL_PUP_GREY);
 	}
@@ -1449,7 +1449,7 @@ void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(MathMenu, 9, scex(_("MM|Pp#p#P")));
 
 	if (tmpbuffer->isReadonly()) 
-                for (int ii = 1; ii <= 9; ii++)
+                for (int ii = 1; ii <= 9; ++ii)
 	                fl_setpup_mode(MathMenu, ii, FL_PUP_GREY);
 
 

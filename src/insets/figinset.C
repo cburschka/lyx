@@ -876,7 +876,7 @@ void sigchldchecker(pid_t pid, int * status)
 				p->broken = true;
 			}
 			makeupdatelist(bitmaps[i]);
-			gsrunning--;
+			--gsrunning;
 			runqueue();
 			pid_handled = true;
 		}

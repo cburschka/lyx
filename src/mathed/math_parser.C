@@ -232,7 +232,7 @@ static int yylex(void)
 	       *p = c;
 	       yyis->get(cc);
 	       c = cc;
-	       p++;
+	       ++p;
 	    }
 	    *p = '\0';
 	    if (yyis->good()) yyis->putback(c);
@@ -241,10 +241,10 @@ static int yylex(void)
 	       if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
 		  int i;
 		  LexGetArg('{');
-//		  for (i= 0; i<5 && strncmp(yytext, latex_mathenv[i],
-//				strlen(latex_mathenv[i])); i++);
+//		  for (i = 0; i < 5 && strncmp(yytext, latex_mathenv[i],
+//				strlen(latex_mathenv[i])); ++i);
 		  
-		  for (i = 0; i < 6 && strcmp(yytext, latex_mathenv[i]); i++);
+		  for (i = 0; i < 6 && strcmp(yytext, latex_mathenv[i]); ++i);
 		  yylval.i = i;
 	       } else
 	       if (l->token == LM_TK_SPACE) 
@@ -399,7 +399,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       }
     case LM_TK_OPEN:
       {
-	brace++;
+	++brace;
 	if  (accent && tprev == LM_TK_ACCENT) {
 	    acc_braces[acc_brace++] = brace;
 	    break;
@@ -418,14 +418,14 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       }
     case LM_TK_CLOSE:
       {
-	 brace--;	 
+	 --brace;	 
 	 if (brace < 0) {
 	    mathPrintError("Unmatching braces");
 	    panic = true;
 	    break;
 	 }
 	 if (acc_brace && brace == acc_braces[acc_brace-1]-1) {
-	     acc_brace--;
+	     --acc_brace;
 	     break;
 	 }
 	 if (flags & FLAG_BRACE_FONT) {
@@ -435,7 +435,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	    break;
 	 }
 	 if (brace == 0 && (flags & FLAG_BRACE_LAST)) {
-	    plevel--;
+	    --plevel;
 	    return array;
 	 } else {
 	    data.Insert ('}', LM_TC_TEX);
@@ -461,7 +461,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case ']':
       {
 	  if (flags & FLAG_BRACK_END) {
-	      plevel--;
+	      --plevel;
 	      return array;
 	  } else
 	    data.Insert (']');
@@ -625,7 +625,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case LM_TK_RIGHT:
       {
 	 if (flags & FLAG_RIGHT) { 
-	    plevel--;
+	    --plevel;
 	    return array;
 	 } else {
 	    mathPrintError("Unmatched right delimiter");
@@ -684,7 +684,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     data.Insert(doAccent(p), p->getTCode());
 	   else
 	     data.Insert(p, p->getTCode());
-	   for (int i = 0; p->setArgumentIdx(i); i++)
+	   for (int i = 0; p->setArgumentIdx(i); ++i)
 	     p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
        }
        else {
@@ -704,7 +704,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 // debug info [made that conditional -JMarc]
 	 if (lyxerr.debugging(Debug::MATHED))
 		 lyxerr << "[" << yylval.i << "]" << endl;
-	 plevel--;
+	 --plevel;
 	 if (mt) { // && (flags & FLAG_END)) {
 	    mt->SetData(array);
 	    array = 0;
@@ -766,7 +766,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 		 data.Insert(p, p->getTCode());
 		 p->setArgumentIdx(0);
 		 mathed_parse(FLAG_END, p->GetData(), reinterpret_cast<MathParInset**>(&p));
-//		 for (int i= 0; p->setArgumentIdx(i); i++)
+//		 for (int i = 0; p->setArgumentIdx(i); ++i)
 //		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	     } else 
 	       mathPrintError("Unrecognized environment");
@@ -834,7 +834,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
        break;
     }
    }
-   plevel--;
+   --plevel;
    return array;
 }
 

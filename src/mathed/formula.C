@@ -900,13 +900,13 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	  short type = par->GetType();
 	  bool oldf = (type == LM_OT_PARN || type == LM_OT_MPARN);
 	  if (oldf) {
-	     type--;
+	     --type;
 	     if (!label.empty()) {
 		     label.clear();
 	     }
 	     current_view->owner()->getMiniBuffer()->Set(_("No number"));  
 	  } else {
-	     type++;
+	     ++type;
              current_view->owner()->getMiniBuffer()->Set(_("Number"));
 	  }
 	  par->SetType(type);

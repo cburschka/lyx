@@ -52,7 +52,7 @@ BufferParams::BufferParams()
 	sides = LyXTextClass::OneSide;
 	columns = 1;
 	pagestyle = "default";
-	for(int iter = 0; iter < 4; iter++) {
+	for(int iter = 0; iter < 4; ++iter) {
 		user_defined_bullets[iter] = temp_bullets[iter] 
 			                   = ITEMIZE_DEFAULTS[iter];
 	}

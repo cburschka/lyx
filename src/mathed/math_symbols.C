@@ -211,12 +211,12 @@ BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char cons
 
 void BitmapMenu::Create()
 {
-   if (i<nb)  {
+   if (i < nb)  {
 	   lyxerr << "Error: Bitmaps not created!" << endl;
       return;
    }
    form = fl_bgn_form(FL_UP_BOX, w, h);   
-   for (i= 0; i<nb; i++) {
+   for (i = 0; i < nb; ++i) {
       fl_add_object(form, bitmap[i]);
       bitmap[i]->u_vdata = this;
    }
@@ -228,7 +228,7 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
 {
    if (active == this) {
       int k = 0;
-      for (i= 0; i<nb; i++) {
+      for (i = 0; i < nb; ++i) {
 	 if (bitmap[i] == ob) 
 	   return k+fl_get_bmtable(ob);
 	 k += fl_get_bmtable_maxitems(bitmap[i]);
@@ -454,7 +454,7 @@ char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 	 case 5: latex_str = latex_misc; break;
 	}
 	
-	for (int k = 0; latex_str[k][0]>' '; k++) {
+	for (int k = 0; latex_str[k][0] > ' '; ++k) {
 	    if (strcmp(latex_str[k], s) == 0) {
 		id = k;
 		break;

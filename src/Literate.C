@@ -122,7 +122,7 @@ int Literate::scanLiterateLogFile()
                         retval |= LATEX_ERROR;
                         lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
-                        num_errors++;
+                        ++num_errors;
                 }
         }       
         return retval;
@@ -151,7 +151,7 @@ int Literate::scanBuildLogFile()
                         retval |= LATEX_ERROR;
                         lyxerr[Debug::LATEX] << "Build Error." << endl;
                         // this is not correct yet
-                        num_errors++;
+                        ++num_errors;
                 }
         }       
         return retval;

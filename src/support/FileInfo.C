@@ -167,6 +167,7 @@ FileInfo & FileInfo::newFile(int fildes)
 }
 
 
+// should not be in FileInfo
 char const * FileInfo::typeIndicator() const
 {
 	if (S_ISDIR(buf.st_mode)) return ("/");
@@ -190,6 +191,7 @@ mode_t FileInfo::getMode() const
 	return buf.st_mode;
 }
 
+
 long FileInfo::getBlockSize() const
 {
 #ifndef __EMX__
@@ -200,6 +202,8 @@ long FileInfo::getBlockSize() const
 #endif
 }
 
+
+// should not be in FileInfo
 void FileInfo::modeString(char * szString) const
 {
 	szString[0] = typeLetter();
@@ -211,6 +215,7 @@ void FileInfo::modeString(char * szString) const
 }
 
 
+// should not be in FileInfo
 char FileInfo::typeLetter() const
 {
 #ifdef S_ISBLK
@@ -238,6 +243,7 @@ char FileInfo::typeLetter() const
 }
 
 
+// should not be in FileInfo
 void FileInfo::flagRWX(unsigned short i, char * szString) const
 {
 	szString[0] = (i & S_IRUSR) ? 'r' : '-';
@@ -246,6 +252,7 @@ void FileInfo::flagRWX(unsigned short i, char * szString) const
 }
 
 
+// should not be in FileInfo
 void FileInfo::setSticky(char * szString) const
 {
 #ifdef S_ISUID
@@ -281,7 +288,7 @@ time_t FileInfo::getAccessTime() const
 }
 
 
-time_t  FileInfo::getStatusChangeTime() const
+time_t FileInfo::getStatusChangeTime() const
 {
 	return buf.st_ctime;
 }
@@ -372,6 +379,7 @@ bool FileInfo::isSocket() const
 }
 
 
+// should not be in FileInfo
 bool FileInfo::access(int p)
 {
 	// if we don't have a filename we fail

@@ -70,11 +70,23 @@ void LastFiles::writeFile(string const & filename) const
 {
 	ofstream ofs(filename.c_str());
 	if (ofs) {
+#if 0
  		for (Files::const_iterator cit = files.begin();
 		     cit != files.end();
 		     ++cit) {
 			ofs << (*cit) << '\n';
  		}
+#else
+		// Ok, ok. It is not required to do it this way...but it
+		// is kindo nice and shows the versiality of iterators and
+		// algorithms. I'll leave this in, and if I get reports
+		// about compilations errors I take it out again before
+		// 1.1.4. (Lgb)
+		using std::copy;
+		using std::ostream_iterator;
+		copy(files.begin(), files.end(),
+		     ostream_iterator<string>(ofs, "\n"));
+#endif
 	} else
 		lyxerr << "LyX: Warning: unable to save LastFiles: "
 		       << filename << endl;
