@@ -44,6 +44,8 @@ public:
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
         void Write(Buffer const *, std::ostream &) const;
 	///
+	void Read(Buffer const *, LyXLex & lex);
+	///
 	virtual string getScreenLabel() const;
         ///
 	void Edit(BufferView *, int x, int y, unsigned int button);

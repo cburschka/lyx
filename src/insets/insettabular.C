@@ -47,7 +47,7 @@ using std::endl;
 
 #define cellstart(p) ((p % 2) == 0)
 
-//#define USE_NEW_LAYOUT 1
+#define USE_NEW_LAYOUT 1
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 {

@@ -141,6 +141,20 @@ void InsetBibKey::Write(Buffer const *, ostream & os) const
 }
 
 
+// This is necessary here because this is written without begin_inset
+// This should be changed!!! (Jug)
+void InsetBibKey::Read(Buffer const *, LyXLex & lex)
+{    
+	string token;
+
+	if (lex.EatLine()) {
+		token = lex.GetString();
+		scanCommand(token);
+	} else
+		lex.printError("InsetCommand: Parse error: `$$Token'");
+}
+
+
 string InsetBibKey::getScreenLabel() const
 {
 	if (! getOptions().empty())

@@ -266,7 +266,7 @@ Both noweave and notangle routines, always output one single line for each
 \newline 
     if (noweb_try(0))
 \newline 
-      output_error(1, 0, "noweb");
+      output_error(1, err_line, "noweb");
 \newline 
   }
 \newline 
@@ -309,7 +309,15 @@ char *noweb_msgs[] = {
 \newline 
   "This can't happen:",
 \newline 
-  "non-numeric line number in" 
+  "non-numeric line number in"
+\newline 
+};
+\newline 
+
+\newline 
+char *noweb_msgs_mimic_gcc[] = {
+\newline 
+  ": unescaped << in documentation chunk"
 \newline 
 };
 \newline 
@@ -320,7 +328,7 @@ A noweb error message can be any string that contains a matching pair of
  < <\SpecialChar ~
 \SpecialChar ~
 \SpecialChar ~
-> >, or any of the above strings.
+> >, or any of the above strings
 \layout Scrap
 
 <<Function bodies>>=
@@ -331,13 +339,39 @@ noweb_try (int buf_line)
 \newline 
 {
 \newline 
-  char    *s, *b;
+  char    *s, *t, *b;
 \newline 
-  int     i;
+  int     i; 
 \newline 
- 
+
 \newline 
   b = buffer[buf_line];
+\newline 
+  err_line = 0;
+\newline 
+
+\newline 
+  for (i=0; i<1; i++) {
+\newline 
+      s = (char *)strstr (b, noweb_msgs_mimic_gcc[i]);
+\newline 
+      if (s != NULL) {
+\newline 
+        t = (char *)strchr(buffer[buf_line], ':');
+\newline 
+        err_line = atoi(t+1);
+\newline 
+        t = buffer[buf_line];
+\newline 
+        ++s;
+\newline 
+        while (*(t++) = *(s++));
+\newline 
+        return 1;
+\newline 
+      }
+\newline 
+  }
 \newline 
   s = (char *)strstr(b, "<<");
 \newline 
@@ -345,25 +379,25 @@ noweb_try (int buf_line)
 \newline 
     s = (char *)strstr(s+2, ">>");
 \newline 
-    if (s != NULL)
+    if (s != NULL) {
 \newline 
       return 1;
-\newline 
-  } else {
-\newline 
-    for (i=0; i<12; i++) {
-\newline 
-      s = (char *)strstr (b, noweb_msgs[i]);
-\newline 
-      if (s != NULL)
-\newline 
-        break;
 \newline 
     }
 \newline 
-    if (s != NULL)
+  } else { 
 \newline 
-      return 1;
+     for (i = 0; i < 12; ++i) {
+\newline 
+        s = (char *)strstr (b, noweb_msgs[i]);
+\newline 
+        if (s != NULL) {
+\newline 
+           return 1;
+\newline 
+        }
+\newline 
+    }
 \newline 
   }
 \newline 
@@ -761,7 +795,7 @@ To combine the scan of noweb error messages and xlc error messages is very
 \newline 
     if (noweb_try(0))
 \newline 
-      output_error(1, 0, "noweb");
+      output_error(1, err_line, "noweb");
 \newline 
     else if (xlc_try(0))
 \newline 
@@ -797,7 +831,7 @@ To combine the scan of noweb error messages and gcc error messages is simple
 \newline 
     if (last_buf_line == 0 && noweb_try(0)) {
 \newline 
-      output_error(1, 0, "noweb");
+      output_error(1, err_line, "noweb");
 \newline 
       continue;
 \newline 
@@ -922,4 +956,6 @@ build-script
 #!/bin/sh
 \newline 
 notangle -Rbuild-script $1 | sh
+\layout LyX-Code
+
 \the_end

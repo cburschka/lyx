@@ -1,3 +1,10 @@
+2000-07-13  Juergen Vigna  <jug@sad.it>
+
+	* lib/examples/Literate.lyx: small patch!
+
+	* src/insets/insetbib.C (Read): added this function because of wrong
+	Write (without [begin|end]_inset).
+
 2000-07-11  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (open_new_inset): changed to a bool returnvalue

@@ -37,8 +37,8 @@ public:
 
 	/// Parse the command.
 	void scanCommand(string const & cmd);
-	/// Will not be used when lyxf3
-	void Read(Buffer const *, LyXLex & lex);
+	///
+	virtual void Read(Buffer const *, LyXLex & lex);
 	/// 
 	virtual int Latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;
