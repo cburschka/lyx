@@ -30,7 +30,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/path.h"
-#include "support/systemcall.h"
+#include "support/forkedcall.h"
 #include "support/FileInfo.h"
 
 #include <cstdio>
@@ -221,12 +221,12 @@ void InsetExternal::executeCommand(string const & s,
 				   Buffer const * buffer) const
 {
 	Path p(buffer->filePath());
-	Systemcall one;
+	Forkedcall one;
 	if (lyxerr.debugging()) {
 		lyxerr << "Executing '" << s << "' in '"
 		       << buffer->filePath() << '\'' << endl;
 	}
-	one.startscript(Systemcall::Wait, s);
+	one.startscript(Forkedcall::Wait, s);
 }
 
 

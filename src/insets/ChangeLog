@@ -1,3 +1,8 @@
+2004-02-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insetexternal.C (executeCommand): use Forkedcall instead of
+	Systemcall (security issue)
+
 2003-08-28  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C (prepareFile): prepend "convertDefault.sh" with 
