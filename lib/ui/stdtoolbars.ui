@@ -90,7 +90,7 @@ Toolbar "Extra" "off,top"
 	Item "Thesaurus" "thesaurus-entry"
 End
 
-Toolbar "Table" "off,table,bottom"
+Toolbar "Table" "off,bottom"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
 	Item "Delete row" "tabular-feature delete-row"
@@ -115,7 +115,7 @@ Toolbar "Table" "off,table,bottom"
 	Item "Set multi-column" "tabular-feature multicolumn"
 End
 
-Toolbar "Math" "off,math,bottom"
+Toolbar "Math" "off,bottom"
 	Item "Show math panel" "math-panel"
 	Item "Set display mode" "math-display"
 	Item "Subscript" "math-subscript"
