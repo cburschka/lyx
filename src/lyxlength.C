@@ -165,6 +165,10 @@ int LyXLength::inPixels(int default_width, int default_height) const
 
 	// we don't care about sign of value, we
 	// display negative space with text too
+#ifdef WITH_WARNINGS
+#warning if you don't care than either call this function differently or let it return negative values and call abs() explicitly when needed (Andre')
+#endif
+
 	double result = 0.0;
 	int val_sign = val_ < 0.0 ? -1 : 1;
 
@@ -244,7 +248,6 @@ int LyXLength::inBP() const
 	// return any LyXLength value as a one with
 	// the PostScript point, called bp (big points)
 	double result = 0.0;
-	int val_sign = val_ < 0.0 ? -1 : 1;
 	switch (unit_) {
 	case LyXLength::CM:
 		// 1bp = 0.2835cm
@@ -263,7 +266,7 @@ int LyXLength::inBP() const
 		result = val_;
 		break;
 	}
-	return static_cast<int>(result * val_sign + 0.5);
+	return static_cast<int>(result + 0.5);
 }
 
 
