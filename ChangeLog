@@ -1,3 +1,8 @@
+2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/WorkArea.C (work_area_handler): don't handle button requests
+	if xbutton.button == 0
+
 2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* INSTALL: Update the PROBLEMS section.

@@ -285,7 +285,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		Lgb_bug_find_hack = false;
 		break;
 	case FL_PUSH:
-		if (!ev) break;
+		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
 		lyxerr.debug() << "Workarea event: PUSH" << endl;
 		area->owner->workAreaButtonPress(ev->xbutton.x - ob->x,
@@ -293,7 +293,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					   ev->xbutton.button);
 		break; 
 	case FL_RELEASE:
-		if (!ev) break;
+		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
 		lyxerr.debug() << "Workarea event: RELEASE" << endl;
 		area->owner->workAreaButtonRelease(ev->xbutton.x - ob->x,
