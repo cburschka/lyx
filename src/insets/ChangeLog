@@ -1,3 +1,9 @@
+2003-02-25  John Levon  <levon@movementarian.org>
+
+	* insetgraphicsParams.h:
+	* insetgraphics.C: don't start a load process if
+	  the inset is set to NoDisplay (bug #920)
+
 2003-02-22  John Levon  <levon@movementarian.org>
 
 	* insetfloat.C:

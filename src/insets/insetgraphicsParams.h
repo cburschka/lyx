@@ -76,7 +76,7 @@ struct InsetGraphicsParams
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.
-	grfx::Params as_grfxParams(string const & filepath) const;
+	grfx::Params as_grfxParams(string const & filepath = string()) const;
 
 private:
 	/// Initialize the object to a default status.

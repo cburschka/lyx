@@ -219,7 +219,7 @@ string const InsetGraphics::statusMessage() const
 
 	switch (cache_->loader.status()) {
 	case grfx::WaitingToLoad:
-		msg = _("Waiting for draw request to start loading...");
+		msg = _("Not shown.");
 		break;
 	case grfx::Loading:
 		msg = _("Loading...");
@@ -344,7 +344,10 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	int old_x = int(x);
 	x += lwidth;
 
-	if (cache_->loader.status() == grfx::WaitingToLoad)
+	grfx::Params const & gparams = params().as_grfxParams();
+
+	if (gparams.display != grfx::NoDisplay
+		&& cache_->loader.status() == grfx::WaitingToLoad)
 		cache_->loader.startLoading(*this, *bv);
 
 	if (!cache_->loader.monitoring())
