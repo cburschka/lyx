@@ -12,7 +12,6 @@
 #ifndef GPAINTER_H
 #define GPAINTER_H
 
-#include <config.h>
 #include <X11/Xft/Xft.h>
 
 #include <map>
