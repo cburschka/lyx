@@ -52,17 +52,10 @@ public:
 	int getCounter() const { return counter; }
 	///
 	string const getBibLabel() const;
-	///
-	struct Holder {
-		InsetBibitem * inset;
-		BufferView * view;
-	};
 
 private:
 	///
 	int counter;
-	///
-	Holder holder;
 	///
 	static int key_counter;
 };

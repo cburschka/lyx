@@ -16,8 +16,6 @@
 #include <vector>
 #include "insetcommand.h"
 
-//class Buffer;
-
 /** Used to insert BibTeX's information
   */
 class InsetBibtex : public InsetCommand {
@@ -52,15 +50,6 @@ public:
 	bool delDatabase(string const &);
 	///
 	bool display() const { return true; }
-	///
-	struct Holder {
-		InsetBibtex * inset;
-		BufferView * view;
-	};
-
-private:
-	///
-	Holder holder;
 };
 
 #endif // INSET_BIBTEX_H
