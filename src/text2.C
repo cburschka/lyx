@@ -1024,6 +1024,9 @@ void LyXText::clearSelection() const
 	selection.set(false);
 	selection.mark(false);
 	last_sel_cursor = selection.end = selection.start = selection.cursor = cursor;
+	// reset this in the bv_owner!
+	if (bv_owner && bv_owner->text)
+		bv_owner->text->xsel_cache.set(false);
 }
 
 

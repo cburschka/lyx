@@ -273,6 +273,8 @@ public:
 		
 	};
 	mutable Selection selection;
+	// this is used to handle XSelection events in the right manner
+	mutable Selection xsel_cache;
 
 	/// needed for the toggling (cursor position on last selection made)
 	mutable LyXCursor last_sel_cursor; 

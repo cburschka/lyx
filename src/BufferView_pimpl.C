@@ -748,11 +748,24 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 
 void BufferView::Pimpl::selectionRequested()
 {
+	static string sel;
+	
 	if (!available())
 		return;
- 
-	string const sel(bv_->getLyXText()->selectionAsString(bv_->buffer(),
-							      false)); 
+
+	LyXText * text = bv_->getLyXText();
+
+	if (text->selection.set() &&
+		(!bv_->text->xsel_cache.set() ||
+		 text->selection.start != bv_->text->xsel_cache.start ||
+		 text->selection.end != bv_->text->xsel_cache.end))
+	{
+		bv_->text->xsel_cache = text->selection;
+		sel = text->selectionAsString(bv_->buffer(), false); 
+	} else if (!text->selection.set()) {
+		sel = string();
+		bv_->text->xsel_cache.set(false);
+	}
 	if (!sel.empty()) {
 		workarea_.putClipboard(sel);
 	}
@@ -765,7 +778,8 @@ void BufferView::Pimpl::selectionLost()
 		hideCursor();
 		toggleSelection();
 		bv_->getLyXText()->clearSelection();
-		showCursor(); 
+		showCursor();
+		bv_->text->xsel_cache.set(false);
 	}
 }
 
@@ -1439,6 +1453,9 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting)
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		showCursor();
 	}
+
+	if (!lt->selection.set())
+		workarea_.haveSelection(false);
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
@@ -3082,7 +3099,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_PARENTINSERT:
 	{
-		lyxerr << "arg " << argument << endl;
 		InsetCommandParams p("lyxparent", argument);
 		Inset * inset = new InsetParent(p, *buffer_);
 		if (!insertInset(inset, "Standard"))
@@ -3157,6 +3173,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 					    | BufferView::FITCUR
 					    | BufferView::CHANGE);
 			}
+			workarea_.haveSelection(false);
 		}
 		
 		beforeChange(lt);

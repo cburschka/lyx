@@ -341,7 +341,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	// the status message may mean we changed size, so indicate
 	// we need a row redraw
-	if (old_status_ != cached_status_) {
+	if (old_status_ != grfx::ErrorUnknown && old_status_ != cached_status_) {
 		bv->getLyXText()->status(bv, LyXText::CHANGED_IN_DRAW);
 	}
  

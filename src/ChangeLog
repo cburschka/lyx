@@ -1,3 +1,13 @@
+2002-03-19  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (clearSelection): reset also xsel_cache.
+
+	* BufferView_pimpl.C (Dispatch): call WorkArea::haveSelection(false)
+	where it needs to be called (John tells us to do so too :)
+	(selectionLost): reset sel_cache.
+
+	* WorkArea.C (event_cb): leave ret to 0 (John tells us to do so :)
+
 2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* text2.C (setCursorIntern): put debuging code in INSETS channel
