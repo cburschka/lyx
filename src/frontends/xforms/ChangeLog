@@ -1,5 +1,18 @@
 2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormRef.C:
+	* forms/form_ref.fd: renamed the widgets in the standard style.
+
+	* xforms_helpers.[Ch] (getVectorFromChoice, getVectorFromBrowser): new
+	helper functions. Build a vector<string> from the contents of
+	an fl_choice and fl_browser respectively.
+
+	* FormCitation.C (fillChoice, updateBrowser):
+	* FormRef.C: use these new functions to only update the choices and
+	browsers when absolutely necessary.
+
+2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBase.C (InputCB):
 	* FormBaseDeprecated.C (InputCB): generalised Dekel's fix to the
 	"select choice < 1" problem.

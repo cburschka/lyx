@@ -9,12 +9,18 @@
 
 #include "Color.h"
 
-// Set an FL_OBJECT to activated or deactivated
+/// Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT *, bool enable);
 
-// Take a string and add breaks so that it fits into a desired label width, w
+/// Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w,
 		 int=FL_NORMAL_SIZE, int=FL_NORMAL_STYLE);
+
+/// Given an fl_choice, create a vector of its entries
+std::vector<string> const getVectorFromChoice(FL_OBJECT *);
+
+/// Given an fl_browser, create a vector of its entries
+std::vector<string> const getVectorFromBrowser(FL_OBJECT *);
 
 /// struct holding xform-specific colors
 struct XformsColor : public NamedColor {

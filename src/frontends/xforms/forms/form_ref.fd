@@ -31,6 +31,24 @@ callback:
 argument: 
 
 --------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 105 10 350 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Buffer|#B
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: choice_buffer
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
 box: 10 50 270 240
@@ -44,7 +62,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_South
-name: browser
+name: browser_refs
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -80,7 +98,7 @@ label: Sort|#S
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
-name: sort
+name: check_sort
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -98,7 +116,7 @@ label: Name:|#N
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
-name: name
+name: input_name
 callback: 
 argument: 
 
@@ -116,7 +134,7 @@ label: Ref:
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
-name: ref
+name: input_ref
 callback: 
 argument: 
 
@@ -134,7 +152,7 @@ label: Reference type|#R
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: type
+name: choice_type
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -154,6 +172,24 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_go
 callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 340 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
+name: button_restore
+callback: C_FormBaseRestoreCB
 argument: 0
 
 --------------------
@@ -208,42 +244,6 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
 callback: C_FormBaseApplyCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 10 340 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Restore|#R
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: button_restore
-callback: C_FormBaseRestoreCB
-argument: 0
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 105 10 350 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Buffer|#B
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
-name: buffer
-callback: C_FormBaseInputCB
 argument: 0
 
 ==============================

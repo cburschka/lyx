@@ -16,6 +16,7 @@
 #include "lyxlex.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/lstrings.h" // frontStrip, strip
 #include "gettext.h"
 
 using std::ofstream;
@@ -35,6 +36,38 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 }
 
 	
+// Given an fl_choice, create a vector of its entries
+vector<string> const getVectorFromChoice(FL_OBJECT * ob)
+{
+	vector<string> vec;
+	if (!ob || ob->objclass != FL_CHOICE)
+		return vec;
+
+	for(int i = 0; i < fl_get_choice_maxitems(ob); ++i) {
+		string const text = fl_get_choice_item_text(ob, i+1);
+		vec.push_back(strip(frontStrip(text)));
+	}
+
+	return vec;
+}
+
+
+// Given an fl_browser, create a vector of its entries
+vector<string> const getVectorFromBrowser(FL_OBJECT * ob)
+{
+	vector<string> vec;
+	if (!ob || ob->objclass != FL_BROWSER)
+		return vec;
+
+	for(int i = 0; i < fl_get_browser_maxline(ob); ++i) {
+		string const text = fl_get_browser_line(ob, i+1);
+		vec.push_back(strip(frontStrip(text)));
+	}
+
+	return vec;
+}
+
+
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
@@ -43,7 +76,7 @@ string formatted(string const & sin, int w, int size, int style)
 	string sout;
 	if (sin.empty()) return sout;
 
-	// break sin up into a vector of individual words
+	// breaks in up into a vector of individual words
 	vector<string> sentence;
 	string word;
 	for (string::const_iterator sit = sin.begin();

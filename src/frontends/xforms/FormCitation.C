@@ -48,6 +48,15 @@ int string_width(string const & str)
 
 void fillChoice(FD_form_citation * dialog, vector<string> vec)
 {
+	// Check whether the current contents of the browser will be
+	// changed by loading the contents of the vec...
+	vector<string> const choice_style =
+		getVectorFromChoice(dialog->choice_style);
+
+	if (vec == choice_style)
+		return;
+
+	// They will be changed. Proceed
 	string const str = " " + getStringFromVector(vec, " | ") + " ";
 
 	fl_clear_choice(dialog->choice_style);
@@ -413,6 +422,14 @@ void FormCitation::update()
 void FormCitation::updateBrowser(FL_OBJECT * browser,
 				 vector<string> const & keys) const
 {
+	// Check whether the current contents of the browser will be
+	// changed by loading the contents of the vec...
+	vector<string> browser_keys = getVectorFromBrowser(browser);
+
+	if (browser_keys == keys)
+		return;
+
+	// They will be changed. Proceed.
 	fl_clear_browser(browser);
 
 	for (vector<string>::const_iterator it = keys.begin();
