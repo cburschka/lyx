@@ -3,6 +3,11 @@
 	* insetfloatlist.C (getScreenLabel): Fix crash in the case where
 	float type do not exist.
 
+2002-04-28  Herbert Voss  <voss@perce.de>
+
+	* insetgraphics.C (latex): fix bug with missing file-extension.
+	LaTeX still allows a missing "eps" or "ps".
+
 2002-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetfloat.C (c-tor, wide): translate the name of the float.

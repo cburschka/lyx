@@ -703,16 +703,25 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
 	lyxerr[Debug::GRAPHICS]
-		<< "InsetGraphics::latex. Filename = "
+		<< "insetgraphics::latex: Filename = "
 		<< params().filename << endl;
 
-	string const message =
-	    (IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))
-		&& !params().filename.empty()) ?
-		    string() :
-		    string("bb = 0 0 200 100, draft, type=eps]");
+	// A missing (e)ps-extension is no problem for LaTeX, so
+	// we have to test three different cases
+	string const file_(MakeAbsPath(params().filename, buf->filePath()));
+	bool const file_exists = 
+		!file_.empty() && 
+		(IsFileReadable(file_) ||		// original
+		 IsFileReadable(file_ + ".eps") || 	// original.eps
+		 IsFileReadable(file_ + ".ps"));	// original.ps
+	string const message = file_exists ? 
+		string() : string("bb = 0 0 200 100, draft, type=eps]");
+	// if !message.empty() than there was no existing file
+	// "filename(.(e)ps)" found. In this case LaTeX
+	// draws only a rectangle with the above bb and the
+	// not found filename in it.
 	lyxerr[Debug::GRAPHICS]
-		<< "InsetGraphics::latex. Message = " << message << endl;
+		<< "InsetGraphics::latex. Message = \"" << message << '\"' << endl;
 
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
