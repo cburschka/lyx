@@ -1,3 +1,7 @@
+2004-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* insetcaption.C (draw): squash warning about unused variable.
+
 2004-03-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalSupport.C: use the master buffer's temp dir

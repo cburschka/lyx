@@ -98,15 +98,12 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 		type = static_cast<InsetWrap *>(i2)->params().type;
 	else
 		BOOST_ASSERT(false);
-#else
-	string type = "float";
-#endif
 
 	FloatList const & floats =
 		pi.base.bv->buffer()->params().getLyXTextClass().floats();
-#if 0
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
 #else
+	string type = "float";
 	string const fl = N_("Float");
 #endif
 
