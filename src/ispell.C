@@ -237,7 +237,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	child_.reset(li);
 	if (li->start() == -1) {
 		error_ = _("Could not create an ispell process.\nYou may not have "
-			" the right languages installed.");
+			"the right languages installed.");
 		child_.reset(0);
 		return;
 	}
@@ -367,7 +367,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	bool error = select(err_read);
 
 	if (error) {
-		error_ = _("Could not communicate with the spell-checker program");
+		error_ = _("Could not communicate with the spell-checker program.");
 		return UNKNOWN;
 	}
 
