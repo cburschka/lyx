@@ -2,7 +2,7 @@ DlgEdit:v1.2:Dialog:
 Dialog {
 	ClassHeader {}
 	ClassSource {}
-	ClassName {IndexDialog}
+	ClassName {}
 	DataHeader {indexdlgdata.h}
 	DataSource {indexdlgdata.C}
 	DataName {IndexDialogData}
@@ -27,8 +27,8 @@ Label {
 		MidLineWidth {0}
 		FrameMargin {0}
 		Rect {5 15 60 25}
-		Name {Label_1}
-		Variable {labelindex}
+		Name {label_index}
+		Variable {label_index}
 		MinimumSize {60 25}
 		MaximumSize {60 25}
 		BackgroundPixmap {}
@@ -52,8 +52,8 @@ LineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {70 15 175 25}
-		Name {LineEdit_1}
-		Variable {index}
+		Name {line_index}
+		Variable {line_index}
 		MinimumSize {125 25}
 		MaximumSize {32767 25}
 		BackgroundPixmap {}
@@ -80,8 +80,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {24 65 80 25}
-		Name {PushButton_OK}
-		Variable {buttonOk}
+		Name {button_ok}
+		Variable {button_ok}
 		Signal {[Protected]  clicked --> clickedOK  ()}
 		MinimumSize {80 25}
 		MaximumSize {80 25}
@@ -109,8 +109,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {146 65 80 25}
-		Name {PushButton_Cancel}
-		Variable {buttonCancel}
+		Name {button_cancel}
+		Variable {button_cancel}
 		Signal {[Protected]  clicked --> clickedCancel  ()}
 		MinimumSize {80 25}
 		MaximumSize {80 25}
@@ -150,12 +150,12 @@ Box_Layout-1.1.1{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1{
-	Widget {Label_1}
+	Widget {label_index}
 	BoxStretch {0}
 	Alignment {36}
 }
 Layout_Widget-1.1.1.2{
-	Widget {LineEdit_1}
+	Widget {line_index}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -175,7 +175,7 @@ Box_Stretch-1.2.1.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.2{
-	Widget {PushButton_OK}
+	Widget {button_ok}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -183,7 +183,7 @@ Box_Stretch-1.2.1.3{
 	Stretch {2}
 }
 Layout_Widget-1.2.1.4{
-	Widget {PushButton_Cancel}
+	Widget {button_cancel}
 	BoxStretch {1}
 	Alignment {36}
 }

@@ -2,7 +2,7 @@ DlgEdit:v1.2:Dialog:
 Dialog {
 	ClassHeader {}
 	ClassSource {}
-	ClassName {CopyrightDialog}
+	ClassName {}
 	DataHeader {copyrightdlgdata.h}
 	DataSource {copyrightdlgdata.C}
 	DataName {CopyrightDialogData}
@@ -22,12 +22,12 @@ PushButton {
 		Default {true}
 		AutoDefault {true}
 		IsMenuButton {false}
-		Text {&OK}
+		Text {&Close}
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {157 343 151 107}
-		Name {PushButton_OK}
-		Variable {buttonOk}
+		Name {button_cancel}
+		Variable {button_cancel}
 		Signal {[Protected]  clicked --> clickedOK  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -47,7 +47,7 @@ PushButton {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {LyX is Copyright (C) 1995 by Matthias Ettrich, \n1995-2001 LyX Team}
+		Text {}
 		Alignment {1316}
 		AutoResize {false}
 		Margin {-1}
@@ -56,7 +56,8 @@ Label {
 		MidLineWidth {0}
 		FrameMargin {1}
 		Rect {5 5 455 108}
-		Name {Label_2}
+		Name {label_copyright}
+		Variable {label_copyright}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -75,7 +76,7 @@ Label {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {This program is free software; you can redistribute it\nand/or modify it under the terms of the GNU General\nPublic License as published by the Free Software\nFoundation; either version 2 of the License, or\n(at your option) any later version.}
+		Text {}
 		Alignment {1316}
 		AutoResize {false}
 		Margin {-1}
@@ -84,7 +85,8 @@ Label {
 		MidLineWidth {0}
 		FrameMargin {1}
 		Rect {5 118 455 107}
-		Name {Label_3}
+		Name {label_licence}
+		Variable {label_licence} 
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -103,7 +105,7 @@ Label {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {LyX is distributed in the hope that it will\nbe useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of\nthe GNU General Public License\nalong with this program; if not, write to\nthe Free Software Foundation, Inc., \n675 Mass Ave, Cambridge, MA 02139, USA.}
+		Text {}
 		Alignment {1316}
 		AutoResize {false}
 		Margin {-1}
@@ -112,7 +114,8 @@ Label {
 		MidLineWidth {0}
 		FrameMargin {1}
 		Rect {5 230 455 108}
-		Name {Label_4}
+		Name {label_disclaimer}
+		Variable {label_disclaimer} 
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -140,17 +143,17 @@ Box_Layout-1{
 	Stretch {1}
 }
 Layout_Widget-1.1{
-	Widget {Label_2}
+	Widget {label_copyright}
 	BoxStretch {1}
 	Alignment {36}
 }
 Layout_Widget-1.2{
-	Widget {Label_3}
+	Widget {label_licence}
 	BoxStretch {1}
 	Alignment {36}
 }
 Layout_Widget-1.3{
-	Widget {Label_4}
+	Widget {label_disclaimer}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -166,7 +169,7 @@ Box_Stretch-1.4.1{
 	Stretch {1}
 }
 Layout_Widget-1.4.2{
-	Widget {PushButton_OK}
+	Widget {button_cancel}
 	BoxStretch {1}
 	Alignment {36}
 }

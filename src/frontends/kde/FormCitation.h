@@ -4,42 +4,34 @@
  * Read the file COPYING
  *
  * \author John Levon
+ * \author Angus Leeming
  */
 
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
 #include <vector>
-#include <boost/smart_ptr.hpp>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
+#include "KFormBase.h"
 
-#include "ViewBase.h"
-#include "ButtonPolicies.h"
-
-class kdeBC;
 class QListBox;
 class ControlCitation;
 class CitationDialog;
 
-class FormCitation : public ViewBC<kdeBC> {
+class FormCitation : public KFormBase<ControlCitation, CitationDialog> {
 public:
 	FormCitation(ControlCitation &);
 
-	/// Functions accessible to the Controller.
+	// Functions accessible to the Controller
 
-	/// Set the Params variable for the Controller.
+	/// set the Params variable for the Controller
 	virtual void apply();
-	/// Set the Params variable for the Controller.
+	/// set the Params variable for the Controller
 	virtual void build();
-	/// Hide the dialog.
-	virtual void hide();
-	/// Update dialog before/whilst showing it.
+	/// update dialog before/whilst showing it
 	virtual void update();
-	/// Create the dialog if necessary, update it and display it.
-	void show();
+	/// hide the dialog
+	virtual void hide(); 
 
 	/// add a key
 	ButtonPolicy::SMInput add();
@@ -56,9 +48,9 @@ public:
 	/// a key has been double-clicked
 	ButtonPolicy::SMInput select_key(char const * key);
 
+	friend class CitationDialog;
+ 
 private:
-	/// The parent controller
-	ControlCitation & controller() const;
 	/// update add,remove,up,down
 	void updateButtons();
 	/// update the available keys list
@@ -71,9 +63,6 @@ private:
 	void highlight(char const *, QListBox *, string &, string &);
 	/// does the dirty work for updateAvailableList(), updateChosenList()
 	void updateList(QListBox *, std::vector<string> const &);
-
-	/// Real GUI implementation.
-	boost::scoped_ptr<CitationDialog> dialog_;
 
 	/// available citation keys
 	std::vector<string> keys;

@@ -2,7 +2,7 @@ DlgEdit:v1.2:Dialog:
 Dialog {
 	ClassHeader {}
 	ClassSource {}
-	ClassName {ParaDialog}
+	ClassName {}
 	DataHeader {paradlgdata.h}
 	DataSource {paradlgdata.C}
 	DataName {ParaDialogData}
@@ -26,8 +26,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {73 555 69 55}
-		Name {OK}
-		Variable {ok}
+		Name {button_ok}
+		Variable {button_ok}
 		Signal {[Protected]  clicked --> ok_adaptor  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -55,8 +55,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {215 555 68 55}
-		Name {apply}
-		Variable {apply}
+		Name {button_apply}
+		Variable {button_apply}
 		Signal {[Protected]  clicked --> apply_adaptor  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -84,8 +84,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {357 555 68 55}
-		Name {restore}
-		Variable {restore}
+		Name {button_restore}
+		Variable {button_restore}
 		Signal {[Protected]  clicked --> restore_adaptor  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -113,8 +113,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {498 555 69 55}
-		Name {Cancel}
-		Variable {cancel}
+		Name {button_cancel}
+		Variable {button_cancel}
 		Signal {[Protected]  clicked --> cancel_adaptor  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -137,7 +137,7 @@ User {
 		UserClassHeader {tabstack.h}
 		UserClassName {TabStack}
 		Rect {5 5 630 545}
-		Name {User_1}
+		Name {tabstack}
 		Variable {tabstack}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -174,7 +174,7 @@ Box_Layout-1.1{
 	Stretch {10}
 }
 Layout_Widget-1.1.1{
-	Widget {User_1}
+	Widget {tabstack}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -190,7 +190,7 @@ Box_Stretch-1.2.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.2{
-	Widget {OK}
+	Widget {button_ok}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -198,7 +198,7 @@ Box_Stretch-1.2.3{
 	Stretch {1}
 }
 Layout_Widget-1.2.4{
-	Widget {apply}
+	Widget {button_apply}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -206,7 +206,7 @@ Box_Stretch-1.2.5{
 	Stretch {1}
 }
 Layout_Widget-1.2.6{
-	Widget {restore}
+	Widget {button_restore}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -214,7 +214,7 @@ Box_Stretch-1.2.7{
 	Stretch {1}
 }
 Layout_Widget-1.2.8{
-	Widget {Cancel}
+	Widget {button_cancel}
 	BoxStretch {1}
 	Alignment {36}
 }

@@ -21,9 +21,13 @@ libkdemoc_la_SOURCES = FileDialog_private_moc.C \
 		printdlg_moc.C \
 		refdlg_moc.C \
 		tabcreatedlg_moc.C \
-		tocdlg_moc.C \
-		urldlg_moc.C
+		urldlg_moc.C \
+		vclogdlg_moc.C
 
+# FIXME
+ 
+#tocdlg_moc.C \
+ 
 DISTCLEANFILES = $(libkdemoc_la_SOURCES) *.orig *.rej *~ *.bak core
 
 LIBS=
@@ -56,4 +60,6 @@ tabcreatedlg_moc.C: ../tabcreatedlg.h
 tocdlg_moc.C: ../tocdlg.h
 	$(MOC) $< -o $@
 urldlg_moc.C: ../urldlg.h
+	$(MOC) $< -o $@
+vclogdlg_moc.C: ../vclogdlg.h
 	$(MOC) $< -o $@

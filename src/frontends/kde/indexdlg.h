@@ -9,9 +9,10 @@
 #ifndef INDEXDIALOG_H
 #define INDEXDIALOG_H
 
+#include "FormIndex.h" 
 #include "dlg/indexdlgdata.h"
 
-class FormIndex;
+// FIXME: closeEvent 
 
 class IndexDialog : public IndexDialogData
 {
@@ -19,15 +20,13 @@ Q_OBJECT
 
 public:
 	IndexDialog (FormIndex * form, QWidget * parent = NULL, char const * name = NULL);
-	virtual ~IndexDialog();
 
-	void setIndexText(char const * str) { index->setText(str); }
-	char const * getIndexText() { return index->text(); }
-	void setReadOnly(bool);
+	void setIndexText(char const * str) { line_index->setText(str); }
+	char const * getIndexText() { return line_index->text(); }
 
 private slots:
-	void clickedOK();
-	void clickedCancel();
+	void clickedOK() { form_->OKButton(); };
+	void clickedCancel() { form_->CancelButton(); };
 
 private:
 	FormIndex * form_;

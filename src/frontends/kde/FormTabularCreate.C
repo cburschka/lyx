@@ -8,63 +8,31 @@
 
 #include <config.h>
 
-#include "tabcreatedlg.h"
-#include "Dialogs.h"
-#include "FormTabularCreate.h"
 #include "gettext.h"
-#include "QtLyXView.h"
-#include "BufferView.h"
-#include "insets/insettabular.h"  
 #include "support/lstrings.h"
-
-FormTabularCreate::FormTabularCreate(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0)
+ 
+#include "FormTabularCreate.h"
+#include "ControlTabularCreate.h" 
+#include "tabcreatedlg.h"
+ 
+FormTabularCreate::FormTabularCreate(ControlTabularCreate & c)
+	: KFormBase<ControlTabularCreate, TabularCreateDialog>(c)
 {
-	d->showTabularCreate.connect(slot(this, &FormTabularCreate::show));
 }
 
 
-FormTabularCreate::~FormTabularCreate()
+void FormTabularCreate::build()
 {
-	delete dialog_;
+	dialog_.reset(new TabularCreateDialog(this, 0, _("LyX: Insert Table")));
+
+	bc().setOK(dialog_->button_ok);
+	bc().setCancel(dialog_->button_cancel);
 }
 
 
-void FormTabularCreate::apply(unsigned int rows, unsigned cols)
+void FormTabularCreate::apply()
 {
-	if (!lv_->view()->available())
-		return;
-
-	string tmp = tostr(rows) + " " + tostr(cols);
-	lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
-}
-
-
-void FormTabularCreate::show()
-{
-	if (!dialog_)
-		dialog_ = new TabularCreateDialog(this, 0, _("LyX: Insert Table"));
-
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormTabularCreate::hide));
-	}
-
-	dialog_->raise();
-	dialog_->setActiveWindow();
-
-	update();
-	dialog_->show();
-}
-
-
-void FormTabularCreate::close()
-{
-	h_.disconnect();
-}
-
-
-void FormTabularCreate::hide()
-{
-	dialog_->hide();
-	close();
+	// FIXME: angus, what's with this ? Why should the dialogs know about
+	// how LFUN represents the row, column ... this should be params(uint, uint) 
+	controller().params() = tostr(dialog_->spin_rows->value()) + " " + tostr(dialog_->spin_cols->value());
 }

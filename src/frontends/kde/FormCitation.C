@@ -4,49 +4,31 @@
  * Read the file COPYING
  *
  * \author John Levon
+ * \author Angus Leeming 
  */
 
 #include <config.h>
-
+ 
 #include <algorithm>
 
-#include "ControlCitation.h"
 #include "FormCitation.h"
+#include "ControlCitation.h"
 #include "citationdlg.h"
 #include "gettext.h"
-#include "kdeBC.h"
 #include "support/lstrings.h"
+#include "helper_funcs.h" 
 
 using std::vector;
 using std::pair;
 using std::find;
 
 FormCitation::FormCitation(ControlCitation & c)
-	: ViewBC<kdeBC>(c), 
+	: KFormBase<ControlCitation, CitationDialog>(c),
 	  keys(0), chosenkeys(0)
-{}
+{
+}
 
  
-ControlCitation & FormCitation::controller() const
-{
-	return static_cast<ControlCitation &>(controller_);
-	//return dynamic_cast<ControlCitation &>(controller_);
-}
-
-
-void FormCitation::show()
-{
-	if (!dialog_.get())
-		build();
-
-	update();
-
-	dialog_->raise();
-	dialog_->setActiveWindow();
-	dialog_->show();
-}
-
-
 void FormCitation::apply()
 {
 	controller().params().setCmdName("cite");
@@ -61,8 +43,7 @@ void FormCitation::hide()
 	selectedKey.erase();
 	selectedChosenKey.erase();
 
-	if (dialog_.get() && dialog_->isVisible())
-		dialog_->hide();
+	KFormBase<ControlCitation, CitationDialog>::hide();
 }
 
 
@@ -70,25 +51,30 @@ void FormCitation::build()
 {
 	dialog_.reset(new CitationDialog(this, 0, "Citation", false));
 
+	// FIXME: apply, restore buttons
+ 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->buttonOk);
 	//bc().setApply(dialog_->buttonApply);
 	bc().setCancel(dialog_->buttonCancel);
 	//bc().setUndoAll(dialog_->buttonRestore);
-	bc().refresh();
 
+	bc().addReadOnly(dialog_->keys);
+	bc().addReadOnly(dialog_->chosen);
+	bc().addReadOnly(dialog_->after); 
 	bc().addReadOnly(dialog_->add);
 	bc().addReadOnly(dialog_->remove);
 	bc().addReadOnly(dialog_->up);
 	bc().addReadOnly(dialog_->down);
+	// FIXME: when implemented, add these
 	//bc().addReadOnly(dialog_->style);
-	//bc().addReadOnly(dialog_->labelbefore);
-	bc().addReadOnly(dialog_->labelafter);
+	//bc().addReadOnly(dialog_->before);
 }
 
 
 void FormCitation::update()
 {
+	/* FIXME
 	keys = controller().getBibkeys();
 	updateAvailableList();
 	selectedKey.erase();
@@ -111,12 +97,12 @@ void FormCitation::update()
 		dialog_->chosen->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->after->setFocusPolicy(QWidget::StrongFocus);
 	}
+	*/
 }
 
 
 void FormCitation::updateButtons()
 {
-	// Can go once ButtonController is working?
 	if (controller().isReadonly()) {
 		dialog_->add->setEnabled(false);
 		dialog_->remove->setEnabled(false);
@@ -174,6 +160,7 @@ void FormCitation::selectChosen()
 	}
 }
 
+
 ButtonPolicy::SMInput FormCitation::add()
 {
 	if (selectedKey.empty())
@@ -193,6 +180,7 @@ ButtonPolicy::SMInput FormCitation::add()
 	return ButtonPolicy::SMI_VALID;
 }
 
+
 ButtonPolicy::SMInput FormCitation::remove()
 {
 	if (selectedChosenKey.empty())
@@ -210,6 +198,7 @@ ButtonPolicy::SMInput FormCitation::remove()
 	updateButtons();
 	return ButtonPolicy::SMI_VALID;
 }
+
 
 ButtonPolicy::SMInput FormCitation::up()
 {
@@ -301,6 +290,7 @@ void FormCitation::highlight_chosen(char const * key)
 void FormCitation::highlight(char const * key, QListBox * lb,
 			     string & selected1, string & selected2)
 {
+	/* 
 	selected1.erase();
 	selected1 = key;
 
@@ -321,4 +311,5 @@ void FormCitation::highlight(char const * key, QListBox * lb,
 		dialog_->entry->setText(_("Key not found."));
 
 	updateButtons();
+	*/ 
 }

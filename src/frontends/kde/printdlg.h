@@ -10,12 +10,16 @@
 #define PRINTDLG_H
 
 
+#include "FormPrint.h"
+ 
 #include "dlg/printdlgdata.h"
+ 
 #include "support/lstrings.h"
 #include "lyxrc.h" 
 #include "PrinterParams.h"
-#include "FormPrint.h"
-
+ 
+// FIXME: closeEvent 
+ 
 class PrintDialog : public PrintDialogData
 {
 	Q_OBJECT
@@ -25,108 +29,105 @@ public:
 	virtual ~PrintDialog();
 	
 	char const * getFrom() {
-		return from->text();
+		return line_from->text();
 	}
 
 	char const * getTo() {
-		return to->text();
+		return line_to->text();
 	}
 
 	PrinterParams::Target getTarget() {
-		if (toprinter->isChecked())
+		if (radio_toprinter->isChecked())
 			return PrinterParams::PRINTER;
 		else
 			return PrinterParams::FILE;
 	}
 
 	char const * getPrinter() {
-		return printername->text();
+		return line_printername->text();
 	}
 
 	char const * getFile() {
-		return filename->text();
+		return line_filename->text();
 	}
 	
 	PrinterParams::WhichPages getWhichPages() {
-		if (oddpages->isChecked())
+		if (radio_oddpages->isChecked())
 			return PrinterParams::ODD;
-		else if (evenpages->isChecked())
+		else if (radio_evenpages->isChecked())
 			return PrinterParams::EVEN;
 		else
 			return PrinterParams::ALL;
 	}
 
 	bool getReverse() {
-		return reverse->isChecked();
+		return check_reverse->isChecked();
 	}
 
 	bool getSort() {
-		return sort->isChecked();
+		return check_sort->isChecked();
 	}
 
 	char const * getCount() {
-		return count->text();
+		return line_count->text();
 	}
 
 	void setTarget(PrinterParams::Target t) {
-		toprinter->setChecked(t == PrinterParams::PRINTER);
-		tofile->setChecked(t != PrinterParams::PRINTER);
+		radio_toprinter->setChecked(t == PrinterParams::PRINTER);
+		radio_tofile->setChecked(t != PrinterParams::PRINTER);
 	}
 	 
        	void setPrinter(char const * name) {
-		printername->setText(name);
+		line_printername->setText(name);
 	} 
  
 	void setFile(char const * name) {
-		filename->setText(name);
+		line_filename->setText(name);
 	}	 
  
 	void setWhichPages(PrinterParams::WhichPages wp) {
 		switch (wp) {
 			case PrinterParams::ALL:
-				allpages->setChecked(true);
+				radio_allpages->setChecked(true);
 				break;
 			case PrinterParams::EVEN:
-				evenpages->setChecked(true);
+				radio_evenpages->setChecked(true);
 				break;
 			case PrinterParams::ODD:
-				oddpages->setChecked(true);
+				radio_oddpages->setChecked(true);
 				break;
 		}
 	}
  
 	void setReverse(bool on) {
-		reverse->setChecked(on);
+		check_reverse->setChecked(on);
 	}
  
 	void setSort(bool on) {
-		sort->setChecked(on);
+		check_sort->setChecked(on);
 	}
 	 
 	void setCount(int num) {
-		count->setText(tostr(num).c_str());
-		sort->setEnabled(num > 1);
+		line_count->setText(tostr(num).c_str());
+		check_sort->setEnabled(num > 1);
 	}
 
 	void setFrom(char const * text) {
-		from->setText(text);
+		line_from->setText(text);
 	}
 
 	void setTo(char const * text) {
-		to->setText(text);
+		line_to->setText(text);
 	}
 
 protected slots:
  
 	void clickedCancel() {
-		form_->close();
-		hide();
+		form_->CancelButton(); 
 	}
  
 	void clickedPrint() {
-		form_->print(); 
-		form_->close();
-		hide();
+		form_->OKButton();
 	}
 
 	/// open up the browser to select ps file 

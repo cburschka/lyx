@@ -1,13 +1,13 @@
 /**
- * \file logdlg.h
+ * \file vclogdlg.h
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
  * \author John Levon
  */
 
-#ifndef LOGDLG_H
-#define LOGDLG_H
+#ifndef VCLOGDLG_H
+#define VCLOGDLG_H
 
 #include <config.h>
 #include "support/lstrings.h"
@@ -16,14 +16,14 @@
 
 // FIXME: closeEvent
  
-class FormLog;
+class FormVCLog;
  
-class LogDialog : public LogDialogData
+class VCLogDialog : public LogDialogData
 {
 	Q_OBJECT
 
 public:
-	LogDialog(FormLog * f, QWidget * parent = NULL, char const * name = NULL);
+	VCLogDialog(FormVCLog * f, QWidget * parent = NULL, char const * name = NULL);
 
 	void setLogText(string const & text);
  
@@ -33,6 +33,6 @@ protected slots:
 	virtual void updatePressed();
  
 private:
-	FormLog * form_;
+	FormVCLog * form_;
 };
-#endif // LOGDLG_H
+#endif // LOGVCDLG_H

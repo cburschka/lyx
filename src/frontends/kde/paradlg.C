@@ -52,9 +52,10 @@ void ParaDialog::closeEvent(QCloseEvent * e)
 
 void ParaDialog::setReadOnly(bool readonly)
 {
-	generalpage->justification->setEnabled(!readonly);
-	generalpage->lineabove->setEnabled(!readonly);
-	generalpage->linebelow->setEnabled(!readonly);
+	/* 
+	generalpage->combo_justification->setEnabled(!readonly);
+	generalpage->check_lineabove->setEnabled(!readonly);
+	generalpage->check_linebelow->setEnabled(!readonly);
 	generalpage->abovepage->pagebreakabove->setEnabled(!readonly);
 	generalpage->belowpage->pagebreakbelow->setEnabled(!readonly);
 	generalpage->abovepage->keepabove->setEnabled(!readonly);
@@ -62,8 +63,8 @@ void ParaDialog::setReadOnly(bool readonly)
 	generalpage->noindent->setEnabled(!readonly);
 	generalpage->abovepage->spaceabove->setEnabled(!readonly);
 	generalpage->belowpage->spacebelow->setEnabled(!readonly);
-	generalpage->abovepage->spaceabovevalue->setEnabled(!readonly);
-	generalpage->belowpage->spacebelowvalue->setEnabled(!readonly);
+	generalpage->abovepage->spaceabove->setEnabled(!readonly);
+	generalpage->belowpage->spacebelow->setEnabled(!readonly);
 	generalpage->abovepage->spaceaboveplus->setEnabled(!readonly);
 	generalpage->belowpage->spacebelowplus->setEnabled(!readonly);
 	generalpage->abovepage->spaceaboveminus->setEnabled(!readonly);
@@ -82,6 +83,7 @@ void ParaDialog::setReadOnly(bool readonly)
 	apply->setEnabled(!readonly);
 	restore->setEnabled(!readonly);
 	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
+	*/ 
 }
 
 
@@ -89,11 +91,11 @@ void ParaDialog::setLabelWidth(char const * text)
 {
 	// FIXME: should be cleverer here
 	if (!compare(_("Senseless with this layout!"), text)) {
-		generalpage->labelwidth->setText("");
-		generalpage->labelwidth->setEnabled(false);
+		generalpage->line_labelwidth->setText("");
+		generalpage->line_labelwidth->setEnabled(false);
 	} else {
-		generalpage->labelwidth->setText(text);
-		generalpage->labelwidth->setEnabled(true);
+		generalpage->line_labelwidth->setText(text);
+		generalpage->line_labelwidth->setEnabled(true);
 	}
 }
 
@@ -107,17 +109,17 @@ void ParaDialog::setAlign(int type)
 		default: type = 0; break;
 	}
 
-	generalpage->justification->setCurrentItem(type);
+	generalpage->combo_justification->setCurrentItem(type);
 }
 
 
 void ParaDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbelow, bool noindent)
 {
-	generalpage->lineabove->setChecked(labove);
-	generalpage->linebelow->setChecked(lbelow);
-	generalpage->abovepage->pagebreakabove->setChecked(pabove);
-	generalpage->belowpage->pagebreakbelow->setChecked(pbelow);
-	generalpage->noindent->setChecked(noindent);
+	generalpage->check_lineabove->setChecked(labove);
+	generalpage->check_linebelow->setChecked(lbelow);
+	generalpage->abovepage->check_pagebreakabove->setChecked(pabove);
+	generalpage->belowpage->check_pagebreakbelow->setChecked(pbelow);
+	generalpage->check_noindent->setChecked(noindent);
 }
 
 
@@ -134,7 +136,7 @@ void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kin
 		case VSpace::VFILL: item = 5; break;
 		case VSpace::LENGTH: item = 6; break;
 	}
-	generalpage->abovepage->spaceabove->setCurrentItem(item);
+	generalpage->abovepage->combo_spaceabove->setCurrentItem(item);
 
 	switch (kindbelow) {
 		case VSpace::NONE: item = 0; break;
@@ -145,17 +147,17 @@ void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kin
 		case VSpace::VFILL: item = 5; break;
 		case VSpace::LENGTH: item = 6; break;
 	}
-	generalpage->belowpage->spacebelow->setCurrentItem(item);
+	generalpage->belowpage->combo_spacebelow->setCurrentItem(item);
 	
-	generalpage->abovepage->spaceabovevalue->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->abovepage->spaceaboveplus->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->abovepage->spaceaboveminus->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowvalue->setEnabled(kindbelow == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowplus->setEnabled(kindbelow == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowminus->setEnabled(kindbelow == VSpace::LENGTH);
+	generalpage->abovepage->length_spaceabove->setEnabled(kindabove == VSpace::LENGTH);
+	generalpage->abovepage->length_spaceaboveplus->setEnabled(kindabove == VSpace::LENGTH);
+	generalpage->abovepage->length_spaceaboveminus->setEnabled(kindabove == VSpace::LENGTH);
+	generalpage->belowpage->length_spacebelow->setEnabled(kindbelow == VSpace::LENGTH);
+	generalpage->belowpage->length_spacebelowplus->setEnabled(kindbelow == VSpace::LENGTH);
+	generalpage->belowpage->length_spacebelowminus->setEnabled(kindbelow == VSpace::LENGTH);
 
-	generalpage->abovepage->keepabove->setChecked(keepabove);
-	generalpage->belowpage->keepbelow->setChecked(keepbelow);
+	generalpage->abovepage->check_keepabove->setChecked(keepabove);
+	generalpage->belowpage->check_keepbelow->setChecked(keepbelow);
 }
 
 
@@ -163,18 +165,18 @@ void ParaDialog::setAboveLength(float val, float plus, float minus,
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
 	if (vunit == LyXLength::UNIT_NONE) {
-		generalpage->abovepage->spaceabovevalue->setValue("");
-		generalpage->abovepage->spaceaboveplus->setValue("");
-		generalpage->abovepage->spaceaboveminus->setValue("");
+		generalpage->abovepage->length_spaceabove->setValue("");
+		generalpage->abovepage->length_spaceaboveplus->setValue("");
+		generalpage->abovepage->length_spaceaboveminus->setValue("");
 	} else {
-		generalpage->abovepage->spaceabovevalue->setValue(tostr(val));
-		generalpage->abovepage->spaceaboveplus->setValue(tostr(plus));
-		generalpage->abovepage->spaceaboveminus->setValue(tostr(minus));
+		generalpage->abovepage->length_spaceabove->setValue(tostr(val));
+		generalpage->abovepage->length_spaceaboveplus->setValue(tostr(plus));
+		generalpage->abovepage->length_spaceaboveminus->setValue(tostr(minus));
 	}
 
-	generalpage->abovepage->spaceabovevalue->setUnits(vunit);
-	generalpage->abovepage->spaceaboveplus->setUnits(punit);
-	generalpage->abovepage->spaceaboveminus->setUnits(munit);
+	generalpage->abovepage->length_spaceabove->setUnits(vunit);
+	generalpage->abovepage->length_spaceaboveplus->setUnits(punit);
+	generalpage->abovepage->length_spaceaboveminus->setUnits(munit);
 }
 
 
@@ -182,18 +184,18 @@ void ParaDialog::setBelowLength(float val, float plus, float minus,
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
 	if (vunit == LyXLength::UNIT_NONE) {
-		generalpage->belowpage->spacebelowvalue->setValue("");
-		generalpage->belowpage->spacebelowplus->setValue("");
-		generalpage->belowpage->spacebelowminus->setValue("");
+		generalpage->belowpage->length_spacebelow->setValue("");
+		generalpage->belowpage->length_spacebelowplus->setValue("");
+		generalpage->belowpage->length_spacebelowminus->setValue("");
 	} else {
-		generalpage->belowpage->spacebelowvalue->setValue(tostr(val));
-		generalpage->belowpage->spacebelowplus->setValue(tostr(plus));
-		generalpage->belowpage->spacebelowminus->setValue(tostr(minus));
+		generalpage->belowpage->length_spacebelow->setValue(tostr(val));
+		generalpage->belowpage->length_spacebelowplus->setValue(tostr(plus));
+		generalpage->belowpage->length_spacebelowminus->setValue(tostr(minus));
 	}
 
-	generalpage->belowpage->spacebelowvalue->setUnits(vunit);
-	generalpage->belowpage->spacebelowplus->setUnits(punit);
-	generalpage->belowpage->spacebelowminus->setUnits(munit);
+	generalpage->belowpage->length_spacebelow->setUnits(vunit);
+	generalpage->belowpage->length_spacebelowplus->setUnits(punit);
+	generalpage->belowpage->length_spacebelowminus->setUnits(munit);
 }
 
 
@@ -203,11 +205,11 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 	if (type!=LyXParagraph::PEXTRA_NONE) {
 		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
 		if (percent != "") {
-			extrapage->widthvalue->setText(percent.c_str());
-			extrapage->widthvalueunits->setCurrentItem(11);
+			extrapage->line_widthvalue->setText(percent.c_str());
+			extrapage->combo_widthvalueunits->setCurrentItem(11);
 		} else {
 			int unit = 0;
-			extrapage->widthvalue->setText(tostr(widthval).c_str());
+			extrapage->line_widthvalue->setText(tostr(widthval).c_str());
 			switch (units) {
 				case LyXLength::CM: unit = 0; break;
 				case LyXLength::IN: unit = 1; break;
@@ -225,47 +227,47 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 				default:
 					lyxerr[Debug::GUI] << "Unknown unit " << long(units) << endl;
 			}
-			extrapage->widthvalueunits->setCurrentItem(unit);
+			extrapage->combo_widthvalueunits->setCurrentItem(unit);
 		}
 	} else
-		extrapage->widthvalue->setText("");
+		extrapage->line_widthvalue->setText("");
 
 	switch (align) {
 		case LyXParagraph::MINIPAGE_ALIGN_TOP:
-			extrapage->top->setChecked(true);
+			extrapage->radio_top->setChecked(true);
 			break;
 		case LyXParagraph::MINIPAGE_ALIGN_MIDDLE:
-			extrapage->middle->setChecked(true);
+			extrapage->radio_middle->setChecked(true);
 			break;
 		case LyXParagraph::MINIPAGE_ALIGN_BOTTOM:
-			extrapage->bottom->setChecked(true);
+			extrapage->radio_bottom->setChecked(true);
 			break;
 	}
 	
-	extrapage->hfillbetween->setChecked(hfill);
-	extrapage->startnewminipage->setChecked(startminipage);
+	extrapage->check_hfillbetween->setChecked(hfill);
+	extrapage->check_startnewminipage->setChecked(startminipage);
 
 	extrapage->specialalignment->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->top->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->middle->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->bottom->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->widthvalue->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
-	extrapage->widthvalueunits->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
-	extrapage->hfillbetween->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->startnewminipage->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
+	extrapage->radio_top->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
+	extrapage->radio_middle->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
+	extrapage->radio_bottom->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
+	extrapage->line_widthvalue->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
+	extrapage->combo_widthvalueunits->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
+	extrapage->check_hfillbetween->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
+	extrapage->check_startnewminipage->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
 
 	switch (type) {
 		case LyXParagraph::PEXTRA_NONE:
-			extrapage->type->setCurrentItem(0);
+			extrapage->combo_type->setCurrentItem(0);
 			break;
 		case LyXParagraph::PEXTRA_INDENT:
-			extrapage->type->setCurrentItem(1);
+			extrapage->combo_type->setCurrentItem(1);
 			break;
 		case LyXParagraph::PEXTRA_MINIPAGE:
-			extrapage->type->setCurrentItem(2);
+			extrapage->combo_type->setCurrentItem(2);
 			break;
 		case LyXParagraph::PEXTRA_FLOATFLT:
-			extrapage->type->setCurrentItem(3);
+			extrapage->combo_type->setCurrentItem(3);
 			break;
 	}
 }
@@ -274,12 +276,12 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 LyXGlueLength ParaDialog::getAboveLength() const
 {
 	LyXGlueLength len(
-		generalpage->abovepage->spaceabovevalue->getValue(),
-		generalpage->abovepage->spaceabovevalue->getUnits(),
-		generalpage->abovepage->spaceaboveplus->getValue(),
-		generalpage->abovepage->spaceaboveplus->getUnits(),
-		generalpage->abovepage->spaceaboveminus->getValue(),
-		generalpage->abovepage->spaceaboveminus->getUnits()
+		generalpage->abovepage->length_spaceabove->getValue(),
+		generalpage->abovepage->length_spaceabove->getUnits(),
+		generalpage->abovepage->length_spaceaboveplus->getValue(),
+		generalpage->abovepage->length_spaceaboveplus->getUnits(),
+		generalpage->abovepage->length_spaceaboveminus->getValue(),
+		generalpage->abovepage->length_spaceaboveminus->getUnits()
 		);
 	
 	return len;
@@ -289,12 +291,12 @@ LyXGlueLength ParaDialog::getAboveLength() const
 LyXGlueLength ParaDialog::getBelowLength() const
 {
 	LyXGlueLength len(
-		generalpage->belowpage->spacebelowvalue->getValue(),
-		generalpage->belowpage->spacebelowvalue->getUnits(),
-		generalpage->belowpage->spacebelowplus->getValue(),
-		generalpage->belowpage->spacebelowplus->getUnits(),
-		generalpage->belowpage->spacebelowminus->getValue(),
-		generalpage->belowpage->spacebelowminus->getUnits()
+		generalpage->belowpage->length_spacebelow->getValue(),
+		generalpage->belowpage->length_spacebelow->getUnits(),
+		generalpage->belowpage->length_spacebelowplus->getValue(),
+		generalpage->belowpage->length_spacebelowplus->getUnits(),
+		generalpage->belowpage->length_spacebelowminus->getValue(),
+		generalpage->belowpage->length_spacebelowminus->getUnits()
 		);
 	
 	return len;
@@ -304,9 +306,9 @@ LyXGlueLength ParaDialog::getBelowLength() const
 LyXLength ParaDialog::getExtraWidth() const
 {
 
-	if (extrapage->widthvalueunits->currentItem() != 11) {
+	if (extrapage->combo_widthvalueunits->currentItem() != 11) {
 		LyXLength::UNIT unit = LyXLength::CM;
-		switch (extrapage->widthvalueunits->currentItem()) {
+		switch (extrapage->combo_widthvalueunits->currentItem()) {
 			case 0: unit = LyXLength::CM; break;
 			case 1: unit = LyXLength::IN; break;
 			case 2: unit = LyXLength::PT; break;
@@ -320,9 +322,9 @@ LyXLength ParaDialog::getExtraWidth() const
 			case 10: unit = LyXLength::CC; break;
 			case 11: unit = LyXLength::CM; break;
 			default:
-				lyxerr[Debug::GUI] << "Unknown unit " << extrapage->widthvalueunits->currentItem() << endl;
+				lyxerr[Debug::GUI] << "Unknown unit " << extrapage->combo_widthvalueunits->currentItem() << endl;
 		}
-		LyXLength len(strToDbl(extrapage->widthvalue->text()), unit);
+		LyXLength len(strToDbl(extrapage->line_widthvalue->text()), unit);
 		return len;
 	} else {
 		LyXLength len(0.0, LyXLength::UNIT_NONE);
@@ -333,7 +335,7 @@ LyXLength ParaDialog::getExtraWidth() const
 
 string ParaDialog::getExtraWidthPercent() const
 {
-	double val = strToDbl(extrapage->widthvalue->text());
+	double val = strToDbl(extrapage->line_widthvalue->text());
 	if (val > 100.0)
 		val = 100.0;
 	if (val < 0.0)

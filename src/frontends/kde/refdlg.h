@@ -92,15 +92,12 @@ private slots:
  
 	/// adaptor to FormRef::apply
 	void apply_adaptor(void) {
-		form_->apply();
-		form_->close();
-		hide();
+		form_->ApplyButton(); 
 	}
 
 	/// adaptor to FormRef::close
 	void close_adaptor(void) {
-		form_->close();
-		hide();
+		form_->CancelButton();
 	}
 };
 

@@ -34,8 +34,21 @@ className field, though, has a special meaning. If it is blank, then qtarch
 will assume there is no derived class defined at all. Currently this has the effect
 of making mapped variables public access. If there is a name, then it assumes that
 a derived class exists, and leaves mapped variables protected. It's done like
-this to avoid the rat's nest of friend declarations and un-necessary derived classes.
+this to avoid the rat's nest of friend declarations and un-necessary derived classes,
+and because the new MVC architecture needs direct access to buttons etc.
 
+There is a naming scheme for any variabled widgets, similar to the xforms frontend :
+
+buttons 	- button_
+spinboxen 	- spin_
+tabstack 	- tabstack 
+comboboxen 	- combo_
+checkboxen 	- check_ 
+lengthentry 	- length_ 
+radio buttons 	- radio_
+line edits	- line_ 
+emptytable	- table 
+ 
 Some tips and guidelines for qtarch and the KDE frontend :
 
 o the default button should be the one that causes least harm, unless

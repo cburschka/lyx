@@ -173,6 +173,6 @@ RefDialog::~RefDialog()
 
 void RefDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->CancelButton();
 	e->accept();
 }

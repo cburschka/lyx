@@ -8,8 +8,8 @@
 
 #include <config.h>
 
-#include "dlg/helpers.h"
 #include "citationdlg.h"
+#include "dlg/helpers.h"
 
 using kde_helpers::setSizeHint;
 

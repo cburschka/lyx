@@ -176,11 +176,13 @@ void FormParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
 
+	/* FIXME 
 	lv_->view()->text->SetParagraphExtraOpt(lv_->view(),
 		dialog_->getExtraType(), width, widthp,
 		dialog_->getExtraAlign(),
 		dialog_->getHfillBetween(),
 		dialog_->getStartNewMinipage());
+	*/ 
 
 	lv_->view()->update(lv_->view()->text, 
 			    BufferView::SELECT |

@@ -49,141 +49,141 @@ DocDialog::DocDialog(FormDocument * form, QWidget * parent, char const * name, b
 	// document classes
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 		cit != textclasslist.end(); ++cit)
-		settings->docclass->insertItem((*cit).description().c_str());
-	setSizeHint(settings->docclass);
+		settings->combo_docclass->insertItem((*cit).description().c_str());
+	setSizeHint(settings->combo_docclass);
 	
-	settings->pagestyle->insertItem(_("default"));
-	settings->pagestyle->insertItem(_("empty"));
-	settings->pagestyle->insertItem(_("plain"));
-	settings->pagestyle->insertItem(_("headings"));
-	settings->pagestyle->insertItem(_("fancy"));
-	setSizeHint(settings->pagestyle);
+	settings->combo_pagestyle->insertItem(_("default"));
+	settings->combo_pagestyle->insertItem(_("empty"));
+	settings->combo_pagestyle->insertItem(_("plain"));
+	settings->combo_pagestyle->insertItem(_("headings"));
+	settings->combo_pagestyle->insertItem(_("fancy"));
+	setSizeHint(settings->combo_pagestyle);
 	
 	// available fonts
 	for (int i=0; tex_fonts[i][0]; i++)
-		settings->font->insertItem(tex_fonts[i]);
-	setSizeHint(settings->font);
+		settings->combo_font->insertItem(tex_fonts[i]);
+	setSizeHint(settings->combo_font);
 
-	settings->fontsize->insertItem(_("default"));
-	settings->fontsize->insertItem(_("10 point"));
-	settings->fontsize->insertItem(_("11 point"));
-	settings->fontsize->insertItem(_("12 point"));
-	setSizeHint(settings->fontsize);
+	settings->combo_fontsize->insertItem(_("default"));
+	settings->combo_fontsize->insertItem(_("10 point"));
+	settings->combo_fontsize->insertItem(_("11 point"));
+	settings->combo_fontsize->insertItem(_("12 point"));
+	setSizeHint(settings->combo_fontsize);
 	
-	settings->linespacing->insertItem(_("single"));
-	settings->linespacing->insertItem(_("1 1/2 spacing"));
-	settings->linespacing->insertItem(_("double"));
-	settings->linespacing->insertItem(_("custom"));
-	setSizeHint(settings->linespacing);
+	settings->combo_linespacing->insertItem(_("single"));
+	settings->combo_linespacing->insertItem(_("1 1/2 spacing"));
+	settings->combo_linespacing->insertItem(_("double"));
+	settings->combo_linespacing->insertItem(_("custom"));
+	setSizeHint(settings->combo_linespacing);
 
-	connect(settings->linespacing, SIGNAL(highlighted(const char *)),
+	connect(settings->combo_linespacing, SIGNAL(highlighted(const char *)),
 		this, SLOT(linespacingChanged(const char *)));
 
-	settings->paraspacing->insertItem(_("small"));
-	settings->paraspacing->insertItem(_("medium"));
-	settings->paraspacing->insertItem(_("big"));
-	settings->paraspacing->insertItem(_("custom"));
-	setSizeHint(settings->paraspacing);
+	settings->combo_paraspacing->insertItem(_("small"));
+	settings->combo_paraspacing->insertItem(_("medium"));
+	settings->combo_paraspacing->insertItem(_("big"));
+	settings->combo_paraspacing->insertItem(_("custom"));
+	setSizeHint(settings->combo_paraspacing);
 
-	connect(settings->paraspacing, SIGNAL(highlighted(const char *)),
+	connect(settings->combo_paraspacing, SIGNAL(highlighted(const char *)),
 		this, SLOT(paraspacingChanged(const char *)));
 
-	connect(settings->addspace, SIGNAL(toggled(bool)),
+	connect(settings->check_addspace, SIGNAL(toggled(bool)),
 		this, SLOT(addspaceChanged(bool)));
 
-	extra->first->insertItem(_("Here"));
-	extra->first->insertItem(_("Bottom of page"));
-	extra->first->insertItem(_("Top of page"));
-	extra->first->insertItem(_("Separate page"));
-	extra->first->insertItem(_("Not set"));
-	extra->second->insertItem(_("Here"));
-	extra->second->insertItem(_("Bottom of page"));
-	extra->second->insertItem(_("Top of page"));
-	extra->second->insertItem(_("Separate page"));
-	extra->second->insertItem(_("Not set"));
-	extra->third->insertItem(_("Here"));
-	extra->third->insertItem(_("Bottom of page"));
-	extra->third->insertItem(_("Top of page"));
-	extra->third->insertItem(_("Separate page"));
-	extra->third->insertItem(_("Not set"));
-	extra->fourth->insertItem(_("Here"));
-	extra->fourth->insertItem(_("Bottom of page"));
-	extra->fourth->insertItem(_("Top of page"));
-	extra->fourth->insertItem(_("Separate page"));
-	extra->fourth->insertItem(_("Not set"));
+	extra->combo_first->insertItem(_("Here"));
+	extra->combo_first->insertItem(_("Bottom of page"));
+	extra->combo_first->insertItem(_("Top of page"));
+	extra->combo_first->insertItem(_("Separate page"));
+	extra->combo_first->insertItem(_("Not set"));
+	extra->combo_second->insertItem(_("Here"));
+	extra->combo_second->insertItem(_("Bottom of page"));
+	extra->combo_second->insertItem(_("Top of page"));
+	extra->combo_second->insertItem(_("Separate page"));
+	extra->combo_second->insertItem(_("Not set"));
+	extra->combo_third->insertItem(_("Here"));
+	extra->combo_third->insertItem(_("Bottom of page"));
+	extra->combo_third->insertItem(_("Top of page"));
+	extra->combo_third->insertItem(_("Separate page"));
+	extra->combo_third->insertItem(_("Not set"));
+	extra->combo_fourth->insertItem(_("Here"));
+	extra->combo_fourth->insertItem(_("Bottom of page"));
+	extra->combo_fourth->insertItem(_("Top of page"));
+	extra->combo_fourth->insertItem(_("Separate page"));
+	extra->combo_fourth->insertItem(_("Not set"));
 
 	// ps driver options
 	for (int i = 0; tex_graphics[i][0]; i++)
-		extra->psdriver->insertItem(tex_graphics[i]);
-	setSizeHint(extra->psdriver);
+		extra->combo_psdriver->insertItem(tex_graphics[i]);
+	setSizeHint(extra->combo_psdriver);
 
-	geometry->papersize->insertItem(_("default"));
-	geometry->papersize->insertItem(_("US letter"));
-	geometry->papersize->insertItem(_("US legal"));
-	geometry->papersize->insertItem(_("US executive"));
-	geometry->papersize->insertItem("A3");
-	geometry->papersize->insertItem("A4");
-	geometry->papersize->insertItem("A5");
-	geometry->papersize->insertItem("B3");
-	geometry->papersize->insertItem("B4");
-	geometry->papersize->insertItem("B5");
-	setSizeHint(geometry->papersize);
+	geometry->combo_papersize->insertItem(_("default"));
+	geometry->combo_papersize->insertItem(_("US letter"));
+	geometry->combo_papersize->insertItem(_("US legal"));
+	geometry->combo_papersize->insertItem(_("US executive"));
+	geometry->combo_papersize->insertItem("A3");
+	geometry->combo_papersize->insertItem("A4");
+	geometry->combo_papersize->insertItem("A5");
+	geometry->combo_papersize->insertItem("B3");
+	geometry->combo_papersize->insertItem("B4");
+	geometry->combo_papersize->insertItem("B5");
+	setSizeHint(geometry->combo_papersize);
 	
-	geometry->margins->insertItem(_("default"));
-	geometry->margins->insertItem(_("A4 small margins"));
-	geometry->margins->insertItem(_("A4 very small margins"));
-	geometry->margins->insertItem(_("A4 very wide margins"));
-	setSizeHint(geometry->margins);
+	geometry->combo_margins->insertItem(_("default"));
+	geometry->combo_margins->insertItem(_("A4 small margins"));
+	geometry->combo_margins->insertItem(_("A4 very small margins"));
+	geometry->combo_margins->insertItem(_("A4 very wide margins"));
+	setSizeHint(geometry->combo_margins);
 	
 	for (Languages::const_iterator cit = languages.begin();
 		cit != languages.end(); ++cit)
-		language->language->insertItem((*cit).second.lang().c_str());
-	setSizeHint(language->language);
+		language->combo_language->insertItem((*cit).second.lang().c_str());
+	setSizeHint(language->combo_language);
 	
-	language->encoding->insertItem(_("default"));
-	language->encoding->insertItem(_("auto"));
-	language->encoding->insertItem(_("latin1"));
-	language->encoding->insertItem(_("latin2"));
-	language->encoding->insertItem(_("latin5"));
-	language->encoding->insertItem(_("koi8-r"));
-	language->encoding->insertItem(_("koi8-u"));
-	language->encoding->insertItem(_("cp866"));
-	language->encoding->insertItem(_("cp1251"));
-	language->encoding->insertItem(_("iso88595"));
-	setSizeHint(language->encoding);
+	language->combo_encoding->insertItem(_("default"));
+	language->combo_encoding->insertItem(_("auto"));
+	language->combo_encoding->insertItem(_("latin1"));
+	language->combo_encoding->insertItem(_("latin2"));
+	language->combo_encoding->insertItem(_("latin5"));
+	language->combo_encoding->insertItem(_("koi8-r"));
+	language->combo_encoding->insertItem(_("koi8-u"));
+	language->combo_encoding->insertItem(_("cp866"));
+	language->combo_encoding->insertItem(_("cp1251"));
+	language->combo_encoding->insertItem(_("iso88595"));
+	setSizeHint(language->combo_encoding);
 	
-	language->quotes->insertItem(_("`text'"));
-	language->quotes->insertItem(_("``text''"));
-	language->quotes->insertItem(_("'text'"));
-	language->quotes->insertItem(_("''text''"));
-	language->quotes->insertItem(_(",text`"));
-	language->quotes->insertItem(_(",,text``"));
-	language->quotes->insertItem(_(",text'"));
-	language->quotes->insertItem(_(",,text''"));
-	language->quotes->insertItem(_("<text>"));
-	language->quotes->insertItem(_("쳓ext�"));
-	language->quotes->insertItem(_(">text<"));
-	language->quotes->insertItem(_("퍁ext�"));
-	setSizeHint(language->quotes);
+	language->combo_quotes->insertItem(_("`text'"));
+	language->combo_quotes->insertItem(_("``text''"));
+	language->combo_quotes->insertItem(_("'text'"));
+	language->combo_quotes->insertItem(_("''text''"));
+	language->combo_quotes->insertItem(_(",text`"));
+	language->combo_quotes->insertItem(_(",,text``"));
+	language->combo_quotes->insertItem(_(",text'"));
+	language->combo_quotes->insertItem(_(",,text''"));
+	language->combo_quotes->insertItem(_("<text>"));
+	language->combo_quotes->insertItem(_("쳓ext�"));
+	language->combo_quotes->insertItem(_(">text<"));
+	language->combo_quotes->insertItem(_("퍁ext�"));
+	setSizeHint(language->combo_quotes);
 
 	/* FIXME: bullets */
 	
-	QToolTip::add(settings->pagestyle, _("Specify header + footer style etc"));
-	QToolTip::add(settings->addspace, _("Add spacing between paragraphs rather\n than indenting"));
-	QToolTip::add(settings->linespacingVal, _("Custom line spacing in line units"));
-	QToolTip::add(settings->extraoptions, _("Additional LaTeX options"));
-	QToolTip::add(extra->first, _("Specify preferred order for\nplacing floats"));
-	QToolTip::add(extra->second, _("Specify preferred order for\nplacing floats"));
-	QToolTip::add(extra->third, _("Specify preferred order for\nplacing floats"));
-	QToolTip::add(extra->fourth, _("Specify preferred order for\nplacing floats"));
-	QToolTip::add(extra->ignore, _("Tell LaTeX to ignore usual rules\n for float placement"));
-	QToolTip::add(extra->sectiondepth, _("How far in the (sub)sections are numbered"));
-	QToolTip::add(extra->tocdepth, _("How detailed the Table of Contents is"));
-	QToolTip::add(extra->psdriver, _("Program to produce PostScript output"));
-	QToolTip::add(extra->amsmath, _("FIXME please !"));
-	QToolTip::add(geometry->headheight, _("FIXME please !"));
-	QToolTip::add(geometry->headsep, _("FIXME please !"));
-	QToolTip::add(geometry->footskip, _("FIXME please !"));
+	QToolTip::add(settings->combo_pagestyle, _("Specify header + footer style etc"));
+	QToolTip::add(settings->check_addspace, _("Add spacing between paragraphs rather\n than indenting"));
+	QToolTip::add(settings->combo_linespacing, _("Custom line spacing in line units"));
+	QToolTip::add(settings->line_extraoptions, _("Additional LaTeX options"));
+	QToolTip::add(extra->combo_first, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->combo_second, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->combo_third, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->combo_fourth, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->check_ignore, _("Tell LaTeX to ignore usual rules\n for float placement"));
+	QToolTip::add(extra->spin_sectiondepth, _("How far in the (sub)sections are numbered"));
+	QToolTip::add(extra->spin_tocdepth, _("How detailed the Table of Contents is"));
+	QToolTip::add(extra->combo_psdriver, _("Program to produce PostScript output"));
+	QToolTip::add(extra->check_amsmath, _("FIXME please !"));
+	QToolTip::add(geometry->length_headheight, _("FIXME please !"));
+	QToolTip::add(geometry->length_headsep, _("FIXME please !"));
+	QToolTip::add(geometry->length_footskip, _("FIXME please !"));
 
 	setUpdatesEnabled(true);
 	update();
@@ -205,7 +205,7 @@ void DocDialog::closeEvent(QCloseEvent * e)
 void DocDialog::setReadOnly(bool readonly)
 {
 	/* FIXME */
-	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
+	button_cancel->setText(readonly ? _("&Close") : _("&Cancel"));
 }
 
 
@@ -213,28 +213,28 @@ void DocDialog::setFromParams(BufferParams const & params)
 {
 	setUpdatesEnabled(false);
  
-	if (!setComboFromStr(settings->docclass, textclasslist.DescOfClass(params.textclass)))
+	if (!setComboFromStr(settings->combo_docclass, textclasslist.DescOfClass(params.textclass)))
 		lyxerr[Debug::GUI] << "Couldn't set docclass " << textclasslist.DescOfClass(params.textclass) << endl;
 
-	if (!setComboFromStr(settings->font, params.fonts))
+	if (!setComboFromStr(settings->combo_font, params.fonts))
 		lyxerr[Debug::GUI] << "Couldn't set font " << params.fonts << endl;
 
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 	
 	// opt_fontsize is a string like "10|11|12"
-	settings->fontsize->setCurrentItem(tokenPos(tclass.opt_fontsize(), '|', params.fontsize) + 1);
+	settings->combo_fontsize->setCurrentItem(tokenPos(tclass.opt_fontsize(), '|', params.fontsize) + 1);
 
 	// "empty|plain|headings|fancy"
-	settings->pagestyle->setCurrentItem(tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) + 1);
+	settings->combo_pagestyle->setCurrentItem(tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) + 1);
 	
-	settings->addspace->setChecked(params.paragraph_separation == BufferParams::PARSEP_SKIP);
+	settings->check_addspace->setChecked(params.paragraph_separation == BufferParams::PARSEP_SKIP);
 
 	bool const isskip = (params.paragraph_separation == BufferParams::PARSEP_SKIP);
 
-	settings->paraspacing->setEnabled(isskip);
-	settings->paraspacingValue->setEnabled(isskip);
-	settings->paraspacingStretch->setEnabled(isskip);
-	settings->paraspacingShrink->setEnabled(isskip);
+	settings->combo_paraspacing->setEnabled(isskip);
+	settings->length_paraspacing->setEnabled(isskip);
+	settings->length_paraspacingstretch->setEnabled(isskip);
+	settings->length_paraspacingshrink->setEnabled(isskip);
 
 	int item=0;
 
@@ -247,29 +247,29 @@ void DocDialog::setFromParams(BufferParams const & params)
 			lyxerr[Debug::GUI] << "Unknown defskip " << int(params.getDefSkip().kind()) << endl;
 	}
 
-	settings->paraspacing->setCurrentItem(item);
+	settings->combo_paraspacing->setCurrentItem(item);
 
-	settings->paraspacingValue->setEnabled(item == 3);
-	settings->paraspacingStretch->setEnabled(item == 3);
-	settings->paraspacingShrink->setEnabled(item == 3);
+	settings->length_paraspacing->setEnabled(item == 3);
+	settings->length_paraspacingstretch->setEnabled(item == 3);
+	settings->length_paraspacingshrink->setEnabled(item == 3);
 
 	if (item == 3) {
 		LyXGlueLength const len = params.getDefSkip().length();
-		settings->paraspacingValue->setValue(len.value());
-		settings->paraspacingValue->setUnits(len.unit());
-		settings->paraspacingStretch->setValue(len.plusValue());
-		settings->paraspacingStretch->setUnits(len.plusUnit());
-		settings->paraspacingShrink->setValue(len.minusValue());
-		settings->paraspacingShrink->setUnits(len.minusUnit());
+		settings->length_paraspacing->setValue(len.value());
+		settings->length_paraspacing->setUnits(len.unit());
+		settings->length_paraspacingstretch->setValue(len.plusValue());
+		settings->length_paraspacingstretch->setUnits(len.plusUnit());
+		settings->length_paraspacingshrink->setValue(len.minusValue());
+		settings->length_paraspacingshrink->setUnits(len.minusUnit());
 		lyxerr[Debug::GUI] << params.getDefSkip().asLyXCommand() << endl;;
 	} else {
-		settings->paraspacingValue->setFromLengthStr("0cm");
-		settings->paraspacingStretch->setFromLengthStr("0cm");
-		settings->paraspacingShrink->setFromLengthStr("0cm");
+		settings->length_paraspacing->setFromLengthStr("0cm");
+		settings->length_paraspacingstretch->setFromLengthStr("0cm");
+		settings->length_paraspacingshrink->setFromLengthStr("0cm");
 	}
 
-	settings->sides->setChecked(params.sides == LyXTextClass::TwoSides);
-	settings->columns->setChecked(params.columns == 2);
+	settings->check_sides->setChecked(params.sides == LyXTextClass::TwoSides);
+	settings->check_columns->setChecked(params.columns == 2);
 
 	switch (params.spacing.getSpace()) {
 		case Spacing::Default:
@@ -281,44 +281,44 @@ void DocDialog::setFromParams(BufferParams const & params)
 			lyxerr[Debug::GUI] << "Unknown line spacing " << int(params.spacing.getSpace()) << endl;
 	}
 
-	settings->linespacing->setCurrentItem(item);
-	settings->linespacingVal->setEnabled(item == 3);
+	settings->combo_linespacing->setCurrentItem(item);
+	settings->line_linespacing->setEnabled(item == 3);
 	
 	if (item == 3)
-		settings->linespacingVal->setText(tostr(params.spacing.getValue()).c_str());
+		settings->line_linespacing->setText(tostr(params.spacing.getValue()).c_str());
 	else
-		settings->linespacingVal->setText("");
+		settings->line_linespacing->setText("");
 
 	if (params.options.empty())
-		settings->extraoptions->setText("");
+		settings->line_extraoptions->setText("");
 	else
-		settings->extraoptions->setText(params.options.c_str());
+		settings->line_extraoptions->setText(params.options.c_str());
 
 	// geometry page
 
-	geometry->papersize->setCurrentItem(params.papersize2);
+	geometry->combo_papersize->setCurrentItem(params.papersize2);
 	
-	geometry->margins->setCurrentItem(params.paperpackage);
+	geometry->combo_margins->setCurrentItem(params.paperpackage);
 	
-	geometry->portrait->setChecked(params.orientation == BufferParams::ORIENTATION_PORTRAIT);
-	geometry->landscape->setChecked(params.orientation != BufferParams::ORIENTATION_PORTRAIT);
+	geometry->radio_portrait->setChecked(params.orientation == BufferParams::ORIENTATION_PORTRAIT);
+	geometry->radio_landscape->setChecked(params.orientation != BufferParams::ORIENTATION_PORTRAIT);
 	
-	geometry->width->setFromLengthStr(params.paperwidth);
-	geometry->height->setFromLengthStr(params.paperheight);
-	geometry->left->setFromLengthStr(params.leftmargin);
-	geometry->right->setFromLengthStr(params.rightmargin);
-	geometry->top->setFromLengthStr(params.topmargin);
-	geometry->bottom->setFromLengthStr(params.bottommargin);
-	geometry->headheight->setFromLengthStr(params.headheight);
-	geometry->headsep->setFromLengthStr(params.headsep);
-	geometry->footskip->setFromLengthStr(params.footskip);
+	geometry->length_width->setFromLengthStr(params.paperwidth);
+	geometry->length_height->setFromLengthStr(params.paperheight);
+	geometry->length_left->setFromLengthStr(params.leftmargin);
+	geometry->length_right->setFromLengthStr(params.rightmargin);
+	geometry->length_top->setFromLengthStr(params.topmargin);
+	geometry->length_bottom->setFromLengthStr(params.bottommargin);
+	geometry->length_headheight->setFromLengthStr(params.headheight);
+	geometry->length_headsep->setFromLengthStr(params.headsep);
+	geometry->length_footskip->setFromLengthStr(params.footskip);
 	
 	// language page
 
-	if (!setComboFromStr(language->language, params.language->lang()))
+	if (!setComboFromStr(language->combo_language, params.language->lang()))
 		lyxerr[Debug::GUI] << "Couldn't set language " << params.language->lang() << endl;
 	
-	if (!setComboFromStr(language->encoding, params.inputenc))
+	if (!setComboFromStr(language->combo_encoding, params.inputenc))
 		lyxerr[Debug::GUI] << "Couldn't set encoding " << params.inputenc << endl;
 
 	switch (params.quotes_language) {
@@ -335,37 +335,37 @@ void DocDialog::setFromParams(BufferParams const & params)
 	if (params.quotes_times == InsetQuotes::DoubleQ)
 		item++;
 
-	language->quotes->setCurrentItem(item);
+	language->combo_quotes->setCurrentItem(item);
 	
 	// extra page
 
-	if (!setComboFromStr(extra->psdriver, params.graphicsDriver))
+	if (!setComboFromStr(extra->combo_psdriver, params.graphicsDriver))
 		lyxerr[Debug::GUI] << "Couldn't set psdriver " << params.graphicsDriver << endl;
 	
-	extra->amsmath->setChecked(params.use_amsmath);
-	extra->sectiondepth->setValue(params.secnumdepth);
-	extra->tocdepth->setValue(params.tocdepth);
+	extra->check_amsmath->setChecked(params.use_amsmath);
+	extra->spin_sectiondepth->setValue(params.secnumdepth);
+	extra->spin_tocdepth->setValue(params.tocdepth);
 
 	string const place = params.float_placement;
 	int count = 0;
 	QComboBox * box;
 
-	extra->ignore->setChecked(false);
-	setComboFromStr(extra->first, _("Not set"));
-	setComboFromStr(extra->second, _("Not set"));
-	setComboFromStr(extra->third, _("Not set"));
-	setComboFromStr(extra->fourth, _("Not set"));
+	extra->check_ignore->setChecked(false);
+	setComboFromStr(extra->combo_first, _("Not set"));
+	setComboFromStr(extra->combo_second, _("Not set"));
+	setComboFromStr(extra->combo_third, _("Not set"));
+	setComboFromStr(extra->combo_fourth, _("Not set"));
 
 	for (string::const_iterator iter = place.begin(); iter != place.end(); ++count, ++iter) {
 		switch (count) {
-			case 0: box = extra->first; break;
-			case 1: box = extra->second; break;
-			case 2: box = extra->third; break;
-			default: box = extra->fourth; break;
+			case 0: box = extra->combo_first; break;
+			case 1: box = extra->combo_second; break;
+			case 2: box = extra->combo_third; break;
+			default: box = extra->combo_fourth; break;
 		};
 
 		if (*iter == '!') {
-			extra->ignore->setChecked(true);
+			extra->check_ignore->setChecked(true);
 			continue;
 		}
 
@@ -390,20 +390,20 @@ bool DocDialog::updateParams(BufferParams & params)
 {
 	bool redo = false;
 
-	params.fonts = string(settings->font->currentText());
+	params.fonts = string(settings->combo_font->currentText());
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
-	params.fontsize = token(tclass.opt_fontsize(), '|', settings->fontsize->currentItem() - 1);
-	params.pagestyle = token(tclass.opt_pagestyle(), '|', settings->pagestyle->currentItem() - 1);
+	params.fontsize = token(tclass.opt_fontsize(), '|', settings->combo_fontsize->currentItem() - 1);
+	params.pagestyle = token(tclass.opt_pagestyle(), '|', settings->combo_pagestyle->currentItem() - 1);
 
 	// set and update class
 
-	unsigned int const new_class = settings->docclass->currentItem();
+	unsigned int const new_class = settings->combo_docclass->currentItem();
 
 	if (new_class != params.textclass) {
 		if (!form_->changeClass(params, new_class)) {
 			// FIXME: error msg
 			// restore old class
-			if (!setComboFromStr(settings->docclass, textclasslist.DescOfClass(params.textclass)))
+			if (!setComboFromStr(settings->combo_docclass, textclasslist.DescOfClass(params.textclass)))
 				lyxerr[Debug::GUI] << "Couldn't set docclass " << textclasslist.DescOfClass(params.textclass) << endl;
 		} else
 			redo = true;
@@ -411,7 +411,7 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 
-	(settings->addspace->isChecked())
+	(settings->check_addspace->isChecked())
 		? params.paragraph_separation = BufferParams::PARSEP_SKIP
 		: params.paragraph_separation = BufferParams::PARSEP_INDENT;
 		
@@ -421,18 +421,18 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	VSpace tmpskip;
 
-	switch (settings->paraspacing->currentItem()) {
+	switch (settings->combo_paraspacing->currentItem()) {
 		case 0: tmpskip = VSpace(VSpace::SMALLSKIP); break;
 		case 1: tmpskip = VSpace(VSpace::MEDSKIP); break;
 		case 2: tmpskip = VSpace(VSpace::BIGSKIP); break;
 		default:
 			lyxerr[Debug::GUI] << "Unknown skip spacing " <<
-				settings->paraspacing->currentItem() << endl;
+				settings->combo_paraspacing->currentItem() << endl;
 			break;
 		case 3:
-			string const val = settings->paraspacingValue->getLengthStr()
-				+ "+" + settings->paraspacingStretch->getLengthStr()
-				+ "-" + settings->paraspacingShrink->getLengthStr();
+			string const val = settings->length_paraspacing->getLengthStr()
+				+ "+" + settings->length_paraspacingstretch->getLengthStr()
+				+ "-" + settings->length_paraspacingshrink->getLengthStr();
 			lyxerr[Debug::GUI] << "Read para spacing of \"" << val << "\"" << endl;
 			LyXGlueLength length(0.0, LyXLength::PT);
 			isValidGlueLength(val, &length);
@@ -447,11 +447,11 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	// columns and sides
 
-	(settings->sides->isChecked())
+	(settings->check_sides->isChecked())
 		? params.sides = LyXTextClass::TwoSides
 		: params.sides = LyXTextClass::OneSide;
 
-	(settings->columns->isChecked())
+	(settings->check_columns->isChecked())
 		? params.columns = 2
 		: params.columns = 1;
 
@@ -459,16 +459,16 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	Spacing tmpspacing = params.spacing;
 
-	switch (settings->linespacing->currentItem()) {
+	switch (settings->combo_linespacing->currentItem()) {
 		case 0: params.spacing.set(Spacing::Single); break;
 		case 1: params.spacing.set(Spacing::Onehalf); break;
 		case 2: params.spacing.set(Spacing::Double); break;
 		case 3:
-			params.spacing.set(Spacing::Other, settings->linespacingVal->text());
+			params.spacing.set(Spacing::Other, settings->line_linespacing->text());
 			break;
 		default:
 			lyxerr[Debug::GUI] << "Unknown line spacing " <<
-				settings->linespacing->currentItem();
+				settings->combo_linespacing->currentItem();
 	}
 
 	if (tmpspacing != params.spacing)
@@ -476,26 +476,26 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	// extra options
 
-	params.options = settings->extraoptions->text();
+	params.options = settings->line_extraoptions->text();
 		
 	
 	// paper package and margin package
-	params.papersize2 = static_cast<char>(geometry->papersize->currentItem());
-	params.paperpackage = static_cast<char>(geometry->margins->currentItem());
-	if (geometry->landscape->isChecked())
+	params.papersize2 = static_cast<char>(geometry->combo_papersize->currentItem());
+	params.paperpackage = static_cast<char>(geometry->combo_margins->currentItem());
+	if (geometry->radio_landscape->isChecked())
 		params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
 	else
 		params.orientation = BufferParams::ORIENTATION_PORTRAIT;
 
-	params.paperwidth = geometry->width->getLengthStr();
-	params.paperheight = geometry->height->getLengthStr();
-	params.leftmargin = geometry->left->getLengthStr();
-	params.rightmargin = geometry->right->getLengthStr();
-	params.topmargin = geometry->top->getLengthStr();
-	params.bottommargin = geometry->bottom->getLengthStr();
-	params.headheight = geometry->headheight->getLengthStr();
-	params.headsep = geometry->headsep->getLengthStr();
-	params.footskip = geometry->footskip->getLengthStr();
+	params.paperwidth = geometry->length_width->getLengthStr();
+	params.paperheight = geometry->length_height->getLengthStr();
+	params.leftmargin = geometry->length_left->getLengthStr();
+	params.rightmargin = geometry->length_right->getLengthStr();
+	params.topmargin = geometry->length_top->getLengthStr();
+	params.bottommargin = geometry->length_bottom->getLengthStr();
+	params.headheight = geometry->length_headheight->getLengthStr();
+	params.headsep = geometry->length_headsep->getLengthStr();
+	params.footskip = geometry->length_footskip->getLengthStr();
 	
 	/* FIXME: is geometry required for headheight,sep,footskip ? */
 	params.use_geometry =
@@ -506,12 +506,11 @@ bool DocDialog::updateParams(BufferParams & params)
 		params.topmargin != "" ||
 		params.bottommargin != "");
 
-
 	// language dialog
 
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 
-	switch (language->quotes->currentItem()) {
+	switch (language->combo_quotes->currentItem()) {
 		case 0: case 2: case 4: case 6: case 8: case 10:
 			params.quotes_times = InsetQuotes::SingleQ;
 			break;
@@ -519,7 +518,7 @@ bool DocDialog::updateParams(BufferParams & params)
 			params.quotes_times = InsetQuotes::DoubleQ;
 	}
 
-	switch (language->quotes->currentItem()) {
+	switch (language->combo_quotes->currentItem()) {
 		case 0: case 1: lga = InsetQuotes::EnglishQ; break;
 		case 2: case 3: lga = InsetQuotes::SwedishQ; break;
 		case 4: case 5: lga = InsetQuotes::GermanQ; break;
@@ -528,14 +527,14 @@ bool DocDialog::updateParams(BufferParams & params)
 		case 10: case 11: lga = InsetQuotes::DanishQ; break;
 		default:
 			lyxerr[Debug::GUI] << "unknown quotes style" <<
-				language->quotes->currentItem() << endl;
+				language->combo_quotes->currentItem() << endl;
 	}
 
 	params.quotes_language = lga;
 
 	/* wow, tongue twister */
 	Language const * old_language = params.language;
-	Language const * new_language = languages.getLanguage(language->language->currentText());
+	Language const * new_language = languages.getLanguage(language->combo_language->currentText());
 
 	/* FIXME */
 	if (old_language != new_language
@@ -547,26 +546,26 @@ bool DocDialog::updateParams(BufferParams & params)
 	redo = (old_language != new_language) || redo;
 	params.language = new_language;
 
-	params.inputenc = language->encoding->currentText();
+	params.inputenc = language->combo_encoding->currentText();
 
 	// extra dialog
 
-	params.graphicsDriver = extra->psdriver->currentText();
-	params.use_amsmath = extra->amsmath->isChecked();
+	params.graphicsDriver = extra->combo_psdriver->currentText();
+	params.use_amsmath = extra->check_amsmath->isChecked();
 	
-	if (extra->sectiondepth->value() != params.secnumdepth) {
+	if (extra->spin_sectiondepth->value() != params.secnumdepth) {
 		redo = true;
-		params.secnumdepth = extra->sectiondepth->value();
+		params.secnumdepth = extra->spin_sectiondepth->value();
 	}
 
-	params.tocdepth = extra->tocdepth->value();
+	params.tocdepth = extra->spin_tocdepth->value();
 
 	string place;
 
-	place += placementString(extra->first);
-	place += placementString(extra->second);
-	place += placementString(extra->third);
-	place += placementString(extra->fourth);
+	place += placementString(extra->combo_first);
+	place += placementString(extra->combo_second);
+	place += placementString(extra->combo_third);
+	place += placementString(extra->combo_fourth);
 	params.float_placement = place;
 
 	/* FIXME: bullets */
@@ -591,24 +590,24 @@ void DocDialog::linespacingChanged(const char * sel)
 {
 	bool const custom = !compare(sel, _("custom"));
 
-	settings->linespacingVal->setEnabled(custom);
+	settings->line_linespacing->setEnabled(custom);
 }
 
 
 void DocDialog::paraspacingChanged(const char * sel)
 {
 	bool const custom = !compare(sel, _("custom"));
-	settings->paraspacingValue->setEnabled(custom);
-	settings->paraspacingStretch->setEnabled(custom);
-	settings->paraspacingShrink->setEnabled(custom);
+	settings->length_paraspacing->setEnabled(custom);
+	settings->length_paraspacingstretch->setEnabled(custom);
+	settings->length_paraspacingshrink->setEnabled(custom);
 }
 
 void DocDialog::addspaceChanged(bool on)
 {
-	settings->paraspacing->setEnabled(on);
-	on = (on && !compare(settings->paraspacing->currentText(),
+	settings->combo_paraspacing->setEnabled(on);
+	on = (on && !compare(settings->combo_paraspacing->currentText(),
 			     _("custom")));
-	settings->paraspacingValue->setEnabled(on);
-	settings->paraspacingStretch->setEnabled(on);
-	settings->paraspacingShrink->setEnabled(on);
+	settings->length_paraspacing->setEnabled(on);
+	settings->length_paraspacingstretch->setEnabled(on);
+	settings->length_paraspacingshrink->setEnabled(on);
 }

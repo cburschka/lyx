@@ -1,3 +1,16 @@
+2001-04-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: update for MVC
+
+	* KFormBase.C:
+	* KFormBase.h: new template class which all Forms are derived from.
+
+	* everything: update for MVC, KFormBase. Ref, Citation, and Toc not
+	functional at all currently though, and various fixes are needed,
+	but at least it compiles.
+
+	* dlg/everything: make widget names consistent
+
 2001-03-29  Baruch Even  <baruch@lyx.org>
 
 	* kdeBC.[Ch]: Changed to use the new GuiBC template.

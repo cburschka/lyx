@@ -2,7 +2,7 @@ DlgEdit:v1.2:Dialog:
 Dialog {
 	ClassHeader {}
 	ClassSource {}
-	ClassName {PrintDialog}
+	ClassName {}
 	DataHeader {printdlgdata.h}
 	DataSource {printdlgdata.C}
 	DataName {PrintDialogData}
@@ -163,8 +163,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {86 280 81 45}
-		Name {print}
-		Variable {print}
+		Name {button_ok}
+		Variable {button_ok}
 		Signal {[Protected]  clicked --> clickedPrint  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -192,8 +192,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {333 280 81 45}
-		Name {cancel}
-		Variable {cancel}
+		Name {button_cancel}
+		Variable {button_cancel}
 		Signal {[Protected]  clicked --> clickedCancel  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -218,8 +218,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {15 42 142 34}
-		Name {allpages}
-		Variable {allpages}
+		Name {radio_allpages}
+		Variable {radio_allpages}
 		MinimumSize {80 20}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -243,8 +243,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {15 96 142 14}
-		Name {oddpages}
-		Variable {oddpages}
+		Name {radio_oddpages}
+		Variable {radio_oddpages}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -268,8 +268,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {15 130 142 14}
-		Name {evenpages}
-		Variable {evenpages}
+		Name {radio_evenpages}
+		Variable {radio_evenpages}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -293,8 +293,8 @@ KDE::KIntLineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {113 169 49 30}
-		Name {from}
-		Variable {from}
+		Name {line_from}
+		Variable {line_from}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -318,8 +318,8 @@ KDE::KIntLineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {113 204 49 31}
-		Name {to}
-		Variable {to}
+		Name {line_to}
+		Variable {line_to}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -343,8 +343,8 @@ CheckBox {
 		AutoRepeat {false}
 		AutoResize {true}
 		Rect {10 240 152 30}
-		Name {reverse}
-		Variable {reverse}
+		Name {check_reverse}
+		Variable {check_reverse}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -368,8 +368,8 @@ KDE::KIntLineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {334 17 50 46}
-		Name {count}
-		Variable {count}
+		Name {line_count}
+		Variable {line_count}
 		Signal {[Protected]  textChanged --> changedCount  (const char*)}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -394,8 +394,8 @@ CheckBox {
 		AutoRepeat {false}
 		AutoResize {true}
 		Rect {440 17 50 46}
-		Name {sort}
-		Variable {sort}
+		Name {check_sort}
+		Variable {check_sort}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -477,8 +477,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {189 120 142 23}
-		Name {toprinter}
-		Variable {toprinter}
+		Name {radio_toprinter}
+		Variable {radio_toprinter}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -502,8 +502,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {189 170 142 23}
-		Name {tofile}
-		Variable {tofile}
+		Name {radio_tofile}
+		Variable {radio_tofile}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -527,8 +527,8 @@ LineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {341 115 142 26}
-		Name {printername}
-		Variable {printername}
+		Name {line_printername}
+		Variable {line_printername}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -552,8 +552,8 @@ LineEdit {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {341 172 142 26}
-		Name {filename}
-		Variable {filename}
+		Name {line_filename}
+		Variable {line_filename}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -580,8 +580,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {330 225 153 23}
-		Name {browse}
-		Variable {browse}
+		Name {button_browse}
+		Variable {button_browse}
 		Signal {[Protected]  clicked --> clickedBrowse  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -682,7 +682,7 @@ Box_Stretch-1.1.1.1.1.2.1.1{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.1.2.1.2{
-	Widget {allpages}
+	Widget {radio_allpages}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -690,7 +690,7 @@ Box_Stretch-1.1.1.1.1.2.1.3{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.1.2.1.4{
-	Widget {oddpages}
+	Widget {radio_oddpages}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -698,7 +698,7 @@ Box_Stretch-1.1.1.1.1.2.1.5{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.1.2.1.6{
-	Widget {evenpages}
+	Widget {radio_evenpages}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -719,7 +719,7 @@ Layout_Widget-1.1.1.1.1.3.1{
 	Alignment {36}
 }
 Layout_Widget-1.1.1.1.1.3.2{
-	Widget {from}
+	Widget {line_from}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -737,12 +737,12 @@ Layout_Widget-1.1.1.1.1.4.1{
 	Alignment {36}
 }
 Layout_Widget-1.1.1.1.1.4.2{
-	Widget {to}
+	Widget {line_to}
 	BoxStretch {1}
 	Alignment {36}
 }
 Layout_Widget-1.1.1.1.1.5{
-	Widget {reverse}
+	Widget {check_reverse}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -790,7 +790,7 @@ Box_Stretch-1.1.1.2.1.1.2.3{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.1.1.2.4{
-	Widget {count}
+	Widget {line_count}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -798,7 +798,7 @@ Box_Stretch-1.1.1.2.1.1.2.5{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.1.1.2.6{
-	Widget {sort}
+	Widget {check_sort}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -849,7 +849,7 @@ Box_Layout-1.1.1.2.2.1.3.2.1{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.2.1.3.2.1.1{
-	Widget {toprinter}
+	Widget {radio_toprinter}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -857,7 +857,7 @@ Box_Stretch-1.1.1.2.2.1.3.2.1.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.2.1.3.2.1.3{
-	Widget {tofile}
+	Widget {radio_tofile}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -870,7 +870,7 @@ Box_Layout-1.1.1.2.2.1.3.3{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.2.1.3.3.1{
-	Widget {printername}
+	Widget {line_printername}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -878,7 +878,7 @@ Box_Stretch-1.1.1.2.2.1.3.3.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.2.1.3.3.3{
-	Widget {filename}
+	Widget {line_filename}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -900,7 +900,7 @@ Box_Stretch-1.1.1.2.2.1.5.1{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.2.2.1.5.2{
-	Widget {browse}
+	Widget {button_browse}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -926,7 +926,7 @@ Box_Stretch-1.2.1.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.2{
-	Widget {print}
+	Widget {button_ok}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -934,7 +934,7 @@ Box_Stretch-1.2.1.3{
 	Stretch {2}
 }
 Layout_Widget-1.2.1.4{
-	Widget {cancel}
+	Widget {button_cancel}
 	BoxStretch {1}
 	Alignment {36}
 }

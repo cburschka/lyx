@@ -31,7 +31,8 @@ using std::endl;
 FileDialog::FileDialog(LyXView *lv, string const &t, kb_action s, Button b1, Button b2)
 	: private_(0), lv_(lv), title_(t), success_(s)
 {
-	// FIXME
+	// FIXME - to get the icon menu working sensibly we need MVCise the operations
+	// so we can get told which icons to use ...
 }
 
 

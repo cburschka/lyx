@@ -53,7 +53,7 @@ private:
 	Dialogs * d_;
 	
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	
 	/// is the buffer readonly ?
 	bool readonly;

@@ -7,10 +7,12 @@
  */
 
 #include <config.h>
+ 
+#include "FormCopyright.h" 
 #include "copyrightdlg.h"
 
-CopyrightDialog::CopyrightDialog(QWidget * parent, char const * name)
-	: CopyrightDialogData(parent, name)
+CopyrightDialog::CopyrightDialog(FormCopyright * f, QWidget * parent, char const * name)
+	: CopyrightDialogData(parent, name), form_(f)
 {
 	setCaption(name);
 }
@@ -23,5 +25,5 @@ CopyrightDialog::~CopyrightDialog()
 
 void CopyrightDialog::clickedOK()
 {
-	hide();
+	form_->OKButton();
 }

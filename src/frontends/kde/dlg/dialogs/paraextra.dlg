@@ -25,8 +25,8 @@ ComboBox {
 		MaxCount {2147483647}
 		AutoCompletion {false}
 		Rect {5 65 265 54}
-		Name {type}
-		Variable {type}
+		Name {combo_type}
+		Variable {combo_type}
 		Signal {[Protected]  highlighted --> typeHighlighted  (int)}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -108,8 +108,8 @@ KDE::KRestrictedLine {
 		MaxLength {32767}
 		FrameShown {true}
 		Rect {275 65 87 54}
-		Name {widthvalue}
-		Variable {widthvalue}
+		Name {line_widthvalue}
+		Variable {line_widthvalue}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -135,8 +135,8 @@ ComboBox {
 		MaxCount {2147483647}
 		AutoCompletion {false}
 		Rect {367 65 173 54}
-		Name {widthvalueunits}
-		Variable {widthvalueunits}
+		Name {combo_widthvalueunits}
+		Variable {combo_widthvalueunits}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -188,8 +188,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {10 173 255 45}
-		Name {top}
-		Variable {top}
+		Name {radio_top}
+		Variable {radio_top}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -213,8 +213,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {10 267 255 45}
-		Name {middle}
-		Variable {middle}
+		Name {radio_middle}
+		Variable {radio_middle}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -238,8 +238,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {10 361 255 45}
-		Name {bottom}
-		Variable {bottom}
+		Name {radio_bottom}
+		Variable {radio_bottom}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -263,8 +263,8 @@ CheckBox {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {275 189 265 65}
-		Name {hfillbetween}
-		Variable {hfillbetween}
+		Name {check_hfillbetween}
+		Variable {check_hfillbetween}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -288,8 +288,8 @@ CheckBox {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {275 325 265 65}
-		Name {startnewminipage}
-		Variable {startnewminipage}
+		Name {check_startnewminipage}
+		Variable {check_startnewminipage}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -334,7 +334,7 @@ Layout_Widget-1.1.1.1{
 	Alignment {1}
 }
 Layout_Widget-1.1.1.2{
-	Widget {type}
+	Widget {combo_type}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -360,12 +360,12 @@ Box_Layout-1.1.2.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.2.2.1{
-	Widget {widthvalue}
+	Widget {line_widthvalue}
 	BoxStretch {1}
 	Alignment {36}
 }
 Layout_Widget-1.1.2.2.2{
-	Widget {widthvalueunits}
+	Widget {combo_widthvalueunits}
 	BoxStretch {2}
 	Alignment {36}
 }
@@ -390,7 +390,7 @@ Box_Stretch-1.2.1.1.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.1.2{
-	Widget {top}
+	Widget {radio_top}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -398,7 +398,7 @@ Box_Stretch-1.2.1.1.3{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.1.4{
-	Widget {middle}
+	Widget {radio_middle}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -406,7 +406,7 @@ Box_Stretch-1.2.1.1.5{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.1.6{
-	Widget {bottom}
+	Widget {radio_bottom}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -425,7 +425,7 @@ Box_Stretch-1.2.2.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.2.2{
-	Widget {hfillbetween}
+	Widget {check_hfillbetween}
 	BoxStretch {1}
 	Alignment {1}
 }
@@ -433,7 +433,7 @@ Box_Stretch-1.2.2.3{
 	Stretch {1}
 }
 Layout_Widget-1.2.2.4{
-	Widget {startnewminipage}
+	Widget {check_startnewminipage}
 	BoxStretch {1}
 	Alignment {1}
 }

@@ -1,3 +1,11 @@
+/**
+ * \file kdeBC.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Angus Leeming, <a.leeming@ic.ac.uk>
+ */
+
 #include <config.h>
 
 #ifdef __GNUG__
@@ -12,19 +20,19 @@ kdeBC::kdeBC(string const & cancel, string const & close)
 {}
 
 
-void setButtonEnabled(QPushButton * btn, bool enabled)
+void kdeBC::setButtonEnabled(QPushButton * btn, bool enabled)
 {
-	btn->setEnabled(true);
+	btn->setEnabled(enabled);
 }
 
 
-void setWidgetEnabled(QWidget * obj, bool enabled)
+void kdeBC::setWidgetEnabled(QWidget * obj, bool enabled)
 {
-	obj->setEnabled(true);
+	obj->setEnabled(enabled);
 }
 
 
-void setButtonLabel(QPushButton * btn, string const & label)
+void kdeBC::setButtonLabel(QPushButton * btn, string const & label)
 {
 	btn->setText(label.c_str());
 }

@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormPrint.h
  * Copyright 2001 the LyX Team
@@ -10,49 +9,24 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-#include "DialogBase.h"
-#include "boost/utility.hpp"
+#include "KFormBase.h"
 
-class Dialogs;
-class LyXView;
+class ControlPrint; 
 class PrintDialog;
 
 ///
-class FormPrint : public DialogBase {
+class FormPrint : public KFormBase<ControlPrint, PrintDialog> {
 public:
-        ///
-	FormPrint(LyXView *, Dialogs *);
 	///
-	~FormPrint();
+	FormPrint(ControlPrint & c);
 
-	/// start print
-	void print();
-	/// close
-	void close();
- 
 private: 
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update(bool = false);
-
-	/// Real GUI implementation.
-	PrintDialog * dialog_;
-
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	
-	/// Hide connection.
-	SigC::Connection h_;
-	/// Update connection.
-	SigC::Connection u_;
+	/// apply dialog 
+	virtual void apply(); 
+	/// build dialog
+	virtual void build();
+	/// update dialog
+	virtual void update();
 };
 
 #endif // FORMPRINT_H

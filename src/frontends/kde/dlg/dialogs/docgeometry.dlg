@@ -158,8 +158,8 @@ ComboBox {
 		MaxCount {2147483647}
 		AutoCompletion {false}
 		Rect {108 25 94 35}
-		Name {papersize}
-		Variable {papersize}
+		Name {combo_papersize}
+		Variable {combo_papersize}
 		Signal {[Protected]  highlighted --> papersizeChanged  (const char*)}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -182,8 +182,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {10 140 285 35}
-		Name {width}
-		Variable {width}
+		Name {length_width}
+		Variable {length_width}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -205,8 +205,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {10 255 285 35}
-		Name {height}
-		Variable {height}
+		Name {length_height}
+		Variable {length_height}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -228,8 +228,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {310 85 285 28}
-		Name {headheight}
-		Variable {headheight}
+		Name {length_headheight}
+		Variable {length_headheight}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -251,8 +251,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {310 178 285 27}
-		Name {headsep}
-		Variable {headsep}
+		Name {length_headsep}
+		Variable {length_headsep}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -274,8 +274,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {310 270 285 28}
-		Name {footskip}
-		Variable {footskip}
+		Name {length_footskip}
+		Variable {length_footskip}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -581,8 +581,8 @@ ComboBox {
 		MaxCount {2147483647}
 		AutoCompletion {false}
 		Rect {241 355 112 54}
-		Name {margins}
-		Variable {margins}
+		Name {combo_margins}
+		Variable {combo_margins}
 		Signal {[Protected]  highlighted --> marginsChanged  (const char*)}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -605,8 +605,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {204 468 211 41}
-		Name {top}
-		Variable {top}
+		Name {length_top}
+		Variable {length_top}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -628,8 +628,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {204 514 211 40}
-		Name {bottom}
-		Variable {bottom}
+		Name {length_bottom}
+		Variable {length_bottom}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -651,8 +651,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {204 559 211 41}
-		Name {left}
-		Variable {left}
+		Name {length_left}
+		Variable {length_left}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -674,8 +674,8 @@ User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
 		Rect {204 605 211 40}
-		Name {right}
-		Variable {right}
+		Name {length_right}
+		Variable {length_right}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -699,8 +699,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {481 412 1 57}
-		Name {portrait}
-		Variable {portrait}
+		Name {radio_portrait}
+		Variable {radio_portrait}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -724,8 +724,8 @@ RadioButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {481 531 1 57}
-		Name {landscape}
-		Variable {landscape}
+		Name {radio_landscape}
+		Variable {radio_landscape}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -793,7 +793,7 @@ Box_Stretch-1.1.1.1.2.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.2.3{
-	Widget {papersize}
+	Widget {combo_papersize}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -820,7 +820,7 @@ Box_Stretch-1.1.1.1.4.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.5{
-	Widget {width}
+	Widget {length_width}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -844,7 +844,7 @@ Box_Stretch-1.1.1.1.7.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.1.1.8{
-	Widget {height}
+	Widget {length_height}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -887,7 +887,7 @@ Box_Stretch-1.1.2.1.3.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.2.1.4{
-	Widget {headheight}
+	Widget {length_headheight}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -911,7 +911,7 @@ Box_Stretch-1.1.2.1.6.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.2.1.7{
-	Widget {headsep}
+	Widget {length_headsep}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -935,7 +935,7 @@ Box_Stretch-1.1.2.1.9.2{
 	Stretch {1}
 }
 Layout_Widget-1.1.2.1.10{
-	Widget {footskip}
+	Widget {length_footskip}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -983,7 +983,7 @@ Box_Stretch-1.2.1.1.2.2{
 	Stretch {1}
 }
 Layout_Widget-1.2.1.1.2.3{
-	Widget {margins}
+	Widget {combo_margins}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -1018,7 +1018,7 @@ Layout_Widget-1.2.1.1.4.1.2{
 Grid_Spacer-1.2.1.1.4.1.3{
 }
 Layout_Widget-1.2.1.1.4.1.4{
-	Widget {top}
+	Widget {length_top}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -1038,7 +1038,7 @@ Layout_Widget-1.2.1.1.4.2.2{
 Grid_Spacer-1.2.1.1.4.2.3{
 }
 Layout_Widget-1.2.1.1.4.2.4{
-	Widget {bottom}
+	Widget {length_bottom}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -1058,7 +1058,7 @@ Layout_Widget-1.2.1.1.4.3.2{
 Grid_Spacer-1.2.1.1.4.3.3{
 }
 Layout_Widget-1.2.1.1.4.3.4{
-	Widget {left}
+	Widget {length_left}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -1078,7 +1078,7 @@ Layout_Widget-1.2.1.1.4.4.2{
 Grid_Spacer-1.2.1.1.4.4.3{
 }
 Layout_Widget-1.2.1.1.4.4.4{
-	Widget {right}
+	Widget {length_right}
 	BoxStretch {1}
 	Alignment {33}
 }
@@ -1112,7 +1112,7 @@ Box_Layout-1.2.2.1.3{
 	Stretch {1}
 }
 Layout_Widget-1.2.2.1.3.1{
-	Widget {portrait}
+	Widget {radio_portrait}
 	BoxStretch {0}
 	Alignment {33}
 }
@@ -1131,7 +1131,7 @@ Box_Layout-1.2.2.1.5{
 	Stretch {1}
 }
 Layout_Widget-1.2.2.1.5.1{
-	Widget {landscape}
+	Widget {radio_landscape}
 	BoxStretch {0}
 	Alignment {33}
 }

@@ -4,41 +4,32 @@
  * Read the file COPYING
  *
  * \author Jürgen Vigna
+ * \author John Levon
  */
+ 
 #include <config.h>
 
-#include "Dialogs.h"
 #include "FormCopyright.h"
+#include "ControlCopyright.h"
 #include "copyrightdlg.h"
 #include "gettext.h"
+#include "dlg/helpers.h" 
 
-FormCopyright::FormCopyright(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0)
+FormCopyright::FormCopyright(ControlCopyright & c)
+	: KFormBase<ControlCopyright, CopyrightDialog>(c)
 {
-	d->showCopyright.connect(slot(this, &FormCopyright::show));
 }
 
 
-FormCopyright::~FormCopyright()
+void FormCopyright::build()
 {
-	delete dialog_;
-}
+	dialog_.reset(new CopyrightDialog(this, 0, _("LyX: Copyright and Warranty")));
 
+	// FIXME: Qt is really badly dumb in resizing these strings if we 
+	// use minimum size hint :/
+	dialog_->label_copyright->setText(controller().getCopyright().c_str());
+	dialog_->label_licence->setText(controller().getLicence().c_str());
+	dialog_->label_disclaimer->setText(controller().getDisclaimer().c_str()); 
 
-void FormCopyright::show()
-{
-	if (!dialog_)
-		dialog_ = new CopyrightDialog(0, _("LyX: Copyright and Warranty"));
-
-	if (!dialog_->isVisible())
-		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));
- 
-	dialog_->show();
-}
-
-
-void FormCopyright::hide()
-{
-	dialog_->hide();
-	h_.disconnect();
+	bc().setCancel(dialog_->button_cancel); 
 }

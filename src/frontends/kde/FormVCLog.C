@@ -7,52 +7,35 @@
  */
 
 #include <config.h>
-#include <fstream> 
+#include <fstream>
 
-#include "Dialogs.h"
 #include "FormVCLog.h"
+#include "ControlVCLog.h"
+#include "vclogdlg.h" 
 #include "gettext.h"
-#include "buffer.h"
-#include "support/lstrings.h"
-#include "LyXView.h"
-#include "lyxfunc.h"
-#include "logdlg.h"
-#include "lyxvc.h"
 
 using std::ifstream;
 using std::getline;
 
-FormVCLog::FormVCLog(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
+FormVCLog::FormVCLog(ControlVCLog & c)
+	: KFormBase<ControlVCLog, VCLogDialog>(c)
 {
-	d->showVCLogFile.connect(slot(this, &FormVCLog::show));
-}
-
-
-FormVCLog::~FormVCLog()
-{
-	delete dialog_;
 }
 
 
 void FormVCLog::update()
 {
-	supdate();
-}
+	const string logfile = controller().logfile();
 
- 
-void FormVCLog::supdate(bool)
-{
-	const string logfile = lv_->view()->buffer()->lyxvc.getLogFile();
-
-	dialog_->setCaption(string(_("Version control log for ") + lv_->view()->buffer()->fileName()).c_str());
+	// FIXME 
+	//dialog_->setCaption(string(_("Version control log for ") + controller().filename()).c_str()); 
 
 	dialog_->setLogText("");
 
 	ifstream ifstr(logfile.c_str());
 	if (!ifstr) {
 		dialog_->setLogText(_("No version control log file found"));
-		lyx::unlink(logfile);
+	//	lyx::unlink(logfile);
 		return;
 	}
 
@@ -64,37 +47,13 @@ void FormVCLog::supdate(bool)
  
 	dialog_->setLogText(text);
 
-	lyx::unlink(logfile);
+	//lyx::unlink(logfile);
 }
 
 
-void FormVCLog::show()
+void FormVCLog::build()
 {
-	if (!dialog_)
-		dialog_ = new LogDialog(this, 0, _("LyX: Version Control Log"));
+	dialog_.reset(new VCLogDialog(this, 0, _("LyX: Version Control Log")));
 
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormVCLog::hide));
-		u_ = d_->updateBufferDependent.connect(slot(this, &FormVCLog::supdate));
-	}
-
-	dialog_->raise();
-	dialog_->setActiveWindow();
-
-	update();
-	dialog_->show();
-}
-
-
-void FormVCLog::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-}
-
-
-void FormVCLog::hide()
-{
-	dialog_->hide();
-	close();
+	bc().setCancel(dialog_->button_cancel);
 }

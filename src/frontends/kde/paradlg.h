@@ -41,11 +41,11 @@ public:
 	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, LyXParagraph::PEXTRA_TYPE);
 
 	char const * getLabelWidth() const {
-		return generalpage->labelwidth->text();
+		return generalpage->line_labelwidth->text();
 	}
 
 	LyXAlignment getAlign() const {
-		switch (generalpage->justification->currentItem()) { 
+		switch (generalpage->combo_justification->currentItem()) { 
 			case 0: return LYX_ALIGN_BLOCK;
 			case 1: return LYX_ALIGN_CENTER;
 			case 2: return LYX_ALIGN_LEFT;
@@ -55,39 +55,39 @@ public:
 	}
 
 	bool getAboveKeep() const {
-		return generalpage->abovepage->keepabove->isChecked();
+		return generalpage->abovepage->check_keepabove->isChecked();
 	}
 
 	bool getBelowKeep() const {
-		return generalpage->belowpage->keepbelow->isChecked();
+		return generalpage->belowpage->check_keepbelow->isChecked();
 	}
 
 	bool getLineAbove() const {
-		return generalpage->lineabove->isChecked();
+		return generalpage->check_lineabove->isChecked();
 	}
 
 	bool getLineBelow() const {
-		return generalpage->linebelow->isChecked();
+		return generalpage->check_linebelow->isChecked();
 	}
 
 	bool getPagebreakAbove() const {
-		return generalpage->abovepage->pagebreakabove->isChecked();
+		return generalpage->abovepage->check_pagebreakabove->isChecked();
 	}
 
 	bool getPagebreakBelow() const {
-		return generalpage->belowpage->pagebreakbelow->isChecked();
+		return generalpage->belowpage->check_pagebreakbelow->isChecked();
 	}
 
 	bool getNoIndent() const {
-		return generalpage->noindent->isChecked();
+		return generalpage->check_noindent->isChecked();
 	}
 
 	VSpace::vspace_kind getSpaceAboveKind() const {
-		return getSpaceKind(generalpage->abovepage->spaceabove->currentItem());
+		return getSpaceKind(generalpage->abovepage->combo_spaceabove->currentItem());
 	}
 
 	VSpace::vspace_kind getSpaceBelowKind() const {
-		return getSpaceKind(generalpage->belowpage->spacebelow->currentItem());
+		return getSpaceKind(generalpage->belowpage->combo_spacebelow->currentItem());
 	}
 	
 	LyXGlueLength getAboveLength() const;
@@ -98,7 +98,7 @@ public:
 	string getExtraWidthPercent() const;
 
 	LyXParagraph::PEXTRA_TYPE getExtraType() const {
-		switch (extrapage->type->currentItem()) {
+		switch (extrapage->combo_type->currentItem()) {
 			case 0: return LyXParagraph::PEXTRA_NONE;
 			case 1: return LyXParagraph::PEXTRA_INDENT;
 			case 2: return LyXParagraph::PEXTRA_MINIPAGE;
@@ -108,19 +108,19 @@ public:
 	}
 
 	LyXParagraph::MINIPAGE_ALIGNMENT getExtraAlign() const {
-		if (extrapage->top->isChecked())
+		if (extrapage->radio_top->isChecked())
 			return LyXParagraph::MINIPAGE_ALIGN_TOP;
-		if (extrapage->middle->isChecked())
+		if (extrapage->radio_middle->isChecked())
 			return LyXParagraph::MINIPAGE_ALIGN_MIDDLE;
 		return LyXParagraph::MINIPAGE_ALIGN_BOTTOM;
 	}
 
 	bool getHfillBetween() const {
-		return extrapage->hfillbetween->isChecked();
+		return extrapage->check_hfillbetween->isChecked();
 	}
 
 	bool getStartNewMinipage() const {
-		return extrapage->startnewminipage->isChecked();
+		return extrapage->check_startnewminipage->isChecked();
 	}
 protected:
 	void closeEvent(QCloseEvent * e);
@@ -132,6 +132,7 @@ private:
 	ParaGeneralDialog * generalpage;
 	/// the extra options tab page
 	ParaExtraDialog * extrapage;
+ 
 	VSpace::vspace_kind getSpaceKind(int val) const {
 		switch (val) {
 			case 0: return VSpace::NONE;

@@ -4,39 +4,28 @@
  * Read the file COPYING
  *
  * \author Jürgen Vigna
+ * \author John Levon
  */
 #ifndef FORMCOPYRIGHT_H
 #define FORMCOPYRIGHT_H
 
-#include "DialogBase.h"
-#include "boost/utility.hpp"
+#include "KFormBase.h"
 
-class Dialogs;
-class LyXView;
+class ControlCopyright;
 class CopyrightDialog;
 
-class FormCopyright : public DialogBase {
+class FormCopyright : public KFormBase<ControlCopyright, CopyrightDialog> {
 public: 
-	FormCopyright(LyXView *, Dialogs *);
- 
-	~FormCopyright();
+	/// 
+	FormCopyright(ControlCopyright & c);
 
 private: 
-	/// Create the dialog if necessary, update it and display it
-	void show();
-	/// Hide the dialog
-	void hide();
-	/// Not used but we've got to implement it
-	void update(bool) {}
-
-	/// Real GUI implementation
-	CopyrightDialog * dialog_;
-	/// Which LyXFunc do we use ?
-	LyXView * lv_;
-	/// dialogs object
-	Dialogs * d_;
-	/// Hide connection.
-	Connection h_;
+	/// build the dialog
+	virtual void build();
+	/// not used 
+	virtual void apply() {}
+	/// not used
+	void update() {}
 };
 
 #endif // FORMCOPYRIGHT_H

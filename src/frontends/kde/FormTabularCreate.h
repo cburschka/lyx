@@ -9,40 +9,24 @@
 #ifndef FORMTABULARCREATE_H
 #define FORMTABULARCREATE_H
 
-#include "DialogBase.h"
+#include "KFormBase.h"
 
-class Dialogs;
-class LyXView; 
+class ControlTabularCreate; 
 class TabularCreateDialog;
 
-class FormTabularCreate : public DialogBase {
+///
+class FormTabularCreate : public KFormBase<ControlTabularCreate, TabularCreateDialog> {
 public: 
-	FormTabularCreate(LyXView *, Dialogs *);
- 
-	~FormTabularCreate();
-
-	/// create the table 
-	void apply(unsigned int rows, unsigned int cols);
-	/// close the connections
-	void close();
+	///
+	FormTabularCreate(ControlTabularCreate & c); 
  
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
- 
-	/// Real GUI implementation.
-	TabularCreateDialog * dialog_;
-
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/// Dialogs object
-	Dialogs * d_;
-	
-	/// Hide connection.
-	Connection h_;
+	/// apply dialog 
+	virtual void apply();
+	/// build dialog
+	virtual void build();
+	/// not used
+	virtual void update() {};
 };
 
 #endif // FORMTABULARCREATE_H

@@ -24,51 +24,51 @@ ParaGeneralDialog::ParaGeneralDialog (QWidget * parent, char const * name)
 	abovepage = new ParaAboveDialogData(this, "abovepage");
 	belowpage = new ParaBelowDialogData(this, "belowpage");
 
-	spacetab->addTabPage(abovepage, _("&Spacing Above"));
-	spacetab->addTabPage(belowpage, _("Spacing &Below"));
+	tabstack->addTabPage(abovepage, _("&Spacing Above"));
+	tabstack->addTabPage(belowpage, _("Spacing &Below"));
 
-	connect(abovepage->spaceabove, SIGNAL(highlighted(int)), this, SLOT(spaceaboveHighlighted(int)));
-	connect(belowpage->spacebelow, SIGNAL(highlighted(int)), this, SLOT(spacebelowHighlighted(int)));
+	connect(abovepage->combo_spaceabove, SIGNAL(highlighted(int)), this, SLOT(spaceaboveHighlighted(int)));
+	connect(belowpage->combo_spacebelow, SIGNAL(highlighted(int)), this, SLOT(spacebelowHighlighted(int)));
 
-	abovepage->spaceabove->insertItem(_("None"));
-	abovepage->spaceabove->insertItem(_("Defskip"));
-	abovepage->spaceabove->insertItem(_("Small skip"));
-	abovepage->spaceabove->insertItem(_("Medium skip"));
-	abovepage->spaceabove->insertItem(_("Big skip"));
-	abovepage->spaceabove->insertItem(_("VFill"));
-	abovepage->spaceabove->insertItem(_("Custom"));
-	setSizeHint(abovepage->spaceabove); 
+	abovepage->combo_spaceabove->insertItem(_("None"));
+	abovepage->combo_spaceabove->insertItem(_("Defskip"));
+	abovepage->combo_spaceabove->insertItem(_("Small skip"));
+	abovepage->combo_spaceabove->insertItem(_("Medium skip"));
+	abovepage->combo_spaceabove->insertItem(_("Big skip"));
+	abovepage->combo_spaceabove->insertItem(_("VFill"));
+	abovepage->combo_spaceabove->insertItem(_("Custom"));
+	setSizeHint(abovepage->combo_spaceabove); 
 
-	belowpage->spacebelow->insertItem(_("None"));
-	belowpage->spacebelow->insertItem(_("Defskip"));
-	belowpage->spacebelow->insertItem(_("Small skip"));
-	belowpage->spacebelow->insertItem(_("Medium skip"));
-	belowpage->spacebelow->insertItem(_("Big skip"));
-	belowpage->spacebelow->insertItem(_("VFill"));
-	belowpage->spacebelow->insertItem(_("Custom"));
-	setSizeHint(belowpage->spacebelow); 
+	belowpage->combo_spacebelow->insertItem(_("None"));
+	belowpage->combo_spacebelow->insertItem(_("Defskip"));
+	belowpage->combo_spacebelow->insertItem(_("Small skip"));
+	belowpage->combo_spacebelow->insertItem(_("Medium skip"));
+	belowpage->combo_spacebelow->insertItem(_("Big skip"));
+	belowpage->combo_spacebelow->insertItem(_("VFill"));
+	belowpage->combo_spacebelow->insertItem(_("Custom"));
+	setSizeHint(belowpage->combo_spacebelow); 
 	
-	justification->insertItem(_("Block"));
-	justification->insertItem(_("Centered"));
-	justification->insertItem(_("Left"));
-	justification->insertItem(_("Right"));
-	setSizeHint(justification); 
+	combo_justification->insertItem(_("Block"));
+	combo_justification->insertItem(_("Centered"));
+	combo_justification->insertItem(_("Left"));
+	combo_justification->insertItem(_("Right"));
+	setSizeHint(combo_justification); 
  
-	QToolTip::add(justification, _("Alignment of current paragraph")); 
-	QToolTip::add(noindent, _("No indent on first line of paragraph")); 
-	QToolTip::add(labelwidth, _("FIXME please !")); 
+	QToolTip::add(combo_justification, _("Alignment of current paragraph")); 
+	QToolTip::add(check_noindent, _("No indent on first line of paragraph")); 
+	QToolTip::add(line_labelwidth, _("FIXME please !")); 
 	
-	QToolTip::add(abovepage->pagebreakabove, _("New page above this paragraph"));
-	QToolTip::add(abovepage->keepabove, _("Don't hug margin if at top of page"));
-	QToolTip::add(abovepage->spaceabovevalue, _("Size of extra space above paragraph"));
-	QToolTip::add(abovepage->spaceaboveplus, _("Maximum extra space that can be added"));
-	QToolTip::add(abovepage->spaceaboveminus, _("Minimum space required"));
+	QToolTip::add(abovepage->check_pagebreakabove, _("New page above this paragraph"));
+	QToolTip::add(abovepage->check_keepabove, _("Don't hug margin if at top of page"));
+	QToolTip::add(abovepage->length_spaceabove, _("Size of extra space above paragraph"));
+	QToolTip::add(abovepage->length_spaceaboveplus, _("Maximum extra space that can be added"));
+	QToolTip::add(abovepage->length_spaceaboveminus, _("Minimum space required"));
  
-	QToolTip::add(belowpage->pagebreakbelow, _("New page below this paragraph"));
-	QToolTip::add(belowpage->keepbelow, _("Don't hug margin if at bottom of page"));
-	QToolTip::add(belowpage->spacebelowvalue, _("Size of extra space below paragraph"));
-	QToolTip::add(belowpage->spacebelowplus, _("Maximum extra space that can be added"));
-	QToolTip::add(belowpage->spacebelowminus, _("Minimum space required"));
+	QToolTip::add(belowpage->check_pagebreakbelow, _("New page below this paragraph"));
+	QToolTip::add(belowpage->check_keepbelow, _("Don't hug margin if at bottom of page"));
+	QToolTip::add(belowpage->length_spacebelow, _("Size of extra space below paragraph"));
+	QToolTip::add(belowpage->length_spacebelowplus, _("Maximum extra space that can be added"));
+	QToolTip::add(belowpage->length_spacebelowminus, _("Minimum space required"));
 }
 
 
@@ -79,15 +79,15 @@ ParaGeneralDialog::~ParaGeneralDialog()
 
 void ParaGeneralDialog::spaceaboveHighlighted(int val)
 {
-	abovepage->spaceabovevalue->setEnabled(val == 6);
-	abovepage->spaceaboveplus->setEnabled(val == 6);
-	abovepage->spaceaboveminus->setEnabled(val == 6);
+	abovepage->length_spaceabove->setEnabled(val == 6);
+	abovepage->length_spaceaboveplus->setEnabled(val == 6);
+	abovepage->length_spaceaboveminus->setEnabled(val == 6);
 }
 
 
 void ParaGeneralDialog::spacebelowHighlighted(int val)
 {
-	belowpage->spacebelowvalue->setEnabled(val == 6);
-	belowpage->spacebelowplus->setEnabled(val == 6);
-	belowpage->spacebelowminus->setEnabled(val == 6);
+	belowpage->length_spacebelow->setEnabled(val == 6);
+	belowpage->length_spacebelowplus->setEnabled(val == 6);
+	belowpage->length_spacebelowminus->setEnabled(val == 6);
 }

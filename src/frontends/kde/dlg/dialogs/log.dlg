@@ -1,8 +1,8 @@
 DlgEdit:v1.2:Dialog:
 Dialog {
-	ClassHeader {logdlg.h}
-	ClassSource {logdlg.C}
-	ClassName {LogDialog}
+	ClassHeader {}
+	ClassSource {}
+	ClassName {}
 	DataHeader {logdlgdata.h}
 	DataSource {logdlgdata.C}
 	DataName {LogDialogData}
@@ -27,8 +27,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {241 269 77 26}
-		Name {close}
-		Variable {close}
+		Name {button_cancel}
+		Variable {button_cancel}
 		Signal {[Protected]  clicked --> closePressed  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -56,8 +56,8 @@ PushButton {
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {82 269 77 26}
-		Name {updateb}
-		Variable {updateb}
+		Name {button_update}
+		Variable {button_update}
 		Signal {[Protected]  clicked --> updatePressed  ()}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -86,8 +86,8 @@ MultiLineEdit {
 		MidLineWidth {0}
 		FrameMargin {0}
 		Rect {5 5 390 259}
-		Name {viewer}
-		Variable {viewer}
+		Name {line_viewer}
+		Variable {line_viewer}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -123,7 +123,7 @@ Box_Layout-1.1{
 	Stretch {10}
 }
 Layout_Widget-1.1.1{
-	Widget {viewer}
+	Widget {line_viewer}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -139,7 +139,7 @@ Box_Stretch-1.2.1{
 	Stretch {1}
 }
 Layout_Widget-1.2.2{
-	Widget {updateb}
+	Widget {button_update}
 	BoxStretch {1}
 	Alignment {36}
 }
@@ -147,7 +147,7 @@ Box_Stretch-1.2.3{
 	Stretch {1}
 }
 Layout_Widget-1.2.4{
-	Widget {close}
+	Widget {button_cancel}
 	BoxStretch {1}
 	Alignment {36}
 }

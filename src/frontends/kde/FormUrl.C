@@ -8,139 +8,47 @@
 
 #include <config.h>
 
-#include "Dialogs.h"
+#include "ControlUrl.h"
 #include "FormUrl.h"
 #include "gettext.h"
-#include "buffer.h"
-#include "LyXView.h"
-#include "lyxfunc.h" 
 #include "urldlg.h"
 
-FormUrl::FormUrl(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
+FormUrl::FormUrl(ControlUrl & c)
+	: KFormBase<ControlUrl, UrlDialog>(c)
 {
-	d->showUrl.connect(slot(this, &FormUrl::showUrl));
-	d->createUrl.connect(slot(this, &FormUrl::createUrl));
 }
 
 
-FormUrl::~FormUrl()
+void FormUrl::update()
 {
-	delete dialog_;
-}
+	dialog_->url->setText(controller().params().getContents().c_str());
+	dialog_->urlname->setText(controller().params().getOptions().c_str());
 
-
-void FormUrl::showUrl(InsetCommand * const inset)
-{
-	// FIXME: when could inset be 0 here ?
-	if (inset == 0)
-		return;
-
-	inset_ = inset;
-	readonly = lv_->buffer()->isReadonly();
-	ih_ = inset_->hideDialog.connect(slot(this,&FormUrl::hide));
-	params = inset->params();
-	
-	show();
-}
-
- 
-void FormUrl::createUrl(string const & arg)
-{
-	// we could already be showing a URL, clear it out
-	if (inset_)
-		close();
- 
-	readonly = lv_->buffer()->isReadonly();
-	params.setFromString(arg);
-	show();
-}
-
- 
-void FormUrl::update(bool switched)
-{
-	if (switched) {
-		hide();
-		return;
-	}
-
-	dialog_->url->setText(params.getContents().c_str());
-	dialog_->urlname->setText(params.getOptions().c_str());
-
-	if (params.getCmdName() == "url") 
-		dialog_->htmlurl->setChecked(0);
-	else
-		dialog_->htmlurl->setChecked(1);
-
-	if (readonly) {
-		dialog_->urlname->setFocusPolicy(QWidget::NoFocus);
-		dialog_->url->setFocusPolicy(QWidget::NoFocus);
-		dialog_->buttonOk->setEnabled(false);
-		dialog_->buttonCancel->setText(_("&Close"));
-		dialog_->htmlurl->setEnabled(false);
-	} else {
-		dialog_->urlname->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->url->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->url->setFocus();
-		dialog_->buttonOk->setEnabled(true);
-		dialog_->buttonCancel->setText(_("&Cancel"));
-		dialog_->htmlurl->setEnabled(true);
-	}
+	dialog_->htmlurl->setChecked(controller().params().getCmdName() != "url");
 }
 
  
 void FormUrl::apply()
 {
-	if (readonly)
-		return;
-
-	params.setContents(dialog_->url->text());
-	params.setOptions(dialog_->urlname->text());
+	controller().params().setContents(dialog_->url->text());
+	controller().params().setOptions(dialog_->urlname->text());
 
 	if (dialog_->htmlurl->isChecked())
-		params.setCmdName("htmlurl");
+		controller().params().setCmdName("htmlurl");
 	else
-		params.setCmdName("url");
-
-	if (inset_ != 0) {
-		if (params != inset_->params()) {
-			inset_->setParams(params);
-			lv_->view()->updateInset(inset_, true);
-		}
-	} else
-		lv_->getLyXFunc()->Dispatch(LFUN_INSERT_URL, params.getAsString().c_str());
+		controller().params().setCmdName("url");
 }
 
  
-void FormUrl::show()
+void FormUrl::build()
 {
-	if (!dialog_)
-		dialog_ = new UrlDialog(this, 0, _("LyX: Url"), false);
+	dialog_.reset(new UrlDialog(this, 0, _("LyX: Url"), false));
  
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormUrl::hide));
-		u_ = d_->updateBufferDependent.connect(slot(this, &FormUrl::update));
-	}
+	bc().setOK(dialog_->buttonOk);
+	bc().setCancel(dialog_->buttonCancel);
 
-	dialog_->raise();
-	dialog_->setActiveWindow();
+	bc().addReadOnly(dialog_->urlname);
+	bc().addReadOnly(dialog_->url);
+	bc().addReadOnly(dialog_->htmlurl); 
  
-	update();
-	dialog_->show();
-}
-
-
-void FormUrl::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-	ih_.disconnect();
-	inset_ = 0;
-}
-
- 
-void FormUrl::hide()
-{
-	dialog_->hide();
-	close();
 }

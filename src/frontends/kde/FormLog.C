@@ -7,44 +7,25 @@
  */
 
 #include <config.h>
-#include <fstream> 
+#include <fstream>
 
-#include "Dialogs.h"
 #include "FormLog.h"
+#include "ControlLog.h"
+#include "logdlg.h" 
 #include "gettext.h"
-#include "buffer.h"
-#include "support/lstrings.h"
-#include "LyXView.h"
-#include "lyxfunc.h"
-#include "logdlg.h"
-#include "lyxrc.h"
 
 using std::ifstream;
 using std::getline;
 
-FormLog::FormLog(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
+FormLog::FormLog(ControlLog & c)
+	: KFormBase<ControlLog, LogDialog>(c)
 {
-	d->showLogFile.connect(slot(this, &FormLog::show));
-}
-
-
-FormLog::~FormLog()
-{
-	delete dialog_;
 }
 
 
 void FormLog::update()
 {
-	supdate();
-}
-
- 
-void FormLog::supdate(bool)
-{
-	std::pair<Buffer::LogType, string> const logfile
-		= lv_->view()->buffer()->getLogName();
+	std::pair<Buffer::LogType, string> const logfile = controller().logfile();
 
 	if (logfile.first == Buffer::buildlog)
 		dialog_->setCaption(_("Build log"));
@@ -72,33 +53,9 @@ void FormLog::supdate(bool)
 }
 
 
-void FormLog::show()
+void FormLog::build()
 {
-	if (!dialog_)
-		dialog_ = new LogDialog(this, 0, _("LyX: LaTeX Log"));
+	dialog_.reset(new LogDialog(this, 0, _("LyX: LaTeX Log")));
 
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormLog::hide));
-		u_ = d_->updateBufferDependent.connect(slot(this, &FormLog::supdate));
-	}
-
-	dialog_->raise();
-	dialog_->setActiveWindow();
-
-	update();
-	dialog_->show();
-}
-
-
-void FormLog::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-}
-
-
-void FormLog::hide()
-{
-	dialog_->hide();
-	close();
+	bc().setCancel(dialog_->button_cancel);
 }

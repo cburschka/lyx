@@ -58,15 +58,12 @@ private:
 private slots:
 	/// adaptor to FormUrl::apply
 	void apply_adaptor(void) {
-		form_->apply();
-		form_->close();
-		hide();
+		form_->OKButton();
 	}
 
 	/// adaptor to FormUrl::close
 	void close_adaptor(void) {
-		form_->close();
-		hide();
+		form_->CancelButton(); 
 	}
 };
 

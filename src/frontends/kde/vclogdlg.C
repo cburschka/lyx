@@ -1,5 +1,5 @@
 /**
- * \file logdlg.C
+ * \file vclogdlg.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
@@ -8,12 +8,13 @@
 
 #include <config.h>
 #include <gettext.h>
- 
-#include "ControlLog.h" 
-#include "FormLog.h"
-#include "logdlg.h"
 
-LogDialog::LogDialog (FormLog * f, QWidget * parent, char const  * name)
+#include "FormVCLog.h"
+#include "ControlVCLog.h"
+
+#include "vclogdlg.h"
+
+VCLogDialog::VCLogDialog (FormVCLog * f, QWidget * parent, char const  * name)
 	: LogDialogData(parent, name), form_(f)
 {
 	line_viewer->setMinimumWidth(50);
@@ -21,7 +22,7 @@ LogDialog::LogDialog (FormLog * f, QWidget * parent, char const  * name)
 }
 
 
-void LogDialog::setLogText(string const & text)
+void VCLogDialog::setLogText(string const & text)
 {
 	setUpdatesEnabled(false);
 	line_viewer->setText(text.c_str());
@@ -29,13 +30,13 @@ void LogDialog::setLogText(string const & text)
 	update();
 }
 
-void LogDialog::closePressed()
+void VCLogDialog::closePressed()
 {
 	form_->CancelButton();
 }
 
 
-void LogDialog::updatePressed()
+void VCLogDialog::updatePressed()
 {
 	// FIXME: hmm 
 	//form_->controller().setParams();

@@ -6,50 +6,26 @@
  * \author John Levon
  */
 
- 
 #ifndef FORMVCLOG_H
 #define FORMVCLOG_H
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "boost/utility.hpp"
+#include "KFormBase.h"
 
-class Dialogs;
-class LyXView;
-class LogDialog;
+class ControlVCLog;
+class VCLogDialog;
 
-class FormVCLog : public DialogBase {
+class FormVCLog : public KFormBase<ControlVCLog, VCLogDialog> {
 public: 
-	FormVCLog(LyXView *, Dialogs *);
+	FormVCLog(ControlVCLog & c); 
 
-	~FormVCLog();
-
-	/// close the connections
-	virtual void close();
-	/// Update the dialog
+	/// update the dialog
 	virtual void update();
-	/// Update the dialog from slot
-	virtual void supdate(bool = false);
- 
-protected: 
-	/// Create the dialog if necessary, update it and display it
-	virtual void show();
-	/// Hide the dialog
-	virtual void hide();
 
-	/// Real GUI implementation.
-	LogDialog * dialog_;
+	/// apply
+	virtual void apply() {};
 
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/// the Dialogs object we belong to
-	Dialogs * d_;
-	
-	/// Hide connection.
-	Connection h_;
-	/// Update connection.
-	Connection u_;
+	/// build dialog
+	virtual void build(); 
 };
 
 #endif // FORMVCLOG_H

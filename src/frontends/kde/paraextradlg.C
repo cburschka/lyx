@@ -20,28 +20,28 @@ using kde_helpers::setSizeHint;
 ParaExtraDialog::ParaExtraDialog (QWidget * parent, char const * name) 
 	: ParaExtraDialogData(parent, name)
 {
-	type->insertItem(_("Normal"));
-	type->insertItem(_("Indented paragraph"));
-	type->insertItem(_("Minipage"));
-	type->insertItem(_("Wrap text around floats (floatflt)"));
-	setSizeHint(type);
+	combo_type->insertItem(_("Normal"));
+	combo_type->insertItem(_("Indented paragraph"));
+	combo_type->insertItem(_("Minipage"));
+	combo_type->insertItem(_("Wrap text around floats (floatflt)"));
+	setSizeHint(combo_type);
 	
-	widthvalueunits->insertItem(_("Centimetres"));
-	widthvalueunits->insertItem(_("Inches"));
-	widthvalueunits->insertItem(_("Points (1/72.27 inch)"));
-	widthvalueunits->insertItem(_("Millimetres"));
-	widthvalueunits->insertItem(_("Picas"));
-	widthvalueunits->insertItem(_("ex units"));
-	widthvalueunits->insertItem(_("em units"));
-	widthvalueunits->insertItem(_("Scaled points (1/65536 pt)"));
-	widthvalueunits->insertItem(_("Big/PS points (1/72 inch)"));
-	widthvalueunits->insertItem(_("Didot points"));
-	widthvalueunits->insertItem(_("Cicero points"));
-	widthvalueunits->insertItem(_("Percent of column"));
-	setSizeHint(widthvalueunits);
+	combo_widthvalueunits->insertItem(_("Centimetres"));
+	combo_widthvalueunits->insertItem(_("Inches"));
+	combo_widthvalueunits->insertItem(_("Points (1/72.27 inch)"));
+	combo_widthvalueunits->insertItem(_("Millimetres"));
+	combo_widthvalueunits->insertItem(_("Picas"));
+	combo_widthvalueunits->insertItem(_("ex units"));
+	combo_widthvalueunits->insertItem(_("em units"));
+	combo_widthvalueunits->insertItem(_("Scaled points (1/65536 pt)"));
+	combo_widthvalueunits->insertItem(_("Big/PS points (1/72 inch)"));
+	combo_widthvalueunits->insertItem(_("Didot points"));
+	combo_widthvalueunits->insertItem(_("Cicero points"));
+	combo_widthvalueunits->insertItem(_("Percent of column"));
+	setSizeHint(combo_widthvalueunits);
 	
-	QToolTip::add(hfillbetween, _("FIXME please !"));
-	QToolTip::add(startnewminipage, _("FIXME please !"));
+	QToolTip::add(check_hfillbetween, _("FIXME please !"));
+	QToolTip::add(check_startnewminipage, _("FIXME please !"));
 }
 
 
@@ -53,11 +53,11 @@ ParaExtraDialog::~ParaExtraDialog()
 void ParaExtraDialog::typeHighlighted(int val)
 {
 	specialalignment->setEnabled(val == 2);
-	top->setEnabled(val == 2);
-	middle->setEnabled(val == 2);
-	bottom->setEnabled(val == 2);
-	widthvalue->setEnabled(val != 0);
-	widthvalueunits->setEnabled(val != 0);
-	hfillbetween->setEnabled(val == 2); 
-	startnewminipage->setEnabled(val == 2); 
+	radio_top->setEnabled(val == 2);
+	radio_middle->setEnabled(val == 2);
+	radio_bottom->setEnabled(val == 2);
+	line_widthvalue->setEnabled(val != 0);
+	combo_widthvalueunits->setEnabled(val != 0);
+	check_hfillbetween->setEnabled(val == 2); 
+	check_startnewminipage->setEnabled(val == 2); 
 }

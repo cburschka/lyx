@@ -14,7 +14,6 @@
 
 // to connect apply() and hide()
 #include "FormCitation.h"
-#include "kdeBC.h"
 
 #include <qdialog.h> 
 #include <qlistbox.h>

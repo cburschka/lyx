@@ -67,11 +67,11 @@ private:
 	InsetCommandParams params;
 	
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Update connection.
-	Connection u_;
+	SigC::Connection u_;
 	/// Inset hide connection.
-	Connection ih_;
+	SigC::Connection ih_;
 
 	/// the toc list
 	std::vector <Buffer::TocItem> toclist;

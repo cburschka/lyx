@@ -9,43 +9,52 @@
 #include <config.h>
 
 #include "printdlg.h"
-#include "Dialogs.h"
-#include "FormPrint.h"
-#include "gettext.h"
-#include "buffer.h"
-#include "lyxrc.h" 
 #include "QtLyXView.h"
-#include "PrinterParams.h" 
-#include "Liason.h" 
-#include "BufferView.h" 
+#include "PrinterParams.h"
+#include "gettext.h"
 #include "support/lstrings.h"
+ 
+#include "FormPrint.h"
+#include "ControlPrint.h"
 
-#include <kmsgbox.h>
-
-using Liason::printBuffer;
-using Liason::getPrinterParams;
 using std::max;
 
-FormPrint::FormPrint(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
+FormPrint::FormPrint(ControlPrint & c)
+	: KFormBase<ControlPrint, PrintDialog>(c)
 {
-	d->showPrint.connect(SigC::slot(this, &FormPrint::show));
 }
 
 
-FormPrint::~FormPrint()
+void FormPrint::build()
 {
-	delete dialog_;
+	dialog_.reset(new PrintDialog(this, 0, _("LyX: Print")));
+ 
+	bc().setOK(dialog_->button_ok);
+	bc().setCancel(dialog_->button_cancel);
 }
 
-
-// we can safely ignore the parameter because we can always update
-void FormPrint::update(bool)
+ 
+void FormPrint::apply()
 {
-	if (!lv_->view()->available())
-	       return;
+	string from;
+	int to(0);
 
-	PrinterParams pp(getPrinterParams(lv_->buffer()));
+	if (strlen(dialog_->getFrom())) {
+		from = dialog_->getFrom();
+		if (strlen(dialog_->getTo()))
+			to = strToInt(dialog_->getTo());
+	}
+
+	controller().params() = PrinterParams(dialog_->getTarget(),
+		dialog_->getPrinter(), dialog_->getFile(),
+		dialog_->getWhichPages(), from, to, dialog_->getReverse(),
+		dialog_->getSort(), max(strToInt(dialog_->getCount()), 1));
+}
+
+ 
+void FormPrint::update()
+{
+	PrinterParams & pp(controller().params());
 
 	dialog_->setTarget(pp.target);
        	dialog_->setPrinter(pp.printer_name.c_str());
@@ -65,67 +74,4 @@ void FormPrint::update(bool)
 		dialog_->setFrom("");
 		dialog_->setTo("");
 	}
-}
-
- 
-void FormPrint::print()
-{
-	if (!lv_->view()->available())
-	       return;
-
-	string from;
-	int to(0);
-
-	if (strlen(dialog_->getFrom())) {
-		from = dialog_->getFrom();
-		if (strlen(dialog_->getTo()))
-			to = strToInt(dialog_->getTo());
-	}
-	
-	int retval = printBuffer(lv_->buffer(), PrinterParams(dialog_->getTarget(),
-		string(dialog_->getPrinter()), string(dialog_->getFile()), 
-		dialog_->getWhichPages(), from, to, dialog_->getReverse(), 
-		dialog_->getSort(), max(strToInt(dialog_->getCount()),1)));
-
-	if (!retval) {
-		// FIXME: should have a utility class for this
-		string message(_("An error occured while printing.\n\n"));
-		message += _("Check the parameters are correct.\n");
-		KMsgBox msg(0, _("LyX: Print Error"), message.c_str(), KMsgBox::EXCLAMATION, _("&OK"));
-		msg.raise();
-		msg.setActiveWindow();
-		msg.show();
-	}
-}
-
-
-void FormPrint::show()
-{
-	if (!dialog_)
-		dialog_ = new PrintDialog(this, 0, _("LyX: Print"));
- 
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormPrint::hide));
-		u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormPrint::update));
-	}
-
-	dialog_->raise();
-	dialog_->setActiveWindow();
- 
-	update();
-	dialog_->show();
-}
-
-
-void FormPrint::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-}
-
- 
-void FormPrint::hide()
-{
-	dialog_->hide();
-	close();
 }

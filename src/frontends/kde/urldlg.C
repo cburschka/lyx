@@ -111,6 +111,6 @@ UrlDialog::~UrlDialog()
 
 void UrlDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->CancelButton();
 	e->accept();
 }

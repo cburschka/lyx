@@ -9,9 +9,11 @@
 #ifndef TABCREATEDIALOG_H
 #define TABCREATEDIALOG_H
 
-#include "dlg/tabcreatedlgdata.h"
 #include "FormTabularCreate.h" 
+#include "dlg/tabcreatedlgdata.h"
 
+// FIXME: closeEvent
+ 
 class TabularCreateDialog : public TabularCreateDialogData
 {
 	Q_OBJECT

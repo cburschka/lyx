@@ -10,36 +10,99 @@
 #include <config.h>
 #include FORMS_H_LOCATION
 
+#include "ControlBibitem.h"
+#include "ControlBibtex.h"
+#include "ControlCharacter.h"
+#include "ControlCitation.h"
+#include "ControlCopyright.h"
+#include "ControlCredits.h"
+#include "ControlError.h"
+#include "ControlExternal.h" 
+#include "ControlGraphics.h"
+#include "ControlInclude.h"
+#include "ControlIndex.h"
+#include "ControlLog.h"
+#include "ControlMinipage.h"
+#include "ControlPreamble.h"
+#include "ControlPrint.h"
+#include "ControlRef.h"
+#include "ControlSearch.h"
+#include "ControlSplash.h"
+#include "ControlTabularCreate.h"
+#include "ControlUrl.h"
+#include "ControlVCLog.h"
+
 #include "Dialogs.h"
 
-#include "ControlBibitem.h"
-#include "ControlCitation.h"
 #include "kdeBC.h"
-
+ 
+#include "GUI.h"
+ 
+// FIXME: how horrendous. It would help a little if we
+// could rename ControlButton not to clash with stupid Qt ... Angus ?
+ 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
+#include "FormCharacter.h" 
 #include "FormCitation.h"
-#include "citationdlg.h"
 #include "FormCopyright.h"
 #include "FormCredits.h"
 #include "FormDocument.h"
 #include "FormError.h"
+#include "FormExternal.h" 
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
 #include "FormLog.h"
+#include "FormMinipage.h" 
+#include "FormMathsPanel.h" 
 #include "FormParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
+#include "FormSearch.h" 
 #include "FormSplash.h"
 #include "FormTabular.h"
 #include "FormTabularCreate.h"
-#include "FormToc.h"
+//#include "FormToc.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
 
+// we need all these in order to use scoped_ptr. how ugly ...
+#include "combox.h"
+#include "form_bibitem.h"
+#include "form_bibtex.h"
+#include "form_browser.h"
+#include "form_character.h"
+#include "form_credits.h"
+#include "form_error.h"
+#include "form_external.h" 
+#include "form_graphics.h"
+#include "form_include.h" 
+#include "form_minipage.h"
+#include "form_preamble.h"
+#include "form_search.h"
+#include "form_splash.h"
+// Qt does it again. We can't include the dlg.h files *before*
+// anything else because "ControlButton" is an enum value,
+// and we can't include them *after* because it #errors on
+// a #defined TrueColor ... *sigh* 
+#undef TrueColor 
+// FIXME: I don't even know where this one is coming from !
+#undef Unsorted 
+#include "citationdlg.h" 
+#include "copyrightdlg.h"
+#include "indexdlg.h"
+#include "logdlg.h"
+#include "printdlg.h"
+#include "refdlg.h"
+#include "tabcreatedlg.h"
+//#include "tocdlg.h"
+#include "urldlg.h"
+#include "vclogdlg.h" 
+
+ 
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -47,37 +110,40 @@
 /* We don't implement this, but it's needed whilst we
  * still rely on xforms
  */
-Signal0<void> Dialogs::redrawGUI;
+SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	splash_.reset(new FormSplash(lv, this));
+	splash_.reset(new GUISplash<FormSplash>(*this));
 
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
-	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
+	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
+	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
+	add(new GUICitation<FormCitation, kdeBC>(*lv, *this));
+	add(new GUICopyright<FormCopyright, kdeBC>(*lv, *this));
+	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
+	add(new GUIError<FormError, xformsBC>(*lv, *this));
+	add(new GUIExternal<FormExternal, xformsBC>(*lv, *this));
+	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));
+	add(new GUIInclude<FormInclude, kdeBC>(*lv, *this));
+	add(new GUIIndex<FormIndex, kdeBC>(*lv, *this));
+	add(new GUILog<FormLog, kdeBC>(*lv, *this));
+	add(new GUIMinipage<FormMinipage, xformsBC>(*lv, *this));
+	add(new GUIPreamble<FormPreamble, xformsBC>(*lv, *this));
+	add(new GUIPrint<FormPrint, kdeBC>(*lv, *this));
+	add(new GUIRef<FormRef, kdeBC>(*lv, *this));
+	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
+	add(new GUITabularCreate<FormTabularCreate, kdeBC>(*lv, *this));
+	add(new GUIUrl<FormUrl, kdeBC>(*lv, *this));
+	add(new GUIVCLog<FormVCLog, kdeBC>(*lv, *this));
 
-	add(new FormBibtex(lv, this));
-	add(new FormCharacter(lv, this));
-	add(new FormCopyright(lv, this));
-	add(new FormCredits(lv, this));
 	add(new FormDocument(lv, this));
-	add(new FormError(lv, this));
-	add(new FormGraphics(lv, this));
-	add(new FormInclude(lv, this));
-	add(new FormIndex(lv, this));
-	add(new FormLog(lv, this));
+ 	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
-	add(new FormPreamble(lv, this));
 	add(new FormPreferences(lv, this));
-	add(new FormPrint(lv, this));
-	add(new FormRef(lv, this));
-	add(new FormSearch(lv, this));
 	add(new FormTabular(lv, this));
-	add(new FormTabularCreate(lv, this));
-	add(new FormToc(lv, this));
-	add(new FormUrl(lv, this));
-	add(new FormVCLog(lv, this));
-
+	//add(new FormToc(lv, this));
+	
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
