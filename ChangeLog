@@ -1,3 +1,48 @@
+2000-08-23  Juergen Vigna  <jug@sad.it>
+
+	* src/BufferView_pimpl.C (tripleClick): disable this when in a
+	locking_inset.
+
+	* src/insets/insettabular.C (pasteSelection): delete the insets
+	LyXText as it is not valid anymore.
+	(copySelection): new function.
+	(pasteSelection): new function.
+	(cutSelection): new function.
+	(LocalDispatch): implemented cut/copy/paste of cell selections.
+
+	* src/insets/insettext.C (resizeLyXText): don't need resize if I still
+	don't have a LyXText.
+
+	* src/LyXAction.C (init): a NEW_TABULAR define too much.
+
+	* src/lyx_gui_misc.C (CloseAllBufferRelatedDialogs): another missing
+	NEW_TABULAR define.
+
+2000-08-22  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs): 
+	ifdef form_table out if NEW_TABULAR.
+
+2000-08-21  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (TabularFeatures): BoxType is enum now.
+	(draw): fixed draw position so that the cursor is positioned in the
+	right place.
+	(InsetMotionNotify): hide/show cursor so the position is updated.
+	(GENERAL): fixed cursor_pos to show only 0/1 (begin/end of cell),
+	using cellstart() function where it should be used.
+
+	* src/insets/insettext.C (draw): ditto.
+
+	* src/tabular.C: fixed initialization of some missing variables and
+	made BoxType into an enum.
+
+2000-08-22  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/Menubar_pimpl.C: Mathces LyX action with Gnome 
+	stock menu item using action numerical value, not its string
+	representation.
+
+
 2000-08-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/xforms/Makefile.am (libxforms_la_SOURCES): add

@@ -3,19 +3,21 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *        Copyright 2000 The LyX Team.
+ *           Copyright 2000 The LyX Team.
+ *
+ *           @author: Jürgen Vigna
  *
  * ====================================================== 
  */
 
 #include <config.h>
 
-#include <algorithm>
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
+
+#include <algorithm>
+#include <cstdlib>
 
 #include "tabular.h"
 #include "debug.h"
@@ -46,14 +48,17 @@ extern BufferView * current_view;
 
 LyXTabular::cellstruct::cellstruct() 
 {
-    cellno = 0; //should be initilaized correctly later.
+    cellno = 0;
     width_of_cell = 0;
     multicolumn = LyXTabular::CELL_NORMAL;
     alignment = LYX_ALIGN_CENTER;
-    top_line = true;
+    valignment = LYX_VALIGN_TOP;
+    top_line = false;
     bottom_line = false;
+    left_line = false;
+    right_line = false;
+    usebox = BOX_NONE;
     rotate = false;
-    usebox = false;
 }
 
 
@@ -72,6 +77,7 @@ LyXTabular::columnstruct::columnstruct()
     left_line = true;
     right_line = false;
     alignment = LYX_ALIGN_CENTER;
+    valignment = LYX_VALIGN_TOP;
     width_of_column = 0;
 }
 
@@ -186,7 +192,7 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
     columnofcell = 0;
     set_row_column_number_info();
     is_long_tabular = false;
-    rotate = 0;
+    rotate = false;
     endhead = 0;
     endfirsthead = 0;
     endfoot = 0;
@@ -945,7 +951,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 		" leftline=" << cell_info[i][j].left_line <<
 		" rightline=" << cell_info[i][j].right_line <<
 		" rotate=" << cell_info[i][j].rotate <<
-		" usebox=" << cell_info[i][j].usebox <<
+		" usebox=" << (int)cell_info[i][j].usebox <<
 		" width=\"" << cell_info[i][j].p_width <<
 	        "\" special=\"" << cell_info[i][j].align_special <<
 		"\">" << endl;
@@ -1593,9 +1599,9 @@ bool LyXTabular::IsLongTabular() const
 }
 
 
-void LyXTabular::SetRotateTabular(int what)
+void LyXTabular::SetRotateTabular(bool flag)
 {
-    rotate = what;
+    rotate = flag;
 }
 
 
@@ -1605,9 +1611,9 @@ bool LyXTabular::GetRotateTabular() const
 }
 
 
-void LyXTabular::SetRotateCell(int cell, int what)
+void LyXTabular::SetRotateCell(int cell, bool flag)
 {
-    cellinfo_of_cell(cell)->rotate = what;
+    cellinfo_of_cell(cell)->rotate = flag;
 }
 
 
@@ -1690,9 +1696,9 @@ int LyXTabular::GetCellNumber(int row, int column) const
 }
 
 
-void LyXTabular::SetUsebox(int cell, int what)
+void LyXTabular::SetUsebox(int cell, BoxType type)
 {
-    cellinfo_of_cell(cell)->usebox = what;
+    cellinfo_of_cell(cell)->usebox = type;
 }
 
 
@@ -1700,7 +1706,7 @@ int LyXTabular::GetUsebox(int cell) const
 {
     if (column_info[column_of_cell(cell)].p_width.empty() &&
         !(IsMultiColumn(cell) && !cellinfo_of_cell(cell)->p_width.empty()))
-        return 0;
+        return BOX_NONE;
     if (cellinfo_of_cell(cell)->usebox > 1)
 	return cellinfo_of_cell(cell)->usebox;
     return UseParbox(cell);
@@ -1958,7 +1964,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 	    os << "}{";
 	}
     }
-    if (GetUsebox(cell) == 1) {
+    if (GetUsebox(cell) == BOX_PARBOX) {
 	os << "\\parbox[";
 	switch(GetVAlignment(cell)) {
 	case LYX_VALIGN_TOP:
@@ -1972,7 +1978,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 	    break;
 	}
 	os << "]{" << GetPWidth(cell) << "}{";
-    } else if (GetUsebox(cell) == 2) {
+    } else if (GetUsebox(cell) == BOX_MINIPAGE) {
 	os << "\\begin{minipage}[";
 	switch(GetVAlignment(cell)) {
 	case LYX_VALIGN_TOP:
@@ -1997,9 +2003,9 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
     int ret = 0;
 
     // usual cells
-    if (GetUsebox(cell) == 1)
+    if (GetUsebox(cell) == BOX_PARBOX)
 	os << "}";
-    else if (GetUsebox(cell) == 2) {
+    else if (GetUsebox(cell) == BOX_MINIPAGE) {
 	os << "%\n\\end{minipage}";
 	ret += 2;
     }

@@ -6,6 +6,8 @@
  *
  *           Copyright 1998 The LyX Team.
  *
+ *           @author: Jürgen Vigna
+ *
  *======================================================
  */
 // The pristine updatable inset: Text

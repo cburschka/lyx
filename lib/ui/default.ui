@@ -149,7 +149,7 @@ Menuset
 #	Item "Paper...|a" "layout-paper"
 #	Item "Quotes...|Q" "layout-quotes"
 	OptItem "Tabular...|a" "layout-tabular"
-	Item "Table...|T" "layout-table"
+#	Item "Table...|T" "layout-table"
 	Separator
 	Item "Emphasize Style|E" "font-emph"
 	Item "Noun Style|N" "font-noun"
@@ -164,7 +164,7 @@ Menuset
 
     Menu "insert"
 	Item "Figure...|F" "figure-insert"
-	Item "Table...|T" "table-insert"
+	Item "Tabular...|T" "table-insert"
 	Separator
 	Item "Include File...|I" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"

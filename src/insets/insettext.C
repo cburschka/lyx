@@ -6,6 +6,8 @@
  *
  *           Copyright 1998-2000 The LyX Team.
  *
+ *           @author: Jürgen Vigna
+ *
  * ======================================================
  */
 
@@ -245,8 +247,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     // no draw is necessary !!!
     if ((drawFrame == LOCKED) && !locked && !par->size()) {
 	if (!cleared && (need_update == CLEAR_FRAME)) {
-	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
-			   insetAscent + insetDescent,
+	    pain.rectangle(top_x + 1, baseline - insetAscent + 1,
+			   width(bv, f) - 1,
+			   insetAscent + insetDescent - 1,
 			   LColor::background);
 	}
 	top_x = int(x);
@@ -283,7 +286,6 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     if (top_x != int(x)) {
 	need_update = INIT;
 	top_x = int(x);
-//	owner()->update(bv, f, true);
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
 	return;
     }
@@ -302,10 +304,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	need_update = NONE;
 	return;
     }
-    x += 1; // place for border
+    x += TEXT_TO_INSET_OFFSET;
     long int y = 0;
     Row * row = TEXT(bv)->GetRowNearY(y);
-    y += baseline - row->ascent_of_text() + 1;
+    y += baseline - row->ascent_of_text();
     if (cleared || !locked || (need_update == FULL)) {
 	while (row != 0) {
 	    TEXT(bv)->GetVisibleRow(bv, y, int(x), row, y, cleared);
@@ -327,14 +329,15 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     TEXT(bv)->refresh_y = 0;
     TEXT(bv)->status = LyXText::UNCHANGED;
     if ((drawFrame == ALWAYS) || ((drawFrame == LOCKED) && locked)) {
-	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
-			   insetAscent + insetDescent, frame_color);
+	    pain.rectangle(top_x + 1, baseline - insetAscent + 1,
+			   width(bv, f) - 1, insetAscent + insetDescent - 1,
+			   frame_color);
     } else if (need_update == CLEAR_FRAME) {
-	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
-			   insetAscent + insetDescent,
+	    pain.rectangle(top_x + 1, baseline - insetAscent + 1,
+			   width(bv, f) - 1, insetAscent + insetDescent - 1,
 			   LColor::background);
     }
-    x += width(bv, f) - 1;
+    x += width(bv, f) - TEXT_TO_INSET_OFFSET;
     if (bv->text->status==LyXText::CHANGED_IN_DRAW)
 	need_update = INIT;
     else if (need_update != INIT)
@@ -554,10 +557,10 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
     no_selection = false;
 
     int tmp_x = x - drawTextXOffset;
-//    int tmp_y = y + TEXT(bv)->first + insetAscent;
     int tmp_y = y + insetAscent;
     Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
 
+    HideInsetCursor(bv);
     if (the_locking_inset) {
 	if (the_locking_inset == inset) {
 	    the_locking_inset->InsetButtonPress(bv,x-inset_x,y-inset_y,button);
@@ -601,6 +604,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	bv->owner()->setLayout(cpar(bv)->GetLayout());
 	old_par = cpar(bv);
     }
+    ShowInsetCursor(bv);
 }
 
 
@@ -668,7 +672,6 @@ InsetText::LocalDispatch(BufferView * bv,
     UpdatableInset::RESULT
         result= UpdatableInset::LocalDispatch(bv, action, arg);
     if (result != UNDISPATCHED) {
-//	resetPos(bv->painter());
 	return DISPATCHED;
     }
 
@@ -1034,8 +1037,7 @@ void InsetText::ToggleInsetCursor(BufferView * bv)
     if (cursor_visible)
         bv->hideLockedInsetCursor();
     else
-        bv->showLockedInsetCursor(cx(bv)-1, cy(bv),
-				  asc, desc);
+        bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
     cursor_visible = !cursor_visible;
 }
 
@@ -1297,14 +1299,14 @@ LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 
 int InsetText::cx(BufferView * bv) const
 {
-    return TEXT(bv)->cursor.x() + top_x + 1;
+    return TEXT(bv)->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 }
 
 
 int InsetText::cy(BufferView * bv) const
 {
     LyXFont font;
-    return TEXT(bv)->cursor.y() - ascent(bv, font);
+    return TEXT(bv)->cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -1354,7 +1356,9 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetText::resizeLyXText(BufferView * bv) const
 {
-    if (!par->next && !par->size()) // not neccessary!
+    if (!par->next && !par->size()) // resize not neccessary!
+	return;
+    if (cache.find(bv) == cache.end())
 	return;
 
     LyXParagraph * lpar = 0;

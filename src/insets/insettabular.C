@@ -128,6 +128,7 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
+    paste_tabular = 0;
     need_update = INIT;
 }
 
@@ -144,6 +145,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
+    paste_tabular = 0;
     need_update = INIT;
 }
 
@@ -285,8 +287,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			    }
 			    tabular->GetCellInset(cell)->draw(
 				bv, font, baseline, cx, false);
-//			    if (need_update == CELL)
-//				DrawCellLines(pain, nx, baseline, i, cell);
 			} while(bv->text->status == LyXText::CHANGED_IN_DRAW);
 		    }
 		} else if (dodraw) {
@@ -302,6 +302,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		tabular->GetAdditionalHeight(cell+1);
 	}
     }
+    x -= ADD_TO_TABULAR_WIDTH;
     x += width(bv, font);
     if (bv->text->status == LyXText::CHANGED_IN_DRAW)
 	need_update = INIT;
@@ -591,6 +592,7 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
     if (inset_hit && bv->the_locking_inset) {
 	ActivateCellInset(bv, x, y, button);
 	the_locking_inset->InsetButtonPress(bv, x-inset_x, y-inset_y, button);
+	return;
     }
     ShowInsetCursor(bv);
 }
@@ -609,10 +611,6 @@ void InsetTabular::InsetButtonRelease(BufferView * bv,
 	}
 	dialogs_ = bv->owner()->getDialogs();
         dialogs_->showTabular(this);
-#if 0
-	else if (ocell != actcell)
-		bview->getOwner()->getPopups().updateTabular();
-#endif
 	return;
     }
     if (the_locking_inset) {
@@ -631,18 +629,16 @@ void InsetTabular::InsetMotionNotify(BufferView * bv, int x, int y, int button)
         return;
     }
     if (!no_selection) {
-	    // int ocell = actcell,
-	    int old = sel_pos_end;
+	HideInsetCursor(bv);
+	int old_pos = sel_pos_end;
+	int old_cell = actcell;
 
 	setPos(bv, x, y);
 	sel_pos_end = cursor.pos();
 	sel_cell_end = actcell;
-	if (old != sel_pos_end)
+	if ((sel_cell_end != old_cell) || (old_pos != sel_pos_end))
 	    UpdateLocal(bv, SELECTION, false);
-#if 0
-	if (ocell != actcell)
-	    bview->getOwner()->getPopups().updateFormTabular();
-#endif
+	ShowInsetCursor(bv);
     }
     no_selection = false;
 }
@@ -822,7 +818,42 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	if (!TabularFeatures(bv, arg))
 	    result = UNDISPATCHED;
 	break;
-
+    case LFUN_CUT:
+	if (!copySelection())
+	    break;
+	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
+	cutSelection();
+	UpdateLocal(bv, INIT, true);
+	break;
+    case LFUN_COPY:
+	if (!hasSelection())
+	    break;
+	bv->text->FinishUndo();
+	copySelection();
+	break;
+    case LFUN_PASTE:
+	if (!hasPasteBuffer())
+	    break;
+	bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
+	pasteSelection(bv);
+	UpdateLocal(bv, INIT, true);
+	break;
     default:
 	result = UNDISPATCHED;
 	break;
@@ -1053,12 +1084,12 @@ UpdatableInset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 	if (tabular->IsLastCell(actcell))
 	    return FINISHED;
 	++actcell;
-	cursor.pos(cursor.pos() + 1);
+	cursor.pos((cursor.pos() + 1) % 2);
     } else if (lock) {
 	if (ActivateCellInset(bv))
 	    return DISPATCHED;
     } else {              // before the inset
-	cursor.pos(cursor.pos() + 1);
+	cursor.pos((cursor.pos() + 1) % 2);
     }
     resetPos(bv);
     return DISPATCHED_NOUPDATE;
@@ -1070,9 +1101,9 @@ UpdatableInset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
     if (!cursor.pos()) {
 	if (!actcell)
 	    return FINISHED;
-	cursor.pos(2);
+	cursor.pos(0);
     }
-    cursor.pos(cursor.pos() - 1);
+    cursor.pos((cursor.pos() - 1) % 2);
     if (!cellstart(cursor.pos())) {
 	--actcell;
     } else if (lock) {       // behind the inset
@@ -1111,9 +1142,9 @@ bool InsetTabular::moveNextCell(BufferView * bv)
     if (tabular->IsLastCell(actcell))
 	return false;
     ++actcell;
-    cursor.pos(cursor.pos() + 1);
+    cursor.pos((cursor.pos() + 1) % 2);
     if (!cellstart(cursor.pos()))
-	cursor.pos(cursor.pos() + 1);
+	cursor.pos((cursor.pos() + 1) % 2);
     resetPos(bv);
     return true;
 }
@@ -1124,9 +1155,9 @@ bool InsetTabular::movePrevCell(BufferView * bv)
     if (!actcell) // first cell
 	return false;
     --actcell;
-    cursor.pos(cursor.pos() - 1);
+    cursor.pos((cursor.pos() - 1) % 2);
     if (cellstart(cursor.pos()))
-	cursor.pos(cursor.pos() - 1);
+	cursor.pos((cursor.pos() - 1) % 2);
     resetPos(bv);
     return true;
 }
@@ -1450,9 +1481,10 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string value)
 	break;
     case LyXTabular::SET_USEBOX:
     {
-	int val = strToInt(value);
+	LyXTabular::BoxType val = static_cast<LyXTabular::BoxType>
+	    (strToInt(value));
 	if (val == tabular->GetUsebox(actcell))
-	    val = 0;
+	    val = LyXTabular::BOX_NONE;
 	for(i=sel_row_start; i<=sel_row_end; ++i)
 	    for(j=sel_col_start; j<=sel_col_end; ++j)
 		tabular->SetUsebox(tabular->GetCellNumber(i,j),val);
@@ -1483,8 +1515,8 @@ bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
 {
     // the cursor.pos has to be before the inset so if it isn't now just
     // reset the curor pos first!
-    if (cursor.pos() % 2) { // behind the inset
-	cursor.pos(cursor.pos() - 1);
+    if (!cellstart(cursor.pos())) {
+	cursor.pos((cursor.pos() - 1) % 2);
 	resetPos(bv);
     }
     UpdatableInset * inset =
@@ -1509,7 +1541,7 @@ bool InsetTabular::InsetHit(BufferView * bv, int x, int ) const
     InsetText * inset = tabular->GetCellInset(actcell);
     int x1 = x + top_x;
 
-    if (cursor.pos() % 2) { // behind the inset
+    if (!cellstart(cursor.pos())) {
 	return (((x + top_x) < cursor.x()) &&
 		((x + top_x) > (cursor.x() - inset->width(bv,
 						      LyXFont(LyXFont::ALL_SANE)))));
@@ -1802,3 +1834,87 @@ LyXFunc::func_status InsetTabular::getStatus(string what) const
     }
     return status;
 }
+
+
+bool InsetTabular::copySelection()
+{
+    if (!hasSelection())
+	return false;
+    delete paste_tabular;
+
+    int sel_col_start, sel_col_end;
+    int sel_row_start, sel_row_end;
+
+    sel_col_start = tabular->column_of_cell(sel_cell_start);
+    sel_col_end = tabular->column_of_cell(sel_cell_end);
+    if (sel_col_start > sel_col_end) {
+	sel_col_start = sel_col_end;
+	sel_col_end = tabular->right_column_of_cell(sel_cell_start);
+    } else {
+	sel_col_end = tabular->right_column_of_cell(sel_cell_end);
+    }
+    int columns = sel_col_end - sel_col_start + 1;
+
+    sel_row_start = tabular->row_of_cell(sel_cell_start);
+    sel_row_end = tabular->row_of_cell(sel_cell_end);
+    if (sel_row_start > sel_row_end) {
+	int tmp;
+	tmp = sel_row_start;
+	sel_row_start = sel_row_end;
+	sel_row_end = tmp;
+    }
+    int rows = sel_row_end - sel_row_start + 1;
+
+    paste_tabular = new LyXTabular(this, rows, columns);
+    
+    if (sel_cell_start > sel_cell_end) {
+	int tmp = sel_cell_start;
+	sel_cell_start = sel_cell_end;
+	sel_cell_end = tmp;
+    }
+    for(int i=sel_cell_start, j=0; i <= sel_cell_end; ++i, ++j) {
+	while(paste_tabular->row_of_cell(j) <
+	      (tabular->row_of_cell(i)-sel_row_start)) {
+	    ++j;
+	}
+	while(paste_tabular->row_of_cell(j) >
+	      (tabular->row_of_cell(i)-sel_row_start)) {
+	    ++i;
+	}
+	*(paste_tabular->GetCellInset(j)) = *(tabular->GetCellInset(i));
+    }
+    return true;
+}
+
+
+bool InsetTabular::pasteSelection(BufferView * bv)
+{
+    if (!paste_tabular)
+	return false;
+    for(int j=0, i=actcell; j<paste_tabular->GetNumberOfCells(); ++j,++i) {
+	while (paste_tabular->row_of_cell(j) > tabular->row_of_cell(i)-actrow)
+	    ++i;
+	if (tabular->GetNumberOfCells() <= i)
+	    break;
+	while (paste_tabular->row_of_cell(j) < tabular->row_of_cell(i)-actrow)
+	    ++j;
+	if (paste_tabular->GetNumberOfCells() <= j)
+	    break;
+	*(tabular->GetCellInset(i)) = *(paste_tabular->GetCellInset(j));
+	tabular->GetCellInset(i)->setOwner(this);
+	tabular->GetCellInset(i)->deleteLyXText(bv);
+    }
+    return true;
+}
+
+
+bool InsetTabular::cutSelection()
+{
+    if (!hasSelection())
+	return false;
+    for(int i=sel_cell_start; i < sel_cell_end; ++i) {
+	tabular->GetCellInset(i)->clear();
+    }
+    return true;
+}
+

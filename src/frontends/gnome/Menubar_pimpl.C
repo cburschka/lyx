@@ -41,6 +41,7 @@ using std::endl;
 extern GLyxAppWin * mainAppWin;
 
 // Some constants
+extern kb_keymap * toplevel_keymap;
 extern LyXAction lyxaction;
 extern BufferList bufferlist;
 extern LastFiles * lastfiles; 
@@ -120,35 +121,71 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 
 	{
 	  using namespace Gnome::MenuItems;
-	  string actionname = lyxaction.getActionName(item.action());
-	  if ( actionname ==  "buffer-open") gitem = Open(cback);
-	  else if ( actionname ==  "lyx-quit") gitem = Exit(cback);
-	  else if ( actionname ==  "buffer-close") gitem = Close(cback);
-	  else if ( actionname ==  "buffer-write") gitem = Save(cback);
-	  else if ( actionname ==  "buffer-write-as") gitem = SaveAs(cback);
-	  else if ( actionname ==  "buffer-print") gitem = Print(cback);
-	  else if ( actionname ==  "cut") gitem = Cut(cback);
-	  else if ( actionname ==  "copy") gitem = Copy(cback);
-	  else if ( actionname ==  "paste") gitem = Paste(cback);
-	  else if ( actionname ==  "undo") gitem = Gnome::MenuItems::Undo(cback); // confused with class Undo
-	  else if ( actionname ==  "redo") gitem = Redo(cback);
-	  else if ( actionname ==  "dialog-preferences") gitem = Preferences(cback);
-	  else if ( actionname ==  "buffer-new")
+	  int ac = item.action();
+	  kb_action action;
+	  string argument;
+	  if (lyxaction.isPseudoAction(ac))
+	    action = lyxaction.retrieveActionArg(ac, argument);
+	  else
+	    action = static_cast<kb_action>(ac);
+
+	  switch(action) {
+	  case LFUN_MENUOPEN:
+	    gitem = Open(cback);
+	    break;
+	  case LFUN_QUIT:
+	    gitem = Exit(cback);
+	    break;
+	  case LFUN_CLOSEBUFFER:
+	    gitem = Close(cback);
+	    break;
+	  case LFUN_MENUWRITE:
+	    gitem = Save(cback);
+	    break;
+	  case LFUN_MENUWRITEAS:
+	    gitem = SaveAs(cback);
+	    break;
+	  case LFUN_BUFFER_PRINT:
+	    gitem = Print(cback);
+	    break;
+	  case LFUN_CUT:
+	    gitem = Cut(cback);
+	    break;
+	  case LFUN_COPY:
+	    gitem = Copy(cback);
+	    break;
+	  case LFUN_PASTE:
+	    gitem = Paste(cback);
+	    break;
+	  case LFUN_UNDO:
+	    gitem = Gnome::MenuItems::Undo(cback); // confused with class Undo
+	    break;
+	  case LFUN_REDO:
+	    gitem = Redo(cback);
+	    break;
+	  case LFUN_DIALOG_PREFERENCES:
+	    gitem = Preferences(cback);
+	    break;
+	  case LFUN_MENUNEW:
 	    gitem = Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_NEW),
 				    label, cback, lyxaction.helpText(item.action()));
-	  else if ( actionname ==  "buffer-new-template")
+	    break;
+	  case LFUN_MENUNEWTMPLT:
 	    gitem = Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_NEW), 
 				    label, cback, lyxaction.helpText(item.action()));
-	  else if ( actionname ==  "find-replace" )
+	    break;
+	  case LFUN_MENUSEARCH:
 	    gitem = Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_SRCHRPL), 
 				    label, cback, lyxaction.helpText(item.action()));
-	  else if ( actionname ==  "spellchecker" )
+	    break;
+	  case LFUN_SPELLCHECK:
 	    gitem = Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_SPELLCHECK), 
 				    label, cback, lyxaction.helpText(item.action()));
-//  	  else if ( actionname ==  "" )
-//  	    gitem = Gnome::UI::Item(Gnome::UI::Icon(), 
-//  				    label, cback, lyxaction.helpText(item.action()));
-	  else gitem = Gnome::UI::Item(label, cback, lyxaction.helpText(item.action()));
+	    break;
+	  default:
+	    gitem = Gnome::UI::Item(label, cback, lyxaction.helpText(item.action()));
+	    break;
+	  }
 	}
 
 	// first handle optional entries.
@@ -159,7 +196,7 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	}
   	if ((flag & LyXFunc::ToggleOn) || (flag & LyXFunc::ToggleOff))
   	  gitem = Gnome::UI::ToggleItem(label, cback, lyxaction.helpText(item.action()));
-	
+
   	Menus.push_back(gitem);
 	break;
       }
@@ -259,7 +296,7 @@ void Menubar::Pimpl::update()
     }
 }
 
-void Menubar::Pimpl::openByName(string const & name)
+void Menubar::Pimpl::openByName(string const &)
 {
 //    Pimpl::update();
 }

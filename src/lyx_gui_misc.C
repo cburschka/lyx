@@ -110,19 +110,26 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_form_paper->form_paper->visible) {
 		fl_hide_form(fd_form_paper->form_paper);
 	}
+	if (fd_form_bullet) {
+		if (fd_form_bullet->form_bullet->visible) {
+			fl_hide_form(fd_form_bullet->form_bullet);
+		}
+	}
 #endif
 	if (fd_form_preamble->form_preamble->visible) {
 		fl_hide_form(fd_form_preamble->form_preamble);
 	}
-	if (fd_form_table->form_table->visible) {
-		fl_hide_form(fd_form_table->form_table);
-	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
+	}
+#ifndef NEW_TABULAR
+	if (fd_form_table->form_table->visible) {
+		fl_hide_form(fd_form_table->form_table);
 	}
 	if (fd_form_table_options->form_table_options->visible) {
 		fl_hide_form(fd_form_table_options->form_table_options);
 	}
+#endif
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_hide_form(fd_form_sendto->form_sendto);
 	}
@@ -132,11 +139,6 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_form_spell_check) {
 		if (fd_form_spell_check->form_spell_check->visible) {
 			fl_trigger_object(fd_form_spell_check->done);
-		}
-	}
-	if (fd_form_bullet) {
-		if (fd_form_bullet->form_bullet->visible) {
-			fl_hide_form(fd_form_bullet->form_bullet);
 		}
 	}
 	if (fd_panel) {

@@ -723,7 +723,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a line
-	if (buffer_ && screen_ && button == 1) {
+	if (buffer_ && screen_ && !bv_->the_locking_inset && (button == 1)) {
 		screen_->HideCursor();
 		screen_->ToggleSelection(bv_->text);
 		bv_->text->CursorHome(bv_);

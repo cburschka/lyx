@@ -6,6 +6,8 @@
  * 	 
  *           Copyright 2000 The LyX Team.
  *
+ *           @author: Jürgen Vigna
+ *
  * ====================================================== */
 #ifndef TABULAR_H
 #define TABULAR_H
@@ -141,6 +143,15 @@ public:
 	LYX_VALIGN_BOTTOM = 1,
 	///
 	LYX_VALIGN_CENTER = 2
+    };
+
+    enum BoxType {
+	///
+	BOX_NONE = 0,
+	///
+	BOX_PARBOX = 1,
+	///
+	BOX_MINIPAGE = 2
     };
 
     /* konstruktor */
@@ -298,11 +309,11 @@ public:
     ///
     bool IsLongTabular() const;
     ///
-    void SetRotateTabular(int what);
+    void SetRotateTabular(bool);
     ///
     bool GetRotateTabular() const;
     ///
-    void SetRotateCell(int cell, int what);
+    void SetRotateCell(int cell, bool);
     ///
     bool GetRotateCell(int cell) const;
     ///
@@ -320,7 +331,7 @@ public:
     ///
     int GetCellNumber(int row, int column) const;
     ///
-    void SetUsebox(int cell, int what);
+    void SetUsebox(int cell, BoxType);
     ///
     int GetUsebox(int cell) const;
     //
@@ -357,14 +368,6 @@ private: //////////////////////////////////////////////////////////////////
     struct cellstruct {
 	///
         cellstruct();
-#ifdef INSET_POINTER
-	///
-	~cellstruct();
-	//
-        cellstruct(cellstruct const &);
-	///
-	cellstruct & operator=(cellstruct const &);
-#endif
 	///
 	int cellno;
 	///
@@ -383,15 +386,10 @@ private: //////////////////////////////////////////////////////////////////
 	bool left_line;
 	///
 	bool right_line;
-	/**
-	   0 ... don't use a box
-	   1 ... use a parbox
-	   2 ... use a minipage
-	   This should be made into an enum (Lgb)
-	*/
+	///
 	int usebox;
 	///
-	int rotate;
+	bool rotate;
 	///
 	string align_special;
 	///
@@ -408,10 +406,6 @@ private: //////////////////////////////////////////////////////////////////
     struct rowstruct {
 	///
         rowstruct();
-	//
-	    //~rowstruct();
-	//
-	    // rowstruct & operator=(rowstruct const &);
 	///
 	bool top_line;
 	///
@@ -430,10 +424,6 @@ private: //////////////////////////////////////////////////////////////////
     struct columnstruct {
 	///
         columnstruct();
-	//
-	    //~columnstruct();
-	//
-	    //columnstruct & operator=(columnstruct const &);
 	///
 	int alignment;
 	///
@@ -471,11 +461,11 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int width_of_tabular;
     ///
-    int rotate;
+    bool rotate;
     //
     // for long tabulars
     ///
-    int is_long_tabular;
+    bool is_long_tabular;
     /// row of endhead
     int endhead;
     /// row of endfirsthead

@@ -210,6 +210,12 @@ private:
     bool InsetHit(BufferView * bv, int x, int y) const;
     ///
     int GetMaxWidthOfCell(Painter &, int cell) const;
+    ///
+    bool hasPasteBuffer() const { return (paste_tabular != 0); }
+    ///
+    bool copySelection();
+    bool pasteSelection(BufferView *);
+    bool cutSelection();
 
     ///
     /// Private structures and variables
@@ -234,5 +240,6 @@ private:
     mutable bool locked;
     mutable UpdateCodes need_update;
     mutable Dialogs * dialogs_;
+    LyXTabular * paste_tabular;
 };
 #endif
