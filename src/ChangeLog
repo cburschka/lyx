@@ -1,3 +1,15 @@
+2004-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* iterators.C: Remove the pimple, move the needed structures to
+	the header file. Create accessor for the positions stack.
+	(asPosIterator): remove function
+
+	* PosIterator.C (PosIterator): move constructors to top of file
+	(PosIterator): reimplement the constructor taking a ParIterator in
+	terms of setFrom.
+	(setFrom): new function
+	(operator!=): inline it
+
 2004-01-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxfind.C (replaceAll): use std::advance

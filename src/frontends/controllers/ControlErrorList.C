@@ -73,6 +73,6 @@ void ControlErrorList::goTo(int item)
 	int const range = end - start;
 
 	// Now make the selection.
-	PosIterator const pos = pit.asPosIterator(start);
+	PosIterator const pos(pit, start);
 	kernel().bufferview()->putSelectionAt(pos, range, false);
 }

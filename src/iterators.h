@@ -13,9 +13,13 @@
 #define ITERATORS_H
 
 #include "ParagraphList_fwd.h"
+#include "InsetList.h"
+
 #include "support/types.h"
 
-#include <boost/scoped_ptr.hpp>
+#include <boost/optional.hpp>
+
+#include <vector>
 
 class LyXText;
 class InsetBase;
@@ -23,6 +27,21 @@ class Cursor;
 class Buffer;
 class BufferView;
 class PosIterator;
+
+
+class ParPosition {
+public:
+	///
+	ParPosition(ParagraphList::iterator p, ParagraphList const & pl);
+	///
+	ParagraphList::iterator pit;
+	///
+	ParagraphList const * plist;
+	///
+	boost::optional<InsetList::iterator> it;
+	///
+	boost::optional<int> index;
+};
 
 
 class ParIterator  : public std::iterator<
@@ -60,16 +79,15 @@ public:
 	///
 	size_t size() const;
 	///
-	friend
-	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
-	///
 	void lockPath(BufferView *) const;
 
-	///
-	PosIterator asPosIterator(lyx::pos_type) const;
+	typedef std::vector<ParPosition> PosHolder;
+	PosHolder const & positions() const
+	{
+		return positions_;
+	}
 private:
-	struct Pimpl;
-	boost::scoped_ptr<Pimpl> pimpl_;
+	PosHolder positions_;
 };
 
 ///
@@ -102,14 +120,13 @@ public:
 
 	/// depth of nesting
 	size_t size() const;
-	///
-	friend
-	bool operator==(ParConstIterator const & iter1,
-			ParConstIterator const & iter2);
-
+	typedef std::vector<ParPosition> PosHolder;
+	PosHolder const & positions() const
+	{
+		return positions_;
+	}
 private:
-	struct Pimpl;
-	boost::scoped_ptr<Pimpl> pimpl_;
+	PosHolder positions_;
 };
 
 bool operator==(ParConstIterator const & iter1,

@@ -39,11 +39,13 @@ class PosIterator : public std::iterator<
 	std::bidirectional_iterator_tag,
         ParagraphList::value_type> {
 public:
+	// Creates a singular.
+	PosIterator() {};
+
 	PosIterator(BufferView & bv);
-	PosIterator(ParIterator & par, lyx::pos_type pos);
 	PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 		    lyx::pos_type pos);
-	PosIterator(ParIterator const & parit, lyx::pos_type p);
+	PosIterator(ParIterator const & par, lyx::pos_type pos);
 	PosIterator & operator++();
 	PosIterator & operator--();
 	friend bool operator==(PosIterator const &, PosIterator const &);
@@ -52,17 +54,22 @@ public:
 	lyx::pos_type pos() const { return stack_.back().pos; }
 	bool at_end() const;
 	InsetBase * inset() const;
-	friend PosIterator ParIterator::asPosIterator(lyx::pos_type) const;
 	friend ParIterator::ParIterator(PosIterator const &);
-
 private:
-	PosIterator() {};
-	//this is conceptually a stack, but we need random access sometimes
+	void setFrom(ParIterator const & par, lyx::pos_type pos);
+	// This is conceptually a stack,
+	// but we need random access sometimes.
 	std::vector<PosIteratorItem> stack_;
 };
 
 
-bool operator!=(PosIterator const &, PosIterator const &);
 bool operator==(PosIterator const &, PosIterator const &);
+
+
+inline
+bool operator!=(PosIterator const & lhs, PosIterator const & rhs)
+{
+	return !(lhs == rhs);
+}
 
 #endif

@@ -25,7 +25,56 @@
 
 #include <boost/next_prior.hpp>
 
+
 using boost::prior;
+
+
+PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
+			 lyx::pos_type pos)
+{
+	stack_.push_back(PosIteratorItem(pl, pit, pos));
+}
+
+
+PosIterator::PosIterator(BufferView & bv)
+{
+	LyXText * text = bv.getLyXText();
+	lyx::pos_type pos = text->cursor().pos();
+	ParagraphList::iterator pit = text->cursorPar();
+
+	ParIterator par = bv.buffer()->par_iterator_begin();
+	ParIterator end = bv.buffer()->par_iterator_end();
+	for (; par != end; ++par) {
+		if (par.pit() == pit)
+			break;
+	}
+	setFrom(par, pos);
+}
+
+
+PosIterator::PosIterator(ParIterator const & par, lyx::pos_type pos)
+{
+	setFrom(par, pos);
+}
+
+
+void PosIterator::setFrom(ParIterator const & par, lyx::pos_type pos)
+{
+	BOOST_ASSERT(par.size() > 0);
+
+	ParIterator::PosHolder const & ph = par.positions();
+
+	int const last = par.size() - 1;
+	for (int i = 0; i < last; ++i) {
+		ParPosition const & pp = ph[i];
+		stack_.push_back(
+			PosIteratorItem(const_cast<ParagraphList *>(pp.plist),
+					pp.pit, (*pp.it)->pos, *pp.index + 1));
+	}
+	ParPosition const & pp = ph[last];
+	stack_.push_back(
+		PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, pos, 0));
+}
 
 
 PosIterator & PosIterator::operator++()
@@ -97,15 +146,8 @@ PosIterator & PosIterator::operator--()
 }
 
 
-bool operator!=(PosIterator const & lhs, PosIterator const & rhs)
-{
-	return !(lhs == rhs);
-}
-
-
 bool operator==(PosIterator const & lhs, PosIterator const & rhs)
 {
-
 	PosIteratorItem const & li = lhs.stack_.back();
 	PosIteratorItem const & ri = rhs.stack_.back();
 
@@ -117,30 +159,6 @@ bool operator==(PosIterator const & lhs, PosIterator const & rhs)
 bool PosIterator::at_end() const
 {
 	return pos() == pit()->size();
-}
-
-
-PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
-			 lyx::pos_type pos)
-{
-	stack_.push_back(PosIteratorItem(pl, pit, pos));
-}
-
-
-PosIterator::PosIterator(BufferView & bv)
-{
-	LyXText * text = bv.getLyXText();
-	lyx::pos_type pos = bv.cursor().pos();
-	ParagraphList::iterator pit = text->cursorPar();
-
-	ParIterator par = bv.buffer()->par_iterator_begin();
-	ParIterator end = bv.buffer()->par_iterator_end();
-	for ( ; par != end; ++par) {
-		if (par.pit() == pit)
-			break;
-	}
-
-	operator=(par.asPosIterator(pos));
 }
 
 
