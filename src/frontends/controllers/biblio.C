@@ -142,6 +142,10 @@ regexSearch(InfoMap const & theMap,
 	return keys.end();
 }
 
+
+} // namespace anon
+
+
 string const familyName(string const & name)
 {
 	// Very simple parser
@@ -158,6 +162,9 @@ string const familyName(string const & name)
 	idx = fname.rfind(".");
 	if (idx != string::npos)
 		fname = frontStrip(fname.substr(idx+1));
+	// test if we have a LaTeX Space in front
+	if (fname[0] == '\\')
+		return fname.substr(2);
 
 	return fname;
 }
@@ -216,9 +223,6 @@ string const getYear(InfoMap const & map, string const & key)
 
 	return year;
 }
-
-} // namespace anon
-
 
 
 // A functor for use with std::sort, leading to case insensitive sorting

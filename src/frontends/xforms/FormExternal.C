@@ -22,6 +22,8 @@
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
 
+#include "support/lstrings.h"
+
 typedef FormCB<ControlExternal, FormDB<FD_form_external> > base_class;
 
 FormExternal::FormExternal(ControlExternal & c)

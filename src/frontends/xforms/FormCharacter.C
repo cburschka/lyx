@@ -23,6 +23,8 @@
 #include "combox.h"
 #include "helper_funcs.h"
 
+#include "support/lstrings.h"
+
 using std::vector;
 using std::find;
 

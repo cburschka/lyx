@@ -60,6 +60,15 @@ namespace biblio
 	    Empty if no info exists. */
 	string const getInfo(InfoMap const &, string const &);
 
+	// rturn the year from the bibtex data record
+	string const getYear(InfoMap const & map, string const & key);
+	
+	/// return the short form of an authorlist
+	string const getAbbreviatedAuthor(InfoMap const & map, string const & key);
+
+	// return only the family name
+	string const familyName(string const & name);
+
 	/** Search a BibTeX info field for the given key and return the
 	    associated field. */
 	string const parseBibTeX(string data, string const & findkey);

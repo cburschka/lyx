@@ -21,16 +21,6 @@
 #pragma interface
 #endif
 
-/** Functions to convert a string to/from a vector. */
-
-///
-string const
-getStringFromVector(std::vector<string> const & vec, string const & delim=",");
-
-///
-std::vector<string> const
-getVectorFromString(string const & str, string const & delim=",");
-
 class LyXView;
 
 /** Launch a file dialog and return the chosen file.

@@ -18,11 +18,12 @@
 
 //#include <cstring>
 //#include <cctype>
+//#include <cctype>
+#include <vector>
 
 #include "Lsstream.h"
 
 #include "LString.h"
-
 
 ///
 int compare_no_case(string const & s, string const & s2);
@@ -249,5 +250,13 @@ string const rsplit(string const & a, string & piece, char delim);
 
 /// Escapes non ASCII chars
 string const escape(string const & lab);
+
+/// gives a vector of stringparts which have the delimiter delim
+std::vector<string> const getVectorFromString(string const & str,
+					      string const & delim = ",");
+
+// the same vice versa
+string const getStringFromVector(std::vector<string> const & vec,
+				 string const & delim = ",");
 
 #endif

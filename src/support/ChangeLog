@@ -1,3 +1,9 @@
+2002-04-14  Herbert Voss  <voss@perce.de>
+
+	* lstrings.[Ch]: move the getVectorFromString and the vice versa
+	from frontends/controllers/helper_funcs for better use in other
+	programs
+
 2002-04-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* tempname.C (make_tempfile): simplify the #ifdef block by using

@@ -1,3 +1,9 @@
+2002-04-14  Herbert Voss  <voss@perce.de>
+
+	* FormCharacter.C
+	* FormExternal.C: adding #include "support/lstrings.h"
+	for the getStringFromVector and vice versa
+
 2002-04-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormParagraph.C (changedParagraph): ensure that the warning message

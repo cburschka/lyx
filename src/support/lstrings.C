@@ -27,6 +27,7 @@
 
 using std::count;
 using std::transform;
+using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::tolower;
@@ -632,3 +633,45 @@ string const escape(string const & lab)
 	}
 	return enc;
 }
+
+
+/// gives a vector of stringparts which have the delimiter delim
+vector<string> const getVectorFromString(string const & str,
+					 string const & delim)
+{
+    vector<string> vec;
+    if (str.empty())
+	return vec;
+    string keys(strip(str));
+    for(;;) {
+	string::size_type const idx = keys.find(delim);
+	if (idx == string::npos) {
+	    vec.push_back(frontStrip(keys));
+	    break;
+	}
+	string const key = strip(frontStrip(keys.substr(0, idx)));
+	if (!key.empty())
+	    vec.push_back(key);
+	string::size_type const start = idx + delim.size();
+	keys = keys.substr(start);
+    }
+    return vec;
+}
+
+// the same vice versa
+string const getStringFromVector(vector<string> const & vec,
+				 string const & delim)
+{
+	string str;
+	int i = 0;
+	for (vector<string>::const_iterator it = vec.begin();
+	     it != vec.end(); ++it) {
+		string item = strip(frontStrip(*it));
+		if (item.empty()) continue;
+
+		if (i++ > 0) str += delim;
+		str += item;
+	}
+	return str;
+}
+
