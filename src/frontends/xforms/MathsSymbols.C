@@ -49,17 +49,7 @@ using std::strstr;
 
 #include "mathed/math_parser.h"
 #include "frac.xpm"
-#include "sub.xpm"
-#include "super.xpm"
-#include "style.xpm"
 #include "sqrt.xpm"
-#include "delim.xbm"
-#include "delim.xpm"
-#include "deco.xbm"
-#include "deco.xpm"
-#include "space.xpm"
-#include "matrix.xpm"
-#include "equation.xpm"
 
 char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",
@@ -240,14 +230,6 @@ static char const ** mathed_get_pixmap_from_icon(int d)
 	switch (d) {
 	case MM_FRAC: return frac;
 	case MM_SQRT: return sqrt_xpm;
-	case MM_SUPER: return super_xpm;
-	case MM_SUB: return sub_xpm;
-	case MM_STYLE: return style_xpm;
-	case MM_DELIM: return delim;
-	case MM_MATRIX: return matrix;
-	case MM_EQU: return equation;
-	case MM_DECO: return deco;
-	case MM_SPACE: return space_xpm;
 	default: return 0;
 	}
 }
@@ -376,13 +358,61 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 				id -= 29;
 			}
 			break;
-		case 6:
+		case 6: 
+			if (id < 10) {
+				w = ams1_width;
+				h = ams1_height;
+				bdata = ams1_bits;
+				dw = 5;
+				dh = 2;
+			} else {
+				w = ams7_width;
+				h = ams7_height;
+				bdata = ams7_bits;
+				dw = 3;
+				dh = 9;
+				id -= 9;
+			}
+			break;			 
 		case 7:
+			if (id < 33) {
+				w = ams2_width;
+				h = ams2_height;
+				bdata = ams2_bits;
+				dw = 3;
+				dh = 11;
+			} else {
+				w = ams3_width;
+				h = ams3_height;
+				bdata = ams3_bits;
+				dw = 3;
+				dh = 2; 
+				id -= 32;
+			}
+			break;
 		case 8:
+			w = ams_rel_width;
+			h = ams_rel_height;
+			bdata = ams_rel_bits;
+			dw = 6;
+			dh = 11;
+			break;
+ 
+		// nrel is BROKEN
 		case 9:
+			w = ams_nrel_width;
+			h = ams_nrel_height;
+			bdata = ams_nrel_bits;
+			dw = 6;
+			dh = 9;
+			break;
+ 
 		case 10:
-			// FIXME: to be added -- MV
-			return 0;
+			w = ams_ops_width;
+			h = ams_ops_height;
+			bdata = ams_ops_bits;
+			dw = 3;
+			dh = 8;
 			break;
 		}
 		int ww = w / dw;
