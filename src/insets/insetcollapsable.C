@@ -45,7 +45,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 #if 0
 	autocollapse(false),
 #endif
-	  oldWidth(0), in_update(false)
+	  oldWidth(0), in_update(false), first_after_edit(false)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
@@ -63,7 +63,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
-	  oldWidth(0), in_update(false)
+	  oldWidth(0), in_update(false), first_after_edit(false)
 {
 	inset.init(&(in.inset), same_id);
 	inset.setOwner(this);

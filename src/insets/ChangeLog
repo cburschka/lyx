@@ -1,3 +1,8 @@
+2002-05-14  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (InsetCollapsable): forgot to initialize
+	first_after_edit.
+
 2002-05-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Insetcite.C (getNatbibLabel): don't disable natbib label support
