@@ -17,8 +17,11 @@
 
 #include <X11/Xlib.h>
 
-
 class LyXFont;
+
+namespace lyx {
+namespace frontend {
+
 class XWorkArea;
 
 /**
@@ -91,7 +94,7 @@ public:
 	/// draw an image from the image cache
 	virtual void image(int x, int y,
 		int w, int h,
-		lyx::graphics::Image const & image);
+		graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual void text(int x, int y,
@@ -117,5 +120,8 @@ private:
 	/// our owner who we paint upon
 	XWorkArea & owner_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XPAINTER_H

@@ -12,12 +12,13 @@
 #ifndef CHECKEDWIDGETS_H
 #define CHECKEDWIDGETS_H
 
-
 #include "BCView.h"
 
 class QLabel;
 class QLineEdit;
 
+namespace lyx {
+namespace frontend {
 
 void addCheckedLineEdit(BCView & bcview,
 			QLineEdit * input, QLabel * label = 0);
@@ -34,5 +35,8 @@ private:
 	QLineEdit * input_;
 	QLabel * label_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CHECKEDWIDGETS_H

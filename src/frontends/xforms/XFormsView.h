@@ -22,6 +22,9 @@
 
 #include <map>
 
+namespace lyx {
+namespace frontend {
+
 class XMiniBuffer;
 
 /**
@@ -45,7 +48,7 @@ public:
 	~XFormsView();
 
 	/// Accessor to the appropriate layout Box.
-	lyx::frontend::Box & getBox(Position pos) const;
+	Box & getBox(Position pos) const;
 
 	/**
 	 * show - display the top-level window
@@ -88,10 +91,10 @@ private:
 	void show_view_state();
 
 	/// The top-most box of the layout engine containing all other boxes.
-	lyx::frontend::Box window_;
+	Box window_;
 
 	// Accessors to the various Boxes.
-	std::map<Position, lyx::frontend::Box *> box_map_;
+	std::map<Position, Box *> box_map_;
 
 	/// the minibuffer
 	boost::scoped_ptr<XMiniBuffer> minibuffer_;
@@ -109,4 +112,8 @@ private:
 	///
 	Pixmap icon_mask_;
 };
+
+} // namespace frontend
+} // namespace lyx
+
 #endif

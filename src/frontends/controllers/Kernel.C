@@ -22,6 +22,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 Kernel::Kernel(LyXView & lyxview)
 	: lyxview_(lyxview)
@@ -110,3 +112,6 @@ Buffer const & Kernel::buffer() const
 	BOOST_ASSERT(lyxview_.buffer());
 	return *lyxview_.buffer();
 }
+
+} // namespace frontend
+} // namespace lyx

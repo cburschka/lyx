@@ -12,12 +12,15 @@
 #ifndef QCITATIONDIALOG_H
 #define QCITATIONDIALOG_H
 
-
 #include "ui/QCitationDialogBase.h"
 #include "controllers/biblio.h"
 
-class QCitation;
 class QCitationFindDialogBase;
+
+namespace lyx {
+namespace frontend {
+
+class QCitation;
 
 class QCitationDialog : public QCitationDialogBase {
 	Q_OBJECT
@@ -51,5 +54,8 @@ private:
 
 	QCitation * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCITATIOINDIALOG_H

@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-
-
-
 #include "floatplacement.h"
 
 #include <qpushbutton.h>
@@ -20,6 +17,8 @@
 #include "QFloatDialog.h"
 #include "QFloat.h"
 
+namespace lyx {
+namespace frontend {
 
 QFloatDialog::QFloatDialog(QFloat * form)
 	: QFloatDialogBase(0, 0, false, 0),
@@ -56,3 +55,6 @@ void QFloatDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,8 +12,10 @@
 #ifndef QBIBTEX_H
 #define QBIBTEX_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlBibtex;
 class QBibtexDialog;
@@ -35,5 +37,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBIBTEX_H

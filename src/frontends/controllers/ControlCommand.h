@@ -19,6 +19,8 @@
 #include "Dialog.h"
 #include "insets/insetcommandparams.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlCommand : public Dialog::Controller {
 public:
@@ -47,5 +49,7 @@ private:
 	std::string const lfun_name_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLCOMMAND_H

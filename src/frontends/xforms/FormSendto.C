@@ -24,11 +24,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::trim;
-
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::trim;
+
+namespace frontend {
 
 typedef FormController<ControlSendto, FormView<FD_sendto> > base_class;
 
@@ -118,3 +121,6 @@ void FormSendto::apply()
 	controller().setFormat(all_formats_[line-1]);
 	controller().setCommand(cmd);
 }
+
+} // namespace frontend
+} // namespace lyx

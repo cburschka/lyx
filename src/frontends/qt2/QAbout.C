@@ -33,6 +33,8 @@ using std::istringstream;
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
 
@@ -113,3 +115,6 @@ void QAbout::build_dialog()
 	bcview().setCancel(dialog_->closePB);
 	bc().refresh();
 }
+
+} // namespace frontend
+} // namespace lyx

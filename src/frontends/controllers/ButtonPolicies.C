@@ -17,6 +17,9 @@
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 namespace {
 
 string const printState(ButtonPolicy::State const & state)
@@ -625,3 +628,6 @@ void NoRepeatedApplyPolicy::input(SMInput input)
 			  "NoRepeatedApplyPolicy");
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

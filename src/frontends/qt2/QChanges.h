@@ -14,6 +14,9 @@
 
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlChanges;
 class QChangesDialog;
 
@@ -39,5 +42,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCHANGES_H

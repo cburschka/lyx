@@ -27,18 +27,18 @@
 
 #include "lyx_forms.h"
 
-using lyx::frontend::Box;
-using lyx::frontend::BoxList;
-
-using lyx::support::lowercase;
-using lyx::support::subst;
-
 using std::distance;
 using std::endl;
 using std::for_each;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::lowercase;
+using support::subst;
+
+namespace frontend {
 
 typedef vector<int>::size_type size_type;
 
@@ -91,7 +91,6 @@ XFormsMenubar::XFormsMenubar(LyXView * view, MenuBackend const & mb)
 	  menubackend_(&mb),
 	  menubar_(0)
 {
-	using lyx::frontend::WidgetMap;
 	owner_->metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
 						   &widgets_));
 
@@ -428,3 +427,6 @@ XFormsMenubar::ItemInfo::ItemInfo
 
 XFormsMenubar::ItemInfo::~ItemInfo()
 {}
+
+} // namespace frontend
+} // namespace lyx

@@ -128,6 +128,8 @@ using std::pair;
 using std::string;
 using std::istringstream;
 
+namespace biblio = lyx::biblio;
+
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;

@@ -12,8 +12,10 @@
 #ifndef QTOCDIALOG_H
 #define QTOCDIALOG_H
 
-
 #include "ui/QTocDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QToc;
 
@@ -32,5 +34,8 @@ protected:
 private:
 	QToc * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTOCDIALOG_H

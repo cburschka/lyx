@@ -19,6 +19,10 @@
 #include <map>
 
 class LyXFont;
+
+namespace lyx {
+namespace frontend {
+
 class GWorkArea;
 
 /**
@@ -95,7 +99,7 @@ public:
 	/// draw an image from the image cache
 	virtual void image(int x, int y,
 		int w, int h,
-		lyx::graphics::Image const & image);
+		graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual void text(int x, int y,
@@ -124,5 +128,8 @@ private:
 	/// our owner who we paint upon
 	GWorkArea & owner_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XPAINTER_H

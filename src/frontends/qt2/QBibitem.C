@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include "debug.h"
 #include "ControlCommand.h"
 #include "qt_helpers.h"
@@ -22,6 +20,9 @@
 #include "QBibitemDialog.h"
 #include "QBibitem.h"
 #include "Qt2BC.h"
+
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
 
@@ -61,3 +62,6 @@ bool QBibitem::isValid()
 {
 	return !dialog_->keyED->text().isEmpty();
 }
+
+} // namespace frontend
+} // namespace lyx

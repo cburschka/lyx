@@ -13,13 +13,15 @@
 #ifndef XSCREEN_H
 #define XSCREEN_H
 
-
 #include "screen.h"
 #include <X11/Xlib.h> // for Pixmap, GC
 
 class WorkArea;
-class XWorkArea;
 
+namespace lyx {
+namespace frontend {
+
+class XWorkArea;
 
 /** The class XScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
@@ -67,5 +69,8 @@ private:
 	/// cursor cs
 	GC gc_copy;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

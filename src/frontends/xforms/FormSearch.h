@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlSearch;
 struct FD_search;
 
@@ -35,5 +38,8 @@ private:
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMSEARCH_H

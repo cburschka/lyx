@@ -15,9 +15,13 @@
 #include "FormDialogView.h"
 #include <vector>
 
-struct FD_sendto;
-class ControlSendto;
 class Format;
+
+namespace lyx {
+namespace frontend {
+
+class ControlSendto;
+struct FD_sendto;
 
 /** This class provides an XForms implementation of the Custom Export Dialog.
  */
@@ -38,5 +42,8 @@ private:
 
 	std::vector<Format const *> all_formats_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMSENDTO_H

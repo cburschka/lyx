@@ -22,21 +22,23 @@ using std::string;
 using std::vector;
 
 
+namespace lyx {
+namespace frontend {
+
 namespace {
 
 struct Sorter
-	: public std::binary_function<frnt::LanguagePair,
-				      frnt::LanguagePair, bool>
+	: public std::binary_function<LanguagePair,
+				      LanguagePair, bool>
 {
-	bool operator()(frnt::LanguagePair const & lhs,
-			frnt::LanguagePair const & rhs) const {
+	bool operator()(LanguagePair const & lhs,
+			LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;
 	}
 };
 
 } // namespace anon
 
-namespace frnt {
 
 vector<LanguagePair> const getLanguageData(bool character_dlg)
 {
@@ -69,4 +71,5 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	return langs;
 }
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx

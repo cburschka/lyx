@@ -22,6 +22,8 @@
 
 class LColor_color;
 
+namespace lyx {
+namespace frontend {
 
 class ControlPrefs : public Dialog::Controller {
 public:
@@ -83,5 +85,8 @@ private:
 	bool redraw_gui_;
 	bool update_screen_font_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLPREFS_H

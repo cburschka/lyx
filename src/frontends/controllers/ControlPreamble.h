@@ -14,6 +14,9 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Preamble dialogs.
  */
 class ControlPreamble : public Dialog::Controller {
@@ -37,5 +40,8 @@ private:
 	///
 	std::string params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLPREAMBLE_H

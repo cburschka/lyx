@@ -35,6 +35,7 @@
 
 #include <boost/tuple/tuple.hpp>
 
+using lyx::frontend::getRGBColor;
 
 using lyx::support::float_equal;
 using lyx::support::prefixIs;

@@ -23,6 +23,9 @@
 class LColor_color;
 class LyXView;
 
+namespace lyx {
+namespace frontend {
+
 class ColorCache
 {
 	typedef std::map<LColor_color, Gdk::Color *> Map;
@@ -109,5 +112,8 @@ private:
 	GtkIMContext * imContext_;
 	std::string inputCache_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

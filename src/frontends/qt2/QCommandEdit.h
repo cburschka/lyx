@@ -14,6 +14,9 @@
 
 #include <qlineedit.h>
 
+namespace lyx {
+namespace frontend {
+
 class QCommandEdit : public QLineEdit {
 	Q_OBJECT
 public:
@@ -36,5 +39,8 @@ protected:
 
 	virtual void keyPressEvent(QKeyEvent * e);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCOMMANDEDIT_H

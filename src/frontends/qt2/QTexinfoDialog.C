@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 
@@ -21,6 +19,9 @@
 
 using std::vector;
 using std::string;
+
+namespace lyx {
+namespace frontend {
 
 
 QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
@@ -86,3 +87,6 @@ void QTexinfoDialog::enableViewPB()
 {
 	viewPB->setEnabled(fileList->currentItem() > -1);
 }
+
+} // namespace frontend
+} // namespace lyx

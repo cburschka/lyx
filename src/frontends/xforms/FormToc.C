@@ -21,11 +21,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::getStringFromVector;
-
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::getStringFromVector;
+
+namespace frontend {
 
 typedef FormController<ControlToc, FormView<FD_toc> > base_class;
 
@@ -86,7 +89,7 @@ void FormToc::updateType()
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// And select the correct one
-	string const type = lyx::toc::getType(controller().params().getCmdName());
+	string const type = toc::getType(controller().params().getCmdName());
 	fl_set_choice_text(dialog_->choice_toc_type, type.c_str());
 }
 
@@ -102,7 +105,7 @@ void FormToc::updateContents()
 		return;
 	}
 
-	lyx::toc::Toc const contents = controller().getContents(type);
+	toc::Toc const contents = controller().getContents(type);
 
 	// Check if all elements are the same.
 	if (toc_ == contents) {
@@ -127,8 +130,8 @@ void FormToc::updateContents()
 	fl_clear_browser(dialog_->browser_toc);
 	setEnabled(dialog_->browser_toc, true);
 
-	lyx::toc::Toc::const_iterator cit = contents.begin();
-	lyx::toc::Toc::const_iterator end = contents.end();
+	toc::Toc::const_iterator cit = contents.begin();
+	toc::Toc::const_iterator end = contents.end();
 	for (; cit != end; ++cit) {
 		fl_add_browser_line(dialog_->browser_toc,
 				    cit->asString().c_str());
@@ -137,3 +140,6 @@ void FormToc::updateContents()
 	fl_set_browser_topline(dialog_->browser_toc, topline);
 	fl_select_browser_line(dialog_->browser_toc, line);
 }
+
+} // namespace frontend
+} // namespace lyx

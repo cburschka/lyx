@@ -37,6 +37,7 @@ class VSpace;
 struct Language;
 
 
+namespace lyx {
 namespace biblio {
 
 enum CiteEngine {
@@ -54,6 +55,7 @@ public:
 };
 
 } // namespace biblio
+} // namespace lyx
 
 
 /** Buffer parameters.
@@ -198,7 +200,7 @@ public:
 	};
 	AMS use_amsmath;
 	///
-	biblio::CiteEngine cite_engine;
+	lyx::biblio::CiteEngine cite_engine;
 	///
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?

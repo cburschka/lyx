@@ -39,6 +39,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -179,3 +181,6 @@ void QVSpace::update_contents()
 			     dialog_->unitCO,
 			     dialog_->keepCB);
 }
+
+} // namespace frontend
+} // namespace lyx

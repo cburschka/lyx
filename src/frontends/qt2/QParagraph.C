@@ -31,6 +31,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 
@@ -177,3 +179,6 @@ void QParagraph::update_contents()
 		dialog_->linespacingValue->setEnabled(false);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

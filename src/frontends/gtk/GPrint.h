@@ -14,6 +14,9 @@
 
 #include "GViewBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlPrint;
 
 class GPrint : public GViewCB<ControlPrint, GViewGladeB>
@@ -43,5 +46,8 @@ private:
 	Gtk::Entry * fromEntry_;
 	Gtk::Entry * toEntry_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

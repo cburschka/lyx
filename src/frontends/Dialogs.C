@@ -21,6 +21,7 @@
 
 
 using std::string;
+using lyx::frontend::Dialog;
 
 
 // Note that static boost signals break some compilers, so this wrapper

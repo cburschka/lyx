@@ -9,7 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
@@ -19,11 +18,14 @@
 #include <string>
 #include <vector>
 
+class LengthCombo;
+class  QLineEdit;
+
+namespace lyx {
+namespace frontend {
 
 class ControlDocument;
 class QDocumentDialog;
-class LengthCombo;
-class  QLineEdit;
 
 class QDocument
 	: public QController<ControlDocument, QView<QDocumentDialog> >
@@ -53,5 +55,8 @@ private:
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QDOCUMENT_H

@@ -20,13 +20,15 @@
 
 #include <qobject.h>
 
-
 class QComboBox;
 class QToolBar;
 class QToolButton;
 
-class QtView;
+namespace lyx {
+namespace frontend {
+
 class QLayoutBox;
+class QtView;
 class QLToolbar;
 
 
@@ -77,5 +79,8 @@ private:
 
 	boost::scoped_ptr<QLayoutBox> layout_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NOT QLTOOLBAR_H

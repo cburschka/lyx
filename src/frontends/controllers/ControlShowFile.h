@@ -14,6 +14,9 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for the ShowFile dialog. */
 
 class ControlShowFile : public Dialog::Controller {
@@ -37,5 +40,8 @@ private:
 	///
 	std::string filename_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLSHOWFILE_H

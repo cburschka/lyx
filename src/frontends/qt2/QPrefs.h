@@ -15,9 +15,13 @@
 #include "QDialogView.h"
 #include <vector>
 
+class Formats;
+
+namespace lyx {
+namespace frontend {
+
 class QPrefsDialog;
 class Controllers;
-class Formats;
 
 class QPrefs
 	: public QController<ControlPrefs, QView<QPrefsDialog> >
@@ -44,5 +48,8 @@ private:
 	/// languages
 	std::vector<std::string> lang_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QPREFS_H

@@ -12,15 +12,17 @@
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
-
 #include "FormDialogView.h"
 #include "biblio.h"
 
-/** This class provides an XForms implementation of the Citation Dialog.
- */
+namespace lyx {
+namespace frontend {
+
 class ControlCitation;
 struct FD_citation;
 
+/** This class provides an XForms implementation of the Citation Dialog.
+ */
 class FormCitation
 	: public FormController<ControlCitation, FormView<FD_citation> > {
 public:
@@ -61,5 +63,8 @@ private:
 	/// available keys (right panel)
 	std::vector<std::string> bibkeys;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMCITATION_H

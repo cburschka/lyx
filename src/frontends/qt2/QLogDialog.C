@@ -10,14 +10,13 @@
 
 #include <config.h>
 
-
-
 #include <qpushbutton.h>
 
 #include "QLogDialog.h"
 #include "QLog.h"
 
-
+namespace lyx {
+namespace frontend {
 
 QLogDialog::QLogDialog(QLog * form)
 	: QLogDialogBase(0, 0, false, 0),
@@ -39,3 +38,6 @@ void QLogDialog::updateClicked()
 {
 	form_->update_contents();
 }
+
+} // namespace frontend
+} // namespace lyx

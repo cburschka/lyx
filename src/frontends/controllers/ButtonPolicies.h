@@ -21,6 +21,9 @@
 
 #include "support/std_ostream.h"
 
+namespace lyx {
+namespace frontend {
+
 /** An abstract base class for button policies.
     A state machine implementation of the various button policies used by the
     dialogs. Only the policy is implemented here.  Separate ButtonController
@@ -464,5 +467,8 @@ public:
 		return false;
 	}
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "QPrint.h"
@@ -23,6 +22,8 @@
 #include <qpushbutton.h>
 #include <qradiobutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QLPrintDialog::QLPrintDialog(QPrint * f)
 	: QPrintDialogBase(0, 0, false, 0),
@@ -81,3 +82,6 @@ void QLPrintDialog::pagerangeChanged()
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

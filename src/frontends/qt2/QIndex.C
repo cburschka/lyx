@@ -24,6 +24,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
 
 
@@ -64,3 +67,6 @@ bool QIndex::isValid()
 {
 	return !dialog_->keywordED->text().isEmpty();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -22,9 +22,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::compare;
-
 using std::string;
+
+
+namespace lyx {
+
+using support::compare;
+
+namespace frontend {
 
 
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
@@ -83,3 +88,6 @@ void FormBibitem::apply()
 	controller().params().setContents(fl_get_input(dialog_->input_key));
 	controller().params().setOptions(fl_get_input(dialog_->input_label));
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -14,6 +14,9 @@
 
 #include "GViewBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlCommand;
 
 class GUrl : public GViewCB<ControlCommand, GViewGladeB>
@@ -29,5 +32,8 @@ private:
 	Gtk::Entry * name_;
 	Gtk::CheckButton * htmlType_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

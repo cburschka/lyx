@@ -14,6 +14,8 @@
 
 #include "ui/QBranchDialogBase.h"
 
+namespace lyx {
+namespace frontend {
 
 class QBranch;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QBranch * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBRANCHDIALOG_H

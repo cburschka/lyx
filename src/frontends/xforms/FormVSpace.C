@@ -35,10 +35,6 @@
 
 #include <boost/bind.hpp>
 
-using lyx::support::contains;
-using lyx::support::getStringFromVector;
-using lyx::support::rtrim;
-
 using boost::bind;
 
 using std::remove_if;
@@ -46,6 +42,13 @@ using std::remove_if;
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::contains;
+using support::getStringFromVector;
+using support::rtrim;
+
+namespace frontend {
 
 namespace {
 
@@ -270,3 +273,6 @@ ButtonPolicy::SMInput FormVSpace::input(FL_OBJECT * ob, long)
 	}
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

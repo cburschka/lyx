@@ -17,6 +17,9 @@
 
 class Format;
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for the Custom Export dialogs.
  */
 class ControlSendto : public Dialog::Controller {
@@ -48,5 +51,8 @@ private:
 	///
 	std::string command_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLSENDTO_H

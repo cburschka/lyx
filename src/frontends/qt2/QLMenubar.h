@@ -10,7 +10,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #ifndef QLMENUBAR_H
 #define QLMENUBAR_H
 
@@ -19,9 +18,13 @@
 #include <map>
 
 class LyXView;
-class QtView;
 class MenuBackend;
+
+namespace lyx {
+namespace frontend {
+
 class QLPopupMenu;
+class QtView;
 
 class QLMenubar : public Menubar {
 public:
@@ -50,5 +53,8 @@ private:
 	/// name to menu for openByName
 	NameMap name_map_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLMENUBAR_H

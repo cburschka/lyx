@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "QBox.h"
 #include "QBoxDialog.h"
 #include "qt_helpers.h"
@@ -20,6 +19,8 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
+namespace lyx {
+namespace frontend {
 
 QBoxDialog::QBoxDialog(QBox * form)
 	: QBoxDialogBase(0, 0, false, 0),
@@ -88,3 +89,6 @@ void QBoxDialog::restoreClicked()
 			heightUnitsLC->setCurrentItem(j);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

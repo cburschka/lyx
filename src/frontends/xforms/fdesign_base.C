@@ -13,6 +13,9 @@
 #include "fdesign_base.h"
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
+
 FD_base::~FD_base()
 {
 	if (!form)
@@ -23,3 +26,6 @@ FD_base::~FD_base()
 
 	fl_free_form(form);
 }
+
+} // namespace frontend
+} // namespace lyx

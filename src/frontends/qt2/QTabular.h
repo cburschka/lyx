@@ -15,9 +15,10 @@
 #ifndef QTABULAR_H
 #define QTABULAR_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlTabular;
 class QTabularDialog;
@@ -46,5 +47,8 @@ private:
 	/// save some values before closing the gui
 	virtual void closeGUI();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTABULAR_H

@@ -19,6 +19,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlTabular::ControlTabular(Dialog & parent)
 	: Dialog::Controller(parent), active_cell_(-1)
@@ -218,3 +220,6 @@ void ControlTabular::longTabular(bool yes)
 	else
 		set(LyXTabular::UNSET_LONGTABULAR);
 }
+
+} // namespace frontend
+} // namespace lyx

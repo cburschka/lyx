@@ -12,7 +12,6 @@
 #ifndef XFORMSHELPERS_H
 #define XFORMSHELPERS_H
 
-
 #include "forms_fwd.h"
 
 #include "Color.h"
@@ -21,6 +20,9 @@
 #include <vector>
 
 class LyXLength;
+
+namespace lyx {
+namespace frontend {
 
 /// parse "&Save" etc. to <"Save", "#S">. Does not handle &&
 std::pair<std::string, std::string> parse_shortcut(std::string const & str);
@@ -116,4 +118,8 @@ private:
 	///
 	static std::string error_message;
 };
+
+} // namespace frontend
+} // namespace lyx
+
 #endif // XFORMSHELPERS_H

@@ -32,6 +32,8 @@
 
 #include <algorithm>
 
+namespace lyx {
+namespace frontend {
 
 GScreen::GScreen(GWorkArea & o)
 	: LyXScreen(), owner_(o)
@@ -143,3 +145,6 @@ void GScreen::expose(int x, int y, int w, int h)
 					  y + owner_.ypos(),
 					  w, h);
 }
+
+} // namespace frontend
+} // namespace lyx

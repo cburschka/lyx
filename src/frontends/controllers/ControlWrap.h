@@ -16,6 +16,9 @@
 
 class InsetWrapParams;
 
+namespace lyx {
+namespace frontend {
+
 class ControlWrap : public Dialog::Controller  {
 public:
 	///
@@ -36,5 +39,8 @@ private:
 	///
 	boost::scoped_ptr<InsetWrapParams> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

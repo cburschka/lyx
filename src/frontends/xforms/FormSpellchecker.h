@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlSpellchecker;
 struct FD_spellchecker;
 
@@ -38,5 +41,8 @@ private:
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMSPELLCHECKER_H

@@ -18,6 +18,9 @@
 #include "BCView.h"
 #include "gettext.h"
 
+namespace lyx {
+namespace frontend {
+
 class GBC : public GuiBC<Gtk::Button, Gtk::Widget>
 {
 public:
@@ -34,5 +37,8 @@ private:
 	/// Set the label on the button
 	void setButtonLabel(Gtk::Button *, std::string const & label) const;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

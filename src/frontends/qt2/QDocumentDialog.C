@@ -43,6 +43,8 @@ using lyx::support::token;
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: QDocumentDialogBase(0, 0, false, 0), form_(form)
@@ -541,3 +543,6 @@ void QDocumentDialog::toggleBranchColor()
 		}
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

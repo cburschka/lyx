@@ -18,12 +18,15 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-using lyx::support::compare;
-using lyx::support::LibFileSearch;
-using lyx::support::subst;
-
 using std::string;
 
+namespace lyx {
+
+using support::compare;
+using support::LibFileSearch;
+using support::subst;
+
+namespace frontend {
 
 ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)
@@ -344,7 +347,7 @@ string const find_xpm(string const & name)
 {
 	XPMmap const * const begin = sorted_xpm_map;
 	XPMmap const * const end = begin + nr_sorted_xpm_map;
-	BOOST_ASSERT(lyx::sorted(begin, end));
+	BOOST_ASSERT(sorted(begin, end));
 
 	XPMmap const * const it =
 		std::find_if(begin, end, CompareKey(name));
@@ -372,3 +375,6 @@ string const find_xpm(string const & name)
 
 	return LibFileSearch("images/math/", xpm_name, "xpm");
 }
+
+} // namespace frontend
+} // namespace lyx

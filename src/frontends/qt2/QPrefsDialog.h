@@ -12,13 +12,11 @@
 #ifndef QPREFSDIALOG_H
 #define QPREFSDIALOG_H
 
-
 #include "ui/QPrefsDialogBase.h"
 
 #include <vector>
 
 class LColor_color;
-class QPrefs;
 class QPrefAsciiModule;
 class QPrefDateModule;
 class QPrefKeyboardModule;
@@ -34,6 +32,11 @@ class QPrefLanguageModule;
 class QPrefPrinterModule;
 class QPrefUIModule;
 class QPrefIdentityModule;
+
+namespace lyx {
+namespace frontend {
+
+class QPrefs;
 
 class QPrefsDialog : public QPrefsDialogBase {
 	Q_OBJECT
@@ -103,5 +106,8 @@ private:
 
 	QPrefs * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // PREFSDIALOG_H

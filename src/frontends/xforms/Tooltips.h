@@ -25,6 +25,8 @@
 
 #include <map>
 
+namespace lyx {
+namespace frontend {
 
 class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:
@@ -60,5 +62,8 @@ private:
 
 	TooltipsMap tooltipsMap;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // TOOLTIPS_H

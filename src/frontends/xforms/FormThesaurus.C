@@ -21,10 +21,6 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::lowercase;
-using lyx::support::trim;
-using lyx::support::uppercase;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::islower;
 using std::isupper;
@@ -33,6 +29,13 @@ using std::isupper;
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::lowercase;
+using support::trim;
+using support::uppercase;
+
+namespace frontend {
 
 typedef FormController<ControlThesaurus, FormView<FD_thesaurus> > base_class;
 
@@ -190,3 +193,6 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

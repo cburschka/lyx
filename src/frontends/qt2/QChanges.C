@@ -24,6 +24,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
@@ -71,3 +73,6 @@ void QChanges::reject()
 {
 	controller().reject();
 }
+
+} // namespace frontend
+} // namespace lyx

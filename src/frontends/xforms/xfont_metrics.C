@@ -25,10 +25,10 @@
 
 #include <boost/scoped_array.hpp>
 
-using lyx::support::uppercase;
-
 using std::string;
 
+using lyx::support::uppercase;
+using lyx::frontend::fontloader;
 
 namespace {
 

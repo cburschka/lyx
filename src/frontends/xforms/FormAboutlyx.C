@@ -25,6 +25,8 @@
 
 using std::ostringstream;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -91,3 +93,6 @@ void FormAboutlyx::build()
 	// Manage the cancel/close button
 	bcview().setCancel(dialog_->button_close);
 }
+
+} // namespace frontend
+} // namespace lyx

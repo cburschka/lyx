@@ -13,10 +13,11 @@
 #ifndef QGRAPHICS_H
 #define QGRAPHICS_H
 
-
 #include "QDialogView.h"
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
 class ControlGraphics;
 class QGraphicsDialog;
@@ -48,5 +49,8 @@ private:
 	std::vector<std::string> origin_ltx;
 
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QGRAPHICS_H

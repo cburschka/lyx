@@ -13,9 +13,10 @@
 #ifndef FORMABOUTLYX_H
 #define FORMABOUTLYX_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlAboutlyx;
 struct FD_aboutlyx;
@@ -47,5 +48,7 @@ private:
 	boost::scoped_ptr<FD_aboutlyx_license> license_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMABOUTLYX_H

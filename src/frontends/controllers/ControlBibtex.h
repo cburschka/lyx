@@ -13,10 +13,8 @@
 #ifndef CONTROLBIBTEX_H
 #define CONTROLBIBTEX_H
 
-
 #include "ControlCommand.h"
 #include <vector>
-
 
 namespace lyx {
 namespace support {
@@ -24,8 +22,9 @@ namespace support {
 class FileFilterList;
 
 } // namespace support
-} // namespace lyx
 
+
+namespace frontend {
 
 /** A controller for Bibtex dialogs.
  */
@@ -37,7 +36,7 @@ public:
 	/// Browse for a file
 	std::string const browse(std::string const & in_name,
 				 std::string const & title,
-				 lyx::support::FileFilterList const & filters) const;
+				 support::FileFilterList const & filters) const;
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;
 	/// get the list of bib files
@@ -49,5 +48,7 @@ public:
 	bool usingBibtopic() const;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLBIBTEX_H

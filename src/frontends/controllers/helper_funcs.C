@@ -21,16 +21,23 @@
 #include "support/filetools.h" // OnlyPath, OnlyFilename
 #include "support/globbing.h"
 
-using lyx::support::FileFilterList;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeRelPath;
-using lyx::support::OnlyFilename;
-using lyx::support::OnlyPath;
-using lyx::support::prefixIs;
-
 using std::pair;
 using std::vector;
 using std::string;
+
+// sorry this is just a temporary hack we should include vspace.h! (Jug)
+extern const char * stringFromUnit(int);
+
+namespace lyx {
+
+using support::FileFilterList;
+using support::MakeAbsPath;
+using support::MakeRelPath;
+using support::OnlyFilename;
+using support::OnlyPath;
+using support::prefixIs;
+
+namespace frontend {
 
 
 string const browseFile(string const & filename,
@@ -129,9 +136,6 @@ string const browseDir(string const & pathname,
 }
 
 
-// sorry this is just a temporary hack we should include vspace.h! (Jug)
-extern const char * stringFromUnit(int);
-
 vector<string> const getLatexUnits()
 {
 	vector<string> units;
@@ -141,3 +145,6 @@ vector<string> const getLatexUnits()
 
 	return units;
 }
+
+} // namespace frontend
+} // namespace lyx

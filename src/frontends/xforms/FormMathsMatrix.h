@@ -14,9 +14,10 @@
 #ifndef FORM_MATHSMATRIX_H
 #define FORM_MATHSMATRIX_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 struct FD_maths_matrix;
@@ -42,5 +43,8 @@ private:
 	///
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //  FORM_MATHSMATRIX_H

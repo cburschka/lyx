@@ -14,6 +14,9 @@
 
 #include "GViewBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlCommand;
 
 class GText : public GViewCB<ControlCommand, GViewGladeB>
@@ -28,5 +31,8 @@ private:
 	std::string const label_;
 	Gtk::Entry * entry_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

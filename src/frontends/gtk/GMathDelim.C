@@ -24,6 +24,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 namespace
 {
 
@@ -224,3 +227,6 @@ void GMathDelim::onRadioClicked()
 {
 	bc().valid();
 }
+
+} // namespace frontend
+} // namespace lyx

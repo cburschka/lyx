@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include "QBranch.h"
 #include "QBranchDialog.h"
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QBranchDialog::QBranchDialog(QBranch * form)
 	: QBranchDialogBase(0, 0, false, 0),
@@ -39,3 +40,6 @@ void QBranchDialog::change_adaptor()
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

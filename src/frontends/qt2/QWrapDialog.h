@@ -12,8 +12,10 @@
 #ifndef QWRAPDIALOG_H
 #define QWRAPDIALOG_H
 
-
 #include "ui/QWrapDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QWrap;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QWrap * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QWRAPDIALOG_H

@@ -19,6 +19,7 @@
 class Buffer;
 
 /** Functions of use to citation and bibtex GUI controllers and views */
+namespace lyx {
 namespace biblio {
 
 class CiteEngine_enum;
@@ -156,6 +157,8 @@ std::vector<std::string> const
 getAuthorYearStrings(std::string const & key,
 		     InfoMap const & map,
 		     std::vector<CiteStyle> const & styles);
+
 } // namespace biblio
+} // namespace lyx
 
 #endif // BIBLIOHELPERS_H

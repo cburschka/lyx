@@ -16,9 +16,14 @@
 #include <boost/utility.hpp>
 #include <boost/signals/signal0.hpp>
 
-class Dialog;
 class InsetBase;
 class LyXView;
+
+namespace lyx {
+namespace frontend {
+class Dialog;
+} // namespace frontend
+} // namespace lyx
 
 /** Container of all dialogs.
  */
@@ -98,9 +103,9 @@ private:
 	///
 	bool isValidName(std::string const & name) const;
 	///
-	Dialog * find_or_build(std::string const & name);
+	lyx::frontend::Dialog * find_or_build(std::string const & name);
 	///
-	typedef boost::shared_ptr<Dialog> DialogPtr;
+	typedef boost::shared_ptr<lyx::frontend::Dialog> DialogPtr;
 	///
 	DialogPtr build(std::string const & name);
 

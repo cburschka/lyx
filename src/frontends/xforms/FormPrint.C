@@ -27,10 +27,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::strToInt;
-
 using std::string;
 
+namespace lyx {
+
+using support::strToInt;
+
+namespace frontend {
 
 typedef FormController<ControlPrint, FormView<FD_print> > base_class;
 
@@ -253,3 +256,6 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 
 	return activate;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -13,8 +13,10 @@
 #ifndef QINDEX_H
 #define QINDEX_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 class QIndexDialog;
@@ -40,5 +42,8 @@ private:
 	///
 	QString const label_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QINDEX_H

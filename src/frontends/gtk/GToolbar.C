@@ -23,6 +23,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -163,13 +165,19 @@ void GLayoutBox::selected()
 	       << layoutGuiName << std::endl;
 }
 
+} // namespace frontend
+} // namespace lyx
+
 
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner)
 {
+	using lyx::frontend::GToolbar;
 	return Toolbars::ToolbarPtr(new GToolbar(tbb, owner));
 }
 
+namespace lyx {
+namespace frontend {
 
 GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	: owner_(dynamic_cast<GView &>(owner))
@@ -292,3 +300,6 @@ void GToolbar::update()
 				set_relief(Gtk::RELIEF_NONE);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

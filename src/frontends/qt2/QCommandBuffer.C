@@ -28,6 +28,8 @@ using lyx::support::LibFileSearch;
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -215,3 +217,6 @@ void XMiniBuffer::suffix_timeout()
 }
 
 #endif
+
+} // namespace frontend
+} // namespace lyx

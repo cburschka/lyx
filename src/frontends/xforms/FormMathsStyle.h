@@ -14,9 +14,10 @@
 #ifndef FORM_MATHSSTYLE_H
 #define FORM_MATHSSTYLE_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 struct FD_maths_style;
@@ -43,5 +44,8 @@ private:
 	/// The current choice.
 	int style_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //  FORM_MATHSSTYLE_H

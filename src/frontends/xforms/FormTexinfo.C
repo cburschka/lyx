@@ -20,9 +20,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::OnlyFilename;
-
 using std::string;
+
+namespace lyx {
+
+using support::OnlyFilename;
+
+namespace frontend {
 
 
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
@@ -135,3 +139,6 @@ void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 
 	activeStyle = whichStyle;
 }
+
+} // namespace frontend
+} // namespace lyx

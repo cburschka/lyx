@@ -27,17 +27,18 @@
 
 #include <boost/bind.hpp>
 
-using lyx::frontend::Box;
-
-using lyx::support::LibFileSearch;
-
 using std::abs;
 using std::endl;
 using std::string;
 
-
 //extern void AutoSave(BufferView *);
 extern void QuitLyX();
+
+namespace lyx {
+
+using support::LibFileSearch;
+
+namespace frontend {
 
 extern "C" {
 
@@ -273,3 +274,6 @@ void XFormsView::busy(bool yes) const
 		fl_activate_all_forms();
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

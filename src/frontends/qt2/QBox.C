@@ -39,6 +39,8 @@ using lyx::support::isStrDbl;
 using lyx::support::subst;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlBox, QView<QBoxDialog> > base_class;
 
@@ -270,3 +272,6 @@ void QBox::setInnerType(bool frameless, int i)
 		dialog_->innerBoxCO->setCurrentItem(i);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

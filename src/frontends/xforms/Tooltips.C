@@ -26,9 +26,14 @@
 
 #include <boost/bind.hpp>
 
-using lyx::support::trim;
-
 using std::string;
+
+
+namespace lyx {
+
+using support::trim;
+
+namespace frontend {
 
 
 bool Tooltips::enabled_ = true;
@@ -76,3 +81,6 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 	char const * const c_str = enabled_ ? str.c_str() : 0;
 	fl_set_object_helper(ob, c_str);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -19,10 +19,13 @@
 
 
 namespace lyx {
+
 namespace support {
 class FileFilterList;
 } // namespace support
-} // namespace lyx
+
+
+namespace frontend {
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
@@ -33,7 +36,7 @@ class FileFilterList;
 std::string const
 browseFile(std::string const & filename,
 	   std::string const & title,
-	   lyx::support::FileFilterList const & filters,
+	   support::FileFilterList const & filters,
 	   bool save = false,
 	   std::pair<std::string,std::string> const & dir1 =
 	   std::make_pair(std::string(), std::string()),
@@ -51,7 +54,7 @@ std::string const
 browseRelFile(std::string const & filename,
 	      std::string const & refpath,
 	      std::string const & title,
-	      lyx::support::FileFilterList const & filters,
+	      support::FileFilterList const & filters,
 	      bool save = false,
 	      std::pair<std::string,std::string> const & dir1 =
 	      std::make_pair(std::string(), std::string()),
@@ -99,5 +102,8 @@ getSecond(std::vector<Pair> const & pr)
 		       boost::bind(&Pair::second, _1));
 	return tmp;
 }
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NOT HELPERFUNCS_H

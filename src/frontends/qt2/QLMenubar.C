@@ -23,6 +23,8 @@
 using std::pair;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
@@ -73,3 +75,6 @@ MenuBackend const & QLMenubar::backend()
 {
 	return menubackend_;
 }
+
+} // namespace frontend
+} // namespace lyx

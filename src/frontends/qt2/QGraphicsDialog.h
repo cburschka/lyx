@@ -13,8 +13,10 @@
 #ifndef QGRAPHICSDIALOG_H
 #define QGRAPHICSDIALOG_H
 
-
 #include "ui/QGraphicsDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QGraphics;
 
@@ -36,5 +38,8 @@ protected:
 private:
 	QGraphics * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QGRAPHICSDIALOG_H

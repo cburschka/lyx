@@ -19,6 +19,8 @@
 using std::string;
 using std::vector;
 
+namespace lyx {
+namespace frontend {
 
 ControlBox::ControlBox(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -80,3 +82,6 @@ void box_gui_tokens_special_length(vector<string> & ids,
 	gui_names.push_back(_("Total Height"));
 	gui_names.push_back(_("Width"));
 }
+
+} // namespace frontend
+} // namespace lyx

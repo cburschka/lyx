@@ -24,6 +24,8 @@ using std::istringstream;
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlParagraph::ControlParagraph(Dialog & parent)
 	: Dialog::Controller(parent), ininset_(false)
@@ -157,3 +159,6 @@ LyXAlignment ControlParagraph::alignDefault() const
 {
 	return aligndefault_;
 }
+
+} // namespace frontend
+} // namespace lyx

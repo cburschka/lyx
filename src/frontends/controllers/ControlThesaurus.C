@@ -17,6 +17,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlThesaurus::ControlThesaurus(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -43,11 +45,11 @@ void ControlThesaurus::replace(string const & newstr)
 	 * deletion/change !
 	 */
 	string const data =
-		lyx::find::replace2string(oldstr_, newstr,
-					  true,  // case sensitive
-					  true,  // match word
-					  false, // all words
-					  true); // forward
+		find::replace2string(oldstr_, newstr,
+				     true,  // case sensitive
+				     true,  // match word
+				     false, // all words
+				     true); // forward
 	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
@@ -58,3 +60,6 @@ Thesaurus::Meanings const & ControlThesaurus::getMeanings(string const & str)
 		meanings_ = thesaurus.lookup(str);
 	return meanings_;
 }
+
+} // namespace frontend
+} // namespace lyx

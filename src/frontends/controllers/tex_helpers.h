@@ -15,6 +15,8 @@
 #include <string>
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -33,5 +35,8 @@ std::string const getListOfOptions(std::string const & classname, std::string co
 
 /// get a class with full path from the list
 std::string const getTexFileFromList(std::string const & classname, std::string const & type);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // TEX_HELPERS_H

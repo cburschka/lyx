@@ -17,6 +17,9 @@
 
 class ParagraphParameters;
 
+namespace lyx {
+namespace frontend {
+
 class ControlParagraph : public Dialog::Controller {
 public:
 	///
@@ -50,5 +53,8 @@ private:
 	///
 	LyXAlignment aligndefault_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLPARAGRAPH_H

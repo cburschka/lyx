@@ -18,6 +18,8 @@
 #include "xforms_helpers.h"
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlErrorList, FormView<FD_errorlist> > base_class;
 
@@ -96,3 +98,6 @@ void FormErrorList::updateContents()
 	fl_select_browser_line(dialog_->browser_errors, 1);
 	goTo(0);
 }
+
+} // namespace frontend
+} // namespace lyx

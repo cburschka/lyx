@@ -14,6 +14,9 @@
 
 #include "FormBrowser.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlShowFile;
 
 /**
@@ -32,5 +35,8 @@ public:
 	/// Update dialog before/whilst showing it.
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMSHOWFILE_H

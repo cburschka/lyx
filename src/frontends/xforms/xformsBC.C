@@ -20,6 +20,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 xformsBC::xformsBC(ButtonController const & parent,
 		   string const & cancel, string const & close)
@@ -43,3 +45,6 @@ void xformsBC::setButtonLabel(FL_OBJECT * obj, string const & label) const
 {
 	fl_set_object_label(obj, label.c_str());
 }
+
+} // namespace frontend
+} // namespace lyx

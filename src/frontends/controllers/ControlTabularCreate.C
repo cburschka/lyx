@@ -18,6 +18,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlTabularCreate::ControlTabularCreate(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -44,3 +46,6 @@ void ControlTabularCreate::dispatchParams()
 	string data = tostr(params().first) + ' ' + tostr(params().second);
 	kernel().dispatch(FuncRequest(LFUN_TABULAR_INSERT, data));
 }
+
+} // namespace frontend
+} // namespace lyx

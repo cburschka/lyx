@@ -25,6 +25,9 @@
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlSendto, QView<QSendtoDialog> > base_class;
 
 
@@ -97,3 +100,6 @@ bool QSendto::isValid()
 	else return dialog_->formatLB->count() != 0 &&
 		!dialog_->commandCO->currentText().isEmpty();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -16,6 +16,21 @@
 s/[ 	]*$//
 
 
+# Immediately after line "#include form_xxx.h"
+# open namespace lyx::frontend.
+/^#include "form_/a\
+\
+namespace lyx {\
+namespace frontend {
+
+
+# When the end of the file is reached, close namespace lyx::frontend.
+$ a\
+\
+} // namespace frontend\
+} // namespace lyx
+
+
 # Delete blank lines and fdesign comments.
 /^$/d
 /generated with fdesign/d

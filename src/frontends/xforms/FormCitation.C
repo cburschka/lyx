@@ -25,16 +25,20 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
-using lyx::support::trim;
-
 using std::find;
 using std::max;
 
 using std::vector;
 using std::string;
 
+
+namespace lyx {
+
+using support::getStringFromVector;
+using support::getVectorFromString;
+using support::trim;
+
+namespace frontend {
 
 namespace {
 
@@ -522,3 +526,6 @@ void FormCitation::setCiteButtons(State status) const
 	setEnabled(dialog_->button_up,   activate_up);
 	setEnabled(dialog_->button_down, activate_down);
 }
+
+} // namespace frontend
+} // namespace lyx

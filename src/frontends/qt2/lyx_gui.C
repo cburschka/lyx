@@ -52,6 +52,8 @@
 
 using lyx::support::ltrim;
 
+using lyx::frontend::QtView;
+
 namespace os = lyx::support::os;
 
 #ifndef CXX_GLOBAL_CSTD

@@ -28,6 +28,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 class QScrollViewSingle : public QScrollView {
 public:
@@ -309,3 +311,6 @@ void QMathDialog::insertFont(int id)
 	}
 	form_->controller().dispatchInsert(str);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -20,6 +20,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 GTableCreate::GTableCreate(Dialog & parent)
 	: GViewCB<ControlTabularCreate, GViewGladeB>(parent, _("Insert Table"))
 {
@@ -48,3 +51,6 @@ void GTableCreate::apply()
 	int columns = columns_->get_value_as_int();
 	controller().params() = std::make_pair(columns, rows);
 }
+
+} // namespace frontend
+} // namespace lyx

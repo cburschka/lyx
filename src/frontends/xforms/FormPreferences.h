@@ -19,18 +19,17 @@
 
 #include <boost/scoped_ptr.hpp>
 
-class ControlPrefs;
 class Converters;
 class Formats;
 
 class Dialogs;
-class FormColorpicker;
 class LyXRC;
 class LyXView;
-class NamedColor;
-class RGBColor;
-class XformsColor;
 
+namespace lyx {
+namespace frontend {
+
+class ControlPrefs;
 struct FD_preferences;
 struct FD_preferences_colors;
 struct FD_preferences_converters;
@@ -47,6 +46,10 @@ struct FD_preferences_printer;
 struct FD_preferences_screen_fonts;
 struct FD_preferences_spelloptions;
 
+class FormColorpicker;
+class NamedColor;
+class RGBColor;
+class XformsColor;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
  *  The preferences dialog allows users to set/save their preferences.
@@ -511,5 +514,8 @@ private:
 	///
 	SpellOptions spelloptions_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMPREFERENCES_H

@@ -22,9 +22,11 @@
 
 #include <X11/Xlib.h> // for Pixmap
 
-class xformsBC;
-class Tooltips;
+namespace lyx {
+namespace frontend {
 
+class Tooltips;
+class xformsBC;
 
 /** This class is an XForms GUI base class.
  */
@@ -190,5 +192,7 @@ Controller const & FormController<Controller, Base>::controller() const
 	return static_cast<Controller const &>(this->getController());
 }
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMDIALOGVIEW_H

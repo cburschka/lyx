@@ -12,10 +12,12 @@
 #ifndef FORMTEXINFO_H
 #define FORMTEXINFO_H
 
-
 #include "FormDialogView.h"
 #include "ControlTexinfo.h"
 #include <map>
+
+namespace lyx {
+namespace frontend {
 
 struct FD_texinfo;
 
@@ -42,5 +44,8 @@ private:
 	typedef std::vector<std::string> ContentsType;
 	std::map<ControlTexinfo::texFileSuffix, ContentsType> texdata_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTEXINFO_H

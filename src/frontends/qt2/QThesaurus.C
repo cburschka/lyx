@@ -20,8 +20,10 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
+namespace lyx {
+namespace frontend {
 
+typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
 
 QThesaurus::QThesaurus(Dialog & parent)
 	: base_class(parent, _("LyX: Thesaurus"))
@@ -52,3 +54,6 @@ void QThesaurus::replace()
 {
 	controller().replace(fromqstr(dialog_->replaceED->text()));
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -24,6 +24,18 @@
 
 class Dialogs;
 
+
+namespace lyx {
+
+namespace support {
+
+class FileFilterList;
+
+} // namespace support
+
+
+namespace frontend {
+
 /// DirEntry internal structure definition
 class DirEntry {
 public:
@@ -45,12 +57,7 @@ public:
 
 class FD_filedialog;
 
-namespace lyx {
-namespace support {
-
-class FileFilterList;
-
-} // namespace support
+} // namespace frontend
 } // namespace lyx
 
 
@@ -84,7 +91,7 @@ public:
 
 private:
 	/// data
-	static FD_filedialog * file_dlg_form_;
+	static lyx::frontend::FD_filedialog * file_dlg_form_;
 	///
 	static FileDialog::Private * current_dlg_;
 	///
@@ -110,7 +117,7 @@ private:
 	///
 	std::string info_line_;
 	///
-	typedef std::vector<DirEntry> DirEntries;
+	typedef std::vector<lyx::frontend::DirEntry> DirEntries;
 	///
 	DirEntries dir_entries_;
 	///

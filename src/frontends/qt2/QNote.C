@@ -23,6 +23,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlNote, QView<QNoteDialog> > base_class;
 
@@ -74,3 +76,6 @@ void QNote::apply()
 
 	controller().params().type = type;
 }
+
+} // namespace frontend
+} // namespace lyx

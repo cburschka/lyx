@@ -17,6 +17,10 @@
 #include "ControlCharacter.h" // for ControlCharacter enum
 
 struct LColor_color;
+
+namespace lyx {
+namespace frontend {
+
 struct FD_character;
 
 /**
@@ -44,19 +48,22 @@ private:
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	///
-	std::vector<LyXFont::FONT_FAMILY>  family_;
+	std::vector<LyXFont::FONT_FAMILY> family_;
 	///
-	std::vector<LyXFont::FONT_SERIES>  series_;
+	std::vector<LyXFont::FONT_SERIES> series_;
 	///
-	std::vector<LyXFont::FONT_SHAPE>   shape_;
+	std::vector<LyXFont::FONT_SHAPE> shape_;
 	///
-	std::vector<LyXFont::FONT_SIZE>    size_;
+	std::vector<LyXFont::FONT_SIZE> size_;
 	///
-	std::vector<frnt::FONT_STATE>      bar_;
+	std::vector<FONT_STATE> bar_;
 	///
-	std::vector<LColor_color>            color_;
+	std::vector<LColor_color> color_;
 	///
-	std::vector<std::string>                lang_;
+	std::vector<std::string> lang_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

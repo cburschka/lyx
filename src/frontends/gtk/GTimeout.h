@@ -17,6 +17,9 @@
 
 #include <sigc++/sigc++.h>
 
+namespace lyx {
+namespace frontend {
+
 /**
  * This class executes the callback when the timeout expires
  * using Gtk mechanisms
@@ -43,5 +46,8 @@ private:
 	/// Used for running as SigC::Connection::connected() isn't const
 	bool running_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -23,6 +23,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ColorCache colorCache;
 
@@ -468,3 +470,6 @@ void GWorkArea::putClipboard(string const & str) const
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
 	clipboard->set_text(Glib::locale_to_utf8(str));
 }
+
+} // namespace frontend
+} // namespace lyx

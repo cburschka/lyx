@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlPreamble;
 struct FD_preamble;
 
@@ -33,5 +36,7 @@ private:
 	virtual void update();
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMPREAMBLE_H

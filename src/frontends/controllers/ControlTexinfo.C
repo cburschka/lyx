@@ -16,6 +16,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 void getTexFileList(ControlTexinfo::texFileSuffix type,
 		    std::vector<string> & list)
@@ -59,3 +61,6 @@ string const ControlTexinfo::getClassOptions(string const & filename) const
 {
 	return getListOfOptions(filename, "cls");
 }
+
+} // namespace frontend
+} // namespace lyx

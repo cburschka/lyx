@@ -14,9 +14,10 @@
 #ifndef FORM_MATHSDELIM_H
 #define FORM_MATHSDELIM_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 struct FD_maths_delim;
@@ -40,5 +41,8 @@ private:
 	///
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //  FORM_MATHSDELIM_H

@@ -20,6 +20,8 @@ using std::string;
 using std::vector;
 using std::pair;
 
+namespace lyx {
+namespace frontend {
 
 vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
@@ -94,3 +96,6 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 
 	return styles;
 }
+
+} // namespace frontend
+} // namespace lyx

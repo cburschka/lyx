@@ -49,6 +49,13 @@
 using lyx::support::AddName;
 using lyx::support::user_lyxdir;
 
+using lyx::frontend::fontloader;
+using lyx::frontend::getRGBColor;
+using lyx::frontend::lyxColorHandler;
+using lyx::frontend::LyXColorHandler;
+using lyx::frontend::XformsColor;
+using lyx::frontend::XFormsView;
+
 namespace os = lyx::support::os;
 
 #ifndef CXX_GLOBAL_CSTD

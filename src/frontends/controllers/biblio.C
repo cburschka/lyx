@@ -24,23 +24,25 @@
 
 #include <algorithm>
 
-using lyx::support::ascii_lowercase;
-using lyx::support::bformat;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::contains;
-using lyx::support::getVectorFromString;
-using lyx::support::ltrim;
-using lyx::support::prefixIs;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::token;
-using lyx::support::trim;
-
 using std::string;
 using std::ostringstream;
 using std::vector;
 
+
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::bformat;
+using support::compare_ascii_no_case;
+using support::contains;
+using support::getVectorFromString;
+using support::ltrim;
+using support::prefixIs;
+using support::rtrim;
+using support::split;
+using support::subst;
+using support::token;
+using support::trim;
 
 namespace biblio {
 
@@ -822,3 +824,4 @@ getAuthorYearStrings(string const & key,
 }
 
 } // namespace biblio
+} // namespace lyx

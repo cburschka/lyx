@@ -18,6 +18,8 @@
 
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 FormLog::FormLog(Dialog & parent)
 	: FormController<ControlLog, FormBrowser>(parent, "")
@@ -34,3 +36,6 @@ void FormLog::update()
 	fl_clear_browser(dialog_->browser);
 	fl_add_browser_line(dialog_->browser, ss.str().c_str());
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -19,6 +19,8 @@
 #include <qlineedit.h>
 #include <qwhatsthis.h>
 
+namespace lyx {
+namespace frontend {
 
 QIndexDialog::QIndexDialog(QIndex * form)
 	: QIndexDialogBase(0, 0, false, 0),
@@ -70,3 +72,6 @@ void QIndexDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

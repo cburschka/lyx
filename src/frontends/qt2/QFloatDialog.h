@@ -12,8 +12,10 @@
 #ifndef QFLOATDIALOG_H
 #define QFLOATDIALOG_H
 
-
 #include "ui/QFloatDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QFloat;
 
@@ -31,5 +33,8 @@ protected:
 private:
 	QFloat * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QFLOATDIALOG_H

@@ -13,12 +13,13 @@
 #ifndef QCHARACTERDIALOG_H
 #define QCHARACTERDIALOG_H
 
-
 #include "QCharacter.h"
 #include "ui/QCharacterDialogBase.h"
 
-
 class LyXFont;
+
+namespace lyx {
+namespace frontend {
 
 class QCharacterDialog : public QCharacterDialogBase {
 	Q_OBJECT
@@ -31,5 +32,8 @@ private:
 protected slots:
 	void change_adaptor();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCHARACTERDIALOG_H

@@ -12,8 +12,10 @@
 #ifndef QSENDTODIALOG_H
 #define QSENDTODIALOG_H
 
-
 #include "ui/QSendtoDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QSendto;
 
@@ -30,5 +32,8 @@ protected:
 private:
 	QSendto * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSENDTODIALOG_H

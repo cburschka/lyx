@@ -24,18 +24,25 @@ s/[ 	]*$//
 /generated with fdesign/d
 
 
-# Pretty formatting; add an empty line before "#endif"
+# Immediately before line "#endif", close namespace lyx::frontend
 /#endif/i\
-
+\
+} // namespace frontend\
+} // namespace lyx\
 
 # Immediately after line "#define FD_xxx_h_" that starts off the header file,
-# #include "fdesign_base.h" and append the contents of file EXTERN_FUNCS.
+# * #include "fdesign_base.h";
+# * open namespace lyx::frontend and;
+# * append the contents of file EXTERN_FUNCS.
 # This latter is a sorted, unique list of any function declarations.
 # The actual name of the file is inserted by the parent shell script.
 /#define FD/{
 a\
 \
 #include "fdesign_base.h"\
+\
+namespace lyx {\
+namespace frontend {\
 
 r EXTERN_FUNCS
 }

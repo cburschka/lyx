@@ -19,6 +19,9 @@
 #include <qdialog.h>
 #include <qobject.h>
 
+namespace lyx {
+namespace frontend {
+
 class Qt2BC;
 
 /** This class is an Qt2 GUI base class.
@@ -175,5 +178,7 @@ Controller const & QController<Controller, Base>::controller() const
 	return static_cast<Controller const &>(this->getController());
 }
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // QDIALOGVIEW_H

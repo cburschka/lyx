@@ -34,25 +34,27 @@ using std::ostringstream;
 using std::strlen;
 #endif
 
+namespace lyx {
+namespace frontend {
 
-static char h_align_str[80] = "c";
-static char v_align_c[] = "tcb";
+namespace {
+
+char h_align_str[80] = "c";
+char v_align_c[] = "tcb";
 
 
-extern "C" {
-
-	static
-	int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
-					 char const * cur, int c)
-	{
-		BOOST_ASSERT(ob);
-		FormMathsMatrix * pre =
-			static_cast<FormMathsMatrix *>(ob->u_vdata);
-		BOOST_ASSERT(pre);
-		return pre->AlignFilter(cur, c);
-	}
-
+extern "C"
+int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
+				 char const * cur, int c)
+{
+	BOOST_ASSERT(ob);
+	FormMathsMatrix * pre =
+		static_cast<FormMathsMatrix *>(ob->u_vdata);
+	BOOST_ASSERT(pre);
+	return pre->AlignFilter(cur, c);
 }
+
+} // namespace anon
 
 
 typedef FormController<ControlMath, FormView<FD_maths_matrix> > base_class;
@@ -128,7 +130,7 @@ int FormMathsMatrix::AlignFilter(char const * cur, int c)
 
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5)
 		- int(len)
-		+ int(lyx::count(cur, cur + len, '|'));
+		+ int(count(cur, cur + len, '|'));
 	if (n < 0)
 		return FL_INVALID;
 
@@ -137,3 +139,6 @@ int FormMathsMatrix::AlignFilter(char const * cur, int c)
 
 	return FL_INVALID;
 }
+
+} // namespace frontend
+} // namespace lyx

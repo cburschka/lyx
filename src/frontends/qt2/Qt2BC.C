@@ -19,6 +19,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 Qt2BC::Qt2BC(ButtonController const & parent,
 	     string const & cancel, string const & close)
@@ -52,3 +54,6 @@ void Qt2BC::setButtonLabel(QButton * obj, string const & label) const
 {
 	obj->setText(toqstr(label));
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -1,3 +1,10 @@
+2004-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* LaTeXFeatures.C:
+	* ToolbarBackend.C:
+	* bufferparams.C:
+	* lyxfunc.C: small changes due to the introduction of namespace
+	lyx::frontend and the moving of namespace biblio to lyx::biblio.
 
 2004-05-18  Alfredo Braunstein  <abraunst@lyx.org>
 

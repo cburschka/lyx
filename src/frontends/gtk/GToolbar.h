@@ -18,8 +18,10 @@
 #include <boost/scoped_ptr.hpp>
 
 
-class GView;
+namespace lyx {
+namespace frontend {
 
+class GView;
 
 class GLayoutBox: public LayoutBox, public SigC::Object {
 public:
@@ -62,5 +64,8 @@ private:
 	Gtk::Toolbar toolbar_;
 	boost::scoped_ptr<GLayoutBox> layout_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NOT GTOOLBAR_H

@@ -13,12 +13,14 @@
 #ifndef QCITATION_H
 #define QCITATION_H
 
-
 #include "QDialogView.h"
 #include <vector>
 
-
 class QListBox;
+
+namespace lyx {
+namespace frontend {
+
 class ControlCitation;
 class QCitationDialog;
 
@@ -57,5 +59,8 @@ private:
 	/// selected natbib style
 	int style_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCITATION_H

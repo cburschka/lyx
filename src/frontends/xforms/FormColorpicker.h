@@ -18,15 +18,15 @@
 #include <boost/scoped_ptr.hpp>
 #include <X11/Xlib.h> // for Pixmap
 
+namespace lyx {
+namespace frontend {
 
-class Tooltips;
 class FD_colorpicker;
 class FD_colorpicker_rgb;
 class FD_colorpicker_hsv;
+class Tooltips;
 
-
-class FormColorpicker
-{
+class FormColorpicker {
 public:
 	FormColorpicker();
 	~FormColorpicker();
@@ -84,5 +84,8 @@ private:
 	boost::scoped_ptr<FD_colorpicker_rgb> rgb_;
 	boost::scoped_ptr<FD_colorpicker_hsv> hsv_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMCOLORPICKER_H

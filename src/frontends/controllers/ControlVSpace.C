@@ -21,6 +21,8 @@
 using std::istringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlVSpace::ControlVSpace(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -61,3 +63,6 @@ VSpace const & ControlVSpace::params() const
 {
 	return params_;
 }
+
+} // namespace frontend
+} // namespace lyx

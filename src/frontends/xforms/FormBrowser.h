@@ -13,14 +13,17 @@
 #ifndef FORMBROWSER_H
 #define FORMBROWSER_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
+
+struct FD_browser;
 
 /**
  * This class provides an XForms implementation of a read only
  * text browser.
  */
-struct FD_browser;
 
 class FormBrowser : public FormView<FD_browser> {
 public:
@@ -30,5 +33,8 @@ private:
 	/// Build the dialog.
 	virtual void build();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMBROWSER_H

@@ -13,11 +13,14 @@
 #include "ControlShowFile.h"
 #include "support/filetools.h"
 
-
-using lyx::support::GetFileContents;
-using lyx::support::OnlyFilename;
-
 using std::string;
+
+namespace lyx {
+
+using support::GetFileContents;
+using support::OnlyFilename;
+
+namespace frontend {
 
 
 ControlShowFile::ControlShowFile(Dialog & parent)
@@ -48,3 +51,6 @@ string ControlShowFile::getFileName()
 {
 	return OnlyFilename(filename_);
 }
+
+} // namespace frontend
+} // namespace lyx

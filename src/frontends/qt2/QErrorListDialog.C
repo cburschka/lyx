@@ -10,13 +10,14 @@
 
 #include <config.h>
 
-
 #include "QErrorList.h"
 #include "QErrorListDialog.h"
 
 #include <qlistbox.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QErrorListDialog::QErrorListDialog(QErrorList * form)
 	: QErrorListDialogBase(0, 0, false, 0),
@@ -44,3 +45,6 @@ void QErrorListDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,8 +12,10 @@
 #ifndef QERRORLISTDIALOG_H
 #define QERRORLISTDIALOG_H
 
-
 #include "ui/QErrorListDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QErrorList;
 
@@ -29,5 +31,8 @@ protected:
 private:
 	QErrorList * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTOCERRORLIST_H

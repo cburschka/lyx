@@ -32,6 +32,8 @@
 #include "sub.xpm"
 #include "super.xpm"
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlMath, FormView<FD_maths_panel> > base_class;
 
@@ -130,3 +132,6 @@ ButtonPolicy::SMInput FormMathsPanel::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -16,6 +16,9 @@
 #include "Dialog.h"
 #include <iosfwd>
 
+namespace lyx {
+namespace frontend {
+
 /** \c ControlAboutlyx is a controller for the "About LyX" dialogs.
  */
 class ControlAboutlyx : public Dialog::Controller {
@@ -39,5 +42,8 @@ public:
 	std::string const getVersion() const;
 	//@}
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLABOUTLYX_H

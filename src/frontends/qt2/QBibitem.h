@@ -12,8 +12,10 @@
 #ifndef QBIBITEM_H
 #define QBIBITEM_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 class QBibitemDialog;
@@ -35,5 +37,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBIBITEM_H

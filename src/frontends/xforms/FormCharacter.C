@@ -27,25 +27,14 @@
 #include "lyx_forms.h"
 #include "combox.h"
 
-using frnt::BarPair;
-using frnt::ColorPair;
-using frnt::FamilyPair;
-using frnt::getBarData;
-using frnt::getColorData;
-using frnt::getFamilyData;
-using frnt::getLanguageData;
-using frnt::getSeriesData;
-using frnt::getShapeData;
-using frnt::getSizeData;
-using frnt::LanguagePair;
-using frnt::SeriesPair;
-using frnt::ShapePair;
-using frnt::SizePair;
-
-using lyx::support::getStringFromVector;
-
 using std::vector;
 using std::string;
+
+namespace lyx {
+
+using support::getStringFromVector;
+
+namespace frontend {
 
 
 typedef FormController<ControlCharacter, FormView<FD_character> > base_class;
@@ -185,7 +174,7 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_bar);
-	if (bar_[pos - 1] != frnt::IGNORE)
+	if (bar_[pos - 1] != IGNORE)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_color);
@@ -198,3 +187,6 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 
 	return activate;
 }
+
+} // namespace frontend
+} // namespace lyx

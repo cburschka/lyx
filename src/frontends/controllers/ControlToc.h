@@ -17,6 +17,9 @@
 #include "toc.h"
 #include <vector>
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for TOC dialogs.
  */
 class ControlToc : public ControlCommand {
@@ -25,13 +28,16 @@ public:
 	ControlToc(Dialog &);
 
 	/// Goto this paragraph id
-	void goTo(lyx::toc::TocItem const &);
+	void goTo(toc::TocItem const &);
 
 	/// Return the list of types available
 	std::vector<std::string> const getTypes() const;
 
 	/// Given a type, returns the contents
-	lyx::toc::Toc const getContents(std::string const & type) const;
+	toc::Toc const getContents(std::string const & type) const;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLTOC_H

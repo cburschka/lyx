@@ -16,6 +16,9 @@
 #include "support/lstrings.h"
 #include "GXpmBtnTbl.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlMath;
 
 class GMathDelim : public GViewCB<ControlMath, GViewGladeB>
@@ -41,5 +44,8 @@ private:
 	int leftSel_;
 	int rightSel_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -15,10 +15,13 @@
 #include "ui/QDelimiterDialogBase.h"
 #include <string>
 
-
-class QMathDelimiter;
 class IconPalette;
 class QLabel;
+
+namespace lyx {
+namespace frontend {
+
+class QMathDelimiter;
 
 class QDelimiterDialog : public QDelimiterDialogBase {
 	Q_OBJECT
@@ -42,5 +45,8 @@ private:
 	/// owning form
 	QMathDelimiter * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QDELIMITERDIALOG_H

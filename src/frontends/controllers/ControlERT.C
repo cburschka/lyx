@@ -17,6 +17,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlERT::ControlERT(Dialog & parent)
 	: Dialog::Controller(parent), status_(InsetERT::Collapsed)
@@ -41,3 +43,6 @@ void ControlERT::dispatchParams()
 	string const lfun = InsetERTMailer::params2string(status_);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,8 +12,10 @@
 #ifndef QFLOAT_H
 #define QFLOAT_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 
 class ControlFloat;
@@ -34,5 +36,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QFLOAT_H

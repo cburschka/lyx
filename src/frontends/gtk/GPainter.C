@@ -33,6 +33,15 @@
 
 using std::string;
 
+namespace font_metrics {
+
+int width(wchar_t const *s, size_t n, LyXFont const & f);
+
+} // namespace font_metrics
+
+
+namespace lyx {
+namespace frontend {
 
 GPainter::GPainter(GWorkArea & xwa)
 	: Painter(), owner_(xwa)
@@ -165,10 +174,10 @@ void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 
 
 void GPainter::image(int x, int y, int w, int h,
-	lyx::graphics::Image const & i)
+	graphics::Image const & i)
 {
-	lyx::graphics::xformsImage const & image =
-		static_cast<lyx::graphics::xformsImage const &>(i);
+	graphics::xformsImage const & image =
+		static_cast<graphics::xformsImage const &>(i);
 	Pixmap pixmap = GDK_PIXMAP_XID(owner_.getPixmap()->gobj());
 	GC gc = GDK_GC_XGC(owner_.getGC()->gobj());
 	XCopyArea(owner_.getDisplay(), image.getPixmap(), pixmap,
@@ -199,14 +208,6 @@ inline XftFont * getXftFont(LyXFont const & f)
 }
 
 
-namespace font_metrics
-{
-
-int width(wchar_t const *s, size_t n, LyXFont const & f);
-
-}
-
-
 void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
@@ -224,7 +225,7 @@ void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 		wchar_t c;
 		int tmpx = x;
 		for(int i = 0; i < ls; ++i) {
-			c = lyx::support::uppercase(s[i]);
+			c = support::uppercase(s[i]);
 			if(c != s[i]) {
 				XftDrawString32(draw, xftClr, fontS, tmpx, y,
 						wcsToXftChar32StrFast(&c), 1);
@@ -254,3 +255,6 @@ void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 		len = mbstowcs(wcs.get(), s, ls + 1);
 	text(x, y, wcs.get(), len, f);
 }
+
+} // namespace frontend
+} // namespace lyx

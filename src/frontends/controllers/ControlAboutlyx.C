@@ -21,14 +21,19 @@
 
 #include <fstream>
 
-using lyx::support::FileSearch;
-using lyx::support::MakeDisplayPath;
-using lyx::support::system_lyxdir;
-using lyx::support::user_lyxdir;
-
 using std::ostream;
 using std::ostringstream;
 using std::string;
+
+
+namespace lyx {
+
+using support::FileSearch;
+using support::MakeDisplayPath;
+using support::system_lyxdir;
+using support::user_lyxdir;
+
+namespace frontend {
 
 
 ControlAboutlyx::ControlAboutlyx(Dialog & parent)
@@ -92,3 +97,6 @@ string const ControlAboutlyx::getVersion() const
 
 	return ss.str();
 }
+
+} // namespace frontend
+} // namespace lyx

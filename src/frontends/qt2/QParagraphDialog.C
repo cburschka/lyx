@@ -22,6 +22,8 @@
 
 #include "qt_helpers.h"
 
+namespace lyx {
+namespace frontend {
 
 QParagraphDialog::QParagraphDialog(QParagraph * form)
 	: QParagraphDialogBase(0, 0, false, 0),
@@ -69,3 +71,6 @@ void QParagraphDialog::enableLinespacingValue(int)
 	bool const enable = linespacing->currentItem() == 4;
 	linespacingValue->setEnabled(enable);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -24,14 +24,17 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::getStringFromVector;
-
 using std::find;
 using std::max;
 using std::sort;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::getStringFromVector;
+
+namespace frontend {
 
 typedef FormController<ControlRef, FormView<FD_ref> > base_class;
 
@@ -289,3 +292,6 @@ void FormRef::switch_go_button()
 	fl_set_button_shortcut(dialog_->button_go, "#G", 1);
 	fl_show_object(dialog_->button_go);
 }
+
+} // namespace frontend
+} // namespace lyx

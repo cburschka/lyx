@@ -16,7 +16,6 @@
 #ifndef XFORMSIMAGE_H
 #define XFORMSIMAGE_H
 
-
 #include "graphics/GraphicsImage.h"
 
 #include <X11/X.h>

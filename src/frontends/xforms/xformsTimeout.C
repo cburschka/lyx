@@ -17,11 +17,14 @@
 
 #include "lyx_forms.h"
 
-
 Timeout::Timeout(unsigned int msec, Type t)
-	: pimpl_(new xformsTimeout(*this)), type(t), timeout_ms(msec)
+	: pimpl_(new lyx::frontend::xformsTimeout(*this)),
+	  type(t), timeout_ms(msec)
 {}
 
+
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -77,3 +80,6 @@ void xformsTimeout::reset()
 {
 	timeout_id = -1;
 }
+
+} // namespace frontend
+} // namespace lyx

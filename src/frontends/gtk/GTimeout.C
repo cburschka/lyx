@@ -18,9 +18,12 @@
 
 
 Timeout::Timeout(unsigned int msec, Type t)
-	: pimpl_(new GTimeout(*this)), type(t), timeout_ms(msec)
+	: pimpl_(new lyx::frontend::GTimeout(*this)),
+	  type(t), timeout_ms(msec)
 {}
 
+namespace lyx {
+namespace frontend {
 
 GTimeout::GTimeout(Timeout & owner)
 	: Timeout::Impl(owner)
@@ -67,3 +70,6 @@ bool GTimeout::timeoutEvent()
 	emit();
 	return false; // discontinue emitting timeouts.
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -26,13 +26,16 @@
 
 #include <cmath>
 
-using lyx::support::atoi;
-using lyx::support::token;
-
 using std::abs;
 using std::endl;
 using std::string;
 
+namespace lyx {
+
+using support::atoi;
+using support::token;
+
+namespace frontend {
 
 /// Load font close to this size
 string const FontInfo::getFontname(int size)
@@ -166,3 +169,6 @@ void FontInfo::init()
 	scalable = false;
 	scaleindex = -1;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -15,6 +15,9 @@
 #include "Dialog.h"
 #include <utility>
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for the TabularCreate Dialog.
  */
 class ControlTabularCreate : public Dialog::Controller {
@@ -39,5 +42,8 @@ private:
 	/// rows, cols params
 	rowsCols params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLTABULARCREATE_H

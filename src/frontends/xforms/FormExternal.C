@@ -37,19 +37,22 @@
 
 namespace external = lyx::external;
 
-using lyx::support::bformat;
-using lyx::support::float_equal;
-using lyx::support::getStringFromVector;
-using lyx::support::isStrDbl;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
-using lyx::support::token;
-using lyx::support::trim;
-
 using std::find;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::bformat;
+using support::float_equal;
+using support::getStringFromVector;
+using support::isStrDbl;
+using support::strToDbl;
+using support::strToInt;
+using support::token;
+using support::trim;
+
+namespace frontend {
 
 namespace {
 
@@ -101,7 +104,7 @@ void setDisplay(FL_OBJECT * displayCB, FL_OBJECT * showCO, FL_OBJECT * scaleED,
 
 	fl_set_choice(showCO, item);
 
-	bool const no_display = display == lyx::external::NoDisplay;
+	bool const no_display = display == external::NoDisplay;
 	setEnabled(showCO, !no_display && !read_only);
 
 	fl_set_button(displayCB, !no_display);
@@ -271,7 +274,7 @@ void setCrop(FL_OBJECT * clipCB,
 	BOOST_ASSERT(ytED && ytED->objclass == FL_INPUT);
 
 	fl_set_button(clipCB, data.clip);
-	lyx::graphics::BoundingBox const & bbox = data.bbox;
+	graphics::BoundingBox const & bbox = data.bbox;
 	fl_set_input(xlED, tostr(bbox.xl).c_str());
 	fl_set_input(ybED, tostr(bbox.yb).c_str());
 	fl_set_input(xrED, tostr(bbox.xr).c_str());
@@ -502,8 +505,6 @@ void FormExternal::update()
 
 void FormExternal::updateComboChange()
 {
-	namespace external = lyx::external;
-
 	int const choice = fl_get_choice(file_->choice_template) - 1;
 	external::Template templ = controller().getTemplate(choice);
 
@@ -753,3 +754,6 @@ void FormExternal::widthUnitChanged()
 	setEnabled(scale_->input_height, useHeight);
 	setEnabled(scale_->choice_height, useHeight);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -10,13 +10,14 @@
 
 #include <config.h>
 
-
 #include "gettext.h"
 #include "QMathDialog.h"
 #include "QMathMatrixDialog.h"
 #include "QDelimiterDialog.h"
 #include "QMath.h"
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlMath, QView<QMathDialog> > math_base;
 
@@ -58,3 +59,6 @@ void QMathDelimiter::build_dialog()
 {
 	dialog_.reset(new QDelimiterDialog(this));
 }
+
+} // namespace frontend
+} // namespace lyx

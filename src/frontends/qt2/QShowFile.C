@@ -23,6 +23,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
 
 
@@ -51,3 +54,6 @@ void QShowFile::update_contents()
 
 	dialog_->text->setText(toqstr(contents));
 }
+
+} // namespace frontend
+} // namespace lyx

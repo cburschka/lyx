@@ -48,9 +48,9 @@ private:
 
 	struct Cache {
 		///
-		Cache() : engine(biblio::ENGINE_BASIC) {}
+		Cache() : engine(lyx::biblio::ENGINE_BASIC) {}
 		///
-		biblio::CiteEngine engine;
+		lyx::biblio::CiteEngine engine;
 		///
 		InsetCommandParams params;
 		///

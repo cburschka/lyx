@@ -19,6 +19,8 @@
 class BufferParams;
 class LyXTextClass;
 
+namespace lyx {
+namespace frontend {
 
 /** A controller for Document dialogs.
  */
@@ -45,10 +47,13 @@ public:
 	///
 	void saveAsDefault() const;
 	///
-	bool loadTextclass(lyx::textclass_type tc) const;
+	bool loadTextclass(textclass_type tc) const;
 private:
 	///
 	boost::scoped_ptr<BufferParams> bp_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLDOCUMENT_H

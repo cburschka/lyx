@@ -30,6 +30,8 @@ using lyx::support::strToDbl;
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 
@@ -112,3 +114,6 @@ void QWrap::update_contents()
 
 	dialog_->valignCO->setCurrentItem(item);
 }
+
+} // namespace frontend
+} // namespace lyx

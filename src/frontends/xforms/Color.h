@@ -18,9 +18,10 @@
 
 #include <string>
 
-
 class LColor_color;
 
+namespace lyx {
+namespace frontend {
 
 /** Given col, fills r, g, b in the range 0-255.
     The function returns true if successful.
@@ -76,5 +77,8 @@ bool operator!=(RGBColor const & c1, RGBColor const & c2)
 {
 	return !(c1 == c2);
 }
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

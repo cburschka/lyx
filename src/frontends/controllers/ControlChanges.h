@@ -14,6 +14,9 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+namespace frontend {
+
 /**
  * A controller for the merge changes dialog.
  */
@@ -45,5 +48,8 @@ public:
 	/// reject the current merge
 	void reject();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLCHANGES_H

@@ -15,6 +15,9 @@
 #include <X11/Xlib.h>
 #include "frontends/LyXKeySym.h"
 
+namespace lyx {
+namespace frontend {
+
 /**
  * This is the XForms (X11) version of LyXKeySym.
  */
@@ -54,5 +57,8 @@ public:
 private:
 	unsigned int keysym_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XLYXKEYSYM_H

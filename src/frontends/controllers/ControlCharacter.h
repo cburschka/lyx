@@ -19,6 +19,8 @@
 
 class LColor_color;
 
+namespace lyx {
+namespace frontend {
 
 class ControlCharacter : public Dialog::Controller {
 public:
@@ -42,7 +44,7 @@ public:
 	///
 	void setSize(LyXFont::FONT_SIZE);
 	///
-	void setBar(frnt::FONT_STATE);
+	void setBar(FONT_STATE);
 	///
 	void setColor(LColor_color);
 	///
@@ -59,7 +61,7 @@ public:
 	///
 	LyXFont::FONT_SIZE getSize() const;
 	///
-	frnt::FONT_STATE getBar() const;
+	FONT_STATE getBar() const;
 	///
 	LColor_color getColor() const;
 	///
@@ -72,5 +74,8 @@ private:
 	///
 	bool toggleall_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLCHARACTER_H

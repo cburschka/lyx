@@ -14,6 +14,9 @@
 
 #include "ui/QChangesDialogBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class QChanges;
 
 class QChangesDialog : public QChangesDialogBase {
@@ -33,5 +36,8 @@ protected:
 private:
 	QChanges * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCHANGESDIALOG_H

@@ -28,10 +28,13 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::uppercase;
-
 using std::string;
 
+namespace lyx {
+
+using support::uppercase;
+
+namespace frontend {
 
 XPainter::XPainter(XWorkArea & xwa)
 	: Painter(), owner_(xwa)
@@ -137,11 +140,11 @@ void XPainter::arc(int x, int y,
 
 
 void XPainter::image(int x, int y,
-			  int w, int h,
-			  lyx::graphics::Image const & i)
+		     int w, int h,
+		     graphics::Image const & i)
 {
-	lyx::graphics::xformsImage const & image =
-		static_cast<lyx::graphics::xformsImage const &>(i);
+	graphics::xformsImage const & image =
+		static_cast<graphics::xformsImage const &>(i);
 
 	XGCValues val;
 	val.function = GXcopy;
@@ -260,3 +263,6 @@ void XPainter::text(int x, int y,
 		underline(f, x, y, xfont_metrics::width(s, ls, f));
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

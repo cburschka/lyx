@@ -12,8 +12,10 @@
 #ifndef QTEXINFODIALOG_H
 #define QTEXINFODIALOG_H
 
-
 #include "ui/QTexinfoDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QTexinfo;
 
@@ -32,5 +34,8 @@ protected:
 private:
 	QTexinfo * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTEXINFODIALOG_H

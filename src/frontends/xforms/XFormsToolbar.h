@@ -21,10 +21,12 @@
 #include <boost/scoped_ptr.hpp>
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
+class Tooltips;
 class XFormsToolbar;
 class XFormsView;
-class Tooltips;
 
 
 class XLayoutBox: public LayoutBox {
@@ -95,11 +97,11 @@ public:
 	///
 	XFormsView::Position position_;
 	///
-	lyx::frontend::Box * toolbar_;
+	Box * toolbar_;
 	///
-	lyx::frontend::BoxList * toolbar_buttons_;
+	BoxList * toolbar_buttons_;
 	///
-	lyx::frontend::WidgetMap widgets_;
+	WidgetMap widgets_;
 
 	typedef std::vector<FuncRequest> Funcs;
 
@@ -116,5 +118,8 @@ public:
 	/// layout combo
 	boost::scoped_ptr<XLayoutBox> layout_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

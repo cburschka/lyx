@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"
@@ -23,6 +21,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
@@ -110,3 +110,6 @@ void QThesaurusDialog::updateLists()
 	meaningsLV->setUpdatesEnabled(true);
 	meaningsLV->update();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,12 +12,13 @@
 #ifndef FORMTEXT_H
 #define FORMTEXT_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 struct FD_text;
-
 
 class FormText : public FormController<ControlCommand, FormView<FD_text> > {
 public:
@@ -34,5 +35,8 @@ private:
 	///
 	std::string const label_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTEXT_H

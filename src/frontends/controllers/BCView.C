@@ -13,6 +13,8 @@
 #include "BCView.h"
 #include "ButtonController.h"
 
+namespace lyx {
+namespace frontend {
 
 CheckedWidget::~CheckedWidget()
 {}
@@ -50,3 +52,6 @@ bool BCView::checkWidgets() const
 	// return valid status after checking ALL widgets
 	return valid;
 }
+
+} // namespace frontend
+} // namespace lyx

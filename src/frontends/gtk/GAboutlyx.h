@@ -14,6 +14,9 @@
 
 #include "GViewBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlAboutlyx;
 
 class GAboutlyx : public GViewCB<ControlAboutlyx, GViewGladeB>
@@ -25,5 +28,8 @@ private:
 	virtual void update() {}
 	virtual void doBuild();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

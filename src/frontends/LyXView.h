@@ -24,7 +24,6 @@ class Toolbars;
 class InsetBase;
 class Intl;
 class Menubar;
-class ControlCommandBuffer;
 
 class BufferView;
 class Dialogs;
@@ -32,6 +31,12 @@ class LyXFunc;
 class LyXFont;
 class Timeout;
 class FuncRequest;
+
+namespace lyx {
+namespace frontend {
+class ControlCommandBuffer;
+} // namespace frontend
+} // namespace lyx
 
 /**
  * LyXView - main LyX window
@@ -170,7 +175,10 @@ protected:
 	/// view's command buffer controller
 	// this has to be declared _after_ lyxfunc_ as its initialization depends
 	// on it!
-	boost::scoped_ptr<ControlCommandBuffer> const controlcommand_;
+	typedef boost::scoped_ptr<lyx::frontend::ControlCommandBuffer>
+	CommandBufferPtr;
+
+	CommandBufferPtr const controlcommand_;
 };
 
 #endif // LYXVIEW_H

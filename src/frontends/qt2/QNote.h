@@ -14,6 +14,8 @@
 
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlNote;
 class QNoteDialog;
@@ -35,5 +37,8 @@ private:
 	/// Update dialog before showing it
 	virtual void update_contents();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QNOTE_H

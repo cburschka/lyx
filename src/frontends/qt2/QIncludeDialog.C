@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
@@ -19,7 +17,8 @@
 #include "QIncludeDialog.h"
 #include "QInclude.h"
 
-
+namespace lyx {
+namespace frontend {
 
 QIncludeDialog::QIncludeDialog(QInclude * form)
 	: QIncludeDialogBase(0, 0, false, 0),
@@ -87,3 +86,6 @@ void QIncludeDialog::browseClicked()
 {
 	form_->browse();
 }
+
+} // namespace frontend
+} // namespace lyx

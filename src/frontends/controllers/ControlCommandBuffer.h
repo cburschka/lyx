@@ -20,6 +20,9 @@
 
 class LyXView;
 
+namespace lyx {
+namespace frontend {
+
 /**
  * ControlCommandBuffer
  *
@@ -58,5 +61,8 @@ private:
 	/// current position in command history
 	std::vector<std::string>::const_iterator history_pos_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLCOMMANDBUFFER_H

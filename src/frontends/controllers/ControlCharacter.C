@@ -24,6 +24,8 @@ using bv_funcs::font2string;
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlCharacter::ControlCharacter(Dialog & parent)
 	: Dialog::Controller(parent),
@@ -42,7 +44,7 @@ bool ControlCharacter::initialiseParams(string const &)
 	    getSeries()   != LyXFont::IGNORE_SERIES ||
 	    getShape()    != LyXFont::IGNORE_SHAPE  ||
 	    getSize()     != LyXFont::IGNORE_SIZE ||
-	    getBar()      != frnt::IGNORE ||
+	    getBar()      != IGNORE ||
 	    getColor()    != LColor::ignore ||
 	    font_->language() != ignore_language)
 		dialog().bc().valid();
@@ -124,51 +126,51 @@ void ControlCharacter::setSize(LyXFont::FONT_SIZE val)
 }
 
 
-frnt::FONT_STATE ControlCharacter::getBar() const
+FONT_STATE ControlCharacter::getBar() const
 {
 	if (!font_.get())
-		return frnt::IGNORE;
+		return IGNORE;
 
 	if (font_->emph() == LyXFont::TOGGLE)
-		return frnt::EMPH_TOGGLE;
+		return EMPH_TOGGLE;
 
 	if (font_->underbar() == LyXFont::TOGGLE)
-		return frnt::UNDERBAR_TOGGLE;
+		return UNDERBAR_TOGGLE;
 
 	if (font_->noun() == LyXFont::TOGGLE)
-		return frnt::NOUN_TOGGLE;
+		return NOUN_TOGGLE;
 
 	if (font_->emph() == LyXFont::IGNORE &&
 	    font_->underbar() == LyXFont::IGNORE &&
 	    font_->noun() == LyXFont::IGNORE)
-		return frnt::IGNORE;
+		return IGNORE;
 
-	return frnt::INHERIT;
+	return INHERIT;
 }
 
 
-void ControlCharacter::setBar(frnt::FONT_STATE val)
+void ControlCharacter::setBar(FONT_STATE val)
 {
 	switch (val) {
-	case frnt::IGNORE:
+	case IGNORE:
 		font_->setEmph(LyXFont::IGNORE);
 		font_->setUnderbar(LyXFont::IGNORE);
 		font_->setNoun(LyXFont::IGNORE);
 		break;
 
-	case frnt::EMPH_TOGGLE:
+	case EMPH_TOGGLE:
 		font_->setEmph(LyXFont::TOGGLE);
 		break;
 
-	case frnt::UNDERBAR_TOGGLE:
+	case UNDERBAR_TOGGLE:
 		font_->setUnderbar(LyXFont::TOGGLE);
 		break;
 
-	case frnt::NOUN_TOGGLE:
+	case NOUN_TOGGLE:
 		font_->setNoun(LyXFont::TOGGLE);
 		break;
 
-	case frnt::INHERIT:
+	case INHERIT:
 		font_->setEmph(LyXFont::INHERIT);
 		font_->setUnderbar(LyXFont::INHERIT);
 		font_->setNoun(LyXFont::INHERIT);
@@ -239,3 +241,6 @@ void ControlCharacter::setToggleAll(bool t)
 {
 	toggleall_ = t;
 }
+
+} // namespace frontend
+} // namespace lyx

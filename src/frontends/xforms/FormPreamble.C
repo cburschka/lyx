@@ -20,6 +20,8 @@
 
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlPreamble, FormView<FD_preamble> > base_class;
 
@@ -55,3 +57,6 @@ void FormPreamble::update()
 {
 	fl_set_input(dialog_->input_preamble, controller().params().c_str());
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -22,7 +22,9 @@
 
 class LyXView;
 
-///
+namespace lyx {
+namespace frontend {
+
 class XWorkArea : public WorkArea {
 public:
 	///
@@ -86,9 +88,12 @@ private:
 	/// the current document's height (for scrollbar)
 	int doc_height_;
 	///
-	lyx::frontend::Box * wa_box_;
+	Box * wa_box_;
 	///
-	lyx::frontend::WidgetMap widgets_;
+	WidgetMap widgets_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XWORKAREA_H

@@ -25,6 +25,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 
 QTabularDialog::QTabularDialog(QTabular * form)
 	: QTabularDialogBase(0, 0, false, 0),
@@ -342,3 +345,6 @@ void QTabularDialog::ltLastFooterEmpty_clicked()
 	lastfooterBorderBelowCB->setEnabled(!enable);
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

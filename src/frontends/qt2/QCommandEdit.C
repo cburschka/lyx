@@ -12,6 +12,9 @@
 
 #include "QCommandEdit.h"
 
+namespace lyx {
+namespace frontend {
+
 QCommandEdit::QCommandEdit(QWidget * parent)
 	: QLineEdit(parent)
 {
@@ -54,3 +57,6 @@ bool QCommandEdit::event(QEvent * e)
 	emit tabPressed();
 	return true;
 }
+
+} // namespace frontend
+} // namespace lyx

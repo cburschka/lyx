@@ -12,9 +12,11 @@
 #ifndef FONTLOADER_H_
 #define FONTLOADER_H_
 
-
 #include <X11/Xlib.h>
 #include "lyxfont.h"
+
+namespace lyx {
+namespace frontend {
 
 class FontInfo;
 
@@ -74,5 +76,8 @@ private:
 
 ///
 extern xfont_loader fontloader;
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

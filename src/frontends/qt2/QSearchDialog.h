@@ -12,13 +12,16 @@
 #ifndef QSEARCHDIALOG_H
 #define QSEARCHDIALOG_H
 
-
 #include "ui/QSearchDialogBase.h"
 #include <string>
 
-class QSearch;
 class QCloseEvent;
 class QComboBox;
+
+namespace lyx {
+namespace frontend {
+
+class QSearch;
 
 class QSearchDialog : public QSearchDialogBase {
 	Q_OBJECT
@@ -40,5 +43,8 @@ private:
 
 	QSearch * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSEARCHDIALOG_H

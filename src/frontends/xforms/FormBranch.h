@@ -12,9 +12,10 @@
 #ifndef FORMBRANCH_H
 #define FORMBRANCH_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlBranch;
 struct FD_branch;
@@ -33,5 +34,8 @@ private:
 	/// Update dialog before showing it
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMBRANCH_H

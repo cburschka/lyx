@@ -13,9 +13,11 @@
 #ifndef QTOC_H
 #define QTOC_H
 
-
 #include "QDialogView.h"
 #include "toc.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlToc;
 class QTocDialog;
@@ -54,5 +56,8 @@ private:
 	/// depth of list shown
 	int depth_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTOC_H

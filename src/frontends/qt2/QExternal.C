@@ -50,6 +50,8 @@ using std::string;
 using std::vector;
 using std::find;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -96,7 +98,7 @@ void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
 	}
 
 	showCO.setCurrentItem(item);
-	bool const no_display = display == lyx::external::NoDisplay;
+	bool const no_display = display == external::NoDisplay;
 	showCO.setEnabled(!no_display && !read_only);
 	displayCB.setChecked(!no_display);
 	scaleED.setEnabled(!no_display && !read_only);
@@ -233,7 +235,7 @@ void setCrop(QCheckBox & clipCB,
 	     external::ClipData const & data)
 {
 	clipCB.setChecked(data.clip);
-	lyx::graphics::BoundingBox const & bbox = data.bbox;
+	graphics::BoundingBox const & bbox = data.bbox;
 	xlED.setText(toqstr(tostr(bbox.xl)));
 	ybED.setText(toqstr(tostr(bbox.yb)));
 	xrED.setText(toqstr(tostr(bbox.xr)));
@@ -499,3 +501,6 @@ void QExternal::getBB()
 
 	controller().bbChanged(false);
 }
+
+} // namespace frontend
+} // namespace lyx

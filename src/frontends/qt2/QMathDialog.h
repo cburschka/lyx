@@ -15,9 +15,12 @@
 #include "ui/QMathDialogBase.h"
 #include <string>
 
+class IconPalette;
+
+namespace lyx {
+namespace frontend {
 
 class QMath;
-class IconPalette;
 
 class QMathDialog : public QMathDialogBase
 {
@@ -53,5 +56,8 @@ private:
 	/// owning form
 	QMath * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QMATHDIALOG_H

@@ -17,6 +17,9 @@
 #include "FormDialogView.h"
 #include <vector>
 
+namespace lyx {
+namespace frontend {
+
 struct BitmapStore
 {
 	BitmapStore(int nt_in, int nx_in, int ny_in, int bw_in, int bh_in,
@@ -95,5 +98,7 @@ private:
 	int h_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORM_MATHSBITMAP_H

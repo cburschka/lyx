@@ -27,9 +27,15 @@
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
-static char h_align_str[80] = "c";
-static char v_align_c[] = "tcb";
+namespace {
+
+char h_align_str[80] = "c";
+char v_align_c[] = "tcb";
+
+} // namespace anon
 
 
 QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
@@ -94,3 +100,6 @@ void QMathMatrixDialog::slotClose()
 {
 	close();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -24,16 +24,14 @@
 
 #include <boost/bind.hpp>
 
-using lyx::frontend::Box;
-using lyx::frontend::BoxList;
-using lyx::frontend::WidgetMap;
-
 using std::abs;
 using std::dec;
 using std::endl;
 using std::hex;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -634,3 +632,6 @@ void XWorkArea::putClipboard(string const & s) const
 
 	fl_stuff_clipboard(work_area, 0, hold.data(), hold.size(), 0);
 }
+
+} // namespace frontend
+} // namespace lyx

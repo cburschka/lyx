@@ -21,6 +21,8 @@
 
 using std::endl;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -171,3 +173,6 @@ void XScreen::expose(int x, int y, int w, int h)
 
 	XSendEvent(fl_get_display(), owner_.getWin(), False, 0, &ev);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -21,7 +21,7 @@ namespace WorkAreaFactory {
 
 WorkArea * create(LyXView & owner, int w, int h)
 {
-	return new GWorkArea(owner, w, h);
+	return new lyx::frontend::GWorkArea(owner, w, h);
 }
 
 

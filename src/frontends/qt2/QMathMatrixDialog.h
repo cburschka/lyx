@@ -14,8 +14,10 @@
 #ifndef QMATHMATRIXDIALOG_H
 #define QMATHMATRIXDIALOG_H
 
-
 #include "ui/QMathMatrixDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QMathMatrix;
 
@@ -33,5 +35,8 @@ protected slots:
 private:
 	QMathMatrix * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QMATHMATRIXDIALOG_H

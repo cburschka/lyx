@@ -22,6 +22,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlSearch, QView<QSearchDialog> > base_class;
 
@@ -59,3 +61,6 @@ void QSearch::replace(string const & findstr, string const & replacestr,
 	controller().replace(findstr, replacestr, casesens, words,
 			     !backwards, all);
 }
+
+} // namespace frontend
+} // namespace lyx

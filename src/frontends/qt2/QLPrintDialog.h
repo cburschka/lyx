@@ -13,8 +13,10 @@
 #ifndef QLPRINTDIALOG_H
 #define QLPRINTDIALOG_H
 
-
 #include "ui/QPrintDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QPrint;
 
@@ -32,5 +34,8 @@ protected slots:
 private:
 	QPrint * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLPRINTDIALOG_H

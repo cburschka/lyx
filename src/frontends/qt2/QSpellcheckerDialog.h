@@ -12,8 +12,10 @@
 #ifndef QSPELLCHECKERDIALOG_H
 #define QSPELLCHECKERDIALOG_H
 
-
 #include "ui/QSpellcheckerDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QSpellchecker;
 
@@ -38,5 +40,8 @@ protected:
 private:
 	QSpellchecker * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSPELLCHECKERDIALOG_H

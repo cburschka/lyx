@@ -12,12 +12,14 @@
 #ifndef FORM_PARAGRAPH_H
 #define FORM_PARAGRAPH_H
 
-
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
-struct FD_paragraph;
+namespace lyx {
+namespace frontend {
+
 class ControlParagraph;
+struct FD_paragraph;
 
 /** This class provides an XForms implementation of the FormParagraph dialog.
  */
@@ -40,5 +42,8 @@ private:
 	/// alignment radio buttons
 	RadioButtonGroup alignment_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

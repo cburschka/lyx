@@ -17,6 +17,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlWrap::ControlWrap(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -43,3 +45,6 @@ void ControlWrap::dispatchParams()
 	string const lfun = InsetWrapMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
+
+} // namespace frontend
+} // namespace lyx

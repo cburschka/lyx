@@ -39,6 +39,8 @@ using lyx::support::trim;
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
@@ -196,3 +198,6 @@ bool QBibtex::isValid()
 {
 	return dialog_->databaseLB->count() != 0;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -25,13 +25,11 @@
 
 #include <boost/bind.hpp>
 
-using lyx::frontend::Box;
-using lyx::frontend::BoxList;
-using lyx::frontend::WidgetMap;
-
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -358,3 +356,6 @@ FL_FREEBROWSER * create_freebrowser(void * parent)
 }
 
 } // namespace anon
+
+} // namespace frontend
+} // namespace lyx

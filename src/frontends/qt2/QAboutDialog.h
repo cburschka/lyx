@@ -12,8 +12,10 @@
 #ifndef QABOUTDIALOG_H
 #define QABOUTDIALOG_H
 
-
 #include "ui/QAboutDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QAboutDialog : public QAboutDialogBase {
 	Q_OBJECT
@@ -22,5 +24,8 @@ public:
 		     bool modal = FALSE, WFlags fl = 0);
 	~QAboutDialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QABOUTDIALOG_H

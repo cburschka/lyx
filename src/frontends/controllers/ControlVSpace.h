@@ -16,6 +16,8 @@
 #include "Dialog.h"
 #include "vspace.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlVSpace : public Dialog::Controller {
 public:
@@ -40,5 +42,8 @@ private:
 	///
 	VSpace params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLPARAGRAPH_H

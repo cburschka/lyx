@@ -14,9 +14,10 @@
 #include "forms/form_browser.h"
 #include "xformsBC.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 FormBrowser::FormBrowser(Dialog & parent,
 			 string const & title, bool allowResize)
@@ -31,3 +32,6 @@ void FormBrowser::build()
 	// Manage the close button
 	bcview().setCancel(dialog_->button_close);
 }
+
+} // namespace frontend
+} // namespace lyx

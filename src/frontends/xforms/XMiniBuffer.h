@@ -25,9 +25,13 @@
 struct fl_freebrowser_;
 typedef fl_freebrowser_ FL_FREEBROWSER;
 
+class Timeout;
+
+namespace lyx {
+namespace frontend {
+
 class XFormsView;
 class ControlCommandBuffer;
-class Timeout;
 
 /// in xforms, the minibuffer is both a status bar and a command buffer
 class XMiniBuffer {
@@ -105,9 +109,12 @@ private:
 	/// are we showing an informational temporary message ?
 	bool info_shown_;
 	///
-	lyx::frontend::Box * minibuffer_;
+	Box * minibuffer_;
 	///
-	lyx::frontend::WidgetMap widgets_;
+	WidgetMap widgets_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XMINIBUFFER_H

@@ -18,6 +18,9 @@
 
 class LyXView;
 
+namespace lyx {
+namespace frontend {
+
 class GMenubar : public Menubar, public SigC::Object {
 public:
 	GMenubar(LyXView *, MenuBackend const &);
@@ -32,5 +35,8 @@ private:
 	LyXView * view_;
 	std::vector<Glib::ustring> mainMenuNames_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

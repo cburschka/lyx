@@ -18,13 +18,15 @@ using std::string;
 
 class Buffer;
 
+namespace lyx {
+namespace frontend {
 
 ControlToc::ControlToc(Dialog & d)
 	: ControlCommand(d, "toc")
 {}
 
 
-void ControlToc::goTo(lyx::toc::TocItem const & item)
+void ControlToc::goTo(toc::TocItem const & item)
 {
 	item.goTo(kernel().lyxview());
 }
@@ -32,24 +34,27 @@ void ControlToc::goTo(lyx::toc::TocItem const & item)
 
 vector<string> const ControlToc::getTypes() const
 {
-	return lyx::toc::getTypes(kernel().buffer());
+	return toc::getTypes(kernel().buffer());
 }
 
 
-lyx::toc::Toc const ControlToc::getContents(string const & type) const
+toc::Toc const ControlToc::getContents(string const & type) const
 {
-	lyx::toc::Toc empty_list;
+	toc::Toc empty_list;
 
 	// This shouldn't be possible...
 	if (!kernel().isBufferAvailable()) {
 		return empty_list;
 	}
 
-	lyx::toc::TocList tmp = lyx::toc::getTocList(kernel().buffer());
-	lyx::toc::TocList::iterator it = tmp.find(type);
+	toc::TocList tmp = toc::getTocList(kernel().buffer());
+	toc::TocList::iterator it = tmp.find(type);
 	if (it == tmp.end()) {
 		return empty_list;
 	}
 
 	return it->second;
 }
+
+} // namespace frontend
+} // namespace lyx

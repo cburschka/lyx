@@ -12,14 +12,13 @@
 #ifndef BUTTONCONTROLLER_H
 #define BUTTONCONTROLLER_H
 
-
 #include "ButtonPolicies.h"
-
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+namespace frontend {
 
 class BCView;
-
 
 /** \c ButtonController controls the activation of the OK, Apply and
  *  Cancel buttons.
@@ -86,5 +85,8 @@ private:
 	boost::scoped_ptr<ButtonPolicy> bp_;
 	boost::scoped_ptr<BCView> view_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // BUTTONCONTROLLER_H

@@ -13,12 +13,12 @@
 #ifndef FORMGRAPHICS_H
 #define FORMGRAPHICS_H
 
-
 #include "FormDialogView.h"
-
 #include <boost/scoped_ptr.hpp>
-
 #include <vector>
+
+namespace lyx {
+namespace frontend {
 
 class ControlGraphics;
 struct FD_graphics;
@@ -59,5 +59,8 @@ private:
 	/// Store the LaTeX names for the rotation origins.
 	std::vector<std::string> origins_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif  // FORMGRAPHICS_H

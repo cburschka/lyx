@@ -16,6 +16,9 @@
 #include "Dialog.h"
 #include "Thesaurus.h"
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Thesaurus dialogs.
  */
 class ControlThesaurus : public Dialog::Controller {
@@ -53,5 +56,8 @@ private:
 	/// not needed.
 	virtual void apply() {}
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLTHESAURUS_H

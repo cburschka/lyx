@@ -76,6 +76,7 @@ using std::string;
 using std::map;
 using std::vector;
 
+using namespace lyx::frontend;
 
 namespace {
 
@@ -186,7 +187,6 @@ public:
 		return r1.name_ < r2.name_;
 	}
 };
-
 
 } // namespace anon
 

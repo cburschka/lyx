@@ -30,14 +30,17 @@
 #include "qt_helpers.h"
 #include "support/lstrings.h"
 
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
-using lyx::support::trim;
-
 using std::find;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::getStringFromVector;
+using support::getVectorFromString;
+using support::trim;
+
+namespace frontend {
 
 typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
@@ -224,3 +227,6 @@ void QCitation::updateBrowser(QListBox * browser,
 			browser->insertItem(toqstr(key));
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

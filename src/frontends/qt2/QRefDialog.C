@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-
-
 #include "QRef.h"
 #include "QRefDialog.h"
 
@@ -21,6 +19,8 @@
 #include <qcombobox.h>
 #include <qlistbox.h>
 
+namespace lyx {
+namespace frontend {
 
 QRefDialog::QRefDialog(QRef * form)
 	: QRefDialogBase(0, 0, false, 0),
@@ -95,3 +95,6 @@ void QRefDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

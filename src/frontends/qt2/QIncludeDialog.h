@@ -12,8 +12,10 @@
 #ifndef QINCLUDEDIALOG_H
 #define QINCLUDEDIALOG_H
 
-
 #include "ui/QIncludeDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QInclude;
 
@@ -35,5 +37,8 @@ protected:
 private:
 	QInclude * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QINCLUDEDIALOG_H

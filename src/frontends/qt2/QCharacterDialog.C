@@ -17,6 +17,8 @@
 #include <qcombobox.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QCharacterDialog::QCharacterDialog(QCharacter * form)
 	: QCharacterDialogBase(0, 0, false, 0),
@@ -58,3 +60,6 @@ void QCharacterDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

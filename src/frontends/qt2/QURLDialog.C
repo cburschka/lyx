@@ -10,13 +10,14 @@
 
 #include <config.h>
 
-
 #include "QURL.h"
 #include "QURLDialog.h"
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
+namespace lyx {
+namespace frontend {
 
 QURLDialog::QURLDialog(QURL * form)
 	: QURLDialogBase(0, 0, false, 0),
@@ -52,3 +53,6 @@ void QURLDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

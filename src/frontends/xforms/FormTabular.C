@@ -26,15 +26,18 @@
 
 #include <boost/bind.hpp>
 
-using lyx::support::contains;
-using lyx::support::getStringFromVector;
-using lyx::support::isStrDbl;
-
 using boost::bind;
 
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::contains;
+using support::getStringFromVector;
+using support::isStrDbl;
+
+namespace frontend {
 
 namespace {
 
@@ -730,3 +733,6 @@ int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
 
 	return LyXTabular::LAST_ACTION;
 }
+
+} // namespace frontend
+} // namespace lyx

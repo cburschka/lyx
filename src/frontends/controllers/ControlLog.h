@@ -15,6 +15,9 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+namespace frontend {
+
 /**
  * A controller for a read-only text browser.
  */
@@ -50,5 +53,8 @@ private:
 	LOGTYPE type_;
 	std::string logfile_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLLOG_H

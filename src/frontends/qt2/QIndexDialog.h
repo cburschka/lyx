@@ -12,8 +12,10 @@
 #ifndef QINDEXDIALOG_H
 #define QINDEXDIALOG_H
 
-
 #include "ui/QIndexDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QIndex;
 
@@ -31,5 +33,8 @@ protected:
 private:
 	QIndex * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QINDEXDIALOG_H

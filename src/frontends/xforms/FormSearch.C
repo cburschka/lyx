@@ -20,9 +20,10 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlSearch, FormView<FD_search> > base_class;
 
@@ -91,3 +92,6 @@ ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

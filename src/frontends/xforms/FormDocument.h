@@ -20,12 +20,13 @@
 #include "lyx_forms.h"
 #include <vector>
 
-class ControlDocument;
-
 class BufferParams;
 
-class FormColorpicker;
+namespace lyx {
+namespace frontend {
 
+class ControlDocument;
+class FormColorpicker;
 struct FD_document;
 struct FD_document_paper;
 struct FD_document_class;
@@ -133,5 +134,8 @@ private:
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

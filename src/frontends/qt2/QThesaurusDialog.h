@@ -12,11 +12,14 @@
 #ifndef QTHESAURUSDIALOG_H
 #define QTHESAURUSDIALOG_H
 
-
 #include "ui/QThesaurusDialogBase.h"
 
-class QThesaurus;
 class QListViewItem;
+
+namespace lyx {
+namespace frontend {
+
+class QThesaurus;
 
 class QThesaurusDialog : public QThesaurusDialogBase {
 	Q_OBJECT
@@ -35,5 +38,8 @@ protected:
 private:
 	QThesaurus * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTHESAURUSDIALOG_H

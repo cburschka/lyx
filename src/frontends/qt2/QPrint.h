@@ -15,6 +15,9 @@
 
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlPrint;
 class QLPrintDialog;
 
@@ -35,5 +38,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QPRINT_H

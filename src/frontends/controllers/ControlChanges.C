@@ -21,9 +21,13 @@
 #include "lyxfind.h"
 #include "support/lstrings.h"
 
-using lyx::support::rtrim;
-
 using std::string;
+
+namespace lyx {
+
+using support::rtrim;
+
+namespace frontend {
 
 
 ControlChanges::ControlChanges(Dialog & parent)
@@ -33,7 +37,7 @@ ControlChanges::ControlChanges(Dialog & parent)
 
 bool ControlChanges::find()
 {
-	return lyx::find::findNextChange(kernel().bufferview());
+	return find::findNextChange(kernel().bufferview());
 }
 
 
@@ -71,12 +75,15 @@ string const ControlChanges::getChangeAuthor()
 void ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
-	lyx::find::findNextChange(kernel().bufferview());
+	find::findNextChange(kernel().bufferview());
 }
 
 
 void ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_REJECT_CHANGE));
-	lyx::find::findNextChange(kernel().bufferview());
+	find::findNextChange(kernel().bufferview());
 }
+
+} // namespace frontend
+} // namespace lyx

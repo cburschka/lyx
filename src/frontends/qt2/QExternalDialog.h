@@ -12,8 +12,10 @@
 #ifndef QEXTERNALDIALOG_H
 #define QEXTERNALDIALOG_H
 
-
 #include "ui/QExternalDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QExternal;
 
@@ -41,5 +43,8 @@ private:
 	bool activateAspectratio() const;
 	QExternal * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QEXTERNALDIALOG_H

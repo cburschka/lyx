@@ -20,11 +20,15 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-using lyx::support::AddName;
-using lyx::support::trim;
-
 using std::vector;
 using std::string;
+
+namespace lyx {
+
+using support::AddName;
+using support::trim;
+
+namespace frontend {
 
 
 ControlSendto::ControlSendto(Dialog & parent)
@@ -110,3 +114,6 @@ void ControlSendto::setCommand(string const & cmd)
 {
 	command_ = trim(cmd);
 }
+
+} // namespace frontend
+} // namespace lyx

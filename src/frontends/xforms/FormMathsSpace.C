@@ -20,8 +20,10 @@
 
 #include "lyx_forms.h"
 
-
 extern char * latex_mathspace[];
+
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlMath, FormView<FD_maths_space> > base_class;
 
@@ -66,3 +68,6 @@ ButtonPolicy::SMInput FormMathsSpace::input(FL_OBJECT *, long data)
 	}
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

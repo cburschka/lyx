@@ -18,6 +18,8 @@
 #include <algorithm> // std::max. Use FL_max in .c code...
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -165,3 +167,6 @@ void scale_form_horizontally(FL_FORM * form, double factor)
 			scale_tabfolder_horizontally(ob, factor);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

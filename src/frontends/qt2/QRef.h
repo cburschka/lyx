@@ -16,6 +16,8 @@
 
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
 class ControlRef;
 class QRefDialog;
@@ -69,5 +71,8 @@ private:
 	/// the references
 	std::vector<std::string> refs_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QREF_H

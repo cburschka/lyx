@@ -14,9 +14,11 @@
 
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlSearch;
 class QSearchDialog;
-
 
 ///
 class QSearch
@@ -42,5 +44,8 @@ private:
 		     std::string const & replacestr,
 		     bool casesens, bool words, bool backwards, bool all);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSEARCH_H

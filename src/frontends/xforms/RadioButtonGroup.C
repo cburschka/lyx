@@ -25,6 +25,8 @@
 
 using std::endl;
 
+namespace lyx {
+namespace frontend {
 
 void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)
 {
@@ -96,7 +98,7 @@ void RadioButtonGroup::unset() const
 }
 
 
-RadioButtonGroup::size_type RadioButtonGroup::get() const
+size_type RadioButtonGroup::get() const
 {
 	// Find the active button.
 	ButtonValueMap::const_iterator it =
@@ -117,6 +119,9 @@ void RadioButtonGroup::setEnabled(bool enable)
 	ButtonValueMap::iterator it  = map.begin();
 	ButtonValueMap::iterator end = map.end();
 	for (; it != end; ++it) {
-		::setEnabled(it->first, enable);
+		lyx::frontend::setEnabled(it->first, enable);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -21,6 +21,9 @@
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlFloat, QView<QFloatDialog> > base_class;
 
 
@@ -55,3 +58,6 @@ void QFloat::apply()
 
 	params.placement = dialog_->floatFP->get(params.wide, params.sideways);
 }
+
+} // namespace frontend
+} // namespace lyx

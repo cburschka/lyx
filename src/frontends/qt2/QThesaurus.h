@@ -12,9 +12,10 @@
 #ifndef QTHESAURUS_H
 #define QTHESAURUS_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlThesaurus;
 class QThesaurusDialog;
@@ -39,5 +40,8 @@ private:
 	/// replace the word
 	void replace();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTHESAURUS_H

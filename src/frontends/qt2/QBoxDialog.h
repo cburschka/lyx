@@ -12,8 +12,10 @@
 #ifndef QBOXDIALOG_H
 #define QBOXDIALOG_H
 
-
 #include "ui/QBoxDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QBox;
 
@@ -31,5 +33,8 @@ protected:
 private:
 	QBox * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBOXDIALOG_H

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 
@@ -18,6 +17,8 @@
 #include <qlistbox.h>
 #include <qcombobox.h>
 
+namespace lyx {
+namespace frontend {
 
 QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 	: QSpellcheckerDialogBase(0, 0, false, 0),
@@ -91,3 +92,6 @@ void QSpellcheckerDialog::reject()
 	form_->slotWMHide();
 	QSpellcheckerDialogBase::reject();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -14,10 +14,16 @@
 
 #include <string>
 
+namespace lyx {
+namespace frontend {
+
 /// Extract shortcut from "<identifer>|<shortcut>" string
 std::string const scex(std::string const &);
 
 /// Extract identifier from "<identifer>|<shortcut>" string
 std::string const idex(std::string const &);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMS_GETTEXT_H

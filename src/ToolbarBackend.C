@@ -212,6 +212,8 @@ void ToolbarBackend::add(Toolbar & tb,
 
 string const ToolbarBackend::getIcon(FuncRequest const & f)
 {
+	using lyx::frontend::find_xpm;
+
 	string fullname;
 
 	if (f.action == LFUN_INSERT_MATH) {

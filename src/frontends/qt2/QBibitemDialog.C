@@ -15,6 +15,8 @@
 #include "QBibitemDialog.h"
 #include "QBibitem.h"
 
+namespace lyx {
+namespace frontend {
 
 QBibitemDialog::QBibitemDialog(QBibitem * form)
 	: QBibitemDialogBase(0, 0, false, 0),
@@ -38,3 +40,6 @@ void QBibitemDialog::closeEvent(QCloseEvent *e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

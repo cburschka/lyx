@@ -14,6 +14,8 @@
 
 #include "ui/QERTDialogBase.h"
 
+namespace lyx {
+namespace frontend {
 
 class QERT;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QERT * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QERTDIALOG_H

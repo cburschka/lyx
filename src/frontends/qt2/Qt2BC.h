@@ -14,12 +14,14 @@
 #ifndef QT2BC_H
 #define QT2BC_H
 
-
 #include "BCView.h"
 #include "gettext.h"
 
 class QWidget;
 class QButton;
+
+namespace lyx {
+namespace frontend {
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.
@@ -42,5 +44,8 @@ private:
 	/// Set the label on the button
 	void setButtonLabel(QButton *, std::string const & label) const;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QT2BC_H

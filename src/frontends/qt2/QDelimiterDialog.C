@@ -25,6 +25,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 namespace {
 
 char const * delim[] = {
@@ -133,3 +136,6 @@ void QDelimiterDialog::rdelim_clicked(const string & str)
 		set_label(leftPI, left_);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

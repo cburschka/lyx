@@ -12,10 +12,11 @@
 #ifndef QEXTERNAL_H
 #define QEXTERNAL_H
 
-
 #include "QDialogView.h"
 #include <map>
 
+namespace lyx {
+namespace frontend {
 
 class ControlExternal;
 class QExternalDialog;
@@ -46,5 +47,8 @@ private:
 
 	MapType extra_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QEXTERNAL_H

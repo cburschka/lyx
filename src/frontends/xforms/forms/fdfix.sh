@@ -1,4 +1,4 @@
-#!/bin/sh
+b#!/bin/sh
 #
 # file fdfix.sh
 # This file is part of LyX, the document processor.

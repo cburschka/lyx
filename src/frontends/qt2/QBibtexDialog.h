@@ -12,11 +12,14 @@
 #ifndef QBIBTEXDIALOG_H
 #define QBIBTEXDIALOG_H
 
-
 #include "ui/QBibtexDialogBase.h"
 
-class QBibtex;
 class QBibtexAddDialogBase;
+
+namespace lyx {
+namespace frontend {
+
+class QBibtex;
 
 class QBibtexDialog : public QBibtexDialogBase {
 	Q_OBJECT
@@ -42,5 +45,8 @@ protected:
 private:
 	QBibtex * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBIBTEXDIALOG_H

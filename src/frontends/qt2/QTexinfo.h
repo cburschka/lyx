@@ -12,12 +12,14 @@
 #ifndef QTEXINFO_H
 #define QTEXINFO_H
 
-
 #include "QDialogView.h"
 #include "ControlTexinfo.h"
 
 #include <map>
 #include <vector>
+
+namespace lyx {
+namespace frontend {
 
 class QTexinfoDialog;
 
@@ -48,5 +50,8 @@ private:
 	typedef std::vector<std::string> ContentsType;
 	std::map<ControlTexinfo::texFileSuffix, ContentsType> texdata_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTEXINFO_H

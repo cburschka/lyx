@@ -12,8 +12,10 @@
 #ifndef FORMREF_H
 #define FORMREF_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlRef;
 struct FD_ref;
@@ -45,5 +47,8 @@ private:
 	///
 	std::vector<std::string> refs_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMREF_H

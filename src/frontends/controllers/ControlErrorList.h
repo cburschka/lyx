@@ -15,12 +15,11 @@
 #include "errorlist.h"
 #include "Dialog.h"
 
-
+namespace lyx {
+namespace frontend {
 
 /** A controller for the ErrorList dialog.
  */
-
-
 class ControlErrorList : public Dialog::Controller {
 public:
 	///
@@ -46,5 +45,8 @@ private:
 	///
 	std::string name_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLERRORLIST_H

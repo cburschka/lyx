@@ -14,6 +14,8 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+namespace frontend {
 
 /** A controller for Search dialogs.
  */
@@ -35,5 +37,8 @@ public:
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLSEARCH_H

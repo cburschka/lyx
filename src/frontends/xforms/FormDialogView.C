@@ -26,11 +26,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::bformat;
-using lyx::support::LibFileSearch;
-
 using std::string;
 
+namespace lyx {
+
+using support::bformat;
+using support::LibFileSearch;
+
+namespace frontend {
 
 extern "C" {
 
@@ -413,3 +416,6 @@ static int C_PrehandlerCB(FL_OBJECT * ob, int event,
 }
 
 } // extern "C"
+
+} // namespace frontend
+} // namespace lyx

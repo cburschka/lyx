@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include "QERT.h"
 #include "QERTDialog.h"
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QERTDialog::QERTDialog(QERT * form)
 	: QERTDialogBase(0, 0, false, 0),
@@ -39,3 +40,6 @@ void QERTDialog::change_adaptor()
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

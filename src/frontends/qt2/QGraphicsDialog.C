@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "ControlGraphics.h"
 #include "debug.h"
 #include "qt_helpers.h"
@@ -26,6 +25,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: QGraphicsDialogBase(0, 0, false, 0),
@@ -101,3 +102,6 @@ void QGraphicsDialog::edit_clicked()
 {
 	form_->controller().editGraphics();
 }
+
+} // namespace frontend
+} // namespace lyx

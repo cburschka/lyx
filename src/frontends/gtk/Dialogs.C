@@ -118,6 +118,7 @@
 
 using std::string;
 
+using namespace lyx::frontend;
 
 namespace {
 

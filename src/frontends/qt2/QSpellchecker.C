@@ -27,6 +27,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > base_class;
 
 
@@ -104,3 +107,6 @@ void QSpellchecker::partialUpdate(int s)
 
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

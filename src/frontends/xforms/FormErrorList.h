@@ -12,8 +12,10 @@
 #ifndef FORMERRORLIST_H
 #define FORMERRORLIST_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlErrorList;
 struct FD_errorlist;
@@ -38,5 +40,8 @@ private:
 	///
 	void updateContents();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMERRORLIST_H

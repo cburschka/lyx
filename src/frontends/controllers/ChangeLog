@@ -1,3 +1,8 @@
+2004-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* *.[Ch]: wrap all code up inside namespace lyx::frontend.
+	Move namespace biblio to lyx::biblio.
+
 2004-05-14  Angus Leeming  <leeming@lyx.org>
 
 	* biblio.[Ch] (asValidLatexCommand): new function which examines

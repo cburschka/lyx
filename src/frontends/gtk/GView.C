@@ -30,6 +30,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -94,7 +96,7 @@ GView::GView()
 	// Make sure the buttons are disabled if needed.
 	updateToolbars();
 	string const iconName =
-		lyx::support::LibFileSearch("images", "lyx", "xpm");
+		support::LibFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())
 		set_icon_from_file(iconName);
 }
@@ -173,3 +175,6 @@ void GView::clearMessage()
 {
 	message(getLyXFunc().viewStatusMessage());
 }
+
+} // namespace frontend
+} // namespace lyx

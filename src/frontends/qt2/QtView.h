@@ -21,8 +21,12 @@
 #include <qmainwindow.h>
 #include <qtimer.h>
 
-class QCommandBuffer;
 class FuncRequest;
+
+namespace lyx {
+namespace frontend {
+
+class QCommandBuffer;
 
 /**
  * QtView - Qt implementation of LyXView
@@ -80,5 +84,8 @@ private:
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTVIEW_H

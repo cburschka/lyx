@@ -17,6 +17,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlPreamble::ControlPreamble(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -57,3 +59,6 @@ void ControlPreamble::params(string const & newparams)
 {
 	params_ = newparams;
 }
+
+} // namespace frontend
+} // namespace lyx

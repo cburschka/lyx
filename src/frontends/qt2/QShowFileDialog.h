@@ -12,8 +12,10 @@
 #ifndef QSHOWFILEDIALOG_H
 #define QSHOWFILEDIALOG_H
 
-
 #include "ui/QShowFileDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QShowFile;
 
@@ -26,5 +28,8 @@ protected:
 private:
 	QShowFile * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSHOWFILEDIALOG_H

@@ -19,6 +19,8 @@
 #include "Dialog.h"
 #include "tabular.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlTabular : public Dialog::Controller {
 public:
@@ -73,5 +75,8 @@ private:
 	///
 	boost::scoped_ptr<LyXTabular> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLTABULAR_H

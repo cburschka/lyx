@@ -19,6 +19,8 @@
 #include "PrinterParams.h"
 #include "support/lstrings.h"
 
+namespace lyx {
+namespace frontend {
 
 GPrint::GPrint(Dialog & parent, string title)
 	: GViewCB<ControlPrint, GViewGladeB>(parent, title, false)
@@ -163,3 +165,6 @@ void GPrint::doBuild()
 	fromTo_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
 	number_->signal_changed().connect(SigC::slot(*this, &GPrint::updateUI));
 }
+
+} // namespace frontend
+} // namespace lyx

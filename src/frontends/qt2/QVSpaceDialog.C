@@ -23,6 +23,8 @@
 
 #include "qt_helpers.h"
 
+namespace lyx {
+namespace frontend {
 
 QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 	: QVSpaceDialogBase(0, 0, false, 0),
@@ -56,3 +58,6 @@ void QVSpaceDialog::enableCustom(int)
 	valueLE->setEnabled(enable);
 	unitCO->setEnabled(enable);
 }
+
+} // namespace frontend
+} // namespace lyx

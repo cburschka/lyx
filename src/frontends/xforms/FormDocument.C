@@ -50,18 +50,21 @@
 
 #include <iomanip>
 
-using lyx::support::bformat;
-using lyx::support::contains;
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
-using lyx::support::LibFileSearch;
-
 using boost::bind;
 
 using std::endl;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::bformat;
+using support::contains;
+using support::getStringFromVector;
+using support::getVectorFromString;
+using support::LibFileSearch;
+
+namespace frontend {
 
 namespace {
 
@@ -285,12 +288,12 @@ void FormDocument::build()
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595|pt154");
 
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
+	vector<LanguagePair> const langs = getLanguageData(false);
 	// Store the identifiers for later
 	lang_ = getSecond(langs);
 
-	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
-	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
 		fl_addto_combox(language_->combox_language,
 				lit->first.c_str());
@@ -1524,8 +1527,7 @@ void FormDocument::CheckChoiceClass()
 {
 	BufferParams & params = controller().params();
 
-	lyx::textclass_type const tc =
-		fl_get_combox(class_->combox_class) - 1;
+	textclass_type const tc = fl_get_combox(class_->combox_class) - 1;
 
 	if (controller().loadTextclass(tc)) {
 		params.textclass = tc;
@@ -1558,3 +1560,6 @@ void FormDocument::UpdateLayoutDocument(BufferParams const & params)
 	options_update(params);
 	bullets_update(params);
 }
+
+} // namespace frontend
+} // namespace lyx

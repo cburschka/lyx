@@ -22,6 +22,9 @@
 #include <qtextbrowser.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlErrorList, QView<QErrorListDialog> > base_class;
 
 QErrorList::QErrorList(Dialog & parent)
@@ -57,3 +60,6 @@ void QErrorList::update_contents()
 
 	dialog_->errorsLB->setSelected(0, true);
 }
+
+} // namespace frontend
+} // namespace lyx

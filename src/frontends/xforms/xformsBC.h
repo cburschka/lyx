@@ -19,6 +19,9 @@
 #include "BCView.h"
 #include "gettext.h"
 
+namespace lyx {
+namespace frontend {
+
 class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT> {
 public:
 	///
@@ -35,5 +38,8 @@ private:
 	/// Set the label on the button
 	void setButtonLabel(FL_OBJECT *, std::string const & label) const;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XFORMSBC_H

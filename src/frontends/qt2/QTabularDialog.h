@@ -14,8 +14,10 @@
 #ifndef QTABULARDIALOG_H
 #define QTABULARDIALOG_H
 
-
 #include "ui/QTabularDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QTabular;
 
@@ -64,5 +66,8 @@ protected:
 private:
 	QTabular * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTABULARDIALOG_H

@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlThesaurus;
 struct FD_thesaurus;
 
@@ -47,5 +50,8 @@ private:
 	/// current string
 	std::string str_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTHESAURUS_H

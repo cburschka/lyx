@@ -20,6 +20,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 GUrl::GUrl(Dialog & parent)
 	: GViewCB<ControlCommand, GViewGladeB>(parent, _("URL"))
 {
@@ -86,3 +89,6 @@ void GUrl::apply()
 	else
 		controller().params().setCmdName("url");
 }
+
+} // namespace frontend
+} // namespace lyx

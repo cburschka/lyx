@@ -20,6 +20,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 GText::GText(Dialog & parent, string const & title, string const & label)
 	: GViewCB<ControlCommand, GViewGladeB>(parent, title),
@@ -35,7 +37,7 @@ void GText::apply()
 
 void GText::update()
 {
-	string const contents = lyx::support::trim(
+	string const contents = support::trim(
 		controller().params().getContents());
 	entry_->set_text(Glib::locale_to_utf8(contents));
 }
@@ -69,3 +71,6 @@ void GText::onEntryChanged()
 {
 	bc().valid(!entry_->get_text().empty());
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -11,9 +11,6 @@
 
 #include <config.h>
 
-
-
-
 #include "QTabularCreate.h"
 #include "QTabularCreateDialog.h"
 
@@ -21,6 +18,8 @@
 #include <qspinbox.h>
 #include "emptytable.h"
 
+namespace lyx {
+namespace frontend {
 
 QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 	: QTabularCreateDialogBase(0, 0, false, 0),
@@ -47,3 +46,6 @@ void QTabularCreateDialog::rowsChanged(int)
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

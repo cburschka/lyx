@@ -30,6 +30,8 @@ using std::ostringstream;
 #include "delim0.xpm"
 #include "delim1.xpm"
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -147,3 +149,6 @@ ButtonPolicy::SMInput FormMathsDelim::input(FL_OBJECT *, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -55,6 +55,8 @@ using std::ostream;
 using std::ostringstream;
 using std::pair;
 
+namespace biblio = lyx::biblio;
+
 
 struct BufferParams::Impl
 {

@@ -28,18 +28,22 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::ChangeExtension;
-using lyx::support::compare;
-using lyx::support::contains;
-using lyx::support::FileFilterList;
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
-using lyx::support::OnlyFilename;
-using lyx::support::prefixIs;
-using lyx::support::split;
-
 using std::vector;
 using std::string;
+
+namespace lyx {
+
+using support::ChangeExtension;
+using support::compare;
+using support::contains;
+using support::FileFilterList;
+using support::getStringFromVector;
+using support::getVectorFromString;
+using support::OnlyFilename;
+using support::prefixIs;
+using support::split;
+
+namespace frontend {
 
 
 typedef FormController<ControlBibtex, FormView<FD_bibtex> > base_class;
@@ -226,7 +230,7 @@ string const unique_and_no_extensions(string const & str_in)
 	     it != dbase.end(); ++it) {
 		*it = ChangeExtension(*it, string());
 	}
-	lyx::eliminate_duplicates(dbase);
+	eliminate_duplicates(dbase);
 	return getStringFromVector(dbase);
 }
 
@@ -286,4 +290,8 @@ void FormBibtex::apply()
 
 	else
 		controller().params().setSecOptions("");
+
 }
+
+} // namespace frontend
+} // namespace lyx

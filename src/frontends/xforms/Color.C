@@ -21,7 +21,6 @@
 #include <cmath>
 #include <iomanip>
 
-
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
 #endif
@@ -34,6 +33,8 @@ using std::istringstream;
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -198,3 +199,6 @@ HSVColor::HSVColor(RGBColor const & rgb)
 			h += 360;
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

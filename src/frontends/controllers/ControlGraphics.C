@@ -32,19 +32,23 @@
 #include "support/tostr.h"
 #include "support/types.h"
 
-using lyx::support::AddName;
-using lyx::support::FileFilterList;
-using lyx::support::FileInfo;
-using lyx::support::IsFileReadable;
-using lyx::support::MakeAbsPath;
-using lyx::support::readBB_from_PSFile;
-using lyx::support::system_lyxdir;
-using lyx::support::user_lyxdir;
-
 using std::make_pair;
 using std::string;
 using std::pair;
 using std::vector;
+
+namespace lyx {
+
+using support::AddName;
+using support::FileFilterList;
+using support::FileInfo;
+using support::IsFileReadable;
+using support::MakeAbsPath;
+using support::readBB_from_PSFile;
+using support::system_lyxdir;
+using support::user_lyxdir;
+
+namespace frontend {
 
 
 ControlGraphics::ControlGraphics(Dialog & parent)
@@ -111,9 +115,9 @@ string const ControlGraphics::readBB(string const & file)
 	int width = 0;
 	int height = 0;
 
-	lyx::graphics::Cache & gc = lyx::graphics::Cache::get();
+	graphics::Cache & gc = graphics::Cache::get();
 	if (gc.inCache(abs_file)) {
-		lyx::graphics::Image const * image = gc.item(abs_file)->image();
+		graphics::Image const * image = gc.item(abs_file)->image();
 
 		if (image) {
 			width  = image->getWidth();
@@ -143,7 +147,6 @@ void ControlGraphics::editGraphics()
 	kernel().dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));
 }
 
-namespace frnt {
 
 namespace {
 
@@ -186,7 +189,7 @@ vector<RotationOriginPair> getRotationOriginData()
 		return data;
 
 	data.resize(rorigin_size);
-	for (lyx::size_type i = 0; i < rorigin_size; ++i) {
+	for (size_type i = 0; i < rorigin_size; ++i) {
 		data[i] = make_pair(_(rorigin_gui_strs[i]),
 				    rorigin_lyx_strs[i]);
 	}
@@ -194,4 +197,5 @@ vector<RotationOriginPair> getRotationOriginData()
 	return data;
 }
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx

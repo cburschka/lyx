@@ -24,6 +24,8 @@ using std::istringstream;
 using std::ostream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlLog::ControlLog(Dialog & parent)
 	: Dialog::Controller(parent),
@@ -115,3 +117,6 @@ void ControlLog::getContents(std::ostream & ss) const
 		break;
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

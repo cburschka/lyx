@@ -26,6 +26,8 @@
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlDocument::ControlDocument(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -83,9 +85,9 @@ void ControlDocument::dispatchParams()
 	setLanguage();
 
 	// Set the document class.
-	lyx::textclass_type const old_class =
+	textclass_type const old_class =
 		kernel().buffer().params().textclass;
-	lyx::textclass_type const new_class = bp_->textclass;
+	textclass_type const new_class = bp_->textclass;
 
 	if (new_class != old_class) {
 		string const name = textclasslist[new_class].name();
@@ -130,7 +132,7 @@ void ControlDocument::setLanguage() const
 }
 
 
-bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
+bool ControlDocument::loadTextclass(textclass_type tc) const
 {
 	string const name = textclasslist[tc].name();
 	kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_LOAD, name));
@@ -145,3 +147,6 @@ void ControlDocument::saveAsDefault() const
 {
 	dispatch_bufferparams(kernel(), params(), LFUN_SAVE_AS_DEFAULT);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -25,8 +25,6 @@
 
 #include <cmath>
 
-using lyx::support::bformat;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif
@@ -34,17 +32,27 @@ using std::pow;
 using std::endl;
 using std::string;
 
+namespace lyx {
 
+namespace support {
 namespace {
 
 	string tostr(XColor const & col)
 	{
 		return bformat("(%1$s,%2$s,%3$s)",
-			::tostr(col.red), ::tostr(col.green), ::tostr(col.blue));
+			       ::tostr(col.red),
+			       ::tostr(col.green),
+			       ::tostr(col.blue));
 	}
 
-}
+} // namespace
+} // namespace support
 
+using support::bformat;
+using support::tostr;
+
+
+namespace frontend {
 
 LyXColorHandler::LyXColorHandler()
 		: colorGCcache(LColor::ignore + 1)
@@ -153,7 +161,7 @@ GC LyXColorHandler::getGCForeground(string const & s)
 		lyxerr << bformat(
 				_("     Using closest allocated color with (r,g,b)=%1$s instead.\n"
 			  "Pixel [%2$s] is used."),
-			tostr(cmap[closest_pixel]), tostr(closest_pixel)) << endl;
+			tostr(cmap[closest_pixel]), ::tostr(closest_pixel)) << endl;
 
 		val.foreground = cmap[closest_pixel].pixel;
 	}
@@ -264,3 +272,6 @@ void LyXColorHandler::updateColor (LColor_color c)
 
 //
 boost::scoped_ptr<LyXColorHandler> lyxColorHandler;
+
+} // namespace frontend
+} // namespace lyx

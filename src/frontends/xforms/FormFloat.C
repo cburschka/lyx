@@ -26,10 +26,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::contains;
-
 using std::string;
 
+namespace lyx {
+
+using support::contains;
+
+namespace frontend {
 
 namespace {
 
@@ -254,3 +257,6 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

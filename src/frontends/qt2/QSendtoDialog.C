@@ -10,14 +10,13 @@
 
 #include <config.h>
 
-
-
-
 #include <qpushbutton.h>
 
 #include "QSendtoDialog.h"
 #include "QSendto.h"
 
+namespace lyx {
+namespace frontend {
 
 QSendtoDialog::QSendtoDialog(QSendto * form)
 	: QSendtoDialogBase(0, 0, false, 0),
@@ -43,3 +42,6 @@ void QSendtoDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

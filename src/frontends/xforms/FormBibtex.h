@@ -13,8 +13,10 @@
 #ifndef FORMBIBTEX_H
 #define FORMBIBTEX_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlBibtex;
 struct FD_bibtex;
@@ -36,5 +38,8 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMBIBTEX_H

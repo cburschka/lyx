@@ -23,9 +23,11 @@ class InsetGraphics;
 class InsetGraphicsParams;
 class LyXView;
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Graphics dialogs.
  */
-
 class ControlGraphics : public Dialog::Controller {
 public:
 	///
@@ -59,7 +61,6 @@ private:
 	boost::scoped_ptr<InsetGraphicsParams> params_;
 };
 
-namespace frnt {
 
 /// get the units for the bounding box
 std::vector<std::string> const getBBUnits();
@@ -69,6 +70,7 @@ typedef std::pair<std::string, std::string> RotationOriginPair;
 ///
 std::vector<RotationOriginPair> getRotationOriginData();
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLGRAPHICS_H

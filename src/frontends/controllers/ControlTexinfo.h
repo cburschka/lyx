@@ -16,6 +16,9 @@
 #include "Dialog.h"
 #include "tex_helpers.h"
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Texinfo dialogs. */
 
 class ControlTexinfo : public Dialog::Controller {
@@ -49,5 +52,8 @@ private:
  */
 void getTexFileList(ControlTexinfo::texFileSuffix type,
 		    std::vector<std::string> & contents);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLTEXINFO_H

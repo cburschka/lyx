@@ -15,6 +15,9 @@
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlFloat;
 struct FD_float;
 
@@ -38,5 +41,8 @@ private:
 	/// placement
 	RadioButtonGroup placement_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMFLOAT_H

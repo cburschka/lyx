@@ -23,9 +23,10 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlSpellchecker, FormView<FD_spellchecker> > base_class;
 
@@ -159,3 +160,6 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -25,6 +25,8 @@ using std::max;
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormDialogView_InputCB(FL_OBJECT *, long);
@@ -192,3 +194,6 @@ ButtonPolicy::SMInput FormMathsBitmap::input(FL_OBJECT * ob, long)
 	apply();
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -21,6 +21,8 @@
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlErrorList::ControlErrorList(Dialog & d)
 	: Dialog::Controller(d)
@@ -66,9 +68,9 @@ void ControlErrorList::goTo(int item)
 		return;
 	}
 
-	lyx::pos_type const end = std::min(err.pos_end, pit->size());
-	lyx::pos_type const start = std::min(err.pos_start, end);
-	lyx::pos_type const range = end - start;
+	pos_type const end = std::min(err.pos_end, pit->size());
+	pos_type const start = std::min(err.pos_start, end);
+	pos_type const range = end - start;
 
 	// Now make the selection.
 #ifdef WITH_WARNINGS
@@ -80,3 +82,6 @@ void ControlErrorList::goTo(int item)
 	kernel().bufferview()->putSelectionAt(pos, range, false);
 #endif
 }
+
+} // namespace frontend
+} // namespace lyx

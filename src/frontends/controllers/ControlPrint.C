@@ -25,10 +25,15 @@
 #include "support/filetools.h"
 #include "support/globbing.h"
 
-using lyx::support::ChangeExtension;
-using lyx::support::FileFilterList;
-
 using std::string;
+
+namespace lyx {
+
+using support::ChangeExtension;
+using support::FileFilterList;
+
+namespace frontend {
+
 
 ControlPrint::ControlPrint(Dialog & parent)
 	: Dialog::Controller(parent),
@@ -136,3 +141,6 @@ void ControlPrint::dispatchParams()
 	string const data = target + " " + target_name + " " + command;
 	kernel().dispatch(FuncRequest(LFUN_PRINT, data));
 }
+
+} // namespace frontend
+} // namespace lyx

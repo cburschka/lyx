@@ -18,6 +18,9 @@
 
 #include <vector>
 
+namespace lyx {
+namespace frontend {
+
 class ControlVSpace;
 class QVSpaceDialog;
 
@@ -39,5 +42,8 @@ private:
 	/// Update the dialog
 	virtual void update_contents();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //QVSPACE_H

@@ -12,9 +12,11 @@
 #ifndef FORMWRAP_H
 #define FORMWRAP_H
 
-
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlWrap;
 struct FD_wrap;
@@ -38,5 +40,8 @@ private:
 	/// placement
 	RadioButtonGroup placement_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMWRAP_H

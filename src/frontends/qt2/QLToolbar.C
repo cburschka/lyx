@@ -32,6 +32,8 @@
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -162,13 +164,18 @@ void QLayoutBox::selected(const QString & str)
 	lyxerr << "ERROR (QLayoutBox::selected): layout not found!" << endl;
 }
 
+} // namespace frontend
+} // namespace lyx
 
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner)
 {
+	using lyx::frontend::QLToolbar;
 	return Toolbars::ToolbarPtr(new QLToolbar(tbb, owner));
 }
 
+namespace lyx {
+namespace frontend {
 
 QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	: owner_(dynamic_cast<QtView &>(owner)),
@@ -258,3 +265,6 @@ void QLToolbar::clicked()
 	else
 		lyxerr << "non existent tool button selected !" << endl;
 }
+
+} // namespace frontend
+} // namespace lyx

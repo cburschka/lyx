@@ -25,6 +25,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 
 typedef FormController<ControlBranch, FormView<FD_branch> > base_class;
 
@@ -72,3 +75,6 @@ void FormBranch::apply()
 	string const type = fl_get_choice_text(dialog_->choice_branch);
 	controller().params().branch = type;
 }
+
+} // namespace frontend
+} // namespace lyx

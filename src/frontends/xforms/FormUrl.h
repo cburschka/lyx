@@ -12,8 +12,10 @@
 #ifndef FORMURL_H
 #define FORMURL_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 struct FD_url;
@@ -32,5 +34,8 @@ private:
 	/// Update dialog before showing it
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMURL_H

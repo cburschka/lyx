@@ -8,7 +8,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
 
 #include "FormUrl.h"
@@ -19,6 +18,8 @@
 
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 typedef  FormController<ControlCommand, FormView<FD_url> > base_class;
 
@@ -73,3 +74,6 @@ void FormUrl::apply()
 	else
 		controller().params().setCmdName("url");
 }
+
+} // namespace frontend
+} // namespace lyx

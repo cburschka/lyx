@@ -19,9 +19,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::isStrDbl;
-
 using std::string;
+
+namespace lyx {
+
+using support::isStrDbl;
+
+namespace frontend {
 
 
 void addCheckedLyXLength(BCView & bcview,
@@ -102,3 +106,6 @@ bool CheckedGlueLength::check() const
 
 	return valid;
 }
+
+} // namespace frontend
+} // namespace lyx

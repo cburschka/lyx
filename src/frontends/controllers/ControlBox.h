@@ -18,6 +18,9 @@
 
 class InsetBoxParams;
 
+namespace lyx {
+namespace frontend {
+
 class ControlBox : public Dialog::Controller {
 public:
 	///
@@ -45,5 +48,8 @@ void box_gui_tokens(std::vector<std::string> &, std::vector<std::string> &);
 ///
 void box_gui_tokens_special_length(std::vector<std::string> &,
 	std::vector<std::string> &);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLBOX_H

@@ -12,13 +12,18 @@
 #ifndef FDESIGN_BASE_H
 #define FDESIGN_BASE_H
 
-
 #include "forms_fwd.h"
+
+namespace lyx {
+namespace frontend {
 
 /// A base class for the fdesign-generated structs
 struct FD_base {
 	virtual ~FD_base();
 	FL_FORM * form;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FDESIGN_BASE_H

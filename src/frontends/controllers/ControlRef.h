@@ -16,6 +16,8 @@
 #include "ControlCommand.h"
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
 /** A controller for the Ref Dialog.
  */
@@ -40,5 +42,8 @@ private:
 	 Allows easy insertion of multiple references. */
 	virtual bool disconnectOnApply() const { return true; }
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLREF_H

@@ -60,6 +60,10 @@ namespace os = lyx::support::os;
 using std::ostringstream;
 using std::string;
 
+using lyx::frontend::colorCache;
+using lyx::frontend::GView;
+using lyx::frontend::XformsColor;
+
 
 extern BufferList bufferlist;
 

@@ -12,9 +12,10 @@
 #ifndef FORMERT_H
 #define FORMERT_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlERT;
 struct FD_ert;
@@ -34,5 +35,8 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMERT_H

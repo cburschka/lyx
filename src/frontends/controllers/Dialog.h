@@ -12,16 +12,17 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-
 #include "Kernel.h"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
-
 class LyXView;
-class ButtonController;
 
+namespace lyx {
+namespace frontend {
+
+class ButtonController;
 
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
@@ -251,5 +252,7 @@ private:
 	std::string title_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // DIALOG_H

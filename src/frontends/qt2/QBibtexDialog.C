@@ -28,6 +28,8 @@ using lyx::support::ChangeExtension;
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),
@@ -164,3 +166,6 @@ void QBibtexDialog::closeEvent(QCloseEvent *e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

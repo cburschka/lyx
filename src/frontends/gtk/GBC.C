@@ -15,6 +15,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 GBC::GBC(ButtonController const & parent,
 	 string const & cancel, string const & close)
@@ -39,3 +41,6 @@ void GBC::setButtonLabel(Gtk::Button * btn, string const & label) const
 {
 	btn->set_label(Glib::locale_to_utf8(label));
 }
+
+} // namespace frontend
+} // namespace lyx

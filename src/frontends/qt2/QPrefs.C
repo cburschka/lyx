@@ -64,6 +64,8 @@ using std::ostringstream;
 using std::pair;
 using std::vector;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlPrefs, QView<QPrefsDialog> > base_class;
 
@@ -98,11 +100,13 @@ void QPrefs::build_dialog()
 
 	langmod->defaultLanguageCO->clear();
 	// store the lang identifiers for later
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
+	using lyx::frontend::LanguagePair;
+	vector<LanguagePair> const langs =
+		lyx::frontend::getLanguageData(false);
 	lang_ = getSecond(langs);
 
-	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
-	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
 		langmod->defaultLanguageCO->insertItem(toqstr(lit->first));
 	}
@@ -615,3 +619,6 @@ void QPrefs::update_contents()
 
 	dialog_->updateConverters();
 }
+
+} // namespace frontend
+} // namespace lyx

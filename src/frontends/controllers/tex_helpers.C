@@ -24,21 +24,24 @@
 #include <boost/cregex.hpp>
 #include <fstream>
 
-using lyx::support::contains;
-using lyx::support::GetFileContents;
-using lyx::support::getVectorFromString;
-using lyx::support::LibFileSearch;
-using lyx::support::OnlyFilename;
-using lyx::support::Path;
-using lyx::support::Path;
-using lyx::support::split;
-using lyx::support::Systemcall;
-using lyx::support::token;
-using lyx::support::user_lyxdir;
-
 using std::string;
 using std::endl;
 
+namespace lyx {
+
+using support::contains;
+using support::GetFileContents;
+using support::getVectorFromString;
+using support::LibFileSearch;
+using support::OnlyFilename;
+using support::Path;
+using support::Path;
+using support::split;
+using support::Systemcall;
+using support::token;
+using support::user_lyxdir;
+
+namespace frontend {
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -80,7 +83,7 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 		*it = regex.Merge((*it), "/");
 	}
 
-	lyx::eliminate_duplicates(list);
+	eliminate_duplicates(list);
 }
 
 
@@ -128,3 +131,6 @@ string const getTexFileFromList(string const & file,
 
 	return classfile;
 }
+
+} // namespace frontend
+} // namespace lyx

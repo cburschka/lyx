@@ -14,9 +14,11 @@
 #ifndef FORMEXTERNAL_H
 #define FORMEXTERNAL_H
 
-
 #include "FormDialogView.h"
 #include <map>
+
+namespace lyx {
+namespace frontend {
 
 class ControlExternal;
 struct FD_external;
@@ -77,5 +79,8 @@ private:
 	boost::scoped_ptr<FD_external_crop>    crop_;
 	boost::scoped_ptr<FD_external_options> options_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMEXTERNAL_H

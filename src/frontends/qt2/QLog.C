@@ -22,6 +22,8 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlLog, QView<QLogDialog> > base_class;
 
@@ -45,3 +47,6 @@ void QLog::update_contents()
 
 	dialog_->logTV->setText(toqstr(ss.str()));
 }
+
+} // namespace frontend
+} // namespace lyx

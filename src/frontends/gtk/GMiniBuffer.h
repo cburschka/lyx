@@ -15,6 +15,9 @@
 
 #include "frontends/Timeout.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlCommandBuffer;
 
 class GMiniBuffer : public SigC::Object
@@ -66,5 +69,8 @@ private:
 	Gtk::TreeView listView_;
 	Glib::RefPtr<Gtk::TreeSelection> listSel_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

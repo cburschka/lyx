@@ -25,6 +25,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlCommand, QView<QURLDialog> > base_class;
 
 QURL::QURL(Dialog & parent)
@@ -78,3 +81,6 @@ bool QURL::isValid()
 
 	return !u.empty() || !n.empty();
 }
+
+} // namespace frontend
+} // namespace lyx

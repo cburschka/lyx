@@ -26,6 +26,8 @@
 #include <qspinbox.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlPrint, QView<QLPrintDialog> > base_class;
 
@@ -104,3 +106,6 @@ void QPrint::apply()
 
 	controller().params() = pp;
 }
+
+} // namespace frontend
+} // namespace lyx

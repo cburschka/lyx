@@ -16,9 +16,13 @@
 
 #include <vector>
 
+class Format;
+
+namespace lyx {
+namespace frontend {
+
 class ControlSendto;
 class QSendtoDialog;
-class Format;
 
 /** This class provides a Qt implementation of the Custom Export Dialog.
  */
@@ -42,5 +46,8 @@ private:
 	///
 	std::vector<Format const *> all_formats_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QSENDTO_H

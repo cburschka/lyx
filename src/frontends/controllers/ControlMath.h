@@ -18,6 +18,8 @@
 #include "Dialog.h"
 #include "lfuns.h" // for kb_action
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath : public Dialog::Controller {
 public:
@@ -86,5 +88,8 @@ extern int const nr_latex_ams_ops;
  * math symbol.
  */
 std::string const find_xpm(std::string const & name);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NOT CONTROLMATH

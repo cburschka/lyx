@@ -13,8 +13,10 @@
 #ifndef QVSPACEDIALOG_H
 #define QVSPACEDIALOG_H
 
-
 #include "ui/QVSpaceDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QVSpace;
 
@@ -34,5 +36,8 @@ protected:
 private:
 	QVSpace * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QVSPACEDIALOG_H

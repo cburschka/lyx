@@ -13,8 +13,10 @@
 #ifndef FORMBIBITEM_H
 #define FORMBIBITEM_H
 
-
 #include "FormDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 struct FD_bibitem;
@@ -36,5 +38,8 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMBIBITEM_H

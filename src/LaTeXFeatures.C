@@ -41,6 +41,8 @@ using std::ostream;
 using std::ostringstream;
 using std::set;
 
+namespace biblio = lyx::biblio;
+
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p, bool n)
 	: buffer_(&b), params_(p), nice_(n)

@@ -18,6 +18,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlCommand::ControlCommand(Dialog & dialog, string const & lfun_name)
 	: Dialog::Controller(dialog),
@@ -49,3 +51,6 @@ void ControlCommand::dispatchParams()
 							      params_);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
+
+} // namespace frontend
+} // namespace lyx

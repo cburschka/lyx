@@ -14,9 +14,15 @@
 
 #include <string>
 
+namespace lyx {
+namespace frontend {
+
 /** name is the name of the glade file, without path or extension.
  *  Eg, "aboutlyx", "tableCreate".
  */
 std::string const findGladeFile(std::string const & name);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // NOT GHELPERS_H

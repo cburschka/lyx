@@ -14,9 +14,10 @@
 #ifndef FORM_MATHSSPACE_H
 #define FORM_MATHSSPACE_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 struct FD_maths_space;
@@ -43,5 +44,8 @@ private:
 	/// The current choice.
 	int space_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //  FORM_MATHSSPACE_H

@@ -12,8 +12,10 @@
 #ifndef QBIBITEMDIALOG_H
 #define QBIBITEMDIALOG_H
 
-
 #include "ui/QBibitemDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QBibitem;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QBibitem * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBIBITEMDIALOG_H

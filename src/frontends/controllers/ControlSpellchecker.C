@@ -36,12 +36,16 @@
 
 #include "frontends/Alert.h"
 
-using lyx::support::bformat;
-
 using std::advance;
 using std::distance;
 using std::endl;
 using std::string;
+
+namespace lyx {
+
+using support::bformat;
+
+namespace frontend {
 
 
 ControlSpellchecker::ControlSpellchecker(Dialog & parent)
@@ -259,7 +263,7 @@ void ControlSpellchecker::replace(string const & replacement)
 	lyxerr << "ControlSpellchecker::replace("
 	       << replacement << ")" << std::endl;
 	BufferView & bufferview = *kernel().bufferview();
-	lyx::cap::replaceWord(bufferview.cursor(), replacement);
+	cap::replaceWord(bufferview.cursor(), replacement);
 	kernel().buffer().markDirty();
 	bufferview.update();
 	// fix up the count
@@ -299,3 +303,6 @@ void ControlSpellchecker::ignoreAll()
 	speller_->accept(word_);
 	check();
 }
+
+} // namespace frontend
+} // namespace lyx

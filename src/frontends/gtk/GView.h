@@ -16,6 +16,9 @@
 #include "bufferview_funcs.h"
 #include <map>
 
+namespace lyx {
+namespace frontend {
+
 class GMiniBuffer;
 
 class GView : public LyXView, public Gtk::Window
@@ -65,5 +68,8 @@ private:
 	boost::scoped_ptr<GMiniBuffer> minibuffer_;
 	Gtk::Widget * workArea_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -17,7 +17,8 @@
 
 using std::vector;
 
-namespace frnt {
+namespace lyx {
+namespace frontend {
 
 vector<FamilyPair> const getFamilyData()
 {
@@ -258,4 +259,5 @@ vector<ColorPair> const getColorData()
 	return color;
 }
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx

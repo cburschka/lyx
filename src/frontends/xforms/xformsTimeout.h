@@ -16,6 +16,8 @@
 
 #include "frontends/Timeout.h"
 
+namespace lyx {
+namespace frontend {
 
 /**
  * This class executes the callback when the timeout expires
@@ -40,5 +42,8 @@ private:
 	///
 	int timeout_id;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XFORMSTIMEOUT_H

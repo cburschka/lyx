@@ -29,6 +29,8 @@
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QCitationDialog::QCitationDialog(QCitation * form)
 	: QCitationDialogBase(0, 0, false, 0),
@@ -282,3 +284,6 @@ void QCitationDialog::find(biblio::Direction dir)
 	add_->availableLB->setSelected(found, true);
 	add_->availableLB->ensureCurrentVisible();
 }
+
+} // namespace frontend
+} // namespace lyx

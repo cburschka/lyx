@@ -39,6 +39,8 @@ using lyx::support::isStrDbl;
 using lyx::support::strToDbl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -204,3 +206,6 @@ void QExternalDialog::widthUnitChanged()
 	heightUnitCO->setEnabled(useHeight);
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -18,6 +18,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 namespace
 {
 
@@ -229,3 +232,6 @@ void GMenubar::onCommandActivate(MenuItem const * item,
 {
 	view_->getLyXFunc().dispatch(item->func(), true);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlChanges;
 struct FD_changes;
 
@@ -36,5 +39,8 @@ private:
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMCHANGES_H

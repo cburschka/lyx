@@ -25,11 +25,14 @@
 #include "lyx_forms.h"
 #include "support/tostr.h"
 
-using lyx::support::getStringFromVector;
-using lyx::support::subst;
-
 using std::string;
 
+namespace lyx {
+
+using support::getStringFromVector;
+using support::subst;
+
+namespace frontend {
 
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
 
@@ -113,3 +116,6 @@ void FormWrap::update()
 	else
 		placement_.set(params.placement.c_str()[0]);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -10,9 +10,10 @@
 
 #include <config.h>
 
-
 #include "QAboutDialog.h"
 
+namespace lyx {
+namespace frontend {
 
 QAboutDialog::QAboutDialog(QWidget * parent, const char * name,
 			   bool modal, WFlags fl)
@@ -23,3 +24,6 @@ QAboutDialog::QAboutDialog(QWidget * parent, const char * name,
 
 QAboutDialog::~QAboutDialog()
 {}
+
+} // namespace frontend
+} // namespace lyx

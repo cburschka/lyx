@@ -32,10 +32,15 @@
 #include <qpixmap.h>
 #include <qstatusbar.h>
 
-using lyx::support::LibFileSearch;
-
 using std::string;
 
+qfont_loader fontloader;
+
+namespace lyx {
+
+using support::LibFileSearch;
+
+namespace frontend {
 
 namespace {
 
@@ -43,7 +48,6 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-qfont_loader fontloader;
 
 
 QtView::QtView(unsigned int width, unsigned int height)
@@ -160,3 +164,6 @@ void QtView::busy(bool yes) const
 	else
 		QApplication::restoreOverrideCursor();
 }
+
+} // namespace frontend
+} // namespace lyx

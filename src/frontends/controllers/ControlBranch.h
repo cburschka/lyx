@@ -19,6 +19,8 @@
 class BranchList;
 class InsetBranchParams;
 
+namespace lyx {
+namespace frontend {
 
 class ControlBranch : public Dialog::Controller {
 public:
@@ -42,5 +44,8 @@ private:
 	///
 	boost::scoped_ptr<InsetBranchParams> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLBRANCH_H

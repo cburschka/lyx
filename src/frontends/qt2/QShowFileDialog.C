@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QShowFileDialog::QShowFileDialog(QShowFile * form)
 	: QShowFileDialogBase(0, 0, false, 0),
@@ -31,3 +32,6 @@ void QShowFileDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

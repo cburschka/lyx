@@ -16,6 +16,9 @@
 
 class InsetFloatParams;
 
+namespace lyx {
+namespace frontend {
+
 class ControlFloat : public Dialog::Controller {
 public:
 	///
@@ -36,5 +39,8 @@ private:
 	///
 	boost::scoped_ptr<InsetFloatParams> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -26,13 +26,16 @@
 
 #include <algorithm>
 
-using lyx::support::LibFileSearch;
-using lyx::support::OnlyPath;
-using lyx::support::Systemcall;
-
 using std::endl;
 using std::string;
 
+namespace lyx {
+
+using support::LibFileSearch;
+using support::OnlyPath;
+using support::Systemcall;
+
+namespace frontend {
 
 // The global fontloader
 xfont_loader fontloader;
@@ -381,3 +384,6 @@ bool xfont_loader::available(LyXFont const & f)
 		getFontinfo(f.family(), f.series(), f.realShape());
 	return fontinfo[f.family()][f.series()][f.realShape()]->exist();
 }
+
+} // namespace frontend
+} // namespace lyx

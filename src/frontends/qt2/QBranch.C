@@ -27,6 +27,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlBranch, QView<QBranchDialog> > base_class;
 
@@ -74,3 +76,6 @@ void QBranch::apply()
 	string const type = fromqstr(dialog_->branchCO->currentText());
 	controller().params().branch = type;
 }
+
+} // namespace frontend
+} // namespace lyx

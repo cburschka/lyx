@@ -49,6 +49,8 @@ using std::floor;
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 
@@ -128,7 +130,7 @@ int getUnitNo(char const * const c[], string const & s) {
 void QGraphics::update_contents()
 {
 	// clear and fill in the comboboxes
-	vector<string> const bb_units = frnt::getBBUnits();
+	vector<string> const bb_units = lyx::frontend::getBBUnits();
 	dialog_->lbXunit->clear();
 	dialog_->lbYunit->clear();
 	dialog_->rtXunit->clear();
@@ -280,7 +282,7 @@ void QGraphics::update_contents()
 
 	dialog_->origin->clear();
 
-	using namespace frnt;
+	using namespace lyx::frontend;
 	vector<RotationOriginPair> origindata = getRotationOriginData();
 	vector<string> const origin_lang = getFirst(origindata);
 	QGraphics::origin_ltx = getSecond(origindata);
@@ -291,7 +293,7 @@ void QGraphics::update_contents()
 
 	if (!igp.rotateOrigin.empty())
 		dialog_->origin->setCurrentItem(
-			::getItemNo(origin_ltx, igp.rotateOrigin));
+			getItemNo(origin_ltx, igp.rotateOrigin));
 	else
 		dialog_->origin->setCurrentItem(0);
 
@@ -425,3 +427,6 @@ void QGraphics::slotEdit()
 {
 	controller().editGraphics();
 }
+
+} // namespace frontend
+} // namespace lyx

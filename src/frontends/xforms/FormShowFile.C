@@ -18,9 +18,10 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 FormShowFile::FormShowFile(Dialog & parent)
 	: FormController<ControlShowFile, FormBrowser>(parent, _("Show File"))
@@ -45,3 +46,6 @@ void FormShowFile::update()
 	else
 		fl_add_browser_line(dialog_->browser, contents.c_str());
 }
+
+} // namespace frontend
+} // namespace lyx

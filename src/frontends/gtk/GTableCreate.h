@@ -14,6 +14,9 @@
 
 #include "GViewBase.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlTableCreate;
 
 class GTableCreate : public GViewCB<ControlTabularCreate, GViewGladeB>
@@ -27,5 +30,8 @@ private:
 	Gtk::SpinButton *rows_;
 	Gtk::SpinButton *columns_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -23,6 +23,8 @@
 using std::string;
 using std::vector;
 
+namespace lyx {
+namespace frontend {
 
 ControlBranch::ControlBranch(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -55,3 +57,6 @@ BranchList const & ControlBranch::branchlist() const
 {
 	return kernel().buffer().params().branchlist();
 }
+
+} // namespace frontend
+} // namespace lyx

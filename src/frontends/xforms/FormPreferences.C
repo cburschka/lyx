@@ -37,13 +37,6 @@
 
 #include <iomanip>
 
-using lyx::support::AddName;
-using lyx::support::ChangeExtension;
-using lyx::support::rtrim;
-using lyx::support::strToDbl;
-using lyx::support::trim;
-using lyx::support::user_lyxdir;
-
 using std::endl;
 using std::make_pair;
 using std::max;
@@ -53,6 +46,16 @@ using std::pair;
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::AddName;
+using support::ChangeExtension;
+using support::rtrim;
+using support::strToDbl;
+using support::trim;
+using support::user_lyxdir;
+
+namespace frontend {
 
 namespace {
 
@@ -1452,12 +1455,12 @@ void FormPreferences::Language::build()
 	fl_set_input_return(dialog_->input_command_end, FL_RETURN_CHANGED);
 
 	// Store the lang identifiers for later
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
+	vector<LanguagePair> const langs = getLanguageData(false);
 	lang_ = getSecond(langs);
 
 	FL_OBJECT * obj = dialog_->combox_default_lang;
-	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
-	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
 		fl_addto_combox(obj, lit->first.c_str());
 	}
@@ -1626,22 +1629,22 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 		(fl_get_counter_value(dialog_->counter_wm_jump));
 
 	// See FIXME below
-	// lyx::graphics::DisplayType old_value = rc.display_graphics;
+	// graphics::DisplayType old_value = rc.display_graphics;
 	switch (fl_get_choice(dialog_->choice_graphics_display)) {
 	case 4:
-		rc.display_graphics = lyx::graphics::NoDisplay;
+		rc.display_graphics = graphics::NoDisplay;
 		break;
 	case 3:
-		rc.display_graphics = lyx::graphics::ColorDisplay;
+		rc.display_graphics = graphics::ColorDisplay;
 		break;
 	case 2:
-		rc.display_graphics = lyx::graphics::GrayscaleDisplay;
+		rc.display_graphics = graphics::GrayscaleDisplay;
 		break;
 	case 1:
-		rc.display_graphics = lyx::graphics::MonochromeDisplay;
+		rc.display_graphics = graphics::MonochromeDisplay;
 		break;
 	default:
-		rc.display_graphics = lyx::graphics::ColorDisplay;
+		rc.display_graphics = graphics::ColorDisplay;
 		break;
 	}
 
@@ -1650,7 +1653,7 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 #endif
 #if 0
 	if (old_value != rc.display_graphics) {
-		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();
+		graphics::GCache & gc = graphics::GCache::get();
 		gc.changeDisplay();
 	}
 #endif
@@ -1729,16 +1732,16 @@ void FormPreferences::LnFmisc::update(LyXRC const & rc)
 	fl_set_counter_value(dialog_->counter_wm_jump, rc.wheel_jump);
 
 	switch (rc.display_graphics) {
-	case lyx::graphics::NoDisplay:
+	case graphics::NoDisplay:
 		fl_set_choice(dialog_->choice_graphics_display, 4);
 		break;
-	case lyx::graphics::ColorDisplay:
+	case graphics::ColorDisplay:
 		fl_set_choice(dialog_->choice_graphics_display, 3);
 		break;
-	case lyx::graphics::GrayscaleDisplay:
+	case graphics::GrayscaleDisplay:
 		fl_set_choice(dialog_->choice_graphics_display, 2);
 		break;
-	case lyx::graphics::MonochromeDisplay:
+	case graphics::MonochromeDisplay:
 		fl_set_choice(dialog_->choice_graphics_display, 1);
 		break;
 	default:
@@ -2798,3 +2801,6 @@ void FormPreferences::SpellOptions::update(LyXRC const & rc)
 	// buttons.
 	input(0);
 }
+
+} // namespace frontend
+} // namespace lyx

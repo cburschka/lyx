@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlSearch.h"
 #include "QSearchDialog.h"
 #include "QSearch.h"
@@ -22,6 +21,9 @@
 #include <qlineedit.h>
 
 using std::string;
+
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -110,3 +112,6 @@ void QSearchDialog::replaceallClicked()
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -18,6 +18,8 @@
 #include <qlistview.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QTocDialog::QTocDialog(QToc * form)
 	: QTocDialogBase(0, 0, false, 0),
@@ -70,3 +72,6 @@ void QTocDialog::closeEvent(QCloseEvent * e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,7 +12,6 @@
 #ifndef QLPOPUPMENU_H
 #define QLPOPUPMENU_H
 
-
 #include <qpopupmenu.h>
 
 #include "funcrequest.h"
@@ -24,6 +23,10 @@ class MenuBackend;
 class MenuItem;
 class Menu;
 class QMenuData;
+
+namespace lyx {
+namespace frontend {
+
 class QLMenubar;
 class QLPopupMenu;
 
@@ -58,5 +61,8 @@ private:
 	///
 	Funcs funcs_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLPOPUPMENU_H

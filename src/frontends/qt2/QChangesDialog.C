@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include <qpushbutton.h>
 
 #include "QChangesDialog.h"
 #include "QChanges.h"
 
+namespace lyx {
+namespace frontend {
 
 QChangesDialog::QChangesDialog(QChanges * form)
 	: QChangesDialogBase(0, 0, false, 0),
@@ -49,3 +50,6 @@ void QChangesDialog::closeEvent(QCloseEvent *e)
 	form_->slotWMHide();
 	e->accept();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -12,8 +12,10 @@
 #ifndef QURLDIALOG_H
 #define QURLDIALOG_H
 
-
 #include "ui/QURLDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QURL;
 
@@ -31,5 +33,8 @@ protected:
 private:
 	QURL * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QURLDIALOG_H

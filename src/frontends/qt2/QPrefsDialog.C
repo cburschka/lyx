@@ -14,7 +14,6 @@
 #include "ControlPrefs.h"
 #include "QPrefs.h"
 
-
 #include "QPrefsDialog.h"
 
 #include "ui/QPrefAsciiModule.h"
@@ -49,6 +48,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: QPrefsDialogBase(0, 0, false, 0), form_(form)
@@ -547,3 +548,6 @@ void QPrefsDialog::select_typewriter(const QString& name)
 {
 	screenfontsModule->screenTypewriterFE->set(QFont(name), name);
 }
+
+} // namespace frontend
+} // namespace lyx

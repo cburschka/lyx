@@ -16,6 +16,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 GViewBase::GViewBase(Dialog & parent, string const & t, bool allowResize) :
 	Dialog::View(parent, t), allowResize_(allowResize)
@@ -38,7 +40,7 @@ void GViewBase::build()
 {
 	doBuild();
 	string const iconName =
-		lyx::support::LibFileSearch("images", "lyx", "xpm");
+		support::LibFileSearch("images", "lyx", "xpm");
 	if (!iconName.empty())
 		window()->set_icon_from_file(iconName);
 	window()->signal_delete_event().connect(
@@ -150,3 +152,6 @@ const Gtk::Window * GViewGladeB::window() const
 	xml_->get_widget("dialog", win);
 	return win;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -13,9 +13,6 @@
 #ifndef XFONT_METRICS_H
 #define XFONT_METRICS_H
 
-
-
-
 #include <X11/Xlib.h>
 
 class LyXFont;

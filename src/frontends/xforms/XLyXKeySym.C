@@ -21,6 +21,17 @@ using std::endl;
 using std::string;
 
 
+bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
+{
+	using lyx::frontend::XLyXKeySym;
+	return static_cast<XLyXKeySym const &>(k1).keysym()
+		== static_cast<XLyXKeySym const &>(k2).keysym();
+}
+
+
+namespace lyx {
+namespace frontend {
+
 XLyXKeySym::XLyXKeySym()
 	: LyXKeySym(), keysym_(NoSymbol)
 {
@@ -106,9 +117,5 @@ string const XLyXKeySym::print(key_modifier::state mod) const
 	return kb_keymap::printKeySym(*this, mod);
 }
 
-
-bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
-{
-	return static_cast<XLyXKeySym const &>(k1).keysym()
-		== static_cast<XLyXKeySym const &>(k2).keysym();
-}
+} // namespace frontend
+} // namespace lyx

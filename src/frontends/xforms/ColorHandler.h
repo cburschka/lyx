@@ -12,7 +12,6 @@
 #ifndef COLOR_HANDLER_H
 #define COLOR_HANDLER_H
 
-
 #include "frontends/Painter.h"
 
 #include <map>
@@ -24,6 +23,9 @@
 
 class LColor_color;
 class LyXFont;
+
+namespace lyx {
+namespace frontend {
 
 /**
  * This is a factory class that can produce GCs with a specific
@@ -64,5 +66,8 @@ private:
 
 ///
 extern boost::scoped_ptr<LyXColorHandler> lyxColorHandler;
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

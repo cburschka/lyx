@@ -16,6 +16,9 @@
 #include "ControlCommand.h"
 #include "biblio.h"
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Citation dialogs.
  */
 class ControlCitation : public ControlCommand {
@@ -54,5 +57,7 @@ private:
 	static std::vector<biblio::CiteStyle> citeStyles_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLCITATION_H

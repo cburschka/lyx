@@ -14,11 +14,13 @@
 #ifndef RADIOBUTTONGROUP_H
 #define RADIOBUTTONGROUP_H
 
-
 #include "support/types.h"
 #include <vector>
 #include <utility>
 #include "forms_fwd.h"
+
+namespace lyx {
+namespace frontend {
 
 /** This class simplifies interaction with a group of radio buttons:
  *  one, and only one, can be selected.
@@ -31,8 +33,6 @@
  */
 class RadioButtonGroup {
 public:
-	///
-	typedef lyx::size_type size_type;
 
 	/// Register a radio button with its corresponding value.
 	void init(FL_OBJECT * ob, size_type value);
@@ -57,5 +57,8 @@ private:
 	///
 	ButtonValueMap map;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // RADIOBUTTONGROUP_H

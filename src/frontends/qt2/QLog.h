@@ -12,9 +12,10 @@
 #ifndef QLOG_H
 #define QLOG_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlLog;
 class QLogDialog;
@@ -36,5 +37,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLOG_H

@@ -30,6 +30,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 
@@ -361,3 +363,6 @@ void QTabular::closeGUI()
 			controller().set(LyXTabular::SET_PWIDTH, width);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

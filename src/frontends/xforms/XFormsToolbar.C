@@ -38,16 +38,16 @@
 #include <sstream>
 #include <vector>
 
-using lyx::frontend::Box;
-using lyx::frontend::BoxList;
-
-using lyx::support::compare_ascii_no_case;
-
 using std::distance;
 using std::endl;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::compare_ascii_no_case;
+
+namespace frontend {
 
 // some constants
 const int standardspacing = 2; // the usual space between items
@@ -183,13 +183,20 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 				raw_inactive_data, &inactive_pixmap, 0, 0);
 }
 
+} // namespace frontend
+} // namespace lyx
+
 
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner)
 {
+	using lyx::frontend::XFormsToolbar
 	return Toolbars::ToolbarPtr(new XFormsToolbar(tbb, owner));
 }
 
+
+namespace lyx {
+namespace frontend {
 
 XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
 			     LyXView & o)
@@ -234,7 +241,6 @@ XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
 
 	toolbar_->children().push_back(Box(padding, padding));
 
-	using lyx::frontend::WidgetMap;
 	owner_.metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
 						  &widgets_));
 
@@ -507,7 +513,7 @@ void XLayoutBox::open()
 
 void XLayoutBox::setEnabled(bool enable)
 {
-	::setEnabled(combox_, enable);
+	lyx::frontend::setEnabled(combox_, enable);
 }
 
 
@@ -530,3 +536,6 @@ void XLayoutBox::selected()
 	}
 	lyxerr << "ERROR (XLayoutBox::selected): layout not found!" << endl;
 }
+
+} // namespace frontend
+} // namespace lyx

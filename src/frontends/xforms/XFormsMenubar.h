@@ -24,12 +24,15 @@
 
 #include <vector>
 
-
 class LyXView;
-class XFormsView;
 class Menu;
 class MenuItem;
 class MenuBackend;
+
+namespace lyx {
+namespace frontend {
+
+class XFormsView;
 
 class XFormsMenubar : public Menubar {
 public:
@@ -69,9 +72,9 @@ private:
 	///
 	MenuBackend const * menubackend_;
 	///
-	lyx::frontend::Box * menubar_;
+	Box * menubar_;
 	///
-	lyx::frontend::WidgetMap widgets_;
+	WidgetMap widgets_;
 	///
 	struct ItemInfo {
 		///
@@ -91,4 +94,8 @@ private:
 	///
 	ButtonList buttonlist_;
 };
+
+} // namespace frontend
+} // namespace lyx
+
 #endif

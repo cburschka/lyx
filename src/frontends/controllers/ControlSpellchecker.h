@@ -16,8 +16,10 @@
 #include "WordLangTuple.h"
 #include <boost/scoped_ptr.hpp>
 
-
 class SpellBase;
+
+namespace lyx {
+namespace frontend {
 
 /** A controller for Spellchecker dialogs.
  */
@@ -87,5 +89,8 @@ private:
 	/// The actual spellchecker object
 	boost::scoped_ptr<SpellBase> speller_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLSPELLCHECKER_H

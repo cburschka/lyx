@@ -15,6 +15,8 @@
 
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlParagraph;
 class QParagraphDialog;
@@ -35,5 +37,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QPARAGRAPH_H

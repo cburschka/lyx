@@ -12,9 +12,10 @@
 #ifndef QINCLUDE_H
 #define QINCLUDE_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlInclude;
 class QIncludeDialog;
@@ -43,5 +44,8 @@ private:
 	/// browse for a file
 	void browse();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QINCLUDE_H

@@ -20,6 +20,9 @@
 #include "QERT.h"
 #include "Qt2BC.h"
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlERT, QView<QERTDialog> > base_class;
 
 
@@ -61,3 +64,6 @@ void QERT::update_contents()
 
 	rb->setChecked(true);
 }
+
+} // namespace frontend
+} // namespace lyx

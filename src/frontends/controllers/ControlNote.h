@@ -18,6 +18,9 @@
 
 class InsetNoteParams;
 
+namespace lyx {
+namespace frontend {
+
 class ControlNote : public Dialog::Controller {
 public:
 	///
@@ -39,5 +42,8 @@ private:
 	///
 	boost::scoped_ptr<InsetNoteParams> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLNOTE_H

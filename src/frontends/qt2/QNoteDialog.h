@@ -14,6 +14,8 @@
 
 #include "ui/QNoteDialogBase.h"
 
+namespace lyx {
+namespace frontend {
 
 class QNote;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QNote * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QNOTEDIALOG_H

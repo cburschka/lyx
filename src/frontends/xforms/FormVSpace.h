@@ -12,9 +12,11 @@
 #ifndef FORM_VSPACE_H
 #define FORM_VSPACE_H
 
-
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
+
+namespace lyx {
+namespace frontend {
 
 struct FD_vspace;
 class ControlVSpace;
@@ -37,5 +39,8 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

@@ -37,13 +37,6 @@
 
 #include <cmath>
 
-using lyx::support::bformat;
-using lyx::support::float_equal;
-using lyx::support::getStringFromVector;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
-using lyx::support::token;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
 #endif
@@ -53,6 +46,16 @@ using std::endl;
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::bformat;
+using support::float_equal;
+using support::getStringFromVector;
+using support::strToDbl;
+using support::strToInt;
+using support::token;
+
+namespace frontend {
 
 namespace {
 
@@ -200,7 +203,7 @@ void FormGraphics::build()
 	fl_set_input_filter(bbox_->input_bb_y0, fl_unsigned_float_filter);
 	fl_set_input_filter(bbox_->input_bb_y1, fl_unsigned_float_filter);
 
-	string const bb_units = getStringFromVector(frnt::getBBUnits(), "|");
+	string const bb_units = getStringFromVector(getBBUnits(), "|");
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 
 	// set up the tooltips for the bounding-box-section
@@ -245,7 +248,6 @@ void FormGraphics::build()
 
 	fl_set_input_filter(extra_->input_rotate_angle, fl_float_filter);
 
-	using namespace frnt;
 	vector<RotationOriginPair> origindata = getRotationOriginData();
 
 	// Store the identifiers for later
@@ -311,19 +313,19 @@ void FormGraphics::apply()
 
 	switch (fl_get_choice(file_->choice_display)) {
 	case 5:
-		igp.display = lyx::graphics::NoDisplay;
+		igp.display = graphics::NoDisplay;
 		break;
 	case 4:
-		igp.display = lyx::graphics::ColorDisplay;
+		igp.display = graphics::ColorDisplay;
 		break;
 	case 3:
-		igp.display = lyx::graphics::GrayscaleDisplay;
+		igp.display = graphics::GrayscaleDisplay;
 		break;
 	case 2:
-		igp.display = lyx::graphics::MonochromeDisplay;
+		igp.display = graphics::MonochromeDisplay;
 		break;
 	case 1:
-		igp.display = lyx::graphics::DefaultDisplay;
+		igp.display = graphics::DefaultDisplay;
 	}
 
 	// first item in choice_width means scaling
@@ -437,19 +439,19 @@ void FormGraphics::update() {
 	fl_set_input(file_->input_lyxscale, tostr(igp.lyxscale).c_str());
 
 	switch (igp.display) {
-	case lyx::graphics::NoDisplay:
+	case graphics::NoDisplay:
 		fl_set_choice(file_->choice_display, 5);
 		break;
-	case lyx::graphics::ColorDisplay:
+	case graphics::ColorDisplay:
 		fl_set_choice(file_->choice_display, 4);
 		break;
-	case lyx::graphics::GrayscaleDisplay:
+	case graphics::GrayscaleDisplay:
 		fl_set_choice(file_->choice_display, 3);
 		break;
-	case lyx::graphics::MonochromeDisplay:
+	case graphics::MonochromeDisplay:
 		fl_set_choice(file_->choice_display, 2);
 		break;
-	case lyx::graphics::DefaultDisplay:
+	case graphics::DefaultDisplay:
 		fl_set_choice(file_->choice_display, 1);
 	}
 
@@ -657,3 +659,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 	return activate;
 }
+
+} // namespace frontend
+} // namespace lyx

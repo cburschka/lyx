@@ -20,13 +20,16 @@
 #include "QLPopupMenu.h"
 #include "qt_helpers.h"
 
-using lyx::support::subst;
-
 using std::distance;
 using std::make_pair;
 using std::string;
 using std::pair;
 
+namespace lyx {
+
+using support::subst;
+
+namespace frontend {
 
 namespace {
 
@@ -118,3 +121,6 @@ void QLPopupMenu::showing()
 	owner_->backend().expand(frommenu, tomenu, owner_->view());
 	populate(&tomenu);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -25,6 +25,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlInclude, QView<QIncludeDialog> > base_class;
 
@@ -138,3 +140,6 @@ bool QInclude::isValid()
 {
 	return !dialog_->filenameED->text().isEmpty();
 }
+
+} // namespace frontend
+} // namespace lyx

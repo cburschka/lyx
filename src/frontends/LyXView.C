@@ -48,6 +48,7 @@ using lyx::support::OnlyFilename;
 using std::endl;
 using std::string;
 
+using lyx::frontend::ControlCommandBuffer;
 
 string current_layout;
 

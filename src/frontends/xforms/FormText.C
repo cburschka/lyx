@@ -23,10 +23,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::trim;
-
 using std::string;
 
+namespace lyx {
+
+using support::trim;
+
+namespace frontend {
 
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 
@@ -68,3 +71,6 @@ void FormText::apply()
 {
 	controller().params().setContents(fl_get_input(dialog_->input_text));
 }
+
+} // namespace frontend
+} // namespace lyx

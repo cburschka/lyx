@@ -12,8 +12,10 @@
 #ifndef XFORMS_RESIZE_H
 #define XFORMS_RESIZE_H
 
-
 #include "forms_fwd.h"
+
+namespace lyx {
+namespace frontend {
 
 /** Ascertains the scaling factor needed to ensure that all labels fit
     within their button.
@@ -29,5 +31,8 @@ double get_scale_to_fit(FL_FORM * form);
     Tabfolders are scaled also by recursively calling this function.
  */
 void scale_form_horizontally(FL_FORM * form, double factor);
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // XFORMS_RESIZE_H

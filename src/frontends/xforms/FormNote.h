@@ -12,9 +12,10 @@
 #ifndef FORMNOTE_H
 #define FORMNOTE_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlNote;
 struct FD_note;
@@ -33,5 +34,8 @@ private:
 	/// Update dialog before showing it
 	virtual void update();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMNOTE_H

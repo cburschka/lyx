@@ -13,8 +13,10 @@
 #ifndef QPARAGRAPHDIALOG_H
 #define QPARAGRAPHDIALOG_H
 
-
 #include "ui/QParagraphDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QParagraph;
 
@@ -30,5 +32,8 @@ protected slots:
 	void change_adaptor();
 	void enableLinespacingValue(int);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QPARAGRAPHDIALOG_H

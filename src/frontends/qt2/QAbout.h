@@ -12,9 +12,10 @@
 #ifndef FORMABOUT_H
 #define FORMABOUT_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class QAboutDialog;
 class ControlAboutlyx;
@@ -32,5 +33,8 @@ private:
 	// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMABOUT_H

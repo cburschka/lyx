@@ -10,13 +10,13 @@
 
 #include <config.h>
 
-
-
 #include "Qt2BC.h"
 #include "ButtonController.h"
 #include "qt_helpers.h"
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 QDialogView::QDialogView(Dialog & parent, std::string const & t)
 	: Dialog::View(parent,t), updating_(false)
@@ -110,3 +110,6 @@ void QDialogView::slotRestore()
 {
 	dialog().RestoreButton();
 }
+
+} // namespace frontend
+} // namespace lyx

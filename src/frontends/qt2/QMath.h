@@ -12,8 +12,10 @@
 #ifndef QMATH_H
 #define QMATH_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 class QMathDialog;
@@ -60,5 +62,8 @@ private:
 	/// Build the dialog.
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QMATH_H

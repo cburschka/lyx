@@ -12,8 +12,10 @@
 #ifndef QERRORLIST_H
 #define QERRORLIST_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlErrorList;
 class QErrorListDialog;
@@ -35,5 +37,8 @@ private:
 	/// update contents
 	virtual void update_contents();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QERRORLIST_H

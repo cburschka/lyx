@@ -22,6 +22,9 @@ namespace LyXScreenFactory {
 
 LyXScreen * create(WorkArea & owner)
 {
+	using lyx::frontend::GScreen;
+	using lyx::frontend::GWorkArea;
+
 	return new GScreen(static_cast<GWorkArea &>(owner));
 }
 

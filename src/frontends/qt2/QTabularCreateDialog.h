@@ -13,8 +13,10 @@
 #ifndef QTABULARCREATEDIALOG_H
 #define QTABULARCREATEDIALOG_H
 
-
 #include "ui/QTabularCreateDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QTabularCreate;
 
@@ -28,5 +30,8 @@ protected slots:
 private:
 	QTabularCreate * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QTABULARCREATEDIALOG_H

@@ -14,9 +14,13 @@
 
 #include <qwidget.h>
 
-class QtView;
-class QCommandEdit;
 class QListBoxItem;
+
+namespace lyx {
+namespace frontend {
+
+class QCommandEdit;
+class QtView;
 class ControlCommandBuffer;
 
 class QCommandBuffer : public QWidget {
@@ -49,5 +53,8 @@ private:
 	/// command widget
 	QCommandEdit * edit_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QCOMMANDBUFFER_H

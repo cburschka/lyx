@@ -13,8 +13,10 @@
 #ifndef QREFDIALOG_H
 #define QREFDIALOG_H
 
-
 #include "ui/QRefDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QRef;
 
@@ -38,5 +40,8 @@ protected:
 private:
 	QRef * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QREFDIALOG_H

@@ -19,6 +19,9 @@
 #include "ButtonPolicies.h"
 #include "debug.h"
 
+namespace lyx {
+namespace frontend {
+
 template <class Button, class Widget>
 GuiBC<Button, Widget>::GuiBC(ButtonController const & parent,
 			     std::string const & cancel, std::string const & close)
@@ -73,3 +76,6 @@ void GuiBC<Button, Widget>::refreshReadOnly() const
 		setWidgetEnabled(*iter, enable);
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

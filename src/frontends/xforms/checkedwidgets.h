@@ -12,9 +12,11 @@
 #ifndef CHECKEDWIDGETS_H
 #define CHECKEDWIDGETS_H
 
-
 #include "BCView.h"
 #include "forms_fwd.h"
+
+namespace lyx {
+namespace frontend {
 
 void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label = 0);
@@ -56,5 +58,8 @@ private:
 	FL_OBJECT * input_;
 	FL_OBJECT * label_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CHECKEDWIDGETS_H

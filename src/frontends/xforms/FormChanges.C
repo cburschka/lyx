@@ -19,8 +19,11 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
+
+
+namespace lyx {
+namespace frontend {
 
 
 typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
@@ -76,3 +79,6 @@ ButtonPolicy::SMInput FormChanges::input(FL_OBJECT * obj, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -19,6 +19,9 @@
 #include "ButtonPolicies.h"
 #include "GBC.h"
 
+namespace lyx {
+namespace frontend {
+
 class GViewBase : public Dialog::View, public SigC::Object
 {
 public:
@@ -123,5 +126,8 @@ Controller const & GViewCB<Controller, Base>::controller() const
 {
 	return static_cast<Controller const &>(getController());
 }
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

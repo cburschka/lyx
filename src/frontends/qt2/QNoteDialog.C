@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include "QNote.h"
 #include "QNoteDialog.h"
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 QNoteDialog::QNoteDialog(QNote * form)
 	: QNoteDialogBase(0, 0, false, 0),
@@ -39,3 +40,6 @@ void QNoteDialog::change_adaptor()
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

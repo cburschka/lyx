@@ -22,6 +22,9 @@
 
 #include "lyx_forms.h"
 
+using lyx::frontend::formatted;
+using lyx::frontend::idex;
+using lyx::frontend::parse_shortcut;
 
 using std::make_pair;
 using std::pair;

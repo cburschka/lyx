@@ -23,7 +23,8 @@ class LColor_color;
 
 
 /** Functions of use to the character GUI controller and view */
-namespace frnt {
+namespace lyx {
+namespace frontend {
 
 ///
 enum FONT_STATE {
@@ -65,6 +66,7 @@ std::vector<BarPair>      const getBarData();
 ///
 std::vector<ColorPair>    const getColorData();
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx
 
 #endif // CHARACTERHELPERS

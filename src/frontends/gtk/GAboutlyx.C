@@ -22,6 +22,8 @@
 using std::ostringstream;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -173,3 +175,6 @@ void GAboutlyx::doBuild()
 	setCancel(btn);
 	//btn->signal_clicked().connect(SigC::slot(*this, &GViewBase::onCancel));
 }
+
+} // namespace frontend
+} // namespace lyx

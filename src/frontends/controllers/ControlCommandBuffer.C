@@ -25,13 +25,16 @@
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
-using lyx::support::prefixIs;
-
 using std::back_inserter;
 using std::transform;
 using std::string;
 using std::vector;
 
+namespace lyx {
+
+using support::prefixIs;
+
+namespace frontend {
 
 namespace {
 
@@ -51,7 +54,7 @@ ControlCommandBuffer::ControlCommandBuffer(LyXView & lv)
 	: lv_(lv), history_pos_(history_.end())
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
-		back_inserter(commands_), lyx::firster());
+		back_inserter(commands_), firster());
 }
 
 
@@ -86,7 +89,7 @@ ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
 {
 	vector<string> comp;
 
-	lyx::copy_if(commands_.begin(), commands_.end(),
+	copy_if(commands_.begin(), commands_.end(),
 		back_inserter(comp), prefix_p(prefix));
 
 	if (comp.empty()) {
@@ -106,7 +109,7 @@ ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
 		test += tmp[test.length()];
 	while (test.length() < tmp.length()) {
 		vector<string> vtmp;
-		lyx::copy_if(comp.begin(), comp.end(),
+		copy_if(comp.begin(), comp.end(),
 			back_inserter(vtmp), prefix_p(test));
 		if (vtmp.size() != comp.size()) {
 			test.erase(test.length() - 1);
@@ -129,3 +132,6 @@ void ControlCommandBuffer::dispatch(string const & str)
 	history_pos_ = history_.end();
 	lv_.getLyXFunc().dispatch(lyxaction.lookupFunc(str), true);
 }
+
+} // namespace frontend
+} // namespace lyx

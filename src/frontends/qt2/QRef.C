@@ -31,6 +31,8 @@
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlRef, QView<QRefDialog> > base_class;
 
@@ -218,3 +220,6 @@ void QRef::updateRefs()
 	dialog_->gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }
+
+} // namespace frontend
+} // namespace lyx

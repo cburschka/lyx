@@ -47,6 +47,8 @@ using std::distance;
 using std::vector;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlDocument, QView<QDocumentDialog> > base_class;
 
@@ -64,7 +66,7 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 
 QDocument::QDocument(Dialog & parent)
 	: base_class(parent, _("LyX: Document Settings")),
-		lang_(getSecond(frnt::getLanguageData(false)))
+		lang_(getSecond(getLanguageData(false)))
 {}
 
 
@@ -78,9 +80,9 @@ void QDocument::build_dialog()
 	dialog_->biblioModule->citeStyleCO->setCurrentItem(0);
 
 	// language & quotes
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
-	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
-	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	vector<LanguagePair> const langs = getLanguageData(false);
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
 		dialog_->langModule->languageCO->insertItem(
 			toqstr(lit->first));
@@ -673,3 +675,6 @@ void QDocument::useClassDefaults()
 	params.useClassDefaults();
 	update_contents();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -18,6 +18,8 @@
 #include <list>
 #include <string>
 
+namespace lyx {
+namespace frontend {
 
 class ButtonController;
 class ButtonPolicy;
@@ -134,6 +136,8 @@ private:
 	Widgets read_only_;
 };
 
+} // namespace frontend
+} // namespace lyx
 
 #include "BCView.tmpl"
 

@@ -18,7 +18,8 @@
 #include <utility>
 #include <vector>
 
-namespace frnt {
+namespace lyx {
+namespace frontend {
 
 ///
 typedef std::pair<std::string, std::string> LanguagePair;
@@ -28,6 +29,7 @@ typedef std::pair<std::string, std::string> LanguagePair;
  */
 std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 
-} // namespace frnt
+} // namespace frontend
+} // namespace lyx
 
 #endif // FRNT_LANG_H

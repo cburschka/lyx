@@ -25,12 +25,17 @@
 #include "support/filetools.h"
 #include "support/globbing.h"
 
-using lyx::support::FileFilterList;
-using lyx::support::OnlyFilename;
-
 using std::pair;
 using std::string;
 using std::vector;
+
+
+namespace lyx {
+
+using support::FileFilterList;
+using support::OnlyFilename;
+
+namespace frontend {
 
 
 ControlBibtex::ControlBibtex(Dialog & d)
@@ -95,3 +100,6 @@ bool ControlBibtex::usingBibtopic() const
 {
     return kernel().buffer().params().use_bibtopic;
 }
+
+} // namespace frontend
+} // namespace lyx

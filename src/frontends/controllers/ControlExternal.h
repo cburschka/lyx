@@ -27,12 +27,16 @@
 class InsetExternalParams;
 
 namespace lyx {
+
 namespace external {
+
 class Template;
 class RotationDataType;
-} // namespace external
-} // namespace lyx
 
+} // namespace external
+
+
+namespace frontend {
 
 class ControlExternal : public Dialog::Controller {
 public:
@@ -59,7 +63,7 @@ public:
 	///
 	int getTemplateNumber(std::string const &) const;
 	///
-	lyx::external::Template getTemplate(int) const;
+	external::Template getTemplate(int) const;
 	///
 	std::string const browse(std::string const & input_file,
 				 std::string const & tempalate_name) const;
@@ -75,12 +79,13 @@ private:
 	bool bb_changed_;
 };
 
+} // namespace frontend
 
-namespace lyx {
+
 namespace external {
 
 std::vector<RotationDataType> const & all_origins();
-std::string const origin_gui_str(lyx::size_type i);
+std::string const origin_gui_str(size_type i);
 
 } // namespace external
 } // namespace lyx

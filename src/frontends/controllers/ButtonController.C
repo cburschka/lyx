@@ -13,6 +13,8 @@
 #include "ButtonController.h"
 #include "BCView.h"
 
+namespace lyx {
+namespace frontend {
 
 BCView & ButtonController::view() const
 {
@@ -112,3 +114,6 @@ bool ButtonController::readOnly(bool ro) const
 	view().refresh();
 	return ro;
 }
+
+} // namespace frontend
+} // namespace lyx

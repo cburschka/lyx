@@ -17,6 +17,9 @@
 
 #include <string>
 
+namespace lyx {
+namespace frontend {
+
 /** This class manages a font.
     The idea is to create a FontInfo object with a font name pattern with a
     wildcard at the size field. Then this object can host request for font-
@@ -86,5 +89,8 @@ private:
 	/// Build newly sized font string
 	std::string const resize(std::string const &, int size) const;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FONTINFO_H

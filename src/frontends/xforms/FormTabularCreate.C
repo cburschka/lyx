@@ -22,6 +22,8 @@
 using std::make_pair;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlTabularCreate, FormView<FD_tabular_create> > base_class;
 
@@ -54,3 +56,6 @@ void FormTabularCreate::apply()
 
 	controller().params() = make_pair(xsize, ysize);
 }
+
+} // namespace frontend
+} // namespace lyx

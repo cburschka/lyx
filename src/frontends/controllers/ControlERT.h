@@ -17,6 +17,8 @@
 #include "Dialog.h"
 #include "insets/insetert.h" // InsetERT::ERTStatus
 
+namespace lyx {
+namespace frontend {
 
 class ControlERT : public Dialog::Controller {
 public:
@@ -38,5 +40,8 @@ private:
 	///
 	InsetCollapsable::CollapseStatus status_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

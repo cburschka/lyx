@@ -18,15 +18,18 @@
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-
 using std::vector;
 using std::string;
 
 
 extern BufferList bufferlist;
 
+namespace lyx {
+
+using support::MakeAbsPath;
+using support::MakeDisplayPath;
+
+namespace frontend {
 
 ControlRef::ControlRef(Dialog & d)
 	: ControlCommand(d, "ref")
@@ -82,3 +85,6 @@ string const ControlRef::getBufferName(int num) const
 {
 	return bufferlist.getFileNames()[num];
 }
+
+} // namespace frontend
+} // namespace lyx

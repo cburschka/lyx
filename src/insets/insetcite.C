@@ -36,6 +36,8 @@ using std::ostream;
 using std::vector;
 using std::map;
 
+namespace biblio = lyx::biblio;
+
 
 namespace {
 

@@ -12,7 +12,6 @@
 #ifndef QDOCUMENTDIALOG_H
 #define QDOCUMENTDIALOG_H
 
-
 #include "ui/QDocumentDialogBase.h"
 
 #include "BulletsModule.h"
@@ -28,9 +27,12 @@
 #include "ui/PreambleModuleBase.h"
 #include "ui/BranchesModuleBase.h"
 
+class FloatPlacement;
+
+namespace lyx {
+namespace frontend {
 
 class QDocument;
-class FloatPlacement;
 
 class QDocumentDialog : public QDocumentDialogBase {
 	Q_OBJECT
@@ -87,5 +89,8 @@ private:
 
 	QDocument * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // DOCUMENTDIALOG_H

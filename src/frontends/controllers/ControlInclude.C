@@ -28,14 +28,17 @@
 
 #include <utility>
 
-using lyx::support::FileFilterList;
-using lyx::support::IsFileReadable;
-using lyx::support::MakeAbsPath;
-using lyx::support::OnlyPath;
-
 using std::pair;
 using std::string;
 
+namespace lyx {
+
+using support::FileFilterList;
+using support::IsFileReadable;
+using support::MakeAbsPath;
+using support::OnlyPath;
+
+namespace frontend {
 
 ControlInclude::ControlInclude(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -110,3 +113,6 @@ bool ControlInclude::fileExists(string const & file)
 
 	return false;
 }
+
+} // namespace frontend
+} // namespace lyx

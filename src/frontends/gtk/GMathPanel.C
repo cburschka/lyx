@@ -45,6 +45,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 namespace {
 
 char const * infoUp[][5] =
@@ -163,3 +166,6 @@ void GMathPanel::onFunctionSelected()
 	controller().dispatchInsert(
 		Glib::locale_from_utf8(sel));
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -18,6 +18,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 Dialog::Dialog(LyXView & lv, string const & name)
 	: is_closing_(false), kernel_(lv), name_(name),
@@ -203,3 +205,6 @@ string const & Dialog::View::getTitle() const
 
 void Dialog::View::partialUpdate(int)
 {}
+
+} // namespace frontend
+} // namespace lyx

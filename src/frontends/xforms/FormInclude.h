@@ -13,10 +13,11 @@
 #ifndef FORMINCLUDE_H
 #define FORMINCLUDE_H
 
-
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlInclude;
 struct FD_include;
@@ -41,5 +42,8 @@ private:
 	/// include type
 	RadioButtonGroup type_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMINCLUDE_H

@@ -13,10 +13,10 @@
 
 #include "support/lstrings.h"
 
-namespace support = lyx::support;
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 // Extract shortcut from "<identifier>|<shortcut>" string
 string const scex(string const & str)
@@ -32,3 +32,6 @@ string const idex(string const & str)
 	support::split(str, identifier, '|');
 	return identifier;
 }
+
+} // namespace frontend
+} // namespace lyx

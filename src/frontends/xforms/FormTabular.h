@@ -16,6 +16,10 @@
 #include <boost/scoped_ptr.hpp>
 
 class InsetTabular;
+
+namespace lyx {
+namespace frontend {
+
 class ControlTabular;
 struct FD_tabular;
 struct FD_tabular_options;
@@ -64,5 +68,8 @@ private:
 	///
 	int actCell_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTABULAR_H

@@ -12,9 +12,11 @@
 #ifndef FORMTOC_H
 #define FORMTOC_H
 
-
 #include "FormDialogView.h"
 #include "toc.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlToc;
 struct FD_toc;
@@ -41,7 +43,10 @@ private:
 	void updateContents();
 
 	///
-	lyx::toc::Toc toc_;
+	toc::Toc toc_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTOC_H

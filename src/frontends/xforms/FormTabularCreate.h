@@ -14,6 +14,9 @@
 
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlTabularCreate;
 struct FD_tabular_create;
 
@@ -33,5 +36,8 @@ private:
 	/// not needed
 	virtual void update() {};
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMTABULARCREATE

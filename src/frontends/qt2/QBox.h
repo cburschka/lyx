@@ -13,10 +13,11 @@
 #ifndef QBOX_H
 #define QBOX_H
 
-
 #include "QDialogView.h"
 #include <vector>
 
+namespace lyx {
+namespace frontend {
 
 class ControlBox;
 class QBoxDialog;
@@ -50,5 +51,8 @@ private:
 	///
 	std::vector<std::string> gui_names_spec_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QBOX_H

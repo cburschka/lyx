@@ -18,6 +18,9 @@
 
 class PrinterParams;
 
+namespace lyx {
+namespace frontend {
+
 /** A controller for Print dialogs.
  */
 class ControlPrint : public Dialog::Controller {
@@ -41,5 +44,8 @@ private:
 	///
 	boost::scoped_ptr<PrinterParams> params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLPRINT_H

@@ -26,6 +26,8 @@ using lyx::support::OnlyFilename;
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
 
@@ -69,3 +71,6 @@ void QTexinfo::updateStyles()
 {
 	updateStyles(activeStyle);
 }
+
+} // namespace frontend
+} // namespace lyx

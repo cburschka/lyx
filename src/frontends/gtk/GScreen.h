@@ -14,6 +14,9 @@
 
 #include "screen.h"
 
+namespace lyx {
+namespace frontend {
+
 class GWorkArea;
 
 /** The class GScreen is used for the main Textbody.
@@ -59,5 +62,8 @@ private:
 	///
 	int cursorH_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif

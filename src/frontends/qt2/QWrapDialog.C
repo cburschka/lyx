@@ -10,13 +10,13 @@
 
 #include <config.h>
 
-
-
 #include "QWrap.h"
 #include "QWrapDialog.h"
 
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
 
 
 QWrapDialog::QWrapDialog(QWrap * form)
@@ -45,3 +45,6 @@ void QWrapDialog::change_adaptor()
 {
 	form_->changed();
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -16,6 +16,8 @@
 #include <qlineedit.h>
 #include <qvalidator.h>
 
+namespace lyx {
+namespace frontend {
 
 void addCheckedLineEdit(BCView & bcview,
 			QLineEdit * input, QLabel * label)
@@ -78,3 +80,6 @@ bool CheckedLineEdit::check() const
 
 	return valid;
 }
+
+} // namespace frontend
+} // namespace lyx

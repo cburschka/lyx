@@ -30,10 +30,15 @@
 
 #include <vector>
 
-using lyx::support::getStringFromVector;
-using lyx::support::isStrDbl;
-using lyx::support::subst;
 using std::string;
+
+namespace lyx {
+
+using support::getStringFromVector;
+using support::isStrDbl;
+using support::subst;
+
+namespace frontend {
 
 
 typedef FormController<ControlBox, FormView<FD_box> > base_class;
@@ -285,3 +290,6 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

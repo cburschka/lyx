@@ -31,15 +31,17 @@
 #include "support/globbing.h"
 #include "support/tostr.h"
 
-namespace external = lyx::external;
-
-using lyx::support::FileFilterList;
-using lyx::support::MakeAbsPath;
-using lyx::support::readBB_from_PSFile;
-
 using std::advance;
 using std::vector;
 using std::string;
+
+namespace lyx {
+
+using support::FileFilterList;
+using support::MakeAbsPath;
+using support::readBB_from_PSFile;
+
+namespace frontend {
 
 
 ControlExternal::ControlExternal(Dialog & parent)
@@ -177,9 +179,9 @@ string const ControlExternal::readBB(string const & file)
 	int width = 0;
 	int height = 0;
 
-	lyx::graphics::Cache & gc = lyx::graphics::Cache::get();
+	graphics::Cache & gc = graphics::Cache::get();
 	if (gc.inCache(abs_file)) {
-		lyx::graphics::Image const * image = gc.item(abs_file)->image();
+		graphics::Image const * image = gc.item(abs_file)->image();
 
 		if (image) {
 			width  = image->getWidth();
@@ -190,27 +192,32 @@ string const ControlExternal::readBB(string const & file)
 	return ("0 0 " + tostr(width) + ' ' + tostr(height));
 }
 
+} // namespace frontend
+
+
+namespace external {
 
 namespace {
 
-external::RotationDataType origins_array[] = {
-	external::RotationData::DEFAULT,
-	external::RotationData::TOPLEFT,
-	external::RotationData::BOTTOMLEFT,
-	external::RotationData::BASELINELEFT,
-	external::RotationData::CENTER,
-	external::RotationData::TOPCENTER,
-	external::RotationData::BOTTOMCENTER,
-	external::RotationData::BASELINECENTER,
-	external::RotationData::TOPRIGHT,
-	external::RotationData::BOTTOMRIGHT,
-	external::RotationData::BASELINERIGHT
+RotationDataType origins_array[] = {
+	RotationData::DEFAULT,
+	RotationData::TOPLEFT,
+	RotationData::BOTTOMLEFT,
+	RotationData::BASELINELEFT,
+	RotationData::CENTER,
+	RotationData::TOPCENTER,
+	RotationData::BOTTOMCENTER,
+	RotationData::BASELINECENTER,
+	RotationData::TOPRIGHT,
+	RotationData::BOTTOMRIGHT,
+	RotationData::BASELINERIGHT
 };
 
-lyx::size_type const origins_array_size =
+
+size_type const origins_array_size =
 sizeof(origins_array) / sizeof(origins_array[0]);
 
-vector<external::RotationDataType> const
+vector<RotationDataType> const
 origins(origins_array, origins_array + origins_array_size);
 
 // These are the strings, corresponding to the above, that the GUI should
@@ -224,8 +231,6 @@ char const * const origin_gui_strs[] = {
 
 } // namespace anon
 
-namespace lyx {
-namespace external {
 
 vector<RotationDataType> const & all_origins()
 {

@@ -14,9 +14,10 @@
 #ifndef FORM_MATHSPANEL_H
 #define FORM_MATHSPANEL_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlMath;
 struct FD_maths_panel;
@@ -41,5 +42,8 @@ private:
 	///
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif //  FORM_MATHSPANEL_H

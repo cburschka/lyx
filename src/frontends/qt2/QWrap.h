@@ -12,9 +12,10 @@
 #ifndef QWRAP_H
 #define QWRAP_H
 
-
 #include "QDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlWrap;
 class QWrapDialog;
@@ -33,5 +34,8 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QWRAP_H

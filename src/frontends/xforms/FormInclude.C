@@ -24,10 +24,13 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::rtrim;
-
 using std::string;
 
+namespace lyx {
+
+using support::rtrim;
+
+namespace frontend {
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 
@@ -183,3 +186,6 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	return action;
 }
+
+} // namespace frontend
+} // namespace lyx

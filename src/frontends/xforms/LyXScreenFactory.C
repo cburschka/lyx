@@ -20,6 +20,9 @@ namespace LyXScreenFactory {
 
 LyXScreen * create(WorkArea & owner)
 {
+	using lyx::frontend::XScreen;
+	using lyx::frontend::XWorkArea;
+
 	return new XScreen(static_cast<XWorkArea &>(owner));
 }
 

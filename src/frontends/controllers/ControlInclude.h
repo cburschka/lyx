@@ -18,6 +18,8 @@
 #include "Dialog.h"
 #include "insets/insetcommandparams.h"
 
+namespace lyx {
+namespace frontend {
 
 /** A controller for the Include file dialog.
  */
@@ -61,5 +63,8 @@ private:
 	///
 	InsetCommandParams params_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // CONTROLINCLUDE_H

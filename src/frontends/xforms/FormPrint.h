@@ -16,6 +16,9 @@
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
+namespace lyx {
+namespace frontend {
+
 class ControlPrint;
 struct FD_print;
 
@@ -43,5 +46,8 @@ private:
 	/// all pages or from/to
 	RadioButtonGroup all_pages_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMPRINT_H

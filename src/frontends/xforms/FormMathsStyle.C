@@ -25,6 +25,10 @@
 #include "style.xbm"
 #include "font.xbm"
 
+namespace lyx {
+namespace frontend {
+
+namespace {
 
 char const * latex_mathstyle[] = {
 	"displaystyle", "textstyle", "scriptstyle", "scriptscriptstyle"
@@ -34,6 +38,8 @@ kb_action latex_mathfontcmds[] = {
 	LFUN_BOLD, LFUN_SANS, LFUN_ROMAN, LFUN_ITAL, LFUN_CODE,
 	LFUN_NOUN, LFUN_FRAK, LFUN_EMPH, LFUN_FREEFONT_APPLY, LFUN_DEFAULT
 };
+ 
+} // namespace anon
 
 
 typedef FormController<ControlMath, FormView<FD_maths_style> > base_class;
@@ -95,3 +101,6 @@ ButtonPolicy::SMInput FormMathsStyle::input(FL_OBJECT * ob, long data)
 
 	return ButtonPolicy::SMI_VALID;
 }
+
+} // namespace frontend
+} // namespace lyx

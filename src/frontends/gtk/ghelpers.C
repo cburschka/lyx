@@ -19,6 +19,9 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
+
 string const findGladeFile(string const & name)
 {
 	// First, search in the installation directories.
@@ -44,3 +47,6 @@ string const findGladeFile(string const & name)
 
 	return filename;
 }
+
+} // namespace frontend
+} // namespace lyx

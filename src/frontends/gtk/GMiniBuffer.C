@@ -23,6 +23,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 	controller_(control), view_(view)
@@ -286,3 +288,6 @@ void GMiniBuffer::setInput(Glib::ustring const & input)
 	entry_.set_text(input);
 	entry_.set_position(-1);
 }
+
+} // namespace frontend
+} // namespace lyx

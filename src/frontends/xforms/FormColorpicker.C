@@ -24,9 +24,10 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -284,7 +285,7 @@ void FormColorpicker::prepare_to_show()
 
 	//  assign an icon to the form
 	string const iconname =
-		lyx::support::LibFileSearch("images", "lyx", "xpm");
+		support::LibFileSearch("images", "lyx", "xpm");
 
 	if (!iconname.empty()) {
 		unsigned int w, h;
@@ -365,3 +366,6 @@ static int C_WMHideCB(FL_FORM * form, void *)
 }
 
 } // extern "C"
+
+} // namespace frontend
+} // namespace lyx

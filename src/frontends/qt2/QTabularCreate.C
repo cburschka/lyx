@@ -19,6 +19,9 @@
 #include <qspinbox.h>
 #include <qpushbutton.h>
 
+namespace lyx {
+namespace frontend {
+
 typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > base_class;
 
 
@@ -42,3 +45,6 @@ void QTabularCreate::apply()
 	controller().params().first = dialog_->rowsSB->value();
 	controller().params().second = dialog_->columnsSB->value();
 }
+
+} // namespace frontend
+} // namespace lyx

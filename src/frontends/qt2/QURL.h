@@ -12,12 +12,13 @@
 #ifndef QURL_H
 #define QURL_H
 
-
 #include "QDialogView.h"
+
+namespace lyx {
+namespace frontend {
 
 class ControlCommand;
 class QURLDialog;
-
 
 class QURL :
 	public QController<ControlCommand, QView<QURLDialog> >
@@ -35,5 +36,8 @@ private:
 	/// update dialog
 	virtual void update_contents();
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QURL_H

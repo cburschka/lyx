@@ -26,11 +26,6 @@
 
 #include "support/std_sstream.h"
 
-using lyx::support::AddName;
-using lyx::support::FileFilterList;
-using lyx::support::system_lyxdir;
-using lyx::support::user_lyxdir;
-
 using std::ostringstream;
 using std::pair;
 using std::string;
@@ -38,6 +33,16 @@ using std::vector;
 
 
 extern BufferList bufferlist;
+
+namespace lyx {
+
+using support::AddName;
+using support::FileFilterList;
+using support::system_lyxdir;
+using support::user_lyxdir;
+
+namespace frontend {
+
 
 ControlPrefs::ControlPrefs(Dialog & parent)
 	: Dialog::Controller(parent),
@@ -171,3 +176,6 @@ string const ControlPrefs::browsedir(string const & path,
 {
 	return browseDir(path, title);
 }
+
+} // namespace frontend
+} // namespace lyx

@@ -18,6 +18,8 @@
 
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 ControlNote::ControlNote(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -44,3 +46,6 @@ void ControlNote::dispatchParams()
 	string const lfun = InsetNoteMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
+
+} // namespace frontend
+} // namespace lyx

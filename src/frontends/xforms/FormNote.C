@@ -21,9 +21,10 @@
 
 #include "lyx_forms.h"
 
-
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 typedef FormController<ControlNote, FormView<FD_note> > base_class;
 
@@ -82,3 +83,6 @@ void FormNote::apply()
 
 	controller().params().type = type;
 }
+
+} // namespace frontend
+} // namespace lyx

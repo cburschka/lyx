@@ -12,9 +12,10 @@
 #ifndef FORMBOX_H
 #define FORMBOX_H
 
-
 #include "FormDialogView.h"
 
+namespace lyx {
+namespace frontend {
 
 class ControlBox;
 struct FD_box;
@@ -51,5 +52,8 @@ private:
 		WIDTH
 	};
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // FORMBOX_H

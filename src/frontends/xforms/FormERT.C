@@ -18,6 +18,8 @@
 
 #include "lyx_forms.h"
 
+namespace lyx {
+namespace frontend {
 
 typedef  FormController<ControlERT, FormView<FD_ert> > base_class;
 
@@ -66,3 +68,6 @@ void FormERT::update()
 		break;
 	}
 }
+
+} // namespace frontend
+} // namespace lyx

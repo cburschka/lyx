@@ -12,8 +12,10 @@
 #ifndef QLOGDIALOG_H
 #define QLOGDIALOG_H
 
-
 #include "ui/QLogDialogBase.h"
+
+namespace lyx {
+namespace frontend {
 
 class QLog;
 
@@ -28,5 +30,8 @@ protected:
 private:
 	QLog * form_;
 };
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // QLOGDIALOG_H

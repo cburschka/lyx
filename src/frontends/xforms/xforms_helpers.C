@@ -30,19 +30,22 @@
 
 #include <fstream>
 
-using lyx::support::AbsolutePath;
-using lyx::support::FileInfo;
-using lyx::support::isStrDbl;
-using lyx::support::OnlyPath;
-using lyx::support::subst;
-using lyx::support::trim;
-
 using std::make_pair;
 
 using std::ofstream;
 using std::vector;
 using std::string;
 
+namespace lyx {
+
+using support::AbsolutePath;
+using support::FileInfo;
+using support::isStrDbl;
+using support::OnlyPath;
+using support::subst;
+using support::trim;
+
+namespace frontend {
 
 std::string const buildChoiceLengthString()
 {
@@ -557,3 +560,6 @@ bool RWInfo::ReadableFile(string const & name)
 
 	return true;
 }
+
+} // namespace frontend
+} // namespace lyx
