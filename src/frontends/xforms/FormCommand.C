@@ -34,12 +34,6 @@ FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t)
 {}
 
 
-FormCommand::~FormCommand()
-{
-	free();
-}
-
-
 void FormCommand::showInset( InsetCommand * const inset )
 {
 	if( dialogIsOpen || inset == 0 ) return;
@@ -94,7 +88,7 @@ void FormCommand::free()
 	// we don't need to delete u and h here because
 	// hide() does that after disconnecting.
 	if( form() ) {
-		if( form()->visible)
+		if( form()->visible )
 			hide();
 		fl_free_form(form());
 	}

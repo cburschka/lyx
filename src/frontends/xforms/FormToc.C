@@ -42,6 +42,7 @@ FormToc::FormToc(LyXView * lv, Dialogs * d)
 
 FormToc::~FormToc()
 {
+	free();
 	delete dialog_;
 }
 

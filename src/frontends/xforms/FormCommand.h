@@ -31,8 +31,6 @@ class FormCommand : public DialogBase, public noncopyable {
 public:
 	/// Constructor
 	FormCommand(LyXView *, Dialogs *, string const & );
-	/// Destructor
-	virtual ~FormCommand();
 
 	/**@name Real per-instance Callback Methods */
 	//@{
@@ -60,6 +58,8 @@ protected:
 	virtual void update() = 0;
 	/// Apply from dialog (modify or create inset)
 	virtual void apply() = 0;
+	/// Explicitly free the dialog.
+	void free();
 	/// delete derived class variables from hide()
 	virtual void clearStore() {}
 	/// Pointer to the actual instantiation of the xform's form
@@ -87,8 +87,6 @@ private:
 	void show();
 	/// Hide the dialog.
 	void hide();
-	/// Explicitly free the dialog.
-	void free();
 
 
 	/**@name Private Data */

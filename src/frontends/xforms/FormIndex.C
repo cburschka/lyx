@@ -39,6 +39,7 @@ FormIndex::FormIndex(LyXView * lv, Dialogs * d)
 
 FormIndex::~FormIndex()
 {
+	free();
 	delete dialog_;
 }
 

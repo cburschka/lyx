@@ -52,6 +52,7 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 
 FormCitation::~FormCitation()
 {
+	free();
 	delete dialog_;
 }
 

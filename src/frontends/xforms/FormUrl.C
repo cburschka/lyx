@@ -39,6 +39,7 @@ FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 
 FormUrl::~FormUrl()
 {
+	free();
 	delete dialog_;
 }
 
