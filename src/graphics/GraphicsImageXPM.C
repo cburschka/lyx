@@ -188,13 +188,18 @@ bool GImageXPM::setPixmap(GParams const & params)
 	attrib.valuemask |= XpmColorKey;
 
 	// Set the color "none" entry to the color of the background.
-	XpmColorSymbol xpm_col;
-	xpm_col.name = 0;
-	xpm_col.value = "none";
-	xpm_col.pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
+	XpmColorSymbol xpm_col[2];
+	xpm_col[0].name = 0;
+	xpm_col[0].value = "none";
+	xpm_col[0].pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
 
-	attrib.numsymbols = 1;
-	attrib.colorsymbols = &xpm_col;
+	// some image magick versions use this
+	xpm_col[1].name = 0;
+	xpm_col[1].value = "opaque";
+	xpm_col[1].pixel = lyxColorHandler->colorPixel(LColor::white);
+
+	attrib.numsymbols = 2;
+	attrib.colorsymbols = xpm_col;
 	attrib.valuemask |= XpmColorSymbols;
 
 	// Load up the pixmap
