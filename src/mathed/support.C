@@ -22,12 +22,6 @@ bool MathIsAlphaFont(MathTextCodes x)
 }
 
 
-bool MathIsBinary(MathTextCodes x)
-{
-	return x == LM_TC_BOP;
-}
-
-
 ///
 class Matrix {
 public:
@@ -495,6 +489,7 @@ static init_deco_table idt;
 
 } // namespace anon
 
+
 void mathed_char_dim(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des, int & wid)
 {
@@ -503,6 +498,7 @@ void mathed_char_dim(MathTextCodes type, MathStyles size, unsigned char c,
 	asc = lyxfont::ascent(c, font);
 	wid = mathed_char_width(type, size, c);
 }
+
 
 int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des)
@@ -537,12 +533,11 @@ int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c)
 
 int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)
 {
-	if (MathIsBinary(type)) {
-		string s;
-		s += c;
-		return mathed_string_width(type, size, s);
-	} else
-		return lyxfont::width(c, WhichFont(type, size));
+	LyXFont const font = WhichFont(type, size);
+	if (type == LM_TC_BOP)
+		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
+	else
+		return lyxfont::width(c, font);
 }
 
 
@@ -568,18 +563,7 @@ int mathed_string_height(MathTextCodes type, MathStyles size, string const & s,
 
 int mathed_string_width(MathTextCodes type, MathStyles size, string const & s)
 {
-	string st;
-	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin();
-		     it != s.end(); ++it) {
-			st += ' ';
-			st += *it;
-			st += ' ';
-		}
-	else
-		st = s;
-	
-	return lyxfont::width(st, WhichFont(type, size));
+	return lyxfont::width(s, WhichFont(type, size));
 }
 
 
@@ -690,24 +674,19 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
 	int x, int y, string const & s)
 {
-	string st;
-	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin();
-		     it != s.end(); ++it) {
-			st += ' ';
-			st += *it;
-			st += ' ';
-		}
-	else
-		st = s;
-	
-	pain.text(x, y, st, WhichFont(type, siz));
+	pain.text(x, y, s, WhichFont(type, siz));
 }
 
-void drawChar(Painter & pain, MathTextCodes type, MathStyles siz, int x, int y, char c)
+
+void drawChar
+	(Painter & pain, MathTextCodes type, MathStyles siz, int x, int y, char c)
 {
 	string s;
+	if (type == LM_TC_BOP)
+		s += ' ';
 	s += c;
+	if (type == LM_TC_BOP)
+		s += ' ';
 	drawStr(pain, type, siz, x, y, s);
 }
 
