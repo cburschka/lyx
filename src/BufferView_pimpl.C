@@ -1184,7 +1184,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		cur.clearSelection();
 		bv_->update();
 		cur.resetAnchor();
-		cmd.message(N_("Mark off"));
+		cur.message(N_("Mark off"));
 		break;
 
 	case LFUN_MARK_ON:
@@ -1192,23 +1192,23 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		cur.mark() = true;
 		bv_->update();
 		cur.resetAnchor();
-		cmd.message(N_("Mark on"));
+		cur.message(N_("Mark on"));
 		break;
 
 	case LFUN_SETMARK:
 		cur.clearSelection();
 		if (cur.mark()) {
-			cmd.message(N_("Mark removed"));
+			cur.message(N_("Mark removed"));
 		} else {
 			cur.mark() = true;
-			cmd.message(N_("Mark set"));
+			cur.message(N_("Mark set"));
 		}
 		cur.resetAnchor();
 		bv_->update();
 		break;
 
 	case LFUN_UNKNOWN_ACTION:
-		cmd.errorMessage(N_("Unknown function!"));
+		cur.errorMessage(N_("Unknown function!"));
 		break;
 
 	default:

@@ -18,6 +18,7 @@
 #include <string>
 #include <iosfwd>
 
+
 /**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
@@ -37,11 +38,6 @@ public:
 
 	/// access to button
 	mouse_button::state button() const;
-
-	/// output a message
-	void message(std::string const & msg) const;
-	/// output an error message
-	void errorMessage(std::string const & msg) const;
 
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;

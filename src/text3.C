@@ -935,7 +935,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_PASTE:
-		cmd.message(_("Paste"));
+		cur.message(_("Paste"));
 		replaceSelection(bv->getLyXText());
 #warning FIXME Check if the arg is in the domain of available selections.
 		if (isStrUnsignedInt(cmd.argument))
@@ -950,13 +950,13 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_CUT:
 		cutSelection(true, true);
-		cmd.message(_("Cut"));
+		cur.message(_("Cut"));
 		bv->update();
 		break;
 
 	case LFUN_COPY:
 		copySelection();
-		cmd.message(_("Copy"));
+		cur.message(_("Copy"));
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:
@@ -978,7 +978,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cmd.message(tostr(cursorX(cur.current())) + ' '
+		cur.message(tostr(cursorX(cur.current())) + ' '
 		          + tostr(cursorY(cur.current())));
 		break;
 
@@ -997,15 +997,15 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_GETFONT:
 		if (current_font.shape() == LyXFont::ITALIC_SHAPE)
-			cmd.message("E");
+			cur.message("E");
 		else if (current_font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			cmd.message("N");
+			cur.message("N");
 		else
-			cmd.message("0");
+			cur.message("0");
 		break;
 
 	case LFUN_GETLAYOUT:
-		cmd.message(cursorPar()->layout()->name());
+		cur.message(cursorPar()->layout()->name());
 		break;
 
 	case LFUN_LAYOUT: {
@@ -1018,7 +1018,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// function list/array with information about what
 		// functions needs arguments and their type.
 		if (cmd.argument.empty()) {
-			cmd.errorMessage(_("LyX function 'layout' needs an argument."));
+			cur.errorMessage(_("LyX function 'layout' needs an argument."));
 			break;
 		}
 
@@ -1036,7 +1036,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		}
 
 		if (!hasLayout) {
-			cmd.errorMessage(string(N_("Layout ")) + cmd.argument +
+			cur.errorMessage(string(N_("Layout ")) + cmd.argument +
 				N_(" not known"));
 			break;
 		}

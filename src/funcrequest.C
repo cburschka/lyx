@@ -11,15 +11,12 @@
 #include <config.h>
 
 #include "funcrequest.h"
-#include "BufferView.h"
-#include "lyxfunc.h" // only for setMessage()
-#include "frontends/LyXView.h"
-#include "debug.h"
+
 #include "support/std_sstream.h"
 
 #include <iostream>
+#include <vector>
 
-using std::endl;
 using std::getline;
 
 using std::istringstream;
@@ -56,26 +53,6 @@ FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg)
 mouse_button::state FuncRequest::button() const
 {
 	return button_;
-}
-
-
-void FuncRequest::message(string const & msg) const
-{
-#warning FIXME
-	//if (view_)
-	//	view_->owner()->getLyXFunc().setMessage(msg);
-	//else
-	lyxerr  << "Dropping message '" << msg << "'" << endl;
-}
-
-
-void FuncRequest::errorMessage(string const & msg) const
-{
-#warning FIXME
-	//if (view_)
-	//	view_->owner()->getLyXFunc().setErrorMessage(msg);
-	//else
-	lyxerr  << "Dropping error message '" << msg << "'" << endl;
 }
 
 

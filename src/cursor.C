@@ -20,9 +20,10 @@
 #include "funcrequest.h"
 #include "iterators.h"
 #include "lfuns.h"
+#include "lyxfunc.h" // only for setMessage()
 #include "lyxrc.h"
-#include "lyxtext.h"
 #include "lyxrow.h"
+#include "lyxtext.h"
 #include "paragraph.h"
 
 #include "insets/updatableinset.h"
@@ -34,6 +35,7 @@
 #include "mathed/math_support.h"
 
 #include "support/limited_stack.h"
+#include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
 
@@ -574,9 +576,8 @@ void LCursor::info(std::ostream & os)
 		cursor_[i].inset()->infoize(os);
 		os << "  ";
 	}
-#warning FIXME
-	//if (pos() != 0)
-	//	prevAtom()->infoize2(os);
+	if (pos() != 0)
+		prevInset()->infoize2(os);
 	// overwite old message
 	os << "                    ";
 }
@@ -1831,3 +1832,14 @@ InsetBase * LCursor::prevInset()
 	return par.isInset(pos() - 1) ? par.getInset(pos() - 1) : 0;
 }
 
+
+void LCursor::message(string const & msg) const
+{
+	bv().owner()->getLyXFunc().setMessage(msg);
+}
+
+
+void LCursor::errorMessage(string const & msg) const
+{
+	bv().owner()->getLyXFunc().setErrorMessage(msg);
+}
