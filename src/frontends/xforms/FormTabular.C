@@ -128,19 +128,17 @@ void FormTabular::build()
 
 void FormTabular::update()
 {
-	if (!inset_ || !inset_->tabular)
+	if (!inset_ || !inset_->tabular.get())
 		return;
 
-	LyXTabular * tabular = inset_->tabular;
-	int
-		align,
-		cell;
-	char
-		buf[12];
-	string
-		pwidth, special;
+	LyXTabular * tabular = inset_->tabular.get();
+	int align;
+	char buf[12];
+	string pwidth;
+	string special;
 
-	actCell_ = cell = inset_->GetActCell();
+	int cell = inset_->GetActCell();
+	actCell_ = cell;
 	int column = tabular->column_of_cell(cell)+1;
 	fl_set_object_label(dialog_->text_warning,"");
 	fl_activate_object(column_options_->input_special_alignment);
@@ -346,12 +344,13 @@ void FormTabular::update()
 		      tabular->GetRotateTabular());
 }
 
+
 bool FormTabular::input(FL_OBJECT * ob, long)
 {
     if (!inset_)
         return false;
 
-    LyXTabular * tabular = inset_->tabular;
+    LyXTabular * tabular = inset_->tabular.get();
     int s;
     LyXTabular::Feature num = LyXTabular::LAST_ACTION;
     string special;;
@@ -371,7 +370,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
       return false;
     }
     if (ob == column_options_->input_column_width) {
-        string str = fl_get_input(ob);
+        string const str = fl_get_input(ob);
         if (!str.empty() && !isValidLength(str)) {
             fl_set_object_label(dialog_->text_warning,
                  _("Warning: Invalid Length (valid example: 10mm)"));
@@ -383,7 +382,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         return true;
     }
     if (ob == cell_options_->input_mcolumn_width) {
-        string str = fl_get_input(ob);
+        string const str = fl_get_input(ob);
         if (!str.empty() && !isValidLength(str)) {
             fl_set_object_label(dialog_->text_warning,
                  _("Warning: Invalid Length (valid example: 10mm)"));
@@ -394,7 +393,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         update(); // update for alignment
         return true;
     }
-    string str = fl_get_input(column_options_->input_column_width);
+    string const str = fl_get_input(column_options_->input_column_width);
     if (!str.empty() && !isValidLength(str)) {
         fl_set_object_label(
 	    dialog_->text_warning,

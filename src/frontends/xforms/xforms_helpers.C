@@ -38,6 +38,7 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
+#warning Why cant this be done by a one pass algo? (Lgb)
 	string sout;
 	if (sin.empty()) return sout;
 
@@ -59,10 +60,11 @@ string formatted(string const & sin, int w, int size, int style)
 	// Flush remaining contents of word
 	if (!word.empty() ) sentence.push_back(word);
 
-	string line, line_plus_word;
+	string line;
+	string line_plus_word;
 	for (vector<string>::const_iterator vit = sentence.begin();
 	     vit != sentence.end(); ++vit) {
-		string word = *vit;
+		string word(*vit);
 
 		char c = word[0];
 		if (c == '\n') {
@@ -75,9 +77,9 @@ string formatted(string const & sin, int w, int size, int style)
 		if (!line_plus_word.empty() ) line_plus_word += ' ';
 		line_plus_word += word;
 
-		int length = fl_get_string_width(style, size,
-						 line_plus_word.c_str(),
-						 int(line_plus_word.length()));
+		int const length = fl_get_string_width(style, size,
+						       line_plus_word.c_str(),
+						       int(line_plus_word.length()));
 		if (length >= w) {
 			sout += line + '\n';
 			line_plus_word = word;
@@ -90,8 +92,8 @@ string formatted(string const & sin, int w, int size, int style)
 		sout += line;
 	}
 
-	if (sout[sout.length()-1] == '\n')
-		sout.erase(sout.length()-1);
+	if (sout[sout.length() - 1] == '\n')
+		sout.erase(sout.length() - 1);
 
 	return sout;
 }

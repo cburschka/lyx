@@ -1,3 +1,11 @@
+2001-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* xforms_helpers.C (formatted): constify length
+
+	* FormTabular.C (update): small restructure, adjust for scoped_ptr
+	(input): adjust for scoped_ptr
+	(input): constify str
+
 2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: s/popup/dialog/
