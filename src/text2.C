@@ -495,8 +495,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 		endpar = endpar->next(); // because of parindents etc.
 	}
 	
-	setUndo(bview, Undo::EDIT,
-		sstart_cur.par(), undoendpar);
+	setUndo(bview, Undo::EDIT, sstart_cur.par(), undoendpar);
 	
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor

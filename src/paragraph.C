@@ -1921,7 +1921,8 @@ bool Paragraph::isLineSeparator(pos_type pos) const
 {
 	value_type const c = getChar(pos);
 	return IsLineSeparatorChar(c)
-		|| (IsInsetChar(c) && getInset(pos)->isLineSeparator());
+		|| (IsInsetChar(c) && getInset(pos) &&
+	        getInset(pos)->isLineSeparator());
 }
 
 

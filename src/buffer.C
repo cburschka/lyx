@@ -1193,10 +1193,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.eatLine();
 		string const s = _("Unknown token: ") + token
 			+ " " + lex.text()  + "\n";
-
+		// we can do this here this way because we're actually reading
+		// the buffer and don't care about LyXText right now.
 		InsetError * new_inset = new InsetError(s);
 		par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
-							 params.language));
+		                 params.language));
 
 #ifndef NO_COMPABILITY
 		}
@@ -3078,12 +3079,20 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 // Print an error message.
 void Buffer::sgmlError(Paragraph * par, int pos,
-		       string const & message) const
+                       string const & message) const
 {
+#warning This is wrong we cannot insert an inset like this!!!
+	// I guess this was Jose' so I explain you more or less why this
+	// is wrong. This way you insert something in the paragraph and
+	// don't tell it to LyXText (row rebreaking and undo handling!!!)
+	// I deactivate this code, have a look at BufferView::insertErrors
+	// how you should do this correctly! (Jug 20020315)
+#if 0
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
 	par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT, 
-						 params.language));
+	                 params.language));
+#endif
 }
 
 

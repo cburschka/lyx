@@ -1,3 +1,16 @@
+2002-03-15  Juergen Vigna  <jug@sad.it>
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): fix the wrong use of
+	inserting an Inset into the paragraph. I know this is not the best
+	fix but we already use current_view in CutAndPaste so we will remove
+	all of it's using at the same time.
+
+	* buffer.C (sgmlError): deactivated function till it is rewritten in
+	the right mode, now it can create problems.
+
+	* paragraph.C (isLineSeparator): check if getInset returns != 0,
+	before accessing it.
+
 2002-03-14  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): do the right thing when updating

@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
+#include "lyxtext.h"
 #include "lyxcursor.h"
 #include "gettext.h"
 #include "iterators.h"
@@ -431,9 +432,12 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				+ textclasslist[c1].name() + _(" to ")
 				+ textclasslist[c2].name();
 			InsetError * new_inset = new InsetError(s);
-			par->insertInset(0, new_inset,
-					 LyXFont(LyXFont::ALL_INHERIT,
-						 bparams.language));
+			LyXText * txt = current_view->getLyXText();
+			LyXCursor cur = txt->cursor;
+			txt->setCursorIntern(current_view, par, 0);
+			txt->insertInset(current_view, new_inset);
+			txt->fullRebreak(current_view);
+			txt->setCursorIntern(current_view, cur.par(), cur.pos());
 		}
 	}
 	return ret;
