@@ -30,6 +30,8 @@ protected:
 		   char const * close = N_("Close"),
 		   char const * cancel = N_("Cancel"));
 
+	/// Connect signals. Also perform any necessary initialisation.
+	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 

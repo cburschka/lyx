@@ -29,6 +29,16 @@ FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t,
 {}
 
 
+void FormInset::connect()
+{
+	u_ = d_->updateBufferDependent.
+		 connect(slot(this, &FormInset::updateSlot));
+	h_ = d_->hideBufferDependent.
+		 connect(slot(this, &FormInset::hide));
+	FormBase::connect();
+}
+
+
 void FormInset::disconnect()
 {
 	ih_.disconnect();
