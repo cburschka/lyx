@@ -38,8 +38,9 @@
 
 #include "support/textutils.h"
 
-
 using lyx::pos_type;
+
+using std::endl;
 using std::max;
 using std::string;
 
@@ -49,26 +50,14 @@ extern int LEFT_MARGIN;
 
 namespace {
 
-// "temporary". We'll never get to use more
-// references until we start adding hacks like
-// these until other places catch up.
-BufferView * perv(BufferView const & bv)
-{
-	return const_cast<BufferView *>(&bv);
-}
-
 /**
  * A class used for painting an individual row of text.
  */
 class RowPainter {
 public:
-	/// initialise painter
+	/// initialise and run painter
 	RowPainter(BufferView const & bv, LyXText const & text,
-		ParagraphList::iterator pit,
-		RowList::iterator rit, int y_offset, int x_offset, int y);
-
-	/// do the painting
-	void paint();
+		ParagraphList::iterator pit, RowList::iterator rit, int xo, int yo);
 private:
 	// paint various parts
 	void paintBackground();
@@ -121,7 +110,6 @@ private:
 	double xo_;
 	int yo_;
 	double x_;
-	int y_;
 	int width_;
 	double separator_;
 	double hfill_;
@@ -131,15 +119,42 @@ private:
 
 RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      ParagraphList::iterator pit, RowList::iterator rit,
-     int y_offset, int x_offset, int y)
+     int xo, int yo)
 	: bv_(bv), pain_(bv_.painter()), text_(text), rit_(rit), row_(*rit),
-	  pit_(pit), xo_(x_offset), yo_(y_offset),
-		x_(row_.x()), y_(y),
+	  pit_(pit), xo_(xo), yo_(yo), x_(row_.x()),
 		width_(text_.workWidth()),
 		separator_(row_.fill_separator()),
 		hfill_(row_.fill_hfill()),
 		label_hfill_(row_.fill_label_hfill())
-{}
+{
+	x_ += xo_;
+
+	// background has already been cleared.
+	if (&text_ == bv_.text)
+		paintBackground();
+
+	// paint the selection background
+	if (text_.selection.set() && &text_ == bv_.cursor().innerText())
+		paintSelection();
+
+	// vertical lines for appendix
+	paintAppendix();
+
+	// environment depth brackets
+	paintDepthBar();
+
+	// changebar
+	paintChangeBar();
+
+	if (row_.pos() == 0)
+		paintFirst();
+
+	if (row_.endpos() >= pit_->size())
+		paintLast();
+
+	// paint text
+	paintText();
+}
 
 
 /// "temporary"
@@ -180,7 +195,7 @@ void RowPainter::paintInset(pos_type const pos)
 
 	BOOST_ASSERT(inset);
 
-	PainterInfo pi(perv(bv_));
+	PainterInfo pi(const_cast<BufferView *>(&bv_));
 	pi.base.font = getFont(pos);
 	inset->draw(pi, int(x_), yo_ + row_.baseline());
 	x_ += inset->width();
@@ -392,7 +407,6 @@ void RowPainter::paintSelection()
 
 	if (text_.bidi.same_direction()) {
 		int x;
-		int y = yo_;
 		int w;
 		if ((startpit == pit_ && startrow == rit_) &&
 		    (endpit == pit_ && endrow == rit_)) {
@@ -403,32 +417,23 @@ void RowPainter::paintSelection()
 				x = int(xo_) + endx;
 				w = startx - endx;
 			}
-			pain_.fillRectangle(x, y, w, h, LColor::selection);
+			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (startpit == pit_ && startrow == rit_) {
 			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
 			int const w = is_rtl ? startx : (width_ - startx);
-			pain_.fillRectangle(x, y, w, h, LColor::selection);
+			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (endpit == pit_ && endrow == rit_) {
 			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
 			int const w = is_rtl ? (width_ - endx) : endx;
-			pain_.fillRectangle(x, y, w, h, LColor::selection);
+			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
 		} else if (row_y > starty && row_y < endy) {
-
-			pain_.fillRectangle(int(xo_), y, width_, h, LColor::selection);
+			pain_.fillRectangle(int(xo_), yo_, width_, h, LColor::selection);
 		}
 		return;
 	}
 
-	if ((startpit != pit_ && startrow != rit_) &&
-	    (endpit != pit_ && endrow != rit_)) {
-		if (y_ > starty && y_ < endy) {
-			int w = width_;
-			pain_.fillRectangle(int(xo_), yo_, w, h, LColor::selection);
-		}
-		return;
-	}
-
-	if ((startpit != pit_ && startrow != rit_ && !is_rtl) || (endpit != pit_ && endrow != rit_ && is_rtl))
+	if ((startpit != pit_ && startrow != rit_ && !is_rtl)
+		|| (endpit != pit_ && endrow != rit_ && is_rtl))
 		pain_.fillRectangle(int(xo_), yo_,
 			int(x_), h, LColor::selection);
 
@@ -461,8 +466,10 @@ void RowPainter::paintSelection()
 				tmpx += separator_;
 		}
 
-		if (((startpit != pit_ && startrow != rit_) || text_.selection.start.pos() <= pos) &&
-			((endpit != pit_ && endrow != rit_) || pos < text_.selection.end.pos())) {
+		if (((startpit != pit_ && startrow != rit_)
+				|| text_.selection.start.pos() <= pos) &&
+			((endpit != pit_ && endrow != rit_)
+				|| pos < text_.selection.end.pos())) {
 			// Here we do not use x_ as xo_ was added to x_.
 			pain_.fillRectangle(int(old_tmpx), yo_,
 				int(tmpx - old_tmpx + 1), h, LColor::selection);
@@ -600,7 +607,7 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp,
 	font_metrics::rectText(str, font, w, a, d);
 
 	pain_.rectText(leftx + 2 * arrow_size + 5,
-		       start + ((end - start) / 2) + d,
+		       start + (end - start) / 2 + d,
 		       str, font,
 		       LColor::none, LColor::none);
 
@@ -933,46 +940,12 @@ void RowPainter::paintText()
 }
 
 
-void RowPainter::paint()
-{
-	// FIXME: what is this fixing ?
-	if (text_.isInInset() && x_ < 0)
-		x_ = 0;
-	x_ += xo_;
-
-	// background has already been cleared.
-	if (&text_ == bv_.text)
-		paintBackground();
-
-	// paint the selection background
-	if (text_.selection.set() && &text_ == bv_.cursor().innerText())
-		paintSelection();
-
-	// vertical lines for appendix
-	paintAppendix();
-
-	// environment depth brackets
-	paintDepthBar();
-
-	// changebar
-	paintChangeBar();
-
-	if (row_.pos() == 0)
-		paintFirst();
-
-	if (row_.endpos() >= pit_->size())
-		paintLast();
-
-	// paint text
-	paintText();
-}
-
-
 int paintPars(BufferView const & bv, LyXText const & text,
 	ParagraphList::iterator pit, int xo, int yo, int y)
 {
 	//lyxerr << "  paintRows: pit: " << &*pit << endl;
 	int const y2 = bv.painter().paperHeight();
+	y -= bv.top_y();
 
 	ParagraphList::iterator end = text.ownerParagraphs().end();
 
@@ -981,8 +954,7 @@ int paintPars(BufferView const & bv, LyXText const & text,
 		RowList::iterator rend = pit->rows.end();
 
 		for ( ; row != rend; ++row) {
-			RowPainter painter(bv, text, pit, row, y + yo, xo, y + bv.top_y());
-			painter.paint();
+			RowPainter(bv, text, pit, row, xo, y + yo);
 			y += row->height();
 		}
 		if (yo + y >= y2)
@@ -997,10 +969,9 @@ int paintPars(BufferView const & bv, LyXText const & text,
 
 int paintText(BufferView & bv)
 {
-	int const topy = bv.top_y();
 	ParagraphList::iterator pit;
-	bv.text->getRowNearY(topy, pit);
-	return paintPars(bv, *bv.text, pit, 0, 0, pit->y - topy);
+	bv.text->getRowNearY(bv.top_y(), pit);
+	return paintPars(bv, *bv.text, pit, 0, 0, pit->y);
 }
 
 
