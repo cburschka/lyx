@@ -205,7 +205,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
 	//lyxerr << "MathNestInset::drawing selection: "
-	//	<< " s1: " << s1 << " s2: " << s2 << endl; 
+	//	<< " s1: " << s1 << " s2: " << s2 << endl;
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
 		int x1 = c.xo() + c.pos2x(s1.pos());
@@ -215,7 +215,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	//lyxerr << "MathNestInset::drawing selection 3: "
 	//	<< " x1: " << x1 << " x2: " << x2
-	//	<< " y1: " << y1 << " y2: " << y2 << endl; 
+	//	<< " y1: " << y1 << " y2: " << y2 << endl;
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
@@ -313,7 +313,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-void MathNestInset::notifyCursorLeaves(LCursor & cur)
+void MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 {
 #warning look here
 #if 0
@@ -381,7 +381,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_PASTE: {
-		recordUndo(cur);	
+		recordUndo(cur);
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		size_t n = 0;
@@ -800,7 +800,7 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
-	//string tc = "mathnormal"; 
+	//string tc = "mathnormal";
 	bool ret = true;
 	switch (cmd.action) {
 #if 0

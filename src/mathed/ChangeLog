@@ -1,5 +1,10 @@
 2004-04-20  Angus Leeming  <leeming@lyx.org>
 
+	* math_nestinset.C (notifyCursorLeaves): squash warning about
+	unused var.
+
+2004-04-20  Angus Leeming  <leeming@lyx.org>
+
 	* math_hullinset.C (addPreview): Add the preview only if
 	previewing of math insets is active.
 
@@ -20,7 +25,7 @@
 	could be replaced by the compiler-generated defaults if preview_
 	was stored as a RenderPreview var rather than a scoped pointer.
 	(metrics, draw): use the preview renderer if previewing is turned on.
-	
+
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
 	* math_scriptinset.C (up, down, notifyCursorLeaves): ensure that
