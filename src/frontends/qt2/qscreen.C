@@ -24,6 +24,7 @@
 #include "insets/insettext.h"
 #include "debug.h"
 
+using std::endl;
 using std::max;
 using std::min;
 

@@ -29,7 +29,7 @@
 class QtView;
 class QToolBar;
 class QComboBox;
- 
+class ToolbarProxy;
 
 struct Toolbar::Pimpl {
  

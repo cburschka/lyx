@@ -20,7 +20,8 @@
 #include <qevent.h>
 #include <qpainter.h>
  
- 
+using std::endl;
+
 namespace {
  
 /// return the LyX key state from Qt's

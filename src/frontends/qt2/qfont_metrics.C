@@ -26,7 +26,7 @@ namespace {
 	QFontMetrics const & metrics(LyXFont const & f) {
 		return fontloader.metrics(f);
 	}
-};
+}
 
  
 namespace font_metrics {

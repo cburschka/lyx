@@ -44,8 +44,8 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern LyXAction lyxaction;
 
 
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
-	: owner_(static_cast<QtView*>(view)), menubackend_(mb)
+Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe) 
+	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
 {
 	MenuBackend::const_iterator mb = menubackend_.begin(); 
 	MenuBackend::const_iterator mbend = menubackend_.end();

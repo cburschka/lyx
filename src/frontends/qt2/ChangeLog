@@ -1,3 +1,21 @@
+2002-06-21  Angus Leeming  <leeming@lyx.org>
+
+	* Menubar_pimpl.C (c-tor): rename MenuBackend const & mb argument to
+	avoid name clash with MenuBackend::const_iterator mb.
+
+	* QContentPane.C:
+	* QLPainter.C:
+	* qscreen.C: add using std::endl directive.
+
+	* QLPainter.C (lines, fillPolygon) : wrap QCOORD points inside a
+	scoped_array as np is not known at compile time and my compiler barfs.
+
+	* Toolbar_pimpl.h: forward declare class ToolbarProxy.
+
+	* qfont_loader.h: don't #include "font_loader.h".
+
+	* qfont_metrics.C: remove trailing ';' from namespace anon scope.
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* qfont_metrics.C: fix variable names

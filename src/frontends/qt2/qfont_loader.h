@@ -19,7 +19,6 @@
  
 #include "lyxfont.h"
  
-#include "font_loader.h"
 #include "LString.h"
 
 #include <qfont.h>

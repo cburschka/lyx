@@ -28,7 +28,11 @@
 #include <qpainter.h>
 #include <qbrush.h> 
 #include <qcolor.h>
- 
+
+#include <boost/scoped_array.hpp>
+
+using std::endl;
+
 QLPainter::QLPainter(QWorkArea & qwa)
 	: Painter(), owner_(qwa), paint_check_(0)
 {
@@ -112,8 +116,9 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 	line_width lw)
 {
 	// FIXME ?
- 
-	QCOORD points[np * 2];
+
+	// Must use new as np is not known at compile time.
+	boost::scoped_array<QCOORD> points(new QCOORD [np * 2]);
 
 	int j = 0;
  
@@ -122,7 +127,8 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 		points[j++] = yp[i];
 	}
 
-	setPen(col, ls, lw).drawPolyline(QPointArray(np, points));
+	setPen(col, ls, lw).drawPolyline(QPointArray(np, points.get()));
+
 	return *this;
 }
 
@@ -152,7 +158,8 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 {
 	// FIXME ?
  
-	QCOORD points[np * 2];
+	// Must use new as np is not known at compile time.
+	boost::scoped_array<QCOORD> points(new QCOORD [np * 2]);
 
 	int j = 0;
  
@@ -161,7 +168,8 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 		points[j++] = yp[i];
 	}
 
-	setPen(col).drawPolygon(QPointArray(np, points));
+	setPen(col).drawPolygon(QPointArray(np, points.get()));
+
 	return *this;
 }
 
