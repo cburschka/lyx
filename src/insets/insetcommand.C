@@ -35,9 +35,7 @@ InsetCommandParams::InsetCommandParams( string const & n,
 
 string const InsetCommandParams::getAsString() const
 {
-	string b(cmdname);
-	b += "|++|" + options + "|++|" + contents;
-	return b;
+	return cmdname + "|++|" + contents + "|++|" + options;
 }
 
 
@@ -45,9 +43,9 @@ void InsetCommandParams::setFromString( string const & b )
 {
 	string::size_type idx = b.find("|++|");
 	if (idx == string::npos) {
-		cmdname = "";
-		options  = "";
+		cmdname = b;
 		contents = "";
+		options = "";
 		return;
 	}
 
@@ -56,10 +54,11 @@ void InsetCommandParams::setFromString( string const & b )
 
 	idx = tmp.find("|++|");
 	if (idx == string::npos) {
-		options = tmp;
+		contents = tmp;
+		options = "";
 	} else {
-		options  = tmp.substr(0, idx);
-		contents = tmp.substr(idx+4);
+		contents  = tmp.substr(0, idx);
+		options = tmp.substr(idx+4);
 	}
 }
 
