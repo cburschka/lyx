@@ -310,7 +310,7 @@ int yylex()
 			}
 			if (lexcode[c] == LexAlpha) {
 				yytext.erase();
-				while (lexcode[c] == LexAlpha) {
+				while (lexcode[c] == LexAlpha && yyis->good()) {
 					yytext += c;
 					c = getuchar(yyis);
 				}
@@ -512,9 +512,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 	++plevel;
 	while (t) {
-		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i
-		//	<< " TK_LIMIT " << LM_TK_LIMIT << "\n";
-				
+		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i << "\n";
 		//	<< " plevel: " << plevel << " ";
 		//array.dump(lyxerr);
 		//lyxerr << "\n";
@@ -647,7 +645,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_DOTS:
-			array.push_back(new MathDotsInset(yylval.l->name, yylval.l->id));
+			array.push_back(new MathDotsInset(yylval.l));
 			break;
 		
 		case LM_TK_CHOOSE:
@@ -727,8 +725,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		case LM_TK_DECORATION:
 		{  
-			MathDecorationInset * p
-				= new MathDecorationInset(yylval.l->name, yylval.l->id);
+			MathDecorationInset * p = new MathDecorationInset(yylval.l);
 			mathed_parse(p->cell(0), FLAG_ITEM);
 			array.push_back(p);
 			break;
@@ -805,7 +802,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			//   Search for the end command. 
 			do {
 				t = yylex();
-			} while (t != LM_TK_END && t);
+			} while (yyis->good() && t != LM_TK_END && t);
 		} else
 			t = yylex();
 
@@ -814,6 +811,18 @@ void mathed_parse(MathArray & array, unsigned flags)
 }
 
 }
+
+
+MathArray mathed_parse_cell(string const & str)
+{
+	istringstream is(str.c_str());
+	yyis     = &is;
+	yylineno = 0;
+	MathArray ar;
+	mathed_parse(ar, 0);
+	return ar;
+}
+
 
 MathInset * mathed_parse(string const & str)
 {

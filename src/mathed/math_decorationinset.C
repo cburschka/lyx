@@ -11,10 +11,10 @@
 using std::ostream;
 
 
-MathDecorationInset::MathDecorationInset(string const & name, int d)
-	: MathInset(1, name), deco_(d)
+MathDecorationInset::MathDecorationInset(latexkeys const * key)
+	: MathInset(1), key_(key)
 {
-	upper_ = deco_ != LM_underline && deco_ != LM_underbrace;
+	upper_ = key_->id != LM_underline && key_->id != LM_underbrace;
 }
 
 
@@ -43,7 +43,7 @@ void MathDecorationInset::metrics(MathStyles st)
 		descent_ += dh_ + 2;
 	}
 
-	if (deco_ == LM_not) {
+	if (key_->id == LM_not) {
 		ascent_  += dh_;
 		descent_ += dh_;
 		dh_ = height();
@@ -56,34 +56,35 @@ void MathDecorationInset::draw(Painter & pain, int x, int y)
 	xo(x);
 	yo(x);
 	xcell(0).draw(pain, x, y);
-	mathed_draw_deco(pain, x, y + dy_, width_, dh_, deco_);
+	mathed_draw_deco(pain, x, y + dy_, width_, dh_, key_->id);
 }
 
 
 void MathDecorationInset::write(ostream & os, bool fragile) const
 {
+	string name = key_->name;
 	if (fragile &&
-			(name_ == "overbrace" ||
-			 name_ == "underbrace" ||
-			 name_ == "overleftarrow" ||
-			 name_ == "overrightarrow"))
+			(name == "overbrace" ||
+			 name == "underbrace" ||
+			 name == "overleftarrow" ||
+			 name == "overrightarrow"))
 		os << "\\protect";
-	os << '\\' << name_;
+	os << '\\' << name;
 
-	if (deco_ == LM_not)
+	if (key_->id == LM_not)
 		os << ' ';
 	else
 		os << '{';
 
 	cell(0).write(os, fragile);  
 
-	if (deco_ != LM_not)
+	if (key_->id != LM_not)
 		os << '}';
 }
 
 void MathDecorationInset::writeNormal(ostream & os) const
 {
-	os << "[" << name_ << " ";
+	os << "[" << key_->name << " ";
 	cell(0).writeNormal(os);
 	os << "] ";
 }

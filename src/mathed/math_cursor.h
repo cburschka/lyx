@@ -156,7 +156,7 @@ public:
 	///
 	void handleFont(MathTextCodes t);
 	///
-	void handleAccent(string const & name, int code);
+	void handleAccent(string const & name);
 	///
 	void handleDelim(int l, int r);
 	/// Splits cells and shifts right part to the next cell

@@ -11,10 +11,13 @@
 /** Decorations and accents over (below) a math object
     \author Alejandro Aguilar Sierra
  */
+
+struct latexkeys;
+
 class MathDecorationInset : public MathInset {
 public:
 	///
-	MathDecorationInset(string const & name, int);
+	explicit MathDecorationInset(latexkeys const *);
 	///
 	MathInset * clone() const;
 	///
@@ -27,7 +30,7 @@ public:
 	void writeNormal(std::ostream & os) const;
 private:
 	///
-	int deco_;
+	latexkeys const * key_;
 	///
 	bool upper_;
 	/// height of deco

@@ -26,6 +26,8 @@ public:
 	static bool hasTemplate(string const &);
 	///
 	static MathMacro * cloneTemplate(string const &);
+	///
+	static void createTemplate(string const &, int, string const &);
 private:
 	///
 	static void builtinMacros();

@@ -76,10 +76,10 @@ void handleFont(BufferView * bv, MathTextCodes t)
 	mathcursor->handleFont(t);
 }
 
-void handleAccent(BufferView * bv, string const & name, int code)
+void handleAccent(BufferView * bv, string const & name)
 {
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->handleAccent(name, code);
+	mathcursor->handleAccent(name);
 }
 
 void handleDelim(BufferView * bv, int l, int r)
@@ -533,16 +533,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 		// --- accented characters ------------------------------
 
-	case LFUN_UMLAUT:     handleAccent(bv, "ddot", LM_ddot); break;
-	case LFUN_CIRCUMFLEX: handleAccent(bv, "hat", LM_hat); break;
-	case LFUN_GRAVE:      handleAccent(bv, "grave", LM_grave); break;
-	case LFUN_ACUTE:      handleAccent(bv, "acute", LM_acute); break;
-	case LFUN_TILDE:      handleAccent(bv, "tilde", LM_tilde); break;
-	case LFUN_MACRON:     handleAccent(bv, "bar", LM_bar); break;
-	case LFUN_DOT:        handleAccent(bv, "dot", LM_dot); break;
-	case LFUN_CARON:      handleAccent(bv, "check", LM_check); break;
-	case LFUN_BREVE:      handleAccent(bv, "breve", LM_breve); break;
-	case LFUN_VECTOR:     handleAccent(bv, "vec", LM_vec); break;
+	case LFUN_UMLAUT:     handleAccent(bv, "ddot"); break;
+	case LFUN_CIRCUMFLEX: handleAccent(bv, "hat"); break;
+	case LFUN_GRAVE:      handleAccent(bv, "grave"); break;
+	case LFUN_ACUTE:      handleAccent(bv, "acute"); break;
+	case LFUN_TILDE:      handleAccent(bv, "tilde"); break;
+	case LFUN_MACRON:     handleAccent(bv, "bar"); break;
+	case LFUN_DOT:        handleAccent(bv, "dot"); break;
+	case LFUN_CARON:      handleAccent(bv, "check"); break;
+	case LFUN_BREVE:      handleAccent(bv, "breve"); break;
+	case LFUN_VECTOR:     handleAccent(bv, "vec"); break;
 
 		// Greek mode
 	case LFUN_GREEK:

@@ -9,13 +9,15 @@
 #pragma interface
 #endif
 
+struct latexkeys;
+
 /// The different kinds of ellipsis
 class MathDotsInset : public MathInset {
 public:
 	///
-	MathDotsInset(string const &, int);
+	explicit MathDotsInset(latexkeys const *);
 	///
-	MathInset *  clone() const;
+	MathInset * clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
@@ -28,6 +30,6 @@ protected:
 	///
 	int dh_;
 	///
-	int code_;
+	latexkeys const * key_;
 };   
 #endif

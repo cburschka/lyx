@@ -20,6 +20,9 @@
 
 using std::endl;
 
+MathArray mathed_parse_cell(string const &);
+
+
 MathMacroTable::table_type MathMacroTable::macro_table;
 
 
@@ -67,6 +70,15 @@ MathMacroTemplate & MathMacroTable::provideTemplate(string const & name)
 }
 
 
+void MathMacroTable::createTemplate
+	(string const & name, int na, string const & text)
+{
+	MathMacroTemplate * t = new MathMacroTemplate(name, na);
+	t->cell(0) = mathed_parse_cell(text);
+	insertTemplate(t);
+}
+
+
 bool MathMacroTable::hasTemplate(string const & name)
 {
 	builtinMacros();
@@ -90,27 +102,25 @@ void MathMacroTable::builtinMacros()
 	built = true;
     
 	lyxerr[Debug::MATHED] << "Building macros" << endl;
-    
+   
+/* 
 	// This macro doesn't have arguments
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("notin", 0);
-		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
+		MathDecorationInset * p = new MathDecorationInset("not");
 		p->cell(0).push_back(LM_in, LM_TC_SYMB);
 		t->push_back(p);
 		insertTemplate(t);
 	}
-
-/*
-	// This macro doesn't have arguments
-	{
-		MathMacroTemplate & m = createTemplate("silentmult", 0);
-		istringstream is("\\cdot\0");
-		mathed_parser_file(is, 0);
-		MathMatrixInset * p = &m;
-  	mathed_parse(m.array, p, 0);
-	}
 */
 
+	createTemplate("silentmult", 0, "\\cdot");
+	createTemplate("emptyset",   0, "\\not0");
+	createTemplate("notin",      0, "\\not\\in");
+
+
+
+/*
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("emptyset", 0);
 		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
@@ -118,8 +128,10 @@ void MathMacroTable::builtinMacros()
 		t->push_back(p);
 		insertTemplate(t);
 	}
+*/
 
 	{
+
 		MathMacroTemplate * t = new MathMacroTemplate("land", 0);
 		t->push_back(LM_wedge, LM_TC_SYMB);
 		insertTemplate(t);

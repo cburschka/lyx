@@ -4,13 +4,14 @@
 
 #include "math_dotsinset.h"
 #include "mathed/support.h"
+#include "mathed/math_parser.h"
 #include "support/LOstream.h"
 
 using std::ostream;
 
 
-MathDotsInset::MathDotsInset(string const & name, int id)
-	: MathInset(0, name), code_(id)
+MathDotsInset::MathDotsInset(latexkeys const * key)
+	: key_(key)
 {}
 
 
@@ -22,12 +23,12 @@ MathInset * MathDotsInset::clone() const
 
 void MathDotsInset::draw(Painter & pain, int x, int y)
 {
-	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, code_);
-	if (code_ == LM_vdots || code_ == LM_ddots)
+	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_->id);
+	if (key_->id == LM_vdots || key_->id == LM_ddots)
 		++x;
-	if (code_ != LM_vdots)
+	if (key_->id != LM_vdots)
 		--y;
-	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, code_);
+	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_->id);
 }
 
 
@@ -35,9 +36,9 @@ void MathDotsInset::metrics(MathStyles st)
 {
 	size(st);
 	mathed_char_dim(LM_TC_VAR, size(), 'M', ascent_, descent_, width_);
-	switch (code_) {
+	switch (key_->id) {
 		case LM_ldots: dh_ = 0; break;
-		case LM_cdots: dh_ = ascent_/2; break;
+		case LM_cdots: dh_ = ascent_ / 2; break;
 		case LM_vdots: width_ /= 2;
 		case LM_ddots: dh_ = ascent_; break;
 	}
@@ -46,11 +47,11 @@ void MathDotsInset::metrics(MathStyles st)
 
 void MathDotsInset::write(ostream & os, bool /* fragile */) const
 {
-	os << '\\' << name() << ' ';
+	os << '\\' << key_->name << ' ';
 }
 
 
 void MathDotsInset::writeNormal(ostream & os) const
 {
-	os << "[" << name() << "] ";
+	os << "[" << key_->name << "] ";
 }

@@ -684,7 +684,7 @@ void MathCursor::interpret(string const & s)
 				break;
 
 			case LM_TK_DECORATION:
-				p = new MathDecorationInset(l->name, l->id);
+				p = new MathDecorationInset(l);
 				break;
 
 			case LM_TK_SPACE:
@@ -692,7 +692,7 @@ void MathCursor::interpret(string const & s)
 				break;
 
 			case LM_TK_DOTS:
-				p = new MathDotsInset(l->name, l->id);
+				p = new MathDotsInset(l);
 				break;
 
 			case LM_TK_MACRO:
@@ -862,9 +862,13 @@ void MathCursor::handleFont(MathTextCodes t)
 }
 
 
-void MathCursor::handleAccent(string const & name, int code)
+void MathCursor::handleAccent(string const & name)
 {
-	MathDecorationInset * p = new MathDecorationInset(name, code);
+	latexkeys const * l = in_word_set(name);
+	if (!l)
+		return;
+
+	MathDecorationInset * p = new MathDecorationInset(l);
 	if (selection_) {
 		selCut();
 		p->cell(0) = theSelection.glue();
