@@ -1,5 +1,7 @@
 2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* math_scriptinset.C (dispatch): Change handling of LFUN_MATH_LIMITS.
+
 	* math_symbolinset.C (metrics): Compute em with the default font.
 
 	* math_charinset.C (draw): Use math symbol fonts for <,> & =

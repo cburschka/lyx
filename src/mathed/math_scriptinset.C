@@ -491,7 +491,17 @@ MathInset::result_type MathScriptInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	if (cmd.action == LFUN_MATH_LIMITS) {
-		limits_ = limits_ < 0 ? 1 : -1;
+		if (!cmd.argument.empty()) {
+			if (cmd.argument == "limits")
+				limits_ = 1;
+			else if (cmd.argument == "nolimits")
+				limits_ = -1;
+			else
+				limits_ = 0;
+		} else if (limits_ == 0)
+			limits_ =  (hasLimits()) ? -1 : 1;
+		else
+			limits_ = 0;
 		return DISPATCHED;
 	}
 
