@@ -724,7 +724,7 @@ void MathCursor::selPaste()
 {
 	seldump("selPaste");
 	theSelection.paste(*this);
-	theSelection.grab(*this);
+	//theSelection.grab(*this);
 	//selClear();
 }
 
