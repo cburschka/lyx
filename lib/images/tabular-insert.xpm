@@ -1,28 +1,31 @@
 /* XPM */
-static char const * tab_xpm[] = {
-"20 20 3 1",
-" 	c None",
-".	c #000000000000",
-"X	c #FFFFFFFFFFFF",
-"                    ",
-"  ................  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  ................  ",
-"                    ",
-"  ................  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  ................  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  ................  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  .XXXX.XXXX.XXXX.  ",
-"  ................  "};
-
-
+static char *show-dialog-new-inset_tabular[] = {
+/* columns rows colors chars-per-pixel */
+"22 22 3 1",
+"  c black",
+". c white",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXX",
+"XXX                XXX",
+"XXX .... .... .... XXX",
+"XXX .... .... .... XXX",
+"XXX                XXX",
+"XXX .... .... .... XXX",
+"XXX .... .... .... XXX",
+"XXX                XXX",
+"XXX .... .... .... XXX",
+"XXX .... .... .... XXX",
+"XXX                XXX",
+"XXX .... .... .... XXX",
+"XXX .... .... .... XXX",
+"XXX                XXX",
+"XXX .... .... .... XXX",
+"XXX .... .... .... XXX",
+"XXX                XXX",
+"XXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXX"
+};
