@@ -71,11 +71,11 @@ LColor::LColor()
 	fill(mathcursor, _("math cursor"), "mathcursor", "black", "mathcursor");
 	fill(mathline, _("math line"), "mathline", "Blue", "mathline");
 	fill(footnote, _("footnote"), "footnote", "DarkRed", "footnote");
-	fill(footnotebg, _("footnote background"), "footnotebg", "grey40", "footnotebg");
+	fill(footnotebg, _("footnote background"), "footnotebg", "grey60", "footnotebg");
 	fill(footnoteframe, _("footnote frame"), "footnoteframe", "IndianRed", "footnoteframe");
 	fill(ert, _("ert"), "ert", "DarkRed", "ert");
 	fill(inset, _("inset"), "inset", "black", "inset");
-	fill(insetbg, _("inset background"), "insetbg", "grey40", "insetbg");
+	fill(insetbg, _("inset background"), "insetbg", "grey60", "insetbg");
 	fill(insetframe, _("inset frame"), "insetframe", "IndianRed", "insetframe");
 	fill(error, _("error"), "error", "Red", "error");
 	fill(eolmarker, _("end-of-line marker"), "eolmarker", "Brown", "eolmarker");
