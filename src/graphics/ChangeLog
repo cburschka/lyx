@@ -1,3 +1,9 @@
+2001-07-17  Baruch Even  <baruch@lyx.org>
+
+	* GraphicsCacheItem.h:
+	* GraphicsCacheItem.C: Shuffled things a bit to make it easier to switch
+	from synchronous to asynchronous and to ease the coming changes.
+
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ImageLoaderXPM.C (runImageLoader): get display information from

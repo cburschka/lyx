@@ -58,11 +58,25 @@ public:
 	/** Get a notification when the image conversion is done.
 	    used by an internal callback mechanism.
 	*/
-	void imageConverted(int retval);
+	void imageConverted(bool success);
 
 private:
+	/** Start image conversion process, checks first that it is necessary
+	 *  if necessary will start an (a)synchronous task and notify upon
+	 *  completion by calling imageConverted(bool) where true is for success
+	 *  and false is for a failure.
+	 *
+	 *  Returns a bool to denote success or failure of starting the conversion
+	 *  task.
+	 */
 	bool convertImage(string const & filename);
+
+	/// Load the image into memory, this gets called from imageConverted(bool).
 	void loadImage();
+
+	/// Sets the status of the image, in the future will also notify listeners
+	/// that the status is updated.
+	void setStatus(ImageStatus new_status);
 
 	/** The filename we refer too.
 	    This is used when removing ourselves from the cache.

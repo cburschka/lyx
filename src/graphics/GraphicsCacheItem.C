@@ -28,17 +28,30 @@
 
 using std::endl;
 
+/*
+ * The order of conversion:
+ *
+ * The c-tor calls convertImage()
+ * 
+ * convertImage() verifies that we need to do conversion, if not it will just
+ * call the loadImage()
+ * if conversion is needed, it will initiate the conversion.
+ *
+ * When the conversion is completed imageConverted() is called, which in turn
+ * calls loadImage().
+ *
+ * Since we currently do everything synchronously, convertImage() calls
+ * imageConverted() right after it does the call to the conversion process.
+*/
+
 GraphicsCacheItem::GraphicsCacheItem(string const & filename)
 	: imageStatus_(GraphicsCacheItem::Loading)
 {
 	filename_ = filename;
 	
 	bool success = convertImage(filename);
-	// For now we do it synchronously
-	if (success) 
-		imageConverted(0);
-	else
-		imageStatus_ = ErrorConverting;
+	if (! success) // Conversion failed miserably (couldn't even start).
+		setStatus(ErrorConverting);
 }
 
 
@@ -50,19 +63,25 @@ GraphicsCacheItem::ImageStatus
 GraphicsCacheItem::getImageStatus() const { return imageStatus_; }
 
 
+void GraphicsCacheItem::setStatus(ImageStatus new_status)
+{
+	imageStatus_ = new_status;
+}
+
+
 LyXImage * 
 GraphicsCacheItem::getImage() const { return image_.get(); }
 
 
 void
-GraphicsCacheItem::imageConverted(int retval)
+GraphicsCacheItem::imageConverted(bool success)
 {
-	lyxerr << "imageConverted, retval=" << retval << endl;
+	lyxerr << "imageConverted, status=" << success << endl;
 
-	if (retval) {
+	if (! success) {
 		lyxerr << "(GraphicsCacheItem::imageConverter) "
 			"Error converting image." << endl;
-		imageStatus_ = GraphicsCacheItem::ErrorConverting;
+		setStatus(GraphicsCacheItem::ErrorConverting);
 		return;
 	}
 
@@ -126,6 +145,13 @@ GraphicsCacheItem::convertImage(string const & filename)
 
 	converters.Convert(0, filename, tempfile, from, to);
 
+	// For now we are synchronous
+	imageConverted(true);
+
+	// Cleanup after the conversion.
+	lyx::unlink(tempfile);
+	tempfile = string();
+
 	return true;
 }
 
@@ -141,14 +167,9 @@ GraphicsCacheItem::loadImage()
 	if (imageLoader.loadImage(tempfile) == ImageLoader::OK) {
 		lyxerr << "Success." << endl;
 		image_.reset(imageLoader.getImage());
-		imageStatus_ = GraphicsCacheItem::Loaded;
+		setStatus(GraphicsCacheItem::Loaded);
 	} else {
 		lyxerr << "Loading " << tempfile << "Failed" << endl;
-		imageStatus_ = GraphicsCacheItem::ErrorReading;
+		setStatus(GraphicsCacheItem::ErrorReading);
 	}
-
-	// remove the xpm file now.
-	lyx::unlink(tempfile);
-	// and remove the reference to the filename.
-	tempfile = string();
 }
