@@ -1,18 +1,12 @@
-/*
- *  File:        math_inset.C
- *  Purpose:     Implementation of insets for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     January 1996
- *  Description:
+/**
+ * \file math_inset.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Dependencies: Xlib, XForms
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *   Version: 0.8beta.
- *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

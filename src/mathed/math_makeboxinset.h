@@ -1,19 +1,20 @@
 // -*- C++ -*-
+/**
+ * \file math_makeboxinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Ling Li
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_MAKEBOXINSET_H
 #define MATH_MAKEBOXINSET_H
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
-/** Extra nesting: \\makebox.
- *  \author Ling Li
- *
- *  Full author contact details are available in file CREDITS
- */
-
+/// Extra nesting: \\makebox.
 // consolidate with MathFrameboxInset?
 
 class MathMakeboxInset : public MathNestInset {

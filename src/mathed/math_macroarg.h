@@ -1,15 +1,22 @@
 // -*- C++ -*-
+/**
+ * \file math_macroarg.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATHMACROARGUMENT_H
 #define MATHMACROARGUMENT_H
 
 #include "math_nestinset.h"
 
 
-/** A macro argument
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
-*/
+/// A macro argument.
 class MathMacroArgument : public MathNestInset {
 public:
 	///

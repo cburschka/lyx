@@ -1,4 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file math_macrotemplate.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
@@ -8,13 +19,9 @@
 
 class MathMacro;
 
-/** This class contains the macro definition
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
- */
 //class MathMacroTemplate : public MathInset, boost::noncopyable
 
+/// This class contains the macro definition.
 class MathMacroTemplate : public MathNestInset {
 public:
 	///

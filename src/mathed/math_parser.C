@@ -1,5 +1,11 @@
-/** The math parser
-    \author André Pönitz (2001)
+/**
+ * \file math_parser.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 /*

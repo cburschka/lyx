@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file math_binaryopinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_BINARYOPINSET_H
 #define MATH_BINARYOPINSET_H
 
@@ -6,11 +16,7 @@
 #include "math_nestinset.h"
 
 
-/** An inset for multiplication
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
+/// An inset for multiplication
 class MathBinaryOpInset : public MathNestInset {
 public:
 	///

@@ -1,13 +1,14 @@
 // -*- C++ -*-
-
-/*
- * Common parts of the math LyX insets
- * \author  André Pönitz
+/**
+ * \file formulabase.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * Full author contact details are available in file CREDITS
+ * \author André Pönitz
  *
- * You are free to use and modify this code under the terms of
- * the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
+ *
+ * Common parts of the math LyX insets.
  */
 
 #ifndef INSET_FORMULABASE_H

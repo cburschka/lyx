@@ -1,8 +1,14 @@
-#include <config.h>
+/**
+ * \file math_makeboxinset.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Ling Li
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
+#include <config.h>
 
 #include "math_makeboxinset.h"
 #include "math_support.h"

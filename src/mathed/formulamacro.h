@@ -1,15 +1,13 @@
 // -*- C++ -*-
-
-/*
- *  Main LyX Inset for defining math macros
+/**
+ * \file formulamacro.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  \author Alejandro Aguilar Sierra
- *  \author André Pönitz
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  Full author contact details are available in file CREDITS
- *
- *  You are free to use and modify this code under the terms of
- *  the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef INSET_FORMULA_MACRO_H
@@ -23,7 +21,7 @@ class MathMacroTemplate;
 // An InsetFormulaMacro only knows its name and asks the global
 // MathMacroTable if it needs to know more.
 
-///
+/// Main LyX Inset for defining math macros
 class InsetFormulaMacro : public InsetFormulaBase {
 public:
 	///

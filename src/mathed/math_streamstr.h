@@ -1,4 +1,13 @@
 // -*- C++ -*-
+/**
+ * \file math_streamstr.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef MATH_STREAMSTR_H
 #define MATH_STREAMSTR_H

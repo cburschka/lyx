@@ -1,4 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file math_decorationinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_DECORATIONINSET_H
 #define MATH_DECORATIONINSET_H
 
@@ -6,14 +17,9 @@
 #include "LString.h"
 
 
-/** Decorations and accents over (below) a math object
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
- */
-
 class latexkeys;
 
+/// Decorations and accents over (below) a math object
 class MathDecorationInset : public MathNestInset {
 public:
 	///

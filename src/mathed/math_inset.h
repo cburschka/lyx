@@ -1,19 +1,13 @@
 // -*- C++ -*-
 /**
- *  File:        math_inset.h
- *  Purpose:     Declaration of insets for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     January 1996
- *  Description: Math paragraph and objects for a WYSIWYG math editor.
+ * \file math_inset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Dependencies: Xlib, XForms
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *   Version: 0.8beta, Math & Lyx project.
- *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef MATH_INSET_H

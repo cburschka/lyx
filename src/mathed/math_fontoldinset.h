@@ -1,18 +1,23 @@
 // -*- C++ -*-
+/**
+ * \file math_fontoldinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_FONTOLDINSET_H
 #define MATH_FONTOLDINSET_H
 
 #include "math_nestinset.h"
 
 
-/** Old-style font changes
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
-
 class latexkeys;
 
+/// Old-style font changes
 class MathFontOldInset : public MathNestInset {
 public:
 	///

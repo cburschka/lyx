@@ -1,14 +1,12 @@
-/*
- *  File:        formulamacro.C
- *  Purpose:     Implementation of the formula macro LyX inset
- *  Author:      André Pönitz, based on ideas of Alejandro Aguilar Sierra
- *  Created:     March 2001
- *  Description: Allows the edition of math macros inside Lyx.
+/**
+ * \file formulamacro.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Copyright: 2001  The LyX Project
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

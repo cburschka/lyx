@@ -1,16 +1,21 @@
 // -*- C++ -*-
+/**
+ * \file math_scriptinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_SCRIPTINSET_H
 #define MATH_SCRIPTINSET_H
 
 #include "math_nestinset.h"
 
 
-/** Inset for super- and subscripts
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
-
+/// An inset for super- and subscripts.
 class MathScriptInset : public MathNestInset {
 public:
 	/// create inset without scripts

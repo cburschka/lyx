@@ -1,18 +1,21 @@
 // -*- C++ -*-
+/**
+ * \file math_amsarrayinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_AMSARRAYINSET_H
 #define MATH_AMSARRAYINSET_H
 
 #include "math_gridinset.h"
 
 
-/**
- * Inset for things like [pbvV]matrix, psmatrix etc
- *
- * \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
-
+/// Inset for things like [pbvV]matrix, psmatrix etc
 class MathAMSArrayInset : public MathGridInset {
 public:
 	///

@@ -1,5 +1,15 @@
-#include <config.h>
+/**
+ * \file math_decorationinset.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
+#include <config.h>
 
 #include "math_decorationinset.h"
 #include "math_support.h"

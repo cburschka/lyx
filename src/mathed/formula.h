@@ -1,15 +1,13 @@
 // -*- C++ -*-
-
 /**
- *  \file formula.h
+ * \file formula.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  This file is part of LyX, the document processor.
- *  Licence details can be found in the file COPYING.
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  \author Alejandro Aguilar Sierra
- *  \author André Pönitz
- *
- *  Full author contact details are available in file CREDITS.
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef INSET_FORMULA_H

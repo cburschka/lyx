@@ -1,17 +1,12 @@
-/*
- *  File:        math_macro.C
- *  Purpose:     Implementation of macro class for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     November 1996
- *  Description: WYSIWYG math macros
+/**
+ * \file math_macro.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Dependencies: Math
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *  Version: 0.2, Math & Lyx project.
- *
- *  This code is under the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

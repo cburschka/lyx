@@ -1,15 +1,11 @@
-/*
- *  File:        math_atom.C
- *  Purpose:     Wrapper for MathInset *
- *  Author:      André Pönitz
- *  Created:     July 2001
+/**
+ * \file math_atom.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Copyright: 2001 The LyX team
+ * \author André Pönitz
  *
- *   Version: 1.2.0
- *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>

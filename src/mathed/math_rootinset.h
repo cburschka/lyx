@@ -1,15 +1,13 @@
 // -*- C++ -*-
 /**
- *  File:        math_root.h
- *  Purpose:     Declaration of the root object
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     January 1999
- *  Description: Root math object
+ * \file math_rootinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Copyright: 1999 Alejandro Aguilar Sierra
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef MATH_ROOT_H
@@ -18,12 +16,7 @@
 #include "math_nestinset.h"
 
 
-/** The general n-th root inset.
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
-    \version January 1999
- */
+/// The general n-th root inset.
 class MathRootInset : public MathNestInset {
 public:
 	///

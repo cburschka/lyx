@@ -1,4 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file math_deliminset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_DELIMINSET_H
 #define MATH_DELIMINSET_H
 
@@ -6,12 +17,7 @@
 #include "LString.h"
 
 
-/** A delimiter
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
-*/
-
+/// A delimiter
 class MathDelimInset : public MathNestInset {
 public:
 	///

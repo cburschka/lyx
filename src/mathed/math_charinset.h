@@ -1,16 +1,21 @@
 // -*- C++ -*-
+/**
+ * \file math_charinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_CHARINSET_H
 #define MATH_CHARINSET_H
 
 #include "math_inset.h"
 
 
-/** The base character inset.
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
-
+/// The base character inset.
 class MathCharInset : public MathInset {
 public:
 	///

@@ -1,16 +1,13 @@
-/*
-*  File:        formulabase.C
-*  Purpose:     Implementation of common parts of the LyX  math insets
-*  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
-*  Created:     January 1996
-*
-*  Copyright: 1996-1998 Alejandro Aguilar Sierra
-*
-*  Version: 0.4, Lyx project.
-*
-*   You are free to use and modify this code under the terms of
-*   the GNU General Public Licence version 2 or later.
-*/
+/**
+ * \file formulabase.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #include <config.h>
 

@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file math_sizeinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATHSIZEINSET_H
 #define MATHSIZEINSET_H
 
@@ -6,14 +16,9 @@
 #include "metricsinfo.h"
 
 
-/** An inset for \scriptsize etc
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
-*/
-
 class latexkeys;
 
+/// An inset for \scriptsize etc.
 class MathSizeInset : public MathNestInset {
 public:
 	///

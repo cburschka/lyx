@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file math_macrotable.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_MACROTABLE_H
 #define MATH_MACROTABLE_H
 
@@ -7,8 +17,6 @@
 #include "math_atom.h"
 
 
-
-///
 class MathMacroTable {
 public:
 	///

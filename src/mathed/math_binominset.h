@@ -1,13 +1,21 @@
 // -*- C++ -*-
+/**
+ * \file math_binominset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_BINOMINSET_H
 #define MATH_DINOMINSET_H
 
 #include "math_fracbase.h"
 
 
-/** Binom like objects
- *  \author André Pönitz
- */
+/// Binom like objects
 class MathBinomInset : public MathFracbaseInset {
 public:
 	///

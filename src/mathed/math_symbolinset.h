@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file math_symbolinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_SYMBOLINSET_H
 #define MATH_SYMBOLINSET_H
 
@@ -7,9 +17,9 @@
 struct latexkeys;
 
 
-// "normal" symbols that don't take limits and don't grow in displayed
-// formulae
-
+/** "normal" symbols that don't take limits and don't grow in displayed
+ *  formulae.
+ */
 class MathSymbolInset : public MathInset {
 public:
 	///

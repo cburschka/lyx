@@ -1,15 +1,22 @@
 // -*- C++ -*-
+/**
+ * \file math_fracinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_FRACINSET_H
 #define MATH_FRACINSET_H
 
 #include "math_fracbase.h"
 
 
-/** Fraction like objects (frac, binom)
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
- */
+/// Fraction like objects (frac, binom)
 class MathFracInset : public MathFracbaseInset {
 public:
 	///

@@ -1,3 +1,13 @@
+/**
+ * \file math_extern.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 // This file contains most of the magic that extracts "context
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.

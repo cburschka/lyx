@@ -1,3 +1,14 @@
+// -*- C++ -*-
+/**
+ * \file math_mathmlstream.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_MATHMLSTREAM_H
 #define MATH_MATHMLSTREAM_H
 

@@ -1,18 +1,23 @@
 // -*- C++ -*-
+/**
+ * \file math_atom.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef MATH_ATOM_H
 #define MATH_ATOM_H
 
 
 /**
- * Wrapper for MathInset * with copy-semantics
- *
- * \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
- */
+Wrapper for MathInset * with copy-semantics
 
-/**
+--
+
 The 'atom' is the major blob in math typesetting.  And 'atom' consists
 of a nucleus, an optional superscript, and an optional subscript.
 

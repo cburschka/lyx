@@ -1,3 +1,16 @@
+/**
+ * \file math_macroarg.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
 #include "math_macroarg.h"
 #include "math_macro.h"
 #include "math_mathmlstream.h"

@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file math_numberinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_NUMBERINSET_H
 #define MATH_NUMBERINSET_H
 
@@ -6,12 +16,8 @@
 
 
 /** Some inset that "is" a number
- *  maily for math-extern
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS
+ *  mainly for math-extern
  */
-
 class MathNumberInset : public MathInset {
 public:
 	///

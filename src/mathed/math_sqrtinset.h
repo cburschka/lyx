@@ -1,15 +1,22 @@
 // -*- C++ -*-
+/**
+ * \file math_sqrtinset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_SQRTINSET_H
 #define MATH_SQRTINSET_H
 
 #include "math_nestinset.h"
 
 
-/** The square root inset.
- *  \author Alejandro Aguilar Siearra
- *
- * Full author contact details are available in file CREDITS
- */
+/// \c MathSqrtInset The square root inset.
 class MathSqrtInset : public MathNestInset {
 public:
 	///

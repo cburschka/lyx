@@ -1,18 +1,15 @@
 // -*- C++ -*-
 /**
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
- */
-
-/** \class MathArray
-    \brief Low level container for math insets
- *  \author Alejandro Aguilar Sierra
- *  \author André Pönitz
- *  \author Lars Gullik Bjønnes
+ * \file math_data.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * Full author contact details are available in file CREDITS
-    \version February 2001
-  */
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef MATH_DATA_H
 #define MATH_DATA_H

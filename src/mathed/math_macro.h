@@ -1,19 +1,15 @@
 // -*- C++ -*-
 /**
- *  File:        math_macro.h
- *  Purpose:     Declaration of macro class for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     November 1996
- *  Description: WYSIWYG math macros
+ * \file math_macro.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  Dependencies: Math
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *   Version: 0.2, Math & Lyx project.
- *
- *   This code is under the GNU General Public Licence version 2 or later.
+ * Full author contact details are available in file CREDITS.
  */
+
 #ifndef MATH_MACRO_H
 #define MATH_MACRO_H
 
@@ -26,12 +22,7 @@
 class MathMacroTemplate;
 
 
-/** This class contains the data for a macro
- *  \author Alejandro Aguilar Sierra
- *
- * Full author contact details are available in file CREDITS
-    \version November 1996
- */
+/// This class contains the data for a macro.
 class MathMacro : public MathNestInset {
 public:
 	/// A macro can be built from an existing template
