@@ -1,3 +1,12 @@
+2001-03-06  Zvezdan Petkovic  <zvezdan@cs.wm.edu>
+
+	* lib/encodings: add support for iso8859-5 and cp1251.
+
+	* lib/languages: add serbian and serbocroatian.
+
+	* lib/kbd/serbian.kmap:
+	* lib/kbd/serbocroatian.kmap: new files.
+
 2001-03-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lyxinclude.m4 (LYX_PROG_CXX): add support for gcc 3.0.

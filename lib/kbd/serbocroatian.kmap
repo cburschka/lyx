@@ -1,0 +1,52 @@
+#
+# Keyboard mapping for Serbo-Croatian latin keyboard (ISO8859-2 encoding)
+# Based on the standard JUS.I.K1.002
+#
+# (c)2001 by Zvezdan Petkovic <z.petkovic@computer.org>
+#
+
+\kmap @ \"        # The characters above numbers are almost all remapped
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+\kmap - '
+\kmap _ ?
+\kmap = +
+\kmap + *
+\kmap ` <        
+\kmap ~ >
+\kmap y z         # y and z are switched
+\kmap Y Z
+\kmap [ "\\v{s}"  # s caron (pronunced sh)
+\kmap { "\\v{S}"
+\kmap ] "\\dh{}"  # d stroke (pronunced dj, with j as in German, not as
+\kmap } "\\DH{}"  # in English) 
+# Well, this one is a no win situation.  If I define it as \dj{} (as I
+# should), then LyX puts that string in the text being unable to find 
+# the corresponding character or draw an accent over a character.
+# Unfortunately, LyX doesn't put it in TeX mode automatically and it
+# must be done by hand -- exactly what we want to avoid. Hence, I choose
+# to use \dh{} which is shown as ð in iso8859-1 encoding and as d stroke
+# (correct character) in iso8859-2 encoding. Since ð looks as a
+# handwritten d stroke character (and capital Ð is exactly the same), 
+# screen approximation is satisfying.
+# The only problem is if somebody runs this through LaTeX without using
+# \usepackage[latin2]{inputenc}. Then, they will get ð even in the
+# printed version. It is still readable, but the solution is to replace 
+# all ð's with \dj{}. However, nobody should be using Serbo-Croatian
+# without latin2 option. In LyX it is enough to choose the language of
+# a document as serbocroatian or croatian.
+\kmap \\ "\\v{z}" # z caron (pronounced zh)
+\kmap | "\\v{Z}"
+\kmap ; "\\v{c}"  # c caron (pronunced tch)
+\kmap : "\\v{C}"
+\kmap ' "\\'{c}"  # c accute (pronunced as very soft ch)
+\kmap \" "\\'{C}"
+\kmap z y
+\kmap Z Y
+\kmap < ;
+\kmap > :
+\kmap / -
+\kmap ? _
