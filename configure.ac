@@ -199,7 +199,7 @@ for frontend in $FRONTENDS ; do
       Qt version:                   ${QT_VERSION}\n"
       ;;
     *)
-	  LYX_ERROR(Unknown frontend $lyx_use_frontend);;
+	  LYX_ERROR(Unknown frontend '$frontend');;
   esac
 done
 
