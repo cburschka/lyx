@@ -70,7 +70,7 @@
 #include "FormExternal.h"
 #include "GFloat.h"
 #include "GGraphics.h"
-#include "FormInclude.h"
+#include "GInclude.h"
 #include "GLog.h"
 #include "GMathPanel.h"
 #include "FormMathsBitmap.h"
@@ -252,8 +252,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GGraphics(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "include") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlInclude(*dialog));
-		dialog->setView(new FormInclude(*dialog));
+		dialog->setView(new GInclude(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
 		dialog->bc().view(new GBC(dialog->bc()));

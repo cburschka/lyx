@@ -39,6 +39,8 @@ libgtk_la_SOURCES = \
 	GERT.h \
 	GFloat.C \
 	GFloat.h \
+	GInclude.C \
+	GInclude.h \
 	GGraphics.C \
 	GGraphics.h \
 	GLog.C \
@@ -130,7 +132,6 @@ xforms_objects = \
 	../xforms/FormDialogView.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormExternal.lo \
-	../xforms/FormInclude.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsSpace.lo \
