@@ -37,8 +37,10 @@ AC_ARG_WITH(version-suffix,
      ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
    fi
    lyxname="lyx$withval"
-   program_suffix=$withval],
+   program_suffix=$withval
+   RPM_VERSION_SUFFIX="--with-version-suffix=$withval"],
   [lyxname=lyx])
+AC_SUBST(RPM_VERSION_SUFFIX)
 AC_MSG_RESULT([$lyxname])
 ])
 

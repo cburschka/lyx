@@ -1,5 +1,5 @@
 %define frontend @RPM_FRONTEND@
-%define frontdep @RPM_FRONTEND_DEPS@
+%define version_suffix @RPM_VERSION_SUFFIX@
 
 Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
 Name: @PACKAGE@
@@ -13,7 +13,6 @@ Source: ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Icon: %{name}.xpm
 Prefix: %{_prefix}
-Requires: %{frontdep}, tetex-xdvi, tetex, tetex-latex
 Obsoletes: tetex-lyx
 
 %description
@@ -42,7 +41,8 @@ This is LyX built with the %{frontend} frontend.
 unset LINGUAS || true
 ./configure --with-frontend=%{frontend} --prefix=%{_prefix} \
 	--mandir=%{_mandir} --bindir=%{_bindir} --datadir=%{_datadir} \
- 	--without-warnings --disable-debug --enable-optimization=-O2
+ 	--without-warnings --disable-debug --enable-optimization=-O2 \
+	%{version_suffix}
 make
 
 %install
@@ -63,7 +63,8 @@ mv ${RPM_BUILD_ROOT}%{_datadir}/%{name}/tex \
 #
 # Miscellaneous files
 #
-cp -a lib/images/%{name}.xpm ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
+# Don't use %{name}.xpm, this will not work with --version-suffix
+cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
 cp lib/reLyX/README README.reLyX
 
 %clean

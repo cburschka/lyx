@@ -177,7 +177,6 @@ for frontend in $FRONTENDS ; do
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
 	  RPM_FRONTEND="xforms"
-	  RPM_FRONTEND_DEPS='libforms >= 1.0'
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   XForms Frontend:\n\
       libXpm version:\t\t${XPM_VERSION}\n\
@@ -200,7 +199,6 @@ for frontend in $FRONTENDS ; do
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS gtk"
 	  RPM_FRONTEND="gtk"
-	  RPM_FRONTEND_DEPS='gtkmm >= 2.4.0'
 	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.4`
 	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.4`
 	  FRONTEND_INFO="${FRONTEND_INFO}\
@@ -214,7 +212,6 @@ for frontend in $FRONTENDS ; do
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt2"
 	  RPM_FRONTEND="qt"
-	  RPM_FRONTEND_DEPS='qt >= 2.2.1'
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
       Qt version:\t\t${QT_VERSION}\n"
@@ -319,7 +316,6 @@ ${FRONTEND_INFO}\
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
-AC_SUBST(RPM_FRONTEND_DEPS)
 
 ## Some config.h stuff
 
