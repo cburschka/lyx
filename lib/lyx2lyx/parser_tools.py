@@ -210,6 +210,10 @@ def read_file(header, body, opt):
             opt.error("Invalid LyX file.")
 
         line = line[:-1]
+        # remove '\r' from line's end, if present
+        if line[-1:] == '\r':
+            line = line[:-1]
+
         if check_token(line, '\\begin_preamble'):
             preamble = 1
         if check_token(line, '\\end_preamble'):
@@ -227,7 +231,11 @@ def read_file(header, body, opt):
         line = opt.input.readline()
         if not line:
             break
-        body.append(line[:-1])
+        # remove '\r' from line's end, if present
+        if line[-2:-1] == '\r':
+            body.append(line[:-2])
+        else:
+            body.append(line[:-1])
 
 
 def write_file(header, body, opt):
