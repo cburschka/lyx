@@ -19,6 +19,10 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
+#include "support/filetools.h" // LibFileSearch
+#include "lyxrc.h" // lyxrc.show_banner
+#include "version.h" // LYX_VERSION
+#include "support/LAssert.h"
 
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
@@ -60,11 +64,36 @@ extern "C" {
 		return WorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
         }
+
+
+	// Resizing the display causes the version string to move relative to
+	// the splash pixmap because the parameters xforms uses to control
+	// resizing are not very sophisticated.
+	// I found it easier, therefore, to just remove the splash screen.
+	// (Angus, 25 September 2001)
+        static
+        int C_WorkAreaSplashPH(FL_OBJECT * ob, int event,
+			       FL_Coord, FL_Coord, int, void *)
+        {
+		static int counter = 0;
+                if (event != FL_DRAW || ++counter > 3) {
+                        return 0;
+		}
+
+		lyx::Assert(ob && ob->u_vdata);
+                WorkArea * pre = static_cast<WorkArea *>(ob->u_vdata);
+
+		if (counter == 3) {
+			pre->destroySplash();
+		}
+
+		return 0;
+        }
 }
 
 
 WorkArea::WorkArea(int xpos, int ypos, int width, int height)
-	: workareapixmap(0), painter_(*this)
+	: splash_(0), splash_text_(0), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
@@ -85,7 +114,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	fl_set_object_boxtype(obj, FL_NO_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
-	
+
 	// a box
 	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "\tbackground box: +"
@@ -97,6 +126,43 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 					 height,"");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
+
+	// Add a splash screen to the centre of the work area
+	string const splash_file = (lyxrc.show_banner) ?
+		LibFileSearch("images", "banner", "xpm") : string();
+
+	if (!splash_file.empty()) {
+		int const splash_w = 425;
+		int const splash_h = 290;
+		int const splash_x = xpos + 0.5 * (width - 15 - splash_w);
+		int const splash_y = ypos + 0.5 * (height - splash_h);
+		splash_ = obj =
+			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
+					    splash_x, splash_y, 
+					    splash_w, splash_h, "");
+		obj->u_vdata = this;
+		fl_set_object_prehandler(obj, C_WorkAreaSplashPH);
+
+		fl_set_pixmapbutton_file(obj, splash_file.c_str());
+		fl_set_pixmapbutton_focus_outline(obj, 3);
+		fl_set_object_boxtype(obj, FL_NO_BOX);
+
+		int const text_x = splash_x + 248;
+		int const text_y = splash_y + 265;
+		splash_text_ = obj =
+			fl_add_text(FL_NORMAL_TEXT, text_x, text_y, 170, 16,
+				    LYX_VERSION);
+		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+		fl_mapcolor(FL_FREE_COL2, 0x2b, 0x47, 0x82);
+		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
+		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
+		fl_set_object_lcol(obj, FL_FREE_COL3);
+		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+
+		fl_hide_object(splash_);
+		fl_hide_object(splash_text_);
+	}
 
 	//
 	// THE SCROLLBAR
@@ -177,7 +243,7 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 
 	// a box
 	fl_set_object_geometry(backgroundbox, xpos, ypos, width - 15, height);
-	
+
 	//
 	// THE SCROLLBAR
 	//
@@ -192,8 +258,9 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 			       width - 15 - 2 * bw,
 			       height - 2 * bw);
 
-	fl_unfreeze_all_forms();
+	destroySplash();
 
+	fl_unfreeze_all_forms();
 }
 
 
@@ -225,13 +292,52 @@ void WorkArea::createPixmap(int width, int height)
 }
 
 
-void WorkArea::greyOut() const
+void WorkArea::show() const
 {
-	fl_winset(FL_ObjWin(work_area));
-	fl_rectangle(1, work_area->x, work_area->y,
-		     work_area->w, work_area->h, FL_GRAY63);
+	if (!work_area->visible) {
+		fl_show_object(work_area);
+	}
+	
+	destroySplash();
 }
 
+
+void WorkArea::greyOut() const
+{
+	if (work_area->visible) {
+		fl_hide_object(work_area);
+	}
+
+	if (splash_ && !splash_->visible) {
+		fl_show_object(splash_);
+		fl_show_object(splash_text_);
+	}
+}
+
+
+void WorkArea::destroySplash() const
+{
+	if (splash_) {
+		if (splash_->visible) {
+			fl_hide_object(splash_);
+		}
+		fl_set_object_prehandler(splash_, 0);
+		// Causes a segmentation fault!
+		// fl_delete_object(splash_);
+		// fl_free_object(splash_);
+		splash_ = 0;
+	}
+
+	if (splash_text_) {
+		if (splash_text_->visible) {
+			fl_hide_object(splash_text_);
+		}
+		fl_delete_object(splash_text_);
+		fl_free_object(splash_text_);
+		splash_text_ = 0;
+	}
+}
+	
 
 void WorkArea::setFocus() const
 {

@@ -39,7 +39,6 @@
 #endif
 #include "bufferlist.h"
 #include "ColorHandler.h"
-#include "frontends/Dialogs.h"
 #include "frontends/GUIRunTime.h"
 #include "frontends/xforms/xforms_helpers.h" // for XformColor
 
@@ -307,9 +306,6 @@ void LyXGUI::create_forms()
 	}
 
 	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
-
-	if (lyxrc.show_banner)
-		lyxViews->getDialogs()->showSplash();
 }
 
 

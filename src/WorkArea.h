@@ -68,6 +68,10 @@ public:
 	///
 	void greyOut() const;
 	///
+	void show() const;
+	///
+	void destroySplash() const;
+	///
 	void setScrollbar(double pos, double length_fraction) const;
 	///
 	void setScrollbarValue(double y) const {
@@ -133,6 +137,10 @@ private:
 	FL_OBJECT * work_area;
 	///
 	FL_OBJECT * scrollbar;
+	///
+	mutable FL_OBJECT * splash_;
+	///
+	mutable FL_OBJECT * splash_text_;
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///

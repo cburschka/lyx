@@ -208,6 +208,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs()->updateBufferDependent(true);
+		workarea_.show();
 		redraw();
 		insetWakeup();
 	} else {
@@ -366,10 +367,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 	/// clear the "Formatting Document" message 
 	owner_->message("");
- 
-	/// get rid of the splash screen if it's not gone already
-	owner_->getDialogs()->destroySplash();
- 
+
 	return 0;
 }
 

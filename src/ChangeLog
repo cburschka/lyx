@@ -1,3 +1,17 @@
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView_pimpl.C (buffer): call WorkArea::show to pop-up the
+	pixmap.
+	(resizeCurrentBuff): remove code to destroy the old splash dialog.
+
+	* WorkArea.[Ch]: add the "LyX" pixmap and version string to the
+	background. Use greyOut() and the new show() methods to toggle between
+	the foreground and background. Add code to remove the splash after
+	its initial showing.
+
+	* lyx_gui.C: Remove dependency on frontends/Dialogs.h.
+	(create_forms): no longer call Dialogs::showSplash.
+
 2001-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* .cvsignore: add version_info.h
