@@ -1,3 +1,12 @@
+003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* ref_inset.[Ch]: add a localDispatch method to RefInset.
+	add a string2RefInset function to 'translate' the string passed to the
+	LyX core from the Reference dialog.
+
+	* formulabase.C (localDispatch): factor the code for LFUN_REF_APPLY
+	to use these new functions and so avoid a dynamic cast.
+
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
 
 	* formula.C (draw): eliminate BufferView argument in call to 

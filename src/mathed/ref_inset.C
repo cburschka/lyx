@@ -14,6 +14,8 @@
 #include "debug.h"
 #include "math_mathmlstream.h"
 #include "Lsstream.h"
+#include "math_parser.h"
+#include "support/lstrings.h"
 
 
 RefInset::RefInset()
@@ -41,7 +43,6 @@ void RefInset::infoize(std::ostream & os) const
 dispatch_result
 RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
-	lyxerr << "RefInset::dispatch " << cmd.argument << std::endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3) {
@@ -126,6 +127,33 @@ int RefInset::docbook(std::ostream & os, bool) const
 	}
 
 	return 0;
+}
+
+
+dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
+{
+	MathArray ar;
+	if (!string2RefInset(cmd.argument, ar))
+		return UNDISPATCHED;
+
+	*this = *ar[0].nucleus()->asRefInset();
+	return DISPATCHED;
+}
+
+
+bool string2RefInset(string const & str, MathArray & ar)
+{
+	// str comes with a head "LatexCommand " and a
+	// tail "\nend_inset\n\n". Strip them off.
+	string trimmed;
+	string body = split(str, trimmed, ' ');
+	split(body, trimmed, '\n');
+
+	mathed_parse_cell(ar, trimmed);
+	if (ar.size() != 1)
+		return false;
+
+	return ar[0].nucleus()->asRefInset();
 }
 
 

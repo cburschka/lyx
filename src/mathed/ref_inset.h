@@ -33,6 +33,8 @@ public:
 	/// docbook output
 	int docbook(std::ostream & os, bool) const;
 
+	/// small wrapper for the time being
+	dispatch_result localDispatch(FuncRequest const & cmd);
 
 	struct ref_type_info {
 		///
@@ -48,5 +50,11 @@ public:
 	///
 	static string const & getName(int type);
 };
+
+/** Fills ar with the contents of str.
+ *  str is created by the reference dialog and returned to the LyX core.
+ *  The function returns true if it succeeds in creating a RefInset.
+ */
+bool string2RefInset(string const & str, MathArray & ar);
 
 #endif

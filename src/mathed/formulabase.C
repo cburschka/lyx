@@ -805,40 +805,22 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	break;
 
 	case LFUN_REF_APPLY: {
-		// argument comes with a head "LatexCommand " and a
-		// tail "\nend_inset\n\n". Strip them off.
-		string trimmed;
-		string body = split(argument, trimmed, ' ');
-		split(body, trimmed, '\n');
-		lyxerr << "passing '" << trimmed << "' to the math parser\n";
-
-		MathArray ar;
-		mathed_parse_cell(ar, trimmed);
-		if (ar.size() != 1) {
-			result = UNDISPATCHED;
-			break;
-		}
-
-		RefInset * tmp = ar[0].nucleus()->asRefInset();
-		if (!tmp) {
-			result = UNDISPATCHED;
-			break;
-		}
-
 		InsetBase * base =
 			bv->owner()->getDialogs().getOpenInset("ref");
-		if (base) {
-			RefInset * inset = dynamic_cast<RefInset *>(base);
-			if (!inset) {
-				result = UNDISPATCHED;
-				break;
-			}
 
-			*inset = *tmp;
+		if (base) {
+			result = base->localDispatch(cmd);
 		} else {
-			mathcursor->insert(ar);
+			// Turn 'argument' into a temporary RefInset.
+			MathArray ar;
+			if (string2RefInset(argument, ar)) {
+				mathcursor->insert(ar);
+			} else {
+				result = UNDISPATCHED;
+			}
 		}
-		updateLocal(bv, true);
+		if (result == DISPATCHED)
+			updateLocal(bv, true);
 	}
 	break;
 
