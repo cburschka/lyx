@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.1\n"
-"POT-Creation-Date: 1999-10-25 20:48+0200\n"
-"PO-Revision-Date: 1999-05-05 21:12+02:00\n"
+"POT-Creation-Date: 1999-10-28 06:44+0200\n"
+"PO-Revision-Date: 1999-10-28 06:55+02:00\n"
 "Last-Translator: Fulvio Boggia <muci@freenet.hut.fi>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -73,379 +73,379 @@ msgstr "Salvataggio del documento"
 msgid "Building program"
 msgstr "Costruisci il programma"
 
-#: src/LyXAction.C:589
+#: src/LyXAction.C:591
 msgid "Describe command"
 msgstr "Descrizione del comando"
 
-#: src/LyXAction.C:590
+#: src/LyXAction.C:592
 msgid "Select previous char"
 msgstr "Seleziona il carattere precedente"
 
-#: src/LyXAction.C:591
+#: src/LyXAction.C:593
 msgid "Insert bibtex"
 msgstr "Inserisci bibtex"
 
-#: src/LyXAction.C:592
+#: src/LyXAction.C:594
 msgid "Autosave"
 msgstr "Salvataggio automatico"
 
-#: src/LyXAction.C:593
+#: src/LyXAction.C:595
 msgid "Go to beginning of document"
 msgstr "Vai all'inizio del documento"
 
-#: src/LyXAction.C:594
+#: src/LyXAction.C:596
 msgid "Select to beginning of document"
 msgstr "Seleziona fino all'inizio del documento"
 
-#: src/LyXAction.C:595 src/insets/form_url.C:31 src/insets/inseterror.C:170
+#: src/LyXAction.C:597 src/insets/form_url.C:31 src/insets/inseterror.C:170
 #: src/insets/insetref.C:64 src/latexoptions.C:47 src/layout_forms.C:240
 #: src/layout_forms.C:562 src/layout_forms.C:790 src/lyx.C:125
 #: src/lyx_sendfax.C:109 src/lyxvc.C:342 src/mathed/math_forms.C:179
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/LyXAction.C:596
+#: src/LyXAction.C:598
 msgid "Go to end of document"
 msgstr "Vai alla fine del documento"
 
-#: src/LyXAction.C:597
+#: src/LyXAction.C:599
 msgid "Select to end of document"
 msgstr "Seleziona fino alla fine del documento"
 
-#: src/LyXAction.C:598
+#: src/LyXAction.C:600
 msgid "Fax"
 msgstr "Fax"
 
-#: src/LyXAction.C:599
+#: src/LyXAction.C:601
 msgid "New document"
 msgstr "Nuovo documento"
 
-#: src/LyXAction.C:600
+#: src/LyXAction.C:602
 msgid "New document from template"
 msgstr "Nuovo documento basato su un modello"
 
-#: src/LyXAction.C:601
+#: src/LyXAction.C:603
 msgid "Open"
 msgstr "Apri"
 
-#: src/LyXAction.C:602
+#: src/LyXAction.C:604
 msgid "Switch to previous document"
 msgstr "Vai al documento precedente"
 
-#: src/LyXAction.C:603 src/lyx_cb.C:970 src/print_form.C:72
+#: src/LyXAction.C:605 src/lyx_cb.C:969 src/print_form.C:72
 msgid "Print"
 msgstr "Stampa"
 
-#: src/LyXAction.C:604
+#: src/LyXAction.C:606
 msgid "Revert to saved"
 msgstr "Ritorna all'ultima versione salvata"
 
-#: src/LyXAction.C:605
+#: src/LyXAction.C:607
 msgid "Update DVI"
 msgstr "Aggiorna il file DVI"
 
-#: src/LyXAction.C:606
+#: src/LyXAction.C:608
 msgid "Update PostScript"
 msgstr "Aggiorna il file PostScript"
 
-#: src/LyXAction.C:607
+#: src/LyXAction.C:609
 msgid "View DVI"
 msgstr "Visualizza il file DVI"
 
-#: src/LyXAction.C:608
+#: src/LyXAction.C:610
 msgid "View PostScript"
 msgstr "Visualizza il file PostScript"
 
-#: src/LyXAction.C:609
+#: src/LyXAction.C:611
 msgid "Build program"
 msgstr "Costruisci il programma"
 
-#: src/LyXAction.C:610
+#: src/LyXAction.C:612
 msgid "Check TeX"
 msgstr "Controlla TeX"
 
-#: src/LyXAction.C:611 src/lyx_sendfax_main.C:278
+#: src/LyXAction.C:613 src/lyx_sendfax_main.C:278
 msgid "Save"
 msgstr "Salva"
 
-#: src/LyXAction.C:612
+#: src/LyXAction.C:614
 msgid "Save As"
 msgstr "Salva come"
 
-#: src/LyXAction.C:613 src/lyxfunc.C:555
+#: src/LyXAction.C:615 src/lyxfunc.C:555
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/LyXAction.C:614
+#: src/LyXAction.C:616
 msgid "Go one char back"
 msgstr "Vai un carattere indietro"
 
-#: src/LyXAction.C:615
+#: src/LyXAction.C:617
 msgid "Go one char forward"
 msgstr "Vai un carattere avanti"
 
-#: src/LyXAction.C:616
+#: src/LyXAction.C:618
 msgid "Insert citation"
 msgstr "Inserisci una citazione"
 
-#: src/LyXAction.C:617
+#: src/LyXAction.C:619
 msgid "Execute command"
 msgstr "Esegui un comando"
 
-#: src/LyXAction.C:618 src/lyx_cb.C:2402
+#: src/LyXAction.C:620 src/lyx_cb.C:2401
 msgid "Copy"
 msgstr "Copia"
 
-#: src/LyXAction.C:619 src/lyx_cb.C:2414
+#: src/LyXAction.C:621 src/lyx_cb.C:2413
 msgid "Cut"
 msgstr "Taglia"
 
-#: src/LyXAction.C:620
+#: src/LyXAction.C:622
 msgid "Decrement environment depth"
 msgstr "Diminuisci la profondità del paragrafo"
 
-#: src/LyXAction.C:621
+#: src/LyXAction.C:623
 msgid "Increment environment depth"
 msgstr "Aumenta la profondità del paragrafo"
 
-#: src/LyXAction.C:622
+#: src/LyXAction.C:624
 msgid "Change environment depth"
 msgstr "Cambia la profondità del paragrafo"
 
-#: src/LyXAction.C:623
+#: src/LyXAction.C:625
 msgid "Change itemize bullet settings"
 msgstr "Modifica i caratteri per gli elenchi"
 
-#: src/LyXAction.C:624
+#: src/LyXAction.C:626
 msgid "Go down"
 msgstr "Vai in basso"
 
-#: src/LyXAction.C:625
+#: src/LyXAction.C:627
 msgid "Select next line"
 msgstr "Seleziona la linea successiva"
 
-#: src/LyXAction.C:626
+#: src/LyXAction.C:628
 msgid "Choose Paragraph Environment"
 msgstr "Scegli l'ambiente del paragrafo"
 
-#: src/LyXAction.C:627
+#: src/LyXAction.C:629
 msgid "Go to next error"
 msgstr "Vai all'errore seguente"
 
-#: src/LyXAction.C:628 src/lyx_cb.C:2354
+#: src/LyXAction.C:630 src/lyx_cb.C:2353
 msgid "Insert Figure"
 msgstr "Inserisci una figura"
 
-#: src/LyXAction.C:629 src/lyxfr0.C:97
+#: src/LyXAction.C:631 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "Cerca & Sostituisci"
 
-#: src/LyXAction.C:630
+#: src/LyXAction.C:632
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Il cursore segue/non segue la barra di scorrimento"
 
-#: src/LyXAction.C:631
+#: src/LyXAction.C:633
 msgid "Toggle bold"
 msgstr "(Dis)attiva lo stile grassetto"
 
-#: src/LyXAction.C:632
+#: src/LyXAction.C:634
 msgid "Toggle code style"
 msgstr "(Dis)attiva lo stile codice"
 
-#: src/LyXAction.C:633
+#: src/LyXAction.C:635
 msgid "Default font style"
 msgstr "Stile del font predefinito"
 
-#: src/LyXAction.C:634
+#: src/LyXAction.C:636
 msgid "Toggle emphasize"
 msgstr "(Dis)attiva lo stile enfasi"
 
-#: src/LyXAction.C:635
+#: src/LyXAction.C:637
 msgid "Toggle user defined style"
 msgstr "(Dis)attiva lo stile definito dall'utente"
 
-#: src/LyXAction.C:636
+#: src/LyXAction.C:638
 msgid "Toggle noun style"
 msgstr "(Dis)attiva lo stile maiuscoletto"
 
-#: src/LyXAction.C:637
+#: src/LyXAction.C:639
 msgid "Toggle roman font style"
 msgstr "(Dis)attiva lo stile del font roman"
 
-#: src/LyXAction.C:638
+#: src/LyXAction.C:640
 msgid "Toggle sans font style"
 msgstr "(Dis)attiva lo stile del font sans"
 
-#: src/LyXAction.C:639
+#: src/LyXAction.C:641
 msgid "Set font size"
 msgstr "Imposta la dimensione del font"
 
-#: src/LyXAction.C:640
+#: src/LyXAction.C:642
 msgid "Show font state"
 msgstr "Mostra lo stato del font"
 
-#: src/LyXAction.C:641
+#: src/LyXAction.C:643
 msgid "Toggle font underline"
 msgstr "(Dis)attiva lo stile del font sottolineato"
 
-#: src/LyXAction.C:642
+#: src/LyXAction.C:644
 msgid "Insert Footnote"
 msgstr "Inserisci una nota a piè di pagina"
 
-#: src/LyXAction.C:643
+#: src/LyXAction.C:645
 msgid "Select next char"
 msgstr "Seleziona il carattere successivo"
 
-#: src/LyXAction.C:644
+#: src/LyXAction.C:646
 msgid "Insert horizontal fill"
 msgstr "Inserisci un riempimento orizzontale"
 
-#: src/LyXAction.C:645
+#: src/LyXAction.C:647
 msgid "Insert hyphenation point"
 msgstr "Inserisci un separatore di sillabe"
 
-#: src/LyXAction.C:646
+#: src/LyXAction.C:648
 msgid "Insert ... dots"
 msgstr "Inserisci i punti sospensivi"
 
-#: src/LyXAction.C:647
+#: src/LyXAction.C:649
 msgid "Insert end of sentence period"
 msgstr "Inserisci il punto di fine periodo"
 
-#: src/LyXAction.C:648
+#: src/LyXAction.C:650
 msgid "Turn off keymap"
 msgstr "Disabilita la mappa dei tasti"
 
-#: src/LyXAction.C:649
+#: src/LyXAction.C:651
 msgid "Use primary keymap"
 msgstr "Usa la mappa dei tasti principale"
 
-#: src/LyXAction.C:650
+#: src/LyXAction.C:652
 msgid "Use secondary keymap"
 msgstr "Usa la mappa dei tasti secondaria"
 
-#: src/LyXAction.C:651
+#: src/LyXAction.C:653
 msgid "Toggle keymap"
 msgstr "Cambia la mappa dei tasti"
 
-#: src/LyXAction.C:652
+#: src/LyXAction.C:654
 msgid "Insert Label"
 msgstr "Inserisci un'etichetta"
 
-#: src/LyXAction.C:653
+#: src/LyXAction.C:655
 msgid "Copy paragraph environment type"
 msgstr "Copia il tipo dell'ambiente del paragrafo"
 
-#: src/LyXAction.C:654
+#: src/LyXAction.C:656
 msgid "Paste paragraph environment type"
 msgstr "Incolla il tipo dell'ambiente del paragrafo"
 
-#: src/LyXAction.C:655
+#: src/LyXAction.C:657
 msgid "Specify paper size and margins"
 msgstr "Specifica dimensione e margini della carta"
 
-#: src/LyXAction.C:656
+#: src/LyXAction.C:658
 msgid "Go to beginning of line"
 msgstr "Vai all'inizio della linea"
 
-#: src/LyXAction.C:657
+#: src/LyXAction.C:659
 msgid "Select to beginning of line"
 msgstr "Seleziona fino all'inizio della linea"
 
-#: src/LyXAction.C:658
+#: src/LyXAction.C:660
 msgid "Go to end of line"
 msgstr "Vai alla fine della linea"
 
-#: src/LyXAction.C:659
+#: src/LyXAction.C:661
 msgid "Select to end of line"
 msgstr "Seleziona fino alla fine della linea"
 
-#: src/LyXAction.C:660
+#: src/LyXAction.C:662
 msgid "Exit"
 msgstr "Esci"
 
-#: src/LyXAction.C:661
+#: src/LyXAction.C:663
 msgid "Insert Margin note"
 msgstr "Inserisci nota a margine"
 
-#: src/LyXAction.C:662
+#: src/LyXAction.C:664
 msgid "Math Greek"
 msgstr "Greco matematico"
 
-#: src/LyXAction.C:663
+#: src/LyXAction.C:665
 msgid "Math mode"
 msgstr "Modalità matematica"
 
-#: src/LyXAction.C:664
+#: src/LyXAction.C:666
 msgid "Go one paragraph down"
 msgstr "Vai un paragrafo in basso"
 
-#: src/LyXAction.C:665
+#: src/LyXAction.C:667
 msgid "Select next paragraph"
 msgstr "Seleziona il paragrafo successivo"
 
-#: src/LyXAction.C:666
+#: src/LyXAction.C:668
 msgid "Go one paragraph up"
 msgstr "Vai un paragrafo in alto"
 
-#: src/LyXAction.C:667
+#: src/LyXAction.C:669
 msgid "Select previous paragraph"
 msgstr "Seleziona il paragrafo precedente"
 
-#: src/LyXAction.C:668 src/lyx_cb.C:2423
+#: src/LyXAction.C:670 src/lyx_cb.C:2422
 msgid "Paste"
 msgstr "Incolla"
 
-#: src/LyXAction.C:669
+#: src/LyXAction.C:671
 msgid "Insert protected space"
 msgstr "Inserisci uno spazio unificatore"
 
-#: src/LyXAction.C:670
+#: src/LyXAction.C:672
 msgid "Insert quote"
 msgstr "Inserisci le virgolette standard"
 
-#: src/LyXAction.C:671
+#: src/LyXAction.C:673
 msgid "Reconfigure"
 msgstr "Riconfigura"
 
-#: src/LyXAction.C:672 src/lyx_cb.C:2110
+#: src/LyXAction.C:674 src/lyx_cb.C:2109
 msgid "Redo"
 msgstr "Ripristina l'ultima operazione annullata"
 
-#: src/LyXAction.C:673
+#: src/LyXAction.C:675
 msgid "Insert cross reference"
 msgstr "Inserisci un riferimento incrociato"
 
-#: src/LyXAction.C:674 src/lyx_cb.C:2366
+#: src/LyXAction.C:676 src/lyx_cb.C:2365
 msgid "Insert Table"
 msgstr "Inserisci una tabella"
 
-#: src/LyXAction.C:675
+#: src/LyXAction.C:677
 msgid "Toggle TeX style"
 msgstr "(Dis)attiva l'ambiente di comandi TeX"
 
-#: src/LyXAction.C:676 src/lyx_cb.C:2090
+#: src/LyXAction.C:678 src/lyx_cb.C:2089
 msgid "Undo"
 msgstr "Annulla l'ultima operazione"
 
-#: src/LyXAction.C:677 src/lyx_cb.C:2445
+#: src/LyXAction.C:679 src/lyx_cb.C:2444
 msgid "Melt"
 msgstr "Fondi"
 
-#: src/LyXAction.C:678
+#: src/LyXAction.C:680
 msgid "Import document"
 msgstr "Importa un documento"
 
-#: src/LyXAction.C:679
+#: src/LyXAction.C:681
 msgid "Remove all error boxes"
 msgstr "Rimuovi tutte le note d'errore"
 
-#: src/LyXAction.C:680
+#: src/LyXAction.C:682
 msgid "Insert menu separator"
 msgstr "Inserisci un separatore di menu"
 
 #. In an ideal world, this never happens:
-#: src/LyXAction.C:715
+#: src/LyXAction.C:717
 msgid "No description available!"
 msgstr "Nessuna descrizione disponibile!"
 
@@ -510,7 +510,7 @@ msgstr "Conferma: premi di nuovo il tasto Delete"
 
 #. sgml2lyx failed
 #: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3555 src/bufferlist.C:577
-#: src/bufferlist.C:607 src/lyx_cb.C:535 src/lyx_cb.C:868 src/lyx_cb.C:901
+#: src/bufferlist.C:607 src/lyx_cb.C:535 src/lyx_cb.C:867 src/lyx_cb.C:900
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Errore!"
@@ -679,7 +679,7 @@ msgstr "Errore! Non riesco ad aprire il file temporaneo:"
 msgid "Error executing *roff command on table"
 msgstr "Errore nell'eseguire un comando *roff sulla tabella"
 
-#: src/buffer.C:3748 src/lyx_cb.C:3176 src/text.C:1875
+#: src/buffer.C:3748 src/lyx_cb.C:3175 src/text.C:1875
 msgid "Impossible Operation!"
 msgstr "Operazione non permessa!"
 
@@ -687,7 +687,7 @@ msgstr "Operazione non permessa!"
 msgid "Cannot insert table/list in table."
 msgstr "Non riesco ad inserire la tabella/lista nella tabella."
 
-#: src/buffer.C:3750 src/lyx_cb.C:3178 src/text.C:1877 src/text.C:3929
+#: src/buffer.C:3750 src/lyx_cb.C:3177 src/text.C:1877 src/text.C:3929
 #: src/text.C:3937 src/text.C:3952 src/text.C:3969 src/text2.C:2130
 #: src/text2.C:2140
 msgid "Sorry."
@@ -800,7 +800,7 @@ msgid "Size|#z"
 msgstr "Dimensione|#D"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
-#: src/form1.C:43 src/form1.C:117 src/form1.C:258 src/form1.C:281
+#: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
 #: src/insets/insetbib.C:106 src/insets/insetbib.C:134
 #: src/insets/insetinclude.C:46 src/insets/insetindex.C:64
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
@@ -810,7 +810,7 @@ msgstr "Dimensione|#D"
 msgid "OK"
 msgstr "OK"
 
-#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:284 src/latexoptions.C:24
+#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
 #: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
 #: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
 #: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
@@ -820,7 +820,7 @@ msgstr "OK"
 msgid "Apply|#A"
 msgstr "Applica|#A"
 
-#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:261 src/form1.C:287
+#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
 #: src/insets/insetbib.C:109 src/insets/insetbib.C:110
 #: src/insets/insetbib.C:137 src/insets/insetbib.C:138
 #: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
@@ -1076,154 +1076,154 @@ msgstr "Opzioni"
 msgid "Angle:|#L"
 msgstr "Angolo:|#l"
 
-#: src/form1.C:138
-#, c-format
+#: src/form1.C:139
+#, no-c-format
 msgid "% of Page|#g"
 msgstr "% pagina"
 
-#: src/form1.C:141
+#: src/form1.C:142
 msgid "Default|#t"
 msgstr "Standard"
 
-#: src/form1.C:144
+#: src/form1.C:145
 msgid "cm|#m"
 msgstr "cm"
 
-#: src/form1.C:147
+#: src/form1.C:148
 msgid "inches|#h"
 msgstr "pollici"
 
-#: src/form1.C:152
+#: src/form1.C:153
 msgid "Display"
 msgstr "Mostra"
 
-#: src/form1.C:156
+#: src/form1.C:157
 msgid "Height"
 msgstr "Altezza"
 
-#: src/form1.C:160 src/layout_forms.C:629 src/layout_forms.C:712
+#: src/form1.C:161 src/layout_forms.C:629 src/layout_forms.C:712
 msgid "Width"
 msgstr "Largh."
 
-#: src/form1.C:164
+#: src/form1.C:165
 msgid "Rotation"
 msgstr "Rotazione"
 
-#: src/form1.C:170
+#: src/form1.C:171
 msgid "Display in Color|#D"
 msgstr "Mostra a colori|#m"
 
-#: src/form1.C:173
+#: src/form1.C:174
 msgid "Do not display this figure|#y"
 msgstr "Non mostrare la figura|#u"
 
-#: src/form1.C:176
+#: src/form1.C:177
 msgid "Display as Grayscale|#i"
 msgstr "Mostra in scala di grigi|#g"
 
-#: src/form1.C:179
+#: src/form1.C:180
 msgid "Display as Monochrome|#s"
 msgstr "Mostra in bianco e nero|#b"
 
-#: src/form1.C:186
+#: src/form1.C:187
 msgid "Default|#U"
 msgstr "Standard"
 
-#: src/form1.C:189
+#: src/form1.C:190
 msgid "cm|#c"
 msgstr "cm"
 
-#: src/form1.C:192
+#: src/form1.C:193
 msgid "inches|#n"
 msgstr "pollici"
 
-#: src/form1.C:195
-#, c-format
+#: src/form1.C:197
+#, no-c-format
 msgid "% of Page|#P"
 msgstr "% pagina"
 
-#: src/form1.C:198
-#, c-format
+#: src/form1.C:201
+#, no-c-format
 msgid "% of Column|#o"
 msgstr "% colonna"
 
-#: src/form1.C:204
+#: src/form1.C:207
 msgid "Caption|#k"
 msgstr "Titolo|#t"
 
-#: src/form1.C:207
+#: src/form1.C:210
 msgid "Subfigure|#q"
 msgstr "Sottofigura|#r"
 
-#: src/form1.C:230
+#: src/form1.C:233
 msgid "Directory:|#D"
 msgstr "Directory:|#D"
 
-#: src/form1.C:234
+#: src/form1.C:237
 msgid "Pattern:|#P"
 msgstr "Selezione:|#z"
 
-#: src/form1.C:242
+#: src/form1.C:245
 msgid "Filename:|#F"
 msgstr "Nome del file:|#f"
 
-#: src/form1.C:246
+#: src/form1.C:249
 msgid "Rescan|#R#r"
 msgstr "Aggiorna|#r"
 
-#: src/form1.C:249
+#: src/form1.C:252
 msgid "Home|#H#h"
 msgstr "Dir. Home|#H"
 
-#: src/form1.C:252
+#: src/form1.C:255
 msgid "User1|#1"
 msgstr "Utente1|#1"
 
-#: src/form1.C:255
+#: src/form1.C:258
 msgid "User2|#2"
 msgstr "Utente2|#2"
 
-#: src/form1.C:290 src/layout_forms.C:119
+#: src/form1.C:293 src/layout_forms.C:119
 msgid "Columns"
 msgstr "Colonne"
 
-#: src/form1.C:294 src/mathed/math_forms.C:135
+#: src/form1.C:297 src/mathed/math_forms.C:135
 msgid "Rows"
 msgstr "Righe"
 
-#: src/form1.C:315
+#: src/form1.C:318
 msgid "Find|#n"
 msgstr "Cerca|#e"
 
-#: src/form1.C:319
+#: src/form1.C:322
 msgid "Replace with|#W"
 msgstr "Cambia con|#m"
 
-#: src/form1.C:323
+#: src/form1.C:326
 msgid "@>|#F"
 msgstr "@>|#f"
 
-#: src/form1.C:327
+#: src/form1.C:330
 msgid "@<|#B"
 msgstr "@<|#b"
 
-#: src/form1.C:331
+#: src/form1.C:334
 msgid "Replace|#R#r"
 msgstr "Cambia|#b"
 
-#: src/form1.C:335
+#: src/form1.C:338
 msgid "Close|^["
 msgstr "Chiudi|^["
 
-#: src/form1.C:339
+#: src/form1.C:342
 msgid "Case sensitive|#s#S"
 msgstr "Maius/minus|#s"
 
-#: src/form1.C:341
+#: src/form1.C:344
 msgid "Match word|#M#m"
 msgstr "Parola completa|#p"
 
-#: src/form1.C:343
+#: src/form1.C:346
 msgid "Replace All|#A#a"
 msgstr "Cambia tutto|#t"
 
@@ -1339,19 +1339,19 @@ msgstr "Oggetto bibliografico"
 msgid "BibTeX Generated References"
 msgstr "Riferimenti generati da BibTeX"
 
-#: src/insets/insetbib.C:442
+#: src/insets/insetbib.C:444
 msgid "Database:"
 msgstr "Database:"
 
-#: src/insets/insetbib.C:443
+#: src/insets/insetbib.C:445
 msgid "Style:  "
 msgstr "Stile:  "
 
-#: src/insets/insetbib.C:450
+#: src/insets/insetbib.C:452
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3709
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3706
 msgid "Error"
 msgstr "Errore"
 
@@ -1537,27 +1537,27 @@ msgstr "Permetti gli accenti su TUTTI i caratteri|#m"
 msgid "Update|#Uu"
 msgstr "Aggiorna|#g"
 
-#: src/layout.C:1290
+#: src/layout.C:1288
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX non è stato in grado di trovare le descrizioni delle strutture!"
 
-#: src/layout.C:1291
+#: src/layout.C:1289
 msgid "Check that the file \"textclass.lst\""
 msgstr "Controllare che il file \"textclass.lst\" sia installato"
 
-#: src/layout.C:1292
+#: src/layout.C:1290
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "correttamente. Spiacente, ma devo uscire :-("
 
-#: src/layout.C:1346
+#: src/layout.C:1344
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX non è stato in grado di trovare nessuna descrizione di struttura!"
 
-#: src/layout.C:1347
+#: src/layout.C:1345
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Controllare il contenuto del file \"textclass.lst\""
 
-#: src/layout.C:1348
+#: src/layout.C:1346
 msgid "Sorry, has to exit :-("
 msgstr "Spiacente, ma devo uscire :-("
 
@@ -2218,327 +2218,327 @@ msgstr "Sembra che chktex non funzioni."
 msgid "Executing command:"
 msgstr "Comando in esecuzione:"
 
-#: src/lyx_cb.C:841 src/lyx_cb.C:878 src/lyx_cb.C:911 src/lyx_cb.C:938
+#: src/lyx_cb.C:840 src/lyx_cb.C:877 src/lyx_cb.C:910 src/lyx_cb.C:937
 #: src/lyxfunc.C:2492
 msgid "File already exists:"
 msgstr "Il file già esiste:"
 
-#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
+#: src/lyx_cb.C:842 src/lyx_cb.C:879 src/lyx_cb.C:912 src/lyx_cb.C:939
 msgid "Do you want to overwrite the file?"
 msgstr "Vuoi sovrascrivere il file?"
 
-#: src/lyx_cb.C:844 src/lyx_cb.C:881 src/lyx_cb.C:914 src/lyx_cb.C:941
+#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
 msgid "Canceled"
 msgstr "Annullato"
 
-#: src/lyx_cb.C:849
+#: src/lyx_cb.C:848
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:855
+#: src/lyx_cb.C:854
 msgid "Nice LaTeX file saved as"
 msgstr "Il file Nice LaTeX è stato salvato come"
 
-#: src/lyx_cb.C:868
+#: src/lyx_cb.C:867
 msgid "Document class must be linuxdoc."
 msgstr "La classe del documento dev'essere linuxdoc."
 
-#: src/lyx_cb.C:885
+#: src/lyx_cb.C:884
 msgid "Building LinuxDoc SGML file `"
 msgstr "E' in costruzione il file LinuxDoc SGML `"
 
-#: src/lyx_cb.C:890
+#: src/lyx_cb.C:889
 msgid "LinuxDoc SGML file save as"
 msgstr "Il file LinuxDoc SGML è stato salvato come"
 
-#: src/lyx_cb.C:901
+#: src/lyx_cb.C:900
 #, fuzzy
 msgid "Document class must be docbook."
 msgstr "La classe del documento dev'essere linuxdoc."
 
-#: src/lyx_cb.C:918
+#: src/lyx_cb.C:917
 #, fuzzy
 msgid "Building DocBook SGML file `"
 msgstr "E' in costruzione il file LinuxDoc SGML `"
 
-#: src/lyx_cb.C:923
+#: src/lyx_cb.C:922
 #, fuzzy
 msgid "DocBook SGML file save as"
 msgstr "Il file LinuxDoc SGML è stato salvato come"
 
-#: src/lyx_cb.C:947
+#: src/lyx_cb.C:946
 msgid "Ascii file saved as"
 msgstr "Il file ASCII è stato salvato come"
 
-#: src/lyx_cb.C:1015
+#: src/lyx_cb.C:1014
 msgid "Autosaving current document..."
 msgstr "Sto salvando automaticamente il documento corrente..."
 
-#: src/lyx_cb.C:1056
+#: src/lyx_cb.C:1055
 msgid "Autosave Failed!"
 msgstr "L'autosalvataggio non ha funzionato!"
 
-#: src/lyx_cb.C:1112
+#: src/lyx_cb.C:1111
 msgid "File to Insert"
 msgstr "File da inserire"
 
-#: src/lyx_cb.C:1123
+#: src/lyx_cb.C:1122
 msgid "Error! Cannot open specified file:"
 msgstr "Errore! Non riesco a trovare il file indicato."
 
-#: src/lyx_cb.C:1158
+#: src/lyx_cb.C:1157
 msgid "Table Of Contents"
 msgstr "Sommario"
 
-#: src/lyx_cb.C:1174 src/mathed/formula.C:1028
+#: src/lyx_cb.C:1173 src/mathed/formula.C:1028
 msgid "Enter new label to insert:"
 msgstr "Nuova etichetta da inserire:"
 
-#: src/lyx_cb.C:1194
+#: src/lyx_cb.C:1193
 msgid "Insert Reference"
 msgstr "Inserisci un riferimento"
 
-#: src/lyx_cb.C:1228
+#: src/lyx_cb.C:1227
 msgid "Inserting Footnote..."
 msgstr "Sto inserendo la nota a piè di pagina..."
 
 #. Import file
-#: src/lyx_cb.C:1284
+#: src/lyx_cb.C:1283
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Sto importando il file LinuxDoc SGML `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1292
+#: src/lyx_cb.C:1291
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Sto convertendo a TeX il file LinuxDoc SGML..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1299
+#: src/lyx_cb.C:1298
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Sto convertendo a DVI il file LinuxDoc SGML..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1356
+#: src/lyx_cb.C:1355
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Sto convertendo a DVI il file LinuxDoc SGML..."
 
-#: src/lyx_cb.C:1481
+#: src/lyx_cb.C:1480
 msgid "Character Style"
 msgstr "Stile del carattere"
 
-#: src/lyx_cb.C:1689
+#: src/lyx_cb.C:1688
 msgid "Paragraph Environment"
 msgstr "Ambiente del paragrafo"
 
-#: src/lyx_cb.C:1940
+#: src/lyx_cb.C:1939
 msgid "Document Layout"
 msgstr "Struttura del documento"
 
-#: src/lyx_cb.C:1978
+#: src/lyx_cb.C:1977
 msgid "Quotes"
 msgstr "Virgolette"
 
-#: src/lyx_cb.C:2025
+#: src/lyx_cb.C:2024
 msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
 
-#: src/lyx_cb.C:2041
+#: src/lyx_cb.C:2040
 msgid "Do you want to save the current settings"
 msgstr "Vuoi salvare le impostazioni attuali"
 
-#: src/lyx_cb.C:2042
+#: src/lyx_cb.C:2041
 msgid "for Character, Document, Paper and Quotes"
 msgstr "per il carattere, il documento, la carta e le virgolette"
 
-#: src/lyx_cb.C:2043
+#: src/lyx_cb.C:2042
 msgid "as default for new documents?"
 msgstr "come predefinite per i nuovi documenti?"
 
-#: src/lyx_cb.C:2060 src/lyx_cb.C:2072
+#: src/lyx_cb.C:2059 src/lyx_cb.C:2071
 msgid "Open/Close..."
 msgstr "Apri/Chiudi..."
 
-#: src/lyx_cb.C:2095
+#: src/lyx_cb.C:2094
 msgid "No further undo information"
 msgstr "Nessun altra operazione da annullare"
 
-#: src/lyx_cb.C:2105
+#: src/lyx_cb.C:2104
 msgid "Redo not yet supported in math mode"
 msgstr "Il ripristino non è stato ancora implementato in modo matematico"
 
-#: src/lyx_cb.C:2115
+#: src/lyx_cb.C:2114
 msgid "No further redo information"
 msgstr "Nessun altra operazione da ripristinare"
 
-#: src/lyx_cb.C:2306
+#: src/lyx_cb.C:2305
 msgid "Font: "
 msgstr "Font: "
 
-#: src/lyx_cb.C:2310
+#: src/lyx_cb.C:2309
 msgid ", Depth: "
 msgstr ", Profondità: "
 
-#: src/lyx_cb.C:2338
+#: src/lyx_cb.C:2337
 msgid "Inserting margin note..."
 msgstr "Sto inserendo la nota al margine..."
 
-#: src/lyx_cb.C:2379
+#: src/lyx_cb.C:2378
 msgid "Paragraph environment type copied"
 msgstr "Ho copiato il tipo d'ambiente del paragrafo"
 
-#: src/lyx_cb.C:2388
+#: src/lyx_cb.C:2387
 msgid "Paragraph environment type set"
 msgstr "Ho impostato il tipo d'ambiente del paragrafo"
 
-#: src/lyx_cb.C:2479
+#: src/lyx_cb.C:2478
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr ""
 "Ho modificato la profondità dell'ambiente (nell'intervallo permesso, o forse "
 "no)"
 
-#: src/lyx_cb.C:2719
+#: src/lyx_cb.C:2718
 msgid "Paragraph layout set"
 msgstr "Ho impostato la struttura del paragrafo"
 
-#: src/lyx_cb.C:2789
+#: src/lyx_cb.C:2788
 msgid "Should I set some parameters to"
 msgstr "Devo impostare alcuni parametri ai valori"
 
-#: src/lyx_cb.C:2791
+#: src/lyx_cb.C:2790
 msgid "the defaults of this document class?"
 msgstr "predefiniti di questa classe di documenti?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2800 src/lyx_cb.C:2919 src/lyx_cb.C:2926
+#: src/lyx_cb.C:2799 src/lyx_cb.C:2918 src/lyx_cb.C:2925
 msgid "Conversion Errors!"
 msgstr "Errori di conversione!"
 
-#: src/lyx_cb.C:2801 src/lyx_cb.C:2927
+#: src/lyx_cb.C:2800 src/lyx_cb.C:2926
 msgid "Unable to switch to new document class."
 msgstr "Non sono in grado di passare alla nuova classe del documento."
 
-#: src/lyx_cb.C:2802 src/lyx_cb.C:2928
+#: src/lyx_cb.C:2801 src/lyx_cb.C:2927
 msgid "Reverting to original document class."
 msgstr "Ripristino la classe del documento originale."
 
-#: src/lyx_cb.C:2902
+#: src/lyx_cb.C:2901
 msgid "Converting document to new document class..."
 msgstr "Sto convertendo il documento alla nuova classe..."
 
-#: src/lyx_cb.C:2914
+#: src/lyx_cb.C:2913
 msgid "One paragraph couldn't be converted"
 msgstr "Un paragrafo non può essere convertito"
 
-#: src/lyx_cb.C:2917
+#: src/lyx_cb.C:2916
 msgid " paragraphs couldn't be converted"
 msgstr " paragrafi non possono essere convertiti"
 
-#: src/lyx_cb.C:2920
+#: src/lyx_cb.C:2919
 msgid "into chosen document class"
 msgstr "nella classe del documento scelta"
 
-#: src/lyx_cb.C:3006
+#: src/lyx_cb.C:3005
 msgid "Document layout set"
 msgstr "Ho impostato la struttura del documento"
 
-#: src/lyx_cb.C:3056 src/lyx_cb.C:3060
+#: src/lyx_cb.C:3055 src/lyx_cb.C:3059
 msgid "No more notes"
 msgstr "Non ci sono più note"
 
-#: src/lyx_cb.C:3091
+#: src/lyx_cb.C:3090
 msgid "Quotes type set"
 msgstr "Ho impostato il tipo di virgolette"
 
-#: src/lyx_cb.C:3155
+#: src/lyx_cb.C:3154
 msgid "LaTeX preamble set"
 msgstr "Ho impostato il preambolo LaTeX"
 
-#: src/lyx_cb.C:3177
+#: src/lyx_cb.C:3176
 msgid "Cannot insert table in table."
 msgstr "Non posso inserire una tabella in una tabella."
 
-#: src/lyx_cb.C:3182
+#: src/lyx_cb.C:3181
 msgid "Inserting table..."
 msgstr "Sto inserendo la tabella..."
 
-#: src/lyx_cb.C:3242
+#: src/lyx_cb.C:3241
 msgid "Table inserted"
 msgstr "Ho inserito la tabella"
 
-#: src/lyx_cb.C:3300 src/lyx_cb.C:3318
+#: src/lyx_cb.C:3297 src/lyx_cb.C:3315
 msgid "ERROR!  Unable to print!"
 msgstr "ERRORE! Non riesco a stampare!"
 
-#: src/lyx_cb.C:3301
+#: src/lyx_cb.C:3298
 msgid "Check 'range of pages'!"
 msgstr "Controlla l'`intervallo delle pagine'!"
 
-#: src/lyx_cb.C:3319
+#: src/lyx_cb.C:3316
 msgid "Check 'number of copies'!"
 msgstr "Controlla il 'numero delle copie'!"
 
-#: src/lyx_cb.C:3430
+#: src/lyx_cb.C:3427
 msgid "Error:"
 msgstr "Errore:"
 
-#: src/lyx_cb.C:3431
+#: src/lyx_cb.C:3428
 msgid "Unable to print"
 msgstr "Non riesco a stampare"
 
-#: src/lyx_cb.C:3432
+#: src/lyx_cb.C:3429
 msgid "Check that your parameters are correct"
 msgstr "Controlla che i tuoi parametri siano corretti"
 
-#: src/lyx_cb.C:3454
+#: src/lyx_cb.C:3451
 msgid "Inserting figure..."
 msgstr "Sto inserendo la figura..."
 
-#: src/lyx_cb.C:3459 src/lyx_cb.C:3511
+#: src/lyx_cb.C:3456 src/lyx_cb.C:3508
 msgid "Figure inserted"
 msgstr "Ho inserito la figura"
 
-#: src/lyx_cb.C:3540
+#: src/lyx_cb.C:3537
 msgid "Screen options set"
 msgstr "Ho impostato le opzioni per lo schermo"
 
-#: src/lyx_cb.C:3570
+#: src/lyx_cb.C:3567
 msgid "LaTeX Options"
 msgstr "Opzioni di LaTeX"
 
-#: src/lyx_cb.C:3579
+#: src/lyx_cb.C:3576
 msgid "Running configure..."
 msgstr "Sto eseguendo configure..."
 
-#: src/lyx_cb.C:3586
+#: src/lyx_cb.C:3583
 msgid "Reloading configuration..."
 msgstr "Sto caricando di nuovo la configurazione..."
 
-#: src/lyx_cb.C:3588
+#: src/lyx_cb.C:3585
 msgid "The system has been reconfigured."
 msgstr "Il sistema è stato riconfigurato."
 
-#: src/lyx_cb.C:3589
+#: src/lyx_cb.C:3586
 msgid "You need to restart LyX to make use of any"
 msgstr "Devi riavviare LyX per poter utilizzare"
 
-#: src/lyx_cb.C:3590
+#: src/lyx_cb.C:3587
 msgid "updated document class specifications."
 msgstr "qualunque specifica della classe del documento modificata"
 
-#: src/lyx_cb.C:3710
+#: src/lyx_cb.C:3707
 msgid "Couldn't find this label"
 msgstr "Non riesco a trovare questa etichetta"
 
-#: src/lyx_cb.C:3711
+#: src/lyx_cb.C:3708
 msgid "in current document."
 msgstr "nell'attuale documento."
 
-#: src/lyx_cb.C:3742
+#: src/lyx_cb.C:3739
 msgid "*** No Document ***"
 msgstr "*** Nessun documento ***"
 
-#: src/lyx_cb.C:3911
+#: src/lyx_cb.C:3908
 msgid "*** No labels found in document ***"
 msgstr "*** Non ci sono etichette nel documento ***"
 
@@ -4875,62 +4875,3 @@ msgstr "Non posso incollare un oggetto flottante in un altro"
 #: src/text2.C:2139
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "La cella di una tabella non può includere più di un paragrafo!"
-
-#~ msgid "Close|#C^[^M"
-#~ msgstr "Chiudi|#C^[^M"
-
-#~ msgid "Run #"
-#~ msgstr "Lancio n."
-
-#~ msgid "LyX "
-#~ msgstr "LyX "
-
-#~ msgid "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
-#~ msgstr "Uso: lyx [ opzioni ] [ nome.lyx ...]\n"
-
-#~ msgid "Command line switches (case sensitive):"
-#~ msgstr "Opzioni sulla linea di comando (distingue Maius/minus):"
-
-#~ msgid "   -help           summarize LyX usage"
-#~ msgstr "   -help           ricapitola come lanciare LyX"
-
-#~ msgid "   -sysdir x       try to set system directory to x"
-#~ msgstr "   -sysdir x       prova ad impostare la directory di sistema a x"
-
-#~ msgid "   -width x        set the width of the main window"
-#~ msgstr "   -width x        imposta la larghezza della finestra principale"
-
-#~ msgid "   -height y       set the height of the main window"
-#~ msgstr "   -height y       imposta l'altezza della finestra principale"
-
-#~ msgid "   -xpos x         set the x position of the main window"
-#~ msgstr "   -xpos x         imposta la posizione x della finestra principale"
-
-#~ msgid "   -ypos y         set the y position of the main window"
-#~ msgstr "   -ypos y         imposta la posizione x della finestra principale"
-
-#~ msgid ""
-#~ "   -dbg n          where n is a sum of debugging options. Try -dbg 65535 "
-#~ "-help"
-#~ msgstr ""
-#~ "   -dbg n          dove n è una somma delle opzioni di debug. Prova -dbg "
-#~ "65535 -help"
-
-#~ msgid "   -Reverse        swaps foreground & background colors"
-#~ msgstr "   -Reverse        scambia i colori di primo piano e di sfondo"
-
-#~ msgid "   -Mono           runs LyX in black and white mode"
-#~ msgstr "   -Mono           esegue LyX in modalità bianco e nero"
-
-#~ msgid "   -FastSelection  use a fast routine for drawing selections\n"
-#~ msgstr ""
-#~ "   -FastSelection  usa una routine veloce per disegnare le selezioni\n"
-
-#~ msgid "Check the LyX man page for more options."
-#~ msgstr "Dà uno sguardo al manuale di LyX per altre opzioni."
-
-#~ msgid "LyX Internal Error:"
-#~ msgstr "Errore interno di LyX"
-
-#~ msgid "Path Stack underflow."
-#~ msgstr "Errore di underflow nella pila dei percorsi"

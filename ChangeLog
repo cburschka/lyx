@@ -1,5 +1,11 @@
 1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/form1.C (create_form_Figure): added a couple fo "no-c-format"
+
+	* src/Makefile.am (dist-hook): added used to remove the CVS from
+	cheaders upon creating a dist
+	(EXTRA_DIST): added cheaders
+
 	* src/support/lstrings.C (tostr(char)): fix it to handle param as
 	a character not as a small integer. 
 

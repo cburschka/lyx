@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.3pre2\n"
-"POT-Creation-Date: 1999-10-25 20:48+0200\n"
-"PO-Revision-Date: 1999-09-23 16:54+02:00\n"
+"POT-Creation-Date: 1999-10-28 06:44+0200\n"
+"PO-Revision-Date: 1999-10-28 06:57+02:00\n"
 "Last-Translator:  Roman Maurer <roman.maurer@fmf.uni-lj.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -73,379 +73,379 @@ msgstr "Shranjujem spis"
 msgid "Building program"
 msgstr "Zgradi program"
 
-#: src/LyXAction.C:589
+#: src/LyXAction.C:591
 msgid "Describe command"
 msgstr "Opi¹i ukaz"
 
-#: src/LyXAction.C:590
+#: src/LyXAction.C:592
 msgid "Select previous char"
 msgstr "Izberi prej¹nji znak"
 
-#: src/LyXAction.C:591
+#: src/LyXAction.C:593
 msgid "Insert bibtex"
 msgstr "Vstavi bibtex"
 
-#: src/LyXAction.C:592
+#: src/LyXAction.C:594
 msgid "Autosave"
 msgstr "Sámoshranjevanje"
 
-#: src/LyXAction.C:593
+#: src/LyXAction.C:595
 msgid "Go to beginning of document"
 msgstr "Pojdi na zaèetek spisa"
 
-#: src/LyXAction.C:594
+#: src/LyXAction.C:596
 msgid "Select to beginning of document"
 msgstr "Izberi do zaèetka spisa"
 
-#: src/LyXAction.C:595 src/insets/form_url.C:31 src/insets/inseterror.C:170
+#: src/LyXAction.C:597 src/insets/form_url.C:31 src/insets/inseterror.C:170
 #: src/insets/insetref.C:64 src/latexoptions.C:47 src/layout_forms.C:240
 #: src/layout_forms.C:562 src/layout_forms.C:790 src/lyx.C:125
 #: src/lyx_sendfax.C:109 src/lyxvc.C:342 src/mathed/math_forms.C:179
 msgid "Close"
 msgstr "Zapri"
 
-#: src/LyXAction.C:596
+#: src/LyXAction.C:598
 msgid "Go to end of document"
 msgstr "Pojdi na konec spisa"
 
-#: src/LyXAction.C:597
+#: src/LyXAction.C:599
 msgid "Select to end of document"
 msgstr "Izberi do konca spisa"
 
-#: src/LyXAction.C:598
+#: src/LyXAction.C:600
 msgid "Fax"
 msgstr "Faks"
 
-#: src/LyXAction.C:599
+#: src/LyXAction.C:601
 msgid "New document"
 msgstr "Novi spis"
 
-#: src/LyXAction.C:600
+#: src/LyXAction.C:602
 msgid "New document from template"
 msgstr "Novi spis po vzorcu"
 
-#: src/LyXAction.C:601
+#: src/LyXAction.C:603
 msgid "Open"
 msgstr "Odpri"
 
-#: src/LyXAction.C:602
+#: src/LyXAction.C:604
 msgid "Switch to previous document"
 msgstr "Zamenjaj s prej¹njim spisom"
 
-#: src/LyXAction.C:603 src/lyx_cb.C:970 src/print_form.C:72
+#: src/LyXAction.C:605 src/lyx_cb.C:969 src/print_form.C:72
 msgid "Print"
 msgstr "Tiskaj"
 
-#: src/LyXAction.C:604
+#: src/LyXAction.C:606
 msgid "Revert to saved"
 msgstr "Vrni se k shranjenemu"
 
-#: src/LyXAction.C:605
+#: src/LyXAction.C:607
 msgid "Update DVI"
 msgstr "Osve¾i DVI"
 
-#: src/LyXAction.C:606
+#: src/LyXAction.C:608
 msgid "Update PostScript"
 msgstr "Osve¾i PostScript"
 
-#: src/LyXAction.C:607
+#: src/LyXAction.C:609
 msgid "View DVI"
 msgstr "Poglej DVI"
 
-#: src/LyXAction.C:608
+#: src/LyXAction.C:610
 msgid "View PostScript"
 msgstr "Poglej PostScript"
 
-#: src/LyXAction.C:609
+#: src/LyXAction.C:611
 msgid "Build program"
 msgstr "Zgradi program"
 
-#: src/LyXAction.C:610
+#: src/LyXAction.C:612
 msgid "Check TeX"
 msgstr "Preveri TeX"
 
-#: src/LyXAction.C:611 src/lyx_sendfax_main.C:278
+#: src/LyXAction.C:613 src/lyx_sendfax_main.C:278
 msgid "Save"
 msgstr "Shrani"
 
-#: src/LyXAction.C:612
+#: src/LyXAction.C:614
 msgid "Save As"
 msgstr "Shrani kot"
 
-#: src/LyXAction.C:613 src/lyxfunc.C:555
+#: src/LyXAction.C:615 src/lyxfunc.C:555
 msgid "Cancel"
 msgstr "Preklièi"
 
-#: src/LyXAction.C:614
+#: src/LyXAction.C:616
 msgid "Go one char back"
 msgstr "Vrni se za en znak"
 
-#: src/LyXAction.C:615
+#: src/LyXAction.C:617
 msgid "Go one char forward"
 msgstr "Napreduj za en znak"
 
-#: src/LyXAction.C:616
+#: src/LyXAction.C:618
 msgid "Insert citation"
 msgstr "Vnesi citat"
 
-#: src/LyXAction.C:617
+#: src/LyXAction.C:619
 msgid "Execute command"
 msgstr "Izvedi ukaz"
 
-#: src/LyXAction.C:618 src/lyx_cb.C:2402
+#: src/LyXAction.C:620 src/lyx_cb.C:2401
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/LyXAction.C:619 src/lyx_cb.C:2414
+#: src/LyXAction.C:621 src/lyx_cb.C:2413
 msgid "Cut"
 msgstr "Izre¾i"
 
-#: src/LyXAction.C:620
+#: src/LyXAction.C:622
 msgid "Decrement environment depth"
 msgstr "Zmanj¹aj globino okolja"
 
-#: src/LyXAction.C:621
+#: src/LyXAction.C:623
 msgid "Increment environment depth"
 msgstr "Poveèaj globino okolja"
 
-#: src/LyXAction.C:622
+#: src/LyXAction.C:624
 msgid "Change environment depth"
 msgstr "Spremeni globino okolja"
 
-#: src/LyXAction.C:623
+#: src/LyXAction.C:625
 msgid "Change itemize bullet settings"
 msgstr "Spremeni nastavitve pike pri na¹tevanju"
 
-#: src/LyXAction.C:624
+#: src/LyXAction.C:626
 msgid "Go down"
 msgstr "Pojdi dol"
 
-#: src/LyXAction.C:625
+#: src/LyXAction.C:627
 msgid "Select next line"
 msgstr "Izberi naslednjo vrstico"
 
-#: src/LyXAction.C:626
+#: src/LyXAction.C:628
 msgid "Choose Paragraph Environment"
 msgstr "Izberi okolje odstavka"
 
-#: src/LyXAction.C:627
+#: src/LyXAction.C:629
 msgid "Go to next error"
 msgstr "Pojdi na naslednjo napako"
 
-#: src/LyXAction.C:628 src/lyx_cb.C:2354
+#: src/LyXAction.C:630 src/lyx_cb.C:2353
 msgid "Insert Figure"
 msgstr "Vstavi sliko"
 
-#: src/LyXAction.C:629 src/lyxfr0.C:97
+#: src/LyXAction.C:631 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "Poi¹èi in zamenjaj"
 
-#: src/LyXAction.C:630
+#: src/LyXAction.C:632
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Spremeni (ne)sledenje kurzorja pomiènici"
 
-#: src/LyXAction.C:631
+#: src/LyXAction.C:633
 msgid "Toggle bold"
 msgstr "Spremeni polkrepkost"
 
-#: src/LyXAction.C:632
+#: src/LyXAction.C:634
 msgid "Toggle code style"
 msgstr "Spremeni stil kode"
 
-#: src/LyXAction.C:633
+#: src/LyXAction.C:635
 msgid "Default font style"
 msgstr "Privzeti stil pisave"
 
-#: src/LyXAction.C:634
+#: src/LyXAction.C:636
 msgid "Toggle emphasize"
 msgstr "Spremeni poudarjenost"
 
-#: src/LyXAction.C:635
+#: src/LyXAction.C:637
 msgid "Toggle user defined style"
 msgstr "Spremeni uporabni¹ko definirani stil"
 
-#: src/LyXAction.C:636
+#: src/LyXAction.C:638
 msgid "Toggle noun style"
 msgstr "Spremeni stil velikih èrk"
 
-#: src/LyXAction.C:637
+#: src/LyXAction.C:639
 msgid "Toggle roman font style"
 msgstr "Spremeni stil pokonène pisave"
 
-#: src/LyXAction.C:638
+#: src/LyXAction.C:640
 msgid "Toggle sans font style"
 msgstr "Spremeni stil pisave brez serifov"
 
-#: src/LyXAction.C:639
+#: src/LyXAction.C:641
 msgid "Set font size"
 msgstr "Doloèi velikost pisave"
 
-#: src/LyXAction.C:640
+#: src/LyXAction.C:642
 msgid "Show font state"
 msgstr "Poka¾i stanje pisave"
 
-#: src/LyXAction.C:641
+#: src/LyXAction.C:643
 msgid "Toggle font underline"
 msgstr "Spremeni podèrtanje pisave"
 
-#: src/LyXAction.C:642
+#: src/LyXAction.C:644
 msgid "Insert Footnote"
 msgstr "Vstavi opombo pod èrto"
 
-#: src/LyXAction.C:643
+#: src/LyXAction.C:645
 msgid "Select next char"
 msgstr "Izberi naslednji znak"
 
-#: src/LyXAction.C:644
+#: src/LyXAction.C:646
 msgid "Insert horizontal fill"
 msgstr "Vstavi vodoravno polnitev"
 
-#: src/LyXAction.C:645
+#: src/LyXAction.C:647
 msgid "Insert hyphenation point"
 msgstr "Vstavi mesto delitve"
 
-#: src/LyXAction.C:646
+#: src/LyXAction.C:648
 msgid "Insert ... dots"
 msgstr "Vstavi ... pike"
 
-#: src/LyXAction.C:647
+#: src/LyXAction.C:649
 msgid "Insert end of sentence period"
 msgstr "Vstavi piko za konec stavka"
 
-#: src/LyXAction.C:648
+#: src/LyXAction.C:650
 msgid "Turn off keymap"
 msgstr "Izkljuèi preslikavo tipk"
 
-#: src/LyXAction.C:649
+#: src/LyXAction.C:651
 msgid "Use primary keymap"
 msgstr "Uporabi primarni polo¾aj tipk??"
 
-#: src/LyXAction.C:650
+#: src/LyXAction.C:652
 msgid "Use secondary keymap"
 msgstr "Uporabi sekundarni polo¾aj tipk??"
 
-#: src/LyXAction.C:651
+#: src/LyXAction.C:653
 msgid "Toggle keymap"
 msgstr "Spremeni polo¾aj tipk"
 
-#: src/LyXAction.C:652
+#: src/LyXAction.C:654
 msgid "Insert Label"
 msgstr "Vstavi oznako"
 
-#: src/LyXAction.C:653
+#: src/LyXAction.C:655
 msgid "Copy paragraph environment type"
 msgstr "Kopiraj tip okolja odstavka"
 
-#: src/LyXAction.C:654
+#: src/LyXAction.C:656
 msgid "Paste paragraph environment type"
 msgstr "Prilepi tip okolja odstavka"
 
-#: src/LyXAction.C:655
+#: src/LyXAction.C:657
 msgid "Specify paper size and margins"
 msgstr "Doloèi velikost papirja in robove"
 
-#: src/LyXAction.C:656
+#: src/LyXAction.C:658
 msgid "Go to beginning of line"
 msgstr "Pojdi na zaèetek vrstice"
 
-#: src/LyXAction.C:657
+#: src/LyXAction.C:659
 msgid "Select to beginning of line"
 msgstr "Izberi do zaèetka vrstice"
 
-#: src/LyXAction.C:658
+#: src/LyXAction.C:660
 msgid "Go to end of line"
 msgstr "Pojdi na konec vrstice"
 
-#: src/LyXAction.C:659
+#: src/LyXAction.C:661
 msgid "Select to end of line"
 msgstr "Izberi do konca vrstice"
 
-#: src/LyXAction.C:660
+#: src/LyXAction.C:662
 msgid "Exit"
 msgstr "Izhod"
 
-#: src/LyXAction.C:661
+#: src/LyXAction.C:663
 msgid "Insert Margin note"
 msgstr "Vstavi opombo na robu"
 
-#: src/LyXAction.C:662
+#: src/LyXAction.C:664
 msgid "Math Greek"
 msgstr "Matematièna gr¹èina"
 
-#: src/LyXAction.C:663
+#: src/LyXAction.C:665
 msgid "Math mode"
 msgstr "Matematièni naèin"
 
-#: src/LyXAction.C:664
+#: src/LyXAction.C:666
 msgid "Go one paragraph down"
 msgstr "Pojdi odstavek navzdol"
 
-#: src/LyXAction.C:665
+#: src/LyXAction.C:667
 msgid "Select next paragraph"
 msgstr "Izberi naslednji odstavek"
 
-#: src/LyXAction.C:666
+#: src/LyXAction.C:668
 msgid "Go one paragraph up"
 msgstr "Pojdi odstavek navzgor"
 
-#: src/LyXAction.C:667
+#: src/LyXAction.C:669
 msgid "Select previous paragraph"
 msgstr "Izberi prej¹nji odstavek"
 
-#: src/LyXAction.C:668 src/lyx_cb.C:2423
+#: src/LyXAction.C:670 src/lyx_cb.C:2422
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/LyXAction.C:669
+#: src/LyXAction.C:671
 msgid "Insert protected space"
 msgstr "Vstavi za¹èiteni presledek"
 
-#: src/LyXAction.C:670
+#: src/LyXAction.C:672
 msgid "Insert quote"
 msgstr "Vstavi narekovaj"
 
-#: src/LyXAction.C:671
+#: src/LyXAction.C:673
 msgid "Reconfigure"
 msgstr "Ponovna ukrojitev"
 
-#: src/LyXAction.C:672 src/lyx_cb.C:2110
+#: src/LyXAction.C:674 src/lyx_cb.C:2109
 msgid "Redo"
 msgstr "Ponovi"
 
-#: src/LyXAction.C:673
+#: src/LyXAction.C:675
 msgid "Insert cross reference"
 msgstr "Vstavi navzkri¾no referenco"
 
-#: src/LyXAction.C:674 src/lyx_cb.C:2366
+#: src/LyXAction.C:676 src/lyx_cb.C:2365
 msgid "Insert Table"
 msgstr "Vstavi tabelo"
 
-#: src/LyXAction.C:675
+#: src/LyXAction.C:677
 msgid "Toggle TeX style"
 msgstr "Spremeni stil TeXa"
 
-#: src/LyXAction.C:676 src/lyx_cb.C:2090
+#: src/LyXAction.C:678 src/lyx_cb.C:2089
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/LyXAction.C:677 src/lyx_cb.C:2445
+#: src/LyXAction.C:679 src/lyx_cb.C:2444
 msgid "Melt"
 msgstr "Stopi"
 
-#: src/LyXAction.C:678
+#: src/LyXAction.C:680
 msgid "Import document"
 msgstr "Uvozi spis"
 
-#: src/LyXAction.C:679
+#: src/LyXAction.C:681
 msgid "Remove all error boxes"
 msgstr "Odstrani vse ¹katle z napakami"
 
-#: src/LyXAction.C:680
+#: src/LyXAction.C:682
 msgid "Insert menu separator"
 msgstr "Vstavi loènico med menuji"
 
 #. In an ideal world, this never happens:
-#: src/LyXAction.C:715
+#: src/LyXAction.C:717
 msgid "No description available!"
 msgstr "Ni dostopnega opisa!"
 
@@ -508,7 +508,7 @@ msgstr "Potrditev: ponovno pritisnite tipko Delete"
 
 #. sgml2lyx failed
 #: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3555 src/bufferlist.C:577
-#: src/bufferlist.C:607 src/lyx_cb.C:535 src/lyx_cb.C:868 src/lyx_cb.C:901
+#: src/bufferlist.C:607 src/lyx_cb.C:535 src/lyx_cb.C:867 src/lyx_cb.C:900
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Napaka!"
@@ -676,7 +676,7 @@ msgstr "Napaka! Ne morem odpreti zaèasne datoteke:"
 msgid "Error executing *roff command on table"
 msgstr "Napaka pri izvajanju ukaza *roff na tabeli"
 
-#: src/buffer.C:3748 src/lyx_cb.C:3176 src/text.C:1875
+#: src/buffer.C:3748 src/lyx_cb.C:3175 src/text.C:1875
 msgid "Impossible Operation!"
 msgstr "Nemogoèa operacija!"
 
@@ -684,7 +684,7 @@ msgstr "Nemogoèa operacija!"
 msgid "Cannot insert table/list in table."
 msgstr "Ne morem vstaviti tabele/seznama v tabelo."
 
-#: src/buffer.C:3750 src/lyx_cb.C:3178 src/text.C:1877 src/text.C:3929
+#: src/buffer.C:3750 src/lyx_cb.C:3177 src/text.C:1877 src/text.C:3929
 #: src/text.C:3937 src/text.C:3952 src/text.C:3969 src/text2.C:2130
 #: src/text2.C:2140
 msgid "Sorry."
@@ -797,7 +797,7 @@ msgid "Size|#z"
 msgstr "Velikost|#z"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
-#: src/form1.C:43 src/form1.C:117 src/form1.C:258 src/form1.C:281
+#: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
 #: src/insets/insetbib.C:106 src/insets/insetbib.C:134
 #: src/insets/insetinclude.C:46 src/insets/insetindex.C:64
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
@@ -807,7 +807,7 @@ msgstr "Velikost|#z"
 msgid "OK"
 msgstr "V redu"
 
-#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:284 src/latexoptions.C:24
+#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
 #: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
 #: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
 #: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
@@ -817,7 +817,7 @@ msgstr "V redu"
 msgid "Apply|#A"
 msgstr "Uporabi|#A"
 
-#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:261 src/form1.C:287
+#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
 #: src/insets/insetbib.C:109 src/insets/insetbib.C:110
 #: src/insets/insetbib.C:137 src/insets/insetbib.C:138
 #: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
@@ -1073,156 +1073,156 @@ msgstr "Izbire"
 msgid "Angle:|#L"
 msgstr "Kot:|#L"
 
-#: src/form1.C:138
-#, c-format
+#: src/form1.C:139
+#, no-c-format
 msgid "% of Page|#g"
 msgstr "% strani|#g"
 
-#: src/form1.C:141
+#: src/form1.C:142
 msgid "Default|#t"
 msgstr "Privzeto|#t"
 
-#: src/form1.C:144
+#: src/form1.C:145
 msgid "cm|#m"
 msgstr "cm|#m"
 
-#: src/form1.C:147
+#: src/form1.C:148
 msgid "inches|#h"
 msgstr "palcev|#h"
 
-#: src/form1.C:152
+#: src/form1.C:153
 msgid "Display"
 msgstr "Zaslon"
 
-#: src/form1.C:156
+#: src/form1.C:157
 msgid "Height"
 msgstr "Vi¹ina"
 
-#: src/form1.C:160 src/layout_forms.C:629 src/layout_forms.C:712
+#: src/form1.C:161 src/layout_forms.C:629 src/layout_forms.C:712
 msgid "Width"
 msgstr "©irina"
 
-#: src/form1.C:164
+#: src/form1.C:165
 msgid "Rotation"
 msgstr "Zavrtitev"
 
-#: src/form1.C:170
+#: src/form1.C:171
 msgid "Display in Color|#D"
 msgstr "Prika¾i v barvi|#D"
 
-#: src/form1.C:173
+#: src/form1.C:174
 msgid "Do not display this figure|#y"
 msgstr "Ne prika¾i te slike|#y"
 
-#: src/form1.C:176
+#: src/form1.C:177
 msgid "Display as Grayscale|#i"
 msgstr "Prika¾i v sivini|#i"
 
-#: src/form1.C:179
+#: src/form1.C:180
 msgid "Display as Monochrome|#s"
 msgstr "Prika¾i èrnobelo|#s"
 
-#: src/form1.C:186
+#: src/form1.C:187
 msgid "Default|#U"
 msgstr "Privzeto|#U"
 
-#: src/form1.C:189
+#: src/form1.C:190
 msgid "cm|#c"
 msgstr "cm|#c"
 
-#: src/form1.C:192
+#: src/form1.C:193
 msgid "inches|#n"
 msgstr "palcev|#n"
 
-#: src/form1.C:195
-#, c-format
+#: src/form1.C:197
+#, no-c-format
 msgid "% of Page|#P"
 msgstr "% strani|#P"
 
-#: src/form1.C:198
-#, c-format
+#: src/form1.C:201
+#, no-c-format
 msgid "% of Column|#o"
 msgstr "% stolpca|#o"
 
-#: src/form1.C:204
+#: src/form1.C:207
 msgid "Caption|#k"
 msgstr "Pojasnilo|#k"
 
-#: src/form1.C:207
+#: src/form1.C:210
 msgid "Subfigure|#q"
 msgstr "Podslika|#q"
 
-#: src/form1.C:230
+#: src/form1.C:233
 msgid "Directory:|#D"
 msgstr "Imenik:|#D"
 
-#: src/form1.C:234
+#: src/form1.C:237
 msgid "Pattern:|#P"
 msgstr "Vzorec:|#P"
 
-#: src/form1.C:242
+#: src/form1.C:245
 msgid "Filename:|#F"
 msgstr "Ime datoteke:|#F"
 
-#: src/form1.C:246
+#: src/form1.C:249
 msgid "Rescan|#R#r"
 msgstr "Prebrskaj|#R#r"
 
-#: src/form1.C:249
+#: src/form1.C:252
 msgid "Home|#H#h"
 msgstr "Domaèi imenik|#H#h"
 
-#: src/form1.C:252
+#: src/form1.C:255
 msgid "User1|#1"
 msgstr "Uporabnik1|#1"
 
-#: src/form1.C:255
+#: src/form1.C:258
 msgid "User2|#2"
 msgstr "Uporabnik2|#2"
 
-#: src/form1.C:290 src/layout_forms.C:119
+#: src/form1.C:293 src/layout_forms.C:119
 msgid "Columns"
 msgstr "Stolpci"
 
-#: src/form1.C:294 src/mathed/math_forms.C:135
+#: src/form1.C:297 src/mathed/math_forms.C:135
 msgid "Rows"
 msgstr "Vrstice"
 
-#: src/form1.C:315
+#: src/form1.C:318
 msgid "Find|#n"
 msgstr "I¹èi|#n"
 
-#: src/form1.C:319
+#: src/form1.C:322
 msgid "Replace with|#W"
 msgstr "Nadomesti z|#W"
 
-#: src/form1.C:323
+#: src/form1.C:326
 #, fuzzy
 msgid "@>|#F"
 msgstr "@>|#F"
 
-#: src/form1.C:327
+#: src/form1.C:330
 #, fuzzy
 msgid "@<|#B"
 msgstr "@<|#B"
 
-#: src/form1.C:331
+#: src/form1.C:334
 msgid "Replace|#R#r"
 msgstr "Nadomesti|#R#r"
 
-#: src/form1.C:335
+#: src/form1.C:338
 msgid "Close|^["
 msgstr "Zapri|^["
 
-#: src/form1.C:339
+#: src/form1.C:342
 msgid "Case sensitive|#s#S"
 msgstr "Loèi velike in male èrke|#s#S"
 
-#: src/form1.C:341
+#: src/form1.C:344
 msgid "Match word|#M#m"
 msgstr "Ujemanje besede|#M#m"
 
-#: src/form1.C:343
+#: src/form1.C:346
 msgid "Replace All|#A#a"
 msgstr "Nadomesti vse|#V#v"
 
@@ -1338,19 +1338,19 @@ msgstr "Postavka literature"
 msgid "BibTeX Generated References"
 msgstr "Reference, generirane z BibTeXom"
 
-#: src/insets/insetbib.C:442
+#: src/insets/insetbib.C:444
 msgid "Database:"
 msgstr "Baza podatkov:"
 
-#: src/insets/insetbib.C:443
+#: src/insets/insetbib.C:445
 msgid "Style:  "
 msgstr "Stil:  "
 
-#: src/insets/insetbib.C:450
+#: src/insets/insetbib.C:452
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3709
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:92 src/lyx_cb.C:3706
 msgid "Error"
 msgstr "Napaka"
 
@@ -1537,27 +1537,27 @@ msgstr "Dovoli akcente na VSEH znakih|#w"
 msgid "Update|#Uu"
 msgstr "Osve¾i|#Uu"
 
-#: src/layout.C:1290
+#: src/layout.C:1288
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX ni mogel najti svojih opisov izgleda!"
 
-#: src/layout.C:1291
+#: src/layout.C:1289
 msgid "Check that the file \"textclass.lst\""
 msgstr "Preverite, da je datoteka \"textclass.lst\""
 
-#: src/layout.C:1292
+#: src/layout.C:1290
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "pravilno name¹èena. ®al, moram iti ven :-("
 
-#: src/layout.C:1346
+#: src/layout.C:1344
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX ni mogel najti nobenih opisov izgleda"
 
-#: src/layout.C:1347
+#: src/layout.C:1345
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Preverite vsebino datoteke \"textclass.lst\""
 
-#: src/layout.C:1348
+#: src/layout.C:1346
 msgid "Sorry, has to exit :-("
 msgstr "®al, moram iti ven :-("
 
@@ -2217,325 +2217,325 @@ msgstr "Videti je, da chktex ne deluje."
 msgid "Executing command:"
 msgstr "Izvajam ukaz:"
 
-#: src/lyx_cb.C:841 src/lyx_cb.C:878 src/lyx_cb.C:911 src/lyx_cb.C:938
+#: src/lyx_cb.C:840 src/lyx_cb.C:877 src/lyx_cb.C:910 src/lyx_cb.C:937
 #: src/lyxfunc.C:2492
 msgid "File already exists:"
 msgstr "Datoteka ¾e obstaja:"
 
-#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
+#: src/lyx_cb.C:842 src/lyx_cb.C:879 src/lyx_cb.C:912 src/lyx_cb.C:939
 msgid "Do you want to overwrite the file?"
 msgstr "Ali ¾elite prepisati datoteko?"
 
-#: src/lyx_cb.C:844 src/lyx_cb.C:881 src/lyx_cb.C:914 src/lyx_cb.C:941
+#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
 msgid "Canceled"
 msgstr "Preklicano"
 
-#: src/lyx_cb.C:849
+#: src/lyx_cb.C:848
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:855
+#: src/lyx_cb.C:854
 msgid "Nice LaTeX file saved as"
 msgstr "Prijetna datoteka za LaTeX shranjena kot"
 
-#: src/lyx_cb.C:868
+#: src/lyx_cb.C:867
 msgid "Document class must be linuxdoc."
 msgstr "Razred besedila mora biti linuxdoc."
 
-#: src/lyx_cb.C:885
+#: src/lyx_cb.C:884
 msgid "Building LinuxDoc SGML file `"
 msgstr "Gradim datoteko LinuxDoc SGML `"
 
-#: src/lyx_cb.C:890
+#: src/lyx_cb.C:889
 msgid "LinuxDoc SGML file save as"
 msgstr "Shrani datoteko LinuxDoc SGML kot"
 
-#: src/lyx_cb.C:901
+#: src/lyx_cb.C:900
 #, fuzzy
 msgid "Document class must be docbook."
 msgstr "Razred besedila mora biti linuxdoc."
 
-#: src/lyx_cb.C:918
+#: src/lyx_cb.C:917
 #, fuzzy
 msgid "Building DocBook SGML file `"
 msgstr "Gradim datoteko LinuxDoc SGML `"
 
-#: src/lyx_cb.C:923
+#: src/lyx_cb.C:922
 #, fuzzy
 msgid "DocBook SGML file save as"
 msgstr "Shrani datoteko LinuxDoc SGML kot"
 
-#: src/lyx_cb.C:947
+#: src/lyx_cb.C:946
 msgid "Ascii file saved as"
 msgstr "Datoteka ASCII shranjena kot"
 
-#: src/lyx_cb.C:1015
+#: src/lyx_cb.C:1014
 msgid "Autosaving current document..."
 msgstr "Samodejno shranjujem trenutni spis..."
 
-#: src/lyx_cb.C:1056
+#: src/lyx_cb.C:1055
 msgid "Autosave Failed!"
 msgstr "Sámoshranjevanju spodletelo!"
 
-#: src/lyx_cb.C:1112
+#: src/lyx_cb.C:1111
 msgid "File to Insert"
 msgstr "Datoteka za vstavek"
 
-#: src/lyx_cb.C:1123
+#: src/lyx_cb.C:1122
 msgid "Error! Cannot open specified file:"
 msgstr "Napaka! Ne morem odpreti doloèene datoteke:"
 
-#: src/lyx_cb.C:1158
+#: src/lyx_cb.C:1157
 msgid "Table Of Contents"
 msgstr "Kazalo vsebine"
 
-#: src/lyx_cb.C:1174 src/mathed/formula.C:1028
+#: src/lyx_cb.C:1173 src/mathed/formula.C:1028
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
-#: src/lyx_cb.C:1194
+#: src/lyx_cb.C:1193
 msgid "Insert Reference"
 msgstr "Vstavi referenco"
 
-#: src/lyx_cb.C:1228
+#: src/lyx_cb.C:1227
 msgid "Inserting Footnote..."
 msgstr "Vstavi opombo v nogi..."
 
 #. Import file
-#: src/lyx_cb.C:1284
+#: src/lyx_cb.C:1283
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Uvozi datoteko LinuxDoc SGML `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1292
+#: src/lyx_cb.C:1291
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko za TeX..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1299
+#: src/lyx_cb.C:1298
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1356
+#: src/lyx_cb.C:1355
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
-#: src/lyx_cb.C:1481
+#: src/lyx_cb.C:1480
 msgid "Character Style"
 msgstr "Znakovni stil"
 
-#: src/lyx_cb.C:1689
+#: src/lyx_cb.C:1688
 msgid "Paragraph Environment"
 msgstr "Okolje odstavka"
 
-#: src/lyx_cb.C:1940
+#: src/lyx_cb.C:1939
 msgid "Document Layout"
 msgstr "Izgled spisa"
 
-#: src/lyx_cb.C:1978
+#: src/lyx_cb.C:1977
 msgid "Quotes"
 msgstr "Narekovaji"
 
-#: src/lyx_cb.C:2025
+#: src/lyx_cb.C:2024
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/lyx_cb.C:2041
+#: src/lyx_cb.C:2040
 msgid "Do you want to save the current settings"
 msgstr "Ali ¾elite shraniti trenutne nastavitve"
 
-#: src/lyx_cb.C:2042
+#: src/lyx_cb.C:2041
 msgid "for Character, Document, Paper and Quotes"
 msgstr "za Znake, Spis, Papir in Narekovaje"
 
-#: src/lyx_cb.C:2043
+#: src/lyx_cb.C:2042
 msgid "as default for new documents?"
 msgstr "kot privzete za nove spise?"
 
-#: src/lyx_cb.C:2060 src/lyx_cb.C:2072
+#: src/lyx_cb.C:2059 src/lyx_cb.C:2071
 msgid "Open/Close..."
 msgstr "Odpri/Zapri..."
 
-#: src/lyx_cb.C:2095
+#: src/lyx_cb.C:2094
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih informacij"
 
-#: src/lyx_cb.C:2105
+#: src/lyx_cb.C:2104
 msgid "Redo not yet supported in math mode"
 msgstr "Ponovitev ¹e ni podprta v matematiènem naèinu"
 
-#: src/lyx_cb.C:2115
+#: src/lyx_cb.C:2114
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih informacij"
 
-#: src/lyx_cb.C:2306
+#: src/lyx_cb.C:2305
 msgid "Font: "
 msgstr "Pisava: "
 
-#: src/lyx_cb.C:2310
+#: src/lyx_cb.C:2309
 msgid ", Depth: "
 msgstr ", globina: "
 
-#: src/lyx_cb.C:2338
+#: src/lyx_cb.C:2337
 msgid "Inserting margin note..."
 msgstr "Vstavljam opombo na robu..."
 
-#: src/lyx_cb.C:2379
+#: src/lyx_cb.C:2378
 msgid "Paragraph environment type copied"
 msgstr "Prekopiran tip okolja odstavka"
 
-#: src/lyx_cb.C:2388
+#: src/lyx_cb.C:2387
 msgid "Paragraph environment type set"
 msgstr "Nastavljen tip okolja odstavka"
 
-#: src/lyx_cb.C:2479
+#: src/lyx_cb.C:2478
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Spremenjena globina okolja (v mo¾nem razponu, morda tudi ne)"
 
-#: src/lyx_cb.C:2719
+#: src/lyx_cb.C:2718
 msgid "Paragraph layout set"
 msgstr "Nastavljen izgled odstavka"
 
-#: src/lyx_cb.C:2789
+#: src/lyx_cb.C:2788
 msgid "Should I set some parameters to"
 msgstr "Ali naj nastavim nekatere parametre"
 
-#: src/lyx_cb.C:2791
+#: src/lyx_cb.C:2790
 msgid "the defaults of this document class?"
 msgstr "na privzete vrednosti tega razreda spisa?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2800 src/lyx_cb.C:2919 src/lyx_cb.C:2926
+#: src/lyx_cb.C:2799 src/lyx_cb.C:2918 src/lyx_cb.C:2925
 msgid "Conversion Errors!"
 msgstr "Napake pri pretvarjanju!"
 
-#: src/lyx_cb.C:2801 src/lyx_cb.C:2927
+#: src/lyx_cb.C:2800 src/lyx_cb.C:2926
 msgid "Unable to switch to new document class."
 msgstr "Ne morem preklopiti na novi razred spisa."
 
-#: src/lyx_cb.C:2802 src/lyx_cb.C:2928
+#: src/lyx_cb.C:2801 src/lyx_cb.C:2927
 msgid "Reverting to original document class."
 msgstr "Vraèam se na izvorni razred spisa."
 
-#: src/lyx_cb.C:2902
+#: src/lyx_cb.C:2901
 msgid "Converting document to new document class..."
 msgstr "Pretvarjam spis v nov razred spisa..."
 
-#: src/lyx_cb.C:2914
+#: src/lyx_cb.C:2913
 msgid "One paragraph couldn't be converted"
 msgstr "En odstavek ne more biti pretvorjen"
 
-#: src/lyx_cb.C:2917
+#: src/lyx_cb.C:2916
 msgid " paragraphs couldn't be converted"
 msgstr " odstavkov ne more biti pretvorjenih"
 
-#: src/lyx_cb.C:2920
+#: src/lyx_cb.C:2919
 msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
-#: src/lyx_cb.C:3006
+#: src/lyx_cb.C:3005
 msgid "Document layout set"
 msgstr "Nastavitev izgleda spisa"
 
-#: src/lyx_cb.C:3056 src/lyx_cb.C:3060
+#: src/lyx_cb.C:3055 src/lyx_cb.C:3059
 msgid "No more notes"
 msgstr "Ni veè opomb"
 
-#: src/lyx_cb.C:3091
+#: src/lyx_cb.C:3090
 msgid "Quotes type set"
 msgstr "Nastavitev vrste narekovajev"
 
-#: src/lyx_cb.C:3155
+#: src/lyx_cb.C:3154
 msgid "LaTeX preamble set"
 msgstr "Nastavitev vzglavja LaTeXa"
 
-#: src/lyx_cb.C:3177
+#: src/lyx_cb.C:3176
 msgid "Cannot insert table in table."
 msgstr "Ne morem vstaviti tabele v tabelo."
 
-#: src/lyx_cb.C:3182
+#: src/lyx_cb.C:3181
 msgid "Inserting table..."
 msgstr "Vstavljam tabelo..."
 
-#: src/lyx_cb.C:3242
+#: src/lyx_cb.C:3241
 msgid "Table inserted"
 msgstr "Tabela vstavljena"
 
-#: src/lyx_cb.C:3300 src/lyx_cb.C:3318
+#: src/lyx_cb.C:3297 src/lyx_cb.C:3315
 msgid "ERROR!  Unable to print!"
 msgstr "NAPAKA!  Ne morem tiskati!"
 
-#: src/lyx_cb.C:3301
+#: src/lyx_cb.C:3298
 msgid "Check 'range of pages'!"
 msgstr "Preverite 'obseg strani'!"
 
-#: src/lyx_cb.C:3319
+#: src/lyx_cb.C:3316
 msgid "Check 'number of copies'!"
 msgstr "Preverite '¹tevilo izvodov'!"
 
-#: src/lyx_cb.C:3430
+#: src/lyx_cb.C:3427
 msgid "Error:"
 msgstr "Napaka:"
 
-#: src/lyx_cb.C:3431
+#: src/lyx_cb.C:3428
 msgid "Unable to print"
 msgstr "Ne morem tiskati"
 
-#: src/lyx_cb.C:3432
+#: src/lyx_cb.C:3429
 msgid "Check that your parameters are correct"
 msgstr "Preverite, da so va¹i parametri pravilni"
 
-#: src/lyx_cb.C:3454
+#: src/lyx_cb.C:3451
 msgid "Inserting figure..."
 msgstr "Vstavljam sliko..."
 
-#: src/lyx_cb.C:3459 src/lyx_cb.C:3511
+#: src/lyx_cb.C:3456 src/lyx_cb.C:3508
 msgid "Figure inserted"
 msgstr "Slika vstavljena"
 
-#: src/lyx_cb.C:3540
+#: src/lyx_cb.C:3537
 msgid "Screen options set"
 msgstr "Nastavitev zaslonskih izbir"
 
-#: src/lyx_cb.C:3570
+#: src/lyx_cb.C:3567
 msgid "LaTeX Options"
 msgstr "Izbire za LaTeX"
 
-#: src/lyx_cb.C:3579
+#: src/lyx_cb.C:3576
 msgid "Running configure..."
 msgstr "Poganjam prikrojitev..."
 
-#: src/lyx_cb.C:3586
+#: src/lyx_cb.C:3583
 msgid "Reloading configuration..."
 msgstr "Ponovno nalagam prikrojitev..."
 
-#: src/lyx_cb.C:3588
+#: src/lyx_cb.C:3585
 msgid "The system has been reconfigured."
 msgstr "Sistem je bil ponovno prikrojen."
 
-#: src/lyx_cb.C:3589
+#: src/lyx_cb.C:3586
 msgid "You need to restart LyX to make use of any"
 msgstr "Ponovno morate zagnati LyX, da uporabite katerekoli"
 
-#: src/lyx_cb.C:3590
+#: src/lyx_cb.C:3587
 msgid "updated document class specifications."
 msgstr "osve¾ene doloèitve razreda spisa."
 
-#: src/lyx_cb.C:3710
+#: src/lyx_cb.C:3707
 msgid "Couldn't find this label"
 msgstr "Ne najdem te oznake"
 
-#: src/lyx_cb.C:3711
+#: src/lyx_cb.C:3708
 msgid "in current document."
 msgstr "v trenutnem spisu."
 
-#: src/lyx_cb.C:3742
+#: src/lyx_cb.C:3739
 msgid "*** No Document ***"
 msgstr "*** Ni spisa ***"
 
-#: src/lyx_cb.C:3911
+#: src/lyx_cb.C:3908
 msgid "*** No labels found in document ***"
 msgstr "*** Nobene oznake najdete v spisu ***"
 
@@ -4855,61 +4855,3 @@ msgstr "Ne morem prilepiti plovke v plovko!"
 #: src/text2.C:2139
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "Celica tabele ne more vkljuèevati veè kot enega odstavka!"
-
-#~ msgid "Close|#C^[^M"
-#~ msgstr "Zapri|#Z^[^M"
-
-#~ msgid "Run #"
-#~ msgstr "Tek #"
-
-#~ msgid "LyX "
-#~ msgstr "LyX "
-
-#~ msgid "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
-#~ msgstr "Uporaba: lyx [ stikala ukazne vrstice ] [ ime.lyx ... ]\n"
-
-#~ msgid "Command line switches (case sensitive):"
-#~ msgstr "Stikala ukazne vrstice (razlikujejo velike in male èrke):"
-
-#~ msgid "   -help           summarize LyX usage"
-#~ msgstr "   -help           povzame uporabo LyXa"
-
-#~ msgid "   -sysdir x       try to set system directory to x"
-#~ msgstr "   -sysdir x       posku¹a nastaviti sistemski imenik na x"
-
-#~ msgid "   -width x        set the width of the main window"
-#~ msgstr "   -width x        nastavi ¹irino glavnega okna"
-
-#~ msgid "   -height y       set the height of the main window"
-#~ msgstr "   -height y       nastavi vi¹ino glavnega okna"
-
-#~ msgid "   -xpos x         set the x position of the main window"
-#~ msgstr "   -xpos x         nastavi polo¾aj x glavnega okna"
-
-#~ msgid "   -ypos y         set the y position of the main window"
-#~ msgstr "   -ypos y         nastavi polo¾aj y glavnega okna"
-
-#~ msgid ""
-#~ "   -dbg n          where n is a sum of debugging options. Try -dbg 65535 "
-#~ "-help"
-#~ msgstr ""
-#~ "   -dbg n          kjer je n vsota razhro¹èevalnih izbir. Npr. -dbg 65535 "
-#~ "-help"
-
-#~ msgid "   -Reverse        swaps foreground & background colors"
-#~ msgstr "   -Reverse        zamenja barve ospredja & ozadja"
-
-#~ msgid "   -Mono           runs LyX in black and white mode"
-#~ msgstr "   -Mono           po¾ene LyX v èrnobelem naèinu"
-
-#~ msgid "   -FastSelection  use a fast routine for drawing selections\n"
-#~ msgstr "   -FastSelection  uporabi hitro rutino za risanje izbir\n"
-
-#~ msgid "Check the LyX man page for more options."
-#~ msgstr "Za veè izbir preverite stran referenènega priroènika o LyXu."
-
-#~ msgid "LyX Internal Error:"
-#~ msgstr "Notranja napaka LyXa:"
-
-#~ msgid "Path Stack underflow."
-#~ msgstr "Podkoraèitev sklada poti."

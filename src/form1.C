@@ -135,6 +135,7 @@ FD_Figure *create_form_Figure(void)
     fl_set_object_callback(obj,GraphicsCB,2);
 
   fdui->HeightGrp = fl_bgn_group();
+  // xgettext:no-c-format
   fdui->page2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,110,130,110,30,idex(_("% of Page|#g")));fl_set_button_shortcut(obj,scex(_("% of Page|#g")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,23);
@@ -192,9 +193,11 @@ FD_Figure *create_form_Figure(void)
   fdui->in1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,110,80,30,idex(_("inches|#n")));fl_set_button_shortcut(obj,scex(_("inches|#n")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,12);
+    // xgettext:no-c-format
   fdui->page1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,130,110,30,idex(_("% of Page|#P")));fl_set_button_shortcut(obj,scex(_("% of Page|#P")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,13);
+    // xgettext:no-c-format
   fdui->column1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,150,110,30,idex(_("% of Column|#o")));fl_set_button_shortcut(obj,scex(_("% of Column|#o")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,14);

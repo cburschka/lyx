@@ -6,7 +6,7 @@ bin_PROGRAMS = lyx
 lyx_LDADD = mathed/mathed.o insets/insets.o support/libsupport.a \
 	@INTLLIBS@ @LYX_LIBS@
 lyx_DEPENDENCIES = mathed insets support/libsupport.a
-EXTRA_DIST = config.h.in stamp-h.in
+EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images
 localedir = $(datadir)/locale
@@ -180,3 +180,6 @@ lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h
 main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h
 	$(CXXCOMPILE) -DPACKAGE=\"$(PACKAGE)\" -DLOCALEDIR=\"$(localedir)\" \
 	-c ${top_srcdir}/src/main.C
+
+dist-hook:
+	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`
