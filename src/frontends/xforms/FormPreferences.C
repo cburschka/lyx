@@ -8,6 +8,7 @@
 #include FORMS_H_LOCATION
 
 #include "FormPreferences.h"
+#include "form_preferences.h"
 #include "xform_macros.h"
 #include "input_validators.h"
 #include "LyXView.h"

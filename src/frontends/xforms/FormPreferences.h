@@ -18,13 +18,19 @@
 #define FORMPREFERENCES_H
 
 #include "DialogBase.h"
-#include "form_preferences.h"
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Connection;
 #endif
 
 class LyXView;
 class Dialogs;
+struct FD_form_preferences;
+struct FD_form_bind;
+struct FD_form_misc;
+struct FD_form_screen_fonts;
+struct FD_form_interface_fonts;
+struct FD_form_printer;
+struct FD_form_paths;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.

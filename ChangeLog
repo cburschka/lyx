@@ -1,5 +1,12 @@
 2000-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* src/frontends/xforms/FormPrint.[Ch] : moved #include
+	form_print.h out of the header file. Replaced with forward
+	declarations of the relevant struct.
+
+	* src/frontends/xforms/FormPreferences.[Ch] : ditto for
+	form_preferences.h.
+
 	* src/commandtags.h: do not include "debug.h" which does not
 	belong there. #include it in some other places because of this
 	change. 

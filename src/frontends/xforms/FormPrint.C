@@ -8,6 +8,7 @@
 #include FORMS_H_LOCATION
 
 #include "FormPrint.h"
+#include "form_print.h"
 #include "xform_macros.h"
 #include "input_validators.h"
 #include "LyXView.h"
