@@ -15,7 +15,7 @@
 #include "updatableinset.h"
 #include "support/std_string.h"
 #include "LColor.h"
-#include "ParagraphList.h"
+#include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
 #include "dimension.h"
 #include "lyxtext.h"

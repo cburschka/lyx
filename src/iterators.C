@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "iterators.h"
+#include "paragraph.h"
 
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>

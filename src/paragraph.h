@@ -38,7 +38,6 @@ class LaTeXFeatures;
 class LatexRunParams;
 class ParagraphParameters;
 class TexRow;
-class ParagraphList;
 class UpdatableInset;
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph

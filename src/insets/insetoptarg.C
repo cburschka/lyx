@@ -14,6 +14,7 @@
 
 #include "debug.h"
 #include "gettext.h"
+#include "paragraph.h"
 
 using std::auto_ptr;
 using std::ostream;

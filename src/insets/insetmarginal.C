@@ -14,6 +14,7 @@
 #include "insetmarginal.h"
 
 #include "gettext.h"
+#include "paragraph.h"
 
 #include "support/std_ostream.h"
 

@@ -26,9 +26,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "latexrunparams.h"
-#include "RowList.h"
-
-#include "support/std_sstream.h"
+#include "lyxrow.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
@@ -36,6 +34,8 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/textutils.h"
+
+#include "support/std_sstream.h"
 
 
 using namespace lyx::support;

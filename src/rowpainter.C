@@ -25,9 +25,9 @@
 #include "language.h"
 #include "encoding.h"
 #include "rowpainter.h"
+#include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
-#include "RowList.h"
 
 
 using namespace lyx::support;

@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "textcursor.h"
+#include "paragraph.h"
+
 
 void TextCursor::setSelection()
 {

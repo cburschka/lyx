@@ -12,10 +12,11 @@
 #include <config.h>
 
 #include "lyxrow_funcs.h"
-#include "lyxtext.h"
-#include "lyxlayout.h"
 #include "debug.h"
-#include "RowList.h"
+#include "lyxlayout.h"
+#include "lyxrow.h"
+#include "lyxtext.h"
+#include "paragraph.h"
 
 #include "support/LAssert.h"
 

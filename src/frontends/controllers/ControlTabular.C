@@ -13,6 +13,7 @@
 #include "ControlTabular.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
+#include "paragraph.h"
 #include "insets/insettabular.h"
 #include "support/LAssert.h"
 

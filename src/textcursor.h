@@ -12,10 +12,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "lyxcursor.h"
-
 #ifndef TEXTCURSOR_H
 #define TEXTCURSOR_H
+
+#include "lyxcursor.h"
+#include "support/std_string.h"
+
+class Buffer;
 
 // Do not even think of forward declaring LyXText/BufferView etc here!
 // If you need Paragraph proper, go to text_func.h

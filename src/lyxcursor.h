@@ -17,7 +17,7 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
-#include "ParagraphList.h"
+#include "ParagraphList_fwd.h"
 #include "support/types.h"
 
 /**

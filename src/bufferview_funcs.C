@@ -13,14 +13,14 @@
 
 #include <config.h>
 
+#include "buffer.h"
 #include "bufferview_funcs.h"
 #include "BufferView.h"
-#include "lyxlex.h"
-#include "buffer.h"
 #include "language.h"
 #include "gettext.h"
+#include "lyxlex.h"
+#include "lyxrow.h"
 #include "ParagraphParameters.h"
-#include "RowList.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"

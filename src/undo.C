@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "undo.h"
+#include "paragraph.h"
 
 Undo::Undo(undo_kind kind_arg, int inset,
 	   int first, int last,

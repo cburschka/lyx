@@ -32,8 +32,8 @@
 #include "WordLangTuple.h"
 #include "paragraph_funcs.h"
 #include "rowpainter.h"
+#include "lyxrow.h"
 #include "lyxrow_funcs.h"
-#include "RowList.h"
 
 #include "insets/insettext.h"
 

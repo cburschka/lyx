@@ -16,10 +16,10 @@
 #ifndef TEXT_FUNCS_H
 #define TEXT_FUNCS_H
 
+#include "ParagraphList_fwd.h"
 #include "support/types.h"
 
 class LyXCursor;
-class ParagraphList;
 
 
 // do no use LyXText or BufferView here

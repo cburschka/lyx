@@ -1,7 +1,54 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* ParagraphList_fwd.h: new file, forward-declaring Paragraph rather than
+	#including paragraph.h.
+
+	* ParagraphList.h:
+	* RowList.h: deleted. Superfluous.
+
+	* CutAndPaste.h:
+	* iterators.h:
+	* lyxcursor.h:
+	* lyxtext.h:
+	* text_funcs.h:
+	* undo.h:
+	* undo_funcs.h:
+	* insets/inset.h:
+	* insets/insettext.h: use ParagraphList_fwd.h rather than ParagraphList.h.
+
+	* paragraph.h: don't forward declare ParagraphList.
+
+	* buffer.h:
+	* paragraph_funcs.h: #include ParagraphList_fwd.h and paragraph.h
+	rather than ParagraphList.h. paragraph.h is still needed for the
+	Paragraph::depth_type parameters.
+
+	* textcursor.h: enable it to compile stand-alone in light of the
+	above changes.
+
+	* bufferview_funcs.C:
+	* iterators.C:
+	* lyxfunc.C:
+	* lyxrow_funcs.C:
+	* paragraph.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* text_funcs.C:
+	* textcursor.C:
+	* undo.C:
+	* frontends/controllers/ControlParagraph.C:
+	* frontends/controllers/ControlTabular.C:
+	* insets/insetmarginal.C:
+	* insets/insetminipage.C:
+	* insets/insetnote.C:
+	* insets/insetoptarg.C: add header files needed to compile again.
+	
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* RowList_fwd.h: new file, forward-declaring Row rather than
-	#including lyxrow.h
+	#including lyxrow.h.
 
 	* lyxrow_funcs.h:
 	* lyxtext.h:

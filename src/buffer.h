@@ -19,7 +19,8 @@
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
-#include "ParagraphList.h"
+#include "paragraph.h"
+#include "ParagraphList_fwd.h"
 #include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>

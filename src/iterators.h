@@ -12,7 +12,7 @@
 #ifndef ITERATORS_H
 #define ITERATORS_H
 
-#include "ParagraphList.h"
+#include "ParagraphList_fwd.h"
 
 #include <boost/scoped_ptr.hpp>
 

@@ -20,6 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 
 #include "support/std_sstream.h"
 

@@ -17,7 +17,7 @@
 #define UNDO_FUNCS_H
 
 #include "undo.h"
-#include "ParagraphList.h"
+#include "ParagraphList_fwd.h"
 
 class BufferView;
 class Paragraph;

@@ -14,15 +14,17 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
+#include "ParagraphList_fwd.h"
 #include "support/types.h"
-#include "ParagraphList.h"
 
+#include "support/std_string.h"
 #include <vector>
 
-class Paragraph;
+class Buffer;
 class BufferParams;
-class LyXTextClass;
 class ErrorList;
+class LyXTextClass;
+class Paragraph;
 
 ///
 namespace CutAndPaste {

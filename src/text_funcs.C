@@ -17,6 +17,7 @@
 #include "text_funcs.h"
 #include "debug.h"
 #include "lyxcursor.h"
+#include "paragraph.h"
 
 #include <boost/next_prior.hpp>
 

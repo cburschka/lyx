@@ -37,10 +37,10 @@
 #include "language.h"
 #include "ParagraphParameters.h"
 #include "counters.h"
+#include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
 #include "paragraph_funcs.h"
-#include "RowList.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetenv.h"

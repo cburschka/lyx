@@ -30,6 +30,7 @@
 #include "lyxserver.h"
 #include "intl.h"
 #include "lyx_cb.h"
+#include "lyxrow.h"
 #include "LyXAction.h"
 #include "debug.h"
 #include "gettext.h"
@@ -44,7 +45,6 @@
 #include "lyxfind.h"
 #include "undo_funcs.h"
 #include "ParagraphParameters.h"
-#include "RowList.h"
 
 #include "insets/insetcommand.h"
 #include "insets/insetexternal.h"

@@ -14,7 +14,7 @@
 #ifndef UNDO_H
 #define UNDO_H
 
-#include "ParagraphList.h"
+#include "ParagraphList_fwd.h"
 
 /**
  * These are the elements put on the undo stack. Each object

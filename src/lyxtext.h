@@ -19,6 +19,7 @@
 #include "LColor.h"
 #include "insets/inset.h"
 #include "RowList_fwd.h"
+#include "ParagraphList_fwd.h"
 #include "bufferview_funcs.h"
 #include "textcursor.h"
 
@@ -33,7 +34,6 @@ class Spacing;
 class UpdatableInset;
 class VSpace;
 class WordLangTuple;
-class ParagraphList;
 class MetricsInfo;
 class Dimension;
 

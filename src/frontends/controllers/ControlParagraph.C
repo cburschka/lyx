@@ -15,6 +15,7 @@
 #include "ButtonController.h"
 #include "funcrequest.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "support/LAssert.h"
 #include "support/std_sstream.h"

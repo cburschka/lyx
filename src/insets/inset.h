@@ -18,6 +18,7 @@
 #include "LColor.h"
 #include "insetbase.h"
 #include "dimension.h"
+#include "ParagraphList_fwd.h"
 #include "support/types.h"
 
 #include <vector>
@@ -32,7 +33,6 @@ class Paragraph;
 class LyXCursor;
 class FuncRequest;
 class WordLangTuple;
-class ParagraphList;
 class UpdatableInset;
 
 namespace lyx {

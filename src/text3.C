@@ -22,6 +22,7 @@
 #include "support/std_sstream.h"
 #include "debug.h"
 #include "buffer.h"
+#include "lyxrow.h"
 #include "ParagraphParameters.h"
 #include "gettext.h"
 #include "factory.h"
@@ -38,7 +39,6 @@
 #include "insets/insetnewline.h"
 #include "undo_funcs.h"
 #include "text_funcs.h"
-#include "RowList.h"
 
 #include <clocale>
 
