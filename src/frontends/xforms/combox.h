@@ -94,8 +94,10 @@ public:
 	/// Remove the objects from the form they are in. 
 	void remove();
 
-	/**  Assign a callback to this object. The callback should be a void
-	 function with a int and a void pointer as parameters.
+	/** 
+	 * Assign a callback to this object. The callback should be a void
+	 * function with a int, a void pointer, and a Combox pointer as 
+	 * parameters.
 	*/
 	void setcallback(FL_COMBO_CB, void *);
    
