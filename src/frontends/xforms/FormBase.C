@@ -48,8 +48,7 @@ void FormBase::show()
 		minw_ = form()->w;
 		minh_ = form()->h;
 
-		fl_set_form_atclose(form(),
-				    C_FormBaseWMHideCB, 0);
+		fl_set_form_atclose(form(), C_FormBaseWMHideCB, 0);
 	}
 
 	fl_freeze_form(form());

@@ -36,4 +36,3 @@ private:
 };
 
 #endif // CONTROLCOPYRIGHT_H
-

@@ -45,7 +45,7 @@ public: // methods
 	///
 	ControlButtons() {}
 	///
-	virtual ~ControlButtons() {};
+	virtual ~ControlButtons() {}
 
 	/// These functions are called when the controlling buttons are pressed.
 	///
