@@ -1022,14 +1022,16 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 					owner->view_state_changed();
 				}
 				goto exit_with_message;
-			case LFUN_DOWN:
-				if (view()->text->cursorRow() != view()->text->lastRow())
+			case LFUN_DOWN: {
+				LyXText * text = view()->text;
+				if (text->isLastRow(text->cursorPar(), *text->cursorRow()))
 					view()->text->cursorDown(view());
 				else
 					view()->text->cursorRight(view());
 				moveCursorUpdate();
 				owner->view_state_changed();
 				goto exit_with_message;
+			}
 			default:
 				break;
 			}

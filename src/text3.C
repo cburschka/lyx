@@ -302,7 +302,7 @@ void LyXText::cursorNext()
 	int topy = bv_owner->top_y();
 
 	RowList::iterator rit = cursorRow();
-	if (rit == lastRow()) {
+	if (isLastRow(cursorPar(), *cursorRow())) {
 		int y = cursor.y() - rit->baseline() + cursorRow()->height();
 		if (y > topy + bv()->workHeight())
 			bv_owner->updateScrollbar();

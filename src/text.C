@@ -601,13 +601,8 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 
 
 // returns the minimum space a row needs on the screen in pixel
-int LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
+void LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
 {
-	if (paper_width < 0) {
-		lyxerr << "paperwidth < 0: " << paper_width << "  Why?" << endl;
-		return 0;
-	}
-
 	int w;
 	// get the pure distance
 	pos_type const last = lastPos(*pit, row);
@@ -620,8 +615,9 @@ int LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
 		row.fill(0); // the minfill in leftMargin()
 		w = leftMargin(pit, row);
 		row.fill(tmpfill);
-	} else
+	} else {
 		w = leftMargin(pit, row);
+	}
 
 	pos_type const body_pos = pit->beginningOfBody();
 	pos_type i = row.pos();
@@ -659,20 +655,8 @@ int LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
 	}
 
 	int const fill = paper_width - w - rightMargin(*pit, *bv()->buffer(), row);
-
-	// If this case happens, it means that our calculation
-	// of the widths of the chars when we do rowBreakPoint()
-	// went wrong for some reason. Typically in list bodies.
-	// Things just about hobble on anyway, though you'll end
-	// up with a "fill_separator" less than zero, which corresponds
-	// to inter-word spacing being too small. Hopefully this problem
-	// will die when the label hacks die.
-	if (lyxerr.debugging() && fill < 0) {
-		lyxerr[Debug::GUI] << "Eek, fill() was < 0: " << fill
-			<< " w " << w << " paper_width " << paper_width
-			<< " right margin " << rightMargin(*pit, *bv()->buffer(), row) << endl;
-	}
-	return fill;
+	row.fill(fill);
+	row.width(paper_width - fill);
 }
 
 
@@ -1977,16 +1961,13 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		Row row(z);
 		rowBreakPoint(pit, row);
 		z = row.endpos();
-		int const f = fill(pit, row, ww);
-		unsigned int const w = ww - f;
-		pit->width = std::max(pit->width, w);
-		row.fill(f);
-		row.width(w);
+		fill(pit, row, ww);
 		prepareToPrint(pit, row);
 		setHeightOfRow(pit, row);
 		row.y_offset(pit->height);
-		pit->height += row.height();
 		pit->rows.push_back(row);
+		pit->width = std::max(pit->width, row.width());
+		pit->height += row.height();
 	}
 	height += pit->height;
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";

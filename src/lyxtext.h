@@ -415,8 +415,8 @@ private:
 	/// for example, the pos after which isNewLine(pos) == true
 	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
 
-	/// returns the minimum space a row needs on the screen in pixel
-	int fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
+	/// sets row.witdh to the minimum space a row needs on the screen in pixel
+	void fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
 
 	/**
 	 * returns the minimum space a manual label needs on the
