@@ -1,3 +1,12 @@
+2001-11-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text.C: change the order of the includes.
+	(workWidth): initialize it at once.
+	(workWidth): make maxw unsigned
+	(setHeightOfRow): remove unused variable (inset)
+	(selectSelectedWord): remove unused variable (inset)
+	(paintRowText): fix drawing of hfill characters, and clean up a bit.
+
 2001-11-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxserver.C (emergencyCleanup): do not try to close pipes if

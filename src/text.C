@@ -9,18 +9,10 @@
  * ====================================================== */
 
 #include <config.h>
-//#include <cstdlib> //these two do not seem useful anymore (JMarc)
-//#include <cctype>
-#include <algorithm>
 
 #include "lyxtext.h"
 #include "layout.h"
 #include "paragraph.h"
-#include "support/textutils.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
-#include "insets/insetbib.h"
-#include "insets/insettext.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -39,6 +31,15 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "font.h"
+
+#include "insets/insetbib.h"
+#include "insets/insettext.h"
+
+#include "support/textutils.h"
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+
+#include <algorithm>
 
 using std::max;
 using std::min;
@@ -65,14 +66,12 @@ int LyXText::workWidth(BufferView * bview) const
 
 int LyXText::workWidth(BufferView * bview, Inset * inset) const
 {
-	Buffer::inset_iterator it;
 	Paragraph * par = 0;
 	Paragraph::size_type pos = 0;
 
-	for(it=bview->buffer()->inset_iterator_begin();
-	    it != bview->buffer()->inset_iterator_end();
-	    ++it)
-	{
+	Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
+
+	for (; it != bview->buffer()->inset_iterator_end(); ++it) {
 		if (*it == inset) {
 			par = it.getPar();
 			pos = it.getPos();
@@ -101,7 +100,7 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 		Row * frow = row;
 		while(frow->previous() && frow->par() == frow->previous()->par())
 			frow = frow->previous();
-		int maxw = 0;
+		unsigned int maxw = 0;
 		while(frow->next() && frow->par() == frow->next()->par()) {
 			if ((frow != row) && (maxw < frow->width()))
 				maxw = frow->width();
@@ -511,7 +510,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		return;
 	}
 
-	/* usual characters, no insets */
+	// usual characters, no insets
 
 	// Collect character that we can draw in one command
 
@@ -1125,7 +1124,7 @@ int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
 	first = max(first, beginningOfMainBody(buf, row->par()));
 	int n = 0;
 	for (Paragraph::size_type p = first; p <= last; ++p) {
-	// last, because the end is ignored!
+		// last, because the end is ignored!
 		if (row->par()->isHfill(p)) {
 			++n;
 		}
@@ -1204,7 +1203,7 @@ LColor::color LyXText::backgroundColor()
 
 void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 {
-    /* get the maximum ascent and the maximum descent */
+	/* get the maximum ascent and the maximum descent */
 	int asc = 0;
 	int desc = 0;
 	float layoutasc = 0;
@@ -2362,8 +2361,6 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	// Start the selection from here
 	selection.cursor = cursor;
 	
-	Inset * inset;
-
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
 	while (cursor.pos() < cursor.par()->size()
@@ -2395,7 +2392,6 @@ void LyXText::selectSelectedWord(BufferView * bview)
 	
 	// set the sel cursor
 	selection.cursor = cursor;
-	Inset * inset;
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->size()
@@ -2597,15 +2593,16 @@ void LyXText::Delete(BufferView * bview)
 	//work better?
 	if ((cursor.par()->previous() ? cursor.par()->previous()->id() : 0)
 	    == old_cur_par_prev_id
-	    && cursor.par()->id() != old_cur_par_id)
-	{
-		return; // delete-empty-paragraph-mechanism has done it
+	    && cursor.par()->id() != old_cur_par_id) {
+		// delete-empty-paragraph-mechanism has done it
+		return;
 	}
 
 	// if you had success make a backspace
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {
 		LyXCursor tmpcursor = cursor;
-		cursor = old_cursor; // to make sure undo gets the right cursor position
+		// to make sure undo gets the right cursor position
+		cursor = old_cursor;
 		setUndo(bview, Undo::DELETE,
 			cursor.par(), cursor.par()->next()); 
 		cursor = tmpcursor;
@@ -3488,14 +3485,15 @@ void LyXText::paintRowText(DrawRowParams & p)
 		if (par->isHfill(pos)) {
 			p.x += 1;
 
-			int const y1 = p.yo + p.row->baseline() - defaultHeight() / 2;
- 
-			p.pain->line(int(p.x), y1, int(p.x), p.yo + p.row->baseline(), 
-				  LColor::vfillline);
+			int const y0 = p.yo + p.row->baseline();
+			int const y1 = y0 - defaultHeight() / 2;
+
+			p.pain->line(int(p.x), y1, int(p.x), y0,
+				     LColor::vfillline);
 			
-			int const y2 = y1 / 2;
- 
 			if (hfillExpansion(buffer, p.row, pos)) {
+				int const y2 = (y0 + y1) / 2;
+				
 				if (pos >= main_body) {
 					p.pain->line(int(p.x), y2,
 						  int(p.x + p.hfill), y2,
@@ -3510,8 +3508,8 @@ void LyXText::paintRowText(DrawRowParams & p)
 					p.x += p.label_hfill;
 				}
 				p.pain->line(int(p.x), y1,
-					  int(p.x), p.yo + p.row->baseline(),
-					  LColor::vfillline);
+					     int(p.x), y0,
+					     LColor::vfillline);
 			}
 			p.x += 2;
 			++vpos;
