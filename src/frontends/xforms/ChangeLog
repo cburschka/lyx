@@ -1,3 +1,18 @@
+2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* DropDown.[Ch] (keypress, key_pressed): new signal and method,
+	respectively.
+
+	* DropDown.C: place xforms callback functions in namespace anon.
+	Set browser callback on single not double click.
+	(select): return immediately of the vector is empty. Highlight the top
+	line. Position the browser above the minibuffer, not below it.
+	(peek): call key_pressed when a key press is detected.
+	(key_pressed): clean-up and emit the keypress signal.
+
+	* xforms_helpers.[Ch} (getSelectedStringFromBrowser): new function.
+	If nothing is selected, return string().
+
 2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormSpellchecker.C: disable resizing due to xforms bug

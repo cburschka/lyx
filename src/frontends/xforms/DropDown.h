@@ -27,9 +27,15 @@ public:
 
 	/// user completed action
 	void completed();
- 
+
+	/// a key was pressed. Act on it.
+	void key_pressed(char c);
+
 	/// signal for completion
 	SigC::Signal1<void, string const &> result;
+	 
+	/// signal that a key was pressed
+	SigC::Signal1<void, char> keypress;
 	 
 	/// X event
 	int peek(XEvent *);

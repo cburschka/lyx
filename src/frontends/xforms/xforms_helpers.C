@@ -90,9 +90,7 @@ vector<string> const getVectorFromChoice(FL_OBJECT * ob)
 }
 
 
-// Given an fl_browser, return the contents of the currently
-// highlighted line.
-// If nothing is selected, return an empty string
+// Given an fl_browser, return the contents of line
 string const getStringFromBrowser(FL_OBJECT * ob, int line)
 {
 	if (!ob || ob->objclass != FL_BROWSER || 
@@ -102,6 +100,26 @@ string const getStringFromBrowser(FL_OBJECT * ob, int line)
 	char const * tmp = fl_get_browser_line(ob, line);
 	return (tmp) ? tmp : string();
 }
+
+// Given an fl_browser, return the contents of the currently
+// highlighted line.
+// If nothing is selected, return an empty string
+string const getSelectedStringFromBrowser(FL_OBJECT * ob)
+{
+	if (!ob || ob->objclass != FL_BROWSER)
+		return string();
+
+	int const line = fl_get_browser(ob);
+	if (line < 1 || line > fl_get_browser_maxline(ob))
+		return string();
+
+	if (!fl_isselected_browser_line(ob, line))
+		return string();
+
+	char const * tmp = fl_get_browser_line(ob, line);
+	return (tmp) ? tmp : string();
+}
+
 
 // Given an fl_browser, create a vector of its entries
 vector<string> const getVectorFromBrowser(FL_OBJECT * ob)

@@ -76,6 +76,8 @@ private:
 	void stored_set(string const &);
 	/// set the minibuffer content if str non-empty 
 	void set_complete_input(string const &);
+	/// append c to the current contents
+	void append_char(char c);
 	/// set the minibuffer content
 	void set_input(string const &);
 	///

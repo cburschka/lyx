@@ -9,22 +9,27 @@
 #include <config.h>
 
 #include "DropDown.h"
+#include "xforms_helpers.h"
 
 #include <iostream>
  
-extern "C" void C_DropDownCompletedCB(FL_OBJECT * ob, long)
+namespace {
+	
+extern "C" void C_CompletedCB(FL_OBJECT * ob, long)
 {
-	DropDown * d = static_cast<DropDown*>(ob->form->u_vdata);
+	DropDown * d = static_cast<DropDown*>(ob->u_vdata);
 	d->completed();
 }
 
  
-extern "C" int C_DropDownPeekEventCB(FL_FORM * form, void *xev)
+extern "C" int C_PeekCB(FL_FORM * form, void *xev)
 {
 	DropDown * d = static_cast<DropDown*>(form->u_vdata);
 	return d->peek(static_cast<XEvent*>(xev));
 }
  
+} // namespace anon
+
  
 DropDown::DropDown(LyXView * lv, FL_OBJECT * ob)
 	: lv_(lv)
@@ -33,8 +38,9 @@ DropDown::DropDown(LyXView * lv, FL_OBJECT * ob)
 	fl_add_box(FL_UP_BOX, 0, 0, ob->w, 100, "");
 	browser_ = fl_add_browser(FL_SELECT_BROWSER, 0, 0, ob->w, 100, "");
 	form_->u_vdata = this;
-	fl_set_browser_dblclick_callback(browser_, C_DropDownCompletedCB, 0);
-	fl_register_raw_callback(form_, KeyPressMask|ButtonPressMask, C_DropDownPeekEventCB);
+        browser_->u_vdata = this;
+	fl_set_object_callback(browser_, C_CompletedCB, 0);
+	fl_register_raw_callback(form_, KeyPressMask|ButtonPressMask, C_PeekCB);
 	fl_end_form();
 }
 
@@ -49,12 +55,16 @@ DropDown::~DropDown()
 
 void DropDown::select(std::vector<string> const & choices, int x, int y, int w)
 {
-	fl_set_form_geometry(form_, x, y, w, 100);
+	if (choices.empty())
+		return;
+
+	fl_set_form_geometry(form_, x, y-100, w, 100);
 	fl_clear_browser(browser_);
 	for (std::vector<string>::const_iterator cit = choices.begin();
 		cit != choices.end(); ++cit) {
 		fl_add_browser_line(browser_, cit->c_str());
 	}
+	fl_select_browser_line(browser_, 1);
 	fl_show_form(form_, FL_PLACE_POSITION, FL_NOBORDER, "");
 	XGrabPointer(fl_get_display(), form_->window, false,
 		     ButtonPressMask | ButtonReleaseMask | PointerMotionMask,
@@ -118,7 +128,7 @@ int DropDown::peek(XEvent * xev)
 				completed(); 
 				return 1;
 			case XK_Escape:
-				fl_select_browser_line(browser_, 0);
+				fl_deselect_browser(browser_);
 				completed();
 				return 1;
 			default:
@@ -126,9 +136,13 @@ int DropDown::peek(XEvent * xev)
 				// convince the event to fall back to the
 				// minibuffer, I'm glad to hear it.
 				// fl_XPutBackEvent() doesn't work. 
-				fl_select_browser_line(browser_, 0);
-				completed();
-				return 1;
+
+				// This is a bit less elegant perhaps, but works
+				// well enough. Angus 11 Jan 2002
+				if (s_r[0] && isprint(s_r[0])) {
+					key_pressed(s_r[0]);
+					return 1;
+				}
 		}
 	}
 	return 0; 
@@ -138,13 +152,14 @@ int DropDown::peek(XEvent * xev)
 void DropDown::completed()
 {
 	XUngrabPointer(fl_get_display(), CurrentTime);
-	string selection;
-	int i = fl_get_browser(browser_);
-	if (i < 1)
-		selection = "";
-	else
-		selection = fl_get_browser_line(browser_, i); 
 	fl_hide_form(form_);
+	result.emit(getSelectedStringFromBrowser(browser_));
+}
 
-	result.emit(selection);
+
+void DropDown::key_pressed(char c)
+{
+	XUngrabPointer(fl_get_display(), CurrentTime);
+	fl_hide_form(form_);
+	keypress.emit(c);
 }

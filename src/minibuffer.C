@@ -71,6 +71,7 @@ void MiniBuffer::dd_init()
 {
 	dropdown_ = new DropDown(owner_, the_buffer);
 	dropdown_->result.connect(slot(this, &MiniBuffer::set_complete_input));
+	dropdown_->keypress.connect(slot(this, &MiniBuffer::append_char));
 }
 
 
@@ -183,8 +184,12 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				fl_get_wingeometry(fl_get_real_object_window(the_buffer),
 					&x, &y, &w, &h);
  
-				// asynchronous completion 
-				dropdown_->select(comp, x, y + h, w);
+				// asynchronous completion
+				int const air = the_buffer->x;
+				x += air;
+				y += h - (the_buffer->h + air);
+				w = the_buffer->w;
+				dropdown_->select(comp, x, y, w);
 			}
 			return 1; 
 		}
@@ -391,6 +396,20 @@ void MiniBuffer::set_complete_input(string const & str)
 		// an argument immediately
 		set_input(str + " ");
 	}
+}
+
+ 
+void MiniBuffer::append_char(char c)
+{
+	if (!c || !isprint(c))
+		return;
+
+	char const * tmp = fl_get_input(the_buffer);
+	string str = tmp ? tmp : "";
+
+	str += c;
+
+	fl_set_input(the_buffer, str.c_str());
 }
 
  

@@ -1,3 +1,11 @@
+2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* minibuffer.[Ch] (append_char): new method to recieve input from the
+	drop-down completion browser. If a key was pressed, then recieve this
+	char and append it to the existing string.
+	(peek_event): modify the positioning data passed to the completion
+	browser so that it can be placed above the minibuffer rather than below.
+
 2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* LyXAction.C (init): alloe error-next for readonly documents.
