@@ -112,9 +112,7 @@ void QTabularDialog::specialAlignment_changed()
 void QTabularDialog::width_changed()
 {
 	form_->changed();
-	string const width =
-		LyXLength(widthED->text().toDouble(),
-			widthUnit->currentLengthItem()).asString();
+	string const width = widgetsToLength(widthED, widthUnit);
 	form_->controller().setWidth(width);
 }
 
