@@ -957,8 +957,10 @@ void mathDispatch(FuncRequest const & cmd)
 			else {
 				string s = cmd.argument;
 				string const s1 = token(s, ' ', 1);
-				int const na = s1.empty() ? 0 : atoi(s1);
-				openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
+				int const nargs = s1.empty() ? 0 : atoi(s1);
+				string const s2 = token(s, ' ', 2);
+				string const type = s2.empty() ? "newcommand" : s2;
+				openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
 			}
 			break;
 

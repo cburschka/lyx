@@ -7,13 +7,13 @@
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: MathNestInset(2), numargs_(0), name_()
+	: MathNestInset(2), numargs_(0), name_(), type_("newcommand")
 {}
 
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs,
-		MathArray const & ar1, MathArray const & ar2)
-	: MathNestInset(2), numargs_(numargs), name_(nm)
+		string const & type, MathArray const & ar1, MathArray const & ar2)
+	: MathNestInset(2), numargs_(numargs), name_(nm), type_(type)
 {
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
@@ -86,21 +86,26 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-
 void MathMacroTemplate::write(WriteStream & os) const
 {
-	if (os.latex()) {
-		os << "\n\\newcommand{\\" << name_.c_str() << '}';
-		if (numargs_ > 0)
-			os << '[' << numargs_ << ']';
-		os << '{' << cell(0) << "}\n";
+	if (type_ == "def") {
+		os << "\n\\def\\" << name_.c_str();
+		for (int i = 1; i <= numargs_; ++i) 
+			os << '#' << i;
 	} else {
-		// writing .lyx
-		os << "\n\\newcommand{\\" << name_.c_str() << '}';
+		// newcommand or renewcommand
+		os << "\n\\" << type_.c_str() << "{\\" << name_.c_str() << '}';
 		if (numargs_ > 0)
 			os << '[' << numargs_ << ']';
-		os << '{' << cell(0) << '}';
-		// write special .tex export only if necessary
+	}
+
+	os << '{' << cell(0) << "}";
+
+	if (os.latex()) {
+		// writing .tex. done.
+		os << "\n";
+	} else {
+		// writing .lyx, write special .tex export only if necessary
 		if (!cell(1).empty())
 			os << "\n{" << cell(1) << '}';
 	}

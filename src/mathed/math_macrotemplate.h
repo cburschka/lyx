@@ -20,7 +20,7 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(string const & name, int nargs,
+	MathMacroTemplate(string const & name, int nargs, string const & type,
 		MathArray const & = MathArray(), MathArray const & = MathArray());
 	///
 	explicit MathMacroTemplate(std::istream & is);
@@ -47,6 +47,8 @@ private:
 	int numargs_;
 	///
 	string name_;
+	/// newcommand or renewcommand or def
+	string type_;
 };
 
 #endif

@@ -50,10 +50,11 @@ InsetFormulaMacro::InsetFormulaMacro()
 }
 
 
-InsetFormulaMacro::InsetFormulaMacro(string const & name, int nargs)
+InsetFormulaMacro::InsetFormulaMacro
+	(string const & name, int nargs, string const & type)
 {
 	setInsetName(name);
-	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs)));
+	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs, type)));
 }
 
 

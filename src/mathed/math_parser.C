@@ -792,7 +792,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				cell->back().nucleus()->lock(true);
 		}
 
-		else if (t.cs() == "def" || t.cs() == "newcommand") {
+		else if (t.cs() == "def" ||
+			t.cs() == "newcommand" ||
+			t.cs() == "renewcommand")
+		{
+			string const type = t.cs();
 			string name;
 			int nargs = 0;
 			if (t.cs() == "def") {
@@ -808,7 +812,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				nargs /= 2;
 				//lyxerr << "read \\def parameter list '" << pars << "'\n";
 
-			} else { // t.cs() == "newcommand"
+			} else { // t.cs() == "newcommand" || t.cs() == "renewcommand"
 
 				if (getToken().cat() != catBegin) {
 					error("'{' in \\newcommand expected (1) \n");
@@ -845,7 +849,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			if (nextToken().cat() == catBegin)
 				parse(ar2, FLAG_ITEM, MathInset::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, ar1, ar2)));
+			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, type,
+				ar1, ar2)));
 		}
 
 		else if (t.cs() == "(") {

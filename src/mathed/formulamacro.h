@@ -29,7 +29,7 @@ public:
 	///
 	InsetFormulaMacro();
 	/// construct a macro hull from its name and the number of arguments
-	explicit InsetFormulaMacro(string const & name, int nargs);
+	explicit InsetFormulaMacro(string const & name, int nargs, string const & t);
 	/// constructs a mocro from its LaTeX definition
 	explicit InsetFormulaMacro(string const & s);
 	///
