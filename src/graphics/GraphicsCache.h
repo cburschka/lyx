@@ -21,10 +21,10 @@
 #pragma interface
 #endif
 
+#include "LString.h"
 #include "GraphicsTypes.h"
 #include <map>
 #include <vector>
-#include "LString.h"
 #include <boost/utility.hpp>
 
 class InsetGraphics;

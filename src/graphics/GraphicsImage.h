@@ -22,8 +22,8 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
-#include "GraphicsTypes.h"
 #include "LString.h"
+#include "GraphicsTypes.h"
 
 #include <boost/shared_ptr.hpp>
 

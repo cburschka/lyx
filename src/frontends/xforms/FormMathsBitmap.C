@@ -9,17 +9,12 @@
  */
 
 #include <config.h>
-#include <algorithm>
-#include <iomanip>
-
-#include XPM_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "FormMathsBitmap.h"
-
 #include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "bmtable.h"
@@ -27,6 +22,11 @@
 #include "xforms_helpers.h"
 #include "gettext.h"
 #include "support/LAssert.h"
+
+#include XPM_H_LOCATION
+
+#include <algorithm>
+#include <iomanip>
 
 using std::vector;
 using std::endl;

@@ -30,6 +30,7 @@ src/frontends/controllers/ControlThesaurus.C
 src/frontends/controllers/ControlVCLog.C
 src/frontends/controllers/frnt_lang.C
 src/frontends/controllers/helper_funcs.C
+src/frontends/LyXView.C
 src/frontends/qt2/Alert_pimpl.C
 src/frontends/qt2/FileDialog.C
 src/frontends/qt2/lengthcombo.C
@@ -189,7 +190,6 @@ src/lyx_main.C
 src/lyxrc.C
 src/lyxtextclasslist.C
 src/lyxvc.C
-src/LyXView.C
 src/mathed/formulabase.C
 src/mathed/formula.C
 src/mathed/formulamacro.C

@@ -19,8 +19,8 @@
 #pragma interface
 #endif
 
-#include "graphics/GraphicsTypes.h"
 #include "insets/inset.h"
+#include "graphics/GraphicsTypes.h"
 #include "insets/insetgraphicsParams.h"
 // We need a signal here to hide an active dialog when we are deleted.
 #include "sigc++/signal_system.h"

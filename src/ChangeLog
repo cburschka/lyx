@@ -3,6 +3,8 @@
 	* undo_funcs.C (textHandleUndo): fix the cursor selection after
 	setting the undo_cursor.
 
+	* ParagraphParameters.h: include local includes first.
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C:

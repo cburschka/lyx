@@ -7,8 +7,8 @@
 #pragma interface
 #endif
 
-#include "ShareContainer.h"
 #include "LString.h"
+#include "ShareContainer.h"
 #include "layout.h"
 
 // Not yet... lyx 1.3.x or so

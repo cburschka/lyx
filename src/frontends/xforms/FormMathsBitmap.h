@@ -12,15 +12,15 @@
 #ifndef FORM_MATHSBITMAP_H
 #define FORM_MATHSBITMAP_H
 
+#include "LString.h"
+#include "FormMathsPanel.h"
+
 #include <vector>
 #include "support/smart_ptr.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
-
-#include "LString.h"
-#include "FormMathsPanel.h"
 
 /**
  * This class provides an XForms implementation of a maths bitmap form.
