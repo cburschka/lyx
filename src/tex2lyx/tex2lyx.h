@@ -2,6 +2,7 @@
 #define TEX2LYX_H
 
 #include "texparser.h"
+#include "lyxtextclass.h"
 
 #include <iosfwd>
 #include <string>
@@ -11,8 +12,11 @@ class LyXTextClass;
 
 LyXTextClass const parse_preamble(Parser & p, std::ostream & os);
 
-void parse_text(Parser & p, std::ostream & os, unsigned flags,
-		bool outer, LyXTextClass const & textclass);
+void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
+		LyXTextClass const & textclass,
+		LyXLayout_ptr layout_ptr = LyXLayout_ptr());
+
+
 
 void parse_table(Parser & p, std::ostream & os, unsigned flags);
 
@@ -23,7 +27,8 @@ void handle_tabular(Parser & p, std::ostream & os,
 
 // Helper
 std::string parse_text(Parser & p, unsigned flags, const bool outer,
-		       LyXTextClass const & textclass);
+		       LyXTextClass const & textclass, 
+		       LyXLayout_ptr layout_ptr = LyXLayout_ptr());
 
 void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");

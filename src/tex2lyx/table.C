@@ -26,6 +26,7 @@ using std::map;
 
 #include "mathed/math_gridinfo.h"
 
+extern bool need_layout;
 
 // filled in preamble.C
 std::map<char, int> special_columns;
@@ -418,7 +419,9 @@ void handle_tabular(Parser & p, ostream & os,
 				cellinfo[row][col].leftline = colinfo[col].leftline;
 				cellinfo[row][col].rightline = colinfo[col].rightline;
 				cellinfo[row][col].align = colinfo[col].align;
+				need_layout = true;
 				cellinfo[row][col].content = parse_text(p, FLAG_END, false, textclass);
+				need_layout = false;
 			}
 		}
 
@@ -489,8 +492,7 @@ void handle_tabular(Parser & p, ostream & os,
 			//	cerr << " bottomline=\"true\"";
 			os << " usebox=\"none\""
 			   << ">"
-			   << "\n\\begin_inset Text"
-			   << "\n\n\\layout Standard\n\n"
+			   << "\n\\begin_inset Text\n"
 			   << cell.content
 			   << "\n\\end_inset \n"
 			   << "</cell>\n";

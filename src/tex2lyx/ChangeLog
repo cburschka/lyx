@@ -1,6 +1,10 @@
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* text.C:
+	* tex2lyx.C (clean_layouts): remove
+	
+	* text.C (output_command_layout): renamed from output_layout
+	(parse_environment): new method containing a part of parse_text
+
 	* tex2lyx.C:
 	* preamble.C:
 	* table.C: \begin_layout -> \layout. We are not quite ready for

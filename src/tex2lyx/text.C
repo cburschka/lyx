@@ -28,6 +28,11 @@ using std::vector;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 
+// Do we need to output some \layout command before the next characters?
+bool need_layout = true;
+// We may need to add something after this \layout command
+string extra_stuff;
+
 namespace {
 
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
@@ -46,7 +51,6 @@ char const * known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 
 char const * known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normal", "large", "larger", "largest",  "huge", "giant", 0};
-
 
 string cap(string s)
 {
@@ -71,6 +75,18 @@ map<string, string> split_map(string const & s)
 	return res;
 }
 
+
+void check_layout(ostream & os, LyXLayout_ptr layout)
+{
+	if (need_layout) {
+		os << "\n\\layout " << layout->name() << "\n\n";
+		need_layout=false;
+		if (!extra_stuff.empty()) {
+			os << extra_stuff;
+			extra_stuff.erase();
+		}
+	}
+}
 
 void begin_inset(ostream & os, string const & name)
 {
@@ -111,27 +127,6 @@ void handle_ert(ostream & os, string const & s)
 }
 
 
-void handle_par(ostream & os)
-{
-	if (active_environments.empty())
-		return;
-	os << "\n\\layout ";
-	string s = active_environment();
-	if (s == "document" || s == "table")
-		os << "Standard\n\n";
-	else if (s == "center")
-		os << "Standard\n\n\\align center\n";
-	else if (s == "lyxcode")
-		os << "LyX-Code\n\n";
-	else if (s == "lyxlist")
-		os << "List\n\n";
-	else if (s == "thebibliography")
-		os << "Bibliography\n\n";
-	else
-		os << cap(s) << "\n\n";
-}
-
-
 struct isLayout {
 	isLayout(string const name) : name_(name) {}
 	bool operator()(LyXLayout_ptr const & ptr) {
@@ -152,33 +147,102 @@ LyXLayout_ptr findLayout(LyXTextClass const & textclass,
 }
 
 
-void output_layout(ostream & os, LyXLayout_ptr const & layout_ptr,
+void output_command_layout(ostream & os, LyXLayout_ptr const & layout,
 		  Parser & p, bool outer, LyXTextClass const & textclass)
 {
-	string name = layout_ptr->name();
-	os << "\n\n\\layout " << name << "\n\n";
-	if (layout_ptr->optionalargs > 0) {
+	need_layout = true;
+	check_layout(os, layout);
+	if (layout->optionalargs > 0) {
 		string s; 
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n";
+			need_layout = true;
 			parse_text(p, os, FLAG_BRACK_LAST, outer, textclass);
 			end_inset(os);
 		}
 	}
-	parse_text(p, os, FLAG_ITEM, outer, textclass);
-	os << "\n\n\\layout Standard\n\n";
+	parse_text(p, os, FLAG_ITEM, outer, textclass, layout);
+	need_layout = true;
 }
+
 
 } // anonymous namespace
 
 
-void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
-		LyXTextClass const & textclass)
+void parse_environment(Parser & p, ostream & os, bool outer,
+		       LyXTextClass const & textclass, LyXLayout_ptr layout)
 {
+	LyXLayout_ptr newlayout;
+	string const name = p.getArg('{', '}');
+	const bool is_starred = suffixIs(name, '*');
+	string const unstarred_name = rtrim(name, "*");
+	active_environments.push_back(name);
+	if (is_math_env(name)) {
+		check_layout(os, layout);
+		begin_inset(os, "Formula ");
+		os << "\\begin{" << name << "}";
+		parse_math(p, os, FLAG_END, MATH_MODE);
+		os << "\\end{" << name << "}";
+		end_inset(os);
+	} else if (name == "tabular") {
+		check_layout(os, layout);
+		begin_inset(os, "Tabular ");
+		handle_tabular(p, os, textclass);
+		end_inset(os);
+	} else if (textclass.floats().typeExist(unstarred_name)) {
+		check_layout(os, layout);
+		begin_inset(os, "Float " + unstarred_name + "\n");
+		if (p.next_token().asInput() == "[") {
+			os << "placement " << p.getArg('[', ']') << '\n';
+		}
+		os << "wide " << tostr(is_starred)
+		   << "\ncollapsed false\n";
+		need_layout = true;
+		parse_text(p, os, FLAG_END, outer, textclass);
+		end_inset(os);
+	} else if (name == "center") {
+		parse_text(p, os, FLAG_END, outer, textclass);
+		// The single '=' is meant here.
+	} else if ((newlayout = findLayout(textclass, name)).get() &&
+		   newlayout->isEnvironment()) {
+		size_t const n = active_environments.size();
+		string const s = active_environments[n - 2];
+		bool const deeper = s == "enumerate" || s == "itemize"
+			|| s == "lyxlist";
+		if (deeper)
+			os << "\n\\begin_deeper";
+		switch (newlayout->latextype) {
+		case  LATEX_LIST_ENVIRONMENT:
+			extra_stuff = "\\labelwidthstring "
+				+ p.verbatim_item() + '\n';
+			break;
+		case  LATEX_BIB_ENVIRONMENT:
+			p.verbatim_item(); // swallow next arg
+			break;
+		default:
+			break;
+		}
+		need_layout = true;
+		parse_text(p, os, FLAG_END, outer, textclass, newlayout);
+		if (deeper)
+			os << "\n\\end_deeper\n";
+		need_layout = true;
+	} else {
+		cerr << "why are we here?" << endl;
+		parse_text(p, os, FLAG_END, outer, textclass);
+	}
+}
+
+
+void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
+		LyXTextClass const & textclass, LyXLayout_ptr layout)
+{
+	if (!layout.get())
+		layout = textclass.defaultLayout();
+	LyXLayout_ptr newlayout;
 	while (p.good()) {
-		LyXLayout_ptr layout_ptr;
 		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
@@ -209,6 +273,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//
 		if (t.cat() == catMath) {
 			// we are inside some text mode thingy, so opening new math is allowed
+			check_layout(os, layout);
 			begin_inset(os, "Formula ");
 			Token const & n = p.get_token();
 			if (n.cat() == catMath && outer) {
@@ -236,6 +301,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// quote...)
 		else if (t.asInput() == "`" 
 			 && p.next_token().asInput() == "`") {
+			check_layout(os, layout);
 			begin_inset(os, "Quotes ");
 			os << "eld";
 			end_inset(os);
@@ -244,6 +310,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}	
 		else if (t.asInput() == "'" 
 			 && p.next_token().asInput() == "'") {
+			check_layout(os, layout);
 			begin_inset(os, "Quotes ");
 			os << "erd";
 			end_inset(os);
@@ -256,19 +323,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			       t.cat() == catSpace ||
 			       t.cat() == catOther ||
 			       t.cat() == catAlign ||
-			       t.cat() == catParameter)
+			       t.cat() == catParameter) {
+			check_layout(os, layout);
 			os << t.character();
+		}
 
 		else if (t.cat() == catNewline) {
 			if (p.next_token().cat() == catNewline) {
 				p.get_token();
-				handle_par(os);
+				need_layout = true;
 			} else {
 				os << " "; // note the space
 			}
 		}
 
 		else if (t.cat() == catActive) {
+			check_layout(os, layout);
 			if (t.character() == '~') {
 				if (active_environment() == "lyxcode")
 					os << ' ';
@@ -279,9 +349,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cat() == catBegin) {
+// FIXME??? 
 			// special handling of size changes
 			bool const is_size = is_known(p.next_token().cs(), known_sizes);
-			string const s = parse_text(p, FLAG_BRACE_LAST, outer, textclass);
+			string const s = parse_text(p, FLAG_BRACE_LAST, outer, textclass, layout);
 			if (s.empty() && p.next_token().character() == '`')
 				; // ignore it in  {}``
 			else if (is_size || s == "[" || s == "]" || s == "*")
@@ -300,9 +371,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, "}");
 		}
 
-		else if (t.cat() == catOther)
-			os << string(1, t.character());
-
 		else if (t.cat() == catComment)
 			handle_comment(p);
 
@@ -311,6 +379,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//
 
 		else if (t.cs() == "(") {
+			check_layout(os, layout);
 			begin_inset(os, "Formula");
 			os << " \\(";
 			parse_math(p, os, FLAG_SIMPLE2, MATH_MODE);
@@ -319,6 +388,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "[") {
+			check_layout(os, layout);
 			begin_inset(os, "Formula");
 			os << " \\[";
 			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
@@ -326,68 +396,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "begin") {
-			string const name = p.getArg('{', '}');
-			const bool is_starred = suffixIs(name, '*');
-			string const unstarred_name = rtrim(name, "*");
-			active_environments.push_back(name);
-			if (is_math_env(name)) {
-				begin_inset(os, "Formula ");
-				os << "\\begin{" << name << "}";
-				parse_math(p, os, FLAG_END, MATH_MODE);
-				os << "\\end{" << name << "}";
-				end_inset(os);
-			} else if (name == "tabular") {
-				begin_inset(os, "Tabular ");
-				handle_tabular(p, os, textclass);
-				end_inset(os);
-			} else if (textclass.floats().typeExist(unstarred_name)) {
-				begin_inset(os, "Float " + unstarred_name + "\n");
-				if (p.next_token().asInput() == "[") {
-					os << "placement " 
-					   << p.getArg('[', ']') << '\n';
-				}
-				os << "wide " << tostr(is_starred)
-				   << "\ncollapsed false\n\n"
-				   << "\\layout Standard\n";
-				parse_text(p, os, FLAG_END, outer,
-					   textclass);
-				end_inset(os);
-			} else if (name == "center") {
-				handle_par(os);
-				parse_text(p, os, FLAG_END, outer,
-					   textclass);
-				// The single '=' is meant here.
-			} else if ((layout_ptr = findLayout(textclass, t.cs())).get() &&
-				   layout_ptr->isEnvironment()) {
- 				size_t const n = active_environments.size();
- 				string const s = active_environments[n - 2];
- 				bool const deeper = s == "enumerate" || s == "itemize"
- 					|| s == "lyxlist";
- 				if (deeper)
- 					os << "\n\\begin_deeper";
-				os << "\n\\layout " << layout_ptr->name() 
-				   << "\n\n";
-				switch (layout_ptr->latextype) {
-				case  LATEX_LIST_ENVIRONMENT:
-					os << "\\labelwidthstring "
-					   << p.verbatim_item() << '\n';
-					break;
-				case  LATEX_BIB_ENVIRONMENT:
-					p.verbatim_item(); // swallow next arg
-					break;
-				default:
-					break;
-				}
-				parse_text(p, os, FLAG_END, outer, textclass);
- 				if (deeper)
- 					os << "\n\\end_deeper\n";
-				handle_par(os);
-			} else {
-				handle_par(os);
-				parse_text(p, os, FLAG_END, outer, textclass);
-			}
-		}
+		else if (t.cs() == "begin")
+			parse_environment(p, os, outer, textclass, layout);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -397,7 +407,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					cerr << "\\end{" + name + "} does not match \\begin{"
 						+ active_environment() + "}\n";
 				active_environments.pop_back();
-				handle_par(os);
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -409,9 +418,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string s; 
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				s = parse_text(p, FLAG_BRACK_LAST, outer, textclass);
+				s = parse_text(p, FLAG_BRACK_LAST, outer, textclass, layout);
 			}
-			handle_par(os);
+			need_layout = true;
+			check_layout(os, layout);
 			if (s.size())
 				os << s << ' ';
 		}
@@ -425,30 +435,33 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "par") {
 			p.skip_spaces();
-			if (p.next_token().cs() != "\\begin")
-				handle_par(os);
+			need_layout = true;
+//			if (p.next_token().cs() != "\\begin")
+//				handle_par(os);
 			//cerr << "next token: '" << p.next_token().cs() << "'\n";
 		}
 
 		// Must attempt to parse "Section*" before "Section".
 		else if ((p.next_token().asInput() == "*") &&
 			 // The single '=' is meant here.
-			 (layout_ptr = findLayout(textclass,
-						  t.cs() + '*')).get() &&
-			 layout_ptr->isCommand()) {
+			 (newlayout = findLayout(textclass,
+						 t.cs() + '*')).get() &&
+			 newlayout->isCommand()) {
 			p.get_token();
-			output_layout(os, layout_ptr, p, outer, textclass);
+			output_command_layout(os, newlayout, p, outer, textclass);
 		}
 
 		// The single '=' is meant here.
-		else if ((layout_ptr = findLayout(textclass, t.cs())).get() &&
-			 layout_ptr->isCommand()) {
-			output_layout(os, layout_ptr, p, outer, textclass);
+		else if ((newlayout = findLayout(textclass, t.cs())).get() &&
+			 newlayout->isCommand()) {
+			output_command_layout(os, newlayout, p, outer, textclass);
 		}
 
 		else if (t.cs() == "includegraphics") {
 			map<string, string> opts = split_map(p.getArg('[', ']'));
 			string name = p.verbatim_item();
+			
+			check_layout(os, layout);
 			begin_inset(os, "Graphics ");
 			os << "\n\tfilename " << name << '\n';
 			if (opts.find("width") != opts.end())
@@ -459,13 +472,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 		
 		else if (t.cs() == "footnote") {
+			check_layout(os, layout);
 			begin_inset(os, "Foot\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n";
+			need_layout = true;
 			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
 
 		else if (t.cs() == "ensuremath") {
+			check_layout(os, layout);
 			string s = parse_text(p, FLAG_ITEM, false, textclass);
 			if (s == "±" || s == "³" || s == "²" || s == "µ")
 				os << s;
@@ -474,13 +490,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "marginpar") {
+			check_layout(os, layout);
 			begin_inset(os, "Marginal\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n";
+			need_layout = true;
 			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
 
 		else if (t.cs() == "hfill") {
+			check_layout(os, layout);
 			os << "\n\\hfill\n";
 			skip_braces(p);
 		}
@@ -489,6 +508,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p); // swallow this
 
 		else if (t.cs() == "tableofcontents") {
+			check_layout(os, layout);
 			begin_inset(os, "LatexCommand ");
 			os << '\\' << t.cs() << "{}\n";
 			end_inset(os);
@@ -497,60 +517,70 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 
 		else if (t.cs() == "textrm") {
+			check_layout(os, layout);
 			os << "\n\\family roman \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "textsf") {
+			check_layout(os, layout);
 			os << "\n\\family sans \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "texttt") {
+			check_layout(os, layout);
 			os << "\n\\family typewriter \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "textit") {
+			check_layout(os, layout);
 			os << "\n\\shape italic \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\shape default \n";
 		}
 
 		else if (t.cs() == "textsc") {
+			check_layout(os, layout);
 			os << "\n\\noun on \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\noun default \n";
 		}
 
 		else if (t.cs() == "textbf") {
+			check_layout(os, layout);
 			os << "\n\\series bold \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\series default \n";
 		}
 
 		else if (t.cs() == "underbar") {
+			check_layout(os, layout);
 			os << "\n\\bar under \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\bar default \n";
 		}
 
 		else if (t.cs() == "emph" || t.cs() == "noun") {
+			check_layout(os, layout);
 			os << "\n\\" << t.cs() << " on \n";
 			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\" << t.cs() << " default \n";
 		}
 
 		else if (t.cs() == "bibitem") {
-			os << "\n\\layout Bibliography\n\\bibitem ";
+			check_layout(os, layout);
+			os << "\\bibitem ";
 			os << p.getOpt();
 			os << '{' << p.verbatim_item() << '}' << "\n";
 		}
 
 		else if (is_known(t.cs(), known_latex_commands)) {
+			check_layout(os, layout);
 			begin_inset(os, "LatexCommand ");
 			os << '\\' << t.cs();
 			os << p.getOpt();
@@ -568,65 +598,80 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_sizes)) {
-		  char const ** where = is_known(t.cs(), known_sizes);
+			char const ** where = is_known(t.cs(), known_sizes);
+			check_layout(os, layout);
 			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
 		}
 
 		else if (t.cs() == "LyX" || t.cs() == "TeX" 
 			 || t.cs() == "LaTeX") {
+			check_layout(os, layout);
 			os << t.cs();
 			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "LaTeXe") {
+			check_layout(os, layout);
 			os << "LaTeX2e";
 			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "ldots") {
+			check_layout(os, layout);
 			skip_braces(p);
 			os << "\\SpecialChar \\ldots{}\n";
 		}
 
 		else if (t.cs() == "lyxarrow") {
+			check_layout(os, layout);
 			os << "\\SpecialChar \\menuseparator\n";
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "ldots") {
+			check_layout(os, layout);
 			os << "\\SpecialChar \\ldots{}\n";
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "@" && p.next_token().asInput() == ".") {
+			check_layout(os, layout);
 			os << "\\SpecialChar \\@.\n";
 			p.get_token();
 		}
 
-		else if (t.cs() == "-")
+		else if (t.cs() == "-") {
+			check_layout(os, layout);
 			os << "\\SpecialChar \\-\n";
+		}
 
 		else if (t.cs() == "textasciitilde") {
+			check_layout(os, layout);
 			os << '~';
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "textasciicircum") {
+			check_layout(os, layout);
 			os << '^';
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "textbackslash") {
+			check_layout(os, layout);
 			os << "\n\\backslash \n";
 			skip_braces(p);
 		}
 
 		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#" 
 			    || t.cs() == "$" || t.cs() == "{" || t.cs() == "}" 
-			    || t.cs() == "%")
+			    || t.cs() == "%") {
+			check_layout(os, layout);
 			os << t.cs();
+		}
 
 		else if (t.cs() == "char") {
+			check_layout(os, layout);
 			if (p.next_token().character() == '`') {
 				p.get_token();
 				if (p.next_token().cs() == "\"") {
@@ -642,6 +687,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "\"") {
+			check_layout(os, layout);
 			string const name = p.verbatim_item();
 			     if (name == "a") os << 'ä';
 			else if (name == "o") os << 'ö';
@@ -655,23 +701,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "=" || t.cs() == "H" || t.cs() == "c"
 		      || t.cs() == "^" || t.cs() == "'" || t.cs() == "~") {
 			// we need the trim as the LyX parser chokes on such spaces
+			check_layout(os, layout);
 			os << "\n\\i \\" << t.cs() << "{"
 			   << trim(parse_text(p, FLAG_ITEM, outer, textclass), " ") << "}\n";
 		}
 
-		else if (t.cs() == "ss")
+		else if (t.cs() == "ss") {
+			check_layout(os, layout);
 			os << "ß";
+		}
 
-		else if (t.cs() == "i" || t.cs() == "j")
+		else if (t.cs() == "i" || t.cs() == "j") {
+			check_layout(os, layout);
 			os << "\\" << t.cs() << ' ';
+		}
 
-		else if (t.cs() == "\\")
+		else if (t.cs() == "\\") {
+			check_layout(os, layout);
 			os << "\n\\newline \n";
+		}
 	
-		else if (t.cs() == "input")
+		else if (t.cs() == "input") {
+			check_layout(os, layout);
 			handle_ert(os, "\\input{" + p.verbatim_item() + "}\n");
-
+		}
 		else if (t.cs() == "fancyhead") {
+			check_layout(os, layout);
 			ostringstream ss;
 			ss << "\\fancyhead";
 			ss << p.getOpt();
@@ -693,6 +748,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			cerr << "found ERT: " << s << endl;
 			handle_ert(os, s + ' ');
 			*/
+			check_layout(os, layout);
 			handle_ert(os, t.asInput() + ' ');
 		}
 
@@ -705,10 +761,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 
 string parse_text(Parser & p, unsigned flags, const bool outer,
-		  LyXTextClass const & textclass)
+		  LyXTextClass const & textclass,
+		  LyXLayout_ptr layout)
 {
 	ostringstream os;
-	parse_text(p, os, flags, outer, textclass);
+	parse_text(p, os, flags, outer, textclass, layout);
 	return os.str();
 }
 

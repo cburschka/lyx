@@ -38,7 +38,6 @@ DebugStream lyxerr;
 
 void LyX::emergencyCleanup() {}
 
-
 void handle_comment(Parser & p)
 {
 	string s;
@@ -114,34 +113,6 @@ string active_environment()
 }
 
 
-void clean_layouts(istream & is, ostream & os)
-{
-	string last;
-	string line;
-	bool eating = false;
-	while (getline(is, line)) {
-		string tline = trim(line, " ");
-		if (line.substr(0, 8) == "\\layout ") {
-			//cerr << "layout: " << line << "\n";
-			last = line;
-			eating = true;
-		} else if (eating && tline.empty()) {
-			//cerr << "eat empty line\n"; 
-		} else if (line.substr(0, 13) == "\\begin_deeper") {
-			os << line << "\n";
-		} else {
-			// ordinary line  
-			//cerr << "ordinary line\n"; 
-			if (eating) {
-				eating = false;
-				os << last << "\n\n";
-			}
-			os << line << "\n";
-		}
-	}
-}
-
-
 int main(int argc, char * argv[])
 {
 	if (argc <= 1) {
@@ -163,8 +134,7 @@ int main(int argc, char * argv[])
 	ss << "\n\\the_end\n";
 
 	ss.seekg(0);
-	clean_layouts(ss, cout);
-
+	cout << ss.str();
 	return 0;
 }
 
