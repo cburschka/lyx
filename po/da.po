@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
 "POT-Creation-Date: 2003-01-30 03:45+0100\n"
-"PO-Revision-Date: 2003-01-27 16:39+0100\n"
+"PO-Revision-Date: 2003-02-03 09:47+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1900,20 +1900,17 @@ msgid "Replace|^R"
 msgstr "Erstat|^E"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-#, fuzzy
 msgid "Keyword:"
-msgstr "Nøgleord"
+msgstr "Nøgleord:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-#, fuzzy
 msgid "Selection:|#S"
-msgstr "Valg:"
+msgstr "Valg:|#V"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
 msgid "Thesaurus entries:"
-msgstr "Begreber"
+msgstr "Begreber:"
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
 msgid "URL:|#U"
@@ -2531,8 +2528,7 @@ msgid "Set math font"
 msgstr "Angiv matematikskrift"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
-msgid "Insert fraction (\frac)"
+msgid "Insert fraction (\\frac)"
 msgstr "Indsæt brøk (\\frac)"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
@@ -3301,9 +3297,8 @@ msgid "Thesaurus"
 msgstr "Begrebsordbog"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-#, fuzzy
 msgid "&Keyword:"
-msgstr "&Nøgleord"
+msgstr "&Nøgleord:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
 msgid "Entry"
@@ -3314,9 +3309,8 @@ msgid "Select a related word"
 msgstr "Søg efter relateret ord"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
 msgid "&Selection:"
-msgstr "Valg:"
+msgstr "&Valg:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
@@ -8578,21 +8572,21 @@ msgstr ""
 
 #: src/frontends/controllers/ControlAboutlyx.C:69
 msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"This program is free software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version."
 msgstr ""
 "Dette program er fri software; du kan redistribuere det og/eller modificere "
-"det efter krav fastsat i \"GNU General Public License\" som den er udgivet "
-"af \"Free Software Foundation\"; enten version 2 af licensen, eller (hvis du "
+"det efter krav fastsat i \"GNU General Public License\" som den er udgivet af "
+"\"Free Software Foundation\"; enten version 2 af licensen, eller (hvis du "
 "ønsker det) en nyere version."
 
 #: src/frontends/controllers/ControlAboutlyx.C:75
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.\n"
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR "
+"A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
@@ -9615,8 +9609,7 @@ msgid ""
 "Pixel [%9$d] is used."
 msgstr ""
 "LyX: Kunne ikke reservere '%1$s' til %2$s med (r,g,b)=(%3$d,%4$d,%5$d).\n"
-"     Bruger nærmeste reserverede farve med (r,g,b)=(%6$d,%7$d,%8$d) "
-"istedet.\n"
+"     Bruger nærmeste reserverede farve med (r,g,b)=(%6$d,%7$d,%8$d) istedet.\n"
 "Piksel [%9$d] er brugt."
 
 #: src/frontends/xforms/ColorHandler.C:188
@@ -9691,8 +9684,8 @@ msgid ""
 "The database you want to cite from. Insert it without the default extension "
 "\".bib\". Use comma to separate databases."
 msgstr ""
-"Den database, du vil citere fra. Indsæt den uden dens standardendelse \".bib"
-"\". Flere databaser skal adskilles med kommaer."
+"Den database, du vil citere fra. Indsæt den uden dens standardendelse "
+"\".bib\". Flere databaser skal adskilles med kommaer."
 
 #: src/frontends/xforms/FormBibtex.C:76
 msgid "Browse directory for BibTeX stylefiles"
@@ -9703,8 +9696,8 @@ msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path."
 msgstr ""
-"BibTeX-stil, der skal bruges (kun én). Indsæt den uden dens standard-"
-"filendelse \".bst\" og uden sti."
+"BibTeX-stil, der skal bruges (kun én). Indsæt den uden dens "
+"standard-filendelse \".bst\" og uden sti."
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Select if the bibliography should appear in the Table of Contents"
@@ -9716,11 +9709,11 @@ msgstr "Vælg en BibTeX-stil fra listen."
 
 #: src/frontends/xforms/FormBibtex.C:92
 msgid ""
-"Updates your TeX system for a new bibstyle list. Only the styles which are "
-"in directories where TeX finds them are listed!"
+"Updates your TeX system for a new bibstyle list. Only the styles which are in "
+"directories where TeX finds them are listed!"
 msgstr ""
-"Opdaterer dit TeX-system med en ny bibstyle-liste. Kun de stile, der ligger "
-"i de kataloger hver TeX finder dem, bliver vist!"
+"Opdaterer dit TeX-system med en ny bibstyle-liste. Kun de stile, der ligger i "
+"de kataloger hver TeX finder dem, bliver vist!"
 
 #: src/frontends/xforms/FormBibtex.C:106
 msgid "Select Database"
@@ -9773,9 +9766,9 @@ msgid ""
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
 msgstr ""
-"Alle indgangene i den database, du har indlæst (via \"Indsæt-"
-">Lister&Indholdsfortegnelse->BibTex-reference\"). Flyt dem, du ønsker at "
-"citere med piletasterne til det venstre vindue."
+"Alle indgangene i den database, du har indlæst (via "
+"\"Indsæt->Lister&Indholdsfortegnelse->BibTex-reference\"). Flyt dem, du ønsker "
+"at citere med piletasterne til det venstre vindue."
 
 #: src/frontends/xforms/FormCitation.C:188
 msgid "Information about the selected entry"
@@ -9791,8 +9784,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:196
 msgid ""
-"Activate if you want to print all authors in a reference with more than "
-"three authors, and not \"<First Author> et al.\" (Natbib)."
+"Activate if you want to print all authors in a reference with more than three "
+"authors, and not \"<First Author> et al.\" (Natbib)."
 msgstr ""
 "Aktivér hvis du vil vise alle forfatterne i en reference med flere end tre "
 "forfattere fremfor \"<første forfatter> et al.\" (Natbib)."
@@ -9824,8 +9817,8 @@ msgstr "Gennemsøg din database (alle felter gennemsøges)."
 
 #: src/frontends/xforms/FormCitation.C:211
 msgid ""
-"Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
-"\", but not \"BibTeX\"."
+"Activate if you want to have case sensitive search: \"bibtex\" finds "
+"\"bibtex\", but not \"BibTeX\"."
 msgstr ""
 "Aktivér hvis du ønsker versalfølsom søgning: \"bibtex\" finder \"bibtex\", "
 "men ikke \"BibTeX\"."
@@ -9848,11 +9841,11 @@ msgstr " Lille | Medium | Stor | Længde "
 
 #: src/frontends/xforms/FormDocument.C:225
 msgid ""
-" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
-"| B4 | B5 "
+" Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
 msgstr ""
-" Standard | Egen definition | US letter | US legal | US executive | A3 | A4 "
-"| A5 | B3 | B4 | B5 "
+" Standard | Egen definition | US letter | US legal | US executive | A3 | A4 | "
+"A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:228
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
@@ -10078,9 +10071,9 @@ msgid ""
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
 msgstr ""
-"Læs billedkoordinater fra en ny fil. For (e)ps-filer indlæses "
-"billedgrænserne (bounding box), for andre indlæses billedstørelsen i "
-"piksler. Standardenheden er \"bp\", hvilket er PostScripts 'big point'."
+"Læs billedkoordinater fra en ny fil. For (e)ps-filer indlæses billedgrænserne "
+"(bounding box), for andre indlæses billedstørelsen i piksler. Standardenheden "
+"er \"bp\", hvilket er PostScripts 'big point'."
 
 #: src/frontends/xforms/FormGraphics.C:216
 msgid "Clip image to the bounding box values."
@@ -10092,8 +10085,8 @@ msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
 "negative value clockwise."
 msgstr ""
-"Indsæt rotationsvinklen i grader. Positive værdier roterer mod uret, "
-"negative med uret."
+"Indsæt rotationsvinklen i grader. Positive værdier roterer mod uret, negative "
+"med uret."
 
 #: src/frontends/xforms/FormGraphics.C:253
 msgid "Insert the point of origin for rotation."
@@ -10109,11 +10102,11 @@ msgstr "Indsæt valgfri underfigur-billedtekst."
 
 #: src/frontends/xforms/FormGraphics.C:259
 msgid ""
-"Add any additional LaTeX option, which is defined in the graphicx-package "
-"and not mentioned in the gui's tabfolders."
+"Add any additional LaTeX option, which is defined in the graphicx-package and "
+"not mentioned in the gui's tabfolders."
 msgstr ""
-"Tilføj yderligere LaTeX-tilvalg, som er defineret i pakken graphicx, men "
-"ikke er medtaget i brugerfladens faneblade."
+"Tilføj yderligere LaTeX-tilvalg, som er defineret i pakken graphicx, men ikke "
+"er medtaget i brugerfladens faneblade."
 
 #. add the different tabfolders
 #: src/frontends/xforms/FormGraphics.C:264
@@ -10215,8 +10208,8 @@ msgstr "Ugyldig længde!"
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 msgstr ""
-"Ingen|Standardafstand|Lille afstand|Medium afstand|Stor afstand|Lodr. udfyld|"
-"Længde"
+"Ingen|Standardafstand|Lille afstand|Medium afstand|Stor afstand|Lodr. "
+"udfyld|Længde"
 
 #: src/frontends/xforms/FormParagraph.C:136
 msgid "Default|Single|OneHalf|Double|Custom"
@@ -10335,8 +10328,8 @@ msgstr "Konvertér \"til\" dette format"
 #: src/frontends/xforms/FormPreferences.C:972
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file. $$s can be "
-"used as path to LyX's own collection of conversion scripts."
+"without its extension and $$o is the name of the output file. $$s can be used "
+"as path to LyX's own collection of conversion scripts."
 msgstr ""
 "Konverteringsprogrammet. $$i er inddata-filnavnet. $$b er filnavnet uden sin "
 "filendelse og $$o er navnet på resultat-filen. $$s kan bruges til at angive "
@@ -10352,8 +10345,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:982
 msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
+"Remove the current converter from the list of available converters. Note: you "
+"must then \"Apply\" the change."
 msgstr ""
 "Fjern det aktuelle konverteringsprogram fra listen over tilgængelige "
 "programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
@@ -10365,8 +10358,8 @@ msgstr "Tilføj"
 
 #: src/frontends/xforms/FormPreferences.C:987
 msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
+"Add the current converter to the list of available converters. Note: you must "
+"then \"Apply\" the change."
 msgstr ""
 "Tilføj det aktuelle konverteringsprogram til listen over tilgængelige "
 "programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
@@ -10392,7 +10385,8 @@ msgid "The format name as it will appear in the menus."
 msgstr "Formatnavnet som det vil vises i menuerne."
 
 #: src/frontends/xforms/FormPreferences.C:1244
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgid ""
+"The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 msgstr "Tastaturgenvejen. Brug et bogstav fra navnet. Versalfølsomt."
 
 #: src/frontends/xforms/FormPreferences.C:1248
@@ -10416,8 +10410,8 @@ msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
 msgstr ""
-"Tilføej det aktuelle format til listen over tilgængelige formater. Bemærk: "
-"du skal vælge \"Anvend\" for at gemme."
+"Tilføej det aktuelle format til listen over tilgængelige formater. Bemærk: du "
+"skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1262
 msgid ""
@@ -10428,7 +10422,8 @@ msgstr ""
 "at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1377
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgid ""
+"Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Kan ikke fjerne et format, der er tilknyttet et konverteringsprogram. Fjern "
 "konverteringsprogrammet fra listen først."
@@ -10620,8 +10615,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:52
 msgid ""
-"Run this command on the buffer exported to the chosen format. $$FName will "
-"be replaced by the name of this file."
+"Run this command on the buffer exported to the chosen format. $$FName will be "
+"replaced by the name of this file."
 msgstr ""
 "Kør denne kommando på dokumentet, når det er eksporteret til det valgte "
 "format. $$FName vil blive erstattet af navnet på denne fil."
@@ -10733,8 +10728,8 @@ msgstr "Dobbeltklik for at se filens indhold."
 #: src/frontends/xforms/FormTexinfo.C:66
 msgid ""
 "Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you "
-"install a new TeX class or style. You need write permissions for the TeX-"
-"dirs, often /var/lib/texmf and others."
+"install a new TeX class or style. You need write permissions for the "
+"TeX-dirs, often /var/lib/texmf and others."
 msgstr ""
 "Kører skriptet \"texhash\", der opbygger et nyt LaTeX-træ. Kræves hvis du "
 "installerer en ny TeX-klasse eller -stil. For at udføre det, skal du have "
@@ -11859,8 +11854,8 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefales for ikke-"
-"engelske sprog."
+"Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefales for "
+"ikke-engelske sprog."
 
 #: src/lyxrc.C:1836
 msgid ""
@@ -11913,8 +11908,8 @@ msgstr "Angiv papirets dimensioner."
 #: src/lyxrc.C:1880
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
-"Tilvalg, der videregives til udskriftsprogrammet for at skrive til en "
-"bestemt printer."
+"Tilvalg, der videregives til udskriftsprogrammet for at skrive til en bestemt "
+"printer."
 
 #: src/lyxrc.C:1884
 msgid ""
@@ -11941,8 +11936,8 @@ msgstr ""
 
 #: src/lyxrc.C:1900
 msgid ""
-"When set, this printer option automatically prints to a file and then calls "
-"a separate print spooling program on that file with the given name and "
+"When set, this printer option automatically prints to a file and then calls a "
+"separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 "Udskriv automatisk til en fil og udfør derefter et separat udskriftsprogram "
@@ -11953,16 +11948,16 @@ msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
-"Hvis du angiver et printernavn i udskriftdialogen, vil det følgende "
-"parameter blive foranstillet printernavnet efter udskriftskommandoen."
+"Hvis du angiver et printernavn i udskriftdialogen, vil det følgende parameter "
+"blive foranstillet printernavnet efter udskriftskommandoen."
 
 #: src/lyxrc.C:1908
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
-"DPI (piksler per tomme) på din skærm bestemmes automatisk af LyX. "
-"Gennemtving en indstilling her, hvis det går galt."
+"DPI (piksler per tomme) på din skærm bestemmes automatisk af LyX. Gennemtving "
+"en indstilling her, hvis det går galt."
 
 #: src/lyxrc.C:1913
 #, no-c-format
@@ -12007,16 +12002,16 @@ msgstr ""
 
 #: src/lyxrc.C:1950
 msgid ""
-"The default path for your documents. An empty value selects the directory "
-"LyX was started from."
+"The default path for your documents. An empty value selects the directory LyX "
+"was started from."
 msgstr ""
 "Standardstien til dine dokumenter. En tom værdi vælger det katalog, LyX blev "
 "startet fra."
 
 #: src/lyxrc.C:1954
 msgid ""
-"The path that LyX will set when offering to choose a template. An empty "
-"value selects the directory LyX was started from."
+"The path that LyX will set when offering to choose a template. An empty value "
+"selects the directory LyX was started from."
 msgstr ""
 "Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. En tom værdi "
 "vælger det katalog, LyX blev startet fra."
@@ -12054,16 +12049,16 @@ msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
-"Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet "
-"efter skift af klasse."
+"Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet efter "
+"skift af klasse."
 
 #: src/lyxrc.C:1978
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Dette starter lyxserveren. Datakanaler får påsat filendelsen \".in\" og \"."
-"out\". Kun for avancerede brugere."
+"Dette starter lyxserveren. Datakanaler får påsat filendelsen \".in\" og "
+"\".out\". Kun for avancerede brugere."
 
 #: src/lyxrc.C:1982
 msgid ""
@@ -12093,8 +12088,8 @@ msgstr ""
 #: src/lyxrc.C:1996
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
-"\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
-"is specified, an internal routine is used."
+"\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" is "
+"specified, an internal routine is used."
 msgstr ""
 "Angiver et eksternt program til at tegne tabeller i ren-tekst-uddata. F.eks. "
 "\"groff -t -Tlatin1 $$FName\" hvor $$FName er ind-filen. Hvis du i stedet "
@@ -12117,10 +12112,11 @@ msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrollér om de nylige filer stadig eksisterer."
 
 #: src/lyxrc.C:2012
-msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
+msgid ""
+"Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug \"-paper"
-"\")"
+"Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug "
+"\"-paper\")"
 
 #: src/lyxrc.C:2016
 msgid "Specify the default paper size."
@@ -12173,11 +12169,11 @@ msgstr ""
 
 #: src/lyxrc.C:2054
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
-"n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
-"n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
+"Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
+"-n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
 
 #: src/lyxrc.C:2058
 msgid ""
@@ -12226,8 +12222,8 @@ msgstr "Fremhæv ord med et andet sprog end dokumentets standardsprog."
 
 #: src/lyxrc.C:2086
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "Den LaTeX-kommando, der henter sprogpakken. F.eks. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
@@ -12282,8 +12278,8 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"Her accepteres normale strftime-formater. Se 'man strftime' for detaljerne.F."
-"eks.\"%A, %e. %B %Y\"."
+"Her accepteres normale strftime-formater. Se 'man strftime' for "
+"detaljerne.F.eks.\"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:2123
 msgid "De-select if you don't want the startup banner."
