@@ -357,13 +357,13 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par_->ascent() + 1;
+	return par_->ascent() + 2;
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return par_->descent() + 1;
+	return par_->descent() - 2;
 }
 
 
