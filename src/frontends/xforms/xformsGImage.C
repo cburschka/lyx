@@ -141,7 +141,10 @@ unsigned int xformsGImage::getWidth() const
 {
 	if (!image_)
 		return 0;
-	return image_->w;
+
+	// Why, oh why do we need such hacks?
+	// Angus 12 July 2002
+	return image_->w + 2;
 }
 
 

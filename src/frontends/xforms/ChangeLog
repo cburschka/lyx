@@ -1,3 +1,8 @@
+2002-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* xformsGImage.C (getWidth): correct the width of images, due to
+	some unknown xforms bug
+
 2002-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* FormCitation.C (updateBrowser): deselect the highlighted item when
