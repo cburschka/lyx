@@ -302,7 +302,7 @@ extern "C" void math_cb(FL_OBJECT* ob, long data)
       if (current_view->available() && lyxrc->display_shortcuts) {
 	  minibuffer->Set("Inserting symbol ", s);
       }
-      current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_INSERT_MATH, s);
+      current_view->owner()->getLyXFunc()->Dispatch(LFUN_INSERT_MATH, s);
    }      
    if (menu)  
      menu->Hide(); 
@@ -351,7 +351,7 @@ Bool math_insert_greek(char const c)
       math_insert_symbol(s);
       if (greek_kb_flag<2) {
 	 greek_kb_flag = 0;
-	 UnlockInset(current_view->currentBuffer()->the_locking_inset);
+	 UnlockInset(current_view->buffer()->the_locking_inset);
       }
       return True;
    } else
@@ -361,28 +361,28 @@ Bool math_insert_greek(char const c)
 void math_insert_symbol(char const* s)
 {
    if (current_view->available())   {
-      if (!current_view->currentBuffer()->the_locking_inset) {
+      if (!current_view->buffer()->the_locking_inset) {
 	 InsetFormula* new_inset = new InsetFormula();
 	 BeforeChange();
-	 current_view->currentBuffer()->insertInset(new_inset);
+	 current_view->buffer()->insertInset(new_inset);
 //	 Update(1);//BUG
 	 new_inset->Edit(0,0);
 	 new_inset->InsertSymbol(s);
       } else
-	if (current_view->currentBuffer()->the_locking_inset->LyxCode()==Inset::MATH_CODE)
-	  ((InsetFormula*)current_view->currentBuffer()->the_locking_inset)->InsertSymbol(s);
+	if (current_view->buffer()->the_locking_inset->LyxCode()==Inset::MATH_CODE)
+		static_cast<InsetFormula*>(current_view->buffer()->the_locking_inset)->InsertSymbol(s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;
    }
 }
 
-BitmapMenu* sym_menu=0;
+BitmapMenu * sym_menu=0;
 
-void  create_symbol_menues(FD_panel *symb_form)
+void  create_symbol_menues(FD_panel * symb_form)
 {
-   FL_OBJECT* obj; 
-   BitmapMenu* menu;
+   FL_OBJECT * obj; 
+   BitmapMenu * menu;
    
    sym_menu = menu = new BitmapMenu(2, symb_form->greek);
    obj = menu->AddBitmap(MM_GREEK, 6, 2, Greek_width, Greek_height, 
