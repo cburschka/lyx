@@ -160,7 +160,7 @@ void QContentPane::mouseDoubleClickEvent(QMouseEvent * e)
 	dc_event_ = double_click(e);
 
 	// doubleClickInterval() is just too long.
-	QTimer::singleShot(QApplication::doubleClickInterval() / 1.5,
+	QTimer::singleShot(int(QApplication::doubleClickInterval() / 1.5),
 		this, SLOT(doubleClickTimeout()));
 }
  

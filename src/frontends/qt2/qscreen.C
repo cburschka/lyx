@@ -146,11 +146,17 @@ void QScreen::hideCursor()
 }
 
  
-void QScreen::expose(int x, int y, int exp_width, int exp_height)
+void QScreen::expose(int x, int y, int w, int h)
 {
-	lyxerr[Debug::GUI] << "expose " << exp_width << "x" << exp_height
+	lyxerr[Debug::GUI] << "expose " << w << "x" << h
 		<< "+" << x << "+" << y << endl;
-	owner_.getContent()->update(x, y, exp_width, exp_height);
+ 
+	// if we're scrolling, we want immediate paint, otherwise not.
+	QWidget * content(owner_.getContent());
+	if (content->width() == w && content->height() == h) 
+		content->repaint(x, y, w, h);
+	else
+		content->update(x, y, w, h);
 }
 
 
