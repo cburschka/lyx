@@ -9,6 +9,7 @@
  *
  * \file biblio.C
  * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Herbert Voss <voss@perce.de>
  */
 
 #include <config.h>
@@ -212,7 +213,7 @@ string const getYear(InfoMap const & map, string const & key)
 
 	if (year.empty())
 		year = "50BC";
-
+	
 	return year;
 }
 
@@ -394,7 +395,8 @@ string const parseBibTeX(string data, string const & findkey)
 	if (data.length() < 2 || data[0] != '=') {	// a valid entry?
 		return string();
 	} else {
-		data = frontStrip(data.substr(1, data.length() - 1));
+		// delete '=' and the following spaces
+		data = frontStrip(frontStrip(data,'='));
 		if (data.length() < 2) {
 			return data;	// not long enough to find delimiters
 		} else {
@@ -405,7 +407,9 @@ string const parseBibTeX(string data, string const & findkey)
 			} else if (data[0] == '"') {
 				enclosing = '"';
 			} else {
-				return data;	// no {} and no "", pure data
+				// no {} and no "", pure data but with a
+				// possible ',' at the end
+				return strip(data,',');	
 			}
 			string tmp = data.substr(keypos);
 			while (tmp.find('{') != string::npos &&
