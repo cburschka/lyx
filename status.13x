@@ -19,9 +19,12 @@ What's new
 
 ** Updates
 
-- updated basque and italian localization; updated basque documentation
+- updated basque, danish and italian localizations; updated basque
+  documentation
 
 ** Bug fixes
+
+- use opening quotation marks after an opening square bracket
 
 - when the autodetection of latex classes cannot be done for some
   reason, a sensible list of textclasses is provided
@@ -31,4 +34,3 @@ What's new
 
 - fix compilation for OpenBSD
 
-- use opening quotation marks after an opening square bracket

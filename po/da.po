@@ -3,20 +3,21 @@
 # Dansk oversættelse af LyX
 # Copyright (C) 1997-2003 LyX Team
 # Asger Alstrup <alstrup@diku.dk>, 1997-1999.
-# Claus Hindsgaul <claus_h@image.dk>, 2000-2003.
+# Claus Hindsgaul <claus_h@image.dk>, 2000-2003, 2004.
 # Reviewed by Ole Laursen <olau@hardworking.dk>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
-"POT-Creation-Date: 2004-02-19 11:18+0100\n"
-"PO-Revision-Date: 2003-11-20 16:32GMT\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-20 11:29+0100\n"
+"PO-Revision-Date: 2004-03-20 11:37+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -3478,8 +3479,7 @@ msgstr "&roff-kommando:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
-"Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
+msgstr "Dette er den maksimale linjelængde på eksporterede tekst/LaTeX/SGML-filer"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -4528,8 +4528,7 @@ msgid "&View"
 msgstr "V&is"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
@@ -4648,7 +4647,7 @@ msgstr "&Placering:"
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
 #: ../lib/layouts/db_stdclass.inc:28 ../lib/layouts/scrclass.inc:13
 #: ../lib/layouts/stdclass.inc:27 ../lib/layouts/stdletter.inc:21
-#: ../lib/layouts/svjour.inc:26 src/insets/insetref.C:118
+#: ../lib/layouts/svjour.inc:27 src/insets/insetref.C:118
 #: src/mathed/ref_inset.C:127
 msgid "Standard"
 msgstr "Standard"
@@ -4661,7 +4660,7 @@ msgstr "TeoremSkabelon"
 #: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
 #: ../lib/layouts/ijmpd.layout:141 ../lib/layouts/llncs.layout:405
 #: ../lib/layouts/siamltex.layout:234 ../lib/layouts/amsdefs.inc:27
-#: ../lib/layouts/svjour.inc:470
+#: ../lib/layouts/svjour.inc:473
 msgid "Proof"
 msgstr "Korrektur"
 
@@ -4670,7 +4669,7 @@ msgstr "Korrektur"
 #: ../lib/layouts/ijmpd.layout:125 ../lib/layouts/llncs.layout:441
 #: ../lib/layouts/siamltex.layout:189 ../lib/layouts/amsmaths-plain.inc:32
 #: ../lib/layouts/amsmaths-seq.inc:32 ../lib/layouts/amsmaths.inc:59
-#: ../lib/layouts/svjour.inc:506
+#: ../lib/layouts/svjour.inc:509
 msgid "Theorem"
 msgstr "Teorem"
 
@@ -4678,7 +4677,7 @@ msgstr "Teorem"
 #: ../lib/layouts/foils.layout:262 ../lib/layouts/heb-article.layout:52
 #: ../lib/layouts/llncs.layout:387 ../lib/layouts/siamltex.layout:203
 #: ../lib/layouts/amsmaths-plain.inc:54 ../lib/layouts/amsmaths-seq.inc:48
-#: ../lib/layouts/amsmaths.inc:128 ../lib/layouts/svjour.inc:452
+#: ../lib/layouts/amsmaths.inc:128 ../lib/layouts/svjour.inc:455
 msgid "Lemma"
 msgstr "Lemma"
 
@@ -4686,7 +4685,7 @@ msgstr "Lemma"
 #: ../lib/layouts/foils.layout:269 ../lib/layouts/heb-article.layout:61
 #: ../lib/layouts/llncs.layout:352 ../lib/layouts/siamltex.layout:209
 #: ../lib/layouts/amsmaths-plain.inc:43 ../lib/layouts/amsmaths-seq.inc:40
-#: ../lib/layouts/amsmaths.inc:105 ../lib/layouts/svjour.inc:409
+#: ../lib/layouts/amsmaths.inc:105 ../lib/layouts/svjour.inc:412
 msgid "Corollary"
 msgstr "Korollar"
 
@@ -4694,14 +4693,14 @@ msgstr "Korollar"
 #: ../lib/layouts/foils.layout:276 ../lib/layouts/llncs.layout:417
 #: ../lib/layouts/siamltex.layout:215 ../lib/layouts/amsmaths-plain.inc:65
 #: ../lib/layouts/amsmaths-seq.inc:56 ../lib/layouts/amsmaths.inc:152
-#: ../lib/layouts/svjour.inc:482
+#: ../lib/layouts/svjour.inc:485
 msgid "Proposition"
 msgstr "Forslag"
 
 #: ../lib/layouts/IEEEtran.layout:134 ../lib/layouts/elsart.layout:413
 #: ../lib/layouts/llncs.layout:346 ../lib/layouts/amsmaths-plain.inc:76
 #: ../lib/layouts/amsmaths-seq.inc:64 ../lib/layouts/amsmaths.inc:176
-#: ../lib/layouts/svjour.inc:403
+#: ../lib/layouts/svjour.inc:406
 msgid "Conjecture"
 msgstr "Formodning"
 
@@ -4725,14 +4724,14 @@ msgstr "Aksiom"
 #: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/llncs.layout:369 ../lib/layouts/siamltex.layout:221
 #: ../lib/layouts/amsmaths-plain.inc:131 ../lib/layouts/amsmaths-seq.inc:104
-#: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/svjour.inc:426
+#: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/svjour.inc:429
 msgid "Definition"
 msgstr "Definition"
 
 #: ../lib/layouts/IEEEtran.layout:189 ../lib/layouts/elsart.layout:425
 #: ../lib/layouts/llncs.layout:375 ../lib/layouts/amsmaths-plain.inc:142
 #: ../lib/layouts/amsmaths-seq.inc:112 ../lib/layouts/amsmaths.inc:294
-#: ../lib/layouts/svjour.inc:432
+#: ../lib/layouts/svjour.inc:435
 msgid "Example"
 msgstr "Eksempel"
 
@@ -4744,27 +4743,27 @@ msgstr "Betingelse"
 #: ../lib/layouts/IEEEtran.layout:211 ../lib/layouts/elsart.layout:437
 #: ../lib/layouts/llncs.layout:399 ../lib/layouts/amsmaths-plain.inc:164
 #: ../lib/layouts/amsmaths-seq.inc:128 ../lib/layouts/amsmaths.inc:330
-#: ../lib/layouts/svjour.inc:464
+#: ../lib/layouts/svjour.inc:467
 msgid "Problem"
 msgstr "Problem"
 
 #: ../lib/layouts/IEEEtran.layout:222 ../lib/layouts/llncs.layout:381
 #: ../lib/layouts/amsmaths-plain.inc:175 ../lib/layouts/amsmaths-seq.inc:136
-#: ../lib/layouts/amsmaths.inc:342 ../lib/layouts/svjour.inc:438
+#: ../lib/layouts/amsmaths.inc:342 ../lib/layouts/svjour.inc:441
 msgid "Exercise"
 msgstr "Øvelse"
 
 #: ../lib/layouts/IEEEtran.layout:233 ../lib/layouts/elsart.layout:449
 #: ../lib/layouts/llncs.layout:429 ../lib/layouts/amsmaths-plain.inc:186
 #: ../lib/layouts/amsmaths-seq.inc:144 ../lib/layouts/amsmaths.inc:354
-#: ../lib/layouts/svjour.inc:494
+#: ../lib/layouts/svjour.inc:497
 msgid "Remark"
 msgstr "Bemærkning"
 
 #: ../lib/layouts/IEEEtran.layout:244 ../lib/layouts/elsart.layout:465
 #: ../lib/layouts/heb-article.layout:70 ../lib/layouts/llncs.layout:340
 #: ../lib/layouts/amsmaths-plain.inc:197 ../lib/layouts/amsmaths-seq.inc:152
-#: ../lib/layouts/amsmaths.inc:389 ../lib/layouts/svjour.inc:379
+#: ../lib/layouts/amsmaths.inc:389 ../lib/layouts/svjour.inc:382
 msgid "Claim"
 msgstr "Påstand"
 
@@ -4772,7 +4771,7 @@ msgstr "Påstand"
 #: ../lib/layouts/elsart.layout:457 ../lib/layouts/llncs.layout:393
 #: ../lib/layouts/slides.layout:173 ../lib/layouts/amsmaths-plain.inc:208
 #: ../lib/layouts/amsmaths-seq.inc:160 ../lib/layouts/amsmaths.inc:413
-#: ../lib/layouts/svjour.inc:458
+#: ../lib/layouts/svjour.inc:461
 msgid "Note"
 msgstr "Notat"
 
@@ -4800,7 +4799,7 @@ msgstr "Sag"
 #: ../lib/layouts/revtex4.layout:45 ../lib/layouts/siamltex.layout:38
 #: ../lib/layouts/spie.layout:23 ../lib/layouts/aguplus.inc:23
 #: ../lib/layouts/db_stdsections.inc:25 ../lib/layouts/scrclass.inc:70
-#: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
+#: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:42
 msgid "Section"
 msgstr "Sektion"
 
@@ -4816,7 +4815,7 @@ msgstr "Sektion"
 #: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
 #: ../lib/layouts/siamltex.layout:56 ../lib/layouts/aguplus.inc:35
 #: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/scrclass.inc:77
-#: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
+#: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:52
 msgid "Subsection"
 msgstr "Undersektion"
 
@@ -4830,7 +4829,7 @@ msgstr "Undersektion"
 #: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
 #: ../lib/layouts/revtex4.layout:67 ../lib/layouts/siamltex.layout:62
 #: ../lib/layouts/db_stdsections.inc:39 ../lib/layouts/scrclass.inc:84
-#: ../lib/layouts/stdsections.inc:113 ../lib/layouts/svjour.inc:60
+#: ../lib/layouts/stdsections.inc:113 ../lib/layouts/svjour.inc:61
 msgid "Subsubsection"
 msgstr "Underundersektion"
 
@@ -4882,7 +4881,7 @@ msgstr "Nøgleord"
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/aguplus.inc:163 ../lib/layouts/amsdefs.inc:338
 #: ../lib/layouts/scrclass.inc:237 ../lib/layouts/stdstruct.inc:43
-#: ../lib/layouts/svjour.inc:353 src/frontends/qt2/QDocumentDialog.C:72
+#: ../lib/layouts/svjour.inc:356 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Litteraturliste"
 
@@ -4966,14 +4965,14 @@ msgstr "Liste"
 #: ../lib/layouts/scrlttr2.layout:281 ../lib/layouts/siamltex.layout:103
 #: ../lib/layouts/svprobth.layout:37 ../lib/layouts/amsdefs.inc:65
 #: ../lib/layouts/db_stdtitle.inc:11 ../lib/layouts/scrclass.inc:158
-#: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
+#: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:141
 msgid "Title"
 msgstr "Titel"
 
 #: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
 #: ../lib/layouts/aapaper.layout:67 ../lib/layouts/kluwer.layout:123
 #: ../lib/layouts/llncs.layout:133 ../lib/layouts/svprobth.layout:47
-#: ../lib/layouts/aapaper.inc:8 ../lib/layouts/svjour.inc:164
+#: ../lib/layouts/aapaper.inc:8 ../lib/layouts/svjour.inc:167
 msgid "Subtitle"
 msgstr "Undertitel"
 
@@ -4991,7 +4990,7 @@ msgstr "Undertitel"
 #: ../lib/layouts/siamltex.layout:119 ../lib/layouts/svprobth.layout:57
 #: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/db_stdtitle.inc:18
 #: ../lib/layouts/scrclass.inc:166 ../lib/layouts/stdtitle.inc:33
-#: ../lib/layouts/svjour.inc:197
+#: ../lib/layouts/svjour.inc:200
 msgid "Author"
 msgstr "Forfatter"
 
@@ -5012,7 +5011,7 @@ msgid "Offprint"
 msgstr "Aftryk"
 
 #: ../lib/layouts/aa.layout:70 ../lib/layouts/aa.layout:166
-#: ../lib/layouts/svjour.inc:257
+#: ../lib/layouts/svjour.inc:260
 msgid "Mail"
 msgstr "Brev"
 
@@ -5026,7 +5025,7 @@ msgstr "Brev"
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
 #: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
 #: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
-#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
+#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:253
 msgid "Date"
 msgstr "Dato"
 
@@ -5037,9 +5036,9 @@ msgstr "Dato"
 #: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
 #: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
-#: ../lib/layouts/revtex4.layout:205 ../lib/layouts/svjog.layout:32
-#: ../lib/layouts/amsdefs.inc:138 ../lib/layouts/stdstruct.inc:12
-#: ../lib/layouts/svjour.inc:272
+#: ../lib/layouts/revtex4.layout:205 ../lib/layouts/svglobal.layout:28
+#: ../lib/layouts/svjog.layout:32 ../lib/layouts/amsdefs.inc:138
+#: ../lib/layouts/stdstruct.inc:12 ../lib/layouts/svjour.inc:275
 msgid "Abstract "
 msgstr "Sammendrag "
 
@@ -5047,7 +5046,7 @@ msgstr "Sammendrag "
 #: ../lib/layouts/aapaper.layout:83 ../lib/layouts/egs.layout:615
 #: ../lib/layouts/elsart.layout:501 ../lib/layouts/aapaper.inc:87
 #: ../lib/layouts/amsmaths-plain.inc:243 ../lib/layouts/amsmaths-seq.inc:184
-#: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/svjour.inc:345
+#: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/svjour.inc:348
 msgid "Acknowledgement"
 msgstr "Taksigelse"
 
@@ -5070,7 +5069,7 @@ msgstr "E-post"
 #: ../lib/layouts/revtex4.layout:76 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/aguplus.inc:48 ../lib/layouts/db_stdsections.inc:46
 #: ../lib/layouts/scrclass.inc:91 ../lib/layouts/stdsections.inc:138
-#: ../lib/layouts/svjour.inc:70
+#: ../lib/layouts/svjour.inc:71
 msgid "Paragraph"
 msgstr "Afsnit"
 
@@ -5086,7 +5085,7 @@ msgstr "Og"
 
 #: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
 #: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:303
-#: ../lib/layouts/svjour.inc:318
+#: ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Taksigelser"
 
@@ -5299,7 +5298,7 @@ msgid "KnightMove"
 msgstr "KnightMove"
 
 #: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:233
-#: ../lib/layouts/svjour.inc:229
+#: ../lib/layouts/svjour.inc:232
 msgid "Institute"
 msgstr "Institut"
 
@@ -5382,7 +5381,7 @@ msgstr "Datum"
 #: ../lib/layouts/linuxdoc.layout:170 ../lib/layouts/llncs.layout:85
 #: ../lib/layouts/paper.layout:78 ../lib/layouts/db_stdsections.inc:53
 #: ../lib/layouts/scrclass.inc:98 ../lib/layouts/stdsections.inc:163
-#: ../lib/layouts/svjour.inc:80
+#: ../lib/layouts/svjour.inc:81
 msgid "Subparagraph"
 msgstr "Underafsnit"
 
@@ -5695,153 +5694,128 @@ msgid "Encl."
 msgstr "Vedlagt"
 
 #: ../lib/layouts/g-brief2.layout:75
-#, fuzzy
 msgid "NameRowA"
-msgstr "Navn"
+msgstr "NavnelinjeA"
 
 #: ../lib/layouts/g-brief2.layout:95
-#, fuzzy
 msgid "NameRowB"
-msgstr "Navn"
+msgstr "NavnelinjeB"
 
 #: ../lib/layouts/g-brief2.layout:114
-#, fuzzy
 msgid "NameRowC"
-msgstr "Navn"
+msgstr "NavnelinjeC"
 
 #: ../lib/layouts/g-brief2.layout:133
-#, fuzzy
 msgid "NameRowD"
-msgstr "Navn"
+msgstr "NavnelinjeD"
 
 #: ../lib/layouts/g-brief2.layout:152
-#, fuzzy
 msgid "NameRowE"
-msgstr "Navn"
+msgstr "NavnelinjeE"
 
 #: ../lib/layouts/g-brief2.layout:171
-#, fuzzy
 msgid "NameRowF"
-msgstr "Navn"
+msgstr "NavnelinjeF"
 
 #: ../lib/layouts/g-brief2.layout:190
-#, fuzzy
 msgid "NameRowG"
-msgstr "Navn"
+msgstr "NavnelinjeG"
 
 #: ../lib/layouts/g-brief2.layout:230
-#, fuzzy
 msgid "AddressRowA"
-msgstr "Adresse"
+msgstr "AdresselinjeA"
 
 #: ../lib/layouts/g-brief2.layout:250
-#, fuzzy
 msgid "AddressRowB"
-msgstr "Adresse"
+msgstr "AdresselinjeB"
 
 #: ../lib/layouts/g-brief2.layout:269
-#, fuzzy
 msgid "AddressRowC"
-msgstr "Adresse"
+msgstr "AdresselinjeC"
 
 #: ../lib/layouts/g-brief2.layout:288
-#, fuzzy
 msgid "AddressRowD"
-msgstr "Adresse"
+msgstr "AdresselinjeD"
 
 #: ../lib/layouts/g-brief2.layout:307
-#, fuzzy
 msgid "AddressRowE"
-msgstr "Adresse"
+msgstr "AdresselinjeE"
 
 #: ../lib/layouts/g-brief2.layout:326
-#, fuzzy
 msgid "AddressRowF"
-msgstr "Adresse"
+msgstr "AdresselinjeF"
 
 #: ../lib/layouts/g-brief2.layout:345
-#, fuzzy
 msgid "TelephoneRowA"
-msgstr "Telefon"
+msgstr "TelefonlinjeA"
 
 #: ../lib/layouts/g-brief2.layout:365
-#, fuzzy
 msgid "TelephoneRowB"
-msgstr "Telefon"
+msgstr "TelefonlinjeB"
 
 #: ../lib/layouts/g-brief2.layout:384
-#, fuzzy
 msgid "TelephoneRowC"
-msgstr "Telefon"
+msgstr "TelefonlinjeC"
 
 #: ../lib/layouts/g-brief2.layout:403
-#, fuzzy
 msgid "TelephoneRowD"
-msgstr "Telefon"
+msgstr "TelefonlinjeD"
 
 #: ../lib/layouts/g-brief2.layout:422
-#, fuzzy
 msgid "TelephoneRowE"
-msgstr "Telefon"
+msgstr "TelefonlinjeE"
 
 #: ../lib/layouts/g-brief2.layout:441
-#, fuzzy
 msgid "TelephoneRowF"
-msgstr "Telefon"
+msgstr "TelefonlinjeF"
 
 #: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
-msgstr ""
+msgstr "InternetlinjeA"
 
 #: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
-msgstr ""
+msgstr "InternetlinjeB"
 
 #: ../lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
-msgstr ""
+msgstr "InternetlinjeC"
 
 #: ../lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
-msgstr ""
+msgstr "InternetlinjeD"
 
 #: ../lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
-msgstr ""
+msgstr "InternetlinjeE"
 
 #: ../lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
-msgstr ""
+msgstr "InternetlinjeF"
 
 #: ../lib/layouts/g-brief2.layout:575
-#, fuzzy
 msgid "BankRowA"
-msgstr "Bank"
+msgstr "BanklinjeA"
 
 #: ../lib/layouts/g-brief2.layout:595
-#, fuzzy
 msgid "BankRowB"
-msgstr "Bank"
+msgstr "BanklinjeB"
 
 #: ../lib/layouts/g-brief2.layout:614
-#, fuzzy
 msgid "BankRowC"
-msgstr "Bank"
+msgstr "BanklinjeC"
 
 #: ../lib/layouts/g-brief2.layout:633
-#, fuzzy
 msgid "BankRowD"
-msgstr "Bank"
+msgstr "BanklinjeD"
 
 #: ../lib/layouts/g-brief2.layout:652
-#, fuzzy
 msgid "BankRowE"
-msgstr "Bank"
+msgstr "BanklinjeE"
 
 #: ../lib/layouts/g-brief2.layout:671
-#, fuzzy
 msgid "BankRowF"
-msgstr "Bank"
+msgstr "BanklinjeF"
 
 #: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:345
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
@@ -5927,7 +5901,7 @@ msgstr "SGML"
 msgid "Chapter"
 msgstr "Kapitel"
 
-#: ../lib/layouts/llncs.layout:158 ../lib/layouts/svjour.inc:189
+#: ../lib/layouts/llncs.layout:158 ../lib/layouts/svjour.inc:192
 msgid "Running_LaTeX_Title"
 msgstr "Løbende_LaTeX_Titel"
 
@@ -5935,7 +5909,7 @@ msgstr "Løbende_LaTeX_Titel"
 msgid "TOC_Title"
 msgstr "Indhold_titel"
 
-#: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:221
+#: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:224
 msgid "Author_Running"
 msgstr "Forfatter_løbende"
 
@@ -5943,15 +5917,15 @@ msgstr "Forfatter_løbende"
 msgid "TOC_Author"
 msgstr "Indhold_forfatter"
 
-#: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:476
+#: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:479
 msgid "Property"
 msgstr "Property"
 
-#: ../lib/layouts/llncs.layout:423 ../lib/layouts/svjour.inc:488
+#: ../lib/layouts/llncs.layout:423 ../lib/layouts/svjour.inc:491
 msgid "Question"
 msgstr "Spørgsmål"
 
-#: ../lib/layouts/llncs.layout:435 ../lib/layouts/svjour.inc:500
+#: ../lib/layouts/llncs.layout:435 ../lib/layouts/svjour.inc:503
 msgid "Solution"
 msgstr "Løsning"
 
@@ -6289,7 +6263,7 @@ msgstr "Minisec"
 msgid "Publishers"
 msgstr "Udgivere"
 
-#: ../lib/layouts/scrclass.inc:192 ../lib/layouts/svjour.inc:130
+#: ../lib/layouts/scrclass.inc:192 ../lib/layouts/svjour.inc:133
 msgid "Dedication"
 msgstr "Dedikering"
 
@@ -6337,15 +6311,15 @@ msgstr "Kapitel*"
 msgid "Subparagraph*"
 msgstr "Underafsnit*"
 
-#: ../lib/layouts/svjour.inc:103
+#: ../lib/layouts/svjour.inc:106
 msgid "Headnote"
 msgstr "Topnote"
 
-#: ../lib/layouts/svjour.inc:264
+#: ../lib/layouts/svjour.inc:267
 msgid "Offprints"
 msgstr "Aftryk"
 
-#: ../lib/layouts/svjour.inc:295
+#: ../lib/layouts/svjour.inc:298
 msgid " Keywords"
 msgstr " Nøgleord"
 
@@ -10025,16 +9999,12 @@ msgstr ""
 "ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Search your database (all fields will be searched)."
@@ -10074,8 +10044,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:243
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+msgstr " Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10187,10 +10156,8 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Tilføj alle processer til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-"Tilføj den valgte underproces til listen over processer, der skal dræbes."
+msgid "Add the currently selected child process to the list of processes to kill."
+msgstr "Tilføj den valgte underproces til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:77
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -10510,10 +10477,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, der kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:551
 msgid "Find a new color."
@@ -10831,8 +10796,7 @@ msgstr "Søg baglæns."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Eksportér dokumentet i dette format, før nedenstående kommando udføres på "
 "den."
@@ -11022,9 +10986,8 @@ msgstr "Tjek 'sideinterval'!"
 
 #: src/frontends/xforms/xforms_helpers.C:287
 #: src/frontends/xforms/xforms_helpers.C:332
-#, fuzzy
 msgid "Failed to open file."
-msgstr "Kan ikke åbne fil"
+msgstr "Kunne ikke åbne fil."
 
 #: src/frontends/xforms/xforms_helpers.C:364
 #: src/frontends/xforms/xforms_helpers.C:388
@@ -12108,8 +12071,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablen PRINTER."
 
 #: src/lyxrc.C:1840
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -12125,8 +12087,7 @@ msgstr "Om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1852
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1856
 msgid "The option for specifying the number of copies to print."
@@ -12166,8 +12127,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftskommando."
 
 #: src/lyxrc.C:1888
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftsprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1892
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -12217,13 +12177,11 @@ msgstr ""
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
@@ -12242,10 +12200,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1950
 msgid ""
@@ -12395,8 +12351,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:2046
@@ -12454,8 +12409,7 @@ msgstr ""
 "samme mappe, som den originale fil."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -12478,8 +12432,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:2094
 msgid ""
@@ -12496,8 +12449,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:2106
@@ -12543,8 +12495,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2144
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxrc.C:2148
 msgid "Shows a typeset preview of things such as math"
@@ -12708,8 +12659,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -13289,3 +13239,4 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Canceled"
 #~ msgstr "Annulleret"
+
