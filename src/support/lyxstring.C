@@ -460,6 +460,7 @@ lyxstring::~lyxstring()
 
 lyxstring::iterator lyxstring::begin()
 {
+	rep = rep->get_own_copy();
 	return rep->s;
 }
 
@@ -472,6 +473,7 @@ lyxstring::const_iterator lyxstring::begin() const
 
 lyxstring::iterator lyxstring::end()
 {
+	rep = rep->get_own_copy();
 	return rep->s + rep->sz;
 }
 

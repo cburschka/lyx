@@ -1,3 +1,15 @@
+2000-05-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (begin): fix a "shared" string bug. use
+	rep->get_own_copy()
+	(end): ditto
+
+	* src/LaTeX.C (deplog): better searching for dependency files in
+	the latex log. Uses now regexps.
+
+	* lib/layouts/stdlists.inc (lyxlist): fix the label to use \hfil
+	instead of the box hack or \hfill. 
+
 2000-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (doImportHelper): do not create the file before
