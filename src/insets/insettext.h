@@ -176,7 +176,7 @@ public:
 	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
-	void setParagraphData(Paragraph *);
+	void setParagraphData(Paragraph *, bool same_id = false);
 	///
 	void setText(string const &);
 	///

@@ -110,11 +110,23 @@ LyXTabular::LyXTabular(InsetTabular * inset, int rows_arg, int columns_arg)
 }
 
 
-LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
+LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt,
+                       bool same_id)
 {
 	owner_ = inset;
 	cur_cell = -1;
 	Init(lt.rows_, lt.columns_, &lt);
+	// we really should change again to have InsetText as a pointer
+	// and allocate it then we would not have to do this stuff all
+	// double!
+	if (same_id) {
+		for (int i = 0; i < rows_; ++i) {
+			for (int j = 0; j < columns_; ++j) {
+				cell_info[i][j].inset.id(lt.cell_info[i][j].inset.id());
+				cell_info[i][j].inset.setParagraphData(lt.cell_info[i][j].inset.paragraph(),true);
+			}
+		}
+	}
 #if 0
 #ifdef WITH_WARNINGS
 #warning Jürgen, can you make it the other way round. So that copy assignment depends on the copy constructor and not the other way. (Lgb)
@@ -164,9 +176,9 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 }
 
 
-LyXTabular * LyXTabular::clone(InsetTabular * inset)
+LyXTabular * LyXTabular::clone(InsetTabular * inset, bool same_id)
 {
-	LyXTabular * result = new LyXTabular(inset, *this);
+	LyXTabular * result = new LyXTabular(inset, *this, same_id);
 #if 0
 	// don't know if this is good but I need to Clone also
 	// the text-insets here, this is for the Undo-facility!

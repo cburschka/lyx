@@ -11,7 +11,7 @@ EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h autogen.sh \
 	config development forms images sourcedoc
 
-ETAGS_ARGS = --lang=c++
+#ETAGS_ARGS = --language-force=c++
 man_MANS = lyx.1
 
 ## Needed by bindist

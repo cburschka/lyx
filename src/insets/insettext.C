@@ -161,7 +161,7 @@ InsetText & InsetText::operator=(InsetText const & it)
 void InsetText::init(InsetText const * ins, bool same_id)
 {
 	if (ins) {
-		setParagraphData(ins->par);
+		setParagraphData(ins->par, same_id);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
@@ -1923,7 +1923,7 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 }
 
 
-void InsetText::setParagraphData(Paragraph * p)
+void InsetText::setParagraphData(Paragraph * p, bool same_id)
 {
 	// we have to unlock any locked inset otherwise we're in troubles
 	the_locking_inset = 0;
@@ -1933,12 +1933,12 @@ void InsetText::setParagraphData(Paragraph * p)
 		par = tmp;
 	}
 
-	par = new Paragraph(*p, false);
+	par = new Paragraph(*p, same_id);
 	par->setInsetOwner(this);
 	Paragraph * np = par;
 	while (p->next()) {
 		p = p->next();
-		np->next(new Paragraph(*p, false));
+		np->next(new Paragraph(*p, same_id));
 		np->next()->previous(np);
 		np = np->next();
 		np->setInsetOwner(this);
@@ -2288,7 +2288,6 @@ Paragraph * InsetText::getParFromID(int id) const
 	Paragraph * tmp = par;
 	while (tmp) {
 		int tmp_id = tmp->id();
-		lyxerr << "Looking at paragraph: " << tmp_id << endl;
 		if (tmp->id() == id) {
 			return tmp;
 		}

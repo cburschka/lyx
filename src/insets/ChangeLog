@@ -1,3 +1,11 @@
+2001-11-30  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (InsetTabular): use the save_id flag to create also
+	the tabular with the same id's.
+
+	* insettext.C (setParagraphData): added a same_id function for undo
+	to set the same paragraph id's as of the paragraph we are setting.
+
 2001-11-30  José Matos <jamatos@fep.up.pt>
 
 	* inseturl.[Ch]:

@@ -148,7 +148,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 						   bool same_id)
 	: UpdatableInset(tab, same_id), buffer(&buf)
 {
-	tabular.reset(new LyXTabular(this, *(tab.tabular)));
+	tabular.reset(new LyXTabular(this, *(tab.tabular), same_id));
 	the_locking_inset = 0;
 	locked = no_selection = false;
 	oldcell = -1;

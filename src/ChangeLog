@@ -1,3 +1,8 @@
+2001-11-30  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (LyXTabular): add a same_id to set the same id's in the
+	insets for undo reasons.
+
 2001-11-28  André Pönitz <poenitz@gmx.net>
 
 	* vspace.[Ch]: cosmetical changes

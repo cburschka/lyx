@@ -226,6 +226,7 @@ void setRedo(BufferView * bv, Undo::undo_kind kind,
 	bv->buffer()->redostack.push(createUndo(bv, kind, first, behind));
 }
 
+using lyx::pos_type;
 
 Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
                   Paragraph const * first, Paragraph const * behind)
@@ -266,12 +267,6 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 	Paragraph * start = const_cast<Paragraph *>(first);
 	Paragraph * end = 0;
 
-#if 0
-	if (first)
-		start = const_cast<Paragraph*>(before->next());
-	else
-		start = firstUndoParagraph(bv);
-#endif
 	if (behind)
 		end = const_cast<Paragraph*>(behind->previous());
 	else {
