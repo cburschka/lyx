@@ -308,6 +308,14 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
+	if (cmd.button() == mouse_button::button2) {
+		mathcursor->selClear();
+		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+		mathcursor->insert(asArray(bv->getClipboard()));
+		bv->updateInset(this, true);
+		return DISPATCHED;
+	}
+
 	if (cmd.button() == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
 		mathcursor->dispatch(cmd);
@@ -318,6 +326,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		//mathcursor->setPos(x + xo_, y + yo_);
 		return DISPATCHED;
 	}
+
 	return UNDISPATCHED;
 }
 
@@ -339,11 +348,13 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		mathcursor->dispatch(cmd);
 		return DISPATCHED;
 	}
+
 	if (cmd.button() == mouse_button::button3) {
 		mathcursor->dispatch(cmd);
 		//delete mathcursor;
 		return DISPATCHED;
 	}
+
 	bv->updateInset(this, false);
 	return DISPATCHED;
 }
