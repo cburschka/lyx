@@ -21,7 +21,8 @@
 class ControlCitation;
 struct FD_citation;
 
-class FormCitation : public FormController<ControlCitation, FormView<FD_citation> > {
+class FormCitation
+	: public FormController<ControlCitation, FormView<FD_citation> > {
 public:
 	///
 	FormCitation(Dialog &);
