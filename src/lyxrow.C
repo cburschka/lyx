@@ -147,12 +147,6 @@ namespace {
 
 bool nextRowIsAllInset(Row const & row, pos_type last)
 {
-	if (!row.next())
-		return false;
-
-	if (row.par() != row.next()->par())
-		return false;
-
 	if (!row.par()->isInset(last + 1))
 		return false;
 
@@ -166,9 +160,14 @@ bool nextRowIsAllInset(Row const & row, pos_type last)
 pos_type Row::lastPrintablePos() const
 {
 	pos_type const last = lastPos();
-	bool const ignore_space_at_last = !nextRowIsAllInset(*this, last);
 
-	if (ignore_space_at_last && par()->isSeparator(last))
+	// if this row is an end of par, just act like lastPos()
+	if (!next() || par() != next()->par())
+		return last;
+
+	bool const nextrownotinset = !nextRowIsAllInset(*this, last);
+
+	if (nextrownotinset && par()->isSeparator(last))
 		return last - 1;
 
 	return last;
