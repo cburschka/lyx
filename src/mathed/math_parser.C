@@ -800,7 +800,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			// ignore braces around simple items
 			if ((ar.size() == 1 && !ar.front()->needsBraces()
        || (ar.size() == 2 && !ar.front()->needsBraces()
-			                    && ar.back()->asScriptInset())))
+			                    && ar.back()->asScriptInset()))
+       || (ar.size() == 0 && array.size() == 0))
 			{
 				array.push_back(ar);
 			} else {

@@ -65,18 +65,13 @@ int hack_y;
 int hack_button;
 
 
-void handleFont(BufferView * bv, MathTextCodes t) 
+void handleFont(BufferView * bv, string const & arg, MathTextCodes t) 
 {
 	if (mathcursor->selection())
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 	mathcursor->handleFont(t);
-}
-
-
-void handleAccent(BufferView * bv, string const & name)
-{
-	bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->insert(createMathInset(name));
+	for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
+		mathcursor->insert(*it);
 }
 
 
@@ -500,39 +495,39 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 		// --- accented characters ------------------------------
 
-	case LFUN_UMLAUT:       handleAccent(bv, "ddot"); break;
-	case LFUN_CIRCUMFLEX:   handleAccent(bv, "hat"); break;
-	case LFUN_GRAVE:        handleAccent(bv, "grave"); break;
-	case LFUN_ACUTE:        handleAccent(bv, "acute"); break;
-	case LFUN_TILDE:        handleAccent(bv, "tilde"); break;
-	case LFUN_MACRON:       handleAccent(bv, "bar"); break;
-	case LFUN_DOT:          handleAccent(bv, "dot"); break;
-	case LFUN_CARON:        handleAccent(bv, "check"); break;
-	case LFUN_BREVE:        handleAccent(bv, "breve"); break;
-	case LFUN_VECTOR:       handleAccent(bv, "vec"); break;
-	case LFUN_UNDERBAR:     handleAccent(bv, "underbar"); break;
+	case LFUN_UMLAUT:       handleAccent(bv, arg, "ddot"); break;
+	case LFUN_CIRCUMFLEX:   handleAccent(bv, arg, "hat"); break;
+	case LFUN_GRAVE:        handleAccent(bv, arg, "grave"); break;
+	case LFUN_ACUTE:        handleAccent(bv, arg, "acute"); break;
+	case LFUN_TILDE:        handleAccent(bv, arg, "tilde"); break;
+	case LFUN_MACRON:       handleAccent(bv, arg, "bar"); break;
+	case LFUN_DOT:          handleAccent(bv, arg, "dot"); break;
+	case LFUN_CARON:        handleAccent(bv, arg, "check"); break;
+	case LFUN_BREVE:        handleAccent(bv, arg, "breve"); break;
+	case LFUN_VECTOR:       handleAccent(bv, arg, "vec"); break;
+	case LFUN_UNDERBAR:     handleAccent(bv, arg, "underbar"); break;
 
 	//  Math fonts
-	case LFUN_GREEK_TOGGLE: handleFont(bv, LM_TC_GREEK); break;
-	case LFUN_BOLD:         handleFont(bv, LM_TC_BF); break;
-	case LFUN_SANS:         handleFont(bv, LM_TC_SF); break;
-	case LFUN_EMPH:         handleFont(bv, LM_TC_CAL); break;
-	case LFUN_ROMAN:        handleFont(bv, LM_TC_RM); break;
-	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
-	case LFUN_FRAK:         handleFont(bv, LM_TC_EUFRAK); break;
-	case LFUN_ITAL:         handleFont(bv, LM_TC_IT); break;
-	case LFUN_NOUN:         handleFont(bv, LM_TC_BB); break;
-	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
-	case LFUN_FREE:         handleFont(bv, LM_TC_TEXTRM); break;
+	case LFUN_GREEK_TOGGLE: handleFont(bv, arg, LM_TC_GREEK); break;
+	case LFUN_BOLD:         handleFont(bv, arg, LM_TC_BF); break;
+	case LFUN_SANS:         handleFont(bv, arg, LM_TC_SF); break;
+	case LFUN_EMPH:         handleFont(bv, arg, LM_TC_CAL); break;
+	case LFUN_ROMAN:        handleFont(bv, arg, LM_TC_RM); break;
+	case LFUN_CODE:         handleFont(bv, arg, LM_TC_TT); break;
+	case LFUN_FRAK:         handleFont(bv, arg, LM_TC_EUFRAK); break;
+	case LFUN_ITAL:         handleFont(bv, arg, LM_TC_IT); break;
+	case LFUN_NOUN:         handleFont(bv, arg, LM_TC_BB); break;
+	case LFUN_DEFAULT:      handleFont(bv, arg, LM_TC_VAR); break;
+	case LFUN_FREE:         handleFont(bv, arg, LM_TC_TEXTRM); break;
 
 	case LFUN_GREEK: 
-		handleFont(bv, LM_TC_GREEK1);
+		handleFont(bv, arg, LM_TC_GREEK1);
 		if (arg.size())
 			mathcursor->interpret(arg);
 		break;
 
 	case LFUN_MATH_MODE:
-		//handleFont(bv, LM_TC_TEXTRM);
+		//handleFont(bv, arg, LM_TC_TEXTRM);
 
 		//mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
 		//updateLocal(bv, true);
@@ -779,6 +774,18 @@ bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
 {
 	lyxerr << "searching backward not implemented in mathed" << endl;
 	return searchForward(bv, what, a, b);
+}
+
+
+
+void InsetFormulaBase::handleAccent(BufferView * bv,
+	string const & arg, string const & name)
+{
+	bv->lockedInsetStoreUndo(Undo::EDIT);
+	MathAtom at = createMathInset(name);
+	mathed_parse_cell(at->cell(0), arg);
+	mathcursor->insert(at);
+	updateLocal(bv, true);
 }
 
 

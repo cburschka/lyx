@@ -393,7 +393,8 @@ string MathGridInset::eolString(row_type row) const
 	if (row + 1 < nrows()) {
 		MathArray const & c = cell(index(row + 1, 0));
 		if (c.size() && c.front()->getChar() == '[')
-			eol += "[0pt]";
+			//eol += "[0pt]";
+			eol += "{}";
 	}
 
 	// only add \\ if necessary

@@ -241,6 +241,8 @@ public:
 	void stripFromLastEqualSign();
 	/// moves on 
 	void setSelection(cursor_type const & where, size_type n);
+	///
+	void insert(char);
 
 	///
 	friend class Selection;

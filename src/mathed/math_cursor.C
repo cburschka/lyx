@@ -442,6 +442,12 @@ void MathCursor::insert(char c, MathTextCodes t)
 }
 
 
+void MathCursor::insert(char c)
+{
+	insert(c, lastcode_);
+}
+
+
 void MathCursor::insert(MathAtom const & t)
 {
 	macroModeClose();

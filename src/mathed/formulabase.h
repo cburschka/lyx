@@ -115,6 +115,8 @@ public:
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
+	/// common base for handling accents
+	void handleAccent(BufferView * bv, string const & arg, string const & name);
 
 	///
 	mutable BufferView * view_;	
