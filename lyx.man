@@ -3,7 +3,7 @@
 .\"
 .\"  tbl lyx.1 | nroff -man | less
 .\"
-.TH LYX 1 "May 2002" "Version 1.3" "LyX 1.3"
+.TH LYX 1 "Jan 2003" "Version 1.3" "LyX 1.3"
 .SH NAME
 lyx \- A Document Processor
 .\"
@@ -13,37 +13,35 @@ lyx \- A Document Processor
 .el \(co
 ..
 .SH SYNOPSIS
-\fBlyx\fR [ \fIcommand-line switches\fR] [\fIname.lyx ...\fR ]
+\fBlyx\fR [ \fIcommand-line switches\fR ] [ \fIname[.lyx] ...\fR ]
 .br
 .SH DESCRIPTION
 \fBLyX\fR is too complex to be described completely in the "man" page
 format. If your system is properly configured, you can access the full
 documentation within \fBLyX\fR under the Help menu.
 
-\fBLyX\fR is a document preparation system. It excels at letting you create
-complex technical and scientific articles with mathematics,
+\fBLyX\fR is a document preparation system. It excels at letting you
+create complex technical and scientific articles with mathematics,
 cross-references, bibliographies, indices, etc. It is very good at
 documents of any length in which the usual processing abilities are
 required: automatic sectioning and pagination, spellchecking, and so
 forth. It can also be used to write a letter to your mom, though
 granted, there are probably simpler programs available for that. It is
 definitely not the best tool for creating banners, flyers, or
-advertisements (we'll explain why later), though with some effort all
-these can be done, too. Some examples of what it is used for: memos,
-letters, dissertations and theses, lecture notes, seminar notebooks,
-conference proceedings, software documentation, books (on PostgreSQL,
-remote sensing, cryptology, fictional novels, poetry, and even a
-children's book or two), articles in refereed scientific journals,
-scripts for plays and movies, business proposals... you get the idea.
+advertisements, though with some effort all these can be done, too.
+Some examples of what it is used for: memos, letters, dissertations
+and theses, lecture notes, seminar notebooks, conference proceedings,
+software documentation, books (on PostgreSQL, remote sensing,
+cryptology, fictional novels, poetry, and even a children's book or
+two), articles in refereed scientific journals, scripts for plays and
+movies, business proposals... you get the idea.
 
-Currently, \fBLyX\fR uses the XForms library as a toolkit. \fBLyX\fR
-should run everywhere, where XForms runs. This is on all major Unix
-platforms as well as Windows, Mac OS X (which actually is a unix
-platform) and OS/2.
+Currently, \fBLyX\fR uses either the XForms or Qt library as a
+toolkit. \fBLyX\fR should run everywhere, where these libraries run.
+This is on all major Unix platforms as well as Windows, Mac OS X
+(which actually is a unix platform) and OS/2.
 .SH OPTIONS
-\fBLyX\fR supports the following command-line switches, which can also
-be specified as X resources (e. g. in .Xdefaults) with class
-name \fBLyX\fR:
+\fBLyX\fR supports the following command-line switches.
 .TP 6
 .BI \-help
 summarizes LyX usage
@@ -58,9 +56,6 @@ sets system directory. Normally not needed.
 sets user directory. Needed if you want to use LyX with different lyxrc 
 settings.
 .TP
-.BI \-geometry " WxH+X+Y"
-specifies the preferred size and position of the main \fBLyX\fR window; see \fIX(1)\fR.
-.TP
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
 Use "\fBlyx -dbg\fR" to see the list of available debug features.
@@ -74,10 +69,16 @@ where fmt is the export format of choice.
 \fB -i [--import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
 
-.PP
-Furthermore, \fBLyX\fR understands the following generic command line options 
-from the \fBForms Library\fR:
+.SH XFORMS FRONTEND OPTIONS
+When compiled with the XForms frontend, \fBLyX\fR understands the
+following generic command line options from the \fBForms Library\fR,
+which can also be specified as X resources (e. g. in .Xdefaults) with
+class name \fBLyX\fR.
 .TP 6
+.BI \-geometry " WxH+X+Y"
+specifies the preferred size and position of the main \fBLyX\fR
+window; see \fIX(1)\fR.
+.TP
 .BI \-display " host:display"
 specifies the server to connect to.
 .TP
@@ -158,9 +159,10 @@ strings in other languages.
 .SH FILES
 .nf
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
-~/.lyx/lyxrc      Personal configuration file
+~/.lyx/preferences      Personal configuration file
+~/.lyx/lyxrc.defaults   Personal autodetected configuration file 
 \fILIBDIR\fR/lyxrc      System wide configuration file
-\fILIBDIR\fR/lyxrc.example System wide configuration file template
+\fILIBDIR\fR/lyxrc.defaults System wide autodetected configuration file 
 \fILIBDIR\fR/configure  Updates \fBLyX\fR if config has changed
 \fILIBDIR\fR/bind/      Keybindings
 \fILIBDIR\fR/clipart/   Clipart pictures
@@ -192,26 +194,9 @@ are having problems with!
 \fBLaTeX\fR import is still not perfect and may produce buggy *.lyx
 files. Consult the \fBreLyX\fR documentation.
 
-XFree on OS/2 currently does not support PC codepages. If you use
-\fBemTeX\fR to preview/print with cp850, etc., this might lead to
-strange \fBemTeX\fR error messages.
-.B Remedy:
-  1) In filenames use only A-Z, a-z, 1-9.
-  2) Install a recent \fBLaTeX\fR package inputenc.sty. Select Layout->Document->encoding:latin1, so that \fBreLyX\fR adds the \fBLaTeX\fR command '\\usepackage[latin1]{inputenc}'.
-
-\fBLyX\fR server has some limitations under OS/2: See
-Help->Customization for details.
-
-Preview of inline images in rare cases does not show the image. If you
-want to preview the image, just click on it and choose fullscreen
-preview.
-
-If you have performance problems, please go through the
-Edit>Preferences... dialog. It contains settings that can be used to
-improve performance on slow systems.
 .SH AUTHORS
 Copyright
 .Cr
 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002 by Matthias Ettrich
 (ettrich@informatik.uni-tuebingen.de) and the rest of the \fBLyX
-Team\fR (See Credits under the Help menu item).
+Team\fR (See About LyX under the Help menu item).
