@@ -1,3 +1,7 @@
+2004-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text2.C (insertInset): move cursor when inserting inset.
+
 2004-06-30  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbmap.C (findbindings): a couple of new methods. returns a
