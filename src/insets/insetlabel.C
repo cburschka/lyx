@@ -59,7 +59,7 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_EDIT:
 		InsetCommandMailer("label", *this).showDialog(cmd.view());
-		result = DISPATCHED;
+		return DISPATCHED;
 		break;
 
 	case LFUN_INSET_MODIFY: {
@@ -75,16 +75,13 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 		}
 
 		setParams(p);
-		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		cmd.view()->updateInset();
+		return DISPATCHED;
 	}
-	break;
 
 	default:
-		result = InsetCommand::localDispatch(cmd);
+		return InsetCommand::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 

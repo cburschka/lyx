@@ -102,7 +102,7 @@ dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 			return UNDISPATCHED;
 
 		setParams(p);
-		cmd.view()->updateInset(this);
+		cmd.view()->updateInset();
 		return DISPATCHED;
 	}
 

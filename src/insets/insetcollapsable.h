@@ -73,8 +73,6 @@ public:
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,
 				bool lr = false);
 	///
-	bool updateInsetInInset(BufferView *, InsetOld *);
-	///
 	int insetInInsetY() const;
 	///
 	RESULT localDispatch(FuncRequest const &);

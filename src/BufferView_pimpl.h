@@ -95,7 +95,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool insertInset(InsetOld * inset, string const & lout = string());
 	///
-	void updateInset(InsetOld * inset);
+	void updateInset();
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed

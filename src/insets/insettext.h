@@ -84,8 +84,6 @@ public:
 	bool unlockInsetInInset(BufferView *,
 				UpdatableInset *, bool lr = false);
 	///
-	bool updateInsetInInset(BufferView *, InsetOld *);
-	///
 	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &,

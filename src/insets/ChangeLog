@@ -1,4 +1,22 @@
 
+2003-08-05  André Pönitz  <poenitz@gmx.net>
+
+	* insetbibitem.C:
+	* insetcollapsable.[Ch]:
+	* insetcommand.C:
+	* insetert.C:
+	* insetexternal.C:
+	* insetfloat.C:
+	* insetgraphics.C:
+	* insetinclude.C:
+	* insetlabel.C:
+	* insetminipage.C:
+	* insetnote.C:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetwrap.C:
+	* updatableinset.[Ch]: rip out "deep update"
+
 2003-08-04  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.[Ch] (updateLocal): remove 'what' argument by assuimng it

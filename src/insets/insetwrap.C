@@ -91,7 +91,7 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		params_.placement = params.placement;
 		params_.width     = params.width;
 
-		cmd.view()->updateInset(this);
+		cmd.view()->updateInset();
 		return DISPATCHED;
 	}
 
@@ -107,12 +107,11 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 
 void InsetWrapParams::write(ostream & os) const
 {
-	os << "Wrap " // getInsetName()
-	   << type << '\n';
+	os << "Wrap " << type << '\n';
 
-	if (!placement.empty()) {
+	if (!placement.empty())
 		os << "placement " << placement << "\n";
-	}
+
 	os << "width \"" << width.asString() << "\"\n";
 }
 

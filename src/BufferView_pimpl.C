@@ -1174,7 +1174,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_INSET_INSERT: {
 		InsetOld * inset = createInset(ev);
 		if (inset && insertInset(inset)) {
-			updateInset(inset);
+			updateInset();
 
 			string const name = ev.getArg(0);
 			if (name == "bibitem") {
@@ -1370,46 +1370,13 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 }
 
 
-void BufferView::Pimpl::updateInset(InsetOld * inset)
+void BufferView::Pimpl::updateInset()
 {
-	if (!inset || !available())
+	if (!available())
 		return;
 
-	// first check for locking insets
-	if (bv_->theLockingInset()) {
-		if (bv_->theLockingInset() == inset) {
-			if (bv_->text->updateInset(inset)) {
-				update();
-				updateScrollbar();
-				return;
-			}
-		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
-			if (bv_->text->updateInset(bv_->theLockingInset())) {
-				update();
-				updateScrollbar();
-				return;
-			}
-		}
-	}
-
-	// then check if the inset is a top_level inset (has no owner)
-	// if yes do the update as always otherwise we have to update the
-	// toplevel inset where this inset is inside
-	InsetOld * tl_inset = inset;
-	while (tl_inset->owner())
-		tl_inset = tl_inset->owner();
-	if (tl_inset == inset) {
-		update();
-		if (bv_->text->updateInset(inset)) {
-			update();
-			return;
-		}
-	} else if (static_cast<UpdatableInset *>(tl_inset)
-			   ->updateInsetInInset(bv_, inset))
-	{
-		if (bv_->text->updateInset(tl_inset)) {
-			update();
-			updateScrollbar();
-		}
-	}
+	// this should not be needed, but it is...
+	bv_->text->redoParagraph(bv_->text->cursor.par());
+	update();
+	updateScrollbar();
 }

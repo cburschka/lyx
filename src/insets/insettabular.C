@@ -436,7 +436,7 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what) const
 		need_update = what;
 	// Dirty Cast! (Lgb)
 	if (need_update != NONE) {
-		bv->updateInset(const_cast<InsetTabular *>(this));
+		bv->updateInset();
 		if (locked)
 			resetPos(bv);
 	}
@@ -516,25 +516,6 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 }
 
 
-bool InsetTabular::updateInsetInInset(BufferView * bv, InsetOld * inset)
-{
-	InsetOld * tl_inset = inset;
-	// look if this inset is really inside myself!
-	while (tl_inset->owner() && tl_inset->owner() != this)
-		tl_inset = tl_inset->owner();
-	// if we enter here it's not ower inset
-	if (!tl_inset->owner())
-		return false;
-	// we only have to do this if this is a subinset of our cells
-	if (tl_inset != inset) {
-		if (!static_cast<InsetText *>(tl_inset)->updateInsetInInset(bv, inset))
-			return false;
-	}
-	updateLocal(bv, CELL);
-	return true;
-}
-
-
 int InsetTabular::insetInInsetY() const
 {
 	if (!the_locking_inset)
@@ -592,16 +573,6 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	if (actrow != orow)
 		updateLocal(bv, NONE);
 	clearSelection();
-#if 0
-	if (cmd.button() == mouse_button::button3) {
-		if ((ocell != actcell) && the_locking_inset) {
-			the_locking_inset->insetUnlock(bv);
-			updateLocal(bv, CELL);
-			the_locking_inset = 0;
-		}
-		return;
-	}
-#endif
 
 	bool const inset_hit = insetHit(bv, cmd.x, cmd.y);
 

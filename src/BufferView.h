@@ -75,7 +75,7 @@ public:
 	/// perform pending painting updates
 	void update();
 	/// update for a particular inset
-	void updateInset(InsetOld * inset);
+	void updateInset();
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
 	/// FIXME

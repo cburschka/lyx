@@ -125,7 +125,7 @@ void PreviewedInset::imageReady(PreviewImage const & pimage) const
 	pimage_ = &pimage;
 
 	if (view())
-		view()->updateInset(&inset_);
+		view()->updateInset();
 }
 
 } // namespace graphics

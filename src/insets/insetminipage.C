@@ -103,8 +103,7 @@ auto_ptr<InsetBase> InsetMinipage::clone() const
 
 InsetMinipage::~InsetMinipage()
 {
-	InsetMinipageMailer mailer(*this);
-	mailer.hideDialog();
+	InsetMinipageMailer(*this).hideDialog();
 }
 
 
@@ -121,7 +120,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		/* FIXME: I refuse to believe we have to live
 		 * with ugliness like this ... */
 		inset.getLyXText(cmd.view())->fullRebreak();
-		cmd.view()->updateInset(this);
+		cmd.view()->updateInset();
 		return DISPATCHED;
 	}
 

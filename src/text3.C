@@ -70,7 +70,7 @@ namespace {
 		if (selecting || lt->selection.mark()) {
 			lt->setSelection();
 			if (lt->isInInset())
-				bv->updateInset(lt->inset_owner);
+				bv->updateInset();
 		}
 		bv->update();
 
@@ -363,7 +363,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 	if (!bv->insertInset(new_inset))
 		delete new_inset;
 	else
-		bv->updateInset(new_inset);
+		bv->updateInset();
 }
 
 
@@ -975,7 +975,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update();
 		changeCase(LyXText::text_uppercase);
 		if (inset_owner)
-			bv->updateInset(inset_owner);
+			bv->updateInset();
 		update();
 		break;
 
@@ -983,7 +983,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update();
 		changeCase(LyXText::text_lowercase);
 		if (inset_owner)
-			bv->updateInset(inset_owner);
+			bv->updateInset();
 		update();
 		break;
 
@@ -991,7 +991,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update();
 		changeCase(LyXText::text_capitalization);
 		if (inset_owner)
-			bv->updateInset(inset_owner);
+			bv->updateInset();
 		update();
 		break;
 
@@ -1001,7 +1001,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (transposeChars(cursor))
 			checkParagraph(cursor.par(), cursor.pos());
 		if (inset_owner)
-			bv->updateInset(inset_owner);
+			bv->updateInset();
 		update();
 		break;
 

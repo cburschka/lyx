@@ -78,9 +78,6 @@ public:
 	///
 	virtual int insetInInsetY() const { return 0; }
 	///
-	virtual bool updateInsetInInset(BufferView *, InsetOld *)
-		{ return false; }
-	///
 	virtual bool lockInsetInInset(BufferView *, UpdatableInset *)
 		{ return false; }
 	///

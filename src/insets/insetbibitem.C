@@ -40,8 +40,7 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 
 InsetBibitem::~InsetBibitem()
 {
-	InsetCommandMailer mailer("bibitem", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("bibitem", *this).hideDialog();
 }
 
 
@@ -67,7 +66,7 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 		if (p.getCmdName().empty())
 			return DISPATCHED;
 		setParams(p);
-		cmd.view()->updateInset(this);
+		cmd.view()->updateInset();
 		cmd.view()->fitCursor();
 		return DISPATCHED;
 	}

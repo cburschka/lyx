@@ -169,7 +169,7 @@ void InsetGraphics::statusChanged()
 {
 	BufferView * bv = graphic_->view();
 	if (bv)
-		bv->updateInset(this);
+		bv->updateInset();
 }
 
 
@@ -182,7 +182,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {
 			setParams(p);
-			cmd.view()->updateInset(this);
+			cmd.view()->updateInset();
 		}
 		return DISPATCHED;
 	}

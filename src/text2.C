@@ -320,13 +320,12 @@ void LyXText::toggleInset()
 	if (!isHighlyEditableInset(inset))
 		recordUndo(bv(), Undo::ATOMIC);
 
-	if (inset->isOpen()) {
+	if (inset->isOpen())
 		inset->close(bv());
-	} else {
+	else
 		inset->open(bv());
-	}
 
-	bv()->updateInset(inset);
+	bv()->updateInset();
 }
 
 
@@ -959,7 +958,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
 	if (inset_owner)
-		bv()->updateInset(inset_owner);
+		bv()->updateInset();
 }
 
 

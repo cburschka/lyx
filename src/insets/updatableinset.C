@@ -125,7 +125,7 @@ InsetOld::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 			int const xx = strToInt(ev.argument);
 			scroll(ev.view(), xx);
 		}
-		ev.view()->updateInset(this);
+		ev.view()->updateInset();
 
 		return DISPATCHED;
 	}

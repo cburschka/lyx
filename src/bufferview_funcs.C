@@ -221,11 +221,11 @@ void number(BufferView * bv)
 
 void lang(BufferView * bv, string const & l)
 {
-	LyXFont font(LyXFont::ALL_IGNORE);
 	Language const * lang = languages.getLanguage(l);
 	if (!lang)
 		return;
 
+	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLanguage(lang);
 	toggleAndShow(bv, font);
 }
@@ -234,14 +234,14 @@ void lang(BufferView * bv, string const & l)
 bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_only)
 {
 	if (!bv->available() || !text)
-	    return false;
+		return false;
 
 	if (test_only)
 		return text->changeDepth(type, true);
 
 	bool const changed = text->changeDepth(type, false);
 	if (text->inset_owner)
-		bv->updateInset((InsetOld *)text->inset_owner);
+		bv->updateInset();
 	bv->update();
 	return changed;
 }

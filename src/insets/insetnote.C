@@ -122,28 +122,32 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 
 	switch (cmd.action) {
-	case LFUN_INSET_MODIFY:
-		{
+
+	case LFUN_INSET_MODIFY: {
 		InsetNoteParams params;
 		InsetNoteMailer::string2params(cmd.argument, params);
 		params_.type = params.type;
 		setButtonLabel();
-		bv->updateInset(this);
+		bv->updateInset();
 		return DISPATCHED;
-		}
+	}
+
 	case LFUN_INSET_EDIT:
-		if (cmd.button() != mouse_button::button3)
-			return InsetCollapsable::localDispatch(cmd);
-		return UNDISPATCHED;
+		if (cmd.button() == mouse_button::button3)
+			return UNDISPATCHED;
+		return InsetCollapsable::localDispatch(cmd);
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetNoteMailer("note", *this).updateDialog(bv);
 		return DISPATCHED;
+
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetNoteMailer("note", *this).showDialog(bv);
 			return DISPATCHED;
 		}
 		// fallthrough:
+
 	default:
 		return InsetCollapsable::localDispatch(cmd);
 	}

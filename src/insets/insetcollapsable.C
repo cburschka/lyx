@@ -210,7 +210,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 	inset.insetUnlock(bv);
 	if (scroll())
 		scroll(bv, 0.0F);
-	bv->updateInset(this);
+	bv->updateInset();
 }
 
 
@@ -229,25 +229,22 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (collapsed_ && cmd.button() != mouse_button::button3) {
 		collapsed_ = false;
-		bv->updateInset(this);
+		bv->updateInset();
 		bv->buffer()->markDirty();
 		return;
 	}
 
-	if (cmd.button() != mouse_button::button3 && hitButton(cmd))
-	{
+	if (cmd.button() != mouse_button::button3 && hitButton(cmd)) {
 		if (collapsed_) {
 			collapsed_ = false;
-			bv->updateInset(this);
-			bv->buffer()->markDirty();
 		} else {
 			collapsed_ = true;
 			bv->unlockInset(this);
-			bv->updateInset(this);
-			bv->buffer()->markDirty();
 		}
-	} else if (!collapsed_ && (cmd.y > button_dim.y2)) {
-		ret = (inset.localDispatch(adjustCommand(cmd)) == DISPATCHED);
+		bv->updateInset();
+		bv->buffer()->markDirty();
+	} else if (!collapsed_ && cmd.y > button_dim.y2) {
+		ret = inset.localDispatch(adjustCommand(cmd)) == DISPATCHED;
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
 		showInsetDialog(bv);
@@ -298,7 +295,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 					lyxerr << "branch collapsed_" << endl;
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
-						bv->updateInset(this);
+						bv->updateInset();
 						bv->buffer()->markDirty();
 						inset.localDispatch(cmd);
 						first_after_edit = true;
@@ -326,7 +323,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				first_after_edit = true;
 				if (!bv->lockInset(this))
 					return DISPATCHED;
-				bv->updateInset(this);
+				bv->updateInset();
 				bv->buffer()->markDirty();
 				inset.localDispatch(cmd);
 			} else {
@@ -383,14 +380,6 @@ bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
 		return true;
 	}
 	return inset.unlockInsetInInset(bv, in, lr);
-}
-
-
-bool InsetCollapsable::updateInsetInInset(BufferView * bv, InsetOld *in)
-{
-	if (in == this)
-		return true;
-	return inset.updateInsetInInset(bv, in);
 }
 
 
@@ -501,10 +490,11 @@ InsetOld * InsetCollapsable::getInsetFromID(int id_arg) const
 
 void InsetCollapsable::open(BufferView * bv)
 {
-	if (!collapsed_) return;
+	if (!collapsed_)
+		return;
 
 	collapsed_ = false;
-	bv->updateInset(this);
+	bv->updateInset();
 }
 
 
@@ -514,7 +504,7 @@ void InsetCollapsable::close(BufferView * bv) const
 		return;
 
 	collapsed_ = true;
-	bv->updateInset(const_cast<InsetCollapsable *>(this));
+	bv->updateInset();
 }
 
 

@@ -127,7 +127,7 @@ void InsetExternal::statusChanged()
 {
 	BufferView * bv = renderer_->view();
 	if (bv)
-		bv->updateInset(this);
+		bv->updateInset();
 }
 
 
@@ -152,7 +152,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, *buffer, p);
 		setParams(p, buffer);
-		cmd.view()->updateInset(this);
+		cmd.view()->updateInset();
 		return DISPATCHED;
 	}
 

@@ -162,9 +162,8 @@ InsetFloat::~InsetFloat()
 
 dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 {
-	InsetOld::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
+
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
 		InsetFloatMailer::string2params(cmd.argument, params);
@@ -173,22 +172,18 @@ dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 		params_.wide      = params.wide;
 
 		wide(params_.wide, cmd.view()->buffer()->params);
-		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		cmd.view()->updateInset();
+		return DISPATCHED;
 	}
-	break;
 
 	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetFloatMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
+		InsetFloatMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 	}
-	break;
 
 	default:
-		result = InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 
@@ -197,14 +192,13 @@ void InsetFloatParams::write(ostream & os) const
 	os << "Float " // getInsetName()
 	   << type << '\n';
 
-	if (!placement.empty()) {
+	if (!placement.empty())
 		os << "placement " << placement << "\n";
-	}
-	if (wide) {
+
+	if (wide)
 		os << "wide true\n";
-	} else {
+	else
 		os << "wide false\n";
-	}
 }
 
 

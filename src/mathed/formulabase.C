@@ -156,12 +156,12 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 	if (mathcursor) {
 		if (mathcursor->inMacroMode()) {
 			mathcursor->macroModeClose();
-			bv->updateInset(this);
+			bv->updateInset();
 		}
 		releaseMathCursor(bv);
 	}
 	generatePreview();
-	bv->updateInset(this);
+	bv->updateInset();
 }
 
 
@@ -207,7 +207,7 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 {
 	if (mathcursor)
-		bv->updateInset(this);
+		bv->updateInset();
 }
 
 
@@ -217,7 +217,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		return UNDISPATCHED;
 
 	BufferView * bv = cmd.view();
-	bv->updateInset(this);
+	bv->updateInset();
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button3) {
@@ -236,7 +236,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->insert(ar);
-		bv->updateInset(this);
+		bv->updateInset();
 		return DISPATCHED;
 	}
 
@@ -283,7 +283,7 @@ dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	bv->updateInset(this);
+	bv->updateInset();
 	return DISPATCHED;
 }
 
@@ -311,7 +311,7 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 
 	BufferView * bv = cmd.view();
 	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
-	bv->updateInset(this);
+	bv->updateInset();
 	return DISPATCHED;
 }
 
@@ -345,7 +345,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			}
 			// if that is removed, we won't get the magenta box when entering an
 			// inset for the first time
-			bv->updateInset(this);
+			bv->updateInset();
 			return DISPATCHED;
 
 		case LFUN_MOUSE_PRESS:
@@ -723,7 +723,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	}
 
 	if (result == DISPATCHED)
-		bv->updateInset(this);
+		bv->updateInset();
 
 	mathcursor->normalize();
 	mathcursor->touch();
@@ -853,7 +853,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			mathcursor->setSelection(it, ar.size());
 			current = it;
 			it.jump(ar.size());
-			bv->updateInset(this);
+			bv->updateInset();
 			return true;
 		}
 	}

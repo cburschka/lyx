@@ -368,8 +368,7 @@ void InsetText::drawFrame(Painter & pain, int x) const
 	frame_y = top_baseline - dim_.asc + ttoD2;
 	frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
 	frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
-	pain.rectangle(frame_x, frame_y, frame_w, frame_h,
-		       frame_color);
+	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frame_color);
 }
 
 
@@ -389,7 +388,7 @@ void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
 	bv->fitCursor();
 
 	if (flag)
-		bv->updateInset(const_cast<InsetText *>(this));
+		bv->updateInset();
 
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
@@ -544,44 +543,6 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		return true;
 	}
 	return the_locking_inset->unlockInsetInInset(bv, inset, lr);
-}
-
-
-bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
-{
-	if (!autoBreakRows && paragraphs.size() > 1)
-		collapseParagraphs(bv);
-
-	if (inset == this)
-		return true;
-
-	if (inset->owner() != this) {
-		bool found = false;
-		UpdatableInset * tl_inset = the_locking_inset;
-		if (tl_inset)
-			found = tl_inset->updateInsetInInset(bv, inset);
-		if (!found) {
-			tl_inset = static_cast<UpdatableInset *>(inset);
-			while(tl_inset->owner() && tl_inset->owner() != this)
-				tl_inset = static_cast<UpdatableInset *>(tl_inset->owner());
-			if (!tl_inset->owner())
-				return false;
-			found = tl_inset->updateInsetInInset(bv, inset);
-		} else {
-			text_.updateInset(tl_inset);
-		}
-		return found;
-	}
-	bool found = text_.updateInset(inset);
-	if (found) {
-		if (the_locking_inset &&
-		    cpar() == inset_par && cpos() == inset_pos)
-		{
-			inset_x = cix() - top_x + drawTextXOffset;
-			inset_y = ciy() + drawTextYOffset;
-		}
-	}
-	return found;
 }
 
 
