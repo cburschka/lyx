@@ -85,12 +85,7 @@ enum MathFont {
 
 void mathed_init_fonts()
 {
-	MathFonts = new LyXFont[FONT_NUM]; //DEC cxx cannot initialize all fonts
-	//at once (JMarc) rc
-
-	for (int i = 0 ; i < FONT_NUM ; ++i) {
-		MathFonts[i] = LyXFont(LyXFont::ALL_SANE);
-	}
+	MathFonts = new LyXFont[FONT_NUM];
 
 	MathFonts[FONT_IT].setShape(LyXFont::ITALIC_SHAPE);
 
