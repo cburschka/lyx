@@ -288,8 +288,6 @@ private:
 	bool goUp();
 	/// moves position somehow down
 	bool goDown();
-	/// moves position somehow down
-	bool bruteUpDown(int ylow, int yhigh);
 	/// moves position into box
 	bool bruteFind(int xlow, int xhigh, int ylow, int yhigh);
 

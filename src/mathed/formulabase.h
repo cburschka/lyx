@@ -45,10 +45,14 @@ public:
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
 	///
 	virtual MathInsetTypes getType() const = 0;
-	/// upper y coordinate
-	virtual int upperY() const;
-	/// lower y coordinate
-	virtual int lowerY() const;
+	/// lowest x coordinate
+	virtual int xlow() const;
+	/// highest x coordinate
+	virtual int xhigh() const;
+	/// lowest y coordinate
+	virtual int ylow() const;
+	/// highest y coordinate
+	virtual int yhigh() const;
 
 public:
 	///

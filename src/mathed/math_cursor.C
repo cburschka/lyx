@@ -1036,18 +1036,19 @@ void MathCursor::breakLine()
 		p->mutate(LM_OT_EQNARRAY);
 		idx() = 0;
 		pos() = size();
-	} else {
-		p->addRow(row());
-
-		// split line
-		const row_type r = row();
-		for (col_type c = col() + 1; c < p->ncols(); ++c)
-			p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
-
-		// split cell
-		splitCell();
-		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
+		return;
 	}
+	
+	p->addRow(row());
+
+	// split line
+	const row_type r = row();
+	for (col_type c = col() + 1; c < p->ncols(); ++c)
+		p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
+
+	// split cell
+	splitCell();
+	p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
 }
 
 
@@ -1104,25 +1105,22 @@ bool MathCursor::goUp()
 {
 	// first ask the inset if it knows better then we
 	if (par()->idxUp(idx(), pos())) {
+		//lyxerr << "ask cell\n";
 		int xlow, xhigh, ylow, yhigh;
 		xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 		bruteFind(xlow, xhigh, ylow, yhigh);
 		return true;
 	}
 
-	// leave subscript to the nearest side	
-	MathScriptInset * p = par()->asScriptInset();
-	if (p && idx() == 0) {
-		if (pos() <= size() / 2)
-			popLeft();
-		else
-			popRight();		
-		return true;
-	}
-
 	// if not, apply brute force.
+	//lyxerr << "brute force\n";
 	return
-		bruteUpDown(formula()->upperY(), xarray().yo() - 4 - xarray().ascent());
+		bruteFind(
+			formula()->xlow(),
+			formula()->xhigh(),
+			formula()->ylow(),
+			xarray().yo() - 4 - xarray().ascent()
+		);
 }
 
 
@@ -1130,69 +1128,34 @@ bool MathCursor::goDown()
 {
 	// first ask the inset if it knows better then we
 	if (par()->idxDown(idx(), pos())) {
+		//lyxerr << "ask cell\n";
 		int xlow, xhigh, ylow, yhigh;
 		xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 		bruteFind(xlow, xhigh, ylow, yhigh);
 		return true;
 	}
 
-	// leave superscript to the nearest side	
-	MathScriptInset * p = par()->asScriptInset();
-	if (p && idx() == 1) {
-		if (pos() <= size() / 2)
-			popLeft();
-		else
-			popRight();		
-		return true;
-	}
-
 	// if not, apply brute force.
+	//lyxerr << "brute force\n";
 	return
-		bruteUpDown(xarray().yo() + 4 + xarray().descent(), formula()->lowerY());
-}
-
-
-bool MathCursor::bruteUpDown(int ylow, int yhigh)
-{
-	//lyxerr << "looking at range: " << ylow << " " << yhigh << "\n";
-	int x0;
-	int y0;
-	getPos(x0, y0);
-	cursor_type save = Cursor_;
-	cursor_type best;
-	double best_dist = 1e10; // large enough
-	bool found  = false;
-	for (int y = ylow; y < yhigh; y += 4) {
-		setPos(x0, y);
-		int x1;
-		int y1;
-		getPos(x1, y1);
-		if (save != Cursor_ && y1 > ylow && y1 < yhigh) {
-			found = true;
-			double d = (x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1);
-			if (d < best_dist) {
-				best_dist = d;
-				best = Cursor_;
-			}	
-		}
-	}
-
-	if (found) {
-		Cursor_ = best;
-		return true;
-	}
-
-	Cursor_ = save;
-	return false;
+		bruteFind(
+			formula()->xlow(),
+			formula()->xhigh(),
+			xarray().yo() + 4 + xarray().descent(),
+			formula()->yhigh()
+		);
 }
 
 
 bool MathCursor::bruteFind(int xlow, int xhigh, int ylow, int yhigh)
 {
-	//lyxerr << "looking at range: " << ylow << " " << yhigh << "\n";
 	int x;
 	int y;
 	getPos(x, y);
+	//lyxerr << "looking at range: "
+	//	<< "[" << xlow << "..." << xhigh << "]" 
+	//	<< " x [" << ylow << "..." << yhigh << "]"
+	//	<< "   xo: " << x << "  yo: " << y << "\n";
 
 	cursor_type best_cursor;
 	double best_dist = 1e10;
@@ -1212,7 +1175,7 @@ bool MathCursor::bruteFind(int xlow, int xhigh, int ylow, int yhigh)
 	}
 	if (best_dist < 1e10)
 		Cursor_ = best_cursor;
-	return true;
+	return best_dist < 1e10;
 }
 
 

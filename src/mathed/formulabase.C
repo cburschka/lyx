@@ -669,15 +669,27 @@ Inset::Code InsetFormulaBase::lyxCode() const
 }
 
 
-int InsetFormulaBase::upperY() const
+int InsetFormulaBase::ylow() const
 {
 	return yo_ - ascent(view_, font_);
 }
 
 
-int InsetFormulaBase::lowerY() const
+int InsetFormulaBase::yhigh() const
 {
 	return yo_ + descent(view_, font_);
+}
+
+
+int InsetFormulaBase::xlow() const
+{
+	return xo_;
+}
+
+
+int InsetFormulaBase::xhigh() const
+{
+	return xo_ + width(view_, font_);
 }
 
 
