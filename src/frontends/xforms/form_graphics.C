@@ -89,7 +89,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 230, 450, 90, _("Subcaption"));
   {
-    char const * const dummy = N_("Subcaption|#S");
+    char const * const dummy = N_("Subcaption|#u");
     fdui->check_subcaption = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 110, 240, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

@@ -82,6 +82,10 @@ public:
 	};
 	///
 	void validate(LaTeXFeatures &) const;
+	/// is this equivalent to a letter?
+	bool isLetter() const;
+	/// is this equivalent to a space?
+	bool isSpace() const;
 private:
 	/// And which kind is this?
 	Kind kind_;

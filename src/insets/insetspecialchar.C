@@ -321,3 +321,15 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 		features.lyxarrow = true;
 	}
 }
+
+
+bool InsetSpecialChar::isLetter() const
+{
+	return kind_ == HYPHENATION || kind_ == LIGATURE_BREAK;
+}
+
+
+bool InsetSpecialChar::isSpace() const
+{
+	return kind_ == PROTECTED_SEPARATOR;
+}

@@ -1,3 +1,16 @@
+2001-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text.C (selectNextWordToSpellcheck): do not test explicitely for
+	insets which are part of a word. Paragraph::isLetter takes care of
+	that now. Use Paragraph::isInset to identify insets.
+	(selectSelectedWord): do not test for hyphenation break.
+
+	* BufferView_pimpl.C (smartQuote): use Inset::isSpace, so
+	that protected spaces are considered as spaces.
+
+	* paragraph.C (isLetter): cleanup the code for ispell extras; use
+	Inset::isLetter. 
+
 2001-11-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxserver.h:

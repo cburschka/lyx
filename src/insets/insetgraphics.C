@@ -514,7 +514,7 @@ void formatResize(ostream & os, string const & key,
 		break;
 
 	case InsetGraphicsParams::SCALE:
-		os << "scale" << '=' << size << ',';
+		os << "scale" << '=' << size/100 << ',';
 	}
 }
 

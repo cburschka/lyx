@@ -3241,19 +3241,23 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 
 void BufferView::Pimpl::smartQuote()
 {
+	LyXText const * lt = bv_->getLyXText();
+	Paragraph const * par = lt->cursor.par();
+	Paragraph::size_type pos = lt->cursor.pos();
 	char c;
-	LyXText * lt = bv_->getLyXText();
 
-	if (lt->cursor.pos())
-		c = lt->cursor.par()->getChar(lt->cursor.pos() - 1);
-	else 
+	if (!pos
+	    || (par->isInset(pos - 1)
+		&& par->getInset(pos - 1)->isSpace()))
 		c = ' ';
+	else
+		c = par->getChar(pos - 1);
+		
 
 	hideCursor();
 
 	LyXLayout const & style = textclasslist.Style(
-		bv_->buffer()->params.textclass,
-		lt->cursor.par()->getLayout());
+		bv_->buffer()->params.textclass, par->getLayout());
 	
 	if (style.pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))

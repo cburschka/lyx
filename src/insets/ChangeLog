@@ -1,3 +1,15 @@
+2001-11-13  Herbert Voss  <voss@perce.de>
+
+	* insetgraphic.C: fix scale bug
+	
+2001-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* inset.h (isSpace): 
+	(isLetter): new virtual methods.
+
+	* insetspecialchar.C (isSpace): 
+	(isLetter): implement here.
+
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* inset.h: new inline helpers

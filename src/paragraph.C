@@ -1878,13 +1878,11 @@ bool Paragraph::isLetter(Paragraph::size_type pos) const
 	value_type const c = getChar(pos);
 	if (IsLetterChar(c))
 		return true;
-	// '\0' is not a letter, allthough every string contains "" (below)
-	if (c == '\0')
-		return false;
+	if (isInset(pos)) 
+		return getInset(pos)->isLetter();
 	// We want to pass the ' and escape chars to ispell
 	string const extra = lyxrc.isp_esc_chars + '\'';
-	char ch[2] = { c, 0 };
-	return contains(extra, ch);
+	return contains(extra, c);
 }
  
  

@@ -21,7 +21,6 @@
 #include "support/lstrings.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
-#include "insets/insetspecialchar.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -2365,16 +2364,10 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	
 	Inset * inset;
 
-	// and find the end of the word 
-	// (optional hyphens are part of a word)
+	// and find the end of the word (insets like optional hyphens
+	// and ligature break are part of a word)
 	while (cursor.pos() < cursor.par()->size()
-	       && (cursor.par()->isLetter(cursor.pos())) 
-	       // assignment is intentional here
-	       || ((inset = getInset())
-		   && inset->lyxCode() == Inset::SPECIALCHAR_CODE
-		   && static_cast<InsetSpecialChar *>(inset)->kind()
-		   	== InsetSpecialChar::HYPHENATION
-		   ))
+	       && (cursor.par()->isLetter(cursor.pos()))) 
 		cursor.pos(cursor.pos() + 1);
 
 	// Finally, we copy the word to a string and return it
@@ -2382,7 +2375,7 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	if (selection.cursor.pos() < cursor.pos()) {
 		Paragraph::size_type i;
 		for (i = selection.cursor.pos(); i < cursor.pos(); ++i) {
-			if (cursor.par()->getChar(i) != Paragraph::META_INSET)
+			if (!cursor.par()->isInset(i))
 				str += cursor.par()->getChar(i);
 		}
 	}
@@ -2406,13 +2399,7 @@ void LyXText::selectSelectedWord(BufferView * bview)
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->size()
-	       && (cursor.par()->isLetter(cursor.pos())
-		   // assignment is intentional here
-		   || ((inset = getInset())
-		       && inset->lyxCode() == Inset::SPECIALCHAR_CODE
-		       && static_cast<InsetSpecialChar *>(inset)->kind()
-		       		== InsetSpecialChar::HYPHENATION
-		       )))
+	       && (cursor.par()->isLetter(cursor.pos())))
 		cursor.pos(cursor.pos() + 1);
 	
 	setCursor(bview, cursor.par(), cursor.pos());

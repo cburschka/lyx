@@ -182,14 +182,7 @@ Menuset
 # INSERT MENU
 #
     Menu "insert"
-	Item "Math Formula|h" "math-mode"
-	Item "Display Formula|D" "math-display"
-	Item "Math Panel|l" "math-panel"
-	#Item "Display Formula|D" "math-mode display"
-	#Item "Change to Inline Math Formula|q" "math-mutate simple"
-	#Item "Change to Displayed Math Formula|q" "math-mutate equation"
-	#Item "Change to Eqnarray Environment|q" "math-mutate eqnarray"
-	#Item "Change to Align Environment|g" "math-mutate align"
+        Submenu "Math|h" "insert_math"
 	Separator
 	Submenu "Special Character|S" "insert_special"
 	Item "Citation Reference...|C" "citation-insert"
@@ -227,6 +220,21 @@ Menuset
 	Item "End of Sentence|E" "end-of-sentence-period-insert"
 	Item "Ordinary Quote|Q" "self-insert \""
 	Item "Menu Separator|M" "menu-separator-insert"
+    End
+
+    Menu "insert_math"
+	Item "Inline Formula|h" "math-mode"
+	Item "Display Formula|D" "math-display"
+	Item "Eqnarray environment|E" "command-sequence math-mode; math-mutate eqnarray;"
+	Item "AMS align environment|A" "command-sequence math-mode; math-mutate align;"
+	Item "AMS alignat environment|t" "command-sequence math-mode; math-mutate alignat;"
+	Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
+	Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
+  Separator
+	Item "Array environment|y" "math-insert matrix 2 2"
+	Item "Cases environment|C" "math-insert cases 2"
+  Separator
+	Item "Math Panel|l" "math-panel"
     End
 
     Menu "insert_floats"

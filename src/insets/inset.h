@@ -295,6 +295,12 @@ public:
 	// needed for spellchecking text
 	///
 	virtual bool allowSpellcheck() { return false; }
+
+	// is this equivalent to a letter?
+	virtual bool isLetter() const { return false; }
+	// is this equivalent to a space?
+	virtual bool isSpace() const { return false; }
+
 protected:
 	///
 	mutable int top_x;

@@ -93,7 +93,11 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 270, 90, 30, _("Apply"));
+  {
+    char const * const dummy = N_("Apply|#A");
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 270, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
