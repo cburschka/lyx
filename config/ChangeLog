@@ -1,16 +1,22 @@
+2002-12-17  Angus Leeming  <leeming@lyx.org>
+
+	* configure.ac:
+	* configure.in: remove the XOpenIM test as lyxlookup.C has been buried.
+
 2002-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* configure.ac: replace LYX_USE_XFORMS_IMAGE_LOADER with
 	LYX_CHECK_XFORMS_IMAGE_LOADER.
 	Remove AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER, ...) test.
 
-	* configure.ac: As above. However, I have also found it necessary to
+	* configure.in: As above. However, I have also found it necessary to
 	comment out some tests from the gnome block of case "$lyx_use_frontend"
 	otherwise they were replicated. No idea what is going wrong here.
 
 	* xforms.m4 (XFORMS_VERSION): update warning/error messages.
 	(LYX_CHECK_XFORMS_IMAGE_LOADER): replaces LYX_USE_XFORMS_IMAGE_LOADER.
-	The function is far simpler as we don't have to worry about xforms < 0.89.5.
+	The function is far simpler as we don't have to worry about
+	xforms < 0.89.5.
 
 2002-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

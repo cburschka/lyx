@@ -150,9 +150,6 @@ if test -n "$GXX" ; then
 fi
 CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
-## Check whether X is new enough to handle the input method stuff
-AC_CHECK_FUNCS(XOpenIM)
-
 ### check which frontend we want to use
 
 #LYX_USE_FRONTEND
