@@ -372,14 +372,14 @@ void FormTabular::update()
 		if (ltt.set) {
 			fl_set_button(longtable_options_->check_head_2border_above,
 				      ltt.topDL);
-			fl_set_button(longtable_options_->check_head_2border_above,
-				      ltt.topDL);
+			fl_set_button(longtable_options_->check_head_2border_below,
+				      ltt.bottomDL);
 			use_empty = true;
 		} else {
 			setEnabled(longtable_options_->check_head_2border_above, 0);
 			setEnabled(longtable_options_->check_head_2border_below, 0);
 			fl_set_button(longtable_options_->check_head_2border_above,0);
-			fl_set_button(longtable_options_->check_head_2border_above,0);
+			fl_set_button(longtable_options_->check_head_2border_below,0);
 			fl_set_button(longtable_options_->check_1head_empty,0);
 			setEnabled(longtable_options_->check_1head_empty, 0);
 			use_empty = false;
@@ -390,13 +390,13 @@ void FormTabular::update()
 		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_1head_2border_above,
 				      ltt.topDL);
-			fl_set_button(longtable_options_->check_1head_2border_above,
-				      ltt.topDL);
+			fl_set_button(longtable_options_->check_1head_2border_below,
+				      ltt.bottomDL);
 		} else {
 			setEnabled(longtable_options_->check_1head_2border_above, 0);
 			setEnabled(longtable_options_->check_1head_2border_below, 0);
 			fl_set_button(longtable_options_->check_1head_2border_above,0);
-			fl_set_button(longtable_options_->check_1head_2border_above,0);
+			fl_set_button(longtable_options_->check_1head_2border_below,0);
 			if (use_empty) {
 				fl_set_button(longtable_options_->check_1head_empty,ltt.empty);
 				if (ltt.empty)
@@ -409,14 +409,14 @@ void FormTabular::update()
 		if (ltt.set) {
 			fl_set_button(longtable_options_->check_foot_2border_above,
 				      ltt.topDL);
-			fl_set_button(longtable_options_->check_foot_2border_above,
-				      ltt.topDL);
+			fl_set_button(longtable_options_->check_foot_2border_below,
+				      ltt.bottomDL);
 			use_empty = true;
 		} else {
 			setEnabled(longtable_options_->check_foot_2border_above, 0);
 			setEnabled(longtable_options_->check_foot_2border_below, 0);
 			fl_set_button(longtable_options_->check_foot_2border_above,0);
-			fl_set_button(longtable_options_->check_foot_2border_above,0);
+			fl_set_button(longtable_options_->check_foot_2border_below,0);
 			fl_set_button(longtable_options_->check_lastfoot_empty, 0);
 			setEnabled(longtable_options_->check_lastfoot_empty, 0);
 			use_empty = false;
@@ -427,13 +427,13 @@ void FormTabular::update()
 		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,
 				      ltt.topDL);
-			fl_set_button(longtable_options_->check_lastfoot_2border_above,
-				      ltt.topDL);
+			fl_set_button(longtable_options_->check_lastfoot_2border_below,
+				      ltt.bottomDL);
 		} else {
 			setEnabled(longtable_options_->check_lastfoot_2border_above,0);
 			setEnabled(longtable_options_->check_lastfoot_2border_below,0);
 			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
-			fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+			fl_set_button(longtable_options_->check_lastfoot_2border_below, 0);
 			if (use_empty) {
 				fl_set_button(longtable_options_->check_lastfoot_empty,
 					      ltt.empty);
@@ -446,17 +446,17 @@ void FormTabular::update()
 	} else {
 		fl_set_button(longtable_options_->check_lt_firsthead, 0);
 		fl_set_button(longtable_options_->check_1head_2border_above, 0);
-		fl_set_button(longtable_options_->check_1head_2border_above, 0);
+		fl_set_button(longtable_options_->check_1head_2border_below, 0);
 		fl_set_button(longtable_options_->check_1head_empty, 0);
 		fl_set_button(longtable_options_->check_lt_head, 0);
 		fl_set_button(longtable_options_->check_head_2border_above, 0);
-		fl_set_button(longtable_options_->check_head_2border_above, 0);
+		fl_set_button(longtable_options_->check_head_2border_below, 0);
 		fl_set_button(longtable_options_->check_lt_foot, 0);
 		fl_set_button(longtable_options_->check_foot_2border_above, 0);
-		fl_set_button(longtable_options_->check_foot_2border_above, 0);
+		fl_set_button(longtable_options_->check_foot_2border_below, 0);
 		fl_set_button(longtable_options_->check_lt_lastfoot, 0);
 		fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
-		fl_set_button(longtable_options_->check_lastfoot_2border_above, 0);
+		fl_set_button(longtable_options_->check_lastfoot_2border_below, 0);
 		fl_set_button(longtable_options_->check_lastfoot_empty, 0);
 		fl_set_button(longtable_options_->check_lt_newpage, 0);
 	}
