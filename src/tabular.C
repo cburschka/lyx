@@ -1072,13 +1072,13 @@ string const tostr(LyXTabular::BoxType const & num)
 void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
     // header line
-    os << "<LyXTabular"
+    os << "<lyxtabular"
        << write_attribute("version", 2)
        << write_attribute("rows", rows_)
        << write_attribute("columns", columns_)
        << ">\n";
     // global longtable options
-    os << "<Features"
+    os << "<features"
 //#if 0
 //       << write_attribute("rotate", type2string(rotate))
 //       << write_attribute("islongtable", type2string(is_long_tabular))
@@ -1092,7 +1092,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
        << write_attribute("endlastfoot", endlastfoot)
        << ">\n";
     for (int j = 0; j < columns_; ++j) {
-	os << "<Column"
+	os << "<column"
 //#if 0
 //	   << write_attribute("alignment", type2string(column_info[j].alignment))
 //	   << write_attribute("valignment", type2string(column_info[j].valignment))
@@ -1111,7 +1111,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 	   << ">\n";
     }
     for (int i = 0; i < rows_; ++i) {
-	os << "<Row"
+	os << "<row"
 //#if 0
 //	   << write_attribute("topline", type2string(row_info[i].top_line))
 //	   << write_attribute("bottomline", type2string(row_info[i].bottom_line))
@@ -1125,7 +1125,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 	for (int j = 0; j < columns_; ++j) {
 #if 0
 	    if (!i) {
-		os << "<Column"
+		os << "<column"
 //#if 0
 //		   << write_attribute("alignment", type2string(column_info[j].alignment))
 //		   << write_attribute("valignment", type2string(column_info[j].valignment))
@@ -1144,10 +1144,10 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 		   << write_attribute("special", column_info[j].align_special)
 		   << ">\n";
 	    } else {
-		os << "<Column>\n";
+		os << "<column>\n";
 	    }
 #endif
-	    os << "<Cell"
+	    os << "<cell"
 	       << write_attribute("multicolumn", cell_info[i][j].multicolumn)
 //#if 0
 //	       << write_attribute("alignment", type2string(cell_info[i][j].alignment))
@@ -1174,14 +1174,14 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 	    os << "\\begin_inset ";
 	    cell_info[i][j].inset.Write(buf, os);
 	    os << "\n\\end_inset \n"
-	       << "</Cell>\n";
+	       << "</cell>\n";
 #if 0
-	       << "</Column>\n";
+	       << "</column>\n";
 #endif
 	}
-	os << "</Row>\n";
+	os << "</row>\n";
     }
-    os << "</LyXTabular>\n";
+    os << "</lyxtabular>\n";
 }
 
 
@@ -1429,7 +1429,8 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 	istream & is = lex.getStream();
 
 	l_getline(is, line);
-	if (!prefixIs(line, "<LyXTabular ")) {
+	if (!prefixIs(line, "<lyxtabular ")
+	    && !prefixIs(line, "<LyXTabular ")) {
 		OldFormatRead(lex, line);
 		return;
 	}
@@ -1473,8 +1474,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	return;
     Init(rows_arg, columns_arg);
     l_getline(is, line);
-    if (!prefixIs(line, "<Features")) {
-	lyxerr << "Wrong tabular format (expected <Feture ...> got" <<
+    if (!prefixIs(line, "<features")) {
+	lyxerr << "Wrong tabular format (expected <features ...> got" <<
 	    line << ")" << endl;
 	return;
     }
@@ -1487,8 +1488,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 
     for (int j = 0; j < columns_; ++j) {
 	l_getline(is,line);
-	if (!prefixIs(line,"<Column")) {
-	    lyxerr << "Wrong tabular format (expected <Column ...> got" <<
+	if (!prefixIs(line,"<column")) {
+	    lyxerr << "Wrong tabular format (expected <column ...> got" <<
 		line << ")" << endl;
 	    return;
 	}
@@ -1502,8 +1503,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 
     for (int i = 0; i < rows_; ++i) {
 	l_getline(is, line);
-	if (!prefixIs(line, "<Row")) {
-	    lyxerr << "Wrong tabular format (expected <Row ...> got" <<
+	if (!prefixIs(line, "<row")) {
+	    lyxerr << "Wrong tabular format (expected <row ...> got" <<
 		line << ")" << endl;
 	    return;
 	}
@@ -1512,8 +1513,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	getTokenValue(line, "newpage", row_info[i].newpage);
 	for (int j = 0; j < columns_; ++j) {
 	    l_getline(is, line);
-	    if (!prefixIs(line, "<Cell")) {
-		lyxerr << "Wrong tabular format (expected <Cell ...> got" <<
+	    if (!prefixIs(line, "<cell")) {
+		lyxerr << "Wrong tabular format (expected <cell ...> got" <<
 		    line << ")" << endl;
 		return;
 	    }
@@ -1533,20 +1534,20 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		cell_info[i][j].inset.Read(buf, lex);
 		l_getline(is, line);
 	    }
-	    if (line != "</Cell>") {
-		lyxerr << "Wrong tabular format (expected </Cell> got" <<
+	    if (line != "</cell>") {
+		lyxerr << "Wrong tabular format (expected </cell> got" <<
 		    line << ")" << endl;
 		return;
 	    }
 	}
 	l_getline(is, line);
-	if (line != "</Row>") {
-	    lyxerr << "Wrong tabular format (expected </Row> got" <<
+	if (line != "</row>") {
+	    lyxerr << "Wrong tabular format (expected </row> got" <<
 		line << ")" << endl;
 	    return;
 	}
     }
-    while (line != "</LyXTabular>") {
+    while (line != "</lyxtabular>") {
 	l_getline(is, line);
     }
     set_row_column_number_info();

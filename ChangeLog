@@ -1,3 +1,8 @@
+2001-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/tabular.C (Write): write lowercase identifiers
+	(Read): read lowercase identifiers
+
 2001-01-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/lyxstring.C (rfind): better fix (from Dekel).
