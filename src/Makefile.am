@@ -4,7 +4,7 @@ DISTCLEANFILES += config.h libintl.h
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
-SUBDIRS = mathed insets graphics support frontends
+SUBDIRS = mathed insets graphics support frontends tex2lyx
 
 bin_PROGRAMS = lyx
 

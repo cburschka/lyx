@@ -368,6 +368,7 @@ AC_CONFIG_FILES([Makefile \
        sourcedoc/Makefile \
        src/Makefile \
        src/version.C \
+       src/tex2lyx/Makefile \
        src/mathed/Makefile \
        src/graphics/Makefile \
        src/insets/Makefile \
