@@ -1,9 +1,9 @@
 #include <config.h>
 
-
 #include "math_substackinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "support/LOstream.h"
 
 
 MathSubstackInset::MathSubstackInset()
@@ -25,6 +25,20 @@ void MathSubstackInset::metrics(MetricsInfo & mi) const
 	} else {
 		MathGridInset::metrics(mi);
 	}
+	metricsMarkers2();
+}
+
+
+void MathSubstackInset::draw(PainterInfo & pi, int x, int y) const
+{
+	MathGridInset::draw(pi, x + 1, y);
+	drawMarkers2(pi, x, y);
+}
+
+
+void MathSubstackInset::infoize(std::ostream & os) const
+{
+	os << "Substack ";
 }
 
 

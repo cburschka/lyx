@@ -5,6 +5,7 @@
 #include "math_gridinset.h"
 
 
+/// support for AMS's \\substack
 
 class MathSubstackInset : public MathGridInset {
 public:
@@ -15,10 +16,14 @@ public:
 	///
 	void metrics(MetricsInfo & mi) const;
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	MathSubstackInset const * asSubstackInset() const { return this; }
 
 	///
 	void normalize();
+	///
+	void infoize(std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
 	///
