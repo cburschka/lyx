@@ -10,10 +10,10 @@
  * Splash screen code added by Angus Leeming
  */
 
-
 #include <config.h>
 
 #include "screen.h"
+
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
@@ -465,16 +465,10 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	// draw it
 	RowList::iterator const rend = text->rows().end();
 	int yf = y;
-	while (rit != rend && yf < y2) {
-		paintRows(*bv, *text, rit,
-			y + yo, xo, y + topy);
-		y += rit->height();
-		yf += rit->height();
-		++rit;
-	}
+	paintRows2(*bv, *text, rit, rend, xo, y, yf, y2, yo);
 
 	// maybe we have to clear the screen at the bottom
-	if ((y < y2) && !text->isInInset()) {
+	if (y < y2 && !text->isInInset()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);

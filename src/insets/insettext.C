@@ -364,14 +364,9 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	int yf = y_offset + first;
 	y = 0;
+	int yo = y_offset + first;
 
-	while (rit != end && yf < y2) {
-		paintRows(*bv, text_, rit,
-			y + y_offset + first, x, y + text_.top_y());
-		y += rit->height();
-		yf += rit->height();
-		++rit;
-	}
+	paintRows2(*bv, text_, rit, end, x, y, yf, y2, yo);
 
 	text_.clearPaint();
 

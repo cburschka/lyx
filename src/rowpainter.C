@@ -1092,3 +1092,17 @@ void paintRows(BufferView const & bv, LyXText const & text,
 	RowPainter painter(bv, text, rit, y_offset, x_offset, y);
 	painter.paint();
 }
+
+
+void paintRows2(BufferView const & bv, LyXText const & text,
+	RowList::iterator rit, RowList::iterator end,
+	int xo, int & y, int yf, int y2, int yo)
+{
+	while (rit != end && yf < y2) {
+		paintRows(bv, text, rit, y + yo, xo, y + text.top_y());
+		y += rit->height();
+		yf += rit->height();
+		++rit;
+	}
+}
+

@@ -1738,7 +1738,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 
 	// check for empty row
 	if (!rit_par->size()) {
-		x = tmpx;
+		x = int(tmpx);
 		return 0;
 	}
 
