@@ -7,21 +7,24 @@
  */
 
 #include <config.h>
-#include <vector.h>
-#include <fstream>
-#include <algorithm>
-
-#include "gettext.h"
 
 #include "tex_helpers.h"
-#include "support/filetools.h"
+
 #include "debug.h"
+#include "gettext.h"
+
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 #include "support/path.h"
 #include "support/lyxalgo.h"
 
+#include <vector>
+#include <fstream>
+#include <algorithm>
+
 using std::vector;
+using std::endl;
 using std::sort;
 using std::unique;
 

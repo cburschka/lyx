@@ -1,3 +1,8 @@
+2002-06-21  Angus Leeming  <leeming@lyx.org>
+
+	* tex_helpers.C: Use <vector> not <vector.h>. Reorder header files.
+	* tex_helpers.h: #include "LString.h".
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlBibtex.C:

@@ -9,6 +9,8 @@
 #ifndef TEX_HELPERS_H
 #define TEX_HELPERS_H
 
+#include "LString.h"
+
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
 void rescanTexStyles();
@@ -20,11 +22,9 @@ void texhash();
 string const getTexFileList(string const & filename, bool withFullPath);
 
 /// get the options of stylefile
-string const getListOfOptions(string const & classname,
-			    string const & type);
+string const getListOfOptions(string const & classname, string const & type);
 
 /// get a class with full path from the list
-string const getTexFileFromList(string const & classname,
-			    string const & type);
+string const getTexFileFromList(string const & classname, string const & type);
 
 #endif // TEX_HELPERS_H
