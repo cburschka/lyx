@@ -82,7 +82,9 @@ struct MathStackXIter {
 	}
 
 	MathedXIter * Item(int idx) {
-		return (idx + 1 <= i) ? &item[i - idx - 1] : 0;
+		if (idx + 1 > i)
+			cerr << "Wrong index: " << idx << " i: " << i << endl;
+		return &item[i - idx - 1];
 	}
 
 	void Reset() {

@@ -17,10 +17,8 @@ public:
 	typedef std::vector<int> Widths;
 	
 	///
-	explicit
-	MathedRowStruct(int n)
-		: asc_(0), desc_(0), y_(0), widths_(n + 1, 0),
-		  numbered_(true)
+	MathedRowStruct()
+		: asc_(0), desc_(0), y_(0), numbered_(true)
 		{}
 	///
 	string const & getLabel() const;
@@ -64,25 +62,6 @@ protected:
 };
 
 
-class MathedRowContainer;
-
-class MathedRowSt : public MathedRowStruct {
-public:
-	///
-	explicit MathedRowSt(int n)
-			: MathedRowStruct(n), next_(0)
-		{}
-	explicit MathedRowSt(MathedRowStruct const & t)
-			: MathedRowStruct(t), next_(0)
-		{}
-//private:
-	///
-	MathedRowSt * next_;
-	///
-	friend class MathedRowContainer;
-};
-
-
 // The idea is to change this  MathedRowContainer  to mimic the behaviour
 // of std::list<MathedRowStruct> in several small steps.  In the end it
 // could be replaced by such a list and MathedRowSt can go as well. 
@@ -91,104 +70,51 @@ struct MathedRowContainer {
 	///
 	struct iterator {
 		///
-		iterator() : st_(0) {}
+		iterator() : st_(0), pos_(0) {}
 		///
-		explicit iterator(MathedRowSt * st) : st_(st) {}
+		explicit iterator(MathedRowContainer * m) : st_(m), pos_(0) {}
+		/// "better" conversion to bool, static_cast doens't help?
+		operator void *() const
+			{ return (void *)(st_ && pos_ < st_->data_.size()); }
 		///
-		explicit iterator(MathedRowContainer * m) : st_(m->data_) {}
-		/// "better" conversion to bool
-		operator void *() const { return st_; }
+		MathedRowStruct & operator*() { Assert(st_); return st_->data_[pos_]; }
 		///
-		MathedRowStruct & operator*() { Assert(st_); return *st_; }
+		MathedRowStruct * operator->() { return &st_->data_[pos_]; }
 		///
-		MathedRowStruct * operator->() { return st_; }
+		MathedRowStruct const * operator->() const { return &st_->data_[pos_]; }
 		///
-		MathedRowStruct const * operator->() const { return st_; }
+		void operator++() { Assert(st_); ++pos_; }
 		///
-		void operator++() { Assert(st_); st_ = st_->next_; }
+		bool is_last() const { Assert(st_); return pos_ == st_->data_.size() - 1; }
 		///
-		bool is_last() const { Assert(st_); return st_->next_ == 0; }
-		///
-		bool operator==(const iterator & it) const { return st_ == it.st_; }
+		bool operator==(const iterator & it) const
+			{ return st_ == it.st_ && pos_ == it.pos_; }
 
 	//private:
 		///
-		MathedRowSt * st_;
+		MathedRowContainer * st_;
+		///
+		unsigned int pos_;
 	};
-
-	///
-	MathedRowContainer() : data_(0) {}
-
-	///
-	MathedRowContainer(MathedRowContainer const & c) : data_(0) {
-		if (!c.empty()) {
-			MathedRowSt * ro = 0;
-			MathedRowSt * mrow = c.data_;
-
-			while (mrow) {
-				MathedRowSt * r = new MathedRowSt(*mrow);
-				if (!ro) 
-					data_ = r;
-				else
-					ro->next_ = r;
-				mrow = mrow->next_;
-				ro = r;
-			}
-		}
-	}
-
-		
-	~MathedRowContainer() {
-		MathedRowSt * r = data_;
-		while (r) {
-			MathedRowSt * q = r->next_;
-			delete r;
-			r = q;
-		}
-	}
 
 	///
 	iterator begin() { return iterator(this); }
 	///
-	bool empty() const { return data_ == 0; }
+	bool empty() const { return data_.size() == 0; }
 
 	/// insert 'item' before 'iterator'
-	void insert(iterator const & it, MathedRowStruct const & item) {
-		MathedRowSt * r = new MathedRowSt(item);
-		if (data_ == it.st_)
-			data_ = r;
-		else {
-			MathedRowSt * pos = data_;
-			if (pos->next_ == it.st_)
-				pos->next_ = r;
-		}
-		r->next_  = it.st_;
+	void insert(iterator const & it) {
+		Assert(it.st_ == this);
+		data_.insert(data_.begin() + it.pos_, MathedRowStruct());
 	}
 			
-	/// insert 'item' after 'iterator'
-	void insert_after(iterator & it, MathedRowStruct const & item) {
-		MathedRowSt * r = new MathedRowSt(item);
-		if (it) {
-			r->next_ = it.st_->next_;
-			it.st_->next_ = r;
-		} else {
-			it.st_ = r;
-			r->next_ = 0;
-		}
-	}
-
 	void erase(iterator & it) {
-		Assert(it.st_);
-		MathedRowSt * r = it.st_->next_;
-    if (r) {
-      it.st_->next_ = r->next_;
-      delete r;
-    }
+		Assert(it.st_ == this);
+		data_.erase(data_.begin() + it.pos_);
 	}
-
 
 	///
-	MathedRowSt * data_;
+	std::vector<MathedRowStruct> data_;
 
 private:
 	// currently unimplemented just to make sure it's not used

@@ -60,6 +60,15 @@ void MathedIter::fcode(short c) const
 	fcode_ = c; 
 }
 
+byte MathedIter::at(int p) const
+{
+	return (*array)[p]; 
+}
+
+byte & MathedIter::at(int p)
+{
+	return (*array)[p]; 
+}
 
 int MathedIter::Empty() const
 {
@@ -75,8 +84,8 @@ int MathedIter::OK() const
 
 void MathedIter::Reset()
 {
-	if (array->last() > 0 && MathIsFont((*array)[0])) {
-		fcode((*array)[0]);
+	if (array->last() > 0 && MathIsFont(at(0))) {
+		fcode(at(0));
 		pos   = 1;
 	} else {
 		fcode(-1);
@@ -90,23 +99,23 @@ void MathedIter::Reset()
 byte MathedIter::GetChar() const
 {
 	if (IsFont()) {
-		fcode((*array)[pos]);
+		fcode(at(pos));
 		++pos;
 	}
-	return (*array)[pos];
+	return at(pos);
 }
 
 
 string const MathedIter::GetString() const
 {
 	if (IsFont()) {
-		fcode((*array)[++pos]);
+		fcode(at(++pos));
 		++pos;
 	}
 
 	string s;
-	for (; (*array)[pos] >= ' ' && pos < array->last(); ++pos)
-		s += (*array)[pos];
+	for (; at(pos) >= ' ' && pos < array->last(); ++pos)
+		s += at(pos);
 
 	return s;
 }
@@ -120,7 +129,7 @@ MathedInset * MathedIter::GetInset() const
 		return p;
 	} else {
 		lyxerr << "Math Error: This is not an inset["
-		       << (*array)[pos] << "]" << endl;
+		       << at(pos) << "]" << endl;
 		return 0;
 	}
 }
@@ -143,7 +152,7 @@ bool MathedIter::Next()
 	if (!OK())
 		return false;
 
-	if ((*array)[pos] < ' ') {
+	if (at(pos) < ' ') {
 		fcode(-1);
 		if (IsTab())
 			++col;
@@ -159,7 +168,7 @@ bool MathedIter::Next()
 		++pos;
 
 	if (IsFont()) 
-		fcode((*array)[pos++]);
+		fcode(at(pos++));
 
 	return true;
 }
@@ -168,7 +177,7 @@ bool MathedIter::Next()
 bool MathedIter::goNextCode(MathedTextCodes code)
 {
 	while (Next()) {
-		if ((*array)[pos] == code)
+		if (at(pos) == code)
 			return true;
 	}
 
@@ -198,23 +207,23 @@ void MathedIter::insert(byte c, MathedTextCodes t)
 	// Address 0x47b857 is 1 byte before start of malloc'd block at
 	// 0x47b858 of 16 bytes.
 
-	if (c == ' ' && ((*array)[pos] == ' ' || (*array)[pos - 1] == ' '))
+	if (c == ' ' && (at(pos) == ' ' || at(pos - 1) == ' '))
 		return;
 
-	if (IsFont() && (*array)[pos] == t) {
+	if (IsFont() && at(pos) == t) {
 		fcode(t);
 		++pos;
 	} else {
-		if (t != fcode() && pos > 0 && MathIsFont((*array)[pos - 1])) {
+		if (t != fcode() && pos > 0 && MathIsFont(at(pos - 1))) {
 			--pos;
 			int k = pos - 1;
-			for (; k >= 0 && (*array)[k] >= ' '; --k)
+			for (; k >= 0 && at(k) >= ' '; --k)
 				;
-			fcode( (k >= 0 && MathIsFont((*array)[k])) ? (*array)[k] : -1 );
+			fcode( (k >= 0 && MathIsFont(at(k))) ? at(k) : -1 );
 		}
 	}
 
-	short const f = ((*array)[pos] < ' ') ? 0 : fcode();
+	short const f = (at(pos) < ' ') ? 0 : fcode();
 	int shift = (t == fcode()) ? 1 : ((f) ? 3 : 2);
 
 	if (t == LM_TC_TAB || t == LM_TC_CR) {
@@ -232,21 +241,21 @@ void MathedIter::insert(byte c, MathedTextCodes t)
 	else {
 		array->need_size(array->last() + shift);
 		array->last(array->last() + shift);
-		(*array)[array->last()] = '\0';
+		at(array->last()) = '\0';
 	}
 
 	if (t != fcode()) {
 		if (f)
-			(*array)[pos + shift - 1] = fcode();
+			at(pos + shift - 1) = fcode();
 
 		if (c >= ' ') {
-			(*array)[pos++] = t;
+			at(pos++) = t;
 			fcode(t);
 		} else 
 			fcode(0);
 	}
 
-	(*array)[pos++] = c;
+	at(pos++) = c;
 }
 
 
@@ -256,8 +265,8 @@ void MathedIter::split(int shift)
 	if (pos < array->last()) {
 
 		bool fg = false;
-		if ((*array)[pos] >= ' ') {
-			if (pos> 0 && MathIsFont((*array)[pos - 1]))
+		if (at(pos) >= ' ') {
+			if (pos> 0 && MathIsFont(at(pos - 1)))
 				--pos;
 			else {
 				fg = true;
@@ -268,7 +277,7 @@ void MathedIter::split(int shift)
 		array->move(pos, shift);
 
 		if (fg)
-			(*array)[pos + shift - 1] = fcode();
+			at(pos + shift - 1) = fcode();
 
 	} else {
 
@@ -276,7 +285,7 @@ void MathedIter::split(int shift)
 		array->last(array->last() + shift);
 	}
 
-	(*array)[array->last()] = '\0';
+	at(array->last()) = '\0';
 }
 
 
@@ -287,20 +296,20 @@ void MathedIter::join(int pos2)
 		return;
 
 	short f = fcode();
-	if (pos > 0 && (*array)[pos] >= ' ' && MathIsFont((*array)[pos - 1]))
+	if (pos > 0 && at(pos) >= ' ' && MathIsFont(at(pos - 1)))
 		--pos;	
 
-	if (MathIsFont((*array)[pos2 - 1]))
+	if (MathIsFont(at(pos2 - 1)))
 		--pos2;
 
-	if ((*array)[pos2] >= ' ') {
+	if (at(pos2) >= ' ') {
 		for (int p = pos2; p > 0; --p) {
-			if (MathIsFont((*array)[p])) {
-				f = (*array)[p];
+			if (MathIsFont(at(p))) {
+				f = at(p);
 				break;
 			}
 		}
-		(*array)[pos++] = f;
+		at(pos++) = f;
 	}
 
 	array->move(pos2, pos - pos2);
@@ -324,11 +333,11 @@ void MathedIter::insertInset(MathedInset * p, int type)
 
 	split(shift);
 
-	(*array)[pos] = type;
+	at(pos) = type;
 	array->raw_pointer_insert(p, pos + 1);
 	pos += SizeInset;
-	(*array)[pos - 1] = type;
-	(*array)[array->last()] = '\0';
+	at(pos - 1) = type;
+	at(array->last()) = '\0';
 	fcode(-1);
 #endif
 }
@@ -343,20 +352,20 @@ bool MathedIter::Delete()
 	byte const c = GetChar();
 	if (c >= ' ') {
 
-		if (MathIsFont((*array)[pos - 1]) && (*array)[pos + 1] < ' ') {
+		if (MathIsFont(at(pos - 1)) && at(pos + 1) < ' ') {
 			shift = 2;
 			pos--;
 			int i = pos - 1;
-			for (; i > 0 && !MathIsFont((*array)[i]); --i)
+			for (; i > 0 && !MathIsFont(at(i)); --i)
 				;
-			if (i > 0 && MathIsFont((*array)[i]))
-			fcode((*array)[i]);
+			if (i > 0 && MathIsFont(at(i)))
+			fcode(at(i));
 		} else
 			shift = 1;
 
 	} else {
 
-		if (MathIsInset((*array)[pos]))
+		if (MathIsInset(at(pos)))
 			shift = sizeof(char*) + 2;
 		else if (c == LM_TC_TAB || c == LM_TC_CR) {
 			++shift;
@@ -412,37 +421,37 @@ void MathedIter::adjustTabs()
 
 bool MathedIter::IsInset() const
 {
-	return MathIsInset((*array)[pos]);
+	return MathIsInset(at(pos));
 }
 
 
 bool MathedIter::IsActive() const
 {
-	return MathIsActive((*array)[pos]);
+	return MathIsActive(at(pos));
 }
 
 
 bool MathedIter::IsFont() const
 {
-	return MathIsFont((*array)[pos]);
+	return MathIsFont(at(pos));
 }
 
 
 bool MathedIter::IsScript() const
 {
-	return MathIsScript((*array)[pos]);
+	return MathIsScript(at(pos));
 }
 
 
 bool MathedIter::IsTab() const
 {
-	return ((*array)[pos] == LM_TC_TAB);
+	return (at(pos) == LM_TC_TAB);
 }
 
 
 bool MathedIter::IsCR() const
 {
-	return ((*array)[pos] == LM_TC_CR);
+	return (at(pos) == LM_TC_CR);
 }
 
 
@@ -452,7 +461,7 @@ MathedIter::MathedIter(MathedArray * d)
 	pos = 0;
 	row = 0;
 	col = 0;
-	fcode( (array && IsFont()) ? (*array)[0] : 0 );
+	fcode( (array && IsFont()) ? at(0) : 0 );
 }
 
 

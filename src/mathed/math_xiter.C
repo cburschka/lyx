@@ -156,7 +156,7 @@ void MathedXIter::Merge(MathedArray const & a)
 	while (pos < pos2 && OK()) {
 		if (IsCR()) {
 			if (p_ && p_->Permit(LMPF_ALLOW_CR)) {
-				container().insert_after(crow_, MathedRowSt(ncols + 1));
+				container().insert(crow_);
 				++crow_;
 			} else {
 				Delete();
@@ -369,7 +369,7 @@ void MathedXIter::addRow()
 	}
 
 	// Create new item for the structure    
-	container().insert_after(crow_, MathedRowSt(ncols + 1));
+	container().insert(crow_);
 	// Fill missed tabs in current row
 	while (col < ncols - 1) 
 		insert('T', LM_TC_TAB); 

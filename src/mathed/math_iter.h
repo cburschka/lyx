@@ -110,6 +110,10 @@ public:
 	void setNumCols(int n) { ncols = n; }
 	///
 	MathedArray * GetData() const;
+	///
+	byte & at(int pos);
+	///
+	byte at(int pos) const;
 protected:
 	///
 	void split(int);

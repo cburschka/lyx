@@ -604,7 +604,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		case LM_TK_NEWLINE:
 			if (mt && (flags & FLAG_END)) {
 				if (mt->Permit(LMPF_ALLOW_CR)) {
-					mt->getRowSt().insert_after(crow, MathedRowSt(mt->GetColumns() + 1));
+					mt->getRowSt().insert(crow);
 					++crow;
 					data.insert('K', LM_TC_CR);
 				} else 

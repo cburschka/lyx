@@ -19,7 +19,6 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 {
 	flag = 15;
 	if (n > 0) {
-		row_.data_ = new MathedRowSt(nc_ + 1);
 		MathedXIter it(this);
 		for (int j = 1; j < n; ++j)
 			it.addRow();
@@ -29,7 +28,8 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 				it.insert('T', LM_TC_TAB);
 		}
 	} else if (n < 0) {
-		row_.data_ = new MathedRowSt(nc_ + 1);
+		MathedXIter it(this);
+		it.addRow();
 		nr_ = 1;
 	}
 }
@@ -93,27 +93,19 @@ void MathMatrixInset::draw(Painter & pain, int x, int baseline)
 
 void MathMatrixInset::Metrics()
 {
-	//if (row_.empty()) {
-#warning This leaks  row_.data but goes away soon
-		// lyxerr << " MIDA ";
-		MathedXIter it(this);
-		it.GoBegin();
-		if (!it.crow_) {
-			it.crow_.st_ = new MathedRowSt(it.ncols + 1); // this leaks
-		}
-		MathedRowSt * mrow = it.crow_.st_;
-		while (it.OK()) {
-			if (it.IsCR()) {
-				if (it.col >= it.ncols)
-					it.ncols = it.col + 1; 
-				MathedRowSt * r = new MathedRowSt(it.ncols + 1); // this leaks
-				it.crow_.st_->next_ = r;
-				it.crow_.st_ = r;
-			}   
-			it.Next();	
-		}
-		row_.data_ = mrow;
-	//} 
+	// Adjust row structure
+	MathedXIter it(this);
+	it.GoBegin();
+	int nrows = 1;
+	while (it.OK()) {
+		if (it.IsCR()) {
+			++nrows;
+			if (it.col >= it.ncols)
+				it.ncols = it.col + 1; 
+		}   
+		it.Next();	
+	}
+	row_.data_.resize(nrows);
 	
 	// Clean the arrays      
 	for (MathedRowContainer::iterator it = row_.begin(); it; ++it)
