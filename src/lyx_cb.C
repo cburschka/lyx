@@ -409,10 +409,10 @@ int MakeLaTeXOutput(Buffer * buffer)
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
-	if (!buffer->isDviClean()) {
+	//if (!buffer->isDviClean()) {
 		Path p(path);
 		ret = MenuRunLaTeX(buffer);
-	}
+		//}
 	return ret;
 }
 

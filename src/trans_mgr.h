@@ -147,7 +147,7 @@ private:
 	///
 	CharacterSet chset_;
 	///
-	void insert(string, LyXText *);
+	void insert(string const &, LyXText *);
 	///
 	void insertVerbatim(string const &, LyXText *);
 public:

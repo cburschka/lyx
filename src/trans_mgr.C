@@ -300,7 +300,7 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 }
 
 
-void TransManager::insert(string str, LyXText * text)
+void TransManager::insert(string const & str, LyXText * text)
 {
 	// Go through the character encoding only if the current 
 	// encoding (chset_->name()) matches the current font_norm

@@ -1,3 +1,13 @@
+2000-06-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_cb.C (MakeLaTeXOutput): we run MakeLaTeXOutput regard
+	less of dvi dirty or not.
+
+	* src/trans_mgr.[Ch] (insert): change first parameter to string
+	const &.  
+
+	* src/chset.[Ch] (encodeString): add const to first parameter
+
 2000-05-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (begin): fix a "shared" string bug. use
