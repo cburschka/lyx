@@ -1,3 +1,7 @@
+2000-02-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LaTeX.C (operator()): quote file name when running latex.
+
 2000-02-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/toolbar.C (set): use fl_set_object_helper for the tooltop

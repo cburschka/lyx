@@ -292,7 +292,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 int LaTeX::operator()()
 {
 #ifndef __EMX__
-	string tmp = cmd + ' ' + file + " > /dev/null";
+	string tmp = cmd + ' ' + QuoteName(file) + " > /dev/null";
 #else // cmd.exe (OS/2) causes SYS0003 error at "/dev/null"
 	string tmp = cmd + ' ' + file + " > nul";
 #endif
