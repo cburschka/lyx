@@ -437,6 +437,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	// this one is difficult to get right. As a half-baked
+	// solution, we consider only the first action of the sequence
+	case LFUN_SEQUENCE: {
+		// argument contains ';'-terminated commands
+		string const firstcmd = token(cmd.argument, ';', 0);
+		flag = getStatus(lyxaction.lookupFunc(firstcmd));
+	}
+
 	case LFUN_MENUNEW:
 	case LFUN_MENUNEWTMPLT:
 	case LFUN_WORDFINDFORWARD:
@@ -477,7 +485,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_REPEAT:
 	case LFUN_EXPORT_CUSTOM:
 	case LFUN_PRINT:
-	case LFUN_SEQUENCE:
 	case LFUN_SAVEPREFERENCES:
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
@@ -1191,14 +1198,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 
-		case LFUN_SEQUENCE:
+		case LFUN_SEQUENCE: {
 			// argument contains ';'-terminated commands
-			while (!argument.empty()) {
+			string arg = argument;
+			while (!arg.empty()) {
 				string first;
-				string rest = split(argument, first, ';');
-				dispatch(lyxaction.lookupFunc(rest));
+				arg = split(arg, first, ';');
+				dispatch(lyxaction.lookupFunc(first));
 			}
 			break;
+		}
 
 		case LFUN_SAVEPREFERENCES: {
 			Path p(user_lyxdir());
