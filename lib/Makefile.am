@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
-		lyxrc.defaults doc/LyXConfig.lyx
+		lyxrc.defaults doc/LyXConfig.lyx doc/LaTeXConfig.lyx -r xfonts
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = reLyX
 
