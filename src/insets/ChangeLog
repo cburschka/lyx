@@ -1,3 +1,11 @@
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	* inset*.[Ch] (latex): no longer has a fragile arg. Data is now passed
+	through the LatexRunParams arg.
+
+	* insetquotes.C (latex): accesses use_babel through the LatexRunParams
+	arg rather than through a global var.
+
 2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetspecialchar.C (dimension): use a string.

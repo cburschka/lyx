@@ -34,7 +34,7 @@ public:
 	void write(Buffer const *, std::ostream &) const;
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool, bool) const
+		  bool) const
 		{ return 0; }
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const

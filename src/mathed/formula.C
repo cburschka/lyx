@@ -32,6 +32,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "debug.h"
+#include "latexrunparams.h"
 #include "lyxrc.h"
 #include "funcrequest.h"
 #include "Lsstream.h"
@@ -127,10 +128,11 @@ void InsetFormula::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os, LatexRunParams const &,
-			bool fragile, bool) const
+int InsetFormula::latex(Buffer const *, ostream & os,
+			LatexRunParams const & runparams,
+			bool) const
 {
-	WriteStream wi(os, fragile, true);
+	WriteStream wi(os, runparams.fragile, true);
 	par_->write(wi);
 	return wi.line();
 }

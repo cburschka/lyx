@@ -64,7 +64,7 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &, bool fragile,
+	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
 		  bool free_spc) const;
 	///
 	int ascii(Buffer const *,

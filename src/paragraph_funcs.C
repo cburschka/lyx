@@ -283,7 +283,6 @@ TeXOnePar(Buffer const * buf,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
 	  LatexRunParams const & runparams,
-	  bool moving_arg,
 	  string const & everypar = string());
 
 
@@ -554,7 +553,7 @@ TeXOnePar(Buffer const * buf,
 			InsetOptArg * it = optArgInset(*pit);
 			if (it)
 				it->latexOptional(buf, os, runparams,
-						  false, false);
+						  false);
 		}
 		else
 			os << style->latexparam();
@@ -697,8 +696,7 @@ void latexParagraphs(Buffer const * buf,
 		     ostream & os,
 		     TexRow & texrow,
 		     LatexRunParams const & runparams,
-		     bool moving_arg,
-         string const & everypar)
+		     string const & everypar)
 {
 	bool was_title = false;
 	bool already_title = false;
@@ -746,7 +744,7 @@ void latexParagraphs(Buffer const * buf,
 
 			if (layout->is_environment) {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                runparams, moving_arg, everypar);
+				                runparams, everypar);
 			} else if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
@@ -754,11 +752,11 @@ void latexParagraphs(Buffer const * buf,
 						     texrow, runparams);
 			} else {
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
-				                runparams, moving_arg, everypar);
+				                runparams, everypar);
 			}
 		} else {
 			par = TeXOnePar(buf, paragraphs, par, os, texrow,
-			                runparams, moving_arg, everypar);
+			                runparams, everypar);
 		}
 	}
 	// It might be that we only have a title in this document

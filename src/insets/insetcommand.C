@@ -40,7 +40,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 
 
 int InsetCommand::latex(Buffer const *, ostream & os, LatexRunParams const &,
-			bool /*fragile*/, bool/*fs*/) const
+			bool/*fs*/) const
 {
 	os << getCommand();
 	return 0;

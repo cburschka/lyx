@@ -674,7 +674,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 
 int InsetGraphics::latex(Buffer const * buf, ostream & os,
 			 LatexRunParams const & runparams,
-			 bool /*fragile*/, bool/*fs*/) const
+			 bool/*fs*/) const
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.

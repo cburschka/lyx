@@ -1,5 +1,10 @@
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C (dumpPreamble): no longer pass a fragile arg to
+	the inset::latex method.
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewLoader.C (dumpPreamble): the 'nice' param passed to
 	makeLaTeXFile is now encapsulated within runparams.
 

@@ -1,3 +1,23 @@
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	* latexrunparams.h: add fragile and use_babel variables.
+
+	* bufferparams.[Ch] (writeLaTeX): return use_babel.
+	* buffer.C (makeLaTeXFile): store this returned value in
+	runparams.use_babel, thus passing it to the inset::latex methods.
+
+	* paragraph.C (simpleTeXOnePar): no need to pass 'moving_arg' to
+	simpleTeXSpecialChars as it is now stored in runparams.fragile.
+
+	* paragraph_funcs.[Ch] (TeXOnePar, latexParagraphs): TeXOnePar no
+	longer has a fragile arg, as it is stored in runparams.fragile.
+
+	* paragraph_pimpl.[Ch] (simpleTeXSpecialChars): no longer has a
+	moving_arg parameter as the data is stored in runparams.fragile.
+
+	* tabular.[Ch] (TeXLongtableHeaderFooter, TeXRow): no longer have
+	a fragile parameter as the data is stored in runparams.fragile.
+
 2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.C (Paragraph): initialize next_par_ and prev_par_

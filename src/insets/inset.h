@@ -189,14 +189,11 @@ public:
 	///
 	virtual void read(Buffer const *, LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
-	    fragile == true means, that the inset should take care about
-	    fragile commands by adding a \protect before.
 	    If the free_spc (freespacing) variable is set, then this inset
 	    is in a free-spacing paragraph.
 	*/
 	virtual int latex(Buffer const *, std::ostream &,
 			  LatexRunParams const &,
-			  bool fragile,
 			  bool free_spc) const = 0;
 	///
 	virtual int ascii(Buffer const *,

@@ -324,7 +324,7 @@ void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 
 
 int InsetERT::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		    bool /*fragile*/, bool /*free_spc*/) const
+		    bool /*free_spc*/) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();

@@ -287,7 +287,7 @@ bool InsetInclude::loadIfNeeded() const
 
 int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			LatexRunParams const & runparams,
-			bool /*fragile*/, bool /*fs*/) const
+			bool /*fs*/) const
 {
 	string incfile(params_.cparams.getContents());
 
@@ -575,7 +575,7 @@ string const InsetInclude::PreviewImpl::latexString() const
 	ostringstream os;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	parent().latex(view()->buffer(), os, runparams, false, false);
+	parent().latex(view()->buffer(), os, runparams, false);
 
 	return STRCONV(os.str());
 }

@@ -58,7 +58,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool fp) const;
+		  bool fp) const;
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///

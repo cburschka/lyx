@@ -11,14 +11,16 @@
 #include <config.h>
 
 #include "paragraph_pimpl.h"
-#include "LaTeXFeatures.h"
-#include "texrow.h"
-#include "language.h"
+
 #include "bufferparams.h"
-#include "encoding.h"
-#include "lyxrc.h"
 #include "debug.h"
+#include "encoding.h"
+#include "language.h"
+#include "LaTeXFeatures.h"
+#include "latexrunparams.h"
+#include "lyxrc.h"
 #include "paragraph_funcs.h"
+#include "texrow.h"
 
 #include "support/LAssert.h"
 
@@ -484,7 +486,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     ostream & os,
 					     TexRow & texrow,
 					     LatexRunParams const & runparams,
-					     bool moving_arg,
 					     LyXFont & font,
 					     LyXFont & running_font,
 					     LyXFont & basefont,
@@ -535,7 +536,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				if (font.family() == LyXFont::TYPEWRITER_FAMILY)
 					os << '~';
 
-				if (moving_arg)
+				if (runparams.fragile)
 					os << "\\protect ";
 
 				os << "\\\\\n";
@@ -580,7 +581,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			running_font = basefont;
 		}
 
-		int tmp = inset->latex(buf, os, runparams, moving_arg,
+		int tmp = inset->latex(buf, os, runparams,
 				       style.free_spacing);
 
 		if (close)

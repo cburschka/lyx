@@ -53,12 +53,13 @@ string const InsetMarginal::editMessage() const
 }
 
 
-int InsetMarginal::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
-			 bool fragile, bool fp) const
+int InsetMarginal::latex(Buffer const * buf, ostream & os,
+			 LatexRunParams const & runparams,
+			 bool fp) const
 {
 	os << "%\n\\marginpar{";
 
-	int const i = inset.latex(buf, os, runparams, fragile, fp);
+	int const i = inset.latex(buf, os, runparams, fp);
 	os << "%\n}";
 
 	return i + 2;

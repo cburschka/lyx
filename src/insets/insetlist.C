@@ -62,12 +62,12 @@ string const InsetList::editMessage() const
 }
 
 
-int InsetList::latex(Buffer const * buf,
-		     ostream & os, bool fragile, bool fp) const
+int InsetList::latex(Buffer const * buf, ostream & os,
+		     LatexRunParams const & runparams, bool fp) const
 {
 	os << "\\footnote{%\n";
 
-	int i = inset.latex(buf, os, fragile, fp);
+	int i = inset.latex(buf, os, runparams, fp);
 	os << "}%\n";
 
 	return i + 2;

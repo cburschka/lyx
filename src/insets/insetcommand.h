@@ -41,8 +41,9 @@ public:
 	/// Can remove one InsetBibKey is modified
 	void scanCommand(string const & c) { p_.scanCommand(c); };
 	///
-	virtual int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-			  bool fragile, bool free_spc) const;
+	virtual int latex(Buffer const *, std::ostream &,
+			  LatexRunParams const &,
+			  bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

@@ -116,8 +116,11 @@ public:
 	///
 	void writeFile(std::ostream &) const;
 
-	///
-	void writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
+	/** \returns true if the babel package is used (interogates
+	    the BufferParams and a LyXRC variable).
+	    This returned value can then be passed to the insets...
+	 */
+	bool writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
 
 	///
 	void setPaperStuff();

@@ -67,7 +67,6 @@ void latexParagraphs(Buffer const * buf,
 		     std::ostream & ofs,
 		     TexRow & texrow,
 		     LatexRunParams const &,
-		     bool moving_arg,
 		     string const & everypar = string());
 
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens

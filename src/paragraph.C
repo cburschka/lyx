@@ -12,19 +12,22 @@
 
 #include "paragraph.h"
 #include "paragraph_pimpl.h"
-#include "lyxrc.h"
-#include "layout.h"
-#include "language.h"
+
 #include "buffer.h"
 #include "bufferparams.h"
-#include "debug.h"
-#include "texrow.h"
 #include "BufferView.h"
-#include "encoding.h"
-#include "ParameterStruct.h"
-#include "gettext.h"
 #include "changes.h"
+#include "encoding.h"
+#include "debug.h"
+#include "gettext.h"
+#include "language.h"
+#include "latexrunparams.h"
+#include "layout.h"
+#include "lyxrc.h"
 #include "paragraph_funcs.h"
+#include "ParameterStruct.h"
+#include "texrow.h"
+
 #include "Lsstream.h"
 
 #include "insets/insetbibitem.h"
@@ -1058,8 +1061,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		column += Changes::latexMarkChange(os, running_change, change);
 		running_change = change;
 
+		LatexRunParams rp = runparams;
+		rp.fragile = moving_arg;
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
-					      os, texrow, runparams, moving_arg,
+					      os, texrow, runparams,
 					      font, running_font,
 					      basefont, outerfont, open_font,
 					      running_change,

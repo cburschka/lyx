@@ -31,7 +31,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool fp) const;
+		  bool fp) const;
 	///
 	string const editMessage() const;
 	///

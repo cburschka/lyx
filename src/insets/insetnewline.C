@@ -47,7 +47,7 @@ void InsetNewline::dimension(BufferView *, LyXFont const & font,
 
 
 int InsetNewline::latex(Buffer const *, ostream &, LatexRunParams const &,
-			bool, bool) const
+			bool) const
 {
 	lyxerr << "Eek, calling InsetNewline::latex !" << endl;
 	return 0;

@@ -26,6 +26,7 @@
 #include "math_mathmlstream.h"
 #include "BufferView.h"
 #include "gettext.h"
+#include "latexrunparams.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "support/lyxlib.h"
@@ -79,10 +80,11 @@ void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os, LatexRunParams const &,
-			     bool fragile, bool /*free_spacing*/) const
+int InsetFormulaMacro::latex(Buffer const *, ostream & os,
+			     LatexRunParams const & runparams,
+			     bool /*free_spacing*/) const
 {
-	WriteStream wi(os, fragile, true);
+	WriteStream wi(os, runparams.fragile, true);
 	par()->write(wi);
 	return 2;
 }

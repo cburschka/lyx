@@ -45,7 +45,7 @@ public:
 	void read(Buffer const *, LyXLex &);
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool, bool) const;
+		  bool) const;
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///

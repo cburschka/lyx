@@ -15,6 +15,7 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
+#include "latexrunparams.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
@@ -57,17 +58,19 @@ string const InsetFoot::editMessage() const
 }
 
 
-int InsetFoot::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
-		     bool fragile, bool fp) const
+int InsetFoot::latex(Buffer const * buf, ostream & os,
+		     LatexRunParams const & runparams_in,
+		     bool fp) const
 {
+	LatexRunParams runparams = runparams_in;
 	if (buf && parOwner()) {
 		LyXLayout_ptr const & layout = parOwner()->layout();
-		fragile |= layout->intitle;
+		runparams.fragile |= layout->intitle;
 	}
 
 	os << "%\n\\footnote{";
 
-	int const i = inset.latex(buf, os, runparams, fragile, fp);
+	int const i = inset.latex(buf, os, runparams, fp);
 	os << "%\n}";
 
 	return i + 2;

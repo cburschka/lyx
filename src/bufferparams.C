@@ -459,7 +459,7 @@ void BufferParams::writeFile(ostream & os) const
 }
 
 
-void BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
+bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			      TexRow & texrow) const
 {
 	os << "\\documentclass";
@@ -846,6 +846,7 @@ void BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	}
 
 	os << lyxpreamble;
+	return use_babel;
 }
 
 void BufferParams::setPaperStuff()

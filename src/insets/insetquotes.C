@@ -12,18 +12,19 @@
 
 #include "insetquotes.h"
 
-#include "BufferView.h"
-#include "LaTeXFeatures.h"
-#include "frontends/Painter.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "dimension.h"
-#include "frontends/font_metrics.h"
 #include "language.h"
+#include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "lyxfont.h"
+#include "lyxlex.h"
 #include "lyxrc.h"
 #include "paragraph.h"
-#include "lyxlex.h"
+#include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
@@ -237,10 +238,9 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 }
 
 
-extern bool use_babel;
-
-int InsetQuotes::latex(Buffer const * buf, ostream & os, LatexRunParams const &,
-		       bool /*fragile*/, bool /* free_spc */) const
+int InsetQuotes::latex(Buffer const * buf, ostream & os,
+		       LatexRunParams const & runparams,
+		       bool /* free_spc */) const
 {
 	// How do we get the local language here??
 	lyx::pos_type curr_pos = parOwner()->getPositionOfInset(this);
@@ -276,7 +276,7 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os, LatexRunParams const &,
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
-	} else if (!use_babel) {
+	} else if (!runparams.use_babel) {
 #endif
 		qstr = latex_quote_ot1[times_][quoteind];
 	} else {
@@ -322,6 +322,8 @@ int InsetQuotes::docbook(Buffer const *, ostream & os, bool) const
 	return 0;
 }
 
+
+extern bool use_babel;
 
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {

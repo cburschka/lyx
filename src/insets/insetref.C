@@ -72,7 +72,7 @@ string const InsetRef::getScreenLabel(Buffer const *) const
 
 
 int InsetRef::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		    bool /*fragile*/, bool /*fs*/) const
+		    bool /*fs*/) const
 {
 	if (getOptions().empty())
 		os << escape(getCommand());

@@ -32,7 +32,7 @@ public:
 	bool display() const { return true; }
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool fp) const;
+		  bool fp) const;
 	///
 	string const editMessage() const;
 };

@@ -1192,10 +1192,11 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetTabular::latex(Buffer const * buf, ostream & os, LatexRunParams const & runparams,
-			bool fragile, bool fp) const
+int InsetTabular::latex(Buffer const * buf, ostream & os,
+			LatexRunParams const & runparams,
+			bool fp) const
 {
-	return tabular->latex(buf, os, runparams, fragile, fp);
+	return tabular->latex(buf, os, runparams, fp);
 }
 
 

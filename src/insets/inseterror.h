@@ -39,7 +39,7 @@ public:
 	void read(Buffer const *, LyXLex &) {}
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool, bool) const { return 0; }
+		  bool) const { return 0; }
 	///
 	int ascii(Buffer const *, std::ostream &, int) const { return 0; }
 	///

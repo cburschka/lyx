@@ -1030,7 +1030,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		}
 
 		// Write the preamble
-		params.writeLaTeX(os, features, texrow);
+		runparams.use_babel = params.writeLaTeX(os, features, texrow);
 
 		if (only_preamble)
 			return;

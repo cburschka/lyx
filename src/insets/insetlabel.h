@@ -37,7 +37,7 @@ public:
 	std::vector<string> const getLabelList() const;
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool free_spc) const;
+		  bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

@@ -14,6 +14,7 @@
 #include "funcrequest.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "frontends/LyXView.h"
 #include "debug.h"
 #include "frontends/Dialogs.h"
@@ -70,12 +71,13 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 }
 
 
-int InsetUrl::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		    bool fragile, bool /*free_spc*/) const
+int InsetUrl::latex(Buffer const *, ostream & os,
+		    LatexRunParams const & runparams,
+		    bool /*free_spc*/) const
 {
 	if (!getOptions().empty())
 		os << getOptions() + ' ';
-	if (fragile)
+	if (runparams.fragile)
 		os << "\\protect";
 	os << "\\url{" << getContents() << '}';
 	return 0;

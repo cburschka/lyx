@@ -40,7 +40,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool free_spc) const;
+		  bool free_spc) const;
 	///
 	void setParent(string const & fn) { setContents(fn); }
 };

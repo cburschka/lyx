@@ -353,8 +353,9 @@ int InsetCitation::ascii(Buffer const * buffer, ostream & os, int) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(Buffer const * buffer, ostream & os, LatexRunParams const &,
-			bool /*fragile*/, bool/*fs*/) const
+int InsetCitation::latex(Buffer const * buffer, ostream & os,
+			 LatexRunParams const &,
+			 bool/*fs*/) const
 {
 	os << "\\";
 	if (buffer->params.use_natbib)

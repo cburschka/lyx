@@ -126,7 +126,7 @@ public:
 	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool, bool) const;
+		  bool) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

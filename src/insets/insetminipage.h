@@ -73,7 +73,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::MINIPAGE_CODE; }
 	///
 	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool fragile, bool fp) const;
+		  bool fp) const;
 	///
 	string const editMessage() const;
 	///

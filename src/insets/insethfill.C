@@ -22,7 +22,7 @@ InsetHFill::InsetHFill()
 
 
 int InsetHFill::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		      bool /*fragile*/, bool /*fs*/) const
+		      bool /*fs*/) const
 {
 	os << getCommand();
 	return 0;
