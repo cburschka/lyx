@@ -326,8 +326,8 @@ void FormDocument::build()
 	fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
 
 	fl_addto_choice(bullets_->choice_bullet_size,
-			_(" default | tiny | script | footnote | small |"
-			  " normal | large | Large | LARGE | huge | Huge"));
+			_(" Default | Tiny | Smallest | Smaller | Small |"
+			  " Normal | Large | Larger | Largest | Huge | Huger "));
 	fl_set_choice(bullets_->choice_bullet_size, 1);
 
 	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
