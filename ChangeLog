@@ -1,5 +1,8 @@
 2000-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/reLyX/MakePreamble.pm (translate_preamble): fix reading of
+	class names with non-letter characters (from Yves Bastide).
+
 	* lib/ui/default.ui: change Item to OptItem in import menu.
 	Comment out fax stuff.
 
