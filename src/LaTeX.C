@@ -70,6 +70,21 @@ using boost::cmatch;
 
 extern BufferList bufferlist;
 
+namespace {
+
+void showRunMessage(LyXFunc * lf, unsigned int count)
+{
+	ostringstream str;
+#if USE_BOOST_FORMAT
+	str << boost::format(_("Waiting for LaTeX run number %1$d")) % count;
+#else
+	str << _("Waiting for LaTeX run number ") << count;
+#endif
+	lf->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
+}
+
+ 
+};
 /*
  * CLASS TEXERRORS
  */
@@ -141,7 +156,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	bufferlist.updateIncludedTeXfiles(lyx::getcwd()); //GetCWD());
+	bufferlist.updateIncludedTeXfiles(lyx::getcwd());
 
 	// Never write the depfile if an error was encountered.
 
@@ -202,13 +217,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	++count;
 	lyxerr[Debug::LATEX] << "Run #" << count << endl;
 	if (lfun) {
-		ostringstream str;
-#if USE_BOOST_FORMAT
-		str << boost::format(_("LaTeX run number %1$d")) % count;
-#else
-		str << _("LaTeX run number ") << count;
-#endif
-		lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
+		showRunMessage(lfun, count); 
 	}
 
 	this->operator()();
@@ -291,14 +300,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
 		if (lfun) {
-			ostringstream str;
-#if USE_BOOST_FORMAT
-			str << boost::format(_("LaTeX run number %1$d")) % count;
-#else
-			str << _("LaTeX run number ") << count;
-#endif
-			// check lyxstring string stream and gcc 3.1 before fixing
-			lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
+			showRunMessage(lfun, count);
 		}
 
 		this->operator()();
@@ -352,13 +354,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		++count;
 		lyxerr[Debug::LATEX] << "Run #" << count << endl;
 		if (lfun) {
-			ostringstream str;
-#if USE_BOOST_FORMAT
-			str << boost::format(_("LaTeX run number %1$d")) % count;
-#else
-			str << _("LaTeX run number ") << count;
-#endif
-			lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
+			showRunMessage(lfun, count);
 		}
 
 		this->operator()();
