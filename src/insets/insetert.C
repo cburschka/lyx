@@ -623,6 +623,7 @@ void InsetERT::set_latex_font(BufferView * /* bv */)
 }
 
 
+// attention this function can be called with bv == 0
 void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
 	if (st != status_) {
@@ -630,7 +631,8 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 		need_update = FULL;
 		switch (st) {
 		case Inlined:
-			inset.setUpdateStatus(bv, InsetText::INIT);
+			if (bv)
+				inset.setUpdateStatus(bv, InsetText::INIT);
 			break;
 		case Open:
 			collapsed_ = false;
@@ -693,11 +695,15 @@ void InsetERT::getDrawFont(LyXFont & font) const
 
 int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 {
-	unsigned int w = InsetCollapsable::getMaxWidth(bv, in);
+	int w = InsetCollapsable::getMaxWidth(bv, in);
 	if (status_ != Inlined || w < 0)
 		return w;
 	LyXText * text = inset.getLyXText(bv);
-	if (text->width < w && !text->firstRow()->next())
+	int rw = text->firstRow()->width();
+	if (!rw)
+		rw = w;
+	rw += 40;
+	if (!text->firstRow()->next() && rw < w)
 		return -1;
 	return w;
 }

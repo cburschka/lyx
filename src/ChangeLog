@@ -1,3 +1,8 @@
+2002-03-06  Juergen Vigna  <jug@sad.it>
+
+	* text.C (prepareToPrint): leave ERT inset left aligned
+	(leftMargin): don't indent paragraphs inside ERT insets
+
 2002-03-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C (breakParagraph): dont call clear do the work manually

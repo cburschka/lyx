@@ -834,8 +834,10 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 			 && ! row->par()->isFirstInSequence()))
 		    && align == LYX_ALIGN_BLOCK
 		    && !row->par()->params().noindent()
-			// in tabulars paragraphs are never indented!
-			&& (!row->par()->inInset() || row->par()->inInset()->owner()->lyxCode() != Inset::TABULAR_CODE)
+			// in tabulars and ert paragraphs are never indented!
+			&& (!row->par()->inInset() || !row->par()->inInset()->owner() ||
+				(row->par()->inInset()->owner()->lyxCode() != Inset::TABULAR_CODE &&
+				 row->par()->inInset()->owner()->lyxCode() != Inset::ERT_CODE))
 		    && (row->par()->layout() != tclass.defaultLayoutName() ||
 			bview->buffer()->params.paragraph_separation ==
 			BufferParams::PARSEP_INDENT)) {
@@ -2116,6 +2118,13 @@ void LyXText::prepareToPrint(BufferView * bview,
 		    && (inset->display())) // || (inset->scroll() < 0)))
 		    align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
 		        ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
+		// ERT insets should always be LEFT ALIGNED on screen
+		inset = row->par()->inInset();
+		if (inset && inset->owner() &&
+			inset->owner()->lyxCode() == Inset::ERT_CODE)
+		{
+			align = LYX_ALIGN_LEFT;
+		}
 		
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
