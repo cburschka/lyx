@@ -497,11 +497,11 @@ EOF
 ### the graphic converter part with the predefined ones
 #### Search for tne nonstandard converting progs
 #
-SEARCH_PROG([for an FIG -> EPS/XPM converter], FIG2DEV, fig2dev)
+SEARCH_PROG([for an FIG -> EPS/PPM converter], FIG2DEV, fig2dev)
 if test "$FIG2DEV" = "fig2dev"; then
 cat >>$outfile <<EOF
 \\converter fig eps "fig2dev -L eps \$\$i \$\$o" ""
-\\converter fig xpm "fig2dev -L xpm \$\$i \$\$o" ""
+\\converter fig ppm "fig2dev -L ppm \$\$i \$\$o" ""
 EOF
 fi
 
@@ -512,13 +512,13 @@ cat >>$outfile <<EOF
 EOF
 fi
 
-SEARCH_PROG([for an TGIF -> EPS/XPM converter], TGIF, tgif)
+SEARCH_PROG([for an TGIF -> EPS/PPM converter], TGIF, tgif)
 if test "$TGIF" = "tgif"; then
 cat >>$outfile <<EOF
 \\converter tgif eps "tgif -print -eps \$\$i" ""
 \\converter tgif pdf "tgif -print -pdf \$\$i" ""
 \\converter tgif png "tgif -print -png \$\$i" ""
-\\converter tgif xpm "tgif -print -stdout -xpm \$\$i > \$\$o" ""
+\\converter tgif ppm "tgif -print -stdout -xpm \$\$i | xpmtoppm > \$\$o" ""
 EOF
 fi
 
@@ -535,7 +535,7 @@ if test "$GRACE" = "gracebat"; then
 cat >>$outfile <<EOF
 \\converter agr eps "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
 \\converter agr png "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
-\\converter agr xpm "gracebat -hardcopy -printfile - -hdevice PNG \$\$i 2>/dev/null | convert - \$\$o" ""
+\\converter agr jpg "gracebat -hardcopy -printfile \$\$o -hdevice JPEG \$\$i 2>/dev/null" ""
 EOF
 fi
 

@@ -1,3 +1,8 @@
+2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
+
+	* configure.m4: Replace fig/tgif/agr->xpm converters by
+	fig/tgif/agr->ppm/jpeg converters
+
 2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (EXTRA_DIST): fix for distcheck
