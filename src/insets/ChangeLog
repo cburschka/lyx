@@ -1,5 +1,9 @@
 2002-04-18  Juergen Vigna  <jug@sad.it>
 
+	* insettabular.C (localDispatch): repaint the cell if it was unlocked.
+	(unlockInsetInInset): set the_locking_inset to 0 only AFTER we made the
+	redraw otherwise we won't redraw.
+
 	* insettext.C (draw): fixed the setting of LyXText::first_y it was
 	not really right before, but I only discovered this with the last
 	changes to Page up/down.

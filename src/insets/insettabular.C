@@ -687,7 +687,6 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		return false;
 	if (the_locking_inset == inset) {
 		the_locking_inset->insetUnlock(bv);
-		the_locking_inset = 0;
 #ifdef WITH_WARNINGS
 #warning fix scrolling when cellinset has requested a scroll (Jug)!!!
 #endif
@@ -696,6 +695,8 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 			scroll(bv, 0.0F);
 #endif
 		updateLocal(bv, CELL, false);
+		// this has to be here otherwise we don't redraw the cell!
+		the_locking_inset = 0;
 //		showInsetCursor(bv, false);
 		return true;
 	}
