@@ -5,8 +5,6 @@ noinst_LTLIBRARIES = libinsets.la
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 EXTRA_DIST = \
-	insetlist.C \
-	insetlist.h \
 	insettheorem.C \
 	insettheorem.h
 
