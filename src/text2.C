@@ -1987,15 +1987,17 @@ namespace {
 	 * and the next row is filled by an inset that spans an entire
 	 * row.
 	 */
-	bool beforeFullRowInset(LyXText & lt, RowList::iterator row,
-				LyXCursor & cur) {
+	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur) {
+		RowList::iterator row = cur.row();
 		if (boost::next(row) == lt.rows().end())
 			return false;
 		Row const & next = *boost::next(row);
 
 		if (next.pos() != cur.pos() || next.par() != cur.par())
 			return false;
-		if (!cur.par()->isInset(cur.pos()))
+
+		if (cur.pos() == cur.par()->size()
+		    || !cur.par()->isInset(cur.pos()))
 			return false;
 		Inset const * inset = cur.par()->getInset(cur.pos());
 		if (inset->needFullRow() || inset->display())
@@ -2018,7 +2020,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.y(y + row->baseline());
 	cur.row(row);
 
-	if (beforeFullRowInset(*this, row, cur)) {
+	if (beforeFullRowInset(*this, cur)) {
 		pos_type last = lastPrintablePos(*this, row);
 		float x = getCursorX(boost::next(row), cur.pos(), last, bound);
 		cur.ix(int(x));

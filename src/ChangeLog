@@ -1,3 +1,8 @@
+2003-04-14  Alfredo Braunstein  <abraunst@libero.it>
+
+ 	* text2.C (beforeFullRowInset): added a bad getchar check, removed 
+ 	row argument, constify cur argument.
+ 
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (getFont): adjust
