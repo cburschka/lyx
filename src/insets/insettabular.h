@@ -94,7 +94,7 @@ public:
 	///
 	void draw(BufferView *, const LyXFont &, int , float &) const;
 	///
-	void update(BufferView *, LyXFont const &, bool = false);
+	void update(BufferView *, bool = false);
 	///
 	string const editMessage() const;
 	///
@@ -104,7 +104,7 @@ public:
 	//
 	void insetUnlock(BufferView *);
 	///
-	void updateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
+	void updateLocal(BufferView *, UpdateCodes) const;
 	///
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
@@ -251,8 +251,7 @@ private:
 	///
 	void lfunMouseMotion(FuncRequest const &);
 	///
-	bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
-					   bool = false) const;
+	bool calculate_dimensions_of_cells(BufferView *, bool = false) const;
 	///
 	void drawCellLines(Painter &, int x, int baseline,
 			   int row, int cell) const;

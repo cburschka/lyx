@@ -1,3 +1,20 @@
+2003-03-20  John Levon  <levon@movementarian.org>
+
+	* inset.h:
+	* insetcollapsable.h:
+	* insetcollapsable.C:
+	* insetert.h:
+	* insetert.C:
+	* insetminipage.C:
+	* insetminipage.C:
+	* insettabular.h:
+	* insettabular.C:
+	* insettext.h:
+	* insettext.C: remove spurious font parameter
+	from update(). Fix drawing of ERT insets inside
+	insets (bug 966). Remove unused mark_dirty from
+	tabular's updateLocal()
+
 2003-03-19  John Levon  <levon@movementarian.org>
 
 	* insetfloat.h:

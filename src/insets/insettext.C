@@ -485,12 +485,12 @@ void InsetText::drawFrame(Painter & pain) const
 }
 
 
-void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
+void InsetText::update(BufferView * bv, bool reinit)
 {
 	if (in_update) {
 		if (reinit && owner()) {
 			reinitLyXText();
-			owner()->update(bv, font, true);
+			owner()->update(bv, true);
 		}
 		return;
 	}
@@ -500,7 +500,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		// we should put this call where we set need_update to INIT!
 		reinitLyXText();
 		if (owner())
-			owner()->update(bv, font, true);
+			owner()->update(bv, true);
 		in_update = false;
 		return;
 	}
@@ -511,7 +511,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
-		the_locking_inset->update(bv, font, reinit);
+		the_locking_inset->update(bv, reinit);
 	}
 
 	bool clear = false;
@@ -538,7 +538,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 	LyXText * llt = getLyXText(bv);
 
 	need_update |= what;
-	// we have to redraw us full if our LyXText NEEDS_MORE_REFRES or
+	// we have to redraw us full if our LyXText NEED_MORE_REFRESH or
 	// if we don't break row so that we only have one row to update!
 	if ((llt->status() == LyXText::NEED_MORE_REFRESH) ||
 	    (!autoBreakRows &&
@@ -2270,7 +2270,6 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		return;
 	}
 	do_resize = 0;
-//	lyxerr << "InsetText::resizeLyXText\n";
 	if (!paragraphs.begin()->next() && paragraphs.begin()->empty()) { // no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
 		LyXText * t = getLyXText(bv);
@@ -2323,7 +2322,6 @@ void InsetText::reinitLyXText() const
 	}
 	do_reinit = false;
 	do_resize = 0;
-//	lyxerr << "InsetText::reinitLyXText\n";
 	for (Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
 

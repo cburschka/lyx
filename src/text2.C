@@ -415,9 +415,8 @@ void LyXText::toggleInset()
 	} else {
 		inset->open(bv());
 	}
-#if 0
-	inset->open(bv(), !inset->isOpen());
-#endif
+
+	bv()->updateInset(inset);
 }
 
 
@@ -2471,7 +2470,6 @@ void LyXText::postPaint(int start_y)
 	refresh_row = 0;
 
 	if (old != UNCHANGED && refresh_y < start_y) {
-		lyxerr << "Paint already pending from above" << endl;
 		return;
 	}
 
@@ -2482,14 +2480,8 @@ void LyXText::postPaint(int start_y)
 
 	// We are an inset's lyxtext. Tell the top-level lyxtext
 	// it needs to update the row we're in.
-
 	LyXText * t = bv()->text;
-
-	// FIXME: but what if this row is below ?
-	if (!t->refresh_row) {
-		t->refresh_row = t->cursor.row();
-		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
-	}
+	t->postRowPaint(t->cursor.row(), t->cursor.y() - t->cursor.row()->baseline());
 }
 
 
@@ -2498,7 +2490,7 @@ void LyXText::postPaint(int start_y)
 void LyXText::postRowPaint(Row * row, int start_y)
 {
 	if (status_ != UNCHANGED && refresh_y < start_y) {
-		lyxerr << "Paint already pending from above" << endl;
+		status_ = NEED_MORE_REFRESH;
 		return;
 	} else {
 		refresh_y = start_y;
@@ -2515,15 +2507,8 @@ void LyXText::postRowPaint(Row * row, int start_y)
 
 	// We are an inset's lyxtext. Tell the top-level lyxtext
 	// it needs to update the row we're in.
-
 	LyXText * t = bv()->text;
-
-	// FIXME: but what if this new row is above ?
-	// Why the !t->refresh_row at all ?
-	if (!t->refresh_row) {
-		t->refresh_row = t->cursor.row();
-		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
-	}
+	t->postRowPaint(t->cursor.row(), t->cursor.y() - t->cursor.row()->baseline());
 }
 
 

@@ -445,6 +445,9 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		InsetERTMailer::string2params(cmd.argument, status_);
 
 		status(bv, status_);
+		// FIXME: how on holy earth do you actually get
+		// this thing to reinit the bloody insettext
+		// and change the size of this inset !!?!
 		bv->updateInset(this);
 		result = DISPATCHED;
 	}
@@ -569,39 +572,7 @@ int InsetERT::width(BufferView * bv, LyXFont const & font) const
 void InsetERT::draw(BufferView * bv, LyXFont const & f,
 		    int baseline, float & x) const
 {
-	lyx::Assert(bv);
-	cache(bv);
-
-	Painter & pain = bv->painter();
-
-	button_length = width_collapsed();
-	button_top_y = -ascent(bv, f);
-	button_bottom_y = -ascent(bv, f) + ascent_collapsed() +
-		descent_collapsed();
-
-	if (!isOpen()) {
-		draw_collapsed(pain, baseline, x);
-		return;
-	}
-
-	float old_x = x;
-
-	if (!owner())
-		x += static_cast<float>(scroll());
-
-	top_x = int(x);
-	topx_set = true;
-	top_baseline = baseline;
-
-	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
-
-	if (inlined()) {
-		inset.draw(bv, f, baseline, x);
-	} else {
-		draw_collapsed(pain, bl, old_x);
-		inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
-	}
-	need_update = NONE;
+	InsetCollapsable::draw(bv, f, baseline, x, inlined());
 }
 
 
@@ -623,7 +594,6 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
 	if (st != status_) {
 		status_ = st;
-		need_update = FULL;
 		switch (st) {
 		case Inlined:
 			if (bv)
@@ -706,15 +676,14 @@ int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 }
 
 
-void InsetERT::update(BufferView * bv, LyXFont const & font,
-		      bool reinit)
+void InsetERT::update(BufferView * bv, bool reinit)
 {
 	if (inset.need_update & InsetText::INIT ||
-		inset.need_update & InsetText::FULL)
-	{
+	    inset.need_update & InsetText::FULL) {
 		setButtonLabel();
 	}
-	InsetCollapsable::update(bv, font, reinit);
+
+	InsetCollapsable::update(bv, reinit);
 }
 
 

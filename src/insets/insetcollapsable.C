@@ -46,7 +46,7 @@ class LyXText;
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), inset(bp),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  need_update(NONE), label("Label"),
+	  label("Label"),
 #if 0
 	autocollapse(false),
 #endif
@@ -64,7 +64,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
 	: UpdatableInset(in, same_id), collapsed_(in.collapsed_),
 	  framecolor(in.framecolor), labelfont(in.labelfont), inset(in.inset),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  need_update(NONE), label(in.label),
+	  label(in.label),
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
@@ -167,10 +167,10 @@ int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 	if (collapsed_)
 		return width_collapsed();
 
-	int widthCollapsed = width_collapsed();
+	int const collapsed_width = width_collapsed();
+	int const contents_width = inset.width(bv, font);
 
-	return (inset.width(bv, font) > widthCollapsed) ?
-		inset.width(bv, font) : widthCollapsed;
+	return max(collapsed_width, contents_width);
 }
 
 
@@ -184,17 +184,11 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 
 
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x) const
+                            int baseline, float & x, bool inlined) const
 {
 	lyx::Assert(bv);
 	cache(bv);
 
-	if (need_update != NONE) {
-		const_cast<InsetText *>(&inset)->update(bv, f, true);
-		bv->text->postChangedInDraw();
-		need_update = NONE;
-		return;
-	}
 	if (nodraw())
 		return;
 
@@ -213,7 +207,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	float old_x = x;
 
 	if (!owner())
-		x += static_cast<float>(scroll());
+		x += scroll();
 
 	top_x = int(x);
 	topx_set = true;
@@ -221,10 +215,23 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
 
-	draw_collapsed(pain, bl, old_x);
-	inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
-	if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
-		x = top_x + button_length + TEXT_TO_INSET_OFFSET;
+	if (inlined) {
+		inset.draw(bv, f, baseline, x);
+	} else {
+		draw_collapsed(pain, bl, old_x);
+		inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
+		// contained inset may be shorter than the button
+		if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
+			x = top_x + button_length + TEXT_TO_INSET_OFFSET;
+	}
+}
+
+
+void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
+			    int baseline, float & x) const
+{
+	// by default, we are not inlined-drawing
+	draw(bv, f, baseline, x, false);
 }
 
 
@@ -422,19 +429,18 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 #endif
 
 
-void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
-			      bool reinit)
+void InsetCollapsable::update(BufferView * bv, bool reinit)
 {
 	if (in_update) {
 		if (reinit && owner()) {
-			owner()->update(bv, font, true);
+			owner()->update(bv, true);
 		}
 		return;
 	}
 	in_update = true;
-	inset.update(bv, font, reinit);
+	inset.update(bv, reinit);
 	if (reinit && owner()) {
-		owner()->update(bv, font, true);
+		owner()->update(bv, true);
 	}
 	in_update = false;
 }

@@ -164,7 +164,7 @@ public:
 	///
 	virtual void draw(BufferView *, LyXFont const &, int baseline, float & x) const = 0;
 	/// update the inset representation
-	virtual void update(BufferView *, LyXFont const &, bool = false)
+	virtual void update(BufferView *, bool = false)
 		{}
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;

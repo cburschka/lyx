@@ -33,11 +33,6 @@ class LyXCursor;
 class InsetCollapsable : public UpdatableInset {
 public:
 	///
-	enum UpdateCodes {
-		NONE = 0,
-		FULL
-	};
-	///
 	static int const TEXT_TO_TOP_OFFSET = 2;
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
@@ -57,8 +52,11 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, const LyXFont &, int , float &) const;
+	/// draw, either inlined (no button) or collapsed/open
+	void draw(BufferView * bv, LyXFont const & f,
+	          int baseline, float & x, bool inlined) const;
 	///
-	void update(BufferView *, LyXFont const &, bool =false);
+	void update(BufferView *, bool =false);
 	///
 	void edit(BufferView *, int, int, mouse_button::state);
 	///
@@ -226,7 +224,6 @@ protected:
 	///
 	mutable int topx;
 	mutable int topbaseline;
-	mutable UpdateCodes need_update;
 
 private:
 	///

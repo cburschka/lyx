@@ -283,10 +283,11 @@ int LyXText::singleWidth(Paragraph * par,
 				return 3;
 			}
 #if 1
+#warning inset->update FIXME
 			// this IS needed otherwise on initialitation we don't get the fill
 			// of the row right (ONLY on initialization if we read a file!)
 			// should be changed! (Jug 20011204)
-			tmpinset->update(bv(), font);
+			tmpinset->update(bv());
 #endif
 			return tmpinset->width(bv(), font);
 		}
@@ -1019,7 +1020,8 @@ void LyXText::setHeightOfRow(Row * row)
 				tmpinset = row->par()->getInset(pos);
 				if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
-					tmpinset->update(bv(), tmpfont);
+#warning inset->update FIXME
+					tmpinset->update(bv());
 #endif
 					asc = tmpinset->ascent(bv(), tmpfont);
 					desc = tmpinset->descent(bv(), tmpfont);

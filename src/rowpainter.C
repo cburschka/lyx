@@ -110,7 +110,9 @@ bool RowPainter::paintInset(pos_type const pos)
 
 	LyXFont const & font = getFont(pos);
 
-	inset->update(perv(bv_), font, false);
+#warning inset->update FIXME
+	inset->update(perv(bv_), false);
+
 	inset->draw(perv(bv_), font, yo_ + row_.baseline(), x_);
 
 	// return true if something changed when we drew an inset

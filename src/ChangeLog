@@ -1,3 +1,10 @@
+2003-03-20  John Levon  <levon@movementarian.org>
+
+	* rowpainter.C:
+	* text.C:
+	* text2.C: paint cleanups. Inset::update() dropped font
+	parameter
+
 2003-03-19  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: only fitcursor/markDirty if available()
