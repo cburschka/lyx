@@ -17,8 +17,6 @@
 #endif 
 
 #include "insetgraphicsParams.h"
-
-#include "lyxrc.h"
 #include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
@@ -99,14 +97,7 @@ void InsetGraphicsParams::init()
 	bb = string();			// bounding box
 	draft = false;			// draft mode
 	clip = false;			// clip image
-	if (lyxrc.display_graphics == "mono") 
-	    display = MONOCHROME;
-	else if (lyxrc.display_graphics == "gray") 
-	    display = GRAYSCALE;
-	else if (lyxrc.display_graphics == "color") 
-	    display = COLOR;
-	else
-	    display = NONE;
+	display = DEFAULT;
 	subcaption = false;		// subfigure
 	width = LyXLength();		// set to 0pt
 	height = LyXLength();
@@ -118,8 +109,6 @@ void InsetGraphicsParams::init()
 	rotateOrigin = "center";	// 
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
-
-	testInvariant();
 }
 
 void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
@@ -141,27 +130,6 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	rotateOrigin = igp.rotateOrigin;
 	rotateAngle = igp.rotateAngle;
 	special = igp.special;
-
-	testInvariant();
-}
-
-void InsetGraphicsParams::testInvariant() const
-{
-	// Filename might be empty (when the dialog is first created).
-	// Assert(!filename.empty());
-	lyx::Assert(display == DEFAULT ||
-	       display == COLOR ||
-	       display == MONOCHROME ||
-	       display == GRAYSCALE ||
-	       display == NONE
-	      );
-	// Angle is in degrees and ranges -360 < angle < 360
-	// The reason for this is that in latex there is a meaning for the
-	// different angles and they are not necessarliy interchangeable,
-	// it depends on the rotation origin.
-	lyx::Assert(rotateAngle < 360.0);
-	lyx::Assert(rotateAngle > -360.0);
-
 }
 
 bool operator==(InsetGraphicsParams const & left,

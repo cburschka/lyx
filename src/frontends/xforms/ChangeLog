@@ -1,3 +1,16 @@
+2002-02-03  Herbert Voss  <voss@lyx.org>
+
+	* xforms_helpers.C: fix bug with unit "%" in 
+	updateWidgetsFromLengthString(...)
+
+2002-02-02  Herbert Voss  <voss@lyx.org>
+
+	* FormGraphic.C: fix bug with filename, rearrange the code,
+	delete choice "referencePoint" which is only possible for
+	rotatebox
+	* forms/form_graphics.fd: position options in a logical way,
+	add folder and scale for LyXView
+
 2002-02-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormGraphics.C (apply, update): respect the new DEFAULT state of

@@ -1,3 +1,18 @@
+2002-02-04  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphicsParams.C (init): set display to DEFAULT.
+	No longer #include "lyxrc.h".
+
+2002-02-04  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphics.C (readFigInset): comment out the "zippedFile" stuff
+	for now (so that the code compiles).
+
+2002-02-02  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphic.C: delete inVariant() and some minor changes
+	* insetgraphicsParams.[C]:
+
 2002-02-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetgraphics.C (updateInset): if params.display == DEFAULT,

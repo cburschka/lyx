@@ -212,11 +212,12 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 	}
 
 	// The unit is presumed to begin at the first char a-z
+	// or with the char '%'
 	string const tmp = lowercase(strip(frontStrip(str)));
 
 	string::const_iterator p = tmp.begin();
 	for (; p != tmp.end(); ++p) {
-		if (*p >= 'a' && *p <= 'z')
+		if ((*p >= 'a' && *p <= 'z') || *p == '%')
 			break;
 	}
 

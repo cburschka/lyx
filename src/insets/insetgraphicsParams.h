@@ -85,8 +85,6 @@ struct InsetGraphicsParams
 	void Write(Buffer const * buf, ostream & os) const;
 	/// If the token belongs to our parameters, read it.
 	bool Read(Buffer const * buf, LyXLex & lex, string const & token);
-	/// Test the struct to make sure that all the options have legal values.
-	void testInvariant() const;
 
 private:
 	/// Initialize the object to a default status.

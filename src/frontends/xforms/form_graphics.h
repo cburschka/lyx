@@ -18,6 +18,8 @@ extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
 struct FD_form_graphics {
@@ -37,13 +39,12 @@ struct FD_form_file {
 	FL_FORM *form;
 	FL_OBJECT *input_filename;
 	FL_OBJECT *button_browse;
-	FL_OBJECT *choice_display;
-	FL_OBJECT *input_lyxwidth;
-	FL_OBJECT *choice_width_lyxwidth;
-	FL_OBJECT *input_lyxheight;
-	FL_OBJECT *choice_width_lyxheight;
 	FL_OBJECT *check_subcaption;
 	FL_OBJECT *input_subcaption;
+	FL_OBJECT *input_rotate_angle;
+	FL_OBJECT *choice_origin;
+	FL_OBJECT *button_clip;
+	FL_OBJECT *button_draft;
 };
 struct FD_form_size {
 	~FD_form_size();
@@ -72,17 +73,25 @@ struct FD_form_bbox {
 	FL_OBJECT *choice_bb_y0;
 	FL_OBJECT *input_bb_y1;
 	FL_OBJECT *choice_bb_y1;
-	FL_OBJECT *button_clip;
-	FL_OBJECT *button_draft;
 	FL_OBJECT *button_getBB;
 };
 struct FD_form_special {
 	~FD_form_special();
 
 	FL_FORM *form;
-	FL_OBJECT *input_rotate_angle;
 	FL_OBJECT *input_special;
-	FL_OBJECT *choice_origin;
+};
+struct FD_form_lyxview {
+	~FD_form_lyxview();
+
+	FL_FORM *form;
+	FL_OBJECT *choice_display;
+	FL_OBJECT *input_lyxwidth;
+	FL_OBJECT *choice_width_lyxwidth;
+	FL_OBJECT *input_lyxheight;
+	FL_OBJECT *choice_width_lyxheight;
+	FL_OBJECT *input_lyxscale;
+	FL_OBJECT *button_lyxscale;
 };
 
 #endif /* FD_form_graphics_h_ */

@@ -367,7 +367,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 	}
 }
 
-
+// FormatVersion < 1.0  (LyX < 1.2)
 void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 {
 	std::vector<string> const oldUnits =
@@ -540,7 +540,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//
 	// Get the extension (format) of the original file.
 	// we handle it like a virtual one, so we can have
-	// different extensions with the same type
+	// different extensions with the same type.
+	// if it's a zipped one, than let LaTeX do the rest!!!
+	//if (zippedFile(params.filename))	
+	//    return params.filename;
+	// now we have unzipped files
 	string const extension = getExtFromContents(params.filename);
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we usind latex or pdflatex).

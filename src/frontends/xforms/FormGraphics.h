@@ -28,6 +28,7 @@
 class ControlGraphics;
 struct FD_form_graphics;
 struct FD_form_file;
+struct FD_form_lyxview;
 struct FD_form_size;
 struct FD_form_bbox;
 struct FD_form_special;
@@ -55,13 +56,12 @@ private:
 	/// 
 	void help();
 
-	/// Verify that the input is correct. If not disable ok/apply buttons.
-	ButtonPolicy::SMInput checkInput();
-
 	/// Fdesign generated method
 	FD_form_graphics * build_graphics();
 	///
 	FD_form_file * build_file();
+	///
+	FD_form_lyxview * build_lyxview();
 	///
 	FD_form_size * build_size();
 	///
@@ -71,6 +71,8 @@ private:
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_file> file_;
+	///
+	boost::scoped_ptr<FD_form_lyxview> lyxview_;
 	///
 	boost::scoped_ptr<FD_form_size> size_;
 	///
