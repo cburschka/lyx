@@ -1,7 +1,15 @@
+2004-11-25  John Spray  <spray_john@users.sourceforge.net>
+
+	* GViewBase.h: Fix gcc 3.4 compilation
+	* pch.h: added (barebones version to be improved)
+
+2004-11-22  John Spray  <spray_john@users.sourceforge.net>
+
+	* GWorkArea.C: Set small scrolling interval to 3*lineheight
+
 2004-11-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* GSendto.C: Disable concept checks (see below)
-	* GWorkArea.C: Set small scrolling interval to 3*lineheight
 		as opposed to 1*lineheight
 
 2004-11-21  John Spray  <spray_john@users.sourceforge.net>
