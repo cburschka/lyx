@@ -14,6 +14,7 @@
 #include <pwd.h>
 #include <grp.h>
 #include <map>
+#include <algorithm>
 
 using std::map;
 using std::max;
