@@ -1,4 +1,6 @@
-#include "parser.h"
+
+#include "texparser.h"
+#include "Lsstream.h"
 
 using std::cerr;
 using std::endl;
@@ -8,6 +10,7 @@ using std::istream;
 using std::istringstream;
 using std::ostream;
 using std::string;
+using std::vector;
 
 
 // 
@@ -42,7 +45,7 @@ void catInit()
 	theCatcode['\\'] = catEscape;
 	theCatcode['{']  = catBegin;
 	theCatcode['}']  = catEnd;
-	theCatcode['$']  = cat;
+	theCatcode['$']  = catMath;
 	theCatcode['&']  = catAlign;
 	theCatcode['\n'] = catNewline;
 	theCatcode['#']  = catParameter;
@@ -172,29 +175,8 @@ void Parser::skipSpaceTokens(istream & is, char c)
 }
 
 
+
 void Parser::tokenize(istream & is)
-{
-	// eat everything up to the next \end_inset or end of stream
-	// and store it in s for further tokenization
-	string s;
-	char c;
-	while (is.get(c)) {
-		s += c;
-		if (s.size() >= 10 && s.substr(s.size() - 10) == "\\end_inset") {
-			s = s.substr(0, s.size() - 10);
-			break;
-		}
-	}
-	// Remove the space after \end_inset
-	if (is.get(c) && c != ' ')
-		is.unget();
-
-	// tokenize buffer
-	tokenize(s);
-}
-
-
-void Parser::tokenize(string const & buffer)
 {
 	static bool init_done = false;
 
@@ -202,8 +184,6 @@ void Parser::tokenize(string const & buffer)
 		catInit();
 		init_done = true;
 	}
-
-	istringstream is(buffer.c_str(), ios::in | ios::binary);
 
 	char c;
 	while (is.get(c)) {
@@ -265,10 +245,6 @@ void Parser::tokenize(string const & buffer)
 				push_back(Token(c, catcode(c)));
 		}
 	}
-
-#ifdef FILEDEBUG
-	dump();
-#endif
 }
 
 

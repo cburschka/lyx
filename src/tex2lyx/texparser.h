@@ -3,6 +3,7 @@
 #define PARSER_H
 
 #include "LString.h"
+#include <vector>
 
 enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 
@@ -109,8 +110,6 @@ public:
 	void error(string const & msg);
 	///
 	void tokenize(istream & is);
-	///
-	void tokenize(string const & s);
 	///
 	void skipSpaceTokens(istream & is, char c);
 	///
