@@ -798,7 +798,7 @@ DispatchResult MathHullInset::priv_dispatch
 						numbered(row, !old);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 			}
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
@@ -808,7 +808,7 @@ DispatchResult MathHullInset::priv_dispatch
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
 			}
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 
 		case LFUN_INSERT_LABEL: {
 			row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
@@ -832,7 +832,7 @@ DispatchResult MathHullInset::priv_dispatch
 			if (!new_label.empty())
 				numbered(r, true);
 			label(r, new_label);
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 		}
 
 		case LFUN_MATH_EXTERN:

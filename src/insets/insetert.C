@@ -466,28 +466,28 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 		 */
 		inset.getLyXText(cmd.view())->fullRebreak();
 		bv->updateInset(this);
-		result = DispatchResult(true);
+		result = DispatchResult(true, true);
 	}
 	break;
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		result = DispatchResult(true);
+		result = DispatchResult(true, true);
 		break;
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		result = DispatchResult(true);
+		result = DispatchResult(true, true);
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
-		result = DispatchResult(true);
+		result = DispatchResult(true, true);
 		break;
 
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraphs.begin()->layout()->name());
-		result = DispatchResult(true, NOUPDATE);
+		result = DispatchResult(true);
 		break;
 
 	default:

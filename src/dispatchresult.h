@@ -30,12 +30,12 @@
 */
 enum dispatch_result_t {
 	NONE = 0,
-	NOUPDATE,
 	FINISHED,
 	FINISHED_RIGHT,
 	FINISHED_UP,
 	FINISHED_DOWN
 };
+
 
 /** \c DispatchResult is a wrapper for dispatch_result_t.
  *  It can be forward-declared and passed as a function argument without
@@ -47,15 +47,27 @@ public:
 		: dispatched_(false), val_(NONE) {}
 	explicit
 	DispatchResult(bool dis)
-		: dispatched_(dis), val_(NONE) {}
+		: dispatched_(dis), update_(false), val_(NONE) {}
+	DispatchResult(bool dis, bool update)
+		: dispatched_(dis), update_(true), val_(NONE) {}
 	DispatchResult(bool dis, dispatch_result_t val)
-		: dispatched_(dis), val_(val) {}
+		: dispatched_(dis), update_(false), val_(val) {}
 	dispatch_result_t val() const { return val_; }
 	bool dispatched() const {
 		return dispatched_;
 	}
+	void dispatched(bool dis) {
+		dispatched_ = dis;
+	}
+	bool update() const {
+		return update_;
+	}
+	void update(bool up) {
+		update_ = up;
+	}
 private:
 	bool dispatched_;
+	bool update_;
 	dispatch_result_t val_;
 };
 

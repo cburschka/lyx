@@ -549,7 +549,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	if (the_locking_inset) {
 		DispatchResult const res = the_locking_inset->dispatch(cmd1);
 
-		return res.dispatched() || res.val() >= NOUPDATE;
+		return res.dispatched();
 	}
 
 	int tmp_x = cmd.x;
@@ -561,7 +561,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	// We still need to deal properly with the whole relative vs.
 	// absolute mouse co-ords thing in a realiable, sensible way
 	DispatchResult const res = inset->dispatch(cmd1);
-	bool const ret = res.dispatched() || res.val() >= NOUPDATE;
+	bool const ret = res.dispatched();
 	updateLocal(bv, false);
 	return ret;
 }
@@ -605,7 +605,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 		if (!bv->lockInset(this)) {
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 		}
 
 		locked = true;
@@ -653,16 +653,16 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		updateLocal(bv, false);
 		// Tell the paragraph dialog that we've entered an insettext.
 		bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		return DispatchResult(lfunMouseRelease(cmd));
@@ -676,25 +676,27 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	DispatchResult result = UpdatableInset::priv_dispatch(cmd, idx, pos);
 	if (result.dispatched())
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
-	result = DispatchResult(true);
-	if (cmd.action < 0 && cmd.argument.empty())
+	result = DispatchResult(true, true);
+	if (cmd.action == LFUN_UNKNOWN_ACTION && cmd.argument.empty())
 		return DispatchResult(false, FINISHED);
 
 	if (the_locking_inset) {
 		result = the_locking_inset->dispatch(cmd);
 
 		if (result.dispatched()) {
-			if (result.val() != NOUPDATE)
+			if (result.update()) {
+				result.update(false);
 				updateLocal(bv, false);
+			}
 			return result;
 		}
 
 		switch (result.val()) {
 		case FINISHED_RIGHT:
 			moveRightIntern(bv, false, false);
-			result = DispatchResult(true);
+			result = DispatchResult(true, true);
 			break;
 		case FINISHED_UP:
 			result = moveUp(bv);
@@ -711,7 +713,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			}
 			break;
 		default:
-			result = DispatchResult(true);
+			result = DispatchResult(true, true);
 			break;
 		}
 		the_locking_inset = 0;
@@ -752,7 +754,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		}
 		text_.selection.cursor = text_.cursor;
 		updflag = true;
-		result = DispatchResult(true, NOUPDATE);
+		result = DispatchResult(true);
 		break;
 
 	// cursor movements that need special handling
@@ -780,7 +782,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		else {
 			text_.cursorPrevious();
 			text_.clearSelection();
-			result = DispatchResult(true, NOUPDATE);
+			result = DispatchResult(true);
 		}
 		break;
 
@@ -790,7 +792,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		else {
 			text_.cursorNext();
 			text_.clearSelection();
-			result = DispatchResult(true, NOUPDATE);
+			result = DispatchResult(true);
 		}
 		break;
 
@@ -835,7 +837,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows_) {
-			result = DispatchResult(true);
+			result = DispatchResult(true, true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 0);
@@ -845,7 +847,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		if (!autoBreakRows_) {
-			result = DispatchResult(true);
+			result = DispatchResult(true, true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 1);
@@ -855,7 +857,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKLINE: {
 		if (!autoBreakRows_) {
-			result = DispatchResult(true);
+			result = DispatchResult(true, true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			auto_ptr<InsetNewline> ins(new InsetNewline);
@@ -923,8 +925,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 	if (result.val() >= FINISHED)
 		bv->unlockInset(this);
 
-	if (result.val() == NOUPDATE)
-		result = DispatchResult(true);
+	if (result.val() == NONE)
+		result = DispatchResult(true, true);
 	return result;
 }
 
@@ -1049,11 +1051,11 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size())
 		return DispatchResult(false, FINISHED_RIGHT);
 	if (activate_inset && checkAndActivateInset(bv, front))
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	text_.cursorRight(bv);
 	if (!selecting)
 		text_.clearSelection();
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 
@@ -1067,8 +1069,8 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 	if (!selecting)
 		text_.clearSelection();
 	if (activate_inset && checkAndActivateInset(bv, front))
-		return DispatchResult(true);
-	return DispatchResult(true, NOUPDATE);
+		return DispatchResult(true, true);
+	return DispatchResult(true);
 }
 
 
@@ -1078,7 +1080,7 @@ DispatchResult InsetText::moveUp(BufferView * bv)
 		return DispatchResult(false, FINISHED_UP);
 	text_.cursorUp(bv);
 	text_.clearSelection();
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 
@@ -1088,7 +1090,7 @@ DispatchResult InsetText::moveDown(BufferView * bv)
 		return DispatchResult(false, FINISHED_DOWN);
 	text_.cursorDown(bv);
 	text_.clearSelection();
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 

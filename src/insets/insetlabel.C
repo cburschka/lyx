@@ -68,7 +68,7 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_INSET_EDIT:
 		InsetCommandMailer("label", *this).showDialog(bv);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 		break;
 
 	case LFUN_INSET_MODIFY: {
@@ -85,7 +85,7 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 		setParams(p);
 		bv->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	default:

@@ -142,7 +142,7 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
 		bv->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_EDIT:
@@ -152,12 +152,12 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetNoteMailer("note", *this).updateDialog(bv);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetNoteMailer("note", *this).showDialog(bv);
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 		}
 		// fallthrough:
 

@@ -203,17 +203,17 @@ InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			setParams(p);
 			cmd.view()->updateInset(this);
 		}
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetGraphicsMailer(*this).updateDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_INSET_EDIT:
 	case LFUN_MOUSE_RELEASE:
 		InsetGraphicsMailer(*this).showDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	default:
 		return DispatchResult(false);

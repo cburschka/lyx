@@ -677,7 +677,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 
 		if (!bv->lockInset(this)) {
 			lyxerr << "InsetTabular::Cannot lock inset" << endl;
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 		}
 
 		finishUndo();
@@ -713,7 +713,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 				activateCellInset(bv, cmd.x - inset_x, cmd.y - inset_y, cmd.button());
 			}
 		}
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	if (result.dispatched()) {
@@ -726,18 +726,18 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 
 	bool hs = hasSelection();
 
-	result = DispatchResult(true);
+	result = DispatchResult(true, true);
 	// this one have priority over the locked InsetText, if we're not already
 	// inside another tabular then that one get's priority!
 	if (getFirstLockingInsetOfType(InsetOld::TABULAR_CODE) == this) {
 		switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			lfunMousePress(cmd);
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
 			lfunMouseMotion(cmd);
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_RELEASE:
 			return DispatchResult(lfunMouseRelease(cmd));
@@ -753,7 +753,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			if (hs)
 				updateLocal(bv);
 			if (!the_locking_inset)
-				return DispatchResult(true, NOUPDATE);
+				return DispatchResult(true);
 			return result;
 		// this to avoid compiler warnings.
 		default:
@@ -766,15 +766,15 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 	if (the_locking_inset) {
 		result = the_locking_inset->dispatch(cmd);
 		if (result.dispatched()) {
-			if (result.val() == NOUPDATE) {
+			if (result.update()) {
+				updateLocal(bv);
+			} else {
 				int const sc = scroll();
 				resetPos(bv);
 				if (sc != scroll()) {
 					// inset has been scrolled
 					updateLocal(bv);
 				}
-			} else {
-				updateLocal(bv);
 			}
 			return result;
 		} else if (result.val() == FINISHED_UP) {
@@ -793,7 +793,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		}
 	}
 
-	result = DispatchResult(true);
+	result = DispatchResult(true, true);
 	switch (action) {
 		// --- Cursor Movements ----------------------------------
 	case LFUN_RIGHTSEL: {
@@ -1088,7 +1088,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			case LFUN_UNDERLINE:
 			case LFUN_FONT_SIZE:
 				if (bv->dispatch(FuncRequest(bv, action, arg)))
-					result = DispatchResult(true);
+					result = DispatchResult(true, true);
 				break;
 			default:
 				break;
@@ -1406,17 +1406,17 @@ DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 	} else {
 		bool moved = isRightToLeft(bv)
 			? movePrevCell(bv) : moveNextCell(bv);
 		if (!moved)
 			return DispatchResult(false, FINISHED_RIGHT);
 		if (lock && activateCellInset(bv))
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 	}
 	resetPos(bv);
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 
@@ -1427,9 +1427,9 @@ DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 		return DispatchResult(false, FINISHED);
 	// behind the inset
 	if (lock && activateCellInset(bv, 0, 0, mouse_button::none, true))
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	resetPos(bv);
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 
@@ -1448,9 +1448,9 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 	}
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 
@@ -1469,9 +1469,9 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 	}
-	return DispatchResult(true, NOUPDATE);
+	return DispatchResult(true);
 }
 
 

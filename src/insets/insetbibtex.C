@@ -92,30 +92,39 @@ DispatchResult
 InsetBibtex::priv_dispatch(FuncRequest const & cmd,
 			   idx_type & idx, pos_type & pos)
 {
+	DispatchResult result(false);
+	
 	switch (cmd.action) {
 
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		return DispatchResult(true);
+		result.dispatched(true);
+		break;
+		
 	case LFUN_MOUSE_RELEASE:
 		if (button().box().contains(cmd.x, cmd.y))
 			InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		return DispatchResult(true);
-
+		result.dispatched(true);
+		break;
+		
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
-		if (p.getCmdName().empty())
-			return DispatchResult(true);
-		setParams(p);
-		return  DispatchResult(true);
+		if (!p.getCmdName().empty())
+			setParams(p);
+		result.dispatched(true);
+		result.update(true);
 	}
-
+		break;
+		
 	default:
-		return InsetCommand::priv_dispatch(cmd, idx, pos);
+		result = InsetCommand::priv_dispatch(cmd, idx, pos);
+		break;
 	}
 
+	return result;
 }
+
 
 string const InsetBibtex::getScreenLabel(Buffer const &) const
 {

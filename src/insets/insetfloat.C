@@ -176,12 +176,12 @@ InsetFloat::priv_dispatch(FuncRequest const & cmd,
 
 		wide(params_.wide, cmd.view()->buffer()->params());
 		cmd.view()->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetFloatMailer(*this).updateDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	default:

@@ -1050,7 +1050,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_MOUSE_RELEASE:
 			//if (cmd.button() == mouse_button::button3) {
 			//	GridInsetMailer(*this).showDialog();
-			//	return DispatchResult(true);
+			//	return DispatchResult(true, true);
 			//}
 			return DispatchResult(false);
 

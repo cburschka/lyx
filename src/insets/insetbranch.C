@@ -123,23 +123,23 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 {
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
-	case LFUN_INSET_MODIFY:
-		{
+	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
 		InsetBranchMailer::string2params(cmd.argument, params);
 		params_.branch = params.branch;
 		setButtonLabel();
 		bv->updateInset(this);
-		return DispatchResult(true);
-		}
+		return DispatchResult(true, true);
+	}
 	case LFUN_INSET_EDIT:
 		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
-
 		return DispatchResult(false);
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBranchMailer("branch", *this).updateDialog(bv);
 		return DispatchResult(true);
+
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 		    InsetBranchMailer("branch", *this).showDialog(bv);

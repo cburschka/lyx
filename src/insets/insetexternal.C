@@ -439,7 +439,7 @@ InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		external::editExternal(p, buffer);
-		return DispatchResult(true, NOUPDATE);
+		return DispatchResult(true);
 	}
 
 	case LFUN_INSET_MODIFY: {
@@ -450,17 +450,17 @@ InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
 		cmd.view()->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetExternalMailer(*this).updateDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_INSET_EDIT:
 		InsetExternalMailer(*this).showDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	default:
 		return DispatchResult(false);

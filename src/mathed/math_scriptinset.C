@@ -528,7 +528,7 @@ MathScriptInset::priv_dispatch(FuncRequest const & cmd,
 			limits_ =  (hasLimits()) ? -1 : 1;
 		else
 			limits_ = 0;
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	return MathNestInset::priv_dispatch(cmd, idx, pos);

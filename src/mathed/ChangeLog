@@ -1,5 +1,9 @@
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* Adjust for new DispatchResult semantics.
+
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* math_parser.C (parse1): exception safety
 
 	* math_extern.C (splitScripts): exception safety

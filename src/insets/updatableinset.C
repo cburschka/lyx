@@ -125,7 +125,7 @@ UpdatableInset::priv_dispatch(FuncRequest const & ev, idx_type &, pos_type &)
 		}
 		ev.view()->updateInset(this);
 
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 	return DispatchResult(false);
 }

@@ -1,5 +1,18 @@
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text3.C (dispatch): adjust for new DisptchResult semantics.
+
+	* lyxfunc.C (dispatch): handle update when return from
+	Cursor::dispatch, adjust for new DispatchResult semantics.
+
+	* dispatchresult.h: drop NOUPDATE from dispatch_result_t. Make
+	DispatchResult(true) mean to not update. Add class functions for
+	setting dispatched and update, as well as reading.
+
+	* cursor.C (dispatch): don't handle update here
+
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* trans_mgr.h: store t1_ and t2_ in scoped_ptr
 	* trans_mgr.C: adjust
 

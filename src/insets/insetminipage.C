@@ -112,12 +112,12 @@ InsetMinipage::priv_dispatch(FuncRequest const & cmd,
 		 * with ugliness like this ... */
 		inset.getLyXText(cmd.view())->fullRebreak();
 		cmd.view()->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetMinipageMailer(*this).updateDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);

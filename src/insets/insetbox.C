@@ -169,6 +169,7 @@ DispatchResult
 InsetBox::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
+	DispatchResult result(false);
 	BufferView * bv = cmd.view();
 
 	switch (cmd.action) {
@@ -177,11 +178,14 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 		InsetBoxMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
 		bv->updateInset(this);
-		return DispatchResult(true);
+		result.dispatched(true);
+		result.update(true);
+		break;
 	}
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBoxMailer(*this).updateDialog(bv);
-		return DispatchResult(true);
+		result.dispatched(true);
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
@@ -191,8 +195,11 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 		// fallthrough:
 
 	default:
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		break;
 	}
+	
+	return result;
 }
 
 

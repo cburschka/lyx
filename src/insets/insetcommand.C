@@ -100,12 +100,12 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 
 		setParams(p);
 		cmd.view()->updateInset(this);
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetCommandMailer(cmd.argument, *this).updateDialog(cmd.view());
-		return DispatchResult(true);
+		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		return dispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));

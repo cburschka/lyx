@@ -1537,5 +1537,5 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		return DispatchResult(false);
 	}
 
-	return DispatchResult(true);
+	return DispatchResult(true, true);
 }

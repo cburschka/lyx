@@ -1,10 +1,14 @@
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* Inset::dispatch's: adjust for new DispatchResult semantics.
+	
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* render_base.h: make clone return an auto_ptr
 	* render_button.C (clone): adjust
 	* render_graphic.C (clone): adjust
 	* render_preview.C (clone): adjust
-	
+
 	* insettheorem.C (clone): return an auto_ptr
 
 	* insettext.C (priv_dispatch): exception safety

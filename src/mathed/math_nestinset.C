@@ -299,7 +299,7 @@ MathNestInset::priv_dispatch(FuncRequest const & cmd,
 			mathed_parse_cell(ar, cmd.argument);
 			cell(idx).insert(pos, ar);
 			pos += ar.size();
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 		}
 
 		case LFUN_PASTESELECTION:

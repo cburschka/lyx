@@ -885,11 +885,17 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
-		if (cursor.dispatch(FuncRequest(func, view())).dispatched()) {
+		DispatchResult result =
+			cursor.dispatch(FuncRequest(func, view()));
+
+		if (result.dispatched()) {
+			if (result.update()) {
+				view()->update();
+			}
 			lyxerr << "dispatched by Cursor::dispatch()\n";
 			goto exit_with_message;
 		}
-		lyxerr << "### NOT DispatchResult(true) BY Cursor::dispatch() ###\n";
+		lyxerr << "### NOT DispatchResult(true, true) BY Cursor::dispatch() ###\n";
 	}
 #endif
 
@@ -934,6 +940,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			// Hand-over to inset's own dispatch:
 			result = inset->dispatch(FuncRequest(view(), action, argument));
 			if (result.dispatched()) {
+				if (result.update())
+					view()->update();
+
 				goto exit_with_message;
 			}
 

@@ -68,7 +68,7 @@ InsetIndex::priv_dispatch(FuncRequest const & cmd,
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT:
 			InsetCommandMailer("index", *this).showDialog(cmd.view());
-			return DispatchResult(true);
+			return DispatchResult(true, true);
 
 		default:
 			return InsetCommand::priv_dispatch(cmd, idx, pos);
