@@ -50,9 +50,6 @@ public:
 	bool addDatabase(string const &);
 	///
 	bool delDatabase(string const &);
-private:
-	///
-	mutable unsigned int center_indent_;
 };
 
 #endif // INSET_BIBTEX_H

@@ -58,7 +58,9 @@ std::auto_ptr<InsetBase> InsetBibtex::clone() const
 void InsetBibtex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCommand::metrics(mi, dim);
-	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	int center_indent = (mi.base.textwidth - dim.wid) / 2;
+	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
+	button().setBox(b);
 	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
@@ -66,7 +68,7 @@ void InsetBibtex::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetBibtex::draw(PainterInfo & pi, int x, int y) const
 {
-	InsetCommand::draw(pi, x + center_indent_, y);
+	InsetCommand::draw(pi, x + button().box().x1, y);
 }
 
 
@@ -74,8 +76,12 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
-	case LFUN_INSET_EDIT:
+	case LFUN_INSET_DIALOG_SHOW:
 		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
+		return DISPATCHED;
+	case LFUN_MOUSE_RELEASE:
+		if (button().box().contains(cmd.x, cmd.y)) 
+			InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
 		return DISPATCHED;
 
 	case LFUN_INSET_MODIFY: {

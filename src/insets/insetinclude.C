@@ -148,7 +148,11 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	case LFUN_MOUSE_RELEASE:
-	case LFUN_INSET_EDIT:
+		if (button_.box().contains(cmd.x, cmd.y))
+			InsetIncludeMailer(*this).showDialog(cmd.view());
+		return DISPATCHED;
+	
+	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(cmd.view());
 		return DISPATCHED;
 
@@ -535,10 +539,11 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		button_.metrics(mi, dim);
 	}
-	if (params_.flag == INPUT)
-		center_indent_ = 0;
-	else
-		center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	int center_indent = (params_.flag == INPUT ? 0 : 
+		(mi.base.textwidth - dim.wid) / 2);
+	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
+	button_.setBox(b);
+
 	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
@@ -548,14 +553,14 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
 	if (!preview_->previewReady()) {
-		button_.draw(pi, x + center_indent_, y);
+		button_.draw(pi, x + button_.box().x1, y);
 		return;
 	}
 
 	if (!preview_->monitoring())
 		preview_->startMonitoring();
 
-	pi.pain.image(x + center_indent_, y - dim_.asc, dim_.wid, dim_.height(),
+	pi.pain.image(x + button_.box().x1, y - dim_.asc, dim_.wid, dim_.height(),
 			    *(preview_->pimage()->image()));
 }
 

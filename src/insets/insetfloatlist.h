@@ -56,9 +56,6 @@ public:
 	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-private:
-	///
-	mutable unsigned int center_indent_;
 };
 
 #endif

@@ -13,6 +13,7 @@
 #define RENDERERS_H
 
 #include "dimension.h"
+#include "box.h"
 
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsParams.h"
@@ -68,10 +69,16 @@ public:
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
+	/// The "sensitive area" box, i.e., the button area
+	Box box() const { return button_box_; }
+	///
+	void setBox(Box b) { button_box_ = b; }
+	
 private:
 	/// The stored data.
 	string text_;
 	bool editable_;
+	Box button_box_;
 };
 
 

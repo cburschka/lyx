@@ -28,6 +28,8 @@ struct Box {
 	int y1;
 	int y2;
 
+	/// Zero-initialise the member variables.
+	Box();
 	/// Initialise the member variables.
 	Box(int x1_, int x2_, int y1_, int y2_);
 

@@ -691,6 +691,20 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (!mathcursor)
 			code = InsetOld::SPACE_CODE;
 		break;
+	case LFUN_INSET_DIALOG_SHOW: {
+			LyXText * lt = view()->getLyXText();
+			InsetOld * inset = lt->getInset();
+			disable = !inset;
+			if (!disable) {
+				code = inset->lyxCode();
+				if (!(code == InsetOld::INCLUDE_CODE 
+					|| code == InsetOld::BIBTEX_CODE 
+					|| code == InsetOld::FLOAT_LIST_CODE 
+					|| code == InsetOld::TOC_CODE))
+					disable = true;
+			}
+		}
+		break;
 	default:
 		break;
 	}
@@ -1462,6 +1476,16 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 	break;
 
+	case LFUN_INSET_DIALOG_SHOW: {
+		LyXText * lt = view()->getLyXText();
+		InsetOld * inset = lt->getInset();
+		if (inset) {
+			FuncRequest cmd(view(), LFUN_INSET_DIALOG_SHOW);
+			inset->localDispatch(cmd);
+		}
+  	}
+	break;							 
+	
 	case LFUN_DIALOG_UPDATE: {
 		string const & name = argument;
 		// Can only update a dialog connected to an existing inset

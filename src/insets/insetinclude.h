@@ -138,7 +138,6 @@ private:
 	/// cache
 	mutable bool set_label_;
 	mutable ButtonRenderer button_;
-	mutable unsigned int center_indent_;
 };
 
 

@@ -388,8 +388,9 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 
 InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 {
-	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << cmd.action
-			      <<"] arg[" << cmd.argument << ']' << endl;
+	lyxerr[Debug::ACTION] << "LyXText::dispatch: action[" << cmd.action
+			      <<"] arg[" << cmd.argument << ']' << "xy[" <<
+				  cmd.x << ',' << cmd.y << ']' << endl;
 
 	BufferView * bv = cmd.view();
 

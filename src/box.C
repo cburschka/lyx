@@ -19,10 +19,13 @@
 using std::ostream;
 
 
-Box::Box(int x1_, int x2_, int y1_, int y2_) :
-	x1(x1_), x2(x2_), y1(y1_), y2(y2_)
+Box::Box(int x1_, int x2_, int y1_, int y2_)
+	: x1(x1_), x2(x2_), y1(y1_), y2(y2_)
 {}
 
+Box::Box() 
+	: x1(0), x2(0), y1(0), y2(0)
+{}
 
 bool Box::contains(int x, int y)
 {
