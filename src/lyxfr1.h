@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _LYXFR1_H
-#define _LYXFR1_H
+#ifndef LYXFR1_H
+#define LYXFR1_H
 
 #ifdef __GNUG__
 #pragma interface

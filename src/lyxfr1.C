@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstring>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
