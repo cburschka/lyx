@@ -88,6 +88,7 @@ QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner,
 }
 
 
+// FIXME: should all be in backend
 bool QLPopupMenu::disabled(Menu * menu)
 {
 	bool disable = true;
@@ -95,10 +96,10 @@ bool QLPopupMenu::disabled(Menu * menu)
 	Menu::const_iterator m = menu->begin();
 	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
-		if (m->kind() == MenuItem::Submenu
-		    && !disabled(m->submenu())) {
-			disable = false;
-		} else {
+		if (m->kind() == MenuItem::Submenu) {
+			if (!disabled(m->submenu()))
+				disable = false;
+		} else if (m->kind() != MenuItem::Separator) {
 			FuncStatus const status =
 				owner_->view()->getLyXFunc()
 				.getStatus(m->action());
