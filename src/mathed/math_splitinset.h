@@ -3,6 +3,7 @@
 #define MATH_SPLITINSET_H
 
 #include "math_gridinset.h"
+#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,7 +13,7 @@
 class MathSplitInset : public MathGridInset {
 public: 
 	///
-	explicit MathSplitInset(int n);
+	explicit MathSplitInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
@@ -20,7 +21,10 @@ public:
 	///
 	int defaultColSpace(col_type) { return 0; }
 	///
-	char defaultColAlign(col_type) { return 'l'; }
+	char defaultColAlign(col_type);
+private:
+	///
+	string name_;
 };
 
 #endif

@@ -104,8 +104,8 @@ MathAtom createMathInset(string const & s)
 	if (s == "xrightarrow")
 		return MathAtom(new MathXArrowInset(s));
 
-	if (s == "split")
-		return MathAtom(new MathSplitInset(1));
+	if (s == "split" || s == "gathered" || s == "aligned")
+		return MathAtom(new MathSplitInset(s));
 
 	if (s == "cases")
 		return MathAtom(new MathCasesInset);
@@ -116,7 +116,8 @@ MathAtom createMathInset(string const & s)
 	if (s == "subarray" || s == "array")
 		return MathAtom(new MathArrayInset(s, 1, 1));
 
-	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix") 
+	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix" ||
+		  s == "matrix") 
 		return MathAtom(new MathAMSArrayInset(s));
 
 	latexkeys const * l = in_word_set(s);

@@ -36,7 +36,9 @@ char const * MathAMSArrayInset::name_left() const
 		return "|";
 	if (name_ == "Vmatrix")
 		return "Vert";
-	return "(";
+	if (name_ == "pmatrix")
+		return "(";
+	return ".";
 }
 
 
@@ -48,7 +50,9 @@ char const * MathAMSArrayInset::name_right() const
 		return "|";
 	if (name_ == "Vmatrix")
 		return "Vert";
-	return ")";
+	if (name_ == "pmatrix")
+		return ")";
+	return ".";
 }
 
 

@@ -1093,10 +1093,11 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				string const halign = getArg('{', '}');
 				array.push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
 				parse_lines(array.back(), false, false);
-			} else if (name == "split" || name == "cases") {
+			} else if (name == "split" || name == "cases" ||
+				         name == "gathered" || name == "aligned") {
 				array.push_back(createMathInset(name));
 				parse_lines(array.back(), false, false);
-			} else if (name == "pmatrix" || name == "bmatrix" ||
+			} else if (name == "matrix"  || name == "pmatrix" || name == "bmatrix" ||
 				         name == "vmatrix" || name == "Vmatrix") {
 				array.push_back(createMathInset(name));
 				parse_lines2(array.back(), false);
