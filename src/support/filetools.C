@@ -213,7 +213,7 @@ vector<string> const DirList(string const & dir, string const & ext)
 	// This is a non-error checking C/system implementation
 	string extension(ext);
 	if (!extension.empty() && extension[0] != '.')
-		extension.insert(0, 1, '.');
+		extension.insert(0, 1, ".");
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	if (!dirp) {
