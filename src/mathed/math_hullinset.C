@@ -28,6 +28,7 @@
 using std::vector;
 using std::max;
 using std::endl;
+using std::pair;
 
 namespace {
 
@@ -355,18 +356,18 @@ void MathHullInset::header_write(WriteStream & os) const
 	else if (type_ == "eqnarray" || type_ == "align")
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
-	else if (type_ == "alignat" || type_ == "xalignat") 
+	else if (type_ == "alignat" || type_ == "xalignat")
 		os << "\\begin{" << type_ << star(n) << "}"
 		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
- 
-	else if (type_ == "xxalignat") 
+
+	else if (type_ == "xxalignat")
 		os << "\\begin{" << type_ << "}"
 		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
- 
-	else if (type_ == "multline" || type_ == "gather") 
+
+	else if (type_ == "multline" || type_ == "gather")
 		os << "\\begin{" << type_ << "}\n";
 
-	else 
+	else
 		os << "\\begin{unknown" << star(n) << "}";
 }
 
@@ -419,21 +420,21 @@ void MathHullInset::addFancyCol(col_type col)
 {
 	if (type_ == "equation")
 		mutate("eqnarray");
-	
+
 	else if (type_ == "eqnarray") {
 		mutate("align");
 		addFancyCol(col);
 	}
 
 	else if (type_ == "align" || type_ == "alignat"
-	      || type_ == "xalignat" || type_ == "xxalignat") 
+	      || type_ == "xalignat" || type_ == "xxalignat")
 		MathGridInset::addCol(col);
 }
 
 
 void MathHullInset::delFancyCol(col_type col)
 {
-	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
+	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat")
 		MathGridInset::delCol(col);
 }
 
@@ -478,7 +479,7 @@ void MathHullInset::mutate(string const & newtype)
 	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'\n";
 
 	// we try to move along the chain
-	// none <-> simple <-> equation <-> eqnarray 
+	// none <-> simple <-> equation <-> eqnarray
 
 	if (newtype == "dump") {
 		dump();
@@ -526,7 +527,7 @@ void MathHullInset::mutate(string const & newtype)
 		} else if (newtype == "multline" || newtype == "gather") {
 			setType(newtype);
 			numbered(0, false);
-		} else {			
+		} else {
 			MathGridInset::addCol(1);
 			// split it "nicely"
 			pos_type pos = firstRelOp(cell(0));
@@ -742,7 +743,7 @@ MathInset::result_type MathHullInset::dispatch
 				idx = 1;
 				pos = 0;
 				return DISPATCHED_POP;
-			} 
+			}
 			return MathGridInset::dispatch(cmd, idx, pos);
 
 		case LFUN_MATH_NUMBER:
@@ -755,9 +756,9 @@ MathInset::result_type MathHullInset::dispatch
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				//updateLocal(bv, true);
 			}
-			return DISPATCHED; 
-		
-		case LFUN_MATH_NONUMBER:	
+			return DISPATCHED;
+
+		case LFUN_MATH_NONUMBER:
 			if (display()) {
 				//bv->lockedInsetStoreUndo(Undo::INSERT);
 				bool old = numbered(row(idx));
@@ -765,7 +766,7 @@ MathInset::result_type MathHullInset::dispatch
 				numbered(row(idx), !old);
 				//updateLocal(bv, true);
 			}
-			return DISPATCHED; 
+			return DISPATCHED;
 
 		case LFUN_INSERT_LABEL: {
 			row_type r = row(idx);
@@ -796,7 +797,7 @@ MathInset::result_type MathHullInset::dispatch
 				cmd.view()->repaint();
 
 			label(r, new_label);
-			return DISPATCHED; 
+			return DISPATCHED;
 		}
 
 		case LFUN_MATH_HALIGN:
@@ -814,4 +815,3 @@ MathInset::result_type MathHullInset::dispatch
 	}
 	return UNDISPATCHED;
 }
-
