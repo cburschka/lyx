@@ -9,7 +9,8 @@ SUBDIRS = intl po sigc++ boost src lib
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h autogen.sh \
-	config development forms images
+	config development forms images sourcedoc
+
 ETAGS_ARGS = --lang=c++
 man_MANS = lyx.1
 
@@ -52,7 +53,7 @@ bindist:
 	@echo "*** $(bindistfile) has been created."
 
 
-sourcedoc: sourcedoc/Doxyfile
+doxydoc: sourcedoc/Doxyfile
 	cd sourcedoc; \
 	doxygen ./Doxyfile
 
