@@ -94,6 +94,7 @@
 #include "TextCache.h"
 #include "lyxfind.h"
 #include "undo_funcs.h"
+#include "figureForm.h"
 
 using std::pair;
 using std::make_pair; 
@@ -1454,30 +1455,6 @@ string const LyXFunc::dispatch(int ac,
 	// --- insert characters ----------------------------------------
 
 	// ---  Mathed stuff. If we are here, there is no locked inset yet.
-	
-	// Greek mode     
-	case LFUN_GREEK:
-	{
-		if (!greek_kb_flag) {
-			greek_kb_flag = 1;
-			setMessage(N_("Math greek mode on"));
-		} else
-			greek_kb_flag = 0;
-	}  
-	break;
-      
-	// Greek keyboard      
-	case LFUN_GREEK_TOGGLE:
-	{
-		greek_kb_flag = greek_kb_flag ? 0 : 2;
-		if (greek_kb_flag) {
-			setMessage(N_("Math greek keyboard on"));
-		} else {
-			setMessage(N_("Math greek keyboard off"));
-		}
-	}
-	break;
-	
 	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:

@@ -67,7 +67,6 @@
 #include "mathed/formulabase.h"
 
 extern LyXTextClass::size_type current_layout;
-extern int greek_kb_flag;
 
 using std::vector;
 using std::find_if;
@@ -85,7 +84,6 @@ bool selection_possible = false;
 extern BufferList bufferlist;
 extern char ascii_type;
 
-extern bool math_insert_greek(BufferView *, char);
 extern void sigchldchecker(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
@@ -1668,58 +1666,58 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_LANGUAGE:
-		Lang(bv_, argument);
+		lang(bv_, argument);
 		setState();
 		owner_->showState();
 		break;
 
 	case LFUN_EMPH:
-		Emph(bv_);
+		emph(bv_);
 		owner_->showState();
 		break;
 
 	case LFUN_BOLD:
-		Bold(bv_);
+		bold(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_NOUN:
-		Noun(bv_);
+		noun(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_CODE:
-		Code(bv_);
+		code(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_SANS:
-		Sans(bv_);
+		sans(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_ROMAN:
-		Roman(bv_);
+		roman(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_DEFAULT:
-		StyleReset(bv_);
+		styleReset(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_UNDERLINE:
-		Underline(bv_);
+		underline(bv_);
 		owner_->showState();
 		break;
 		
 	case LFUN_FONT_SIZE:
-		FontSize(bv_, argument);
+		fontSize(bv_, argument);
 		owner_->showState();
 		break;
 		
 	case LFUN_FONT_STATE:
-		owner_->getLyXFunc()->setMessage(CurrentState(bv_));
+		owner_->getLyXFunc()->setMessage(currentState(bv_));
 		break;
 		
 	case LFUN_UPCASE_WORD:
@@ -3002,10 +3000,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		InsetCommandParams p("index");
 		if (argument.empty()) {
 			string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
-			if (!idxstring.empty()) 
+			if (!idxstring.empty()) {
 				p.setContents(idxstring);
-			else
+			} else {
 				break;
+			}
 		} else {
 			p.setContents(argument);
 		}
@@ -3137,11 +3136,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		string::const_iterator cit = argument.begin();
 		string::const_iterator end = argument.end();
 		for (; cit != end; ++cit) {
-			if (greek_kb_flag) {
-				if (!math_insert_greek(bv_, *cit))
-					owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
-			} else
-				owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+			owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
 		}
 		
 		bv_->update(lt,

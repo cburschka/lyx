@@ -181,8 +181,6 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 	}
 	
-	
-	//WriteStatus(lfun, string(_("LaTeX run number ")) + tostr(count));
 	this->operator()();
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
@@ -319,7 +317,6 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
 		
-//		WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {

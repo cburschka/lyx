@@ -547,6 +547,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 
 	} else if (token == "\\begin_float") {
+		insertErtContents(par, pos, font);
+		//insertErtContents(par, pos, font, false);
+		//ert_stack.push(ert_comp);
+		//ert_comp = ErtComp();
+		
 		// This is the compability reader. It can be removed in
 		// LyX version 1.3.0. (Lgb)
 		lex.next();
@@ -628,6 +633,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		inset->read(this, nylex);
 		par->insertInset(pos, inset, font);
 		++pos;
+		insertErtContents(par, pos, font);
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
@@ -1051,6 +1057,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifdef NO_LATEX
 		ert_comp = ert_stack.top();
 		ert_stack.pop();
+		insertErtContents(par, pos, font);
 #endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =

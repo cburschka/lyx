@@ -275,6 +275,7 @@ void LyXRC::readBindFileIfNeeded()
 		ReadBindFile(bind_file);
 }
 
+
 int LyXRC::read(string const & filename)
 {	
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
@@ -306,8 +307,9 @@ int LyXRC::read(string const & filename)
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_INPUT: // Include file
 		        if (lexrc.next()) {
-				string tmp = LibFileSearch(string(),
-							   lexrc.GetString()); 
+				string const tmp =
+					LibFileSearch(string(),
+						      lexrc.GetString()); 
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
 							 "included file: "+tmp);
@@ -316,7 +318,7 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
-				string tmp(lexrc.GetString());
+				string const tmp(lexrc.GetString());
 				if (hasBindFile)
 					// We are already in the
 					// "actually read bind file"
@@ -353,7 +355,7 @@ int LyXRC::read(string const & filename)
 			
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
-				string kmap(lexrc.GetString());
+				string const kmap(lexrc.GetString());
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap, 
@@ -366,7 +368,7 @@ int LyXRC::read(string const & filename)
 			
 		case RC_KBMAP_SECONDARY:
 			if (lexrc.next()) {
-				string kmap(lexrc.GetString());
+				string const kmap(lexrc.GetString());
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap, 
@@ -484,7 +486,8 @@ int LyXRC::read(string const & filename)
 
 		case RC_DEFAULT_PAPERSIZE:
                         if (lexrc.next()) {
-			        string size = lowercase(lexrc.GetString());
+			        string const size =
+					lowercase(lexrc.GetString());
 				if (size == "usletter")
 				        default_papersize =
 						BufferParams::PAPER_USLETTER;

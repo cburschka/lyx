@@ -1008,15 +1008,7 @@ InsetText::localDispatch(BufferView * bv,
 			}
 			lt->clearSelection();
 			for (string::size_type i = 0; i < arg.length(); ++i) {
-				if (greek_kb_flag) {
-					if (!math_insert_greek(bv, arg[i])) {
-						bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], lt);
-					} else if (!the_locking_inset) {
-						(void)moveRight(bv, false);
-					}
-				} else {
-					bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], lt);
-				}
+				bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], lt);
 			}
 		}
 		lt->selection.cursor = lt->cursor;

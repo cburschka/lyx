@@ -811,7 +811,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				
 				mathcursor->insert(c, char_code);
 				
-				if (greek_kb_flag && char_code == LM_TC_RM )
+				if (greek_kb_flag && char_code == LM_TC_RM)
 					mathcursor->setLastCode(LM_TC_VAR);
 				
 				varcode = LM_TC_MIN;
@@ -908,46 +908,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	return result;  // original version
 }
-
-
-
-/* FIXME: math-greek-toggle seems to work OK, but math-greek doesn't turn
- * on greek mode */
-bool math_insert_greek(BufferView * bv, char c)
-{
-	if (!bv->available())
-		return false;
-
-	if (!isalpha(c))
-		return false;
-
-	string tmp;
-	tmp = c;
-	if (!bv->theLockingInset() || bv->theLockingInset()->isTextInset()) {
-		int greek_kb_flag_save = greek_kb_flag;
-		InsetFormula * new_inset = new InsetFormula();
-		bv->beforeChange(bv->text);
-		if (!bv->insertInset(new_inset)) {
-			delete new_inset;
-			return false;
-		}
-		//Update(1);//BUG
-		new_inset->edit(bv, 0, 0, 0);
-		new_inset->localDispatch(bv, LFUN_SELFINSERT, tmp);
-		if (greek_kb_flag_save < 2) {
-			bv->unlockInset(new_inset); // bv->theLockingInset());
-			bv->text->cursorRight(bv, true);
-		}
-	} else
-		if (bv->theLockingInset()->lyxCode() == Inset::MATH_CODE ||
-				bv->theLockingInset()->lyxCode() == Inset::MATHMACRO_CODE)
-			static_cast<InsetFormula*>(bv->theLockingInset())->localDispatch(bv, LFUN_SELFINSERT, tmp);
-		else
-			lyxerr << "Math error: attempt to write on a wrong "
-				"class of inset." << endl;
-	return true;
-}
-
 
 
 Inset::Code InsetFormulaBase::lyxCode() const

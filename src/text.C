@@ -1747,10 +1747,10 @@ void LyXText::insertChar(BufferView * bview, char c)
 				      cursor.par(),
 				      cursor.pos()-1).number() == LyXFont::ON)
 			    )
-				Number(bview); // Set current_font.number to OFF
+				number(bview); // Set current_font.number to OFF
 		} else if (isdigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
-			Number(bview); // Set current_font.number to ON
+			number(bview); // Set current_font.number to ON
 
 			if (cursor.pos() > 0) {
 				char const c = cursor.par()->getChar(cursor.pos() - 1);

@@ -23,37 +23,36 @@ class LyXFont;
 class LyXText;
 
 ///
-extern void Emph(BufferView *);
+extern void emph(BufferView *);
 ///
-extern void Bold(BufferView *);
+extern void bold(BufferView *);
 ///
-extern void Noun(BufferView *);
+extern void noun(BufferView *);
 ///
-extern void Figure();
+extern void table();
 ///
-extern void Table();
+extern void lang(BufferView *, string const &);
 ///
-extern void Lang(BufferView *, string const &);
+extern void number(BufferView *);
 ///
-extern void Number(BufferView *);
-///
-extern void Tex(BufferView *);
+extern void tex(BufferView *);
 ///
 extern void changeDepth(BufferView *, LyXText *, int);
 ///
-extern void Code(BufferView *);
+extern void code(BufferView *);
 ///
-extern void Sans(BufferView *);
+extern void sans(BufferView *);
 ///
-extern void Roman(BufferView *);
+extern void roman(BufferView *);
 ///
-extern void StyleReset(BufferView *);
+extern void styleReset(BufferView *);
 ///
-extern void Underline(BufferView *);
+extern void underline(BufferView *);
 ///
-extern void FontSize(BufferView *, string const &);
+extern void fontSize(BufferView *, string const &);
 /// Returns the current font and depth as a message. 
-extern string const CurrentState(BufferView *);
+extern string const currentState(BufferView *);
 ///
-extern void ToggleAndShow(BufferView *, LyXFont const &, bool toggleall=true);
+extern void toggleAndShow(BufferView *, LyXFont const &,
+			  bool toggleall = true);
 #endif

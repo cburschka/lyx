@@ -28,55 +28,56 @@
 #include "gettext.h"
 #include "ParagraphParameters.h"
 
-void Emph(BufferView * bv)
+
+void emph(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setEmph(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Bold(BufferView * bv)
+void bold(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setSeries(LyXFont::BOLD_SERIES);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Noun(BufferView * bv)
+void noun(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setNoun(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Number(BufferView * bv)
+void number(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setNumber(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
-void Lang(BufferView * bv, string const & l)
+void lang(BufferView * bv, string const & l)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	Language const * lang = languages.getLanguage(l);
 	if (lang) {
 		font.setLanguage(lang);
-		ToggleAndShow(bv, font);
+		toggleAndShow(bv, font);
 	} else
 		WriteAlert(_("Error! unknown language"),l);
 }
 
 
 #ifndef NO_LATEX
-void Tex(BufferView * bv)
+void tex(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLatex (LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 #endif
 
@@ -103,55 +104,55 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 }
 
 
-void Code(BufferView * bv)
+void code(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Sans(BufferView * bv)
+void sans(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::SANS_FAMILY);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Roman(BufferView * bv)
+void roman(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::ROMAN_FAMILY);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void StyleReset(BufferView * bv)
+void styleReset(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_INHERIT);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void Underline(BufferView * bv)
+void underline(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setUnderbar(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
-void FontSize(BufferView * bv, string const & size)
+void fontSize(BufferView * bv, string const & size)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLyXSize(size);
-	ToggleAndShow(bv, font);
+	toggleAndShow(bv, font);
 }
 
 
 // Returns the current font and depth as a message. 
-string const CurrentState(BufferView * bv)
+string const currentState(BufferView * bv)
 {
 	ostringstream state;
 
@@ -211,7 +212,7 @@ string const CurrentState(BufferView * bv)
 /* -------> Does the actual toggle job of the XxxCB() calls above.
  * Also shows the current font state.
  */
-void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
+void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
 	if (bv->available()) { 
 		if (bv->theLockingInset()) {

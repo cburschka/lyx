@@ -87,6 +87,10 @@ unsigned char getuchar(std::istream * is)
 {
 	char c;
 	is->get(c);
+	if (!is->good()) {
+		lyxerr << "The input stream is not well..." << endl;
+	}
+	
 	return static_cast<unsigned char>(c);
 }
 
@@ -349,7 +353,6 @@ int yylex()
 }
 
 
-
 MathScriptInset * prevScriptInset(MathArray const & array)
 {
 	MathInset * p = array.back_inset();
@@ -380,21 +383,21 @@ MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
 }
 
 
-
 static bool   curr_num;
 static string curr_label;
 
-void mathed_parse_lines(MathInset * inset, int col, bool numbered, bool outmost)
+void mathed_parse_lines(MathInset * inset, int col,
+			bool numbered, bool outmost)
 {
 	// save global variables
-	bool   saved_num   = curr_num;
-	string saved_label = curr_label;
+	bool   const saved_num   = curr_num;
+	string const saved_label = curr_label;
 
 	MathGridInset * p = static_cast<MathGridInset *>(inset);
 	for (int row = 0; true; ++row) {
 		// reset global variables
 		curr_num   = numbered;
-		curr_label = string();
+		curr_label.erase();
 
 		// reading a row
 		int idx = p->nargs() - p->ncols();
@@ -429,8 +432,8 @@ MathInset * mathed_parse()
 
 	switch (t) {
 		case LM_TK_NEWCOMMAND: {
-			string name = lexArg('{').substr(1);
-			string arg  = lexArg('[');
+			string const name = lexArg('{').substr(1);
+			string const arg  = lexArg('[');
 			int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
 			p = new MathMacroTemplate(name, narg);
 			mathed_parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
@@ -453,7 +456,7 @@ MathInset * mathed_parse()
 
 				case LM_OT_SIMPLE: {
 					curr_num   = latex_mathenv[i].numbered;
-					curr_label = string();
+					curr_label.erase();
 					mathed_parse_into(m->cell(0), 0);
 					m->numbered(0, curr_num);
 					m->label(0, curr_label);
@@ -462,7 +465,7 @@ MathInset * mathed_parse()
 
 				case LM_OT_EQUATION: {
 					curr_num   = latex_mathenv[i].numbered;
-					curr_label = string();
+					curr_label.erase();
 					mathed_parse_into(m->cell(0), FLAG_END);
 					m->numbered(0, curr_num);
 					m->label(0, curr_label);
@@ -580,7 +583,7 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_CLOSE:
-			--brace;	 
+			--brace;
 			if (brace < 0) {
 				mathPrintError("Unmatching braces");
 				panic = true;
@@ -779,8 +782,8 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			MathInsetTypes typ = latex_mathenv[i].typ;
 
 			if (typ == LM_OT_MATRIX) {
-				string valign = lexArg('[') + 'c';
-				string halign = lexArg('{');
+				string const valign = lexArg('[') + 'c';
+				string const halign = lexArg('{');
 				//lyxerr << "valign: '" << valign << "'\n";
 				//lyxerr << "halign: '" << halign << "'\n";
 				MathArrayInset * m = new MathArrayInset(halign.size(), 1);
@@ -822,9 +825,9 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			do {
 				t = yylex();
 			} while (yyis->good() && t != LM_TK_END && t);
-		} else
+		} else {
 			t = yylex();
-
+		}
 	}
 	--plevel;
 }

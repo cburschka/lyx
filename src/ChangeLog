@@ -1,3 +1,8 @@
+2001-08-02  André Pönitz <poenitz@gmx.net>
+
+	* lyxfunc.C:
+	BufferView_pimpl.C: remove broken special code for math-greek
+
 2001-08-02  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (update): redone this function so that we

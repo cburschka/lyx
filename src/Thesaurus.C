@@ -72,7 +72,8 @@ Thesaurus::~Thesaurus()
 }
 
  
-std::vector<Thesaurus::ThesaurusEntry> Thesaurus::lookup(string const & text)
+std::vector<Thesaurus::ThesaurusEntry>
+Thesaurus::lookup(string const & /*text*/)
 {
 	return std::vector<ThesaurusEntry>();
 }

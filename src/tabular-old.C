@@ -26,7 +26,7 @@ using std::strlen;
 
 namespace {
 
-bool getTokenValue(string const & str, const char * token, string & ret)
+bool getTokenValue(string const & str, char const * token, string & ret)
 {
     size_t token_length = strlen(token);
     string::size_type pos = str.find(token);
@@ -48,7 +48,7 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 }
 
 
-bool getTokenValue(string const & str, const char * token, int & num)
+bool getTokenValue(string const & str, char const * token, int & num)
 {
     string::size_type pos = str.find(token);
     char ch = str[pos + strlen(token)];
@@ -72,7 +72,7 @@ bool getTokenValue(string const & str, const char * token, int & num)
 }
 
 
-bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
+bool getTokenValue(string const & str, char const * token, LyXAlignment & num)
 {
     int tmp;
     bool const ret = getTokenValue(str, token, tmp);
@@ -81,7 +81,7 @@ bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 }
 
 
-bool getTokenValue(string const & str, const char * token,
+bool getTokenValue(string const & str, char const * token,
 		   LyXTabular::VAlignment & num)
 {
     int tmp;
@@ -91,7 +91,7 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-bool getTokenValue(string const & str, const char * token,
+bool getTokenValue(string const & str, char const * token,
 		   LyXTabular::BoxType & num)
 {
     int tmp;
@@ -101,7 +101,7 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-bool getTokenValue(string const & str, const char * token, bool & flag)
+bool getTokenValue(string const & str, char const * token, bool & flag)
 {
     string::size_type pos = str.find(token);
     char ch = str[pos + strlen(token)];

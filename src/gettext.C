@@ -42,12 +42,12 @@ string const _(string const & str)
 		char * tmp = new char[s + 1];
 		str.copy(tmp, s);
 		tmp[s] = '\0';
-		string ret(gettext(tmp));
+		string const ret(gettext(tmp));
 		delete [] tmp;
 		return ret;
-	}
-	else
+	} else {
 		return string();
+	}
 }
 
 void locale_init()

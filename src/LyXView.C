@@ -241,7 +241,7 @@ void LyXView::updateWindowTitle()
 
 void LyXView::showState()
 {
-	message(CurrentState(view()));
+	message(currentState(view()));
 	getToolbar()->update();
 	menubar->update();
 }

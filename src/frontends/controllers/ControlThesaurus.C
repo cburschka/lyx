@@ -59,7 +59,8 @@ void ControlThesaurus::replace(string const & newstr)
 }
 
 
-std::vector<string> ControlThesaurus::getEntries(string const & str, Thesaurus::POS pos)
+std::vector<string>
+ControlThesaurus::getEntries(string const & str, Thesaurus::POS pos)
 {
 	if (str != laststr_)
 		entries_ = thesaurus.lookup(str);
