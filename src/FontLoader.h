@@ -48,12 +48,15 @@ public:
 		else
 			return doLoad(family, series, shape, size);
 	};
+	/// Do we have anything matching?
+	bool available(LyXFont const & f);
+	
 private:
 	/// Array of font structs
-	XFontStruct * fontstruct[4][2][4][10];
+	XFontStruct * fontstruct[9][2][4][10];
 
 	/// Array of font infos
-	FontInfo * fontinfo[4][2][4];
+	FontInfo * fontinfo[9][2][4];
 
 	/// Reset font handler
 	void reset();

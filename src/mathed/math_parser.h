@@ -81,6 +81,16 @@ enum MathTokenEnum
 	///
 	LM_TK_NOGLYPHB,
 	///
+	LM_TK_CMSY,
+	///
+	LM_TK_CMM,
+	///
+	LM_TK_CMEX,
+	///
+	LM_TK_MSA,
+	///
+	LM_TK_MSB,
+	///
 	LM_TK_LABEL,
 	///
 	LM_TK_NONUM,
@@ -114,18 +124,25 @@ enum MathTokenEnum
 ///
 struct latexkeys {
 	///
-	char const * name;
+	string name;
 	///
 	short token;
 	///
 	unsigned int id;
 	///
-	int numargs;
+	unsigned char latex_font_id;
+	///
+	MathSymbolTypes type;
+	///
+	string const & Name() const { return name;}
 };
 
 
 ///
 latexkeys const * in_word_set(string const & str);
+
+///
+void ReadSymbols(string const & file);
 
 MathMatrixInset * mathed_parse_normal(string const &);
 MathMatrixInset * mathed_parse_normal(std::istream &);

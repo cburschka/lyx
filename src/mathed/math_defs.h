@@ -81,8 +81,18 @@ enum MathTextCodes  {
 	LM_TC_GREEK1,
 	/// Internal code for symbols
 	LM_TC_SYMB,
-	/// Internal code for symbols that get bigger in displayed math
+	/// internal code for symbols that get bigger in displayed math
 	LM_TC_BSYM,
+	///
+	LM_TC_CMSY,
+	///
+	LM_TC_CMM,
+	///
+	LM_TC_CMEX,
+	///
+	LM_TC_MSA,
+	///
+	LM_TC_MSB,
 	///
 	LM_FONT_END,
 	
@@ -124,7 +134,7 @@ enum MathInsetTypes  {
 
 
 ///
-enum MathBinaryTypes {
+enum MathSymbolTypes {
 	///
 	LMB_NONE = 0,
 	///

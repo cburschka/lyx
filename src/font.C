@@ -114,7 +114,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 		Encoding const * encoding = f.language()->encoding();
 		//LyXFont const * font = &f;
 		LyXFont font(f);
-		if (f.family() == LyXFont::SYMBOL_FAMILY) {
+		if (f.isSymbolFont()) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
 			//LyXFont font2 = f;
 			font.setFamily(LyXFont::ROMAN_FAMILY);

@@ -13,6 +13,21 @@
 #include "debug.h"
 
 
+namespace {
+
+char const * math_font_name[] = {
+	"mathrm",
+	"mathcal",
+	"mathbf",
+	"mathsf",
+	"mathtt",
+	"mathit",
+	"textrm"
+};
+
+}
+
+
 MathCharInset::MathCharInset(char c)
 	: char_(c), code_(nativeCode(c))
 {

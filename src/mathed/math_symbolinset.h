@@ -25,9 +25,16 @@ public:
 	void draw(Painter &, int x, int y) const;
 	///
 	bool isRelOp() const;
+	///
+	bool isScriptable() const;
 
 private:
 	///
+	MathTextCodes code() const;
+
+	///
 	latexkeys const * sym_;
+	///
+	mutable int h_;
 };
 #endif

@@ -284,7 +284,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		XChar2b * xs = new XChar2b[ls];
 		Encoding const * encoding = f.language()->encoding();
 		LyXFont font(f);
-		if (f.family() == LyXFont::SYMBOL_FAMILY) {
+		if (f.isSymbolFont()) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
 			font.setFamily(LyXFont::ROMAN_FAMILY);
 			font.setShape(LyXFont::UP_SHAPE);

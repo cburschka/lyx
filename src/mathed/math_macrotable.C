@@ -85,23 +85,44 @@ void MathMacroTable::builtinMacros()
 	built = true;
 	//lyxerr[Debug::MATHED] << "Building macros\n";
    
-	createTemplate("emptyset",     0, "\\not0");
-	createTemplate("ne",           0, "\\not=");
-	createTemplate("ge",           0, "\\geq");
-	createTemplate("gets",         0, "\\leftarrow");
-	createTemplate("land",         0, "\\wedge");
-	createTemplate("le",           0, "\\leq");
-	createTemplate("lor",          0, "\\vee");
+	//createTemplate("emptyset",     0, "\\not0");
 	createTemplate("notin",        0, "\\not\\in");
-	createTemplate("perp",         0, "\\bot");
+
+	// fontmath.ltx
+
+	createTemplate("lnot",         0, "\\neg");
+	createTemplate("land",         0, "\\wedge");
+	createTemplate("lor",          0, "\\vee");
+	createTemplate("ne",           0, "\\neq");
+	createTemplate("le",           0, "\\leq");
+	createTemplate("ge",           0, "\\geq");
 	createTemplate("owns",         0, "\\ni");
+	createTemplate("gets",         0, "\\leftarrow");
 	createTemplate("to",           0, "\\rightarrow");
-#ifdef WITH_WARNINGS
-#warning 9em looks like too much but it is somehow working on screen..
-#endif
-	createTemplate("ll",           0, "<\\kern-9em<");
-	createTemplate("gg",           0, ">\\kern-9em>");
-	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
-	//createTemplate("silentmult", 0, "\\cdot");
-	//createTemplate("binom",        2, "\\left(\\frac#1#2\\right)");
+
+	//amsfonts.sty
+
+	createTemplate("dasharrow",    0, "\\dashrightarrow");
+	createTemplate("Box",          0, "\\square");
+	createTemplate("Diamond",      0, "\\lozenge");
+	createTemplate("leadsto",      0, "\\rightsquigarrow");
+
+	// amssymb.sty
+
+	createTemplate("restriction",  0, "\\upharpoonright");
+	createTemplate("Doteq",        0, "\\doteqdot");
+	createTemplate("doublecup",    0, "\\Cup");
+	createTemplate("doublecap",    0, "\\Cap");
+	createTemplate("llless",       0, "\\lll");
+	createTemplate("gggtr",        0, "\\ggg");
+
+// #ifdef WITH_WARNINGS
+// #warning 9em looks like too much but it is somehow working on screen..
+// #endif WITH_WARNINGS
+// 	createTemplate("ll",           0, "<\\kern-9em<");
+// 	createTemplate("gg",           0, ">\\kern-9em>");
+
+  	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
+  	//createTemplate("silentmult", 0, "\\cdot");
+  	//createTemplate("binom",        2, "\\left(\\frac#1#2\\right)");
 }

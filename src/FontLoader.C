@@ -60,7 +60,7 @@ void FontLoader::update()
 void FontLoader::reset()
 {
 	// Clear font infos, font structs and font metrics
-	for (int i1 = 0; i1 < 4; ++i1)
+	for (int i1 = 0; i1 < 9; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3) {
 				fontinfo[i1][i2][i3] = 0;
@@ -75,7 +75,7 @@ void FontLoader::reset()
 void FontLoader::unload() 
 {
 	// Unload all fonts
-	for (int i1 = 0; i1 < 4; ++i1)
+	for (int i1 = 0; i1 < 9; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3) {
 				if (fontinfo[i1][i2][i3]) {
@@ -103,11 +103,43 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	if (fontinfo[family][series][shape] != 0)
 		return;
 
-	// Special code for the symbol family
-	if (family == LyXFont::SYMBOL_FAMILY){
-		fontinfo[family][series][shape] = new FontInfo("-*-symbol-*");
-		return;
+	// Special fonts
+	switch (family) 
+	{
+		case LyXFont::SYMBOL_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-symbol-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::CMSY_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-cmsy-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::CMM_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-cmmi-medium-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::CMEX_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-cmex-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::MSA_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-msam-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		case LyXFont::MSB_FAMILY:
+			fontinfo[family][series][shape] = 
+				new FontInfo("-*-msbm-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
+		default:
+			break;
 	}
+ 
 
 	// Normal font. Let's search for an existing name that matches.
 	string ffamily;
@@ -281,4 +313,12 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 	fontstruct[family][series][shape][size] = fs;
 	return fs;
+}
+
+
+bool FontLoader::available(LyXFont const & f)
+{
+	load(f.family(), f.series(), f.realShape(), f.size());
+	return fontinfo[f.family()][f.series()][f.realShape()]
+		->getFontname(f.size()).size();
 }

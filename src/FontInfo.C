@@ -50,7 +50,7 @@ string const FontInfo::getFontname(int size)
 		}
 	}
 
-	if (scalable && lyxrc.use_scalable_fonts) {
+	if (scalable && (lyxrc.use_scalable_fonts || closestind == -1)) {
 		// We can use scalable
 		string const font = resize(strings[scaleindex], size);
 		lyxerr[Debug::FONT] << "Using scalable font to get\n"
@@ -60,7 +60,7 @@ string const FontInfo::getFontname(int size)
 
 	// Did any fonts get close?
 	if (closestind == -1) {
-		// No, and we are not allowed to use scalables, so...
+		// No, so...
 		return string();
 	}
 

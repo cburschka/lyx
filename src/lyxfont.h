@@ -45,6 +45,16 @@ public:
 		///
 		SYMBOL_FAMILY,
 		///
+		CMSY_FAMILY,
+		///
+		CMM_FAMILY,
+		///
+		CMEX_FAMILY,
+		///
+		MSA_FAMILY,
+		///
+		MSB_FAMILY,
+		///
 		INHERIT_FAMILY,
 		///
 		IGNORE_FAMILY
@@ -200,6 +210,9 @@ public:
 
 	///
 	bool isVisibleRightToLeft() const;
+
+	///
+	bool isSymbolFont() const;
 	
 	///
 	LyXFont & setFamily(LyXFont::FONT_FAMILY f);
@@ -402,6 +415,23 @@ LyXFont::FONT_MISC_STATE LyXFont::noun() const
 	return bits.noun;
 }
 
+
+inline
+bool LyXFont::isSymbolFont() const
+{
+	switch(family()) {
+	case LyXFont::SYMBOL_FAMILY:
+	case LyXFont::CMSY_FAMILY:
+	case LyXFont::CMM_FAMILY:
+	case LyXFont::CMEX_FAMILY:
+	case LyXFont::MSA_FAMILY:
+	case LyXFont::MSB_FAMILY:
+		return true;
+	default:
+		return false;
+	}
+	return false;
+}
 
 ///
 std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);

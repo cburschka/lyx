@@ -76,10 +76,9 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 
 void MathDecorationInset::write(ostream & os, bool fragile) const
 {
-	string name = key_->name;
 	if (fragile && protect())
 		os << "\\protect";
-	os << '\\' << name;
+	os << '\\' << key_->name;
 
 	if (key_->id == LM_not)
 		os << ' ';

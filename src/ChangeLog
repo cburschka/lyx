@@ -1,3 +1,12 @@
+2001-08-31  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FontLoader.C (getFontinfo): Handle latex symbol fonts.
+	(available): New method.
+
+	* FontInfo.C (getFontname): Use scalable fonts even when
+	lyxrc.use_scalable_fonts is false, if no non-scalable fonts was
+	found.
+
 2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* converter.C (Formats::view): reverted! Incorrect fix.

@@ -9,7 +9,6 @@
 class Painter;
 class latexkeys;
 
-extern char const * math_font_name[];
 extern char const * latex_mathspace[];
 
 int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c,
@@ -39,5 +38,7 @@ void drawChar(Painter & pain, MathTextCodes type, MathStyles siz,
 
 void math_font_max_dim
 	(MathTextCodes code, MathStyles siz, int & asc, int & desc);
+
+bool math_font_available(MathTextCodes code);
 
 #endif

@@ -33,16 +33,16 @@ using std::endl;
 using std::strlen;
 #endif
 
-
 //
 // Names for the GUI
 //
 
 namespace {
 
-char const * GUIFamilyNames[6] = 
-{ N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"), N_("Inherit"),
-  N_("Ignore") };
+char const * GUIFamilyNames[11] = 
+{ N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"),
+  "cmsy", "cmm", "cmex", "msa", "msb",
+  N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[4] = 
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
@@ -63,8 +63,9 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to read and write .lyx format files
 //
-char const * LyXFamilyNames[6] = 
-{ "roman", "sans", "typewriter", "symbol", "default", "error" };
+char const * LyXFamilyNames[12] = 
+{ "roman", "sans", "typewriter", "symbol", "symbol2", "symbol3", 
+	"symbolex", "fraktur", "mathscr", "mathbb", "default", "error" };
 
 char const * LyXSeriesNames[4] = 
 { "medium", "bold", "default", "error" };
