@@ -1,3 +1,18 @@
+2005-03-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* table.C (verbose_valign): new
+	* table.C (string2int): remove, use convert<int>() instead since the
+	default value is always 0 and this is also the default of
+	convert<int>().
+	* table.C (ci2special): new
+	* table.C (handle_colalign): handle b{}, p{} and m{} correctly
+	* table.C (handle_colalign): fix >{\raggedleft} and >{\raggedright}
+	(they were swapped)
+	* table.C (handle_colalign): handle >{\centering}
+	* table.C (handle_colalign): handle <{}, *{}, @{} and !{}
+	* table.C (fix_colalign): new
+	* table.C (handle_tabular): fix multicolumns with vertical lines
+
 2005-03-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (output_command_layout): Use parse_text instead of

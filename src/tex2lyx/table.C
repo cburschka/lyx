@@ -16,6 +16,9 @@
 
 #include "tex2lyx.h"
 
+#include "support/convert.h"
+#include "support/lstrings.h"
+
 #include <cctype>
 #include <fstream>
 #include <iostream>
@@ -40,17 +43,19 @@ namespace {
 
 class ColInfo {
 public:
-	ColInfo() : align('c'), rightline(false), leftline(false) {}
+	ColInfo() : align('n'), valign('n'), rightlines(0), leftlines(0) {}
 	/// column alignment
 	char align;
+	/// vertical alignment
+	char valign;
 	/// column width
 	string width;
 	/// special column alignment
 	string special;
-	/// how many lines on the right?
-	int rightline;
-	/// a line on the left?
-	bool leftline;
+	/// number of lines on the right
+	int rightlines;
+	/// number of lines on the left
+	int leftlines;
 };
 
 
@@ -86,31 +91,76 @@ public:
 };
 
 
+enum Multicolumn {
+	/// A normal cell
+	CELL_NORMAL = 0,
+	/// A multicolumn cell. The number of columns is <tt>1 + number
+	/// of CELL_PART_OF_MULTICOLUMN cells</tt> that follow directly
+	CELL_BEGIN_OF_MULTICOLUMN,
+	/// This is a dummy cell (part of a multicolumn cell)
+	CELL_PART_OF_MULTICOLUMN
+};
+
+
 class CellInfo {
 public:
-	CellInfo() : multi(0), align('n'), leftline(false), rightline(false),
-	             topline(false), bottomline(false) {}
+	CellInfo() : multi(CELL_NORMAL), align('n'), valign('n'),
+	             leftlines(0), rightlines(0), topline(false),
+	             bottomline(false), rotate(false) {}
 	/// cell content
 	string content;
 	/// multicolumn flag
-	int multi;
+	Multicolumn multi;
 	/// cell alignment
 	char align;
-	/// do we have a line on the left?
-	bool leftline;
-	/// do we have a line on the right?
-	bool rightline;
+	/// vertical cell alignment
+	char valign;
+	/// number of lines on the left
+	int leftlines;
+	/// number of lines on the right
+	int rightlines;
 	/// do we have a line above?
 	bool topline;
 	/// do we have a line below?
 	bool bottomline;
+	/// is the cell rotated?
+	bool rotate;
+	/// width for multicolumn cells
+	string width;
+	/// special formatting for multicolumn cells
+	string special;
 };
 
 
 /// translate a horizontal alignment (as stored in ColInfo and CellInfo) to LyX
 inline char const * verbose_align(char c)
 {
-	return c == 'c' ? "center" : c == 'r' ? "right" : c == 'l' ? "left" : "none";
+	switch (c) {
+	case 'c':
+		return "center";
+	case 'r':
+		return "right";
+	case 'l':
+		return "left";
+	default:
+		return "none";
+	}
+}
+
+
+/// translate a vertical alignment (as stored in ColInfo and CellInfo) to LyX
+inline char const * verbose_valign(char c)
+{
+	// The default value for no special alignment is "top".
+	switch (c) {
+	case 'm':
+		return "middle";
+	case 'b':
+		return "bottom";
+	case 'p':
+	default:
+		return "top";
+	}
 }
 
 
@@ -130,44 +180,96 @@ string const write_attribute(string const & name, string const & s)
 }
 
 
-int string2int(string const & s, int deflt = 0)
-{
-	istringstream is(s);
-	int i = deflt;
-	is >> i;
-	return i;
-}
+/*! rather brutish way to code table structure in a string:
 
-
-/* rather brutish way to code table structure in a string:
-
+\verbatim
   \begin{tabular}{ccc}
     1 & 2 & 3\\ \hline
     \multicolumn{2}{c}{4} & 5 //
     6 & 7 \\
+    8 \endhead
   \end{tabular}
+\endverbatim
 
  gets "translated" to:
 
-         HLINE 1 TAB 2               TAB 3 HLINE HLINE LINE
-  \hline HLINE \multicolumn{2}{c}{4} TAB 5 HLINE HLINE LINE
-         HLINE 6 TAB 7                     HLINE HLINE LINE
-*/
+\verbatim
+         HLINE 1                     TAB 2 TAB 3 HLINE          HLINE LINE
+  \hline HLINE \multicolumn{2}{c}{4} TAB 5       HLINE          HLINE LINE
+         HLINE 6                     TAB 7       HLINE          HLINE LINE
+         HLINE 8                                 HLINE \endhead HLINE LINE
+\endverbatim
+ */
 
 char const TAB   = '\001';
 char const LINE  = '\002';
 char const HLINE = '\004';
 
 
-/// handle column specifications for tabulars and multicolumns
-void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
+/*!
+ * Move the information in leftlines, rightlines, align and valign to the
+ * special field. This is necessary if the special field is not empty,
+ * because LyX ignores leftlines, rightlines, align and valign in this case.
+ */
+void ci2special(ColInfo & ci)
+{
+	if (ci.width.empty() && ci.align == 'n')
+		// The alignment setting is already in special, since
+		// handle_colalign() never stores ci with these settings
+		// and ensures that leftlines == 0 and rightlines == 0 in
+		// this case.
+		return;
+
+	if (!ci.width.empty()) {
+		switch (ci.align) {
+		case 'l':
+			ci.special += ">{\\raggedright}";
+			break;
+		case 'r':
+			ci.special += ">{\\raggedleft}";
+			break;
+		case 'c':
+			ci.special += ">{\\centering}";
+			break;
+		}
+		if (ci.valign == 'n')
+			ci.special += 'p';
+		else
+			ci.special += ci.valign;
+		ci.special += '{' + ci.width + '}';
+		ci.width.erase();
+	} else
+		ci.special += ci.align;
+
+	for (int i = 0; i < ci.leftlines; ++i)
+		ci.special.insert(0, "|");
+	for (int i = 0; i < ci.rightlines; ++i)
+		ci.special += '|';
+	ci.leftlines = 0;
+	ci.rightlines = 0;
+	ci.align = 'n';
+	ci.valign = 'n';
+}
+
+
+/*!
+ * Handle column specifications for tabulars and multicolumns.
+ * The next token of the parser \p p must be an opening brace, and we read
+ * everything until the matching closing brace.
+ * The resulting column specifications are filled into \p colinfo. This is
+ * in an intermediate form. fix_colalign() makes it suitable for LyX output.
+ */
+void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
+                     ColInfo const & start)
 {
 	if (p.get_token().cat() != catBegin)
-		cerr << "wrong syntax for table column alignment. '{' expected\n";
+		cerr << "Wrong syntax for table column alignment.\n"
+		        "Expected '{', got '" << p.curr_token().asInput()
+		     << "'.\n";
 
-	char nextalign = 'b';
-	bool leftline = false;
-	for (Token t=p.get_token(); p.good() && t.cat() != catEnd; t = p.get_token()){
+	ColInfo next = start;
+	for (Token t = p.get_token(); p.good() && t.cat() != catEnd;
+	     t = p.get_token()) {
 #ifdef FILEDEBUG
 		cerr << "t: " << t << "  c: '" << t.character() << "'\n";
 #endif
@@ -185,57 +287,179 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 		switch (t.character()) {
 			case 'c':
 			case 'l':
-			case 'r': {
-				ColInfo ci;
-				ci.align = t.character();
-				if (colinfo.size() && colinfo.back().rightline > 1) {
-					ci.leftline = true;
-					--colinfo.back().rightline;
-				}
-				colinfo.push_back(ci);
+			case 'r':
+				// new column, horizontal aligned
+				next.align = t.character();
+				if (!next.special.empty())
+					ci2special(next);
+				colinfo.push_back(next);
+				next = ColInfo();
 				break;
-			}
 			case 'p':
-				colinfo.push_back(ColInfo());
-				colinfo.back().align = nextalign;
-				colinfo.back().width = p.verbatim_item();
-				nextalign = 'b';
+			case 'b':
+			case 'm':
+				// new column, vertical aligned box
+				next.valign = t.character();
+				next.width = p.verbatim_item();
+				if (!next.special.empty())
+					ci2special(next);
+				colinfo.push_back(next);
+				next = ColInfo();
 				break;
 			case '|':
-				if (colinfo.empty())
-					leftline = true;
+				// vertical rule
+				if (colinfo.empty()) {
+					if (next.special.empty())
+						++next.leftlines;
+					else
+						next.special += '|';
+				} else if (colinfo.back().special.empty())
+					++colinfo.back().rightlines;
+				else if (next.special.empty())
+					++next.leftlines;
 				else
-					++colinfo.back().rightline;
+					colinfo.back().special += '|';
 				break;
 			case '>': {
-				string s = p.verbatim_item();
-				if (s == "\\raggedleft ")
-					nextalign = 'l';
-				else if (s == "\\raggedright ")
-					nextalign = 'r';
-				else
-					cerr << "unknown '>' column '" << s << "'\n";
+				// text before the next column
+				string const s = trim(p.verbatim_item());
+				if (next.special.empty() &&
+				    next.align == 'n') {
+					// Maybe this can be converted to a
+					// horizontal alignment setting for
+					// fixed width columns
+					if (s == "\\raggedleft")
+						next.align = 'r';
+					else if (s == "\\raggedright")
+						next.align = 'l';
+					else if (s == "\\centering")
+						next.align = 'c';
+					else
+						next.special = ">{" + s + '}';
+				} else
+					next.special += ">{" + s + '}';
 				break;
 			}
-			default:
-				if (special_columns.find(t.character()) != special_columns.end()) {
-					ColInfo ci;
-					ci.align = 'c';
-					ci.special += t.character();
-					int const nargs = special_columns[t.character()];
-					for (int i = 0; i < nargs; ++i)
-						ci.special += "{" + p.verbatim_item() + "}";
-					//cerr << "handling special column '" << t << "' " << nargs
-					//	<< "  '" << ci.special << "'\n";
-					colinfo.push_back(ci);
-				} else {
-					cerr << "ignoring special separator '" << t << "'\n";
+			case '<': {
+				// text after the last column
+				string const s = trim(p.verbatim_item());
+				if (colinfo.empty())
+					// This is not possible in LaTeX.
+					cerr << "Ignoring separator '<{"
+					     << s << "}'." << endl;
+				else {
+					ColInfo & ci = colinfo.back();
+					ci2special(ci);
+					ci.special += "<{" + s + '}';
 				}
+				break;
+			}
+			case '*': {
+				// *{n}{arg} means 'n' columns of type 'arg'
+				string const num = p.verbatim_item();
+				string const arg = p.verbatim_item();
+				size_t const n = convert<unsigned int>(num);
+				if (!arg.empty() && n > 0) {
+					string s("{");
+					for (size_t i = 0; i < n; ++i)
+						s += arg;
+					s += '}';
+					Parser p2(s);
+					handle_colalign(p2, colinfo, next);
+					next = ColInfo();
+				} else {
+					cerr << "Ignoring column specification"
+					        " '*{" << num << "}{"
+					     << arg << "}'." << endl;
+				}
+				break;
+			}
+			case '@':
+				// text instead of the column spacing
+			case '!':
+				// text in addition to the column spacing
+				next.special += t.character();
+				next.special += '{' + p.verbatim_item() + '}';
+				break;
+			default:
+				// try user defined column types
+				if (special_columns.find(t.character()) !=
+				    special_columns.end()) {
+					ci2special(next);
+					next.special += t.character();
+					int const nargs =
+						special_columns[t.character()];
+					for (int i = 0; i < nargs; ++i)
+						next.special += '{' +
+							p.verbatim_item() +
+							'}';
+					colinfo.push_back(next);
+					next = ColInfo();
+				} else
+					cerr << "Ignoring column specification"
+					        " '" << t << "'." << endl;
 				break;
 			}
 	}
-	if (colinfo.size() && leftline)
-		colinfo[0].leftline = true;
+
+	// Maybe we have some column separators that need to be added to the
+	// last column?
+	ci2special(next);
+	if (!next.special.empty()) {
+		ColInfo & ci = colinfo.back();
+		ci2special(ci);
+		ci.special += next.special;
+		next.special.erase();
+	}
+}
+
+
+/*!
+ * Move the left and right lines and alignment settings of the column \p ci
+ * to the special field if necessary.
+ */
+void fix_colalign(ColInfo & ci)
+{
+	if (ci.leftlines > 1 || ci.rightlines > 1)
+		ci2special(ci);
+}
+
+
+/*!
+ * LyX can't handle more than one vertical line at the left or right side
+ * of a column.
+ * This function moves the left and right lines and alignment settings of all
+ * columns in \p colinfo to the special field if necessary.
+ */
+void fix_colalign(vector<ColInfo> & colinfo)
+{
+	// Try to move extra leftlines to the previous column.
+	// We do this only if both special fields are empty, otherwise we
+	// can't tell wether the result will be the same.
+	for (size_t col = 0; col < colinfo.size(); ++col) {
+		if (colinfo[col].leftlines > 1 &&
+		    colinfo[col].special.empty() && col > 0 &&
+		    colinfo[col - 1].rightlines == 0 &&
+		    colinfo[col - 1].special.empty()) {
+			++colinfo[col - 1].rightlines;
+			--colinfo[col].leftlines;
+		}
+	}
+	// Try to move extra rightlines to the next column
+	for (size_t col = 0; col < colinfo.size(); ++col) {
+		if (colinfo[col].rightlines > 1 &&
+		    colinfo[col].special.empty() &&
+		    col < colinfo.size() - 1 &&
+		    colinfo[col + 1].leftlines == 0 &&
+		    colinfo[col + 1].special.empty()) {
+			++colinfo[col + 1].leftlines;
+			--colinfo[col].rightlines;
+		}
+	}
+	// Move the lines and alignment settings to the special field if
+	// necessary
+	for (size_t col = 0; col < colinfo.size(); ++col)
+		fix_colalign(colinfo[col]);
 }
 
 
@@ -551,6 +775,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 {
 	string posopts = p.getOpt();
 	if (!posopts.empty()) {
+		// FIXME: Convert this to ERT
 		if (is_long_tabular)
 			cerr << "horizontal longtable";
 		else
@@ -558,10 +783,11 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		cerr << " positioning '" << posopts << "' ignored\n";
 	}
 
-	vector<ColInfo>            colinfo;
+	vector<ColInfo> colinfo;
 
 	// handle column formatting
-	handle_colalign(p, colinfo);
+	handle_colalign(p, colinfo, ColInfo());
+	fix_colalign(colinfo);
 
 	// first scan of cells
 	// use table mode to keep it minimal-invasive
@@ -630,14 +856,28 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 					vector<string> t;
 					split(arg, t, '-');
 					t.resize(2);
-					size_t from = string2int(t[0]) - 1;
+					size_t from = convert<unsigned int>(t[0]);
+					if (from == 0)
+						cerr << "Could not parse "
+						        "cline start column."
+						     << endl;
+					else
+						// 1 based index -> 0 based
+						--from;
 					if (from >= colinfo.size()) {
 						cerr << "cline starts at non "
 						        "existing column "
 						     << (from + 1) << endl;
 						from = colinfo.size() - 1;
 					}
-					size_t to = string2int(t[1]) - 1;
+					size_t to = convert<unsigned int>(t[1]);
+					if (to == 0)
+						cerr << "Could not parse "
+						        "cline end column."
+						     << endl;
+					else
+						// 1 based index -> 0 based
+						--to;
 					if (to >= colinfo.size()) {
 						cerr << "cline ends at non "
 						        "existing column "
@@ -691,6 +931,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 						if (row > 0)
 							rowinfo[row - 1].newpage = true;
 						else
+							// This does not work in LaTeX
 							cerr << "Ignoring "
 							        "'\\newpage' "
 							        "before rows."
@@ -706,63 +947,69 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		// split into cells
 		vector<string> cells;
 		split(lines[row], cells, TAB);
-		// Has the last multicolumn cell a rightline?
-		bool last_rightline = false;
-		for (size_t col = 0, cell = 0;
-				cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
+		for (size_t col = 0, cell = 0; cell < cells.size();
+		     ++col, ++cell) {
 			//cerr << "cell content: '" << cells[cell] << "'\n";
+			if (col >= colinfo.size()) {
+				// This does not work in LaTeX
+				cerr << "Ignoring extra cell '"
+				     << cells[cell] << "'." << endl;
+				continue;
+			}
 			Parser p(cells[cell]);
 			p.skip_spaces();
 			//cells[cell] << "'\n";
 			if (p.next_token().cs() == "multicolumn") {
 				// how many cells?
 				p.get_token();
-				size_t const ncells = string2int(p.verbatim_item());
+				size_t const ncells =
+					convert<unsigned int>(p.verbatim_item());
 
 				// special cell properties alignment
 				vector<ColInfo> t;
-				handle_colalign(p, t);
-				cellinfo[row][col].multi     = 1;
-				cellinfo[row][col].align     = t.front().align;
+				handle_colalign(p, t, ColInfo());
+				ColInfo & ci = t.front();
+
+				// The logic of LyX for multicolumn vertical
+				// lines is too complicated to reproduce it
+				// here (see LyXTabular::TeXCellPreamble()).
+				// Therefore we simply put everything in the
+				// special field.
+				ci2special(ci);
+
+				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+				cellinfo[row][col].align      = ci.align;
+				cellinfo[row][col].special    = ci.special;
+				cellinfo[row][col].leftlines  = ci.leftlines;
+				cellinfo[row][col].rightlines = ci.rightlines;
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context);
-				cellinfo[row][col].content   = os.str();
-
-				// multicolumn cells are tricky: This
-				// \multicolumn{2}{|c|}{col1-2}&
-				// \multicolumn{2}{|c|}{col3-4} "\\"
-				// gives | col1-2 | col3-4 | and not
-				//       | col1-2 || col3-4 |
-				// So:
-				if (last_rightline && t.front().leftline) {
-					t.front().leftline = false;
+				if (!cellinfo[row][col].content.empty()) {
+					// This may or may not work in LaTeX,
+					// but it does not work in LyX.
+					// FIXME: Handle it correctly!
+					cerr << "Moving cell content '"
+					     << cells[cell]
+					     << "' into a multicolumn cell. "
+					        "This will probably not work."
+					     << endl;
 				}
-				last_rightline = t.front().rightline;
-
-				// multicolumn lines override normal cell lines
-				cellinfo[row][col].leftline  = t.front().leftline;
-				cellinfo[row][col].rightline = t.front().rightline;
+				cellinfo[row][col].content += os.str();
 
 				// add dummy cells for multicol
 				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
 					++col;
-					cellinfo[row][col].multi = 2;
+					cellinfo[row][col].multi = CELL_PART_OF_MULTICOLUMN;
 					cellinfo[row][col].align = 'c';
 				}
 
-				// more than one line on the right?
-				if (t.front().rightline > 1)
-					cellinfo[row][col + 1].leftline = true;
-
 			} else {
-				// FLAG_END is a hack, we need to read all of it
-				cellinfo[row][col].leftline = colinfo[col].leftline;
-				cellinfo[row][col].rightline = colinfo[col].rightline;
-				cellinfo[row][col].align = colinfo[col].align;
+				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+				cellinfo[row][col].rightlines = colinfo[col].rightlines;
+				cellinfo[row][col].align      = colinfo[col].align;
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_CELL, false, context);
-				cellinfo[row][col].content   = os.str();
-				last_rightline = false;
+				cellinfo[row][col].content += os.str();
 			}
 		}
 
@@ -777,7 +1024,20 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 					cellinfo[row - 1][col].bottomline = true;
 			rowinfo.pop_back();
 		}
+	}
 
+	// Now we have the table structure and content in rowinfo, colinfo
+	// and cellinfo.
+	// Unfortunately LyX has some limitations that we need to work around.
+
+	// Convert cells with special content to multicolumn cells
+	// (LyX ignores the special field for non-multicolumn cells).
+	for (size_t row = 0; row < rowinfo.size(); ++row) {
+		for (size_t col = 0; col < cellinfo[row].size(); ++col) {
+			if (cellinfo[row][col].multi == CELL_NORMAL &&
+			    !cellinfo[row][col].special.empty())
+				cellinfo[row][col].multi = CELL_BEGIN_OF_MULTICOLUMN;
+		}
 	}
 
 	//cerr << "// output what we have\n";
@@ -785,6 +1045,7 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
 	   << "\" columns=\"" << colinfo.size() << "\">\n";
 	os << "<features"
+	   << write_attribute("rotate", false)
 	   << write_attribute("islongtable", is_long_tabular)
 	   << ">\n";
 
@@ -792,9 +1053,10 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 	for (size_t col = 0; col < colinfo.size(); ++col) {
 		os << "<column alignment=\""
 		   << verbose_align(colinfo[col].align) << "\""
-		   << " valignment=\"top\""
-		   << write_attribute("leftline", colinfo[col].leftline)
-		   << write_attribute("rightline", colinfo[col].rightline)
+		   << " valignment=\""
+		   << verbose_valign(colinfo[col].valign) << "\""
+		   << write_attribute("leftline", colinfo[col].leftlines > 0)
+		   << write_attribute("rightline", colinfo[col].rightlines > 0)
 		   << write_attribute("width", colinfo[col].width)
 		   << write_attribute("special", colinfo[col].special)
 		   << ">\n";
@@ -818,22 +1080,27 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];
 			os << "<cell";
-			if (cell.multi)
+			if (cell.multi != CELL_NORMAL)
 				os << " multicolumn=\"" << cell.multi << "\"";
 			os << " alignment=\"" << verbose_align(cell.align)
 			   << "\""
-			   << " valignment=\"top\""
+			   << " valignment=\"" << verbose_valign(cell.valign)
+			   << "\""
 			   << write_attribute("topline", cell.topline)
 			   << write_attribute("bottomline", cell.bottomline)
-			   << write_attribute("leftline", cell.leftline)
-			   << write_attribute("rightline", cell.rightline);
+			   << write_attribute("leftline", cell.leftlines > 0)
+			   << write_attribute("rightline", cell.rightlines > 0)
+			   << write_attribute("rotate", cell.rotate);
 			//cerr << "\nrow: " << row << " col: " << col;
 			//if (cell.topline)
 			//	cerr << " topline=\"true\"";
 			//if (cell.bottomline)
 			//	cerr << " bottomline=\"true\"";
 			os << " usebox=\"none\""
-			   << ">"
+			   << write_attribute("width", cell.width);
+			if (cell.multi != CELL_NORMAL)
+				os << write_attribute("special", cell.special);
+			os << ">"
 			   << "\n\\begin_inset Text\n"
 			   << cell.content
 			   << "\n\\end_inset\n"
