@@ -19,5 +19,5 @@ dist-hook:
 
 rpmdist: dist
 	ln -s images/lyx.xpm . ; \
-	rpm -ta lyx-1.1.1.tar.gz ; \
+	rpm -ta ${PACKAGE}-${VERSION}.tar.gz ; \
 	rm lyx.xpm

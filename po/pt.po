@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
-"POT-Creation-Date: 1999-10-13 19:19+0200\n"
+"POT-Creation-Date: 1999-10-19 23:13+0200\n"
 "PO-Revision-Date: 1999-09-23 17:05+02:00\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr "Ir para o começo do documento"
 msgid "Select to beginning of document"
 msgstr "Selecionar até o começo do documento"
 
-#: src/LyXAction.C:595 src/insets/inseterror.C:161 src/insets/insetref.C:64
+#: src/LyXAction.C:595 src/insets/inseterror.C:168 src/insets/insetref.C:64
 #: src/latexoptions.C:46 src/layout_forms.C:158 src/layout_forms.C:472
 #: src/layout_forms.C:692 src/lyx.C:112 src/lyx_sendfax.C:109 src/lyxvc.C:329
 #: src/mathed/math_forms.C:179
@@ -134,7 +134,7 @@ msgstr "Abrir"
 msgid "Switch to previous document"
 msgstr "Alternar para o documento anterior"
 
-#: src/LyXAction.C:603 src/lyx_cb.C:969 src/print_form.C:72
+#: src/LyXAction.C:603 src/lyx_cb.C:970 src/print_form.C:72
 msgid "Print"
 msgstr "Imprimir"
 
@@ -477,8 +477,8 @@ msgstr "Formato da página"
 msgid "Paper layout set"
 msgstr "Definir formato da página"
 
-#: src/PaperLayout.C:270 src/ParagraphExtra.C:302 src/TableLayout.C:293
-#: src/TableLayout.C:460
+#: src/PaperLayout.C:270 src/ParagraphExtra.C:302 src/TableLayout.C:298
+#: src/TableLayout.C:471
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Advertência: tamanho inválido (exemplo válido: 10mm)"
 
@@ -494,25 +494,25 @@ msgstr "Definir formatação extra de parágrafo"
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Advertência: percentagem inválida (0-100)"
 
-#: src/TableLayout.C:230
+#: src/TableLayout.C:235
 msgid "Table Extra Form"
 msgstr "Formulário extra de Tabela"
 
-#: src/TableLayout.C:243
+#: src/TableLayout.C:248
 msgid "Table Layout"
 msgstr "Formatação da tabela"
 
-#: src/TableLayout.C:273
+#: src/TableLayout.C:278
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Advertêcia: posição errada do cursor, janela atualizada"
 
-#: src/TableLayout.C:328
+#: src/TableLayout.C:333
 msgid "Confirm: press Delete-Button again"
 msgstr "Confirme: pressione o botão apagar tabela novamente"
 
 #. sgml2lyx failed
 #: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3555 src/bufferlist.C:577
-#: src/bufferlist.C:607 src/lyx_cb.C:534 src/lyx_cb.C:867 src/lyx_cb.C:900
+#: src/bufferlist.C:607 src/lyx_cb.C:535 src/lyx_cb.C:868 src/lyx_cb.C:901
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Erro!"
@@ -803,8 +803,8 @@ msgstr "Tamanho|#m"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:267 src/form1.C:290
-#: src/insets/insetbib.C:107 src/insets/insetbib.C:135
-#: src/insets/insetinclude.C:46 src/insets/insetindex.C:65
+#: src/insets/insetbib.C:106 src/insets/insetbib.C:134
+#: src/insets/insetinclude.C:46 src/insets/insetindex.C:64
 #: src/latexoptions.C:21 src/layout_forms.C:53 src/layout_forms.C:188
 #: src/layout_forms.C:323 src/layout_forms.C:387 src/layout_forms.C:607
 #: src/lyx.C:47 src/lyx.C:85 src/mathed/math_forms.C:111 src/print_form.C:41
@@ -823,10 +823,10 @@ msgid "Apply|#A"
 msgstr "Aplicar|#A"
 
 #: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:270 src/form1.C:296
-#: src/insets/insetbib.C:110 src/insets/insetbib.C:111
-#: src/insets/insetbib.C:138 src/insets/insetbib.C:139
+#: src/insets/insetbib.C:109 src/insets/insetbib.C:110
+#: src/insets/insetbib.C:137 src/insets/insetbib.C:138
 #: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
-#: src/insets/insetindex.C:69 src/insets/insetindex.C:70 src/latexoptions.C:27
+#: src/insets/insetindex.C:68 src/insets/insetindex.C:69 src/latexoptions.C:27
 #: src/layout_forms.C:47 src/layout_forms.C:196 src/layout_forms.C:302
 #: src/layout_forms.C:329 src/layout_forms.C:381 src/layout_forms.C:615
 #: src/lyx.C:53 src/lyx.C:91 src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393
@@ -1289,48 +1289,48 @@ msgstr "O nome do arquivo não pode conter nenhum desses caracteres:"
 msgid "space, '#', '~', '$' or '%'."
 msgstr "espaço, '#', '~', '$' ou '%'."
 
-#: src/insets/insetbib.C:100
+#: src/insets/insetbib.C:99
 msgid "Key:"
 msgstr "Chave: "
 
-#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:113 src/insets/insetbib.C:114
 msgid "Remark:|#R"
 msgstr "Observação:|#R"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:132 src/insets/insetbib.C:133
-#: src/insets/insetbib.C:282 src/insets/insetbib.C:283
+#: src/insets/insetbib.C:131 src/insets/insetbib.C:132
+#: src/insets/insetbib.C:281 src/insets/insetbib.C:282
 msgid "Key:|#K"
 msgstr "Chave:|#C"
 
-#: src/insets/insetbib.C:142 src/insets/insetbib.C:143
-#: src/insets/insetbib.C:284 src/insets/insetbib.C:285
+#: src/insets/insetbib.C:141 src/insets/insetbib.C:142
+#: src/insets/insetbib.C:283 src/insets/insetbib.C:284
 msgid "Label:|#L"
 msgstr "Etiqueta:|#E"
 
-#: src/insets/insetbib.C:189
+#: src/insets/insetbib.C:188
 msgid "Citation"
 msgstr "Citação"
 
-#: src/insets/insetbib.C:293
+#: src/insets/insetbib.C:292
 msgid "Bibliography item"
 msgstr "Item bibliográfico"
 
-#: src/insets/insetbib.C:313
+#: src/insets/insetbib.C:312
 msgid "BibTeX Generated References"
 msgstr "Referências geradas por BibTeX"
 
-#: src/insets/insetbib.C:443
+#: src/insets/insetbib.C:442
 msgid "Database:"
 msgstr ""
 "Banco de\n"
 "Dados"
 
-#: src/insets/insetbib.C:444
+#: src/insets/insetbib.C:443
 msgid "Style:  "
 msgstr "Estilo"
 
-#: src/insets/insetbib.C:451
+#: src/insets/insetbib.C:450
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -1338,7 +1338,7 @@ msgstr "BibTeX"
 msgid "Error"
 msgstr "Erro"
 
-#: src/insets/inseterror.C:173
+#: src/insets/inseterror.C:180
 msgid "LaTeX Error"
 msgstr "Erro do LaTeX"
 
@@ -1380,7 +1380,7 @@ msgid "Use include|#U"
 msgstr "Usar inclusão|#i"
 
 #. launches dialog
-#: src/insets/insetinclude.C:110 src/lyx_cb.C:362 src/lyxfunc.C:2473
+#: src/insets/insetinclude.C:110 src/lyx_cb.C:363 src/lyxfunc.C:2473
 #: src/lyxfunc.C:2563 src/lyxfunc.C:2612 src/lyxfunc.C:2685 src/lyxfunc.C:2786
 #: src/menus.C:122 src/menus.C:249 src/menus.C:250 src/menus.C:251
 msgid "Documents"
@@ -1403,29 +1403,29 @@ msgstr "Entrada"
 msgid "Verbatim Input"
 msgstr "Entrada palavra por palavra"
 
-#: src/insets/insetindex.C:62 src/insets/insetindex.C:63
+#: src/insets/insetindex.C:61 src/insets/insetindex.C:62
 msgid "Keyword:|#K"
 msgstr "Palavra chave:|#c"
 
-#: src/insets/insetindex.C:113
+#: src/insets/insetindex.C:112
 msgid "Index"
 msgstr "Índice"
 
-#: src/insets/insetindex.C:120
+#: src/insets/insetindex.C:119
 #, fuzzy
 msgid "Idx"
 msgstr "Índice"
 
-#: src/insets/insetindex.C:148
+#: src/insets/insetindex.C:147
 msgid "PrintIndex"
 msgstr "Improir Índice"
 
 #: src/insets/insetinfo.C:69 src/insets/insetinfo.C:88
-#: src/insets/insetinfo.C:199
+#: src/insets/insetinfo.C:204
 msgid "Note"
 msgstr "Nota"
 
-#: src/insets/insetinfo.C:186 src/insets/insetinfo.C:190 src/lyx.C:142
+#: src/insets/insetinfo.C:191 src/insets/insetinfo.C:195 src/lyx.C:142
 msgid "Close|#C^["
 msgstr "Fechar|#F^["
 
@@ -1482,31 +1482,31 @@ msgstr "Ref: "
 msgid "Table of Contents"
 msgstr "Índice"
 
-#: src/insets/inseturl.C:112 src/insets/inseturl.C:113
+#: src/insets/inseturl.C:116 src/insets/inseturl.C:117
 msgid "Url|#U"
 msgstr "Url|#U"
 
-#: src/insets/inseturl.C:114 src/insets/inseturl.C:115 src/lyx.C:158
+#: src/insets/inseturl.C:118 src/insets/inseturl.C:119 src/lyx.C:158
 msgid "Name|#N"
 msgstr "Nome|#N"
 
-#: src/insets/inseturl.C:116 src/insets/inseturl.C:117
+#: src/insets/inseturl.C:120 src/insets/inseturl.C:121
 msgid "Close|#C^[^M"
 msgstr "Fechar|#F^[^M"
 
-#: src/insets/inseturl.C:120 src/insets/inseturl.C:121
+#: src/insets/inseturl.C:124 src/insets/inseturl.C:125
 msgid "HTML type|#H"
 msgstr "Tipo HTML|#H"
 
-#: src/insets/inseturl.C:141
+#: src/insets/inseturl.C:145
 msgid "Insert Url"
 msgstr "Iserir Url"
 
-#: src/insets/inseturl.C:150
+#: src/insets/inseturl.C:154
 msgid "HtmlUrl: "
 msgstr "HtmlUrl"
 
-#: src/insets/inseturl.C:152
+#: src/insets/inseturl.C:156
 msgid "Url: "
 msgstr "Url: "
 
@@ -2083,233 +2083,233 @@ msgstr "Inserir Número de Página|#P"
 msgid "Go to Reference|#G"
 msgstr "Ir para Referência|#G"
 
-#: src/lyx_cb.C:341
+#: src/lyx_cb.C:342
 msgid "Save failed. Rename and try again?"
 msgstr "Salvar falhou. Renomear e tentar novamente ?"
 
-#: src/lyx_cb.C:343
+#: src/lyx_cb.C:344
 msgid "(If not, document is not saved.)"
 msgstr "(se não o documento não será salvo.)"
 
-#: src/lyx_cb.C:363 src/lyxfunc.C:2474
+#: src/lyx_cb.C:364 src/lyxfunc.C:2474
 msgid "Templates"
 msgstr "Modelos"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 msgid "Enter Filename to Save Document as"
 msgstr "Digite o Nome do Arquivo para Salvar Documento como"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:375 src/lyxfunc.C:2480 src/lyxfunc.C:2507 src/lyxfunc.C:2572
+#: src/lyx_cb.C:376 src/lyxfunc.C:2480 src/lyxfunc.C:2507 src/lyxfunc.C:2572
 #: src/lyxfunc.C:2621 src/lyxfunc.C:2646 src/lyxfunc.C:2656 src/lyxfunc.C:2701
 #: src/lyxfunc.C:2726 src/lyxfunc.C:2736 src/lyxfunc.C:2795
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/lyx_cb.C:386
+#: src/lyx_cb.C:387
 msgid "Same name as document already has:"
 msgstr "Já existe um documento com o mesmo nome:"
 
-#: src/lyx_cb.C:388
+#: src/lyx_cb.C:389
 msgid "Save anyway?"
 msgstr "Salvar, de qualquer modo?"
 
-#: src/lyx_cb.C:394
+#: src/lyx_cb.C:395
 msgid "Another document with same name open!"
 msgstr "Outro documento com o mesmo nome aberto!"
 
-#: src/lyx_cb.C:396
+#: src/lyx_cb.C:397
 msgid "Replace with current document?"
 msgstr "Substituir com o documento corrente?"
 
-#: src/lyx_cb.C:404
+#: src/lyx_cb.C:405
 msgid "Document renamed to '"
 msgstr "Documento renomeado para '"
 
-#: src/lyx_cb.C:406
+#: src/lyx_cb.C:407
 msgid "', but not saved..."
 msgstr "', mas não salvo..."
 
-#: src/lyx_cb.C:412
+#: src/lyx_cb.C:413
 msgid "Document already exists:"
 msgstr "Documento já existe:"
 
-#: src/lyx_cb.C:414
+#: src/lyx_cb.C:415
 msgid "Replace file?"
 msgstr "Substituir arquivo?"
 
-#: src/lyx_cb.C:437 src/lyxvc.C:360
+#: src/lyx_cb.C:438 src/lyxvc.C:360
 msgid "Sorry, can't do this while pictures are being rendered."
 msgstr ""
 "Desculpe, não posso fazer isso enquanto as figuras estão sendo interpretadas"
 
-#: src/lyx_cb.C:438 src/lyxvc.C:362
+#: src/lyx_cb.C:439 src/lyxvc.C:362
 msgid "Please wait a few seconds for this to finish and try again."
 msgstr ""
 "Por favor, espere alguns segundos para isso terminar e tente novamente."
 
-#: src/lyx_cb.C:439 src/lyxvc.C:364
+#: src/lyx_cb.C:440 src/lyxvc.C:364
 msgid "(or kill runaway gs processes by hand and try again.)"
 msgstr "(ou cancele o processo do gs 'na mão' e tente novamente.)"
 
-#: src/lyx_cb.C:445 src/lyxvc.C:370
+#: src/lyx_cb.C:446 src/lyxvc.C:370
 msgid "Can't do this while the spellchecker is running."
 msgstr "Não posso fazer isso enquando o corretor ortográfico está executando"
 
-#: src/lyx_cb.C:446 src/lyxvc.C:372
+#: src/lyx_cb.C:447 src/lyxvc.C:372
 msgid "Stop the spellchecker first."
 msgstr "Pare o corretor ortográfico primeiro."
 
-#: src/lyx_cb.C:464 src/lyx_cb.C:496
+#: src/lyx_cb.C:465 src/lyx_cb.C:497
 msgid "One error detected"
 msgstr "Um erro foi detectado."
 
-#: src/lyx_cb.C:465 src/lyx_cb.C:497
+#: src/lyx_cb.C:466 src/lyx_cb.C:498
 msgid "You should try to fix it."
 msgstr "Voce deve tentar fixar isto."
 
-#: src/lyx_cb.C:468 src/lyx_cb.C:500
+#: src/lyx_cb.C:469 src/lyx_cb.C:501
 msgid " errors detected."
 msgstr " erros detectados."
 
-#: src/lyx_cb.C:469 src/lyx_cb.C:501
+#: src/lyx_cb.C:470 src/lyx_cb.C:502
 msgid "You should try to fix them."
 msgstr "Voce deve tentar fixar-los."
 
-#: src/lyx_cb.C:471
+#: src/lyx_cb.C:472
 msgid "There were errors during the LaTeX run."
 msgstr "Ocorreram erros durante a execução do LaTeX."
 
-#: src/lyx_cb.C:486
+#: src/lyx_cb.C:487
 msgid "Wrong type of document"
 msgstr "Tipo de documento errado"
 
-#: src/lyx_cb.C:487
+#: src/lyx_cb.C:488
 msgid "The Build operation is not allowed in this document"
 msgstr "A operação de contrução não é permitida nesse documento"
 
-#: src/lyx_cb.C:488 src/lyx_cb.C:503
+#: src/lyx_cb.C:489 src/lyx_cb.C:504
 msgid "There were errors during the Build process."
 msgstr "Ocorreram erros durante o processo de Construção."
 
-#: src/lyx_cb.C:514
+#: src/lyx_cb.C:515
 #, fuzzy
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex não funciona com LinuxDoc."
 
-#: src/lyx_cb.C:523
+#: src/lyx_cb.C:524
 msgid "No warnings found."
 msgstr "Nenhuns avisos foram encontrados."
 
-#: src/lyx_cb.C:525
+#: src/lyx_cb.C:526
 msgid "One warning found."
 msgstr "Um aviso foi encontrado."
 
-#: src/lyx_cb.C:526
+#: src/lyx_cb.C:527
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Use 'Editar ->Ir para Erro' para encontrá-lo."
 
-#: src/lyx_cb.C:529
+#: src/lyx_cb.C:530
 msgid " warnings found."
 msgstr " avisos encontrados."
 
-#: src/lyx_cb.C:530
+#: src/lyx_cb.C:531
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Use 'Editar ->Ir para Erro' para encontrá-lo."
 
-#: src/lyx_cb.C:532
+#: src/lyx_cb.C:533
 msgid "Chktex run successfully"
 msgstr "Chktex foi executado com êxito"
 
-#: src/lyx_cb.C:534
+#: src/lyx_cb.C:535
 msgid "It seems chktex does not work."
 msgstr "Isso significa que chktex não funcionou."
 
-#: src/lyx_cb.C:617 src/lyx_cb.C:620
+#: src/lyx_cb.C:618 src/lyx_cb.C:621
 msgid "Executing command:"
 msgstr "Executando o comando:"
 
-#: src/lyx_cb.C:840 src/lyx_cb.C:877 src/lyx_cb.C:910 src/lyx_cb.C:937
+#: src/lyx_cb.C:841 src/lyx_cb.C:878 src/lyx_cb.C:911 src/lyx_cb.C:938
 #: src/lyxfunc.C:2516
 msgid "File already exists:"
 msgstr "Arquivo já existe:"
 
-#: src/lyx_cb.C:842 src/lyx_cb.C:879 src/lyx_cb.C:912 src/lyx_cb.C:939
+#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
 msgid "Do you want to overwrite the file?"
 msgstr "Você gostaria de sobescrever o arquivo?"
 
-#: src/lyx_cb.C:843 src/lyx_cb.C:880 src/lyx_cb.C:913 src/lyx_cb.C:940
+#: src/lyx_cb.C:844 src/lyx_cb.C:881 src/lyx_cb.C:914 src/lyx_cb.C:941
 msgid "Canceled"
 msgstr "Cancelado"
 
-#: src/lyx_cb.C:848
+#: src/lyx_cb.C:849
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:854
+#: src/lyx_cb.C:855
 msgid "Nice LaTeX file saved as"
 msgstr "O arquivo LaTeX foi (bem) salvo como"
 
-#: src/lyx_cb.C:867
+#: src/lyx_cb.C:868
 msgid "Document class must be linuxdoc."
 msgstr "A classe de documento deve ser linuxdoc"
 
-#: src/lyx_cb.C:884
+#: src/lyx_cb.C:885
 msgid "Building LinuxDoc SGML file `"
 msgstr "Construindo arquivo do tipo LinuxDoc SGML"
 
-#: src/lyx_cb.C:889
+#: src/lyx_cb.C:890
 msgid "LinuxDoc SGML file save as"
 msgstr "Arquivo LinuxDoc SGML salvo como"
 
-#: src/lyx_cb.C:900
+#: src/lyx_cb.C:901
 #, fuzzy
 msgid "Document class must be docbook."
 msgstr "A classe de documento deve ser linuxdoc"
 
-#: src/lyx_cb.C:917
+#: src/lyx_cb.C:918
 #, fuzzy
 msgid "Building DocBook SGML file `"
 msgstr "Construindo arquivo do tipo LinuxDoc SGML"
 
-#: src/lyx_cb.C:922
+#: src/lyx_cb.C:923
 #, fuzzy
 msgid "DocBook SGML file save as"
 msgstr "Arquivo LinuxDoc SGML salvo como"
 
-#: src/lyx_cb.C:946
+#: src/lyx_cb.C:947
 msgid "Ascii file saved as"
 msgstr "Arquivo Ascii salvo como"
 
-#: src/lyx_cb.C:1014
+#: src/lyx_cb.C:1015
 msgid "Autosaving current document..."
 msgstr "Salvamento automático do documento corrente..."
 
-#: src/lyx_cb.C:1055
+#: src/lyx_cb.C:1056
 msgid "Autosave Failed!"
 msgstr "Salvamento automático falhou!"
 
-#: src/lyx_cb.C:1111
+#: src/lyx_cb.C:1112
 msgid "File to Insert"
 msgstr "Arquivo para inserir"
 
-#: src/lyx_cb.C:1122
+#: src/lyx_cb.C:1123
 msgid "Error! Cannot open specified file:"
 msgstr "Erro! Não posso abrir o arquivo especificado:"
 
-#: src/lyx_cb.C:1155
+#: src/lyx_cb.C:1156
 msgid "Table Of Contents"
 msgstr "Índice"
 
-#: src/lyx_cb.C:1166 src/mathed/formula.C:1028
+#: src/lyx_cb.C:1167 src/mathed/formula.C:1028
 msgid "Enter new label to insert:"
 msgstr "Digite uma nova etiqueta para inserir"
 
-#: src/lyx_cb.C:1184
+#: src/lyx_cb.C:1185
 msgid "Insert Reference"
 msgstr "Inserir Referências"
 
-#: src/lyx_cb.C:1213
+#: src/lyx_cb.C:1214
 msgid "Inserting Footnote..."
 msgstr "Inserindo notas de rodapé..."
 
@@ -3080,21 +3080,21 @@ msgstr "Latex"
 msgid "Default"
 msgstr "Padrão"
 
-#: src/lyxfr1.C:161 src/lyxfr1.C:202
+#: src/lyxfr1.C:162 src/lyxfr1.C:203
 #, fuzzy
 msgid "Sorry!"
 msgstr "Sinto muito."
 
-#: src/lyxfr1.C:161 src/lyxfr1.C:202
+#: src/lyxfr1.C:162 src/lyxfr1.C:203
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
-#: src/lyxfr1.C:232 src/lyxfr1.C:282
+#: src/lyxfr1.C:233 src/lyxfr1.C:282
 #, fuzzy
 msgid "String not found!"
 msgstr "Charset não foi encontrado"
 
-#: src/lyxfr1.C:235
+#: src/lyxfr1.C:236
 #, fuzzy
 msgid "1 string has been replaced."
 msgstr "O sistema foi reconfigurado."
@@ -3513,7 +3513,7 @@ msgstr "Matriz"
 msgid "Top | Center | Bottom"
 msgstr "Topo | Centro | Base"
 
-#: src/mathed/math_panel.C:344
+#: src/mathed/math_panel.C:343
 msgid "Math Panel"
 msgstr "Painel Matemático"
 

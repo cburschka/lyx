@@ -1,5 +1,8 @@
 1999-10-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* Makefile.am (rpmdist): fixed to have non static package and
+	verison.
+
 	* src/support/lyxstring.C: removed the compilation guards
 
 	* src/vspace.C (nextToken): use i + 1  instead of ++i. Maks things
