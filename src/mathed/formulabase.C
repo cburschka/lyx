@@ -213,6 +213,11 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 	// calling metrics here destroys the cached xo,yo positions e.g. in
 	// MathParboxinset. And it would be too expensive anyway...
 	//metrics(bv);
+	if (!mathcursor) {
+		lyxerr << "getCursorPos - should not happen";
+		x = y = 0;
+		return;
+	}
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
@@ -286,124 +291,117 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 }
 
 
-bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-	int x, int y, mouse_button::state button)
+Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 {
 	if (!mathcursor)
-		return false;
+		return UNDISPATCHED;
 
-	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
+	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
 
-	if (button == mouse_button::button3) {
+	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_RELEASE, x, y, 3)))
-			return true;
-
-		// launch math panel for right mouse button
-		bv->owner()->getDialogs().showMathPanel();
-		return true;
+		if (mathcursor->dispatch(cmd) == MathInset::UNDISPATCHED) {	
+			// launch math panel for right mouse button
+			bv->owner()->getDialogs().showMathPanel();
+		}
+		return DISPATCHED;
 	}
 
-	if (button == mouse_button::button1) {
+	if (cmd.button() == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_RELEASE, x, y, 1)))
-			return true;
-
+		mathcursor->dispatch(cmd);
 		// try to set the cursor
 		//delete mathcursor;
 		//mathcursor = new MathCursor(this, x == 0);
 		//metrics(bv);
 		//mathcursor->setPos(x + xo_, y + yo_);
-		return true;
+		return DISPATCHED;
 	}
-	return false;
+	return UNDISPATCHED;
 }
 
 
-void InsetFormulaBase::insetButtonPress(BufferView * bv,
-					int x, int y, mouse_button::state button)
+Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 {
-	//lyxerr << "insetButtonPress: "
-	//	<< x << " " << y << " but: " << button << "\n";
-	//lyxerr << "formula: ";
-	//par()->dump();
-
+	BufferView * bv = cmd.view();
 	releaseMathCursor(bv);
-	mathcursor = new MathCursor(this, x == 0);
+	mathcursor = new MathCursor(this, cmd.x == 0);
 
-	if (button == mouse_button::button1) {
+	if (cmd.button() == mouse_button::button1) {
 		// just set the cursor here
 		//lyxerr << "setting cursor\n";
 		metrics(bv);
-		first_x = x;
-		first_y = y;
+		first_x = cmd.x;
+		first_y = cmd.y;
 		mathcursor->selClear();
-		mathcursor->setPos(x + xo_, y + yo_);
-
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_PRESS, x, y, 1))) {
-			//delete mathcursor;
-			return;
-		}
-
+		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+		mathcursor->dispatch(cmd);
+		return DISPATCHED;
 	}
-	if (button == mouse_button::button3) {
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_PRESS, x, y, 3))) {
-			//delete mathcursor;
-			return;
-		}
+	if (cmd.button() == mouse_button::button3) {
+		mathcursor->dispatch(cmd);
+		//delete mathcursor;
+		return DISPATCHED;
 	}
 	bv->updateInset(this, false);
+	return DISPATCHED;
 }
 
 
-void InsetFormulaBase::insetMotionNotify(BufferView * bv,
-	int x, int y, mouse_button::state button)
+Inset::RESULT InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (!mathcursor)
-		return;
+		return DISPATCHED;
 
-	if (button == mouse_button::button1)
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_MOTION, x, y, 1)))
-			return;
+	if (mathcursor->dispatch(FuncRequest(cmd)) != MathInset::UNDISPATCHED)
+		return DISPATCHED;
 
-	if (button == mouse_button::button3)
-		if (mathcursor->dispatch(FuncRequest(bv, LFUN_MOUSE_MOTION, x, y, 3)))
-			return;
-
-	if (abs(x - first_x) < 2 && abs(y - first_y) < 2) {
+	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2) {
 		//lyxerr << "insetMotionNotify: ignored\n";
-		return;
+		return DISPATCHED;
 	}
-	first_x = x;
-	first_y = y;
+	first_x = cmd.x;
+	first_y = cmd.y;
 
 	if (!mathcursor->selection())
 		mathcursor->selStart();
 
-	//lyxerr << "insetMotionNotify: " << x + xo_ << ' ' << y + yo_
-	//	<< ' ' << button << "\n";
+	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
-	mathcursor->setPos(x + xo_, y + yo_);
+	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
+	return DISPATCHED;
 }
 
 
-UpdatableInset::RESULT
-InsetFormulaBase::localDispatch(FuncRequest const & ev)
+Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 {
-	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
-	//	<< " arg: '" << arg
-	//	<< "' cursor: " << mathcursor << "\n";
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
+	//	<< " arg: '" << cmd.argument
+	//	<< " x: '" << cmd.x
+	//	<< " y: '" << cmd.y
+	//	<< "' button: " << cmd.button() << "\n";
+
+	switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+			return lfunMousePress(cmd);
+		case LFUN_MOUSE_MOTION:
+			return lfunMouseMotion(cmd);
+		case LFUN_MOUSE_RELEASE:
+			return lfunMouseRelease(cmd);
+		default:
+			break;
+	}
 
 	if (!mathcursor)
 		return UNDISPATCHED;
 
-	BufferView * bv    = ev.view();
-	string argument    = ev.argument;
+	BufferView * bv    = cmd.view();
+	string argument    = cmd.argument;
 	RESULT result      = DISPATCHED;
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
@@ -414,7 +412,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	mathcursor->normalize();
 	mathcursor->touch();
 
-	switch (ev.action) {
+	switch (cmd.action) {
 
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
@@ -432,7 +430,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	case LFUN_INSERT_LABEL:
 	case LFUN_MATH_EXTERN:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->dispatch(ev);
+		mathcursor->dispatch(cmd);
 		updateLocal(bv, true);
 		break;
 
@@ -528,7 +526,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		lyxerr << "LFUN_SETXY broken!\n";
 		int x = 0;
 		int y = 0;
-		istringstream is(ev.argument.c_str());
+		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
 		mathcursor->setPos(x, y);
 		updateLocal(bv, false);
@@ -566,7 +564,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
 	case LFUN_CIRCUMFLEX:
-		if (ev.argument.empty()) {
+		if (cmd.argument.empty()) {
 			// do superscript if LyX handles
 			// deadkeys
 			bv->lockedInsetStoreUndo(Undo::EDIT);
@@ -592,28 +590,28 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		break;
 
 	//  Math fonts
-	case LFUN_GREEK_TOGGLE: handleFont(bv, ev.argument, "lyxgreek"); break;
-	case LFUN_BOLD:         handleFont(bv, ev.argument, "textbf"); break;
-	case LFUN_SANS:         handleFont(bv, ev.argument, "textsf"); break;
-	case LFUN_EMPH:         handleFont(bv, ev.argument, "mathcal"); break;
-	case LFUN_ROMAN:        handleFont(bv, ev.argument, "mathrm"); break;
-	case LFUN_CODE:         handleFont(bv, ev.argument, "texttt"); break;
-	case LFUN_FRAK:         handleFont(bv, ev.argument, "mathfrak"); break;
-	case LFUN_ITAL:         handleFont(bv, ev.argument, "mathit"); break;
-	case LFUN_NOUN:         handleFont(bv, ev.argument, "mathbb"); break;
-	case LFUN_DEFAULT:      handleFont(bv, ev.argument, "textnormal"); break;
-	case LFUN_FREE:         handleFont(bv, ev.argument, "textrm"); break;
+	case LFUN_GREEK_TOGGLE: handleFont(bv, cmd.argument, "lyxgreek"); break;
+	case LFUN_BOLD:         handleFont(bv, cmd.argument, "textbf"); break;
+	case LFUN_SANS:         handleFont(bv, cmd.argument, "textsf"); break;
+	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
+	case LFUN_ROMAN:        handleFont(bv, cmd.argument, "mathrm"); break;
+	case LFUN_CODE:         handleFont(bv, cmd.argument, "texttt"); break;
+	case LFUN_FRAK:         handleFont(bv, cmd.argument, "mathfrak"); break;
+	case LFUN_ITAL:         handleFont(bv, cmd.argument, "mathit"); break;
+	case LFUN_NOUN:         handleFont(bv, cmd.argument, "mathbb"); break;
+	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
+	case LFUN_FREE:         handleFont(bv, cmd.argument, "textrm"); break;
 
 	case LFUN_GREEK:
-		handleFont(bv, ev.argument, "lyxgreek1");
-		if (ev.argument.size())
-			mathcursor->interpret(ev.argument);
+		handleFont(bv, cmd.argument, "lyxgreek1");
+		if (cmd.argument.size())
+			mathcursor->interpret(cmd.argument);
 		break;
 
 	case LFUN_MATH_MODE:
-		if (mathcursor->currentMode()) {
-			handleFont(bv, ev.argument, "textrm");
-		} else {
+		if (mathcursor->currentMode())
+			handleFont(bv, cmd.argument, "textrm");
+		else {
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));
 			updateLocal(bv, true);
 		}
@@ -637,9 +635,9 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_INSERT_MATRIX:
-		if (!ev.argument.empty()) {
+		if (!cmd.argument.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			mathcursor->interpret("matrix " + ev.argument);
+			mathcursor->interpret("matrix " + cmd.argument);
 			updateLocal(bv, true);
 		}
 		break;
@@ -648,7 +646,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	case LFUN_SUBSCRIPT:
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->script(ev.action == LFUN_SUPERSCRIPT);
+		mathcursor->script(cmd.action == LFUN_SUPERSCRIPT);
 		updateLocal(bv, true);
 		break;
 	}
@@ -657,7 +655,7 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 	{
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 		string ls;
-		string rs = split(ev.argument, ls, ' ');
+		string rs = split(cmd.argument, ls, ' ');
 		// Reasonable default values
 		if (ls.empty())
 			ls = '(';
@@ -743,13 +741,13 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		//		updateInset(inset, true);
 		//}
 		//
-		if (ev.argument.empty()) {
+		if (cmd.argument.empty()) {
 			InsetCommandParams p("ref");
 			bv->owner()->getDialogs().createRef(p.getAsString());
 		} else {
 			//mathcursor->handleNest(new InsetRef2);
 			//mathcursor->insert(arg);
-			mathcursor->insert(MathAtom(new RefInset(ev.argument)));
+			mathcursor->insert(MathAtom(new RefInset(cmd.argument)));
 		}
 		updateLocal(bv, true);
 		break;

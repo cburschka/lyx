@@ -10,6 +10,7 @@
 #define FUNCREQUEST_H
 
 #include "commandtags.h"
+#include "frontends/mouse_state.h"
 #include "LString.h"
 
 class BufferView;
@@ -31,11 +32,14 @@ public:
 	/// actions with extra argument
 	FuncRequest(BufferView * view, kb_action act, string const & arg);
 	/// for mouse events
-	FuncRequest(BufferView * view, kb_action act, int ax, int ay, int aextra);
+	FuncRequest(BufferView * view, kb_action act,
+		int x, int y, mouse_button::state button);
 	/// access to the view
 	BufferView * view() const;
 	/// access to the view
 	void setView(BufferView * view);
+	/// access to button
+	mouse_button::state button() const;
 
 private:
 	/// the BufferView we are talking to
@@ -50,7 +54,7 @@ public:  // should be private, too...
 	/// the y coordinate of a mouse press
 	int y;
 	/// some extra information (like button number)
-	int extra;
+	mouse_button::state button_;
 };
 
 #endif // FUNCREQUEST_H

@@ -89,12 +89,6 @@ public:
 	///
 	int insetInInsetY() const;
 	///
-	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
-	///
-	void insetButtonPress(BufferView *, int, int, mouse_button::state);
-	///
-	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
-	///
 	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &,
@@ -229,6 +223,13 @@ protected:
 	mutable UpdateCodes need_update;
 
 private:
+	///
+	void lfunMousePress(FuncRequest const &);
+	///
+	bool lfunMouseRelease(FuncRequest const &);
+	///
+	void lfunMouseMotion(FuncRequest const &);
+
 	///
 	mutable string label;
 #if 0

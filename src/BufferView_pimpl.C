@@ -471,17 +471,15 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state s
 			? cursor.ix() - width : cursor.ix();
 		int start_x = inset_x + bv_->theLockingInset()->scroll();
 
-		bv_->theLockingInset()->
-			insetMotionNotify(bv_,
-					  x - start_x,
-					  y - cursor.iy() + bv_->text->first_y,
-					  state);
+		FuncRequest cmd(bv_, LFUN_MOUSE_MOTION,
+				  x - start_x, y - cursor.iy() + bv_->text->first_y, state);
+		bv_->theLockingInset()->localDispatch(cmd);
 		return;
 	}
 
-	/* The test for not selection possible is needed, that only motion
-	   events are used, where the bottom press event was on
-	   the drawing area too */
+	// The test for not selection possible is needed, that only motion
+	// events are used, where the bottom press event was on
+	//  the drawing area too 
 	if (!selection_possible)
 		return;
 
@@ -555,15 +553,14 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	if (bv_->theLockingInset()) {
 		// We are in inset locking mode
 
-		/* Check whether the inset was hit. If not reset mode,
-		   otherwise give the event to the inset */
+		// Check whether the inset was hit. If not reset mode,
+		// otherwise give the event to the inset 
 		if (inset_hit == bv_->theLockingInset()) {
-			bv_->theLockingInset()->
-				insetButtonPress(bv_, xpos, ypos, button);
+			FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, xpos, ypos, button);
+			bv_->theLockingInset()->localDispatch(cmd);
 			return;
-		} else {
-			bv_->unlockInset(bv_->theLockingInset());
 		}
+		bv_->unlockInset(bv_->theLockingInset());
 	}
 
 	if (!inset_hit)
@@ -590,7 +587,8 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		if (!bv_->lockInset(inset)) {
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 		}
-		inset->insetButtonPress(bv_, xpos, ypos, button);
+		FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, xpos, ypos, button);
+		inset->localDispatch(cmd);
 		return;
 	}
 	// I'm not sure we should continue here if we hit an inset (Jug20020403)
@@ -736,11 +734,11 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	if (bv_->theLockingInset()) {
 		// We are in inset locking mode.
 
-		/* LyX does a kind of work-area grabbing for insets.
-		   Only a ButtonPress FuncRequest outside the inset will
-		   force a insetUnlock. */
-		bv_->theLockingInset()->
-			insetButtonRelease(bv_, x, y, button);
+		// LyX does a kind of work-area grabbing for insets.
+		// Only a ButtonPress FuncRequest outside the inset will
+		// force a insetUnlock.
+		FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
+		bv_->theLockingInset()->localDispatch(cmd);
 		return;
 	}
 
@@ -801,9 +799,11 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		if (isHighlyEditableInset(inset_hit)) {
 			// Highly editable inset, like math
 			UpdatableInset *inset = (UpdatableInset *)inset_hit;
-			inset->insetButtonRelease(bv_, x, y, button);
+			FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
+			inset->localDispatch(cmd);
 		} else {
-			inset_hit->insetButtonRelease(bv_, x, y, button);
+			FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
+			inset_hit->localDispatch(cmd);
 			// IMO this is a grosshack! Inset's should be changed so that
 			// they call the actions they have to do with the insetButtonRel.
 			// function and not in the edit(). This should be changed

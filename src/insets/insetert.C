@@ -298,55 +298,51 @@ void InsetERT::edit(BufferView * bv, bool front)
 }
 
 
-
-
-void InsetERT::insetButtonPress(BufferView * bv,
-	int x, int y, mouse_button::state button)
+void InsetERT::lfunMousePress(FuncRequest const & cmd)
 {
-	if (status_ == Inlined) {
-		inset.insetButtonPress(bv, x, y, button);
-	} else {
-		InsetCollapsable::insetButtonPress(bv, x, y, button);
-	}
+	if (status_ == Inlined)
+		inset.localDispatch(cmd);
+	else
+		InsetCollapsable::localDispatch(cmd);
 }
 
 
-bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y,
-	mouse_button::state button)
+bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 {
-	if (button == mouse_button::button3) {
+	BufferView * bv = cmd.view();
+
+	if (cmd.button() == mouse_button::button3) {
 		showInsetDialog(bv);
 		return true;
 	}
 
-	if (status_ != Inlined && (x >= 0)  && (x < button_length) &&
-	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
+	if (status_ != Inlined && (cmd.x >= 0) && (cmd.x < button_length) &&
+	    (cmd.y >= button_top_y) && (cmd.y <= button_bottom_y)) {
 		updateStatus(bv, true);
 	} else {
 		LyXFont font(LyXFont::ALL_SANE);
-		int yy = ascent(bv, font) + y - inset.ascent(bv, font);
+		FuncRequest cmd1 = cmd;
+		cmd1.y = ascent(bv, font) + cmd.y - inset.ascent(bv, font);
 
 		// inlined is special - the text appears above
 		// button_bottom_y
-		if (status_ == Inlined) {
-			inset.insetButtonRelease(bv, x, yy, button);
-		} else if (!collapsed_ && (y > button_bottom_y)) {
-			yy -= (ascent_collapsed() + descent_collapsed());
-			inset.insetButtonRelease(bv, x, yy, button);
+		if (status_ == Inlined)
+			inset.localDispatch(cmd1);
+		else if (!collapsed_ && (cmd.y > button_bottom_y)) {
+			cmd1.y -= ascent_collapsed() + descent_collapsed();
+			inset.localDispatch(cmd1);
 		}
 	}
 	return false;
 }
 
 
-void InsetERT::insetMotionNotify(BufferView * bv,
-	int x, int y, mouse_button::state state)
+void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 {
-	if (status_ == Inlined) {
-		inset.insetMotionNotify(bv, x, y, state);
-	} else {
-		InsetCollapsable::insetMotionNotify(bv, x, y, state);
-	}
+	if (status_ == Inlined)
+		inset.localDispatch(cmd);
+	else
+		InsetCollapsable::localDispatch(cmd);
 }
 
 
@@ -380,8 +376,7 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 }
 
 
-int InsetERT::ascii(Buffer const *,
-		    ostream &, int /*linelen*/) const
+int InsetERT::ascii(Buffer const *, ostream &, int /*linelen*/) const
 {
 	return 0;
 }
@@ -445,23 +440,37 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-UpdatableInset::RESULT InsetERT::localDispatch(FuncRequest const & ev)
+Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 {
-	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
-	BufferView * bv = ev.view();
+	Inset::RESULT result = DISPATCHED_NOUPDATE;
+	BufferView * bv = cmd.view();
 
 	if (inset.paragraph()->empty()) {
 		set_latex_font(bv);
 	}
 
-	switch (ev.action) {
-	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraph()->layout()->name());
-		break;
-	default:
-		result = InsetCollapsable::localDispatch(ev);
+	switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+			lfunMousePress(cmd);
+			return DISPATCHED;
+
+		case LFUN_MOUSE_MOTION:
+			lfunMouseMotion(cmd);
+			return DISPATCHED;
+
+		case LFUN_MOUSE_RELEASE:
+			lfunMouseRelease(cmd);
+			return DISPATCHED;
+
+		case LFUN_LAYOUT:
+			bv->owner()->setLayout(inset.paragraph()->layout()->name());
+			break;
+
+		default:
+			result = InsetCollapsable::localDispatch(cmd);
 	}
-	switch (ev.action) {
+
+	switch (cmd.action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BACKSPACE:

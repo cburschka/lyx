@@ -1,6 +1,7 @@
 
 #include "command_inset.h"
 #include "math_mathmlstream.h"
+#include "funcrequest.h"
 
 
 CommandInset::CommandInset(string const & data)
@@ -23,6 +24,17 @@ CommandInset::CommandInset(string const & data)
 MathInset * CommandInset::clone() const
 {
 	return new CommandInset(*this);
+}
+
+
+MathInset::result_type
+CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+{
+	switch (cmd.action) {
+		default:
+			return ButtonInset::dispatch(cmd, idx, pos);
+	}
+	return UNDISPATCHED;
 }
 
 

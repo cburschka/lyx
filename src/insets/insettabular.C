@@ -771,18 +771,19 @@ bool InsetTabular::insertInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button::state button)
+void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 {
-	if (hasSelection() && (button == mouse_button::button3))
+	if (hasSelection() && cmd.button() == mouse_button::button3)
 		return;
 
 	if (hasSelection()) {
 		clearSelection();
-		updateLocal(bv, SELECTION, false);
+		updateLocal(cmd.view(), SELECTION, false);
 	}
 
 	int const ocell = actcell;
 	int const orow = actrow;
+	BufferView * bv = cmd.view();
 
 	hideInsetCursor(bv);
 	if (!locked) {
@@ -791,12 +792,12 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button:
 		inset_x = 0;
 		inset_y = 0;
 	}
-	setPos(bv, x, y);
+	setPos(bv, cmd.x, cmd.y);
 	if (actrow != orow)
 		updateLocal(bv, NONE, false);
 	clearSelection();
 #if 0
-	if (button == 3) {
+	if (cmd.button() == mouse_button::button3) {
 		if ((ocell != actcell) && the_locking_inset) {
 			the_locking_inset->insetUnlock(bv);
 			updateLocal(bv, CELL, false);
@@ -807,65 +808,75 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button:
 	}
 #endif
 
-	bool const inset_hit = insetHit(bv, x, y);
+	bool const inset_hit = insetHit(bv, cmd.x, cmd.y);
+
+	FuncRequest cmd1 = cmd;	
+	cmd1.x -= inset_x;
+	cmd1.y -= inset_y;
 
 	if ((ocell == actcell) && the_locking_inset && inset_hit) {
 		resetPos(bv);
-		the_locking_inset->insetButtonPress(bv,
-						    x - inset_x, y - inset_y,
-						    button);
+		the_locking_inset->localDispatch(cmd1);
 		return;
-	} else if (the_locking_inset) {
+	}
+
+	if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
 		updateLocal(bv, CELL, false);
 		the_locking_inset = 0;
 	}
-	if (button == mouse_button::button2) {
+
+	if (cmd.button() == mouse_button::button2) {
 		localDispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
 		return;
 	}
+
 	if (inset_hit && bv->theLockingInset()) {
-		if (!bv->lockInset(static_cast<UpdatableInset*>(tabular->GetCellInset(actcell)))) {
+		if (!bv->lockInset(static_cast<UpdatableInset*>
+				(tabular->GetCellInset(actcell))))
+		{
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			return;
 		}
-		the_locking_inset->insetButtonPress(
-			bv, x - inset_x, y - inset_y, button);
+		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
 	showInsetCursor(bv);
 }
 
 
-bool InsetTabular::insetButtonRelease(BufferView * bv,
-				      int x, int y, mouse_button::state button)
+bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 {
 	bool ret = false;
-	if (the_locking_inset)
-		ret = the_locking_inset->insetButtonRelease(bv, x - inset_x,
-													y - inset_y, button);
-	if (button == mouse_button::button3 && !ret) {
-		bv->owner()->getDialogs().showTabular(this);
+	if (the_locking_inset) {
+		FuncRequest cmd1 = cmd;	
+		cmd1.x -= inset_x;
+		cmd1.y -= inset_y;
+		ret = the_locking_inset->localDispatch(cmd1);
+	}
+	if (cmd.button() == mouse_button::button3 && !ret) {
+		cmd.view()->owner()->getDialogs().showTabular(this);
 		return true;
 	}
 	return ret;
 }
 
 
-void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::state button)
+void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (the_locking_inset) {
-		the_locking_inset->insetMotionNotify(bv,
-						     x - inset_x,
-						     y - inset_y,
-						     button);
+		FuncRequest cmd1 = cmd;	
+		cmd1.x -= inset_x;
+		cmd1.y -= inset_y;
+		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
 
+	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
 	int const old_cell = actcell;
 
-	setPos(bv, x, y);
+	setPos(bv, cmd.x, cmd.y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
 		updateLocal(bv, SELECTION, false);
@@ -877,20 +888,20 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button
 }
 
 
-UpdatableInset::RESULT InsetTabular::localDispatch(FuncRequest const & ev)
+Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 {
 	// We need to save the value of the_locking_inset as the call to
-	// the_locking_inset->LocalDispatch might unlock it.
+	// the_locking_inset->localDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	RESULT result = UpdatableInset::localDispatch(ev);
+	RESULT result = UpdatableInset::localDispatch(cmd);
 
-	BufferView * bv = ev.view();
+	BufferView * bv = cmd.view();
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 		resetPos(bv);
 		return result;
 	}
 
-	if (ev.action < 0 && ev.argument.empty())
+	if (cmd.action < 0 && cmd.argument.empty())
 		return FINISHED;
 
 	bool hs = hasSelection();
@@ -899,12 +910,24 @@ UpdatableInset::RESULT InsetTabular::localDispatch(FuncRequest const & ev)
 	// this one have priority over the locked InsetText, if we're not already
 	// inside another tabular then that one get's priority!
 	if (getFirstLockingInsetOfType(Inset::TABULAR_CODE) == this) {
-		switch (ev.action) {
+		switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+			lfunMousePress(cmd);
+			return DISPATCHED;
+
+		case LFUN_MOUSE_MOTION:
+			lfunMouseMotion(cmd);
+			return DISPATCHED;
+
+		case LFUN_MOUSE_RELEASE:
+			lfunMouseRelease(cmd);
+			return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
+
 		case LFUN_SHIFT_TAB:
 		case LFUN_TAB:
 			hideInsetCursor(bv);
 			unlockInsetInInset(bv, the_locking_inset);
-			if (ev.action == LFUN_TAB)
+			if (cmd.action == LFUN_TAB)
 				moveNextCell(bv, old_locking_inset != 0);
 			else
 				movePrevCell(bv, old_locking_inset != 0);
@@ -922,10 +945,10 @@ UpdatableInset::RESULT InsetTabular::localDispatch(FuncRequest const & ev)
 		}
 	}
 
-	kb_action action = ev.action;
-	string    arg    = ev.argument;
+	kb_action action = cmd.action;
+	string    arg    = cmd.argument;
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(ev);
+		result = the_locking_inset->localDispatch(cmd);
 		if (result == DISPATCHED_NOUPDATE) {
 			int sc = scroll();
 			resetPos(bv);
@@ -1614,7 +1637,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
+Inset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
@@ -1632,7 +1655,7 @@ UpdatableInset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
+Inset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
@@ -1646,7 +1669,7 @@ UpdatableInset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
+Inset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular->GetCellAbove(actcell);
@@ -1667,7 +1690,7 @@ UpdatableInset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
+Inset::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular->GetCellBelow(actcell);

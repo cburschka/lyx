@@ -984,29 +984,29 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetText::insetButtonPress(BufferView * bv,
-	int x, int y, mouse_button::state button)
+void InsetText::lfunMousePress(FuncRequest const & cmd)
 {
 	no_selection = true;
 
 	// use this to check mouse motion for selection!
-	mouse_x = x;
-	mouse_y = y;
+	mouse_x = cmd.x;
+	mouse_y = cmd.y;
 
+	BufferView * bv = cmd.view();
+	FuncRequest cmd1 = cmd;
+	cmd1.x -= inset_x;
+	cmd1.y -= inset_y;
 	if (!locked)
 		lockInset(bv);
 
-	int tmp_x = x - drawTextXOffset;
-	int tmp_y = y + insetAscent - getLyXText(bv)->first_y;
+	int tmp_x = cmd.x - drawTextXOffset;
+	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 
 	hideInsetCursor(bv);
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
-			the_locking_inset->insetButtonPress(bv,
-							    x - inset_x,
-							    y - inset_y,
-							    button);
+			the_locking_inset->localDispatch(cmd1);
 			return;
 		}
 #if 0
@@ -1016,8 +1016,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 			the_locking_inset = 0;
-			inset->insetButtonPress(bv, x - inset_x,
-						y - inset_y, button);
+			inset->localDispatch(cmd1);
 //			inset->edit(bv, x - inset_x, y - inset_y, button);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
@@ -1039,7 +1038,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 			if (!bv->lockInset(uinset)) {
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			}
-			inset->insetButtonPress(bv, x - inset_x, y - inset_y, button);
+			inset->localDispatch(cmd1);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
 			return;
@@ -1047,7 +1046,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 	}
 	if (!inset) { // && (button == mouse_button::button2)) {
 		bool paste_internally = false;
-		if ((button == mouse_button::button2) && getLyXText(bv)->selection.set()) {
+		if (cmd.button() == mouse_button::button2 && getLyXText(bv)->selection.set()) {
 			localDispatch(FuncRequest(bv, LFUN_COPY));
 			paste_internally = true;
 		}
@@ -1058,8 +1057,8 @@ void InsetText::insetButtonPress(BufferView * bv,
 		}
 		int old_first_y = lt->first_y;
 
-		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
-					     y + insetAscent);
+		lt->setCursorFromCoordinates(bv, cmd.x - drawTextXOffset,
+					     cmd.y + insetAscent);
 		// set the selection cursor!
 		lt->selection.cursor = lt->cursor;
 		lt->cursor.x_fix(lt->cursor.x());
@@ -1085,7 +1084,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
-		if (button == mouse_button::button2) {
+		if (cmd.button() == mouse_button::button2) {
 			if (paste_internally)
 				localDispatch(FuncRequest(bv, LFUN_PASTE));
 			else
@@ -1098,30 +1097,31 @@ void InsetText::insetButtonPress(BufferView * bv,
 }
 
 
-bool InsetText::insetButtonRelease(BufferView * bv,
-	int x, int y, mouse_button::state button)
+bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 {
+	BufferView * bv = cmd.view();
+	FuncRequest cmd1 = cmd;
+	cmd1.x -= inset_x;
+	cmd1.y -= inset_y;
+
 	no_selection = true;
-	if (the_locking_inset) {
-		return the_locking_inset->insetButtonRelease(bv,
-							     x - inset_x, y - inset_y,
-							     button);
-	}
-	int tmp_x = x - drawTextXOffset;
-	int tmp_y = y + insetAscent - getLyXText(bv)->first_y;
+	if (the_locking_inset)
+		return the_locking_inset->localDispatch(cmd1);
+
+	int tmp_x = cmd.x - drawTextXOffset;
+	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
-		if (isHighlyEditableInset(inset)) {
-			ret = inset->insetButtonRelease(bv, x - inset_x,
-							y - inset_y, button);
-		} else {
+		if (isHighlyEditableInset(inset)) 
+			ret = inset->localDispatch(cmd1);
+		else {
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
-			ret = inset->insetButtonRelease(bv, x - inset_x,
-							y - inset_y, button);
-			inset->edit(bv, x - inset_x,
-				    y - inset_y, button);
+			cmd1.x = cmd.x - inset_x;
+			cmd1.y = cmd.x - inset_y;
+			ret = inset->localDispatch(cmd1);
+			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
 		}
 		updateLocal(bv, CURSOR_PAR, false);
 	}
@@ -1129,17 +1129,21 @@ bool InsetText::insetButtonRelease(BufferView * bv,
 }
 
 
-void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::state state)
+void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 {
+	FuncRequest cmd1 = cmd;
+	cmd1.x -= inset_x;
+	cmd1.y -= inset_y;
+
 	if (the_locking_inset) {
-		the_locking_inset->insetMotionNotify(bv, x - inset_x,
-						     y - inset_y,state);
+		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
 
-	if (no_selection || ((mouse_x == x) && (mouse_y == y)))
+	if (no_selection || (mouse_x == cmd.x && mouse_y == cmd.y))
 		return;
 
+	BufferView * bv = cmd.view();
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -1147,7 +1151,8 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 	}
 	hideInsetCursor(bv);
 	LyXCursor cur = lt->cursor;
-	lt->setCursorFromCoordinates(bv, x - drawTextXOffset, y + insetAscent);
+	lt->setCursorFromCoordinates
+		(bv, cmd.x - drawTextXOffset, cmd.y + insetAscent);
 	lt->cursor.x_fix(lt->cursor.x());
 	if (cur == lt->cursor) {
 		if (clear)
@@ -1166,13 +1171,12 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 }
 
 
-UpdatableInset::RESULT
-InsetText::localDispatch(FuncRequest const & ev)
+Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 {
 	BufferView * bv = ev.view();
 	bool was_empty = (paragraphs.begin()->empty() && !paragraphs.begin()->next());
 	no_selection = false;
-	RESULT result= UpdatableInset::localDispatch(ev);
+	RESULT result = UpdatableInset::localDispatch(ev);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
 
@@ -1825,7 +1829,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
@@ -1835,7 +1839,7 @@ InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
 	if (getLyXText(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
@@ -1845,7 +1849,7 @@ InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
@@ -1860,7 +1864,7 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
@@ -1875,7 +1879,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveUp(BufferView * bv)
 {
 	if (!crow(bv)->previous())
@@ -1885,7 +1889,7 @@ InsetText::moveUp(BufferView * bv)
 }
 
 
-UpdatableInset::RESULT
+Inset::RESULT
 InsetText::moveDown(BufferView * bv)
 {
 	if (!crow(bv)->next())

@@ -125,12 +125,6 @@ public:
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
-	///
-	void insetButtonPress(BufferView *, int, int, mouse_button::state);
-	///
-	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
-	///
 	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &,
@@ -277,6 +271,13 @@ protected:
 
 private:
 	///
+	void lfunMousePress(FuncRequest const &);
+	///
+	bool lfunMouseRelease(FuncRequest const &);
+	///
+	void lfunMouseMotion(FuncRequest const &);
+
+	///
 	struct InnerCache {
 		///
 		InnerCache(boost::shared_ptr<LyXText>);
@@ -292,26 +293,26 @@ private:
 	///
 	int beginningOfMainBody(Paragraph * par) const;
 	///
-	UpdatableInset::RESULT moveRight(BufferView *,
+	RESULT moveRight(BufferView *,
 					 bool activate_inset = true,
 					 bool selecting = false);
 	///
-	UpdatableInset::RESULT moveLeft(BufferView *,
+	RESULT moveLeft(BufferView *,
 					bool activate_inset = true,
 					bool selecting = false);
 	///
-	UpdatableInset::RESULT moveRightIntern(BufferView *, bool front,
+	RESULT moveRightIntern(BufferView *, bool front,
 					       bool activate_inset = true,
 					       bool selecting = false);
 	///
-	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool front,
+	RESULT moveLeftIntern(BufferView *, bool front,
 					      bool activate_inset = true,
 					      bool selecting = false);
 
 	///
-	UpdatableInset::RESULT moveUp(BufferView *);
+	RESULT moveUp(BufferView *);
 	///
-	UpdatableInset::RESULT moveDown(BufferView *);
+	RESULT moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const *, int pos, LyXFont const & font);
 	///

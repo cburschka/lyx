@@ -74,6 +74,10 @@ Inset::EDITABLE Inset::editable() const
 }
 
 
+void Inset::edit(BufferView *, int, int, mouse_button::state)
+{}
+
+
 void Inset::validate(LaTeXFeatures &) const
 {}
 
@@ -84,12 +88,14 @@ bool Inset::autoDelete() const
 }
 
 
-void Inset::edit(BufferView *, int, int, mouse_button::state)
-{}
-
-
 void Inset::edit(BufferView *, bool)
 {}
+
+
+Inset::RESULT Inset::localDispatch(FuncRequest const &)
+{
+	return UNDISPATCHED;
+}
 
 
 #if 0
@@ -175,28 +181,6 @@ UpdatableInset::UpdatableInset()
 UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
 	: Inset(in, same_id), cursor_visible_(false), block_drawing_(false)
 {}
-
-
-void UpdatableInset::insetButtonPress(BufferView *, int x, int y, mouse_button::state button)
-{
-	lyxerr[Debug::INFO] << "Inset Button Press x=" << x
-		       << ", y=" << y << ", button=" << button << endl;
-}
-
-
-bool UpdatableInset::insetButtonRelease(BufferView *, int x, int y, mouse_button::state button)
-{
-	lyxerr[Debug::INFO] << "Inset Button Release x=" << x
-		       << ", y=" << y << ", button=" << button << endl;
-	return false;
-}
-
-
-void UpdatableInset::insetMotionNotify(BufferView *, int x, int y, mouse_button::state state)
-{
-	lyxerr[Debug::INFO] << "Inset Motion Notify x=" << x
-		       << ", y=" << y << ", state=" << state << endl;
-}
 
 
 void UpdatableInset::insetUnlock(BufferView *)
@@ -304,9 +288,11 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 
 ///  An updatable inset could handle lyx editing commands
-UpdatableInset::RESULT
-UpdatableInset::localDispatch(FuncRequest const & ev)
+Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 {
+	if (ev.action == LFUN_MOUSE_RELEASE)
+		return (editable() == IS_EDITABLE) ? DISPATCHED : UNDISPATCHED;
+		
 	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
 		if (ev.argument.find('.') != ev.argument.npos) {
 			float const xx = static_cast<float>(strToDbl(ev.argument));

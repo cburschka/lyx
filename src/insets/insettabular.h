@@ -136,12 +136,6 @@ public:
 	///
 	bool display() const { return tabular->IsLongTabular(); }
 	///
-	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
-	///
-	void insetButtonPress(BufferView *, int, int, mouse_button::state);
-	///
-	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
-	///
 	RESULT localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
@@ -244,6 +238,16 @@ public:
 
 private:
 	///
+	void lfunMousePress(FuncRequest const &);
+	///
+	// the bool return is used to see if we opened a dialog so that we can
+	// check this from an outer inset and open the dialog of the outer inset
+	// if that one has one!
+	///
+	bool lfunMouseRelease(FuncRequest const &);
+	///
+	void lfunMouseMotion(FuncRequest const &);
+	///
 	bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
 					   bool = false) const;
 	///
@@ -261,13 +265,13 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	UpdatableInset::RESULT moveRight(BufferView *, bool lock = true);
+	RESULT moveRight(BufferView *, bool lock = true);
 	///
-	UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
+	RESULT moveLeft(BufferView *, bool lock = true);
 	///
-	UpdatableInset::RESULT moveUp(BufferView *, bool lock = true);
+	RESULT moveUp(BufferView *, bool lock = true);
 	///
-	UpdatableInset::RESULT moveDown(BufferView *, bool lock = true);
+	RESULT moveDown(BufferView *, bool lock = true);
 	///
 	bool moveNextCell(BufferView *, bool lock = false);
 	///

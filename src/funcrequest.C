@@ -34,8 +34,8 @@ FuncRequest::FuncRequest(BufferView * view, kb_action act, string const & arg)
 
 
 FuncRequest::FuncRequest
-		(BufferView * view, kb_action act, int ax, int ay, int aextra)
-	: view_(view), action(act), argument(), x(ax), y(ay), extra(aextra)
+		(BufferView * view, kb_action act, int ax, int ay, mouse_button::state but)
+	: view_(view), action(act), argument(), x(ax), y(ay), button_(but)
 {}
 
 
@@ -49,3 +49,10 @@ void FuncRequest::setView(BufferView * view)
 {
 	view_ = view;
 }
+
+
+mouse_button::state FuncRequest::button() const
+{
+	return button_;
+}
+

@@ -134,6 +134,40 @@ public:
 		HIGHLY_EDITABLE
 	};
 
+	/** Dispatch result codes
+	    Now that nested updatable insets are allowed, the local dispatch
+	    becomes a bit complex, just two possible results (boolean)
+	    are not enough.
+
+	    DISPATCHED          = the inset catched the action
+	    DISPATCHED_NOUPDATE = the inset catched the action and no update
+				  is needed here to redraw the inset
+	    FINISHED            = the inset must be unlocked as a result
+				  of the action
+	    FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
+				  the inset.
+	    FINISHED_UP         = FINISHED, but put the cursor UP of
+				  the inset.
+	    FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
+				  the inset.
+	    UNDISPATCHED        = the action was not catched, it should be
+				  dispatched by lower level insets
+	*/
+	enum RESULT {
+		UNDISPATCHED = 0,
+		DISPATCHED,
+		DISPATCHED_NOUPDATE,
+		FINISHED,
+		FINISHED_RIGHT,
+		FINISHED_UP,
+		FINISHED_DOWN
+	};
+
+	/// To convert old binary dispatch results
+	RESULT DISPATCH_RESULT(bool b) {
+		return b ? DISPATCHED : FINISHED;
+	}
+
 	///
 	Inset();
 	///
@@ -160,16 +194,8 @@ public:
 	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual EDITABLE editable() const;
-	/// This is called when the user clicks inside an inset
-	virtual void insetButtonPress(BufferView *, int, int, mouse_button::state) {}
-	/// This is called when the user releases the button inside an inset
-	// the bool return is used to see if we opened a dialog so that we can
-	// check this from an outer inset and open the dialog of the
-	// outer inset if that one has one!
-	virtual bool insetButtonRelease(BufferView *, int, int, mouse_button::state)
-		{ return editable() == IS_EDITABLE; }
-	/// This is called when the user moves the mouse inside an inset
-	virtual void insetMotionNotify(BufferView *, int , int, mouse_button::state) {}
+	/// 
+	virtual RESULT localDispatch(FuncRequest const & cmd);
 	///
 	virtual bool isTextInset() const { return false; }
 	///
@@ -415,40 +441,6 @@ bool Inset::checkInsertChar(LyXFont &)
  */
 class UpdatableInset : public Inset {
 public:
-	/** Dispatch result codes
-	    Now that nested updatable insets are allowed, the local dispatch
-	    becomes a bit complex, just two possible results (boolean)
-	    are not enough.
-
-	    DISPATCHED          = the inset catched the action
-	    DISPATCHED_NOUPDATE = the inset catched the action and no update
-				  is needed here to redraw the inset
-	    FINISHED            = the inset must be unlocked as a result
-				  of the action
-	    FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
-				  the inset.
-	    FINISHED_UP         = FINISHED, but put the cursor UP of
-				  the inset.
-	    FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
-				  the inset.
-	    UNDISPATCHED        = the action was not catched, it should be
-				  dispatched by lower level insets
-	*/
-	enum RESULT {
-		UNDISPATCHED = 0,
-		DISPATCHED,
-		DISPATCHED_NOUPDATE,
-		FINISHED,
-		FINISHED_RIGHT,
-		FINISHED_UP,
-		FINISHED_DOWN
-	};
-
-	/// To convert old binary dispatch results
-	RESULT DISPATCH_RESULT(bool b) {
-		return b ? DISPATCHED : FINISHED;
-	}
-
 	///
 	UpdatableInset();
 	///
@@ -470,17 +462,6 @@ public:
 	virtual void fitInsetCursor(BufferView *) const;
 	///
 	virtual void getCursorPos(BufferView *, int &, int &) const {}
-	///
-	virtual void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
-	///
-	// the bool return is used to see if we opened a dialog so that we can
-	// check this from an outer inset and open the dialog of the outer inset
-	// if that one has one!
-	///
-	virtual bool insetButtonRelease(BufferView *,
-					int x, int y, mouse_button::state button);
-	///
-	virtual void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
 	///
 	virtual void insetUnlock(BufferView *);
 	///
@@ -512,7 +493,7 @@ public:
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT localDispatch(FuncRequest const & ev);
+	virtual RESULT localDispatch(FuncRequest const & cmd);
 	///
 	bool isCursorVisible() const { return cursor_visible_; }
 	///

@@ -78,12 +78,6 @@ public:
 	///
 	virtual void toggleInsetSelection(BufferView * bv);
 	///
-	virtual void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual bool insetButtonRelease(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
-	///
 	virtual void insetUnlock(BufferView *);
 
 	/// To allow transparent use of math editing functions
@@ -115,7 +109,7 @@ public:
 	///
 	virtual void revealCodes(BufferView *) const;
 	///
-	virtual Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool display() const;
 
@@ -124,6 +118,12 @@ private:
 	void operator=(const InsetFormulaBase &);
 	/// common base for handling accents
 	void handleAccent(BufferView * bv, string const & arg, string const & name);
+	/// lfun handler 
+	RESULT lfunMousePress(FuncRequest const &);
+	///
+	RESULT lfunMouseRelease(FuncRequest const &);
+	///
+	RESULT lfunMouseMotion(FuncRequest const &);
 
 protected:
 	///

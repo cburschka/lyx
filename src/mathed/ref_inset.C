@@ -36,16 +36,16 @@ void RefInset::infoize(std::ostream & os) const
 
 
 MathInset::result_type
-RefInset::dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
-			if (cmd.extra == 3) {
+			if (cmd.button() == mouse_button::button3) {
 				lyxerr << "trying to goto ref" << cell(0) << "\n";
 				cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 				return DISPATCHED;
 			}
-			if (cmd.extra == 1) {
+			if (cmd.button() == mouse_button::button1) {
 				lyxerr << "trying to open ref" << cell(0) << "\n";
 				// Eventually trigger dialog with button 3 not 1
 		//	cmd.view()->owner()->getDialogs()->showRef(this);
@@ -57,7 +57,7 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			// eat other mouse commands
 			return DISPATCHED;
 		default:
-			break;
+			return CommandInset::dispatch(cmd, idx, pos);
 	}
 	// not our business
 	return UNDISPATCHED;

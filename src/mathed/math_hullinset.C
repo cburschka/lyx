@@ -410,6 +410,8 @@ void MathHullInset::addRow(row_type row)
 
 void MathHullInset::delRow(row_type row)
 {
+	if (nrows() <= 1)
+		return;
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
 	label_.erase(label_.begin() + row);

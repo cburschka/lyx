@@ -76,12 +76,6 @@ public:
 	///
 	boost::signal0<void> hideDialog;
 	///
-	void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
-	///
-	bool insetButtonRelease(BufferView * bv, int x, int y, mouse_button::state button);
-	///
-	void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
-	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
 		  bool free_spc) const;
 	///
@@ -140,6 +134,16 @@ public:
 	void update(BufferView *, LyXFont const &, bool =false);
 
 private:
+	///
+	void lfunMousePress(FuncRequest const &);
+	///
+	// the bool return is used to see if we opened a dialog so that we can
+	// check this from an outer inset and open the dialog of the outer inset
+	// if that one has one!
+	///
+	bool lfunMouseRelease(FuncRequest const &);
+	///
+	void lfunMouseMotion(FuncRequest const &);
 	///
 	void init();
 	///
