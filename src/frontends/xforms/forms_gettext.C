@@ -17,8 +17,8 @@
 
 #include FORMS_H_LOCATION
 
-// Extract shortcut from <ident>|<shortcut> string
-char const * flyx_shortcut_extract(char const * sc)
+// Extract shortcut from "<ident>|<shortcut>" string
+char const * scex(char const * sc)
 {
 	// Find '|' in the sc and return the string after that.
 	register char const * sd = sc;
@@ -32,8 +32,8 @@ char const * flyx_shortcut_extract(char const * sc)
 }
 
 
-// Extract identifier from <ident>|<shortcut> string
-char const * flyx_ident_extract(char const * sc)
+// Extract identifier from "<ident>|<shortcut>" string
+char const * idex(char const * sc)
 {
 	register char const * se = sc;
 	while (se[0]!= 0 && se[0] != '|') ++se;

@@ -1,5 +1,8 @@
 2002-11-26  Angus Leeming  <leeming@lyx.org>
 
+	* forms_gettext.[Ch] (scex, idex): ditch the #defines and rename the
+	functions in their place.
+
 	* FormBase.h (FormDB::form): Implement in 1 line not 2.
 
 	* fdesign_base.[Ch]: new files. All fdesign-generated structures will
