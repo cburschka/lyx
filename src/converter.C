@@ -483,10 +483,10 @@ void alertErrors(string const & prog, int nr_errors)
 		s = fmt.str();
 	}
 #else
-	if (num_errors == 1) {
+	if (nr_errors == 1) {
 		s = _("One error detected");
 	} else {
-		s = tostr(num_errors);
+		s = tostr(nr_errors);
 		s += _(" errors detected.");
 	}
 #endif
