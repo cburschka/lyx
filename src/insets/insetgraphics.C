@@ -661,7 +661,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		one.startscript(Systemcall::Wait, command);
 		if (!IsFileReadable(ChangeExtension(outfile_base, to))) {
 			string str = bformat(_("No information for converting %1$s "
-				"format files to %1$s.\n"
+				"format files to %2$s.\n"
 				"Try defining a convertor in the preferences."), from, to);
 			Alert::error(_("Could not convert image"), str);
 		}
