@@ -38,15 +38,13 @@ using std::pair;
 
 LyXVC::LyXVC()
 {
-	vcs = 0;
 	owner_ = 0;
 }
 
 
+// for the sake of boost::scoped_ptr
 LyXVC::~LyXVC()
-{
-	delete vcs;
-}
+{}
 
 
 bool LyXVC::file_found_hook(string const & fn)
@@ -54,13 +52,13 @@ bool LyXVC::file_found_hook(string const & fn)
 	string found_file;
 	// Check if file is under RCS
 	if (!(found_file = RCS::find_file(fn)).empty()) {
-		vcs = new RCS(found_file);
+		vcs.reset(new RCS(found_file));
 		vcs->owner(owner_);
 		return true;
 	}
 	// Check if file is under CVS
 	if (!(found_file = CVS::find_file(fn)).empty()) {
-		vcs = new CVS(found_file, fn);
+		vcs.reset(new CVS(found_file, fn));
 		vcs->owner(owner_);
 		return true;
 	}
@@ -107,14 +105,14 @@ void LyXVC::registrer()
 				<< "LyXVC: registering "
 				<< MakeDisplayPath(filename)
 				<< " with CVS" << endl;
-			vcs = new CVS(cvs_entries, filename);
+			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
 				<< MakeDisplayPath(filename)
 				<< " with RCS" << endl;
-			vcs = new RCS(filename);
+			vcs.reset(new RCS(filename));
 		}
 
 		vcs->owner(owner_);

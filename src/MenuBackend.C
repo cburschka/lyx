@@ -51,6 +51,7 @@ using lyx::support::contains;
 using lyx::support::MakeDisplayPath;
 using lyx::support::token;
 
+using std::auto_ptr;
 using std::endl;
 using std::find_if;
 using std::max;
@@ -598,7 +599,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 			continue;
 
 		// All the rest is for floats
-		Menu * menu = new Menu;
+		auto_ptr<Menu> menu(new Menu);
 		lyx::toc::Toc::const_iterator ccit = cit->second.begin();
 		lyx::toc::Toc::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
@@ -610,7 +611,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		string const & floatName = cit->first;
 		// Is the _(...) really needed here? (Lgb)
 		MenuItem item(MenuItem::Submenu, _(floatName));
-		item.submenu(menu);
+		item.submenu(menu.release());
 		tomenu.add(item);
 	}
 

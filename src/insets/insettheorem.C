@@ -56,14 +56,14 @@ void InsetTheorem::write(Buffer const * buf, ostream & os) const
 }
 
 
-InsetBase * InsetTheorem::clone() const
+auto_ptr<InsetBase> InsetTheorem::clone() const
 {
 #ifdef WITH_WARNINGS
 #warning Is this inset used? If YES this is WRONG!!! (Jug)
 #endif
-	InsetTheorem * result = new InsetTheorem;
-
+	auto_ptr<InsetTheorem> result(new InsetTheorem);
 	result->setCollapsed(!isOpen());
+
 	return result;
 }
 

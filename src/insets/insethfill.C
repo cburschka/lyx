@@ -33,7 +33,7 @@ void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 	dim.wid = 3;
 	dim.asc = 3;
 	dim.des = 3;
-	dim_ = dim;	
+	dim_ = dim;
 }
 
 

@@ -369,7 +369,7 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 {
 	PosIterator p;
-	
+
 	int const last = size() - 1;
 	for (int i = 0; i < last; ++i) {
 		ParPosition & pp = pimpl_->positions[i];

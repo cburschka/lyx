@@ -14,6 +14,8 @@
 
 #include "dimension.h"
 
+#include <memory>
+
 class MetricsInfo;
 class PainterInfo;
 
@@ -26,7 +28,7 @@ class RenderBase {
 public:
 	virtual ~RenderBase() {}
 
-	virtual RenderBase * clone() const = 0;
+	virtual std::auto_ptr<RenderBase> clone() const = 0;
 
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;

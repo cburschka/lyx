@@ -32,6 +32,8 @@
 
 #include <sys/types.h>
 
+#include <memory>
+
 namespace lyx {
 namespace support {
 
@@ -50,7 +52,7 @@ public:
 	///
 	virtual ~ForkedProcess() {}
 	///
-	virtual ForkedProcess * clone() const = 0;
+	virtual std::auto_ptr<ForkedProcess> clone() const = 0;
 
 	/** A SignalType signal is can be emitted once the forked process
 	 *  has finished. It passes:
@@ -139,8 +141,8 @@ private:
 class Forkedcall : public ForkedProcess {
 public:
 	///
-	virtual ForkedProcess * clone() const {
-		return new Forkedcall(*this);
+	virtual std::auto_ptr<ForkedProcess> clone() const {
+		return std::auto_ptr<ForkedProcess>(new Forkedcall(*this));
 	}
 
 	/** Start the child process.

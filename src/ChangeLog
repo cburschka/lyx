@@ -1,3 +1,27 @@
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* trans_mgr.h: store t1_ and t2_ in scoped_ptr
+	* trans_mgr.C: adjust
+
+	* paragraph_funcs.C (readParToken): exception safety
+
+	* lyxvc.h: store the vcs pointer in a scoped_ptr
+	* lyxvc.C: adjust
+
+	* lyxsocket.C (serverCallback): exception safety
+
+	* lyx_cb.C (AutoSaveBuffer): make it return a auto_ptr
+
+	* ispell.C (clone): make it return a auto_ptr
+
+	* factory.C (createInset): exception safety
+	(readInset): exception safety
+
+	* bufferlist.C (newBuffer): exception safety
+
+	* Thesaurus.C (Thesaurus): use initialization for aik_
+
+	* MenuBackend.C (expandToc): exception safety.
 
 2003-11-03  André Pönitz  <poenitz@gmx.net>
 
@@ -21,7 +45,7 @@
 
 	* text3.C:
 	* lyxfunc.C:
-	* cursor.C (dispatch): 
+	* cursor.C (dispatch):
 	* BufferView_pimpl.C (dispatch): adjust for DispatchResult changes
 
 	* dispatchresult.h: remove UNDISPATCHED, DISPATCHED and

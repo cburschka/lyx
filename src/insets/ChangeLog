@@ -1,3 +1,20 @@
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* render_base.h: make clone return an auto_ptr
+	* render_button.C (clone): adjust
+	* render_graphic.C (clone): adjust
+	* render_preview.C (clone): adjust
+	
+	* insettheorem.C (clone): return an auto_ptr
+
+	* insettext.C (priv_dispatch): exception safety
+
+	* insettabular.C: store the file scope variable paste_tabular in a
+	scoped_ptr, adjust usage.
+
+	* insetexternal.C (setParams): exception safety
+
+	* insetbibitem.C (clone): exception safety
 
 2003-11-03  André Pönitz  <poenitz@gmx.net>
 

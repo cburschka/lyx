@@ -20,6 +20,7 @@
 #include "funcrequest.h"
 #include "LColor.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
@@ -62,6 +63,7 @@
 
 using lyx::support::compare_ascii_no_case;
 
+using std::auto_ptr;
 using std::endl;
 using std::string;
 
@@ -130,8 +132,9 @@ InsetOld * createInset(FuncRequest const & cmd)
 	case LFUN_INSET_WIDE_FLOAT:
 		// check if the float type exists
 		if (params.getLyXTextClass().floats().typeExist(cmd.argument)) {
-			InsetFloat * p = new InsetFloat(params, cmd.argument);
+			auto_ptr<InsetFloat> p(new InsetFloat(params, cmd.argument));
 			p->wide(true, params);
+			return p.release();
 		}
 		lyxerr << "Non-existent float type: " << cmd.argument << endl;
 		return 0;
@@ -177,12 +180,12 @@ InsetOld * createInset(FuncRequest const & cmd)
 		if (bv->theLockingInset()) {
 			lyxerr << "Locking inset code: "
 			       << static_cast<int>(bv->theLockingInset()->lyxCode());
-			InsetCaption * inset = new InsetCaption(params);
+			auto_ptr<InsetCaption> inset(new InsetCaption(params));
 			inset->setOwner(bv->theLockingInset());
 			inset->setAutoBreakRows(true);
 			inset->setDrawFrame(InsetText::LOCKED);
 			inset->setFrameColor(LColor::captionframe);
-			return inset;
+			return inset.release();
 		}
 		return 0;
 
@@ -233,18 +236,18 @@ InsetOld * createInset(FuncRequest const & cmd)
 			InsetExternalParams iep;
 			InsetExternalMailer::string2params(cmd.argument,
 							   buffer, iep);
-			InsetExternal * inset = new InsetExternal;
+			auto_ptr<InsetExternal> inset(new InsetExternal);
 			inset->setParams(iep, buffer);
-			return inset;
+			return inset.release();
 
 		} else if (name == "graphics") {
 			Buffer const & buffer = *cmd.view()->buffer();
 			InsetGraphicsParams igp;
 			InsetGraphicsMailer::string2params(cmd.argument,
 							   buffer, igp);
-			InsetGraphics * inset = new InsetGraphics;
+			auto_ptr<InsetGraphics> inset(new InsetGraphics);
 			inset->setParams(igp);
-			return inset;
+			return inset.release();
 
 		} else if (name == "include") {
 			InsetCommandParams iip;
@@ -320,7 +323,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		       << endl;
 	}
 
-	InsetOld * inset = 0;
+	auto_ptr<InsetOld> inset;
 
 	lex.next();
 	string const tmptok = lex.getString();
@@ -335,21 +338,21 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		// This strange command allows LyX to recognize "natbib" style
 		// citations: citet, citep, Citet etc.
 		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
-			inset = new InsetCitation(inscmd);
+			inset.reset(new InsetCitation(inscmd));
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
-			inset = new InsetBibitem(inscmd);
+			inset.reset(new InsetBibitem(inscmd));
 		} else if (cmdName == "bibtex") {
-			inset = new InsetBibtex(inscmd);
+			inset.reset(new InsetBibtex(inscmd));
 		} else if (cmdName == "index") {
-			inset = new InsetIndex(inscmd);
+			inset.reset(new InsetIndex(inscmd));
 		} else if (cmdName == "include") {
-			inset = new InsetInclude(inscmd);
+			inset.reset(new InsetInclude(inscmd));
 		} else if (cmdName == "label") {
-			inset = new InsetLabel(inscmd);
+			inset.reset(new InsetLabel(inscmd));
 		} else if (cmdName == "url"
 			   || cmdName == "htmlurl") {
-			inset = new InsetUrl(inscmd);
+			inset.reset(new InsetUrl(inscmd));
 		} else if (cmdName == "ref"
 			   || cmdName == "eqref"
 			   || cmdName == "pageref"
@@ -358,18 +361,18 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			   || cmdName == "prettyref") {
 			if (!inscmd.getOptions().empty()
 			    || !inscmd.getContents().empty()) {
-				inset = new InsetRef(inscmd, buf);
+				inset.reset(new InsetRef(inscmd, buf));
 			}
 		} else if (cmdName == "tableofcontents") {
-			inset = new InsetTOC(inscmd);
+			inset.reset(new InsetTOC(inscmd));
 		} else if (cmdName == "listofalgorithms") {
-			inset = new InsetFloatList("algorithm");
+			inset.reset(new InsetFloatList("algorithm"));
 		} else if (cmdName == "listoffigures") {
-			inset = new InsetFloatList("figure");
+			inset.reset(new InsetFloatList("figure"));
 		} else if (cmdName == "listoftables") {
-			inset = new InsetFloatList("table");
+			inset.reset(new InsetFloatList("table"));
 		} else if (cmdName == "printindex") {
-			inset = new InsetPrintIndex(inscmd);
+			inset.reset(new InsetPrintIndex(inscmd));
 		} else {
 			lyxerr << "unknown CommandInset '" << cmdName
 			       << "'" << std::endl;
@@ -379,64 +382,64 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		}
 	} else {
 		if (tmptok == "Quotes") {
-			inset = new InsetQuotes;
+			inset.reset(new InsetQuotes);
 		} else if (tmptok == "External") {
-			inset = new InsetExternal;
+			inset.reset(new InsetExternal);
 		} else if (tmptok == "FormulaMacro") {
-			inset = new InsetFormulaMacro;
+			inset.reset(new InsetFormulaMacro);
 		} else if (tmptok == "Formula") {
-			inset = new InsetFormula;
+			inset.reset(new InsetFormula);
 		} else if (tmptok == "Graphics") {
-			inset = new InsetGraphics;
+			inset.reset(new InsetGraphics);
 		} else if (tmptok == "Note"	|| tmptok == "Comment"
 				|| tmptok == "Greyedout") {
-			inset = new InsetNote(buf.params(), tmptok);
+			inset.reset(new InsetNote(buf.params(), tmptok));
 		} else if (tmptok == "Boxed" || tmptok == "ovalbox"
 		        || tmptok == "Shadowbox" || tmptok == "Doublebox"
 		        || tmptok == "Ovalbox" || tmptok == "Frameless") {
-			inset = new InsetBox(buf.params(), tmptok);
+			inset.reset(new InsetBox(buf.params(), tmptok));
 		} else if (tmptok == "Branch") {
-			inset = new InsetBranch(buf.params(), string());
+			inset.reset(new InsetBranch(buf.params(), string()));
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
-			inset = new InsetInclude(p);
+			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
 			lex.next();
-			inset = new InsetEnvironment(buf.params(), lex.getString());
+			inset.reset(new InsetEnvironment(buf.params(), lex.getString()));
 		} else if (tmptok == "ERT") {
-			inset = new InsetERT(buf.params());
+			inset.reset(new InsetERT(buf.params()));
 		} else if (tmptok == "InsetSpace") {
-			inset = new InsetSpace;
+			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
-			inset = new InsetTabular(buf);
+			inset.reset(new InsetTabular(buf));
 		} else if (tmptok == "Text") {
-			inset = new InsetText(buf.params());
+			inset.reset(new InsetText(buf.params()));
 		} else if (tmptok == "Foot") {
-			inset = new InsetFoot(buf.params());
+			inset.reset(new InsetFoot(buf.params()));
 		} else if (tmptok == "Marginal") {
-			inset = new InsetMarginal(buf.params());
+			inset.reset(new InsetMarginal(buf.params()));
 		} else if (tmptok == "OptArg") {
-			inset = new InsetOptArg(buf.params());
+			inset.reset(new InsetOptArg(buf.params()));
 		} else if (tmptok == "Minipage") {
-			inset = new InsetMinipage(buf.params());
+			inset.reset(new InsetMinipage(buf.params()));
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset = new InsetFloat(buf.params(), tmptok);
+			inset.reset(new InsetFloat(buf.params(), tmptok));
 		} else if (tmptok == "Wrap") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset = new InsetWrap(buf.params(), tmptok);
+			inset.reset(new InsetWrap(buf.params(), tmptok));
 #if 0
 		} else if (tmptok == "List") {
-			inset = new InsetList;
+			inset.reset(new InsetList);
 		} else if (tmptok == "Theorem") {
-			inset = new InsetList;
+			inset.reset(new InsetList);
 #endif
 		} else if (tmptok == "Caption") {
-			inset = new InsetCaption(buf.params());
+			inset.reset(new InsetCaption(buf.params()));
 		} else if (tmptok == "FloatList") {
-			inset = new InsetFloatList;
+			inset.reset(new InsetFloatList);
 		} else {
 			lyxerr << "unknown Inset type '" << tmptok
 			       << "'" << std::endl;
@@ -448,5 +451,5 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		inset->read(buf, lex);
 	}
 
-	return inset;
+	return inset.release();
 }

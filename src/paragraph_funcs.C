@@ -59,6 +59,7 @@ using lyx::support::contains;
 using lyx::support::split;
 using lyx::support::subst;
 
+using std::auto_ptr;
 using std::endl;
 using std::string;
 using std::vector;
@@ -996,7 +997,7 @@ void linuxdocParagraphs(Buffer const & buf,
 			ostream & os,
 			LatexRunParams const & runparams)
 {
-	
+
 	Paragraph::depth_type depth = 0; // paragraph depth
 	string item_name;
 	vector<string> environment_stack(5);
@@ -1154,8 +1155,8 @@ void docbookParagraphs(Buffer const & buf,
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			if (!environment_inner[depth].empty()) 
-			sgml::closeEnvTags(os, false, environment_inner[depth], 
+			if (!environment_inner[depth].empty())
+			sgml::closeEnvTags(os, false, environment_inner[depth],
 					command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
@@ -1165,7 +1166,7 @@ void docbookParagraphs(Buffer const & buf,
 		if (depth == par->params().depth()
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
-				sgml::closeEnvTags(os, false, environment_inner[depth], 
+				sgml::closeEnvTags(os, false, environment_inner[depth],
 					command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 
@@ -1184,7 +1185,7 @@ void docbookParagraphs(Buffer const & buf,
 			if (depth != 0)
 				//error(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
 				;
-			
+
 			command_name = style->latexname();
 
 			sgmlparam = style->latexparam();
@@ -1254,7 +1255,7 @@ void docbookParagraphs(Buffer const & buf,
 				environment_inner[depth] = "!-- --";
 				sgml::openTag(os, depth + command_depth, false, environment_stack[depth]);
 			} else {
-					sgml::closeEnvTags(os, false, environment_inner[depth], 
+					sgml::closeEnvTags(os, false, environment_inner[depth],
 						command_depth + depth);
 			}
 
@@ -1320,7 +1321,7 @@ void docbookParagraphs(Buffer const & buf,
 	// Close open tags
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
-				sgml::closeEnvTags(os, false, environment_inner[depth], 
+				sgml::closeEnvTags(os, false, environment_inner[depth],
 					command_depth + depth);
 		}
 	}
@@ -1462,33 +1463,34 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 				}
 			}
 		} else {
-			InsetOld * inset = 0;
+			auto_ptr<InsetOld> inset;
 			if (token == "\\SpecialChar" )
-				inset = new InsetSpecialChar;
+				inset.reset(new InsetSpecialChar);
 			else
-				inset = new InsetSpace;
+				inset.reset(new InsetSpace);
 			inset->read(buf, lex);
-			par.insertInset(par.size(), inset, font, change);
+			par.insertInset(par.size(), inset.release(),
+					font, change);
 		}
 	} else if (token == "\\i") {
-		InsetOld * inset = new InsetLatexAccent;
+		auto_ptr<InsetOld> inset(new InsetLatexAccent);
 		inset->read(buf, lex);
-		par.insertInset(par.size(), inset, font, change);
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {
-		InsetOld * inset = new InsetNewline;
+		auto_ptr<InsetOld> inset(new InsetNewline);
 		inset->read(buf, lex);
-		par.insertInset(par.size(), inset, font, change);
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\LyXTable") {
-		InsetOld * inset = new InsetTabular(buf);
+		auto_ptr<InsetOld> inset(new InsetTabular(buf));
 		inset->read(buf, lex);
-		par.insertInset(par.size(), inset, font, change);
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\bibitem") {
 		InsetCommandParams p("bibitem", "dummy");
-		InsetBibitem * inset = new InsetBibitem(p);
+		auto_ptr<InsetBibitem> inset(new InsetBibitem(p));
 		inset->read(buf, lex);
-		par.insertInset(par.size(), inset, font, change);
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\hfill") {
 		par.insertInset(par.size(), new InsetHFill, font, change);
 	} else if (token == "\\lyxline") {

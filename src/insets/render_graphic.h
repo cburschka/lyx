@@ -25,7 +25,7 @@ class RenderGraphic : public RenderBase
 public:
 	RenderGraphic();
 	RenderGraphic(RenderGraphic const &);
-	RenderBase * clone() const;
+	std::auto_ptr<RenderBase> clone() const;
 
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

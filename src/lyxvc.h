@@ -12,6 +12,8 @@
 #ifndef LYX_VC_H
 #define LYX_VC_H
 
+#include <boost/scoped_ptr.hpp>
+
 #include <string>
 
 
@@ -100,7 +102,7 @@ private:
 	Buffer * owner_;
 
 	///
-	VCS * vcs;
+	boost::scoped_ptr<VCS> vcs;
 };
 
 #endif

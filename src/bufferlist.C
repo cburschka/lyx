@@ -38,6 +38,7 @@ using lyx::support::OnlyFilename;
 using lyx::support::removeAutosaveFile;
 using lyx::support::prefixIs;
 
+using std::auto_ptr;
 using std::endl;
 using std::find;
 using std::find_if;
@@ -127,12 +128,12 @@ void BufferList::release(Buffer * buf)
 
 Buffer * BufferList::newBuffer(string const & s, bool ronly)
 {
-	Buffer * tmpbuf = new Buffer(s, ronly);
+	auto_ptr<Buffer> tmpbuf(new Buffer(s, ronly));
 	tmpbuf->params().useClassDefaults();
 	lyxerr[Debug::INFO] << "Assigning to buffer "
 			    << bstore.size() << endl;
-	bstore.push_back(tmpbuf);
-	return tmpbuf;
+	bstore.push_back(tmpbuf.get());
+	return tmpbuf.release();
 }
 
 

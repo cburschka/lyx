@@ -36,6 +36,7 @@ using std::strlen;
 using std::strpbrk;
 #endif
 
+using std::auto_ptr;
 using std::endl;
 using std::max;
 using std::string;
@@ -50,8 +51,8 @@ public:
 		     int * in, int * out, int * err)
 		: params(p), lang(l), pipein(in), pipeout(out), pipeerr(err) {}
 	///
-	virtual lyx::support::ForkedProcess * clone() const {
-		return new LaunchIspell(*this);
+	virtual auto_ptr<lyx::support::ForkedProcess> clone() const {
+		return auto_ptr<lyx::support::ForkedProcess>(new LaunchIspell(*this));
 	}
 	///
 	int start();

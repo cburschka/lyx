@@ -19,6 +19,10 @@
 #include "debug.h"
 #include "os.h"
 
+#include <boost/scoped_array.hpp>
+
+using boost::scoped_array;
+
 using std::string;
 using std::endl;
 
@@ -49,15 +53,14 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 	tmpfl += "XXXXXX";
 
 	// The supposedly safe mkstemp version
-	char * tmpl = new char[tmpfl.length() + 1]; // + 1 for '\0'
-	tmpfl.copy(tmpl, string::npos);
+	scoped_array<char> tmpl(new char[tmpfl.length() + 1]); // + 1 for '\0'
+	tmpfl.copy(tmpl.get(), string::npos);
 	tmpl[tmpfl.length()] = '\0'; // terminator
 
-	int const tmpf = make_tempfile(tmpl);
+	int const tmpf = make_tempfile(tmpl.get());
 	if (tmpf != -1) {
-		string const t(tmpl);
+		string const t(tmpl.get());
 		::close(tmpf);
-		delete [] tmpl;
 		lyxerr[Debug::FILES] << "Temporary file `" << t
 				     << "' created." << endl;
 		return t;
@@ -65,7 +68,6 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 		lyxerr[Debug::FILES]
 			<< "LyX Error: Unable to create temporary file."
 			<< endl;
-		delete [] tmpl;
 		return string();
 	}
 }

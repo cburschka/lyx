@@ -19,6 +19,7 @@
 #include "frontends/Painter.h"
 
 using std::string;
+using std::auto_ptr;
 
 
 RenderButton::RenderButton()
@@ -26,9 +27,9 @@ RenderButton::RenderButton()
 {}
 
 
-RenderBase * RenderButton::clone() const
+auto_ptr<RenderBase> RenderButton::clone() const
 {
-	return new RenderButton(*this);
+	return auto_ptr<RenderBase>(new RenderButton(*this));
 }
 
 

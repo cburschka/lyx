@@ -402,7 +402,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 		LatexRunParams runp = runparams;
-		runp.nice = buffer.niceFile();		
+		runp.nice = buffer.niceFile();
 		tmp->makeLinuxDocFile(writefile, runp, true);
 	}
 

@@ -580,8 +580,8 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 	case RENDERBUTTON: {
 		RenderButton * button_ptr = renderer_->asButton();
 		if (!button_ptr) {
-			button_ptr = new RenderButton;
-			renderer_.reset(button_ptr);
+			renderer_.reset(new RenderButton);
+			button_ptr = renderer_->asButton();
 		}
 
 		button_ptr->update(getScreenLabel(params_, buffer), true);
@@ -590,10 +590,10 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 	} case RENDERGRAPHIC: {
 		RenderGraphic * graphic_ptr = renderer_->asGraphic();
 		if (!graphic_ptr) {
-			graphic_ptr = new RenderGraphic;
+			renderer_.reset(new RenderGraphic);
+			graphic_ptr = renderer_->asGraphic();
 			graphic_ptr->connect(
 				boost::bind(&InsetExternal::statusChanged, this));
-			renderer_.reset(graphic_ptr);
 		}
 
 		graphic_ptr->update(get_grfx_params(params_));
@@ -604,12 +604,12 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		RenderMonitoredPreview * preview_ptr =
 			renderer_->asMonitoredPreview();
 		if (!preview_ptr) {
-			preview_ptr  = new RenderMonitoredPreview;
+			renderer_.reset(new RenderMonitoredPreview);
+			preview_ptr = renderer_->asMonitoredPreview();
 			preview_ptr->connect(
 				boost::bind(&InsetExternal::statusChanged, this));
 			preview_ptr->fileChanged(
 				boost::bind(&InsetExternal::fileChanged, this));
-			renderer_.reset(preview_ptr);
 		}
 
 		if (preview_ptr->monitoring())

@@ -233,8 +233,10 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					if (le == TC_ENVIRONMENT)
 						lay.is_environment = true;
 					if (!(error = do_readStyle(lexrc, lay)))
-						layoutlist_.push_back
-							(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
+						layoutlist_.push_back(
+							boost::shared_ptr<LyXLayout>(new LyXLayout(lay))
+							);
+
 					if (defaultlayout_.empty()) {
 						// We do not have a default
 						// layout yet, so we choose

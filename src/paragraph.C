@@ -1535,7 +1535,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 string const Paragraph::asString(Buffer const & buffer,
 				 bool label) const
 {
-	LatexRunParams runparams;	
+	LatexRunParams runparams;
 	return asString(buffer, runparams, label);
 }
 

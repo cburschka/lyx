@@ -53,7 +53,7 @@ InsetBibitem::~InsetBibitem()
 
 auto_ptr<InsetBase> InsetBibitem::clone() const
 {
-	InsetBibitem * b = new InsetBibitem(params());
+	auto_ptr<InsetBibitem> b(new InsetBibitem(params()));
 	b->setCounter(counter);
 	return auto_ptr<InsetBase>(b);
 }

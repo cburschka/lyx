@@ -1165,7 +1165,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		// Disabled
 		else if (1 && t.cs() == "ar") {
-			MathXYArrowInset * p = new MathXYArrowInset;
+			auto_ptr<MathXYArrowInset> p(new MathXYArrowInset);
 			// try to read target
 			parse(p->cell(0), FLAG_OTPTION, mode);
 			// try to read label
@@ -1176,7 +1176,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				//lyxerr << "read label: " << p->cell(1) << endl;
 			}
 
-			cell->push_back(MathAtom(p));
+			cell->push_back(MathAtom(p.release()));
 			//lyxerr << "read cell: " << cell << endl;
 		}
 #endif

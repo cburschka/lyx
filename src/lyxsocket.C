@@ -27,6 +27,8 @@
 #include <iostream>
 #include <cerrno>
 
+
+using std::auto_ptr;
 using std::endl;
 using std::string;
 
@@ -75,17 +77,16 @@ string const & LyXServerSocket::address() const
 // is OK and if the number of clients does not exceed MAX_CLIENTS
 void LyXServerSocket::serverCallback()
 {
-	LyXDataSocket * client = new LyXDataSocket(this);
+	auto_ptr<LyXDataSocket> client(new LyXDataSocket(this));
 	if (client->connected()) {
 		if (clients.size() == MAX_CLIENTS) {
 			client->writeln("BYE:Too many clients connected");
 		} else {
-			clients.insert(client);
-			lyx_gui::set_datasocket_callback(client);
+			lyx_gui::set_datasocket_callback(client.get());
+			clients.insert(client.release());
 			return;
 		}
 	}
-	delete client;
 }
 
 
@@ -141,15 +142,15 @@ void LyXServerSocket::close(LyXDataSocket * client)
 // Debug
 // void LyXServerSocket::dump() const
 // {
-// 	lyxerr << "LyXServerSocket debug dump.\n"
-// 	     << "fd = " << fd_ << ", address = " << address_ << ".\n"
-// 	     << "Clients: " << clients.size() << ".\n";
-// 	if (!clients.empty()) {
-// 		std::set<LyXDataSocket *>::const_iterator client = clients.begin();
-// 		std::set<LyXDataSocket *>::const_iterator end = clients.end();
-// 		for (; client != end; ++client)
-// 			lyxerr << "fd = " << (*client)->fd() << "\n";
-// 	}
+//	lyxerr << "LyXServerSocket debug dump.\n"
+//	     << "fd = " << fd_ << ", address = " << address_ << ".\n"
+//	     << "Clients: " << clients.size() << ".\n";
+//	if (!clients.empty()) {
+//		std::set<LyXDataSocket *>::const_iterator client = clients.begin();
+//		std::set<LyXDataSocket *>::const_iterator end = clients.end();
+//		for (; client != end; ++client)
+//			lyxerr << "fd = " << (*client)->fd() << "\n";
+//	}
 // }
 
 

@@ -416,7 +416,7 @@ void RowPainter::paintSelection()
 		}
 		return;
 	}
-	
+
 	if (startrow != rit_ && endrow != rit_) {
 		if (y_ > starty && y_ < endy) {
 			int w = width_;

@@ -1,3 +1,15 @@
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* tempname.C (tempName): use scoped_array for exception safety
+
+	* os_os2.C (init): use scoped_array for exception safety
+
+	* getcwd.C (getcwd): use scoped_array for exception safety
+
+	* forkedcontr.C (addCall): adjust
+
+	* forkedcall.h: make clone return a auto_ptr
+
 2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* debugstream.h: add a default constructor that does not setup a

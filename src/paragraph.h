@@ -92,7 +92,7 @@ public:
 	std::string const Paragraph::asString(Buffer const & buffer,
 					      lyx::pos_type beg,
 					      lyx::pos_type end,
-					      bool label) const;	
+					      bool label) const;
 	///
 	std::string const asString(Buffer const &,
 				   LatexRunParams const & runparams,

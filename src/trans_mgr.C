@@ -191,11 +191,9 @@ TransManager::TransManager()
 {}
 
 
+// For the sake of boost::scoped_ptr.
 TransManager::~TransManager()
-{
-	delete t1_;
-	delete t2_;
-}
+{}
 
 
 int TransManager::SetPrimary(string const & language)
@@ -225,7 +223,7 @@ bool TransManager::setCharset(string const & str)
 void TransManager::EnablePrimary()
 {
 	if (t1_->IsDefined())
-		active_ = t1_;
+		active_ = t1_.get();
 
 	lyxerr[Debug::KBMAP] << "Enabling primary keymap" << endl;
 }
@@ -234,7 +232,7 @@ void TransManager::EnablePrimary()
 void TransManager::EnableSecondary()
 {
 	if (t2_->IsDefined())
-		active_ = t2_;
+		active_ = t2_.get();
 	lyxerr[Debug::KBMAP] << "Enabling secondary keymap" << endl;
 }
 

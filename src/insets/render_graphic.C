@@ -31,6 +31,7 @@ using lyx::support::AbsolutePath;
 using lyx::support::OnlyFilename;
 
 using std::string;
+using std::auto_ptr;
 
 
 RenderGraphic::RenderGraphic()
@@ -46,9 +47,9 @@ RenderGraphic::RenderGraphic(RenderGraphic const & other)
 {}
 
 
-RenderBase * RenderGraphic::clone() const
+auto_ptr<RenderBase> RenderGraphic::clone() const
 {
-	return new RenderGraphic(*this);
+	return auto_ptr<RenderBase>(new RenderGraphic(*this));
 }
 
 
@@ -80,7 +81,7 @@ boost::signals::connection RenderGraphic::connect(slot_type const & slot) const
 
 
 namespace {
- 
+
 string const statusMessage(graphics::ImageStatus status)
 {
 	switch (status) {

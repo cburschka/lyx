@@ -68,6 +68,7 @@ using lyx::support::user_lyxdir;
 
 namespace os = lyx::support::os;
 
+using std::auto_ptr;
 using std::back_inserter;
 using std::copy;
 using std::endl;
@@ -215,8 +216,8 @@ public:
 	AutoSaveBuffer(BufferView & bv, string const & fname)
 		: bv_(bv), fname_(fname) {}
 	///
-	virtual ForkedProcess * clone() const {
-		return new AutoSaveBuffer(*this);
+	virtual auto_ptr<ForkedProcess> clone() const {
+		return auto_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
 	}
 	///
 	int start();

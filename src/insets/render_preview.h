@@ -46,7 +46,7 @@ public:
 
 	RenderPreview();
 	RenderPreview(RenderPreview const &);
-	RenderBase * clone() const;
+	std::auto_ptr<RenderBase> clone() const;
 
 	/// Compute the size of the object, returned in dim
 	void metrics(MetricsInfo &, Dimension & dim) const;

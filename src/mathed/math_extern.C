@@ -47,7 +47,7 @@ using lyx::support::subst;
 using std::string;
 using std::endl;
 using std::find_if;
-
+using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -289,13 +289,13 @@ void splitScripts(MathArray & ar)
 
 		// create extra script inset and move superscript over
 		MathScriptInset * p = ar[i].nucleus()->asScriptInset();
-		MathScriptInset * q = new MathScriptInset(true);
+		auto_ptr<MathScriptInset> q(new MathScriptInset(true));
 		std::swap(q->up(), p->up());
 		p->removeScript(true);
 
 		// insert new inset behind
 		++i;
-		ar.insert(i, MathAtom(q));
+		ar.insert(i, MathAtom(q.release()));
 	}
 	//lyxerr << "\nScripts to: " << ar << endl;
 }
@@ -464,13 +464,13 @@ void extractFunctions(MathArray & ar)
 		extractScript(exp, jt, ar.end());
 
 		// create a proper inset as replacement
-		MathExFuncInset * p = new MathExFuncInset(name);
+		auto_ptr<MathExFuncInset> p(new MathExFuncInset(name));
 
 		// jt points to the "argument". Get hold of this.
 		MathArray::iterator st = extractArgument(p->cell(0), jt, ar.end());
 
 		// replace the function name by a real function inset
-		*it = MathAtom(p);
+		*it = MathAtom(p.release());
 
 		// remove the source of the argument from the array
 		ar.erase(it + 1, st);
@@ -540,7 +540,7 @@ void extractIntegrals(MathArray & ar)
 			continue;
 
 		// core ist part from behind the scripts to the 'd'
-		MathExIntInset * p = new MathExIntInset("int");
+		auto_ptr<MathExIntInset> p(new MathExIntInset("int"));
 
 		// handle scripts if available
 		if (!testIntSymbol(*it)) {
@@ -554,7 +554,7 @@ void extractIntegrals(MathArray & ar)
 
 		// remove used parts
 		ar.erase(it + 1, tt);
-		*it = MathAtom(p);
+		*it = MathAtom(p.release());
 	}
 	//lyxerr << "\nIntegrals to: " << ar << endl;
 }
@@ -604,7 +604,7 @@ void extractSums(MathArray & ar)
 			continue;
 
 		// create a proper inset as replacement
-		MathExIntInset * p = new MathExIntInset("sum");
+		auto_ptr<MathExIntInset> p(new MathExIntInset("sum"));
 
 		// collect lower bound and summation index
 		MathScriptInset const * sub = ar[i]->asScriptInset();
@@ -633,7 +633,7 @@ void extractSums(MathArray & ar)
 
 		// cleanup
 		ar.erase(it + 1, tt);
-		*it = MathAtom(p);
+		*it = MathAtom(p.release());
 	}
 	//lyxerr << "\nSums to: " << ar << endl;
 }
@@ -682,7 +682,7 @@ void extractDiff(MathArray & ar)
 		}
 
 		// create a proper diff inset
-		MathDiffInset * diff = new MathDiffInset;
+		auto_ptr<MathDiffInset> diff(new MathDiffInset);
 
 		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1;
@@ -731,7 +731,7 @@ void extractDiff(MathArray & ar)
 
 		// cleanup
 		ar.erase(it + 1, jt);
-		*it = MathAtom(diff);
+		*it = MathAtom(diff.release());
 	}
 	//lyxerr << "\nDiffs to: " << ar << endl;
 }

@@ -1460,13 +1460,13 @@ bool Buffer::hasParWithID(int id) const
 
 PosIterator Buffer::pos_iterator_begin()
 {
-	return PosIterator(&paragraphs(), paragraphs().begin(), 0);	
+	return PosIterator(&paragraphs(), paragraphs().begin(), 0);
 }
 
 
 PosIterator Buffer::pos_iterator_end()
 {
-	return PosIterator(&paragraphs(), paragraphs().end(), 0);	
+	return PosIterator(&paragraphs(), paragraphs().end(), 0);
 }
 
 

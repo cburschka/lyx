@@ -31,6 +31,7 @@
 #include <boost/bind.hpp>
 
 using std::string;
+using std::auto_ptr;
 
 namespace graphics = lyx::graphics;
 namespace support  = lyx::support;
@@ -55,9 +56,9 @@ RenderPreview::RenderPreview(RenderPreview const & other)
 {}
 
 
-RenderBase * RenderPreview::clone() const
+auto_ptr<RenderBase> RenderPreview::clone() const
 {
-	return new RenderPreview(*this);
+	return auto_ptr<RenderBase>(new RenderPreview(*this));
 }
 
 

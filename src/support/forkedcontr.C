@@ -78,7 +78,7 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 	if (!timeout_->running())
 		timeout_->start();
 
-	forkedCalls.push_back(newcall.clone());
+	forkedCalls.push_back(newcall.clone().release());
 	childrenChanged();
 }
 

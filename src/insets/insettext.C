@@ -858,7 +858,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			result = DispatchResult(true);
 		} else {
 			replaceSelection(bv->getLyXText());
-			text_.insertInset(new InsetNewline);
+			auto_ptr<InsetNewline> ins(new InsetNewline);
+			text_.insertInset(ins.release());
 			updflag = true;
 		}
 		break;

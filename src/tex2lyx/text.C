@@ -1075,7 +1075,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			ss << '{' << p.verbatim_item() << "}\n";
 			handle_ert(os, ss.str(), context);
 		}
-                
+
 		else if (t.cs() == "bibliographystyle") {
 			// store new bibliographystyle
 			bibliographystyle = p.verbatim_item();

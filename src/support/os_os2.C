@@ -21,6 +21,10 @@
 #define INCL_DOSERRORS
 #include <os2.h>
 
+#include <boost/scoped_array.hpp>
+
+using boost::scoped_array;
+
 namespace {
 
 string binpath_;
@@ -44,12 +48,12 @@ void init(int * argc, char ** argv[])
 		APIRET rc = DosGetInfoBlocks(&ptib, &ppib);
 		if (rc != NO_ERROR)
 			exit(rc);
-		char* tmp = new char[256];
+		scoped_array<char> tmp(new char[256]);
 		// This is the only reliable way to retrieve the executable name.
 		rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
 		if (rc != NO_ERROR)
 			exit(rc);
-		string p = tmp;
+		string p = tmp.get();
 		p = slashify_path(p);
 		binname_ = OnlyFilename(p);
 		binname_.erase(binname_.length()-4, string::npos);

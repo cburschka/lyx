@@ -89,7 +89,7 @@ ParIterator num2pit(BufferView * bv, int num)
 
 	for ( ; num && pit != end; ++pit, --num)
 		;
-	
+
 	if (pit != end)
 		return pit;
 

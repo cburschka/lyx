@@ -1,3 +1,15 @@
+2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* math_parser.C (parse1): exception safety
+
+	* math_extern.C (splitScripts): exception safety
+	(extractFunctions): exception safety
+	(extractIntegrals): exception safety
+	(extractSums): exception safety
+	(extractDiff): exception safety
+
+	* formulamacro.C (read): exception safety
+
 2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* adjust for DispatchResult changes

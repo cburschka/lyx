@@ -17,6 +17,8 @@
 #include "chset.h"
 #include "trans_decl.h"
 
+#include <boost/scoped_ptr.hpp>
+
 class LyXText;
 class Trans;
 
@@ -137,9 +139,9 @@ private:
 	///
 	Trans * active_;
 	///
-	Trans * t1_;
+	boost::scoped_ptr<Trans> t1_;
 	///
-	Trans * t2_;
+	boost::scoped_ptr<Trans> t2_;
 	///
 	static Trans default_;
 	///
@@ -152,7 +154,7 @@ public:
 	///
 	TransManager();
 	///
-	virtual ~TransManager();
+	~TransManager();
 	///
 	int SetPrimary(std::string const &);
 	///

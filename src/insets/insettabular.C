@@ -61,7 +61,7 @@ int const ADD_TO_HEIGHT = 2;
 int const ADD_TO_TABULAR_WIDTH = 2;
 
 ///
-LyXTabular * paste_tabular = 0;
+boost::scoped_ptr<LyXTabular> paste_tabular;
 
 
 struct TabularFeature {
@@ -144,7 +144,7 @@ string const featureAsString(LyXTabular::Feature feature)
 
 bool InsetTabular::hasPasteBuffer() const
 {
-	return (paste_tabular != 0);
+	return (paste_tabular.get() != 0);
 }
 
 
@@ -1019,9 +1019,12 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 				++p;
 			}
 			maxCols = max(cols, maxCols);
-			delete paste_tabular;
-			paste_tabular = new LyXTabular(bv->buffer()->params(),
-						       this, rows, maxCols);
+
+			paste_tabular.reset(
+				new LyXTabular(bv->buffer()->params(),
+					       this, rows, maxCols)
+				);
+
 			string::size_type op = 0;
 			int cell = 0;
 			int cells = paste_tabular->getNumberOfCells();
@@ -1057,8 +1060,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			// so that the clipboard is used and it goes on
 			// to default
 			// and executes LFUN_PASTESELECTION in insettext!
-			delete paste_tabular;
-			paste_tabular = 0;
+			paste_tabular.reset();
 		}
 	}
 	case LFUN_PASTE:
@@ -2247,8 +2249,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 	if (sel_row_start > sel_row_end)
 		swap(sel_row_start, sel_row_end);
 
-	delete paste_tabular;
-	paste_tabular = new LyXTabular(tabular);
+	paste_tabular.reset(new LyXTabular(tabular));
 	paste_tabular->setOwner(this);
 
 	for (int i = 0; i < sel_row_start; ++i)
@@ -2274,7 +2275,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream os;
-	LatexRunParams const runparams;	
+	LatexRunParams const runparams;
 	paste_tabular->ascii(*bv->buffer(), os, runparams,
 			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(os.str());
@@ -2617,11 +2618,12 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	int ocol = 0;
 	int row = 0;
 	if (usePaste) {
-		delete paste_tabular;
-		paste_tabular = new LyXTabular(bv->buffer()->params(),
-					       rows, maxCols);
+		paste_tabular.reset(
+			new LyXTabular(bv->buffer()->params(), rows, maxCols)
+			);
+
 		paste_tabular->setOwner(this);
-		loctab = paste_tabular;
+		loctab = paste_tabular.get();
 		cols = 0;
 	} else {
 		loctab = &tabular;
