@@ -211,7 +211,7 @@ def convert_comment(lines):
                         #but if this happens deal with it greacefully adding
                         #the missing \end_deeper.
                         i = len(lines) - 1
-                        lines[i:i] = ["\end_deeper","","","\\end_inset","",""]
+                        lines[i:i] = ["\end_deeper",""]
                         return
                     else:
                         del lines[i]
@@ -304,11 +304,11 @@ def add_end_layout(lines):
             continue
 
         if token == "\\end_deeper":
-            lines.insert(i,"")
-            lines.insert(i,"\\end_layout")
-            i = i + 3
-            while struct_stack[-1] != "\\begin_deeper":
+            if struct_stack[-1] == '\\layout':
+                lines.insert(i, '\\end_layout')
+                i = i + 1
                 struct_stack.pop()
+            i = i + 1
             continue
 
         #case \end_document
