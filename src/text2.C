@@ -1741,7 +1741,7 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 }
 
 
-float LyXText::getCursorX(Row * row,
+float LyXText::getCursorX(RowList::iterator rit,
 			  pos_type pos, pos_type last, bool boundary) const
 {
 	pos_type cursor_vpos = 0;
@@ -1750,15 +1750,15 @@ float LyXText::getCursorX(Row * row,
 	float fill_hfill;
 	float fill_label_hfill;
 	// This call HAS to be here because of the BidiTables!!!
-	prepareToPrint(row, x, fill_separator, fill_hfill,
+	prepareToPrint(rit, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
 
-	if (last < row->pos())
-		cursor_vpos = row->pos();
+	if (last < rit->pos())
+		cursor_vpos = rit->pos();
 	else if (pos > last && !boundary)
-		cursor_vpos = (row->par()->isRightToLeftPar(bv()->buffer()->params))
-			? row->pos() : last + 1;
-	else if (pos > row->pos() &&
+		cursor_vpos = (rit->par()->isRightToLeftPar(bv()->buffer()->params))
+			? rit->pos() : last + 1;
+	else if (pos > rit->pos() &&
 		 (pos > last || boundary))
 		/// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
@@ -1768,36 +1768,35 @@ float LyXText::getCursorX(Row * row,
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
-	pos_type body_pos = row->par()->beginningOfBody();
+	pos_type body_pos = rit->par()->beginningOfBody();
 	if ((body_pos > 0) &&
-	    ((body_pos-1 > last) ||
-	     !row->par()->isLineSeparator(body_pos - 1)))
+	    ((body_pos - 1 > last) ||
+	     !rit->par()->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
-	for (pos_type vpos = row->pos(); vpos < cursor_vpos; ++vpos) {
+	for (pos_type vpos = rit->pos(); vpos < cursor_vpos; ++vpos) {
 		pos_type pos = vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
 				font_metrics::width(
-					row->par()->layout()->labelsep,
+					rit->par()->layout()->labelsep,
 					getLabelFont(bv()->buffer(),
-						     row->par()));
-			if (row->par()->isLineSeparator(body_pos - 1))
-				x -= singleWidth(
-						 row->par(), body_pos - 1);
+						     rit->par()));
+			if (rit->par()->isLineSeparator(body_pos - 1))
+				x -= singleWidth(rit->par(), body_pos - 1);
 		}
-		if (row->hfillExpansion(pos)) {
-			x += singleWidth(row->par(), pos);
+		if (rit->hfillExpansion(pos)) {
+			x += singleWidth(rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
 			else
 				x += fill_label_hfill;
-		} else if (row->par()->isSeparator(pos)) {
-			x += singleWidth(row->par(), pos);
+		} else if (rit->par()->isSeparator(pos)) {
+			x += singleWidth(rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_separator;
 		} else
-			x += singleWidth(row->par(), pos);
+			x += singleWidth(rit->par(), pos);
 	}
 	return x;
 }

@@ -495,7 +495,7 @@ private:
 	void cursorLeftOneWord(LyXCursor &);
 
 	///
-	float getCursorX(Row *, lyx::pos_type pos,
+	float getCursorX(RowList::iterator rit, lyx::pos_type pos,
 			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(Buffer const &, Paragraph & par);
