@@ -15,6 +15,7 @@
 #pragma implementation
 #endif
 
+#include <algorithm>
 #include "MenuBackend.h"
 #include "lyxlex.h"
 #include "LyXAction.h"

@@ -18,7 +18,7 @@
 #pragma interface
 #endif
 
-#include "lyxlex.h"
+class LyXLeX;
 #include "lyxfont.h"
 #include "Spacing.h"
 #include <boost/utility.hpp>

@@ -40,6 +40,7 @@
 #include "language.h"
 #include "BufferView.h"
 #include "undo_funcs.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 using std::ifstream;

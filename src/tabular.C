@@ -30,6 +30,7 @@
 #include "LaTeXFeatures.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
+#include "support/LAssert.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 #include "gettext.h"

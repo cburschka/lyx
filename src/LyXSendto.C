@@ -10,6 +10,7 @@
 #include "buffer.h"
 #include "lyx_gui_misc.h"
 #include "support/syscall.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 #include "bufferview_funcs.h"
 #include "exporter.h"

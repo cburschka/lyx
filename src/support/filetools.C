@@ -27,6 +27,12 @@
 #pragma implementation "filetools.h"
 #endif
 
+#include <cstdlib>
+#include <fcntl.h>
+#include <cerrno>
+#include "debug.h"
+#include "support/lstrings.h"
+
 #include "filetools.h"
 #include "LSubstring.h"
 #include "lyx_gui_misc.h"

@@ -18,8 +18,9 @@
 #pragma interface
 #endif
 
-#include "buffer.h"
-#include "debug.h"
+class Buffer;
+class UpdatableInset;
+#include <vector>
 #include <boost/utility.hpp>
 
 /** A class to hold all the buffers in a structure

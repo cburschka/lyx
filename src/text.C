@@ -17,6 +17,7 @@
 #include "layout.h"
 #include "paragraph.h"
 #include "support/textutils.h"
+#include "support/LAssert.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
 #include "insets/insetspecialchar.h"

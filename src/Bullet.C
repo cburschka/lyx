@@ -19,6 +19,7 @@
 #endif
 
 #include "Bullet.h"
+#include "support/LAssert.h"
 
 /** The four LaTeX itemize environment default bullets
  */
@@ -49,6 +50,104 @@ Bullet::Bullet(int f, int c, int s)
 #ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
+}
+
+
+
+Bullet::Bullet(string const & t) 
+	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
+{
+#ifdef ENABLE_ASSERTIONS
+	testInvariant();
+#endif
+}
+
+
+void Bullet::setCharacter(int c)
+{
+	if (c < MIN || c >= CHARMAX) {
+		character = MIN;
+	} else {
+		character = c;
+	}
+	user_text = 0;
+#ifdef ENABLE_ASSERTIONS
+	testInvariant();
+#endif
+}
+
+
+void Bullet::setFont(int f)
+{
+	if (f < MIN || f >= FONTMAX) {
+		font = MIN;
+	} else {
+		font = f;
+	}
+	user_text = 0;
+#ifdef ENABLE_ASSERTIONS
+	testInvariant();
+#endif
+}
+
+
+void Bullet::setSize(int s)
+{
+	if (s < MIN || s >= SIZEMAX) {
+		size = MIN;
+	} else {
+		size = s;
+	}
+	user_text = 0;
+#ifdef ENABLE_ASSERTIONS
+	testInvariant();
+#endif
+}
+
+
+void Bullet::setText(string const & t)
+{
+	font = character = size = MIN;
+	user_text = 1;
+	text = t;
+#ifdef ENABLE_ASSERTIONS
+	testInvariant();
+#endif
+}
+
+
+int Bullet::getCharacter() const
+{
+	return character;
+}
+
+
+int Bullet::getFont() const
+{
+	return font;
+}
+
+
+int Bullet::getSize() const
+{
+	return size;
+}
+
+
+Bullet & Bullet::operator=(Bullet const & b)
+{
+#ifdef ENABLE_ASSERTIONS
+	b.testInvariant();
+#endif
+	font = b.font;
+	character = b.character;
+	size = b.size;
+	user_text = b.user_text;
+	text = b.text;
+#ifdef ENABLE_ASSERTIONS
+	this->testInvariant();
+#endif
+	return *this;
 }
 
 
@@ -267,3 +366,28 @@ string const Bullet::bulletEntry(short int f, short int c)
 
 	return BulletPanels[f][c];
 }
+
+#ifdef ENABLE_ASSERTIONS
+void Bullet::testInvariant() const {
+	lyx::Assert(font >= MIN);
+	lyx::Assert(font < FONTMAX);
+	lyx::Assert(character >= MIN);
+	lyx::Assert(character < CHARMAX);
+	lyx::Assert(size >= MIN);
+	lyx::Assert(size < SIZEMAX);
+	lyx::Assert(user_text >= -1);
+	lyx::Assert(user_text <= 1);
+	// now some relational/operational tests
+	if (user_text == 1) {
+		lyx::Assert(font == -1 && (character == -1 && size == -1));
+		//        Assert(!text.empty()); // this isn't necessarily an error
+	}
+	//      else if (user_text == -1) {
+	//        Assert(!text.empty()); // this also isn't necessarily an error
+	//      }
+	//      else {
+	//        // user_text == 0
+	//        Assert(text.empty()); // not usually true
+	//      }
+}
+#endif

@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "insets/inset.h"
 #include "debug.h"
+#include "support/LAssert.h"
 
 /// the flag used by FinishUndo();
 bool undo_finished;

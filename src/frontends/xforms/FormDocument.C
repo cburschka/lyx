@@ -39,6 +39,7 @@
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
 #include "xforms_helpers.h" 
+#include "debug.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

@@ -12,11 +12,6 @@
 
 #include <iosfwd>
 
-#if 1
-// For NO_LATEX
-#include "lyxfont.h"
-#endif
-
 /** These are all the lyxfunctions (as enums).
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.

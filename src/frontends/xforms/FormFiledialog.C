@@ -24,6 +24,7 @@ using std::sort;
 #include "lyx_gui_misc.h" // for WriteFSAlert
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 #include "frontends/Dialogs.h"
 

@@ -22,6 +22,7 @@
 
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "LyXView.h"
 #include "XFormsView.h"
 #include "gettext.h"

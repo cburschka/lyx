@@ -12,7 +12,7 @@
 
 #include "LString.h"
 #include "frontends/Timeout.h"
-#include "layout.h"
+#include "layout.h" // Just for LyXTextClass::size_type (sic)
 
 class Buffer;
 class Toolbar;

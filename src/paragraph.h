@@ -20,7 +20,7 @@
 
 #include <vector>
 
-#include "insets/inset.h"
+#include "insets/inset.h" // Just for Inset::Code
 #include "layout.h"
 
 class ParagraphParameters;
@@ -139,7 +139,7 @@ public:
 				      std::ostream &, TexRow & texrow);
 	///
 	bool hasSameLayout(Paragraph const * par) const;
-	
+
 	///
 	void makeSameLayout(Paragraph const * par);
 

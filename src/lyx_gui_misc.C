@@ -27,6 +27,7 @@
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
 #include "lyxrc.h"
+#include "debug.h"
 
 using std::pair;
 using std::make_pair;

@@ -30,6 +30,7 @@
 #include "support/path.h"
 #include "support/syscall.h"
 #include "gettext.h"
+#include "debug.h"
 
 using std::endl;
 

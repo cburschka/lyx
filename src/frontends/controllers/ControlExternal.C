@@ -30,6 +30,7 @@
 #include "Liason.h"
 #include "LyXView.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "frontends/FileDialog.h"
 #include "lyx_gui_misc.h" // WriteAlert
 #include "gettext.h"

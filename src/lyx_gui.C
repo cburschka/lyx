@@ -10,6 +10,7 @@
 
 #include <config.h>
 #include <cstdlib>
+#include <fcntl.h>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -19,6 +20,7 @@
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
 #include "support/os.h"
+#include "support/lyxlib.h"
 #include "figure_form.h"
 #include "print_form.h"
 #include "tex-strings.h"

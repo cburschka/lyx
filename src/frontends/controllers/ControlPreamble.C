@@ -22,6 +22,7 @@
 #include "Liason.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "support/LAssert.h"
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d),

@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 #include "gettext.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::endl;

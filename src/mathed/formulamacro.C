@@ -36,6 +36,7 @@
 #include "support/LOstream.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "lyxfont.h"
 
 using std::ostream;
 

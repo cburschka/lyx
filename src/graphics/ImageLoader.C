@@ -12,6 +12,7 @@
 #endif
 
 #include <config.h>
+#include "debug.h"
 #include "ImageLoader.h"
 #include "frontends/support/LyXImage.h"
 

@@ -28,6 +28,7 @@
 #include "support/filetools.h"
 #include "support/lyxmanip.h"
 #include "support/lyxfunctional.h"
+#include "support/LAssert.h"
 #include "lyx_gui_misc.h"
 #include "lastfiles.h"
 #include "debug.h"

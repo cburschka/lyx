@@ -31,6 +31,7 @@
 #include "language.h"
 #include "gettext.h"
 #include "undo_funcs.h"
+#include "debug.h"
 
 extern BufferList bufferlist;
 

@@ -30,6 +30,7 @@
 #include "support/lyxfunctional.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "debug.h"
 
 using std::vector;
 using std::queue;

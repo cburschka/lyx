@@ -37,6 +37,7 @@
 #include "combox.h"
 #include "debug.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
 #include "lyx_gui_misc.h" // idex, scex
 #include "lyxlex.h"
 #include "input_validators.h"

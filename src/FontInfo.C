@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "frontends/GUIRunTime.h"
 
 using std::endl;

@@ -5,6 +5,7 @@
 
 #include "os.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 string os::binpath_ = string();
 string os::binname_ = string();

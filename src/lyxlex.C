@@ -19,6 +19,7 @@
 
 #include "lyxlex.h"
 #include "lyxlex_pimpl.h"
+#include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

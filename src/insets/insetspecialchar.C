@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "font.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::max;

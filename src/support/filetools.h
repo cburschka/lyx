@@ -11,15 +11,8 @@
 #pragma interface
 #endif
 
-#include <cstdlib>
-#include <fcntl.h>
-#include <cerrno>
-
 #include <vector>
-
-#include "debug.h"
 #include "LString.h"
-#include "support/lstrings.h"
 
 
 ///

@@ -16,6 +16,7 @@
 #endif
 
 #include "Dialogs.h"
+#include "BufferView.h"
 
 #include "xformsBC.h"
 

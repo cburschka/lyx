@@ -16,8 +16,9 @@
 #pragma interface
 #endif
 
-#include "bufferparams.h"
-#include <boost/utility.hpp>
+#include "bufferparams.h" // Just to get the enum BufferParams::PAPER_SIZE (sic)
+
+// #include <boost/utility.hpp>
 
 /// This contains the runtime configuration of LyX
 class LyXRC //: public noncopyable {

@@ -21,6 +21,7 @@
 #include "TextCache.h"
 #include "buffer.h"
 #include "bufferlist.h"
+#include "debug.h"
 
 using std::ostream;
 using std::for_each;

@@ -21,6 +21,7 @@
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include <fstream>
+#include "debug.h"
 
 using std::make_pair;
 using std::ofstream;

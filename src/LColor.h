@@ -18,7 +18,6 @@
 #include <map>
 
 #include "LString.h"
-#include <boost/utility.hpp>
 
 /**
   This is a stateless class. 

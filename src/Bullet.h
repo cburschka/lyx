@@ -21,8 +21,6 @@
 
 #include "LString.h"
 
-#include "support/LAssert.h"
-
 ///
 class Bullet {
 public:
@@ -55,28 +53,7 @@ public:
 protected:
 #ifdef ENABLE_ASSERTIONS
 	///
-	void testInvariant() const {
-		lyx::Assert(font >= MIN);
-		lyx::Assert(font < FONTMAX);
-		lyx::Assert(character >= MIN);
-		lyx::Assert(character < CHARMAX);
-		lyx::Assert(size >= MIN);
-		lyx::Assert(size < SIZEMAX);
-		lyx::Assert(user_text >= -1);
-		lyx::Assert(user_text <= 1);
-		// now some relational/operational tests
-		if (user_text == 1) {
-			lyx::Assert(font == -1 && (character == -1 && size == -1));
-		       	//        Assert(!text.empty()); // this isn't necessarily an error
-		}
-		//      else if (user_text == -1) {
-		//        Assert(!text.empty()); // this also isn't necessarily an error
-		//      }
-		//      else {
-		//        // user_text == 0
-		//        Assert(text.empty()); // not usually true
-		//      }
-	}
+	void testInvariant() const;
 #endif
 private:
 	/**
@@ -131,115 +108,6 @@ private:
 	mutable string text;
 };
 
-
-/*----------------Inline Bullet Member Functions------------------*/
-
-inline
-Bullet::Bullet(string const & t) 
-	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
-{
-#ifdef ENABLE_ASSERTIONS
-	testInvariant();
-#endif
-}
-
-
-inline
-void Bullet::setCharacter(int c)
-{
-	if (c < MIN || c >= CHARMAX) {
-		character = MIN;
-	} else {
-		character = c;
-	}
-	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
-	testInvariant();
-#endif
-}
-
-
-inline
-void Bullet::setFont(int f)
-{
-	if (f < MIN || f >= FONTMAX) {
-		font = MIN;
-	} else {
-		font = f;
-	}
-	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
-	testInvariant();
-#endif
-}
-
-
-inline
-void Bullet::setSize(int s)
-{
-	if (s < MIN || s >= SIZEMAX) {
-		size = MIN;
-	} else {
-		size = s;
-	}
-	user_text = 0;
-#ifdef ENABLE_ASSERTIONS
-	testInvariant();
-#endif
-}
-
-
-inline
-void Bullet::setText(string const & t)
-{
-	font = character = size = MIN;
-	user_text = 1;
-	text = t;
-#ifdef ENABLE_ASSERTIONS
-	testInvariant();
-#endif
-}
-
-
-inline
-int Bullet::getCharacter() const
-{
-	return character;
-}
-
-
-inline
-int Bullet::getFont() const
-{
-	return font;
-}
-
-
-inline
-int Bullet::getSize() const
-{
-	return size;
-}
-
-
-inline
-Bullet & Bullet::operator=(Bullet const & b)
-{
-#ifdef ENABLE_ASSERTIONS
-	b.testInvariant();
-#endif
-	font = b.font;
-	character = b.character;
-	size = b.size;
-	user_text = b.user_text;
-	text = b.text;
-#ifdef ENABLE_ASSERTIONS
-	this->testInvariant();
-#endif
-	return *this;
-}
-
-/*-----------------End Bullet Member Functions-----------------*/
 
 inline
 bool operator!=(Bullet const & b1, Bullet const & b2)

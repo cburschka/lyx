@@ -28,6 +28,7 @@
 #include "LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
+#include "support/lyxlib.h"
 
 using SigC::slot;
 using std::endl;

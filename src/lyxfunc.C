@@ -31,6 +31,7 @@
 #endif
 
 #include "support/lyxalgo.h"
+#include "support/LAssert.h"
 #include "version.h"
 #include "kbmap.h"
 #include "lyxfunc.h"

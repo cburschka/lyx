@@ -20,6 +20,7 @@
 #include "encoding.h"
 #include "lyxrc.h"
 #include "debug.h"
+#include "support/LAssert.h"
 
 extern int tex_code_break_column;
 

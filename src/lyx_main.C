@@ -26,6 +26,7 @@
 #include "lyxrc.h"
 #include "support/path.h"
 #include "support/filetools.h"
+#include "buffer.h"
 #include "bufferlist.h"
 #include "debug.h"
 #include "support/FileInfo.h"

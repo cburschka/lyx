@@ -25,6 +25,7 @@
 #include "debug.h"
 #include "lyxtext.h"
 #include "font.h"
+#include "lyxlex.h"
 
 class LyXText;
 

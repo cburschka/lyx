@@ -43,6 +43,7 @@
 #include <cstdlib>
 #include <cctype>
 #include <cmath>
+#include <cerrno>
 
 #include "figinset.h"
 #include "lyx_main.h"
