@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax  (leleATnautilus.homeip.net) per tutti i suoi suggerimenti e consigli
 # Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
+# Kostantino <inverness1ATvirgilio.it>, 2003.
+# Kostantino <inverness1ATvirgilio.it>, 2003.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2003.
 # Kostantino <inverness1ATvirgilio.it>, 2003.
 #
@@ -11,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2003-12-16 14:01+0100\n"
-"PO-Revision-Date: 2003-11-21 12:43+0100\n"
+"PO-Revision-Date: 2003-12-16 22:09+0100\n"
 "Last-Translator: Kostantino <inverness1ATvirgilio.it>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -768,7 +770,7 @@ msgstr "Origine:|#O"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:692
 msgid "Subfigure:|#S"
-msgstr "Sotto figura:|#S"
+msgstr "Sottofigura:|#S"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
 msgid "Angle:|#A"
@@ -1795,7 +1797,7 @@ msgstr "Multi colonna|#M"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1182
 msgid "Use Minipage|#s"
-msgstr "Usa mini pagina|#s"
+msgstr "Usa minipagina|#s"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1368
 #: ../src/frontends/xforms/forms/form_tabular.fd:1386
@@ -2961,7 +2963,7 @@ msgstr "Opzioni a&ggiuntive"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
 msgid "Su&bfigure"
-msgstr "Sotto &figura"
+msgstr "Sotto&figura"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
@@ -2999,7 +3001,7 @@ msgstr "Di&dascalia:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
-msgstr "E' la didascalia per la sotto figura"
+msgstr "E' la didascalia per la sottofigura"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
@@ -3280,7 +3282,7 @@ msgstr "&Orizzontale:"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
 msgid "Minipage settings"
-msgstr "Impostazioni mini pagina"
+msgstr "Impostazioni minipagina"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
 msgid "Middle"
@@ -3711,13 +3713,11 @@ msgstr "Forma&to prestabilito della carta:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
 msgid "&Reset class options when document class changes"
-msgstr ""
-"&Reimposta le opzioni della classe quando cambia la classe del documento"
+msgstr "&Reimposta le opzioni della classe quando cambia la classe del documento"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr ""
-"Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
+msgstr "Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -4532,8 +4532,7 @@ msgid "&View"
 msgstr "&Vista"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso"
@@ -4824,7 +4823,7 @@ msgstr "Sezione"
 #: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/scrclass.inc:77
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
 msgid "Subsection"
-msgstr "Sotto sezione"
+msgstr "Sottosezione"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
@@ -4838,7 +4837,7 @@ msgstr "Sotto sezione"
 #: ../lib/layouts/db_stdsections.inc:39 ../lib/layouts/scrclass.inc:84
 #: ../lib/layouts/stdsections.inc:113 ../lib/layouts/svjour.inc:60
 msgid "Subsubsection"
-msgstr "Sotto sotto-sezione"
+msgstr "Sotto sottosezione"
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
 #: ../lib/layouts/ijmpd.layout:95 ../lib/layouts/siamltex.layout:78
@@ -4851,12 +4850,12 @@ msgstr "Sezione*"
 #: ../lib/layouts/siamltex.layout:84 ../lib/layouts/aguplus.inc:41
 #: ../lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
-msgstr "Sotto sezione*"
+msgstr "Sottosezione*"
 
 #: ../lib/layouts/IEEEtran.layout:345 ../lib/layouts/siamltex.layout:90
 #: ../lib/layouts/stdstarsections.inc:47
 msgid "Subsubsection*"
-msgstr "Sotto sotto-sezione*"
+msgstr "Sotto sottosezione*"
 
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/foils.layout:160
@@ -4981,7 +4980,7 @@ msgstr "Titolo"
 #: ../lib/layouts/llncs.layout:133 ../lib/layouts/svprobth.layout:47
 #: ../lib/layouts/aapaper.inc:8 ../lib/layouts/svjour.inc:164
 msgid "Subtitle"
-msgstr "Sotto titolo"
+msgstr "Sottotitolo"
 
 #: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
@@ -5262,23 +5261,23 @@ msgstr "Variazione"
 
 #: ../lib/layouts/chess.layout:74
 msgid "SubVariation"
-msgstr "Sotto variazione"
+msgstr "Sottovariazione"
 
 #: ../lib/layouts/chess.layout:83
 msgid "SubVariation2"
-msgstr "Sotto variazione 2"
+msgstr "Sottovariazione 2"
 
 #: ../lib/layouts/chess.layout:92
 msgid "SubVariation3"
-msgstr "Sotto variazione 3"
+msgstr "Sottovariazione 3"
 
 #: ../lib/layouts/chess.layout:101
 msgid "SubVariation4"
-msgstr "Sotto variazione 4"
+msgstr "Sottovariazione 4"
 
 #: ../lib/layouts/chess.layout:110
 msgid "SubVariation5"
-msgstr "Sotto variazione 5"
+msgstr "Sottovariazione 5"
 
 #: ../lib/layouts/chess.layout:120
 msgid "HideMoves"
@@ -5311,7 +5310,7 @@ msgstr "Istituto"
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
-msgstr "Sotto sezione"
+msgstr "Sottosezione"
 
 #: ../lib/layouts/cv.layout:62
 msgid "Topic"
@@ -5392,7 +5391,7 @@ msgstr "Datum"
 #: ../lib/layouts/scrclass.inc:98 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:80
 msgid "Subparagraph"
-msgstr "Sotto paragrafo"
+msgstr "Sottoparagrafo"
 
 #: ../lib/layouts/egs.layout:131 ../lib/layouts/db_stdlayouts.inc:34
 #: ../lib/layouts/stdlayouts.inc:31
@@ -5704,294 +5703,251 @@ msgstr "Encl."
 
 #: ../lib/layouts/g-brief2-de.layout:75
 msgid "NameZeileA"
-msgstr ""
+msgstr "NameZeileA"
 
 #: ../lib/layouts/g-brief2-de.layout:95
 msgid "NameZeileB"
-msgstr ""
+msgstr "NameZeileB"
 
 #: ../lib/layouts/g-brief2-de.layout:114
 msgid "NameZeileC"
-msgstr ""
+msgstr "NameZeileC"
 
 #: ../lib/layouts/g-brief2-de.layout:133
 msgid "NameZeileD"
-msgstr ""
+msgstr "NameZeileD"
 
 #: ../lib/layouts/g-brief2-de.layout:152
 msgid "NameZeileE"
-msgstr ""
+msgstr "NameZeileE"
 
 #: ../lib/layouts/g-brief2-de.layout:171
 msgid "NameZeileF"
-msgstr ""
+msgstr "NameZeileF"
 
 #: ../lib/layouts/g-brief2-de.layout:190
 msgid "NameZeileG"
-msgstr ""
+msgstr "NameZeileG"
 
 #: ../lib/layouts/g-brief2-de.layout:230
-#, fuzzy
 msgid "AdressZeileA"
-msgstr "Adresse"
+msgstr "AdressZeileA"
 
 #: ../lib/layouts/g-brief2-de.layout:250
-#, fuzzy
 msgid "AdressZeileB"
-msgstr "Adresse"
+msgstr "AdresseZeileB"
 
 #: ../lib/layouts/g-brief2-de.layout:269
-#, fuzzy
 msgid "AdressZeileC"
-msgstr "Adresse"
+msgstr "AdresseZeileC"
 
 #: ../lib/layouts/g-brief2-de.layout:288
-#, fuzzy
 msgid "AdressZeileD"
-msgstr "Adresse"
+msgstr "AdresseZeileD"
 
 #: ../lib/layouts/g-brief2-de.layout:307
-#, fuzzy
 msgid "AdressZeileE"
-msgstr "Adresse"
+msgstr "AdresseZeileE"
 
 #: ../lib/layouts/g-brief2-de.layout:326
-#, fuzzy
 msgid "AdressZeileF"
-msgstr "Adresse"
+msgstr "AdresseZeileF"
 
 #: ../lib/layouts/g-brief2-de.layout:345
-#, fuzzy
 msgid "TelefonZeileA"
-msgstr "Telefon"
+msgstr "TelefonZeileA"
 
 #: ../lib/layouts/g-brief2-de.layout:365
-#, fuzzy
 msgid "TelefonZeileB"
-msgstr "Telefon"
+msgstr "TelefonZeileB"
 
 #: ../lib/layouts/g-brief2-de.layout:384
-#, fuzzy
 msgid "TelefonZeileC"
-msgstr "Telefon"
+msgstr "TelefonZeileC"
 
 #: ../lib/layouts/g-brief2-de.layout:403
-#, fuzzy
 msgid "TelefonZeileD"
-msgstr "Telefon"
+msgstr "TelefonZeileD"
 
 #: ../lib/layouts/g-brief2-de.layout:422
-#, fuzzy
 msgid "TelefonZeileE"
-msgstr "Telefon"
+msgstr "TelefonZeileE"
 
 #: ../lib/layouts/g-brief2-de.layout:441
-#, fuzzy
 msgid "TelefonZeileF"
-msgstr "Telefon"
+msgstr "TelefonZeileF"
 
 #: ../lib/layouts/g-brief2-de.layout:460
-#, fuzzy
 msgid "InternetZeileA"
-msgstr "Verteiler"
+msgstr "InternetZeileA"
 
 #: ../lib/layouts/g-brief2-de.layout:480
-#, fuzzy
 msgid "InternetZeileB"
-msgstr "Verteiler"
+msgstr "InternetZeileB"
 
 #: ../lib/layouts/g-brief2-de.layout:498
-#, fuzzy
 msgid "InternetZeileC"
-msgstr "Verteiler"
+msgstr "InternetZeileC"
 
 #: ../lib/layouts/g-brief2-de.layout:516
-#, fuzzy
 msgid "InternetZeileD"
-msgstr "Verteiler"
+msgstr "InternetZeileD"
 
 #: ../lib/layouts/g-brief2-de.layout:534
-#, fuzzy
 msgid "InternetZeileE"
-msgstr "Verteiler"
+msgstr "InternetZeileE"
 
 #: ../lib/layouts/g-brief2-de.layout:552
-#, fuzzy
 msgid "InternetZeileF"
-msgstr "Verteiler"
+msgstr "InternetZeileF"
 
 #: ../lib/layouts/g-brief2-de.layout:571
 msgid "BankZeileA"
-msgstr ""
+msgstr "BankZeileA"
 
 #: ../lib/layouts/g-brief2-de.layout:591
 msgid "BankZeileB"
-msgstr ""
+msgstr "BankZeileB"
 
 #: ../lib/layouts/g-brief2-de.layout:610
 msgid "BankZeileC"
-msgstr ""
+msgstr "BankZeileC"
 
 #: ../lib/layouts/g-brief2-de.layout:629
 msgid "BankZeileD"
-msgstr ""
+msgstr "BankZeileD"
 
 #: ../lib/layouts/g-brief2-de.layout:648
 msgid "BankZeileE"
-msgstr ""
+msgstr "BankZeileE"
 
 #: ../lib/layouts/g-brief2-de.layout:667
 msgid "BankZeileF"
-msgstr ""
+msgstr "BankZeileF"
 
 #: ../lib/layouts/g-brief2-en.layout:75
-#, fuzzy
 msgid "NameRowA"
-msgstr "Nome"
+msgstr "NomeRigaA"
 
 #: ../lib/layouts/g-brief2-en.layout:95
-#, fuzzy
 msgid "NameRowB"
-msgstr "Nome"
+msgstr "NomeRigaB"
 
 #: ../lib/layouts/g-brief2-en.layout:114
-#, fuzzy
 msgid "NameRowC"
-msgstr "Nome"
+msgstr "NomeRigaC"
 
 #: ../lib/layouts/g-brief2-en.layout:133
-#, fuzzy
 msgid "NameRowD"
-msgstr "Nome"
+msgstr "NomeRigaD"
 
 #: ../lib/layouts/g-brief2-en.layout:152
-#, fuzzy
 msgid "NameRowE"
-msgstr "Nome"
+msgstr "NomeRigaE"
 
 #: ../lib/layouts/g-brief2-en.layout:171
-#, fuzzy
 msgid "NameRowF"
-msgstr "Nome"
+msgstr "NomeRigaF"
 
 #: ../lib/layouts/g-brief2-en.layout:190
-#, fuzzy
 msgid "NameRowG"
-msgstr "Nome"
+msgstr "NomeRigaG"
 
 #: ../lib/layouts/g-brief2-en.layout:230
-#, fuzzy
 msgid "AdressRowA"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaA"
 
 #: ../lib/layouts/g-brief2-en.layout:250
-#, fuzzy
 msgid "AdressRowB"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaB"
 
 #: ../lib/layouts/g-brief2-en.layout:269
-#, fuzzy
 msgid "AdressRowC"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaC"
 
 #: ../lib/layouts/g-brief2-en.layout:288
-#, fuzzy
 msgid "AdressRowD"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaD"
 
 #: ../lib/layouts/g-brief2-en.layout:307
-#, fuzzy
 msgid "AdressRowE"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaE"
 
 #: ../lib/layouts/g-brief2-en.layout:326
-#, fuzzy
 msgid "AdressRowF"
-msgstr "Indirizzo"
+msgstr "IndirizzoRigaF"
 
 #: ../lib/layouts/g-brief2-en.layout:345
-#, fuzzy
 msgid "TelefonRowA"
-msgstr "Telefon"
+msgstr "TelefonoRigaA"
 
 #: ../lib/layouts/g-brief2-en.layout:365
-#, fuzzy
 msgid "TelefonRowB"
-msgstr "Telefon"
+msgstr "TelefonoRigaB"
 
 #: ../lib/layouts/g-brief2-en.layout:384
-#, fuzzy
 msgid "TelefonRowC"
-msgstr "Telefon"
+msgstr "TelefonoRigaC"
 
 #: ../lib/layouts/g-brief2-en.layout:403
-#, fuzzy
 msgid "TelefonRowD"
-msgstr "Telefon"
+msgstr "TelefonoRigaD"
 
 #: ../lib/layouts/g-brief2-en.layout:422
-#, fuzzy
 msgid "TelefonRowE"
-msgstr "Telefon"
+msgstr "TelefonoRigaE"
 
 #: ../lib/layouts/g-brief2-en.layout:441
-#, fuzzy
 msgid "TelefonRowF"
-msgstr "Telefon"
+msgstr "TelefonoRigaF"
 
 #: ../lib/layouts/g-brief2-en.layout:460
 msgid "InternetRowA"
-msgstr ""
+msgstr "InternetRigaA"
 
 #: ../lib/layouts/g-brief2-en.layout:480
 msgid "InternetRowB"
-msgstr ""
+msgstr "InternetRigaB"
 
 #: ../lib/layouts/g-brief2-en.layout:498
 msgid "InternetRowC"
-msgstr ""
+msgstr "InternetRigaC"
 
 #: ../lib/layouts/g-brief2-en.layout:516
 msgid "InternetRowD"
-msgstr ""
+msgstr "InternetRigaD"
 
 #: ../lib/layouts/g-brief2-en.layout:534
 msgid "InternetRowE"
-msgstr ""
+msgstr "InternetRigaE"
 
 #: ../lib/layouts/g-brief2-en.layout:552
 msgid "InternetRowF"
-msgstr ""
+msgstr "InternetRigaF"
 
 #: ../lib/layouts/g-brief2-en.layout:571
-#, fuzzy
 msgid "BankRowA"
-msgstr "Banca"
+msgstr "BancaRigaA"
 
 #: ../lib/layouts/g-brief2-en.layout:591
-#, fuzzy
 msgid "BankRowB"
-msgstr "Banca"
+msgstr "BancaRigaB"
 
 #: ../lib/layouts/g-brief2-en.layout:610
-#, fuzzy
 msgid "BankRowC"
-msgstr "Banca"
+msgstr "BancaRigaC"
 
 #: ../lib/layouts/g-brief2-en.layout:629
-#, fuzzy
 msgid "BankRowD"
-msgstr "Banca"
+msgstr "BancaRigaD"
 
 #: ../lib/layouts/g-brief2-en.layout:648
-#, fuzzy
 msgid "BankRowE"
-msgstr "Banca"
+msgstr "BancaRigaE"
 
 #: ../lib/layouts/g-brief2-en.layout:667
-#, fuzzy
 msgid "BankRowF"
-msgstr "Banca"
+msgstr "BancaRigaF"
 
 #: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:345
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
@@ -6123,7 +6079,7 @@ msgstr "Titolo poema*"
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
-msgstr "Sotto titolo"
+msgstr "Sottotitolo"
 
 #: ../lib/layouts/paper.layout:154
 msgid "Institution"
@@ -6247,7 +6203,7 @@ msgstr "Intestazione dell'immagine"
 
 #: ../lib/layouts/seminar.layout:81
 msgid "SlideSubHeading"
-msgstr "Sotto intestazione dell'immagine"
+msgstr "Sottointestazione dell'immagine"
 
 #: ../lib/layouts/seminar.layout:86
 msgid "ListOfSlides"
@@ -6433,7 +6389,7 @@ msgstr "Aggiungi sezione*"
 
 #: ../lib/layouts/scrclass.inc:138
 msgid "Minisec"
-msgstr "Mini sezione"
+msgstr "Minisezione"
 
 #: ../lib/layouts/scrclass.inc:186
 msgid "Publishers"
@@ -6485,7 +6441,7 @@ msgstr "Capitolo*"
 
 #: ../lib/layouts/stdstarsections.inc:65
 msgid "Subparagraph*"
-msgstr "Sotto paragrafo*"
+msgstr "Sottoparagrafo*"
 
 #: ../lib/layouts/svjour.inc:103
 msgid "Headnote"
@@ -7133,7 +7089,7 @@ msgstr "TeX|T"
 
 #: ../lib/ui/default.ui:209
 msgid "Minipage|p"
-msgstr "Mini pagina|p"
+msgstr "Minipagina|p"
 
 #: ../lib/ui/default.ui:210
 msgid "Graphics...|G"
@@ -8314,8 +8270,7 @@ msgstr "Vedi Indice generale"
 
 #: src/LyXAction.C:375
 msgid "Toggle cursor does/doesn't follow the scrollbar"
-msgstr ""
-"Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
+msgstr "Attiva/Disattiva il cursore che segue/non segue la barra di scorrimento"
 
 #: src/LyXAction.C:386
 msgid "Register document under version control"
@@ -8489,8 +8444,7 @@ msgstr "ERRORE!"
 
 #: src/buffer.C:1205
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
+msgstr "Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
 
 #: src/buffer.C:1213
 msgid "Can't find conversion script."
@@ -9728,7 +9682,7 @@ msgstr "LyX: inserisci matrice"
 
 #: src/frontends/qt2/QMinipage.C:36
 msgid "Minipage"
-msgstr "Mini pagina"
+msgstr "Minipagina"
 
 #: src/frontends/qt2/QParagraph.C:49 src/frontends/xforms/FormParagraph.C:70
 msgid "Paragraph Layout"
@@ -10043,8 +9997,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr ""
-"Da selezionare se la bibliografia dovesse apparire nell'indice generale"
+msgstr "Da selezionare se la bibliografia dovesse apparire nell'indice generale"
 
 #: src/frontends/xforms/FormBibtex.C:87
 msgid "Choose a BibTeX style from the list."
@@ -10144,14 +10097,11 @@ msgstr ""
 "frase (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr "Testo facoltativo come appare dopo a citazione e cioè \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -10192,8 +10142,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:243
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
+msgstr " Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
 
 #: src/frontends/xforms/FormDocument.C:293
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10307,8 +10256,7 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Aggiungi tutti i processi all'elenco di quelli da eliminare."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
+msgid "Add the currently selected child process to the list of processes to kill."
 msgstr ""
 "Aggiungi il processo figlio attualmente selezionato all'elenco dei processi "
 "da eliminare."
@@ -10357,8 +10305,7 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:156
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
+msgstr "Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:158
 msgid "Set the image height to the inserted value."
@@ -10446,11 +10393,11 @@ msgstr "Inserisci il punto d'origine per la rotazione."
 
 #: src/frontends/xforms/FormGraphics.C:261
 msgid "Enables use of subfigure with its own caption."
-msgstr "Abilita l'uso di sotto figure con la loro propria didascalia."
+msgstr "Abilita l'uso di sottofigure con la loro propria didascalia."
 
 #: src/frontends/xforms/FormGraphics.C:263
 msgid "Insert the optional subfigure caption."
-msgstr "Inserisci la didascalia opzionale della sotto figura."
+msgstr "Inserisci la didascalia opzionale della sottofigura."
 
 #: src/frontends/xforms/FormGraphics.C:265
 msgid ""
@@ -10551,7 +10498,7 @@ msgstr "Caratteri e stili matematici"
 
 #: src/frontends/xforms/FormMinipage.C:30
 msgid "Minipage Options"
-msgstr "Opzioni mini pagina"
+msgstr "Opzioni minipagina"
 
 #: src/frontends/xforms/FormMinipage.C:114
 msgid "Invalid Length!"
@@ -10640,8 +10587,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi premere il "
 "pulsante \"Applica\" per attivare il cambiamento."
@@ -10793,8 +10739,7 @@ msgstr "Bianco e Nero|Scala di Grigi|Colore|Non mostrare"
 
 #: src/frontends/xforms/FormPreferences.C:1976
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2217
 msgid "Default path"
@@ -10968,8 +10913,7 @@ msgstr "Ricerca all'indietro."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -11345,8 +11289,7 @@ msgstr "Non è stato trovato alcun file!"
 
 #: src/insets/insetgraphics.C:246
 msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/insetgraphics.C:249
 msgid "Error loading file into memory"
@@ -11424,11 +11367,11 @@ msgstr "E' stato aperto l'inserto Nota a margine"
 
 #: src/insets/insetminipage.C:68
 msgid "minipage"
-msgstr "mini pagina"
+msgstr "minipagina"
 
 #: src/insets/insetminipage.C:229
 msgid "Opened Minipage Inset"
-msgstr "E' stato aperto l'inserto Mini pagina"
+msgstr "E' stato aperto l'inserto Minipagina"
 
 #: src/insets/insetnote.C:87
 msgid "Opened Note Inset"
@@ -11824,8 +11767,7 @@ msgstr "Prova il parametro su linea di comando '-sysdir' oppure "
 
 #: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr ""
-"imposta la variabile d'ambiente LYX_DIR_10x alla cartella di sistema di LyX "
+msgstr "imposta la variabile d'ambiente LYX_DIR_10x alla cartella di sistema di LyX "
 
 #: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
@@ -12396,8 +12338,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "E' la codifica per i caratteri dei menù e dei popup."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due auto salvataggi (in secondi): 0 significa "
 "nessun auto salvataggio."
@@ -12515,8 +12456,7 @@ msgstr ""
 
 #: src/lyxrc.C:2008
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
+msgstr "Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
 
 #: src/lyxrc.C:2012
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -12559,16 +12499,14 @@ msgstr ""
 "lingua del documento."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
 
 #: src/lyxrc.C:2046
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2050
 msgid ""
@@ -12624,8 +12562,7 @@ msgstr ""
 "backup nella stessa cartella del file originale, se la stringa è vuota."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Da selezionare per abilitare il supporto per i linguaggi da destra a "
 "sinistra (cioè: Ebreo, Arabo)."
@@ -12671,8 +12608,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -12892,8 +12828,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -12987,3 +12922,4 @@ msgstr "La funzione di LyX 'layout' necessita di un argomento."
 
 #~ msgid "Files (*)"
 #~ msgstr "File (*)"
+
