@@ -51,6 +51,7 @@ using std::setw;
 #include "lyx_cb.h"
 #include "minibuffer.h"
 #include "lyxfont.h"
+#include "version.h"
 #include "mathed/formulamacro.h"
 #include "insets/lyxinset.h"
 #include "insets/inseterror.h"
@@ -104,13 +105,7 @@ extern void SmallUpdate(signed char);
 extern unsigned char GetCurrentTextClass();
 extern void BeforeChange();
 
-extern void MenuMakeLaTeX(Buffer *);
-extern void MenuMakeLinuxDoc(Buffer *);
-extern void MenuMakeDocBook(Buffer *);
-extern void MenuRunLaTeX(Buffer *);
-extern void MenuPrint(Buffer *);
-extern void MenuMakeAscii(Buffer *);
-extern void MenuSendto();
+extern void MenuExport(Buffer *, string const &);
 extern LyXAction lyxaction;
 
 
@@ -1245,12 +1240,10 @@ bool Buffer::writeFile(string const & filename, bool flag)
 		return false;
 	}
 	// The top of the file should not be written by params.
-	// collect some very important information
-	string userName(getUserName()) ;
 
 	// write out a comment in the top of the file
-	ofs << "#LyX 1.1 Copyright 1995-1999 Matthias Ettrich"
-		" and the LyX Team\n";
+	ofs << '#' << LYX_DOCVERSION 
+	    << " created this file. For more info see http://www.lyx.org/\n";
 	ofs.setf(ios::showpoint|ios::fixed);
 	ofs.precision(2);
 	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
@@ -2789,9 +2782,8 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 	else
 		ofs << "\n [ " << params.preamble << " \n]>\n\n";
 
-        string userName(getUserName());
-	ofs << "<!-- DocBook file was created by LyX 1.1 (C) 1995-1999\n"
-	    << "by <" << userName << "> " << date() << " -->\n";
+	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
+	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	if(params.options.empty())
 		sgmlOpenTag(ofs, 0, top_element);
@@ -4204,86 +4196,10 @@ void Buffer::Dispatch(const string & command)
 void Buffer::Dispatch(int action, const string & argument)
 {
 	switch (action) {
-		case LFUN_EXPORT: {
-			// latex
-			if (argument == "latex") {
-				// make sure that this buffer is not linuxdoc
-				MenuMakeLaTeX(this);
-			}
-			// linuxdoc
-			else if (argument == "linuxdoc") {
-				// make sure that this buffer is not latex
-				MenuMakeLinuxDoc(this);
-			}
-			// docbook
-			else if (argument == "docbook") {
-				// make sure that this buffer is not latex or linuxdoc
-				MenuMakeDocBook(this);
-			}
-			// dvi
-			else if (argument == "dvi") {
-				// Run LaTeX as "Update dvi..." Bernhard.
-				// We want the dvi in the current directory. This
-				// is achieved by temporarily disabling use of
-				// temp directory. As a side-effect, we get
-				// *.log and *.aux files also. (Asger)
-				bool flag = lyxrc->use_tempdir;
-				lyxrc->use_tempdir = false;
-				MenuRunLaTeX(this);
-				lyxrc->use_tempdir = flag;
-			}
-			// postscript
-			else if (argument == "postscript") {
-				// Start Print-dialog. Not as good as dvi... Bernhard.
-				MenuPrint(this);
-				// Since the MenuPrint is a pop-up, we can't use
-				// the same trick as above. (Asger)
-				// MISSING: Move of ps-file :-|
-			}
-			// ascii
-			else if (argument == "ascii") {
-				MenuMakeAscii(this);
-			}
-			else if (argument == "custom") {
-				MenuSendto();
-				break;
-			}
-			// HTML
-			else if (argument == "html" && lyxrc->html_command != "none") {
-				// First, create LaTeX file
-				MenuMakeLaTeX(this);
-
-				// And now, run the converter
-				string file = fileName();
-				Path path(OnlyPath(file));
-				// the tex file name has to be correct for
-				// latex, but the html file name can be
-				// anything.
-				string result = ChangeExtension(file, ".html", false);
-				file = ChangeExtension(MakeLatexName(file), ".tex", false);
-				string tmp = lyxrc->html_command;
-				tmp = subst(tmp, "$$FName", file);
-				tmp = subst(tmp, "$$OutName", result);
-				Systemcalls one;
-				/*int res = */ one.startscript(Systemcalls::System, tmp);
-				//
-				// Hi, Asger. This time I plead guilty and I promise to clean it up
-				// 
-				// if (res == 0) {
-				//   setMessage(N_("Document exported as HTML to file `")
-				//       + MakeDisplayPath(result) +'\ '');
-				// } else {
-				//   setErrorMessage(N_("Unable to convert to HTML the file `")
-				//       + MakeDisplayPath(file) 
-				//       + '\'');
-				//  }
-			}
-			else {
-				//   setErrorMessage(N_("Unknown export type: ")
-				//          + argument);
-			}
-		}
-		break;
+		case LFUN_EXPORT: 
+			MenuExport(this, argument);
+			break;
+			break;
 
 		default:
 			lyxerr << "A truly unknown func!" << endl;

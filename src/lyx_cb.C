@@ -87,6 +87,7 @@ extern BufferView * current_view; // called too many times in this file...
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
 
 extern bool send_fax(string const & fname, string const & sendcmd);
+extern void MenuSendto();
 
 extern LyXServer * lyxserver;
 extern FontLoader fontloader;
@@ -1013,6 +1014,88 @@ void MenuPrint(Buffer * buffer)
 		fl_show_form(fd_form_print->form_print,
 			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Print"));
+	}
+}
+
+void MenuMakeHTML(Buffer * buffer)
+{
+	// First, create LaTeX file
+	MenuMakeLaTeX(buffer);
+
+	// And now, run the converter
+	string file = buffer->fileName();
+	Path path(OnlyPath(file));
+	// the tex file name has to be correct for
+	// latex, but the html file name can be
+	// anything.
+	string result = ChangeExtension(file, ".html", false);
+	string infile = buffer->getLatexName();
+	string tmp = lyxrc->html_command;
+	tmp = subst(tmp, "$$FName", infile);
+	tmp = subst(tmp, "$$OutName", result);
+	Systemcalls one;
+	int res = one.startscript(Systemcalls::System, tmp);
+	if (res == 0) {
+		minibuffer->Set(_("Document exported as HTML to file `")
+				+ MakeDisplayPath(result) +'\'');
+	} else {
+		minibuffer->Set(_("Unable to convert to HTML the file `")
+				+ MakeDisplayPath(infile) 
+				+ '\'');
+	}
+
+}
+
+void MenuExport(Buffer * buffer, string const & extyp) 
+{
+	// latex
+	if (extyp == "latex") {
+	// make sure that this buffer is not linuxdoc
+		MenuMakeLaTeX(buffer);
+	}
+	// linuxdoc
+	else if (extyp == "linuxdoc") {
+		// make sure that this buffer is not latex
+		MenuMakeLinuxDoc(buffer);
+	}
+	// docbook
+	else if (extyp == "docbook") {
+	// make sure that this buffer is not latex or linuxdoc
+		MenuMakeDocBook(buffer);
+	}
+	// dvi
+	else if (extyp == "dvi") {
+	// Run LaTeX as "Update dvi..." Bernhard.
+	// We want the dvi in the current directory. This
+	// is achieved by temporarily disabling use of
+	// temp directory. As a side-effect, we get
+	// *.log and *.aux files also. (Asger)
+		bool flag = lyxrc->use_tempdir;
+		lyxrc->use_tempdir = false;
+		MenuRunLaTeX(buffer);
+		lyxrc->use_tempdir = flag;
+	}
+	// postscript
+	else if (extyp == "postscript") {
+	// Start Print-dialog. Not as good as dvi... Bernhard.
+		MenuPrint(buffer);
+		// Since the MenuPrint is a pop-up, we can't use
+		// the same trick as above. (Asger)
+		// MISSING: Move of ps-file :-(
+	}
+	// ascii
+	else if (extyp == "ascii") {
+		MenuMakeAscii(buffer);
+	}
+	else if (extyp == "custom") {
+		MenuSendto();
+	}
+	// HTML
+	else if (extyp == "html") {
+		MenuMakeHTML(buffer);
+	}
+	else {
+		minibuffer->Set(_("Unknown export type: ")+ extyp);
 	}
 }
 

@@ -90,10 +90,7 @@ extern void MenuPrint(Buffer*);
 extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
-extern void MenuMakeLaTeX(Buffer *);
-extern void MenuMakeLinuxDoc(Buffer *);
-extern void MenuMakeDocBook(Buffer *);
-extern void MenuMakeAscii(Buffer *);
+extern void MenuExport(Buffer *,string const &);
 extern void MenuPasteSelection(char at);
 extern LyXAction lyxaction;
 // (alkis)
@@ -768,86 +765,8 @@ string LyXFunc::Dispatch(int ac,
 		break;
 			
 	case LFUN_EXPORT:
-	{
-		//needs argument as string
-		string extyp = argument;
-		
-		// latex
-		if (extyp == "latex") {
-			// make sure that this buffer is not linuxdoc
-			MenuMakeLaTeX(owner->buffer());
-		}
-		// linuxdoc
-		else if (extyp == "linuxdoc") {
-			// make sure that this buffer is not latex
-			MenuMakeLinuxDoc(owner->buffer());
-		}
-		// docbook
-		else if (extyp == "docbook") {
-			// make sure that this buffer is not latex or linuxdoc
-			MenuMakeDocBook(owner->buffer());
-		}
-		// dvi
-		else if (extyp == "dvi") {
-			// Run LaTeX as "Update dvi..." Bernhard.
-			// We want the dvi in the current directory. This
-			// is achieved by temporarily disabling use of
-			// temp directory. As a side-effect, we get
-			// *.log and *.aux files also. (Asger)
-			bool flag = lyxrc->use_tempdir;
-			lyxrc->use_tempdir = false;
-			MenuRunLaTeX(owner->buffer());
-			lyxrc->use_tempdir = flag;
-		}
-		// postscript
-		else if (extyp == "postscript") {
-			// Start Print-dialog. Not as good as dvi... Bernhard.
-			MenuPrint(owner->buffer());
-			// Since the MenuPrint is a pop-up, we can't use
-			// the same trick as above. (Asger)
-			// MISSING: Move of ps-file :-(
-		}
-		// ascii
-		else if (extyp == "ascii") {
-			MenuMakeAscii(owner->buffer());
-		}
-		else if (extyp == "custom") {
-			MenuSendto();
-			break;
-		}
-		// HTML
-		else if (extyp == "html" && lyxrc->html_command != "none") {
-			// First, create LaTeX file
-			MenuMakeLaTeX(owner->buffer());
-
-			// And now, run the converter
-			string file = owner->buffer()->fileName();
-			Path path(OnlyPath(file));
-			// the tex file name has to be correct for
-			// latex, but the html file name can be
-			// anything.
-			string result = ChangeExtension(file, ".html", false);
-			string infile = owner->buffer()->getLatexName();
-			string tmp = lyxrc->html_command;
-			tmp = subst(tmp, "$$FName", infile);
-			tmp = subst(tmp, "$$OutName", result);
-			Systemcalls one;
-			int res = one.startscript(Systemcalls::System, tmp);
-			if (res == 0) {
-				setMessage(N_("Document exported as HTML to file `")
-					   + MakeDisplayPath(result) +'\'');
-			} else {
-				setErrorMessage(N_("Unable to convert to HTML the file `")
-						+ MakeDisplayPath(infile) 
-						+ '\'');
-			}
-		}
-		else {
-			setErrorMessage(N_("Unknown export type: ")
-					+ extyp);
-		}
-	}
-	break;
+		MenuExport(owner->buffer(), argument);
+		break;
 
 	case LFUN_IMPORT:
 	{

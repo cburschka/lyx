@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.4\n"
 "POT-Creation-Date: 1999-12-13 23:06+0100\n"
-"PO-Revision-Date: 1999-12-01 00:20+01:00\n"
+"PO-Revision-Date: 1999-12-15 00:20+01:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,10 +22,9 @@ msgstr "Fehler!"
 
 #: src/buffer.C:255
 msgid "Specified file is unreadable: "
-msgstr ""
+msgstr "Die angegebene Datei ist nicht lesbar: "
 
 #: src/buffer.C:265
-#, fuzzy
 msgid "Cannot open specified file: "
 msgstr "Die angegebene Datei kann nicht geöffnet werden:"
 
@@ -100,9 +99,8 @@ msgid "Error! Cannot write file: "
 msgstr "Fehler! Die Datei kann nicht geschrieben werden: "
 
 #: src/buffer.C:1240 src/buffer.C:1243
-#, fuzzy
 msgid "Error! Cannot open file: "
-msgstr "Fehler! Die Datei kann nicht geschrieben werden: "
+msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
 #: src/buffer.C:1291
 msgid "Error: Cannot write file:"
@@ -113,9 +111,8 @@ msgid "Error: Cannot open temporary file:"
 msgstr "Fehler: Temporäre Datei kann nicht angelegt werden: "
 
 #: src/buffer.C:1614
-#, fuzzy
 msgid "Error: Cannot open file: "
-msgstr "Fehler! Die Datei kann nicht geschrieben werden werden: "
+msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
 #: src/buffer.C:2187 src/buffer.C:2777 src/buffer.C:3604 src/buffer.C:3626
 #: src/paragraph.C:3577
@@ -822,32 +819,28 @@ msgstr "Leerzeichen, '#', '~', '$' oder '%'."
 
 #. / what appears in the minibuffer when opening
 #: src/insets/figinset.h:51
-#, fuzzy
 msgid "Opened figure"
-msgstr "Einfügung geöffnet"
+msgstr "Abbildungs-Einfügung geöffnet"
 
 #: src/insets/form_url.C:19
-#, fuzzy
 msgid "Url"
-msgstr "Url: "
+msgstr "Url"
 
 #: src/insets/form_url.C:20
 msgid "Url|#U"
 msgstr "Url|#U"
 
 #: src/insets/form_url.C:23
-#, fuzzy
 msgid "Name"
-msgstr "Name:|#N"
+msgstr "Name"
 
 #: src/insets/form_url.C:24 src/lyx.C:171
 msgid "Name|#N"
 msgstr "Name:|#N"
 
 #: src/insets/form_url.C:27
-#, fuzzy
 msgid "HTML type"
-msgstr "HTML-Typ|#H"
+msgstr "HTML-Typ"
 
 #: src/insets/form_url.C:28
 msgid "HTML type|#H"
@@ -981,9 +974,8 @@ msgid "Index"
 msgstr "Index"
 
 #: src/insets/insetindex.C:111
-#, fuzzy
 msgid "Idx"
-msgstr "Index"
+msgstr "Idx"
 
 #: src/insets/insetindex.C:139
 msgid "PrintIndex"
@@ -1000,9 +992,8 @@ msgstr "Schließen|^["
 
 #. / what appears in the minibuffer when opening
 #: src/insets/insetinfo.h:60
-#, fuzzy
 msgid "Opened note"
-msgstr "Einfügung geöffnet"
+msgstr "Notiz geöffnet"
 
 #. /
 #: src/insets/insetloa.h:37
@@ -1050,9 +1041,8 @@ msgstr "Url: "
 
 #. /
 #: src/insets/inseturl.h:61
-#, fuzzy
 msgid "Opened Url"
-msgstr "Zeige Fehlermeldung"
+msgstr "URL geöffnet"
 
 #. / what appears in the minibuffer when opening
 #: src/insets/lyxinset.h:95
@@ -1084,9 +1074,8 @@ msgid "Running BibTeX."
 msgstr "Starte BibTeX."
 
 #: src/LaTeXLog.C:44
-#, fuzzy
 msgid "Unable to show log file!"
-msgstr "Die Datei kann nicht gelesen werden!"
+msgstr "Die Protokoll-Datei kann nicht angezeigt werden!"
 
 #: src/LaTeXLog.C:47
 msgid "NO LATEX LOG FILE!"
@@ -1598,19 +1587,16 @@ msgid "Special Column Alignment"
 msgstr "Besonderes Spaltenformat"
 
 #: src/Literate.C:57
-#, fuzzy
 msgid "Weaving document"
-msgstr "Dokument wird gespeichert"
+msgstr "Dokument wird mit weave bearbeitet"
 
 #: src/Literate.C:87
-#, fuzzy
 msgid "Building program"
 msgstr "Starte Build"
 
 #: src/LyXAction.C:92
-#, fuzzy
 msgid "Insert appendix"
-msgstr "Marke einfügen"
+msgstr "Anhang einfügen"
 
 #: src/LyXAction.C:93
 msgid "Describe command"
@@ -1653,9 +1639,8 @@ msgid "Select to end of document"
 msgstr "Auswählen bis zum Ende des Dokuments"
 
 #: src/LyXAction.C:119
-#, fuzzy
 msgid "Export to"
-msgstr "|Exportieren%m%l"
+msgstr "Exportieren nach"
 
 #: src/LyXAction.C:120
 msgid "Fax"
@@ -1690,9 +1675,8 @@ msgid "Revert to saved"
 msgstr "Gespeicherte Version wiederherstellen"
 
 #: src/LyXAction.C:136
-#, fuzzy
 msgid "Toggle read-only"
-msgstr "Fett an/aus"
+msgstr "Schreibschutz an/aus"
 
 #: src/LyXAction.C:137
 msgid "Update DVI"
@@ -1855,19 +1839,16 @@ msgid "Insert hyphenation point"
 msgstr "Trennmöglichkeit einfügen"
 
 #: src/LyXAction.C:203
-#, fuzzy
 msgid "Insert index item"
-msgstr "Randnotiz einfügen"
+msgstr "Index-Element einfügen"
 
 #: src/LyXAction.C:205
-#, fuzzy
 msgid "Insert last index item"
-msgstr "Randnotiz einfügen"
+msgstr "Letztes Index-Element einfügen"
 
 #: src/LyXAction.C:206
-#, fuzzy
 msgid "Insert index list"
-msgstr "BibTeX einfügen"
+msgstr "Indexliste einfügen"
 
 #: src/LyXAction.C:207
 msgid "Turn off keymap"
@@ -1890,9 +1871,8 @@ msgid "Insert Label"
 msgstr "Marke einfügen"
 
 #: src/LyXAction.C:214
-#, fuzzy
 msgid "View LaTeX log"
-msgstr "LaTeX Protokoll"
+msgstr "LaTeX Protokoll anzeigen"
 
 #: src/LyXAction.C:218
 msgid "Copy paragraph environment type"
@@ -1919,19 +1899,16 @@ msgid "Select to end of line"
 msgstr "Auswählen bis zum Ende der Zeile"
 
 #: src/LyXAction.C:238
-#, fuzzy
 msgid "Insert list of algorithms"
-msgstr "Liste der Algorithmen"
+msgstr "Liste der Algorithmen einfügen"
 
 #: src/LyXAction.C:240
-#, fuzzy
 msgid "Insert list of figures"
-msgstr "Liste der Abbildungen"
+msgstr "Liste der Abbildungen einfügen"
 
 #: src/LyXAction.C:242
-#, fuzzy
 msgid "Insert list of tables"
-msgstr "Liste der Tabellen"
+msgstr "Liste der Tabellen einfügen"
 
 #: src/LyXAction.C:243
 msgid "Exit"
@@ -1946,9 +1923,8 @@ msgid "Math Greek"
 msgstr "Griechische Zeichen"
 
 #: src/LyXAction.C:254
-#, fuzzy
 msgid "Insert math symbol"
-msgstr "Marke einfügen"
+msgstr "Mathematik-Symbol einfügen"
 
 #: src/LyXAction.C:259
 msgid "Math mode"
@@ -2007,14 +1983,12 @@ msgid "Toggle TeX style"
 msgstr "TeX Modus an/aus"
 
 #: src/LyXAction.C:317
-#, fuzzy
 msgid "Insert table of contents"
-msgstr "Inhaltsverzeichnis"
+msgstr "Inhaltsverzeichnis einfügen"
 
 #: src/LyXAction.C:319
-#, fuzzy
 msgid "View table of contents"
-msgstr "Inhaltsverzeichnis"
+msgstr "Inhaltsverzeichnis anzeigen"
 
 #: src/LyXAction.C:321
 msgid "Toggle cursor does/doesn't follow the scrollbar"
@@ -2026,7 +2000,7 @@ msgstr "Rückgängig"
 
 #: src/LyXAction.C:333
 msgid "Register document under version control"
-msgstr ""
+msgstr "Dokument in Versionskontrolle registrieren"
 
 #: src/LyXAction.C:555
 msgid "No description available!"
@@ -2270,10 +2244,9 @@ msgstr "Einzufügende Datei"
 
 #: src/lyx_cb.C:1166
 msgid "Error! Specified file is unreadable: "
-msgstr ""
+msgstr "Fehler! Die angegebene Datei kann nicht gelesen werden: "
 
 #: src/lyx_cb.C:1173
-#, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Fehler! Die angegebene Datei kann nicht geöffnet werden:"
 
@@ -2761,32 +2734,29 @@ msgid "Default"
 msgstr "Standard"
 
 #: src/lyxfr1.C:157 src/lyxfr1.C:213
-#, fuzzy
 msgid "Sorry!"
-msgstr "Sorry."
+msgstr "Sorry!"
 
 #: src/lyxfr1.C:157 src/lyxfr1.C:213
 msgid "You cannot replace a single space, nor an empty character."
-msgstr ""
+msgstr "Einzelne Leerzeichen und andere leere Zeichen können "
+"nicht ersetzt werden"
 
 #: src/lyxfr1.C:263 src/lyxfr1.C:328
-#, fuzzy
 msgid "String not found!"
-msgstr "Der Zeichensatz wurde nicht gefunden!"
+msgstr "Die Zeichenkette wurde nicht gefunden!"
 
 #: src/lyxfr1.C:266
-#, fuzzy
 msgid "1 string has been replaced."
-msgstr "Neukonfiguration wurde durchgeführt."
+msgstr "Eine Zeichenkette wurde ersetzt."
 
 #: src/lyxfr1.C:269
 msgid " strings have been replaced."
-msgstr ""
+msgstr " Zeichenketten wurden ersetzt."
 
 #: src/lyxfr1.C:324
-#, fuzzy
 msgid "Found."
-msgstr "wurde geladen."
+msgstr "Gefunden."
 
 #: src/lyxfunc.C:295
 msgid "Unknown sequence:"
@@ -2812,12 +2782,11 @@ msgstr "Textmodus"
 
 #: src/lyxfunc.C:837 src/lyxfunc.C:2920
 msgid "Document exported as HTML to file `"
-msgstr ""
+msgstr "Dokument als HTML-Datei exportiert: `"
 
 #: src/lyxfunc.C:840 src/lyxfunc.C:2923
-#, fuzzy
 msgid "Unable to convert to HTML the file `"
-msgstr "Die Datei kann nicht gelesen werden!"
+msgstr "Die Datei kann nicht nach HTML konvertiert werden: `"
 
 #: src/lyxfunc.C:846 src/lyxfunc.C:2929
 msgid "Unknown export type: "
@@ -3128,9 +3097,8 @@ msgstr ""
 "Falls Probleme auftreten, starten Sie LyX unter angabe des vollen Pfades."
 
 #: src/lyx_main.C:269
-#, fuzzy
 msgid "LYX_DIR_11x environment variable no good."
-msgstr "Die Umgebungsvariable LYX_DIR_10x ist unbrauchbar."
+msgstr "Die Umgebungsvariable LYX_DIR_11x ist unbrauchbar."
 
 #: src/lyx_main.C:271
 msgid "System directory set to: "
@@ -3145,9 +3113,8 @@ msgid "Try the '-sysdir' command line parameter or"
 msgstr "Verwenden Sie die Kommandozeilenoption `-sysdir' oder setzen"
 
 #: src/lyx_main.C:281
-#, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
-msgstr "Sie die Umgebungsvariable LYX_DIR_10x auf das LyX Systemverzeichnis,"
+msgstr "Sie die Umgebungsvariable LYX_DIR_11x auf das LyX Systemverzeichnis,"
 
 #: src/lyx_main.C:283
 msgid "containing the file `chkconfig.ltx'."
@@ -3238,36 +3205,53 @@ msgid ""
 "\n"
 "Check the LyX man page for more options."
 msgstr ""
+"Aufruf: lyx [ Befehlsoptionen ] [ name.lyx ... ]\n"
+"Kommandozeilenoptionen (groß/klein beachten):\n"
+"\t-help           LyX Benutzung zusammenfassen\n"
+"\t-sysdir x       Setze das Systemverzeichnis auf x\n"
+"\t-width x        Legt die Breite des LyX Fensters fest\n"
+"\t-height y       Legt die Höhe des LyX Fensters fest\n"
+"\t-xpos x         Legt die hor. Position des LyX Fensters fest\n"
+"\t-ypos y         Legt die vert. Position des LyX Fensters fest\n"
+"\t-dbg Feature[,Feature]...\n"
+"                  Wählt die Themenbereiche aus, für die eine\n"
+"                  ausführliche Fehlermeldung aktiviert wird.\n"
+"                  Mit `lyx -dbg' erhalten Sie eine Liste der\n"
+"                  vorhandenen Bereiche.\n"
+"\t-Reverse        Vertauscht Vordergrund- und Hintergrundfarben\n"
+"\t-Mono           Startet LyX im Schwarz-Weiß Modus\n"
+"\t-FastSelection  Verwendet eine schnellere Routine, um markierte\n"
+"                  Bereiche anzuzeigen\n"
+"\n"
+"Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
 #: src/lyx_main.C:485
 msgid "List of supported debug flags:"
-msgstr ""
+msgstr "Liste der unterstützten Debug Optionen:"
 
 #: src/lyx_main.C:504
 msgid "Missing directory for -sysdir switch!"
 msgstr "Die Option -sysdir benötigt ein Verzeichnis!"
 
 #: src/lyx_main.C:530
-#, fuzzy
 msgid "Missing command string after  -x switch!"
-msgstr "Die Option -dbg benötigt eine Zahl!"
+msgstr "Die Option -x benötigt einen Befehl als Argument!"
 
 #: src/lyx_main.C:556
-#, fuzzy
 msgid "Unknown file type '"
-msgstr "Unbekannter Export-Typ: "
+msgstr "Unbekannter Datei-Typ `"
 
 #: src/lyx_main.C:557
 msgid "' after "
-msgstr ""
+msgstr "' nach der "
 
 #: src/lyx_main.C:558 src/lyx_main.C:563
 msgid " switch!"
-msgstr ""
+msgstr " Option"
 
 #: src/lyx_main.C:561
 msgid "Missing file type [eg latex, ps...] after "
-msgstr ""
+msgstr "Fehlender Datei-Typ [zB latex, ps...] nach "
 
 #: src/lyx_sendfax.C:21
 msgid "Fax no.:|#F"
@@ -3347,60 +3331,55 @@ msgid "Send Document to Command"
 msgstr "Dokument an Shell-Befehl senden"
 
 #: src/lyxvc.C:89 src/lyxvc.C:119
-#, fuzzy
 msgid "Save document and proceed?"
-msgstr "Dokument speichern?"
+msgstr "Dokument speichern und fortfahren?"
 
 #: src/lyxvc.C:101
 msgid "LyX VC: Initial description"
-msgstr ""
+msgstr "LyX VK: Anfängliche BEschreibung"
 
 #: src/lyxvc.C:102
 msgid "(no initial description)"
-msgstr ""
+msgstr "(keine anfängliche Beschreibung)"
 
 #: src/lyxvc.C:105
-#, fuzzy
 msgid "Info"
-msgstr "Ignorieren"
+msgstr "Info"
 
 #: src/lyxvc.C:105
 msgid "This document has NOT been registered."
-msgstr ""
+msgstr "Dieses Dokument wurde NICHT registriert."
 
 #: src/lyxvc.C:131
 msgid "LyX VC: Log Message"
-msgstr ""
+msgstr "LyX VK: Protokollmeldung"
 
 #: src/lyxvc.C:145
 msgid "Ignore changes and proceed with check out?"
-msgstr ""
+msgstr "Änderungen ignorieren und mit Check-Out fortfahren?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
 #: src/lyxvc.C:160
 msgid "When you revert, you will loose all changes made"
-msgstr ""
+msgstr "Mit Rückgängig verlieren Sie alle Änderungen, die an dem "
 
 #: src/lyxvc.C:161
 msgid "to the document since the last check in."
-msgstr ""
+msgstr "Dokument seit dem letzten Check-In durchgeführt wurden."
 
 #: src/lyxvc.C:162
-#, fuzzy
 msgid "Do you still want to do it?"
-msgstr "Möchten Sie das Dokument öffnen?"
+msgstr "Möchten Sie trotzdem weitermachen?"
 
 #: src/lyxvc.C:265
-#, fuzzy
 msgid "No VC History!"
-msgstr "|Entwicklung anzeigen%x56"
+msgstr "Keine Entwicklungsgeschichte der VK!"
 
 #: src/lyxvc.C:272
-#, fuzzy
 msgid "VC History"
-msgstr "|Entwicklung anzeigen%x56"
+msgstr "Entwicklungsgeschichte VK"
 
 #: src/LyXView.C:379 src/minibuffer.C:218
 msgid " (Changed)"
@@ -3436,9 +3415,8 @@ msgstr "Makro: "
 
 #. / what appears in the minibuffer when opening
 #: src/mathed/formulamacro.h:62
-#, fuzzy
 msgid "Math macro editor mode"
-msgstr "Mathematik Modus"
+msgstr "Mathematik Modus: Makro Editor"
 
 #: src/mathed/math_forms.C:19
 msgid "Close "
@@ -3623,7 +3601,6 @@ msgid "FIM|Nn#n#N"
 msgstr "FIM|Nn#n#N"
 
 #: src/menus.C:489
-#, fuzzy
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44|Custom...%x45"
@@ -3666,7 +3643,7 @@ msgstr "FEX|Tt#t#T"
 #: src/menus.C:516
 #, fuzzy
 msgid "FEX|Hh#h#H"
-msgstr "EMV|hH#h#H"
+msgstr "FEX|Hh#h#H"
 
 #: src/menus.C:517
 msgid "FEX|mM#m#M"
@@ -4243,9 +4220,8 @@ msgstr ""
 "%l%x74|Algorithmus%x75"
 
 #: src/menus.C:1594
-#, fuzzy
 msgid "IMF|gG#g#G"
-msgstr "IM|Aa#a#A"
+msgstr "IMF|Aa#a#A"
 
 #: src/menus.C:1595
 msgid "IMF|Tt#t#T"
@@ -4570,9 +4546,8 @@ msgid "Senseless with this layout!"
 msgstr "Unnötig mit diesem Layout!"
 
 #: src/ParagraphExtra.C:147
-#, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
-msgstr "Schreibgeschütztes Dokument, keine Änderung möglich."
+msgstr "Schreibgeschütztes Dokument, keine Änderung am Layout möglich."
 
 #: src/ParagraphExtra.C:166
 msgid "ParagraphExtra Layout"
@@ -4846,9 +4821,8 @@ msgid "Error: Could not change to directory: "
 msgstr "Fehler: Konnte nicht in das Verzeichnis wechseln: "
 
 #: src/support/path.h:37
-#, fuzzy
 msgid "Error: Dir already popped: "
-msgstr "Das Dokument ist bereits geöffnet:"
+msgstr "Fehler! Das Verzeichnis wurde bereits vom Stapel genommen: "
 
 #: src/TableLayout.C:416
 msgid "Table Extra Form"

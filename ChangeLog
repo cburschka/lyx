@@ -1,5 +1,23 @@
 1999-12-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/buffer.C (writeFile): change once again the top comment in a
+	.lyx file to point to www.lyx.org and to use LYX_DOCVERSION
+	instead of an hardcoded version number.
+	(makeDocBookFile): ditto
+
+	* src/version.h: add new define LYX_DOCVERSION
+
+	* po/de.po: update from Pit Sütterlin
+	* lib/bind/de_menus.bind: ditto.
+	
+	* src/lyxfunc.C (Dispatch): call MenuExport()
+	* src/buffer.C (Dispatch): ditto
+
+	* src/lyx_cb.C (MenuMakeHTML): new function, moved from
+	LyXFunc::Dispatch().
+	(MenuExport): new function, moved from
+	LyXFunc::Dispatch().
+
 	* src/trans_mgr.C (insert): small cleanup
 	* src/chset.C (loadFile): ditto
 
