@@ -1,3 +1,8 @@
+2003-12-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lengthvalidator.[Ch] (LengthValidator): change the constructor to
+	take a QWidget* instead of QObject*.
+
 2003-12-09  Angus Leeming  <leeming@lyx.org>
 
 	* checkedwidgets.C (setWarningColor): new function that should

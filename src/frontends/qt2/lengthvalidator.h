@@ -20,7 +20,7 @@ class Q_EXPORT LengthValidator : public QValidator
 {
 	Q_OBJECT
 public:
-	LengthValidator(QObject * parent, const char *name = 0);
+	LengthValidator(QWidget * parent, const char *name = 0);
 
 	QValidator::State validate(QString &, int &) const;
 

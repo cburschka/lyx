@@ -22,7 +22,7 @@ using lyx::support::isStrDbl;
 using std::string;
 
 
-LengthValidator::LengthValidator(QObject * parent, const char * name)
+LengthValidator::LengthValidator(QWidget * parent, const char * name)
 	: QValidator(parent, name),
 	  no_bottom_(true)
 {}
