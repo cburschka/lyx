@@ -13,11 +13,10 @@
 ///
 char const * lyx_version = "@VERSION@";
 ///
-char const * lyx_release_date = "Thu, Jan 11, 2001";
+char const * lyx_release_date = "Sat, Mar 30, 2002";
 
-/// This version string is intended to be used in files created by LyX 
+/// This version string is intended to be used in files created by LyX
 char const * lyx_docversion = "LyX 1.2";
 
 /// This is the version information shown by 'lyx -version'
 char const * lyx_version_info = "@VERSION_INFO@";
-

@@ -8,14 +8,14 @@ dnl AM_CONFIG_HEADER(src/config.h)
 AC_CONFIG_AUX_DIR(config)
 
 PACKAGE=lyx${program_suffix}
-VERSION="1.2.0cvs"
+VERSION="1.2.0pre1"
 LYX_CHECK_VERSION
 
 AC_CANONICAL_SYSTEM
 AC_VALIDATE_CACHE_SYSTEM_TYPE
 
 LYX_VERSION_SUFFIX
- 
+
 AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
 # The list of languages known to LyX
@@ -69,14 +69,14 @@ case "$lyx_use_frontend" in
     GNOME_INIT
     GNOME_COMPILE_WARNINGS
     GNOME_X_CHECKS
-esac 
+esac
 
 ### Check for a C++ compiler
 LYX_PROG_CXX
 ### Some checks on what the C++ compiler can(not) do
 AC_LANG_CPLUSPLUS
 dnl we do not need that currently (and probably all our supported
-dnl compiler allow that)  
+dnl compiler allow that)
 dnl LYX_CXX_PARTIAL
 LYX_CXX_EXPLICIT
 LYX_CXX_STL_STRING
@@ -119,7 +119,7 @@ AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,,[Define this if you have the AikSaurus library])
 	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
 	],,"-lbz2")
-fi 
+fi
 AC_SUBST(AIKSAURUS_LIBS)
 
 ### Add extra directories to check for libraries.
@@ -137,7 +137,7 @@ LYX_WITH_DIR([extra-prefix],[extra lib+include directory],extra_prefix, NONE, ${
 LYX_LOOP_DIR($lyx_cv_extra_prefix,[
 LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
   LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
- 
+
 ### Check for the -liberty library
 test "x$GXX" = xyes && lyx_use_liberty=yes
 AC_ARG_WITH(liberty,
@@ -180,9 +180,9 @@ AC_CHECK_FUNCS(XOpenIM)
 ### check which frontend we want to use
 #LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
-dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.  
-case "$lyx_use_frontend" in 
-  xforms) 
+dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
+case "$lyx_use_frontend" in
+  xforms)
   # for now don't set it for xforms as this is always entered
 	LYX_PATH_XPM
 	LYX_PATH_XFORMS
@@ -199,7 +199,7 @@ case "$lyx_use_frontend" in
     LYX_PATH_XPM
     LYX_PATH_XFORMS
     AM_PATH_GTKMM(1.2.1,,
-        AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
+	AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
     AM_PATH_GNOMEMM
 
 dnl ******************************
@@ -208,12 +208,12 @@ dnl ******************************
 dnl Ensure gnome-config is available...
 	AC_PATH_PROG(GNOME_CONFIG, gnome-config, no)
 	AC_MSG_CHECKING(for Glade libraries)
-	if $GNOME_CONFIG --libs libglade > /dev/null 2>&1; then 
-    	AC_MSG_RESULT(found)
+	if $GNOME_CONFIG --libs libglade > /dev/null 2>&1; then
+	AC_MSG_RESULT(found)
 	else
 	    AC_MSG_ERROR(Did not find libGlade installed)
 	fi
-		
+
     FRONTEND="xforms gnome"
     FRONTEND_GUILIB="gnome/*.lo"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
@@ -235,7 +235,7 @@ esac
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = no ; then
 # We surely need these two libraries and want to check carefully the
-# version numbers... 
+# version numbers...
 #LYX_PATH_XPM
 #LYX_PATH_XFORMS
 #FRONTEND_INFO=`cat <<EOF
@@ -246,8 +246,8 @@ if test "$have_x" = no ; then
 #AC_SUBST(LYX_LIBS)
 #else
 LYX_ERROR(dnl
-[Cannot find X window libraries and/or headers. Check your installation. 
-   If you use a Linux system, check that you have installed 
+[Cannot find X window libraries and/or headers. Check your installation.
+   If you use a Linux system, check that you have installed
    the development tools.])
 fi
 
@@ -264,8 +264,8 @@ AC_C_CONST
 AC_C_INLINE
 # Do the real setup now
 AM_GNU_GETTEXT
-# a hack for those who try to change LyX, but do not have gettext installed 
-case  "${XGETTEXT}" in 
+# a hack for those who try to change LyX, but do not have gettext installed
+case  "${XGETTEXT}" in
  *:) XGETTEXT='cp ${srcdir}/lyx.pot ./${PACKAGE}.po ; :'
 esac
 
@@ -373,7 +373,7 @@ AC_OUTPUT([Makefile \
 
 # show version information
 echo
-printf "$VERSION_INFO" 
+printf "$VERSION_INFO"
 echo
 
 # Display a final warning if there has been a LYX_ERROR
