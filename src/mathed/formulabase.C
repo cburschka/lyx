@@ -623,7 +623,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		istringstream is(arg.c_str());
 		is >> ls >> rs;
 		if (!is) {
-			lyxerr << "can't parse delimeters from '" << arg << "'\n";
+			lyxerr << "can't parse delimiters from '" << arg << "'\n";
 			break;
 		}
 		bv->lockedInsetStoreUndo(Undo::EDIT);
