@@ -232,6 +232,9 @@ public:
 	///
 	void parse(MathArray & array, unsigned flags, mode_type mode);
 	///
+	void parse1(MathGridInset & grid, unsigned flags, mode_type mode,
+		bool numbered);
+	///
 	MathArray parse(unsigned flags, mode_type mode);
 	///
 	int lineno() const { return lineno_; }
@@ -239,9 +242,6 @@ public:
 	void putback();
 
 private:
-	///
-	void parse1(MathGridInset & grid, unsigned flags, mode_type mode,
-		bool numbered);
 	///
 	void parse2(MathAtom & at, unsigned flags, mode_type mode, bool numbered);
 	/// get arg delimited by 'left' and 'right'
@@ -1187,3 +1187,11 @@ bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
 {
 	return Parser(lex).parse(t);
 }
+
+
+void mathed_parse_normal(MathGridInset & grid, string const & str)
+{
+	istringstream is(str.c_str());
+	Parser(is).parse1(grid, 0, MathInset::MATH_MODE, false);
+}
+

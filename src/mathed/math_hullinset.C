@@ -9,12 +9,17 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "debug.h"
-#include "frontends/Painter.h"
 #include "textpainter.h"
 #include "funcrequest.h"
 #include "Lsstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LAssert.h"
+#include "frontends/Painter.h"
+
+#include "frontends/Alert.h"
+#include "lyxrc.h"
+#include "gettext.h"
+#include "BufferView.h"
 
 #include <vector>
 
@@ -683,6 +688,38 @@ MathInset::result_type MathHullInset::dispatch
 				//updateLocal(bv, true);
 			}
 			return DISPATCHED; 
+
+		case LFUN_INSERT_LABEL: {
+			row_type r = row(idx);
+			string old_label = label(r);
+			string new_label = cmd.argument;
+
+			if (new_label.empty()) {
+				string const default_label =
+					(lyxrc.label_init_length >= 0) ? "eq:" : "";
+				pair<bool, string> const res = old_label.empty()
+					? Alert::askForText(_("Enter new label to insert:"), default_label)
+					: Alert::askForText(_("Enter label:"), old_label);
+				if (!res.first)
+					break;
+				new_label = trim(res.second);
+			}
+
+			//if (new_label == old_label)
+			//	break;  // Nothing to do
+
+			if (!new_label.empty())
+				numbered(r, true);
+
+#warning FIXME: please check you really mean repaint() ... is it needed,
+#warning and if so, should it be update() instead ?
+			if (!new_label.empty()
+					&& cmd.view()->ChangeRefsIfUnique(old_label, new_label))
+				cmd.view()->repaint();
+
+			label(r, new_label);
+			return DISPATCHED; 
+		}
 
 		case LFUN_MATH_HALIGN:
 		case LFUN_MATH_VALIGN:

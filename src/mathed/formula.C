@@ -254,50 +254,9 @@ UpdatableInset::RESULT
 InsetFormula::localDispatch(FuncRequest const & ev)
 {
 	RESULT result = DISPATCHED;
-	BufferView *bv = ev.view();
+	BufferView * bv = ev.view();
 
 	switch (ev.action) {
-
-		case LFUN_INSERT_LABEL:
-		{
-			if (!hull())
-				break;
-
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-
-			MathCursor::row_type row = mathcursor->hullRow();
-			string old_label = hull()->label(row);
-			string new_label = ev.argument;
-
-			if (new_label.empty()) {
-				string const default_label =
-					(lyxrc.label_init_length >= 0) ? "eq:" : "";
-				pair<bool, string> const res = old_label.empty()
-					? Alert::askForText(_("Enter new label to insert:"), default_label)
-					: Alert::askForText(_("Enter label:"), old_label);
-				if (!res.first)
-					break;
-				new_label = trim(res.second);
-			}
-
-			//if (new_label == old_label)
-			//	break;  // Nothing to do
-
-			if (!new_label.empty()) {
-				lyxerr << "setting label to '" << new_label << "'\n";
-				hull()->numbered(row, true);
-			}
-
-#warning FIXME: please check you really mean repaint() ... is it needed,
-#warning and if so, should it be update() instead ?
-			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
-				bv->repaint();
-
-			hull()->label(row, new_label);
-
-			updateLocal(bv, true);
-			break;
-		}
 
 		case LFUN_MATH_MUTATE:
 		{

@@ -27,6 +27,7 @@
 
 class MathAtom;
 class MathArray;
+class MathGridInset;
 class LyXLex;
 
 
@@ -54,6 +55,8 @@ bool mathed_parse_normal(MathAtom &, string const &);
 bool mathed_parse_normal(MathAtom &, std::istream &);
 /// ... the LyX lexxer
 bool mathed_parse_normal(MathAtom &, LyXLex &);
+/// ... the LyX lexxer
+void mathed_parse_normal(MathGridInset &, string const &);
 
 /// parse a single cell from a string
 void mathed_parse_cell(MathArray & ar, string const &);

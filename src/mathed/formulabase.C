@@ -416,11 +416,18 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 
 	switch (ev.action) {
 
+	case LFUN_MATH_HALIGN:
+	case LFUN_MATH_VALIGN:
+	case LFUN_MATH_ROW_INSERT:
+	case LFUN_MATH_ROW_DELETE:
+	case LFUN_MATH_COLUMN_INSERT:
+	case LFUN_MATH_COLUMN_DELETE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_TABINSERT:
 	case LFUN_BREAKLINE:
 	case LFUN_DELETE_LINE_FORWARD:
+	case LFUN_INSERT_LABEL:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(ev);
 		updateLocal(bv, true);
@@ -662,33 +669,6 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		bv->owner()->message(_("Invalid action in math mode!"));
 		break;
 
-
-	case LFUN_MATH_HALIGN:
-	case LFUN_MATH_VALIGN:
-	case LFUN_MATH_ROW_INSERT:
-	case LFUN_MATH_ROW_DELETE:
-	case LFUN_MATH_COLUMN_INSERT:
-	case LFUN_MATH_COLUMN_DELETE:
-	{
-		MathInset::idx_type idx = 0;
-		MathGridInset * p = mathcursor ? mathcursor->enclosingGrid(idx) : 0;
-		if (p) {
-			mathcursor->popToEnclosingGrid();
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			char align = ev.argument.size() ? ev.argument[0] : 'c';
-			switch (ev.action) {
-				case LFUN_MATH_HALIGN: p->halign(align, p->col(idx)); break;
-				case LFUN_MATH_VALIGN: p->valign(align); break;
-				case LFUN_MATH_ROW_INSERT: p->addRow(p->row(idx)); break;
-				case LFUN_MATH_ROW_DELETE: p->delRow(p->row(idx)); break;
-				case LFUN_MATH_COLUMN_INSERT: p->addFancyCol(p->col(idx)); break;
-				case LFUN_MATH_COLUMN_DELETE: p->delFancyCol(p->col(idx)); break;
-				default: ;
-			}
-			updateLocal(bv, true);
-		}
-		break;
-	}
 
 	case LFUN_EXEC_COMMAND:
 		result = UNDISPATCHED;

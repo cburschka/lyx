@@ -30,6 +30,7 @@
 #include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
+#include "funcrequest.h"
 #include "math_autocorrect.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
@@ -411,31 +412,10 @@ void MathCursor::paste(MathArray const & ar)
 
 void MathCursor::paste(MathGridInset const & data)
 {
-	if (data.nargs() == 1) {
-		// single cell/part of cell
-		paste(data.cell(0));
-	} else {
-		// multiple cells
-		idx_type idx; // index of upper left cell
-		MathGridInset * p = enclosingGrid(idx);
-		col_type const numcols = min(data.ncols(), p->ncols() - p->col(idx));
-		row_type const numrows = min(data.nrows(), p->nrows() - p->row(idx));
-		for (row_type row = 0; row < numrows; ++row) {
-			for (col_type col = 0; col < numcols; ++col) {
-				idx_type i = p->index(row + p->row(idx), col + p->col(idx));
-				p->cell(i).append(data.cell(data.index(row, col)));
-			}
-			// append the left over horizontal cells to the last column
-			idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
-			for (MathInset::col_type col = numcols; col < data.ncols(); ++col)
-				p->cell(i).append(data.cell(data.index(row, col)));
-		}
-		// append the left over vertical cells to the last _cell_
-		idx_type i = p->nargs() - 1;
-		for (row_type row = numrows; row < data.nrows(); ++row)
-			for (col_type col = 0; col < data.ncols(); ++col)
-				p->cell(i).append(data.cell(data.index(row, col)));
-	}
+	ostringstream os;
+  WriteStream wi(os, false, false);
+  data.write(wi);
+	dispatch(FuncRequest(LFUN_PASTE, os.str()));
 }
 
 
@@ -867,22 +847,6 @@ void MathCursor::normalize()
 MathCursor::size_type MathCursor::size() const
 {
 	return array().size();
-}
-
-
-MathCursor::col_type MathCursor::hullCol() const
-{
-	idx_type idx = 0;
-	MathHullInset * p = enclosingHull(idx);
-	return p->col(idx);
-}
-
-
-MathCursor::row_type MathCursor::hullRow() const
-{
-	idx_type idx = 0;
-	MathHullInset * p = enclosingHull(idx);
-	return p->row(idx);
 }
 
 

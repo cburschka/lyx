@@ -17,6 +17,8 @@ using std::min;
 using std::vector;
 
 
+void mathed_parse_normal(MathGridInset &, string const & argument);
+
 namespace {
 
 string verboseHLine(int n)
@@ -995,7 +997,38 @@ MathInset::result_type MathGridInset::dispatch
 			if (idx > nargs())
 				idx -= ncols();
 			return DISPATCHED_POP;
-		}		
+		}
+
+		case LFUN_PASTE: {
+			//lyxerr << "pasting '" << cmd.argument << "'\n";
+			MathGridInset grid(1, 1);
+			mathed_parse_normal(grid, cmd.argument);
+			if (grid.nargs() == 1) {
+				// single cell/part of cell
+				cell(idx).insert(pos, grid.cell(0));
+				pos += grid.cell(0).size();
+			} else {
+				// multiple cells
+				col_type const numcols = min(grid.ncols(), ncols() - col(idx));
+				row_type const numrows = min(grid.nrows(), nrows() - row(idx));
+				for (row_type r = 0; r < numrows; ++r) {
+					for (col_type c = 0; c < numcols; ++c) {
+						idx_type i = index(r + row(idx), c + col(idx));
+						cell(i).append(grid.cell(grid.index(r, c)));
+					}
+					// append the left over horizontal cells to the last column
+					idx_type i = index(r + row(idx), ncols() - 1);
+					for (MathInset::col_type c = numcols; c < grid.ncols(); ++c)
+						cell(i).append(grid.cell(grid.index(r, c)));
+				}
+				// append the left over vertical cells to the last _cell_
+				idx_type i = nargs() - 1;
+				for (row_type r = numrows; r < grid.nrows(); ++r)
+					for (col_type c = 0; c < grid.ncols(); ++c)
+						cell(i).append(grid.cell(grid.index(r, c)));
+			}
+			return DISPATCHED_POP;
+		}
 
 		default:	
 			break;

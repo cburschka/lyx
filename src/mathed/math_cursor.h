@@ -177,14 +177,6 @@ public:
 	char valign() const;
 	///
 	char halign() const;
-	///
-	col_type hullCol() const;
-	///
-	row_type hullRow() const;
-	///
-	col_type gridCol() const;
-	///
-	row_type gridRow() const;
 
 	/// make sure cursor position is valid
 	void normalize();
