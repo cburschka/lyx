@@ -1630,11 +1630,10 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 void LyXText::setCursorFromCoordinates(int x, int y)
 {
-	//LyXCursor old_cursor = cursor;
+	LyXCursor old_cursor = cursor;
 	setCursorFromCoordinates(cursor, x, y);
 	setCurrentFont();
-#warning DEPM disabled, otherwise crash when entering new table
-	//deleteEmptyParagraphMechanism(old_cursor);
+	deleteEmptyParagraphMechanism(old_cursor);
 }
 
 
