@@ -30,6 +30,7 @@ using std::endl;
 using std::for_each;
 
 using std::ostream;
+using std::vector;
 
 
 // We have to have dummy default commands for security reasons!
@@ -111,9 +112,17 @@ public:
 		    << "\t\tProduct " << ft.product << '\n'
 		    << "\t\tUpdateFormat " << ft.updateFormat << '\n'
 		    << "\t\tUpdateResult " << ft.updateResult << '\n'
-		    << "\t\tRequirement " << ft.requirement << '\n'
-		    << "\t\tPreamble " << ft.preambleName << '\n'
-		    << "\tFormatEnd\n";
+		    << "\t\tRequirement " << ft.requirement << '\n';
+
+		if (!ft.preambleNames.empty()) {
+			vector<string>::const_iterator it  = ft.preambleNames.begin();
+			vector<string>::const_iterator end = ft.preambleNames.end();
+			for (; it != end; ++it) {
+				ost << "\t\tPreamble " << *it << '\n';
+			}
+		}
+
+		ost << "\tFormatEnd\n";
 	}
 private:
 	ostream & ost;
@@ -361,7 +370,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 
 		case FO_PREAMBLE:
 			lex.next(true);
-			preambleName = lex.getString();
+			preambleNames.push_back(lex.getString());
 			break;
 
 		case FO_END:

@@ -183,7 +183,9 @@ void FormExternal::updateComboChange()
 	ExternalTemplate templ = controller().getTemplate(choice);
 
 	// Update the help text
+	string const txt = formatted(templ.helpText,
+				     dialog_->browser_helptext->w - 20);
 	fl_clear_browser(dialog_->browser_helptext);
-	fl_addto_browser(dialog_->browser_helptext, templ.helpText.c_str());
+	fl_addto_browser(dialog_->browser_helptext, txt.c_str());
 	fl_set_browser_topline(dialog_->browser_helptext, 0);
 }

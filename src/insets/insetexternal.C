@@ -43,10 +43,12 @@
 namespace support = lyx::support;
 
 using std::endl;
+
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::vector;
 
 
 namespace lyx {
@@ -459,9 +461,14 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		features.require(cit->second.requirement);
 
 	ExternalTemplateManager & etm = ExternalTemplateManager::get();
-	string const preamble = etm.getPreambleDefByName(cit->second.preambleName);
-	if (!preamble.empty())
-		features.addExternalPreamble(preamble);
+
+	vector<string>::const_iterator it  = cit->second.preambleNames.begin();
+	vector<string>::const_iterator end = cit->second.preambleNames.end();
+	for (; it != end; ++it) {
+		string const preamble = etm.getPreambleDefByName(*it);
+		if (!preamble.empty())
+			features.addExternalPreamble(preamble);
+	}
 }
 
 

@@ -1,3 +1,11 @@
+2003-09-23  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalTemplate.[Ch]: can have multiple preamble snippets if we store them
+	in a vector, preambleNames.
+
+	* insetexternal.C (validate): loop over all preambleNames and call
+	LaTeXFeatures::addExternalPreamble with each.
+
 2003-09-22  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetbranch.C: bug fix in branches

@@ -1,3 +1,8 @@
+2003-09-23  Angus Leeming  <leeming@lyx.org>
+
+	* FormExternal.C (updateComboChange): use formatted to ensure that the
+	help text fits in the browser.
+
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* XFormsToolbar.C: adjust

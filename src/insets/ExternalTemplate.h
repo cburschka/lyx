@@ -17,6 +17,7 @@
 #include <map>
 #include "support/std_string.h"
 #include <boost/utility.hpp>
+#include <vector>
 
 class LyXLex;
 
@@ -48,8 +49,8 @@ struct ExternalTemplate {
 		string updateFormat;
 		/// What features does this external inset require?
 		string requirement;
-		/// Identify the preamble snippet using \c preambleName.
-		string preambleName;
+		/// A collection of preamble snippets identified by name.
+		std::vector<string> preambleNames;
 		///
 		void readFormat(LyXLex &);
 		/// This constructor has to default a command for safety reasons!
