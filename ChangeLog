@@ -1,3 +1,21 @@
+2001-01-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: working support for --with-lyx-suffix
+
+	* INSTALL: describe --with-lyx-suffix
+
+	* lib/Makefile.am: make configure and configure.cmd installed
+	  by hand, to avoid name changes when --with-lyx-suffix
+	  is used.
+
+	* lib/configure:
+	* lib/configure.m4: support --with-lyx-suffix for the lyxrc.defaults
+	  reLyX and noweb2lyx scripts
+
+	* lib/reLyX/configure.in: support --with-lyx-suffix
+
+	* src/lyx_main.C: tiny error message fix
+
 2001-01-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences.C (LoadBrowserLyX): convert unsigned short to

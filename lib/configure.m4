@@ -85,6 +85,7 @@ dnl ######### End M4 macros #############################################
 lyx_check_config=yes
 lyx_keep_temps=no
 srcdir=
+lyx_suffix=
 
 #### Parse the command line
 for ac_option do
@@ -96,12 +97,15 @@ Options:
   --help                   show this help lines
   --keep-temps             keep temporary files (for debug. purposes)
   --without-latex-config   do not run LaTeX to determine configuration
+  --with-lyx-suffix=suffix suffix of binary installed files
 EOF
       exit 0;;
     --without-latex-config)
       lyx_check_config=no ;;
     --keep-temps)
       lyx_keep_temps=yes ;;
+    --with-lyx-suffix*)
+      lyx_suffix=`echo "$ac_option" | sed 's,--with-lyx-suffix=,,;s,^,-,'`
   esac 
 done
 
@@ -185,9 +189,11 @@ PATH=${PATH}:./reLyX/
 SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command,reLyX)
 PATH=${save_PATH}
 test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$i"
+tex_to_lyx_command=`echo $tex_to_lyx_command | sed "s,reLyX,reLyX$lyx_suffix,"`
 
 SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,noweb2lyx)
 test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$i \$\$o"
+literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2lyx$lyx_suffix,"`
 
 # Search something to process a literate document
 SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,noweave)

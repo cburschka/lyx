@@ -318,10 +318,10 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 
 	// Warn the user if we couldn't find "chkconfig.ltx"
 	if (system_lyxdir == "./") {
-		lyxerr <<_("LyX Warning! Couldn't determine system directory.")
-		       <<_("Try the '-sysdir' command line parameter or")
+		lyxerr <<_("LyX Warning! Couldn't determine system directory. ")
+		       <<_("Try the '-sysdir' command line parameter or ")
 		       <<_("set the environment variable LYX_DIR_11x to the "
-			   "LyX system directory")
+			   "LyX system directory ")
 		       << _("containing the file `chkconfig.ltx'.") << endl;
 		if (!path_shown)
 			lyxerr << _("Using built-in default ") 

@@ -11,9 +11,11 @@ LYX_GET_VERSION(${srcdir}/src/version.h)
 AC_CANONICAL_SYSTEM
 AC_VALIDATE_CACHE_SYSTEM_TYPE
 
-AC_ARG_WITH(lyxname,
-  [  --with-lyxname          the name under which lyx will be installed],
-  [lyxname=$withval],[lyxname=lyx])
+AC_ARG_WITH(lyx-suffix,
+  [  --with-lyx-suffix       install lyx files as lyx-<suffix>],
+  [lyxname="lyx-$withval"
+   program_suffix=-$withval],
+  [lyxname=lyx])
 
 AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
