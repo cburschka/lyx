@@ -1,8 +1,10 @@
 #include <config.h>
 
 #include "math_parser.h"
+#include "math_amsarrayinset.h"
 #include "math_binominset.h"
 #include "math_boxinset.h"
+#include "math_casesinset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_funcinset.h"
@@ -17,6 +19,7 @@
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
+#include "math_splitinset.h"
 #include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "math_stackrelinset.h"
@@ -98,6 +101,15 @@ MathAtom createMathInset(string const & s)
 
 	if (s == "xrightarrow")
 		return MathAtom(new MathXArrowInset(s));
+
+	if (s == "split")
+		return MathAtom(new MathSplitInset(1));
+
+	if (s == "cases")
+		return MathAtom(new MathCasesInset);
+
+	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix") 
+		return MathAtom(new MathAMSArrayInset(s));
 
 	latexkeys const * l = in_word_set(s);
 	if (l)

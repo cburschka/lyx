@@ -52,9 +52,7 @@ point to write some macros:
 #include "math_parser.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
-#include "math_amsarrayinset.h"
 #include "math_braceinset.h"
-#include "math_casesinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
@@ -69,7 +67,6 @@ point to write some macros:
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
 #include "math_specialcharinset.h"
-#include "math_splitinset.h"
 #include "math_sqrtinset.h"
 #include "math_support.h"
 #include "math_xyarrowinset.h"
@@ -1082,14 +1079,12 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				string const halign = getArg('{', '}');
 				array.push_back(MathAtom(new MathArrayInset(valign[0], halign)));
 				parse_lines(array.back(), false, false);
-			} else if (name == "split") {
-				array.push_back(MathAtom(new MathSplitInset(1)));
+			} else if (name == "split" || name == "cases") {
+				array.push_back(createMathInset(name));
 				parse_lines(array.back(), false, false);
-			} else if (name == "cases") {
-				array.push_back(MathAtom(new MathCasesInset));
-				parse_lines(array.back(), false, false);
-			} else if (name == "pmatrix" || name == "bmatrix") {
-				array.push_back(MathAtom(new MathAMSArrayInset(name)));
+			} else if (name == "pmatrix" || name == "bmatrix" ||
+				         name == "vmatrix" || name == "Vmatrix") {
+				array.push_back(createMathInset(name));
 				parse_lines2(array.back(), false);
 			} else 
 				lyxerr << "unknow math inset begin '" << name << "'\n";	
