@@ -756,10 +756,12 @@ void BufferView::Pimpl::selectionRequested()
  
 void BufferView::Pimpl::selectionLost()
 {
-	hideCursor();
-	toggleSelection();
-	bv_->getLyXText()->clearSelection();
-	showCursor(); 
+	if (active() && available()) { 
+		hideCursor();
+		toggleSelection();
+		bv_->getLyXText()->clearSelection();
+		showCursor(); 
+	}
 }
 
  

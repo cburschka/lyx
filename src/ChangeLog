@@ -1,3 +1,7 @@
+2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: protect selectionLost against text == 0
+ 
 2002-03-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text.C (breakParagraph): fix a setting layout to '0' problem.
