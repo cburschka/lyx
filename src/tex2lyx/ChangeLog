@@ -1,3 +1,13 @@
+2005-02-25  Angus Leeming  <leeming@lyx.org>
+
+	* context.h: declare as "class Font" rather than "struct Font".
+	Ditto "class Context".
+
+	* table.C: declare as "class ColInfo" rather than "struct ColInfo".
+	Ditto "class RowInfo" and "class CellInfo".
+
+	Changes to make MSVC agree to link the code.
+
 2005-02-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* context.C (begin_deeper, end_deeper): adjust output to LyX

@@ -38,8 +38,8 @@ std::map<char, int> special_columns;
 
 namespace {
 
-struct ColInfo
-{
+class ColInfo {
+public:
 	ColInfo() : align('c'), rightline(false), leftline(false) {}
 	/// column alignment
 	char align;
@@ -70,8 +70,8 @@ enum LTRowType
 };
 
 
-struct RowInfo
-{
+class RowInfo {
+public:
 	RowInfo() : topline(false), bottomline(false), type(LT_NORMAL),
 	            newpage(false) {}
 	/// horizontal line above
@@ -86,8 +86,8 @@ struct RowInfo
 };
 
 
-struct CellInfo
-{
+class CellInfo {
+public:
 	CellInfo() : multi(0), align('n'), leftline(false), rightline(false),
 	             topline(false), bottomline(false) {}
 	/// cell content

@@ -23,7 +23,8 @@
  * If more font related stuff is needed, it might be good to change to
  * LyXFont.
  */
-struct Font {
+class Font {
+public:
 	Font()
 	{
 		init();
@@ -43,7 +44,8 @@ struct Font {
 
 
 // A helper struct
-struct Context {
+class Context {
+public:
 	Context(bool need_layout_,
 		LyXTextClass const & textclass_,
 		LyXLayout_ptr layout_ = LyXLayout_ptr(),
@@ -105,6 +107,5 @@ struct Context {
 	/// font attributes of this context
 	Font font;
 };
-
 
 #endif
