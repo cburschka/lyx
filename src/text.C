@@ -29,6 +29,7 @@
 #include "language.h"
 #include "LColor.h"
 #include "lyxlength.h"
+#include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
@@ -1629,7 +1630,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 
 
 // only used for inset right now. should also be used for main text
-void LyXText::draw(PainterInfo & pi, int x, int y) const
+void LyXText::draw(PainterInfo &, int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
@@ -1766,4 +1767,80 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 	Paragraph::depth_type dth = 0;
 	for (; pit != end; ++pit)
 		pit->write(buf, os, buf.params(), dth);
+}
+
+
+bool LyXText::read(Buffer const & buf, LyXLex & lex)
+{	
+	static Change current_change;
+
+	bool the_end_read = false;
+	ParagraphList::iterator pit = paragraphs().begin();
+	Paragraph::depth_type depth = 0;
+
+	while (lex.isOK()) {
+		lex.nextToken();
+		string token = lex.getString();
+
+		if (token.empty())
+			continue;
+
+		if (in_inset_) {
+
+			if (token == "\\end_inset") {
+				the_end_read = true;
+				break;
+			}
+
+			if (token == "\\end_document") {
+				lex.printError("\\end_document read in inset! Error in document!");
+				return false;
+			}
+
+		} else {
+
+			if (token == "\\end_document") {
+				the_end_read = true;
+				continue;
+			}
+
+		}
+
+		// FIXME: ugly.
+		int unknown = 0;
+
+		if (token == "\\begin_layout") {
+			lex.pushToken(token);
+
+			Paragraph par;
+			par.params().depth(depth);
+			if (buf.params().tracking_changes)
+				par.trackChanges();
+			LyXFont f(LyXFont::ALL_INHERIT, buf.params().language);
+			par.setFont(0, f);
+
+			// insert after
+			if (pit != paragraphs().end())
+				++pit;
+
+			pit = paragraphs().insert(pit, par);
+
+			// FIXME: goddamn InsetTabular makes us pass a Buffer
+			// not BufferParams
+			::readParagraph(buf, *pit, lex);
+
+		} else if (token == "\\begin_deeper") {
+			++depth;
+		} else if (token == "\\end_deeper") {
+			if (!depth) {
+				lex.printError("\\end_deeper: " "depth is already null");
+			} else {
+				--depth;
+			}
+		} else {
+			++unknown;
+		}
+
+	}
+	return the_end_read;
 }

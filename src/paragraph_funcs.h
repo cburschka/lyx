@@ -64,7 +64,7 @@ int getEndLabel(ParagraphList::iterator pit,
 		ParagraphList const & plist);
 
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens
-int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
+int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex);
 
 LyXFont const outerFont(ParagraphList::iterator pit,
 			ParagraphList const & plist);

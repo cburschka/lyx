@@ -390,6 +390,7 @@ void unknownClass(string const & unknown)
 
 } // anon
 
+
 int Buffer::readHeader(LyXLex & lex)
 {
 	int unknown_tokens = 0;
@@ -435,9 +436,8 @@ int Buffer::readHeader(LyXLex & lex)
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\end_document" is not read (Asger)
-bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
+bool Buffer::readBody(LyXLex & lex)
 {
-	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
 
 	if (paragraphs().empty()) {
@@ -458,67 +458,10 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 		tmpbuf.readHeader(lex);
 	}
 
-	while (lex.isOK()) {
-		lex.nextToken();
-		string const token = lex.getString();
-
-		if (token.empty())
-			continue;
-
-		lyxerr[Debug::PARSER] << "Handling token: `"
-				      << token << '\'' << endl;
-
-		if (token == "\\end_document") {
-			the_end_read = true;
-			continue;
-		}
-
-		readParagraph(lex, token, paragraphs(), pit, depth);
-	}
+	if (text().read(*this, lex))
+		the_end_read = true;
 
 	return the_end_read;
-}
-
-
-int Buffer::readParagraph(LyXLex & lex, string const & token,
-			  ParagraphList & pars, ParagraphList::iterator & pit,
-			  lyx::depth_type & depth)
-{
-	static Change current_change;
-	int unknown = 0;
-
-	if (token == "\\begin_layout") {
-		lex.pushToken(token);
-
-		Paragraph par;
-		par.params().depth(depth);
-		if (params().tracking_changes)
-			par.trackChanges();
-		LyXFont f(LyXFont::ALL_INHERIT, params().language);
-		par.setFont(0, f);
-
-		// insert after
-		if (pit != pars.end())
-			++pit;
-
-		pit = pars.insert(pit, par);
-
-		// FIXME: goddamn InsetTabular makes us pass a Buffer
-		// not BufferParams
-		::readParagraph(*this, *pit, lex);
-
-	} else if (token == "\\begin_deeper") {
-		++depth;
-	} else if (token == "\\end_deeper") {
-		if (!depth) {
-			lex.printError("\\end_deeper: " "depth is already null");
-		} else {
-			--depth;
-		}
-	} else {
-		++unknown;
-	}
-	return unknown;
 }
 
 
@@ -701,7 +644,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 
 	}
 
-	bool the_end = readBody(lex, pit);
+	bool the_end = readBody(lex);
 	params().setPaperStuff();
 
 	if (!the_end) {
@@ -1274,7 +1217,8 @@ void Buffer::getLabelList(std::vector<string> & list) const
 
 
 // This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) const
+void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
+	const
 {
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]

@@ -393,6 +393,8 @@ public:
 
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
+	/// returns whether we've seen our usual 'end' marker
+	bool read(Buffer const & buf, LyXLex & lex);
 
 public:
 	///

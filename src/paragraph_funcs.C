@@ -303,7 +303,8 @@ int getEndLabel(ParagraphList::iterator p, ParagraphList const & plist)
 
 namespace {
 
-int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & token)
+int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
+	string const & token)
 {
 	static LyXFont font;
 	static Change change;
@@ -499,7 +500,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 }
 
 
-int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
+int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 {
 	int unknown = 0;
 

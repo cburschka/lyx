@@ -94,13 +94,7 @@ public:
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readBody(LyXLex &, ParagraphList::iterator pit);
-
-	/// This parses a single token
-	int readParagraph(LyXLex &, std::string const & token,
-			  ParagraphList & pars,
-			  ParagraphList::iterator & pit,
-			  lyx::depth_type & depth);
+	bool readBody(LyXLex &);
 
 	///
 	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,

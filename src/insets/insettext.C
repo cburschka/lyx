@@ -149,9 +149,6 @@ void InsetText::write(Buffer const & buf, ostream & os) const
 
 void InsetText::read(Buffer const & buf, LyXLex & lex)
 {
-	string token;
-	Paragraph::depth_type depth = 0;
-
 	clear(false);
 
 #warning John, look here. Doesnt make much sense.
@@ -161,32 +158,10 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 	// delete the initial paragraph
 	Paragraph oldpar = *paragraphs().begin();
 	paragraphs().clear();
-	ParagraphList::iterator pit = paragraphs().begin();
+	bool res = text_.read(buf, lex);
+	init();
 
-	while (lex.isOK()) {
-		lex.nextToken();
-		token = lex.getString();
-		if (token.empty())
-			continue;
-		if (token == "\\end_inset") {
-			break;
-		}
-
-		if (token == "\\end_document") {
-			lex.printError("\\end_document read in inset! Error in document!");
-			return;
-		}
-
-		// FIXME: ugly.
-		const_cast<Buffer&>(buf).readParagraph(lex, token, paragraphs(), pit, depth);
-	}
-
-	pit = paragraphs().begin();
-	ParagraphList::iterator const end = paragraphs().end();
-	for (; pit != end; ++pit)
-		pit->setInsetOwner(this);
-
-	if (token != "\\end_inset") {
+	if (!res) {
 		lex.printError("Missing \\end_inset at this point. "
 					   "Read: `$$Token'");
 	}

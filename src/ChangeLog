@@ -1,3 +1,11 @@
+
+2003-12-03  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.[Ch]:
+	* lyxtext.h:
+	* paragraph_funcs.[Ch]: consolidate parts of Buffer::read() and
+	InsetText::read() as LyXText::read()
+	
 2003-12-02  Angus Leeming  <leeming@lyx.org>
 
 	* lyxlex.[Ch] (operator void const *): add the 'const' to the return
