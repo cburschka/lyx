@@ -501,6 +501,15 @@ public:
 	///
 	void SimpleDocBookOneTablePar(std::ostream &, string & extra,
 				      int & desc_on, int depth);
+	///
+	struct InsetTable {
+		///
+		size_type pos;
+		///
+		Inset * inset;
+		///
+		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
+	};
 private:
 	/** A font entry covers a range of positions. Notice that the
 	  entries in the list are inserted in random order.
@@ -523,15 +532,6 @@ private:
 		allowed in these font tables.
 		*/
 		LyXFont font;
-	};
-	///
-	struct InsetTable {
-		///
-		size_type pos;
-		///
-		Inset * inset;
-		///
-		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
 	};
 	///
 	typedef std::list<FontTable> FontList;

@@ -1,5 +1,7 @@
 #include <config.h>
 
+#include <cctype>
+
 #include "font.h"
 #include "FontLoader.h"
 #include "lyxrc.h"

@@ -131,7 +131,7 @@ public:
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
-	 If the freee_spc (freespacing) variable is set, then this inset
+	 If the free_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
 	virtual int Latex(std::ostream &, signed char fragile,

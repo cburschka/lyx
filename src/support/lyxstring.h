@@ -647,8 +647,8 @@ lyxstring operator+(lyxstring const & a, lyxstring::value_type b);
 
 void swap(lyxstring & s1, lyxstring & s2);
 
-istream & operator>>(istream &, lyxstring &);
-ostream & operator<<(ostream &, lyxstring const &);
-istream & getline(istream &, lyxstring &, lyxstring::value_type delim = '\n');
+std::istream & operator>>(std::istream &, lyxstring &);
+std::ostream & operator<<(std::ostream &, lyxstring const &);
+std::istream & getline(std::istream &, lyxstring &, lyxstring::value_type delim = '\n');
 
 #endif

@@ -1,3 +1,13 @@
+2000-04-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxparagraph.h: make strict InsetTable public.
+
+	* src/support/lyxstring.h: change lyxstring::difference_type to be
+	ptrdiff_t. Add std:: modifiers to streams.
+
+	* src/font.C: include the <cctype> header, for islower() and
+	isupper(). 
+
 2000-04-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/font.[Ch]: new files. Contains the metric functions for
