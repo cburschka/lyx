@@ -1172,12 +1172,15 @@ void MathCursor::splitCell()
 
 void MathCursor::breakLine()
 {
+	// leave inner cells
+	while (popRight())
+		;
+
 	MathMatrixInset * p = outerPar();
 	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
-		p->addRow(0);
-		idx() = p->nrows();
-		pos() = 0;
+		idx() = 0;
+		pos() = size();
 	} else {
 		p->addRow(row());
 
@@ -1271,6 +1274,11 @@ void MathCursor::gotoX(int x)
 
 bool MathCursor::goUp()
 {
+	// first ask the inset if it knows better then we
+	if (par()->idxUp(idx(), pos()))
+		return true;
+
+	// if not, apply brute force.
 	int x0;
 	int y0;
 	getPos(x0, y0);
@@ -1288,6 +1296,11 @@ bool MathCursor::goUp()
 
 bool MathCursor::goDown()
 {
+	// first ask the inset if it knows better then we
+	if (par()->idxDown(idx(), pos()))
+		return true;
+
+	// if not, apply brute force.
 	int x0;
 	int y0;
 	getPos(x0, y0);

@@ -58,39 +58,14 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 
 void MathCharInset::write(std::ostream & os, bool) const
 {
-	int brace = 0;
+	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM) 
+		os << '\\' << math_font_name[code_ - LM_TC_RM] << '{';
 
-	if (MathIsSymbol(code_)) {
-		latexkeys const * l = lm_get_key_by_id(char_, LM_TK_SYM);
+	if ((code_ == LM_TC_TEX && char_ != '{' && char_ != '}') ||
+			(code_ == LM_TC_SPECIAL))
+		os << '\\';
 
-		if (l == 0) 
-			l = lm_get_key_by_id(char_, LM_TK_BIGSYM);
-
-		if (l) {
-			os << '\\' << l->name << ' ';
-		} else {
-			lyxerr << "Could not find the LaTeX name for  "	
-				<< char_ << " and code_ " << code_ << "!" << std::endl;
-		}
-	} else {
-		if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM) 
-			os << '\\' << math_font_name[code_ - LM_TC_RM] << '{';
-
-		// Is there a standard logical XOR?
-		if ((code_ == LM_TC_TEX && char_ != '{' && char_ != '}') ||
-				(code_ == LM_TC_SPECIAL))
-			os << '\\';
-		else {
-			if (char_ == '{')
-				++brace;
-			if (char_ == '}')
-				--brace;
-		}
-		if (char_ == '}' && code_ == LM_TC_TEX && brace < 0) 
-			lyxerr <<"Math warning: Unexpected closing brace.\n";
-		else	       
-			os << char_;
-	}
+	os << char_;
 
 	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM)
 		os << '}';
@@ -99,7 +74,5 @@ void MathCharInset::write(std::ostream & os, bool) const
 
 void MathCharInset::writeNormal(std::ostream & os) const
 {
-	os << "[sqrt ";
-	cell(0).writeNormal(os); 
-	os << "] ";
+	os << char_;
 }
