@@ -115,6 +115,10 @@ libxforms_la_SOURCES = \
 	FormMathsSpace.h \
 	form_maths_space.C \
 	form_maths_space.h \
+	FormMathsStyle.C \
+	FormMathsStyle.h \
+	form_maths_style.C \
+	form_maths_style.h \
 	FormMinipage.C \
 	FormMinipage.h \
 	form_minipage.C \

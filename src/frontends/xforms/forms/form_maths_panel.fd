@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_maths_panel
 Width: 260
 Height: 180
-Number of Objects: 19
+Number of Objects: 20
 
 --------------------
 class: FL_BOX
@@ -354,6 +354,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_super
 callback: C_FormBaseDeprecatedInputCB
 argument: MM_SUPER
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 70 40 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_style
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_STYLE
 
 ==============================
 create_the_forms

@@ -775,6 +775,13 @@ char const * latex_mathspace[] = {
 };
 
 
+char const * latex_mathstyle[] = {
+	"textstyle", "displaystyle", "scriptstyle", "scriptscriptstyle", 
+	"mathbf", "mathcal","mathrm","mathtt", "mathsf", "mathit",
+	"mathbb","mathfrak", "textrm", "mathnormal"
+};
+
+
 char const * math_font_name(MathTextCodes code)
 {
 	static char const * theFontNames[] = {

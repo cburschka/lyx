@@ -88,6 +88,9 @@ FD_form_maths_panel * FormMathsPanel::build_maths_panel()
   fdui->button_super = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 10, 40, 30, 30, "");
     fl_set_object_color(obj, FL_MCOL, FL_BLUE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, MM_SUPER);
+  fdui->button_style = obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 70, 40, 30, 30, "");
+    fl_set_object_color(obj, FL_MCOL, FL_BLUE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, MM_STYLE);
   fl_end_form();
 
   fdui->form->fdui = fdui;

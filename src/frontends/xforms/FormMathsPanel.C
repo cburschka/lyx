@@ -27,12 +27,14 @@
 #include "form_maths_delim.h"
 #include "form_maths_matrix.h"
 #include "form_maths_space.h"
+#include "form_maths_style.h"
 
 #include "FormMathsBitmap.h"
 #include "FormMathsDeco.h"
 #include "FormMathsDelim.h"
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
+#include "FormMathsStyle.h"
 
 #include "deco.xpm"
 #include "delim.xpm"
@@ -40,6 +42,7 @@
 #include "frac.xpm"
 #include "matrix.xpm"
 #include "space.xpm"
+#include "style.xpm"
 #include "sqrt.xpm"
 #include "sub.xpm"
 #include "super.xpm"
@@ -63,6 +66,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	delim_.reset( new FormMathsDelim( lv, d, *this));
 	matrix_.reset(new FormMathsMatrix(lv, d, *this));
 	space_.reset( new FormMathsSpace( lv, d, *this));
+	style_.reset( new FormMathsStyle( lv, d, *this));
 
 	typedef vector<string> StringVec;
 	
@@ -149,6 +153,8 @@ void FormMathsPanel::build()
 			   const_cast<char**>(deco));
 	fl_set_pixmap_data(dialog_->button_space,
 			   const_cast<char**>(space_xpm));
+	fl_set_pixmap_data(dialog_->button_style,
+			   const_cast<char**>(style_xpm));
 	fl_set_pixmap_data(dialog_->button_matrix,
 			   const_cast<char**>(matrix));
 	fl_set_pixmap_data(dialog_->button_equation,
@@ -268,6 +274,12 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		if (active_ && active_ != space_.get())
 			active_->hide();
 		space_->show();
+		break;
+
+	case MM_STYLE:
+		if (active_ && active_ != style_.get())
+			active_->hide();
+		style_->show();
 		break;
 
 	case MM_EQU:

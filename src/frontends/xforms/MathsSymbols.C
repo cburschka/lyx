@@ -44,6 +44,7 @@ using std::strstr;
 #include "frac.xpm"
 #include "sub.xpm"
 #include "super.xpm"
+#include "style.xpm"
 #include "sqrt.xpm"
 #include "delim.xbm"
 #include "delim.xpm"
@@ -150,6 +151,7 @@ static char const ** mathed_get_pixmap_from_icon(int d)
 		case MM_SQRT: return sqrt_xpm;
 		case MM_SUPER: return super_xpm;
 		case MM_SUB: return sub_xpm;
+		case MM_STYLE: return style_xpm;
 		case MM_DELIM: return delim;
 		case MM_MATRIX: return matrix;
 		case MM_EQU: return equation;

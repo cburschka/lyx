@@ -25,6 +25,7 @@ class FormMathsDeco;
 class FormMathsDelim;
 class FormMathsMatrix;
 class FormMathsSpace;
+class FormMathsStyle;
 class FormMathsSub;
 struct FD_form_maths_panel;
 
@@ -46,6 +47,7 @@ enum MathsCallbackValues {
 	MM_EQU,
 	MM_DECO,
 	MM_SPACE,
+	MM_STYLE,
 	MM_DOTS,
 	MM_FUNC
 };
@@ -88,6 +90,7 @@ private:
 	boost::scoped_ptr<FormMathsDelim>  delim_;
 	boost::scoped_ptr<FormMathsMatrix> matrix_;
 	boost::scoped_ptr<FormMathsSpace>  space_;
+	boost::scoped_ptr<FormMathsStyle>  style_;
 	boost::scoped_ptr<FormMathsBitmap> arrow_;
 	boost::scoped_ptr<FormMathsBitmap> boperator_;
 	boost::scoped_ptr<FormMathsBitmap> brelats_;
