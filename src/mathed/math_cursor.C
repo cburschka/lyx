@@ -80,8 +80,8 @@ struct MathStackXIter {
 		delete[] item;
 	}
 
-	void push(MathedXIter ** a) {
-		*a = &item[i++];
+	MathedXIter * push() {
+		return &item[i++];
 	}
 
 	MathedXIter * pop() {
@@ -141,7 +141,7 @@ void MathedCursor::SetPar(MathParInset * p)
 	macro_mode = false;
 	selection  = false; // not SelClear() ?
 	mathstk.Reset();
-	mathstk.push(&cursor);
+	cursor = mathstk.push();
 	par = p;
 	cursor->SetData(par);
 }
@@ -231,7 +231,7 @@ bool MathedCursor::Left(bool sel)
 				return result;
 
 			p->setArgumentIdx(p->getMaxArgumentIdx());
-			mathstk.push(&cursor);
+			cursor = mathstk.push();
 			cursor->SetData(p);
 			cursor->GoLast();
 		}
@@ -259,7 +259,7 @@ bool MathedCursor::Push()
 		MathParInset * p = cursor->GetActiveInset();
 		if (!p)
 			return false;
-		mathstk.push(&cursor);
+		cursor = mathstk.push();
 		cursor->SetData(p);
 		return true;
 	}
@@ -300,7 +300,7 @@ bool MathedCursor::Right(bool sel)
 			return cursor->Next();
 			}
 			p->setArgumentIdx(0);
-			mathstk.push(&cursor);
+			cursor = mathstk.push();
 			cursor->SetData(p);
 			result = true;
 		} else
@@ -331,7 +331,7 @@ void MathedCursor::SetPos(int x, int y)
 
 	lastcode = LM_TC_MIN;
 	mathstk.Reset();
-	mathstk.push(&cursor);
+	cursor = mathstk.push();
 	cursor->SetData(par);
 	cursor->fitCoord(x, y);
 
@@ -340,7 +340,7 @@ void MathedCursor::SetPos(int x, int y)
 			MathParInset * p = cursor->GetActiveInset();
 			if (p->Inside(x, y)) {
 				p->SetFocus(x, y);
-				mathstk.push(&cursor);
+				cursor = mathstk.push();
 				cursor->SetData(p);
 				cursor->fitCoord(x, y);
 				continue;
@@ -362,7 +362,7 @@ void MathedCursor::Home()
 		MacroModeClose();
 	clearLastCode();
 	mathstk.Reset();
-	mathstk.push(&cursor);
+	cursor = mathstk.push();
 	cursor->GoBegin();
 }
 
@@ -373,7 +373,7 @@ void MathedCursor::End()
 		MacroModeClose();
 	clearLastCode();
 	mathstk.Reset();
-	mathstk.push(&cursor);
+	cursor = mathstk.push();
 	cursor->GoLast();
 }
 
@@ -655,24 +655,24 @@ bool MathedCursor::Down(bool sel)
 
 	result = cursor->Down();
 	if (!result && cursor->getPar()) {
-	MathParInset * p= cursor->getPar();
-	if (p->GetType() == LM_OT_SCRIPT) {
-	MathedXIter * cx = mathstk.Item(1);
-	bool is_up = (cx->GetChar() == LM_TC_UP);
-	cursor = mathstk.pop();
-	cursor->Next();
-	result = (is_up) ? true: Down();
-	} else {
-	result = (p->getArgumentIdx() < p->getMaxArgumentIdx());
-	if (result) {
-	p->setArgumentIdx(p->getArgumentIdx() + 1);
-	cursor->SetData(p);
-	}
-	}
-	if (!result && !mathstk.Empty()) {
-	cursor = mathstk.pop();
-	return Down(sel);
-	}
+		MathParInset * p= cursor->getPar();
+		if (p->GetType() == LM_OT_SCRIPT) {
+			MathedXIter * cx = mathstk.Item(1);
+			bool is_up = (cx->GetChar() == LM_TC_UP);
+			cursor = mathstk.pop();
+			cursor->Next();
+			result = (is_up) ? true : Down();
+		} else {
+			result = (p->getArgumentIdx() < p->getMaxArgumentIdx());
+			if (result) {
+				p->setArgumentIdx(p->getArgumentIdx() + 1);
+				cursor->SetData(p);
+			}
+		}
+		if (!result && !mathstk.Empty()) {
+			cursor = mathstk.pop();
+			return Down(sel);
+		}
 	}
 	return result;
 }
