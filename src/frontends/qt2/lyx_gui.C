@@ -170,11 +170,15 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 
 	// FIXME
 	delete lyxserver;
+	lyxserver = 0;
 }
 
 
 void lyx_gui::exit()
 {
+	delete lyxserver;
+	lyxserver = 0;
+
 	// we cannot call qApp->exit(0) - that could return us
 	// into a static dialog return in the lyx code (for example,
 	// load autosave file QMessageBox. We have to just get the hell
