@@ -17,6 +17,8 @@
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 
+#include "BranchList.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <string>
 
@@ -51,6 +53,8 @@ private:
 
 	/// FIXME
 	std::vector<std::string> lang_;
+	/// Contains all legal branches for this doc
+	BranchList branchlist_;
 };
 
 #endif // QDOCUMENT_H

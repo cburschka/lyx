@@ -621,6 +621,9 @@ void QDocument::update_contents()
 
 	lengthToWidgets(m->footskipLE, m->footskipUnit,
 		params.footskip, defaultUnit);
+
+	// branches
+	dialog_->updateBranchView();
 }
 
 

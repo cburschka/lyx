@@ -19,6 +19,7 @@
 
 #include "panelstack.h"
 #include "floatplacement.h"
+#include "LColor.h"
 
 #include "support/lstrings.h"
 #include "bufferparams.h"
@@ -32,10 +33,15 @@
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qslider.h>
+#include <qpixmap.h>
+#include <qcolor.h>
+#include <qcolordialog.h>
 #include "lengthcombo.h"
 
 using lyx::support::token;
+using lyx::support::getVectorFromString;
 
+using std::vector;
 using std::string;
 
 
@@ -61,6 +67,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	mathsModule = new MathsModuleBase(this);
 	floatModule = new FloatPlacement(this, "floatplacement");
 	latexModule = new LaTeXModuleBase(this);
+	branchesModule = new BranchesModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
 	docPS->addPanel(latexModule, _("Document Class"));
@@ -73,6 +80,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	docPS->addPanel(mathsModule, _("Math options"));
 	docPS->addPanel(floatModule, _("Float Placement"));
 	docPS->addPanel(bulletsModule, _("Bullets"));
+	docPS->addPanel(branchesModule, _("Branches"));
 	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
 	docPS->setCurrentPanel(_("Document Class"));
 
@@ -154,6 +162,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	// bullets
 	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
+
+	// branches
+	connect(branchesModule->addBranchPB, SIGNAL(pressed()), this, SLOT(addBranchPressed()));
+	connect(branchesModule->removePB, SIGNAL(pressed()), this, SLOT(deleteBranchPressed()));
+	connect(branchesModule->activatePB, SIGNAL(pressed()), this, SLOT(toggleBranchPressed()));
+	connect(branchesModule->colorPB, SIGNAL(pressed()), this, SLOT(toggleBranchColor()));
+	branchesModule->branchesLV->setSorting(0);
 }
 
 
@@ -286,7 +301,6 @@ void QDocumentDialog::setCustomMargins(int margin)
 	marginsModule->footskipL->setEnabled(custom);
 	marginsModule->footskipLE->setEnabled(custom);
 	marginsModule->footskipUnit->setEnabled(custom);
-
 }
 
 
@@ -403,4 +417,115 @@ void QDocumentDialog::updateNumbering()
 
 	//numberingModule->tocLV->setUpdatesEnabled(true);
 	//numberingModule->tocLV->update();
+}
+
+
+void QDocumentDialog::updateBranchView()
+{
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
+
+	string const all_branches = params.branchlist().allBranches();
+	string const all_selected = params.branchlist().allSelected();
+	branchesModule->branchesLV->clear();
+	if (!all_branches.empty()) {
+		std::vector<string> all = getVectorFromString(all_branches, "|");
+		for (unsigned i = 0; i < all.size(); ++i) {
+			QString const bname = toqstr(all[i].c_str());
+			QString const sel =
+				(params.branchlist().selected(fromqstr(bname))) ? qt_("Yes") : qt_("No");
+			QColor itemcolor(white);
+			string x11hexname = params.branchlist().getColor(fromqstr(bname));
+			if (x11hexname[0] == '#')
+				itemcolor.setNamedColor(toqstr(x11hexname));
+			QPixmap coloritem(30, 10);
+			coloritem.fill(itemcolor);
+			QListViewItem * newItem =
+				new QListViewItem(branchesModule->branchesLV, bname, sel);
+			newItem->setPixmap(2, coloritem);
+		}
+	}
+	form_->changed();
+}
+
+
+void QDocumentDialog::addBranchPressed()
+{
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
+
+	QString const new_branch = branchesModule->newBranchLE->text();
+	if (!new_branch.isEmpty()) {
+		params.branchlist().add(fromqstr(new_branch));
+		branchesModule->newBranchLE->clear();
+		updateBranchView();
+	}
+}
+
+
+void QDocumentDialog::deleteBranchPressed()
+{
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
+
+	QListViewItem * selItem =
+		branchesModule->branchesLV->selectedItem();
+	QString sel_branch;
+	if (selItem != 0)
+		sel_branch = selItem->text(0);
+	if (sel_branch) {
+		params.branchlist().remove(fromqstr(sel_branch));
+		branchesModule->newBranchLE->clear();
+		updateBranchView();
+	}
+}
+
+
+void QDocumentDialog::toggleBranchPressed()
+{
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
+
+	QListViewItem * selItem =
+		branchesModule->branchesLV->selectedItem();
+	QString sel_branch;
+	if (selItem != 0)
+		sel_branch = selItem->text(0);
+	if (sel_branch) {
+		bool selected = false;
+		if (selItem->text(1) == qt_("Yes"))
+			selected = true;
+		params.branchlist().setSelected(fromqstr(sel_branch), !selected);
+		branchesModule->newBranchLE->clear();
+		updateBranchView();
+	}
+}
+
+
+void QDocumentDialog::toggleBranchColor()
+{
+	ControlDocument & cntrl = form_->controller();
+	BufferParams & params = cntrl.params();
+
+	QListViewItem * selItem =
+		branchesModule->branchesLV->selectedItem();
+	QString sel_branch;
+	if (selItem != 0)
+		sel_branch = selItem->text(0);
+	if (sel_branch) {
+		QColor initial;
+		string x11hexname = params.branchlist().getColor(fromqstr(sel_branch));
+		if (x11hexname[0] == '#')
+			initial.setNamedColor(toqstr(x11hexname));
+		QColor ncol(QColorDialog::getColor(initial));
+		if (ncol.isValid()){
+			// FIXME: The color does not apply unless buffer restart
+			// XForms has this hack. What can we do?
+			// lyxColorHandler->getGCForeground(c);
+			// lyxColorHandler->updateColor(c);
+			params.branchlist().setColor(fromqstr(sel_branch), fromqstr(ncol.name()));
+			branchesModule->newBranchLE->clear();
+			updateBranchView();
+		}
+	}
 }

@@ -26,6 +26,7 @@
 #include "ui/NumberingModuleBase.h"
 #include "ui/MarginsModuleBase.h"
 #include "ui/PreambleModuleBase.h"
+#include "ui/BranchesModuleBase.h"
 
 
 class QDocument;
@@ -41,6 +42,7 @@ public:
 
 	void updateFontsize(std::string const &, std::string const &);
 	void updatePagestyle(std::string const &, std::string const &);
+	void updateBranchView();
 
 	void showPreamble();
 
@@ -59,6 +61,10 @@ protected slots:
 	void enableSkip(bool);
 	void portraitChanged();
 	void classChanged();
+	void addBranchPressed();
+	void deleteBranchPressed();
+	void toggleBranchPressed();
+	void toggleBranchColor();
 
 protected:
 	void closeEvent(QCloseEvent * e);
@@ -75,6 +81,7 @@ private:
 	LaTeXModuleBase * latexModule;
 	PreambleModuleBase * preambleModule;
 	FloatPlacement * floatModule;
+	BranchesModuleBase * branchesModule;
 
 	QDocument * form_;
 };

@@ -2,6 +2,7 @@
 
 UIFILES = \
 	BiblioModuleBase.ui \
+	BranchesModuleBase.ui \
 	BulletsModuleBase.ui \
 	TextLayoutModuleBase.ui \
 	LanguageModuleBase.ui \
@@ -16,6 +17,7 @@ UIFILES = \
 	QBibitemDialogBase.ui \
 	QBibtexDialogBase.ui \
 	QBibtexAddDialogBase.ui \
+	QBranchDialogBase.ui \
 	QChangesDialogBase.ui \
 	QCharacterDialogBase.ui \
 	QCitationDialogBase.ui \
@@ -78,6 +80,7 @@ MOCFILES = \
 	QAboutDialog.C QAboutDialog.h \
 	QBibitemDialog.C QBibitemDialog.h \
 	QBibtexDialog.C QBibtexDialog.h \
+	QBranchDialog.C QBranchDialog.h \
 	QBrowseBox.C QBrowseBox.h \
 	QChangesDialog.C QChangesDialog.h \
 	QCharacterDialog.C QCharacterDialog.h \
