@@ -67,8 +67,13 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string token;
 	int retval = 0;
 
-	string tmp = OnlyFilename(ChangeExtension(file, ".log"));
+	string const tmp = OnlyFilename(ChangeExtension(file, ".log"));
 
+#if USE_BOOST_FORMAT
+	boost::format msg(_("ChkTeX warning id # %1$d"));
+#else
+	string const msg(_("ChkTeX warning id # "));
+#endif
 	ifstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {
 		string srcfile;
@@ -82,9 +87,16 @@ int Chktex::scanLogFile(TeXErrors & terr)
 		token = split(token, warno, ':');
 		token = split(token, warning, ':');
 
-		int lineno = lyx::atoi(line);
-		warno = boost::io::str(boost::format(_("ChkTeX warning id # %1$d")) % warno);
-		terr.insertError(lineno, warno, warning);
+		int const lineno = lyx::atoi(line);
+
+#if USE_BOOST_FORMAT
+		msg % warno;
+		terr.insertError(lineno, msg.str(), warning);
+		msg.clear();
+#else
+		terr.insertError(lineno, msg + warno, warning);
+#endif
+
 		++retval;
 	}
 	return retval;

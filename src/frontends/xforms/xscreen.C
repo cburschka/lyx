@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -259,4 +259,4 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	}
 
 	XSync(fl_get_display(), 0);
-} 
+}

@@ -247,7 +247,7 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 #endif
 	if (button == mouse_button::button3)
 		return;
-	
+
 	UpdatableInset::edit(bv, xp, yp, button);
 
 	if (collapsed_) {

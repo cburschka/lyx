@@ -90,9 +90,15 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	// ...
 	string const num("#");
 
+#if USE_BOOST_FORMAT
 	// Generate the label
-	string const label = boost::io::str(boost::format("%1$s %2$s:") % _(fl) % num);
-
+	boost::format frm("%1$s %2$s:");
+	frm % _(fl) % num;
+	string const label = frm.str();
+#else
+	// Generate the label
+	string const label = _(fl) + " " + num + ":";
+#endif
 	Painter & pain = bv->painter();
 	int const w = font_metrics::width(label, f);
 	pain.text(int(x), baseline, label, f);

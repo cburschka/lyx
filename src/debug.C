@@ -105,15 +105,23 @@ Debug::type Debug::value(string const & val)
 void Debug::showLevel(ostream & o, Debug::type level)
 {
 	// Show what features are traced
-	for (int i = 0 ; i < numErrorTags ; ++i)
+	for (int i = 0 ; i < numErrorTags ; ++i) {
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
-		    && errorTags[i].level & level)
+		    && errorTags[i].level & level) {
+#if USE_BOOST_FORMAT
 			o << boost::format(
 				_("Debugging `%1$s' (%2$s)"))
 				% errorTags[i].name
 				% _(errorTags[i].desc)
 			  << endl;
+#else
+			o << _("Debugging `") << errorTags[i].name << "' ("
+			  << _(errorTags[i].desc) << ")"
+			  << endl;
+#endif
+		}
+	}
 }
 
 

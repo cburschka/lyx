@@ -125,11 +125,19 @@ int InsetFloatList::latex(Buffer const * buf, ostream & os, bool, bool) const
 			   << cit->second.listName() << "}\n";
 		}
 	} else {
+#if USE_BOOST_FORMAT
 		os << "%%\\listof{"
 		   << getCmdName()
 		   << "}{"
 		   << boost::format(_("List of %1$s")) % cit->second.name()
 		   << "}\n";
+#else
+		os << "%%\\listof{"
+		   << getCmdName()
+		   << "}{"
+		   << _("List of ") << cit->second.name()
+		   << "}\n";
+#endif
 	}
 	return 1;
 }

@@ -1,7 +1,11 @@
+2002-11-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lots of files: handle USE_BOOST_FORMAT
+
 2002-11-21  John Levon  <levon@movementarian.org>
 
 	* pspell.C: fix compile
- 
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.C (dispatch): use boost::format

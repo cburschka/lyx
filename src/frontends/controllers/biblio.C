@@ -95,6 +95,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	if (authors.empty())
 		return author;
 
+#if USE_BOOST_FORMAT
 	boost::format fmter("");
 	if (authors.size() == 2)
 		fmter = boost::format(_("%1$s and %2$s"))
@@ -103,7 +104,17 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 		fmter = boost::format(_("%1$s et al.")) % familyName(authors[0]);
 	else
 		fmter = boost::format("%1$s") % familyName(authors[0]);
-	return boost::io::str(fmter);
+	return fmter.str();
+#else
+	string msg;
+	if (authors.size() == 2)
+		msg = familyName(authors[0]) + _(" and ") + familyName(authors[1]);
+	else if (authors.size() > 2)
+		msg = familyName(authors[0]) + _("et al.");
+	else
+		msg = familyName(authors[0]);
+	return msg;
+#endif
 }
 
 

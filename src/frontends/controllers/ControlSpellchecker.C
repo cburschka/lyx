@@ -193,13 +193,23 @@ void ControlSpellchecker::clearParams()
 	if (speller_->alive()) {
 		speller_->close();
 
-		boost::format fmter("");
+		message_ = _("Spellchecking completed!") + '\n';
+
+#if USE_BOOST_FORMAT
 		if (count_ != 1) {
-			fmter = boost::format(_("Spellchecking completed!\n%1$d words checked."));
+		boost::format fmter("%1$d words checked.");
+		fmter % count_;
+		message_ += fmter.str();
 		} else {
-			fmter = boost::format(_("Spellchecking completed!\n%1$d word checked."));
+			message_+= _("One word checked.");
 		}
-		message_ = boost::io::str(fmter % count_);
+#else
+		if (count_ != 1) {
+			message_ +=  tostr(count_) + " words checked";
+		} else {
+			message_ = _("One word checked.");
+		}
+#endif
 	} else {
 		message_ = speller_->error();
 		speller_->cleanUp();

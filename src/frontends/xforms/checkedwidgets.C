@@ -45,7 +45,7 @@ void setWidget(bool valid, FL_OBJECT * input, FL_OBJECT * label)
 {
 	// define color to mark invalid input
 	FL_COLOR const alert_col = FL_RED;
-	
+
 	FL_COLOR const lcol = valid ? FL_LCOL : alert_col;
 	if (label->lcol != lcol && isActive(label)) {
 		fl_set_object_lcol(label, lcol);
@@ -61,7 +61,7 @@ void setWidget(bool valid, FL_OBJECT * input, FL_OBJECT * label)
 		fl_set_object_color(input, icol1, FL_MCOL);
 	}
 }
- 
+
 } // namespace anon
 
 

@@ -159,12 +159,22 @@ string const currentState(BufferView * bv)
 		buffer->params.getLyXTextClass().defaultfont();
 	font.reduce(defaultfont);
 
+#if USE_BOOST_FORMAT
 	state << boost::format(_("Font: %1$s")) % font.stateText(&buffer->params);
+#else
+	state << _("Font: ") << font.stateText(&buffer->params);
+#endif
 
 	// The paragraph depth
 	int depth = text->getDepth();
-	if (depth > 0)
+	if (depth > 0) {
+#if USE_BOOST_FORMAT
 		state << boost::format(_(", Depth: %1$d")) % depth;
+#else
+		state << _(", Depth: ") << depth;
+#endif
+	}
+
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.

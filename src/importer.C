@@ -41,7 +41,11 @@ bool Importer::Import(LyXView * lv, string const & filename,
 {
 	string const displaypath = MakeDisplayPath(filename);
 	ostringstream s1;
+#if USE_BOOST_FORMAT
 	s1 << boost::format(_("Importing %1$s...")) % displaypath;
+#else
+	s1 << _("Importing ") << displaypath << _("...");
+#endif
 	lv->message(STRCONV(s1.str()));
 
 	string const lyxfile = ChangeExtension(filename, ".lyx");
@@ -60,9 +64,15 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
+#if USE_BOOST_FORMAT
 			Alert::alert(_("Cannot import file"),
 				     boost::io::str(boost::format(_("No information for importing from %1$s"))
 				   % formats.prettyName(format)));
+#else
+			Alert::alert(_("Cannot import file"),
+				     _("No information for importing from ")
+				     + formats.prettyName(format));
+#endif
 			return false;
 		}
 	} else
@@ -106,7 +116,7 @@ vector<Format const *> const Importer::GetImportableFormats()
 
 vector<string> const Importer::Loaders()
 {
-	vector<string> v;
+	vector<string> v(3);
 	v.push_back("lyx");
 	v.push_back("text");
 	v.push_back("textparagraph");

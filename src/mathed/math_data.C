@@ -215,7 +215,7 @@ Dimension const & MathArray::metrics(MathMetricsInfo & mi) const
 	drawn_  = false;
 
 	mathed_char_dim(mi.base.font, 'I', dim_);
-	if (empty()) 
+	if (empty())
 		return dim_;
 
 	dim_.w = 0;
@@ -400,7 +400,7 @@ void MathArray::notifyCursorLeaves()
 			mathcursor->adjust(i, ar.size() - 1);
 		}
 	}
-		
+
 	// glue adjacent font insets of the same kind
 	for (pos_type i = 0; i + 1 < size(); ++i) {
 		MathFontInset * p = operator[](i).nucleus()->asFontInset();

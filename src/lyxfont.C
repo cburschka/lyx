@@ -526,23 +526,48 @@ string const LyXFont::stateText(BufferParams * params) const
 		ost << _(GUISizeNames[size()]) << ", ";
 	if (color() != LColor::inherit)
 		ost << lcolor.getGUIName(color()) << ", ";
-	if (emph() != INHERIT)
+	if (emph() != INHERIT) {
+#if USE_BOOST_FORMAT
 		ost << boost::format(_("Emphasis %1$s, "))
 			% _(GUIMiscNames[emph()]);
-	if (underbar() != INHERIT)
+#else
+		ost << _("Emphasis ") << _(GUIMiscNames[emph()]) << ", ";
+#endif
+	}
+	if (underbar() != INHERIT) {
+#if USE_BOOST_FORMAT
 		ost << boost::format(_("Underline %1$s, "))
 			% _(GUIMiscNames[underbar()]);
-	if (noun() != INHERIT)
+#else
+		ost << _("Underline ") << _(GUIMiscNames[underbar()]) << ", ";
+#endif
+	}
+	if (noun() != INHERIT) {
+#if USE_BOOST_FORMAT
 		ost << boost::format(_("Noun %1$s, "))
 			% _(GUIMiscNames[noun()]);
+#else
+		ost << _("Noun ") << _(GUIMiscNames[noun()]) << ", ";
+#endif
+	}
 	if (bits == inherit)
 		ost << _("Default") << ", ";
-	if (!params || (language() != params->language))
+	if (!params || (language() != params->language)) {
+#if USE_BOOST_FORMAT
 		ost << boost::format(_("Language: %1$s, "))
 			% _(language()->display());
-	if (number() != OFF)
+#else
+		ost << _("Language: ") << _(language()->display()) << ", ";
+#endif
+	}
+	if (number() != OFF) {
+#if USE_BOOST_FORMAT
 		ost << boost::format(_("  Number %1$s"))
 			% _(GUIMiscNames[number()]);
+#else
+		ost << _("  Number ") << _(GUIMiscNames[number()]);
+#endif
+	}
 
 	string const buf = rtrim(STRCONV(ost.str()), ", ");
 	return buf;

@@ -128,7 +128,11 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return boost::io::str(boost::format(_(" Macro: %1$s: ")) % getInsetName());
+#if USE_BOOST_FORMAT
+	return boost::io::str(boost::format(_(" Macro: %s: ")) % getInsetName());
+#else
+	return _(" Macro: ") + getInsetName() + ": ";
+#endif
 }
 
 

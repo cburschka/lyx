@@ -948,8 +948,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_MENUWRITE:
 		if (!owner->buffer()->isUnnamed()) {
 			ostringstream s1;
+#if USE_BOOST_FORMAT
 			s1 << boost::format(_("Saving document %1$s..."))
 			   % MakeDisplayPath(owner->buffer()->fileName());
+#else
+			s1 << _("Saving document ")
+			   << MakeDisplayPath(owner->buffer()->fileName())
+			   << _("...");
+#endif
 			owner->message(STRCONV(s1.str()));
 			MenuWrite(view(), owner->buffer());
 			s1 << _(" done.");
@@ -1106,8 +1112,13 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			break;
 		}
 		ostringstream str;
+#if USE_BOOST_FORMAT
 		str << boost::format(_("Opening help file %1$s..."))
 		    % MakeDisplayPath(fname);
+#else
+		str << _("Opening help file ")
+		    << MakeDisplayPath(fname) << _("...");
+#endif
 		owner->message(STRCONV(str.str()));
 		view()->buffer(bufferlist.loadLyXFile(fname, false));
 		owner->allowInput();
@@ -1437,7 +1448,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			 x11_name != lcolor.getX11Name(LColor::graphicsbg));
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
-			setErrorMessage(boost::io::str(boost::format(_("Set-color \"%1$s\" failed - color is undefined or may not be redefined")) % lyx_name));
+#if USE_BOOST_FORMAT
+			setErrorMessage(
+				boost::io::str(
+					boost::format(
+						_("Set-color \"%1$s\" failed "
+						  "- color is undefined or "
+						  "may not be redefined"))
+					% lyx_name));
+#else
+			setErrorMessage(_("Set-color ") + lyx_name
+					+ _(" failed - color is undefined"
+					    " or may not be redefined"));
+#endif
 
 			break;
 		}
@@ -1672,7 +1695,11 @@ void LyXFunc::open(string const & fname)
 	}
 
 	ostringstream str;
+#if USE_BOOST_FORMAT
 	str << boost::format(_("Opening document %1$s...")) % disp_fn;
+#else
+	str << _("Opening document ") << disp_fn << _("...");
+#endif
 
 	owner->message(STRCONV(str.str()));
 
@@ -1680,9 +1707,18 @@ void LyXFunc::open(string const & fname)
 	ostringstream str2;
 	if (openbuf) {
 		view()->buffer(openbuf);
+#if USE_BOOST_FORMAT
 		str2 << boost::format(_("Document %1$s opened.")) % disp_fn;
+#else
+		str2 << _("Document ") << disp_fn << _(" opened.");
+#endif
 	} else {
-		str2 << boost::format(_("Could not open document %1$s")) % disp_fn;
+#if USE_BOOST_FORMAT
+		str2 << boost::format(_("Could not open document %1$s"))
+			% disp_fn;
+#else
+		str2 << _("Could not open document ") << disp_fn;
+#endif
 	}
 	owner->message(STRCONV(str2.str()));
 }
@@ -1707,7 +1743,14 @@ void LyXFunc::doImport(string const & argument)
 				initpath = trypath;
 		}
 
-		string const text = boost::io::str(boost::format(_("Select %1$s file to import")) % formats.prettyName(format));
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Select %1$s file to import"));
+		fmt % formats.prettyName(format);
+		string const text = fmt.str();
+#else
+		string const text = _("Select ") + formats.prettyName(format)
+			+ _(" file to import");;
+#endif
 
 		FileDialog fileDlg(owner, text,
 			LFUN_IMPORT,

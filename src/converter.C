@@ -177,9 +177,15 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
+#if USE_BOOST_FORMAT
 		Alert::alert(_("Cannot view file"),
 			     boost::io::str(boost::format(_("No information for viewing %1$s"))
 			   % prettyName(format_name)));
+#else
+		Alert::alert(_("Cannot view file"),
+			     _("No information for viewing ")
+			     + prettyName(format_name));
+#endif
 			   return false;
 	}
 
@@ -706,8 +712,13 @@ bool Converters::convert(Buffer const * buffer,
 			string to = subst(conv.result_dir,
 					  token_base, to_base);
 			if (!lyx::rename(from, to)) {
+#if USE_BOOST_FORMAT
 				Alert::alert(_("Error while trying to move directory:"),
 					   from, boost::io::str(boost::format(_("to %1$s")) % to));
+#else
+				Alert::alert(_("Error while trying to move directory:"),
+					   from, _("to ") + to);
+#endif
 				return false;
 			}
 		}
@@ -715,6 +726,7 @@ bool Converters::convert(Buffer const * buffer,
 	} else
 		return move(outfile, to_file, conv.latex);
 }
+
 
 // If from = /path/file.ext and to = /path2/file2.ext2 then this method
 // moves each /path/file*.ext file to /path2/file2*.ext2'
@@ -742,8 +754,13 @@ bool Converters::move(string const & from, string const & to, bool copy)
 				? lyx::copy(from2, to2)
 				: lyx::rename(from2, to2);
 			if (!moved && no_errors) {
+#if USE_BOOST_FORMAT
 				Alert::alert(_("Error while trying to move file:"),
 					   from2, boost::io::str(boost::format(_("to %1$s")) % to2));
+#else
+				Alert::alert(_("Error while trying to move file:"),
+					   from2, _("to ") + to2);
+#endif
 				no_errors = false;
 			}
 		}
@@ -829,8 +846,13 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		}
 		string head;
 		split(command, head, ' ');
+#if USE_BOOST_FORMAT
 		Alert::alert(boost::io::str(boost::format(_("There were errors during running of %1$s")) % head),
 			   s, t);
+#else
+		Alert::alert(_("There were errors during running of ") + head,
+			   s, t);
+#endif
 		return false;
 	} else if (result & LaTeX::NO_OUTPUT) {
 		string const s = _("The operation resulted in");

@@ -310,10 +310,13 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string const doc = buf->isUnnamed()
 		? OnlyFilename(buf->fileName()) : buf->fileName();
 
+#if USE_BOOST_FORMAT
 	lyxerr << boost::format(_("LyX: Attempting to save document %1$s"))
 		% doc
 	       << endl;
-
+#else
+	lyxerr << _("LyX: Attempting to save document ") << doc << endl;
+#endif
 	// We try to save three places:
 
 	// 1) Same place as document. Unless it is an unnamed doc.

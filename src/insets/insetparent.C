@@ -42,7 +42,11 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 
 string const InsetParent::getScreenLabel(Buffer const *) const
 {
-	return boost::io::str(boost::format(_("Parent: %1$s")) % getContents());
+#if USE_BOOST_FORMAT
+	return boost::io::str(boost::format(_("Parent: %s")) % getContents());
+#else
+	return _("Parent: ") + getContents();
+#endif
 }
 
 

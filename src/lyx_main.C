@@ -101,7 +101,15 @@ LyX::LyX(int & argc, char * argv[])
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
-			lyxerr << boost::format(_("Wrong command line option `%1$s'. Exiting.")) % argv[argi] << endl;
+#if USE_BOOST_FORMAT
+			lyxerr << boost::format(_("Wrong command line option `%1$s'. Exiting."))
+				% argv[argi]
+			       << endl;
+#else
+			lyxerr << _("Wrong command line option `")
+			       << argv[argi] << _("'. Exiting.")
+			       << endl;
+#endif
 			exit(1);
 		}
 	}
@@ -353,8 +361,16 @@ void LyX::init(bool gui)
 					<< "Giving up." << endl;
 				exit(1);
 			}
-			lyxerr << boost::format(_("Using built-in default %1$s but expect problems.")) % LYX_DIR
+#if USE_BOOST_FORMAT
+			lyxerr << boost::format(_("Using built-in default %1$s"
+						  " but expect problems."))
+				% LYX_DIR
 			       << endl;
+#else
+			lyxerr << _("Using built-in default ") << LYX_DIR
+			       << _(" but expect problems.")
+			       << endl;
+#endif
 		} else {
 			lyxerr << _("Expect problems.") << endl;
 		}
@@ -602,13 +618,29 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 		return;
 	}
 
-	lyxerr << boost::format(_("LyX: Creating directory %1$s and running configure...")) % user_lyxdir << endl;
+#if USE_BOOST_FORMAT
+	lyxerr << boost::format(_("LyX: Creating directory %1$s"
+				  " and running configure..."))
+		% user_lyxdir
+	       << endl;
+#else
+	lyxerr << _("LyX: Creating directory ") << user_lyxdir
+	       << _(" and running configure...")
+	       << endl;
+#endif
 
 	if (!createDirectory(user_lyxdir, 0755)) {
 		// Failed, let's use $HOME instead.
 		user_lyxdir = GetEnvPath("HOME");
-		lyxerr << boost::format(_("Failed. Will use %1$s instead.")) % user_lyxdir
+#if USE_BOOST_FORMAT
+		lyxerr << boost::format(_("Failed. Will use %1$s instead."))
+			% user_lyxdir
 		       << endl;
+#else
+		lyxerr << _("Failed. Will use ") << user_lyxdir <<
+			_(" instead.")
+		       << endl;
+#endif
 		return;
 	}
 
@@ -628,9 +660,15 @@ bool LyX::readRcFile(string const & name)
 		lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
 		if (lyxrc.read(lyxrc_path) < 0) {
+#if USE_BOOST_FORMAT
 			Alert::alert(_("LyX Warning!"),
 				   boost::io::str(boost::format(_("Error while reading %1$s.")) % lyxrc_path),
 				   _("Using built-in defaults."));
+#else
+			Alert::alert(_("LyX Warning!"),
+				   _("Error while reading ") + lyxrc_path,
+				   _("Using built-in defaults."));
+#endif
 			return false;
 		}
 		return true;
@@ -742,7 +780,14 @@ int parse_dbg(string const & arg, string const &)
 		Debug::showTags(lyxerr);
 		exit(0);
 	}
-	lyxerr << boost::format(_("Setting debug level to %1$s")) % arg << endl;
+#if USE_BOOST_FORMAT
+	lyxerr << boost::format(_("Setting debug level to %1$s"))
+		% arg
+	       << endl;
+#else
+	lyxerr << _("Setting debug level to ") << arg << endl;
+#endif
+
 	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
 	return 1;

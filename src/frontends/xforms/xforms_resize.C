@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -34,7 +34,7 @@ double get_scaling_factor(FL_FORM * form)
     int bw;
 
 //      if (fl_no_connection)
-//  	return 1.0f;
+//	return 1.0f;
 
     max_factor = factor = 1.0f;
     for (ob = form->first; ob; ob = ob->next)
@@ -45,8 +45,8 @@ double get_scaling_factor(FL_FORM * form)
 	    ob->boxtype != FL_NO_BOX &&
 	    (ob->boxtype != FL_FLAT_BOX || ob->objclass == FL_MENU))
 	{
-	    fl_get_string_dimension(ob->lstyle, ob->lsize, ob->label, 
-                       strlen(ob->label), &sw, &sh);
+	    fl_get_string_dimension(ob->lstyle, ob->lsize, ob->label,
+		       strlen(ob->label), &sw, &sh);
 
 	    bw = (ob->boxtype == FL_UP_BOX || ob->boxtype == FL_DOWN_BOX) ?
 		FL_abs(ob->bw) : 1;
@@ -174,7 +174,7 @@ void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 double get_scale_to_fit(FL_FORM * form)
 {
 	lyx::Assert(form);
-	
+
 	double factor = get_scaling_factor(form);
 	for (FL_OBJECT * ob = form->first; ob; ob = ob->next) {
 		if (ob->objclass == FL_TABFOLDER)
@@ -188,12 +188,12 @@ double get_scale_to_fit(FL_FORM * form)
 void scale_form_horizontally(FL_FORM * form, double factor)
 {
 	lyx::Assert(form);
-	
+
 	if (factor <= 1.0)
 		return;
 
 	fl_scale_form(form, factor, 1);
-	
+
 	for (FL_OBJECT * ob = form->first; ob; ob = ob->next) {
 		if (ob->objclass == FL_TABFOLDER)
 			scale_tabfolder_horizontally(ob, factor);

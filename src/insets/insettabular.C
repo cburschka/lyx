@@ -1931,7 +1931,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			updateLocal(bv, INIT, true);
 		}
 
-		if (vallen.zero() 
+		if (vallen.zero()
 		    && tabular->GetAlignment(actcell, true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(bv, LyXTabular::ALIGN_CENTER, string());
 		else if (!vallen.zero()

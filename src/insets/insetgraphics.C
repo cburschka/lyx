@@ -666,9 +666,14 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
 		if (!IsFileReadable(ChangeExtension(outfile_base, to)))
+#if USE_BOOST_FORMAT
 			Alert::alert(_("Cannot convert Image (not existing file?)"),
 				     boost::io::str(boost::format(_("No information for converting from %1$s to %2$s"))
 				% from % to));
+#else
+			Alert::alert(_("Cannot convert Image (not existing file?)"),
+				     _("No information for converting from ") + from + " to " + to);
+#endif
 	}
 
 	return RemoveExtension(temp_file);
@@ -757,9 +762,15 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
+#if USE_BOOST_FORMAT
 	os << '<'
 	   << boost::format(_("Graphic file: %1$s")) % params().filename
 	   << ">\n";
+#else
+	os << '<'
+	   << _("Graphic file: ") << params().filename
+	   << ">\n";
+#endif
 	return 0;
 }
 

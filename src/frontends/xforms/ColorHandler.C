@@ -86,23 +86,50 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 	// Look up the RGB values for the color, and an approximate
 	// color that we can hope to get on this display.
 	if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
-		lyxerr << boost::format(_("LyX: Unknown X11 color %1$s for %2$s\n"
-					  "     Using black instead, sorry!"))
-			% s % lcolor.getGUIName(c) << endl;
+#if USE_BOOST_FORMAT
+		lyxerr << boost::format(
+			_("LyX: Unknown X11 color %1$s for %2$s\n"
+			  "     Using black instead, sorry!"))
+			% s
+			% lcolor.getGUIName(c)
+		       << endl;
+#else
+		lyxerr << _("LyX: Unknown X11 color ") << s << _(" for ")
+		       << lcolor.getGUIName(c)
+		       << _("\n     Using black instead, sorry!") << endl;
+#endif
 		unsigned long bla = BlackPixel(display,
 					       DefaultScreen(display));
 		val.foreground = bla;
 	// Try the exact RGB values first, then the approximate.
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
 		if (lyxerr.debugging(Debug::GUI)) {
-			lyxerr << boost::format(_("LyX: X11 color %1$s allocated for %2$s"))
-				% s % lcolor.getGUIName(c)
+#if USE_BOOST_FORMAT
+			lyxerr << boost::format(
+				_("LyX: X11 color %1$s allocated for %2$s"))
+				% s
+				% lcolor.getGUIName(c)
 			       << endl;
+#else
+			lyxerr << _("LyX: X11 color ") << s
+			       << _(" allocated for ") << lcolor.getGUIName(c)
+			       << endl;
+#endif
 		}
 		val.foreground = xcol.pixel;
 	} else if (XAllocColor(display, colormap, &ccol)) {
-		lyxerr << boost::format(_("LyX: Using approximated X11 color %1$s allocated for %2$s"))
-			% s % lcolor.getGUIName(c) << endl;
+#if USE_BOOST_FORMAT
+		lyxerr << boost::format(
+			_("LyX: Using approximated X11 color %1$s"
+			  " allocated for %2$s"))
+			% s
+			% lcolor.getGUIName(c)
+		       << endl;
+#else
+		lyxerr << _("LyX: Using approximated X11 color ") << s
+		       << _(" allocated for ") << lcolor.getGUIName(c)
+		       << endl;
+#endif
 		val.foreground = xcol.pixel;
 	} else {
 		// Here we are traversing the current colormap to find
@@ -142,6 +169,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 			}
 		}
 
+#if USE_BOOST_FORMAT
 		lyxerr << boost::format(
 			_("LyX: Couldn't allocate '%1$s' for %2$s"
 			  " with (r,g,b)=(%3$d,%4$d,%5$d).\n"
@@ -156,7 +184,20 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 			% cmap[closest_pixel].blue
 			% closest_pixel
 		       << endl;
-
+#else
+		lyxerr << _("LyX: Couldn't allocate '") << s
+		       << _("' for ") << lcolor.getGUIName(c)
+		       << _(" with (r,g,b)=(")
+		       << xcol.red << "," << xcol.green << "," << xcol.blue
+		       << _(").\n")
+		       << _("     Using closest allocated color with (r,g,b)=(")
+		       << cmap[closest_pixel].red << ","
+		       << cmap[closest_pixel].green << ","
+		       << cmap[closest_pixel].blue
+		       << _(") instead.\nPixel [")
+		       << closest_pixel << _("] is used.")
+		       << endl;
+#endif
 		val.foreground = cmap[closest_pixel].pixel;
 	}
 

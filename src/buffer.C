@@ -360,8 +360,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += tostr(unknown_layouts);
 			s += _(" paragraphs");
 		}
+#if USE_BOOST_FORMAT
 		Alert::alert(_("Textclass Loading Error!"), s,
 			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
+#else
+		Alert::alert(_("Textclass Loading Error!"), s,
+			     _("When reading ") + fileName());
+#endif
 	}
 
 	if (unknown_tokens > 0) {
@@ -372,8 +377,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += tostr(unknown_tokens);
 			s += _(" unknown tokens");
 		}
+#if USE_BOOST_FORMAT
 		Alert::alert(_("Textclass Loading Error!"), s,
 			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
+#else
+		Alert::alert(_("Textclass Loading Error!"), s,
+			     _("When reading ") +  fileName());
+#endif
 	}
 
 	return the_end_read;
@@ -608,9 +618,17 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
+#if USE_BOOST_FORMAT
 			Alert::alert(_("Textclass error"),
 				boost::io::str(boost::format(_("The document uses an unknown textclass \"%1$s\".")) % lex.getString()),
 				_("LyX will not be able to produce output correctly."));
+#else
+			Alert::alert(
+				_("Textclass error"),
+				_("The document uses an unknown textclass ")
+				+ lex.getString(),
+				_("LyX will not be able to produce output correctly."));
+#endif
 			params.textclass = 0;
 		}
 		if (!params.getLyXTextClass().load()) {
@@ -619,10 +637,17 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// or stop loading the file.
 			// I can substitute but I don't see how I can
 			// stop loading... ideas??  ARRae980418
+#if USE_BOOST_FORMAT
 			Alert::alert(_("Textclass Loading Error!"),
 				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
 				   params.getLyXTextClass().name()),
 				   _("-- substituting default"));
+#else
+			Alert::alert(_("Textclass Loading Error!"),
+				     _("Can't load textclass ")
+				     + params.getLyXTextClass().name(),
+				     _("-- substituting default"));
+#endif
 			params.textclass = 0;
 		}
 	} else if (token == "\\options") {
@@ -926,8 +951,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// This should be insurance for the future: (Asger)
 		++unknown_tokens;
 		lex.eatLine();
-		string const s = boost::io::str(boost::format(_("Unknown token: %1$s %2$s\n")) % token
-			% lex.text());
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
+		fmt % token % lex.text();
+		string const s = fmt.str();
+#else
+		string const s = _("Unknown token: ") + token
+			+ " " + lex.text() + "\n";
+#endif
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.
 		InsetError * new_inset = new InsetError(s);
@@ -938,6 +969,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 	return the_end_read;
 }
+
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,

@@ -535,7 +535,7 @@ string Parser::parse_verbatim_option()
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
-			} else 
+			} else
 				res += t.asString();
 		}
 	}
@@ -553,7 +553,7 @@ string Parser::parse_verbatim_item()
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
 			}
-			else 
+			else
 				res += t.asString();
 		}
 	}
@@ -1071,7 +1071,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 #warning A hack...
 #endif
 			string s;
-			while (1) {
+			while (true) {
 				Token const & t = getToken();
 				if (!good()) {
 					putback();
@@ -1168,7 +1168,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				else if (l->inset == "parbox") {
 					// read optional positioning and width
 					string pos   = parse_verbatim_option();
- 					string width = parse_verbatim_item();
+					string width = parse_verbatim_item();
 					cell->push_back(createMathInset(t.cs()));
 					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
 					cell->back().nucleus()->asParboxInset()->setPosition(pos);
@@ -1252,4 +1252,3 @@ void mathed_parse_normal(MathGridInset & grid, string const & str)
 	istringstream is(str.c_str());
 	Parser(is).parse1(grid, 0, MathInset::MATH_MODE, false);
 }
-
