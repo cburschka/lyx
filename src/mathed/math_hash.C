@@ -200,7 +200,7 @@ latexkeys const wordlist[] =
 	{"phi",  LM_TK_SYM, LM_phi, LMB_NONE},
 	{"pi",  LM_TK_SYM, LM_pi, LMB_NONE},
 	{"pm",  LM_TK_SYM, LM_pm, LMB_OPERATOR},
-	{"pmod",  LM_TK_PMOD, 0, LMB_NONE},
+	//{"pmod",  LM_TK_SYM, 0, LMB_NONE},
 	{"prec",  LM_TK_SYM, LM_prec, LMB_RELATION},
 	{"preceq",  LM_TK_SYM, LM_preceq, LMB_RELATION},
 	{"prime",  LM_TK_SYM, LM_prime, LMB_NONE},

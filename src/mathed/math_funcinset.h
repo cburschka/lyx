@@ -15,7 +15,7 @@
 class MathFuncInset : public MathInset {
 public:
 	///
-	explicit MathFuncInset(string const & nm, MathInsetTypes ot = LM_OT_FUNC);
+	explicit MathFuncInset(string const & nm);
 	///
 	virtual MathInset * clone() const;
 	///
@@ -26,8 +26,5 @@ public:
 	void writeNormal(std::ostream &) const;
 	///
 	void metrics(MathStyles st);
-private:
-	///
-	bool lims_;
 };
 #endif

@@ -84,10 +84,6 @@ enum MathTokenEnum
 	///
 	LM_TK_STY,
 	///
-	LM_TK_PMOD,
-	///
-	LM_TK_BMOD,
-	///
 	LM_TK_MACRO,
 	///
 	LM_TK_SPECIAL,

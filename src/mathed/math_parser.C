@@ -631,9 +631,8 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_BIGSYM:  
-			//lyxerr << "clearing limits " << limits << "\n";
+		case LM_TK_FUNCLIM:
 			limits = 0;
-			//lyxerr << "found bigop '" << yylval.l->name << "'\n";
 			array.push_back(new MathBigopInset(yylval.l->name, yylval.l->id));
 			break;
 		
@@ -746,15 +745,10 @@ void mathed_parse(MathArray & array, unsigned flags)
 			curr_num = false;
 			break;
 		
-		case LM_TK_PMOD:
 		case LM_TK_FUNC:
 			array.push_back(new MathFuncInset(yylval.l->name));
 			break;
 		
-		case LM_TK_FUNCLIM:
-			array.push_back(new MathFuncInset(yylval.l->name, LM_OT_FUNCLIM));
-			break;
-
 		case LM_TK_UNDEF: 
 			if (MathMacroTable::hasTemplate(yytext)) {
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
@@ -763,7 +757,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				array.push_back(m);
 				m->metrics(LM_ST_TEXT);
 			} else
-				array.push_back(new MathFuncInset(yytext, LM_OT_UNDEF));
+				array.push_back(new MathFuncInset(yytext));
 			break;
 		
 		case LM_TK_END:

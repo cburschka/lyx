@@ -602,7 +602,10 @@ void MathCursor::interpret(string const & s)
 	//lyxerr << "interpret: '" << s << "'\n";
 	//lyxerr << "in: " << in_word_set(s) << " \n";
 
-	if (s.size() && (s[0] == '^' || s[0] == '_')) {
+	if (s.empty())
+		return;
+
+	if (s[0] == '^' || s[0] == '_') {
 		bool const up = (s[0] == '^');
 		selCut();	
 		MathScriptInset * p = prevScriptInset();
@@ -659,10 +662,11 @@ void MathCursor::interpret(string const & s)
 			p = pp;
 		}
 		else
-			p = new MathFuncInset(s, LM_OT_UNDEF);
+			p = new MathFuncInset(s);
 	} else {
 		switch (l->token) {
 			case LM_TK_BIGSYM: 
+			case LM_TK_FUNCLIM:
 				p = new MathBigopInset(s, l->id);
 				break;
 				
@@ -689,10 +693,6 @@ void MathCursor::interpret(string const & s)
 
 			case LM_TK_DECORATION:
 				p = new MathDecorationInset(l->name, l->id);
-				break;
-
-			case  LM_TK_FUNCLIM:
-				p = new MathFuncInset(l->name, LM_OT_FUNCLIM);
 				break;
 
 			case LM_TK_SPACE:

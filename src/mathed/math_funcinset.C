@@ -14,11 +14,9 @@ using std::ostream;
 extern LyXFont WhichFont(short type, int size);
 
 
-MathFuncInset::MathFuncInset(string const & nm, MathInsetTypes ot)
-	: MathInset(0, nm, ot)
-{
-	lims_ = (getType() == LM_OT_FUNCLIM);
-}
+MathFuncInset::MathFuncInset(string const & nm)
+	: MathInset(0, nm)
+{}
 
 
 MathInset * MathFuncInset::clone() const

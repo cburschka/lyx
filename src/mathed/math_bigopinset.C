@@ -32,10 +32,10 @@ void MathBigopInset::writeNormal(ostream & os) const
 
 void MathBigopInset::metrics(MathStyles st)
 {
-	//cerr << "\nBigopDraw\n";
+	//cerr << "\nBigopDraw: " << name_ << ": " << sym_ << "\n";
 	size(st);
 	
-	if (sym_ < 256 || sym_ == LM_oint) {
+	if (sym_ && (sym_ < 256 || sym_ == LM_oint)) {
 		ssym_ = string();
 		ssym_ += (sym_ == LM_oint) ? LM_int : sym_;
 		code_ = LM_TC_BSYM;

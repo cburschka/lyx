@@ -117,8 +117,6 @@ enum MathInsetTypes  {
 	/// A LaTeX macro
 	LM_OT_UNDEF,
 	///
-	LM_OT_FUNC,
-	///
 	LM_OT_FUNCLIM,
 	///
 	LM_OT_MACRO,
