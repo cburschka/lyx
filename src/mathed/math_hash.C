@@ -6,19 +6,11 @@
 #include "support/filetools.h" // LibFileSearch
 #include "support/lyxfunctional.h"
 
-#include <vector>
+#include <map>
 #include <algorithm>
 
-using std::endl;
-
-bool operator<(const latexkeys & a, const latexkeys & b)
-{
-	return string(a.name) < string(b.name);
-}
 
 namespace {
-
-// This lists needs to remain sorted all the time!
 
 struct latexkeys_a {
 	///
@@ -141,13 +133,39 @@ latexkeys_a wordlist_array[] =
 	{"{",  LM_TK_SPECIAL, '{'},
 	{"|",  LM_TK_UNDEF, '|'},
 	{"}",  LM_TK_SPECIAL, '}'},
-	{"", LM_TK_SPECIAL, 0}
 };
 
 
-std::vector<latexkeys> wordlist;
+std::map<string, latexkeys> wordlist;
 
-bool initialized = false;
+
+
+MathTokenEnum tokenEnum(const string & font)
+{
+	if (font == "cmr")
+		return LM_TK_CMR;
+	if (font == "cmsy")
+		return LM_TK_CMSY;
+	if (font == "cmm")
+		return LM_TK_CMM;
+	if (font == "cmex")
+		return LM_TK_CMEX;
+	if (font == "msa")
+		return LM_TK_MSA;
+	if (font == "msb")
+		return LM_TK_MSB;
+	return LM_TK_SYM;
+}
+
+MathSymbolTypes symbolType(const string & type)
+{
+	if (type == "mathrel")
+		return LMB_RELATION;
+	if (type == "mathbin")
+		return LMB_OPERATOR;	
+	return LMB_NONE;
+}
+
 
 } // namespace anon
 
@@ -156,84 +174,53 @@ void ReadSymbols(string const & filename)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
-	while (lex.isOK()) {
+	while (lex.isOK() && lex.next()) {
 		latexkeys tmp;
-		string font;
-		string type;
-		
+		tmp.name = lex.getString();
 		if (lex.next())
-			tmp.name = lex.getString();
-		else
-			break;
-
-		if (lex.next())
-			font = lex.getString();
+			tmp.token = tokenEnum(lex.getString());
 		if (lex.next())
 			tmp.latex_font_id = lex.getInteger();
 		if (lex.next())
 			tmp.id = lex.getInteger();
 		if (lex.next())
-			type = lex.getString();
-
-		if (font == "cmr")
-			tmp.token = LM_TK_CMR;
-		else if (font == "cmsy")
-			tmp.token = LM_TK_CMSY;
-		else if (font == "cmm")
-			tmp.token = LM_TK_CMM;
-		else if (font == "cmex")
-			tmp.token = LM_TK_CMEX;
-		else if (font == "msa")
-			tmp.token = LM_TK_MSA;
-		else if (font == "msb")
-			tmp.token = LM_TK_MSB;
-		else
-			tmp.token = LM_TK_SYM;
-
-		if (type == "mathrel")
-			tmp.type = LMB_RELATION;
-		else if (type == "mathbin")
-			tmp.type = LMB_OPERATOR;
-		else
-			tmp.type = LMB_NONE;
-
-		wordlist.push_back(tmp);
+			tmp.type = symbolType(lex.getString());
+		wordlist[tmp.name] = tmp;
 	}
 }
 
 
-void InitSymbols()
+void initSymbols()
 {
-	for (latexkeys_a * p = wordlist_array; !string(p->name).empty(); ++p) {
+	unsigned const n = sizeof(wordlist_array) / sizeof(wordlist_array[0]);
+	for (latexkeys_a * p = wordlist_array; p != wordlist_array + n; ++p) {
 		latexkeys tmp;
-		tmp.name   = p->name;
-		tmp.token  = p->token;
-		tmp.id     = p->id;
-		tmp.type   = LMB_NONE;
+		tmp.name          = p->name;
+		tmp.token         = p->token;
+		tmp.id            = p->id;
+		tmp.type          = LMB_NONE;
 		tmp.latex_font_id = 0;
-		wordlist.push_back(tmp);
+		wordlist[p->name] = tmp;
 	}
 
 	lyxerr[Debug::MATHED] << "Reading symbols file\n";
 	string const file = LibFileSearch(string(), "symbols");
 	if (file.empty())
-		lyxerr << "Could not find symbols file" << endl;
+		lyxerr << "Could not find symbols file\n";
 	else
 		ReadSymbols(file);
-
-	std::sort(wordlist.begin(), wordlist.end());
 }
 
 
 latexkeys const * in_word_set(string const & str)
 {
+	static bool initialized = false;
+
 	if (!initialized) {
-		InitSymbols();
+		initSymbols();
 		initialized = true;
 	}
 
-	std::vector<latexkeys>::iterator it =
-		std::find_if(wordlist.begin(), wordlist.end(),
-			     lyx::compare_memfun(&latexkeys::Name, str));
-	return  (it != wordlist.end()) ? &(*it) : 0;
+	std::map<string, latexkeys>::iterator it = wordlist.find(str);
+	return (it != wordlist.end()) ? &(it->second) : 0;
 }

@@ -28,7 +28,6 @@
 #include "math_defs.h"
 #include "symbol_def.h"
 
-class MathArray;
 class MathMatrixInset;
 class MathMacroTemplate;
 class LyXLex;
@@ -129,8 +128,6 @@ struct latexkeys {
 	unsigned char latex_font_id;
 	///
 	MathSymbolTypes type;
-	///
-	string const & Name() const { return name;}
 };
 
 
