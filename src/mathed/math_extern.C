@@ -194,7 +194,7 @@ bool extractNumber(MathArray const & ar, int & i)
 	string s;
 	MathTextCodes c;
 	charSequence(ar.begin(), ar.end(), s, c);
-	std::istringstream is(s);
+	std::istringstream is(s.c_str());
 	is >> i;
 	return is;
 }
@@ -580,7 +580,7 @@ bool extractDiffExponent(MathArray::iterator it, int & i)
 	string s;
 	if (!extractString((*it).nucleus(), s))
 		return false;
-	std::istringstream is(s);
+	std::istringstream is(s.c_str());
 	is >> i;
 	return is;
 }
@@ -638,7 +638,7 @@ void extractDiff(MathArray & ar)
 				// things like   d.../dx^n
 				int mult = 1;
 				if (extractNumber(script->up().data_, mult)) {
-					lyxerr << "mult: " << mult << endl;
+					lyxerr << "mult: " << mult << std::endl;
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathArray(dt + 1, st));
 				}

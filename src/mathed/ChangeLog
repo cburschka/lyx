@@ -1,3 +1,8 @@
+2001-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_extern.C (extractNumber): 
+	(extractDiffExponent): add ugly .c_str()
+
 2001-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_arrayinset.C (MathArrayInset): 
