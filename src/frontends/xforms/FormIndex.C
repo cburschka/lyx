@@ -56,10 +56,6 @@ void FormIndex::build()
 {
 	dialog_.reset(build_index());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
 
         // Manage the ok, apply, restore and cancel/close buttons

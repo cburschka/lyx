@@ -53,10 +53,6 @@ void FormBibtex::build()
 {
 	dialog_.reset(build_bibtex());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_input_return(dialog_->database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->style, FL_RETURN_CHANGED);
 

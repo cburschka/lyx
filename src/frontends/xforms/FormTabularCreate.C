@@ -58,10 +58,6 @@ void FormTabularCreate::build()
 {
 	dialog_.reset(build_tabular_create());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_slider_bounds(dialog_->slider_rows, 1, 50);
 	fl_set_slider_bounds(dialog_->slider_columns, 1, 50);
 	fl_set_slider_value(dialog_->slider_rows, 5);

@@ -31,7 +31,11 @@ SRCS := form_bibitem.fd \
 	form_graphics.fd \
 	form_include.fd \
 	form_index.fd \
-	form_maths.fd \
+	form_maths_deco.fd \
+	form_maths_delim.fd \
+	form_maths_matrix.fd \
+	form_maths_panel.fd \
+	form_maths_space.fd \
 	form_paragraph.fd \
 	form_preamble.fd \
 	form_preferences.fd \

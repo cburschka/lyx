@@ -49,9 +49,6 @@ FL_FORM * FormSearch::form() const
 void FormSearch::build()
 {
    dialog_.reset(build_search());
-   // Workaround dumb xforms sizing bug
-   minw_ = form()->w;
-   minh_ = form()->h;
 	
    // Manage the ok, apply and cancel/close buttons
    bc_.setCancel(dialog_->button_cancel);

@@ -61,10 +61,6 @@ void FormGraphics::build()
 {
 	dialog_.reset(build_graphics());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	// This is the place to add settings of the dialog that did not go
 	// to the .fd file.
 

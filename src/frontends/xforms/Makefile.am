@@ -13,10 +13,10 @@ LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
-	Color.C \
-	Color.h \
 	bmtable.c \
 	bmtable.h \
+	Color.C \
+	Color.h \
 	combox.C \
 	combox.h \
 	Dialogs.C \
@@ -86,10 +86,28 @@ libxforms_la_SOURCES = \
 	FormInset.h \
 	FormLog.C \
 	FormLog.h \
-	FormMaths.C \
-	FormMaths.h \
-	form_maths.C \
-	form_maths.h \
+	FormMathsBitmap.C \
+	FormMathsBitmap.h \
+	FormMathsDeco.C \
+	FormMathsDeco.h \
+	form_maths_deco.C \
+	form_maths_deco.h \
+	FormMathsDelim.C \
+	FormMathsDelim.h \
+	form_maths_delim.C \
+	form_maths_delim.h \
+	FormMathsMatrix.C \
+	FormMathsMatrix.h \
+	form_maths_matrix.C \
+	form_maths_matrix.h \
+	FormMathsPanel.C \
+	FormMathsPanel.h \
+	form_maths_panel.C \
+	form_maths_panel.h \
+	FormMathsSpace.C \
+	FormMathsSpace.h \
+	form_maths_space.C \
+	form_maths_space.h \
 	FormMinipage.C \
 	FormMinipage.h \
 	form_minipage.C \

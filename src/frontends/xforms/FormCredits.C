@@ -47,10 +47,6 @@ void FormCredits::build()
 {
    dialog_.reset(build_credits());
 
-   // Workaround dumb xforms sizing bug
-   minw_ = form()->w;
-   minh_ = form()->h;
-
    // Manage the cancel/close button
    bc_.setCancel(dialog_->button_cancel);
    bc_.refresh();

@@ -106,10 +106,6 @@ void FormTabular::build()
 	cell_options_.reset(build_cell_options());
 	longtable_options_.reset(build_longtable_options());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_input_return(column_options_->input_column_width,
 			    FL_RETURN_END);
 	fl_set_input_return(column_options_->input_special_alignment,

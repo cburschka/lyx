@@ -1,3 +1,64 @@
+2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBaseDeprecated.[Ch]: rename title as title_.
+	
+	* FormBaseDeprecated.C: restore John's trick to give the dialog a border
+	with limited functionality. It got lost in the MVC merge.
+
+	* FormBaseDeprecated.C:
+	* FormBase.C (show): moved initialisation of minw_, minh_ here.
+
+	* FormBibitem.C (build):
+	* FormBibtex.C (build):
+	* FormBrowser.C (build):
+	* FormCharacter.C (build):
+	* FormCitation.C (build):
+	* FormCopyright.C (build):
+	* FormCredits.C (build):
+	* FormDocument.C (build):
+	* FormError.C (build):
+	* FormExternal.C (build):
+	* FormGraphics.C (build):
+	* FormInclude.C (build):
+	* FormIndex.C (build):
+	* FormMinipage.C (build):
+	* FormParagraph.C (build):
+	* FormPreamble.C (build):
+	* FormPreferences.C (build):
+	* FormPrint.C (build):
+	* FormRef.C (build):
+	* FormSearch.C (build):
+	* FormTabular.C (build):
+	* FormTabularCreate.C (build):
+	* FormToc.C (build):
+	* FormUrl.C (build): removed initialisation of minw_, minh_.
+	
+	* The Maths Panel stuff no longer causes a crash on exit from LyX.
+
+	* FormMaths.[Ch]:
+	* forms/form_maths.fd: removed.
+
+	* forms/form_maths_delim.fd:
+	* forms/form_maths_deco.fd:
+	* forms/form_maths_matrix.fd:
+	* forms/form_maths_space.fd:
+	* forms/form_maths_panel.fd: new files.
+	Split contents of form_maths.fd into 5 new files, one for each form.
+
+	* MathsSymbols.[Ch]: remove class BitmapMenu, renamed and reworked as
+	class FormMathsBitmap in FormMathsBitmap.[Ch].
+
+	* FormMathsPanel.[Ch]:
+	* FormMathsBitmap.[Ch]:
+	* FormMathsDeco.[Ch]:
+	* FormMathsDelim.[Ch]:
+	* FormMathsMatrix.[Ch]:
+	* FormMathsSpace.[Ch]: Split contents of FormMaths into new files,
+	one for each popup. Rewrite so that all the new classes are derived from
+	FormBaseBD. Clean up the logic in the process (I hope!).
+
+	* Makefile.am: added new fils, removed redundant ones.
+
 2001-03-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FormMinipage.C (FormMinipage): add SigC:: namespace specifier.
@@ -16,7 +77,7 @@
 
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* FormMaths.[Ch]: make the FD_ structs to private. Create appropriate
+	* FormMaths.[Ch]: make the FD_ structs private. Create appropriate
 	callback methods.
 
 	* forms/form_maths.fd: change C_FormBaseCancelCB to

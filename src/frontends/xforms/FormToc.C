@@ -76,11 +76,6 @@ void FormToc::build()
 		fl_addto_choice(dialog_->choice_toc_type, cit->first.c_str());
 	}
 #endif
-	// Don't need to limit size of this dialog
-	// (but fixing min size is a GOOD thing).
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
 
         // Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);

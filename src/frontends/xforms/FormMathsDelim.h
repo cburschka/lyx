@@ -1,0 +1,50 @@
+/** 
+ * \file FormMathsDelim.h
+ * Copyright 2001 The LyX Team.
+ * See the file COPYING.
+ * 
+ * \author Alejandro Aguilar Sierra 
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+#ifndef FORM_MATHSDELIM_H
+#define FORM_MATHSDELIM_H
+
+#include <boost/smart_ptr.hpp>
+
+#ifdef __GNUG_
+#pragma interface
+#endif
+
+#include "FormMathsPanel.h"
+
+struct FD_form_maths_delim;
+
+/** 
+ * This class provides an XForms implementation of the maths delim.
+ */
+class FormMathsDelim : public FormMathsSub {
+public:
+	///
+	FormMathsDelim(LyXView *, Dialogs *, FormMathsPanel const &);
+
+private:
+	/// Build the popup
+	virtual void build();
+	/// input handler
+	virtual bool input(FL_OBJECT *, long);
+	/// Apply from dialog (modify or create inset)
+	virtual void apply();
+
+	/// Pointer to the actual instantiation of the xforms form
+	virtual FL_FORM * form() const;
+
+	// build the popup
+	FD_form_maths_delim * build_maths_delim();
+	
+	// Real GUI implementation
+	boost::scoped_ptr<FD_form_maths_delim> dialog_;
+};
+
+#endif //  FORM_MATHSDELIM_H

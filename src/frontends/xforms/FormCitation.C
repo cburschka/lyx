@@ -59,10 +59,6 @@ void FormCitation::build()
 {
 	dialog_.reset(build_citation());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
 
@@ -74,7 +70,6 @@ void FormCitation::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().setUndoAll(dialog_->button_restore);
-	bc().refresh();
 
 	bc().addReadOnly(dialog_->button_add);
 	bc().addReadOnly(dialog_->button_del);
@@ -83,6 +78,8 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->choice_style);
 	bc().addReadOnly(dialog_->input_before);
 	bc().addReadOnly(dialog_->input_after);
+
+	bc().refresh();
 }
 
 

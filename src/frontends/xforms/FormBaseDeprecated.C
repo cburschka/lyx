@@ -54,7 +54,7 @@ extern "C" void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
 
 FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
 				       string const & t)
-	: lv_(lv), d_(d), h_(0), r_(0), title(t), minw_(0), minh_(0)
+	: lv_(lv), d_(d), h_(0), r_(0), title_(t), minw_(0), minh_(0)
 {
 	Assert(lv && d);
 }
@@ -85,6 +85,11 @@ void FormBaseDeprecated::show()
 {
 	if (!form()) {
 		build();
+
+		// work around dumb xforms sizing bug
+		minw_ = form()->w;
+		minh_ = form()->h;
+
 		fl_set_form_atclose(form(),
 				    C_FormBaseDeprecatedWMHideCB, 0);
 	}
@@ -95,14 +100,22 @@ void FormBaseDeprecated::show()
 
 	if (form()->visible) {
 		fl_raise_form(form());
+ 		/* This XMapWindow() will hopefully ensure that
+ 		 * iconified dialogs are de-iconified. Mad props
+ 		 * out to those crazy Xlib guys for forgetting a
+ 		 * XDeiconifyWindow(). At least WindowMaker, when
+ 		 * being notified of the redirected MapRequest will
+ 		 * specifically de-iconify. From source, fvwm2 seems
+ 		 * to do the same.
+ 		 */
+ 		XMapWindow(fl_get_display(), form()->window);
 	} else {
 		// calls to fl_set_form_minsize/maxsize apply only to the next
 		// fl_show_form(), so connect() comes first.
 		connect();
 		fl_show_form(form(),
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_TRANSIENT,
-			     title.c_str());
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
+			     title_.c_str());
 	}
 }
 

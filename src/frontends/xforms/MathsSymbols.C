@@ -16,271 +16,17 @@
 #pragma implementation
 #endif
 
-#include "support/lstrings.h"
 #include "support/LAssert.h" 
 #include "debug.h"
 
 #include "MathsSymbols.h"
-#include "FormMaths.h"
+#include "FormMathsPanel.h"
  
 using std::max;
 using std::endl;
 using std::ostream;
 
 /* Latex code for those bitmaps */
-static
-char const * latex_greek[] = {
-	"Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi",
-	"Sigma", "Upsilon", "Phi", "Psi", "Omega",
-	"alpha", "beta", "gamma", "delta", "epsilon", "varepsilon", "zeta",
-	"eta", "theta", "vartheta", "iota", "kappa", "lambda", "mu",
-	"nu", "xi", "pi", "varpi", "rho", "sigma", "varsigma",
-	"tau", "upsilon", "phi", "varphi", "chi", "psi", "omega", ""
-};
-
-static
-char const * latex_brel[] = {
-	"leq", "geq", "equiv", "models",
-	"prec", "succ", "sim", "perp",
-	"preceq", "succeq", "simeq", "mid",
-	"ll", "gg", "asymp", "parallel",
-	"subset", "supset", "approx", "smile",
-	"subseteq", "supseteq", "cong", "frown",
-	"sqsubseteq", "sqsupseteq", "doteq", "neq",
-	"in", "ni", "propto", "notin",
-	"vdash", "dashv", "bowtie", ""
-};
-
-static
-char const * latex_arrow[] = {
-	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
-	"hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
-	"hookrightarrow", "updownarrow", "Leftrightarrow", "leftharpoonup",
-	"rightharpoonup", "rightleftharpoons", "leftrightarrow", "Updownarrow",
-	"leftharpoondown", "rightharpoondown", "mapsto",
-	"Longleftarrow", "Longrightarrow", "Longleftrightarrow",
-	"longleftrightarrow", "longleftarrow", "longrightarrow", "longmapsto",
-	"nwarrow", "nearrow", "swarrow", "searrow",  "",
-};
-
-char const * latex_varsz[] = {
-	"sum", "int", "oint",
-	"prod", "coprod", "bigsqcup",
-	"bigotimes", "bigodot", "bigoplus",
-	"bigcap", "bigcup", "biguplus",
-	"bigvee", "bigwedge", ""
-};
-
-static
-char const * latex_bop[] = {
-	"pm", "cap", "diamond", "oplus",
-	"mp", "cup", "bigtriangleup", "ominus",
-	"times", "uplus", "bigtriangledown", "otimes",
-	"div", "sqcap", "triangleright", "oslash",
-	"cdot", "sqcup", "triangleleft", "odot",
-	"star", "vee", "amalg", "bigcirc",
-	"setminus", "wedge", "dagger", "circ",
-	"bullet", "wr", "ddagger", ""
-};
-
-static
-char const * latex_misc[] = {
-	"nabla", "partial", "infty", "prime", "ell",
-	"emptyset", "exists", "forall", "imath",  "jmath",
-	"Re", "Im", "aleph", "wp", "hbar",
-	"angle", "top", "bot", "Vert", "neg",
-	"flat", "natural", "sharp", "surd", "triangle",
-	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", ""
-};
-
-static
-char const * latex_dots[] = {
-	"ldots", "cdots", "vdots", "ddots"
-};
-
-BitmapMenu * BitmapMenu::active = 0;
-
-extern "C" void C_MathsSymbolsBitmapCB(FL_OBJECT * ob, long data)
-{
-	BitmapMenu * menu = static_cast<BitmapMenu*>(ob->u_vdata);
-	int const i = menu->GetIndex(ob);
-	string str;
-
-	lyxerr[Debug::GUI] << "Bitmap callback value " << data << endl;
- 
-	if (i < 0) 
-		return;
- 
-	switch (data) {
-		case MM_GREEK:
-			str = latex_greek[i];
-			break;
-		case MM_ARROW:
-			str = latex_arrow[i];
-			break;
-		case MM_BRELATS:
-			str = latex_brel[i];
-			break;
-		case MM_BOP:
-			str = latex_bop[i];
-			break;
-		case MM_VARSIZE:
-			str = latex_varsz[i];
-			break;
-		case MM_MISC:
-			str = latex_misc[i];
-			break;
-		case MM_DOTS:
-			/* ewww */
-			str = latex_dots[i - 29];
-			break;
-		default:
-			Assert(false);
-			break;
-	}
-
-	menu->form_->insertSymbol(str);
-	menu->hide();
-}
-
- 
-extern "C" int C_MathsSymbolsPeekCB(FL_FORM *, void * xev)
-{
-	if (!BitmapMenu::active)
-		return 0;
-
-	if (static_cast<XEvent *>(xev)->type == ButtonPress) {
-		BitmapMenu::active->hide();
-		return 1;
-	}
- 
-	if (static_cast<XEvent *>(xev)->type != KeyPress)
-		return 0;
-
-	/* yuck */
- 
-	char c[5];
-	KeySym keysym;
-	XLookupString(&static_cast<XEvent *>(xev)->xkey, &c[0], 5, &keysym, 0);
-	if (keysym == XK_Left)
-		BitmapMenu::active->prev(); 
-	else if (keysym == XK_Right)
-		BitmapMenu::active->next();
-	else
-		BitmapMenu::active->hide();
- 
-	return 1;
-}
-
-
-BitmapMenu::BitmapMenu(FormMaths * f, int n,  FL_OBJECT * bt, BitmapMenu * prevx)
-	: current_(0), bitmaps_(n), form_(f)
-{
-	w = h = 0;
-	form = 0;
-	ww = 2 * FL_abs(FL_BOUND_WIDTH);
-	x = y = ww;
-	y += 8;
-	button = bt;
-	button->u_vdata = this;
-	prev_ = prevx;
-	next_ = 0;
-	if (prev_)
-		prev_->next_ = this;
-}
-
-
-BitmapMenu::~BitmapMenu()
-{
-	delete next_;
-	if (form->visible) 
-		hide();
-	fl_free_form(form);
-}
-
-
-void BitmapMenu::hide()
-{
-	fl_hide_form(form);
-	fl_set_button(button, 0);
-	active = 0;
-}
-
-
-void BitmapMenu::show()
-{
-	if (active)
-		active->hide();
-	active = this;
- 
-	fl_set_button(button, 1);
-	fl_show_form(form, FL_PLACE_MOUSE, FL_NOBORDER, "");
-}
-
-
-FL_OBJECT *
-BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh,
-		      unsigned char const * data, bool vert)
-{
-	if (current_ >= bitmaps_.size())
-		return 0;
- 
-	int wx = bw + ww / 2;
-	int wy = bh + ww / 2;
-	wx += (wx % nx);
-	wy += (wy % ny);
-	FL_OBJECT * obj = fl_create_bmtable(1, x, y, wx, wy, "");
-	fl_set_object_callback(obj, C_MathsSymbolsBitmapCB, id);
-	fl_set_object_lcol(obj, FL_BLUE);
-	fl_set_object_boxtype(obj, FL_UP_BOX);
-	fl_set_bmtable_data(obj, nx, ny, bw, bh, data);
-	if (vert) {
-		y += wy + 8;
-		h = max(y, h);
-		w = max(x + wx + ww, w);
-	} else  {
-		x += wx + 8;
-		w = max(x, w);
-		h = max(y + wy + ww, h);
-	}
-	bitmaps_[current_++] = obj;
-	return obj;
-}
-
-
-void BitmapMenu::create()
-{
-	Assert(current_ >= bitmaps_.size());
- 
-	form = fl_bgn_form(FL_UP_BOX, w, h);
- 
-	for (current_ = 0; current_ < bitmaps_.size(); ++current_) {
-		fl_add_object(form, bitmaps_[current_]);
-		bitmaps_[current_]->u_vdata = this;
-	}
- 
-	fl_end_form();
- 
-	fl_register_raw_callback(form, KeyPressMask, C_MathsSymbolsPeekCB);
-}
-
-
-int BitmapMenu::GetIndex(FL_OBJECT * ob)
-{
-	if (active == this) {
-		int k = 0;
-		for (current_ = 0; current_ < bitmaps_.size(); ++current_) {
-			if (bitmaps_[current_] == ob)
-				return k + fl_get_bmtable(ob);
-			k += fl_get_bmtable_maxitems(bitmaps_[current_]);
-		}
-	}
-	return -1;
-}
-
-/* the below is stuff used by Toolbar to make icons. It should be elsewhere
- * but depends on the name arrays above ...
- */
 
 #include "greek.xbm"
 #include "arrows.xbm"
@@ -299,6 +45,96 @@ int BitmapMenu::GetIndex(FL_OBJECT * ob)
 #include "space.xpm"
 #include "matrix.xpm"
 #include "equation.xpm"
+
+char const * function_names[] = {
+	"arccos", "arcsin", "arctan", "arg", "bmod",
+	"cos", "cosh", "cot", "coth", "csc", "deg",
+	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
+	"lg", "lim", "liminf", "limsup", "ln", "log",
+	"max", "min", "sec", "sin", "sinh", "sup",
+	"tan", "tanh"
+};
+
+int const nr_function_names = sizeof(function_names) /
+	       			     sizeof(char const *);
+
+char const * latex_arrow[] = {
+	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
+	"hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
+	"hookrightarrow", "updownarrow", "Leftrightarrow", "leftharpoonup",
+	"rightharpoonup", "rightleftharpoons", "leftrightarrow", "Updownarrow",
+	"leftharpoondown", "rightharpoondown", "mapsto",
+	"Longleftarrow", "Longrightarrow", "Longleftrightarrow",
+	"longleftrightarrow", "longleftarrow", "longrightarrow", "longmapsto",
+	"nwarrow", "nearrow", "swarrow", "searrow",  "",
+};
+
+int const nr_latex_arrow = sizeof(latex_arrow) / sizeof(char const *);
+
+char const * latex_bop[] = {
+	"pm", "cap", "diamond", "oplus",
+	"mp", "cup", "bigtriangleup", "ominus",
+	"times", "uplus", "bigtriangledown", "otimes",
+	"div", "sqcap", "triangleright", "oslash",
+	"cdot", "sqcup", "triangleleft", "odot",
+	"star", "vee", "amalg", "bigcirc",
+	"setminus", "wedge", "dagger", "circ",
+	"bullet", "wr", "ddagger", ""
+};
+
+int const nr_latex_bop = sizeof(latex_bop) / sizeof(char const *);
+
+char const * latex_brel[] = {
+	"leq", "geq", "equiv", "models",
+	"prec", "succ", "sim", "perp",
+	"preceq", "succeq", "simeq", "mid",
+	"ll", "gg", "asymp", "parallel",
+	"subset", "supset", "approx", "smile",
+	"subseteq", "supseteq", "cong", "frown",
+	"sqsubseteq", "sqsupseteq", "doteq", "neq",
+	"in", "ni", "propto", "notin",
+	"vdash", "dashv", "bowtie", ""
+};
+
+int const nr_latex_brel = sizeof(latex_brel) / sizeof(char const *);
+
+char const * latex_dots[] = {
+	"ldots", "cdots", "vdots", "ddots"
+};
+
+int const nr_latex_dots = sizeof(latex_dots) / sizeof(char const *);
+
+char const * latex_greek[] = {
+	"Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi",
+	"Sigma", "Upsilon", "Phi", "Psi", "Omega",
+	"alpha", "beta", "gamma", "delta", "epsilon", "varepsilon", "zeta",
+	"eta", "theta", "vartheta", "iota", "kappa", "lambda", "mu",
+	"nu", "xi", "pi", "varpi", "rho", "sigma", "varsigma",
+	"tau", "upsilon", "phi", "varphi", "chi", "psi", "omega", ""
+};
+
+int const nr_latex_greek = sizeof(latex_greek) / sizeof(char const *);
+
+char const * latex_misc[] = {
+	"nabla", "partial", "infty", "prime", "ell",
+	"emptyset", "exists", "forall", "imath",  "jmath",
+	"Re", "Im", "aleph", "wp", "hbar",
+	"angle", "top", "bot", "Vert", "neg",
+	"flat", "natural", "sharp", "surd", "triangle",
+	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", ""
+};
+
+int const nr_latex_misc = sizeof(latex_misc) / sizeof(char const *);
+
+char const * latex_varsz[] = {
+	"sum", "int", "oint",
+	"prod", "coprod", "bigsqcup",
+	"bigotimes", "bigodot", "bigoplus",
+	"bigcap", "bigcup", "biguplus",
+	"bigvee", "bigwedge", ""
+};
+
+int const nr_latex_varsz = sizeof(latex_varsz) / sizeof(char const *);
 
 static char const ** mathed_get_pixmap_from_icon(int d)
 {

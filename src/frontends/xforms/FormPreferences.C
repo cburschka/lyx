@@ -172,10 +172,6 @@ void FormPreferences::build()
 	bc().setUndoAll(dialog_->button_restore);
 	bc().refresh();
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	// build the tab folders
 	converters_tab_.reset(build_outer_tab());
 	look_n_feel_tab_.reset(build_outer_tab());

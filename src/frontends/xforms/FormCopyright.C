@@ -39,10 +39,6 @@ void FormCopyright::build()
 {
 	dialog_.reset(build_copyright());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	string str = _("LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2001 LyX Team");
 	str = formatted(str, dialog_->text_copyright->w-10,
 			FL_NORMAL_SIZE, FL_NORMAL_STYLE);

@@ -55,10 +55,6 @@ void FormUrl::build()
 {
 	dialog_.reset(build_url());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	fl_set_input_return(dialog_->name, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->url,  FL_RETURN_CHANGED);
 

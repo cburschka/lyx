@@ -46,9 +46,6 @@ FL_FORM * FormPreamble::form() const
 void FormPreamble::build()
 {
    dialog_.reset(build_preamble());
-   // Workaround dumb xforms sizing bug
-   minw_ = form()->w;
-   minh_ = form()->h;
    
    fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
    // Manage the ok, apply and cancel/close buttons

@@ -1,0 +1,306 @@
+Magic: 13000
+
+Internal Form Definition File
+    (do not change)
+
+Number of forms: 1
+Unit of measure: FL_COORD_PIXEL
+SnapGrid: 2
+
+=============== FORM ===============
+Name: form_maths_panel
+Width: 290
+Height: 172
+Number of Objects: 16
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 290 172
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 80 14 80 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Close 
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_close
+callback: C_FormBaseDeprecatedCancelCB
+argument:
+
+--------------------
+class: FL_BROWSER
+type: SELECT_BROWSER
+box: 180 40 94 110
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Functions
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: browser_funcs
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_FUNC
+  h_pref: FL_OFF
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 90 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Greek
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_greek
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_GREEK
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 120 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: ­ Û
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_arrow
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_ARROW
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 60 90 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLACK
+label: ± ´
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_boperator
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_BOP
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 110 90 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLACK
+label: £ @
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_brelats
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_BRELATS
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 60 120 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLACK
+label: S  ò
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_varsize
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_VARSIZE
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 110 120 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_TIMESITALIC_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Misc
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_misc
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_MISC
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 130 50 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_equation
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_EQU
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 10 15 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_sqrt
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_SQRT
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 40 15 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_COL1
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_frac
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_FRAC
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 10 50 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_delim
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_DELIM
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 100 50 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_matrix
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_MATRIX
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 40 50 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_deco
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_DECO
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 70 50 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_space
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_SPACE
+
+==============================
+create_the_forms

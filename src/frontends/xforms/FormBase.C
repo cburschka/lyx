@@ -39,6 +39,11 @@ void FormBase::show()
 {
 	if (!form()) {
 		build();
+
+		// work around dumb xforms sizing bug
+		minw_ = form()->w;
+		minh_ = form()->h;
+
 		fl_set_form_atclose(form(),
 				    C_FormBaseWMHideCB, 0);
 	}

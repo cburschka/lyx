@@ -70,10 +70,6 @@ void FormRef::build()
 		fl_addto_choice(dialog_->type,
 				_(InsetRef::types[i].gui_name.c_str()));
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	// Force the user to use the browser to change refs.
 	fl_deactivate_object(dialog_->ref);
 

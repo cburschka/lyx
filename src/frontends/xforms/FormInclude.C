@@ -79,10 +79,6 @@ void FormInclude::build()
 {
 	dialog_.reset(build_include());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	// Manage the ok and cancel buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setCancel(dialog_->button_cancel);

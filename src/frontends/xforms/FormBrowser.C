@@ -28,10 +28,6 @@ void FormBrowser::build()
 {
 	dialog_.reset(build_browser());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	// Manage the close button
 	bc().setCancel(dialog_->button_close);
 	bc().refresh();

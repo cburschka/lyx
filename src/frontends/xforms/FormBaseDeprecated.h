@@ -35,8 +35,6 @@ class LyXView;
     @author Angus Leeming
  */
 
-extern "C" int C_FormBaseDeprecatedWMHideCB(FL_FORM *, void *);
-
 class FormBaseDeprecated : public DialogBase {
 public:
 	/// Callback functions
@@ -116,7 +114,7 @@ protected: // methods
 	/// Redraw connection.
 	SigC::Connection r_;
 	/// dialog title, displayed by WM.
-  	string title;
+  	string title_;
 public:
 	/// Overcome a dumb xforms sizing bug
 	mutable int minw_;

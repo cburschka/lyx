@@ -1,0 +1,76 @@
+/**
+ * \file FormMathsBitmap.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+#ifndef FORM_MATHSBITMAP_H
+#define FORM_MATHSBITMAP_H
+
+#include <vector>
+#include <boost/smart_ptr.hpp>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "LString.h"
+#include "FormMathsPanel.h"
+
+/** 
+ * This class provides an XForms implementation of a maths bitmap form.
+ */
+class FormMathsBitmap : public FormMathsSub {
+	friend class FormMathsPanel;
+
+  public:
+	///
+	typedef boost::shared_ptr<FL_OBJECT> bm_ptr;
+	///
+	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
+			std::vector<string> const &);
+	///
+	void addBitmap(int, int, int, int, int, unsigned char const *,
+		       bool = true);
+
+private:
+	///
+	int GetIndex(FL_OBJECT *);
+
+	/// Build the popup
+	virtual void build();
+	/// apply the data
+	virtual void apply();
+	/// input handler
+	bool input(FL_OBJECT *, long);
+
+	/// Pointer to the actual instantiation of the xforms form
+	virtual FL_FORM * form() const;
+
+	/// The latex names associated with each symbol
+	std::vector<string> latex_;
+	/// The latex name chosen
+	string latex_chosen_;
+	/// Real GUI implementation
+	FL_FORM * form_;
+	/// The bitmap tables
+	std::vector<bm_ptr> bitmaps_;
+
+	/// Border width
+	int ww_;
+	///
+	int x_;
+	///
+	int y_;
+	///
+	int w_;
+	///
+	int h_;
+};
+
+
+#endif // FORM_MATHSBITMAP_H

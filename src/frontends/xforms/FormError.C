@@ -75,10 +75,6 @@ void FormError::build()
 {
 	dialog_.reset(build_error());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-	
         // Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);
 	bc().refresh();

@@ -130,10 +130,6 @@ void FormExternal::build()
 	fl_addto_choice(dialog_->choice_template,
 			getTemplatesComboString().c_str());
 
-	// Workaround dumb xforms sizing bug
-	minw_ = form()->w;
-	minh_ = form()->h;
-
 	bc_.setOK(dialog_->button_ok);
 	bc_.setCancel(dialog_->button_cancel);
 	bc_.refresh();

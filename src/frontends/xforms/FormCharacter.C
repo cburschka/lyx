@@ -51,9 +51,7 @@ FL_FORM * FormCharacter::form() const
 void FormCharacter::build()
 {
    dialog_.reset(build_character());
-   // Workaround dumb xforms sizing bug
-   minw_ = form()->w;
-   minh_ = form()->h;
+
    // Manage the ok, apply and cancel/close buttons
    bc().setApply(dialog_->button_apply);
    bc().setCancel(dialog_->button_close);

@@ -33,8 +33,6 @@
 
 using std::endl;
 
-extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
- 
 extern LyXAction lyxaction;
 
 // some constants

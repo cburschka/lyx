@@ -86,10 +86,6 @@ void FormMinipage::build()
 {
     dialog_.reset(build_minipage());
 
-    // Workaround dumb xforms sizing bug
-    minw_ = form()->w;
-    minh_ = form()->h;
-
     fl_set_input_return(dialog_->input_width, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_widthp, FL_RETURN_CHANGED);
 

@@ -67,10 +67,6 @@ void FormParagraph::build()
     // the tabbed folder
     dialog_.reset(build_tabbed_paragraph());
 
-    // Workaround dumb xforms sizing bug
-    minw_ = form()->w;
-    minh_ = form()->h;
-
     // Manage the ok, apply, restore and cancel/close buttons
     bc_.setOK(dialog_->button_ok);
     bc_.setApply(dialog_->button_apply);

@@ -10,92 +10,29 @@
 #ifndef MATHS_SYMBOLS_H
 #define MATHS_SYMBOLS_H
 
-#include <vector>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "bmtable.h"
 
-class FormMaths;
+extern char const * function_names[];
+extern int const nr_function_names;
+extern char const * latex_arrow[];
+extern int const nr_latex_arrow;
+extern char const * latex_bop[];
+extern int const nr_latex_bop;
+extern char const * latex_brel[];
+extern int const nr_latex_brel;
+extern char const * latex_dots[];
+extern int const nr_latex_dots;
+extern char const * latex_greek[];
+extern int const nr_latex_greek;
+extern char const * latex_misc[];
+extern int const nr_latex_misc;
+extern char const * latex_varsz[];
+extern int const nr_latex_varsz;
+
+char const ** get_pixmap_from_symbol(char const *, int, int);
  
-/// Class to manage bitmap menu bars
-class BitmapMenu {
-	///
-	friend int peek_event(FL_FORM *, void *);
-	///
-	typedef std::vector<FL_OBJECT *> bitmaps_type;
-	///
-	typedef bitmaps_type::size_type size_type;
-	///
-	BitmapMenu * next_;
-	///
-	BitmapMenu * prev_;
-	/// Border width
-	int ww;
-	///
-	int x;
-	///
-	int y;
-	///
-	int w;
-	///
-	int h;
-	///
-	FL_FORM * form;
-	/// Current bitmap
-	size_type current_;
-	///
-	bitmaps_type bitmaps_;
-	///
-	FL_OBJECT * button;
-public:
-	///
-	BitmapMenu(FormMaths * f, int n, FL_OBJECT * bt, BitmapMenu * prevx = 0);
-	///
-	~BitmapMenu();
-	///
-	FL_OBJECT * AddBitmap(int id,
-			      int nx, int ny, int bw, int bh,
-			      unsigned char const * data,
-			      bool vert = true);
-	///
-	void create();
-	///
-	void hide();
-	///
-	void show();
-	///
-	void prev();
-	///
-	void next();
-	///
-	int GetIndex(FL_OBJECT * ob);
- 
-	/// the parent FormMaths 
-	FormMaths * form_;
-	///
-	static BitmapMenu * active;
-};
-
-
-inline
-void BitmapMenu::prev()
-{
-	hide();
-	if (prev_)
-		prev_->show();
-}
-
-
-inline
-void BitmapMenu::next()
-{
-	hide();
-	if (next_)
-		next_->show();
-}
-
-
 #endif /* MATHS_SYMBOLS_H */
