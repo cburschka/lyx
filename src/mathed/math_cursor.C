@@ -1271,16 +1271,14 @@ bool MathCursor::idxRight()
 }
 
 
-void MathCursor::interpret(string const & s)
+bool MathCursor::interpret(string const & s)
 {
 	//lyxerr << "interpret 1: '" << s << "'\n";
 	if (s.empty())
-		return;
+		return true;
 
-	if (s.size() == 1) {
-		interpret(s[0]);
-		return;
-	}
+	if (s.size() == 1)
+		return interpret(s[0]);
 
 	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
 	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);	
@@ -1292,7 +1290,7 @@ void MathCursor::interpret(string const & s)
 		is >> n;
 		n = std::max(1u, n);
 		niceInsert(MathAtom(new MathCasesInset(n)));
-		return;
+		return true;
 	}
 
 	if (s.size() >= 6 && s.substr(0, 6) == "matrix") {
@@ -1306,7 +1304,7 @@ void MathCursor::interpret(string const & s)
 		n = std::max(1u, n);
 		v_align += 'c';
 		niceInsert(MathAtom(new MathArrayInset(m, n, v_align[0], h_align)));
-		return;
+		return true;
 	}
 
 	if (s == "\\over" || s == "\\choose" || s == "\\atop") {
@@ -1317,14 +1315,15 @@ void MathCursor::interpret(string const & s)
 		niceInsert(t);
 		popRight();
 		left();
-		return;
+		return true;
 	}
 
 	niceInsert(createMathInset(s.substr(1)));
+	return true;
 }
 
 
-void MathCursor::interpret(char c)
+bool MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
 	if (c == '^' || c == '_') {
@@ -1350,7 +1349,7 @@ void MathCursor::interpret(char c)
 		}
 		selPaste();
 		dump("1");
-		return;
+		return true;
 	}
 
 
@@ -1360,34 +1359,34 @@ void MathCursor::interpret(char c)
 
 		if (name == "\\" && c == '#') {
 			insert(c, LM_TC_TEX);
-			return;
+			return true;
 		}
 
 		if (name == "\\" && c == '\\') {
 			backspace();
 			interpret("\\backslash");
-			return;
+			return true;
 		}
 
 		if (name == "\\#" && '1' <= c && c <= '9') {
 			insert(c, LM_TC_TEX);
 			macroModeClose();
-			return;
+			return true;
 		}
 
 		if (isalpha(c)) {
 			insert(c, LM_TC_TEX);
-			return;
+			return true;
 		}
 
 		if (name == "\\") {
 			insert(c, LM_TC_TEX);
 			macroModeClose();
-			return;
+			return true;
 		}
 
 		macroModeClose();
-		return;
+		return true;
 	}
 
 	if (selection_)
@@ -1398,62 +1397,66 @@ void MathCursor::interpret(char c)
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
 		// it is better than nothing
 		if (hasPrevAtom() && prevAtom()->getChar() == ' ')
-			return;
+			return true;
 		insert(c, LM_TC_TEXTRM);
-		return;
+		return true;
 	}
 
 	if (c == ' ') {
 		if (hasPrevAtom() && prevAtom()->asSpaceInset()) {
 			prevAtom()->asSpaceInset()->incSpace();
-			return;
+			return true;
 		}
+	
+		if (mathcursor->popRight())
+			return true;
 
-		mathcursor->popRight();
-		return;
+		// if are at the very end, leave the formula
+		return pos() != size();
 	}
 
 /*
 	if (strchr("{}", c)) {
 		insert(c, LM_TC_TEX);
-		return;
+		return true;
 	}
 */
 
 	if (c == '{') {
 		niceInsert(MathAtom(new MathBraceInset));
-		return;
+		return true;
 	}
 
 	if (c == '}') {
-		return;
+		return true;
 	}
 
 	if (strchr("#$%", c)) {
 		insert(MathAtom(new MathSpecialCharInset(c)));	
 		lastcode_ = LM_TC_VAR;
-		return;
+		return true;
 	}
 
 	if (isalpha(c) && lastcode_ == LM_TC_GREEK) {
 		insert(c, LM_TC_VAR);
-		return;	
+		return true;
 	}
 
 	if (isalpha(c) && lastcode_ == LM_TC_GREEK1) {
 		insert(c, LM_TC_VAR);
 		lastcode_ = LM_TC_VAR;
-		return;	
+		return true;
 	}
 
 	if (c == '\\') {
 		insert(c, LM_TC_TEX);
 		//bv->owner()->message(_("TeX mode"));
-		return;	
+		return true;	
 	}
 
 	// no special circumstances, so insert the character without any fuss
 	insert(c, LM_TC_MIN);
+	return true;
 }
 
 

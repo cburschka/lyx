@@ -136,9 +136,9 @@ public:
 	///
 	size_type size() const;
 	///
-	void interpret(string const &);
+	bool interpret(string const &);
 	///
-	void interpret(char);
+	bool interpret(char);
 	///
 	bool toggleLimits();
 	///

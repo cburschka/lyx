@@ -594,7 +594,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_SELFINSERT:
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			mathcursor->interpret(arg);
+			result = mathcursor->interpret(arg) ? DISPATCHED : FINISHED_RIGHT;
 			updateLocal(bv, true);
 		}
 		break;
