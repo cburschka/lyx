@@ -11,50 +11,38 @@
 #ifndef FORMBIBTEX_H
 #define FORMBIBTEX_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
+#include "FormBase.h"
 
-struct FD_form_bibtex;
+#include "form_bibtex.h"
+
+class ControlBibtex;
 
 /**
  * For bibtex database setting
  */
-class FormBibtex : public FormCommand {
+class FormBibtex : public FormBase2<ControlBibtex, FD_form_bibtex> {
 public:
 	///
-	FormBibtex(LyXView *, Dialogs *);
-private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
-	/// Build the dialog
-	virtual void build();
-	/// Update dialog before showing it
-	virtual void update();
-	/// input handler
-	virtual bool input(FL_OBJECT *, long);
-	/// Apply from dialog (modify or create inset)
+	FormBibtex(ControlBibtex &);
+
+	// Functions accessible to the Controller.
+
+	/// Set the Params variable for the Controller.
 	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
+	/// Build the dialog.
+	virtual void build();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
+	
+private:
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	///
 	FD_form_bibtex * build_bibtex();
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_bibtex> dialog_;
-	/// The ButtonController
-	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormBibtex::bc()
-{
-  return bc_;
-}
 #endif // FORMBIBTEX_H

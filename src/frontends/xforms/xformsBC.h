@@ -19,12 +19,14 @@
 #ifndef XFORMSBC_H
 #define XFORMSBC_H
 
-#include "ButtonController.h"
+#include FORMS_H_LOCATION
 #include <list>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "ButtonController.h"
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.

@@ -17,13 +17,13 @@
 
 #include "FormBase.h"
 
+#include "form_bibitem.h"
+
+class ControlBibitem;
+
 /**
  * For bibliography entry editing
  */
-
-#include "form_bibitem.h"
-class ControlBibitem;
-
 class FormBibitem : public FormBase2<ControlBibitem, FD_form_bibitem> {
 public:
 	///

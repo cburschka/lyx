@@ -18,6 +18,8 @@ libcontrollers_la_SOURCES=\
 	ControlBase.h \
 	ControlBibitem.C \
 	ControlBibitem.h \
+	ControlBibtex.C \
+	ControlBibtex.h \
 	ControlCitation.C \
 	ControlCitation.h \
 	ControlCommand.C \

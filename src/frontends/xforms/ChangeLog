@@ -1,5 +1,12 @@
 2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormBibtex.[Ch]:
+	* forms/form_bibtex.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBaseDeprecated.[Ch]: rename title as title_.
 	
 	* FormBaseDeprecated.C: restore John's trick to give the dialog a border

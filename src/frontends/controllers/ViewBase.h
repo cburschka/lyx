@@ -60,6 +60,8 @@ class ViewBC : public ViewBase {
 public:
 	///
 	ViewBC(ControlBase & c) : ViewBase(c) {}
+
+protected:
 	///
 	GUIbc & bc() const
 	{

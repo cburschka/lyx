@@ -7,47 +7,21 @@
  * \author John Levon
  */
 
-#include <config.h>
-
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-
-#include "Dialogs.h"
+#include <config.h>
+#include "ControlBibtex.h"
 #include "FormBibtex.h"
-#include "LyXView.h"
-#include "buffer.h"
-#include "form_bibtex.h"
-#include "lyxfunc.h"
+#include "gettext.h"
+#include "xformsBC.h"
 #include "debug.h"
 
-using std::endl;
-using SigC::slot;
+FormBibtex::FormBibtex(ControlBibtex & c)
+	: FormBase2<ControlBibtex, FD_form_bibtex>(c, _("BibTeX Database"))
+{}
 
-FormBibtex::FormBibtex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("BibTeX Database"))
-{
-	d->showBibtex.connect(slot(this, &FormBibtex::showInset));
-}
-
-
-FL_FORM * FormBibtex::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
-
-void FormBibtex::connect()
-{
-	fl_set_form_maxsize(form(), 2 * minw_, minh_);
-	FormCommand::connect();
-}
-	
 
 void FormBibtex::build()
 {
@@ -66,50 +40,27 @@ void FormBibtex::build()
 }
 
 
-bool FormBibtex::input(FL_OBJECT *, long)
+ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT *, long)
 {
 	// minimal validation 
 	if (!compare(fl_get_input(dialog_->database),""))
-		return false;
+		return ButtonPolicy::SMI_NOOP;
 
-	return true;
+	return ButtonPolicy::SMI_VALID;
 }
 
 
 void FormBibtex::update()
 {
-	fl_set_input(dialog_->database, params.getContents().c_str());
-	fl_set_input(dialog_->style, params.getOptions().c_str());
-	// Surely, this should reset the buttons to their original state?
-	// It doesn't. Instead "Restore" becomes a "Close"
-	//bc().refresh();
-	bc().readOnly(lv_->buffer()->isReadonly());
+	fl_set_input(dialog_->database,
+		     controller().params().getContents().c_str());
+	fl_set_input(dialog_->style,
+		     controller().params().getOptions().c_str());
 }
 
 
 void FormBibtex::apply()
 {
-	if (lv_->buffer()->isReadonly())
-		return;
-
-	params.setContents(fl_get_input(dialog_->database));
-	params.setOptions(fl_get_input(dialog_->style));
-
-	if (inset_ != 0) {
-		// Only update if contents have changed
-		if (params != inset_->params()) {
-			if (params.getContents() != inset_->params().getContents())
-				lv_->view()->ChangeCitationsIfUnique(
-					inset_->params().getContents(), params.getContents());
-
-		inset_->setParams(params);
-		lv_->view()->updateInset(inset_, true);
-
-		// We need to do a redraw because the maximum
-		// InsetBibKey width could have changed
-		lv_->view()->redraw();
-		lv_->view()->fitCursor(lv_->view()->getLyXText());
-		}
-	} else
-		lyxerr[Debug::GUI] << "Editing non-existent bibtex inset !" << endl;
+	controller().params().setContents(fl_get_input(dialog_->database));
+	controller().params().setOptions(fl_get_input(dialog_->style));
 }

@@ -10,7 +10,6 @@
  */
 
 #include <config.h>
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
@@ -19,6 +18,7 @@
 #include "Dialogs.h"
 
 #include "ControlBibitem.h"
+#include "ControlBibtex.h"
 #include "ControlCitation.h"
 #include "xformsBC.h"
 
@@ -60,8 +60,8 @@ Dialogs::Dialogs(LyXView * lv)
 
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
+	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
 
-	add(new FormBibtex(lv, this));
 	add(new FormCharacter(lv, this));
 	add(new FormCopyright(lv, this));
 	add(new FormCredits(lv, this));

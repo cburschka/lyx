@@ -14,7 +14,6 @@
 #include <config.h>
 #include "ControlBibitem.h"
 #include "FormBibitem.h"
-#include "form_bibitem.h"
 #include "gettext.h"
 #include "xformsBC.h"
 #include "support/lstrings.h" // compare
