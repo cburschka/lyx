@@ -911,7 +911,7 @@ void RegisterFigure(InsetFig * fi)
 	figures.push_back(tmpfig);
 	fi->figure = tmpfig;
 
-	if (lyxerr.debugging()) {
+	if (lyxerr.debugging() && current_view) {
 		lyxerr << "Register Figure: buffer:["
 		       << current_view->buffer() << "]" << endl;
 	}
