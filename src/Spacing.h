@@ -14,6 +14,8 @@
 
 #include <iosfwd>
 
+#include "LString.h"
+
 ///
 class Spacing {
 public:
@@ -46,6 +48,10 @@ public:
 	void set(Spacing::Space sp, char const * val) ;
 	///
 	void writeFile(std::ostream &, bool para = false) const;
+	///
+	string writeEnvirBegin() const;
+	///
+	string writeEnvirEnd() const;
 	///
 	friend bool operator==(Spacing const & a, Spacing const & b) {
 		if (a.space == b.space && a.getValue() == b.getValue())

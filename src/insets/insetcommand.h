@@ -49,7 +49,7 @@ public:
 	void Read(LyXLex & lex);
 	/// 
 	virtual int Latex(std::ostream &,
-			  signed char fragile, bool free_spc) const;
+			  bool fragile, bool free_spc) const;
 	///
 	virtual int Linuxdoc(std::ostream &) const;
 	///

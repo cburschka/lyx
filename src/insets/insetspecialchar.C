@@ -177,7 +177,7 @@ void InsetSpecialChar::Read(LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/,
+int InsetSpecialChar::Latex(ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
 	switch (kind) {

@@ -1,3 +1,27 @@
+2000-04-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* ANNOUNCE: 
+	* INSTALL: 
+	* UPGRADING: 
+	* NEWS: updated for prerelease of 1.1.5. Please comment and send
+	patches for things that should be in or should be changed.
+
+	* src/* [insetfiles]: change "usigned char fragile" to bool
+	fragile. There was only one point that could that be questioned
+	and that is commented in formulamacro.C. Grep for "CHECK".
+	
+	* src/CutAndPaste.C (getBufferTextClass): unused func, removed.
+	(DeleteBuffer): take it out of CutAndPaste and make it static.
+
+2000-04-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C (TeXOnePar): use the new method in Spacing to
+	output the spacing envir commands. Also the new commands used in
+	the LaTeX output makes the result better.
+
+	* src/Spacing.C (writeEnvirBegin): new method
+	(writeEnvirEnd): new method
+
 2000-04-18  Juergen Vigna  <jug@sad.it>
 
 	* src/CutAndPaste.C: made textclass a static member of the class
@@ -28,6 +52,23 @@
 	(MathMatrixInset::Write) Put \protect before \begin{array} and
 	\end{array} if fragile
  	(MathParInset::Write): Put \protect before \\ if fragile
+
+2000-04-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_gui.C (LyXGUI): initialize the LyXColorHandler. The
+	initialization if the LyXColorHandler must be done after the
+	connections to the XServer has been established.
+
+	* src/insets/figinset.C (runqueue): change the grabing a bit. Also
+	get the background pixel from the lyxColorhandler so that the
+	figures are rendered with the correct background color.
+	(NextToken): removed functions.
+	(GetPSSizes): use ifs >> string instead of NextToken.
+
+	* src/Painter.[Ch]: the color cache moved out of this file. 
+
+	* src/ColorHandler.[Ch]: new files. Holds the gc cache for color
+	and lines.  
 
 2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

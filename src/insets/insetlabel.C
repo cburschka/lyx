@@ -47,7 +47,7 @@ string InsetLabel::getLabel(int) const
 
 
 int InsetLabel::Latex(ostream & os,
-		      signed char /*fragile*/, bool /*fs*/) const
+		      bool /*fragile*/, bool /*fs*/) const
 {
 	os << escape(getCommand());
 	return 0;

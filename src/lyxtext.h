@@ -58,7 +58,7 @@ public:
 	~LyXText();
 
 	/// points to Buffer.params
-	BufferParams * bparams;
+	//BufferParams * bparams;
 	/// points to Buffer
 	Buffer * buffer;
 	///

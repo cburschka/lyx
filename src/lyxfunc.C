@@ -1117,9 +1117,8 @@ string LyXFunc::Dispatch(int ac,
 
 		// Pretend we got the name instead.
 		Dispatch(int(LFUN_LAYOUT), 
-			 textclasslist.NameOfLayout(owner->view()->
-						    text->bparams->
-						    textclass,
+			 textclasslist.NameOfLayout(owner->view()
+						    ->buffer()->params.textclass,
 						    sel).c_str());
 		return string();
 	}
@@ -1132,7 +1131,7 @@ string LyXFunc::Dispatch(int ac,
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
 		LyXTextClassList::ClassList::size_type tclass =
-			owner->view()->text->bparams->textclass;
+			owner->view()->buffer()->params.textclass;
 		pair <bool, LyXTextClass::size_type> layout = 
 			textclasslist.NumberOfLayout(tclass, argument);
 

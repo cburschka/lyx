@@ -158,7 +158,7 @@ void MathMacro::SetFocus(int x, int y)
 }
 
 
-void MathMacro::Write(ostream & os, signed char fragile)
+void MathMacro::Write(ostream & os, bool fragile)
 {
     if (tmplate->flags & MMF_Exp) {
 	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
@@ -261,7 +261,7 @@ void MathMacroArgument::Metrics()
 }
 
 
-void MathMacroArgument::Write(ostream & os, signed char fragile)
+void MathMacroArgument::Write(ostream & os, bool fragile)
 {
     if (expnd_mode) {
 	MathParInset::Write(os, fragile);
@@ -375,7 +375,7 @@ void MathMacroTemplate::update(MathMacro * macro)
 }
     
 
-void MathMacroTemplate::WriteDef(ostream & os, signed char fragile)
+void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 {
 	os << "\n\\newcommand{\\" << name << "}";
       

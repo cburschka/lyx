@@ -333,7 +333,7 @@ bool InsetInclude::loadIfNeeded() const
 
 
 int InsetInclude::Latex(ostream & os,
-			signed char /*fragile*/, bool /*fs*/) const
+			bool /*fragile*/, bool /*fs*/) const
 {
 	// Do nothing if no file name has been specified
 	if (contents.empty())

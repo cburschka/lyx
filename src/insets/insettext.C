@@ -718,7 +718,7 @@ InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream & os, signed char /*fragile*/, bool) const
+int InsetText::Latex(ostream & os, bool /*fragile*/, bool) const
 {
 	TexRow texrow;
 	int ret = par->SimpleTeXOnePar(os, texrow);

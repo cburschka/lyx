@@ -55,7 +55,7 @@ LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 	currentrow = 0;
 	currentrow_y = 0;
 	paperwidth = pw;
-	bparams = &p->params;
+	//bparams = &p->params;
 	buffer = p;
 	number_of_rows = 0;
 	refresh_y = 0;
@@ -120,7 +120,8 @@ LyXFont LyXText::GetFont(LyXParagraph * par,
 			 LyXParagraph::size_type pos) const
 {
 	LyXLayout const & layout = 
-		textclasslist.Style(bparams->textclass, par->GetLayout());
+		textclasslist.Style(buffer->params.textclass,
+				    par->GetLayout());
 
 	char par_depth = par->GetDepth();
 	// We specialize the 95% common case:
@@ -174,13 +175,13 @@ LyXFont LyXText::GetFont(LyXParagraph * par,
 		par = par->DepthHook(par_depth - 1);
 		if (par) {
 			tmpfont.realize(textclasslist.
-					Style(bparams->textclass,
+					Style(buffer->params.textclass,
 					      par->GetLayout()).font);
 			par_depth = par->GetDepth();
 		}
 	}
 
-	tmpfont.realize(textclasslist.TextClass(bparams->textclass).defaultfont());
+	tmpfont.realize(textclasslist.TextClass(buffer->params.textclass).defaultfont());
 
 	// Cosmetic improvement: If this is an open footnote, make the font 
 	// smaller.
@@ -204,8 +205,9 @@ void LyXText::SetCharFont(LyXParagraph * par,
 			font = par->GetInset(pos)->ConvertFont(font);
 	}
 
-	LyXLayout const & layout = textclasslist.Style(bparams->textclass,
-					   par->GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(buffer->params.textclass,
+				    par->GetLayout());
 
 	// Get concrete layout font to reduce against
 	LyXFont layoutfont;
@@ -222,12 +224,12 @@ void LyXText::SetCharFont(LyXParagraph * par,
 			tp = tp->DepthHook(tp->GetDepth()-1);
 			if (tp)
 				layoutfont.realize(textclasslist.
-						Style(bparams->textclass,
+						Style(buffer->params.textclass,
 						      tp->GetLayout()).font);
 		}
 	}
 
-	layoutfont.realize(textclasslist.TextClass(bparams->textclass).defaultfont());
+	layoutfont.realize(textclasslist.TextClass(buffer->params.textclass).defaultfont());
 
 	if (par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 	    && par->footnotekind == LyXParagraph::FOOTNOTE) {
@@ -448,7 +450,8 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 {
    
 	LyXLayout const & layout =
-		textclasslist.Style(bparams->textclass, par->GetLayout());
+		textclasslist.Style(buffer->params.textclass,
+				    par->GetLayout());
 
 	LyXFont layoutfont, tmpfont;
 	for (LyXParagraph::size_type pos = 0;
@@ -501,7 +504,7 @@ void LyXText::SetLayout(LyXTextClass::size_type layout)
 	cursor = sel_start_cursor;
    
 	LyXLayout const & lyxlayout =
-		textclasslist.Style(bparams->textclass, layout);
+		textclasslist.Style(buffer->params.textclass, layout);
    
 	while (cursor.par != sel_end_cursor.par) {
 		if (cursor.par->footnoteflag ==
@@ -596,7 +599,7 @@ void  LyXText::IncDepth()
 		// NOTE: you can't change the depth of a bibliography entry
 		if (cursor.par->footnoteflag ==
 		    sel_start_cursor.par->footnoteflag
-		    && textclasslist.Style(bparams->textclass,
+		    && textclasslist.Style(buffer->params.textclass,
 				      cursor.par->GetLayout()
 				     ).labeltype != LABEL_BIBLIO) {
 			LyXParagraph * prev =
@@ -604,7 +607,7 @@ void  LyXText::IncDepth()
 			if (prev 
 			    && (prev->GetDepth() - cursor.par->GetDepth() > 0
 				|| (prev->GetDepth() == cursor.par->GetDepth()
-				    && textclasslist.Style(bparams->textclass,
+				    && textclasslist.Style(buffer->params.textclass,
 						      prev->GetLayout()).isEnvironment()))) {
 				cursor.par->FirstPhysicalPar()->depth++;
 				anything_changed = true;
@@ -712,7 +715,9 @@ void LyXText::SetFont(LyXFont const & font, bool toggleall)
 		else
 			layoutfont = GetFont(cursor.par, -1);
 		// Update current font
-		real_current_font.update(font, bparams->language_info, toggleall);
+		real_current_font.update(font,
+					 buffer->params.language_info,
+					 toggleall);
 
 		// Reduce to implicit settings
 		current_font = real_current_font;
@@ -741,7 +746,9 @@ void LyXText::SetFont(LyXFont const & font, bool toggleall)
 			// an open footnote should behave
 			// like a closed one
 			LyXFont newfont = GetFont(cursor.par, cursor.pos);
-			newfont.update(font, bparams->language_info, toggleall);
+			newfont.update(font,
+				       buffer->params.language_info,
+				       toggleall);
 			SetCharFont(cursor.par, cursor.pos, newfont);
 			cursor.pos++;
 		} else {
@@ -1099,7 +1106,7 @@ void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 
 LyXParagraph::size_type LyXText::BeginningOfMainBody(LyXParagraph * par) const
 {
-	if (textclasslist.Style(bparams->textclass,
+	if (textclasslist.Style(buffer->params.textclass,
 				par->GetLayout()).labeltype != LABEL_MANUAL)
 		return 0;
 	else
@@ -1146,7 +1153,7 @@ void LyXText::MeltFootnoteEnvironment()
 		tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
       
 		/* remember the captions and empty paragraphs */
-		if ((textclasslist.Style(bparams->textclass,
+		if ((textclasslist.Style(buffer->params.textclass,
 					 tmppar->GetLayout())
 		     .labeltype == LABEL_SENSITIVE)
 		    || !tmppar->Last())
@@ -1260,13 +1267,13 @@ void LyXText::SetParagraph(bool line_top, bool line_bottom,
 			// does the layout allow the new alignment?
 			if (align == LYX_ALIGN_LAYOUT)
 				align = textclasslist
-					.Style(bparams->textclass,
+					.Style(buffer->params.textclass,
 					       cursor.par->GetLayout()).align;
 			if (align & textclasslist
-			    .Style(bparams->textclass,
+			    .Style(buffer->params.textclass,
 				   cursor.par->GetLayout()).alignpossible) {
 				if (align == textclasslist
-				    .Style(bparams->textclass,
+				    .Style(buffer->params.textclass,
 					   cursor.par->GetLayout()).align)
 					cursor.par->align = LYX_ALIGN_LAYOUT;
 				else
@@ -1403,11 +1410,12 @@ void LyXText::SetCounter(LyXParagraph * par) const
 	// this is only relevant for the beginning of paragraph
 	par = par->FirstPhysicalPar();
 
-	LyXLayout const & layout = textclasslist.Style(bparams->textclass, 
-						       par->GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(buffer->params.textclass, 
+				    par->GetLayout());
 
 	LyXTextClass const & textclass =
-		textclasslist.TextClass(bparams->textclass);
+		textclasslist.TextClass(buffer->params.textclass);
 
 	/* copy the prev-counters to this one, unless this is the start of a 
 	   footnote or of a bibliography or the very first paragraph */
@@ -1415,7 +1423,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 	    && !(par->Previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE 
 		    && par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 		    && par->footnotekind == LyXParagraph::FOOTNOTE)
-	    && !(textclasslist.Style(bparams->textclass,
+	    && !(textclasslist.Style(buffer->params.textclass,
 				par->Previous()->GetLayout()
 				).labeltype != LABEL_BIBLIO
 		 && layout.labeltype == LABEL_BIBLIO)) {
@@ -1450,7 +1458,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
            && par->Previous()
            && par->Previous()->footnoteflag != LyXParagraph::OPEN_FOOTNOTE
            && (par->PreviousBeforeFootnote()
-               && textclasslist.Style(bparams->textclass,
+               && textclasslist.Style(buffer->params.textclass,
                                  par->PreviousBeforeFootnote()->GetLayout()
 				 ).labeltype >= LABEL_COUNTER_ENUMI)) {
                 // Any itemize or enumerate environment in a marginnote
@@ -1472,7 +1480,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 	 */
 	if (par->Previous()
 	    && par->Previous()->GetDepth() < par->GetDepth()
-	    && textclasslist.Style(bparams->textclass,
+	    && textclasslist.Style(buffer->params.textclass,
 			      par->Previous()->GetLayout()
 			     ).labeltype == LABEL_COUNTER_ENUMI
 	    && par->enumdepth < 3
@@ -1516,7 +1524,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 	if (layout.labeltype >=  LABEL_FIRST_COUNTER) {
       
 		int i = layout.labeltype - LABEL_FIRST_COUNTER;
-		if (i >= 0 && i<= bparams->secnumdepth) {
+		if (i >= 0 && i<= buffer->params.secnumdepth) {
 			par->incCounter(i);	// increment the counter  
 	 
 			// Is there a label? Useful for Chapter layout
@@ -1805,9 +1813,11 @@ void LyXText::UpdateCounters(Row * row) const
 		/* now  check for the headline layouts. remember that they
 		 * have a dynamic left margin */ 
 		if (!par->IsDummy()
-		    && ( textclasslist.Style(bparams->textclass, par->layout).margintype == MARGIN_DYNAMIC
-			 || textclasslist.Style(bparams->textclass, par->layout).labeltype == LABEL_SENSITIVE)
-			){
+		    && ( textclasslist.Style(buffer->params.textclass,
+					     par->layout).margintype == MARGIN_DYNAMIC
+			 || textclasslist.Style(buffer->params.textclass,
+						par->layout).labeltype == LABEL_SENSITIVE)
+			) {
 	 
 			/* Rebreak the paragraph */ 
 			RemoveParagraph(row);
@@ -1940,7 +1950,7 @@ void LyXText::CutSelection(bool doclear)
 	DeleteSimpleCutBuffer();
    
 	// set the textclass
-	simple_cut_buffer_textclass = bparams->textclass;
+	simple_cut_buffer_textclass = buffer->params.textclass;
 
 #ifdef WITH_WARNINGS
 #warning Asger: Make cut more intelligent here.
@@ -2201,13 +2211,13 @@ void LyXText::CutSelection(bool doclear)
 	endpar = sel_start_cursor.par;
 	cap.cutSelection(sel_start_cursor.par, &endpar,
 			 sel_start_cursor.pos, sel_end_cursor.pos,
-			 bparams->textclass, doclear);
+			 buffer->params.textclass, doclear);
     } else {
 	endpar = sel_end_cursor.par;
 
 	cap.cutSelection(sel_start_cursor.par, &endpar,
 			 sel_start_cursor.pos, sel_end_cursor.pos,
-			 bparams->textclass, doclear);
+			 buffer->params.textclass, doclear);
 	cursor.par = sel_end_cursor.par = endpar;
 	cursor.pos = sel_end_cursor.pos;
     }
@@ -2270,7 +2280,7 @@ void LyXText::CopySelection()
 	DeleteSimpleCutBuffer();
 
 	// set the textclass
-	simple_cut_buffer_textclass = bparams->textclass;
+	simple_cut_buffer_textclass = buffer->params->textclass;
 
 #ifdef FIX_DOUBLE_SPACE
 	// copy behind a space if there is one
@@ -2386,7 +2396,7 @@ void LyXText::CopySelection()
 
 	cap.copySelection(sel_start_cursor.par, sel_end_cursor.par,
 			  sel_start_cursor.pos, sel_end_cursor.pos,
-			  bparams->textclass);
+			  buffer->params.textclass);
 }
 #endif          
 
@@ -2540,7 +2550,7 @@ void LyXText::PasteSelection()
      
 		// make sure there is no class difference
 		cap.SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
-						bparams->textclass,
+						buffer->params->textclass,
 						simple_cut_buffer);
      
 		// make the simple_cut_buffer exactly the same layout than
@@ -2676,7 +2686,7 @@ void LyXText::PasteSelection()
     LyXParagraph *actpar = cursor.par;
     int endpos = cursor.pos;
 
-    cap.pasteSelection(&actpar, &endpar, endpos, bparams->textclass);
+    cap.pasteSelection(&actpar, &endpar, endpos, buffer->params.textclass);
 
     RedoParagraphs(cursor, endpar);
     
@@ -2815,7 +2825,7 @@ void LyXText::InsertStringA(string const & str)
 	SetCursorParUndo();
 	
 	bool flag =
-		textclasslist.Style(bparams->textclass, 
+		textclasslist.Style(buffer->params.textclass, 
 				    cursor.par->GetLayout()).isEnvironment();
 	// only to be sure, should not be neccessary
 	ClearSelection();
@@ -3076,7 +3086,7 @@ void LyXText::CheckParagraph(LyXParagraph * par,
 			status = LyXText::NEED_MORE_REFRESH; 
    
 		// check the special right address boxes
-		if (textclasslist.Style(bparams->textclass,
+		if (textclasslist.Style(buffer->params.textclass,
 					par->GetLayout()).margintype
 		    == MARGIN_RIGHT_ADDRESS_BOX) {
 			tmpcursor.par = par;
@@ -3250,7 +3260,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			if (main_body > 0 && pos == main_body-1) {
 				x += fill_label_hfill +
 					lyxfont::width(textclasslist
-						       .Style(bparams->textclass,
+						       .Style(buffer->params.textclass,
 							      row->par->GetLayout())
 						       .labelsep,
 						       GetFont(row->par, -2));
@@ -3445,7 +3455,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	if (selection) return;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
-	if (textclasslist.Style(bparams->textclass,
+	if (textclasslist.Style(buffer->params.textclass,
 				old_cursor.par->GetLayout()).free_spacing)
 		return;
 
@@ -3496,7 +3506,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 #endif
 #if 1
 	// Do not delete empty paragraphs with keepempty set.
-	if ((textclasslist.Style(bparams->textclass,
+	if ((textclasslist.Style(buffer->params.textclass,
 				 old_cursor.par->GetLayout())).keepempty)
 		return;
 

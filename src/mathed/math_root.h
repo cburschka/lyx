@@ -40,7 +40,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void draw(Painter &, int x, int baseline);
     ///
-    void Write(std::ostream &, signed char fragile);
+    void Write(std::ostream &, bool fragile);
     ///
     void Metrics();
     ///

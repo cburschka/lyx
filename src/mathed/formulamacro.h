@@ -49,7 +49,7 @@ public:
         ///
 	void Write(std::ostream & os) const;
 	///
-	int Latex(std::ostream & os, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream & os, bool fragile, bool free_spc) const;
 	///
 	int Linuxdoc(std::ostream &) const;
 	///

@@ -224,7 +224,7 @@ void InsetQuotes::Read(LyXLex & lex)
 }
 
 
-int InsetQuotes::Latex(ostream & os, signed char /*fragile*/, bool) const
+int InsetQuotes::Latex(ostream & os, bool /*fragile*/, bool) const
 {
 	string doclang = 
 		current_view->buffer()->GetLanguage();

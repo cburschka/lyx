@@ -72,7 +72,7 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, bool fragile, bool free_spc) const;
 	///
 	int Linuxdoc(std::ostream &) const;
 	///

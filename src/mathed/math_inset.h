@@ -46,7 +46,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	///
@@ -75,7 +75,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	///
@@ -105,7 +105,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 protected:
@@ -124,7 +124,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	inline void Metrics();
 	///
@@ -147,7 +147,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	///
@@ -174,7 +174,7 @@ public:
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	///
@@ -197,7 +197,7 @@ public:
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	
@@ -243,7 +243,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 protected:
@@ -264,7 +264,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, signed char fragile);
+	void Write(std::ostream &, bool fragile);
 	///
 	void Metrics();
 	///
@@ -297,7 +297,7 @@ bool MathFuncInset::GetLimits() const
 
 
 inline
-void MathFuncInset::Write(std::ostream & os, signed char /* fragile */)
+void MathFuncInset::Write(std::ostream & os, bool /* fragile */)
 {
 	os << "\\" << name << ' ';
 }

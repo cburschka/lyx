@@ -21,7 +21,7 @@
 #include "lyxrow.h"
 #include "Painter.h"
 #include "WorkArea.h"
-#include "bufferparams.h"
+#include "buffer.h"
 #include "font.h"
 
 using std::max;
@@ -190,9 +190,9 @@ void LyXScreen::ShowCursor()
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
 		if (text->real_current_font.language() !=
-		    text->bparams->language_info
+		    text->buffer->params.language_info
 		    || text->real_current_font.isVisibleRightToLeft()
-		    != text->bparams->language_info->RightToLeft)
+		    != text->buffer->params.language_info->RightToLeft)
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
 		ShowManualCursor(text->cursor.x, text->cursor.y,

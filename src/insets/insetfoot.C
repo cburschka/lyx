@@ -52,7 +52,7 @@ char const * InsetFoot::EditMessage() const
 }
 
 
-int InsetFoot::Latex(ostream & os, signed char fragile, bool fp) const
+int InsetFoot::Latex(ostream & os, bool fragile, bool fp) const
 {
 	if (fragile) 
 		os << "\\footnote{"; // was footnotemark but that won't work

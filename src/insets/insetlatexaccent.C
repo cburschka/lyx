@@ -620,7 +620,7 @@ void InsetLatexAccent::Read(LyXLex & lex)
 
 
 int InsetLatexAccent::Latex(ostream & os,
-			    signed char /*fragile*/, bool/*fs*/) const
+			    bool /*fragile*/, bool/*fs*/) const
 {
 	os << contents;
 	return 0;

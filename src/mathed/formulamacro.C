@@ -69,14 +69,18 @@ Inset * InsetFormulaMacro::Clone() const
 void InsetFormulaMacro::Write(ostream & os) const
 {
 	os << "FormulaMacro ";
-	tmacro->WriteDef(os, 0);
+	tmacro->WriteDef(os, false);
 }
 
 
-int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/, 
+int InsetFormulaMacro::Latex(ostream & os, bool /*fragile*/, 
 			     bool /*free_spacing*/) const
 {
-    tmacro->WriteDef(os, 1);
+	tmacro->WriteDef(os, true); // or false?
+	// CHECK
+	// This is the only place where a '1' is used rather that '-1' or '0'
+	// for value of fragile. What is the reason behind it and does it make
+	// a difference? (Lgb)
     return 1;
 }
 

@@ -1142,7 +1142,7 @@ void InsetFig::Read(LyXLex & lex)
 
 
 int InsetFig::Latex(ostream & os,
-		    signed char /* fragile*/, bool /* fs*/) const
+		    bool /* fragile*/, bool /* fs*/) const
 {
 	Regenerate();
 	if (!cmd.empty()) os << cmd << " ";

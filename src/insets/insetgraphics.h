@@ -46,10 +46,10 @@ public:
 	///
 	void Read(LyXLex & lex);
 	/** returns the number of rows (\n's) of generated tex code.
-	 fragile != 0 means, that the inset should take care about
+	 fragile == true means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	int Latex(std::ostream &, signed char fragile, bool free_spc) const;
+	int Latex(std::ostream &, bool fragile, bool free_spc) const;
 	///
 	int Linuxdoc(std::ostream &) const;
 	///

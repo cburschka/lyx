@@ -34,8 +34,8 @@ You will need to have both an Xforms library and Xpm library to compile
 LyX.  It is imperative that you have the correct versions of these 
 libraries, and their associated header files.
 
-As of LyX version 1.1.1, you will need to have Xforms library and header
-version 0.81, 0.86, or 0.88.  Version 0.88 is a stable release and the
+As of LyX version 1.1.5, you will need to have Xforms library and header
+version 0.88 or 0.89.  Version 0.88 is a stable release and the
 recommended version.  On some systems, such as linux ELF, there are shared 
 library versions of the Xforms library, which require an installation step 
 to configure the system.
@@ -58,11 +58,11 @@ libXpm can be found at:
 	    (or similar locations at other sunsites like sunsite.unc.edu)
 
 You will also need a recent C++ compiler, where recent means that the
-compilers knows a bit about the C++ standard. Compilers that are known
+compilers are close to C++ standard conforming. Compilers that are known
 to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of egcs
 and Digital C++ version 6.1. Please tell us your experience with other
-compilers. It is probably _not_ possible to compile LyX with gcc
-2.7.x, but this may change in the future. 
+compilers. It is _not_ possible to compile LyX with gcc
+2.7.x, and this is not likely to change in the future. 
 
 Note that, contrary to LyX 1.0.x, LyX 1.1.x makes great use of C++
 Standard Template Library (STL); this means that gcc users will have

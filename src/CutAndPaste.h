@@ -41,12 +41,7 @@ public:
 					LyXTextClassList::size_type class2,
 					LyXParagraph * par);
 	///
-	LyXTextClassList::size_type getBufferTextClass() const;
-	///
 	bool checkPastePossible(LyXParagraph *, int pos) const;
-private:
-	///
-	void DeleteBuffer();
 };
 
 #endif

@@ -133,7 +133,7 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(std::ostream &, signed char, bool) const;
+	int Latex(std::ostream &, bool fragile, bool freespace) const;
 	///
 	string getKeys(char delim);
 	///

@@ -20,12 +20,26 @@
 
 using std::pair;
 
+// Jürgen, note that this means that you cannot currently have a list
+// of selections cut/copied. So IMHO later we should have a
+// list/vector/deque that we could store
+// struct selection_item {
+//       LyXParagraph * buf;
+//       LyXTextClassList::size_type textclass;
+// };
+// in and some method of choosing beween them (based on the first few chars
+// in the selection probably.) This would be a nice feature and quite
+// easy to implement. (Lgb)
+
 static LyXParagraph * buf = 0;
 static LyXTextClassList::size_type textclass;
 
 // for now here this should be in another Cut&Paste Class!
-//
-void CutAndPaste::DeleteBuffer()
+// Jürgen, I moved this out of CutAndPaste since it does not operate on any
+// member of the CutAndPaste class and in addition it was private.
+// Perhaps it even should take a parameter? (Lgb)
+static
+void DeleteBuffer()
 {
 	if (!buf) return;
 	
@@ -332,7 +346,7 @@ int CutAndPaste::nrOfParagraphs() const
 	if (!buf) return 0;
 
 	int n = 1;
-	LyXParagraph *tmppar = buf;
+	LyXParagraph * tmppar = buf;
 	while(tmppar->next) {
 		++n;
 		tmppar = tmppar->next;
@@ -378,12 +392,6 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 	par = par->next;
     }
     return ret;
-}
-
-
-LyXTextClassList::size_type CutAndPaste::getBufferTextClass() const
-{
-    return textclass;
 }
 
 

@@ -133,7 +133,7 @@ void InsetInfo::Read(LyXLex & lex)
       
 
 int InsetInfo::Latex(ostream &,
-		     signed char /*fragile*/, bool /*free_spc*/) const
+		     bool /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }

@@ -78,7 +78,7 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(std::ostream &, signed char, bool free_spc) const;
+    int Latex(std::ostream &, bool fragile, bool free_spc) const;
     ///
     int Linuxdoc(std::ostream &) const { return 0; }
     ///

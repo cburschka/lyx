@@ -1,3 +1,42 @@
+What's new in LyX version 1.1.5?
+--------------------------------
+
+Lots of internal code rewritten, fixed, changed and added. 
+We are taking the C++ Standard Library in greater use for each day,
+this will in most cases make the code clearer and easier to maintain
+and expand.
+We are also gearing up for the merge of the gui-indep branch, expect
+this (but not the new gui's) in 1.1.6.
+
+User-visible changes:
+
+- Right-to-Left support for Hebrew and Arabic, this is a first attempt
+  only and is likely to improve in future versions.
+
+- Removed support for XForms older than 0.88.
+
+- Some commandline options and X resources are not supported anymore
+  (The color ones, and -mono -fastselection, -reverse)
+
+- More accurate error reporting from LaTeX runs.
+
+- Better definition for LyXList style.
+
+- option \show_banner [true|false] added to .lyxrc commands.
+
+- A couple of changes to the LyX format, so that files written with
+  1.1.5 will not be parsed correctly by older LyX versions if protected
+  spaces or the new per-paragraph spacing are used. Also the RtL
+  support is of course not supported in older versions.
+
+- Per-paragraph spacing, currently only settable wrom the
+  command-line/window:
+      paragraph-spacing (default,single,onehalf,double,other) [float]
+
+- .lyxrc feature: \backupdir_path that tells where the backup files
+  created by lyx will be stored.
+
+
 What's new in LyX version 1.1.4?
 --------------------------------
 

@@ -308,16 +308,16 @@ Inset * InsetFormula::Clone() const
 void InsetFormula::Write(ostream & os) const
 {
 	os << "Formula ";
-	Latex(os, 0, 0);
+	Latex(os, false, false);
 }
 
 
-int InsetFormula::Latex(ostream & os, signed char fragile, bool) const
+int InsetFormula::Latex(ostream & os, bool fragile, bool) const
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
-    if (fragile < 0)
+    if (fragile) // this is where fragile != 0 was used (Lgb)
 	    par->Write(os, fragile);
     else
 	    mathed_write(par, os, &ret, fragile, label.c_str());

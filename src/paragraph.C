@@ -1980,8 +1980,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 	if (!spacing.isDefault()
 	    && (!Previous() || !Previous()->HasSameLayout(this))) {
-		os << "\\begin{spacing}{"
-		   << spacing.getValue() << "}\n";
+		os << spacing.writeEnvirBegin() << "\n";
 		texrow.newline();
 	}
 	
@@ -2163,7 +2162,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 	if (!spacing.isDefault()
 	    && (!par || !par->HasSameLayout(this))) {
-		os << "\\end{spacing}\n";
+		os << spacing.writeEnvirEnd() << "\n";
 		texrow.newline();
 	}
 	
@@ -3405,7 +3404,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 #if 1
 #ifdef HAVE_SSTREAM
 					stringstream ss(ios::in | ios::out);
-					inset->Latex(ss, -1);
+					inset->Latex(ss, true);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3417,7 +3416,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 					}
 #else
 					strstream ss;
-					inset->Latex(ss, -1);
+					inset->Latex(ss, true);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3438,7 +3437,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 							   fname2);
 						return false;
 					}
-					inset->Latex(fs, -1);
+					inset->Latex(fs, true);
 					fs.seekp(0);
 					fs.get(c);
 					while (!fs) {

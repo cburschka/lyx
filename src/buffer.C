@@ -1428,11 +1428,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 #if 1
 #ifdef HAVE_SSTREAM
 						std::ostringstream ost;
-						inset->Latex(ost, -1, free_spc);
+						inset->Latex(ost, true, free_spc);
 						h += ost.str().length();
 #else
 						ostrstream ost;
-						inset->Latex(ost, -1, free_spc);
+						inset->Latex(ost, true, free_spc);
 						ost << '\0';
 						char * tmp = ost.str();
 						string tstr(tmp);
@@ -1445,7 +1445,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 							WriteFSAlert(_("Error: Cannot open temporary file:"), fname1);
 							return;
 						}
-						inset->Latex(fs, -1, free_spc);
+						inset->Latex(fs, true, free_spc);
 						h += fs.tellp() - 1;
 						::remove(fname1.c_str());
 #endif
@@ -1530,7 +1530,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			case LyXParagraph::META_INSET:
 				if ((inset = par->GetInset(i))) {
 					fpos = ofs.tellp();
-					inset->Latex(ofs, -1, free_spc);
+					inset->Latex(ofs, true, free_spc);
 					currlinelen += (ofs.tellp() - fpos);
 					actpos += (ofs.tellp() - fpos) - 1;
 				}
@@ -3538,7 +3538,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 #if 1
 #ifdef HAVE_SSTREAM
 				stringstresm ss(ios::in | ios::out);
-				inset->Latex(ss, -1);
+				inset->Latex(ss, true);
 				ss.seekp(0);
 				ss.get(c);
 				while (!ss) {
@@ -3550,7 +3550,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 				}
 #else
 				strstream ss;
-				inset->Latex(ss, -1);
+				inset->Latex(ss, true);
 				ss.seekp(0);
 				ss.get(c);
 				while (!ss) {
@@ -3571,7 +3571,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 					remove(fname1.c_str());
 					return;
 				}
-				inset->Latex(fs, -1);
+				inset->Latex(fs, true);
 				fs.seekp(0);
 				fs.get(c);
 				while(!fs) {

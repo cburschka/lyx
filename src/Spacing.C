@@ -4,6 +4,7 @@
 #ifdef HAVE_SSTREAM
 #include <sstream>
 using std::istringstream;
+using std::ostringstream;
 #else
 #include <strstream>
 #endif
@@ -73,4 +74,59 @@ void Spacing::writeFile(ostream & os, bool para) const
 	} else {
 		os << cmd << spacing_string[getSpace()] << " \n";
 	}	
+}
+
+
+string Spacing::writeEnvirBegin() const
+{
+	switch(space) {
+	case Default: break; // do nothing
+	case Single:
+		return "\\begin{singlespace}";
+		break;
+	case Onehalf:
+		return "\\begin{onehalfspace}";
+		break;
+	case Double:
+		return "\\begin{doublespace}";
+		break;
+	case Other:
+#ifdef HAVE_SSTREAM
+		ostringstream ost;
+		ost << "\\begin{spacing}{"
+		    << getValue() << "}";
+		return ost.str().c_str();
+#else
+		{
+			char tmp[512];
+			ostrstream ost(tmp, 512);
+			ost << "\\begin{spacing}{"
+			    << getValue() << "}";
+			return ost.str();
+		}
+#endif
+		break;
+	}
+	return string();
+}
+
+
+string Spacing::writeEnvirEnd() const
+{
+	switch(space) {
+	case Default: break; // do nothing
+	case Single:
+		return "\\end{singlespace}";
+		break;
+	case Onehalf:
+		return "\\end{onehalfspace}";
+		break;
+	case Double:
+		return "\\end{doublespace}";
+		break;
+	case Other:
+		return "\\end{spacing}";
+		break;
+	}
+	return string();
 }

@@ -105,7 +105,7 @@ void InsetError::Read(LyXLex &)
 
 
 int InsetError::Latex(ostream &,
-		      signed char /*fragile*/, bool /*fs*/) const
+		      bool /*fragile*/, bool /*fs*/) const
 {
 	return 0;
 }

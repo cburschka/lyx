@@ -37,7 +37,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
     ///
-    int Latex(std::ostream &, signed char, bool fp) const;
+    int Latex(std::ostream &, bool fragile, bool fp) const;
     ///
     void Write(std::ostream &) const;
     ///
