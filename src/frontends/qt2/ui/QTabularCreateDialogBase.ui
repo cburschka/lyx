@@ -13,17 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>265</width>
-            <height>311</height>
+            <width>272</width>
+            <height>243</height>
         </rect>
-    </property>
-    <property stdset="1">
-        <name>sizeGripEnabled</name>
-        <bool>true</bool>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Insert table</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">
@@ -75,16 +75,16 @@
                         <cstring>rowsSB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>minValue</name>
-                        <number>1</number>
+                        <name>buttonSymbols</name>
+                        <enum>PlusMinus</enum>
                     </property>
                     <property stdset="1">
                         <name>maxValue</name>
                         <number>511</number>
                     </property>
                     <property stdset="1">
-                        <name>buttonSymbols</name>
-                        <enum>PlusMinus</enum>
+                        <name>minValue</name>
+                        <number>1</number>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -117,16 +117,16 @@
                         <cstring>columnsSB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>minValue</name>
-                        <number>1</number>
+                        <name>buttonSymbols</name>
+                        <enum>PlusMinus</enum>
                     </property>
                     <property stdset="1">
                         <name>maxValue</name>
                         <number>511</number>
                     </property>
                     <property stdset="1">
-                        <name>buttonSymbols</name>
-                        <enum>PlusMinus</enum>
+                        <name>minValue</name>
+                        <number>1</number>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -161,6 +161,20 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>Layout3</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>100</width>
+                    <height>100</height>
+                </size>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>600</width>
+                    <height>600</height>
+                </size>
             </property>
             <grid>
                 <property stdset="1">
@@ -225,6 +239,24 @@
                             <hsizetype>5</hsizetype>
                             <vsizetype>5</vsizetype>
                         </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>minimumSize</name>
+                        <size>
+                            <width>100</width>
+                            <height>100</height>
+                        </size>
+                    </property>
+                    <property stdset="1">
+                        <name>maximumSize</name>
+                        <size>
+                            <width>600</width>
+                            <height>600</height>
+                        </size>
+                    </property>
+                    <property stdset="1">
+                        <name>focusPolicy</name>
+                        <enum>NoFocus</enum>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -303,7 +335,7 @@
             <width>-1</width>
             <height>-1</height>
         </sizehint>
-        <container>0</container>
+        <container>1</container>
         <sizepolicy>
             <hordata>5</hordata>
             <verdata>5</verdata>
@@ -361,4 +393,11 @@
     <slot access="public">columnsChanged(int)</slot>
     <slot access="public">rowsChanged(int)</slot>
 </connections>
+<tabstops>
+    <tabstop>rowsSB</tabstop>
+    <tabstop>columnsSB</tabstop>
+    <tabstop>table</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>
