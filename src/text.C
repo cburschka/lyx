@@ -2014,8 +2014,8 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
-		<< " workWidth: " << workWidth() << "\nfont: " << mi.base.font << endl;
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
+	//	<< " workWidth: " << workWidth() << "\nfont: " << mi.base.font << endl;
 	//BOOST_ASSERT(mi.base.textwidth);
 	//anchor_y_ = 0;
 
