@@ -8,6 +8,10 @@
 	* rowpainter.C:
 	* text3.C: remove LyXScreen::draw() and fitCursor calls
 
+	* BranchList.h: remove spurious semicolons
+
+	* MenuBackend.C: fix branchlist related crash
+
 2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
 
 	* BranchList.[Ch]:
