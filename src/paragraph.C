@@ -354,7 +354,7 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 					     << endl;
 			features.noun = true;
 			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
-					     << (*cit).font.stateText()
+					     << (*cit).font.stateText(0)
 					     << endl;
 		}
 		switch ((*cit).font.color()) {
@@ -365,7 +365,7 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 		default:
 			features.color = true;
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
-					     << (*cit).font.stateText()
+					     << (*cit).font.stateText(0)
 					     << endl;
 		}
 #if 0
@@ -2025,7 +2025,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 	Language const * language = getParLanguage();
 	Language const * doc_language = current_view->buffer()->params.language_info;
-	if (language != doc_language) {
+	if (language != doc_language &&
+	    (!previous || previous->getParLanguage() != language)) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
 			    language->lang)
 		   << endl;
@@ -2059,23 +2060,28 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE
 		    && next->footnoteflag != footnoteflag) {
 			LyXParagraph * p = 0;
-			bool is_rtl = GetFontSettings(size()-1).isRightToLeft();
+			bool is_rtl = (size() > 0) 
+				? GetFontSettings(size()-1).isRightToLeft()
+				: language->RightToLeft;
 			if ( (p = NextAfterFootnote()) != 0 &&
+			     p->size() > 0 &&
 			     p->GetFontSettings(0).isRightToLeft() != is_rtl)
-				is_rtl = GetFontSettings(0).isRightToLeft();
-			while (par &&
-			       par->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
-			       par->footnoteflag != footnoteflag) {
+				is_rtl = getParLanguage()->RightToLeft;
+			while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+			       && par->footnoteflag != footnoteflag) {
 				par = par->TeXFootnote(os, texrow, foot,
 						       foot_texrow, foot_count,
 						       is_rtl);
 				par->SimpleTeXOnePar(os, texrow, moving_arg);
-				is_rtl = par->GetFontSettings(par->size()-1).isRightToLeft();
+				is_rtl = (par->size() > 0)
+					? par->GetFontSettings(par->size()-1).isRightToLeft()
+					: language->RightToLeft;
 				if (par->next &&
 				    par->next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
 				    (p = par->NextAfterFootnote()) != 0 &&
+				    p->size() > 0 &&
 				    p->GetFontSettings(0).isRightToLeft() != is_rtl)
-					is_rtl = GetFontSettings(0).isRightToLeft();
+					is_rtl = language->RightToLeft;
 				par = par->next;
 			}
 		}
@@ -2115,7 +2121,10 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		os << "{\\" << font.latexSize() << " \\par}";
 	}
 
-	if (language != doc_language) {
+	if (language != doc_language &&
+	    (!par
+	     || (footnoteflag != NO_FOOTNOTE && par->footnoteflag != footnoteflag)
+	     || par->getParLanguage() != language)) {
 		os << endl 
 		   << subst(lyxrc.language_command_end, "$$lang",
 			    doc_language->lang);
@@ -4213,10 +4222,11 @@ bool LyXParagraph::IsWord(size_type pos ) const
 
 Language const * LyXParagraph::getParLanguage() const 
 {
-	if (size() > 0)
+	if (IsDummy())
+		return FirstPhysicalPar()->getParLanguage();
+	else if (size() > 0)
 		if (!table)
-			return FirstPhysicalPar()->GetFirstFontSettings()
-				.language();
+			return GetFirstFontSettings().language();
 		else {
 			for (size_type pos = 0; pos < size(); ++pos)
 				if (IsNewline(pos))
@@ -4321,8 +4331,8 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 		}
 	}
 
-	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		s += NextAfterFootnote()->String(false);
+	//if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
+	//	s += NextAfterFootnote()->String(false);
 
 	if (!IsDummy()) {
 		if (isRightToLeftPar())

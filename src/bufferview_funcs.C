@@ -244,7 +244,7 @@ string CurrentState(BufferView * bv)
 			.TextClass(buffer->params.textclass)
 			.defaultfont();
 		font.reduce(defaultfont);
-		state = _("Font: ") + font.stateText();
+		state = _("Font: ") + font.stateText(&buffer->params);
 		// The paragraph depth
 		int depth = bv->text->GetDepth();
 		if (depth > 0) 

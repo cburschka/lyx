@@ -25,12 +25,14 @@
     both reads and writes this information to a file. The number of files
     kept are user defined, but defaults to four.
 */
-class LastFiles 
-{
+class LastFiles {
 public:
 	///
 	typedef std::deque<string> Files;
 
+	///
+	typedef Files::const_iterator const_iterator;
+	
 	/**@name Constructors and Deconstructors */
 	//@{
 	/**

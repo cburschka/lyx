@@ -662,7 +662,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 
 	// make the lastfiles menu
 	int ii = 1;
-	for (LastFiles::Files::const_iterator cit = lastfiles->begin();
+	for (LastFiles::const_iterator cit = lastfiles->begin();
 	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
 		string tmp = tostr(ii);
 		string tmp2 = tmp + "#" + tmp;;
@@ -813,7 +813,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	
 	// make the lastfiles menu
 	int ii = 1;
-	for (LastFiles::Files::const_iterator cit = lastfiles->begin();
+	for (LastFiles::const_iterator cit = lastfiles->begin();
 	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
 		string tmp = tostr(ii);
 		string tmp2 = tmp + "#" + tmp;;
@@ -1350,11 +1350,17 @@ void Menus::ShowTocMenu(FL_OBJECT * ob, long)
 		men->currentView()->buffer()->getTocList();
 
 	//xgettext:no-c-format
-	static char const * MenuNames[3] = { N_("List of Figures%m%l"),
+	static char const * MenuNames[3] = { N_("List of Figures%m"),
 	//xgettext:no-c-format
-					     N_("List of Tables%m%l"),
+					     N_("List of Tables%m"),
 	//xgettext:no-c-format
-					     N_("List of Algorithms%m%l") };
+					     N_("List of Algorithms%m") };
+
+	int max_nonempty = 0;
+	for (int j = 1; j <= 3; ++j)
+		if (!toclist[j].empty())
+			max_nonempty = j;
+
 	for (int j = 1; j <= 3; ++j)
 		if (!toclist[j].empty()) {
 			int menu2 = fl_newpup(FL_ObjWin(ob));
@@ -1363,7 +1369,12 @@ void Menus::ShowTocMenu(FL_OBJECT * ob, long)
 				fl_addtopup(menu2,
 					    (toclist[j][i].str + "%x"
 					     + tostr(i+1+j*BIG_NUM)).c_str());
-			fl_addtopup(TocMenu, _(MenuNames[j-1]), menu2);
+			if (j == max_nonempty) {
+				string tmp = _(MenuNames[j-1]);
+				tmp += "%l";
+				fl_addtopup(TocMenu, tmp.c_str(), menu2);
+			} else
+				fl_addtopup(TocMenu, _(MenuNames[j-1]), menu2);
 		}
 
 	Add_to_toc_menu(toclist[0], 0, toclist[0].size(), 0,
@@ -1522,9 +1533,10 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 				  "|Emphasize Style%b"
 				  "|Noun Style%b"
 				  "|Bold Style%b"
-				  "|TeX Style%b"
+				  "|TeX Style%b%l"
 				  "|Change Environment Depth"
-				  "|LaTeX Preamble...%l"
+				  "|LaTeX Preamble..."
+				  "|Start of Appendix%l"
 				  "|Save layout as default"));
 	fl_setpup_shortcut(LayoutMenu, 1, scex(_("LM|Cc#c#C")));
 	fl_setpup_shortcut(LayoutMenu, 2, scex(_("LM|Pp#p#P")));
@@ -1538,7 +1550,8 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(LayoutMenu, 10, scex(_("LM|Tt#t#T")));
 	fl_setpup_shortcut(LayoutMenu, 11, scex(_("LM|vV#v#V")));
 	fl_setpup_shortcut(LayoutMenu, 12, scex(_("LM|Ll#l#L")));
-	fl_setpup_shortcut(LayoutMenu, 13, scex(_("LM|Ss#s#S")));
+	fl_setpup_shortcut(LayoutMenu, 13, scex(_("LM|xX#x#X")));
+	fl_setpup_shortcut(LayoutMenu, 14, scex(_("LM|Ss#s#S")));
 
 	// Set values of checkboxes according to font
 	LyXFont font = men->currentView()->text->real_current_font;
@@ -1584,7 +1597,8 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 	case 10: tmpfunc->Dispatch(LFUN_TEX); break;
 	case 11: tmpfunc->Dispatch(LFUN_DEPTH_PLUS); break;
 	case 12: tmpfunc->Dispatch(LFUN_LAYOUT_PREAMBLE); break;
-	case 13: tmpfunc->Dispatch(LFUN_LAYOUT_SAVE_DEFAULT); break;
+	case 13: tmpfunc->Dispatch(LFUN_APPENDIX); break;
+	case 14: tmpfunc->Dispatch(LFUN_LAYOUT_SAVE_DEFAULT); break;
 	}
 	fl_freepup(LayoutMenu); 
 }

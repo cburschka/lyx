@@ -267,7 +267,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 		f.setNoun(LyXFont::INHERIT);
 		f.setLatex(LyXFont::INHERIT);
 		f.setColor(LColor::inherit);
-		lyxerr << "Font '" << f.stateText() 
+		lyxerr << "Font '" << f.stateText(0) 
 		       << "' matched by\n" << font << endl;
 	}
 

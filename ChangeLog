@@ -1,3 +1,27 @@
+2000-05-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C (String): give more correct output.
+
+2000-05-20  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyxfont.C (stateText) Do not output the language if it is
+	eqaul to the language of the document.
+
+	* src/paragraph.C (TeXOnePar): Do not put language switch commands
+	between two paragraphs with the same language.
+
+	* src/paragraph.C (getParLanguage) Return a correct answer for an
+	empty dummy paragraph.
+
+	* src/menus.C (ShowTocMenu): Do not draw lines between LOF/LOT/LOA
+	menus.
+
+	* src/menus.C (ShowLayoutMenu) Add "Start of Appendix" item to the
+	layout menu.
+
+	* src/lyx_gui.C (init): Try to use helvetica (or fixed) fonts for
+	the menus/popup, if requested fonts are unavailable.
+
 2000-05-22  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (LocalDispatch): added some more cursor

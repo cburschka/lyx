@@ -24,6 +24,7 @@
 #include "lyxlex.h"
 #include "FontLoader.h"
 #include "support/lstrings.h"
+#include "bufferparams.h" // stateText
 
 using std::ostream;
 using std::endl;
@@ -380,7 +381,7 @@ bool LyXFont::resolved() const
 
 
 /// Build GUI description of font state
-string LyXFont::stateText() const
+string LyXFont::stateText(BufferParams * params) const
 {
 #ifdef HAVE_SSTREAM
 	std::ostringstream ost;
@@ -410,7 +411,8 @@ string LyXFont::stateText() const
 		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
 	if (bits == inherit)
 		ost << _("Default") << ", ";
-	ost << _("Language: ") << _(language()->display.c_str());
+	if (!params || language() != params->language_info)
+		ost << _("Language: ") << _(language()->display.c_str());
 #ifdef HAVE_SSTREAM
 	string buf(ost.str().c_str());
 #else

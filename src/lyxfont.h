@@ -36,6 +36,7 @@
 #endif
 
 class LyXLex;
+class BufferParams;
 
 ///
 class LyXFont {
@@ -309,7 +310,7 @@ public:
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
-	string stateText() const;
+	string stateText(BufferParams * params) const;
 
 	///
 	LColor::color realColor() const;

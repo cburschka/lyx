@@ -3153,7 +3153,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 	//	return;
 	if (toclist.size() == tmp[type].size()) {
 		// Check if all elements are the same.
-		int i = 0;
+		unsigned int i = 0;
 		for (; i < toclist.size(); ++i) {
 			if (toclist[i] !=  tmp[type][i])
 				break;

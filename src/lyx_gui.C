@@ -247,13 +247,27 @@ void LyXGUI::init()
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc.font_norm_menu;
 
-        if (fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str()) < 0)
+	int bold = fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str());
+	int normal = fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str());
+        if (bold < 0)
                 lyxerr << "Could not set menu font to "
 		       << menufontname << endl;
 
-        if (fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str()) < 0)
+        if (normal < 0)
                 lyxerr << "Could not set popup font to "
 		       << popupfontname << endl;
+
+	if (bold < 0 && normal < 0) {
+		lyxerr << "Using 'helvetica' font for menus" << endl;
+		bold = fl_set_font_name(FL_BOLD_STYLE,
+					"-*-helvetica-bold-r-*-*-*-?-*-*-*-*-iso8859-1");
+		normal = fl_set_font_name(FL_NORMAL_STYLE,
+					  "-*-helvetica-medium-r-*-*-*-?-*-*-*-*-iso8859-1");
+		if (bold < 0 && normal < 0) {
+			lyxerr << "Could not find helvetica font. Using 'fixed'." << endl;
+			normal = fl_set_font_name(FL_NORMAL_STYLE, "fixed");
+		}
+	}
 
  	// put here (after fl_initialize) to avoid segfault. Cannot be done
 	// in setDefaults() (Matthias 140496)
