@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>416</width>
-            <height>225</height>
+            <width>311</width>
+            <height>158</height>
         </rect>
     </property>
     <property stdset="1">
@@ -39,13 +39,13 @@
             <item>
                 <property>
                     <name>text</name>
-                    <string>Include</string>
+                    <string>Input</string>
                 </property>
             </item>
             <item>
                 <property>
                     <name>text</name>
-                    <string>Input</string>
+                    <string>Include</string>
                 </property>
             </item>
             <item>
@@ -136,28 +136,6 @@
             <property stdset="1">
                 <name>text</name>
                 <string>Visible &amp;Space</string>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>FIXME</string>
-            </property>
-        </widget>
-        <widget row="2"  column="1"  rowspan="1"  colspan="3" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>typesetCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>3</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Don't typeset</string>
             </property>
             <property>
                 <name>toolTip</name>
@@ -309,12 +287,6 @@
 </widget>
 <connections>
     <connection>
-        <sender>typesetCB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QIncludeDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>visiblespaceCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QIncludeDialogBase</receiver>
@@ -338,6 +310,12 @@
         <receiver>QIncludeDialogBase</receiver>
         <slot>browseClicked()</slot>
     </connection>
+    <connection>
+        <sender>typeCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QIncludeDialogBase</receiver>
+        <slot>typeChanged(int)</slot>
+    </connection>
     <slot access="public">browseClicked()</slot>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">loadClicked()</slot>
@@ -347,7 +325,6 @@
     <tabstop>filenameED</tabstop>
     <tabstop>browsePB</tabstop>
     <tabstop>typeCO</tabstop>
-    <tabstop>typesetCB</tabstop>
     <tabstop>visiblespaceCB</tabstop>
     <tabstop>loadPB</tabstop>
     <tabstop>okPB</tabstop>

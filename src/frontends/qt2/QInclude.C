@@ -41,7 +41,6 @@ void QInclude::build_dialog()
 	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->filenameED);
 	bc().addReadOnly(dialog_->browsePB);
-	bc().addReadOnly(dialog_->typesetCB);
 	bc().addReadOnly(dialog_->visiblespaceCB);
 	bc().addReadOnly(dialog_->typeCO);
 }
@@ -53,34 +52,32 @@ void QInclude::update_contents()
 
 	string const cmdname = controller().params().cparams.getCmdName();
 
-	dialog_->typesetCB->setChecked(controller().params().noload);
-
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
 
+	lyxerr << cmdname << endl;
+ 
 	if (cmdname == "input")
-		dialog_->typeCO->setCurrentItem(1);
+		dialog_->typeCO->setCurrentItem(0);
 	else if (!cmdname.empty()) {
 		dialog_->typeCO->setCurrentItem(2);
 		dialog_->visiblespaceCB->setChecked(cmdname == "verbatiminput*");
 		dialog_->visiblespaceCB->setEnabled(true);
+	} else {
+		dialog_->typeCO->setCurrentItem(1);
 	}
-	else dialog_->typeCO->setCurrentItem(0);
-
 }
 
 
 void QInclude::apply()
 {
-	controller().params().noload = dialog_->typesetCB->isChecked();
-
 	controller().params().cparams.
 		setContents(dialog_->filenameED->text().latin1());
 
 	int const item = dialog_->typeCO->currentItem();
-	if (item==1)
+	if (item == 0)
 		controller().params().flag = InsetInclude::INPUT;
-	else if (item==0)
+	else if (item == 1)
 		controller().params().flag = InsetInclude::INCLUDE;
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
@@ -97,9 +94,9 @@ void QInclude::browse()
 
 	int const item = dialog_->typeCO->currentItem();
 	if (item==0)
-		type = ControlInclude::INCLUDE;
-	else if (item==1)
 		type = ControlInclude::INPUT;
+	else if (item==1)
+		type = ControlInclude::INCLUDE;
 	else
 		type = ControlInclude::VERBATIM;
 

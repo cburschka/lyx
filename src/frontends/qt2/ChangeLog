@@ -1,3 +1,11 @@
+2002-09-10  John Levon  <levon@movementarian.org>
+
+	* ui/QIncludeDialog.ui:
+	* QInclude.h:
+	* QInclude.C: remove don't typeset
+
+	* Dialogs2.C: add empty showWrap
+
 2002-09-08  John Levon  <levon@movementarian.org>
 
 	* QFloat.C: another fix

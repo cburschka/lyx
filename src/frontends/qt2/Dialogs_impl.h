@@ -45,6 +45,7 @@
 #include "ControlToc.h"
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
+#include "ControlWrap.h"
 
 #include "QAbout.h"
 #include "QAboutDialog.h"
