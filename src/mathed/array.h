@@ -78,9 +78,6 @@ public:
 	/// Insert a character at position pos
 	void Insert(int pos, byte);
 
-	/// Insert a string of lenght dx at position pos
-	void Insert(int pos, byte *, int dx);
-
 	/// Constructs a new array with dx elements starting at pos 
 	byte operator[](const int);
 

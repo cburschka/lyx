@@ -1,3 +1,14 @@
+2001-02-09  John Levon  <moz@compsoc.man.ac.uk>
+
+	* buffer.h:
+	* buffer.C: rename to getLogName(), handle
+	  build log / latex log nicely
+
+2001-02-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* MenuBackend.C: 
+	* MenuBackend.h: remove support for reference menuitem type.
+
 2001-02-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: housekeeping

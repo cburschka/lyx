@@ -52,7 +52,6 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case Documents:
 	case Lastfiles:
 	case Toc:
-	case References:
 	case ViewFormats:
 	case UpdateFormats:
 	case ExportFormats:
@@ -93,7 +92,6 @@ Menu & Menu::read(LyXLex & lex)
 		md_importformats,
 		md_lastfiles,
 		md_optitem,
-		md_references,
 		md_separator,
 		md_submenu,
 		md_toc,
@@ -110,7 +108,6 @@ Menu & Menu::read(LyXLex & lex)
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem }, 
-		{ "references", md_references },
 		{ "separator", md_separator },
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
@@ -155,10 +152,6 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_toc:
 			add(MenuItem(MenuItem::Toc));
-			break;
-
-		case md_references:
-			add(MenuItem(MenuItem::References));
 			break;
 
 		case md_viewformats:

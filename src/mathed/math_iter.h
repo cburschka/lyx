@@ -198,8 +198,6 @@ class MathedXIter: public MathedIter {
     inline
     void GetIncPos(int &, int &) const;
     ///
-    byte * GetString(int &) const ;
-    ///
     string const GetString() const;
     ///
     int GetX() const;

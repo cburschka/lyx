@@ -206,9 +206,8 @@ void MathParInset::Write(ostream & os, bool fragile)
 					if (l) {
 						os << '\\' << l->name << ' ';
 					} else {
-#warning This does not compile (Lgb)
-						//lyxerr << "Illegal symbol code[" << c
-						//     << " " << str.end() - s << " " << data.FCode() << "]";
+						lyxerr << "Illegal symbol code[" << c
+						     << " " << str.end() - s << " " << data.FCode() << "]";
 					}
 				} else {
 					// Is there a standard logical XOR?

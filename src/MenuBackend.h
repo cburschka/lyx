@@ -44,8 +44,6 @@ public:
 		Documents,
 		///
 		Toc,
-		///
-		References,
 		/** This is a list of viewable formats
 		    typically for the File->View menu. */
 		ViewFormats,

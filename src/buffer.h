@@ -57,6 +57,12 @@ struct DEPCLEAN {
   */
 class Buffer {
 public:
+	/// what type of log will getLogName() return ?
+	enum LogType {
+		latexlog, /**< LaTeX log */
+		buildlog  /**< Literate build log */
+	};
+
 	///
 	explicit Buffer(string const & file, bool b = false);
 	
@@ -240,10 +246,8 @@ public:
 	*/
 	string const getLatexName(bool no_path = true) const;
 
-	/**
-	 * get the name of the LaTeX log
-	 */
-	string const getLatexLogName(void) const;
+	/// get the name and type of the log
+	std::pair<LogType, string> const getLogName(void) const;
  
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(string const & newfile);

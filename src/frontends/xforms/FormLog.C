@@ -41,10 +41,21 @@ void FormLog::update()
 	if (!dialog_ || !lv_->view()->available())
 		return;
  
-	string const logfile = lv_->view()->buffer()->getLatexLogName();
+	std::pair<Buffer::LogType, string> const logfile
+		= lv_->view()->buffer()->getLogName();
 
 	fl_clear_browser(dialog_->browser);
 
-	if (!fl_load_browser(dialog_->browser, logfile.c_str()))
-		fl_add_browser_line(dialog_->browser, _("No LaTeX log file found"));
+	if (logfile.first == Buffer::buildlog) {
+		fl_set_form_title(dialog_->form, _("Build log"));
+		if (!fl_load_browser(dialog_->browser, logfile.second.c_str()))
+			fl_add_browser_line(dialog_->browser,
+					    _("No build log file found"));
+		return;
+	}
+
+	fl_set_form_title(dialog_->form, _("LaTeX Log"));
+	if (!fl_load_browser(dialog_->browser, logfile.second.c_str()))
+		fl_add_browser_line(dialog_->browser,
+				    _("No LaTeX log file found"));
 }

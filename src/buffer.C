@@ -104,6 +104,7 @@ using std::ios;
 using std::setw;
 using std::endl;
 using std::pair;
+using std::make_pair;
 using std::vector;
 using std::max;
 using std::set;
@@ -178,32 +179,35 @@ string const Buffer::getLatexName(bool no_path) const
 				       ".tex"); 
 }
 
-string const Buffer::getLatexLogName(void) const
+pair<Buffer::LogType, string> const Buffer::getLogName(void) const
 {
 	string filename, fname, bname, path;
 
 	filename = getLatexName(false);
 
 	if (filename.empty())
-		return string();
+		return make_pair(Buffer::latexlog, string());
 
-	fname = OnlyFilename(ChangeExtension(filename, ".log"));
-	bname = OnlyFilename(ChangeExtension(filename,
-		formats.Extension("literate") + ".out"));
 	path = OnlyPath(filename);
 
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1))
-		path = tmppath + "/";
+		path = tmppath;
 
-	lyxerr[Debug::FILES] << "LaTeX Log calculated as : " << path + fname << endl;
+	fname = AddName(path, OnlyFilename(ChangeExtension(filename, ".log")));
+	bname = AddName(path, OnlyFilename(ChangeExtension(filename,
+		formats.Extension("literate") + ".out")));
 
 	// If no Latex log or Build log is newer, show Build log
-	FileInfo f_fi(path + fname), b_fi(path + bname);
+
+	FileInfo f_fi(fname), b_fi(bname);
+
 	if (b_fi.exist() &&
-		(!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime()))
-		return path + bname;
-	else
-		return path + fname;
+		(!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime())) {
+		lyxerr[Debug::FILES] << "Log name calculated as : " << bname << endl;
+		return make_pair(Buffer::buildlog, bname);
+	}
+	lyxerr[Debug::FILES] << "Log name calculated as : " << fname << endl;
+	return make_pair(Buffer::latexlog, fname);
 }
 
 void Buffer::setReadonly(bool flag)
