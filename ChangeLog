@@ -1,3 +1,9 @@
+2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: do not set FRONTENDS to "xforms" when frontend is
+	xforms; fix the use of "cat <<EOF ... EOF" (bugs introduced by
+	last checkin)
+
 2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4: 

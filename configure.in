@@ -185,7 +185,8 @@ dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.  
 case "$lyx_use_frontend" in 
   xforms) 
-    FRONTEND="xforms"
+  # for now don't set it for xforms as this is always entered
+    FRONTEND=""
     FRONTEND_GUILIB="xforms/libxforms.la";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
@@ -229,7 +230,7 @@ LYX_PATH_XFORMS
 FRONTEND_INFO=`cat <<EOF
     libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n
-EOF`
+`
 
 AC_SUBST(LYX_LIBS)
 else
@@ -320,11 +321,11 @@ Configuration\n\
   C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
   C++ Compiler flags:             ${CXXFLAGS}\n\
   Linker flags:                   ${LDFLAGS}\n\
-  Frontend:                       ${FRONTEND}\n\
+  Frontend:                       ${lyx_use_frontend}\n\
 ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
   LyX files dir:                  ${real_datadir}\n
-EOF`
+`
 
 AC_DEFINE_UNQUOTED(VERSION_INFO, "${VERSION_INFO}", Version information on the current build of LyX)
 
