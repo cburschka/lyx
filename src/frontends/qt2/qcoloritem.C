@@ -12,6 +12,7 @@
 
 #include <qfont.h> 
 #include <qfontmetrics.h>
+#include <qpainter.h>
  
 QColorItem::QColorItem(QColor c, QString const & t)
 	: color_(c), text_(t)
@@ -20,7 +21,7 @@ QColorItem::QColorItem(QColor c, QString const & t)
 	QFontMetrics metrics(font);
  
 	ascent_ = metrics.ascent();
-	width_ = 40 + metrics.width(t) + 5;
+	width_ = 40 + metrics.width(t);
 	height_ = metrics.ascent() + metrics.descent() + 6;
 }
 
