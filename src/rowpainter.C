@@ -178,15 +178,15 @@ void RowPainter::paintInset(pos_type const pos)
 
 	Assert(inset);
 
-	MetricsInfo mi(perv(bv_), getFont(pos), text_.workWidth());
-	Dimension dim; 
-	inset->metrics(mi, dim);
+	//MetricsInfo mi(perv(bv_), getFont(pos), text_.workWidth());
+	//Dimension dim; 
+	//inset->metrics(mi, dim);
 
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);
 #warning metrics?
 	inset->draw(pi, int(x_), yo_ + row_->baseline());
-	x_ += dim.wid;
+	x_ += inset->width();
 }
 
 
@@ -1014,7 +1014,7 @@ void RowPainter::paint()
 	text_.prepareToPrint(row_, x_, separator_, hfill_, label_hfill_);
 
 	// FIXME: what is this fixing ?
-	if (text_.isInInset() && (x_ < 0))
+	if (text_.isInInset() && x_ < 0)
 		x_ = 0;
 	x_ += xo_;
 

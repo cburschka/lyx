@@ -119,8 +119,6 @@ protected:
 	mutable int xo_;
 	///
 	mutable int yo_;
-	///
-	mutable Dimension dim_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

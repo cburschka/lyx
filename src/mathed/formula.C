@@ -278,21 +278,21 @@ void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	view_ = m.base.bv;
 	if (preview_->previewReady()) {
-		dim_.asc = preview_->pimage()->ascent();
-		dim_.des = preview_->pimage()->descent();
+		dim.asc = preview_->pimage()->ascent();
+		dim.des = preview_->pimage()->descent();
 		// insert a one pixel gap in front of the formula
-		dim_.wid = 1 + preview_->pimage()->width();
+		dim.wid = 1 + preview_->pimage()->width();
 		if (display())
-			dim_.des += 12;
+			dim.des += 12;
 	} else {
 		MetricsInfo mi = m;
 		mi.base.style = LM_ST_TEXT;
 		mi.base.font.setColor(LColor::math);
 		par()->metrics(mi, dim_);
-		dim_.asc += 1;
-		dim_.des += 1;
+		dim.asc += 1;
+		dim.des += 1;
 	}
-	dim = dim_;
+	dim_ = dim;
 }
 
 
