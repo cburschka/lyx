@@ -1,6 +1,7 @@
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
-	* scripts/lyxpreview2ppm.sh: more efficient RE.
+	* scripts/lyxpreview2ppm.sh: more efficient RE and change to '' so that
+	the shell does not escape "\\".
 
 2002-07-22  Herbert Voss  <voss@lyx.org>
 

@@ -61,7 +61,7 @@ if [ ${STATUS} -ne 0 ]; then
 	# preview.sty has known problems with the showlabels option,
 	# so remove it and try again.
 	# This "fix" should be removed once preview-latex 0.73 is released.
-	sed -e "/^[\]usepackage/,/{preview}$/s/,showlabels//" \
+	sed -e '/^\\usepackage/,/{preview}$/s/,showlabels//' \
 		< ${TEXFILE} > .${TEXFILE}
 	cmp -s ${TEXFILE} .${TEXFILE}
 	STATUS=$?
