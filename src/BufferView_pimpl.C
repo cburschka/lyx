@@ -927,6 +927,7 @@ void BufferView::Pimpl::workAreaResize()
 
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
+	repaint();
 	owner_->updateLayoutChoice();
 	return;
 }
