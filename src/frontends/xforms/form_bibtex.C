@@ -22,33 +22,39 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   FL_OBJECT *obj;
   FD_form_bibtex *fdui = new FD_form_bibtex;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 220, 130);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 170);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 170, "");
   {
     char const * const dummy = N_("Database:|#D");
-    fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_(dummy)));
+    fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 260, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 250, 130, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseOKCB, 3);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 130, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
   {
     char const * const dummy = N_("Style:|#S");
-    fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_(dummy)));
+    fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 90, 50, 260, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->database_browse = obj = fl_add_button(FL_PUSH_BUTTON, 360, 10, 80, 30, _("Browse"));
+    fl_set_button_shortcut(obj, _("B"), 1);
+  fdui->style_browse = obj = fl_add_button(FL_PUSH_BUTTON, 360, 50, 80, 30, _("Browse"));
+    fl_set_button_shortcut(obj, _("l"), 1);
+  fdui->radio_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 90, 30, 30, _("Add bibliography to TOC"));
+    fl_set_button_shortcut(obj, _("T"), 1);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -19,6 +19,9 @@ struct FD_form_bibtex {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *style;
+	FL_OBJECT *database_browse;
+	FL_OBJECT *style_browse;
+	FL_OBJECT *radio_bibtotoc;
 };
 
 #endif /* FD_form_bibtex_h_ */

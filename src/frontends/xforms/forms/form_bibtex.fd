@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_bibtex
-Width: 220
-Height: 130
-Number of Objects: 5
+Width: 450
+Height: 170
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 220 130
+box: 0 0 450 170
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 80 10 130 30
+box: 90 10 260 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -51,7 +51,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 20 90 90 30
+box: 250 130 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -69,7 +69,7 @@ argument: 3
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 120 90 90 30
+box: 350 130 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -87,7 +87,7 @@ argument: 2
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 80 50 130 30
+box: 90 50 260 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -101,6 +101,60 @@ gravity: FL_NoGravity FL_NoGravity
 name: style
 callback: C_FormBaseInputCB
 argument: 0
+
+--------------------
+class: FL_BUTTON
+type: PUSH_BUTTON
+box: 360 10 80 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Browse
+shortcut: B
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: database_browse
+callback: 
+argument: database
+
+--------------------
+class: FL_BUTTON
+type: PUSH_BUTTON
+box: 360 50 80 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Browse
+shortcut: l
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: style_browse
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 90 90 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Add bibliography to TOC
+shortcut: T
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_bibtotoc
+callback: 
+argument: 
 
 ==============================
 create_the_forms
