@@ -106,6 +106,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		features.require("prettyref");
 }
 
+
 InsetRef::type_info InsetRef::types[] = {
 	{ "ref",	N_("Standard"),			N_("Ref: ")},
 	{ "pageref",	N_("Page Number"),		N_("Page: ")},
