@@ -1,5 +1,8 @@
 2001-02-09  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* src/text.C (GetVisibleRow): Fix selection drawing for RTL text
+	in tables.
+
 	* src/insets/insettext.C (moveRightIntern): Update the selection
  	cursor.
 	(moveLeftIntern): Ditto.
