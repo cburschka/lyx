@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "bufferview_funcs.h"
-#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "paragraph.h"
 #include "lyxfont.h"
@@ -24,9 +23,12 @@
 #include "author.h"
 #include "changes.h"
 
+#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 
 #include "support/lstrings.h"
+
+#include "insets/updatableinset.h"
 
 #include "BoostFormat.h"
 
@@ -143,10 +145,10 @@ void fontSize(BufferView * bv, string const & size)
 // Returns the current font and depth as a message.
 string const currentState(BufferView * bv)
 {
-	ostringstream state;
-
 	if (!bv->available())
 		return string();
+
+	ostringstream state;
 
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();

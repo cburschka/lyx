@@ -13,7 +13,7 @@
 #include "lyxtext.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "insets/inset.h"
+#include "insets/updatableinset.h"
 #include "debug.h"
 #include "support/LAssert.h"
 

@@ -84,7 +84,9 @@ libinsets_la_SOURCES = \
 	insettoc.C \
 	insettoc.h \
 	inseturl.C \
-	inseturl.h
+	inseturl.h \
+	updatableinset.C \
+	updatableinset.h
 #	insetlist.C \
 #	insetlist.h \
 #	insetsection.h \

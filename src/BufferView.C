@@ -35,6 +35,7 @@
 
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/inseterror.h"
+#include "insets/updatableinset.h"
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"

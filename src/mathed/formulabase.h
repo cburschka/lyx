@@ -14,7 +14,7 @@
 #define INSET_FORMULABASE_H
 
 
-#include "insets/inset.h"
+#include "insets/updatableinset.h"
 #include "frontends/mouse_state.h"
 #include "lyxfont.h"
 

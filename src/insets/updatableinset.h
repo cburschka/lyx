@@ -1,0 +1,178 @@
+// -*- C++ -*-
+/**
+ * \file insetupdatable.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#ifndef UPDATABLEINSET_H
+#define UPDATABLEINSET_H
+
+//  Updatable Insets. These insets can be locked and receive
+//  directly user interaction. Currently used only for mathed.
+//  Note that all pure methods from Inset class are pure here too.
+//  [Alejandro 080596]
+
+#include "inset.h"
+
+
+/** Extracted from Matthias notes:
+ *
+ * An inset can simple call LockInset in it's edit call and *ONLY*
+ * in it's edit call.
+ *
+ * Unlocking is either done by LyX or the inset itself with a
+ * UnlockInset-call
+ *
+ * During the lock, all button and keyboard events will be modified
+ * and send to the inset through the following inset-features. Note that
+ * Inset::insetUnlock will be called from inside UnlockInset. It is meant
+ * to contain the code for restoring the menus and things like this.
+ *
+ * If a inset wishes any redraw and/or update it just has to call
+ * updateInset(this).
+ *
+ * It's is completly irrelevant, where the inset is. UpdateInset will
+ * find it in any paragraph in any buffer.
+ * Of course the_locking_inset and the insets in the current paragraph/buffer
+ *  are checked first, so no performance problem should occur.
+ */
+class UpdatableInset : public Inset {
+public:
+	///
+	UpdatableInset();
+	///
+	UpdatableInset(UpdatableInset const & in, bool same_id = false);
+
+	/// check if the font of the char we want inserting is correct
+	/// and modify it if it is not.
+	virtual bool checkInsertChar(LyXFont &);
+	///
+	virtual EDITABLE editable() const;
+
+	///
+	virtual void toggleInsetCursor(BufferView *);
+	///
+	virtual void showInsetCursor(BufferView *, bool show = true);
+	///
+	virtual void hideInsetCursor(BufferView *);
+	///
+	virtual void fitInsetCursor(BufferView *) const;
+	///
+	virtual void getCursorPos(BufferView *, int &, int &) const {}
+	///
+	virtual void insetUnlock(BufferView *);
+	///
+	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
+	///
+	virtual void edit(BufferView *, bool front = true);
+	///
+	virtual void draw(BufferView *, LyXFont const &,
+			  int baseline, float & x, bool cleared) const;
+	///
+	virtual bool insertInset(BufferView *, Inset *) { return false; }
+	///
+	virtual UpdatableInset * getLockingInset() const {
+		return const_cast<UpdatableInset *>(this);
+	}
+	///
+	virtual UpdatableInset * getFirstLockingInsetOfType(Inset::Code c)
+		{ return (c == lyxCode()) ? this : 0; }
+	///
+	virtual int insetInInsetY() const { return 0; }
+	///
+	virtual bool updateInsetInInset(BufferView *, Inset *)
+		{ return false; }
+	///
+	virtual bool lockInsetInInset(BufferView *, UpdatableInset *)
+		{ return false; }
+	///
+	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
+					bool /*lr*/ = false)
+		{ return false; }
+	///  An updatable inset could handle lyx editing commands
+	virtual RESULT localDispatch(FuncRequest const & cmd);
+	///
+	bool isCursorVisible() const { return cursor_visible_; }
+	///
+	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
+	///
+	int scroll(bool recursive = true) const {
+		// We need this method to not clobber the real method in Inset
+		return Inset::scroll(recursive);
+	}
+	///
+	virtual bool showInsetDialog(BufferView *) const { return false; }
+	///
+	virtual void nodraw(bool b) const {
+		block_drawing_ = b;
+	}
+	///
+	virtual bool nodraw() const {
+		return block_drawing_;
+	}
+	///
+	// needed for spellchecking text
+	///
+	virtual bool allowSpellcheck() const { return false; }
+	///
+	virtual WordLangTuple const
+	selectNextWordToSpellcheck(BufferView *, float & value) const;
+	///
+	virtual void selectSelectedWord(BufferView *) {}
+	///
+	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
+
+	/// find the next change in the inset
+	virtual bool nextChange(BufferView * bv, lyx::pos_type & length);
+ 
+	///
+	// needed for search/replace functionality
+	///
+	virtual bool searchForward(BufferView *, string const &,
+				   bool = true, bool = false);
+	///
+	virtual bool searchBackward(BufferView *, string const &,
+				    bool = true, bool = false);
+
+
+	///
+	BufferView * view() const;
+	///
+	void setView(BufferView * bv) const;
+
+protected:
+	///
+	void toggleCursorVisible() const {
+		cursor_visible_ = !cursor_visible_;
+	}
+	///
+	void setCursorVisible(bool b) const {
+		cursor_visible_ = b;
+	}
+	/// scrolls to absolute position in bufferview-workwidth * sx units
+	void scroll(BufferView *, float sx) const;
+	/// scrolls offset pixels
+	void scroll(BufferView *, int offset) const;
+
+private:
+	///
+	mutable bool cursor_visible_;
+	///
+	mutable bool block_drawing_;
+};
+
+inline
+bool UpdatableInset::checkInsertChar(LyXFont &)
+{
+	return true;
+}
+
+#endif

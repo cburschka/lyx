@@ -13,7 +13,7 @@
 #define INSETTEXT_H
 
 
-#include "inset.h"
+#include "updatableinset.h"
 #include "LString.h"
 #include "LColor.h"
 #include "ParagraphList.h"
