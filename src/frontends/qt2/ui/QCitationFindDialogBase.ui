@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>379</width>
+            <width>375</width>
             <height>257</height>
         </rect>
     </property>
@@ -75,6 +75,10 @@
                     <property stdset="1">
                         <name>hScrollBarMode</name>
                         <enum>AlwaysOff</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>selectionMode</name>
+                        <enum>Extended</enum>
                     </property>
                     <property>
                         <name>toolTip</name>

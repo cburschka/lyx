@@ -119,21 +119,29 @@ void QBibtexDialog::addPressed()
 
 void QBibtexDialog::addDatabase()
 {
+	int const sel = add_->bibLB->currentItem();
 	QString const file = add_->bibED->text();
 
-	if (!file.isNull()) {
-		string const f = ChangeExtension(fromqstr(file), "");
-		bool present = false;
-		for (unsigned int i = 0; i != databaseLB->count(); ++i) {
-			if (fromqstr(databaseLB->text(i)) == f)
-				present = true;
+	if (sel < 0 && file.isNull())
+		return;
 
-		}
-		if (!present) {
-			databaseLB->insertItem(f.c_str());
-			form_->changed();
+	// Add the selected browser_bib keys to browser_database
+	// multiple selections are possible
+	for (unsigned int i = 0; i != add_->bibLB->count(); i++) {
+		if (add_->bibLB->isSelected(i)) {
+			// do not allow duplicates
+			if ((databaseLB->findItem(add_->bibLB->text(i))) == 0)
+				databaseLB->insertItem(add_->bibLB->text(i));
 		}
 	}
+
+	if (!file.isEmpty()) {
+		QString const f = toqstr(ChangeExtension(fromqstr(file), ""));
+		if ((databaseLB->findItem(f)) == 0)
+			databaseLB->insertItem(f);
+	}
+
+	form_->changed();
 }
 
 
@@ -152,7 +160,7 @@ void QBibtexDialog::databaseChanged()
 
 void QBibtexDialog::availableChanged()
 {
-	add_->bibED->setText(add_->bibLB->currentText());
+	form_->changed();
 }
 
 

@@ -1,3 +1,11 @@
+2003-07-21  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* QBibTeXDialog.C:
+	* QCitationDialog.C:
+	* ui/QBibTeXAddDialogBase.ui:
+	* ui/QCitationFindDialogBase.ui:
+	Allow multiple selections, forbid duplicates (bug 1146)
+
 2003-07-19  John Levon  <levon@movementarian.org>
 
 	* ui/QTabularCreateDialogBase.ui: set a max size (bug 1152)

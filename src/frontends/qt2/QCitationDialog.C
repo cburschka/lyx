@@ -132,9 +132,17 @@ void QCitationDialog::addCitation()
 	if (sel < 0)
 		return;
 
-	// Add the selected browser_bib key to browser_cite
-	selectedLB->insertItem(toqstr(form_->bibkeys[sel]));
-	form_->citekeys.push_back(form_->bibkeys[sel]);
+	// Add the selected browser_bib keys to browser_cite
+	// multiple selections are possible
+	for (unsigned int i = 0; i != add_->availableLB->count(); i++) {
+		if (add_->availableLB->isSelected(i)) {
+			// do not allow duplicates
+			if ((selectedLB->findItem(add_->availableLB->text(i))) == 0) {
+				selectedLB->insertItem(toqstr(form_->bibkeys[i]));
+				form_->citekeys.push_back(form_->bibkeys[i]);
+			}
+		}
+	}
 
 	int const n = int(form_->citekeys.size());
 	selectedLB->setSelected(n - 1, true);
