@@ -400,8 +400,8 @@ void LyXGUI::create_forms()
 	combo_language2->addto("No change");
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
-		combo_language->addto((*cit).second.lang.c_str());
-		combo_language2->addto((*cit).second.lang.c_str());
+		combo_language->addto((*cit).second.lang().c_str());
+		combo_language2->addto((*cit).second.lang().c_str());
 	}
 	combo_language2->select_text("No change");
 

@@ -412,7 +412,7 @@ string LyXFont::stateText(BufferParams * params) const
 	if (bits == inherit)
 		ost << _("Default") << ", ";
 	if (!params || language() != params->language_info)
-		ost << _("Language: ") << _(language()->display.c_str());
+		ost << _("Language: ") << _(language()->display().c_str());
 #ifdef HAVE_SSTREAM
 	string buf(ost.str().c_str());
 #else
@@ -666,7 +666,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 	}
 	if (orgfont.language() != language()) {
 		if (language())
-			os << "\\lang " << language()->lang << "\n";
+			os << "\\lang " << language()->lang() << "\n";
 		else
 			os << "\\lang unknown\n";
 	}
@@ -695,7 +695,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		} else {
 			string tmp = '{' + 
 				subst(lyxrc.language_command_begin,
-				      "$$lang", language()->lang);
+				      "$$lang", language()->lang());
 			os << tmp;
 			count += tmp.length();
 			env = true; //We have opened a new environment

@@ -40,6 +40,8 @@ using std::vector;
 
 static int const WIDTH_OF_LINE = 5;
 
+extern BufferView * current_view;
+
 /// Define a few methods for the inner structs
 
 LyXTabular::cellstruct::cellstruct() 
@@ -1292,10 +1294,10 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     }
     // now we have the par we should fill the insets with this!
     int cell = 0;
-    InsetText *inset = GetCellInset(cell);
+    InsetText * inset = GetCellInset(cell);
     int row;
 
-    for(int i=0; i < par->Last(); ++i) {
+    for(int i = 0; i < par->Last(); ++i) {
 	if (par->IsNewline(i)) {
 	    ++cell;
 	    if (cell > GetNumberOfCells()) {
@@ -1322,7 +1324,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		par->InsertChar(i, ' ');
 	    }
 	}
-	par->CopyIntoMinibuffer(i);
+	par->CopyIntoMinibuffer(current_view->buffer()->params, i);
 	inset->par->InsertFromMinibuffer(inset->par->Last());
     }
     Reinit();

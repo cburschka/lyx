@@ -59,7 +59,7 @@ LSubstring & LSubstring::operator=(string const & s)
 
 LSubstring & LSubstring::operator=(LSubstring const & s)
 {
-	ps->replace(pos, n, string(s, 0, string::npos));
+	ps->replace(pos, n, s);
 	return *this;
 }
 

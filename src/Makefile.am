@@ -62,6 +62,8 @@ lyx_SOURCES = \
 	TabularLayout.C \
 	TextCache.C \
 	TextCache.h \
+	Timeout.C \
+	Timeout.h \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	UpdateInset.C \
@@ -136,6 +138,7 @@ lyx_SOURCES = \
 	lyx_sendfax_main.C \
 	lyx_sty.C \
 	lyx_sty.h \
+	lyxcursor.C \
 	lyxcursor.h \
 	lyxfont.C \
 	lyxfont.h \
@@ -154,6 +157,7 @@ lyx_SOURCES = \
 	lyxparagraph.h \
 	lyxrc.C \
 	lyxrc.h \
+	lyxrow.C \
 	lyxrow.h \
 	lyxscreen.h \
 	lyxserver.C \

@@ -74,9 +74,11 @@ LyXParagraph::LyXParagraph()
 	
 	align = LYX_ALIGN_BLOCK;
 
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	table = 0;
-	/* table stuff -- end*/ 
+	/* table stuff -- end*/
+#endif
 	inset_owner = 0;
 	id_ = paragraph_id++;
         bibkey = 0; // ale970302
@@ -103,10 +105,12 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	// end
 	footnoteflag = LyXParagraph::NO_FOOTNOTE;
 	footnotekind = LyXParagraph::FOOTNOTE;
-	
+
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	table = 0;
-	/* table stuff -- end*/ 
+	/* table stuff -- end*/
+#endif
 	inset_owner = 0;
 	id_ = paragraph_id++;
 
@@ -232,13 +236,13 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
 	}
-		
+#ifndef NEW_TABULAR	
 	// It might be a table.
 	if (table){
 		os << "\\LyXTable\n";
 		table->Write(os);
 	}
-
+#endif
 	// bibitem  ale970302
 	if (bibkey)
 		bibkey->Write(os);
@@ -253,7 +257,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 		}
 		
 		// Write font changes
-		font2 = GetFontSettings(i);
+		font2 = GetFontSettings(params, i);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
@@ -378,7 +382,8 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 	// This is not efficient. I plan to use the code above, after I
 	// change the fontlist handling.
 	for (size_type i = 0; i < size(); ++i) {
-		Language const * language = GetFontSettings(i).language();
+		Language const * language =
+			GetFontSettings(params, i).language();
 		if (language != doc_language)
 			features.UsedLanguages.insert(language);
 	}
@@ -410,10 +415,11 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 
 
 // First few functions needed for cut and paste and paragraph breaking.
-void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos) const
+void LyXParagraph::CopyIntoMinibuffer(BufferParams const & bparams,
+				      LyXParagraph::size_type pos) const
 {
 	minibuffer_char = GetChar(pos);
-	minibuffer_font = GetFontSettings(pos);
+	minibuffer_font = GetFontSettings(bparams, pos);
 	minibuffer_inset = 0;
 	if (minibuffer_char == LyXParagraph::META_INSET) {
 		if (GetInset(pos)) {
@@ -427,10 +433,11 @@ void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos) const
 }
 
 
-void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
+void LyXParagraph::CutIntoMinibuffer(BufferParams const & bparams,
+				     LyXParagraph::size_type pos)
 {
 	minibuffer_char = GetChar(pos);
-	minibuffer_font = GetFontSettings(pos);
+	minibuffer_font = GetFontSettings(bparams, pos);
 	minibuffer_inset = 0;
 	if (minibuffer_char == LyXParagraph::META_INSET) {
 		if (GetInset(pos)) {
@@ -516,10 +523,11 @@ LyXParagraph::~LyXParagraph()
 	     it != insetlist.end(); ++it) {
 		delete (*it).inset;
 	}
-
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	delete table;
-	/* table stuff -- end*/ 
+	/* table stuff -- end*/
+#endif
 
         // ale970302
 	delete bibkey;
@@ -734,7 +742,8 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 
 // Gets uninstantiated font setting at position.
 // Optimized after profiling. (Asger)
-LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
+LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
+				      LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
 #ifdef SORTED_FONT_LIST
@@ -755,7 +764,8 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			return NextAfterFootnote()
-				->GetFontSettings(pos - text.size() - 1);
+				->GetFontSettings(bparams,
+						  pos - text.size() - 1);
 		else {
 			// Why is it an error to ask for the font of a
 			// position that does not exist? Would it be
@@ -768,9 +778,9 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 			       << ")" << endl;
 		}
 	} else if (pos > 0) {
-		return GetFontSettings(pos - 1);
+		return GetFontSettings(bparams, pos - 1);
 	} else // pos = size() = 0
-		return LyXFont(LyXFont::ALL_INHERIT,getParLanguage());
+		return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
 
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
@@ -793,6 +803,7 @@ LyXFont LyXParagraph::GetFirstFontSettings() const
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
 
+
 // Gets the fully instantiated font at a given position in a paragraph
 // This is basically the same function as LyXText::GetFont() in text2.C.
 // The difference is that this one is used for generating the LaTeX file,
@@ -800,23 +811,24 @@ LyXFont LyXParagraph::GetFirstFontSettings() const
 // the true picture of the buffer. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
+LyXFont LyXParagraph::getFont(BufferParams const & bparams,
+			      LyXParagraph::size_type pos) const
 {
 	LyXFont tmpfont;
 	LyXLayout const & layout =
-		textclasslist.Style(current_view->buffer()->params.textclass, 
+		textclasslist.Style(bparams.textclass, 
 				    GetLayout());
 	LyXParagraph::size_type main_body = 0;
 	if (layout.labeltype == LABEL_MANUAL)
 		main_body = BeginningOfMainBody();
 
-	if (pos >= 0){
+	if (pos >= 0) {
 		LyXFont layoutfont;
 		if (pos < main_body)
 			layoutfont = layout.labelfont;
 		else
 			layoutfont = layout.font;
-		tmpfont = GetFontSettings(pos);
+		tmpfont = GetFontSettings(bparams, pos);
 		tmpfont.realize(layoutfont);
 	} else {
 		// process layoutfont for pos == -1 and labelfont for pos < -1
@@ -824,7 +836,7 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 			tmpfont = layout.font;
 		else
 			tmpfont = layout.labelfont;
-		tmpfont.setLanguage(getParLanguage());
+		tmpfont.setLanguage(getParLanguage(bparams));
 	}
 
 	// check for environment font information
@@ -834,14 +846,14 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 		par = par->DepthHook(par_depth - 1);
 		if (par) {
 			tmpfont.realize(textclasslist.
-					Style(current_view->buffer()->params.textclass,
+					Style(bparams.textclass,
 					      par->GetLayout()).font);
 			par_depth = par->GetDepth();
 		}
 	}
 
 	tmpfont.realize(textclasslist
-			.TextClass(current_view->buffer()->params.textclass)
+			.TextClass(bparams.textclass)
 			.defaultfont());
 	return tmpfont;
 }
@@ -1364,7 +1376,8 @@ LyXParagraph const * LyXParagraph::Previous() const
 }
 
 
-void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
+void LyXParagraph::BreakParagraph(BufferParams const & bparams,
+				  LyXParagraph::size_type pos,
 				  int flag)
 {
 	size_type i, j, pos_end, pos_first;
@@ -1382,12 +1395,12 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
    
 	// layout stays the same with latex-environments
 	if (flag) {
-		tmp->SetOnlyLayout(firstpar->layout);
+		tmp->SetOnlyLayout(bparams, firstpar->layout);
 		tmp->SetLabelWidthString(firstpar->labelwidthstring);
 	}
 
 	if (Last() > pos || !Last() || flag == 2) {
-		tmp->SetOnlyLayout(firstpar->layout);
+		tmp->SetOnlyLayout(bparams, firstpar->layout);
 		tmp->align = firstpar->align;
 		tmp->SetLabelWidthString(firstpar->labelwidthstring);
       
@@ -1410,7 +1423,7 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		pos_end = pos_first + par->text.size() - 1;
 
 		for (i = j = pos; i <= pos_end; ++i) {
-			par->CutIntoMinibuffer(i - pos_first);
+			par->CutIntoMinibuffer(bparams, i - pos_first);
 			if (tmp->InsertFromMinibuffer(j - pos))
 				++j;
 		}
@@ -1430,7 +1443,7 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		firstpar->Clear();
 		// layout stays the same with latex-environments
 		if (flag) {
-			firstpar->SetOnlyLayout(tmp->layout);
+			firstpar->SetOnlyLayout(bparams, tmp->layout);
 			firstpar->SetLabelWidthString(tmp->labelwidthstring);
 			firstpar->depth = tmp->depth;
 		}
@@ -1513,14 +1526,15 @@ LyXParagraph * LyXParagraph::Clone() const
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	result->layout = layout;
-   
+
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	if (table)
 		result->table = table->Clone();
 	else
 		result->table = 0;
 	/* table stuff -- end*/ 
-
+#endif
 	result->inset_owner = inset_owner;
    
         // ale970302
@@ -1567,15 +1581,17 @@ bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
                 par->pextra_alignment == pextra_alignment && 
                 par->pextra_hfill == pextra_hfill && 
                 par->pextra_start_minipage == pextra_start_minipage && 
-
-		par->table == table && // what means: NO TABLE AT ALL 
+#ifndef NEW_TABULAR
+		par->table == table && // what means: NO TABLE AT ALL
+#endif
 
 		par->noindent == noindent &&
 		par->depth == depth);
 }
 
 
-void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
+void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
+					      LyXParagraph::size_type pos)
 {
 	// create a new paragraph
 	LyXParagraph * par = ParFromPos(pos);
@@ -1596,7 +1612,7 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 
 		size_type i, j;
 		for (i = j = pos; i <= pos_end; ++i) {
-			par->CutIntoMinibuffer(i - pos_first);
+			par->CutIntoMinibuffer(bparams, i - pos_first);
 			if (tmp->InsertFromMinibuffer(j - pos))
 				++j;
 		}
@@ -1610,7 +1626,7 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
    
 
 // Be carefull, this does not make any check at all.
-void LyXParagraph::PasteParagraph()
+void LyXParagraph::PasteParagraph(BufferParams const & bparams)
 {
 	// copy the next paragraph to this one
 	LyXParagraph * the_next = Next();
@@ -1628,7 +1644,7 @@ void LyXParagraph::PasteParagraph()
 	// ok, now copy the paragraph
 	size_type i, j;
 	for (i = j = 0; i <= pos_end; ++i) {
-		the_next->CutIntoMinibuffer(i);
+		the_next->CutIntoMinibuffer(bparams, i);
 		if (InsertFromMinibuffer(pos_insert + j))
 			++j;
 	}
@@ -1662,14 +1678,14 @@ void LyXParagraph::CloseFootnote(LyXParagraph::size_type pos)
 	}
 }
 
-int LyXParagraph::GetEndLabel() const
+int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 {
 	LyXParagraph const * par = this;
 	int par_depth = GetDepth();
 	while (par) {
 		LyXTextClass::LayoutList::size_type layout = par->GetLayout();
 		int endlabeltype =
-			textclasslist.Style(current_view->buffer()->params.textclass,
+			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
 		if (endlabeltype != END_LABEL_NO_LABEL) {
 			LyXParagraph const * last = this;
@@ -1745,17 +1761,20 @@ void LyXParagraph::SetLabelWidthString(string const & s)
 }
 
 
-void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
+void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
+				 LyXTextClass::size_type new_layout)
 {
 	LyXParagraph * par = FirstPhysicalPar();
 	LyXParagraph * ppar = 0;
 	LyXParagraph * npar = 0;
 
 	par->layout = new_layout;
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	if (table) 
 		par->layout = 0;
-	/* table stuff -- end*/ 
+	/* table stuff -- end*/
+#endif
         if (par->pextra_type == PEXTRA_NONE) {
                 if (par->Previous()) {
                         ppar = par->Previous()->FirstPhysicalPar();
@@ -1775,7 +1794,7 @@ void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
                         string
                                 p1 = ppar->pextra_width,
                                 p2 = ppar->pextra_widthp;
-                        ppar->SetPExtraType(ppar->pextra_type,
+                        ppar->SetPExtraType(bparams, ppar->pextra_type,
                                             p1.c_str(), p2.c_str());
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
@@ -1783,14 +1802,15 @@ void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
                         string
                                 p1 = npar->pextra_width,
                                 p2 = npar->pextra_widthp;
-                        npar->SetPExtraType(npar->pextra_type,
+                        npar->SetPExtraType(bparams, npar->pextra_type,
                                             p1.c_str(), p2.c_str());
                 }
         }
 }
 
 
-void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
+void LyXParagraph::SetLayout(BufferParams const & bparams,
+			     LyXTextClass::size_type new_layout)
 {
 	LyXParagraph
 		* par = FirstPhysicalPar(),
@@ -1803,11 +1823,13 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 	par->added_space_top = VSpace(VSpace::NONE);
 	par->added_space_bottom = VSpace(VSpace::NONE);
 	par->spacing.set(Spacing::Default);
-	
+
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/ 
 	if (table) 
 		par->layout = 0;
 	/* table stuff -- end*/
+#endif
         if (par->pextra_type == PEXTRA_NONE) {
                 if (par->Previous()) {
                         ppar = par->Previous()->FirstPhysicalPar();
@@ -1827,7 +1849,7 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
                         string
                                 p1 = ppar->pextra_width,
                                 p2 = ppar->pextra_widthp;
-                        ppar->SetPExtraType(ppar->pextra_type,
+                        ppar->SetPExtraType(bparams, ppar->pextra_type,
                                             p1.c_str(), p2.c_str());
                 }
                 if ((par->pextra_type == PEXTRA_NONE) &&
@@ -1835,7 +1857,7 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
                         string
                                 p1 = npar->pextra_width,
                                 p2 = npar->pextra_widthp;
-                        npar->SetPExtraType(npar->pextra_type,
+                        npar->SetPExtraType(bparams, npar->pextra_type,
                                             p1.c_str(), p2.c_str());
                 }
         }
@@ -1985,7 +2007,8 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 }
 
 
-LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
+LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
+				       ostream & os, TexRow & texrow,
 				       bool moving_arg, 
 				       ostream & foot,
 				       TexRow & foot_texrow,
@@ -1993,7 +2016,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    layout);
 
 	bool further_blank_line = false;
@@ -2021,12 +2044,12 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		further_blank_line = true;
 	}
 	if (added_space_top.kind() != VSpace::NONE) {
-		os << added_space_top.asLatexCommand(current_view->buffer()->params);
+		os << added_space_top.asLatexCommand(bparams);
 		further_blank_line = true;
 	}
       
 	if (line_top) {
-		os << "\\lyxline{\\" << getFont(0).latexSize() << '}'
+		os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
 		   << "\\vspace{-1\\parskip}";
 		further_blank_line = true;
 	}
@@ -2036,12 +2059,12 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 
-	Language const * language = getParLanguage();
-	Language const * doc_language = current_view->buffer()->params.language_info;
+	Language const * language = getParLanguage(bparams);
+	Language const * doc_language = bparams.language_info;
 	if (language != doc_language &&
-	    (!previous || previous->getParLanguage() != language)) {
+	    (!previous || previous->getParLanguage(bparams) != language)) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
-			    language->lang)
+			    language->lang())
 		   << endl;
 		texrow.newline();
 	}
@@ -2065,7 +2088,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		break;
 	}
 
-	bool need_par = SimpleTeXOnePar(os, texrow, moving_arg);
+	bool need_par = SimpleTeXOnePar(bparams, os, texrow, moving_arg);
  
 	// Spit out footnotes
 	LyXParagraph * par = next;
@@ -2074,37 +2097,42 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		    && next->footnoteflag != footnoteflag) {
 			LyXParagraph * p = 0;
 			bool is_rtl = (size() > 0) 
-				? GetFontSettings(size()-1).isRightToLeft()
-				: language->RightToLeft;
+				? GetFontSettings(bparams,
+						  size()-1).isRightToLeft()
+				: language->RightToLeft();
 			if ( (p = NextAfterFootnote()) != 0 &&
 			     p->size() > 0 &&
-			     p->GetFontSettings(0).isRightToLeft() != is_rtl)
-				is_rtl = getParLanguage()->RightToLeft;
+			     p->GetFontSettings(bparams, 0).isRightToLeft() != is_rtl)
+				is_rtl = getParLanguage(bparams)->RightToLeft();
 			while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			       && par->footnoteflag != footnoteflag) {
-				par = par->TeXFootnote(os, texrow, foot,
+				par = par->TeXFootnote(bparams,
+						       os, texrow, foot,
 						       foot_texrow, foot_count,
 						       is_rtl);
-				par->SimpleTeXOnePar(os, texrow, moving_arg);
+				par->SimpleTeXOnePar(bparams,
+						     os, texrow, moving_arg);
 				is_rtl = (par->size() > 0)
-					? par->GetFontSettings(par->size()-1).isRightToLeft()
-					: language->RightToLeft;
+					? par->GetFontSettings(bparams,
+							       par->size()-1).isRightToLeft()
+					: language->RightToLeft();
 				if (par->next &&
 				    par->next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
 				    (p = par->NextAfterFootnote()) != 0 &&
 				    p->size() > 0 &&
-				    p->GetFontSettings(0).isRightToLeft() != is_rtl)
-					is_rtl = language->RightToLeft;
+				    p->GetFontSettings(bparams, 0).isRightToLeft() != is_rtl)
+					is_rtl = language->RightToLeft();
 				par = par->next;
 			}
 		}
 	} else {
 		while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 		       && par->footnoteflag != footnoteflag) {
-			par = par->TeXFootnote(os, texrow,
+			par = par->TeXFootnote(bparams,
+					       os, texrow,
 					       foot, foot_texrow, foot_count,
 					       false);
-			par->SimpleTeXOnePar(os, texrow, moving_arg);
+			par->SimpleTeXOnePar(bparams, os, texrow, moving_arg);
 			par = par->next;
 		}
 	}
@@ -2114,7 +2142,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 	// This is necessary because LaTeX (and LyX on the screen)
 	// calculates the space between the baselines according
 	// to this font. (Matthias)
-	LyXFont font = getFont(Last() - 1);
+	LyXFont font = getFont(bparams, Last() - 1);
 	if (need_par) {
 		if (style.resfont.size() != font.size()) {
 			os << '\\'
@@ -2122,8 +2150,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 			   << ' ';
 		}
 		os << "\\par}";
-	} else if (textclasslist.Style(current_view->buffer()->params.textclass,
-				       GetLayout()).isCommand()){
+	} else if (textclasslist.Style(bparams.textclass,
+				       GetLayout()).isCommand()) {
 		if (style.resfont.size() != font.size()) {
 			os << '\\'
 			   << font.latexSize()
@@ -2137,10 +2165,10 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 	if (language != doc_language &&
 	    (!par
 	     || (footnoteflag != NO_FOOTNOTE && par->footnoteflag != footnoteflag)
-	     || par->getParLanguage() != language)) {
+	     || par->getParLanguage(bparams) != language)) {
 		os << endl 
 		   << subst(lyxrc.language_command_end, "$$lang",
-			    doc_language->lang);
+			    doc_language->lang());
 	}
 	
 	switch (style.latextype) {
@@ -2178,12 +2206,12 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 	
 	further_blank_line = false;
 	if (line_bottom) {
-		os << "\\lyxline{\\" << getFont(Last() - 1).latexSize() << '}';
+		os << "\\lyxline{\\" << getFont(bparams, Last() - 1).latexSize() << '}';
 		further_blank_line = true;
 	}
 
 	if (added_space_bottom.kind() != VSpace::NONE) {
-		os << added_space_bottom.asLatexCommand(current_view->buffer()->params);
+		os << added_space_bottom.asLatexCommand(bparams);
 		further_blank_line = true;
 	}
       
@@ -2216,18 +2244,21 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 
 // This one spits out the text of the paragraph
-bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
+bool LyXParagraph::SimpleTeXOnePar(BufferParams const & bparams,
+				   ostream & os, TexRow & texrow,
 				   bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 
+#ifndef NEW_TABULAR
 	if (table)
-		return SimpleTeXOneTablePar(os, texrow);
+		return SimpleTeXOneTablePar(bparams, os, texrow);
+#endif
 
 	bool return_value = false;
 
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    GetLayout());
 	LyXFont basefont, last_font;
 
@@ -2240,9 +2271,9 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 
 	if (main_body > 0) {
 		os << '[';
-		basefont = getFont(-2); // Get label font
+		basefont = getFont(bparams, -2); // Get label font
 	} else {
-		basefont = getFont(-1); // Get layout font
+		basefont = getFont(bparams, -1); // Get layout font
 	}
 
 	int column = 0;
@@ -2278,7 +2309,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = getFont(-1); // Now use the layout font
+				basefont = getFont(bparams, -1); // Now use the layout font
 				running_font = basefont;
 				os << ']';
 				++column;
@@ -2303,7 +2334,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 			case LYX_ALIGN_SPECIAL:
 				break;
 			case LYX_ALIGN_LEFT:
-				if (getParLanguage()->lang != "hebrew") {
+				if (getParLanguage(bparams)->lang() != "hebrew") {
 					os << "\\raggedright ";
 					column+= 13;
 				} else {
@@ -2312,7 +2343,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 				}
 				break;
 			case LYX_ALIGN_RIGHT:
-				if (getParLanguage()->lang != "hebrew") {
+				if (getParLanguage(bparams)->lang() != "hebrew") {
 					os << "\\raggedleft ";
 					column+= 12;
 				} else {
@@ -2330,12 +2361,12 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 		int c = GetChar(i);
 
 		// Fully instantiated font
-		LyXFont font = getFont(i);
+		LyXFont font = getFont(bparams, i);
 		LyXParagraph * p = 0;
 		if (i == 0 && previous && 
 		    previous->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
 		    (p = PreviousBeforeFootnote()) != 0)
-			last_font = p->getFont(p->size()-1);
+			last_font = p->getFont(bparams, p->size()-1);
 		else
 			last_font = running_font;
 
@@ -2343,9 +2374,9 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 		// outside font change, i.e. we write "\textXX{text} "
 		// rather than "\textXX{text }". (Asger)
 		if (open_font && c == ' ' && i <= size() - 2 
-		    && !getFont(i+1).equalExceptLatex(running_font) 
-		    && !getFont(i+1).equalExceptLatex(font)) {
-			font = getFont(i + 1);
+		    && !getFont(bparams, i + 1).equalExceptLatex(running_font) 
+		    && !getFont(bparams, i + 1).equalExceptLatex(font)) {
+			font = getFont(bparams, i + 1);
 		}
 		// We end font definition before blanks
 		if (!font.equalExceptLatex(running_font) && open_font) {
@@ -2357,7 +2388,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 		}
 
 		// Blanks are printed before start of fontswitch
-		if (c == ' '){
+		if (c == ' ') {
 			// Do not print the separation of the optional argument
 			if (i != main_body - 1) {
 				SimpleTeXBlanks(os, texrow, i,
@@ -2385,7 +2416,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = getFont(-1);
+				basefont = getFont(bparams, -1);
 				running_font = basefont;
 				if (font.family() == 
 				    LyXFont::TYPEWRITER_FAMILY) {
@@ -2399,7 +2430,8 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 			texrow.start(this, i + 1);
 			column = 0;
 		} else {
-			SimpleTeXSpecialChars(os, texrow, moving_arg,
+			SimpleTeXSpecialChars(bparams,
+					      os, texrow, moving_arg,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -2411,7 +2443,7 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE
 		    && (p =  NextAfterFootnote()) != 0)
 			running_font.latexWriteEndChanges(os, basefont,
-							  p->getFont(0));
+							  p->getFont(bparams, 0));
 		else
 			running_font.latexWriteEndChanges(os, basefont, basefont);
 	}
@@ -2428,15 +2460,15 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow,
 
 
 // This one spits out the text of a table paragraph
-bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
+bool LyXParagraph::SimpleTeXOneTablePar(BufferParams const & bparams,
+					ostream & os, TexRow & texrow)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...     " << this << endl;
    
 	bool return_value = false;
 
 	LyXLayout const & style = 
-		textclasslist.Style(current_view->buffer()->params.textclass,
-				    GetLayout());
+		textclasslist.Style(bparams.textclass, GetLayout());
  
 	int column = 0;
 	if (!IsDummy()) { // it is dummy if it is in a float!!!
@@ -2472,7 +2504,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 		}
 	}
 
-	LyXFont basefont = getFont(-1); // Get layout font
+	LyXFont basefont = getFont(bparams, -1); // Get layout font
 	// Which font is currently active?
 	LyXFont running_font = basefont;
 	LyXFont last_font;
@@ -2485,7 +2517,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 	
 	texrow.start(this, 0);
 
-	bool is_rtl = getParLanguage()->RightToLeft;
+	bool is_rtl = getParLanguage(bparams)->RightToLeft();
 	bool first_in_cell = true;
 		
 	for (size_type i = 0; i < size(); ++i) {
@@ -2504,7 +2536,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 		}
 
 		// Fully instantiated font
-		LyXFont font = getFont(i);
+		LyXFont font = getFont(bparams, i);
 		last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
@@ -2512,9 +2544,9 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 		// i.e. we write "\textXX{text} " rather than
 		// "\textXX{text }". (Asger)
 		if (open_font && c == ' ' && i <= size() - 2
-		    && getFont(i + 1) != running_font
-		    && getFont(i + 1) != font) {
-			font = getFont(i + 1);
+		    && getFont(bparams, i + 1) != running_font
+		    && getFont(bparams, i + 1) != font) {
+			font = getFont(bparams, i + 1);
 		}
 
 		// We end font definition before blanks
@@ -2554,11 +2586,11 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 							      basefont);
 				open_font = false;
 			}
-			basefont = getFont(-1);
+			basefont = getFont(bparams, -1);
 			running_font = basefont;
 			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
-				TeXContTableRows(os, i + 1,
+				TeXContTableRows(bparams, os, i + 1,
 						 current_cell_number,
 						 column, texrow);
 			}
@@ -2586,7 +2618,8 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 			}
 			texrow.start(this, i + 1);
 		} else {
-			SimpleTeXSpecialChars(os, texrow, false,
+			SimpleTeXSpecialChars(bparams,
+					      os, texrow, false,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -2608,7 +2641,8 @@ bool LyXParagraph::SimpleTeXOneTablePar(ostream & os, TexRow & texrow)
 
 
 // This one spits out the text off ContRows in tables
-bool LyXParagraph::TeXContTableRows(ostream & os,
+bool LyXParagraph::TeXContTableRows(BufferParams const & bparams,
+				    ostream & os,
 				    LyXParagraph::size_type i,
 				    int current_cell_number,
 				    int & column, TexRow & texrow)
@@ -2617,13 +2651,11 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 	if (!table)
 		return false;
     
-	char c;
-   
 	bool return_value = false;
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    GetLayout());
-	LyXFont basefont = getFont(-1); // Get layout font
+	LyXFont basefont = getFont(bparams, -1); // Get layout font
 	LyXFont last_font;
 	// Which font is currently active?
 	LyXFont running_font = basefont;
@@ -2633,6 +2665,7 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 	size_type lastpos = i;
 	int cell = table->CellHasContRow(current_cell_number);
 	++current_cell_number;
+	char c;
 	while(cell >= 0) {
 		// first find the right position
 		i = lastpos;
@@ -2657,7 +2690,7 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 			++column;
 
 			// Fully instantiated font
-			LyXFont font = getFont(i);
+			LyXFont font = getFont(bparams, i);
 			last_font = running_font;
 
 			// Spaces at end of font change are simulated to
@@ -2665,9 +2698,9 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 			// "\textXX{text} " rather than "\textXX{text }".
 			// (Asger)
 			if (open_font && c == ' ' && i <= size() - 2 
-			    && getFont(i + 1) != running_font
-			    && getFont(i + 1) != font) {
-				font = getFont(i + 1);
+			    && getFont(bparams, i + 1) != running_font
+			    && getFont(bparams, i + 1) != font) {
+				font = getFont(bparams, i + 1);
 			}
 
 			// We end font definition before blanks
@@ -2698,7 +2731,8 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 					column += 9;
 				}
 			}
-			SimpleTeXSpecialChars(os, texrow, false, font,
+			SimpleTeXSpecialChars(bparams,
+					      os, texrow, false, font,
 					      running_font, basefont,
 					      open_font, style, i, column, c);
 		}
@@ -2708,7 +2742,7 @@ bool LyXParagraph::TeXContTableRows(ostream & os,
 							  basefont);
 			open_font = false;
 		}
-		basefont = getFont(-1);
+		basefont = getFont(bparams, -1);
 		running_font = basefont;
 		cell = table->CellHasContRow(current_cell_number);
 	}
@@ -2781,7 +2815,8 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 }
 
 
-void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
+void LyXParagraph::SimpleDocBookOneTablePar(BufferParams const & bparams,
+					    ostream & os, string & extra,
 					    int & desc_on, int depth) 
 {
 	if (!table) return;
@@ -2794,7 +2829,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
 	bool emph_flag = false;
 	
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    GetLayout());
 	
 	if (style.labeltype != LABEL_MANUAL)
@@ -2828,7 +2863,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
 		++column;
 		
 		// Fully instantiated font
-		font2 = getFont(i);
+		font2 = getFont(bparams, i);
 		
 		// Handle <emphasis> tag.
 		if (font1.emph() != font2.emph() && i) {
@@ -2846,10 +2881,11 @@ void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
 				os << "</emphasis>";
 				emph_flag= false;
 			}
-			font1 = font2 = getFont(-1);
+			font1 = font2 = getFont(bparams, -1);
 			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
-				DocBookContTableRows(os, extra, desc_on, i + 1,
+				DocBookContTableRows(bparams,
+						     os, extra, desc_on, i + 1,
 						     current_cell_number,
 						     column);
 			}
@@ -2957,7 +2993,8 @@ void LyXParagraph::SimpleDocBookOneTablePar(ostream & os, string & extra,
 }
 
 
-void LyXParagraph::DocBookContTableRows(ostream & os, string & extra,
+void LyXParagraph::DocBookContTableRows(BufferParams const & bparams,
+					ostream & os, string & extra,
                                         int & desc_on,
 					LyXParagraph::size_type i,
                                         int current_cell_number, int &column) 
@@ -2975,7 +3012,7 @@ void LyXParagraph::DocBookContTableRows(ostream & os, string & extra,
 	int char_line_count = 0;
 	
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    GetLayout());
 	
 	size_type main_body;
@@ -3020,7 +3057,7 @@ void LyXParagraph::DocBookContTableRows(ostream & os, string & extra,
 			++column;
 			
 			// Fully instantiated font
-			font2 = getFont(i);
+			font2 = getFont(bparams, i);
 			
 			// Handle <emphasis> tag.
 			if (font1.emph() != font2.emph() && i) {
@@ -3097,7 +3134,7 @@ void LyXParagraph::DocBookContTableRows(ostream & os, string & extra,
 			os << "</emphasis>";
 			emph_flag= false;
 		}
-		font1 = font2 = getFont(-1);
+		font1 = font2 = getFont(bparams, -1);
 		cell = table->CellHasContRow(current_cell_number);
 	}
 	lyxerr[Debug::LATEX] << "DocBookContTableRows...done " << this << endl;
@@ -3146,7 +3183,8 @@ void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
 }
 
 
-void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
+void LyXParagraph::SimpleTeXSpecialChars(BufferParams const & bparams,
+					 ostream & os, TexRow & texrow,
 					 bool moving_arg,
 					 LyXFont & font,
 					 LyXFont & running_font,
@@ -3198,7 +3236,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 								    basefont);
 			open_font = false;
 		}
-		basefont = getFont(-1);
+		basefont = getFont(bparams, -1);
 		running_font = basefont;
 		break;
 
@@ -3237,7 +3275,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 			case '°': case '±': case '²': case '³':  
 			case '×': case '÷': case '¹': case 'ª':
 			case 'º': case '¬': case 'µ':
-				if (current_view->buffer()->params.inputenc == "latin1") {
+				if (bparams.inputenc == "latin1") {
 					os << "\\ensuremath{"
 					   << c
 					   << '}';
@@ -3300,7 +3338,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 				break;
 
 			case '£':
-				if (current_view->buffer()->params.inputenc == "default") {
+				if (bparams.inputenc == "default") {
 					os << "\\pounds{}";
 					column += 8;
 				} else {
@@ -3490,7 +3528,8 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 #endif
 
 
-LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
+LyXParagraph * LyXParagraph::TeXDeeper(BufferParams const & bparams,
+				       ostream & os, TexRow & texrow,
 				       ostream & foot,
 				       TexRow & foot_texrow,
 				       int & foot_count)
@@ -3503,14 +3542,16 @@ LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
 	       (par->footnoteflag == footnoteflag)) {
 		if (par->IsDummy())
 			lyxerr << "ERROR (LyXParagraph::TeXDeeper)" << endl;
-		if (textclasslist.Style(current_view->buffer()->params.textclass, 
+		if (textclasslist.Style(bparams.textclass, 
 					par->layout).isEnvironment()
 		    || par->pextra_type != PEXTRA_NONE) {
-			par = par->TeXEnvironment(os, texrow,
+			par = par->TeXEnvironment(bparams,
+						  os, texrow,
 						  foot, foot_texrow,
 						  foot_count);
 		} else {
-			par = par->TeXOnePar(os, texrow, false,
+			par = par->TeXOnePar(bparams,
+					     os, texrow, false,
 					     foot, foot_texrow,
 					     foot_count);
 		}
@@ -3521,7 +3562,8 @@ LyXParagraph * LyXParagraph::TeXDeeper(ostream & os, TexRow & texrow,
 }
 
 
-LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
+LyXParagraph * LyXParagraph::TeXEnvironment(BufferParams const & bparams,
+					    ostream & os, TexRow & texrow,
 					    ostream & foot,
 					    TexRow & foot_texrow,
 					    int & foot_count)
@@ -3531,14 +3573,14 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 	// flags when footnotetext should be appended to file.
         static bool minipage_open = false;
         static int minipage_open_depth = 0;
-	char par_sep = current_view->buffer()->params.paragraph_separation;
+	char par_sep = bparams.paragraph_separation;
     
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
 	if (IsDummy())
 		lyxerr << "ERROR (LyXParagraph::TeXEnvironment)" << endl;
 
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass,
+		textclasslist.Style(bparams.textclass,
 				    layout);
        
 	if (pextra_type == PEXTRA_INDENT) {
@@ -3661,7 +3703,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 	}
 	LyXParagraph * par = this;
 	do {
-		par = par->TeXOnePar(os, texrow, false,
+		par = par->TeXOnePar(bparams,
+				     os, texrow, false,
 				     foot, foot_texrow, foot_count);
 
                 if (minipage_open && par && !style.isEnvironment() &&
@@ -3676,7 +3719,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 			minipage_open = false;
                 }
 		if (par && par->depth > depth) {
-			if (textclasslist.Style(current_view->buffer()->params.textclass,
+			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
 			    && !par->table
 			    // Thinko!
@@ -3696,7 +3739,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 				os << '\n';
 				texrow.newline();
 			}
-			par = par->TeXDeeper(os, texrow,
+			par = par->TeXDeeper(bparams, os, texrow,
 					     foot, foot_texrow, foot_count);
 		}
 		if (par && par->layout == layout && par->depth == depth &&
@@ -3804,7 +3847,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 }
 
 
-LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
+LyXParagraph * LyXParagraph::TeXFootnote(BufferParams const & bparams,
+					 ostream & os, TexRow & texrow,
 					 ostream & foot, TexRow & foot_texrow,
 					 int & foot_count,
 					 bool parent_is_rtl)
@@ -3816,7 +3860,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 
 	LyXParagraph * par = this;
 	LyXLayout const & style =
-		textclasslist.Style(current_view->buffer()->params.textclass, 
+		textclasslist.Style(bparams.textclass, 
 				    previous->GetLayout());
 	
 	if (style.needprotect && footnotekind != LyXParagraph::FOOTNOTE){
@@ -3847,7 +3891,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 
 	bool moving_arg = false;
 	bool need_closing = false;
-	bool is_rtl = isRightToLeftPar();
+	bool is_rtl = isRightToLeftPar(bparams);
 
 	if (is_rtl != parent_is_rtl) {
 		if (is_rtl)
@@ -3857,7 +3901,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		need_closing = true;
 	}
 	
-	BufferParams * params = &current_view->buffer()->params;
+	//BufferParams * params = &current_view->buffer()->params;
 	bool footer_in_body = true;
 	switch (footnotekind) {
 	case LyXParagraph::FOOTNOTE:
@@ -3900,8 +3944,8 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 				   << "\\textwidth}\n";
 		} else {
 			os << "\\begin{figure}";
-			if (!params->float_placement.empty()) { 
-				os << '[' << params->float_placement << "]\n";
+			if (!bparams.float_placement.empty()) { 
+				os << '[' << bparams.float_placement << "]\n";
 			} else {
 				os << '\n';
 			}
@@ -3909,24 +3953,24 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		break;
 	case LyXParagraph::TAB:
 		os << "\\begin{table}";
-		if (!params->float_placement.empty()) { 
-			os << '[' << params->float_placement << "]\n";
+		if (!bparams.float_placement.empty()) { 
+			os << '[' << bparams.float_placement << "]\n";
 		} else {
 			os << '\n';
 		}
 		break;
 	case LyXParagraph::WIDE_FIG:
 		os << "\\begin{figure*}";
-		if (!params->float_placement.empty()) { 
-			os << '[' << params->float_placement << "]\n";
+		if (!bparams.float_placement.empty()) { 
+			os << '[' << bparams.float_placement << "]\n";
 		} else {
 			os << '\n';
 		}
 		break;
 	case LyXParagraph::WIDE_TAB:
 		os << "\\begin{table*}";
-		if (!params->float_placement.empty()) { 
-			os << '[' << params->float_placement << "]\n";
+		if (!bparams.float_placement.empty()) { 
+			os << '[' << bparams.float_placement << "]\n";
 		} else {
 			os << '\n';
 		}
@@ -3943,9 +3987,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		do {
 			LyXLayout const & style =
 				textclasslist
-				.Style(current_view->buffer()->params
-				       .textclass,
-				       par->layout);
+				.Style(bparams.textclass, par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
 				       << endl;
@@ -3955,17 +3997,18 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 				// environments. Shouldn't be circular because
 				// we don't support footnotes inside
 				// floats (yet). ARRae
-				par = par->TeXEnvironment(os, texrow,
+				par = par->TeXEnvironment(bparams, os, texrow,
 							  foot, foot_texrow,
 							  foot_count);
 			} else {
-				par = par->TeXOnePar(os, texrow, moving_arg,
+				par = par->TeXOnePar(bparams,
+						     os, texrow, moving_arg,
 						     foot, foot_texrow,
 						     foot_count);
 			}
 			
 			if (par && !par->IsDummy() && par->depth > depth) {
-				par = par->TeXDeeper(os, texrow,
+				par = par->TeXDeeper(bparams, os, texrow,
 						     foot, foot_texrow,
 						     foot_count);
 			}
@@ -3984,9 +4027,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		do {
 			LyXLayout const & style =
 				textclasslist
-				.Style(current_view->buffer()->params
-				       .textclass,
-				       par->layout);
+				.Style(bparams.textclass, par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
 				       << endl;
@@ -3996,18 +4037,21 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 				// environments. Shouldn't be circular because
 				// we don't support footnotes inside
 				// floats (yet). ARRae
-				par = par->TeXEnvironment(foot, foot_texrow,
+				par = par->TeXEnvironment(bparams,
+							  foot, foot_texrow,
 							  dummy, dummy_texrow,
 							  dummy_count);
 			} else {
-				par = par->TeXOnePar(foot, foot_texrow,
+				par = par->TeXOnePar(bparams,
+						     foot, foot_texrow,
 						     moving_arg,
 						     dummy, dummy_texrow,
 						     dummy_count);
 			}
 
 			if (par && !par->IsDummy() && par->depth > depth) {
-				par = par->TeXDeeper(foot, foot_texrow,
+				par = par->TeXDeeper(bparams,
+						     foot, foot_texrow,
 						     dummy, dummy_texrow,
 						     dummy_count);
 			}
@@ -4083,14 +4127,15 @@ bool LyXParagraph::IsDummy() const
 }
 
 
-void LyXParagraph::SetPExtraType(int type, char const * width,
+void LyXParagraph::SetPExtraType(BufferParams const & bparams,
+				 int type, char const * width,
 				 char const * widthp)
 {
 	pextra_type = type;
 	pextra_width = width;
 	pextra_widthp = widthp;
 
-	if (textclasslist.Style(current_view->buffer()->params.textclass, 
+	if (textclasslist.Style(bparams.textclass, 
 				layout).isEnvironment()) {
 		LyXParagraph
 			* par = this,
@@ -4116,7 +4161,8 @@ void LyXParagraph::SetPExtraType(int type, char const * width,
 			par->pextra_widthp = widthp;
 			par = par->NextAfterFootnote();
 			if (par && (par->depth > depth))
-				par->SetPExtraType(type, width, widthp);
+				par->SetPExtraType(bparams,
+						   type, width, widthp);
 			while (par && ((par->depth > depth) || par->IsDummy()))
 				par = par->NextAfterFootnote();
 		}
@@ -4124,7 +4170,7 @@ void LyXParagraph::SetPExtraType(int type, char const * width,
 }
 
 
-void LyXParagraph::UnsetPExtraType()
+void LyXParagraph::UnsetPExtraType(BufferParams const & bparams)
 {
 	if (pextra_type == PEXTRA_NONE)
 		return;
@@ -4133,7 +4179,7 @@ void LyXParagraph::UnsetPExtraType()
 	pextra_width.erase();
 	pextra_widthp.erase();
 
-	if (textclasslist.Style(current_view->buffer()->params.textclass, 
+	if (textclasslist.Style(bparams.textclass, 
 				layout).isEnvironment()) {
 		LyXParagraph
 			* par = this,
@@ -4159,7 +4205,7 @@ void LyXParagraph::UnsetPExtraType()
 			par->pextra_widthp.erase();
 			par = par->NextAfterFootnote();
 			if (par && (par->depth > depth))
-				par->UnsetPExtraType();
+				par->UnsetPExtraType(bparams);
 			while (par && ((par->depth > depth) || par->IsDummy()))
 				par = par->NextAfterFootnote();
 		}
@@ -4233,36 +4279,43 @@ bool LyXParagraph::IsWord(size_type pos ) const
 }
 
 
-Language const * LyXParagraph::getParLanguage() const 
+Language const *
+LyXParagraph::getParLanguage(BufferParams const & bparams) const 
 {
 	if (IsDummy())
-		return FirstPhysicalPar()->getParLanguage();
+		return FirstPhysicalPar()->getParLanguage(bparams);
 	else if (size() > 0)
+#ifndef NEW_TABULAR
 		if (!table)
+#endif
 			return GetFirstFontSettings().language();
+#ifndef NEW_TABULAR
 		else {
 			for (size_type pos = 0; pos < size(); ++pos)
 				if (IsNewline(pos))
-					return GetFontSettings(pos).language();
+					return GetFontSettings(bparams, pos).language();
 			return GetFirstFontSettings().language();
 		}
+#endif
 	else if (previous)
-		return previous->getParLanguage();
+		return previous->getParLanguage(bparams);
 	else
-		return current_view->buffer()->params.language_info;
+		return bparams.language_info;
 }
 
 
-bool LyXParagraph::isRightToLeftPar() const
+bool LyXParagraph::isRightToLeftPar(BufferParams const & bparams) const
 {
-	return lyxrc.rtl_support && !table && getParLanguage()->RightToLeft;
+	return lyxrc.rtl_support && !table
+		&& getParLanguage(bparams)->RightToLeft();
 }
 
 
-void LyXParagraph::ChangeLanguage(Language const * from, Language const * to)
+void LyXParagraph::ChangeLanguage(BufferParams const & bparams,
+				  Language const * from, Language const * to)
 {
 	for(size_type i = 0; i < size(); ++i) {
-		LyXFont font = GetFontSettings(i);
+		LyXFont font = GetFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);
 			SetFont(i, font);
@@ -4271,12 +4324,12 @@ void LyXParagraph::ChangeLanguage(Language const * from, Language const * to)
 }
 
 
-bool LyXParagraph::isMultiLingual()
+bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 {
 	Language const * doc_language =
-		current_view->buffer()->params.language_info;
+		bparams.language_info;
 	for(size_type i = 0; i < size(); ++i) {
-		LyXFont font = GetFontSettings(i);
+		LyXFont font = GetFontSettings(bparams, i);
 		if (font.language() != doc_language)
 			return true;
 	}
@@ -4286,7 +4339,7 @@ bool LyXParagraph::isMultiLingual()
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string LyXParagraph::String(bool label)
+string LyXParagraph::String(BufferParams const & bparams, bool label)
 {
 	string s;
 	if (label && !IsDummy() && !labelstring.empty())
@@ -4311,12 +4364,12 @@ string LyXParagraph::String(bool label)
 		}
 	}
 
-	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
-	    footnoteflag == LyXParagraph::NO_FOOTNOTE)
-		s += NextAfterFootnote()->String(false);
+	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE 
+	    && footnoteflag == LyXParagraph::NO_FOOTNOTE)
+		s += NextAfterFootnote()->String(bparams, false);
 
 	if (!IsDummy()) {
-		if (isRightToLeftPar())
+		if (isRightToLeftPar(bparams))
 			reverse(s.begin() + len,s.end());
 	}
 	return s;
@@ -4329,6 +4382,7 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 	string s;
 	int actcell = 0;
 	int cell = 1;
+#ifndef NEW_TABULAR
 	if (table)
 		for (LyXParagraph::size_type i = 0; i < beg; ++i)
 			if (IsNewline(i)) {
@@ -4338,7 +4392,8 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 					++cell;
 				++actcell;
 			}
-
+#endif
+	
 	if (beg == 0 && !IsDummy() && !labelstring.empty())
 		s += labelstring + ' ';
 

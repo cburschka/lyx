@@ -125,15 +125,17 @@ public:
 	~LyXParagraph();
 
 	///
-	Language const * getParLanguage() const;
+	Language const * getParLanguage(BufferParams const &) const;
 	///
-	bool isRightToLeftPar() const;
+	bool isRightToLeftPar(BufferParams const &) const;
 	///
-	void ChangeLanguage(Language const * from, Language const * to);
+	void ChangeLanguage(BufferParams const & bparams,
+			    Language const * from, Language const * to);
 	///
-	bool isMultiLingual();
+	bool isMultiLingual(BufferParams const &);
 	///
-	string String(bool label);
+
+	string String(BufferParams const &, bool label);
 	///
 	string String(size_type beg, size_type end);
 	
@@ -155,15 +157,18 @@ public:
 	void read();
 
 	///
-	LyXParagraph * TeXOnePar(std::ostream &, TexRow & texrow,
+	LyXParagraph * TeXOnePar(BufferParams const &,
+				 std::ostream &, TexRow & texrow,
 				 bool moving_arg,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	bool SimpleTeXOnePar(std::ostream &, TexRow & texrow, bool moving_arg);
+	bool SimpleTeXOnePar(BufferParams const &,
+			     std::ostream &, TexRow & texrow, bool moving_arg);
 
 	///
-	LyXParagraph * TeXEnvironment(std::ostream &, TexRow & texrow,
+	LyXParagraph * TeXEnvironment(BufferParams const &,
+				      std::ostream &, TexRow & texrow,
 				      std::ostream & foot, TexRow & foot_texrow,
 				      int & foot_count);
 	///
@@ -185,7 +190,7 @@ public:
 
 	/** Check if the current paragraph is the last paragraph in a
 	    proof environment */
-	int GetEndLabel() const;
+	int GetEndLabel(BufferParams const &) const;
 	///
 	Inset * InInset() { return inset_owner; }
 	///
@@ -362,9 +367,11 @@ public:
 	///
 	char GetDepth() const;
 	///
-	void SetLayout(LyXTextClass::LayoutList::size_type new_layout);
+	void SetLayout(BufferParams const &,
+		       LyXTextClass::LayoutList::size_type new_layout);
 	///
-	void SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout);
+	void SetOnlyLayout(BufferParams const &,
+			   LyXTextClass::LayoutList::size_type new_layout);
 	///
 	int GetFirstCounter(int i) const;
 	///
@@ -373,14 +380,14 @@ public:
 	void Erase(size_type pos);
 	/** the flag determines wether the layout should be copied
 	 */ 
-	void BreakParagraph(size_type pos, int flag);
+	void BreakParagraph(BufferParams const &, size_type pos, int flag);
 	///
-	void BreakParagraphConservative(size_type pos);
+	void BreakParagraphConservative(BufferParams const &, size_type pos);
 	/** Get unistantiated font setting. Returns the difference
 	  between the characters font and the layoutfont.
 	  This is what is stored in the fonttable
 	 */
-	LyXFont GetFontSettings(size_type pos) const;
+	LyXFont GetFontSettings(BufferParams const &, size_type pos) const;
 	///
 	LyXFont GetFirstFontSettings() const;
 
@@ -391,7 +398,7 @@ public:
 	  attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
 	  LyXFont::TOGGLE.
 	  */
-	LyXFont getFont(size_type pos) const;
+	LyXFont getFont(BufferParams const &, size_type pos) const;
 	///
 	char GetChar(size_type pos);
 	///
@@ -423,9 +430,9 @@ public:
 	///
 	void CloseFootnote(size_type pos);
 	/// important for cut and paste
-	void CopyIntoMinibuffer(size_type pos) const;
+	void CopyIntoMinibuffer(BufferParams const &, size_type pos) const;
 	///
-	void CutIntoMinibuffer(size_type pos);
+	void CutIntoMinibuffer(BufferParams const &, size_type pos);
 	///
 	bool InsertFromMinibuffer(size_type pos);
 
@@ -456,7 +463,7 @@ public:
 	/** paste this paragraph with the next one
 	  be carefull, this doesent make any check at all
 	  */ 
-	void PasteParagraph();
+	void PasteParagraph(BufferParams const &);
 
 	/// used to remove the error messages
 	int AutoDeleteInsets();
@@ -487,9 +494,10 @@ public:
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
 	///
-        void SetPExtraType(int type, char const * width, char const * widthp);
+        void SetPExtraType(BufferParams const &,
+			   int type, char const * width, char const * widthp);
 	///
-        void UnsetPExtraType();
+        void UnsetPExtraType(BufferParams const &);
 #if 0
 	///
 	bool RoffContTableRows(std::ostream &, size_type i, int actcell);
@@ -497,11 +505,13 @@ public:
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 	///
-	void DocBookContTableRows(std::ostream &, string & extra,
+	void DocBookContTableRows(BufferParams const &,
+				  std::ostream &, string & extra,
 				  int & desc_on, size_type i,
 				  int current_cell_number, int & column);
 	///
-	void SimpleDocBookOneTablePar(std::ostream &, string & extra,
+	void SimpleDocBookOneTablePar(BufferParams const &,
+				      std::ostream &, string & extra,
 				      int & desc_on, int depth);
 private:
 	///
@@ -561,18 +571,22 @@ private:
 	///
 	InsetList insetlist;
 	///
-	LyXParagraph * TeXDeeper(std::ostream &, TexRow & texrow,
+	LyXParagraph * TeXDeeper(BufferParams const &,
+				 std::ostream &, TexRow & texrow,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	LyXParagraph * TeXFootnote(std::ostream &, TexRow & texrow,
+	LyXParagraph * TeXFootnote(BufferParams const &,
+				   std::ostream &, TexRow & texrow,
 				   std::ostream & foot, TexRow & foot_texrow,
 				   int & foot_count,
 				   bool parent_is_rtl);
 	///
-	bool SimpleTeXOneTablePar(std::ostream &, TexRow & texrow);
+	bool SimpleTeXOneTablePar(BufferParams const &,
+				  std::ostream &, TexRow & texrow);
 	///
-	bool TeXContTableRows(std::ostream &, size_type i,
+	bool TeXContTableRows(BufferParams const &,
+			      std::ostream &, size_type i,
 			      int current_cell_number,
                               int & column, TexRow & texrow);
 	///
@@ -581,7 +595,8 @@ private:
 			     int & column, LyXFont const & font,
 			     LyXLayout const & style);
 	///
-	void SimpleTeXSpecialChars(std::ostream &, TexRow & texrow,
+	void SimpleTeXSpecialChars(BufferParams const &,
+				   std::ostream &, TexRow & texrow,
 				   bool moving_arg,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont, bool & open_font,

@@ -50,15 +50,15 @@ bool UpdateLayoutTable(int flag)
     if (!current_view->available())
         update = false;
     
-    if (update && current_view->text->cursor.par->table) {
+    if (update && current_view->text->cursor.par()->table) {
         char buf[12];
         string pwidth, special;
    
-        LyXTable * table = current_view->text->cursor.par->table;
+        LyXTable * table = current_view->text->cursor.par()->table;
 
         int cell = current_view->text->
-            NumberOfCell(current_view->text->cursor.par, 
-                         current_view->text->cursor.pos);
+            NumberOfCell(current_view->text->cursor.par(), 
+                         current_view->text->cursor.pos());
         ActCell = cell;
         int column = table->column_of_cell(cell)+1;
         fl_set_object_label(fd_form_table_options->text_warning, "");
@@ -274,13 +274,13 @@ void TableOptionsCB(FL_OBJECT * ob, long l)
     string special, str;
 
     if (!current_view->available()
-	|| !(table = current_view->text->cursor.par->table)) {
+	|| !(table = current_view->text->cursor.par()->table)) {
         MenuLayoutTable(0);
 	return;
       }
     int cell = current_view->text->
-        NumberOfCell(current_view->text->cursor.par, 
-                     current_view->text->cursor.pos);
+        NumberOfCell(current_view->text->cursor.par(), 
+                     current_view->text->cursor.pos());
     if (ActCell != cell) {
         MenuLayoutTable(0);
         fl_set_object_label(fd_form_table_options->text_warning,

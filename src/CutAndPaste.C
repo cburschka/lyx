@@ -10,15 +10,20 @@
 #include <config.h>
 
 #include "CutAndPaste.h"
+#include "BufferView.h"
+#include "buffer.h"
 #include "lyxparagraph.h"
 #include "insets/inseterror.h"
 #include "lyx_gui_misc.h"
+#include "lyxcursor.h"
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 using std::pair;
+
+extern BufferView * current_view;
 
 // Jürgen, note that this means that you cannot currently have a list
 // of selections cut/copied. So IMHO later we should have a
@@ -81,23 +86,30 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	if (end > startpar->Last())
 	    end = startpar->Last();
 	for (; i < end; ++i) {
-	    startpar->CopyIntoMinibuffer(start);
+	    startpar->CopyIntoMinibuffer(current_view->buffer()->params,
+					 start);
+#ifndef NEW_TABULAR
 	    /* table stuff -- begin */
 	    if (startpar->table && startpar->IsNewline(start)) {
 		++start;
 	    } else {
 		/* table stuff -- end */
+#endif
 		startpar->Erase(start);
+#ifndef NEW_TABULAR
 	    }
+#endif
 	    buf->InsertFromMinibuffer(buf->Last());
 	}
     } else {
 	// more than one paragraph
-	(*endpar)->BreakParagraphConservative(end);
+	(*endpar)->BreakParagraphConservative(current_view->buffer()->params,
+					      end);
 	*endpar = (*endpar)->Next();
 	end = 0;
    
-	startpar->BreakParagraphConservative(start);
+	startpar->BreakParagraphConservative(current_view->buffer()->params,
+					     start);
 
 	// store the selection
 	buf = startpar->ParFromPos(start)->next;
@@ -126,7 +138,7 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	    startpar->Next()->StripLeadingSpaces(textclass);
 	if (startpar->FirstPhysicalPar()->HasSameLayout(startpar->Next()) || 
 	    !startpar->Next()->Last()) {
-	    startpar->ParFromPos(start)->PasteParagraph();
+	    startpar->ParFromPos(start)->PasteParagraph(current_view->buffer()->params);
 	    (*endpar) = startpar; // this because endpar gets deleted here!
 	}
     }
@@ -152,7 +164,7 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 	if (end > startpar->Last())
 	    end = startpar->Last();
 	for (; i < end; ++i) {
-	    startpar->CopyIntoMinibuffer(i);
+	    startpar->CopyIntoMinibuffer(current_view->buffer()->params, i);
 	    buf->InsertFromMinibuffer(buf->Last());
 	}
     } else {
@@ -213,6 +225,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
     if (!buf->next) {
 	// only within a paragraph
 	tmpbuf = buf->Clone();
+#ifndef NEW_TABULAR
 	/* table stuff -- begin */
 	bool table_too_small = false;
 	if ((*par)->table) {
@@ -233,7 +246,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 		    if (!tmppos && buf->IsLineSeparator(0)) {
 			buf->Erase(0);
 		    } else {
-			buf->CutIntoMinibuffer(0);
+			buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
 			buf->Erase(0);
 			if (tmppar->InsertFromMinibuffer(tmppos))
 			    ++tmppos;
@@ -242,6 +255,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	    }
 	} else {
 	    /* table stuff -- end */
+#endif
 	    // Some provisions should be done here for checking
 	    // if we are inserting at the beginning of a
 	    // paragraph. If there are a space at the beginning
@@ -255,13 +269,15 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 		if (!tmppos && buf->IsLineSeparator(0)) {
 		    buf->Erase(0);
 		} else {
-		    buf->CutIntoMinibuffer(0);
+		    buf->CutIntoMinibuffer(current_view->buffer()->params, 0);
 		    buf->Erase(0);
 		    if (tmppar->InsertFromMinibuffer(tmppos))
 			++tmppos;
 		}
 	    }
+#ifndef NEW_TABULAR
 	}
+#endif
 	delete buf;
 	buf = tmpbuf;
 	*endpar = tmppar->Next();
@@ -305,7 +321,8 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	// open the paragraph for inserting the buf
 	// if necessary
 	if (((*par)->Last() > pos) || !(*par)->Next()) {
-	    (*par)->BreakParagraphConservative(pos);
+	    (*par)->BreakParagraphConservative(current_view->buffer()->params,
+					       pos);
 	    paste_the_end = true;
 	}
 	
@@ -324,22 +341,22 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	if ((*par)->ParFromPos(pos)->Next() == lastbuffer)
 	    lastbuffer = *par;
 	
-	(*par)->ParFromPos(pos)->PasteParagraph();
+	(*par)->ParFromPos(pos)->PasteParagraph(current_view->buffer()->params);
 	
 	// store the new cursor position
 	*par = lastbuffer;
-	pos  = lastbuffer->Last();
+	pos = lastbuffer->Last();
 	
 	// maybe some pasting
 	if (lastbuffer->Next() && paste_the_end) {
 	    if (lastbuffer->Next()->HasSameLayout(lastbuffer)) {
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
 	    } else if (!lastbuffer->Next()->Last()) {
 		lastbuffer->Next()->MakeSameLayout(lastbuffer);
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
 	    } else if (!lastbuffer->Last()) {
 		lastbuffer->MakeSameLayout(lastbuffer->next);
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
 	    } else
 		lastbuffer->Next()->StripLeadingSpaces(tc);
 	}
@@ -425,6 +442,7 @@ bool CutAndPaste::checkPastePossible(LyXParagraph * par, int) const
 	    return false;
 	}
     }
+#ifndef NEW_TABULAR
     /* table stuff -- begin */
     if (par->table) {
 	if (buf->next) {
@@ -435,5 +453,6 @@ bool CutAndPaste::checkPastePossible(LyXParagraph * par, int) const
 	}
     }
     /* table stuff -- end */
+#endif
     return true;
 }

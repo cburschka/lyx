@@ -344,12 +344,6 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_OTHER:
 		if (!ev) break;
-#ifndef XFORMS_CLIPBOARD
-		if (ev->type == SelectionNotify) {
-			lyxerr.debug() << "Workarea event: SELECTION" << endl;
-			area->owner->workAreaSelectionNotify(area->work_area->form->window, ev);
-		} else
-#endif
 			lyxerr.debug() << "Workarea event: OTHER" << endl;
 
 		break;
@@ -359,7 +353,6 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 }
 
 
-#ifdef XFORMS_CLIPBOARD
 static string clipboard_selection;
 static bool clipboard_read = false;
 
@@ -406,4 +399,3 @@ void WorkArea::putClipboard(string const & s) const
 	
 	fl_stuff_clipboard(work_area, 0, hold.c_str(), hold.size(), 0);
 }
-#endif

@@ -15,29 +15,62 @@
 #include "lyxparagraph.h"
 
 ///
-struct Row {
+class Row {
+public:
 	///
-	LyXParagraph * par;
+	Row();
 	///
-	LyXParagraph::size_type pos;
+	void par(LyXParagraph * p);
+	///
+	LyXParagraph * par();
+	///
+	LyXParagraph * par() const;
+	///
+	void pos(LyXParagraph::size_type p);
+	///
+	LyXParagraph::size_type pos() const;
+	///
+	void fill(int f);
+	///
+	int fill() const;
+	///
+	void height(unsigned short h);
+	///
+	unsigned short height() const;
+	///
+	void ascent_of_text(unsigned short a);
+	///
+	unsigned short ascent_of_text() const;
+	///
+	void baseline(unsigned int b);
+	///
+	unsigned int baseline() const;
+	///
+	void next(Row * r);
+	///
+	Row * next() const;
+	///
+	void previous(Row * r);
+	///
+	Row * previous() const;
+private:
+	///
+	LyXParagraph * par_;
+	///
+	LyXParagraph::size_type pos_;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
-	mutable int fill;
+	mutable int fill_;
 	///
-	unsigned short  height;
+	unsigned short height_;
 	///
-	unsigned short ascent_of_text;
+	unsigned short ascent_of_text_;
 	///
-	unsigned int  baseline;
+	unsigned int baseline_;
 	///
-	Row()
-		: par(0), pos(0), fill(0), height(0),
-		  ascent_of_text(0), baseline(0), next(0), previous(0)
-		{}
+	Row * next_;
 	///
-	Row * next;
-	///
-	Row * previous;
+	Row * previous_;
 };
 
 #endif

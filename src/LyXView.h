@@ -18,6 +18,8 @@
 
 #include FORMS_H_LOCATION
 
+#include "Timeout.h"
+
 class LyXFunc;
 class Toolbar;
 class MiniBuffer;
@@ -30,14 +32,20 @@ class BufferView;
 struct  FD_form_main {
 	///
 	FL_FORM * form_main;
+#if 0
 	///
 	FL_OBJECT * timer_autosave;
+#endif
+#if 0
 	///
 	FL_OBJECT * timer_update;
+#endif
+#if 0
 	///
 	void * vdata;
 	///
 	long ldata;
+#endif
 };
 
 
@@ -130,15 +138,20 @@ public:
 	/// A callback
 	void AutoSave();
 	/// A callback
-	static void UpdateTimerCB(FL_OBJECT *, long);
+	static void UpdateTimerCB(void *);
+#if 1
+	///
+	//Timeout update_timeout;
+#endif
 private:
+	///
+	Timeout autosave_timeout;
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
 	/// A pointer to the form.	
 	FD_form_main * form_main_;
 	/// A pointer to the form.	
 	FL_FORM * form_;
-
 	/** The last textclass layout list in the layout choice selector
 	  This should probably be moved to the toolbar, but for now it's
 	here. (Asger) */

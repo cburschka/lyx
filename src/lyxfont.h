@@ -325,8 +325,7 @@ public:
 	///
 	friend 
 	bool operator!=(LyXFont const & font1, LyXFont const & font2) {
-		return font1.bits != font2.bits ||
-			font1.lang != font2.lang;
+		return !(font1 == font2);
 	}
 
 	/// compares two fonts, ignoring the setting of the Latex part.
@@ -527,14 +526,14 @@ Language const * LyXFont::language() const
 inline
 bool LyXFont::isRightToLeft() const 
 {
-	return lang->RightToLeft;
+	return lang->RightToLeft();
 }
 
 
 inline
 bool LyXFont::isVisibleRightToLeft() const 
 {
-	return (lang->RightToLeft && latex() != ON);
+	return (lang->RightToLeft() && latex() != ON);
 }
 
 

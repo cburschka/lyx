@@ -121,13 +121,14 @@ void BufferView::gotoError()
 }
 
 
+#if 0
 extern "C" {
 	void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf)
 	{
 		BufferView::cursorToggleCB(ob, buf);
 	}
 }
-
+#endif
 
 void BufferView::enterView()
 {
@@ -186,19 +187,11 @@ void BufferView::workAreaExpose()
 
 
 //  // Callback for cursor timer
-void BufferView::cursorToggleCB(FL_OBJECT * ob, long )
+void BufferView::cursorToggleCB(void * ob)
 {
-	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
+	BufferView * view = static_cast<BufferView*>(ob);
 	view->pimpl_->cursorToggle();
 }
-
-
-#ifndef XFORMS_CLIPBOARD
-void BufferView::workAreaSelectionNotify(Window win, XEvent * event)
-{
-	pimpl_->workAreaSelectionNotify(win, event);
-}
-#endif
 
 
 void BufferView::cursorPrevious()
@@ -333,7 +326,6 @@ void BufferView::center()
 }
 
 
-#ifdef XFORMS_CLIPBOARD
 void BufferView::pasteClipboard(bool asPara)
 {
 	pimpl_->pasteClipboard(asPara);
@@ -344,4 +336,3 @@ void BufferView::stuffClipboard(string const & stuff) const
 {
 	pimpl_->stuffClipboard(stuff);
 }
-#endif

@@ -40,7 +40,9 @@ using std::endl;
 extern FD_form_document * fd_form_document;
 
 extern void AutoSave(BufferView *);
+#if 0
 extern char updatetimer;
+#endif
 extern void QuitLyX();
 LyXTextClass::size_type current_layout = 0;
 
@@ -50,6 +52,7 @@ BufferView * current_view;
 extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 
 LyXView::LyXView(int width, int height)
+//	: update_timeout(300)
 {
 	create_form_form_main(width, height);
 	fl_set_form_atclose(form_, C_LyXView_atCloseMainFormCB, 0);
@@ -134,28 +137,33 @@ Intl * LyXView::getIntl() const
 
 
 // Callback for update timer
-void LyXView::UpdateTimerCB(FL_OBJECT * ob, long)
+void LyXView::UpdateTimerCB(void * ob)
 {
-	LyXView * view = static_cast<LyXView*>(ob->u_vdata);
+	LyXView * view = static_cast<LyXView*>(ob);
 	if (!view->view()->available()) 
 		return;
+#if 0
 	if (!updatetimer)
 		return;
+#endif
 
 	view->view()->hideCursor();
 	view->view()->update(-2);
-
+#if 0
 	/* This update can happen, even when the work area has lost
 	 * the focus. So suppress the cursor in that case */
 	updatetimer = 0;
+#endif
 }
 
 
+#if 0
 // Wrapper for the above
 extern "C" void C_LyXView_UpdateTimerCB(FL_OBJECT * ob, long data)
 {
 	LyXView::UpdateTimerCB(ob, data);
 }
+#endif
 
 
 // Callback for autosave timer
@@ -168,18 +176,24 @@ void LyXView::AutoSave()
 
 
 // Wrapper for the above
-extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long)
-{
-	LyXView * view = static_cast<LyXView*>(ob->u_vdata);
-	view->AutoSave();
+extern "C" {
+	static
+	void C_LyXView_AutosaveTimerCB(void * ob)
+	{
+		LyXView * view = static_cast<LyXView*>(ob);
+		view->AutoSave();
+	}
 }
-
 
 /// Reset autosave timer
 void LyXView::resetAutosaveTimer()
 {
 	if (lyxrc.autosave)
+#if 1
+		autosave_timeout.restart();
+#else
 		fl_set_timer(form_main_->timer_autosave, lyxrc.autosave);
+#endif
 }
 
 
@@ -272,19 +286,26 @@ void LyXView::create_form_form_main(int width, int height)
 	//
 	// TIMERS
 	//
-	
+
+#if 0
 	// timer_autosave
 	fdui->timer_autosave = obj = fl_add_timer(FL_HIDDEN_TIMER,
 						  0, 0, 0, 0, "Timer");
 	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_LyXView_AutosaveTimerCB, 0);
-	
+#else
+	autosave_timeout.callback(C_LyXView_AutosaveTimerCB, this);
+#endif
+
+#if 0
 	// timer_update
 	fdui->timer_update = obj = fl_add_timer(FL_HIDDEN_TIMER,
 						0, 0, 0, 0, "Timer");
 	fl_set_object_callback(obj, C_LyXView_UpdateTimerCB, 0);
 	obj->u_vdata = this;
-
+#else
+	//update_timeout.callback(LyXView::UpdateTimerCB, this);
+#endif
 	//
 	// Misc
 	//
@@ -320,8 +341,12 @@ void LyXView::init()
 	
 	// Start autosave timer
 	if (lyxrc.autosave)
+#if 0
 		fl_set_timer(form_main_->timer_autosave, lyxrc.autosave);
-	
+#else
+	autosave_timeout.setTimeout(lyxrc.autosave * 1000);
+	autosave_timeout.start();
+#endif
 	
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(form_,
@@ -368,7 +393,7 @@ void LyXView::updateLayoutChoice()
 	// we need to do this.
 	toolbar->combox->Redraw();
 
-	LyXTextClass::size_type layout = bufferview->text->cursor.par->GetLayout();
+	LyXTextClass::size_type layout = bufferview->text->cursor.par()->GetLayout();
 
 	if (layout != current_layout){
 		toolbar->combox->select(layout + 1);

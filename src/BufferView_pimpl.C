@@ -40,11 +40,13 @@ extern char ascii_type;
 
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
+#if 0
 extern void FreeUpdateTimer();
-
+#endif
+#if 0
 extern "C"
 void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf);
-
+#endif
 
 static inline
 void waitForX()
@@ -70,15 +72,23 @@ void SetXtermCursor(Window win)
 
 BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	     int xpos, int ypos, int width, int height)
-	: bv_(b), owner_(o)
+	: bv_(b), owner_(o), cursor_timeout(400)
 {
 	buffer_ = 0;
 	workarea = new WorkArea(bv_, xpos, ypos, width, height);
 	screen = 0;
+#if 0
 	timer_cursor = 0;
 	create_view();
+#else
+	cursor_timeout.callback(BufferView::cursorToggleCB, bv_);
+#endif
 	current_scrollbar_value = 0;
+#if 0
 	fl_set_timer(timer_cursor, 0.4);
+#else
+	cursor_timeout.start();
+#endif
 	workarea->setFocus();
 	work_area_focus = true;
 	lyx_focus = false;
@@ -222,12 +232,12 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	owner_->getMiniBuffer()->Set(_("Formatting document..."));   
 
 	if (bv_->text) {
-		par = bv_->text->cursor.par;
-		pos = bv_->text->cursor.pos;
-		selstartpar = bv_->text->sel_start_cursor.par;
-		selstartpos = bv_->text->sel_start_cursor.pos;
-		selendpar = bv_->text->sel_end_cursor.par;
-		selendpos = bv_->text->sel_end_cursor.pos;
+		par = bv_->text->cursor.par();
+		pos = bv_->text->cursor.pos();
+		selstartpar = bv_->text->sel_start_cursor.par();
+		selstartpos = bv_->text->sel_start_cursor.pos();
+		selendpar = bv_->text->sel_end_cursor.par();
+		selendpos = bv_->text->sel_end_cursor.pos();
 		selection = bv_->text->selection;
 		mark_set = bv_->text->mark_set;
 		delete bv_->text;
@@ -296,11 +306,11 @@ void BufferView::Pimpl::gotoError()
 	LyXCursor tmp;
 
 	if (!bv_->text->GotoNextError()) {
-		if (bv_->text->cursor.pos 
-		    || bv_->text->cursor.par != bv_->text->FirstParagraph()) {
+		if (bv_->text->cursor.pos() 
+		    || bv_->text->cursor.par() != bv_->text->FirstParagraph()) {
 			tmp = bv_->text->cursor;
-			bv_->text->cursor.par = bv_->text->FirstParagraph();
-			bv_->text->cursor.pos = 0;
+			bv_->text->cursor.par(bv_->text->FirstParagraph());
+			bv_->text->cursor.pos(0);
 			if (!bv_->text->GotoNextError()) {
 				bv_->text->cursor = tmp;
 				owner_->getMiniBuffer()
@@ -325,6 +335,7 @@ void BufferView::Pimpl::updateScreen()
 }
 
 
+#if 0
 void BufferView::Pimpl::create_view()
 {
 	FL_OBJECT * obj;
@@ -339,6 +350,7 @@ void BufferView::Pimpl::create_view()
 	fl_set_object_callback(obj, C_BufferView_CursorToggleCB, 0);
 	obj->u_vdata = bv_;
 }
+#endif
 
 
 void BufferView::Pimpl::updateScrollbar()
@@ -422,11 +434,11 @@ void BufferView::Pimpl::scrollCB(double value)
 		LyXText * vbt = bv_->text;
 		unsigned int height = vbt->DefaultHeight();
 		
-		if (vbt->cursor.y < screen->first + height) {
+		if (vbt->cursor.y() < screen->first + height) {
 			vbt->SetCursorFromCoordinates(0,
 						      screen->first +
 						      height);
-		} else if (vbt->cursor.y >
+		} else if (vbt->cursor.y() >
 			   screen->first + workarea->height() - height) {
 			vbt->SetCursorFromCoordinates(0,
 						      screen->first +
@@ -509,8 +521,8 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		LyXCursor cursor = bv_->text->cursor;
 		bv_->the_locking_inset->
 			InsetMotionNotify(bv_,
-					  x - cursor.x,
-					  y - cursor.y + screen->first,
+					  x - cursor.x(),
+					  y - cursor.y() + screen->first,
 					  state);
 		return;
 	}
@@ -576,10 +588,11 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	if (!inset_hit)
 		selection_possible = true;
 	screen->HideCursor();
-	
+
+#ifndef NEW_TABULAR
 	// Right button mouse click on a table
 	if (button == 3 &&
-	    (bv_->text->cursor.par->table ||
+	    (bv_->text->cursor.par()->table ||
 	     bv_->text->MouseHitInTable(xpos, ypos + screen->first))) {
 		// Set the cursor to the press-position
 		bv_->text->SetCursorFromCoordinates(xpos, ypos + screen->first);
@@ -587,7 +600,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		
 		// Only show the table popup if the hit is in
 		// the table, too
-		if (!bv_->text->HitInTable(bv_->text->cursor.row, xpos))
+		if (!bv_->text->HitInTable(bv_->text->cursor.row(), xpos))
 			doit = false;
 		
 		// Hit above or below the table?
@@ -612,6 +625,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			return;
 		}
 	}
+#endif
 	
 	int screen_first = screen->first;
 	
@@ -653,7 +667,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		bv_->text->SetCursorFromCoordinates(xpos, ypos + screen_first);
 	bv_->text->FinishUndo();
 	bv_->text->sel_cursor = bv_->text->cursor;
-	bv_->text->cursor.x_fix = bv_->text->cursor.x;
+	bv_->text->cursor.x_fix(bv_->text->cursor.x());
 	
 	owner_->updateLayoutChoice();
 	if (fitCursor()) {
@@ -750,17 +764,19 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 	
 	selection_possible = false;
-        if (bv_->text->cursor.par->table) {
+#ifndef NEW_TABULAR
+	if (bv_->text->cursor.par()->table) {
                 int cell = bv_->text->
-                        NumberOfCell(bv_->text->cursor.par,
-                                     bv_->text->cursor.pos);
-                if (bv_->text->cursor.par->table->IsContRow(cell) &&
-                    bv_->text->cursor.par->table->
-                    CellHasContRow(bv_->text->cursor.par->table->
+                        NumberOfCell(bv_->text->cursor.par(),
+                                     bv_->text->cursor.pos());
+                if (bv_->text->cursor.par()->table->IsContRow(cell) &&
+                    bv_->text->cursor.par()->table->
+                    CellHasContRow(bv_->text->cursor.par()->table->
                                    GetCellAbove(cell))<0) {
                         bv_->text->CursorUp();
                 }
         }
+#endif
 	
 	if (button >= 2) return;
 
@@ -807,10 +823,10 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	if (bv_->text) {
 		bool hit = false;
 		char c = ' ';
-		if (bv_->text->cursor.pos <
-		    bv_->text->cursor.par->Last()) {
-			c = bv_->text->cursor.par->
-				GetChar(bv_->text->cursor.pos);
+		if (bv_->text->cursor.pos() <
+		    bv_->text->cursor.par()->Last()) {
+			c = bv_->text->cursor.par()->
+				GetChar(bv_->text->cursor.pos());
 		}
 		if (c == LyXParagraph::META_FOOTNOTE
 		    || c == LyXParagraph::META_MARGIN
@@ -820,9 +836,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		    || c == LyXParagraph::META_WIDE_TAB
                     || c == LyXParagraph::META_ALGORITHM){
 			hit = true;
-		} else if (bv_->text->cursor.pos - 1 >= 0) {
-			c = bv_->text->cursor.par->
-				GetChar(bv_->text->cursor.pos - 1);
+		} else if (bv_->text->cursor.pos() - 1 >= 0) {
+			c = bv_->text->cursor.par()->
+				GetChar(bv_->text->cursor.pos() - 1);
 			if (c == LyXParagraph::META_FOOTNOTE
 			    || c == LyXParagraph::META_MARGIN
 			    || c == LyXParagraph::META_FIG
@@ -843,10 +859,10 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 
 	// Do we want to close a float? (click on the float-label)
-	if (bv_->text->cursor.row->par->footnoteflag == 
+	if (bv_->text->cursor.row()->par()->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
-	    && bv_->text->cursor.row->previous &&
-	    bv_->text->cursor.row->previous->par->
+	    && bv_->text->cursor.row()->previous() &&
+	    bv_->text->cursor.row()->previous()->par()->
 	    footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
@@ -857,10 +873,10 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		unsigned int screen_first = screen->first;
 
 		if (x < box_x
-		    && y + screen_first > bv_->text->cursor.y -
-		    bv_->text->cursor.row->baseline
-		    && y + screen_first < bv_->text->cursor.y -
-		    bv_->text->cursor.row->baseline
+		    && y + screen_first > bv_->text->cursor.y() -
+		    bv_->text->cursor.row()->baseline()
+		    && y + screen_first < bv_->text->cursor.y() -
+		    bv_->text->cursor.row()->baseline()
 		    + lyxfont::maxAscent(font) * 1.2 + lyxfont::maxDescent(font) * 1.2) {
 			bv_->toggleFloat();
 			selection_possible = false;
@@ -869,12 +885,12 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	}
 
 	// Maybe we want to edit a bibitem ale970302
-	if (bv_->text->cursor.par->bibkey && x < 20 + 
+	if (bv_->text->cursor.par()->bibkey && x < 20 + 
 	    bibitemMaxWidth(bv_->painter(),
 			    textclasslist
 			    .TextClass(buffer_->
 				       params.textclass).defaultfont())) {
-		bv_->text->cursor.par->bibkey->Edit(bv_, 0, 0, 0);
+		bv_->text->cursor.par()->bibkey->Edit(bv_, 0, 0, 0);
 	}
 
 	return;
@@ -898,67 +914,67 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 	bv_->text->SetCursorFromCoordinates(cursor, x, y_tmp);
 #if 0 // Are you planning to use this Jürgen? (Lgb)
 	bool move_cursor = ((cursor.par != bv_->text->cursor.par) ||
-			    (cursor.pos != bv_->text->cursor.pos));
+			    (cursor.pos != bv_->text->cursor.pos()));
 #endif
-	if (cursor.pos < cursor.par->Last()
-	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
-	    && cursor.par->GetInset(cursor.pos)
-	    && cursor.par->GetInset(cursor.pos)->Editable()) {
+	if (cursor.pos() < cursor.par()->Last()
+	    && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
+	    && cursor.par()->GetInset(cursor.pos())
+	    && cursor.par()->GetInset(cursor.pos())->Editable()) {
 
 		// Check whether the inset really was hit
-		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
-		LyXFont font = bv_->text->GetFont(cursor.par, cursor.pos);
+		Inset * tmpinset = cursor.par()->GetInset(cursor.pos());
+		LyXFont font = bv_->text->GetFont(cursor.par(), cursor.pos());
 		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
 
 		if (is_rtl) {
-			start_x = cursor.x - tmpinset->width(bv_->painter(), font);
-			end_x = cursor.x;
+			start_x = cursor.x() - tmpinset->width(bv_->painter(), font);
+			end_x = cursor.x();
 		} else {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(bv_->painter(), font);
+			start_x = cursor.x();
+			end_x = cursor.x() + tmpinset->width(bv_->painter(), font);
 		}
 
 		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
-		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
+		    && y_tmp > cursor.y() - tmpinset->ascent(bv_->painter(), font)
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_->painter(), font)) {
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif
-				bv_->text->SetCursor(cursor.par,cursor.pos,true);
+				bv_->text->SetCursor(cursor.par(),cursor.pos(),true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (bv_->text->cursor.y); 
+			y = y_tmp - (bv_->text->cursor.y()); 
 			return tmpinset;
 		}
 	}
 
-	if ((cursor.pos - 1 >= 0) &&
-	    (cursor.par->GetChar(cursor.pos-1) == LyXParagraph::META_INSET) &&
-	    (cursor.par->GetInset(cursor.pos - 1)) &&
-	    (cursor.par->GetInset(cursor.pos - 1)->Editable())) {
-		Inset * tmpinset = cursor.par->GetInset(cursor.pos-1);
-		LyXFont font = bv_->text->GetFont(cursor.par, cursor.pos-1);
+	if ((cursor.pos() - 1 >= 0) &&
+	    (cursor.par()->GetChar(cursor.pos()-1) == LyXParagraph::META_INSET) &&
+	    (cursor.par()->GetInset(cursor.pos() - 1)) &&
+	    (cursor.par()->GetInset(cursor.pos() - 1)->Editable())) {
+		Inset * tmpinset = cursor.par()->GetInset(cursor.pos()-1);
+		LyXFont font = bv_->text->GetFont(cursor.par(), cursor.pos()-1);
 		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
 
 		if (!is_rtl) {
-			start_x = cursor.x - tmpinset->width(bv_->painter(), font);
-			end_x = cursor.x;
+			start_x = cursor.x() - tmpinset->width(bv_->painter(), font);
+			end_x = cursor.x();
 		} else {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(bv_->painter(), font);
+			start_x = cursor.x();
+			end_x = cursor.x() + tmpinset->width(bv_->painter(), font);
 		}
 		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
-		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
+		    && y_tmp > cursor.y() - tmpinset->ascent(bv_->painter(), font)
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_->painter(), font)) {
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif
-				bv_->text->SetCursor(cursor.par,cursor.pos-1,true);
+				bv_->text->SetCursor(cursor.par(),cursor.pos()-1,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (bv_->text->cursor.y); 
+			y = y_tmp - (bv_->text->cursor.y()); 
 			return tmpinset;
 		}
 	}
@@ -1023,83 +1039,6 @@ void BufferView::Pimpl::workAreaExpose()
 }
 
 
-#ifndef XFORMS_CLIPBOARD
-static
-string fromClipboard(Window win, XEvent * event)
-{
-	string strret;
-	if (event->xselection.type == XA_STRING
-	    && event->xselection.property) {
-		Atom tmpatom;
-		unsigned long ul1;
-		unsigned long ul2;
-		unsigned char * uc = 0;
-		int tmpint;
-		if (XGetWindowProperty(
-			event->xselection.display,  // display
-			win,                        // w
-			event->xselection.property, // property
-			0,                          // long_offset	
-			0,                          // logn_length	
-			False,                      // delete	
-			XA_STRING,                  // req_type	
-			&tmpatom,                   // actual_type_return
-			&tmpint,                    // actual_format_return
-			&ul1,
-			&ul2,
-			&uc                         // prop_return	
-			) != Success) {
-			return strret;
-		}
-		if (uc) {
-			free(uc);
-			uc = 0;
-		}
-		if (XGetWindowProperty(
-			event->xselection.display,             // display
-			win,                        // w
-			event->xselection.property, // property
-			0,                          // long_offset
-			ul2/4+1,                    // long_length
-			True,                       // delete
-			XA_STRING,                  // req_type
-			&tmpatom,                   // actual_type_return
-			&tmpint,                    // actual_format_return
-			&ul1,                       // nitems_return
-			&ul2,                       // bytes_after_return
-			&uc                         // prop_return */
-			) != Success) {
-			return strret;
-		}
-		if (uc) {
-			strret = reinterpret_cast<char*>(uc);
-			free(uc); // yes free!
-			uc = 0;
-		}
-	}
-	return strret;
-}
-
-
-void BufferView::Pimpl::workAreaSelectionNotify(Window win, XEvent * event)
-{
-	if (buffer_ == 0) return;
-
-	screen->HideCursor();
-	bv_->beforeChange();
-	string clb = fromClipboard(win, event);
-	if (!clb.empty()) {
-		if (!ascii_type)
-			bv_->text->InsertStringA(clb);
-		else
-			bv_->text->InsertStringB(clb);
-
-		update(1);
-	}
-}
-#endif
-
-
 void BufferView::Pimpl::update()
 {
 	if (screen) screen->Update();
@@ -1149,8 +1088,9 @@ void BufferView::Pimpl::update(signed char f)
 
 	if (!bv_->text->selection && f > -3)
 		bv_->text->sel_cursor = bv_->text->cursor;
-	
+#if 0
 	FreeUpdateTimer();
+#endif
 	bv_->text->FullRebreak();
 
 	update();
@@ -1173,8 +1113,11 @@ void BufferView::Pimpl::update(signed char f)
 
 	if (!bv_->text->selection && (f & SELECT))
 		bv_->text->sel_cursor = bv_->text->cursor;
-	
+#if 1
+	//owner_->update_timeout.stop();
+#else
 	FreeUpdateTimer();
+#endif
 	bv_->text->FullRebreak();
 
 	update();
@@ -1293,7 +1236,11 @@ void BufferView::Pimpl::cursorToggle()
 	}
 
   set_timer_and_return:
+#if 1
+	cursor_timeout.restart();
+#else
 	fl_set_timer(timer_cursor, 0.4);
+#endif
   skip_timer:
 	return;
 }
@@ -1301,20 +1248,20 @@ void BufferView::Pimpl::cursorToggle()
 
 void BufferView::Pimpl::cursorPrevious()
 {
-	if (!bv_->text->cursor.row->previous) return;
+	if (!bv_->text->cursor.row()->previous()) return;
 	
 	long y = screen->first;
-	Row * cursorrow = bv_->text->cursor.row;
-	bv_->text->SetCursorFromCoordinates(bv_->text->cursor.x_fix, y);
+	Row * cursorrow = bv_->text->cursor.row();
+	bv_->text->SetCursorFromCoordinates(bv_->text->cursor.x_fix(), y);
 	bv_->text->FinishUndo();
 	// This is to allow jumping over large insets
-	if ((cursorrow == bv_->text->cursor.row))
+	if ((cursorrow == bv_->text->cursor.row()))
 		bv_->text->CursorUp();
 	
-  	if (bv_->text->cursor.row->height < workarea->height())
-		screen->Draw(bv_->text->cursor.y
-				  - bv_->text->cursor.row->baseline
-				  + bv_->text->cursor.row->height
+  	if (bv_->text->cursor.row()->height() < workarea->height())
+		screen->Draw(bv_->text->cursor.y()
+			     - bv_->text->cursor.row()->baseline()
+			     + bv_->text->cursor.row()->height()
 				  - workarea->height() + 1 );
 	updateScrollbar();
 }
@@ -1322,21 +1269,21 @@ void BufferView::Pimpl::cursorPrevious()
 
 void BufferView::Pimpl::cursorNext()
 {
-	if (!bv_->text->cursor.row->next) return;
+	if (!bv_->text->cursor.row()->next()) return;
 	
 	long y = screen->first;
 	bv_->text->GetRowNearY(y);
-	Row * cursorrow = bv_->text->cursor.row;
-	bv_->text->SetCursorFromCoordinates(bv_->text->cursor.x_fix, y
+	Row * cursorrow = bv_->text->cursor.row();
+	bv_->text->SetCursorFromCoordinates(bv_->text->cursor.x_fix(), y
 				       + workarea->height());
 	bv_->text->FinishUndo();
 	// This is to allow jumping over large insets
-	if ((cursorrow == bv_->text->cursor.row))
+	if ((cursorrow == bv_->text->cursor.row()))
 		bv_->text->CursorDown();
 	
- 	if (bv_->text->cursor.row->height < workarea->height())
-		screen->Draw(bv_->text->cursor.y
-			     - bv_->text->cursor.row->baseline);
+ 	if (bv_->text->cursor.row()->height() < workarea->height())
+		screen->Draw(bv_->text->cursor.y()
+			     - bv_->text->cursor.row()->baseline());
 	updateScrollbar();
 }
 
@@ -1352,15 +1299,20 @@ void BufferView::Pimpl::beforeChange()
 {
 	toggleSelection();
 	bv_->text->ClearSelection();
+#if 1
+	// CHECK
+	//owner_->update_timeout.stop();
+#else
 	FreeUpdateTimer();
+#endif
 }
 
 
 void BufferView::Pimpl::savePosition()
 {
 	backstack.push(buffer_->fileName(),
-		       bv_->text->cursor.x,
-		       bv_->text->cursor.y);
+		       bv_->text->cursor.x(),
+		       bv_->text->cursor.y());
 }
 
 
@@ -1487,8 +1439,8 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center() 
 {
 	beforeChange();
-	if (bv_->text->cursor.y > workarea->height() / 2) {
-		screen->Draw(bv_->text->cursor.y - workarea->height() / 2);
+	if (bv_->text->cursor.y() > workarea->height() / 2) {
+		screen->Draw(bv_->text->cursor.y() - workarea->height() / 2);
 	} else {
 		screen->Draw(0);
 	}
@@ -1497,7 +1449,6 @@ void BufferView::Pimpl::center()
 }
 
 
-#ifdef XFORMS_CLIPBOARD
 void BufferView::Pimpl::pasteClipboard(bool asPara) 
 {
 	if (buffer_ == 0) return;
@@ -1522,4 +1473,3 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 {
 	workarea->putClipboard(stuff);
 }
-#endif

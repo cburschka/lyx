@@ -910,17 +910,17 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	// Table submenu
 	int SubEditTable = fl_newpup(FL_ObjWin(ob));
 	if (men->currentView()->available() && 
-	    men->currentView()->text->cursor.par->table &&
+	    men->currentView()->text->cursor.par()->table &&
 	    !tmpbuffer->isReadonly()){
-		LyXTable *table = men->currentView()->text->cursor.par->table;
+		LyXTable * table = men->currentView()->text->cursor.par()->table;
 
 		fl_addtopup(SubEditTable, _("Table%t"));
 
 		if (table->IsMultiColumn(men->currentView()->text->
 					 NumberOfCell(men->currentView()->
-						      text->cursor.par, 
+						      text->cursor.par(), 
 						      men->currentView()->
-						      text->cursor.pos)))
+						      text->cursor.pos())))
 			fl_addtopup(SubEditTable, _("|Multicolumn%B%x44%l"));
 		else
 			fl_addtopup(SubEditTable, _("|Multicolumn%b%x44%l"));
@@ -928,9 +928,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
      
 		if (table->TopLine(men->currentView()->text->
 				   NumberOfCell(men->currentView()->
-						text->cursor.par, 
+						text->cursor.par(), 
 						men->currentView()->text->
-						cursor.pos)))
+						cursor.pos())))
 			fl_addtopup(SubEditTable, _("|Line Top%B%x36"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Top%b%x36"));
@@ -938,9 +938,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
      
 		if (table->BottomLine(men->currentView()->text->
 				      NumberOfCell(men->currentView()->
-						   text->cursor.par, 
+						   text->cursor.par(), 
 						   men->currentView()->
-						   text->cursor.pos)))
+						   text->cursor.pos())))
 			fl_addtopup(SubEditTable, _("|Line Bottom%B%x37"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Bottom%b%x37"));
@@ -948,9 +948,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 
 		if (table->LeftLine(men->currentView()->text->
 				    NumberOfCell(men->currentView()->
-						 text->cursor.par, 
+						 text->cursor.par(), 
 						 men->currentView()->
-						 text->cursor.pos)))
+						 text->cursor.pos())))
 			fl_addtopup(SubEditTable, _("|Line Left%B%x38"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Left%b%x38"));
@@ -958,9 +958,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 
 		if (table->RightLine(men->currentView()->text->
 				     NumberOfCell(men->currentView()->
-						  text->cursor.par, 
+						  text->cursor.par(), 
 						  men->currentView()->
-						  text->cursor.pos)))
+						  text->cursor.pos())))
 			fl_addtopup(SubEditTable, _("|Line Right%B%x39%l"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Right%b%x39%l"));
@@ -969,9 +969,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 		int align =
 			table->GetAlignment(men->currentView()->text->
 					    NumberOfCell(men->currentView()->
-							 text->cursor.par, 
+							 text->cursor.par(), 
 							 men->currentView()->
-							 text->cursor.pos));
+							 text->cursor.pos()));
 		if (align == LYX_ALIGN_LEFT)
 			fl_addtopup(SubEditTable, _("|Align Left%R%x40"));
 		else
@@ -1633,7 +1633,7 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(LayoutMenu, 10, FL_PUP_CHECK);
 	   
 	// Grey out unavailable entries
-	if (!men->currentView()->text->cursor.par->table)
+	if (!men->currentView()->text->cursor.par()->table)
 		fl_setpup_mode(LayoutMenu, 5, FL_PUP_GREY);
 
 	if (tmpbuffer->isReadonly()) {

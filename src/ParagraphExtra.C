@@ -80,7 +80,7 @@ bool UpdateParagraphExtra()
 	bool update = false;
 	if (current_view->available()) {
 		update = true;
-		LyXParagraph * par = current_view->text->cursor.par;
+		LyXParagraph * par = current_view->text->cursor.par();
 
 		EnableParagraphExtra();
 

@@ -251,9 +251,9 @@ string CurrentState(BufferView * bv)
 			state += string(_(", Depth: ")) + tostr(depth);
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
-		if (!bv->text->cursor.par->spacing.isDefault()) {
+		if (!bv->text->cursor.par()->spacing.isDefault()) {
 			Spacing::Space cur_space =
-				bv->text->cursor.par->spacing.getSpace();
+				bv->text->cursor.par()->spacing.getSpace();
 			state += _(", Spacing: ");
 			switch (cur_space) {
 			case Spacing::Single:
@@ -267,7 +267,7 @@ string CurrentState(BufferView * bv)
 				break;
 			case Spacing::Other:
 				state += _("Other (");
-				state += tostr(bv->text->cursor.par->spacing.getValue());
+				state += tostr(bv->text->cursor.par()->spacing.getValue());
 				state += ")";
 				break;
 			case Spacing::Default:
@@ -298,12 +298,12 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		    font.latex() != LyXFont::IGNORE) {
 			LyXText * text = bv->text;
 			LyXCursor & cursor = text->cursor;
-			text->ComputeBidiTables(cursor.row);
-			if (cursor.boundary != 
-			    text->IsBoundary(cursor.par, cursor.pos,
+			text->ComputeBidiTables(cursor.row());
+			if (cursor.boundary() != 
+			    text->IsBoundary(cursor.par(), cursor.pos(),
 					     text->real_current_font) )
-				text->SetCursor(cursor.par, cursor.pos,
-						false, !cursor.boundary);
+				text->SetCursor(cursor.par(), cursor.pos(),
+						false, !cursor.boundary());
 		}
 	}
 }

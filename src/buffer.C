@@ -12,15 +12,6 @@
  * ====================================================== 
  */
 
-// Change Log:
-// =========== 
-// 23/03/98   Heinrich Bauer (heinrich.bauer@t-mobil.de)
-// Spots marked "changed Heinrich Bauer, 23/03/98" modified due to the
-// following bug: dvi file export did not work after printing (or previewing)
-// and vice versa as long as the same file was concerned. This happened
-// every time the LyX-file was left unchanged between the two actions mentioned
-// above.
-
 #include <config.h>
 
 #include <fstream>
@@ -1404,6 +1395,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		//			    par->GetLayout()); // unused
 		//bool free_spc = layout.free_spacing; //unused
 
+#ifndef NEW_TABULAR
 		/* It might be a table */ 
 		if (par->table){
 #if 0
@@ -1449,7 +1441,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			if (clen[j] < h)
 				clen[j] = h;
 		}
-      
+#endif
 		font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
                 actcell = 0;
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
@@ -1481,6 +1473,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 						ofs << "  ";
 					currlinelen += (ltype_depth-depth)*2;
 				}
+#ifndef NEW_TABULAR
 				if (par->table) {
 					for(j = 0; j < cells; ++j) {
 						ofs << '+';
@@ -1500,8 +1493,9 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 					}
 					ofs << "| ";
 				}
+#endif
 			}
-			font2 = par->GetFontSettings(i);
+			font2 = par->GetFontSettings(params, i);
 			if (font1.latex() != font2.latex()) {
 				if (font2.latex() == LyXFont::OFF)
 					islatex = 0;
@@ -1523,6 +1517,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				}
 				break;
 			case LyXParagraph::META_NEWLINE:
+#ifndef NEW_TABULAR
 				if (par->table) {
 					if (par->table->NumberOfCellsInRow(actcell) <= cell) {
 						for(j = actpos; j < clen[cell - 1]; ++j)
@@ -1563,6 +1558,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
                                         ++actcell;
 					currlinelen = actpos = 0;
 				} else {
+#endif
 					ofs << "\n";
 					for(j = 0; j < depth; ++j)
 						ofs << "  ";
@@ -1573,7 +1569,9 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 							ofs << "  ";
 						currlinelen += (ltype_depth - depth) * 2;
 					}
+#ifndef NEW_TABULAR
 				}
+#endif
 				break;
 			case LyXParagraph::META_HFILL: 
 				ofs << "\t";
@@ -1602,6 +1600,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				break;
 			}
 		}
+#ifndef NEW_TABULAR
 		if (par->table) {
 			for(j = actpos; j < clen[cell - 1]; ++j)
 				ofs << ' ';
@@ -1621,7 +1620,8 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			}
 			ofs << "+\n";
 			delete [] clen;    
-		}      
+		}
+#endif
 		par = par->next;
 	}
    
@@ -1756,7 +1756,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		bool use_babel = false;
-		if (params.language_info->RightToLeft) // This seems necessary
+		if (params.language_info->RightToLeft()) // This seems necessary
 			features.UsedLanguages.insert(default_language);
 		if (params.language != "default" ||
 		    !features.UsedLanguages.empty() ) {
@@ -1764,8 +1764,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
 				     features.UsedLanguages.begin();
 			     cit != features.UsedLanguages.end(); ++cit)
-				options += (*cit)->lang + ",";
-			options += params.language_info->lang + ',';
+				options += (*cit)->lang() + ",";
+			options += params.language_info->lang() + ',';
 		}
 
 		// the user-defined options
@@ -2146,10 +2146,10 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph *par,
 		ftcount = -1;
 		if (layout.isEnvironment()
                     || par->pextra_type != LyXParagraph::PEXTRA_NONE) {
-			par = par->TeXEnvironment(ofs, texrow,
+			par = par->TeXEnvironment(params, ofs, texrow,
 						  ftnote, ft_texrow, ftcount);
 		} else {
-			par = par->TeXOnePar(ofs, texrow, false,
+			par = par->TeXOnePar(params, ofs, texrow, false,
 					     ftnote, ft_texrow, ftcount);
 		}
 
@@ -2654,7 +2654,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 				font1 = style.font;
 		}
 
-		font2 = par->getFont(i);
+		font2 = par->getFont(params, i);
 
 		if (font1.family() != font2.family()) {
 			switch(family_type) {
@@ -3119,10 +3119,13 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				 LyXParagraph * par, int & desc_on,
 				 int const depth) 
 {
+#ifndef NEW_TABULAR
 	if (par->table) {
-		par->SimpleDocBookOneTablePar(os, extra, desc_on, depth);
+		par->SimpleDocBookOneTablePar(params,
+					      os, extra, desc_on, depth);
 		return;
 	}
+#endif
 
 	bool emph_flag = false;
 
@@ -3146,7 +3149,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	// parsing main loop
 	for (LyXParagraph::size_type i = 0;
 	     i < par->size(); ++i) {
-		LyXFont font2 = par->getFont(i);
+		LyXFont font2 = par->getFont(params, i);
 
 		// handle <emphasis> tag
 		if (font1.emph() != font2.emph() && i) {
@@ -3794,7 +3797,7 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 				TocItem tmp;
 				tmp.par = par;
 				tmp.depth = 0;
-				tmp.str =  par->String(false);
+				tmp.str =  par->String(params, false);
 				switch (par->footnotekind) {
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
@@ -3824,7 +3827,7 @@ vector<vector<Buffer::TocItem> > Buffer::getTocList()
 				tmp.depth = max(0,
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
-				tmp.str =  par->String(true);
+				tmp.str =  par->String(params, true);
 				l[TOC_TOC].push_back(tmp);
 			}
 		}
@@ -3844,12 +3847,12 @@ vector<pair<string,string> > Buffer::getBibkeyList()
 			return tmp->getBibkeyList();
 	}
 
-	vector<pair<string,string> > keys;
+	vector<pair<string, string> > keys;
 	LyXParagraph * par = paragraph;
 	while (par) {
 		if (par->bibkey)
 			keys.push_back(pair<string,string>(par->bibkey->getContents(),
-							   par->String(false)));
+							   par->String(params, false)));
 		par = par->next;
 	}
 
@@ -3937,7 +3940,7 @@ void Buffer::ChangeLanguage(Language const * from, Language const * to)
 
 	LyXParagraph * par = paragraph;
 	while (par) {
-		par->ChangeLanguage(from, to);
+		par->ChangeLanguage(params, from, to);
 		par = par->next;
 	}
 }
@@ -3948,7 +3951,7 @@ bool Buffer::isMultiLingual()
 
 	LyXParagraph * par = paragraph;
 	while (par) {
-		if (par->isMultiLingual())
+		if (par->isMultiLingual(params))
 			return true;
 		par = par->next;
 	}

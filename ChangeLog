@@ -1,3 +1,66 @@
+2000-06-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/LSubstring.C (operator): simplify
+
+	* src/lyxtext.h: removed bparams, use buffer_->params instead
+	
+	* src/lyxrow.h: make Row a real class, move all variables to
+	private and use accessors.
+
+	* src/lyxparagraph.h (getParLanguage): add BufferParamas as
+	arguament.
+	(isRightToLeftPar): ditto
+	(ChangeLanguage): ditto
+	(isMultiLingual): ditto
+	(String): ditto
+	(TeXOnePar): ditto
+	(SimpleTeXOnePar): ditto
+	(TeXEnvironment): ditto
+	(GetEndLabel): ditto
+	(SetLayout): ditto
+	(SetOnlyLayout): ditto
+	(BreakParagraph): ditto
+	(BreakParagraphConservative): ditto
+	(GetFontSettings): ditto
+	(getFont): ditto
+	(CopyIntoMinibuffer): ditto
+	(CutIntoMinibuffer): ditto
+	(PasteParagraph): ditto
+	(SetPExtraType): ditto
+	(UnsetPExtraType): ditto
+	(DocBookContTableRows): ditto
+	(SimpleDocBookOneTablePar): ditto
+	(TeXDeeper): ditto
+	(TeXFootnote): ditto
+	(SimpleTeXOneTablePar): ditto
+	(TeXContTableRows): ditto
+	(SimpleTeXSpecialChars): ditto
+	
+
+	* src/lyxcursor.h: make LyXCursor a real class, move all variables
+	to private and use accessors.
+
+	* src/lyx_cb.C: remove char updatetimer, and all code that uses
+	this, we did not use it anymore and has not been for ages. Just a
+	waste of cpu cycles.
+
+	* src/language.h: make Language a real class, move all variables
+	to private and use accessors.
+
+	* src/BufferView_pimpl.C (Pimpl): use new timer code.
+	(create_view): remove
+	(update): some changes for new timer
+	(cursorToggle): use new timer
+	(beforeChange): change for new timer
+
+	* src/BufferView.h (cursorToggleCB): removed last paramter because
+	of new timer code. 
+
+	* src/BufferView.C (C_BufferView_CursorToggleCB): removed 
+	(cursorToggleCB): change because of new timer code
+
+	* lib/CREDITS: updated own mailaddress
+
 2000-06-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/filetools.C (PutEnv): fix the code in case neither

@@ -281,8 +281,8 @@ void Intl::InitKeyMapper(bool on)
 	Language2->addto("default");
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
-		Language->addto((*cit).second.lang.c_str());
-		Language2->addto((*cit).second.lang.c_str());
+		Language->addto((*cit).second.lang().c_str());
+		Language2->addto((*cit).second.lang().c_str());
 		++n;
 	}
 

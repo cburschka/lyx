@@ -24,7 +24,8 @@ class CutAndPaste {
 public:
 	///
 	bool cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
-			  int start, int & end, char tc, bool doclear = false);
+			  int start, int & end,
+			  char tc, bool doclear = false);
 	///
 	bool copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 			   int start, int end, char tc);

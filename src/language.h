@@ -5,13 +5,33 @@
 #include <map>
 #include "LString.h"
 
-struct Language {
-	Language() : RightToLeft(false) {}
+///
+class Language {
+public:
+	///
+	Language() : RightToLeft_(false) {}
+	///
 	Language(string const & l, string const & d, bool rtl)
-		: lang(l), display(d), RightToLeft(rtl) {}
-	string lang;
-	string display;
-	bool RightToLeft;
+		: lang_(l), display_(d), RightToLeft_(rtl) {}
+	///
+	string const & lang() const {
+		return lang_;
+	}
+	///
+	string const & display() const {
+		return display_;
+	}
+	///
+	bool RightToLeft() const {
+		return RightToLeft_;
+	}
+private:
+	///
+	string lang_;
+	///
+	string display_;
+	///
+	bool RightToLeft_;
 };
 
 #if 0

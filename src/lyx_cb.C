@@ -78,8 +78,6 @@ extern FD_form_ref * fd_form_ref;
 extern FD_LaTeXOptions * fd_latex_options;
 extern FD_form_bullet * fd_form_bullet;
 
-#define XFORMS_CLIPBOARD 1
-
 extern BufferView * current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
@@ -185,10 +183,11 @@ void ShowMessage(Buffer * buf,
 }
 
 
+
+
+#if 0
 // only called from this file, LyXView and LyXFunc
 char updatetimer = 0;
-
-
 // only called from BufferView_pimpl and LyXFunc
 void FreeUpdateTimer()
 {
@@ -197,13 +196,13 @@ void FreeUpdateTimer()
 	updatetimer = 0;
 }
 
-
 // Only called from LyXFunc
 void SetUpdateTimer(float time)
 {
 	fl_set_timer(current_view->owner()->getMainForm()->timer_update, time);
 	updatetimer = 1;
 }
+#endif
 
 
 //
@@ -1225,28 +1224,6 @@ void MenuInsertRef()
 }
 
 
-#ifndef XFORMS_CLIPBOARD
-void MenuPasteSelection(char at)
-{
-	if (!current_view->available())
-		return;
-	ascii_type = at;
-  
-	Atom data_prop = XInternAtom(fl_display, 
-				     "LyX_Primary",
-				     false);
-	if (data_prop == None) 
-		return;
-	XConvertSelection(fl_display,
-			  XA_PRIMARY, XA_STRING, data_prop, 
-			  current_view->owner()->getForm()->window, 0);
-	XFlush(fl_display);
-
-}
-#endif
-
-
-
 // candidate for move to LyXView
 // This is only used in toolbar.C
 void LayoutsCB(int sel, void *)
@@ -1476,16 +1453,16 @@ bool UpdateLayoutParagraph()
 	Buffer * buf = current_view->buffer();
 
 	fl_set_input(fd_form_paragraph->input_labelwidth,
-		     current_view->text->cursor.par->GetLabelWidthString().c_str());
+		     current_view->text->cursor.par()->GetLabelWidthString().c_str());
 	fl_set_button(fd_form_paragraph->radio_align_right, 0);
 	fl_set_button(fd_form_paragraph->radio_align_left, 0);
 	fl_set_button(fd_form_paragraph->radio_align_center, 0);
 	fl_set_button(fd_form_paragraph->radio_align_block, 0);
 
-	int align = current_view->text->cursor.par->GetAlign();
+	int align = current_view->text->cursor.par()->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass,
-					    current_view->text->cursor.par->GetLayout()).align;
+					    current_view->text->cursor.par()->GetLayout()).align;
 	 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -1503,18 +1480,18 @@ bool UpdateLayoutParagraph()
 	}
 	 
 	fl_set_button(fd_form_paragraph->check_lines_top,
-		      current_view->text->cursor.par->FirstPhysicalPar()->line_top);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->line_top);
 	fl_set_button(fd_form_paragraph->check_lines_bottom,
-		      current_view->text->cursor.par->FirstPhysicalPar()->line_bottom);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->line_bottom);
 	fl_set_button(fd_form_paragraph->check_pagebreaks_top,
-		      current_view->text->cursor.par->FirstPhysicalPar()->pagebreak_top);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->pagebreak_top);
 	fl_set_button(fd_form_paragraph->check_pagebreaks_bottom,
-		      current_view->text->cursor.par->FirstPhysicalPar()->pagebreak_bottom);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->pagebreak_bottom);
 	fl_set_button(fd_form_paragraph->check_noindent,
-		      current_view->text->cursor.par->FirstPhysicalPar()->noindent);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->noindent);
 	fl_set_input (fd_form_paragraph->input_space_above, "");
 	
-	switch (current_view->text->cursor.par->FirstPhysicalPar()->added_space_top.kind()) {
+	switch (current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.kind()) {
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_above, 1);
 		break;
@@ -1536,13 +1513,13 @@ bool UpdateLayoutParagraph()
 	case VSpace::LENGTH:
 		fl_set_choice (fd_form_paragraph->choice_space_above, 7); 
 		fl_set_input  (fd_form_paragraph->input_space_above, 
-			       current_view->text->cursor.par->FirstPhysicalPar()->added_space_top.length().asString().c_str());
+			       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.length().asString().c_str());
 		break;
 	}
 	fl_set_button (fd_form_paragraph->check_space_above,
-		       current_view->text->cursor.par->FirstPhysicalPar()->added_space_top.keep());
+		       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.keep());
 	fl_set_input (fd_form_paragraph->input_space_below, "");
-	switch (current_view->text->cursor.par->FirstPhysicalPar()->added_space_bottom.kind()) {
+	switch (current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.kind()) {
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_below,
 			       1);
@@ -1571,14 +1548,14 @@ bool UpdateLayoutParagraph()
 		fl_set_choice (fd_form_paragraph->choice_space_below,
 			       7); 
 		fl_set_input  (fd_form_paragraph->input_space_below, 
-			       current_view->text->cursor.par->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
+			       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
 		break;
 	}
 	fl_set_button (fd_form_paragraph->check_space_below,
-		       current_view->text->cursor.par->FirstPhysicalPar()->added_space_bottom.keep());
+		       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.keep());
 
 	fl_set_button(fd_form_paragraph->check_noindent,
-		      current_view->text->cursor.par->FirstPhysicalPar()->noindent);
+		      current_view->text->cursor.par()->FirstPhysicalPar()->noindent);
 
 	if (current_view->buffer()->isReadonly()) {
 		DisableParagraphLayout();
@@ -2375,13 +2352,13 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 		new_language = default_language;
 
 	if (current_view->available()) {
-		if (old_language != new_language &&
-		    old_language->RightToLeft == new_language->RightToLeft && 
-		    ! current_view->buffer()->isMultiLingual() )
+		if (old_language != new_language
+		    && old_language->RightToLeft() == new_language->RightToLeft()
+		    && !current_view->buffer()->isMultiLingual())
 			current_view->buffer()->ChangeLanguage(old_language,
 							       new_language);
 		if (old_language != new_language) {
-			//current_view->buffer()->redraw();
+				//current_view->buffer()->redraw();
 			redo = true;
 		}
 	}
@@ -2415,8 +2392,8 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 
-        current_view->text->SetCursor(current_view->text->cursor.par,
-                                      current_view->text->cursor.pos);
+        current_view->text->SetCursor(current_view->text->cursor.par(),
+                                      current_view->text->cursor.pos());
         current_view->setState();
 
 	LyXTextClassList::ClassList::size_type new_class =
@@ -2532,10 +2509,9 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
    
 	current_view->owner()->getMiniBuffer()->Set(_("Document layout set"));
 	current_view->buffer()->markDirty();
-
+	
         params->options = 
 		fl_get_input(fd_form_document->input_extra);
-   
 }
 
 
@@ -2647,7 +2623,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 		return;
    
 	// check for tables in tables
-	if (current_view->text->cursor.par->table){
+	if (current_view->text->cursor.par()->table){
 		WriteAlert(_("Impossible Operation!"),
 			   _("Cannot insert table in table."),
 			   _("Sorry."));
@@ -2670,7 +2646,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	current_view->text->BreakParagraph();
 	current_view->update(-1);
    
-	if (current_view->text->cursor.par->Last()) {
+	if (current_view->text->cursor.par()->Last()) {
 		current_view->text->CursorLeft();
       
 		current_view->text->BreakParagraph();
@@ -2681,7 +2657,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	//if (!fl_get_button(fd_form_table->check_latex)){
 	// insert the new wysiwy table
 	current_view->text->SetLayout(0); // standard layout
-	if (current_view->text->cursor.par->footnoteflag == 
+	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		current_view->text
 			->SetParagraph(0, 0,
@@ -2706,15 +2682,15 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 				       0);
 	}
 	
-	current_view->text->cursor.par->table =
+	current_view->text->cursor.par()->table =
 		new LyXTable(xsize, ysize);
 
 	Language const * lang = 
-		current_view->text->cursor.par->getParLanguage();
+		current_view->text->cursor.par()->getParLanguage(current_view->buffer()->params);
 	LyXFont font(LyXFont::ALL_INHERIT, lang);
 	for (int i = 0; i < xsize * ysize - 1; ++i) {
-		current_view->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
-		current_view->text->cursor.par->SetFont(0, font);
+		current_view->text->cursor.par()->InsertChar(0, LyXParagraph::META_NEWLINE);
+		current_view->text->cursor.par()->SetFont(0, font);
 	}
 	current_view->text->RedoParagraph();
    
@@ -2956,7 +2932,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)
-	    || current_view->text->cursor.par->table) {
+	    || current_view->text->cursor.par()->table) {
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
@@ -2974,7 +2950,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	current_view->text->BreakParagraph();
 	current_view->update(-1);
       
-	if (current_view->text->cursor.par->Last()) {
+	if (current_view->text->cursor.par()->Last()) {
 		current_view->text->CursorLeft();
 	 
 		current_view->text->BreakParagraph();
@@ -2984,7 +2960,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	// The standard layout should always be numer 0;
 	current_view->text->SetLayout(0);
 	
-	if (current_view->text->cursor.par->footnoteflag == 
+	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		current_view->text->
 			SetParagraph(0, 0,

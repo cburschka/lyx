@@ -100,8 +100,8 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 	
 	while (row != 0 && y < y2) {
 		text->GetVisibleRow(y, row, y + first);
-		y += row->height;
-		row = row->next;
+		y += row->height();
+		row = row->next();
 	}
    
 	// maybe we have to clear the screen at the bottom
@@ -118,7 +118,8 @@ void LyXScreen::DrawOneRow(Row * row, long y_text)
 {
 	long y = y_text - first;
       
-	if (y + row->height > 0 && y - row->height <= long(owner.height())) {
+	if (y + row->height() > 0
+	    && y - row->height() <= long(owner.height())) {
 		// ok there is something visible
 		text->GetVisibleRow(y, row, y + first);
 	}
@@ -185,12 +186,12 @@ void LyXScreen::ShowCursor()
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
 		if (text->real_current_font.language() !=
-		    text->buffer->params.language_info
+		    text->buffer()->params.language_info
 		    || text->real_current_font.isVisibleRightToLeft()
-		    != text->buffer->params.language_info->RightToLeft)
+		    != text->buffer()->params.language_info->RightToLeft())
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
-		ShowManualCursor(text->cursor.x, text->cursor.y,
+		ShowManualCursor(text->cursor.x(), text->cursor.y(),
 				 lyxfont::maxAscent(text->real_current_font),
 				 lyxfont::maxDescent(text->real_current_font),
 				 shape);
@@ -330,25 +331,25 @@ unsigned long LyXScreen::TopCursorVisible()
 {
 	long newtop = first;
 
-	if (text->cursor.y
-	    - text->cursor.row->baseline
-	    + text->cursor.row->height
+	if (text->cursor.y()
+	    - text->cursor.row()->baseline()
+	    + text->cursor.row()->height()
 	    - first >= owner.height()) {
-		if (text->cursor.row->height < owner.height()
-		    && text->cursor.row->height > owner.height() / 4)
-			newtop = text->cursor.y
-				+ text->cursor.row->height
-				- text->cursor.row->baseline - owner.height();
+		if (text->cursor.row()->height() < owner.height()
+		    && text->cursor.row()->height() > owner.height() / 4)
+			newtop = text->cursor.y()
+				+ text->cursor.row()->height()
+				- text->cursor.row()->baseline() - owner.height();
 		else
-			newtop = text->cursor.y
+			newtop = text->cursor.y()
 				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
-	} else if (text->cursor.y - text->cursor.row->baseline < first
+	} else if (text->cursor.y() - text->cursor.row()->baseline() < first
 		   && first > 0) {
-		if (text->cursor.row->height < owner.height()
-		    && text->cursor.row->height > owner.height() / 4)
-			newtop = text->cursor.y - text->cursor.row->baseline;
+		if (text->cursor.row()->height() < owner.height()
+		    && text->cursor.row()->height() > owner.height() / 4)
+			newtop = text->cursor.y() - text->cursor.row()->baseline();
 		else {
-			newtop = text->cursor.y - owner.height() / 4;
+			newtop = text->cursor.y() - owner.height() / 4;
 			newtop = min(newtop, long(first));
 		}
 	}
@@ -392,7 +393,7 @@ void LyXScreen::Update()
 		DrawOneRow(text->refresh_row, text->refresh_y);
 		text->status = LyXText::UNCHANGED;
 		expose(0, text->refresh_y - first,
-		       owner.workWidth(), text->refresh_row->height);
+		       owner.workWidth(), text->refresh_row->height());
 	}
 	break;
 	case LyXText::UNCHANGED:
@@ -407,12 +408,12 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 	// only if there is a selection
 	if (!text->selection) return;
 
-	long bottom = min(max(text->sel_end_cursor.y
-			      - text->sel_end_cursor.row->baseline
-			      + text->sel_end_cursor.row->height, first),
+	long bottom = min(max(text->sel_end_cursor.y()
+			      - text->sel_end_cursor.row()->baseline()
+			      + text->sel_end_cursor.row()->height(), first),
 			  first + owner.height());
-	long top = min(max(text->sel_start_cursor.y
-			   - text->sel_start_cursor.row->baseline, first),
+	long top = min(max(text->sel_start_cursor.y()
+			   - text->sel_start_cursor.row()->baseline(), first),
 		       first + owner.height());
 
 	if (kill_selection)
@@ -426,15 +427,15 @@ void LyXScreen::ToggleSelection(bool kill_selection)
    
 void LyXScreen::ToggleToggle()
 {
-	if (text->toggle_cursor.par == text->toggle_end_cursor.par
-	    && text->toggle_cursor.pos == text->toggle_end_cursor.pos)
+	if (text->toggle_cursor.par() == text->toggle_end_cursor.par()
+	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
 		return;
 	
-	long top = text->toggle_cursor.y
-		- text->toggle_cursor.row->baseline;
-	long bottom = text->toggle_end_cursor.y
-		- text->toggle_end_cursor.row->baseline 
-		+ text->toggle_end_cursor.row->height;
+	long top = text->toggle_cursor.y()
+		- text->toggle_cursor.row()->baseline();
+	long bottom = text->toggle_end_cursor.y()
+		- text->toggle_end_cursor.row()->baseline() 
+		+ text->toggle_end_cursor.row()->height();
 	
 	typedef unsigned long ulong;
 	

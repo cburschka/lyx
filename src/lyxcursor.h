@@ -18,26 +18,73 @@ struct Row;
 
 /** All these variables should be explained. Matthias?
  */
-struct LyXCursor {
+class LyXCursor {
+public:
 	///
-	LyXParagraph * par;
+	void par(LyXParagraph * p);
 	///
-	LyXParagraph::size_type pos;
+	LyXParagraph * par();
 	///
-	bool boundary;
+	LyXParagraph * par() const;
 	///
-	int x;
+	void pos(LyXParagraph::size_type p);
 	///
-	int x_fix;
+	LyXParagraph::size_type pos() const;
 	///
-	unsigned long y;
+	void boundary(bool b);
 	///
-	Row * row;
+	bool boundary() const;
 	///
-	inline bool operator==(const LyXCursor &a) const
-		{ return a.par == par && a.pos == pos && a.boundary == boundary ; }
-	inline bool operator!=(const LyXCursor &a) const
-		{ return a.par != par || a.pos != pos || a.boundary != boundary; }
+	void x(int i);
+	///
+	int x() const;
+	///
+	void x_fix(int i);
+	///
+	int x_fix() const;
+	///
+	void y(unsigned long i);
+	///
+	unsigned long y() const;
+	///
+	void row(Row * r);
+	///
+	Row * row();
+	///
+	Row * row() const;
+private:
+	/// The paragraph the cursor is in.
+	LyXParagraph * par_;
+	/// The position inside the paragraph
+	LyXParagraph::size_type pos_;
+	///
+	bool boundary_;
+	///
+	int x_;
+	///
+	int x_fix_;
+	///
+	unsigned long y_;
+	///
+	Row * row_;
 };
+
+
+///
+inline
+bool operator==(LyXCursor const & a, LyXCursor const & b)
+{
+	return (a.par() == b.par())
+		&& (a.pos() == b.pos())
+		&& a.boundary() == b.boundary();
+}
+
+
+///
+inline
+bool operator!=(LyXCursor const & a, LyXCursor const & b)
+{
+	return !(a == b);
+}
 
 #endif

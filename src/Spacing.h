@@ -54,15 +54,11 @@ public:
 	string writeEnvirEnd() const;
 	///
 	friend bool operator==(Spacing const & a, Spacing const & b) {
-		if (a.space == b.space && a.getValue() == b.getValue())
-			return true;
-		return false;
+		return a.space == b.space && a.getValue() == b.getValue();
 	}
 	///
 	friend bool operator!=(Spacing const & a, Spacing const & b) {
-		if (a.space == b.space && a.getValue() == b.getValue())
-			return false;
-		return true;
+		return !(a == b);
 	}
 private:
 	///

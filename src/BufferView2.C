@@ -82,10 +82,10 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	if (c == '#') {
 		lyxerr.debug() << "Will insert file with header" << endl;
-		res = buffer()->readFile(lex, text->cursor.par);
+		res = buffer()->readFile(lex, text->cursor.par());
 	} else {
 		lyxerr.debug() << "Will insert file without header" << endl;
-		res = buffer()->readLyXformat2(lex, text->cursor.par);
+		res = buffer()->readLyXformat2(lex, text->cursor.par());
 	}
 
 	resize();
@@ -108,16 +108,16 @@ bool BufferView::removeAutoInsets()
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
 				text->RedoParagraphs(cursor,
-						     cursor.par->Next());
+						     cursor.par()->Next());
 				text->FullRebreak();
 			}
 		}
 		par = par->next;
 	}
 	// avoid forbidden cursor positions caused by error removing
-	if (tmpcursor.pos > tmpcursor.par->Last())
-		tmpcursor.pos = tmpcursor.par->Last();
-	text->SetCursorIntern(tmpcursor.par, tmpcursor.pos);
+	if (tmpcursor.pos() > tmpcursor.par()->Last())
+		tmpcursor.pos(tmpcursor.par()->Last());
+	text->SetCursorIntern(tmpcursor.par(), tmpcursor.pos());
 
 	return a;
 }
@@ -164,7 +164,7 @@ void BufferView::insertErrors(TeXErrors & terr)
 		text->FullRebreak();
 	}
 	// Restore the cursor position
-	text->SetCursorIntern(cursor.par, cursor.pos);
+	text->SetCursorIntern(cursor.par(), cursor.pos());
 }
 
 
@@ -198,13 +198,15 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 		return false;
 	}
 
+#ifndef NEW_TABULAR
 	// check for table/list in tables
-	if (no_table && text->cursor.par->table){
+	if (no_table && text->cursor.par()->table){
 		WriteAlert(_("Impossible Operation!"),
 			   _("Cannot insert table/list in table."),
 			   _("Sorry."));
 		return false;
 	}
+#endif
 
 	// not quite sure if we want this...
 	text->SetCursorParUndo();
@@ -216,7 +218,7 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 		text->BreakParagraph();
 		update(-1);
 		
-		if (text->cursor.par->Last()) {
+		if (text->cursor.par()->Last()) {
 			text->CursorLeft();
 			
 			text->BreakParagraph();
@@ -256,7 +258,7 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	// and cannot do this as the cursor is behind the inset and GetInset
 	// does not return the inset!
 	if (inset->IsTextInset()) {
-		if (text->cursor.par->isRightToLeftPar())
+		if (text->cursor.par()->isRightToLeftPar(buffer()->params))
 			text->CursorRight();
 		else
 			text->CursorLeft();
@@ -309,23 +311,23 @@ void BufferView::allFloats(char flag, char figmar)
 
 	LyXCursor cursor = text->cursor;
 
-	if (!flag && cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+	if (!flag && cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    && ((figmar 
-		 && cursor.par->footnotekind != LyXParagraph::FOOTNOTE 
-		 && cursor.par->footnotekind != LyXParagraph::MARGIN)
+		 && cursor.par()->footnotekind != LyXParagraph::FOOTNOTE 
+		 && cursor.par()->footnotekind != LyXParagraph::MARGIN)
 		|| (!figmar
-		    && cursor.par->footnotekind != LyXParagraph::FIG 
-		    && cursor.par->footnotekind != LyXParagraph::TAB
- 		    && cursor.par->footnotekind != LyXParagraph::WIDE_FIG 
- 		    && cursor.par->footnotekind != LyXParagraph::WIDE_TAB
-		    && cursor.par->footnotekind != LyXParagraph::ALGORITHM)))
+		    && cursor.par()->footnotekind != LyXParagraph::FIG 
+		    && cursor.par()->footnotekind != LyXParagraph::TAB
+ 		    && cursor.par()->footnotekind != LyXParagraph::WIDE_FIG 
+ 		    && cursor.par()->footnotekind != LyXParagraph::WIDE_TAB
+		    && cursor.par()->footnotekind != LyXParagraph::ALGORITHM)))
 		toggleFloat();
 	else
 		beforeChange();
 
 	LyXCursor tmpcursor = cursor;
-	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
-	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
+	cursor.par(tmpcursor.par()->ParFromPos(tmpcursor.pos()));
+	cursor.pos(tmpcursor.par()->PositionInParFromPos(tmpcursor.pos()));
 
 	LyXParagraph *par = buffer()->paragraph;
 	while (par) {
@@ -382,7 +384,7 @@ void BufferView::allFloats(char flag, char figmar)
 		par = par->next;
 	}
 
-	text->SetCursorIntern(cursor.par, cursor.pos);
+	text->SetCursorIntern(cursor.par(), cursor.pos());
 	redraw();
 	fitCursor();
 	//updateScrollbar();
@@ -621,11 +623,11 @@ void BufferView::gotoNote()
 	LyXCursor tmp;
    
 	if (!text->GotoNextNote()) {
-		if (text->cursor.pos 
-		    || text->cursor.par != text->FirstParagraph()) {
+		if (text->cursor.pos() 
+		    || text->cursor.par() != text->FirstParagraph()) {
 				tmp = text->cursor;
-				text->cursor.par = text->FirstParagraph();
-				text->cursor.pos = 0;
+				text->cursor.par(text->FirstParagraph());
+				text->cursor.pos(0);
 				if (!text->GotoNextNote()) {
 					text->cursor = tmp;
 					owner()->getMiniBuffer()->Set(_("No more notes"));
@@ -645,8 +647,8 @@ void BufferView::insertCorrectQuote()
 {
 	char c;
 
-	if (text->cursor.pos)
-		c = text->cursor.par->GetChar(text->cursor.pos - 1);
+	if (text->cursor.pos())
+		c = text->cursor.par()->GetChar(text->cursor.pos() - 1);
 	else 
 		c = ' ';
 
@@ -734,13 +736,14 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()) {
 		LyXCursor cursor = text->cursor;
-		if ((cursor.pos - 1 >= 0) &&
-		    (cursor.par->GetChar(cursor.pos-1) ==
+		if ((cursor.pos() - 1 >= 0) &&
+		    (cursor.par()->GetChar(cursor.pos() - 1) ==
 		     LyXParagraph::META_INSET) &&
-		    (cursor.par->GetInset(cursor.pos - 1) ==
+		    (cursor.par()->GetInset(cursor.pos() - 1) ==
 		     the_locking_inset->GetLockingInset()))
-			text->SetCursor(cursor, cursor.par, cursor.pos-1);
-		y += cursor.y + the_locking_inset->InsetInInsetY();
+			text->SetCursor(cursor,
+					cursor.par(), cursor.pos() - 1);
+		y += cursor.y() + the_locking_inset->InsetInInsetY();
 		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
 					 LyXScreen::BAR_SHAPE);
 	}
@@ -758,7 +761,7 @@ void BufferView::hideLockedInsetCursor()
 void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()){
-		y += text->cursor.y + the_locking_inset->InsetInInsetY();
+		y += text->cursor.y() + the_locking_inset->InsetInInsetY();
 		if (pimpl_->screen->FitManualCursor(x, y, asc, desc))
 			updateScrollbar();
 	}
@@ -788,10 +791,10 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
 	text->SetUndo(kind,
-		      text->cursor.par->
-		      ParFromPos(text->cursor.pos)->previous, 
-		      text->cursor.par->
-		      ParFromPos(text->cursor.pos)->next);
+		      text->cursor.par()->
+		      ParFromPos(text->cursor.pos())->previous, 
+		      text->cursor.par()->
+		      ParFromPos(text->cursor.pos())->next);
 }
 
 
@@ -849,8 +852,8 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 	LyXParagraph * par = buffer()->paragraph;
 	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
-	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
-	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
+	cursor.par(tmpcursor.par()->ParFromPos(tmpcursor.pos()));
+	cursor.pos(tmpcursor.par()->PositionInParFromPos(tmpcursor.pos()));
 
 	while (par) {
 		bool flag2 = false;
@@ -871,12 +874,12 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 				// care about footnotes
 				text->SetCursorIntern(par, 0);
 				text->RedoParagraphs(text->cursor,
-						     text->cursor.par->Next());
+						     text->cursor.par()->Next());
 				text->FullRebreak();
 			}
 		}
 		par = par->next;
 	}
-	text->SetCursorIntern(cursor.par, cursor.pos);
+	text->SetCursorIntern(cursor.par(), cursor.pos());
 	return flag;
 }

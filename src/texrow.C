@@ -41,12 +41,12 @@ void TexRow::start(LyXParagraph * par, int pos)
 void TexRow::newline()
 {
 	RowItem tmp;
-	tmp.pos = lastpos;
+	tmp.pos(lastpos);
 	if (lastpar)
-		tmp.id = lastpar->id();
+		tmp.id(lastpar->id());
 	else
-		tmp.id = -1;
-	tmp.rownumber = ++count;
+		tmp.id(-1);
+	tmp.rownumber(++count);
 	rowlist.push_back(tmp);
 }
 
@@ -55,7 +55,7 @@ void TexRow::getIdFromRow(int row, int & id, int & pos)
 {
 	RowList::const_iterator cit = rowlist.begin();
 	for (; cit != rowlist.end(); ++cit) {
-		if ((*cit).rownumber == row) break;
+		if ((*cit).rownumber() == row) break;
 	}
 	if (cit != rowlist.end()) {
 		RowList::iterator kit = rowlist.begin();
@@ -65,12 +65,12 @@ void TexRow::getIdFromRow(int row, int & id, int & pos)
 		// same pos.
 		for(; kit != rowlist.end(); ++kit) {
 			if (&(*kit) != &(*cit)
-			    && (*kit).id == (*cit).id
-			    && (*kit).pos >= (*cit).pos)
-				(*kit).pos++;
+			    && (*kit).id() == (*cit).id()
+			    && (*kit).pos() >= (*cit).pos())
+				(*kit).pos((*kit).pos() + 1);
 		}
-		id = (*cit).id;
-		pos = (*cit).pos;
+		id = (*cit).id();
+		pos = (*cit).pos();
 	} else {
 		id = -1;
 		pos = 0;

@@ -56,10 +56,6 @@ public:
 	/// Destructor
 	~LyXText();
 
-	/// points to Buffer.params
-	//BufferParams * bparams;
-	/// points to Buffer
-	Buffer * buffer;
 	///
 	mutable int number_of_rows;
 	///
@@ -108,7 +104,7 @@ public:
 
 	/** Get the depth at current cursor position
 	 */
-	int GetDepth() const { return cursor.par->GetDepth(); }
+	int GetDepth() const { return cursor.par()->GetDepth(); }
 	
 	/** set font over selection and make a total rebreak of those
 	  paragraphs.
@@ -488,16 +484,19 @@ public:
 	/// for external use in lyx_cb.C
 	void SetCursorParUndo();
 	///
-	void RemoveTableRow(LyXCursor * cursor) const;
+	void RemoveTableRow(LyXCursor & cursor) const;
 	///
 	bool IsEmptyTableCell() const;
 	///
 	void toggleAppendix();
 	///
 	unsigned short paperWidth() const { return paperwidth; }
-
 	///
-	void ComputeBidiTables(Row *row) const;
+	Buffer const * buffer() const {
+		return buffer_;
+	}
+	///
+	void ComputeBidiTables(Row * row) const;
 
 	/// Maps positions in the visual string to positions in logical string.
 	inline
@@ -533,6 +532,8 @@ public:
 private:
 	///
 	BufferView * owner_;
+	/// points to Buffer
+	Buffer * buffer_;
 	
 	/// width of the paper
 	unsigned short  paperwidth;
@@ -608,14 +609,15 @@ private:
 	LyXParagraph::size_type NextBreakPoint(Row const * row,
 					       int width) const;
 	/// returns the minimum space a row needs on the screen in pixel
-	int Fill(Row const * row, int paperwidth) const;
+	int Fill(Row * row, int paperwidth) const;
 	
 	/** returns the minimum space a manual label needs on the
 	  screen in pixel */ 
 	int LabelFill(Row const * row) const;
 
 	///
-	LyXParagraph::size_type BeginningOfMainBody(LyXParagraph * par) const;
+	LyXParagraph::size_type
+	BeginningOfMainBody(LyXParagraph const * par) const;
 	
 	/** Returns the left beginning of the text.
 	  This information cannot be taken from the layouts-objekt, because

@@ -24,11 +24,7 @@ class LyXParagraph;
 class TexRow {
 public:
 	///
-	TexRow() {
-		count = 0;
-		lastpar = 0;
-		lastpos = -1;
-	}
+	TexRow() : count(0), lastpar(0), lastpos(-1) {}
 
 	/// Clears structure
 	void reset();
@@ -46,24 +42,45 @@ public:
 	TexRow & operator+= (TexRow const &);
 
 	/// Returns the number of rows in this texrow
-	int rows() { return count; }
+	int rows() const { return count; }
 
 private:
 	/// Linked list of items
-	struct RowItem {
+	class RowItem {
+	public:
 		///
-		RowItem() {
-			id = -1;
-			pos = -1;
-			rownumber = 0;
+		RowItem() : id_(-1), pos_(-1), rownumber_(0) {}
+		///
+		void id(int i) {
+			id_ = i;
 		}
-
 		///
-		int id;
+		int id() const {
+			return id_;
+		}
 		///
-		int pos;
+		void pos(int p) {
+			pos_ = p;
+		}
 		///
-		int rownumber;
+		int pos() const {
+			return pos_;
+		}
+		///
+		void rownumber(int r) {
+			rownumber_ = r;
+		}
+		///
+		int rownumber() const {
+			return rownumber_;
+		}
+	private:
+		///
+		int id_;
+		///
+		int pos_;
+		///
+		int rownumber_;
 	};
 	///
 	unsigned int count;

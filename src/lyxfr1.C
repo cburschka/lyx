@@ -32,13 +32,13 @@ string GetCurrentSelectionAsString(LyXText * lt)
 {
 	string sz;
 	
-	LyXParagraph * par = lt->cursor.par;
-	if (lt->selection && lt->sel_cursor.par == par) {
+	LyXParagraph * par = lt->cursor.par();
+	if (lt->selection && lt->sel_cursor.par() == par) {
 		// (selected) and (begin/end in same paragraph)
 		LyXParagraph::size_type pos = 
-			lt->sel_start_cursor.pos;
+			lt->sel_start_cursor.pos();
 		LyXParagraph::size_type endpos = 
-			lt->sel_end_cursor.pos;
+			lt->sel_end_cursor.pos();
 		bool fPrevIsSpace = false;
 		char ch;
 		while (pos < par->Last() && pos < endpos) {
@@ -252,8 +252,8 @@ bool LyXFindReplace::SearchCB(bool fForward)
 // (was: LyXText::SearchForward(char const* string) in text2.C )
 bool LyXFindReplace::SearchForward(LyXText * lt)
 {
-	LyXParagraph * par = lt->cursor.par;
-	LyXParagraph::size_type pos = lt->cursor.pos;
+	LyXParagraph * par = lt->cursor.par();
+	LyXParagraph::size_type pos = lt->cursor.pos();
 
 	while (par && !IsSearchStringInText(par, pos)) {
 		if (pos < par->Last() - 1)
@@ -276,8 +276,8 @@ bool LyXFindReplace::SearchForward(LyXText * lt)
 // (was: LyXText::SearchBackward(char const* string) in text2.C )
 bool LyXFindReplace::SearchBackward(LyXText * lt)
 {
-	LyXParagraph * par = lt->cursor.par;
-	int pos = lt->cursor.pos;
+	LyXParagraph * par = lt->cursor.par();
+	int pos = lt->cursor.pos();
 
 	do {
 		if (pos > 0)

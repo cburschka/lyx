@@ -6,6 +6,7 @@
 #include "BufferView.h"
 #include "UpdateInset.h"
 #include "BackStack.h"
+#include "Timeout.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -48,8 +49,10 @@ struct BufferView::Pimpl {
 	void updateScrollbar();
 	///
 	void scrollCB(double value);
+#if 0
 	///
 	void create_view();
+#endif
 	///
 	Inset * checkInsetHit(int & x, int & y, unsigned int button);
 	/// 
@@ -62,10 +65,6 @@ struct BufferView::Pimpl {
 	void workAreaButtonPress(int x, int y, unsigned int button);
 	///
 	void workAreaButtonRelease(int x, int y, unsigned int button);
-#ifndef XFORMS_CLIPBOARD
-	///
-	void workAreaSelectionNotify(Window win, XEvent * event);
-#endif
 	///
 	void doubleClick(int x, int y, unsigned int button);
 	///
@@ -132,8 +131,12 @@ struct BufferView::Pimpl {
 	bool work_area_focus;
 	///
 	FL_OBJECT * figinset_canvas;
+#if 0
 	///
 	FL_OBJECT * timer_cursor;
+#else
+	Timeout cursor_timeout;
+#endif
         ///
         BackStack backstack;
 	///
@@ -142,12 +145,10 @@ struct BufferView::Pimpl {
 	WorkArea * workarea;
 	///
 	UpdateInset updatelist;
-#ifdef XFORMS_CLIPBOARD
 	///
 	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
-#endif
 private:
 	bool using_xterm_cursor;
 };

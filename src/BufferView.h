@@ -24,8 +24,6 @@ class LyXText;
 class TeXErrors;
 class Buffer;
 
-#define XFORMS_CLIPBOARD 1
-
 ///
 class BufferView {
 public:
@@ -197,7 +195,7 @@ public:
 	void scrollCB(double);
 
 	///
-	static void cursorToggleCB(FL_OBJECT * ob, long);
+	static void cursorToggleCB(void * ob);
 
 	///
 	void setState();
@@ -220,18 +218,12 @@ public:
 	void enterView();
 	///
 	void leaveView();
-#ifndef XFORMS_CLIPBOARD
-	///
-	void workAreaSelectionNotify(Window win, XEvent * event);
-#endif
 	///
 	bool ChangeRefs(string const & from, string const & to);
-#ifdef XFORMS_CLIPBOARD
 	///
 	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
-#endif
 private:
 	struct Pimpl;
 	Pimpl * pimpl_;
