@@ -1,3 +1,7 @@
+2004-03-26  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* undo.C: add using std::advance to compile for stlport
+
 2004-03-24  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): remove test code in LFUN_QUIT handler as

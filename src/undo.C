@@ -27,6 +27,8 @@
 
 #include <algorithm>
 
+using std::advance;
+
 using lyx::par_type;
 
 
