@@ -23,7 +23,7 @@ public:
 	///
 	ButtonInset();
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

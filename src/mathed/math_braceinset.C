@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_braceinset.h"
 #include "math_parser.h"
 #include "math_support.h"
@@ -28,7 +27,7 @@ MathInset * MathBraceInset::clone() const
 }
 
 
-void MathBraceInset::metrics(MetricsInfo & mi) const
+Dimension MathBraceInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -37,6 +36,7 @@ void MathBraceInset::metrics(MetricsInfo & mi) const
 	dim_.asc = max(cell(0).ascent(), t.asc);
 	dim_.des = max(cell(0).descent(), t.des);
 	dim_.wid = cell(0).width() + 2 * wid_;
+	return dim_;
 }
 
 
@@ -46,7 +46,7 @@ void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::latex);
 	drawChar(pi, font, x, y, '{');
 	cell(0).draw(pi, x + wid_, y);
-	drawChar(pi, font, x + width() - wid_, y, '}');
+	drawChar(pi, font, x + dim_.width() - wid_, y, '}');
 }
 
 

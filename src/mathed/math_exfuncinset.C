@@ -25,7 +25,7 @@ MathInset * MathExFuncInset::clone() const
 }
 
 
-void MathExFuncInset::metrics(MetricsInfo & mi) const
+Dimension MathExFuncInset::metrics(MetricsInfo & mi) const
 {
 	mathed_string_dim(mi.base.font, name_, dim_);
 }

@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_binominset.h"
 #include "math_support.h"
 #include "support/LOstream.h"
@@ -23,7 +22,7 @@ MathInset * MathBinomInset::clone() const
 
 int MathBinomInset::dw() const
 {
-	int w = height()/5;
+	int w = dim_.height() / 5;
 	if (w > 15)
 		w = 15;
 	if (w < 6)
@@ -32,7 +31,7 @@ int MathBinomInset::dw() const
 }
 
 
-void MathBinomInset::metrics(MetricsInfo & mi) const
+Dimension MathBinomInset::metrics(MetricsInfo & mi) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -40,17 +39,19 @@ void MathBinomInset::metrics(MetricsInfo & mi) const
 	dim_.asc = cell(0).height() + 4 + 5;
 	dim_.des = cell(1).height() + 4 - 5;
 	dim_.wid = max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
+	return dim_;
 }
 
 
 void MathBinomInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m = x + width() / 2;
+	int m = x + dim_.width() / 2;
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
-	mathed_draw_deco(pi, x, y - ascent(), dw(), height(), "(");
-	mathed_draw_deco(pi, x + width() - dw(), y - ascent(),	dw(), height(), ")");
+	mathed_draw_deco(pi, x, y - dim_.ascent(), dw(), dim_.height(), "(");
+	mathed_draw_deco(pi, x + dim_.width() - dw(), y - dim_.ascent(),
+		dw(), dim_.height(), ")");
 }
 
 

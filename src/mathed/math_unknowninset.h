@@ -4,7 +4,6 @@
 
 #include "math_diminset.h"
 
-
 /**
  Unknowntions or LaTeX names for objects that we really don't know
  */
@@ -16,7 +15,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

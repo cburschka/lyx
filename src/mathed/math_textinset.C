@@ -57,7 +57,7 @@ bool MathTextInset::idxUpDown2(idx_type &, pos_type & pos, bool up,
 }
 
 
-void MathTextInset::metrics(MetricsInfo & mi) const
+Dimension MathTextInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 
@@ -95,14 +95,14 @@ void MathTextInset::metrics(MetricsInfo & mi) const
 			safepos = i;
 			++spaces;
 			// restart chunk with size of the space
-			curr = cell(0)[i]->width();
+			curr = cell(0)[i].width_;
 			continue;
 		}
 
 		if (c != '\n') {
 			// This is a regular char. Go on if we either don't care for
 			// the width limit or have not reached that limit.
-			curr += cell(0)[i]->width();
+			curr += cell(0)[i].width_;
 			if (!mi.base.restrictwidth || curr + safe <= mi.base.textwidth)
 				continue;
 		}
@@ -151,14 +151,14 @@ void MathTextInset::metrics(MetricsInfo & mi) const
 	//lyxerr << "last line: " << ar.data() << "\n";
 
 	// what to report?
-	cache_.metrics(mi);
-	dim_ = cache_.dimensions();
+	dim_ = cache_.metrics(mi);
 	//lyxerr << "outer dim: " << dim_ << endl;
 
 	// reset position cache
 	for (idx_type i = 0; i < cache_.nargs(); ++i)
 		cache_.cell(i).setXY(old_xo, old_yo);
 
+	return dim_;
 }
 
 

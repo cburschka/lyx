@@ -2,7 +2,7 @@
 #ifndef MATH_CHEATINSET_H
 #define MATH_CHEATINSET_H
 
-#include "math_diminset.h"
+#include "math_inset.h"
 #include "vspace.h"
 #include "LString.h"
 #include "math_nestinset.h"
@@ -11,7 +11,7 @@
 /// The \kern primitive
 /// Some hack for visual effects
 
-class MathKernInset : public MathDimInset {
+class MathKernInset : public MathInset {
 public:
 	///
 	MathKernInset();
@@ -22,13 +22,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	Dimension metrics(MetricsInfo & mi) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & ns) const;
-	///
-	void metrics(MetricsInfo & st) const;
 private:
 	/// width in em
 	LyXLength wid_;

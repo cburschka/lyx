@@ -57,22 +57,23 @@ char const * MathAMSArrayInset::name_right() const
 }
 
 
-void MathAMSArrayInset::metrics(MetricsInfo & mi) const
+Dimension MathAMSArrayInset::metrics(MetricsInfo & mi) const
 {
 	MetricsInfo m = mi;
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m);
 	dim_.wid += 12;
+	return dim_;
 }
 
 
 void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 6, y);
-	int const yy = y - ascent();
-	mathed_draw_deco(pi, x + 1, yy, 5, height(), name_left());
-	mathed_draw_deco(pi, x + width() - 6, yy, 5, height(), name_right());
+	int const yy = y - dim_.ascent();
+	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
+	mathed_draw_deco(pi, x + dim_.width() - 6, yy, 5, dim_.height(), name_right());
 }
 
 

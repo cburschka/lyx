@@ -17,7 +17,6 @@
 
 #include <config.h>
 
-
 #include "math_inset.h"
 #include "Lsstream.h"
 #include "math_scriptinset.h"
@@ -42,22 +41,9 @@ BufferView * MathInset::view() const
 }
 
 
-int MathInset::height() const
-{
-	return ascent() + descent();
-}
-
-
 MathInset::size_type MathInset::nargs() const
 {
 	return 0;
-}
-
-
-Dimension MathInset::dimensions() const
-{
-	lyxerr << "call MathInset::dimensions()\n";
-	return Dimension(width(), ascent(), descent());
 }
 
 
@@ -172,12 +158,6 @@ bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 }
 
 
-void MathInset::metrics(MetricsInfo &) const
-{
-	lyxerr << "MathInset::metrics() called directly!\n";
-}
-
-
 void MathInset::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "MathInset::draw() called directly!\n";
@@ -191,7 +171,7 @@ void MathInset::drawSelection(PainterInfo &,
 }
 
 
-void MathInset::metricsT(TextMetricsInfo const &) const
+void MathInset::metricsT(TextMetricsInfo const &, Dimension &) const
 {
 #ifdef WITH_WARNINGS
 	lyxerr << "MathInset::metricsT(Text) called directly!\n";

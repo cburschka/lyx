@@ -2,7 +2,7 @@
 #ifndef MATH_STRINGINSET_H
 #define MATH_STRINGINSET_H
 
-#include "math_diminset.h"
+#include "math_inset.h"
 
 
 /** Some collection of chars with similar properties
@@ -12,14 +12,14 @@
  * Full author contact details are available in file CREDITS
  */
 
-class MathStringInset : public MathDimInset {
+class MathStringInset : public MathInset {
 public:
 	///
 	explicit MathStringInset(string const & s);
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

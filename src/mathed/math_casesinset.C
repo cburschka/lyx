@@ -20,16 +20,17 @@ MathInset * MathCasesInset::clone() const
 }
 
 
-void MathCasesInset::metrics(MetricsInfo & mi) const
+Dimension MathCasesInset::metrics(MetricsInfo & mi) const
 {
 	MathGridInset::metrics(mi);
 	dim_.wid += 8;
+	return dim_;
 }
 
 
 void MathCasesInset::draw(PainterInfo & pain, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 1, y - ascent(), 6, height(), "{");
+	mathed_draw_deco(pain, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
 	MathGridInset::draw(pain, x + 8, y);
 }
 

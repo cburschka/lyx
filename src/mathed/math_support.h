@@ -7,7 +7,6 @@
 #include "LString.h"
 
 class PainterInfo;
-class MathInset;
 class LyXFont;
 class Dimension;
 
@@ -18,8 +17,6 @@ int mathed_char_descent(LyXFont const &, unsigned char c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	string const & name);
-
-void mathed_draw_framebox(PainterInfo & pi, int x, int y, MathInset const *);
 
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim);
 int mathed_string_width(LyXFont const &, string const & s);

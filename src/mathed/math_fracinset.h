@@ -17,11 +17,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & mi) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	/// identifies FracInsets

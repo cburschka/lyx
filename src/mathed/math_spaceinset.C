@@ -38,23 +38,25 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::metrics(MetricsInfo &) const
+Dimension MathSpaceInset::metrics(MetricsInfo &) const
 {
+	Dimension dim;
 	switch (space_) {
-		case 0: dim_.wid = 6; break;
-		case 1: dim_.wid = 8; break;
-		case 2: dim_.wid = 10; break;
-		case 3: dim_.wid = 6; break;
-		case 4: dim_.wid = 8; break;
-		case 5: dim_.wid = 10; break;
-		case 6: dim_.wid = 20; break;
-		case 7: dim_.wid = 40; break;
-		case 8: dim_.wid = -2; break;
-		case 9: dim_.wid =  2; break;
-		default: dim_.wid = 6;
+		case 0: dim.wid = 6; break;
+		case 1: dim.wid = 8; break;
+		case 2: dim.wid = 10; break;
+		case 3: dim.wid = 6; break;
+		case 4: dim.wid = 8; break;
+		case 5: dim.wid = 10; break;
+		case 6: dim.wid = 20; break;
+		case 7: dim.wid = 40; break;
+		case 8: dim.wid = -2; break;
+		case 9: dim.wid =  2; break;
+		default: dim.wid = 6;
 	}
-	dim_.asc = 4;
-	dim_.des = 0;
+	dim.asc = 4;
+	dim.des = 0;
+	return dim;
 }
 
 
@@ -69,10 +71,10 @@ void MathSpaceInset::draw(PainterInfo & pi, int x, int y) const
 	int xp[4];
 	int yp[4];
 
-	xp[0] = ++x;              yp[0] = y - 3;
-	xp[1] = x;                yp[1] = y;
-	xp[2] = x + width() - 2;  yp[2] = y;
-	xp[3] = x + width() - 2;  yp[3] = y - 3;
+	xp[0] = ++x;               yp[0] = y - 3;
+	xp[1] = x;                 yp[1] = y;
+	xp[2] = x + pi.width - 2;  yp[2] = y;
+	xp[3] = x + pi.width - 2;  yp[3] = y - 3;
 
 	pi.pain.lines(xp, yp, 4, (space_ < 3) ? LColor::latex : LColor::math);
 }

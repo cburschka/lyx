@@ -33,12 +33,13 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
-void MathParboxInset::metrics(MetricsInfo & mi) const
+Dimension MathParboxInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy1(mi.base, "textnormal");
 	WidthChanger dummy2(mi.base, lyx_width_);
 	MathTextInset::metrics(mi);
-	metricsMarkers2();
+	metricsMarkers();
+	return dim_;
 }
 
 
@@ -46,7 +47,7 @@ void MathParboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	MathTextInset::draw(pi, x + 1, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

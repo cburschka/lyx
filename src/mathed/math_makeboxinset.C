@@ -23,23 +23,24 @@ MathInset * MathMakeboxInset::clone() const
 }
 
 
-void MathMakeboxInset::metrics(MetricsInfo & mi) const
+Dimension MathMakeboxInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
 	MathNestInset::metrics(mi);
-	dim_    = cell(0).dim();
-	dim_   += cell(1).dim();
-	dim_   += cell(2).dim();
+	dim_   = cell(0).dim();
+	dim_  += cell(1).dim();
+	dim_  += cell(2).dim();
 	dim_.wid += 4 * w_ + 4;
-	metricsMarkers2();
+	metricsMarkers();
+	return dim_;
 }
 
 
 void MathMakeboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 
 	drawStrBlack(pi, x, y, "[");
 	x += w_;

@@ -28,11 +28,13 @@ MathInset * MathKernInset::clone() const
 }
 
 
-void MathKernInset::metrics(MetricsInfo & mi) const
+Dimension MathKernInset::metrics(MetricsInfo & mi) const
 {
-	dim_.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
-	dim_.asc = 0;
-	dim_.des = 0;
+	Dimension dim;
+	dim.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	dim.asc = 0;
+	dim.des = 0;
+	return dim;
 }
 
 

@@ -20,9 +20,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
 	void write(WriteStream & os) const;

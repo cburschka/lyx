@@ -32,8 +32,6 @@ class TextMetricsInfo;
 class TextPainter;
 
 
-
-
 class MathArray : private std::vector<MathAtom> {
 public:
 	/// re-use inhertited stuff
@@ -105,11 +103,13 @@ public:
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
 	/// rebuild cached metrics information
-	Dimension const & metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
+	/// rebuild cached metrics information
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// redraw cell using cache metrics information
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information
-	Dimension const & metricsT(TextMetricsInfo const & mi) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	/// redraw cell using cache metrics information
 	void drawT(TextPainter & pi, int x, int y) const;
 	/// mark cell for re-drawing
@@ -146,7 +146,7 @@ public:
 	/// width of this cell
 	int width() const { return dim_.wid; }
 	/// dimensions of cell
-	Dimension const & dim() const	{ return dim_; }
+	Dimension const & dim() const { return dim_; }
 	/// dimensions of cell
 	void setDim(Dimension const & d) const { dim_ = d; }
 	/// bounding box of this cell

@@ -15,13 +15,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	string name() const;
 protected:
-	/// cache for the thing's heigth
+	/// cache for the thing's height
 	mutable int dh_;
 	///
 	latexkeys const * key_;

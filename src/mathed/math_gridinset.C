@@ -298,7 +298,7 @@ LyXLength MathGridInset::vcrskip(row_type row) const
 }
 
 
-void MathGridInset::metrics(MetricsInfo & mi) const
+Dimension MathGridInset::metrics(MetricsInfo & mi) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(mi);
@@ -370,17 +370,17 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 
 	dim_.wid   =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
-		 + vlinesep() * colinfo_[ncols()].lines_
+	         + vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
 	dim_.asc  = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
-		 + hlinesep() * rowinfo_[0].lines_
+	         + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
 	dim_.des =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
-		 + hlinesep() * rowinfo_[nrows()].lines_
+	         + hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
 
 
@@ -434,6 +434,7 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
 */
+	return dim_;
 }
 
 
@@ -446,24 +447,24 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pi.pain.line(x + 1, yy, x + width() - 1, yy);
+			pi.pain.line(x + 1, yy, x + dim_.width() - 1, yy);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pi.pain.line(xx, y - ascent() + 1, xx, y + descent() - 1);
+			pi.pain.line(xx, y - dim_.ascent() + 1, xx, y + dim_.descent() - 1);
 		}
 }
 
 
-void MathGridInset::metricsT(TextMetricsInfo const & mi) const
+void MathGridInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	// let the cells adjust themselves
 	//MathNestInset::metrics(mi);
 	for (idx_type i = 0; i < nargs(); ++i)
-		cell(i).metricsT(mi);
+		cell(i).metricsT(mi, dim);
 
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -530,21 +531,20 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	}
 
 
-	dim_.wid  =  colinfo_[ncols() - 1].offset_
+	dim.wid  =  colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 //+ vlinesep() * colinfo_[ncols()].lines_
 		       + 2;
 
-	dim_.asc  = -rowinfo_[0].offset_
+	dim.asc  = -rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 //+ hlinesep() * rowinfo_[0].lines_
 		       + 1;
 
-	dim_.des  =  rowinfo_[nrows() - 1].offset_
+	dim.des  =  rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 //+ hlinesep() * rowinfo_[nrows()].lines_
 		       + 1;
-
 }
 
 

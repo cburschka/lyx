@@ -19,7 +19,7 @@ public:
 	///
 	bool isActive() const { return false; }
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

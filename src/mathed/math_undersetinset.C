@@ -17,7 +17,7 @@ MathInset * MathUndersetInset::clone() const
 }
 
 
-void MathUndersetInset::metrics(MetricsInfo & mi) const
+Dimension MathUndersetInset::metrics(MetricsInfo & mi) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -25,12 +25,13 @@ void MathUndersetInset::metrics(MetricsInfo & mi) const
 	dim_.wid = max(cell(0).width(), cell(1).width()) + 4;
 	dim_.asc = cell(1).ascent();
 	dim_.des = cell(1).descent() + cell(0).height() + 4;
+	return dim_;
 }
 
 
 void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m  = x + width() / 2;
+	int m  = x + pi.width / 2;
 	int yo = y + cell(1).descent() + cell(0).ascent() + 1;
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);

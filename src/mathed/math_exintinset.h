@@ -18,7 +18,7 @@ public:
 	///
 	void symbol(string const &);
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 

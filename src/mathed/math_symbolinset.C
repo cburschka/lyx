@@ -9,6 +9,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
+
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
 	: sym_(l), h_(0)
 {}
@@ -37,32 +38,35 @@ string MathSymbolInset::name() const
 }
 
 
-void MathSymbolInset::metrics(MetricsInfo & mi) const
+Dimension MathSymbolInset::metrics(MetricsInfo & mi) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
 
+	Dimension dim;
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset.c_str());
-	mathed_string_dim(mi.base.font, sym_->draw, dim_);
+	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	// correct height for broken cmex and wasy font
 	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
-		h_ = 4 * dim_.des / 5;
-		dim_.asc += h_;
-		dim_.des -= h_;
+		h_ = 4 * dim.des / 5;
+		dim.asc += h_;
+		dim.des -= h_;
 	}
 	// seperate things a bit
 	if (isRelOp())
-		dim_.wid += static_cast<int>(0.5*em+0.5);
+		dim.wid += static_cast<int>(0.5 * em + 0.5);
 	else
-		dim_.wid += static_cast<int>(0.1667*em+0.5);
+		dim.wid += static_cast<int>(0.1667 * em + 0.5);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
 		if (sym_->inset == "cmex" || sym_->extra == "funclim")
 			scriptable_ = true;
+
+	return dim;
 }
 
 

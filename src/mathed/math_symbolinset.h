@@ -2,15 +2,15 @@
 #ifndef MATH_SYMBOLINSET_H
 #define MATH_SYMBOLINSET_H
 
-
-#include "math_diminset.h"
+#include "math_inset.h"
 
 struct latexkeys;
+
 
 // "normal" symbols that don't take limits and don't grow in displayed
 // formulae
 
-class MathSymbolInset : public MathDimInset {
+class MathSymbolInset : public MathInset {
 public:
 	///
 	explicit MathSymbolInset(latexkeys const *);
@@ -21,7 +21,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

@@ -16,7 +16,7 @@ ButtonInset::ButtonInset()
 {}
 
 
-void ButtonInset::metrics(MetricsInfo & mi) const
+Dimension ButtonInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	if (editing()) {
@@ -28,6 +28,7 @@ void ButtonInset::metrics(MetricsInfo & mi) const
 		mathed_string_dim(mi.base.font, screenLabel(), dim_);
 		dim_.wid += 10;
 	}
+	return dim_;
 }
 
 
@@ -37,7 +38,9 @@ void ButtonInset::draw(PainterInfo & pi, int x, int y) const
 	if (editing()) {
 		cell(0).draw(pi, x, y);
 		cell(1).draw(pi, x + cell(0).width() + 2, y);
-		mathed_draw_framebox(pi, x, y, this);
+		//if (mathcursor && mathcursor->isInside(p))
+			pi.pain.rectangle(x, y - dim_.ascent(), dim_.width(), dim_.height(),
+				LColor::mathframe);
 	} else {
 		pi.pain.buttonText(x + 2, y, screenLabel(), pi.base.font);
 	}

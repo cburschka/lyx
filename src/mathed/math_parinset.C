@@ -12,10 +12,11 @@ MathParInset::MathParInset(MathArray const & ar)
 }
 
 
-void MathParInset::metrics(MetricsInfo & mi) const
+Dimension MathParInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy1(mi.base, "textnormal");
 	MathGridInset::metrics(mi);
+	return dim_;
 }
 
 

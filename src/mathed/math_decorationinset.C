@@ -72,10 +72,11 @@ bool MathDecorationInset::wide() const
 }
 
 
-void MathDecorationInset::metrics(MetricsInfo & mi) const
+Dimension MathDecorationInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	dim_ = cell(0).dim();
+
 	dh_  = 6; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
 	dw_  = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
@@ -88,6 +89,7 @@ void MathDecorationInset::metrics(MetricsInfo & mi) const
 	}
 
 	metricsMarkers();
+	return dim_;
 }
 
 
@@ -95,9 +97,10 @@ void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, width(), dh_, key_->name);
+		mathed_draw_deco(pi, x + 1, y + dy_, pi.width, dh_, key_->name);
 	else
-		mathed_draw_deco(pi, x + 1 + (width() - dw_) / 2, y + dy_, dw_, dh_, key_->name);
+		mathed_draw_deco(pi, x + 1 + (pi.width - dw_) / 2,
+			y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
 }
 

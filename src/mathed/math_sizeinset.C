@@ -21,11 +21,12 @@ MathInset * MathSizeInset::clone() const
 }
 
 
-void MathSizeInset::metrics(MetricsInfo & mi) const
+Dimension MathSizeInset::metrics(MetricsInfo & mi) const
 {
 	StyleChanger dummy(mi.base, style_);
-	dim_ = cell(0).metrics(mi);
-	metricsMarkers2();
+	cell(0).metrics(mi, dim_);
+	metricsMarkers();
+	return dim_;
 }
 
 
@@ -33,7 +34,7 @@ void MathSizeInset::draw(PainterInfo & pi, int x, int y) const
 {
 	StyleChanger dummy(pi.base, style_);
 	cell(0).draw(pi, x + 1, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

@@ -2,7 +2,7 @@
 #ifndef MATH_NUMBERINSET_H
 #define MATH_NUMBERINSET_H
 
-#include "math_diminset.h"
+#include "math_inset.h"
 
 
 /** Some inset that "is" a number
@@ -12,14 +12,14 @@
  * Full author contact details are available in file CREDITS
  */
 
-class MathNumberInset : public MathDimInset {
+class MathNumberInset : public MathInset {
 public:
 	///
 	explicit MathNumberInset(string const & s);
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

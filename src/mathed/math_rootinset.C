@@ -31,13 +31,14 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MetricsInfo & mi) const
+Dimension MathRootInset::metrics(MetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
 	dim_.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
 	dim_.des = max(cell(1).descent() + 5, cell(0).descent()) + 2;
 	dim_.wid = cell(0).width() + cell(1).width() + 10;
-	metricsMarkers();
+	metricsMarkers(1);
+	return dim_;
 }
 
 
@@ -48,16 +49,16 @@ void MathRootInset::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x, y - 5 - cell(0).descent());
 	// the "base"
 	cell(1).draw(pi, x + w + 8, y);
-	int const a = ascent();
-	int const d = descent();
+	int const a = dim_.ascent();
+	int const d = dim_.descent();
 	int xp[5];
 	int yp[5];
-	xp[0] = x + width();  yp[0] = y - a + 1;
-	xp[1] = x + w + 4;    yp[1] = y - a + 1;
-	xp[2] = x + w;        yp[2] = y + d;
-	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;
-	//xp[4] = x;            yp[4] = y + (d - a)/2 + 2;
-	xp[4] = x + w - 5;    yp[4] = y + (d - a)/2 + 4;
+	xp[0] = x + dim_.width();  yp[0] = y - a + 1;
+	xp[1] = x + w + 4;         yp[1] = y - a + 1;
+	xp[2] = x + w;             yp[2] = y + d;
+	xp[3] = x + w - 2;         yp[3] = y + (d - a)/2 + 2;
+	//xp[4] = x;                 yp[4] = y + (d - a)/2 + 2;
+	xp[4] = x + w - 5;         yp[4] = y + (d - a)/2 + 4;
 	pi.pain.lines(xp, yp, 5, LColor::math);
 	drawMarkers(pi, x, y);
 }

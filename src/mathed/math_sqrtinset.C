@@ -17,38 +17,38 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MetricsInfo & mi) const
+Dimension MathSqrtInset::metrics(MetricsInfo & mi) const
 {
-	cell(0).metrics(mi);
-	dim_.asc = cell(0).ascent()  + 4;
-	dim_.des = cell(0).descent() + 2;
-	dim_.wid = cell(0).width()   + 12;
-	metricsMarkers();
+	cell(0).metrics(mi, dim_);
+	dim_.asc += 4;
+	dim_.des += 2;
+	dim_.wid += 12;
+	metricsMarkers(1);
+	return dim_;
 }
 
 
 void MathSqrtInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 10, y);
-	int const a = ascent();
-	int const d = descent();
+	int const a = dim_.ascent();
+	int const d = dim_.descent();
 	int xp[4];
 	int yp[4];
-	xp[0] = x + width(); yp[0] = y - a + 1;
-	xp[1] = x + 8;       yp[1] = y - a + 1;
-	xp[2] = x + 5;       yp[2] = y + d - 1;
-	xp[3] = x;           yp[3] = y + (d - a)/2;
+	xp[0] = x + dim_.width(); yp[0] = y - a + 1;
+	xp[1] = x + 8;            yp[1] = y - a + 1;
+	xp[2] = x + 5;            yp[2] = y + d - 1;
+	xp[3] = x;                yp[3] = y + (d - a)/2;
 	pi.pain.lines(xp, yp, 4, LColor::math);
 	drawMarkers(pi, x, y);
 }
 
 
-void MathSqrtInset::metricsT(TextMetricsInfo const & mi) const
+void MathSqrtInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
-	cell(0).metricsT(mi);
-	dim_.asc = cell(0).ascent()  + 1;
-	dim_.des = cell(0).descent();
-	dim_.wid = cell(0).width()   + 2;
+	cell(0).metricsT(mi, dim);
+	dim.asc += 1;
+	dim.wid += 2;
 }
 
 

@@ -13,7 +13,6 @@
 *   the GNU General Public Licence version 2 or later.
 */
 
-
 #include <config.h>
 
 #include "formula.h"
@@ -146,10 +145,11 @@ int InsetFormula::latex(Buffer const *, ostream & os,
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
 	if (0 && display()) {
+		Dimension dim;
 		TextMetricsInfo mi;
-		par()->metricsT(mi);
-		TextPainter tpain(par()->width(), par()->height());
-		par()->drawT(tpain, 0, par()->ascent());
+		par()->metricsT(mi, dim);
+		TextPainter tpain(dim.width(), dim.height());
+		par()->drawT(tpain, 0, dim.ascent());
 		tpain.show(os, 3);
 		// reset metrics cache to "real" values
 		metrics();
@@ -226,7 +226,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	int const a = ascent(bv, font);
 	int const h = a + d;
 
-	PainterInfo pi(bv->painter());
+	PainterInfo pi(bv);
 
 	if (use_preview) {
 		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
@@ -287,7 +287,7 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 void InsetFormula::dimension(BufferView * bv, LyXFont const & font,
 	Dimension & dim) const
 {
-	metrics(bv, font);
+	metrics(bv, font, dim);
 	if (preview_->previewReady()) {
 		dim.asc = preview_->pimage()->ascent();
 		int const descent = preview_->pimage()->descent();
@@ -295,7 +295,9 @@ void InsetFormula::dimension(BufferView * bv, LyXFont const & font,
 		// insert a one pixel gap in front of the formula
 		dim.wid = 1 + preview_->pimage()->width();
 	} else {
-		dim = par_->dimensions();
+		MetricsInfo mi;
+		mi.base.bv = bv;
+		dim = par()->metrics(mi);
 		dim.asc += 1;
 		dim.des += 1;
 	}

@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_deliminset.h"
 #include "math_parser.h"
 #include "math_support.h"
@@ -73,18 +72,7 @@ void MathDelimInset::normalize(NormalStream & os) const
 }
 
 
-int MathDelimInset::dw() const
-{
-	int w = height() / 5;
-	if (w > 8)
-		w = 8;
-	if (w < 4)
-		w = 4;
-	return w;
-}
-
-
-void MathDelimInset::metrics(MetricsInfo & mi) const
+Dimension MathDelimInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -92,19 +80,25 @@ void MathDelimInset::metrics(MetricsInfo & mi) const
 	int h0 = (t.asc + t.des) / 2;
 	int a0 = max(cell(0).ascent(), t.asc)   - h0;
 	int d0 = max(cell(0).descent(), t.des)  + h0;
+	dw_ = cell(0).height() / 5;
+	if (dw_ > 8)
+		dw_ = 8;
+	if (dw_ < 4)
+		dw_ = 4;
+	dim_.wid = cell(0).width() + 2 * dw_ + 8;
 	dim_.asc = max(a0, d0) + h0;
 	dim_.des = max(a0, d0) - h0;
-	dim_.wid = cell(0).width() + 2 * dw() + 8;
+	return dim_;
 }
 
 
 void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int const w = dw();
-	int const b = y - ascent();
-	cell(0).draw(pi, x + w + 4, y);
-	mathed_draw_deco(pi, x + 4, b, w, height(), left_);
-	mathed_draw_deco(pi, x + width() - w - 4, b, w, height(), right_);
+	int const b = y - dim_.asc;
+	cell(0).draw(pi, x + dw_ + 4, y);
+	mathed_draw_deco(pi, x + 4, b, dw_, dim_.height(), left_);
+	mathed_draw_deco(pi, x + dim_.width() - dw_ - 4,
+		b, dw_, dim_.height(), right_);
 }
 
 

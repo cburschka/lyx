@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_charinset.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
@@ -55,33 +54,35 @@ MathInset * MathCharInset::clone() const
 }
 
 
-void MathCharInset::metrics(MetricsInfo & mi) const
+Dimension MathCharInset::metrics(MetricsInfo & mi) const
 {
+	Dimension dim;
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmr");
-		mathed_char_dim(mi.base.font, char_, dim_);
+		mathed_char_dim(mi.base.font, char_, dim);
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmm");
-		mathed_char_dim(mi.base.font, char_, dim_);
+		mathed_char_dim(mi.base.font, char_, dim);
 	} else if (slanted(char_) && mi.base.fontname == "mathnormal") {
 		ShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
-		mathed_char_dim(mi.base.font, char_, dim_);
+		mathed_char_dim(mi.base.font, char_, dim);
 	} else {
-		mathed_char_dim(mi.base.font, char_, dim_);
+		mathed_char_dim(mi.base.font, char_, dim);
 	}
 	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isBinaryOp(char_))
-		dim_.wid += static_cast<int>(0.5*em+0.5);
+		dim.wid += static_cast<int>(0.5*em+0.5);
 	else if (char_ == '\'')
-		dim_.wid += static_cast<int>(0.1667*em+0.5);
+		dim.wid += static_cast<int>(0.1667*em+0.5);
 #else
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, dim_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * font_metrics::width(' ', font_);
-	lyxerr << "MathCharInset::metrics: " << dim_ << "\n";
+	lyxerr << "MathCharInset::metrics: " << dim << "\n";
 #endif
+	return dim;
 }
 
 
@@ -112,11 +113,11 @@ void MathCharInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathCharInset::metricsT(TextMetricsInfo const &) const
+void MathCharInset::metricsT(TextMetricsInfo const &, Dimension & dim) const
 {
-	dim_.wid = 1;
-	dim_.asc = 1;
-	dim_.des = 0;
+	dim.wid = 1;
+	dim.asc = 1;
+	dim.des = 0;
 }
 
 

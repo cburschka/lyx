@@ -41,7 +41,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	MathInset * clone() const;
 	///

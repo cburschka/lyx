@@ -103,29 +103,19 @@ public:
 	virtual MathInset * clone() const = 0;
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
-	/// compute the size of the object, sets ascend_, descend_ and width_
-	// updates the (xo,yo)-caches of all contained cells
-	virtual void metrics(MetricsInfo & mi) const;
+	/// compute the size of the object returned in dim
+	virtual Dimension metrics(MetricsInfo & mi) const = 0;
 	/// draw the object
+	// updates the (xo,yo)-caches of all contained cells
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection between two positions
 	virtual void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
-	virtual void metricsT(TextMetricsInfo const & st) const;
+	virtual void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	/// draw the object as text
 	virtual void drawT(TextPainter &, int x, int y) const;
-	/// the ascent of the inset above the baseline
-	virtual int ascent() const { return 1; }
-	/// the descent of the inset below the baseline
-	virtual int descent() const { return 1; }
-	/// total width
-	virtual int width() const { return 2; }
-	/// all in one batch
-	virtual Dimension dimensions() const;
-	/// total height (== ascent + descent)
-	virtual int height() const;
 
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up,

@@ -3,7 +3,6 @@
 
 #include "math_support.h"
 #include "lyxfont.h"
-#include "math_cursor.h"
 #include "math_inset.h"
 #include "math_parser.h"
 #include "metricsinfo.h"
@@ -462,14 +461,6 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 			pi.pain.lines(xp, yp, n, LColor::math);
 		}
 	}
-}
-
-
-void mathed_draw_framebox(PainterInfo & pi, int x, int y, MathInset const * p)
-{
-	if (mathcursor && mathcursor->isInside(p))
-		pi.pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
-			LColor::mathframe);
 }
 
 

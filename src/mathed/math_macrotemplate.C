@@ -62,13 +62,14 @@ string MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::metrics(MetricsInfo & mi) const
+Dimension MathMacroTemplate::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.wid = cell(0).width() + cell(1).width() + 10;
 	dim_.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 2;
 	dim_.des = std::max(cell(0).descent(), cell(1).descent()) + 2;
+	return dim_;
 }
 
 
@@ -77,11 +78,11 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	int const w0 = cell(0).width();
 	int const w1 = cell(1).width();
 	cell(0).draw(pi, x + 2, y + 1);
-	pi.pain.rectangle(x, y - ascent() + 1, w0 + 4, height(),
+	pi.pain.rectangle(x, y - dim_.ascent() + 1, w0 + 4, dim_.height(),
 			LColor::mathline);
 	cell(1).draw(pi, x + 8 + w0, y + 1);
-	pi.pain.rectangle(x + w0 + 6 , y - ascent() + 1, w1 + 4,
-			height(), LColor::mathline);
+	pi.pain.rectangle(x + w0 + 6 , y - dim_.ascent() + 1, w1 + 4,
+			dim_.height(), LColor::mathline);
 }
 
 

@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -166,7 +165,7 @@ char const * MathHullInset::standardFont() const
 }
 
 
-void MathHullInset::metrics(MetricsInfo & mi) const
+Dimension MathHullInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy1(mi.base, standardFont());
 	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
@@ -198,6 +197,7 @@ void MathHullInset::metrics(MetricsInfo & mi) const
 
 	// for markers
 	metricsMarkers2();
+	return dim_;
 }
 
 
@@ -220,17 +220,17 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathHullInset::metricsT(TextMetricsInfo const & mi) const
+void MathHullInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	if (display()) {
-		MathGridInset::metricsT(mi);
+		MathGridInset::metricsT(mi, dim);
 	} else {
 		ostringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);
-		dim_.wid = os.str().size();
-		dim_.asc = 1;
-		dim_.des = 0;
+		dim.wid = os.str().size();
+		dim.asc = 1;
+		dim.des = 0;
 	}
 }
 

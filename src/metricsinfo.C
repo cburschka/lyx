@@ -5,11 +5,12 @@
 #include "mathed/math_support.h"
 #include "frontends/Painter.h"
 #include "debug.h"
+#include "BufferView.h"
 
 
 
 MetricsBase::MetricsBase()
-	: font(), style(LM_ST_TEXT), fontname("mathnormal"),
+	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"),
 	  restrictwidth(false), textwidth(0)
 {}
 
@@ -17,15 +18,16 @@ MetricsBase::MetricsBase()
 
 
 MetricsInfo::MetricsInfo()
-	: fullredraw(false)
 {}
 
 
 
 
-PainterInfo::PainterInfo(Painter & p)
-	: pain(p)
-{}
+PainterInfo::PainterInfo(BufferView * bv)
+	: pain(bv->painter())
+{
+	base.bv = bv;
+}
 
 
 void PainterInfo::draw(int x, int y, char c)
@@ -42,11 +44,9 @@ Styles smallerScriptStyle(Styles st)
 			return LM_ST_SCRIPT;
 		case LM_ST_SCRIPT:
 		case LM_ST_SCRIPTSCRIPT:
+		default: // shut up compiler
 			return LM_ST_SCRIPTSCRIPT;
 	}
-	// shut up compiler
-	lyxerr << "should not happen\n";
-	return LM_ST_DISPLAY;
 }
 
 ScriptChanger::ScriptChanger(MetricsBase & mb)
@@ -64,12 +64,11 @@ Styles smallerFracStyle(Styles st)
 			return LM_ST_SCRIPT;
 		case LM_ST_SCRIPT:
 		case LM_ST_SCRIPTSCRIPT:
+		default: // shut up compiler
 			return LM_ST_SCRIPTSCRIPT;
 	}
-	// shut up compiler
-	lyxerr << "should not happen\n";
-	return LM_ST_DISPLAY;
 }
+
 
 FracChanger::FracChanger(MetricsBase & mb)
 	: StyleChanger(mb, smallerFracStyle(mb.style))

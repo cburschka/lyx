@@ -19,9 +19,11 @@ MathInset * MathNumberInset::clone() const
 }
 
 
-void MathNumberInset::metrics(MetricsInfo & mi) const
+Dimension MathNumberInset::metrics(MetricsInfo & mi) const
 {
-	mathed_string_dim(mi.base.font, str_, dim_);
+	Dimension dim;
+	mathed_string_dim(mi.base.font, str_, dim);
+	return dim;
 }
 
 

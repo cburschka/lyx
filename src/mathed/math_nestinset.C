@@ -10,7 +10,7 @@
 
 
 MathNestInset::MathNestInset(idx_type nargs)
-	: MathDimInset(), cells_(nargs), lock_(false)
+	: cells_(nargs), lock_(false)
 {}
 
 
@@ -55,21 +55,6 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 	MetricsInfo m = mi;
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).metrics(m);
-}
-
-
-void MathNestInset::metricsMarkers(int frame) const
-{
-	dim_.des += frame;
-	dim_.wid += 2 * frame;
-}
-
-
-void MathNestInset::metricsMarkers2(int frame) const
-{
-	dim_.asc += frame;
-	dim_.des += frame;
-	dim_.wid += 2 * frame;
 }
 
 
@@ -189,33 +174,6 @@ void MathNestInset::drawSelection(PainterInfo & pi,
 			}
 		}
 	}
-}
-
-
-void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
-{
-	if (!editing())
-		return;
-	int t = x + width() - 1;
-	int d = y + descent();
-	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
-	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
-	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
-	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
-}
-
-
-void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
-{
-	if (!editing())
-		return;
-	drawMarkers(pi, x, y);
-	int t = x + width() - 1;
-	int a = y - ascent();
-	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
-	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
-	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
-	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
 }
 
 
@@ -343,5 +301,47 @@ dispatch_result MathNestInset::dispatch
 		default:
 			return MathInset::dispatch(cmd, idx, pos);
 	}
-	return UNDISPATCHED;
 }
+
+
+void MathNestInset::metricsMarkers(int) const
+{
+	dim_.wid += 2;
+	dim_.asc += 1;
+}
+
+
+void MathNestInset::metricsMarkers2(int) const
+{
+	dim_.wid += 2;
+	dim_.asc += 1;
+	dim_.des += 1;
+}
+
+void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
+{
+	if (!editing())
+		return;
+	int t = x + dim_.width() - 1;
+	int d = y + dim_.descent();
+	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
+	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
+	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
+	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
+}
+
+
+void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
+{
+	if (!editing())
+		return;
+	drawMarkers(pi, x, y);
+	int t = x + dim_.width() - 1;
+	int a = y - dim_.ascent();
+	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
+	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
+	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
+	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
+}
+
+

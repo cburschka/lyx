@@ -37,7 +37,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
 	/// identifies macro templates

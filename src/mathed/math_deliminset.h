@@ -31,7 +31,7 @@ public:
 	/// is it |...|?
 	bool isAbs() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 
@@ -55,6 +55,6 @@ public:
 	string right_;
 private:
 	///
-	int dw() const;
+	mutable int dw_;
 };
 #endif

@@ -56,7 +56,6 @@ following hack as starting point to write some macros:
 #include "math_stringinset.h"
 #include "math_support.h"
 #include "math_tabularinset.h"
-#include "math_xyarrowinset.h"
 
 //#include "insets/insetref.h"
 #include "ref_inset.h"
@@ -1128,11 +1127,6 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "substack") {
-			cell->push_back(createMathInset(t.cs()));
-			parse2(cell->back(), FLAG_ITEM, mode, false);
-		}
-
-		else if (t.cs() == "xymatrix") {
 			cell->push_back(createMathInset(t.cs()));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
 		}

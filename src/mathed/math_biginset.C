@@ -32,23 +32,23 @@ double MathBigInset::increase() const
 		case 3:  return 0.7;
 		default: return 0.0;
 	}
-	return 0.0;
 }
 
 
-void MathBigInset::metrics(MetricsInfo & mi) const
+Dimension MathBigInset::metrics(MetricsInfo & mi) const
 {
 	double const h = mathed_char_ascent(mi.base.font, 'I');
 	double const f = increase();
 	dim_.wid = 6;
 	dim_.asc = int(h + f * h);
 	dim_.des = int(f * h);
+	return dim_;
 }
 
 
 void MathBigInset::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pi, x + 1, y - ascent(), 4, height(), delim_);
+	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(), delim_);
 }
 
 

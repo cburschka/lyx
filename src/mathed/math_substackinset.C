@@ -17,7 +17,7 @@ MathInset * MathSubstackInset::clone() const
 }
 
 
-void MathSubstackInset::metrics(MetricsInfo & mi) const
+Dimension MathSubstackInset::metrics(MetricsInfo & mi) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
 		StyleChanger dummy(mi.base, LM_ST_TEXT);
@@ -25,14 +25,15 @@ void MathSubstackInset::metrics(MetricsInfo & mi) const
 	} else {
 		MathGridInset::metrics(mi);
 	}
-	metricsMarkers2();
+	metricsMarkers();
+	return dim_;
 }
 
 
 void MathSubstackInset::draw(PainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 1, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

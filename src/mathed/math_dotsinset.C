@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_dotsinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -19,32 +18,35 @@ MathInset * MathDotsInset::clone() const
 }
 
 
-void MathDotsInset::metrics(MetricsInfo & mi) const
+Dimension MathDotsInset::metrics(MetricsInfo & mi) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim_);
 	dh_ = 0;
 	if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")
-		dh_ = ascent() / 2;
+		dh_ = dim_.asc / 2;
 	else if (key_->name == "dotsc")
-		dh_ = ascent() / 4;
+		dh_ = dim_.asc / 4;
 	else if (key_->name == "vdots") {
 		dim_.wid = (dim_.wid / 2) + 1;
-		dh_ = ascent();
+		dh_ = dim_.asc;
 	}
 	else if (key_->name == "ddots")
-		dh_ = ascent();
+		dh_ = dim_.asc;
+	return dim_;
 }
 
 
 void MathDotsInset::draw(PainterInfo & pain, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), key_->name);
+	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
+		key_->name);
 	if (key_->name == "vdots" || key_->name == "ddots")
 		++x;
 	if (key_->name != "vdots")
 		--y;
-	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), key_->name);
+	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
+		key_->name);
 }
 
 

@@ -2,11 +2,11 @@
 #ifndef MATH_SPACEINSET_H
 #define MATH_SPACEINSET_H
 
-#include "math_diminset.h"
+#include "math_inset.h"
 
 
 /// Smart spaces
-class MathSpaceInset : public MathDimInset {
+class MathSpaceInset : public MathInset {
 public:
 	///
 	explicit MathSpaceInset(int sp);
@@ -21,7 +21,7 @@ public:
 	///
 	void incSpace();
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

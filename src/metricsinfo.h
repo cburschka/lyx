@@ -1,11 +1,11 @@
 #ifndef METRICSINFO_H
 #define METRICSINFO_H
 
-
 #include "lyxfont.h"
 #include "LString.h"
 
 class Painter;
+class BufferView;
 
 
 /// Standard Sizes (mode styles)
@@ -28,11 +28,13 @@ struct MetricsBase {
 	///
 	MetricsBase();
 
-	///
+	/// the current view
+	BufferView * bv;
+	/// current font
 	LyXFont font;
-	///
+	/// current math style (display/text/script/..)
 	Styles style;
-	///
+	/// name of current font
 	string fontname;
 	/// if this is set...
 	bool restrictwidth;
@@ -51,8 +53,6 @@ struct MetricsInfo {
 
 	///
 	MetricsBase base;
-	///
-	bool fullredraw;
 };
 
 
@@ -62,7 +62,7 @@ struct MetricsInfo {
 //
 struct PainterInfo {
 	///
-	PainterInfo(Painter & pain);
+	explicit PainterInfo(BufferView * bv);
 	///
 	void draw(int x, int y, char c);
 
@@ -70,6 +70,8 @@ struct PainterInfo {
 	MetricsBase base;
 	///
 	Painter & pain;
+	/// width of current item
+	int width;
 };
 
 

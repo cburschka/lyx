@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_fboxinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -29,23 +28,23 @@ MathInset::mode_type MathFboxInset::currentMode() const
 }
 
 
-void MathFboxInset::metrics(MetricsInfo & mi) const
+Dimension MathFboxInset::metrics(MetricsInfo & mi) const
 {
 	if (key_->name == "fbox") {
 		FontSetChanger dummy(mi.base, "textnormal");
-		dim_ = cell(0).metrics(mi);
-		metricsMarkers2(5); // 5 pixels margin
+		cell(0).metrics(mi, dim_);
 	} else {
-		dim_ = cell(0).metrics(mi);
-		metricsMarkers2(5); // 5 pixels margin
+		cell(0).metrics(mi, dim_);
 	}
+	metricsMarkers(5); // 5 pixels margin
+	return dim_;
 }
 
 
 void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2,
-			LColor::foreground);
+	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
+		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
 	if (key_->name == "fbox") {
 		FontSetChanger dummy(pi.base, "textnormal");
 		cell(0).draw(pi, x + 5, y);

@@ -12,12 +12,13 @@ MathInset * MathErtInset::clone() const
 }
 
 
-void MathErtInset::metrics(MetricsInfo & mi) const
+Dimension MathErtInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "lyxert");
 	MathTextInset::metrics(mi);
 	cache_.colinfo_[0].align_ = 'l';
-	metricsMarkers2();
+	metricsMarkers();
+	return dim_;
 }
 
 
@@ -25,7 +26,7 @@ void MathErtInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "lyxert");
 	MathTextInset::draw(pi, x + 1, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

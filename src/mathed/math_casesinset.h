@@ -14,7 +14,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pain, int x, int y) const;
 

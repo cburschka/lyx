@@ -141,7 +141,8 @@ void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
 
 
-void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const
+void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f,
+	Dimension & dim) const
 {
 	font_ = f;
 	metrics(bv);
@@ -153,6 +154,7 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 	if (bv)
 		view_ = bv->owner()->view();
 	MetricsInfo mi;
+	mi.base.bv    = bv;
 	mi.base.style = LM_ST_TEXT;
 	mi.base.font  = font_;
 	mi.base.font.setColor(LColor::math);
@@ -348,6 +350,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT:
+			lyxerr << "Called EDIT with '" << cmd.argument << "'\n";
 			if (!bv->lockInset(this))
 				lyxerr << "Cannot lock math inset in edit call!\n";
 			releaseMathCursor(bv);

@@ -608,7 +608,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		    && isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
 			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
+			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
 			tmpinset->localDispatch(cmd1);
 			break;
 		}
@@ -634,7 +634,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		    isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
 			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
+			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
 			tmpinset->localDispatch(cmd1);
 			break;
 		}

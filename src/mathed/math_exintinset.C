@@ -48,9 +48,10 @@ void MathExIntInset::normalize(NormalStream & os) const
 }
 
 
-void MathExIntInset::metrics(MetricsInfo &) const
+Dimension MathExIntInset::metrics(MetricsInfo &) const
 {
 	lyxerr << "should not happen\n";
+	return Dimension();
 }
 
 

@@ -23,7 +23,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void normalize(NormalStream & os) const;
 

@@ -92,11 +92,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & mi) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 	///

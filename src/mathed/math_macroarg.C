@@ -1,4 +1,3 @@
-
 #include "math_macroarg.h"
 #include "math_macro.h"
 #include "math_mathmlstream.h"
@@ -34,12 +33,13 @@ void MathMacroArgument::write(WriteStream & os) const
 }
 
 
-void MathMacroArgument::metrics(MetricsInfo & mi) const
+Dimension MathMacroArgument::metrics(MetricsInfo & mi) const
 {
 	if (expanded_)
-		dim_ = cell(0).metrics(mi);
+		cell(0).metrics(mi, dim_);
 	else
 		mathed_string_dim(mi.base.font, str_, dim_);
+	return dim_;
 }
 
 

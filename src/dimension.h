@@ -40,6 +40,11 @@ public:
 	/// get width
 	int width() const { return wid; }
 
+	/// add space for a frame
+	//void addFrame(int frame) const;
+	/// add space for bottom part of a frame
+	//void addFrameBottom(int frame) const;
+
 public:
 	/// these are intentionally public as things like
 	///

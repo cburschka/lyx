@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_boxinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -33,12 +32,12 @@ void MathBoxInset::normalize(NormalStream & os) const
 }
 
 
-void MathBoxInset::metrics(MetricsInfo & mi) const
+Dimension MathBoxInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
-	cell(0).metrics(mi);
-	dim_ = cell(0).dim();
-	metricsMarkers2();
+	cell(0).metrics(mi, dim_);
+	metricsMarkers();
+	return dim_;
 }
 
 
@@ -46,7 +45,7 @@ void MathBoxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

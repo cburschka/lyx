@@ -14,9 +14,9 @@
 #ifndef MATH_BIGINSET_H
 #define MATH_BIGINSET_H
 
-
 #include "math_diminset.h"
 #include "LString.h"
+
 
 /// Inset for \bigl & Co.
 class MathBigInset : public MathDimInset {
@@ -26,11 +26,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
+	Dimension metrics(MetricsInfo & mi) const;
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
-	///
-	void metrics(MetricsInfo & st) const;
 	///
 	void normalize(NormalStream & os) const;
 

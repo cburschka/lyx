@@ -37,10 +37,10 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 	: MathGridInset(1, 1), name_(name)
 {
 	vector< vector<string> > dat;
-	istringstream is(str.c_str());
+	istringstream is(STRCONV(str));
 	string line;
 	while (getline(is, line)) {
-		istringstream ls(line.c_str());
+		istringstream ls(STRCONV(line));
 		typedef istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
 		if (v.size())
@@ -63,18 +63,19 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::metrics(MetricsInfo & mi) const
+Dimension MathArrayInset::metrics(MetricsInfo & mi) const
 {
 	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi);
 	metricsMarkers2();
+	return dim_;
 }
 
 
 void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	ArrayChanger dummy(pi.base);
-	MathGridInset::draw(pi, x, y);
+	MathGridInset::draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
 }
 

@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_fontinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -33,11 +32,12 @@ MathInset::mode_type MathFontInset::currentMode() const
 }
 
 
-void MathFontInset::metrics(MetricsInfo & mi) const
+Dimension MathFontInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
-	dim_ = cell(0).metrics(mi);
-	metricsMarkers();
+	cell(0).metrics(mi, dim_);
+	metricsMarkers(1);
+	return dim_;
 }
 
 
@@ -49,9 +49,9 @@ void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFontInset::metricsT(TextMetricsInfo const & mi) const
+void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
-	dim_ = cell(0).metricsT(mi);
+	cell(0).metricsT(mi, dim_);
 }
 
 

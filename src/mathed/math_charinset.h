@@ -2,7 +2,7 @@
 #ifndef MATH_CHARINSET_H
 #define MATH_CHARINSET_H
 
-#include "math_diminset.h"
+#include "math_inset.h"
 
 
 /** The base character inset.
@@ -11,18 +11,18 @@
  * Full author contact details are available in file CREDITS
  */
 
-class MathCharInset : public MathDimInset {
+class MathCharInset : public MathInset {
 public:
 	///
 	explicit MathCharInset(char c);
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & st) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///

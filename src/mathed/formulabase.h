@@ -118,7 +118,7 @@ protected:
 
 protected:
 	///
-	void metrics(BufferView * bv, LyXFont const & font) const;
+	void metrics(BufferView * bv, LyXFont const & font, Dimension & dim) const;
 	///
 	void metrics(BufferView * bv = 0) const;
 	///

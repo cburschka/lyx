@@ -13,7 +13,6 @@
 
 #include <config.h>
 
-
 #include "formulamacro.h"
 #include "lfuns.h"
 #include "math_cursor.h"
@@ -144,8 +143,10 @@ string InsetFormulaMacro::prefix() const
 void InsetFormulaMacro::dimension(BufferView * bv, LyXFont const & font,
 	Dimension & dim) const
 {
-	metrics(bv, font);
-	dim = par()->dimensions();
+	MetricsInfo mi;
+	mi.base.bv = bv;
+	mi.base.font = font;
+	dim = par()->metrics(mi);
 	dim.asc += 5;
 	dim.des += 5;
 	dim.wid += 10 + font_metrics::width(prefix(), font);
@@ -177,7 +178,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	LyXFont font(f);
 	font.setColor(LColor::math);
 
-	PainterInfo pi = PainterInfo(bv->painter());
+	PainterInfo pi(bv);
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 

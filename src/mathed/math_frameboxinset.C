@@ -1,12 +1,10 @@
 #include <config.h>
 
-
 #include "math_frameboxinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "frontends/Painter.h"
-
 
 
 MathFrameboxInset::MathFrameboxInset()
@@ -20,24 +18,24 @@ MathInset * MathFrameboxInset::clone() const
 }
 
 
-void MathFrameboxInset::metrics(MetricsInfo & mi) const
+Dimension MathFrameboxInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
 	MathNestInset::metrics(mi);
-	dim_    = cell(0).dim();
-	dim_   += cell(1).dim();
-	dim_   += cell(2).dim();
-	dim_.wid += 4 * w_ + 4;
-	metricsMarkers2(5); // 5 pixels margin
+	dim_  = cell(0).dim();
+	dim_ += cell(1).dim();
+	dim_ += cell(2).dim();
+	metricsMarkers();
+	return dim_;
 }
 
 
 void MathFrameboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
-	pi.pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2,
-			LColor::foreground);
+	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
+		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
 	x += 5;
 
 	drawStrBlack(pi, x, y, "[");

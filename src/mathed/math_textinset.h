@@ -15,7 +15,7 @@ public:
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	/// this stores metrics information in cache_
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	/// draw selection background

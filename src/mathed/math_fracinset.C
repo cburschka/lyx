@@ -32,7 +32,7 @@ MathFracInset const * MathFracInset::asFracInset() const
 }
 
 
-void MathFracInset::metrics(MetricsInfo & mi) const
+Dimension MathFracInset::metrics(MetricsInfo & mi) const
 {
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -40,37 +40,39 @@ void MathFracInset::metrics(MetricsInfo & mi) const
 	dim_.wid = max(cell(0).width(), cell(1).width()) + 2;
 	dim_.asc = cell(0).height() + 2 + 5;
 	dim_.des = cell(1).height() + 2 - 5;
+	return dim_;
 }
 
 
 void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m = x + width() / 2;
+	int m = x + dim_.wid / 2;
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
 	if (!atop_)
-		pi.pain.line(x + 1, y - 5, x + width() - 2, y - 5, LColor::math);
+		pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, LColor::math);
 }
 
 
-void MathFracInset::metricsT(TextMetricsInfo const & mi) const
+void MathFracInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
-	cell(0).metricsT(mi);
-	cell(1).metricsT(mi);
-	dim_.wid = max(cell(0).width(), cell(1).width());
-	dim_.asc = cell(0).height() + 1;
-	dim_.des = cell(1).height();
+	cell(0).metricsT(mi, dim);
+	cell(1).metricsT(mi, dim);
+	dim.wid = max(cell(0).width(), cell(1).width());
+	dim.asc = cell(0).height() + 1;
+	dim.des = cell(1).height();
+	//return dim_;
 }
 
 
 void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 {
-	int m = x + width() / 2;
+	int m = x + dim_.width() / 2;
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
 	if (!atop_)
-		pain.horizontalLine(x, y, width());
+		pain.horizontalLine(x, y, dim_.width());
 }
 
 

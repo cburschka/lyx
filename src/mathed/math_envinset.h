@@ -25,7 +25,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	Dimension metrics(MetricsInfo & mi) const;
 	///
 	void infoize(std::ostream & os) const;
 

@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_data.h"
 #include "math_inset.h"
 #include "math_cursor.h"
@@ -20,7 +19,6 @@
 using std::max;
 using std::min;
 using std::abs;
-
 
 
 MathArray::MathArray()
@@ -204,7 +202,14 @@ void MathArray::touch() const
 }
 
 
-Dimension const & MathArray::metrics(MetricsInfo & mi) const
+void MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	metrics(mi);
+	dim = dim_;
+}
+
+
+void MathArray::metrics(MetricsInfo & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -212,15 +217,15 @@ Dimension const & MathArray::metrics(MetricsInfo & mi) const
 	drawn_  = false;
 
 	mathed_char_dim(mi.base.font, 'I', dim_);
-	if (empty())
-		return dim_;
 
-	dim_.wid = 0;
-	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		(*it)->metrics(mi);
-		dim_ += (*it)->dimensions();
+	if (!empty()) {
+		dim_.wid = 0;
+		for (const_iterator it = begin(), et = end(); it != et; ++it) {
+			Dimension d = (*it)->metrics(mi);
+			dim_ += d;
+			it->width_ = d.wid;
+		}
 	}
-	return dim_;
 }
 
 
@@ -249,22 +254,23 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
+		pi.width = it->width_;
 		(*it)->draw(pi, x, y);
-		x += (*it)->width();
+		x += it->width_;
 	}
 }
 
 
-Dimension const & MathArray::metricsT(TextMetricsInfo const & mi) const
+void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	//if (clean_)
 	//	return;
-	dim_.clear();
+	dim.clear();
+	Dimension d;
 	for (const_iterator it = begin(); it != end(); ++it) {
-		(*it)->metricsT(mi);
-		dim_ += (*it)->dimensions();
+		(*it)->metricsT(mi, d);
+		dim += d;
 	}
-	return dim_;
 }
 
 
@@ -279,7 +285,7 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
-		x += (*it)->width();
+		x += it->width_;
 	}
 }
 
@@ -298,7 +304,7 @@ int MathArray::pos2x(size_type pos, int glue) const
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
 			x += glue;
-		x += (*it)->width();
+		x += it->width_;
 	}
 	return x;
 }
@@ -319,7 +325,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
 			currx += glue;
-		currx += (*it)->width();
+		currx += it->width_;
 	}
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
 		--it;

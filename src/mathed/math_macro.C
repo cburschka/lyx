@@ -69,40 +69,42 @@ void MathMacro::expand() const
 }
 
 
-void MathMacro::metrics(MetricsInfo & mi) const
+Dimension MathMacro::metrics(MetricsInfo & mi) const
 {
 	augmentFont(font_, "lyxtex");
 	mi_ = mi;
 
 	if (defining()) {
-		mathed_string_dim(font_, name(), dim_);
-		return;
-	}
 
-	if (editing()) {
+		mathed_string_dim(font_, name(), dim_);
+
+	} else if (editing()) {
+
 		expand();
-		dim_ = expanded_.metrics(mi_);
-		metricsMarkers2(2);
+		expanded_.metrics(mi_, dim_);
+		metricsMarkers();
 
 		dim_.wid +=  mathed_string_width(font_, name()) + 10;
 
-		Dimension dim;
-		mathed_string_dim(font_, "#1: ", dim);
+		int ww = mathed_string_width(font_, "#1: ");
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			c.metrics(mi_);
-			dim_.wid  = max(dim_.wid, c.width() + dim.wid);
-			dim_.des += max(c.ascent(),  dim.asc) + 5;
-			dim_.des += max(c.descent(), dim.des) + 5;
+			dim_.wid  = max(dim_.wid, c.width() + ww);
+			dim_.des += max(c.ascent(),  dim_.asc) + 5;
+			dim_.des += max(c.descent(), dim_.des) + 5;
 		}
-		return;
+
+	} else {
+
+		expand();
+		expanded_.substitute(*this);
+		expanded_.metrics(mi_, dim_);
+
 	}
 
-	expand();
-	expanded_.substitute(*this);
-	expanded_.metrics(mi_);
-	dim_ = expanded_.dim();
+	return dim_;
 }
 
 
@@ -119,7 +121,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	if (editing()) {
-		int h = y - ascent() + 2 + expanded_.ascent();
+		int h = y - dim_.ascent() + 2 + expanded_.ascent();
 		drawStr(pi, font_, x + 3, h, name());
 
 		int const w = mathed_string_width(font_, name());

@@ -1,7 +1,6 @@
 #ifndef MATH_NESTINSET_H
 #define MATH_NESTINSET_H
 
-
 #include "math_diminset.h"
 
 /** Abstract base class for all math objects that contain nested items.
@@ -10,27 +9,19 @@
 */
 
 
-class LaTeXFeatures;
-
 class MathNestInset : public MathDimInset {
 public:
 	/// nestinsets have a fixed size to start with
 	explicit MathNestInset(idx_type ncells);
 
 	/// the size is usuall some sort of convex hull of the cells
+	/// hides inset::metrics() intentionally!
 	void metrics(MetricsInfo const & mi) const;
-	/// add space for markers
-	void metricsMarkers(int frame = 1) const;
-	/// add space for markers
-	void metricsMarkers2(int frame = 1) const;
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
-	void drawMarkers(PainterInfo & pi, int x, int y) const;
-	/// draw four angular markers
-	void drawMarkers2(PainterInfo & pi, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets
@@ -109,6 +100,17 @@ protected:
 	cells_type cells_;
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
+
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
+
+	/// add space for markers
+	void metricsMarkers(int frame = 1) const;
+	/// add space for markers
+	void metricsMarkers2(int frame = 1) const;
+
 };
 
 #endif
