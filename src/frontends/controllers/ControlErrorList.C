@@ -32,8 +32,7 @@ void ControlErrorList::clearParams()
 {}
 
 
-ErrorList const &
-ControlErrorList::errorList() const
+ErrorList const & ControlErrorList::errorList() const
 {
 	return errorlist_;
 }

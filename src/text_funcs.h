@@ -20,21 +20,22 @@
 #include "support/types.h"
 
 class LyXCursor;
+class LyXText;
 
 
 // do no use LyXText or BufferView here
 
 
 ///
-bool transposeChars(LyXCursor const & cursor);
+bool transposeChars(LyXText &, LyXCursor const & cursor);
 ///
-void cursorLeftOneWord(LyXCursor &, ParagraphList const &);
+void cursorLeftOneWord(LyXText &, LyXCursor &, ParagraphList const &);
 ///
-void cursorRightOneWord(LyXCursor &, ParagraphList const &);
+void cursorRightOneWord(LyXText &, LyXCursor &, ParagraphList const &);
 
 // Select current word. This depends on behaviour of
 // CursorLeftOneWord(), so it is patched as well.
-void getWord(LyXCursor & from, LyXCursor & to, lyx::word_location const loc,
+void getWord(LyXText &, LyXCursor & from, LyXCursor & to, lyx::word_location const loc,
 	ParagraphList const & pars);
 
 #endif // TEXT_FUNCS_H

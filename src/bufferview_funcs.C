@@ -301,19 +301,18 @@ string const currentState(BufferView * bv)
 
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();
-	LyXCursor const & c(text->cursor);
+	LyXCursor const & c = text->cursor;
 
 	bool const show_change = buffer->params().tracking_changes
-		&& c.pos() != c.par()->size()
-		&& c.par()->lookupChange(c.pos()) != Change::UNCHANGED;
+		&& text->cursor.pos() != text->cursorPar()->size()
+		&& text->cursorPar()->lookupChange(c.pos()) != Change::UNCHANGED;
 
 	if (show_change) {
-		Change change(c.par()->lookupChangeFull(c.pos()));
-		Author const & a(bv->buffer()->params().authors().get(change.author));
+		Change change = text->cursorPar()->lookupChangeFull(c.pos());
+		Author const & a = bv->buffer()->params().authors().get(change.author);
 		state << _("Change: ") << a.name();
-		if (!a.email().empty()) {
+		if (!a.email().empty())
 			state << " (" << a.email() << ")";
-		}
 		if (change.changetime)
 			state << _(" at ") << ctime(&change.changetime);
 		state << " : ";
@@ -322,9 +321,7 @@ string const currentState(BufferView * bv)
 	// I think we should only show changes from the default
 	// font. (Asger)
 	LyXFont font = text->real_current_font;
-	LyXFont const & defaultfont =
-		buffer->params().getLyXTextClass().defaultfont();
-	font.reduce(defaultfont);
+	font.reduce(buffer->params().getLyXTextClass().defaultfont());
 
 	// avoid _(...) re-entrance problem
 	string const s = font.stateText(&buffer->params());
@@ -339,9 +336,9 @@ string const currentState(BufferView * bv)
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.
-	if (!text->cursor.par()->params().spacing().isDefault()) {
+	if (!text->cursorPar()->params().spacing().isDefault()) {
 		Spacing::Space cur_space =
-			text->cursor.par()->params().spacing().getSpace();
+			text->cursorPar()->params().spacing().getSpace();
 		state << _(", Spacing: ");
 
 		switch (cur_space) {
@@ -356,7 +353,7 @@ string const currentState(BufferView * bv)
 			break;
 		case Spacing::Other:
 			state << _("Other (")
-			      << text->cursor.par()->params().spacing().getValue()
+			      << text->cursorPar()->params().spacing().getValue()
 			      << ')';
 			break;
 		case Spacing::Default:
@@ -365,12 +362,12 @@ string const currentState(BufferView * bv)
 		}
 	}
 #ifdef DEVEL_VERSION
-	state << _(", Paragraph: ") << text->cursor.par()->id();
+	state << _(", Paragraph: ") << text->cursorPar()->id();
 	state << _(", Position: ") << text->cursor.pos();
 	RowList::iterator rit = text->cursorRow();
 	state << bformat(_(", Row b:%1$d e:%2$d"), rit->pos(), rit->end());
 	state << _(", Inset: ");
-	InsetOld * inset = text->cursor.par()->inInset();
+	InsetOld * inset = text->cursorPar()->inInset();
 	if (inset)
 		state << inset << " id: " << inset->id()
 		      << " text: " << inset->getLyXText(bv, true)
@@ -402,10 +399,10 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {
 		LyXCursor & cursor = text->cursor;
-		text->computeBidiTables(text->cursor.par(), *bv->buffer(),
+		text->computeBidiTables(text->cursorPar(), *bv->buffer(),
 			text->cursorRow());
 		if (cursor.boundary() !=
-		    text->isBoundary(*bv->buffer(), *cursor.par(), cursor.pos(),
+		    text->isBoundary(*bv->buffer(), *text->cursorPar(), cursor.pos(),
 				     text->real_current_font))
 			text->setCursor(cursor.par(), cursor.pos(),
 					false, !cursor.boundary());

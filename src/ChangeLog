@@ -1,3 +1,23 @@
+
+2003-10-09  André Pönitz  <poenitz@gmx.net>
+
+	* lyxcursor.h: use paroffset_type instead of ParagraphList::iterator
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* bufferview_funcs.C:
+	* lyx_cb.C:
+	* lyxcursor.C:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* text_funcs.[Ch]:
+	* textcursor.[Ch]:
+	* undo_funcs.C: adjust
+
 2003-10-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (incrementItemDepth): new function, use a backtracking

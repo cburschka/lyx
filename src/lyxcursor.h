@@ -17,7 +17,6 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
-#include "ParagraphList_fwd.h"
 #include "support/types.h"
 
 /**
@@ -31,9 +30,9 @@ class LyXCursor {
 public:
 	LyXCursor();
 	/// set the paragraph that contains this cursor
-	void par(ParagraphList::iterator pit);
+	void par(lyx::paroffset_type pit);
 	/// return the paragraph this cursor is in
-	ParagraphList::iterator par() const;
+	lyx::paroffset_type par() const;
 	/// set the position within the paragraph
 	void pos(lyx::pos_type p);
 	/// return the position within the paragraph
@@ -68,7 +67,7 @@ public:
 
 private:
 	/// The paragraph the cursor is in.
-	ParagraphList::iterator par_;
+	lyx::paroffset_type par_;
 	/// The position inside the paragraph
 	lyx::pos_type pos_;
 	/**

@@ -16,28 +16,29 @@
 #ifndef LYX_TYPES_H
 #define LYX_TYPES_H
 
-// this probably could be improved by using <cstddef>...
-#include <vector>
+#include <cstddef>
 
 namespace lyx
 {
 	/// a type for positions used in paragraphs
 	// needs to be signed for a while to hold the special value -1 that is
 	// used there...
-	typedef std::vector<char>::difference_type   pos_type;
+	typedef ptrdiff_t  pos_type;
+
+	/// a type for paragraph offsets 
+	typedef ptrdiff_t  paroffset_type;
 
 	/// a type for the nesting depth of a paragraph
-	typedef unsigned int depth_type;
+	typedef size_t     depth_type;
 
 // set this to '0' if you want to have really safe types
 #if 1
 
 	/// a type for sizes
-	typedef std::vector<char>::size_type         size_type;
+	typedef size_t     size_type;
 
 	/// a type used for numbering text classes
-	// used to be LyXTextClassList::size_type
-	typedef std::vector<char>::size_type         textclass_type;
+	typedef size_t     textclass_type;
 
 #else
 
@@ -47,7 +48,7 @@ namespace lyx
 
 	struct size_type {
 		///
-		typedef std::vector<char>::size_type  base_type;
+		typedef size_t  base_type;
 		///
 		size_type(base_type t) { data_ = t; }
 		///
@@ -59,7 +60,7 @@ namespace lyx
 
 	struct textclass_type {
 		///
-		typedef std::vector<char>::size_type  base_type;
+		typedef size_t   base_type;
 		///
 		textclass_type(base_type t) { data_ = t; }
 		///

@@ -270,7 +270,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	text->breakParagraph(buffer()->paragraphs());
 
-	bool res = buffer()->readFile(fname, text->cursor.par());
+	bool res = buffer()->readFile(fname, text->cursorPar());
 
 	resize();
 	return res;
@@ -301,15 +301,10 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer()->texrow().getIdFromRow(row, tmpid, tmppos);
 
-	ParagraphList::iterator texrowpar;
-
-	if (tmpid == -1) {
-		texrowpar = text->ownerParagraphs().begin();
-		tmppos = 0;
-	} else {
-		texrowpar = buffer()->getParFromID(tmpid).pit();
-	}
-	text->setCursor(texrowpar, tmppos);
+	if (tmpid == -1)
+		text->setCursor(0, 0);
+	else
+		text->setCursor(buffer()->getParFromID(tmpid).pit(), tmppos);
 }
 
 
@@ -327,7 +322,9 @@ void BufferView::gotoLabel(string const & label)
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			beforeChange(text);
-			text->setCursor(it.getPar(), it.getPos());
+			text->setCursor(
+				std::distance(text->ownerParagraphs().begin(), it.getPar()),
+				it.getPos());
 			text->selection.cursor = text->cursor;
 			update();
 			return;
@@ -424,39 +421,40 @@ bool BufferView::lockInset(UpdatableInset * inset)
 {
 	if (!inset)
 		return false;
+
 	// don't relock if we're already locked
 	if (theLockingInset() == inset)
 		return true;
-	if (!theLockingInset()) {
-		// first check if it's the inset under the cursor we want lock
-		// should be most of the time
-		if (text->cursor.pos() < text->cursor.par()->size()
-		    && text->cursor.par()->getChar(text->cursor.pos()) ==
-		    Paragraph::META_INSET) {
-			InsetOld * in = text->cursor.par()->getInset(text->cursor.pos());
-			if (inset == in) {
+
+	if (theLockingInset())
+		return theLockingInset()->lockInsetInInset(this, inset);
+
+	// first check if it's the inset under the cursor we want lock
+	// should be most of the time
+	if (text->cursor.pos() < text->cursorPar()->size()
+			&& text->cursorPar()->getChar(text->cursor.pos()) ==
+			Paragraph::META_INSET) {
+		if (inset == text->cursorPar()->getInset(text->cursor.pos())) {
+			theLockingInset(inset);
+			return true;
+		}
+	}
+
+	// then do a deep look at the inset and lock the right one
+	ParagraphList::iterator pit = buffer()->paragraphs().begin();
+	ParagraphList::iterator pend = buffer()->paragraphs().end();
+	for (int par = 0; pit != pend; ++pit, ++par) {
+		InsetList::iterator it = pit->insetlist.begin();
+		InsetList::iterator end = pit->insetlist.end();
+		for (; it != end; ++it) {
+			if (it->inset == inset) {
+				text->setCursorIntern(par, it->pos);
 				theLockingInset(inset);
 				return true;
 			}
 		}
-		// Then do a deep look of the inset and lock the right one
-		int const id = inset->id();
-		ParagraphList::iterator pit = buffer()->paragraphs().begin();
-		ParagraphList::iterator pend = buffer()->paragraphs().end();
-		for (; pit != pend; ++pit) {
-			InsetList::iterator it = pit->insetlist.begin();
-			InsetList::iterator end = pit->insetlist.end();
-			for (; it != end; ++it) {
-				if (it->inset == inset) {
-					text->setCursorIntern(pit, it->pos);
-					theLockingInset(inset);
-					return true;
-				}
-			}
-		}
-		return false;
 	}
-	return theLockingInset()->lockInsetInInset(this, inset);
+	return false;
 }
 
 
@@ -487,7 +485,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		inset->insetUnlock(this);
 		theLockingInset(0);
 		// make sure we update the combo !
-		owner()->setLayout(getLyXText()->cursor.par()->layout()->name());
+		owner()->setLayout(getLyXText()->cursorPar()->layout()->name());
 		// Tell the paragraph dialog that we changed paragraph
 		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		finishUndo();
@@ -560,14 +558,15 @@ Language const * BufferView::getParentLanguage(InsetOld * inset) const
 
 Encoding const * BufferView::getEncoding() const
 {
-	LyXText * t = getLyXText();
-	if (!t)
+	LyXText * text = getLyXText();
+	if (!text)
 		return 0;
 
-	LyXCursor const & c = t->cursor;
-	LyXFont const font = c.par()->getFont(buffer()->params(), c.pos(),
-					      outerFont(c.par(), t->ownerParagraphs()));
-	return font.language()->encoding();
+	return text->cursorPar()->getFont(
+		buffer()->params(),
+		text->cursor.pos(),
+		outerFont(text->cursorPar(), text->ownerParagraphs())
+	).language()->encoding();
 }
 
 

@@ -383,9 +383,6 @@ void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
 
 void LyXTabular::fixCellNums()
 {
-	BOOST_ASSERT(rows_ == row_info.size());
-	BOOST_ASSERT(columns_ == column_info.size());
-	BOOST_ASSERT(rows_ == cell_info.size());
 	int cellno = 0;
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
@@ -396,19 +393,17 @@ void LyXTabular::fixCellNums()
 	}
 
 	set_row_column_number_info();
-	BOOST_ASSERT(rows_ == row_info.size());
-	BOOST_ASSERT(columns_ == column_info.size());
-	BOOST_ASSERT(rows_  == cell_info.size());
 }
 
 
 void LyXTabular::setOwner(InsetTabular * inset)
 {
-	for (int i = 0; i < rows_; ++i)
+	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
 			cell_info[i][j].inset.setOwner(inset);
 			cell_info[i][j].inset.setDrawFrame(InsetText::LOCKED);
 		}
+	}
 }
 
 

@@ -14,6 +14,8 @@
 
 #include "support/types.h"
 
+#include <vector>
+
 class InsetOld;
 class BufferView;
 

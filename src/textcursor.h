@@ -17,10 +17,6 @@
 
 #include "lyxcursor.h"
 
-#include <string>
-
-class Buffer;
-
 // Do not even think of forward declaring LyXText/BufferView etc here!
 // If you need Paragraph proper, go to text_func.h
 
@@ -69,8 +65,6 @@ struct TextCursor {
 	void setSelection();
 	///
 	void clearSelection();
-	///
-	std::string const selectionAsString(Buffer const & buffer, bool label) const;
 
 	// actual cursor position
 	LyXCursor cursor;

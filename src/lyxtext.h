@@ -170,10 +170,18 @@ private:
 	RowList::iterator
 	getRow(ParagraphList::iterator pit, lyx::pos_type pos) const;
 public:
-	/// returns a pointer cursor row
+	/// returns an iterator pointing to a cursor row
 	RowList::iterator getRow(LyXCursor const & cursor) const;
 	/// convenience
 	RowList::iterator cursorRow() const;
+	/// returns an iterator pointing to a cursor paragraph
+	ParagraphList::iterator getPar(LyXCursor const & cursor) const;
+	///
+	ParagraphList::iterator getPar(lyx::paroffset_type par) const;
+	///
+	int parOffset(ParagraphList::iterator pit) const;
+	/// convenience
+	ParagraphList::iterator cursorPar() const;
 	/**
 	 * Return the next row, when cursor is at the end of the
 	 * previous row, for insets that take a full row.
@@ -223,17 +231,19 @@ public:
 	void selectSelectedWord();
 	/// re-computes the cached coordinates in the cursor
 	void redoCursor();
+	///
+	void setCursor(ParagraphList::iterator pit, lyx::pos_type pos);
 	/// returns true if par was empty and was removed
-	bool setCursor(ParagraphList::iterator pit,
+	bool setCursor(lyx::paroffset_type par,
 		       lyx::pos_type pos,
 		       bool setfont = true,
 		       bool boundary = false);
 	///
-	void setCursor(LyXCursor &, ParagraphList::iterator pit,
+	void setCursor(LyXCursor &, lyx::paroffset_type par,
 		       lyx::pos_type pos,
 		       bool boundary = false);
 	///
-	void setCursorIntern(ParagraphList::iterator pit,
+	void setCursorIntern(lyx::paroffset_type par,
 			     lyx::pos_type pos,
 			     bool setfont = true,
 			     bool boundary = false);
@@ -493,6 +503,9 @@ public:
 	/// return previous row crossing paragraph boundaries
 	void previousRow(ParagraphList::iterator & pit,
 		RowList::iterator & rit) const;
+
+	///
+	std::string selectionAsString(Buffer const & buffer, bool label) const;
 
 private:
 	/** Cursor related data.

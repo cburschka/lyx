@@ -79,8 +79,7 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// Record the cursor position in a stable way.
-	int const cursor_offset = std::distance
-		(text->ownerParagraphs().begin(), text->cursor.par());
+	int const cursor_offset = text->cursor.par();
 
 	// Make and push the Undo entry
 	stack.push(Undo(kind, inset_id,
@@ -140,9 +139,7 @@ bool performUndoOrRedo(BufferView * bv, Undo & undo)
 				buf->getInsetFromID(undo.inset_id));
 
 		LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
-		ParagraphList::iterator cursor = text->ownerParagraphs().begin();
-		advance(cursor, undo.cursor_par_offset);
-		text->setCursorIntern(cursor, undo.cursor_pos);
+		text->setCursorIntern(undo.cursor_par_offset, undo.cursor_pos);
 
 		if (inset) {
 			// Magic needed to update inset internal state
@@ -151,7 +148,7 @@ bool performUndoOrRedo(BufferView * bv, Undo & undo)
 		}
 
 		// set cursor again to force the position to be the right one
-		text->setCursorIntern(cursor, undo.cursor_pos);
+		text->setCursorIntern(undo.cursor_par_offset, undo.cursor_pos);
 
 		// Clear any selection and set the selection
 		// cursor for any new selection.
@@ -268,6 +265,6 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(bv, kind, bv->text->cursor.par());
+	recordUndo(bv, kind, bv->text->cursorPar());
 }
 

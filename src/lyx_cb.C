@@ -427,7 +427,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 string const getPossibleLabel(BufferView const & bv)
 {
-	ParagraphList::iterator pit = bv.getLyXText()->cursor.par();
+	ParagraphList::iterator pit = bv.getLyXText()->cursorPar();
 	ParagraphList & plist = bv.getLyXText()->ownerParagraphs();
 
 	LyXLayout_ptr layout = pit->layout();

@@ -334,20 +334,18 @@ void InsetText::insetUnlock(BufferView * bv)
 	no_selection = true;
 	locked = false;
 
-	if (text_.selection.set()) {
+	if (text_.selection.set())
 		text_.clearSelection();
-	} else if (owner()) {
+	else if (owner())
 		bv->owner()->setLayout(owner()->getLyXText(bv)
-				       ->cursor.par()->layout()->name());
-	} else
-		bv->owner()->setLayout(bv->text->cursor.par()->layout()->name());
+				       ->cursorPar()->layout()->name());
+	else
+		bv->owner()->setLayout(bv->text->cursorPar()->layout()->name());
 	// hack for deleteEmptyParMech
-	ParagraphList::iterator first_par = paragraphs.begin();
-	if (!first_par->empty()) {
-		text_.setCursor(first_par, 0);
-	} else if (paragraphs.size() > 1) {
-		text_.setCursor(boost::next(first_par), 0);
-	}
+	if (!paragraphs.begin()->empty())
+		text_.setCursor(0, 0);
+	else if (paragraphs.size() > 1)
+		text_.setCursor(1, 0);
 }
 
 
@@ -359,7 +357,7 @@ void InsetText::lockInset(BufferView * bv)
 	inset_boundary = false;
 	inset_par = paragraphs.end();
 	old_par = paragraphs.end();
-	text_.setCursorIntern(paragraphs.begin(), 0);
+	text_.setCursorIntern(0, 0);
 	text_.clearSelection();
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
@@ -400,7 +398,8 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			for (; it != end; ++it) {
 				if (it->inset == inset) {
 					lyxerr << "InsetText::lockInsetInInset: 1 a" << endl;
-					text_.setCursorIntern(pit, it->pos);
+					text_.setCursorIntern(	
+						std::distance(paragraphs.begin(), pit), it->pos);
 					lyxerr << "InsetText::lockInsetInInset: 1 b" << endl;
 					lyxerr << "bv: " << bv << " inset: " << inset << endl;
 					lockInset(bv, inset);
@@ -630,11 +629,9 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 		if (cmd.argument.size()) {
 			if (cmd.argument == "left")
-				text_.setCursorIntern(paragraphs.begin(), 0);
-			else {
-				ParagraphList::iterator it = boost::prior(paragraphs.end());
-				text_.setCursor(it, it->size());
-			}
+				text_.setCursorIntern(0, 0);
+			else 
+				text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
 		} else {
 			int tmp_y = (cmd.y < 0) ? 0 : cmd.y;
 			// we put here -1 and not button as now the button in the
@@ -751,7 +748,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			 * true (on). */
 #if 0
 			// This should not be needed here and is also WRONG!
-			recordUndo(bv, Undo::INSERT, text_.cursor.par());
+			recordUndo(bv, Undo::INSERT, text_.cursorPar());
 #endif
 			bv->switchKeyMap();
 
@@ -1201,7 +1198,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 
 InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 {
-	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params()))
+	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
 		return moveLeftIntern(bv, false, true, false);
 	else
 		return moveRightIntern(bv, true, true, false);
@@ -1210,7 +1207,7 @@ InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 
 InsetOld::RESULT InsetText::moveLeft(BufferView * bv)
 {
-	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params()))
+	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
 		return moveRightIntern(bv, true, true, false);
 	else
 		return moveLeftIntern(bv, false, true, false);
@@ -1358,7 +1355,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 
 	if (text_.selection.set())
-		recordUndo(bv, Undo::ATOMIC, text_.cursor.par());
+		recordUndo(bv, Undo::ATOMIC, text_.cursorPar());
 
 	if (selectall) {
 		text_.cursorTop();
@@ -1479,7 +1476,7 @@ int InsetText::cx() const
 {
 	int x = text_.cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = text_.getFont(text_.cursor.par(), text_.cursor.pos());
+		LyXFont font = text_.getFont(text_.cursorPar(), text_.cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width();
 	}
@@ -1501,7 +1498,7 @@ pos_type InsetText::cpos() const
 
 ParagraphList::iterator InsetText::cpar() const
 {
-	return text_.cursor.par();
+	return text_.cursorPar();
 }
 
 
@@ -1722,8 +1719,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 			return true;
 	}
 	if (!locked) {
-		ParagraphList::iterator pit = boost::prior(paragraphs.end());
-		text_.setCursor(pit, pit->size());
+		text_.setCursor(paragraphs.size() - 1, paragraphs.back().size());
 	}
 	lyx::find::SearchResult result =
 		lyx::find::find(bv, &text_, str, false, cs, mw);
@@ -1750,30 +1746,30 @@ bool InsetText::checkInsertChar(LyXFont & font)
 void InsetText::collapseParagraphs(BufferView * bv)
 {
 	while (paragraphs.size() > 1) {
-		ParagraphList::iterator first_par = paragraphs.begin();
-		ParagraphList::iterator next_par = boost::next(first_par);
-		size_t const first_par_size = first_par->size();
+		ParagraphList::iterator const first = paragraphs.begin();
+		ParagraphList::iterator second = first;
+		advance(second, 1);
+		size_t const first_par_size = first->size();
 
-		if (!first_par->empty() &&
-		    !next_par->empty() &&
-		    !first_par->isSeparator(first_par_size - 1)) {
-			first_par->insertChar(first_par_size, ' ');
+		if (!first->empty() &&
+		    !second->empty() &&
+		    !first->isSeparator(first_par_size - 1)) {
+			first->insertChar(first_par_size, ' ');
 		}
 
+#warning probably broken
 		if (text_.selection.set()) {
-			if (text_.selection.start.par() == next_par) {
-				text_.selection.start.par(first_par);
-				text_.selection.start.pos(
-					text_.selection.start.pos() + first_par_size);
+			if (text_.selection.start.par() == 1) {
+				text_.selection.start.par(1);
+				text_.selection.start.pos(text_.selection.start.pos() + first_par_size);
 			}
-			if (text_.selection.end.par() == next_par) {
-				text_.selection.end.par(first_par);
-				text_.selection.end.pos(
-					text_.selection.end.pos() + first_par_size);
+			if (text_.selection.end.par() == 2) {
+				text_.selection.end.par(1);
+				text_.selection.end.pos(text_.selection.end.pos() + first_par_size);
 			}
 		}
 
-		mergeParagraph(bv->buffer()->params(), paragraphs, first_par);
+		mergeParagraph(bv->buffer()->params(), paragraphs, first);
 	}
 }
 

@@ -358,7 +358,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		// Don't forget to update the Layout
 		string const layoutname =
-			bv_->text->cursor.par()->layout()->name();
+			bv_->text->cursorPar()->layout()->name();
 		owner_->setLayout(layoutname);
 	}
 
@@ -404,9 +404,9 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
 
-	ParagraphList::iterator par;
-	ParagraphList::iterator selstartpar;
-	ParagraphList::iterator selendpar;
+	int par = -1;
+	int selstartpar = -1;
+	int selendpar = -1;
 	UpdatableInset * the_locking_inset = 0;
 
 	pos_type pos = 0;
@@ -451,17 +451,13 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
 			bv_->text->init(bv_);
 		}
-
-		par = bv_->text->ownerParagraphs().end();
-		selstartpar = bv_->text->ownerParagraphs().end();
-		selendpar = bv_->text->ownerParagraphs().end();
 	}
 
 #warning does not help much
 	//bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
 	//	bv_->text->ownerParagraphs().end());
 
-	if (par != bv_->text->ownerParagraphs().end()) {
+	if (par != -1) {
 		bv_->text->selection.set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.
@@ -699,8 +695,8 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!text->selection.set())
 		return Change(Change::UNCHANGED);
 
-	LyXCursor const & cur = text->selection.start;
-	return cur.par()->lookupChangeFull(cur.pos());
+	return text->getPar(text->selection.start)
+		->lookupChangeFull(text->selection.start.pos());
 }
 
 
@@ -715,7 +711,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	if (i >= saved_positions_num)
 		return;
 	saved_positions[i] = Position(buffer_->fileName(),
-				      bv_->text->cursor.par()->id(),
+				      bv_->text->cursorPar()->id(),
 				      bv_->text->cursor.pos());
 	if (i > 0)
 		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
@@ -732,14 +728,14 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	beforeChange(bv_->text);
 
 	if (fname != buffer_->fileName()) {
-		Buffer * b;
+		Buffer * b = 0;
 		if (bufferlist.exists(fname))
 			b = bufferlist.getBuffer(fname);
 		else {
 			b = bufferlist.newBuffer(fname);
 			::loadLyXFile(b, fname); // don't ask, just load it
 		}
-		if (b != 0)
+		if (b)
 			buffer(b);
 	}
 
@@ -837,7 +833,7 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	LyXCursor cursor = bv_->getLyXText()->cursor;
 	Buffer::inset_iterator it =
 		find_if(Buffer::inset_iterator(
-			cursor.par(), cursor.pos()),
+			cursorPar(), cursor.pos()),
 			buffer_->inset_iterator_end(),
 			lyx::compare_memfun(&Inset::lyxCode, code));
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
@@ -846,22 +842,22 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	// should work for now. Better infrastructure is coming. (Lgb)
 
 	Buffer * b = bv_->buffer();
-	LyXCursor cursor = bv_->getLyXText()->cursor;
+	LyXText * text =  bv_->getLyXText();
 
 	Buffer::inset_iterator beg = b->inset_iterator_begin();
 	Buffer::inset_iterator end = b->inset_iterator_end();
 
-	bool cursor_par_seen = false;
+	bool cursorPar_seen = false;
 
 	for (; beg != end; ++beg) {
-		if (beg.getPar() == cursor.par()) {
-			cursor_par_seen = true;
+		if (beg.getPar() == text->cursorPar()) {
+			cursorPar_seen = true;
 		}
-		if (cursor_par_seen) {
-			if (beg.getPar() == cursor.par()
-			    && beg.getPos() >= cursor.pos()) {
+		if (cursorPar_seen) {
+			if (beg.getPar() == text->cursorPar()
+			    && beg.getPos() >= text->cursor.pos()) {
 				break;
-			} else if (beg.getPar() != cursor.par()) {
+			} else if (beg.getPar() != text->cursorPar()) {
 				break;
 			}
 		}
@@ -948,7 +944,7 @@ void BufferView::Pimpl::trackChanges()
 		buf->undostack().clear();
 	} else {
 		update();
-		bv_->text->setCursor(buf->paragraphs().begin(), 0);
+		bv_->text->setCursor(0, 0);
 #warning changes FIXME
 		//moveCursorUpdate(false);
 
@@ -1227,7 +1223,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_LAYOUT_PARAGRAPH: {
 		string data;
-		params2string(*bv_->getLyXText()->cursor.par(), data);
+		params2string(*bv_->getLyXText()->cursorPar(), data);
 
 		data = "show\n" + data;
 		bv_->owner()->getDialogs().show("paragraph", data);
@@ -1237,7 +1233,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_PARAGRAPH_UPDATE: {
 		if (!bv_->owner()->getDialogs().visible("paragraph"))
 			break;
-		Paragraph const & par = *bv_->getLyXText()->cursor.par();
+		Paragraph const & par = *bv_->getLyXText()->cursorPar();
 
 		string data;
 		params2string(par, data);
@@ -1286,7 +1282,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->text->setCursor(bv_->buffer()->paragraphs().begin(), 0);
+		bv_->text->setCursor(0, 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
@@ -1298,7 +1294,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->text->setCursor(bv_->buffer()->paragraphs().begin(), 0);
+		bv_->text->setCursor(0, 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
@@ -1351,7 +1347,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 	if (!lout.empty()) {
 		bv_->text->breakParagraph(bv_->buffer()->paragraphs());
 
-		if (!bv_->text->cursor.par()->empty()) {
+		if (!bv_->text->cursorPar()->empty()) {
 			bv_->text->cursorLeft(bv_);
 			bv_->text->breakParagraph(bv_->buffer()->paragraphs());
 		}
@@ -1396,7 +1392,7 @@ void BufferView::Pimpl::updateInset(InsetOld const * inset)
 	bv_->text->redoParagraph(outerPar(*bv_->buffer(), inset));
 
 	// this should not be needed, but it is...
-	// bv_->text->redoParagraph(bv_->text->cursor.par());
+	// bv_->text->redoParagraph(bv_->text->cursorPar());
 	// bv_->text->fullRebreak();
 
 	update();
@@ -1433,10 +1429,10 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 			// FIXME
 
 			// The test it.size()==1 was needed to prevent crashes.
-			// How to set the cursor corretly when it.size()>1 ??
+			// How to set the cursor correctly when it.size()>1 ??
 			if (it.size() == 1) {
-				bv_->text->setCursorIntern(it.pit(), 0);
-				bv_->text->redoParagraph(bv_->text->cursor.par());
+				bv_->text->setCursorIntern(bv_->text->parOffset(it.pit()), 0);
+				bv_->text->redoParagraph(bv_->text->cursorPar());
 			}
 		}
 	}

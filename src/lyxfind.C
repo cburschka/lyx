@@ -31,9 +31,9 @@ using lyx::support::uppercase;
 
 using std::string;
 
-
 namespace lyx {
 namespace find {
+
 
 namespace {
 
@@ -45,7 +45,7 @@ bool isStringInText(Paragraph const & par, pos_type pos,
 	string::size_type size = str.length();
 	pos_type i = 0;
 	pos_type parsize = par.size();
-	while (((pos + i) < parsize)
+	while ((pos + i < parsize)
 	       && (string::size_type(i) < size)
 	       && (cs ? (str[i] == par.getChar(pos + i))
 		   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
@@ -71,7 +71,7 @@ bool isStringInText(Paragraph const & par, pos_type pos,
 SearchResult searchForward(BufferView * bv, LyXText * text, string const & str,
 			   bool const & cs, bool const & mw)
 {
-	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pit = text->cursorPar();
 	ParagraphList::iterator pend = text->ownerParagraphs().end();
 	pos_type pos = text->cursor.pos();
 	UpdatableInset * inset;
@@ -93,8 +93,8 @@ SearchResult searchForward(BufferView * bv, LyXText * text, string const & str,
 	if (pit != pend) {
 		text->setCursor(pit, pos);
 		return SR_FOUND;
-	} else
-		return SR_NOT_FOUND;
+	}
+	return SR_NOT_FOUND;
 }
 
 
@@ -105,7 +105,7 @@ SearchResult searchBackward(BufferView * bv, LyXText * text,
 			    string const & str,
 			    bool const & cs, bool const & mw)
 {
-	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pit = text->cursorPar();
 	ParagraphList::iterator pbegin = text->ownerParagraphs().begin();
 	pos_type pos = text->cursor.pos();
 
@@ -148,6 +148,7 @@ SearchResult searchBackward(BufferView * bv, LyXText * text,
 }
 
 } // anon namespace
+
 
 
 int replace(BufferView * bv,
@@ -303,7 +304,7 @@ SearchResult find(BufferView * bv, LyXText * text,
 
 SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 {
-	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pit = text->cursorPar();
 	ParagraphList::iterator pend = text->ownerParagraphs().end();
 	pos_type pos = text->cursor.pos();
 

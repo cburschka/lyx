@@ -17,18 +17,17 @@
 
 
 LyXCursor::LyXCursor()
-	: par_(), pos_(0), boundary_(false),
-	  x_(0), x_fix_(0), y_(0)
+	: par_(-1), pos_(0), boundary_(false), x_(0), x_fix_(0), y_(0)
 {}
 
 
-void LyXCursor::par(ParagraphList::iterator pit)
+void LyXCursor::par(lyx::paroffset_type par)
 {
-	par_ = pit;
+	par_ = par;
 }
 
 
-ParagraphList::iterator LyXCursor::par() const
+lyx::paroffset_type LyXCursor::par() const
 {
 	return par_;
 }

@@ -17,6 +17,7 @@
 #include "text_funcs.h"
 #include "debug.h"
 #include "lyxcursor.h"
+#include "lyxtext.h"
 #include "paragraph.h"
 
 #include <boost/next_prior.hpp>
@@ -27,9 +28,9 @@ using lyx::word_location;
 using std::endl;
 
 
-bool transposeChars(LyXCursor const & cursor)
+bool transposeChars(LyXText & text, LyXCursor const & cursor)
 {
-	ParagraphList::iterator tmppit = cursor.par();
+	ParagraphList::iterator tmppit = text.cursorPar();
 	pos_type tmppos = cursor.pos();
 
 	// First decide if it is possible to transpose at all
@@ -58,11 +59,12 @@ bool transposeChars(LyXCursor const & cursor)
 }
 
 
-void cursorLeftOneWord(LyXCursor & cursor, ParagraphList const & pars)
+void cursorLeftOneWord(LyXText & text,
+	LyXCursor & cursor, ParagraphList const & pars)
 {
 	// treat HFills, floats and Insets as words
 
-	ParagraphList::iterator pit = cursor.par();
+	ParagraphList::iterator pit = text.cursorPar();
 	size_t pos = cursor.pos();
 
 	while (pos &&
@@ -88,15 +90,16 @@ void cursorLeftOneWord(LyXCursor & cursor, ParagraphList const & pars)
 			--pos;
 	}
 
-	cursor.par(pit);
+	cursor.par(text.parOffset(pit));
 	cursor.pos(pos);
 }
 
 
-void cursorRightOneWord(LyXCursor & cursor, ParagraphList const & pars)
+void cursorRightOneWord(LyXText & text,
+	LyXCursor & cursor, ParagraphList const & pars)
 {
 	// treat floats, HFills and Insets as words
-	ParagraphList::iterator pit = cursor.par();
+	ParagraphList::iterator pit = text.cursorPar();
 	pos_type pos = cursor.pos();
 
 	// CHECK See comment on top of text.C
@@ -117,25 +120,27 @@ void cursorRightOneWord(LyXCursor & cursor, ParagraphList const & pars)
 		}
 	}
 
-	cursor.par(pit);
+	cursor.par(text.parOffset(pit));
 	cursor.pos(pos);
 }
 
 
 // Select current word. This depends on behaviour of
 // CursorLeftOneWord(), so it is patched as well.
-void getWord(LyXCursor & from, LyXCursor & to, word_location const loc,
-	ParagraphList const & pars)
+void getWord(LyXText & text, LyXCursor & from, LyXCursor & to,
+	word_location const loc, ParagraphList const & pars)
 {
+	ParagraphList::iterator from_par = text.getPar(from);
+	ParagraphList::iterator to_par = text.getPar(to);
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
-		if (from.pos() == 0 || from.pos() == from.par()->size()
-		    || from.par()->isSeparator(from.pos())
-		    || from.par()->isKomma(from.pos())
-		    || from.par()->isNewline(from.pos())
-		    || from.par()->isSeparator(from.pos() - 1)
-		    || from.par()->isKomma(from.pos() - 1)
-		    || from.par()->isNewline(from.pos() - 1)) {
+		if (from.pos() == 0 || from.pos() == from_par->size()
+		    || from_par->isSeparator(from.pos())
+		    || from_par->isKomma(from.pos())
+		    || from_par->isNewline(from.pos())
+		    || from_par->isSeparator(from.pos() - 1)
+		    || from_par->isKomma(from.pos() - 1)
+		    || from_par->isNewline(from.pos() - 1)) {
 			to = from;
 			return;
 		}
@@ -143,14 +148,14 @@ void getWord(LyXCursor & from, LyXCursor & to, word_location const loc,
 
 	case lyx::WHOLE_WORD:
 		// Move cursor to the beginning, when not already there.
-		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
-		    && !(from.par()->isKomma(from.pos() - 1)
-			 || from.par()->isNewline(from.pos() - 1)))
-			cursorLeftOneWord(from, pars);
+		if (from.pos() && !from_par->isSeparator(from.pos() - 1)
+		    && !(from_par->isKomma(from.pos() - 1)
+			 || from_par->isNewline(from.pos() - 1)))
+			cursorLeftOneWord(text, from, pars);
 		break;
 	case lyx::PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		cursorLeftOneWord(from, pars);
+		cursorLeftOneWord(text, from, pars);
 		break;
 	case lyx::NEXT_WORD:
 		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet"
@@ -160,12 +165,12 @@ void getWord(LyXCursor & from, LyXCursor & to, word_location const loc,
 		break;
 	}
 	to = from;
-	while (to.pos() < to.par()->size()
-	       && !to.par()->isSeparator(to.pos())
-	       && !to.par()->isKomma(to.pos())
-	       && !to.par()->isNewline(to.pos())
-	       && !to.par()->isHfill(to.pos())
-	       && !to.par()->isInset(to.pos()))
+	while (to.pos() < to_par->size()
+	       && !to_par->isSeparator(to.pos())
+	       && !to_par->isKomma(to.pos())
+	       && !to_par->isNewline(to.pos())
+	       && !to_par->isHfill(to.pos())
+	       && !to_par->isInset(to.pos()))
 	{
 		to.pos(to.pos() + 1);
 	}

@@ -372,13 +372,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH: {
-		InsetOld * inset = view()->getLyXText()->cursor.par()->inInset();
+		InsetOld * inset = view()->getLyXText()->cursorPar()->inInset();
 		disable = inset && inset->forceDefaultParagraphs(inset);
 		break;
 	}
 
 	case LFUN_INSET_OPTARG:
-		disable = (view()->getLyXText()->cursor.par()->layout()->optionalargs == 0);
+		disable = (view()->getLyXText()->cursorPar()->layout()->optionalargs == 0);
 		break;
 
 	case LFUN_TABULAR_FEATURE:
@@ -736,7 +736,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		flag.setOnOff(buf->isReadonly());
 		break;
 	case LFUN_APPENDIX:
-		flag.setOnOff(view()->getLyXText()->cursor.par()->params().startOfAppendix());
+		flag.setOnOff(view()->getLyXText()->cursorPar()->params().startOfAppendix());
 		break;
 	case LFUN_SWITCHBUFFER:
 		// toggle on the current buffer, but do not toggle off
@@ -911,7 +911,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			int dummy_y;
 			inset->getCursorPos(view(), inset_x, dummy_y);
 #endif
-			if ((action == LFUN_UNKNOWN_ACTION)
+			if (action == LFUN_UNKNOWN_ACTION
 			    && argument.empty()) {
 				argument = encoded_last_key;
 			}
@@ -1003,14 +1003,14 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
-					if (!view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params())) {
+					if (!view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
 						view()->text->cursorRight(view());
 						moveCursorUpdate();
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
-					if (view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params())) {
+					if (view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
 						view()->text->cursorRight(view());
 						moveCursorUpdate();
 						owner->view_state_changed();

@@ -149,7 +149,7 @@ void LyXView::updateLayoutChoice()
 	}
 
 	string const & layout =
-		bufferview_->getLyXText()->cursor.par()->layout()->name();
+		bufferview_->getLyXText()->cursorPar()->layout()->name();
 
 	if (layout != current_layout) {
 		toolbar_->setLayout(layout);

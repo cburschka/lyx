@@ -12,6 +12,7 @@
 
 #include "textcursor.h"
 #include "paragraph.h"
+#include "ParagraphList_fwd.h"
 
 #include <string>
 
@@ -65,33 +66,3 @@ void TextCursor::clearSelection()
 	selection.cursor = cursor;
 }
 
-
-string const TextCursor::selectionAsString(Buffer const & buffer,
-					bool label) const
-{
-	if (!selection.set())
-		return string();
-
-	// should be const ...
-	ParagraphList::iterator startpit = selection.start.par();
-	ParagraphList::iterator endpit = selection.end.par();
-	size_t const startpos = selection.start.pos();
-	size_t const endpos = selection.end.pos();
-
-	if (startpit == endpit)
-		return startpit->asString(buffer, startpos, endpos, label);
-
-	// First paragraph in selection
-	string result =
-		startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
-
-	// The paragraphs in between (if any)
-	ParagraphList::iterator pit = startpit;
-	for (++pit; pit != endpit; ++pit)
-		result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
-
-	// Last paragraph in selection
-	result += endpit->asString(buffer, 0, endpos, label);
-
-	return result;
-}
