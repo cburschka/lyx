@@ -12,7 +12,6 @@
 #ifndef FORMFLOAT_H
 #define FORMFLOAT_H
 
-
 #include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 

@@ -19,6 +19,7 @@
 #include "forms/form_float.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "insets/insetfloat.h"
 #include "support/lstrings.h"
 #include FORMS_H_LOCATION
 

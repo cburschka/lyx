@@ -12,6 +12,7 @@
 
 #include "ControlFloat.h"
 #include "funcrequest.h"
+#include "insets/insetfloat.h"
 
 
 ControlFloat::ControlFloat(Dialog & parent)

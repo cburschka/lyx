@@ -1,17 +1,13 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* ControlFloat.[Ch]: move insetfloat.h into the .C file.
+
 	* ControlFloat.[Ch]: rewrite to use the Dialog-based scheme.
 	* ControlInclude.C: remove unneeded header files.
 
-2003-03-05  Angus Leeming  <leeming@lyx.org>
-
 	* ControlFloat.[Ch]: replace FloatParams with InsetFloatParams.
 
-2003-03-05  Angus Leeming  <leeming@lyx.org>
-
 	* ControlInclude.[Ch]: rewrite to use the Dialog-based scheme.
-
-2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* ControlExternal.[Ch]: rewrite to use the Dialog-based scheme.
 

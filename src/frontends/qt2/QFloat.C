@@ -16,6 +16,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
+#include "insets/insetfloat.h"
 #include "support/lstrings.h"
 
 #include <qpushbutton.h>

@@ -12,13 +12,10 @@
 #ifndef CONTROLFLOAT_H
 #define CONTROLFLOAT_H
 
-
 #include "Dialog.h"
-#include "insets/insetfloat.h"
 
+class InsetFloatParams;
 
-/** A controller for Minipage dialogs.
- */
 class ControlFloat : public Dialog::Controller {
 public:
 	///
