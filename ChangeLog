@@ -1,8 +1,12 @@
 2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/frontends/xforms/FormRef.C (update): Do not update
-	dialog_->type if inset_ == 0.
-
+ 	dialog_->{ref,name,type} if inset_ == 0.
+	Deactivate the type button when buffer is LinuxDoc/Docbook
+	(build): Uncomment calls to addReadOnly().
+	(updateBrowser) Do not disable the update button when there are no 
+	keys.
+ 	
 2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/languages: Add extra_options field. It is used to fix the ~n
