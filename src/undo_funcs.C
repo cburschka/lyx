@@ -321,11 +321,18 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// create a new Undo
-	Paragraph * undopar = 0; // nothing to replace yet (undo of delete maybe)
+	Paragraph * undopar = 0; // nothing to replace (undo of delete maybe)
 
 	Paragraph * start = first;
-	Paragraph * end = &*boost::prior(itbehind);
+	Paragraph * end = 0;
 
+	if (behind)
+		end = const_cast<Paragraph*>(behind->previous());
+	else {
+		end = start;
+		while (end->next())
+			end = end->next();
+	}
 	if (start && end && (start != end->next()) &&
 	    ((before_number != behind_number) ||
 		 ((before_number < 0) && (behind_number < 0))))
