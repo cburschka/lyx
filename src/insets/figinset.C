@@ -81,7 +81,7 @@ using std::pair;
 using std::make_pair;
 
 #ifndef CXX_GLOBAL_CSTD
-using std::memcopy;
+using std::memcpy;
 using std::sin;
 using std::cos;
 using std::fabs;
