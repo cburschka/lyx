@@ -342,12 +342,24 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 		}
 	}
 
-	// Try matching without foundary name
+	// Try matching without foundry name
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
 		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
 		if (compare_no_case(tmp.first, family) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// family alone can contain e.g. "Helvetica [Adobe]"
+	pair<string, string> tmpfam = parseFontName(family);
+
+	// We count in reverse in order to prefer the Xft foundry
+	for (int i = cb->count() - 1; i >= 0; --i) {
+		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
+		if (compare_no_case(tmp.first, tmpfam.first) == 0) {
 			cb->setCurrentItem(i);
 			return;
 		}

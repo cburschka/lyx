@@ -1,3 +1,9 @@
+2003-07-24  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: make sure to correctly split a default
+	lyxrc font for finding the font in the combo box
+	(bug 1285)
+
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
 	* QExternal.C (apply, update_contents):
