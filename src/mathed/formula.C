@@ -102,7 +102,8 @@ InsetFormula::InsetFormula()
 
 
 InsetFormula::InsetFormula(InsetFormula const & other)
-	: par_(other.par_),
+	:	InsetFormulaBase(other),
+		par_(other.par_),
 	  preview_(new PreviewImpl(*this))
 {}
 

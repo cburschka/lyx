@@ -361,11 +361,11 @@ void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 			else
 				os << "{}";
 
-	if (hasDown() && down().data_.size())
-		os << "_{" << down().data_ << '}';
+	if (hasDown() && down().data().size())
+		os << "_{" << down().data() << '}';
 
-	if (hasUp() && up().data_.size())
-		os << "^{" << up().data_ << '}';
+	if (hasUp() && up().data().size())
+		os << "^{" << up().data() << '}';
 }
 
 
@@ -378,8 +378,8 @@ void MathScriptInset::normalize(NormalStream & os) const
 
 void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 {
-	bool d = hasDown() && down().data_.size();
-	bool u = hasUp() && up().data_.size();
+	bool d = hasDown() && down().data().size();
+	bool u = hasUp() && up().data().size();
 
 	if (u)
 		os << "[sup ";
@@ -392,9 +392,9 @@ void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 		os << "[par]";
 
 	if (d)
-		os << down().data_ << ']';
+		os << down().data() << ']';
 	if (u)
-		os << up().data_ << ']';
+		os << up().data() << ']';
 }
 
 
@@ -402,17 +402,17 @@ void MathScriptInset::maplize2(MathInset const * nuc, MapleStream & os) const
 {
 	if (nuc)
 		os << nuc;
-	if (hasDown() && down().data_.size())
-		os << '[' << down().data_ << ']';
-	if (hasUp() && up().data_.size())
-		os << "^(" << up().data_ << ')';
+	if (hasDown() && down().data().size())
+		os << '[' << down().data() << ']';
+	if (hasUp() && up().data().size())
+		os << "^(" << up().data() << ')';
 }
 
 
 void MathScriptInset::mathematicize2(MathInset const * nuc, MathematicaStream & os) const
 {
-	bool d = hasDown() && down().data_.size();
-	bool u = hasUp() && up().data_.size();
+	bool d = hasDown() && down().data().size();
+	bool u = hasUp() && up().data().size();
 
 	if (nuc)
 		if (d)  //subscript only if nuc !
@@ -420,18 +420,18 @@ void MathScriptInset::mathematicize2(MathInset const * nuc, MathematicaStream & 
 		else
 			os << nuc;
 	if (u)
-		os << "^(" << up().data_ << ")";
+		os << "^(" << up().data() << ")";
 
 	if (nuc)
 		if (d)
-		os << "," << down().data_ << "]"; 
+		os << "," << down().data() << "]"; 
 }
 
 
 void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 {
-	bool d = hasDown() && down().data_.size();
-	bool u = hasUp() && up().data_.size();
+	bool d = hasDown() && down().data().size();
+	bool u = hasUp() && up().data().size();
 
 	if (u && d)
 		os << MTag("msubsup");
@@ -446,11 +446,11 @@ void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 		os << "<mrow/>";
 
 	if (u && d)
-		os << down().data_ << up().data_ << ETag("msubsup");
+		os << down().data() << up().data() << ETag("msubsup");
 	else if (u)
-		os << up().data_ << ETag("msup");
+		os << up().data() << ETag("msup");
 	else if (d)
-		os << down().data_ << ETag("msub");
+		os << down().data() << ETag("msub");
 }
 
 
@@ -458,10 +458,10 @@ void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
 {
 	if (nuc)
 		os << nuc;
-	if (hasDown() && down().data_.size())
-		os << '[' << down().data_ << ']';
-	if (hasUp() && up().data_.size())
-		os << "^(" << up().data_ << ')';
+	if (hasDown() && down().data().size())
+		os << '[' << down().data() << ']';
+	if (hasUp() && up().data().size())
+		os << "^(" << up().data() << ')';
 }
 
 

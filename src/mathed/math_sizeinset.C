@@ -26,9 +26,9 @@ void MathSizeInset::metrics(MathMetricsInfo & mi) const
 {
 	//MathStyleChanger dummy(mi.base, MathStyles(key_->id));
 	xcell(0).metrics(mi);
-	ascent_   = xcell(0).ascent_ + 1;
-	descent_  = xcell(0).descent_ + 1;
-	width_    = xcell(0).width_ + 2;
+	ascent_   = xcell(0).ascent() + 1;
+	descent_  = xcell(0).descent() + 1;
+	width_    = xcell(0).width() + 2;
 }
 
 

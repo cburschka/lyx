@@ -38,13 +38,13 @@ MathXArray const & MathNestInset::xcell(idx_type i) const
 
 MathArray & MathNestInset::cell(idx_type i)
 {
-	return cells_[i].data_;
+	return cells_[i].data();
 }
 
 
 MathArray const & MathNestInset::cell(idx_type i) const
 {
-	return cells_[i].data_;
+	return cells_[i].data();
 }
 
 

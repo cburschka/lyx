@@ -107,7 +107,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 	}
 
 	expand();
-	expanded_.data_.substitute(*this);
+	expanded_.data().substitute(*this);
 	expanded_.metrics(mi_);
 	width_   = expanded_.width();
 	ascent_  = expanded_.ascent();
@@ -199,21 +199,21 @@ void MathMacro::validate(LaTeXFeatures & features) const
 void MathMacro::maplize(MapleStream & os) const
 {
 	updateExpansion();
-	::maplize(expanded_.data_, os);
+	::maplize(expanded_.data(), os);
 }
 
 
 void MathMacro::mathmlize(MathMLStream & os) const
 {
 	updateExpansion();
-	::mathmlize(expanded_.data_, os);
+	::mathmlize(expanded_.data(), os);
 }
 
 
 void MathMacro::octavize(OctaveStream & os) const
 {
 	updateExpansion();
-	::octavize(expanded_.data_, os);
+	::octavize(expanded_.data(), os);
 }
 
 
@@ -239,5 +239,5 @@ void MathMacro::write(WriteStream & os) const
 void MathMacro::updateExpansion() const
 {
 	expand();
-	expanded_.data_.substitute(*this);
+	expanded_.data().substitute(*this);
 }

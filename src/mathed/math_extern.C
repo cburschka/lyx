@@ -299,7 +299,7 @@ void splitScripts(MathArray & ar)
 		// create extra script inset and move superscript over
 		MathScriptInset * q = new MathScriptInset;
 		q->ensure(true);
-		q->up().data_.swap(p->up().data_);
+		q->up().data().swap(p->up().data());
 		p->removeScript(true);
 
 		// insert new inset behind
@@ -549,7 +549,7 @@ void extractIntegrals(MathArray & ar)
 		if (st != ar.end())
 			if (MathScriptInset * sub = (*st)->asScriptInset())
 				if (sub->hasDown()) {
-					p->cell(2) = sub->down().data_;
+					p->cell(2) = sub->down().data();
 					++st;
 				}
 
@@ -557,7 +557,7 @@ void extractIntegrals(MathArray & ar)
 		if (st != ar.end())
 			if (MathScriptInset * sup = (*st)->asScriptInset())
 				if (sup->hasUp()) {
-					p->cell(3) = sup->up().data_;
+					p->cell(3) = sup->up().data();
 					++st;
 				}
 
@@ -617,7 +617,7 @@ void extractSums(MathArray & ar)
 			if (MathScriptInset * sub = (*st)->asScriptInset())
 				if (sub->hasDown()) {
 					// try to figure out the summation index from the subscript
-					MathArray & ar = sub->down().data_;
+					MathArray & ar = sub->down().data();
 					MathArray::iterator it =
 						find_if(ar.begin(), ar.end(), &testEqualSign);
 					if (it != ar.end()) {
@@ -636,7 +636,7 @@ void extractSums(MathArray & ar)
 		if (st != ar.end())
 			if (MathScriptInset * sup = (*st)->asScriptInset())
 				if (sup->hasUp()) {
-					p->cell(3) = sup->up().data_;
+					p->cell(3) = sup->up().data();
 					++st;
 				}
 
@@ -741,7 +741,7 @@ void extractDiff(MathArray & ar)
 			if (script && script->hasUp()) {
 				// things like   d.../dx^n
 				int mult = 1;
-				if (extractNumber(script->up().data_, mult)) {
+				if (extractNumber(script->up().data(), mult)) {
 					//lyxerr << "mult: " << mult << endl;
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathArray(dt + 1, st));

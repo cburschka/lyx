@@ -30,13 +30,13 @@ public:
 	/// constructor
 	MathXArray();
 	/// rebuild cached metrics information
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	/// redraw cell using cache metrics information
-	void draw(MathPainterInfo & pain, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information
-	void metricsT(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	/// redraw cell using cache metrics information
-	void drawT(TextPainter & pain, int x, int y) const;
+	void drawT(TextPainter & pi, int x, int y) const;
 	/// mark cell for re-drawing
 	void touch() const;
 
@@ -77,8 +77,12 @@ public:
 	const_iterator begin() const { return data_.begin(); }
 	/// end iterator of the underlying MathArray
 	const_iterator end() const { return data_.end(); }
+	/// access to data
+	MathArray const & data() const { return data_; }
+	/// access to data
+	MathArray & data() { return data_; }
 
-public:
+private:
 	/// the underlying MathArray
 	MathArray data_;
 	/// cached width of cell
@@ -97,6 +101,17 @@ public:
 	mutable bool clean_;
 	/// cached draw status of cell
 	mutable bool drawn_;
+
+	// cached metrics
+	struct Row {
+		///
+		Row();
+		/// y offset relative to yo
+		int yo;
+		/// glue between words
+		int glue;
+	};
+	std::vector<Row> rows_;
 };
 
 /// output cell on a stream
