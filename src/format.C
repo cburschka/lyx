@@ -35,6 +35,7 @@ using lyx::support::subst;
 using lyx::support::Systemcall;
 
 using std::string;
+using std::distance;
 
 extern LyXServerSocket * lyxsocket;
 

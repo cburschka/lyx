@@ -50,6 +50,7 @@ using std::endl;
 using std::find_if;
 using std::string;
 using std::vector;
+using std::distance;
 
 
 namespace {

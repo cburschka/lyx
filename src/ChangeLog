@@ -1,4 +1,9 @@
 
+2004-02-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* converter.C:
+	* format.C: add using std::distance to compile on gcc 2.95/stlport
+
 2004-02-04  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* cursor.[Ch]: workaround gcc 2.95 pointer comparison bug
