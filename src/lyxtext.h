@@ -99,8 +99,6 @@ public:
 			 lyx::pos_type pos,
 			 LyXFont const & font, bool toggleall);
 
-	///
-	void breakAgainOneRow(RowList::iterator rit);
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(ParagraphList & paragraphs, char keep_layout = 0);
 

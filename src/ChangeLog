@@ -4,6 +4,9 @@
 	* text.C (insertChar, backspace): replace rowlist fiddling
 	with rebreak of full par
 
+	* lyxtext.h:
+	* text.C (breakAgainOneRow): removed
+
 2003-08-07  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.C:

@@ -1435,51 +1435,6 @@ void LyXText::breakAgain(RowList::iterator rit)
 }
 
 
-// this is just a little changed version of break again
-void LyXText::breakAgainOneRow(RowList::iterator rit)
-{
-	Assert(rit != rows().end());
-
-	pos_type z = rowBreakPoint(*rit);
-	RowList::iterator tmprit = rit;
-	RowList::iterator end = rows().end();
-
-	if (z < rit->par()->size()) {
-		RowList::iterator next_rit = boost::next(rit);
-
-		if (next_rit == end ||
-		    (next_rit != end &&
-		     next_rit->par() != rit->par())) {
-			// insert a new row
-			++z;
-			Row newrow(rit->par(), z);
-			rit = rowlist_.insert(next_rit, newrow);
-		} else  {
-			++rit;
-			++z;
-			if (rit->pos() != z)
-				rit->pos(z);
-		}
-	} else {
-		// if there are some rows too much, delete them
-		// only if you broke the whole paragraph!
-		RowList::iterator tmprit2 = rit;
-		while (boost::next(tmprit2) != end
-		       && boost::next(tmprit2)->par() == rit->par()) {
-			++tmprit2;
-		}
-		while (tmprit2 != rit) {
-			--tmprit2;
-			removeRow(boost::next(tmprit2));
-		}
-	}
-
-	// set the dimensions of the row
-	tmprit->fill(fill(tmprit, workWidth()));
-	setHeightOfRow(tmprit);
-}
-
-
 void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 {
 	// allow only if at start or end, or all previous is new text
