@@ -52,6 +52,7 @@ enum kb_action {
 	LFUN_TEX,
 	LFUN_FOOTMELT, // schedule for deletion
 	LFUN_MARGINMELT, // schedule for deletion
+	LFUN_FLOATSOPERATE, //schedule for deletion?
 	LFUN_EMPH,
 	LFUN_BOLD,
 	LFUN_ROMAN,

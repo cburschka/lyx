@@ -123,7 +123,14 @@ Menuset
     End
 
     Menu "edit_floats"
-        Item "? What should go here ?" ""
+	Item "Open/Close|O" "open-stuff"
+	Item "Melt|M" "melt"
+        Item "Open All Footnotes/Margin Notes|A" "floats-operate openfoot"
+        Item "Close All Footnotes/Margin Notes|C" "floats-operate closefoot"
+        Item "Open All Figures/Tables|F" "floats-operate openfig"
+        Item "Close All Figures/Tables|T" "floats-operate closefig"
+	Separator
+        Item "Remove all Error Boxes|R" "error-remove-all"
     End
 
     Menu "edit_tabular"

@@ -226,6 +226,7 @@ void LyXAction::init()
 #endif
 		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
 		  N_("Insert Marginalnote"), Noop },
+		{ LFUN_FLOATSOPERATE, "floats-operate", "", ReadOnly },
 		{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"),
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",

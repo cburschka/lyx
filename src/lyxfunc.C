@@ -1186,6 +1186,20 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->setState();
 		break;
 #endif
+#ifndef NEW_INSETS
+	case LFUN_FLOATSOPERATE:
+		if (argument == "openfoot")
+			owner->view()->allFloats(1,0);
+		else if (argument == "closefoot")
+			owner->view()->allFloats(0,0);
+		else if (argument == "openfig")
+			owner->view()->allFloats(1,1);
+		else if (argument == "closefig")
+			owner->view()->allFloats(0,1);
+		break;
+#else
+#warning Find another implementation here (or another lyxfunc)!
+#endif
 	case LFUN_HELP_COPYRIGHT:
 		owner->getDialogs()->showCopyright();
 		break;
