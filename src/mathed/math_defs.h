@@ -118,15 +118,4 @@ enum MathInsetTypes  {
 	LM_OT_MAX
 };
 
-
-///
-enum MathSymbolTypes {
-	///
-	LMB_NONE = 0,
-	///
-	LMB_RELATION,
-	///
-	LMB_OPERATOR
-};
-
 #endif

@@ -185,12 +185,6 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathHullInset::mathmlize(MathMLStream & os) const
-{
-	MathGridInset::mathmlize(os);
-}
-
-
 string MathHullInset::label(row_type row) const
 {
 	return label_[row];
@@ -670,6 +664,12 @@ void MathHullInset::normalize(NormalStream & os) const
 	os << "[formula " << normalName(getType()).c_str() << " ";
 	MathGridInset::normalize(os);
 	os << "] ";
+}
+
+
+void MathHullInset::mathmlize(MathMLStream & os) const
+{
+	MathGridInset::mathmlize(os);
 }
 
 

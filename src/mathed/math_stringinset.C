@@ -101,11 +101,11 @@ void MathStringInset::octavize(OctaveStream & os) const
 void MathStringInset::mathmlize(MathMLStream & os) const
 {
 	if (code_ == LM_TC_VAR)
-		os << "<mi>" << str_.c_str() << "</mi>";
+		os << "<mi> " << str_.c_str() << " </mi>";
 	else if (code_ == LM_TC_CONST)
-		os << "<mn>" << str_.c_str() << "</mn>";
+		os << "<mn> " << str_.c_str() << " </mn>";
 	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
-		os << "<mtext>" << str_.c_str() << "</mtext>";
+		os << "<mtext> " << str_.c_str() <<  " </mtext>";
 	else
 		os << str_.c_str();
 }

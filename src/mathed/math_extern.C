@@ -289,6 +289,10 @@ void extractIntegrals(MathArray & ar)
 		MathArray::iterator jt =
 			endNestSearch(it, ar.end(), intSymbolTest, differentialTest);
 
+		// something sensible found?
+		if (jt == ar.end())
+			continue;
+
 		// create a proper inset as replacement
 		MathExIntInset * p = new MathExIntInset;
 

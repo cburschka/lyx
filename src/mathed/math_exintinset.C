@@ -83,7 +83,13 @@ void MathExIntInset::maplize(MapleStream & os) const
 
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
-	//os << name_.c_str() << '(' << cell(0) << ')';
+	if (hasScripts())
+		scripts_->asScriptInset()->mathmlize(int_.nucleus(), os);
+	else 
+		int_->mathmlize(os);
+	os << core_ << "<mo> &InvisibleTimes; </mo>"
+	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
+	   << diff_ << ETag("mrow");
 }
 
 

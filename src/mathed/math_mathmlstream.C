@@ -6,7 +6,7 @@
 
 
 MathMLStream::MathMLStream(std::ostream & os)
-	: os_(os), tab_(0), line_(0)
+	: os_(os), tab_(0), line_(0), lastchar_(0)
 {}
 
 

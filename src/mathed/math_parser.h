@@ -129,7 +129,7 @@ struct latexkeys {
 	///
 	unsigned char latex_font_id;
 	///
-	MathSymbolTypes type;
+	string type;
 };
 
 

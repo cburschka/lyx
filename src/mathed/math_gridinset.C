@@ -262,29 +262,6 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathGridInset::write(WriteStream & os) const
-{
-	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << eocString(col).c_str();
-		os << eolString(row).c_str();
-	}
-}
-
-
-void MathGridInset::normalize(NormalStream & os) const
-{
-	os << "[grid ";
-	for (row_type row = 0; row < nrows(); ++row) {
-		os << "[row ";
-		for (col_type col = 0; col < ncols(); ++col)
-			os << "[cell " << cell(index(row, col)) << ']';
-		os << ']';
-	}
-	os << ']';
-}
-
-
 string MathGridInset::eolString(row_type row) const
 {
 	if (row + 1 == nrows())	
@@ -582,4 +559,42 @@ std::vector<MathInset::idx_type>
 			res.push_back(index(i, j));
 	return res;
 }
+
+
+
+void MathGridInset::normalize(NormalStream & os) const
+{
+	os << "[grid ";
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << "[row ";
+		for (col_type col = 0; col < ncols(); ++col)
+			os << "[cell " << cell(index(row, col)) << ']';
+		os << ']';
+	}
+	os << ']';
+}
+
+
+void MathGridInset::mathmlize(MathMLStream & os) const
+{
+	os << MTag("mtable");
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << MTag("mtr");
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col));
+		os << ETag("mtr");
+	}
+	os << ETag("mtable");
+}
+
+
+void MathGridInset::write(WriteStream & os) const
+{
+	for (row_type row = 0; row < nrows(); ++row) {
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << eocString(col).c_str();
+		os << eolString(row).c_str();
+	}
+}
+
 

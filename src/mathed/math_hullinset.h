@@ -25,10 +25,6 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
-	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
@@ -79,7 +75,11 @@ public:
 	///
 	MathInsetTypes getType() const;
 	///
+	void write(WriteStream & os) const;
+	///
 	void mathmlize(MathMLStream &) const;
+	///
+	void normalize(NormalStream &) const;
 
 private:
 	///

@@ -1,7 +1,7 @@
 #include "math_symbolinset.h"
-#include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "math_parser.h"
 #include "debug.h"
 
 
@@ -96,7 +96,7 @@ void MathSymbolInset::draw(Painter & pain, int x, int y) const
 
 bool MathSymbolInset::isRelOp() const
 {	
-	return sym_->type == LMB_RELATION;
+	return sym_->type == "mathrel";
 }
 
 
@@ -127,9 +127,18 @@ void MathSymbolInset::maplize(MapleStream & os) const
 }
 
 
+char const * MathMLtype(string const & s)
+{
+	if (s == "mathop")
+		return "mo";
+	return "mi";
+}
+
+
 void MathSymbolInset::mathmlize(MathMLStream & os) const
 {
-	os << name().c_str();
+	char const * type = MathMLtype(sym_->type);
+	os << '<' << type << "> " << name().c_str() << " </" << type << '>';
 }
 
 

@@ -46,6 +46,8 @@ struct MathMLStream {
 	int tab_;
 	///
 	int line_;
+	///
+	char lastchar_;
 };
 
 

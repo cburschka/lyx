@@ -45,14 +45,7 @@ void MathMatrixInset::maplize(MapleStream & os) const
 
 void MathMatrixInset::mathmlize(MathMLStream & os) const
 {
-	os << MTag("mtable");
-	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("mtr");
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col));
-		os << ETag("mtr");
-	}
-	os << ETag("mtable");
+	MathGridInset::mathmlize(os);
 }
 
 

@@ -149,14 +149,12 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-/*
 	///
-	void maplize(MapleStream &) const;
+	//void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
-	void octavize(OctaveStream &) const;
-*/
+	//void octavize(OctaveStream &) const;
 
 protected:
 	/// returns proper 'end of line' code for LaTeX

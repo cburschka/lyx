@@ -160,16 +160,6 @@ MathTokenEnum tokenEnum(const string & font)
 }
 
 
-MathSymbolTypes symbolType(const string & type)
-{
-	if (type == "mathrel")
-		return LMB_RELATION;
-	if (type == "mathbin")
-		return LMB_OPERATOR;	
-	return LMB_NONE;
-}
-
-
 void readSymbols(string const & filename)
 {
 	LyXLex lex(0, 0);
@@ -184,7 +174,7 @@ void readSymbols(string const & filename)
 		if (lex.next())
 			tmp.id = lex.getInteger();
 		if (lex.next())
-			tmp.type = symbolType(lex.getString());
+			tmp.type = lex.getString();
 		if (theWordList.find(tmp.name) != theWordList.end())
 			lyxerr << "readSymbols: token " << tmp.name
 			       << " already exists.\n";
@@ -201,7 +191,6 @@ void initSymbols()
 		tmp.name          = p->name;
 		tmp.token         = p->token;
 		tmp.id            = p->id;
-		tmp.type          = LMB_NONE;
 		tmp.latex_font_id = 0;
 		theWordList[p->name] = tmp;
 	}
