@@ -68,6 +68,6 @@ void MathMacroTemplate::write(WriteStream & os) const
 {
 	os << "\n\\newcommand{\\" << name_.c_str() << '}';
 	if (numargs_ > 0)
-		os << '[' << ('0' + numargs_) << ']';
+		os << '[' << numargs_ << ']';
 	os << '{' << cell(0) << "}\n";
 }

@@ -749,9 +749,6 @@ void MathCursor::selHandle(bool sel)
 void MathCursor::selStart()
 {
 	seldump("selStart");
-	if (selection_)
-		return;
-
 	theSelection.clear();
 	Anchor_ = Cursor_;
 	selection_ = true;
