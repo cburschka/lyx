@@ -1,3 +1,11 @@
+2004-08-14  André Pönitz  <poenitz@gmx.net>
+	
+	* text.C:
+	* text2.C:
+	* rowpainter.C:
+	* lyxtext.h (several functions): use a Paragraph & argument 
+	instead of par_type
+
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* metricsinfo.h: add a new field ltr_pos to PainterInfo

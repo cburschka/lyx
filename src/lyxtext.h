@@ -59,11 +59,11 @@ public:
 	/// update y coordinate cache of all paragraphs
 	void updateParPositions();
 	///
-	LyXFont getFont(par_type pit, pos_type pos) const;
+	LyXFont getFont(Paragraph const & par, pos_type pos) const;
 	///
 	LyXFont getLayoutFont(par_type pit) const;
 	///
-	LyXFont getLabelFont(par_type pit) const;
+	LyXFont getLabelFont(Paragraph const & par) const;
 	///
 	void setCharFont(par_type pit, pos_type pos, LyXFont const & font);
 	///
@@ -271,9 +271,9 @@ public:
 	InsetBase * checkInsetHit(int x, int y) const;
 
 	///
-	int singleWidth(par_type pit, pos_type pos) const;
+	int singleWidth(Paragraph const & par, pos_type pos) const;
 	///
-	int singleWidth(par_type pit,
+	int singleWidth(Paragraph const & par,
 		pos_type pos, char c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
@@ -399,7 +399,7 @@ private:
 	/// sets row.width to the minimum space a row needs on the screen in pixel
 	void setRowWidth(par_type pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(par_type pit, Row const & row) const;
+	int labelFill(Paragraph const & par, Row const & row) const;
 	/// FIXME
 	int labelEnd(par_type pit) const;
 

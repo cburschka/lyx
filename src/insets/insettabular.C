@@ -1693,7 +1693,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				InsetText & inset = loctab->getCellInset(cell);
-				LyXFont const font = inset.text_.getFont(0, 0);
+				Paragraph & par = inset.text_.getPar(0);
+				LyXFont const font = inset.text_.getFont(par, 0);
 				inset.setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
@@ -1703,7 +1704,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				InsetText & inset = tabular.getCellInset(cell);
-				LyXFont const font = inset.text_.getFont(0, 0);
+				Paragraph & par = inset.text_.getPar(0);
+				LyXFont const font = inset.text_.getFont(par, 0);
 				inset.setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
@@ -1718,7 +1720,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		InsetText & inset = loctab->getCellInset(cell);
-		LyXFont const font = inset.text_.getFont(0, 0);
+		Paragraph & par = inset.text_.getPar(0);
+		LyXFont const font = inset.text_.getFont(par, 0);
 		inset.setText(buf.substr(op, len - op), font);
 	}
 	return true;

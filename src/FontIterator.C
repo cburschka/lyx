@@ -21,7 +21,7 @@
 FontIterator::FontIterator(LyXText const & text, lyx::par_type pit,
 			   lyx::pos_type pos)
 	: text_(text), pit_(pit), pos_(pos),
-	  font_(text.getFont(pit, pos)),
+	  font_(text.getFont(text.getPar(pit), pos)),
 	  endspan_(text.getPar(pit).getEndPosOfFontSpan(pos)),
 	  bodypos_(text.getPar(pit).beginOfBody())
 {}
@@ -43,7 +43,7 @@ FontIterator & FontIterator::operator++()
 {
 	++pos_;
 	if (pos_ > endspan_ || pos_ == bodypos_) {
-		font_ = text_.getFont(pit_, pos_);
+		font_ = text_.getFont(text_.getPar(pit_), pos_);
 		endspan_ = text_.getPar(pit_).getEndPosOfFontSpan(pos_);
 	}
 	return *this;

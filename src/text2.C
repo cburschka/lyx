@@ -90,7 +90,7 @@ void LyXText::init(BufferView * bv)
 	for (par_type pit = 0; pit != end; ++pit)
 		pars_[pit].rows.clear();
 
-	current_font = getFont(0, 0);
+	current_font = getFont(pars_[0], 0);
 	redoParagraphs(0, end);
 	updateCounters();
 }
@@ -149,11 +149,10 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-LyXFont LyXText::getFont(par_type const pit, pos_type const pos) const
+LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 {
 	BOOST_ASSERT(pos >= 0);
 
-	Paragraph const & par = pars_[pit];
 	LyXLayout_ptr const & layout = par.layout();
 #ifdef WITH_WARNINGS
 #warning broken?
@@ -186,7 +185,6 @@ LyXFont LyXText::getFont(par_type const pit, pos_type const pos) const
 		font.realize(font_);
 
 	// Realize with the fonts of lesser depth.
-	//font.realize(outerFont(pit, paragraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -209,16 +207,15 @@ LyXFont LyXText::getLayoutFont(par_type const pit) const
 }
 
 
-LyXFont LyXText::getLabelFont(par_type pit) const
+LyXFont LyXText::getLabelFont(Paragraph const & par) const
 {
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	LyXLayout_ptr const & layout = par.layout();
 
-	if (!pars_[pit].getDepth())
+	if (!par.getDepth())
 		return layout->reslabelfont;
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
-	font.realize(outerFont(pit, paragraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -436,7 +433,7 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 		LyXFont layoutfont;
 		par_type pit = cur.par();
 		if (cur.pos() < pars_[pit].beginOfBody())
-			layoutfont = getLabelFont(pit);
+			layoutfont = getLabelFont(pars_[pit]);
 		else
 			layoutfont = getLayoutFont(pit);
 
@@ -460,21 +457,18 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	par_type const beg = cur.selBegin().par();
 	par_type const end = cur.selEnd().par();
 
-	DocIterator pos = cur.selectionBegin();
-	DocIterator posend = cur.selectionEnd();
-
-	lyxerr[Debug::DEBUG] << "pos: " << pos << " posend: " << posend
-			     << endl;
+	DocIterator dit = cur.selectionBegin();
+	DocIterator ditend = cur.selectionEnd();
 
 	BufferParams const & params = cur.buffer().params();
 
-	// Don't use forwardChar here as posend might have
+	// Don't use forwardChar here as ditend might have
 	// pos() == lastpos() and forwardChar would miss it.
-	for (; pos != posend; pos.forwardPos()) {
-		if (pos.pos() != pos.lastpos()) {
-			LyXFont f = getFont(pos.par(), pos.pos());
+	for (; dit != ditend; dit.forwardPos()) {
+		if (dit.pos() != dit.lastpos()) {
+			LyXFont f = getFont(dit.paragraph(), dit.pos());
 			f.update(font, params.language, toggleall);
-			setCharFont(pos.par(), pos.pos(), f);
+			setCharFont(dit.par(), dit.pos(), f);
 		}
 	}
 
@@ -1028,7 +1022,7 @@ void LyXText::setCurrentFont(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	pos_type pos = cur.pos();
-	par_type pit = cur.par();
+	Paragraph & par = cur.paragraph();
 
 	if (cur.boundary() && pos > 0)
 		--pos;
@@ -1037,7 +1031,7 @@ void LyXText::setCurrentFont(LCursor & cur)
 		if (pos == cur.lastpos())
 			--pos;
 		else // potentional bug... BUG (Lgb)
-			if (pars_[pit].isSeparator(pos)) {
+			if (par.isSeparator(pos)) {
 				if (pos > cur.textRow().pos() &&
 				    bidi.level(pos) % 2 ==
 				    bidi.level(pos - 1) % 2)
@@ -1048,13 +1042,13 @@ void LyXText::setCurrentFont(LCursor & cur)
 	}
 
 	BufferParams const & bufparams = cur.buffer().params();
-	current_font = pars_[pit].getFontSettings(bufparams, pos);
-	real_current_font = getFont(pit, pos);
+	current_font = par.getFontSettings(bufparams, pos);
+	real_current_font = getFont(par, pos);
 
 	if (cur.pos() == cur.lastpos()
-	    && bidi.isBoundary(cur.buffer(), pars_[pit], cur.pos())
+	    && bidi.isBoundary(cur.buffer(), par, cur.pos())
 	    && !cur.boundary()) {
-		Language const * lang = pars_[pit].getParLanguage(bufparams);
+		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);
 		current_font.setNumber(LyXFont::OFF);
 		real_current_font.setLanguage(lang);
@@ -1066,26 +1060,27 @@ void LyXText::setCurrentFont(LCursor & cur)
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type LyXText::getColumnNearX(par_type pit,
+pos_type LyXText::getColumnNearX(par_type const pit,
 	Row const & row, int & x, bool & boundary) const
 {
 	x -= xo_;
 	RowMetrics const r = computeRowMetrics(pit, row);
+	Paragraph const & par = pars_[pit];
 
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
 	pos_type c = 0;
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	LyXLayout_ptr const & layout = par.layout();
 
 	bool left_side = false;
 
-	pos_type body_pos = pars_[pit].beginOfBody();
+	pos_type body_pos = par.beginOfBody();
 
 	double tmpx = r.x;
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
-	    (body_pos > end || !pars_[pit].isLineSeparator(body_pos - 1)))
+	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	// check for empty row
@@ -1099,23 +1094,23 @@ pos_type LyXText::getColumnNearX(par_type pit,
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += r.label_hfill +
-				font_metrics::width(layout->labelsep, getLabelFont(pit));
-			if (pars_[pit].isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(pit, body_pos - 1);
+				font_metrics::width(layout->labelsep, getLabelFont(par));
+			if (par.isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(par, body_pos - 1);
 		}
 
-		if (hfillExpansion(pars_[pit], row, c)) {
-			tmpx += singleWidth(pit, c);
+		if (hfillExpansion(par, row, c)) {
+			tmpx += singleWidth(par, c);
 			if (c >= body_pos)
 				tmpx += r.hfill;
 			else
 				tmpx += r.label_hfill;
-		} else if (pars_[pit].isSeparator(c)) {
-			tmpx += singleWidth(pit, c);
+		} else if (par.isSeparator(c)) {
+			tmpx += singleWidth(par, c);
 			if (c >= body_pos)
 				tmpx += r.separator;
 		} else {
-			tmpx += singleWidth(pit, c);
+			tmpx += singleWidth(par, c);
 		}
 		++vc;
 	}
@@ -1130,11 +1125,11 @@ pos_type LyXText::getColumnNearX(par_type pit,
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
 	// some speedup if rtl_support == false
-	bool const lastrow = lyxrc.rtl_support && row.endpos() == pars_[pit].size();
+	bool const lastrow = lyxrc.rtl_support && row.endpos() == par.size();
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
-	bool const rtl = lastrow ? isRTL(pars_[pit]) : false;
+	bool const rtl = lastrow ? isRTL(par) : false;
 	if (lastrow &&
 		 ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 		  (!rtl && !left_side && vc == end  && x > tmpx + 5)))
@@ -1148,15 +1143,15 @@ pos_type LyXText::getColumnNearX(par_type pit,
 		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = bidi.isBoundary(*bv()->buffer(), pars_[pit], c);
+			boundary = bidi.isBoundary(*bv()->buffer(), par, c);
 		}
 	}
 
-	if (row.pos() < end && c >= end && pars_[pit].isNewline(end - 1)) {
+	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
 		if (bidi.level(end -1) % 2 == 0)
-			tmpx -= singleWidth(pit, end - 1);
+			tmpx -= singleWidth(par, end - 1);
 		else
-			tmpx += singleWidth(pit, end - 1);
+			tmpx += singleWidth(par, end - 1);
 		c = end - 1;
 	}
 
