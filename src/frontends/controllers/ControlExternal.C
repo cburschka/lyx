@@ -22,20 +22,21 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
+#include "BufferView.h"
 #include "ButtonControllerBase.h"
 #include "ControlExternal.h"
 #include "ControlInset.tmpl"
-#include "buffer.h"
 #include "Dialogs.h"
 #include "Liason.h"
 #include "LyXView.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "frontends/FileDialog.h"
+#include "ViewBase.h"
+#include "buffer.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
-#include "BufferView.h"
+#include "helper_funcs.h"
+#include "lyxrc.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 using std::make_pair;
 using std::vector;
@@ -149,61 +150,21 @@ ExternalTemplate ControlExternal::getTemplate(int i) const
 
 string const ControlExternal::Browse(string const & input) const
 {
-#ifdef WITH_WARNINGS
-#warning Candidate for using browseRelFile
-#endif
-	string buf;
+	string const title =  _("Select external file");
+
 	string const bufpath = lv_.buffer()->filePath();
 
-	if (!input.empty()) {
-		buf = MakeAbsPath(input, bufpath);
-		buf = OnlyPath(buf);
-	} else {
-		buf = bufpath;
-	}
-    
-	FileDialog fileDlg(&lv_,
-			   _("Select external file"),
-			   LFUN_SELECT_FILE_SYNC,
-			   make_pair(string(_("Document|#o#O")), string(buf)));
-	
 	/// Determine the template file extension
 	ExternalTemplate const & et = params().templ;
-
-	string regexp = et.fileRegExp;
-	if (regexp.empty())
-		regexp = "*";
+	string pattern = et.fileRegExp;
+	if (pattern.empty())
+		pattern = "*";
 
 	// FIXME: a temporary hack until the FileDialog interface is updated
-	regexp += "|";
+	pattern += "|";
 
-	static int once;
-	string current_path;
+	pair<string, string> dir1(N_("Documents|#o#O"),
+				  string(lyxrc.document_path));
 
-	while (1) {
-		string const path = (once) ? current_path : buf;
-		FileDialog::Result result = fileDlg.Select(path, regexp, input);
-
-		if (result.second.empty())
-			return string();
-
-		string p = result.second;
-
-		buf = MakeRelPath(p, bufpath);
-		current_path = OnlyPath(p);
-		once = 1;
-		
-		if (contains(p, "#") ||
-		    contains(p, "~") ||
-		    contains(p, "$") ||
-		    contains(p, "%")) {
-			Alert::alert(_("Filename can't contain any "
-				     "of these characters:"),
-				   // xgettext:no-c-format
-				   _("'#', '~', '$' or '%'."));
-		} else
-			break;
-	}
-
-	return buf;
+	return browseRelFile(&lv_, input, bufpath, title, pattern, dir1);
 }

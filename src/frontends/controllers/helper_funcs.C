@@ -82,7 +82,8 @@ string const browseFile(LyXView * lv, string const & filename,
 			pair<string,string> const & dir2)
 {
 	string lastPath = ".";
-	if (!filename.empty()) lastPath = OnlyPath(filename);
+	if (!filename.empty())
+		lastPath = OnlyPath(filename);
 
 	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 

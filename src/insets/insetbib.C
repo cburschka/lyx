@@ -210,15 +210,10 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 }
 
 
-vector<string> const InsetBibtex::getFiles(Buffer const &) const
+vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 {
 	// Doesn't appear to be used (Angus, 31 July 2001)
-	// Path p(buffer->filePath());
-#ifdef WITH_WARNINGS
-#warning Angus, do you now that this is not supposed to be used but to change path?
-// I would say this is needed to find bib files which are in the
-// document directory (JMarc 14/01/2002)
-#endif
+	Path p(buffer.filePath());
 
 	vector<string> vec;
 

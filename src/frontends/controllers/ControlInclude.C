@@ -49,7 +49,7 @@ void ControlInclude::applyParamsToInset()
 
 string const ControlInclude::Browse(string const & in_name, Type in_type)
 {
-	string const title = N_("Select document to include");
+	string const title = _("Select document to include");
 
 	// input TeX, verbatim, or LyX file ?
 	string pattern;		   

@@ -8,6 +8,7 @@
  *        
  *           This file is Copyright 1996-2001
  *           Lars Gullik Bjønnes
+ *           Ben Stanley
  *
  * ====================================================== 
  */
@@ -29,9 +30,7 @@ public:
 	  filename. Should we insert files with .sty .cls etc as
 	  extension? */
 	void insert(string const & f,
-		    bool upd = false,
-		    unsigned long one = 0,
-		    unsigned long two = 0);
+		    bool upd = false);
 	///
 	void update();
 
@@ -47,14 +46,23 @@ public:
 	bool extchanged(string const & ext) const;
 	///
 	bool exist(string const & fil) const;
+	/// returns true if any files with ext exist
+	bool ext_exist(string const& ext) const;
 	///
 	void remove_files_with_extension(string const &);
+	///
+	void remove_file(string const &);
 private:
 	///
 	struct dep_info {
-		unsigned long first;
-		unsigned long second;
-		long mtime;
+		/// Previously calculated CRC value
+		unsigned long crc_prev;
+		/// Current CRC value - only re-computed if mtime has changed.
+		unsigned long crc_cur;
+		/// mtime from last time current CRC was calculated.
+		long mtime_cur;
+		///
+		bool changed() const;
 	};
 	///
 	typedef std::map<string, dep_info> DepList;
@@ -63,3 +71,4 @@ private:
 };
 
 #endif
+
