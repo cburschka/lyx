@@ -31,7 +31,7 @@ public:
 	/// identifies UnknownInsets
 	MathUnknownInset * asUnknownInset() { return this; }
 	///
-	bool match(MathInset const * p) const;
+	bool match(MathAtom const & at) const;
 
 	///
 	void normalize(NormalStream &) const;

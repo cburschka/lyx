@@ -83,7 +83,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// match in all cells
-	bool match(MathInset const *) const;
+	bool match(MathAtom const &) const;
 	/// replace in all cells
 	void replace(ReplaceData &);
 	/// do we contain a given pattern?

@@ -60,7 +60,7 @@ public:
 	///
 	bool isMacro() const { return true; }
 	///
-	bool match(MathInset const *) const { return false; }
+	bool match(MathAtom const &) const { return false; }
 
 	///
 	void maplize(MapleStream &) const;

@@ -26,6 +26,8 @@ public:
 	void metrics(MathMetricsInfo & st) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }
+	///
+	MathArrayInset const * asArrayInset() const { return this; }
 
 	///
 	void write(WriteStream & os) const;

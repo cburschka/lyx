@@ -136,7 +136,7 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 		return false;
 	const_iterator it = begin() + pos;
 	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
-		if (!(*jt)->match(it->nucleus()))
+		if (!(*jt)->match(*it))
 			return false;
 	return true;
 }
@@ -165,7 +165,7 @@ bool MathArray::find1(MathArray const & ar, size_type pos) const
 {
 	//lyxerr << "finding '" << ar << "' in '" << *this << "'\n";
 	for (size_type i = 0, n = ar.size(); i < n; ++i)
-		if (!operator[](pos + i)->match(ar[i].nucleus()))
+		if (!operator[](pos + i)->match(ar[i]))
 			return false;
 	return true;
 }
@@ -194,7 +194,7 @@ bool MathArray::contains(MathArray const & ar) const
 	if (find(ar) != size())
 		return true;
 	for (const_iterator it = begin(); it != end(); ++it)
-		if (it->nucleus()->contains(ar))
+		if ((*it)->contains(ar))
 			return true;
 	return false;
 }
@@ -300,10 +300,9 @@ int MathArray::pos2x(size_type pos1, size_type pos2, int glue) const
 	size_type target = min(pos2, size());
 	for (size_type i = pos1; i < target; ++i) {
 		const_iterator it = begin() + i;
-		MathInset const * p = it->nucleus();
-		if (p->getChar() == ' ')
+		if ((*it)->getChar() == ' ')
 			x += glue;
-		x += p->width();
+		x += (*it)->width();
 	}
 	return x;
 }
@@ -323,10 +322,9 @@ MathArray::size_type MathArray::x2pos(size_type startpos, int targetx,
 	int currx = 0;
 	for (; currx < targetx && it < end(); ++it) {
 		lastx = currx;
-		MathInset const * p = it->nucleus();
-		if (p->getChar() == ' ')
+		if ((*it)->getChar() == ' ')
 			currx += glue;
-		currx += p->width();
+		currx += (*it)->width();
 	}
 	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin() + startpos)
 		--it;

@@ -140,9 +140,9 @@ char const * MathMLtype(string const & s)
 }
 
 
-bool MathSymbolInset::match(MathInset const * p) const
+bool MathSymbolInset::match(MathAtom const & at) const
 {
-	MathSymbolInset const * q = p->asSymbolInset();
+	MathSymbolInset const * q = at->asSymbolInset();
 	return q && name() == q->name();
 }
 

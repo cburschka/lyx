@@ -228,12 +228,12 @@ void MathNestInset::validate(LaTeXFeatures & features) const
 }
 
 
-bool MathNestInset::match(MathInset const * p) const
+bool MathNestInset::match(MathAtom const & at) const
 {
-	if (nargs() != p->nargs())
+	if (nargs() != at->nargs())
 		return false;
 	for (idx_type i = 0; i < nargs(); ++i)
-		if (!cell(i).match(p->cell(i)))
+		if (!cell(i).match(at->cell(i)))
 			return false;
 	return true;
 }

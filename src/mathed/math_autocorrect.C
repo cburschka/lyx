@@ -73,7 +73,7 @@ bool Correction::correct(MathAtom & at, char c) const
 	//	<< "trying to correct ar: " << at << " from: '" << from1_ << "'" << endl;
 	if (from2_ != c)
 		return false;
-	if (!at->match(from1_.nucleus()))
+	if (!at->match(from1_))
 		return false;
 	lyxerr[Debug::MATHED]
 		<< "match found! subst in " << at

@@ -174,7 +174,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 		// we can't move into anything new during selection
 		if (depth() == Anchor_.size())
 			return false;
-		if (t.nucleus() != Anchor_[depth()].par_)
+		if (t.operator->() != Anchor_[depth()].par_)
 			return false;
 	}
 	return true;

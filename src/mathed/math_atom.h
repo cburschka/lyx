@@ -46,7 +46,6 @@ public:
 	/// assignment invokes nucleus_->clone()
 	void operator=(MathAtom const &);
 	/// access to the inset (checked with gprof)
-	MathInset const * nucleus() const { return nucleus_; }
 	MathInset       * nucleus()       { return nucleus_; }
 	/// access to the inset
 	MathInset const * operator->() const { return nucleus_; }

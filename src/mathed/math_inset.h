@@ -189,34 +189,35 @@ public:
 	virtual void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// identifies certain types of insets
-	virtual MathAMSArrayInset      * asAMSArrayInset()      { return 0; }
-	virtual MathAMSArrayInset const* asAMSArrayInset() const{ return 0; }
-	virtual MathArrayInset         * asArrayInset()         { return 0; }
-	virtual MathCharInset const    * asCharInset() const    { return 0; }
-	virtual MathDelimInset         * asDelimInset()         { return 0; }
-	virtual MathDelimInset const   * asDelimInset() const   { return 0; }
-	virtual MathFracInset          * asFracInset()          { return 0; }
-	virtual MathFracInset const    * asFracInset() const    { return 0; }
-	virtual MathGridInset          * asGridInset()          { return 0; }
-	virtual MathGridInset const    * asGridInset() const    { return 0; }
-	virtual MathHullInset          * asHullInset()          { return 0; }
-	virtual MathHullInset const    * asHullInset() const    { return 0; }
-	virtual MathMacroTemplate      * asMacroTemplate()      { return 0; }
-	virtual MathMacroTemplate const* asMacroTemplate() const{ return 0; }
-	virtual MathMatrixInset const  * asMatrixInset() const  { return 0; }
-	virtual MathNestInset          * asNestInset()          { return 0; }
-	virtual MathNestInset const    * asNestInset() const    { return 0; }
-	virtual MathParboxInset        * asParboxInset()        { return 0; }
-	virtual MathScriptInset        * asScriptInset()        { return 0; }
-	virtual MathScriptInset const  * asScriptInset() const  { return 0; }
-	virtual MathSpaceInset         * asSpaceInset()         { return 0; }
-	virtual MathSpaceInset const   * asSpaceInset() const   { return 0; }
-	virtual MathStringInset        * asStringInset()        { return 0; }
-	virtual MathStringInset const  * asStringInset() const  { return 0; }
-	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
-	virtual MathUnknownInset       * asUnknownInset()       { return 0; }
-	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
-	virtual InsetRef               * asInsetRef()           { return 0; }
+	virtual MathAMSArrayInset       * asAMSArrayInset()       { return 0; }
+	virtual MathAMSArrayInset const * asAMSArrayInset() const { return 0; }
+	virtual MathArrayInset          * asArrayInset()          { return 0; }
+	virtual MathArrayInset const    * asArrayInset() const    { return 0; }
+	virtual MathCharInset const     * asCharInset() const     { return 0; }
+	virtual MathDelimInset          * asDelimInset()          { return 0; }
+	virtual MathDelimInset const    * asDelimInset() const    { return 0; }
+	virtual MathFracInset           * asFracInset()           { return 0; }
+	virtual MathFracInset const     * asFracInset() const     { return 0; }
+	virtual MathGridInset           * asGridInset()           { return 0; }
+	virtual MathGridInset const     * asGridInset() const     { return 0; }
+	virtual MathHullInset           * asHullInset()           { return 0; }
+	virtual MathHullInset const     * asHullInset() const     { return 0; }
+	virtual MathMacroTemplate       * asMacroTemplate()       { return 0; }
+	virtual MathMacroTemplate const * asMacroTemplate() const { return 0; }
+	virtual MathMatrixInset const   * asMatrixInset() const   { return 0; }
+	virtual MathNestInset           * asNestInset()           { return 0; }
+	virtual MathNestInset const     * asNestInset() const     { return 0; }
+	virtual MathParboxInset         * asParboxInset()         { return 0; }
+	virtual MathScriptInset         * asScriptInset()         { return 0; }
+	virtual MathScriptInset const   * asScriptInset() const   { return 0; }
+	virtual MathSpaceInset          * asSpaceInset()          { return 0; }
+	virtual MathSpaceInset const    * asSpaceInset() const    { return 0; }
+	virtual MathStringInset         * asStringInset()         { return 0; }
+	virtual MathStringInset const   * asStringInset() const   { return 0; }
+	virtual MathSymbolInset const   * asSymbolInset() const   { return 0; }
+	virtual MathUnknownInset        * asUnknownInset()        { return 0; }
+	virtual MathUnknownInset const  * asUnknownInset() const  { return 0; }
+	virtual InsetRef                * asInsetRef()            { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
@@ -243,7 +244,7 @@ public:
 	/// char char code if possible
 	virtual void handleFont(string const &) {}
 	/// is this inset equal to a given other inset?
-	virtual bool match(MathInset const *) const { return false; }
+	virtual bool match(MathAtom const &) const { return false; }
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?

@@ -34,7 +34,7 @@ public:
 	/// the LaTeX name of the symbol (without the backslash)
 	string name() const;
 	///
-	bool match(MathInset const *) const;
+	bool match(MathAtom const &) const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
 

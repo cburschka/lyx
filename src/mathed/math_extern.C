@@ -47,7 +47,7 @@ ostream & operator<<(ostream & os, MathArray const & ar)
 typedef bool TestItemFunc(MathAtom const &);
 
 // define a function for replacing subexpressions
-typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
+typedef MathAtom ReplaceArgumentFunc(const MathArray & ar);
 
 
 
@@ -139,32 +139,26 @@ void extractStrings(MathArray & ar)
 }
 
 
-MathInset const * singleItem(MathArray const & ar)
-{
-	return ar.size() == 1 ? ar.begin()->nucleus() : 0;
-}
-
-
 void extractMatrices(MathArray & ar)
 {
 	//lyxerr << "\nMatrices from: " << ar << "\n";
 	// first pass for explicitly delimited stuff
-	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathDelimInset const * del = (*it)->asDelimInset();
-		if (!del)
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		if (!ar[i]->asDelimInset())
 			continue;
-		MathInset const * arr = singleItem(del->cell(0));
-		if (!arr || !arr->asGridInset())
+		MathArray const & arr = ar[i]->asDelimInset()->cell(0);
+		if (arr.size() != 1)
 			continue;
-		*it = MathAtom(new MathMatrixInset(*(arr->asGridInset())));
+		if (!arr.front()->asGridInset())
+			continue;
+		ar[i] = MathAtom(new MathMatrixInset(*(arr.front()->asGridInset())));
 	}
 
 	// second pass for AMS "pmatrix" etc
-	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathAMSArrayInset const * ams = (*it)->asAMSArrayInset();
-		if (!ams)
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		if (ar[i]->asAMSArrayInset())
 			continue;
-		*it = MathAtom(new MathMatrixInset(*ams));
+		ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
 	}
 	//lyxerr << "\nMatrices to: " << ar << "\n";
 }
@@ -241,21 +235,20 @@ void replaceNested(
 	// to modify the array.
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		// check whether this is the begin of the sequence
-		MathArray::iterator it = ar.begin() + i;
-		if (!testOpen(*it))
+		if (!testOpen(ar[i]))
 			continue;
 
 		// search end of sequence
+		MathArray::iterator it = ar.begin() + i;
 		MathArray::iterator jt = endNestSearch(it, ar.end(), testOpen, testClose);
 		if (jt == ar.end())
 			continue;
 
-		// create a proper inset as replacement
-		MathInset * p = replaceArg(MathArray(it + 1, jt));
-
 		// replace the original stuff by the new inset
 		ar.erase(it + 1, jt + 1);
-		*it = MathAtom(p);
+
+		// create a proper inset as replacement
+		ar[i] = replaceArg(MathArray(it + 1, jt));
 	}
 }
 
@@ -270,20 +263,19 @@ void splitScripts(MathArray & ar)
 {
 	//lyxerr << "\nScripts from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
-
 		// is this script inset?
-		MathScriptInset * p = (*it).nucleus()->asScriptInset();
-		if (!p)
+		if (!ar[i]->asScriptInset())
 			continue;
 
 		// no problem if we don't have both...
-		if (!p->hasUp() || !p->hasDown())
+		if (!ar[i]->asScriptInset()->hasUp())
+			continue;
+		if (!ar[i]->asScriptInset()->hasDown())
 			continue;
 
 		// create extra script inset and move superscript over
-		MathScriptInset * q = new MathScriptInset;
-		q->ensure(true);
+		MathScriptInset * p = ar[i].nucleus()->asScriptInset();
+		MathScriptInset * q = new MathScriptInset(true);
 		std::swap(q->up(), p->up());
 		p->removeScript(true);
 
@@ -302,23 +294,19 @@ void splitScripts(MathArray & ar)
 void extractExps(MathArray & ar)
 {
 	//lyxerr << "\nExps from: " << ar << "\n";
-
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
-
 		// is this 'e'?
-		MathCharInset const * p = (*it)->asCharInset();
-		if (!p || p->getChar() != 'e')
+		if (ar[i]->getChar() != 'e')
 			continue;
 
 		// we need an exponent but no subscript
-		MathScriptInset const * sup = (*(it + 1))->asScriptInset();
+		MathScriptInset const * sup = ar[i + 1]->asScriptInset();
 		if (!sup || sup->hasDown())
 			continue;
 
 		// create a proper exp-inset as replacement 
-		*it = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
-		ar.erase(it + 1);
+		ar[i] = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
+		ar.erase(i + 1);
 	}
 	//lyxerr << "\nExps to: " << ar << "\n";
 }
@@ -401,9 +389,9 @@ bool testCloseParan(MathAtom const & at)
 }
 
 
-MathInset * replaceDelims(const MathArray & ar)
+MathAtom replaceDelims(const MathArray & ar)
 {
-	return new MathDelimInset("(", ")", ar);
+	return MathAtom(new MathDelimInset("(", ")", ar));
 }
 
 
@@ -598,14 +586,14 @@ void extractSums(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		if (!testSum(*it))
+		if (!testSum(ar[i]))
 			continue;
 
 		// create a proper inset as replacement
 		MathExIntInset * p = new MathExIntInset("sum");
 
 		// collect lower bound and summation index
-		MathScriptInset const * sub = (*it)->asScriptInset();
+		MathScriptInset const * sub = ar[i]->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
 			MathArray const & ar = sub->down();
@@ -1028,7 +1016,7 @@ namespace {
 
 		// parse output as matrix or single number
 		MathAtom at(new MathArrayInset("array", out));
-		MathArrayInset const * mat = at.nucleus()->asArrayInset();
+		MathArrayInset const * mat = at->asArrayInset();
 		MathArray res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)
 			res.append(mat->cell(0));

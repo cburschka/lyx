@@ -33,9 +33,9 @@ void MathUnknownInset::setName(string const & name)
 }
 
 
-bool MathUnknownInset::match(MathInset const * p) const
+bool MathUnknownInset::match(MathAtom const & at) const
 {
-	MathUnknownInset const * q = p->asUnknownInset();
+	MathUnknownInset const * q = at->asUnknownInset();
 	return q && name_ == q->name_;
 }
 
