@@ -15,7 +15,7 @@
 # This legacy support will be removed one day...
 
 import glob, os, re, string, sys
-import pipes, shutil, tempfile
+import pipes, tempfile
 
 
 # Pre-compiled regular expressions.
@@ -147,20 +147,68 @@ def get_version_info():
     return string.atoi(match.group(1)), string.atoi(match.group(2))
 
 
+def copyfileobj(fsrc, fdst, rewind=0, length=16*1024):
+    """copy data from file-like object fsrc to file-like object fdst"""
+    if rewind:
+        fsrc.flush()
+        fsrc.seek(0)
+
+    while 1:
+        buf = fsrc.read(length)
+        if not buf:
+            break
+        fdst.write(buf)
+
+
+class TempFile:
+    """clone of tempfile.TemporaryFile to use with python < 2.0."""
+    # Cache the unlinker so we don't get spurious errors at shutdown
+    # when the module-level "os" is None'd out.  Note that this must
+    # be referenced as self.unlink, because the name TempFile
+    # may also get None'd out before __del__ is called.
+    unlink = os.unlink
+
+    def __init__(self):
+        self.filename = tempfile.mktemp()
+        self.file = open(self.filename,"w+b")
+        self.close_called = 0
+
+    def close(self):
+        if not self.close_called:
+            self.close_called = 1
+            self.file.close()
+            self.unlink(self.filename)
+
+    def __del__(self):
+        self.close()
+
+    def read(self, size = -1):
+        return self.file.read(size)
+
+    def write(self, line):
+        return self.file.write(line)
+
+    def seek(self, offset):
+        return self.file.seek(offset)
+
+    def flush(self):
+        return self.file.flush()
+
+
 def mkstemp():
+    """create a secure temporary file and return its object-like file"""
     major, minor = get_version_info()
 
-    if major >= 2 and minor >= 3:
-        return tempfile.mkstemp()
-
-    tmp_name = tempfile.mktemp()
-    return open(tmp_name, 'w'), tmp_name
+    if major >= 2 and minor >= 0:
+        return tempfile.TemporaryFile()
+    else:
+        return TempFile()
 
 
 def legacy_latex_file(latex_file, fg_color, bg_color):
     use_preview_re = re.compile("(\\\\usepackage\[[^]]+)(\]{preview})")
 
-    tmp, tmp_name = mkstemp()
+    tmp = mkstemp()
 
     success = 0
     for line in open(latex_file, 'r').readlines():
@@ -178,26 +226,22 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
                   % (match.group(1), match.group(2), fg_color, bg_color))
 
     if success:
-        tmp.close()
-        shutil.copy(tmp_name, latex_file)
-    os.remove(tmp_name)
+        copyfileobj(tmp, open(latex_file,"wb"), 1)
 
     return success
 
 
 def crop_files(pnmcrop, basename):
     t = pipes.Template()
-    t.append("%s -left $IN" % pnmcrop, 'f-')
-    t.append("%s -right > $OUT" % pnmcrop, '-f')
-
-    tmp, tmp_name = mkstemp()
-    tmp.close()
-    os.remove(tmp_name)
+    t.append("%s -left" % pnmcrop, '--')
+    t.append("%s -right" % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
-        if t.copy(file, tmp_name):
-            shutil.copy(tmp_name, file)
-        os.remove(tmp_name)
+        tmp = mkstemp()
+        new = t.open(file, "r")
+        copyfileobj(new, tmp)
+        if not new.close():
+            copyfileobj(tmp, open(file,"wb"))
 
 
 def legacy_conversion(argv):

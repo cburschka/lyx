@@ -1,5 +1,10 @@
 2004-05-03  José Matos  <jamatos@lyx.org>
 
+	* scripts/legacy_lyxpreview2ppm.py: fix bug with python 2.3 and
+	extend support for secure temporary files for python >= 2.0.
+
+2004-05-03  José Matos  <jamatos@lyx.org>
+
 	* reLyX/MakePreamble.pm(translate_preamble): use a saner method
 	to translate \usepackage from the preamble, fix #1584.
 
