@@ -1,3 +1,9 @@
+2003-02-22  John Levon  <levon@movementarian.org>
+
+	* toc.h:
+	* toc.C: make TocItem store an id not a Paragraph *
+	  (bug #913)
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (MenuInsertLyXFile):

@@ -42,7 +42,7 @@ string const TocItem::asString() const
 
 void TocItem::goTo(LyXView & lv_) const
 {
-	string const tmp = tostr(par->id());
+	string const tmp = tostr(id_);
 	lv_.dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
 }
 
@@ -50,7 +50,7 @@ void TocItem::goTo(LyXView & lv_) const
 int TocItem::action() const
 {
 	return lyxaction.getPseudoAction(LFUN_GOTO_PARAGRAPH,
-					 tostr(par->id()));
+					 tostr(id_));
 }
 
 
@@ -86,7 +86,7 @@ TocList const getTocList(Buffer const * buf)
 		    && labeltype <= LABEL_COUNTER_CHAPTER + buf->params.tocdepth) {
 				// insert this into the table of contents
 			const int depth = max(0, labeltype - textclass.maxcounter());
-			TocItem const item(par, depth,
+			TocItem const item(par->id(), depth,
 					   par->asString(buf, true));
 			toclist["TOC"].push_back(item);
 		}

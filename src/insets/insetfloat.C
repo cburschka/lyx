@@ -349,7 +349,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);
-			toc::TocItem const item(tmp, 0 , str);
+			toc::TocItem const item(tmp->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
 	}
