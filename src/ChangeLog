@@ -1,3 +1,7 @@
+2002-03-12  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
+
+	* buffer.C (simpleDocBookOnePar): fix empty definition case for now.
+
 2002-03-11  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (cursorPrevious): remove old cruft which is

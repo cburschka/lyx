@@ -3456,7 +3456,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 	// resets description flag correctly
 	if (desc_on == 1) {
 		// <term> not closed...
-		os << "</term>";
+		os << "</term>\n<listitem><para>&nbsp;</para>";
 	}
 	if (style.free_spacing) os << '\n';
 }
