@@ -23,6 +23,7 @@ src/frontends/controllers/ControlDocument.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
+src/frontends/controllers/ControlLog.C
 src/frontends/controllers/ControlNote.C
 src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrefs.C
@@ -30,7 +31,6 @@ src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSearch.C
 src/frontends/controllers/ControlSpellchecker.C
 src/frontends/controllers/ControlThesaurus.C
-src/frontends/controllers/ControlVCLog.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/character.C
 src/frontends/controllers/frnt_lang.C
@@ -49,6 +49,8 @@ src/frontends/qt2/QAbout.C
 src/frontends/qt2/QBibitem.C
 src/frontends/qt2/QBibtex.C
 src/frontends/qt2/QBibtexDialog.C
+src/frontends/qt2/QBox.C
+src/frontends/qt2/QBoxDialog.C
 src/frontends/qt2/QBranch.C
 src/frontends/qt2/QChanges.C
 src/frontends/qt2/QCharacter.C
@@ -59,12 +61,10 @@ src/frontends/qt2/QDocument.C
 src/frontends/qt2/QDocumentDialog.C
 src/frontends/qt2/QERT.C
 src/frontends/qt2/QExternal.C
-src/frontends/qt2/QExternalDialog.C
 src/frontends/qt2/QFloat.C
 src/frontends/qt2/QGraphics.C
 src/frontends/qt2/QInclude.C
 src/frontends/qt2/QLPrintDialog.C
-src/frontends/qt2/QLog.C
 src/frontends/qt2/QMath.C
 src/frontends/qt2/QMathDialog.C
 src/frontends/qt2/QMathMatrixDialog.C
@@ -85,7 +85,6 @@ src/frontends/qt2/QTexinfo.C
 src/frontends/qt2/QThesaurus.C
 src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C
-src/frontends/qt2/QVCLog.C
 src/frontends/qt2/QVSpace.C
 src/frontends/qt2/QWrap.C
 src/frontends/qt2/Qt2BC.h
@@ -115,7 +114,6 @@ src/frontends/xforms/FormFloat.C
 src/frontends/xforms/FormForks.C
 src/frontends/xforms/FormGraphics.C
 src/frontends/xforms/FormInclude.C
-src/frontends/xforms/FormLog.C
 src/frontends/xforms/FormMathsBitmap.C
 src/frontends/xforms/FormMathsDelim.C
 src/frontends/xforms/FormMathsMatrix.C
@@ -139,7 +137,6 @@ src/frontends/xforms/FormTexinfo.C
 src/frontends/xforms/FormThesaurus.C
 src/frontends/xforms/FormToc.C
 src/frontends/xforms/FormUrl.C
-src/frontends/xforms/FormVCLog.C
 src/frontends/xforms/FormVSpace.C
 src/frontends/xforms/FormWrap.C
 src/frontends/xforms/XFormsMenubar.C
