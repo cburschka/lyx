@@ -17,9 +17,6 @@ endif
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man autogen.sh
 
-# Hack so that the targets that use tar will also work with automake 1.4
-AMTAR ?= $(TAR)
-
 man_MANS = lyx.1
 
 ## Needed by bindist
