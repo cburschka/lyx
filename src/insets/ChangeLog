@@ -1,3 +1,8 @@
+2001-07-21  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
+
+	* insetquotes.C (latex): fix the handling of french double quotes
+	when not using the french pachage.
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetcollapsable.h: make WidthCollapsed mutable.

@@ -1,3 +1,52 @@
+What new in version 1.2.0?
+-------------------------
+
+LyX 1.2.0 is the version where many of changes in the 1.1.x series
+begin to really pay off. It should prove to be a very solid base for
+further developments. As of this version, we use (yet another) new
+versionning scheme: next major version will be 1.3.0, and 1.2.x will
+be just incremental fixes (like the fix series used to be for 1.1.5
+and 1.1.6). 
+
+Switch to the so-called 'new' insets:
+
+- floats, footnotes and margin notes are now real insets
+
+- most problems with the new table inset of 1.1.6 have been resolved
+  (memory consumption, spellchecking, search and replace...)
+- TeX mode has been superceded by the 666 (aka ERT) inset, which is
+  foldable
+
+- new graphics inset superceding the older figure inset [will that be
+  OK in 1.2.0?]
+
+- new minipage inset
+
+- notes inset can now contain arbitrary LyX constructs
+
+- new hyphenation break special character to 
+
+The math editor has been mostly rewritten, meaning more stability and
+the following new features:
+
+  [Andre, can you help here?]
+
+Most of the popups have been rewritten in the GUI-I framework:
+
+- [...]
+
+- the kde frontend has been dropped in favour of a new qt2 frontend.
+  Note that only the xforms front is really operational as of this
+  version. 
+
+Other changes include:
+
+- support for natbib for bibliography citations
+
+- updated documentation
+
+- 
+
 What's new in LyX version 1.1.6?
 --------------------------------
 

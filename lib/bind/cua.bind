@@ -72,6 +72,7 @@
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"
 \bind "C-S-space"		"protected-space-insert"
+\bind "C-S-L"			"ligature-break-insert"
 \bind "C-l"			"ert-insert"		# 'l' for LaTeX
 
 #bind "F1"			"help"			# Not yet implemented!
