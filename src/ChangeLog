@@ -1,3 +1,12 @@
+2001-05-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxrc.C (read): print error about invalid key sequence only when
+	debugging (because not all latinX keysyms are known to some X
+	servers)
+
+	* kbsequence.C (getiso): add a few std:: qualifiers
+	(getiso): comment out extra return statement.
+
 2001-05-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* BufferView_pimpl.C (Dispatch): comment out the old "default" key

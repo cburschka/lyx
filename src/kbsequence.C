@@ -262,8 +262,8 @@ char kb_sequence::getiso() const
 {
 	unsigned int const c = getsym();
 
-	lyxerr << "Raw keysym: " << hex << c << dec << endl;
-	lyxerr << "byte 3: " << hex << (c & 0x0000FF00) << dec << endl;
+	lyxerr << "Raw keysym: " << std::hex << c << std::dec << endl;
+	lyxerr << "byte 3: " << std::hex << (c & 0x0000FF00) << std::dec << endl;
 	
 	switch (c & 0x0000FF00) {
 		// latin 1 byte 3 = 0
@@ -285,7 +285,8 @@ char kb_sequence::getiso() const
 	}
 
 	// not a latin char we know of
-	return '\0';
+	// Yes but this is already handled above (JMarc)
+	//return '\0';
 }
 
 
