@@ -1,3 +1,15 @@
+2005-02-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C: replace all occurences of bv_->cursor(),
+	bv_->owner(), bv_->buffer() by direct references to the private
+	members. 
+	(MenuInsertLyXFile): replace bv_->resize() with resizeCurrentBuffer.
+	(getStatus): isSavedPosition() is in BufferView::Pimpl.
+	(fitCursor): center() is in BufferView::Pimpl.
+	(getStatus, trackChanges, dispatch): no need for a temporary buf
+	variable 
+	(fitCursor, workAreaDispatch): use workarea().workheight()
+
 2005-02-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* CutAndPaste.C (pasteSelectionHelper): fix a crash

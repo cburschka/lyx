@@ -419,7 +419,7 @@ void BufferView::Pimpl::updateScrollbar()
 	lyxerr[Debug::GUI]
 		<< BOOST_CURRENT_FUNCTION
 		<< " Updating scrollbar: height: " << t.paragraphs().size()
-		<< " curr par: " << bv_->cursor().bottom().pit()
+		<< " curr par: " << cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight() << endl;
 
 	// It would be better to fix the scrollbar to understand
@@ -459,7 +459,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
 	int const last = workarea().workHeight() - height;
-	LCursor & cur = bv_->cursor();
+	LCursor & cur = cursor_;
 
 	bv_funcs::CurStatus st = bv_funcs::status(bv_, cur);
 
@@ -476,7 +476,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 		int const y = bv_funcs::getPos(cur).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
-			cur.reset(bv_->buffer()->inset());
+			cur.reset(buffer_->inset());
 			t.setCursorFromCoordinates(cur, 0, newy);
 		}
 	}
@@ -509,7 +509,7 @@ void BufferView::Pimpl::scroll(int lines)
 void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 					 key_modifier::state state)
 {
-	bv_->owner()->getLyXFunc().processKeySym(key, state);
+	owner_->getLyXFunc().processKeySym(key, state);
 
 	/* This is perhaps a bit of a hack. When we move
 	 * around, or type, it's nice to be able to see
@@ -532,7 +532,7 @@ void BufferView::Pimpl::selectionRequested()
 	if (!available())
 		return;
 
-	LCursor & cur = bv_->cursor();
+	LCursor & cur = cursor_;
 
 	if (!cur.selection()) {
 		xsel_cache_.set = false;
@@ -557,7 +557,7 @@ void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
 		screen().hideCursor();
-		bv_->cursor().clearSelection();
+		cursor_.clearSelection();
 		xsel_cache_.set = false;
 	}
 }
@@ -591,15 +591,15 @@ void BufferView::Pimpl::workAreaResize()
 
 bool BufferView::Pimpl::fitCursor()
 {
-	if (bv_funcs::status(bv_, bv_->cursor()) == bv_funcs::CUR_INSIDE) {
-		LyXFont const font = bv_->cursor().getFont();
+	if (bv_funcs::status(bv_, cursor_) == bv_funcs::CUR_INSIDE) {
+		LyXFont const font = cursor_.getFont();
 		int const asc = font_metrics::maxAscent(font);
 		int const des = font_metrics::maxDescent(font);
-		Point p = bv_funcs::getPos(bv_->cursor());
-		if (p.y_ - asc >= 0 && p.y_ + des < bv_->workHeight())
+		Point p = bv_funcs::getPos(cursor_);
+		if (p.y_ - asc >= 0 && p.y_ + des < workarea().workHeight())
 			return false;
 	}
-	bv_->center();
+	center();
 	return true;
 }
 
@@ -639,7 +639,7 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 
 	// And the scrollbar
 	updateScrollbar();
-	bv_->owner()->view_state_changed();
+	owner_->view_state_changed();
 }
 
 
@@ -669,11 +669,11 @@ bool BufferView::Pimpl::available() const
 
 Change const BufferView::Pimpl::getCurrentChange()
 {
-	if (!bv_->buffer()->params().tracking_changes)
+	if (!buffer_->params().tracking_changes)
 		return Change(Change::UNCHANGED);
 
 	LyXText * text = bv_->getLyXText();
-	LCursor & cur = bv_->cursor();
+	LCursor & cur = cursor_;
 
 	if (!cur.selection())
 		return Change(Change::UNCHANGED);
@@ -687,10 +687,10 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 {
 	if (i >= saved_positions_num)
 		return;
-	BOOST_ASSERT(bv_->cursor().inTexted());
+	BOOST_ASSERT(cursor_.inTexted());
 	saved_positions[i] = Position(buffer_->fileName(),
-				      bv_->cursor().paragraph().id(),
-				      bv_->cursor().pos());
+				      cursor_.paragraph().id(),
+				      cursor_.pos());
 	if (i > 0)
 		owner_->message(bformat(_("Saved bookmark %1$d"), i));
 }
@@ -703,7 +703,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string const fname = saved_positions[i].filename;
 
-	bv_->cursor().clearSelection();
+	cursor_.clearSelection();
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
@@ -722,7 +722,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text()->setCursor(bv_->cursor(), par.pit(),
+	bv_->text()->setCursor(cursor_, par.pit(),
 		min(par->size(), saved_positions[i].par_pos));
 
 	if (i > 0)
@@ -754,12 +754,12 @@ void BufferView::Pimpl::switchKeyMap()
 
 void BufferView::Pimpl::center()
 {
-	CursorSlice & bot = bv_->cursor().bottom();
+	CursorSlice & bot = cursor_.bottom();
 	lyx::pit_type const pit = bot.pit();
 	bot.text()->redoParagraph(pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
-	offset_ref_ = bv_funcs::coordOffset(bv_->cursor()).y_ + par.ascent()
+	offset_ref_ = bv_funcs::coordOffset(cursor_).y_ + par.ascent()
 		- workarea().workHeight() / 2;
 }
 
@@ -816,14 +816,14 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
-	bv_->cursor().clearSelection();
-	bv_->getLyXText()->breakParagraph(bv_->cursor());
+	cursor_.clearSelection();
+	bv_->getLyXText()->breakParagraph(cursor_);
 
-	BOOST_ASSERT(bv_->cursor().inTexted());
+	BOOST_ASSERT(cursor_.inTexted());
 
 	string const fname = MakeAbsPath(filename);
-	bool const res = bv_->buffer()->readFile(fname, bv_->cursor().pit());
-	bv_->resize();
+	bool const res = buffer_->readFile(fname, cursor_.pit());
+	resizeCurrentBuffer();
 
 	string s = res ? _("Document %1$s inserted.")
 	               : _("Could not insert document %1$s");
@@ -833,20 +833,19 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 
 void BufferView::Pimpl::trackChanges()
 {
-	Buffer * buf = bv_->buffer();
-	bool const tracking = buf->params().tracking_changes;
+	bool const tracking = buffer_->params().tracking_changes;
 
 	if (!tracking) {
-		for_each(buf->par_iterator_begin(),
-			 buf->par_iterator_end(),
+		for_each(buffer_->par_iterator_begin(),
+			 buffer_->par_iterator_end(),
 			 bind(&Paragraph::trackChanges, _1, Change::UNCHANGED));
-		buf->params().tracking_changes = true;
+		buffer_->params().tracking_changes = true;
 
 		// We cannot allow undos beyond the freeze point
-		buf->undostack().clear();
+		buffer_->undostack().clear();
 	} else {
 		update();
-		bv_->text()->setCursor(bv_->cursor(), 0, 0);
+		bv_->text()->setCursor(cursor_, 0, 0);
 #ifdef WITH_WARNINGS
 #warning changes FIXME
 #endif
@@ -856,14 +855,14 @@ void BufferView::Pimpl::trackChanges()
 			return;
 		}
 
-		for_each(buf->par_iterator_begin(),
-			 buf->par_iterator_end(),
+		for_each(buffer_->par_iterator_begin(),
+			 buffer_->par_iterator_end(),
 			 mem_fun_ref(&Paragraph::untrackChanges));
 
-		buf->params().tracking_changes = false;
+		buffer_->params().tracking_changes = false;
 	}
 
-	buf->redostack().clear();
+	buffer_->redostack().clear();
 }
 
 
@@ -882,12 +881,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		return true;
 	}
 
-	if (!bv_->buffer())
+	if (!buffer_)
 		return false;
 
 	LCursor cur(*bv_);
-	cur.push(bv_->buffer()->inset());
-	cur.selection() = bv_->cursor().selection();
+	cur.push(buffer_->inset());
+	cur.selection() = cursor_.selection();
 
 	// Doesn't go through lyxfunc, so we need to update
 	// the layout choice etc. ourselves
@@ -902,7 +901,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	// surrounding LyXText will handle this event.
 
 	// Build temporary cursor.
-	cmd.y = min(max(cmd.y,-1), bv_->workHeight());
+	cmd.y = min(max(cmd.y,-1), workarea().workHeight());
 	InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
 	lyxerr << BOOST_CURRENT_FUNCTION
 	       << " * hit inset at tip: " << inset << endl;
@@ -949,17 +948,15 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 {
-	Buffer * buf = bv_->buffer();
-
 	FuncStatus flag;
 
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.enabled(!buf->undostack().empty());
+		flag.enabled(!buffer_->undostack().empty());
 		break;
 	case LFUN_REDO:
-		flag.enabled(!buf->redostack().empty());
+		flag.enabled(!buffer_->redostack().empty());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_ASCII_PARA:
@@ -979,18 +976,18 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		flag.enabled(bv_->isSavedPosition(convert<unsigned int>(cmd.argument)));
+		flag.enabled(isSavedPosition(convert<unsigned int>(cmd.argument)));
 		break;
 	case LFUN_TRACK_CHANGES:
 		flag.enabled(true);
-		flag.setOnOff(buf->params().tracking_changes);
+		flag.setOnOff(buffer_->params().tracking_changes);
 		break;
 
 	case LFUN_OUTPUT_CHANGES: {
-		LaTeXFeatures features(*buf, buf->params(), false);
-		flag.enabled(buf && buf->params().tracking_changes
+		LaTeXFeatures features(*buffer_, buffer_->params(), false);
+		flag.enabled(buffer_ && buffer_->params().tracking_changes
 			&& features.isAvailable("dvipost"));
-		flag.setOnOff(buf->params().output_changes);
+		flag.setOnOff(buffer_->params().output_changes);
 		break;
 	}
 
@@ -999,7 +996,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_REJECT_CHANGE: // what about these two
 	case LFUN_ACCEPT_ALL_CHANGES:
 	case LFUN_REJECT_ALL_CHANGES:
-		flag.enabled(buf && buf->params().tracking_changes);
+		flag.enabled(buffer_ && buffer_->params().tracking_changes);
 		break;
 	default:
 		flag.enabled(false);
@@ -1024,7 +1021,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		<< " button[" << cmd.button() << ']'
 		<< endl;
 
-	LCursor & cur = bv_->cursor();
+	LCursor & cur = cursor_;
 
 	switch (cmd.action) {
 
@@ -1078,7 +1075,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		string label = cmd.argument;
 		if (label.empty()) {
 			InsetRef * inset =
-				getInsetByCode<InsetRef>(bv_->cursor(),
+				getInsetByCode<InsetRef>(cursor_,
 							 InsetBase::REF_CODE);
 			if (inset) {
 				label = inset->getContents();
@@ -1096,9 +1093,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_OUTPUT_CHANGES: {
-		Buffer * buf = bv_->buffer();
-		bool const state = buf->params().output_changes;
-		buf->params().output_changes = !state;
+		bool const state = buffer_->params().output_changes;
+		buffer_->params().output_changes = !state;
 		break;
 	}
 
@@ -1107,23 +1103,23 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->cursor().reset(bv_->buffer()->inset());
+		cursor_.reset(buffer_->inset());
 #ifdef WITH_WARNINGS
 #warning FIXME changes
 #endif
 		while (lyx::find::findNextChange(bv_))
-			bv_->getLyXText()->acceptChange(bv_->cursor());
+			bv_->getLyXText()->acceptChange(cursor_);
 		update();
 		break;
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->cursor().reset(bv_->buffer()->inset());
+		cursor_.reset(buffer_->inset());
 #ifdef WITH_WARNINGS
 #warning FIXME changes
 #endif
 		while (lyx::find::findNextChange(bv_))
-			bv_->getLyXText()->rejectChange(bv_->cursor());
+			bv_->getLyXText()->rejectChange(cursor_);
 		break;
 	}
 
@@ -1161,7 +1157,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_CENTER:
-		bv_->center();
+		center();
 		break;
 
 	case LFUN_WORDS_COUNT: {
@@ -1170,8 +1166,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			from = cur.selectionBegin();
 			to = cur.selectionEnd();
 		} else {
-			from = doc_iterator_begin(bv_->buffer()->inset());
-			to = doc_iterator_end(bv_->buffer()->inset());
+			from = doc_iterator_begin(buffer_->inset());
+			to = doc_iterator_end(buffer_->inset());
 		}
 		int const count = countWords(from, to);
 		string message;
