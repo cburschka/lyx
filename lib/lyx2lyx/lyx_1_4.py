@@ -973,7 +973,7 @@ def convert_frameless_box(lines, opt):
             return
 	j = find_end_of_inset(lines, i)
 	if j == -1:
-	    opt.warning("Malformed LyX file: Missing '\\end_inset'\n")
+	    opt.warning("Malformed LyX file: Missing '\\end_inset'.")
 	    i = i + 1
 	    continue
 	del lines[i]
@@ -1068,7 +1068,7 @@ def convert_frameless_box(lines, opt):
 def convert_jurabib(header, opt):
     i = find_token(header, '\\use_numerical_citations', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'")
+        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
         return
     header.insert(i + 1, '\\use_jurabib 0')
 
@@ -1076,7 +1076,7 @@ def convert_jurabib(header, opt):
 def revert_jurabib(header, opt):
     i = find_token(header, '\\use_jurabib', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'")
+        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
     if get_value(header, '\\use_jurabib', 0) != "0":
         opt.warning("Conversion of '\\use_jurabib = 1' not yet implemented.")
@@ -1091,7 +1091,7 @@ def revert_jurabib(header, opt):
 def convert_bibtopic(header, opt):
     i = find_token(header, '\\use_jurabib', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'")
+        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
     header.insert(i + 1, '\\use_bibtopic 0')
 
@@ -1099,7 +1099,7 @@ def convert_bibtopic(header, opt):
 def revert_bibtopic(header, opt):
     i = find_token(header, '\\use_bibtopic', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_bibtopic'")
+        opt.warning("Malformed lyx file: Missing '\\use_bibtopic'.")
         return
     if get_value(header, '\\use_bibtopic', 0) != "0":
         opt.warning("Conversion of '\\use_bibtopic = 1' not yet implemented.")
@@ -1125,7 +1125,7 @@ def convert_float(lines, opt):
                 lines.insert(i + 1, 'sideways false')
                 break
             elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed lyx file")
+                opt.warning("Malformed lyx file.")
                 break
             i = i + 1
         i = i + 1
@@ -1139,7 +1139,7 @@ def revert_float(lines, opt):
             return
         j = find_end_of_inset(lines, i)
         if j == -1:
-            opt.warning("Malformed lyx file: Missing '\\end_inset'")
+            opt.warning("Malformed lyx file: Missing '\\end_inset'.")
             i = i + 1
             continue
         if get_value(lines, 'sideways', i, j) != "false":
@@ -1216,8 +1216,8 @@ def convert_names(lines, opt):
         i = find_end_of( lines, i+3, "\\begin_deeper","\\end_deeper")
         if i == -1:
             # something is really wrong, abort
-            opt.warning("Missing \\end_deeper,after style Author")
-            opt.warning("Aborted attempt to parse FirstName and Surname")
+            opt.warning("Missing \\end_deeper, after style Author.")
+            opt.warning("Aborted attempt to parse FirstName and Surname.")
             return
         firstname, surname = "", ""
 
@@ -1280,17 +1280,17 @@ def revert_names(lines, opt):
 def convert_cite_engine(header, opt):
     a = find_token(header, "\\use_natbib", 0)
     if a == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_natbib'")
+        opt.warning("Malformed lyx file: Missing '\\use_natbib'.")
         return
 
     b = find_token(header, "\\use_numerical_citations", 0)
     if b == -1 or b != a+1:
-        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'")
+        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
         return
 
     c = find_token(header, "\\use_jurabib", 0)
     if c == -1 or c != b+1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'")
+        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
 
     use_natbib = int(split(header[a])[1])
@@ -1313,7 +1313,7 @@ def convert_cite_engine(header, opt):
 def revert_cite_engine(header, opt):
     i = find_token(header, "\\cite_engine", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\cite_engine'")
+        opt.warning("Malformed lyx file: Missing '\\cite_engine'.")
         return
 
     cite_engine = split(header[i])[1]
@@ -1341,7 +1341,7 @@ def revert_cite_engine(header, opt):
 def convert_paperpackage(header, opt):
     i = find_token(header, "\\paperpackage", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\paperpackage'")
+        opt.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
@@ -1352,7 +1352,7 @@ def convert_paperpackage(header, opt):
 def revert_paperpackage(header, opt):
     i = find_token(header, "\\paperpackage", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\paperpackage'")
+        opt.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
@@ -1390,7 +1390,7 @@ def revert_bullets(header, opt):
         if header[i][:12] == '\\bulletLaTeX':
             n = find(header[i], '"')
             if n == -1:
-                opt.warn("Malformed header")
+                opt.warning("Malformed header.")
                 return
             else:
                 header[i:i+1] = [header[i][:n-1],'\t' + header[i][n:], '\\end_bullet']
@@ -1398,7 +1398,7 @@ def revert_bullets(header, opt):
         else:
             frag = split(header[i])
             if len(frag) != 5:
-                opt.warn("Malformed header")
+                opt.warning("Malformed header.")
                 return
             else:
                 header[i:i+1] = [frag[0] + ' ' + frag[1],
