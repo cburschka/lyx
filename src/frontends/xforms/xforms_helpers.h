@@ -23,6 +23,9 @@
 
 class LyXLength;
 
+/// parse "&Save" etc. to <"Save", "#S">. Does not handle &&
+std::pair<string, string> parse_shortcut(string const & str);
+
 // A wrapper for the xforms routine, but this one accepts uint args
 unsigned long fl_getmcolor(int i, unsigned int * r, unsigned int * g,
 			   unsigned int * b);

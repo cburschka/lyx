@@ -23,19 +23,31 @@
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
 
-#include <algorithm>
 #include <fstream>
-#include <vector>
 
 #include FORMS_H_LOCATION
 
 using std::ofstream;
 using std::pair;
 using std::vector;
+using std::make_pair;
 
 bool isActive(FL_OBJECT * ob)
 {
 	return ob && ob->active > 0;
+}
+
+std::pair<string, string> parse_shortcut(string const & str)
+{
+	string::size_type i = str.find_first_of("&");
+	if (i == string::npos || i == str.length() - 1)
+		return make_pair(str, string());
+
+	// FIXME: handle &&
+
+	string::value_type c = str[i + 1];
+	return make_pair(str.substr(0, i) + str.substr(i + 1),
+		string("#") + c);
 }
 
 

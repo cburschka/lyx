@@ -15,12 +15,15 @@
 #include "Alert_pimpl.h"
 #include "forms_gettext.h"
 #include "gettext.h"
+#include "xforms_helpers.h"
 
 #include <algorithm>
+#include <boost/tuple/tuple.hpp>
 #include FORMS_H_LOCATION
 
 using std::pair;
 using std::make_pair;
+using std::endl;
 
 void alert_pimpl(string const & s1, string const & s2, string const & s3)
 {
@@ -29,20 +32,27 @@ void alert_pimpl(string const & s1, string const & s2, string const & s3)
 }
 
 
-#warning error needs fixing up
-#warning a "&Save" -> "Save|#S" is whats needed
-#warning and a format maybe, and fixup default_button ?
-
-int prompt_pimpl(string const & title, string const & question,
+int prompt_pimpl(string const &, string const & question,
            int default_button,
-	   string const & b1, string const & b2, string const & b3);
+	   string const & b1, string const & b2, string const & b3)
 {
+	string b1label, b1sc;
+	string b2label, b2sc;
+	string b3label, b3sc;
+	boost::tie(b1label, b1sc) = parse_shortcut(b1);
+	boost::tie(b2label, b2sc) = parse_shortcut(b2);
+	boost::tie(b3label, b3sc) = parse_shortcut(b3);
+	lyxerr  << "Parsed " << b1 << " as " << b1label << " and " << b1sc << endl;
+
 	if (b3.empty()) {
-		return fl_show_choice(title.c_str(), question.c_str(), "",
-			2, b1.c_str(), b2.c_str(), 2);
+		fl_set_choices_shortcut(b1sc.c_str(), b2sc.c_str(), "");
+		return fl_show_choices(question.c_str(),
+			2, b1label.c_str(), b2label.c_str(), "", default_button + 1) - 1;
 	} else {
-		return fl_show_choice(title.c_str(), question.c_str(), "",
-			3, b1.c_str(), b2.c_str(), b3.c_str(), 3);
+		fl_set_choices_shortcut(b1sc.c_str(), b2sc.c_str(), b3sc.c_str());
+		return fl_show_choices(question.c_str(),
+			3, b1label.c_str(), b2label.c_str(), b3label.c_str(),
+			default_button + 1) - 1;
 	}
 }
 
