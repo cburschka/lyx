@@ -1,3 +1,7 @@
+2003-03-24  Angus Leeming  <leeming@lyx.org>
+
+	* xforms_resize.C (get_scaling_factor): "cure" float -> int warnings.
+
 2003-03-22  John Levon  <levon@movementarian.org>
 
 	* xscreen.C: remove "internal", unused

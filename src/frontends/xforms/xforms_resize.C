@@ -50,7 +50,7 @@ double get_scaling_factor(FL_FORM * form)
 
 	    if (ob->objclass == FL_BUTTON &&
 		(ob->type == FL_RETURN_BUTTON || ob->type == FL_MENU_BUTTON))
-		sw += FL_min(0.6f * ob->h, 0.6f * ob->w) - 1;
+		sw += (int)FL_min(0.6f * ob->h, 0.6f * ob->w) - 1;
 
 	    if (ob->objclass == FL_BUTTON && ob->type == FL_LIGHTBUTTON)
 		sw += FL_LIGHTBUTTON_MINSIZE + 1;
@@ -58,11 +58,11 @@ double get_scaling_factor(FL_FORM * form)
 	    if (sw <= (ob->w - 2 * (bw + xm)) && sh <= (ob->h - 2 * (bw + ym)))
 		continue;
 
-	    if ((osize = ob->w - 2 * (bw + xm)) <= 0)
+	    if ((osize = ob->w - 2 * (int)(bw + xm)) <= 0)
 		osize = 1;
 	    xfactor = (float) sw / (float)osize;
 
-	    if ((osize = ob->h - 2 * (bw + ym)) <= 0)
+	    if ((osize = ob->h - 2 * (int)(bw + ym)) <= 0)
 		osize = 1;
 	    yfactor = (float) sh / osize;
 
