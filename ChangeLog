@@ -1,5 +1,8 @@
 1999-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/doc/LaTeXConfig.lyx.in, 
+	  lib/chkconfig.ltx: remove the test for linuxdoc-sgml.sty.
+
 	* src/buffer.C (writeFile): Do not add a comment on top of .lyx
 	file saying who created them and when this heppened; this is
 	useless and annoys tools like cvs.
