@@ -10,6 +10,7 @@
  * \file ControlBibtex.C
  * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Herbert Voss <voss@lyx.org>
  */
 
 #include <algorithm>
@@ -26,8 +27,13 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "lyxrc.h"
+#include "helper_funcs.h"
+#include "gettext.h"
 
 using SigC::slot;
+using std::pair;
+using std::make_pair;
 
 ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
@@ -53,3 +59,13 @@ void ControlBibtex::applyParamsToInset()
 
 void ControlBibtex::applyParamsNoInset()
 {}
+
+
+string const ControlBibtex::Browse(string const & in_name, 
+                                   string const & title,
+				   string const & pattern)
+{
+	pair<string, string> dir1(N_("Documents"), string(lyxrc.document_path));
+	return browseFile(&lv_, in_name, title, pattern, 
+			  dir1,make_pair(string(), string()));
+}

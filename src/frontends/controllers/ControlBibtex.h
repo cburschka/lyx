@@ -29,7 +29,9 @@ class ControlBibtex : public ControlCommand
 public:
 	///
 	ControlBibtex(LyXView &, Dialogs &);
-
+	/// Browse for a file
+	string const Browse(string const &, string const &, string const &);
+ 
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
