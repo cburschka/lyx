@@ -27,7 +27,6 @@
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
 #include "ui/QPrefDisplayModule.h"
-#include "ui/QPrefLNFMiscModule.h"
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
 #include "ui/QPrefConvertersModule.h"
@@ -80,7 +79,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	screenfontsModule = new QPrefScreenFontsModule(prefsWS);
 	colorsModule = new QPrefColorsModule(prefsWS);
 	displayModule = new QPrefDisplayModule(prefsWS);
-	lnfmiscModule = new QPrefLNFMiscModule(prefsWS);
 	pathsModule = new QPrefPathsModule(prefsWS);
 	spellcheckerModule = new QPrefSpellcheckerModule(prefsWS);
 	convertersModule = new QPrefConvertersModule(prefsWS);
@@ -96,14 +94,13 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsWS->addWidget(screenfontsModule, 4);
 	prefsWS->addWidget(colorsModule, 5);
 	prefsWS->addWidget(displayModule, 6);
-	prefsWS->addWidget(lnfmiscModule, 7);
-	prefsWS->addWidget(pathsModule, 8);
-	prefsWS->addWidget(spellcheckerModule, 9);
-	prefsWS->addWidget(convertersModule, 10);
-	prefsWS->addWidget(fileformatsModule, 11);
-	prefsWS->addWidget(languageModule, 12);
-	prefsWS->addWidget(printerModule, 13);
-	prefsWS->addWidget(uiModule, 14);
+	prefsWS->addWidget(pathsModule, 7);
+	prefsWS->addWidget(spellcheckerModule, 8);
+	prefsWS->addWidget(convertersModule, 9);
+	prefsWS->addWidget(fileformatsModule, 10);
+	prefsWS->addWidget(languageModule, 11);
+	prefsWS->addWidget(printerModule, 12);
+	prefsWS->addWidget(uiModule, 13);
 
 	QListViewItem * i;
 
@@ -130,16 +127,14 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = screenfontsModule;
 	i = new QListViewItem(lnf, i, _("Colors"));
 	pane_map_[i] = colorsModule;
-	i = new QListViewItem(lnf, i, _("Display"));
+	i = new QListViewItem(lnf, i, _("Graphics"));
 	pane_map_[i] = displayModule;
-	i = new QListViewItem(lnf, i, _("Miscellaneous")); // YUCK !
-	pane_map_[i] = lnfmiscModule;
 
 	// rag bag of crap
 
-	i = new QListViewItem(prefsLV, lan, _("Ascii"));
+	i = new QListViewItem(prefsLV, lan, _("Ascii output"));
 	pane_map_[i] = asciiModule;
-	i = new QListViewItem(prefsLV, i, _("Date"));
+	i = new QListViewItem(prefsLV, i, _("Date output"));
 	pane_map_[i] = dateModule;
 	i = new QListViewItem(prefsLV, i, _("Keyboard"));
 	pane_map_[i] = keyboardModule;

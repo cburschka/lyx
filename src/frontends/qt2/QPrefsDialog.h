@@ -29,7 +29,6 @@ class QPrefLatexModule;
 class QPrefScreenFontsModule;
 class QPrefColorsModule;
 class QPrefDisplayModule;
-class QPrefLNFMiscModule;
 class QPrefPathsModule;
 class QPrefSpellcheckerModule;
 class QPrefConvertersModule;
@@ -54,24 +53,6 @@ protected:
 	void closeEvent(QCloseEvent * e);
  
 private:
-	/*enum Panes {
-		ASCII,
-		DATE,
-		KEYBOARD,
-		LATEX,
-		SCREENFONTS,
-		COLORS,
-		DISPLAY,
-		LNFMISC,
-		PATHS,
-		SPELLCHECKER,
-		CONVERTERS,
-		FILEFORMATS,
-		LANGUAGE,
-		PRINTER,
-		UI
-	};*/
- 
 	typedef std::map<QListViewItem *, QWidget *> PaneMap;
 
 	PaneMap pane_map_;
@@ -84,7 +65,6 @@ QPrefLatexModule
 QPrefScreenFontsModule
 QPrefColorsModule
 QPrefDisplayModule
-QPrefLNFMiscModule
 QPrefPathsModule
 QPrefSpellcheckerModule
 QPrefConvertersModule
@@ -100,7 +80,6 @@ QPrefUIModule
 	QPrefScreenFontsModule * screenfontsModule;
 	QPrefColorsModule * colorsModule;
 	QPrefDisplayModule * displayModule;
-	QPrefLNFMiscModule * lnfmiscModule;
 	QPrefPathsModule * pathsModule;
 	QPrefSpellcheckerModule * spellcheckerModule;
 	QPrefConvertersModule * convertersModule;
