@@ -26,14 +26,21 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
+#include "lyx_main.h"
 #include "lyxrc.h"
 #include "outputparams.h"
 #include "textpainter.h"
 #include "undo.h"
 
+#include "insets/render_preview.h"
+
 #include "frontends/Alert.h"
 
+#include "graphics/PreviewLoader.h"
+
 #include "support/std_sstream.h"
+
+#include <boost/bind.hpp>
 
 
 using std::endl;
@@ -114,7 +121,8 @@ namespace {
 
 
 MathHullInset::MathHullInset()
-	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1)
+	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1),
+	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -125,15 +133,39 @@ MathHullInset::MathHullInset()
 
 
 MathHullInset::MathHullInset(string const & type)
-	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1)
+	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1),
+	  preview_(new RenderPreview(this))
 {
 	setDefaults();
 }
 
 
+MathHullInset::MathHullInset(MathHullInset const & other)
+	: MathGridInset(other),
+	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
+	  preview_(new RenderPreview(this))
+{}
+
+
+MathHullInset::~MathHullInset()
+{}
+
+
 auto_ptr<InsetBase> MathHullInset::clone() const
 {
 	return auto_ptr<InsetBase>(new MathHullInset(*this));
+}
+
+
+void MathHullInset::operator=(MathHullInset const & other)
+{
+	if (this == &other)
+		return;
+	*static_cast<MathGridInset*>(this) = MathGridInset(other);
+	type_  = other.type_;
+	nonum_ = other.nonum_;
+	label_ = other.label_;
+	preview_.reset(new RenderPreview(*other.preview_, this));
 }
 
 
@@ -194,6 +226,20 @@ char const * MathHullInset::standardFont() const
 
 void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	bool const use_preview = (!editing(mi.base.bv) &&
+				  RenderPreview::activated() &&
+				  preview_->previewReady());
+
+	if (use_preview) {
+		preview_->metrics(mi, dim);
+		// insert a one pixel gap in front of the formula
+		dim.wid += 1;
+		if (display())
+			dim.des += 12;
+		dim_ = dim;
+		return;
+	}
+
 	FontSetChanger dummy1(mi.base, standardFont());
 	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
@@ -228,6 +274,18 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 {
+	// The previews are drawn only when we're not editing the inset.
+	bool const use_preview = (!editing(pi.base.bv) &&
+				  RenderPreview::activated() &&
+				  preview_->previewReady());
+
+	if (use_preview) {
+		// one pixel gap in front
+		preview_->draw(pi, x + 1, y);
+		setPosCache(pi, x, y);
+		return;
+	}
+
 	FontSetChanger dummy1(pi.base, standardFont());
 	StyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 	MathGridInset::draw(pi, x + 1, y);
@@ -269,6 +327,38 @@ void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
 	}
+}
+
+
+namespace {
+
+string const latex_string(MathHullInset const & inset)
+{
+	ostringstream ls;
+	WriteStream wi(ls, false, false);
+	inset.write(wi);
+	return ls.str();
+}
+
+} // namespace anon
+
+
+void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
+{
+	string const snippet = latex_string(*this);
+	preview_->addPreview(snippet, ploader);
+}
+
+
+void MathHullInset::notifyCursorLeaves(LCursor & cur)
+{
+	if (!RenderPreview::activated())
+		return;
+
+	Buffer const & buffer = cur.buffer();
+	string const snippet = latex_string(*this);
+	preview_->addPreview(snippet, buffer);
+	preview_->startLoading(buffer);
 }
 
 
@@ -783,6 +873,14 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
+
+	case LFUN_FINISHED_LEFT:
+	case LFUN_FINISHED_RIGHT:
+	case LFUN_FINISHED_UP:
+	case LFUN_FINISHED_DOWN:
+		MathGridInset::priv_dispatch(cur, cmd);
+		notifyCursorLeaves(cur);
+		break;
 
 	case LFUN_BREAKPARAGRAPH:
 		// just swallow this

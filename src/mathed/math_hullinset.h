@@ -13,6 +13,9 @@
 #define MATH_HULLINSET_H
 
 #include "math_gridinset.h"
+#include <boost/scoped_ptr.hpp>
+
+class RenderPreview;
 
 
 /// This provides an interface between "LyX insets" and "LyX math insets"
@@ -23,7 +26,13 @@ public:
 	///
 	explicit MathHullInset(std::string const & type);
 	///
+	MathHullInset(MathHullInset const &);
+	///
+	~MathHullInset();
+	///
 	std::auto_ptr<InsetBase> clone() const;
+	///
+	void operator=(MathHullInset const &);
 	///
 	mode_type currentMode() const;
 	///
@@ -104,10 +113,12 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 
+	/// get notification when the cursor leaves this inset
+	void notifyCursorLeaves(LCursor & cur);
 	///
 	//bool insetAllowed(Code code) const;
 	///
-	//void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 
 protected:
@@ -147,7 +158,8 @@ private:
 	std::vector<int> nonum_;
 	///
 	std::vector<std::string> label_;
-
+	///
+	boost::scoped_ptr<RenderPreview> preview_;
 //
 // Incorporate me
 //

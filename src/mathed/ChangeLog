@@ -1,3 +1,12 @@
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
+	* math_hullinset.[Ch]: add a RenderPreview variable.
+	(copy c-tor, copy assignment operator, d-tor, notifyCursorLeaves,
+	addPreview): new member functions. The copy c-tor and assignment op
+	could be replaced by the compiler-generated defaults if preview_
+	was stored as a RenderPreview var rather than a scoped pointer.
+	(metrics, draw): use the preview renderer if previewing is turned on.
+	
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
 	* math_scriptinset.C (up, down, notifyCursorLeaves): ensure that

@@ -1148,6 +1148,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishUndo();
 		cur.x_target() = cursorX(cur.top());
 
+		// Has the cursor just left the inset?
+		if (bv->cursor().inMathed() && !cur.inMathed())
+			bv->cursor().inset().notifyCursorLeaves(bv->cursor());
+
 		// Set cursor here.
 		bv->cursor() = cur;
 

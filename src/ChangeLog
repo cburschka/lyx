@@ -1,5 +1,10 @@
 2004-04-13  Angus Leeming  <leeming@lyx.org>
 
+	* text3.C (dispatch): call Inset::.notifyCursorLeaves when the
+	cursor is clicked out of an inset.
+
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
 	* lyx_main.[Ch] (updateInset): pass it an InsetBase pointer rather
 	than an InsetOld one.
 
