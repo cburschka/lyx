@@ -69,6 +69,7 @@ void FormFloat::build()
 	bcview().addReadOnly(dialog_->check_here);
 	bcview().addReadOnly(dialog_->check_force);
 	bcview().addReadOnly(dialog_->check_wide);
+	bcview().addReadOnly(dialog_->check_sideways);
 
 	placement_.init(dialog_->radio_default,         DOCUMENT_DEFAULTS);
 	placement_.init(dialog_->radio_here_definitely, HERE_DEFINITELY);
@@ -93,12 +94,15 @@ void FormFloat::build()
 	tooltips().init(dialog_->check_force, str);
 	str = _("Span float over the columns.");
 	tooltips().init(dialog_->check_wide, str);
+	str = _("Rotate the float sideways by 90 degs.");
+	tooltips().init(dialog_->check_sideways, str);
 }
 
 
 void FormFloat::apply()
 {
 	bool const wide = fl_get_button(dialog_->check_wide);
+	bool const sideways = fl_get_button(dialog_->check_sideways);
 
 	string placement;
 	switch (placement_.get()) {
@@ -152,6 +156,7 @@ void FormFloat::apply()
 
 	controller().params().placement = placement;
 	controller().params().wide = wide;
+	controller().params().sideways = sideways;
 }
 
 
@@ -159,6 +164,9 @@ void FormFloat::update()
 {
 	string placement(controller().params().placement);
 	bool const wide = controller().params().wide;
+	bool const sideways = controller().params().sideways;
+	bool const sideways_possible = (controller().params().type == "figure"
+		|| controller().params().type == "table");
 
 	bool const here_definitely = contains(placement, 'H');
 
@@ -182,13 +190,18 @@ void FormFloat::update()
 	fl_set_button(dialog_->check_page, page);
 	fl_set_button(dialog_->check_here, here);
 	fl_set_button(dialog_->check_wide, wide);
+	fl_set_button(dialog_->check_sideways, sideways);
 
-	setEnabled(dialog_->radio_here_definitely, !wide);
-	setEnabled(dialog_->check_force,  alternatives);
-	setEnabled(dialog_->check_top,    alternatives);
-	setEnabled(dialog_->check_bottom, alternatives);
-	setEnabled(dialog_->check_page,   alternatives);
-	setEnabled(dialog_->check_here,   alternatives && !wide);
+	setEnabled(dialog_->radio_here_definitely, !wide && !sideways);
+	setEnabled(dialog_->check_force,  alternatives && !sideways);
+	setEnabled(dialog_->check_top,    alternatives && !sideways);
+	setEnabled(dialog_->check_bottom, alternatives && !sideways);
+	setEnabled(dialog_->check_page,   alternatives && !sideways);
+	setEnabled(dialog_->check_here,   alternatives && !wide && !sideways);
+	setEnabled(dialog_->check_wide,   !sideways);
+	setEnabled(dialog_->radio_default,   !sideways);
+	setEnabled(dialog_->radio_alternatives,   !sideways);
+	setEnabled(dialog_->check_sideways, sideways_possible);
 }
 
 
@@ -196,16 +209,17 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 {
 	bool const alternatives = placement_.get() == ALTERNATIVES;
 	bool const wide = fl_get_button(dialog_->check_wide);
+	bool const sideways = fl_get_button(dialog_->check_sideways);
 
 	if (ob == dialog_->radio_default ||
 	    ob == dialog_->radio_here_definitely ||
 	    ob == dialog_->radio_alternatives) {
 		// enable check buttons only for Alternatives
 		setEnabled(dialog_->check_top, alternatives);
-		setEnabled(dialog_->check_bottom, alternatives);
 		setEnabled(dialog_->check_page, alternatives);
-		// wide float doesn't allow 'here' placement
+		// wide float doesn't allow 'here' or 'bottom' placement
 		setEnabled(dialog_->check_here, alternatives && !wide);
+		setEnabled(dialog_->check_bottom, alternatives && !wide);
 
 	} else if (ob == dialog_->check_wide) {
 		if (wide && placement_.get() == HERE_DEFINITELY) {
@@ -215,11 +229,23 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 		}
 		setEnabled(dialog_->check_here, alternatives && !wide);
 		setEnabled(dialog_->radio_here_definitely, !wide);
+		setEnabled(dialog_->check_bottom, alternatives && !wide);
+	
+	} else if (ob == dialog_->check_sideways) {
+		setEnabled(dialog_->radio_default,   !sideways);
+		setEnabled(dialog_->radio_alternatives,   !sideways);
+		setEnabled(dialog_->radio_here_definitely, !wide && !sideways);
+		setEnabled(dialog_->check_top, alternatives && !sideways);
+		setEnabled(dialog_->check_bottom, 
+			alternatives && !wide && !sideways);
+		setEnabled(dialog_->check_page, alternatives && !sideways);
+		setEnabled(dialog_->check_here, alternatives && !wide && !sideways);
+		setEnabled(dialog_->check_wide,   !sideways);
 	}
 
 	// enable force button, if Alternatives is selected and at least
 	// one of its check buttons
-	bool const enable_force = alternatives &&
+	bool const enable_force = alternatives && !sideways &&
 		(fl_get_button(dialog_->check_top) ||
 		 fl_get_button(dialog_->check_bottom) ||
 		 fl_get_button(dialog_->check_page) ||

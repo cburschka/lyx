@@ -19,7 +19,7 @@
 
 struct InsetFloatParams {
 	///
-	InsetFloatParams() : wide(false) {}
+	InsetFloatParams() : wide(false), sideways(false) {}
 	///
 	void write(std::ostream & os) const;
 	///
@@ -30,6 +30,8 @@ struct InsetFloatParams {
 	std::string placement;
 	///
 	bool wide;
+	///
+	bool sideways;
 };
 
 
@@ -71,6 +73,8 @@ public:
 	bool noFontChange() const { return true; }
 	///
 	void wide(bool w, BufferParams const &);
+	///
+	void sideways(bool s, BufferParams const &);
 	///
 	void addToToc(lyx::toc::TocList &, Buffer const &) const;
 	///

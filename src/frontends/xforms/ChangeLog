@@ -1,3 +1,10 @@
+2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormFloat.C:
+	* forms/form_float.fd:
+	add support for sidewaysfloats
+	fix enabling of placement values (bug 1016)
+
 2004-03-28  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C (build): added print dialog.

@@ -1,6 +1,19 @@
 LyX file-format changes
 -----------------------
 
+2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 231.
+	
+	* Support for sidewaysfigure/sidewaystable (rotating package).
+	insetfloat has now a param \sideways [true|false] (default is false).
+	The param should be erased on downwards conversion, if it was true, 
+	the inset should be replaced by 
+	\begin{sidewaysfigure} <content> \end{sidewaysfigure}
+	resp.
+	\begin{sidewaystable} <content> \end{sidewaystable}
+	i.e. ERT.
+
 2004-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 230.

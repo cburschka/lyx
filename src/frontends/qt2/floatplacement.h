@@ -24,17 +24,19 @@ public:
 	FloatPlacement(QWidget * parent, char * name);
 
 	void useWide();
+	void useSideways();
 
 	void set(InsetFloatParams const & params);
 	void set(std::string const & placement);
 
-	std::string const get(bool & wide) const;
+	std::string const get(bool & wide, bool & sideways) const;
 	std::string const get() const;
 
 public slots:
 	void tbhpClicked();
 	void heredefinitelyClicked();
 	void spanClicked();
+	void sidewaysClicked();
 	void changedSlot();
 
 signals:
@@ -45,6 +47,7 @@ private:
 
 	QCheckBox * defaultsCB;
 	QCheckBox * spanCB;
+	QCheckBox * sidewaysCB;
 	QCheckBox * ignoreCB;
 	QCheckBox * pageCB;
 	QCheckBox * heredefinitelyCB;

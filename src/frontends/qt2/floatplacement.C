@@ -27,6 +27,7 @@ using std::string;
 
 
 // FIXME: set disabled doesn't work properly
+// should be fixed now (jspitzm)
 FloatPlacement::FloatPlacement(QWidget * parent, char * name)
 	: QWidget(parent, name)
 {
@@ -42,6 +43,7 @@ FloatPlacement::FloatPlacement(QWidget * parent, char * name)
 	heredefinitelyCB = new QCheckBox(qt_("Here definitely"), options);
 	ignoreCB = new QCheckBox(qt_("&Ignore LaTeX rules"), options);
 	spanCB = 0;
+	sidewaysCB = 0;
 
 	layout->addWidget(defaultsCB);
 
@@ -90,6 +92,16 @@ void FloatPlacement::useWide()
 	setTabOrder(ignoreCB, spanCB);
 	connect(spanCB, SIGNAL(clicked()), this, SLOT(spanClicked()));
 	connect(spanCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
+}
+
+
+void FloatPlacement::useSideways()
+{
+	sidewaysCB = new QCheckBox(qt_("&Rotate sideways"), this);
+	layout->addWidget(sidewaysCB);
+	setTabOrder(spanCB, sidewaysCB);
+	connect(sidewaysCB, SIGNAL(clicked()), this, SLOT(sidewaysClicked()));
+	connect(sidewaysCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
 }
 
 
@@ -148,16 +160,21 @@ void FloatPlacement::set(InsetFloatParams const & params)
 
 	if (params.wide) {
 		herepossiblyCB->setChecked(false);
+		heredefinitelyCB->setChecked(false);
 		bottomCB->setChecked(false);
 	}
 
 	spanCB->setChecked(params.wide);
+	sidewaysCB->setChecked(params.sideways);
+	sidewaysCB->setEnabled(params.type == "figure" 
+		|| params.type == "table");
 }
 
 
-string const FloatPlacement::get(bool & wide) const
+string const FloatPlacement::get(bool & wide, bool & sideways) const
 {
 	wide = spanCB->isChecked();
+	sideways = sidewaysCB->isChecked();
 
 	return get();
 }
@@ -224,6 +241,7 @@ void FloatPlacement::spanClicked()
 	if (!defaultsCB->isChecked()) {
 		herepossiblyCB->setEnabled(!span);
 		heredefinitelyCB->setEnabled(!span);
+		bottomCB->setEnabled(!span);
 	}
 
 	if (!span)
@@ -231,4 +249,30 @@ void FloatPlacement::spanClicked()
 
 	herepossiblyCB->setChecked(false);
 	heredefinitelyCB->setChecked(false);
+	bottomCB->setChecked(false);
+}
+
+
+void FloatPlacement::sidewaysClicked()
+{
+	bool const sideways(sidewaysCB->isChecked());
+	bool const span(spanCB->isChecked());
+	bool const defaults(defaultsCB->isChecked());
+	bool ignore(topCB->isChecked());
+	ignore |= bottomCB->isChecked();
+	ignore |= pageCB->isChecked();
+	ignore |= herepossiblyCB->isChecked();
+
+	defaultsCB->setEnabled(!sideways);
+	topCB->setEnabled(!sideways && !defaults);
+	bottomCB->setEnabled(!sideways && !defaults);
+	pageCB->setEnabled(!sideways && !defaults);
+	spanCB->setEnabled(!sideways);
+	ignoreCB->setEnabled(!sideways && !defaults && ignore);
+	herepossiblyCB->setEnabled(!sideways && !defaults);
+	heredefinitelyCB->setEnabled(!sideways && !defaults);
+	if (!sideways && !defaults) {
+		herepossiblyCB->setEnabled(!span);
+		heredefinitelyCB->setEnabled(!span);
+	}
 }

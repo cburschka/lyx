@@ -53,5 +53,5 @@ void QFloat::apply()
 {
 	InsetFloatParams & params = controller().params();
 
-	params.placement = dialog_->floatFP->get(params.wide);
+	params.placement = dialog_->floatFP->get(params.wide, params.sideways);
 }

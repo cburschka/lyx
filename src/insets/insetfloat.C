@@ -162,7 +162,9 @@ void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetFloatMailer::string2params(cmd.argument, params);
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
+		params_.sideways  = params.sideways;
 		wide(params_.wide, cur.bv().buffer()->params());
+		sideways(params_.sideways, cur.bv().buffer()->params());
 		cur.bv().update();
 		break;
 	}
@@ -191,6 +193,11 @@ void InsetFloatParams::write(ostream & os) const
 		os << "wide true\n";
 	else
 		os << "wide false\n";
+		
+	if (sideways)
+		os << "sideways true\n";
+	else
+		os << "sideways false\n";
 }
 
 
@@ -218,6 +225,18 @@ void InsetFloatParams::read(LyXLex & lex)
 			// take countermeasures
 			lex.pushToken(token);
 		}
+		lex.next();
+		token = lex.getString();
+		if (token == "sideways") {
+			lex.next();
+			string const tmptoken = lex.getString();
+			sideways = (tmptoken == "true");
+		} else {
+			lyxerr << "InsetFloat::Read:: Missing sideways!"
+			       << endl;
+			// take countermeasures
+			lex.pushToken(token);
+		}
 	}
 }
 
@@ -233,6 +252,7 @@ void InsetFloat::read(Buffer const & buf, LyXLex & lex)
 {
 	params_.read(lex);
 	wide(params_.wide, buf.params());
+	sideways(params_.sideways, buf.params());
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -242,6 +262,9 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (contains(params_.placement, 'H')) {
 		features.require("float");
 	}
+	
+	if (params_.sideways)
+		features.require("rotating");
 
 	features.useFloat(params_.type);
 	InsetCollapsable::validate(features);
@@ -264,7 +287,13 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 		      OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
-	string const tmptype = (params_.wide ? params_.type + "*" : params_.type);
+	string tmptype = (params_.wide ? params_.type + "*" : params_.type);
+	if (params_.sideways) {
+		if (params_.type == "table")
+			tmptype = "sidewaystable";
+		else if (params_.type == "figure")
+			tmptype = "sidewaysfigure";
+	}
 	// Figure out the float placement to use.
 	// From lowest to highest:
 	// - float default placement
@@ -287,7 +316,8 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 	// when the current output line is empty.
 	os << "%\n\\begin{" << tmptype << '}';
 	// We only output placement if different from the def_placement.
-	if (!placement.empty()) {
+	// sidewaysfloats always use their own page
+	if (!placement.empty() && !params_.sideways) {
 		os << '[' << placement << ']';
 	}
 	os << '\n';
@@ -373,6 +403,16 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 	string lab = _("float: ") + floatname(params_.type, bp);
 	if (params_.wide)
 		lab += '*';
+	setLabel(lab);
+}
+
+
+void InsetFloat::sideways(bool s, BufferParams const & bp)
+{
+	params_.sideways = s;
+	string lab = _("float: ") + floatname(params_.type, bp);
+	if (params_.sideways)
+		lab += _(" (sideways)");
 	setLabel(lab);
 }
 
