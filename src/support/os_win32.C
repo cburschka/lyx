@@ -15,6 +15,9 @@
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 #include <sys/cygwin.h>
 #include <cstdlib>
+
+#elif defined(_WIN32)
+# include <direct.h> // _getdrive
 #endif
  
 
@@ -82,7 +85,14 @@ void os::warn(string mesg)
 
 string os::current_root()
 {
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	return string("/");
+
+#else
+	// _getdrive returns the current drive (1=A, 2=B, and so on).
+	char const drive = ::_getdrive() + 'A' - 1;
+	return string(1, drive) + ":/";
+#endif
 }
 
 
