@@ -1773,6 +1773,8 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 		}
 		if (!frozen)
 			unFreezeUndo();
+		if (selectall)
+			clearSelection();
 		updateLocal(bv, INIT, true);
 	}
 	if (the_locking_inset)
