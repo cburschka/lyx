@@ -903,12 +903,12 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BREAKLINE:
+		// some magic for the common case
 		if (type_ == "simple" || type_ == "equation") {
 			recordUndoInset(cur);
 			mutate("eqnarray");
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
-			break;
 		}
 		MathGridInset::priv_dispatch(cur, cmd);
 		break;
