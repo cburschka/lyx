@@ -1429,7 +1429,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 		if (firstpar->params().lineBottom())
 			maxdesc += 2 * lyxfont::ascent('x',
 			                               getFont(bview->buffer(),
-			                               par, par->size() - 1));
+							       par,
+							       max(Paragraph::size_type(0), par->size() - 1)));
 	  
 		// and now the pagebreaks
 		if (firstpar->params().pagebreakBottom())
@@ -3423,7 +3424,7 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			y_bottom -= lyxfont::ascent('x',
 						    getFont(bview->buffer(),
 							    par,
-							    par->size() - 1));
+							    max(Paragraph::size_type(0), par->size() - 1)));
 			int const w = (inset_owner ?
 				       inset_owner->width(bview, font) : ww);
 			int const xp = static_cast<int>(inset_owner ? x : 0);
@@ -3434,7 +3435,7 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			y_bottom -= lyxfont::ascent('x',
 						    getFont(bview->buffer(),
 							    par,
-							    par->size() - 1));
+							    max(Paragraph::size_type(0), par->size() - 1)));
 		}
 
 		// draw an endlabel

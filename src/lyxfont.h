@@ -434,7 +434,6 @@ bool LyXFont::isSymbolFont() const
 	default:
 		return false;
 	}
-	return false;
 }
 
 ///

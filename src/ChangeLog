@@ -1,3 +1,11 @@
+2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfont.h (isSymbolFont): shut off warning
+
+	* text.C (setHeightOfRow):
+	(getVisibleRow): fix crash with empty paragraphs which have a
+	bottom line
+
 2001-09-07  Rob Lahaye  <lahaye@users.sourceforge.net>
 
 	* lyxrc.[Ch]: added dialogs_iconify_with_main variable and associated

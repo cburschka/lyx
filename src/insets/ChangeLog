@@ -1,3 +1,8 @@
+2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetquotes.C (InsetQuotes): when trying to decide the side of
+	the quote, choose `left' only after a space or '('
+
 2001-09-04  José Matos  <jamatos@fep.up.pt>
 	* figinset.C
 	* figinset.h

@@ -537,7 +537,7 @@ Inset * Paragraph::getInset(Paragraph::size_type pos)
 	if (it != insetlist.end() && it->pos == pos)
 		return it->inset;
 
-	lyxerr << "ERROR (Paragraph::GetInset): "
+	lyxerr << "ERROR (Paragraph::getInset): "
 		"Inset does not exist: " << pos << endl;
 	//::raise(SIGSTOP);
 	

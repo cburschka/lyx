@@ -145,21 +145,6 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 } // namespace anon
 
 
-// this one is not "C" because combox callbacks are really C++ %-|
-void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
-{
-	Toolbar::Pimpl * tb = reinterpret_cast<Toolbar::Pimpl *>(arg);
-
-	tb->layoutSelected();
-}
-
-
-void Toolbar::Pimpl::layoutSelected()
-{
-	owner->getLyXFunc()->dispatch(LFUN_LAYOUT, combox->getline());
-}
- 
-
 void Toolbar::Pimpl::activate()
 {
 	ToolbarList::const_iterator p = toollist.begin();
@@ -216,12 +201,41 @@ void Toolbar::Pimpl::update()
 }
 
 
+// this one is not "C" because combox callbacks are really C++ %-|
+void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
+{
+	Toolbar::Pimpl * tb = reinterpret_cast<Toolbar::Pimpl *>(arg);
+
+	tb->layoutSelected();
+}
+
+
+void Toolbar::Pimpl::layoutSelected()
+{
+	string const & layoutguiname = combox->getline();
+	LyXTextClass const & tc =
+		textclasslist.TextClass(owner->buffer()->
+					params.textclass);
+	
+	LyXTextClass::const_iterator end = tc.end();
+	for (LyXTextClass::const_iterator cit = tc.begin();
+	     cit != end; ++cit) {
+		if (_(cit->name()) == layoutguiname) {
+			owner->getLyXFunc()->dispatch(LFUN_LAYOUT, cit->name());
+			return;
+		}
+	}
+	lyxerr << "ERROR (Toolbar::Pimpl::layoutSelected): layout not found!"
+	       << endl;
+}
+ 
+
 void Toolbar::Pimpl::setLayout(int layout) {
 	if (combox) {
 		LyXTextClass const & tc =
 			textclasslist.TextClass(owner->buffer()->
 						params.textclass);
-		combox->select(tc[layout].name());
+		combox->select(_(tc[layout].name()));
 	}
 }
 

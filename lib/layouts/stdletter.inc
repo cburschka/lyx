@@ -75,7 +75,7 @@ Style Opening
   LabelFont 
     Series		Bold
     Shape		Italic
-    Latex		Latex
+    Color		red
   EndFont
 End
 
@@ -98,7 +98,7 @@ Style Signature
   LabelFont 
     Series		Bold
     Shape		Italic
-    Latex		Latex
+    Color		red
   EndFont
 End
 
@@ -121,7 +121,7 @@ Style Closing
   LabelFont 
     Series		Bold
     Shape		Italic
-    Latex		Latex
+    Color		red
   EndFont
 End
 
