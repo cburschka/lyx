@@ -1176,8 +1176,8 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
 						Alert::alert(_("ERROR!"),
-						     _("An error occured while "
-						       "running the conversion script."));
+							     _("An error occured while "
+							       "running the conversion script."));
 						return false;
 					}
 					istringstream is(ret.second);
