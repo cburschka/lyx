@@ -73,6 +73,7 @@ BufferParams::BufferParams()
 	sides = LyXTextClass::OneSide;
 	columns = 1;
 	pagestyle = "default";
+	compressed = false;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullets[iter] = ITEMIZE_DEFAULTS[iter];
 		temp_bullets[iter] = ITEMIZE_DEFAULTS[iter];
@@ -1004,7 +1005,7 @@ string const BufferParams::dvips_options() const
 		string const paper_option = paperSizeName();
 		if (paper_option != "letter" ||
 		    orientation != ORIENTATION_LANDSCAPE) {
-			// dvips won't accept -t letter -t landscape.  
+			// dvips won't accept -t letter -t landscape.
 			// In all other cases, include the paper size
 			// explicitly.
 			result = lyxrc.print_paper_flag;

@@ -515,7 +515,7 @@ void InsetText::lockInset(BufferView * bv)
 }
 
 
-void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
+void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
 	inset_x = cix() - top_x + drawTextXOffset;
@@ -629,7 +629,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
 				return false;
 			found = tl_inset->updateInsetInInset(bv, inset);
 			ustat = FULL;
-		} else { 
+		} else {
 			text_.updateInset(tl_inset);
 			setUpdateStatus(ustat);
 		}

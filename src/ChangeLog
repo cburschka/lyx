@@ -1,10 +1,26 @@
+2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxlex_pimpl.C (setFile): clean up slightly.
+
+	* bufferparams.h: add compressed var
+
+	* buffer_funcs.C (readFile): adjust for LyXLex change
+	(newFile): ditto + simplify
+
+	* buffer.C (writeFile): handle writing of compressed files
+
+	* buffer.[Ch] (readFile): begin LyXLex here, remove one argument.
+	Check if the file is compressed and set a bufferparm if so.
+
+	* Makefile.am (lyx_LDADD): remove explicit -lz
+
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer.C (do_writeFile, makeLaTeXFile, makeLinuxDocFile,
 	makeDocBookFile): put the real LyX version in the first line of
 	the file
 
-	* version.h: 
+	* version.h:
 	* version.C.in: remove lyx_docversion
 
 	* tabular.C (write_attribute): add a template-based version to

@@ -554,7 +554,7 @@ int InsetGraphics::linuxdoc(Buffer const * buf, ostream & os) const
 {
 	string const file_name = buf->niceFile ?
 				params().filename.relFilename(buf->filePath()):
-	  			params().filename.absFilename();
+				params().filename.absFilename();
 
 	os << "<eps file=\"" << file_name << "\">\n";
 	os << "<img src=\"" << file_name << "\">";

@@ -97,7 +97,7 @@ namespace {
 	// check if the given co-ordinates are inside an inset at the
 	// given cursor, if one exists. If so, the inset is returned,
 	// and the co-ordinates are made relative. Otherwise, 0 is returned.
-	InsetOld * checkInset(BufferView * bv, LyXText & text,
+InsetOld * checkInset(BufferView * /*bv*/, LyXText & text,
 		LyXCursor const & cur, int & x, int & y)
 	{
 		lyx::pos_type const pos = cur.pos();

@@ -1167,7 +1167,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 						maxasc = max(maxasc, tmpinset->ascent());
 						maxdesc = max(maxdesc, tmpinset->descent());
 #endif
-					} 
+					}
 				} else {
 					// Fall-back to normal case
 					maxwidth += singleWidth(pit, pos, c);

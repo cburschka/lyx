@@ -113,15 +113,16 @@ void LyXLex::Pimpl::popTable()
 
 bool LyXLex::Pimpl::setFile(string const & filename)
 {
-	// Is this a compressed file or not?
-	bool const compressed = (filename.substr(filename.size() - 3, 3) == ".gz");
 
-	// The check only outputs a debug message, because it triggers
-	// a bug in compaq cxx 6.2, where is_open() returns 'true' for a
-	// fresh new filebuf.  (JMarc)
-	if (compressed) {
+	// Check the format of the file.
+	string const format = getExtFromContents(filename);
+
+	if (format == "gzip" || format == "zip" || format == "compress") {
 		lyxerr << "lyxlex: compressed" << endl;
 
+		// The check only outputs a debug message, because it triggers
+		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
+		// a fresh new filebuf.  (JMarc)
 		if (gz__.is_open() || is.tellg() > 0)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
@@ -133,6 +134,9 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 	} else {
 		lyxerr << "lyxlex: UNcompressed" << endl;
 
+		// The check only outputs a debug message, because it triggers
+		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
+		// a fresh new filebuf.  (JMarc)
 		if (fb__.is_open() || is.tellg() > 0)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
@@ -142,7 +146,6 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		lineno = 0;
 		return fb__.is_open() && is.good();
 	}
-
 }
 
 

@@ -18,7 +18,6 @@
 #include "errorlist.h"
 #include "gettext.h"
 #include "vc-backend.h"
-#include "lyxlex.h"
 #include "LaTeX.h"
 #include "ParagraphList.h"
 #include "paragraph.h"
@@ -105,11 +104,7 @@ bool readFile(Buffer * b, string const & s)
 			}
 		}
 	}
-	// not sure if this is the correct place to begin LyXLex
-	LyXLex lex(0, 0);
-	lex.setFile(ts);
-
-	return b->readFile(lex, ts);
+	return b->readFile(ts);
 }
 
 
@@ -166,17 +161,9 @@ Buffer * newFile(string const & filename, string const & templatename,
 		tname = templatename;
 
 	if (!tname.empty()) {
-		bool templateok = false;
-		LyXLex lex(0, 0);
-		lex.setFile(tname);
-		if (lex.isOK()) {
-			if (b->readFile(lex, tname)) {
-				templateok = true;
-			}
-		}
-		if (!templateok) {
+		if (!b->readFile(tname)) {
 			string const file = MakeDisplayPath(tname, 50);
-			string text  = bformat(_("The specified document template\n%1$s\n"
+			string const text  = bformat(_("The specified document template\n%1$s\n"
 				"could not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
@@ -200,7 +187,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 }
 
 
-void bufferErrors(Buffer const & buf, TeXErrors const & terr) 
+void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 {
 	TeXErrors::Errors::const_iterator cit = terr.begin();
 	TeXErrors::Errors::const_iterator end = terr.end();
@@ -219,12 +206,12 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 }
 
 
-void bufferErrors(Buffer const & buf, ErrorList const & el) 
+void bufferErrors(Buffer const & buf, ErrorList const & el)
 {
 	ErrorList::const_iterator it = el.begin();
 	ErrorList::const_iterator end = el.end();
 
-	for (; it != end; ++it) 
+	for (; it != end; ++it)
 		buf.error(*it);
 }
 

@@ -440,8 +440,17 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename)
+bool Buffer::readFile(string const & filename)
 {
+	// Check if the file is compressed.
+	string const format = getExtFromContents(filename);
+	if (format == "gzip" || format == "zip" || format == "compress") {
+		params.compressed = true;
+	}
+
+	LyXLex lex(0, 0);
+	lex.setFile(filename);
+
 	bool ret = readFile(lex, filename, paragraphs.begin());
 
 	// After we have read a file, we must ensure that the buffer
@@ -637,23 +646,25 @@ bool Buffer::writeFile(string const & fname) const
 		return false;
 	}
 
-	bool const compressed = (fname.substr(fname.size() - 3, 3) == ".gz");
+	bool retval;
 
-	if (compressed) {
+	if (params.compressed) {
 		gz::ogzstream ofs(fname.c_str());
 
 		if (!ofs)
 			return false;
 
-		return do_writeFile(ofs);
+		retval = do_writeFile(ofs);
 
+	} else {
+		ofstream ofs(fname.c_str());
+		if (!ofs)
+			return false;
+
+		retval = do_writeFile(ofs);
 	}
 
-	ofstream ofs(fname.c_str());
-	if (!ofs)
-		return false;
-
-	return do_writeFile(ofs);
+	return retval;
 }
 
 

@@ -31,7 +31,7 @@ BOOST_LIBS = -lboost_regex -lboost_signals
 endif
 
 lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
-	$(AIKSAURUS_LIBS) @LIBS@ -lz
+	$(AIKSAURUS_LIBS) @LIBS@
 
 lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS)
 

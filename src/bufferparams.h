@@ -174,6 +174,8 @@ public:
 	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
 	string parentname;
+	///
+	bool compressed;
 
 	/// map of the file's author IDs to buffer author IDs
 	std::vector<int> author_map;

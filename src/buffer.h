@@ -80,7 +80,7 @@ public:
 
 	// FIXME: it's very silly to pass a lex in here
 	/// load a new file
-	bool readFile(LyXLex &, string const &);
+	bool readFile(string const &);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
