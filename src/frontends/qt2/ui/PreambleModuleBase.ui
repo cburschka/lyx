@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>381</width>
+            <width>377</width>
             <height>278</height>
         </rect>
     </property>
@@ -36,9 +36,13 @@
                 <name>name</name>
                 <cstring>preambleMLE</cstring>
             </property>
+            <property stdset="1">
+                <name>font</name>
+                <font>
+                    <family>adobe-courier</family>
+                </font>
+            </property>
         </widget>
     </grid>
 </widget>
-<connections>
-</connections>
 </UI>
