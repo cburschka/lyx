@@ -401,7 +401,7 @@ bool saveParamsAsDefault(BufferParams const &params)
 
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
 				     "defaults.lyx");
-	Buffer defaults = Buffer(fname);
+	Buffer defaults(fname);
 	defaults.params = params;
 
 	// add an empty paragraph. Is this enough?
