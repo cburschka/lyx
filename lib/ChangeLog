@@ -1,3 +1,8 @@
+2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Makefile.am (install-xfonts): do not use "ln -sf" since some
+	solaris versions do not like it. "ln -f -s" is better.
+
 2002-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* bind/sciword.bind: big update: use menus.bind and maths.bind and
