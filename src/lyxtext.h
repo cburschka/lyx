@@ -239,7 +239,7 @@ public:
 	  Since the LyXText now has been moved from Buffer to BufferView
 	  it should not be absolutely needed to move the cursor...
 	  */
-	mutable LyXCursor cursor;
+	mutable LyXCursor cursor; // actual cursor position
 
 	/** The structrue that keeps track of the selections set. */
 	struct Selection {
@@ -258,9 +258,10 @@ public:
 		void mark(bool m) {
 			mark_ = m;
 		}
-		LyXCursor cursor;
-		LyXCursor start;
-		LyXCursor end;
+		LyXCursor cursor; // temporary cursor to hold a cursor position
+		                  // until setSelection is called!
+		LyXCursor start;  // start of a REAL selection
+		LyXCursor end;    // end of a REAL selection
 	private:
 		bool set_; // former selection
 		bool mark_; // former mark_set
@@ -269,10 +270,10 @@ public:
 	mutable Selection selection;
 
 	/// needed for the toggling
-	LyXCursor last_sel_cursor;
+	LyXCursor last_sel_cursor; // cursor position on last selection made
 	///
-	LyXCursor toggle_cursor;
-	///
+	LyXCursor toggle_cursor;   // the following two are needed for toggling
+	///                           the selection in screen.C
 	LyXCursor toggle_end_cursor;
    
 	/// need the selection cursor:
