@@ -461,7 +461,7 @@
 <connections>
     <connection>
         <sender>citationStyleCO</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <signal>activated(int)</signal>
         <receiver>QCitationDialogBase</receiver>
         <slot>changed_adaptor()</slot>
     </connection>
