@@ -1,3 +1,10 @@
+2002-08-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* .cvsignore: change acconfig.m4 to acconfig.h
+
+	* autogen.sh (AUTOCONF): remove warning args on autoheader and
+	autoconf
+
 2002-08-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* autogen.sh (autoversion): add handling of different autoconf
@@ -11,7 +18,7 @@
 
 	* configure.in: more from here...
 	* config/configure.in: ...to here
-	
+
 2002-07-30  André Poenitz <poenitz@gmx.de>
 
 	* INSTALL: fix location of GNU gettext package

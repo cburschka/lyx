@@ -25,9 +25,9 @@ esac
 
 
 ACLOCAL=aclocal
-AUTOHEADER="autoheader -W none -W obsolete"
+AUTOHEADER="autoheader"
 AUTOMAKE="automake -a -c --foreign"
-AUTOCONF="autoconf -W none -W obsolete"
+AUTOCONF="autoconf"
 GNUM4=
 
 ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 xforms.m4 qt2.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"
