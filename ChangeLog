@@ -1,5 +1,8 @@
 2000-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/layouts/siamltex.layout: new textclass for SIAM journals,
+	from Kornelia Pietsch <pietsch@mathematik.tu-chemnitz.de>
+
 	* src/frontends/xforms/Menubar_pimpl.C: menu buttons are now
 	created in the constructors in different groups. Then set() just
 	have to show the groups as needed. This fixes the redraw problems

@@ -1,0 +1,275 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (siamltex)}
+# Siam Article textclass definition file.
+# Cut & paste from various LyX layouts plus some minor modifications
+# Author : Kornelia Pietsch <pietsch@mathematik.tu-chemnitz.de>
+
+Columns          1
+Sides            1
+SecNumDepth      2
+TocDepth         2
+MaxCounter       Counter_Section
+
+ClassOptions
+  FontSize 10|11|12
+  Other "draft|final"
+End
+
+Style Standard
+  Margin         Dynamic
+  LatexType      Paragraph
+  LatexName      dummy
+  ParSkip        0
+  ParIndent      ........
+  NextNoIndent   0
+  TopSep         0.7
+  BottomSep      0.7
+  ParSep         0.7
+  Align          Block
+  AlignPossible  Block, Left, Right, Center
+  LabelType      No_Label
+End
+
+Input stdlists.inc
+Input stdlayouts.inc
+
+Style Section
+	CopyStyle      Standard
+  Margin         First_Dynamic
+  LatexType      Command
+  LatexName      section
+  NeedProtect    1
+  NextNoIndent   1
+  LabelSep       xxx
+  Align          Block
+  AlignPossible  Block, Left
+  LabelType      Counter_Section
+  EndLabelType   Static
+  EndLabelString .
+  Font 
+    Series       Bold
+  EndFont
+End
+
+Style Subsection
+  CopyStyle      Section
+  LatexName      subsection
+  LabelType      Counter_Subsection
+End
+
+Style Subsubsection
+  CopyStyle      Subsection
+  LatexName      subsubsection
+  LabelType      Counter_Subsubsection
+End
+
+Style Paragraph
+  CopyStyle      Subsubsection
+  LatexName      paragraph
+  LabelType      Counter_Paragraph
+  Font 
+    Shape        Italic
+		Series       Medium
+  EndFont
+End
+
+Style Section*
+  CopyStyle      Section
+  LatexName      section*
+  LabelType      No_Label
+End
+
+Style Subsection*
+  CopyStyle      Subsection
+  LatexName      subsection*
+  LabelType      No_Label
+End
+
+Style Subsubsection*
+  CopyStyle      Subsubsection
+  LatexName      subsubsection*
+  LabelType      No_Label
+End
+
+Style Paragraph*
+  CopyStyle      Paragraph
+  LatexName      paragraph*
+  LabelType      No_Label
+End
+
+
+Style Title
+  Margin         Static
+  LatexType      Command
+  InTitle        1
+  LatexName      title
+  BottomSep      1
+  Align          Center
+  AlignPossible  Center
+  LabelType      No_Label
+  Font 
+    Size         Larger
+    Shape        SmallCaps
+    Series       Bold  
+  EndFont
+End
+
+Style Author
+	CopyStyle      Title
+  LatexName      author
+  Font 
+    Size         Normal
+    Shape        SmallCaps
+    Series       Medium
+  EndFont
+End
+
+Style Date
+	CopyStyle      Author
+  LatexName      date
+End
+
+Style Abstract
+  Margin         First_Dynamic
+  LatexType      Environment
+#  InTitle        1
+  LatexName      abstract
+  ParIndent      ........
+  NextNoIndent   1
+  TopSep         0.7
+  BottomSep      0.7
+  ParSkip        0.7
+  Align          Block
+  AlignPossible  Block
+  LabelType      Static
+  LabelString    Abstract.
+  LabelSep       M
+  LabelIndent    ........
+  Font
+    Size         Small
+  EndFont
+  LabelFont
+    Series       Bold  
+    Size         Small
+  EndFont
+End
+
+Style Keywords
+  CopyStyle      Abstract
+  LatexName      keywords
+  LabelString    "Key words."
+End  
+
+Style AMS
+  CopyStyle      Abstract
+  LatexName      AMS
+  LabelString    "AMS subject classifications."
+End  
+
+Style Bibliography
+  Margin         Dynamic
+  LatexType      Item_Environment
+  LatexName      thebibliography
+  NextNoIndent   0
+  LeftMargin     M
+  RightMargin    M
+  Align          Block
+  AlignPossible   Block,  Center
+  LabelType      Bibliography
+  #LabelType      centered_top_environment
+  LabelString    References
+  LabelBottomSep 0.7
+  LabelFont
+    Shape               SmallCaps
+  EndFont
+End
+
+Style Theorem
+	CopyStyle      Standard
+  LabelSep       xx
+  LabelType      Static
+  LabelString    "Theorem #."
+  TextFont
+    Shape        Slanted
+    Size         Normal
+  EndFont
+  LabelFont
+    Shape        SmallCaps
+  EndFont
+End
+
+Style Lemma
+  CopyStyle      Theorem
+  LatexName      lemma
+  LabelString    "Lemma #."
+End  
+
+Style Corollary
+  CopyStyle      Theorem
+  LatexName      corollary
+  LabelString    "Corollary #."
+End  
+
+Style Proposition
+  CopyStyle      Theorem
+  LatexName      proposition
+  LabelString    "Proposition #."
+End  
+
+Style Definition
+  CopyStyle      Theorem
+  LatexName      Definition
+  LabelString    "Definition #."
+  Font
+    Shape        Up
+  EndFont
+  LabelFont
+    Shape        Up
+    Series       Bold
+  EndFont
+End
+
+Style Proof
+  CopyStyle      Theorem
+  LatexName      proof
+  LabelString    "Proof."
+  EndLabelType   Box
+  Font
+    Shape        Up
+    Color        Blue
+  EndFont
+  LabelFont
+    Shape        Slanted
+  EndFont
+End  
+
+
+Style Theorem*
+  CopyStyle      Theorem
+  LatexName      theorem*
+  LabelString    "Theorem."
+ End
+
+Style Lemma*
+  CopyStyle      Lemma
+  LatexName      lemma*
+  LabelString    "Lemma."
+End  
+
+Style Corollary*
+  CopyStyle      Corollary
+  LatexName      corollary*
+  LabelString    "Corollary."
+End  
+
+Style Proposition*
+  CopyStyle      Proposition
+  LatexName      proposition*
+  LabelString    "Proposition."
+End  
+
+Style Definition*
+  CopyStyle      Definition
+  LatexName      definition*
+  LabelString    "Definition."
+End
