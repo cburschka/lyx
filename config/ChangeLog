@@ -1,12 +1,17 @@
+2002-03-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxinclude.m4 (LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG): new macro
+	testing if libforms contains libjpeg or not.
+
 2002-03-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* depcomp: fixed bug in dependency tracking for Tru64 Unix.
 
 	* depcomp.diff: the patch is added to the repository, as Lars wishes...
-	
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* lyxinclude.m4 (LYX_CHECK_LDR): deleted; to complex does not give us anything. 
+	* lyxinclude.m4 (LYX_CHECK_LDR): deleted; to complex does not give us anything.
 
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -51,7 +56,7 @@
 	* config.guess: update
 	* config.sub: update
 	* ltmain.sh: update
-	
+
 2002-01-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxinclude.m4: Allow disabling of debug information.
@@ -77,14 +82,14 @@
 2001-09-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* qt2.m4: fix for mis-named -lqt2
- 
+
 2001-08-19  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* libtool.m4: update to latest version
 
 2001-08-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxinclude.m4: fix the help text of --with-frontend 
+	* lyxinclude.m4: fix the help text of --with-frontend
 
 2001-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -94,7 +99,7 @@
 2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxinclude.m4: honour --disable-optimization
- 
+
 2001-07-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4 (LYX_PATH_XFORMS): do not warn against xforms
@@ -145,7 +150,7 @@
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4: remove support for gcc 2.97 simplify calling for
-	gcc 3.0 
+	gcc 3.0
 
 2001-03-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -155,14 +160,14 @@
 2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxinclude.m4: minor changes, --with-lyx-version becomes
-	--with-version-suffix 
+	--with-version-suffix
 
 2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxinclude.m4: --with-lyx-version
 
 	* kde.m4: remove cruft that was breaking installs
-	  
+
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): add clause for gcc 3.0
@@ -170,5 +175,4 @@
 2001-01-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): do not use -fno-rtti for gcc
-	2.95.3. 
-
+	2.95.3.

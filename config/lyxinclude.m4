@@ -5,7 +5,7 @@ dnl         Allan Rae (rae@lyx.org)
 
 
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
-dnl sets variables "lyx_devel_version" and "lyx_prerelease"  
+dnl sets variables "lyx_devel_version" and "lyx_prerelease"
 AC_DEFUN(LYX_CHECK_VERSION,[
 changequote(, ) dnl
 echo "configuring LyX version $VERSION"
@@ -23,15 +23,15 @@ else
 fi
 changequote([, ]) dnl
 AC_SUBST(lyx_devel_version)
-if test $lyx_devel_version = yes ; then 
+if test $lyx_devel_version = yes ; then
   AC_DEFINE(DEVEL_VERSION, 1, Define if you are building a development version of LyX)
 fi])
 
- 
-dnl Define the option to set a LyX version on installed executables and directories 
+
+dnl Define the option to set a LyX version on installed executables and directories
 dnl
 dnl
-AC_DEFUN(LYX_VERSION_SUFFIX,[ 
+AC_DEFUN(LYX_VERSION_SUFFIX,[
 AC_MSG_CHECKING([for install target ... ])
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
@@ -64,7 +64,7 @@ lyx_warning_txt="$lyx_warning_txt
 lyx_warning=yes])
 
 
-dnl Usage: LYX_LIB_ERROR(file,library)  Displays an error message indication 
+dnl Usage: LYX_LIB_ERROR(file,library)  Displays an error message indication
 dnl  that 'file' cannot be found because 'lib' may be uncorrectly installed.
 AC_DEFUN(LYX_LIB_ERROR,[
 LYX_ERROR([Cannot find $1. Please check that the $2 library
@@ -72,11 +72,11 @@ LYX_ERROR([Cannot find $1. Please check that the $2 library
 
 
 dnl Usage: LYX_CHECK_ERRORS  Displays a warning message if a LYX_ERROR
-dnl   has occured previously. 
+dnl   has occured previously.
 AC_DEFUN(LYX_CHECK_ERRORS,[
 if test x$lyx_error = xyes; then
 cat <<EOF
-**** The following problems have been detected by configure. 
+**** The following problems have been detected by configure.
 **** Please check the messages below before running 'make'.
 **** (see the section 'Problems' in the INSTALL file)
 $lyx_error_txt
@@ -88,33 +88,33 @@ else
 
 if test x$lyx_warning = xyes; then
 cat <<EOF
-=== The following minor problems have been detected by configure. 
+=== The following minor problems have been detected by configure.
 === Please check the messages below before running 'make'.
 === (see the section 'Problems' in the INSTALL file)
 $lyx_warning_txt
 EOF
 fi
 cat <<EOF
-Configuration of LyX was successful.  
-Type 'make' to compile the program, 
+Configuration of LyX was successful.
+Type 'make' to compile the program,
 and then 'make install' to install it.
 EOF
 fi])
 
 
 dnl LYX_SEARCH_PROG(VARIABLE-NAME,PROGRAMS-LIST,ACTION-IF-FOUND)
-dnl             
+dnl
 define(LYX_SEARCH_PROG,[dnl
 for ac_prog in $2 ; do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
   set dummy $ac_prog ; ac_word=$[2]
   if test -z "[$]$1"; then
-    IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+    IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=":"
     for ac_dir in $PATH; do
       test -z "$ac_dir" && ac_dir=.
       if test -f [$ac_dir/$ac_word]; then
-        $1="$ac_prog"
-        break
+	$1="$ac_prog"
+	break
       fi
     done
     IFS="$ac_save_ifs"
@@ -135,9 +135,9 @@ AC_DEFUN([LYX_PROG_CXX_WORKS],
 [rm -f conftest.C
 cat >conftest.C <<EOF
 class foo {
-   // we require the mutable keyword 
-   mutable int bar; 
- }; 
+   // we require the mutable keyword
+   mutable int bar;
+ };
  // we require namespace support
  namespace baz {
    int bar;
@@ -146,7 +146,7 @@ class foo {
    return(0);
  }
 EOF
-$CXX -c $CXXFLAGS $CPPFLAGS conftest.C >&5 || CXX= 
+$CXX -c $CXXFLAGS $CPPFLAGS conftest.C >&5 || CXX=
 rm -f conftest.C conftest.o conftest.obj || true
 ])
 
@@ -189,7 +189,7 @@ AC_ARG_ENABLE(debug,
 ### set up optimization
 AC_ARG_ENABLE(optimization,
   [  --enable-optimization[=value]   enable compiler optimisation],,
-        enable_optimization=yes;)
+	enable_optimization=yes;)
 case $enable_optimization in
   yes) lyx_opt=-O;;
    no) lyx_opt=;;
@@ -201,10 +201,10 @@ if test x$GXX = xyes; then
   dnl Useful for global version info
   gxx_version=`${CXX} -dumpversion`
   CXX_VERSION="($gxx_version)"
-  
+
   if test "$ac_test_CXXFLAGS" = set; then
     CXXFLAGS="$ac_save_CXXFLAGS"
-  else 
+  else
     case $gxx_version in
       2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
       2.95.2)  CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
@@ -272,7 +272,7 @@ int main() {
 ],lyx_cv_rtti=yes,lyx_cv_rtti=no,lyx_cv_rtti=no)
 ])
 if test x$lyx_cv_rtti = xyes ; then
-  AC_DEFINE(HAVE_RTTI, 1, 
+  AC_DEFINE(HAVE_RTTI, 1,
    [Define to 1 if your compiler supports runtime type information])
 fi])
 
@@ -289,7 +289,7 @@ public:
 };],,lyx_cv_explicit=yes,lyx_cv_explicit=no)
 ])
 if test $lyx_cv_explicit = no ; then
-  AC_DEFINE(explicit,[ ], 
+  AC_DEFINE(explicit,[ ],
    [Define to nothing if your compiler does not understand the
    'explicit' directive])
 fi])
@@ -309,7 +309,7 @@ using std::stack;
 ],lyx_cv_broken_stack=no,lyx_cv_broken_stack=yes)
 ])
 if test $lyx_cv_broken_stack = yes ; then
-  AC_DEFINE(BROKEN_STL_STACK, 1, 
+  AC_DEFINE(BROKEN_STL_STACK, 1,
    [Define if you have the STL from libg++ 2.7.x, where stack<> is not defined
    correctly])
 fi])
@@ -324,7 +324,7 @@ AC_CACHE_CHECK(for conforming std::count,lyx_cv_std_count,
 using std::count;
 int countChar(char * b, char * e, char const c)
 {
-        return count(b, e, c);
+	return count(b, e, c);
 }
 ],[
     char a[] = "hello";
@@ -349,7 +349,7 @@ AC_CACHE_CHECK(for modern STL streams,lyx_cv_modern_streams,
 ],lyx_cv_modern_streams=yes,lyx_cv_modern_streams=no)
 ])
 if test $lyx_cv_modern_streams = yes ; then
-  AC_DEFINE(MODERN_STL_STREAMS, 1, 
+  AC_DEFINE(MODERN_STL_STREAMS, 1,
    [Define if you have modern standard-compliant STL streams])
 fi])
 
@@ -363,7 +363,7 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
     AC_ARG_WITH(included-string,
        [  --with-included-string  use LyX string class instead of STL string],
        [lyx_cv_with_included_string=$withval
-        AC_MSG_RESULT([$with_included_string])],
+	AC_MSG_RESULT([$with_included_string])],
        [AC_CACHE_CHECK([],lyx_cv_with_included_string,
 	[AC_TRY_COMPILE([
 	    #include <string>
@@ -426,7 +426,7 @@ AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
 	    lyx_cv_std_string_good=yes
 	],[
 	    lyx_cv_std_string_good=no
-	    
+
 	])
     ])
     if test x$lyx_cv_std_string_good = xyes ; then
@@ -453,7 +453,7 @@ AC_DEFUN(LYX_CXX_PARTIAL, [
 	[AC_TRY_COMPILE(
 	    [
 	    template<class T, class K>
-	    class k {       
+	    class k {
 	    public:
 	    };
 	    template<class T> class k<void,T> { };
@@ -467,7 +467,7 @@ AC_DEFUN(LYX_CXX_PARTIAL, [
 	    ])
 	])
     if test x$lyx_cv_cxx_partial_specialization = xyes ; then
-	AC_DEFINE(HAVE_PARTIAL_SPECIALIZATION, 1, 
+	AC_DEFINE(HAVE_PARTIAL_SPECIALIZATION, 1,
 	[Defined if your compiler supports partial specialization.])
     fi
 ])
@@ -488,7 +488,7 @@ AC_CACHE_CHECK(for C headers wrappers,lyx_cv_cxx_cheaders,
 #include <cstring>
 #include <ctime>],[lyx_cv_cxx_cheaders=yes],[lyx_cv_cxx_cheaders=no])])
 if test $lyx_cv_cxx_cheaders = no ; then
-  LYX_ADD_INC_DIR(lyx_cppflags,\$(top_srcdir)/src/cheaders)  
+  LYX_ADD_INC_DIR(lyx_cppflags,\$(top_srcdir)/src/cheaders)
 fi])
 
 dnl Usage: LYX_CXX_GLOBAL_CSTD: checks whether C library functions
@@ -512,7 +512,7 @@ dnl Usage LYX_PATH_XPM: Checks for xpm library and header
 AC_DEFUN(LYX_PATH_XPM,[
 ### Check for Xpm library
 AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage,XPM_LIB="-lXpm",
-        [LYX_LIB_ERROR(libXpm,Xpm)], $XPM_LIB)
+	[LYX_LIB_ERROR(libXpm,Xpm)], $XPM_LIB)
 AC_SUBST(XPM_LIB)
 ### Check for Xpm headers
 lyx_cv_xpm_h_location="<xpm.h>"
@@ -539,19 +539,19 @@ EOF
     case "$lyx_cv_xpmr" in
 changequote(,)
      [0-9]) lyxxpmr_alpha=`echo $lyx_cv_xpmr |tr 123456789 abcdefghi`
-            lyxxpmv_alpha=" (aka 3.$lyx_cv_xpmv$lyxxpmr_alpha)";;
+	    lyxxpmv_alpha=" (aka 3.$lyx_cv_xpmv$lyxxpmr_alpha)";;
 changequote([,])
-         *) ;;
+	 *) ;;
     esac
     lyx_cv_xpmversion="$lyx_cv_xpmv.$lyx_cv_xpmr$lyxxpmv_alpha"
     rm -f conftest*])
   XPM_VERSION=${lyx_cv_xpmversion}
-  case "$lyx_cv_xpmr" in 
+  case "$lyx_cv_xpmr" in
 changequote(,)
-        [789]|[0-9][0-9]*) ;;
+	[789]|[0-9][0-9]*) ;;
 changequote([,])
-        *) LYX_WARNING([Version $lyx_cv_xpmversion of the Xpm library is a bit old. 
-   If you experience strange crashes with LyX, try to upgrade 
+	*) LYX_WARNING([Version $lyx_cv_xpmversion of the Xpm library is a bit old.
+   If you experience strange crashes with LyX, try to upgrade
    to at least version 4.7 (aka 3.4g).
    If you have installed a newer version of the library, check whether you
    have an old xpm.h header file in your include path.]);;
@@ -563,8 +563,8 @@ dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flag.
 AC_DEFUN(LYX_PATH_XFORMS,[
 ### Check for xforms library
-AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms", 
-  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms", 
+AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms",
+  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms",
     [LYX_LIB_ERROR(libforms or libxforms,xforms)])])
 AC_SUBST(XFORMS_LIB)
 ### Check for xforms headers
@@ -593,19 +593,19 @@ lyx_cv_xfversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   sed -e 's/^"%%%"\(.*\)"%%%"/\1/' -e 's/ //g'`
 rm -f conftest*])
 XFORMS_VERSION=$lyx_cv_xfversion
-case "$lyx_cv_xfversion" in 
-  "(unknown)"|0.8[1-7]*) 
-         LYX_ERROR(dnl
-Version $lyx_cv_xfversion of xforms is not compatible with LyX. 
+case "$lyx_cv_xfversion" in
+  "(unknown)"|0.8[1-7]*)
+	 LYX_ERROR(dnl
+Version $lyx_cv_xfversion of xforms is not compatible with LyX.
    This version of LyX works best with versions 0.88 (recommended) and later.) ;;
     0.88*) ;;
     0.89[01234]) LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
-it is an unproven version and might still have some bugs. You should 
+it is an unproven version and might still have some bugs. You should
 probably use version 0.89.6 (or 0.88) instead) ;;
     0.89*) ;;
        *) LYX_WARNING(dnl
-Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,] 
+Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,]
  since it is newer than 0.89. You might have slight problems with it.);;
 esac
 fi])
@@ -626,7 +626,29 @@ test $lyx_use_xforms_image_loader = yes && lyx_flags="$lyx_flags xforms-image-lo
 ### If the gui cannot load images itself, then we default to the
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-               test $lyx_use_xforms_image_loader = no)
+	       test $lyx_use_xforms_image_loader = no)
+])
+
+
+dnl Check if the image loader needs libjpeg
+AC_DEFUN(LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG,
+[
+    if test "$lyx_use_xforms_image_loader" = "yes" ; then
+	AC_MSG_CHECKING([whether libjpeg is needed])
+	AC_LANG_SAVE
+	AC_LANG_C
+	save_LIBS=$LIBS
+	LIBS="$XFORMS_LIB $LIBS"
+	AC_TRY_LINK([#include <forms.h>],
+	    [jpeg_abort(0);],
+	    [lyx_need_jpeg=no],[lyx_need_jpeg=yes])
+	LIBS=$save_LIBS
+	AC_LANG_RESTORE
+	AC_MSG_RESULT($lyx_need_jpeg)
+	if test "$lyx_need_jpeg" = "yes" ; then
+	    LIBS="-ljpeg $LIBS"
+	fi
+    fi
 ])
 
 
@@ -679,7 +701,7 @@ fi])
 
 dnl Usage: LYX_FUNC_PUTENV_ARGTYPE
 dnl Checks whether putenv() takes 'char const *' or 'char *' as
-dnl argument. This is needed because Solaris 7 (wrongly?) uses 'char *', 
+dnl argument. This is needed because Solaris 7 (wrongly?) uses 'char *',
 dnl while everybody else uses the former...
 AC_DEFUN(LYX_FUNC_PUTENV_ARGTYPE,
 [AC_MSG_CHECKING([type of argument for putenv()])
@@ -694,9 +716,9 @@ AC_DEFUN(LYX_FUNC_PUTENV_ARGTYPE,
    [Define to the type of the argument of putenv(). Needed on Solaris 7.])])
 
 
-dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value, 
-dnl                       [default-yes-value])  
-dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the 
+dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value,
+dnl                       [default-yes-value])
+dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the
 dnl  resulting directory name in 'dir-var-name'.
 AC_DEFUN(LYX_WITH_DIR,[
   AC_ARG_WITH($1,[  --with-$1        specify $2])
@@ -711,10 +733,10 @@ AC_DEFUN(LYX_WITH_DIR,[
 
 
 dnl Usage: LYX_LOOP_DIR(value,action)
-dnl Executes action for values of variable `dir' in `values'. `values' can 
+dnl Executes action for values of variable `dir' in `values'. `values' can
 dnl use ":" as a separator.
 AC_DEFUN(LYX_LOOP_DIR,[
-IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
 for dir in `eval "echo $1"`; do
   if test ! "$dir" = NONE; then
     test ! -d "$dir" && AC_ERROR([\"$dir\" is not a directory])
@@ -725,22 +747,22 @@ IFS=$ac_save_ifs
 ])
 
 
-dnl Usage: LYX_ADD_LIB_DIR(var-name,dir) Adds a -L directive to variable 
-dnl var-name. 
+dnl Usage: LYX_ADD_LIB_DIR(var-name,dir) Adds a -L directive to variable
+dnl var-name.
 AC_DEFUN(LYX_ADD_LIB_DIR,[
 $1="${$1} -L$2"
 if test "`(uname) 2>/dev/null`" = SunOS &&
     uname -r | grep '^5' >/dev/null; then
-  if test $ac_cv_prog_gxx = yes ; then 
-    $1="${$1} -Wl[,]-R$2" 
+  if test $ac_cv_prog_gxx = yes ; then
+    $1="${$1} -Wl[,]-R$2"
   else
     $1="${$1} -R$2"
   fi
 fi])
 
 
-dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable 
-dnl var-name. 
+dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable
+dnl var-name.
 AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
 
 ### Check which libsigc++ we're using and make sure any external one works
@@ -749,7 +771,7 @@ AC_DEFUN(LYX_WITH_SIGC,
 [AC_MSG_CHECKING(whether the included libsigc++ should be used)
 AC_ARG_WITH([included-libsigc],
   [  --without-included-libsigc
-                             Use the libsigc++ installed on the system],
+			     Use the libsigc++ installed on the system],
   [lyx_use_included_libsigc=$withval],
   [lyx_use_included_libsigc=yes])
 AC_MSG_RESULT([$lyx_use_included_libsigc])
@@ -766,7 +788,7 @@ if test x$lyx_use_included_libsigc = xno; then
 else
   ### Use the included libsigc++
   ### sigc-config hasn't been created yet so we can't just do the same as above
-  ### unless of course someone gets keen and merges the sigc++ configure.in 
+  ### unless of course someone gets keen and merges the sigc++ configure.in
   ### with this one.  We don't really gain much by doing that though except
   ### a considerably smaller dist and more difficult maintenance.
   ### It'd also mean we'd have the equivalent of config/gettext.m4
@@ -845,7 +867,7 @@ rm -f conftest*])
   AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h,
 [define this to the location of stl_string_fwd.h to be used with #include,
   NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
-  	supplied version of the header.
+	supplied version of the header.
   e.g. <../include/stl_string_fwd.h> or better yet use an absolute path])])
 ])
 
@@ -858,16 +880,16 @@ AC_DEFUN(AC_VALIDATE_CACHE_SYSTEM_TYPE, [
     AC_REQUIRE([AC_CANONICAL_SYSTEM])
     AC_MSG_CHECKING([config.cache system type])
     if { test x"${ac_cv_host_system_type+set}" = x"set" &&
-         test x"$ac_cv_host_system_type" != x"$host"; } ||
+	 test x"$ac_cv_host_system_type" != x"$host"; } ||
        { test x"${ac_cv_build_system_type+set}" = x"set" &&
-         test x"$ac_cv_build_system_type" != x"$build"; } ||
+	 test x"$ac_cv_build_system_type" != x"$build"; } ||
        { test x"${ac_cv_target_system_type+set}" = x"set" &&
-         test x"$ac_cv_target_system_type" != x"$target"; }; then
-        AC_MSG_RESULT([different])
-        ifelse($#, 1, [$1],
-                [AC_MSG_ERROR(["you must remove config.cache and restart configure"])])
+	 test x"$ac_cv_target_system_type" != x"$target"; }; then
+	AC_MSG_RESULT([different])
+	ifelse($#, 1, [$1],
+		[AC_MSG_ERROR(["you must remove config.cache and restart configure"])])
     else
-        AC_MSG_RESULT([same])
+	AC_MSG_RESULT([same])
     fi
     ac_cv_host_system_type="$host"
     ac_cv_build_system_type="$build"
@@ -896,7 +918,7 @@ AC_DEFUN(LYX_FUNC_SELECT_ARGTYPES,
 #include <sys/socket.h>
 #endif
 extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func_select_arg234,$ac_cv_func_select_arg234,$ac_cv_func_select_arg5);],,dnl
-        [ac_not_found=no ; break 3],ac_not_found=yes)
+	[ac_not_found=no ; break 3],ac_not_found=yes)
       done
      done
     done
@@ -904,17 +926,17 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
   ])dnl AC_CACHE_VAL
  ])dnl AC_CACHE_VAL
  if test "$ac_not_found" = yes; then
-  ac_cv_func_select_arg1=int 
-  ac_cv_func_select_arg234='int *' 
+  ac_cv_func_select_arg1=int
+  ac_cv_func_select_arg234='int *'
   ac_cv_func_select_arg5='struct timeval *'
  fi
  AC_MSG_RESULT([$ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func_select_arg5])
- AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG1,$ac_cv_func_select_arg1, 
-                    [Define to the type of arg1 for select().])
+ AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG1,$ac_cv_func_select_arg1,
+		    [Define to the type of arg1 for select().])
  AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG234,($ac_cv_func_select_arg234),
-                    [Define to the type of args 2, 3 and 4 for select().])
+		    [Define to the type of args 2, 3 and 4 for select().])
  AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG5,($ac_cv_func_select_arg5),
-                    [Define to the type of arg5 for select().])
+		    [Define to the type of arg5 for select().])
 ])
 
 ### Check which frontend we want to use. The default is XForms
@@ -923,7 +945,7 @@ AC_DEFUN(LYX_USE_FRONTEND,
 [AC_MSG_CHECKING([what frontend should be used as main GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
-                            Possible values: xforms, qt2, gnome],
+			    Possible values: xforms, qt2, gnome],
   [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
 AC_MSG_RESULT($lyx_use_frontend)
 AC_SUBST(FRONTEND)
@@ -945,10 +967,10 @@ tr_hdr=`echo $2 | tr . _`
 AC_CACHE_VAL([lyx_cv_declare_${tr_hdr}_$1],
 [AC_EGREP_HEADER($1, $2, [eval "lyx_cv_declare_${tr_hdr}_$1=yes"], [eval "lyx_cv_declare_${tr_hdr}_$1=no"])])
 if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
-        AC_DEFINE_UNQUOTED(HAVE_DECL_${tr_func})
-        AC_MSG_RESULT(yes)
+	AC_DEFINE_UNQUOTED(HAVE_DECL_${tr_func})
+	AC_MSG_RESULT(yes)
 else
-        AC_MSG_RESULT(no)
+	AC_MSG_RESULT(no)
 fi])
 
 dnl This is the multiple headers version of the LYX_CHECK_DECL macro above.

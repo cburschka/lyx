@@ -1,3 +1,7 @@
+2002-03-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* configure.in: call LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG
+
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* NEWS: small update
@@ -6,9 +10,9 @@
 
 2002-03-26  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* ANNOUNCE: 
-	* INSTALL: 
-	* README: 
+	* ANNOUNCE:
+	* INSTALL:
+	* README:
 	* NEWS: update somewhat for 1.2.0
 
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -19,7 +23,7 @@
 
 	* Makefile.am (DISTCLEANFILES): be recursive here
 
-	* configure.in: use LYX_CHECK_LDR 
+	* configure.in: use LYX_CHECK_LDR
 
 2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
@@ -57,12 +61,12 @@
 
 2002-03-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* configure.in: help qt2 along a bit 
+	* configure.in: help qt2 along a bit
 
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: fixup qt2
- 
+
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* configure.in: don't compile src/frontends/support as LyXImage is
@@ -71,7 +75,7 @@
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* acconfig.h: nt/os2 defines moved
- 
+
 2002-02-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* README: change reference to bugtracker
@@ -96,7 +100,7 @@
 2001-11-28  John Levon  <moz@compsoc.man.ac.uk>
 
 	* README: fix ghostscript comment
- 
+
 2001-11-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* INSTALL: document change in --prefix behaviour.
@@ -113,7 +117,7 @@
 
 	* README:
 	* lyx.man: change ref to known bugs
- 
+
 2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: set version here and not in version.h.
@@ -132,7 +136,7 @@
 
 2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lyxinclude.m4: 
+	* lyxinclude.m4:
 	* configure.in: add VERSION_INFO to config.h
 	(from a first proposal by Rob Lahaye)
 
@@ -143,20 +147,20 @@
 2001-08-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: output new qt2 makefiles
- 
+
 2001-07-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: don't use -lbz2 if we don't need it
- 
+
 2001-07-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* COPYING: use standard spiel for xforms
- 
+
 2001-07-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: add --without-aiksaurus, always
 	  subst AIKSAURUS_LIBS
- 
+
 2001-07-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* NEWS:
@@ -173,7 +177,7 @@
 2001-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* INSTALL: document --disable-optimization
- 
+
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (EXTRA_DIST): add sourcedoc
@@ -206,7 +210,7 @@
 2001-06-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* INSTALL: change RedHat stuff to insist on updating gcc
- 
+
 2001-06-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: no point in including 200k historical
@@ -298,10 +302,10 @@
 
 2001-02-20  Edwin Leuven <leuven@fee.uva.nl>
 
-        * move latex preamble to guii xforms dir, see:
-        * src/ChangeLog
-        * src/frontends/xforms/ChangeLog
-	
+	* move latex preamble to guii xforms dir, see:
+	* src/ChangeLog
+	* src/frontends/xforms/ChangeLog
+
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* autogen.sh (AUTOCONF): use spaces insteadt of '\t' for echo
@@ -328,7 +332,7 @@
 2001-02-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* INSTALL: update description of command line to use with compaq
-	cxx. 
+	cxx.
 
 2001-01-30  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -359,10 +363,10 @@
 
 	* INSTALL (Problems): add tip about using --with-included-string
 	on solaris 2.6 with gcc 2.95.2 (ld does not like long symbol
-	names). 
+	names).
 
 2001-01-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ChangeLog: store old and begin new
-	
+
 	* src/version.h (LYX_DOCVERSION): update to 1.2.0cvs

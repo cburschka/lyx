@@ -255,6 +255,7 @@ fi
 ### For now, run this test always so config.h is unchanged by a change in
 ### frontend
 LYX_USE_XFORMS_IMAGE_LOADER
+LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
