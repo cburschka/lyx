@@ -451,8 +451,10 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		setEnabled(class_->choice_default_skip_units,
 			   skip_used && length_input);
 		// Default unit choice is cm if metric, inches if US paper.
+		// If papersize is default, check the lyxrc-settings
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
-		bool const metric = paperchoice < 3 || paperchoice > 5;
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+			|| paperchoice == 2 || paperchoice > 5;
 		int const default_unit = metric ? 8 : 9;
 		if (strip(fl_get_input(class_->input_doc_skip)).empty())
 			fl_set_choice(class_->choice_default_skip_units,
@@ -487,6 +489,7 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 
 	if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
+		bool const defsize = paperchoice == 1;
 		bool const custom = paperchoice == 2;
 		bool const a3size = paperchoice == 6;
 		bool const b3size = paperchoice == 9;
@@ -524,11 +527,13 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		setEnabled(paper_->radio_landscape, !custom);
 
 		// Default unit choice is cm if metric, inches if US paper.
-		bool const metric = paperchoice < 3 || paperchoice > 5;
+		// If papersize is default, use the lyxrc-settings
+		bool const metric = (defsize && lyxrc.default_papersize > 3)
+			|| paperchoice == 2 || paperchoice > 5;
 		int const default_unit = metric ? 8 : 9;
 		if (strip(fl_get_input(paper_->input_custom_width)).empty())
-			fl_set_choice(paper_->choice_custom_width_units,
-				      default_unit);
+		fl_set_choice(paper_->choice_custom_width_units,
+			      default_unit);
 		if (strip(fl_get_input(paper_->input_custom_height)).empty())
 			fl_set_choice(paper_->choice_custom_height_units,
 				      default_unit);
@@ -988,13 +993,14 @@ void FormDocument::class_update(BufferParams const & params)
 		break;
 	case VSpace::LENGTH:
 	{
-		int const paperchoice = params.papersize2 + 1;
-		bool const metric = paperchoice < 3 || paperchoice > 5;
+		int const paperchoice = fl_get_choice(paper_->choice_papersize);
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+			|| paperchoice == 2 || paperchoice > 5;
 		string const default_unit = metric ? "cm" : "in";
 		string const length = params.getDefSkip().asLyXCommand();
 		updateWidgetsFromLengthString(class_->input_doc_skip,
-					      class_->choice_default_skip_units,
-					      length, default_unit);
+				      class_->choice_default_skip_units,
+				      length, default_unit);
 		break;
 	}
 	default:
@@ -1119,11 +1125,12 @@ void FormDocument::paper_update(BufferParams const & params)
 		   && fl_get_button(paper_->radio_portrait));
 
 	// Default unit choice is cm if metric, inches if US paper.
-	bool const metric = paperchoice < 3 || paperchoice > 5;
+	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+			|| paperchoice == 2 || paperchoice > 5;
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLengthString(paper_->input_custom_width,
-				      paper_->choice_custom_width_units,
-				      params.paperwidth, default_unit);
+			      paper_->choice_custom_width_units,
+			      params.paperwidth, default_unit);
 	setEnabled(paper_->input_custom_width, useCustom);
 	setEnabled(paper_->choice_custom_width_units, useCustom);
 

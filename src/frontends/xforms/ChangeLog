@@ -1,3 +1,9 @@
+2002-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormDocument.C: Recognize the default paper settings too
+	when setting the default length values (cm or inch).
+	* FormParagraph.C: do the same.
+
 2001-12-11  Michael A. Koziarski <michael@koziarski.org>
 
 	* FormFloat.C: changes to prevent here definitely being used

@@ -25,6 +25,7 @@
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
+#include "lyxrc.h" // to set the deafult length values
 #include "BufferView.h"
 #include "lyxtextclasslist.h"
 #include "Spacing.h"
@@ -401,20 +402,21 @@ void FormParagraph::update()
 	break;
     case VSpace::LENGTH:
     {
-	    fl_set_choice (dialog_->choice_space_above, 7);
-	    setEnabled(dialog_->input_space_above, true);
-	    setEnabled(dialog_->choice_value_space_above, true);
-	    string const default_unit = "cm";
-	    string const length = par_->params().spaceTop().length().asString();
-	    updateWidgetsFromLengthString(dialog_->input_space_above,
-					  dialog_->choice_value_space_above,
-					  length, default_unit);
+        fl_set_choice (dialog_->choice_space_above, 7);
+        setEnabled(dialog_->input_space_above, true);
+        setEnabled(dialog_->choice_value_space_above, true);
+        bool const metric = lyxrc.default_papersize > 3;
+        string const default_unit = metric ? "cm" : "in";
+        string const length = par_->params().spaceTop().length().asString();
+        updateWidgetsFromLengthString(dialog_->input_space_above,
+                	  dialog_->choice_value_space_above,
+                	  length, default_unit);
 	    break;
     }
     }
     
     fl_set_button (dialog_->check_space_above,
-		   par_->params().spaceTop().keep());
+           par_->params().spaceTop().keep());
     fl_set_input (dialog_->input_space_below, "");
 
     setEnabled(dialog_->input_space_below, false);
@@ -440,21 +442,22 @@ void FormParagraph::update()
 	break;
     case VSpace::LENGTH:
     {
-	    fl_set_choice (dialog_->choice_space_below, 7);
-	    setEnabled(dialog_->input_space_below, true);
-	    setEnabled(dialog_->choice_value_space_below, true);
-	    string const default_unit = "cm";
-	    string const length =
-		    par_->params().spaceBottom().length().asString();
-	    updateWidgetsFromLengthString(dialog_->input_space_below,
-					  dialog_->choice_value_space_below,
-					  length, default_unit);
+        fl_set_choice (dialog_->choice_space_below, 7);
+        setEnabled(dialog_->input_space_below, true);
+        setEnabled(dialog_->choice_value_space_below, true);
+        bool const metric = lyxrc.default_papersize > 3;
+        string const default_unit = metric ? "cm" : "in";
+        string const length =
+        	par_->params().spaceBottom().length().asString();
+        updateWidgetsFromLengthString(dialog_->input_space_below,
+                	  dialog_->choice_value_space_below,
+                	  length, default_unit);
 	    break;
     }
     }
 
     fl_set_button(dialog_->check_space_below,
-		   par_->params().spaceBottom().keep());
+		  par_->params().spaceBottom().keep());
     fl_set_button(dialog_->check_noindent,
 		  par_->params().noindent());
 }
@@ -476,28 +479,30 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
         if (fl_get_choice (dialog_->choice_space_above) != 7) {
             fl_set_input (dialog_->input_space_above, "");
             setEnabled (dialog_->input_space_above, false);
-           setEnabled (dialog_->choice_value_space_above, false);
+            setEnabled (dialog_->choice_value_space_above, false);
         } else {
             setEnabled (dialog_->input_space_above, !lv_->buffer()->isReadonly());
-           setEnabled (dialog_->choice_value_space_above, !lv_->buffer()->isReadonly());
-           int const default_unit = 8;
-           if (strip(fl_get_input(dialog_->input_space_above)).empty())
-                       fl_set_choice(dialog_->choice_value_space_above,
-                                     default_unit);
+	    setEnabled (dialog_->choice_value_space_above, !lv_->buffer()->isReadonly());
+	    bool const metric = lyxrc.default_papersize > 3;
+	    int const default_unit = metric ? 8 : 9;
+	    if (strip(fl_get_input(dialog_->input_space_above)).empty())
+                fl_set_choice(dialog_->choice_value_space_above,
+			      default_unit);
         }
     }
     if (ob == dialog_->choice_space_below) {
         if (fl_get_choice (dialog_->choice_space_below) != 7) {
             fl_set_input (dialog_->input_space_below, "");
             setEnabled (dialog_->input_space_below, false);
-           setEnabled (dialog_->choice_value_space_below, false);
+            setEnabled (dialog_->choice_value_space_below, false);
         } else {
             setEnabled (dialog_->input_space_below, !lv_->buffer()->isReadonly());
-           setEnabled (dialog_->choice_value_space_below, !lv_->buffer()->isReadonly());
-           int const default_unit = 8;
-           if (strip(fl_get_input(dialog_->input_space_below)).empty())
-                       fl_set_choice(dialog_->choice_value_space_below,
-                                     default_unit);
+	    setEnabled (dialog_->choice_value_space_below, !lv_->buffer()->isReadonly());
+	    bool const metric = lyxrc.default_papersize > 3;
+	    int const default_unit = metric ? 8 : 9;
+	    if (strip(fl_get_input(dialog_->input_space_below)).empty())
+		    fl_set_choice(dialog_->choice_value_space_below,
+				  default_unit);
         }
     }
  
