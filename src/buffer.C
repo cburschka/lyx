@@ -145,6 +145,8 @@ Buffer::~Buffer()
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
+	closing();
+
 	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"), tmppath));

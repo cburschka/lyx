@@ -1909,9 +1909,8 @@ void LyXFunc::closeBuffer()
 {
 	if (bufferlist.close(owner->buffer(), true) && !quitting) {
 		if (bufferlist.empty()) {
-			view()->buffer(0);
-			// need this otherwise SEGV may occur while trying to
-			// set variables that don't exist
+			// need this otherwise SEGV may occur while 
+			// trying to set variables that don't exist
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {

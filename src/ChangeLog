@@ -1,4 +1,11 @@
-2003-07-10  Alfredo Brauntein  <abraunst@libero.it>
+2003-07-11  Alfredo Braunstein  <abraunst@libero.it>
+
+	* buffer.[Ch]: added new closing signal
+	* BufferView_pimpl.[Ch]: connect/disconnect to new signal
+	* lyxfunc.C: removed BufferView::buffer(0) call now handled in 
+	BufferView::Pimpl via the closing the signal
+	
+2003-07-10  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.[Ch]: take out all bv-related from buffer
 	* BufferView.C: 

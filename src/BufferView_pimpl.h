@@ -125,6 +125,8 @@ private:
 	boost::signals::connection timerConnection_;
 	/// buffer readonly status changed signal connection
 	boost::signals::connection readonlyConnection_;
+	/// buffer closing signal connection
+	boost::signals::connection closingConnection_;
 	/// connect to signals in the given buffer
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer

@@ -156,6 +156,7 @@ void BufferView::Pimpl::connectBuffer(Buffer & buf)
 	titleConnection_ = buf.updateTitles.connect(boost::bind(&LyXView::updateWindowTitle, owner_));
 	timerConnection_ = buf.resetAutosaveTimers.connect(boost::bind(&LyXView::resetAutosaveTimer, owner_));
 	readonlyConnection_ = buf.readonly.connect(boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
+	closingConnection_ = buf.closing.connect(boost::bind(&BufferView::Pimpl::buffer, this, (Buffer *)0));
 }
 
 
@@ -167,6 +168,7 @@ void BufferView::Pimpl::disconnectBuffer()
 	titleConnection_.disconnect();
 	timerConnection_.disconnect();
 	readonlyConnection_.disconnect();
+	closingConnection_.disconnect();
 }
 
 

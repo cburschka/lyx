@@ -117,6 +117,8 @@ public:
 	boost::signal0<void> updateTitles;
 	/// Reset autosave timers for all users.
 	boost::signal0<void> resetAutosaveTimers;
+	/// This signal is emitting if the buffer is being closed.
+	boost::signal0<void> closing;
 
 
 	/** Save file.
