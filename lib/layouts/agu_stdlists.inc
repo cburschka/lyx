@@ -1,5 +1,6 @@
-# Textclass definition file for docbook.
+# Textclass definition file for AGU-Article.
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+#          Martin Vermeer <martin.vermeer@hut.fi>
 
 # This is the counterpart of stdlists.inc
 # It is desirable, as far as possible, to have the same look and feel for
@@ -10,24 +11,25 @@ Input stdlists.inc
 
 Style Itemize
 	LatexType             Item_Environment
-	LatexName             itemizedlist
-	ItemTag               listitem
+	LatexName             lst
+	Latexparam            "type=&quot;bulleted&quot;"
+	ItemTag               item
 End
 
 
 Style Enumerate
 	LatexType             Item_Environment
-	LatexName             orderedlist
-	ItemTag               listitem
+	LatexName             lst
+	Latexparam            "type=&quot;ordered&quot;"
+	ItemTag               item
 End
 
 
 Style Description
 	LatexType             Item_environment
-	LatexName             variablelist
-	InnerTag              varlistentry
-	LabelTag              term
-	ItemTag               listitem
+	LatexName             lst
+	Latexparam            "type=&quot;unordered&quot;"
+	ItemTag               item
 End
 
 # maybe List is the same as simplelist (I need to check it).

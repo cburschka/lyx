@@ -29,7 +29,8 @@ std::pair<bool, std::string> escapeChar(char c);
 
 /// FIXME
 int openTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, std::string const & latexname);
+	    bool mixcont, std::string const & latexname,
+		std::string const & latexparam = std::string());
 
 /// FIXME
 int closeTag(std::ostream & os, lyx::depth_type depth,
@@ -39,6 +40,7 @@ int closeTag(std::ostream & os, lyx::depth_type depth,
 unsigned int closeEnvTags(std::ostream & os, 
 		bool mixcont,
 		std::string const & environment_inner_depth,
+		std::string const & item_tag,
 		lyx::depth_type total_depth);
 
 }

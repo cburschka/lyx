@@ -65,6 +65,10 @@ public:
 	///
 	std::string const & innertag() const { return innertag_; }
 	///
+	std::string const & labeltag() const { return labeltag_; }
+	///
+	std::string const & itemtag() const { return itemtag_; }
+	///
 	std::string const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
@@ -211,6 +215,10 @@ private:
 	std::string latexparam_;
 	/// Internal tag to use (e.g., <title></title> for sect header)
 	std::string innertag_;
+	/// Internal tag to use e.g. to surround varlistentry label)
+	std::string labeltag_;
+	/// Internal tag to surround the item text in a list)
+	std::string itemtag_;
 	/// Macro definitions needed for this layout
 	std::string preamble_;
 };

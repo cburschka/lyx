@@ -1,0 +1,14 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareDocBookClass[AGU-article]{AGU Article (SGML)}
+# AGU XML textclass definition file.
+# Authors : Jose' Matos <jamatos@lyx.org>
+#           Martin Vermeer <martin.vermeer@hut.fi>
+
+
+Input agu_stdclass.inc
+Input numarticle.inc
+
+
+# Exclude higher, or equal, sections:
+NoStyle Part
+NoStyle Chapter

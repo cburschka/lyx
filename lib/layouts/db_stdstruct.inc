@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 
 # This file is the counterpart of stdstruct.inc
-# It is desireable, as far as possible, to have the same look and feeling for
+# It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
 Input stdstruct.inc
@@ -10,7 +10,7 @@ Input stdstruct.inc
 Style Abstract
 	LatexType             Environment
 	LatexName             abstract
-	LatexParam            para
+	InnerTag              para
 End
 
 NoStyle Bibliography

@@ -15,6 +15,8 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "counters.h"
+#include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -24,6 +26,7 @@
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/tostr.h"
 
 #include <stack>
 
@@ -32,6 +35,7 @@
 
 using lyx::support::atoi;
 using lyx::support::split;
+using lyx::support::subst;
 
 using std::endl;
 using std::ostream;
@@ -57,20 +61,21 @@ void docbookParagraphs(Buffer const & buf,
 
 	string command_name;
 
+	string item_tag;
+
 	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
+    Counters & counters = buf.params().getLyXTextClass().counters();
+	
 	for (; par != pend; ++par) {
-		string inner_tag;
-		int desc_on = 0; // description mode
 
 		LyXLayout_ptr const & style = par->layout();
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			if (!environment_inner[depth].empty()) 
 			sgml::closeEnvTags(os, false, environment_inner[depth], 
-					command_depth + depth);
+				item_tag, command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
@@ -80,19 +85,25 @@ void docbookParagraphs(Buffer const & buf,
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
 				sgml::closeEnvTags(os, false, environment_inner[depth], 
-					command_depth + depth);
+					item_tag, command_depth + depth);
 			sgml::closeTag(os, depth + command_depth, false, environment_stack[depth]);
 
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
 		}
-
+		
+		string ls = "";
+		bool labelid = false;
 		// Write opening SGML tags.
-		string item_name;
 		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
+			if (!style->latexparam().empty()) {
+				counters.step("para");
+				int i = counters.value("para");
+				ls = "id=\"" + subst(style->latexparam(), "#", tostr(i)) + '"';
+			}
 			sgml::openTag(os, depth + command_depth,
-				    false, style->latexname());
+				    false, style->latexname(), ls);
 			break;
 
 		case LATEX_COMMAND:
@@ -103,7 +114,6 @@ void docbookParagraphs(Buffer const & buf,
 			command_name = style->latexname();
 
 			cmd_depth = style->commanddepth;
-			inner_tag = style->innertag();
 			
 			if (command_flag) {
 				if (cmd_depth < command_base) {
@@ -130,6 +140,9 @@ void docbookParagraphs(Buffer const & buf,
 				command_stack.push_back(string());
 			command_stack[command_depth] = command_name;
 
+			if (!style->latexparam().empty()) {
+				counters.step(style->counter);
+			}
 			// treat label as a special case for
 			// more WYSIWYM handling.
 			// This is a hack while paragraphs can't have
@@ -141,13 +154,29 @@ void docbookParagraphs(Buffer const & buf,
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
 					command_name += '"';
-					desc_on = 3;
+					labelid = true;
+				}
+			} else {
+				if (!style->latexparam().empty()) {
+					ls = expandLabel(buf.params().getLyXTextClass(), style, false);
+					ls = "id=\"" + subst(style->latexparam(), "#", ls) + '"';
 				}
 			}
+			
+			sgml::openTag(os, depth + command_depth, false, command_name, ls);
 
-			sgml::openTag(os, depth + command_depth, false, command_name);
+			// Label around sectioning number:
+			if (!style->labeltag().empty()) {
+				sgml::openTag(os, depth + 1 + command_depth, false, 
+					style->labeltag());
+				os << expandLabel(buf.params().getLyXTextClass(), style, false);
+				sgml::closeTag(os, depth + 1 + command_depth, false, 
+					style->labeltag());
+			}
+
 			// Inner tagged header text, e.g. <title> for sectioning:
-			sgml::openTag(os, depth + 1 + command_depth, false, inner_tag);
+			sgml::openTag(os, depth + 1 + command_depth, false, 
+				style->innertag());
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -164,31 +193,30 @@ void docbookParagraphs(Buffer const & buf,
 				}
 				environment_stack[depth] = style->latexname();
 				environment_inner[depth] = "!-- --";
-				sgml::openTag(os, depth + command_depth, false, environment_stack[depth]);
+				// outputs <environment_stack[depth] latexparam()>
+				sgml::openTag(os, depth + command_depth, false, 
+						environment_stack[depth], style->latexparam());
 			} else {
-					sgml::closeEnvTags(os, false, environment_inner[depth], 
-						command_depth + depth);
+				sgml::closeEnvTags(os, false, environment_inner[depth], 
+					style->itemtag(), command_depth + depth);
 			}
 
 			if (style->latextype == LATEX_ENVIRONMENT) {
-				if (!style->latexparam().empty()) {
-					if (style->latexparam() == "CDATA")
+				if (!style->innertag().empty()) {
+					if (style->innertag() == "CDATA")
 						os << "<![CDATA[";
 					else
-						sgml::openTag(os, depth + command_depth, false, style->latexparam());
+						sgml::openTag(os, depth + command_depth, false, 
+							style->innertag());
 				}
 				break;
 			}
 
-			desc_on = (style->labeltype == LABEL_MANUAL);
+			environment_inner[depth] = style->innertag();
 
-			environment_inner[depth] = desc_on ? "varlistentry" : "listitem";
-			sgml::openTag(os, depth + 1 + command_depth,
+			if (!environment_inner[depth].empty())
+				sgml::openTag(os, depth + 1 + command_depth,
 				    false, environment_inner[depth]);
-
-			item_name = desc_on ? "term" : "para";
-			sgml::openTag(os, depth + 1 + command_depth,
-				    false, item_name);
 			break;
 		default:
 			sgml::openTag(os, depth + command_depth,
@@ -196,27 +224,26 @@ void docbookParagraphs(Buffer const & buf,
 			break;
 		}
 
-		par->simpleDocBookOnePar(buf, os, outerFont(par, paragraphs), desc_on,
-					 runparams, depth + 1 + command_depth);
+		par->simpleDocBookOnePar(buf, os, outerFont(par, paragraphs),
+					 runparams, depth + 1 + command_depth, labelid);
 
-		string end_tag;
 		// write closing SGML tags
 		switch (style->latextype) {
 		case LATEX_COMMAND:
-			sgml::closeTag(os, depth + command_depth, false, inner_tag);
+			sgml::closeTag(os, depth + command_depth, false, 
+				style->innertag());
 			break;
 		case LATEX_ENVIRONMENT:
-			if (!style->latexparam().empty()) {
-				if (style->latexparam() == "CDATA")
+			if (!style->innertag().empty()) {
+				if (style->innertag() == "CDATA")
 					os << "]]>";
 				else
-					sgml::closeTag(os, depth + command_depth, false, style->latexparam());
+					sgml::closeTag(os, depth + command_depth, false, 
+						style->innertag());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
-			if (desc_on == 1) break;
-			end_tag = "para";
-			sgml::closeTag(os, depth + 1 + command_depth, false, end_tag);
+			item_tag = style->itemtag();
 			break;
 		case LATEX_PARAGRAPH:
 			sgml::closeTag(os, depth + command_depth, false, style->latexname());
@@ -231,7 +258,7 @@ void docbookParagraphs(Buffer const & buf,
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
 				sgml::closeEnvTags(os, false, environment_inner[depth], 
-					command_depth + depth);
+					item_tag, command_depth + depth);
 		}
 	}
 

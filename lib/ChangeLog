@@ -1,3 +1,23 @@
+
+2003-11-25  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* lib/layouts/agu-dtd.layout:
+	* lib/layouts/agu_stdclass.inc:
+	* lib/layouts/agu_stdcounters.inc:
+	* lib/layouts/agu_stdlists.inc:
+	* lib/layouts/agu_stdsections.inc:
+	* lib/layouts/db_lyxmacros.inc:
+	* lib/layouts/db_stdclass.inc:
+	* lib/layouts/db_stdlayouts.inc:
+	* lib/layouts/db_stdlists.inc:
+	* lib/layouts/db_stdstarsections.inc:
+	* lib/layouts/db_stdstruct.inc:
+	* lib/layouts/db_stdtitle.inc:
+	* lib/layouts/docbook-book.layout:
+	* lib/layouts/docbook-chapter.layout:
+	* lib/layouts/docbook-section.layout: Introducing a number of tags
+	parametrizing various XML formats that we may want to support
+
 2003-11-17  Roman Maurer <roman.maurer@amis.net>
 
 	* examples/sl_splash.lyx: update

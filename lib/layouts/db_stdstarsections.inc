@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 
 # This file is the counterpart of stdstarsections.inc
-# It is desireable, as far as possible, to have the same look and feeling for
+# It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
 # empty for now, it is possible to do it using bridgehead with attribute

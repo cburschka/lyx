@@ -82,6 +82,8 @@ enum LayoutTags {
 	LT_TOPSEP,
 	LT_TOCLEVEL,
 	LT_INNERTAG,
+	LT_LABELTAG,
+	LT_ITEMTAG,
 	LT_INTITLE // keep this last!
 };
 
@@ -145,6 +147,7 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "innertag",       LT_INNERTAG },
 		{ "intitle",        LT_INTITLE },
 		{ "itemsep",        LT_ITEMSEP },
+		{ "itemtag",        LT_ITEMTAG },
 		{ "keepempty",      LT_KEEPEMPTY },
 		{ "labelbottomsep", LT_LABEL_BOTTOMSEP },
 		{ "labelcounter",   LT_LABELCOUNTER },
@@ -153,6 +156,7 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "labelsep",       LT_LABELSEP },
 		{ "labelstring",    LT_LABELSTRING },
 		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
+		{ "labeltag",       LT_LABELTAG },
 		{ "labeltype",      LT_LABELTYPE },
 		{ "latexfooter",    LT_LATEXFOOTER },
 		{ "latexheader",    LT_LATEXHEADER },
@@ -331,12 +335,22 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LATEXPARAM:
 			if (lexrc.next())
-				latexparam_ = lexrc.getString();
+				latexparam_ = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 
 		case LT_INNERTAG:
 			if (lexrc.next())
 				innertag_ = lexrc.getString();
+			break;
+
+		case LT_LABELTAG:
+			if (lexrc.next())
+				labeltag_ = lexrc.getString();
+			break;
+
+		case LT_ITEMTAG:
+			if (lexrc.next())
+				itemtag_ = lexrc.getString();
 			break;
 
 		case LT_PREAMBLE:

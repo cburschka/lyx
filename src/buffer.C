@@ -16,6 +16,7 @@
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
+#include "counters.h"
 #include "Bullet.h"
 #include "Chktex.h"
 #include "debug.h"
@@ -1148,6 +1149,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	ofs << "<!-- DocBook file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
+	params().getLyXTextClass().counters().reset();
 	docbookParagraphs(*this, paragraphs(), ofs, runparams);
 
 	ofs << "\n\n";

@@ -18,6 +18,7 @@
 #include "Bidi.h"
 #include "layout.h"
 #include "lyxfont.h"
+#include "lyxtextclass.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
 #include "textcursor.h"
@@ -477,5 +478,9 @@ private:
 
 /// return the default height of a row in pixels, considering font zoom
 extern int defaultRowHeight();
+
+///
+std::string expandLabel(LyXTextClass const & textclass,
+		LyXLayout_ptr const & layout, bool appendix);
 
 #endif // LYXTEXT_H

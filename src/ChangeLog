@@ -1,4 +1,19 @@
 
+2003-11-25  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* src/buffer.C:
+	* src/lyxlayout.C:
+	* src/lyxlayout.h:
+	* src/lyxtext.h:
+	* src/output_docbook.C:
+	* src/output_latex.C:
+	* src/paragraph.C:
+	* src/paragraph.h:
+	* src/sgml.C:
+	* src/sgml.h:
+	* src/text2.C: Introducing a number of tags parametrizing various
+	XML formats that we may want to support
+
 2003-11-25  André Pönitz  <poenitz@gmx.net>
 
 	* InsetList.[Ch] (begein, end): inline as suggested by profiler

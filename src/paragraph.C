@@ -22,6 +22,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "counters.h"
 #include "encoding.h"
 #include "debug.h"
 #include "gettext.h"
@@ -39,8 +40,9 @@
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
-#include "support/textutils.h"
 #include "support/std_sstream.h"
+#include "support/textutils.h"
+#include "support/tostr.h"
 
 #include <boost/tuple/tuple.hpp>
 
@@ -1329,19 +1331,43 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
 				    LyXFont const & outerfont,
-				    int & desc_on,
 				    OutputParams const & runparams,
-				    lyx::depth_type depth) const
+				    lyx::depth_type depth,
+				    bool labelid) const
 {
 	bool emph_flag = false;
 
 	LyXLayout_ptr const & style = layout();
+	LyXLayout_ptr const & defaultstyle 
+		= buf.params().getLyXTextClass().defaultLayout();
 
 	LyXFont font_old = (style->labeltype == LABEL_MANUAL ? style->labelfont : style->font);
 
 	int char_line_count = depth;
-	//if (!style.free_spacing)
-	//	os << string(depth,' ');
+	bool label_closed = true;
+	bool para_closed = true;
+	
+	if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
+		string ls = "";
+		Counters & counters = buf.params().getLyXTextClass().counters();
+		if (!style->free_spacing)
+			os << string(depth,' ');
+		if (!style->labeltag().empty()) {
+			os << "<" << style->labeltag() << ">\n";
+			label_closed = false;
+		} else {
+			if (!defaultstyle->latexparam().empty()) {
+				counters.step("para");
+				ls = tostr(counters.value("para"));
+				ls = " id=\"" 
+					+ subst(defaultstyle->latexparam(), "#", ls) + '"';
+			}
+			os << "<" << style->itemtag() << ">\n" 
+			   << string(depth, ' ') << "<" 
+			   << defaultstyle->latexname() << ls << ">\n";
+			para_closed = false;
+		}
+	}
 
 	// parsing main loop
 	for (pos_type i = 0; i < size(); ++i) {
@@ -1370,7 +1396,8 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		if (isInset(i)) {
 			InsetOld const * inset = getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
-			if (i || desc_on != 3) {
+			//if (i || desc_on != 3) {
+			if (!labelid) {
 				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				inset->docbook(buf, os, runparams);
@@ -1387,10 +1414,13 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				os << c;
 			} else if (isFreeSpacing() || c != ' ') {
 					os << str;
-			} else if (desc_on == 1) {
+			} else if (!style->labeltag().empty() && !label_closed) {
 				++char_line_count;
-				os << "\n</term><listitem><para>";
-				desc_on = 2;
+				os << "\n</" << style->labeltag() << "><" 
+				   << style->itemtag() << "><" 
+				   << defaultstyle->latexname() << ">";
+				label_closed = true;
+				para_closed = false;
 			} else {
 				os << ' ';
 			}
@@ -1407,9 +1437,15 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	}
 
 	// resets description flag correctly
-	if (desc_on == 1) {
+	if (!label_closed) {
 		// <term> not closed...
-		os << "</term>\n<listitem><para>&nbsp;</para>";
+		os << "</" << style->labeltag() << ">\n<" 
+		   << style->itemtag() << "><" 
+		   << defaultstyle->latexname() << ">&nbsp;";
+	}
+	if (!para_closed) {
+		os << "\n" << string(depth, ' ') << "</" 
+		   << defaultstyle->latexname() << ">\n";
 	}
 	if (style->free_spacing)
 		os << '\n';

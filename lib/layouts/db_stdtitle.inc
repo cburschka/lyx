@@ -13,7 +13,7 @@ Style Title
 	LatexType             Command
 	LatexName             articleinfo
 	CommandDepth          2
-	InnerTag              "title"
+	InnerTag              title
 End
 
 
@@ -28,7 +28,7 @@ Style Authorgroup
 	CopyStyle             Author
 	LatexType             Environment
 	LatexName             authorgroup
-	LatexParam            author
+	InnerTag              author
 End
 
 
@@ -68,7 +68,8 @@ Style RevisionHistory
 	Margin                Static
 	LatexType             Command
 	LatexName             revhistory
-	LatexParam            "3|!-- --"
+	CommandDepth          3
+	InnerTag              "!-- --"
 	LeftMargin            MMM
 	RightMargin           MMM
 	ParIndent             MM
@@ -88,7 +89,8 @@ Style Revision
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             revision
-	LatexParam            "4|revnumber"
+	CommandDepth          4
+	InnerTag              revnumber
 	LabelSep              xxx
 	ParSkip               0.4
 	TopSep                0.9

@@ -131,20 +131,14 @@ TeXEnvironment(Buffer const & buf,
 	}
 
 	if (style->isEnvironment()) {
+		os << "\\begin{" << style->latexname() << '}';
 		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
-			os << "\\begin{" << style->latexname() << "}{"
-			   << pit->params().labelWidthString() << "}\n";
+			os << "{" << pit->params().labelWidthString() << "}\n";
 		} else if (style->labeltype == LABEL_BIBLIO) {
 			// ale970405
-			os << "\\begin{" << style->latexname() << "}{"
-			   <<  bibitemWidest(buf)
-			   << "}\n";
-		} else if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
-			os << "\\begin{" << style->latexname() << '}'
-			   << style->latexparam() << '\n';
+			os << "{" <<  bibitemWidest(buf) << "}\n";
 		} else
-			os << "\\begin{" << style->latexname() << '}'
-			   << style->latexparam() << '\n';
+			os << style->latexparam() << '\n';
 		texrow.newline();
 	}
 	ParagraphList::iterator par = pit;

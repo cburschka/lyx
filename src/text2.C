@@ -724,8 +724,6 @@ void LyXText::setParagraph(
 }
 
 
-namespace {
-
 string expandLabel(LyXTextClass const & textclass,
 	LyXLayout_ptr const & layout, bool appendix)
 {
@@ -747,6 +745,8 @@ string expandLabel(LyXTextClass const & textclass,
 	return textclass.counters().counterLabel(fmt);
 }
 
+
+namespace {
 
 void incrementItemDepth(ParagraphList::iterator pit,
 			ParagraphList::iterator first_pit)

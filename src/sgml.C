@@ -85,12 +85,16 @@ pair<bool, string> escapeChar(char c)
 
 
 int openTag(ostream & os, Paragraph::depth_type depth,
-	    bool mixcont, string const & latexname)
+	    bool mixcont, string const & latexname,
+		string const & latexparam)
 {
 	if (!latexname.empty() && latexname != "!-- --") {
 		if (!mixcont)
 			os << string(depth, ' ');
-		os << '<' << latexname << '>';
+		os << '<' << latexname;
+		if (!latexparam.empty())
+			os << " " << latexparam;
+		os << '>';
 	}
 
 	if (!mixcont)
@@ -118,13 +122,13 @@ int closeTag(ostream & os, Paragraph::depth_type depth,
 
 unsigned int closeEnvTags(ostream & os, bool mixcont,
 			string const & environment_inner_depth,
+			string const & itemtag,
 			lyx::depth_type total_depth)
 {
 	unsigned int lines = 0;
 	if (environment_inner_depth != "!-- --") {
-		string item_name= "listitem";
-		lines += closeTag(os, total_depth, mixcont, item_name);
-		if (environment_inner_depth == "varlistentry")
+		lines += closeTag(os, total_depth, mixcont, itemtag);
+		if (!environment_inner_depth.empty())
 			lines += closeTag(os, total_depth, mixcont,
 				environment_inner_depth);
 	}

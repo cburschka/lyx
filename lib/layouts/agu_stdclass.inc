@@ -1,5 +1,6 @@
-# Textclass definition file for docbook.
+# Textclass definition file for AGU-Article.
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+#          Martin Vermeer <martin.vermeer@hut.fi>
 
 # This file is the counterpart of stdclass.inc
 # It is desirable, as far as possible, to have the same look and feel for
@@ -17,32 +18,21 @@ DefaultStyle            Standard
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
-	LatexName             para
+	LatexName             p
 	ParIndent             MM
 	ParSkip               0.4
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
+	LatexParam            "para#"
 End
 
-
-CharStyle Filename
-	LatexType             Command
-	LatexName             filename
-	Font
-	  Family              Typewriter
-	EndFont
-	LabelFont
-	  Shape               Italic
-	  Color               red
-	EndFont
-End
 
 CharStyle Firstname
 	LatexType             Command
 	LatexName             firstname
 	Font
-	  Shape               SmallCaps	
+	  Shape               SmallCaps
 	EndFont
 	LabelFont
 	  Shape               Italic
@@ -52,9 +42,21 @@ End
 
 CharStyle Surname
 	LatexType             Command
-	LatexName             surname
+	LatexName             firstname
 	Font
-	  Shape               SmallCaps	
+	  Shape               SmallCaps
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Color               red
+	EndFont
+End
+
+CharStyle Filename
+	LatexType             Command
+	LatexName             firstname
+	Font
+	  Family              Typewriter
 	EndFont
 	LabelFont
 	  Shape               Italic
@@ -64,7 +66,7 @@ End
 
 CharStyle Literal
 	LatexType             Command
-	LatexName             literal
+	LatexName             firstname
 	Font
 	  Family              Typewriter
 	EndFont
@@ -75,13 +77,13 @@ CharStyle Literal
 End
 
 
-Input db_stdlists.inc
-Input db_stdsections.inc
+Input agu_stdlists.inc
+Input agu_stdsections.inc
 Input db_stdstarsections.inc
 Input db_stdtitle.inc
 Input db_stdstruct.inc
 Input db_lyxmacros.inc
 Input db_stdlayouts.inc
 Input stdcounters.inc
-Input db_stdcounters.inc
+Input agu_stdcounters.inc
 Input stdfloats.inc

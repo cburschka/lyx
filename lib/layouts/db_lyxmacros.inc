@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 
 # This is the counterpart of lyxmacros.inc
-# It is desireable, as far as possible, to have the same look and feeling for
+# It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
 Input lyxmacros.inc
@@ -11,7 +11,7 @@ Style Code
 	CopyStyle             LyX-Code
 	LatexType             Environment
 	LatexName             programlisting
-	LatexParam            CDATA
+	InnerTag              CDATA
 	PassThru              1
 End
 

@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 
 # This is the counterpart of stdlayouts.inc
-# It is desireable, as far as possible, to have the same look and feeling for
+# It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
 Input stdlayouts.inc
@@ -34,7 +34,7 @@ End
 Style Quotation
 	LatexType             Environment
 	LatexName             blockquote
-	LatexParam            para
+	InnerTag              para
 End
 
 # Quote should be an inline element

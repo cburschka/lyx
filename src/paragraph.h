@@ -129,9 +129,9 @@ public:
 	void simpleDocBookOnePar(Buffer const & buf,
 				 std::ostream &,
 				 LyXFont const & outerfont,
-				 int & desc_on,
 				 OutputParams const & runparams,
-				 lyx::depth_type depth) const;
+				 lyx::depth_type depth,
+				 bool labelid) const;
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;
