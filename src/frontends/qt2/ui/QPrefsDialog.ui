@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>452</width>
-            <height>382</height>
+            <width>369</width>
+            <height>192</height>
         </rect>
     </property>
     <property stdset="1">
@@ -173,6 +173,13 @@
                         <name>name</name>
                         <cstring>prefsWS</cstring>
                     </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>7</vsizetype>
+                        </sizepolicy>
+                    </property>
                 </widget>
             </vbox>
         </widget>
@@ -202,6 +209,13 @@
                     <hsizetype>1</hsizetype>
                     <vsizetype>7</vsizetype>
                 </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>100</width>
+                    <height>0</height>
+                </size>
             </property>
             <property stdset="1">
                 <name>dragAutoScroll</name>
