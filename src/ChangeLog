@@ -1,3 +1,9 @@
+2001-11-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* buffer.C (setPaperStuff): removed from here...
+
+	* bufferparams.C (setPaperStuff): ... and moved there.	
+
 2001-11-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.h:

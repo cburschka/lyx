@@ -1553,7 +1553,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 				}
 			}
 			bool the_end = readLyXformat2(lex, par);
-			setPaperStuff();
+			params.setPaperStuff();
 			// the_end was added in 213
 			if (file_format < 213)
 				the_end = true;
@@ -3472,33 +3472,6 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();
 	}
-}
-
-
-void Buffer::setPaperStuff()
-{
-	params.papersize = BufferParams::PAPER_DEFAULT;
-	char const c1 = params.paperpackage;
-	if (c1 == BufferParams::PACKAGE_NONE) {
-		char const c2 = params.papersize2;
-		if (c2 == BufferParams::VM_PAPER_USLETTER)
-			params.papersize = BufferParams::PAPER_USLETTER;
-		else if (c2 == BufferParams::VM_PAPER_USLEGAL)
-			params.papersize = BufferParams::PAPER_LEGALPAPER;
-		else if (c2 == BufferParams::VM_PAPER_USEXECUTIVE)
-			params.papersize = BufferParams::PAPER_EXECUTIVEPAPER;
-		else if (c2 == BufferParams::VM_PAPER_A3)
-			params.papersize = BufferParams::PAPER_A3PAPER;
-		else if (c2 == BufferParams::VM_PAPER_A4)
-			params.papersize = BufferParams::PAPER_A4PAPER;
-		else if (c2 == BufferParams::VM_PAPER_A5)
-			params.papersize = BufferParams::PAPER_A5PAPER;
-		else if ((c2 == BufferParams::VM_PAPER_B3) || (c2 == BufferParams::VM_PAPER_B4) ||
-			 (c2 == BufferParams::VM_PAPER_B5))
-			params.papersize = BufferParams::PAPER_B5PAPER;
-	} else if ((c1 == BufferParams::PACKAGE_A4) || (c1 == BufferParams::PACKAGE_A4WIDE) ||
-		   (c1 == BufferParams::PACKAGE_WIDEMARGINSA4))
-		params.papersize = BufferParams::PAPER_A4PAPER;
 }
 
 

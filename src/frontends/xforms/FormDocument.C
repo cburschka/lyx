@@ -610,10 +610,9 @@ void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 }
 
 
-bool FormDocument::class_apply()
+bool FormDocument::class_apply(BufferParams &params)
 {
 	bool redo = false;
-	BufferParams &params = lv_->buffer()->params;
 
 	// If default skip is a "Length" but there's no text in the
 	// input field, reset the kind to "Medskip", which is the default.
@@ -625,38 +624,8 @@ bool FormDocument::class_apply()
 	params.fontsize = fl_get_choice_text(class_->choice_doc_fontsize);
 	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
 
-	unsigned int const new_class = combo_doc_class->get() - 1;
+	params.textclass = combo_doc_class->get() - 1;
 	
-	if (params.textclass != new_class) {
-		// try to load new_class
-		if (textclasslist.Load(new_class)) {
-			// successfully loaded
-			redo = true;
-			setMinibuffer(lv_, _("Converting document to new document class..."));
-			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
-				params.textclass, new_class,
-				lv_->buffer()->paragraph);
-			if (ret) {
-				string s;
-				if (ret==1) {
-					s = _("One paragraph couldn't be converted");
-				} else {
-					s += tostr(ret);
-					s += _(" paragraphs couldn't be converted");
-				}
-				WriteAlert(_("Conversion Errors!"),s,
-					   _("into chosen document class"));
-			}
-			
-			params.textclass = new_class;
-		} else {
-			// problem changing class -- warn user and retain old style
-			WriteAlert(_("Conversion Errors!"),
-				   _("Errors loading new document class."),
-				   _("Reverting to original document class."));
-			combo_doc_class->select(int(params.textclass) + 1);
-		}
-	}
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 	if (fl_get_button(class_->radio_doc_indent))
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
@@ -731,17 +700,57 @@ bool FormDocument::class_apply()
 }
 
 
-void FormDocument::paper_apply()
+bool FormDocument::class_apply()
 {
-	BufferParams & params = lv_->buffer()->params;
+	BufferParams &params = lv_->buffer()->params;
 
+	unsigned int const old_class = params.textclass;
+
+	bool redo = class_apply(params);
+
+	if (params.textclass != old_class) {
+		// try to load new_class
+		if (textclasslist.Load(params.textclass)) {
+			// successfully loaded
+			redo = true;
+			setMinibuffer(lv_, _("Converting document to new document class..."));
+			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
+				old_class, params.textclass,
+				lv_->buffer()->paragraph);
+			if (ret) {
+				string s;
+				if (ret==1) {
+					s = _("One paragraph couldn't be converted");
+				} else {
+					s += tostr(ret);
+					s += _(" paragraphs couldn't be converted");
+				}
+				WriteAlert(_("Conversion Errors!"),s,
+					   _("into chosen document class"));
+			}
+			
+		} else {
+			// problem changing class -- warn user and retain old style
+			WriteAlert(_("Conversion Errors!"),
+				   _("Errors loading new document class."),
+				   _("Reverting to original document class."));
+			combo_doc_class->select(int(old_class) + 1);
+		}
+	}
+	
+	return redo;
+}
+
+
+void FormDocument::paper_apply(BufferParams & params)
+{
 	params.papersize2 = char(fl_get_choice(paper_->choice_papersize)-1);
 
 	params.paperpackage =
 		char(fl_get_choice(paper_->choice_paperpackage)-1);
 
 	// set params.papersize from params.papersize2 and params.paperpackage
-	lv_->buffer()->setPaperStuff();
+	params.setPaperStuff();
 
 	params.use_geometry = fl_get_button(paper_->check_use_geometry);
 
@@ -788,9 +797,14 @@ void FormDocument::paper_apply()
 }
 
 
-bool FormDocument::language_apply()
+void FormDocument::paper_apply()
 {
-	BufferParams & params = lv_->buffer()->params;
+	paper_apply(lv_->buffer()->params);
+}
+
+
+bool FormDocument::language_apply(BufferParams & params)
+{
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 	bool redo = false;
 
@@ -820,19 +834,11 @@ bool FormDocument::language_apply()
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
-	Language const * old_language = params.language;
 	Language const * new_language = 
 		languages.getLanguage(combo_language->getline());
 	if (!new_language)
 		new_language = default_language;
 
-	if (old_language != new_language
-	    && old_language->RightToLeft() == new_language->RightToLeft()
-	    && !lv_->buffer()->isMultiLingual())
-		lv_->buffer()->changeLanguage(old_language, new_language);
-	if (old_language != new_language) {
-		redo = true;
-	}
 	params.language = new_language;
 	params.inputenc = fl_get_choice_text(language_->choice_inputenc);
 
@@ -840,9 +846,27 @@ bool FormDocument::language_apply()
 }
 
 
-bool FormDocument::options_apply()
+bool FormDocument::language_apply()
 {
 	BufferParams & params = lv_->buffer()->params;
+	Language const * old_language = params.language;
+
+	bool redo = language_apply(params);
+
+	if (old_language != params.language
+	    && old_language->RightToLeft() == params.language->RightToLeft()
+	    && !lv_->buffer()->isMultiLingual())
+		lv_->buffer()->changeLanguage(old_language, params.language);
+	if (old_language != params.language) {
+		redo = true;
+	}
+
+	return redo;
+}
+
+
+bool FormDocument::options_apply(BufferParams & params)
+{
 	bool redo = false;
 
 	params.graphicsDriver =
@@ -866,16 +890,28 @@ bool FormDocument::options_apply()
 }
 
 
-void FormDocument::bullets_apply()
+bool FormDocument::options_apply()
+{
+	return options_apply(lv_->buffer()->params);
+}
+
+
+void FormDocument::bullets_apply(BufferParams & params)
 {
 	/* update the bullet settings */
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & params_doc = lv_->buffer()->params;
 
 	// a little bit of loop unrolling
-	param.user_defined_bullets[0] = param.temp_bullets[0];
-	param.user_defined_bullets[1] = param.temp_bullets[1];
-	param.user_defined_bullets[2] = param.temp_bullets[2];
-	param.user_defined_bullets[3] = param.temp_bullets[3];
+	params.user_defined_bullets[0] = params_doc.temp_bullets[0];
+	params.user_defined_bullets[1] = params_doc.temp_bullets[1];
+	params.user_defined_bullets[2] = params_doc.temp_bullets[2];
+	params.user_defined_bullets[3] = params_doc.temp_bullets[3];
+}
+
+
+void FormDocument::bullets_apply()
+{
+	bullets_apply(lv_->buffer()->params);
 }
 
 

@@ -19,8 +19,9 @@
 #pragma implementation
 #endif
 
-#include <sstream>
+#include <config.h>
 
+#include "Lsstream.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
 #include "debug.h"

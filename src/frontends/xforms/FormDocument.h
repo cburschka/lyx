@@ -125,6 +125,17 @@ private:
 	void bullets_update(BufferParams const &);
 
 	///
+	void paper_apply(BufferParams &);
+	///
+	bool class_apply(BufferParams &);
+	///
+	bool language_apply(BufferParams &);
+	///
+	bool options_apply(BufferParams &);
+	///
+	void bullets_apply(BufferParams &);
+
+	///
 	void paper_apply();
 	///
 	bool class_apply();

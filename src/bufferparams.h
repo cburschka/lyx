@@ -111,6 +111,9 @@ public:
 	void writeFile(std::ostream &) const;
 
 	///
+	void setPaperStuff();
+
+	///
 	void useClassDefaults();
 
 	///

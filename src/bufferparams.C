@@ -177,6 +177,33 @@ void BufferParams::writeFile(ostream & os) const
 }
 
 
+void BufferParams::setPaperStuff()
+{
+	papersize = PAPER_DEFAULT;
+	char const c1 = paperpackage;
+	if (c1 == PACKAGE_NONE) {
+		char const c2 = papersize2;
+		if (c2 == VM_PAPER_USLETTER)
+			papersize = PAPER_USLETTER;
+		else if (c2 == VM_PAPER_USLEGAL)
+			papersize = PAPER_LEGALPAPER;
+		else if (c2 == VM_PAPER_USEXECUTIVE)
+			papersize = PAPER_EXECUTIVEPAPER;
+		else if (c2 == VM_PAPER_A3)
+			papersize = PAPER_A3PAPER;
+		else if (c2 == VM_PAPER_A4)
+			papersize = PAPER_A4PAPER;
+		else if (c2 == VM_PAPER_A5)
+			papersize = PAPER_A5PAPER;
+		else if ((c2 == VM_PAPER_B3) || (c2 == VM_PAPER_B4) ||
+			 (c2 == VM_PAPER_B5))
+			papersize = PAPER_B5PAPER;
+	} else if ((c1 == PACKAGE_A4) || (c1 == PACKAGE_A4WIDE) ||
+		   (c1 == PACKAGE_WIDEMARGINSA4))
+		papersize = PAPER_A4PAPER;
+}
+
+
 void BufferParams::useClassDefaults()
 {
 	LyXTextClass const & tclass = textclasslist.TextClass(textclass);

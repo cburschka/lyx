@@ -248,9 +248,6 @@ public:
         /// returns \c true if the buffer contains a Wed document
         bool isLiterate() const;
 
-	///
-	void setPaperStuff();
-
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
 	    #makeLaTeX# and others. Its main use is to figure out what
