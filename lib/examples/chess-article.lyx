@@ -128,7 +128,7 @@ status Collapsed
 \layout Standard
 
 \backslash 
-vspace*{-1in} % This is a hack!
+vspace*{-0.75in} % This is a hack!
 \end_inset 
 
 
@@ -145,9 +145,10 @@ So far, so good.
 \layout Variation
 
 5...
- Nge7}
+ Nge7 [ 
 \backslash 
-equal{} was better.{
+equal{} was better.
+ ]
 \layout Mainline
 
 6.
@@ -191,8 +192,8 @@ White continues to develop pieces and also sets a trap for Black.
 \layout Mainline
 
 12...
- O-O?} This move loses instantly.
- {
+ O-O? [ This move loses instantly.
+ ]
 \layout Standard
 
 The following was better, even though white retains the upper hand.
@@ -201,9 +202,9 @@ The following was better, even though white retains the upper hand.
 12...
  e5 13.
  Be3 Qc7 14.
- Na4 O-O } 
+ Na4 O-O [ 
 \backslash 
-wbetter {
+wbetter ]
 \layout Mainline
 
 13.

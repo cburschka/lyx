@@ -1,8 +1,9 @@
 #LyX 1.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 220
-\textclass article
+\textclass chess
 \begin_preamble
 \usepackage{chess-workshop-symbols}
+\smallboard
 \end_preamble
 \language english
 \inputencoding auto
@@ -63,6 +64,14 @@ Wakeham, Marc
 (1623)
 \hfill 
 (1639)
+\layout Mainline
+
+1.
+ e4 c5 2.
+ Nc3 d6 3.
+ g3 Nc6 4.
+ Bg2 e6 5.
+ Nge2
 \layout Standard
 
 
@@ -72,13 +81,7 @@ status Open
 \layout Standard
 
 \backslash 
-newgame
-\backslash 
-smallboard%
-\layout Standard
-
-\backslash 
-mainline{1. e4 c5 2. Nc3 d6 3. g3 Nc6 4. Bg2 e6 5. Nge2}
+vspace*{-0.2in}
 \end_inset 
 
 
@@ -101,23 +104,21 @@ status Collapsed
 
 
 \begin_inset ERT
-status Inlined
+status Collapsed
 
 \layout Standard
 
 \backslash 
 ]
-\backslash 
-printknightmove{g1}{e2}
-\backslash 
-highlight{d4,f4}
 \end_inset 
 
 
-\layout Standard
+\layout KnightMove
 
-So far, so good.
- This is all according to theory.
+g1->e2
+\layout HighLight
+
+d4,f4
 \layout Standard
 
 
@@ -127,18 +128,29 @@ status Open
 \layout Standard
 
 \backslash 
-mainline{5... Be7?!} 
-\backslash 
-variation{5... Nge7}
-\backslash 
-equal %
-\layout Standard
-
-\backslash 
-mainline{6. d4 cxd4 7. Nxd4 a6}
+vspace*{-0.5in} % This is a hack!
 \end_inset 
 
 
+\layout Standard
+
+So far, so good.
+ This is all according to theory.
+\layout Mainline
+
+5...
+ Be7?!
+\layout Variation
+
+5...
+ Nge7 [ 
+\backslash 
+equal{} ]
+\layout Mainline
+
+6.
+ d4 cxd4 7.
+ Nxd4 a6
 \layout Standard
 
 With 7...\SpecialChar ~
@@ -171,19 +183,14 @@ status Collapsed
 \end_inset 
 
 
-\layout Standard
+\layout Mainline
 
-
-\begin_inset ERT
-status Open
-
-\layout Standard
-
-\backslash 
-mainline{8. Nxc6 bxc6 9. O-O Bb7 10. Qg4 Bf6 11. Bf4 Ne7 12. Rad1}
-\end_inset 
-
-
+8.
+ Nxc6 bxc6 9.
+ O-O Bb7 10.
+ Qg4 Bf6 11.
+ Bf4 Ne7 12.
+ Rad1
 \layout Standard
 
 
@@ -203,53 +210,50 @@ status Collapsed
 
 
 \begin_inset ERT
-status Inlined
+status Collapsed
 
 \layout Standard
 
 \backslash 
 ]
-\backslash 
-printarrow{a1}{d1}
 \end_inset 
 
 
+\layout Arrow
+
+a1->d1
 \layout Standard
 
 White continues to develop pieces and also sets a trap for Black.
+\layout Mainline
+
+12...O-O? [ This move loses instantly.
+ ]
+\layout Variation
+
+12...
+ e5 13.
+ Be3 Qc7 14.
+ Na4 O-O [ 
+\backslash 
+wbetter{} is best ]
+\layout Mainline
+
+13.
+ e5!
 \layout Standard
 
+Black's knight and bishop are in each other's way.
+ The bishop is doomed.
+\layout Mainline
 
-\begin_inset ERT
-status Open
-
-\layout Standard
-
-\backslash 
-mainline{12... O-O?} This loses instantly.
-\layout Standard
-Best was 
-\backslash 
-variation{12... e5 13. Be3 Qc7 14. Na4 O-O}
-\backslash 
-wbetter
-\layout Standard
-
-\backslash 
-mainline{13. e5!} Black's knight and bishop form a bumbling pair here, the Bishop is doomed.
-\layout Standard
-
-\backslash 
-mainline{13... Nd5!? 14. Bxd5 cxd5 15. exf6 Qxf6 16. Bxd6 Rfd8 17. Bc7 Rd7 18. Bf4 1-0 }%
-\layout Standard
-
-\backslash 
-[
-\backslash 
-showboard
-\backslash 
-]
-\end_inset 
-
+13...
+ Nd5!? 14.
+ Bxd5 cxd5 15.
+ exf6 Qxf6 16.
+ Bxd6 Rfd8 17.
+ Bc7 Rd7 18.
+ Bf4 1-0
+\layout BoardCentered
 
 \the_end

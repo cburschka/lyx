@@ -21,26 +21,6 @@
 Preamble
   \usepackage[ps,mover]{lyxskak}
 
-  %%% Modified routines from skak.sty
-  %
-  \def\lyxprintarrow#1{\lyxprintarrow@#1@}
-  \def\lyxprintarrow@#1->#2@{\ncline[style=psskak]{-|>}{#1}{#2}}
-
-  \def\lyxknightmove#1{\lyxknightmove@#1@}
-  \def\lyxknightmove@#1->#2@{% 
-    \setcounter{ps@knightangle}{\get@fileangle{\First#1}{\First#2}+%
-      \get@rankangle{\Second#1}{\Second#2} + \value{ps@inverse}}%
-    \ncdiagg[style=psskak,angleA=\arabic{ps@knightangle}]{-|>}{#1}{#2}}
-
-  %%% Variation indent (You can set this in your preamble)
-  %
-  \newlength{\lyxvarindent}
-  \setlength{\lyxvarindent}{0.2in}
-
-  %%% \Var[ moves ] - use in the Variation paragraph styles.
-  %
-  \def\Var[#1]{\variation{#1}}
-
   %%% initialize board
   %
   \newgame
@@ -84,9 +64,54 @@ End
 Style Variation
   CopyStyle Mainline
   LatexType Command
-  LatexName hspace*\lyxvarindent\variation
+  LatexName lyxvariation[1]
   LabelString "Variation: "
   LeftMargin MMMMMMMM
+End
+
+# This is a subvariation. 
+#
+Style SubVariation
+  CopyStyle Variation
+  LatexName lyxvariation[2]
+  LabelString "Subvariation: "
+  LeftMargin MMMMMMMMMMM
+End
+
+# This is a subsubvariation. 
+#
+Style SubVariation2
+  CopyStyle Variation
+  LatexName lyxvariation[3]
+  LabelString "Subvariation(2): "
+  LeftMargin MMMMMMMMMMMMMM
+End
+
+# This is a subsubsubvariation. 
+#
+Style SubVariation3
+  CopyStyle Variation
+  LatexName lyxvariation[4]
+  LabelString "Subvariation(3): "
+  LeftMargin MMMMMMMMMMMMMMMMM
+End
+
+# This is a subsubsubsubvariation. 
+#
+Style SubVariation4
+  CopyStyle Variation
+  LatexName lyxvariation[5]
+  LabelString "Subvariation(4): "
+  LeftMargin MMMMMMMMMMMMMMMMMMMM
+End
+
+# This is a subsubsubsubsubvariation. 
+#
+Style SubVariation5
+  CopyStyle Variation
+  LatexName lyxvariation[6]
+  LabelString "Subvariation(5): "
+  LeftMargin MMMMMMMMMMMMMMMMMMMMMMM
 End
 
 # Same as mainline, but it does not print the moves (only updates the
@@ -131,7 +156,7 @@ End
 Style HighLight
   CopyStyle Mainline
   LatexType Command
-  LatexName highlight
+  LatexName lyxhighlight
   LeftMargin MMMMMMM
   LabelString "Highlights: "
   LabelFont

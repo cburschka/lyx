@@ -1,3 +1,18 @@
+2001-11-20  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* examples/chess-article.lyx: Fixed comments. Removed hacks
+	caused by my lack of understanding of TeX macros and LyX layouts.
+	This version is	immensely cleaner.
+	
+	* examples/chessgame.lyx: Minimized ERT while still showing off
+	the external chess material insets.
+	
+	* tex/lyxskak.sty: Added LyX supporting macros. Added better embedded
+	comment handling into skak framework. Fixed some bugs in skak.sty!
+	
+	* layouts/chess.layout: Fixed up layout. Removed kludges in previous 
+	version. Added Subvariation, Subsubvariation, etc.
+
 2001-11-13  André Pönitz  <poenitz@gmx.net>
 
 	* ui/default.ui: create a new Submenu Insert->Math, since placing

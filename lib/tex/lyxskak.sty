@@ -1,5 +1,7 @@
 % based on skak.sty
 % modified to work with older babel versions
+% Bug fixes and comment parsing code by Kayvan Sylvan <kayvan@sylvan.com>
+%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lyxskak}
 
@@ -269,7 +271,6 @@
   \expandafter\xdef\csname skaklanguage.#1\endcsname{#2}}
 
 \newcommand{\skaklanguage}[1][english]{%
-%\def\skaklanguage#1{%
   \def\currentlanguage{#1}%
   \skak@ifthenelse{\equal{#1}{english}}%
     {\let\skak@pieceToEnglish=\skak@englishToEnglish%
@@ -807,7 +808,7 @@
         \ParseCoordinates(#2)}%
       {\IsPromotion{#1}%
         {\def\Promotion{\True}%
-          \gdef\PromotionPieceName{\skak@pieceToEnlish{\FirstChar(#2)}}}}%
+          \gdef\PromotionPieceName{\skak@pieceToEnglish{\FirstChar(#2)}}}}%
       {}% no more information is of interest   
       }}}}
 
@@ -1116,7 +1117,6 @@
 \def\@mainline#1{\endgroup\gdef\NumberNext{\True}%
   \Mainline(#1 Z ){\mainlinestyle\typeset@A{#1}}}
 
-
 \def\hidemoves{\begingroup\catcode`\#=12 \@hidemoves}
 \def\@hidemoves#1{\endgroup\def\NumberNext{\True}%
   \Mainline(#1 Z )}
@@ -1166,18 +1166,20 @@
 
 \def\Mainline(#1 #2){%
   \EqStr{Z}{#1}%
-  {}%
-  {\NumberNext%
-    {\EatNumber{#1}% sets \NumberOK, \ExpectedColour
+  {\EqStr{Z}{#2}{}{\Mainline(#2)}}%
+  {\EqStr{[}{#1}%
+    {\typeset@eatcomment#1#2QXXQQ}%
+    {\NumberNext%
+      {\EatNumber{#1}% sets \NumberOK, \ExpectedColour
                                 % executes a move not separated from the 
                                 % number with a space, eg, 1.e4
-      \NumberOK%
-      {\gdef\NumberNext{\False}%
-        \Mainline(#2)}%
-      {\errmessage{mainline: not the correct move number}}}%
-    {\MakeMoveMainline{#1}%
-      \Mainline(#2)}}}
-
+        \NumberOK%
+        {\gdef\NumberNext{\False}%
+          \Mainline(#2)}%
+        {\errmessage{mainline: not the correct move number}}}%
+      {\MakeMoveMainline{#1}%
+        \Mainline(#2)}}}}
+\def\typeset@eatcomment[#1]#2QXXQQ{\Mainline(#2)}
 
 %%%%% typesetting
 %%% figurine notation
@@ -1313,13 +1315,15 @@
 \def\typeset@AA(#1 #2){%
   \EqStr{Z}{#1}%
   {}%
-  {\TypeSetNumberNext%
-    {\typeset@number{#1}% sets \TypeSetColour
-      \gdef\TypeSetNumberNext{\False}%
-      \typeset@AA(#2)}%
-    {\typeset@A@move{#1}%
-      \typeset@AA(#2)}}}
-      
+  {\EqStr{[}{#1}%
+    {\typeset@printcomment#1#2QXXQX}%
+    {{\TypeSetNumberNext%
+      {\typeset@number{#1}% sets \TypeSetColour
+        \gdef\TypeSetNumberNext{\False}%
+        \typeset@AA(#2)}%
+      {\typeset@A@move{#1}%
+        \typeset@AA(#2)}}}}}
+\def\typeset@printcomment[#1]#2QXXQX{{\ }{#1}{\typeset@AA(#2)}}
 
 \def\variation{\begingroup\catcode`\#=12 \@variation}
 \def\@variation#1{\endgroup{\variationstyle\typeset@A{#1}}}
@@ -1569,7 +1573,37 @@
   \edef\restore@temp{\csname chessgame.#1\endcsname}
   \expandafter\FenBoard\restore@temp)}
 
-% end skak.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Added in support of the chess.layout by Kayvan Sylvan <kayvan@sylvan.com>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%% Modified routines from skak.sty
+%
+\def\lyxprintarrow#1{\lyxprintarrow@#1@\vspace*{-1\parskip}}
+\def\lyxprintarrow@#1->#2@{\ncline[style=psskak]{-|>}{#1}{#2}}
 
+\def\lyxknightmove#1{\lyxknightmove@#1@\vspace*{-1\parskip}}
+\def\lyxknightmove@#1->#2@{%
+  \setcounter{ps@knightangle}{\get@fileangle{\First#1}{\First#2}+%
+    \get@rankangle{\Second#1}{\Second#2} + \value{ps@inverse}}%
+  \ncdiagg[style=psskak,angleA=\arabic{ps@knightangle}]{-|>}{#1}{#2}}
 
+\def\lyxhighlight#1{\highlight{#1}\vspace*{-1\parskip}}
+
+%%% Variation indent (You can set this in your preamble)
+%
+\newlength{\lyxvarindent}
+\setlength{\lyxvarindent}{0.15in}
+
+\newlength{\lyxvar@ll}% temporary for storing line length in variations
+
+%%% lyxvariation{....} - Indented paragraph of variation moves, typeset
+%%% in the normal fashion (styleB).
+%
+\def\lyxvariation[#1]#2{%
+  %\setlength{\lyxvar@ll}{\textwidth}%
+  \setlength{\lyxvar@ll}{\columnwidth}%
+  \addtolength{\lyxvar@ll}{-#1\lyxvarindent}%
+  \hspace*{#1\lyxvarindent}\parbox{\lyxvar@ll}{\variation{#2}}}
+
+% end lyxskak.sty
