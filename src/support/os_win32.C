@@ -5,6 +5,8 @@
 
 #include "os.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
+#include "debug.h"
 
 #include <windows.h>
 #include <io.h>
@@ -17,7 +19,7 @@ string os::tmpdir_ = string();
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
-void os::init(int * argc, char ** argv[]) {
+void os::init(int * /* argc */, char ** argv[]) {
 	static bool initialized = false;
 	if (initialized) return;
 	initialized = true;
@@ -109,8 +111,8 @@ bool os::is_absolute_path(string const & p)
 	if (p.empty())
 		return false;
 
-	bool isDosPath = (path.length() > 1 && path[1] == ':');
-	bool isUnixPath = (path[0] == '/');
+	bool isDosPath = (p.length() > 1 && p[1] == ':');
+	bool isUnixPath = (p[0] == '/');
 
 	return isDosPath | isUnixPath;
 }
