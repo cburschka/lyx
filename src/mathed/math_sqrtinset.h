@@ -25,5 +25,7 @@ public:
 	void writeNormal(std::ostream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
+	///
+	string maplize() const;
 };
 #endif

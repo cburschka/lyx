@@ -605,3 +605,22 @@ string MathGridInset::octavize() const
 	return res;
 }
 
+
+string MathGridInset::maplize() const
+{
+	string res = "array([";
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (row)
+			res += ',';
+		res += '[';
+		for (col_type col = 0; col < ncols(); ++col) {
+			if (col)
+				res += ',';
+			res += cell(index(row, col)).maplize();
+		}
+		res += ']';
+	}
+	res += "])";
+	return res;
+}
+

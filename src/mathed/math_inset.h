@@ -234,6 +234,8 @@ public:
 	virtual bool isRelOp() const { return false; }
 	///
 	virtual bool isMacro() const { return false; }
+	/// is this a matrix or matrix expression?
+	virtual bool isMatrix() const { return false; }
 
 	///
 	virtual char getChar() const { return 0; }

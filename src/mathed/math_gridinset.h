@@ -151,6 +151,8 @@ public:
 
 	///
 	string octavize() const;
+	///
+	string maplize() const;
 
 protected:
 	/// returns proper 'end of line' code for LaTeX

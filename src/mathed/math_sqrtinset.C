@@ -55,3 +55,9 @@ void MathSqrtInset::writeNormal(std::ostream & os) const
 	cell(0).writeNormal(os); 
 	os << "]";
 }
+
+
+string MathSqrtInset::maplize() const
+{
+	return "sqrt(" + cell(0).maplize() + ')';
+}

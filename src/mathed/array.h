@@ -128,6 +128,9 @@ public:
 	/// interface to MathML
 	string mathmlize() const;
 
+	///
+	bool isMatrix() const;
+
 private:
 	/// Buffer
 	buffer_type bf_;

@@ -335,3 +335,9 @@ MathArray::iterator MathArray::end()
 }
 
 
+bool MathArray::isMatrix() const
+{
+	return size() == 1 && begin()->nucleus() && begin()->nucleus()->isMatrix();
+}
+
+

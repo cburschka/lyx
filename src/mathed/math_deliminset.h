@@ -28,6 +28,8 @@ public:
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
+	bool isMatrix() const;
+	///
 	string octavize() const;
 	///
 	string maplize() const;

@@ -93,6 +93,13 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 }
 
 
+bool MathDelimInset::isMatrix() const
+{
+	return left_ == "(" && right_ == ")" && cell(0).size() == 1 && 
+		cell(0).begin()->nucleus() && cell(0).begin()->nucleus()->asArrayInset();
+}
+
+
 string MathDelimInset::octavize() const
 {
 	if (left_ == "|" && right_ == "|")
@@ -103,7 +110,12 @@ string MathDelimInset::octavize() const
 
 string MathDelimInset::maplize() const
 {
-	if (left_ == "|" && right_ == "|")
-		return "abs(" + cell(0).octavize() + ")";
-	return left_ + cell(0).octavize() + right_;
+	if (left_ == "|" && right_ == "|") {
+		if (cell(0).isMatrix())	
+			return "linalg[det](" + cell(0).maplize() + ")";
+		else
+			return "abs(" + cell(0).maplize() + ")";
+	}
+	return left_ + cell(0).maplize() + right_;
 }
+
