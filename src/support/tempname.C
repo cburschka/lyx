@@ -18,18 +18,14 @@ namespace {
 inline
 int make_tempfile(char * templ)
 {
-#ifdef HAVE_MKSTEMP
+#if defined(HAVE_MKSTEMP)
 	return ::mkstemp(templ);
-#else
-#ifdef HAVE_MKTEMP
+#elif defined(HAVE_MKTEMP)
 	// This probably just barely works...
 	::mktemp(templ);
 	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 #else
-#ifdef WITH_WARNINGS
-#warning FIX FIX FIX
-#endif
-#endif
+#error FIX FIX FIX
 #endif
 }
 

@@ -1,3 +1,8 @@
+2002-04-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* tempname.C (make_tempfile): simplify the #ifdef block by using
+	#if defined and re-write the #warning as a #error because it's terminal.
+
 2002-04-08  Herbert Voss  <voss@perce.de>
 
 	* filetools.C (getExtFromContents): get tgif run 
