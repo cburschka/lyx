@@ -199,7 +199,7 @@ bool FormRef::input(FL_OBJECT *, long data)
 		{
 			lv_->getLyXFunc()->
 				Dispatch(LFUN_REF_GOTO,
-					 params.getContents());
+					 fl_get_input(dialog_->ref));
 	  		fl_set_object_label(dialog_->button_go, _("Go back"));
 		}
 		break;
