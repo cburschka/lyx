@@ -227,3 +227,17 @@ WriteStream & WriteStream::operator<<(char c)
 		++line_;
 	return *this;		
 }
+
+
+WriteStream & WriteStream::operator<<(int i)
+{
+	os << i;
+	return *this;		
+}
+
+
+WriteStream & WriteStream::operator<<(unsigned int i)
+{
+	os << i;
+	return *this;		
+}

@@ -252,7 +252,6 @@ bool MathHullInset::numberedType() const
 
 void MathHullInset::validate(LaTeXFeatures & features) const
 {
-	
 	if (ams())
 		features.require("amsstyle");
 

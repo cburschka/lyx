@@ -115,6 +115,10 @@ struct WriteStream {
 	WriteStream & operator<<(char const *);
 	///
 	WriteStream & operator<<(char);
+	///
+	WriteStream & operator<<(int);
+	///
+	WriteStream & operator<<(unsigned int);
 
 	///
 	Buffer const * buffer;
