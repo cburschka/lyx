@@ -21,8 +21,13 @@ using std::endl;
 using std::fill;
 using std::getline;
 using std::ios;
+using std::ifstream;
 using std::istream;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
+using std::stack;
+using std::string;
 using std::vector;
 
 
@@ -147,13 +152,6 @@ mode_type asMode(mode_type oldmode, string const & str)
 	if (str == "textmode" || str == "forcetext")
 		return TEXT_MODE;
 	return oldmode;
-}
-
-
-bool stared(string const & s)
-{
-	string::size_type const n = s.size();
-	return n && s[n - 1] == '*';
 }
 
 
