@@ -311,7 +311,9 @@ private:
 			  int & srow, int & erow) const;
 	///
 	string selectNextWordInt(BufferView *, float & value) const;
-
+	///
+	bool insertAsciiString(BufferView *, string const & buf, bool usePaste);
+	
 	//
 	// Private structures and variables
 	///

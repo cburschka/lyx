@@ -16,6 +16,7 @@
 
 #include "insettabular.h"
 
+#include "lyx_cb.h"
 #include "buffer.h"
 #include "commandtags.h"
 #include "lyxfunc.h"
@@ -1104,6 +1105,20 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		if (!tabularFeatures(bv, arg))
 			result = UNDISPATCHED;
 		break;
+		// insert file functions
+	case LFUN_FILE_INSERT_ASCII_PARA:
+	case LFUN_FILE_INSERT_ASCII: 
+	{
+		string tmpstr = getContentsOfAsciiFile(bv, arg, false);
+		if (tmpstr.empty())
+			break;
+		if (insertAsciiString(bv, tmpstr, false))
+			updateLocal(bv, INIT, true);
+		else
+			result = UNDISPATCHED;
+		break;
+	}
+	// cut and paste functions
 	case LFUN_CUT:
 		if (!copySelection(bv))
 			break;
@@ -1122,9 +1137,9 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PASTESELECTION:
 	{
 		string const clip(bv->getClipboard());
-	
-		if (clip.empty())
+			if (clip.empty())
 			break;
+#if 0
 		if (clip.find('\t') != string::npos) {
 			int cols = 1;
 			int rows = 1;
@@ -1178,7 +1193,11 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			// check for the last cell if there is no trailing '\n'
 			if ((cell < cells) && (op < len))
 				paste_tabular->GetCellInset(cell)->setText(clip.substr(op, len-op));
-		} else {
+		} else
+#else
+		if (!insertAsciiString(bv, clip, true))
+#endif
+		{
 			// so that the clipboard is used and it goes on
 			// to default
 			// and executes LFUN_PASTESELECTION in insettext!
@@ -2767,4 +2786,89 @@ bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 		return owner()->forceDefaultParagraphs(in);
 	// if we're here there is really something strange going on!!!
 	return false;
+}
+
+bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
+                                     bool usePaste)
+{
+	if (buf.find('\t') == string::npos)
+		return false;
+	
+	int cols = 1;
+	int rows = 1;
+	int maxCols = 1;
+	string::size_type len = buf.length();
+	string::size_type p = 0;
+
+	while (p < len &&
+	       ((p = buf.find_first_of("\t\n", p)) != string::npos))
+	{
+		switch (buf[p]) {
+		case '\t':
+			++cols;
+			break;
+		case '\n':
+			if ((p+1) < len)
+				++rows;
+			maxCols = max(cols, maxCols);
+			cols = 1;
+			break;
+		}
+		++p;
+	}
+	maxCols = max(cols, maxCols);
+	LyXTabular * loctab;
+	int cell = 0;
+	int ocol = 0;
+	int row = 0;
+	if (usePaste) {
+		delete paste_tabular;
+		paste_tabular = new LyXTabular(bv->buffer()->params,
+		                               this, rows, maxCols);
+		loctab = paste_tabular;
+		cols = 0;
+	} else {
+		loctab = tabular.get();
+		cell = actcell;
+		ocol = actcol;
+		row = actrow;
+	}
+	string::size_type op = 0;
+	int cells = loctab->GetNumberOfCells();
+	p = 0;
+	cols = ocol;
+	rows = loctab->rows();
+	int const columns = loctab->columns();
+	while ((cell < cells) && (p < len) && (row < rows) &&
+	       (p = buf.find_first_of("\t\n", p)) != string::npos)
+	{
+		if (p >= len)
+			break;
+		switch (buf[p]) {
+		case '\t':
+			// we can only set this if we are not too far right
+			if (cols < columns) {
+				loctab->GetCellInset(cell)->setText(buf.substr(op, p-op));
+				++cols;
+				++cell;
+			}
+			break;
+		case '\n':
+			// we can only set this if we are not too far right
+			if (cols < columns)
+				loctab->GetCellInset(cell)->setText(buf.substr(op, p-op));
+			cols = ocol;
+			++row;
+			if (row < rows)
+				cell = loctab->GetCellNumber(row, cols);
+			break;
+		}
+		++p;
+		op = p;
+	}
+	// check for the last cell if there is no trailing '\n'
+	if ((cell < cells) && (op < len))
+		loctab->GetCellInset(cell)->setText(buf.substr(op, len-op));
+	
+	return true;
 }

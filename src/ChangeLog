@@ -1,5 +1,7 @@
 2002-03-04  Juergen Vigna  <jug@sad.it>
 
+	* lyx_cb.C (getContentsOfAsciiFile): new helper function.
+
 	* tabular.C (calculate_width_of_column_NMC): fixed to use also the
 	last column of multicolumn cells.
 	(SetWidthOfMulticolCell): recalculate NMC and real columns.

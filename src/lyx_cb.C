@@ -351,11 +351,35 @@ Buffer * NewLyxFile(string const & filename)
 // Insert ascii file (if filename is empty, prompt for one)
 void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
-	string fname = f;
-
 	if (!bv->available()) 
 		return;
-     
+
+	string const tmpstr = getContentsOfAsciiFile(bv, f, asParagraph);
+	if (tmpstr.empty())
+		return;
+
+	// insert the string
+	bv->hideCursor();
+	
+	// clear the selection
+	bool flag = (bv->text == bv->getLyXText());
+	if (flag)
+		bv->beforeChange(bv->text);
+	if (!asParagraph)
+		bv->getLyXText()->insertStringAsLines(bv, tmpstr);
+	else
+		bv->getLyXText()->insertStringAsParagraphs(bv, tmpstr);
+	if (flag)
+		bv->update(bv->text,
+		           BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+}
+
+
+// Insert ascii file (if filename is empty, prompt for one)
+string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagraph)
+{
+	string fname = f;
+
 	if (fname.empty()) {
 		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
@@ -363,12 +387,12 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filePath());
 
 		if (result.first == FileDialog::Later)
-			return;
+			return string();
 
 		fname = result.second;
 
 		if (fname.empty()) 
-			return;
+			return string();
 	}
 
 	FileInfo fi(fname);
@@ -376,14 +400,14 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (!fi.readable()) {
 		Alert::err_alert(_("Error! Specified file is unreadable: "),
 			     MakeDisplayPath(fname, 50));
-		return;
+		return string();
 	}
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
 		Alert::err_alert(_("Error! Cannot open specified file: "),
 			     MakeDisplayPath(fname, 50));
-		return;
+		return string();
 	}
 
 	ifs.unsetf(ios::skipws);
@@ -402,16 +426,8 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	string tmpstr;
 	copy(ii, end, back_inserter(tmpstr));
 #endif
-	// insert the string
-	bv->hideCursor();
 	
-	// clear the selection
-	bv->beforeChange(bv->text);
-	if (!asParagraph)
-		bv->text->insertStringAsLines(bv, tmpstr);
-	else
-		bv->text->insertStringAsParagraphs(bv, tmpstr);
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	return tmpstr;
 }
 
 
