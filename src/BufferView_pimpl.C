@@ -886,7 +886,7 @@ namespace {
 				lyxerr << "not descendable" << endl;
 				break;
 			}
-			int const cell = inset->getCell(x, y);
+			int const cell = inset->getCell(x, y + bv->top_y());
 			if (cell == -1)
 				break;
 			text = inset_hit->getText(cell);
