@@ -1,5 +1,10 @@
 2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* math_charinset.C: wrap the std::strchr declaration inside a
+	check for CXX_GLOBAL_CSTD.
+
+2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* math_biginset.[Ch] (size): return size_type, not int.
 
 	* math_inset.C (metrics): parameter "mi" is never referenced. Removed.

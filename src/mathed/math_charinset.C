@@ -21,7 +21,10 @@
 
 using std::ostream;
 using std::endl;
+
+#ifndef CXX_GLOBAL_CSTD
 using std::strchr;
+#endif
 
 
 bool isBinaryOp(char c, MathTextCodes type)
