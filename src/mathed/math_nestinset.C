@@ -285,8 +285,8 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-dispatch_result MathNestInset::dispatch
-	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+dispatch_result MathNestInset::priv_dispatch(FuncRequest const & cmd,
+	idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 
@@ -307,7 +307,7 @@ dispatch_result MathNestInset::dispatch
 
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button2)
-				return dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
+				return priv_dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
 			return UNDISPATCHED;
 
 		default:

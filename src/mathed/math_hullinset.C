@@ -510,7 +510,7 @@ void MathHullInset::setType(string const & type)
 
 void MathHullInset::mutate(string const & newtype)
 {
-	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
+	lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
 	// we try to move along the chain
 	// none <-> simple <-> equation <-> eqnarray
@@ -771,7 +771,7 @@ void MathHullInset::doExtern
 }
 
 
-dispatch_result MathHullInset::dispatch
+dispatch_result MathHullInset::priv_dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
@@ -839,6 +839,7 @@ dispatch_result MathHullInset::dispatch
 			return DISPATCHED_POP;
 
 		case LFUN_MATH_MUTATE: {
+			lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
 			row_type r = row(idx);
 			col_type c = col(idx);
 			mutate(cmd.argument);

@@ -51,7 +51,8 @@ public:
 	///
 	bool ams() const;
 	/// local dispatcher
-	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result priv_dispatch(FuncRequest const & cmd,
+		idx_type & idx, pos_type & pos);
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
 			  std::vector<std::string> & list) const;

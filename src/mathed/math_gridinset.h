@@ -136,7 +136,8 @@ public:
 	/// identifies GridInset
 	MathGridInset const * asGridInset() const { return this; }
 	/// local dispatcher
-	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result priv_dispatch(FuncRequest const & cmd,
+		idx_type & idx, pos_type & pos);
 
 	///
 	col_type ncols() const;
