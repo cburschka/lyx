@@ -1,3 +1,8 @@
+2002-01-19  Herbert Voss  <voss@perce.de>
+
+	* biblio.C (parseBibTeX): change the parsing, so that 
+	'#'-characters in a bibtex entry are no more a problem.
+
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlDialog_impl.h (ControlConnectBI>): make ControlDialogBI

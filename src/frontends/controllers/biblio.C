@@ -319,101 +319,74 @@ searchKeys(InfoMap const & theMap,
 string const parseBibTeX(string data, string const & findkey)
 {
 	string keyvalue;
-	
-	for (string::iterator it=data.begin(); it<data.end(); ++it) {
+	for (string::iterator it = data.begin(); it < data.end(); ++it) {
 		if ((*it) == '\n' || (*it) == '\t')
-		        (*it)= ' ';
+			(*it)= ' ';
 	}
-	
 	data = frontStrip(data);
-	while (!data.empty() && data[0] != '=' && 
-	       (data.find(' ') != string::npos || data.find('=') != string::npos)) {
-
-		string::size_type keypos = min(data.find(' '), data.find('='));
-		string key = lowercase(data.substr(0, keypos));
-      
-		data = data.substr(keypos, data.length()-1);
-		data = frontStrip(strip(data));
-		if (data.length() > 1 && data[0]=='=') {
-			data = frontStrip(data.substr(1, data.length()-1));
-			if (!data.empty()) {
-				keypos = 1;
-				string value;
-				char enclosing;
-
-				if (data[0]=='{') {
-					enclosing = '}';
-				} else if (data[0]=='"') {
-					enclosing = '"';
-				} else {
-					keypos=0;
-					enclosing=' ';
-				}
-
-				if (keypos &&
-				    data.find(enclosing)!=string::npos &&
-				    data.length()>1) {
-					string tmp = data.substr(keypos,
-								 data.length()-1);
-					while (tmp.find('{') != string::npos &&
-					       tmp.find('}') != string::npos &&
-					       tmp.find('{') < tmp.find('}') &&
-					       tmp.find('{') < tmp.find(enclosing)) {
-
-						keypos += tmp.find('{')+1;
-						tmp = data.substr(keypos,
-								  data.length()-1);
-						keypos += tmp.find('}')+1;
-						tmp = data.substr(keypos,
-								  data.length()-1);
-					}
-
-					if (tmp.find(enclosing)==string::npos)
-						return keyvalue;
-					else {
-						keypos += tmp.find(enclosing);
-						tmp = data.substr(keypos,
-								  data.length()-1);
-					}
-
-					value = data.substr(1, keypos-1);
-
-					if (keypos+1<data.length()-1)
-						data = frontStrip(data.substr(keypos+1, data.length()-1));
-					else
-						data = "";
-
-				} else if (!keypos &&
-					   (data.find(' ') ||
-					    data.find(','))) {
-					keypos = data.length()-1;
-					if (data.find(' ') != string::npos)
-						keypos = data.find(' ');
-					if (data.find(',') != string::npos &&
-					    keypos > data.find(','))
-						keypos = data.find(',');
-
-					value = data.substr(0, keypos);
-		  
-					if (keypos+1<data.length()-1)
-						data = frontStrip(data.substr(keypos+1, data.length()-1));
-					else
-						data = "";
-				}
-				else
-					return keyvalue;
-
-				if (findkey == key) {
-					keyvalue = value;
-					return keyvalue;
-				} 
-
-				data = frontStrip(frontStrip(data,','));
+	
+	// now get only the important line of the bibtex entry.
+	// all entries are devided by ',' except the last one.	
+	data += ',';  // now we have same behaviour for all entries
+		      // because the last one is "blah ... }"
+	int Entries = 0;			
+	string dummy = token(data, ',', Entries);
+	while (!contains(lowercase(dummy), findkey) && !dummy.empty())
+		dummy = token(data, ',', ++Entries);
+	if (dummy.empty())
+		return string();			// no such keyword
+	// we are not sure, if we get all, because "key= "blah, blah" is allowed.
+	// therefore we read all until the next "=" character, which follows a
+	// new keyword
+	keyvalue = dummy;
+	dummy = token(data, ',', ++Entries);
+	while (!contains(dummy, '=') && !dummy.empty()) {
+		keyvalue += (',' + dummy);
+		dummy = token(data, ',', ++Entries);
+	}
+	data = keyvalue;		// now we have the important line    	
+	data = strip(data, ' ');		// all spaces
+	if (!contains(data, '{'))	// no opening '{'
+		data = strip(data, '}');// maybe there is a main closing '}'
+	// happens, when last keyword
+	string key = lowercase(data.substr(0, data.find('=')));
+	data = data.substr(data.find('='), data.length() - 1);
+	data = frontStrip(strip(data));
+	if (data.length() < 2 || data[0] != '=') {	// a valid entry?
+		return string();
+	} else {
+		data = frontStrip(data.substr(1, data.length() - 1));
+		if (data.length() < 2) {
+			return data;	// not long enough to find delimiters
+		} else {
+			string::size_type keypos = 1;
+			char enclosing;
+			if (data[0] == '{') {
+				enclosing = '}';
+			} else if (data[0] == '"') {
+				enclosing = '"';
+			} else {
+				return data;	// no {} and no "", pure data
+			}
+			string tmp = data.substr(keypos, data.length()-1);
+			while (tmp.find('{') != string::npos &&
+			       tmp.find('}') != string::npos &&
+			       tmp.find('{') < tmp.find('}') &&
+			       tmp.find('{') < tmp.find(enclosing)) {
+				
+				keypos += tmp.find('{') + 1;
+				tmp = data.substr(keypos, data.length() - 1);
+				keypos += tmp.find('}') + 1;
+				tmp = data.substr(keypos, data.length() - 1);
+			}
+			if (tmp.find(enclosing) == string::npos)
+				return data;
+			else {
+				keypos += tmp.find(enclosing);
+				return data.substr(1, keypos - 1);
 			}
 		}
-		else return keyvalue;
 	}
-	return keyvalue;
 }
 
 
