@@ -62,7 +62,7 @@ char const * tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
 		      "ln", "oztex", "textures", "none", ""};
 
 
-char const * tex_fonts[] = {"default", "pslatex", "times", "palatino",
+char const * tex_fonts[] = {"default", "ae", "pslatex", "times", "palatino",
 			    "helvet", "avant", "newcent", "bookman", ""};
 
 
