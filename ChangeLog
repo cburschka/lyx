@@ -1,3 +1,8 @@
+2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/FormRef.C (update): Do not update
+	dialog_->type if inset_ == 0.
+
 2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/languages: Add extra_options field. It is used to fix the ~n
