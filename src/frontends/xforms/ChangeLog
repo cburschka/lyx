@@ -1,3 +1,10 @@
+2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: included insetgraphicsParams.h
+
+	* FormMathsMatrix.C:
+	* FormMathsBitmap.C: included LAssert.h
+
 2001-04-24  Allan Rae  <rae@lyx.org>
 
 	* xforms_helpers.C (formatted): two consecutive spaces would kill it.

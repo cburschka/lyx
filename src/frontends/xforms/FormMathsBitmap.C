@@ -26,6 +26,7 @@
 #include "debug.h"
 #include "lyx_gui_misc.h" // scex, idex
 #include "gettext.h"
+#include "support/LAssert.h"
 
 using std::vector;
 using std::endl;

@@ -21,6 +21,7 @@
 #include "LyXView.h"
 #include "Lsstream.h"
 #include "lyxfunc.h"
+#include "support/LAssert.h"
 
 static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";

@@ -28,6 +28,7 @@
 #include "ControlError.h"
 #include "ControlExternal.h" 
 #include "ControlGraphics.h"
+#include "insets/insetgraphicsParams.h" 
 #include "ControlInclude.h"
 #include "ControlIndex.h"
 #include "ControlLog.h"

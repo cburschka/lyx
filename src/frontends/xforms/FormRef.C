@@ -25,14 +25,6 @@
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
 
-/*
-#include "Dialogs.h"
-#include "FormRef.h"
-#include "LyXView.h"
-#include "buffer.h"
-#include "form_ref.h"
-*/
-
 using std::find;
 using std::max;
 using std::sort;
