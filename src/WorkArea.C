@@ -121,7 +121,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 		       << width - 15 - 2 * bw << 'x'
 		       << height - 2 * bw << endl;
 	
-	work_area = obj = fl_add_free(FL_INPUT_FREE,
+	work_area = obj = fl_add_free(FL_ALL_FREE,
 				      xpos + bw, ypos + bw,
 				      width - 15 - 2 * bw, // scrollbarwidth
 				      height - 2 * bw, "",
@@ -309,7 +309,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				      ev->xbutton.y - ob->y,
 				      ev->xbutton.button);
 		break;
-	case FL_MOUSE:
+	case FL_DRAG:
 		if (!ev || ! area->scrollbar) break;
 		if (ev->xmotion.x != x_old ||
 		    ev->xmotion.y != y_old ||
@@ -321,7 +321,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					     ev->xbutton.state);
 		}
 		break;
-	case FL_KEYBOARD:
+	case FL_KEYPRESS:
 	{
 		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD" << endl;
 		
@@ -408,6 +408,10 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		area->workAreaKeyPress(ret_key, ret_state);
 	}
 	break;
+	case FL_KEYRELEASE:
+		lyxerr << "Workarea event: KEYRELEASE" << endl;
+		break;
+		
 	case FL_FOCUS:
 		lyxerr[Debug::GUI] << "Workarea event: FOCUS" << endl;
 		area->workAreaFocus();

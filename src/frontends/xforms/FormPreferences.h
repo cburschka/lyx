@@ -38,6 +38,7 @@ struct FD_form_outputs_misc;
 struct FD_form_spellchecker;
 struct FD_form_language;
 struct FD_form_colours;
+class  Combox;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -48,6 +49,14 @@ public:
 	FormPreferences(LyXView *, Dialogs *);
 	///
 	~FormPreferences();
+	///
+	static void ComboLanguageCB(int, void *, Combox *);
+	///
+	static void FeedbackCB(FL_OBJECT *, long);
+	///
+	static int FeedbackPost(FL_OBJECT *ob, int, FL_Coord, FL_Coord,
+				int, void *);
+
 private:
 	///
 	enum State {
@@ -70,10 +79,9 @@ private:
 		///
 		SCREENFONTS,
 		///
-		SPELLCHECKER,
-		///
-		TABS
+		SPELLCHECKER
 	};
+
 	/// Update the dialog.
 	virtual void update();
 	///
@@ -88,6 +96,8 @@ private:
 	virtual bool input(FL_OBJECT *, long);
 	/// Build the dialog
 	virtual void build();
+	/// control which feedback message is output
+	void feedback( FL_OBJECT * ob );
 	///
 	virtual FL_FORM * form() const;
 	///
@@ -118,6 +128,8 @@ private:
 	void buildInterface();
 	///
 	void buildLanguage();
+	///
+	void addLanguages( Combox & );
 	///
 	void buildLnFmisc();
 	///
@@ -185,6 +197,8 @@ private:
 	bool ReadableDir( string const & ) const;
 	///
 	bool WriteableFile( string const &, string const & = string() ) const;
+	///
+	void setPostHandler( FL_OBJECT * ) const;
 
 	///
 	FD_form_preferences * build_preferences();
@@ -241,6 +255,12 @@ private:
 	FD_form_screen_fonts * screen_fonts_;
 	///
 	FD_form_spellchecker * spellchecker_;
+	///
+	Combox * combo_default_lang;
+	///
+	Combox * combo_kbmap_1;
+	///
+	Combox * combo_kbmap_2;
 };
 
 #endif

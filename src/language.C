@@ -25,6 +25,7 @@
 using std::endl;
 
 Languages languages;
+Language const * english_language;
 Language const * default_language;
 Language ignore_lang("ignore", "ignore", "Ignore", false, 0, "ignore");
 Language const * ignore_language = &ignore_lang;
@@ -35,7 +36,7 @@ void Languages::setDefaults()
 					   false, 
 					   encodings.getEncoding("iso8859-1"),
 					   "en");
-	default_language = &languagelist["english"];
+	english_language = default_language = &languagelist["english"];
 }
 
 void Languages::read(string const & filename)
@@ -87,6 +88,9 @@ void Languages::read(string const & filename)
 		lyxerr << "Using \"" << default_language->lang()
 		       << "\" instead!" << endl;
 	}
+	english_language = getLanguage("english");
+	if (!english_language)
+		english_language = default_language;
 }
 
 Language const * Languages::getLanguage(string const & language) const

@@ -146,7 +146,7 @@ string const InsetQuotes::DispString() const
 	if (times == InsetQuotes::DoubleQ)
 		disp += disp;
 
- 	if (lyxrc.font_norm == "iso8859-1") 
+ 	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1)
 		if (disp == "<<")
 			disp = '«';
 		else if (disp == ">>")

@@ -1,3 +1,43 @@
+2000-10-30  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/tabular.C (AsciiBottomHLine): simplify?
+	(AsciiTopHLine): simplify?
+	(print_n_chars): simplify
+	(DocBook): remove most of the << endl; we should flush the stream
+	as seldom as possible.
+	(Latex): ditto
+	(TeXBottomHLine): ditto
+	(TeXTopHLine): ditto
+	(Write): formatting
+	(write_attribute): try a templified version.
+	(set_row_column_number_info): lesson scope of variables
+
+	* src/support/lstrings.h (tostr): new specialization of tostr
+
+	* src/trans.C (AddDeadkey): slightly cleaner fix.
+
+2000-10-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/frontends/xforms/Menubar_pimpl.C (add_toc): Replace '%' by
+	'%%' in Toc menu labels.
+	(add_toc2): ditto
+
+	* src/insets/insetlatexaccent.C (draw): Correct rendering when
+	font_norm is iso10646-1.
+
+	* src/font.C (ascent): Fixed for 16bit fonts
+	(descent,lbearing,rbearing): ditto
+
+2000-10-30  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/lyxrc.C.[Ch]: moved LyXRCTags into public part of header file.
+	(getFeedback): new static method.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: one or two new inputs.
+	Now use combox rather than choice to display languages.
+	Feedback is now output using a new timer callback mechanism, identical
+	to that in Toolbar_pimpl. Individual messages obtained from lyxrc.
+
 2000-10-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/minibuffer.C: fix for older compilers

@@ -48,8 +48,7 @@ string const DefaultTrans::process(char c, TransManager & k)
 
 Trans::Trans()
 {
-	int i = 0;
-	for(i = 0; i < TEX_MAX_ACCENT + 1; ++i)
+	for(int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		kmod_list_[i] = 0;
 }
 
@@ -90,7 +89,6 @@ void Trans::FreeKeymap()
 {
 	for(int i = 0; i < 256; ++i)
 		if (!keymap_[i].empty()) {
-			//delete keymap_[i];
 			keymap_[i].erase();
 		}
 	for(int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
@@ -114,7 +112,7 @@ string const & Trans::GetName() const
 }
 
 
-enum _kmaptags {
+enum kmaptags_ {
 	KCOMB = 1,
 	KMOD,
 	KMAP,
@@ -153,15 +151,31 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	}
 	
 	for(string::size_type i = 0; i < keys.length(); ++i) {
+#if 0
 		string * temp =
 			&keymap_[static_cast<unsigned char>(keys[i])];
 #warning this is not really clean we should find a cleaner way (Jug)
-        *temp = "xx"; /* this is needed for the being sure that the below
-                         assignment is not assigned to a nullpointer
-                         (if size of string = 0)
+		*temp = "xx"; /* this is needed for the being sure that
+				 the below assignment is not assigned to
+				 a nullpointer (if size of string = 0)
                       */
 		(*temp)[0] = 0;
-        (*temp)[1] = accent;
+		(*temp)[1] = accent;
+#else
+		string & temp =
+			keymap_[static_cast<unsigned char>(keys[i])];
+		if (!temp.empty()) {
+			temp[0] = 0;
+			temp[1] = accent;
+		} else {
+			// But the question remains: "Should we be allowed
+			// to change bindings, without unbinding first?"
+			// Lgb
+			lyxerr << "Hey... keymap_[xx] not empty." << endl;
+			temp.push_back(0);
+			temp.push_back(accent);
+		}
+#endif
 	}
 	kmod_list_[accent]->exception_list = 0;
 }

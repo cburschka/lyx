@@ -5,13 +5,11 @@
 #define FD_form_preferences_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
@@ -44,6 +42,7 @@ struct FD_form_preferences {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *text_warning;
+	FL_OBJECT *timer_feedback;
 };
 struct FD_form_outer_tab {
 	~FD_form_outer_tab();
@@ -61,15 +60,16 @@ struct FD_form_screen_fonts {
 	FL_OBJECT *counter_zoom;
 	FL_OBJECT *check_scalable;
 	FL_OBJECT *input_screen_encoding;
-	FL_OBJECT *input_tiny;
 	FL_OBJECT *input_script;
 	FL_OBJECT *input_footnote;
-	FL_OBJECT *input_small;
 	FL_OBJECT *input_large;
-	FL_OBJECT *input_larger;
 	FL_OBJECT *input_largest;
-	FL_OBJECT *input_normal;
 	FL_OBJECT *input_huge;
+	FL_OBJECT *input_normal;
+	FL_OBJECT *counter_dpi;
+	FL_OBJECT *input_tiny;
+	FL_OBJECT *input_larger;
+	FL_OBJECT *input_small;
 	FL_OBJECT *input_huger;
 };
 struct FD_form_outputs_misc {
@@ -107,17 +107,17 @@ struct FD_form_language {
 	~FD_form_language();
 
 	FL_FORM *form;
+	FL_OBJECT *input_package;
+	FL_OBJECT *choice_default_lang;
 	FL_OBJECT *check_use_kbmap;
 	FL_OBJECT *choice_kbmap_1;
+	FL_OBJECT *choice_kbmap_2;
 	FL_OBJECT *check_rtl_support;
 	FL_OBJECT *check_mark_foreign;
-	FL_OBJECT *check_auto_end;
 	FL_OBJECT *check_auto_begin;
-	FL_OBJECT *input_package;
+	FL_OBJECT *check_auto_end;
 	FL_OBJECT *input_command_begin;
 	FL_OBJECT *input_command_end;
-	FL_OBJECT *choice_kbmap_2;
-	FL_OBJECT *choice_default_lang;
 };
 struct FD_form_colours {
 	~FD_form_colours();

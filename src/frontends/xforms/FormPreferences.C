@@ -10,8 +10,6 @@
 #pragma implementation
 #endif
 
-#include <vector>
-
 #include "FormPreferences.h"
 #include "form_preferences.h"
 #include "input_validators.h"
@@ -20,10 +18,12 @@
 #include "lyxfunc.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
+#include "combox.h"
 #include "debug.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
+#include "xform_macros.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -33,14 +33,14 @@ using std::find;
 using std::vector;
 
 extern Languages languages;
-static vector<string> languageNames;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
 	  usage_tab_(0), colours_(0), inputs_misc_(0), interface_(0),
 	  language_(0), lnf_misc_(0), outputs_misc_(0), paths_(0), printer_(0),
-	  screen_fonts_(0), spellchecker_(0)
+	  screen_fonts_(0), spellchecker_(0),
+	  combo_default_lang(0), combo_kbmap_1(0), combo_kbmap_2(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -51,7 +51,10 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 
 FormPreferences::~FormPreferences()
 {
-	delete dialog_;
+	delete combo_default_lang;
+	delete combo_kbmap_1;
+	delete combo_kbmap_2;
+
 	delete look_n_feel_tab_;
 	delete inputs_tab_;
 	delete outputs_tab_;
@@ -66,6 +69,10 @@ FormPreferences::~FormPreferences()
 	delete printer_;
 	delete screen_fonts_;
 	delete spellchecker_;
+
+	// Must be last to be deleted, or we'll get a SIGSEGV.
+	// Something to do with the Timer mechanism.
+	delete dialog_;
 }
 
 
@@ -220,6 +227,69 @@ void FormPreferences::apply()
 }
 
 
+void FormPreferences::feedback( FL_OBJECT * ob )
+{
+	if( ob->form->fdui == colours_ )
+		feedbackColours( ob );
+	if( ob->form->fdui == inputs_misc_ )
+		feedbackInputsMisc( ob );
+	if( ob->form->fdui == interface_ )
+		feedbackInterface( ob );
+	if( ob->form->fdui == language_ )
+		feedbackLanguage( ob );
+	if( ob->form->fdui == lnf_misc_ )
+		feedbackLnFmisc( ob );
+	if( ob->form->fdui == outputs_misc_ )
+		feedbackOutputsMisc( ob );
+	if( ob->form->fdui == paths_ )
+		feedbackPaths( ob );
+	if( ob->form->fdui == printer_ )
+		feedbackPrinter( ob );
+	if( ob->form->fdui == screen_fonts_ )
+		feedbackScreenFonts( ob );
+	if( ob->form->fdui == spellchecker_ )
+		feedbackSpellChecker( ob );
+}
+
+
+bool FormPreferences::input(FL_OBJECT * ob, long data)
+{
+	bool activate = true;
+
+	// whatever checks you need to ensure the user hasn't entered
+	// some totally ridiculous value somewhere.  Change activate to suit.
+	// comments before each test describe what is _valid_
+
+	State cb = static_cast<State>( data );
+	switch( cb ) {
+	case LANGUAGE:
+		if( ! inputLanguage( ob ) )
+			activate = false;
+		break;
+
+	case PATHS:
+		if( ! inputPaths( ob ) )
+			activate = false;
+		break;
+
+	case SCREENFONTS:
+		if( ! inputScreenFonts() )
+			activate = false;
+		break;
+
+	case SPELLCHECKER:
+		if( ! inputSpellChecker( ob ) )
+			activate = false;
+		break;
+
+	default:
+		break;
+	}
+
+	return activate;
+}
+
+
 void FormPreferences::update()
 {
 	if (!dialog_) return;
@@ -235,75 +305,6 @@ void FormPreferences::update()
 	updatePrinter();
 	updateScreenFonts();
 	updateSpellChecker();
-}
-
-
-bool FormPreferences::input(FL_OBJECT * ob, long data)
-{
-	bool activate = true;
-
-	// Remove any existing messages
-	fl_set_object_label(dialog_->text_warning, " ");
-
-	// whatever checks you need to ensure the user hasn't entered
-	// some totally ridiculous value somewhere.  Change activate to suit.
-	// comments before each test describe what is _valid_
-
-	State cb = static_cast<State>( data );
-	switch( cb ) {
-	case COLOURS:
-		feedbackColours( ob );
-		break;
-
-	case INPUTSMISC:
-		feedbackInputsMisc( ob );
-		break;
-
-	case INTERFACE:
-		feedbackInterface( ob );
-		break;
-
-	case LANGUAGE:
-		feedbackLanguage( ob );
-		if( ! inputLanguage( ob ) )
-			activate = false;
-		break;
-
-	case LOOKNFEELMISC:
-		feedbackLnFmisc( ob );
-		break;
-
-	case OUTPUTSMISC:
-		feedbackOutputsMisc( ob );
-		break;
-
-	case PATHS:
-		feedbackPaths( ob );
-		if( ! inputPaths( ob ) )
-			activate = false;
-		break;
-
-	case PRINTER:
-		feedbackPrinter( ob );
-		break;
-
-	case SCREENFONTS:
-		feedbackScreenFonts( ob );
-		if( ! inputScreenFonts() )
-			activate = false;
-		break;
-
-	case SPELLCHECKER:
-		feedbackSpellChecker( ob );
-		if( ! inputSpellChecker( ob ) )
-			activate = false;
-		break;
-
-	case TABS:
-		break;
-	}
-
-	return activate;
 }
 
 
@@ -340,6 +341,13 @@ void FormPreferences::buildInputsMisc()
 
 	fl_set_input_return(inputs_misc_->input_date_format,
 			    FL_RETURN_CHANGED);
+
+	// set up the feedback mechanism
+	fl_addto_form(inputs_misc_->form);
+
+	setPostHandler( inputs_misc_->input_date_format );
+
+	fl_end_form();
 }
 
 
@@ -347,9 +355,8 @@ void FormPreferences::feedbackInputsMisc( FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == inputs_misc_->input_date_format ) {
-		str = N_("This accepts the normal strftime formats; see man strftime for full details.\nE.g.\"%A, %e. %B %Y\".");
-	}
+	if( ob == inputs_misc_->input_date_format )
+		str = lyxrc.getFeedback( LyXRC::RC_DATE_INSERT_FORMAT );
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -393,26 +400,40 @@ void FormPreferences::buildInterface()
 	fl_deactivate_object(interface_->button_ui_file_browse);
 	fl_set_object_lcol(interface_->button_bind_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(interface_->button_ui_file_browse, FL_INACTIVE);
+
+	// set up the feedback mechanism
+	fl_addto_form(interface_->form);
+
+	setPostHandler( interface_->input_popup_font );
+	setPostHandler( interface_->input_menu_font );
+	setPostHandler( interface_->input_popup_encoding );
+	setPostHandler( interface_->input_bind_file );
+	setPostHandler( interface_->button_bind_file_browse );
+	setPostHandler( interface_->input_ui_file );
+	setPostHandler( interface_->button_ui_file_browse );
+	setPostHandler( interface_->check_override_x_dead_keys );
+
+	fl_end_form();
 }
+
 
 
 void FormPreferences::feedbackInterface( FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == interface_->input_popup_font ) {
-		str = N_("The font for popups.");
-	} else if ( ob == interface_->input_menu_font ) {
-		str = N_("The font for menus (and groups titles in popups).");
-	} else if ( ob == interface_->input_popup_encoding ) {
-		str = N_("The norm for the menu/popups fonts.");
-	} else if ( ob == interface_->input_bind_file ) {
-		str = N_("Keybindings file. Can either specify an absolute path,\nor LyX will look in its global and local bind/ directories.");
-	} else if ( ob == interface_->input_ui_file ) {
-		str = N_("The  UI (user interface) file. Can either specify an absolute path,\nor LyX will look in its global and local ui/ directories.");
-	} else if ( ob == interface_->check_override_x_dead_keys ) {
-		str = N_("Set to true for LyX to take over the handling of the dead keys\n(a.k.a accent keys) that may be defined for your keyboard.");
-	}
+	if( ob == interface_->input_popup_font )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_POPUP );
+	else if ( ob == interface_->input_menu_font )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_MENU );
+	else if ( ob == interface_->input_popup_encoding )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_ENCODING_MENU );
+	else if ( ob == interface_->input_bind_file )
+		str = lyxrc.getFeedback( LyXRC::RC_BINDFILE );
+	else if ( ob == interface_->input_ui_file )
+		str = lyxrc.getFeedback( LyXRC::RC_UIFILE );
+	else if ( ob == interface_->check_override_x_dead_keys )
+		str = lyxrc.getFeedback( LyXRC::RC_OVERRIDE_X_DEADKEYS );
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -438,19 +459,14 @@ void FormPreferences::updateInterface()
 
 void FormPreferences::applyLanguage()
 {
-	vector<string>::size_type choice =
-		fl_get_choice(language_->choice_default_lang) - 1;
-	lyxrc.default_language = languageNames[choice];
+	lyxrc.default_language = combo_default_lang->getline();
 
 	int button = fl_get_button(language_->check_use_kbmap);
 	lyxrc.use_kbmap = static_cast<bool>(button);
 
 	if( button ) {
-	    choice = fl_get_choice(language_->choice_kbmap_1) - 1;
-	    lyxrc.primary_kbmap = languageNames[choice];
-
-	    choice = fl_get_choice(language_->choice_kbmap_2) - 1;
-	    lyxrc.secondary_kbmap = languageNames[choice];
+	    lyxrc.primary_kbmap = combo_kbmap_1->getline();
+	    lyxrc.secondary_kbmap = combo_kbmap_2->getline();
 	}
 	
 	button = fl_get_button(language_->check_rtl_support);
@@ -479,24 +495,62 @@ void FormPreferences::buildLanguage()
 	fl_set_input_return(language_->input_command_begin, FL_RETURN_CHANGED);
 	fl_set_input_return(language_->input_command_end, FL_RETURN_CHANGED);
 
-	// Only do this the first time buildLanguage() is called.
-	if( languageNames.empty() ) {
-		for( Languages::const_iterator lang = languages.begin();
-		     lang != languages.end(); lang++ ) {
-			languageNames.push_back( (*lang).second.lang() );
-		}
-	}
+	// The default_language is a combo-box and has to be inserted manually
+	fl_addto_form(language_->form);
 
-	string names = " " + languageNames.front();
-	for( vector<string>::const_iterator lang = languageNames.begin();
-	     lang != languageNames.end(); ++lang ) {
-		names += " | " + (*lang);
-	}
-	names += " ";
+	FL_OBJECT * obj = language_->choice_default_lang;
+	combo_default_lang = new Combox(FL_COMBOX_DROPLIST);
+	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
+	combo_default_lang->shortcut("#L",1);
+	combo_default_lang->setcallback(ComboLanguageCB, this);
+	addLanguages( *combo_default_lang );
 	
-	fl_addto_choice(language_->choice_default_lang, names.c_str());
-	fl_addto_choice(language_->choice_kbmap_1, names.c_str());
-	fl_addto_choice(language_->choice_kbmap_2, names.c_str());
+	// ditto kbmap_1
+	obj = language_->choice_kbmap_1;
+	combo_kbmap_1 = new Combox(FL_COMBOX_DROPLIST);
+	combo_kbmap_1->add(obj->x, obj->y, obj->w, obj->h, 400);
+	combo_kbmap_1->shortcut("#1",1);
+	combo_kbmap_1->setcallback(ComboLanguageCB, this);
+	addLanguages( *combo_kbmap_1 );
+	
+	// ditto kbmap_2
+	obj = language_->choice_kbmap_2;
+	combo_kbmap_2 = new Combox(FL_COMBOX_DROPLIST);
+	combo_kbmap_2->add(obj->x, obj->y, obj->w, obj->h, 400);
+	combo_kbmap_2->shortcut("#2",1);
+	combo_kbmap_2->setcallback(ComboLanguageCB, this);
+	addLanguages( *combo_kbmap_2 );
+
+	fl_end_form();
+
+	// set up the feedback mechanism
+	fl_addto_form(language_->form);
+
+	setPostHandler( language_->input_package );
+	setPostHandler( language_->check_use_kbmap );
+
+	// these 3 should be replaced by the appropriate combox call
+	// setPostHandler( reinterpret_cast<FL_OBJECT *>(combo_default_lang) );
+	// setPostHandler( reinterpret_cast<FL_OBJECT *>(combo_kbmap_1) );
+	// setPostHandler( reinterpret_cast<FL_OBJECT *>(combo_kbmap_2) );
+
+	setPostHandler( language_->check_rtl_support );
+	setPostHandler( language_->check_mark_foreign );
+	setPostHandler( language_->check_auto_begin );
+	setPostHandler( language_->check_auto_end );
+	setPostHandler( language_->input_command_begin );
+	setPostHandler( language_->input_command_end );
+
+	fl_end_form();
+}
+
+
+void FormPreferences::addLanguages( Combox & combo )
+{
+	for(Languages::const_iterator cit = languages.begin();
+	    cit != languages.end(); cit++) {
+		combo.addto((*cit).second.lang());
+	}
 }
 
 
@@ -504,27 +558,28 @@ void FormPreferences::feedbackLanguage( FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == language_->choice_default_lang ) {
-		str = N_("New documents will be assigned this language.");
-	} else if( ob == language_->check_use_kbmap
-		   || ob == language_->choice_kbmap_1
-		   || ob == language_->choice_kbmap_2 ) {
-		str = N_("Use this to set the correct mapping file for your keyboard.\nYou'll need this if you for instance want to type German documents\non an American keyboard.");
-	} else if( ob == language_->check_rtl_support ) {
-		str = N_("Use to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
-	} else if( ob == language_->check_auto_begin ) {
-		str = N_("Use if a language switching command is needed at the beginning\nof the document.");
-	} else if( ob == language_->check_auto_end ) {
-		str = N_("Use if a language switching command is needed at the end\nof the document.");
-	} else if( ob == language_->check_mark_foreign ) {
-		str = N_("Use to control the highlighting of words with a language foreign to\nthat of the document.");
-	} else if( ob == language_->input_package ) {
-		str = N_("The latex command for loading the language package.\nE.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
-	} else if( ob == language_->input_command_begin ) {
-		str = N_("The latex command for changing from the language of the document\nto another language.\nE.g. \\selectlanguage{$$lang} where $$lang is substituted by the name\nof the second language.");
-	} else if( ob == language_->input_command_end ) {
-		str = N_("The latex command for changing back to the language of the document.");
-	}
+	if( reinterpret_cast<Combox const *>(ob) == combo_default_lang )
+		str = lyxrc.getFeedback( LyXRC::RC_DEFAULT_LANGUAGE );
+	else if( ob == language_->check_use_kbmap )
+		str = lyxrc.getFeedback( LyXRC::RC_KBMAP );
+	else if( reinterpret_cast<Combox const *>(ob) == combo_kbmap_1)
+		str = lyxrc.getFeedback( LyXRC::RC_KBMAP_PRIMARY );
+	else if( reinterpret_cast<Combox const *>(ob) == combo_kbmap_2 )
+		str = lyxrc.getFeedback( LyXRC::RC_KBMAP_SECONDARY );
+	else if( ob == language_->check_rtl_support )
+		str = lyxrc.getFeedback( LyXRC::RC_RTL_SUPPORT );
+	else if( ob == language_->check_auto_begin )
+		str = lyxrc.getFeedback( LyXRC::RC_LANGUAGE_AUTO_BEGIN );
+	else if( ob == language_->check_auto_end )
+		str = lyxrc.getFeedback( LyXRC::RC_LANGUAGE_AUTO_END );
+	else if( ob == language_->check_mark_foreign )
+		str = lyxrc.getFeedback( LyXRC::RC_MARK_FOREIGN_LANGUAGE );
+	else if( ob == language_->input_package )
+		str = lyxrc.getFeedback( LyXRC::RC_LANGUAGE_PACKAGE );
+	else if( ob == language_->input_command_begin )
+		str = lyxrc.getFeedback( LyXRC::RC_LANGUAGE_COMMAND_BEGIN );
+	else if( ob == language_->input_command_end )
+		str = lyxrc.getFeedback( LyXRC::RC_LANGUAGE_COMMAND_END );
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -534,22 +589,14 @@ void FormPreferences::feedbackLanguage( FL_OBJECT const * const ob )
 bool FormPreferences::inputLanguage( FL_OBJECT const * const ob )
 {
 	bool activate = true;
-	
+
 	if( !ob || ob == language_->check_use_kbmap ) {
 		if( fl_get_button(language_->check_use_kbmap) ) {
-			fl_activate_object(language_->choice_kbmap_1);
-			fl_activate_object(language_->choice_kbmap_2);
-			fl_set_object_lcol(language_->choice_kbmap_1,
-					   FL_BLACK);
-			fl_set_object_lcol(language_->choice_kbmap_2,
-					   FL_BLACK);
+			combo_kbmap_1->activate();
+			combo_kbmap_2->activate();
 		} else {
-			fl_deactivate_object(language_->choice_kbmap_1);
-			fl_deactivate_object(language_->choice_kbmap_2);
-			fl_set_object_lcol(language_->choice_kbmap_1,
-					   FL_INACTIVE);
-			fl_set_object_lcol(language_->choice_kbmap_2,
-					   FL_INACTIVE);
+			combo_kbmap_1->deactivate();
+			combo_kbmap_2->deactivate();
 		}
 	}
 
@@ -562,30 +609,15 @@ void FormPreferences::updateLanguage()
 	fl_set_button(language_->check_use_kbmap,
 		      lyxrc.use_kbmap);
 
-	vector<string>::iterator it =
-		find( languageNames.begin(), languageNames.end(),
-		      lyxrc.default_language );
-	int choice = 0;
-	if( it != languageNames.end() )
-		choice = static_cast<int>( it - languageNames.begin() );
+	combo_default_lang->select_text( lyxrc.default_language );
 
-	fl_set_choice(language_->choice_default_lang, choice+1);
-
-	it = find( languageNames.begin(), languageNames.end(),
-		   lyxrc.primary_kbmap );
-	choice = 0;
-	if( it != languageNames.end() )
-		choice = static_cast<int>( it - languageNames.begin() );
-	
-	fl_set_choice(language_->choice_kbmap_1, choice+1);
-
-	it = find( languageNames.begin(), languageNames.end(),
-		   lyxrc.secondary_kbmap );
-	choice = 0;
-	if( it != languageNames.end() )
-		choice = static_cast<int>( it - languageNames.begin() );
-
-	fl_set_choice(language_->choice_kbmap_2, choice+1);
+	if( lyxrc.use_kbmap ) {
+		combo_kbmap_1->select_text( lyxrc.primary_kbmap );
+		combo_kbmap_2->select_text( lyxrc.secondary_kbmap );
+	} else {
+		combo_kbmap_1->select_text( lyxrc.default_language );
+		combo_kbmap_2->select_text( lyxrc.default_language );
+	}
 	
 	fl_set_button(language_->check_rtl_support, lyxrc.rtl_support);
 	fl_set_button(language_->check_auto_begin,  lyxrc.language_auto_begin);
@@ -632,6 +664,20 @@ void FormPreferences::buildLnFmisc()
 			      FL_RETURN_CHANGED);
 	fl_set_counter_return(lnf_misc_->counter_wm_jump,
 			      FL_RETURN_CHANGED);
+
+	// set up the feedback mechanism
+	fl_addto_form(lnf_misc_->form);
+
+	setPostHandler( lnf_misc_->check_banner );
+	setPostHandler( lnf_misc_->check_auto_region_delete );
+	setPostHandler( lnf_misc_->check_exit_confirm );
+	setPostHandler( lnf_misc_->check_display_shortcuts );
+	setPostHandler( lnf_misc_->counter_autosave );
+	setPostHandler( lnf_misc_->check_ask_new_file );
+	setPostHandler( lnf_misc_->check_cursor_follows_scrollbar );
+	setPostHandler( lnf_misc_->counter_wm_jump );
+
+	fl_end_form();
 }
 
 
@@ -639,24 +685,23 @@ void FormPreferences::feedbackLnFmisc( FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == lnf_misc_->check_banner ) {
-		str = N_("Set to false if you don't want the startup banner.");
-	} else if( ob == lnf_misc_->check_auto_region_delete ) {
-		str = N_("Set to false if you don't want the current selection to be replaced\nautomatically by what you type.");
-	} else if( ob == lnf_misc_->check_exit_confirm ) {
-		str = N_("Sets whether LyX asks for a second confirmation to exit when you have\nchanged documents.\n(LyX will still ask to save changed documents.)");
-	} else if( ob == lnf_misc_->check_display_shortcuts ) {
-		str = N_("LyX continously displays names of last command executed,\nalong with a list of defined short-cuts for it in the minibuffer.\nSet to false if LyX seems slow.");
-	} else if( ob == lnf_misc_->check_ask_new_file ) {
-		str = N_("This sets the behaviour if you want to be asked for a filename when\ncreating a new document or wait until you save it and be asked then.");
-	} else if( ob == lnf_misc_->check_cursor_follows_scrollbar ) {
-		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar.\nSet to true if you'd prefer to always have the cursor on screen.");
-	} else if( ob == lnf_misc_->counter_autosave ) {
-		str = N_("The time interval between auto-saves (in seconds).\n0 means no auto-save");
-	} else if( ob == lnf_misc_->counter_wm_jump ) {
-		str = N_("The wheel movement factor (for mice with wheels or five button mice)");
-	} 
-	
+	if( ob == lnf_misc_->check_banner )
+		str = lyxrc.getFeedback( LyXRC::RC_SHOW_BANNER );
+	else if( ob == lnf_misc_->check_auto_region_delete )
+		str = lyxrc.getFeedback( LyXRC::RC_AUTOREGIONDELETE );
+	else if( ob == lnf_misc_->check_exit_confirm )
+		str = lyxrc.getFeedback( LyXRC::RC_EXIT_CONFIRMATION );
+	else if( ob == lnf_misc_->check_display_shortcuts )
+		str = lyxrc.getFeedback( LyXRC::RC_DISPLAY_SHORTCUTS );
+	else if( ob == lnf_misc_->check_ask_new_file )
+		str = lyxrc.getFeedback( LyXRC::RC_NEW_ASK_FILENAME );
+	else if( ob == lnf_misc_->check_cursor_follows_scrollbar )
+		str = lyxrc.getFeedback( LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR );
+	else if( ob == lnf_misc_->counter_autosave )
+		str = lyxrc.getFeedback( LyXRC::RC_AUTOSAVE );
+	else if( ob == lnf_misc_->counter_wm_jump )
+		str = lyxrc.getFeedback( LyXRC::RC_WHEEL_JUMP );
+
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
@@ -711,6 +756,17 @@ void FormPreferences::buildOutputsMisc()
 			    FL_RETURN_CHANGED);
 	fl_addto_choice(outputs_misc_->choice_default_papersize,
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
+
+	// set up the feedback mechanism
+	fl_addto_form(outputs_misc_->form);
+
+	setPostHandler( outputs_misc_->counter_line_len );
+	setPostHandler( outputs_misc_->input_tex_encoding );
+	setPostHandler( outputs_misc_->choice_default_papersize );
+	setPostHandler( outputs_misc_->input_ascii_roff );
+	setPostHandler( outputs_misc_->input_checktex );
+
+	fl_end_form();
 }
 
 
@@ -718,18 +774,17 @@ void FormPreferences::feedbackOutputsMisc(FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == outputs_misc_->counter_line_len ) {
-		str = N_("This is the maximum line length of an exported ASCII file\n(LaTeX, SGML or plain text).");
-	} else if( ob == outputs_misc_->input_tex_encoding ) {
-		str = N_("The font encoding used for the LaTeX2e fontenc package.\nT1 is highly recommended for non-English languages.");
-	} else if( ob == outputs_misc_->input_ascii_roff ) {
-		str = N_("Use to define an external program to render tables in the ASCII output.\nE.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file.\nIf \"none\" is specified, an internal routine is used.");
-	} else if( ob == outputs_misc_->input_checktex ) {
-		str = N_("Define how to run chktex.\nE.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\"\nRefer to the ChkTeX documentation.");
-	} else if( ob == outputs_misc_->choice_default_papersize ) {
-		str = N_("Specify the default paper size.");
-	} 
-		
+	if( ob == outputs_misc_->counter_line_len )
+		str = lyxrc.getFeedback( LyXRC::RC_ASCII_LINELEN );
+	else if( ob == outputs_misc_->input_tex_encoding )
+		str = lyxrc.getFeedback( LyXRC::RC_FONT_ENCODING );
+	else if( ob == outputs_misc_->input_ascii_roff )
+		str = lyxrc.getFeedback( LyXRC::RC_ASCIIROFF_COMMAND );
+	else if( ob == outputs_misc_->input_checktex )
+		str = lyxrc.getFeedback( LyXRC::RC_CHKTEX_COMMAND );
+	else if( ob == outputs_misc_->choice_default_papersize )
+		str = lyxrc.getFeedback( LyXRC::RC_DEFAULT_PAPERSIZE );
+
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
@@ -810,33 +865,54 @@ void FormPreferences::buildPaths()
 	fl_set_object_lcol(paths_->button_lastfiles_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_backup_path_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_serverpipe_browse, FL_INACTIVE);
+
+	// set up the feedback mechanism
+	fl_addto_form(paths_->form);
+
+	setPostHandler( paths_->input_default_path );
+	setPostHandler( paths_->button_document_browse );
+	setPostHandler( paths_->counter_lastfiles );
+	setPostHandler( paths_->input_template_path );
+	setPostHandler( paths_->button_template_browse );
+	setPostHandler( paths_->check_last_files );
+	setPostHandler( paths_->button_temp_dir_browse );
+	setPostHandler( paths_->input_lastfiles );
+	setPostHandler( paths_->button_lastfiles_browse );
+	setPostHandler( paths_->check_make_backups );
+	setPostHandler( paths_->input_backup_path );
+	setPostHandler( paths_->button_backup_path_browse );
+	setPostHandler( paths_->input_serverpipe );
+	setPostHandler( paths_->button_serverpipe_browse );
+	setPostHandler( paths_->input_temp_dir );
+	setPostHandler( paths_->check_use_temp_dir );
+
+	fl_end_form();
 }
 
 
 void FormPreferences::feedbackPaths( FL_OBJECT const * const ob )
 {
 	string str;
-	if( ob == paths_->input_default_path ) {
-		str = N_("The default path for your documents.");
-	} else if ( ob == paths_->input_template_path ) {
-		str = N_("The path that LyX will set when offering to choose a template.");
-	} else if ( ob == paths_->check_use_temp_dir ) {
-		str = N_("Specify to use a temporary directory to store temporary TeX output.\nThis directory is deleted when you quit LyX.");
-	} else if ( ob == paths_->input_temp_dir ) {
-		str = N_("The path that LyX will use to store temporary TeX output.");
-	} else if ( ob == paths_->check_last_files ) {
-		str = N_("Specify to check whether the lastfiles still exist.");
-	} else if ( ob == paths_->input_lastfiles ) {
-		str = N_("The file where the last-files information should be stored.");
-	} else if ( ob == paths_->counter_lastfiles ) {
-		str = N_("Maximal number of lastfiles. Up to 9 can appear in the file menu.");
-	} else if ( ob == paths_->check_make_backups ) {
-		str = N_("Set to false if you don't want LyX to create backup files.");
-	} else if ( ob == paths_->input_backup_path ) {
-		str = N_("The path for storing backup files. If it is an empty string,\nLyX will store the backup file in the same directory as the original file.");
-	} else if ( ob == paths_->input_serverpipe ) {
-		str = N_("This starts the lyxserver. The pipes get an additional extension\n\".in\" and \".out\". Only for advanced users.");
-	}
+	if( ob == paths_->input_default_path )
+		str = lyxrc.getFeedback( LyXRC::RC_DOCUMENTPATH );
+	else if ( ob == paths_->input_template_path )
+		str = lyxrc.getFeedback( LyXRC::RC_TEMPLATEPATH );
+	else if ( ob == paths_->check_use_temp_dir )
+		str = lyxrc.getFeedback( LyXRC::RC_USETEMPDIR );
+	else if ( ob == paths_->input_temp_dir )
+		str = lyxrc.getFeedback( LyXRC::RC_TEMPDIRPATH );
+	else if ( ob == paths_->check_last_files )
+		str = lyxrc.getFeedback( LyXRC::RC_CHECKLASTFILES );
+	else if ( ob == paths_->input_lastfiles )
+		str = lyxrc.getFeedback( LyXRC::RC_LASTFILES );
+	else if ( ob == paths_->counter_lastfiles )
+		str = lyxrc.getFeedback( LyXRC::RC_NUMLASTFILES );
+	else if ( ob == paths_->check_make_backups )
+		str = lyxrc.getFeedback( LyXRC::RC_MAKE_BACKUP );
+	else if ( ob == paths_->input_backup_path )
+		str = lyxrc.getFeedback( LyXRC::RC_BACKUPDIR_PATH );
+	else if ( ob == paths_->input_serverpipe )
+		str = lyxrc.getFeedback( LyXRC::RC_SERVERPIPE );
 	
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -1003,36 +1079,42 @@ void FormPreferences::feedbackPrinter( FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == printer_->input_command ) {
-		str = N_("Your favorite print program, eg \"dvips\", \"dvilj4\"");
-	} else if( ob == printer_->check_adapt_output ) {
-		str = N_("Set to true for LyX to pass the name of the destination printer to your\nprint command.");
-	} else if( ob == printer_->input_to_printer ) {
-		str = N_("Option to pass to the print program to print on a specific printer.");
-	} else if( ob == printer_->input_to_file ) {
-		str = N_("Option to pass to the print program to print to a file.");
-	} else if( ob == printer_->input_file_extension ) {
-		str = N_("Extension of printer program output file. Usually .ps");
-	} else if( ob == printer_->input_extra_options ) {
-		str = N_("Extra options to pass to printing program after everything else,\nbut before the filename of the DVI file to be printed.");
-	} else if( ob == printer_->input_spool_command ) {
-		str = N_("When set, this printer option automatically prints to a file and then calls\na separate print spooling program on that file with the given name\nand arguments.");
-	} else if( ob == printer_->input_spool_prefix ) {
-		str = N_("If you specify a printer name in the print dialog, the following argument\nis prepended along with the printer name after the spool command.");
-	} else if( ob == printer_->input_name ) {
-		str = N_("The default printer to print on. If none is specified, LyX will\nuse the environment variable PRINTER.");
-	} else if( ob == printer_->input_even_pages
-		 || ob == printer_->input_odd_pages
-		 || ob == printer_->input_page_range
-		 || ob == printer_->input_reverse
-		 || ob == printer_->input_landscape
-		 || ob == printer_->input_copies
-		 || ob == printer_->input_collated
-		 || ob == printer_->input_paper_type
-		 || ob == printer_->input_paper_size ) {
-		str = N_("Look at the man page for your favorite print program to learn\nwhich options to use.");
-	}
-	
+	if( ob == printer_->input_command )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINT_COMMAND );
+	else if( ob == printer_->check_adapt_output )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINT_ADAPTOUTPUT );
+	else if( ob == printer_->input_to_printer )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTTOPRINTER );
+	else if( ob == printer_->input_to_file )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTTOFILE );
+	else if( ob == printer_->input_file_extension )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTFILEEXTENSION );
+	else if( ob == printer_->input_extra_options )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTEXSTRAOPTIONS );
+	else if( ob == printer_->input_spool_command )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTSPOOL_COMMAND );
+	else if( ob == printer_->input_spool_prefix )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTSPOOL_PRINTERPREFIX );
+	else if( ob == printer_->input_name )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTER );
+	else if( ob == printer_->input_even_pages )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTEVENPAGEFLAG );
+	else if( ob == printer_->input_odd_pages )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTODDPAGEFLAG );
+	else if( ob == printer_->input_page_range )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTPAGERANGEFLAG );
+	else if( ob == printer_->input_reverse )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTREVERSEFLAG );
+	else if( ob == printer_->input_landscape )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTLANDSCAPEFLAG );
+	else if( ob == printer_->input_copies )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTCOLLCOPIESFLAG );
+	else if( ob == printer_->input_collated )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTCOPIESFLAG );
+	else if( ob == printer_->input_paper_type )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTPAPERFLAG );
+	else if( ob == printer_->input_paper_size )
+		str = lyxrc.getFeedback( LyXRC::RC_PRINTPAPERDIMENSIONFLAG );
 	
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -1060,6 +1142,30 @@ void FormPreferences::buildPrinter()
 	fl_set_input_return(printer_->input_spool_prefix, FL_RETURN_CHANGED);
 	fl_set_input_return(printer_->input_paper_size, FL_RETURN_CHANGED);
 	fl_set_input_return(printer_->input_name, FL_RETURN_CHANGED);
+
+	// set up the feedback mechanism
+	fl_addto_form(printer_->form);
+
+	setPostHandler( printer_->input_command );
+	setPostHandler( printer_->input_page_range );
+	setPostHandler( printer_->input_copies );
+	setPostHandler( printer_->input_reverse );
+	setPostHandler( printer_->input_to_printer );
+	setPostHandler( printer_->input_file_extension );
+	setPostHandler( printer_->input_spool_command );
+	setPostHandler( printer_->input_paper_type );
+	setPostHandler( printer_->input_even_pages );
+	setPostHandler( printer_->input_odd_pages );
+	setPostHandler( printer_->input_collated );
+	setPostHandler( printer_->input_landscape );
+	setPostHandler( printer_->input_to_file );
+	setPostHandler( printer_->input_extra_options );
+	setPostHandler( printer_->input_spool_prefix );
+	setPostHandler( printer_->input_paper_size );
+	setPostHandler( printer_->input_name );
+	setPostHandler( printer_->check_adapt_output );
+
+	fl_end_form();
 }
 
 
@@ -1138,10 +1244,18 @@ void FormPreferences::applyScreenFonts()
 		lyxrc.use_scalable_fonts = button;
 	}
 
-	int ivalue = fl_get_counter_value(screen_fonts_->counter_zoom);
-	if( lyxrc.zoom != static_cast<unsigned int>( ivalue ) ) {
+	unsigned int ivalue = static_cast<unsigned int>
+		(fl_get_counter_value(screen_fonts_->counter_zoom));
+	if( lyxrc.zoom != ivalue) {
 		changed = true;
-		lyxrc.zoom = static_cast<unsigned int>( ivalue );
+		lyxrc.zoom = ivalue;
+	}
+
+	ivalue = static_cast<unsigned int>
+		(fl_get_counter_value(screen_fonts_->counter_dpi));
+	if (lyxrc.dpi != ivalue) {
+		changed = true;
+		lyxrc.dpi = ivalue;
 	}
 	
 	double dvalue = strToDbl(fl_get_input(screen_fonts_->input_tiny));
@@ -1223,6 +1337,7 @@ void FormPreferences::buildScreenFonts()
 	fl_set_input_return(screen_fonts_->input_screen_encoding,
 			    FL_RETURN_CHANGED);
 	fl_set_counter_return(screen_fonts_->counter_zoom, FL_RETURN_CHANGED);
+	fl_set_counter_return(screen_fonts_->counter_dpi, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_tiny, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_script, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_footnote, FL_RETURN_CHANGED);
@@ -1233,6 +1348,29 @@ void FormPreferences::buildScreenFonts()
 	fl_set_input_return(screen_fonts_->input_largest, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_huge, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_huger, FL_RETURN_CHANGED);
+
+	// set up the feedback mechanism
+	fl_addto_form(screen_fonts_->form);
+
+	setPostHandler( screen_fonts_->input_roman );
+	setPostHandler( screen_fonts_->input_sans );
+	setPostHandler( screen_fonts_->input_typewriter );
+	setPostHandler( screen_fonts_->counter_zoom );
+	setPostHandler( screen_fonts_->counter_dpi );
+	setPostHandler( screen_fonts_->check_scalable );
+	setPostHandler( screen_fonts_->input_screen_encoding );
+	setPostHandler( screen_fonts_->input_tiny );
+	setPostHandler( screen_fonts_->input_script );
+	setPostHandler( screen_fonts_->input_footnote );
+	setPostHandler( screen_fonts_->input_small );
+	setPostHandler( screen_fonts_->input_large );
+	setPostHandler( screen_fonts_->input_larger );
+	setPostHandler( screen_fonts_->input_largest );
+	setPostHandler( screen_fonts_->input_normal );
+	setPostHandler( screen_fonts_->input_huge );
+	setPostHandler( screen_fonts_->input_huger );
+
+	fl_end_form();
 }
 
 	
@@ -1240,30 +1378,33 @@ void FormPreferences::feedbackScreenFonts(FL_OBJECT const * const ob )
 {
 	string str;
 
-	if( ob == screen_fonts_->input_roman
-	    || ob == screen_fonts_->input_sans
-	    || ob == screen_fonts_->input_typewriter ) {
-		str = N_("The screen fonts used to display the text while editing.");
-	} else if( ob == screen_fonts_->check_scalable ) {
-		str = N_("Allow the use of scalable screen fonts? If false, LyX will use the\nclosest existing size for a match. Use this if the scalable fonts\nlook bad and you have many fixed size fonts.");
-	} else if( ob == screen_fonts_->input_screen_encoding ) {
-		str = N_("The norm for the screen fonts.");
-	} else if( ob == screen_fonts_->counter_zoom ) {
-		str = N_("The zoom percentage for screen fonts.\nA setting of 100% will make the fonts roughly the same size as on paper.");
-	} else if( ob == screen_fonts_->input_tiny
-		   || ob == screen_fonts_->input_script
-		   || ob == screen_fonts_->input_footnote
-		   || ob == screen_fonts_->input_small
-		   || ob == screen_fonts_->input_large
-		   || ob == screen_fonts_->input_larger
-		   || ob == screen_fonts_->input_larger
-		   || ob == screen_fonts_->input_largest
-		   || ob == screen_fonts_->input_normal
-		   || ob == screen_fonts_->input_huge
-		   || ob == screen_fonts_->input_huger ) {
-		str = N_("The font sizes used for calculating the scaling of the screen fonts.");
-	}
-	
+	if( ob == screen_fonts_->input_roman )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_ROMAN );
+	else if( ob == screen_fonts_->input_sans )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_SANS );
+	else if( ob == screen_fonts_->input_typewriter )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_TYPEWRITER );
+	else if( ob == screen_fonts_->check_scalable )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_SCALABLE );
+	else if( ob == screen_fonts_->input_screen_encoding )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_ENCODING );
+	else if( ob == screen_fonts_->counter_zoom )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_ZOOM );
+	else if( ob == screen_fonts_->counter_dpi ) 
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_DPI );
+	else if( ob == screen_fonts_->input_tiny
+		 || ob == screen_fonts_->input_script
+		 || ob == screen_fonts_->input_footnote
+		 || ob == screen_fonts_->input_small
+		 || ob == screen_fonts_->input_large
+		 || ob == screen_fonts_->input_larger
+		 || ob == screen_fonts_->input_larger
+		 || ob == screen_fonts_->input_largest
+		 || ob == screen_fonts_->input_normal
+		 || ob == screen_fonts_->input_huge
+		 || ob == screen_fonts_->input_huger )
+		str = lyxrc.getFeedback( LyXRC::RC_SCREEN_FONT_SIZES );
+
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
@@ -1334,8 +1475,8 @@ void FormPreferences::updateScreenFonts()
 		     lyxrc.font_norm.c_str());
 	fl_set_button(screen_fonts_->check_scalable,
 		      lyxrc.use_scalable_fonts);
-	fl_set_counter_value(screen_fonts_->counter_zoom,
-			     lyxrc.zoom);
+	fl_set_counter_value(screen_fonts_->counter_zoom, lyxrc.zoom);
+	fl_set_counter_value(screen_fonts_->counter_dpi,  lyxrc.dpi);
 	fl_set_input(screen_fonts_->input_tiny,
 		     tostr(lyxrc.font_sizes[LyXFont::SIZE_TINY]).c_str());
 	fl_set_input(screen_fonts_->input_script,
@@ -1445,25 +1586,46 @@ void FormPreferences::buildSpellchecker()
 	fl_deactivate_object(spellchecker_->button_personal_dict);
 	fl_set_object_lcol(spellchecker_->button_personal_dict,
 			   FL_INACTIVE);
+
+	// set up the feedback mechanism
+	fl_addto_form(spellchecker_->form);
+
+	setPostHandler( spellchecker_->choice_spell_command );
+	setPostHandler( spellchecker_->check_alt_lang );
+	setPostHandler( spellchecker_->input_alt_lang );
+	setPostHandler( spellchecker_->check_escape_chars );
+	setPostHandler( spellchecker_->input_escape_chars );
+	setPostHandler( spellchecker_->check_personal_dict );
+	setPostHandler( spellchecker_->input_personal_dict );
+	setPostHandler( spellchecker_->button_personal_dict );
+	setPostHandler( spellchecker_->check_compound_words );
+	setPostHandler( spellchecker_->check_input_enc );
+
+	fl_end_form();
 }
 
 
 void FormPreferences::feedbackSpellChecker( FL_OBJECT const * const ob )
 {
 	string str;
-	if( ob == spellchecker_->choice_spell_command ) {
-		str = N_("What command runs the spell checker?");
-	} else if( ob == spellchecker_->check_alt_lang ) {
-		str = N_("Specify an alternate language.\nThe default is to use the language of the document.");
-	} else if( ob == spellchecker_->check_escape_chars ) {
-		str = N_("Specify additional chars that can be part of a word.");
-	} else if( ob == spellchecker_->check_personal_dict ) {
-		str = N_("Specify an alternate personal dictionary file.\nE.g. \".ispell_english\".");
-	} else if( ob == spellchecker_->check_compound_words ) {
-		str = N_("Consider run-together words, such as \"notthe\" for \"not the\",\nas legal words?");
-	} else if( ob == spellchecker_->check_input_enc ) {
-		str = N_("Specify whether to pass the -T input encoding option to ispell.\nEnable this if you can't spellcheck words with international letters\nin them.\nThis may not work with all dictionaries.");
-	}
+	if( ob == spellchecker_->choice_spell_command )
+		str = lyxrc.getFeedback( LyXRC::RC_SPELL_COMMAND );
+	else if( ob == spellchecker_->check_alt_lang )
+		str = lyxrc.getFeedback( LyXRC::RC_USE_ALT_LANG );
+	else if( ob == spellchecker_->input_alt_lang )
+		str = lyxrc.getFeedback( LyXRC::RC_ALT_LANG );
+	else if( ob == spellchecker_->check_escape_chars )
+		str = lyxrc.getFeedback( LyXRC::RC_USE_ESC_CHARS );
+	else if( ob == spellchecker_->input_escape_chars )
+		str = lyxrc.getFeedback( LyXRC::RC_ESC_CHARS );
+	else if( ob == spellchecker_->check_personal_dict )
+		str = lyxrc.getFeedback( LyXRC::RC_USE_PERS_DICT );
+	else if( ob == spellchecker_->input_personal_dict )
+		str = lyxrc.getFeedback( LyXRC::RC_PERS_DICT );
+	else if( ob == spellchecker_->check_compound_words )
+		str = lyxrc.getFeedback( LyXRC::RC_ACCEPT_COMPOUND );
+	else if( ob == spellchecker_->check_input_enc )
+		str = lyxrc.getFeedback( LyXRC::RC_USE_INP_ENC );
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -1696,4 +1858,64 @@ bool FormPreferences::WriteableFile( string const & name, string const & suffix 
 	}
 
 	return success;
+}
+
+
+void FormPreferences::ComboLanguageCB(int, void * v, Combox * combox)
+{
+    FormPreferences * pre = static_cast<FormPreferences*>(v);
+    pre->bc_.valid( pre->input( reinterpret_cast<FL_OBJECT *>(combox),
+				FormPreferences::LANGUAGE ) );
+}
+
+
+// C functions for the timer callback used to give the user feedback
+C_GENERICCB(FormPreferences, FeedbackCB)
+extern "C" int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
+					     FL_Coord mx, FL_Coord my, 
+					     int key, void * xev)
+{
+	FormPreferences * pre =
+		static_cast<FormPreferences*>(ob->form->u_vdata);
+	return pre->FeedbackPost(ob, event, mx, my, key, xev);
+}
+
+
+void FormPreferences::FeedbackCB(FL_OBJECT *, long data)
+{
+	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
+	FormPreferences * pre =
+		static_cast<FormPreferences*>(ob->form->u_vdata);
+	pre->feedback( ob );
+}
+
+// post_handler for feedback messages
+int FormPreferences::FeedbackPost(FL_OBJECT *ob, int event,
+		 FL_Coord, FL_Coord, int, void *)
+{
+	FL_OBJECT * timer_feedback = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
+	
+	// We do not test for empty help here, since this can never happen
+	if(event == FL_ENTER){
+		fl_set_object_callback(timer_feedback,
+				       C_FormPreferencesFeedbackCB,
+				       reinterpret_cast<long>(ob));
+		fl_set_timer(timer_feedback, 0.5);
+	}
+	else if(event != FL_MOTION){
+		fl_set_timer(timer_feedback, 0);
+
+		FormPreferences * pre =
+			static_cast<FormPreferences*>(ob->form->u_vdata);
+
+		fl_set_object_label(pre->dialog_->text_warning, "");
+	}
+	return 0;
+}
+
+
+void FormPreferences::setPostHandler( FL_OBJECT * ob ) const
+{
+	ob->u_cdata = reinterpret_cast<char *>(dialog_->timer_feedback);
+	fl_set_object_posthandler(ob, C_FormPreferencesFeedbackPost);
 }

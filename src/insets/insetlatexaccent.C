@@ -354,19 +354,23 @@ bool InsetLatexAccent::DisplayISO8859_9(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
+void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 			    int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
 
-	if (lyxrc.font_norm == "iso8859-9")
-		if (DisplayISO8859_9(bv, font, baseline, x))	
+	if (lyxrc.font_norm_type == LyXRC::ISO_8859_9)
+		if (DisplayISO8859_9(bv, font0, baseline, x))	
 			return;
 	
 	/* draw it! */ 
 	// All the manually drawn accents in this function could use an
 	// overhaul. Different ways of drawing (what metrics to use)
 	// should also be considered.
+
+	LyXFont font(font0);
+	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
+		font.setLanguage(english_language);
 	
 	if (candisp) {
 		int asc = ascent(bv, font);

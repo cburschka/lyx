@@ -11,7 +11,7 @@ SnapGrid: 1
 Name: form_preferences
 Width: 470
 Height: 500
-Number of Objects: 8
+Number of Objects: 9
 
 --------------------
 class: FL_BOX
@@ -46,8 +46,8 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: tabfolder_prefs
-callback: C_FormBaseInputCB
-argument: TABS
+callback: 
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -157,6 +157,24 @@ name: text_warning
 callback: 
 argument: 
 
+--------------------
+class: FL_TIMER
+type: HIDDEN_TIMER
+box: 107 390 50 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_RED
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: timer_feedback
+callback: 
+argument: 
+
 =============== FORM ===============
 Name: form_outer_tab
 Width: 455
@@ -196,14 +214,14 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: tabfolder_outer
-callback: C_FormBaseInputCB
-argument: TABS
+callback: 
+argument: 
 
 =============== FORM ===============
 Name: form_screen_fonts
 Width: 455
 Height: 375
-Number of Objects: 17
+Number of Objects: 18
 
 --------------------
 class: FL_BOX
@@ -280,14 +298,14 @@ argument: SCREENFONTS
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 210 125 200 30
+box: 345 130 65 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
-alignment: FL_ALIGN_RIGHT
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: %
+label: Zoom %|#Z
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -302,14 +320,14 @@ argument: SCREENFONTS
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 168 125 33 31
+box: 60 143 33 31
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_RIGHT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Allow scaling
+label: Use scalable fonts
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -339,25 +357,7 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 140 165 70 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: tiny
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: input_tiny
-callback: C_FormBaseInputCB
-argument: SCREENFONTS
-
---------------------
-class: FL_INPUT
-type: FLOAT_INPUT
-box: 340 165 70 30
+box: 200 199 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -375,7 +375,7 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 140 195 70 30
+box: 340 198 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -393,25 +393,7 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 340 195 70 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: small
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: input_small
-callback: C_FormBaseInputCB
-argument: SCREENFONTS
-
---------------------
-class: FL_INPUT
-type: FLOAT_INPUT
-box: 340 225 70 30
+box: 340 228 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -429,25 +411,7 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 140 255 70 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: larger
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: input_larger
-callback: C_FormBaseInputCB
-argument: SCREENFONTS
-
---------------------
-class: FL_INPUT
-type: FLOAT_INPUT
-box: 340 255 70 30
+box: 200 259 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -465,25 +429,7 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 140 225 70 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: normal
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: input_normal
-callback: C_FormBaseInputCB
-argument: SCREENFONTS
-
---------------------
-class: FL_INPUT
-type: FLOAT_INPUT
-box: 140 285 70 30
+box: 340 258 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -501,7 +447,101 @@ argument: SCREENFONTS
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 340 285 70 30
+box: 200 229 70 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: normal
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_normal
+callback: C_FormBaseInputCB
+argument: SCREENFONTS
+
+--------------------
+class: FL_COUNTER
+type: SIMPLE_COUNTER
+box: 345 162 65 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLUE
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Screen DPI|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: counter_dpi
+callback: C_FormBaseInputCB
+argument: SCREENFONTS
+  bounds: 0 999
+  precision: 0
+  value: 150
+  sstep: 1
+
+--------------------
+class: FL_INPUT
+type: FLOAT_INPUT
+box: 60 198 70 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: tiny
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_tiny
+callback: C_FormBaseInputCB
+argument: SCREENFONTS
+
+--------------------
+class: FL_INPUT
+type: FLOAT_INPUT
+box: 60 258 70 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: larger
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_larger
+callback: C_FormBaseInputCB
+argument: SCREENFONTS
+
+--------------------
+class: FL_INPUT
+type: FLOAT_INPUT
+box: 60 228 70 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: small
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_small
+callback: C_FormBaseInputCB
+argument: SCREENFONTS
+
+--------------------
+class: FL_INPUT
+type: FLOAT_INPUT
+box: 60 288 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -923,6 +963,42 @@ callback:
 argument: 
 
 --------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 131 18 300 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Package|#P
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_package
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 231 56 200 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Default language|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_default_lang
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
 box: 158 113 30 30
@@ -955,6 +1031,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_kbmap_1
+callback: C_FormBaseInputCB
+argument: LANGUAGE
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 231 128 200 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 2nd|#2
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_kbmap_2
 callback: C_FormBaseInputCB
 argument: LANGUAGE
 
@@ -997,24 +1091,6 @@ argument: LANGUAGE
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 362 187 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Auto finish|#f
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: check_auto_end
-callback: C_FormBaseInputCB
-argument: LANGUAGE
-
---------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
 box: 362 161 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
@@ -1031,20 +1107,20 @@ callback: C_FormBaseInputCB
 argument: LANGUAGE
 
 --------------------
-class: FL_INPUT
-type: NORMAL_INPUT
-box: 131 18 300 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 362 187 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Package|#P
+label: Auto finish|#f
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_package
+name: check_auto_end
 callback: C_FormBaseInputCB
 argument: LANGUAGE
 
@@ -1081,42 +1157,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command_end
-callback: C_FormBaseInputCB
-argument: LANGUAGE
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 231 128 200 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 2nd|#2
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_kbmap_2
-callback: C_FormBaseInputCB
-argument: LANGUAGE
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 231 56 200 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Default language|#D
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_default_lang
 callback: C_FormBaseInputCB
 argument: LANGUAGE
 

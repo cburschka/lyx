@@ -86,7 +86,15 @@ string const tostr(bool const & b)
 {
 	return (b ? "true" : "false");
 }
-	
+
+///
+template<>
+inline
+string const tostr(string const & s)
+{
+	return s;
+}
+
 /// Does the string start with this prefix?
 bool prefixIs(string const &, char const *);
 

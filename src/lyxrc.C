@@ -46,193 +46,98 @@ extern LyXAction lyxaction;
 extern kb_keymap * toplevel_keymap;
 
 
-enum LyXRCTags {
-	RC_FONT_ENCODING = 1,
-	RC_PRINTER,
-	RC_PRINT_COMMAND,
-	RC_PRINTEVENPAGEFLAG,
-	RC_PRINTODDPAGEFLAG,
-	RC_PRINTPAGERANGEFLAG,
-	RC_PRINTCOPIESFLAG,
-	RC_PRINTCOLLCOPIESFLAG,
-	RC_PRINTREVERSEFLAG,
-	RC_PRINTLANDSCAPEFLAG,
-	RC_PRINTTOPRINTER,
-	RC_PRINT_ADAPTOUTPUT,
-	RC_PRINTTOFILE,
-	RC_PRINTFILEEXTENSION,
-	RC_PRINTEXSTRAOPTIONS,
-	RC_PRINTSPOOL_COMMAND,
-	RC_PRINTSPOOL_PRINTERPREFIX,
-        RC_PRINTPAPERFLAG,
-	RC_PRINTPAPERDIMENSIONFLAG,
-	RC_CUSTOM_EXPORT_COMMAND,
-	RC_CUSTOM_EXPORT_FORMAT,
-	RC_SCREEN_DPI,
-	RC_SCREEN_ZOOM,
-	RC_SCREEN_FONT_SIZES,
-	RC_SCREEN_FONT_ROMAN,
-	RC_SCREEN_FONT_SANS,
-	RC_SCREEN_FONT_TYPEWRITER,
-	RC_SCREEN_FONT_MENU,
-	RC_SCREEN_FONT_POPUP,
-	RC_SCREEN_FONT_ENCODING,
-	RC_SCREEN_FONT_ENCODING_MENU,
-	RC_SET_COLOR,
-	RC_AUTOSAVE,
-	RC_DOCUMENTPATH,
-	RC_TEMPLATEPATH,
-	RC_TEMPDIRPATH,
-	RC_USETEMPDIR,
-	RC_LASTFILES,
-	RC_AUTOREGIONDELETE,
-	RC_BIND,
-	RC_OVERRIDE_X_DEADKEYS,
-	RC_SERVERPIPE,
-	RC_INPUT,
-	RC_BINDFILE,
-	RC_UIFILE,
-	RC_KBMAP,
-	RC_KBMAP_PRIMARY,
-	RC_KBMAP_SECONDARY,
-	RC_FAX_COMMAND,
-	RC_PHONEBOOK,
-	RC_FAXPROGRAM,
-	RC_ASCIIROFF_COMMAND,
-	RC_ASCII_LINELEN,
-	RC_NUMLASTFILES,
-	RC_CHECKLASTFILES,
-	RC_VIEWDVI_PAPEROPTION,
-	RC_DEFAULT_PAPERSIZE,
-	RC_PS_COMMAND,
-	RC_ACCEPT_COMPOUND,
-	RC_SPELL_COMMAND,
-	RC_USE_INP_ENC,
-	RC_USE_ALT_LANG,
-	RC_USE_PERS_DICT,
-	RC_USE_ESC_CHARS,
-	RC_SCREEN_FONT_SCALABLE,
-	RC_ALT_LANG,
-	RC_PERS_DICT,
-	RC_ESC_CHARS,
-	RC_CHKTEX_COMMAND,
-	RC_CURSOR_FOLLOWS_SCROLLBAR,
-	RC_EXIT_CONFIRMATION,
-	RC_DISPLAY_SHORTCUTS,
-	RC_MAKE_BACKUP,
-	RC_BACKUPDIR_PATH,
-	RC_RTL_SUPPORT,
-	RC_AUTO_NUMBER,
-	RC_MARK_FOREIGN_LANGUAGE,
-	RC_LANGUAGE_PACKAGE,
-	RC_LANGUAGE_AUTO_BEGIN,
-	RC_LANGUAGE_AUTO_END,
-	RC_LANGUAGE_COMMAND_BEGIN,
-	RC_LANGUAGE_COMMAND_END,
-	RC_DATE_INSERT_FORMAT,
-	RC_SHOW_BANNER,
-	RC_WHEEL_JUMP,
-	RC_CONVERTER,
-	RC_VIEWER,
-	RC_FORMAT,
-	RC_NEW_ASK_FILENAME,
-	RC_DEFAULT_LANGUAGE,
-	RC_LAST
-};
-
-
 static
 keyword_item lyxrcTags[] = {
-	{ "\\accept_compound", RC_ACCEPT_COMPOUND },
-	{ "\\alternate_language", RC_ALT_LANG },
-	{ "\\ascii_linelen", RC_ASCII_LINELEN },
-	{ "\\ascii_roff_command", RC_ASCIIROFF_COMMAND },
-	{ "\\auto_number", RC_AUTO_NUMBER },
-	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
-	{ "\\autosave", RC_AUTOSAVE },
-	{ "\\backupdir_path", RC_BACKUPDIR_PATH },
-	{ "\\bind", RC_BIND },
-	{ "\\bind_file", RC_BINDFILE },
-	{ "\\check_lastfiles", RC_CHECKLASTFILES },
-	{ "\\chktex_command", RC_CHKTEX_COMMAND },
-	{ "\\converter", RC_CONVERTER },
-	{ "\\cursor_follows_scrollbar", RC_CURSOR_FOLLOWS_SCROLLBAR },
-	{ "\\custom_export_command", RC_CUSTOM_EXPORT_COMMAND },
-	{ "\\custom_export_format", RC_CUSTOM_EXPORT_FORMAT },
-	{ "\\date_insert_format", RC_DATE_INSERT_FORMAT },
-	{ "\\default_language", RC_DEFAULT_LANGUAGE },
-	{ "\\default_papersize", RC_DEFAULT_PAPERSIZE },
-	{ "\\display_shortcuts", RC_DISPLAY_SHORTCUTS },
-	{ "\\document_path", RC_DOCUMENTPATH },
-	{ "\\escape_chars", RC_ESC_CHARS },
-	{ "\\exit_confirmation", RC_EXIT_CONFIRMATION },
-	{ "\\fax_command", RC_FAX_COMMAND },
-	{ "\\fax_program", RC_FAXPROGRAM },
-	{ "\\font_encoding", RC_FONT_ENCODING },
-	{ "\\format", RC_FORMAT },
-	{ "\\input", RC_INPUT },
-	{ "\\kbmap", RC_KBMAP },
-	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
-	{ "\\kbmap_secondary", RC_KBMAP_SECONDARY },
-	{ "\\language_auto_begin", RC_LANGUAGE_AUTO_BEGIN },
-	{ "\\language_auto_end", RC_LANGUAGE_AUTO_END },
-	{ "\\language_command_begin", RC_LANGUAGE_COMMAND_BEGIN },
-	{ "\\language_command_end", RC_LANGUAGE_COMMAND_END },
-	{ "\\language_package", RC_LANGUAGE_PACKAGE },
-	{ "\\lastfiles", RC_LASTFILES },
-	{ "\\make_backup", RC_MAKE_BACKUP },
-	{ "\\mark_foreign_language", RC_MARK_FOREIGN_LANGUAGE },
-	{ "\\new_ask_filename", RC_NEW_ASK_FILENAME },
-	{ "\\num_lastfiles", RC_NUMLASTFILES },
-	{ "\\override_x_deadkeys", RC_OVERRIDE_X_DEADKEYS },
-	{ "\\personal_dictionary", RC_PERS_DICT },
-	{ "\\phone_book", RC_PHONEBOOK },
-	{ "\\print_adapt_output", RC_PRINT_ADAPTOUTPUT },
-	{ "\\print_collcopies_flag", RC_PRINTCOLLCOPIESFLAG },
-	{ "\\print_command", RC_PRINT_COMMAND },
-	{ "\\print_copies_flag", RC_PRINTCOPIESFLAG },
-	{ "\\print_evenpage_flag", RC_PRINTEVENPAGEFLAG },
-	{ "\\print_extra_options", RC_PRINTEXSTRAOPTIONS },
-	{ "\\print_file_extension", RC_PRINTFILEEXTENSION },
-	{ "\\print_landscape_flag", RC_PRINTLANDSCAPEFLAG },
-	{ "\\print_oddpage_flag", RC_PRINTODDPAGEFLAG },
-	{ "\\print_pagerange_flag", RC_PRINTPAGERANGEFLAG },
-        { "\\print_paper_dimension_flag", RC_PRINTPAPERDIMENSIONFLAG },
-        { "\\print_paper_flag", RC_PRINTPAPERFLAG },
-	{ "\\print_reverse_flag", RC_PRINTREVERSEFLAG },
-	{ "\\print_spool_command", RC_PRINTSPOOL_COMMAND },
-	{ "\\print_spool_printerprefix", RC_PRINTSPOOL_PRINTERPREFIX },
-	{ "\\print_to_file", RC_PRINTTOFILE },
-	{ "\\print_to_printer", RC_PRINTTOPRINTER },
-	{ "\\printer", RC_PRINTER },
-	{ "\\ps_command", RC_PS_COMMAND },
-	{ "\\rtl", RC_RTL_SUPPORT },
-	{ "\\screen_dpi", RC_SCREEN_DPI },
-	{ "\\screen_font_encoding", RC_SCREEN_FONT_ENCODING },
-	{ "\\screen_font_encoding_menu", RC_SCREEN_FONT_ENCODING_MENU },
-	{ "\\screen_font_menu", RC_SCREEN_FONT_MENU },
-	{ "\\screen_font_popup", RC_SCREEN_FONT_POPUP },
-	{ "\\screen_font_roman", RC_SCREEN_FONT_ROMAN },
-	{ "\\screen_font_sans", RC_SCREEN_FONT_SANS },
-	{ "\\screen_font_scalable", RC_SCREEN_FONT_SCALABLE },
-	{ "\\screen_font_sizes", RC_SCREEN_FONT_SIZES },
-	{ "\\screen_font_typewriter", RC_SCREEN_FONT_TYPEWRITER },
-	{ "\\screen_zoom", RC_SCREEN_ZOOM },
-	{ "\\serverpipe", RC_SERVERPIPE },
-	{ "\\set_color", RC_SET_COLOR },
-	{ "\\show_banner", RC_SHOW_BANNER },
-	{ "\\spell_command", RC_SPELL_COMMAND },
-	{ "\\tempdir_path", RC_TEMPDIRPATH },
-	{ "\\template_path", RC_TEMPLATEPATH },
-	{ "\\ui_file", RC_UIFILE },
-	{ "\\use_alt_language", RC_USE_ALT_LANG },
-	{ "\\use_escape_chars", RC_USE_ESC_CHARS },
-	{ "\\use_input_encoding", RC_USE_INP_ENC },
-	{ "\\use_personal_dictionary", RC_USE_PERS_DICT },
-	{ "\\use_tempdir", RC_USETEMPDIR },
-	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
-	{ "\\viewer" ,RC_VIEWER}, 
-	{ "\\wheel_jump", RC_WHEEL_JUMP }
+	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
+	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
+	{ "\\ascii_linelen", LyXRC::RC_ASCII_LINELEN },
+	{ "\\ascii_roff_command", LyXRC::RC_ASCIIROFF_COMMAND },
+	{ "\\auto_number", LyXRC::RC_AUTO_NUMBER },
+	{ "\\auto_region_delete", LyXRC::RC_AUTOREGIONDELETE },
+	{ "\\autosave", LyXRC::RC_AUTOSAVE },
+	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
+	{ "\\bind", LyXRC::RC_BIND },
+	{ "\\bind_file", LyXRC::RC_BINDFILE },
+	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
+	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\converter", LyXRC::RC_CONVERTER },
+	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
+	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
+	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
+	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
+	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
+	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
+	{ "\\display_shortcuts", LyXRC::RC_DISPLAY_SHORTCUTS },
+	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
+	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
+	{ "\\exit_confirmation", LyXRC::RC_EXIT_CONFIRMATION },
+	{ "\\fax_command", LyXRC::RC_FAX_COMMAND },
+	{ "\\fax_program", LyXRC::RC_FAXPROGRAM },
+	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
+	{ "\\format", LyXRC::RC_FORMAT },
+	{ "\\input", LyXRC::RC_INPUT },
+	{ "\\kbmap", LyXRC::RC_KBMAP },
+	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
+	{ "\\kbmap_secondary", LyXRC::RC_KBMAP_SECONDARY },
+	{ "\\language_auto_begin", LyXRC::RC_LANGUAGE_AUTO_BEGIN },
+	{ "\\language_auto_end", LyXRC::RC_LANGUAGE_AUTO_END },
+	{ "\\language_command_begin", LyXRC::RC_LANGUAGE_COMMAND_BEGIN },
+	{ "\\language_command_end", LyXRC::RC_LANGUAGE_COMMAND_END },
+	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
+	{ "\\lastfiles", LyXRC::RC_LASTFILES },
+	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
+	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
+	{ "\\new_ask_filename", LyXRC::RC_NEW_ASK_FILENAME },
+	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
+	{ "\\override_x_deadkeys", LyXRC::RC_OVERRIDE_X_DEADKEYS },
+	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
+	{ "\\phone_book", LyXRC::RC_PHONEBOOK },
+	{ "\\print_adapt_output", LyXRC::RC_PRINT_ADAPTOUTPUT },
+	{ "\\print_collcopies_flag", LyXRC::RC_PRINTCOLLCOPIESFLAG },
+	{ "\\print_command", LyXRC::RC_PRINT_COMMAND },
+	{ "\\print_copies_flag", LyXRC::RC_PRINTCOPIESFLAG },
+	{ "\\print_evenpage_flag", LyXRC::RC_PRINTEVENPAGEFLAG },
+	{ "\\print_extra_options", LyXRC::RC_PRINTEXSTRAOPTIONS },
+	{ "\\print_file_extension", LyXRC::RC_PRINTFILEEXTENSION },
+	{ "\\print_landscape_flag", LyXRC::RC_PRINTLANDSCAPEFLAG },
+	{ "\\print_oddpage_flag", LyXRC::RC_PRINTODDPAGEFLAG },
+	{ "\\print_pagerange_flag", LyXRC::RC_PRINTPAGERANGEFLAG },
+        { "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
+        { "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
+	{ "\\print_reverse_flag", LyXRC::RC_PRINTREVERSEFLAG },
+	{ "\\print_spool_command", LyXRC::RC_PRINTSPOOL_COMMAND },
+	{ "\\print_spool_printerprefix", LyXRC::RC_PRINTSPOOL_PRINTERPREFIX },
+	{ "\\print_to_file", LyXRC::RC_PRINTTOFILE },
+	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
+	{ "\\printer", LyXRC::RC_PRINTER },
+	{ "\\ps_command", LyXRC::RC_PS_COMMAND },
+	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
+	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
+	{ "\\screen_font_encoding", LyXRC::RC_SCREEN_FONT_ENCODING },
+	{ "\\screen_font_encoding_menu", LyXRC::RC_SCREEN_FONT_ENCODING_MENU },
+	{ "\\screen_font_menu", LyXRC::RC_SCREEN_FONT_MENU },
+	{ "\\screen_font_popup", LyXRC::RC_SCREEN_FONT_POPUP },
+	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
+	{ "\\screen_font_sans", LyXRC::RC_SCREEN_FONT_SANS },
+	{ "\\screen_font_scalable", LyXRC::RC_SCREEN_FONT_SCALABLE },
+	{ "\\screen_font_sizes", LyXRC::RC_SCREEN_FONT_SIZES },
+	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
+	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
+	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
+	{ "\\set_color", LyXRC::RC_SET_COLOR },
+	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
+	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
+	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
+	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
+	{ "\\ui_file", LyXRC::RC_UIFILE },
+	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
+	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
+	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
+	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
+	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
+	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
+	{ "\\viewer" ,LyXRC::RC_VIEWER}, 
+	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
 };
 
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
@@ -1569,10 +1474,313 @@ void LyXRC::set_font_norm_type()
 {
 	if (font_norm == "iso10646-1")
 		font_norm_type = ISO_10646_1;
+	else if (font_norm == "iso8859-1")
+		font_norm_type = ISO_8859_1;
 	else if (font_norm == "iso8859-6.8x")
 		font_norm_type = ISO_8859_6_8;
+	else if (font_norm == "iso8859-9")
+		font_norm_type = ISO_8859_9;
 	else
 		font_norm_type = OTHER_ENCODING;
+}
+
+string LyXRC::getFeedback(LyXRCTags tag)
+{
+	string str;
+	
+	switch( tag ) {
+	case RC_FONT_ENCODING:
+		str = N_("The font encoding used for the LaTeX2e fontenc package.\nT1 is highly recommended for non-English languages.");
+		break;
+		
+	case RC_PRINTER:
+		str = N_("The default printer to print on. If none is specified, LyX will\nuse the environment variable PRINTER.");
+		break;
+		
+	case RC_PRINT_COMMAND:
+		str = N_("Your favorite print program, eg \"dvips\", \"dvilj4\"");
+		break;
+		
+	case RC_PRINTEVENPAGEFLAG:
+	case RC_PRINTODDPAGEFLAG:
+	case RC_PRINTPAGERANGEFLAG:
+	case RC_PRINTCOPIESFLAG:
+	case RC_PRINTCOLLCOPIESFLAG:
+	case RC_PRINTREVERSEFLAG:
+	case RC_PRINTLANDSCAPEFLAG:
+        case RC_PRINTPAPERFLAG:
+	case RC_PRINTPAPERDIMENSIONFLAG:
+		str = N_("Look at the man page for your favorite print program to learn\nwhich options to use.");
+		break;
+		
+	case RC_PRINTTOPRINTER:
+		str = N_("Option to pass to the print program to print on a specific printer.");
+		break;
+		
+	case RC_PRINT_ADAPTOUTPUT:
+		str = N_("Set to true for LyX to pass the name of the destination printer to your\nprint command.");
+		break;
+		
+	case RC_PRINTTOFILE:
+		str = N_("Option to pass to the print program to print to a file.");
+		break;
+		
+	case RC_PRINTFILEEXTENSION:
+		str = N_("Extension of printer program output file. Usually .ps");
+		break;
+		
+	case RC_PRINTEXSTRAOPTIONS:
+		str = N_("Extra options to pass to printing program after everything else,\nbut before the filename of the DVI file to be printed.");
+		break;
+		
+	case RC_PRINTSPOOL_COMMAND:
+		str = N_("When set, this printer option automatically prints to a file and then calls\na separate print spooling program on that file with the given name\nand arguments.");
+		break;
+		
+	case RC_PRINTSPOOL_PRINTERPREFIX:
+		str = N_("If you specify a printer name in the print dialog, the following argument\nis prepended along with the printer name after the spool command.");
+		break;
+		
+	case RC_SCREEN_DPI:
+		str = N_("DPI (dots per inch) of your monitor is auto-detected by LyX.\nIf that goes wrong, override the setting here.");
+		break;
+		
+	case RC_SCREEN_ZOOM:
+		str = N_("The zoom percentage for screen fonts.\nA setting of 100% will make the fonts roughly the same size as on paper.");
+		break;
+		
+	case RC_SCREEN_FONT_SIZES:
+		str = N_("The font sizes used for calculating the scaling of the screen fonts.");
+		break;
+		
+	case RC_SCREEN_FONT_ROMAN:
+	case RC_SCREEN_FONT_SANS:
+	case RC_SCREEN_FONT_TYPEWRITER:
+		str = N_("The screen fonts used to display the text while editing.");
+		break;
+		
+	case RC_SCREEN_FONT_MENU:
+		str = N_("The font for menus (and groups titles in popups).");
+		break;
+		
+	case RC_SCREEN_FONT_POPUP:
+		str = N_("The font for popups.");
+		break;
+		
+	case RC_SCREEN_FONT_ENCODING:
+		str = N_("The norm for the screen fonts.");
+		break;
+		
+	case RC_SCREEN_FONT_ENCODING_MENU:
+		str = N_("The norm for the menu/popups fonts.");
+		break;
+		
+	case RC_SET_COLOR:
+		break;
+		
+	case RC_AUTOSAVE:
+		str = N_("The time interval between auto-saves (in seconds).\n0 means no auto-save");
+		break;
+		
+	case RC_DOCUMENTPATH:
+		str = N_("The default path for your documents.");
+		break;
+		
+	case RC_TEMPLATEPATH:
+		str = N_("The path that LyX will set when offering to choose a template.");
+		break;
+		
+	case RC_TEMPDIRPATH:
+		str = N_("The path that LyX will use to store temporary TeX output.");
+		break;
+		
+	case RC_USETEMPDIR:
+		str = N_("Specify to use a temporary directory to store temporary TeX output.\nThis directory is deleted when you quit LyX.");
+		break;
+		
+	case RC_LASTFILES:
+		str = N_("The file where the last-files information should be stored.");
+		break;
+		
+	case RC_AUTOREGIONDELETE:
+		str = N_("Set to false if you don't want the current selection to be replaced\nautomatically by what you type.");
+		break;
+		
+	case RC_OVERRIDE_X_DEADKEYS:
+		str = N_("Set to true for LyX to take over the handling of the dead keys\n(a.k.a accent keys) that may be defined for your keyboard.");
+		break;
+		
+
+	case RC_SERVERPIPE:
+		str = N_("This starts the lyxserver. The pipes get an additional extension\n\".in\" and \".out\". Only for advanced users.");
+		break;
+		
+	case RC_BINDFILE:
+		str = N_("Keybindings file. Can either specify an absolute path,\nor LyX will look in its global and local bind/ directories.");
+		break;
+		
+	case RC_UIFILE:
+		str = N_("The  UI (user interface) file. Can either specify an absolute path,\nor LyX will look in its global and local ui/ directories.");
+		break;
+		
+	case RC_KBMAP:
+	case RC_KBMAP_PRIMARY:
+	case RC_KBMAP_SECONDARY:
+		str = N_("Use this to set the correct mapping file for your keyboard.\nYou'll need this if you for instance want to type German documents\non an American keyboard.");
+		break;
+		
+	case RC_FAX_COMMAND:
+		break;
+		
+	case RC_PHONEBOOK:
+		break;
+		
+	case RC_FAXPROGRAM:
+		break;
+		
+	case RC_ASCIIROFF_COMMAND:
+		str = N_("Use to define an external program to render tables in the ASCII output.\nE.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file.\nIf \"none\" is specified, an internal routine is used.");
+		break;
+		
+	case RC_ASCII_LINELEN:
+		str = N_("This is the maximum line length of an exported ASCII file\n(LaTeX, SGML or plain text).");
+		break;
+		
+	case RC_NUMLASTFILES:
+		str = N_("Maximal number of lastfiles. Up to 9 can appear in the file menu.");
+		break;
+		
+	case RC_CHECKLASTFILES:
+		str = N_("Specify to check whether the lastfiles still exist.");
+		break;
+		
+	case RC_VIEWDVI_PAPEROPTION:
+		break;
+		
+	case RC_DEFAULT_PAPERSIZE:
+		str = N_("Specify the default paper size.");
+		break;
+		
+	case RC_PS_COMMAND:
+		break;
+		
+	case RC_ACCEPT_COMPOUND:
+		str = N_("Consider run-together words, such as \"notthe\" for \"not the\",\nas legal words?");
+		break;
+		
+	case RC_SPELL_COMMAND:
+		str = N_("What command runs the spell checker?");
+		break;
+		
+	case RC_USE_INP_ENC:
+		str = N_("Specify whether to pass the -T input encoding option to ispell.\nEnable this if you can't spellcheck words with international letters\nin them.\nThis may not work with all dictionaries.");
+		break;
+		
+	case RC_USE_ALT_LANG:
+	case RC_ALT_LANG:
+		str = N_("Specify an alternate language.\nThe default is to use the language of the document.");
+		break;
+		
+	case RC_USE_PERS_DICT:
+	case RC_PERS_DICT:
+		str = N_("Specify an alternate personal dictionary file.\nE.g. \".ispell_english\".");
+		break;
+		
+	case RC_USE_ESC_CHARS:
+	case RC_ESC_CHARS:
+		str = N_("Specify additional chars that can be part of a word.");
+		break;
+		
+	case RC_SCREEN_FONT_SCALABLE:
+		str = N_("Allow the use of scalable screen fonts? If false, LyX will use the\nclosest existing size for a match. Use this if the scalable fonts\nlook bad and you have many fixed size fonts.");
+		break;
+		
+	case RC_CHKTEX_COMMAND:
+		str = N_("Define how to run chktex.\nE.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\"\nRefer to the ChkTeX documentation.");
+		break;
+		
+	case RC_CURSOR_FOLLOWS_SCROLLBAR:
+		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar.\nSet to true if you'd prefer to always have the cursor on screen.");
+		break;
+		
+	case RC_EXIT_CONFIRMATION:
+		str = N_("Sets whether LyX asks for a second confirmation to exit when you have\nchanged documents.\n(LyX will still ask to save changed documents.)");
+		break;
+		
+	case RC_DISPLAY_SHORTCUTS:
+		str = N_("LyX continously displays names of last command executed,\nalong with a list of defined short-cuts for it in the minibuffer.\nSet to false if LyX seems slow.");
+		break;
+		
+	case RC_MAKE_BACKUP:
+		str = N_("Set to false if you don't want LyX to create backup files.");
+		break;
+		
+	case RC_BACKUPDIR_PATH:
+		str = N_("The path for storing backup files. If it is an empty string,\nLyX will store the backup file in the same directory as the original file.");
+		break;
+
+	case RC_RTL_SUPPORT:
+		str = N_("Use to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+		break;
+		
+	case RC_MARK_FOREIGN_LANGUAGE:
+		str = N_("Use to control the highlighting of words with a language foreign to\nthat of the document.");
+		break;
+		
+	case RC_LANGUAGE_PACKAGE:
+		str = N_("The latex command for loading the language package.\nE.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
+		break;
+		
+	case RC_LANGUAGE_AUTO_BEGIN:
+		str = N_("Use if a language switching command is needed at the beginning\nof the document.");
+		break;
+		
+	case RC_LANGUAGE_AUTO_END:
+		str = N_("Use if a language switching command is needed at the end\nof the document.");
+		break;
+		
+	case RC_LANGUAGE_COMMAND_BEGIN:
+		str = N_("The latex command for changing from the language of the document\nto another language.\nE.g. \\selectlanguage{$$lang} where $$lang is substituted by the name\nof the second language.");
+		break;
+		
+	case RC_LANGUAGE_COMMAND_END:
+		str = N_("The latex command for changing back to the language of the document.");
+		break;
+		
+	case RC_DATE_INSERT_FORMAT:
+		str = N_("This accepts the normal strftime formats; see man strftime for full details.\nE.g.\"%A, %e. %B %Y\".");
+		break;
+		
+	case RC_SHOW_BANNER:
+		str = N_("Set to false if you don't want the startup banner.");
+		break;
+		
+	case RC_WHEEL_JUMP:
+		str = N_("The wheel movement factor (for mice with wheels or five button mice)");
+		break;
+		
+	case RC_CONVERTER:
+		break;
+		
+	case RC_VIEWER:
+		break;
+		
+	case RC_FORMAT:
+		break;
+		
+	case RC_NEW_ASK_FILENAME:
+		str = N_("This sets the behaviour if you want to be asked for a filename when\ncreating a new document or wait until you save it and be asked then.");
+		break;
+		
+	case RC_DEFAULT_LANGUAGE:
+		str = N_("New documents will be assigned this language.");
+		break;
+		
+	default:
+		break;
+	}
+
+	return str;
 }
 
 // The global instance

@@ -205,6 +205,16 @@ int get_new_submenu(vector<int> & smn, Window win)
 
 size_type const max_number_of_items = 25;
 
+inline
+string const fixlabel(string const & str)
+{
+#if FL_REVISION < 89
+	return subst(str, '%', '?');
+#else
+	return subst(str, "%", "%%");
+#endif
+}
+
 void add_toc2(int menu, string const & extra_label,
 	      vector<int> & smn, Window win,
 	      vector<Buffer::TocItem> const & toc_list,
@@ -216,7 +226,7 @@ void add_toc2(int menu, string const & extra_label,
 				getPseudoAction(LFUN_GOTO_PARAGRAPH,
 						tostr(toc_list[i].par->id()));
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
-			label += toc_list[i].str;
+			label += fixlabel(toc_list[i].str);
 			label = limit_string_length(label);
 			label += "%x" + tostr(action);
 			if (i == to - 1 && depth == 0)
@@ -248,7 +258,7 @@ void add_toc2(int menu, string const & extra_label,
 				getPseudoAction(LFUN_GOTO_PARAGRAPH,
 						tostr(toc_list[pos].par->id()));
 			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
-			label += toc_list[pos].str;
+			label += fixlabel(toc_list[pos].str);
 			label = limit_string_length(label);
 			if (new_pos == to && depth == 0)
 				label += extra_label;
@@ -298,8 +308,8 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 				int action = lyxaction.
 					getPseudoAction(LFUN_GOTO_PARAGRAPH,
 							tostr(toc_list[j][i].par->id()));
-				string label =
-					limit_string_length(toc_list[j][i].str);
+				string label = fixlabel(toc_list[j][i].str);
+				label = limit_string_length(label);
 				label += "%x" + tostr(action);
 				fl_addtopup(menu2, label.c_str());
 			}

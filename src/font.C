@@ -55,7 +55,7 @@ int lyxfont::ascent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
 		return finfo->per_char[uc - finfo->min_char_or_byte2].ascent;
 	else
 		return finfo->ascent;
@@ -68,7 +68,7 @@ int lyxfont::descent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
 		return finfo->per_char[uc - finfo->min_char_or_byte2].descent;
 	else
 		return finfo->descent;
@@ -81,7 +81,7 @@ int lyxfont::lbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
 		return finfo->per_char[uc - finfo->min_char_or_byte2].lbearing;
 	else
 		return 0;
@@ -94,7 +94,7 @@ int lyxfont::rbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
 		return finfo->per_char[uc - finfo->min_char_or_byte2].rbearing;
 	else
 		return width(c, f);
