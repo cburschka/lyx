@@ -12,11 +12,11 @@ lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la @FRONTEND_GUILIB@ \
 	frontends/libfrontends.la support/libsupport.la @INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
-	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --lang=c++
-INCLUDES = $(SIGC_CFLAGS) @FRONTEND_INCLUDES@
+INCLUDES = $(SIGC_CFLAGS) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
 localedir = $(datadir)/locale
 lyx_SOURCES = \
 	BackStack.h \

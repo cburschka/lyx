@@ -60,6 +60,11 @@
 #include "support/lstrings.h"
 #include "encoding.h"
 
+//#define USE_PSPELL 1
+#ifdef USE_PSPELL
+#include <pspell/pspell.h>
+#endif
+
 using std::reverse;
 using std::endl;
 
@@ -75,6 +80,8 @@ enum {
 
 static bool RunSpellChecker(BufferView * bv);
 
+#ifndef USE_PSPELL
+
 static FILE * in, * out;  /* streams to communicate with ispell */
 pid_t isp_pid = -1; // pid for the `ispell' process. Also used (RO) in
                     // lyx_cb.C
@@ -85,6 +92,12 @@ static ActualSpellChecker actual_spell_checker;
 
 static int isp_fd;
 
+#else
+
+PspellManager * sc;
+
+#endif
+
 static FD_form_spell_options *fd_form_spell_options = 0;
 FD_form_spell_check *fd_form_spell_check = 0;
 
@@ -93,6 +106,8 @@ void sigchldhandler(pid_t pid, int *status);
 
 //extern void sigchldchecker(int sig);
 extern void sigchldchecker(pid_t pid, int *status);
+
+#ifndef USE_PSPELL
 
 struct isp_result {
 	int flag;
@@ -108,6 +123,32 @@ struct isp_result {
 		delete[] misses;
 	}
 };
+
+#else
+
+struct isp_result {
+	int flag;
+	PspellStringEmulation * els;
+	
+	const char * next_miss();
+	isp_result() {
+		flag = ISP_UNKNOWN;
+		els = 0;
+	}
+	~isp_result() {
+		delete_pspell_string_emulation(els);
+	}
+};
+
+const char * isp_result::next_miss() 
+{
+	return pspell_string_emulation_next(els);
+}
+
+#endif
+
+const char * spell_error;
+
 
 
 /***** Spellchecker options *****/
@@ -229,6 +270,8 @@ void SpellCheckerOptions()
 	}
 }
 
+
+#ifndef USE_PSPELL
 
 /***** Spellchecker *****/
 
@@ -534,6 +577,90 @@ void ispell_store_replacement(char const *mis, string const & cor) {
         }
 }
 
+#else
+
+PspellCanHaveError * spell_error_object;
+
+static
+void init_spell_checker(string const & /* lang */)
+{
+	PspellConfig * config = new_pspell_config();
+	spell_error_object = new_pspell_manager(config);
+	if (pspell_error_number(spell_error_object) != 0) {
+		spell_error = pspell_error_message(spell_error_object);
+	} else {
+		spell_error = 0;
+		sc = to_pspell_manager(spell_error_object);
+		spell_error_object = 0;
+	}
+}
+
+static 
+bool sc_still_alive() {
+	return true;
+}
+
+static
+void sc_clean_up_after_error() 
+{
+	delete_pspell_can_have_error(spell_error_object);
+}
+
+
+
+// Send word to ispell and get reply
+static
+isp_result * sc_check_word(char *word)
+{
+	isp_result * result = new isp_result;
+	int word_ok = pspell_manager_check(sc, word);
+	assert(word_ok != -1);
+
+	if (word_ok) {
+
+		result->flag = ISP_OK;
+
+	} else {
+
+		const PspellWordList * sugs = pspell_manager_suggest(sc, word);
+		assert(sugs != 0);
+		result->els = pspell_word_list_elements(sugs);
+		if (pspell_word_list_empty(sugs)) 
+			result->flag = ISP_UNKNOWN;
+		else 
+			result->flag = ISP_MISSED;
+		
+	}
+	return result;
+}
+
+
+static
+inline void close_spell_checker()
+{
+	pspell_manager_save_all_word_lists(sc);
+}
+
+
+static
+inline void sc_insert_word(char const *word)
+{
+	pspell_manager_add_to_personal(sc, word);
+}
+
+
+static
+inline void sc_accept_word(char const *word) 
+{
+	pspell_manager_add_to_personal(sc, word);
+}
+
+static
+inline void sc_store_replacement(char const *mis, string const & cor) {
+	pspell_manager_store_replacement(sc, mis, cor.c_str());
+}
+
+#endif
 
 void ShowSpellChecker(BufferView * bv)
 {
@@ -655,7 +782,7 @@ static
 bool RunSpellChecker(BufferView * bv)
 {
 	isp_result * result;
-	int i, newvalue;
+	int newvalue;
 	FL_OBJECT * obj;
 
 	string tmp = (lyxrc.isp_use_alt_lang) ? lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
@@ -665,8 +792,10 @@ bool RunSpellChecker(BufferView * bv)
 	float newval = 0.0;
    
 	/* create ispell process */
-	create_ispell_pipe(bv->buffer()->params, tmp);
 
+#ifndef USE_PSPELL
+
+	create_ispell_pipe(bv->buffer()->params, tmp);
 	if (isp_pid == -1) {
 		fl_show_message(
 			_("\n\n"
@@ -678,9 +807,16 @@ bool RunSpellChecker(BufferView * bv)
 		fclose(out);
 		return false;
 	}
-
 	// Put ispell in terse mode to improve speed
 	ispell_terse_mode();
+#else
+	init_spell_checker(tmp);
+	if (spell_error != 0) {
+		fl_show_message(_(spell_error), "", "");
+		sc_clean_up_after_error();
+ 		return true;
+ 	}
+#endif
 
 	unsigned int word_count = 0;
 	while (true) {
@@ -699,18 +835,33 @@ bool RunSpellChecker(BufferView * bv)
 			obj =  fl_check_forms();
 			if (obj == fd_form_spell_check->stop) {
 				delete[] word;
+#ifndef USE_PSPELL
 				ispell_terminate();
+#else
+				close_spell_checker();
+#endif
 				return true;
 			}
 			if (obj == fd_form_spell_check->done) {
 				delete[] word;
-				ispell_terminate(); 
+#ifndef USE_PSPELL
+				ispell_terminate();
+#else
+				close_spell_checker();
+#endif
 				return false;
 			}
 		}
 
+#ifndef USE_PSPELL
 		result = ispell_check_word(word);
-		if (isp_pid == -1) {
+		if (isp_pid == -1)
+#else
+		result = sc_check_word(word);
+		if (!sc_still_alive())
+#endif
+		{
+
 			delete result;
 			delete[] word;
 			break;
@@ -729,6 +880,8 @@ bool RunSpellChecker(BufferView * bv)
 				fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
+#ifndef USE_PSPELL
+			int i;
 			for (i = 0; i < result->count; ++i) {
 				if (rtl) {
 					string tmp = result->misses[i];
@@ -737,16 +890,30 @@ bool RunSpellChecker(BufferView * bv)
 				} else
 					fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
 			}
+#else
+			const char * w;
+			while ((w = result->next_miss()) != 0) {
+				fl_add_browser_line(fd_form_spell_check->browser, w);
+			}
+#endif
 
 			int clickline = -1;
 			while (true) {
 				obj = fl_do_forms();
 				if (obj == fd_form_spell_check->insert) {
+#ifndef USE_PSPELL
 					ispell_insert_word(word);
+#else
+					sc_insert_word(word);
+#endif
 					break;
 				}
 				if (obj == fd_form_spell_check->accept) {
+#ifndef USE_PSPELL
 					ispell_accept_word(word);
+#else
+					sc_accept_word(word);
+#endif
 					break;
 				}
 				if (obj == fd_form_spell_check->ignore) {
@@ -754,7 +921,11 @@ bool RunSpellChecker(BufferView * bv)
 				}
 				if (obj == fd_form_spell_check->replace || 
 				    obj == fd_form_spell_check->input) {
+#ifndef USE_PSPELL
 				        ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
+#else
+				        sc_store_replacement(word, fl_get_input(fd_form_spell_check->input));
+#endif
 					bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 					break;
 				}
@@ -763,7 +934,11 @@ bool RunSpellChecker(BufferView * bv)
 					// sent to lyx@via by Mark Burton <mark@cbl.leeds.ac.uk>
 					if (clickline == 
 					    fl_get_browser(fd_form_spell_check->browser)) {
+#ifndef USE_PSPELL
 				                ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
+#else
+				                sc_store_replacement(word, fl_get_input(fd_form_spell_check->input));
+#endif
 						bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 						break;
 					}
@@ -783,14 +958,22 @@ bool RunSpellChecker(BufferView * bv)
 				if (obj == fd_form_spell_check->stop) {
 					delete result;
 					delete[] word;
+#ifndef USE_PSPELL
 					ispell_terminate();
+#else
+					close_spell_checker();
+#endif
 					return true;
 				}
 	    
 				if (obj == fd_form_spell_check->done) {
 					delete result;
 					delete[] word;
+#ifndef USE_PSPELL
 					ispell_terminate();
+#else
+					close_spell_checker();
+#endif
 					return false;
 				}
 			}
@@ -800,9 +983,14 @@ bool RunSpellChecker(BufferView * bv)
 			delete[] word;
 		}
 	}
-   
+
+#ifndef USE_PSPELL
 	if(isp_pid!= -1) {
 		ispell_terminate();
+#else
+	if(sc_still_alive()) {
+		close_spell_checker();
+#endif
 		string word_msg(tostr(word_count));
 		if (word_count != 1) {
 			word_msg += _(" words checked.");
@@ -813,13 +1001,21 @@ bool RunSpellChecker(BufferView * bv)
 				word_msg.c_str());
 		return false;
 	} else {
+#ifndef USE_PSPELL
 		fl_show_message(_("The ispell-process has died for some reason.\n"
 				"Maybe it has been killed."), "", "");
 		fclose(out);
+#else
+		fl_show_message(_("The spell checker has died for some reason.\n"
+				"Maybe it has been killed."), "", "");
+		sc_clean_up_after_error();
+#endif
 		return true;
 	}
 }
 
+
+#ifndef USE_PSPELL
 
 void sigchldhandler(pid_t pid, int * status)
 { 
@@ -832,3 +1028,12 @@ void sigchldhandler(pid_t pid, int * status)
 		}
 	sigchldchecker(pid, status);
 }
+
+#else
+
+void sigchldhandler(pid_t /* pid */, int * /* status */)
+{ 
+	// do nothing
+}
+
+#endif

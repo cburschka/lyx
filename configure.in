@@ -135,6 +135,9 @@ fi
 ### Check which libsigc++ we're using
 LYX_WITH_SIGC
 
+### Check if we want pspell libraries
+CHECK_WITH_PSPELL
+
 ### Check for X libraries
 # Check for the pt library (for SCO, needed for X)
 AC_CHECK_LIB(pt,ptsname,X_EXTRA_LIBS="-lpt $X_EXTRA_LIBS")
