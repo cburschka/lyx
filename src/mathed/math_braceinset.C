@@ -55,3 +55,9 @@ void MathBraceInset::normalize(NormalStream & os) const
 {
 	os << "[block " << cell(0) << ']';
 }
+
+
+void MathBraceInset::infoize(std::ostream & os) const
+{
+	os << "Nested Block: ";
+}

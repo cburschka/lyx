@@ -554,6 +554,7 @@ fontinfo fontinfos[] = {
 	{"eufrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
 	{"msa",    LyXFont::MSA_FAMILY, inh_series, inh_shape, LColor::math},
 	{"msb",    LyXFont::MSB_FAMILY, inh_series, inh_shape, LColor::math},
+	{"wasy",   LyXFont::WASY_FAMILY, inh_series, inh_shape, LColor::math},
 	{"text",   inh_family, inh_series, inh_shape, LColor::black},
 	{"textbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::black},
 	{"textit", inh_family, inh_series, LyXFont::ITALIC_SHAPE, LColor::black},

@@ -141,7 +141,8 @@ char const * simplefeatures[] = {
 	"floatflt",
 	"varioref",
 	"prettyref",
-	"float"
+	"float",
+	"wasy"
 };
 
 const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -154,21 +155,20 @@ string const LaTeXFeatures::getPackages() const
 	LyXTextClass const & tclass = textclasslist[params.textclass];
 
 
-	/**
-	 *  These are all the 'simple' includes.  i.e
-	 *  packages which we just \usepackage{package}
-	 **/
-	for (int i = 0 ; i < nb_simplefeatures ; ++i) {
+	//
+	//  These are all the 'simple' includes.  i.e
+	//  packages which we just \usepackage{package}
+	//
+	for (int i = 0; i < nb_simplefeatures; ++i) {
 		if (isRequired(simplefeatures[i]))
 			packages << "\\usepackage{"
-				 << simplefeatures[i]
-				 << "}\n";
+			         << simplefeatures[i] << "}\n";
 	}
 
-	/**
-	 * The rest of these packages are somewhat more complicated
-	 * than those above.
-	 **/
+	//
+	// The rest of these packages are somewhat more complicated
+	// than those above.
+	//
 
 	if (isRequired("amsmath")
 	    && ! tclass.provides(LyXTextClass::amsmath)) {

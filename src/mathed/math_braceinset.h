@@ -29,6 +29,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
+	///
+	void MathBraceInset::infoize(std::ostream & os) const;
 
 private:
 	/// width of brace character

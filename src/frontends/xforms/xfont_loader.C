@@ -147,6 +147,11 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 				new FontInfo("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
+		case LyXFont::WASY_FAMILY:
+			fontinfo[family][series][shape] =
+				new FontInfo("-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
 		default:
 			break;
 	}

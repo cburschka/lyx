@@ -59,6 +59,8 @@ public:
 		///
 		EUFRAK_FAMILY,
 		///
+		WASY_FAMILY,
+		///
 		INHERIT_FAMILY,
 		///
 		IGNORE_FAMILY,
@@ -425,6 +427,7 @@ bool LyXFont::isSymbolFont() const
 	case LyXFont::CMEX_FAMILY:
 	case LyXFont::MSA_FAMILY:
 	case LyXFont::MSB_FAMILY:
+	case LyXFont::WASY_FAMILY:
 		return true;
 	default:
 		return false;

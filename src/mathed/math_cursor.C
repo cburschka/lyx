@@ -727,6 +727,7 @@ void MathCursor::getPos(int & x, int & y)
 	if (array().empty())
 		x += 2;
 	y = xarray().yo();
+	lyxerr << "getPos: " << x << " " << y << "\n";
 }
 
 
@@ -768,7 +769,7 @@ MathCursor::pos_type & MathCursor::pos()
 
 MathUnknownInset * MathCursor::inMacroMode() const
 {
-	if (pos() == 0)
+	if (!hasPrevAtom())
 		return 0;
 	MathUnknownInset * p = prevAtom()->asUnknownInset();
 	return (p && !p->final()) ? p : 0;
@@ -1444,10 +1445,15 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	// leave autocorrect mode if necessary
-	if (autocorrect_ && c == ' ') {
-		autocorrect_ = false;
-		return true;
+	// This is annoying as one has to press <space> far too often.
+	// Disable it.
+
+	if (0) {
+		// leave autocorrect mode if necessary
+		if (autocorrect_ && c == ' ') {
+			autocorrect_ = false;
+			return true;
+		}
 	}
 
 	// just clear selection on pressing the space bar
@@ -1536,8 +1542,8 @@ bool MathCursor::interpret(char c)
 */
 
 	// try auto-correction
-	if (autocorrect_ && hasPrevAtom() && math_autocorrect(prevAtom(), c))
-		return true;
+	//if (autocorrect_ && hasPrevAtom() && math_autocorrect(prevAtom(), c))
+	//	return true;
 
 	// no special circumstances, so insert the character without any fuss
 	insert(c);

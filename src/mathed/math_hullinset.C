@@ -193,6 +193,7 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 	// for markers
 	width_   += 2;
 	descent_ += 1;
+	ascent_  += 1;
 }
 
 
@@ -210,7 +211,7 @@ void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 		}
 	}
 
-	drawMarkers(pi, x, y);
+	drawMarkers2(pi, x, y);
 }
 
 

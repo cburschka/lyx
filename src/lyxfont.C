@@ -41,7 +41,7 @@ namespace {
 
 char const * GUIFamilyNames[LyXFont::NUM_FAMILIES + 2 /* default & error */] =
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"),
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy",
   N_("Inherit"), N_("Ignore") };
 
 char const * GUISeriesNames[4] =
@@ -65,7 +65,7 @@ char const * GUIMiscNames[5] =
 //
 char const * LyXFamilyNames[LyXFont::NUM_FAMILIES + 2 /* default & error */] =
 { "roman", "sans", "typewriter", "symbol",
-  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy",
   "default", "error" };
 
 char const * LyXSeriesNames[4] =
