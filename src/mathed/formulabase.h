@@ -82,10 +82,6 @@ public:
 	virtual Inset * clone(Buffer const &, bool same_id = false) const = 0;
 	///
 	virtual Inset::Code lyxCode() const;
-#if 0
-	///
-	virtual LyXFont const convertFont(LyXFont const & f) const;
-#endif
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///

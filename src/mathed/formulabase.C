@@ -890,24 +890,6 @@ Inset::Code InsetFormulaBase::lyxCode() const
 }
 
 
-#if 0
-LyXFont const InsetFormulaBase::convertFont(LyXFont const & f) const
-{
-#warning Andre, you should be able to remove this now?
-	// or change it to
-#if 1
-	return f;
-#else
-	// (Lgb)
-	
-	// We have already discussed what was here
-	LyXFont font(f);
-	return font;
-#endif
-}
-#endif
-
-
 void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 {
 	if (bv->available()) {

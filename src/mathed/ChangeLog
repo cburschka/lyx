@@ -7,7 +7,9 @@
 
 	* math_funcliminset.[Ch]: dedicated new inset for \lim, \max, \min...
 	
-	* math_diminset.h: make cahce variables mutable
+	* math_diminset.h: make cache variables mutable, remove const_cast
+
+	* formulabase.[Ch]: remove unneeded convertFont()
 
 2001-08-01  André Pönitz  <poenitz@gmx.net>
 
