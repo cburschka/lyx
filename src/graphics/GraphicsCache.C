@@ -1,10 +1,11 @@
-/*
+/**
  * \file GraphicsCache.C
- * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
- * \author Baruch Even <baruch.even@writeme.com>
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Baruch Even
+ * \author Angus Leeming
+ *
+ * Full author contact details available in file CREDITS
  */
 
 #include <config.h>

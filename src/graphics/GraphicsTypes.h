@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file GraphicsTypes.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- *  \author Angus Leeming <leeming@lyx.org>
+ *  \author Angus Leeming 
+ *
+ * Full author contact details available in file CREDITS
  *
  *  All that header files outside the graphics subdirectory should need to
  *  access.

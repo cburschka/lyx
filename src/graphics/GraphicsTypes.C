@@ -1,8 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file GraphicsTypes.C
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
+ *
+ *  \author Rob Lahaye
+ *
+ * Full author contact details available in file CREDITS
  */
 
 #include "graphics/GraphicsTypes.h"

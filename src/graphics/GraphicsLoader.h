@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file GraphicsLoader.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- *  \author Angus Leeming <leeming@lyx.org>
+ *  \author Angus Leeming 
+ *
+ * Full author contact details available in file CREDITS
  *
  *  The public face of the graphics cache.
  *

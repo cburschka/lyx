@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  *  \file GraphicsImage.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- *  \author Baruch Even <baruch.even@writeme.com>
- *  \author Angus Leeming <leeming@lyx.org>
+ *  \author Baruch Even 
+ *  \author Angus Leeming 
+ *
+ * Full author contact details available in file CREDITS
  *
  *  An abstract base class for the images themselves.
  *  Allows the user to retrieve the pixmap, once loaded and to issue commands

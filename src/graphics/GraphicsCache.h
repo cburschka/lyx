@@ -1,11 +1,12 @@
 // -*- C++ -*-
 /**
  *  \file GraphicsCache.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Baruch Even <baruch.even@writeme.com>
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Baruch Even
+ * \author Angus Leeming
+ *
+ * Full author contact details available in file CREDITS
  *
  *  grfx::Cache is the manager of the image cache.
  *  It is responsible for creating the grfx::CacheItem's and maintaining them.

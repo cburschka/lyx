@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file PreviewLoader.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details available in file CREDITS
  *
  *  grfx::PreviewLoader collects latex snippets together. Then, on a
  *  startLoading() call, these are dumped to file and processed, converting

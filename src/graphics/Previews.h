@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /**
  *  \file Previews.h
- *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Angus Leeming <leeming@lyx.org>
+ * \author Angus Leeming 
+ *
+ * Full author contact details available in file CREDITS
  *
  *  grfx::Previews is a singleton class that stores the grfx::PreviewLoader
  *  for each buffer requiring one.
