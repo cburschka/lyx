@@ -44,7 +44,7 @@ void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 	dim.a = font_metrics::maxAscent(font);
 	dim.d = font_metrics::maxDescent(font);
 
-	char const * s = 0;
+	string s;
 	switch (kind_) {
 		case LIGATURE_BREAK:      s = "|";     break;
 		case END_OF_SENTENCE:     s = ".";     break;
