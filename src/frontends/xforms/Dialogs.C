@@ -32,6 +32,7 @@
 #include "ControlParagraph.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlSendto.h"
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -66,6 +67,7 @@
 #include "FormTabular.h"
 #include "FormTexinfo.h"
 #include "FormSearch.h"
+#include "FormSendto.h"
 #include "FormShowFile.h"
 #include "FormTabularCreate.h"
 #include "FormText.h"
@@ -112,14 +114,14 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 
 
 char const * const dialognames[] = {
-"aboutlyx", "bibitem", "bibtex", "branch", "box", "changes", "character",
+"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "error", "errorlist" , "ert", "external", "file", "findreplace",
 "float", "graphics", "include", "index", "label", "log", "mathpanel",
 "mathaccents", "matharrows", "mathoperators", "mathrelations",
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+"note", "paragraph", "ref", "sendto", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -429,6 +431,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "sendto") {
+		dialog->setController(new ControlSendto(*dialog));
+		dialog->setView(new FormSendto(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new FormTabular(*dialog));

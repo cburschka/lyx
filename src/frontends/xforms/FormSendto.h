@@ -12,20 +12,20 @@
 #ifndef FORMSENDTO_H
 #define FORMSENDTO_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include <vector>
 
+struct FD_sendto;
 class ControlSendto;
 class Format;
-struct FD_sendto;
 
 /** This class provides an XForms implementation of the Custom Export Dialog.
  */
-class FormSendto : public FormCB<ControlSendto, FormDB<FD_sendto> > {
+class FormSendto
+	: public FormController<ControlSendto, FormView<FD_sendto> > {
 public:
 	///
-	FormSendto();
+	FormSendto(Dialog &);
 private:
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();

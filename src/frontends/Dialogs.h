@@ -73,8 +73,6 @@ public:
 	void showPreferences();
 	///
 	void showPrint();
-	///
-	void showSendto();
 	/// bring up the spellchecker
 	void showSpellchecker();
 	//@}

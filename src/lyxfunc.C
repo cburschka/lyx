@@ -78,6 +78,7 @@
 #include "support/globbing.h"
 #include "support/path.h"
 #include "support/path_defines.h"
+#include "support/systemcall.h"
 #include "support/tostr.h"
 #include "support/std_sstream.h"
 #include "support/os.h"
@@ -88,6 +89,7 @@ using lyx::support::AddName;
 using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
+using lyx::support::contains;
 using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::FileSearch;
@@ -103,7 +105,9 @@ using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::strToInt;
 using lyx::support::strToUnsignedInt;
+using lyx::support::subst;
 using lyx::support::system_lyxdir;
+using lyx::support::Systemcall;
 using lyx::support::token;
 using lyx::support::trim;
 using lyx::support::user_lyxdir;
@@ -477,6 +481,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_KMAP_SEC:
 	case LFUN_KMAP_TOGGLE:
 	case LFUN_REPEAT:
+	case LFUN_EXPORT_CUSTOM:
 	case LFUN_SEQUENCE:
 	case LFUN_SAVEPREFERENCES:
 	case LFUN_SCREEN_FONT_UPDATE:
@@ -675,12 +680,55 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		case LFUN_EXPORT:
 			if (argument == "custom")
-				owner->getDialogs().showSendto();
+				owner->getDialogs().show("sendto");
 			else {
 				Exporter::Export(owner->buffer(), argument, false);
 				view()->showErrorList(BufferFormat(*owner->buffer()));
 			}
 			break;
+
+		case LFUN_EXPORT_CUSTOM: {
+			string format_name;
+			string command = split(argument, format_name, ' ');
+			Format const * format = formats.getFormat(format_name);
+			if (!format) {
+				lyxerr << "Format \"" << format_name
+				       << "\" not recognized!"
+				       << std::endl;
+				break;
+			}
+
+			Buffer * buffer = owner->buffer();
+
+			// The name of the file created by the conversion process
+			string filename;
+
+			// Output to filename
+			if (format->name() == "lyx") {
+				string const latexname =
+					buffer->getLatexName(false);
+				filename = ChangeExtension(latexname,
+							   format->extension());
+				filename = AddName(buffer->temppath(), filename);
+
+				if (!buffer->writeFile(filename))
+					break;
+
+			} else {
+				Exporter::Export(buffer, format_name, true,
+						 filename);
+			}
+
+			// Substitute $$FName for filename
+			if (!contains(command, "$$FName"))
+				command = "( " + command + " ) < $$FName";
+			command = subst(command, "$$FName", filename);
+
+			// Execute the command in the background
+			Systemcall call;
+			call.startscript(Systemcall::DontWait, command);
+			break;
+		}
 
 		case LFUN_IMPORT:
 			doImport(argument);

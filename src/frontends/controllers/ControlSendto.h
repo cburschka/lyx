@@ -12,19 +12,25 @@
 #ifndef CONTROLSENDTO_H
 #define CONTROLSENDTO_H
 
-
-#include "ControlDialog_impl.h"
-
+#include "Dialog.h"
 #include <vector>
 
 class Format;
 
 /** A controller for the Custom Export dialogs.
  */
-class ControlSendto : public ControlDialogBD {
+class ControlSendto : public Dialog::Controller {
 public:
 	///
-	ControlSendto(LyXView &, Dialogs &);
+	ControlSendto(Dialog &);
+	///
+	virtual bool initialiseParams(std::string const & data);
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// Return a vector of those formats that can be exported from "lyx".
 	std::vector<Format const *> const allFormats() const;
@@ -37,8 +43,6 @@ public:
 	std::string const getCommand() const { return command_; };
 	void setCommand(std::string const &);
 private:
-	///
-	virtual void apply();
 	///
 	Format const * format_;
 	///

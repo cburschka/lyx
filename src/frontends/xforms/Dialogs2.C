@@ -35,10 +35,6 @@
 #include "FormPrint.h"
 #include "forms/form_print.h"
 
-#include "ControlSendto.h"
-#include "FormSendto.h"
-#include "forms/form_sendto.h"
-
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
@@ -55,9 +51,6 @@ PreferencesDialog;
 typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
 PrintDialog;
 
-typedef GUI<ControlSendto, FormSendto, OkApplyCancelPolicy, xformsBC>
-SendtoDialog;
-
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
@@ -69,7 +62,6 @@ struct Dialogs::Impl {
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
-	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 };
 
@@ -79,7 +71,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  preamble(lv, d),
 	  preferences(lv, d),
 	  print(lv, d),
-	  sendto(lv, d),
 	  spellchecker(lv, d)
 {}
 
@@ -117,12 +108,6 @@ void Dialogs::showPreferences()
 void Dialogs::showPrint()
 {
 	pimpl_->print.controller().show();
-}
-
-
-void Dialogs::showSendto()
-{
-	pimpl_->sendto.controller().show();
 }
 
 

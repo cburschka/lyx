@@ -1,3 +1,10 @@
+2004-03-27  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added sendto, dialog.
+	* Dialogs2.C (showSendto): removed.
+
+	* QSendto.[Ch]: converted to the Dialog-based scheme.
+
 2004-03-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLyXKeySym.C (print): new method; print a KeySym using Qt syntax

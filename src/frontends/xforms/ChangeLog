@@ -1,3 +1,11 @@
+2004-03-27  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added sendto, dialog.
+	* Dialogs2.C (showSendto): removed.
+
+	* FormSendto.[Ch]:
+	* forms/form_sendto.fd: converted to the Dialog-based scheme.
+
 2004-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XLyXKeySym.C (print): new method; print a keysym using

@@ -82,6 +82,7 @@ xforms_objects = \
 	../xforms/FormBase.lo \
 	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
+	../xforms/FormBox.lo \
 	../xforms/FormBranch.lo \
 	../xforms/FormBrowser.lo \
 	../xforms/FormChanges.lo \
@@ -118,6 +119,7 @@ xforms_objects = \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
 	../xforms/FormToc.lo \
+	../xforms/FormVSpace.lo \
 	../xforms/FormWrap.lo \
 	../xforms/freebrowser.lo \
 	../xforms/input_validators.lo \

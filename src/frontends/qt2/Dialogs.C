@@ -31,6 +31,7 @@
 #include "ControlParagraph.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlSendto.h"
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -65,6 +66,7 @@
 #include "QParagraph.h"
 #include "QRef.h"
 #include "QSearch.h"
+#include "QSendto.h"
 #include "QShowFile.h"
 #include "QTabular.h"
 #include "QTabularCreate.h"
@@ -91,7 +93,7 @@ char const * const dialognames[] = {
 "citation", "error", "errorlist", "ert", "external", "file", "findreplace",
 "float", "graphics", "include", "index", "label", "log", "mathpanel",
 "mathdelimiter", "mathmatrix",
-"note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+"note", "paragraph", "ref", "sendto", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -234,6 +236,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new QRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "sendto") {
+		dialog->setController(new ControlSendto(*dialog));
+		dialog->setView(new QSendto(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new QTabular(*dialog));

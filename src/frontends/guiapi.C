@@ -46,12 +46,6 @@ void gui_ShowPrint(Dialogs & d)
 }
 
 
-void gui_ShowSendto(Dialogs & d)
-{
-	d.showSendto();
-}
-
-
 void gui_ShowSpellchecker(Dialogs & d)
 {
 	d.showSpellchecker();

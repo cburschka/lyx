@@ -10,35 +10,44 @@
 
 #include <config.h>
 
-
 #include "ControlSendto.h"
-#include "ViewBase.h"
 #include "buffer.h"
 #include "converter.h"
 #include "format.h"
-#include "exporter.h"
+#include "funcrequest.h"
 #include "lyxrc.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
 
 using lyx::support::AddName;
-using lyx::support::ChangeExtension;
-using lyx::support::contains;
-using lyx::support::subst;
-using lyx::support::Systemcall;
 using lyx::support::trim;
 
 using std::vector;
 using std::string;
 
 
-ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d),
-	  format_(0),
-	  command_(lyxrc.custom_export_command)
+ControlSendto::ControlSendto(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
+
+
+bool ControlSendto::initialiseParams(std::string const &)
+{
+	format_ = 0;
+	command_ = lyxrc.custom_export_command;
+	return true;
+}
+
+
+void ControlSendto::dispatchParams()
+{
+	if (command_.empty() || !format_ || format_->name().empty())
+		return;
+
+	string const data = format_->name() + " " + command_;
+	kernel().dispatch(FuncRequest(LFUN_EXPORT_CUSTOM, data));
+}
 
 
 vector<Format const *> const ControlSendto::allFormats() const
@@ -48,15 +57,15 @@ vector<Format const *> const ControlSendto::allFormats() const
 	exports.push_back("lyx");
 	exports.push_back("text");
 
-#warning Can the doc ever be all/any of these at the same time? (Lgb)
-	// I think some if else if is in order.
-	if (buffer().isLatex())
+	Buffer const & buffer = kernel().buffer();
+
+	if (buffer.isLatex())
 		exports.push_back("latex");
-	if (buffer().isLinuxDoc())
+	else if (buffer.isLinuxDoc())
 		exports.push_back("linuxdoc");
-	if (buffer().isDocBook())
+	else if (buffer.isDocBook())
 		exports.push_back("docbook");
-	if (buffer().isLiterate())
+	else if (buffer.isLiterate())
 		exports.push_back("literate");
 
 	// Loop over these native formats and ascertain what formats we
@@ -100,42 +109,4 @@ void ControlSendto::setFormat(Format const * fmt)
 void ControlSendto::setCommand(string const & cmd)
 {
 	command_ = trim(cmd);
-}
-
-
-void ControlSendto::apply()
-{
-	if (!bufferIsAvailable())
-		return;
-
-	view().apply();
-
-	if (command_.empty() || !format_)
-		return;
-
-	// The name of the file created by the conversion process
-	string filename;
-
-	// Output to filename
-	if (format_->name() == "lyx") {
-		filename = ChangeExtension(buffer()->getLatexName(false),
-					   format_->extension());
-		filename = AddName(buffer()->temppath(), filename);
-
-		if (!buffer()->writeFile(filename))
-			return;
-
-	} else {
-		Exporter::Export(buffer(), format_->name(), true, filename);
-	}
-
-	// Substitute $$FName for filename
-	string command = command_;
-	if (!contains(command, "$$FName"))
-		command = "( " + command + " ) < $$FName";
-	command = subst(command, "$$FName", filename);
-
-	// Execute the command in the background
-	Systemcall call;
-	call.startscript(Systemcall::DontWait, command);
 }

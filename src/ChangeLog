@@ -1,5 +1,12 @@
 2004-03-27  Angus Leeming  <leeming@lyx.org>
 
+	* lfuns.h:
+	* LyXAction.C (init): new LFUN_EXPORT_CUSTOM
+
+	* lyxfunc.C (getStatus, dispatch): handle LFUN_EXPORT_CUSTOM.
+
+2004-03-27  Angus Leeming  <leeming@lyx.org>
+
 	* paragraph_funcs.C (moveItem): fix memory leaks, ensure that
 	insetlist always contains non-null pointers to insets.
 

@@ -19,7 +19,6 @@
 
 #include "ControlDocument.h"
 #include "ControlPrint.h"
-#include "ControlSendto.h"
 #include "ControlSpellchecker.h"
 
 #include "QDocument.h"
@@ -32,8 +31,6 @@
 #include "QPrefsDialog.h"
 #include "QPrint.h"
 #include "QLPrintDialog.h"
-#include "QSendto.h"
-#include "QSendtoDialog.h"
 #include "QSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 
@@ -49,9 +46,6 @@ PrefsDialog;
 typedef GUI<ControlPrint, QPrint, OkApplyCancelPolicy, Qt2BC>
 PrintDialog;
 
-typedef GUI<ControlSendto, QSendto, OkApplyCancelPolicy, Qt2BC>
-SendtoDialog;
-
 typedef GUI<ControlSpellchecker, QSpellchecker, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SpellcheckerDialog;
 
@@ -61,7 +55,6 @@ struct Dialogs::Impl {
 	DocumentDialog      document;
 	PrefsDialog         prefs;
 	PrintDialog         print;
-	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 };
 
@@ -70,7 +63,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: document(lv, d),
 	  prefs(lv, d),
 	  print(lv, d),
-	  sendto(lv, d),
 	  spellchecker(lv, d)
 {}
 
@@ -110,12 +102,6 @@ void Dialogs::showPreferences()
 void Dialogs::showPrint()
 {
 	pimpl_->print.controller().show();
-}
-
-
-void Dialogs::showSendto()
-{
-	pimpl_->sendto.controller().show();
 }
 
 

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "Qt2BC.h"
 #include "ControlSendto.h"
 #include "QSendtoDialog.h"
@@ -26,11 +25,11 @@
 using std::vector;
 using std::string;
 
-typedef Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> > base_class;
+typedef QController<ControlSendto, QView<QSendtoDialog> > base_class;
 
 
-QSendto::QSendto()
-	: base_class(_("LyX: Send Document to Command"))
+QSendto::QSendto(Dialog & parent)
+	: base_class(parent, _("LyX: Send Document to Command"))
 {
 }
 

@@ -12,8 +12,7 @@
 #ifndef QSENDTO_H
 #define QSENDTO_H
 
-
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 #include <vector>
 
@@ -24,13 +23,13 @@ class Format;
 /** This class provides a Qt implementation of the Custom Export Dialog.
  */
 class QSendto
-	: public Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> >
+	: public QController<ControlSendto, QView<QSendtoDialog> >
 {
 public:
 	///
 	friend class QSendtoDialog;
 	///
-	QSendto();
+	QSendto(Dialog &);
 protected:
 	virtual bool isValid();
 private:

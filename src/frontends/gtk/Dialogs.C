@@ -17,6 +17,7 @@
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
+#include "ControlBox.h"
 #include "ControlBranch.h"
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
@@ -33,11 +34,14 @@
 #include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
+#include "ControlSearch.h"
+#include "ControlSendto.h"
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlTexinfo.h"
 #include "ControlToc.h"
+#include "ControlVSpace.h"
 #include "ControlWrap.h"
 
 #include "GAboutlyx.h"
@@ -45,6 +49,7 @@
 #include "GMathDelim.h"
 #include "FormBibitem.h"
 #include "FormBibtex.h"
+#include "FormBox.h"
 #include "FormBranch.h"
 #include "FormChanges.h"
 #include "FormCharacter.h"
@@ -64,12 +69,15 @@
 #include "FormNote.h"
 #include "FormParagraph.h"
 #include "FormRef.h"
+#include "FormSearch.h"
+#include "FormSendto.h"
 #include "FormTabular.h"
 #include "FormTexinfo.h"
 #include "FormShowFile.h"
 #include "GTableCreate.h"
 #include "FormToc.h"
 #include "GUrl.h"
+#include "FormVSpace.h"
 #include "FormWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -110,20 +118,21 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 }
 
 
-char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch", "changes",
-"character", "citation", "error", "errorlist" , "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "latexlog", "mathpanel",
-"mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
-"mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
-"mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
-"mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"box", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+char const * const dialognames[] = {
+"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
+"citation", "error", "errorlist" , "ert", "external", "file", "findreplace",
+"float", "graphics", "include", "index", "label", "log", "mathpanel",
+"mathaccents", "matharrows", "mathoperators", "mathrelations",
+"mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
+"mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
+"mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
+"box", "note", "paragraph", "ref", "sendto", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
 #endif
 
-"toc", "url", "wrap" };
+"toc", "url", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -168,6 +177,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new FormBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "box") {
+		dialog->setController(new ControlBox(*dialog));
+		dialog->setView(new FormBox(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "character") {
 		dialog->setController(new ControlCharacter(*dialog));
 		dialog->setView(new FormCharacter(*dialog));
@@ -196,6 +209,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlShowFile(*dialog));
 		dialog->setView(new FormShowFile(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "findreplace") {
+		dialog->setController(new ControlSearch(*dialog));
+		dialog->setView(new FormSearch(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new FormFloat(*dialog));
@@ -220,7 +237,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new GText(*dialog,
 					  _("Label"), _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "latexlog") {
+	} else if (name == "log") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -424,6 +441,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new FormRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "sendto") {
+		dialog->setController(new ControlSendto(*dialog));
+		dialog->setView(new FormSendto(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new FormTabular(*dialog));
@@ -452,6 +473,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new GUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "vspace") {
+		dialog->setController(new ControlVSpace(*dialog));
+		dialog->setView(new FormVSpace(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new FormWrap(*dialog));

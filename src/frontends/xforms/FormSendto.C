@@ -30,10 +30,10 @@ using std::vector;
 using std::string;
 
 
-typedef FormCB<ControlSendto, FormDB<FD_sendto> > base_class;
+typedef FormController<ControlSendto, FormView<FD_sendto> > base_class;
 
-FormSendto::FormSendto()
-	: base_class(_("Send document to command"))
+FormSendto::FormSendto(Dialog & parent)
+	: base_class(parent, _("Send document to command"))
 {}
 
 

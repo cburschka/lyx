@@ -335,6 +335,7 @@ enum kb_action {
 	LFUN_WORD_FIND,
 	LFUN_WORD_REPLACE,
 	// 255
+	LFUN_EXPORT_CUSTOM,
 
 	LFUN_LASTACTION                  // end of the table
 };
