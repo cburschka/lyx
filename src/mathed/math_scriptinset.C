@@ -573,7 +573,7 @@ if (1) {
 }
 
 
-void MathScriptInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void MathScriptInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "MathScriptInset: request: " << cmd << std::endl;
 
@@ -592,5 +592,5 @@ void MathScriptInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		return;
 	}
 
-	MathNestInset::priv_dispatch(cur, cmd);
+	MathNestInset::doDispatch(cur, cmd);
 }

@@ -970,7 +970,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 }
 
 
-void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -978,7 +978,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FINISHED_RIGHT:
 	case LFUN_FINISHED_UP:
 	case LFUN_FINISHED_DOWN:
-		MathGridInset::priv_dispatch(cur, cmd);
+		MathGridInset::doDispatch(cur, cmd);
 		notifyCursorLeaves(cur);
 		break;
 
@@ -994,7 +994,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
 		}
-		MathGridInset::priv_dispatch(cur, cmd);
+		MathGridInset::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_MATH_NUMBER:
@@ -1076,7 +1076,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		MathGridInset::priv_dispatch(cur, cmd);
+		MathGridInset::doDispatch(cur, cmd);
 		break;
 	}
 }

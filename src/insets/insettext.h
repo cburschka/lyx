@@ -139,7 +139,7 @@ public:
 protected:
 	InsetText(InsetText const &);
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 

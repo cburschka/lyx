@@ -98,7 +98,7 @@ int InsetCommand::docbook(Buffer const &, ostream &,
 }
 
 
-void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_REFRESH:
@@ -129,7 +129,7 @@ void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetOld::priv_dispatch(cur, cmd);
+		InsetOld::doDispatch(cur, cmd);
 		break;
 	}
 

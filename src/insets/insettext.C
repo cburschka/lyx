@@ -290,9 +290,9 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y) const
 }
 
 
-void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "InsetText::priv_dispatch: " << cmd.action << " " << endl;
+	//lyxerr << "InsetText::doDispatch: " << cmd.action << " " << endl;
 	setViewCache(&cur.bv());
 
 	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
@@ -468,7 +468,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 #warning John, have a look here. (Lgb)
 #endif
 	ParagraphList & pl = paragraphs();
-	
+
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = pl.insert(pl.end(), *pit);
 	++pit;

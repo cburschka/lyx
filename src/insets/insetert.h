@@ -71,7 +71,7 @@ public:
 protected:
 	InsetERT(InsetERT const &);
 	///
-	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:

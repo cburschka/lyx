@@ -1008,7 +1008,7 @@ void MathGridInset::splitCell(LCursor & cur)
 }
 
 
-void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -1018,7 +1018,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//	GridInsetMailer(*this).showDialog();
 		//	return DispatchResult(true, true);
 		//}
-		MathNestInset::priv_dispatch(cur, cmd);
+		MathNestInset::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -1205,7 +1205,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		MathNestInset::priv_dispatch(cur, cmd);
+		MathNestInset::doDispatch(cur, cmd);
 	}
 }
 

@@ -124,11 +124,11 @@ void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	cur.needsUpdate();
 	cur.dispatched();
-	priv_dispatch(cur, cmd);
+	doDispatch(cur, cmd);
 }
 
 
-void InsetBase::priv_dispatch(LCursor & cur, FuncRequest &)
+void InsetBase::doDispatch(LCursor & cur, FuncRequest &)
 {
 	cur.noUpdate();
 	cur.undispatched();

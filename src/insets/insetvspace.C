@@ -60,7 +60,7 @@ std::auto_ptr<InsetBase> InsetVSpace::doClone() const
 }
 
 
-void InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -74,7 +74,7 @@ void InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::priv_dispatch(cur, cmd);
+		InsetOld::doDispatch(cur, cmd);
 		break;
 	}
 }

@@ -98,8 +98,7 @@ public:
 	/// say whether we have displayed limits
 	void infoize2(std::ostream & os) const;
 protected:
-	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// returns x offset for main part

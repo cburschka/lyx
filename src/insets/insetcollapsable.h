@@ -89,7 +89,7 @@ protected:
 	///
 	void setStatus(CollapseStatus st);
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///

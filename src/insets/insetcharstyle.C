@@ -163,7 +163,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 }
 
 
-void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	setStatus(Inlined);
 	switch (cmd.action) {
@@ -171,11 +171,11 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			if (cmd.button() == mouse_button::button3)
 				has_label_ = !has_label_;
 			else
-				InsetText::priv_dispatch(cur, cmd);
+				InsetText::doDispatch(cur, cmd);
 			break;
 
 		default:
-			InsetCollapsable::priv_dispatch(cur, cmd);
+			InsetCollapsable::doDispatch(cur, cmd);
 			break;
 	}
 }

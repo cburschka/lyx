@@ -56,7 +56,7 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-void RefInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
@@ -91,7 +91,7 @@ void RefInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		CommandInset::priv_dispatch(cur, cmd);
+		CommandInset::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -143,7 +143,7 @@ int RefInset::docbook(Buffer const & buf, std::ostream & os, OutputParams const 
 {
 	if (cell(1).empty()) {
 		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, asString(cell(0)));
-		if (runparams.flavor == OutputParams::XML) 
+		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
 			os << "\">";

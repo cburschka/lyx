@@ -179,7 +179,7 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_GRAPHICS_EDIT: {
@@ -210,7 +210,7 @@ void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::priv_dispatch(cur, cmd);
+		InsetOld::doDispatch(cur, cmd);
 		break;
 	}
 }

@@ -97,7 +97,7 @@ public:
 
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;

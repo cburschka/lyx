@@ -9,7 +9,7 @@
  * To add a new function:
  * - add a new enum constant immediately before LFUN_LASTACTION
  * - add an appropriate line in LyXAction.C
- * - add a branch to a suitable ::priv_dispatch() method
+ * - add a branch to a suitable ::doDispatch() method
  * - add correct test to the corresponding ::getStatus() method
  */
 
@@ -24,7 +24,7 @@
  * They are managed in LyXAction.C and handled in various
  * ::dispatch() functions, starting with LyXFunc.C:dispatch(),
  * BufferView_pimpl::dispatch(), LCursor::dispatch() and
- * Inset*::priv_dispatch();
+ * Inset*::doDispatch();
  */
 enum kb_action {
 	LFUN_UNKNOWN_ACTION = -1,

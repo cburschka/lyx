@@ -90,7 +90,7 @@ int MathMBoxInset::latex(Buffer const & buf, std::ostream & os,
 }
 
 
-void MathMBoxInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void MathMBoxInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	text_.dispatch(cur, cmd);
 }

@@ -27,9 +27,6 @@ public:
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
-
-	///
 	bool inMathed() const { return false; }
 	///
 	bool isActive() const { return true; }
@@ -44,6 +41,8 @@ public:
 	///
 	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 protected:
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+
 	///
 	mutable LyXText text_;
 	///

@@ -170,7 +170,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetBox::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -190,11 +190,11 @@ void InsetBox::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			InsetBoxMailer(*this).showDialog(&cur.bv());
 			break;
 		}
-		InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 
 	default:
-		InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }

@@ -209,9 +209,9 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-void InsetERT::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "\nInsetERT::priv_dispatch (begin): cmd: " << cmd << endl;
+	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -222,7 +222,7 @@ void InsetERT::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }

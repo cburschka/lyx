@@ -251,30 +251,30 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y) const
 }
 
 
-void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-// 	lyxerr << "InsetCollapsable::priv_dispatch (begin): cmd: " << cmd
-// 	       << "  button y: " << button_dim.y2
-// 	       << "  coll/inline/open: " << status_ << endl;
+//	lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
+//	       << "  button y: " << button_dim.y2
+//	       << "  coll/inline/open: " << status_ << endl;
 
-	lyxerr << "InsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+	lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
 		<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 		if (status_ == Inlined)
-			InsetText::priv_dispatch(cur, cmd);
+			InsetText::doDispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))
-			InsetText::priv_dispatch(cur, cmd);
+			InsetText::doDispatch(cur, cmd);
 		else
 		  cur.noUpdate();
 		break;
 
 	case LFUN_MOUSE_MOTION:
 		if (status_ == Inlined)
-			InsetText::priv_dispatch(cur, cmd);
+			InsetText::doDispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))
-			InsetText::priv_dispatch(cur, cmd);
+			InsetText::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_MOUSE_RELEASE:
@@ -300,14 +300,14 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 				cur.bv().cursor() = cur;
 			} else {
 				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-				InsetText::priv_dispatch(cur, cmd);
+				InsetText::doDispatch(cur, cmd);
 			}
 			break;
 		}
 
 		case Inlined:
 			lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
-			InsetText::priv_dispatch(cur, cmd);
+			InsetText::doDispatch(cur, cmd);
 			break;
 		}
 		break;
@@ -331,7 +331,7 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetText::priv_dispatch(cur, cmd);
+		InsetText::doDispatch(cur, cmd);
 		break;
 	}
 }

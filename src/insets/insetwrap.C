@@ -80,7 +80,7 @@ InsetWrap::~InsetWrap()
 }
 
 
-void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -101,12 +101,12 @@ void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			InsetWrapMailer(*this).showDialog(&cur.bv());
 			break;
 		}
-		InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 
 	default:
-		InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }

@@ -386,7 +386,7 @@ protected:
 	InsetBase();
 	InsetBase(InsetBase const &);
 	// the real dispatcher
-	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;
 };

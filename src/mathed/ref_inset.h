@@ -60,8 +60,7 @@ public:
 	///
 	static std::string const & getName(int type);
 protected:
-	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 };
 
 #endif

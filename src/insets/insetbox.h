@@ -101,7 +101,7 @@ public:
 	};
 protected:
 	InsetBox(InsetBox const &);
-	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetBoxParams;
 

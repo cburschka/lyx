@@ -410,7 +410,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
 }
 
 
-void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "  cur:\n" << cur << endl;

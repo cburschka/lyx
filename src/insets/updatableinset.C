@@ -89,7 +89,7 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 }
 
 
-void UpdatableInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void UpdatableInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	//case LFUN_MOUSE_RELEASE:

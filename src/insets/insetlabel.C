@@ -92,7 +92,7 @@ void changeRefsIfUnique(BufferView & bv, string const & from, string const & to)
 } // namespace anon
 
 
-void InsetLabel::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -111,7 +111,7 @@ void InsetLabel::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetCommand::priv_dispatch(cur, cmd);
+		InsetCommand::doDispatch(cur, cmd);
 		break;
 	}
 }

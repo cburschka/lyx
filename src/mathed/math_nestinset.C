@@ -380,7 +380,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 }
 
 
-void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "MathNestInset: request: " << cmd << std::endl;
 	//CursorSlice sl = cur.current();
@@ -794,7 +794,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		MathDimInset::priv_dispatch(cur, cmd);
+		MathDimInset::doDispatch(cur, cmd);
 		break;
 	}
 }

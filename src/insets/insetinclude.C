@@ -119,7 +119,7 @@ InsetInclude::~InsetInclude()
 }
 
 
-void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest & cmd)
+void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
@@ -143,7 +143,7 @@ void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::priv_dispatch(cur, cmd);
+		InsetOld::doDispatch(cur, cmd);
 		break;
 	}
 }

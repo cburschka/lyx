@@ -72,7 +72,7 @@ public:
 protected:
 	InsetNote(InsetNote const &);
 	///
-	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetNoteParams;
 
