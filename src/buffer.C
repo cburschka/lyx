@@ -368,16 +368,16 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 	if (token == "\\layout") {
 		lex.pushToken(token);
 
-		Paragraph * par = new Paragraph();
-		par->params().depth(depth);
+		Paragraph par;
+		par.params().depth(depth);
 		if (params.tracking_changes)
-			par->trackChanges();
+			par.trackChanges();
 		LyXFont f(LyXFont::ALL_INHERIT, params.language);
-		par->setFont(0, f);
+		par.setFont(0, f);
 
 		// FIXME: goddamn InsetTabular makes us pass a Buffer
 		// not BufferParams
-		unknown += ::readParagraph(*this, *par, lex);
+		unknown += ::readParagraph(*this, par, lex);
 
 		// insert after
 		if (pit != pars.end())

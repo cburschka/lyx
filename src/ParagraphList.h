@@ -63,7 +63,7 @@ public:
 	///
 	ParagraphList & operator=(ParagraphList const &);
 	///
-	iterator insert(iterator it, Paragraph * par);
+	iterator insert(iterator it, Paragraph const & par);
 	///
 	void insert(iterator pos, iterator beg, iterator end);
 	///

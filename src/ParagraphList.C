@@ -110,8 +110,10 @@ ParagraphList & ParagraphList::operator=(ParagraphList const & rhs)
 
 
 ParagraphList::iterator
-ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
+ParagraphList::insert(ParagraphList::iterator it, Paragraph const & p)
 {
+	Paragraph * par = new Paragraph(p, false);
+
 	if (it != end()) {
 		Paragraph * prev = it->prev_par_;
 		par->next_par_ = &*it;
@@ -136,7 +138,7 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 void ParagraphList::insert(iterator pos, iterator beg, iterator end)
 {
 	for (; beg != end; ++beg) {
-		insert(pos, new Paragraph(*beg, false));
+		insert(pos, *beg);
 	}
 }
 

@@ -1,5 +1,13 @@
 2003-05-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* paragraph_funcs.C (breakParagraph): adjust
+	(breakParagraphConservative): adjust
+
+	* buffer.C (readParagraph): adjust
+
+	* ParagraphList.C (insert): take a reference instead of a pointer
+	(insert): adjust
+
 	* paragraph.[Ch] (id): new function
 
 	* bufferlist.C (newFile): adjust

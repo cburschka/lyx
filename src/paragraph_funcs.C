@@ -51,7 +51,7 @@ void breakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp = paragraphs.insert(boost::next(par),
-							new Paragraph);
+							Paragraph());
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
@@ -150,7 +150,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 {
 	// create a new paragraph
 	ParagraphList::iterator tmp = paragraphs.insert(boost::next(par),
-							new Paragraph);
+							Paragraph());
 	tmp->makeSameLayout(*par);
 
 	// When can pos > size()?

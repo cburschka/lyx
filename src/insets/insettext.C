@@ -2649,8 +2649,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	mergeParagraph(buffer->params, paragraphs, lastbuffer);
 #else
 	ParagraphList::iterator pit = plist.begin();
-	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(),
-							new Paragraph(*pit, false));
+	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(), *pit);
 	++pit;
 	mergeParagraph(buffer->params, paragraphs, boost::prior(ins));
 
