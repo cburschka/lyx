@@ -1,3 +1,11 @@
+2000-12-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Makefile.am (lyx_SOURCES): added Floating.C
+
+	* src/Floating.h: moved all the inlines to Floating.C
+
+	* src/Floating.C: new file
+
 2000-12-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormPreferences.C (feedback): fix

@@ -16,6 +16,8 @@
 #pragma interface
 #endif
 
+#include "LString.h"
+
 /** This is a "float layout" object. It contains the parameters for how to
     handle the different kinds of floats, default ones and user created ones.
     Objects of this class is stored in a container in FloatList. The different
@@ -55,48 +57,5 @@ private:
 	///
 	bool builtin_;
 };
-
-
-inline
-Floating::Floating() 
-{}
-
-
-inline
-Floating::Floating(string const & type, string const & placement,
-		   string const & ext, string const & within,
-		   string const & style, string const & name,
-		   bool builtin)
-	: type_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), builtin_(builtin)
-{}
-
-
-inline
-string const & Floating::type() const
-{
-	return type_;
-}
-
-
-inline
-string const & Floating::placement() const
-{
-	return placement_;
-}
-
-
-inline
-string const & Floating::name() const
-{
-	return name_;
-}
-
-
-inline
-bool Floating::builtin() const
-{
-	return builtin_;
-}
 
 #endif

@@ -40,6 +40,7 @@ lyx_SOURCES = \
 	DepTable.h \
 	FloatList.C \
 	FloatList.h \
+	Floating.C \
 	Floating.h \
 	FontInfo.C \
 	FontInfo.h \
