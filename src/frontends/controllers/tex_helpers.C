@@ -50,7 +50,7 @@ void rescanTexStyles()
 	Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			LibFileSearch("scripts", "TeXFiles.sh"));
+			"sh " + LibFileSearch("scripts", "TeXFiles.sh"));
 }
 
 

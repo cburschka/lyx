@@ -1,3 +1,8 @@
+2005-01-17  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C (readFile): prepend the name of the "lyx2lyx" script
+	with "python ". Workaround for a brain-dead Windows.
+
 2005-01-16  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.[Ch] (init): rewrite code to prepend the CWD to the PATH

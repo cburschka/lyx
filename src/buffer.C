@@ -619,7 +619,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 					      filename));
 			return false;
 		}
-		string command = LibFileSearch("lyx2lyx", "lyx2lyx");
+		string command =
+			"python " + LibFileSearch("lyx2lyx", "lyx2lyx");
 		if (command.empty()) {
 			Alert::error(_("Conversion script not found"),
 				     bformat(_("%1$s is from an earlier"
