@@ -334,7 +334,7 @@ void LyXText::removeRow(Row * row)
 	if (anchor_row_ == row) {
 		if (row_prev) {
 			anchor_row_ = row_prev;
-			anchor_row_offset_ = 0;
+			anchor_row_offset_ += row_prev->height();
 		} else {
 			anchor_row_ = row->next();
 			anchor_row_offset_ -= row->height();
