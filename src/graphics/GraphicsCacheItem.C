@@ -109,14 +109,6 @@ string const findTargetFormat(string const & from)
 	if (iter == end) {
 		// We do not know how to convert the image to something loadable.
 		lyxerr << "ERROR: Do not know how to convert image." << std::endl;
-
-		string const first(_("Cannot convert image to display format"));
-		string const second1(_("Need converter from "));
-		string const second2(_(" to "));
-		string const second(second1 + from + second2 + formats[0]);
-
-		WriteAlert(first, second);
-		
 		return string();
 	}
 
@@ -146,7 +138,7 @@ GraphicsCacheItem::convertImage(string const & filename)
 
 	bool result = converters.Convert(0, filename, tempfile, from, to);
 	tempfile.append(".xpm");
-		
+
 	// For now we are synchronous
 	imageConverted(result);
 

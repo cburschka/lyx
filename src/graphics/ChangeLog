@@ -1,3 +1,8 @@
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
+	* GraphicsCacheItem.C (findTargetFormat): Removed error dialog box,
+	too annoying.
+
 2001-07-23  Baruch Even  <baruch@lyx.org>
 
 	* GraphicsCacheItem.C (convertImage): Fixed a bug with regard to loading
