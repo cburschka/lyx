@@ -738,7 +738,7 @@ string GetFileContents(string const & fname) {
 			return ofs.str();
 #else
 			ofs << '\0';
-			char const * tmp = ofs.str();
+			char const * tmp = ofs.str();
 			string ret(tmp);
 			delete[] tmp;
 			return ret;
