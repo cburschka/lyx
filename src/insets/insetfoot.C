@@ -65,3 +65,13 @@ int InsetFoot::latex(Buffer const * buf,
 
 	return i + 2;
 }
+
+
+int InsetFoot::docbook(Buffer const * buf, ostream & os) const
+{
+	os << "<footnote>";
+	int const i = inset.docbook(buf, os);
+	os << "</footnote>";
+
+	return i;
+}

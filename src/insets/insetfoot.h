@@ -37,6 +37,8 @@ public:
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
+	int docbook(Buffer const *, std::ostream &) const;
+	///
 	string const editMessage() const;
 };
 
