@@ -107,7 +107,14 @@ enum CatCode {
 	catInvalid     // 15   <delete>
 };
 
-CatCode catcode[256];  
+CatCode theCatcode[256];  
+
+
+inline CatCode catcode(unsigned char c)
+{
+	return theCatcode[c];
+}
+
 
 const unsigned char LM_TK_OPEN  = '{';
 const unsigned char LM_TK_CLOSE = '}';
@@ -128,27 +135,27 @@ enum {
 void catInit()
 {
 	for (int i = 0; i <= 255; ++i) 
-		catcode[i] = catOther;
+		theCatcode[i] = catOther;
 	for (int i = 'a'; i <= 'z'; ++i) 
-		catcode[i] = catLetter;
+		theCatcode[i] = catLetter;
 	for (int i = 'A'; i <= 'Z'; ++i) 
-		catcode[i] = catLetter;
+		theCatcode[i] = catLetter;
 
-	catcode['\\'] = catEscape;	
-	catcode['{']  = catBegin;	
-	catcode['}']  = catEnd;	
-	catcode['$']  = catMath;	
-	catcode['&']  = catAlign;	
-	catcode['\n'] = catNewline;	
-	catcode['#']  = catParameter;	
-	catcode['^']  = catSuper;	
-	catcode['_']  = catSub;	
-	catcode[''] = catIgnore;	
-	catcode[' ']  = catSpace;	
-	catcode['\t'] = catSpace;	
-	catcode['\r'] = catSpace;	
-	catcode['~']  = catActive;	
-	catcode['%']  = catComment;	
+	theCatcode['\\'] = catEscape;	
+	theCatcode['{']  = catBegin;	
+	theCatcode['}']  = catEnd;	
+	theCatcode['$']  = catMath;	
+	theCatcode['&']  = catAlign;	
+	theCatcode['\n'] = catNewline;	
+	theCatcode['#']  = catParameter;	
+	theCatcode['^']  = catSuper;	
+	theCatcode['_']  = catSub;	
+	theCatcode[''] = catIgnore;	
+	theCatcode[' ']  = catSpace;	
+	theCatcode['\t'] = catSpace;	
+	theCatcode['\r'] = catSpace;	
+	theCatcode['~']  = catActive;	
+	theCatcode['%']  = catComment;	
 }
 
 
@@ -384,14 +391,14 @@ void Parser::tokenize(string const & buffer)
 
 	istringstream is(buffer, ios::in || ios::binary);
 
-	unsigned char c;
+	char c;
 	while (is.get(c)) {
 
-		switch (catcode[c]) {
+		switch (catcode(c)) {
 			case catNewline: {
 				++lineno_; 
 				is.get(c);
-				if (catcode[c] == catNewline)
+				if (catcode(c) == catNewline)
 					; //push_back(Token("par"));
 				else {
 					push_back(Token(' ',catSpace));
@@ -401,7 +408,7 @@ void Parser::tokenize(string const & buffer)
 			}
 
 			case catComment: {
-				while (is.get(c) && catcode[c] != catNewline)
+				while (is.get(c) && catcode(c) != catNewline)
 					;
 				++lineno_; 
 				break;
@@ -410,11 +417,11 @@ void Parser::tokenize(string const & buffer)
 			case catEscape: {
 				is.get(c);
 				string s(1, c);
-				if (catcode[c] == catLetter) {
-					while (is.get(c) && catcode[c] == catLetter)
+				if (catcode(c) == catLetter) {
+					while (is.get(c) && catcode(c) == catLetter)
 						s += c;
-					if (catcode[c] == catSpace)
-						while (is.get(c) && catcode[c] == catSpace)
+					if (catcode(c) == catSpace)
+						while (is.get(c) && catcode(c) == catSpace)
 							;
 					is.putback(c);
 				}	
@@ -423,7 +430,7 @@ void Parser::tokenize(string const & buffer)
 			}
 
 			default:
-				push_back(Token(c, catcode[c]));
+				push_back(Token(c, catcode(c)));
 		}
 	}
 
