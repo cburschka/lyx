@@ -1,14 +1,14 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2003, The LyX team.
 # Roman Maurer <roman@lugos.si>, 2003.
-# $Id: sl.po,v 1.66.2.13 2003/12/16 13:37:55 lasgouttes Exp $
+# $Id: sl.po,v 1.66.2.14 2003/12/23 14:09:04 lasgouttes Exp $
 # $Source: /home/lyx/cvs/lyx-devel/po/sl.po,v $
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.3.3\n"
+"Project-Id-Version: LyX 1.3.4\n"
 "POT-Creation-Date: 2003-12-16 14:01+0100\n"
-"PO-Revision-Date: 2003-10-22 20:31+0200\n"
+"PO-Revision-Date: 2003-12-22 23:21+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -136,15 +136,13 @@ msgid "Add bibliography to TOC|#T"
 msgstr "Postavka literature"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
-#, fuzzy
 msgid "Styles:|#y"
-msgstr "Slog:  "
+msgstr "Slogi:|#l"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
 #: ../src/frontends/xforms/forms/form_preferences.fd:737
-#, fuzzy
 msgid "Browse...|#r"
-msgstr "Brskaj..."
+msgstr "Brskaj...|#r"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:206
 #: ../src/frontends/xforms/forms/form_character.fd:152
@@ -906,18 +904,16 @@ msgstr "Razno"
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:297
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:523
 #: src/frontends/xforms/FormMathsPanel.C:165
-#, fuzzy
 msgid "Dots"
-msgstr "Spisi"
+msgstr "Pike"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:62
 msgid "Negative|#N"
 msgstr "Negativno|N"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:80
-#, fuzzy
 msgid "Neg Medium|#E"
-msgstr "navadna"
+msgstr "Neg. srednje|#E"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:98
 msgid "Neg Thick|#T"
@@ -1019,9 +1015,8 @@ msgid "Keep|#K"
 msgstr "Ohrani|#O"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:242
-#, fuzzy
 msgid "Vertical space:|#e"
-msgstr "Navpièni presledki"
+msgstr "Navpièni presledek:|#p"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:278
 msgid "Keep|#p"
@@ -3665,14 +3660,12 @@ msgid "Display insets"
 msgstr "Vstavi dodatek"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
-#, fuzzy
 msgid "Do not display"
-msgstr "Ne prika¾i|#N"
+msgstr "Ne prika¾i"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:87
-#, fuzzy
 msgid "Display &Graphics:"
-msgstr "Vstavi dodatek"
+msgstr "Prikaz &grafike:"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
 msgid "Instant &preview"
@@ -4088,9 +4081,8 @@ msgid "Preferences"
 msgstr "Izbire"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-#, fuzzy
 msgid "&Save"
-msgstr "Shrani"
+msgstr "&Shrani"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
 #: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
@@ -4254,9 +4246,8 @@ msgid "&Reference:"
 msgstr "&Sklic:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
-#, fuzzy
 msgid "&Format:"
-msgstr "Formati"
+msgstr "&Format:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
 msgid "&Name:"
@@ -7507,24 +7498,20 @@ msgid "ASCII as Paragraphs...|P"
 msgstr "Ascii kot odstavki...|o"
 
 #: ../lib/ui/default.ui:299
-#, fuzzy
 msgid "Character...|C"
-msgstr "Znakovni nabor:|#Z"
+msgstr "Znak...|Z"
 
 #: ../lib/ui/default.ui:300
-#, fuzzy
 msgid "Paragraph...|P"
-msgstr "Odstavek"
+msgstr "Odstavek...|O"
 
 #: ../lib/ui/default.ui:301
-#, fuzzy
 msgid "Document...|D"
-msgstr "Spisi|S"
+msgstr "Spis...|S"
 
 #: ../lib/ui/default.ui:302
-#, fuzzy
 msgid "Tabular...|T"
-msgstr "Tabela|T"
+msgstr "Tabela...|T"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7722,9 +7709,8 @@ msgid "Moved to bookmark "
 msgstr "Premaknjen v zaznamek "
 
 #: src/BufferView_pimpl.C:864
-#, fuzzy
 msgid "Select LyX document to insert"
-msgstr "Izberite spis za vstavitev"
+msgstr "Izberite spis LyXa za vstavitev"
 
 #: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
@@ -7750,19 +7736,18 @@ msgid "Canceled."
 msgstr "Preklicano."
 
 #: src/BufferView_pimpl.C:895
-#, fuzzy, c-format
+#, c-format
 msgid "Inserting document %1$s..."
-msgstr "Vstavlja se spis"
+msgstr "Vstavlja se spis %1$s..."
 
 #: src/BufferView_pimpl.C:897
-#, fuzzy
 msgid "Inserting document "
-msgstr "Vstavlja se spis"
+msgstr "Vstavlja se spis "
 
 #: src/BufferView_pimpl.C:897 src/importer.C:47 src/lyxfunc.C:990
 #: src/lyxfunc.C:1153 src/lyxfunc.C:1734
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/BufferView_pimpl.C:904
 #, fuzzy, c-format
@@ -7770,14 +7755,12 @@ msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
 #: src/BufferView_pimpl.C:906 src/lyxfunc.C:1746
-#, fuzzy
 msgid "Document "
-msgstr "Spis"
+msgstr "Spis "
 
 #: src/BufferView_pimpl.C:906
-#, fuzzy
 msgid " inserted."
-msgstr "uvo¾ena."
+msgstr " uvo¾ena."
 
 #: src/BufferView_pimpl.C:912
 #, fuzzy, c-format
@@ -7785,9 +7768,8 @@ msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
 
 #: src/BufferView_pimpl.C:914
-#, fuzzy
 msgid "Could not insert document "
-msgstr "Spisa ni moè vstaviti"
+msgstr "Ni moè vstaviti spisa "
 
 #: src/BufferView_pimpl.C:1096 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
@@ -7803,9 +7785,8 @@ msgid "in current document."
 msgstr "v trenutnem spisu."
 
 #: src/BufferView_pimpl.C:1263
-#, fuzzy
 msgid "Unknown function!"
-msgstr "Neznana akcija"
+msgstr "Neznana funkcija!"
 
 #: src/Chktex.C:73
 #, fuzzy, c-format
@@ -7825,6 +7806,10 @@ msgid ""
 "because of class conversion from\n"
 "%3$s to %4$s"
 msgstr ""
+"Videz se je spremenil iz\n"
+"%1$s v %2$s\n"
+"zaradi pretvorbe razreda iz\n"
+"%3$s v %4$s"
 
 #: src/CutAndPaste.C:446
 msgid "Layout had to be changed from\n"
@@ -7895,9 +7880,8 @@ msgid "selection"
 msgstr "izbor"
 
 #: src/LColor.C:62
-#, fuzzy
 msgid "LaTeX text"
-msgstr "Naslov_za_LaTeX "
+msgstr "Besedilo za LaTeX"
 
 #: src/LColor.C:63
 msgid "previewed snippet"
@@ -9456,32 +9440,30 @@ msgid " strings have been replaced."
 msgstr " zamenjanih nizov."
 
 #: src/frontends/controllers/ControlSpellchecker.C:106
-#, fuzzy
 msgid ""
 "The spell-checker could not be started.\n"
 "Maybe it is mis-configured."
 msgstr ""
-"Proces ispell je iz neznanega razloga umrl.\n"
-"Morda je bil pobit."
+"Èrkovalnika ni bilo moè zagnati.\n"
+"Morda je napaèno prikrojen."
 
 #: src/frontends/controllers/ControlSpellchecker.C:109
 #: src/frontends/controllers/ControlSpellchecker.C:202
 msgid "The spell-checker has failed"
-msgstr ""
+msgstr "Èrkovalniku je spodletelo."
 
 #: src/frontends/controllers/ControlSpellchecker.C:196
-#, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
-"Proces ispell je iz neznanega razloga umrl.\n"
+"Èrkovalnik je iz neznanega razloga umrl.\n"
 "Morda je bil pobit."
 
 #: src/frontends/controllers/ControlSpellchecker.C:218
 #, fuzzy, c-format
 msgid "%1$d words checked."
-msgstr "Zaznana ena napaka"
+msgstr "%1$d words checked."
 
 #: src/frontends/controllers/ControlSpellchecker.C:222
 #: src/frontends/controllers/ControlSpellchecker.C:228
@@ -9783,19 +9765,16 @@ msgid ",,text''"
 msgstr "besedilo"
 
 #: src/frontends/qt2/QDocument.C:92
-#, fuzzy
 msgid "<<text>>"
-msgstr "besedilo"
+msgstr "<<besedilo>>"
 
 #: src/frontends/qt2/QDocument.C:93
-#, fuzzy
 msgid ">>text<<"
-msgstr "besedilo"
+msgstr ">>besedilo<<"
 
 #: src/frontends/qt2/QDocument.C:105
-#, fuzzy
 msgid "US letter"
-msgstr "Pismo"
+msgstr ""
 
 #: src/frontends/qt2/QDocument.C:106
 msgid "US legal"
@@ -9807,24 +9786,23 @@ msgstr ""
 
 #: src/frontends/qt2/QDocument.C:111
 msgid "B3"
-msgstr ""
+msgstr "B3"
 
 #: src/frontends/qt2/QDocument.C:112
 msgid "B4"
-msgstr ""
+msgstr "B4"
 
 #: src/frontends/qt2/QDocument.C:132
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: src/frontends/qt2/QDocument.C:133
-#, fuzzy
 msgid "11"
-msgstr "1|#1"
+msgstr "11"
 
 #: src/frontends/qt2/QDocument.C:134
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: src/frontends/qt2/QDocument.C:139
 msgid "Length"
@@ -9901,14 +9879,12 @@ msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
 #: src/frontends/qt2/QDocumentDialog.C:352
-#, fuzzy
 msgid "Small margins"
-msgstr "Robovi"
+msgstr "Ozki robovi"
 
 #: src/frontends/qt2/QDocumentDialog.C:353
-#, fuzzy
 msgid "Very small margins"
-msgstr "Robovi"
+msgstr "Zelo ozki robovi"
 
 #: src/frontends/qt2/QDocumentDialog.C:354
 msgid "Very wide margins"
@@ -9920,24 +9896,20 @@ msgid "LaTeX ERT"
 msgstr "LaTeX"
 
 #: src/frontends/qt2/QExternal.C:35 src/insets/insetexternal.C:214
-#, fuzzy
 msgid "External"
-msgstr "Dodatno|#X"
+msgstr "Zunanje"
 
 #: src/frontends/qt2/QExternalDialog.C:89
-#, fuzzy
 msgid "External material (*)"
-msgstr "Zunanji material...|Z"
+msgstr "Zunanji material (*)"
 
 #: src/frontends/qt2/QExternalDialog.C:91
-#, fuzzy
 msgid "Select external material"
-msgstr "Izberi naslednjo vrstico"
+msgstr "Izberi zunanji material"
 
 #: src/frontends/qt2/QFloat.C:32
-#, fuzzy
 msgid "Float Settings"
-msgstr "Izbire"
+msgstr "Nastavitve plovke"
 
 #: src/frontends/qt2/QGraphics.C:53 src/frontends/qt2/QPrefsDialog.C:135
 #: src/frontends/xforms/FormGraphics.C:70
@@ -10339,12 +10311,11 @@ msgstr ""
 # src/frontends/xforms/FileDialog.C:59
 #: src/frontends/xforms/FileDialog.C:82
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: src/frontends/xforms/FormAboutlyx.C:89
-#, fuzzy
 msgid "License"
-msgstr "Èrte"
+msgstr "Licenca"
 
 #: src/frontends/xforms/FormBase.C:349
 #, c-format
@@ -10353,7 +10324,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBase.C:356
 msgid "WARNING!"
-msgstr ""
+msgstr "POZOR!"
 
 #: src/frontends/xforms/FormBibitem.C:29
 #, fuzzy
@@ -10798,27 +10769,24 @@ msgstr ""
 
 #. Stack tabs
 #: src/frontends/xforms/FormGraphics.C:274
-#, fuzzy
 msgid "File"
-msgstr "&Datoteka"
+msgstr "Datoteka"
 
 #: src/frontends/xforms/FormGraphics.C:275
 msgid "Bounding Box"
 msgstr ""
 
 #: src/frontends/xforms/FormInclude.C:34
-#, fuzzy
 msgid "Include file"
-msgstr "Vkljuèi datoteko|V"
+msgstr "Vkljuèi datoteko"
 
 #: src/frontends/xforms/FormLog.C:25
 msgid "LaTeX Log"
 msgstr "Dnevnik LaTeXa"
 
 #: src/frontends/xforms/FormLog.C:34
-#, fuzzy
 msgid "LyX: LaTeX Log"
-msgstr "Dnevnik LaTeXa"
+msgstr "LyX: Dnevnik LaTeXa"
 
 #: src/frontends/xforms/FormLog.C:35
 msgid "LyX: Literate Programming Build Log"
@@ -10830,28 +10798,24 @@ msgid "No Literate Programming build log file found."
 msgstr "Nobenih odkritih opozoril."
 
 #: src/frontends/xforms/FormMathsDelim.C:57
-#, fuzzy
 msgid "Maths Delimiters"
-msgstr "Loèilo"
+msgstr "Matematièna loèila"
 
 #: src/frontends/xforms/FormMathsMatrix.C:62
-#, fuzzy
 msgid "Maths Matrix"
-msgstr "Matrika"
+msgstr "Matematièna matrika"
 
 #: src/frontends/xforms/FormMathsMatrix.C:70
 msgid "Top | Center | Bottom"
 msgstr "Zgoraj | Sredina | Spodaj"
 
 #: src/frontends/xforms/FormMathsPanel.C:68
-#, fuzzy
 msgid "Maths Panel"
 msgstr "Matematièna plo¹èa"
 
 #: src/frontends/xforms/FormMathsPanel.C:132
-#, fuzzy
 msgid "Maths Decorations & Accents"
-msgstr "Okrasek"
+msgstr "Matematièni okraski in akcenti"
 
 #: src/frontends/xforms/FormMathsPanel.C:144
 msgid "Binary Ops"
@@ -10866,49 +10830,44 @@ msgid "Big Operators"
 msgstr ""
 
 #: src/frontends/xforms/FormMathsPanel.C:173
-#, fuzzy
 msgid "AMS Misc"
-msgstr "Razno"
+msgstr "Razno AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:178
 msgid "AMS Arrows"
-msgstr ""
+msgstr "Pu¹èice AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:183
-#, fuzzy
 msgid "AMS Relations"
-msgstr "Separacija"
+msgstr "Relacije AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:188
 msgid "AMS Negated Rel"
-msgstr ""
+msgstr "Negirane rel. AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:193
 msgid "AMS Operators"
-msgstr ""
+msgstr "Operatorji AMS"
 
 #: src/frontends/xforms/FormMathsSpace.C:32
-#, fuzzy
 msgid "Maths Spacing"
-msgstr "Presledki"
+msgstr "Matematièni presledki"
 
 #: src/frontends/xforms/FormMathsStyle.C:46
 msgid "Maths Styles & Fonts"
-msgstr ""
+msgstr "Matematièni slogi in pisave"
 
 #: src/frontends/xforms/FormMinipage.C:30
-#, fuzzy
 msgid "Minipage Options"
-msgstr "Ministran"
+msgstr "Izbire za ministran"
 
 #: src/frontends/xforms/FormMinipage.C:114
 msgid "Invalid Length!"
-msgstr ""
+msgstr "Neveljavna dol¾ina!"
 
 #: src/frontends/xforms/FormParagraph.C:132
-#, fuzzy
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr " Niè | Standarden | Smallskip | Medskip | Bigskip | VFill | Dol¾ina "
+msgstr "Niè|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Dol¾ina"
 
 #: src/frontends/xforms/FormParagraph.C:136
 #, fuzzy
@@ -10954,12 +10913,10 @@ msgstr "Ohrani prostor na dnu strani"
 #: src/frontends/xforms/FormParagraph.C:304
 #: src/frontends/xforms/FormParagraph.C:311
 #: src/frontends/xforms/FormParagraph.C:318
-#, fuzzy
 msgid " (default)"
-msgstr "privzeta"
+msgstr " (privzeta)"
 
 #: src/frontends/xforms/FormPreamble.C:28
-#, fuzzy
 msgid "LaTeX preamble"
 msgstr "Vzglavje LaTeXa"
 
@@ -10972,9 +10929,8 @@ msgid "Lang Opts"
 msgstr "Jezikovne izbire"
 
 #: src/frontends/xforms/FormPreferences.C:219
-#, fuzzy
 msgid "Conversion"
-msgstr "Napake pri spreminjanju!"
+msgstr "Pretvorba"
 
 #: src/frontends/xforms/FormPreferences.C:222
 msgid "Inputs"
@@ -11250,28 +11206,24 @@ msgstr "Ohrani prostor na vrhu strani"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:70
-#, fuzzy
 msgid "Select a document for references."
-msgstr "Izberite spis za odprtje"
+msgstr "Izberite spis za sklice."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Sort the references alphabetically."
-msgstr "Uredimo sklice po abecedi?"
+msgstr "Uredi sklice po abecedi."
 
 #: src/frontends/xforms/FormRef.C:74 src/frontends/xforms/FormRef.C:281
-#, fuzzy
 msgid "Go to selected reference."
-msgstr "Pojdi na sklic"
+msgstr "Pojdi na izbrani sklic."
 
 #: src/frontends/xforms/FormRef.C:76
-#, fuzzy
 msgid "Update the list of references."
-msgstr "Vstavi referenco"
+msgstr "Osve¾i seznam sklicev."
 
 #: src/frontends/xforms/FormRef.C:78
 msgid "Select format style of the reference."
-msgstr ""
+msgstr "Izberite oblikovni slog sklica."
 
 #: src/frontends/xforms/FormRef.C:182
 msgid "*** No labels found in document ***"
@@ -11279,15 +11231,13 @@ msgstr "*** V spisu ni najdenih oznak ***"
 
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go back to original place."
-msgstr ""
+msgstr "Vrni se na prvotno mesto."
 
 #: src/frontends/xforms/FormRef.C:280
-#, fuzzy
 msgid "Go to"
-msgstr "&Dno"
+msgstr "Pojdi na"
 
 #: src/frontends/xforms/FormSearch.C:29
-#, fuzzy
 msgid "Find and Replace"
 msgstr "Poi¹èi in zamenjaj"
 
@@ -12072,18 +12022,16 @@ msgid "(If not, document is not saved.)"
 msgstr "(Drugaèe spis ne bo shranjen.)"
 
 #: src/lyx_cb.C:108
-#, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
 #: src/lyx_cb.C:112 src/lyxfunc.C:1648
-#, fuzzy
 msgid "Templates|#T#t"
-msgstr "Vzorci"
+msgstr "Vzorci|#V#v"
 
 #: src/lyx_cb.C:140
 msgid "Same name as document already has:"
-msgstr "Enako ime kot spis ¾e ima:"
+msgstr "Enako ime kot ga spis ¾e ima:"
 
 #: src/lyx_cb.C:142
 msgid "Save anyway?"
@@ -13308,317 +13256,3 @@ msgstr "Znak postavljen"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
-
-#~ msgid "­ Û"
-#~ msgstr "­ Û"
-
-#~ msgid "± ´"
-#~ msgstr "± ´"
-
-#~ msgid "£ @"
-#~ msgstr "£ @"
-
-#~ msgid "S  ò"
-#~ msgstr "S  ò"
-
-#~ msgid "!(£ @)"
-#~ msgstr "!(£ @)"
-
-#, fuzzy
-#~ msgid "«text»"
-#~ msgstr "besedilo"
-
-#, fuzzy
-#~ msgid "»text«"
-#~ msgstr "besedilo"
-
-#~ msgid "Accept|#A"
-#~ msgstr "Sprejeto|#S"
-
-#~ msgid "&Accept"
-#~ msgstr "&Sprejeto"
-
-#, fuzzy
-#~ msgid "Start spellcheck"
-#~ msgstr "Èrkovalnik"
-
-#~ msgid "Spellcheck complete"
-#~ msgstr "Èrkovanje konèano"
-
-#, fuzzy
-#~ msgid "Stop|#S"
-#~ msgstr "S|#S"
-
-#, fuzzy
-#~ msgid "Update style list"
-#~ msgstr "Osve¾i zaslon"
-
-#, fuzzy
-#~ msgid "tiny"
-#~ msgstr "drobna"
-
-#, fuzzy
-#~ msgid "script"
-#~ msgstr "Indeks"
-
-#, fuzzy
-#~ msgid "footnote"
-#~ msgstr "OpombaPodÈrto"
-
-#, fuzzy
-#~ msgid "small"
-#~ msgstr "majhna"
-
-#, fuzzy
-#~ msgid "normal"
-#~ msgstr "navadna"
-
-#, fuzzy
-#~ msgid "large"
-#~ msgstr "velika"
-
-#~ msgid "LARGE"
-#~ msgstr "GRAND"
-
-#, fuzzy
-#~ msgid "huge"
-#~ msgstr "ogromna"
-
-#~ msgid " (vertical fill)"
-#~ msgstr " (ressort vertical)"
-
-#, fuzzy
-#~ msgid "Size:|#Z"
-#~ msgstr "Velikost:|#l"
-
-#, fuzzy
-#~ msgid "Cancel|#N^["
-#~ msgstr "Preklièi|^["
-
-#, fuzzy
-#~ msgid "Cancel|#C^["
-#~ msgstr "Preklièi|^["
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#, fuzzy
-#~ msgid "Width|#W"
-#~ msgstr "©irina:|#i"
-
-#, fuzzy
-#~ msgid "Height|#H"
-#~ msgstr "Vi¹ina:|#n"
-
-#, fuzzy
-#~ msgid "Rows"
-#~ msgstr "Vrstice:"
-
-#, fuzzy
-#~ msgid "Columns "
-#~ msgstr "Stolpci"
-
-#, fuzzy
-#~ msgid "Encoding|#E"
-#~ msgstr "Kodiranje"
-
-#, fuzzy
-#~ msgid "smallest"
-#~ msgstr "najmanj¹a"
-
-#, fuzzy
-#~ msgid "smaller"
-#~ msgstr "manj¹a"
-
-#, fuzzy
-#~ msgid "larger"
-#~ msgstr "veèja"
-
-#, fuzzy
-#~ msgid "largest"
-#~ msgstr "najveèja"
-
-#, fuzzy
-#~ msgid "huger"
-#~ msgstr "ogromnej¹a"
-
-#, fuzzy
-#~ msgid "Use alternative language|#a"
-#~ msgstr "Alternativni jezik:|#A"
-
-#, fuzzy
-#~ msgid "Use escape characters|#e"
-#~ msgstr "Ube¾ni znaki:|#U"
-
-#, fuzzy
-#~ msgid "Use personal dictionary|#d"
-#~ msgstr "Osebni slovar:|#O"
-
-#, fuzzy
-#~ msgid "To|#T"
-#~ msgstr "Dve|#D"
-
-#~ msgid "name"
-#~ msgstr "ime"
-
-#, fuzzy
-#~ msgid "adapt output"
-#~ msgstr "Prilagodi izhod"
-
-#, fuzzy
-#~ msgid "command"
-#~ msgstr "Ukaz:"
-
-#, fuzzy
-#~ msgid "page range"
-#~ msgstr "Obseg strani:"
-
-#~ msgid "copies"
-#~ msgstr "izvodi"
-
-#~ msgid "reverse"
-#~ msgstr "obrnjeno"
-
-#~ msgid "to printer"
-#~ msgstr "na tiskalnik"
-
-#~ msgid "file extension"
-#~ msgstr "pripona datoteke"
-
-#~ msgid "spool command"
-#~ msgstr "èakalni ukaz"
-
-#~ msgid "paper type"
-#~ msgstr "vrsta papirja"
-
-#~ msgid "even pages"
-#~ msgstr "sode strani"
-
-#~ msgid "odd pages"
-#~ msgstr "lihe strani"
-
-#, fuzzy
-#~ msgid "collated"
-#~ msgstr "primerjano"
-
-#~ msgid "landscape"
-#~ msgstr "preèno"
-
-#~ msgid "to file"
-#~ msgstr "v datoteko"
-
-#~ msgid "extra options"
-#~ msgstr "dodatne izbire"
-
-#~ msgid "paper size"
-#~ msgstr "velikost papirja"
-
-#~ msgid "ascii roff|#r"
-#~ msgstr "ascii roff|#f"
-
-#, fuzzy
-#~ msgid "to|#t"
-#~ msgstr "Vrh|#V"
-
-#~ msgid "Close|#C^["
-#~ msgstr "Zapri|#Z^["
-
-#~ msgid "Bottom|#b"
-#~ msgstr "Dno|#D"
-
-#~ msgid "Left|#l"
-#~ msgstr "Levo|#L"
-
-#~ msgid "Entry : "
-#~ msgstr "Vnos : "
-
-#, fuzzy
-#~ msgid "Meanings|#M"
-#~ msgstr "Razno:|#R"
-
-#, fuzzy
-#~ msgid "Type|#T"
-#~ msgstr "Vrsta:"
-
-#~ msgid "Name|#N"
-#~ msgstr "Ime|#I"
-
-#~ msgid "Quote style"
-#~ msgstr "Slog narekovajev"
-
-#~ msgid "&Browse ..."
-#~ msgstr "&Brskaj..."
-
-#~ msgid "File: "
-#~ msgstr "Datoteka: "
-
-#~ msgid "Read Only"
-#~ msgstr "Le za branje"
-
-#, fuzzy
-#~ msgid "Toggle limits|l"
-#~ msgstr "&Spremeni vse"
-
-#~ msgid "XAlignAt Environment"
-#~ msgstr "Okolje XAlignAt"
-
-#~ msgid "XXAlignAt Environment"
-#~ msgstr "Okolje XXAlignAt"
-
-#~ msgid "AMS xalignat Environment|x"
-#~ msgstr "Okolje AMS xalignat|t"
-
-#~ msgid "AMS xxalignat Environment"
-#~ msgstr "Okolje AMS xxalignat"
-
-#~ msgid "TeX Style|X"
-#~ msgstr "Slog TeX|X"
-
-#, fuzzy
-#~ msgid "Reference Manual|R"
-#~ msgstr "Sklic"
-
-#, fuzzy
-#~ msgid "Cannot open specified file: "
-#~ msgstr "Izbrane datoteke ni moè odpreti:"
-
-#, fuzzy
-#~ msgid "Onehalf"
-#~ msgstr "Polovièni"
-
-#~ msgid " ..."
-#~ msgstr " ..."
-
-#, fuzzy
-#~ msgid "No LaTeX log file found"
-#~ msgstr "Nobenih odkritih opozoril."
-
-#, fuzzy
-#~ msgid "*|All files"
-#~ msgstr " v datoteko ,"
-
-#, fuzzy
-#~ msgid "Smallskip"
-#~ msgstr "Mali razmak"
-
-#, fuzzy
-#~ msgid "Medskip"
-#~ msgstr "Srednji razmak"
-
-#, fuzzy
-#~ msgid "Bigskip"
-#~ msgstr "Velik razmak"
-
-#, fuzzy
-#~ msgid "Select a graphic file"
-#~ msgstr "Izberi naslednjo vrstico"
-
-#~ msgid "Impossible Operation!"
-#~ msgstr "Nemogoèa operacija!"
-
-# src/BufferView_pimpl.C:1460 src/frontends/xforms/FormInclude.C:192
-#~ msgid "*.lyx|LyX Documents (*.lyx)"
-#~ msgstr "*.lyx|Dokumenti za LyX (*.lyx)"
-
-#~ msgid "Sans serif"
-#~ msgstr "Brez serifov"
