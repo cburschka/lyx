@@ -13,6 +13,7 @@
 #define QMATHDIALOG_H
 
 #include "ui/QMathDialogBase.h"
+#include <string>
 
 
 class QMath;

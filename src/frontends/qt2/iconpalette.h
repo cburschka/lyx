@@ -15,6 +15,7 @@
 
 #include <qwidget.h>
 
+#include <string>
 #include <utility>
 #include <vector>
 

@@ -14,6 +14,7 @@
 
 
 #include "ui/QSearchDialogBase.h"
+#include <string>
 
 class QSearch;
 class QCloseEvent;

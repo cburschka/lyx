@@ -14,6 +14,7 @@
 #include <qwidget.h>
 
 #include <map>
+#include <string>
 
 class QListView;
 class QListViewItem;

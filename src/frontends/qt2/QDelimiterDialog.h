@@ -13,6 +13,7 @@
 #define QDELIMITERDIALOG_H
 
 #include "ui/QDelimiterDialogBase.h"
+#include <string>
 
 
 class QMathDelimiter;

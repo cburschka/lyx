@@ -11,6 +11,7 @@
  */
 
 #include <qwidget.h>
+#include <string>
 
 class QCheckBox;
 class QVBoxLayout;

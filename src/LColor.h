@@ -20,6 +20,7 @@
 #define LCOLOR_H
 
 #include <boost/scoped_ptr.hpp>
+#include <string>
 
 /**
   This is a stateless class.

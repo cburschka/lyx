@@ -1,3 +1,12 @@
+2003-10-06  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QDelimiterDialog.h: 
+	* QMathDialog.h: 
+	* QSearchDialog.h: 
+	* floatplacement.h: 
+	* iconpalette.h: 
+	* panelstack.h: add #include <string>.
+
 2003-10-01  Vitaly Lipatov <lav@vl3143.spb.edu>
 
        * FileDialog.C: use fromqstr in a few places to enable the dialog to
