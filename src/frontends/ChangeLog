@@ -1,5 +1,10 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.[Ch]: remove all the cruft needed by the original
+	MVC dialog code.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h (showPreamble):
 	* guiapi.[Ch] (gui_Preamble): removed.
 
