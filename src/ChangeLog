@@ -1,5 +1,8 @@
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
+	* BufferView2.C (unlockInset): update the paragraph layout on inset
+	unlock as we changed paragraph in such a case.
+
 	* lyxfind.C (LyXFind): clear the former selection if not found!
 
 	* text2.C (insertInset): freeze Undo after setUndo so that it is not

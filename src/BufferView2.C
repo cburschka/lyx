@@ -26,6 +26,7 @@
 #include "iterators.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
 
 #include "insets/insetcommand.h" //ChangeRefs
 #include "insets/inseterror.h"
@@ -609,10 +610,14 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		theLockingInset(0);
 		// make sure we update the combo !
 		owner()->setLayout(getLyXText()->cursor.par()->layout());
+		// Tell the paragraph dialog that we changed paragraph
+		owner()->getDialogs()->updateParagraph();
 		finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
+		// Tell the paragraph dialog that we changed paragraph
+		owner()->getDialogs()->updateParagraph();
 		// owner inset has updated the layout combo
 		finishUndo();
 		return 0;
