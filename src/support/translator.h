@@ -52,7 +52,7 @@ public:
 		lyx::Assert(!map.empty());
 
 		// For explanation see the next find() function.
-		Map::const_iterator it =
+		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
 				     lyx::equal_1st_in_pair<MapPair>(first)
 				);
@@ -79,7 +79,7 @@ public:
 		//
 		// We can depict it as follows:
 		// equal_to(select2nd(pair) , second)
-		Map::const_iterator it =
+		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
 				     lyx::equal_2nd_in_pair<MapPair>(second)
 				);

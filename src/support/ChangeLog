@@ -1,3 +1,7 @@
+2002-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* translator.h: add missing typename
+
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* filetools.C (LibScriptSearch): new command. Searches for scripts
@@ -69,7 +73,7 @@
 	* os2_defines.h:
 	* os2_errortable.h:
 	* nt_defines.h: moved from src/
- 
+
 2002-02-23  Herbert Voss  <voss@perce.de>
 
 	* filetools.C: added more graphic formats
@@ -78,7 +82,7 @@
 
 	* filetools.C: (getExtFromContents) return the fileextension
 	if no format is detected.
-	
+
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* syscall.[Ch]: renamed as systemcall.[Ch]. class Systemcalls renamed
@@ -125,8 +129,8 @@
 
 	* filetools.C (do_popen): use os::read_mode().
 
-	* os_win32.C (read_mode): 
-	* os_os2.C (read_mode): 
+	* os_win32.C (read_mode):
+	* os_os2.C (read_mode):
 	* os_unix.C (read_mode): new method
 
 	* filetools.C (do_popen): fix for cygwin compatibility (from Claus
@@ -138,13 +142,13 @@
 
 2002-02-06  Herbert Voss  <voss@perce.de>
 
-	* filetools.[Ch]: fix some bugs for detecting zipped files 
+	* filetools.[Ch]: fix some bugs for detecting zipped files
 	adding unzipFile()
 
 2002-02-04  Herbert Voss  <voss@perce.de>
 
 	* filetools.[Ch]: add ifZippedFile() for zipped
-	graphic files 
+	graphic files
 
 2002-02-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -154,7 +158,7 @@
 2002-01-31  Herbert Voss  <voss@perce.de>
 
 	* filetools.[Ch]: add getExtFromContents(), which returns
-	the type of the (graphic) file 
+	the type of the (graphic) file
 
 2002-01-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -163,7 +167,7 @@
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxsum.C: remove #warnings and replaced them with runtime debug
-	info. 
+	info.
 
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -181,7 +185,7 @@
 
 	* FileInfo.h:
 	* FileInfo.C: add Asserts and documentation
- 
+
 2001-12-20  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* os_win32.C: compilation fixes
@@ -202,31 +206,31 @@
 
 2001-12-03  Ben Stanley <bds02@uow.edu.au>
 
-	* lyxsum.C: Added mmap version of CRC and made it selected 
+	* lyxsum.C: Added mmap version of CRC and made it selected
 	by default where available. Used process_block for crc for speedup.
-	
+
 2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* filetools.C: more robust failure for DirList()
 
 2001-11-29  André Pönitz <poenitz@gmx.net>
-	
+
 	* types.h: introduce types for textclass numbers and layout numbers
 
 2001-11-28  André Pönitz <poenitz@gmx.net>
-	
+
 	* Makefile.am: put types.h in
 
 2001-11-26  André Pönitz <poenitz@gmx.net>
-	
+
 	* types.h: introduce types for paragraph positions and layout numbers
 
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* filetools.C: remove dead code
- 
+
 	* syscall.C: show prog in fail case
- 
+
 2001-10-24  Andre Poenitz  <poenitz@HTWM.De>
 
 	* filetools.C: code style cleanup
@@ -239,7 +243,7 @@
 
 	* LAssert.h:
 	* LAssert.C: use new emergencyCleanup()
- 
+
 2001-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (i18nLibFileSearch): check also LANGUAGE and LC_ALL,
@@ -251,9 +255,9 @@
 	several methods)
 	(findtexfile): oops! the change from last friday was wrong...
 
-	* os_win32.C (is_absolute_path): 
-	* os_unix.C (is_absolute_path): 
-	* os_os2.C (is_absolute_path): new method	
+	* os_win32.C (is_absolute_path):
+	* os_unix.C (is_absolute_path):
+	* os_os2.C (is_absolute_path): new method
 
 2001-10-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -261,7 +265,7 @@
 
 2001-07-02  Claus Hentschel  <claus.hentschel@mbau.fh-hannover.de>
 
-	* os_win32.C: 
+	* os_win32.C:
 	* os_unix.C:
 	* os_os2.C:
 	* os.h: add internal_path method, which converts a unix-type file
@@ -278,7 +282,7 @@
 
 	* filetools.h:
 	* filetools.C (IsDirWriteable): fix this
- 
+
 2001-07-26  Baruch Even  <baruch@lyx.org>
 
 	* lyxlib.h (float_equal): Added function to compare floats almost equal
@@ -308,7 +312,7 @@
 
 2001-06-25  The LyX Project  <jug@sad.it>
 
-	* filetools.C (IsLyXFilename): 
+	* filetools.C (IsLyXFilename):
 	(IsSGMLFilename): do case insensitive name matching
 
 2001-06-24  The LyX Project  <jug@sad.it>
@@ -343,11 +347,11 @@
 
 2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lstrings.C: 
+	* lstrings.C:
 	* syscall.C:
-	* syscontr.C: 
+	* syscontr.C:
 	* LSubstring.C: bring C functions in global namespace if
-	necessary. 
+	necessary.
 
 	* lstrings.h (compare): use the std:: version of str[n]cmp only
 	when it exists.
@@ -409,14 +413,14 @@
 
 2001-05-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* fmt.C: 
+	* fmt.C:
 	* atoi.C: add using directives when needed for C functions
 	declared in std:: namespace.
 
 2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lstrings.C : add two helper structs, local_lowercase and
-	local_uppercase. 
+	local_uppercase.
 	(lowercase): change to use std::transform
 	(uppercase): change to use std::transform
 
@@ -441,7 +445,7 @@
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* tempname.C (make_tempfile): #warning triggers an error on Sun CC 6.0
-	as an unrecognised preprocessor directive.  So ensure they're wrapped. 
+	as an unrecognised preprocessor directive.  So ensure they're wrapped.
 
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
@@ -476,15 +480,15 @@
 
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* fmt.C: 
-	* filetools.C: 
+	* fmt.C:
+	* filetools.C:
 	* atoi.C: remove cruft
 
 2001-02-06  albert chin  <china@thewrittenword.com>
 
-	* snprintf.h: 
+	* snprintf.h:
 	* fmt.C: use HAVE_DECL_SNPRINTF
-	
+
 2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxstring.C: Fix some assertions.
@@ -492,7 +496,7 @@
 2001-01-23  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lstrings.C (strip): Add a fix for compilers with broken
- 	string::find_last_not_of.
+	string::find_last_not_of.
 
 	* filetools.C (AddPath): Simplify by using strip and frontStrip.
 
