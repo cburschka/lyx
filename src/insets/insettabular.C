@@ -520,7 +520,7 @@ bool InsetTabular::updateInsetInInset(BufferView * bv, InsetOld * inset)
 {
 	InsetOld * tl_inset = inset;
 	// look if this inset is really inside myself!
-	while(tl_inset->owner() && tl_inset->owner() != this)
+	while (tl_inset->owner() && tl_inset->owner() != this)
 		tl_inset = tl_inset->owner();
 	// if we enter here it's not ower inset
 	if (!tl_inset->owner())

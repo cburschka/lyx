@@ -261,8 +261,7 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 #if 0
 	// This cannot be used. (Lgb)
 	string const curr_lang =
-		parOwner()->getFont(buf->params,
-				    curr_pos).language()->babel();
+		parOwner()->getFont(buf->params, curr_pos).language()->babel();
 #else
 	// And this is not the way... (Lgb)
 	string const curr_lang = buf->params.language->lang();
