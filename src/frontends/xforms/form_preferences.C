@@ -176,7 +176,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_huger = obj = fl_add_input(FL_FLOAT_INPUT, 370, 290, 70, 30, _("huger"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 285, 155, _("Used Fonts"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 285, 155, _("Fonts used"));
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 305, 15, 140, 310, _("Size"));
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 180, 285, 145, _("Scale & Resolution"));
   fl_end_form();
