@@ -293,7 +293,7 @@ dnl work correctly because of some conflict with stdlib.h with g++ 2.96
 dnl We aim to remove this eventually, since we should test as much as
 dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(mkfifo mkstemp mktemp)
+AC_CHECK_FUNCS(mkfifo mkstemp mktemp lstat readlink)
 AC_LANG_POP(C)
 
 AC_FUNC_SELECT_ARGTYPES
