@@ -1,4 +1,8 @@
 2003-04-16  Alfredo Braunstein  <abraunst@libero.it>
+ 
+ 	* text2.C (redoParagraphs): eliminate good_prevrit, rewrite a loop
+ 
+2003-04-16  Alfredo Braunstein  <abraunst@libero.it>
 
 	* bufferlist.C (quitWriteBuffer): WriteAs and MenuWrite return true
 	if they succeed. Act accordingly.

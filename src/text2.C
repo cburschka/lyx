@@ -646,6 +646,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	int y = cur.y() - tmprit->baseline();
 
 	ParagraphList::iterator first_phys_pit;
+	RowList::iterator prevrit;
 	if (tmprit == rows().begin()) {
 		// A trick/hack for UNDO.
 		// This is needed because in an UNDO/REDO we could have
@@ -653,8 +654,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		// the row is NOT my really first par anymore.
 		// Got it Lars ;) (Jug 20011206)
 		first_phys_pit = ownerParagraphs().begin();
-#warning FIXME
-		// In here prevrit could be set to rows().end(). (Lgb)
+		prevrit = rows().end();
 	} else {
 		first_phys_pit = tmprit->par();
 		while (tmprit != rows().begin()
@@ -663,18 +663,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 			--tmprit;
 			y -= tmprit->height();
 		}
-#warning FIXME
-		// Is it possible to put the prevrit setting in here? (Lgb)
-	}
-
-	RowList::iterator prevrit;
-	bool good_prevrit = false;
-#warning FIXME
-	// It seems to mee that good_prevrit is not needed if we let
-	// a bad prevrit have the value rows().end() (Lgb)
-	if (tmprit != rows().begin()) {
 		prevrit = boost::prior(tmprit);
-		good_prevrit = true;
 	}
 
 	// remove it
@@ -685,24 +674,18 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 	// Reinsert the paragraphs.
 	ParagraphList::iterator tmppit = first_phys_pit;
-#warning FIXME
-	// See if this loop can be rewritten as a while loop instead.
-	// That should also make the code a bit easier to read. (Lgb)
-	do {
-		if (tmppit != ownerParagraphs().end()) {
-			insertParagraph(tmppit, tmprit);
-			while (tmprit != rows().end()
-			       && tmprit->par() == tmppit) {
-				++tmprit;
-			}
-			++tmppit;
-		}
-	} while (tmppit != ownerParagraphs().end() && tmppit != endpit);
 
-#warning FIXME
-	// If the above changes are done, then we can compare prevrit
-	// with rows().end() here. (Lgb)
-	if (good_prevrit) {
+	while (tmppit != ownerParagraphs().end()) {
+		insertParagraph(tmppit, tmprit);
+		while (tmprit != rows().end()
+		       && tmprit->par() == tmppit) {
+			++tmprit;
+		}
+		++tmppit;
+		if (tmppit == endpit)
+			break;
+	}
+	if (prevrit != rows().end()) {
 		setHeightOfRow(prevrit);
 		const_cast<LyXText *>(this)->postPaint(y - prevrit->height());
 	} else {
