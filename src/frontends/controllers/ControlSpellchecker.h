@@ -71,9 +71,6 @@ private:
 	/// not needed.
 	virtual void apply() {}
 
-	/// right to left
-	bool rtl_;
-
 	/// current word being checked and lang code
 	WordLangTuple word_;
 

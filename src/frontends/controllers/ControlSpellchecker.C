@@ -30,13 +30,11 @@
 
 #include "frontends/Alert.h"
 
-#include "support/lstrings.h"
-
 #include "BoostFormat.h"
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
-	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
+	  newval_(0.0), oldval_(0), newvalue_(0), count_(0),
 	  stop_(false), speller_(0)
 {}
 
@@ -63,14 +61,6 @@ void ControlSpellchecker::setParams()
 #ifdef USE_PSPELL
 	}
 #endif
-
-	if (lyxrc.isp_use_alt_lang) {
-		Language const * lang = languages.getLanguage(tmp);
-		if (lang)
-			rtl_ = lang->RightToLeft();
-	} else {
-		rtl_ = buffer()->params.language->RightToLeft();
-	}
 
 	if (!speller_->error().empty()) {
 		emergency_exit_ = true;
@@ -153,21 +143,13 @@ void ControlSpellchecker::insert()
 
 string const ControlSpellchecker::getSuggestion() const
 {
-	string miss(speller_->nextMiss());
-
-	if (rtl_)
-		std::reverse(miss.begin(), miss.end());
-
-	return miss;
+	return speller_->nextMiss();
 }
 
 
 string const ControlSpellchecker::getWord() const
 {
-	string tmp = word_.word();
-	if (rtl_)
-		std::reverse(tmp.begin(), tmp.end());
-	return tmp;
+	return word_.word();
 }
 
 
@@ -231,7 +213,6 @@ void ControlSpellchecker::clearParams()
 		view().partialUpdate(2);
 
 	// reset values to initial
-	rtl_ = false;
 	newval_ = 0.0;
 	oldval_ = 0;
 	newvalue_ = 0;

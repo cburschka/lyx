@@ -49,7 +49,6 @@ using std::fstream;
 using std::ios;
 using std::lower_bound;
 using std::upper_bound;
-using std::reverse;
 
 using lyx::pos_type;
 
@@ -1747,9 +1746,6 @@ string const Paragraph::asString(Buffer const * buffer, bool label) const
 			s += subst(STRCONV(ost.str()),'\n',' ');
 		}
 	}
-
-	if (isRightToLeftPar(bparams))
-		reverse(s.begin() + len,s.end());
 
 	return s;
 }
