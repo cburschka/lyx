@@ -19,6 +19,8 @@ string os::tmpdir_ = string();
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
+using std::endl;
+
 void os::init(int * /* argc */, char ** argv[]) {
 	static bool initialized = false;
 	if (initialized) return;
