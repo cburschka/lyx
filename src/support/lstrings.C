@@ -11,10 +11,10 @@
 
 #ifdef HAVE_SSTREAM
 #include <sstream>
+using std::ostringstream;
 #else
 #include <strstream>
 #endif
-using std::ostringstream;
 
 #include "LString.h"
 #include "lstrings.h"
