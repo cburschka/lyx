@@ -1,3 +1,7 @@
+2003-07-16  Angus Leeming  <angus@localhost.localdomain>
+
+	* ControlMath.C (find_xpm): rewrite to make Lars happy by using find_if.
+
 2003-07-16  Angus Leeming  <leeming@lyx.org>
 
 	Dialog.[Ch]: move a few methods out of line.

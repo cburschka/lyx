@@ -15,10 +15,14 @@
 #include "debug.h"
 #include "funcrequest.h"
 
+#include "support/LAssert.h"
+#include "support/lyxalgo.h" // sorted
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
+
 using namespace lyx::support;
+
 
 ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)
@@ -267,50 +271,89 @@ char const * latex_ams_ops[] = {
 int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 
 
+namespace {
+
+struct XPMmap {
+	char const * key;
+	char const * value;
+};
+
+
+bool operator<(XPMmap const & lhs, XPMmap const & rhs)
+{
+		return compare(lhs.key, rhs.key) < 0;
+}
+
+
+struct CompareKey {
+	CompareKey(string const & name) : name_(name) {}
+	bool operator()(XPMmap const & other) {
+		return compare(other.key, name_.c_str()) == 0;
+	}
+private:
+	string const name_;
+};
+
+
+XPMmap sorted_xpm_map[] = {
+	{ "Bumpeq", "bumpeq2" },
+	{ "Cap", "cap2" },
+	{ "Cup", "cup2" },
+	{ "Delta", "delta2" },
+	{ "Downarrow", "downarrow2" },
+	{ "Gamma", "gamma2" },
+	{ "Lambda", "lambda2" },
+	{ "Leftarrow", "leftarrow2" },
+	{ "Leftrightarrow", "leftrightarrow2" },
+	{ "Longleftarrow", "longleftarrow2" },
+	{ "Longleftrightarrow", "longleftrightarrow2" },
+	{ "Longrightarrow", "longrightarrow2" },
+	{ "Omega", "omega2" },
+	{ "Phi", "phi2" },
+	{ "Pi", "pi2" },
+	{ "Psi", "psi2" },
+	{ "Rightarrow", "rightarrow2" },
+	{ "Sigma", "sigma2" },
+	{ "Subset", "subset2" },
+	{ "Supset", "supset2" },
+	{ "Theta", "theta2" },
+	{ "Uparrow", "uparrow2" },
+	{ "Updownarrow", "updownarrow2" },
+	{ "Upsilon", "upsilon2" },
+	{ "Vdash", "vdash3" },
+	{ "Xi", "xi2" },
+	{ "nLeftarrow", "nleftarrow2" },
+	{ "nLeftrightarrow", "nleftrightarrow2" },
+	{ "nRightarrow", "nrightarrow2" },
+	{ "nVDash", "nvdash3" },
+	{ "nvDash", "nvdash2" },
+	{ "textrm_Å", "textrm_A" },
+	{ "textrm_Ø", "textrm_0" },
+	{ "vDash", "vdash2" }
+};
+
+size_t const nr_sorted_xpm_map = sizeof(sorted_xpm_map) / sizeof(XPMmap);
+
+} // namespace anon
+
+
 string const find_xpm(string const & name)
 {
-	string xpm_name = subst(name, "_", "underscore");
-	xpm_name = subst(xpm_name, ' ', '_');
+	XPMmap const * const begin = sorted_xpm_map;
+	XPMmap const * const end = begin + nr_sorted_xpm_map;
+	Assert(lyx::sorted(begin, end));
 
-#warning Use a static table for this (Lgb)
-	// And get O(log n) lookup (Lgb)
+	XPMmap const * const it =
+		std::find_if(begin, end, CompareKey(name));
 
-	if (xpm_name == "textrm_Å") xpm_name = "textrm_A";
-	else if (xpm_name == "textrm_Ø") xpm_name = "textrm_0";
-	else if (xpm_name == "Bumpeq") xpm_name = "bumpeq2";
-	else if (xpm_name == "Cap") xpm_name = "cap2";
-	else if (xpm_name == "Cup") xpm_name = "cup2";
-	else if (xpm_name == "Delta") xpm_name = "delta2";
-	else if (xpm_name == "Downarrow") xpm_name = "downarrow2";
-	else if (xpm_name == "Gamma") xpm_name = "gamma2";
-	else if (xpm_name == "Lambda") xpm_name = "lambda2";
-	else if (xpm_name == "Leftarrow") xpm_name = "leftarrow2";
-	else if (xpm_name == "Leftrightarrow") xpm_name = "leftrightarrow2";
-	else if (xpm_name == "Longleftarrow") xpm_name = "longleftarrow2";
-	else if (xpm_name == "Longleftrightarrow") xpm_name = "longleftrightarrow2";
-	else if (xpm_name == "Longrightarrow") xpm_name = "longrightarrow2";
-	else if (xpm_name == "nLeftarrow") xpm_name = "nleftarrow2";
-	else if (xpm_name == "nLeftrightarrow") xpm_name = "nleftrightarrow2";
-	else if (xpm_name == "nRightarrow") xpm_name = "nrightarrow2";
-	else if (xpm_name == "nvDash") xpm_name = "nvdash2";
-	else if (xpm_name == "nVDash") xpm_name = "nvdash3";
-	else if (xpm_name == "Omega") xpm_name = "omega2";
-	else if (xpm_name == "Phi") xpm_name = "phi2";
-	else if (xpm_name == "Pi") xpm_name = "pi2";
-	else if (xpm_name == "Psi") xpm_name = "psi2";
-	else if (xpm_name == "Rightarrow") xpm_name = "rightarrow2";
-	else if (xpm_name == "Sigma") xpm_name = "sigma2";
-	else if (xpm_name == "Subset") xpm_name = "subset2";
-	else if (xpm_name == "Supset") xpm_name = "supset2";
-	else if (xpm_name == "Theta") xpm_name = "theta2";
-	else if (xpm_name == "Uparrow") xpm_name = "uparrow2";
-	else if (xpm_name == "Updownarrow") xpm_name = "updownarrow2";
-	else if (xpm_name == "Upsilon") xpm_name = "upsilon2";
-	else if (xpm_name == "vDash") xpm_name = "vdash2";
-	else if (xpm_name == "Vdash") xpm_name = "vdash3";
-	else if (xpm_name == "Xi") xpm_name = "xi2";
+	string xpm_name;
+	if (it != end)
+		xpm_name = it->value;
 	else {
-		// slightly different so we can have "math-delim { }" on toolbar
+		xpm_name = subst(name, "_", "underscore");
+		xpm_name = subst(xpm_name, ' ', '_');
+
+		// This way we can have "math-delim { }" on the toolbar.
 		xpm_name = subst(xpm_name, "(", "lparen");
 		xpm_name = subst(xpm_name, ")", "rparen");
 		xpm_name = subst(xpm_name, "[", "lbracket");
@@ -320,8 +363,9 @@ string const find_xpm(string const & name)
 		xpm_name = subst(xpm_name, "|", "bars");
 	}
 
-	lyxerr[Debug::GUI] << "Looking for math XPM called \""
-		<< xpm_name << '"' << std::endl;
+	lyxerr[Debug::GUI] << "find_xpm(" << name << ")\n"
+			   << "Looking for math XPM called \""
+			   << xpm_name << '"' << std::endl;
 
 	return LibFileSearch("images/math/", xpm_name, "xpm");
 }
