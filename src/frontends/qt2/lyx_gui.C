@@ -78,10 +78,30 @@ map<int, io_callback *> io_callbacks;
 // FIXME: wrong place !
 LyXServer * lyxserver;
 
+#ifdef Q_WS_X11
+extern bool lyxX11EventFilter(XEvent * xev);
+#endif
+
+class LQApplication : public QApplication
+{
+public:
+	LQApplication(int &argc, char **argv);
+	~LQApplication();
+#ifdef Q_WS_X11
+	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
+#endif
+};
+
+LQApplication::LQApplication(int &argc, char **argv)
+	: QApplication( argc, argv )
+{}
+
+LQApplication::~LQApplication()
+{}
 
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
-	static QApplication a(argc, argv);
+	static LQApplication a(argc, argv);
 
 	using namespace grfx;
 

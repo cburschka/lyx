@@ -31,6 +31,10 @@
 #include <qlayout.h>
 #include <qclipboard.h>
 
+#ifdef Q_WS_X11
+#include <X11/Xlib.h>
+#endif
+
 #include <cmath>
 #include <cctype>
 
@@ -79,15 +83,52 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	scrollbar_->setPageStep(height());
 }
 
+namespace {
+QWorkArea const * wa_ptr = 0;
+}
 
-void QWorkArea::haveSelection(bool) const
+#ifdef Q_WS_X11
+bool lyxX11EventFilter(XEvent * xev)
 {
-	// not possible in Qt !
+	switch (xev->type) {
+	case SelectionRequest:
+		lyxerr[Debug::GUI] << "X requested selection." << endl;
+		if (wa_ptr)
+			wa_ptr->selectionRequested();
+		break;
+	case SelectionClear:
+		lyxerr[Debug::GUI] << "Lost selection." << endl;
+		if (wa_ptr)
+			wa_ptr->selectionLost();
+		break;
+	}
+	return false;
+}
+#endif
+
+void QWorkArea::haveSelection(bool own) const
+{
+	wa_ptr = this;
+
+#if QT_VERSION >= 300
+	if (!QApplication::clipboard()->supportsSelection())
+		return;
+
+	if (own) {
+		QApplication::clipboard()->setSelectionMode(true);
+		QApplication::clipboard()->setText(QString());
+	}
+	// We don't need to do anything if own = false, as this case is
+	// handled by QT.
+#endif
 }
 
 
 string const QWorkArea::getClipboard() const
 {
+#if QT_VERSION >= 300
+	QApplication::clipboard()->setSelectionMode(true);
+#endif
 	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
@@ -97,5 +138,8 @@ string const QWorkArea::getClipboard() const
 
 void QWorkArea::putClipboard(string const & str) const
 {
+#if QT_VERSION >= 300
+	QApplication::clipboard()->setSelectionMode(true);
+#endif
 	QApplication::clipboard()->setText(str.c_str());
 }
