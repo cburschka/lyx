@@ -19,7 +19,8 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS := form_copyright.fd \
+SRCS := form_citation.fd \
+	form_copyright.fd \
 	form_preferences.fd \
 	form_print.fd
 

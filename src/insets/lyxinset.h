@@ -102,6 +102,8 @@ public:
 		///
 		EXTERNAL_CODE,
 		///
+		CITATION_CODE,
+		///
 		THEOREM_CODE
 	};
 

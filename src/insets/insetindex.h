@@ -20,6 +20,7 @@
 
 class Buffer;
 struct LaTeXFeatures;
+struct FD_index_form;
 
 // Created by Lgb 970227
 
@@ -46,6 +47,16 @@ public:
 	}
 	///
 	string getScreenLabel() const;
+	///
+	void callback( FD_index_form *, long );
+	///
+	struct Holder {
+		InsetIndex * inset;
+		BufferView * view;
+	};
+ private:
+	///
+	Holder holder;
 };
 
 

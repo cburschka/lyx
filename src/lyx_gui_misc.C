@@ -61,7 +61,6 @@ extern FD_delim  * fd_delim;
 extern FD_deco   * fd_deco;
 extern FD_space  * fd_space;
 extern FD_matrix * fd_matrix;
-extern FD_citation_form * citation_form;
 extern FD_bibitem_form * bibitem_form;
 extern FD_include * form;
 extern FD_index_form * index_form;
@@ -168,11 +167,6 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_matrix) {
 		if (fd_matrix->matrix->visible) {
 			fl_hide_form(fd_matrix->matrix);
-		}
-	}
-	if (citation_form) {
-		if (citation_form->form->visible) {
-			fl_hide_form(citation_form->form);
 		}
 	}
 	if (bibitem_form) {
@@ -321,11 +315,6 @@ void updateAllVisibleBufferRelatedDialogs()
 		}
 	}
 #endif
-	if (citation_form) {
-		if (citation_form->form->visible) {
-			fl_hide_form(citation_form->form);
-		}
-	}
 	if (bibitem_form) {
 		if (bibitem_form->bibitem_form->visible) {
 			fl_hide_form(bibitem_form->bibitem_form);

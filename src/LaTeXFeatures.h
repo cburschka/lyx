@@ -157,7 +157,7 @@ struct LaTeXFeatures {
 	///
 	typedef std::map<string , string> FileMap;
 	///
-	FileMap IncludedFiles;                                                                     
+	FileMap IncludedFiles;
 	//@}
 	BufferParams const & bufferParams() const;
 private:

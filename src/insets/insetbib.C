@@ -36,32 +36,12 @@ FD_bibitem_form * create_form_bibitem_form(void);
 
 extern "C" void bibitem_cb(FL_OBJECT *, long data)
 {
-	switch (data)
-	{
-	case 1:
-	{
-		InsetBibKey::Holder * holder =
-			static_cast<InsetBibKey::Holder*>
-			(bibitem_form->bibitem_form->u_vdata);
-		
-		if(!holder->view->buffer()->isReadonly())
-		{
-			InsetBibKey * inset = holder->inset;
-			inset->setContents(fl_get_input(bibitem_form->key));
-			inset->setOptions(fl_get_input(bibitem_form->label));
-			fl_hide_form(bibitem_form->bibitem_form);
-			// Does look like a hack? It is! (but will change at 0.13)
-			holder->view->text->RedoParagraph(holder->view);
-			holder->view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			break;
-		} // fall through to Cancel on RO-mode
-	}
-	case 0:
-		fl_hide_form(bibitem_form->bibitem_form);
-		break;
-        }
-}
+	InsetBibKey::Holder * holder =
+		static_cast<InsetBibKey::Holder*>
+		(bibitem_form->bibitem_form->u_vdata);
 
+	holder->inset->callback( bibitem_form, data );
+}
 
 FD_bibitem_form * create_form_bibitem_form(void)
 {
@@ -114,6 +94,27 @@ InsetBibKey::~InsetBibKey()
 	   && bibitem_form->bibitem_form->u_vdata == &holder)
 		fl_hide_form(bibitem_form->bibitem_form);
 }
+
+
+void InsetBibKey::callback( FD_bibitem_form * form, long data )
+{
+	switch (data)
+	{
+	case 1:
+		if(!holder.view->buffer()->isReadonly())
+		{
+			setContents(fl_get_input(form->key));
+			setOptions(fl_get_input(form->label));
+			// shouldn't mark the buffer dirty unless
+			// something was actually altered
+			holder.view->updateInset( this, true );
+		} // fall through to Cancel
+	case 0:
+		fl_hide_form(form->bibitem_form);
+		break;
+        }
+}
+
 
 void InsetBibKey::setCounter(int c) 
 { 

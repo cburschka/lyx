@@ -20,6 +20,7 @@
 #include <vector>
 
 class Buffer;
+struct FD_bibitem_form;
 
 /** Used to insert bibitem's information (key and label)
   
@@ -59,6 +60,8 @@ public:
         ///
         int  getCounter() const { return counter; }
 	///
+	void callback( FD_bibitem_form *, long );
+	///
 	struct Holder {
 		InsetBibKey * inset;
 		BufferView * view;
@@ -67,7 +70,6 @@ public:
  private:
 	///
         int counter;
-
 	///
 	Holder holder;
 };

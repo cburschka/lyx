@@ -2378,27 +2378,22 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 	
+	case LFUN_CREATE_CITATION:
+	{
+		owner->getDialogs()->createCitation( argument );
+	}
+	break;
+		    
 	case LFUN_INSERT_CITATION:
-	{   
-		InsetCitation * new_inset = new InsetCitation();
-		// ale970405
-		// The note, if any, must be after the key, delimited
-		// by a | so both key and remark can have spaces.
-		if (!argument.empty()) {
-			string lsarg(argument);
-			if (contains(lsarg, "|")) {
-				new_inset->setContents(token(lsarg, '|', 0));
-				new_inset->setOptions(token(lsarg, '|', 1));
-			} else
-				new_inset->setContents(lsarg);
-			if (!owner->view()->insertInset(new_inset))
-				delete new_inset;
-		} else {
-			if (owner->view()->insertInset(new_inset))
-				new_inset->Edit(owner->view(), 0, 0, 0);
-			else
-				delete new_inset;
-		}
+	{
+		string keys = token(argument, '|', 0);
+		string text = token(argument, '|', 1);
+
+		InsetCitation * inset = new InsetCitation( keys, text );
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset( inset, true );
 	}
 	break;
 		    

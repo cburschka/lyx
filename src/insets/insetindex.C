@@ -15,30 +15,17 @@
 #include "LString.h"
 #include "lyx_gui_misc.h" // WarnReadonly
  
-extern BufferView * current_view;
-
 FD_index_form * index_form = 0;
 
 extern "C" void index_cb(FL_OBJECT *, long data)
 {
-	InsetIndex * inset = static_cast<InsetIndex*>(index_form->index_form->u_vdata);
-	
-	switch (data) {
-	case 1: // OK
-		if(!current_view->buffer()->isReadonly()) {
-			string tmp = fl_get_input(index_form->key);
-			if(tmp != inset->getContents())	{
-				inset->setContents(tmp);
-				fl_hide_form(index_form->index_form);
-				current_view->updateInset(inset, true);
-				break;
-			}
-		} // fall through to Cancel on RO
-	case 0: // Cancel
-		fl_hide_form(index_form->index_form); break;
-	}
-}
+	InsetIndex::Holder * holder =
+		static_cast<InsetIndex::Holder*>
+		(index_form->index_form->u_vdata);
 
+	holder->inset->callback( index_form, data );
+}
+	
 
 static
 FD_index_form * create_form_index_form()
@@ -80,8 +67,29 @@ InsetIndex::~InsetIndex()
 {
 	if(index_form && index_form->index_form
 	   && index_form->index_form->visible
-	   && index_form->index_form->u_vdata == this)
+	   && index_form->index_form->u_vdata == &holder)
 		fl_hide_form(index_form->index_form);
+}
+
+
+void InsetIndex::callback( FD_index_form * form, long data )
+{
+	switch (data)
+	{
+	case 1: // OK
+		if(!holder.view->buffer()->isReadonly())
+		{
+			string tmp = fl_get_input(form->key);
+			if(tmp != getContents())
+			{
+				setContents(tmp);
+				holder.view->updateInset( this, true );
+			}
+		} // fall through to Cancel
+	case 0:
+		fl_hide_form(form->index_form);
+		break;
+	}
 }
 
 
@@ -95,7 +103,10 @@ void InsetIndex::Edit(BufferView * bv, int, int, unsigned int)
 		fl_set_form_atclose(index_form->index_form, CancelCloseBoxCB, 0);
 	}
 
-	index_form->index_form->u_vdata = this;
+	holder.inset = this;
+	holder.view = bv;
+	
+	index_form->index_form->u_vdata =  &holder;
 	fl_set_input(index_form->key, getContents().c_str());
 	if (index_form->index_form->visible) {
 		fl_raise_form(index_form->index_form);

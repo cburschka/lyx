@@ -261,10 +261,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
     if (top_x != int(x)) {
 	need_update = INIT;
+	top_x = int(x);
+	owner()->update(bv, f, true);
     }
 
     top_baseline = baseline;
-    top_x = int(x);
     top_y = baseline - ascent(bv, f);
     last_width = width(bv, f);
     last_height = ascent(bv, f) + descent(bv, f);
@@ -311,13 +312,22 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetText::update(BufferView * bv, LyXFont const & font, bool dodraw)
+void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
+    if (reinit) {  // && (need_update != CURSOR)) {
+	need_update = INIT;
+	deleteLyXText(bv);
+	if (owner())
+	    owner()->update(bv, font, true);
+	return;
+    }
     if (the_locking_inset)
-	the_locking_inset->update(bv, font, dodraw);
+	the_locking_inset->update(bv, font, reinit);
     if (need_update == INIT) {
 	deleteLyXText(bv);
 	need_update = FULL;
+//	if (!owner() && bv->text)
+//	    bv->text->UpdateInset(bv, this);
     }
     int oldw = insetWidth;
 #if 1
@@ -331,31 +341,26 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool dodraw)
 	    insetWidth = static_cast<int>(TEXT(bv)->width);
 #endif
     if (oldw != insetWidth) {
-	    printf("TW(%p): %d-%d-%d-%d\n",this,insetWidth, oldw,
-		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
+//	    printf("TW(%p): %d-%d-%d-%d\n",this,insetWidth, oldw,
+//		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
 	deleteLyXText(bv);
 	need_update = FULL;
 #if 0
 	if (owner()) {
-	    owner()->update(bv, font, dodraw);
+	    owner()->update(bv, font, reinit);
 	    return;
 	} else {
-	    update(bv, font, dodraw);
+	    update(bv, font, reinit);
 	}
 #else
 #if 1
-	update(bv, font, dodraw);
+	update(bv, font, reinit);
 #else
 	UpdateLocal(bv, INIT, false);
 #endif
 #endif
 	return;
     }
-    if (dodraw && (need_update != CURSOR))
-	    need_update = FULL;
-
-    TEXT(bv)->FullRebreak(bv);
-
     if ((need_update==CURSOR_PAR) && (TEXT(bv)->status==LyXText::UNCHANGED) &&
 	the_locking_inset)
     {
@@ -376,10 +381,12 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool dodraw)
 void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 {
     TEXT(bv)->FullRebreak(bv);
-    if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
-	need_update = FULL;
-    else if (!the_locking_inset || (what != CURSOR))
-	need_update = what;
+    if (need_update != INIT) {
+	if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
+	    need_update = FULL;
+	else if (!the_locking_inset || (what != CURSOR))
+	    need_update = what;
+    }
     if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED))
 	    bv->updateInset(this, mark_dirty);
     if (old_par != cpar(bv)) {
@@ -409,7 +416,8 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     inset_pos = inset_x = inset_y = 0;
     inset_par = 0;
     if (!checkAndActivateInset(bv, x, y, button))
-	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset, y);
+	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+					   y+TEXT(bv)->first+insetAscent);
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
     UpdateLocal(bv, FULL, false);
@@ -524,8 +532,9 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_y = cy(bv) + drawTextYOffset;
 	    inset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    inset->Edit(bv, x - inset_x, y - inset_y, button);
-	    if (the_locking_inset)
+	    if (the_locking_inset) {
 		UpdateLocal(bv, CURSOR_PAR, false);
+	    }
 	    return;
 	}
 	// otherwise only unlock the_locking_inset
@@ -541,8 +550,9 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_par = cpar(bv);
 	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
-	    if (the_locking_inset)
+	    if (the_locking_inset) {
 		UpdateLocal(bv, CURSOR_PAR, false);
+	    }
 	    return;
 	}
     }
@@ -569,6 +579,7 @@ void InsetText::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 		inset->InsetButtonRelease(bv, x - inset_x, y - inset_y,button);
 		inset->Edit(bv, x - inset_x, y - inset_y, button);
 	    }
+	    UpdateLocal(bv, CURSOR_PAR, false);
 	}
     }
     no_selection = false;
@@ -1039,7 +1050,7 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
 	i->setOwner(static_cast<UpdatableInset *>(this));
     }
-    cpar(bv)->InsertInset(cpos(bv), inset);
+    TEXT(bv)->InsertInset(bv, inset);
     TEXT(bv)->selection = 0;
     UpdateLocal(bv, CURSOR_PAR, true);
     static_cast<UpdatableInset*>(inset)->Edit(bv, 0, 0, 0);

@@ -501,7 +501,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
-			tmpinset->update(bview, font, false);
+//			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
 		}

@@ -27,6 +27,7 @@
 #include "intl.h"
 #include "support/LAssert.h"
 #include "frontends/Dialogs.h"
+#include "insets/insetcite.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -789,7 +790,18 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			inset->InsetButtonRelease(bv_, x, y, button);
 		} else {
 			inset_hit->InsetButtonRelease(bv_, x, y, button);
-			inset_hit->Edit(bv_, x, y, button);
+
+			switch( inset_hit->LyxCode() ) {
+			case Inset::CITATION_CODE:
+			{
+				owner_->getDialogs()->
+					showCitation( (InsetCitation *)inset_hit );
+			}
+			break;
+			default:
+				inset_hit->Edit(bv_, x, y, button);
+			break;
+			}
 		}
 		return;
 	}

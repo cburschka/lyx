@@ -23,6 +23,7 @@
 #include "support/LOstream.h"
 #include "support/lstrings.h"
 #include "debug.h"
+#include "lyxtext.h"
 
 class LyXText;
 
@@ -310,14 +311,20 @@ int InsetCollapsable::getMaxTextWidth(Painter & pain,
 #endif
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
-			      bool dodraw)
+			      bool reinit)
 {
+    if (reinit) {
+	need_update = FULL;
+	if (owner())
+	    owner()->update(bv, font, true);
+	return;
+    }
     if (!widthCollapsed) {
 	widthCollapsed = width_collapsed(bv->painter(), font);
 	inset->deleteLyXText(bv);
 	need_update = FULL;
 	if (owner()) {
-		owner()->update(bv, font, dodraw);
+		owner()->update(bv, font);
 		return;
 	}
     }
@@ -326,11 +333,11 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 	inset->deleteLyXText(bv);
 	need_update = FULL;
 	if (owner()) {
-		owner()->update(bv, font, dodraw);
+		owner()->update(bv, font);
 		return;
 	}
     }
-    inset->update(bv, font, dodraw);
+    inset->update(bv, font);
 }
 
 UpdatableInset::RESULT

@@ -292,15 +292,22 @@ void InsetTabular::DrawCellSelection(Painter & pain, int x, int baseline,
 }
 
 
-void InsetTabular::update(BufferView * bv, LyXFont const & font, bool dodraw)
+void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
+    if (reinit) {
+	need_update = INIT;
+	calculate_dimensions_of_cells(bv, font, true);
+	if (owner())
+	    owner()->update(bv, font, true);
+	return;
+    }
     if (the_locking_inset)
-	the_locking_inset->update(bv, font, dodraw);
+	the_locking_inset->update(bv, font, reinit);
     switch(need_update) {
     case INIT:
     case FULL:
     case CELL:
-	if (calculate_dimensions_of_cells(bv, font, dodraw))
+	if (calculate_dimensions_of_cells(bv, font, false))
 	    need_update = INIT;
 	break;
     case SELECTION:
@@ -771,7 +778,7 @@ void InsetTabular::Validate(LaTeXFeatures & features) const
 
 bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 						 LyXFont const & font,
-						 bool dodraw) const
+						 bool reinit) const
 {
     int cell = -1;
     int maxAsc, maxDesc;
@@ -785,7 +792,8 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 		continue;
 	    ++cell;
 	    inset = tabular->GetCellInset(cell);
-	    inset->update(bv, font, dodraw);
+	    if (!reinit)
+		inset->update(bv, font, false);
 	    maxAsc = max(maxAsc, inset->ascent(bv, font));
 	    maxDesc = max(maxDesc, inset->descent(bv, font));
 	    changed = tabular->SetWidthOfCell(cell, inset->width(bv, font)) || changed;

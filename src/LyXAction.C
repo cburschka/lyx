@@ -156,7 +156,7 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_RIGHT, "char-forward", N_("Go one char forward"),
 		  ReadOnly },
-		{ LFUN_INSERT_CITATION, "citation-insert",
+		{ LFUN_CREATE_CITATION, "citation-insert",
 		  N_("Insert citation"), Noop },
 		{ LFUN_EXEC_COMMAND, "command-execute", "", NoBuffer },
 		{ LFUN_PREFIX, "command-prefix",

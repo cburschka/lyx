@@ -1,3 +1,18 @@
+2000-07-06  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/insets/insetbib.[Ch] (callback) new method, moving callback
+	processing inside class.
+
+	* src/insets/insetindex.[Ch] (callback) new method, moving callback
+	processing inside class.
+
+	* src/insets/insetindex.h new struct Holder, consistent with other
+ 	insets.
+
+	* src/insets/insetcite.[Ch] and elsewhere: stripped out xforms
+	citation dialog from main code and placed it in src/frontends/xforms.
+	Dialog launched through signals instead of callbacks
+	
 2000-07-06  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* lyx.man: update the options description.

@@ -23,6 +23,10 @@ libxforms_la_SOURCES = \
 	FormPrint.h \
 	form_print.C \
 	form_print.h \
+	FormCitation.C \
+	FormCitation.h \
+	form_citation.C \
+	form_citation.h \
 	input_validators.h \
 	input_validators.c \
 	xform_macros.h
