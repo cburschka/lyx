@@ -50,7 +50,7 @@ using lyx::pos_type;
 
 namespace {
 
-int const LYX_PAPER_MARGIN = 20;
+int const PAPER_MARGIN = 20;
 
 } // namespace anon
 
@@ -702,7 +702,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
 		(ins=row->par()->getInset(row->pos())) &&
 		(ins->needFullRow() || ins->display()))
-		return LYX_PAPER_MARGIN;
+		return PAPER_MARGIN;
 
 	LyXTextClass const & tclass =
 		bview->buffer()->params.getLyXTextClass();
@@ -710,7 +710,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 
 	string parindent = layout->parindent;
 
-	int x = LYX_PAPER_MARGIN;
+	int x = PAPER_MARGIN;
 
 	x += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
 
@@ -894,12 +894,12 @@ int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
 		(ins=row->par()->getInset(row->pos())) &&
 		(ins->needFullRow() || ins->display()))
-		return LYX_PAPER_MARGIN;
+		return PAPER_MARGIN;
 
 	LyXTextClass const & tclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = row->par()->layout();
 
-	int x = LYX_PAPER_MARGIN
+	int x = PAPER_MARGIN
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont());
 
@@ -1407,7 +1407,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 
 		// the paper margins
 		if (!row_ptr->par()->previous() && bv_owner)
-			maxasc += LYX_PAPER_MARGIN;
+			maxasc += PAPER_MARGIN;
 
 		// add the vertical spaces, that the user added
 		maxasc += getLengthMarkerHeight(bview, firstpar->params().spaceTop());
@@ -1517,7 +1517,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	{
 		// the paper margins
 		if (!par->next() && bv_owner)
-			maxdesc += LYX_PAPER_MARGIN;
+			maxdesc += PAPER_MARGIN;
 
 		// add the vertical spaces, that the user added
 		maxdesc += getLengthMarkerHeight(bview, firstpar->params().spaceBottom());
@@ -3216,12 +3216,12 @@ void LyXText::paintRowDepthBar(DrawRowParams & p)
 		next_depth = p.row->next()->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-		int const x = (LYX_PAPER_MARGIN / 5) * i + p.xo;
+		int const x = (PAPER_MARGIN / 5) * i + p.xo;
 		int const h = p.yo + p.row->height() - 1 - (i - next_depth - 1) * 3;
 
 		p.pain->line(x, p.yo, x, h, LColor::depthbar);
 
-		int const w = LYX_PAPER_MARGIN / 5;
+		int const w = PAPER_MARGIN / 5;
 
 		if (i > prev_depth) {
 			p.pain->fillRectangle(x, p.yo, w, 2, LColor::depthbar);
@@ -3360,7 +3360,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 
 	// think about the margins
 	if (!p.row->previous() && bv_owner)
-		y_top += LYX_PAPER_MARGIN;
+		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
 	if (parparams.pagebreakTop()) {
@@ -3522,7 +3522,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 
 	// think about the margins
 	if (!p.row->next() && bv_owner)
-		y_bottom -= LYX_PAPER_MARGIN;
+		y_bottom -= PAPER_MARGIN;
 
 	int const ww = p.bv->workWidth();
 
@@ -3570,7 +3570,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		LyXFont const font = getLabelFont(buffer, par);
 		int const size = int(0.75 * font_metrics::maxAscent(font));
 		int const y = (p.yo + p.row->baseline()) - size;
-		int x = is_rtl ? LYX_PAPER_MARGIN : ww - LYX_PAPER_MARGIN - size;
+		int x = is_rtl ? PAPER_MARGIN : ww - PAPER_MARGIN - size;
 
 		if (p.row->fill() <= size)
 			x += (size - p.row->fill() + 1) * (is_rtl ? -1 : 1);
