@@ -27,6 +27,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "lyxtext.h"
+#include "lyx_gui_misc.h"
 #include "insets/insettext.h"
 
 const int ADD_TO_HEIGHT = 2;
@@ -252,8 +253,10 @@ void InsetTabular::InsetUnlock(BufferView * bv)
 
 void InsetTabular::UpdateLocal(BufferView * bv, bool flag)
 {
-    if (flag)
+    if (flag) {
 	calculate_width_of_cells(bv->painter(), LyXFont(LyXFont::ALL_SANE));
+	resetPos(bv->painter());
+    }
     bv->updateInset(this, flag);
 }
 
@@ -792,9 +795,8 @@ void InsetTabular::SetFont(BufferView *, LyXFont const &, bool)
 }
 
 
-void InsetTabular::TabularFeatures(int, string)
+void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 {
-#if 0
     int
 	i,
 	sel_pos_start,
@@ -838,183 +840,62 @@ void InsetTabular::TabularFeatures(int, string)
           break;
       case LyXTabular::APPEND_ROW:
       {
-	  int
-              pos = cursor.pos,
-              cell_org = actcell,
-              cell = actcell;
-
-          // if there is a ContRow following this row I have to add
-          // the row after the ContRow's
-          if ((pos < par->last()) && tabular->RowHasContRow(cell_org)) {
-              while((pos < par->last()) && !tabular->IsContRow(cell)) {
-                  while (pos < par->last() && !par->IsNewline(pos))
-                      ++pos;
-                  if (pos < par->last())
-                      ++pos;
-                  ++cell;
-              }
-              while((pos < par->last()) && tabular->IsContRow(cell)) {
-                  while (pos < par->last() && !par->IsNewline(pos))
-                      ++pos;
-                  if (pos < par->last())
-                      ++pos;
-                  ++cell;
-              }
-              cell_org = --cell;
-              if (pos < par->last())
-                  --pos;
-          }
-          while ((pos < par->last()) && 
-                 ((cell == cell_org) || !tabular->IsFirstCell(cell))) {
-              while ((pos < par->last()) && !par->IsNewline(pos))
-                  ++pos;
-              if (pos < par->last())
-                  ++pos;
-              ++cell;
-          }
-          // insert the new cells
-          int number = tabular->NumberOfCellsInRow(cell_org);
-          for (i=0; i<number; ++i)
-              par->InsertChar(pos, LYX_META_NEWLINE);
-		
           // append the row into the tabular
-          tabular->AppendRow(cell_org);
-          calculate_width_of_cells();
-          UpdateLocal();
-          return;
-      }
-      case LyXTabular::APPEND_CONT_ROW:
-      {
-	  int
-              pos = cursor.pos,
-              cell_org = actcell,
-              cell = actcell;
-
-          // if there is already a controw but not for this cell
-          // the AppendContRow sets only the right values but does
-          // not actually add a row
-          if (tabular->RowHasContRow(cell_org) &&
-              (tabular->CellHasContRow(cell_org) < 0)) {
-              tabular->AppendContRow(cell_org);
-              calculate_width_of_cells();
-              UpdateLocal();
-              return;
-          }
-          while ((pos < par->last()) &&
-                 ((cell == cell_org) || !tabular->IsFirstCell(cell))) {
-              while (pos < par->last() && !par->IsNewline(pos))
-                  ++pos;
-              if (pos < par->last())
-                  ++pos;
-              ++cell;
-          }
-          // insert the new cells
-          int number = tabular->NumberOfCellsInRow(cell_org);
-          for (i=0; i<number; ++i)
-              par->InsertChar(pos, LYX_META_NEWLINE);
-          // append the row into the tabular
-          tabular->AppendContRow(cell_org);
-          calculate_width_of_cells();
-          UpdateLocal();
+          tabular->AppendRow(actcell);
+          UpdateLocal(bv, true);
           return;
       }
       case LyXTabular::APPEND_COLUMN:
       { 
-	  int
-              pos = 0,
-              cell_org = actcell,
-              cell = 0;
-          do {
-              if (pos && (par->IsNewline(pos-1))) {
-                  if (tabular->AppendCellAfterCell(cell_org, cell)) {
-                      par->InsertChar(pos, LYX_META_NEWLINE);
-                      if (pos <= cursor.pos)
-                          ++cursor.pos;
-                      ++pos;
-                  }
-                  ++cell;
-              }
-              ++pos;
-          } while (pos <= par->last());
-          // remember that the very last cell doesn't end with a newline.
-          // This saves one byte memory per tabular ;-)
-          if (tabular->AppendCellAfterCell(cell_org, cell))
-              par->InsertChar(par->last(), LYX_META_NEWLINE);
           // append the column into the tabular
-          tabular->AppendColumn(cell_org);
-          calculate_width_of_cells();
-          UpdateLocal();
+          tabular->AppendColumn(actcell);
+          UpdateLocal(bv, true);
           return;
       }
       case LyXTabular::DELETE_ROW:
           RemoveTabularRow();
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
       case LyXTabular::DELETE_COLUMN:
       {
-          int pos = 0;
-          int cell = 0;
-          do {
-              if (!pos || (par->IsNewline(pos-1))){
-                  if (tabular->DeleteCellIfColumnIsDeleted(cell, actcell)) {
-                      // delete one cell
-                      while (pos < par->last() && !par->IsNewline(pos))
-                          par->Erase(pos);
-                      if (pos < par->last())
-                          par->Erase(pos);
-                      else 
-                          par->Erase(pos - 1); // the missing newline
-                                               // at the end of a tabular
-                      --pos; // because of ++pos below
-                  }
-                  ++cell;
-              }
-              ++pos;
-          } while (pos <= par->last());
           /* delete the column from the tabular */ 
           tabular->DeleteColumn(actcell);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
       }
       case LyXTabular::TOGGLE_LINE_TOP:
           lineSet = !tabular->TopLine(actcell);
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetTopLine(i,lineSet);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
     
       case LyXTabular::TOGGLE_LINE_BOTTOM:
           lineSet = !tabular->BottomLine(actcell); 
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetBottomLine(i,lineSet);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
 		
       case LyXTabular::TOGGLE_LINE_LEFT:
           lineSet = !tabular->LeftLine(actcell);
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetLeftLine(i,lineSet);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
 
       case LyXTabular::TOGGLE_LINE_RIGHT:
           lineSet = !tabular->RightLine(actcell);
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetRightLine(i,lineSet);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
       case LyXTabular::ALIGN_LEFT:
       case LyXTabular::ALIGN_RIGHT:
       case LyXTabular::ALIGN_CENTER:
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetAlignment(i,setAlign);
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
       case LyXTabular::MULTICOLUMN:
       {
@@ -1029,26 +910,17 @@ void InsetTabular::TabularFeatures(int, string)
 	  if (!hasCellSelection()) {
 	      // check wether we are completly in a multicol
 	      if (tabular->IsMultiColumn(actcell)) {
-		  int
-		      newlines,
-		      pos = cursor.pos;
-		  if ((newlines=tabular->UnsetMultiColumn(actcell))) {
-		      while ((pos < par->last()) && !par->IsNewline(pos))
-			  ++pos;
-		      for (;newlines;--newlines)
-			  par->InsertChar(pos, LYX_META_NEWLINE);
-		  }
-		  calculate_width_of_cells();
+		  tabular->UnsetMultiColumn(actcell);
+		  UpdateLocal(bv, true);
 	      } else {
 		  tabular->SetMultiColumn(actcell, 1);
+		  UpdateLocal(bv, false);
 	      }
-	      UpdateLocal();
 	      return;
 	  }
 	  // we have a selection so this means we just add all this
 	  // cells to form a multicolumn cell
 	  int
-	      number = 1,
 	      s_start, s_end;
 
 	  if (sel_pos_start > sel_pos_end) {
@@ -1058,23 +930,10 @@ void InsetTabular::TabularFeatures(int, string)
 	      s_start = sel_pos_start;
 	      s_end = sel_pos_end;
 	  }
-	  for(i=s_start; i < s_end; ++i) {
-	      if (par->IsNewline(i)) {
-		  par->Erase(i);
-		  // check for double-blanks
-		  if ((i && !par->IsLineSeparator(i-1)) &&
-		      (i < par->last()) && !par->IsLineSeparator(i))
-		      par->InsertChar(i, ' ');
-		  else
-		      --i;
-		  ++number;
-	      }
-	  }
-	  tabular->SetMultiColumn(sel_pos_start,number);
+	  tabular->SetMultiColumn(s_start, s_end);
 	  cursor.pos = s_start;
 	  sel_cell_end = sel_cell_start;
-	  calculate_width_of_cells();
-	  UpdateLocal();
+	  UpdateLocal(bv, true);
           return;
       }
       case LyXTabular::SET_ALL_LINES:
@@ -1082,16 +941,15 @@ void InsetTabular::TabularFeatures(int, string)
       case LyXTabular::UNSET_ALL_LINES:
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetAllLines(i, setLines);
-          calculate_width_of_cells();
-          UpdateLocal();
+          UpdateLocal(bv, true);
           return;
       case LyXTabular::SET_LONGTABULAR:
           tabular->SetLongTabular(true);
-	  UpdateLocal(); // because this toggles displayed
+	  UpdateLocal(bv, true); // because this toggles displayed
           return;
       case LyXTabular::UNSET_LONGTABULAR:
           tabular->SetLongTabular(false);
-	  UpdateLocal(); // because this toggles displayed
+	  UpdateLocal(bv, true); // because this toggles displayed
           return;
       case LyXTabular::SET_ROTATE_TABULAR:
           tabular->SetRotateTabular(true);
@@ -1108,7 +966,7 @@ void InsetTabular::TabularFeatures(int, string)
 	      tabular->SetRotateCell(i,false);
           return;
       case LyXTabular::SET_LINEBREAKS:
-          what = !tabular->Linebreaks(tabular->FirstVirtualCell(actcell));
+          what = !tabular->GetLinebreaks(actcell);
 	  for(i=sel_pos_start; i<=sel_pos_end; ++i)
 	      tabular->SetLinebreaks(i,what);
           return;
@@ -1125,11 +983,10 @@ void InsetTabular::TabularFeatures(int, string)
           tabular->SetLTFoot(actcell,true);
           return;
       case LyXTabular::SET_LTNEWPAGE:
-          what = !tabular->LTNewPage(actcell);
+          what = !tabular->GetLTNewPage(actcell);
           tabular->SetLTNewPage(actcell,what);
           return;
     }
-#endif
 }
 
 void InsetTabular::RemoveTabularRow()

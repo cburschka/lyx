@@ -46,6 +46,8 @@
 #include "layout.h"
 #include "lyx_cb.h"
 #include "bufferview_funcs.h"
+#include "insets/insettabular.h"
+#include "tabular.h"
 
 using std::vector;
 using std::endl;
@@ -860,65 +862,61 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	if (men->currentView()->available() && 
 	    men->currentView()->text->cursor.par->table &&
 	    !tmpbuffer->isReadonly()){
+		LyXTable *table = men->currentView()->text->cursor.par->table;
 
 		fl_addtopup(SubEditTable, _("Table%t"));
 
-		if (men->currentView()->text->cursor.par->table->
-		    IsMultiColumn(men->currentView()->text->
-				  NumberOfCell(men->currentView()->
-					       text->cursor.par, 
-					       men->currentView()->
-					       text->cursor.pos)))
+		if (table->IsMultiColumn(men->currentView()->text->
+					 NumberOfCell(men->currentView()->
+						      text->cursor.par, 
+						      men->currentView()->
+						      text->cursor.pos)))
 			fl_addtopup(SubEditTable, _("|Multicolumn%B%x44%l"));
 		else
 			fl_addtopup(SubEditTable, _("|Multicolumn%b%x44%l"));
 		fl_setpup_shortcut(SubEditTable, 44, scex(_("EMT|Mm#m#M")));
      
-		if (men->currentView()->text->cursor.par->table->
-		    TopLine(men->currentView()->text->
-			    NumberOfCell(men->currentView()->
-					 text->cursor.par, 
-					 men->currentView()->text->
-					 cursor.pos)))
+		if (table->TopLine(men->currentView()->text->
+				   NumberOfCell(men->currentView()->
+						text->cursor.par, 
+						men->currentView()->text->
+						cursor.pos)))
 			fl_addtopup(SubEditTable, _("|Line Top%B%x36"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Top%b%x36"));
 		fl_setpup_shortcut(SubEditTable, 36, scex(_("EMT|Tt#t#T")));
      
-		if (men->currentView()->text->cursor.par->table->
-		    BottomLine(men->currentView()->text->
-			       NumberOfCell(men->currentView()->
-					    text->cursor.par, 
-					    men->currentView()->
-					    text->cursor.pos)))
+		if (table->BottomLine(men->currentView()->text->
+				      NumberOfCell(men->currentView()->
+						   text->cursor.par, 
+						   men->currentView()->
+						   text->cursor.pos)))
 			fl_addtopup(SubEditTable, _("|Line Bottom%B%x37"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Bottom%b%x37"));
 		fl_setpup_shortcut(SubEditTable, 37, scex(_("EMT|Bb#b#B")));
 
-		if (men->currentView()->text->cursor.par->table->
-		    LeftLine(men->currentView()->text->
-			     NumberOfCell(men->currentView()->
-					  text->cursor.par, 
-					  men->currentView()->
-					  text->cursor.pos)))
+		if (table->LeftLine(men->currentView()->text->
+				    NumberOfCell(men->currentView()->
+						 text->cursor.par, 
+						 men->currentView()->
+						 text->cursor.pos)))
 			fl_addtopup(SubEditTable, _("|Line Left%B%x38"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Left%b%x38"));
 		fl_setpup_shortcut(SubEditTable, 38, scex(_("EMT|Ll#l#L")));
 
-		if (men->currentView()->text->cursor.par->table->
-		    RightLine(men->currentView()->text->
-			      NumberOfCell(men->currentView()->
-					   text->cursor.par, 
-					   men->currentView()->
-					   text->cursor.pos)))
+		if (table->RightLine(men->currentView()->text->
+				     NumberOfCell(men->currentView()->
+						  text->cursor.par, 
+						  men->currentView()->
+						  text->cursor.pos)))
 			fl_addtopup(SubEditTable, _("|Line Right%B%x39%l"));
 		else
 			fl_addtopup(SubEditTable, _("|Line Right%b%x39%l"));
 		fl_setpup_shortcut(SubEditTable, 39, scex(_("EMT|Rr#r#R")));
 
-		int align = men->currentView()->text->cursor.par->
+		int align =
 			table->GetAlignment(men->currentView()->text->
 					    NumberOfCell(men->currentView()->
 							 text->cursor.par, 
@@ -957,8 +955,80 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 		// xgettext:no-c-format
 		fl_addtopup(SubEditTable, _("|Delete Table%x43"));
 		fl_setpup_shortcut(SubEditTable, 43, scex(_("EMT|Dd#d#D")));
-	}
-	else {
+	} else if (men->currentView()->the_locking_inset &&
+		   (men->currentView()->the_locking_inset->LyxCode() ==
+		    Inset::TABULAR_CODE) &&
+		   !tmpbuffer->isReadonly()) {
+		InsetTabular * inset = static_cast<InsetTabular *>(men->currentView()->the_locking_inset);
+		LyXTabular * table = inset->tabular;
+
+		fl_addtopup(SubEditTable, _("Table%t"));
+
+		if (table->IsMultiColumn(inset->GetActCell()))
+			fl_addtopup(SubEditTable, _("|Multicolumn%B%x44%l"));
+		else
+			fl_addtopup(SubEditTable, _("|Multicolumn%b%x44%l"));
+		fl_setpup_shortcut(SubEditTable, 44, scex(_("EMT|Mm#m#M")));
+
+		if (table->TopLine(inset->GetActCell()))
+			fl_addtopup(SubEditTable, _("|Line Top%B%x36"));
+		else
+			fl_addtopup(SubEditTable, _("|Line Top%b%x36"));
+		fl_setpup_shortcut(SubEditTable, 36, scex(_("EMT|Tt#t#T")));
+     
+		if (table->BottomLine(inset->GetActCell()))
+			fl_addtopup(SubEditTable, _("|Line Bottom%B%x37"));
+		else
+			fl_addtopup(SubEditTable, _("|Line Bottom%b%x37"));
+		fl_setpup_shortcut(SubEditTable, 37, scex(_("EMT|Bb#b#B")));
+
+		if (table->LeftLine(inset->GetActCell()))
+			fl_addtopup(SubEditTable, _("|Line Left%B%x38"));
+		else
+			fl_addtopup(SubEditTable, _("|Line Left%b%x38"));
+		fl_setpup_shortcut(SubEditTable, 38, scex(_("EMT|Ll#l#L")));
+
+		if (table->RightLine(inset->GetActCell()))
+			fl_addtopup(SubEditTable, _("|Line Right%B%x39%l"));
+		else
+			fl_addtopup(SubEditTable, _("|Line Right%b%x39%l"));
+		fl_setpup_shortcut(SubEditTable, 39, scex(_("EMT|Rr#r#R")));
+
+		int align = table->GetAlignment(inset->GetActCell());
+		if (align == LYX_ALIGN_LEFT)
+			fl_addtopup(SubEditTable, _("|Align Left%R%x40"));
+		else
+			fl_addtopup(SubEditTable, _("|Align Left%r%x40"));
+		fl_setpup_shortcut(SubEditTable, 40, scex(_("EMT|eE#e#E")));
+
+		if (align == LYX_ALIGN_RIGHT)
+			fl_addtopup(SubEditTable, _("|Align Right%R%x41"));
+		else
+			fl_addtopup(SubEditTable, _("|Align Right%r%x41"));
+		fl_setpup_shortcut(SubEditTable, 41, scex(_("EMT|iI#i#I")));
+
+		if (align == LYX_ALIGN_CENTER)
+			fl_addtopup(SubEditTable, _("|Align Center%R%x42%l"));
+		else
+			fl_addtopup(SubEditTable, _("|Align Center%r%x42%l"));
+		fl_setpup_shortcut(SubEditTable, 42, scex(_("EMT|Cc#c#C")));
+
+		// xgettext:no-c-format
+		fl_addtopup(SubEditTable, _("|Append Row%x32"));
+		fl_setpup_shortcut(SubEditTable, 32, scex(_("EMT|oO#o#O")));
+		// xgettext:no-c-format
+		fl_addtopup(SubEditTable, _("|Append Column%x33%l"));
+		fl_setpup_shortcut(SubEditTable, 33, scex(_("EMT|uU#u#U")));
+		// xgettext:no-c-format
+		fl_addtopup(SubEditTable, _("|Delete Row%x34"));
+		fl_setpup_shortcut(SubEditTable, 34, scex(_("EMT|wW#w#W")));
+		// xgettext:no-c-format
+		fl_addtopup(SubEditTable, _("|Delete Column%x35%l"));
+		fl_setpup_shortcut(SubEditTable, 35, scex(_("EMT|nN#n#N")));
+		// xgettext:no-c-format
+		fl_addtopup(SubEditTable, _("|Delete Table%x43"));
+		fl_setpup_shortcut(SubEditTable, 43, scex(_("EMT|Dd#d#D")));
+	} else {
 		fl_addtopup(SubEditTable, _("Table%t"));
 		// xgettext:no-c-format
 		fl_addtopup(SubEditTable, _("|Insert table%x31"));
@@ -1113,9 +1183,18 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 				men->currentView()->beforeChange(); 
 				men->currentView()->update(-2);
 			}
-			men->currentView()->text->
-				TableFeatures(choice - 32);
-			men->currentView()->update(1);
+			if (men->currentView()->the_locking_inset &&
+			    (men->currentView()->the_locking_inset->LyxCode()
+			     == Inset::TABULAR_CODE)) {
+				InsetTabular * inset =
+				    static_cast<InsetTabular *>
+				       (men->currentView()->the_locking_inset);
+				inset->TabularFeatures(men->currentView(), choice - 32);
+			} else {
+				men->currentView()->text->
+					TableFeatures(choice - 32);
+				men->currentView()->update(1);
+			}
 		}
 		break;
 		// version control sub-menu

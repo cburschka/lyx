@@ -1,3 +1,13 @@
+2000-05-05  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (UpdateLocal): resetCursorPos when
+	recalculating inset-widths.
+	(TabularFeatures): activated this function so that I can change
+	tabular-features via menu.
+
+	* src/menus.C (ShowEditMenu): inserted support for insettabular so
+	that I can test some functions with the Table menu.
+
 2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxfont.C (stateText): guard against stupid c++libs.

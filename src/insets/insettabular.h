@@ -126,7 +126,7 @@ public:
     ///
     void ToggleInsetCursor(BufferView *);
     ///
-    void TabularFeatures(int feature, string val="");
+    void TabularFeatures(BufferView * bv, int feature, string val="");
     ///
     int GetActCell() { return actcell; }
     ///
