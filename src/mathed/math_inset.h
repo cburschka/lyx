@@ -132,6 +132,8 @@ public:
 	virtual void dimensions(Dimension & dim) const;
 	/// total height (== ascent + descent)
 	virtual int height() const;
+	/// get cursor position
+	virtual void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(idx_type & idx, bool up) const;

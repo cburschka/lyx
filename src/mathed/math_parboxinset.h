@@ -11,6 +11,8 @@ public:
 	MathParboxInset * asParboxInset() { return this; }
 	///
 	MathInset * clone() const;
+	/// get cursor position
+	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///

@@ -33,6 +33,8 @@ public:
 	struct Row {
 		/// constructor
 		Row() {}
+		/// first position of this row
+		size_type begin; 
 		/// last position of this row plus one
 		size_type end; 
 		/// y offset relative to yo
@@ -48,8 +50,7 @@ public:
 	/// rebuild cached metrics information
 	Dimension const & metrics(MathMetricsInfo & mi) const;
 	/// rebuild cached metrics information
-	void metricsExternal(MathMetricsInfo & mi,
-		std::vector<MathXArray::Row> &) const;
+	void metricsExternal(MathMetricsInfo & mi, std::vector<Dimension> &) const;
 	/// redraw cell using cache metrics information
 	void draw(MathPainterInfo & pi, int x, int y) const;
 	/// redraw cell using external metrics information
@@ -72,6 +73,8 @@ public:
 	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
+	/// returns position of given x coordinate
+	int pos2x(size_type pos1, size_type pos2, int glue) const;
 	/// returns position of given x coordinate
 	size_type x2pos(int pos) const;
 	/// returns distance of this cell to the point given by x and y

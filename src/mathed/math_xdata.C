@@ -67,7 +67,7 @@ Dimension const & MathXArray::metrics(MathMetricsInfo & mi) const
 
 
 void MathXArray::metricsExternal(MathMetricsInfo & mi,
-	std::vector<Row> & v) const
+	std::vector<Dimension> & v) const
 {
 	//if (clean_)
 	//	return;
@@ -89,18 +89,18 @@ void MathXArray::metricsExternal(MathMetricsInfo & mi,
 		if (q) {
 			q->metrics(p, mi);
 			q->dimensions2(p, d);
+			v.push_back(d);
+			v.push_back(Dimension());
 			++it;
-			v.push_back(Row());
-			v.back().dim = d;
-			v.push_back(Row());
 		} else {
 			p->metrics(mi);
 			p->dimensions(d);
-			v.push_back(Row());
-			v.back().dim = d;
+			v.push_back(d);
 		}
 	}
 
+	//for (int i = 0; i < data_.size(); ++i)
+	//	lyxerr << "i: " << i << "  dim: " << v[i] << endl;
 	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
 }
 
@@ -150,14 +150,28 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
 	std::vector<Row> const & v) const
 {
-	for (size_type r = 0, pos = 0; r != v.size(); ++r) {
+	//for (size_type r = 0; r < v.size(); ++r)
+	//	lyxerr << "row " << r << " to: " << v[r].end << endl; 
+	//lyxerr << " data: " << data_ << endl;
+
+	xo_    = x;
+	yo_    = y;
+
+	for (size_type r = 0; r < v.size(); ++r) {
 		int xx = x;
 		int yy = y + v[r].yo;
-		for ( ; pos != v[r].end; ++pos) {
+		for (size_type pos = v[r].begin; pos < v[r].end && pos < data_.size(); ++pos) {
+			//lyxerr << "drawing pos " << pos << " of " << data_.size() 
+			//	<< " " << int(data_[pos]->getChar()) << endl;
 			MathInset const * p = data_[pos].nucleus();
+		
+			// insert extra glue
+			if (p->getChar() == ' ') 
+				xx += v[r].glue;
+	
 			MathScriptInset const * q = 0;
-			if (pos + 1 != data_.size())
-				q = asScript(begin() + pos + 1);
+			if (pos + 1 < data_.size())
+				q = asScript(begin() + pos);
 			if (q) {
 				q->draw(p, pi, xx, yy);
 				xx += q->width2(p);
@@ -222,16 +236,24 @@ void MathXArray::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-int MathXArray::pos2x(size_type targetpos) const
+int MathXArray::pos2x(size_type pos) const
+{
+	return pos2x(0, pos, 0);
+}
+
+int MathXArray::pos2x(size_type pos1, size_type pos2, int glue) const
 {
 	int x = 0;
-	const_iterator target = min(begin() + targetpos, end());
-	for (const_iterator it = begin(); it < target; ++it) {
+	size_type target = min(pos2, data_.size());
+	for (size_type i = pos1; i < target; ++i) {
+		const_iterator it = begin() + i;
 		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (p->getChar() == ' ')
+			x += glue;
+		MathScriptInset const * q = (i + 1 == data_.size()) ? 0 : asScript(it);
 		if (q) {
-			++it;
-			if (it < target)
+			++i;
+			if (i < target)
 				x += q->width2(p);
 			else  // "half" position
 				x += q->dxx(p) + q->nwid(p);

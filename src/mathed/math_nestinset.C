@@ -48,6 +48,15 @@ MathArray const & MathNestInset::cell(idx_type i) const
 }
 
 
+void MathNestInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
+{
+	x = cells_[idx].xo() + cells_[idx].pos2x(pos);
+	y = cells_[idx].yo();
+	// move cursor visually into empty cells ("blue rectangles");
+	if (!cells_[idx].data().size())
+		x += 2;
+}
+
 void MathNestInset::substitute(MathMacro const & m)
 {
 	for (idx_type i = 0; i < nargs(); ++i)

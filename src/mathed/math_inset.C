@@ -173,6 +173,13 @@ bool MathInset::idxEnd(idx_type &, pos_type &) const
 }
 
 
+void MathInset::getPos(idx_type, pos_type, int & x, int & y) const
+{
+	lyxerr << "MathInset::getPos() called directly!\n";
+	x = y = 0;
+}
+
+
 void MathInset::normalize(NormalStream & os) const
 {
 	os << "[unknown ";

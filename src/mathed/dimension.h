@@ -1,6 +1,10 @@
 #ifndef DIMENSION_H
 #define DIMENSION_H
 
+#include <iosfwd>
+
+class LyXFont;
+
 class Dimension {
 public:
 	/// constructor
@@ -12,6 +16,8 @@ public:
 	void operator+=(Dimension const & dim);
 	/// set to empty box
 	void clear() { w = a = d = 0; }
+	/// set to empty box suitble for given font
+	void clear(LyXFont const & font);
 	/// get height
 	int height() const { return a + d; }
 	/// get ascent
@@ -29,5 +35,7 @@ public:
 	/// descent
 	int d;
 };
+
+std::ostream & operator<<(std::ostream & os, Dimension const & dim);
 
 #endif

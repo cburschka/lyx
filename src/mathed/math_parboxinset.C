@@ -34,6 +34,22 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
+void MathParboxInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
+{
+	for (int r = 0, n = rows_.size(); r < n; ++r) {
+		if (pos >= rows_[r].begin && pos < rows_[r].end) {
+			//lyxerr << "found cursor at pos " << pos << " in row " << r << "\n";
+			x = cells_[0].xo() + cells_[0].pos2x(rows_[r].begin, pos, rows_[r].glue);
+			y = cells_[0].yo() + rows_[r].yo;
+			break;
+		}
+	}
+	// move cursor visually into empty cells ("blue rectangles");
+	if (cell(0).empty())
+		x += 2;
+}
+
+
 void MathParboxInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, "textnormal");
@@ -42,68 +58,100 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 	// delete old cache
 	rows_.clear();
 
-#if 1
+#if 0
 
 	dim_ = xcell(0).metrics(mi);
 
 #else
 
-	xcell(0).metricsExternal(mi, rows_);
+	vector<Dimension> dims;	
+	xcell(0).metricsExternal(mi, dims);
 
 	int spaces = 0;
-	Dimension safe(0, 0, 0);
-	Dimension curr(0, 0, 0);
+	Dimension safe;
+	Dimension curr;
+	safe.clear(mi.base.font);
+	curr.clear(mi.base.font);
+	int begin = 0;
 	int safepos = 0;
 	int yo = 0;
-	for (size_type i = 0, n = cell(0).size(); i != n; ++i) {
+	for (size_type i = 0, n = cell(0).size(); i < n; ++i) {
+		//lyxerr << "at pos: " << i << " of " << n << " safepos: " << safepos
+		//	<< " curr: " << curr << " safe: " << safe
+		//	<< " spaces: " << spaces << endl;
+
+
+		//   0      1      2      3       4      5      6
+		// <char> <char> <char> <space> <char> <char> <char>
+		// ................... <safe>
+		//                      ..........................<curr>
+		// ....................<safepos>
+
 		// Special handling of spaces. We reached a safe position for breaking.
 		if (cell(0)[i]->getChar() == ' ') {
+			//lyxerr << "reached safe pos\n";
+			// we don't count the space into the safe pos
 			safe += curr;
-			safepos = i + 1;
+			// we reset to this safepos if the next chunk does not fit
+			safepos = i;
 			++spaces;
-			// restart chunk
-			curr = Dimension(0, 0, 0);
+			// restart chunk with size of the space
+			curr.clear(mi.base.font);
+			curr += dims[i];
 			continue;
 		}
 
-		// This is a regular item. Go on if we either don't care for
+		// This is a regular char. Go on if we either don't care for
 		// the width limit or have not reached that limit.
-		curr += rows_[i].dim;
+		curr += dims[i];
 		if (curr.w + safe.w <= lyx_width_) 
 			continue;
 
 		// We passed the limit. Create a row entry.
+		//lyxerr << "passed limit\n";
 		MathXArray::Row row;
 		if (spaces) {
 			// but we had a space break before this position.
-			row.dim  = safe;
-			row.glue = (lyx_width_ - safe.w) / spaces;
-			row.end  = safepos;
-			i        = safepos;
+			// so retreat to this position
+			row.dim   = safe;
+			row.glue  = (lyx_width_ - safe.w) / spaces;
+			row.begin = begin;
+			row.end   = safepos;  // this is position of the safe space
+			i         = safepos;  // i gets incremented at end of loop
+			begin     = i + 1;    // next chunk starts after the space
+			//lyxerr << "... but had safe pos. glue: " << row.glue << "\n";
 			spaces   = 0;
 		} else {
+			lyxerr << "... without safe pos\n";
 			// This item is too large and it is the only one.
 			// We have no choice but to produce an overfull box.
-			row.dim  = curr;   // safe should be 0.
-			row.glue = 0;      // does not matter
-			row.end  = i + 1;
+			row.dim   = curr;   // safe should be 0.
+			row.glue  = 0;      // does not matter
+			row.begin = begin;
+			row.end   = i + 1;
+			begin     = i + 1;
 		}
-		yo      += rows_[i].dim.height();
 		row.yo   = yo;
+		yo      += row.dim.height();
 		rows_.push_back(row);
+		// in any case, start the new row with empty boxes
+		curr.clear(mi.base.font);
+		safe.clear(mi.base.font);
 	}
-	// last row:
+	// last row: put in everything else
 	MathXArray::Row row;
-	row.dim  = safe;
-	row.dim += curr;
-	row.end  = cell(0).size();
-	row.glue = spaces ? (lyx_width_ - row.dim.w) / spaces : 0;
-	yo      += row.dim.height();
-	row.yo   = yo;
+	row.dim   = safe;
+	row.dim  += curr;
+	row.begin = begin;
+	row.end   = cell(0).size();
+	row.glue  = 0; // last line is left aligned
+	row.yo    = yo;
 	rows_.push_back(row);
 
 	// what to report?
-	dim_  = xcell(0).dim();
+	dim_.w = lyx_width_;
+	dim_.a = rows_.front().dim.a;
+	dim_.d = rows_.back().dim.d + yo;
 	metricsMarkers();
 #endif
 }
@@ -112,7 +160,7 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 void MathParboxInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathFontSetChanger dummy(pi.base, "textnormal");
-#if 1
+#if 0
 	xcell(0).draw(pi, x + 1, y);
 #else
 	xcell(0).drawExternal(pi, x + 1, y, rows_);
