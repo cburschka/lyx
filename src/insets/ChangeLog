@@ -1,3 +1,8 @@
+2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetnote.h (ascii): overide the InsetCollapsable::ascii method to
+	not output anything at all!
+
 2002-04-16  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (insetButtonPress): 

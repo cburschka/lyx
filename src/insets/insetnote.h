@@ -47,6 +47,9 @@ public:
 	int docbook(Buffer const *, std::ostream &) const
 		{ return 0; }
 	///
+	int ascii(Buffer const *, std::ostream &, int) const
+		{ return 0; }
+	///
 	void validate(LaTeXFeatures &) const {}
 private:
 	/// used by the constructors
