@@ -66,7 +66,7 @@ void finishNoUndo(BufferView * bv)
 	freezeUndo();
 	bv->unlockInset(bv->theLockingInset());
 	finishUndo();
-	bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
+	bv->text->postPaint(*bv, 0);
 	unFreezeUndo();
 }
 
@@ -266,7 +266,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 
 	finishUndo();
-	bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
+	bv->text->postPaint(*bv, 0);
 	return true;
 }
 

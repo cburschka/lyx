@@ -187,29 +187,6 @@ public:
 
 	///
 	mutable Row * need_break_row;
-	/**
-	 * The pixel y position from which to repaint the screen.
-	 * The position is absolute along the height of outermost
-	 * lyxtext (I think). NEED_MORE_REFRESH and NEED_LITTLE_REFRESH
-	 * repaints both use this as a starting point (if it's within
-	 * the viewable portion of the lyxtext).
-	 */
-	mutable int refresh_y;
-	/**
-	 * The row from which to repaint the screen, used by screen.c.
-	 * This must be set if the pending update is NEED_LITTLE_REFRESH.
-	 * It doesn't make any difference for NEED_MORE_REFRESH.
-	 */
-	mutable Row * refresh_row;
-
-	/**
-	 * Return the status. This represents what repaints are
-	 * pending after some operation (e.g. inserting a char).
-	 */
-	text_status status() const;
-
-	/// Set the status to make a paint pending.
-	void status(BufferView *, text_status) const;
 
 	/// clear any pending paints
 	void clearPaint();
@@ -230,14 +207,35 @@ public:
 	///
 	Inset::RESULT dispatch(FuncRequest const & cmd);
 
+	friend class LyXScreen;
+
+	/**
+	 * Return the status. This represents what repaints are
+	 * pending after some operation (e.g. inserting a char).
+	 */
+	text_status status() const;
+
 private:
+	/**
+	 * The pixel y position from which to repaint the screen.
+	 * The position is absolute along the height of outermost
+	 * lyxtext (I think). NEED_MORE_REFRESH and NEED_LITTLE_REFRESH
+	 * repaints both use this as a starting point (if it's within
+	 * the viewable portion of the lyxtext).
+	 */
+	int refresh_y;
+	/**
+	 * The row from which to repaint the screen, used by screen.c.
+	 * This must be set if the pending update is NEED_LITTLE_REFRESH.
+	 * It doesn't make any difference for NEED_MORE_REFRESH.
+	 */
+	mutable Row * refresh_row;
+
+	/// refresh status
+	text_status status_;
+
 	/// only the top-level LyXText has this non-zero
 	BufferView * bv_owner;
-
-	/** wether the screen needs a refresh,
-	   starting with refresh_y
-	   */
-	mutable text_status status_;
 
 public:
 	/** returns a pointer to the row near the specified y-coordinate

@@ -183,14 +183,14 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 
 
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x, bool cleared) const
+			    int baseline, float & x) const
 {
 	lyx::Assert(bv);
 	cache(bv);
 
 	if (need_update != NONE) {
 		const_cast<InsetText *>(&inset)->update(bv, f, true);
-		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
+		bv->text->postChangedInDraw();
 		need_update = NONE;
 		return;
 	}
@@ -214,18 +214,6 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	if (!owner())
 		x += static_cast<float>(scroll());
 
-	if (!cleared && (inset.need_update == InsetText::FULL ||
-			 inset.need_update == InsetText::INIT ||
-			 top_x != int(x) ||
-			 top_baseline != baseline))
-	{
-		// we don't need anymore to clear here we just have to tell
-		// the underlying LyXText that it should do the RowClear!
-		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
-		return;
-	}
-
 	top_x = int(x);
 	topx_set = true;
 	top_baseline = baseline;
@@ -233,9 +221,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
 
 	draw_collapsed(pain, bl, old_x);
-	inset.draw(bv, f,
-			   bl + descent_collapsed() + inset.ascent(bv, f),
-			   x, cleared);
+	inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
 	if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
 		x = top_x + button_length + TEXT_TO_INSET_OFFSET;
 }
@@ -560,12 +546,6 @@ void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
 			       bool toggleall, bool selectall)
 {
 	inset.setFont(bv, font, toggleall, selectall);
-}
-
-
-bool InsetCollapsable::doClearArea() const
-{
-	return inset.doClearArea();
 }
 
 

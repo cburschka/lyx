@@ -37,7 +37,7 @@ public:
 	///
 	virtual int width(BufferView *, LyXFont const &) const = 0;
 	///
-	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
+	virtual void draw(BufferView *,LyXFont const &, int, float &) const = 0;
 	/// lowest x coordinate
 	virtual int xlow() const;
 	/// highest x coordinate

@@ -567,7 +567,7 @@ int InsetERT::width(BufferView * bv, LyXFont const & font) const
 
 
 void InsetERT::draw(BufferView * bv, LyXFont const & f,
-		    int baseline, float & x, bool cleared) const
+		    int baseline, float & x) const
 {
 	lyx::Assert(bv);
 	cache(bv);
@@ -589,18 +589,6 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 	if (!owner())
 		x += static_cast<float>(scroll());
 
-	if (!cleared && (inset.need_update == InsetText::FULL ||
-			 inset.need_update == InsetText::INIT ||
-			 top_x != int(x) ||
-			 top_baseline != baseline))
-	{
-		// we don't need anymore to clear here we just have to tell
-		// the underlying LyXText that it should do the RowClear!
-		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
-		return;
-	}
-
 	top_x = int(x);
 	topx_set = true;
 	top_baseline = baseline;
@@ -608,12 +596,10 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
 
 	if (inlined()) {
-		inset.draw(bv, f, baseline, x, cleared);
+		inset.draw(bv, f, baseline, x);
 	} else {
 		draw_collapsed(pain, bl, old_x);
-		inset.draw(bv, f,
-				   bl + descent_collapsed() + inset.ascent(bv, f),
-				   x, cleared);
+		inset.draw(bv, f, bl + descent_collapsed() + inset.ascent(bv, f), x);
 	}
 	need_update = NONE;
 }

@@ -1,3 +1,9 @@
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* screen.h:
+	* screen.C: remove cleared/background painting code,
+	update() was taking a pointless LyXText parameter
+
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove showParagraph and updateParagraph.

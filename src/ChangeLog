@@ -1,3 +1,14 @@
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* lyxtext.h:
+	* undo_funcs.C:
+	* text2.C: more paint cleanups
+
+	* BufferView_pimpl.C: screen prototype changed, use postPaint etc.
+
+	* rowpainter.h:
+	* rowpainter.C: remove "smart" background painting code
+
 2003-03-16  John Levon  <levon@movementarian.org>
 
 	* lyxtext.h:

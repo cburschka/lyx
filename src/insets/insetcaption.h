@@ -40,7 +40,7 @@ public:
 	///
 	virtual
 	void draw(BufferView * bv, LyXFont const & f,
-			  int baseline, float & x, bool cleared) const;
+			  int baseline, float & x) const;
 	///
 	virtual
 	int latex(Buffer const * buf, std::ostream & os,

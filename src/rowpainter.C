@@ -114,7 +114,7 @@ bool RowPainter::paintInset(pos_type const pos)
 	LyXFont const & font = getFont(pos);
 
 	inset->update(perv(bv_), font, false);
-	inset->draw(perv(bv_), font, yo_ + row_.baseline(), x_, cleared_);
+	inset->draw(perv(bv_), font, yo_ + row_.baseline(), x_);
 
 	// return true if something changed when we drew an inset
 
@@ -305,63 +305,12 @@ bool RowPainter::paintFromPos(pos_type & vpos)
 }
 
 
-bool RowPainter::paintBackground()
+void RowPainter::paintBackground()
 {
-	pos_type const last = row_.lastPrintablePos();
-	bool clear_area = true;
-	Inset const * inset = 0;
-
-	if (!bv_.screen().forceClear() && last == row_.pos()
-	    && row_.pos() < par_.size()
-	    && par_.isInset(row_.pos())) {
-		inset = par_.getInset(row_.pos());
-		clear_area = inset->doClearArea();
-	}
-
-	if (cleared_) {
-		return true;
-	}
-
-	if (clear_area) {
-		int const x = xo_;
-		int const y = yo_ < 0 ? 0 : yo_;
-		int const h = yo_ < 0 ? row_.height() + yo_ : row_.height();
-		pain_.fillRectangle(x, y, width_, h, text_.backgroundColor());
-		return true;
-	}
-
-	if (!inset)
-		return false;
-
-	LyXFont font(LyXFont::ALL_SANE);
-
-	// FIXME
-	BufferView * bv = perv(bv_);
-
-	int h = row_.baseline() - inset->ascent(bv, font);
-
-	// first clear the whole row above the inset!
-	if (h > 0) {
-		pain_.fillRectangle(xo_, yo_, width_, h, text_.backgroundColor());
-	}
-
-	// clear the space below the inset!
-	h += inset->ascent(bv, font) + inset->descent(bv, font);
-	if ((row_.height() - h) > 0) {
-		pain_.fillRectangle(xo_, yo_ + h,
-			width_, row_.height() - h, text_.backgroundColor());
-	}
-
-	// clear the space behind the inset, if needed
-	if (!inset->display() && !inset->needFullRow()) {
-		int const xp = int(x_) + inset->width(bv, font);
-		if (width_ - xp > 0) {
-			pain_.fillRectangle(xp, yo_, width_ - xp,
-				row_.height(), text_.backgroundColor());
-		}
-	}
-
-	return false;
+	int const x = xo_;
+	int const y = yo_ < 0 ? 0 : yo_;
+	int const h = yo_ < 0 ? row_.height() + yo_ : row_.height();
+	pain_.fillRectangle(x, y, width_, h, text_.backgroundColor());
 }
 
 
@@ -1021,12 +970,11 @@ bool RowPainter::paintText()
 }
 
 
-bool RowPainter::paint(int y_offset, int x_offset, int y, bool cleared)
+bool RowPainter::paint(int y_offset, int x_offset, int y)
 {
 	xo_ = x_offset;
 	yo_ = y_offset;
 	y_ = y;
-	cleared_ = cleared;
 	width_ = text_.isInInset()
 		? text_.inset_owner->textWidth(perv(bv_), true) : bv_.workWidth();
 
@@ -1041,8 +989,10 @@ bool RowPainter::paint(int y_offset, int x_offset, int y, bool cleared)
 		x_ = 0;
 	x_ += xo_;
 
-	// clear to background if necessary
-	cleared_ = paintBackground();
+	// If we're *not* at the top-level of rows, then the
+	// background has already been cleared.
+	if (&text_ == bv_.text)
+		paintBackground();
 
 	// paint the selection background
 	if (text_.selection.set()) {

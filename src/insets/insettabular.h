@@ -92,7 +92,7 @@ public:
 	///
 	int width(BufferView *, LyXFont const & f) const;
 	///
-	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
+	void draw(BufferView *, const LyXFont &, int , float &) const;
 	///
 	void update(BufferView *, LyXFont const &, bool = false);
 	///
@@ -101,9 +101,7 @@ public:
 	void edit(BufferView *, int x, int y, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
-	///
-	bool doClearArea() const;
-	///
+	//
 	void insetUnlock(BufferView *);
 	///
 	void updateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;

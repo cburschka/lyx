@@ -54,17 +54,19 @@ using lyx::pos_type;
 LyXText::LyXText(BufferView * bv)
 	: height(0), width(0), top_row_(0), top_row_offset_(0),
 	  inset_owner(0), the_locking_inset(0), need_break_row(0),
-	  refresh_y(0), refresh_row(0), bv_owner(bv),
-	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
-{}
+	  bv_owner(bv), firstrow(0), lastrow(0)
+{
+	clearPaint();
+}
 
 
 LyXText::LyXText(InsetText * inset)
 	: height(0), width(0), top_row_(0), top_row_offset_(0),
 	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
-	  refresh_y(0), refresh_row(0), bv_owner(0),
-	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
-{}
+	  bv_owner(0), firstrow(0), lastrow(0)
+{
+	clearPaint();
+}
 
 
 void LyXText::init(BufferView * bview, bool reinit)
@@ -321,10 +323,14 @@ void LyXText::removeRow(Row * row) const
 		lyx::Assert(!row->next());
 		lastrow = row_prev;
 	}
+
+	/* FIXME: when we cache the bview, this should just
+	 * become a postPaint(), I think */
 	if (refresh_row == row) {
 		refresh_row = row_prev ? row_prev : row->next();
-		// what about refresh_y, refresh_height
+		// what about refresh_y
 	}
+
 	if (top_row_ == row) {
 		if (row->next()) {
 			top_row_ = row->next();
@@ -713,10 +719,8 @@ void LyXText::redoHeightOfParagraph(BufferView * bview)
 		setHeightOfRow(bview, tmprow);
 	}
 
-	// we can set the refreshing parameters now
-	status(bview, LyXText::NEED_MORE_REFRESH);
-	refresh_y = y;
-	refresh_row = tmprow;
+	postPaint(*bview, y);
+
 	setCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
@@ -734,12 +738,7 @@ void LyXText::redoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
 		y -= tmprow->height();
 	}
 
-	// we can set the refreshing parameters now
-	if (status_ == LyXText::UNCHANGED || y < refresh_y) {
-		refresh_y = y;
-		refresh_row = tmprow;
-	}
-	status(bview, LyXText::NEED_MORE_REFRESH);
+	postPaint(*bview, y);
 	setCursor(bview, cur.par(), cur.pos());
 }
 
@@ -774,12 +773,8 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 		}
 	}
 
-	// we can set the refreshing parameters now
-	status(bview, LyXText::NEED_MORE_REFRESH);
-	refresh_y = y;
-	refresh_row = tmprow->previous();	 /* the real refresh row will
-						be deleted, so I store
-						the previous here */
+	Row * prevrow = tmprow->previous();
+
 	// remove it
 	if (tmprow->next())
 		tmppar = tmprow->next()->par();
@@ -817,13 +812,12 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 	} while (tmppar && tmppar != endpar);
 
 	// this is because of layout changes
-	if (refresh_row) {
-		refresh_y -= refresh_row->height();
-		setHeightOfRow(bview, refresh_row);
+	if (prevrow) {
+		setHeightOfRow(bview, prevrow);
+		const_cast<LyXText *>(this)->postPaint(*bview, y - prevrow->height());
 	} else {
-		refresh_row = firstrow;
-		refresh_y = 0;
-		setHeightOfRow(bview, refresh_row);
+		setHeightOfRow(bview, firstrow);
+		const_cast<LyXText *>(this)->postPaint(*bview, 0);
 	}
 
 	if (tmprow && tmprow->next())
@@ -1105,9 +1099,7 @@ void LyXText::setParagraph(BufferView * bview,
 
 	while (tmppar != selection.start.par()->previous()) {
 		setCursor(bview, tmppar, 0);
-		status(bview, LyXText::NEED_MORE_REFRESH);
-		refresh_row = cursor.row();
-		refresh_y = cursor.y() - cursor.row()->baseline();
+		postPaint(*bview, cursor.y() - cursor.row()->baseline());
 		cursor.par()->params().lineTop(line_top);
 		cursor.par()->params().lineBottom(line_bottom);
 		cursor.par()->params().pagebreakTop(pagebreak_top);
@@ -1646,9 +1638,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 		if (z >= row->pos()) {
 			// set the dimensions of the row above
 			y -= row->previous()->height();
-			refresh_y = y;
-			refresh_row = row->previous();
-			status(bview, LyXText::NEED_MORE_REFRESH);
+			postPaint(*bview, y);
 
 			breakAgain(bview, row->previous());
 
@@ -1663,14 +1653,13 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 
 	int const tmpheight = row->height();
 	pos_type const tmplast = row->lastPos();
-	refresh_y = y;
-	refresh_row = row;
 
 	breakAgain(bview, row);
-	if (row->height() == tmpheight && row->lastPos() == tmplast)
-		status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
-	else
-		status(bview, LyXText::NEED_MORE_REFRESH);
+	if (row->height() == tmpheight && row->lastPos() == tmplast) {
+		postRowPaint(*bview, row, y);
+	} else {
+		postPaint(*bview, y);
+	}
 
 	// check the special right address boxes
 	if (par->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
@@ -2337,13 +2326,11 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 		// ok, we will delete anything
 		LyXCursor tmpcursor;
 
-		// make sure that you do not delete any environments
-		status(bview, LyXText::NEED_MORE_REFRESH);
 		deleted = true;
 
 		if (old_cursor.row()->previous()) {
-			refresh_row = old_cursor.row()->previous();
-			refresh_y = old_cursor.y() - old_cursor.row()->baseline() - refresh_row->height();
+			const_cast<LyXText *>(this)->postPaint(*bview, old_cursor.y() - old_cursor.row()->baseline()
+			          - old_cursor.row()->previous()->height());
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
@@ -2373,8 +2360,9 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			}
 			setHeightOfRow(bview, refresh_row);
 		} else {
-			refresh_row = old_cursor.row()->next();
-			refresh_y = old_cursor.y() - old_cursor.row()->baseline();
+			Row * nextrow = old_cursor.row()->next();
+			const_cast<LyXText *>(this)->postPaint(*bview,
+				old_cursor.y() - old_cursor.row()->baseline());
 
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
@@ -2400,8 +2388,8 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			   the parindent that can occur or dissappear.
 			   The next row can change its height, if
 			   there is another layout before */
-			if (refresh_row) {
-				breakAgain(bview, refresh_row);
+			if (nextrow) {
+				breakAgain(bview, nextrow);
 				updateCounters(bview);
 			}
 		}
@@ -2464,35 +2452,6 @@ LyXText::text_status LyXText::status() const
 }
 
 
-void LyXText::status(BufferView * bview, LyXText::text_status new_status) const
-{
-	// We should not lose information from previous status
-	// sets, or we'll forget to repaint the other bits
-	// covered by the NEED_MORE_REFRESH
-	if (new_status == NEED_VERY_LITTLE_REFRESH
-	    && status_ == NEED_MORE_REFRESH)
-		return;
-
-	status_ = new_status;
-
-	if (new_status == UNCHANGED)
-		return;
-
-	if (!inset_owner)
-	       return;
-
-	LyXText * t = bview->text;
-
-	// We are an inset's lyxtext. Tell the top-level lyxtext
-	// it needs to update the row we're in.
-	t->status(bview, NEED_VERY_LITTLE_REFRESH);
-	if (!t->refresh_row) {
-		t->refresh_row = t->cursor.row();
-		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
-	}
-}
-
-
 void LyXText::clearPaint()
 {
 	status_ = UNCHANGED;
@@ -2509,9 +2468,17 @@ void LyXText::postChangedInDraw()
 
 void LyXText::postPaint(BufferView & bv, int start_y)
 {
+	text_status old = status_;
+
 	status_ = NEED_MORE_REFRESH;
-	refresh_y = start_y;
 	refresh_row = 0;
+
+	if (old != UNCHANGED && refresh_y < start_y) {
+		lyxerr << "Paint already pending from above" << endl;
+		return;
+	}
+
+	refresh_y = start_y;
 
 	if (!inset_owner)
 		return;
@@ -2533,13 +2500,17 @@ void LyXText::postPaint(BufferView & bv, int start_y)
 // make refresh_y be 0, and use row->y etc.
 void LyXText::postRowPaint(BufferView & bv, Row * row, int start_y)
 {
-	// FIXME: shouldn't this check that we're not updating
-	// above the existing refresh_y ??
+	if (status_ != UNCHANGED && refresh_y < start_y) {
+		lyxerr << "Paint already pending from above" << endl;
+		return;
+	} else {
+		refresh_y = start_y;
+	}
+
 	if (status_ == NEED_MORE_REFRESH)
 		return;
 
 	status_ = NEED_VERY_LITTLE_REFRESH;
-	refresh_y = start_y;
 	refresh_row = row;
 
 	if (!inset_owner)

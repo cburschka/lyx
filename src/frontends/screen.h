@@ -118,18 +118,17 @@ public:
 
 	/**
 	 * update - update part of the screen rendering
-	 * @param text the containing text region
 	 * @param bv the bufferview
 	 * @param xo the x offset into the text
 	 * @param yo the x offset into the text
 	 *
-	 * Updates part of the screen. If text->status is
+	 * Updates part of the screen. If bv->text->status is
 	 * LyXText::NEED_MORE_REFRESH, we update from the
 	 * point of change and to the end of the screen.
 	 * If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
 	 * we only update the current row.
 	 */
-	virtual void update(LyXText * text, BufferView * bv, int yo = 0, int xo = 0);
+	virtual void update(BufferView & bv, int yo = 0, int xo = 0);
 
 	/// FIXME
 	virtual void toggleSelection(LyXText *, BufferView *, bool = true,
@@ -138,9 +137,6 @@ public:
 	/// FIXME - at least change the name !!
 	virtual void toggleToggle(LyXText *, BufferView *,
 			  int y_offset = 0, int x_offset = 0);
-
-	/// FIXME
-	virtual bool forceClear() const { return force_clear_; }
 
 protected:
 	/// cause the display of the given area of the work area
@@ -163,9 +159,6 @@ protected:
 private:
 	/// grey out (no buffer)
 	void greyOut();
-
-	/// FIXME ?
-	bool force_clear_;
 
 	/// is the screen displaying text or the splash screen?
 	bool greyed_out_;

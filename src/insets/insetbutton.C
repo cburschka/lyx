@@ -93,7 +93,7 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 
 
 void InsetButton::draw(BufferView * bv, LyXFont const &,
-			int baseline, float & x, bool) const
+			int baseline, float & x) const
 {
 	lyx::Assert(bv);
 	cache(bv);

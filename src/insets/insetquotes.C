@@ -218,7 +218,7 @@ LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 
 
 void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
-		       int baseline, float & x, bool) const
+		       int baseline, float & x) const
 {
 	string const text = dispString(font.language());
 

@@ -171,7 +171,7 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 
 
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
-			     int y, float & xx, bool /*cleared*/) const
+			     int y, float & xx) const
 {
 	// label
 	LyXFont font(f);

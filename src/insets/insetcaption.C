@@ -66,7 +66,7 @@ string const InsetCaption::editMessage() const
 
 
 void InsetCaption::draw(BufferView * bv, LyXFont const & f,
-			int baseline, float & x, bool cleared) const
+			int baseline, float & x) const
 {
 	// We must draw the label, we should get the label string
 	// from the enclosing float inset.
@@ -101,7 +101,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	pain.text(int(x), baseline, label, f);
 	x += w;
 
-	InsetText::draw(bv, f, baseline, x, cleared);
+	InsetText::draw(bv, f, baseline, x);
 }
 
 

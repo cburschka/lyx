@@ -162,8 +162,7 @@ public:
 	///
 	virtual int width(BufferView *, LyXFont const &) const = 0;
 	///
-	virtual void draw(BufferView *, LyXFont const &,
-			  int baseline, float & x, bool cleared) const = 0;
+	virtual void draw(BufferView *, LyXFont const &, int baseline, float & x) const = 0;
 	/// update the inset representation
 	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
@@ -177,8 +176,6 @@ public:
 	virtual EDITABLE editable() const;
 	///
 	virtual bool isTextInset() const { return false; }
-	///
-	virtual bool doClearArea() const { return true; }
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 	/// returns true the inset can hold an inset of given type

@@ -33,7 +33,7 @@ public:
 	virtual int width(BufferView *, LyXFont const &) const;
 
 	virtual void draw(BufferView *, LyXFont const &,
-	                  int baseline, float & x, bool cleared) const;
+	                  int baseline, float & x) const;
 
 	virtual int latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 

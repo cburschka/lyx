@@ -88,7 +88,7 @@ int InsetNewline::docbook(Buffer const *, std::ostream &, bool) const
 
 
 void InsetNewline::draw(BufferView * bv, LyXFont const & font,
-	                int baseline, float & x, bool) const
+	                int baseline, float & x) const
 {
 	Painter & pain(bv->painter());
 

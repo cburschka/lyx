@@ -557,11 +557,11 @@ int InsetInclude::width(BufferView * bv, LyXFont const & font) const
 
 
 void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
-			float & xx, bool b) const
+			float & xx) const
 {
 	cache(bv);
 	if (!preview_->previewReady()) {
-		InsetButton::draw(bv, font, y, xx, b);
+		InsetButton::draw(bv, font, y, xx);
 		return;
 	}
 

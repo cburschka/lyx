@@ -194,7 +194,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 
 
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
-			int y, float & xx, bool) const
+			int y, float & xx) const
 {
 	cache(bv);
 	// This initiates the loading of the preview, so should come

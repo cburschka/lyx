@@ -111,7 +111,7 @@ SplashScreen::SplashScreen()
 
 
 LyXScreen::LyXScreen()
-	: cursor_visible_(false), force_clear_(true), greyed_out_(true)
+	: cursor_visible_(false), greyed_out_(true)
 {
 	// Start loading the pixmap as soon as possible
 	if (lyxrc.show_banner) {
@@ -244,11 +244,11 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 }
 
 
-void LyXScreen::update(LyXText * text, BufferView * bv,
-	int yo, int xo)
+void LyXScreen::update(BufferView & bv, int yo, int xo)
 {
 	int const vwidth = workarea().workWidth();
 	int const vheight = workarea().workHeight();
+	LyXText * text = bv.text;
 
 	workarea().getPainter().start();
 
@@ -256,27 +256,18 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 	case LyXText::NEED_MORE_REFRESH:
 	{
 		int const y = max(int(text->refresh_y - text->top_y()), 0);
-		drawFromTo(text, bv, y, vheight, yo, xo);
-		text->refresh_y = 0;
-		// otherwise this is called ONLY from BufferView_pimpl(update)
-		// or we should see to set this flag accordingly
-		if (text != bv->text)
-			text->status(bv, LyXText::UNCHANGED);
+		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
 	}
 	break;
 	case LyXText::NEED_VERY_LITTLE_REFRESH:
 	{
 		// ok I will update the current cursor row
-		drawOneRow(text, bv, text->refresh_row, text->refresh_y,
+		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
 			   yo, xo);
 		// this because if we had a major update the refresh_row could
 		// have been set to 0!
 		if (text->refresh_row) {
-			// otherwise this is called ONLY from BufferView_pimpl(update)
-			// or we should see to set this flag accordingly
-			if (text != bv->text)
-				text->status(bv, LyXText::UNCHANGED);
 			expose(0, text->refresh_y - text->top_y() + yo,
 				   vwidth, text->refresh_row->height());
 		}
@@ -448,9 +439,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
 		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
 			text->fullRebreak(bv);
-			st = LyXText::NEED_MORE_REFRESH;
 			text->setCursor(bv, text->cursor.par(), text->cursor.pos());
-			text->status(bv, st);
+			text->postPaint(*bv, 0);
 			Row * prev = row->previous();
 			RowPainter rp(*bv, *text, *row);
 			if (rp.paint(y + yo, xo, y + text->top_y()))
@@ -459,7 +449,6 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 		y += row->height();
 		row = row->next();
 	}
-	force_clear_ = false;
 
 	// maybe we have to clear the screen at the bottom
 	if ((y < y2) && text->isTopLevel()) {
@@ -482,5 +471,4 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 		if (rp.paint(y, xo, y + text->top_y()))
 			text->markChangeInDraw(bv, row, prev);
 	}
-	force_clear_ = false;
 }

@@ -56,7 +56,7 @@ public:
 	///
 	int width(BufferView *, LyXFont const &) const;
 	///
-	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
+	void draw(BufferView *, const LyXFont &, int , float &) const;
 	///
 	void update(BufferView *, LyXFont const &, bool =false);
 	///
@@ -73,8 +73,6 @@ public:
 	}
 	///
 	bool isTextInset() const { return true; }
-	///
-	bool doClearArea() const;
 	///
 	void insetUnlock(BufferView *);
 	///

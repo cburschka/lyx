@@ -73,8 +73,7 @@ void UpdatableInset::edit(BufferView *, bool)
 
 
 void UpdatableInset::draw(BufferView *, LyXFont const &,
-			  int /* baseline */, float & x,
-			  bool/*cleared*/) const
+			  int /* baseline */, float & x) const
 {
 	x += float(scx);
 	// ATTENTION: don't do the following here!!!

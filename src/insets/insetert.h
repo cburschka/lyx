@@ -109,7 +109,7 @@ public:
 	///
 	int width(BufferView *, LyXFont const &) const;
 	///
-	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
+	void draw(BufferView *, const LyXFont &, int , float &) const;
 	/// set the status of the inset
 	void status(BufferView *, ERTStatus const st) const;
 	///

@@ -344,7 +344,7 @@ BufferView * InsetGraphics::view() const
 
 
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
-			 int baseline, float & x, bool) const
+			 int baseline, float & x) const
 {
 	// MakeAbsPath returns params().filename unchanged if it absolute
 	// already.
@@ -418,21 +418,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6, baseline - 4, msg, msgFont);
 		}
 	}
-
-	// the status message may mean we changed size, so indicate
-	// we need a row redraw
-#if 0
-	if (old_status_ != grfx::ErrorUnknown && old_status_ != cached_status_) {
-		bv->getLyXText()->status(bv, LyXText::CHANGED_IN_DRAW);
-	}
-#endif
-
-	// Reset the cache, ready for the next draw request
-#if 0
-	cached_status_ = grfx::ErrorUnknown;
-	cached_image_.reset();
-	cache_filled_ = false;
-#endif
 }
 
 

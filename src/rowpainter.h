@@ -34,11 +34,11 @@ public:
 	RowPainter(BufferView const & bv, LyXText const & text, Row const & row);
 
 	/// paint the row. Returns true if CHANGED_IN_DRAW (e.g. image was loaded)
-	bool paint(int y_offset, int x_offset, int y, bool cleared = false);
+	bool paint(int y_offset, int x_offset, int y);
 
 private:
 	// paint various parts
-	bool paintBackground();
+	void paintBackground();
 	void paintSelection();
 	void paintAppendix();
 	void paintDepthBar();
@@ -94,7 +94,6 @@ private:
 	int yo_;
 	float x_;
 	int y_;
-	bool cleared_;
 	int width_;
 	float separator_;
 	float hfill_;

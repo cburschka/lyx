@@ -75,7 +75,7 @@ public:
 	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual void draw(BufferView *, LyXFont const &,
-			  int baseline, float & x, bool cleared) const;
+			  int baseline, float & x) const;
 	///
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///

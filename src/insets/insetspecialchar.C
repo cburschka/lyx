@@ -85,7 +85,7 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 
 
 void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
-			    int baseline, float & x, bool) const
+			    int baseline, float & x) const
 {
 	Painter & pain = bv->painter();
 	LyXFont font(f);

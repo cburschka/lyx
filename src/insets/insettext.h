@@ -47,17 +47,15 @@ public:
 		///
 		CURSOR = 1,
 		///
-		CLEAR_FRAME = 2,
+		DRAW_FRAME = 2,
 		///
-		DRAW_FRAME = 4,
+		SELECTION = 4,
 		///
-		SELECTION = 8,
+		CURSOR_PAR = 8,
 		///
-		CURSOR_PAR = 16,
+		FULL = 16,
 		///
-		FULL = 32,
-		///
-		INIT = 64
+		INIT = 32
 	};
 	///
 	enum DrawFrame {
@@ -94,7 +92,7 @@ public:
 	///
 	int textWidth(BufferView *, bool fordraw = false) const;
 	///
-	void draw(BufferView *, LyXFont const &, int , float &, bool) const;
+	void draw(BufferView *, LyXFont const &, int , float &) const;
 	///
 	void update(BufferView *, LyXFont const &, bool = false);
 	///
@@ -107,8 +105,6 @@ public:
 	void edit(BufferView *, bool front = true);
 	///
 	bool isTextInset() const { return true; }
-	///
-	bool doClearArea() const;
 	///
 	void insetUnlock(BufferView *);
 	///
@@ -346,11 +342,9 @@ private:
 	///
 	Row * crow(BufferView *) const;
 	///
-	void drawFrame(Painter &, bool cleared) const;
+	void drawFrame(Painter &) const;
 	///
-	void clearFrame(Painter &, bool cleared) const;
-	///
-	void clearInset(BufferView *, int baseline, bool & cleared) const;
+	void clearInset(BufferView *, int baseline) const;
 	///
 	void saveLyXTextState(LyXText *) const;
 	///
@@ -393,8 +387,6 @@ private:
 	mutable Cache cache;
 	///
 	mutable int last_drawn_width;
-	///
-	mutable bool frame_is_visible;
 	///
 	mutable BufferView * cached_bview;
 	///

@@ -41,7 +41,7 @@ public:
 	///
 	int width(BufferView *, LyXFont const &) const;
 	///
-	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
+	void draw(BufferView *, LyXFont const &, int, float &) const;
 
 	///
 	void write(Buffer const *, std::ostream &) const;
