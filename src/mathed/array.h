@@ -14,7 +14,7 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#include <string.h>
+#include <vector>
 
 #ifndef byte
 #define byte unsigned char
@@ -28,6 +28,8 @@
 class LyxArrayBase  {
 public:
 	///
+	typedef std::vector<byte> buffer_type;
+	///
 	enum {
 		///
 		ARRAY_SIZE = 256,
@@ -40,22 +42,12 @@ public:
 	///
 	explicit
 	LyxArrayBase(int size = ARRAY_STEP);
-	///
-	LyxArrayBase(LyxArrayBase const &);
-	///
-	~LyxArrayBase();
-   
-	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase & operator=(LyxArrayBase const &); 
 
 	///
 	int empty() const { return (last == 0); }
    
 	///
 	int Last() { return last; }
-   
-	/// Fills with 0 the entire array and set last to 0
-	void Init();     
    
 	/// Make the allocated memory fit the needed size
 	void Fit();     
@@ -88,7 +80,7 @@ protected:
 	bool Move(int p, int shift);
 
 	/// Buffer
-	byte * bf;
+	buffer_type bf;
 	/// Last position inserted.
 	int last;
 	/// Max size of the array.
@@ -102,25 +94,15 @@ private:
 
 /************************ Inline functions *****************************/
 
-inline
-void LyxArrayBase::Init()
-{
-	memset(bf, 0, maxsize);
-	last = 0;
-}
-
 inline // Hmmm, Hp-UX's CC can't handle this inline. Asger.
 void LyxArrayBase::Resize(int newsize)
 {
 	if (newsize<ARRAY_MIN_SIZE)
 		newsize = ARRAY_MIN_SIZE;
 	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
-	byte *nwbf = new byte[newsize];
+	bf.resize(newsize);
 	if (last >= newsize) last = newsize-1;
 	maxsize = newsize;
-	memcpy(nwbf, bf, last);
-	delete[] bf;
-	bf = nwbf;
 	bf[last] = 0;
 }
 
@@ -128,33 +110,8 @@ inline
 LyxArrayBase::LyxArrayBase(int size) 
 {
 	maxsize = (size<ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE: size;
-	bf = new byte[maxsize]; // this leaks
-	Init();
-}
-
-inline   
-LyxArrayBase::~LyxArrayBase() 
-{
-	delete[] bf;
-}
-
-inline
-LyxArrayBase::LyxArrayBase(LyxArrayBase const & a) 
-{
-	maxsize = a.maxsize;
-	bf = new byte[maxsize];
-	memcpy(&bf[0], &a.bf[0], maxsize);
-	last = a.last;
-}
-
-inline
-LyxArrayBase & LyxArrayBase::operator=(LyxArrayBase const & a)
-{
-	if (this != &a) {
-		Resize(a.maxsize);
-		memcpy(&bf[0], &a.bf[0], maxsize);
-	}
-	return *this;
+	bf.resize(maxsize);
+	last = 0;
 }
 
 inline   

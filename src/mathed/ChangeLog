@@ -1,5 +1,7 @@
-2001-02-09  Andre Poenitz  <poenitz@HTWM.De>
+2001-02-09  André Pönitz  <poenitz@htwm.de>
 
+	* array.h: replace array buffer  'byte bf[]'  by 'std::vector<byte> bf'
+	* several files: subsequent changes         
 	* math_iter.h: remove unused prototype
 	* array.h: ditto.
 
@@ -9,7 +11,7 @@
 	compiling with lyxstring, but STL sstream).
 	(Metrics): ditto.
 
-2001-02-08  Andre Poenitz  <poenitz@HTWM.De>
+2001-02-08  André Pönitz  <poenitz@htwm.de>
 
 	* several files: get rid of reinterpret_cast.
 
