@@ -1332,6 +1332,13 @@ lyxstring & lyxstring::replace(size_type i, size_type n,
 }
 
 
+/// FY! FY! FY! go away !
+lyxstring & lyxstring::replace(size_type i, size_type n, value_type c)
+{
+	return replace(i, n, 1, c);
+}
+
+
 lyxstring & lyxstring::replace(iterator i, iterator i2, const lyxstring & str)
 {
 	TestlyxstringInvariant(this);

@@ -5,7 +5,7 @@
 
 using std::ostream;
 
-ostream & operator<<(ostream & o, MathedMacroFlag mmf)
+ostream & operator<<(ostream & o, MathMacroFlag mmf)
 {
 	return o << int(mmf);
 }

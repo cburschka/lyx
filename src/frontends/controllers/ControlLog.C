@@ -24,6 +24,7 @@
 #include "LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
+#include "BufferView.h"
 
 using SigC::slot;
 

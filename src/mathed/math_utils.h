@@ -4,6 +4,6 @@
 #define MATHUTILS_H
 
 extern
-int MathedLookupBOP(short id);
+int MathLookupBOP(short id);
 
 #endif

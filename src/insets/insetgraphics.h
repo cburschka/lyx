@@ -17,7 +17,7 @@
 #pragma interface
 #endif 
 
-#include "insets/lyxinset.h"
+#include "insets/inset.h"
 #include "insets/insetgraphicsParams.h"
 #include "graphics/GraphicsCacheItem.h"
 #include <boost/smart_ptr.hpp>

@@ -8,19 +8,76 @@
 
 using std::ostream;
 
-MathBigopInset::MathBigopInset(string const & nam, int id, short st)
-	: MathedInset(nam, LM_OT_BIGOP, st), lims_(-1), sym_(id)
+MathBigopInset::MathBigopInset(string const & name, int id)
+	: MathInset(name, LM_OT_BIGOP), lims_(-1), sym_(id)
 {}
 
 
-MathedInset * MathBigopInset::Clone()
+MathInset * MathBigopInset::Clone() const
 {
-	return new MathBigopInset(name, sym_, GetStyle());
+	return new MathBigopInset(*this);
+}
+
+
+
+void MathBigopInset::Write(ostream & os, bool fragile) const
+{
+	bool const limp = GetLimits();
+	
+	os << '\\' << name();
+
+	bool f = sym_ != LM_int && sym_ != LM_oint && size() == LM_ST_DISPLAY;
+	
+	if (limp && !f)
+		os << "\\limits ";
+	else 
+		if (!limp && f)
+			os << "\\nolimits ";
+		else 
+			os << ' ';
+}
+
+
+void MathBigopInset::WriteNormal(ostream & os) const
+{
+	bool const limp = GetLimits();
+	bool f = sym_ != LM_int && sym_ != LM_oint;
+	
+	os << "[bigop " << name();
+	
+	if (limp && !f)
+		os << " limits";
+	else 
+		if (!limp && f)
+			os << " nolimits";
+	
+	os << "] ";
+}
+
+void MathBigopInset::Metrics(MathStyles st)
+{
+	size(st);
+	string s;
+	short t;
+	
+	if (sym_ < 256 || sym_ == LM_oint) {
+		char const c = (sym_ == LM_oint) ? LM_int : sym_;
+		s += c;
+		t = LM_TC_BSYM;
+	} else {
+		s = name();
+		t = LM_TC_TEXTRM;
+	}
+	mathed_string_dim(t, size(), s, ascent_, descent_, width_);
+	if (sym_ == LM_oint)
+		width_ += 2;
 }
 
 
 void MathBigopInset::draw(Painter & pain, int x, int y)
 {
+	xo(x);
+	yo(y);
 	string s;
 	short t;
 	
@@ -28,11 +85,11 @@ void MathBigopInset::draw(Painter & pain, int x, int y)
 		s += (sym_ == LM_oint) ? LM_int : sym_;
 		t = LM_TC_BSYM;
 	} else {
-		s = name;
+		s = name();
 		t = LM_TC_TEXTRM;
 	}
 	if (sym_ == LM_oint) {
-		pain.arc(x, y - 5 * width / 4, width, width, 0, 360 * 64,
+		pain.arc(x, y - 5 * width_ / 4, width_, width_, 0, 360 * 64,
 			 LColor::mathline);
 		++x;
 	}
@@ -40,69 +97,11 @@ void MathBigopInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathBigopInset::Write(ostream & os, bool /* fragile */)
-{
-	bool const limp = GetLimits();
-	
-	os << '\\' << name;
-	
-	if (limp && !(sym_ != LM_int && sym_ != LM_oint
-		      && (GetStyle() == LM_ST_DISPLAY)))
-		os << "\\limits ";
-	else 
-		if (!limp && (sym_ != LM_int && sym_ != LM_oint
-			      && (GetStyle() == LM_ST_DISPLAY)))
-			os << "\\nolimits ";
-		else 
-			os << ' ';
-}
-
-
-void MathBigopInset::WriteNormal(ostream & os)
-{
-	bool const limp = GetLimits();
-	
-	os << "[bigop " << name;
-	
-	if (limp && !(sym_ != LM_int && sym_ != LM_oint
-		      && (GetStyle() == LM_ST_DISPLAY)))
-		os << " limits";
-	else 
-		if (!limp && (sym_ != LM_int && sym_ != LM_oint
-			      && (GetStyle() == LM_ST_DISPLAY)))
-			os << " nolimits";
-	
-	os << "] ";
-}
-
-void MathBigopInset::Metrics()
-{
-	//char c;
-	string s;
-	short t;
-	
-	if (sym_ < 256 || sym_ == LM_oint) {
-		char const c = (sym_ == LM_oint) ? LM_int: sym_;
-		s += c;
-		t = LM_TC_BSYM;
-	} else {
-		s = name;
-		t = LM_TC_TEXTRM;
-	}
-	mathed_string_height(t, size(), s, ascent, descent);
-	width = mathed_string_width(t, size(), s);
-	if (sym_ == LM_oint) width += 2;
-}
-
-
 bool MathBigopInset::GetLimits() const 
 {  
 	// Default case
-	if (lims_ < 0) {
-		return sym_ != LM_int &&
-			sym_ != LM_oint &&
-			GetStyle() == LM_ST_DISPLAY;
-	} 
+	if (lims_ < 0) 
+		return sym_ != LM_int && sym_ != LM_oint && size() == LM_ST_DISPLAY;
 	
 	// Custom 
 	return lims_ > 0;

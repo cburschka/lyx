@@ -16,8 +16,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef MATH_PARSER
-#define MATH_PARSER
+#ifndef MATH_PARSER_H
+#define MATH_PARSER_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -27,10 +27,9 @@
 
 #include "symbol_def.h"
 
-///
-#define LM_TK_OPEN '{'
-///
-#define LM_TK_CLOSE '}'
+class MathArray;
+class MathInset;
+class LyXLex;
 
 ///
 enum MathTokenEnum
@@ -118,5 +117,9 @@ latexkeys const * in_word_set(string const & str);
 
 ///
 latexkeys const * lm_get_key_by_id(int id, short tc);
+
+
+MathInset * mathed_parse(std::istream &);
+MathInset * mathed_parse(LyXLex &);
 
 #endif

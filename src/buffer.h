@@ -10,15 +10,6 @@
  *
  * ====================================================== */
  
-// Change Log:
-// =========== 
-// 23/03/98   Heinrich Bauer (heinrich.bauer@t-mobil.de)
-// Spots marked "changed Heinrich Bauer, 23/03/98" modified due to the
-// following bug: dvi file export did not work after printing (or previewing)
-// and vice versa as long as the same file was concerned. This happened
-// every time the LyX-file was left unchanged between the two actions mentioned
-// above.
-
 #ifndef BUFFER_H
 #define BUFFER_H
 
@@ -27,13 +18,14 @@
 #endif
 
 #include "LString.h"
-
-#include "BufferView.h"
+#include "undo.h"
+#include "undostack.h"
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
+#include "paragraph.h"
 
-
+class BufferView;
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
@@ -50,7 +42,7 @@ struct DEPCLEAN {
 };
 
 /** The buffer object.
-  The is is the buffer object. It contains all the informations about
+  This is the buffer object. It contains all the informations about
   a document loaded into LyX. I am not sure if the class is complete or
   minimal, probably not.
   \author Lars Gullik Bjønnes
@@ -69,7 +61,7 @@ public:
 	*/
 	explicit Buffer(string const & file, bool b = false);
 	
-	/// Destrucotr
+	/// Destructor
 	~Buffer();
 
 	/** Save the buffer's parameters as user default.
@@ -88,8 +80,6 @@ public:
 	/// Maybe we know the function already by number...
 	bool Dispatch(int ac, string const & argument);
 
-	/// Should be changed to work for a list.
-	void resize();
 	/// 
 	void resizeInsets(BufferView *);
 
@@ -120,22 +110,23 @@ public:
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, LyXParagraph * par = 0);
+	bool readFile(LyXLex &, Paragraph * par = 0);
 	
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
+	bool readLyXformat2(LyXLex &, Paragraph * par = 0);
 
 	/// This parses a single LyXformat-Token.
-	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
-					LyXParagraph *& return_par,
+	bool parseSingleLyXformat2Token(LyXLex &, Paragraph *& par,
+					Paragraph *& return_par,
 					string const & token, int & pos,
-					char & depth, LyXFont &);
+					Paragraph::depth_type & depth, 
+					LyXFont &);
 private:
 	/// Parse a single inset.
-	void readInset(LyXLex &, LyXParagraph *& par, int & pos, LyXFont &);
+	void readInset(LyXLex &, Paragraph *& par, int & pos, LyXFont &);
 public:
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
@@ -151,7 +142,7 @@ public:
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
-	string const asciiParagraph(LyXParagraph const *,
+	string const asciiParagraph(Paragraph const *,
 				    unsigned int linelen) const;
 	///
 	void makeLaTeXFile(string const & filename,
@@ -160,13 +151,13 @@ public:
 	/** LaTeX all paragraphs from par to endpar.
 	    \param \a endpar if == 0 then to the end
 	*/
-	void latexParagraphs(std::ostream & os, LyXParagraph * par,
-			     LyXParagraph * endpar, TexRow & texrow) const;
+	void latexParagraphs(std::ostream & os, Paragraph * par,
+			     Paragraph * endpar, TexRow & texrow) const;
 
         ///
 	void SimpleDocBookOnePar(std::ostream &, string & extra,
-				 LyXParagraph * par, int & desc_on,
-				 int depth) const ;
+				 Paragraph * par, int & desc_on,
+				 Paragraph::depth_type depth) const ;
 
 	///
 	int runChktex();
@@ -260,10 +251,10 @@ public:
 	std::vector<std::pair<string, string> > const getBibkeyList();
 	///
 	struct TocItem {
-		TocItem(LyXParagraph * p, int d, string const & s)
+		TocItem(Paragraph * p, int d, string const & s)
 			: par(p), depth(d), str(s) {}
 		///
-		LyXParagraph * par;
+		Paragraph * par;
 		///
 		int depth;
 		///
@@ -300,7 +291,7 @@ public:
 	    This is a linked list of paragraph, this list holds the
 	    whole contents of the document.
 	 */
-	LyXParagraph * paragraph;
+	Paragraph * paragraph;
 
 	/// LyX version control object.
 	LyXVC lyxvc;
@@ -321,19 +312,20 @@ public:
 private:
         ///
 	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
-				  int depth, int desc_on,
-				  LyXParagraph * & par);
+				  Paragraph::depth_type depth, int desc_on,
+				  Paragraph * & par);
 	/// Open SGML/XML tag.
-        void sgmlOpenTag(std::ostream & os, int depth,
+        void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
 			 string const & latexname) const;
         /// Closes SGML/XML tag.
-        void sgmlCloseTag(std::ostream & os, int depth,
+        void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
 			  string const & latexname) const;
 	///
-	void LinuxDocError(LyXParagraph * par, int pos,
+	void LinuxDocError(Paragraph * par, int pos,
 			   string const & message);
         ///
-	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par, int depth);
+	void SimpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
+				  Paragraph::depth_type depth);
 
 	/// is save needed
 	mutable bool lyx_clean;
@@ -378,12 +370,12 @@ public:
 		///
 		inset_iterator() : par(0) /*, it(0)*/ {}
 		//
-		inset_iterator(LyXParagraph * paragraph) : par(paragraph) {
+		inset_iterator(Paragraph * paragraph) : par(paragraph) {
 			SetParagraph();
 		}
 		///
-		inset_iterator(LyXParagraph * paragraph,
-			       LyXParagraph::size_type pos);
+		inset_iterator(Paragraph * paragraph,
+			       Paragraph::size_type pos);
 		///
 		inset_iterator & operator++() { // prefix ++
 			if (par) {
@@ -411,9 +403,9 @@ public:
 		Inset * operator*() { return *it; }
 		
 		///
-		LyXParagraph * getPar() { return par; }
+		Paragraph * getPar() { return par; }
 		///
-		LyXParagraph::size_type getPos() const { return it.getPos(); }
+		Paragraph::size_type getPos() const { return it.getPos(); }
 		///
 		friend
 		bool operator==(inset_iterator const & iter1,
@@ -422,9 +414,9 @@ public:
 		///
 		void SetParagraph();
 		///
-		LyXParagraph * par;
+		Paragraph * par;
 		///
-		LyXParagraph::inset_iterator it;
+		Paragraph::inset_iterator it;
 	};
 
 	///
@@ -451,14 +443,6 @@ void Buffer::delUser(BufferView *)
 	users = 0;
 }
 	
-
-inline
-void Buffer::redraw()
-{
-	users->redraw(); 
-	users->fitCursor(users->text); 
-}
-
 
 inline
 Language const * Buffer::GetLanguage() const

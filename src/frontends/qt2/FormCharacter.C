@@ -19,6 +19,7 @@
 #include "lyxtext.h"
 #include "language.h"
 #include "support/lstrings.h"
+#include "BufferView.h"
 
 using SigC::slot;
 using Liason::setMinibuffer;

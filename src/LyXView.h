@@ -59,6 +59,9 @@ public:
 	/// Redraw the main form.
 	void redraw();
 
+	/// Resize all BufferViews in this LyXView (because the width changed)
+	void resize();
+
 	/// returns the buffer currently shown in the main form.
 	Buffer * buffer() const;
 

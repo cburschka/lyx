@@ -5,64 +5,65 @@
 #endif
 
 #include "math_macrotemplate.h"
-#include "math_macro.h"
-#include "macro_support.h"
-#include "support/LOstream.h"
-#include "support/LAssert.h"
-#include "debug.h"
 #include "Painter.h"
+#include "debug.h"
 
-//using namespace std;
 
 MathMacroTemplate::MathMacroTemplate() :
-	MathParInset(LM_ST_TEXT, "undefined", LM_OT_MACRO),
-	na_(0), users_()
+	MathInset("undefined", LM_OT_MACRO, 1), numargs_(0), users_()
 {}
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int na) :
-	MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO),
-	na_(na), users_()
+MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs) :
+	MathInset(nm, LM_OT_MACRO, 1), numargs_(numargs), users_()
 {}
 
 
-int MathMacroTemplate::nargs() const
+MathMacroTemplate * MathMacroTemplate::Clone() const
 {
-	return na_;
+	lyxerr << "cloning MacroTemplate!\n";
+	return new MathMacroTemplate(*this);
+}
+
+int MathMacroTemplate::numargs() const
+{
+	return numargs_;
+}
+
+void MathMacroTemplate::numargs(int numargs)
+{
+	numargs_ = numargs;
 }
 
 
-void MathMacroTemplate::WriteDef(ostream & os, bool fragile) const
+void MathMacroTemplate::Write(ostream & os, bool fragile) const
 {
-	os << "\n\\newcommand{\\" << name << "}";
+	os << "\n\\newcommand{\\" << name_ << "}";
 
-	if (na_ > 0)
-		os << "[" << na_ << "]";
+	if (numargs_ > 0)
+		os << "[" << numargs_ << "]";
 
 	os << "{";
-#ifdef WITH_WARNINGS
-#warning stupid cast
-#endif
-	const_cast<MathMacroTemplate *>(this)->Write(os, fragile);
+	cell(0).Write(os, fragile);
 	os << "}\n";
 }
 
 
-void MathMacroTemplate::Metrics()
+void MathMacroTemplate::Metrics(MathStyles st)
 {
-	MathParInset::Metrics();
-	width   += 4;
-	ascent  += 2;
-	descent += 2;
+	xcell(0).Metrics(st);
+	size_    = st;
+	width_   = xcell(0).width() + 4;
+	ascent_  = xcell(0).ascent() + 2;
+	descent_ = xcell(0).descent() + 2;
 }
 
 
 void MathMacroTemplate::draw(Painter & pain, int x, int y)
 {
-	MathParInset::draw(pain, x + 2, y + 1);
-	int w = Width();
-	int a = Ascent();
-	int h = Height();
-	pain.rectangle(x, y - a, w, h, LColor::blue);
+	xo(x);
+	yo(y);
+	xcell(0).draw(pain, x + 2, y + 1);
+	pain.rectangle(x, y - ascent(), width(), height(), LColor::blue);
 }
 

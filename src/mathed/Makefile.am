@@ -10,14 +10,18 @@ INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 libmathed_la_SOURCES = \
 	array.C \
 	array.h \
+	xarray.C \
+	xarray.h \
+	formulabase.C \
+	formulabase.h \
 	formula.C \
 	formula.h \
 	formulamacro.C \
 	formulamacro.h \
 	macro_support.C \
 	macro_support.h \
-	math_sqrtinset.C \
-	math_sqrtinset.h \
+	math_arrayinset.C \
+	math_arrayinset.h \
 	math_accentinset.C \
 	math_accentinset.h \
 	math_bigopinset.C \
@@ -35,11 +39,11 @@ libmathed_la_SOURCES = \
 	math_fracinset.h \
 	math_funcinset.C \
 	math_funcinset.h \
+	math_grid.C \
+	math_grid.h \
 	math_hash.C \
 	math_inset.C \
 	math_inset.h \
-	math_iter.C \
-	math_iter.h \
 	math_macro.C \
 	math_macro.h \
 	math_macroarg.C \
@@ -50,20 +54,20 @@ libmathed_la_SOURCES = \
 	math_macrotable.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
-	math_parinset.C \
-	math_parinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_root.C \
 	math_root.h \
-	math_rowst.C \
-	math_rowst.h \
+	math_scriptinset.C \
+	math_scriptinset.h \
+	math_sizeinset.C \
+	math_sizeinset.h \
 	math_spaceinset.C \
 	math_spaceinset.h \
+	math_sqrtinset.C \
+	math_sqrtinset.h \
 	math_utils.C \
 	math_utils.h \
-	math_xiter.C \
-	math_xiter.h \
 	matriz.C \
 	matriz.h \
 	support.C \

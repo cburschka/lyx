@@ -166,9 +166,9 @@ void ParagraphDlgImpl::setBelowLength(float val, float plus, float minus,
 
 
 void ParagraphDlgImpl::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align, 
-	bool hfill, bool startminipage, LyXParagraph::PEXTRA_TYPE type)
+	bool hfill, bool startminipage, Paragraph::PEXTRA_TYPE type)
 {
-	if (type!=LyXParagraph::PEXTRA_NONE) {
+	if (type!=Paragraph::PEXTRA_NONE) {
 		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
 		if (percent != "") {
 			extraWidth->setText(percent.c_str());
@@ -181,32 +181,32 @@ void ParagraphDlgImpl::setExtra(float widthval, LyXLength::UNIT units, const str
 		extraWidth->setText("");
 	
 	switch (type) {
-		case LyXParagraph::PEXTRA_NONE: 
+		case Paragraph::PEXTRA_NONE: 
 			extraType->setCurrentItem(0); 
 			break;
-		case LyXParagraph::PEXTRA_MINIPAGE: 
+		case Paragraph::PEXTRA_MINIPAGE: 
 			extraType->setCurrentItem(1); 
 			enable_extraOptions(1); 
 			enable_minipageOptions(1); 
 			break;
-		case LyXParagraph::PEXTRA_FLOATFLT: 
+		case Paragraph::PEXTRA_FLOATFLT: 
 			extraType->setCurrentItem(2); 
 			enable_extraOptions(2); 
 			break;
-		case LyXParagraph::PEXTRA_INDENT: 
+		case Paragraph::PEXTRA_INDENT: 
 			extraType->setCurrentItem(3); 
 			enable_extraOptions(3); 
 			break;
 	}
 	
 	switch (align) {
-		case LyXParagraph::MINIPAGE_ALIGN_TOP: 
+		case Paragraph::MINIPAGE_ALIGN_TOP: 
 			minipageValign->setCurrentItem(0); 
 			break;
-		case LyXParagraph::MINIPAGE_ALIGN_MIDDLE:	
+		case Paragraph::MINIPAGE_ALIGN_MIDDLE:	
 			minipageValign->setCurrentItem(1); 
 			break;
-		case LyXParagraph::MINIPAGE_ALIGN_BOTTOM:	
+		case Paragraph::MINIPAGE_ALIGN_BOTTOM:	
 			minipageValign->setCurrentItem(2); 
 			break;
 	}
@@ -331,23 +331,23 @@ VSpace::vspace_kind ParagraphDlgImpl::getSpaceBelowKind() const {
 }
 
 
-LyXParagraph::PEXTRA_TYPE ParagraphDlgImpl::getExtraType() const {
+Paragraph::PEXTRA_TYPE ParagraphDlgImpl::getExtraType() const {
 	switch (extraType->currentItem()) {
-		case 0: return LyXParagraph::PEXTRA_NONE;
-		case 1: return LyXParagraph::PEXTRA_MINIPAGE;
-		case 2: return LyXParagraph::PEXTRA_FLOATFLT;
-		case 3: return LyXParagraph::PEXTRA_INDENT;
+		case 0: return Paragraph::PEXTRA_NONE;
+		case 1: return Paragraph::PEXTRA_MINIPAGE;
+		case 2: return Paragraph::PEXTRA_FLOATFLT;
+		case 3: return Paragraph::PEXTRA_INDENT;
 	}
-	return LyXParagraph::PEXTRA_NONE;
+	return Paragraph::PEXTRA_NONE;
 }
 
 	
-LyXParagraph::MINIPAGE_ALIGNMENT ParagraphDlgImpl::getExtraAlign() const {
+Paragraph::MINIPAGE_ALIGNMENT ParagraphDlgImpl::getExtraAlign() const {
 	switch (minipageValign->currentItem()) {
-		case 0: return LyXParagraph::MINIPAGE_ALIGN_TOP;
-		case 1: return LyXParagraph::MINIPAGE_ALIGN_MIDDLE;
-		case 2: return LyXParagraph::MINIPAGE_ALIGN_BOTTOM;
-		default: return LyXParagraph::MINIPAGE_ALIGN_BOTTOM;
+		case 0: return Paragraph::MINIPAGE_ALIGN_TOP;
+		case 1: return Paragraph::MINIPAGE_ALIGN_MIDDLE;
+		case 2: return Paragraph::MINIPAGE_ALIGN_BOTTOM;
+		default: return Paragraph::MINIPAGE_ALIGN_BOTTOM;
 	}
 }
 

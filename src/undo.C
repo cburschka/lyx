@@ -15,12 +15,13 @@
 #endif
 
 #include "undo.h"
+#include "paragraph.h"
 
 
 Undo::Undo(undo_kind kind_arg,
 	   int number_before_arg, int number_behind_arg,
 	   int cursor_par_arg, int cursor_pos_arg,
-	   LyXParagraph * par_arg)
+	   Paragraph * par_arg)
 {
 	kind = kind_arg;
 	number_of_before_par = number_before_arg;
@@ -33,7 +34,7 @@ Undo::Undo(undo_kind kind_arg,
 
 Undo::~Undo()
 {
-	LyXParagraph * tmppar;
+	Paragraph * tmppar;
 	while (par) {
 		tmppar = par;
 		par = par->next();
@@ -42,61 +43,3 @@ Undo::~Undo()
 }
 
 
-UndoStack::UndoStack()
-	: limit(100) {}
-
-
-Undo * UndoStack::pop()
-{
-	if (stakk.empty()) return 0;
-	Undo * result = stakk.front();
-	stakk.pop_front();
-	return result;
-}
-
-
-Undo * UndoStack::top()
-{
-	if (stakk.empty()) return 0;
-	return stakk.front();
-}
-
-
-UndoStack::~UndoStack()
-{
-	clear();
-}
-
-
-void UndoStack::clear()
-{
-	while (!stakk.empty()) {
-		Undo * tmp = stakk.front();
-		stakk.pop_front();
-		delete tmp;
-	}
-}
-
-
-void UndoStack::SetStackLimit(Stakk::size_type l)
-{
-	limit = l;
-}
-
-
-void UndoStack::push(Undo * undo_arg)
-{
-	if (!undo_arg) return;
-	
-	stakk.push_front(undo_arg);
-	if (stakk.size() > limit) {
-		Undo * tmp = stakk.back();
-		stakk.pop_back();
-		delete tmp;
-	}
-}
-
-
-bool UndoStack::empty() const {
-	return stakk.empty();
-}

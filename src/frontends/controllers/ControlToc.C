@@ -26,6 +26,7 @@
 #include "lyxfunc.h"
 #include "support/lstrings.h" // tostr
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using SigC::slot;

@@ -12,12 +12,10 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-#include <cctype>
-
 ///
 inline
 bool IsNewlineChar(char c) {
-	return (c == LyXParagraph::META_NEWLINE);
+	return (c == Paragraph::META_NEWLINE);
 }
 
 
@@ -31,14 +29,14 @@ bool IsSeparatorChar(char c) {
 ///
 inline
 bool IsHfillChar(char c) {
-	return (c == LyXParagraph::META_HFILL);
+	return (c == Paragraph::META_HFILL);
 }
 
 
 ///
 inline
 bool IsInsetChar(char c) {
-	return (c == LyXParagraph::META_INSET);
+	return (c == Paragraph::META_INSET);
 }
 
 
@@ -75,7 +73,7 @@ bool IsKommaChar(char c) {
 		|| c == '^'
 		|| c == '/' 
 		|| c == '\\'
-		|| c == LyXParagraph::META_NEWLINE
+		|| c == Paragraph::META_NEWLINE
 		);
 }
 
@@ -92,14 +90,14 @@ bool IsLetterChar(unsigned char c) {
 ///
 inline
 bool IsPrintable(unsigned char c) {
-	return (c >= ' ');
+	return ((c & 127) >= ' ');
 }
 
 
 ///
 inline
 bool IsPrintableNonspace(unsigned char c) {
-	return (c > ' ');
+	return IsPrintable(c) && (c != ' ');
 }
 
 
@@ -115,8 +113,16 @@ bool IsWordChar(unsigned char c) {
 
 ///
 inline
-bool IsLetterCharOrDigit(char ch)
+bool IsDigit(unsigned char ch)
 {
-	return IsLetterChar(ch) || isdigit(ch);
+	return ch >= '0' && ch <= '9';
+}
+
+
+///
+inline
+bool IsLetterCharOrDigit(unsigned char ch)
+{
+	return IsLetterChar(ch) || IsDigit(ch);
 }
 #endif

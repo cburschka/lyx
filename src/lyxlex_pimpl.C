@@ -22,7 +22,10 @@ struct compare_tags {
 	// used by lower_bound, sort and sorted
 	inline
 	int operator()(keyword_item const & a, keyword_item const & b) const {
-		return compare_no_case(a.tag, b.tag) < 0;
+		// we use the ascii version, because in turkish, 'i'
+		// is not the lowercase version of 'I', and thus
+		// turkish locale breaks parsing of tags.
+		return compare_ascii_no_case(a.tag, b.tag) < 0;
 	}
 };
 // } // end of anon namespace
@@ -44,7 +47,7 @@ string const LyXLex::Pimpl::GetString() const
 
 void LyXLex::Pimpl::printError(string const & message) const
 {
-	string tmpmsg = subst(message, "$$Token", GetString());
+	string const tmpmsg = subst(message, "$$Token", GetString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
 	       << " of file " << MakeDisplayPath(name) << ']' << endl;
 }
@@ -170,7 +173,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
 						      << buff << "'" << endl;
 #else
-				// unfortunately is ignore buggy (Lgb)
+				// unfortunately ignore is buggy (Lgb)
 				is.ignore(100, '\n');
 #endif
 				++lineno;

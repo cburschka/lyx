@@ -231,7 +231,7 @@ void ParagraphParameters::align(LyXAlignment la)
 }
 
 
-void ParagraphParameters::depth(char d)
+void ParagraphParameters::depth(depth_type d)
 {
 	ParameterStruct tmp(*param);
 	tmp.depth = d;

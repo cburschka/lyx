@@ -1,3 +1,26 @@
+2001-06-24  The LyX Project  <Asger>
+
+	* math_inset.C: Cursor movement is better in square roots, among
+	other things.
+
+	* math_cursor.C (Interpret): Improved subscript bullshit. Improved
+	cursor up/down movement. What not.
+
+2001-06-24  The LyX Project  <Asger>
+
+	* math_matrixinset.C: Hidden labels are hidden, unless a small
+	dragon jumps out of the screen, and pronounce them to the entire
+	world.
+
+2001-06-24  The LyX Project  <Easter egg>
+
+	* math_cursor.C: Cursor improvements after a few dead-ends
+	in the evolution of cursor movement were tested and scrapped.
+	
+2001-06-24  The LyX Project  <Asger>
+
+	* math_cursor.C: Renamed stack to path.
+
 2001-06-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_macro.C:
@@ -41,11 +64,14 @@
 
 	* math_parser.C: fix \frac handling bug introduced on 04-24
 	* math_xiter.C: hotfix for merging "shared" insets
+	* formula.C: fixing display after using math-insert
 
 2001-04-25 André Pönitz  <poenitz@htwm.de>
 
 	* math_*.[Ch]: WriteNormal
 	* formula.C: Support for new "math extern" command
+	* math_parser.C: fix \frac handling bug introduced on 04-24
+	* math_xiter.C: hotfix for merging "shared" insets
 
 2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

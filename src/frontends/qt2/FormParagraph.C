@@ -18,6 +18,8 @@
 #include "QtLyXView.h"
 #include "lyxtext.h"
 #include "debug.h"
+#include "BufferView.h"
+#include "ParagraphParameters.h"
 
 using SigC::slot;
 using Liason::setMinibuffer;
@@ -65,14 +67,14 @@ void FormParagraph::update(bool switched)
 	if (!text)
 		text = lv_->view()->text;
 
-	LyXParagraph * par = text->cursor.par();
+	Paragraph * par = text->cursor.par();
 
-	int align = par->GetAlign();
+	int align = par->getAlign();
 
 	if (align==LYX_ALIGN_LAYOUT)
-		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
+		align = textclasslist.Style(buf->params.textclass, par->getLayout()).align;
 
-	ParagraphParameters * params = &(par->params);
+	ParagraphParameters * params = &(par->params());
 
 	if (params->spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = params->spaceTop().length();
@@ -90,7 +92,7 @@ void FormParagraph::update(bool switched)
 	} else
 		dialog_->setBelowLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
-	dialog_->setLabelWidth(text->cursor.par()->GetLabelWidthString().c_str());
+	dialog_->setLabelWidth(text->cursor.par()->getLabelWidthString().c_str());
 	dialog_->setAlign(align);
 	dialog_->setChecks(params->lineTop(), params->lineBottom(),
 		params->pagebreakTop(), params->pagebreakBottom(), params->noindent());
@@ -102,7 +104,7 @@ void FormParagraph::update(bool switched)
 	LyXLength extrawidth;
 	float val = 0.0;
 	LyXLength::UNIT unit = LyXLength::CM;
-	params = &(par->params);
+	params = &(par->params());
 	if (isValidLength(params->pextraWidth(), &extrawidth)) {
 		lyxerr[Debug::GUI] << "Reading extra width \"" << extrawidth.asString() << "\"" << endl;
 		val = extrawidth.value();
@@ -115,7 +117,7 @@ void FormParagraph::update(bool switched)
 		params->pextraAlignment(),
 		params->pextraHfill(),
 		params->pextraStartMinipage(),
-		static_cast<LyXParagraph::PEXTRA_TYPE>(params->pextraType()));
+		static_cast<Paragraph::PEXTRA_TYPE>(params->pextraType()));
 }
 
 

@@ -7,7 +7,7 @@
 #endif
 
 #include "LString.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 
 class BufferView;
 
@@ -18,7 +18,7 @@ bool LyXFind(BufferView * bv, string const &, bool const &, bool const &,
 	     bool const &);
 
 /// returns true if the specified string is at the specified  position
-bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
+bool IsStringInText(Paragraph * par, Paragraph::size_type pos,
 		    string const & str, bool const & = true,
 		    bool const & = false);
 

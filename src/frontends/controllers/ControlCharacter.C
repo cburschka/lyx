@@ -24,6 +24,7 @@
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
 #include "language.h"
+#include "BufferView.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

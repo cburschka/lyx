@@ -10,6 +10,7 @@
 #include "commandtags.h"
 #include "frontends/Timeout.h"
 #include "WorkArea.h"
+#include "paragraph.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -178,11 +179,11 @@ private:
                 /// Cursor paragraph Id
                 int par_id;
                 /// Cursor position
-                LyXParagraph::size_type par_pos;
+                Paragraph::size_type par_pos;
 		///
 		Position() : par_id(0), par_pos(0) {}
 		///
-		Position(string const & f, int id, LyXParagraph::size_type pos)
+		Position(string const & f, int id, Paragraph::size_type pos)
                         : filename(f), par_id(id), par_pos(pos) {}
 	};
 	///

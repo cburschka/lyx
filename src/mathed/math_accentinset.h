@@ -7,43 +7,37 @@
 #include "math_defs.h"
 
 /// Accents
-class MathAccentInset : public MathedInset {
+class MathAccentInset : public MathInset {
 public:
 	///
-	MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
+	MathAccentInset(byte, MathTextCodes, int);
 	///
-	MathAccentInset(MathedInset *, int, short st = LM_ST_TEXT);
+	MathAccentInset(MathInset *, int);
 	///
 	~MathAccentInset();
 	///
-	MathedInset * Clone();
+	MathInset *  Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	int getAccentCode() const;
 protected:
 	///
 	byte c;
 	///
-	MathedTextCodes fn;
+	MathTextCodes fn;
 	///
 	int code;
 	///
-	MathedInset * inset;
+	MathInset * inset;
 	///
 	int dh, dy;
 };
 
-
-inline
-int MathAccentInset::getAccentCode() const
-{
-	return code;
-}
 #endif

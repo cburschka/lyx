@@ -21,6 +21,7 @@
 #include "lyxtext.h"
 #include "buffer.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::ostream;
 using std::vector;
@@ -56,7 +57,7 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 			bool flag = bv->ChangeRefsIfUnique(getContents(),
 							   new_contents);
 			setContents(new_contents);
-			bv->text->RedoParagraph(bv);
+			bv->text->redoParagraph(bv);
 			if (flag) {
 				bv->redraw();
 				bv->fitCursor(getLyXText(bv));

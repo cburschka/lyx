@@ -17,22 +17,22 @@
 
 #include "layout.h"
 
-class LyXParagraph;
+class Paragraph;
 
 ///
 class CutAndPaste {
 public:
 	///
 	static
-	bool cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
+	bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
                       int start, int & end, char tc, bool doclear = false);
 	///
 	static
-	bool copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
+	bool copySelection(Paragraph * startpar, Paragraph * endpar,
                        int start, int end, char tc);
 	///
 	static
-	bool pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
+	bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
                         int & pos, char tc);
 	///
 	static
@@ -44,10 +44,10 @@ public:
 	static
 	int SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
                                     LyXTextClassList::size_type class2,
-                                    LyXParagraph * par);
+                                    Paragraph * par);
 	///
 	static
-	bool checkPastePossible(LyXParagraph *);
+	bool checkPastePossible(Paragraph *);
 };
 
 #endif

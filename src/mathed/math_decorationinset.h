@@ -2,7 +2,7 @@
 #ifndef MATH_DECORATIONINSET_H
 #define MATH_DECORATIONINSET_H
 
-#include "math_parinset.h"
+#include "math_inset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,18 +11,18 @@
 /** Decorations over (below) a math object
     \author Alejandro Aguilar Sierra
  */
-class MathDecorationInset : public MathParInset {
+class MathDecorationInset : public MathInset {
 public:
 	///
-	MathDecorationInset(int, short st = LM_ST_TEXT);
+	MathDecorationInset(int);
 	///
-	MathedInset * Clone();
+	MathInset *  Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	bool GetLimits() const;
 private:
@@ -30,11 +30,5 @@ private:
 	int deco_;
 	///
 	bool upper_;
-	///
-	int dw_;
-	///
-	int dh_;
-	///
-	int dy_;
 };
 #endif

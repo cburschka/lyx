@@ -10,20 +10,20 @@
 #endif
 
 /// Smart spaces
-class MathSpaceInset : public MathedInset {
+class MathSpaceInset : public MathInset {
 public:
 	///
-	MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
+	MathSpaceInset(int sp, short ot = LM_OT_SPACE);
 	///
-	MathedInset * Clone();
+	MathInset *  Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	void SetSpace(int sp);
 	///

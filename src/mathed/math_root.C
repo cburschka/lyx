@@ -12,153 +12,89 @@
  */
 
 #include <config.h>
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_root.h"
-#include "math_iter.h"
 #include "support/LOstream.h"
+#include "Painter.h"
 
-using std::ostream;
-
-MathRootInset::MathRootInset(short st)
-	: MathSqrtInset(st), idx_(1), uroot_(LM_ST_TEXT)
+MathRootInset::MathRootInset()
+	: MathInset("sqrt", LM_OT_SQRT, 2)
 {}
 
 
-MathedInset * MathRootInset::Clone()
+MathInset * MathRootInset::Clone() const
 {
-	MathRootInset * p = new MathRootInset(*this);
-	p->setArgumentIdx(0);
-	return p;
+	return new MathRootInset(*this);
 }
 
 
-void MathRootInset::setData(MathedArray const & d)
+void MathRootInset::Metrics(MathStyles st)
 {
-	if (idx_ == 1)
-		MathParInset::setData(d);
-	else
-		uroot_.setData(d);
-}
-
-
-bool MathRootInset::setArgumentIdx(int i)
-{
-	if (i == 0 || i == 1) {
-		idx_ = i;
-		return true;
-	} else
-		return false;
-}
-
-
-int MathRootInset::getArgumentIdx() const
-{
-	return idx_;
-}
-
-
-int MathRootInset::getMaxArgumentIdx() const
-{
-	return 1;
-}
-
-
-void MathRootInset::GetXY(int & x, int & y) const
-{
-	if (idx_ == 1)
-		MathParInset::GetXY(x, y);
-	else
-		uroot_.GetXY(x, y);
-}
-
-
-MathedArray & MathRootInset::GetData()
-{
-	if (idx_ == 1)
-		return array;
-	else
-		return uroot_.GetData();
-}
-
-
-MathedArray const & MathRootInset::GetData() const
-{
-	if (idx_ == 1)
-		return array;
-	else
-		return uroot_.GetData();
-}
-
-
-bool MathRootInset::Inside(int x, int y)
-{
-	return (uroot_.Inside(x, y) || MathSqrtInset::Inside(x, y));
-}
-
-
-void MathRootInset::Metrics()
-{
-	int const idxp = idx_;
-	
-	idx_ = 1;
-	MathSqrtInset::Metrics();
-	uroot_.Metrics();
-	wroot_ = uroot_.Width();
-	dh_ = Height() / 2;
-	width += wroot_;
-	//    if (uroot_.Ascent() > dh) 
-	if (uroot_.Height() > dh_) 
-		ascent += uroot_.Height() - dh_;
-	dh_ -= descent - uroot_.Descent();
-	idx_ = idxp;
+	MathInset::Metrics(st);
+	size_    = st;
+	ascent_  = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
+	descent_ = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
+	width_   = xcell(0).width() + xcell(1).width() + 10;
 }
 
 
 void MathRootInset::draw(Painter & pain, int x, int y)
 {
-	int const idxp = idx_;
-	
-	idx_ = 1;
-	uroot_.draw(pain, x, y - dh_);
-	MathSqrtInset::draw(pain, x + wroot_, y);
-	idx_ = idxp;
+	xo(x);
+	yo(y);
+	int const w = xcell(0).width();
+	xcell(0).draw(pain, x, y - 5 - xcell(0).descent());       // the "exponent"
+	xcell(1).draw(pain, x + w + 8, y);   // the "base"
+	int const a = ascent();
+	int const d = descent();
+	int xp[5];
+	int yp[5];
+	xp[0] = x + width_;   yp[0] = y - a + 1;
+	xp[1] = x + w + 4;    yp[1] = y - a + 1;
+	xp[2] = x + w;        yp[2] = y + d;
+	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;
+	xp[4] = x;            yp[4] = y + (d - a)/2 + 2;
+	pain.lines(xp, yp, 5, LColor::mathline);
 }
 
 
-void MathRootInset::SetStyle(short st)
+void MathRootInset::Write(ostream & os, bool fragile) const
 {
-	MathSqrtInset::SetStyle(st);
-	
-	uroot_.SetStyle((size() < LM_ST_SCRIPTSCRIPT) ? size() + 1 : size());
-}
-
-
-void MathRootInset::SetFocus(int x, int)
-{  
-	idx_ = (x > xo() + wroot_) ? 1: 0;
-}
-
-
-void MathRootInset::Write(ostream & os, bool fragile)
-{
-	os << '\\' << name << '[';
-	uroot_.Write(os, fragile);  
+	os << "\\sqrt[";
+	cell(0).Write(os, fragile);  
 	os << "]{";
-	MathParInset::Write(os, fragile);
+	cell(1).Write(os, fragile);
 	os << '}';
 }
 
 
-void MathRootInset::WriteNormal(ostream & os)
+void MathRootInset::WriteNormal(ostream & os) const
 {
 	os << "[root ";
-	uroot_.WriteNormal(os);  
+	cell(1).WriteNormal(os);  
 	os << " ";
-	MathParInset::WriteNormal(os);
+	cell(0).WriteNormal(os);
 	os << "] ";
+}
+
+bool MathRootInset::idxUp(int & idx, int & pos) const
+{
+	if (idx == 0)
+		return false;
+	idx = 0;
+	pos = 0;
+	return true;
+}
+
+bool MathRootInset::idxDown(int & idx, int & pos) const
+{
+	if (idx == 1)
+		return false;
+	idx = 1;
+	pos = 0;
+	return true;
 }

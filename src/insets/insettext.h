@@ -19,7 +19,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "LString.h"
 #include "lyxcursor.h"
 
@@ -27,7 +27,7 @@ class Painter;
 class BufferView;
 class Buffer;
 class LyXCursor;
-class LyXParagraph;
+class Paragraph;
 class LColor;
 class LyXText;
 class LyXScreen;
@@ -161,7 +161,7 @@ public:
 	///
 	void WriteParagraphData(Buffer const *, std::ostream &) const;
 	///
-	void SetParagraphData(LyXParagraph *);
+	void SetParagraphData(Paragraph *);
 	///
 	void SetText(string const &);
 	///
@@ -195,7 +195,7 @@ public:
 	///
 	void clearSelection(BufferView *bv);
 
-	LyXParagraph * par;
+	Paragraph * par;
 	///
 	mutable int need_update;
 
@@ -219,7 +219,7 @@ private:
 	///
 	typedef Cache::value_type value_type;
 	///
-	int BeginningOfMainBody(Buffer const *, LyXParagraph * par) const;
+	int BeginningOfMainBody(Buffer const *, Paragraph * par) const;
 	///
 	void ShowInsetCursor(BufferView *, bool show=true);
 	///
@@ -259,9 +259,9 @@ private:
 	///
 	int cy(BufferView *) const;
 	///
-	LyXParagraph::size_type cpos(BufferView *) const;
+	Paragraph::size_type cpos(BufferView *) const;
 	///
-	LyXParagraph * cpar(BufferView *) const;
+	Paragraph * cpar(BufferView *) const;
 	///
 	bool cboundary(BufferView *) const;
 	///
@@ -293,9 +293,9 @@ private:
 	///
 	mutable int top_y;
 	///
-	LyXParagraph * inset_par;
+	Paragraph * inset_par;
 	///
-	LyXParagraph::size_type inset_pos;
+	Paragraph::size_type inset_pos;
 	///
 	bool inset_boundary;
 	///
@@ -311,7 +311,7 @@ private:
 	///
 	UpdatableInset * the_locking_inset;
 	///
-	LyXParagraph * old_par;
+	Paragraph * old_par;
 	/// The cache.
 	mutable Cache cache;
 	///

@@ -13,6 +13,7 @@ libinsets_la_SOURCES = \
 	figinset.C \
 	figinset.h \
 	inset.C \
+	inset.h \
 	insetbib.C \
 	insetbib.h \
 	insetbutton.C \
@@ -78,5 +79,4 @@ libinsets_la_SOURCES = \
 	insettoc.C \
 	insettoc.h \
 	inseturl.C \
-	inseturl.h \
-	lyxinset.h
+	inseturl.h

@@ -17,7 +17,7 @@
 #endif
 
 #include "insetinfo.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 #include "font.h"
+#include "BufferView.h"
 
 using std::ostream;
 using std::endl;

@@ -15,7 +15,6 @@
 #pragma implementation
 #endif
 
-//#include <fcntl.h>
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
@@ -28,6 +27,7 @@
 #include "version.h"
 #include "LyXView.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "lyxserver.h"
 #include "lyxrc.h"
 #include "gettext.h"

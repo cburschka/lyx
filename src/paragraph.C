@@ -11,14 +11,15 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "lyxparagraph.h"
+#pragma implementation
 #endif
 
 #include <algorithm>
 #include <fstream>
 #include <csignal>
 
-#include "lyxparagraph.h"
+#include "paragraph.h"
+#include "paragraph_pimpl.h"
 #include "support/textutils.h"
 #include "lyxrc.h"
 #include "layout.h"
@@ -51,7 +52,7 @@ using std::upper_bound;
 using std::reverse;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
-// this is a bad idea, but how can LyXParagraph find its buffer to get
+// this is a bad idea, but how can Paragraph find its buffer to get
 // parameters? (JMarc)
 
 extern string bibitemWidest(Buffer const *);
@@ -69,36 +70,26 @@ Inset * minibuffer_inset;
 
 extern BufferView * current_view;
 
-// Initialization of the counter for the paragraph id's,
-// declared in lyxparagraph.h
-unsigned int LyXParagraph::paragraph_id = 0;
 
-// Initialize static member.
-ShareContainer<LyXFont> LyXParagraph::FontTable::container;
-
-
-LyXParagraph::LyXParagraph()
+Paragraph::Paragraph()
+		: pimpl_(new Paragraph::Pimpl(this))
 {
-	text.reserve(500); // is this number too big?
 	for (int i = 0; i < 10; ++i) setCounter(i , 0);
-	enumdepth = 0;
-	itemdepth = 0;
 	next_ = 0;
 	previous_ = 0;
-	inset_owner = 0;
-	id_ = paragraph_id++;
+	enumdepth = 0;
+	itemdepth = 0;
         bibkey = 0; // ale970302
-	Clear();
+	clear();
 }
 
 
 // This konstruktor inserts the new paragraph in a list.
-LyXParagraph::LyXParagraph(LyXParagraph * par)
+Paragraph::Paragraph(Paragraph * par)
+		: pimpl_(new Paragraph::Pimpl(this))
 {
-	text.reserve(500);
-	par->fitToSize();
-	
-	for (int i = 0; i < 10; ++i) setCounter(i, 0);
+	for (int i = 0; i < 10; ++i)
+		setCounter(i, 0);
 	enumdepth = 0;
 	itemdepth = 0;
 
@@ -109,34 +100,29 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	previous_ = par;
 	previous_->next_ = this;
 	// end
-	
-	inset_owner = 0;
-	id_ = paragraph_id++;
 
         bibkey = 0; // ale970302        
     
-	Clear();
+	clear();
 }
 
 
-LyXParagraph::LyXParagraph(LyXParagraph const & lp)
+Paragraph::Paragraph(Paragraph const & lp)
+	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
 	for (int i = 0; i < 10; ++i) setCounter(i , 0);
 	enumdepth = 0;
 	itemdepth = 0;
 	next_ = 0;
 	previous_ = 0;
-	id_ = paragraph_id++;
-	Clear();
-   
-	MakeSameLayout(&lp);
+	clear();
+
+	makeSameLayout(&lp);
 
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout = lp.layout;
 
-	inset_owner = lp.inset_owner;
-   
         // ale970302
 	if (lp.bibkey)
 		bibkey = static_cast<InsetBibKey *>
@@ -146,8 +132,6 @@ LyXParagraph::LyXParagraph(LyXParagraph const & lp)
 	
 	// copy everything behind the break-position to the new paragraph
 
-	text = lp.text;
-	fontlist = lp.fontlist;
 	insetlist = lp.insetlist;
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it)
@@ -156,7 +140,7 @@ LyXParagraph::LyXParagraph(LyXParagraph const & lp)
 
 
 // the destructor removes the new paragraph from the list
-LyXParagraph::~LyXParagraph()
+Paragraph::~Paragraph()
 {
 	if (previous_)
 		previous_->next_ = next_;
@@ -170,25 +154,27 @@ LyXParagraph::~LyXParagraph()
 
         // ale970302
 	delete bibkey;
+
+	delete pimpl_;
 	//
-	//lyxerr << "LyXParagraph::paragraph_id = "
-	//       << LyXParagraph::paragraph_id << endl;
+	//lyxerr << "Paragraph::paragraph_id = "
+	//       << Paragraph::paragraph_id << endl;
 }
 
 
-void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
+void Paragraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & bparams,
-			     char dth) const
+			     depth_type dth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
-	if (dth != params.depth()) {
-		if (params.depth() > dth) {
-			while (params.depth() > dth) {
+	if (dth != params().depth()) {
+		if (params().depth() > dth) {
+			while (params().depth() > dth) {
 				os << "\n\\begin_deeper ";
 				++dth;
 			}
 		} else {
-			while (params.depth() < dth) {
+			while (params().depth() < dth) {
 				os << "\n\\end_deeper ";
 				--dth;
 			}
@@ -201,45 +187,45 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 	   << "\n";
 	
 	// Maybe some vertical spaces.
-	if (params.spaceTop().kind() != VSpace::NONE)
+	if (params().spaceTop().kind() != VSpace::NONE)
 		os << "\\added_space_top "
-		   << params.spaceTop().asLyXCommand() << " ";
-	if (params.spaceBottom().kind() != VSpace::NONE)
+		   << params().spaceTop().asLyXCommand() << " ";
+	if (params().spaceBottom().kind() != VSpace::NONE)
 		os << "\\added_space_bottom "
-		   << params.spaceBottom().asLyXCommand() << " ";
+		   << params().spaceBottom().asLyXCommand() << " ";
 	
 	// Maybe the paragraph has special spacing
-	params.spacing().writeFile(os, true);
+	params().spacing().writeFile(os, true);
 	
 	// The labelwidth string used in lists.
-	if (!params.labelWidthString().empty())
+	if (!params().labelWidthString().empty())
 		os << "\\labelwidthstring "
-		   << params.labelWidthString() << '\n';
+		   << params().labelWidthString() << '\n';
 	
 	// Lines above or below?
-	if (params.lineTop())
+	if (params().lineTop())
 		os << "\\line_top ";
-	if (params.lineBottom())
+	if (params().lineBottom())
 		os << "\\line_bottom ";
 	
 	// Pagebreaks above or below?
-	if (params.pagebreakTop())
+	if (params().pagebreakTop())
 		os << "\\pagebreak_top ";
-	if (params.pagebreakBottom())
+	if (params().pagebreakBottom())
 		os << "\\pagebreak_bottom ";
 	
 	// Start of appendix?
-	if (params.startOfAppendix())
+	if (params().startOfAppendix())
 		os << "\\start_of_appendix ";
 	
 	// Noindent?
-	if (params.noindent())
+	if (params().noindent())
 		os << "\\noindent ";
 	
 	// Alignment?
-	if (params.align() != LYX_ALIGN_LAYOUT) {
+	if (params().align() != LYX_ALIGN_LAYOUT) {
 		int h = 0;
-		switch (params.align()) {
+		switch (params().align()) {
 		case LYX_ALIGN_LEFT: h = 1; break;
 		case LYX_ALIGN_RIGHT: h = 2; break;
 		case LYX_ALIGN_CENTER: h = 3; break;
@@ -262,18 +248,18 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 		}
 		
 		// Write font changes
-		LyXFont font2 = GetFontSettings(bparams, i);
+		LyXFont font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
 			font1 = font2;
 		}
 		
-		value_type const c = GetChar(i);
+		value_type const c = getChar(i);
 		switch (c) {
 		case META_INSET:
 		{
-			Inset const * inset = GetInset(i);
+			Inset const * inset = getInset(i);
 			if (inset)
 				if (inset->DirectWrite()) {
 					// international char, let it write
@@ -301,7 +287,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			column = 0;
 			break;
 		case '.':
-			if (i + 1 < size() && GetChar(i + 1) == ' ') {
+			if (i + 1 < size() && getChar(i + 1) == ' ') {
 				os << ".\n";
 				column = 0;
 			} else
@@ -318,7 +304,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			if (c != '\0')
 				os << c;
 			else
-				lyxerr << "ERROR (LyXParagraph::writeFile):"
+				lyxerr << "ERROR (Paragraph::writeFile):"
 					" NULL char in structure." << endl;
 			++column;
 			break;
@@ -331,24 +317,24 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 }
 
 
-void LyXParagraph::validate(LaTeXFeatures & features) const
+void Paragraph::validate(LaTeXFeatures & features) const
 {
 	BufferParams const & bparams = features.bufferParams();
 
 	// check the params.
-	if (params.lineTop() || params.lineBottom())
+	if (params().lineTop() || params().lineBottom())
 		features.lyxline = true;
-	if (!params.spacing().isDefault())
+	if (!params().spacing().isDefault())
 		features.setspace = true;
 	
 	// then the layouts
-	features.layout[GetLayout()] = true;
+	features.layout[getLayout()] = true;
 
 	// then the fonts
 	Language const * doc_language = bparams.language;
 	
-	for (FontList::const_iterator cit = fontlist.begin();
-	     cit != fontlist.end(); ++cit) {
+	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	     cit != pimpl_->fontlist.end(); ++cit) {
 		if ((*cit).font().noun() == LyXFont::ON) {
 			lyxerr[Debug::LATEX] << "font.noun: "
 					     << (*cit).font().noun()
@@ -388,17 +374,17 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 
 
 // First few functions needed for cut and paste and paragraph breaking.
-void LyXParagraph::CopyIntoMinibuffer(Buffer const & buffer,
-				      LyXParagraph::size_type pos) const
+void Paragraph::copyIntoMinibuffer(Buffer const & buffer,
+				      Paragraph::size_type pos) const
 {
 	BufferParams bparams = buffer.params;
 
-	minibuffer_char = GetChar(pos);
-	minibuffer_font = GetFontSettings(bparams, pos);
+	minibuffer_char = getChar(pos);
+	minibuffer_font = getFontSettings(bparams, pos);
 	minibuffer_inset = 0;
-	if (minibuffer_char == LyXParagraph::META_INSET) {
-		if (GetInset(pos)) {
-			minibuffer_inset = GetInset(pos)->Clone(buffer);
+	if (minibuffer_char == Paragraph::META_INSET) {
+		if (getInset(pos)) {
+			minibuffer_inset = getInset(pos)->Clone(buffer);
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -408,15 +394,15 @@ void LyXParagraph::CopyIntoMinibuffer(Buffer const & buffer,
 }
 
 
-void LyXParagraph::CutIntoMinibuffer(BufferParams const & bparams,
-				     LyXParagraph::size_type pos)
+void Paragraph::cutIntoMinibuffer(BufferParams const & bparams,
+				     Paragraph::size_type pos)
 {
-	minibuffer_char = GetChar(pos);
-	minibuffer_font = GetFontSettings(bparams, pos);
+	minibuffer_char = getChar(pos);
+	minibuffer_font = getFontSettings(bparams, pos);
 	minibuffer_inset = 0;
-	if (minibuffer_char == LyXParagraph::META_INSET) {
-		if (GetInset(pos)) {
-			minibuffer_inset = GetInset(pos);
+	if (minibuffer_char == Paragraph::META_INSET) {
+		if (getInset(pos)) {
+			minibuffer_inset = getInset(pos);
 			// This is a little hack since I want exactly
 			// the inset, not just a clone. Otherwise
 			// the inset would be deleted when calling Erase(pos)
@@ -425,7 +411,7 @@ void LyXParagraph::CutIntoMinibuffer(BufferParams const & bparams,
 			InsetList::iterator it =
 				lower_bound(insetlist.begin(),
 					    insetlist.end(),
-					    search_elem, matchIT());
+					    search_elem, Pimpl::matchIT());
 			if (it != insetlist.end() && (*it).pos == pos)
 				(*it).inset = 0;
 		} else {
@@ -440,15 +426,15 @@ void LyXParagraph::CutIntoMinibuffer(BufferParams const & bparams,
 }
 
 
-bool LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
+bool Paragraph::insertFromMinibuffer(Paragraph::size_type pos)
 {
-	if ((minibuffer_char == LyXParagraph::META_INSET) &&
-	    !InsertInsetAllowed(minibuffer_inset))
+	if ((minibuffer_char == Paragraph::META_INSET) &&
+	    !insertInsetAllowed(minibuffer_inset))
 		return false;
-	if (minibuffer_char == LyXParagraph::META_INSET)
-		InsertInset(pos, minibuffer_inset, minibuffer_font);
+	if (minibuffer_char == Paragraph::META_INSET)
+		insertInset(pos, minibuffer_inset, minibuffer_font);
 	else
-		InsertChar(pos, minibuffer_char, minibuffer_font);
+		insertChar(pos, minibuffer_char, minibuffer_font);
 	return true;
 }
 
@@ -456,154 +442,63 @@ bool LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
 
 
 
-void LyXParagraph::Clear()
+void Paragraph::clear()
 {
-	params.clear();
+	params().clear();
 	
 	layout = 0;
 	bibkey = 0;
 }
 
 
-void LyXParagraph::Erase(LyXParagraph::size_type pos)
+void Paragraph::erase(Paragraph::size_type pos)
 {
-	lyx::Assert(pos < size());
-	// if it is an inset, delete the inset entry 
-	if (text[pos] == LyXParagraph::META_INSET) {
-		// find the entry
-		InsetTable search_inset(pos, 0);
-		InsetList::iterator it =
-			lower_bound(insetlist.begin(),
-				    insetlist.end(),
-				    search_inset, matchIT());
-		if (it != insetlist.end() && (*it).pos == pos) {
-			delete (*it).inset;
-			insetlist.erase(it);
-		}
-	}
-	
-	text.erase(text.begin() + pos);
-	
-	// Erase entries in the tables.
-	FontTable search_font(pos, LyXFont());
-	
-	FontList::iterator it =
-		lower_bound(fontlist.begin(),
-			    fontlist.end(),
-			    search_font, matchFT());
-	if (it != fontlist.end() && (*it).pos() == pos &&
-	    (pos == 0 || 
-	     (it != fontlist.begin() && (*(it - 1)).pos() == pos - 1))) {
-		// If it is a multi-character font
-		// entry, we just make it smaller
-		// (see update below), otherwise we
-		// should delete it.
-		unsigned int const i = it - fontlist.begin();
-		fontlist.erase(fontlist.begin() + i);
-		it = fontlist.begin() + i;
-		if (i > 0 && i < fontlist.size() &&
-		    fontlist[i - 1].font() == fontlist[i].font()) {
-			fontlist.erase(fontlist.begin() + i - 1);
-			it = fontlist.begin() + i - 1;
-		}
-	}
-	
-	// Update all other entries.
-	FontList::iterator fend = fontlist.end();
-	for (; it != fend; ++it)
-		(*it).pos((*it).pos() - 1);
-	
-	// Update the inset table.
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator lend = insetlist.end();
-	for (InsetList::iterator it =
-		     upper_bound(insetlist.begin(),
-				 lend,
-				 search_inset, matchIT());
-	     it != lend; ++it)
-		--(*it).pos;
+	pimpl_->erase(pos);
 }
 
 
-void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
-			      LyXParagraph::value_type c)
+void Paragraph::insertChar(Paragraph::size_type pos,
+			      Paragraph::value_type c)
 {
 	LyXFont const f(LyXFont::ALL_INHERIT);
-	InsertChar(pos, c, f);
+	insertChar(pos, c, f);
 }
 
 
-void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
-			      LyXParagraph::value_type c,
+void Paragraph::insertChar(Paragraph::size_type pos,
+			      Paragraph::value_type c,
 			      LyXFont const & font)
 {
-	lyx::Assert(pos <= size());
-
-	text.insert(text.begin() + pos, c);
-
-	// Update the font table.
-	FontTable search_font(pos, LyXFont());
-	for (FontList::iterator it = lower_bound(fontlist.begin(),
-						 fontlist.end(),
-						 search_font, matchFT());
-	     it != fontlist.end(); ++it)
-		(*it).pos((*it).pos() + 1);
-   
-	// Update the inset table.
-	InsetTable search_inset(pos, 0);
-	for (InsetList::iterator it = lower_bound(insetlist.begin(),
-						  insetlist.end(),
-						  search_inset, matchIT());
-	     it != insetlist.end(); ++it)
-		++(*it).pos;
-
-	SetFont(pos, font);
+	pimpl_->insertChar(pos, c, font);
 }
 
 
-void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
+void Paragraph::insertInset(Paragraph::size_type pos,
 			       Inset * inset)
 {
 	LyXFont const f(LyXFont::ALL_INHERIT);
-	InsertInset(pos, inset, f);
+	insertInset(pos, inset, f);
 }
 
 
-void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
+void Paragraph::insertInset(Paragraph::size_type pos,
 			       Inset * inset, LyXFont const & font)
 {
-	lyx::Assert(inset);
-	lyx::Assert(pos <= size());
-	
-	InsertChar(pos, META_INSET, font);
-	lyx::Assert(text[pos] == META_INSET);
-	
-	// Add a new entry in the inset table.
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = lower_bound(insetlist.begin(),
-					     insetlist.end(),
-					     search_inset, matchIT());
-	if (it != insetlist.end() && (*it).pos == pos)
-		lyxerr << "ERROR (LyXParagraph::InsertInset): "
-			"there is an inset in position: " << pos << endl;
-	else
-		insetlist.insert(it, InsetTable(pos, inset));
-	if (inset_owner)
-		inset->setOwner(inset_owner);
+	pimpl_->insertInset(pos, inset, font);
 }
 
 
-bool LyXParagraph::InsertInsetAllowed(Inset * inset)
+bool Paragraph::insertInsetAllowed(Inset * inset)
 {
-	//lyxerr << "LyXParagraph::InsertInsetAllowed" << endl;
+	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
 	
-	if (inset_owner)
-		return inset_owner->InsertInsetAllowed(inset);
+	if (pimpl_->inset_owner)
+		return pimpl_->inset_owner->InsertInsetAllowed(inset);
 	return true;
 }
 
 
-Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
+Inset * Paragraph::getInset(Paragraph::size_type pos)
 {
 	lyx::Assert(pos < size());
 
@@ -611,11 +506,11 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     search_inset, matchIT());
+					     search_inset, Pimpl::matchIT());
 	if (it != insetlist.end() && (*it).pos == pos)
 		return (*it).inset;
 
-	lyxerr << "ERROR (LyXParagraph::GetInset): "
+	lyxerr << "ERROR (Paragraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
 	//::raise(SIGSTOP);
 	
@@ -628,7 +523,7 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 }
 
 
-Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
+Inset const * Paragraph::getInset(Paragraph::size_type pos) const
 {
 	lyx::Assert(pos < size());
 
@@ -636,11 +531,11 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 	InsetTable search_inset(pos, 0);
 	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
 						    insetlist.end(),
-						    search_inset, matchIT());
+						    search_inset, Pimpl::matchIT());
 	if (cit != insetlist.end() && (*cit).pos == pos)
 		return (*cit).inset;
 
-	lyxerr << "ERROR (LyXParagraph::GetInset): "
+	lyxerr << "ERROR (Paragraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
 	//::raise(SIGSTOP);
 	//text[pos] = ' '; // WHY!!! does this set the pos to ' '????
@@ -653,31 +548,31 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 
 
 // Gets uninstantiated font setting at position.
-LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
-					    LyXParagraph::size_type pos) const
+LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
+					    Paragraph::size_type pos) const
 {
 	lyx::Assert(pos <= size());
 	
-	FontTable search_font(pos, LyXFont());
-	FontList::const_iterator cit = lower_bound(fontlist.begin(),
-						   fontlist.end(),
-						   search_font, matchFT());
-	if (cit != fontlist.end())
+	Pimpl::FontTable search_font(pos, LyXFont());
+	Pimpl::FontList::const_iterator cit = lower_bound(pimpl_->fontlist.begin(),
+						   pimpl_->fontlist.end(),
+						   search_font, Pimpl::matchFT());
+	if (cit != pimpl_->fontlist.end())
 		return (*cit).font();
 	
 	if (pos == size() && size())
-		return GetFontSettings(bparams, pos - 1);
+		return getFontSettings(bparams, pos - 1);
 	
 	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
 }
 
 
 // Gets uninstantiated font setting at position 0
-LyXFont const LyXParagraph::GetFirstFontSettings() const
+LyXFont const Paragraph::getFirstFontSettings() const
 {
 	if (size() > 0) {
-		if (!fontlist.empty())
-			return fontlist[0].font();
+		if (!pimpl_->fontlist.empty())
+			return pimpl_->fontlist[0].font();
 	}
 	
 	return LyXFont(LyXFont::ALL_INHERIT);
@@ -691,16 +586,16 @@ LyXFont const LyXParagraph::GetFirstFontSettings() const
 // the true picture of the buffer. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont const LyXParagraph::getFont(BufferParams const & bparams,
-			      LyXParagraph::size_type pos) const
+LyXFont const Paragraph::getFont(BufferParams const & bparams,
+			      Paragraph::size_type pos) const
 {
 	LyXFont tmpfont;
 	LyXLayout const & layout =
 		textclasslist.Style(bparams.textclass, 
-				    GetLayout());
-	LyXParagraph::size_type main_body = 0;
+				    getLayout());
+	Paragraph::size_type main_body = 0;
 	if (layout.labeltype == LABEL_MANUAL)
-		main_body = BeginningOfMainBody();
+		main_body = beginningOfMainBody();
 
 	if (pos >= 0) {
 		LyXFont layoutfont;
@@ -708,7 +603,7 @@ LyXFont const LyXParagraph::getFont(BufferParams const & bparams,
 			layoutfont = layout.labelfont;
 		else
 			layoutfont = layout.font;
-		tmpfont = GetFontSettings(bparams, pos);
+		tmpfont = getFontSettings(bparams, pos);
 		tmpfont.realize(layoutfont);
 	} else {
 		// process layoutfont for pos == -1 and labelfont for pos < -1
@@ -720,15 +615,15 @@ LyXFont const LyXParagraph::getFont(BufferParams const & bparams,
 	}
 
 	// check for environment font information
-	char par_depth = GetDepth();
-	LyXParagraph const * par = this;
-	while (par && par_depth && !tmpfont.resolved()) {
-		par = par->DepthHook(par_depth - 1);
+	char par_depth = getDepth();
+	Paragraph const * par = this;
+	while (par && par->getDepth() && !tmpfont.resolved()) {
+		par = par->outerHook();
 		if (par) {
 			tmpfont.realize(textclasslist.
 					Style(bparams.textclass,
-					      par->GetLayout()).font);
-			par_depth = par->GetDepth();
+					      par->getLayout()).font);
+			par_depth = par->getDepth();
 		}
 	}
 
@@ -741,25 +636,25 @@ LyXFont const LyXParagraph::getFont(BufferParams const & bparams,
 
 /// Returns the height of the highest font in range
 LyXFont::FONT_SIZE
-LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
-				 LyXParagraph::size_type endpos) const
+Paragraph::highestFontInRange(Paragraph::size_type startpos,
+				 Paragraph::size_type endpos) const
 {
 	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
-	if (fontlist.empty())
+	if (pimpl_->fontlist.empty())
 		return maxsize;
 
-	FontTable end_search(endpos, LyXFont());
-	FontList::const_iterator end_it = lower_bound(fontlist.begin(),
-						      fontlist.end(),
-						      end_search, matchFT());
-	if (end_it != fontlist.end())
+	Pimpl::FontTable end_search(endpos, LyXFont());
+	Pimpl::FontList::const_iterator end_it = lower_bound(pimpl_->fontlist.begin(),
+						      pimpl_->fontlist.end(),
+						      end_search, Pimpl::matchFT());
+	if (end_it != pimpl_->fontlist.end())
 		++end_it;
 
-	FontTable start_search(startpos, LyXFont());
-	for (FontList::const_iterator cit =
-		     lower_bound(fontlist.begin(),
-				 fontlist.end(),
-				 start_search, matchFT());
+	Pimpl::FontTable start_search(startpos, LyXFont());
+	for (Pimpl::FontList::const_iterator cit =
+		     lower_bound(pimpl_->fontlist.begin(),
+				 pimpl_->fontlist.end(),
+				 start_search, Pimpl::matchFT());
 	     cit != end_it; ++cit) {
 		LyXFont::FONT_SIZE size = (*cit).font().size();
 		if (size > maxsize && size <= LyXFont::SIZE_HUGER)
@@ -769,11 +664,11 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 }
 
 
-LyXParagraph::value_type
-LyXParagraph::GetUChar(BufferParams const & bparams,
-		       LyXParagraph::size_type pos) const
+Paragraph::value_type
+Paragraph::getUChar(BufferParams const & bparams,
+		       Paragraph::size_type pos) const
 {
-	value_type c = GetChar(pos);
+	value_type c = getChar(pos);
 	if (!lyxrc.rtl_support)
 		return c;
 
@@ -804,7 +699,7 @@ LyXParagraph::GetUChar(BufferParams const & bparams,
 		uc = '<';
 		break;
 	}
-	if (uc != c && GetFontSettings(bparams, pos).isRightToLeft())
+	if (uc != c && getFontSettings(bparams, pos).isRightToLeft())
 		return uc;
 	else
 		return c;
@@ -812,7 +707,7 @@ LyXParagraph::GetUChar(BufferParams const & bparams,
 
 
 // return an string of the current word, and the end of the word in lastpos.
-string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
+string const Paragraph::getWord(Paragraph::size_type & lastpos) const
 {
 	lyx::Assert(lastpos >= 0);
 
@@ -834,12 +729,12 @@ string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 	//since someone might have typed a punctuation first
 	int firstpos = lastpos;
  	
-	while ((firstpos >= 0) && !IsLetter(firstpos))
+	while ((firstpos >= 0) && !isLetter(firstpos))
 		--firstpos;
 
 	// now find the beginning by looking for a nonletter
 	
-	while ((firstpos>= 0) && IsLetter(firstpos))
+	while ((firstpos>= 0) && isLetter(firstpos))
 		--firstpos;
 
 	// the above is now pointing to the preceeding non-letter
@@ -851,13 +746,13 @@ string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 	// that if used in the middle of a word, the whole word
 	// is included
 
-	while (IsLetter(lastpos)) theword += GetChar(lastpos++);
+	while (isLetter(lastpos)) theword += getChar(lastpos++);
 	
 	return theword;
 }
 
 
-void LyXParagraph::SetFont(LyXParagraph::size_type pos,
+void Paragraph::setFont(Paragraph::size_type pos,
 			   LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
@@ -869,181 +764,179 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	// in a new kernel. (Asger)
 	// Next search font table
 
-	FontTable search_font(pos, LyXFont());
-	FontList::iterator it = lower_bound(fontlist.begin(),
-					    fontlist.end(),
-					    search_font, matchFT());
-	unsigned int i = it - fontlist.begin();
-	bool notfound = it == fontlist.end();
+	Pimpl::FontTable search_font(pos, LyXFont());
+	Pimpl::FontList::iterator it = lower_bound(pimpl_->fontlist.begin(),
+					    pimpl_->fontlist.end(),
+					    search_font, Pimpl::matchFT());
+	unsigned int i = it - pimpl_->fontlist.begin();
+	bool notfound = it == pimpl_->fontlist.end();
 
-	if (!notfound && fontlist[i].font() == font)
+	if (!notfound && pimpl_->fontlist[i].font() == font)
 		return;
 
 	bool begin = pos == 0 || notfound ||
-		(i > 0 && fontlist[i-1].pos() == pos - 1);
+		(i > 0 && pimpl_->fontlist[i-1].pos() == pos - 1);
 	// Is position pos is a beginning of a font block?
-	bool end = !notfound && fontlist[i].pos() == pos;
+	bool end = !notfound && pimpl_->fontlist[i].pos() == pos;
 	// Is position pos is the end of a font block?
 	if (begin && end) { // A single char block
-		if (i + 1 < fontlist.size() &&
-		    fontlist[i + 1].font() == font) {
+		if (i + 1 < pimpl_->fontlist.size() &&
+		    pimpl_->fontlist[i + 1].font() == font) {
 			// Merge the singleton block with the next block
-			fontlist.erase(fontlist.begin() + i);
-			if (i > 0 && fontlist[i - 1].font() == font)
-				fontlist.erase(fontlist.begin() + i-1);
-		} else if (i > 0 && fontlist[i - 1].font() == font) {
+			pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i);
+			if (i > 0 && pimpl_->fontlist[i - 1].font() == font)
+				pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i-1);
+		} else if (i > 0 && pimpl_->fontlist[i - 1].font() == font) {
 			// Merge the singleton block with the previous block
-			fontlist[i - 1].pos(pos);
-			fontlist.erase(fontlist.begin() + i);
+			pimpl_->fontlist[i - 1].pos(pos);
+			pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i);
 		} else
-			fontlist[i].font(font);
+			pimpl_->fontlist[i].font(font);
 	} else if (begin) {
-		if (i > 0 && fontlist[i - 1].font() == font)
-			fontlist[i - 1].pos(pos);
+		if (i > 0 && pimpl_->fontlist[i - 1].font() == font)
+			pimpl_->fontlist[i - 1].pos(pos);
 		else
-			fontlist.insert(fontlist.begin() + i,
-					FontTable(pos, font));
+			pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i,
+					Pimpl::FontTable(pos, font));
 	} else if (end) {
-		fontlist[i].pos(pos - 1);
-		if (!(i + 1 < fontlist.size() &&
-		      fontlist[i + 1].font() == font))
-			fontlist.insert(fontlist.begin() + i + 1,
-					FontTable(pos, font));
+		pimpl_->fontlist[i].pos(pos - 1);
+		if (!(i + 1 < pimpl_->fontlist.size() &&
+		      pimpl_->fontlist[i + 1].font() == font))
+			pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i + 1,
+					Pimpl::FontTable(pos, font));
 	} else { // The general case. The block is splitted into 3 blocks
-		fontlist.insert(fontlist.begin() + i, 
-				FontTable(pos - 1, fontlist[i].font()));
-		fontlist.insert(fontlist.begin() + i + 1,
-				FontTable(pos, font));
+		pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i, 
+				Pimpl::FontTable(pos - 1, pimpl_->fontlist[i].font()));
+		pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i + 1,
+				Pimpl::FontTable(pos, font));
 	}
 }
 
 
 
-void LyXParagraph::next(LyXParagraph * p)
+void Paragraph::next(Paragraph * p)
 {
 	next_ = p;
 }
 
 
 // This function is able to hide closed footnotes.
-LyXParagraph * LyXParagraph::next()
+Paragraph * Paragraph::next()
 {
 	return next_;
 }
 
 
-LyXParagraph const * LyXParagraph::next() const
+Paragraph const * Paragraph::next() const
 {
 	return next_;
 }
 
 
-void LyXParagraph::previous(LyXParagraph * p)
+void Paragraph::previous(Paragraph * p)
 {
 	previous_ = p;
 }
 
 
 // This function is able to hide closed footnotes.
-LyXParagraph * LyXParagraph::previous()
+Paragraph * Paragraph::previous()
 {
 	return previous_;
 }
 
 
 // This function is able to hide closed footnotes.
-LyXParagraph const * LyXParagraph::previous() const
+Paragraph const * Paragraph::previous() const
 {
 	return previous_;
 }
 
 
-void LyXParagraph::BreakParagraph(BufferParams const & bparams,
-				  LyXParagraph::size_type pos,
+void Paragraph::breakParagraph(BufferParams const & bparams,
+				  Paragraph::size_type pos,
 				  int flag)
 {
 	// create a new paragraph
-	LyXParagraph * tmp = new LyXParagraph(this);
+	Paragraph * tmp = new Paragraph(this);
 	// remember to set the inset_owner
-	tmp->SetInsetOwner(InInset());
+	tmp->setInsetOwner(InInset());
 	
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
 	
 	// layout stays the same with latex-environments
 	if (flag) {
-		tmp->SetOnlyLayout(layout);
-		tmp->SetLabelWidthString(params.labelWidthString());
+		tmp->setOnlyLayout(layout);
+		tmp->setLabelWidthString(params().labelWidthString());
 	}
 	
 	if (size() > pos || !size() || flag == 2) {
-		tmp->SetOnlyLayout(layout);
-		tmp->params.align(params.align());
-		tmp->SetLabelWidthString(params.labelWidthString());
+		tmp->setOnlyLayout(layout);
+		tmp->params().align(params().align());
+		tmp->setLabelWidthString(params().labelWidthString());
 		
-		tmp->params.lineBottom(params.lineBottom());
-		params.lineBottom(false);
-		tmp->params.pagebreakBottom(params.pagebreakBottom());
-		params.pagebreakBottom(false);
-		tmp->params.spaceBottom(params.spaceBottom());
-		params.spaceBottom(VSpace(VSpace::NONE));
+		tmp->params().lineBottom(params().lineBottom());
+		params().lineBottom(false);
+		tmp->params().pagebreakBottom(params().pagebreakBottom());
+		params().pagebreakBottom(false);
+		tmp->params().spaceBottom(params().spaceBottom());
+		params().spaceBottom(VSpace(VSpace::NONE));
 		
-		tmp->params.depth(params.depth());
-		tmp->params.noindent(params.noindent());
+		tmp->params().depth(params().depth());
+		tmp->params().noindent(params().noindent());
 		
 		// copy everything behind the break-position
 		// to the new paragraph
-		size_type pos_end = text.size() - 1;
+		size_type pos_end = pimpl_->size() - 1;
 		size_type i = pos;
 		size_type j = pos;
 		for (; i <= pos_end; ++i) {
-			CutIntoMinibuffer(bparams, i);
-			if (tmp->InsertFromMinibuffer(j - pos))
+			cutIntoMinibuffer(bparams, i);
+			if (tmp->insertFromMinibuffer(j - pos))
 				++j;
 		}
-		tmp->fitToSize();
-		for (i = pos_end; i >= pos; --i)
-			Erase(i);
-		
-		fitToSize();
+		for (i = pos_end; i >= pos; --i) {
+			erase(i);
+		}
 	}
 	
 	// just an idea of me
 	if (!pos) {
-		tmp->params.lineTop(params.lineTop());
-		tmp->params.pagebreakTop(params.pagebreakTop());
-		tmp->params.spaceTop(params.spaceTop());
+		tmp->params().lineTop(params().lineTop());
+		tmp->params().pagebreakTop(params().pagebreakTop());
+		tmp->params().spaceTop(params().spaceTop());
 		tmp->bibkey = bibkey;
-		Clear();
+		clear();
 		// layout stays the same with latex-environments
 		if (flag) {
-			SetOnlyLayout(tmp->layout);
-			SetLabelWidthString(tmp->params.labelWidthString());
-			params.depth(tmp->params.depth());
+			setOnlyLayout(tmp->layout);
+			setLabelWidthString(tmp->params().labelWidthString());
+			params().depth(tmp->params().depth());
 		}
 	}
 }
 	
 
-void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
+void Paragraph::makeSameLayout(Paragraph const * par)
 {
 	layout = par->layout;
-	params.makeSame(par->params);
+	params().makeSame(par->params());
 	
 	// This can be changed after NEW_INSETS is in effect. (Lgb)
-	SetLabelWidthString(par->params.labelWidthString());
+	setLabelWidthString(par->params().labelWidthString());
 }
 
 
-int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass) 
+int Paragraph::stripLeadingSpaces(LyXTextClassList::size_type tclass) 
 {
-	if (textclasslist.Style(tclass, GetLayout()).free_spacing)
+	if (textclasslist.Style(tclass, getLayout()).free_spacing)
 		return 0;
 	
 	int i = 0;
 	while (size()
-	       && (IsNewline(0) || IsLineSeparator(0))){
-		Erase(0);
+	       && (isNewline(0) || isLineSeparator(0))){
+		erase(0);
 		++i;
 	}
 
@@ -1051,41 +944,39 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 }
 
 
-bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
+bool Paragraph::hasSameLayout(Paragraph const * par) const
 {
 	return 
 		par->layout == layout &&
-		params.sameLayout(par->params);
+		params().sameLayout(par->params());
 }
 
 
-void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
-					      LyXParagraph::size_type pos)
+void Paragraph::breakParagraphConservative(BufferParams const & bparams,
+					   Paragraph::size_type pos)
 {
 	// create a new paragraph
-	LyXParagraph * tmp = new LyXParagraph(this);
-	tmp->MakeSameLayout(this);
+	Paragraph * tmp = new Paragraph(this);
+	tmp->makeSameLayout(this);
 
 	// When can pos > Last()?
 	// I guess pos == Last() is possible.
 	if (size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		size_type pos_end = text.size() - 1;
+		size_type pos_end = pimpl_->size() - 1;
 
-		size_type i, j;
-		for (i = j = pos; i <= pos_end; ++i) {
-			CutIntoMinibuffer(bparams, i);
-			if (tmp->InsertFromMinibuffer(j - pos))
+		//size_type i = pos;
+		//size_type j = pos;
+		for (size_type i = pos, j = pos; i <= pos_end; ++i) {
+			cutIntoMinibuffer(bparams, i);
+			if (tmp->insertFromMinibuffer(j - pos))
 				++j;
 		}
-
-		tmp->fitToSize();
 		
-		for (size_type i = pos_end; i >= pos; --i)
-			Erase(i);
-
-		fitToSize();
+		for (size_type k = pos_end; k >= pos; --k) {
+			erase(k);
+		}
 	}
 }
    
@@ -1093,41 +984,40 @@ void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
 // Be carefull, this does not make any check at all.
 // This method has wrong name, it combined this par with the next par.
 // In that sense it is the reverse of break paragraph. (Lgb)
-void LyXParagraph::PasteParagraph(BufferParams const & bparams)
+void Paragraph::pasteParagraph(BufferParams const & bparams)
 {
 	// copy the next paragraph to this one
-	LyXParagraph * the_next = next();
+	Paragraph * the_next = next();
    
 	// first the DTP-stuff
-	params.lineBottom(the_next->params.lineBottom());
-	params.spaceBottom(the_next->params.spaceBottom());
-	params.pagebreakBottom(the_next->params.pagebreakBottom());
+	params().lineBottom(the_next->params().lineBottom());
+	params().spaceBottom(the_next->params().spaceBottom());
+	params().pagebreakBottom(the_next->params().pagebreakBottom());
 
-	size_type pos_end = the_next->text.size() - 1;
+	size_type pos_end = the_next->pimpl_->size() - 1;
 	size_type pos_insert = size();
 
 	// ok, now copy the paragraph
-	size_type i, j;
-	for (i = j = 0; i <= pos_end; ++i) {
-		the_next->CutIntoMinibuffer(bparams, i);
-		if (InsertFromMinibuffer(pos_insert + j))
+	for (size_type i = 0, j = 0; i <= pos_end; ++i) {
+		the_next->cutIntoMinibuffer(bparams, i);
+		if (insertFromMinibuffer(pos_insert + j))
 			++j;
 	}
    
 	// delete the next paragraph
-	LyXParagraph * ppar = the_next->previous_;
-	LyXParagraph * npar = the_next->next_;
+	Paragraph * ppar = the_next->previous_;
+	Paragraph * npar = the_next->next_;
 	delete the_next;
 	ppar->next(npar);
 }
 
 
-int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
+int Paragraph::getEndLabel(BufferParams const & bparams) const
 {
-	LyXParagraph const * par = this;
-	int par_depth = GetDepth();
+	Paragraph const * par = this;
+	depth_type par_depth = getDepth();
 	while (par) {
-		LyXTextClass::LayoutList::size_type layout = par->GetLayout();
+		LyXTextClass::LayoutList::size_type layout = par->getLayout();
 		int const endlabeltype =
 			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
@@ -1135,77 +1025,77 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 			if (!next_)
 				return endlabeltype;
 
-			int const next_depth = next_->GetDepth();
+			depth_type const next_depth = next_->getDepth();
 			if (par_depth > next_depth ||
 			    (par_depth == next_depth
-			     && layout != next_->GetLayout()))
+			     && layout != next_->getLayout()))
 				return endlabeltype;
 			break;
 		}
 		if (par_depth == 0)
 			break;
-		par = par->DepthHook(par_depth - 1);
+		par = par->outerHook();
 		if (par)
-			par_depth = par->GetDepth();
+			par_depth = par->getDepth();
 	}
 	return END_LABEL_NO_LABEL;
 }
 
 
-char LyXParagraph::GetDepth() const
+Paragraph::depth_type Paragraph::getDepth() const
 {
-	return params.depth();
+	return params().depth();
 }
 
 
-char LyXParagraph::GetAlign() const
+char Paragraph::getAlign() const
 {
-	return params.align();
+	return params().align();
 }
 
 
-string const & LyXParagraph::GetLabelstring() const
+string const & Paragraph::getLabelstring() const
 {
-	return params.labelString();
+	return params().labelString();
 }
 
 
-int LyXParagraph::GetFirstCounter(int i) const
+int Paragraph::getFirstCounter(int i) const
 {
-	return counter_[i];
+	return pimpl_->counter_[i];
 }
 
 
 // the next two functions are for the manual labels
-string const LyXParagraph::GetLabelWidthString() const
+string const Paragraph::getLabelWidthString() const
 {
-	if (!params.labelWidthString().empty())
-		return params.labelWidthString();
+	if (!params().labelWidthString().empty())
+		return params().labelWidthString();
 	else
 		return _("Senseless with this layout!");
 }
 
 
-void LyXParagraph::SetLabelWidthString(string const & s)
+void Paragraph::setLabelWidthString(string const & s)
 {
-	params.labelWidthString(s);
+	params().labelWidthString(s);
 }
 
 
-void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
+void Paragraph::setOnlyLayout(LyXTextClass::size_type new_layout)
 {
 	layout = new_layout;
 }
 
 
-void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
+void Paragraph::setLayout(LyXTextClass::size_type new_layout)
 {
         layout = new_layout;
-	params.labelWidthString(string());
-	params.align(LYX_ALIGN_LAYOUT);
-	params.spaceTop(VSpace(VSpace::NONE));
-	params.spaceBottom(VSpace(VSpace::NONE));
-	params.spacing(Spacing(Spacing::Default));
+	params().labelWidthString(string());
+	params().align(LYX_ALIGN_LAYOUT);
+	params().spaceTop(VSpace(VSpace::NONE));
+	params().spaceBottom(VSpace(VSpace::NONE));
+	params().spacing(Spacing(Spacing::Default));
 }
 
 
@@ -1216,24 +1106,24 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 // because there cannot be a newline or a blank <= the beginning of the 
 // main body in TeX.
 
-int LyXParagraph::BeginningOfMainBody() const
+int Paragraph::beginningOfMainBody() const
 {
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
 	size_type i = 0;
 	if (i < size()
-	    && GetChar(i) != LyXParagraph::META_NEWLINE) {
+	    && getChar(i) != Paragraph::META_NEWLINE) {
 		++i;
 		char previous_char = 0;
 		char temp = 0; 
 		if (i < size()
-		    && (previous_char = GetChar(i)) != LyXParagraph::META_NEWLINE) {
+		    && (previous_char = getChar(i)) != Paragraph::META_NEWLINE) {
 			// Yes, this  ^ is supposed to be "= " not "=="
 			++i;
 			while (i < size()
 			       && previous_char != ' '
-			       && (temp = GetChar(i)) != LyXParagraph::META_NEWLINE) {
+			       && (temp = getChar(i)) != Paragraph::META_NEWLINE) {
 				++i;
 				previous_char = temp;
 			}
@@ -1244,19 +1134,17 @@ int LyXParagraph::BeginningOfMainBody() const
 }
 
 
-LyXParagraph * LyXParagraph::DepthHook(int deth)
+Paragraph * Paragraph::depthHook(depth_type depth)
 {
-	LyXParagraph * newpar = this;
-	if (deth < 0)
-		return 0;
-   
+	Paragraph * newpar = this;
+  
 	do {
 		newpar = newpar->previous();
-	} while (newpar && newpar->GetDepth() > deth);
+	} while (newpar && newpar->getDepth() > depth);
    
 	if (!newpar) {
-		if (previous() || GetDepth())
-			lyxerr << "ERROR (LyXParagraph::DepthHook): "
+		if (previous() || getDepth())
+			lyxerr << "ERROR (Paragraph::DepthHook): "
 				"no hook." << endl;
 		newpar = this;
 	}
@@ -1265,19 +1153,17 @@ LyXParagraph * LyXParagraph::DepthHook(int deth)
 }
 
 
-LyXParagraph const * LyXParagraph::DepthHook(int deth) const
+Paragraph const * Paragraph::depthHook(depth_type depth) const
 {
-	LyXParagraph const * newpar = this;
-	if (deth < 0)
-		return 0;
+	Paragraph const * newpar = this;
    
 	do {
 		newpar = newpar->previous();
-	} while (newpar && newpar->GetDepth() > deth);
+	} while (newpar && newpar->getDepth() > depth);
    
 	if (!newpar) {
-		if (previous() || GetDepth())
-			lyxerr << "ERROR (LyXParagraph::DepthHook): "
+		if (previous() || getDepth())
+			lyxerr << "ERROR (Paragraph::DepthHook): "
 				"no hook." << endl;
 		newpar = this;
 	}
@@ -1285,14 +1171,27 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 	return newpar;
 }
 
+Paragraph * Paragraph::outerHook()
+{
+	if(!getDepth())
+		return 0;
+	return depthHook(depth_type(getDepth() - 1));
+}
 
-int LyXParagraph::AutoDeleteInsets()
+Paragraph const * Paragraph::outerHook() const
+{
+	if(!getDepth())
+		return 0;
+	return depthHook(depth_type(getDepth() - 1));
+}
+
+int Paragraph::autoDeleteInsets()
 {
 	int count = 0;
 	InsetList::size_type index = 0;
 	while (index < insetlist.size()) {
 		if (insetlist[index].inset && insetlist[index].inset->AutoDelete()) {
-			Erase(insetlist[index].pos); 
+			erase(insetlist[index].pos); 
 			// Erase() calls to insetlist.erase(&insetlist[index])
 			// so index shouldn't be increased.
 			++count;
@@ -1303,19 +1202,19 @@ int LyXParagraph::AutoDeleteInsets()
 }
 
 
-LyXParagraph::inset_iterator
-LyXParagraph::InsetIterator(LyXParagraph::size_type pos)
+Paragraph::inset_iterator
+Paragraph::InsetIterator(Paragraph::size_type pos)
 {
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     search_inset, matchIT());
+					     search_inset, Pimpl::matchIT());
 	return inset_iterator(it);
 }
 
 
 // returns -1 if inset not found
-int LyXParagraph::GetPositionOfInset(Inset * inset) const
+int Paragraph::getPositionOfInset(Inset * inset) const
 {
 	// Find the entry.
 	for (InsetList::const_iterator cit = insetlist.begin();
@@ -1331,7 +1230,7 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 }
 
 
-LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
+Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 				       BufferParams const & bparams,
 				       ostream & os, TexRow & texrow,
 				       bool moving_arg)
@@ -1343,14 +1242,14 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 
 	bool further_blank_line = false;
 
-	if (params.startOfAppendix()) {
+	if (params().startOfAppendix()) {
 		os << "\\appendix\n";
 		texrow.newline();
 	}
 
-	if (!params.spacing().isDefault()
-	    && (!previous() || !previous()->HasSameLayout(this))) {
-		os << params.spacing().writeEnvirBegin() << "\n";
+	if (!params().spacing().isDefault()
+	    && (!previous() || !previous()->hasSameLayout(this))) {
+		os << params().spacing().writeEnvirBegin() << "\n";
 		texrow.newline();
 	}
 	
@@ -1359,16 +1258,16 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		texrow.newline();
 	}
 
-	if (params.pagebreakTop()) {
+	if (params().pagebreakTop()) {
 		os << "\\newpage";
 		further_blank_line = true;
 	}
-	if (params.spaceTop().kind() != VSpace::NONE) {
-		os << params.spaceTop().asLatexCommand(bparams);
+	if (params().spaceTop().kind() != VSpace::NONE) {
+		os << params().spaceTop().asLatexCommand(bparams);
 		further_blank_line = true;
 	}
       
-	if (params.lineTop()) {
+	if (params().lineTop()) {
 		os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
 		   << "\\vspace{-1\\parskip}";
 		further_blank_line = true;
@@ -1418,7 +1317,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		break;
 	}
 
-	bool need_par = SimpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
+	bool need_par = simpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
  
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
@@ -1432,7 +1331,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	LyXFont font = getFont(bparams, size() - 1);
 
 	bool is_command = textclasslist.Style(bparams.textclass,
-					      GetLayout()).isCommand();
+					      getLayout()).isCommand();
 	if (style.resfont.size() != font.size() && next_ && !is_command) {
 		if (!need_par)
 			os << "{";
@@ -1453,7 +1352,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-                if (next_ && (params.depth() < next_->params.depth())) {
+                if (next_ && (params().depth() < next_->params().depth())) {
                         os << '\n';
                         texrow.newline();
                 }
@@ -1463,7 +1362,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		// skip it otherwise fall through
 		if (next_
 		    && (next_->layout != layout
-			|| next_->params.depth() != params.depth()))
+			|| next_->params().depth() != params().depth()))
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
@@ -1477,18 +1376,18 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	}
 	
 	further_blank_line = false;
-	if (params.lineBottom()) {
+	if (params().lineBottom()) {
 		os << "\\lyxline{\\" << getFont(bparams,
 						size() - 1).latexSize() << '}';
 		further_blank_line = true;
 	}
 
-	if (params.spaceBottom().kind() != VSpace::NONE) {
-		os << params.spaceBottom().asLatexCommand(bparams);
+	if (params().spaceBottom().kind() != VSpace::NONE) {
+		os << params().spaceBottom().asLatexCommand(bparams);
 		further_blank_line = true;
 	}
       
-	if (params.pagebreakBottom()) {
+	if (params().pagebreakBottom()) {
 		os << "\\newpage";
 		further_blank_line = true;
 	}
@@ -1498,9 +1397,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		texrow.newline();
 	}
 
-	if (!params.spacing().isDefault()
-	    && (!next_ || !next_->HasSameLayout(this))) {
-		os << params.spacing().writeEnvirEnd() << "\n";
+	if (!params().spacing().isDefault()
+	    && (!next_ || !next_->hasSameLayout(this))) {
+		os << params().spacing().writeEnvirEnd() << "\n";
 		texrow.newline();
 	}
 	
@@ -1516,7 +1415,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 
 
 // This one spits out the text of the paragraph
-bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
+bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				   BufferParams const & bparams,
 				   ostream & os, TexRow & texrow,
 				   bool moving_arg)
@@ -1527,7 +1426,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 
 	LyXLayout const & style =
 		textclasslist.Style(bparams.textclass,
-				    GetLayout());
+				    getLayout());
 	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
@@ -1535,7 +1434,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
-		main_body = BeginningOfMainBody();
+		main_body = beginningOfMainBody();
 
 	if (main_body > 0) {
 		os << '[';
@@ -1547,11 +1446,11 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 	int column = 0;
 
 	if (main_body >= 0
-	    && !text.size()) {
+	    && !pimpl_->size()) {
 		if (style.isCommand()) {
 			os << '{';
 			++column;
-		} else if (params.align() != LYX_ALIGN_LAYOUT) {
+		} else if (params().align() != LYX_ALIGN_LAYOUT) {
 			os << '{';
 			++column;
 			return_value = true;
@@ -1584,7 +1483,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			if (style.isCommand()) {
 				os << '{';
 				++column;
-			} else if (params.align() != LYX_ALIGN_LAYOUT && next_) {
+			} else if (params().align() != LYX_ALIGN_LAYOUT && next_) {
 				// We do not need \par here (Dekel)
 				// os << "{\\par";
 				os << "{";
@@ -1592,11 +1491,11 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 				return_value = true;
 			}
 
-			if (params.noindent()) {
+			if (params().noindent()) {
 				os << "\\noindent ";
 				column += 10;
 			}
-			switch (params.align()) {
+			switch (params().align()) {
 			case LYX_ALIGN_NONE:
 			case LYX_ALIGN_BLOCK:
 			case LYX_ALIGN_LAYOUT:
@@ -1633,7 +1532,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			}	 
 		}
 
-		value_type c = GetChar(i);
+		value_type c = getChar(i);
 
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
@@ -1661,8 +1560,8 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
 			if (i != main_body - 1) {
-				SimpleTeXBlanks(os, texrow, i,
-						column, font, style);
+				pimpl_->simpleTeXBlanks(os, texrow, i,
+						       column, font, style);
 			}
 		}
 
@@ -1675,7 +1574,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			open_font = true;
 		}
 
-		if (c == LyXParagraph::META_NEWLINE) {
+		if (c == Paragraph::META_NEWLINE) {
 			// newlines are handled differently here than
 			// the default in SimpleTeXSpecialChars().
 			if (!style.newline_allowed
@@ -1700,10 +1599,11 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			texrow.start(this, i + 1);
 			column = 0;
 		} else {
-			SimpleTeXSpecialChars(buf, bparams,
-					      os, texrow, moving_arg,
-					      font, running_font, basefont,
-					      open_font, style, i, column, c);
+			pimpl_->simpleTeXSpecialChars(buf, bparams,
+						      os, texrow, moving_arg,
+						      font, running_font, 
+						      basefont, open_font, 
+						      style, i, column, c);
 		}
 	}
 
@@ -1731,14 +1631,14 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 }
 
 
-bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
+bool Paragraph::linuxDocConvertChar(char c, string & sgml_string)
 {
 	bool retval = false;
 	switch (c) {
-	case LyXParagraph::META_HFILL:
+	case Paragraph::META_HFILL:
 		sgml_string.erase();
 		break;
-	case LyXParagraph::META_NEWLINE:
+	case Paragraph::META_NEWLINE:
 		sgml_string = '\n';
 		break;
 	case '&': 
@@ -1795,335 +1695,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 }
 
 
-void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
-				   LyXParagraph::size_type const i,
-				   int & column, LyXFont const & font,
-				   LyXLayout const & style)
-{
-	if (column > tex_code_break_column
-	    && i 
-	    && GetChar(i - 1) != ' '
-	    && (i < size() - 1)
-	    // In LaTeX mode, we don't want to
-	    // break lines since some commands
-	    // do not like this
-	    && ! (font.latex() == LyXFont::ON)
-	    // same in FreeSpacing mode
-	    && !style.free_spacing
-	    // In typewriter mode, we want to avoid 
-	    // ! . ? : at the end of a line
-	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY
-		 && (GetChar(i-1) == '.'
-		     || GetChar(i-1) == '?' 
-		     || GetChar(i-1) == ':'
-		     || GetChar(i-1) == '!'))) {
-		if (tex_code_break_column == 0) {
-			// in batchmode we need LaTeX to still
-			// see it as a space not as an extra '\n'
-			os << " %\n";
-		} else {
-			os << '\n';
-		}
-		texrow.newline();
-		texrow.start(this, i + 1);
-		column = 0;
-	} else if (font.latex() == LyXFont::OFF) {
-		if (style.free_spacing) {
-			os << '~';
-		} else {
-			os << ' ';
-		}
-	}
-}
-
-
-void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
-					 BufferParams const & bparams,
-					 ostream & os, TexRow & texrow,
-					 bool moving_arg,
-					 LyXFont & font,
-					 LyXFont & running_font,
-					 LyXFont & basefont,
-					 bool & open_font,
-					 LyXLayout const & style,
-					 LyXParagraph::size_type & i,
-					 int & column,
-					 LyXParagraph::value_type const c)
-{
-	// Two major modes:  LaTeX or plain
-	// Handle here those cases common to both modes
-	// and then split to handle the two modes separately.
-	switch (c) {
-	case LyXParagraph::META_INSET: {
-		Inset * inset = GetInset(i);
-		if (inset) {
-			bool close = false;
-			int const len = os.tellp();
-			//ostream::pos_type const len = os.tellp();
-			if ((inset->LyxCode() == Inset::GRAPHICS_CODE
-			     || inset->LyxCode() == Inset::MATH_CODE
-			     || inset->LyxCode() == Inset::URL_CODE)
-			    && running_font.isRightToLeft()) {
-				os << "\\L{";
-				close = true;
-			}
-
-			int tmp = inset->Latex(buf, os, moving_arg,
-					       style.free_spacing);
-
-			if (close)
-				os << "}";
-
-			if (tmp) {
-				column = 0;
-			} else {
-				column += int(os.tellp()) - len;
-			}
-			for (; tmp--;) {
-				texrow.newline();
-			}
-		}
-	}
-	break;
-
-	case LyXParagraph::META_NEWLINE:
-		if (open_font) {
-			column += running_font.latexWriteEndChanges(os,
-								    basefont,
-								    basefont);
-			open_font = false;
-		}
-		basefont = getFont(bparams, -1);
-		running_font = basefont;
-		break;
-
-	case LyXParagraph::META_HFILL: 
-		os << "\\hfill{}";
-		column += 7;
-		break;
-
-	default:
-		// And now for the special cases within each mode
-		// Are we in LaTeX mode?
-		if (font.latex() == LyXFont::ON) {
-			// at present we only have one option
-			// but I'll leave it as a switch statement
-			// so its simpler to extend. (ARRae)
-			switch (c) {
-			default:
-				// make sure that we will not print
-				// error generating chars to the tex
-				// file. This test would not be needed
-				// if it were done in the buffer
-				// itself.
-				if (c != '\0') {
-					os << c;
-				}
-				break;
-			}
-		} else {
-			// Plain mode (i.e. not LaTeX)
-			switch (c) {
-			case '\\': 
-				os << "\\textbackslash{}";
-				column += 15;
-				break;
-		
-			case '°': case '±': case '²': case '³':  
-			case '×': case '÷': case '¹': case 'ª':
-			case 'º': case '¬': case 'µ':
-				if (bparams.inputenc == "latin1" ||
-				    (bparams.inputenc == "auto" &&
-				     font.language()->encoding()->LatexName()
-				     == "latin1")) {
-					os << "\\ensuremath{"
-					   << c
-					   << '}';
-					column += 13;
-				} else {
-					os << c;
-				}
-				break;
-
-			case '|': case '<': case '>':
-				// In T1 encoding, these characters exist
-				if (lyxrc.fontenc == "T1") {
-					os << c;
-					//... but we should avoid ligatures
-					if ((c == '>' || c == '<')
-					    && i <= size() - 2
-					    && GetChar(i + 1) == c) {
-						//os << "\\textcompwordmark{}";
-						// Jean-Marc, have a look at
-						// this. I think this works
-						// equally well:
-						os << "\\,{}";
-						// Lgb
-						column += 19;
-					}
-					break;
-				}
-				// Typewriter font also has them
-				if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
-					os << c;
-					break;
-				} 
-				// Otherwise, we use what LaTeX
-				// provides us.
-				switch (c) {
-				case '<':
-					os << "\\textless{}";
-					column += 10;
-					break;
-				case '>':
-					os << "\\textgreater{}";
-					column += 13;
-					break;
-				case '|':
-					os << "\\textbar{}";
-					column += 9;
-					break;
-				}
-				break;
-
-			case '-': // "--" in Typewriter mode -> "-{}-"
-				if (i <= size() - 2
-				    && GetChar(i + 1) == '-'
-				    && font.family() == LyXFont::TYPEWRITER_FAMILY) {
-					os << "-{}";
-					column += 2;
-				} else {
-					os << '-';
-				}
-				break;
-
-			case '\"': 
-				os << "\\char`\\\"{}";
-				column += 9;
-				break;
-
-			case '£':
-				if (bparams.inputenc == "default") {
-					os << "\\pounds{}";
-					column += 8;
-				} else {
-					os << c;
-				}
-				break;
-
-			case '$': case '&':
-			case '%': case '#': case '{':
-			case '}': case '_':
-				os << '\\' << c;
-				column += 1;
-				break;
-
-			case '~':
-				os << "\\textasciitilde{}";
-				column += 16;
-				break;
-
-			case '^':
-				os << "\\textasciicircum{}";
-				column += 17;
-				break;
-
-			case '*': case '[': case ']':
-				// avoid being mistaken for optional arguments
-				os << '{' << c << '}';
-				column += 2;
-				break;
-
-			case ' ':
-				// Blanks are printed before font switching.
-				// Sure? I am not! (try nice-latex)
-				// I am sure it's correct. LyX might be smarter
-				// in the future, but for now, nothing wrong is
-				// written. (Asger)
-				break;
-
-			default:
-				/* idea for labels --- begin*/
-				// Check for "LyX"
-				if (c ==  'L'
-				    && i <= size() - 3
-				    && font.family() != LyXFont::TYPEWRITER_FAMILY
-				    && GetChar(i + 1) == 'y'
-				    && GetChar(i + 2) == 'X') {
-					os << "\\LyX{}";
-					i += 2;
-					column += 5;
-				}
-				// Check for "TeX"
-				else if (c == 'T'
-					 && i <= size() - 3
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && GetChar(i + 1) == 'e'
-					 && GetChar(i + 2) == 'X') {
-					os << "\\TeX{}";
-					i += 2;
-					column += 5;
-				}
-				// Check for "LaTeX2e"
-				else if (c == 'L'
-					 && i <= size() - 7
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && GetChar(i + 1) == 'a'
-					 && GetChar(i + 2) == 'T'
-					 && GetChar(i + 3) == 'e'
-					 && GetChar(i + 4) == 'X'
-					 && GetChar(i + 5) == '2'
-					 && GetChar(i + 6) == 'e') {
-					os << "\\LaTeXe{}";
-					i += 6;
-					column += 8;
-				}
-				// Check for "LaTeX"
-				else if (c == 'L'
-					 && i <= size() - 5
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && GetChar(i + 1) == 'a'
-					 && GetChar(i + 2) == 'T'
-					 && GetChar(i + 3) == 'e'
-					 && GetChar(i + 4) == 'X') {
-					os << "\\LaTeX{}";
-					i += 4;
-					column += 7;
-					/* idea for labels --- end*/ 
-				} else if (c != '\0') {
-					os << c;
-				}
-				break;
-			}
-		}
-	}
-}
-
-
-LyXParagraph * LyXParagraph::TeXDeeper(Buffer const * buf,
-				       BufferParams const & bparams,
-				       ostream & os, TexRow & texrow)
-{
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
-	LyXParagraph * par = this;
-
-	while (par && par->params.depth() == params.depth()) {
-		if (textclasslist.Style(bparams.textclass, 
-					par->layout).isEnvironment()) {
-			par = par->TeXEnvironment(buf, bparams,
-						  os, texrow);
-		} else {
-			par = par->TeXOnePar(buf, bparams,
-					     os, texrow, false);
-		}
-	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
-
-	return par;
-}
-
-
-LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
+Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 					    BufferParams const & bparams,
 					    ostream & os, TexRow & texrow)
 {
@@ -2136,7 +1708,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 	if (style.isEnvironment()){
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << "\\begin{" << style.latexname() << "}{"
-			   << params.labelWidthString() << "}\n";
+			   << params().labelWidthString() << "}\n";
 		} else if (style.labeltype == LABEL_BIBLIO) {
 			// ale970405
 			os << "\\begin{" << style.latexname() << "}{"
@@ -2150,12 +1722,12 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 			   << style.latexparam() << '\n';
 		texrow.newline();
 	}
-	LyXParagraph * par = this;
+	Paragraph * par = this;
 	do {
 		par = par->TeXOnePar(buf, bparams,
 				     os, texrow, false);
 
-		if (par && par->params.depth() > params.depth()) {
+		if (par && par->params().depth() > params().depth()) {
 			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
 			    // Thinko!
@@ -2175,11 +1747,11 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 				os << '\n';
 				texrow.newline();
 			}
-			par = par->TeXDeeper(buf, bparams, os, texrow);
+			par = par->pimpl_->TeXDeeper(buf, bparams, os, texrow);
 		}
 	} while (par
 		 && par->layout == layout
-		 && par->params.depth() == params.depth());
+		 && par->params().depth() == params().depth());
  
 	if (style.isEnvironment()) {
 		os << "\\end{" << style.latexname() << "}\n";
@@ -2190,46 +1762,46 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 }
 
 
-bool LyXParagraph::IsHfill(size_type pos) const
+bool Paragraph::isHfill(size_type pos) const
 {
-	return IsHfillChar(GetChar(pos));
+	return IsHfillChar(getChar(pos));
 }
 
 
-bool LyXParagraph::IsInset(size_type pos) const
+bool Paragraph::isInset(size_type pos) const
 {
-	return IsInsetChar(GetChar(pos));
+	return IsInsetChar(getChar(pos));
 }
 
 
-bool LyXParagraph::IsNewline(size_type pos) const
+bool Paragraph::isNewline(size_type pos) const
 {
-	return pos >= 0 && IsNewlineChar(GetChar(pos));
+	return pos >= 0 && IsNewlineChar(getChar(pos));
 }
 
 
-bool LyXParagraph::IsSeparator(size_type pos) const
+bool Paragraph::isSeparator(size_type pos) const
 {
-	return IsSeparatorChar(GetChar(pos));
+	return IsSeparatorChar(getChar(pos));
 }
 
 
-bool LyXParagraph::IsLineSeparator(size_type pos) const
+bool Paragraph::isLineSeparator(size_type pos) const
 {
-	return IsLineSeparatorChar(GetChar(pos));
+	return IsLineSeparatorChar(getChar(pos));
 }
 
 
-bool LyXParagraph::IsKomma(size_type pos) const
+bool Paragraph::isKomma(size_type pos) const
 {
-	return IsKommaChar(GetChar(pos));
+	return IsKommaChar(getChar(pos));
 }
 
 
 /// Used by the spellchecker
-bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
+bool Paragraph::isLetter(Paragraph::size_type pos) const
 {
-	value_type const c = GetChar(pos);
+	value_type const c = getChar(pos);
 	if (IsLetterChar(c))
 		return true;
 	// '\0' is not a letter, allthough every string contains "" (below)
@@ -2242,17 +1814,17 @@ bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 }
  
  
-bool LyXParagraph::IsWord(size_type pos ) const
+bool Paragraph::isWord(size_type pos ) const
 {
-	return IsWordChar(GetChar(pos)) ;
+	return IsWordChar(getChar(pos)) ;
 }
 
 
 Language const *
-LyXParagraph::getParLanguage(BufferParams const & bparams) const 
+Paragraph::getParLanguage(BufferParams const & bparams) const 
 {
 	if (size() > 0)
-		return GetFirstFontSettings().language();
+		return getFirstFontSettings().language();
 	else if (previous_)
 		return previous_->getParLanguage(bparams);
 	else
@@ -2260,31 +1832,31 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 }
 
 
-bool LyXParagraph::isRightToLeftPar(BufferParams const & bparams) const
+bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->RightToLeft();
 }
 
 
-void LyXParagraph::ChangeLanguage(BufferParams const & bparams,
+void Paragraph::changeLanguage(BufferParams const & bparams,
 				  Language const * from, Language const * to)
 {
 	for (size_type i = 0; i < size(); ++i) {
-		LyXFont font = GetFontSettings(bparams, i);
+		LyXFont font = getFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);
-			SetFont(i, font);
+			setFont(i, font);
 		}
 	}
 }
 
 
-bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
+bool Paragraph::isMultiLingual(BufferParams const & bparams)
 {
 	Language const * doc_language =	bparams.language;
-	for (FontList::const_iterator cit = fontlist.begin();
-	     cit != fontlist.end(); ++cit)
+	for (Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	     cit != pimpl_->fontlist.end(); ++cit)
 		if ((*cit).font().language() != doc_language)
 			return true;
 	return false;
@@ -2293,22 +1865,22 @@ bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string const LyXParagraph::String(Buffer const * buffer, bool label)
+string const Paragraph::asString(Buffer const * buffer, bool label)
 {
 	BufferParams const & bparams = buffer->params;
 	string s;
-	if (label && !params.labelString().empty())
-		s += params.labelString() + ' ';
+	if (label && !params().labelString().empty())
+		s += params().labelString() + ' ';
 	string::size_type const len = s.size();
 
-	for (LyXParagraph::size_type i = 0; i < size(); ++i) {
-		value_type c = GetChar(i);
+	for (Paragraph::size_type i = 0; i < size(); ++i) {
+		value_type c = getChar(i);
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET &&
-			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
+			 getInset(i)->LyxCode() == Inset::MATH_CODE) {
 			std::ostringstream ost;
-			GetInset(i)->Ascii(buffer, ost);
+			getInset(i)->Ascii(buffer, ost);
 			s += subst(ost.str().c_str(),'\n',' ');
 		}
 	}
@@ -2320,21 +1892,21 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 }
 
 
-string const LyXParagraph::String(Buffer const * buffer, 
-			    LyXParagraph::size_type beg,
-			    LyXParagraph::size_type end)
+string const Paragraph::asString(Buffer const * buffer, 
+			    Paragraph::size_type beg,
+			    Paragraph::size_type end)
 {
 	std::ostringstream ost;
 
-	if (beg == 0 && !params.labelString().empty())
-		ost << params.labelString() << ' ';
+	if (beg == 0 && !params().labelString().empty())
+		ost << params().labelString() << ' ';
 
-	for (LyXParagraph::size_type i = beg; i < end; ++i) {
-		value_type const c = GetUChar(buffer->params, i);
+	for (Paragraph::size_type i = beg; i < end; ++i) {
+		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
 			ost << c;
 		else if (c == META_INSET) {
-			GetInset(i)->Ascii(buffer, ost);
+			getInset(i)->Ascii(buffer, ost);
 		}
 	}
 
@@ -2342,9 +1914,9 @@ string const LyXParagraph::String(Buffer const * buffer,
 }
 
 
-void LyXParagraph::SetInsetOwner(Inset * i)
+void Paragraph::setInsetOwner(Inset * i)
 {
-	inset_owner = i;
+	pimpl_->inset_owner = i;
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset)
@@ -2353,7 +1925,7 @@ void LyXParagraph::SetInsetOwner(Inset * i)
 }
 
 
-void LyXParagraph::deleteInsetsLyXText(BufferView * bv)
+void Paragraph::deleteInsetsLyXText(BufferView * bv)
 {
 	// then the insets
 	for (InsetList::const_iterator cit = insetlist.begin();
@@ -2368,7 +1940,7 @@ void LyXParagraph::deleteInsetsLyXText(BufferView * bv)
 }
 
 
-void LyXParagraph::resizeInsetsLyXText(BufferView * bv)
+void Paragraph::resizeInsetsLyXText(BufferView * bv)
 {
 	// then the insets
 	for (InsetList::const_iterator cit = insetlist.begin();
@@ -2383,14 +1955,113 @@ void LyXParagraph::resizeInsetsLyXText(BufferView * bv)
 }
 
 
-void LyXParagraph::fitToSize()
+void Paragraph::setContentsFromPar(Paragraph * par)
 {
-	TextContainer tmp(text.begin(), text.end());
-	text.swap(tmp);
+	pimpl_->setContentsFromPar(par);
 }
 
 
-void LyXParagraph::setContentsFromPar(LyXParagraph * par)
+Paragraph::size_type Paragraph::size() const
 {
-	text = par->text;
+	return pimpl_->size();
+}
+
+
+Paragraph::value_type
+Paragraph::getChar(Paragraph::size_type pos) const
+{
+	return pimpl_->getChar(pos);
+}
+
+
+int Paragraph::id() const
+{
+	return pimpl_->id_;
+}
+
+
+void  Paragraph::id(int id_arg)
+{
+	pimpl_->id_ = id_arg;
+}
+
+
+LyXTextClass::size_type Paragraph::getLayout() const
+{
+	return layout;
+}
+
+
+bool Paragraph::isFirstInSequence() const
+{
+	Paragraph const * dhook = depthHook(getDepth());
+	return (dhook == this
+		|| dhook->getLayout() != getLayout()
+		|| dhook->getDepth() != getDepth());
+}
+
+
+Inset * Paragraph::InInset()
+{
+	return pimpl_->inset_owner;
+}
+
+
+void Paragraph::clearContents()
+{
+	pimpl_->clear();
+}
+
+
+void Paragraph::setCounter(int i, int v)
+{
+	pimpl_->counter_[i] = v;
+}
+
+
+int Paragraph::getCounter(int i) const
+{
+	return pimpl_->counter_[i];
+}
+
+
+void Paragraph::incCounter(int i)
+{
+	pimpl_->counter_[i]++;
+}
+
+
+void Paragraph::setChar(size_type pos, value_type c)
+{
+	pimpl_->setChar(pos, c);
+}
+
+
+Paragraph::inset_iterator::inset_iterator(Paragraph::InsetList::iterator const & iter)
+ : it(iter) 
+{
+
+}
+
+
+Paragraph::inset_iterator Paragraph::inset_iterator_begin()
+{
+	return inset_iterator(insetlist.begin());
+}
+
+
+Paragraph::inset_iterator Paragraph::inset_iterator_end()
+{
+	return inset_iterator(insetlist.end());
+}
+
+
+ParagraphParameters & Paragraph::params()
+{
+	return pimpl_->params;
+}
+
+ParagraphParameters const & Paragraph::params() const
+{
+	return pimpl_->params;
 }

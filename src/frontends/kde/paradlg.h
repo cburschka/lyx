@@ -16,7 +16,7 @@
 #include  "paraextradlg.h"
 
 #include "vspace.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 #include "debug.h"
 
 #include "dlg/paradlgdata.h"

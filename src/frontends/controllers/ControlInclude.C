@@ -19,6 +19,7 @@
 #include "ButtonControllerBase.h"
 #include "ControlInclude.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "gettext.h"

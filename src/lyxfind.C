@@ -39,8 +39,8 @@ int LyXReplace(BufferView * bv,
    // start at top if replaceall
    bool fw = forward;
    if (replaceall) {
-      bv->text->ClearSelection(bv);
-      bv->text->CursorTop(bv);
+      bv->text->clearSelection(bv);
+      bv->text->cursorTop(bv);
       // override search direction because we search top to bottom
       fw = true;
    }
@@ -58,8 +58,8 @@ int LyXReplace(BufferView * bv,
       bv->hideCursor();
       bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
       bv->toggleSelection(false);
-      bv->text->ReplaceSelectionWithString(bv, replacestr);
-      bv->text->SetSelectionOverString(bv, replacestr);
+      bv->text->replaceSelectionWithString(bv, replacestr);
+      bv->text->setSelectionOverString(bv, replacestr);
       bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       ++replace_count;
       found = LyXFind(bv, searchstr, casesens, matchwrd, fw);
@@ -95,8 +95,8 @@ bool LyXFind(BufferView * bv,
        : SearchBackward(bv, searchstr, casesens, matchwrd)) {
       bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
       bv->toggleSelection();
-      bv->text->ClearSelection(bv);
-      bv->text->SetSelectionOverString(bv, searchstr);
+      bv->text->clearSelection(bv);
+      bv->text->setSelectionOverString(bv, searchstr);
       bv->toggleSelection(false);
       found = true;
    };
@@ -109,7 +109,7 @@ bool LyXFind(BufferView * bv,
 
 
 // returns true if the specified string is at the specified position
-bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
+bool IsStringInText(Paragraph * par, Paragraph::size_type pos,
 		    string const & str, bool const & cs,
 		    bool const & mw)
 {
@@ -117,22 +117,21 @@ bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
 		return false;
    
 	string::size_type size = str.length();
-	LyXParagraph::size_type i = 0;
+	Paragraph::size_type i = 0;
 	while (((pos + i) < par->size())
 	       && (string::size_type(i) < size)
-	       && (cs ? (str[i] == par->GetChar(pos + i))
-		   : (toupper(str[i]) == toupper(par->GetChar(pos + i)))))
+	       && (cs ? (str[i] == par->getChar(pos + i))
+		   : (toupper(str[i]) == toupper(par->getChar(pos + i)))))
 	{
 		++i;
 	}
 	if (size == string::size_type(i)) {
 	  // if necessary, check whether string matches word
 	  if (!mw || 
-	      (mw && ((pos <= 0 || !IsLetterCharOrDigit(par->GetChar(pos - 1)))
-		      && (pos + size >= par->size()
-			  || !IsLetterCharOrDigit(par->GetChar(pos + size))))
-	       )
-	      )
+	      (mw && ((pos <= 0 || !IsLetterCharOrDigit(par->getChar(pos - 1)))
+		      && (pos + Paragraph::size_type(size) >= par->size()
+			  || !IsLetterCharOrDigit(par->getChar(pos + size))))
+	       ))
 	    return true;
 	}
 	return false;
@@ -144,8 +143,8 @@ bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
 bool SearchForward(BufferView * bv, string const & str,
 		   bool const & cs, bool const & mw)
 {
-	LyXParagraph * par = bv->text->cursor.par();
-	LyXParagraph::size_type pos = bv->text->cursor.pos();
+	Paragraph * par = bv->text->cursor.par();
+	Paragraph::size_type pos = bv->text->cursor.pos();
    
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
 		if (pos < par->size() - 1)
@@ -156,7 +155,7 @@ bool SearchForward(BufferView * bv, string const & str,
 		}
 	}
 	if (par) {
-		bv->text->SetCursor(bv, par, pos);
+		bv->text->setCursor(bv, par, pos);
 		return true;
 	}
 	else
@@ -170,8 +169,8 @@ bool SearchForward(BufferView * bv, string const & str,
 bool SearchBackward(BufferView * bv, string const & str,
 		    bool const & cs, bool const & mw)
 {
-	LyXParagraph * par = bv->text->cursor.par();
-	LyXParagraph::size_type pos = bv->text->cursor.pos();
+	Paragraph * par = bv->text->cursor.par();
+	Paragraph::size_type pos = bv->text->cursor.pos();
 
 	do {
 		if (pos > 0)
@@ -187,7 +186,7 @@ bool SearchBackward(BufferView * bv, string const & str,
 	} while (par && !IsStringInText(par, pos, str, cs, mw));
   
 	if (par) {
-		bv->text->SetCursor(bv, par, pos);
+		bv->text->setCursor(bv, par, pos);
 		return true;
 	} else
 		return false;

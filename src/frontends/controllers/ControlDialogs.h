@@ -49,7 +49,7 @@ protected:
 
 
 #include "LyXView.h"
-
+#include "BufferView.h"
 
 template <class Base>
 ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)

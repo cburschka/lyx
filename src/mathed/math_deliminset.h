@@ -2,7 +2,7 @@
 #ifndef MATH_DELIMINSET_H
 #define MATH_DELIMINSET_H
 
-#include "math_parinset.h"
+#include "math_inset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,26 +11,23 @@
 /** A delimiter
     \author Alejandro Aguilar Sierra
 */
-class MathDelimInset : public MathParInset {
+class MathDelimInset : public MathInset {
 public:
 	///
-	MathDelimInset(int, int, short st = LM_ST_TEXT);
+	MathDelimInset(int, int);
 	///
-	MathedInset * Clone();
+	MathInset * Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 private:
+	int dw() const;
 	///
 	int left_;
 	///
 	int right_;
-	///
-	int dw_;
-	///
-	int dh_;
 };
 #endif

@@ -14,7 +14,7 @@
  
 #include "paragraphdlg.h"
 #include "vspace.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 
 
 class FormParagraph;
@@ -35,7 +35,7 @@ public:
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
 	void setAboveLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
 	void setBelowLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
-	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, LyXParagraph::PEXTRA_TYPE);
+	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, Paragraph::PEXTRA_TYPE);
 	LyXGlueLength getAboveLength() const;
 	LyXGlueLength getBelowLength() const;
 	LyXLength getExtraWidth() const;
@@ -52,8 +52,8 @@ public:
 	bool getNoIndent() const;
 	VSpace::vspace_kind getSpaceAboveKind() const;
 	VSpace::vspace_kind getSpaceBelowKind() const;
-	LyXParagraph::PEXTRA_TYPE getExtraType() const;
-	LyXParagraph::MINIPAGE_ALIGNMENT getExtraAlign() const;
+	Paragraph::PEXTRA_TYPE getExtraType() const;
+	Paragraph::MINIPAGE_ALIGNMENT getExtraAlign() const;
 	bool getHfillBetween() const;
 	bool getStartNewMinipage() const;
 	

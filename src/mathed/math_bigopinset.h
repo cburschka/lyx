@@ -2,24 +2,23 @@
 #ifndef MATH_BIGOPINSET_H
 #define MATH_BIGOPINSET_H
 
-#include "math_inset.h"
-#include "math_defs.h"
+#include "math_scriptinset.h"
 
 /// big operators
-class MathBigopInset : public MathedInset {
+class MathBigopInset : public MathInset {
 public:
 	///
-	MathBigopInset(string const &, int, short st = LM_ST_TEXT);
+	MathBigopInset(string const &, int);
 	///
-	MathedInset * Clone();
+	MathInset * Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	bool GetLimits() const;
 	///

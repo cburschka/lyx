@@ -23,31 +23,31 @@ LyXCursor::LyXCursor() : par_(0), pos_(0), boundary_(false),
 }
 
 
-void LyXCursor::par(LyXParagraph * p) 
+void LyXCursor::par(Paragraph * p) 
 {
 	par_ = p;
 }
 
 
-LyXParagraph * LyXCursor::par()
+Paragraph * LyXCursor::par()
 {
 	return par_;
 }
 
 
-LyXParagraph * LyXCursor::par() const
+Paragraph * LyXCursor::par() const
 {
 	return par_;
 }
 
 
-void LyXCursor::pos(LyXParagraph::size_type p)
+void LyXCursor::pos(Paragraph::size_type p)
 {
 	pos_ = p;
 }
 
 
-LyXParagraph::size_type LyXCursor::pos() const
+Paragraph::size_type LyXCursor::pos() const
 {
 	return pos_;
 }

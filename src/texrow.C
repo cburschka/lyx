@@ -17,7 +17,7 @@
 #endif
 
 #include "texrow.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 #include "debug.h"
 
 using std::find_if;
@@ -34,7 +34,7 @@ void TexRow::reset()
 
 
 // Defines paragraph and position for the beginning of this row
-void TexRow::start(LyXParagraph * par, int pos)
+void TexRow::start(Paragraph * par, int pos)
 {
 	lastpar = par;
 	lastpos = pos;

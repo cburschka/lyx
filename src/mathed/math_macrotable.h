@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATHMACROTABLE
-#define MATHMACROTABLE
+#ifndef MATH_MACROTABLE_H
+#define MATH_MACROTABLE_H
 
 #include <map>
 #include "LString.h"
@@ -17,7 +17,9 @@ class MathMacroTemplate;
 struct MathMacroTable {
 public:
 	///
-	static MathMacroTemplate & provideTemplate(string const &, int);
+	static void updateTemplate(MathMacroTemplate *);
+	///
+	static void insertTemplate(MathMacroTemplate *);
 	///
 	static MathMacroTemplate & provideTemplate(string const &);
 	///
@@ -28,11 +30,10 @@ private:
 	///
 	static void builtinMacros();
 	///
-	static bool built;
-	///
 	typedef std::map<string, MathMacroTemplate *> table_type;
 	//
 	static table_type macro_table;
+public:
 	///
 	static void dump();
 };

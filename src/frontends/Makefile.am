@@ -34,10 +34,9 @@ libfrontends_la_SOURCES=\
 	Toolbar.C \
 	Toolbar.h
 
-EXTRA_DIST = kde qt2 gnome
+EXTRA_DIST = qt2 gnome
 
 dist-hook:
 	@cd $(distdir) ; \
-	rm -rf `find kde -name \*CVS\*`; \
 	rm -rf `find qt2 -name \*CVS\*`; \
 	rm -rf `find gnome -name \*CVS\*`

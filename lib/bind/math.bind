@@ -47,6 +47,25 @@
 \bind "M-m 8"			"math-insert infty"
 \bind "M-m v"			"accent-vector"
 
+\bind "M-m t t"   "math-mutate dump"
+\bind "M-m t a"   "math-mutate align"
+\bind "M-m t i"   "math-mutate inline"
+\bind "M-m t d"   "math-mutate display"
+\bind "M-m t e"   "math-mutate eqnarray"
+
+\bind "M-m c i"   "math-column-insert"
+\bind "M-m c d"   "math-column-delete"
+
+\bind "M-m w i"   "math-row-insert"
+\bind "M-m w d"   "math-row-delete"
+
+\bind "M-m a v t"   "math-valign top"
+\bind "M-m a v c"   "math-valign center"
+\bind "M-m a v b"   "math-valign bottom"
+\bind "M-m a h l"   "math-halign left"
+\bind "M-m a h c"   "math-halign center"
+\bind "M-m a h r"   "math-halign right"
+
 # The accent-circumflex is 'h' for 'hat', which is what most math
 # folks call it verbally.
 

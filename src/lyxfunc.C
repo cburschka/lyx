@@ -19,7 +19,6 @@
 
 #include <cstdlib>
 #include <cctype>
-//#include <cstring>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -30,6 +29,7 @@
 #include "kbmap.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
+#include "BufferView.h"
 #include "ColorHandler.h"
 #include "lyxserver.h"
 #include "figure_form.h"
@@ -181,7 +181,7 @@ inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
 	if (selecting || TEXT(flag)->selection.mark()) {
-		TEXT(flag)->SetSelection(owner->view());
+		TEXT(flag)->setSelection(owner->view());
 		if (TEXT(flag)->bv_owner)
 		    owner->view()->toggleToggle();
 	}
@@ -190,7 +190,6 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
-	//owner->showState();
 	owner->view()->setState();
 }
 
@@ -232,8 +231,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (keysym == NoSymbol) {
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
 				   << endl;
-		//return 0;
-		//return FL_PREEMPT;
 		return;
 	}
 
@@ -243,7 +240,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// all of them should be explictly mentioned?
 	if ((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
 	    || keysym == XK_Mode_switch || keysym == 0x0) {
-		//return 0;
 		return;
 	}
 	
@@ -312,7 +308,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		}
 		if (action == -1) {
 			owner->message(_("Unknown function."));
-			//return 0;
 			return;
 		}
 	}
@@ -364,12 +359,12 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 LyXFunc::func_status LyXFunc::getStatus(int ac,
 					string const & not_to_use_arg) const
 {
-        kb_action action;
-        func_status flag = LyXFunc::OK;
-        string argument;
-        Buffer * buf = owner->buffer();
+	kb_action action;
+	func_status flag = LyXFunc::OK;
+	string argument;
+	Buffer * buf = owner->buffer();
 	
- 	if (lyxaction.isPseudoAction(ac)) 
+	if (lyxaction.isPseudoAction(ac)) 
 		action = lyxaction.retrieveActionArg(ac, argument);
 	else {
 		action = static_cast<kb_action>(ac);
@@ -539,7 +534,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 // temporary dispatch method
 void LyXFunc::miniDispatch(string const & s) 
 {
-	Dispatch(s);
+	if (!s.empty()) {
+		Dispatch(s);
+	}
 }
 
 
@@ -548,7 +545,7 @@ string const LyXFunc::Dispatch(string const & s)
 	// Split command string into command and argument
 	string cmd;
 	string line = frontStrip(s);
-	string arg = strip(frontStrip(split(line, cmd, ' ')));
+	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
 	return Dispatch(lyxaction.LookupFunc(cmd), arg);
 }
@@ -657,10 +654,10 @@ string const LyXFunc::Dispatch(int ac,
 				owner->view()->unlockInset(inset);
 				owner->view()->menuUndo();
 				if (TEXT()->cursor.par()->
-				    IsInset(TEXT()->cursor.pos())) {
+				    isInset(TEXT()->cursor.pos())) {
 					inset = static_cast<UpdatableInset*>(
 						TEXT()->cursor.par()->
-						GetInset(TEXT()->
+						getInset(TEXT()->
 							 cursor.pos()));
 				} else {
 					inset = 0;
@@ -678,7 +675,7 @@ string const LyXFunc::Dispatch(int ac,
 				owner->view()->menuRedo();
 				inset = static_cast<UpdatableInset*>(
 					TEXT()->cursor.par()->
-					GetInset(TEXT()->
+					getInset(TEXT()->
 						 cursor.pos()));
 				if (inset)
 					inset->Edit(owner->view(),slx,sly,0); 
@@ -695,29 +692,29 @@ string const LyXFunc::Dispatch(int ac,
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
-					TEXT()->CursorRight(owner->view());
+					TEXT()->cursorRight(owner->view());
 					owner->view()->setState();
 					owner->showState();
 					break;
 				case LFUN_RIGHT:
 					if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->CursorRight(owner->view());
+						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
 						owner->showState();
 					}
 					return string();
 				case LFUN_LEFT: 
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->CursorRight(owner->view());
+						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
 						owner->showState();
 					}
 					return string();
 				case LFUN_DOWN:
 					if (TEXT()->cursor.row()->next())
-						TEXT()->CursorDown(owner->view());
+						TEXT()->cursorDown(owner->view());
 					else
-						TEXT()->CursorRight(owner->view());
+						TEXT()->cursorRight(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
 					return string();
@@ -744,7 +741,7 @@ string const LyXFunc::Dispatch(int ac,
 			
 			if (tli == lock) {
 				owner->view()->unlockInset(tli);
-				TEXT()->CursorRight(owner->view());
+				TEXT()->cursorRight(owner->view());
 				moveCursorUpdate(true, false);
 				owner->showState();
 			} else {
@@ -780,12 +777,12 @@ string const LyXFunc::Dispatch(int ac,
 			// ??? Needed ???
 			// clear the selection (if there is any) 
 			owner->view()->toggleSelection();
-			TEXT()->ClearSelection(owner->view());
+			TEXT()->clearSelection(owner->view());
 
 			// Move cursor so that successive C-s 's will not stand in place. 
 			if (action == LFUN_WORDFINDFORWARD ) 
-				TEXT()->CursorRightOneWord(owner->view());
-			TEXT()->FinishUndo();
+				TEXT()->cursorRightOneWord(owner->view());
+			TEXT()->finishUndo();
 			moveCursorUpdate(true, false);
 
 			// ??? Needed ???
@@ -1247,12 +1244,12 @@ string const LyXFunc::Dispatch(int ac,
 
 		int id;
 		istr >> id;
-		LyXParagraph * par = TEXT()->GetParFromID(id);
+		Paragraph * par = TEXT()->getParFromID(id);
 		if (par == 0)
 			break;
 
 		// Set the cursor
-		TEXT()->SetCursor(owner->view(), par, 0);
+		TEXT()->setCursor(owner->view(), par, 0);
 		owner->view()->setState();
 		owner->showState();
 
@@ -1328,6 +1325,7 @@ string const LyXFunc::Dispatch(int ac,
 	
 	case LFUN_MATH_EXTERN:
 	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_LIMITS:
 	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
@@ -1424,8 +1422,8 @@ string const LyXFunc::Dispatch(int ac,
 		fontloader.update();
 		// Of course we should only do the resize and the textcache.clear
 		// if values really changed...but not very important right now. (Lgb)
-		// All buffers will need resize
-		bufferlist.resize();
+		// All visible buffers will need resize
+		owner->resize();
 		// We also need to empty the textcache so that
 		// the buffer will be formatted correctly after
 		// a zoom change.
@@ -1610,7 +1608,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				  string(lyxrc.template_path)));
 
 		FileDialog::Result result =
-			fileDlg.Select(initpath,
+			fileDlg.Select(lyxrc.template_path,
 				       _("*.lyx|LyX Documents (*.lyx)"));
 	
 		if (result.first == FileDialog::Later)

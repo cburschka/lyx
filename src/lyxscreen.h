@@ -50,6 +50,9 @@ public:
 	///
 	LyXScreen(WorkArea &);
 
+	///
+	~LyXScreen();
+ 
 	/// Sets the cursor color to LColor::cursor.
 	void setCursorColor();
 	

@@ -11,7 +11,7 @@
 #include "LString.h"
 #include "buffer.h"
 #include "LaTeXFeatures.h"
-#include "insets/lyxinset.h"
+#include "insets/inset.h"
 #include <sigc++/signal_system.h>
 /* the rest is figure stuff */
 

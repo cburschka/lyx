@@ -441,6 +441,10 @@ public:
 	lyxstring & replace(size_type i, size_type n,
 			    size_type n2, value_type c);
 
+	/// FY! FY! FY! go away !
+	lyxstring & replace(size_type i, size_type n,
+			    value_type c);
+
 	///
 	lyxstring & replace(iterator i, iterator i2, const lyxstring & str);
 

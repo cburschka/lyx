@@ -289,13 +289,13 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 	
 	for (string::size_type i = 0; i < l; ++i) {
 		if (str[i] == '\"' 
-		    && text->GetFont(current_view->buffer(),text->cursor.par(),
+		    && text->getFont(current_view->buffer(),text->cursor.par(),
 				     text->cursor.pos()).latex() == LyXFont::OFF
-		    && text->GetFont(current_view->buffer(),text->cursor.par(),
+		    && text->getFont(current_view->buffer(),text->cursor.par(),
 				     text->cursor.pos()).language()->lang() != "hebrew")
 			current_view->insertCorrectQuote();
 		else
-			text->InsertChar(current_view, str[i]);
+			text->insertChar(current_view, str[i]);
 	}
 }
 
@@ -314,7 +314,7 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.CanDisplay()) {
-			text->InsertInset(current_view, new InsetLatexAccent(ins));
+			text->insertInset(current_view, new InsetLatexAccent(ins));
 		} else {
 			insertVerbatim(str, text);
 		}

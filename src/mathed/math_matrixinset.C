@@ -5,133 +5,108 @@
 #endif
 
 #include "math_matrixinset.h"
-#include "math_rowst.h"
-#include "math_xiter.h"
+#include "debug.h"
 #include "support/LOstream.h"
+#include "Painter.h"
+#include "LaTeXFeatures.h"
 
-using std::ostream;
 
-extern int number_of_newlines;
+LyXFont WhichFont(short type, int size);
 
-MathMatrixInset::MathMatrixInset(int m, int n, short st)
-	: MathParInset(st, "array", LM_OT_MATRIX), nc_(m), nr_(0), ws_(m),
-	  v_align_(0), h_align_(nc_, 'c')
+namespace {
+
+string getAlign(short int type, int cols)
 {
-	flag = 15;
-	if (n > 0) {
-		MathedXIter it(this);
-		for (int j = 1; j < n; ++j)
-			it.addRow();
-		nr_ = n;
-		if (nr_ == 1 && nc_ > 1) {
-			for (int j = 0; j < nc_ - 1; ++j) 
-				it.insert('T', LM_TC_TAB);
-		}
-	} else if (n < 0) {
-		MathedXIter it(this);
-		it.addRow();
-		nr_ = 1;
+	string align;
+	switch (type) {
+		case LM_OT_ALIGN:
+			for (int i = 0; i < cols; ++i)
+				align += "Rl";
+			break;
+
+		case LM_OT_ALIGNAT:
+			for (int i = 0; i < cols; ++i)
+				align += "rl";
+			break;
+
+		case LM_OT_MULTLINE:
+			align = "C";
+			break;
+
+		default:
+			align = "rcl";
+			break;
 	}
+	return align;
 }
 
 
-MathedInset * MathMatrixInset::Clone()
+string star(bool n)
+{
+	return n ? "" : "*";
+}
+
+int getCols(short int type)
+{
+	int col;
+	switch (type) {
+		case LM_OT_EQNARRAY:
+			col = 3;
+			break;
+
+		case LM_OT_ALIGN:
+		case LM_OT_ALIGNAT:
+			col = 2;
+			break;
+
+		default:
+			col = 1;
+	}
+	return col;
+}
+
+}
+
+MathMatrixInset::MathMatrixInset(MathInsetTypes t)
+	: MathGridInset(getCols(t), 1, "formula", t), nonum_(1), label_(1)
+{}
+
+
+MathMatrixInset::MathMatrixInset()
+	: MathGridInset(1, 1, "formula", LM_OT_SIMPLE), nonum_(1), label_(1)
+{}
+
+MathInset * MathMatrixInset::Clone() const
 {
 	return new MathMatrixInset(*this);
 }
 
 
-void MathMatrixInset::SetAlign(char vv, string const & hh)
+void MathMatrixInset::Metrics(MathStyles st)
 {
-	v_align_ = vv;
-	h_align_ = hh.substr(0, nc_); // usr just h_align = hh; perhaps
-}
+	size_ = st;
+	//LyXFont wfont = WhichFont(LM_TC_BF, size());
+	//wfont.setLatex(LyXFont::OFF);
 
+	// let the cells adjust themselves
+	MathGridInset::Metrics(st);
 
-// Check the number of tabs and crs
-void MathMatrixInset::setData(MathedArray const & a)
-{
-	array = a;
+	if (display()) {
+		ascent_  += 12;
+		descent_ += 12;
+	}	
 
-	MathedIter it(&array);
-	int nn = nc_ - 1;
-	nr_ = 1;
-	// count tabs per row
-	while (it.OK()) {
-		if (it.IsTab()) {
-			if (nn < 0) { 
-				it.Delete();
-				continue;
-			} else {
-				// it.Next();
-				--nn;
-			}
-		}
-		if (it.IsCR()) {
-			while (nn > 0) {
-				it.insert(' ', LM_TC_TAB);
-				--nn;
-			}
-			nn = nc_ - 1;
-			++nr_;
-		}
-		it.Next();
-	}
-	it.Reset();
-	
-	// Automatically inserts tabs around bops
-	// DISABLED because it's very easy to insert tabs 
-}
+	if (numberedType()) {
+		int l = 0;
+		for (int row = 0; row < nrows(); ++row)
+			l = max(l, mathed_string_width(LM_TC_TEXTRM, size(), nicelabel(row)));
 
-
-void MathMatrixInset::draw(Painter & pain, int x, int baseline)
-{
-	MathParInset::draw(pain, x, baseline);
-}
-
-
-
-void MathMatrixInset::Metrics()
-{
-	// Adjust row structure
-	MathedXIter it(this);
-	it.GoBegin();
-	int nrows = 1;
-	while (it.OK()) {
-		if (it.IsCR()) {
-			++nrows;
-			if (it.col >= it.ncols)
-				it.ncols = it.col + 1; 
-		}   
-		it.Next();	
-	}
-	row_.data_.resize(nrows);
-	
-	// Clean the arrays      
-	for (MathedRowContainer::iterator it = row_.begin(); it; ++it)
-		for (int i = 0; i <= nc_; ++i)
-			it->setTab(i, 0);
-	
-	// Basic metrics
-	MathParInset::Metrics();
-
-	MathedRowContainer::iterator cxrow = row_.begin();
-	if (nc_ <= 1 && cxrow.is_last()) {
-		cxrow->ascent(ascent);
-		cxrow->descent(descent);
+		if (l)
+			width_ += 30 + l;
 	}
 	
-	// Vertical positions of each row
-	MathedRowContainer::iterator cprow = cxrow;
-	int h = 0;
-	for ( ; cxrow; ++cxrow) {
-		for (int i = 0; i < nc_; ++i) {
-			if (cxrow == row_.begin() || ws_[i] < cxrow->getTab(i))
-				ws_[i] = cxrow->getTab(i);
-			if (cxrow.is_last() && ws_[i] == 0)
-				ws_[i] = df_width;
-		}
-		
+/*	
+	{
 		cxrow->setBaseline((cxrow == row_.begin()) ?
 				   cxrow->ascent() :
 				   cxrow->ascent() + cprow->descent()
@@ -140,7 +115,7 @@ void MathMatrixInset::Metrics()
 		cprow = cxrow;
 	}
 	
-	int const hl = Descent();
+	int const hl = descent();
 	h -= MATH_ROWSEP;
 	
 	//  Compute vertical align
@@ -152,7 +127,7 @@ void MathMatrixInset::Metrics()
 		ascent = h - hl;
 		break;
 	default:
-		ascent = (row_.begin().is_last()) ? h / 2 : h - hl;
+		ascent = row_.begin().is_last() ? h / 2 : h - hl;
 		break;
 	}
 	descent = h - ascent + 2;
@@ -163,77 +138,434 @@ void MathMatrixInset::Metrics()
 			ws_[i] += 10 * df_width;
 	// Increase ws_[i] for 'C' column
 	if (h_align_[0] == 'C')
-		if (ws_[0] < 7 * workWidth / 8)
-			ws_[0] = 7 * workWidth / 8;
+		if (ws_[0] < 7 * workwidth / 8)
+			ws_[0] = 7 * workwidth / 8;
 	
-	// Adjust local tabs
-	width = MATH_COLSEP;
-	for (cxrow = row_.begin(); cxrow; ++cxrow) {   
-		int rg = MATH_COLSEP;
-		int lf = 0;
-		for (int i = 0; i < nc_; ++i) {
-			bool isvoid = false;
-			if (cxrow->getTab(i) <= 0) {
-				cxrow->setTab(i, df_width);
-				isvoid = true;
-			}
-			switch (h_align_[i]) {
-			case 'l':
-				lf = 0;
-				break;
-			case 'c':
-				lf = (ws_[i] - cxrow->getTab(i))/2; 
-				break;
-			case 'r':
-			case 'R':
-				lf = ws_[i] - cxrow->getTab(i);
-				break;
-			case 'C':
-				if (cxrow == row_.begin())
-					lf = 0;
-				else if (cxrow.is_last())
-					lf = ws_[i] - cxrow->getTab(i);
-				else
-					lf = (ws_[i] - cxrow->getTab(i))/2; 
-				break;
-			}
-			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
-			cxrow->setTab(i, lf + rg);
-			rg = ws_[i] - ww + MATH_COLSEP;
-			if (cxrow == row_.begin())
-				width += ws_[i] + MATH_COLSEP;
-		}
-		cxrow->setBaseline(cxrow->getBaseline() - ascent);
+*/
+
+}
+
+void MathMatrixInset::draw(Painter & pain, int x, int y)
+{
+	xo(x);
+	yo(y);
+
+	MathGridInset::draw(pain, x, y);
+
+	if (numberedType()) {
+		LyXFont wfont = WhichFont(LM_TC_BF, size());
+		wfont.setLatex(LyXFont::OFF);
+		int xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
+		for (int row = 0; row < nrows(); ++row) 
+			pain.text(xx, y + rowinfo_[row].offset_, nicelabel(row), wfont);
 	}
 }
 
 
-void MathMatrixInset::Write(ostream & os, bool fragile)
+void MathMatrixInset::Write(std::ostream & os, bool fragile) const
 {
-	if (GetType() == LM_OT_MATRIX) {
-		if (fragile)
-			os << "\\protect";
-		os << "\\begin{"
-		   << name
-		   << '}';
-		if (v_align_ == 't' || v_align_ == 'b') {
-			os << '['
-			   << char(v_align_)
-			   << ']';
+  header_write(os);
+
+	bool n = numberedType();
+
+	for (int row = 0; row < nrows(); ++row) {
+		if (row)
+			os << " \\\\\n";
+		for (int col = 0; col < ncols(); ++col) {
+			if (col)
+				os << " & ";
+			cell(index(row, col)).Write(os, fragile);
 		}
-		os << '{'
-		   << h_align_
-		   << "}\n";
-		++number_of_newlines;
+		if (n) {
+			if (!label_[row].empty())
+				os << "\\label{" << label_[row] << "}";
+			if (nonum_[row])
+				os << "\\nonumber ";
+		}
 	}
-	MathParInset::Write(os, fragile);
-	if (GetType() == LM_OT_MATRIX){
-		os << "\n";
-		if (fragile)
-			os << "\\protect";
-		os << "\\end{"
-		   << name
-		   << '}';
-		++number_of_newlines;
+
+  footer_write(os);
+}
+
+
+string MathMatrixInset::label(int row) const
+{
+	return label_[row];
+}
+
+void MathMatrixInset::label(int row, string const & label)
+{
+	label_[row] = label; 
+}
+
+
+void MathMatrixInset::numbered(int row, bool num)
+{
+	nonum_[row] = !num; 
+}
+
+
+bool MathMatrixInset::numbered(int row) const
+{
+	return !nonum_[row];
+}
+
+
+bool MathMatrixInset::ams() const
+{
+	return true;
+}
+
+
+bool MathMatrixInset::display() const
+{
+	return GetType() != LM_OT_SIMPLE;
+}
+
+
+vector<string> const MathMatrixInset::getLabelList() const
+{
+	std::vector<string> res;
+	for (int row = 0; row < nrows(); ++row)
+		if (!label_[row].empty() && nonum_[row] != 1)
+			res.push_back(label_[row]);
+	return res;
+}
+
+
+bool MathMatrixInset::numberedType() const
+{
+	if (GetType() == LM_OT_SIMPLE)
+		return false;
+	for (int row = 0; row < nrows(); ++row)
+		if (!nonum_[row])
+			return true;
+	return false;
+}
+
+
+void MathMatrixInset::Validate(LaTeXFeatures & features)
+{
+	features.amsstyle = ams();
+
+	// Validation is necessary only if not using AMS math.
+	// To be safe, we will always run mathedValidate.
+	//if (features.amsstyle)
+	//  return;
+
+	//Validate1(features);
+
+	features.boldsymbol = true;
+	features.binom      = true;
+}
+
+/*
+void MathMatrixInset::Validate1(LaTeXFeatures & features)
+{
+	MathIter it(cell());
+
+	while (it.OK() && !(features.binom && features.boldsymbol)) {
+		MathInset * p = it.GetInset();
+		if (p) {
+			p = it.GetActiveInset();
+			if (p) {
+				if (!features.binom && p->GetType() == LM_OT_MACRO &&
+				    p->name() == "binom") {
+					features.binom = true;
+				} else {
+					for (int i = 0; i <= p->getMaxArgumentIdx(); ++i) {
+						p->setArgumentIdx(i);
+						Validate1(features, p);
+					}
+				}
+			} else {
+				if (!features.boldsymbol && p->name() == "boldsymbol") 
+					features.boldsymbol = true;
+			}
+		}
+		it.Next();
+	}
+}
+*/
+
+
+void MathMatrixInset::header_write(ostream & os) const
+{
+	bool n = numberedType();
+
+	switch (GetType()) {
+		case LM_OT_SIMPLE:
+			os << "\\("; 
+			break;
+
+		case LM_OT_EQUATION:
+			if (n)
+				os << "\\begin{equation" << star(n) << "}\n"; 
+			else
+				os << "\\[\n"; 
+			break;
+
+		case LM_OT_EQNARRAY:
+			os << "\\begin{eqnarray" << star(n) << "}\n";
+			break;
+
+		case LM_OT_ALIGN:
+			os << "\\begin{align" << star(n) << "}";
+			break;
+
+		case LM_OT_ALIGNAT:
+			os << "\\begin{alignat" << star(n) << "}"
+			   << "{" << ncols()/2 << "}\n";
+			break;
+	}
+}
+
+
+void MathMatrixInset::footer_write(ostream & os) const
+{
+	bool n = numberedType();
+
+	switch (GetType()) {
+		case LM_OT_SIMPLE:
+			os << "\\)";
+			break;
+
+		case LM_OT_EQUATION:
+			if (n)
+				os << "\\end{equation" << star(n) << "}\n"; 
+			else
+				os << "\\]\n"; 
+			break;
+
+		case LM_OT_EQNARRAY:
+			os << "\\end{eqnarray" << star(n) << "}\n";
+			break;
+
+		case LM_OT_ALIGN:
+			os << "\\end{align" << star(n) << "}\n";
+			break;
+
+		case LM_OT_ALIGNAT:
+			os << "\\end{alignat" << star(n) << "}\n";
+			break;
+	}
+}
+
+
+void MathMatrixInset::addRow(int row) 
+{
+	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
+	label_.insert(label_.begin() + row + 1, string());
+	MathGridInset::addRow(row);
+}
+
+void MathMatrixInset::appendRow()
+{
+	nonum_.push_back(!numberedType());
+	label_.push_back(string());
+	MathGridInset::appendRow();
+}
+
+
+void MathMatrixInset::delRow(int row) 
+{
+	MathGridInset::delRow(row);
+	nonum_.erase(nonum_.begin() + row);
+	label_.erase(label_.begin() + row);
+}
+
+void MathMatrixInset::addCol(int col)
+{
+	switch (GetType()) {
+		case LM_OT_EQUATION:
+			mutate(LM_OT_EQNARRAY);
+			break;
+
+		case LM_OT_EQNARRAY:
+			mutate(LM_OT_ALIGN);
+			addCol(col);
+			break;
+
+		case LM_OT_ALIGN:
+		case LM_OT_ALIGNAT:
+			MathGridInset::addCol(col);
+			halign(col, 'l');
+			MathGridInset::addCol(col);
+			halign(col, 'r');
+			break;
+
+		default:
+			break;
+	}
+}
+
+void MathMatrixInset::delCol(int col)
+{
+	switch (GetType()) {
+		case LM_OT_ALIGN:
+			MathGridInset::delCol(col);
+			break;
+
+		default:
+			break;
+	}
+}
+
+void MathMatrixInset::breakLine() 
+{
+	if (GetType() == LM_OT_SIMPLE || GetType() == LM_OT_EQUATION) 
+		mutate(LM_OT_EQNARRAY);
+	addRow(nrows() - 1);
+}
+
+
+void MathMatrixInset::splitCell(int idx)
+{
+	if (idx == nargs() - 1) {
+		lyxerr << "can't split last cell\n";
+		return;
+	}
+
+	lyxerr << "unimplemented\n";
+}
+
+
+string MathMatrixInset::nicelabel(int row) const
+{
+	if (nonum_[row])
+		return string();
+	if (label_[row].empty())
+		return string("(#)");
+	return "(" + label_[row] + ")";
+}
+
+
+namespace {
+	short typecode(string const & s)
+	{
+		if (s == "equation")
+			return LM_OT_EQUATION;
+		if (s == "display")
+			return LM_OT_EQUATION;
+		if (s == "eqnarray")
+			return LM_OT_EQNARRAY;
+		if (s == "align")
+			return LM_OT_ALIGN;
+		if (s == "xalign")
+			return LM_OT_XALIGN;
+		if (s == "xxalign")
+			return LM_OT_XXALIGN;
+		if (s == "multline")
+			return LM_OT_MULTLINE;
+		return LM_OT_SIMPLE;
+	}	
+}
+
+void MathMatrixInset::mutate(string const & newtype)
+{
+	if (newtype == "dump") {
+		dump();
+		return;
+	}
+	//lyxerr << "mutating from '" << GetType() << "' to '" << newtype << "'\n";
+	mutate(typecode(newtype));
+}
+
+void MathMatrixInset::glueall()
+{
+	MathArray ar;
+	for (int i = 0; i < nargs(); ++i)
+		ar.push_back(cell(i));
+	*this = MathMatrixInset(LM_OT_SIMPLE);
+	cell(0) = ar;
+}
+
+void MathMatrixInset::mutate(short newtype)
+{
+	//lyxerr << "mutating from '" << GetType() << "' to '" << newtype << "'\n";
+
+	if (newtype == GetType())
+		return;
+
+	switch (GetType()) {
+		case LM_OT_SIMPLE:
+			SetType(LM_OT_EQUATION);
+			numbered(false);
+			mutate(newtype);
+			break;
+
+		case LM_OT_EQUATION:
+			switch (newtype) {
+				case LM_OT_SIMPLE:
+					SetType(LM_OT_SIMPLE);
+					break;
+
+				case LM_OT_ALIGN:
+					MathGridInset::addCol(1);
+					halign("rl");
+					SetType(LM_OT_ALIGN);
+					break;
+
+				default:
+					MathGridInset::addCol(1);
+					MathGridInset::addCol(1);
+					halign("rcl");
+					SetType(LM_OT_EQNARRAY);
+					mutate(newtype);
+					break;
+				}
+			break;
+
+		case LM_OT_EQNARRAY:
+			switch (newtype) {
+				case LM_OT_SIMPLE:
+					glueall();
+					break;
+
+				case LM_OT_EQUATION:
+					if (nrows() == 1) {
+						MathGridInset::delCol(2);
+						MathGridInset::delCol(1);
+						SetType(LM_OT_EQUATION);
+						mutate(newtype);
+					} else 
+						lyxerr << "need to delete rows first\n";
+					break;
+
+				case LM_OT_ALIGN:
+				default:
+					for (int row = 0; row < nrows(); ++row) {
+						int c = 3 * row + 1;
+						cell(c).push_back(cell(c + 1));
+					}
+					MathGridInset::delCol(2);
+					SetType(LM_OT_ALIGN);
+					halign("rl");
+					mutate(newtype);
+					break;
+			}
+			break;
+
+		case LM_OT_ALIGN:
+			switch (newtype) {
+				case LM_OT_SIMPLE:
+				case LM_OT_EQUATION:
+				case LM_OT_EQNARRAY:
+					MathGridInset::addCol(1);
+					SetType(LM_OT_EQNARRAY);
+					halign("lrl");
+					mutate(newtype);
+					break;
+				
+				default:
+					lyxerr << "mutation from '" << GetType()
+						<< "' to '" << newtype << "' not implemented\n";
+					break;
+			}
+			break;
+
+		default:
+			lyxerr << "mutation from '" << GetType()
+				<< "' to '" << newtype << "' not implemented\n";
 	}
 }

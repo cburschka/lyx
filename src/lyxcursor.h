@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "lyxparagraph.h"
+#include "paragraph.h"
 
 struct Row;
 
@@ -26,15 +26,15 @@ class LyXCursor {
 public:
 	LyXCursor();
 	///
-	void par(LyXParagraph * p);
+	void par(Paragraph * p);
 	///
-	LyXParagraph * par();
+	Paragraph * par();
 	///
-	LyXParagraph * par() const;
+	Paragraph * par() const;
 	///
-	void pos(LyXParagraph::size_type p);
+	void pos(Paragraph::size_type p);
 	///
-	LyXParagraph::size_type pos() const;
+	Paragraph::size_type pos() const;
 	///
 	void boundary(bool b);
 	///
@@ -59,9 +59,9 @@ public:
 	Row * row() const;
 private:
 	/// The paragraph the cursor is in.
-	LyXParagraph * par_;
+	Paragraph * par_;
 	/// The position inside the paragraph
-	LyXParagraph::size_type pos_;
+	Paragraph::size_type pos_;
 	///
 	bool boundary_;
 	///

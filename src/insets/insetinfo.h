@@ -16,9 +16,10 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include FORMS_H_LOCATION
 #include "LString.h"
+#include "lyxfont.h"
 
 /** Info. Handles the note insets.
   

@@ -10,7 +10,7 @@
  *
  *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
  *
- *   Version: 0.8beta, Mathed & Lyx project.
+ *   Version: 0.8beta, Math & Lyx project.
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
@@ -24,34 +24,9 @@
 #pragma interface
 #endif
 
-#include <iosfwd>
-
-#include "LString.h"
-
-///
-enum math_align {
-	///
-	MATH_ALIGN_LEFT = 1,
-	///
-	MATH_ALIGN_RIGHT = 2,
-	///
-	MATH_ALIGN_BOTTOM = 4,
-	///
-	MATH_ALIGN_TOP = 8
-};
-
-namespace {
-
-///
-int const MATH_COLSEP = 8;
-///
-int const MATH_ROWSEP = 8;
-
-} // namespace anon
-
 
 /// Standard Math Sizes (Math mode styles)
-enum MathedStyles {
+enum MathStyles {
 	///
 	LM_ST_DISPLAY = 0,
 	///
@@ -65,17 +40,13 @@ enum MathedStyles {
 
 /** The restrictions of a standard LaTeX math paragraph
   allows to get a small number of text codes (<30) */
-enum MathedTextCodes  {
+enum MathTextCodes  {
 	/// This must be >= 0
 	LM_TC_MIN = 0,
 	/// Open and Close group
 	LM_TC_OPEN,
 	///
 	LM_TC_CLOSE,
-	/// Tabulator
-	LM_TC_TAB,
-	/// New line
-	LM_TC_CR,
 	/// Math Inset
 	LM_TC_INSET,
 	/// Super and sub scripts
@@ -88,7 +59,7 @@ enum MathedTextCodes  {
 	LM_TC_TEXT_INSET,
 	///
 	LM_FONT_BEGIN,
-	/// Internal code for constants
+	/// Internal code for constants  11
 	LM_TC_CONST,
 	/// Internal code for variables
 	LM_TC_VAR,
@@ -106,11 +77,11 @@ enum MathedTextCodes  {
 	LM_TC_IT,
 	///
 	LM_TC_TEXTRM,
-	/// Math mode TeX characters ",;:{}"
+	/// Math mode TeX characters ",;:{}"  20
 	LM_TC_TEX,
 	/// Special characters "{}&#_%"
 	LM_TC_SPECIAL,
-	/// Internal code for operators
+	/// Internal code for operators  22
 	LM_TC_BOP,
 	/// Internal code for symbols
 	LM_TC_SYMB,
@@ -125,34 +96,25 @@ enum MathedTextCodes  {
 	LM_TC_MAX
 };
 
-/// Defined in math_macro.C
-std::ostream & operator<<(std::ostream &, MathedTextCodes mtc);
-
 
 /// Types of lyx-math insets 
-enum MathedInsetTypes  {
+enum MathInsetTypes  {
 	///
-	LM_OT_MIN = 0,
-	/// A simple paragraph
-	LM_OT_PAR,
-	/// A simple numbered paragraph
-	LM_OT_PARN,
-	/// A multiline paragraph
-	LM_OT_MPAR,
-	/// A multiline numbered paragraph
-	LM_OT_MPARN,
+	LM_OT_SIMPLE = 0,
+	///
+	LM_OT_EQUATION,
+	/// 
+	LM_OT_EQNARRAY,
 	///
 	LM_OT_ALIGN,
 	///
-	LM_OT_ALIGNN,
-	///
 	LM_OT_ALIGNAT,
 	///
-	LM_OT_ALIGNATN,
+	LM_OT_XALIGN,
+	///
+	LM_OT_XXALIGN,
 	///
 	LM_OT_MULTLINE,
-	///
-	LM_OT_MULTLINEN,
 	/// An array
 	LM_OT_MATRIX,
 
@@ -187,14 +149,12 @@ enum MathedInsetTypes  {
 	///
 	LM_OT_MACRO,
 	///
-	LM_OT_MACRO_ARG,
-	///
 	LM_OT_MAX
 };
 
 
 ///
-enum MathedBinaryTypes {
+enum MathBinaryTypes {
 	///
 	LMB_NONE = 0,
 	///
@@ -207,7 +167,7 @@ enum MathedBinaryTypes {
 
 
 /// Paragraph permissions
-enum MathedParFlag {
+enum MathParFlag {
 	LMPF_BASIC = 0,
 	/// If false can use a non-standard size
 	LMPF_FIXED_SIZE = 1,

@@ -27,6 +27,7 @@
 #include "lyxfind.h"
 #include "debug.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

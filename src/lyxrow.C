@@ -23,19 +23,19 @@ Row::Row()
 {}
 
 
-void Row::par(LyXParagraph * p)
+void Row::par(Paragraph * p)
 {
 	par_ = p;
 }
 
 
-void Row::pos(LyXParagraph::size_type p)
+void Row::pos(Paragraph::size_type p)
 {
 	pos_ = p;
 }
 
 
-LyXParagraph::size_type Row::pos() const
+Paragraph::size_type Row::pos() const
 {
 	return pos_;
 }

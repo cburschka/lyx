@@ -13,6 +13,7 @@
 #include "LyXView.h"
 #include "frontends/Dialogs.h"
 #include "lyxfunc.h"
+#include "BufferView.h"
 
 using std::ostream;
 

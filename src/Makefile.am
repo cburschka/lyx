@@ -154,7 +154,6 @@ lyx_SOURCES = \
 	lyxlex_pimpl.h \
 	lyxlookup.C \
 	lyxlookup.h \
-	lyxparagraph.h \
 	lyxrc.C \
 	lyxrc.h \
 	lyxrow.C \
@@ -172,6 +171,9 @@ lyx_SOURCES = \
 	os2_defines.h \
 	os2_errortable.h \
 	paragraph.C \
+	paragraph.h \
+	paragraph_pimpl.C \
+	paragraph_pimpl.h \
 	print_form.C \
 	print_form.h \
 	screen.C \
@@ -200,6 +202,8 @@ lyx_SOURCES = \
 	trans_mgr.h \
 	undo.C \
 	undo.h \
+	undostack.C \
+	undostack.h \
 	vc-backend.C \
 	vc-backend.h \
 	version.h \

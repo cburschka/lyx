@@ -17,7 +17,7 @@
 #include "bufferview_funcs.h"
 #include "LyXView.h"
 #include "BufferView.h"
-#include "lyxparagraph.h"
+#include "paragraph.h"
 #include "lyxfont.h"
 #include "lyx_gui_misc.h"
 #include "lyxtext.h"
@@ -26,7 +26,7 @@
 #include "lyx_cb.h"
 #include "language.h"
 #include "gettext.h"
-
+#include "ParagraphParameters.h"
 
 void Emph(BufferView * bv)
 {
@@ -90,9 +90,9 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	bv->hideCursor();
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
-		text->IncDepth(bv);
+		text->incDepth(bv);
 	else
-		text->DecDepth(bv);
+		text->decDepth(bv);
 	if (text->inset_owner)
 	    bv->updateInset((Inset *)text->inset_owner, true);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -209,15 +209,15 @@ string const CurrentState(BufferView * bv)
 		      << font.stateText(&buffer->params);
 		
 		// The paragraph depth
-		int depth = text->GetDepth();
+		int depth = text->getDepth();
 		if (depth > 0)
 			state << _(", Depth: ") << depth;
 		
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
-		if (!text->cursor.par()->params.spacing().isDefault()) {
+		if (!text->cursor.par()->params().spacing().isDefault()) {
 			Spacing::Space cur_space =
-				text->cursor.par()->params.spacing().getSpace();
+				text->cursor.par()->params().spacing().getSpace();
 			state << _(", Spacing: ");
 
 			switch (cur_space) {
@@ -233,7 +233,7 @@ string const CurrentState(BufferView * bv)
 				break;
 			case Spacing::Other:
 				state << _("Other (")
-				      << text->cursor.par()->params.spacing().getValue()
+				      << text->cursor.par()->params().spacing().getValue()
 				      << ")";
 				break;
 			case Spacing::Default:
@@ -262,7 +262,7 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 
 		bv->hideCursor();
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->ToggleFree(bv, font, toggleall);
+		text->toggleFree(bv, font, toggleall);
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
@@ -270,11 +270,11 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		    font.number() != LyXFont::IGNORE)
 		{
 			LyXCursor & cursor = text->cursor;
-			text->ComputeBidiTables(bv->buffer(), cursor.row());
+			text->computeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 
-			    text->IsBoundary(bv->buffer(), cursor.par(), cursor.pos(),
+			    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
 					     text->real_current_font) )
-				text->SetCursor(bv, cursor.par(), cursor.pos(),
+				text->setCursor(bv, cursor.par(), cursor.pos(),
 						false, !cursor.boundary());
 		}
 	}

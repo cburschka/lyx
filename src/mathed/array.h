@@ -22,14 +22,16 @@
 #include "mathed/support.h"
 #include "math_defs.h"
 
-class MathedInset;
+class MathInset;
+class MathScriptInset;
 class MathMacro;
+class Painter;
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-/** \class MathedArray
+/** \class MathArray
     \brief A resizable array.
     
     A general purpose resizable array.
@@ -39,121 +41,91 @@ class MathMacro;
     \author Lars Gullik Bjønnes
     \version February 2001
   */
-class MathedArray  {
+class MathArray  {
 public:
 	///
-	typedef std::vector<byte>           buffer_type;
-	typedef byte                        value_type;
-	typedef buffer_type::size_type      size_type;
-	typedef buffer_type::iterator       iterator;
-	typedef buffer_type::const_iterator const_iterator;
-	
+	MathArray();
 	///
-	MathedArray();
+	MathArray(MathArray const &);
 	///
-	MathedArray(MathedArray const &);
+	MathArray & operator=(MathArray const &);
 	///
-	MathedArray & operator=(MathedArray const &);
-	///
-	~MathedArray();
+	~MathArray();
 
 	///
-	iterator begin();
+	int size() const;
 	///
-	iterator end();
-	///
-	const_iterator begin() const;
-	///
-	const_iterator end() const;
-	
-	///
-	int empty() const;
+	bool empty() const;
 	///
 	void clear();
-   
 	///
-	int last() const;
-	///
-	void last(int l);
-
-	///
-	void swap(MathedArray &);
-	///
-	void shrink(int pos1, int pos2);
-
-#if 0
-	///
-	void insert(iterator pos, const_iterator beg, const_iterator end);
-#else
-	/// Merge \a dx elements from array \a a at \apos.
-	/// This doesn't changes the size (dangerous)
-	void merge(MathedArray const & a, int pos); 
-#endif
-	///
-	void raw_pointer_copy(MathedInset ** p, int pos) const;
-#if 0
-	///
-	void insertInset(int pos, MathedInset * p, int type);
-	///
-	MathedInset * getInset(int pos);
-#else
-	///
-	void raw_pointer_insert(void * p, int pos);
-#endif
-	///
-	void strange_copy(MathedArray * dest, int dpos, int spos, int len);
-	///
-	byte operator[](int) const;
-	///
-	byte & operator[](int i);
+	void swap(MathArray &);
 	
 	///
-	void move(int p, int shift);
+	void insert(int pos, MathInset * inset);
 	///
-	void resize(int newsize);
-	/// Make sure we can access at least \a needed elements
-	void need_size(int needed);
+	void insert(int pos, char, MathTextCodes);
+	///
+	void insert(int pos, MathArray const &);
+
+	///
+	void erase(int pos1, int pos2);
+	///
+	void erase(int pos);
+	///
+	void replace(int pos, MathInset * inset);
+	///
+	bool prev(int & pos) const;
+	///
+	bool next(int & pos) const;
+	///
+	bool last(int & pos) const;
+
+
+	///
+	void push_back(MathInset * inset);
+	///
+	void push_back(char, MathTextCodes);
+	///
+	void push_back(MathArray const &);
+	///
+	MathInset * back_inset() const;
+
 	///
 	void dump(std::ostream &) const;
 	///
 	void dump2(std::ostream &) const;
-	/// creates copies of all embedded insets
-	void deep_copy();
 	///
-	void substitute(MathMacro *);
+	void substitute(MathMacro const &);
 	///
-	void push_back(MathedInset * inset, int t);
+
 	///
-	void push_back(byte, MathedTextCodes);
+	MathInset * GetInset(int pos) const;
+	///
+	MathScriptInset * prevScriptInset(int pos) const;
+	///
+	char GetChar(int pos) const;
+	///
+	MathTextCodes GetCode(int pos) const;
+	///
+	bool isInset(int pos) const;
+	///
+	void Write(std::ostream &, bool) const;
+	///
+	void WriteNormal(std::ostream &) const;
 private:
+	///
+	typedef std::vector<byte>           buffer_type;
+	///
+	typedef byte                        value_type;
+
+	///
+	int item_size(int pos) const;
 	/// Buffer
 	buffer_type bf_;
-#if 0
-	///
-	struct InsetTable {
-		///
-		int pos;
-		///
-		MathedInset * inset;
-		///
-		InsetTable(int p, MathedInset * i)
-			: pos(p), inset(i) {}
-		
-	};
-	/// 
-	typedef std::vector<InsetTable> InsetList;
-	/// The list of insets in this array.
-	InsetList insetList_;
-#endif
-	/// Last position inserted.
-	int last_;
 };
 
-inline 
-std::ostream & operator<<(std::ostream & os, MathedArray const & ar)
-{
-	ar.dump(os);
-	return os;
-}
+
+std::ostream & operator<<(std::ostream & os, MathArray const & ar);
 
 #endif

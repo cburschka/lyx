@@ -29,6 +29,7 @@
 #include "lyx_cb.h" // ShowMessage()
 #include "support/lyxfunctional.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using std::queue;

@@ -1483,12 +1483,12 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	}
 	set_row_column_number_info(true);
 
-	LyXParagraph * par = new LyXParagraph;
-	LyXParagraph * return_par = 0;
+	Paragraph * par = new Paragraph;
+	Paragraph * return_par = 0;
 
 	string tmptok;
 	int pos = 0;
-	char depth = 0;
+	Paragraph::depth_type depth = 0;
 	LyXFont font(LyXFont::ALL_INHERIT);
 	font.setLanguage(owner_->BufferOwner()->GetLanguage());
 
@@ -1525,7 +1525,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	int row;
 
 	for (int i = 0; i < par->size(); ++i) {
-		if (par->IsNewline(i)) {
+		if (par->isNewline(i)) {
 			++cell;
 			if (cell > GetNumberOfCells()) {
 				lyxerr << "Some error in reading old table format occured!" <<
@@ -1548,12 +1548,12 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			if (!cell_info[row_of_cell(cell)][column_of_cell(cell)].usebox)
 			{
 				// insert a space instead
-				par->Erase(i);
-				par->InsertChar(i, ' ');
+				par->erase(i);
+				par->insertChar(i, ' ');
 			}
 		}
-		par->CopyIntoMinibuffer(*owner_->BufferOwner(), i);
-		inset->par->InsertFromMinibuffer(inset->par->size());
+		par->copyIntoMinibuffer(*owner_->BufferOwner(), i);
+		inset->par->insertFromMinibuffer(inset->par->size());
 	}
 	delete par;
 	Reinit();
@@ -2560,11 +2560,11 @@ std::vector<string> const LyXTabular::getLabelList() const
 			
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
-	LyXParagraph * par = GetCellInset(cell)->par;
+	Paragraph * par = GetCellInset(cell)->par;
 
 	for (; par; par = par->next()) {
 		for (int i = 0; i < par->size(); ++i) {
-			if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
+			if (par->getChar(i)	== Paragraph::META_NEWLINE)
 				return BOX_PARBOX;
 		}
 	}

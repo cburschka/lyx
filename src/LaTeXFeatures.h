@@ -126,7 +126,7 @@ struct LaTeXFeatures {
 	std::vector<bool> layout;
 
 	///
-	bool LyXParagraphIndent;
+	bool ParagraphIndent;
 	///
 	bool NeedLyXFootnoteCode;
 	///

@@ -14,6 +14,7 @@
 #include "support/path.h"
 #include "support/filetools.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
 

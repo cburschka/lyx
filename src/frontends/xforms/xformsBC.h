@@ -25,8 +25,7 @@
 
 #include "ButtonController.h"
 
-class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT>
-{
+class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT> {
 public:
 	///
 	xformsBC(string const &, string const &);

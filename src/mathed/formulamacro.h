@@ -17,7 +17,7 @@
 #ifndef INSET_FORMULA_MACRO_H 
 #define INSET_FORMULA_MACRO_H
 
-#include "formula.h"
+#include "formulabase.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -30,13 +30,12 @@ class MathMacroTemplate;
 // No copying/updating needed anymore...
 
 ///
-class InsetFormulaMacro: public InsetFormula {
+class InsetFormulaMacro: public InsetFormulaBase {
 public:
 	///
-	InsetFormulaMacro();
+	explicit InsetFormulaMacro();
 	///
-	explicit
-	InsetFormulaMacro(string name, int na);
+	explicit InsetFormulaMacro(string name, int na);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -50,6 +49,8 @@ public:
 	///
 	void Write(Buffer const *, std::ostream & os) const;
 	///
+	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	///
 	int Latex(Buffer const *, std::ostream & os, bool fragile,
 		  bool free_spc) const;
 	///
@@ -60,8 +61,6 @@ public:
 	Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const;
-	/// what appears in the minibuffer when opening
-	string const EditMessage() const;
 	///
 	RESULT LocalDispatch(BufferView *, kb_action, string const &);
 private:
@@ -71,8 +70,4 @@ private:
 	MathMacroTemplate * tmacro() const;
 };
 
-inline Inset::Code InsetFormulaMacro::LyxCode() const
-{
-	return Inset::MATHMACRO_CODE;
-}
 #endif

@@ -25,6 +25,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "language.h"
+#include "BufferView.h"
 
 using std::ostream;
 using std::endl;
@@ -85,8 +86,8 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	// Decide whether left or right 
 	switch (c) {
 	case ' ': case '(': case '{': case '[': case '-': case ':':
-	case LyXParagraph::META_HFILL:
-	case LyXParagraph::META_NEWLINE: 
+	case Paragraph::META_HFILL:
+	case Paragraph::META_NEWLINE: 
 		side = InsetQuotes::LeftQ;   // left quote 
 		break;
 	default:

@@ -294,6 +294,14 @@ static init_deco_table idt;
 
 } // namespace anon
 
+void mathed_char_dim
+		(short type, int size, byte c, int & asc, int & des, int & wid)
+{
+	LyXFont const font = WhichFont(type, size);
+	des = lyxfont::descent(c, font);
+	asc = lyxfont::ascent(c, font);
+	wid = mathed_char_width(type, size, c);
+}
 
 int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 {
@@ -314,6 +322,13 @@ int mathed_char_width(short type, int size, byte c)
 		return lyxfont::width(c, WhichFont(type, size));
 }
 
+
+void mathed_string_dim(short type, int size, string const & s,
+			 int & asc, int & des, int & wid)
+{
+	mathed_string_height(type, size, s, asc, des);
+	wid = mathed_string_width(type, size, s);
+}
 
 int mathed_string_height(short type, int size, string const & s,
 			 int & asc, int & des)
@@ -505,12 +520,6 @@ bool MathIsAlphaFont(short x)
 }
 
 
-bool MathIsActive(short x)
-{
-	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
-}
-
-
 bool MathIsUp(short x)
 {
 	return x == LM_TC_UP;
@@ -531,7 +540,7 @@ bool MathIsScript(short x)
 
 bool MathIsBOPS(short x)
 {
-	return MathedLookupBOP(x) > LMB_NONE;
+	return MathLookupBOP(x) > LMB_NONE;
 }
 
 
@@ -547,51 +556,33 @@ bool MathIsSymbol(short x)
 }
      
 
-bool is_eqn_type(short int type)
-{
-	return type >= LM_OT_MIN && type < LM_OT_MATRIX;
-}
-
-
 bool is_matrix_type(short int type)
 {
 	return type == LM_OT_MATRIX;
 }
 
-
-bool is_multiline(short int type)
+// In a near future maybe we use a better fonts renderer
+void drawStr(Painter & pain, short type, int siz,
+	int x, int y, string const & s)
 {
-	return type >= LM_OT_MPAR && type < LM_OT_MATRIX;
+	string st;
+	if (MathIsBinary(type))
+		for (string::const_iterator it = s.begin();
+		     it != s.end(); ++it) {
+			st += ' ';
+			st += *it;
+			st += ' ';
+		}
+	else
+		st = s;
+	
+	LyXFont const mf = mathed_get_font(type, siz);
+	pain.text(x, y, st, mf);
 }
 
-
-bool is_ams(short int type)
+void drawChar(Painter & pain, short type, int siz, int x, int y, char c)
 {
-	return type > LM_OT_MPARN && type < LM_OT_MATRIX;
-}
-
-
-bool is_singlely_numbered(short int type)
-{
-	return type == LM_OT_PARN || type == LM_OT_MULTLINEN;
-}
-
-
-bool is_multi_numbered(short int type)
-{
-	return type == LM_OT_MPARN || type == LM_OT_ALIGNN
-		|| type == LM_OT_ALIGNATN;
-}
-
-
-bool is_numbered(short int type)
-{
-	return is_singlely_numbered(type) || is_multi_numbered(type);
-}
-
-
-bool is_multicolumn(short int type)
-{
-	return type == LM_OT_ALIGN || type == LM_OT_ALIGNN
-		|| type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
+	string s;
+	s += c;
+	drawStr(pain, type, siz, x, y, s);
 }

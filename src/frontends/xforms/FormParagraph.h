@@ -21,7 +21,7 @@
 
 #include "FormBaseDeprecated.h"
 
-class LyXParagraph;
+class Paragraph;
 struct FD_form_tabbed_paragraph;
 struct FD_form_paragraph_general;
 struct FD_form_paragraph_extra;
@@ -54,7 +54,7 @@ private:
 	///
 	void changedParagraph();
 	///
-	LyXParagraph const * getCurrentParagraph() const;
+	Paragraph const * getCurrentParagraph() const;
 	///
 	virtual FL_FORM * form() const;
 	
@@ -78,8 +78,8 @@ private:
 	/// Changed Paragraph connection.
 	SigC::Connection cp_;
 
-	/// The current LyXParagraph
-	LyXParagraph const * par_;
+	/// The current Paragraph
+	Paragraph const * par_;
 };
 
 

@@ -1,3 +1,4 @@
+
 /* This file is part of
  * ====================================================== 
  * 
@@ -39,6 +40,7 @@
 #include "bufferview_funcs.h" // CurrentState()
 #include "gettext.h"
 #include "lyxfunc.h"
+#include "BufferView.h"
 
 using std::endl;
 
@@ -99,6 +101,12 @@ void LyXView::redraw() {
 	lyxerr[Debug::INFO] << "LyXView::redraw()" << endl;
 	fl_redraw_form(form_);
 	minibuffer->redraw();
+}
+
+
+void LyXView::resize() 
+{
+	view()->resize();
 }
 
 
@@ -368,7 +376,7 @@ void LyXView::updateLayoutChoice()
 	
 
 	LyXTextClass::size_type layout =
-		bufferview->text->cursor.par()->GetLayout();
+		bufferview->text->cursor.par()->getLayout();
 
 	if (layout != current_layout){
 		toolbar->setLayout(layout);

@@ -17,61 +17,59 @@ using std::ostream;
 extern LyXFont WhichFont(short type, int size);
 
 
-MathFuncInset::MathFuncInset(string const & nm, short ot, short st)
-	: MathedInset(nm, ot, st)
+MathFuncInset::MathFuncInset(string const & nm, short ot)
+	: MathInset(nm, ot)
 {
 	lims_ = (GetType() == LM_OT_FUNCLIM);
 }
 
 
-MathedInset * MathFuncInset::Clone()
+MathInset * MathFuncInset::Clone() const
 {
-	return new MathFuncInset(name, GetType(), GetStyle());
+	return new MathFuncInset(*this);
 }
 
 
-void
-MathFuncInset::draw(Painter & pain, int x, int y)
+void MathFuncInset::draw(Painter & pain, int x, int y)
 { 
-	if (!name.empty() && name[0] > ' ') {
+	if (!name_.empty() && name_[0] > ' ') {
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size());
 		font.setLatex(LyXFont::ON);
 	        x += (lyxfont::width('I', font) + 3) / 4;
-		pain.text(x, y, name, font);
+		pain.text(x, y, name_, font);
 	}
 }
 
 
-void MathFuncInset::Write(std::ostream & os, bool /* fragile */)
+void MathFuncInset::Write(std::ostream & os, bool /* fragile */) const
 {
-	os << "\\" << name << ' ';
+	os << "\\" << name_ << ' ';
 }
 
 
-void MathFuncInset::WriteNormal(std::ostream & os)
+void MathFuncInset::WriteNormal(std::ostream & os) const
 {
-	os << "[" << name << "] ";
+	os << "[" << name_ << "] ";
 }
 
 
-void MathFuncInset::Metrics() 
+void MathFuncInset::Metrics(MathStyles st) 
 {
 	LyXFont font = WhichFont(LM_TC_TEXTRM, size());
 	font.setLatex(LyXFont::ON);
-	if (name.empty()) {
-		width = df_width;
-		descent = df_des;
-		ascent = df_asc;
+	size_ = st;
+	if (name_.empty()) {
+		width_   = lyxfont::width('M', font);
+		ascent_  = lyxfont::ascent('M', font);
+		descent_ = 0;
 	} else {
-		width = lyxfont::width(name, font)
-			+ lyxfont::width('I', font) / 2;
-		mathed_string_height(LM_TC_TEXTRM, size(),
-				     name, ascent, descent);
+		width_ = lyxfont::width(name_, font) + lyxfont::width('I', font) / 2;
+		mathed_string_height(LM_TC_TEXTRM, size_, name_, ascent_, descent_);
 	}
 }
 
 
 bool MathFuncInset::GetLimits() const 
 {  
-	return bool(lims_ && (GetStyle() == LM_ST_DISPLAY)); 
+	return lims_ && (size() == LM_ST_DISPLAY); 
 } 

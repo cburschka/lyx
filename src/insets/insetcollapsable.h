@@ -17,7 +17,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "insettext.h"
 #include "lyxfont.h"
 #include "LColor.h"

@@ -28,7 +28,7 @@ public:
 };
 
 /**
-  DefaultTrans: the default translation class. Hols info
+  DefaultTrans: the default translation class. Holds info
   on tex-accents. Monostate
   */
 class DefaultTrans : public TransInterface {

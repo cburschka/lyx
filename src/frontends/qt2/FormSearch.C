@@ -19,6 +19,7 @@
 #include "lyxfind.h"
 //#include "language.h"
 #include "support/lstrings.h"
+#include "BufferView.h"
 
 using Liason::setMinibuffer;
 

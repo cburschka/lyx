@@ -25,7 +25,10 @@
 class LyXFont;
 class WorkArea;
 
-///
+/**
+ * This is a factory class that can produce GCs with a specific
+ * color. It will cache GCs for performance.
+ */
 class LyXColorHandler {
 public:
 	///

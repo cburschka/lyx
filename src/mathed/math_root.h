@@ -12,10 +12,10 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef MATH_ROOT
-#define MATH_ROOT
+#ifndef MATH_ROOT_H
+#define MATH_ROOT_H
 
-#include "math_sqrtinset.h"
+#include "math_inset.h"
 #include "symbol_def.h"
 
 #ifdef __GNUG__
@@ -26,50 +26,24 @@
     \author Alejandro Aguilar Sierra
     \version January 1999
  */
-class MathRootInset : public MathSqrtInset {
+class MathRootInset : public MathInset {
 public:
 	///
-	explicit
-	MathRootInset(short st = LM_ST_TEXT);
+	MathRootInset();
 	///
-	MathedInset * Clone();
+	MathInset * Clone() const;
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
-	bool Inside(int, int);
+	bool idxUp(int & idx, int & pos) const;
 	///
-	void SetFocus(int, int);
-	///
-	void setData(MathedArray const &);
-	///
-	void GetXY(int & x, int & y) const;
-	///
-	MathedArray & GetData();
-	///
-	MathedArray const & GetData() const;
-	///
-	bool setArgumentIdx(int i);
-	///
-	int getArgumentIdx() const;
-	///
-	int getMaxArgumentIdx() const;
-	///
-	void SetStyle(short);
-private:
-	///
-	int idx_;
-	///
-	MathParInset uroot_;
-	///
-	int wroot_;
-	///
-	int dh_;
+	bool idxDown(int & idx, int & pos) const;
 };
 
 #endif

@@ -1,3 +1,18 @@
+2001-06-24  The LyX Project  <jug@sad.it>
+
+	* lstrings.C (compare_ascii_no_case): version of compare_no_case
+	which only considers case of ascii characters
+
+	* lyxstring.C (replace): added for compatibility with gcc 2.95.3+
+	sstream header.
+
+2001-06-23  The LyX Project  <jug@sad.it>
+
+	* textutils.h (IsPrintable): take into account unprintable spaces
+	above 127.
+	(IsDigit): new function
+	(IsLetterCharOrDigit): use IsDigit
+
 2001-06-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (findtexfile): strip final \r if necessary (for

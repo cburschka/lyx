@@ -146,14 +146,14 @@ Menuset
     End
 
     Menu "edit_math"
-	Item "Make eqnarray|e" "break-line e"
-	Item "Make multline|m" "break-line m"
-	Item "Make align 1 column|1"  "break-line 1"
-	Item "Make align 2 columns|2"  "break-line 2"
-	Item "Make align 3 columns|3"  "break-line 3"
-	Item "Make alignat 2 columns|2"  "break-line B"
-	Item "Make alignat 3 columns|3"  "break-line C"
-	Separator
+#	Item "Make eqnarray|e" "break-line e"
+#	Item "Make multline|m" "break-line m"
+#	Item "Make align 1 column|1"  "break-line 1"
+#	Item "Make align 2 columns|2"  "break-line 2"
+#	Item "Make align 3 columns|3"  "break-line 3"
+#	Item "Make alignat 2 columns|2"  "break-line B"
+#	Item "Make alignat 3 columns|3"  "break-line C"
+#	Separator
 	Item "Toggle numbering|n" "math-number"
 	Item "Toggle numbering of line|u" "math-nonumber"
 	Item "Toggle limits|l" "math-limits"
@@ -163,8 +163,12 @@ Menuset
 # INSERT MENU
 #
     Menu "insert"
-	Item "Math Formula|h" "math-mode"
-	Item "Display Formula|D" "math-display"
+	Item "Math Formula|h" "math-mode simple"
+	Item "Display Formula|D" "math-mode display"
+	Item "Change to Inline Math Formula|q" "math-mutate simple"
+	Item "Change to Displayed Math Formula|q" "math-mutate equation"
+	Item "Change to Eqnarray Environment|q" "math-mutate eqnarray"
+	Item "Change to Align Environment|g" "math-mutate align"
 	Separator
 	Submenu "Special Character|S" "insert_special"
 	Item "Citation Reference...|C" "citation-insert"

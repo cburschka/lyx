@@ -21,7 +21,7 @@
 #include "lyxrc.h"
 #include "Liason.h"
 #include "gettext.h"
-
+#include "BufferView.h"
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d),

@@ -2,7 +2,7 @@
 #ifndef MATH_FRACINSET_H
 #define MATH_FRACINSET_H
 
-#include "math_parinset.h"
+#include "math_inset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,60 +11,28 @@
 /** Fraction like objects (frac, stackrel, binom)
     \author Alejandro Aguilar Sierra
  */
-class MathFracInset : public MathParInset {
+class MathFracInset : public MathInset {
 public:
 	///
-	MathFracInset(short ot = LM_OT_FRAC);
+	explicit MathFracInset(short ot = LM_OT_FRAC);
 	///
-	MathedInset * Clone();
+	virtual MathInset * Clone() const;
 	///
-	void draw(Painter &, int x, int baseline);
+	virtual void Write(std::ostream &, bool fragile) const;
 	///
-	void Write(std::ostream &, bool fragile);
+	virtual void WriteNormal(std::ostream &) const;
 	///
-	void WriteNormal(std::ostream &);
+	virtual void Metrics(MathStyles st);
 	///
-	void Metrics();
-	
-	/** This does the same that SetData(MathedArray const &) but for both
-	    numerator and denominator at once.
-	*/
-	void SetData(MathedArray const &, MathedArray const &);
+	virtual void draw(Painter &, int x, int baseline);
 	///
-	void setData(MathedArray const &);
+	virtual bool idxUp(int &, int &) const;
 	///
-	void GetXY(int & x, int & y) const;
+	virtual bool idxDown(int &, int &) const;
 	///
-	void SetFocus(int, int);
+	virtual bool idxLeft(int &, int &) const;
 	///
-	bool Inside(int, int);
-	///
-	MathedArray & GetData();
-	///
-	MathedArray const & GetData() const;
-	///
-	bool setArgumentIdx(int i); // was bool Up/down(void);
-	///
-	int getArgumentIdx() const;
-	///
-	int getMaxArgumentIdx() const;
-	///
-	void  SetStyle(short);
-	///
-	MathParInset * denom(); 
-private:
-	///
-	int idx_;
-	///
-	MathParInset den_;
-	///
-	int w0_;
-	///
-	int w1_;
-	///
-	int des0_;
-	///
-	int dh_;
+	virtual bool idxRight(int &, int &) const;
 };
 
 #endif

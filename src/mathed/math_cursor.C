@@ -9,7 +9,7 @@
  *
  *  Copyright: 1996, Alejandro Aguilar Sierra
  *
- *   Version: 0.8beta, Mathed & Lyx project.
+ *   Version: 0.8beta, Math & Lyx project.
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
@@ -20,7 +20,7 @@
 #endif
 
 #include <config.h>
-#include FORMS_H_LOCATION
+
 #include "math_inset.h"
 #include "math_parser.h"
 #include "math_cursor.h"
@@ -33,7 +33,6 @@
 #include "LColor.h"
 #include "Painter.h"
 #include "math_matrixinset.h"
-#include "math_rowst.h"
 #include "math_spaceinset.h"
 #include "math_funcinset.h"
 #include "math_bigopinset.h"
@@ -42,19 +41,21 @@
 #include "math_dotsinset.h"
 #include "math_accentinset.h"
 #include "math_macrotemplate.h"
+#include "math_sqrtinset.h"
+#include "math_scriptinset.h"
 #include "mathed/support.h"
-
-
+#include "formulabase.h"
 
 
 using std::endl;
+using std::min;
+using std::max;
+
 
 namespace {
 
-MathedArray selarray;
+MathArray selarray;
 
-// This was very smaller, I'll change it later
-inline
 bool IsMacro(short tok, int id)
 {
 	return tok != LM_TK_STACK &&
@@ -69,424 +70,275 @@ bool IsMacro(short tok, int id)
 	       !(tok == LM_TK_SYM && id < 255);
 }
 
-int const MAX_STACK_ITEMS = 32;
-
-struct MathStackXIter {
-public:
-	enum type {MATHSTK, SELSTK};
-
-private:
-	std::vector<MathedXIter> item;
-	int pos_;
-	type id_;
-
-
-public:
-
-	MathStackXIter(type id)
-		: item(MAX_STACK_ITEMS), pos_(-1), id_(id) {
-	}
-
-	MathedXIter * push() {
-		//dump();
-		++pos_;
-		return &item[pos_];
-	}
-
-	MathedXIter * pop() {
-		//dump();
-		item[pos_] = MathedXIter();
-    --pos_;
-		return &item[pos_];
-	}
-
-	MathedXIter * Item(int idx) {
-		if (idx > pos_)
-			lyxerr << "Wrong index: " << idx << " pos_: " << pos_ << endl;
-		return &item[pos_ - idx];
-	}
-
-	void Reset() {
-		pos_ = -1;
-	}
-
-	bool Full() {
-		return pos_ >= MAX_STACK_ITEMS - 2;
-	}
-
-	bool empty() {
-		return pos_ <= 0;
-	}
-
-	MathParInset * outer() {
-		return empty() ? 0 : item[0].getPar();
-	}
-
-	int Level() {
-		return pos_;
-	}
-
-	MathParInset * parInset(int i) {
-		return pos_ < 0 ? 0 : item[i].getPar();
-	}
-
-
-	void dump() {
-		lyxerr << "\n------------- MathStack ------------\n";
-		for (int i = 0; i < pos_ + 3; ++i) {
-			lyxerr << "pos: " << i << " par: "
-				<< item[i].getPar() << " data: '"
-				<< *item[i].GetData() << "'" << endl;
-		}
-		lyxerr << "------------- MathStack ------------\n";
-	}
-
-};
-
-MathStackXIter mathstk = MathStackXIter(MathStackXIter::MATHSTK);
-MathStackXIter selstk  = MathStackXIter(MathStackXIter::SELSTK);
-
-} // namespace anon
-
-
-extern MathedCursor * mathcursor;
-
-bool is_mathcursor_inside(MathParInset * p) 
-{
-	//lyxerr << "called is_mathcursor_inside: " << p << endl;
-
-	if (!mathcursor) {
-		//lyxerr << "  mathcursor not set" << endl;
-		return false;
-	}
-
-	for (int i = 0; i < mathstk.Level(); ++i) {
-		//lyxerr << "   level: " << i << "  " << mathstk.parInset(i) << endl;
-		if (mathstk.parInset(i) == p) {
-			//lyxerr << "  found!" << endl;
-			return true;
-		}
-	}
-
-	//lyxerr << "   cursor: " << mathcursor->cursor->getPar() << endl;
-	if (mathcursor->cursor->getPar() == p) {
-		//lyxerr << "  found!" << endl;
-		return true;
-	}
-	//lyxerr << "   not found" << endl;
-	return false; 
 }
 
-
-
-/***----------------  Mathed Cursor  ---------------------------***/
-
-
-MathedCursor::MathedCursor(MathParInset * p) // : par(p)
+MathCursor::MathCursor(InsetFormulaBase * formula)
+	: formula_(formula)
 {
 	accent     = 0;
-	anchor     = 0;
 	lastcode   = LM_TC_MIN;
-	SetPar(p);
-}
-
-void MathedCursor::SetPar(MathParInset * p)
-{
-  macro_mode = false;
-  selection  = false; // not SelClear() ?
-  mathstk.Reset();
-  cursor = mathstk.push();
-  par = p;
-  SetCursorData(par);
+	macro_mode = false;
+	first();
 }
 
 
-void MathedCursor::SetCursorData(MathParInset * p)
+void MathCursor::push(MathInset * par, bool first)
 {
-	//lyxerr << "SetCursorData: " << p << endl;
-	cursor->SetData(p);
+	path_.push_back(MathIter());
+	path_.back().par_    = par_;
+	path_.back().idx_    = idx_;
+	path_.back().cursor_ = cursor_;
+	dump("Pushed:");
+	par_ = par;
+	first ? par_->idxFirst(idx_, cursor_) : par_->idxLast(idx_, cursor_);
 }
 
 
-void MathedCursor::draw(Painter & pain, int x, int y)
+void MathCursor::pop()
 {
-	//    lyxerr << "Cursor[" << x << " " << y << "] ";
-	//lyxerr << "MathedCursor::draw: par: " << par << endl;
-
-	par->Metrics();
-	int w = par->Width() + 2;
-	int a = par->Ascent() + 1;
-	int h = par->Height() + 1;
-
-	if (par->GetType() > LM_OT_PAR) {
-		a += 4;
-		h += 8;
-	}
-
-	pain.rectangle(x - 1, y - a, w, h, LColor::green);
-
-	par->draw(pain, x, y);
-	cursor->Adjust();
+	if (path_.empty())
+		return;
+	par_    = path_.back().par_;
+	idx_    = path_.back().idx_;
+	cursor_ = path_.back().cursor_;
+	dump("Popped:");
+	path_.pop_back();
 }
 
 
-void MathedCursor::Redraw(Painter & pain)
+MathInset * MathCursor::parInset(int i) const
 {
-	lyxerr[Debug::MATHED] << "Mathed: Redrawing!" << endl;
-	par->Metrics();
-	int w = par->Width();
-	int h = par->Height();
-	int x;
-	int y;
-	par->GetXY(x, y);
-	//mathed_set_font(LM_TC_VAR, 1);
-	pain.fillRectangle(x, y - par->Ascent(),
-		x + w, y - par->Ascent() + h, LColor::mathbg);
+	return path_[i].par_;
+}
 
-	lyxerr << "MathedCursor::Redraw: par: " << par << endl;
-	par->draw(pain, x, y);
+void MathCursor::dump(char const * what) const
+{
+	lyxerr << "MC: " << what
+		<< " cursor: " << cursor_
+		<< " anchor: " << anchor_
+		<< " idx: " << idx_
+		<< " par: " << par_
+		<< " sel: " << selection
+		<< " data: " << array()
+		<< "\n";
+}
+
+void MathCursor::seldump(char const * str) const
+{
+	lyxerr << "SEL: " << str << ": '" << selarray << "'\n";
+	dump("   Pos");
+	return;
+
+	lyxerr << "\n\n\\n=================vvvvvvvvvvvvv=======================   "
+		<<  str << "\nselarray: " << selarray;
+	for (unsigned int i = 0; i < path_.size(); ++i) 
+		lyxerr << path_[i].par_ << "\n'" << path_[i].par_->cell(0) << "'\n";
+	lyxerr << "\ncursor: " << cursor_;
+	lyxerr << "\nanchor: " << anchor_;
+	lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
 }
 
 
-bool MathedCursor::Left(bool sel)
+bool MathCursor::isInside(MathInset * p) const
 {
-	//par->GetData().dump(cerr);
+	for (unsigned i = 0; i < path_.size(); ++i) 
+		if (parInset(i) == p) 
+			return true;
+	return par_ == p;
+}
+
+
+bool MathCursor::Left(bool sel)
+{
+	dump("Left 1");
 	if (macro_mode) {
 		// was MacroModeBack()
-		if (!imacro->GetName().empty()) {
-			imacro->SetName(imacro->GetName()
-					.substr(0, imacro->GetName()
-						.length() - 1));
-			imacro->Metrics();
+		if (!imacro->name().empty()) {
+			imacro->SetName(imacro->name().substr(0, imacro->name().length()-1));
+			imacro->Metrics(imacro->size());
 		} else
 			MacroModeClose();
 		return true;
 	}
-
 	clearLastCode();
+	SelHandle(sel);
 
-	if (sel && !selection)
-		SelStart();
+	bool result = false;
 
-	if (!sel && selection)
-		SelClear();
-
-	bool result = cursor->Prev();
-
-	if (!result && !mathstk.empty()) {
-		cursor = mathstk.pop();
-		cursor->Adjust();
-		result = true;
-		if (selection)
-			SelClear();
-	} else if (result && cursor->IsActive()) {
-		if (cursor->IsScript()) {
-			cursor->Prev();
-			if (!cursor->IsScript())
-				cursor->Next();
-			cursor->Adjust();
-			return true;
+	if (selection) {
+		result = array().prev(cursor_);
+		if (!result && !path_.empty()) {
+			pop();
+			anchor_ = cursor_;
+			result = array().next(anchor_);
 		}
-
-		if (!selection) {
-			MathParInset * p = cursor->GetActiveInset();
-			if (!p)
-				return result;
-
-			//lyxerr << "\nInset,  max arg # " << p->getMaxArgumentIdx() << endl;
-			p->setArgumentIdx(p->getMaxArgumentIdx());
-			cursor = mathstk.push();
-			SetCursorData(p);
-			cursor->GoLast();
+	} else {
+		MathInset * p = prevActiveInset();
+		if (p) {
+			// We have to move deeper into the previous inset
+			array().prev(cursor_);
+			push(p, false);
+			result = true;
+		} else {
+			// The common case, where we are not 
+			// entering a deeper inset
+			result = array().prev(cursor_);
+			if (!result) {
+				if (par_->idxLeft(idx_, cursor_)) {
+					result = true;
+				} else if (!path_.empty()) {
+					pop();
+					result = true;
+				}
+			}
 		}
 	}
+	dump("Left 2");
 	return result;
 }
 
 
-// Leave the inset
-bool MathedCursor::Pop()
+bool MathCursor::Right(bool sel)
 {
-	if (!mathstk.empty()) {
-		cursor = mathstk.pop();
-		cursor->Next();
-		return true;
-	}
-	return false;
-}
-
-
-// Go to the inset
-bool MathedCursor::Push()
-{
-	if (cursor->IsActive()) {
-		MathParInset * p = cursor->GetActiveInset();
-		if (!p)
-			return false;
-		cursor = mathstk.push();
-		SetCursorData(p);
-		return true;
-	}
-	return false;
-}
-
-
-bool MathedCursor::Right(bool sel)
-{
+	dump("Right 1");
 	if (macro_mode) {
 		MacroModeClose();
 		return true;
 	}
 
 	clearLastCode();
-
-	if (sel && !selection)
-		SelStart();
-
-	if (!sel && selection)
-		SelClear();
+	SelHandle(sel);
 
 	bool result = false;
 
-	if (cursor->IsActive()) {
-		if (cursor->IsScript()) {
-			cursor->Next();
-			// A script may be followed by another script
-			if (cursor->IsScript())
-				cursor->Next();
-			return true;
+	if (selection) {
+		result = array().next(cursor_);
+		if (!result && !path_.empty()) {
+			pop();
+			anchor_ = cursor_;
+			result = array().prev(anchor_);
 		}
-
-		if (!selection) {
-			MathParInset * p = cursor->GetActiveInset();
-			if (!p) {
-				lyxerr << "Math error: Inset expected." << endl;
-				return cursor->Next();
-			}
-			p->setArgumentIdx(0);
-			cursor = mathstk.push();
-			SetCursorData(p);
-			result = true;
-		} else
-			result = cursor->Next();
-
 	} else {
-		if (cursor->GetChar() != LM_TC_CR)
-			result = cursor->Next();
-		if (!result && !mathstk.empty()) {
-			cursor = mathstk.pop();
-			cursor->Next();
-			cursor->Adjust();
+		MathInset * p = nextActiveInset();
+		if (p) {
+			push(p, true);
 			result = true;
-			if (selection)
-				SelClear();
+		} else {
+			result = array().next(cursor_);
+			if (!result) {
+				if (par_->idxRight(idx_, cursor_)) {
+					result = true;
+				} else if (!path_.empty()) {
+					pop();
+					result = true;
+					array().next(cursor_);
+				}
+			}
 		}
 	}
+	dump("Right 2");
 	return result;
 }
 
 
-void MathedCursor::SetPos(int x, int y)
+void MathCursor::first()
 {
-	int xp = 0;
+	selection  = false;
+	par_       = formula_->par();
+	idx_       = 0;
+	cursor_    = 0;
+	anchor_    = 0;
+	par_->idxFirst(idx_, cursor_);
+}
 
-	if (macro_mode)
-		MacroModeClose();
 
+void MathCursor::last()
+{
+	selection  = false;
+	par_       = formula_->par();
+	idx_       = 0;
+	cursor_    = 0;
+	anchor_    = 0;
+	par_->idxLast(idx_, cursor_);
+}
+
+
+void MathCursor::SetPos(int x, int y)
+{
+	dump("SetPos 1");
+	lyxerr << "MathCursor::SetPos x: " << x << " y: " << y << "\n";
+
+	MacroModeClose();
 	lastcode = LM_TC_MIN;
-	mathstk.Reset();
-	cursor = mathstk.push();
-	SetCursorData(par);
-	cursor->fitCoord(x, y);
+	path_.clear();
 
-	while (cursor->GetX() < x && cursor->OK()) {
-		if (cursor->IsActive()) {
-			MathParInset * p = cursor->GetActiveInset();
-			if (p->Inside(x, y)) {
-				p->SetFocus(x, y);
-				cursor = mathstk.push();
-				SetCursorData(p);
-				cursor->fitCoord(x, y);
-				continue;
+	par_    = formula()->par();
+
+	while (1) {
+		idx_    = -1;
+		cursor_ = -1;
+		int distmin = 1 << 30; // large enough
+		for (int i = 0; i < par_->nargs(); ++i) {
+			MathXArray const & ar = par_->xcell(i);
+			int x1 = x - ar.xo();
+			int y1 = y - ar.yo();
+			int c  = ar.x2pos(x1);
+			int xx = abs(x1 - ar.pos2x(c));
+			int yy = abs(y1);
+			//lyxerr << "idx: " << i << " xx: " << xx << " yy: " << yy
+			//	<< " c: " << c  << " xo: " << ar.xo() << "\n";
+			if (yy + xx <= distmin) {
+				distmin = yy + xx;
+				idx_     = i;
+				cursor_  = c;
 			}
 		}
-		xp = cursor->GetX();
-		cursor->ipush();
-		if (!cursor->Next() && !Pop())
+		lyxerr << "found idx: " << idx_ << " cursor: " << cursor_  << "\n";
+		if (nextIsActive() && nextInset()->covers(x, y)) {
+			MathInset * p = nextActiveInset();
+			push(p, true);
+		} else if (prevIsActive() && prevInset()->covers(x, y)) {
+			MathInset * p = prevActiveInset();
+			array().prev(cursor_);
+			push(p, false);
+		} else 
 			break;
 	}
-	if (x - xp < cursor->GetX() - x)
-		cursor->ipop();
-	cursor->Adjust();
+	dump("SetPos 2");
 }
 
 
-void MathedCursor::Home()
+void MathCursor::Home()
 {
+	dump("Home 1");
 	if (macro_mode)
 		MacroModeClose();
 	clearLastCode();
-	mathstk.Reset();
-	cursor = mathstk.push();
-	cursor->GoBegin();
+	if (!par_->idxHome(idx_, cursor_)) {
+		pop();
+	}
+	dump("Home 2");
 }
 
 
-void MathedCursor::End()
+void MathCursor::End()
 {
+	dump("End 1");
 	if (macro_mode)
 		MacroModeClose();
 	clearLastCode();
-	mathstk.Reset();
-	cursor = mathstk.push();
-	cursor->GoLast();
-}
-
-
-MathMatrixInset create_multiline(short int type, int cols)
-{
-	int columns;
-	string align;
-	if (cols < 1)
-		cols = 1;
-
-	switch (type) {
-		case LM_OT_ALIGN:
-		case LM_OT_ALIGNN:
-			columns = 2*cols;
-			for (int i = 0; i < cols; ++i)
-			align += "Rl";
-			break;
-
-		case LM_OT_ALIGNAT:
-		case LM_OT_ALIGNATN:
-			columns = 2*cols;
-			for (int i = 0; i < cols; ++i)
-			align += "rl";
-			break;
-
-		case LM_OT_MULTLINE:
-		case LM_OT_MULTLINEN:
-			columns = 1;
-			align = "C";
-			break;
-
-		case LM_OT_MPAR:
-		case LM_OT_MPARN:
-		default:
-			columns = 3;
-			align = "rcl";
-			break;
+	if (!par_->idxEnd(idx_, cursor_)) {
+		pop();
+		array().next(cursor_);
 	}
-
-	MathMatrixInset mt(columns, -1);
-	mt.SetAlign(' ', align);
-	return mt;
+	dump("End 2");
 }
 
 
-void MathedCursor::Insert(byte c, MathedTextCodes t)
+
+void MathCursor::insert(char c, MathTextCodes t)
 {
+	lyxerr << "inserting '" << c << "'\n";
 	if (selection)
 		SelDel();
 
@@ -496,109 +348,52 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	if (macro_mode && !(MathIsAlphaFont(t) || t == LM_TC_MIN))
 		MacroModeClose();
 
-	if (t == LM_TC_CR) {
-		MathParInset * p = cursor->getPar();
-		if (p == par && p->GetType() < LM_OT_MPAR && p->GetType() > LM_OT_MIN) {
-			short int type = LM_OT_MPAR;
-			int cols = 1;
-			if (c >= '1' && c <= '9') {
-				type = LM_OT_ALIGN;
-				cols = c - '1' + 1;
-			} else if (c >= 'A' && c <= 'I') {
-				type = LM_OT_ALIGNAT;
-				cols = c - 'A' + 1;
-			} else if (c == 'm')
-				type = LM_OT_MULTLINE;
-			else if (c == 'e')
-				type = LM_OT_MPAR;
-
-			if (p->GetType() == LM_OT_PARN)
-				++type;
-			MathMatrixInset * mt =
-				new MathMatrixInset(create_multiline(type, cols));
-			mt->SetStyle(LM_ST_DISPLAY);
-			mt->SetType(type);
-			mt->setData(p->GetData());
-			delete p;
-			par = mt;
-			p = mt;
-			p->Metrics();
-			int pos = cursor->getPos();
-			SetCursorData(par);
-			cursor->goPosAbs(pos);
+	if (macro_mode) {
+		if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
+			// was MacroModeinsert(c);
+			imacro->SetName(imacro->name() + static_cast<char>(c));
+			return;
 		}
-		if (p && p->Permit(LMPF_ALLOW_CR)) {
-			cursor->addRow();
-		}
-	} else if (t == LM_TC_TAB) {
-		MathParInset * p = cursor->getPar();
-		if (p && p->Permit(LMPF_ALLOW_TAB)) {
-			if (c) {
-				cursor->insert(c, t);
-				cursor->checkTabs();
-			} else
-				cursor->goNextColumn();
-		} else {
-			// Navigate between arguments
-			if (p && p->GetType() == LM_OT_MACRO) {
-				if (p->getArgumentIdx() < p->getMaxArgumentIdx()) {
-					p->setArgumentIdx(p->getArgumentIdx() + 1);
-					SetCursorData(p);
-					return;
-				}
-			}
-		}
-	} else {
-		if (macro_mode) {
-			if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
-				// was MacroModeInsert(c);
-				imacro->SetName(imacro->GetName() + static_cast<char>(c));
-				return;
-			}
-		}
-
-		if (accent)
-			doAccent(c, t);
-		else
-			cursor->insert(c, t);
-
-		lastcode = t;
-		return;
 	}
-	clearLastCode();
+
+	if (accent)
+		doAccent(c, t);
+	else {
+		array().insert(cursor_, c, t);
+		array().next(cursor_);
+	}
+
+	lastcode = t;
+	return;
 }
 
 
-void MathedCursor::insertInset(MathedInset * p, int t)
+void MathCursor::insert(MathInset * p)
 {
-	if (macro_mode)
-		MacroModeClose();
+	MacroModeClose();
 
 	if (selection) {
-		if (MathIsActive(t)) {
+		if (p->nargs())
 			SelCut();
-			static_cast<MathParInset*>(p)->setData(selarray);
-		} else
+		else
 			SelDel();
 	}
 
-	if (!mathstk.Full()) {
-		if (accent && !MathIsActive(t)) {	
-			doAccent(p);
-		} else {
-			cursor->insertInset(p, t);
-			if (MathIsActive(t)) {
-				cursor->Prev();
-				Push();
-			}
-		}
-	} else
-		lyxerr << "Math error: Full stack." << endl;
+	if (accent && !p->nargs())
+		doAccent(p);
+	else {
+		array().insert(cursor_, p);
+		array().next(cursor_);
+	}
+
+	//if (p->nargs()) 
+	//	push(p, true);
 }
 
 
-void MathedCursor::Delete()
+void MathCursor::Delete()
 {
+	dump("Delete 1");
 	if (macro_mode)
 		return;
 
@@ -607,266 +402,165 @@ void MathedCursor::Delete()
 		return;
 	}
 
-	if (cursor->Empty() && !mathstk.empty()) 
-		cursor = mathstk.pop();
+	if (cursor_ < array().size())
+		array().erase(cursor_);
 
-	//   if (cursor->GetChar() != LM_TC_TAB)
-	cursor->Delete();
-	cursor->checkTabs();
+#ifdef WITH_WARNINGS
+#warning pullArg disabled
+#endif
+	//if (cursor_ == 0 && !path_.empty()) {
+	//	lyxerr << "Delete: popping...\n";
+	//	pop();
+	//}
+
+	dump("Delete 2");
 }
 
 
-void MathedCursor::DelLine()
+void MathCursor::DelLine()
 {
-	if (macro_mode)
-		MacroModeClose();
+	MacroModeClose();
 
 	if (selection) {
 		SelDel();
 		return;
 	}
 
-	MathParInset * p = cursor->getPar();
-
-	if (p && p->GetType() <= LM_OT_MATRIX && p->GetType() >= LM_OT_MPAR)
-		cursor->delRow();
+	if (par_->nrows() > 1)
+		par_->delRow(row());
 }
 
 
-bool MathedCursor::Up(bool sel)
+bool MathCursor::Up(bool sel)
 {
-	bool result = false;
+	dump("Up 1");
+	MacroModeClose();
+	SelHandle(sel);
+	SelClear();
 
-	if (macro_mode)
-		MacroModeClose();
-
-	if (sel && !selection)
-		SelStart();
-
-	if (!sel && selection)
-		SelClear();
-
-	if (cursor->IsScript()) {
-		char cd = cursor->GetChar();
-		if (MathIsUp(cd)) {
-			Push();
-			return true;
-		}
-
-		// A subscript may be followed by a superscript
-		cursor->ipush();
-		cursor->Next();
-		if (MathIsUp(cursor->GetChar())) {
-			Push();
-			return true;
-		}
-		
-		// return to the previous state
-		cursor->ipop();
+	int x = xarray().pos2x(cursor_);
+	bool result = par_->idxUp(idx_, cursor_);
+	if (!result && !path_.empty()) {
+		pop();
+		result = par_->idxUp(idx_, cursor_);
 	}
+	cursor_ = xarray().x2pos(x);
 
-	result = cursor->Up();
-	if (!result && cursor->getPar()) {
-		MathParInset * p = cursor->getPar();
-
-		if (p->GetType() == LM_OT_SCRIPT) {
-			MathedXIter * cx = mathstk.Item(1);
-			bool is_down = (cx->GetChar() == LM_TC_DOWN);
-			cursor = mathstk.pop();
-			cursor->Next();
-			result = is_down ? true : Up();
-		} else {
-			result = p->getArgumentIdx() > 0;
-			if (result) {
-				p->setArgumentIdx(p->getArgumentIdx() - 1);
-				SetCursorData(p);
-			}
-		}
-
-		if (!result && !mathstk.empty()) {
-			cursor = mathstk.pop();
-			return Up();
-		}
-	}
+	dump("Up 2");
 	return result;
 }
 
 
-bool MathedCursor::Down(bool sel)
+bool MathCursor::Down(bool sel)
 {
-	bool result = false;
+	dump("Down 1");
+	MacroModeClose();
+	SelHandle(sel);
+	SelClear();
 
-	if (macro_mode)
-		MacroModeClose();
-
-	if (sel && !selection)
-		SelStart();
-
-	if (!sel && selection)
-		SelClear();
-
-	if (cursor->IsScript()) {
-		char cd = cursor->GetChar();
-		if (MathIsDown(cd)) {
-			Push();
-			return true;
-		}
-		// A superscript may be followed by a subscript
-		cursor->ipush();
-		cursor->Next();
-		if (MathIsDown(cursor->GetChar())) {
-			Push();
-			return true;
-		}
-
-		// return to the previous state
-		cursor->ipop();
+	int x = xarray().pos2x(cursor_);
+	bool result = par_->idxDown(idx_, cursor_);
+	if (!result && !path_.empty()) {
+		pop();
+		result = par_->idxDown(idx_, cursor_);
 	}
+	cursor_ = xarray().x2pos(x);
 
-	result = cursor->Down();
-	if (!result && cursor->getPar()) {
-		MathParInset * p= cursor->getPar();
-		if (p->GetType() == LM_OT_SCRIPT) {
-			MathedXIter * cx = mathstk.Item(1);
-			bool is_up = (cx->GetChar() == LM_TC_UP);
-			cursor = mathstk.pop();
-			cursor->Next();
-			result = is_up ? true : Down();
-		} else {
-			result = p->getArgumentIdx() < p->getMaxArgumentIdx();
-			if (result) {
-				p->setArgumentIdx(p->getArgumentIdx() + 1);
-				SetCursorData(p);
-			}
-		}
-		if (!result && !mathstk.empty()) {
-			cursor = mathstk.pop();
-			return Down(sel);
-		}
-	}
+	dump("Down 2");
 	return result;
 }
 
 
-bool MathedCursor::Limits()
+bool MathCursor::toggleLimits()
 {
-	if (cursor->IsInset()) {
-		MathedInset * p = cursor->GetInset();
-		bool ol = p->GetLimits();
-		p->SetLimits(!ol);
-		return (ol!= p->GetLimits());
-	}
-	return false;
+	if (!prevIsInset())
+		return false;
+	MathInset * p = prevInset();
+	bool old = p->GetLimits();
+	p->SetLimits(!old);
+	return old != p->GetLimits();
 }
 
 
-void MathedCursor::SetSize(short size)
+void MathCursor::SetSize(MathStyles size)
 {
-	MathParInset * p = cursor->getPar();
-	p->UserSetSize(size);
-	SetCursorData(p);
+	par_->UserSetSize(size);
 }
 
 
-void MathedCursor::setLabel(string const & label)
+
+void MathCursor::Interpret(string const & s)
 {
-	// ugly hack and possible bug
-	if (!cursor->setLabel(label))
-		lyxerr << "MathErr: Bad place to set labels." << endl;
-}
+	lyxerr << "Interpret: '" << s << "'\n";
 
-
-void MathedCursor::setNumbered()
-{
-	// another ugly hack
-	MathedRowContainer::iterator crow = cursor->currentRow();
-	if (crow)
-		crow->setNumbered(!crow->isNumbered());
-}
-
-
-void MathedCursor::Interpret(string const & s)
-{
-	MathedInset * p = 0;
-	latexkeys const * l = 0;
-	MathedTextCodes tcode = LM_TC_INSET;
-
-	if (s[0] == '^' || s[0] == '_') {
-		char c = cursor->GetChar();
-		if (MathIsUp(c) && s[0] == '^' || MathIsDown(c) && s[0] == '_') {
-			Push();
-			return;
-		} else
-
-		// A script may be followed by a script
-		if (MathIsUp(c)  || MathIsDown(c)) {
-			cursor->ipush();
-			cursor->Next();
-			c = cursor->GetChar();
-			if (MathIsUp(c) && s[0] == '^' || MathIsDown(c) && s[0] == '_') {
-				Push();
-				return;
-			} else
-				cursor->ipop();
+	if (s[0] == '^') {
+		MathScriptInset * p = prevScriptInset();
+		if (!p) {
+			p = new MathScriptInset;
+			insert(p);
 		}
-		p = new MathParInset(LM_ST_SCRIPT, "", LM_OT_SCRIPT);
-		insertInset(p, (s[0] == '_') ? LM_TC_DOWN: LM_TC_UP);
+		if (!p->up())
+			p->up(true);
+		push(p, true);
 		return;
-	} else
+	}
+
+	if (s[0] == '_') {
+		MathScriptInset * p = prevScriptInset();
+		if (!p) {
+			p = new MathScriptInset;
+			insert(p);
+		}
+		if (!p->down())
+			p->down(true);
+		push(p, true);
+		return;
+	}
+
 	if (s[0] == '!' || s[0] == ','  || s[0] == ':' || s[0] == ';') {
-		int sp = ((s[0] == ',') ? 1:((s[0] == ':') ? 2:((s[0] == ';') ? 3: 0)));
-		p = new MathSpaceInset(sp);
-		insertInset(p, LM_TC_INSET);
+		int sp = (s[0] == ',') ? 1:((s[0] == ':') ? 2:((s[0] == ';') ? 3: 0));
+		insert(new MathSpaceInset(sp));
 		return;
-	} else
-		l = in_word_set(s);
+	}
+
+	MathInset * p = 0;
+	latexkeys const * l = in_word_set(s);
 
 	if (!l) {
-		p = new MathMacro(MathMacroTable::provideTemplate(s));
-		if (!p) {
-			lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
-			if (s == "root") {
-				p = new MathRootInset;
-				tcode = LM_TC_ACTIVE_INSET;
-			} else
-				p = new MathFuncInset(s, LM_OT_UNDEF);
-		} else {
-			tcode = static_cast<MathMacro*>(p)->getTCode();
-			lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
-		}
+		if (s == "root") 
+			p = new MathRootInset;
+		else if (MathMacroTable::hasTemplate(s))
+			p = new MathMacro(MathMacroTable::provideTemplate(s));
+		else
+			p = new MathFuncInset(s, LM_OT_UNDEF);
 	} else {
-		MathedInsetTypes fractype = LM_OT_FRAC;
 		switch (l->token) {
 			case LM_TK_BIGSYM: 
 					p = new MathBigopInset(l->name, l->id);
 					break;
 				
 			case LM_TK_SYM: 
-					if (l->id<255) {
-						Insert(static_cast<byte>(l->id), MathIsBOPS(l->id) ?
-						LM_TC_BOPS: LM_TC_SYMB); 	
-					} else {
+					if (l->id < 255)
+						insert(static_cast<byte>(l->id), MathIsBOPS(l->id) ?
+							LM_TC_BOPS : LM_TC_SYMB); 	
+					else 
 						p = new MathFuncInset(l->name);
-					}
 					break;
 				
 			case LM_TK_STACK:
-				fractype = LM_OT_STACKREL;
-				lyxerr[Debug::MATHED] << " i:stackrel " << endl;
+				p = new MathFracInset(LM_OT_STACKREL);
+				break;
 
 			case LM_TK_FRAC:
-				p = new MathFracInset(fractype);
-				tcode = LM_TC_ACTIVE_INSET;
+				p = new MathFracInset(LM_OT_FRAC);
 				break;
 
 			case LM_TK_SQRT:
 				p = new MathSqrtInset;
-				tcode = LM_TC_ACTIVE_INSET;
 				break;
 
 			case LM_TK_WIDE:
 				p = new MathDecorationInset(l->id);
-				tcode = LM_TC_ACTIVE_INSET;
 				break;
 
 			case  LM_TK_FUNCLIM:
@@ -887,8 +581,6 @@ void MathedCursor::Interpret(string const & s)
 
 			case LM_TK_MACRO:
 				p = new MathMacro(MathMacroTable::provideTemplate(s));
-				tcode = static_cast<MathMacro*>(p)->getTCode();
-				lyxerr[Debug::MATHED] << "Macro " << s << ' ' << tcode << endl;
 				break;
 
 			default:
@@ -898,52 +590,35 @@ void MathedCursor::Interpret(string const & s)
 	}
 
 	if (p) {
-		insertInset(p, tcode);
-		par->Metrics();
-	}
-}
-
-
-bool MathedCursor::pullArg()
-{
-	if (cursor->IsActive()) {
-		MathParInset * p = cursor->GetActiveInset();
-		if (!p) 
-			return false;
-		
-		MathedArray a = p->GetData();
-		p->clear();
-		Delete();
-		if (!a.empty()) {
-			cursor->Merge(a);
-			cursor->Adjust();
+		insert(p);
+		if (p->nargs()) {
+			array().prev(cursor_);
+			push(p, true);
 		}
-
-		return true;
+		p->Metrics(p->size());
 	}
-	return false;
 }
 
 
-void MathedCursor::MacroModeOpen()
+void MathCursor::MacroModeOpen()
 {
 	if (!macro_mode) {
 		imacro = new MathFuncInset("");
-		insertInset(imacro, LM_TC_INSET);
+		insert(imacro);
 		macro_mode = true;
 	} else
-		lyxerr << "Mathed Warning: Already in macro mode" << endl;
+		lyxerr << "Math Warning: Already in macro mode" << endl;
 }
 
 
-void MathedCursor::MacroModeClose()
+void MathCursor::MacroModeClose()
 {
 	if (macro_mode)  {
 		macro_mode = false;
-		latexkeys const * l = in_word_set(imacro->GetName());
-		if (!imacro->GetName().empty()
-				&& (!l || (l && IsMacro(l->token, l->id))) &&
-				!MathMacroTable::hasTemplate(imacro->GetName()))
+		latexkeys const * l = in_word_set(imacro->name());
+		if (!imacro->name().empty()
+				&& (!l || (l && IsMacro(l->token, l->id)))
+				&& !MathMacroTable::hasTemplate(imacro->name()))
 		{
 			if (!l) {
 				//imacro->SetName(macrobf);
@@ -953,208 +628,172 @@ void MathedCursor::MacroModeClose()
 				imacro->SetName(l->name);
 		} else {
 			Left();
-			if (cursor->GetInset()->GetType() == LM_OT_ACCENT) {
+			if (nextInset()->GetType() == LM_OT_ACCENT) 
 				setAccent(
-					static_cast<MathAccentInset*>(cursor->GetInset())->getAccentCode());
-			}
-			cursor->Delete();
-			if (l || MathMacroTable::hasTemplate(imacro->GetName())) {
-				Interpret(imacro->GetName());
-			}
-			imacro->SetName("");
+					static_cast<MathAccentInset*>(nextInset())->getAccentCode());
+			array().erase(cursor_);
+			if (l || MathMacroTable::hasTemplate(imacro->name())) 
+				Interpret(imacro->name());
+			imacro->SetName(string());
 		}
 		imacro = 0;
 	}
 }
 
 
-void MathedCursor::SelCopy()
+void MathCursor::SelCopy()
 {
+	seldump("SelCopy");
 	if (selection) {
-		int const p1 = (cursor->getPos() < selpos) ?
-			cursor->getPos() : selpos;
-		int const p2 = (cursor->getPos() > selpos) ?
-			cursor->getPos() : selpos;
-		selarray = *(cursor->GetData());
-		selarray.shrink(p1, p2);
-		cursor->Adjust();
+		int const p1 = min(cursor_, anchor_);
+		int const p2 = max(cursor_, anchor_);
+		selarray = array();
+		selarray.erase(p2, selarray.size());
+		selarray.erase(0, p1);
+		SelClear();
+	}
+}
+
+void MathCursor::selArray(MathArray & ar) const
+{
+	int const p1 = min(cursor_, anchor_);
+	int const p2 = max(cursor_, anchor_);
+	ar = array();
+	ar.erase(p2, ar.size());
+	ar.erase(0, p1);
+}
+
+
+void MathCursor::SelCut()
+{
+	seldump("SelCut");
+	if (selection) {
+		int const p1 = min(cursor_, anchor_);
+		int const p2 = max(cursor_, anchor_);
+		cursor_ = p1;  // move cursor to a same position
+		selarray = array();
+		selarray.erase(p2, selarray.size());
+		selarray.erase(0, p1);
+		array().erase(p1, p2);
 		SelClear();
 	}
 }
 
 
-void MathedCursor::SelCut()
+void MathCursor::SelDel()
 {
+	seldump("SelDel");
 	if (selection) {
-		if (cursor->getPos() == selpos)
-			return;
-
-		int const p1 = (cursor->getPos() < selpos) ?
-			cursor->getPos() : selpos;
-		int const p2 = (cursor->getPos() > selpos) ?
-			cursor->getPos() : selpos;
-		selarray = *(cursor->GetData());
-		selarray.shrink(p1, p2);
-		cursor->Clean(selpos);
-		cursor->Adjust();
+		int const p1 = min(cursor_, anchor_);
+		int const p2 = max(cursor_, anchor_);
+		array().erase(p1, p2);
 		SelClear();
 	}
 }
 
 
-void MathedCursor::SelDel()
+void MathCursor::SelPaste()
 {
-	//  lyxerr << "Deleting sel "
-	if (selection) {
-		if (cursor->getPos() == selpos)
-			return;
-		cursor->Clean(selpos);
-		cursor->Adjust();
+	seldump("SelPaste");
+	array().insert(cursor_, selarray);
+	cursor_ += selarray.size();
+	SelClear();
+}
+
+void MathCursor::SelHandle(bool sel)
+{
+	if (sel && !selection)
+		SelStart();
+	if (!sel && selection)
 		SelClear();
-	}
 }
 
 
-void MathedCursor::SelPaste()
+void MathCursor::SelStart()
 {
-	// lyxerr << "paste " << selarray << " " << curor->pos;
+	seldump("SelStart");
 	if (selection)
-		SelDel();
+		return;
 
-	if (!selarray.empty()) {
-		cursor->Merge(selarray);
-		cursor->Adjust();
-	}
+	anchor_   = cursor_;
+	selection = true;
 }
 
 
-void MathedCursor::SelStart()
+void MathCursor::SelClear()
 {
-	lyxerr[Debug::MATHED] << "Starting sel " << endl;
-	if (!anchor) {
-		selpos = cursor->getPos();
-		selstk = mathstk;
-		anchor = selstk.Item(-1);
-		anchor->SetData(cursor->getPar());
-		anchor->GoBegin();
-		anchor->goPosAbs(selpos);
-		selection = true;
-	}
-}
-
-
-void MathedCursor::SelClear()
-{
-	lyxerr[Debug::MATHED] << "Clearing sel " << endl;
 	selection = false;
-	anchor = 0;
 }
 
 
 
-// Anchor position must be at the same level that stack.
-void MathedCursor::SelBalance()
+void MathCursor::SelGetArea(int * xpoint, int * ypoint, int & n)
 {
-	int d = mathstk.Level() - selstk.Level();
-
-	// If unbalanced, balance them
-	while (d != 0) {
-		if (d < 0) {
-			// lyxerr << "b[" << mathstk.Level() << " " << selstk.Level
-			//  << " " << anchor->GetX() << " " << cursor->GetX() << "]";
-			anchor = selstk.pop();
-			if (anchor->GetX() >= cursor->GetX())
-			anchor->Next();
-		} else {
-			// lyxerr <<"a[" << mathstk.Level() << " " << selstk.Level() <<"]";
-			Pop();
-		}
-		d = mathstk.Level() - selstk.Level();
-	}
-
-	// Once balanced the levels, check that they are at the same paragraph
-	selpos = anchor->getPos();
-}
-
-
-void MathedCursor::SelGetArea(int ** xp, int ** yp, int & np)
-{
-	static int xpoint[10];
-	static int ypoint[10];
-
 	if (!selection) {
-		np = 0;
+		n = 0;
 		xpoint[0] = 0;
 		ypoint[0] = 0;
-		*xp = &xpoint[0];
-		*yp = &ypoint[0];
 		return;
 	}
 
 	// Balance anchor and cursor
-	SelBalance();
-
 	int xo;
 	int yo;
-	cursor->getPar()->GetXY(xo, yo);
-	int w = cursor->getPar()->Width();
-	int x1;
-	int y1;
-	cursor->GetPos(x1, y1);
-	int a1;
-	int d1;
-	cursor->getAD(a1, d1);
-	int x;
-	int y;
-	anchor->GetPos(x, y);
-	int a;
-	int d;
-	anchor->getAD(a, d);
+	par()->GetXY(xo, yo);
+	int w = par()->width();
+	// cursor
+	int x1 = xarray().xo() + xarray().pos2x(cursor_);
+	int y1 = xarray().yo();
+	//int a1 = xarray().ascent();
+	//int d1 = xarray().descent();
+
+	// anchor
+	int x  = xarray().xo() + xarray().pos2x(anchor_);
+	int y  = xarray().yo();
+	int a  = xarray().ascent();
+	int d  = xarray().descent();
 
 	// single row selection
-	int i = 0;
-	xpoint[i]   = x;
-	ypoint[i++] = y + d;
-	xpoint[i]   = x;
-	ypoint[i++] = y - a;
+	n = 0;
+	xpoint[n]   = x;
+	ypoint[n++] = y + d;
+	xpoint[n]   = x;
+	ypoint[n++] = y - a;
 
 	if (y != y1) {
-		xpoint[i]   = xo + w;
-		ypoint[i++] = y - a;
+		xpoint[n]   = xo + w;
+		ypoint[n++] = y - a;
 
 		if (x1 < xo + w) {
-		xpoint[i]   = xo + w;
-		ypoint[i++] = y1 - a;
-	}
-	}
-
-	xpoint[i]   = x1;
-	ypoint[i++] = y1 - a;
-	xpoint[i]   = x1;
-	ypoint[i++] = y1 + d;
-
-	if (y != y1) {
-		xpoint[i]   = xo;
-		ypoint[i++] = y1 + d;
-		if (x > xo) {
-			xpoint[i]   = xo;
-			ypoint[i++] = y + d;
+			xpoint[n]   = xo + w;
+			ypoint[n++] = y1 - a;
 		}
 	}
-	xpoint[i]   = xpoint[0];
-	ypoint[i++] = ypoint[0];
 
-	*xp = &xpoint[0];
-	*yp = &ypoint[0];
-	np = i;
-	//    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
-	//    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";
-	//    for (i = 0; i < np; ++i)
-	//      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
+	xpoint[n]   = x1;
+	ypoint[n++] = y1 - a;
+	xpoint[n]   = x1;
+	ypoint[n++] = y1 + d;
+
+	if (y != y1) {
+		xpoint[n]   = xo;
+		ypoint[n++] = y1 + d;
+		if (x > xo) {
+			xpoint[n]   = xo;
+			ypoint[n++] = y + d;
+		}
+	}
+	xpoint[n]   = xpoint[0];
+	ypoint[n++] = ypoint[0];
+
+	//lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "]\n";
+	//lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "]\n";
+	//for (i = 0; i < np; ++i)
+	//	lyxerr << "XY[" << xpoint[i] << " " << ypoint[i] << "]\n";
 }
 
 
-void MathedCursor::setAccent(int ac)
+void MathCursor::setAccent(int ac)
 {
 	if (ac > 0 && accent < 8)
 		nestaccent[accent++] = ac;
@@ -1163,15 +802,15 @@ void MathedCursor::setAccent(int ac)
 }
 
 
-int MathedCursor::getAccent() const
+int MathCursor::getAccent() const
 {
-	return (accent > 0) ? nestaccent[accent - 1] : 0;
+	return accent > 0 ? nestaccent[accent - 1] : 0;
 }
 
 
-void MathedCursor::doAccent(byte c, MathedTextCodes t)
+void MathCursor::doAccent(char c, MathTextCodes t)
 {
-	MathedInset * ac = 0;
+	MathInset * ac = 0;
 
 	for (int i = accent - 1; i >= 0; --i) {
 		if (i == accent - 1)
@@ -1181,15 +820,15 @@ void MathedCursor::doAccent(byte c, MathedTextCodes t)
 	}
 	
 	if (ac)
-		cursor->insertInset(ac, LM_TC_INSET);
+		insert(ac);
 
 	accent = 0;  // consumed!
 }
 
 
-void MathedCursor::doAccent(MathedInset * p)
+void MathCursor::doAccent(MathInset * p)
 {
-	MathedInset * ac = 0;
+	MathInset * ac = 0;
 
 	for (int i = accent - 1; i >= 0; --i) {
 		if (i == accent - 1)
@@ -1199,13 +838,13 @@ void MathedCursor::doAccent(MathedInset * p)
 	}
 
 	if (ac)
-		cursor->insertInset(ac, LM_TC_INSET);
+		insert(ac);
 
 	accent = 0;  // consumed!
 }
 
 
-void MathedCursor::toggleLastCode(MathedTextCodes t)
+void MathCursor::toggleLastCode(MathTextCodes t)
 {
 	if (lastcode == t)
 		lastcode = LM_TC_VAR;
@@ -1214,75 +853,272 @@ void MathedCursor::toggleLastCode(MathedTextCodes t)
 }
 
 
-void MathedCursor::GetPos(int & x, int & y)
+void MathCursor::GetPos(int & x, int & y)
 {
-	cursor->GetPos(x, y);
+	x = xarray().xo() + xarray().pos2x(cursor_);
+	y = xarray().yo();
 }
 
 
-short MathedCursor::GetFCode()
+MathTextCodes MathCursor::nextCode() const
 {
-	return cursor->fcode();
+	return array().GetCode(cursor_); 
 }
 
 
-MathParInset * MathedCursor::GetPar()
+MathTextCodes MathCursor::prevCode() const
 {
-	return par;
+	return array().GetCode(cursor_ - 1); 
 }
 
 
-MathParInset * MathedCursor::getCurrentPar() const
+MathInset * MathCursor::par() const
 {
-	return cursor->getPar();
+	return par_;
 }
 
 
-string const & MathedCursor::getLabel() const
+InsetFormulaBase const * MathCursor::formula()
 {
-	return cursor->getLabel();
+	return formula_;
 }
 
 
-bool MathedCursor::IsEnd() const
+int MathCursor::pos() const
 {
-	return !cursor->OK();
+	return cursor_;
 }
 
 
-bool MathedCursor::InMacroMode()
+bool MathCursor::InMacroMode() const
 {
 	return macro_mode;
 }
 
 
-bool MathedCursor::Selection()
+bool MathCursor::Selection() const
 {
 	return selection;
 }
 
 
-void MathedCursor::clearLastCode()
+void MathCursor::clearLastCode()
 {
 	lastcode = LM_TC_MIN;
 }
 
 
-void MathedCursor::setLastCode(MathedTextCodes t)
+void MathCursor::setLastCode(MathTextCodes t)
 {
 	lastcode = t;
 }
 
 
-MathedTextCodes MathedCursor::getLastCode() const
+MathTextCodes MathCursor::getLastCode() const
 {
 	return lastcode;
 }
 
 
-bool MathedCursor::hasData(MathedArray const & ar)
+MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 {
-	lyxerr << "hasData: ar: " << &ar << " cursor: " << cursor->GetData() <<
-endl;
-	return &ar == cursor->GetData();
+	if (par_->GetType() == t) {
+		lyxerr << "enclosing par is current\n";
+		idx = idx_;
+		return par_;
+	}
+	for (int i = path_.size() - 1; i >= 0; --i) {
+		lyxerr << "checking level " << i << "\n";
+		if (path_[i].par_->GetType() == t) {
+			idx = path_[i].idx_;
+			return path_[i].par_;
+		}
+	}
+	return 0;
+}
+
+void MathCursor::pullArg()
+{
+	// pullArg
+	MathArray a = array();
+	if (!Left())
+		return;
+	normalize();
+	array().erase(cursor_);
+	array().insert(cursor_, a);
+}
+
+
+MathStyles MathCursor::style() const
+{
+	return xarray().style();
+}
+
+
+void MathCursor::normalize() const
+{
+#ifdef WITH_WARNINGS
+#warning This is evil!
+#endif
+	MathCursor * it = const_cast<MathCursor *>(this);
+
+	if (idx_ < 0 || idx_ > par_->nargs())
+		lyxerr << "this should not really happen - 1\n";
+	it->idx_    = max(idx_, 0);
+ 	it->idx_    = min(idx_, par_->nargs());
+
+	if (cursor_ < 0 || cursor_ > array().size())
+		lyxerr << "this should not really happen - 2\n";
+	it->cursor_ = max(cursor_, 0);
+	it->cursor_ = min(cursor_, array().size());
+}
+
+
+int MathCursor::col() const
+{
+	return par_->col(idx_);
+}
+
+
+int MathCursor::row() const
+{
+	return par_->row(idx_);
+}
+
+
+/*
+char MathIter::GetChar() const
+{
+	return array().GetChar(cursor_);
+}
+
+
+string MathIter::readString()
+{
+	string s;
+	int code = nextCode();
+	for ( ; OK() && nextCode() == code; Next()) 
+		s += GetChar();
+
+	return s;
+}
+*/
+
+MathInset * MathCursor::prevInset() const
+{
+	normalize();
+	int c = cursor_;
+	if (!array().prev(c))
+		return 0;
+	return array().GetInset(c);
+}
+
+MathInset * MathCursor::prevActiveInset() const
+{
+	if (cursor_ <= 0 || !array().isInset(cursor_ - 1))
+		return 0;
+	MathInset * inset = prevInset();
+	return inset->nargs() ? inset : 0;
+}
+
+
+MathInset * MathCursor::nextInset() const
+{
+	normalize();
+	return array().GetInset(cursor_);
+}
+
+
+MathInset * MathCursor::nextActiveInset() const
+{
+	if (!array().isInset(cursor_))
+		return 0;
+	MathInset * inset = nextInset();
+	return inset->nargs() ? inset : 0;
+}
+
+
+MathScriptInset * MathCursor::prevScriptInset() const
+{
+	normalize();
+	return array().prevScriptInset(cursor_);
+}
+
+
+
+MathArray & MathCursor::array() const
+{
+	static MathArray dummy;
+	if (!par_) {
+		lyxerr << "############  par_ not valid\n";
+		return dummy;
+	}
+
+	if (idx_ < 0 || idx_ >= par_->nargs()) {
+		lyxerr << "############  idx_ " << idx_ << " not valid\n";
+		return dummy;
+	}
+
+	return par_->cell(idx_);
+}
+
+
+MathXArray & MathCursor::xarray() const
+{
+	return par_->xcell(idx_);
+}
+
+
+
+bool MathCursor::nextIsInset() const
+{
+	return cursor_ < array().size() && MathIsInset(nextCode());
+}
+
+
+bool MathCursor::nextIsActive() const
+{
+	return nextIsInset() && nextInset()->nargs();
+}
+
+
+bool MathCursor::prevIsInset() const
+{
+	return cursor_ > 0 && MathIsInset(prevCode());
+}
+
+
+bool MathCursor::prevIsActive() const
+{
+	return prevIsInset() && prevInset()->nargs();
+}
+
+
+bool MathCursor::IsFont() const
+{
+	return MathIsFont(nextCode());
+}
+
+
+bool MathCursor::IsScript() const
+{
+	normalize();
+	return MathIsScript(nextCode());
+}
+
+
+int MathCursor::xpos() const 
+{
+	normalize();
+	return xarray().pos2x(cursor_);
+}
+
+void MathCursor::gotoX(int x)
+{
+	cursor_ = xarray().x2pos(x);	
+}
+
+void MathCursor::idxRight()
+{
+	par_->idxRight(idx_, cursor_);
 }

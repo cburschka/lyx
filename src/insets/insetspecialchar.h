@@ -15,7 +15,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "LString.h"
 
 struct LaTeXFeatures;

@@ -28,6 +28,9 @@
 int compare_no_case(string const & s, string const & s2);
 
 ///
+int compare_ascii_no_case(string const & s, string const & s2);
+
+///
 int compare_no_case(string const & s, string const & s2, unsigned int len);
 
 ///

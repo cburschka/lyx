@@ -12,6 +12,7 @@
 #include "insetinclude.h"
 #include "buffer.h"
 #include "bufferlist.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "lyxrc.h"

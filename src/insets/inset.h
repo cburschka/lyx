@@ -8,25 +8,24 @@
  *
  * ====================================================== */
 
-#ifndef LYXINSET_H
-#define LYXINSET_H
+#ifndef INSET_H
+#define INSET_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include <vector>
-
+#include "LString.h"
 #include <X11/Xlib.h>
-
-#include "lyxfont.h"
-#include "lyxlex.h"
 #include "commandtags.h"
 
+class LyXFont;
 class BufferView;
 class Buffer;
 class Painter;
 class LyXText;
+class LyXLex;
 
 struct LaTeXFeatures;
 

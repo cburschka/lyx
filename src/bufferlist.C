@@ -34,6 +34,7 @@
 #include "lyxtext.h"
 #include "lyx_cb.h"
 #include "bufferview_funcs.h"
+#include "BufferView.h"
 #include "gettext.h"
 #include "LyXView.h"
 #include "vc-backend.h"
@@ -158,12 +159,6 @@ void BufferList::closeAll()
 		close(bstore.front());
 	}
 	state_ = BufferList::OK;
-}
-
-
-void BufferList::resize()
-{
-	for_each(bstore.begin(), bstore.end(), mem_fun(&Buffer::resize));
 }
 
 
@@ -461,10 +456,10 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			WriteAlert(_("Error!"), _("Unable to open template"), 
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
-			b->paragraph = new LyXParagraph;
+			b->paragraph = new Paragraph;
 		}
 	} else {  // start with empty buffer
-		b->paragraph = new LyXParagraph;
+		b->paragraph = new Paragraph;
 	}
 
 	if (!lyxrc.new_ask_filename && !isNamed) {

@@ -22,6 +22,7 @@
 #include "Painter.h"
 #include "WorkArea.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "font.h"
 #include "insets/insettext.h"
 #include "ColorHandler.h"
@@ -67,6 +68,12 @@ LyXScreen::LyXScreen(WorkArea & o)
 }
 
 
+LyXScreen::~LyXScreen()
+{
+	XFreeGC(fl_get_display(), gc_copy);
+}
+
+ 
 void LyXScreen::setCursorColor() 
 {
 	if (!lyxColorHandler.get()) return;
@@ -110,7 +117,7 @@ void LyXScreen::DrawFromTo(LyXText * text, BufferView * bv,
 	int y_text = text->first + y1;
    
 	// get the first needed row 
-	Row * row = text->GetRowNearY(y_text);
+	Row * row = text->getRowNearY(y_text);
 	// y_text is now the real beginning of the row
    
 	int y = y_text - text->first;
@@ -120,7 +127,7 @@ void LyXScreen::DrawFromTo(LyXText * text, BufferView * bv,
 		LyXText::text_status st = bv->text->status;
 		do {
 			bv->text->status = st;
-			text->GetVisibleRow(bv, y + y_offset,
+			text->getVisibleRow(bv, y + y_offset,
 					    x_offset, row, y + text->first);
 		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
 		bv->text->status = st;
@@ -150,7 +157,7 @@ void LyXScreen::DrawOneRow(LyXText * text, BufferView * bv, Row * row,
 		LyXText::text_status st = bv->text->status;
 		do {
 			bv->text->status = st;
-			text->GetVisibleRow(bv, y, x_offset, row,
+			text->getVisibleRow(bv, y, x_offset, row,
 					    y + text->first);
 		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
 		bv->text->status = st;

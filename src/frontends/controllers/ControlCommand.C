@@ -24,6 +24,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+#include "BufferView.h"
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
 	: ControlInset<InsetCommand, InsetCommandParams>(lv, d),

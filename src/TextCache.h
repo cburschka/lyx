@@ -36,7 +36,7 @@
 //
 // Q. What are we caching?
 // A. We are caching the screen representations (LyXText) of the
-//    documents (Buffer,LyXParagraph) for specific BufferView widths.
+//    documents (Buffer,Paragraph) for specific BufferView widths.
 // Q. Why the cache?
 // A. It is not really needed, but it speeds things up a lot
 //    when you have more than one document loaded at once since a total

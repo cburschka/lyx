@@ -12,22 +12,20 @@
 /**
  Functions or LaTeX names for objects that I don't know how to draw.
  */
-class MathFuncInset : public MathedInset {
+class MathFuncInset : public MathInset {
 public:
 	///
-	explicit
-	MathFuncInset(string const & nm,
-		      short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
+	explicit MathFuncInset(string const & nm, short ot = LM_OT_FUNC);
 	///
-	MathedInset * Clone();
+	MathInset *  Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	bool GetLimits() const;
 private:

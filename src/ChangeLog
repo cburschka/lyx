@@ -1,3 +1,85 @@
+2001-06-24  The LyX Project  <jug@sad.it>
+
+	* lyxlex_pimpl.C (compare_tags): use compare_ascii_no_case instead
+	of compare_no_case
+
+2001-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxtext.h: rename most methods to begin with a small char.
+	Lots of changes because of this.
+
+	* paragraph.C (Paragraph): do not call fitToSize
+	(erase): call Pimpl::erase
+	(insertChar): call Pimpl::insertChar
+	(insertInset): call Pipl::insertInset
+	(breakParagraph): do not call fitToSize
+	(breakParagraphConservative): do not call fitToSize
+	(fitToSize): remove method
+
+	* buffer.C (parseSingleLyXformat2Token): do not call fitToSize
+
+2001-06-24  The LyX Project  <Asger>
+
+	* Fix Qt compilation^2
+
+2001-06-24  The LyX Project  <jug@sad.it>
+
+	* paragraph.[Ch] (outerHook): new method. mostly equivalent to
+	depthHook(getDepth()-1).
+
+	* paragraph.h: 
+	* ParagraphParameters.h: 
+	* ParameterStruct.h: change type of depth to unsigned int ==
+	depth_type. Many adaptations to other files before of that.
+
+2001-06-24  The LyX Project  <Asger>
+
+	* Fix Qt compilation.
+
+2001-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.h: renamed several methods to begin with small letter.
+	several changes to many parts of the code because of this.
+
+2001-06-23  The LyX Project  <jug@sad.it>
+
+	* text2.C (InsertStringAsLines): renamed from InsertStringA;
+	rewritten to discard all double spaces when KeepEmpty is off
+	(InsertStringAsParagraphs): renamed from InsertStringB; rewritten
+	to only handle newlines but not fiddle with spaces and friends.
+
+	* lyxfunc.C (MenuNew): when doing 'new from template', use
+	template_path as default directory
+
+2001-06-23  The LyX Project  <Asger>
+
+	* Clean-up of header file includes all over
+	* paragraph.h: Move some of the stuff into paragraph_pimpl.h
+	
+2001-06-23  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.h: renamed from lyxparagraph.h
+
+2001-06-23  Asger  <lyx@violet.home.sad.it>
+
+	* Buffer.h: Removed Buffer::resize
+	* BufferList.h: Removed BufferList::resize
+	* LyXView.h: Added LyXView::resize. This way, we will only reflow 
+	the document lazily when we change the width, or the font settings.
+
+2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxfunc.C: silently ignore empty dispatches from the minibuffer
+
+2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* buffer.h: remove out of date comment
+
+2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxscreen.h:
+	* screen.C: fix "theoretical" GC leak
+ 
 2001-06-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LaTeX.C (scanAuxFile):
@@ -42,7 +124,7 @@
 2001-06-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView.C:
-	* Bullet.C
+	* Bullet.C:
 	* ColorHandler.C:
 	* FontInfo.C:
 	* FontLoader.C:

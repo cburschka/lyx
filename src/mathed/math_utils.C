@@ -78,7 +78,7 @@ struct compara {
 } // namespace anon
 
 
-int MathedLookupBOP(short id)
+int MathLookupBOP(short id)
 {
 	static int const bopCount =
 		sizeof(binary_op_table) / sizeof(binary_op_pair);

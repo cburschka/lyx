@@ -63,9 +63,11 @@ public:
 	///
 	void align(LyXAlignment);
 	///
-	char depth() const;
+	typedef ParameterStruct::depth_type depth_type;
 	///
-	void depth(char);
+	depth_type depth() const;
+	///
+	void depth(depth_type);
 	///
 	bool startOfAppendix() const;
 	///
@@ -119,7 +121,7 @@ private:
 
 
 inline
-char ParagraphParameters::depth() const
+ParagraphParameters::depth_type ParagraphParameters::depth() const
 {
 	return param->depth;
 }

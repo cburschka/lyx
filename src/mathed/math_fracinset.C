@@ -5,187 +5,94 @@
 #endif
 
 #include "math_fracinset.h"
-#include "math_iter.h"
 #include "LColor.h"
 #include "Painter.h"
 #include "mathed/support.h"
 #include "support/LOstream.h"
 
-using std::ostream;
-
 
 MathFracInset::MathFracInset(short ot)
-	: MathParInset(LM_ST_TEXT, "frac", ot),
-	  idx_(0), den_(LM_ST_TEXT), dh_(0)
+	: MathInset("frac", ot, 2)
 {
-	if (objtype == LM_OT_STACKREL) {
-		flag |= LMPF_SCRIPT;
+	if (objtype == LM_OT_STACKREL) 
 		SetName("stackrel");
-	}
 }
 
 
-MathedInset * MathFracInset::Clone()
+MathInset * MathFracInset::Clone() const
 {   
-	MathFracInset * p = new MathFracInset(*this);
-	return p;
+	return new MathFracInset(*this);
 }
 
 
-bool MathFracInset::setArgumentIdx(int i)
+void MathFracInset::Metrics(MathStyles st)
 {
-	if (i == 0 || i == 1) {
-		idx_ = i;
-		return true;
-	} else 
-		return false;
-}
-
-int MathFracInset::getArgumentIdx() const
-{
-  return idx_;
-}
-
-
-int MathFracInset::getMaxArgumentIdx() const
-{
-  return 1;
-}
-
-void MathFracInset::SetStyle(short st)
-{
-	MathParInset::SetStyle(st);
-	dh_ = 0;
-	den_.SetStyle((size() == LM_ST_DISPLAY) ?
-		      static_cast<short>(LM_ST_TEXT)
-		      : size());
-}
-
-
-void MathFracInset::SetData(MathedArray const & n, MathedArray const & d)
-{
-	den_.setData(d);
-	MathParInset::setData(n);
-}
-
-
-void MathFracInset::setData(MathedArray const & d)
-{
-	if (idx_ == 0)
-		MathParInset::setData(d);
-	else {
-		den_.setData(d);
-	}
-}
-
-
-void MathFracInset::GetXY(int & x, int & y) const
-{  
-	if (idx_ == 0)
-		MathParInset::GetXY(x, y);
-	else
-		den_.GetXY(x, y);
-}
-
-
-MathedArray & MathFracInset::GetData()
-{
-	if (idx_ == 0)
-		return array;
-	else
-		return den_.GetData();
-}
-
-
-MathedArray const & MathFracInset::GetData() const
-{
-	if (idx_ == 0)
-		return array;
-	else
-		return den_.GetData();
-}
-
-
-bool MathFracInset::Inside(int x, int y) 
-{
-	int const xx = xo() - (width - w0_) / 2;
-	
-	return x >= xx
-		&& x <= xx + width
-		&& y <= yo() + descent
-		&& y >= yo() - ascent;
-}
-
-
-void MathFracInset::SetFocus(int /*x*/, int y)
-{  
-	// lyxerr << "y " << y << " " << yo << " " << den_->yo << " ";
-	idx_ = (y > yo()) ? 1 : 0;
+	xcell(0).Metrics(st);
+	xcell(1).Metrics(st);
+	size_    = st;
+	width_   = max(xcell(0).width(), xcell(1).width()) + 4; 
+	ascent_  = xcell(0).height() + 4 + 5;
+	descent_ = xcell(1).height() + 4 - 5; 
 }
 
 
 void MathFracInset::draw(Painter & pain, int x, int y)
-{ 
-	int const idxp = idx_;
-	int const sizex = size();
+{
+	xo(x);
+	yo(y);
+	int m = x + width() / 2;
+	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
+	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
 	
-	idx_ = 0;
-	if (size() == LM_ST_DISPLAY) incSize();
-	MathParInset::draw(pain, x + (width - w0_) / 2, y - des0_);
-	den_.draw(pain, x + (width - w1_) / 2, y + den_.Ascent() + 2 - dh_);
-	size(sizex);
 	if (objtype == LM_OT_FRAC)
-		pain.line(x + 2, y - dh_,
-			  x + width - 4, y - dh_, LColor::mathline);
-	idx_ = idxp;
+		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::mathline);
 }
 
 
-void MathFracInset::Metrics()
+void MathFracInset::Write(std::ostream & os, bool fragile) const
 {
-	if (!dh_) {
-		int a;
-		int b;
-		dh_ = mathed_char_height(LM_TC_CONST, size(), 'I', a, b) / 2;
-	}
-	int const idxp = idx_;
-	int const sizex = size();
-	idx_ = 0;
-	if (size() == LM_ST_DISPLAY) incSize(); 
-	MathParInset::Metrics();
-	size(sizex);
-	w0_ = width;
-	int const as = Height() + 2 + dh_;
-	des0_ = Descent() + 2 + dh_;
-	den_.Metrics();  
-	w1_ = den_.Width();   
-	width = ((w0_ > w1_) ? w0_: w1_) + 12;
-	ascent = as; 
-	descent = den_.Height()+ 2 - dh_;
-	idx_ = idxp;
-}
-
-MathParInset * MathFracInset::denom() 
-{
-	return &den_;
-}
-
-
-void MathFracInset::Write(ostream & os, bool fragile)
-{
-	os << '\\' << name << '{';
-	MathParInset::Write(os, fragile);
+	os << '\\' << name() << '{';
+	cell(0).Write(os, fragile);
 	os << "}{";
-	den_.Write(os, fragile);
+	cell(1).Write(os, fragile);
 	os << '}';
 }
 
 
-void MathFracInset::WriteNormal(ostream & os)
+void MathFracInset::WriteNormal(std::ostream & os) const
 {
-	os << '[' << name << ' ';
-	MathParInset::WriteNormal(os);
+	os << '[' << name() << ' ';
+	cell(0).WriteNormal(os);
 	os << " ";
-	den_.WriteNormal(os);
+	cell(1).WriteNormal(os);
 	os << "] ";
 }
+
+
+bool MathFracInset::idxRight(int &, int &) const
+{
+	return false;
+}
+
+bool MathFracInset::idxLeft(int &, int &) const
+{
+	return false;
+}
+
+
+bool MathFracInset::idxUp(int & idx, int &) const
+{
+	if (idx == 0)
+		return false;
+	idx = 0;
+	return true;
+}
+
+bool MathFracInset::idxDown(int & idx, int &) const
+{
+	if (idx == 1)
+		return false;
+	idx = 1;
+	return true;
+}
+

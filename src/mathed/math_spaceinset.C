@@ -10,17 +10,15 @@
 #include "mathed/support.h"
 #include "support/LOstream.h"
 
-using std::ostream;
 
-
-MathSpaceInset::MathSpaceInset(int sp, short ot, short st)
-	: MathedInset("", ot, st), space_(sp)
+MathSpaceInset::MathSpaceInset(int sp, short ot)
+	: MathInset("", ot), space_(sp)
 {}
 
 
-MathedInset * MathSpaceInset::Clone()
+MathInset * MathSpaceInset::Clone() const
 {
-	return new MathSpaceInset(space_, GetType(), GetStyle());
+	return new MathSpaceInset(*this);
 }
 
 
@@ -34,16 +32,16 @@ void MathSpaceInset::draw(Painter & pain, int x, int y)
 	int xp[4];
 	int yp[4];
 	
-	xp[0] = ++x;            yp[0] = y - 3;
-	xp[1] = x;	           yp[1] = y;
-	xp[2] = x + width - 2;  yp[2] = y;
-	xp[3] = x + width - 2;  yp[3] = y - 3;
+	xp[0] = ++x;             yp[0] = y - 3;
+	xp[1] = x;	             yp[1] = y;
+	xp[2] = x + width_ - 2;  yp[2] = y;
+	xp[3] = x + width_ - 2;  yp[3] = y - 3;
 	
 	pain.lines(xp, yp, 4, (space_) ? LColor::latex : LColor::math);
 }
 
 
-void MathSpaceInset::Write(ostream & os, bool /* fragile */)
+void MathSpaceInset::Write(std::ostream & os, bool /* fragile */) const
 {
 	if (space_ >= 0 && space_ < 6) {
 		os << '\\' << latex_mathspace[space_] << ' ';
@@ -51,29 +49,30 @@ void MathSpaceInset::Write(ostream & os, bool /* fragile */)
 }
 
 
-void MathSpaceInset::WriteNormal(ostream & os)
+void MathSpaceInset::WriteNormal(std::ostream & os) const
 {
 	os << "[space " << space_ << "] ";
 }
 
 
-void MathSpaceInset::Metrics()
+void MathSpaceInset::Metrics(MathStyles st)
 {
-	width = space_ ? space_ * 2 : 2;
+	size_ = st;
+	width_ = space_ ? space_ * 2 : 2;
 	if (space_ > 3)
-		width *= 2;
+		width_ *= 2;
 	if (space_ == 5)
-		width *= 2;
-	width += 4;
-	ascent = 4;
-	descent = 0;
+		width_ *= 2;
+	width_ += 4;
+	ascent_ = 4;
+	descent_ = 0;
 }
 
 
 void MathSpaceInset::SetSpace(int sp)
 { 
 	space_ = sp;
-	Metrics();
+	Metrics(size_);
 }
 
 

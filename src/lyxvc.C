@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "lyx_gui_misc.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "gettext.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"

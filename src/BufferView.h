@@ -19,6 +19,7 @@
 #include "LString.h"
 #include "undo.h"
 #include "commandtags.h"
+#include "insets/inset.h"
 #include <boost/utility.hpp>
 
 class LyXView;
@@ -28,6 +29,8 @@ class Buffer;
 class LyXScreen;
 class WorkArea;
 class Language;
+class Painter;
+class UpdatableInset;
 
 ///
 class BufferView : boost::noncopyable {

@@ -33,6 +33,7 @@
 #include "support/path.h"
 #include "support/syscall.h"
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using std::ifstream;
@@ -461,9 +462,9 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	// clear the selection
 	bv->beforeChange(bv->text);
 	if (!asParagraph)
-		bv->text->InsertStringA(bv, tmpstr);
+		bv->text->insertStringAsLines(bv, tmpstr);
 	else
-		bv->text->InsertStringB(bv, tmpstr);
+		bv->text->insertStringAsParagraphs(bv, tmpstr);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
@@ -473,16 +474,16 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	string label(arg);
 	ProhibitInput(bv);
 	if (label.empty()) {
-		LyXParagraph * par = bv->text->cursor.par();
+		Paragraph * par = bv->text->cursor.par();
 		LyXLayout const * layout =
 			&textclasslist.Style(bv->buffer()->params.textclass,
-					     par->GetLayout());
+					     par->getLayout());
 
 		if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
-			LyXParagraph * par2 = par->previous();
+			Paragraph * par2 = par->previous();
 			LyXLayout const * layout2 =
 				&textclasslist.Style(bv->buffer()->params.textclass,
-						     par2->GetLayout());
+						     par2->getLayout());
 			if (layout2->latextype != LATEX_PARAGRAPH) {
 				par = par2;
 				layout = layout2;
@@ -496,7 +497,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		if (layout->latextype == LATEX_PARAGRAPH ||
 		    lyxrc.label_init_length < 0)
 			text.erase();
-		string par_text = par->String(bv->buffer(), false);
+		string par_text = par->asString(bv->buffer(), false);
 		for (int i = 0; i < lyxrc.label_init_length; ++i) {
 			if (par_text.empty())
 				break;

@@ -7,379 +7,315 @@
 
 #include "debug.h"
 #include "array.h"
-#include "math_iter.h"
 #include "math_inset.h"
-#include "math_macro.h"
+#include "math_scriptinset.h"
+#include "math_parser.h"
+#include "mathed/support.h"
 
-#include "support/LOstream.h"
-
-using std::ostream;
-using std::endl;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::memmove;
-#endif
+using namespace std;
 
 
-namespace {
-
-inline
-void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
-{
-	char * ps = static_cast<char *>(ps_in);
-	char const * pt = static_cast<char const *>(pt_in);
-	while (n--) *ps++ = *pt++;
-	return ps_in;
-}
-
-} // namespace anon
-
-
-MathedArray::MathedArray()
-	: bf_(1, '\0'), last_(0)
+MathArray::MathArray()
 {}
 
 
-MathedArray::~MathedArray()
+MathArray::~MathArray()
 {
-	// deep destruction
-	// let's leak for a while... 
-/*
-	MathedIter it;
-	it.SetData(this);
-	while (it.OK()) {
-		if (it.IsInset()) {
-			MathedInset * inset = it.GetInset();
-			delete inset;
-		}
-		it.Next();
+	for (int pos = 0; pos < size(); next(pos)) 
+		if (MathIsInset(pos)) 
+			delete GetInset(pos);
+}
+
+
+MathArray::MathArray(MathArray const & array)
+	: bf_(array.bf_)
+{
+	for (int pos = 0; pos < size(); next(pos)) 
+		if (isInset(pos)) 
+			replace(pos, GetInset(pos)->Clone());
+}
+
+
+bool MathArray::next(int & pos) const
+{
+	if (pos >= size() - 1)
+		return false;
+
+	pos += item_size(pos);
+	return true;
+}
+
+
+bool MathArray::prev(int & pos) const
+{
+	if (pos == 0)
+		return false;
+
+	pos -= item_size(pos - 1);
+	return true;
+}
+
+
+bool MathArray::last(int & pos) const
+{
+	pos = bf_.size();
+	return prev(pos);
+}
+
+
+int MathArray::item_size(int pos) const
+{
+	return 2 + (isInset(pos) ? sizeof(MathInset*) : 1);
+}
+		
+
+
+void MathArray::substitute(MathMacro const & m)
+{
+	MathArray tmp;
+	for (int pos = 0; pos < size(); next(pos)) {
+		if (isInset(pos)) 
+			GetInset(pos)->substitute(tmp, m);
+		else 
+			tmp.push_back(GetChar(pos), GetCode(pos));
 	}
-*/
+	swap(tmp);
 }
 
 
-MathedArray::MathedArray(MathedArray const & array)
+MathArray & MathArray::operator=(MathArray const & array)
 {
-	// this "implementation" is obviously wrong: MathedIter should be
-	// implemented by MathedArray (not the other way round) but I think
-	// getting the _interface_ of MathedArray right is more important right
-	// now (Andre')
-
-	// shallow copy
-	bf_   = array.bf_;
-	last_ = array.last_;
-
-	// deep copy
-	deep_copy();
-}
-
-
-void MathedArray::deep_copy()
-{
-	MathedIter it(this);
-	while (it.OK()) {
-		if (it.IsInset()) {
-			MathedInset * inset = it.GetInset();
-			inset = inset->Clone();
-			raw_pointer_insert(inset, it.getPos() + 1);
-		}
-		it.Next();
-	}
-}
-
-
-void MathedArray::substitute(MathMacro * m)
-{
-	if (m->nargs() == 0)
-		return;
-
-	MathedIter it(this);
-	while (it.OK()) {
-		if (it.IsInset()) {
-			MathedInset * inset = it.GetInset();
-			if (inset->GetType() == LM_OT_MACRO_ARG) {
-				int n = static_cast<MathMacroArgument *>(inset)->number() - 1;
-				//lyxerr << "substituting an argument inset: " << n << "\n";
-				inset = m->arg(n)->Clone();
-			} else {
-				inset->substitute(m);
-/*				
-				if (it.IsActive()) {
-					MathParInset * pinset = static_cast<MathParInset *>(inset);
-					int n = pinset->getMaxArgumentIdx();
-					int idx = pinset->getArgumentIdx();
-					for (int i = 0; i <= n; ++i) {
-						pinset->setArgumentIdx(i);
-						pinset->GetData().substitute(m);
-					}
-					pinset->setArgumentIdx(idx);
-				}
-*/
-
-				//lyxerr << "substituting in an ordinary inset\n";
-			}
-			raw_pointer_insert(inset, it.getPos() + 1);
-		}
-		it.Next();
-	}
-}
-
-
-MathedArray & MathedArray::operator=(MathedArray const & array)
-{
-	MathedArray tmp(array);
+	MathArray tmp(array);
 	swap(tmp);
 	return *this;
 }
 
 
-void MathedArray::push_back(MathedInset * inset, int t)
+MathInset * MathArray::GetInset(int pos) const
 {
-	MathedIter it(this);
-	while (it.Next())
-		;
-	it.insertInset(inset, t);
+	if (!isInset(pos))
+		return 0;
+	MathInset * p;
+	memcpy(&p, bf_.begin() + pos + 1, sizeof(p));
+	return p;
+}
+
+char MathArray::GetChar(int pos) const
+{
+	return pos < size() ? bf_[pos + 1] : '\0';
+}
+
+MathTextCodes MathArray::GetCode(int pos) const
+{
+	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;
+}
+
+void MathArray::insert(int pos, MathInset * p)
+{
+	bf_.insert(bf_.begin() + pos, 2 + sizeof(p), LM_TC_INSET);
+	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
 
 
-void MathedArray::push_back(byte b, MathedTextCodes c)
+void MathArray::replace(int pos, MathInset * p)
 {
-	MathedIter it(this);
-	while (it.Next())
-		;
-	it.insert(b, c);
+	memcpy(&bf_[pos + 1], &p, sizeof(p));
+}
+
+void MathArray::insert(int pos, char b, MathTextCodes t)
+{
+	bf_.insert(bf_.begin() + pos, 3, t);
+	bf_[pos + 1] = b;
 }
 
 
-void MathedArray::clear()
+void MathArray::insert(int pos, MathArray const & array)
 {
-	last_ = 0;
-	bf_.resize(1);
-	bf_[0] = 0;
+#ifdef WITH_WARNINGS
+#warning quick and really dirty: make sure that we really own our insets
+#endif
+	MathArray a = array;
+	bf_.insert(bf_.begin() + pos, a.bf_.begin(), a.bf_.end());
 }
 
 
-void MathedArray::swap(MathedArray & array)
+void MathArray::push_back(MathInset * p)
+{	
+	insert(size(), p);
+}
+
+void MathArray::push_back(char b, MathTextCodes c)
 {
-	if (this != &array) {
+	insert(size(), b, c);
+}
+
+void MathArray::push_back(MathArray const & array)
+{
+	insert(size(), array);
+}
+
+
+
+void MathArray::clear()
+{
+	bf_.clear();
+}
+
+
+void MathArray::swap(MathArray & array)
+{
+	if (this != &array) 
 		bf_.swap(array.bf_);
-		std::swap(last_, array.last_);
-	}
 }
 
 
-MathedArray::iterator MathedArray::begin() 
+bool MathArray::empty() const
 {
-	return bf_.begin();
-}
-
-
-MathedArray::iterator MathedArray::end() 
-{
-	return bf_.end();
-}
-
-
-MathedArray::const_iterator MathedArray::begin() const
-{
-	return bf_.begin();
-}
-
-
-MathedArray::const_iterator MathedArray::end() const
-{
-	return bf_.end();
-}
-
-
-int MathedArray::empty() const
-{
-	return (last_ == 0);
+	return bf_.empty();
 }
    
 
-int MathedArray::last() const
+int MathArray::size() const
 {
-	return last_;
+	return bf_.size();
 }
 
 
-void MathedArray::last(int l)
+void MathArray::erase(int pos)
 {
-	last_ = l;
+	if (pos < bf_.size())
+		erase(pos, pos + item_size(pos));
 }
 
 
-void MathedArray::need_size(int needed)
+void MathArray::erase(int pos1, int pos2)
 {
-	if (needed >= static_cast<int>(bf_.size()))
-		resize(needed);
+	bf_.erase(bf_.begin() + pos1, bf_.begin() + pos2);
 }
 
 
-void MathedArray::resize(int newsize)
+bool MathArray::isInset(int pos) const
 {
-	// still a bit smelly...
-	++newsize;
-	bf_.resize(newsize + 1);
-	if (last_ >= newsize)
-		last_ = newsize - 1;
-	bf_[last_] = 0;
+	if (pos >= size())
+		return false;
+	return MathIsInset(bf_[pos]);
 }
 
 
-void MathedArray::move(int p, int shift)
+MathInset * MathArray::back_inset() const
 {
-	if (p <= last_) {
-		need_size(last_ + shift);
-		memmove(&bf_[p + shift], &bf_[p], last_ - p);
-		last_ += shift;
-		bf_[last_] = 0;
+	if (!empty()) {
+		int pos = size();
+		prev(pos);
+		if (isInset(pos))
+			return GetInset(pos);
 	}
-}
-
-
-
-void MathedArray::shrink(int pos1, int pos2)
-{
-	if (pos1 == 0 && pos2 >= last())	
-		return;
-
-	short fc = 0;
-	if (pos1 > 0 && bf_[pos1] > ' ') {
-		for (int p = pos1; p >= 0; --p) {
-			if (MathIsFont(bf_[p])) {
-				if (p != pos1 - 1)
-					fc = bf_[p];
-				else
-					--pos1;
-				break;
-			}
-		}
-	}
-
-	if (pos2 > 0 && bf_[pos2] >= ' ' && MathIsFont(bf_[pos2 - 1]))
-		--pos2;
-
-	int dx = pos2 - pos1;
-	MathedArray a;
-	a.resize(dx + 1);
-	strange_copy(&a, (fc) ? 1 : 0, pos1, dx);
-	if (fc) {
-		a[0] = fc;
-		++dx;
-	}
-	a.last(dx);
-	a[dx] = '\0';
-
-	swap(a);
-	deep_copy();
-}
-
-
-#if 0
-void MathedArray::insert(MathedArray::iterator pos,
-			 MathedArray::const_iterator beg,
-			 MathedArray::const_iterator end)
-{
-	bf_.insert(pos, beg, end);
-	last_ = bf_.size() - 1;
-}
-#else
-void MathedArray::merge(MathedArray const & a, int p)
-{
-	my_memcpy(&bf_[p], &a.bf_[0], a.last());
-}
-#endif
-
-
-void MathedArray::raw_pointer_copy(MathedInset ** p, int pos) const
-{
-	my_memcpy(p, &bf_[pos], sizeof(MathedInset*));
-}
-
-
-#if 0
-void MathedArray::insertInset(int pos, MathedInset * p, int type)
-{
-	//bf_.insert(pos, type);
-	InsetTable tmp(pos, p);
-	insetList_.push_back(tmp);
-}
-
-
-MathedInset * MathedArray::getInset(int pos) 
-{
-	InsetList::const_iterator cit = insetList_.begin();
-	InsetList::const_iterator end = insetList_.end();
-	for (; cit != end; ++cit) {
-		if ((*cit).pos == pos)
-			return (*cit).inset;
-	}
-	// not found
 	return 0;
-	// We would really like to throw an exception instead... (Lgb)
-	// throw inset_not_found();
-}
-
-#else
-void MathedArray::raw_pointer_insert(void * p, int pos)
-{
-	my_memcpy(&bf_[pos], &p, sizeof(p));
-}
-#endif
-
-
-void MathedArray::strange_copy(MathedArray * dest, int dpos,
-				int spos, int len)
-{
-	my_memcpy(&dest->bf_[dpos], &bf_[spos], len);
 }
 
 
-byte MathedArray::operator[](int i) const
+MathScriptInset * MathArray::prevScriptInset(int pos) const
 {
-	return bf_[i];
+	if (!pos)
+		return 0;
+	prev(pos);
+
+	MathInset * inset = GetInset(pos);
+	if (inset && inset->GetType() == LM_OT_SCRIPT) 
+		return static_cast<MathScriptInset *>(inset);
+
+	return 0;
 }
 
 
-byte & MathedArray::operator[](int i)
+void MathArray::dump2(ostream & os) const
 {
-	return bf_[i];
-}
-
-
-void MathedArray::dump2(ostream & os) const
-{
-	buffer_type::const_iterator cit = bf_.begin();
-	buffer_type::const_iterator end = bf_.end();
-	for (; cit != end; ++cit) {
-		os << (*cit);
-	}
+	for (buffer_type::const_iterator it = bf_.begin(); it != bf_.end(); ++it)
+		os << int(*it) << ' ';
 	os << endl;
 }
 
 
-void MathedArray::dump(ostream & os) const
+
+void MathArray::dump(ostream & os) const
 {
-	MathedIter it( const_cast<MathedArray*>(this) );
-	while (it.OK()) {
-		if (it.IsInset()) {
-			MathedInset * inset = it.GetInset();
-			os << "<inset: " << inset << ">";
-		} 
-		else if (it.IsTab())
-			os << "<tab>";
-		else if (it.IsCR())
-			os << "<cr>";
-		else if (it.IsScript())
-			os << "<script>";
-		else if (it.IsFont())
-			os << "<font: " << int(it.at()) << ">";
-		else if (it.at() >= 32 && it.at() < 127)
-			os << it.at();
-		else
-			os << "<unknown: " << int(it.at()) << ">";
-		it.Next();
+	for (int pos = 0; pos < size(); next(pos)) {
+		if (isInset(pos)) 
+			os << "<inset: " << GetInset(pos) << ">";
+		else 
+			os << "<" << int(bf_[pos]) << " " << int(bf_[pos+1]) << ">";
 	}
 }
+
+
+std::ostream & operator<<(std::ostream & os, MathArray const & ar)
+{
+	ar.dump2(os);
+	return os;
+}
+
+
+void MathArray::Write(ostream & os, bool fragile) const
+{
+	if (empty())
+		return;
+
+	int brace = 0;
+	latexkeys const * l;
+	
+	for (int pos = 0; pos < size(); next(pos)) {
+		if (isInset(pos)) {
+
+			GetInset(pos)->Write(os, fragile);
+
+		} else {
+
+			char fcode = GetCode(pos);
+			char c     = GetChar(pos);
+
+			if (MathIsSymbol(fcode)) {
+				l = lm_get_key_by_id(c, fcode == LM_TC_BSYM ? LM_TK_BIGSYM : LM_TK_SYM);
+				if (l)
+						os << '\\' << l->name << ' ';
+			} else {
+			
+				if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM) 
+					os << '\\' << math_font_name[fcode - LM_TC_RM] << '{';
+
+				// Is there a standard logical XOR?
+				if ((fcode == LM_TC_TEX && c != '{' && c != '}') ||
+						(fcode == LM_TC_SPECIAL))
+					os << '\\';
+				else {
+					if (c == '{')
+						++brace;
+					if (c == '}')
+						--brace;
+				}
+				if (c == '}' && fcode == LM_TC_TEX && brace < 0) 
+					lyxerr <<"Math warning: Unexpected closing brace.\n";
+				else	       
+					os << char(c);
+			}
+
+			if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM)
+				os << '}';
+			
+		}
+	}
+
+	if (brace > 0)
+		os << string(brace, '}');
+}
+
+
+void MathArray::WriteNormal(ostream & os) const
+{
+	if (empty()) {
+		os << "[par] ";
+		return;
+	}
+
+	Write(os, true);
+}
+

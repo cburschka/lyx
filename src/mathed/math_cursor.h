@@ -10,8 +10,6 @@
  *
  *  Copyright: 1996, Alejandro Aguilar Sierra
  *
- *   Version: 0.8beta, Mathed & Lyx project.
- *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
  */
@@ -23,23 +21,24 @@
 #pragma interface
 #endif
 
-#include "math_xiter.h"
+#include "math_defs.h"
 
+class MathInset;
 class MathFuncInset;
-class MathParInset;
-class Painter;
+class MathScriptInset;
+class InsetFormulaBase;
+class MathArray;
+class MathXArray;
 
-
-/// This is the external interface of Mathed's subkernel
-class MathedCursor {
+/// This is the external interface of Math's subkernel
+class MathCursor {
 public:
 	///
-	explicit
-	MathedCursor(MathParInset * p);
+	explicit MathCursor(InsetFormulaBase *);
 	///
-	void Insert(byte, MathedTextCodes t = LM_TC_MIN);
+	void insert(char, MathTextCodes t = LM_TC_MIN);
 	///
-	void insertInset(MathedInset *, int t);
+	void insert(MathInset *);
 	///
 	void Home();
 	///
@@ -52,63 +51,48 @@ public:
 	bool Up(bool sel = false);
 	///
 	bool Down(bool sel = false);
-	///
-	bool Pop();
-	///
-	bool Push();
-	/// Pull out an argument from its container inset
-	bool pullArg();
-	///
-	void draw(Painter &, int x, int y);
-	///
-	void Redraw(Painter &);
+	/// Put the cursor in the first position
+	void first();
+	/// Put the cursor in the last position
+	void last();
 	///
 	void Delete();
 	///
 	void DelLine();
-	///
+	/// This is in pixels from (maybe?) the top of inset
 	void SetPos(int, int);
 	///
 	void GetPos(int & x, int & y);
 	///
-	short GetFCode();
+	MathInset * par() const;
+	/// return the next enclosing par of the given type and the cursor's
+	//index in it
+	MathInset * enclosing(MathInsetTypes, int &) const;
 	///
-	MathParInset * GetPar();
+	InsetFormulaBase const * formula();
 	///
-	MathParInset * getCurrentPar() const;
-	///
-	void SetCursorData(MathParInset *);
-	///
-	void SetPar(MathParInset *);
+	int pos() const;
 	///
 	void Interpret(string const &);
 	///
-	void SetSize(short);
+	void SetSize(MathStyles);
 	///
-	void setNumbered();
-	///
-	void setLabel(string const &);
-	///
-	string const & getLabel() const;
-	///
-	bool Limits();
+	bool toggleLimits();
 	/// Set accent: if argument = 0 it's considered consumed 
 	void setAccent(int ac = 0);
 	/// Returns last accent
 	int getAccent() const;
 	///
-	bool IsEnd() const;
 	// Macro mode methods
-	///
 	void MacroModeOpen();
 	///
 	void MacroModeClose();
 	///
-	bool InMacroMode();
+	bool InMacroMode() const;
 	
 	// Local selection methods
 	///
-	bool Selection();
+	bool Selection() const;
 	///
 	void SelCopy();
 	///
@@ -118,24 +102,35 @@ public:
 	///
 	void SelPaste();
 	///
+	void SelHandle(bool);
+	///
 	void SelStart();
 	///
 	void SelClear();
 	///
-	void SelBalance();
-	///
-	void SelGetArea(int ** xp, int ** yp, int & n);
+	void SelGetArea(int * xp, int * yp, int & n);
 	///
 	void clearLastCode();
 	///
-	void setLastCode(MathedTextCodes t);
+	void setLastCode(MathTextCodes t);
 	///
-	void toggleLastCode(MathedTextCodes t);
+	void toggleLastCode(MathTextCodes t);
 	///
-	MathedTextCodes getLastCode() const;
-
-	/// true iff cursor points to data
-	bool hasData(MathedArray const &);
+	MathTextCodes getLastCode() const;
+	///
+	int idx() const { return idx_; }
+	///
+	void idxRight();
+	///
+	void pullArg();
+	///
+	bool isInside(MathInset *) const;
+	///
+	MathTextCodes nextCode() const;
+	///
+	MathTextCodes prevCode() const;
+	///
+	void selArray(MathArray &) const;
 	
 //protected:
 	///
@@ -145,29 +140,98 @@ public:
 	///
 	bool selection;
 	///
-	int  selpos;
+	int anchor_;
 	///
-	MathedXIter cursel;
+	int cursor_;
 	///
-	MathedXIter * anchor;
+	int idx_;
 	///
-	MathParInset * par;
+	MathInset	* par_;
 	///
-	MathedXIter * cursor;
+	InsetFormulaBase * const formula_;
 	///
-	void doAccent(byte c, MathedTextCodes t);
+	void doAccent(char c, MathTextCodes t);
 	///
-	void doAccent(MathedInset * p);
+	void doAccent(MathInset * p);
 	///
 	int accent;
 	///
 	int nestaccent[8];
 	///
-	MathedTextCodes lastcode;
+	MathTextCodes lastcode;
+
+	///
+	MathArray & array() const;
+	///
+	MathXArray & xarray() const;
+
+	///
+	MathStyles style() const;
+	///
+	void normalize() const;
 	
 private:
+	/// Description of a position 
+	struct MathIter {
+		MathInset * par_;
+		int idx_;
+		int cursor_;
+	};
+
+	/// MathPath
+	std::vector<MathIter> path_;
+
+	///  
+	void push(MathInset * par, bool first);
+	///
+	void pop();
+	///  
+	int last() const;
+	///
+	MathInset * parInset(int i) const;
+	///
+	void seldump(char const * str) const;
+	///
+	void dump(char const * str) const;
+
+	///
+	int xpos() const;
+	///
+	void gotoX(int x);
+
+	///
+	bool nextIsInset() const;
+	///
+	bool nextIsActive() const;
+	///
+	bool prevIsInset() const;
+	///
+	bool prevIsActive() const;
+	///
+	bool IsFont() const;
+	///
+	bool IsScript() const;
+	///
+	void merge(MathArray const & arr);
+	///
+	MathInset * nextInset() const;
+	///
+	MathInset * nextActiveInset() const;
+	///
+	MathInset * prevInset() const;
+	///
+	MathInset * prevActiveInset() const;
+	///
+	MathScriptInset * prevScriptInset() const;
+	///
+	int col() const;
+	///
+	int row() const;
+
 	///
 	MathFuncInset * imacro;
 };
+
+extern MathCursor * mathcursor;
 
 #endif

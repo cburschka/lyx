@@ -52,7 +52,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "tabular.h"
 #include "LString.h"
 #include "lyxcursor.h"

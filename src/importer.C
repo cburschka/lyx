@@ -25,6 +25,7 @@
 #include "support/filetools.h"
 #include "lyx_gui_misc.h" //WriteAlert
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::vector;
 using std::find;

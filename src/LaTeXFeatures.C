@@ -71,7 +71,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	boldsymbol = false;
     
 	// special features
-	LyXParagraphIndent = false;
+	ParagraphIndent = false;
 	NeedLyXFootnoteCode = false;
 	NeedLyXMinipageIndent = false;
 }
@@ -321,7 +321,7 @@ string const LaTeXFeatures::getMacros() const
 	// other
         if (NeedLyXMinipageIndent) 
 		macros << minipageindent_def;
-        if (LyXParagraphIndent) 
+        if (ParagraphIndent) 
 		macros << paragraphindent_def;
         if (NeedLyXFootnoteCode) 
 		macros << floatingfootnote_def;

@@ -2,9 +2,7 @@
 #ifndef MATH_MATRIXINSET_H
 #define MATH_MATRIXINSET_H
 
-#include <vector>
-
-#include "math_parinset.h"
+#include "math_grid.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -15,62 +13,79 @@
     like array and eqnarray.
     \author Alejandro Aguilar Sierra
 */
-class MathMatrixInset : public MathParInset {
+
+class LaTeXFeatures;
+
+class MathMatrixInset : public MathGridInset {
 public: 
 	///
-	MathMatrixInset(int m, int n, short st = LM_ST_TEXT);
+	MathMatrixInset();
 	///
-	MathedInset * Clone();
+	explicit MathMatrixInset(MathInsetTypes t);
+	///
+	MathInset *  Clone() const;
+	///
+	void Write(std::ostream &, bool fragile) const;
+	///
+	void Metrics(MathStyles st);
+	///
+	void breakLine();
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	string label(int row) const;
 	///
-	void Metrics();
+	void label(int row, string const & label);
 	///
-	void setData(MathedArray const &);
+	void numbered(int row, bool num);
 	///
-	void SetAlign(char, string const &);
+	bool numbered(int row) const;
 	///
-	int GetColumns() const;
+	bool numberedType() const;
 	///
-	int GetRows() const;
+	bool display() const;
 	///
-	virtual bool isMatrix() const;
+	bool ams() const;
+	///
+	vector<string> const getLabelList() const;
+	///
+	void Validate(LaTeXFeatures & features);
 
+	///
+	void addRow(int);
+	///
+	void delRow(int);
+	///
+	void addCol(int);
+	///
+	void delCol(int);
+	///
+	void appendRow();
+
+	/// change type
+	void mutate(string const &);
+	///
+	void mutate(short);
+
+	/// Splits cells and shifts right part to the next cell
+	void splitCell(int idx);
+	
 private:
-	///  Number of columns & rows
-	int nc_;
 	///
-	int nr_;
-	/// tab sizes
-	std::vector<int> ws_;   
-	/// 
-	char v_align_; // add approp. type
+	void Validate1(LaTeXFeatures & features);
 	///
-	//std::vector<char> h_align;
-	string h_align_; // a vector would perhaps be more correct
+	void header_write(std::ostream &) const;
+	///
+	void footer_write(std::ostream &) const;
+	///
+	void glueall();
+	///
+	string nicelabel(int row) const;
+
+	///
+	std::vector<int> nonum_;
+	///
+	std::vector<string> label_;
 };
 
-
-inline
-int MathMatrixInset::GetColumns() const
-{
-	return nc_;
-}
-
-
-inline
-int MathMatrixInset::GetRows() const
-{
-	return nr_;
-}
-
-
-inline
-bool MathMatrixInset::isMatrix() const
-{
-	return true;
-}
-	
 #endif

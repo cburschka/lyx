@@ -23,6 +23,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "buffer.h"
+#include "BufferView.h"
 
 using std::vector;
 using SigC::slot;

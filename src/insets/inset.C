@@ -11,10 +11,10 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "lyxinset.h"
+#pragma implementation
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "support/lstrings.h"
@@ -22,6 +22,7 @@
 #include "commandtags.h"
 #include "support/lstrings.h"
 #include "gettext.h"
+#include "lyxfont.h"
 
 using std::endl;
 

@@ -18,7 +18,7 @@
 
 #include <list>
 
-class LyXParagraph;
+class Paragraph;
 
 // Controls correspondance between paragraphs and the generated LaTeX file
 class TexRow {
@@ -30,7 +30,7 @@ public:
 	void reset();
 
 	/// Define what paragraph and position the next row will represent
-	void start(LyXParagraph * par, int pos);
+	void start(Paragraph * par, int pos);
 
 	/// Insert node when line is completed
 	void newline();
@@ -91,7 +91,7 @@ private:
 	///
 	mutable RowList rowlist;
 	/// Last paragraph
-	LyXParagraph * lastpar;
+	Paragraph * lastpar;
 	/// Last position
 	int lastpos;
 	

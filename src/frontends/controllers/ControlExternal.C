@@ -33,6 +33,7 @@
 #include "frontends/FileDialog.h"
 #include "lyx_gui_misc.h" // WriteAlert
 #include "gettext.h"
+#include "BufferView.h"
 
 using std::make_pair;
 using std::vector;

@@ -31,6 +31,7 @@
 #include "support/FileInfo.h"  // for FileInfo
 #include "helper_funcs.h"      // for browseFile
 #include "support/filetools.h" // for AddName
+#include "BufferView.h"
 
 using std::pair;
 using std::make_pair;

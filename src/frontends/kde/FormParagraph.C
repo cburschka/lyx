@@ -60,7 +60,7 @@ void FormParagraph::update(bool switched)
 	if (!text)
 		text = lv_->view()->text;
 
-	LyXParagraph const * par = text->cursor.par();
+	Paragraph const * par = text->cursor.par();
 
 	int align = par->GetAlign();
 	
@@ -69,7 +69,7 @@ void FormParagraph::update(bool switched)
 
 #if 0
 	// Just remove this and change physpar to par
-	LyXParagraph const * physpar = par;
+	Paragraph const * physpar = par;
 
 	if (physpar->params.spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = physpar->params.spaceTop().length();

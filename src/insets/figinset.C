@@ -64,6 +64,7 @@
 #include "ColorHandler.h"
 #include "converter.h"
 #include "frontends/Dialogs.h" // redrawGUI
+#include "BufferView.h"
 
 using std::ostream;
 using std::istream;

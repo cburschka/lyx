@@ -5,7 +5,6 @@
 #endif
 
 #include "math_decorationinset.h"
-#include "math_iter.h"
 #include "mathed/support.h"
 #include "math_parser.h"
 #include "support/LOstream.h"
@@ -15,10 +14,10 @@
 using std::ostream;
 
 
-MathDecorationInset::MathDecorationInset(int d, short st)
-	: MathParInset(st, "", LM_OT_DECO), deco_(d)
+MathDecorationInset::MathDecorationInset(int d)
+	: MathInset("", LM_OT_DECO, 1), deco_(d)
 {
-	upper_ = (deco_ != LM_underline && deco_ != LM_underbrace);
+	upper_ = deco_ != LM_underline && deco_ != LM_underbrace;
 }
 
 
@@ -28,44 +27,49 @@ bool MathDecorationInset::GetLimits() const
 }    
 
 
-MathedInset * MathDecorationInset::Clone()
+MathInset * MathDecorationInset::Clone() const
 {   
 	return new MathDecorationInset(*this);
 }
 
 
-void
-MathDecorationInset::draw(Painter & pain, int x, int y)
+void MathDecorationInset::draw(Painter & pain, int x, int y)
 { 
-	MathParInset::draw(pain, x + (width - dw_) / 2, y);
-	mathed_draw_deco(pain, x, y + dy_, width, dh_, deco_);
+	xcell(0).draw(pain, x, y);
+	mathed_draw_deco(pain, x, y + 10, width_, 10, deco_);
 }
 
 
-void
-MathDecorationInset::Metrics()
+void MathDecorationInset::Metrics(MathStyles st)
 {
 	int const h = 2 * mathed_char_height(LM_TC_VAR, size(), 'I',
-					     ascent, descent);  
-	MathParInset::Metrics();
-	int w = Width() + 4;
-	if (w < 16) w = 16;
-	dh_ = w / 5;
-	if (dh_ > h) dh_ = h;
-	
+					     ascent_, descent_);  
+	xcell(0).Metrics(st);
+	width_   = xcell(0).width();
+	ascent_  = xcell(0).ascent();
+	descent_ = xcell(0).descent();
+
+	int w = width() + 4;
+	if (w < 16)
+		w = 16;
+
+	int dh_ = w / 5;
+	if (dh_ > h)
+		dh_ = h;
+
+	int dy_;	
 	if (upper_) {
-		ascent += dh_ + 2;
-		dy_ = -ascent;
+		ascent_ += dh_ + 2;
+		dy_ = -ascent_;
 	} else {
-		dy_ = descent + 2;
-		descent += dh_ + 4;
+		dy_ = descent_ + 2;
+		descent_ += dh_ + 4;
 	}
-	dw_ = width;
-	width = w;
+	width_ = w;
 }
 
 
-void MathDecorationInset::Write(ostream & os, bool fragile)
+void MathDecorationInset::Write(ostream & os, bool fragile) const
 {
 	latexkeys const * l = lm_get_key_by_id(deco_, LM_TK_WIDE);
 	if (fragile &&
@@ -75,6 +79,6 @@ void MathDecorationInset::Write(ostream & os, bool fragile)
 	     compare(l->name, "overrightarrow") == 0))
 		os << "\\protect";
 	os << '\\' << l->name << '{';
-	MathParInset::Write(os, fragile);  
+	cell(0).Write(os, fragile);  
 	os << '}';
 }

@@ -1,10 +1,10 @@
 // -*- C++ -*-
-#ifndef MATHMACROTEMPLATE
-#define MATHMACROTEMPLATE
+#ifndef MATH_MACROTEMPLATE_H
+#define MATH_MACROTEMPLATE_H
 
 #include <set>
 
-#include "math_parinset.h"
+#include "math_inset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -15,32 +15,36 @@ class MathMacro;
 /** This class contains the macro definition
     \author Alejandro Aguilar Sierra
  */
-//class MathMacroTemplate : public MathParInset, boost::noncopyable 
+//class MathMacroTemplate : public MathInset, boost::noncopyable 
 
-class MathMacroTemplate : public MathParInset {
+class MathMacroTemplate : public MathInset {
 public:
 	///
 	MathMacroTemplate();
 	///
 	MathMacroTemplate(string const & name, int nargs);
 	///
-	void WriteDef(std::ostream &, bool fragile) const;
+	MathMacroTemplate * Clone() const;
+	///
+	void Write(std::ostream &, bool fragile) const;
 	/// Number of arguments
-	int nargs() const;
+	int numargs() const;
+	///
+	void numargs(int);
 	///
 	void draw(Painter &, int, int);
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 private:
 	///
-	int na_;
+	int numargs_;
 	///
 	std::set<MathMacro *> users_;
 
 	/// unimplemented
 	void operator=(MathMacroTemplate const &);
 	/// unimplemented
-	MathMacroTemplate(MathMacroTemplate const &);
+	//MathMacroTemplate(MathMacroTemplate const &);
 };
 
 #endif

@@ -44,7 +44,7 @@ class InsetInfo;
 class InsetTabular;
 class InsetCommand;
 class InsetMinipage;
-class LyXParagraph;
+class Paragraph;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide

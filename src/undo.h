@@ -16,10 +16,7 @@
 #pragma interface
 #endif
 
-#include <list>
-
-#include "lyxparagraph.h"
-
+class Paragraph;
 
 ///
 class Undo {
@@ -46,43 +43,15 @@ public:
 	///
 	int cursor_pos; // valid if >= 0
 	///
-	LyXParagraph * par;
+	Paragraph * par;
 	///
 	Undo(undo_kind kind_arg,
 	     int number_before_arg, int number_behind_arg,
 	     int cursor_par_arg, int cursor_pos_arg,
-	     LyXParagraph * par_arg);
+	     Paragraph * par_arg);
 	///
 	~Undo();
 };
 
-
-/// A limited Stack for the undo informations.
-class UndoStack{
-private:
-	///
-	typedef std::list<Undo*> Stakk;
-	///
-	Stakk stakk;
-	/// the maximum number of undo steps stored.
-	Stakk::size_type limit;
-public:
-	///
-	UndoStack();
-	///
-	Undo * pop();
-	///
-	Undo * top();
-	///
-	bool empty() const;
-	///
-	~UndoStack();
-	///
-	void clear();
-	///
-	void SetStackLimit(Stakk::size_type l);
-	///
-	void push(Undo * undo_arg);
-};
 
 #endif

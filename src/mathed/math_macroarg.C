@@ -4,44 +4,29 @@
 #pragma implementation
 #endif
 
-#include "math_macro.h"
 #include "math_macroarg.h"
+#include "math_macro.h"
+#include "math_defs.h"
 #include "mathed/support.h"
-#include "Lsstream.h"
+#include "support/LAssert.h"
 #include "debug.h"
 
-using std::endl;
 
 
 MathMacroArgument::MathMacroArgument(int n)
-	: MathedInset(string(), LM_OT_MACRO_ARG, LM_ST_TEXT),
-		number_(n)
+	: number_(n)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
-			<< n << endl;
+			<< n << std::endl;
 		lyx::Assert(0);
 	}
 }
 
 
-MathedInset * MathMacroArgument::Clone()
+MathInset * MathMacroArgument::Clone() const
 {
-	//return new MathMacroArgument(*this);
-	return this;
-}
-
-
-int MathMacroArgument::number() const
-{
-	return number_;
-}
-
-
-void MathMacroArgument::substitute(MathMacro * /*m*/)
-{
-	lyxerr << "Calling MathMacroArgument::substitute!\n";
-	//return m->arg(number_)->Clone();
+	return new MathMacroArgument(*this);
 }
 
 
@@ -53,22 +38,29 @@ void MathMacroArgument::draw(Painter & pain, int x, int y)
 }
 
 
-void MathMacroArgument::Metrics()
+void MathMacroArgument::Metrics(MathStyles st)
 {
 	char str[] = "#0";
 	str[1] += number_; 
-	width = mathed_string_width(LM_TC_TEX, size(), str);
-	mathed_string_height(LM_TC_TEX, size(), str, ascent, descent);
+	size_ = st;
+	mathed_string_dim(LM_TC_TEX, size(), str, ascent_, descent_, width_);
 }
 
 
-void MathMacroArgument::Write(std::ostream & os, bool /*fragile*/)
+void MathMacroArgument::Write(std::ostream & os, bool /*fragile*/) const
 {
 	os << '#' << number_ << ' ';
 }
 
 
-void MathMacroArgument::WriteNormal(std::ostream & os)
+void MathMacroArgument::WriteNormal(std::ostream & os) const
 {
 	os << "[macroarg " << number_ << "] ";
 }
+
+
+void MathMacroArgument::substitute(MathArray & arr, MathMacro const & m) const
+{
+	arr.push_back(m.cell(number_ - 1));
+}
+

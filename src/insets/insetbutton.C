@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "support/LAssert.h"
+#include "lyxfont.h"
 
 using std::ostream;
 using std::endl;

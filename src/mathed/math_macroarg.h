@@ -11,24 +11,22 @@
 /** A macro argument
     \author Alejandro Aguilar Sierra
 */
-class MathMacroArgument : public MathedInset {
+class MathMacroArgument : public MathInset {
 public:
 	///
 	explicit MathMacroArgument(int);
 	///
-	MathedInset * Clone();
+	MathInset * Clone() const;
 	///
-	void substitute(MathMacro *);
-	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	int number() const;
+	void substitute(MathArray & array, MathMacro const & macro) const;
 
 private:
 	/// A number between 1 and 9

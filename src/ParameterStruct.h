@@ -10,6 +10,8 @@
 ///
 struct ParameterStruct {
 	///
+	typedef unsigned int depth_type;
+	///
 	VSpace added_space_top;
 	///
 	VSpace added_space_bottom;
@@ -28,7 +30,7 @@ struct ParameterStruct {
 	///
 	LyXAlignment align;
 	///
-	char depth; // wrong type (Lgb)
+	depth_type depth; 
 	///
 	bool start_of_appendix;
 	///

@@ -255,7 +255,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = bv->buffer()->paragraph;
+	Paragraph * par = bv->buffer()->paragraph;
     
 	while (par) {
 		if (par->bibkey) {
@@ -273,7 +273,7 @@ string const bibitemWidest(Buffer const * buffer)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = buffer->paragraph;
+	Paragraph * par = buffer->paragraph;
 	InsetBibKey * bkey = 0;
 	LyXFont font;
       

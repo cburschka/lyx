@@ -25,6 +25,8 @@
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
+#include "BufferView.h"
+#include "ParagraphParameters.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -55,7 +57,7 @@ void FormParagraph::disconnect()
 }
 
 
-LyXParagraph const * FormParagraph::getCurrentParagraph() const
+Paragraph const * FormParagraph::getCurrentParagraph() const
 {
 	LyXText * text = 0;
 
@@ -70,7 +72,7 @@ LyXParagraph const * FormParagraph::getCurrentParagraph() const
 void FormParagraph::changedParagraph()
 {
 	/// Record the paragraph
-	LyXParagraph const * const p = getCurrentParagraph();
+	Paragraph const * const p = getCurrentParagraph();
 	if (p == 0 || p == par_)
 		return;
 
@@ -268,7 +270,7 @@ void FormParagraph::general_apply()
 	text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
     if (!text)
 	text = lv_->view()->text;
-    text->SetParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
+    text->setParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
 		       pagebreak_bottom, space_top, space_bottom, align, 
 		       labelwidthstring, noindent);
 }
@@ -285,16 +287,16 @@ void FormParagraph::general_update()
     par_ = getCurrentParagraph();
 
     fl_set_input(general_->input_labelwidth,
-		 par_->GetLabelWidthString().c_str());
+		 par_->getLabelWidthString().c_str());
     fl_set_button(general_->radio_align_right, 0);
     fl_set_button(general_->radio_align_left, 0);
     fl_set_button(general_->radio_align_center, 0);
     fl_set_button(general_->radio_align_block, 0);
 
-    int align = par_->GetAlign();
+    int align = par_->getAlign();
     if (align == LYX_ALIGN_LAYOUT)
 	align = textclasslist.Style(buf->params.textclass,
-				    par_->GetLayout()).align;
+				    par_->getLayout()).align;
 
     switch (align) {
     case LYX_ALIGN_RIGHT:
@@ -313,7 +315,7 @@ void FormParagraph::general_update()
 
     LyXAlignment alignpos =
 	    textclasslist.Style(buf->params.textclass,
-				par_->GetLayout()).alignpossible;
+				par_->getLayout()).alignpossible;
 
     setEnabled(general_->radio_align_block,  bool(alignpos & LYX_ALIGN_BLOCK));
     setEnabled(general_->radio_align_center, bool(alignpos & LYX_ALIGN_CENTER));
@@ -321,19 +323,19 @@ void FormParagraph::general_update()
     setEnabled(general_->radio_align_right,  bool(alignpos & LYX_ALIGN_RIGHT));
     
     fl_set_button(general_->check_lines_top,
-		  par_->params.lineTop());
+		  par_->params().lineTop());
     fl_set_button(general_->check_lines_bottom,
-		  par_->params.lineBottom());
+		  par_->params().lineBottom());
     fl_set_button(general_->check_pagebreaks_top,
-		  par_->params.pagebreakTop());
+		  par_->params().pagebreakTop());
     fl_set_button(general_->check_pagebreaks_bottom,
-		  par_->params.pagebreakBottom());
+		  par_->params().pagebreakBottom());
     fl_set_button(general_->check_noindent,
-		  par_->params.noindent());
+		  par_->params().noindent());
 
     fl_set_input (general_->input_space_above, "");
 
-    switch (par_->params.spaceTop().kind()) {
+    switch (par_->params().spaceTop().kind()) {
     case VSpace::NONE:
 	fl_set_choice (general_->choice_space_above, 1);
 	break;
@@ -355,15 +357,15 @@ void FormParagraph::general_update()
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_above, 7);
 	fl_set_input(general_->input_space_above, par_->
-		     params.spaceTop().length().asString().c_str());
+		     params().spaceTop().length().asString().c_str());
 	break;
     }
     
     fl_set_button (general_->check_space_above,
-		   par_->params.spaceTop().keep());
+		   par_->params().spaceTop().keep());
     fl_set_input (general_->input_space_below, "");
 
-    switch (par_->params.spaceBottom().kind()) {
+    switch (par_->params().spaceBottom().kind()) {
     case VSpace::NONE:
 	fl_set_choice (general_->choice_space_below, 1);
 	break;
@@ -385,13 +387,13 @@ void FormParagraph::general_update()
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_below, 7);
         fl_set_input(general_->input_space_below, par_->
-		     params.spaceBottom().length().asString().c_str());
+		     params().spaceBottom().length().asString().c_str());
 	break;
     }
     fl_set_button(general_->check_space_below,
-		   par_->params.spaceBottom().keep());
+		   par_->params().spaceBottom().keep());
     fl_set_button(general_->check_noindent,
-		  par_->params.noindent());
+		  par_->params().noindent());
 }
 
 

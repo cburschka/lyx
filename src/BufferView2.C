@@ -8,10 +8,10 @@
  *
  * ====================================================== */
 
-#include <config.h>
-
 #include <fstream>
 #include <algorithm>
+
+#include <config.h>
 
 #include "BufferView.h"
 #include "buffer.h"
@@ -98,7 +98,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 bool BufferView::removeAutoInsets()
 {
-	LyXParagraph * par = buffer()->paragraph;
+	Paragraph * par = buffer()->paragraph;
 
 	LyXCursor tmpcursor = text->cursor;
 	LyXCursor cursor;
@@ -107,12 +107,12 @@ bool BufferView::removeAutoInsets()
 
 	while (par) {
 		// this has to be done before the delete
-		text->SetCursor(this, cursor, par, 0);
-		if (par->AutoDeleteInsets()){
+		text->setCursor(this, cursor, par, 0);
+		if (par->autoDeleteInsets()){
 			a = true;
-			text->RedoParagraphs(this, cursor,
+			text->redoParagraphs(this, cursor,
 					     cursor.par()->next());
-			text->FullRebreak(this);
+			text->fullRebreak(this);
 		}
 		par = par->next();
 	}
@@ -121,7 +121,7 @@ bool BufferView::removeAutoInsets()
 	if (tmpcursor.pos() > tmpcursor.par()->size())
 		tmpcursor.pos(tmpcursor.par()->size());
 
-	text->SetCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
+	text->setCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
 
 	return a;
 }
@@ -148,25 +148,25 @@ void BufferView::insertErrors(TeXErrors & terr)
 			buffer()->texrow.increasePos(tmpid, tmppos);
 		}
 		
-		LyXParagraph * texrowpar = 0;
+		Paragraph * texrowpar = 0;
 
 		if (tmpid == -1) {
-			texrowpar = text->FirstParagraph();
+			texrowpar = text->firstParagraph();
 			tmppos = 0;
 		} else {
-			texrowpar = text->GetParFromID(tmpid);
+			texrowpar = text->getParFromID(tmpid);
 		}
 
 		if (texrowpar == 0)
 			continue;
 
 		InsetError * new_inset = new InsetError(msgtxt);
-		text->SetCursorIntern(this, texrowpar, tmppos);
-		text->InsertInset(this, new_inset);
-		text->FullRebreak(this);
+		text->setCursorIntern(this, texrowpar, tmppos);
+		text->insertInset(this, new_inset);
+		text->fullRebreak(this);
 	}
 	// Restore the cursor position
-	text->SetCursorIntern(this, cursor.par(), cursor.pos());
+	text->setCursorIntern(this, cursor.par(), cursor.pos());
 }
 
 
@@ -177,15 +177,15 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
 
-	LyXParagraph * texrowpar;
+	Paragraph * texrowpar;
 
 	if (tmpid == -1) {
-		texrowpar = text->FirstParagraph();
+		texrowpar = text->firstParagraph();
 		tmppos = 0;
 	} else {
-		texrowpar = text->GetParFromID(tmpid);
+		texrowpar = text->getParFromID(tmpid);
 	}
-	text->SetCursor(this, texrowpar, tmppos);
+	text->setCursor(this, texrowpar, tmppos);
 }
 
 
@@ -209,7 +209,7 @@ bool BufferView::gotoLabel(string const & label)
 		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange(text);
-			text->SetCursor(this, it.getPar(), it.getPos());
+			text->setCursor(this, it.getPar(), it.getPos());
 			text->selection.cursor = text->cursor;
 			update(text, BufferView::SELECT|BufferView::FITCUR);
 			return true;
@@ -226,7 +226,7 @@ void BufferView::menuUndo()
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!text->TextUndo(this))
+		if (!text->textUndo(this))
 			owner()->message(_("No forther undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -247,7 +247,7 @@ void BufferView::menuRedo()
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!text->TextRedo(this))
+		if (!text->textRedo(this))
 			owner()->message(_("No further redo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -262,7 +262,7 @@ void BufferView::copyEnvironment()
 		text->copyEnvironmentType();
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->ClearSelection(this);
+		text->clearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->message(_("Paragraph environment type copied"));
 	}
@@ -282,10 +282,10 @@ void BufferView::pasteEnvironment()
 void BufferView::copy()
 {
 	if (available()) {
-		text->CopySelection(this);
+		text->copySelection(this);
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->ClearSelection(this);
+		text->clearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->message(_("Copy"));
 	}
@@ -297,7 +297,7 @@ void BufferView::cut()
 	if (available()) {
 		hideCursor();
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->CutSelection(this);
+		text->cutSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner()->message(_("Cut"));
 	}
@@ -313,16 +313,16 @@ void BufferView::paste()
 	hideCursor();
 	// clear the selection
 	toggleSelection();
-	text->ClearSelection(this);
+	text->clearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 	
 	// paste
-	text->PasteSelection(this);
+	text->pasteSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	
 	// clear the selection 
 	toggleSelection();
-	text->ClearSelection(this);
+	text->clearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
@@ -334,7 +334,7 @@ void BufferView::insertCorrectQuote()
 	char c;
 
 	if (text->cursor.pos())
-		c = text->cursor.par()->GetChar(text->cursor.pos() - 1);
+		c = text->cursor.par()->getChar(text->cursor.pos() - 1);
 	else 
 		c = ' ';
 
@@ -350,7 +350,7 @@ string const BufferView::nextWord(float & value)
 		return string();
 	}
 
-	return text->SelectNextWord(this, value);
+	return text->selectNextWord(this, value);
 }
 
   
@@ -360,7 +360,7 @@ void BufferView::selectLastWord()
    
 	hideCursor();
 	beforeChange(text);
-	text->SelectSelectedWord(this);
+	text->selectSelectedWord(this);
 	toggleSelection(false);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
@@ -372,8 +372,8 @@ void BufferView::endOfSpellCheck()
    
 	hideCursor();
 	beforeChange(text);
-	text->SelectSelectedWord(this);
-	text->ClearSelection(this);
+	text->selectSelectedWord(this);
+	text->clearSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
@@ -391,13 +391,13 @@ void BufferView::replaceWord(string const & replacestring)
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	text->ReplaceSelectionWithString(this, replacestring);
+	text->replaceSelectionWithString(this, replacestring);
    
-	text->SetSelectionOverString(this, replacestring);
+	text->setSelectionOverString(this, replacestring);
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		text->CursorLeft(this);
+		text->cursorLeft(this);
 	}
 	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
@@ -421,11 +421,11 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 	if (theLockingInset() && available()) {
 		LyXCursor cursor = text->cursor;
 		if ((cursor.pos() - 1 >= 0) &&
-		    (cursor.par()->GetChar(cursor.pos() - 1) ==
-		     LyXParagraph::META_INSET) &&
-		    (cursor.par()->GetInset(cursor.pos() - 1) ==
+		    (cursor.par()->getChar(cursor.pos() - 1) ==
+		     Paragraph::META_INSET) &&
+		    (cursor.par()->getInset(cursor.pos() - 1) ==
 		     theLockingInset()->GetLockingInset()))
-			text->SetCursor(this, cursor,
+			text->setCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
@@ -468,11 +468,11 @@ int BufferView::unlockInset(UpdatableInset * inset)
 	if (inset && theLockingInset() == inset) {
 		inset->InsetUnlock(this);
 		theLockingInset(0);
-		text->FinishUndo();
+		text->finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->UnlockInsetInInset(this, inset)) {
-		text->FinishUndo();
+		text->finishUndo();
 		return 0;
 	}
 	return bufferlist.unlockInset(inset);
@@ -485,7 +485,7 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-	text->SetUndo(buffer(), kind,
+	text->setUndo(buffer(), kind,
 		      text->cursor.par()->previous(), 
 		      text->cursor.par()->next());
 }
@@ -501,7 +501,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			      string const & from, string const & to)
 {
 	bool flag = false;
-	LyXParagraph * par = buffer()->paragraph;
+	Paragraph * par = buffer()->paragraph;
 	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
 	cursor.par(tmpcursor.par());
@@ -509,7 +509,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 
 	while (par) {
 		bool flag2 = false;
-		for (LyXParagraph::inset_iterator it = par->inset_iterator_begin();
+		for (Paragraph::inset_iterator it = par->inset_iterator_begin();
 		     it != par->inset_iterator_end(); ++it) {
 			if ((*it)->LyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(*it);
@@ -523,14 +523,14 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			flag = true;
 			// this is possible now, since SetCursor takes
 			// care about footnotes
-			text->SetCursorIntern(this, par, 0);
-			text->RedoParagraphs(this, text->cursor,
+			text->setCursorIntern(this, par, 0);
+			text->redoParagraphs(this, text->cursor,
 					     text->cursor.par()->next());
-			text->FullRebreak(this);
+			text->fullRebreak(this);
 		}
 		par = par->next();
 	}
-	text->SetCursorIntern(this, cursor.par(), cursor.pos());
+	text->setCursorIntern(this, cursor.par(), cursor.pos());
 	return flag;
 }
 
@@ -602,6 +602,6 @@ LyXText * BufferView::getParentText(Inset * inset) const
 Language const * BufferView::getParentLanguage(Inset * inset) const
 {
 	LyXText * text = getParentText(inset);
-	return text->cursor.par()->GetFontSettings(buffer()->params,
+	return text->cursor.par()->getFontSettings(buffer()->params,
 						   text->cursor.pos()).language();
 }

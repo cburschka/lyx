@@ -63,24 +63,24 @@ void FigureApplyCB(FL_OBJECT *, long)
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->beforeChange(current_view->text);
       
-	current_view->text->SetCursorParUndo(current_view->buffer()); 
-	current_view->text->FreezeUndo();
+	current_view->text->setCursorParUndo(current_view->buffer()); 
+	current_view->text->freezeUndo();
 
-	current_view->text->BreakParagraph(current_view);
+	current_view->text->breakParagraph(current_view);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 	if (current_view->text->cursor.par()->size()) {
-		current_view->text->CursorLeft(current_view);
+		current_view->text->cursorLeft(current_view);
 	 
-		current_view->text->BreakParagraph(current_view);
+		current_view->text->breakParagraph(current_view);
 		current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 
 	// The standard layout should always be numer 0;
-	current_view->text->SetLayout(current_view, 0);
+	current_view->text->setLayout(current_view, 0);
 
 		current_view->text->
-			SetParagraph(current_view, 0, 0,
+			setParagraph(current_view, 0, 0,
 				     0, 0,
 				     VSpace (0.3 * buffer->params.spacing.getValue(),
 					     LyXLength::CM),
@@ -96,7 +96,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	new_inset->Edit(current_view, 0, 0, 0);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->owner()->message(_("Figure inserted"));
-	current_view->text->UnFreezeUndo();
+	current_view->text->unFreezeUndo();
 	current_view->setState();
 }
 

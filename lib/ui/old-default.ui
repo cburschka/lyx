@@ -244,8 +244,8 @@ Menuset
 	Item "Sum|u" "math-insert sum"
 	Item "Integral|I" "math-insert int"
 	Separator
-	Item "Math mode|M" "math-mode"
-	Item "Display|D" "math-display"
+	Item "Math mode|M" "math-mode simple"
+	Item "Display|D" "math-mode display"
 	Separator
 	Item "Math Panel...|P" "math-panel"
     End

@@ -10,20 +10,20 @@
 #endif
 
 /// The different kinds of ellipsis
-class MathDotsInset : public MathedInset {
+class MathDotsInset : public MathInset {
 public:
 	///
-	MathDotsInset(string const &, int, short st = LM_ST_TEXT);
+	MathDotsInset(string const &, int);
 	///
-	MathedInset * Clone();
+	MathInset *  Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
+	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 protected:
 	///
 	int dh_;

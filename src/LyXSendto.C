@@ -13,6 +13,7 @@
 #include "gettext.h"
 #include "bufferview_funcs.h"
 #include "exporter.h"
+#include "BufferView.h"
 
 extern FD_form_sendto * fd_form_sendto;
 extern BufferView * current_view;

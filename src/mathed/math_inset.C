@@ -21,152 +21,308 @@
 #pragma implementation
 #endif
 
-#include "debug.h"
-#include "math_iter.h"
 #include "math_inset.h"
-#include "symbol_def.h"
-#include "lyxfont.h"
 #include "mathed/support.h"
 #include "Painter.h"
+#include "debug.h"
 
 
-// Initialize some static class variables.
-int MathedInset::df_asc;
-int MathedInset::df_des;
-int MathedInset::df_width;
-int MathedInset::workWidth;
+int MathInset::workwidth;
 
 
-MathedInset::MathedInset(string const & nm, short ot, short st)
-	: name(nm), objtype(ot), width(0), ascent(0), descent(0),
-	  size_(st)
+MathInset::MathInset(string const & name, short ot, int nargs)
+	: name_(name), objtype(ot), width_(0), ascent_(0), descent_(0),
+		size_(LM_ST_TEXT), cells_(nargs), xo_(0), yo_(0)
 {}
 
 
-// In a near future maybe we use a better fonts renderer
-void MathedInset::drawStr(Painter & pain, short type, int siz,
-			  int x, int y, string const & s)
+int MathInset::ascent() const
 {
-	string st;
-	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin();
-		     it != s.end(); ++it) {
-			st += ' ';
-			st += *it;
-			st += ' ';
-		}
-	else
-		st = s;
-	
-	LyXFont const mf = mathed_get_font(type, siz);
-	pain.text(x, y, st, mf);
-}
-
-void MathedInset::substitute(MathMacro *)
-{
+	return ascent_;
 }
 
 
-int MathedInset::Ascent() const
+int MathInset::descent() const
 {
-	return ascent;
+	return descent_;
 }
 
 
-int MathedInset::Descent() const
+int MathInset::width() const
 {
-	return descent;
+	return width_;
 }
 
 
-int MathedInset::Width() const
+int MathInset::height() const
 {
-	return width;
+	return ascent_ + descent_;
 }
 
 
-int MathedInset::Height() const
-{
-	return ascent + descent;
-}
-
-
-bool MathedInset::GetLimits() const
+bool MathInset::GetLimits() const
 {
 	return false;
 }
 
 
-void MathedInset::SetLimits(bool) {}   
+void MathInset::SetLimits(bool) {}   
 
 
-string const & MathedInset::GetName() const
+string const & MathInset::name() const
 {
-	return name;
+	return name_;
 }
 
 
-short MathedInset::GetType() const
+short MathInset::GetType() const
 {
 	return objtype;
 }
 
 
-short MathedInset::GetStyle() const
-{
-	return size_;
-}
-
-
-void  MathedInset::SetType(short t)
+void  MathInset::SetType(short t)
 {
 	objtype = t;
 }
 
 
-void  MathedInset::SetStyle(short st)
+void MathInset::SetName(string const & n)
 {
-	size_ = st;
+	name_ = n;
 }
 
 
-void MathedInset::SetName(string const & n)
-{
-	name = n;
-}
-
-
-void MathedInset::defaultAscent(int da)
-{
-	df_asc = da;
-}
-
-
-
-void MathedInset::defaultDescent(int dd)
-{
-	df_des = dd;
-}
-
-
-void MathedInset::defaultWidth(int dw)
-{
-	df_width = dw;
-}
-
-
-short MathedInset::size() const
+MathStyles MathInset::size() const
 {
 	return size_;
 }
 
 
-void MathedInset::size(short s)
+void MathInset::size(MathStyles s)
 {
 	size_ = s;
 }
 
-void MathedInset::incSize()
+std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
-	++size_;
+	inset.Write(os, false);
+	return os;
 }
+
+
+int MathInset::xo() const
+{
+	return xo_;
+}
+
+
+int MathInset::yo() const
+{
+	return yo_;
+}
+
+
+void MathInset::xo(int x)
+{
+	xo_ = x;
+}
+
+
+void MathInset::yo(int y)
+{
+	yo_ = y;
+}
+
+
+int MathInset::nargs() const
+{
+	return cells_.size();
+}
+
+
+
+MathXArray & MathInset::xcell(int i)
+{
+	return cells_[i];
+}
+
+MathXArray const & MathInset::xcell(int i) const
+{
+	return cells_[i];
+}
+
+
+
+MathArray & MathInset::cell(int i)
+{
+	return cells_[i].data_;
+}
+
+MathArray const & MathInset::cell(int i) const
+{
+	return cells_[i].data_;
+}
+
+
+void MathInset::setData(MathArray const & a, int idx)
+{
+	cells_[idx].data_ = a;
+}
+
+
+void MathInset::substitute(MathArray & array, MathMacro const & m) const
+{
+	MathInset * p = Clone();
+	for (int i = 0; i < nargs(); ++i)
+		p->cell(i).substitute(m);
+	array.push_back(p);
+}
+
+void MathInset::Metrics(MathStyles st)
+{
+	size_ = st;
+	for (int i = 0; i < nargs(); ++i)
+		xcell(i).Metrics(st);
+}
+
+void MathInset::draw(Painter & pain, int x, int y)
+{
+	xo_ = x;
+	yo_ = y;
+	for (int i = 0; i < nargs(); ++i)
+		xcell(i).draw(pain, x + xcell(i).xo(), y + xcell(i).yo());
+}
+
+
+bool MathInset::idxRight(int & idx, int & pos) const
+{
+	if (idx + 1 >= nargs())
+		return false;
+	++idx;
+	pos = 0;
+	return true;
+}
+
+
+bool MathInset::idxLeft(int & idx, int & pos) const
+{
+	if (idx == 0)
+		return false;
+	--idx;
+	pos = cell(idx).size();
+	return true;
+}
+
+
+bool MathInset::idxUp(int &, int &) const
+{
+	return false;
+}
+
+
+bool MathInset::idxDown(int &, int &) const
+{
+	return false;
+}
+
+
+bool MathInset::idxFirst(int & i, int & pos) const
+{
+	if (nargs() == 0)
+		return false;
+	i = 0;
+	pos = 0;
+	return true;
+}
+
+bool MathInset::idxLast(int & i, int & pos) const
+{
+	if (nargs() == 0)
+		return false;
+	i = nargs() - 1;
+	pos = cell(i).size();
+	return true;
+}
+
+
+bool MathInset::idxHome(int & i, int & pos) const
+{
+	if (pos == 0)
+		return false;
+	pos = 0;
+	return true;
+}
+
+
+bool MathInset::idxEnd(int & idx, int & pos) const
+{
+	if (pos == cell(idx).size())
+		return false;
+
+	pos = cell(idx).size();
+	return true;
+}
+
+
+void MathInset::GetXY(int & x, int & y) const
+{
+   x = xo();
+   y = yo();
+}
+
+
+/*
+void MathInset::UserSetSize(MathStyles sz)
+{
+	if (sz >= 0) {
+		size_ = sz;      
+		flag = flag & ~LMPF_FIXED_SIZE;
+	}
+}
+*/
+
+void MathInset::WriteNormal(std::ostream & os) const
+{
+	os << "[" << name_ << "] ";
+}
+
+
+void MathInset::dump() const
+{
+	lyxerr << "---------------------------------------------\n";
+	Write(lyxerr, false);
+	lyxerr << "\n";
+	for (int i = 0; i < nargs(); ++i)
+		lyxerr << cell(i) << "\n";
+	lyxerr << "---------------------------------------------\n";
+}
+
+
+void MathInset::push_back(byte ch, MathTextCodes fcode)
+{
+	if (nargs())
+		cells_.back().data_.push_back(ch, fcode);
+	else
+		lyxerr << "can't push without a cell\n";
+}
+
+
+void MathInset::push_back(MathInset * p)
+{
+	if (nargs())
+		cells_.back().data_.push_back(p);
+	else
+		lyxerr << "can't push without a cell\n";
+}
+
+
+bool MathInset::covers(int x, int y) const
+{
+	return
+		x >= xo_ &&
+		x <= xo_ + width_ &&
+		y >= yo_ - ascent_ &&
+		y <= yo_ + descent_;
+}
+

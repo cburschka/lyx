@@ -1,14 +1,14 @@
 // -*- C++ -*-
-#ifndef MACROSUPPORT_H
-#define MACROSUPPORT_H
+#ifndef MACRO_SUPPORT_H
+#define MACRO_SUPPORT_H
 
 #include <iosfwd>
 
-enum MathedMacroFlag {
+enum MathMacroFlag {
 	MMF_Env  = 1,
 	MMF_Exp  = 2,
 	MMF_Edit = 4
 };
 
-std::ostream & operator<<(std::ostream & o, MathedMacroFlag mmf);
+std::ostream & operator<<(std::ostream & o, MathMacroFlag mmf);
 #endif

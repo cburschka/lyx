@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
+#include "inset.h"
 #include "LString.h"
 
 /** Used to provide an inset that looks like a button.

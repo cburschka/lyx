@@ -11,7 +11,7 @@
 #include FORMS_H_LOCATION
 #include "commandtags.h"
 #include "kbsequence.h"
-#include "insets/lyxinset.h"
+#include "insets/inset.h"
 #include "LString.h"
 
 class LyXView;

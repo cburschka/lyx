@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "lyxparagraph.h"
+#include "paragraph.h"
 
 ///
 class Row {
@@ -24,15 +24,15 @@ public:
 	///
 	Row();
 	///
-	void par(LyXParagraph * p);
+	void par(Paragraph * p);
 	///
-	LyXParagraph * par();
+	Paragraph * par();
 	///
-	LyXParagraph * par() const;
+	Paragraph * par() const;
 	///
-	void pos(LyXParagraph::size_type p);
+	void pos(Paragraph::size_type p);
 	///
-	LyXParagraph::size_type pos() const;
+	Paragraph::size_type pos() const;
 	///
 	void fill(int f);
 	///
@@ -63,9 +63,9 @@ public:
 	Row * previous() const;
 private:
 	///
-	LyXParagraph * par_;
+	Paragraph * par_;
 	///
-	LyXParagraph::size_type pos_;
+	Paragraph::size_type pos_;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;
@@ -85,14 +85,14 @@ private:
 
 
 inline
-LyXParagraph * Row::par()
+Paragraph * Row::par()
 {
 	return par_;
 }
 
 
 inline
-LyXParagraph * Row::par() const
+Paragraph * Row::par() const
 {
 	return par_;
 }

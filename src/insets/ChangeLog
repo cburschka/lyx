@@ -1,3 +1,20 @@
+2001-06-24  The LyX Project  <Asger>
+
+	* insettabular.C (getMaxWidth): We cache a mapping from
+	inset to cell in order to speed this method up.
+
+2001-06-24  The LyX Project  <Asger>
+
+	* insettext.C: Optimized InsetText::draw or something.
+
+2001-06-23  The LyX Project  <lyx@rose.home.sad.it>
+
+	* insettext.C (LocalDispatch): fixed inserting of 'normal chars'
+
+2001-06-23  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* inset.h: name change from lyxinset.h
+
 2001-06-22  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.C (Validate): Add a call to InsetCollapsable::Validate

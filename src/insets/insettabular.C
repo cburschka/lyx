@@ -14,6 +14,7 @@
 #include <algorithm>
 
 #include <cstdlib>
+#include <map>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -36,6 +37,7 @@
 #include "WorkArea.h"
 #include "gettext.h"
 #include "language.h"
+#include "BufferView.h"
 
 using std::ostream;
 using std::ifstream;
@@ -499,7 +501,7 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
 	inset_y = 0;
 	setPos(bv, x, y);
 	sel_cell_start = sel_cell_end = actcell;
-	bv->text->FinishUndo();
+	bv->text->finishUndo();
 	if (InsetHit(bv, x, y) && (button != 3)) {
 		ActivateCellInsetAbs(bv, x, y, button);
 	}
@@ -957,7 +959,7 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	case LFUN_CUT:
 		if (!copySelection(bv))
 			break;
-		bv->text->SetUndo(bv->buffer(), Undo::DELETE,
+		bv->text->setUndo(bv->buffer(), Undo::DELETE,
 				  bv->text->cursor.par()->previous(),
 				  bv->text->cursor.par()->next());
 		cutSelection();
@@ -966,12 +968,12 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	case LFUN_COPY:
 		if (!hasSelection())
 			break;
-		bv->text->FinishUndo();
+		bv->text->finishUndo();
 		copySelection(bv);
 		break;
 	case LFUN_PASTESELECTION:
 	{
-		string clip(bv->getClipboard());
+		string const clip(bv->getClipboard());
 	
 		if (clip.empty())
 			break;
@@ -1037,7 +1039,7 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	}
 	case LFUN_PASTE:
 		if (hasPasteBuffer()) {
-			bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+			bv->text->setUndo(bv->buffer(), Undo::INSERT,
 					  bv->text->cursor.par()->previous(),
 					  bv->text->cursor.par()->next());
 			pasteSelection(bv);
@@ -1299,7 +1301,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	} else if (the_locking_inset &&
 		 (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20))
 	{
-		int xx = cursor.x() - offset + bv->text->GetRealCursorX(bv);
+		int xx = cursor.x() - offset + bv->text->getRealCursorX(bv);
 		if (xx > (bv->workWidth()-20)) {
 			scroll(bv, -(xx - bv->workWidth() + 60));
 			UpdateLocal(bv, FULL, false);
@@ -1481,12 +1483,12 @@ void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall,
 	}
 	if (hasSelection()) {
 		bool frozen;
-		bv->text->SetUndo(bv->buffer(), Undo::EDIT,
+		bv->text->setUndo(bv->buffer(), Undo::EDIT,
 				  bv->text->cursor.par()->previous(),
 				  bv->text->cursor.par()->next());
 		frozen = bv->text->undo_frozen;
 		if (!frozen)
-			bv->text->FreezeUndo();
+			bv->text->freezeUndo();
 		// apply the fontchange on the whole selection
 		int sel_row_start;
 		int sel_row_end;
@@ -1499,7 +1501,7 @@ void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall,
 			}
 		}
 		if (!frozen)
-			bv->text->UnFreezeUndo();
+			bv->text->unFreezeUndo();
 		UpdateLocal(bv, INIT, true);
 	}
 	if (the_locking_inset)
@@ -1582,7 +1584,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 		sel_col_start = sel_col_end = tabular->column_of_cell(actcell);
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
 	}
-	bv->text->SetUndo(bv->buffer(), Undo::FINISH,
+	bv->text->setUndo(bv->buffer(), Undo::FINISH,
 			  bv->text->cursor.par()->previous(),
 			  bv->text->cursor.par()->next());
 
@@ -1902,12 +1904,28 @@ int InsetTabular::GetMaxWidthOfCell(BufferView * bv, int cell) const
 int InsetTabular::getMaxWidth(BufferView * bv,
 			      UpdatableInset const * inset) const
 {
-	int const n = tabular->GetNumberOfCells();
-	int cell = 0;
-	for (; cell < n; ++cell) {
-		if (tabular->GetCellInset(cell) == inset)
-			break;
+	typedef std::map<UpdatableInset const *, int> Cache;
+	static Cache cache;
+
+	int cell = -1;
+	Cache::const_iterator ci = cache.find(inset);
+	if (ci != cache.end()) {
+		cell = (*ci).second;
+		if (tabular->GetCellInset(cell) != inset) {
+				cell = -1;
+		}
 	}
+	
+	int const n = tabular->GetNumberOfCells();
+	if (cell == -1) {
+		cell = 0;
+		for (; cell < n; ++cell) {
+			if (tabular->GetCellInset(cell) == inset)
+				break;
+		}
+		cache[inset] = cell;
+	}
+
 	if (cell >= n)
 		return -1;
 	int w = GetMaxWidthOfCell(bv, cell);
@@ -1917,10 +1935,12 @@ int InsetTabular::getMaxWidth(BufferView * bv,
 	return w;
 }
 
+
 void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
 {
 	resizeLyXText(bv, recursive);
 }
+
 
 void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
 {
@@ -2329,12 +2349,14 @@ bool InsetTabular::isRightToLeft(BufferView *bv )
 	return bv->getParentLanguage(this)->RightToLeft();
 }
 
+
 bool InsetTabular::nodraw() const
 {
 	if (!UpdatableInset::nodraw() && the_locking_inset)
 		return the_locking_inset->nodraw();
 	return UpdatableInset::nodraw();
 }
+
 
 int InsetTabular::scroll(bool recursive) const
 {
@@ -2346,10 +2368,12 @@ int InsetTabular::scroll(bool recursive) const
 	return sx;
 }
 
+
 bool InsetTabular::doClearArea() const
 {
 	return !locked || (need_update & (FULL|INIT));
 }
+
 
 void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) const
 {

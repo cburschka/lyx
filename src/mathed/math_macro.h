@@ -6,16 +6,16 @@
  *  Created:     November 1996
  *  Description: WYSIWYG math macros
  *
- *  Dependencies: Mathed
+ *  Dependencies: Math
  *
  *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
  *
- *   Version: 0.2, Mathed & Lyx project.
+ *   Version: 0.2, Math & Lyx project.
  *
  *   This code is under the GNU General Public Licence version 2 or later.
  */
-#ifndef MATH_MACRO
-#define MATH_MACRO
+#ifndef MATH_MACRO_H
+#define MATH_MACRO_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -23,9 +23,8 @@
 
 #include <vector>
 #include <iosfwd>
-#include <boost/smart_ptr.hpp>
 
-#include "math_parinset.h"
+#include "math_inset.h"
 #include "math_macroarg.h"
 
 class MathMacroTemplate;
@@ -35,69 +34,39 @@ class MathMacroTemplate;
     \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
     \version November 1996
  */
-class MathMacro : public MathParInset {
+class MathMacro : public MathInset {
 public:
 	/// A macro can be built from an existing template
 	explicit MathMacro(MathMacroTemplate const &);
 	///
 	void draw(Painter &, int, int);
 	///
-	void Metrics();
+	void Metrics(MathStyles st);
 	///
-	MathedInset * Clone();
+	MathInset * Clone() const;
 	///
-	void Write(std::ostream &, bool fragile);
+	void Write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &);
-	/// Index 0 is the template, index 1..nargs() are the parameters
-	bool setArgumentIdx(int);
-	///
-	int getArgumentIdx() const;
-	///
-	int getMaxArgumentIdx() const;
-	///
-	int nargs() const;
-	///
-	int GetColumns() const;
-	///
-	void GetXY(int &, int &) const;
-	///
-	void SetFocus(int, int);
-	///
-	MathedArray & GetData();
-	///
-	MathedArray const & GetData() const;
-	///
-	void setData(MathedArray const &);
-	///
-	void setData(MathedArray const &, int);
-	///
-	MathedTextCodes getTCode() const;
-	///
-	bool Permit(short) const;
-	///
-	void expand();
+	void WriteNormal(std::ostream &) const;
 	///
 	void dump(std::ostream & os) const;
+
 	///
-	MathParInset const * arg(int) const;
+	bool idxUp(int &, int &) const;
 	///
-	MathParInset * arg(int);
+	bool idxDown(int &, int &) const;
 	///
-	MathMacroTemplate * tmplate() const;
+	bool idxLeft(int &, int &) const;
+	///
+	bool idxRight(int &, int &) const;
+
 private:
 	///
-	MathMacroTemplate * tmplate_;
-	/// our arguments
-	std::vector< boost::shared_ptr<MathParInset> > args_;
-	/// the expanded version fror drawing
-	boost::shared_ptr<MathParInset> expanded_;
+	MathMacroTemplate const * const tmplate_;
 	///
-	int idx_;
-
-	/// unimplemented
-	void operator=(MathMacro const &);
+	MathXArray expanded_;
 };
+
 
 inline std::ostream & operator<<(std::ostream & os, MathMacro const & m)
 {

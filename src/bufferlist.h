@@ -101,9 +101,6 @@ public:
 	/// Close all open buffers.
 	void closeAll();
 
-	///
-	void resize();
-
 	/// Read a file into a buffer readonly or not.
 	Buffer * readFile(string const &, bool ro);
 

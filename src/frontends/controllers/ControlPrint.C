@@ -30,6 +30,7 @@
 #include "helper_funcs.h" // browseFile
 #include "lyx_gui_misc.h" // WriteAlert
 #include "gettext.h"
+#include "BufferView.h"
 
 using Liason::printBuffer;
 using Liason::getPrinterParams;

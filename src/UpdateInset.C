@@ -6,7 +6,7 @@
 
 #include "UpdateInset.h"
 #include "BufferView.h"
-//#include "insets/lyxinset.h"
+//#include "insets/inset.h"
 
 void UpdateInset::update(BufferView * bv) 
 {
