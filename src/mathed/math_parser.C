@@ -588,10 +588,16 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		curr_label_.erase();
 
 		// reading a row
-		for (MathInset::col_type col = 0; col < p->ncols(); ++col) {
-			//lyxerr << "reading cell " << row << " " << col << "\n";
+		for (MathInset::col_type col = 0; true; ++col) {
+			//lyxerr << "reading cell " << row << " " << col << " "
+			// << p->ncols() << "\n";
 			//lyxerr << "ncols: " << p->ncols() << "\n";
 		
+			if (col >= p->ncols()) {
+				//lyxerr << "adding col " << col << "\n";
+				p->addCol(p->ncols());
+			}
+
 			MathArray & ar = p->cell(col + row * p->ncols());
 			parse_into(ar, FLAG_BLOCK);
 			// remove 'unnecessary' braces:
