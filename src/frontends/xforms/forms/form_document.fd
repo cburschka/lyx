@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_tabbed_document
 Width: 465
 Height: 450
-Number of Objects: 6
+Number of Objects: 7
 
 --------------------
 class: FL_BOX
@@ -63,8 +63,8 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: CancelCB
+name: button_cancel
+callback: C_FormDocumentCancelCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: ApplyCB
+callback: C_FormDocumentApplyCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: OKCB
+callback: C_FormDocumentOKCB
 argument: 0
 
 --------------------
@@ -120,6 +120,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: text_warning
 callback: 
 argument: 
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 410 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_restore
+callback: C_FormDocumentRestoreCB
+argument: 0
 
 =============== FORM ===============
 Name: form_doc_paper
@@ -178,7 +196,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_paperpackage
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -358,7 +376,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_portrait
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -376,7 +394,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_landscape
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -412,7 +430,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_papersize2
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -448,7 +466,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: push_use_geometry
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -466,7 +484,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_custom_width
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -484,7 +502,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_custom_height
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -502,7 +520,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_top_margin
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -520,7 +538,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bottom_margin
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -538,7 +556,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_left_margin
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -556,7 +574,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_right_margin
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -574,7 +592,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_head_height
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -592,7 +610,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_head_sep
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -610,7 +628,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_foot_skip
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -724,7 +742,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_fonts
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -742,7 +760,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_fontsize
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -760,7 +778,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_class
-callback: InputCB
+callback: C_FormDocumentChoiceClassCB
 argument: 0
 
 --------------------
@@ -778,7 +796,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_pagestyle
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -796,7 +814,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_spacing
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -814,7 +832,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_doc_extra
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -832,7 +850,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_doc_skip
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -850,7 +868,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_doc_skip
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 --------------------
@@ -886,7 +904,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_sides_one
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -904,7 +922,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_sides_two
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -958,7 +976,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_columns_one
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -976,7 +994,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_columns_two
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1030,7 +1048,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_indent
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1048,7 +1066,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_doc_skip
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 	value: 1
 
@@ -1085,7 +1103,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_doc_spacing
-callback: InputCB
+callback: C_FormDocumentInputCB
 argument: 0
 
 =============== FORM ===============
@@ -1145,7 +1163,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_inputenc
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1163,7 +1181,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_quotes_language
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1199,7 +1217,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_single
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1217,7 +1235,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_double
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1253,7 +1271,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_language
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 =============== FORM ===============
@@ -1295,7 +1313,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_float_placement
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1313,7 +1331,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_secnumdepth
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1331,7 +1349,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: slider_tocdepth
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1349,7 +1367,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_postscript_driver
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 --------------------
@@ -1367,7 +1385,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_amsmath
-callback: 
+callback: C_FormDocumentInputCB
 argument: 
 
 =============== FORM ===============
@@ -1447,7 +1465,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_bullet_size
-callback: ChoiceBulletSizeCB
+callback: C_FormDocumentChoiceBulletSizeCB
 argument: 0
 
 --------------------
@@ -1465,7 +1483,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bullet_latex
-callback: InputBulletLaTeXCB
+callback: C_FormDocumentInputBulletLaTeXCB
 argument: 0
 
 --------------------
@@ -1501,7 +1519,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_depth_1
-callback: BulletDepthCB
+callback: C_FormDocumentBulletDepthCB
 argument: 0
 	value: 1
 
@@ -1520,7 +1538,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_depth_2
-callback: BulletDepthCB
+callback: C_FormDocumentBulletDepthCB
 argument: 1
 
 --------------------
@@ -1538,7 +1556,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_depth_3
-callback: BulletDepthCB
+callback: C_FormDocumentBulletDepthCB
 argument: 2
 
 --------------------
@@ -1556,7 +1574,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_depth_4
-callback: BulletDepthCB
+callback: C_FormDocumentBulletDepthCB
 argument: 3
 
 --------------------
@@ -1628,7 +1646,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_standard
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 0
 	value: 1
 
@@ -1647,7 +1665,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_maths
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 1
 
 --------------------
@@ -1665,7 +1683,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_ding2
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 3
 
 --------------------
@@ -1683,7 +1701,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_ding3
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 4
 
 --------------------
@@ -1701,7 +1719,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_ding4
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 5
 
 --------------------
@@ -1719,7 +1737,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bullet_panel_ding1
-callback: BulletPanelCB
+callback: C_FormDocumentBulletPanelCB
 argument: 2
 
 --------------------

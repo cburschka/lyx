@@ -1428,7 +1428,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_LAYOUT_DOCUMENT:
-#ifdef USE_OLD_LAYOUT
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 		MenuLayoutDocument();
 #else
 		owner->getDialogs()->showLayoutDocument();
@@ -1467,11 +1467,15 @@ string LyXFunc::Dispatch(int ac,
 	    break;
 
 	case LFUN_LAYOUT_PAPER:
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 		MenuLayoutPaper();
+#endif
 		break;
 		
 	case LFUN_LAYOUT_QUOTES:
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 		MenuLayoutQuotes();
+#endif
 		break;
 		
 	case LFUN_LAYOUT_PREAMBLE:

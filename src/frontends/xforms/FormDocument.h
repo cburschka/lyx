@@ -1,7 +1,14 @@
 // -*- C++ -*-
-/* form_document.h
- * FormDocument Interface Class
- */
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright (C) 2000 The LyX Team.
+ *
+ *           @author Jürgen Vigna
+ *
+ *======================================================*/
 
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
@@ -17,6 +24,9 @@
 class LyXView;
 class Dialogs;
 class Combox;
+class BufferParams;
+class PreferencesPolicy;
+template <class x> class ButtonController;
 
 struct FD_form_tabbed_document;
 struct FD_form_doc_paper;
@@ -39,17 +49,29 @@ public:
     ///
     ~FormDocument();
     ///
-    void SetDocumentClassChoice(vector<string> const & choices);
-    ///
     static  int WMHideCB(FL_FORM *, void *);
     ///
     static void OKCB(FL_OBJECT *, long);
     ///
-    static void CancelCB(FL_OBJECT *, long);
-    ///
     static void ApplyCB(FL_OBJECT *, long);
     ///
+    static void CancelCB(FL_OBJECT *, long);
+    ///
+    static void RestoreCB(FL_OBJECT *, long);
+    ///
     static void InputCB(FL_OBJECT *, long);
+    ///
+    static void ChoiceClassCB(FL_OBJECT *, long);
+    ///
+    static void ChoiceBulletSizeCB(FL_OBJECT * ob, long);
+    ///
+    static void InputBulletLaTeXCB(FL_OBJECT * ob, long);
+    ///
+    static void BulletDepthCB(FL_OBJECT * ob, long);
+    ///
+    static void BulletPanelCB(FL_OBJECT * ob, long);
+    ///
+    static void BulletBMTableCB(FL_OBJECT * ob, long);
     ///
     enum EnumPopupStatus {
 	///
@@ -62,15 +84,11 @@ public:
 
 private:
     ///
-    void DeactivateDocumentButtons();
-    ///
-    void ActivateDocumentButtons();
-    ///
     void EnableDocumentLayout();
     ///
     void DisableDocumentLayout();
     ///
-    void CheckDocumentInput(FL_OBJECT * ob, long);
+    bool CheckDocumentInput(FL_OBJECT * ob, long);
     ///
     void ChoiceBulletSize(FL_OBJECT * ob, long);
     ///
@@ -84,17 +102,9 @@ private:
     ///
     void checkMarginValues();
     ///
-    static void DocumentInputCB(FL_OBJECT * ob, long);
+    void CheckChoiceClass(FL_OBJECT * ob, long);
     ///
-    static void ChoiceBulletSizeCB(FL_OBJECT * ob, long);
-    ///
-    static void InputBulletLaTeXCB(FL_OBJECT * ob, long);
-    ///
-    static void BulletDepthCB(FL_OBJECT * ob, long);
-    ///
-    static void BulletPanelCB(FL_OBJECT * ob, long);
-    ///
-    static void BulletBMTableCB(FL_OBJECT * ob, long);
+    void UpdateLayoutDocument(BufferParams const & params);
 
     /// Create the popup if necessary, update it and display it.
     void show();
@@ -103,15 +113,15 @@ private:
     /// Update the popup.
     void update();
     ///
-    void paper_update();
+    void paper_update(BufferParams const &);
     ///
-    void class_update();
+    void class_update(BufferParams const &);
     ///
-    void language_update();
+    void language_update(BufferParams const &);
     ///
-    void options_update();
+    void options_update(BufferParams const &);
     ///
-    void bullets_update();
+    void bullets_update(BufferParams const &);
     /// Apply from popup
     void apply();
     ///
@@ -178,6 +188,8 @@ private:
     FL_OBJECT * fbullet;
     ///
     Combox * combo_language;
+    ///
+    ButtonController<PreferencesPolicy> * bc_;
 };
 
 #endif

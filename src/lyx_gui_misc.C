@@ -179,23 +179,25 @@ void CloseAllBufferRelatedDialogs()
 // Again the Signal/Slot mechanism is tailor made for this task.
 void updateAllVisibleBufferRelatedDialogs()
 {
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 	if (fd_form_document->form_document->visible) {
 		UpdateLayoutDocument();
 	}
-	if (fd_form_preamble->form_preamble->visible) {
-		UpdateLayoutPreamble();
-	}
 	if (fd_form_quotes->form_quotes->visible) {
 		UpdateLayoutQuotes();
+	}
+	if (fd_form_paper->form_paper->visible) {
+		UpdateLayoutPaper();
+	}
+#endif
+	if (fd_form_preamble->form_preamble->visible) {
+		UpdateLayoutPreamble();
 	}
 	if (fd_form_paragraph->form_paragraph->visible) {
 		UpdateLayoutParagraph();
 	}
 	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
 		UpdateParagraphExtra();
-	}
-	if (fd_form_paper->form_paper->visible) {
-		UpdateLayoutPaper();
 	}
 	if (fd_form_table_options->form_table_options->visible) {
 		UpdateLayoutTable(1); // just like a right mouse click

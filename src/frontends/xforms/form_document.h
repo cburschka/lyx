@@ -5,20 +5,24 @@
 #define FD_form_tabbed_document_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void CancelCB(FL_OBJECT *, long);
-extern  "C" void ApplyCB(FL_OBJECT *, long);
-extern  "C" void OKCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentRestoreCB(FL_OBJECT *, long);
 
-extern  "C" void InputCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
 
-extern  "C" void InputCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentChoiceClassCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormDocumentInputCB(FL_OBJECT *, long);
 
-extern  "C" void ChoiceBulletSizeCB(FL_OBJECT *, long);
-extern  "C" void InputBulletLaTeXCB(FL_OBJECT *, long);
-extern  "C" void BulletDepthCB(FL_OBJECT *, long);
-extern  "C" void BulletPanelCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentChoiceBulletSizeCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentInputBulletLaTeXCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentBulletDepthCB(FL_OBJECT *, long);
+extern  "C" void C_FormDocumentBulletPanelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
@@ -27,9 +31,11 @@ struct FD_form_tabbed_document {
 
 	FL_FORM *form;
 	FL_OBJECT *tabbed_folder;
+	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *text_warning;
+	FL_OBJECT *button_restore;
 };
 struct FD_form_doc_paper {
 	~FD_form_doc_paper();

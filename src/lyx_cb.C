@@ -1562,7 +1562,7 @@ void MenuLayoutParagraph()
 	}
 }
 
-
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 inline
 void DeactivateDocumentButtons ()
 {
@@ -1869,6 +1869,7 @@ void MenuLayoutQuotes()
 		}
 	}
 }
+#endif
 
 
 bool UpdateLayoutPreamble()
@@ -2219,8 +2220,8 @@ extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 }
 
 
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 /* callbacks for form form_document */
-
 void UpdateDocumentButtons(BufferParams const & params) 
 {
 	fl_set_choice(fd_form_document->choice_pagestyle, 1);
@@ -2522,7 +2523,6 @@ extern "C" void DocumentBulletsCB(FL_OBJECT *, long)
 	// bullet callbacks etc. in bullet_panel.C -- ARRae
 }
 
-
 /* callbacks for form form_quotes */
 
 extern "C" void QuotesApplyCB(FL_OBJECT *, long)
@@ -2573,7 +2573,19 @@ extern "C" void QuotesOKCB(FL_OBJECT * ob, long data)
 	QuotesApplyCB(ob, data);
 	QuotesCancelCB(ob, data);
 }
-
+#else
+// this is needed for now!
+extern "C" void ChoiceClassCB(FL_OBJECT *, long) {}
+extern "C" void DocumentDefskipCB(FL_OBJECT *, long) {}
+extern "C" void DocumentSpacingCB(FL_OBJECT *, long) {}
+extern "C" void DocumentApplyCB(FL_OBJECT *, long) {}
+extern "C" void DocumentCancelCB(FL_OBJECT *, long) {}
+extern "C" void DocumentOKCB(FL_OBJECT *, long) {}
+extern "C" void DocumentBulletsCB(FL_OBJECT *, long) {}
+extern "C" void QuotesApplyCB(FL_OBJECT *, long) {}
+extern "C" void QuotesCancelCB(FL_OBJECT *, long) {}
+extern "C" void QuotesOKCB(FL_OBJECT *, long) {}
+#endif
 
 
 /* callbacks for form form_preamble */

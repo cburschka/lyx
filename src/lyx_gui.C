@@ -374,6 +374,7 @@ void LyXGUI::create_forms()
 	fl_end_form();
 	lyxerr[Debug::INIT] << "Initializing form_character...done" << endl;
 
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 	// the document form
 	fd_form_document = create_form_form_document();
 	fl_set_form_atclose(fd_form_document->form_document,
@@ -463,7 +464,9 @@ void LyXGUI::create_forms()
 	fl_set_input_return(fd_form_paper->input_foot_skip,
 			    FL_RETURN_ALWAYS);
 	lyxerr[Debug::INIT] << "Initializing form_paper...done" << endl;
+#endif
 
+#ifndef NEW_TABULAR
         // the table_options form
 	fd_form_table_options = create_form_form_table_options();
 	fl_set_form_atclose(fd_form_table_options->form_table_options,
@@ -480,7 +483,9 @@ void LyXGUI::create_forms()
 	fl_set_input_return(fd_form_table_extra->input_special_multialign,
 			    FL_RETURN_ALWAYS);
 	lyxerr[Debug::INIT] << "Initializing form_table_extra...done" << endl;
+#endif
 
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 	// the quotes form
 	fd_form_quotes = create_form_form_quotes();
 	fl_set_form_atclose(fd_form_quotes->form_quotes,
@@ -489,6 +494,7 @@ void LyXGUI::create_forms()
 	// Maybe if people use a font other than latin1... (JMarc)
 	fl_addto_choice(fd_form_quotes->choice_quotes_language,
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "));
+#endif
 
 	// the preamble form
 	fd_form_preamble = create_form_form_preamble();

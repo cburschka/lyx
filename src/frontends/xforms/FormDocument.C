@@ -1,6 +1,13 @@
-/* form_document.C
- * FormDocument Interface Class Implementation
- */
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright (C) 2000 The LyX Team.
+ *
+ *           @author Jürgen Vigna
+ *
+ *======================================================*/
 
 #include <config.h>
 
@@ -31,6 +38,8 @@
 #include "buffer.h"
 #include "Liason.h"
 #include "CutAndPaste.h"
+#include "bufferview_funcs.h"
+#include "ButtonController.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -45,11 +54,18 @@ C_GENERICCB(FormDocument, InputCB)
 C_GENERICCB(FormDocument, OKCB)
 C_GENERICCB(FormDocument, ApplyCB)
 C_GENERICCB(FormDocument, CancelCB)
+C_GENERICCB(FormDocument, RestoreCB)
+C_GENERICCB(FormDocument, ChoiceClassCB)
+C_GENERICCB(FormDocument, BulletPanelCB)
+C_GENERICCB(FormDocument, BulletDepthCB)
+C_GENERICCB(FormDocument, InputBulletLaTeXCB)
+C_GENERICCB(FormDocument, ChoiceBulletSizeCB)
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: dialog_(0), paper_(0), class_(0), language_(0), options_(0),
 	  bullets_(0), lv_(lv), d_(d), u_(0), h_(0),
-	  status(POPUP_UNMODIFIED) 
+	  status(POPUP_UNMODIFIED) ,
+	  bc_(new ButtonController<PreferencesPolicy>(_("Cancel"), _("Close")))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -62,6 +78,7 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 FormDocument::~FormDocument()
 {
     free();
+    delete bc_;
 }
 
 void FormDocument::build()
@@ -70,6 +87,13 @@ void FormDocument::build()
 
     // the tabbed folder
     dialog_ = build_tabbed_document();
+
+    // manage the restore, save, apply and cancel/close buttons
+    bc_->setOk(dialog_->button_ok);
+    bc_->setApply(dialog_->button_apply);
+    bc_->setCancel(dialog_->button_cancel);
+    bc_->setUndoAll(dialog_->button_restore);
+    bc_->refresh();
 
     // the document paper form
     paper_ = build_doc_paper();
@@ -110,6 +134,7 @@ void FormDocument::build()
     fl_addto_choice(class_->choice_doc_skip,
 		    _(" Smallskip | Medskip | Bigskip | Length "));
     fl_set_input_return(class_->input_doc_skip, FL_RETURN_ALWAYS);
+    fl_set_input_return(class_->input_doc_spacing, FL_RETURN_ALWAYS);
 
     // the document language form
     language_ = build_doc_language();
@@ -483,19 +508,21 @@ void FormDocument::update()
 			      " No changes to layout permitted."));
 	fl_show_object(dialog_->text_warning);
     }
-    class_update();
-    paper_update();
-    language_update();
-    options_update();
-    bullets_update();
+
+    BufferParams
+	const & params = lv_->buffer()->params;
+
+    class_update(params);
+    paper_update(params);
+    language_update(params);
+    options_update(params);
+    bullets_update(params);
 }
 
-void FormDocument::class_update()
+void FormDocument::class_update(BufferParams const & params)
 {
     if (!class_)
         return;
-    BufferParams
-	const & params = lv_->buffer()->params;
     LyXTextClass
 	const & tclass = textclasslist.TextClass(params.textclass);
 	
@@ -581,13 +608,10 @@ void FormDocument::class_update()
 	fl_set_input(class_->input_doc_extra, "");
 }
 
-void FormDocument::language_update()
+void FormDocument::language_update(BufferParams const & params)
 {
     if (!language_)
         return;
-
-    BufferParams
-	&params = lv_->buffer()->params;
 
     combo_language->select_text(params.language.c_str());
     fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
@@ -600,13 +624,10 @@ void FormDocument::language_update()
 	fl_set_button(language_->radio_double, 1);
 }
 
-void FormDocument::options_update()
+void FormDocument::options_update(BufferParams const & params)
 {
     if (!options_)
         return;
-
-    BufferParams
-	&params = lv_->buffer()->params;
 
     fl_set_choice_text(options_->choice_postscript_driver,
 		       params.graphicsDriver.c_str());
@@ -620,12 +641,10 @@ void FormDocument::options_update()
 	fl_set_input(options_->input_float_placement, "");
 }
 
-void FormDocument::paper_update()
+void FormDocument::paper_update(BufferParams const & params)
 {
     if (!paper_)
         return;
-    BufferParams
-	&params = lv_->buffer()->params;
 
     fl_set_choice(paper_->choice_papersize2, params.papersize2 + 1);
     fl_set_choice(paper_->choice_paperpackage, params.paperpackage + 1);
@@ -648,7 +667,7 @@ void FormDocument::paper_update()
     fl_set_focus_object(paper_->form, paper_->choice_papersize2);
 }
 
-void FormDocument::bullets_update()
+void FormDocument::bullets_update(BufferParams const & params)
 {
     if (!bullets_ || ((XpmVersion<4) || (XpmVersion==4 && XpmRevision<7)))
         return;
@@ -670,9 +689,6 @@ void FormDocument::bullets_update()
 	fl_activate_object (bullets_->choice_bullet_size);
 	fl_activate_object (bullets_->input_bullet_latex);
     }
-
-    BufferParams
-	&params = lv_->buffer()->params;
 
     fl_set_button(bullets_->radio_bullet_depth_1, 1);
     fl_set_input(bullets_->input_bullet_latex,
@@ -723,20 +739,8 @@ int FormDocument::WMHideCB(FL_FORM * form, void *)
     // window manager is used to close the popup.
     FormDocument * pre = (FormDocument*)form->u_vdata;
     pre->hide();
+    pre->bc_->hide();
     return FL_CANCEL;
-}
-
-void FormDocument::CancelCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
-    pre->cancel();
-    pre->hide();
-}
-
-void FormDocument::ApplyCB(FL_OBJECT * ob, long)
-{
-    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
-    pre->apply();
 }
 
 void FormDocument::OKCB(FL_OBJECT * ob, long)
@@ -744,12 +748,42 @@ void FormDocument::OKCB(FL_OBJECT * ob, long)
     FormDocument * pre = (FormDocument*)ob->form->u_vdata;
     pre->apply();
     pre->hide();
+    pre->bc_->ok();
+}
+
+void FormDocument::ApplyCB(FL_OBJECT * ob, long)
+{
+    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    pre->apply();
+    pre->bc_->apply();
+}
+
+void FormDocument::CancelCB(FL_OBJECT * ob, long)
+{
+    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    pre->cancel();
+    pre->hide();
+    pre->bc_->cancel();
+}
+
+void FormDocument::RestoreCB(FL_OBJECT * ob, long)
+{
+    FormDocument * pre = static_cast<FormDocument*>(ob->form->u_vdata);
+    pre->update();
+    pre->bc_->undoAll();
 }
 
 void FormDocument::InputCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = (FormDocument*)ob->form->u_vdata;
-    pre->CheckDocumentInput(ob,0);
+    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
+}
+
+void FormDocument::ChoiceClassCB(FL_OBJECT * ob, long)
+{
+    FormDocument * pre = (FormDocument*)ob->form->u_vdata;
+    pre->CheckChoiceClass(ob,0);
+    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
 void FormDocument::checkMarginValues()
@@ -769,14 +803,13 @@ void FormDocument::checkMarginValues()
 	fl_set_button(paper_->push_use_geometry, 1);
 }
 
-void FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
+bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 {
     string str;
     char val;
     bool ok = true;
     char const * input;
     
-    ActivateDocumentButtons();
     checkMarginValues();
     if (ob == paper_->choice_papersize2) {
 	val = fl_get_choice(paper_->choice_papersize2)-1;
@@ -851,19 +884,19 @@ void FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
     else if (fl_get_choice(class_->choice_doc_skip) != 4)
 	fl_set_input (class_->input_doc_skip, "");
 
-    fprintf(stderr,"%d\n",fl_get_choice(class_->choice_doc_spacing));
+    input = fl_get_input(class_->input_doc_spacing);
     if ((fl_get_choice(class_->choice_doc_spacing) == 4) && !*input)
 	ok = false;
     else  if (fl_get_choice(class_->choice_doc_spacing) != 4)
 	fl_set_input (class_->input_doc_spacing, "");
-    if (!ok)
-	DeactivateDocumentButtons();
+    return ok;
 }
 
 void FormDocument::ChoiceBulletSizeCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = (FormDocument*)ob->form->u_vdata;
     pre->ChoiceBulletSize(ob,0);
+    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
@@ -880,6 +913,7 @@ void FormDocument::InputBulletLaTeXCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = (FormDocument*)ob->form->u_vdata;
     pre->InputBulletLaTeX(ob,0);
+    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
 void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
@@ -978,6 +1012,7 @@ void FormDocument::BulletBMTableCB(FL_OBJECT * ob, long)
 {
     FormDocument * pre = (FormDocument*)ob->form->u_vdata;
     pre->BulletBMTable(ob,0);
+    pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
 void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
@@ -997,25 +1032,8 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
 		 param.temp_bullets[current_bullet_depth].c_str());
 }
 
-void FormDocument::DeactivateDocumentButtons()
-{
-    fl_deactivate_object(dialog_->button_ok);
-    fl_deactivate_object(dialog_->button_apply);
-    fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
-    fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-}
-
-void FormDocument::ActivateDocumentButtons()
-{
-    fl_activate_object(dialog_->button_ok);
-    fl_activate_object(dialog_->button_apply);
-    fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
-    fl_set_object_lcol(dialog_->button_apply, FL_BLACK);
-}
-
 void FormDocument::EnableDocumentLayout()
 {
-        ActivateDocumentButtons ();
 	fl_activate_object (class_->radio_doc_indent);
 	fl_activate_object (class_->radio_doc_skip);
 	fl_activate_object (class_->choice_doc_class);
@@ -1062,7 +1080,6 @@ void FormDocument::EnableDocumentLayout()
 
 void FormDocument::DisableDocumentLayout()
 {
-        DeactivateDocumentButtons ();
 	fl_deactivate_object (class_->radio_doc_indent);
 	fl_deactivate_object (class_->radio_doc_skip);
 	fl_deactivate_object (class_->choice_doc_class);
@@ -1106,11 +1123,46 @@ void FormDocument::DisableDocumentLayout()
 	fl_deactivate_object (paper_->input_foot_skip);
 }
 
-void FormDocument::SetDocumentClassChoice(vector<string> const & choices)
+void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 {
-	vector<string>::const_iterator cit = choices.begin();
+    ProhibitInput(lv_->view());
+    if (textclasslist.Load(fl_get_choice(ob)-1)) {
+	if (AskQuestion(_("Should I set some parameters to"),
+			fl_get_choice_text(ob),
+			_("the defaults of this document class?"))) {
+	    BufferParams & params = lv_->buffer()->params;
 
-	fl_clear_choice(class_->choice_doc_class);
-	for (; cit != choices.end(); ++cit)
-		fl_addto_choice(class_->choice_doc_class,(*cit).c_str());
+	    params.textclass = fl_get_choice(ob)-1;
+	    params.useClassDefaults();
+	    UpdateLayoutDocument(params);
+	}
+    } else {
+	// unable to load new style
+	WriteAlert(_("Conversion Errors!"),
+		   _("Unable to switch to new document class."),
+		   _("Reverting to original document class."));
+	fl_set_choice(class_->choice_doc_class, 
+		      lv_->view()->buffer()->params.textclass + 1);
+    }
+    AllowInput(lv_->view());
+}
+
+void FormDocument::UpdateLayoutDocument(BufferParams const & params)
+{
+    if (!dialog_)
+        return;
+    fl_hide_object(dialog_->text_warning);
+    EnableDocumentLayout();
+    if (lv_->buffer()->isReadonly()) {
+	DisableDocumentLayout();
+	fl_set_object_label(dialog_->text_warning,
+			    _("Document is read-only."
+			      " No changes to layout permitted."));
+	fl_show_object(dialog_->text_warning);
+    }
+    class_update(params);
+    paper_update(params);
+    language_update(params);
+    options_update(params);
+    bullets_update(params);
 }

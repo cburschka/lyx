@@ -1,3 +1,27 @@
+2000-08-18  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_cb.C: #ifdef'ed out layout stuff which is in the
+	new document layout now.
+
+	* src/lyxfunc.C: ditto
+
+	* src/lyx_gui_misc.C: ditto
+
+	* src/lyx_gui.C: ditto
+
+	* lib/ui/default.ui: removed paper and quotes layout as they are now
+	all in the document layout tabbed folder.
+
+	* src/frontends/xforms/forms/form_document.fd: added Restore
+	button and callbacks for all inputs for Allan's ButtonPolicy.
+
+	* src/frontends/xforms/FormDocument.C (ChoiceClassCB): added.
+	(CheckChoiceClass): added missing params setting on class change.
+	(UpdateLayoutDocument): added for updating the layout on params.
+	(build): forgot to RETURN_ALWAYS input_doc_spacing.
+	(FormDocument): Implemented Allan's ButtonPolicy with the
+	PreferencesPolicy.
+
 2000-08-17  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/Dialogs.C (Dialogs): Make a temporary connection
