@@ -1,3 +1,9 @@
+2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* forms/pch.h: make it better
+
+	* forms/Makefile.am (DISTCLEANFILES): only delete files we generated
+
 2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: new file

@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += *.C *.h *.c
+DISTCLEANFILES += $(SRCS:.fd=.C) $(SRCS:.fd=.h) $(SRCS:.fd=.c)
 
 EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh tmp_str.sed README $(SRCS)
 

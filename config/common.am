@@ -11,10 +11,10 @@ AM_INSTALL_DATA_FLAGS = $(INSTALL) -m 644 -D
 AM_ETAGSFLAGS = --lang=c++
 
 if LYX_BUILD_PCH
-PCH_FLAGS = -Winvalid-pch --include=pch.h
+PCH_FLAGS = -Winvalid-pch --include=./pch.h
 PCH_FILE = ./pch.h.gch
 PCH_SOURCE = ./pch.h
-sinclude pch.h.gch.dep
+sinclude ./pch.h.gch.dep
 
 *.C *.cpp: $(PCH_FILE)
 
