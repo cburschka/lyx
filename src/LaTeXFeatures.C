@@ -189,7 +189,7 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
-	"wasy",
+	"wasysym",
 	"dvipost",
 	"fancybox",
 	"calc",

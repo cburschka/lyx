@@ -138,6 +138,8 @@ void MathSymbolInset::validate(LaTeXFeatures & features) const
 {
 	if (sym_->inset == "msa" || sym_->inset == "msb")
 		features.require("amssymb");
+	else if (sym_->inset == "wasy")
+		features.require("wasysym");
 }
 
 

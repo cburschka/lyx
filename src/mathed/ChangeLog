@@ -1,5 +1,7 @@
 2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* math_symbolinset.C (validate): require wasysym as needed
+
 	* math_decorationinset.C (ams): remove again \overleftarrow and
 	\overrightarrow, which do not require amslatex (although amslatex
 	redefines them).
