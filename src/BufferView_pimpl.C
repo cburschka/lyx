@@ -965,9 +965,6 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	else
 		owner_->message(bformat(_("Could not insert document %1$s"), 
 					disp_fn));
-
-#warning remove this if update() is gone
-	bv_->text->fullRebreak();
 }
 
 
