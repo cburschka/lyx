@@ -277,7 +277,7 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 		if (test == tmptok) {
 			graphicsDriver = tmptok;
 			break;
-		} else if (test == "last_item") {
+		} else if (test == "") {
 			lex.printError(
 				"Warning: graphics driver `$$Token' not recognized!\n"
 				"         Setting graphics driver to `default'.\n");

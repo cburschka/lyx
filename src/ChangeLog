@@ -1,3 +1,7 @@
+2005-02-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* bufferparams.C (readGraphicsDriver): prevent crash
+
 2005-02-13  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): invoke prependEnvPath to adjust the PATH
