@@ -95,17 +95,9 @@ template<typename T> class scoped_ptr : noncopyable {
 
   explicit scoped_ptr( T* p=0 ) : ptr(p) {}  // never throws
   ~scoped_ptr()                 { checked_delete(ptr); }
-  void reset( T* p=0 )          { if ( ptr != p ) { checked_delete(ptr); ptr =
-p; } }
+  void reset( T* p=0 )          { if ( ptr != p ) { checked_delete(ptr); ptr = p; } }
   T& operator*() const          { return *ptr; }  // never throws
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable:4284) // return type for 'identifier::operator->' is not a UDT or reference to a UDT. Will produce errors if applied using infix notation
-#endif    
   T* operator->() const         { return ptr; }  // never throws
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#endif    
   T* get() const                { return ptr; }  // never throws
 #ifdef BOOST_SMART_PTR_CONVERSION
   // get() is safer! Define BOOST_SMART_PTR_CONVERSION at your own risk!
@@ -127,9 +119,10 @@ template<typename T> class scoped_array : noncopyable {
   typedef T element_type;
 
   explicit scoped_array( T* p=0 ) : ptr(p) {}  // never throws
-  ~scoped_array()                    { delete [] ptr; }
+  ~scoped_array()                    { checked_array_delete(ptr); }
 
-  void reset( T* p=0 )               { if ( ptr != p ) {delete [] ptr; ptr=p;} }
+  void reset( T* p=0 )               { if ( ptr != p )
+                                         {checked_array_delete(ptr); ptr=p;} }
 
   T* get() const                     { return ptr; }  // never throws
 #ifdef BOOST_SMART_PTR_CONVERSION
@@ -153,7 +146,7 @@ template<typename T> class shared_ptr {
    explicit shared_ptr(T* p =0) : px(p) {
 #ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
-      catch (...) { delete p; throw; } 
+      catch (...) { checked_delete(p); throw; } 
 #else
 	  pn = new long(1);
 	  assert(pn != 0);
@@ -192,7 +185,7 @@ template<typename T> class shared_ptr {
    template<typename Y>
       shared_ptr& operator=(std::auto_ptr<Y>& r) {
          // code choice driven by guarantee of "no effect if new throws"
-         if (*pn == 1) { delete px; }
+         if (*pn == 1) { checked_delete(px); }
          else { // allocate new reference counter
            long * tmp = new long(1); // may throw
            --*pn; // only decrement once danger of new throwing is past
@@ -211,7 +204,7 @@ template<typename T> class shared_ptr {
 
       shared_ptr& operator=(std::auto_ptr<T>& r) {
          // code choice driven by guarantee of "no effect if new throws"
-         if (*pn == 1) { delete px; }
+         if (*pn == 1) { checked_delete(px); }
          else { // allocate new reference counter
            long * tmp = new long(1); // may throw
            --*pn; // only decrement once danger of new throwing is past
@@ -225,13 +218,13 @@ template<typename T> class shared_ptr {
 
    void reset(T* p=0) {
       if ( px == p ) return;  // fix: self-assignment safe
-      if (--*pn == 0) { delete px; }
+      if (--*pn == 0) { checked_delete(px); }
       else { // allocate new reference counter
 #ifndef LYX_NO_EXCEPTIONS		  
         try { pn = new long; }  // fix: prevent leak if new throws
         catch (...) {
           ++*pn;  // undo effect of --*pn above to meet effects guarantee 
-          delete p;
+          checked_delete(p);
           throw;
         } // catch
 #else
@@ -244,14 +237,7 @@ template<typename T> class shared_ptr {
    } // reset
 
    T& operator*() const          { return *px; }  // never throws
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable:4284) // return type for 'identifier::operator->' is not a UDT or reference to a UDT. Will produce errors if applied using infix notation
-#endif    
    T* operator->() const         { return px; }  // never throws
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#endif    
    T* get() const                { return px; }  // never throws
  #ifdef BOOST_SMART_PTR_CONVERSION
    // get() is safer! Define BOOST_SMART_PTR_CONVERSION at your own risk!
@@ -279,13 +265,15 @@ template<typename T> class shared_ptr {
    template<typename Y> friend class shared_ptr;
 #endif
 
-   void dispose() { if (--*pn == 0) { delete px; delete pn; } }
+   void dispose() { if (--*pn == 0) { checked_delete(px); delete pn; } }
 
    void share(T* rpx, long* rpn) {
-      if (pn != rpn) {
+      if (pn != rpn) { // Q: why not px != rpx? A: fails when both == 0
+         ++*rpn; // done before dispose() in case rpn transitively
+                 // dependent on *this (bug reported by Ken Johnson)
          dispose();
          px = rpx;
-         ++*(pn = rpn);
+         pn = rpn;
       }
    } // share
 };  // shared_ptr
@@ -311,7 +299,7 @@ template<typename T> class shared_array {
    explicit shared_array(T* p =0) : px(p) {
 #ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
-      catch (...) { delete [] p; throw; } 
+      catch (...) { checked_array_delete(p); throw; } 
 #else
 	  pn = new long(1);
 	  assert(pn != 0);
@@ -324,23 +312,25 @@ template<typename T> class shared_array {
    ~shared_array() { dispose(); }
 
    shared_array& operator=(const shared_array& r) {
-      if (pn != r.pn) {
+      if (pn != r.pn) { // Q: why not px != r.px? A: fails when both px == 0
+         ++*r.pn; // done before dispose() in case r.pn transitively
+                  // dependent on *this (bug reported by Ken Johnson)
          dispose();
          px = r.px;
-         ++*(pn = r.pn);
+         pn = r.pn;
       }
       return *this;
    } // operator=
 
    void reset(T* p=0) {
       if ( px == p ) return;  // fix: self-assignment safe
-      if (--*pn == 0) { delete [] px; }
+      if (--*pn == 0) { checked_array_delete(px); }
       else { // allocate new reference counter
 #ifndef LYX_NO_EXCEPTIONS
         try { pn = new long; }  // fix: prevent leak if new throws
         catch (...) {
           ++*pn;  // undo effect of --*pn above to meet effects guarantee 
-          delete [] p;
+          checked_array_delete(p);
           throw;
         } // catch
 #else
@@ -371,7 +361,7 @@ template<typename T> class shared_array {
    T*     px;     // contained pointer
    long*  pn;     // ptr to reference counter
 
-   void dispose() { if (--*pn == 0) { delete [] px; delete pn; } }
+   void dispose() { if (--*pn == 0) { checked_array_delete(px); delete pn; } }
 
 };  // shared_array
 
@@ -430,6 +420,10 @@ template<typename T>
 } // namespace std
 
 #endif  // ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif  // BOOST_SMART_PTR_HPP
 
