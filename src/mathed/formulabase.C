@@ -582,6 +582,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//lyxerr << "LFUN ignored\n";
 		break;
 
+	case LFUN_INSET_ERT:
+		// interpret this as if a backslash was typed
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->interpret("\\");
+		updateLocal(bv, true);
+		break;
+
 	case -1:
 	case LFUN_INSERT_MATH:
 	case LFUN_SELFINSERT:
