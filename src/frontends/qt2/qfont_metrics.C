@@ -46,28 +46,28 @@ int maxAscent(LyXFont const & f)
 
 int maxDescent(LyXFont const & f)
 {
-	return metrics(f).descent();
+	return metrics(f).descent()+1;
+	// We add 1 as the value returned by QT is different than X
+	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
 }
 
 
 int ascent(char c, LyXFont const & f)
 {
 	QRect r = metrics(f).boundingRect(c);
-	return abs(r.top());
+	return -r.top();
 }
 
 
 int descent(char c, LyXFont const & f)
 {
 	QRect r = metrics(f).boundingRect(c);
-	return abs(r.bottom());
+	return r.bottom()+1;
 }
 
 
 int lbearing(char c, LyXFont const & f)
 {
-	lyxerr << "lb of " << c << " is " << metrics(f).leftBearing(c)
-	       << std::endl;
 	return metrics(f).leftBearing(c);
 }
 
