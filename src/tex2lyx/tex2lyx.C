@@ -41,7 +41,10 @@ namespace {
 
 void parse_preamble(Parser & p, ostream & os);
 
-void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode);
+void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode,
+const bool outer);
+
+
 
 char const OPEN = '<';
 char const CLOSE = '>';
@@ -325,9 +328,9 @@ vector<string> extract_col_align(string const & s)
 			case 'c': res.push_back("center"); break;
 			case 'l': res.push_back("left");   break;
 			case 'r': res.push_back("right");  break;
-			//case '|': cerr << "ignoring vertical separator\n";  break;
-			//default : cerr << "ignoring special separator '" << s[i] << "'\n"; break;
-			default: break;
+			case '|': cerr << "ignoring vertical separator\n";  break;
+			default : cerr << "ignoring special separator '" << s[i] << "'\n"; break;
+			//default: break;
 		}
 	}
 	return res;
@@ -343,7 +346,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 	string colopts = p.verbatimItem();
 	vector<string> colalign = extract_col_align(colopts);
 	ostringstream ss;
-	parse(p, ss, FLAG_END, mode);
+	parse(p, ss, FLAG_END, mode, false);
 	vector<string> lines;
 	split(ss.str(), lines, LINE);
 	const size_t cols = colalign.size();
@@ -611,7 +614,8 @@ void parse_preamble(Parser & p, ostream & os)
 }
 
 
-void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
+void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode,
+bool outer)
 {
 	while (p.good()) {
 		Token const & t = p.getToken();
@@ -655,7 +659,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				parse(p, os, FLAG_BRACK_LAST, mode);
+				parse(p, os, FLAG_BRACK_LAST, mode, outer);
 			} else {
 				// no option found, put back token and we are done
 				p.putback();
@@ -672,17 +676,17 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 				if (mode == TEXT_MODE)
 					begin_inset(os, "Formula ");
 				Token const & n = p.getToken();
-				if (n.cat() == catMath) {
+				if (n.cat() == catMath && outer) {
 					// TeX's $$...$$ syntax for displayed math
 					os << "\\[";
-					parse(p, os, FLAG_SIMPLE, MATH_MODE);
+					parse(p, os, FLAG_SIMPLE, MATH_MODE, outer);
 					os << "\\]";
 					p.getToken(); // skip the second '$' token
 				} else {
 					// simple $...$  stuff
 					p.putback();
 					os << '$';
-					parse(p, os, FLAG_SIMPLE, MATH_MODE);
+					parse(p, os, FLAG_SIMPLE, MATH_MODE, outer);
 					os << '$';
 				}
 				if (mode == TEXT_MODE)
@@ -695,7 +699,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			}
 
 			else {
-				cerr << "mode: " << mode << endl;
+				cerr << "\nmode: " << mode << endl;
 				p.error("something strange in the parser\n");
 				break;
 			}
@@ -703,14 +707,20 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cat() == catLetter ||
 			       t.cat() == catSpace ||
-			 t.cat() == catSuper ||
+			       t.cat() == catSuper ||
 			       t.cat() == catSub ||
 			       t.cat() == catOther ||
 			       t.cat() == catParameter)
 			os << t.character();
 
-		else if (t.cat() == catNewline)
-			os << ' ';
+		else if (t.cat() == catNewline) {
+			if (p.nextToken().cat() == catNewline) {
+				p.getToken();
+				handle_par(os);
+			} else {
+				os << "\n "; // note the space
+			}
+		}
 
 		else if (t.cat() == catActive) {
 			if (t.character() == '~') {
@@ -837,7 +847,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "(") {
 			begin_inset(os, "Formula");
 			os << " \\(";
-			parse(p, os, FLAG_SIMPLE2, MATH_MODE);
+			parse(p, os, FLAG_SIMPLE2, MATH_MODE, outer);
 			os << "\\)";
 			end_inset(os);
 		}
@@ -845,7 +855,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "[") {
 			begin_inset(os, "Formula");
 			os << " \\[";
-			parse(p, os, FLAG_EQUATION, MATH_MODE);
+			parse(p, os, FLAG_EQUATION, MATH_MODE, outer);
 			os << "\\]";
 			end_inset(os);
 		}
@@ -859,11 +869,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			active_environments.push(name);
 			if (name == "abstract") {
 				handle_par(os);
-				parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, mode, outer);
 			} else if (is_math_env(name)) {
 				begin_inset(os, "Formula ");
 				os << "\\begin{" << name << "}";
-				parse(p, os, FLAG_END, MATH_MODE);
+				parse(p, os, FLAG_END, MATH_MODE, outer);
 				os << "\\end{" << name << "}";
 				end_inset(os);
 			} else if (name == "tabular") {
@@ -871,7 +881,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 					handle_tabular(p, os, mode);
 				else {
 					os << "\\begin{" << name << "}";
-					parse(p, os, FLAG_END, MATHTEXT_MODE);
+					parse(p, os, FLAG_END, MATHTEXT_MODE, outer);
 					os << "\\end{" << name << "}";
 				}
 			} else if (name == "table" || name == "figure") {
@@ -883,18 +893,18 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 					 << "collapsed false\n"
 					 << "\n"
 					 << "\\layout Standard\n";
-				parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, mode, outer);
 				end_inset(os);
 			} else if (name == "thebibliography") {
 				p.verbatimItem(); // swallow next arg
-				parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, mode, outer);
 				os << "\n\\layout Bibliography\n\n";
 			} else if (mode == MATH_MODE || mode == MATHTEXT_MODE) {
 				os << "\\begin{" << name << "}";
-				parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, mode, outer);
 				os << "\\end{" << name << "}";
 			} else {
-				parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, mode, outer);
 			}
 		}
 
@@ -974,7 +984,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 				os << "collapsed true\n\n\\layout Standard\n\n" << opt;
 				end_inset(os);
 			}
-			parse(p, os, FLAG_ITEM, mode);
+			parse(p, os, FLAG_ITEM, mode, outer);
 			os << "\n\n\\layout Standard\n\n";
 		}
 
@@ -1002,11 +1012,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cs() == "multicolumn" && mode == TEXT_MODE) {
 			// brutish...
-			parse(p, os, FLAG_ITEM, mode);
+			parse(p, os, FLAG_ITEM, mode, outer);
 			os << MULT;
-			parse(p, os, FLAG_ITEM, mode);
+			parse(p, os, FLAG_ITEM, mode, outer);
 			os << MULT;
-			parse(p, os, FLAG_ITEM, mode);
+			parse(p, os, FLAG_ITEM, mode, outer);
 		}
 
 		else if (t.cs() == "hline" && mode == TEXT_MODE)
@@ -1015,11 +1025,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "textrm") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\family roman\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\family default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
@@ -1027,11 +1037,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "textsf") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\family sans\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\family default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
@@ -1039,11 +1049,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "texttt") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\family typewriter\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\family default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
@@ -1051,11 +1061,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "textsc") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\noun on\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\noun default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
@@ -1063,11 +1073,11 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "textbf") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\series bold\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\series default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
@@ -1075,19 +1085,25 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "underbar") {
 			if (mode == TEXT_MODE) {
 				os << "\n\\bar under\n";
-				parse(p, os, FLAG_ITEM, TEXT_MODE);
+				parse(p, os, FLAG_ITEM, TEXT_MODE, outer);
 				os << "\n\\bar default\n";
 			} else {
 				os << '\\' << t.cs() << '{';
-				parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
+				parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
 				os << '}';
 			}
 		}
 
 		else if ((t.cs() == "emph" || t.cs() == "noun") && mode == TEXT_MODE) {
 			os << "\n\\" << t.cs() << " on\n";
-			parse(p, os, FLAG_ITEM, mode);
+			parse(p, os, FLAG_ITEM, mode, outer);
 			os << "\n\\" << t.cs() << " default\n";
+		}
+
+		else if (t.cs() == "mbox" && mode != TEXT_MODE) {
+			os << "\n\\mbox{";
+			parse(p, os, FLAG_ITEM, MATHTEXT_MODE, outer);
+			os << '}';
 		}
 
 		else if (is_known(t.cs(), known_latex_commands) && mode == TEXT_MODE) {
@@ -1211,7 +1227,7 @@ int main(int argc, char * argv[])
 	Parser p(is);
 	parse_preamble(p, cout);
 	active_environments.push("document");
-	parse(p, cout, FLAG_END, TEXT_MODE);
+	parse(p, cout, FLAG_END, TEXT_MODE, true);
 	cout << "\n\\the_end";
 
 	return 0;
