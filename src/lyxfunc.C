@@ -33,7 +33,6 @@
 #include "trans_mgr.h"
 #include "layout.h"
 #include "bufferview_funcs.h"
-#include "frontends/MiniBuffer.h"
 #include "frontends/LyXView.h"
 #include "frontends/lyx_gui.h"
 #include "vspace.h"
@@ -914,14 +913,8 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
-	{
-		vector<string> allCmds;
-		transform(lyxaction.func_begin(), lyxaction.func_end(),
-			  back_inserter(allCmds), lyx::firster());
-		static vector<string> hist;
-		owner->getMiniBuffer()->prepareForInput(allCmds, hist);
-	}
-	break;
+		owner->focus_command_buffer();
+		break;
 
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
@@ -1370,10 +1363,10 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
-		dispatch(LFUN_SELFINSERT, "_");
+		dispatch(LFUN_SELFINSERT, string("_"));
 		break;
 	case LFUN_SUPERSCRIPT:
-		dispatch(LFUN_SELFINSERT, "^");
+		dispatch(LFUN_SELFINSERT, string("^"));
 		break;
 
 	case LFUN_MATH_PANEL:

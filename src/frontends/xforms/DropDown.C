@@ -20,7 +20,6 @@
 #include <iostream>
 #include <cctype>
 
-
 #ifndef CXX_GLOBAL_CSTD
 using std::isprint;
 #endif
@@ -46,8 +45,7 @@ extern "C" int C_PeekCB(FL_FORM * form, void *xev)
 } // namespace anon
 
 
-DropDown::DropDown(LyXView * lv, FL_OBJECT * ob)
-	: lv_(lv)
+DropDown::DropDown(FL_OBJECT * ob)
 {
 	form_ = fl_bgn_form(FL_NO_BOX, ob->w, 100);
 	fl_add_box(FL_UP_BOX, 0, 0, ob->w, 100, "");

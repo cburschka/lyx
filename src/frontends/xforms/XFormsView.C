@@ -19,7 +19,6 @@
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "frontends/xforms/lyxlookup.h"
 #endif
-#include "frontends/MiniBuffer.h"
 #include "frontends/xforms/XMiniBuffer.h"
 #include "debug.h"
 #include "intl.h"
@@ -63,11 +62,8 @@ XFormsView::XFormsView(int width, int height)
 	create_form_form_main(*getDialogs(), width, height);
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
-	// Connect the minibuffer signals
-	minibuffer_->inputReady.connect(boost::bind(&XFormsView::dispatch, this, _1));
-
 	view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
-	minibuffer_->timeout.connect(boost::bind(&XFormsView::show_view_state, this));
+	focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
  
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
@@ -77,25 +73,18 @@ XFormsView::XFormsView(int width, int height)
 
 XFormsView::~XFormsView()
 {
+	minibuffer_->freeze();
 	fl_hide_form(form_);
 	fl_free_form(form_);
 }
 
 
-void XFormsView::dispatch(string const & arg)
-{
-	getLyXFunc()->dispatch(arg, true);
-}
-
- 
 /// Redraw the main form.
 void XFormsView::redraw()
 {
 	lyxerr[Debug::INFO] << "XFormsView::redraw()" << endl;
 	fl_redraw_form(getForm());
-	// This is dangerous, but we know it is safe
-	XMiniBuffer * m = static_cast<XMiniBuffer *>(minibuffer_.get());
-	m->redraw();
+	minibuffer_->redraw();
 }
 
 
@@ -168,8 +157,8 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 		width - 3 * air, workheight));
 	::current_view = bufferview_.get();
 
-	minibuffer_.reset(new XMiniBuffer(this, air, height - (25 + air),
-		width - (2 * air), 25));
+	minibuffer_.reset(new XMiniBuffer(this, *controlcommand_,
+		air, height - (25 + air), width - (2 * air), 25));
 
 	// FIXME: why do this in xforms/ ?
 	autosave_timeout_->timeout.connect(boost::bind(&XFormsView::autoSave, this));
@@ -195,8 +184,7 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 
 	fl_end_form();
 
-	// This is dangerous, but we know it is safe in this situation
-	static_cast<XMiniBuffer *>(minibuffer_.get())->dd_init();
+	minibuffer_->dd_init();
 }
 
 
@@ -207,9 +195,15 @@ void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 }
 
 
+void XFormsView::message(string const & str)
+{
+	minibuffer_->message(str);
+}
+
+ 
 void XFormsView::show_view_state()
 {
-	minibuffer_->message(getLyXFunc()->view_status_message());
+	message(getLyXFunc()->view_status_message());
 }
  
  

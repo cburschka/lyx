@@ -1,5 +1,19 @@
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
+	* DropDown.h:
+	* DropDown.C: remove unneeded LyXView *
+ 
+	* XFormsView.h:
+	* XFormsView.C: changes for minibuffer rework
+ 
+	* XMiniBuffer.h:
+	* XMiniBuffer.C: use ControlCommandBuffer. Move relevant
+	  old code to here
+ 
+	* lyx_gui.C: add FIXME
+ 
+2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
+
 	* FormMathsDelim.C: 
 	* FormMathsMatrix.C: fix dispatch calls
  

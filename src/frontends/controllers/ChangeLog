@@ -1,5 +1,12 @@
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
+	* Makefile.am:
+	* ControlCommandBuffer.h:
+	* ControlCommandBuffer.C: add controller for command (mini) buffer
+	  handling
+ 
+2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
+
 	* ControlRef.C: fix dispatch call
  
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>

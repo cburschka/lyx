@@ -21,6 +21,7 @@
 #include "frontends/LyXView.h"
 
 class Dialogs;
+class XMiniBuffer;
 
 /**
  * XFormsView - xforms implementation of LyXView
@@ -54,9 +55,9 @@ public:
 	/// callback for close event from window manager
 	static int atCloseMainFormCB(FL_FORM *, void *);
  
-	/// dispatch an action
-	void dispatch(string const & arg);
- 
+	/// display a status message
+	virtual void message(string const & str);
+
 private:
 	/**
 	 * setWindowTitle - set title of window
@@ -70,6 +71,8 @@ private:
 
 	/// makes the main form.
 	void create_form_form_main(Dialogs & d, int width, int height);
+	/// the minibuffer
+	boost::scoped_ptr<XMiniBuffer> minibuffer_;
 	/// the main form.
 	FL_FORM * form_;
 };

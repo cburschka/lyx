@@ -14,7 +14,6 @@
 
 #include "debug.h"
 #include "LyXView.h"
-#include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
 
 #include "support/filetools.h" // LibFileSearch

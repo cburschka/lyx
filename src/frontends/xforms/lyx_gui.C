@@ -304,7 +304,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 		}
 	}
 
-	// FIXME
+	// FIXME: breaks emergencyCleanup
 	delete lyxserver;
 }
 

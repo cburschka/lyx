@@ -36,6 +36,8 @@ libcontrollers_la_SOURCES= \
 	ControlCitation.h \
 	ControlCommand.C \
 	ControlCommand.h \
+	ControlCommandBuffer.C \
+	ControlCommandBuffer.h \
 	ControlConnections.C \
 	ControlConnections.h \
 	ControlDialog.h \

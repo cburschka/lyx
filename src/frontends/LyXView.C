@@ -14,7 +14,6 @@
 #endif
 
 #include "LyXView.h"
-#include "MiniBuffer.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"
@@ -28,10 +27,11 @@
 #include "bufferview_funcs.h"
 #include "lyxtextclasslist.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/Toolbar.h"
-#include "frontends/Timeout.h"
-#include "frontends/Menubar.h"
+#include "Dialogs.h"
+#include "Toolbar.h"
+#include "Timeout.h"
+#include "Menubar.h"
+#include "controllers/ControlCommandBuffer.h"
 
 #include "support/filetools.h" // OnlyFilename()
 
@@ -56,6 +56,7 @@ LyXView::LyXView()
 	autosave_timeout_.reset(new Timeout(5000));
 
 	dialogs_.reset(new Dialogs(this));
+	controlcommand_.reset(new ControlCommandBuffer(*getLyXFunc()));
 }
 
 
@@ -112,18 +113,6 @@ void LyXView::updateToolbar()
 LyXFunc * LyXView::getLyXFunc() const
 {
 	return lyxfunc_.get();
-}
-
-
-MiniBuffer * LyXView::getMiniBuffer() const
-{
-	return minibuffer_.get();
-}
-
-
-void LyXView::message(string const & str)
-{
-	minibuffer_->message(str);
 }
 
 

@@ -22,12 +22,10 @@
 #include "LString.h"
 #include <vector>
 
-class LyXView;
-
 class DropDown {
 public:
 	/// constructor
-	DropDown(LyXView * lv, FL_OBJECT * ob);
+	DropDown(FL_OBJECT * ob);
 	/// destructor
 	~DropDown();
 
@@ -55,9 +53,6 @@ private:
 
 	/// move down a browser line
 	void line_down();
-
-	/// owning lyxview
-	LyXView * lv_;
 
 	/// our form
 	FL_FORM * form_;

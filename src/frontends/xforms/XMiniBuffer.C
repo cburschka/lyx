@@ -16,46 +16,37 @@
 
 #include "frontends/xforms/DropDown.h"
 #include "frontends/xforms/XFormsView.h"
+#include "frontends/controllers/ControlCommandBuffer.h"
 #include "frontends/Timeout.h"
 
 #include "XMiniBuffer.h"
-#include "BufferView.h"
-#include "LyXAction.h"
 #include "gettext.h"
-#include "support/lyxalgo.h"
-#include "support/lstrings.h"
+#include "debug.h"
+#include "bufferview_funcs.h"
 
 #include <boost/bind.hpp>
 
 #include <vector>
-#include <cctype>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::isprint;
 #endif
 
+using std::endl;
 using std::vector;
 
 
-namespace {
-
-struct prefix {
-	string p;
-	prefix(string const & s)
-		: p(s) {}
-	bool operator()(string const & s) const {
-		return prefixIs(s, p);
-	}
-};
-
-} // end of anon namespace
-
-
-XMiniBuffer::XMiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
-			 FL_Coord h, FL_Coord w)
-	: MiniBuffer(o)
+XMiniBuffer::XMiniBuffer(XFormsView * v, ControlCommandBuffer & control,
+	FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
+	: controller_(control), view_(v),
+	info_suffix_shown_(false)
 {
-	create_input_box(FL_NORMAL_INPUT, x, y, h, w);
+	input_obj_ = create_input_box(FL_NORMAL_INPUT, x, y, h, w);
+	suffix_timer_.reset(new Timeout(1500));
+	idle_timer_.reset(new Timeout(6000));
+	suffix_timer_->timeout.connect(boost::bind(&XMiniBuffer::suffix_timeout, this));
+	idle_timer_->timeout.connect(boost::bind(&XMiniBuffer::idle_timeout, this));
+	idle_timer_->start(); 
 	messageMode();
 }
 
@@ -63,7 +54,7 @@ XMiniBuffer::XMiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 // thanks for nothing, xforms (recursive creation not allowed)
 void XMiniBuffer::dd_init()
 {
-	dropdown_ = new DropDown(owner_, the_buffer);
+	dropdown_.reset(new DropDown(the_buffer_));
 	dropdown_->result.connect(boost::bind(&XMiniBuffer::set_complete_input, this, _1));
 	dropdown_->keypress.connect(boost::bind(&XMiniBuffer::append_char, this, _1));
 }
@@ -71,7 +62,6 @@ void XMiniBuffer::dd_init()
 
 XMiniBuffer::~XMiniBuffer()
 {
-	delete dropdown_;
 }
 
 
@@ -85,112 +75,86 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 #endif
 
 	switch (event) {
+	case FL_FOCUS:
+		messageMode(false);
+		break;
 	case FL_UNFOCUS:
 		messageMode();
 		break;
 	case FL_KEYBOARD:
 	{
 		string input;
-		if (information_displayed_) {
-			information_timer_->stop();
-			input = stored_input;
-			restore_input();
-		} else {
-			char const * tmp = fl_get_input(ob);
-			input = tmp ? tmp : "";
+		if (info_suffix_shown_) {
+			suffix_timer_->stop();
+			suffix_timeout();
 		}
-
+ 
+		char const * tmp = fl_get_input(ob);
+		input = tmp ? tmp : "";
 
 		switch (key) {
 		case XK_Down:
 #ifdef XK_KP_Down
 		case XK_KP_Down:
 #endif
-			if (hist_iter != history_->end()) {
-				++hist_iter;
-			}
-			if (hist_iter == history_->end()) {
-				// no further history
-				show_information(_("[End of history]"), input);
+		{
+			string const h(controller_.historyDown());
+			if (h.empty()) {
+				show_info_suffix(_("[End of history]"), input);
 			} else {
-				set_input((*hist_iter));
+				set_input(h);
 			}
 			return 1;
+		}
+ 
 		case XK_Up:
 #ifdef XK_KP_Up
 		case XK_KP_Up:
 #endif
-			if (hist_iter == history_->begin()) {
-				// no further history
-				show_information(_("[Beginning of history]"),
-						 input);
+		{
+			string const h(controller_.historyUp());
+			if (h.empty()) {
+				show_info_suffix(_("[Beginning of history]"), input);
 			} else {
-				--hist_iter;
-				set_input((*hist_iter));
+				set_input(h);
 			}
 			return 1;
+		}
+ 
 		case 9:
 		case XK_Tab:
 		{
-			// Completion handling.
-
-			vector<string> comp;
-			lyx::copy_if(completion_.begin(),
-				     completion_.end(),
-				     back_inserter(comp), prefix(input));
+			string new_input;
+			vector<string> comp = controller_.completions(input, new_input);
+			 
+			if (comp.empty() && new_input == input) {
+				show_info_suffix(_("[no match]"), input);
+				break;
+			}
 
 			if (comp.empty()) {
-				// No matches
-				string const tmp = input + _(" [no match]");
-				show_information(tmp, input);
-			} else if (comp.size() == 1) {
-				// Perfect match
-				string const tmp =
-					comp[0] + _(" [sole completion]");
-				show_information(tmp, comp[0] + " ");
-			} else {
-				// More that one match
-				// Find maximal avaliable prefix
-				string const tmp = comp[0];
-				string test(input);
-				if (tmp.length() > test.length())
-					test += tmp[test.length()];
-				while (test.length() < tmp.length()) {
-					vector<string> vtmp;
-					lyx::copy_if(comp.begin(),
-						     comp.end(),
-						     back_inserter(vtmp),
-						     prefix(test));
-					if (vtmp.size() != comp.size()) {
-						test.erase(test.length() - 1);
-						break;
-					}
-					test += tmp[test.length()];
-				}
-				set_input(test);
-
-				int x,y,w,h;
-				fl_get_wingeometry(fl_get_real_object_window(the_buffer),
-						   &x, &y, &w, &h);
-
-				// asynchronous completion
-				int const air = the_buffer->x;
-				x += air;
-				y += h - (the_buffer->h + air);
-				w = the_buffer->w;
-				dropdown_->select(comp, x, y, w);
+				set_input(new_input);
+				show_info_suffix(("[only completion]"), new_input + " ");
+				break;
 			}
+				 
+			set_input(new_input);
+
+			int x,y,w,h;
+			fl_get_wingeometry(fl_get_real_object_window(the_buffer_),
+					   &x, &y, &w, &h);
+
+			// asynchronous completion
+			int const air = the_buffer_->x;
+			x += air;
+			y += h - (the_buffer_->h + air);
+			w = the_buffer_->w;
+			dropdown_->select(comp, x, y, w);
 			return 1;
 		}
 		case 27:
 		case XK_Escape:
-			// Abort
-#if 0
-			owner_->view()->focus(true);
-#endif
-			message_timeout();
 			messageMode();
-			//escape.emit();
 			return 1;
 		case 13:
 		case XK_Return:
@@ -210,18 +174,12 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			if (cit == completion_.end()) {
 				// no such func/item
 				string const tmp = input + _(" [no match]");
-				show_information(tmp, input);
+				show_info_suffix(tmp, input);
 			} else {
 #endif
-				// Return the inputted string
-				messageMode();
-#if 0
-				owner_->view()->focus(true);
-#endif
-				if (!input.empty()) {
-					history_->push_back(input);
-				}
-				inputReady(input);
+			messageMode();
+			redraw();
+			controller_.dispatch(input);
 # if 0
 			}
 #endif
@@ -232,7 +190,6 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 		}
 	}
 	default:
-		//lyxerr << "Unhandled minibuffer event!" << endl;
 		break;
 	}
 
@@ -251,7 +208,6 @@ extern "C" {
 		return mini->peek_event(ob, event, key,
 					static_cast<XEvent *>(xev));
 	}
-
 }
 
 
@@ -260,7 +216,7 @@ FL_OBJECT * XMiniBuffer::create_input_box(int type, FL_Coord x, FL_Coord y,
 {
 	FL_OBJECT * obj;
 
-	the_buffer = obj = fl_add_input(type, x, y, w, h, text.c_str());
+	the_buffer_ = obj = fl_add_input(type, x, y, w, h, "");
 	fl_set_object_boxtype(obj, FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
@@ -272,37 +228,67 @@ FL_OBJECT * XMiniBuffer::create_input_box(int type, FL_Coord x, FL_Coord y,
 	obj->u_vdata = this;
 	obj->wantkey = FL_KEY_TAB;
 
-	set_input(text);
-
 	return obj;
 }
 
 
+void XMiniBuffer::freeze()
+{
+	// we must prevent peek_event, or we get an unfocus() when the
+	// containing form gets destroyed
+	fl_set_object_prehandler(input_obj_, 0);
+}
+
+ 
+void XMiniBuffer::show_info_suffix(string const & suffix, string const & input)
+{
+	stored_input_ = input;
+	info_suffix_shown_ = true;
+	set_input(input + " " + suffix); 
+	suffix_timer_->start();
+}
+ 
+
+void XMiniBuffer::idle_timeout()
+{
+	set_input(currentState(view_->view()));
+}
+
+ 
+void XMiniBuffer::suffix_timeout()
+{
+	info_suffix_shown_ = false;
+	set_input(stored_input_);
+}
+
+ 
 bool XMiniBuffer::isEditingMode() const
 {
-	return the_buffer->focus;
+	return the_buffer_->focus;
 }
 
 
-void XMiniBuffer::editingMode()
+void XMiniBuffer::messageMode(bool on)
 {
-	fl_activate_object(the_buffer);
-	fl_set_focus_object(static_cast<XFormsView *>(owner_)->getForm(),
-			    the_buffer);
-	redraw();
-}
-
-
-void XMiniBuffer::messageMode()
-{
-	fl_deactivate_object(the_buffer);
-	redraw();
+	set_input("");
+	if (!on) {
+		fl_activate_object(the_buffer_);
+		fl_set_focus_object(view_->getForm(), the_buffer_);
+		redraw();
+		idle_timer_->stop();
+	} else {
+		if (isEditingMode()) {
+			// focus back to the workarea
+			fl_set_focus_object(view_->getForm(), 0);
+			idle_timer_->start();
+		}
+	}
 }
 
 
 void XMiniBuffer::redraw()
 {
-	fl_redraw_object(the_buffer);
+	fl_redraw_object(the_buffer_);
 	XFlush(fl_display);
 }
 
@@ -312,16 +298,33 @@ void XMiniBuffer::append_char(char c)
 	if (!c || !isprint(c))
 		return;
 
-	char const * tmp = fl_get_input(the_buffer);
+	char const * tmp = fl_get_input(the_buffer_);
 	string str = tmp ? tmp : "";
 
 	str += c;
 
-	fl_set_input(the_buffer, str.c_str());
+	fl_set_input(the_buffer_, str.c_str());
+}
+ 
+ 
+void XMiniBuffer::set_complete_input(string const & str)
+{
+	if (!str.empty()) {
+		// add a space so the user can type
+		// an argument immediately
+		set_input(str + " ");
+	}
+} 
+ 
+
+void XMiniBuffer::message(string const & str)
+{
+	if (!isEditingMode())
+		set_input(str);
 }
 
-
+ 
 void XMiniBuffer::set_input(string const & str)
 {
-	fl_set_input(the_buffer, str.c_str());
+	fl_set_input(the_buffer_, str.c_str());
 }

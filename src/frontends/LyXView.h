@@ -26,9 +26,9 @@
 
 class Buffer;
 class Toolbar;
-class MiniBuffer;
 class Intl;
 class Menubar;
+class ControlCommandBuffer;
 
 class BufferView;
 class Dialogs;
@@ -85,11 +85,6 @@ public:
 	/// return the menubar for this view
 	Menubar * getMenubar() const;
 
-	/// return the minibuffer for this view
-	/// FIXME: I'm not at all sure that LyXFunc should be
-	/// aware of a mini buffer as such
-	MiniBuffer * getMiniBuffer() const;
-
 	/// get access to the dialogs
 	Dialogs * getDialogs() { return dialogs_.get(); }
 
@@ -108,11 +103,14 @@ public:
 	/// update the menubar
 	void updateMenubar();
 
+	/// focus the command buffer (minibuffer)
+	boost::signal0<void> focus_command_buffer;
+ 
 	/// view state string changed
 	boost::signal0<void> view_state_changed;
 
 	/// display a message in the view
-	void message(string const &);
+	virtual void message(string const &) = 0;
 
 	/// updates the title of the window
 	void updateWindowTitle();
@@ -128,8 +126,8 @@ protected:
 	boost::scoped_ptr<Menubar> menubar_;
 	/// view's toolbar
 	boost::scoped_ptr<Toolbar> toolbar_;
-	/// view's minibuffer
-	boost::scoped_ptr<MiniBuffer> minibuffer_;
+	/// view's command buffer controller
+	boost::scoped_ptr<ControlCommandBuffer> controlcommand_;
 
 	/// keyboard mapping object
 	boost::scoped_ptr<Intl> intl_;
