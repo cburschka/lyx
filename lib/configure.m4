@@ -404,16 +404,13 @@ esac
 SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
 case $GRACE in
  gracebat) 
-  for device in `gracebat -version 2>/dev/null | grep "^Dummy"` ; do
-    case $device in
-      EPS)
-        agr_to_eps="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
-      PDF)
-        agr_to_pdf="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
-      PNG)
-        agr_to_png="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
-    esac
-  done 
+   for device in `gracebat -version 2>/dev/null | grep "^Dummy"` ; do
+     case $device in
+       EPS) agr_to_eps="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
+       PDF) agr_to_pdf="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
+       PNG) agr_to_png="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
+     esac
+   done 
 esac
 
 #### Explore the LaTeX configuration
