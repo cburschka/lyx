@@ -1,3 +1,7 @@
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* lyxfunc.C: fix bug 738 - revert behaves sensibly
+
 2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (makeLaTeXFile): fix counting of number of line feeds

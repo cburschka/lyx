@@ -76,3 +76,5 @@ What's new
 - enable the debug level to be set in lyx2lyx
 
 - fix strerror() build problem with some gcc/glibc versions [bug #874]
+
+- revert is now disabled for an unchanged or unsaved document [bug #783]
