@@ -211,8 +211,14 @@ public:
 	void readLanguage(LyXLex &);
 	///
 	void readGraphicsDriver(LyXLex &);
-	///
-	bool use_amsmath;
+
+	/// use AMS package, not, or auto
+	enum AMS {
+		AMS_OFF,
+		AMS_AUTO,
+		AMS_ON
+	};
+	AMS use_amsmath;
 	///
 	bool use_natbib;
 	///

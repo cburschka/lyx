@@ -197,7 +197,8 @@ string const LaTeXFeatures::getPackages() const
 	//
 
 	if (isRequired("amsmath")
-	    && ! tclass.provides(LyXTextClass::amsmath)) {
+	    && !tclass.provides(LyXTextClass::amsmath)
+	    && params.use_amsmath != BufferParams::AMS_OFF) {
 		packages << "\\usepackage{amsmath}\n";
 	}
 
@@ -263,7 +264,7 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// amssymb.sty
-	if (isRequired("amssymb") || params.use_amsmath)
+	if (isRequired("amssymb") || params.use_amsmath == BufferParams::AMS_ON)
 		packages << "\\usepackage{amssymb}\n";
 	// url.sty
 	if (isRequired("url") && ! tclass.provides(LyXTextClass::url))

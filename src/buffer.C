@@ -516,7 +516,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 
 	} else if (token == "\\end_inset") {
-		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
+		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
+		       << "Missing \\begin_inset?.\n"
 		       << "Last inset read was: " << last_inset_read
 		       << endl;
 		// Simply ignore this. The insets do not have
@@ -754,7 +755,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.use_geometry = lex.getInteger();
 	} else if (token == "\\use_amsmath") {
 		lex.nextToken();
-		params.use_amsmath = lex.getInteger();
+		params.use_amsmath = static_cast<BufferParams::AMS>(
+			lex.getInteger());
 	} else if (token == "\\use_natbib") {
 		lex.nextToken();
 		params.use_natbib = lex.getInteger();
@@ -2809,7 +2811,8 @@ void Buffer::validate(LaTeXFeatures & features) const
 	}
 
 	// AMS Style is at document level
-	if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
+	if (params.use_amsmath == BufferParams::AMS_ON
+	    || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");
 
 	for_each(paragraphs.begin(), paragraphs.end(),

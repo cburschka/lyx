@@ -238,8 +238,12 @@ void QDocument::apply()
 	params.graphicsDriver =
 		fromqstr(dialog_->packagesModule->psdriverCO->currentText());
 
-	params.use_amsmath =
-		dialog_->packagesModule->amsCB->isChecked();
+	if (dialog_->packagesModule->amsautoCB->isChecked()) {
+		params.use_amsmath = BufferParams::AMS_AUTO;
+	} else {
+		params.use_amsmath =
+			dialog_->packagesModule->amsCB->isChecked();
+	}
 
 	// layout
 	params.textclass =
@@ -477,7 +481,9 @@ void QDocument::update_contents()
 
 
 	dialog_->packagesModule->amsCB->setChecked(
-		params.use_amsmath);
+		params.use_amsmath == BufferParams::AMS_YES);
+	dialog_->packagesModule->amsautoCB->setChecked(
+		params.use_amsmath == BufferParams::AMS_AUTO);
 
 	switch (params.spacing.getSpace()) {
 		case Spacing::Other: nitem = 3; break;

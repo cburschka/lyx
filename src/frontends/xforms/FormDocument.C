@@ -281,7 +281,7 @@ void FormDocument::build()
 	// disable for read-only documents
 	bc().addReadOnly(options_->counter_secnumdepth);
 	bc().addReadOnly(options_->counter_tocdepth);
-	bc().addReadOnly(options_->check_use_amsmath);
+	bc().addReadOnly(options_->choice_ams_math);
 	bc().addReadOnly(options_->check_use_natbib);
 	bc().addReadOnly(options_->choice_citation_format);
 	bc().addReadOnly(options_->input_float_placement);
@@ -291,6 +291,9 @@ void FormDocument::build()
 	setPrehandler(options_->input_float_placement);
 
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
+
+	fl_addto_choice(options_->choice_ams_math, 
+		_("Never | Automatically | Yes "));
 
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,
@@ -794,7 +797,8 @@ bool FormDocument::options_apply(BufferParams & params)
 	bool redo = false;
 
 	params.graphicsDriver = getString(options_->choice_postscript_driver);
-	params.use_amsmath = fl_get_button(options_->check_use_amsmath);
+	params.use_amsmath = static_cast<BufferParams::AMS>(
+		fl_get_choice(options_->choice_ams_math) - 1);
 	params.use_natbib  = fl_get_button(options_->check_use_natbib);
 	params.use_numerical_citations  =
 		fl_get_choice(options_->choice_citation_format) - 1;
@@ -963,7 +967,7 @@ void FormDocument::options_update(BufferParams const & params)
 
 	fl_set_choice_text(options_->choice_postscript_driver,
 			   params.graphicsDriver.c_str());
-	fl_set_button(options_->check_use_amsmath, params.use_amsmath);
+	fl_set_choice(options_->choice_ams_math, params.use_amsmath + 1);
 	fl_set_button(options_->check_use_natbib,  params.use_natbib);
 	fl_set_choice(options_->choice_citation_format,
 		      int(params.use_numerical_citations)+1);

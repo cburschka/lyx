@@ -55,7 +55,7 @@ BufferParams::BufferParams()
 	paperpackage = PACKAGE_NONE;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	use_amsmath = false;
+	use_amsmath = AMS_AUTO;
 	use_natbib = false;
 	use_numerical_citations = false;
 	tracking_changes = false;

@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>357</width>
+            <width>353</width>
             <height>231</height>
         </rect>
     </property>
@@ -38,9 +38,9 @@
             </property>
             <property stdset="1">
                 <name>title</name>
-                <string>Packages</string>
+                <string>AMS</string>
             </property>
-            <grid>
+            <vbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>11</number>
@@ -49,7 +49,22 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="2"  column="0" >
+                <widget>
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>amsautoCB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Use AMS math package automatically</string>
+                    </property>
+                    <property stdset="1">
+                        <name>checked</name>
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget>
                     <class>QCheckBox</class>
                     <property stdset="1">
                         <name>name</name>
@@ -57,10 +72,10 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Use AMS &amp;math</string>
+                        <string>Use AMS &amp;math package</string>
                     </property>
                 </widget>
-            </grid>
+            </vbox>
         </widget>
         <widget>
             <class>QGroupBox</class>
@@ -118,8 +133,16 @@
         </widget>
     </vbox>
 </widget>
+<connections>
+    <connection>
+        <sender>amsautoCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>amsCB</receiver>
+        <slot>setDisabled(bool)</slot>
+    </connection>
+</connections>
 <tabstops>
-    <tabstop>amsCB</tabstop>
+    <tabstop>amsautoCB</tabstop>
     <tabstop>psdriverCO</tabstop>
 </tabstops>
 </UI>
