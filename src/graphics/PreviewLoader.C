@@ -584,7 +584,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Use the preview style file to ensure that each snippet appears on a
 	// fresh page.
 	os << "\n"
-	   << "\\usepackage[active,delayed,dvips,tightpage,showlabels]{preview}\n"
+	   << "\\usepackage[active,delayed,dvips,tightpage,showlabels,lyx]{preview}\n"
 	   << "\n";
 
 	// This piece of PostScript magic ensures that the foreground and
