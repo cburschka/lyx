@@ -991,6 +991,12 @@ InsetText::LocalDispatch(BufferView * bv,
 	TEXT(bv)->BreakParagraph(bv, 0);
 	UpdateLocal(bv, FULL, true);
 	break;
+    case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	if (!autoBreakRows)
+	    return DISPATCHED;
+	TEXT(bv)->BreakParagraph(bv, 1);
+	UpdateLocal(bv, FULL, true);
+	break;
     case LFUN_BREAKLINE:
 	if (!autoBreakRows)
 	    return DISPATCHED;

@@ -399,8 +399,11 @@ private:
 	string filename;
 
 	/// Format number of buffer
+#if 0
 	float format;
-	
+#else
+	int file_format;
+#endif
 	/** A list of views using this buffer.
 	    Why not keep a list of the BufferViews that use this buffer?
 

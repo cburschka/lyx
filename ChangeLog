@@ -1,3 +1,19 @@
+2001-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.h: change format to int, and change name to file_format
+
+	* src/buffer.C: change LYX_FORMAT to int, and bump version number
+	to 218.
+	(readLyXformat2): handle it
+	handle it
+	(readFile): handle it
+	(writeFile): handle it
+
+2001-01-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/insettext.C (LocalDispatch): Add handling of 
+	LFUN_BREAKPARAGRAPHKEEPLAYOUT.
+
 2001-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/tabular.C (Write): write lowercase identifiers

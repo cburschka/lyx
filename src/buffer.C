@@ -113,7 +113,11 @@ extern BufferList bufferlist;
 extern LyXAction lyxaction;
 
 
+#if 0
 static const float LYX_FORMAT = 2.17;
+#else
+static const int LYX_FORMAT = 218;
+#endif
 
 extern int tex_code_break_column;
 
@@ -248,9 +252,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 
 	LyXParagraph * return_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
+#if 0
 	if (format < 2.16 && params.language->lang() == "hebrew")
 		font.setLanguage(default_language);
-
+#else
+	if (file_format < 216 && params.language->lang() == "hebrew")
+		font.setLanguage(default_language);
+#endif
 	// If we are inserting, we cheat and get a token in advance
 	bool has_token = false;
 	string pretoken;
@@ -365,8 +373,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #endif
 		par->depth = depth;
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+#if 0
 		if (format < 2.16 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
+#else
+		if (file_format < 216 && params.language->lang() == "hebrew")
+			font.setLanguage(default_language);
+#endif
 #ifndef NEW_INSETS
 	} else if (token == "\\end_float") {
 		if (!return_par) 
@@ -381,8 +394,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		lex.EatLine();
 		par->layout = LYX_DUMMY_LAYOUT;
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+#if 0
 		if (format < 2.16 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
+#else
+		if (file_format < 216 && params.language->lang() == "hebrew")
+			font.setLanguage(default_language);
+#endif
 	} else if (token == "\\begin_float") {
 		int tmpret = lex.FindToken(string_footnotekinds);
 		if (tmpret == -1) ++tmpret;
@@ -1053,6 +1071,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 		string const token(lex.GetString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.EatLine();
+#if 0
 			format = lex.GetFloat();
 			if (format > 1.0) {
 				if (LYX_FORMAT - format > 0.05) {
@@ -1085,6 +1104,44 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 				return false;
 			}
 
+#else
+			string tmp_format = lex.GetString();
+			//lyxerr << "LyX Format: `" << tmp_format << "'" << endl;
+			// if present remove ".," from string.
+			string::size_type dot = tmp_format.find_first_of(".,");
+			//lyxerr << "           dot found at " << dot << endl;
+			if (dot != string::npos)
+				tmp_format.erase(dot, 1);
+			file_format = strToInt(tmp_format);
+			if (file_format == LYX_FORMAT) {
+				// current format
+			} else if (file_format > LYX_FORMAT) {
+				// future format
+				WriteAlert(_("Warning!"),
+					   _("LyX file format is newer that what"),
+					   _("is supported in this LyX version. Expect some problems."));
+				
+			} else if (file_format < LYX_FORMAT) {
+				// old formats
+				if (file_format < 200) {
+					WriteAlert(_("ERROR!"),
+						   _("Old LyX file format found. "
+						     "Use LyX 0.10.x to read this!"));
+					return false;
+				}
+			}
+			bool the_end = readLyXformat2(lex, par);
+			setPaperStuff();
+			// the_end was added in 213
+			if (file_format < 213)
+				the_end = true;
+
+			if (!the_end)
+				WriteAlert(_("Warning!"),
+					   _("Reading of document is not complete"),
+					   _("Maybe the document is truncated"));
+			return true;
+#endif
 		} else { // "\\lyxformat" not found
 			WriteAlert(_("ERROR!"), _("Not a LyX file!"));
 		}
@@ -1225,6 +1282,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	// write out a comment in the top of the file
 	ofs << '#' << LYX_DOCVERSION 
 	    << " created this file. For more info see http://www.lyx.org/\n";
+#if 0
 	ofs.setf(ios::showpoint|ios::fixed);
 	ofs.precision(2);
 #ifndef HAVE_LOCALE
@@ -1233,6 +1291,9 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	ofs << "\\lyxformat " <<  dummy_format << "\n";
 #else
 	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
+#endif
+#else
+	ofs << "\\lyxformat" << LYX_FORMAT << "\n";
 #endif
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
