@@ -166,17 +166,7 @@ void Menubar::Pimpl::openByName(string const & name)
 
 namespace {
 
-inline
-string const limit_string_length(string const & str)
-{
-	string::size_type const max_item_length = 45;
-
-	if (str.size() > max_item_length)
-		return str.substr(0, max_item_length - 3) + "...";
-	else
-		return str;
-}
-
+Menu::size_type const max_number_of_items = 25;
 
 int get_new_submenu(vector<int> & smn, Window win)
 {
@@ -185,14 +175,15 @@ int get_new_submenu(vector<int> & smn, Window win)
 		max_number_of_menus =
 		    fl_setpup_maxpup(static_cast<int>(2*smn.size()));
 	int menu = fl_newpup(win);
+	fl_setpup_softedge(menu, true);
+	fl_setpup_bw(menu, -1);
+	lyxerr[Debug::GUI] << "Adding menu " << menu
+			   << " in deletion list" << endl;
 	smn.push_back(menu);
 	return menu;
 }
 
 
-size_type const max_number_of_items = 25;
-
-inline
 string const fixlabel(string const & str)
 {
 #if FL_VERSION < 1 && FL_REVISION < 89
@@ -204,149 +195,16 @@ string const fixlabel(string const & str)
 
 
 
-void add_toc2(int menu, string const & extra_label,
-	      vector<int> & smn, Window win,
-	      toc::Toc const & toc_list,
-	      size_type from, size_type to, int depth)
-{
-	int shortcut_count = 0;
-	if (to - from <= max_number_of_items) {
-		for (size_type i = from; i < to; ++i) {
-			int const action = toc_list[i].action();
-			string label(4 * max(0, toc_list[i].depth - depth),' ');
-			label += fixlabel(toc_list[i].str);
-			label = limit_string_length(label);
-			label += "%x" + tostr(action + action_offset);
-			if (i == to - 1 && depth == 0)
-				label += extra_label;
-			if (toc_list[i].depth == depth
-			    && ++shortcut_count <= 9) {
-				label += "%h";
-				fl_addtopup(menu, label.c_str(),
-					    tostr(shortcut_count).c_str());
-			} else
-				fl_addtopup(menu, label.c_str());
-		}
-	} else {
-		size_type pos = from;
-		size_type count = 0;
-		while (pos < to) {
-			++count;
-			if (count > max_number_of_items) {
-				int menu2 = get_new_submenu(smn, win);
-				add_toc2(menu2, extra_label, smn, win,
-					 toc_list, pos, to, depth);
-				string label = _("More");
-				label += "...%m";
-				if (depth == 0)
-					label += extra_label;
-				fl_addtopup(menu, label.c_str(), menu2);
-				break;
-			}
-			size_type new_pos = pos+1;
-			while (new_pos < to &&
-			       toc_list[new_pos].depth > depth)
-				++new_pos;
-
-			int const action = toc_list[pos].action();
-			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
-			label += fixlabel(toc_list[pos].str);
-			label = limit_string_length(label);
-			if (new_pos == to && depth == 0)
-				label += extra_label;
-			string shortcut;
-			if (toc_list[pos].depth == depth &&
-			    ++shortcut_count <= 9)
-				shortcut = tostr(shortcut_count);
-
-			if (new_pos == pos + 1) {
-				label += "%x" + tostr(action + action_offset);
-				if (!shortcut.empty()) {
-					label += "%h";
-					fl_addtopup(menu, label.c_str(),
-						    shortcut.c_str());
-				} else
-					fl_addtopup(menu, label.c_str());
-			} else {
-				int menu2 = get_new_submenu(smn, win);
-				add_toc2(menu2, extra_label, smn, win,
-					 toc_list, pos, new_pos, depth+1);
-				label += "%m";
-				if (!shortcut.empty()) {
-					label += "%h";
-					fl_addtopup(menu, label.c_str(), menu2,
-						    shortcut.c_str());
-				} else
-					fl_addtopup(menu, label.c_str(), menu2);
-			}
-			pos = new_pos;
-		}
-	}
-}
-
 } // namespace anon
 
-
-void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
-			     vector<int> & smn, Window win)
-{
-	if (!owner_->buffer())
-		return;
-	toc::TocList toc_list = toc::getTocList(owner_->buffer());
-	toc::TocList::const_iterator cit = toc_list.begin();
-	toc::TocList::const_iterator end = toc_list.end();
-	for (; cit != end; ++cit) {
-		// Handle this elsewhere
-		if (cit->first == "TOC") continue;
-
-		// All the rest is for floats
-		int menu_first_sub = get_new_submenu(smn, win);
-		int menu_current = menu_first_sub;
-		toc::Toc::const_iterator ccit = cit->second.begin();
-		toc::Toc::const_iterator eend = cit->second.end();
-		size_type count = 0;
-		for (; ccit != eend; ++ccit) {
-			++count;
-			if (count > max_number_of_items) {
-				int menu_tmp = get_new_submenu(smn, win);
-				string label = _("More");
-				label += "...%m";
-				fl_addtopup(menu_current, label.c_str(), menu_tmp);
-				count = 1;
-				menu_current = menu_tmp;
-			}
-			int const action = ccit->action();
-			string label = fixlabel(ccit->str);
-			label = limit_string_length(label);
-			label += "%x" + tostr(action + action_offset);
-			fl_addtopup(menu_current, label.c_str());
-		}
-		string const m = floatList[cit->first]->second.name() + "%m";
-		fl_addtopup(menu, m.c_str(), menu_first_sub);
-	}
-
-
-	// Handle normal TOC
-	cit = toc_list.find("TOC");
-	if (cit == end) {
-		string const tmp = _("No Table of contents%i") + extra_label;
-		fl_addtopup(menu, tmp.c_str());
-		return;
-	} else {
-		add_toc2(menu, extra_label, smn, win,
-			 cit->second, 0, cit->second.size(), 0);
-	}
-}
 
 
 int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 				   Menu const & menu, vector<int> & smn)
 {
-	int const menuid = get_new_submenu(smn, win);
-	fl_setpup_softedge(menuid, true);
-	fl_setpup_bw(menuid, -1);
-	lyxerr[Debug::GUI] << "Adding menu " << menuid
-			   << " in deletion list" << endl;
+	const int menuid = get_new_submenu(smn, win);
+	lyxerr[Debug::GUI] << "Menubar::Pimpl::create_submenu: creating "
+			   << menu.name() << " as menuid=" << menuid << endl;
 
 	// Compute the size of the largest label (because xforms is
 	// not able to support shortcuts correctly...)
@@ -380,9 +238,23 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			last = it;
 
 	it = extra_labels.begin();
+	size_type count = 0;
+	int curmenuid = menuid;
 	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
 		MenuItem const & item = (*i);
 		string & extra_label = *it;
+
+		++count;
+		if (count > max_number_of_items) {
+			int tmpmenuid = get_new_submenu(smn, win);
+			lyxerr[Debug::GUI] << "Too many items, creating "
+					   << "new menu " << tmpmenuid << endl;
+			string label = _("More");
+			label += "...%m";
+			fl_addtopup(curmenuid, label.c_str(), tmpmenuid);
+			count = 1;
+			curmenuid = tmpmenuid;
+		}
 
 		switch (item.kind()) {
 		case MenuItem::Command: {
@@ -399,9 +271,10 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 
 			// Get the keys bound to this action, but keep only the
 			// first one later
-			string const accel = toplevel_keymap->findbinding(kb_action(item.action()));
+			string const accel =
+				toplevel_keymap->findbinding(item.action());
 			// Build the menu label from all the info
-			string label = item.label();
+			string label = fixlabel(item.label());
 
 			if (!accel.empty()) {
 				// Try to be clever and add  just enough
@@ -430,34 +303,36 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menuid, label.c_str(),
+				fl_addtopup(curmenuid, label.c_str(),
 					    shortcut.c_str());
 			} else
-				fl_addtopup(menuid, label.c_str());
+				fl_addtopup(curmenuid, label.c_str());
 
 			lyxerr[Debug::GUI] << "Command: \""
 					   << lyxaction.getActionName(item.action())
 					   << "\", binding \"" << accel
 					   << "\", shortcut \"" << shortcut
-					   << "\"" << endl;
+					   << "\" (added to menu"
+					   << curmenuid << ")" << endl;
 			break;
 		}
 
 		case MenuItem::Submenu: {
 			int submenuid = create_submenu(win, view,
-						     item.submenu(), smn);
+						       *item.submenu(), smn);
 			if (submenuid == -1)
 				return -1;
-			string label = item.label();
+			string label = fixlabel(item.label());
 			label += extra_label + "%m";
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(menuid, label.c_str(),
+				fl_addtopup(curmenuid, label.c_str(),
 					    submenuid, shortcut.c_str());
 			} else {
-				fl_addtopup(menuid, label.c_str(), submenuid);
+				fl_addtopup(curmenuid, label.c_str(),
+					    submenuid);
 			}
 			break;
 		}
@@ -467,22 +342,11 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			// we just ignore it.
 			break;
 
-		case MenuItem::Toc:
-			add_toc(menuid, extra_label, smn, win);
-			break;
 
-		case MenuItem::Documents:
-		case MenuItem::Lastfiles:
-		case MenuItem::ViewFormats:
-		case MenuItem::UpdateFormats:
-		case MenuItem::ExportFormats:
-		case MenuItem::ImportFormats:
-		case MenuItem::FloatListInsert:
-		case MenuItem::FloatInsert:
+		default:
 			lyxerr << "Menubar::Pimpl::create_submenu: "
 				"this should not happen" << endl;
 			break;
-
 		}
 	}
 	return menuid;
@@ -492,11 +356,6 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 {
 	ItemInfo * iteminfo = static_cast<ItemInfo *>(ob->u_vdata);
-//	lyxerr << "MenuCallback: ItemInfo address=" << iteminfo
-//	       << "Val=(pimpl_=" << iteminfo->pimpl_
-//	       << ", item_=" << iteminfo->item_
-//	       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
-
 	XFormsView * view = iteminfo->pimpl_->owner_;
 	MenuItem const * item = iteminfo->item_.get();
 

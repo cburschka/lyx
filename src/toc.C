@@ -72,6 +72,8 @@ string const getType(string const & cmdName)
 TocList const getTocList(Buffer const * buf)
 {
 	TocList toclist;
+	if (!buf)
+		return toclist;
 	Paragraph * par = buf->paragraph;
 
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();

@@ -28,6 +28,7 @@
 #include "exporter.h"
 #include "importer.h"
 #include "FloatList.h"
+#include "toc.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
@@ -262,6 +263,17 @@ public:
 	}
 };
 
+string const limit_string_length(string const & str)
+{
+	string::size_type const max_item_length = 45;
+
+	if (str.size() > max_item_length)
+		return str.substr(0, max_item_length - 3) + "...";
+	else
+		return str;
+}
+
+
 void expandLastfiles(Menu & tomenu)
 {
 	int ii = 1;
@@ -361,6 +373,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 	}
 }
 
+
 void expandFloatListInsert(Menu & tomenu)
 {
 	FloatList::const_iterator cit = floatList.begin();
@@ -373,6 +386,7 @@ void expandFloatListInsert(Menu & tomenu)
 				    action));
 	}
 }
+
 
 void expandFloatInsert(Menu & tomenu)
 {
@@ -387,6 +401,90 @@ void expandFloatInsert(Menu & tomenu)
 		tomenu.add(MenuItem(MenuItem::Command, label, action));
 	}
 }
+
+
+Menu::size_type const max_number_of_items = 25;
+
+void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
+		toc::Toc::size_type from, toc::Toc::size_type to, int depth)
+{
+	int shortcut_count = 0;
+	if (to - from <= max_number_of_items) {
+		for (toc::Toc::size_type i = from; i < to; ++i) {
+			int const action = toc_list[i].action();
+			string label(4 * max(0, toc_list[i].depth - depth),' ');
+			label += limit_string_length(toc_list[i].str);
+			if (toc_list[i].depth == depth
+			    && ++shortcut_count <= 9) {
+				label += "|" + tostr(shortcut_count);
+			}
+			tomenu.add(MenuItem(MenuItem::Command, label, action));
+		}
+	} else {
+		toc::Toc::size_type pos = from;
+		while (pos < to) {
+			toc::Toc::size_type new_pos = pos + 1;
+			while (new_pos < to &&
+			       toc_list[new_pos].depth > depth)
+				++new_pos;
+
+			int const action = toc_list[pos].action();
+			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
+			label += limit_string_length(toc_list[pos].str);
+			if (toc_list[pos].depth == depth &&
+			    ++shortcut_count <= 9)
+				label += '|' + tostr(shortcut_count);
+
+			if (new_pos == pos + 1) {
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action));
+			} else {
+				MenuItem item(MenuItem::Submenu, label);
+				item.submenu(new Menu);
+				expandToc2(*item.submenu(),
+					   toc_list, pos, new_pos, depth + 1);
+				tomenu.add(item);
+			}
+			pos = new_pos;
+		}
+	}
+}
+
+
+void expandToc(Menu & tomenu, Buffer const * buf)
+{
+	toc::TocList toc_list = toc::getTocList(buf);
+	toc::TocList::const_iterator cit = toc_list.begin();
+	toc::TocList::const_iterator end = toc_list.end();
+	for (; cit != end; ++cit) {
+		// Handle this later
+		if (cit->first == "TOC") continue;
+
+		// All the rest is for floats
+		Menu * menu = new Menu;
+		toc::Toc::const_iterator ccit = cit->second.begin();
+		toc::Toc::const_iterator eend = cit->second.end();
+		for (; ccit != eend; ++ccit) {
+			string const label = limit_string_length(ccit->str);
+			menu->add(MenuItem(MenuItem::Command,
+					   label, ccit->action()));
+		}
+		MenuItem item(MenuItem::Submenu,
+			      floatList[cit->first]->second.name());
+		item.submenu(menu);
+		tomenu.add(item);
+	}
+
+	// Handle normal TOC
+	cit = toc_list.find("TOC");
+	if (cit == end) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Table of contents")));
+	} else {
+		expandToc2(tomenu, cit->second, 0, cit->second.size(), 0);
+	}
+}
+
 
 } // namespace anon
 
@@ -420,11 +518,15 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			expandFloatInsert(tomenu);
 			break;
 
+		case MenuItem::Toc:
+			expandToc(tomenu, buf);
+			break;
+
 		case MenuItem::Submenu: {
 			MenuItem item(*cit);
-			item.submenu_.reset(new Menu(cit->submenuname_));
-			expand(getMenu(cit->submenuname_),
-			       *item.submenu_, buf);
+			item.submenu(new Menu(cit->submenuname()));
+			expand(getMenu(cit->submenuname()),
+			       *item.submenu(), buf);
 			tomenu.add(item);
 		}
 		break;

@@ -88,14 +88,19 @@ public:
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
 	int action() const { return action_; }
-	/// the description of the  submenu (if relevant)
-	string const & submenuname() const { return submenuname_; }
 	/// returns true if the entry should be ommited when disabled
 	bool optional() const { return optional_; }
+	/// the description of the  submenu (if relevant)
+	string const & submenuname() const { return submenuname_; }
+	/// the description of the  submenu (if relevant)
+	void submenuname(string const & name) { submenuname_ = name; }
 	///
-	Menu & submenu() const { return *submenu_.get(); }
+	Menu * submenu() const { return submenu_.get(); }
+	///
+	void submenu(Menu * menu) { submenu_.reset(menu); }
+
 private:
-	friend class MenuBackend;
+	//friend class MenuBackend;
 	///
 	Kind kind_;
 	///
@@ -118,6 +123,8 @@ public:
 	typedef std::vector<MenuItem> ItemList;
 	///
 	typedef ItemList::const_iterator const_iterator;
+	///
+	typedef ItemList::size_type size_type;
 	///
 	explicit Menu(string const & name = string())
 		: name_(name) {}
