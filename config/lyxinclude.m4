@@ -178,10 +178,26 @@ fi
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
   AC_HELP_STRING([--enable-debug],[enable debug information]),,
-  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
 	enable_debug=yes;
     else
 	enable_debug=no;
+    fi;])
+
+AC_ARG_ENABLE(stdlib-debug,
+  AC_HELP_STRING([--enable-stdlib-debug],[enable debug mode in the standard library]),,
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+      enable_stdlib_debug=yes;
+    else
+      enable_stdlib_debug=no;
+    fi;])
+
+AC_ARG_ENABLE(concept-checks,
+  AC_HELP_STRING([--enable-concept-checks],[enable concept checks]),,
+  [ if test $lyx_devel_version = yes -o $lyx-prerelease = yes ; then
+	enable_concept_checks=yes;
+    else
+        enable_concept_checks=no;
     fi;])
 
 ### set up optimization
@@ -194,9 +210,12 @@ case $enable_optimization in
     *) lyx_opt=${enable_optimization};;
 esac
 
+AC_ARG_ENABLE(pch,
+  AC_HELP_STRING([--enable-pch],[enable precompiled headers]),,
+	enable_pch=yes;)
 lyx_pch_comp=no
 
-# set the debug flags correctly.
+# set the compiler options correctly.
 if test x$GXX = xyes; then
   dnl Useful for global version info
   gxx_version=`${CXX} -dumpversion`
@@ -209,40 +228,51 @@ if test x$GXX = xyes; then
       2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -ftemplate-depth-30";;
       2.95.*)  CXXFLAGS="$lyx_opt -Wno-non-template-friend -ftemplate-depth-30";;
       2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
-      3.0*)    CXXFLAGS="$lyx_opt";;
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
-      3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
+      3.2*|3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.4*|4.0*)
 	    CXXFLAGS="$lyx_opt -fno-exceptions"
-	    lyx_pch_comp=yes;;
+	    test $enable_pch = yes && lyx_pch_comp=yes
+	    ;;
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
-	case $gxx_version in
-	    3.3*) CXXFLAGS="-g $CXXFLAGS"
-		AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
-		;;
-	    3.4*|4.0*) CXXFLAGS="-g $CXXFLAGS"
-		AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
-		AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
-		AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
-		;;
-	    *)    CXXFLAGS="-g $CXXFLAGS";;
-	esac
+	CXXFLAGS="-g $CXXFLAGS"
     fi
+  fi
+  if test x$enable_stdlib_debug = xyes ; then
+    case $gxx_version in
+      3.4*|4.0*)
+        lyx_flags="$lyx_flags stdlib-debug"
+	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
+	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
+        ;;
+    esac
+  fi
+  if test x$enable_concept_checks = xyes ; then
+    case $gxx_version in
+      3.3*)
+        lyx_flags="$lyx_flags concept-checks"
+        AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
+	;;
+      3.4*|4.0*)
+        lyx_flags="$lyx_flags concept-checks"
+	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
+	;;
+    esac
   fi
   if test x$enable_warnings = xyes ; then
     case $gxx_version in
-	2.95.*) CPPFLAGS="$CPPFLAGS -W -Wall";;
-	2.96*)  CPPFLAGS="$CPPFLAGS -W -Wall";;
-	3.1*) CPPFLAGS="$CPPFLAGS -W -Wall";;
-	3.2*) CPPFLAGS="$CPPFLAGS -W -Wall";;
-	3.3*) CPPFLAGS="$CPPFLAGS -W -Wall";;
-	*)    CPPFLAGS="$CPPFLAGS -Wextra -Wall";;
+      2.*|3.1*|3.2*|3.3*)
+        CPPFLAGS="$CPPFLAGS -W -Wall"
+        ;;
+      *)
+        CPPFLAGS="$CPPFLAGS -Wextra -Wall"
+        ;;
     esac
   fi
 fi
+test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 ])dnl
 

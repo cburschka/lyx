@@ -1,3 +1,10 @@
+2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxinclude.m4 (enable_stdlib_debug): new switch
+	(enable_concept_checks): new switch
+	(enable_pch): new switch
+	Also some cleanup.
+
 2004-12-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4 (LYX_CXX_CHEADERS): remove.
