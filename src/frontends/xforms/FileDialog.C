@@ -16,7 +16,7 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/globbing.h"
+#include "support/filefilterlist.h"
 #include "support/lstrings.h"
 
 using lyx::support::rsplit;

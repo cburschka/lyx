@@ -13,7 +13,7 @@
 #include "FileDialog_private.h"
 #include "qt_helpers.h"
 
-#include "support/globbing.h"
+#include "support/filefilterlist.h"
 #include "support/lstrings.h"
 
 #include <qapplication.h>

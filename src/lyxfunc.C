@@ -78,10 +78,10 @@
 #include "frontends/Menubar.h"
 #include "frontends/Toolbars.h"
 
+#include "support/filefilterlist.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
-#include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/path_defines.h"

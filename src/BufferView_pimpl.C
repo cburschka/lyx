@@ -63,9 +63,9 @@
 
 #include "graphics/Previews.h"
 
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
-#include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
 #include "support/types.h"

@@ -28,6 +28,8 @@ libsupport_la_SOURCES = \
 	copied_ptr.h \
 	cow_ptr.h \
 	debugstream.h \
+	filefilterlist.C \
+	filefilterlist.h \
 	filename.C \
 	filename.h \
 	filetools.C \

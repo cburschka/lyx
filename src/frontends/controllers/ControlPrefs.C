@@ -20,7 +20,7 @@
 #include "funcrequest.h"
 #include "LColor.h"
 
-#include "support/globbing.h"
+#include "support/filefilterlist.h"
 
 #include <sstream>
 

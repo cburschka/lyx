@@ -34,10 +34,10 @@
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
+#include "support/filefilterlist.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
-#include "support/globbing.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"

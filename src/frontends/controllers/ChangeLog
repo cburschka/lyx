@@ -1,3 +1,14 @@
+2004-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibtex.C:
+	* ControlExternal.C:
+	* ControlGraphics.C:
+	* ControlInclude.C:
+	* ControlPrefs.C:
+	* ControlPrint.C: s/globbing.h/filefilterlist.h/ in #includes.
+
+	* helper_funcs.C: remove #include "globbing.h".
+
 2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlSpellchecker.C (check): update the view when setting the

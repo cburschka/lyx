@@ -22,7 +22,6 @@
 #include "xformsBC.h"
 
 #include "support/filetools.h"
-#include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 

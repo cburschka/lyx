@@ -1,3 +1,8 @@
+2004-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* FileDialog_private.C: s/globbing.h/filefilterlist.h/ in #includes.
+
 2004-11-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lengthvalidator.[Ch]: add GlueLength validator

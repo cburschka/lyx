@@ -24,8 +24,8 @@
 
 #include "insets/insetinclude.h"
 
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/globbing.h"
 
 #include <utility>
 

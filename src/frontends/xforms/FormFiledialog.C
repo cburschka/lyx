@@ -20,6 +20,7 @@
 #include "frontends/Dialogs.h"
 
 #include "support/FileInfo.h"
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/globbing.h"
 #include "support/lstrings.h"

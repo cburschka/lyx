@@ -21,7 +21,6 @@
 
 #include "support/filetools.h"
 #include "support/path_defines.h"
-#include "support/globbing.h"
 
 using std::pair;
 using std::vector;

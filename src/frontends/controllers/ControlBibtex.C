@@ -22,8 +22,8 @@
 #include "tex_helpers.h"
 #include "gettext.h"
 
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/globbing.h"
 
 using std::pair;
 using std::string;

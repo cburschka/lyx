@@ -26,8 +26,8 @@
 #include "insets/insetgraphics.h"
 
 #include "support/FileInfo.h"
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
 #include "support/types.h"

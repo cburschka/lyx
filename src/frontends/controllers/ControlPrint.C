@@ -22,8 +22,8 @@
 #include "PrinterParams.h"
 
 #include "support/tostr.h"
+#include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/globbing.h"
 
 using std::string;
 

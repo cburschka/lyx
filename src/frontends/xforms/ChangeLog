@@ -1,3 +1,9 @@
+2004-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C: s/globbing.h/filefilterlist.h/ in #includes.
+	* FormFileDialog.C: add #include "filefilterlist.h"
+	* FormBibtex.C: remove #include "globbing.h".
+
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Layoutengine.[Ch]: Break up circular dependency between Box and

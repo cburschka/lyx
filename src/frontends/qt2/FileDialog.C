@@ -19,7 +19,7 @@
 #include "debug.h"
 #include "gettext.h"
 
-#include "support/globbing.h"
+#include "support/filefilterlist.h"
 
 /** when this is defined, the code will use
  * QFileDialog::getOpenFileName and friends to create filedialogs.
