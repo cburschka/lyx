@@ -152,7 +152,7 @@ public:
 	///
 	void selDel();
 	/// pastes n-th element of cut buffer
-	void selPaste(int n);
+	void selPaste(size_t n);
 	///
 	void selHandle(bool);
 	///

@@ -581,7 +581,7 @@ void MathCursor::selDel()
 }
 
 
-void MathCursor::selPaste(int n)
+void MathCursor::selPaste(size_t n)
 {
 	dump("selPaste");
 	selClearOrDel();

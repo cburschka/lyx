@@ -151,21 +151,21 @@ void catInit()
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
 
-	theCatcode['\\'] = catEscape;
-	theCatcode['{']  = catBegin;
-	theCatcode['}']  = catEnd;
-	theCatcode['$']  = catMath;
-	theCatcode['&']  = catAlign;
-	theCatcode['\n'] = catNewline;
-	theCatcode['#']  = catParameter;
-	theCatcode['^']  = catSuper;
-	theCatcode['_']  = catSub;
-	theCatcode[''] = catIgnore;
-	theCatcode[' ']  = catSpace;
-	theCatcode['\t'] = catSpace;
-	theCatcode['\r'] = catNewline;
-	theCatcode['~']  = catActive;
-	theCatcode['%']  = catComment;
+	theCatcode[int('\\')] = catEscape;
+	theCatcode[int('{')]  = catBegin;
+	theCatcode[int('}')]  = catEnd;
+	theCatcode[int('$')]  = catMath;
+	theCatcode[int('&')]  = catAlign;
+	theCatcode[int('\n')] = catNewline;
+	theCatcode[int('#')]  = catParameter;
+	theCatcode[int('^')]  = catSuper;
+	theCatcode[int('_')]  = catSub;
+	theCatcode[int('')] = catIgnore;
+	theCatcode[int(' ')]  = catSpace;
+	theCatcode[int('\t')] = catSpace;
+	theCatcode[int('\r')] = catNewline;
+	theCatcode[int('~')]  = catActive;
+	theCatcode[int('%')]  = catComment;
 }
 
 

@@ -510,7 +510,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PASTE: {
-		int n = 0;
+		size_t n = 0;
 		istringstream is(cmd.argument.c_str());
 		is >> n;
 		if (was_macro)
