@@ -63,5 +63,5 @@ SCRIPT = $(srcdir)/fdfix.sh
 SUFFIX = .fd
 
 .fd.C: $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
-	{ [ $(srcdir) != . ] && [ ! -a $(<F) ] && $(LN_S) $< . ; } || true
-	$(SHELL) $(SCRIPT) `basename $<`
+	{ [ $(srcdir) != . ] && [ ! -r $(<F) ] && $(LN_S) $< . ; } || true
+	$(SHELL) $(SCRIPT) $(<F)

@@ -1,3 +1,8 @@
+2004-06-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* forms/Makefile.am (.fd.C): Use '-r' to test for file existence,
+	and use $(<F) instead of `basename $<`
+
 2004-06-01  Angus Leeming  <leeming@lyx.org>
 
 	* LayoutEngine.C (c-tor): initialize visible_ as false.
