@@ -392,7 +392,6 @@ string const bibitemWidest(Buffer const * buffer)
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
 	LyXParagraph * par = buffer->paragraph;
-	BufferView * bv = buffer->getUser();
 	InsetBibKey * bkey = 0;
 	LyXFont font;
       
