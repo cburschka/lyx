@@ -249,9 +249,9 @@ void LyXRC::setDefaults() {
 int LyXRC::ReadBindFile(string const & name)
 {
 	hasBindFile = true;
-	string tmp = i18nLibFileSearch("bind", name, "bind");
+	string const tmp = i18nLibFileSearch("bind", name, "bind");
 	lyxerr[Debug::LYXRC] << "Reading bindfile:" << tmp << endl;
-	int result = read(tmp);
+	int const result = read(tmp);
 	if (result) {
 		lyxerr << "Error reading bind file: " << tmp << endl;
 	}
@@ -262,7 +262,7 @@ int LyXRC::ReadBindFile(string const & name)
 int LyXRC::read(string const & filename)
 {
 	// Default bindfile.
-	string bindFile = "cua";
+	static string const bindFile("cua");
 	
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
@@ -677,8 +677,8 @@ int LyXRC::read(string const & filename)
 			// loading a bind file. So, in this case, load
 			// the default bind file.
 			if (!hasBindFile) {
-				ReadBindFile();
 				bind_file = bindFile;
+				ReadBindFile();
 			}
 			// !!!chb, dynamic key binding...
 			int action, res = 0;

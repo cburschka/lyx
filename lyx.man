@@ -57,6 +57,16 @@ specifies the preferred size and position of the main \fBLyX\fR window; see \fIX
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
 Use "\fBlyx -dbg\fR" to see the list of available debug features.
+.TP
+\fB -x [--execute]\fP \fIcommand
+where command is a lyx command.
+.TP
+\fB -e [--export]\fP \fIfmt
+where fmt is the export format of choice.
+.TP
+\fB -i [--import]\fP \fIfmt file.xxx
+where fmt is the import format of choice and file.xxx is the file to be imported.
+
 .PP
 Furthermore, \fBLyX\fR understands the following generic command line options 
 from the \fBForms Library\fR:

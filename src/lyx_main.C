@@ -714,7 +714,14 @@ void commandLineHelp()
                   "\t-dbg feature[,feature]...\n"
                   "                  select the features to debug.\n"
                   "                  Type `lyx -dbg' to see the list of features\n"
-		  "Check the LyX man page for more options.") << endl;
+		  "\t-x [--execute] command\n"
+		  "                  where command is a lyx command.\n"
+		  "\t-e [--export] fmt\n"
+		  "                  where fmt is the export format of choice.\n"
+		  "\t-i [--import] fmt file.xxx\n"
+		  "                  where fmt is the import format of choice\n"
+		  "                  and file.xxx is the file to be imported.\n"
+		  "Check the LyX man page for more details.") << endl;
 }
 
 
@@ -794,7 +801,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
-		else if (arg == "--import") {
+		else if (arg == "-i" || arg == "--import") {
 			if (i + 1 < *argc) {
 				string type(argv[i+1]);
 				string file(argv[i+2]);

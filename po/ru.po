@@ -726,7 +726,7 @@ msgstr "Другой..."
 #: src/MenuBackend.C:402 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
-msgstr "|Импорт%m"
+msgstr "Импорт%m"
 
 #: src/ext_l10n.h:16 src/ext_l10n.h:30
 #, fuzzy
@@ -766,7 +766,7 @@ msgstr "Вставка"
 #: src/ext_l10n.h:27
 #, fuzzy
 msgid "Export|E"
-msgstr "|Экспорт%m%l"
+msgstr "Экспорт%m%l"
 
 #: src/ext_l10n.h:28
 #, fuzzy
@@ -783,32 +783,32 @@ msgstr "Факс N:"
 #: src/ext_l10n.h:31
 #, fuzzy
 msgid "Register|R"
-msgstr "|Зарегистрировать%x51"
+msgstr "Зарегистрировать"
 
 #: src/ext_l10n.h:32
 #, fuzzy
 msgid "Check In Changes|I"
-msgstr "|Влить изменения%x52"
+msgstr "Влить изменения"
 
 #: src/ext_l10n.h:33
 #, fuzzy
 msgid "Check Out for Edit|O"
-msgstr "|Захватить на редакцию%x53"
+msgstr "Захватить на редакцию"
 
 #: src/ext_l10n.h:34
 #, fuzzy
 msgid "Revert to Last Version|L"
-msgstr "|Откатиться к последней версии%x54"
+msgstr "Откатиться к последней версии"
 
 #: src/ext_l10n.h:35
 #, fuzzy
 msgid "Undo Last Check In|U"
-msgstr "|Отменить последнюю заливку%x55"
+msgstr "Отменить последнюю заливку"
 
 #: src/ext_l10n.h:36
 #, fuzzy
 msgid "Show History|H"
-msgstr "|Показать историю%x56"
+msgstr "Показать историю"
 
 #: src/ext_l10n.h:37
 #, fuzzy
@@ -948,12 +948,12 @@ msgstr ""
 #: src/ext_l10n.h:67
 #, fuzzy
 msgid "Line Top|T"
-msgstr "|Верх строки%B%x36"
+msgstr "Верх строки"
 
 #: src/ext_l10n.h:68
 #, fuzzy
 msgid "Line Bottom|B"
-msgstr "|Низ строки%B%x37"
+msgstr "Низ строки"
 
 #: src/ext_l10n.h:69
 #, fuzzy
@@ -972,7 +972,7 @@ msgstr ""
 #: src/ext_l10n.h:71
 #, fuzzy
 msgid "Align Left|e"
-msgstr "|Выравнивание влево%R%x40"
+msgstr "Выравнивание влево"
 
 #: src/ext_l10n.h:72
 #, fuzzy
@@ -982,7 +982,7 @@ msgstr "Выравнивание"
 #: src/ext_l10n.h:73
 #, fuzzy
 msgid "Align Right|i"
-msgstr "|Выравнивание вправо%R%x41"
+msgstr "Выравнивание вправо"
 
 #: src/ext_l10n.h:74
 msgid "V.Align Top|o"
@@ -991,12 +991,12 @@ msgstr ""
 #: src/ext_l10n.h:75
 #, fuzzy
 msgid "V.Align Center|n"
-msgstr "|Центровка%R%x42%l"
+msgstr "Центровка%R"
 
 #: src/ext_l10n.h:76
 #, fuzzy
 msgid "V.Align Bottom|V"
-msgstr "|Низ строки%B%x37"
+msgstr "Низ строки"
 
 #: src/ext_l10n.h:77
 #, fuzzy
@@ -1077,7 +1077,7 @@ msgstr ""
 #: src/ext_l10n.h:92
 #, fuzzy
 msgid "URL...|U"
-msgstr "|Ссылка в Интернет (URL)"
+msgstr "Ссылка в Интернет (URL)"
 
 #: src/ext_l10n.h:93
 #, fuzzy
@@ -2156,7 +2156,7 @@ msgstr "Другие"
 #: src/ext_l10n.h:331
 #, fuzzy
 msgid "modying"
-msgstr "|Импорт%m"
+msgstr "Импорт%m"
 
 #: src/ext_l10n.h:332
 #, fuzzy
@@ -2886,7 +2886,7 @@ msgstr ""
 #: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
 #, fuzzy
 msgid "URL"
-msgstr "|Ссылка в Интернет (URL)"
+msgstr "Ссылка в Интернет (URL)"
 
 #: src/ext_l10n.h:492
 msgid "Use"
@@ -6387,7 +6387,7 @@ msgstr ""
 #: src/frontends/xforms/form_url.C:28 src/frontends/xforms/form_url.C:29
 #, fuzzy
 msgid "URL|#U"
-msgstr "|Ссылка в Интернет (URL)"
+msgstr "Ссылка в Интернет (URL)"
 
 #: src/frontends/xforms/form_url.C:33 src/frontends/xforms/form_url.C:34
 #, fuzzy
@@ -6461,7 +6461,7 @@ msgstr "Перейти к ссылке"
 #: src/importer.C:39
 #, fuzzy
 msgid "Importing"
-msgstr "|Импорт%m"
+msgstr "Импорт%m"
 
 #: src/importer.C:57
 #, fuzzy
@@ -7217,7 +7217,7 @@ msgstr "Выделить до конца документа"
 #: src/LyXAction.C:128
 #, fuzzy
 msgid "Export to"
-msgstr "|Экспорт%m%l"
+msgstr "Экспорт%m%l"
 
 #: src/LyXAction.C:130
 msgid "Fax"

@@ -727,7 +727,7 @@ msgstr "Outro...|#O"
 #: src/MenuBackend.C:402 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
-msgstr "|Importar%m"
+msgstr "Importar%m"
 
 #: src/ext_l10n.h:16 src/ext_l10n.h:30
 #, fuzzy
@@ -767,7 +767,7 @@ msgstr "Inserir"
 #: src/ext_l10n.h:27
 #, fuzzy
 msgid "Export|E"
-msgstr "|Exportar%m%l"
+msgstr "Exportar%m%l"
 
 #: src/ext_l10n.h:28
 #, fuzzy
@@ -782,32 +782,32 @@ msgstr "Fax no.:|#F"
 #: src/ext_l10n.h:31
 #, fuzzy
 msgid "Register|R"
-msgstr "|Registrar%x51"
+msgstr "Registrar"
 
 #: src/ext_l10n.h:32
 #, fuzzy
 msgid "Check In Changes|I"
-msgstr "|Registro de saída foi modificados%x52"
+msgstr "Registro de saída foi modificados"
 
 #: src/ext_l10n.h:33
 #, fuzzy
 msgid "Check Out for Edit|O"
-msgstr "|Registro de saída para editar%x53"
+msgstr "Registro de saída para editar"
 
 #: src/ext_l10n.h:34
 #, fuzzy
 msgid "Revert to Last Version|L"
-msgstr "|Reverter para a última versão%x54"
+msgstr "Reverter para a última versão"
 
 #: src/ext_l10n.h:35
 #, fuzzy
 msgid "Undo Last Check In|U"
-msgstr "|Desfazer o último registro de entrada%x55"
+msgstr "Desfazer o último registro de entrada"
 
 #: src/ext_l10n.h:36
 #, fuzzy
 msgid "Show History|H"
-msgstr "|Mostrar Histórico%x56"
+msgstr "Mostrar Histórico"
 
 #: src/ext_l10n.h:37
 #, fuzzy
@@ -945,12 +945,12 @@ msgstr "Várias colunas|#V"
 #: src/ext_l10n.h:67
 #, fuzzy
 msgid "Line Top|T"
-msgstr "|Topo da Linha%B%x36"
+msgstr "Topo da Linha"
 
 #: src/ext_l10n.h:68
 #, fuzzy
 msgid "Line Bottom|B"
-msgstr "|Base da Linha%B%x37"
+msgstr "Base da Linha"
 
 #: src/ext_l10n.h:69
 #, fuzzy
@@ -965,7 +965,7 @@ msgstr "Direita|#D"
 #: src/ext_l10n.h:71
 #, fuzzy
 msgid "Align Left|e"
-msgstr "|Alinhamento à esquerda%R%x40"
+msgstr "Alinhamento à esquerda"
 
 #: src/ext_l10n.h:72
 #, fuzzy
@@ -975,7 +975,7 @@ msgstr "Alinhamento"
 #: src/ext_l10n.h:73
 #, fuzzy
 msgid "Align Right|i"
-msgstr "|Alinhamento à direita%R%x41"
+msgstr "Alinhamento à direita"
 
 #: src/ext_l10n.h:74
 msgid "V.Align Top|o"
@@ -984,12 +984,12 @@ msgstr ""
 #: src/ext_l10n.h:75
 #, fuzzy
 msgid "V.Align Center|n"
-msgstr "|Alinhamento Centralizado%R%x42%l"
+msgstr "Alinhamento Centralizado"
 
 #: src/ext_l10n.h:76
 #, fuzzy
 msgid "V.Align Bottom|V"
-msgstr "|Base da Linha%B%x37"
+msgstr "Base da Linha"
 
 #: src/ext_l10n.h:77
 #, fuzzy
@@ -1068,7 +1068,7 @@ msgstr ""
 #: src/ext_l10n.h:92
 #, fuzzy
 msgid "URL...|U"
-msgstr "|URL..."
+msgstr "URL..."
 
 #: src/ext_l10n.h:93
 #, fuzzy
@@ -2139,7 +2139,7 @@ msgstr "Misc"
 #: src/ext_l10n.h:331
 #, fuzzy
 msgid "modying"
-msgstr "|Importar%m"
+msgstr "Importar%m"
 
 #: src/ext_l10n.h:332
 #, fuzzy
@@ -2855,7 +2855,7 @@ msgstr ""
 #: src/frontends/kde/urldlg.C:61 src/frontends/kde/urldlg.C:62
 #, fuzzy
 msgid "URL"
-msgstr "|URL..."
+msgstr "URL..."
 
 #: src/ext_l10n.h:492
 msgid "Use"
@@ -6301,7 +6301,7 @@ msgstr ""
 #: src/frontends/xforms/form_url.C:28 src/frontends/xforms/form_url.C:29
 #, fuzzy
 msgid "URL|#U"
-msgstr "|URL..."
+msgstr "URL..."
 
 #: src/frontends/xforms/form_url.C:33 src/frontends/xforms/form_url.C:34
 msgid "Name|#N"
@@ -6374,7 +6374,7 @@ msgstr "Ir para Referência|#G"
 #: src/importer.C:39
 #, fuzzy
 msgid "Importing"
-msgstr "|Importar%m"
+msgstr "Importar%m"
 
 #: src/importer.C:57
 #, fuzzy
@@ -7126,7 +7126,7 @@ msgstr "Selecionar até o final do documento"
 #: src/LyXAction.C:128
 #, fuzzy
 msgid "Export to"
-msgstr "|Exportar%m%l"
+msgstr "Exportar%m%l"
 
 #: src/LyXAction.C:130
 msgid "Fax"
