@@ -7,6 +7,8 @@
 #include "math_symbolinset.h"
 #include "debug.h"
 
+#include <boost/smart_ptr.hpp>
+
 using std::endl;
 
 
@@ -75,12 +77,11 @@ void MathExIntInset::maplize(MapleStream & os) const
 
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
-	MathSymbolInset * sym = new MathSymbolInset(symbol_);
+	boost::scoped_ptr<MathSymbolInset> sym(new MathSymbolInset(symbol_));
 	//if (hasScripts())
 	//	mathmlize(sym, os);
 	//else 
 		sym->mathmlize(os);
-	delete sym;
 	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
 	   << cell(1) << ETag("mrow");

@@ -1,3 +1,21 @@
+2001-12-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_atom.C:
+	* math_binaryopinset.C:
+	* math_binominset.C:
+	* math_casesinset.C:
+	* math_charinset.C:
+	* math_data.C:
+	* math_diminset.C:add missing config.h
+
+	* math_cursor.C:
+	* math_parser.C: move inludes around a bit.
+
+	* math_extinset.C: user boost::scoped_ptr
+
+	* math_parser.C: user std::fill to fill the catcodes. (please
+	check this one...), and some consts.
+	
 2001-12-11  André Pönitz <poenitz@gmx.net>
 
 	* math_cursor.C: allow cut&paste of rectangular regions of cells

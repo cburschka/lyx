@@ -45,9 +45,6 @@ point to write some macros:
 
 #include <config.h>
 
-#include <cctype>
-#include <stack>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -73,22 +70,29 @@ point to write some macros:
 #include "math_splitinset.h"
 #include "math_sqrtinset.h"
 #include "math_support.h"
+
 #include "lyxlex.h"
 #include "debug.h"
+
 #include "support/lstrings.h"
+
+#include <cctype>
+#include <stack>
+#include <algorithm>
 
 using std::istream;
 using std::ostream;
 using std::ios;
 using std::endl;
 using std::stack;
+using std::fill;
 
 
 namespace {
 
 bool stared(string const & s)
 {
-	unsigned n = s.size();
+	unsigned const n = s.size();
 	return n && s[n - 1] == '*';
 }
 
@@ -141,12 +145,16 @@ enum {
 
 void catInit()
 {
-	for (int i = 0; i <= 255; ++i) 
-		theCatcode[i] = catOther;
-	for (int i = 'a'; i <= 'z'; ++i) 
-		theCatcode[i] = catLetter;
-	for (int i = 'A'; i <= 'Z'; ++i) 
-		theCatcode[i] = catLetter;
+	fill(theCatcode, theCatcode + 256, catOther);
+	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
+	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
+	
+//	for (int i = 0; i <= 255; ++i) 
+//		theCatcode[i] = catOther;
+//	for (int i = 'a'; i <= 'z'; ++i) 
+//		theCatcode[i] = catLetter;
+//	for (int i = 'A'; i <= 'Z'; ++i) 
+//		theCatcode[i] = catLetter;
 
 	theCatcode['\\'] = catEscape;	
 	theCatcode['{']  = catBegin;	
@@ -178,7 +186,7 @@ public:
 	///
 	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
 	///
-	Token(const string & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+	Token(string const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
 
 	///
 	string const & cs() const { return cs_; }
@@ -500,7 +508,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		return false;
 	}
 
-	const int cols = p->ncols();
+	int const cols = p->ncols();
 
 	// save global variables
 	bool   const saved_num   = curr_num_;

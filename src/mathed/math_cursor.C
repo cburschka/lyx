@@ -15,25 +15,18 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-#include <algorithm>
-#include <cctype>
-
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#include "debug.h"
-#include "LColor.h"
-#include "Painter.h"
+#include "math_cursor.h"
 #include "formulabase.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
 #include "math_casesinset.h"
 #include "math_charinset.h"
-#include "math_cursor.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
@@ -45,6 +38,16 @@
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_support.h"
+
+#include "debug.h"
+#include "LColor.h"
+#include "Painter.h"
+
+#include "support/lstrings.h"
+#include "support/LAssert.h"
+
+#include <algorithm>
+#include <cctype>
 
 #define FILEDEBUG 0
 
@@ -1244,7 +1247,7 @@ bool MathCursor::interpret(string const & s)
 
 	if (s == "\\over" || s == "\\choose" || s == "\\atop") {
 		MathArray ar = array();
-		MathAtom t = createMathInset(s.substr(1));
+		MathAtom t(createMathInset(s.substr(1)));
 		t->asNestInset()->cell(0).swap(array());
 		pos() = 0;
 		niceInsert(t);
