@@ -293,9 +293,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 	// set current buffer
 	buffer_ = b;
-	buffer_->text().init(bv_);
-	buffer_->text().textwidth_ = workarea().workWidth();
-	buffer_->text().fullRebreak();
 
 	top_y_ = 0;
 
@@ -310,6 +307,10 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		connectBuffer(*buffer_);
+
+		buffer_->text().init(bv_);
+		buffer_->text().textwidth_ = workarea().workWidth();
+		buffer_->text().fullRebreak();
 
 		// If we don't have a text object for this, we make one
 		if (bv_->text() == 0)

@@ -1,3 +1,8 @@
+2003-12-01  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C: fix a crash on exit with
+	a buffer open
+
 2003-11-30  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BranchList.C: fix setSelected() method.
