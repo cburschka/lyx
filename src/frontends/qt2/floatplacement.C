@@ -31,12 +31,12 @@ FloatPlacement::FloatPlacement(QWidget * parent, char * name)
 	QGroupBox * options = new QGroupBox(qt_("Advanced Placement Options"), this);
 
 	defaultsCB = new QCheckBox(qt_("Use &default placement"), this);
-	ignoreCB = new QCheckBox(qt_("&Ignore LaTeX rules"), options);
-	pageCB = new QCheckBox(qt_("&Page of floats"), options);
-	heredefinitelyCB = new QCheckBox(qt_("Here definitely"), options);
-	herepossiblyCB = new QCheckBox(qt_("&Here if possible"), options);
-	bottomCB = new QCheckBox(qt_("&Bottom of page"), options);
 	topCB = new QCheckBox(qt_("&Top of page"), options);
+	bottomCB = new QCheckBox(qt_("&Bottom of page"), options);
+	pageCB = new QCheckBox(qt_("&Page of floats"), options);
+	herepossiblyCB = new QCheckBox(qt_("&Here if possible"), options);
+	heredefinitelyCB = new QCheckBox(qt_("Here definitely"), options);
+	ignoreCB = new QCheckBox(qt_("&Ignore LaTeX rules"), options);
 	spanCB = 0;
 
 	layout->addWidget(defaultsCB);
@@ -83,6 +83,7 @@ void FloatPlacement::useWide()
 {
 	spanCB = new QCheckBox(qt_("&Span columns"), this);
 	layout->addWidget(spanCB);
+	setTabOrder(ignoreCB, spanCB);
 	connect(spanCB, SIGNAL(clicked()), this, SLOT(spanClicked()));
 	connect(spanCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
 }

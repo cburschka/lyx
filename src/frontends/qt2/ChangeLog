@@ -1,5 +1,12 @@
 2003-04-12  John Levon  <levon@movementarian.org>
 
+	* floatplacement.C: fix tab order
+
+	* QTocDialog.C:
+	* QThesaurusDialog.C: hide the pointless QHeader
+
+2003-04-12  John Levon  <levon@movementarian.org>
+
 	* ui/QBibtexDialogBase.ui:
 	* ui/QBibtexAddDialogBase.ui:
 	* Makefile.dialogs:

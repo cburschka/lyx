@@ -26,6 +26,11 @@ QTocDialog::QTocDialog(QToc * form)
 	// disable sorting
 	tocLV->setSorting(-1);
 
+	// hide the pointless QHeader
+	QWidget * w = static_cast<QWidget*>(tocLV->child("list view header"));
+	if (w)
+		w->hide();
+
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 }

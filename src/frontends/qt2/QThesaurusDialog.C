@@ -29,6 +29,11 @@ QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
 	: QThesaurusDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	// hide the pointless QHeader
+	QWidget * w = static_cast<QWidget*>(meaningsLV->child("list view header"));
+	if (w)
+		w->hide();
+
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 }
