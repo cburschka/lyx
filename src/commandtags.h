@@ -50,9 +50,11 @@ enum kb_action {
 	LFUN_DEPTH,
 	LFUN_FREE,     // 30
 	LFUN_TEX,
+#if 0
 	LFUN_FOOTMELT, // schedule for deletion
 	LFUN_MARGINMELT, // schedule for deletion
 	LFUN_FLOATSOPERATE, //schedule for deletion?
+#endif
 	LFUN_EMPH,
 	LFUN_BOLD,
 	LFUN_ROMAN,
@@ -141,7 +143,9 @@ enum kb_action {
 	LFUN_MATH_MACROARG,  // ale970510  // 120
 	LFUN_MATH_PANEL,
 	LFUN_FIGURE,
+#if 0
 	LFUN_MELT,
+#endif
 	LFUN_DELETE_WORD_FORWARD,
 	LFUN_DELETE_WORD_BACKWARD,
 	LFUN_DELETE_LINE_FORWARD,
@@ -275,6 +279,9 @@ enum kb_action {
 	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
 	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
 	LFUN_SELECT_FILE_SYNC,		// Levon 20010214
+	LFUN_MESSAGE,                   // Lgb 20010408
+	LFUN_MESSAGE_PUSH,              // Lgb 20010410
+	LFUN_MESSAGE_POP,               // Lgb 20010410
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

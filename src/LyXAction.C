@@ -203,7 +203,9 @@ void LyXAction::init()
 		{ LFUN_MENUSEARCH, "find-replace", N_("Find & Replace"),
 		  ReadOnly },
 		{ LFUN_INSET_FLOAT, "float-insert", "", Noop },
+#if 0
 		{ LFUN_FLOATSOPERATE, "floats-operate", "", ReadOnly },
+#endif
 		{ LFUN_BOLD, "font-bold", N_("Toggle bold"), Noop },
 		{ LFUN_CODE, "font-code", N_("Toggle code style"), Noop },
 		{ LFUN_DEFAULT, "font-default", N_("Default font style"),
@@ -322,7 +324,9 @@ void LyXAction::init()
 		{ LFUN_MATH_NUMBER, "math-number", "", Noop },
 		{ LFUN_MATH_PANEL, "math-panel", "", Noop },
 		{ LFUN_MATH_SIZE, "math-size", "", Noop },
+#if 0
 		{ LFUN_MELT, "melt", N_("Melt"), Noop },
+#endif
 		{ LFUN_MENU_OPEN_BY_NAME, "menu-open", "", NoBuffer },
 		{ LFUN_MENU_SEPARATOR, "menu-separator-insert", "", Noop },
 		{ LFUN_META_FAKE, "meta-prefix", "", NoBuffer },
@@ -426,6 +430,14 @@ void LyXAction::init()
 		{ LFUN_WORDRIGHTSEL, "word-forward-select", "", ReadOnly },
 		{ LFUN_LOWCASE_WORD, "word-lowcase", "", Noop },
 		{ LFUN_UPCASE_WORD, "word-upcase", "", Noop },
+		{ LFUN_MESSAGE, "message",
+		  N_("Show message in minibuffer"), NoBuffer },
+		{ LFUN_MESSAGE_PUSH, "message-push",
+		  N_("Push old message and show this one in minibuffer"),
+		  NoBuffer },
+		{ LFUN_MESSAGE_POP, "message-pop",
+		  N_("Pop old message and show it in the minibuffer"),
+		  NoBuffer },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 
@@ -673,6 +685,18 @@ bool LyXAction::funcHasFlag(kb_action action,
 		return false;
 	}
 
+}
+
+
+LyXAction::const_func_iterator LyXAction::func_begin() const 
+{
+	return lyx_func_map.begin();
+}
+
+
+LyXAction::const_func_iterator LyXAction::func_end() const 
+{
+	return lyx_func_map.end();
 }
 
 

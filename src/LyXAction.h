@@ -14,7 +14,7 @@
 
 /** This class encapsulates LyX action and user command operations.
  */
-class LyXAction : public boost::noncopyable {
+class LyXAction : boost::noncopyable {
 private:
 	///
 	struct func_info {
@@ -97,6 +97,9 @@ public:
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;
 
+	typedef func_map::const_iterator const_func_iterator;
+	const_func_iterator func_begin() const;
+	const_func_iterator func_end() const;
 private:
 	///
 	void init();

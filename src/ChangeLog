@@ -1,5 +1,17 @@
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* commandtags.h: comment out LFUN_FOOTMELT, LFUN_MARGINMELT,
+	LFUN_FLOATSOPERATE, LFUN_MELT, add LFUN_MESSAGE,
+	LFUN_MESSAGE_PUSH, LFUN_MESSAGE_POP
+
+	* LyXAction.h: inherit privately from noncopyable, add methods
+	func_begin, func_end, returning iterators to the func map.
+
+	* LyXAction.C (init): comment out LFUN_FLOATSOPERATE, LFUN_MELT,
+	add entries for LFUN_MESSAGE, LFUN_MESSAGE_PUSH, LFUN_MESSAGE_POP
+	(func_begin): new method
+	(func_end): new method
+
 	* CutAndPaste.C (cutSelection): split into two versons (NEW_INSETS
 	and not)
 	(copySelection): ditto
