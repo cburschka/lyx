@@ -92,16 +92,18 @@ def del_token(lines, token, i, j):
 
 # Finds the paragraph that contains line i.
 def get_paragraph(lines, i):
-    while 1:
+    while i != -1:
 	i = find_tokens_backwards(lines, ["\\end_inset", "\\layout"], i)
+        if i == -1: return -1
 	if check_token(lines[i], "\\layout"):
 	    return i
 	i = find_beginning_of_inset(lines, i)
 
 # Finds the paragraph after the paragraph that contains line i.
 def get_next_paragraph(lines, i):
-    while 1:
+    while i != -1:
 	i = find_tokens(lines, ["\\begin_inset", "\\layout"], i)
+        if i == -1: return -1
 	if check_token(lines[i], "\\layout"):
 	    return i
 	i = find_end_of_inset(lines, i)

@@ -213,10 +213,12 @@ def remove_oldert(lines):
 	    break
 	j = i+1
 	while 1:
-	    j = find_tokens(lines, ["\\latex default", "\\begin_inset", "\\layout", "\\end_inset", "\\end_float", "\\the_end"],
+            # \end_inset is for ert inside a tabular cell. The other tokens
+            # are obvious.
+	    j = find_tokens(lines, ["\\latex default", "\\layout", "\\begin_inset", "\\end_inset", "\\end_float", "\\the_end"],
 			    j)
 	    if check_token(lines[j], "\\begin_inset"):
-		j = find_end_of_inset(lines, j)
+		j = find_end_of_inset(lines, j)+1
 	    else:
 		break
 
