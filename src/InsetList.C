@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "BranchList.h"
 #include "BufferView.h"
 #include "debug.h"
 
@@ -139,13 +140,15 @@ void InsetList::insetsOpenCloseBranch(Buffer const & buf)
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
-		if (it->inset && it->inset->lyxCode() == InsetOld::BRANCH_CODE) {
-			InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
-			if (buf.params().branchlist().selected(inset->params().branch)) {
-				inset->open();
-			} else {
-				inset->close();
-			}
+		if (!it->inset ||
+		    it->inset->lyxCode() != InsetOld::BRANCH_CODE)
+			continue;
+
+		InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
+		if (inset->isBranchSelected(buf.params().branchlist())) {
+			inset->open();
+		} else {
+			inset->close();
 		}
 	}
 }

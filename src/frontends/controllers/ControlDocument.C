@@ -13,6 +13,7 @@
 #include "ControlDocument.h"
 #include "ViewBase.h"
 
+#include "BranchList.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferparams.h"
@@ -22,11 +23,11 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxtextclasslist.h"
 #include "paragraph.h"
 #include "funcrequest.h"
 #include "lfuns.h"
-#include "LColor.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -85,6 +86,22 @@ void ControlDocument::apply()
 
 	lv_.message(_("Document settings applied"));
 
+	// branches
+	BranchList & branchlist = params().branchlist();
+	BranchList::const_iterator it = branchlist.begin();
+	BranchList::const_iterator const end = branchlist.end();
+	for (; it != end; ++it) {
+		string const & current_branch = it->getBranch();
+		Branch const * branch = branchlist.find(current_branch);
+		string x11hexname = branch->getColor();
+		// check that we have a valid color!
+		if (x11hexname.empty() || x11hexname[0] != '#')
+			x11hexname = lcolor.getX11Name(LColor::background);
+		// display the new color
+		string const str = current_branch  + ' ' + x11hexname;
+		lv_.dispatch(FuncRequest(LFUN_SET_COLOR, str));
+	}
+
 	// Open insets of selected branches, close deselected ones
 	// Currently only top-level insets in buffer handled (bug).
 	ParIterator pit = buffer()->par_iterator_begin();
@@ -118,14 +135,6 @@ void ControlDocument::setLanguage()
 		else
 		    lv_.buffer()->updateDocLang(newL);
 	}
-}
-
-
-void ControlDocument::setBranchColor(string const & branch, string const & hex)
-{
-	lcolor.setColor(branch, hex);
-	string const s = branch + ' ' + hex;
-	lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));
 }
 
 

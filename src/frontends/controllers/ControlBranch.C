@@ -12,11 +12,16 @@
 #include <config.h>
 
 #include "ControlBranch.h"
+
+#include "buffer.h"
+#include "bufferparams.h"
+#include "BranchList.h"
 #include "funcrequest.h"
 #include "insets/insetbranch.h"
 
 
 using std::string;
+using std::vector;
 
 
 ControlBranch::ControlBranch(Dialog & parent)
@@ -43,4 +48,10 @@ void ControlBranch::dispatchParams()
 {
 	string const lfun = InsetBranchMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+}
+
+
+BranchList const & ControlBranch::branchlist() const
+{
+	return kernel().buffer().params().branchlist();
 }

@@ -366,6 +366,7 @@ string const hexname(LColor_color col)
 
 void update_color(LColor_color col)
 {
+	lyxColorHandler->getGCForeground(col);
 	lyxColorHandler->updateColor(col);
 }
 

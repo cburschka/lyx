@@ -22,7 +22,7 @@ using std::bind2nd;
 using std::binary_function;
 
 
-string const Branch::getBranch() const
+string const & Branch::getBranch() const
 {
 	return branch_;
 }
@@ -40,13 +40,16 @@ bool Branch::getSelected() const
 }
 
 
-void Branch::setSelected(bool b)
+bool Branch::setSelected(bool b)
 {
+	if (b == selected_)
+		return false;
 	selected_ = b;
+	return true;
 }
 
 
-string const Branch::getColor() const
+string const & Branch::getColor() const
 {
 	return color_;
 }
@@ -58,60 +61,41 @@ void Branch::setColor(string const & c)
 }
 
 
-void BranchList::clear()
+namespace {
+
+struct SameName {
+	SameName(string const & name) : name_(name) {}
+	bool operator()(Branch const & branch) const
+		{ return branch.getBranch() == name_; }
+private:
+	string name_;
+};
+
+}// namespace anon
+
+
+Branch * BranchList::find(std::string const & name)
 {
-	list.clear();
+	List::iterator it =
+		std::find_if(list.begin(), list.end(), SameName(name));
+	return it == list.end() ? 0 : &*it;
 }
 
-
-string BranchList::getColor(string const & s) const
+	
+Branch const * BranchList::find(std::string const & name) const
 {
-	List::const_iterator it = list.begin();
-	List::const_iterator end = list.end();
-	for (; it != end; ++it) {
-		if (s == it->getBranch()) {
-			return it->getColor();
-		}
-	}
-	BOOST_ASSERT(false); // Always
-	return string(); // never gets here
+	List::const_iterator it =
+		std::find_if(list.begin(), list.end(), SameName(name));
+	return it == list.end() ? 0 : &*it;
 }
 
-
-
-void BranchList::setColor(string const & s, string const & val)
+	
+bool BranchList::add(string const & s)
 {
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
-	for (; it != end; ++it) {
-		if (s == it->getBranch()) {
-			it->setColor(val);
-			return;
-		}
-	}
-	BOOST_ASSERT(false);
-}
-
-
-void BranchList::setSelected(string const & s, bool val)
-{
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
-	for (; it != end; ++it) {
-		if (s == it->getBranch()) {
-			it->setSelected(val);
-			return;
-		}
-	}
-	BOOST_ASSERT(false);
-}
-
-
-void BranchList::add(string const & s)
-{
+	bool added = false;
 	string::size_type i = 0;
 	while (true) {
-		string::size_type const j = s.find_first_of(separator(), i);
+		string::size_type const j = s.find_first_of(separator_, i);
 		string name;
 		if (j == string::npos)
 			name = s.substr(i);
@@ -128,6 +112,7 @@ void BranchList::add(string const & s)
 			}
 		}
 		if (!already) {
+			added = true;
 			Branch br;
 			br.setBranch(name);
 			br.setSelected(false);
@@ -138,6 +123,7 @@ void BranchList::add(string const & s)
 			break;
 		i = j + 1;
 	}
+	return added;
 }
 
 
@@ -152,58 +138,9 @@ struct match : public binary_function<Branch, string, bool> {
 } // namespace anon.
 
 
-void BranchList::remove(string const & s)
+bool BranchList::remove(string const & s)
 {
+	List::size_type const size = list.size();
 	list.remove_if(bind2nd(match(), s));
-}
-
-
-bool BranchList::selected(string const & s) const
-{
-	List::const_iterator it = list.begin();
-	List::const_iterator end = list.end();
-	for (; it != end; ++it) {
-		if (s == it->getBranch())
-			return it->getSelected();
-	}
-	return false;
-}
-
-
-string BranchList::allBranches() const
-{
-	List::const_iterator it = list.begin();
-	List::const_iterator end = list.end();
-	string ret;
-	for (; it != end; ++it) {
-		ret += it->getBranch() + separator();
-	}
-	// remove final '|':
-	string::size_type i = ret.find_last_of(separator());
-	if (i != string::npos)
-		ret.erase(i);
-	return ret;
-}
-
-
-string BranchList::allSelected() const
-{
-	List::const_iterator it = list.begin();
-	List::const_iterator end = list.end();
-	string ret;
-	for (; it != end; ++it) {
-		if (it->getSelected())
-			ret += it->getBranch() + separator();
-	}
-	// remove final '|':
-	string::size_type i = ret.find_last_of(separator());
-	if (i != string::npos)
-		ret.erase(i);
-	return ret;
-}
-
-
-string const BranchList::separator() const
-{
-	return separator_;
+	return size != list.size();
 }

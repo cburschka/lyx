@@ -16,7 +16,9 @@
 
 #include "Dialog.h"
 
+class BranchList;
 class InsetBranchParams;
+
 
 class ControlBranch : public Dialog::Controller {
 public:
@@ -32,9 +34,10 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 	///
 	InsetBranchParams & params() { return *params_.get(); }
-	///
 	InsetBranchParams const & params() const { return *params_.get(); }
 	///
+	BranchList const & branchlist() const;
+
 private:
 	///
 	boost::scoped_ptr<InsetBranchParams> params_;

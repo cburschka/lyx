@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "BranchList.h"
 #include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -39,13 +40,10 @@ void InsetBranch::init()
 }
 
 
-InsetBranch::InsetBranch(BufferParams const & bp, string const & label)
-	: InsetCollapsable(bp)
+InsetBranch::InsetBranch(BufferParams const & bp,
+			 InsetBranchParams const & params)
+	: InsetCollapsable(bp), params_(params)
 {
-	params_.branch = label;
-	// Hack: stash the list of all allowable branch labels from this
-	// buffer into inset's parm list as a "stowaway":
-	params_.branchlist = bp.branchlist();
 	init();
 }
 
@@ -84,10 +82,7 @@ void InsetBranch::write(Buffer const & buf, ostream & os) const
 
 void InsetBranch::read(Buffer const & buf, LyXLex & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		params_.branch = lex.getString();
-	}
+	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 	setButtonLabel();
 }
@@ -152,44 +147,59 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 }
 
 
-int InsetBranch::latex(Buffer const & buf, ostream & os,
-	OutputParams const & runparams) const
+namespace {
+
+struct SameBranch {
+	SameBranch(string const & branch_name) : bn(branch_name) {}
+	bool operator()(Branch const & branch) const
+		{ return bn == branch.getBranch(); }
+private:
+	string bn;
+};
+
+} // namespace anon
+
+
+bool InsetBranch::isBranchSelected(BranchList const & branchlist) const
 {
-	string const branch_sel = buf.params().branchlist().allSelected();
-	if (branch_sel.find(params_.branch, 0) != string::npos)
-		return inset.latex(buf, os, runparams);
-	return 0;
+	BranchList::const_iterator it = branchlist.begin();
+	BranchList::const_iterator const end = branchlist.end();
+	it = std::find_if(it, end, SameBranch(params_.branch));
+	if (it == end)
+		return false;
+	return it->getSelected();
+}
+
+
+int InsetBranch::latex(Buffer const & buf, ostream & os,
+		       OutputParams const & runparams) const
+{
+	return isBranchSelected(buf.params().branchlist()) ?
+		inset.latex(buf, os, runparams) : 0;
 }
 
 
 int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
 			  OutputParams const & runparams) const
 {
-	string const branch_sel = buf.params().branchlist().allSelected();
-	if (branch_sel.find(params_.branch, 0) != string::npos)
-		return inset.linuxdoc(buf, os, runparams);
-	return 0;
+	return isBranchSelected(buf.params().branchlist()) ?
+		inset.linuxdoc(buf, os, runparams) : 0;
 }
 
 
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 			 OutputParams const & runparams) const
 {
-	string const branch_sel = buf.params().branchlist().allSelected();
-	if (branch_sel.find(params_.branch, 0) != string::npos)
-		return inset.docbook(buf, os, runparams);
-	return 0;
+	return isBranchSelected(buf.params().branchlist()) ?
+		inset.docbook(buf, os, runparams) : 0;
 }
 
 
 int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
-		       OutputParams const & runparams) const
+			   OutputParams const & runparams) const
 {
-	string const branch_sel = buf.params().branchlist().allSelected();
-	if (branch_sel.find(params_.branch, 0) != string::npos) {
-		return inset.plaintext(buf, os, runparams);
-	}
-	return 0;
+	return isBranchSelected(buf.params().branchlist()) ?
+		inset.plaintext(buf, os, runparams): 0;
 }
 
 
@@ -207,12 +217,9 @@ InsetBranchMailer::InsetBranchMailer(InsetBranch & inset)
 {}
 
 
-string const InsetBranchMailer::inset2string(Buffer const & buf) const
+string const InsetBranchMailer::inset2string(Buffer const &) const
 {
-	InsetBranchParams params = inset_.params();
-	params.branchlist = buf.params().branchlist();
-	inset_.setParams(params);
-	return params2string(params);
+	return params2string(inset_.params());
 }
 
 
@@ -221,8 +228,6 @@ string const InsetBranchMailer::params2string(InsetBranchParams const & params)
 	ostringstream data;
 	data << name_ << ' ';
 	params.write(data);
-	// Add all_branches parameter to data:
-	data << params.branchlist.allBranches() << "\n";
 	return data.str();
 }
 
@@ -243,33 +248,24 @@ void InsetBranchMailer::string2params(string const & in,
 	if (name != name_)
 		return print_mailer_error("InsetBranchMailer", in, 1, name_);
 
+	// This is part of the inset proper that is usually swallowed
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "Branch")
+		return print_mailer_error("InsetBranchMailer", in, 2, "Branch");
+
 	params.read(lex);
-	// Process all_branches here:
-	if (lex.isOK()) {
-		lex.next();
-		params.branchlist.add(lex.getString());
-	}
 }
 
 
 void InsetBranchParams::write(ostream & os) const
 {
-	os << "Branch" << " " << branch << "\n";
+	os << "Branch " << branch << '\n';
 }
 
 
 void InsetBranchParams::read(LyXLex & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-	}
-	if (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-	}
-	if (lex.isOK()) {
-		lex.next();
-		branch = lex.getString();
-	}
+	lex >> branch;
 }

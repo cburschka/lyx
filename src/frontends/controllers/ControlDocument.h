@@ -34,8 +34,6 @@ public:
 	///
 	void setLanguage();
 	///
-	void setBranchColor(std::string const & branch, std::string const & hex);
-	///
 	LyXTextClass textClass();
 	///
 	BufferParams & params();

@@ -1404,7 +1404,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				(lyx_name == lcolor.getLyXName(LColor::graphicsbg) &&
 				 x11_name != lcolor.getX11Name(LColor::graphicsbg));
 
-			if (!lcolor.setColor(lyx_name, x11_name)) {
+			LColor::color col = lcolor.getFromLyXName(lyx_name);
+			if (!lcolor.setColor(col, x11_name)) {
 				setErrorMessage(
 					bformat(_("Set-color \"%1$s\" failed "
 								"- color is undefined or "

@@ -1,3 +1,12 @@
+2003-12-12  Angus Leeming  <leeming@lyx.org>
+
+	* insetbranch.C (c-tor): takes an InsetBranchParams arg rather than
+	a string.
+	(InsetBranchParams): remove the branchlist hack.
+	(isBranchSelected): new function, used to decide whether to
+	print each output format. Also used by InsetList.
+	(read, string2params): repair my own breakage ;-)
+	
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetminipage.[Ch]: remove from repository.

@@ -41,12 +41,6 @@ struct ColorEntry {
 
 }
 
-struct TransformEntry {
-	char const * lyxname;
-	int ncolor;
-};
-
-
 struct LColor::Pimpl {
 	///
 	struct information {
@@ -172,152 +166,92 @@ void LColor::operator=(LColor const & c)
 }
 
 
-void LColor::fill(LColor::color c,
-				string const & lyxname,
-				string const & x11name,
-				string const & latexname,
-				string const & guiname)
-{
-	ColorEntry ce;
-	ce.lcolor = c;
-	ce.guiname = guiname.c_str();
-	ce.latexname = latexname.c_str();
-	ce.x11name = x11name.c_str();
-	ce.lyxname = lyxname.c_str();
-	pimpl_->fill(ce);
-}
-
-
 string const LColor::getGUIName(LColor::color c) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
-	if (ici != pimpl_->infotab.end())
-		return _(ici->second.guiname);
-	return "none";
-}
-
-
-string const LColor::getGUIName(string const &  s) const
-{
-	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
-	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator
-			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end())
-			return it->second.guiname;
-	}
+	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
+	if (it != pimpl_->infotab.end())
+		return _(it->second.guiname);
 	return "none";
 }
 
 
 string const LColor::getX11Name(LColor::color c) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
-	if (ici != pimpl_->infotab.end())
-		return ici->second.x11name;
+	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
+	if (it != pimpl_->infotab.end())
+		return it->second.x11name;
 
 	lyxerr << "LyX internal error: Missing color"
-		" entry in LColor.C for " << int(c) << endl;
-	lyxerr << "Using black." << endl;
-	return "black";
-}
-
-
-string const LColor::getX11Name(string const & s) const
-{
-	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
-	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator
-			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end())
-			return it->second.x11name;
-	}
-	lyxerr << "LyX internal error: Missing color"
-		" entry in LColor.C for " << s << endl;
-	lyxerr << "Using black." << endl;
+		" entry in LColor.C for " << int(c) << '\n'
+	       << "Using black." << endl;
 	return "black";
 }
 
 
 string const LColor::getLaTeXName(LColor::color c) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
-	if (ici != pimpl_->infotab.end())
-		return ici->second.latexname;
-	return "black";
-}
-
-
-string const LColor::getLaTeXName(string const & s) const
-{
-	Pimpl::Transform::const_iterator ici = pimpl_->transform.find(s);
-	if (ici != pimpl_->transform.end()) {
-		Pimpl::InfoTab::const_iterator
-			it = pimpl_->infotab.find(ici->second);
-		if (it != pimpl_->infotab.end())
-			return it->second.latexname;
-	}
+	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
+	if (it != pimpl_->infotab.end())
+		return it->second.latexname;
 	return "black";
 }
 
 
 string const LColor::getLyXName(LColor::color c) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.find(c);
-	if (ici != pimpl_->infotab.end())
-		return ici->second.lyxname;
+	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
+	if (it != pimpl_->infotab.end())
+		return it->second.lyxname;
 	return "black";
 }
 
 
-size_t LColor::size() const
+bool LColor::setColor(LColor::color col, string const & x11name)
 {
-	return pimpl_->infotab.size();
-}
-
-
-void LColor::setColor(LColor::color col, string const & x11name)
-{
-	Pimpl::InfoTab::iterator iti = pimpl_->infotab.find(col);
-	if (iti != pimpl_->infotab.end()) {
-		iti->second.x11name = x11name;
-		return;
+	Pimpl::InfoTab::iterator it = pimpl_->infotab.find(col);
+	if (it == pimpl_->infotab.end()) {
+		lyxerr << "Color " << col << " not found in database."
+		       << std::endl;
+		return false;
 	}
-	lyxerr << "LyX internal error: color and such." << endl;
-	BOOST_ASSERT(false);
-}
-
-
-bool LColor::setColor(string const & lyxname, string const & x11name)
-{
-	color col = getFromLyXName(lyxname);
 
 	// "inherit" is returned for colors not in the database
 	// (and anyway should not be redefined)
-	if (col == inherit || col == ignore) {
-		lyxerr << "Color " << lyxname << " is undefined or may not be"
-			" redefined" << endl;
+	if (col == none || col == inherit || col == ignore) {
+		lyxerr << "Color " << getLyXName(col)
+		       << " may not be redefined" << endl;
 		return false;
 	}
-	setColor(col, x11name);
+	
+	it->second.x11name = x11name;
 	return true;
 }
 
 
 LColor::color LColor::getFromGUIName(string const & guiname) const
 {
-	Pimpl::InfoTab::const_iterator ici = pimpl_->infotab.begin();
+	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
-	for (; ici != end; ++ici) {
-		if (!compare_ascii_no_case(_(ici->second.guiname), guiname))
-			return static_cast<LColor::color>(ici->first);
+	for (; it != end; ++it) {
+		if (!compare_ascii_no_case(_(it->second.guiname), guiname))
+			return static_cast<LColor::color>(it->first);
 	}
 	return LColor::inherit;
 }
 
 
+void LColor::addColor(LColor::color c, string const & lyxname) const
+{
+	ColorEntry ce = { c, "", "", "", lyxname.c_str() };
+	pimpl_->fill(ce);
+}
+
+
 LColor::color LColor::getFromLyXName(string const & lyxname) const
 {
+	if (pimpl_->transform.find(lyxname) == pimpl_->transform.end())
+		addColor(static_cast<color>(pimpl_->infotab.size()), lyxname);
+
 	return static_cast<LColor::color>(pimpl_->transform[lyxname]);
 }
 

@@ -1,3 +1,10 @@
+2003-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* QBranch.C: use the List interface to BranchList, simplifying the code.
+
+	* QDocument.C:
+	* QDocumentDialog.C: overhaul the branchlist code.
+
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QMinipage.[Ch]:

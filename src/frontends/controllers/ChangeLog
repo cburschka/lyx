@@ -1,3 +1,10 @@
+2003-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBranch.[Ch] (branchlist): new member function.
+
+	* ControlDocument.C (setBranchColor): removed.
+	(apply): update LColor to accommodate the new BranchList colors.
+
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlMinipage.[Ch]: remove.
@@ -7,13 +14,6 @@
 
 	* ControlMath.C (dispatchSubscript, dispatchSuperscript): enable
 	the math panel sub/superscript buttons once again.
-
-2003-12-12  Angus Leeming  <leeming@lyx.org>
-
-	* ControlBranch.[Ch] (branchlist): new member function.
-
-	* ControlDocument.C (setBranchColor): remove redundant call to
-	LColor::setColor.
 
 2003-12-11  Angus Leeming  <leeming@lyx.org>
 

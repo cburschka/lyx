@@ -10,20 +10,21 @@
 
 #include <config.h>
 
+#include "bufferparams.h"
 #include "debug.h"
-#include "qt_helpers.h"
+#include "lyxrc.h"
 
-#include "ControlDocument.h"
+#include "controllers/ControlDocument.h"
+
+#include "support/lstrings.h"
+
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 
-#include "panelstack.h"
 #include "floatplacement.h"
-#include "LColor.h"
-
-#include "support/lstrings.h"
-#include "bufferparams.h"
-#include "lyxrc.h"
+#include "lengthcombo.h"
+#include "panelstack.h"
+#include "qt_helpers.h"
 
 #include <qlabel.h>
 #include <qmultilineedit.h>
@@ -36,12 +37,9 @@
 #include <qpixmap.h>
 #include <qcolor.h>
 #include <qcolordialog.h>
-#include "lengthcombo.h"
 
 using lyx::support::token;
-using lyx::support::getVectorFromString;
 
-using std::vector;
 using std::string;
 
 
@@ -424,43 +422,34 @@ void QDocumentDialog::updateNumbering()
 
 void QDocumentDialog::updateBranchView()
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
-
-	string const all_branches = params.branchlist().allBranches();
 	branchesModule->branchesLV->clear();
-	if (!all_branches.empty()) {
-		std::vector<string> all = getVectorFromString(all_branches, "|");
-		for (unsigned i = 0; i < all.size(); ++i) {
-			QString const bname = toqstr(all[i].c_str());
-			QString const sel =
-				(params.branchlist().selected(fromqstr(bname))) ? qt_("Yes") : qt_("No");
-			QListViewItem * newItem =
-				new QListViewItem(branchesModule->branchesLV, bname, sel);
-			QColor itemcolor;
-			string x11hexname = params.branchlist().getColor(fromqstr(bname));
-			if (x11hexname[0] == '#')
-				itemcolor.setNamedColor(toqstr(x11hexname));
-			if (itemcolor.isValid()) {
-				QPixmap coloritem(30, 10);
-				coloritem.fill(itemcolor);
-				newItem->setPixmap(2, coloritem);
-			}
+
+	BranchList::const_iterator it = form_->branchlist_.begin();
+	BranchList::const_iterator const end = form_->branchlist_.end();
+	for (; it != end; ++it) {
+		QString const bname = toqstr(it->getBranch());
+		QString const sel = it->getSelected() ? qt_("Yes") : qt_("No");
+		QListViewItem * newItem =
+			new QListViewItem(branchesModule->branchesLV, bname, sel);
+		string const x11hexname = it->getColor();
+		QColor itemcolor;
+		if (x11hexname[0] == '#')
+			itemcolor.setNamedColor(toqstr(x11hexname));
+		if (itemcolor.isValid()) {
+			QPixmap coloritem(30, 10);
+			coloritem.fill(itemcolor);
+			newItem->setPixmap(2, coloritem);
 		}
 	}
-	form_->branchlist_ = params.branchlist();
 	form_->changed();
 }
 
 
 void QDocumentDialog::addBranchPressed()
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
-
 	QString const new_branch = branchesModule->newBranchLE->text();
 	if (!new_branch.isEmpty()) {
-		params.branchlist().add(fromqstr(new_branch));
+		form_->branchlist_.add(fromqstr(new_branch));
 		branchesModule->newBranchLE->clear();
 		updateBranchView();
 	}
@@ -469,16 +458,13 @@ void QDocumentDialog::addBranchPressed()
 
 void QDocumentDialog::deleteBranchPressed()
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
-
 	QListViewItem * selItem =
 		branchesModule->branchesLV->selectedItem();
 	QString sel_branch;
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
 	if (sel_branch) {
-		params.branchlist().remove(fromqstr(sel_branch));
+		form_->branchlist_.remove(fromqstr(sel_branch));
 		branchesModule->newBranchLE->clear();
 		updateBranchView();
 	}
@@ -501,28 +487,23 @@ void QDocumentDialog::branchDoubleClicked(QListViewItem * selItem)
 
 void QDocumentDialog::toggleBranch(QListViewItem * selItem)
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
+	if (selItem == 0)
+		return;
 
-	QString sel_branch;
-	if (selItem != 0)
-		sel_branch = selItem->text(0);
+	QString sel_branch = selItem->text(0);
 	if (sel_branch) {
-		bool selected = false;
-		if (selItem->text(1) == qt_("Yes"))
-			selected = true;
-		params.branchlist().setSelected(fromqstr(sel_branch), !selected);
-		branchesModule->newBranchLE->clear();
-		updateBranchView();
+		bool const selected = selItem->text(1) == qt_("Yes");
+		Branch * branch = form_->branchlist_.find(fromqstr(sel_branch));
+		if (branch && branch->setSelected(!selected)) {
+			branchesModule->newBranchLE->clear();
+			updateBranchView();
+		}
 	}
 }
 
 
 void QDocumentDialog::toggleBranchColor()
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
-
 	QListViewItem * selItem =
 		branchesModule->branchesLV->selectedItem();
 	QString sel_branch;
@@ -531,13 +512,18 @@ void QDocumentDialog::toggleBranchColor()
 	if (sel_branch) {
 		QColor initial;
 		string current_branch = fromqstr(sel_branch);
-		string x11hexname = params.branchlist().getColor(current_branch);
+		Branch * branch =
+			form_->branchlist_.find(current_branch);
+		if (!branch)
+			return;
+
+		string x11hexname = branch->getColor();
 		if (x11hexname[0] == '#')
 			initial.setNamedColor(toqstr(x11hexname));
 		QColor ncol(QColorDialog::getColor(initial));
 		if (ncol.isValid()){
 			// add the color to the branchlist
-			params.branchlist().setColor(current_branch, fromqstr(ncol.name()));
+			branch->setColor(fromqstr(ncol.name()));
 			branchesModule->newBranchLE->clear();
 			updateBranchView();
 		}

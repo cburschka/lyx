@@ -14,18 +14,20 @@
 
 
 #include "insetcollapsable.h"
-#include "BranchList.h"
 
- struct InsetBranchParams {
+class BranchList;
+
+
+struct InsetBranchParams {
+	explicit InsetBranchParams(std::string const & b = std::string())
+		: branch(b) {}
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(LyXLex & lex);
 	///
 	std::string branch;
-	/// Hack -- MV
-	BranchList branchlist;
- };
+};
 
 
 /** The Branch inset for alternative, conditional output.
@@ -34,7 +36,7 @@
 class InsetBranch : public InsetCollapsable {
 public:
 	///
-	InsetBranch(BufferParams const &, std::string const &);
+	InsetBranch(BufferParams const &, InsetBranchParams const &);
 	/// Copy constructor
 	InsetBranch(InsetBranch const &);
 	///
@@ -71,6 +73,12 @@ public:
 	InsetBranchParams const & params() const { return params_; }
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
+
+	/** \returns true if params_.branch is listed as 'selected' in
+	    \c branchlist.
+	 */
+	bool isBranchSelected(BranchList const & branchlist) const;
+
 protected:
 	///
 	virtual

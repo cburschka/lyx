@@ -37,15 +37,17 @@
 class Branch {
 public:
 	///
-	std::string const getBranch() const;
+	std::string const & getBranch() const;
 	///
 	void setBranch(std::string const &);
 	///
 	bool getSelected() const;
+	/** Select/deselect the branch.
+	 *  \return true if the selection status changes.
+	 */
+	bool setSelected(bool);
 	///
-	void setSelected(bool);
-	///
-	std::string const getColor() const;
+	std::string const & getColor() const;
 	///
 	void setColor(std::string const &);
 
@@ -61,41 +63,33 @@ private:
 
 
 class BranchList {
+	///
+	typedef std::list<Branch> List;
 public:
+	typedef List::const_iterator const_iterator;
+
 	///
 	BranchList() : separator_("|") {}
 
 	///
-	typedef std::list<Branch> List;
-
-	///
-	void clear();
-	///
 	bool empty() { return list.empty(); }
 	///
-	bool size() const { return list.size(); }
-	///
-	List::const_iterator begin() const { return list.begin(); }
-	///
-	List::const_iterator end() const { return list.end(); }
-	///
-	std::string getColor(std::string const &) const;
-	///
-	void setColor(std::string const &, std::string const &);
-	/// Select/deselect multiple branches given in '|'-separated string
-	void setSelected(std::string const &, bool);
-	/// Add multiple branches to list
-	void add(std::string const &);
-	/// remove a branch from list by name
-	void remove(std::string const &);
-	/// return whether this branch is selected
-	bool selected(std::string const &) const;
-	/// return, as a '|'-separated string, all branch names
-	std::string allBranches() const;
-	///
-	std::string allSelected() const;
-	///
-	std::string const separator() const;
+	const_iterator begin() const { return list.begin(); }
+	const_iterator end() const { return list.end(); }
+
+	/** \returns the Branch with \c name. If not found, returns 0.
+	 */
+	Branch * find(std::string const & name);
+	Branch const * find(std::string const & name) const;
+
+	/** Add (possibly multiple (separated by separator())) branches to list
+	 *  \returns true if a branch is added.
+	 */
+	bool add(std::string const &);
+	/** remove a branch from list by name
+	 *  \returns true if a branch is removed.
+	 */
+	bool remove(std::string const &);
 
 private:
 	///

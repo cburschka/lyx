@@ -1,3 +1,32 @@
+2003-12-14  Angus Leeming  <leeming@lyx.org>
+
+	BranchList.[Ch]: minimize the API.
+	(Branch::getBranch, getColor): now return a 'const &'.
+	(Branch::setSelected) now returns a bool set to true if the
+	selection status changes.
+	(BranchList::clear, size, getColor, setColor, setSelected,
+	allBranches, allSelected, separator): removed.
+	(BranchList::find): new functions, returning the Branch with
+	the given name.
+	(BranchList::add, remove): return a bool indicating that
+	the operation was successful.
+
+	* InsetList.C (insetsOpenCloseBranch): much simplified thanks to a
+	new InsetBranch::isBranchSlected member function.
+
+	* LColor.[Ch]: mimimize the API.
+	(fill): renamed as addColor and made private.
+	(setColor, getGUIName, getX11Name, getLaTeXName): the overloaded
+	versions of these functions taking a string arg have been removed.
+
+	* bufferparams.C (readToken):
+	* lyxfunc.C (dispatch):
+	* lyxrc.C (read): changes due to the altered BranchList and
+	LColor APIs.
+
+	* factory.C (createInset, readInset): changes due to altered
+	InsetBranch c-tor.
+
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* factory.C: 

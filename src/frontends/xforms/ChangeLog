@@ -1,3 +1,14 @@
+2003-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* FormBranch.C: use the List interface to BranchList, simplifying the
+	code.
+
+	* FormDocument.C: overhaul the branch code, using the List
+	interface to BranchList and factoring repeated blocks into two
+	new helper functions.
+
+	* lyx_gui.C (update_color): ensure the GC is up to date.
+
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormMinipage.[Ch]:

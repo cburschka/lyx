@@ -111,7 +111,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		string arg = cmd.getArg(0);
 		if (arg.empty())
 			arg = "none";
-		return new InsetBranch(params, arg);
+		return new InsetBranch(params, InsetBranchParams(arg));
 	}
 
 	case LFUN_INSET_ERT:
@@ -419,7 +419,8 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			CharStyles::iterator found_cs = tclass.charstyle(s);
 			inset.reset(new InsetCharStyle(buf.params(), found_cs));
 		} else if (tmptok == "Branch") {
-			inset.reset(new InsetBranch(buf.params(), string()));
+			inset.reset(new InsetBranch(buf.params(),
+						    InsetBranchParams()));
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset.reset(new InsetInclude(p));

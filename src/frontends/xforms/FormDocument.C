@@ -34,7 +34,6 @@
 #include "Bullet.h"
 #include "bufferparams.h"
 #include "language.h"
-#include "LColor.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
@@ -670,123 +669,122 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 }
 
 
+void FormDocument::rebuild_all_branches_browser()
+{
+	typedef BranchList::const_iterator const_iterator;
+
+	fl_clear_browser(branch_->browser_all_branches);
+
+	const_iterator const begin = branchlist_.begin();
+	const_iterator const end = branchlist_.end();
+	for (const_iterator it = begin; it != end; ++it) {
+		fl_addto_browser(branch_->browser_all_branches,
+				 it->getBranch().c_str());
+	}
+}
+
+
+void FormDocument::rebuild_selected_branches_browser()
+{
+	typedef BranchList::const_iterator const_iterator;
+
+	fl_clear_browser(branch_->browser_selection);
+
+	const_iterator const begin = branchlist_.begin();
+	const_iterator const end = branchlist_.end();
+	for (const_iterator it = begin; it != end; ++it) {
+		if (it->getSelected())
+			fl_addto_browser(branch_->browser_selection,
+					 it->getBranch().c_str());
+	}
+}
+
+
+namespace {
+
+RGBColor get_current_color(FL_OBJECT * browser, BranchList const & branchlist)
+{
+	BOOST_ASSERT(browser && browser->objclass == FL_BROWSER);
+
+	RGBColor color;
+
+	int const i = fl_get_browser(browser);
+	string const branch_name = fl_get_browser_line(browser, i);
+	Branch const * branch = branchlist.find(branch_name);
+	if (!branch)
+		return color;
+
+	string const x11hexname = branch->getColor();
+	if (x11hexname[0] == '#') {
+		color = RGBColor(x11hexname);
+	} else{
+		fl_getmcolor(FL_COL1, &color.r, &color.g, &color.b);
+	}
+	return color;
+}
+
+} // namespace anon
+
+
 void FormDocument::branch_input(FL_OBJECT * ob)
 {
-	BufferParams & params = controller().params();
-	std::vector<string> vec;
-
 	if (ob == branch_->button_add_branch) {
-		string new_branch = fl_get_input(branch_->input_all_branches);
-		if (!new_branch.empty()) {
-			params.branchlist().add(new_branch);
+		string const new_branch =
+			getString(branch_->input_all_branches);
+
+		if (!new_branch.empty() && branchlist_.add(new_branch)) {
+
 			fl_set_input(branch_->input_all_branches, "");
-			// Update branch list
-			string const all_branches = params.branchlist().allBranches();
-			fl_clear_browser(branch_->browser_all_branches);
-			vec = getVectorFromString(all_branches, "|");
-			for (unsigned i = 0; i < vec.size(); ++i) {
-				fl_addto_browser(branch_->browser_all_branches,
-								vec[i].c_str());
-			}
-			LColor::color c = static_cast<LColor::color>(lcolor.size());
-			lcolor.fill(c, new_branch, lcolor.getX11Name(LColor::background));
+			rebuild_all_branches_browser();
 		}
 
 	} else if (ob == branch_->button_remove_branch) {
 		unsigned i = fl_get_browser(branch_->browser_all_branches);
 		string const current_branch =
 			fl_get_browser_line(branch_->browser_all_branches, i);
-		if (!current_branch.empty()) {
-			params.branchlist().remove(current_branch);
-			// Update branch list
-			string const all_branches = params.branchlist().allBranches();
-			fl_clear_browser(branch_->browser_all_branches);
-			vec = getVectorFromString(all_branches, "|");
-			for (unsigned i = 0; i < vec.size(); ++i) {
-				fl_addto_browser(branch_->browser_all_branches,
-								vec[i].c_str());
-			}
-			// Update selected-list...
-			string const all_selected = params.branchlist().allSelected();
-			fl_clear_browser(branch_->browser_selection);
-			vec = getVectorFromString(all_selected, "|");
-			for (unsigned i = 0; i < vec.size(); ++i) {
-				fl_addto_browser(branch_->browser_selection, vec[i].c_str());
-			}
+		if (!current_branch.empty() &&
+		    branchlist_.remove(current_branch)) {
+
+			rebuild_all_branches_browser();
+			rebuild_selected_branches_browser();
 		}
-	} else if (ob == branch_->button_select) {
-		unsigned i = fl_get_browser(branch_->browser_all_branches);
+
+	} else if (ob == branch_->button_select ||
+		   ob == branch_->button_deselect) {
+
+		bool const selected = ob == branch_->button_select;
+
+		int const i = fl_get_browser(branch_->browser_all_branches);
 		string const current_branch =
 			fl_get_browser_line(branch_->browser_all_branches, i);
-		if (!current_branch.empty()) {
-			fl_clear_browser(branch_->browser_selection);
-			params.branchlist().setSelected(current_branch, true);
-			string const all_selected = params.branchlist().allSelected();
-			vec = getVectorFromString(all_selected, "|");
-			for (unsigned i = 0; i < vec.size(); ++i) {
-				fl_addto_browser(branch_->browser_selection,
-							vec[i].c_str());
-			}
-		}
-	} else if (ob == branch_->button_deselect) {
-		unsigned i = fl_get_browser(branch_->browser_selection);
-		string const current_sel =
-			fl_get_browser_line(branch_->browser_selection, i);
-		if (!current_sel.empty()) {
-			fl_clear_browser(branch_->browser_selection);
-			params.branchlist().setSelected(current_sel, false);
-			string const all_selected = params.branchlist().allSelected();
-			vec = getVectorFromString(all_selected, "|");
-			for (unsigned i = 0; i < vec.size(); ++i) {
-				fl_addto_browser(branch_->browser_selection,
-							vec[i].c_str());
-			}
-		}
+
+		Branch * branch = branchlist_.find(current_branch);
+		
+		if (branch && branch->setSelected(selected))
+			rebuild_selected_branches_browser();
+
 	} else if (ob == branch_->button_modify) {
-		unsigned i = fl_get_browser(branch_->browser_all_branches);
-		string const current_branch =
-			fl_get_browser_line(branch_->browser_all_branches, i);
-
-		RGBColor before;
-		string x11hexname = params.branchlist().getColor(current_branch);
-		if (x11hexname[0] == '#') {
-			before = RGBColor(x11hexname);
-		} else{
-			fl_getmcolor(FL_COL1, &before.r, &before.g, &before.b);
-		}
-
-		RGBColor col = picker_->requestColor(before);
-		if (before != col) {
-			fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
+		RGBColor const before =
+			get_current_color(branch_->browser_all_branches,
+					  branchlist_);
+		RGBColor const after = picker_->requestColor(before);
+		if (before != after) {
+			fl_mapcolor(GUI_COLOR_CHOICE,
+				    after.r, after.g, after.b);
 			fl_redraw_object(branch_->button_color);
-			// Figure out here how to stash the new colour into the
-			// LyX colour database.
 
-			x11hexname = X11hexname(col);
-
-			// current_branch already in database
-			LColor::color c = lcolor.getFromLyXName(current_branch);
-			lcolor.setColor(current_branch, x11hexname);
-			// Make sure that new colour is also displayed ;-)
-			lyxColorHandler->getGCForeground(c);
-			lyxColorHandler->updateColor(c);
-			// what about system_lcolor?
-			// Here set colour in BranchList:
-			params.branchlist().setColor(current_branch, x11hexname);
+			string const branch_name =
+				getString(branch_->browser_all_branches);
+			Branch * branch = branchlist_.find(branch_name);
+			if (branch)
+				branch->setColor(X11hexname(after));
 		}
+
 	} else if (ob == branch_->browser_all_branches) {
-		unsigned i = fl_get_browser(branch_->browser_all_branches);
-		string const current_branch =
-			fl_get_browser_line(branch_->browser_all_branches, i);
-		// make button_color track selected branch:
+		RGBColor rgb =
+			get_current_color(branch_->browser_all_branches,
+					  branchlist_);
 
-		RGBColor rgb;
-		string x11hexname = params.branchlist().getColor(current_branch);
-		if (x11hexname[0] == '#') {
-			rgb = RGBColor(x11hexname);
-		} else {
-			fl_getmcolor(FL_COL1, &rgb.r, &rgb.g, &rgb.b);
-		}
 		fl_mapcolor(GUI_COLOR_CHOICE, rgb.r, rgb.g, rgb.b);
 		fl_redraw_object(branch_->button_color);
 	}
@@ -798,8 +796,6 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 		(fl_get_browser(branch_->browser_all_branches) > 0));
 	setEnabled(branch_->button_modify,
 		(fl_get_browser(branch_->browser_all_branches) > 0));
-
-	branchlist_ = params.branchlist();
 }
 
 
@@ -1029,11 +1025,7 @@ void FormDocument::bullets_apply(BufferParams & params)
 
 void FormDocument::branch_apply(BufferParams & params)
 {
-	BufferParams & prms = controller().params();
-	if (branchlist_.empty())
-		branchlist_ = prms.branchlist();
 	params.branchlist() = branchlist_;
-	branchlist_.clear();
 }
 
 
@@ -1307,39 +1299,28 @@ void FormDocument::branch_update(BufferParams const & params)
 	if (!branch_.get())
 		return;
 
-	string const all_branches = params.branchlist().allBranches();
-	fl_clear_browser(branch_->browser_all_branches);
-	string current_branch("none");
+	branchlist_ = params.branchlist();
 
-	if (!all_branches.empty()) {
-		std::vector<string> vec = getVectorFromString(all_branches, "|");
-		for (unsigned i = 0; i < vec.size(); ++i) {
-			fl_addto_browser(branch_->browser_all_branches, vec[i].c_str());
-		}
-		fl_select_browser_line(branch_->browser_all_branches, 1);
-		if (!vec.empty())
-			current_branch =
-				fl_get_browser_line(branch_->browser_all_branches, 1);
-		else
-			current_branch = "none";
-	}
+	rebuild_all_branches_browser();
+	string const current_branch =
+		fl_get_browser_maxline(branch_->browser_all_branches) == 0 ?
+		"none" :
+		fl_get_browser_line(branch_->browser_all_branches, 1);
 
 	// display proper selection...
-	string const all_selected = params.branchlist().allSelected();
-	fl_clear_browser(branch_->browser_selection);
-	if (!all_selected.empty()) {
-		std::vector<string> vec = getVectorFromString(all_selected, "|");
-		for (unsigned i = 0; i < vec.size(); ++i) {
-			fl_addto_browser(branch_->browser_selection, vec[i].c_str());
-			}
-	}
+	rebuild_selected_branches_browser();
+
 	// display proper colour...
 	RGBColor rgb;
 	string x11hexname;
 	if (current_branch == "none")
 		x11hexname = "none";
-	else
-		x11hexname = params.branchlist().getColor(current_branch);
+	else {
+		Branch * branch = branchlist_.find(current_branch);
+		if (branch)
+			x11hexname = branch->getColor();
+	}
+
 	if (x11hexname[0] == '#') {
 		rgb = RGBColor(x11hexname);
 	} else {

@@ -763,7 +763,8 @@ int LyXRC::read(string const & filename)
 				break;
 			}
 
-			if (!lcolor.setColor(lyx_name, x11_name)) {
+			LColor::color col = lcolor.getFromLyXName(lyx_name);
+			if (!lcolor.setColor(col, x11_name)) {
 				lyxerr << "Bad lyxrc set_color for "
 					<< lyx_name << endl;
 

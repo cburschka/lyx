@@ -110,6 +110,9 @@ private:
 	///
 	void branch_apply(BufferParams &);
 
+	void rebuild_all_branches_browser();
+	void rebuild_selected_branches_browser();
+
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_document_paper>    paper_;
 	///

@@ -193,45 +193,30 @@ public:
 	///
 	void operator=(LColor const &);
 
-	///
-	void fill(LColor::color c,
-		  std::string const & lyxname,
-		  std::string const & x11name = std::string(),
-		  std::string const & latexname = std::string(),
-		  std::string const & guiname = std::string());
+	/** set the given LyX color to the color defined by the X11 name given
+	 *  \returns true if successful.
+	 */
+	bool setColor(LColor::color col, std::string const & x11name);
 
-	/// set the given LyX color to the color defined by the X11 name given
-	void setColor(LColor::color col, std::string const & x11name);
-	/// set the given LyX color to the color defined by the X11 name given
-	bool setColor(std::string const & lyxname, std::string const & x11name);
-
-	/// Get GUI name of color
+	/// Get the GUI name of \c color.
 	std::string const getGUIName(LColor::color c) const;
-	///
-	std::string const getGUIName(std::string const & s) const;
 
-	/// Get X11 name of color
+	/// Get the X11 name of \c color.
 	std::string const getX11Name(LColor::color c) const;
-	///
-	std::string const getX11Name(std::string const & s) const;
 
-	/// Get LaTeX name of color
+	/// Get the LaTeX name of \c color.
 	std::string const getLaTeXName(LColor::color c) const;
-	///
-	std::string const getLaTeXName(std::string const & s) const;
 
-	/// Get LyX name of color
+	/// Get the LyX name of \c color.
 	std::string const getLyXName(LColor::color c) const;
-	/// (string-to-string version not needed as it is identity)
 
-	///
-	size_t size() const;
-
-	/// get the color from the GUI name
+	/// \returns the LColor::color associated with the GUI name.
 	LColor::color getFromGUIName(std::string const & guiname) const;
-	/// get the color from the LyX name
+	/// \returns the LColor::color associated with the LyX name.
 	LColor::color getFromLyXName(std::string const & lyxname) const;
 private:
+	///
+	void addColor(LColor::color c, std::string const & lyxname) const;
 	///
 	struct Pimpl;
 	///

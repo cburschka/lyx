@@ -333,20 +333,22 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			string const tok = lex.getString();
 			if (tok == "\\end_branch")
 				break;
+			Branch * branch_ptr = branchlist().find(branch);
 			if (tok == "\\selected") {
 				lex.nextToken();
-				branchlist().setSelected(branch, lex.getInteger());
+				if (branch_ptr)
+					branch_ptr->setSelected(lex.getInteger());
 			}
 			// not yet operational
 			if (tok == "\\color") {
 				lex.nextToken();
 				string color = lex.getString();
-				branchlist().setColor(branch, color);
+				if (branch_ptr)
+					branch_ptr->setColor(color);
 				// Update also the LColor table:
 				if (color == "none")
 					color = lcolor.getX11Name(LColor::background);
-				lcolor.fill(static_cast<LColor::color>(lcolor.size()),
-						branch, color);
+				lcolor.setColor(lcolor.getFromLyXName(branch), color);
 			}
 		}
 	} else if (token == "\\author") {
