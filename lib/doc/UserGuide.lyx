@@ -1,84 +1,68 @@
 #LyX 1.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 221
-\textclass book
+\textclass scrbook
 \begin_preamble
-\usepackage[english]{babel}
-% DO NOT ALTER THIS PREAMBLE!!!!
+% DO NOT ALTER THIS PREAMBLE!!!
 %
 % I've designed this preamble to ensure that the User's Guide prints
 % out as advertised. If you mess with this preamble,
 % parts of the User's Guide may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
-% the documentation team intead of messing around in here.  --jpw 4/97
+% the documentation team
+% email: lyx-docs@lists.lyx.org
 
-%% Widens the vertical table spacing
-%%
-\renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{0.45em}
+% provides missing characters,
+% see note in chapter 'Character Tables'
+\usepackage{textcomp}
 
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
 
-%% Provides certain commands which are missing.
-%%
-\DeclareRobustCommand{\textyen}{%
-{\fontencoding{U}\fontfamily{msa}\selectfont\char85}%
-}
-\DeclareRobustCommand{\textcurrency}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char27}%
-}
-\DeclareRobustCommand{\textcent}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char103}%
-}
-\DeclareRobustCommand{\textbrokenbar}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char124}%
-}
+  % set fonts for nicer pdf view
+  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+  \usepackage[scaled=0.92]{helvet}
+  \usepackage{mathptmx}
+  \usepackage{courier} }
+  % the pages of the TOC are numbered roman
+  % and a pdf-bookmark for the TOC is added
+  \pagenumbering{roman}
+  \let\myTOC\tableofcontents
+  \renewcommand\tableofcontents{%
+    \pdfbookmark[1]{Contents}{}
+    \myTOC
+    \clearpage
+    \pagenumbering{arabic} }
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+ pdfpagelayout=OneColumn, pdfnewwindow=true,
+ pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+ pdfauthor={LyX Team}, pdftex,
+ pdftitle={The LyX User's Guide},pdfsubject={LyX},
+ pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
 
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
 
-%% For some odd reason, this character isn't defined in T1-encoding. 
-%%
-\DeclareInputText{"0AD}{\textendash}
-
-
-%% Accented characters missing in non-T1 encodings.
-%%
-\ProvideTextCommandDefault{\quotedblbase}{%
-\raisebox{-1ex}{\textquotedblright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\quotesinglbase}{%
-\raisebox{-1ex}{\textquoteright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\guillemotleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \ll\!\!\!}}
-}
-\ProvideTextCommandDefault{\guillemotright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \gg}}
-}
-\ProvideTextCommandDefault{\guilsinglleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle <\!\!\!}}
-}
-\ProvideTextCommandDefault{\guilsinglright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle >}}
-}
-\ProvideTextCommandDefault{\DH}{%
-D\hspace{-0.7em}\rule[0.8ex]{0.30em}{0.08ex}\hspace{0.40em}
-}
-\ProvideTextCommandDefault{\dh}{%
-\ensuremath{\mathrm{\partial}}
-\hspace{-0.65em}\rule[1.35ex]{0.3em}{0.08ex}\hspace{0.35em}
-}
-\ProvideTextCommandDefault{\TH}{%
-\textsc{I\hspace{-0.325em}p}
-}
-\ProvideTextCommandDefault{\th}{%
-p\hspace{-0.55em}l
-}
+ % the pages of the TOC are numbered roman
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+   
+\fi 
 \end_preamble
+\options bibtotoc,BCOR7mm
 \language english
 \inputencoding latin1
 \fontscheme default
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single 
 \papersize Default
 \paperpackage a4
@@ -95,7 +79,7 @@ p\hspace{-0.55em}l
 \quotes_times 2
 \papercolumns 1
 \papersides 2
-\paperpagestyle headings
+\paperpagestyle default
 
 \layout Title
 
@@ -114,7 +98,28 @@ Mike Ressler
 \noun default 
 .
  If you have comments or error corrections, please send them to the LyX
- Documentation mailing list, <lyx-docs@lists.lyx.org>.
+ Documentation mailing list: 
+\family typewriter 
+lyx-docs@lists.lyx.org
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Note
+collapsed false
+
+\layout Standard
+
+To export this document as pdf, ps or dvi, the LaTeX-package 
+\series bold 
+hyperref
+\series default 
+ has to be installed.
+\layout Standard
+
+This package should be part of all popular LaTeX-distributions.
 \end_inset 
 
 
@@ -241,17 +246,14 @@ man
 \layout Standard
 
 There are one or two things we'd like to comment on:
-\layout Itemize
+\layout Standard
 
-If you include more than one file name on the command line, LyX will load
- them all, though it won't display them all simultaneously.
+Please note that if you include more than one file name on the command line,
+ LyX will load them all, though it won't display them all simultaneously.
  More on that in a bit.
 \layout Subsection
 
 How LyX Looks
-\layout Subsubsection
-
-The Main Window
 \layout Standard
 
 Like most applications, LyX has the familiar menu bar across the top of
@@ -1012,12 +1014,12 @@ to open a dialog that will allow you to manipulate the table.
 \layout Subsection
 
 Basic Key Bindings
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec: key bindings}
 
 \end_inset 
+
+
+\layout Standard
 
 Again, we're not going to cover all of the keybindings.
  Be aware that there are at least two different primary binding maps: CUA
@@ -1054,7 +1056,7 @@ Down
 \family default 
 , do exactly what you expect them to do.
  Other keys don't:
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1085,7 +1087,7 @@ Tab
 Tutorial
 \emph default 
 .
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1102,7 +1104,7 @@ cancel key.
 
  It's used, generically, to cancel operations.
  Other parts of the manual will go into greater detail about this.
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1118,7 +1120,7 @@ End
  These move the cursor, respectively, to the beginning and end of a line,
  unless you are using the Emacs bindings where they jump to the beginning
  or end of the file.
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1159,7 +1161,7 @@ If you haven't set up your keyboard under X, or have no idea what we mean
 \layout Standard
 
 Then there are the modifier keys:
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1203,7 +1205,7 @@ End
 \family default 
 , it moves to the beginning and the end of the document, respectively.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1212,7 +1214,7 @@ Shift-
 \family default 
  Use this with any of the motion keys to select the text between the old
  and new cursor positions.
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -1531,12 +1533,12 @@ This is basically where we decided to document a bunch of info about running
 \layout Section
 
 Basic LyX Setup
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:setup}
 
 \end_inset 
+
+
+\layout Standard
 
 There are two ways to run LyX.
  The first way is to install LyX and all of its support files on your system.
@@ -1656,9 +1658,19 @@ lyxrc.defaults
 \bar under 
 T
 \bar default 
-ools
+ools\SpecialChar \menuseparator
+
 \bar under 
-\SpecialChar \menuseparator
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+linebreak 
+\end_inset 
+
 P
 \bar default 
 references
@@ -1672,12 +1684,12 @@ Customization
 \layout Section
 
 Setting Up the X Keyboard
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:x-win-keys}
 
 \end_inset 
+
+
+\layout Standard
 
 To use LyX properly, you 
 \emph on 
@@ -1693,13 +1705,7 @@ must
  Any user can instruct X how to use his or her keyboard.
 \layout Subsection
 
-
-\family typewriter 
-xmodmap
-\family default 
- and 
-\family typewriter 
-xkeycaps
+xmodmap and xkeycaps
 \layout Standard
 
 First of all read the man pages for these two programs.
@@ -1708,8 +1714,6 @@ First of all read the man pages for these two programs.
  If you don't have them, install them.
 \layout Subsubsection
 
-
-\family typewriter 
 xmodmap
 \layout Standard
 
@@ -1732,7 +1736,8 @@ Customization
 xmodmap\SpecialChar ~
 .Xmodmap
 \family default 
- somewhere in your startup scripts [for example, 
+ somewhere in your startup scripts [e.g.
+ 
 \family typewriter 
 .cshrc
 \family default 
@@ -1744,15 +1749,13 @@ xmodmap\SpecialChar ~
 \family typewriter 
 .login
 \family default 
-, or 
+ or 
 \family typewriter 
 .xinitrc
 \family default 
- are all possibilities].
+ are possible].
 \layout Subsubsection
 
-
-\family typewriter 
 xkeycaps
 \layout Standard
 
@@ -2061,7 +2064,9 @@ If you're using Linux, LaTeX2e should have come with your distribution.
  For other systems, you might need to install LaTeX yourself.You can obtain
  a LaTeX distribution (and anything and everything related to TeX and LaTeX)
  from a Comprehensive TeX Archive Network (CTAN) mirror.
- A complete list of mirrors may be found at 
+ A complete list of mirrors may be found at
+\newline 
+
 \begin_inset LatexCommand \url{http://www.ctan.org}
 
 \end_inset 
@@ -2071,7 +2076,7 @@ If you're using Linux, LaTeX2e should have come with your distribution.
 
 \end_inset 
 
-.
+
 \layout Section
 
 Dvips and Ghostscript
@@ -2129,10 +2134,10 @@ Tutorial
 \family typewriter 
 dvips
 \family default 
- converts DVI files into PostScript®, which is the format most printers
- use nowadays.
+ converts DVI files into PostScript, which is the format most printers use
+ nowadays.
  For those of you using dot-matrix and inkjet printers, you'll want to filter
- the PostScript® through 
+ the PostScript through 
 \family typewriter 
 ghostscript
 \family default 
@@ -2147,12 +2152,12 @@ dvips
 \layout Subsection
 
 Dvips
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:dvipsconfig}
 
 \end_inset 
+
+
+\layout Standard
 
 Whether you'll be running LyX on a large system or a Linux box at home,
  you should configure 
@@ -2434,7 +2439,7 @@ PRINTER
  environment variable.
  You can also choose the desired printer from inside LyX, as described in
  a later section.
- Once you've done all that, you can print to either a PostScript® printer
+ Once you've done all that, you can print to either a PostScript printer
  or file from LyX.
  
 \layout Standard
@@ -2465,7 +2470,7 @@ Preferences
 \family default 
  dialog, too.
  There is a major disadvantage to this method.
- You can't include any PostScript® files, such as graphics, in your documents,
+ You can't include any PostScript files, such as graphics, in your documents,
  since the printer-specific conversion programs don't understand PostScript®.
  For that reason, the LyX team highly recommends using 
 \family typewriter 
@@ -2499,7 +2504,7 @@ ghostview
 \family typewriter 
 ghostscript
 \family default 
- to allow you to view PostScript® files.
+ to allow you to view PostScript files.
 \layout Standard
 
 A quick note on both of these programs.
@@ -2590,7 +2595,7 @@ ghostview
 \emph on 
 must
 \emph default 
- view the PostScript® version of the document.
+ view the PostScript version of the document.
  For repeated changes that aren't PostScript® dependent, you're better off
  previewing with 
 \family typewriter 
@@ -3778,7 +3783,7 @@ lass
 \family default 
  button do.
  That's what this section is for.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3800,7 +3805,7 @@ LaTeX does this part.
 
 
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3808,7 +3813,7 @@ LaTeX does this part.
 Default 
 \family default 
 Use default pagestyle of current class.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3816,7 +3821,7 @@ Use default pagestyle of current class.
 Empty
 \family default 
  No page numbers or headings.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3824,7 +3829,7 @@ Empty
 Plain
 \family default 
  Page numbers only.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3834,7 +3839,7 @@ Headings
  Page numbers and either the current chapter or section title and number.
  Whether LyX uses the current chapter or the current section depends on
  which is the maximum sectioning level.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3856,7 +3861,7 @@ fancyhdr
 \family default 
  package for more details.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3895,7 +3900,7 @@ Two
 \family default 
  for double-sided documents.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3924,7 +3929,7 @@ will
 \emph default 
  be two columns in the generated output.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3948,7 +3953,7 @@ documentclass
  Just type in a comma-separated list of options.
  See a good LaTeX book to find out what kinds of additional options you
  can use.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 
@@ -3991,7 +3996,7 @@ Paper
 Layout
 \family default 
  menu:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -4014,7 +4019,7 @@ r
 trait
 \family default 
 .
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -4108,12 +4113,12 @@ Paragraph Indentation and Separation
 \layout Subsection
 
 Introduction
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:parindentintro}
 
 \end_inset 
+
+
+\layout Standard
 
 Before describing all of the various paragraph environments, we'd like to
  say a word or two about paragraph indentation.
@@ -4292,7 +4297,10 @@ Paragraph Environments
 Overview
 \layout Standard
 
-The paragraph environments correspond to the various 
+The paragraph environments correspond to the various
+\layout Standard
+
+
 \family typewriter 
 
 \backslash 
@@ -4313,7 +4321,9 @@ environment
 \emph default 
 }
 \family default 
- command sequences in an ordinary LaTeX file.
+
+\newline 
+command sequences in an ordinary LaTeX file.
  If you don't know LaTeX, or the concept of a paragraph environment is totally
  alien to you, we urge you to read the 
 \emph on 
@@ -4651,14 +4661,14 @@ thanks
 \layout Subsection
 
 Headings
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:parenvheadings}
 
 \end_inset 
 
- There are nine paragraph environments for producing section headings.
+
+\layout Standard
+
+There are nine paragraph environments for producing section headings.
  LyX takes care of the numbering for you.
  All you need to do is decide what you're going to call section 3 of chapter
  9.
@@ -5055,6 +5065,8 @@ no numbering of any kind
 \layout Standard
 
 
+\family sans 
+add 
 \series medium 
 \shape up 
 \size normal 
@@ -5062,8 +5074,6 @@ no numbering of any kind
 \bar no 
 \noun off 
 \color none
-add 
-\family sans 
 Parts
 \end_inset 
 </cell>
@@ -5196,6 +5206,8 @@ add Subsections
 \layout Standard
 
 
+\family sans 
+add 
 \series medium 
 \shape up 
 \size normal 
@@ -5203,8 +5215,6 @@ add Subsections
 \bar no 
 \noun off 
 \color none
-add 
-\family sans 
 Subsubsections
 \end_inset 
 </cell>
@@ -5232,6 +5242,8 @@ Subsubsections
 \layout Standard
 
 
+\family sans 
+add 
 \series medium 
 \shape up 
 \size normal 
@@ -5239,8 +5251,6 @@ Subsubsections
 \bar no 
 \noun off 
 \color none
-add 
-\family sans 
 Paragraphs
 \end_inset 
 </cell>
@@ -5268,6 +5278,8 @@ Paragraphs
 \layout Standard
 
 
+\family sans 
+add 
 \series medium 
 \shape up 
 \size normal 
@@ -5275,8 +5287,6 @@ Paragraphs
 \bar no 
 \noun off 
 \color none
-add 
-\family sans 
 Subparagraphs
 \end_inset 
 </cell>
@@ -5443,7 +5453,7 @@ Subsubsection*
 You cannot use a margin note in any of these environments.
 \layout Itemize
 
-You can use inlined math in these environments.
+You can only use inlined math in these environments.
 \layout Itemize
 
 You cannot do any nesting with these environments.
@@ -5466,6 +5476,8 @@ To create an appendix, simply start by adding a new chapter or section heading.
 D
 \bar default 
 ocument\SpecialChar \menuseparator
+
+\newline 
 Start\SpecialChar ~
 
 \bar under 
@@ -5542,12 +5554,14 @@ Quote
  and 
 \family sans 
 Quotation
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:quote}
 
 \end_inset 
+
+
+\layout Standard
 
 Now that we've described the similarities of these three environments, it's
  time for the differences.
@@ -5649,15 +5663,15 @@ Quotation
 
 \family sans 
 Verse
-\layout Standard
-
-
-\family sans 
-
 \begin_inset LatexCommand \label{sec:verse}
 
 \end_inset 
 
+
+\layout Standard
+
+
+\family sans 
 Verse
 \family default 
  is a paragraph environment for poetry, rhymes, verses, and so on.
@@ -5707,12 +5721,12 @@ C-Return
 \layout Subsection
 
 Lists
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:parenvlists}
 
 \end_inset 
+
+
+\layout Standard
 
 LyX has four different paragraph environments for creating different kinds
  of lists.
@@ -5782,12 +5796,14 @@ You can nest lists of any type inside one another.
 
 \family sans 
 Itemize
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:itemize}
 
 \end_inset 
+
+
+\layout Standard
 
 The first type of list we'll describe in detail is the 
 \family sans 
@@ -5897,7 +5913,17 @@ These are the default labels for an
 Itemize
 \family default 
  list.
- You can customize these labels in 
+ You can customize these labels in the
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+linebreak 
+\end_inset 
+
+ 
 \family sans 
 \bar under 
 D
@@ -5930,12 +5956,14 @@ Notice how the space between items decreases with increasing depth.
 
 \family sans 
 Enumerate
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:enumerate}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -6078,12 +6106,14 @@ really
 
 \family sans 
 Description
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:descrlist}
 
 \end_inset 
+
+
+\layout Standard
 
 Unlike the previous two environments, the 
 \family sans 
@@ -6238,12 +6268,14 @@ Notice that after the first line, LyX indents subsequent lines, offsetting
 The LyX 
 \family sans 
 List
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:lyxlist}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -6297,7 +6329,7 @@ List
  environment has user-defined labels for each list item.
  There are some key differences between this list environment and the other
  three:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 item\SpecialChar ~
@@ -6317,7 +6349,7 @@ Space
  after the beginning of the first line of an item marks the end of the label.
  If you need to use more than one word in an item label, use a protected
  blank as described above.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 margins As you can see, LyX uses different margins for the item label and
@@ -6325,7 +6357,7 @@ margins As you can see, LyX uses different margins for the item label and
  The body of the text has a larger left margin, which is equal to the default
  label width plus a little extra space.
  
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 label\SpecialChar ~
@@ -6342,7 +6374,7 @@ extends
  into the first line.
  In other words, the text of the first line isn't aligned with the left
  margin of the rest of the item text.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 default\SpecialChar ~
@@ -6353,7 +6385,7 @@ width You can very easily set this default width.
 List
 \family default 
  environment have the same left margin.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 uses You should use the 
@@ -6372,7 +6404,7 @@ List
 \family default 
  environment gives you another way to do this, using a different overall
  layout.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 nesting You can nest 
@@ -6498,7 +6530,7 @@ HFills
 
 .
  Here are some examples:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMMM
 
 Left The default for 
@@ -6506,7 +6538,7 @@ Left The default for
 List
 \family default 
  item labels.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMMM
 
 
@@ -6516,7 +6548,7 @@ Right One
 HFill
 \family default 
  at the beginning of the label right justifies it.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMMM
 
 
@@ -6614,12 +6646,12 @@ Address
 \layout Subsubsection
 
 Usage
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:adress_usage}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -6911,12 +6943,14 @@ abstract
 
 \family sans 
 Bibliography
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:bibliography}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -7121,12 +7155,14 @@ There are three standard paragraph environments that simply don't fit any
 
 \family sans 
 Caption
-\layout Standard
-
+\family default 
 
 \begin_inset LatexCommand \label{sec:captionlayout}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -7227,9 +7263,9 @@ Floats
  
 \layout Subsubsection
 
-
+LyX
 \family sans 
-LyX-Code
+-Code
 \layout Standard
 
 The 
@@ -7548,16 +7584,16 @@ How to nest an environment is quite simple.
 I
 \bar default 
 ncrease\SpecialChar ~
-List\SpecialChar ~
+Environment\SpecialChar ~
 Depth
 \family default 
- or 
+ or
 \family sans 
 \bar under 
-D
+ D
 \bar default 
 ecrease\SpecialChar ~
-List\SpecialChar ~
+Environment\SpecialChar ~
 Depth
 \family default 
  from the 
@@ -7745,9 +7781,13 @@ Paragraph
 Subparagraph
 \layout Itemize
 
+
+\family sans 
 Part*
 \layout Itemize
 
+
+\family sans 
 Chapter*
 \layout Itemize
 
@@ -7880,12 +7920,12 @@ Floats
 \layout Subsection
 
 Nesting Other Things: Tables, Math, Floats, etc.
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:table-and-fig-nesting}
 
 \end_inset 
+
+
+\layout Standard
 
 There are several things that aren't paragraph environments, but which are
  affected by nesting anyhow.
@@ -8338,9 +8378,6 @@ Float
 \layout Subsection
 
 Usage and General Features
-\layout Subsubsection
-
-Nesting limits
 \layout Standard
 
 Speaking of levels, LyX can perform up to a six-fold nesting.
@@ -8456,7 +8493,7 @@ The best way to explain just what you can do with nesting is by illustration.
 \layout Subsubsection
 
 Example #1: The Six-fold Way and Mixed Nesting
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #1-a This is the outermost level.
@@ -8466,7 +8503,7 @@ List
 \family default 
  environment.
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #2-a This is level #2.
@@ -8481,7 +8518,7 @@ Right
 \family default 
 .
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #3-a This is level #3.
@@ -8562,7 +8599,7 @@ Standard
 M-Return
 \family default 
 .
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #4-a This is level #4.
@@ -8594,20 +8631,20 @@ can
 
 .
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #5-a This is level #5\SpecialChar \ldots{}
 
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #6-a \SpecialChar \ldots{}
 and this is level #6.
  By now, you should know how we made these two.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #5-b Back to level #5.
@@ -8622,7 +8659,7 @@ Left
 \family default 
 .
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #4-b After another 
@@ -8636,19 +8673,19 @@ Left
 \family default 
 , we're back at level #4.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #3-b Back to level #3.
  By now it should be obvious how we did this.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #2-b Back to level #2.
  
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMM
 
 #1-b And last, back to the outermost level, #1.
@@ -8754,7 +8791,16 @@ Enumerate
 \family sans 
 Itemize
 \family default 
- Environments.
+ Environments
+\begin_inset OptArg
+collapsed true
+
+\layout Standard
+
+Example #3: Labels, Levels and other list environments
+\end_inset 
+
+
 \layout Enumerate
 
 This is level #1, in an 
@@ -9704,7 +9750,7 @@ change
 Reset
 \family default 
 ] are:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -9725,7 +9771,7 @@ overall look
  of the font.
  The possible options are:
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9744,7 +9790,7 @@ r
 \family default 
 ]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9765,7 +9811,7 @@ s
 \family default 
 ]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9786,7 +9832,7 @@ p
 ]
 \end_deeper 
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -9799,7 +9845,7 @@ eries
  This corresponds to the print weight.
  Options are:
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9812,7 +9858,7 @@ Medium
 
 It's also the default series.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9833,7 +9879,7 @@ b
 .
 \end_deeper 
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -9847,7 +9893,7 @@ ape
  As the name implies.
  Options are:
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9860,7 +9906,7 @@ Upright
 
 It's also the default shape.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9877,7 +9923,7 @@ s the Italic font shape
 \shape default 
 \emph on 
 .
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9892,7 +9938,7 @@ This is the Slanted font shape
 \family default 
 \shape default 
 (although it might not be visible on screen, this is different from italic).
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9907,7 +9953,7 @@ This is the Small caps font shape
 \noun on 
 .
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -9927,7 +9973,7 @@ nal to the default font size.
 \layout Standard
 
 The options [and their keybindings] are:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9960,7 +10006,7 @@ M-s\SpecialChar ~
 \family default 
 ]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -9987,7 +10033,7 @@ M-s\SpecialChar ~
 \family default 
 2]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10019,7 +10065,7 @@ M-s\SpecialChar ~
 \family default 
 3]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10052,7 +10098,7 @@ M-s\SpecialChar ~
 \family default 
 4]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10084,7 +10130,7 @@ M-s\SpecialChar ~
 \family default 
 5]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10117,7 +10163,7 @@ M-s\SpecialChar ~
 \family default 
 6]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10150,7 +10196,7 @@ M-s\SpecialChar ~
 \family default 
 7]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10178,7 +10224,7 @@ M-s\SpecialChar ~
 \family default 
 8]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10211,7 +10257,7 @@ M-s\SpecialChar ~
 \family default 
 9]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10258,7 +10304,7 @@ yet again
 \emph on 
 only!
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -10271,7 +10317,7 @@ isc
  Here you can change a few other things at the character level.
  Options are:
 \begin_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10299,7 +10345,7 @@ logical
 \emph default 
  property.
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10319,7 +10365,7 @@ u
 \family default 
 ]
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMM
 
 
@@ -10359,7 +10405,7 @@ may
  fact we use it in these manuals to indicate keyboard shortcuts for menu
  items).
 \end_deeper 
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -10428,7 +10474,7 @@ Magenta
 Yellow
 \family default 
  text.
-\layout List
+\layout Labeling
 \labelwidthstring 00.00.0000
 
 
@@ -10610,8 +10656,8 @@ device-independent
 \layout Description
 
 NOTE: The DVI file only contains what was in the LaTeX file itself.
- If you have included PostScript® pictures in your document, there will
- only be a link to these files.
+ If you have included PostScript pictures in your document, there will only
+ be a link to these files.
  So don't forget these files if you move your 
 \family typewriter 
 .dvi
@@ -10654,13 +10700,13 @@ Some printers and Unix systems understand DVI, and can print your
  file directly.
 \layout Enumerate
 
-Nowadays, most printers understand the PostScript® format.
+Nowadays, most printers understand the PostScript format.
  LyX automatically converts the 
 \family typewriter 
 .dvi
 \family default 
- file to a PostScript® file for you when you go to print out your document.
- LyX will also let you preview a PostScript® version of your document using
+ file to a PostScript file for you when you go to print out your document.
+ LyX will also let you preview a PostScript version of your document using
  the program 
 \family typewriter 
 ghostview
@@ -10674,10 +10720,10 @@ One advantage of using PostScript® is that the converter program [called
 \family typewriter 
 dvips
 \family default 
-] takes any PostScript® graphics you may have included in your document
- and puts it into the resulting PostScript® version of your document.
+] takes any PostScript graphics you may have included in your document and
+ puts it into the resulting PostScript version of your document.
  It also includes any special fonts you may have used.
- That makes the PostScript® version much, much more portable than the DVI
+ That makes the PostScript version much, much more portable than the DVI
  version.
 \end_deeper 
 \end_deeper 
@@ -10694,9 +10740,7 @@ As you have seen, a lot of things happen before you get a hardcopy or a
  Quality always has its price.
 \layout Subsection
 
-Quick Viewing with 
-\family typewriter 
-xdvi
+Quick Viewing with xdvi
 \layout Standard
 
 To get a look at the final version of your document, with all of the pagebreaks
@@ -10773,9 +10817,7 @@ xdvi
  file and give you an updated view.
 \layout Subsection
 
-Viewing the PostScript® Version with 
-\family typewriter 
-ghostview
+Viewing the PostScript Version with ghostview
 \layout Standard
 
 In general, using 
@@ -10783,7 +10825,7 @@ In general, using
 xdvi
 \family default 
  to view your document is the easiest and fastest way.
- There may be times, however, when you want to look at the PostScript® version.
+ There may be times, however, when you want to look at the PostScript version.
  One reason is fonts.
 \begin_inset Foot
 collapsed true
@@ -10795,12 +10837,12 @@ Note from
 John Weiss
 \noun default 
 : Another reason is paranoia.
- I always like to look at the PostScript® file before I print it, just so
+ I always like to look at the PostScript file before I print it, just so
  I see exactly what went to the printer\SpecialChar \ldots{}
 
 \end_inset 
 
- You can use PostScript® fonts in a LaTeX document, but 
+ You can use PostScript fonts in a LaTeX document, but 
 \family typewriter 
 xdvi
 \family default 
@@ -10809,10 +10851,10 @@ xdvi
 \family typewriter 
 ghostview
 \family default 
- or some other PostScript® file viewer to see the actual results.
+ or some other PostScript file viewer to see the actual results.
 \layout Standard
 
-To view the PostScript® version of your document, select 
+To view the PostScript version of your document, select 
 \family sans 
 Pos
 \bar under 
@@ -10900,7 +10942,7 @@ You can set the parameters in the
 Destination
 \family default 
  box as follows :
-\layout List
+\layout Labeling
 \labelwidthstring MMMM
 
 
@@ -10947,8 +10989,8 @@ lyxrc
 .
 \end_inset 
 
- The printer should understand PostScript® files.
-\layout List
+ The printer should understand PostScript files.
+\layout Labeling
 \labelwidthstring MMMM
 
 
@@ -10960,7 +11002,7 @@ ile
 \family default 
  The name of a file to print to.
  The output will be in Post\SpecialChar \-
-Script® format.
+Script format.
  The file will generally be written in the current directory, unless you
  specify the full path.
 \layout Standard
@@ -10980,12 +11022,12 @@ A Few Words about Typography
 \layout Subsection
 
 Hyphens and Hyphenation
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:hyphens}
 
 \end_inset 
+
+
+\layout Standard
 
 In LyX, the 
 \begin_inset Quotes eld
@@ -11045,7 +11087,7 @@ made with
 \family typewriter 
 -
 \begin_inset ERT
-status Inlined
+status Collapsed
 
 \layout Standard
 
@@ -11074,7 +11116,7 @@ made with
 \family typewriter 
 -
 \begin_inset ERT
-status Inlined
+status Collapsed
 
 \layout Standard
 
@@ -11084,7 +11126,7 @@ status Inlined
 
 -
 \begin_inset ERT
-status Inlined
+status Collapsed
 
 \layout Standard
 
@@ -11248,12 +11290,12 @@ Punctuation Marks
 \layout Subsubsection
 
 Abbreviations and End of Sentence
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:abbrev}
 
 \end_inset 
+
+
+\layout Standard
 
 When LyX calls LaTeX to generate the final version of your document, LaTeX
  automatically distinguishes between words, sentences, and abbreviations.
@@ -11404,12 +11446,12 @@ Extended Editing
 \layout Subsubsection
 
 Quotes
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:quotes}
 
 \end_inset 
+
+
+\layout Standard
 
 LyX usually sets quotes correctly.
  Specifically, it will use an opening quote at the beginning of quoted text,
@@ -11506,7 +11548,7 @@ ype
 \family default 
  option.
  There are six choices:
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11538,7 +11580,7 @@ single
 \end_inset 
 
 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11566,7 +11608,7 @@ this
 \end_inset 
 
 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11598,7 +11640,7 @@ this
 \end_inset 
 
 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11630,7 +11672,7 @@ this
 \end_inset 
 
 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11662,7 +11704,7 @@ this
 \end_inset 
 
 
-\layout List
+\layout Labeling
 \labelwidthstring MMMMM
 
 
@@ -11717,12 +11759,12 @@ C-"
 \layout Subsection
 
 Ligatures
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:ligatures}
 
 \end_inset 
+
+
+\layout Standard
 
 It is standard typesetting practice to group certain letters together and
  print them as single characters.
@@ -11834,12 +11876,12 @@ fest
 \layout Subsection
 
 Widows and Orphans
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:widows}
 
 \end_inset 
+
+
+\layout Standard
 
 In the early days of word processors, page breaks went wherever the page
  happened to end.
@@ -12127,7 +12169,7 @@ margin
 
  appearing within your text.
 \begin_inset Marginal
-collapsed true
+collapsed false
 
 \layout Standard
 
@@ -12185,29 +12227,17 @@ As a default, LyX uses 1.9 cm (0.75 inches) as the margin width to allow room
 \layout Section
 
 Figures and Imported Graphics
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:figures}
 
 \end_inset 
+
+
+\layout Standard
 
 No document preparation system is complete without the ability to import
  graphics from other utilities into the document.
  In LyX, these are referred to as ``figures'' whether they are actually
  figures in the traditional sense or simply some kind of imported image.
- Encapsulated PostScript® figures are handled very well by LyX, which uses
- 
-\family typewriter 
-ghostview
-\family default 
- to generate an on-screen image for the LyX window, and the 
-\family typewriter 
-
-\backslash 
-includegraphics
-\family default 
- LaTeX command to insert the figure in the final document.
  
 \layout Standard
 
@@ -12233,7 +12263,8 @@ nsert\SpecialChar \menuseparator
 \bar under 
 G
 \bar default 
-raphics 
+raphics...
+ 
 \family default 
 from the menu.
 \layout Standard
@@ -12247,6 +12278,7 @@ A graphics inset will be added to your document and a dialog will appear
 \begin_inset Graphics
 	filename mobius.eps
 	display color
+	scale 70
 	rotateOrigin center
 
 \end_inset 
@@ -12261,19 +12293,15 @@ File
 \family default 
  tab allows you to choose your image file (note that a wide variety of image
  formats are supported automatically).
- You can set the 
-\family sans 
-Subfigure
-\family default 
- option for use in figure floats (see Section\SpecialChar ~
+ The figure can be transformed by setting a rotation angle, using a bounding
+ box, and scaling.
+ Table\SpecialChar ~
 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand \ref{cap:Units-for-image}
 
 \end_inset 
 
-).
- The figure can be transformed by setting a rotation angle, using a bounding
- box, and scaling.
+ describes all available units.
  It is possible to set a bounding box automatically for some image formats
  (see the 
 \family sans 
@@ -12289,18 +12317,573 @@ Box
 Extras
 \family default 
  tab.
+ You can also set the 
+\family sans 
+Subfigure
+\family default 
+ option here, for use in figure floats (see Section\SpecialChar ~
+
+\begin_inset LatexCommand \ref{sec:figurefloats}
+
+\end_inset 
+
+).
+\layout Subsection
+
+How it works
+\layout Standard
+
+LyX has the ability to handle literally any graphics format in the known
+ universe so long as a conversion path from this graphics format to the
+ target output format can be created.
+ If that sounds a little obtuse, consider how LyX handles Encapsulated PostScrip
+t® figures.
+ LaTeX provides native support for this format, so LyX needs do nothing
+ other than use the 
+\family typewriter 
+
+\backslash 
+includegraphics
+\family default 
+ LaTeX command to insert the figure in the final document.
+\layout Standard
+
+
+\begin_inset Float table
+placement t
+wide false
+collapsed true
+
+\layout Caption
+\added_space_bottom medskip 
+
+\begin_inset LatexCommand \label{cap:Units-for-image}
+
+\end_inset 
+
+Units for setting the image size
+\layout Standard
+\align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+unit
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+name/description
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+mm
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+millimetre
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+cm
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+centimetre
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+in
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+inch
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+pt
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+point (72.27 pt = 1 in)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+pc
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+pica (1 pc = 12 pt)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+sp
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+scaled point (65536 sp = 1 pt)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+bp
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+big point (72 bp = 1 in)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+dd
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+didot (72 dd 
+\begin_inset Formula $\approx$
+\end_inset 
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset 
+
+mm)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+cc
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+cicero (1cc = 12 dd)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Scale%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of original image width
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+text%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of text width
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+col%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of column width
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+page%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of paper width
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+line%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of line width
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+theight%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of text height
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+pheight%
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+% of paper height
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ex
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+height of letter 
+\emph on 
+x
+\emph default 
+ in current font
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+em
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+width of letter 
+\emph on 
+M
+\emph default 
+ in current font
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+mu
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+math unit (1 mu = 1/18 em)
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\end_inset 
+
+
+\layout Standard
+
+To view the figure on the LyX screen, however, some additional work is required
+ because neither the XForms nor the Qt GUI libraries can load PostScript®
+ figures themselves.
+ The XForms library can load figures in the following, widely used graphics
+ formats: 
+\family typewriter 
+bmp
+\family default 
+, 
+\family typewriter 
+gif
+\family default 
+, 
+\family typewriter 
+jpeg
+\family default 
+, 
+\family typewriter 
+pbm
+\family default 
+, 
+\family typewriter 
+pgm
+\family default 
+, 
+\family typewriter 
+ppm
+\family default 
+, 
+\family typewriter 
+tif
+\family default 
+ and 
+\family typewriter 
+xbm
+\family default 
+ whilst the Qt library can also handle 
+\family typewriter 
+mng
+\family default 
+, 
+\family typewriter 
+png
+\family default 
+ and 
+\family typewriter 
+xpm
+\family default 
+ format figures.
+ Thus, LyX must initiate a conversion from Encapsulated PostScript® to a
+ loadable graphics format.
+\layout Standard
+
+It does this using the powerful, configurable converters mechanism exposed
+ in the 
+\family sans 
+Converters
+\family default 
+ section of the 
+\family sans 
+\bar under 
+E
+\bar default 
+dit
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+\bar under 
+P
+\bar default 
+references
+\family default 
+ dialog.
+ If LyX cannot create a conversion path (which might have many steps) from
+ Encapsulated PostScript® to one of the loadable formats listed above, then
+ it defaults to the use of ImageMagick's 
+\family typewriter 
+convert
+\family default 
+ utility.
+ If, after all that, LyX 
+\emph on 
+still
+\emph default 
+ cannot load the figure, then it'll tell you so with a message 
+\begin_inset Quotes eld
+\end_inset 
+
+Error converting to loadable format
+\begin_inset Quotes erd
+\end_inset 
+
+ in place of an on-screen view of your figure.
+ If you're presented with such a message, then you'll need to augment the
+ list of known converters.
+\layout Standard
+
+This strategy is used both to generate on-screen views of your image and
+ when generating the final document.
+ In the latter case, the LaTeX compiler must be supplied with graphics files
+ in PostScript® format.
+ Similarly the PDFLaTeX compiler requires files in
+\family typewriter 
+ pdf
+\family default 
+, 
+\family typewriter 
+png
+\family default 
+ or 
+\family typewriter 
+jpeg
+\family default 
+ format.
+ LyX will handle the necessary conversions behind the scenes.
 \layout Subsection
 
 Figure Floats
 \layout Subsubsection
 
 Using Figure Floats
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:figurefloats}
 
 \end_inset 
+
+
+\layout Standard
 
 The problem with inserting figures straight into your text is that they
  might make the pagination of your document extremely awkward.
@@ -12347,6 +12930,9 @@ Figure
 from the menu bar.
  You will get a float without a figure in it; use the toolbar icon described
  above to insert the actual figure.
+\layout Standard
+
+
 \begin_inset Float figure
 placement htbp
 wide false
@@ -12374,7 +12960,10 @@ M.C.
 
 \end_inset 
 
- 
+
+\layout Standard
+
+
 \begin_inset Float figure
 placement htbp
 wide false
@@ -12526,12 +13115,12 @@ igures
 \layout Subsubsection
 
 Float Placement
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:float-locn}
 
 \end_inset 
+
+
+\layout Standard
 
 Now, the whole idea behind 
 \family sans 
@@ -12753,11 +13342,7 @@ Always put figures and tables on their own page.
 \end_deeper 
 \layout Subsection
 
-
-\family typewriter 
-XFig
-\family default 
- and LyX
+XFig and LyX
 \layout Standard
 
 One obvious question is 
@@ -12782,22 +13367,22 @@ XFig
  We recommend the following:
 \layout Enumerate
 
-Export the figure as Encapsulated PostScript®.
+Export the figure as Encapsulated PostScript.
  This could be very easy included into LyX as described in the previous
  sections.
  The great advantage of this way is, that you have the full power of PostScript®
  available.
  That means Bezier curves, colors, all line thicknesses and many more.
  If you have inserted text into your fig-document this will be printed with
- PostScript® fonts, which is OK\SpecialChar \@.
+ PostScript fonts, which is OK\SpecialChar \@.
  The figure can be manipulated like any other
  EPS figure, as described above.
  
 \begin_deeper 
 \layout Standard
 
-The only disadvantage is that you cannot create formulas as PostScript®
- text except by hand.
+The only disadvantage is that you cannot create formulas as PostScript text
+ except by hand.
  If you also need formulas or simple exponents or indices in your figure,
  the next way is recommended.
 \end_deeper 
@@ -12865,7 +13450,7 @@ The disadvantage of this way is that the graphical power of LaTeX isn't
 \end_deeper 
 \layout Enumerate
 
-Export the figure as LaTeX/PostScript® combined.
+Export the figure as LaTeX/PostScript combined.
  Then 
 \family typewriter 
 XFig
@@ -12878,7 +13463,7 @@ transfig
 \begin_deeper 
 \layout Enumerate
 
-the PostScript® part 
+the PostScript part 
 \family typewriter 
 foo.pstex
 \family default 
@@ -12889,12 +13474,12 @@ the LaTeX part
 \family typewriter 
 foo.pstex_t
 \family default 
-, that contains all text and a link to the PostScript® part.
+, that contains all text and a link to the PostScript part.
 \end_deeper 
 \layout Standard
 
 Then you just have to include the LaTeX part as described above.
- This will automatically include the PostScript® part, too.
+ This will automatically include the PostScript part, too.
 \begin_inset Foot
 collapsed true
 
@@ -12959,19 +13544,19 @@ foo.pstex_t
 
  This way you have the full PostScript® and LaTeX power combined except
  for the possibility to scale the figure after creating.
- So if you want scalable pictures, the PostScript® format is your only choice.
+ So if you want scalable pictures, the PostScript format is your only choice.
  Another little advantage of letting LaTeX typeset the font is that the
  same font will appear in your figures as in your text, which looks a little
  nicer.
 \layout Section
 
 Tables
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:tables}
 
 \end_inset 
+
+
+\layout Standard
 
 LyX has powerful table support, but LaTeX can do many more things with tables
  than LyX is currently capable of, so you might want to look at a good LaTeX
@@ -13675,7 +14260,7 @@ not
 \emph on 
 only
 \emph default 
- for PostScript® output.
+ for PostScript output.
  So, if you want to preview them, use 
 \family sans 
 \bar under 
@@ -15523,12 +16108,12 @@ A table can also be placed in a float, as described below, which will allow
 \layout Subsection
 
 Table Floats
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:table float}
 
 \end_inset 
+
+
+\layout Standard
 
 Outside of a float, the table will be positioned exactly where it is placed
  in the document.
@@ -15791,12 +16376,12 @@ c & d\end{array}\right]$
 \layout Section
 
 Table of Contents and other Listings
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:toc}
 
 \end_inset 
+
+
+\layout Standard
 
 One of the really nice features of LaTeX is the ease with which it lets
  you create various 
@@ -15933,12 +16518,12 @@ Contents
 \layout Subsection
 
 List of Figures, Tables and Algorithms
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:ListsOf}
 
 \end_inset 
+
+
+\layout Standard
 
 Table, figure, and algorithm lists are very much like the table of contents.
  You can insert them from the 
@@ -16478,13 +17063,13 @@ functions
 .
 \layout Subsection
 
-The Math Panel 
-\layout Standard
-
-
+The Math Panel
 \begin_inset LatexCommand \label{sec:math-panel}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -16646,14 +17231,14 @@ Space
 \layout Subsection
 
 Math functions
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:math-functions}
 
 \end_inset 
 
- The math panel contains a number of 
+
+\layout Standard
+
+The math panel contains a number of 
 \begin_inset Quotes eld
 \end_inset 
 
@@ -17630,12 +18215,12 @@ If you're trying to enter a LaTeX
 \layout Section
 
 Grouping
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:Grouping}
 
 \end_inset 
+
+
+\layout Standard
 
 You may need to group a set of symbols.
  In LaTeX, for example, the typesetting of 
@@ -17651,7 +18236,7 @@ x^{y^z}
 
 
 \begin_inset Formula \[
-{x^{y}}^{z}\mathrm{differs\, from}x^{{y^{z}}}\]
+{x^{y}}^{z}\quad\mathrm{differs\; from}\quad x^{{y^{z}}}\]
 
 \end_inset 
 
@@ -17838,12 +18423,12 @@ extra
 \layout Section
 
 Equation Numbering and Labels
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:math-label}
 
 \end_inset 
+
+
+\layout Standard
 
 Equation numbering is very easy in LyX.
  All it takes to change a displayed equation like: 
@@ -18080,7 +18665,9 @@ macrowarg =
  
 \layout Standard
 
-When exported to LaTeX, a macro definition will produce the command 
+When exported to LaTeX, a macro definition will produce the command
+\newline 
+
 \family typewriter 
 
 \backslash 
@@ -18088,16 +18675,22 @@ newcommand{
 \backslash 
 macrowarg}[1]{2+
 \backslash 
-sqrt{#1}}.
+sqrt{#1}}
 \layout Subsection
 
-Directions on using macros
-\layout Subsubsection
-
-How to create them
+How to create macros
 \layout Standard
 
 To create a macro definition box use this syntax in the minibuffer:
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Macro names mustn't contain numbers!
+\end_inset 
+
+
 \layout Standard
 
 
@@ -18145,13 +18738,12 @@ math-macro macrowarg 1
 \layout Standard
 
 To insert an argument mark (only inside a macro definition box) simply type
+\newline 
+
 \family typewriter 
- #<number>
+#<number>
 \family default 
  or use 
-\layout Standard
-
-
 \family typewriter 
 math-macro-arg <number>
 \layout Standard
@@ -18180,9 +18772,9 @@ math-macro-arg 1
 You can use no more than 9 arguments, numbered from 1 to 9.
  An argument can be repeated inside the macro definition box, but of course
  can be edited only once.
-\layout Subsubsection
+\layout Subsection
 
-How to navigate
+How to navigate in macros
 \layout Description
 
 With\SpecialChar ~
@@ -18222,7 +18814,7 @@ You can use various typefaces in a formula.
 \align center 
 
 \begin_inset  Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features>
 <column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
 <column alignment="center" valignment="top" rightline="true" width="0pt">
@@ -18412,7 +19004,7 @@ mathfrak
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="true">
+<row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -18445,6 +19037,32 @@ mathcal
 \end_inset 
 </cell>
 </row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\begin_inset Formula $\mathsf{SansSerif}$
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\backslash 
+
+\family typewriter 
+mathsf
+\end_inset 
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset 
@@ -18473,7 +19091,7 @@ not
  change the selection, but insert a new nested level with the new typeface.
 \layout Standard
 
-It is possible (in AMS LaTeX) to embolden (not italicize) numbers and special
+It is possible (in AMS-LaTeX) to embolden (not italicize) numbers and special
  symbols.
  However, LyX does not yet support this in WYSIWYM manner\SpecialChar \@.
  It will print
@@ -18544,7 +19162,7 @@ textrm{}
 \backslash 
 mbox
 \family default 
- (or AMS LaTeX's 
+ (or AMS-LaTeX's 
 \backslash 
 
 \family typewriter 
@@ -18709,7 +19327,7 @@ This applies to math fonts in titles, etc.
  as well.
 \layout Section
 
-AMS LaTeX
+AMS-LaTeX
 \layout Standard
 
 The American Mathematical Society (AMS) provide a LaTeX packages that are
@@ -18717,7 +19335,7 @@ The American Mathematical Society (AMS) provide a LaTeX packages that are
  LyX includes some support for these packages.
 \layout Subsection
 
-Enabling AMS Support
+Enabling AMS-Support
 \layout Standard
 
 In the 
@@ -18739,14 +19357,14 @@ AMS\SpecialChar ~
 Math
 \family default 
 .
- If selected, this will include the AMS package in the document, and make
+ If selected, this will include the AMS-package in the document, and make
  the facilities available.
 \layout Subsection
 
-AMS Symbols
+AMS-Symbols
 \layout Standard
 
-The AMS LaTeX packages add support for some mathematical symbols that are
+The AMS-LaTeX packages add support for some mathematical symbols that are
  not accessible from plain LaTeX (or LyX), but are fairly common in mathematical
  typesetting, such as the old-German Fraktur font and the stylized 
 \begin_inset Quotes eld
@@ -18757,17 +19375,17 @@ blackboard bold
 \end_inset 
 
  fonts commonly used to denote the real or complex numbers, or the integers.
- Once activated, all AMS LaTeX symbols and environments are available.
+ Once activated, all AMS-LaTeX symbols and environments are available.
  You will run into trouble if you include these packages from the preamble,
  since LyX now defines a few of the macros used in these packages on its
  own.
- The AMS layouts include these packages automatically.
+ The AMS-layouts include these packages automatically.
 \layout Subsection
 
-AMS Formula Types
+AMS-Formula Types
 \layout Standard
 
-AMS provide a selection of different formula types.
+AMS-LaTeX provides a selection of different formula types.
  LyX allows you to choose between 
 \family typewriter 
 align
@@ -18789,7 +19407,8 @@ gather
 multline
 \family default 
 .
- Refer to the AMS documentation for the differences between these formula
+ Refer to the AMS-documenta\SpecialChar \-
+tion for the differences between these formula
  types.
 \layout Chapter
 
@@ -18797,14 +19416,14 @@ More Tools
 \layout Section
 
 Cross-References
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:crossref}
 
 \end_inset 
 
- Those of you reading this manual online will see a grey box with text in
+
+\layout Standard
+
+Those of you reading this manual online will see a grey box with text in
  it, right before the beginning of this sentence.
  This is a 
 \family sans 
@@ -18914,9 +19533,17 @@ Reference
 
 
 \family typewriter 
-LaTeX Warning: Reference `X' on page Y undefined on input line Z.
+LaTeX Warning:
+\family default 
+ 
+\family typewriter 
+Reference `X' on page Y undefined on input line Z
 \newline 
-LaTeX Warning: There were undefined references.
+LaTeX Warning:
+\family default 
+ 
+\family typewriter 
+There were undefined references
 \layout Standard
 
 You'll also see two question marks in the output instead of the reference.
@@ -19099,6 +19726,32 @@ rl:
 \end_inset 
 
 .
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+
+\series bold 
+Important note
+\series default 
+: When you use the following characters: "%", "#", "^", you have to write
+ them with a backslash before, e.g.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\backslash 
+#
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ URLs mustn't end with a backslash!
+\end_inset 
+
+
 \layout Standard
 
 If you would like to associate some definite phrase with the URL, enter
@@ -19113,6 +19766,8 @@ ame
  the URL.
  For example, I might say that you can find all things related to LaTeX
  at 
+\newline 
+
 \begin_inset LatexCommand \url[CTAN]{http://ctan.tug.org}
 
 \end_inset 
@@ -19217,16 +19872,135 @@ optional
 The title of this section is a good example of using this feature.
 \layout Section
 
+Previewing snippets of your document
+\layout Standard
+
+LyX allows you to generate previews of sections of your document on the
+ fly so you can see how they'll look in the final document without having
+ to break your train of thought with 
+\family sans 
+\bar under 
+V
+\bar default 
+iew\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+.
+ If you'd like to see your math formulae typeset by LaTeX then install the
+ necessary software (see below) and select the 
+\family sans 
+Instant 
+\bar under 
+p
+\bar default 
+review
+\family default 
+ check box in the
+\family sans 
+ 
+\bar under 
+E
+\bar default 
+dit\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+references
+\family default 
+ dialog.
+ (It can be found in the 
+\family sans 
+Look\SpecialChar ~
+and\SpecialChar ~
+feel\SpecialChar \menuseparator
+Graphics
+\family default 
+ pane in the Qt frontend and the 
+\family sans 
+Look\SpecialChar ~
+&\SpecialChar ~
+Feel\SpecialChar \menuseparator
+Misc
+\family default 
+ tab in the XForms frontend.) Previews are generated when you load a document
+ into LyX and when you finish editing an inset.
+ Previews of an already loaded document are 
+\emph on 
+not
+\emph default 
+ generated just by selecting the 
+\family sans 
+Instant 
+\bar under 
+p
+\bar default 
+review
+\family default 
+ check box.
+\layout Standard
+
+LyX will generate previews of math insets.
+ It will also generate previews of include insets if you select the 
+\family sans 
+\bar under 
+S
+\bar default 
+how\SpecialChar ~
+preview
+\family default 
+ check box in the inset's dialog.
+ This latter is useful if you wish to generate a preview of a LaTeX figure,
+ for example.
+ Coming in version 1.4 are previews of the external inset also.
+\layout Standard
+
+To get previews working, you'll need some additional software.
+ First, you'll need the preview.sty LaTeX package.
+ Find it on your local CTAN mirror at 
+\newline 
+
+\family typewriter 
+CTAN/support/preview-latex/
+\family default 
+.
+ Thereafter, you'll need the usual tools: 
+\family typewriter 
+latex
+\family default 
+, 
+\family typewriter 
+dvips
+\family default 
+ and 
+\family typewriter 
+gs
+\family default 
+.Finally, you'll obtain prettier results if you install 
+\family typewriter 
+pnmcrop
+\family default 
+from the 
+\family typewriter 
+netpbm
+\family default 
+ package.
+\layout Section
+
 Spacing, pagination and line breaks
 \layout Subsection
 
 Extra Horizontal Space
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:hspace}
 
 \end_inset 
+
+
+\layout Standard
 
 
 \family sans 
@@ -19348,7 +20122,7 @@ HFill
 List
 \family default 
  environment.
-\layout List
+\layout Labeling
 \labelwidthstring MMMMMMM
 
 one
@@ -19403,12 +20177,12 @@ multi-margin
 \layout Subsection
 
 Extra Vertical Space
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:vertspace}
 
 \end_inset 
+
+
+\layout Standard
 
 To add extra vertical space above or below a paragraph, use 
 \family sans 
@@ -19555,12 +20329,12 @@ In some paragraph environments, the default is something other than justified
 \layout Subsection
 
 Forcing Page Breaks
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:pagebreak}
 
 \end_inset 
+
+
+\layout Standard
 
 If you don't like the way LaTeX does the page breaks in your document, you
  can force a pagebreak where you want one.
@@ -19628,12 +20402,12 @@ Floats
 \layout Subsection
 
 Protected blanks
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:protblank-lbreak-horline}
 
 \end_inset 
+
+
+\layout Standard
 
 The protected blank: It is used to tell LyX (and LaTeX) not to break the
  line at that point.
@@ -19746,12 +20520,12 @@ good at linebreaking\SpecialChar \ldots{}
 \layout Section
 
 Spellchecking
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:spellchecking}
 
 \end_inset 
+
+
+\layout Standard
 
 LyX itself has no built-in spell checker.
  Rather it uses the external 
@@ -19800,12 +20574,12 @@ Spellchecker
 \layout Subsection
 
 Spellchecker Options
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:spell_opt}
 
 \end_inset 
+
+
+\layout Standard
 
 The following options can be set in the 
 \family sans 
@@ -20025,7 +20799,7 @@ S
 pellchecker\SpecialChar ~
 Options
 \family default 
- dialog has some additional options which are fairly self-explanatory:
+ dialog has some additional options which are self-explanatory:
 \layout Itemize
 
 
@@ -20037,7 +20811,9 @@ ccept compound words
 \family default 
 
 \newline 
-Prevent the spellchecker from complaining about compounded words like 
+Prevent the spellchecker from complaining about compounded words like
+\newline 
+
 \begin_inset Quotes eld
 \end_inset 
 
@@ -20149,12 +20925,12 @@ Customization
 \layout Subsection
 
 Language Options
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:langlay}
 
 \end_inset 
+
+
+\layout Standard
 
 The 
 \family sans 
@@ -20234,12 +21010,12 @@ Latin1
 \layout Subsection
 
 Keyboard mapping configuration
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:optkey}
 
 \end_inset 
+
+
+\layout Standard
 
 The preferences dialog allows you to choose up to two keyboard mappings.
  This allows you to choose the keymap of your choice for your U.S.-style keyboard.
@@ -20248,23 +21024,165 @@ The preferences dialog allows you to choose up to two keyboard mappings.
 \layout Subsection
 
 Character Tables
-\layout Standard
-
-
 \begin_inset LatexCommand \label{sec:keytab}
 
 \end_inset 
 
-Here is a table with all the characters in the 
+
+\layout Standard
+
+Table\SpecialChar ~
+
+\begin_inset LatexCommand \ref{cap:The-latin1-character}
+
+\end_inset 
+
+ shows the 
 \family typewriter 
 Latin1
 \family default 
  character set.
- You should be able to enter all these characters directly from the keyboard
- without using too many modifier keys (if your keyboard is set up correctly,
- that is).
+ You should be able to enter the characters in the first eight columns directly
+ from the keyboard.
 \layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+There are a few things you need to know about this table.
+ This manual is set up --- by hand, mind you --- to print all of these character
+s.
+ That ain't the default.
+ Nowhere near, in fact.
+ Here are some of the details you'll need to bear in mind when using characters
+ from the 
+\family typewriter 
+Latin1
+\family default 
+ character set:
+\layout Itemize
+
+The characters at entries A2, A4, A5, A6 and AD -- the cent, the yen, the
+ generic-currency-symbol, the broken vertical bar and the short dash are
+ just plain missing in the default encodings.
+ We don't know where they are or why this is the case.
+\layout Itemize
+
+Even if you've selected 
+\family sans 
+latin1
+\family default 
+ in the 
+\family sans 
+\bar under 
+D
+\bar default 
+ocument\SpecialChar \menuseparator
+
+\bar under 
+S
+\bar default 
+ettings
+\family default 
+ dialog, users who have only the 
+\family typewriter 
+T1
+\family default 
+-fonts for LaTeX [or who have the 
+\family typewriter 
+T1
+\family default 
+-fonts but aren't using them] will still miss a few characters: D0, F0,
+ DE, FE, AB, and BB -- the uppercase and lowercase eth and thorn, and the
+ french quotes won't show up.
+\layout Itemize
+
+Users of 
+\family typewriter 
+T1
+\family default 
+-fonts can, however, get the french quotes [characters AB and BB] if they
+ include the either the package 
+\family typewriter 
+umlaute.sty
+\family default 
+ or 
+\family typewriter 
+german.sty
+\family default 
+ in their documents.
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+This only holds when you want to input these quotes by yourself.
+ The automatic quote feature described in Section 
+\begin_inset LatexCommand \ref{sec:quotes}
+
+\end_inset 
+
+, will generate automatically LaTeX code adapted to available fonts and
+ packages.
+\end_inset 
+
+
+\begin_inset Note
+collapsed false
+
+\layout Standard
+
+The characters of the following table, which are inserted as commands, could
+ not be inserted directly with the keyboard, because the standard encoding
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+T1
+\begin_inset Quotes erd
+\end_inset 
+
+ doesn't know them.
+ To let LaTeX understand the commands, the package 
+\series bold 
+textcomp
+\series default 
+ needs to be loaded in the peamble with the line
+\layout Standard
+
+
+\series bold 
+
+\backslash 
+usepackage{textcomp}
+\layout Standard
+
+The package 
+\series bold 
+textcomp
+\series default 
+ is available on every LaTeX system.
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Float table
+wide false
+collapsed false
+
+\layout Caption
+
+
+\begin_inset LatexCommand \label{cap:The-latin1-character}
+
+\end_inset 
+
+The 
+\family typewriter 
+latin1
+\family default 
+ character set
+\layout Standard
+\align center 
 
 \begin_inset  Tabular
 <lyxtabular version="3" rows="17" columns="17">
@@ -21179,14 +22097,25 @@ r
 \layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\emph off 
-\bar no 
-\noun off 
-\color none
-¢
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textcent
+\end_inset 
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+character ¢ 
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -21657,14 +22586,25 @@ t
 \layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\emph off 
-\bar no 
-\noun off 
-\color none
-¤
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textcurrency
+\end_inset 
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+character ¤ 
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -21896,14 +22836,25 @@ u
 \layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\emph off 
-\bar no 
-\noun off 
-\color none
-¥
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textyen
+\end_inset 
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+character ¥ 
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -22135,14 +23086,25 @@ v
 \layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\emph off 
-\bar no 
-\noun off 
-\color none
-¦
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textbrokenbar
+\end_inset 
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+character ¦ 
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -23810,14 +24772,25 @@ m
 \layout Standard
 
 
-\family roman 
-\series medium 
-\shape up 
-\emph off 
-\bar no 
-\noun off 
-\color none
-­
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+textendash
+\end_inset 
+
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+character ­ 
+\end_inset 
+
+
 \end_inset 
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -24375,83 +25348,6 @@ o
 \end_inset 
 
 
-\layout Standard
-
-There are a few things you need to know about this table.
- This manual is set up --- by hand, mind you --- to print all of these character
-s.
- That ain't the default.
- Nowhere near, in fact.
- Here are some of the details you'll need to bear in mind when using characters
- from the 
-\family typewriter 
-Latin1
-\family default 
- character set:
-\layout Itemize
-
-The characters at entries A2, A4, A5, A6 and AD -- the cent, the yen, the
- generic-currency-symbol, the broken vertical bar, and the short dash --
- are just plain missing in the default encodings.
- We don't know where they are or why this is the case.
-\layout Itemize
-
-Even if you've selected 
-\family sans 
-latin1
-\family default 
- in the 
-\family sans 
-\bar under 
-D
-\bar default 
-ocument\SpecialChar \menuseparator
-
-\bar under 
-S
-\bar default 
-ettings
-\family default 
- dialog, users who have only the 
-\family typewriter 
-OT1
-\family default 
--fonts for LaTeX [or who have the 
-\family typewriter 
-T1
-\family default 
--fonts but aren't using them] will still be missing a few characters: D0,
- F0, DE, FE, AB, and BB -- the uppercase and lowercase eth and thorn, and
- the french quotes -- won't show up.
-\layout Itemize
-
-Users of 
-\family typewriter 
-OT1
-\family default 
--fonts can, however, get the french quotes [characters AB and BB] if they
- include the either the package 
-\family typewriter 
-umlaute.sty
-\family default 
- or 
-\family typewriter 
-german.sty
-\family default 
- in their documents.
-\begin_inset Foot
-collapsed true
-
-\layout Standard
-
-This only holds when you want to input these quotes by yourself.
- The automatic quote feature described in Section 
-\begin_inset LatexCommand \ref{sec:quotes}
-
-\end_inset 
-
-, will generate automatically LaTeX code adapted to available fonts and
- packages.
 \end_inset 
 
 
@@ -24945,13 +25841,33 @@ After fall of 1997, the LyX Team as a whole took over maintenance of the
 \layout Bibliography
 \bibitem {lyxcredit}
 
-The LyX source tree.
- File: CREDITS.
+The LyX Team: 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+href{http://www.lyx.org/cgi-bin/viewcvs.cgi/*checkout*/lyx-devel/lib/CREDITS?rev=HEAD&content-type=text/plain}{
+\end_inset 
+
+
+\emph on 
+CREDITS
+\emph default 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+}
+\end_inset 
+
+
 \layout Bibliography
 \bibitem {latexbook}
 
-Leslie Lamport.
- 
+Leslie Lamport: 
 \emph on 
 LaTeX: A Document Preparation System.
  
@@ -24969,8 +25885,9 @@ Addison-Wesley, 1994
 \layout Bibliography
 \bibitem {latexguide}
 
-A Guide to LaTeX2e, Kopka and Daly.
- 
+Kopka and Daly: 
+\emph on 
+A Guide to LaTeX2e
 \layout Bibliography
 \bibitem {texbook}
 
