@@ -1,3 +1,9 @@
+2004-03-29  Angus Leeming  <leeming@lyx.org>
+
+	* boost/format/internals.hpp: change the type of
+	format_item::truncate_ from 'int' to 'std::streamsize', thereby
+	fixing a run-time error when using the library on a 64-bit machine.
+
 2004-02-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* update boost to version 1.31.0
