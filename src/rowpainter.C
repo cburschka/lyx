@@ -488,13 +488,19 @@ void RowPainter::paintChangeBar()
 
 void RowPainter::paintAppendix()
 {
+	if (!par_.params().appendix())
+		return;
+
 	// FIXME: can be just width_ ?
 	int const ww = bv_.workWidth();
 
-	if (par_.params().appendix()) {
-		pain_.line(1, yo_, 1, yo_ + row_.height(), LColor::appendixline);
-		pain_.line(ww - 2, yo_, ww - 2, yo_ + row_.height(), LColor::appendixline);
-	}
+	int y = yo_;
+
+	if (par_.params().startOfAppendix())
+		y += 2 * defaultRowHeight();
+
+	pain_.line(1, y, 1, yo_ + row_.height(), LColor::appendix);
+	pain_.line(ww - 2, y, ww - 2, yo_ + row_.height(), LColor::appendix);
 }
 
 
@@ -641,16 +647,39 @@ int RowPainter::paintPageBreak(string const & label, int y)
 }
 
 
+int RowPainter::paintAppendixStart(int y)
+{
+	LyXFont pb_font;
+	pb_font.setColor(LColor::appendix).decSize();
+
+	string const label = _("Appendix");
+	int w = 0;
+	int a = 0;
+	int d = 0;
+	font_metrics::rectText(label, pb_font, w, a, d);
+
+	int const text_start = xo_ + ((width_ - w) / 2);
+	int const text_end = text_start + w;
+
+	pain_.rectText(text_start, y + d, label, pb_font);
+
+	pain_.line(xo_ + 1, y, text_start, y, LColor::appendix);
+	pain_.line(text_end, y, xo_ + width_ - 2, y, LColor::appendix);
+
+	return 3 * defaultRowHeight();
+}
+
+
 void RowPainter::paintFirst()
 {
 	ParagraphParameters const & parparams = par_.params();
 
+	int y_top = 0;
+
 	// start of appendix?
 	if (parparams.startOfAppendix()) {
-		pain_.line(1, yo_, width_ - 2, yo_, LColor::appendixline);
+		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
 	}
-
-	int y_top = 0;
 
 	// the top margin
 	if (!row_.previous() && text_.isTopLevel())

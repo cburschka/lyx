@@ -50,6 +50,7 @@ private:
 	void paintArabicComposeChar(lyx::pos_type & vpos);
 	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
 	int paintPageBreak(string const & label, int y);
+	int paintAppendixStart(int y);
 	int paintLengthMarker(string const & prefix, VSpace const & vsp, int start);
 	/// returns true when CHANGED_IN_DRAW
 	bool paintText();

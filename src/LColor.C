@@ -79,7 +79,7 @@ LColor::LColor()
 	{ insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
 	{ error, N_("LaTeX error"), "error", "Red", "error" },
 	{ eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
-	{ appendixline, N_("appendix line"), "appendixline", "Brown", "appendixline" },
+	{ appendix, N_("appendix marker"), "appendix", "Brown", "appendix" },
 	{ changebar, N_("change bar"), "changebar", "Blue", "changebar" },
 	{ strikeout, N_("Deleted text"), "strikeout", "Red", "strikeout" },
 	{ newtext, N_("Added text"), "newtext", "Blue", "newtext" },

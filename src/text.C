@@ -1070,6 +1070,9 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 		if (firstpar->params().pagebreakTop())
 			maxasc += 3 * defaultRowHeight();
 
+		if (firstpar->params().startOfAppendix())
+			maxasc += 3 * defaultRowHeight();
+
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
 		if (layout->labeltype == LABEL_COUNTER_CHAPTER

@@ -131,8 +131,8 @@ public:
 		eolmarker,
 		/// Added space colour
 		added_space,
-		/// Appendix line color
-		appendixline,
+		/// Appendix marker color
+		appendix,
 		/// changebar color
 		changebar,
 		/// strike-out color
