@@ -1,6 +1,7 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* inset.h: add the InsetOld::Code wrapper class InsetOld_code.
+	* insetbase.h: add the dispatch_result wrapper class DispatchResult.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 

@@ -1,9 +1,14 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* cursor.[Ch]: use the dispatch_result wrapper class DispatchResult to remove
+	#include "insets/insetbase.h" from cursor.h.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* paragraph.[Ch] (insetAllowed): use the InsetOld::Code wrapper class
 	InsetOld_code to remove #include "inset.h".
 
-	* iterators.C: add #include "inset.h"
+	* iterators.C: add #include "insets/inset.h"
 
 2003-09-16  Martin Vermeer  <martin.vermeer@hut.fi>
 

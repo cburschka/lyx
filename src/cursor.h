@@ -17,10 +17,11 @@
 
 #include "support/types.h"
 
-#include "insets/insetbase.h"
-
 #include <vector>
 
+class BufferView;
+class DispatchResult;
+class FuncRequest;
 class LyXText;
 
 
@@ -47,7 +48,7 @@ public:
 	///
 	Cursor() {}
 	///
-	dispatch_result dispatch(FuncRequest const & cmd);
+	DispatchResult dispatch(FuncRequest const & cmd);
 public:
 	/// mainly used as stack, bnut wee need random access
 	std::vector<CursorItem> data_;

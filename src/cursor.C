@@ -23,7 +23,7 @@
 using std::vector;
 
 
-dispatch_result Cursor::dispatch(FuncRequest const &)
+DispatchResult Cursor::dispatch(FuncRequest const &)
 {
 	for (int i = data_.size() - 1; i >= 0; --i) {
 		lyxerr << "trying to dispatch to " << data_[i].text_ << std::endl;

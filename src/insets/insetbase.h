@@ -50,6 +50,18 @@ enum dispatch_result {
 	DISPATCHED_POP
 };
 
+/** \c DispatchResult is a wrapper for dispatch_result.
+ *  It can be forward-declared and passed as a function argument without
+ *  having to expose insetbase.h.
+ */
+class DispatchResult {
+	dispatch_result val_;
+public:
+	DispatchResult(dispatch_result val) : val_(val) {}
+	operator dispatch_result() const{ return val_; }
+};
+
+
 
 /// Common base class to all insets
 class InsetBase {
