@@ -504,7 +504,7 @@ void MathGridInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-string MathGridInset::eolString(row_type row) const
+string MathGridInset::eolString(row_type row, bool fragile) const
 {
 	string eol;
 
@@ -523,7 +523,7 @@ string MathGridInset::eolString(row_type row) const
 	if (eol.empty() && row + 1 == nrows())
 		return string();
 
-	return "\\\\" + eol + '\n';
+	return (fragile ? "\\protect\\\\" : "\\\\") + eol + '\n';
 }
 
 
@@ -858,7 +858,7 @@ void MathGridInset::write(WriteStream & os) const
 		os << verboseHLine(rowinfo_[row].lines_);
 		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << eocString(col);
-		os << eolString(row);
+		os << eolString(row, os.fragile());
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
 	if (!s.empty() && s != " ") {
