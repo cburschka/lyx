@@ -1,3 +1,32 @@
+2002-04-16  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (insetButtonPress): 
+	(insetUnlock): call a redraw on unlocking the cell inset.
+
+	* insettext.C (insetButtonPress): same as below.
+	(lockInset): new function to set initial values when inset should
+	be locked.
+	(insetButtonPress): use above function.
+	(insetUnlock): don't force a repaint only set the updateStatus. The
+	outside world should repaint if it thinks it should be done!
+
+	* insettabular.C (insetButtonPress): init values if not set as locked
+	as we are locked if someone presses on us and don't call the edit()
+	call of the InsetText to lock it do it as BufferView does it!
+
+	* inset.h (insetInInsetY): make func const and return an int.
+	* insettext.C:
+	* insettabular.C:
+	* insetcollapsable.C: adapt the above changed function.
+
+2002-04-15  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (getCursorPos): return relative position as to be able
+	to give them directly to the edit() call.
+	(edit): we have to set also x_fix as it is not set inside the
+	setCursorFromCoordinates call!
+	(insetMotionNotify): ditto.
+
 2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetbib.C (getKeys): strip leading '\t's from the line too.

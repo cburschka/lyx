@@ -252,7 +252,7 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 		if (!bv->lockInset(this))
 			return;
 		if (yp <= button_bottom_y) {
-			inset.edit(bv);
+			inset.edit(bv, xp, 0, button);
 		} else {
 			LyXFont font(LyXFont::ALL_SANE);
 			int yy = ascent(bv, font) + yp -
@@ -481,7 +481,7 @@ bool InsetCollapsable::updateInsetInInset(BufferView * bv, Inset *in)
 }
 
 
-unsigned int InsetCollapsable::insetInInsetY()
+int InsetCollapsable::insetInInsetY() const
 {
 	return inset.insetInInsetY() - (top_baseline - inset.y());
 }

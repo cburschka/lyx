@@ -63,6 +63,10 @@ public:
 	void row(Row * r);
 	///
 	Row * row() const;
+	///
+	void irow(Row * r);
+	///
+	Row * irow() const;
 private:
 	/// The paragraph the cursor is in.
 	Paragraph * par_;
@@ -84,6 +88,9 @@ private:
 	int iy_;
 	///
 	Row * row_;
+	/// the row of the position before the inset when we put
+	/// the cursor on the end of the row before, otherwise equal to row.
+	Row * irow_;
 };
 
 ///

@@ -117,7 +117,7 @@ public:
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	unsigned int insetInInsetY();
+	int insetInInsetY() const;
 	///
 	UpdatableInset * getLockingInset() const;
 	///

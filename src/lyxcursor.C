@@ -127,3 +127,15 @@ Row * LyXCursor::row() const
 {
 	return row_;
 }
+
+
+void LyXCursor::irow(Row * r)
+{
+	irow_ = r;
+}
+
+
+Row * LyXCursor::irow() const
+{
+	return irow_;
+}

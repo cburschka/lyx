@@ -675,9 +675,11 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	if (!checkAndActivateInset(bv, x, tmp_y, button))
+	if (!checkAndActivateInset(bv, x, tmp_y, button)) {
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 					    y + insetAscent);
+		lt->cursor.x_fix(lt->cursor.x());
+	}
 	lt->clearSelection();
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
@@ -756,15 +758,21 @@ void InsetText::insetUnlock(BufferView * bv)
 	if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
+		updateLocal(bv, CURSOR_PAR, false);
 	}
 	hideInsetCursor(bv);
 	no_selection = true;
 	locked = false;
 	int code;
+#if 0
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|CLEAR_FRAME;
 	else
 		code = CURSOR;
+#else
+	if (drawFrame_ == LOCKED)
+		code = CLEAR_FRAME;
+#endif
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -786,8 +794,46 @@ void InsetText::insetUnlock(BufferView * bv)
 	}
 	if (clear)
 		lt = 0;
+#if 0
 	updateLocal(bv, code, false);
+#else
+	setUpdateStatus(bv, code);
+#endif
 }
+
+
+void InsetText::lockInset(BufferView * bv)
+{
+	locked = true;
+	the_locking_inset = 0;
+	inset_pos = inset_x = inset_y = 0;
+	inset_boundary = false;
+	inset_par = 0;
+	old_par = 0;
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	lt->setCursor(bv, par, 0);
+	lt->clearSelection();
+	finishUndo();
+	// If the inset is empty set the language of the current font to the
+	// language to the surronding text (if different).
+	if (par->size() == 0 && !par->next() &&
+		bv->getParentLanguage(this) != lt->current_font.language()) {
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(bv->getParentLanguage(this));
+		setFont(bv, font, false);
+	}
+	if (clear)
+		lt = 0;
+	int code = CURSOR;
+	if (drawFrame_ == LOCKED)
+		code = CURSOR|DRAW_FRAME;
+	setUpdateStatus(bv, code);
+}
+
 
 void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 {
@@ -931,6 +977,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 	// use this to check mouse motion for selection!
 	mouse_x = x;
 	mouse_y = y;
+
+	if (!locked)
+		lockInset(bv);
 
 	int tmp_x = x - drawTextXOffset;
 	int tmp_y = y + insetAscent - getLyXText(bv)->first_y;
@@ -1082,6 +1131,7 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 	hideInsetCursor(bv);
 	LyXCursor cur = lt->cursor;
 	lt->setCursorFromCoordinates(bv, x - drawTextXOffset, y + insetAscent);
+	lt->cursor.x_fix(lt->cursor.x());
 	if (cur == lt->cursor) {
 		if (clear)
 			lt = 0;
@@ -1700,19 +1750,18 @@ int InsetText::beginningOfMainBody(Buffer const * buf, Paragraph * p) const
 }
 
 
-void InsetText::getCursorPos(BufferView * bv,
-			     int & x, int & y) const
+void InsetText::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	if (the_locking_inset) {
 		the_locking_inset->getCursorPos(bv, x, y);
 		return;
 	}
-	x = cx(bv);
-	y = cy(bv);
+	x = cx(bv) - top_x - TEXT_TO_INSET_OFFSET;
+	y = cy(bv) - TEXT_TO_INSET_OFFSET;
 }
 
 
-unsigned int InsetText::insetInInsetY()
+int InsetText::insetInInsetY() const
 {
 	if (!the_locking_inset)
 		return 0;
@@ -1754,7 +1803,7 @@ void InsetText::showInsetCursor(BufferView * bv, bool show)
 		int const asc = lyxfont::maxAscent(font);
 		int const desc = lyxfont::maxDescent(font);
 
-		bv->fitLockedInsetCursor(cx(bv), ciy(bv), asc, desc);
+		bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 		if (show)
 			bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 		setCursorVisible(true);

@@ -598,6 +598,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 	if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
+		updateLocal(bv, CELL, false);
 	}
 	hideInsetCursor(bv);
 	oldcell = -1;
@@ -729,7 +730,7 @@ bool InsetTabular::updateInsetInInset(BufferView * bv, Inset * inset)
 }
 
 
-unsigned int InsetTabular::insetInInsetY()
+int InsetTabular::insetInInsetY() const
 {
 	if (!the_locking_inset)
 		return 0;
@@ -776,6 +777,12 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 	int const orow = actrow;
 
 	hideInsetCursor(bv);
+	if (!locked) {
+		locked = true;
+		the_locking_inset = 0;
+		inset_x = 0;
+		inset_y = 0;
+	}
 	setPos(bv, x, y);
 	if (actrow != orow)
 		updateLocal(bv, NONE, false);
@@ -801,20 +808,20 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		return;
 	} else if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
+		the_locking_inset = 0;
+		updateLocal(bv, CELL, false);
 	}
-	the_locking_inset = 0;
 	if (button == 2) {
 		localDispatch(bv, LFUN_PASTESELECTION, "paragraph");
 		return;
 	}
 	if (inset_hit && bv->theLockingInset()) {
-		// only activate the Inset so that no internal inset is hit
-		// by this call. It should be only hit by the insetButtonPress call.
-		if (activateCellInsetAbs(bv, 0, 0, 0))
-			the_locking_inset->insetButtonPress(bv,
-							    x - inset_x,
-							    y - inset_y,
-							    button);
+		if (!bv->lockInset(static_cast<UpdatableInset*>(tabular->GetCellInset(actcell)))) {
+			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+			return;
+		}
+		the_locking_inset->insetButtonPress(
+			bv, x - inset_x, y - inset_y, button);
 		return;
 	}
 	showInsetCursor(bv);

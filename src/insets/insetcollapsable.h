@@ -87,7 +87,7 @@ public:
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	unsigned int insetInInsetY();
+	int insetInInsetY() const;
 	///
 	bool insetButtonRelease(BufferView *, int, int, int);
 	///

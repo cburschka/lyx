@@ -885,6 +885,12 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (!keyseq.deleted())))
 		{
+			UpdatableInset * inset = owner->view()->theLockingInset();
+#if 1
+			int inset_x;
+			int dummy_y;
+			inset->getCursorPos(owner->view(), inset_x, dummy_y);
+#endif
 			if ((action == LFUN_UNKNOWN_ACTION)
 			    && argument.empty()) {
 				argument = keyseq.getiso();
@@ -896,7 +902,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			} else if (action == LFUN_REDO) {
 				owner->view()->menuRedo();
 				goto exit_with_message;
-			} else if (((result=owner->view()->theLockingInset()->
+			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
 				     localDispatch(owner->view(), action, argument)) ==
 				    UpdatableInset::DISPATCHED) ||
@@ -918,8 +924,16 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				}
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_UP) {
-				if (TEXT()->cursor.row()->previous()) {
+				if (TEXT()->cursor.irow()->previous()) {
+#if 1
+					TEXT()->setCursorFromCoordinates(
+						owner->view(), TEXT()->cursor.ix() + inset_x,
+						TEXT()->cursor.iy() -
+						TEXT()->cursor.irow()->baseline() - 1);
+					TEXT()->cursor.x_fix(TEXT()->cursor.x());
+#else
 					TEXT()->cursorUp(owner->view());
+#endif
 					moveCursorUpdate(true, false);
 					owner->showState();
 				} else {
@@ -927,10 +941,20 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				}
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_DOWN) {
-				if (TEXT()->cursor.row()->next())
+				if (TEXT()->cursor.irow()->next()) {
+#if 1
+					TEXT()->setCursorFromCoordinates(
+						owner->view(), TEXT()->cursor.ix() + inset_x,
+						TEXT()->cursor.iy() -
+						TEXT()->cursor.irow()->baseline() +
+						TEXT()->cursor.irow()->height() + 1);
+					TEXT()->cursor.x_fix(TEXT()->cursor.x());
+#else					
 					TEXT()->cursorDown(owner->view());
-				else
+#endif
+				} else {
 					TEXT()->cursorRight(owner->view());
+				}
 				moveCursorUpdate(true, false);
 				owner->showState();
 				goto exit_with_message;

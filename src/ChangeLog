@@ -1,3 +1,24 @@
+2002-04-16  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (setCursor): set also the irow().
+	(setCursorFromCoordinates): fixed to set the (i) cursor values right!
+	(cursorUp):
+	(cursorDown): support for locking an inset if the x_fix value goes
+	inside it. That way I can transverse insets too with cursor up/down.
+
+	* lyxrow.h: added irow helper function same as other (i) functions.
+
+	* BufferView_pimpl.C (cursorPrevious): 
+	(cursorNext): fixed for insets!
+
+2002-04-15  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (insetDimensions): use ix/iy values for inset
+	position otherwise it is wrong in some cases.
+
+	* lyxfunc.C (dispatch): fix FINISHED UP/DOWN to handle x position
+	inside the inset before the call.
+
 2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* buffer.[Ch] (getBibkeyList): make it const.

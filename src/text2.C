@@ -2064,6 +2064,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	int y = 0;
 	Row * row = getRow(par, pos, y);
 	Row * old_row = row;
+	cur.irow(row);
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
@@ -2262,19 +2263,28 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
-	cur.ix(x);
 	cur.y(y + row->baseline());
+	cur.row(row);
 	Inset * ins;
-	if (row->next() && cur.pos() &&
+	if (row->next() && row->next()->pos() == cur.pos() &&
+		cur.par() == row->next()->par() &&
 		cur.par()->getChar(cur.pos()) == Paragraph::META_INSET &&
 		(ins=cur.par()->getInset(cur.pos())) &&
 		(ins->needFullRow() || ins->display()))
 	{
+		// we enter here if we put the cursor on the end of the row before
+		// a inset which uses a full row and in that case we HAVE to calculate
+		// the right (i) values.
+		pos_type last = rowLastPrintable(row);
+		float x = getCursorX(bview, row->next(), cur.pos(), last, bound);
+		cur.ix(int(x));
 		cur.iy(y + row->height() + row->next()->baseline());
+		cur.irow(row->next());
 	} else {
 		cur.iy(cur.y());
+		cur.ix(cur.x());
+		cur.irow(row);
 	}
-	cur.row(row);
 	cur.boundary(bound);
 }
 
@@ -2311,16 +2321,41 @@ void LyXText::cursorRight(BufferView * bview, bool internal) const
 
 void LyXText::cursorUp(BufferView * bview) const
 {
+#if 1
+	int x = cursor.x_fix();
+	int y = cursor.y() - cursor.row()->baseline() - 1;
+	setCursorFromCoordinates(bview, x, y);
+	int y1 = cursor.iy() - first_y;
+	int y2 = y1;
+	Inset * inset_hit = bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
+	if (inset_hit && isHighlyEditableInset(inset_hit)) {
+		inset_hit->edit(bview, x, y - (y2 - y1), 0);
+	}
+#else
 	setCursorFromCoordinates(bview, cursor.x_fix(),
 				 cursor.y() - cursor.row()->baseline() - 1);
+#endif
 }
 
 
 void LyXText::cursorDown(BufferView * bview) const
 {
+#if 1
+	int x = cursor.x_fix();
+	int y = cursor.y() - cursor.row()->baseline() +
+		cursor.row()->height() + 1;
+	setCursorFromCoordinates(bview, x, y);
+	int y1 = cursor.iy() - first_y;
+	int y2 = y1;
+	Inset * inset_hit = bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
+	if (inset_hit && isHighlyEditableInset(inset_hit)) {
+		inset_hit->edit(bview, x, y - (y2 - y1), 0);
+	}
+#else
 	setCursorFromCoordinates(bview, cursor.x_fix(),
 				 cursor.y() - cursor.row()->baseline()
 				 + cursor.row()->height() + 1);
+#endif
 }
 
 

@@ -150,7 +150,7 @@ public:
 	///
 	void getCursorPos(BufferView *, int & x, int & y) const;
 	///
-	unsigned int insetInInsetY();
+	int insetInInsetY() const;
 	///
 	void toggleInsetCursor(BufferView *);
 	///
@@ -259,7 +259,9 @@ public:
 protected:
 	///
 	void updateLocal(BufferView *, int what, bool mark_dirty) const;
-	///
+	/// set parameters for an initial lock of this inset
+	void lockInset(BufferView *);
+	/// lock an inset inside this one
 	void lockInset(BufferView *, UpdatableInset *);
 	///
 	mutable int drawTextXOffset;

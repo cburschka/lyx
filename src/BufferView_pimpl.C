@@ -912,13 +912,13 @@ Box BufferView::Pimpl::insetDimensions(LyXText const & text,
 
 	int const width = inset.width(bv_, font);
 	int const inset_x = font.isVisibleRightToLeft()
-		? (cursor.x() - width) : cursor.x();
+		? (cursor.ix() - width) : cursor.ix();
 
 	return Box(
 		inset_x + inset.scroll(),
 		inset_x + width,
-		cursor.y() - inset.ascent(bv_, font),
-		cursor.y() + inset.descent(bv_, font));
+		cursor.iy() - inset.ascent(bv_, font),
+		cursor.iy() + inset.descent(bv_, font));
 }
 
 
@@ -1167,19 +1167,27 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 	int y = text->first_y;
 	Row * cursorrow = text->cursor.row();
 
-	text->setCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
+	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y);
 	finishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == text->cursor.row()))
 		text->cursorUp(bv_);
 
-	if (text->inset_owner ||
-	    text->cursor.row()->height() < workarea_.height())
-		screen_->draw(bv_->text, bv_,
+	if (text->inset_owner) {
+		int new_y = bv_->text->cursor.iy()
+			+ bv_->theLockingInset()->insetInInsetY()
+			+ y
+			+ text->cursor.row()->height()
+			- workarea_.height() + 1;
+
+		screen_->draw(bv_->text, bv_, new_y < 0 ? 0 : new_y);
+	} else if (text->cursor.row()->height() < workarea_.height()) {
+		screen_->draw(text, bv_,
 			      text->cursor.y()
 			      - text->cursor.row()->baseline()
 			      + text->cursor.row()->height()
 			      - workarea_.height() + 1);
+	}
 	updateScrollbar();
 }
 
@@ -1190,8 +1198,11 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 		return;
 
 	int y = text->first_y + workarea_.height();
-//	if (text->inset_owner)
-//		y += bv_->text->first;
+	if (text->inset_owner && !text->first_y) {
+		y -= (bv_->text->cursor.iy()
+			  - bv_->text->first_y
+			  + bv_->theLockingInset()->insetInInsetY());
+	}
 	text->getRowNearY(y);
 
 	Row * cursorrow = text->cursor.row();
@@ -1201,10 +1212,15 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	if ((cursorrow == bv_->text->cursor.row()))
 		text->cursorDown(bv_);
 
-	if (text->inset_owner ||
-	    text->cursor.row()->height() < workarea_.height())
-		screen_->draw(bv_->text, bv_, text->cursor.y() -
+	if (text->inset_owner) {
+		screen_->draw(bv_->text, bv_,
+			      bv_->text->cursor.iy()
+				  + bv_->theLockingInset()->insetInInsetY()
+				  + y - text->cursor.row()->baseline());
+	} else if (text->cursor.row()->height() < workarea_.height()) {
+		screen_->draw(text, bv_, text->cursor.y() -
 			      text->cursor.row()->baseline());
+	}
 	updateScrollbar();
 }
 
