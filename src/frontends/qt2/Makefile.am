@@ -73,6 +73,8 @@ libqt2_la_SOURCES = \
 	lyx_gui.C \
 	qcoloritem.h \
 	qcoloritem.C \
+	qfontexample.h \
+	qfontexample.C \
 	qfont_loader.h \
 	qfont_loader.C \
 	qfont_metrics.C \

@@ -81,6 +81,10 @@ public slots:
 	void select_workingdir();
 	void select_lyxpipe();
 
+	void select_roman(const QString&);
+	void select_sans(const QString&);
+	void select_typewriter(const QString&);
+ 
 protected:
 	void closeEvent(QCloseEvent * e);
  

@@ -52,6 +52,7 @@
 #include <qcolordialog.h>
 #include <qcolor.h>
 #include "qcoloritem.h"
+#include "qfontexample.h"
 
 using std::map;
 using std::endl;
@@ -183,6 +184,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
 	 
+	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(select_roman(const QString&)));
+	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(select_sans(const QString&)));
+	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(select_typewriter(const QString&)));
+ 
 	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
 		screenfontsModule->screenRomanCO->insertItem(*it); 
 		screenfontsModule->screenSansCO->insertItem(*it); 
@@ -571,4 +576,22 @@ void QPrefsDialog::select_lyxpipe()
 	string file(form_->controller().browse(pathsModule->lyxserverDirED->text().latin1(), _("Give a filename for the LyX server pipe")));
 	if (!file.empty())
 		pathsModule->lyxserverDirED->setText(file.c_str());
+}
+
+
+void QPrefsDialog::select_roman(const QString& name)
+{
+	screenfontsModule->screenRomanFE->set(QFont(name), name);
+}
+
+
+void QPrefsDialog::select_sans(const QString& name)
+{
+	screenfontsModule->screenSansFE->set(QFont(name), name);
+}
+
+
+void QPrefsDialog::select_typewriter(const QString& name)
+{
+	screenfontsModule->screenTypewriterFE->set(QFont(name), name);
 }

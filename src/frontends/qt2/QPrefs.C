@@ -453,6 +453,11 @@ void QPrefs::update_contents()
 		}
 	}
 
+	// Fucked if I know why we need this. But we do
+	dialog_->select_roman(roman);
+	dialog_->select_sans(sans);
+	dialog_->select_typewriter(typewriter);
+ 
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
 	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());

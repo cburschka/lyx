@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>270</width>
-            <height>358</height>
+            <width>321</width>
+            <height>344</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,7 +34,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout4</cstring>
+                <cstring>Layout6</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -49,7 +49,14 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout4</cstring>
+                        <cstring>Layout5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>minimumSize</name>
+                        <size>
+                            <width>60</width>
+                            <height>0</height>
+                        </size>
                     </property>
                     <grid>
                         <property stdset="1">
@@ -60,6 +67,74 @@
                             <name>spacing</name>
                             <number>6</number>
                         </property>
+                        <widget row="1"  column="1" >
+                            <class>QComboBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenSansCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>duplicatesEnabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="2" >
+                            <class>QFontExample</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenSansFE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                </sizepolicy>
+                            </property>
+                            <property stdset="1">
+                                <name>minimumSize</name>
+                                <size>
+                                    <width>60</width>
+                                    <height>0</height>
+                                </size>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenSansLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Sa&amp;ns Serif :</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenSansCO</cstring>
+                            </property>
+                        </widget>
+                        <widget row="0"  column="2" >
+                            <class>QFontExample</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenRomanFE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                </sizepolicy>
+                            </property>
+                            <property stdset="1">
+                                <name>minimumSize</name>
+                                <size>
+                                    <width>60</width>
+                                    <height>0</height>
+                                </size>
+                            </property>
+                        </widget>
                         <widget row="0"  column="1" >
                             <class>QComboBox</class>
                             <property stdset="1">
@@ -75,18 +150,18 @@
                             <class>QLabel</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>screenSansLA</cstring>
+                                <cstring>screenTypewriterLA</cstring>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
-                                <string>Sa&amp;ns Serif :</string>
+                                <string>T&amp;ypewriter :</string>
                             </property>
                             <property>
                                 <name>buddy</name>
-                                <cstring>screenSansCO</cstring>
+                                <cstring>screenTypewriterCO</cstring>
                             </property>
                         </widget>
-                        <widget row="0"  column="0"  rowspan="2"  colspan="1" >
+                        <widget row="0"  column="0" >
                             <class>QLabel</class>
                             <property stdset="1">
                                 <name>name</name>
@@ -101,7 +176,21 @@
                                 <cstring>screenRomanCO</cstring>
                             </property>
                         </widget>
-                        <widget row="3"  column="1" >
+                        <widget row="2"  column="2" >
+                            <class>QFontExample</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenTypewriterFE</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                        <widget row="2"  column="1" >
                             <class>QComboBox</class>
                             <property stdset="1">
                                 <name>name</name>
@@ -110,57 +199,10 @@
                             <property stdset="1">
                                 <name>duplicatesEnabled</name>
                                 <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget row="1"  column="1"  rowspan="2"  colspan="1" >
-                            <class>QComboBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>screenSansCO</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>duplicatesEnabled</name>
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget row="3"  column="0" >
-                            <class>QLabel</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>screenTypewriterLA</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>T&amp;ypewriter :</string>
-                            </property>
-                            <property>
-                                <name>buddy</name>
-                                <cstring>screenTypewriterCO</cstring>
                             </property>
                         </widget>
                     </grid>
                 </widget>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
             </hbox>
         </widget>
         <widget>
@@ -534,6 +576,28 @@
         </spacer>
     </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>QFontExample</class>
+        <header location="local">qfontexample.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image>
+        <name>image0</name>
+        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
+    </image>
+</images>
 <tabstops>
     <tabstop>screenZoomSB</tabstop>
     <tabstop>screenDpiSB</tabstop>
