@@ -102,8 +102,8 @@ int InsetRef::Latex(Buffer const *, ostream & os,
 		os << escape(getCommand());
 	else {
 		string ns;
-		InsetCommand clone = InsetCommand(getCmdName(),
-						  getContents(), ns);
+		InsetCommand clone(getCmdName(),
+				   getContents(), ns);
 		os << escape(clone.getCommand());
 	}
 	return 0;

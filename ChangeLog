@@ -1,3 +1,10 @@
+2000-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetref.C (Latex): rewrite so that there is now
+	question that a initialization is requested.
+
+	* src/insets/insetcommand.h: reenable the hide signal
+
 2000-08-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): try to
