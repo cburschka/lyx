@@ -288,6 +288,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_THESAURUS_ENTRY:
 #endif
 		flag.unknown(true);
+		flag.disabled(true);
 		break;
 	default:
 		flag |= lyx_gui::getStatus(ev);

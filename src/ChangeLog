@@ -1,3 +1,7 @@
+2003-10-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (getStatus): also set flag disabled if it is a unknown
+	action.
 
 2003-10-15  André Pönitz  <poenitz@gmx.net>
 
@@ -40,7 +44,7 @@
 	boxes. Use the outer paragraph as location (also for unknown
 	tokens).
 
-	* factory.C (readInset): do not abort on reading an unknown inset. 
+	* factory.C (readInset): do not abort on reading an unknown inset.
 	Eat it and return 0.
 
 2003-10-13  Angus Leeming  <leeming@lyx.org>
