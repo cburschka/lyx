@@ -9,7 +9,7 @@
 
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a
-    single symbol
+    single symbol.
 */
 
 
@@ -21,7 +21,9 @@ public:
 	explicit MathNestInset(idx_type ncells);
 
 	/// the size is usuall some sort of convex hull of the cells
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo const & mi) const;
+	/// draw background if locked
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets
@@ -77,7 +79,7 @@ public:
 
 	/// debug helper
 	void dump() const;
-	///
+	/// is the cursor currently somewhere within this inset?
 	virtual bool editing() const;
 
 protected:
@@ -85,7 +87,7 @@ protected:
 	typedef std::vector<MathXArray> cells_type;
 	/// thusly:
 	cells_type cells_;
-	/// if the inset is locked, it can't be enter with the cursor
+	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
 };
 

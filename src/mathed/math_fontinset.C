@@ -41,6 +41,7 @@ void MathFontInset::metrics(MathMetricsInfo & mi) const
 void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathFontInset::draw\n";
+	MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, name_.c_str());
 	xcell(0).draw(pi, x, y);
 }

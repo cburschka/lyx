@@ -185,10 +185,10 @@ Selection theSelection;
 }
 
 
-MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
+MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
 	:	formula_(formula), autocorrect_(false), selection_(false)
 {
-	left ? first() : last();
+	front ? first() : last();
 }
 
 
@@ -268,6 +268,9 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 	if (!t->isActive())
 		return false;
 
+	if (t->lock())
+		return false;
+
 	if (t->asScriptInset())
 		return false;
 
@@ -304,7 +307,7 @@ bool MathCursor::left(bool sel)
 {
 	dump("Left 1");
 	autocorrect_ = false;
-	targetx_ = false;
+	targetx_ = -1; // "no target"
 	if (inMacroMode()) {
 		macroModeClose();
 		return true;
@@ -324,7 +327,7 @@ bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
 	autocorrect_ = false;
-	targetx_ = false;
+	targetx_ = -1; // "no target"
 	if (inMacroMode()) {
 		macroModeClose();
 		return true;
@@ -343,14 +346,16 @@ bool MathCursor::right(bool sel)
 void MathCursor::first()
 {
 	Cursor_.clear();
-	pushLeft(formula_->par());
+	push(formula_->par());
+	par()->idxFirst(idx(), pos());
 }
 
 
 void MathCursor::last()
 {
-	first();
-	end();
+	Cursor_.clear();
+	push(formula_->par());
+	par()->idxLast(idx(), pos());
 }
 
 
@@ -465,10 +470,11 @@ void MathCursor::niceInsert(MathAtom const & t)
 {
 	selCut();
 	insert(t); // inserting invalidates the pointer!
-	MathAtom const & p = prevAtom();
-	if (p->nargs()) {
-		posLeft();
-		right();  // do not push for e.g. MathSymbolInset
+	MathAtom & p = prevAtom();
+	// enter the new inset and move the contents of the selection if possible
+	if (p->isActive()) {
+		push(p);
+		par()->idxLast(idx(), pos());
 		selPaste();
 	}
 }
@@ -1175,10 +1181,10 @@ bool MathCursor::goUpDown(bool up)
 	getPos(xo, yo);
 
 	// check if we had something else in mind, if not, this is the future goal
-	if (targetx_)
-		xo = targetx_;
-	else	
+	if (targetx_ == -1)
 		targetx_ = xo;
+	else	
+		xo = targetx_;
 
 	// try neigbouring script insets
 	// try left
@@ -1423,7 +1429,7 @@ bool MathCursor::inMathMode() const
 bool MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
-	targetx_ = false;
+	targetx_ = -1; // "no target"
 	if (inMacroArgMode()) {
 		--pos();
 		plainErase();

@@ -6,6 +6,7 @@
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
+#include "frontends/Painter.h"
 
 
 MathNestInset::MathNestInset(idx_type nargs)
@@ -144,6 +145,17 @@ void MathNestInset::dump() const
 }
 
 
+void MathNestInset::draw(MathPainterInfo & pi, int x, int y) const
+{
+	lyxerr << "MathNestInset::draw()\n";
+	if (lock_) {
+		lyxerr << "MathNestInset::draw background\n";
+		pi.pain.fillRectangle(x, y - ascent(), width(), height(),
+					LColor::mathlockbg);
+	}
+}
+
+
 void MathNestInset::validate(LaTeXFeatures & features) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
@@ -198,5 +210,5 @@ void MathNestInset::lock(bool l)
 
 bool MathNestInset::isActive() const
 {
-	return !lock_ && nargs() > 0;
+	return nargs() > 0;
 }

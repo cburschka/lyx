@@ -8,6 +8,8 @@
 #include "graphics/GraphicsTypes.h"
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsImageXPM.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsCache.h"
 
 #include <fstream>
 #include <map>
@@ -23,14 +25,34 @@ namespace {
 	// cache for computed previews
 	previews_map thePreviews;
 
-	// cache for scedule previews
+	// cache for scheduled previews
 	vector<string> theSchedule;
 }
 
 
-void imageLoaded()
-{
-}
+#if 0
+class PreviewCallbackLoaded {
+public:
+	///
+	PreviewCallbackLoaded(string const & filename)
+		: image_(grfx::GImageXPM::newImage())
+	{
+		lyxerr[Debug::GRAPHICS] << "Loading image." << endl;
+
+		grfx::GImage::SignalTypePtr s(new grfx::GImage::SignalType(&PreviewCallbackLoaded::imageLoaded));
+		image_->load(filename, s);
+	}
+
+	///
+	void imageLoaded(bool result)
+	{
+		lyxerr << "Image loaded with result: " << result << endl;
+	}
+
+	grfx::ImagePtr image_;
+
+};
+#endif
 
 
 grfx::ImagePtr preview(string const & str)
@@ -41,7 +63,7 @@ grfx::ImagePtr preview(string const & str)
 		return it->second;	
 
 	// constructing new item
-	grfx::ImagePtr & im = thePreviews[str];
+	//grfx::ImagePtr & im = thePreviews[str];
 
 	lyxerr << "writing: " << str << endl;
 	std::ofstream of("/tmp/previewlyx.tex");
@@ -61,6 +83,9 @@ grfx::ImagePtr preview(string const & str)
 	sc2.startscript(Systemcall::Wait,
 		"(cd /tmp ; convert previewlyx.ps previewlyx.xpm)");
 
+	//PreviewCallbackLoaded cb("/tmp/previewlyx.xpm");
+
+#if 0
 	//grfx::SignalLoadTypePtr on_finish;
 	//on_finish.reset(new SignalLoadType);
 	//on_finish->connect(SigC::slot(this, &imageLoaded));
@@ -102,5 +127,6 @@ grfx::ImagePtr preview(string const & str)
 	}
 
 	return im;
+#endif
 }
 
