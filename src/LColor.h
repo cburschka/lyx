@@ -26,13 +26,21 @@
   It has one basic purposes:
   To serve as a color-namespace container (the Color enum).
   
-  A color can be one of the following kinds:
-
-  - A real, predefined color, such as black, white, red or green.
-  - A logical color, such as no color, inherit, math
 
   */
-class LColor //: public noncopyable {
+/**
+ * \class LColor
+ *
+ * A class holding color definitions and associated names for
+ * LaTeX, X11, the GUI, and LyX internally.
+ *
+ * A color can be one of the following kinds:
+ *
+ * - A real, predefined color, such as black, white, red or green.
+ * - A logical color, such as no color, inherit, math
+ */
+ 
+class LColor // : public boost::noncopyable {
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
 {
@@ -70,8 +78,6 @@ public:
 		selection,
 		/// Text color in LaTeX mode
 		latex,
-		/// Titles color of floats
-		floats,
 
 		/// Text color for notes
 		note,
@@ -93,16 +99,6 @@ public:
 		/// Frame color for command insets
 		commandframe,
 
-		/// Text color for accents we can't handle nicely
-		accent,
-		///
-		accentbg,
-		///
-		accentframe,
-
-		/// Minipage line color
-		minipageline,
-
 		/// Special chars text color
 		special,
 
@@ -118,17 +114,15 @@ public:
 		mathline,
 
 		/// Footnote marker text
+		// FIXME: this is seemingly mis-used all over the place
 		footnote,
-		/// Footnote marker background color
-		footnotebg,
 		/// Footnote line color
 		footnoteframe,
 
 		/// ERT marker text
+		// FIXME: is there any reason this is different from latex ?
 		ert,
 		
-		/// Text color for inset marker
-		inset,
 		/// Inset marker background color
 		insetbg,
 		/// Inset marker frame color
@@ -145,8 +139,6 @@ public:
 		/// Top and bottom line color
 		topline,
 		/// Table line color
-		tableline,
-		/// Table line color
 		tabularline,
 		/// Table line color
 		tabularonoffline,
@@ -155,6 +147,7 @@ public:
 		/// Page break color
 		pagebreak,
 
+		// FIXME: why are the next four separate ??
 		/// Color used for top of boxes
 		top,
 		/// Color used for bottom of boxes
@@ -176,52 +169,54 @@ public:
 
 	///
 	LColor();
-	///
+	/// set the given LyX color to the color defined by the X11 name given
 	void setColor(LColor::color col, string const & x11name);
-	///
+	/// set the given LyX color to the color defined by the X11 name given
 	bool setColor(string const & lyxname, string const & x11name);
+ 
 	/// Get GUI name of color
 	string const getGUIName(LColor::color c) const;
-
+ 
 	/// Get X11 name of color
 	string const getX11Name(LColor::color c) const;
-
+ 
 	/// Get LaTeX name of color
 	string const getLaTeXName(LColor::color c) const;
-
+ 
 	/// Get LyX name of color
 	string const getLyXName(LColor::color c) const;
-	///
+ 
+	/// get the color from the GUI name
 	LColor::color getFromGUIName(string const & guiname) const;
-	///
+	/// get the color from the LyX name
 	LColor::color getFromLyXName(string const & lyxname) const;
 private:
 	///
 	struct information {
-		///
+		/// the name as it appears in the GUI
 		string guiname;
-		///
+		/// the name used in LaTeX
 		string latexname;
-		///
+		/// the name for X11
 		string x11name;
-		///
+		/// the name for LyX
 		string lyxname;
 	};
 
-	///
+	/// initialise a color entry
 	void fill(LColor::color col, string const & gui,
 		  string const & latex, string const & x11,
 		  string const & lyx);
 
 	///
 	typedef std::map<LColor::color, information> InfoTab;
-	///
+	/// the table of color information
 	InfoTab infotab;
 };
 
-///
+/// the current color definitions
 extern LColor lcolor;
-///
+/// the system color definitions
 extern LColor system_lcolor;
 
 #endif

@@ -1,3 +1,8 @@
+2001-05-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LColor.h:
+	* LColor.C: remove some dead entries, tidy a little
+ 
 2001-05-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.C (processKeySym): comment the Escape handling, remove
@@ -26,8 +31,8 @@
 
 	* buffer.C: fix path for OS/2 & Win32
 
-	* lyx_gui.C
-	* lyx_main
+	* lyx_gui.C:
+	* lyx_main:
 	* lyx_main.C: Added os:: class.
 	
 	* os2_defines.h: update
