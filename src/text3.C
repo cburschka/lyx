@@ -1408,7 +1408,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// Highly editable inset, like math
 			UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 			selection_possible = false;
-			bv->owner()->updateLayoutChoice();
 			bv->owner()->message(inset->editMessage());
 			//inset->edit(bv, x, y, cmd.button());
 			// We just have to lock the inset before calling a PressEvent on it!
@@ -1433,7 +1432,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->text->selection.cursor = bv->text->cursor;
 		bv->text->cursor.x_fix(bv->text->cursor.x());
 
-		bv->owner()->updateLayoutChoice();
 		if (bv->fitCursor())
 			selection_possible = false;
 

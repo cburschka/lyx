@@ -379,6 +379,8 @@ void BufferView::Pimpl::scrollDocView(int value)
 		vbt->setCursorFromCoordinates(0, first);
 	else if (vbt->cursor.y() > last)
 		vbt->setCursorFromCoordinates(0, last);
+
+ 	owner_->updateLayoutChoice();
 }
 
 
@@ -568,8 +570,6 @@ void BufferView::Pimpl::update()
 
 void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 {
-	owner_->updateLayoutChoice();
-
 	if (!text->selection.set() && (f & SELECT)) {
 		text->selection.cursor = text->cursor;
 	}

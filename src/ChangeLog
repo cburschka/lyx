@@ -1,5 +1,14 @@
 2003-03-18  John Levon  <levon@movementarian.org>
 
+	* BufferView_pimpl.C (scrollDocView): add updateLayoutChoice(),
+	remove it from update()
+
+	* lyxfunc.C: update layout choice after an lfun
+
+	* text3.C: remove extra updateLayoutChoice()s
+
+2003-03-18  John Levon  <levon@movementarian.org>
+
 	* text.C: top_y change means full repaint, fix
 	a drawing bug with cursor movement
 

@@ -1579,6 +1579,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 	} // end of switch
 
+	view()->owner()->updateLayoutChoice();
+	
 exit_with_message:
 	sendDispatchMessage(getMessage(), ev, verbose);
 }
