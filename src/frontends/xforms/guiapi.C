@@ -461,12 +461,6 @@ extern "C" {
 	}
 
 
-	void gui_ShowSpellcheckerPreferences(LyXView & lv, Dialogs & d)
-	{
-		formPreferencesSingleton.get(lv, d).showSpellPref();
-	}
-
-
 	void gui_ShowTabular(InsetTabular * it, LyXView & lv, Dialogs & d)
 	{
 		formTabularSingleton.get(lv, d).showInset(it);

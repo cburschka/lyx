@@ -51,7 +51,6 @@ extern "C" {
 	void gui_ShowSearch(LyXView & lv, Dialogs & d);
 	void gui_ShowSendto(LyXView & lv, Dialogs & d);
 	void gui_ShowSpellchecker(LyXView & lv, Dialogs & d);
-	void gui_ShowSpellcheckerPreferences(LyXView & lv, Dialogs & d);
 	void gui_ShowTabular(InsetTabular *, LyXView &, Dialogs &);
 	void gui_UpdateTabular(InsetTabular *, LyXView &, Dialogs &);
 	void gui_ShowTabularCreate(LyXView & lv, Dialogs & d);

@@ -82,9 +82,6 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 	} else if (obj == dialog_->button_insert) {
 		controller().insert();
 
-	} else if (obj == dialog_->button_options) {
-		controller().options();
-
 	} else if (obj == dialog_->browser) {
 		int const line = fl_get_browser(dialog_->browser);
 		string const tmp =

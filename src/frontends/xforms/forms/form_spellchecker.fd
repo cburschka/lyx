@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_spellchecker
 Width: 540
 Height: 280
-Number of Objects: 15
+Number of Objects: 14
 
 --------------------
 class: FL_BOX
@@ -81,24 +81,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: browser
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 310 210 220 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Spellchecker Options...|#O
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_options
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -177,7 +159,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 310 180 220 30
+box: 310 200 220 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

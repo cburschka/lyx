@@ -250,9 +250,3 @@ void ControlSpellchecker::clearParams()
 	result_ = SpellBase::ISP_OK;
 	speller_ = 0;
 }
-
-
-void ControlSpellchecker::options()
-{
-	lv_.getDialogs()->showSpellcheckerPreferences();
-}

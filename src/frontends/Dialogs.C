@@ -243,12 +243,6 @@ void Dialogs::showSpellchecker()
 }
 
 
-void Dialogs::showSpellcheckerPreferences()
-{
-	gui_ShowSpellcheckerPreferences(*dialogs_lyxview, *this);
-}
-
-
 void Dialogs::showTabular(InsetTabular * it)
 {
 	gui_ShowTabular(it, *dialogs_lyxview, *this);

@@ -121,14 +121,6 @@ FL_FORM * FormPreferences::form() const
 }
 
 
-void FormPreferences::showSpellPref()
-{
-	show();
-	fl_set_folder(dialog_->tabfolder_prefs, lang_opts_tab_->form);
-	fl_set_folder(lang_opts_tab_->tabfolder_inner, spelloptions_.dialog()->form);
-}
-
-
 void FormPreferences::ok()
 {
 	FormBaseDeprecated::ok();

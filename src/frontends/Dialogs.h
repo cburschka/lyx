@@ -160,8 +160,6 @@ public:
 	void showSendto();
 	/// bring up the spellchecker
 	void showSpellchecker();
-	/// bring up the spellchecker tab in preferences
-	void showSpellcheckerPreferences();
 	///
 	void showTabular(InsetTabular *);
 	///

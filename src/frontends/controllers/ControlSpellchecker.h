@@ -47,9 +47,6 @@ public:
 	/// check text until next misspelled/unknown word
 	void check();
 
-	/// spell options
-	void options();
-
 	/// get suggestion
 	string getSuggestion();
 
