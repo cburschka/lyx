@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.3.5
+This file describes what has been done in the preparation of LyX 1.3.6
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -19,104 +19,13 @@ What's new
 
 ** Updates
 
-- Add a new textclass, svglobal. It is needed for various
-  Springer Verlag journals for which no specific class exists.
-
-- Add a new bindings file mac.bind for LyX/Mac.
-
-- The script used to control the generation of bitmap images for use
-  in 'Instant Preview' of math equations has been re-written in python.
-  Windows users now have some chance of getting Instant Preview to
-  work for them.
-
-- The built-in Qt dialogs are now correctly translated for the
-  languages that Qt supports [Qt >= 3.2 only].
-
-- Add support for Icelandic, Latvian, Lithuanian and Nynorsk.
-
-- Updated the Basque, Danish, German, Italian, Romanian, Russian (fix crash 
-  when autosaving) and Spanish localizations. Updated the Basque and German 
-  documentation.
-
 ** Bug fixes
 
 * Document input/output:
 
-- Partly fix the handling of included files. External insets are still not
-  working correctly [bug #605].
-
-- Fix nesting of language change commands, especially important for
-  Arabic [bugs #1225, #1404].
-
-- Fix missing line break in front of \end{...} in some cases [bug #1225].
-
-- Run makeindex and bibtex correctly when the file name contains some
-  special characters [bug #1526].
-
-- Prevent clashes with LaTeX packages defining "\boldsymbol" [bug #1498].
-
-- Make import of the preamble of LaTeX files more robust [bug #1584].
-
-- Fix handling of floats and counters in  svjog and svprobth
-  textclasses [bug #1430].
-
-- Fix handling of counters in the scrlettr and scrlttr2 classes.
-
-- Fix off-by-one-error which caused LyX to choose the wrong custom margin
-  package.
-
-- Remove extra spaces around math insets in plain text output.
-
-- Quote shell variables correctly in the generated sh script used
-  to control the conversion of graphics images to a loadable format.
-  Ditto for the convertDefault.sh script.
 
 * User Interface:
 
-- Use opening quotation marks after an opening square bracket.
-
-- Fix the toggling of the short title inset in some cases.
-
-- When the autodetection of latex classes cannot be done for some
-  reason, provide a sensible list of textclasses.
-
-- Honor correctly the various locale-related environment variables when
-  looking for translated help files.
-
-- Prevent activation of the Ok and Apply buttons in the reference
-  dialog when simply manipulating the list of references in the dialog.
-
-- Set the default button in the print dialog, activated on Return,
-  to be the Ok button rather than the Close button. [bug #1465, Qt only].
-
-- Enable instant preview to work on Solaris machines.
-
-- Fix an annoying "could not delete temp dir" warning.
-
-- Fix some math bindings like "M-m [" for german or french keyboards.
-
-- Don't allow the insertion of incomplete citation references,
-  which led to a crash [bug 1617].
-
-- Correct the spelling of the "Acknowledgements" style in the APA layout.
 
 * Configuration/Installation:
 
-- When running under Windows, configure correctly the ps and pdf
-  viewers [bug #1508].
-
-- The Qt-related parts of the configure script honors the environment
-  variables MOC and UIC if they are set.
-
-- The precompiled .pyc files in the lib/lyx2lyx/ directory are not
-  distributed anymore, since they were not correct anyway.
-
-- Fix compilation for OpenBSD.
-
-- Fix compilation with SGI C++ compiler.
-
-- Fix compilation with gcc 3.4.
-
-- Fix linking with Qt/Mac 3.3.1.
-
-- Fix warning with automake 1.7.
