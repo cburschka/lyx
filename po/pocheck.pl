@@ -88,12 +88,12 @@ foreach $pofilename ( @ARGV )
           $warn++;
         }
  
-        $msgid_clean = lc($msgid);
+        $msgid_clean  = lc($msgid);
         $msgstr_clean = lc($msgstr);
 
-        $msgid_clean =~ s/\|.*?$//;
-        $msgid_clean =~ s/&([^ ])/$1/;
-        $msgstr_clean =~ s/\|.*?$//;
+        $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip xforms shortcuts
+        $msgstr_clean =~ s/(.*)\|.*?$/$1/;
+        $msgid_clean  =~ s/&([^ ])/$1/;     # strip Qt shortcuts
         $msgstr_clean =~ s/&([^ ])/$1/; 
 
         $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
