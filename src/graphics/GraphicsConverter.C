@@ -150,7 +150,9 @@ Converter::Impl::Impl(Converter & p,
 	fs.close();
 
 	// The converted image is to be stored in this file
-	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
+	// We do not use ChangeExtension here because this is a
+	// basename, which may nevertheless contain a dot
+	to_file_ = to_file_base + '.' + formats.extension(to_format);
 
 	// The command needed to run the conversion process
 	// We create a dummy command for ease of understanding of the

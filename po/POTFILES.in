@@ -8,6 +8,7 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
+src/ext_l10n.h
 src/FloatList.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/ButtonController.h
@@ -161,7 +162,6 @@ src/mathed/formulamacro.C
 src/mathed/math_cursor.C
 src/mathed/ref_inset.C
 src/MenuBackend.C
-src/minibuffer.C
 src/paragraph.C
 src/support/filetools.C
 src/tabular.C

@@ -888,7 +888,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 void BufferView::Pimpl::workAreaResize()
 {
 	static int work_area_width;
-	static unsigned int work_area_height;
+	static int work_area_height;
 
 	bool const widthChange = workarea().workWidth() != work_area_width;
 	bool const heightChange = workarea().workHeight() != work_area_height;

@@ -1,3 +1,12 @@
+2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* paragraph.C (startTeXParParams):
+	(endTeXParParams): add \protect	when necessary
+
+2002-06-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* BufferView_pimpl.C (workAreaExpose): remove warning
+
 2002-06-27  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: add lyxlayout_ptr_fwd.h.
