@@ -616,8 +616,9 @@ AC_DEFUN(LYX_FUNC_PUTENV_ARGTYPE,
 [AC_MSG_CHECKING([type of argument for putenv()])
  AC_CACHE_VAL(lyx_cv_func_putenv_arg,dnl
   [AC_TRY_COMPILE(dnl
-[#include <cstdlib>
-extern int putenv(const char *);],,dnl
+[#include <cstdlib>],
+[char const * foo = "bar";
+ putenv(foo);],dnl
    [lyx_cv_func_putenv_arg='char const *'],[lyx_cv_func_putenv_arg='char *'])])
  AC_MSG_RESULT($lyx_cv_func_putenv_arg)
  AC_DEFINE_UNQUOTED(PUTENV_TYPE_ARG,$lyx_cv_func_putenv_arg,dnl

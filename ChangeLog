@@ -1,5 +1,8 @@
 2000-01-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* config/lyxinclude.m4 (LYX_FUNC_PUTENV_ARGTYPE): fix the macro,
+	which was bogus for several reasons.
+
 	* src/LaTeX.C (scanAux): fix the regular expression used to scan
 	.aux files. 
 	(runBibTeX): ditto.
