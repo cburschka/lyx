@@ -80,6 +80,8 @@ public:
 
 	///
 	MathInsetTypes getType() const;
+	///
+	void mathmlize(MathMLStream &) const;
 
 private:
 	///

@@ -587,21 +587,6 @@ std::vector<MathInset::idx_type>
 }
 
 
-void MathGridInset::octavize(OctaveStream & os) const
-{
-	os << '[';
-	for (row_type row = 0; row < nrows(); ++row) {
-		if (row)
-			os << ';';
-		os << '[';
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << ' ';
-		os <<']';
-	}
-	os <<']';
-}
-
-
 void MathGridInset::maplize(MapleStream & os) const
 {
 	os << "array([";
@@ -619,3 +604,30 @@ void MathGridInset::maplize(MapleStream & os) const
 	os << "])";
 }
 
+
+void MathGridInset::mathmlize(MathMLStream & os) const
+{
+	os << "<mtable>";
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << "<mtr>";
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col));
+		os << "</mtr>";
+	}
+	os << "</mtable>";
+}
+
+
+void MathGridInset::octavize(OctaveStream & os) const
+{
+	os << '[';
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (row)
+			os << ';';
+		os << '[';
+		for (col_type col = 0; col < ncols(); ++col) 
+			os << cell(index(row, col)) << ' ';
+		os << ']';
+	}
+	os << ']';
+}

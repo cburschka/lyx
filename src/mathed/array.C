@@ -276,16 +276,22 @@ void MathArray::maplize(MapleStream & os) const
 void MathArray::mathmlize(MathMLStream & os) const
 {
 	MathArray ar = glueChars();
-	os << "<mrow>";
-	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = ar.asScript(it)) {
-			q->mathmlize(p, os);
-			++it;
-		} else 
-			p->mathmlize(os);
+	if (ar.size() == 0)
+		os << "<mrow/>";
+	else if (ar.size() == 1)
+		os << ar.begin()->nucleus();
+	else {
+		os << "<mrow>";
+		for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
+			MathInset const * p = it->nucleus();
+			if (MathScriptInset const * q = ar.asScript(it)) {
+				q->mathmlize(p, os);
+				++it;
+			} else 
+				p->mathmlize(os);
+		}
+		os << "</mrow>";
 	}
-	os << "</mrow>";
 }
 
 

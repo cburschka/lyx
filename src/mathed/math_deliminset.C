@@ -100,15 +100,6 @@ bool MathDelimInset::isMatrix() const
 }
 
 
-void MathDelimInset::octavize(OctaveStream & os) const
-{
-	if (left_ == "|" && right_ == "|")
-		os << "det(" << cell(0) << ")";
-	else
-		os << left_.c_str() << cell(0) << right_.c_str();
-}
-
-
 void MathDelimInset::maplize(MapleStream & os) const
 {
 	if (left_ == "|" && right_ == "|") {
@@ -121,3 +112,18 @@ void MathDelimInset::maplize(MapleStream & os) const
 		os << left_.c_str() << cell(0) << right_.c_str();
 }
 
+
+void MathDelimInset::mathmlize(MathMLStream & os) const
+{
+	os << "<fenced open=\"" << left_.c_str() << "\" close=\""
+		<< right_.c_str() << "\">" << cell(0) << "</fenced>";
+}
+
+
+void MathDelimInset::octavize(OctaveStream & os) const
+{
+	if (left_ == "|" && right_ == "|")
+		os << "det(" << cell(0) << ")";
+	else
+		os << left_.c_str() << cell(0) << right_.c_str();
+}

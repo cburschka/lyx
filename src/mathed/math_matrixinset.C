@@ -215,6 +215,11 @@ void MathMatrixInset::writeNormal(std::ostream & os) const
 }
 
 
+void MathMatrixInset::mathmlize(MathMLStream & os) const
+{
+	MathGridInset::mathmlize(os);
+}
+
 
 string MathMatrixInset::label(row_type row) const
 {

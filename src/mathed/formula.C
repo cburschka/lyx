@@ -307,7 +307,7 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 	MathMLStream ms(os);
 	ms << "<equation><alt>";
 	int res = ascii(buf, ms.os_, 0);
-	ms << "</alt>\n<mml>" << par_.nucleus() << "<mml></equation>";
+	ms << "</alt>\n<math>" << par_.nucleus() << "<math></equation>";
 	return res + 1;
 }
 
