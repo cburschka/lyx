@@ -113,9 +113,9 @@ void LyXScreen::DrawFromTo(LyXText * text, BufferView * bv,
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		LyXText::text_status st = text->status;
+		LyXText::text_status st = bv->text->status;
 		do {
-			text->status = st;
+			bv->text->status = st;
 #if 0
 			text->GetVisibleRow(owner.owner(), y + y_offset,
 					    x_offset, row, y + text->first);
@@ -123,8 +123,8 @@ void LyXScreen::DrawFromTo(LyXText * text, BufferView * bv,
 			text->GetVisibleRow(bv, y + y_offset,
 					    x_offset, row, y + text->first);
 #endif
-		} while (text->status == LyXText::CHANGED_IN_DRAW);
-		text->status = st;
+		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
+		bv->text->status = st;
 		y += row->height();
 		row = row->next();
 	}
@@ -148,9 +148,9 @@ void LyXScreen::DrawOneRow(LyXText * text, BufferView * bv, Row * row,
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
 		// ok there is something visible
-		LyXText::text_status st = text->status;
+		LyXText::text_status st = bv->text->status;
 		do {
-			text->status = st;
+			bv->text->status = st;
 #if 0
 			text->GetVisibleRow(owner.owner(), y, x_offset, row,
 					    y + text->first);
@@ -158,8 +158,8 @@ void LyXScreen::DrawOneRow(LyXText * text, BufferView * bv, Row * row,
 			text->GetVisibleRow(bv, y, x_offset, row,
 					    y + text->first);
 #endif
-		} while (text->status == LyXText::CHANGED_IN_DRAW);
-		text->status = st;
+		} while (bv->text->status == LyXText::CHANGED_IN_DRAW);
+		bv->text->status = st;
 	}
 	force_clear = false;
 }

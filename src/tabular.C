@@ -2548,6 +2548,12 @@ InsetText * LyXTabular::GetCellInset(int cell) const
 }
 
 
+InsetText * LyXTabular::GetCellInset(int row, int column) const
+{
+    return GetCellInset(GetCellNumber(row, column));
+}
+
+
 void LyXTabular::Validate(LaTeXFeatures & features) const
 {
     if (IsLongTabular())

@@ -504,10 +504,12 @@ void LyXText::draw(BufferView * bview, Row const * row,
 //			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
+#ifdef SEEMS_TO_BE_NOT_NEEDED
 			if (status == CHANGED_IN_DRAW) {
 				UpdateInset(bview, tmpinset);
 				status = CHANGED_IN_DRAW;
 			}
+#endif
 		}
 		++vpos;
 

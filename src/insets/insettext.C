@@ -253,7 +253,8 @@ int InsetText::descent(BufferView * bv, LyXFont const &) const
 
 int InsetText::width(BufferView * bv, LyXFont const &) const
 {
-    insetWidth = TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET);
+    insetWidth = max(textWidth(bv->painter()),
+		     (int)TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET));
     return insetWidth;
 }
 
@@ -288,8 +289,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     xpos = x;
     UpdatableInset::draw(bv, f, baseline, x, cleared);
 
-    if (!cleared && ((need_update==FULL) || (top_x!=int(x)) ||
-		     (top_baseline!=baseline))) {
+    // if top_x differs we have a rule down and we don't have to clear anything
+    if (!cleared && (top_x == int(x)) &&
+	((need_update==FULL) || (top_baseline!=baseline)))
+    {
 	int w =  insetWidth;
 	int h = insetAscent + insetDescent;
 	int ty = baseline - insetAscent;
@@ -310,6 +313,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	return;
 
     if (top_x != int(x)) {
+//	printf("InsetText::draw1 -> INIT(%d)\n",insetWidth);
 	need_update = INIT;
 	top_x = int(x);
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
@@ -346,7 +350,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (y_offset < 0)
 	    y_offset = y;
 	TEXT(bv)->first = first;
-	if (cleared || !locked || (need_update == FULL)) {
+	if (cleared || !locked || (need_update==FULL) || (need_update==INIT)) {
 	    int yf = y_offset;
 	    y = 0;
 	    while ((row != 0) && (yf < ph)) {
@@ -384,7 +388,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     }
     x += width(bv, f) - TEXT_TO_INSET_OFFSET;
     if (bv->text->status==LyXText::CHANGED_IN_DRAW)
+    {
 	need_update = INIT;
+//	printf("InsetText::draw2 -> INIT(%d)\n",insetWidth);
+    }
     else if (need_update != INIT)
 	need_update = NONE;
 }
@@ -446,6 +453,8 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 
 void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 {
+//    if (what == INIT)
+//	printf("InsetText::UpdateLocal -> INIT(%d)\n",insetWidth);
     TEXT(bv)->FullRebreak(bv);
     if (need_update != INIT) {
 	if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
@@ -1429,6 +1438,15 @@ void InsetText::SetParagraphData(LyXParagraph *p)
 	np->SetInsetOwner(this);
     }
     need_update = INIT;
+}
+
+
+void InsetText::SetText(string const & data)
+{
+    clear();
+    LyXFont font(LyXFont::ALL_SANE);
+    for(unsigned int i=0; i < data.length(); ++i)
+	par->InsertChar(i, data[i], font);
 }
 
 

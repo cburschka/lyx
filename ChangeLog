@@ -1,3 +1,31 @@
+2001-01-03  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (InsetButtonPress): look for button==2
+	and do Clipboard Paste!
+
+	* src/insets/insettext.C (SetText): added function.
+
+	* src/insets/insettabular.C (LocalDispatch): Fixed LFUN_PASTE and
+	new LFUN_PASTESELECTION.
+
+	* src/insets/insettext.C (draw): don't clear if top_x changes.
+
+	* src/insets/insettabular.C (draw): clear only if the inset didn't
+	change in the draw routine.
+
+	* src/insets/insettext.C (width): make the width dependant on the
+	textWidth too.
+
+	* src/text.C (draw): comment out the UpdateInset call.
+
+	* src/screen.C (DrawOneRow):
+	(DrawFromTo): check for bv->text->status not text->status.
+
+	* src/insets/insettabular.C (calculate_dimensions_of_cells): calculate
+	dimensions of ascent-descent for the whole row.
+
+	* src/insets/insettext.C (draw): check also for need_update == INIT.
+
 2001-01-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (EXTRA_DIST): add autogen.sh

@@ -158,6 +158,8 @@ public:
     ///
     void SetParagraphData(LyXParagraph *);
     ///
+    void SetText(string const &);
+    ///
     void SetAutoBreakRows(bool);
     ///
     void SetDrawFrame(BufferView *, DrawFrame);
