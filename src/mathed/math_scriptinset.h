@@ -68,6 +68,8 @@ public:
 	bool hasDown() const;
 	/// do we have a script?
 	bool has(bool up) const;
+	/// do we have a anything?
+	bool empty() const;
 	/// remove script
 	void removeScript(bool up);
 	/// remove script

@@ -187,7 +187,9 @@ void MathScriptInset::metrics(MathMetricsInfo const & mi) const
 void MathScriptInset::metrics(MathInset const * nuc,
 	MathMetricsInfo const & mi) const
 {	
-	MathNestInset::metrics(mi);
+	mi_ = mi;
+	smallerStyleScript(mi_);
+	MathNestInset::metrics(mi_);
 	if (nuc)
 		nuc->metrics(mi);
 	ascent_  = ascent2(nuc);
@@ -261,6 +263,12 @@ void MathScriptInset::removeScript(bool up)
 bool MathScriptInset::has(bool up) const
 {
 	return script_[up];
+}
+
+
+bool MathScriptInset::empty() const
+{
+	return !script_[0] && !script_[1];
 }
 
 
