@@ -10,10 +10,6 @@
 
 #include "QCommandEdit.h"
  
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 QCommandEdit::QCommandEdit(QWidget * parent)
 	: QLineEdit(parent)
 { 

@@ -12,10 +12,6 @@
 #ifndef QCOMMANDEDIT_H
 #define QCOMMANDEDIT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <qlineedit.h>
 
 class QCommandEdit : public QLineEdit {
