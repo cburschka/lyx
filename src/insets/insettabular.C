@@ -1256,13 +1256,11 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 			tabular.getCellInset(cell).metrics(m, dim);
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
-			changed = tabular.setWidthOfCell(cell, dim.wid) || changed;
+			tabular.setWidthOfCell(cell, dim.wid);
 		}
-		changed = tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT) || changed;
-		changed = tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT) || changed;
+		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
+		tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);
 	}
-	//if (changed)
-	//	tabular.reinit();
 }
 
 
@@ -1352,9 +1350,9 @@ int InsetTabular::getCellXPos(int cell) const
 	for (; !tabular.isFirstCellInRow(c); --c)
 		;
 	int lx = tabular.getWidthOfColumn(cell);
-	for (; c < cell; ++c) {
+	for (; c < cell; ++c)
 		lx += tabular.getWidthOfColumn(c);
-	}
+
 	return (lx - tabular.getWidthOfColumn(cell) + top_x);
 }
 
@@ -1393,8 +1391,8 @@ void InsetTabular::resetPos(BufferView * bv) const
 	new_x += offset;
 	cursorx_ = new_x;
 //    cursor.x(getCellXPos(actcell) + offset);
-	if ((actcol < tabular.columns() - 1) && scroll(false) &&
-		(tabular.getWidthOfTabular() < bv->workWidth()-20))
+	if (actcol < tabular.columns() - 1 && scroll(false) &&
+		tabular.getWidthOfTabular() < bv->workWidth()-20)
 	{
 		scroll(bv, 0.0F);
 		updateLocal(bv, FULL);
@@ -1402,7 +1400,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 		 tabular.getWidthOfColumn(actcell) > bv->workWidth() - 20)
 	{
 		int xx = cursorx_ - offset + bv->text->getRealCursorX();
-		if (xx > (bv->workWidth()-20)) {
+		if (xx > bv->workWidth()-20) {
 			scroll(bv, -(xx - bv->workWidth() + 60));
 			updateLocal(bv, FULL);
 		} else if (xx < 20) {
@@ -1413,16 +1411,16 @@ void InsetTabular::resetPos(BufferView * bv) const
 			scroll(bv, xx);
 			updateLocal(bv, FULL);
 		}
-	} else if ((cursorx_ - offset) > 20 &&
-		   (cursorx_ - offset + tabular.getWidthOfColumn(actcell))
-		   > (bv->workWidth() - 20)) {
+	} else if (cursorx_ - offset > 20 &&
+		   cursorx_ - offset + tabular.getWidthOfColumn(actcell)
+		   > bv->workWidth() - 20) {
 		scroll(bv, -tabular.getWidthOfColumn(actcell) - 20);
 		updateLocal(bv, FULL);
-	} else if ((cursorx_ - offset) < 20) {
+	} else if (cursorx_ - offset < 20) {
 		scroll(bv, 20 - cursorx_ + offset);
 		updateLocal(bv, FULL);
 	} else if (scroll() && top_x > 20 &&
-		   (top_x + tabular.getWidthOfTabular()) > (bv->workWidth() - 20)) {
+		   (top_x + tabular.getWidthOfTabular()) > bv->workWidth() - 20) {
 		scroll(bv, old_x - cursorx_);
 		updateLocal(bv, FULL);
 	}
@@ -2635,8 +2633,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	string::size_type len = buf.length();
 	string::size_type p = 0;
 
-	while (p < len &&
-	       ((p = buf.find_first_of("\t\n", p)) != string::npos))
+	while (p < len && (p = buf.find_first_of("\t\n", p)) != string::npos)
 	{
 		switch (buf[p]) {
 		case '\t':
