@@ -86,7 +86,6 @@ def table_update(lines):
         res = row_re.match(lines[i])
         if res:
             val = res.groups()
-            sys.stderr.write("%s, %s, %s %s\n" %(val[0],val[1],val[2],lines[i]))
             lines[i] = '<row topline="%s" bottomline="%s" newpage="%s">' % (bool_table[val[0]], bool_table[val[1]], bool_table[val[2]])
 
         i = i + 1
