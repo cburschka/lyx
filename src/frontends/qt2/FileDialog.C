@@ -57,7 +57,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = _("*|All files");
+		filter = _("All files (*)");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
