@@ -154,7 +154,7 @@ int LyXText::workWidth(InsetOld const * inset) const
 						ownerParagraphs().end(),
 						*inset->parOwner());
 	if (par == ownerParagraphs().end()) {
-		lyxerr[Debug::GUI] << "LyXText::workWidth: unexpected\n";
+		lyxerr << "LyXText::workWidth: unexpected\n";
 		return -1;
 	}
 
@@ -167,32 +167,25 @@ int LyXText::workWidth(InsetOld const * inset) const
 		// Optimization here: in most cases, the real row is
 		// not needed, but only the par/pos values. So we just
 		// construct a dummy row for leftMargin. (JMarc)
-		Row dummyrow;
-		dummyrow.par(par);
-		dummyrow.pos(pos);
-		return workWidth() - leftMargin(dummyrow);
-	} else {
-		int dummy_y;
-		RowList::iterator row = getRow(par, pos, dummy_y);
-		RowList::iterator frow = row;
-		RowList::iterator beg = rowlist_.begin();
-
-		while (frow != beg && frow->par() == boost::prior(frow)->par())
-			--frow;
-
-		// FIXME: I don't understand this code - jbl
-
-		unsigned int maxw = 0;
-		while (!isParEnd(*this, frow)) {
-			if ((frow != row) && (maxw < frow->width()))
-				maxw = frow->width();
-			++frow;
-		}
-		if (maxw)
-			return maxw;
-
+		return workWidth() - leftMargin(Row(par, pos));
 	}
-	return workWidth();
+
+	RowList::iterator row = getRow(par, pos);
+	RowList::iterator frow = row;
+	RowList::iterator beg = rowlist_.begin();
+
+	while (frow != beg && frow->par() == boost::prior(frow)->par())
+		--frow;
+
+	// FIXME: I don't understand this code - jbl
+
+	unsigned int maxw = 0;
+	while (!isParEnd(*this, frow)) {
+		if (frow != row && maxw < frow->width())
+			maxw = frow->width();
+		++frow;
+	}
+	return maxw ? maxw : workWidth();
 }
 
 
@@ -738,14 +731,12 @@ int LyXText::rightMargin(Buffer const & buf, Row const & row) const
 	LyXTextClass const & tclass = buf.params.getLyXTextClass();
 	LyXLayout_ptr const & layout = row.par()->layout();
 
-	int x = PAPER_MARGIN
+	return PAPER_MARGIN
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont());
-
-	x += font_metrics::signedWidth(layout->rightmargin,
+		+ font_metrics::signedWidth(layout->rightmargin,
 				       tclass.defaultfont())
 		* 4 / (row.par()->getDepth() + 4);
-	return x;
 }
 
 
@@ -1075,17 +1066,13 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	Assert(rit != rows().end());
 
 	// get the maximum ascent and the maximum descent
-	float layoutasc = 0;
-	float layoutdesc = 0;
-	float tmptop = 0;
+	double layoutasc = 0;
+	double layoutdesc = 0;
+	double tmptop = 0;
 
 	// ok, let us initialize the maxasc and maxdesc value.
-	// This depends in LaTeX of the font of the last character
-	// in the paragraph. The hack below is necessary because
-	// of the possibility of open footnotes
-
-	// Correction: only the fontsize count. The other properties
-	//  are taken from the layoutfont. Nicer on the screen :)
+	// Only the fontsize count. The other properties
+	// are taken from the layoutfont. Nicer on the screen :)
 	ParagraphList::iterator pit = rit->par();
 
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1101,20 +1088,17 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	LyXFont labelfont = getLabelFont(pit);
 
-	float spacing_val = 1.0;
-	if (!pit->params().spacing().isDefault()) {
+	double spacing_val = 1.0;
+	if (!pit->params().spacing().isDefault())
 		spacing_val = pit->params().spacing().getValue();
-	} else {
+	else
 		spacing_val = bv()->buffer()->params.spacing.getValue();
-	}
 	//lyxerr << "spacing_val = " << spacing_val << endl;
 
-	int maxasc = int(font_metrics::maxAscent(font) *
-			 layout->spacing.getValue() *
-			 spacing_val);
+	int maxasc  = int(font_metrics::maxAscent(font) *
+	                  layout->spacing.getValue() * spacing_val);
 	int maxdesc = int(font_metrics::maxDescent(font) *
-			  layout->spacing.getValue() *
-			  spacing_val);
+	                  layout->spacing.getValue() * spacing_val);
 
 	pos_type const pos_end = lastPos(*this, rit);
 	int labeladdon = 0;
@@ -1130,7 +1114,8 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 		// Check if any insets are larger
 		for (pos_type pos = rit->pos(); pos <= pos_end; ++pos) {
-			// Manual inlined optimised version of common case of "maxwidth += singleWidth(pit, pos);"
+			// Manual inlined optimised version of common case of
+			// "maxwidth += singleWidth(pit, pos);"
 			char const c = par.getChar(pos);
 
 			if (IsPrintable(c)) {
@@ -1391,9 +1376,9 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	double x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
-		double dummy;
 		// this IS needed
 		rit->width(maxwidth);
+		double dummy;
 		prepareToPrint(rit, x, dummy, dummy, dummy, false);
 	}
 	rit->width(int(maxwidth + x));
@@ -1401,10 +1386,9 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		width = max(0, workWidth());
 		RowList::iterator it = rows().begin();
 		RowList::iterator end = rows().end();
-		for (; it != end; ++it) {
+		for (; it != end; ++it)
 			if (it->width() > width)
 				width = it->width();
-		}
 	}
 }
 
@@ -2642,8 +2626,7 @@ void LyXText::backspace()
 
 	if (isBoundary(bv()->buffer(), *cursor.par(), cursor.pos())
 	    != cursor.boundary())
-		setCursor(cursor.par(), cursor.pos(), false,
-			  !cursor.boundary());
+		setCursor(cursor.par(), cursor.pos(), false, !cursor.boundary());
 
 	lastpos = cursor.par()->size();
 	if (cursor.pos() == lastpos)

@@ -16,9 +16,7 @@ using std::min;
 bool isParEnd(LyXText const & lt, RowList::iterator rit)
 {
 	RowList::iterator next_row = boost::next(rit);
-
-	return next_row == lt.rows().end() ||
-		next_row->par() != rit->par();
+	return next_row == lt.rows().end() || next_row->par() != rit->par();
 }
 
 
@@ -27,11 +25,10 @@ pos_type lastPos(LyXText const & lt, RowList::iterator rit)
 	if (rit->par()->empty())
 		return 0;
 
-	if (isParEnd(lt, rit)) {
+	if (isParEnd(lt, rit))
 		return rit->par()->size() - 1;
-	} else {
-		return boost::next(rit)->pos() - 1;
-	}
+
+	return boost::next(rit)->pos() - 1;
 }
 
 
@@ -73,18 +70,14 @@ pos_type lastPrintablePos(LyXText const & lt, RowList::iterator rit)
 
 int numberOfSeparators(LyXText const & lt, RowList::iterator rit)
 {
-        pos_type const last = lastPrintablePos(lt, rit);
+	pos_type const last = lastPrintablePos(lt, rit);
 	ParagraphList::iterator pit = rit->par();
-
-        int n = 0;
-
-        pos_type p = max(rit->pos(), pit->beginningOfBody());
-        for (; p < last; ++p) {
-                if (pit->isSeparator(p)) {
-                        ++n;
-                }
-        }
-        return n;
+	int n = 0;
+	pos_type p = max(rit->pos(), pit->beginningOfBody());
+	for ( ; p < last; ++p)
+		if (pit->isSeparator(p))
+			++n;
+	return n;
 }
 
 
@@ -98,9 +91,8 @@ int numberOfHfills(LyXText const & lt, RowList::iterator rit)
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
-		while (first < last && pit->isHfill(first)) {
+		while (first < last && pit->isHfill(first))
 			++first;
-		}
 	}
 
 	first = max(first, pit->beginningOfBody());
@@ -151,15 +143,9 @@ bool hfillExpansion(LyXText const & lt, RowList::iterator rit, pos_type pos)
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
-	if (pos >= lastPos(lt, rit)) {
-		pos_type i = rit->pos();
-		while (i < pos && !pit->isHfill(i)) {
-			++i;
-		}
-		if (i == pos) {
+	if (pos >= lastPos(lt, rit))
+		for (pos_type i = rit->pos(); i < pos && !pit->isHfill(i); ++i)
 			return false;
-		}
-	}
 
 	// at the beginning of a row it does not count, if it is not
 	// the first row of a paragaph
