@@ -1,3 +1,9 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* reLyX/configure.ac: new file
+
+	* reLyX/.cvsignore: delete configure.in, configure.ac aclocal.m4
+
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ui/stdmenus.ui: fix mnemonic for "Display Tooltips"
@@ -5,7 +11,7 @@
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
 	* layouts/linuxdoc.layout: add support for tables and figures
-	(linuxdoc). 
+	(linuxdoc).
 
 2003-07-22  John Levon  <levon@movementarian.org>
 
@@ -55,7 +61,7 @@
 
 2003-04-15  Rod Pinna   <rodney.pinna@uwa.edu.au>
 
-	* layouts/elsart.layout: added "Proof" environment 
+	* layouts/elsart.layout: added "Proof" environment
 
 2003-06-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
