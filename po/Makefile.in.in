@@ -49,7 +49,7 @@ GMOFILES = @GMOFILES@
 DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(PACKAGE).pot \
 stamp-cat-id $(POFILES) $(GMOFILES) $(SOURCES)
 
-POTFILE_IN_DEPS := $(shell find $(top_srcdir)/src -name Makefile.am)
+POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
 POTFILES = \
 
