@@ -37,16 +37,16 @@ using std::strlen;
 namespace grfx {
 
 /// Access to this class is through this static method.
-ImagePtr GImageXPM::newImage()
+Image::ImagePtr ImageXPM::newImage()
 {
 	ImagePtr ptr;
-	ptr.reset(new GImageXPM);
+	ptr.reset(new ImageXPM);
 	return ptr;
 }
 
 
 /// Return the list of loadable formats.
-GImage::FormatList GImageXPM::loadableFormats()
+Image::FormatList ImageXPM::loadableFormats()
 {
 	FormatList formats(1);
 	formats[0] = "xpm";
@@ -54,46 +54,46 @@ GImage::FormatList GImageXPM::loadableFormats()
 }
 
 
-GImageXPM::GImageXPM()
+ImageXPM::ImageXPM()
 	: pixmap_(0),
 	  pixmap_status_(PIXMAP_UNINITIALISED)
 {}
 
 
-GImageXPM::GImageXPM(GImageXPM const & other)
-	: GImage(other),
+ImageXPM::ImageXPM(ImageXPM const & other)
+	: Image(other),
 	  image_(other.image_),
 	  pixmap_(0),
 	  pixmap_status_(PIXMAP_UNINITIALISED)
 {}
 
 
-GImageXPM::~GImageXPM()
+ImageXPM::~ImageXPM()
 {
 	if (pixmap_)
 		XFreePixmap(fl_get_display(), pixmap_);
 }
 
 
-GImage * GImageXPM::clone() const
+Image * ImageXPM::clone() const
 {
-	return new GImageXPM(*this);
+	return new ImageXPM(*this);
 }
 
 
-unsigned int GImageXPM::getWidth() const
+unsigned int ImageXPM::getWidth() const
 {
 	return image_.width();
 }
 
 
-unsigned int GImageXPM::getHeight() const
+unsigned int ImageXPM::getHeight() const
 {
 	return image_.height();
 }
 
 
-Pixmap GImageXPM::getPixmap() const
+Pixmap ImageXPM::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
 		return 0;
@@ -101,17 +101,17 @@ Pixmap GImageXPM::getPixmap() const
 }
 
 
-void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
+void ImageXPM::load(string const & filename)
 {
 	if (filename.empty()) {
-		on_finish->operator()(false);
+		finishedLoading(false);
 		return;
 	}
 
 	if (!image_.empty()) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Image is loaded already!" << std::endl;
-		on_finish->operator()(false);
+		finishedLoading(false);
 		return;
 	}
 
@@ -151,11 +151,11 @@ void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 		image_.reset(*xpm_image);
 	}
 
-	on_finish->operator()(success == XpmSuccess);
+	finishedLoading(success == XpmSuccess);
 }
 
 
-bool GImageXPM::setPixmap(GParams const & params)
+bool ImageXPM::setPixmap(Params const & params)
 {
 	if (image_.empty() || params.display == NoDisplay) {
 		return false;
@@ -235,7 +235,7 @@ bool GImageXPM::setPixmap(GParams const & params)
 }
 
 
-void GImageXPM::clip(GParams const & params)
+void ImageXPM::clip(Params const & params)
 {
 	if (image_.empty())
 		return;
@@ -279,7 +279,7 @@ void GImageXPM::clip(GParams const & params)
 }
 
 
-void GImageXPM::rotate(GParams const & params)
+void ImageXPM::rotate(Params const & params)
 {
 	if (image_.empty())
 		return ;
@@ -349,7 +349,7 @@ void GImageXPM::rotate(GParams const & params)
 }
 
 
-void GImageXPM::scale(GParams const & params)
+void ImageXPM::scale(Params const & params)
 {
 	if (image_.empty())
 		return;
@@ -419,19 +419,19 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr);
 
 namespace grfx {
 
-GImageXPM::Data::Data()
+ImageXPM::Data::Data()
 	: width_(0), height_(0), cpp_(0), ncolors_(0)
 {}
 
 
-GImageXPM::Data::~Data()
+ImageXPM::Data::~Data()
 {
 	if (colorTable_.unique())
 		free_color_table(colorTable_.get(), ncolors_);
 }
 
 
-void GImageXPM::Data::reset(XpmImage & image)
+void ImageXPM::Data::reset(XpmImage & image)
 {
 	width_ = image.width;
 	height_ = image.height;
@@ -511,7 +511,7 @@ void GImageXPM::Data::reset(XpmImage & image)
 }
 
 
-XpmImage GImageXPM::Data::get() const
+XpmImage ImageXPM::Data::get() const
 {
 	XpmImage image;
 	image.width = width_;
@@ -524,7 +524,7 @@ XpmImage GImageXPM::Data::get() const
 }
 
 
-void GImageXPM::Data::resetData(int w, int h, unsigned int * d)
+void ImageXPM::Data::resetData(int w, int h, unsigned int * d)
 {
 	width_  = w;
 	height_ = h;
@@ -532,7 +532,7 @@ void GImageXPM::Data::resetData(int w, int h, unsigned int * d)
 }
 
 
-unsigned int * GImageXPM::Data::initialisedData(int w, int h) const
+unsigned int * ImageXPM::Data::initialisedData(int w, int h) const
 {
 	size_t const data_size = w * h;
 
@@ -546,7 +546,7 @@ unsigned int * GImageXPM::Data::initialisedData(int w, int h) const
 }
 
 
-unsigned int GImageXPM::Data::color_none_id() const
+unsigned int ImageXPM::Data::color_none_id() const
 {
 	XpmColor * table = colorTable_.get();
 	for (size_t i = 0; i < ncolors_; ++i) {

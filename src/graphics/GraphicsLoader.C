@@ -19,103 +19,111 @@
 #include "GraphicsParams.h"
 
 #include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
 
 namespace grfx {
 
-struct Loader::Impl {
+struct Loader::Impl : boost::signals::trackable {
 	///
-	Impl(Loader &, GParams const &);
+	Impl(Loader &, Params const &);
 	///
 	~Impl();
 	///
-	void setFile(string const & file);
+	void resetFile(string const &);
 	///
-	void unsetOldFile();
+	void resetParams(Params const &);
 	///
 	void createPixmap();
-	///
-	void statusChanged();
 
-	///
-	Loader & parent_;
 	/// The loading status of the image.
 	ImageStatus status_;
 	/** Must store a copy of the cached item to ensure that it is not
 	 *  erased unexpectedly by the cache itself.
 	 */
-	GraphicPtr graphic_;
-	///
-	GParams params_;
+	Cache::ItemPtr cached_item_;
 	/// We modify a local copy of the image once it is loaded.
-	ImagePtr image_;
+	Image::ImagePtr image_;
+
+private:
+	///
+	void statusChanged();
+	
+	///
+	Params params_;
+	///
+	Loader & parent_;
 };
 
 
-Loader::Impl::Impl(Loader & parent, GParams const & params)
-	: parent_(parent), status_(WaitingToLoad), params_(params)
+Loader::Impl::Impl(Loader & parent, Params const & params)
+	: status_(WaitingToLoad), params_(params), parent_(parent)
 {}
 
 
 Loader::Impl::~Impl()
 {
-	unsetOldFile();
+	resetFile(string());
 }
 
 
-void Loader::Impl::setFile(string const & file)
+void Loader::Impl::resetFile(string const & file)
 {
-	if (file.empty())
+	string const old_file = cached_item_.get() ?
+		cached_item_->filename() : string();
+
+	if (file == old_file)
 		return;
 
-	GCache & gc = GCache::get();
+	if (!old_file.empty()) {
+		cached_item_.reset();
+		Cache::get().remove(old_file);
+	}
+
+	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
+	image_.reset();
+	
+	if (cached_item_.get() || file.empty())
+		return;
+
+	Cache & gc = Cache::get();
 	if (!gc.inCache(file))
 		gc.add(file);
 
 	// We /must/ make a local copy of this.
-	graphic_ = gc.graphic(file);
-	status_ = graphic_->status();
+	cached_item_ = gc.item(file);
+	status_ = cached_item_->status();
 
-	if (status_ == Loaded) {
-		createPixmap();
-	}
-
-	// It's easiest to do this without checking
-	parent_.statusChanged();
+	cached_item_->statusChanged.connect(
+		boost::bind(&Impl::statusChanged, this));
 }
 
 
-void Loader::Impl::unsetOldFile()
+void Loader::Impl::resetParams(Params const & params)
 {
-	if (!graphic_.get())
+	if (params == params_)
 		return;
 
-	string const old_file = graphic_->filename();
-	graphic_.reset();
-	GCache::get().remove(old_file);
-
-	status_ = WaitingToLoad;
-	params_ = GParams();
+	params_ = params;
+	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
 	image_.reset();
 }
 
 
 void Loader::Impl::statusChanged()
 {
-	status_ = graphic_->status();
-	if (status_ == Loaded)
-		createPixmap();
-
+	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
+	createPixmap();
 	parent_.statusChanged();
 }
 
 
 void Loader::Impl::createPixmap()
 {
-	if (!graphic_.get() || image_.get() ||
+	if (!cached_item_.get() || image_.get() ||
 	    params_.display == NoDisplay || status_ != Loaded)
 		return;
 
-	image_.reset(graphic_->image()->clone());
+	image_.reset(cached_item_->image()->clone());
 
 	// These do nothing if there's nothing to do
 	image_->clip(params_);
@@ -134,22 +142,21 @@ void Loader::Impl::createPixmap()
 
 
 Loader::Loader()
-	: pimpl_(new Impl(*this, GParams()))
+	: pimpl_(new Impl(*this, Params()))
 {}
 
 
 Loader::Loader(string const & file, DisplayType type)
-	: pimpl_(new Impl(*this, GParams()))
+	: pimpl_(new Impl(*this, Params()))
 {
-	pimpl_->params_.display = type;
-	pimpl_->setFile(file);
+	reset(file, type);
 }
 
 
-Loader::Loader(string const & file, GParams const & params)
+Loader::Loader(string const & file, Params const & params)
 	: pimpl_(new Impl(*this, params))
 {
-	pimpl_->setFile(file);
+	reset(file, params);
 }
 
 
@@ -159,48 +166,43 @@ Loader::~Loader()
 
 void Loader::reset(string const & file, DisplayType type)
 {
-	pimpl_->unsetOldFile();
+	Params params;
+	params.display = type;
+	pimpl_->resetParams(params);
 
-	pimpl_->params_ = GParams();
-	pimpl_->params_.display = type;
-	pimpl_->setFile(file);
+	pimpl_->resetFile(file);
+	pimpl_->createPixmap();
 }
 
 
-void Loader::reset(string const & file, GParams const & params)
+void Loader::reset(string const & file, Params const & params)
 {
-	pimpl_->unsetOldFile();
-
-	pimpl_->params_ = params;
-	pimpl_->setFile(file);
+	pimpl_->resetParams(params);
+	pimpl_->resetFile(file);
+	pimpl_->createPixmap();
 }
 
 
-void Loader::reset(GParams const & params)
+void Loader::reset(Params const & params)
 {
-	pimpl_->params_ = params;
-
-	if (pimpl_->status_ == Loaded)
-		pimpl_->createPixmap();
+	pimpl_->resetParams(params);
+	pimpl_->createPixmap();
 }
 
 
 void Loader::startLoading()
 {
-	if (pimpl_->status_ != WaitingToLoad || !pimpl_->graphic_.get())
+	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
 		return;
-
-	pimpl_->graphic_->statusChanged.connect(
-		boost::bind(&Loader::Impl::statusChanged,
-			    pimpl_.get()));
-	pimpl_->graphic_->startLoading();
+	pimpl_->cached_item_->startLoading();
 }
 
 
 string const & Loader::filename() const
 {
 	static string const empty;
-	return pimpl_->graphic_.get() ? pimpl_->graphic_->filename() : empty;
+	return pimpl_->cached_item_.get() ?
+		pimpl_->cached_item_->filename() : empty;
 }
 
 
@@ -210,7 +212,7 @@ ImageStatus Loader::status() const
 }
 
 
-GImage const * Loader::image() const
+Image const * Loader::image() const
 {
 	return pimpl_->image_.get();
 }

@@ -7,7 +7,7 @@
  *  \author Baruch Even <baruch.even@writeme.com>
  *  \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- *  An instantiation of GImage that makes use of libXPM to load and store
+ *  An instantiation of Image that makes use of libXPM to load and store
  *  the image in memory.
  */
 
@@ -24,7 +24,7 @@
 
 namespace grfx {
 
-class GImageXPM : public GImage
+class ImageXPM : public Image
 {
 public:
 	/// Access to this class is through this static method.
@@ -34,10 +34,10 @@ public:
 	static FormatList loadableFormats();
 
 	///
-	~GImageXPM();
+	~ImageXPM();
 
 	/// Create a copy
-	GImage * clone() const;
+	Image * clone() const;
 
 	///
 	Pixmap getPixmap() const;
@@ -49,31 +49,31 @@ public:
 	unsigned int getHeight() const;
 
 	/** Load the image file into memory.
-	 *  In this case (GImageXPM), the process is blocking.
+	 *  In this case (ImageXPM), the process is blocking.
 	 */
-	void load(string const & filename, SignalTypePtr);
+	void load(string const & filename);
 
 	/** Generate the pixmap, based on the current state of the
 	 *  xpm_image_ (clipped, rotated, scaled etc).
 	 *  Uses the params to decide on color, grayscale etc.
 	 *  Returns true if the pixmap is created.
 	 */
-	bool setPixmap(GParams const & params);
+	bool setPixmap(Params const & params);
 
 	/// Clip the image using params.
-	void clip(GParams const & params);
+	void clip(Params const & params);
 
 	/// Rotate the image using params.
-	void rotate(GParams const & params);
+	void rotate(Params const & params);
 
 	/// Scale the image using params.
-	void scale(GParams const & params);
+	void scale(Params const & params);
 
 private:
 	/// Access to the class is through newImage() and clone.
-	GImageXPM();
+	ImageXPM();
 	///
-	GImageXPM(GImageXPM const &);
+	ImageXPM(ImageXPM const &);
 
 	/** Contains the data read from file.
 	 *  This class is a wrapper for a XpmImage struct, but all views

@@ -1,3 +1,38 @@
+2002-06-28  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCacheItem.[Ch]: refactor some of the more convoluted logic
+	by moving those SignalPtrs into the grfx::Image and grfx::Converter
+	classes where they really belong.
+	Use the Pimpl idiom to hide the class internals from public view.
+
+	* GraphicsTypes: remove the typedefs, leaving only the enums.
+
+	* GraphicsImage.h: now has a finishedLoading signal, as opposed to being
+	passed a reference to one in the load() method.
+
+	* GraphicsConverter.[Ch]: totally refactored. An instance of
+	grfx::Converter now represents a single conversion process.
+	Thus grfx::CachItem now has a grfx::Converter * that is set when the
+	conversion is initiated and destroyed on completion.
+	
+	* GraphicsCache.[Ch]:
+	* GraphicsCacheItem.[Ch]:
+	* GraphicsConverter.[Ch]:
+	* GraphicsLoader.[Ch]: use the Pimpl idiom to hide the class internals
+	from public view.
+	Note that I have done this only after making the above changes,
+	so not only should we have a clean, minimal and well documented
+	interface to these classes in the header files, but the class internals
+	should be much clearer too.
+	
+	* Renamed classes
+	grfx::GCache -> grfx::Cache,
+	grfx::GCacheItem -> grfx::CacheItem,
+	grfx::GConverter -> grfx::Converter,
+	grfx::GImage -> grfx::Image,
+	grfx::GImageXPM -> grfx::ImageXPM,
+	grfx::GParams -> grfx::Params.
+
 2002-06-26  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.[Ch]: use boost::scoped_ptr in preference to

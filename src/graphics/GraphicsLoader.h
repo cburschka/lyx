@@ -6,7 +6,8 @@
  *
  *  \author Angus Leeming <leeming@lyx.org>
  *
- *  The public view of the graphics cache.
+ *  The public face of the graphics cache.
+ *
  *  * The user supplies an image file and the display parameters.
  *  * He can change the file or the display parameters through a reset() method.
  *  * He must start the loading process explicitly with startLoading().
@@ -32,11 +33,9 @@
 
 namespace grfx {
 
-class GParams;
+class Image;
+class Params;
 
-/** One image, one instance of grfx::Loader, although the image can be
- *  changed.
- */
 class Loader {
 public:
 	/// Must use the reset methods to make this instance usable.
@@ -44,7 +43,7 @@ public:
 	/// The image is not transformed, just displayed as-is.
 	Loader(string const & file_with_path, DisplayType = ColorDisplay);
 	/// The image is transformed before display.
-	Loader(string const & file_with_path, GParams const &);
+	Loader(string const & file_with_path, Params const &);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~Loader();
@@ -52,9 +51,9 @@ public:
 	/// The file can be changed, or the display params, or both.
 	void reset(string const & file_with_path, DisplayType = ColorDisplay);
 	///
-	void reset(string const & file_with_path, GParams const &);
+	void reset(string const & file_with_path, Params const &);
 	///
-	void reset(GParams const &);
+	void reset(Params const &);
 
 	/// Returns the absolute path of the loaded (loading?) file.
 	string const & filename() const;
@@ -73,7 +72,7 @@ public:
 	/** The loaded image with Pixmap set.
 	 *  If the Pixmap is not yet set (see status() for why...), returns 0.
 	 */
-	GImage const * image() const;
+	Image const * image() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

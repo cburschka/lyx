@@ -1,3 +1,14 @@
+2002-06-28  Angus Leeming  <leeming@lyx.org>
+
+	* XPainter.[Ch]: changes associated with the name change
+	grfx::GImage -> grfx::Image.
+
+	* xformsGImage.[Ch]: deleted.
+	* xformsImage.[Ch]: new files, reflecting changed class name.
+
+	* Makefile.am:
+	* lyx_gui.C: associated changes.
+
 2002-06-27  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* FormPreferences.C

@@ -7,10 +7,10 @@
  * \author Baruch Even <baruch.even@writeme.com>
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- *  grfx::GCache is the manager of the image cache.
- *  It is responsible for creating the grfx::GCacheItem's and maintaining them.
+ *  grfx::Cache is the manager of the image cache.
+ *  It is responsible for creating the grfx::CacheItem's and maintaining them.
  *
- *  grfx::GCache is a singleton class. It is possible to have only one
+ *  grfx::Cache is a singleton class. It is possible to have only one
  *  instance of it at any moment.
  */
 
@@ -22,18 +22,21 @@
 #endif
 
 #include "LString.h"
-#include "GraphicsTypes.h"
-#include <map>
 #include <vector>
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+
 
 namespace grfx {
 
-class GCache : boost::noncopyable {
+class CacheItem;
+
+class Cache : boost::noncopyable {
 public:
 
 	/// This is a singleton class. Get the instance.
-	static GCache & get();
+	static Cache & get();
 
 	/** Which graphics formats can be loaded directly by the image loader.
 	 *  Other formats can be loaded if a converter to a loadable format
@@ -44,10 +47,7 @@ public:
 	/// Add a graphics file to the cache.
 	void add(string const & file);
 
-	/** Remove a file from the cache.
-	 *  Called from the InsetGraphics d-tor.
-	 *  If we use reference counting, then this may become redundant.
-	 */
+	/// Remove a file from the cache.
 	void remove(string const & file);
 
 	/// Returns \c true if the file is in the cache.
@@ -63,36 +63,24 @@ public:
 	 *
 	 *  You have been warned!
 	 */
-	GraphicPtr const graphic(string const & file) const;
-
-	/** Get the image associated with file.
-	    If the image is not yet loaded, (or is not in the cache!) return
-	    an empty container.
-	 */
-	ImagePtr const image(string const & file) const;
+	typedef boost::shared_ptr<CacheItem> ItemPtr;
+	///
+	ItemPtr const item(string const & file) const;
 
 private:
 	/** Make the c-tor, d-tor private so we can control how many objects
 	 *  are instantiated.
 	 */
-	GCache();
+	Cache();
 	///
-	~GCache();
+	~Cache();
 
-	/** The cache contains one item per file, so use a map to find the
-	 *  cache item quickly by filename.
-	 *  Note that each cache item can have multiple views, potentially one
-	 *  per inset that references the original file.
-	 */
-	typedef std::map<string, GraphicPtr> CacheType;
-
-	/** Store a pointer to the cache so that we can forward declare
-	 *  GCacheItem.
-	 */
-	CacheType * cache;
+	/// Use the Pimpl idiom to hide the internals.
+	class Impl;
+	/// The pointer never changes although *pimpl_'s contents may.
+	boost::scoped_ptr<Impl> const pimpl_;
 };
 
 } // namespace grfx
-
 
 #endif // GRAPHICSCACHE_H

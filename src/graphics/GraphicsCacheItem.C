@@ -23,45 +23,158 @@
 #include "support/LAssert.h"
 #include "support/filetools.h"
 
+#include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
+#include <boost/signals/connection.hpp>
+#include <boost/signals/trackable.hpp>
 
 using std::endl;
 
-
 namespace grfx {
 
-GCacheItem::GCacheItem(string const & file)
-	: filename_(file), zipped_(false),
+struct CacheItem::Impl : public boost::signals::trackable {
+
+	///
+	Impl(CacheItem &, string const & file);
+
+	/** Start the image conversion process, checking first that it is
+	 *  necessary. If it is necessary, then a conversion task is started.
+	 *  CacheItem asumes that the conversion is asynchronous and so
+	 *  passes a Signal to the converting routine. When the conversion
+	 *  is finished, this Signal is emitted, returning the converted
+	 *  file to this->imageConverted.
+	 *
+	 *  If no file conversion is needed, then convertToDisplayFormat() calls
+	 *  loadImage() directly.
+	 *
+	 *  convertToDisplayFormat() will set the loading status flag as
+	 *  approriate through calls to setStatus().
+	 */
+	void convertToDisplayFormat();
+
+	/** Load the image into memory. This is called either from
+	 *  convertToDisplayFormat() direct or from imageConverted().
+	 */
+	void loadImage();
+
+	/** Get a notification when the image conversion is done.
+	 *  Connected to a signal on_finish_ which is passed to
+	 *  Converter::convert.
+	 */
+	void imageConverted(bool);
+
+	/** Get a notification when the image loading is done.
+	 *  Connected to a signal on_finish_ which is passed to
+	 *  grfx::Image::loadImage.
+	 */
+	void imageLoaded(bool);
+
+	/** Sets the status of the loading process. Also notifies
+	 *  listeners that the status has chacnged.
+	 */
+	void setStatus(ImageStatus new_status);
+
+	///
+	CacheItem & parent_;
+
+	/// The filename we refer too.
+	string filename_;
+	/// Is the file compressed?
+	bool zipped_;
+	/// If so, store the uncompressed file in this temporary file.
+	string unzipped_filename_;
+	/// What file are we trying to load?
+	string file_to_load_;
+	/** Should we delete the file after loading? True if the file is
+	 *  the result of a conversion process.
+	 */
+	bool remove_loaded_file_;
+
+	/// The image and its loading status.
+	boost::shared_ptr<Image> image_;
+	///
+	ImageStatus status_;
+
+	/// The connection to the signal Image::finishedLoading
+	boost::signals::connection cl_;
+
+	/// The connection of the signal ConvProcess::finishedConversion,
+	boost::signals::connection cc_;
+
+	///
+	boost::scoped_ptr<Converter> converter_;
+};
+
+
+CacheItem::CacheItem(string const & file)
+	: pimpl_(new Impl(*this, file))
+{}
+
+		 
+CacheItem::~CacheItem()
+{}
+
+
+string const & CacheItem::filename() const
+{
+	return pimpl_->filename_;
+}
+
+
+void CacheItem::startLoading()
+{
+	if (pimpl_->status_ != WaitingToLoad)
+		return;
+
+	pimpl_->convertToDisplayFormat();
+}
+
+
+Image const * CacheItem::image() const
+{
+	return pimpl_->image_.get();
+}
+
+
+ImageStatus CacheItem::status() const
+{
+	return pimpl_->status_;
+}
+
+
+//------------------------------
+// Implementation details follow
+//------------------------------
+
+
+CacheItem::Impl::Impl(CacheItem & p, string const & file)
+	: parent_(p), filename_(file), zipped_(false),
 	  remove_loaded_file_(false), status_(WaitingToLoad)
 {}
 
 
-void GCacheItem::startLoading()
-{
-	if (status() != WaitingToLoad)
-		return;
-
-	convertToDisplayFormat();
-}
-
-
-void GCacheItem::setStatus(ImageStatus new_status)
+void CacheItem::Impl::setStatus(ImageStatus new_status)
 {
 	if (status_ == new_status)
 		return;
 
 	status_ = new_status;
-	statusChanged();
+	parent_.statusChanged();
 }
 
 
-void GCacheItem::imageConverted(string const & file_to_load)
+void CacheItem::Impl::imageConverted(bool success)
 {
-	bool const success =
-		(!file_to_load.empty() && IsFileReadable(file_to_load));
-
 	string const text = success ? "succeeded" : "failed";
 	lyxerr[Debug::GRAPHICS] << "Image conversion " << text << "." << endl;
+
+	file_to_load_ = converter_.get() ?
+		converter_->convertedFile() : string();
+	converter_.reset();
+	cc_.disconnect();
+	
+	success = !file_to_load_.empty() && IsFileReadable(file_to_load_);
+	lyxerr[Debug::GRAPHICS] << "Unable to find converted file!" << endl;
 
 	if (!success) {
 		setStatus(ErrorConverting);
@@ -72,34 +185,27 @@ void GCacheItem::imageConverted(string const & file_to_load)
 		return;
 	}
 
-	cc_.disconnect();
-
-	// Do the actual image loading from file to memory.
-	file_to_load_ = file_to_load;
-
 	loadImage();
 }
 
 
 // This function gets called from the callback after the image has been
 // converted successfully.
-void GCacheItem::loadImage()
+void CacheItem::Impl::loadImage()
 {
 	setStatus(Loading);
 	lyxerr[Debug::GRAPHICS] << "Loading image." << endl;
 
-	// Connect a signal to this->imageLoaded and pass this signal to
-	// GImage::loadImage.
-	SignalLoadTypePtr on_finish;
-	on_finish.reset(new SignalLoadType);
-	cl_ = on_finish->connect(boost::bind(&GCacheItem::imageLoaded, this, _1));
+	image_ = Image::newImage();
 
-	image_ = GImage::newImage();
-	image_->load(file_to_load_, on_finish);
+	cl_.disconnect();
+	cl_ = image_->finishedLoading.connect(
+		boost::bind(&Impl::imageLoaded, this, _1));
+	image_->load(file_to_load_);
 }
 
 
-void GCacheItem::imageLoaded(bool success)
+void CacheItem::Impl::imageLoaded(bool success)
 {
 	string const text = success ? "succeeded" : "failed";
 	lyxerr[Debug::GRAPHICS] << "Image loading " << text << "." << endl;
@@ -121,19 +227,21 @@ void GCacheItem::imageLoaded(bool success)
 	setStatus(Loaded);
 }
 
+} // namespace grfx
+
 
 namespace {
 
 string const findTargetFormat(string const & from)
 {
-	typedef GImage::FormatList FormatList;
-	FormatList const formats = GImage::loadableFormats();
+	typedef grfx::Image::FormatList FormatList;
+	FormatList const formats = grfx::Image::loadableFormats();
 
 	// There must be a format to load from.
 	lyx::Assert(!formats.empty());
 
 	// First ascertain if we can load directly with no conversion
-	FormatList::const_iterator it1  = formats.begin();
+	FormatList::const_iterator it1 = formats.begin();
 	FormatList::const_iterator end = formats.end();
 	for (; it1 != end; ++it1) {
 		if (from == *it1)
@@ -141,11 +249,9 @@ string const findTargetFormat(string const & from)
 	}
 
 	// So, we have to convert to a loadable format. Can we?
-	grfx::GConverter const & graphics_converter = grfx::GConverter::get();
-
-	FormatList::const_iterator it2  = formats.begin();
+	FormatList::const_iterator it2 = formats.begin();
 	for (; it2 != end; ++it2) {
-		if (graphics_converter.isReachable(from, *it2))
+		if (grfx::Converter::isReachable(from, *it2))
 			return *it2;
 	}
 
@@ -157,7 +263,9 @@ string const findTargetFormat(string const & from)
 } // anon namespace
 
 
-void GCacheItem::convertToDisplayFormat()
+namespace grfx {
+
+void CacheItem::Impl::convertToDisplayFormat()
 {
 	setStatus(Converting);
 	// Make a local copy in case we unzip it
@@ -187,7 +295,7 @@ void GCacheItem::convertToDisplayFormat()
 	} else
 		lyxerr[Debug::GRAPHICS] 
 			<< "\n\tThe file contains " << from << " format data." << endl;
-	string const to = grfx::findTargetFormat(from);
+	string const to = findTargetFormat(from);
 
 	if (from == to) {
 		// No conversion needed!
@@ -212,12 +320,10 @@ void GCacheItem::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	SignalConvertTypePtr on_finish;
-	on_finish.reset(new SignalConvertType);
-	cc_ = on_finish->connect(boost::bind(&GCacheItem::imageConverted, this, _1));
-
-	GConverter & graphics_converter = GConverter::get();
-	graphics_converter.convert(filename, to_file_base, from, to, on_finish);
+	converter_.reset(new Converter(filename, to_file_base, from, to));
+	converter_->finishedConversion.connect(
+		boost::bind(&Impl::imageConverted, this, _1));
+	converter_->startConversion();
 }
 
 } // namespace grfx

@@ -9,11 +9,11 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src/ \
 
 SUBDIRS = forms
 
-EXTRA_DIST = xformsGImage.C xformsGImage.h
+EXTRA_DIST = xformsImage.C xformsImage.h
 
 if USE_BASIC_IMAGE_LOADER
 else
-XFORMSGIMAGE = xformsGImage.C xformsGImage.h
+XFORMSIMAGE = xformsImage.C xformsImage.h
 endif
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
@@ -38,7 +38,7 @@ libxforms_la_SOURCES = \
 	xforms_helpers.h \
 	xforms_resize.C \
 	xforms_resize.h \
-	$(XFORMSGIMAGE) xformsBC.C \
+	$(XFORMSIMAGE) xformsBC.C \
 	xformsBC.h \
 	xscreen.C \
 	xscreen.h \

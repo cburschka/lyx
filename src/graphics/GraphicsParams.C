@@ -19,7 +19,7 @@
 
 namespace grfx {
 
-GParams::GParams()
+Params::Params()
 	: display(ColorDisplay),
 	  width(0),
 	  height(0),
@@ -28,7 +28,7 @@ GParams::GParams()
 {}
 
 
-bool operator==(GParams const & a, GParams const & b)
+bool operator==(Params const & a, Params const & b)
 {
 	return (a.filename == b.filename &&
 		a.display  == b.display &&
@@ -40,7 +40,7 @@ bool operator==(GParams const & a, GParams const & b)
 }
 
 
-bool operator!=(GParams const & a, GParams const & b)
+bool operator!=(Params const & a, Params const & b)
 {
 	return !(a == b);
 }

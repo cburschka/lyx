@@ -18,6 +18,8 @@
 
 #include "insetgraphicsParams.h"
 
+#include "graphics/GraphicsParams.h"
+
 #include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
@@ -307,9 +309,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 }
 
 
-grfx::GParams InsetGraphicsParams::asGParams(string const & filepath) const
+grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 {
-	grfx::GParams pars;
+	grfx::Params pars;
 	pars.width    = 0;
 	pars.height   = 0;
 	pars.scale    = 0;

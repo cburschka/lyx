@@ -1,9 +1,9 @@
-/*
- * \file GraphicsConverter.C
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+/**
+ *  \file GraphicsConverter.C
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ *  \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #include <config.h>
@@ -16,18 +16,198 @@
 
 #include "converter.h"
 #include "debug.h"
-#include "gettext.h"
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
-#include "support/path.h"
+#include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
 
+#include "Lsstream.h"
 #include <fstream>
+#include <sys/types.h> // needed for pid_t
 
 using std::endl;
 
+namespace grfx {
+
+struct Converter::Impl : public boost::signals::trackable {
+	///
+	Impl(Converter &,
+	     string const &, string const &, string const &, string const &);
+
+	///
+	void startConversion();
+
+	/** This method is connected to a signal passed to the forked call
+	 *  class, passing control back here when the conversion is completed.
+	 *  Cleans-up the temporary files, emits the finishedConversion
+	 *  signal and removes the Converter from the list of all processes.
+	 */
+	void converted(string const & cmd, pid_t pid, int retval);
+
+	///
+	string script_command_;
+	///
+	string script_file_;
+	///
+	string to_file_;
+	///
+	Converter & parent_;
+	///
+	bool valid_process_;
+	///
+	bool finished_;
+};
+
+
+Converter::Converter(string const & from_file,   string const & to_file_base,
+		     string const & from_format, string const & to_format)
+	: pimpl_(new Impl(*this,
+			  from_file, to_file_base, from_format, to_format))
+{}
+
+
+Converter::~Converter()
+{}
+ 
+
+void Converter::startConversion()
+{
+	pimpl_->startConversion();
+}
+
+
+bool Converter::isReachable(string const & from_format_name,
+			    string const & to_format_name)
+{
+	return converters.isReachable(from_format_name, to_format_name);
+}
+
+
+string const & Converter::convertedFile() const
+{
+	static string const empty;
+	return pimpl_->finished_ ? pimpl_->to_file_ : empty;
+}
+ 
+} // namespace grfx
+
+//------------------------------
+// Implementation details follow
+//------------------------------
+
+namespace {
+
+/** Build the conversion script, returning true if able to build it.
+ *  The script is output to the ostringstream 'script'.
+ */
+bool build_script(string const & from_file, string const & to_file_base,
+		  string const & from_format, string const & to_format,
+		  ostringstream & script);
+
+} // namespace anon
+
+
+namespace grfx {
+
+Converter::Impl::Impl(Converter & p,
+		      string const & from_file,   string const & to_file_base,
+		      string const & from_format, string const & to_format)
+	: parent_(p), valid_process_(false), finished_(false)
+{
+	lyxerr[Debug::GRAPHICS] << "Converter c-tor:\n"
+		<< "\tfrom_file:      " << from_file
+		<< "\n\tto_file_base: " << to_file_base
+		<< "\n\tfrom_format:  " << from_format
+		<< "\n\tto_format:    " << to_format << endl;
+
+	// The conversion commands are stored in a stringstream
+	ostringstream script;
+	script << "#!/bin/sh\n";
+	bool const success = build_script(from_file, to_file_base,
+					  from_format, to_format, script);
+
+	if (!success)
+		return;
+
+	lyxerr[Debug::GRAPHICS] << "\tConversion script:"
+				<< "\n--------------------------------------\n"
+				<< script.str().c_str() 
+				<< "\n--------------------------------------\n";
+
+	// Output the script to file.
+	static int counter = 0;
+	script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
+		       tostr(counter++) + ".sh";
+
+	std::ofstream fs(script_file_.c_str());
+	if (!fs.good())
+		return;
+
+	fs << script.str().c_str();
+	fs.close();
+
+	// The converted image is to be stored in this file
+	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
+
+	// The command needed to run the conversion process
+	// We create a dummy command for ease of understanding of the
+	// list of forked processes.
+	// Note that 'sh ' is absolutely essential, or execvp will fail.
+	script_command_ = "sh " + script_file_ + " " +
+			  OnlyFilename(from_file) + " " + to_format;
+
+	// All is ready to go
+	valid_process_ = true;
+}
+
+
+void Converter::Impl::startConversion()
+{
+	if (!valid_process_) {
+		converted(string(), 0, 1);
+		return;
+	}
+		
+	// Initiate the conversion
+	Forkedcall::SignalTypePtr convert_ptr;
+	convert_ptr.reset(new Forkedcall::SignalType);
+
+	convert_ptr->connect(
+		boost::bind(&Impl::converted, this, _1, _2, _3));
+
+	Forkedcall call;
+	int retval = call.startscript(script_command_, convert_ptr);
+	if (retval > 0) {
+		// Unable to even start the script, so clean-up the mess!
+		converted(string(), 0, 1);
+	}
+}
+
+
+void Converter::Impl::converted(string const & /* cmd */,
+				pid_t /* pid */, int retval)
+{
+	if (finished_)
+		// We're done already!
+		return;
+
+	finished_ = true;
+	// Clean-up behind ourselves
+	lyx::unlink(script_file_);
+
+	if (retval > 0) {
+		lyx::unlink(to_file_);
+		to_file_.erase();
+		parent_.finishedConversion(false);
+	} else {
+		parent_.finishedConversion(true);
+	}
+}
+
+} // namespace grfx
 
 namespace {
 
@@ -51,135 +231,13 @@ string const move_file(string const & from_file, string const & to_file)
 	return command.str().c_str();
 }
 
-} // namespace anon
-
-
-namespace grfx {
-
-GConverter & GConverter::get()
+bool build_script(string const & from_file,
+		  string const & to_file_base,
+		  string const & from_format,
+		  string const & to_format,
+		  ostringstream & script)
 {
-	static GConverter singleton;
-	return singleton;
-}
-
-
-bool GConverter::isReachable(string const & from_format_name,
-			     string const & to_format_name) const
-{
-	return converters.isReachable(from_format_name, to_format_name);
-}
-
-
-void GConverter::convert(string const & from_file, string const & to_file_base,
-			 string const & from_format, string const & to_format,
-			 SignalTypePtr on_finish)
-{
-	lyxerr[Debug::GRAPHICS] << "[GraphicsConverter::convert]\n"
-		<< "\tfrom_file:    " << from_file
-		<< "\n\tto_file_base: " << to_file_base
-		<< "\n\tfrom_format:  " << from_format
-		<< "\n\tto_format:    " << to_format << endl;
-	// The conversion commands are stored in a stringstream
-	ostringstream script;
-	script << "#!/bin/sh\n";
-	string script_command;
-	string script_file;
-
-	bool success = build_script(from_file, to_file_base,
-				     from_format, to_format, script);
-
-	if (success) {
-		lyxerr[Debug::GRAPHICS] << "\tConversion script:\n"
-			<< "--------------------------------------\n"
-			<< script.str().c_str() 
-			<< "\n--------------------------------------\n";
-
-		// Output the script to file.
-		static int counter = 0;
-		script_file = OnlyPath(to_file_base) + "lyxconvert" +
-			tostr(counter++) + ".sh";
-
-		std::ofstream fs(script_file.c_str());
-		if (!fs.good()) {
-			// Unable to output the conversion script to file.
-			success = false;
-		} else {
-
-			fs << script.str().c_str();
-			fs.close();
-
-			// Create a dummy command for ease of understanding of the
-			// list of forked processes.
-			// Note that 'sh ' is absolutely essential, or execvp will fail.
-			script_command =
-				"sh " + script_file + " " +
-				OnlyFilename(from_file) + " " + to_format;
-		}
-	}
-
-	string const to_file =
-		ChangeExtension(to_file_base, formats.extension(to_format));
-
-	if (!success) {
-		script_file = string();
-		script_command = 
-			"convert -depth 8 " +
-			from_format + ':' + from_file + ' ' +
-			to_format + ':' + to_file;
-		lyxerr[Debug::GRAPHICS] 
-			<< "\tNo converter defined! I use convert from ImageMagic:\n\t"
-			<< script_command << endl;
-	}	
-
-	// Launch the conversion process.
-	ConvProcessPtr shared_ptr;
-	shared_ptr.reset(new ConvProcess(script_file, script_command,
-					 to_file, on_finish));
-	all_processes_.push_back(shared_ptr);
-}
-
-
-namespace {
-
-typedef boost::shared_ptr<ConvProcess> ConvProcessPtr;
-
-class Find_Ptr {
-public:
-	Find_Ptr(ConvProcess * ptr) : ptr_(ptr) {}
-
-	bool operator()(ConvProcessPtr const & ptr)
-	{
-		return ptr.get() == ptr_;
-	}
-
-private:
-	ConvProcess * ptr_;
-};
-
-} // namespace anon
-
-
-void GConverter::erase(ConvProcess * process)
-{
-	std::list<ConvProcessPtr>::iterator begin = all_processes_.begin();
-	std::list<ConvProcessPtr>::iterator end   = all_processes_.end();
-	std::list<ConvProcessPtr>::iterator it =
-		std::find_if(begin, end, Find_Ptr(process));
-
-	if (it == end)
-		return;
-
-	all_processes_.erase(it);
-}
-
-
-bool GConverter::build_script(string const & from_file,
-			      string const & to_file_base,
-			      string const & from_format,
-			      string const & to_format,
-			      ostringstream & script) const
-{
-	lyxerr[Debug::GRAPHICS] << "[GraphicsConverter::build_script] ... ";
+	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
 
 	string const to_file = ChangeExtension(to_file_base,
@@ -216,7 +274,7 @@ bool GConverter::build_script(string const & from_file,
 	EdgePath::const_iterator it  = edgepath.begin();
 	EdgePath::const_iterator end = edgepath.end();
 	for (; it != end; ++it) {
-		Converter const & conv = converters.get(*it);
+		::Converter const & conv = converters.get(*it);
 
 		// Build the conversion command
 		string const infile      = outfile;
@@ -269,44 +327,5 @@ bool GConverter::build_script(string const & from_file,
 
 	return true;
 }
-
-
-ConvProcess::ConvProcess(string const & script_file,
-			 string const & script_command,
-			 string const & to_file, SignalTypePtr on_finish)
-	: script_file_(script_file), to_file_(to_file), on_finish_(on_finish)
-{
-	Forkedcall::SignalTypePtr convert_ptr;
-	convert_ptr.reset(new Forkedcall::SignalType);
-
-	convert_ptr->connect(boost::bind(&ConvProcess::converted, this, _1, _2, _3));
-
-	Forkedcall call;
-	int retval = call.startscript(script_command, convert_ptr);
-	if (retval > 0) {
-		// Unable to even start the script, so clean-up the mess!
-		converted(string(), 0, 1);
-	}
-}
-
-
-void ConvProcess::converted(string const &/* cmd */,
-			    pid_t /* pid */, int retval)
-{
-	// Clean-up behind ourselves
-	lyx::unlink(script_file_);
-
-	if (retval > 0) {
-		lyx::unlink(to_file_);
-		to_file_.erase();
-	}
-
-	if (on_finish_.get()) {
-		on_finish_->operator()(to_file_);
-	}
-
-	grfx::GConverter::get().erase(this);
-}
-
-
-} // namespace grfx
+ 
+} // namespace anon

@@ -1,129 +1,72 @@
 // -*- C++ -*-
-/*
- * \file GraphicsConverter.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+/**
+ *  \file GraphicsConverter.h
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ *  \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * class grfx::GConverter enables graphics files to be converted asynchronously
- * to a loadable format. It does this by building a shell script of all
- * the conversion commands needed for the transformation. This script is then
- * sent to the forked calls controller for non-blocking execution. When it
- * is finished a signal is emitted, thus informing us to proceed with the
- * loading of the image.
- *
- * Ultimately, this class should be wrapped back into Dekel's converter class.
+ *  The controller of a conversion process from file AA of format A to
+ *  file BB of format B.
+ *  Once finished, the signal finishdConversion is emitted to inform the
+ *  instigator where to find file BB.
+ *  If the conversion is unsuccessful, then finishedConversion will pass
+ *  an empty string.
  */
 
 #ifndef GRAPHICSCONVERTER_H
 #define GRAPHICSCONVERTER_H
 
-#include "LString.h"
-#include "Lsstream.h"
-
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
-
-#include <boost/signals/signal1.hpp>
-#include <boost/signals/trackable.hpp>
-
-#include <list>
-
-#include <sys/types.h> // needed for pid_t
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "LString.h"
+#include <boost/signals/signal1.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <boost/utility.hpp>
+
 namespace grfx {
 
-class ConvProcess;
-
-class GConverter : boost::noncopyable {
+class Converter : boost::noncopyable {
 public:
-
-	/// This is a singleton class. Get the instance.
-	static GConverter & get();
-
 	/// Can the conversion be performed?
-	bool isReachable(string const & from_format_name,
-			 string const & to_format_name) const;
+	static bool isReachable(string const & from_format_name,
+				string const & to_format_name);
 
-	/** Convert the file and at the end return it by emitting this signal
-	 *  If successful, the returned string will be the name of the
-	 *  converted file (to_file_base + extension(to_format_name)).
-	 *  If unsuccessful, the string will be empty.
+	/** One Converter per conversion ensures that finishedConversion
+	 *  is always connected to the expected slot.
 	 */
-	typedef boost::signal1<void, string const &> SignalType;
+	Converter(string const & from_file,   string const & to_file_base,
+		  string const & from_format, string const & to_format);
+
+	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	~Converter();
+
+	/// We are explicit about when we begin the conversion process.
+	void startConversion();
+
+	/** At the end of the conversion process inform the outside world
+	 *  by emitting a signal.
+	 */
+	typedef boost::signal1<void, bool> SignalType;
 	///
-	typedef boost::shared_ptr<SignalType> SignalTypePtr;
-	///
-	void convert(string const & from_file,   string const & to_file_base,
-		     string const & from_format, string const & to_format,
-		     SignalTypePtr on_finish);
+	SignalType finishedConversion;
+	
+	/** If the convsion is succesful (finishedConversion returns \c true),
+	 *  this returns the name of the resulting file.
+	 *  If conversion fails, however, it returns an empty string.
+	 */
+	string const & convertedFile() const;
 
 private:
-	/** Make the c-tor private so we can control how many objects
-	 *  are instantiated.
-	 */
-	GConverter() {}
+	/// Use the Pimpl idiom to hide the internals.
+	class Impl;
 
-	/** Build the conversion script, returning true if able to build it.
-	 *  The script is output to the ostringstream 'script'.
-	 */
-	bool build_script(string const & from_file, string const & to_file_base,
-			  string const & from_format, string const & to_format,
-			  ostringstream & script) const;
-
-	/** Remove the ConvProcess from the list of all processes.
-	 *  Called by ConvProcess::converted.
-	 */
-	friend class ConvProcess;
-	///
-	void erase(ConvProcess *);
-
-	/// The list of all conversion processs
-	typedef boost::shared_ptr<ConvProcess> ConvProcessPtr;
-	///
-	std::list<ConvProcessPtr> all_processes_;
+	/// The pointer never changes although *pimpl_'s contents may.
+	boost::scoped_ptr<Impl> const pimpl_;
 };
-
-
-/// Each ConvProcess represents a single conversion process.
-struct ConvProcess : public boost::signals::trackable
-{
-	///
-	typedef GConverter::SignalTypePtr SignalTypePtr;
-
-	/** Each ConvProcess represents a single conversion process.
-	 *  It is passed :
-	 *  1. The name of the script_file, which it deletes once the
-	 *     conversion is comlpeted;
-	 *  2. The script command itself, which it passes on to the forked
-	 *     call process;
-	 *  3. The name of the output file, which it returns to the calling
-	 *     process on successfull completion, by emitting
-	 *  4. The signal on_finish.
-	 */
-	ConvProcess(string const & script_file, string const & script_command,
-		    string const & to_file, SignalTypePtr on_finish);
-
-	/** This method is connected to a signal passed to the forked call
-	 *  class, passing control back here when the conversion is completed.
-	 *  Cleans-up the temporary files, emits the on_finish signal and
-	 *  removes the ConvProcess from the list of all processes.
-	 */
-	void converted(string const & cmd, pid_t pid, int retval);
-
-	///
-	string script_file_;
-	///
-	string to_file_;
-	///
-	SignalTypePtr on_finish_;
-};
-
+ 
 } // namespace grfx
 
 #endif // GRAPHICSCONVERTER_H

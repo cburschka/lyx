@@ -1,3 +1,9 @@
+2002-06-28  Angus Leeming  <leeming@lyx.org>
+
+	* Painter.h:
+	* screen.C: changes associated with the name change grfx::GImage ->
+	grfx::Image.
+
 2002-06-26  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C: moved the image loading stuff into a new class grfx::Loader.

@@ -80,6 +80,7 @@ TODO Before initial production release:
 
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsImage.h"
+#include "graphics/GraphicsParams.h"
 
 #include "frontends/LyXView.h"
 #include "lyxtext.h"
@@ -181,7 +182,7 @@ void InsetGraphics::Cache::update(string const & file_with_path)
 	lyx::Assert(!file_with_path.empty());
 
 	string const path = OnlyPath(file_with_path);
-	loader.reset(file_with_path, parent_.params().asGParams(path));
+	loader.reset(file_with_path, parent_.params().as_grfxParams(path));
 }
 
 

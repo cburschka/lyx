@@ -43,9 +43,9 @@ struct BoundingBox {
 bool operator==(BoundingBox const &, BoundingBox const &);
 bool operator!=(BoundingBox const &, BoundingBox const &);
 
-struct GParams
+struct Params
 {
-	GParams();
+	Params();
 
 	DisplayType display;
 
@@ -69,8 +69,8 @@ struct GParams
 	int angle;
 };
 
-bool operator==(GParams const &, GParams const &);
-bool operator!=(GParams const &, GParams const &);
+bool operator==(Params const &, Params const &);
+bool operator!=(Params const &, Params const &);
 
 } // namespace grfx
 

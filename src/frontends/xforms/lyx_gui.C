@@ -32,7 +32,7 @@
 #include "ColorHandler.h"
 #include "xforms_helpers.h"
 #ifdef USE_XFORMS_IMAGE_LOADER
-#include "xformsGImage.h"
+#include "xformsImage.h"
 #else
 #include "graphics/GraphicsImageXPM.h"
 #endif
@@ -300,11 +300,11 @@ void lyx_gui::init_graphics()
 
 #ifdef USE_XFORMS_IMAGE_LOADER
 	// connect the image loader based on the xforms library
-	GImage::newImage.connect(boost::bind(&xformsGImage::newImage));
-	GImage::loadableFormats.connect(boost::bind(&xformsGImage::loadableFormats));
+	Image::newImage.connect(boost::bind(&xformsImage::newImage));
+	Image::loadableFormats.connect(boost::bind(&xformsImage::loadableFormats));
 #else
 	// connect the image loader based on the XPM library
-	GImage::newImage.connect(boost::bind(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(boost::bind(&GImageXPM::loadableFormats));
+	Image::newImage.connect(boost::bind(&ImageXPM::newImage));
+	Image::loadableFormats.connect(boost::bind(&ImageXPM::loadableFormats));
 #endif
 }

@@ -31,7 +31,7 @@
 #include "lyxrc.h"
 
 #include "graphics/GraphicsCache.h"
-#include "graphics/GraphicsConverter.h"
+#include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
 #include "insets/insetgraphics.h"
@@ -114,12 +114,14 @@ string const ControlGraphics::readBB(string const & file)
 	int width = 0;
 	int height = 0;
 
-	grfx::GCache & gc = grfx::GCache::get();
-	grfx::ImagePtr const image = gc.image(abs_file);
+	grfx::Cache & gc = grfx::Cache::get();
+	if (gc.inCache(abs_file)) {
+		grfx::Image const * image = gc.item(abs_file)->image();
 
-	if (image.get()) {
-		width  = image->getWidth();
-		height = image->getHeight();
+		if (image) {
+			width  = image->getWidth();
+			height = image->getHeight();
+		}
 	}
 
 	return ("0 0 " + tostr(width) + ' ' + tostr(height));

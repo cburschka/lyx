@@ -1,5 +1,5 @@
 /*
- * \file xformsGImage.C
+ * \file xformsImage.C
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
@@ -12,7 +12,7 @@
 #pragma implementation
 #endif
 
-#include "xformsGImage.h"
+#include "xformsImage.h"
 #include "graphics/GraphicsParams.h"
 #include "LColor.h"
 #include "converter.h"              // formats
@@ -44,18 +44,18 @@ unsigned int packedcolor(LColor::color c);
 namespace grfx {
 
 /// Access to this class is through this static method.
-ImagePtr xformsGImage::newImage()
+Image::ImagePtr xformsImage::newImage()
 {
 	init_graphics();
 
 	ImagePtr ptr;
-	ptr.reset(new xformsGImage);
+	ptr.reset(new xformsImage);
 	return ptr;
 }
 
 
 /// Return the list of loadable formats.
-GImage::FormatList xformsGImage::loadableFormats()
+Image::FormatList xformsImage::loadableFormats()
 {
 	static FormatList fmts;
 	if (!fmts.empty())
@@ -111,15 +111,15 @@ GImage::FormatList xformsGImage::loadableFormats()
 }
 
 
-xformsGImage::xformsGImage()
+xformsImage::xformsImage()
 	: image_(0),
 	  pixmap_(0),
 	  pixmap_status_(PIXMAP_UNINITIALISED)
 {}
 
 
-xformsGImage::xformsGImage(xformsGImage const & other)
-	: GImage(other),
+xformsImage::xformsImage(xformsImage const & other)
+	: Image(other),
 	  image_(0),
 	  pixmap_(0),
 	  pixmap_status_(PIXMAP_UNINITIALISED)
@@ -131,7 +131,7 @@ xformsGImage::xformsGImage(xformsGImage const & other)
 }
 
 
-xformsGImage::~xformsGImage()
+xformsImage::~xformsImage()
 {
 	if (image_)
 		flimage_free(image_);
@@ -140,13 +140,13 @@ xformsGImage::~xformsGImage()
 }
 
 
-GImage * xformsGImage::clone() const
+Image * xformsImage::clone() const
 {
-	return new xformsGImage(*this);
+	return new xformsImage(*this);
 }
 
 
-unsigned int xformsGImage::getWidth() const
+unsigned int xformsImage::getWidth() const
 {
 	if (!image_)
 		return 0;
@@ -154,7 +154,7 @@ unsigned int xformsGImage::getWidth() const
 }
 
 
-unsigned int xformsGImage::getHeight() const
+unsigned int xformsImage::getHeight() const
 {
 	if (!image_)
 		return 0;
@@ -162,7 +162,7 @@ unsigned int xformsGImage::getHeight() const
 }
 
 
-Pixmap xformsGImage::getPixmap() const
+Pixmap xformsImage::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
 		return 0;
@@ -170,12 +170,12 @@ Pixmap xformsGImage::getPixmap() const
 }
 
 
-void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
+void xformsImage::load(string const & filename)
 {
 	if (image_) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Image is loaded already!" << std::endl;
-		on_finish->operator()(false);
+		finishedLoading(false);
 		return;
 	}
 
@@ -183,12 +183,9 @@ void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
 	if (!image_) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to open image" << std::endl;
-		on_finish->operator()(false);
+		finishedLoading(false);
 		return;
 	}
-
-	// Store the Signal that will be emitted once the image is loaded.
-	on_finish_ = on_finish;
 
 	// Set this now and we won't need to bother again.
 	image_->fill_color = packedcolor(LColor::graphicsbg);
@@ -201,7 +198,7 @@ void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
 }
 
 
-bool xformsGImage::setPixmap(GParams const & params)
+bool xformsImage::setPixmap(Params const & params)
 {
 	if (!image_ || params.display == NoDisplay)
 		return false;
@@ -248,7 +245,7 @@ bool xformsGImage::setPixmap(GParams const & params)
 }
 
 
-void xformsGImage::clip(GParams const & params)
+void xformsImage::clip(Params const & params)
 {
 	if (!image_)
 		return;
@@ -279,7 +276,7 @@ void xformsGImage::clip(GParams const & params)
 }
 
 
-void xformsGImage::rotate(GParams const & params)
+void xformsImage::rotate(Params const & params)
 {
 	if (!image_)
 		return ;
@@ -303,7 +300,7 @@ void xformsGImage::rotate(GParams const & params)
 }
 
 
-void xformsGImage::scale(GParams const & params)
+void xformsImage::scale(Params const & params)
 {
 	if (!image_)
 		return;
@@ -322,9 +319,9 @@ void xformsGImage::scale(GParams const & params)
 }
 
 
-void xformsGImage::statusCB(string const & status_message)
+void xformsImage::statusCB(string const & status_message)
 {
-	if (status_message.empty() || !on_finish_.get())
+	if (status_message.empty())
 		return;
 
 	if (prefixIs(status_message, "Done Reading")) {
@@ -332,27 +329,21 @@ void xformsGImage::statusCB(string const & status_message)
 			flimage_close(image_);
 		}
 
-		if (on_finish_.get()) {
-			on_finish_->operator()(true);
-			on_finish_.reset();
-		}
+		finishedLoading(true);
 	}
 }
 
 
-void xformsGImage::errorCB(string const & error_message)
+void xformsImage::errorCB(string const & error_message)
 {
-	if (error_message.empty() || !on_finish_.get())
+	if (error_message.empty())
 		return;
 
 	if (image_) {
 		flimage_close(image_);
 	}
 
-	if (on_finish_.get()) {
-		on_finish_->operator()(false);
-		on_finish_.reset();
-	}
+	finishedLoading(false);
 }
 
 } // namespace grfx
@@ -373,8 +364,8 @@ int status_report(FL_IMAGE * ob, const char *s)
 	lyxerr[Debug::GRAPHICS]
 		<< "xforms image loader. Status : " << str << std::endl;
 
-	grfx::xformsGImage * ptr =
-		static_cast<grfx::xformsGImage *>(ob->u_vdata);
+	grfx::xformsImage * ptr =
+		static_cast<grfx::xformsImage *>(ob->u_vdata);
 	ptr->statusCB(str);
 
 	return 0;
@@ -392,8 +383,8 @@ static void error_report(FL_IMAGE * ob, const char *s)
 	lyxerr[Debug::GRAPHICS]
 		<< "xforms image loader. Error : " << str << std::endl;
 
-	grfx::xformsGImage * ptr =
-		static_cast<grfx::xformsGImage *>(ob->u_vdata);
+	grfx::xformsImage * ptr =
+		static_cast<grfx::xformsImage *>(ob->u_vdata);
 	ptr->errorCB(str);
 }
 

@@ -22,8 +22,9 @@
 #include "buffer.h"
 #include "lyxlex.h"
 
-#include "graphics/GraphicsParams.h"
-
+namespace grfx {
+	class Params;
+}
 
 /// This struct holds all the parameters needed by insetGraphics.
 struct InsetGraphicsParams
@@ -98,7 +99,7 @@ struct InsetGraphicsParams
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.
-	grfx::GParams asGParams(string const & filepath) const;
+	grfx::Params as_grfxParams(string const & filepath) const;
 
 private:
 	/// Initialize the object to a default status.

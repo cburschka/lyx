@@ -1,3 +1,10 @@
+2002-06-28  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphicsParams.[Ch]: forward declare grfx::Params.
+	rename asGParams -> as_grfxParams.
+
+	* insetgraphics.C: reflect above change.
+
 2002-06-26  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.h: use boost::scoped_ptr in preference to

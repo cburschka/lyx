@@ -49,7 +49,7 @@ public:
 	/// This is a singleton class. Get the instance.
 	static SplashScreen const & get();
 	///
-	grfx::GImage const * image() const { return loader_.image(); }
+	grfx::Image const * image() const { return loader_.image(); }
 	///
 	string const & text() const { return text_; }
 	///
@@ -376,7 +376,7 @@ void LyXScreen::greyOut()
 
 	// Add a splash screen to the centre of the work area
 	SplashScreen const & splash = SplashScreen::get();
-	grfx::GImage const * const splash_image = splash.image();
+	grfx::Image const * const splash_image = splash.image();
 	if (splash_image) {
 		int const w = splash_image->getWidth();
 		int const h = splash_image->getHeight();

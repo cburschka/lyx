@@ -7,29 +7,17 @@
  *  \author Angus Leeming <a.leeming@ic.ac.uk>
  *
  *  All that header files outside the graphics subdirectory should need to
- *  access. That just leaves insetgraphics.C to access GraphicsCache.h.
- *  It also makes life easier for files inside the graphics subdirectory!
+ *  access.
  */
 
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
-
-#include <boost/shared_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 namespace grfx {
-
-	///
-	class GImage;
-	///
-	typedef boost::shared_ptr<GImage> ImagePtr;
-	///
-	class GCacheItem;
-	/// The cache contains data of this type.
-	typedef boost::shared_ptr<GCacheItem> GraphicPtr;
 
 	/// The status of the loading process
 	enum ImageStatus {

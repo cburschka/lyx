@@ -1,18 +1,18 @@
 // -*- C++ -*-
 /**
- *  \file xformsGImage.h
+ *  \file xformsImage.h
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
  *  \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
-/* An instantiation of GImage that makes use of the xforms lirary routines
+/* An instantiation of Image that makes use of the xforms lirary routines
  * to load and store the image in memory.
  */
 
-#ifndef XFORMS_GRAPHICSIMAGE_H
-#define XFORMS_GRAPHICSIMAGE_H
+#ifndef XFORMSIMAGE_H
+#define XFORMSIMAGE_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -25,7 +25,7 @@ typedef flimage_ FL_IMAGE;
 
 namespace grfx {
 
-class xformsGImage : public GImage
+class xformsImage : public Image
 {
 public:
 	/// Access to this class is through this static method.
@@ -35,10 +35,10 @@ public:
 	static FormatList loadableFormats();
 
 	///
-	~xformsGImage();
+	~xformsImage();
 
 	/// Create a copy
-	GImage * clone() const;
+	Image * clone() const;
 
 	///
 	Pixmap getPixmap() const;
@@ -50,26 +50,26 @@ public:
 	unsigned int getHeight() const;
 
 	/** Load the image file into memory.
-	 *  The process is asynchronous, so this method starts the loading
-	 *  and saves the signal. It is emitted once loading is finished.
+	 *  The process is asynchronous, so this method starts the loading.
+	 *  When finished, the Image::finishedLoading signal is emitted.
 	 */
-	void load(string const & filename, SignalTypePtr);
+	void load(string const & filename);
 
 	/** Generate the pixmap, based on the current state of
 	 *  image_ (clipped, rotated, scaled etc).
 	 *  Uses the params to decide on color, grayscale etc.
 	 *  Returns true if the pixmap is created.
 	 */
-	bool setPixmap(GParams const & params);
+	bool setPixmap(Params const & params);
 
 	/// Clip the image using params.
-	void clip(GParams const & params);
+	void clip(Params const & params);
 
 	/// Rotate the image using params.
-	void rotate(GParams const & params);
+	void rotate(Params const & params);
 
 	/// Scale the image using params.
-	void scale(GParams const & params);
+	void scale(Params const & params);
 
 	/// Internal callbacks.
 	void statusCB(string const &);
@@ -78,9 +78,9 @@ public:
 
 private:
 	/// Access to the class is through newImage() and clone.
-	xformsGImage();
+	xformsImage();
 	///
-	xformsGImage(xformsGImage const &);
+	xformsImage(xformsImage const &);
 
 	/// The xforms container.
 	FL_IMAGE * image_;
@@ -99,11 +99,8 @@ private:
 	};
 
 	PixmapStatus pixmap_status_;
-
-	/// Emit this signal when the loading process is finished.
-	GImage::SignalTypePtr on_finish_;
 };
 
 } // namespace grfx
 
-#endif // XFORMS_GRAPHICSIMAGE_H
+#endif // XFORMSIMAGE_H

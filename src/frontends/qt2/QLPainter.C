@@ -186,7 +186,7 @@ Painter & QLPainter::arc(int x, int y,
  
 Painter & QLPainter::image(int , int , 
 	int , int ,
-	grfx::GImage const & )
+	grfx::Image const & )
 {
 #if 0 // FIXME
 	XGCValues val;

@@ -150,7 +150,7 @@ Painter & XPainter::arc(int x, int y,
  
 Painter & XPainter::image(int x, int y, 
 	int w, int h,
-	grfx::GImage const & image)
+	grfx::Image const & image)
 {
 	XGCValues val;
 	val.function = GXcopy;

@@ -23,9 +23,22 @@
 
 #include "frontends/lyx_gui.h"
 
+#include <map>
+
 namespace grfx {
 
-GCache & GCache::get()
+/** The cache contains one item per file, so use a map to find the
+ *  cache item quickly by filename.
+ */
+typedef std::map<string, Cache::ItemPtr> CacheType;
+
+struct Cache::Impl {
+	///
+	CacheType cache;
+};
+
+	
+Cache & Cache::get()
 {
 	static bool start = true;
 	if (start) {
@@ -34,92 +47,76 @@ GCache & GCache::get()
 	}
 
 	// Now return the cache
-	static GCache singleton;
+	static Cache singleton;
 	return singleton;
 }
 
 
-GCache::GCache()
+Cache::Cache()
+	: pimpl_(new Impl())
+{}
+
+
+Cache::~Cache()
+{}
+
+
+std::vector<string> Cache::loadableFormats() const
 {
-	cache = new CacheType;
+	return Image::loadableFormats();
 }
 
 
-// all elements are destroyed by the shared_ptr's in the map.
-GCache::~GCache()
-{
-	delete cache;
-}
-
-
-std::vector<string> GCache::loadableFormats() const
-{
-	return GImage::loadableFormats();
-}
-
-
-void GCache::add(string const & file)
+void Cache::add(string const & file)
 {
 	if (!AbsolutePath(file)) {
-		lyxerr << "GCacheItem::add(" << file << "):\n"
+		lyxerr << "Cache::add(" << file << "):\n"
 		       << "The file must be have an absolute path."
 		       << std::endl;
 		return;
 	}
-	
+
 	// Is the file in the cache already?
 	if (inCache(file)) {
-		lyxerr[Debug::GRAPHICS] << "GCache::add(" << file << "):\n"
+		lyxerr[Debug::GRAPHICS] << "Cache::add(" << file << "):\n"
 					<< "The file is already in the cache."
 					<< std::endl;
 		return;
 	}
 
-	
-	(*cache)[file] = GraphicPtr(new GCacheItem(file));
+	pimpl_->cache[file] = ItemPtr(new CacheItem(file));
 }
 
 
-void GCache::remove(string const & file)
+void Cache::remove(string const & file)
 {
-	CacheType::iterator it = cache->find(file);
-	if (it == cache->end())
+	CacheType::iterator it = pimpl_->cache.find(file);
+	if (it == pimpl_->cache.end())
 		return;
 
-	GraphicPtr item = it->second;
-	
+	ItemPtr & item = it->second;
+
 	if (item.use_count() == 1) {
 		// The graphics file is in the cache, but nothing else
 		// references it.
-		cache->erase(it);
+		pimpl_->cache.erase(it);
 	}
 }
 
 
-bool GCache::inCache(string const & file) const
+bool Cache::inCache(string const & file) const
 {
-	return cache->find(file) != cache->end();
+	return pimpl_->cache.find(file) != pimpl_->cache.end();
 }
 
 
-GraphicPtr const GCache::graphic(string const & file) const
+Cache::ItemPtr const Cache::item(string const & file) const
 {
-	CacheType::const_iterator it = cache->find(file);
-	if (it == cache->end())
-		return GraphicPtr();
+	CacheType::const_iterator it = pimpl_->cache.find(file);
+	if (it == pimpl_->cache.end())
+		return ItemPtr();
 
 	return it->second;
 }
-
-
-ImagePtr const GCache::image(string const & file) const
-{
-	CacheType::const_iterator it = cache->find(file);
-	if (it == cache->end())
-		return ImagePtr();
-
-	return it->second->image();
-}
-
 
 } // namespace grfx
