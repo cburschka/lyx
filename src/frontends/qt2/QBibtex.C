@@ -136,7 +136,9 @@ void QBibtex::apply()
 		// bibtotoc and no style
 		controller().params().setOptions("bibtotoc");
 	} else {
-		// only style. An empty one is valid!
+		// only style. An empty one is valid, because some
+		// documentclasses have an own \bibliographystyle{}
+		// command!
 		controller().params().setOptions(bibstyle);
 	}
 }
@@ -144,6 +146,5 @@ void QBibtex::apply()
 
 bool QBibtex::isValid()
 {
-	return dialog_->databaseLB->count() != 0 &&
-		!string(dialog_->styleCB->text(0)).empty();
+	return dialog_->databaseLB->count() != 0;
 }
