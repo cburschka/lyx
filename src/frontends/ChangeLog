@@ -1,3 +1,10 @@
+2003-11-13  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* screen.[Ch] (fitCursor): use LCursor::getDim, simplify
+	(fitManualCursor): remove
+	(topCursorVisible): remove
+	
+
 2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* screen.C (showCursor): use absolute coords form LCursor

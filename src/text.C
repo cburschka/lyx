@@ -1467,18 +1467,20 @@ RowList::iterator
 LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 {
 	//lyxerr << "getRowNearY: y " << y << endl;
-#if 0
-	ParagraphList::iterator const pend = ownerParagraphs().end();
+#if 1
+	ParagraphList::iterator const
+		pend = boost::prior(ownerParagraphs().end());
 	pit = ownerParagraphs().begin();
 	while (int(pit->y + pit->height) < y && pit != pend)
 		++pit;
 
-	RowList::iterator rit = pit->rows.begin();
-	RowList::iterator const rend = pit->rows.end();
-	while (int(pit->y + rit->y_offset()) < y && rit != rend)
-		++rit;
+	RowList::iterator rit = pit->rows.end();
+	RowList::iterator const rbegin = pit->rows.begin();
+	do {
+		--rit;
+	} while (rit != rbegin && int(pit->y + rit->y_offset()) > y);
+	
 	return rit;
-
 #else
 	pit = boost::prior(ownerParagraphs().end());
 

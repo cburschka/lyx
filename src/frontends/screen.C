@@ -204,70 +204,39 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
-bool LyXScreen::fitManualCursor(BufferView * bv, LyXText *,
-	int x, int y, int asc, int desc)
+bool LyXScreen::fitCursor(BufferView * bv)
 {
-	lyxerr << "LyXScreen::fitManualCursor x: " << x << " y: " << y << std::endl;
-	int const vheight = workarea().workHeight();
-	int const topy = bv->top_y();
-	int newtop = topy;
-
-	if (y + desc - topy >= vheight)
-		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
-	else if (y - asc < topy && topy > 0)
-		newtop = y - vheight / 4;
-
-	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
-
-	if (newtop == topy)
-		return false;
-
-	bv->top_y(newtop);
-	return true;
-}
-
-
-unsigned int LyXScreen::topCursorVisible(LyXText * text)
-{
-	LyXCursor const & cursor = text->cursor;
-	int top_y = text->bv()->top_y();
+	int const top_y = bv->top_y();
+	int const h = workarea().workHeight();
 	int newtop = top_y;
-	unsigned int const vheight = workarea().workHeight();
+	int x, y, asc, desc;
 
-	Row & row = *text->cursorPar()->getRow(cursor.pos());
+	bv->cursor().getPos(x, y);
+	bv->cursor().getDim(asc, desc);
+	
+	bool const big_row = h / 4 < asc + desc && asc + desc < h;
 
-	if (int(cursor.y() - row.baseline() + row.height() - top_y) >= vheight) {
-		if (row.height() < vheight
-		    && row.height() > vheight / 4) {
-			newtop = cursor.y()
-				+ row.height()
-				- row.baseline() - vheight;
-		} else {
-			// scroll down, the scroll region must be so big!!
-			newtop = cursor.y() - vheight / 2;
-		}
+	if (y + desc - top_y >= h) {
+		if (big_row)
+			newtop = y + desc - h;
+		else
+			newtop = y - h / 2;
 
-	} else if (int(cursor.y() - row.baseline()) < top_y && top_y > 0) {
-		if (row.height() < vheight && row.height() > vheight / 4) {
-			newtop = cursor.y() - row.baseline();
-		} else {
-			// scroll up
-			newtop = cursor.y() - vheight / 2;
+	} else if (top_y > max(y - asc, 0)) {
+		if (big_row)
+			newtop = y - asc;
+		else {
+			newtop = y - h / 2;
 			newtop = min(newtop, top_y);
 		}
 	}
 
-	return max(newtop, 0);
-}
+	newtop = max(newtop, 0);
+	if (newtop == top_y)
+		return false;
 
-
-bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
-{
-	// Is a change necessary?
-	int const newtop = topCursorVisible(text);
-	bool const result = (newtop != bv->top_y());
 	bv->top_y(newtop);
-	return result;
+	return true;
 }
 
 

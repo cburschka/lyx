@@ -699,15 +699,6 @@ int InsetText::insetInInsetY() const
 }
 
 
-void InsetText::fitInsetCursor(BufferView * bv) const
-{
-	LyXFont const font = text_.getFont(cpar(), cpos());
-	int const asc = font_metrics::maxAscent(font);
-	int const desc = font_metrics::maxDescent(font);
-	bv->fitLockedInsetCursor(cx(), cy(), asc, desc);
-}
-
-
 DispatchResult InsetText::moveRight(BufferView * bv)
 {
 	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))

@@ -313,7 +313,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			resizeCurrentBuffer();
 
 		// FIXME: needed when ?
-		top_y(screen().topCursorVisible(bv_->text));
+		fitCursor();
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -343,42 +343,11 @@ void BufferView::Pimpl::buffer(Buffer * b)
 bool BufferView::Pimpl::fitCursor()
 {
 	lyxerr << "BufferView::Pimpl::fitCursor." << endl;
-
-	int x,y;
-	bv_->cursor().getPos(x, y);
-
-	if (y < top_y() || y > top_y() + workarea().workHeight()) {
-		int newtop = y - workarea().workHeight() / 2;
-		newtop = std::max(0, newtop);
-		top_y(newtop);
+	if (screen().fitCursor(bv_)) {
 		updateScrollbar();
 		return true;
 	}
 	return false;
-
-// dead code below
-	bool ret;
-#if 0	
-	UpdatableInset * tli =
-		static_cast<UpdatableInset *>(cursor_.innerInset());
-	if (tli) {
-		tli->fitInsetCursor(bv_);
-		ret = true;
-	} else {
-		ret = screen().fitCursor(bv_->text, bv_);
-	}
-#endif
-#if 0
-	ret = screen().fitCursor(bv_->text, bv_);
-#endif
-
-	//dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-
-	// We need to always update, in case we did a
-	// paste and we stayed anchored to a row, but
-	// the actual height of the doc changed ...
-	updateScrollbar();
-	return ret;
 }
 
 
@@ -446,7 +415,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		}
 	}
 
-	top_y(screen().topCursorVisible(bv_->text));
+	fitCursor();
 
 	switchKeyMap();
 	owner_->busy(false);
@@ -973,8 +942,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 					theTempCursor.pop();
 					bv_->cursor() = theTempCursor;
 					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
-					bv_->cursor().updatePos();
-					bv_->fitCursor();
+					if (bv_->fitCursor())
+						bv_->update();
 					return true;
 				default:
 					lyxerr << "not dispatched by inner inset val: " << res.val() << endl;
@@ -984,24 +953,26 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 
 		// otherwise set cursor to surrounding LyXText
 		if (!res.dispatched()) {
-			lyxerr << "cursor is: " << bv_->cursor() << endl;
+			lyxerr << "temp cursor is: " << theTempCursor << endl;
 			lyxerr << "dispatching " << cmd1
 			       << " to surrounding LyXText "
-			       << bv_->cursor().innerText() << endl;
+			       << theTempCursor.innerText() << endl;
 			bv_->cursor() = theTempCursor;
-			theTempCursor.dispatch(cmd1);
-			bv_->update();
-			bv_->cursor().updatePos();
+			res = bv_->cursor().innerText()->dispatch(cmd1);
+			if (bv_->fitCursor() || res.update())
+				bv_->update();
+			
 			//return DispatchResult(true, true);
 		}
 		// see workAreaKeyPress
 		cursor_timeout.restart();
 		screen().showCursor(*bv_);
 
-		// FIXME: we should skip these when selecting
-		owner_->updateLayoutChoice();
-		owner_->updateToolbar();
-//		fitCursor();
+		// skip these when selecting
+		if (cmd.action != LFUN_MOUSE_MOTION) {
+			owner_->updateLayoutChoice();
+			owner_->updateToolbar();
+		}
 
 		// slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
@@ -1295,7 +1266,6 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 				   string(),
 				   0);
 	}
-
 	bv_->cursor().innerText()->insertInset(inset);
 	update();
 

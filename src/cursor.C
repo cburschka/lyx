@@ -20,6 +20,7 @@
 #include "lfuns.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "lyxrow.h"
 
 #include "insets/updatableinset.h"
 #include "insets/insettabular.h"
@@ -161,6 +162,19 @@ void LCursor::updatePos()
 {
 	if (!data_.empty())
 		cached_y_ = bv_->top_y() + innerInset()->y();
+}
+
+
+void LCursor::getDim(int & asc, int & desc) const
+{
+	LyXText * txt = innerText();
+	
+	if (txt) {
+		Row const & row = *txt->cursorRow();
+		asc = row.baseline();
+		desc = row.height() - asc;
+	} else
+		innerInset()->getCursorDim(bv_, asc, desc);
 }
 
 

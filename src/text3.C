@@ -227,7 +227,7 @@ namespace {
 		if (!lt->selection.set())
 			bv->haveSelection(false);
 
-		bv->update();
+//		bv->update();
 		bv->switchKeyMap();
 	}
 
@@ -495,8 +495,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 				inset->edit(bv, true);
 			if (gotsel && pastesel)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
-		}
-		else
+		} else
 			delete inset;
 	}
 }
@@ -1290,7 +1289,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			selection.cursor = cursor;
 			cursorEnd();
 			setSelection();
-			bv->update();
 			bv->haveSelection(selection.set());
 		}
 		break;
@@ -1300,7 +1298,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(lyx::WHOLE_WORD_STRICT);
-			bv->update();
 			bv->haveSelection(selection.set());
 		}
 		break;
@@ -1352,15 +1349,15 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			       << bv->text->cursor.y() << endl;
 	#endif
 		// This is to allow jumping over large insets
-		if (cursorrow == bv->text->cursorRow()) {
+		if (cursorrow == cursorRow()) {
 			if (cmd.y >= bv->workHeight())
-				bv->text->cursorDown(false);
+				cursorDown(false);
 			else if (cmd.y < 0)
-				bv->text->cursorUp(false);
+				cursorUp(false);
 		}
 
 		bv->text->setSelection();
-		bv->update();
+//		bv->update();
 		break;
 	}
 
@@ -1428,13 +1425,13 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		// do nothing if we used the mouse wheel
 		if (!bv->buffer())
 			break;
 
+		// do nothing if we used the mouse wheel
 		if (cmd.button() == mouse_button::button4
 		 || cmd.button() == mouse_button::button5)
-			break;
+			return DispatchResult(true, false);
 
 		selection_possible = false;
 

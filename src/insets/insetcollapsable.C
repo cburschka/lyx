@@ -433,12 +433,6 @@ bool InsetCollapsable::insetAllowed(InsetOld::Code code) const
 }
 
 
-void InsetCollapsable::fitInsetCursor(BufferView * bv) const
-{
-	inset.fitInsetCursor(bv);
-}
-
-
 void InsetCollapsable::setLabelFont(LyXFont & f)
 {
 	labelfont_ = f;

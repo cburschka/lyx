@@ -93,8 +93,6 @@ public:
 	///
 	int insetInInsetY() const;
 	///
-	void fitInsetCursor(BufferView *) const;
-	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
 	bool insetAllowed(InsetOld::Code) const;

@@ -196,8 +196,6 @@ private:
 	void drawCellSelection(Painter &, int x, int baseline,
 			       int row, int column, int cell) const;
 	///
-	void fitInsetCursor(BufferView *) const;
-	///
 	void setPos(BufferView *, int x, int y) const;
 	///
 	DispatchResult moveRight(BufferView *, bool lock);

@@ -23,6 +23,8 @@
 
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 
 using lyx::support::strToDbl;
 using lyx::support::strToInt;
@@ -33,10 +35,6 @@ InsetOld::EDITABLE UpdatableInset::editable() const
 {
 	return HIGHLY_EDITABLE;
 }
-
-
-void UpdatableInset::fitInsetCursor(BufferView *) const
-{}
 
 
 void UpdatableInset::scroll(BufferView * bv, float s) const
@@ -106,4 +104,10 @@ UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	default:
 		return DispatchResult(false);
 	}
+}
+
+
+void UpdatableInset::getCursorDim(BufferView *, int &, int &) const
+{
+	BOOST_ASSERT(false);
 }

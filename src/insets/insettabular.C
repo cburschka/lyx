@@ -973,22 +973,6 @@ void InsetTabular::getCursorPos(BufferView *, int & x, int & y) const
 }
 
 
-void InsetTabular::fitInsetCursor(BufferView * bv) const
-{
-	if (the_locking_inset) {
-		the_locking_inset->fitInsetCursor(bv);
-		return;
-	}
-
-	LyXFont font;
-	int const asc = font_metrics::maxAscent(font);
-	int const desc = font_metrics::maxDescent(font);
-	resetPos(bv);
-
-	bv->fitLockedInsetCursor(cursorx_, cursory_, asc, desc);
-}
-
-
 void InsetTabular::setPos(BufferView * bv, int x, int y) const
 {
 	cursory_ = 0;

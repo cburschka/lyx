@@ -1,3 +1,11 @@
+2003-11-13  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insetcollapsable.[Ch] (fitInsetCursor): remove
+	* insettabular.[Ch] (fitInsetCursor): remove
+	* insettext.[Ch] (fitInsetCursor): remove
+	* updatableinset.[Ch] (fitInsetCursor): remove
+	(getCursorDIm): add virtual
+
 2003-11-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* src/insets/Makefile.am:

@@ -1,3 +1,10 @@
+2003-11-13  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView_pimpl.C (fitCursor): call screen().fitCursor()
+	* BufferView.C (fitLockedInsetCursor): remove
+	* cursor.[Ch] (getDim): add
+	* text.C (getRowNearY): add faster version
+	* text3.C: remove some update calls
 
 2003-11-12  Martin Vermeer  <martin.vermeer@hut.fi>
 

@@ -186,18 +186,14 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 }
 
 
-void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
+void InsetFormulaBase::getCursorDim(BufferView * bv,
+				    int & asc, int & desc) const
 {
 	if (!mathcursor)
 		return;
-	int x, y, asc, des;
 	asc = 10;
-	des = 2;
+	desc = 2;
 	//math_font_max_dim(font_, asc, des);
-	getCursorPos(bv, x, y);
-	//y += yo_;
-	//lyxerr << "fitInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << endl;
-	bv->fitLockedInsetCursor(x, y, asc, des);
 }
 
 
@@ -745,7 +741,6 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		toggleInsetSelection(bv);
 
 	if (result.dispatched()) {
-		fitInsetCursor(bv);
 		revealCodes(bv);
 		cmd.view()->stuffClipboard(mathcursor->grabSelection());
 	} else {

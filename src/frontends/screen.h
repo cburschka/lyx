@@ -36,42 +36,17 @@ public:
 
 	virtual ~LyXScreen();
 
-	/**
-	 * fit the cursor onto the visible work area, scrolling if necessary
-	 * @param bv the buffer view
-	 * @param vheight the height of the visible region
-	 * @param base_y the top of the lyxtext to look at
-	 * @param x the new x position
-	 * @param y the new y position
-	 * @param a ascent of the cursor's row
-	 * @param d descent of the cursor's row
-	 * @return true if the work area needs scrolling as a result
-	 */
-	bool fitManualCursor(BufferView * bv, LyXText * text,
-		int x, int y, int a, int d);
-
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw(BufferView & bv);
 
 	/**
-	 * topCursorVisible - get a new "top" to make the cursor visible
-	 * in a LyXText
-	 *
-	 * This helper function calculates a new y co-ordinate for
-	 * the top of the containing region such that the cursor contained
-	 * within the LyXText is "nicely" visible.
-	 */
-	virtual unsigned int topCursorVisible(LyXText *);
-
-	/**
 	 * fitCursor - fit the cursor onto the work area
-	 * @param text the text containing the cursor
 	 * @param bv the bufferview
 	 * @return true if a change was necessary
 	 *
 	 * Scrolls the screen so that the cursor is visible
 	 */
-	virtual bool fitCursor(LyXText *, BufferView *);
+	virtual bool fitCursor(BufferView *);
 
 	/// hide the visible cursor, if it is visible
 	void hideCursor();

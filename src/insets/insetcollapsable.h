@@ -79,8 +79,6 @@ public:
 	/// get the screen x,y of the cursor
 	void getCursorPos(BufferView *, int & x, int & y) const;
 	///
-	void fitInsetCursor(BufferView * bv) const;
-	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		 bool selectall = false);
 	///

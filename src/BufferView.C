@@ -369,25 +369,6 @@ void BufferView::replaceWord(string const & replacestring)
 }
 
 
-bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
-{
-	lyxerr << "BufferView::fitLockedInsetCursor x: " << x
-		<< " y: " << y << std::endl;
-	UpdatableInset * tli =
-		static_cast<UpdatableInset *>(cursor().innerInset());
-	if (tli && available()) {
-		lyxerr << "    text->cursor.y: " << text->cursor.y() << std::endl;
-		lyxerr << "    insetInInsetY: " << tli->insetInInsetY() << std::endl;
-		y += text->cursor.y() + tli->insetInInsetY();
-		if (screen().fitManualCursor(this, text, x, y, asc, desc)) {
-			updateScrollbar();
-			return true;
-		}
-	}
-	return false;
-}
-
-
 void BufferView::hideCursor()
 {
 	screen().hideCursor();
