@@ -1182,10 +1182,6 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		}
 		break;
 
-	case LFUN_DEPTH:
-		changeDepth(owner->view(), TEXT(false), 0);
-		break;
-		
 	case LFUN_DEPTH_MIN:
 		changeDepth(owner->view(), TEXT(false), -1);
 		break;

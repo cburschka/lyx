@@ -154,7 +154,7 @@
 \bind "Next"                   "screen-down"
 
 # A bit like autoindent in c-mode
-\bind "Tab"                     "depth-next"
+\bind "Tab"                     "depth-increment"
 
 \bind "C-~S-greater"		"reference-goto"
 \bind "C-~S-less" 		"bookmark-goto 0"

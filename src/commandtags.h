@@ -48,7 +48,6 @@ enum kb_action {
 	LFUN_HYPHENATION,
 	LFUN_LIGATURE_BREAK,
 	LFUN_HFILL,
-	LFUN_DEPTH,
 	LFUN_FREE,     // 30
 #if 0
 	LFUN_FOOTMELT, // schedule for deletion

@@ -255,8 +255,7 @@ void LyXGUI::init()
 	// Initialize the views.
 	lyxViews->init();
 
-	// in 0.12 the initialisation of the LyXServer must be done here
-	// 0.13 it should be moved again...
+	// this should be moved ...
 	lyxserver = new LyXServer(lyxViews->getLyXFunc(), lyxrc.lyxpipes);
 }
 

@@ -84,7 +84,7 @@ void ToolbarDefaults::init()
 	add(LFUN_INSET_FOOTNOTE);
 	add(LFUN_INSET_MARGINAL);
 
-	add(LFUN_DEPTH);
+	add(LFUN_DEPTH_PLUS);
 	add(SEPARATOR);
 
         add(LFUN_MATH_MODE);

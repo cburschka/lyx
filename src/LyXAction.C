@@ -178,8 +178,6 @@ void LyXAction::init()
 		  N_("Decrement environment depth"), Noop },
 		{ LFUN_DEPTH_PLUS, "depth-increment",
 		  N_("Increment environment depth"), Noop },
-		{ LFUN_DEPTH, "depth-next", 
-		  N_("Change environment depth"), Noop },
 		{ LFUN_LDOTS, "dots-insert", N_("Insert ... dots"), Noop },
 		{ LFUN_DOWN, "down", N_("Go down"), ReadOnly },
 		{ LFUN_DOWNSEL, "down-select",

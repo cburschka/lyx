@@ -1,3 +1,11 @@
+2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ToolbarDefaults.C (init): 
+	* LyXAction.C (init): 
+	* commandtags.h: 
+	* BufferView_pimpl.C (Dispatch): 
+	* lyxfunc.C (dispatch): remove LFUN_DEPTH
+
 2002-03-19  Allan Rae  <rae@lyx.org>
 
 	* exporter.C (Export): removeAutoInsets before doing anything else.

@@ -31,7 +31,6 @@ Menuset
 	Item "Open...|O" "file-open"
 	Separator
 	Submenu "Import|I" "file_import"
-	Item "Child processes|h" "show-forks"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -53,7 +52,6 @@ Menuset
 	Submenu "Export|E" "file_export"
 	Item "Print...|P" "buffer-print"
 	OptItem "Fax...|F" "buffer-export fax"
-	Item "Child processes|h" "show-forks"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -97,7 +95,6 @@ Menuset
 	Separator
 	Item "Find & Replace...|F" "find-replace"
 	Submenu "Tabular|T" "edit_tabular"
-	Submenu "Floats & Insets|I" "edit_floats"
 	Submenu "Math|M" "edit_math"
 	Separator
 	#Item "Read Only" "buffer-toggle-read-only"
@@ -105,6 +102,7 @@ Menuset
 	Item "Thesaurus..." "thesaurus-entry"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"
+	Item "Open/Close float|l" "inset-toggle"
 	Separator
 	Item "Preferences...|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
@@ -113,15 +111,6 @@ Menuset
     Menu "edit_paste"
 	Item "as Lines|L" "primary-selection-paste"
 	Item "as Paragraphs|P" "primary-selection-paste paragraph"
-    End
-
-    Menu "edit_floats"
-	Item "Open/Close|O" "inset-toggle"
-#	Item "Melt|M" "melt"
-#	Item "Open All Figures/Tables|F" "floats-operate openfig"
-#	Item "Close All Figures/Tables|T" "floats-operate closefig"
-#	Item "Open All Footnotes/Marginal Notes|A" "floats-operate openfoot"
-#	Item "Close All Footnotes/Marginal Notes|C" "floats-operate closefoot"
     End
 
     Menu "edit_tabular"
@@ -285,6 +274,8 @@ Menuset
 	Separator
 	Item "LaTeX Logfile|L" "latex-view-log"
 	Item "Table of Contents|T" "toc-view"
+	Item "Child processes|C" "show-forks"
+	Item "TeX Information|X" "help-Texinfo"
     End
 
     Menu "update"
@@ -325,7 +316,8 @@ Menuset
 # HELP MENU
 #
     Menu "help"
-	Item "What's This|W" "toggle-tooltips"
+	Item "What's this?|W" "toggle-tooltips"
+        Separator
 	Item "Introduction|I" "help-open Intro"
 	Item "Tutorial|T" "help-open Tutorial"
 	Item "User's Guide|U" "help-open UserGuide"
@@ -337,8 +329,6 @@ Menuset
 	Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 	Separator
 	Item "About LyX|X" "help-aboutlyx"
-	Separator
-	Item "TeX Information" "help-Texinfo"
     End
 
 End
@@ -383,7 +373,7 @@ Toolbar
     Separator
     Icon "footnote-insert"
     Icon "marginalnote-insert"
-    Icon "depth-next"
+    Icon "depth-increment"
     Separator
     Icon "graphics-insert"
     Icon "dialog-tabular-insert"

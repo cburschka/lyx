@@ -1,4 +1,26 @@
+2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ui/default.ui: small cleanup: move Tex info and childs to View,
+	remove Edit>Floats menu, fix a few shortcuts.
+
+2002-03-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* images/depth-increment.xpm:
+	* images/depth-decrement.xpm: new icons
+	
+	* images/footnote-insert.xpm:
+	* images/marginalnote.xpm: small facelift
+	
+	* images/depth-next.xpm:
+	* images/marginpar-insert.xpm: removed
+	
+	* bind/sv_menus.bind: 
+	* bind/sciword.bind: 
+	* ui/old-default.ui: 
+	* ui/default.ui: replace depth-next with depth-increment
+
 2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
 	* examples/Literate.lyx: Small fix to make sure build-listerrors
 	still works.
 

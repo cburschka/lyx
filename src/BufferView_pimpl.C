@@ -1644,10 +1644,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		hfill();
 		break;
 		
-	case LFUN_DEPTH:
-		changeDepth(bv_, bv_->getLyXText(), 0);
-		break;
-		
 	case LFUN_DEPTH_MIN:
 		changeDepth(bv_, bv_->getLyXText(), -1);
 		break;
