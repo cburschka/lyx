@@ -524,8 +524,10 @@ public:
 	RowList::iterator endRow(ParagraphList::iterator pit) const;
 	/// return first row of text
 	RowList::iterator firstRow() const;
-	/// return row "behind" last of par
+	/// return last row of text
 	RowList::iterator lastRow() const;
+	/// return row "behind" last row of text
+	RowList::iterator endRow() const;
 	/// return next row crossing paragraph boundaries
 	RowList::iterator nextRow(RowList::iterator rit) const;
 	/// return previous row crossing paragraph boundaries

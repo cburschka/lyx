@@ -82,9 +82,9 @@ BufferView * LyXText::bv() const
 
 void LyXText::updateRowPositions()
 {
-	RowList::iterator rit = rows().begin();
-	RowList::iterator rend = rows().end();
-	for (int y = 0; rit != rend ; ++rit) {
+	RowList::iterator rit = firstRow();
+	RowList::iterator rend = endRow();
+	for (int y = 0; rit != rend ; rit = nextRow(rit)) {
 		rit->y(y);
 		y += rit->height();
 	}
@@ -93,7 +93,7 @@ void LyXText::updateRowPositions()
 
 int LyXText::top_y() const
 {
-	if (anchor_row_ == rowlist_.end())
+	if (anchor_row_ == endRow())
 		return 0;
 
 	return anchor_row_->y() + anchor_row_offset_;
@@ -106,7 +106,7 @@ void LyXText::top_y(int newy)
 		return;
 
 	if (isInInset()) {
-		anchor_row_ = rows().begin();
+		anchor_row_ = firstRow();
 		anchor_row_offset_ = newy;
 		return;
 	}
@@ -1005,8 +1005,6 @@ LColor::color LyXText::backgroundColor() const
 
 void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 {
-	Assert(rit != rows().end());
-
 	// get the maximum ascent and the maximum descent
 	double layoutasc = 0;
 	double layoutdesc = 0;
@@ -1216,12 +1214,11 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 				prev->getLabelWidthString() == pit->getLabelWidthString())
 			{
 				layoutasc = (layout->itemsep * defaultRowHeight());
-			} else if (rit != rows().begin()) {
+			} else if (rit != firstRow()) {
 				tmptop = layout->topsep;
 
-				if (boost::prior(pit)->getDepth() >= pit->getDepth()) {
+				if (boost::prior(pit)->getDepth() >= pit->getDepth())
 					tmptop -= getPar(boost::prior(rit))->layout()->bottomsep;
-				}
 
 				if (tmptop > 0)
 					layoutasc = (tmptop * defaultRowHeight());
@@ -1322,11 +1319,11 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 	rit->width(int(maxwidth + x));
 	if (inset_owner) {
 		width = max(0, workWidth());
-		RowList::iterator it = rows().begin();
-		RowList::iterator end = rows().end();
-		for (; it != end; ++it)
-			if (it->width() > width)
-				width = it->width();
+		RowList::iterator rit = firstRow();
+		RowList::iterator end = endRow();
+		for (; rit != end; rit = nextRow(rit))
+			if (rit->width() > width)
+				width = rit->width();
 	}
 }
 
@@ -2205,8 +2202,8 @@ RowList::iterator LyXText::cursorIRow() const
 RowList::iterator LyXText::getRowNearY(int & y) const
 {
 	RowList::iterator rit = anchor_row_;
-	RowList::iterator const beg = rows().begin();
-	RowList::iterator const end = rows().end();
+	RowList::iterator const beg = firstRow();
+	RowList::iterator const end = endRow();
 
 	if (rows().empty()) {
 		y = 0;
@@ -2220,15 +2217,15 @@ RowList::iterator LyXText::getRowNearY(int & y) const
 	if (tmpy <= y) {
 		while (rit != end && tmpy <= y) {
 			tmpy += rit->height();
-			++rit;
+			rit = nextRow(rit);
 		}
 		if (rit != beg) {
-			--rit;
+			rit = previousRow(rit);
 			tmpy -= rit->height();
 		}
 	} else {
 		while (rit != beg && tmpy > y) {
-			--rit;
+			rit = previousRow(rit);
 			tmpy -= rit->height();
 		}
 	}
@@ -2256,19 +2253,19 @@ int LyXText::getDepth() const
 
 ParagraphList::iterator LyXText::getPar(RowList::iterator row) const
 {
-	if (row == rows().end()) {
+	if (row == endRow()) {
 		lyxerr << "getPar() pit at end " << endl;
 		Assert(false);
 	}
 
-	if (row == rows().begin()) {
+	if (row == firstRow()) {
 		return ownerParagraphs().begin();
 	}
 
 	ParagraphList::iterator pit = ownerParagraphs().begin();
-	RowList::iterator rit = rows().begin();
-	RowList::iterator rend = rows().end();
-	for (++rit ; rit != rend; ++rit) {
+	RowList::iterator rit = firstRow();
+	RowList::iterator rend = endRow();
+	for (++rit ; rit != rend; rit = nextRow(rit)) {
 		if (rit->pos() == 0) {
 			++pit;
 			if (pit == ownerParagraphs().end()) {
@@ -2316,6 +2313,12 @@ RowList::iterator LyXText::firstRow() const
 RowList::iterator LyXText::lastRow() const
 {
 	return boost::prior(rowlist_.end());
+}
+
+
+RowList::iterator LyXText::endRow() const
+{
+	return rowlist_.end();
 }
 
 

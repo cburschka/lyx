@@ -63,7 +63,7 @@ LyXText::LyXText(BufferView * bv)
 	: height(0), width(0), anchor_row_offset_(0),
 	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
 {
-	anchor_row_ = rows().end();
+	anchor_row_ = endRow();
 }
 
 
@@ -71,7 +71,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 	: height(0), width(0), anchor_row_offset_(0),
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
 {
-	anchor_row_ = rows().end();
+	anchor_row_ = endRow();
 }
 
 
@@ -83,7 +83,7 @@ void LyXText::init(BufferView * bview)
 	width = 0;
 	height = 0;
 
-	anchor_row_ = rows().end();
+	anchor_row_ = endRow();
 	anchor_row_offset_ = 0;
 
 	current_font = getFont(ownerParagraphs().begin(), 0);
@@ -244,12 +244,12 @@ void LyXText::setCharFont(
 void LyXText::removeRow(RowList::iterator rit)
 {
 	if (anchor_row_ == rit) {
-		if (rit != rows().begin()) {
-			anchor_row_ = boost::prior(rit);
-			anchor_row_offset_ += anchor_row_->height();
-		} else {
+		if (rit == firstRow()) {
 			anchor_row_ = boost::next(rit);
 			anchor_row_offset_ -= rit->height();
+		} else {
+			anchor_row_ = boost::prior(rit);
+			anchor_row_offset_ += anchor_row_->height();
 		}
 	}
 
@@ -650,7 +650,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	width = 0;
 	height = 0;
 
-	anchor_row_ = rows().end();
+	anchor_row_ = endRow();
 	anchor_row_offset_ = 0;
 
 	ParagraphList::iterator pit = ownerParagraphs().begin();
@@ -671,7 +671,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	}
 
 	// final dimension
-	dim.asc = rows().begin()->ascent_of_text();
+	dim.asc = firstRow()->ascent_of_text();
 	dim.des = height - dim.asc;
 	dim.wid = std::max(mi.base.textwidth, int(width));
 }
@@ -1695,7 +1695,7 @@ namespace {
 	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur)
 	{
 		RowList::iterator row = lt.getRow(cur);
-		if (boost::next(row) == lt.rows().end())
+		if (boost::next(row) == lt.endRow())
 			return false;
 
 		RowList::iterator next = boost::next(row);
@@ -1794,8 +1794,8 @@ void LyXText::cursorUp(bool selecting)
 		}
 	}
 #else
-	setCursorFromCoordinates(bv(), cursor.x_fix(),
-				 cursor.y() - cursorRow()->baseline() - 1);
+	setCursorFromCoordinates(cursor.x_fix(),
+		 cursor.y() - cursorRow()->baseline() - 1);
 #endif
 }
 
@@ -1818,9 +1818,8 @@ void LyXText::cursorDown(bool selecting)
 		}
 	}
 #else
-	setCursorFromCoordinates(bv(), cursor.x_fix(),
-				 cursor.y() - cursorRow()->baseline()
-				 + cursorRow()->height() + 1);
+	setCursorFromCoordinates(cursor.x_fix(),
+		 cursor.y() - cursorRow()->baseline() + cursorRow()->height() + 1);
 #endif
 }
 
@@ -1960,7 +1959,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			selection.cursor.par()  == old_cursor.par()
 			&& selection.cursor.pos() == old_cursor.pos());
 
-		if (getRow(old_cursor) != rows().begin()) {
+		if (getRow(old_cursor) != firstRow()) {
 			RowList::iterator prevrow = boost::prior(getRow(old_cursor));
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position

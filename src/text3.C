@@ -242,7 +242,7 @@ void LyXText::cursorPrevious()
 
 	RowList::iterator rit = cursorRow();
 
-	if (rit == rows().begin()) {
+	if (rit == firstRow()) {
 		if (y > 0)
 			bv()->updateScrollbar();
 		return;

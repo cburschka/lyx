@@ -1104,14 +1104,16 @@ int paintRows(BufferView const & bv, LyXText const & text,
 #endif
 	}
 
+	//lyxerr << "text: " << &text << " y: " << y << " yf: " << yf
+	//	<< " y2: " << y2 << " yo: " << yo << "\n";
 	int yy = yf - y;
-	RowList::iterator end = text.rows().end();
+	RowList::iterator end = text.endRow();
 	while (rit != end && yy + y < y2) {
 		//const_cast<LyXText &>(text).setHeightOfRow(rit);
 		ParagraphList::iterator pit = text.getPar(rit);
 		paintRow(bv, text, pit, rit, y + yo, xo, y + text.top_y());
 		y += rit->height();
-		++rit;
+		rit = text.nextRow(rit);
 	}
 	return y;
 }
