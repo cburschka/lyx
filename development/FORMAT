@@ -1,5 +1,10 @@
 LyX file-format changes
 -----------------------
+2003-11-28  André Pönitz
+
+	* Remove space_above/space_below from Paragraph. 
+    This is now handled by InsetVSpace.
+
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
 	* Add transformations to InsetExternal
