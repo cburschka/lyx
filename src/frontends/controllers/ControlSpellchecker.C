@@ -199,8 +199,10 @@ void ControlSpellchecker::check()
 		word_ = nextWord(cur, start, bufferparams);
 
 		// end of document
-		if (getWord().empty())
-			break;
+		if (getWord().empty()) {
+			showSummary();
+			return;
+		}
 
 		++count_;
 
@@ -227,14 +229,15 @@ void ControlSpellchecker::check()
 
 	lyxerr[Debug::GUI] << "Found word \"" << getWord() << "\"" << endl;
 
-	if (getWord().empty()) {
-		showSummary();
-		return;
-	}
-
 	int const size = getWord().size();
 	cur.pos() -= size;
 	kernel().bufferview()->putSelectionAt(cur, size, false);
+	// if we used a lfun like in find/replace, dispatch would do
+	// that for us
+	kernel().bufferview()->update();
+	if (kernel().bufferview()->fitCursor())
+		kernel().bufferview()->update();
+
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {

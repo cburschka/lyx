@@ -1,3 +1,8 @@
+2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfind.C (findNextChange): update the bufferview after setting
+	the selection
+
 2004-11-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (getStatus): disable LFUN_INSET_OPTARG when the max

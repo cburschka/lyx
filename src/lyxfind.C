@@ -363,6 +363,11 @@ bool findNextChange(BufferView * bv)
 	}
 	pos_type length = end - pos;
 	bv->putSelectionAt(cur, length, false);
+	// if we used a lfun like in find/replace, dispatch would do
+	// that for us
+	bv->update();
+	if (bv->fitCursor())
+		bv->update();
 
 	return true;
 }

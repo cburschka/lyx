@@ -1,3 +1,8 @@
+2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlSpellchecker.C (check): update the view when setting the
+	selection
+
 2004-11-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlSpellchecker.C (nextWord): rewrite to skip words
