@@ -57,6 +57,9 @@ What's new
 - make sure to use the graphicx package with the RasterBitmap and XFig
   external templates.
 
+- fix the default tgif format entry to use .obj as file extension and
+  not .tgif
+
 - fix interaction between sixpack and LyX via lyxserver
 
 - fix command line crash and give useful exit status on some errors
