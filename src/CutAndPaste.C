@@ -218,9 +218,6 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// new environment and set also another font if that is required
 	ParagraphList::iterator tmpbuf = paragraphs.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
-	// Temporary set *par as previous of tmpbuf as we might have
-	// to realize the font.
-	tmpbuf->previous(&*pit);
 
 	// make sure there is no class difference
 #warning current_view used here
@@ -253,7 +250,11 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 					tmpbuf->erase(i--);
 				}
 			} else {
+#if 0
 				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(tmpbuf, pars));
+#else
+				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(pit, pars));
+#endif
 				LyXFont f2 = f1;
 				if (!pit->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);
@@ -263,9 +264,6 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 			}
 		}
 	}
-
-	// now reset it to 0
-	paragraphs.begin()->previous(0);
 
 	// make the buf exactly the same layout than
 	// the cursor paragraph
@@ -283,7 +281,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// if necessary
 	if (pit->size() > pos || !pit->next()) {
 		breakParagraphConservative(current_view->buffer()->params,
-					   pars, &*pit, pos);
+					   pars, pit, pos);
 		paste_the_end = true;
 	}
 	// set the end for redoing later
