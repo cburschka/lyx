@@ -423,11 +423,5 @@ bool QGraphics::isValid()
 	return !dialog_->filename->text().isEmpty();
 }
 
-
-void QGraphics::slotEdit()
-{
-	controller().editGraphics();
-}
-
 } // namespace frontend
 } // namespace lyx

@@ -31,8 +31,6 @@ public:
 	friend class QGraphicsDialog;
 	///
 	QGraphics(Dialog &);
-public slots:
-	void slotEdit();
 protected:
 	virtual bool isValid();
 private:
