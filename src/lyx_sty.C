@@ -126,3 +126,10 @@ string const tabularnewline_def =
 string const lyxgreyedout_def =
 	"%% The greyedout annotation environment\n"
 	"\\newenvironment{lyxgreyedout}{\\color[gray]{0.8}}{}\n";
+
+// We want to omit the file extension for includegraphics, but this does not
+// work when the filename contains other dots.
+// Idea from http://www.tex.ac.uk/cgi-bin/texfaq2html?label=unkgrfextn
+string const lyxdot_def =
+	"%% A simple dot to overcome graphicx limitations\n"
+	"\\newcommand{\\lyxdot}{.}\n";

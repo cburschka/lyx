@@ -93,6 +93,7 @@ using lyx::support::getExtFromContents;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
 using lyx::support::rtrim;
+using lyx::support::subst;
 using lyx::support::Systemcall;
 using lyx::support::unzipFile;
 using lyx::support::unzippedFileName;
@@ -591,7 +592,16 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	if (runparams.nice) {
 		// a relative filename should be relative to the master
 		// buffer.
-		latex_str += params().filename.outputFilename(m_buffer->filePath());
+		string basename = params().filename.outputFilename(m_buffer->filePath());
+		// Remove the extension so the LaTeX will use whatever
+		// is appropriate (when there are several versions in
+		// different formats)
+		if (!(IsFileReadable(file_ + ".eps") || IsFileReadable(file_ + ".ps")))
+			basename = RemoveExtension(basename);
+		// This works only if the filename contains no dots besides
+		// the just removed one. We can fool here by replacing all
+		// dots with a macro whose definition is just a dot ;-)
+		latex_str += subst(basename, ".", "\\lyxdot ");
 	} else if (file_exists) {
 		// Make the filename relative to the lyx file
 		// and remove the extension so the LaTeX will use whatever
@@ -662,6 +672,17 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 			     RemoveExtension(params().filename.absFilename()));
 
 	features.require("graphicx");
+
+	if (features.nice()) {
+		Buffer const * m_buffer = features.buffer().getMasterBuffer();
+		string basename =
+			params().filename.outputFilename(m_buffer->filePath());
+		string const file_ = params().filename.absFilename();
+		if (!(IsFileReadable(file_ + ".eps") || IsFileReadable(file_ + ".ps")))
+			basename = RemoveExtension(basename);
+		if (contains(basename, "."))
+			features.require("lyxdot");
+	}
 
 	if (params().subcaption)
 		features.require("subfigure");

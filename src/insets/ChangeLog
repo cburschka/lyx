@@ -1,3 +1,9 @@
+2004-04-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (latex): strip the extension and replace dots in
+	the filename if doing a "nice" export. This is a partial fix for
+	bug 1231 without reintroducing bug 655.
+
 2004-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetoptarg.h: remove the editable() method (InsetCollapsable

@@ -377,6 +377,9 @@ string const LaTeXFeatures::getMacros() const
 	if (isRequired("lyxgreyedout"))
 		macros << lyxgreyedout_def;
 
+	if (isRequired("lyxdot"))
+		macros << lyxdot_def << '\n';
+
 	// floats
 	getFloatDefinitions(macros);
 

@@ -52,5 +52,7 @@ extern std::string const mathcircumflex_def;
 extern std::string const tabularnewline_def;
 ///
 extern std::string const lyxgreyedout_def;
+///
+extern std::string const lyxdot_def;
 
 #endif // LYX_STY_H
