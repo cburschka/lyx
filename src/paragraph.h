@@ -103,8 +103,8 @@ public:
 			    Language const * from, Language const * to);
 	///
 	bool isMultiLingual(BufferParams const &);
-	///
 
+	///
 	string const asString(Buffer const *, bool label);
 	///
 	string const asString(Buffer const *, pos_type beg, pos_type end,
@@ -411,9 +411,4 @@ private:
 	Pimpl * pimpl_;
 };
 
-inline bool isMetaInset(Paragraph const * par, Paragraph::pos_type const pos)
-{
-	return par->getChar(pos) == Paragraph::META_INSET;
-}
- 
 #endif
