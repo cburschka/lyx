@@ -23,7 +23,9 @@ libgraphics_la_SOURCES = \
 	GraphicsParams.h \
 	GraphicsTypes.h
 
+if USE_LD_R
 libgraphics.la: libgraphics.o
 
 libgraphics.o: $(libgraphics_la_OBJECTS) $(libgraphics_la_DEPENDENCIES)
 	$(CXXLINK) $(libgraphics_la_OBJECTS)
+endif

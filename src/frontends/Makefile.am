@@ -29,10 +29,12 @@ libfrontends_la_SOURCES=\
 	Toolbar.C \
 	Toolbar.h
 
+if USE_LD_R
 libfrontends.la: libfrontends.o
 
 libfrontends.o: $(libfrontends_la_OBJECTS) $(libfrontends_la_DEPENDENCIES)
 	$(CXXLINK) $(libfrontends_la_OBJECTS) $(libfrontends_la_LIBADD)
+endif
 
 EXTRA_DIST = xforms qt2 gnome
 
