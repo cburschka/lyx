@@ -8,7 +8,7 @@
 #
 # This code usually gets called by the reLyX wrapper executable
 #
-# $Id: reLyXmain.pl,v 1.4 2001/08/31 07:54:05 jamatos Exp $
+# $Id: reLyXmain.pl,v 1.5 2003/01/20 19:38:50 jamatos Exp $
 #
 
 require 5.002; # Perl 5.001 doesn't work. Perl 4 REALLY doesn't work.
@@ -65,7 +65,7 @@ BEGIN{$Success = 0}
 #
 
 # Print welcome message including version info
-my $version_info = '$Date: 2001/08/31 07:54:05 $'; # RCS puts checkin date here
+my $version_info = '$Date: 2003/01/20 19:38:50 $'; # RCS puts checkin date here
 $version_info =~ s&.*?(\d+/\d+/\d+).*&$1&; # take out just the date info
 warn "reLyX, the LaTeX to LyX translator. Revision date $version_info\n\n";
 
@@ -145,9 +145,9 @@ if (defined($opt_o)) {
 # Read personal syntax.default, or system-wide if there isn't a personal one
 # Then read other syntax files, given by the -s option
 my $default_file = "$dot_lyxdir/reLyX/$syntaxname";
-if (! -e $default_file) {
+if (! -f $default_file) {
     $default_file = "$lyxdir/reLyX/$syntaxname";
-    die "cannot find default syntax file $default_file" unless -e $default_file;
+    die "cannot find default syntax file $default_file" unless -f $default_file;
 }
 my @syntaxfiles = ($default_file);
 push (@syntaxfiles, (split(/,/,$opt_s))) if defined $opt_s;
@@ -288,9 +288,9 @@ sub test_file {
     #$path .= '/' unless $path =~ /\/$/; # fix BUG in perl5.002 fileparse!
 
     # Try adding .tex to filename if you can't find the file the user input
-    unless (-e $File) {
+    unless (-f $File) {
         if (! $suffix) { # didn't have a valid suffix. Try adding one
-	    if (-e "$File.tex") {
+	    if (-f "$File.tex") {
 		$suffix = ".tex";
 	    } else {
 	 	warn "\nCan't find input file $File or $File.tex\n";
@@ -322,7 +322,10 @@ sub test_file {
     # Check for files that already exist
     my $lname = $PathBase . ".lyx";
     if (-e $lname) {
-	if ($opt_f) {
+	if (-d $lname) {
+	    warn "\nLyX file $lname already exists and is a directory.\n";
+	    return @return_error;
+	} elsif ($opt_f) {
 	    warn "Will overwrite file $lname\n" if $opt_d;
 	} else {
 	    warn "\nLyX file $lname already exists. Use -f to overwrite\n";
