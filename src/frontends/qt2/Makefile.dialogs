@@ -13,6 +13,7 @@ DIALOGS = \
 	QGraphics \
 	QInclude \
 	QIndex \
+	QLog \
 	QParagraph \
 	QPrint \
 	QRef \
@@ -21,7 +22,8 @@ DIALOGS = \
 	QTabularCreate \
 	QThesaurus \
 	QToc \
-	QURL
+	QURL \
+	QVCLog
  
 DIALOGSOURCES = \
 	QAbout.h QAboutDialog.h \
@@ -48,6 +50,8 @@ DIALOGSOURCES = \
 	QInclude.C QIncludeDialog.C \
 	QIndex.h QIndexDialog.h \
 	QIndex.C QIndexDialog.C \
+	QLog.h QLogDialog.h \
+	QLog.C QLogDialog.C \
 	QParagraph.h QParagraphDialog.h \
 	QParagraph.C QParagraphDialog.C \
 	QPrint.h QPrintDialog.h \
@@ -65,7 +69,9 @@ DIALOGSOURCES = \
 	QToc.h QTocDialog.h \
 	QToc.C QTocDialog.C \
 	QURL.h QURLDialog.h \
-	QURL.C QURLDialog.C
+	QURL.C QURLDialog.C \
+	QVCLog.h QVCLogDialog.h \
+	QVCLog.C QVCLogDialog.C
  
 MOCDIALOGS = \
 	QAboutDialog_moc.C \
@@ -80,6 +86,7 @@ MOCDIALOGS = \
 	QGraphicsDialog_moc.C \
 	QIncludeDialog_moc.C \
 	QIndexDialog_moc.C \
+	QLogDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPrintDialog_moc.C \
 	QRefDialog_moc.C \
@@ -88,7 +95,8 @@ MOCDIALOGS = \
 	QTabularCreateDialog_moc.C \
 	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \
-	QURLDialog_moc.C
+	QURLDialog_moc.C \
+	QVCLogDialog_moc.C
  
 UIDIALOGS = \
 	QAboutDialogBase.h \
@@ -115,6 +123,8 @@ UIDIALOGS = \
 	QIncludeDialogBase.C \
 	QIndexDialogBase.h \
 	QIndexDialogBase.C \
+	QLogDialogBase.h \
+	QLogDialogBase.C \
 	QParagraphDialogBase.h \
 	QParagraphDialogBase.C \
 	QPrintDialogBase.h \
@@ -130,7 +140,9 @@ UIDIALOGS = \
 	QTocDialogBase.h \
 	QTocDialogBase.C \
 	QURLDialogBase.h \
-	QURLDialogBase.C
+	QURLDialogBase.C \
+	QVCLogDialogBase.h \
+	QVCLogDialogBase.C
  
 UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
@@ -145,6 +157,7 @@ UIMOCDIALOGS = \
 	QGraphicsDialogBase_moc.C \
 	QIncludeDialogBase_moc.C \
 	QIndexDialogBase_moc.C \
+	QLogDialogBase_moc.C \
 	QParagraphDialogBase_moc.C \
 	QPrintDialogBase_moc.C \
 	QRefDialogBase_moc.C \
@@ -152,4 +165,5 @@ UIMOCDIALOGS = \
 	QTabularCreateDialogBase_moc.C \
 	QThesaurusDialogBase_moc.C \
 	QTocDialogBase_moc.C \
-	QURLDialogBase_moc.C
+	QURLDialogBase_moc.C \
+	QVCLogDialogBase_moc.C

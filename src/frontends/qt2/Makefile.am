@@ -27,7 +27,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormDocument.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
-	../xforms/FormLog.lo \
 	../xforms/FormMinipage.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
@@ -35,7 +34,6 @@ libqt2_la_OBJADD = \
 	../xforms/FormTabular.lo \
 	../xforms/FormToc.lo \
 	../xforms/FormUrl.lo \
-	../xforms/FormVCLog.lo \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \

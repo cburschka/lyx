@@ -23,10 +23,12 @@
 #include "QGraphicsDialog.h"
 #include "QIncludeDialog.h" 
 #include "QIndexDialog.h"
+#include "QLogDialog.h"
 #include "QRefDialog.h"
 #include "QTabularCreateDialog.h"
 #include "QThesaurusDialog.h"
 #include "QURLDialog.h"
+#include "QVCLogDialog.h"
  
 #include "QAbout.h"
 #include "QBibitem.h"
@@ -39,6 +41,7 @@
 #include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
+#include "QLog.h"
 #include "QParagraph.h"
 #include "QPrint.h"
 #include "QRef.h"
@@ -47,6 +50,7 @@
 #include "QTabularCreate.h"
 #include "QThesaurus.h"
 #include "QURL.h"
+#include "QVCLog.h"
 
 #include "QtLyXView.h" 
 #include "Dialogs.h"
@@ -66,17 +70,18 @@
 #include "controllers/ControlGraphics.h"
 #include "controllers/ControlInclude.h"
 #include "controllers/ControlIndex.h"
+#include "controllers/ControlLog.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSplash.h"
 #include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlThesaurus.h"
 #include "controllers/ControlUrl.h" 
+#include "controllers/ControlVCLog.h"
 #if 0
 #include "controllers/ControlButtons.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlFloat.h"
 #include "controllers/ControlLabel.h"
-#include "controllers/ControlLog.h"
 #include "controllers/ControlMinipage.h"
 #include "controllers/ControlPreamble.h"
 #include "controllers/ControlPrint.h"
@@ -84,7 +89,6 @@
 #include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
 #include "controllers/ControlToc.h"
-#include "controllers/ControlVCLog.h"
 #endif
 
 #include "GUI.h"
@@ -109,10 +113,12 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIGraphics<QGraphics, Qt2BC>(*lv, *this));
 	add(new GUIInclude<QInclude, Qt2BC>(*lv, *this)); 
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
+	add(new GUILog<QLog, Qt2BC>(*lv, *this)); 
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this)); 
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
+	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
