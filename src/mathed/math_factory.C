@@ -20,6 +20,7 @@
 #include "math_casesinset.h"
 #include "math_colorinset.h"
 #include "math_decorationinset.h"
+#include "math_dfracinset.h"
 #include "math_dotsinset.h"
 #include "math_ertinset.h"
 #include "math_fboxinset.h"
@@ -311,6 +312,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathBoldsymbolInset);
 	if (s == "color")
 		return MathAtom(new MathColorInset);
+	if (s == "dfrac")
+		return MathAtom(new MathDfracInset);
 
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
