@@ -5,6 +5,7 @@
 
 #include <utility>
 #include <iterator>
+#include <algorithm>
 
 namespace lyx {
 
