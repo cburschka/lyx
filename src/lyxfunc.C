@@ -405,7 +405,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			disable = (! buf->isDocBook() 
 				   || lyxrc.docbook_to_html_command == "none");
 		else if (argument == "custom")
-			disable == ! buf->isLatex();
+			disable = ! buf->isLatex();
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();

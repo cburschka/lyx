@@ -33,6 +33,11 @@ for fil in config/libtool.m4 ; do
 done
 echo "done."
 
+# Generate the ext_l10n.h
+echo -n "Generate the ext_l10n file..."
+grep -i -E "submenu|item|optitem" < lib/ui/default.ui | cut -d '"' -f 2 | awk '{printf "_(\"%s\");\n", $0}' > src/ext_l10n.h
+echo "done."
+
 # Generate the Makefiles and configure files
 if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
 	echo -n "Building macros... "
@@ -97,7 +102,7 @@ cat <<EOF > tmppot
 
 EOF
 
-grep -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
+grep -l -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
 awk 'BEGIN {FS= ":"} {print $1}' | sort -f -d | uniq >> tmppot
 mv tmppot po/POTFILES.in
 echo "done"

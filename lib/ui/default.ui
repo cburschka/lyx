@@ -101,7 +101,7 @@ Menuset
 	Separator
 	Item "View LaTeX log file|w" "latex-view-log"
 	Separator
-	SubMenu "Paste primary selection" "edit_paste"
+	Submenu "Paste primary selection" "edit_paste"
     End
 
     Menu "edit_floats"

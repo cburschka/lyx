@@ -117,6 +117,7 @@ lyx_SOURCES = \
 	debug.h \
 	encoding.C \
 	encoding.h \
+	ext_l10n.h \
 	figure.h \
 	filedlg.C \
 	filedlg.h \
