@@ -24,13 +24,127 @@
 #include "intl.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
+#include "frontends/screen.h"
 #include "frontends/WorkArea.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
+#include "undo_funcs.h"
 
 using std::endl;
 
 extern string current_layout;
+
+
+namespace {
+
+void cursorPrevious(LyXText * text, BufferView * bv)
+{
+	if (!text->cursor.row()->previous()) {
+		if (text->first_y > 0) {
+			int new_y = bv->text->first_y - bv->workarea().workHeight();
+			bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
+			bv->updateScrollbar();
+		}
+		return;
+	}
+
+	int y = text->first_y;
+	Row * cursorrow = text->cursor.row();
+
+	text->setCursorFromCoordinates(bv, text->cursor.x_fix(), y);
+	finishUndo();
+
+	int new_y;
+	if (cursorrow == bv->text->cursor.row()) {
+		// we have a row which is higher than the workarea so we leave the
+		// cursor on the start of the row and move only the draw up as soon
+		// as we move the cursor or do something while inside the row (it may
+		// span several workarea-heights) we'll move to the top again, but this
+		// is better than just jump down and only display part of the row.
+		new_y = bv->text->first_y - bv->workarea().workHeight();
+	} else {
+		if (text->inset_owner) {
+			new_y = bv->text->cursor.iy()
+				+ bv->theLockingInset()->insetInInsetY() + y
+				+ text->cursor.row()->height()
+				- bv->workarea().workHeight() + 1;
+		} else {
+			new_y = text->cursor.y()
+				- text->cursor.row()->baseline()
+				+ text->cursor.row()->height()
+				- bv->workarea().workHeight() + 1;
+		}
+	}
+	bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
+	if (text->cursor.row()->previous()) {
+		LyXCursor cur;
+		text->setCursor(bv, cur, text->cursor.row()->previous()->par(),
+						text->cursor.row()->previous()->pos(), false);
+		if (cur.y() > text->first_y) {
+			text->cursorUp(bv, true);
+		}
+	}
+	bv->updateScrollbar();
+}
+
+
+void cursorNext(LyXText * text, BufferView * bv)
+{
+	if (!text->cursor.row()->next()) {
+		int y = text->cursor.y() - text->cursor.row()->baseline() +
+			text->cursor.row()->height();
+		if (y > int(text->first_y + bv->workarea().workHeight())) {
+			bv->screen().draw(bv->text, bv,
+						  bv->text->first_y + bv->workarea().workHeight());
+			bv->updateScrollbar();
+		}
+		return;
+	}
+
+	int y = text->first_y + bv->workarea().workHeight();
+	if (text->inset_owner && !text->first_y) {
+		y -= (bv->text->cursor.iy()
+			  - bv->text->first_y
+			  + bv->theLockingInset()->insetInInsetY());
+	}
+
+	text->getRowNearY(y);
+
+	Row * cursorrow = text->cursor.row();
+	text->setCursorFromCoordinates(bv, text->cursor.x_fix(), y);
+	// + workarea().workHeight());
+	finishUndo();
+
+	int new_y;
+	if (cursorrow == bv->text->cursor.row()) {
+		// we have a row which is higher than the workarea so we leave the
+		// cursor on the start of the row and move only the draw down as soon
+		// as we move the cursor or do something while inside the row (it may
+		// span several workarea-heights) we'll move to the top again, but this
+		// is better than just jump down and only display part of the row.
+		new_y = bv->text->first_y + bv->workarea().workHeight();
+	} else {
+		if (text->inset_owner) {
+			new_y = bv->text->cursor.iy()
+				+ bv->theLockingInset()->insetInInsetY()
+				+ y - text->cursor.row()->baseline();
+		} else {
+			new_y =  text->cursor.y() - text->cursor.row()->baseline();
+		}
+	}
+	bv->screen().draw(bv->text, bv, new_y);
+	if (text->cursor.row()->next()) {
+		LyXCursor cur;
+		text->setCursor(bv, cur, text->cursor.row()->next()->par(),
+						text->cursor.row()->next()->pos(), false);
+		if (cur.y() < int(text->first_y + bv->workarea().workHeight())) {
+			text->cursorDown(bv, true);
+		}
+	}
+	bv->updateScrollbar();
+}
+
+}
 
 
 void LyXText::update(BufferView * bv, bool changed)
@@ -197,13 +311,13 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_PRIORSEL:
 		update(bv, false);
-		bv->cursorPrevious(this);
+		cursorPrevious(this, bv);
 		bv->finishChange(true);
 		break;
 
 	case LFUN_NEXTSEL:
 		update(bv, false);
-		bv->cursorNext(this);
+		cursorNext(this, bv);
 		bv->finishChange();
 		break;
 
@@ -319,7 +433,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
-		bv->cursorPrevious(this);
+		cursorPrevious(this, bv);
 		bv->finishChange(false);
 		// was:
 		// finishUndo();
@@ -331,7 +445,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			bv->beforeChange(this);
 		bv->update(this, BufferView::UPDATE);
-		bv->cursorNext(this);
+		cursorNext(this, bv);
 		bv->finishChange(false);
 		break;
 

@@ -82,10 +82,6 @@ public:
 	///
 	void redoCurrentBuffer();
 	///
-	void cursorPrevious(LyXText *);
-	///
-	void cursorNext(LyXText *);
-	///
 	bool available() const;
 	///
 	LyXView * owner() const;

@@ -323,11 +323,8 @@ MathInset::result_type MathNestInset::dispatch
 	switch (cmd.action) {
 
 		case LFUN_PASTE: {
-			lyxerr << "pasting '" << cmd.argument << "'\n";
 			MathArray ar;
 			mathed_parse_cell(ar, cmd.argument);
-			lyxerr << "pasting '" << ar << "'\n";
-			lyxerr << "cell(idx) '" << cell(idx) << "'\n";
 			cell(idx).insert(pos, ar);
 			pos += ar.size();
 			return DISPATCHED;

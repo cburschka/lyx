@@ -122,18 +122,6 @@ void BufferView::redoCurrentBuffer()
 }
 
 
-void BufferView::cursorPrevious(LyXText * text)
-{
-	pimpl_->cursorPrevious(text);
-}
-
-
-void BufferView::cursorNext(LyXText * text)
-{
-	pimpl_->cursorNext(text);
-}
-
-
 bool BufferView::available() const
 {
 	return pimpl_->available();

@@ -105,7 +105,7 @@ void MathSpaceInset::octavize(OctaveStream & os) const
 
 void MathSpaceInset::normalize(NormalStream & os) const
 {
-	os << "[space " << int(space_) << ' ' << latex_mathspace[space_] << "] ";
+	os << "[space " << int(space_) << "] ";
 }
 
 

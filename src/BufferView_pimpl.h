@@ -92,10 +92,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void cursorToggle();
 	///
-	void cursorPrevious(LyXText *);
-	///
-	void cursorNext(LyXText *);
-	///
 	bool available() const;
 	///
 	void beforeChange(LyXText *);

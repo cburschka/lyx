@@ -39,8 +39,6 @@ void WriteStream::addlines(unsigned int n)
 
 void WriteStream::pendingSpace(bool how)
 {
-	if (how)
-		os_ << ' ';
 	pendingspace_ = how;
 }
 
@@ -61,11 +59,6 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
-	if (ws.pendingSpace()) {
-		lyxerr << "writing a space in a string\n";
-		ws.os() << ' ';
-		ws.pendingSpace(false);
-	}
 	ws.os() << s;
 	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
 	return ws;
@@ -75,12 +68,8 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 WriteStream & operator<<(WriteStream & ws, char c)
 {
 	if (ws.pendingSpace()) {
-		//if (isalpha(c))
-		//	ws.os() << ' ';
-		if (!isalpha(c)) {
-			lyxerr << "I'd like to suppress writing a space\n";
-		}
-		ws.os() << ' ';
+		if (isalpha(c))
+			ws.os() << ' ';
 		ws.pendingSpace(false);
 	}
 	ws.os() << c;
