@@ -1,0 +1,99 @@
+# this is the master file from which the dialog file rules are generated
+
+DIALOGS = \
+	QAbout \
+	QCharacter \
+	QCitation \
+	QDocument \
+	QIndex \
+	QParagraph \
+	QPrint \
+	QRef \
+	QSearch \
+	QSplash \
+	QTabularCreate \
+	QToc \
+	QURL
+ 
+DIALOGSOURCES = \
+	QAbout.h QAboutDialog.h \
+	QAbout.C QAboutDialog.C \
+	QCharacter.h QCharacterDialog.h \
+	QCharacter.C QCharacterDialog.C \
+	QCitation.h QCitationDialog.h \
+	QCitation.C QCitationDialog.C \
+	QDocument.h QDocumentDialog.h \
+	QDocument.C QDocumentDialog.C \
+	QIndex.h QIndexDialog.h \
+	QIndex.C QIndexDialog.C \
+	QParagraph.h QParagraphDialog.h \
+	QParagraph.C QParagraphDialog.C \
+	QPrint.h QPrintDialog.h \
+	QPrint.C QPrintDialog.C \
+	QRef.h QRefDialog.h \
+	QRef.C QRefDialog.C \
+	QSearch.h QSearchDialog.h \
+	QSearch.C QSearchDialog.C \
+	QSplash.h QSplashDialog.h \
+	QSplash.C QSplashDialog.C \
+	QTabularCreate.h QTabularCreateDialog.h \
+	QTabularCreate.C QTabularCreateDialog.C \
+	QToc.h QTocDialog.h \
+	QToc.C QTocDialog.C \
+	QURL.h QURLDialog.h \
+	QURL.C QURLDialog.C
+ 
+MOCDIALOGS = \
+	QAboutDialog_moc.C \
+	QCharacterDialog_moc.C \
+	QCitationDialog_moc.C \
+	QDocumentDialog_moc.C \
+	QIndexDialog_moc.C \
+	QParagraphDialog_moc.C \
+	QPrintDialog_moc.C \
+	QRefDialog_moc.C \
+	QSearchDialog_moc.C \
+	QSplashDialog_moc.C \
+	QTabularCreateDialog_moc.C \
+	QTocDialog_moc.C \
+	QURLDialog_moc.C
+ 
+UIDIALOGS = \
+	QAboutDialogBase.h \
+	QAboutDialogBase.C \
+	QCharacterDialogBase.h \
+	QCharacterDialogBase.C \
+	QCitationDialogBase.h \
+	QCitationDialogBase.C \
+	QDocumentDialogBase.h \
+	QDocumentDialogBase.C \
+	QIndexDialogBase.h \
+	QIndexDialogBase.C \
+	QParagraphDialogBase.h \
+	QParagraphDialogBase.C \
+	QPrintDialogBase.h \
+	QPrintDialogBase.C \
+	QRefDialogBase.h \
+	QRefDialogBase.C \
+	QSearchDialogBase.h \
+	QSearchDialogBase.C \
+	QTabularCreateDialogBase.h \
+	QTabularCreateDialogBase.C \
+	QTocDialogBase.h \
+	QTocDialogBase.C \
+	QURLDialogBase.h \
+	QURLDialogBase.C
+ 
+UIMOCDIALOGS = \
+	QAboutDialogBase_moc.C \
+	QCharacterDialogBase_moc.C \
+	QCitationDialogBase_moc.C \
+	QDocumentDialogBase_moc.C \
+	QIndexDialogBase_moc.C \
+	QParagraphDialogBase_moc.C \
+	QPrintDialogBase_moc.C \
+	QRefDialogBase_moc.C \
+	QSearchDialogBase_moc.C \
+	QTabularCreateDialogBase_moc.C \
+	QTocDialogBase_moc.C \
+	QURLDialogBase_moc.C

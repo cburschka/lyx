@@ -1,14 +1,9 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file qt2BC.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
  * \author Allan Rae, rae@lyx.org
  * \author Angus Leeming, a.leeming@ic.ac.uk
  * \author Baruch Even, baruch.even@writeme.com

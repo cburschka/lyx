@@ -17,8 +17,8 @@
 #endif
 
 #include <qdialog.h>
-#undef emit
 
+#include "QtLyXView.h" 
 #include "Dialogs.h"
 #include "Qt2Base.h"
 #include "qt2BC.h"

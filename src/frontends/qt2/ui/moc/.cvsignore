@@ -3,6 +3,8 @@ Makefile
 *.deps
 *.lo
 .libs
-libqt2.la
+libqt2uimoc.la
 moc_*.C
 *_moc.C
+*.C
+*.h

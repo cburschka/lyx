@@ -1,11 +1,10 @@
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *           Copyright 2001 The LyX Team.
+/**
+ * \file GUIRunTime.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * ====================================================== */
+ * \author John Levon
+ */
 
 #include <config.h>
 
@@ -13,10 +12,13 @@
 #pragma implementation
 #endif
 
+#include <qapplication.h>
+#include <qpainter.h>
+ 
+#include "QtLyXView.h" 
+#include "XFormsView.h"
 #include "GUIRunTime.h"
 #include "debug.h"
-
-#include <qapplication.h>
 
 #include FORMS_H_LOCATION
 
@@ -34,29 +36,14 @@ using std::endl;
 
 extern bool finished;
 
-namespace {
-
-int const xforms_include_version = FL_INCLUDE_VERSION;
-
-} // namespace anon
-
-
 int GUIRunTime::initApplication(int argc, char * argv[])
 {
+	int const xforms_include_version = FL_INCLUDE_VERSION;
+ 
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the
 	// execution of LyX. Better with a clean fast exit than
 	// a strange segfault later.
-	// I realize that this check have to be moved when we
-	// support several toolkits, but IMO all the toolkits
-	// should try to have the same kind of check. This could
-	// be done by having a CheckHeaderAndLib function in
-	// all the toolkit implementations, this function is
-	// responsible for notifing the user.
-	// if (!CheckHeaderAndLib()) {
-	//         // header vs. lib version failed
-	//         return 1;
-	// }
 	int xforms_lib_version = fl_library_version(0, 0);
 	if (xforms_include_version != xforms_lib_version) {
 		lyxerr << "You are either running LyX with wrong "
@@ -75,6 +62,7 @@ int GUIRunTime::initApplication(int argc, char * argv[])
 	return 0;
 }
 
+ 
 void GUIRunTime::processEvents() 
 {
 	qApp->processEvents();
@@ -88,13 +76,49 @@ void GUIRunTime::runTime()
 	while (!finished) {
 		processEvents();
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
+			lyxerr << "Received unhandled X11 event" << endl;
+			lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
+				"Target: 0x" << std::hex << ev.xany.window << endl;
 		}
 	}
 }
 
 
+LyXView * GUIRunTime::createMainView(int w, int h)
+{
+	return new XFormsView(w, h);
+}
+
+ 
+Display * GUIRunTime::x11Display()
+{
+	//return p.device()->x11Display();
+	return fl_get_display();
+}
+
+
+int GUIRunTime::x11Screen()
+{
+	//return p.device()->x11Screen(); 
+	return fl_screen;
+}
+
+
+Colormap GUIRunTime::x11Colormap()
+{
+	//return p.device()->x11Colormap(); 
+	return fl_state[fl_get_vclass()].colormap;
+}
+
+ 
+int GUIRunTime::x11VisualDepth() 
+{
+	//return p.device()->x11Depth();
+	return fl_get_visual_depth();
+}
+
+ 
 void GUIRunTime::setDefaults() 
 {
 	FL_IOPT cntl;
@@ -115,4 +139,3 @@ void GUIRunTime::setDefaults()
 			| FL_PDMenuFontSize
 			| FL_PDBorderWidth, &cntl);
 }
-

@@ -1,0 +1,291 @@
+<!DOCTYPE UI><UI>
+<class>QSearchDialogBase</class>
+<include location="global">config.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QSearchDialogBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>384</width>
+            <height>168</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form1</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>findStrLabel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Find:</string>
+            </property>
+        </widget>
+        <widget row="0"  column="1"  rowspan="1"  colspan="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>find</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>focusPolicy</name>
+                <enum>StrongFocus</enum>
+            </property>
+            <property stdset="1">
+                <name>editable</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>duplicatesEnabled</name>
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>replaceLabel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Replace with:</string>
+            </property>
+        </widget>
+        <widget row="1"  column="1"  rowspan="1"  colspan="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>replace</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>editable</name>
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>caseSensitive</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Case sensitive</string>
+            </property>
+        </widget>
+        <widget row="3"  column="0"  rowspan="2"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>matchWord</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Match whole words onl&amp;y</string>
+            </property>
+        </widget>
+        <spacer row="2"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>HSpacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="6"  column="0"  rowspan="1"  colspan="2" >
+            <property>
+                <name>name</name>
+                <cstring>VSpacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="6"  column="3" >
+            <property>
+                <name>name</name>
+                <cstring>VSpacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="0"  column="3" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>findPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Find &amp;Next</string>
+            </property>
+        </widget>
+        <widget row="1"  column="3" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>replacePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Replace</string>
+            </property>
+        </widget>
+        <widget row="2"  column="3"  rowspan="2"  colspan="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>replaceAllPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Replace &amp;All </string>
+            </property>
+        </widget>
+        <widget row="5"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>searchBack</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Search &amp;backwards</string>
+            </property>
+        </widget>
+        <widget row="4"  column="3"  rowspan="2"  colspan="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>cancelPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Cancel</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>findPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QSearchDialogBase</receiver>
+        <slot>Find()</slot>
+    </connection>
+    <connection>
+        <sender>replacePB</sender>
+        <signal>clicked()</signal>
+        <receiver>QSearchDialogBase</receiver>
+        <slot>Replace()</slot>
+    </connection>
+    <connection>
+        <sender>replaceAllPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QSearchDialogBase</receiver>
+        <slot>ReplaceAll()</slot>
+    </connection>
+    <connection>
+        <sender>cancelPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QSearchDialogBase</receiver>
+        <slot>cancel_adaptor()</slot>
+    </connection>
+    <slot access="protected">Find()</slot>
+    <slot access="protected">Replace()</slot>
+    <slot access="protected">ReplaceAll()</slot>
+    <slot access="protected">cancel_adaptor()</slot>
+</connections>
+<tabstops>
+    <tabstop>find</tabstop>
+    <tabstop>replace</tabstop>
+    <tabstop>caseSensitive</tabstop>
+    <tabstop>matchWord</tabstop>
+    <tabstop>searchBack</tabstop>
+    <tabstop>findPB</tabstop>
+    <tabstop>replacePB</tabstop>
+    <tabstop>replaceAllPB</tabstop>
+    <tabstop>cancelPB</tabstop>
+</tabstops>
+</UI>

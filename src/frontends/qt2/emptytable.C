@@ -26,8 +26,8 @@ EmptyTable::EmptyTable(QWidget * parent, const char * name)
 
 void EmptyTable::paintCell(QPainter *p, int row, int col)
 {
-	int x2 = cellWidth(col) - 1;
-	int y2 = cellHeight(row) - 1;
+	int const x2 = cellWidth(col) - 1;
+	int const y2 = cellHeight(row) - 1;
 
 	p->fillRect(0, 0, x2, y2, QColor("white"));
 	p->drawLine(x2, 0, x2, y2);
@@ -62,8 +62,8 @@ void EmptyTable::setNumberRows(int nr_rows)
 
 void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 {
-	int x = ev->pos().x();
-	int y = ev->pos().y();
+	int const x = ev->pos().x();
+	int const y = ev->pos().y();
 
 	if (x > 0) 
 		setNumberColumns(x / cellsize + leftCell());

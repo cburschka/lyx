@@ -1,0 +1,59 @@
+This file contains some do's and dont's for the Qt2 frontend.
+
+Don't #undef emit - #include "QtLyXView.h" instead
+ 
+Naming conventions
+------------------
+
+QFoo.[Ch]              The file that interacts with the controller
+QFooDialog.[Ch]        The implementation of the dialog, derived from the generated files
+ui/QFooDialog.ui       The designer file
+ui/QFooDialogBase.[Ch] Generated files from QFooDialog.ui
+ 
+slots should be named e.g. slotFooClicked(), slotFooSelected(), where foo is the name
+of the widget.
+ 
+Widgets should be named like "fooXX", where XX is one of the following
+widget types :
+
+CB - check box 
+CO -
+ED -
+ML -
+PB - push button
+(FIXME: complete this)
+
+ 
+Dialog		Maintainer	MVC conversion
+----------------------------------------------
+Bibitem
+Bibtex
+Character	Edwin
+Citation	Kalle		In progress
+Command
+Connections
+Copyright	Kalle		Done
+Credits		Kalle		In progress
+Document	Kalle		In progress (Not yet prepared)
+Error
+External
+File		Edwin
+Graphics
+Include
+Index		Kalle
+Log
+Minipage
+Paragraph	Edwin		Not yet prepared
+Preamble
+Preferences
+Print		Edwin
+Ref		Kalle
+Search		Edwin
+Splash		Edwin
+Tabular				Not yet prepared
+TabularCreate	Edwin
+Toc		Kalle
+Url		Kalle
+VCLog
+
+
