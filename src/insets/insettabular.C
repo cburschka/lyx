@@ -995,13 +995,25 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, CURSOR, false);
 		break;
 	}
+	// none of these make sense for insettabular,
+	// but we must catch them to prevent any
+	// selection from being confused
+	case LFUN_PRIORSEL:
+	case LFUN_NEXTSEL:
+	case LFUN_WORDLEFT:
+	case LFUN_WORDLEFTSEL:
+	case LFUN_WORDRIGHT: 
+	case LFUN_WORDRIGHTSEL:
+	case LFUN_DOWN_PARAGRAPH:
+	case LFUN_DOWN_PARAGRAPHSEL:
+	case LFUN_UP_PARAGRAPH:
+	case LFUN_UP_PARAGRAPHSEL:
 	case LFUN_BACKSPACE:
-		break;
 	case LFUN_DELETE:
-		break;
 	case LFUN_HOME:
-		break;
+	case LFUN_HOMESEL:
 	case LFUN_END:
+	case LFUN_ENDSEL:
 		break;
 	case LFUN_LAYOUT_TABULAR:
 	{

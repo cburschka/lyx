@@ -1,5 +1,10 @@
 2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
 
+	* insettabular.C: capture some more functions to prevent
+	selection drawing problems. Bug #451274
+
+2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
+
 	* insetgraphics.C:
 	* insetgraphicsParams.C: fix inverted sense of float_equal
 
