@@ -276,7 +276,7 @@ private:
 	///
 	mutable int top_y;
 	///
-	ParagraphList::iterator inset_par;
+	lyx::paroffset_type inset_par;
 	///
 	lyx::pos_type inset_pos;
 	///
@@ -290,7 +290,7 @@ private:
 	///
 	UpdatableInset * the_locking_inset;
 	///
-	mutable ParagraphList::iterator old_par;
+	mutable lyx::paroffset_type old_par;
 
 	///
 	// to remember old painted frame dimensions to clear it on the right spot!

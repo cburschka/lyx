@@ -407,10 +407,6 @@ void LyXTabular::setOwner(InsetTabular * inset)
 }
 
 
-#warning for some strange reason, cellstruct does not seem to have copy-semantics
-
-// work around using 'swap' only...
-
 void LyXTabular::appendRow(BufferParams const & bp, int cell)
 {
 	++rows_;
@@ -458,8 +454,6 @@ void LyXTabular::appendColumn(BufferParams const & bp, int cell)
 {
 	++columns_;
 
-	cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
-							      cellstruct(bp)));
 	int const column = column_of_cell(cell);
 	column_vector::iterator cit = column_info.begin() + column + 1;
 	column_info.insert(cit, columnstruct());
@@ -467,21 +461,16 @@ void LyXTabular::appendColumn(BufferParams const & bp, int cell)
 	column_info[column + 1] = column_info[column];
 
 	for (int i = 0; i < rows_; ++i) {
-		for (int j = 0; j <= column; ++j)
-			c_info[i][j] = cell_info[i][j];
-
-		for (int j = column + 1; j < columns_; ++j)
-			c_info[i][j] = cell_info[i][j - 1];
+		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp));
 
 		// care about multicolumns
-		if (c_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
-			c_info[i][column + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
+		if (cell_info[i][column + 1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
+			cell_info[i][column + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 
 		if (column + 2 >= columns_
-		    || c_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN)
-			c_info[i][column + 1].multicolumn = LyXTabular::CELL_NORMAL;
+		    || cell_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN)
+			cell_info[i][column + 1].multicolumn = LyXTabular::CELL_NORMAL;
 	}
-	cell_info = c_info;
 	//++column;
 	for (int i = 0; i < rows_; ++i) {
 		cell_info[i][column + 1].inset.clear(false);

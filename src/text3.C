@@ -716,23 +716,21 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_DELETE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!selection.set()) {
-			LyXCursor cur = cursor;
-			if (cur.pos() == getPar(cur)->size()) {
+			if (cursor.pos() == cursorPar()->size()) {
 				cursorRight(bv);
-				cur = cursor;
-				if (cur.pos() == 0
-				    && !(getPar(cur)->params().spaceTop()
-					 == VSpace (VSpace::NONE))) {
+				ParagraphParameters & params = cursorPar()->params();
+				if (cursor.pos() == 0
+				    && !(params.spaceTop() == VSpace (VSpace::NONE))) {
 					setParagraph(
-						 getPar(cur)->params().lineTop(),
-						 getPar(cur)->params().lineBottom(),
-						 getPar(cur)->params().pagebreakTop(),
-						 getPar(cur)->params().pagebreakBottom(),
+						 params.lineTop(),
+						 params.lineBottom(),
+						 params.pagebreakTop(),
+						 params.pagebreakBottom(),
 						 VSpace(VSpace::NONE),
-						 getPar(cur)->params().spaceBottom(),
-						 getPar(cur)->params().spacing(),
-						 getPar(cur)->params().align(),
-						 getPar(cur)->params().labelWidthString(), 0);
+						 params.spaceBottom(),
+						 params.spacing(),
+						 params.align(),
+						 params.labelWidthString(), 0);
 					cursorLeft(bv);
 				} else {
 					cursorLeft(bv);
@@ -769,20 +767,20 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_BACKSPACE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!selection.set()) {
-			LyXCursor cur = cursor;
-			if (cur.pos() == 0
-			    && !(getPar(cur)->params().spaceTop() == VSpace(VSpace::NONE))) {
+			ParagraphParameters & params = cursorPar()->params();
+			if (cursor.pos() == 0 && !(params.spaceTop() == VSpace(VSpace::NONE))) {
 				setParagraph(
-					 getPar(cur)->params().lineTop(),
-					 getPar(cur)->params().lineBottom(),
-					 getPar(cur)->params().pagebreakTop(),
-					 getPar(cur)->params().pagebreakBottom(),
+					 params.lineTop(),
+					 params.lineBottom(),
+					 params.pagebreakTop(),
+					 params.pagebreakBottom(),
 					 VSpace(VSpace::NONE),
-				   getPar(cur)->params().spaceBottom(),
-					 getPar(cur)->params().spacing(),
-					 getPar(cur)->params().align(),
-					 getPar(cur)->params().labelWidthString(), 0);
+				   params.spaceBottom(),
+					 params.spacing(),
+					 params.align(),
+					 params.labelWidthString(), 0);
 			} else {
+				LyXCursor cur = cursor;
 				backspace();
 				selection.cursor = cur;
 			}
@@ -817,16 +815,17 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		LyXCursor cur = cursor;
 		replaceSelection(bv->getLyXText());
 		if (cur.pos() == 0) {
-			if (getPar(cur)->params().spaceTop() == VSpace(VSpace::NONE)) {
+			ParagraphParameters & params = getPar(cur)->params();
+			if (params.spaceTop() == VSpace(VSpace::NONE)) {
 				setParagraph(
-					 getPar(cur)->params().lineTop(),
-					 getPar(cur)->params().lineBottom(),
-					 getPar(cur)->params().pagebreakTop(),
-					 getPar(cur)->params().pagebreakBottom(),
-					 VSpace(VSpace::DEFSKIP), getPar(cur)->params().spaceBottom(),
-					 getPar(cur)->params().spacing(),
-					 getPar(cur)->params().align(),
-					 getPar(cur)->params().labelWidthString(), 1);
+					 params.lineTop(),
+					 params.lineBottom(),
+					 params.pagebreakTop(),
+					 params.pagebreakBottom(),
+					 VSpace(VSpace::DEFSKIP), params.spaceBottom(),
+					 params.spacing(),
+					 params.align(),
+					 params.labelWidthString(), 1);
 			}
 		}
 		else {
@@ -969,22 +968,19 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->update();
 		break;
 
-	case LFUN_PASTE: {
+	case LFUN_PASTE:
 		cmd.message(_("Paste"));
 		replaceSelection(bv->getLyXText());
-		size_t sel_index = 0;
-		string const & arg = cmd.argument;
-		if (isStrUnsignedInt(arg)) {
-			size_t const paste_arg = strToUnsignedInt(arg);
 #warning FIXME Check if the arg is in the domain of available selections.
-			sel_index = paste_arg;
-		}
-		pasteSelection(sel_index);
+		if (isStrUnsignedInt(cmd.argument))
+			pasteSelection(strToUnsignedInt(cmd.argument));
+		else
+			pasteSelection(0);
 		clearSelection(); // bug 393
 		bv->update();
 		bv->switchKeyMap();
+		finishUndo();
 		break;
-	}
 
 	case LFUN_CUT:
 		cutSelection(true, true);

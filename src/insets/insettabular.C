@@ -1300,7 +1300,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	}
 	// we need this only from here on!!!
 	++in_reset_pos;
-	static int const offset = ADD_TO_TABULAR_WIDTH + 2;
+	int const offset = ADD_TO_TABULAR_WIDTH + 2;
 	int new_x = getCellXPos(actcell);
 	int old_x = cursorx_;
 	new_x += offset;
@@ -1633,12 +1633,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::SET_PWIDTH:
 	{
-		LyXLength const vallen(value);
-		LyXLength const & tmplen = tabular.getColumnPWidth(actcell);
+		LyXLength const len(value);
+		LyXLength const & oldlen = tabular.getColumnPWidth(actcell);
 
-		bool const update = (tmplen != vallen);
-		tabular.setColumnPWidth(actcell, vallen);
-		if (update) {
+		tabular.setColumnPWidth(actcell, len);
+		if (oldlen != len) {
 			// We need this otherwise we won't resize
 			// the insettext of the active cell (if any)
 			// until later (see InsetText::do_resize)
@@ -1646,10 +1645,10 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			bv->update();
 		}
 
-		if (vallen.zero()
+		if (len.zero()
 		    && tabular.getAlignment(actcell, true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(bv, LyXTabular::ALIGN_CENTER, string());
-		else if (!vallen.zero()
+		else if (!len.zero()
 			 && tabular.getAlignment(actcell, true) != LYX_ALIGN_BLOCK)
 			tabularFeatures(bv, LyXTabular::ALIGN_BLOCK, string());
 		break;
@@ -1657,12 +1656,10 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::SET_MPWIDTH:
 	{
-		LyXLength const vallen(value);
-		LyXLength const & tmplen = tabular.getPWidth(actcell);
-
-		bool const update = (tmplen != vallen);
-		tabular.setMColumnPWidth(actcell, vallen);
-		if (update) {
+		LyXLength const len(value);
+		LyXLength const & oldlen = tabular.getPWidth(actcell);
+		tabular.setMColumnPWidth(actcell, len);
+		if (oldlen != len) {
 			// We need this otherwise we won't resize
 			// the insettext of the active cell (if any)
 			// until later (see InsetText::do_resize)
@@ -1681,7 +1678,6 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		unlockInsetInInset(bv, the_locking_inset);
 		tabular.appendRow(bv->buffer()->params(), actcell);
 		tabular.setOwner(this);
-		//tabular.init(bv->buffer()->params(), tabular.rows(), tabular.columns());
 		updateLocal(bv);
 		break;
 	case LyXTabular::APPEND_COLUMN:
@@ -1689,7 +1685,6 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		unlockInsetInInset(bv, the_locking_inset);
 		tabular.appendColumn(bv->buffer()->params(), actcell);
 		tabular.setOwner(this);
-		//tabular.init(bv->buffer()->params(), tabular.rows(), tabular.columns());
 		actcell = tabular.getCellNumber(row, column);
 		updateLocal(bv);
 		break;
@@ -2309,7 +2304,8 @@ bool InsetTabular::cutSelection(BufferParams const & bp)
 
 	for (int i = sel_row_start; i <= sel_row_end; ++i)
 		for (int j = sel_col_start; j <= sel_col_end; ++j)
-			tabular.getCellInset(tabular.getCellNumber(i, j)).clear(bp.tracking_changes);
+			tabular.getCellInset(tabular.getCellNumber(i, j))
+				.clear(bp.tracking_changes);
 	return true;
 }
 

@@ -1161,7 +1161,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// and selection.end
 
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator endpit = getPar(selection.end.par() + 1);
+	ParagraphList::iterator endpit = boost::next(getPar(selection.end.par()));
 	ParagraphList::iterator undoendpit = endpit;
 	ParagraphList::iterator pars_end = ownerParagraphs().end();
 
@@ -1810,8 +1810,13 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	if (selection.set())
 		return false;
 
+	// Don't do anything if the cursor is invalid
+	if (old_cursor.par() == -1)
+		return false;
+
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
-	if (getPar(old_cursor)->isFreeSpacing())
+	ParagraphList::iterator const old_pit = getPar(old_cursor);
+	if (old_pit->isFreeSpacing())
 		return false;
 
 	/* Ok I'll put some comments here about what is missing.
@@ -1838,7 +1843,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	// MISSING
 
 	// If the pos around the old_cursor were spaces, delete one of them.
-	ParagraphList::iterator const old_pit = getPar(old_cursor);
 	if (old_cursor.par() != cursor.par()
 	    || old_cursor.pos() != cursor.pos()) {
 

@@ -1987,6 +1987,8 @@ ParagraphList::iterator LyXText::getPar(LyXCursor const & cur) const
 
 ParagraphList::iterator LyXText::getPar(int par) const
 {
+	BOOST_ASSERT(par >= 0);
+	BOOST_ASSERT(par < ownerParagraphs().size());
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	std::advance(pit, par);
 	return pit;

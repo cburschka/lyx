@@ -506,7 +506,6 @@ public:
 
 	///
 	std::string selectionAsString(Buffer const & buffer, bool label) const;
-
 private:
 	/** Cursor related data.
 	  Later this variable has to be removed. There should be now internal

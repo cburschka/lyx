@@ -1,3 +1,13 @@
+
+2003-10-10  André Pönitz  <poenitz@gmx.net>
+
+	* lyxfunc.C:
+	* lyxtext.h:
+	* tabular.C:
+	* text.C:
+	* text2.C:
+	* text3.C: fix some of the tabular crashes
+
 2003-10-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* MenuBackend.C (binding): put debug message into Debug::KBMAP

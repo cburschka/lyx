@@ -888,7 +888,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available())
 		view()->hideCursor();
 
-#if 1
+#if 0
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
@@ -932,28 +932,36 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			if (action == LFUN_UNDO) {
 				view()->undo();
 				goto exit_with_message;
-			} else if (action == LFUN_REDO) {
+			}
+
+			if (action == LFUN_REDO) {
 				view()->redo();
 				goto exit_with_message;
-			} else if (((result=inset->
-				     // Hand-over to inset's own dispatch:
-				     localDispatch(FuncRequest(view(), action, argument))) ==
-				    DISPATCHED) ||
-				   (result == DISPATCHED_NOUPDATE))
+			}
+
+			// Hand-over to inset's own dispatch:
+			result = inset->localDispatch(FuncRequest(view(), action, argument));
+			if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 				goto exit_with_message;
-					// If UNDISPATCHED, just soldier on
-			else if (result == FINISHED) {
+			}
+
+			// If UNDISPATCHED, just soldier on
+			if (result == FINISHED) {
 				owner->clearMessage();
 				goto exit_with_message;
 				// We do not need special RTL handling here:
 				// FINISHED means that the cursor should be
 				// one position after the inset.
-			} else if (result == FINISHED_RIGHT) {
+			}
+		
+			if (result == FINISHED_RIGHT) {
 				view()->text->cursorRight(view());
 				moveCursorUpdate();
 				owner->clearMessage();
 				goto exit_with_message;
-			} else if (result == FINISHED_UP) {
+			}
+
+			if (result == FINISHED_UP) {
 				RowList::iterator const irow = view()->text->cursorIRow();
 				if (irow != view()->text->firstRow()) {
 #if 1
@@ -971,7 +979,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				}
 				owner->clearMessage();
 				goto exit_with_message;
-			} else if (result == FINISHED_DOWN) {
+			}
+		
+			if (result == FINISHED_DOWN) {
 				RowList::iterator const irow = view()->text->cursorIRow();
 				if (irow != view()->text->lastRow()) {
 #if 1
@@ -991,42 +1001,42 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				owner->clearMessage();
 				goto exit_with_message;
 			}
+
 #warning I am not sure this is still right, please have a look! (Jug 20020417)
-			else { // result == UNDISPATCHED
-				//setMessage(N_("Text mode"));
-				switch (action) {
-				case LFUN_UNKNOWN_ACTION:
-				case LFUN_BREAKPARAGRAPH:
-				case LFUN_BREAKLINE:
+			// result == UNDISPATCHED
+			//setMessage(N_("Text mode"));
+			switch (action) {
+			case LFUN_UNKNOWN_ACTION:
+			case LFUN_BREAKPARAGRAPH:
+			case LFUN_BREAKLINE:
+				view()->text->cursorRight(view());
+				view()->switchKeyMap();
+				owner->view_state_changed();
+				break;
+			case LFUN_RIGHT:
+				if (!view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
 					view()->text->cursorRight(view());
-					view()->switchKeyMap();
-					owner->view_state_changed();
-					break;
-				case LFUN_RIGHT:
-					if (!view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
-						view()->text->cursorRight(view());
-						moveCursorUpdate();
-						owner->view_state_changed();
-					}
-					goto exit_with_message;
-				case LFUN_LEFT:
-					if (view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
-						view()->text->cursorRight(view());
-						moveCursorUpdate();
-						owner->view_state_changed();
-					}
-					goto exit_with_message;
-				case LFUN_DOWN:
-					if (view()->text->cursorRow() != view()->text->lastRow())
-						view()->text->cursorDown(view());
-					else
-						view()->text->cursorRight(view());
 					moveCursorUpdate();
 					owner->view_state_changed();
-					goto exit_with_message;
-				default:
-					break;
 				}
+				goto exit_with_message;
+			case LFUN_LEFT:
+				if (view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
+					view()->text->cursorRight(view());
+					moveCursorUpdate();
+					owner->view_state_changed();
+				}
+				goto exit_with_message;
+			case LFUN_DOWN:
+				if (view()->text->cursorRow() != view()->text->lastRow())
+					view()->text->cursorDown(view());
+				else
+					view()->text->cursorRight(view());
+				moveCursorUpdate();
+				owner->view_state_changed();
+				goto exit_with_message;
+			default:
+				break;
 			}
 		}
 	}
@@ -1521,8 +1531,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	case LFUN_CHILDOPEN:
 	{
 		string const filename =
-			MakeAbsPath(argument,
-				    owner->buffer()->filePath());
+			MakeAbsPath(argument, owner->buffer()->filePath());
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
 		view()->savePosition(0);
@@ -1647,8 +1656,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 
 	case LFUN_EXTERNAL_EDIT: {
-		InsetExternal()
-			.localDispatch(FuncRequest(view(), action, argument));
+		InsetExternal().localDispatch(FuncRequest(view(), action, argument));
 		break;
 	}
 

@@ -111,13 +111,13 @@ void InsetText::init()
 	top_y = 0;
 
 	locked = false;
-	inset_par = paragraphs.end();
+	inset_par = -1;
 	inset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;
 	no_selection = true;
 	the_locking_inset = 0;
-	old_par = paragraphs.end();
+	old_par = -1;
 	in_insetAllowed = false;
 	mouse_x = 0;
 	mouse_y = 0;
@@ -270,7 +270,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	top_baseline = y;
 	top_y = y - dim_.asc;
 
-	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
+	if (the_locking_inset
+		  && text_.cursor.par() == inset_par && cpos() == inset_pos) {
 		inset_x = cx() - x;
 		inset_y = cy();
 	}
@@ -311,9 +312,9 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
-	if (old_par != cpar()) {
+	if (old_par != text_.cursor.par()) {
 		bv->owner()->setLayout(cpar()->layout()->name());
-		old_par = cpar();
+		old_par = text_.cursor.par();
 	}
 }
 
@@ -355,8 +356,8 @@ void InsetText::lockInset(BufferView * bv)
 	the_locking_inset = 0;
 	inset_pos = inset_x = inset_y = 0;
 	inset_boundary = false;
-	inset_par = paragraphs.end();
-	old_par = paragraphs.end();
+	inset_par =  -1;
+	old_par = -1;
 	text_.setCursorIntern(0, 0);
 	text_.clearSelection();
 	finishUndo();
@@ -377,7 +378,7 @@ void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 	inset_x = cx() - top_x;
 	inset_y = cy();
 	inset_pos = cpos();
-	inset_par = cpar();
+	inset_par = text_.cursor.par();
 	inset_boundary = cboundary();
 }
 
@@ -418,7 +419,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	}
 
 	if (the_locking_inset && the_locking_inset == inset) {
-		if (cpar() == inset_par && cpos() == inset_pos) {
+		if (text_.cursor.par() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
 			inset_x = cx() - top_x;
 			inset_y = cy();
@@ -444,7 +445,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		the_locking_inset = 0;
 		if (lr)
 			moveRightIntern(bv, true, false);
-		old_par = paragraphs.end(); // force layout setting
+		old_par = -1; // force layout setting
 		if (scroll())
 			scroll(bv, 0.0F);
 		else
@@ -521,7 +522,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		// we moved the view we cannot do mouse selection in this case!
 		if (bv->top_y() != old_top_y)
 			no_selection = true;
-		old_par = cpar();
+		old_par = text_.cursor.par();
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
@@ -551,29 +552,13 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
 	InsetOld * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
-	bool ret = false;
-	if (inset) {
-// This code should probably be removed now. Simple insets
-// (!highlyEditable) can actually take the localDispatch,
-// and turn it into edit() if necessary. But we still
-// need to deal properly with the whole relative vs.
-// absolute mouse co-ords thing in a realiable, sensible way
-#if 0
-		if (isHighlyEditableInset(inset))
-			ret = inset->localDispatch(cmd1);
-		else {
-			inset_x = cx(bv) - top_x;
-			inset_y = cy();
-			cmd1.x = cmd.x - inset_x;
-			cmd1.y = cmd.x - inset_y;
-			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
-			ret = true;
-		}
-#endif
-		ret = inset->localDispatch(cmd1);
-		updateLocal(bv, false);
+	if (!inset)
+		return false;
 
-	}
+	// We still need to deal properly with the whole relative vs.
+	// absolute mouse co-ords thing in a realiable, sensible way
+	bool ret = inset->localDispatch(cmd1);
+	updateLocal(bv, false);
 	return ret;
 }
 
@@ -623,8 +608,8 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		inset_x = 0;
 		inset_y = 0;
 		inset_boundary = false;
-		inset_par = paragraphs.end();
-		old_par = paragraphs.end();
+		inset_par = -1;
+		old_par = -1;
 
 
 		if (cmd.argument.size()) {
@@ -820,61 +805,57 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		updflag = true;
 		break;
 
-	case LFUN_PASTE: {
+	case LFUN_PASTE:
 		if (!autoBreakRows_) {
 			if (CutAndPaste::nrOfParagraphs() > 1) {
 #ifdef WITH_WARNINGS
 #warning FIXME horrendously bad UI
 #endif
 				Alert::error(_("Paste failed"), _("Cannot include more than one paragraph."));
-				break;
 			}
-		}
-
-		replaceSelection(bv->getLyXText());
-		size_t sel_index = 0;
-		string const & arg = cmd.argument;
-		if (isStrUnsignedInt(arg)) {
-			size_t const paste_arg = strToUnsignedInt(arg);
+		} else {
+			replaceSelection(bv->getLyXText());
+			size_t sel_index = 0;
+			string const & arg = cmd.argument;
+			if (isStrUnsignedInt(arg)) {
 #warning FIXME Check if the arg is in the domain of available selections.
-			sel_index = paste_arg;
+				sel_index = strToUnsignedInt(arg);
+			}
+			text_.pasteSelection(sel_index);
+			// bug 393
+			text_.clearSelection();
+			updflag = true;
 		}
-		text_.pasteSelection(sel_index);
-		// bug 393
-		text_.clearSelection();
-		updflag = true;
 		break;
-	}
 
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows_) {
 			result = DISPATCHED;
-			break;
+		} else {
+			replaceSelection(bv->getLyXText());
+			text_.breakParagraph(paragraphs, 0);
+			updflag = true;
 		}
-		replaceSelection(bv->getLyXText());
-		text_.breakParagraph(paragraphs, 0);
-		updflag = true;
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		if (!autoBreakRows_) {
 			result = DISPATCHED;
-			break;
+		} else {
+			replaceSelection(bv->getLyXText());
+			text_.breakParagraph(paragraphs, 1);
+			updflag = true;
 		}
-		replaceSelection(bv->getLyXText());
-		text_.breakParagraph(paragraphs, 1);
-		updflag = true;
 		break;
 
 	case LFUN_BREAKLINE: {
 		if (!autoBreakRows_) {
 			result = DISPATCHED;
-			break;
+		} else {
+			replaceSelection(bv->getLyXText());
+			text_.insertInset(new InsetNewline);
+			updflag = true;
 		}
-
-		replaceSelection(bv->getLyXText());
-		text_.insertInset(new InsetNewline);
-		updflag = true;
 		break;
 	}
 
