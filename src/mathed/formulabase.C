@@ -53,7 +53,7 @@
 #include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
-#include "../insets/insetcommand.h"
+#include "../insets/insetcommandparams.h"
 
 #include "ref_inset.h"
 
