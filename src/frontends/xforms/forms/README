@@ -60,5 +60,5 @@ extern FD_graphics_special * build_graphics_special(void *);
 extern FD_graphics_lyxview * build_graphics_lyxview(void *);
 
 where the function is to be passed a pointer to the parent dialog
-(usually "this") so that this pointer can be cast of to FormBase * and
-the appropriate method called.
+(usually "this") so that this pointer can be cast off to FormBase * in the
+assigned callback function and the appropriate class method called.
