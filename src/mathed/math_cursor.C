@@ -1175,6 +1175,9 @@ MathCursorPos const & MathCursor::cursor() const
 
 bool MathCursor::goUpDown(bool up)
 {
+	// Be warned: The 'logic' implemented in this function is highly fragile.
+	// A distance of one pixel or a '<' vs '<=' _really_ matters.
+	// So fiddle around with it only if you know what you are doing!
 	int xlow, xhigh, ylow, yhigh;
 
   int xo, yo;
@@ -1219,8 +1222,10 @@ bool MathCursor::goUpDown(bool up)
 
 	// try to find an inset that knows better then we
 	while (1) {
-		// we found a cell that thinks it has something "below" us.
+		///lyxerr << "updown: We are in " << *par() << " idx: " << idx() << '\n';
+		// ask inset first
 		if (par()->idxUpDown(idx(), up)) {
+			// we found a cell that thinks it has something "below" us.
 			///lyxerr << "updown: found inset that handles UpDown\n";
 			xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 			// project (xo,yo) onto proper box
@@ -1235,6 +1240,7 @@ bool MathCursor::goUpDown(bool up)
 			return true;
 		}
 
+		// leave inset
 		if (!popLeft()) {
 			// no such inset found, just take something "above"
 			///lyxerr << "updown: handled by strange case\n";
@@ -1246,7 +1252,12 @@ bool MathCursor::goUpDown(bool up)
 					up ? yo - 4 : formula()->yhigh()
 				);
 		}
-		///lyxerr << "updown: looping\n";
+		
+		// any improvement so far?
+		int xnew, ynew;
+		getPos(xnew, ynew);
+		if (up ? ynew < yo : ynew > yo)
+			return true;
 	}
 }
 
@@ -1267,7 +1278,9 @@ bool MathCursor::bruteFind
 			int yo = top.ypos();
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-				if (d < best_dist) {
+				// '<=' in order to take the last possible position
+				// this is important for clicking behind \sum in e.g. '\sum_i a'
+				if (d <= best_dist) {
 					best_dist   = d;
 					best_cursor = it.cursor();
 				}
