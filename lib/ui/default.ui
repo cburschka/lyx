@@ -80,7 +80,7 @@ Menuset
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"
 	Item "Open/Close float|l" "inset-toggle"
-	Submenu "Change tracking|h" "edit_change"
+	Submenu "Change tracking|g" "edit_change"
 	Separator
 	Item "Preferences...|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
