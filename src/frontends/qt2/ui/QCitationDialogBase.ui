@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>613</width>
+            <width>609</width>
             <height>416</height>
         </rect>
     </property>
@@ -97,7 +97,7 @@
                     </property>
                     <property stdset="1">
                         <name>default</name>
-                        <bool>false</bool>
+                        <bool>true</bool>
                     </property>
                 </widget>
                 <widget>
@@ -120,6 +120,10 @@
                     <property stdset="1">
                         <name>text</name>
                         <string>Cancel</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
                     </property>
                 </widget>
             </hbox>

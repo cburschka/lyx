@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>391</width>
+            <width>387</width>
             <height>292</height>
         </rect>
     </property>
@@ -667,6 +667,14 @@
                         <name>text</name>
                         <string>&amp;Restore</string>
                     </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
                 </widget>
                 <spacer>
                     <property>
@@ -699,6 +707,14 @@
                         <name>text</name>
                         <string>&amp;OK</string>
                     </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
                 </widget>
                 <widget>
                     <class>QPushButton</class>
@@ -710,6 +726,10 @@
                         <name>text</name>
                         <string>&amp;Apply</string>
                     </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
                 </widget>
                 <widget>
                     <class>QPushButton</class>
@@ -720,6 +740,10 @@
                     <property stdset="1">
                         <name>text</name>
                         <string>&amp;Close</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
                     </property>
                 </widget>
             </hbox>
