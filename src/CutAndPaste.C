@@ -207,7 +207,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	// Now remove all out of the buffer which is NOT allowed in the
 	// new environment and set also another font if that is required.
-	ParagraphList::iterator tmpbuf = paragraphs.begin();
+	ParagraphList::iterator tmpbuf = simple_cut_clone.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
 
 	// Make sure there is no class difference.
@@ -217,7 +217,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	Paragraph::depth_type max_depth = pit->getMaxDepthAfter();
 
-	for (; tmpbuf != paragraphs.end(); ++tmpbuf) {
+	for (; tmpbuf != simple_cut_clone.end(); ++tmpbuf) {
 		// If we have a negative jump so that the depth would
 		// go below 0 depth then we have to redo the delta to
 		// this new max depth level so that subsequent
@@ -256,12 +256,12 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	// Make the buf exactly the same layout than
 	// the cursor paragraph.
-	paragraphs.begin()->makeSameLayout(*pit);
+	simple_cut_clone.begin()->makeSameLayout(*pit);
 
 	// Find the end of the buffer.
 	// FIXME: change this to end() - 1
-	ParagraphList::iterator lastbuffer = paragraphs.begin();
-	while (boost::next(lastbuffer) != paragraphs.end())
+	ParagraphList::iterator lastbuffer = simple_cut_clone.begin();
+	while (boost::next(lastbuffer) != simple_cut_clone.end())
 		++lastbuffer;
 
 	bool paste_the_end = false;
@@ -273,7 +273,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 					   pars, pit, pos);
 		paste_the_end = true;
 	}
-	
+
 	// Set the end for redoing later.
 	ParagraphList::iterator endpit = boost::next(boost::next(pit));
 
@@ -281,8 +281,8 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	lastbuffer->next(pit->next());
 	pit->next()->previous(&*lastbuffer);
 
-	pit->next(&*paragraphs.begin());
-	paragraphs.begin()->previous(&*pit);
+	pit->next(&*simple_cut_clone.begin());
+	simple_cut_clone.begin()->previous(&*pit);
 
 	if (boost::next(pit) == lastbuffer)
 		lastbuffer = pit;
@@ -292,7 +292,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	pit = lastbuffer;
 	pos = lastbuffer->size();
 	// Maybe some pasting.
-	if (boost::next(lastbuffer) != paragraphs.end() && paste_the_end) {
+	if (boost::next(lastbuffer) != simple_cut_clone.end() && paste_the_end) {
 		if (boost::next(lastbuffer)->hasSameLayout(*lastbuffer)) {
 			mergeParagraph(current_view->buffer()->params, pars,
 				       lastbuffer);
@@ -307,9 +307,13 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		} else
 			boost::next(lastbuffer)->stripLeadingSpaces();
 	}
-	// restore the simple cut buffer.
-	paragraphs = simple_cut_clone;
 
+#if 1
+	// For the time beeing we must do this to avoid deleting the
+	// newly pasted paragraphs.
+	simple_cut_clone.set(0);
+#endif
+	
 	return make_pair(PitPosPair(pit, pos), endpit);
 }
 

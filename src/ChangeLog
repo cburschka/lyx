@@ -1,5 +1,10 @@
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* CutAndPaste.C (pasteSelection): work on the simple_cut_clone,
+	not on paragraphs.
+
+2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* CutAndPaste.C (pasteSelection): copy paragraphlist the nice way.
 
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
