@@ -1,3 +1,7 @@
+2003-09-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* bufferview_funcs.C (currentState): output paragraph position
+
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
 	* FloatList.h: move out #include "Floating.h".
@@ -9,7 +13,7 @@
 	* lyxfunc.h: move out #include "FuncStatus.h".
 	* lyxtext: move out #include "lyxcursor.h".
 	* paragraph_pimpl.h: move out #include "counters.h".
-	 
+
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeXFeatures.[Ch]: replace the externalPreambles string with a
