@@ -272,13 +272,6 @@ time_t FileInfo::getStatusChangeTime() const
 }
 
 
-nlink_t FileInfo::getNumberOfLinks() const
-{
-	lyx::Assert(isOK());
-	return buf_.st_nlink;
-}
-
-
 uid_t FileInfo::getUid() const
 {
 	lyx::Assert(isOK());

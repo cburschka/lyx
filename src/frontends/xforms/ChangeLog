@@ -1,3 +1,7 @@
+2004-12-15  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C (Reread): no longer use FileInfo::getNumberOfLinks().
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C: (FileDlgCB): use os::homepath(), not

@@ -65,9 +65,6 @@ public:
 	/// Total file size in bytes
 	off_t getSize() const;
 
-	/// Number of hard links
-	nlink_t getNumberOfLinks() const;
-
 	/// User ID of owner
 	uid_t getUid() const;
 
