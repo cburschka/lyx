@@ -92,6 +92,7 @@ InsetFloat::InsetFloat(string const & type)
 	setAutoCollapse(false);
 	setInsetName("Float");
 	floatType = type;
+	setInsetName(type.c_str());
 	//floatPlacement = "H";
 }
 

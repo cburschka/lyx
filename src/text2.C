@@ -1933,20 +1933,24 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		string s = layout.labelstring();
 		
 		// the caption hack:
-      
 		if (layout.labeltype == LABEL_SENSITIVE) {
-			if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+		    bool isOK = (par->InInset() && par->InInset()->owner() && 
+				     (par->InInset()->owner()->LyxCode()==Inset::FLOAT_CODE));
+			if ((isOK && (par->InInset()->owner()->getInsetName() == "figure")) ||
+			    (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			    && (par->footnotekind == LyXParagraph::FIG
-				|| par->footnotekind == LyXParagraph::WIDE_FIG))
+				|| par->footnotekind == LyXParagraph::WIDE_FIG)))
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":רויא" : "Figure:";
-			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+			else if ((isOK && (par->InInset()->owner()->getInsetName() == "table")) ||
+				 (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && (par->footnotekind == LyXParagraph::TAB
-				     || par->footnotekind == LyXParagraph::WIDE_TAB))
+				     || par->footnotekind == LyXParagraph::WIDE_TAB)))
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":הלבט" : "Table:";
-			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
-				 && par->footnotekind == LyXParagraph::ALGORITHM)
+			else if ((isOK && (par->InInset()->owner()->getInsetName() == "algorithm")) ||
+				 (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+				  && par->footnotekind == LyXParagraph::ALGORITHM))
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":םתירוגלא" : "Algorithm:";
 			else {

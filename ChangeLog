@@ -1,3 +1,11 @@
+2000-07-18  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetfloat.C (InsetFloat): use setInsetName to set the
+	name of the inset so that it can be requested outside (text2.C).
+
+	* src/text2.C (SetCounter): modified so it sees insetfloat for caption
+	labels.
+
 2000-07-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/formula.h (ConvertFont): constify
