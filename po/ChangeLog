@@ -1,7 +1,13 @@
+2003-03-10  Michael Schmitt  <Michael.Schmitt@teststep.org>
+	
+	* pocheck.pl: new perl script that checks the consistency of a
+	given po file
+
 2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* POTFILES.in: * Makefile.in.in: use a plain sort instead of "sort
-	-f -n" to gewnerate POTFILES.in. Hopefully everybody will get the
+	* POTFILES.in: 
+	* Makefile.in.in: use a plain sort instead of "sort -f -n" to 
+	generate POTFILES.in. Hopefully everybody will get the
 	same ordering now.
 
 2003-02-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
