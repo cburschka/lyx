@@ -147,8 +147,6 @@ void LyXComm::closeConnection()
 
 int LyXComm::startPipe(string const & filename, bool write)
 {
-	int fd;
-
 #ifdef __EMX__
 	HPIPE os2fd;
 	APIRET rc;
@@ -181,7 +179,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	};
 	// Imported handles can be used both with OS/2 APIs and emx
 	// library functions.
-	fd = _imphandle(os2fd);
+	int const fd = _imphandle(os2fd);
 #else
 	if (::access(filename.c_str(), F_OK) == 0) {
 		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
@@ -196,7 +194,8 @@ int LyXComm::startPipe(string const & filename, bool write)
 		       << strerror(errno) << endl;
 		return -1;
 	};
-	fd = ::open(filename.c_str(), write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
+	int const fd = ::open(filename.c_str(),
+			      write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
 #endif
 
 	if (fd < 0) {
