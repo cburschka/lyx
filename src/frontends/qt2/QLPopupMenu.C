@@ -56,6 +56,8 @@ QLPopupMenu::QLPopupMenu(Menubar::Pimpl * owner, string const & name, bool tople
 {
 	if (toplevel)
 		connect(this, SIGNAL(aboutToShow()), this, SLOT(showing()));
+	connect(this, SIGNAL(activated(int)),
+		owner_->view(), SLOT(activated(int)));
 }
  
 

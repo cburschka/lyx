@@ -48,8 +48,6 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 		pair<int, QLPopupMenu *> menu =
 			createMenu(owner_->menuBar(), &(*m), this, true);
 		name_map_[m->submenuname()] = menu.second;
-		QObject::connect(menu.second, SIGNAL(activated(int)),
-			owner_, SLOT(activated(int)));
 	}
 }
 
