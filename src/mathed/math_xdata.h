@@ -37,6 +37,10 @@ public:
 	int xo() const { return xo_; }
 	/// access to cached y coordinate of last drawing
 	int yo() const { return yo_; }
+	/// access to cached x coordinate of mid point of last drawing
+	int xm() const { return xo_ + width_ / 2; }
+	/// access to cached y coordinate of mid point of last drawing
+	int ym() const { return yo_ + (descent_ - ascent_) / 2; }
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate

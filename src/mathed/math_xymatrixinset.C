@@ -20,6 +20,18 @@ MathInset * MathXYMatrixInset::clone() const
 }
 
 
+int MathXYMatrixInset::colsep() const
+{
+	return 40;
+}
+
+
+int MathXYMatrixInset::rowsep() const
+{
+	return 40;
+}
+
+
 void MathXYMatrixInset::metrics(MathMetricsInfo const & st) const
 {
 	MathMetricsInfo mi = st;

@@ -8,6 +8,9 @@
 #pragma interface
 #endif
 
+// for the \ar stuff in \xymatrix
+
+class MathXYMatrixInset;
 
 class MathXYArrowInset : public MathNestInset {
 public: 
@@ -18,14 +21,31 @@ public:
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
+	void draw(Painter & pain, int x, int y) const;
+	///
 	MathXYArrowInset * asXYArrowInset() { return this; }
 	///
-	void normalize();
+	bool editing() const;
 
+	///
+	void normalize();
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+
+public:
+	///
+	MathXYMatrixInset const * targetMatrix() const;
+	///
+	MathXArray const & targetCell() const;
+	///
+	MathXArray const & sourceCell() const;
+
+	///
+	bool up_;
+	///
+	mutable MathMetricsInfo mi_;
 };
 
 #endif

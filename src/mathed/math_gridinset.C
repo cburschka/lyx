@@ -12,18 +12,6 @@
 
 namespace {
 
-///
-int const COLSEP = 6;
-///
-int const ROWSEP = 6;
-///
-int const HLINESEP = 3;
-///
-int const VLINESEP = 3;
-///
-int const BORDER = 2;
-
-
 string verboseHLine(int n)
 {
 	string res;
@@ -239,7 +227,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
 	}
-	rowinfo_[0].ascent_       += HLINESEP * rowinfo_[0].lines_;
+	rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
 	rowinfo_[nrows()].ascent_  = 0;
 	rowinfo_[nrows()].descent_ = 0;
 
@@ -250,8 +238,8 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
 			rowinfo_[row - 1].skipPixels() +
-			ROWSEP +
-			rowinfo_[row].lines_ * HLINESEP +
+			rowsep() +
+			rowinfo_[row].lines_ * hlinesep() +
 			rowinfo_[row].ascent_;
 	}
 
@@ -281,31 +269,31 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	colinfo_[ncols()].width_  = 0;
 
 	// compute horizontal offsets
-	colinfo_[0].offset_ = BORDER;
+	colinfo_[0].offset_ = border();
 	for (col_type col = 1; col <= ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
 			colinfo_[col - 1].width_ + 
 			colinfo_[col - 1].skip_ +
-			COLSEP + 
-			colinfo_[col].lines_ * VLINESEP;
+			colsep() + 
+			colinfo_[col].lines_ * vlinesep();
 	}
 
 
 	width_   =   colinfo_[ncols() - 1].offset_      
 	               + colinfo_[ncols() - 1].width_
-                 + VLINESEP * colinfo_[ncols()].lines_
-	               + BORDER;
+                 + vlinesep() * colinfo_[ncols()].lines_
+	               + border();
 
 	ascent_  = - rowinfo_[0].offset_          
 	               + rowinfo_[0].ascent_
-                 + HLINESEP * rowinfo_[0].lines_
-	               + BORDER;
+                 + hlinesep() * rowinfo_[0].lines_
+	               + border();
 
 	descent_ =   rowinfo_[nrows() - 1].offset_
 	               + rowinfo_[nrows() - 1].descent_
-                 + HLINESEP * rowinfo_[nrows()].lines_
-	               + BORDER;
+                 + hlinesep() * rowinfo_[nrows()].lines_
+	               + border();
 
 
 /*	
@@ -319,7 +307,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			ws_[0] = 7 * workwidth / 8;
 	
 	// Adjust local tabs
-	width = COLSEP;
+	width = colsep();
 	for (cxrow = row_.begin(); cxrow; ++cxrow) {   
 		int rg = COLSEP;
 		int lf = 0;
@@ -351,9 +339,9 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			}
 			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 			cxrow->setTab(i, lf + rg);
-			rg = ws_[i] - ww + COLSEP;
+			rg = ws_[i] - ww + colsep();
 			if (cxrow == row_.begin())
-				width += ws_[i] + COLSEP;
+				width += ws_[i] + colsep();
 		}
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
@@ -369,14 +357,14 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 	for (row_type row = 0; row <= nrows(); ++row)
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
-				- i * HLINESEP - HLINESEP/2 - ROWSEP/2;
+				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
 			pain.line(x + 1, yy, x + width_ - 1, yy);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
-				- i * VLINESEP - VLINESEP/2 - COLSEP/2;
+				- i * vlinesep() - vlinesep()/2 - colsep()/2;
 			pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
 		}
 }
@@ -704,3 +692,32 @@ void MathGridInset::write(WriteStream & os) const
 		os << "\\\\" << s;
 }
 
+
+int MathGridInset::colsep() const
+{
+	return 6;
+}
+
+
+int MathGridInset::rowsep() const
+{
+	return 6;
+}
+
+
+int MathGridInset::hlinesep() const
+{
+	return 3;
+}
+
+
+int MathGridInset::vlinesep() const
+{
+	return 3;
+}
+
+
+int MathGridInset::border() const
+{
+	return 2;
+}

@@ -4,6 +4,7 @@
 #include "lyxfont.h"
 
 class BufferView;
+class MathNestInset;
 
 
 /// Standard Math Sizes (Math mode styles)
@@ -22,11 +23,11 @@ enum MathStyles {
 struct MathMetricsInfo {
 	///
 	MathMetricsInfo()
-		: view(0), font(), style(LM_ST_TEXT)
+		: view(0), font(), style(LM_ST_TEXT), inset(0)
 	{}
 	///
 	MathMetricsInfo(BufferView * v, LyXFont const & f, MathStyles s)
-		: view(v), font(f), style(s)
+		: view(v), font(f), style(s), inset(0)
 	{}
 
 	///
@@ -35,6 +36,10 @@ struct MathMetricsInfo {
 	LyXFont font;
 	///
 	MathStyles style;
+	/// used to pass some info down
+	MathNestInset const * inset;
+	///
+	int idx;
 };
 
 #endif

@@ -71,6 +71,7 @@ point to write some macros:
 #include "math_splitinset.h"
 #include "math_sqrtinset.h"
 #include "math_support.h"
+#include "math_xyarrowinset.h"
 
 #include "lyxlex.h"
 #include "debug.h"
@@ -268,6 +269,8 @@ private:
 	bool parse_lines(MathAtom & t, bool numbered, bool outmost);
 	/// parses {... & ... \\ ... & ... }
 	bool parse_lines2(MathAtom & t);
+	/// dump contents to screen
+	void dump() const;
 
 private:
 	///
@@ -421,6 +424,8 @@ char Parser::getChar()
 
 string Parser::getArg(char lf, char rg)
 {
+	skipSpaces();
+
 	string result;
 	char c = getChar();
 
@@ -507,18 +512,23 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-#if 0
+	//dump();
+}
+
+
+void Parser::dump() const
+{
 	lyxerr << "\nTokens: ";
 	for (unsigned i = 0; i < tokens_.size(); ++i)
 		lyxerr << tokens_[i];
 	lyxerr << "\n";
-#endif
 }
 
 
 void Parser::error(string const & msg) 
 {
 	lyxerr << "Line ~" << lineno_ << ": Math parse error: " << msg << endl;
+	dump();
 	//exit(1);
 }
 
@@ -528,6 +538,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 {	
 	MathGridInset * p = t->asGridInset();
 	if (!p) {
+		dump();
 		lyxerr << "error in Parser::parse_lines() 1\n";
 		return false;
 	}
@@ -1076,11 +1087,30 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			parse_lines2(array.back());
 		}
 
-		// Disabled
 #if 0
-		else if (0 && t.cs() == "ar") {
-			array.push_back(createMathInset(t.cs()));
-			parse_lines2(array.back());
+		// Disabled
+		else if (1 && t.cs() == "ar") {
+			MathXYArrowInset * p = new MathXYArrowInset;
+
+			// try to read target
+			char c = getChar();
+			if (c == '[') {
+				parse_into(p->cell(0), FLAG_BRACK_END);
+				//lyxerr << "read target: " << p->cell(0) << "\n";
+			} else {
+				putback();
+			}
+
+			// try to read label
+			if (nextToken().cat() == catSuper || nextToken().cat() == catSub) {
+				p->up_ = nextToken().cat() == catSuper;
+				getToken();
+				parse_into(p->cell(1), FLAG_ITEM);
+				//lyxerr << "read label: " << p->cell(1) << "\n";
+			}
+
+			array.push_back(MathAtom(p));
+			//lyxerr << "read array: " << array << "\n";
 		}
 
 		else if (t.cs() == "mbox") {

@@ -62,6 +62,7 @@ class MathStringInset;
 class MathSpaceInset;
 class MathSymbolInset;
 class MathUnknownInset;
+class MathXYMatrixInset;
 
 class NormalStream;
 class OctaveStream;
@@ -197,6 +198,7 @@ public:
 	virtual MathStringInset        * asStringInset()        { return 0; }
 	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
 	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
+	virtual MathXYMatrixInset const* asXYMatrixInset() const{ return 0; }
 	virtual UpdatableInset     * asHyperActiveInset() const { return 0; }
 
 	/// identifies things that can get scripts

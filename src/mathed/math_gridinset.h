@@ -152,6 +152,17 @@ public:
 	void setDefaults();
 
 	///
+	virtual int colsep() const;
+	///
+	virtual int rowsep() const;
+	///
+	virtual int hlinesep() const;
+	///
+	virtual int vlinesep() const;
+	///
+	virtual int border() const;
+
+	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;

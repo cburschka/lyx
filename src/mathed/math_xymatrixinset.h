@@ -18,10 +18,14 @@ public:
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	MathXYMatrixInset * asXYMatrixInset() { return this; }
+	MathXYMatrixInset const * asXYMatrixInset() const { return this; }
+	///
+	virtual int colsep() const;
+	///
+	virtual int rowsep() const;
+
 	///
 	void normalize();
-
 	///
 	void write(WriteStream & os) const;
 	///
