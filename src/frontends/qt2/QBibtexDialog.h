@@ -25,7 +25,9 @@ protected slots:
 	virtual void change_adaptor();
 	virtual void browsePressed();
 	virtual void addPressed();
+	virtual void deletePressed();
 	virtual void styleChanged(const QString &);
+	virtual void databaseChanged(); 
 
  
 protected:

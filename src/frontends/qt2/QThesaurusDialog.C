@@ -57,8 +57,20 @@ void QThesaurusDialog::replaceClicked()
  
 void QThesaurusDialog::selectionChanged(const QString & str)
 {
+	if (form_->readOnly())
+		return;
+ 
 	string const entry(str.latin1());
-	entryED->setText(entry.c_str());
+	replaceED->setText(entry.c_str());
+	replacePB->setEnabled(true);
+	form_->changed();
+}
+
+ 
+void QThesaurusDialog::selectionClicked(const QString & str)
+{
+	selectionChanged(str);
+	entryED->setText(str);
 	updateLists();
 }
 

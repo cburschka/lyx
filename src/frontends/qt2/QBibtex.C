@@ -43,6 +43,8 @@ void QBibtex::build_dialog()
 	bc().addReadOnly(dialog_->styleED);
 	bc().addReadOnly(dialog_->stylePB);
 	bc().addReadOnly(dialog_->bibtocCB);
+	bc().addReadOnly(dialog_->databasePB);
+	bc().addReadOnly(dialog_->deletePB); 
 }
 
 
@@ -55,7 +57,9 @@ void QBibtex::update_contents()
 
 	while (!bibs.empty()) {
 		bibs = split(bibs, bib, ',');
-		dialog_->databaseLB->inSort(frontStrip(strip(bib)).c_str());
+		bib = frontStrip(strip(bib));
+		if (!bib.empty())
+			dialog_->databaseLB->inSort(bib.c_str());
 	}
 
         string bibtotoc = "bibtotoc";
@@ -73,10 +77,11 @@ void QBibtex::update_contents()
 	} else
 		dialog_->bibtocCB->setChecked(false);
 
+	dialog_->deletePB->setEnabled(false);
 	dialog_->styleED->setEnabled(false);
 	dialog_->stylePB->setEnabled(false);
  
-	if (bibstyle == "plain") 
+	if (bibstyle == "plain" || bibstyle.empty())
 		dialog_->styleCO->setCurrentItem(0);
 	else if (bibstyle == "unsrt")
 		dialog_->styleCO->setCurrentItem(1);
@@ -88,11 +93,9 @@ void QBibtex::update_contents()
 		dialog_->styleED->setEnabled(true);
 		dialog_->stylePB->setEnabled(true);
 		dialog_->styleED->setText(bibstyle.c_str());
-		if (bibstyle.empty())
-			dialog_->styleCO->setCurrentItem(0);
-		else
-			dialog_->styleCO->setCurrentItem(4);
+		dialog_->styleCO->setCurrentItem(4);
 	}
+
 }
 
 
@@ -103,7 +106,7 @@ void QBibtex::apply()
 	for (unsigned int i = 0; i < dialog_->databaseLB->count(); ++i) {
 		dbs += dialog_->databaseLB->text(i).latin1();
 		if (i != dialog_->databaseLB->count())
-			dbs += ", ";
+			dbs += ",";
 	}
 	controller().params().setContents(dbs);
 
@@ -128,5 +131,6 @@ void QBibtex::apply()
 
 bool QBibtex::isValid()
 {
-	return dialog_->databaseLB->count() != 0;
+	return dialog_->databaseLB->count() != 0 &&
+		!(dialog_->styleCO->currentItem() == 4 && string(dialog_->styleED->text()).empty());
 }

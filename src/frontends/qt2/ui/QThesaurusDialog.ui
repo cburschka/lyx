@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>490</width>
+            <width>482</width>
             <height>442</height>
         </rect>
     </property>
@@ -161,12 +161,6 @@
                     </property>
                     <widget>
                         <class>QListBox</class>
-                        <item>
-                            <property>
-                                <name>text</name>
-                                <string>New Item</string>
-                            </property>
-                        </item>
                         <property stdset="1">
                             <name>name</name>
                             <cstring>verbsLB</cstring>
@@ -199,12 +193,6 @@
                     </property>
                     <widget>
                         <class>QListBox</class>
-                        <item>
-                            <property>
-                                <name>text</name>
-                                <string>New Item</string>
-                            </property>
-                        </item>
                         <property stdset="1">
                             <name>name</name>
                             <cstring>adjectivesLB</cstring>
@@ -237,12 +225,6 @@
                     </property>
                     <widget>
                         <class>QListBox</class>
-                        <item>
-                            <property>
-                                <name>text</name>
-                                <string>New Item</string>
-                            </property>
-                        </item>
                         <property stdset="1">
                             <name>name</name>
                             <cstring>adverbsLB</cstring>
@@ -275,12 +257,6 @@
                     </property>
                     <widget>
                         <class>QListBox</class>
-                        <item>
-                            <property>
-                                <name>text</name>
-                                <string>New Item</string>
-                            </property>
-                        </item>
                         <property stdset="1">
                             <name>name</name>
                             <cstring>otherLB</cstring>
@@ -320,7 +296,7 @@
                     </property>
                     <property>
                         <name>buddy</name>
-                        <cstring>selectionED</cstring>
+                        <cstring>replaceED</cstring>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -420,36 +396,6 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>nounsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>verbsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adjectivesLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>adverbsLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
-        <sender>otherLB</sender>
-        <signal>selected(const QString&amp;)</signal>
-        <receiver>QThesaurusDialogBase</receiver>
-        <slot>selectionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
         <sender>entryED</sender>
         <signal>returnPressed()</signal>
         <receiver>QThesaurusDialogBase</receiver>
@@ -461,8 +407,69 @@
         <receiver>QThesaurusDialogBase</receiver>
         <slot>replaceClicked()</slot>
     </connection>
+    <connection>
+        <sender>nounsLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionChanged(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>nounsLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionClicked(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>verbsLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionClicked(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>verbsLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionChanged(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>adjectivesLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionClicked(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>adjectivesLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionChanged(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>adverbsLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionClicked(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>adverbsLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionChanged(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>otherLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionClicked(const QString &amp;)</slot>
+    </connection>
+    <connection>
+        <sender>otherLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QThesaurusDialogBase</receiver>
+        <slot>selectionChanged(const QString &amp;)</slot>
+    </connection>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">entryChanged()</slot>
+    <slot access="public">selectionClicked(const QString &amp;)</slot>
     <slot access="public">replaceClicked()</slot>
     <slot access="public">selectionChanged(const QString &amp;)</slot>
 </connections>

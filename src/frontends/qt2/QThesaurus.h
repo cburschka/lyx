@@ -10,22 +10,27 @@
 #ifndef QTHESAURUS_H
 #define QTHESAURUS_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "Qt2Base.h"
 
 class ControlThesaurus;
 class QThesaurusDialog;
 
-class QThesaurus :
-	public Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > 
+///
+class QThesaurus
+	: public Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > 
 {
+public:
+	///
 	friend class QThesaurusDialog;
- 
-public: 
+	///
 	QThesaurus(ControlThesaurus &);
-
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void apply() {};
 	/// update
 	virtual void update_contents();
 	/// build the dialog

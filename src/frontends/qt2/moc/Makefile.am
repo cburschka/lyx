@@ -5,20 +5,21 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	-I${top_srcdir}/src/frontends/controllers \
+	-I${top_builddir}/src/frontends/qt2 \
 	${SIGC_CFLAGS} \
 	${FRONTEND_INCLUDES} \
 	$(BOOST_INCLUDES)
 
 include ../Makefile.dialogs
- 
+
 libqt2moc_la_SOURCES := FileDialog_private_moc.C \
 	emptytable_moc.C \
 	Qt2Base_moc.C \
 	$(MOCDIALOGS)
- 
+
 DISTCLEANFILES = $(libqt2moc_la_SOURCES) *.orig *.rej *~ *.bak core
 
 ETAGS_ARGS = --lang=c++
- 
+
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<

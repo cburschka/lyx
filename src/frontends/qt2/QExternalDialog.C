@@ -68,10 +68,10 @@ void QExternalDialog::updateClicked()
  
 void QExternalDialog::browseClicked()
 {
-	string file(QFileDialog::getOpenFileName(QString::null, 
-		_("External material (*)"), this, 0, _("Select external material")).latin1()); 
-	if (!file.empty()) {
-		fileED->setText(file.c_str());
+	QString file = QFileDialog::getOpenFileName(QString::null, 
+		_("External material (*)"), this, 0, _("Select external material")); 
+	if (!file.isNull()) {
+		fileED->setText(file.latin1());
 		form_->changed();
 	}
 }

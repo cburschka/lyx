@@ -43,9 +43,7 @@ void QBibtexDialog::browsePressed()
 {
 	QString file = QFileDialog::getOpenFileName(QString::null, 
 		_("BibTeX style files (*.bst)"), this, 0, _("Select a BibTeX style"));
-	lyxerr << "HELLO" << std::endl;
 	if (!file.isNull()) {
-		lyxerr << "MONKEYS" << std::endl;
 		styleED->setText(ChangeExtension(OnlyFilename(file.latin1()), "").c_str());
 		form_->changed();
 	}
@@ -54,19 +52,28 @@ void QBibtexDialog::browsePressed()
  
 void QBibtexDialog::addPressed()
 {
-	string file(QFileDialog::getOpenFileName(QString::null, 
-		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add")).latin1()); 
-	if (!file.empty()) {
+	QString file = QFileDialog::getOpenFileName(QString::null, 
+		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add")); 
+	if (!file.isNull()) {
 		// FIXME: check duplicates
-		databaseLB->insertItem(ChangeExtension(file, "").c_str());
+		databaseLB->insertItem(ChangeExtension(file.latin1(), "").c_str());
 		form_->changed();
 	}
 }
 
  
+void QBibtexDialog::deletePressed()
+{
+	databaseLB->removeItem(databaseLB->currentItem());
+}
+
+ 
 void QBibtexDialog::styleChanged(const QString & sel)
 {
-	if (string(_("Other ...")) == sel.latin1() && !form_->readOnly()) {
+	if (form_->readOnly())
+		return;
+ 
+	if (string(_("Other ...")) == sel.latin1()) {
 		styleED->setEnabled(true);
 		stylePB->setEnabled(true);
 	} else {
@@ -74,6 +81,12 @@ void QBibtexDialog::styleChanged(const QString & sel)
 		stylePB->setEnabled(false);
 		styleED->setText("");
 	}
+}
+
+ 
+void QBibtexDialog::databaseChanged()
+{
+	deletePB->setEnabled(!form_->readOnly() && databaseLB->currentItem() != -1);
 }
 
  

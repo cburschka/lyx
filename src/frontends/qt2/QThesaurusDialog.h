@@ -28,6 +28,7 @@ protected slots:
 	virtual void entryChanged();
 	virtual void replaceClicked();
 	virtual void selectionChanged(const QString &);
+	virtual void selectionClicked(const QString &);
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);

@@ -8,6 +8,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"
@@ -31,6 +35,7 @@ void QThesaurus::build_dialog()
 	dialog_.reset(new QThesaurusDialog(this));
 
 	bc().setCancel(dialog_->closePB);
+	bc().setApply(dialog_->replacePB);
 	bc().addReadOnly(dialog_->replaceED);
 	bc().addReadOnly(dialog_->replacePB);
 }
