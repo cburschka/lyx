@@ -31,6 +31,7 @@ using std::ostream;
 using std::endl;
 using std::max;
 
+
 InsetCollapsable::InsetCollapsable()
 	: UpdatableInset()
 {
@@ -48,15 +49,17 @@ InsetCollapsable::InsetCollapsable()
 }
 
 
+#if 0
 Inset * InsetCollapsable::Clone(Buffer const &) const
 {
-	InsetCollapsable * result = new InsetCollapsable();
+	InsetCollapsable * result = new InsetCollapsable;
 	result->inset.init(&inset);
 	result->inset.setOwner(result);
 
 	result->collapsed = collapsed;
 	return result;
 }
+#endif
 
 
 bool InsetCollapsable::InsertInset(BufferView * bv, Inset * in)
@@ -88,7 +91,7 @@ void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 			collapsed = lex.GetBool();
 		} else {
 			lyxerr << "InsetCollapsable::Read: Missing collapsed!"
-				   << endl;
+			       << endl;
 		}
 	}
 	inset.Read(buf, lex);
@@ -101,7 +104,7 @@ int InsetCollapsable::ascent_collapsed(Painter & pain, LyXFont const &) const
 	int ascent = 0;
 	int descent = 0;
 	pain.buttonText(0, 0, label, labelfont, false, 
-					width, ascent, descent);
+			width, ascent, descent);
 	return ascent;
 }
 
@@ -112,7 +115,7 @@ int InsetCollapsable::descent_collapsed(Painter & pain, LyXFont const &) const
 	int ascent = 0;
 	int descent = 0;
 	pain.buttonText(0, 0, label, labelfont, false, 
-					width, ascent, descent);
+			width, ascent, descent);
 	return descent;
 }
 
@@ -123,7 +126,7 @@ int InsetCollapsable::width_collapsed(Painter & pain, LyXFont const &) const
 	int ascent;
 	int descent;
 	pain.buttonText(TEXT_TO_INSET_OFFSET, 0, label, labelfont, false,
-					width, ascent, descent);
+			width, ascent, descent);
 	return width + (2*TEXT_TO_INSET_OFFSET);
 }
 
@@ -139,8 +142,10 @@ int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 	if (collapsed) 
 		return descent_collapsed(bv->painter(), font);
 
-	return descent_collapsed(bv->painter(), font) + inset.descent(bv, font) +
-		inset.ascent(bv, font) + TEXT_TO_BOTTOM_OFFSET;
+	return descent_collapsed(bv->painter(), font)
+		+ inset.descent(bv, font)
+		+ inset.ascent(bv, font)
+		+ TEXT_TO_BOTTOM_OFFSET;
 }
 
 
@@ -155,37 +160,39 @@ int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 
 
 void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const &,
-									  int baseline, float & x) const
+				      int baseline, float & x) const
 {
 	int width = 0;
 	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
-					baseline, label, labelfont, true, width);
+			baseline, label, labelfont, true, width);
 	x += width + TEXT_TO_INSET_OFFSET;
 }
 
 
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
-							int baseline, float & x, bool cleared) const
+			    int baseline, float & x, bool cleared) const
 {
 	Painter & pain = bv->painter();
 
 	button_length = widthCollapsed;
 	button_top_y = -ascent(bv, f);
 	button_bottom_y = -ascent(bv, f) + ascent_collapsed(pain,f) +
-	descent_collapsed(pain, f);
+		descent_collapsed(pain, f);
+
 	if (collapsed) {
 		draw_collapsed(pain, f, baseline, x);
 		x += TEXT_TO_INSET_OFFSET;
 		return;
 	}
 
-	if (!cleared && ((inset.need_update == InsetText::FULL) ||
-					 (inset.need_update == InsetText::INIT) ||
-					 (top_x != int(x)) || (top_baseline != baseline))) {
+	if (!cleared && (inset.need_update == InsetText::FULL ||
+			 inset.need_update == InsetText::INIT ||
+			 top_x != int(x) ||
+			 top_baseline != baseline)) {
 		int w =  owner() ? width(bv, f) : pain.paperWidth();
 		int h = ascent(bv, f) + descent(bv, f);
-		int tx = (needFullRow() && !owner()) ? 0 : int(x);
-		int ty = max(0, baseline - ascent(bv, f));
+		int const tx = (needFullRow() && !owner()) ? 0 : int(x);
+		int const ty = max(0, baseline - ascent(bv, f));
 		
 		if ((ty + h) > pain.paperHeight())
 			h = pain.paperHeight();
@@ -201,17 +208,18 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	top_baseline = baseline;
 
 	float dummy = x;
-	int bl = baseline - ascent(bv, f) + ascent_collapsed(pain, f);
+	int const bl = baseline - ascent(bv, f) + ascent_collapsed(pain, f);
 
 	draw_collapsed(pain, f, bl, dummy);
 	inset.draw(bv, f, 
-			   bl + descent_collapsed(pain, f) + inset.ascent(bv, f),
-			   x, cleared);
+		   bl + descent_collapsed(pain, f) + inset.ascent(bv, f),
+		   x, cleared);
 	need_update = NONE;
 }
 
 
-void InsetCollapsable::Edit(BufferView * bv, int xp, int yp, unsigned int button)
+void InsetCollapsable::Edit(BufferView * bv, int xp, int yp,
+			    unsigned int button)
 {
 	UpdatableInset::Edit(bv, xp, yp, button);
 
@@ -247,10 +255,12 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 }
 
 
-void InsetCollapsable::InsetButtonPress(BufferView * bv,int x,int y,int button)
+void InsetCollapsable::InsetButtonPress(BufferView * bv, int x, int y,
+					int button)
 {
 	if (!collapsed && (y > button_bottom_y)) {
-		inset.InsetButtonPress(bv, x, y+(top_baseline - inset.y()), button);
+		inset.InsetButtonPress(bv, x, y + (top_baseline - inset.y()),
+				       button);
 	}
 }
 
@@ -259,7 +269,7 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 					  int x, int y, int button)
 {
 	if ((x >= 0)  && (x < button_length) &&
-		(y >= button_top_y) &&  (y <= button_bottom_y)) {
+	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
 		if (collapsed) {
 			collapsed = false;
 			inset.InsetButtonRelease(bv, 0, 0, button);
@@ -270,7 +280,8 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 			bv->updateInset(this, false);
 		}
 	} else if (!collapsed && (y > button_top_y)) {
-		inset.InsetButtonRelease(bv, x, y+(top_baseline-inset.y()), button);
+		inset.InsetButtonRelease(bv, x, y + (top_baseline-inset.y()),
+					 button);
 	}
 }
 
@@ -279,7 +290,8 @@ void InsetCollapsable::InsetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
 	if (x > button_bottom_y) {
-		inset.InsetMotionNotify(bv, x, y+(top_baseline - inset.y()), state);
+		inset.InsetMotionNotify(bv, x, y + (top_baseline - inset.y()),
+					state);
 	}
 }
 
@@ -291,7 +303,7 @@ void InsetCollapsable::InsetKeyPress(XKeyEvent * xke)
 
 
 int InsetCollapsable::Latex(Buffer const * buf, ostream & os,
-				bool fragile, bool free_spc) const
+			    bool fragile, bool free_spc) const
 {
 	return inset.Latex(buf, os, fragile, free_spc);
 }
@@ -313,7 +325,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
-				  bool reinit)
+			      bool reinit)
 {
 	if (reinit) {
 		need_update = FULL;
@@ -423,7 +435,7 @@ UpdatableInset * InsetCollapsable::GetFirstLockingInsetOfType(Inset::Code c)
 
 
 void InsetCollapsable::SetFont(BufferView * bv,
-							   LyXFont const & font, bool toggleall)
+			       LyXFont const & font, bool toggleall)
 {
 	inset.SetFont(bv, font, toggleall);
 }
@@ -436,7 +448,7 @@ bool InsetCollapsable::doClearArea() const
 
 
 LyXText * InsetCollapsable::getLyXText(BufferView const * bv,
-					   bool const recursive) const
+				       bool const recursive) const
 {
 	return inset.getLyXText(bv, recursive);
 }

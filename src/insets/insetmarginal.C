@@ -23,9 +23,6 @@
 #include "support/LOstream.h"
 #include "debug.h"
 
-using std::ostream;
-using std::endl;
-
 
 InsetMarginal::InsetMarginal()
 	: InsetFootlike()
@@ -52,11 +49,11 @@ string const InsetMarginal::EditMessage() const
 
 
 int InsetMarginal::Latex(Buffer const * buf,
-			 ostream & os, bool fragile, bool fp) const
+			 std::ostream & os, bool fragile, bool fp) const
 {
 	os << "\\marginpar{%\n";
 	
-	int i = inset.Latex(buf, os, fragile, fp);
+	int const i = inset.Latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;

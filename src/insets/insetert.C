@@ -63,8 +63,8 @@ string const InsetERT::EditMessage() const
 void InsetERT::SetFont(BufferView *, LyXFont const &, bool)
 {
 	WriteAlert(_("Impossible Operation!"),
-			   _("Not permitted to change font-types inside ERT-insets!"),
-			   _("Sorry."));
+		   _("Not permitted to change font-types inside ERT-insets!"),
+		   _("Sorry."));
 }
 
 

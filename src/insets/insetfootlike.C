@@ -20,8 +20,6 @@
 #include "lyxtext.h"
 #include "support/LOstream.h"
 
-using std::ostream;
-using std::endl;
 
 InsetFootlike::InsetFootlike()
 	: InsetCollapsable()
@@ -35,7 +33,7 @@ InsetFootlike::InsetFootlike()
 }
 
 
-void InsetFootlike::Write(Buffer const * buf, ostream & os) const 
+void InsetFootlike::Write(Buffer const * buf, std::ostream & os) const 
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::Write(buf, os);

@@ -35,8 +35,8 @@ class InsetCollapsable : public UpdatableInset {
 public:
 	///
 	enum UpdateCodes {
-	NONE = 0,
-	FULL
+		NONE = 0,
+		FULL
 	};
 	///
 	static int const TEXT_TO_TOP_OFFSET = 2;
@@ -45,7 +45,7 @@ public:
 	///
 	InsetCollapsable();
 	///
-	Inset * Clone(Buffer const &) const;
+	//Inset * Clone(Buffer const &) const;
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
@@ -77,7 +77,8 @@ public:
 	///
 	bool LockInsetInInset(BufferView *, UpdatableInset *);
 	///
-	bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
+	bool UnlockInsetInInset(BufferView *, UpdatableInset *,
+				bool lr = false);
 	///
 	bool UpdateInsetInInset(BufferView *, Inset *);
 	///
@@ -92,7 +93,7 @@ public:
 	void InsetKeyPress(XKeyEvent *);
 	///
 	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
-					 string const &);
+					     string const &);
 	///
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;

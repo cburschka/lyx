@@ -1,3 +1,23 @@
+2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insetfootlike.C: remove using decl at file scope and add std::
+	where needed
+	* insetmarginal.C: ditto
+
+	* insetfoot.C: some reformatting
+
+	* insetfloat.C (InsetButtonRelease): adjust the hit area
+
+	* insetert.C (SetFont): some reformatting
+
+	* insetcollapsable.C: some reformatting and constification
+	(Clone): comment out.
+	* insetcollapsable.h: some reformatting
+	(Clone): comment out.
+	
+	* inset.C: reindent
+	(scroll): simplify
+
 2001-03-30  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.h: changen *inset to be a InsetText inset.
