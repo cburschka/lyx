@@ -17,17 +17,16 @@
 #pragma implementation
 #endif
 
-// I think that this is no longer needed (Angus 9 October, 2001).
-//#ifdef HAVE_SYS_SELECT_H
-//# ifdef HAVE_STRINGS_H
-//   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
-//   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
-//#  ifdef _AIX
-//#   include <strings.h>
-//#  endif
-//# endif
-//#include <sys/select.h>
-//#endif
+#ifdef HAVE_SYS_SELECT_H
+# ifdef HAVE_STRINGS_H
+   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
+   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
+#  ifdef _AIX
+#   include <strings.h>
+#  endif
+# endif
+#include <sys/select.h>
+#endif
 
 #include "buffer.h"
 #include "lyxrc.h"
