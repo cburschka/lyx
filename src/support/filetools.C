@@ -1135,12 +1135,7 @@ cmdret const do_popen(string const & cmd)
 	// pstream (process stream), with the
 	// variants ipstream, opstream
 
-	// CYGWIN needs 'b', but linux only works without it
-#ifdef __CYGWIN__
-	FILE * inf = ::popen(cmd.c_str(), "rb");
-#else
-        FILE * inf = ::popen(cmd.c_str(), "r");
-#endif
+	FILE * inf = ::popen(cmd.c_str(), os::read_mode());
 
 	// (Claus Hentschel) Check if popen was succesful ;-)
 	if (!inf)

@@ -52,7 +52,9 @@ public:
 	static string internal_path(string const &p);
 	// is path absolute?
 	static bool is_absolute_path(string const & p);
-	
+	// returns a string suitable to be passed to fopen/popen when
+	// reading a file
+	static char const * read_mode();
 	//
 	static void warn(string mesg);
 private:

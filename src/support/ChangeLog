@@ -1,5 +1,11 @@
 2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* filetools.C (do_popen): use os::read_mode().
+
+	* os_win32.C (read_mode): 
+	* os_os2.C (read_mode): 
+	* os_unix.C (read_mode): new method
+
 	* filetools.C (do_popen): fix for cygwin compatibility (from Claus
 	Hentschel). This code should maybe be moved to os:: class.
 

@@ -1,3 +1,7 @@
+2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Menubar_pimpl.C (create_submenu): work around an xforms bug (?)
+	where one could not have both toggleon and disabled.
 
 2002-02-08  Herbert Voss  <voss@lyx.org>
 

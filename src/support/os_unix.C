@@ -76,3 +76,10 @@ bool os::is_absolute_path(string const & p)
 {
 	return (!p.empty() && p[0] == '/');
 }
+
+// returns a string suitable to be passed to fopen/popen when
+// reading a file
+char const * os::read_mode()
+{
+	return "r";
+}

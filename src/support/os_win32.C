@@ -116,3 +116,10 @@ bool os::is_absolute_path(string const & p)
 
 	return isDosPath | isUnixPath;
 }
+
+// returns a string suitable to be passed to fopen/popen when
+// reading a file
+char const * os::read_mode()
+{
+	return "rb";
+}

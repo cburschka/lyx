@@ -436,9 +436,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 		switch (item.kind()) {
 		case MenuItem::Command: {
-			FuncStatus flag = 
+			FuncStatus const flag = 
 				view->getLyXFunc()->getStatus(item.action()); 
-
 			// handle optional entries.
 			if (item.optional() 
 			    && (flag.disabled())) {
@@ -467,12 +466,12 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			
 			// Modify the entry using the function status
 			string pupmode;
-			if (flag.disabled() || flag.unknown())
-				pupmode += "%i";
 			if (flag.onoff(true))
 				pupmode += "%B";
 			if (flag.onoff(false))
 				pupmode += "%b";
+			if (flag.disabled() || flag.unknown())
+				pupmode += "%i";
 			label += pupmode;
 
 			// Finally the menu shortcut

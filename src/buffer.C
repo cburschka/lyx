@@ -1041,10 +1041,16 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
-		par->params().spaceTop(VSpace(lex.getString()));
+		VSpace value = VSpace(lex.getString());
+		if ((value.length().len().value() != 0) ||
+		    (value.kind() != VSpace::LENGTH))
+		    par->params().spaceTop(value);
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
-		par->params().spaceBottom(VSpace(lex.getString()));
+		VSpace value = VSpace(lex.getString());
+		if ((value.length().len().value() != 0) ||
+		    (value.kind() != VSpace::LENGTH))
+		    par->params().spaceBottom(value);
 #ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	} else if (token == "\\pextra_type") {
