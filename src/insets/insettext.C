@@ -37,7 +37,6 @@
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
 #include "font.h"
-#include "minibuffer.h"
 #include "LColor.h"
 #include "support/textutils.h"
 #include "support/LAssert.h"
@@ -47,6 +46,8 @@
 #include "trans_mgr.h"
 #include "lyxscreen.h"
 #include "WorkArea.h"
+#include "lyxfunc.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::ifstream;
@@ -91,9 +92,6 @@ void InsetText::init(InsetText const * ins)
 	insetDescent = 0;
 	insetWidth = 0;
 	the_locking_inset = 0;
-#if 0
-	cursor_visible = false;
-#endif
 	interline_space = 1;
 	no_selection = false;
 	need_update = INIT;
@@ -322,7 +320,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	UpdatableInset::draw(bv, f, baseline, x, cleared);
 #else
 	if (!owner())
-		x += (float)scroll();
+		x += static_cast<float>(scroll());
 #endif
 	// update insetWidth and insetHeight with dummy calls
 	(void)ascent(bv, f);
@@ -1112,9 +1110,9 @@ InsetText::LocalDispatch(BufferView * bv,
 
 			// see if we found the layout number:
 			if (!layout.first) {
-				string msg = string(N_("Layout ")) + arg + N_(" not known");
-
-				bv->owner()->getMiniBuffer()->Set(msg);
+				string const msg = string(N_("Layout ")) + arg + N_(" not known");
+				bv->owner()->getLyXFunc()
+					->Dispatch(LFUN_MESSAGE, msg);
 				break;
 			}
 

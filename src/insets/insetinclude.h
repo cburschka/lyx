@@ -24,7 +24,7 @@ struct LaTeXFeatures;
 
 /**  Used to include files
  */
-class InsetInclude: public InsetButton, public boost::noncopyable {
+class InsetInclude: public InsetButton, boost::noncopyable {
 public:
         /// the type of inclusion
         enum Flags {

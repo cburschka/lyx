@@ -194,7 +194,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	UpdatableInset::draw(bv, f, baseline, x, cleared);
 #else
 	if (!owner())
-		x += (float)scroll();
+		x += static_cast<float>(scroll());
 #endif
 	if (!cleared && (inset.need_update == InsetText::FULL ||
 			 inset.need_update == InsetText::INIT ||

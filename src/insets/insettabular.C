@@ -126,15 +126,11 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 		rows = 1;
 	if (columns <= 0)
 		columns = 1;
-	//tabular = new LyXTabular(this, rows,columns);
 	tabular.reset(new LyXTabular(this, rows,columns));
 	// for now make it always display as display() inset
 	// just for test!!!
 	the_locking_inset = 0;
 	locked = no_selection = false;
-#if 0
-	cursor_visible = false;
-#endif
 	oldcell = -1;
 	actrow = actcell = 0;
 	clearSelection();
@@ -145,13 +141,9 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
 	: buffer(&buf)
 {
-	//tabular = new LyXTabular(this, *(tab.tabular));
 	tabular.reset(new LyXTabular(this, *(tab.tabular)));
 	the_locking_inset = 0;
 	locked = no_selection = false;
-#if 0
-	cursor_visible = false;
-#endif
 	oldcell = -1;
 	actrow = actcell = 0;
 	sel_cell_start = sel_cell_end = 0;
@@ -247,7 +239,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	UpdatableInset::draw(bv, font, baseline, x, cleared);
 #else
 	if (!owner())
-		x += (float)scroll();
+		x += static_cast<float>(scroll());
 #endif
 	if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
 			 (top_x != int(x)) || (top_baseline != baseline))) {

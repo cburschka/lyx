@@ -72,7 +72,7 @@ struct ExternalTemplate {
 /**
    A singleton class that manages the external inset templates
 */
-class ExternalTemplateManager : public boost::noncopyable {
+class ExternalTemplateManager : boost::noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
 	typedef std::map<string, ExternalTemplate> Templates;

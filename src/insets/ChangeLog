@@ -1,3 +1,19 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C (init): remvoe leftovers from cursor_visible change
+	(draw): use c++ cast
+	(LocalDispatch): dispatch LFUN_MESSAGE
+
+	* insettabular.C (InsetTabular): remove leftovers from
+	cursor_visible, and scoped_ptr changes
+	(draw): use c++ cast
+
+	* insetcollapsable.C (draw): use c++ cast
+
+	* ExternalTemplate.h: inherit privaely from noncopyable
+	* insetcommand.h: ditto
+	* insetinclude.h: ditto
+
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* insettoc.C (Ascii): 

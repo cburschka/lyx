@@ -74,7 +74,7 @@ private:
 
 
 ///
-class InsetCommand : public InsetButton, public boost::noncopyable {
+class InsetCommand : public InsetButton, boost::noncopyable {
 public:
 	///
 	explicit
