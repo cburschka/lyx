@@ -1,3 +1,9 @@
+2001-12-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ColorHandler.C (updateColor): change the hash to cover the whole
+	LColor enum, ws cleanup
+	(getGCLinepars): ditto
+
 2001-12-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* iterators.C (operator++): Make the iterator more robust

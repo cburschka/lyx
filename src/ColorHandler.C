@@ -13,15 +13,17 @@
 #pragma implementation
 #endif
 
-#include <cmath>
-
-#include "frontends/GUIRunTime.h"
 #include "ColorHandler.h"
 #include "LColor.h"
 #include "gettext.h"
 #include "debug.h"
 
+#include "frontends/GUIRunTime.h"
+
+#include <cmath>
+
 using std::endl;
+
 
 LyXColorHandler::LyXColorHandler() 
 {
@@ -71,10 +73,12 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
 	
-    	if (colorGCcache[c] != 0) return colorGCcache[c];
+    	if (colorGCcache[c] != 0)
+		return colorGCcache[c];
 
-	XColor xcol, ccol;
-	string s = lcolor.getX11Name(c);
+	XColor xcol;
+	XColor ccol;
+	string const s = lcolor.getX11Name(c);
 	XGCValues val;
 
 	// Look up the RGB values for the color, and an approximate
@@ -160,13 +164,13 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 // Gets GC for line
 GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
-			  PainterBase::line_width lw, LColor::color c)
+				  PainterBase::line_width lw, LColor::color c)
 {
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
 	
-	int index = lw + (ls << 1) + (c << 3);
+	int index = lw + (ls << 1) + (c << 6);
 
 	if (lineGCcache.find(index) != lineGCcache.end())
 		return lineGCcache[index];
@@ -175,14 +179,24 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
 	
 	switch (lw) {
-	case PainterBase::line_thin:  	val.line_width = 0; break;
-	case PainterBase::line_thick: 	val.line_width = 2; break;
+	case PainterBase::line_thin:
+		val.line_width = 0;
+		break;
+	case PainterBase::line_thick:
+		val.line_width = 2;
+		break;
 	}
 	
 	switch (ls) {
-	case PainterBase::line_solid:	val.line_style = LineSolid; break;
-	case PainterBase::line_onoffdash: 	val.line_style = LineOnOffDash; break;
-	case PainterBase::line_doubledash: 	val.line_style = LineDoubleDash; break;
+	case PainterBase::line_solid:
+		val.line_style = LineSolid;
+		break;
+	case PainterBase::line_onoffdash:
+		val.line_style = LineOnOffDash;
+		break;
+	case PainterBase::line_doubledash:
+		val.line_style = LineDoubleDash;
+		break;
 	}
 
 
@@ -202,7 +216,7 @@ void LyXColorHandler::updateColor (LColor::color c)
 {
 	// color GC cache
 	GC gc = colorGCcache[c];
-	if (gc != NULL) {
+	if (gc != 0) {
 		XFreeGC(display, gc);
 		colorGCcache[c] = NULL;
 		getGCForeground(c);
@@ -210,16 +224,15 @@ void LyXColorHandler::updateColor (LColor::color c)
 
 	// line GC cache
 
-	int index, ls, lw;
-	for (ls=0; ls<3; ++ls)
-		for (lw=0; lw<2; ++lw) {
-			index = lw + (ls << 1) + (c << 3);
+	for (int ls = 0; ls < 3; ++ls)
+		for (int lw = 0; lw < 2; ++lw) {
+			int const index = lw + (ls << 1) + (c << 6);
 			if (lineGCcache.find(index) != lineGCcache.end()) {
 				gc = lineGCcache[index];
 				XFreeGC(display,gc);
 				lineGCcache.erase(index);
 				getGCLinepars(PainterBase::line_style(ls),
-						PainterBase::line_width(lw), c);
+					      PainterBase::line_width(lw), c);
 			}
 		}
  
