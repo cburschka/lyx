@@ -233,7 +233,7 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	// If there is no filename, write nothing for it.
 	if (! filename.empty()) {
 		os << "filename "
-		<< MakeRelPath(filename, OnlyPath(buf->fileName()))
+		<< MakeRelPath(filename, buf->filePath())
 		<< '\n';
 	}
 
@@ -291,7 +291,7 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 
 		if (!filename.empty()) {
 			// Make the filename with absolute directory.
-			filename = MakeAbsPath(filename, OnlyPath(buf->fileName()));
+			filename = MakeAbsPath(filename, buf->filePath());
 		}
 	} else if (token == "display") {
 		lex.next();

@@ -214,13 +214,11 @@ string const InsetExternal::getScreenLabel(Buffer const *) const
 void InsetExternal::executeCommand(string const & s,
 				   Buffer const * buffer) const
 {
-	string buf = MakeAbsPath(buffer->fileName());
-	string path = OnlyPath(buf);
-	Path p(path);
+	Path p(buffer->filePath());
 	Systemcalls one;
 	if (lyxerr.debugging()) {
 		lyxerr << "Executing '" << s << "' in '"
-		       << path << "'" << endl;
+		       << buffer->filePath() << "'" << endl;
 	}
 	one.startscript(Systemcalls::Wait, s);
 }
@@ -231,9 +229,9 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 {
 	string result;
 	string const basename = ChangeExtension(params_.filename, string());
-	string filepath = "";
+	string filepath;
 	if (buffer && (!buffer->niceFile)) {
-		filepath = OnlyPath(MakeAbsPath(buffer->fileName()));
+		filepath = buffer->filePath();
 	}
 	result = subst(s, "$$FName", params_.filename);
 	result = subst(result, "$$Basename", basename);
@@ -252,9 +250,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 		string contents;
 		if (buffer) {
 			// Make sure we are in the directory of the buffer
-			string const buf = MakeAbsPath(buffer->fileName());
-			string const path = OnlyPath(buf);
-			Path p(path);
+			Path p(buffer->filePath());
 			contents = GetFileContents(file);
 		} else {
 			contents = GetFileContents(file);

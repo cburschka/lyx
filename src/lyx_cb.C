@@ -143,10 +143,8 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 	XFlush(GUIRunTime::x11Display());
  
 	if (!buffer->save()) {
-		string const fname = buffer->fileName();
-		string const s = MakeAbsPath(fname);
 		if (Alert::askQuestion(_("Save failed. Rename and try again?"),
-				MakeDisplayPath(s, 50),
+				MakeDisplayPath(buffer->fileName(), 50),
 				_("(If not, document is not saved.)"))) {
 			return WriteAs(bv, buffer);
 		}
@@ -325,7 +323,7 @@ void AutoSave(BufferView * bv)
 	bv->owner()->message(_("Autosaving current document..."));
 	
 	// create autosave filename
-	string fname = 	OnlyPath(bv->buffer()->fileName());
+	string fname = 	bv->buffer()->filePath();
 	fname += "#";
 	fname += OnlyFilename(bv->buffer()->fileName());
 	fname += "#";
@@ -420,7 +418,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
  
-		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filepath);
+		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filePath());
 
 		if (result.first == FileDialog::Later)
 			return;

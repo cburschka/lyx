@@ -1445,7 +1445,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		string initpath = lyxrc.document_path;
 
 		if (available()) {
-			string const trypath = owner_->buffer()->filepath;
+			string const trypath = owner_->buffer()->filePath();
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath))
 				initpath = trypath;

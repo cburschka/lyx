@@ -148,14 +148,17 @@ ExternalTemplate ControlExternal::getTemplate(int i) const
 
 string const ControlExternal::Browse(string const & input) const
 {
-	string buf  = MakeAbsPath(lv_.buffer()->fileName());
-	string buf2 = OnlyPath(buf);
+#ifdef WITH_WARNINGS
+#warning Candidate for using browseRelFile
+#endif
+	string buf;
+	string const bufpath = lv_.buffer()->filePath();
 
 	if (!input.empty()) {
-		buf = MakeAbsPath(input, buf2);
+		buf = MakeAbsPath(input, bufpath);
 		buf = OnlyPath(buf);
 	} else {
-		buf = OnlyPath(lv_.buffer()->fileName());
+		buf = bufpath;
 	}
     
 	FileDialog fileDlg(&lv_,
@@ -185,7 +188,7 @@ string const ControlExternal::Browse(string const & input) const
 
 		string p = result.second;
 
-		buf = MakeRelPath(p, buf2);
+		buf = MakeRelPath(p, bufpath);
 		current_path = OnlyPath(p);
 		once = 1;
 		

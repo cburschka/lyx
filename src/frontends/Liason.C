@@ -106,7 +106,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		return false;
 
 	// Push directory path.
-	string path = OnlyPath(buffer->fileName());
+	string path = buffer->filePath();
 	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
 		path = buffer->tmppath;
 	}

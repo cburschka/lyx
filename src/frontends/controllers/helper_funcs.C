@@ -108,6 +108,24 @@ string const browseFile(LyXView * lv, string const & filename,
 }
 
 
+string const browseRelFile(LyXView * lv, string const & filename,
+			string const & refpath,
+			string const & title,
+			string const & pattern, 
+			pair<string,string> const & dir1,
+			pair<string,string> const & dir2)
+{
+	string const fname = MakeAbsPath(filename, refpath);
+	
+	string const outname = browseFile(lv, fname, title, pattern, dir1);
+	string const reloutname = MakeRelPath(outname, refpath);
+	if(prefixIs(reloutname, "../"))
+		return outname;
+	else
+		return reloutname;
+}
+
+
 // sorry this is just a temporary hack we should include vspace.h! (Jug)
 extern const char * stringFromUnit(int);
 

@@ -1508,7 +1508,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	{
 		string const filename =
 			MakeAbsPath(argument, 
-				    OnlyPath(owner->buffer()->fileName()));
+				    owner->buffer()->filePath());
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
 		owner->view()->savePosition(0);
@@ -1647,7 +1647,7 @@ void LyXFunc::menuNew(bool fromTemplate)
 	string initpath = lyxrc.document_path;
 
 	if (owner->view()->available()) {
-		string const trypath = owner->buffer()->filepath;
+		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath))
 			initpath = trypath;
@@ -1773,7 +1773,7 @@ void LyXFunc::open(string const & fname)
 	string initpath = lyxrc.document_path;
   
 	if (owner->view()->available()) {
-		string const trypath = owner->buffer()->filepath;
+		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath))
 			initpath = trypath;
@@ -1850,7 +1850,7 @@ void LyXFunc::doImport(string const & argument)
 		string initpath = lyxrc.document_path;
 		
 		if (owner->view()->available()) {
-			string const trypath = owner->buffer()->filepath;
+			string const trypath = owner->buffer()->filePath();
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath))
 				initpath = trypath;

@@ -151,11 +151,11 @@ extern int tex_code_break_column;
 Buffer::Buffer(string const & file, bool ronly)
 	: paragraph(0), lyx_clean(true), bak_clean(true),
 	  unnamed(false), dep_clean(0), read_only(ronly),
-	  filename(file), users(0)
+	  filename_(file), users(0)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 //	filename = file;
-	filepath = OnlyPath(file);
+	filepath_ = OnlyPath(file);
 //	paragraph = 0;
 //	lyx_clean = true;
 //	bak_clean = true;
@@ -200,7 +200,7 @@ Buffer::~Buffer()
 
 string const Buffer::getLatexName(bool no_path) const
 {
-	string const name = ChangeExtension(MakeLatexName(filename), ".tex");
+	string const name = ChangeExtension(MakeLatexName(fileName()), ".tex");
 	if (no_path)
 		return OnlyFilename(name);
 	else
@@ -273,9 +273,9 @@ void Buffer::resetAutosaveTimers() const
 
 void Buffer::setFileName(string const & newfile)
 {
-	filename = MakeAbsPath(newfile);
-	filepath = OnlyPath(filename);
-	setReadonly(IsFileWriteable(filename) == 0);
+	filename_ = MakeAbsPath(newfile);
+	filepath_ = OnlyPath(filename_);
+	setReadonly(IsFileWriteable(filename_) == 0);
 	updateTitles();
 }
 
@@ -1702,7 +1702,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	// warnings, only cerr.
 	// Needed for autosave in background or panic save (Matthias 120496)
 
-	if (read_only && (fname == filename)) {
+	if (read_only && (fname == fileName())) {
 		// Here we should come with a question if we should
 		// perform the write anyway.
 		if (flag)
@@ -3449,7 +3449,7 @@ int Buffer::runChktex()
 
 	// get LaTeX-Filename
 	string const name = getLatexName();
-	string path = OnlyPath(filename);
+	string path = filePath();
 
 	string const org_path = path;
 	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
@@ -3466,7 +3466,7 @@ int Buffer::runChktex()
 	makeLaTeXFile(name, org_path, false);
 
 	TeXErrors terr;
-	Chktex chktex(lyxrc.chktex_command, name, filepath);
+	Chktex chktex(lyxrc.chktex_command, name, filePath());
 	int res = chktex.run(terr); // run chktex
 
 	if (res == -1) {

@@ -46,6 +46,20 @@ string const browseFile(LyXView *lv, string const & filename,
 			std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
 
 
+/* Wrapper around browseFile which tries to provide a filename
+   relative to relpath.  If the relative path is of the form "foo.txt"
+   or "bar/foo.txt", then it is returned as relative. OTOH, if it is
+   of the form "../baz/foo.txt", an absolute path is returned. This is
+   intended to be useful for insets which encapsulate files/
+*/
+string const browseRelFile(LyXView *lv, string const & filename,
+			   string const & refpath,
+			   string const & title,
+			   string const & pattern, 
+			   std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
+			   std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
+
+
 /// Returns a vector of units that can be used to create a valid LaTeX length.
 std::vector<string> const getLatexUnits();
 

@@ -24,9 +24,9 @@
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "gettext.h"
-
 #include "helper_funcs.h"
 #include "lyxrc.h"
+#include "support/filetools.h"
 
 using std::pair;
 using std::make_pair;
@@ -50,9 +50,8 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 {
 	string const title = N_("Select document to include");
 
-	string pattern;
-		   
 	// input TeX, verbatim, or LyX file ?
+	string pattern;		   
 	switch (in_type) {
 	case INPUT:
 	    pattern = _("*.tex| LaTeX Documents (*.tex)");
@@ -70,7 +69,9 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
-	return browseFile(&lv_, in_name, title, pattern, dir1);
+	string const docpath = OnlyPath(params().masterFilename_);
+	
+	return browseRelFile(&lv_, in_name, docpath, title, pattern, dir1);
 }
 
 

@@ -1,5 +1,32 @@
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* lyx_cb.C (MenuWrite): buffer->fileName is guaranteed to be
+	absolute 
+
+	* vc-backend.C (most methods):
+	* exporter.C (Export): 
+	* converter.C (convert): 
+	(runLaTeX): 
+	* LyXSendto.C (SendtoApplyCB): 
+	* lyxfunc.C (dispatch): 
+	(menuNew): 
+	(open): 
+	(doImport): 
+	* lyx_cb.C (AutoSave): 
+	(InsertAsciiFile): 
+	* BufferView_pimpl.C (MenuInsertLyXFile): 
+	* buffer.C (runChktex): use Buffer::filePath().
+
+	* buffer.h: rename filename to filename_; rename filepath to
+	filepath_ and make it private
+	(filePath): new method
+
+	* buffer.C (writeFile): use fileName()
+	(getLatexName): 
+
+	* lyx_main.C (init): fix starting  of LyX when the binary is a
+	link from so,ewhere else.
+
 	* minibuffer.C: include <cctype> for isprint
 
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>

@@ -1,3 +1,20 @@
+2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetparent.C (InsetParent): 
+	* insetgraphicsParams.C (Write): 
+	(Read): 
+	* insetgraphics.C (prepareFile): 
+	(readFigInset): 
+	(docbook): 
+	* insetexternal.C (executeCommand): 
+	(doSubstitution): use Buffer::filePath
+
+	* insetbib.C (getFiles): add a #warning for Angus
+
+	* insetgraphics.C: Add a remark about how filenames should be
+	considered to be relative to buffer (but absolute is still allowed)
+	(draw): do not try to get status if lyxrc.use_gui is false
+
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* inset.[Ch]:

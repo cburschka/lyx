@@ -34,7 +34,7 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 	: InsetCommand(p)
 {
 	string const fn = p.getContents();
-	setContents(MakeAbsPath(fn, OnlyPath(bf.fileName())));
+	setContents(MakeAbsPath(fn, bf.filePath()));
 }
 
 

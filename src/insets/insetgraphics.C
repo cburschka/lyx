@@ -28,7 +28,15 @@ Known BUGS:
        We should probably use what the user asks to use... but when he chooses
        by the file dialog we normally get an absolute path and this may not be 
        what the user meant.
-
+       [Note that browseRelFile in helper_funcs.* provides a file name
+        which is relative if it is at reference path (here puffer path)
+        level or below, and an absolute path if the file name is not a
+        `natural' relative file name. In any case,
+            MakeAbsPath(filename, buf->filePath())
+        is guaranteed to provide the correct absolute path. This is what is
+        done know for include insets. Feel free to ask me -- JMarc
+	14/01/2002]
+	
 	* If we are trying to create a file in a read-only directory and there
 		are graphics that need converting, the converting will fail because
 		it is done in-place, into the same directory as the original image.
@@ -69,15 +77,15 @@ TODO Extended features:
        to find it in the clipart, or in the same directory with the image.
     * Keep a tab on the image file, if it changes, update the lyx view.
 	* The image choosing dialog could show thumbnails of the image formats
-		it knows of, thus selection based on the image instead of based on
-		filename.
+	  it knows of, thus selection based on the image instead of based on
+	  filename.
 	* Add support for the 'picins' package.
 	* Add support for the 'picinpar' package.
 	* Improve support for 'subfigure' - Allow to set the various options
 		that are possible.
-	* Add resizing by percentage of image size (50%, 150%) - usefull for two
-		images of different size to be resized where they both should have
-		the same scale compared to each other.
+	* Add resizing by percentage of image size (50%, 150%) -
+	  usefull for two images of different size to be resized where
+	  they both should have the same scale compared to each other.
  */
 
 /* NOTES:
@@ -301,8 +309,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (lyxrc.display_graphics != "no" &&
-		    params.display != InsetGraphicsParams::NONE &&
+		if (lyxrc.display_graphics != "no" && lyxrc.use_gui
+		    && params.display != InsetGraphicsParams::NONE &&
 		    cacheHandle.get())
 			status = cacheHandle->getImageStatus();
 		
@@ -433,7 +441,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		} else if (token == "file") {
 			if (lex.next()) {
 				string const name = lex.getString();
-				string const path = OnlyPath(buf->fileName());
+				string const path = buf->filePath();
 				params.filename = MakeAbsPath(name, path);
 			}
 		} else if (token == "extra") {
@@ -668,7 +676,7 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 		//lyxerr << "temp = " << temp << "\n";
 		//lyxerr << "outfile = " << outfile << endl;
 	} else {
-		string const path = OnlyPath(buf->fileName());
+		string const path = buf->filePath();
 		string const relname = MakeRelPath(params.filename, path);
 		outfile = RemoveExtension(relname);
 	}
@@ -764,7 +772,7 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 int InsetGraphics::docbook(Buffer const * buf, ostream & os) const
 {
 	// Change the path to be relative to the main file.
-	string const buffer_dir = OnlyPath(buf->fileName());
+	string const buffer_dir = buf->filePath();
 	string const filename = RemoveExtension(
 	                           MakeRelPath(params.filename, buffer_dir));
 

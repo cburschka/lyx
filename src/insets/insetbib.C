@@ -160,8 +160,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	}
 
   	if (!buffer->niceFile 
-	    && IsFileReadable(MakeAbsPath(style, buffer->filepath) + ".bst")) {
-		style = MakeAbsPath(style, buffer->filepath);
+	    && IsFileReadable(MakeAbsPath(style, buffer->filePath()) + ".bst")) {
+		style = MakeAbsPath(style, buffer->filePath());
 	}
 
 	if (!style.empty()) { // we want no \biblio...{}
@@ -198,8 +198,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// have a comma-separated list of bibliographies
 	while (!adb.empty()) {
 		if (!buffer->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, buffer->filepath)+".bib")) 
-                         adb = os::external_path(MakeAbsPath(adb, buffer->filepath));
+		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib")) 
+                         adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
 		db_out += adb;
 		db_out += ',';
 		db_in= split(db_in, adb,',');
@@ -213,7 +213,12 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 vector<string> const InsetBibtex::getFiles(Buffer const &) const
 {
 	// Doesn't appear to be used (Angus, 31 July 2001)
-	// Path p(buffer->filepath);
+	// Path p(buffer->filePath());
+#ifdef WITH_WARNINGS
+#warning Angus, do you now that this is not supposed to be used but to change path?
+// I would say this is needed to find bib files which are in the
+// document directory (JMarc 14/01/2002)
+#endif
 
 	vector<string> vec;
 

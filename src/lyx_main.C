@@ -245,14 +245,15 @@ void LyX::init(bool gui)
 
 	string binpath = os::binpath();
 	string binname = os::binname();
-	string fullbinpath = binpath;
-
+	string fullbinname = MakeAbsPath(binname, binpath);
+	
 	if (binpath.empty()) {
 		lyxerr << _("Warning: could not determine path of binary.")
 		       << "\n"
 		       << _("If you have problems, try starting LyX with an absolute path.")
 		       << endl;
 	}
+	lyxerr[Debug::INIT] << "Name of binary: " << binname << endl;
 	lyxerr[Debug::INIT] << "Path of binary: " << binpath << endl;
 
 	//
@@ -286,6 +287,45 @@ void LyX::init(bool gui)
 		searchpath += lyxdir + ';';
 	}
 
+	string fullbinpath = binpath;
+	FileInfo file(fullbinname, true);
+	if (file.isLink()) {
+		lyxerr[Debug::INIT] << "binary is a link" << endl;
+		string link;
+		if (LyXReadLink(fullbinname, link)) {
+			// Path of binary/../share/name of binary/
+			searchpath += NormalizePath(AddPath(binpath,
+							    "../share/") 
+						    + OnlyFilename(binname));
+			searchpath += ';';
+			fullbinpath = link;
+			binpath = MakeAbsPath(OnlyPath(fullbinpath));
+		}
+	}
+	
+        bool followlink;
+	do {
+		// Path of binary/../share/name of binary/
+		searchpath += NormalizePath(AddPath(binpath, "../share/") + 
+		      OnlyFilename(binname)) + ';';
+
+		// Follow Symlinks
+		FileInfo file(fullbinpath, true);
+		followlink = file.isLink();
+		if (followlink) {
+			lyxerr << " directory " << fullbinpath
+			       << " is a link" << endl;
+			string link;
+			if (LyXReadLink(fullbinpath, link)) {
+				fullbinpath = link;
+				binpath = MakeAbsPath(OnlyPath(fullbinpath));
+			}
+			else {
+				followlink = false;
+			}
+		}
+	} while (followlink);
+
 	// <path of binary>/TOP_SRCDIR/lib
 	build_lyxdir = MakeAbsPath("../lib", binpath);
 	if (!FileSearch(build_lyxdir, "lyxrc.defaults").empty()) {
@@ -299,27 +339,6 @@ void LyX::init(bool gui)
 			<< endl;
 		build_lyxdir.erase();
 	}
-
-        bool followlink;
-	do {
-	  // Path of binary/../share/name of binary/
-		searchpath += NormalizePath(AddPath(binpath, "../share/") + 
-		      OnlyFilename(binname)) + ';';
-
-	  // Follow Symlinks
-		FileInfo file(fullbinpath, true);
-		followlink = file.isLink();
-		if (followlink) {
-			string link;
-			if (LyXReadLink(fullbinpath, link)) {
-				fullbinpath = link;
-				binpath = MakeAbsPath(OnlyPath(fullbinpath));
-			}
-			else {
-				followlink = false;
-			}
-		}
-	} while (followlink);
 
 	// Hardcoded dir
 	searchpath += LYX_DIR;

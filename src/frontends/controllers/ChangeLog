@@ -1,3 +1,10 @@
+2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ControlExternal.C (Browse): use Buffer::filePath; simplify (more
+	can be done)
+
+	* ControlGraphics.C (Browse): remove overzealous shortcut
+
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMinipage.C (apply, update): MinipageParams::width renamed

@@ -649,7 +649,7 @@ bool Converters::convert(Buffer const * buffer,
 			Systemcalls one;
 			int res;
 			if (conv.original_dir && buffer) {
-				Path p(buffer->filepath);
+				Path p(buffer->filePath());
 				res = one.startscript(type, command);
 			} else
 				res = one.startscript(type, command);
@@ -851,7 +851,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	// do the LaTex run(s)
 	TeXErrors terr;
-	LaTeX latex(command, name, buffer->filepath);
+	LaTeX latex(command, name, buffer->filePath());
 	int result = latex.run(terr,
 			       bv ? bv->owner()->getLyXFunc() : 0);
 	

@@ -149,7 +149,7 @@ void RCS::registrer(string const & msg)
 	cmd += "\" \"";
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
-	doVCCommand(cmd, owner_->filepath);
+	doVCCommand(cmd, owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
@@ -157,7 +157,7 @@ void RCS::registrer(string const & msg)
 void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
@@ -166,7 +166,7 @@ void RCS::checkOut()
 {
 	owner_->markLyxClean();
 	doVCCommand("co -q -l \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
@@ -174,7 +174,7 @@ void RCS::checkOut()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
@@ -187,14 +187,14 @@ void RCS::undoLast()
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " \""
 		    + OnlyFilename(owner_->fileName()) + "\"",
-		    owner_->filepath);
+		    owner_->filePath());
 }
 
 
 void RCS::getLog(string const & tmpf)
 {
 	doVCCommand("rlog \""
-		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf, owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf, owner_->filePath());
 }
 
 
@@ -279,7 +279,7 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
@@ -288,7 +288,7 @@ void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"",
-		    owner_->filepath);
+		    owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
 
@@ -307,7 +307,7 @@ void CVS::revert()
 	string const fil = OnlyFilename(owner_->fileName());
 	
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
-		    owner_->filepath);
+		    owner_->filePath());
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
 		->getLyXFunc()->dispatch(LFUN_MENURELOAD);
@@ -327,5 +327,5 @@ void CVS::getLog(string const & tmpf)
 {
 	doVCCommand("cvs log \""
 		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf,
-		    owner_->filepath);
+		    owner_->filePath());
 }

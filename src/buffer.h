@@ -212,8 +212,12 @@ public:
 	/// Mark this buffer as dirty.
 	void markDirty();
 
-	/// Returns the buffers filename.
+	/// Returns the buffer's filename. It is always an absolute path.
 	string const & fileName() const;
+
+	/// Returns the the path where the buffer lives.
+	/// It is always an absolute path. 
+	string const & filePath() const;
 
 	/** A transformed version of the file name, adequate for LaTeX.
 	    \param no_path optional if \c true then the path is stripped.
@@ -312,9 +316,6 @@ public:
 	/// Where to put temporary files.
 	string tmppath;
 
-	/// The path to the document file.
-	string filepath;
-
 	/** If we are writing a nice LaTeX file or not.
 	    While writing as LaTeX, tells whether we are
 	    doing a 'nice' LaTeX file */
@@ -339,7 +340,10 @@ private:
 	bool read_only;
 
 	/// name of the file the buffer is associated with.
-	string filename;
+	string filename_;
+
+	/// The path to the document file.
+	string filepath_;
 
 	/// Format number of buffer
 	int file_format;
@@ -529,7 +533,14 @@ void Buffer::markDirty()
 inline
 string const & Buffer::fileName() const
 {
-	return filename;
+	return filename_;
+}
+
+
+inline
+string const & Buffer::filePath() const
+{
+	return filepath_;
 }
 
 
