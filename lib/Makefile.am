@@ -11,7 +11,7 @@ EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 
 CLIPART = clipart/*.eps
 LAYOUT = layouts/*.layout layouts/*.inc 
-DOC = doc/*.lyx 
+DOC = doc/*.lyx doc/LaTeXConfig.lyx.in
 KBD = kbd/*.kmap kbd/*.cdef
 TEMPL = templates/*.lyx
 BIND = bind/*.bind
