@@ -134,9 +134,9 @@ public:
     /// Returns true if a complete update is necessary, otherwise false
     bool SetAlignment(int cell, char align);
     ///
-    bool SetPWidth(int cell, string width);
+    bool SetPWidth(int cell, string const & width);
     ///
-    bool SetAlignSpecial(int cell, string special, int what);
+    bool SetAlignSpecial(int cell, string const & special, int what);
     ///
     char GetAlignment(int cell) const; // add approp. signedness
     ///
@@ -176,7 +176,7 @@ public:
     ///
     void Read(LyXLex &);
     ///
-    void OldFormatRead(LyXLex &, string);
+    void OldFormatRead(LyXLex &, string const &);
     ///
     /// helper function for Latex returns number of newlines
     ///

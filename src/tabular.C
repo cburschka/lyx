@@ -725,7 +725,7 @@ bool LyXTabular::SetAlignment(int cell, char align)
 }
 
 
-bool LyXTabular::SetPWidth(int cell, string width)
+bool LyXTabular::SetPWidth(int cell, string const & width)
 {
     bool flag = !width.empty();
 
@@ -748,7 +748,7 @@ bool LyXTabular::SetPWidth(int cell, string width)
 }
 
 
-bool LyXTabular::SetAlignSpecial(int cell, string special, int what)
+bool LyXTabular::SetAlignSpecial(int cell, string const & special, int what)
 {
     if (what == SET_SPECIAL_MULTI)
         cellinfo_of_cell(cell)->align_special = special;
@@ -1199,7 +1199,7 @@ void LyXTabular::Read(LyXLex & lex)
 }
 
 
-void LyXTabular::OldFormatRead(LyXLex & lex, string fl)
+void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 {
     int version;
     int i, j;
@@ -1217,14 +1217,13 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string fl)
     int h = 0;
 	
     istream & is = lex.getStream();
-    string s;
-    s = fl;
+    string s(fl);
     if (s.length() > 8)
 	version = atoi(s.c_str() + 8);
     else
 	version = 1;
 
-    int * cont_row_info;
+    //int * cont_row_info; // unused
 
     if (version < 5) {
 	lyxerr << "Tabular format < 5 is not supported anymore\n"

@@ -41,6 +41,7 @@ Inset::EDITABLE Inset::Editable() const
   return NOT_EDITABLE;
 }
 
+
 bool Inset::IsTextInset() const
 {
 	return ((LyxCode() == TEXT_CODE) ||
@@ -48,6 +49,7 @@ bool Inset::IsTextInset() const
 		(LyxCode() == FOOT_CODE) ||
 		(LyxCode() == MARGIN_CODE));
 }
+
 
 void Inset::Validate(LaTeXFeatures &) const
 {
@@ -122,9 +124,11 @@ void UpdatableInset::ToggleInsetCursor(BufferView *)
 {
 }
 
+
 void UpdatableInset::ShowInsetCursor(BufferView *)
 {
 }
+
 
 void UpdatableInset::HideInsetCursor(BufferView *)
 {
@@ -178,6 +182,7 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
 #endif
     return UNDISPATCHED; 
 }
+
 
 int UpdatableInset::getMaxWidth(Painter & pain, UpdatableInset const *) const
 {

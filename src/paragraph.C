@@ -662,14 +662,15 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 }
 
 
-bool LyXParagraph::InsertInsetAllowed(Inset *inset)
+bool LyXParagraph::InsertInsetAllowed(Inset * inset)
 {
 	if (inset_owner) {
-		printf("CODE:%d\n",inset->LyxCode());
+		lyxerr << "CODE: << " << inset->LyxCode() << endl;
 		return inset_owner->InsertInsetAllowed(inset);
 	}
 	return true;
 }
+
 
 Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 {

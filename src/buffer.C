@@ -2280,7 +2280,7 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		// treat <toc> as a special case for compatibility with old code
 		if (par->GetChar(0) == LyXParagraph::META_INSET) {
 		        Inset * inset = par->GetInset(0);
-			char  lyx_code = inset->LyxCode();
+			Inset::Code lyx_code = inset->LyxCode();
 			if (lyx_code == Inset::TOC_CODE){
 				string temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
@@ -2966,7 +2966,7 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 			// more WYSIWYM handling.
 			if (par->GetChar(0) == LyXParagraph::META_INSET) {
 			        Inset * inset = par->GetInset(0);
-				char  lyx_code = inset->LyxCode();
+				Inset::Code lyx_code = inset->LyxCode();
 				if (lyx_code == Inset::LABEL_CODE){
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
@@ -2975,7 +2975,7 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 				}
 			}
 
-			sgmlOpenTag(ofs, depth+command_depth, command_name);
+			sgmlOpenTag(ofs, depth + command_depth, command_name);
 			item_name = "title";
 			sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
 			break;
@@ -3824,11 +3824,11 @@ string Buffer::getBibkeyList(char delim)
 
 			// Search for Bibtex or Include inset
 			while ((inset = par->ReturnNextInsetPointer(pos))) {
-				if (inset-> LyxCode() == Inset::BIBTEX_CODE) {
+				if (inset->LyxCode() == Inset::BIBTEX_CODE) {
 					if (!bibkeys.empty())
 						bibkeys += delim;
 					bibkeys += static_cast<InsetBibtex*>(inset)->getKeys(delim);
-				} else if (inset-> LyxCode() == Inset::INCLUDE_CODE) {
+				} else if (inset->LyxCode() == Inset::INCLUDE_CODE) {
 					string bk = static_cast<InsetInclude*>(inset)->getKeys(delim);
 					if (!bk.empty()) {
 						if (!bibkeys.empty())

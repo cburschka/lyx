@@ -24,7 +24,7 @@ using std::ostream;
 using std::endl;
 
 InsetFoot::InsetFoot(Buffer * bf)
-		: InsetCollapsable(bf)
+	: InsetCollapsable(bf)
 {
     setLabel(_("foot"));
     LyXFont font(LyXFont::ALL_SANE);
@@ -72,6 +72,7 @@ bool InsetFoot::InsertInset(BufferView * bv, Inset * inset)
     return InsetText::InsertInset(bv, inset);
 }
 
+
 bool InsetFoot::InsertInsetAllowed(Inset * inset) const
 {
     if ((inset->LyxCode() == Inset::FOOT_CODE) ||
@@ -81,10 +82,10 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
     return true;
 }
 
+
 LyXFont InsetFoot::GetDrawFont(LyXParagraph * p, int pos) const
 {
     LyXFont fn = InsetCollapsable::GetDrawFont(p, pos);
-    fn.decSize();
-    fn.decSize();
+    fn.decSize().decSize();
     return fn;
 }
