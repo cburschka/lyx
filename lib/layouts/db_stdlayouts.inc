@@ -7,23 +7,6 @@
 
 Input stdlayouts.inc
 
-
-Style SGML
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             "!-- --"
-	NewLine               0
-	ParIndent             MM
-	ParSkip               0.4
-	ParSep                0.5
-	Align                 Left
-	AlignPossible         Block
-	LabelType             No_Label
-	FreeSpacing           1
-	PassThru              1
-End
-
-
 Style Literal
 	LatexType             Environment
 	LatexName             literallayout
@@ -45,4 +28,8 @@ NoStyle Verse
 Style Caption
 	LatexType             Paragraph
 	LatexName             title
+End
+
+Style SGML
+	ObsoletedBy	      Standard
 End
