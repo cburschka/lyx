@@ -412,7 +412,7 @@ void BufferView::Pimpl::updateScrollbar()
 
 	lyxerr[Debug::GUI] << "text_height now " << text_height << endl;
 	lyxerr[Debug::GUI] << "work_height " << work_height << endl;
- 
+
 	/* If the text is smaller than the working area, the scrollbar
 	 * maximum must be the working area height. No scrolling will
 	 * be possible */
@@ -435,7 +435,7 @@ void BufferView::Pimpl::updateScrollbar()
 void BufferView::Pimpl::scrollCB(double value)
 {
 	lyxerr[Debug::GUI] << "scrollCB of " << value << endl;
- 
+
 	if (!buffer_) return;
 
 	current_scrollbar_value = long(value);
