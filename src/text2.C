@@ -74,7 +74,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
 	: height(0), width(0), inset_owner(inset), bv_owner(bv),
 	  in_inset_(ininset), paragraphs_(&paragraphs),
-	  cache_pos_(-1), x0_(0), y0_(0)
+	  cache_pos_(-1), xo_(0), yo_(0)
 {}
 
 
@@ -1300,6 +1300,7 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 
 	ParagraphList::iterator pit = getPar(par);
 	Row const & row = *pit->getRow(pos);
+
 	int y = pit->y + row.y_offset();
 
 	// y is now the beginning of the cursor row
@@ -1404,7 +1405,7 @@ void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cursor, par, pos, boundary);
-	bv()->x_target(cursor.x() + x0_);
+	bv()->x_target(cursor.x() + xo_);
 	if (setfont)
 		setCurrentFont();
 }
@@ -1708,33 +1709,32 @@ bool LyXText::cursorRight(bool internal)
 
 void LyXText::cursorUp(bool selecting)
 {
-	ParagraphList::iterator cpit = cursorPar();
-	Row const & crow = *cpit->getRow(cursor.pos());
-	int x = bv()->x_target() - x0_;
-	int y = cursor.y() - crow.baseline() - 1;
+	Row const & row = *cursorRow();
+	int x = bv()->x_target() - xo_;
+	int y = cursor.y() - row.baseline() - 1;
 	setCursorFromCoordinates(x, y);
+	
 	if (!selecting) {
-		y += y0_ - bv()->top_y();
-		lyxerr << "y:" << y << " y0: " << y0_ << endl;
-		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
+		int y_abs = y + yo_ - bv()->top_y();
+		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y_abs);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(bv(), bv()->x_target(), y);
+			inset_hit->edit(bv(), bv()->x_target(), y_abs);
 	}
 }
 
 
 void LyXText::cursorDown(bool selecting)
 {
-	ParagraphList::iterator cpit = cursorPar();
-	Row const & crow = *cpit->getRow(cursor.pos());
-	int x = bv()->x_target() - x0_;
-	int y = cursor.y() - crow.baseline() + crow.height() + 1;
+	Row const & row = *cursorRow();
+	int x = bv()->x_target() - xo_;
+	int y = cursor.y() - row.baseline() + row.height() + 1;
 	setCursorFromCoordinates(x, y);
+
 	if (!selecting) {
-		y += y0_ - bv()->top_y();
-		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
+		int y_abs = y + yo_ - bv()->top_y();
+		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y_abs);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(bv(), bv()->x_target(), y);
+			inset_hit->edit(bv(), bv()->x_target(), y_abs);
 	}
 }
 

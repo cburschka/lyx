@@ -472,8 +472,8 @@ private:
 
 public:
 	/// absolute document pixel coordinates of this LyXText
-	int x0_;
-	int y0_;
+	int xo_;
+	int yo_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

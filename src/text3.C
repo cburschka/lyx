@@ -260,7 +260,8 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 	ParagraphList::iterator end;
 
 	getParsInRange(ownerParagraphs(),
-		       bv()->top_y(), bv()->top_y() + bv()->workHeight(),
+		       bv()->top_y() - yo_,
+		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
 	
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
@@ -365,8 +366,8 @@ void LyXText::cursorPrevious()
 
 	RowList::iterator crit = cursorRow();
 
-	int x = bv()->x_target() - x0_;
-	int y = bv()->top_y() - y0_;
+	int x = bv()->x_target() - xo_;
+	int y = bv()->top_y() - yo_;
 	setCursorFromCoordinates(x, y);
 
 	if (crit == cursorRow()) {
@@ -384,8 +385,8 @@ void LyXText::cursorNext()
 {
 	RowList::iterator crit = cursorRow();
 
-	int x = bv()->x_target() - x0_;
-	int y = bv()->top_y() + bv()->workHeight() - y0_;
+	int x = bv()->x_target() - xo_;
+	int y = bv()->top_y() + bv()->workHeight() - yo_;
 	setCursorFromCoordinates(x, y);
 
 	if (crit == cursorRow()) {
@@ -1242,9 +1243,9 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		// FIXME: shouldn't be top-text-specific
 		if (cursorrow == cursorRow() && !in_inset_) {
 			if (cmd.y - bv->top_y() >= bv->workHeight())
-				cursorDown(false);
+				cursorDown(true);
 			else if (cmd.y - bv->top_y() < 0)
-				cursorUp(false);
+				cursorUp(true);
 		}
 		setSelection();
 		break;
@@ -1292,7 +1293,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		setCursorFromCoordinates(cmd.x, cmd.y);
 		selection.cursor = cursor;
 		finishUndo();
-		bv->x_target(cursor.x() + x0_);
+		bv->x_target(cursor.x() + xo_);
 
 		if (bv->fitCursor())
 			selection_possible = false;

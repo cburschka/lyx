@@ -1,3 +1,10 @@
+2003-11-21  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxtext.h: x0_,y0_ -> xo_,yo_ 
+	* text2.C (cursorUp, cursorDown): adjust + some cursorRow use
+	* text3.C (checkInsetHit): fix coordinates using absolute xo_,yo_
+	* rowpainter.C (paintRows): paint full paragraphs
+
 2003-11-20  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (cursorUp, cursorDown): small fix (insettext::edit takes

@@ -993,12 +993,12 @@ int paintRows(BufferView const & bv, LyXText const & text,
 				RowPainter painter(bv, text, pit, row, y + yo, xo, y + bv.top_y());
 				painter.paint();
 				y += row->height();
-				if (yy + y >= y2)
-					return y;
 			} else {
 				//lyxerr << "   paintRows: row: " << &*row << " ignored" << endl;
 			}
 		}
+		if (yy + y >= y2)
+			return y;
 	}
 
 	return y;

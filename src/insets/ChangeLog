@@ -1,3 +1,7 @@
+2003-11-21  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.C (edit): x0_,y0_ -> xo_,yo_
+
 2003-11-20  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insettext.C (draw): sets LyXText absolute coordinates
