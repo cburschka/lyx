@@ -1,5 +1,8 @@
 2002-05-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* libs/regex/src/Makefile.am (libboostregex_la_SOURCES): add a
+	missing \ that made the lib incomplete.
+
 	* update and enable use of exceptions again.
 
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
