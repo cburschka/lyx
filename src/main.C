@@ -3,7 +3,8 @@
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
+ * \author Jean Marc Lasgouttes
  */
 
 #include <config.h>
