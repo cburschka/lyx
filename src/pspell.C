@@ -12,6 +12,7 @@
 #ifdef USE_PSPELL
 
 #include "support/LAssert.h"
+#include "debug.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
 // new aspell pspell missing extern "C"
@@ -22,34 +23,35 @@ extern "C" {
 #include "pspell.h"
 #include "WordLangTuple.h"
 
+using std::endl;
+
 PSpell::PSpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)
 {
 	addManager(lang);
+	lyxerr[Debug::GUI] << "created pspell" << endl;
 }
 
 
 PSpell::~PSpell()
 {
-	cleanUp();
-	close();
+	lyxerr[Debug::GUI] << "killed pspell" << endl;
+
+	if (spell_error_object) {
+		delete_pspell_can_have_error(spell_error_object);
+		spell_error_object = 0;
+	}
+
 	if (els)
 		delete_pspell_string_emulation(els);
+
 	Managers::iterator it = managers_.begin();
 	Managers::iterator end = managers_.end();
 
 	for (; it != end; ++it) {
+		pspell_manager_save_all_word_lists(it->second.manager);
 		delete_pspell_manager(it->second.manager);
 		delete_pspell_config(it->second.config);
-	}
-}
-
-
-void PSpell::cleanUp()
-{
-	if (spell_error_object) {
-		delete_pspell_can_have_error(spell_error_object);
-		spell_error_object = 0;
 	}
 }
 
@@ -105,17 +107,6 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 			res = MISSED;
 	}
 	return res;
-}
-
-
-void PSpell::close()
-{
-	Managers::iterator it = managers_.begin();
-	Managers::iterator end = managers_.end();
-
-	for (; it != end; ++it) {
-		pspell_manager_save_all_word_lists(it->second.manager);
-	}
 }
 
 

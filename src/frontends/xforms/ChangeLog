@@ -1,3 +1,9 @@
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* FormSpellchecker.h:
+	* FormSpellchecker.C:
+	* ui/form_spellchecker.fd: rework, remove start, etc.
+
 2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* FormPreferences.C (apply): make sure that rc.font_norm_type is

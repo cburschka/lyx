@@ -12,6 +12,7 @@
 #ifndef CONTROLSPELLCHECKER_H
 #define CONTROLSPELLCHECKER_H
 
+#include <boost/scoped_ptr.hpp>
 
 #include "ControlDialog_impl.h"
 #include "LString.h"
@@ -23,8 +24,14 @@ class SpellBase;
  */
 class ControlSpellchecker : public ControlDialogBD {
 public:
-	///
+	enum State {
+		SPELL_PROGRESSED, //< update progress bar
+		SPELL_FOUND_WORD //< found a bad word
+	};
+
 	ControlSpellchecker(LyXView &, Dialogs &);
+
+	~ControlSpellchecker();
 
 	/// replace word with replacement
 	void replace(string const &);
@@ -38,10 +45,8 @@ public:
 	/// ignore all occurances of word
 	void ignoreAll();
 
-	/// stop checking
-	void stop();
-
 	/// check text until next misspelled/unknown word
+	/// returns true when finished
 	void check();
 
 	/// get suggestion
@@ -53,13 +58,22 @@ public:
 	/// returns progress value
 	int getProgress() const { return oldval_; }
 
-	/// returns exit message
-	string const getMessage()  const { return message_; }
-
 	/// returns word count
 	int getCount()  const { return count_; }
 
 private:
+	/// give error message is spellchecker dies
+	bool checkAlive();
+
+	/// start a spell-checking session
+	void startSession();
+
+	/// end a spell-checking session
+	void endSession();
+
+	/// show count of checked words at normal exit
+	void showSummary();
+
 	/// set the params before show or update
 	void setParams();
 	/// clean-up on hide.
@@ -79,14 +93,8 @@ private:
 	/// word count
 	int count_;
 
-	/// exit message
-	string message_;
-
-	/// set to true to stop checking
-	bool stop_;
-
 	/// The actual spellchecker object
-	SpellBase * speller_;
+	boost::scoped_ptr<SpellBase> speller_;
 };
 
 #endif // CONTROLSPELLCHECKER_H

@@ -10,11 +10,14 @@
 #ifndef SP_ISPELL_H
 #define SP_ISPELL_H
 
-#include <cstdio>
-
 #include "SpellBase.h"
 
+#include <boost/scoped_ptr.hpp>
+
+#include <cstdio>
+
 class BufferParams;
+class ForkedProcess;
 
 /// i/a spell process-based spellchecker
 class ISpell : public SpellBase {
@@ -26,14 +29,8 @@ public:
 	/// return true if the spellchecker instance still exists
 	virtual bool alive();
 
-	/// clean up on messy exit
-	virtual void cleanUp();
-
 	/// check the given word and return the result
 	virtual enum Result check(WordLangTuple const & word);
-
-	/// finish this spellchecker instance
-	virtual void close();
 
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const & word);
@@ -48,17 +45,29 @@ public:
 	virtual string const error();
 
 private:
-	///
-	void setError();
+	/// read some data. Returns true on an error. Sets err_read
+	/// to true if the data was from stderr.
+	bool select(bool & err_read);
 
 	/// instream to communicate with ispell
 	FILE * in;
 	/// outstream to communicate with ispell
 	FILE * out;
+	/// errstream for ispell
+	FILE * inerr;
+
+	/// pipe fds
+	int pipein[2];
+	int pipeout[2];
+	int pipeerr[2];
+
+	/// buffer for reading
+	char buf[BUFSIZ];
+
 	/// spell error
-	char const * error_;
-	/// the fd of the outgoing pipe
-	int isp_fd;
+	string error_;
+
+	boost::scoped_ptr<ForkedProcess> child_;
 
 	// vileness below ... please FIXME
 	/// str ???

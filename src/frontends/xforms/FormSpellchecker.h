@@ -30,26 +30,14 @@ private:
 	virtual void apply() {}
 	/// Build the dialog
 	virtual void build();
-	///
-	virtual void update();
+	/// not needed.
+	virtual void update() {}
 
 	/// set suggestions and exit message
 	virtual void partialUpdate(int);
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	///
-	enum State {
-		READY_TO_START,
-		STARTED,
-		CHECKING,
-		STOPPED
-	};
-	///
-	void updateState(State state);
-	///
-	State state_;
 };
 
 #endif // FORMSPELLCHECKER_H

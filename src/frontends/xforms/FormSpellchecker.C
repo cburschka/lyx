@@ -12,8 +12,8 @@
 
 
 #include "xformsBC.h"
-#include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
+#include "ControlSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
 #include "forms_gettext.h"
@@ -23,11 +23,12 @@
 
 #include FORMS_H_LOCATION
 
+using std::endl;
+
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
-
 FormSpellchecker::FormSpellchecker()
-	: base_class(_("Spellchecker")), state_(STOPPED)
+	: base_class(_("Spellchecker"))
 {}
 
 
@@ -61,8 +62,6 @@ void FormSpellchecker::build()
 	tooltips().init(dialog_->browser_suggestions, str);
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_suggestions);
-	str = _("Start the spellingchecker.");
-	tooltips().init(dialog_->button_start, str);
 	str = _("Replace unknown word.");
 	tooltips().init(dialog_->button_replace, str);
 	str = _("Ignore unknown word.");
@@ -76,16 +75,14 @@ void FormSpellchecker::build()
 }
 
 
-void FormSpellchecker::updateState(State state)
+void FormSpellchecker::partialUpdate(int s)
 {
-	switch (state) {
-	case READY_TO_START:
-		fl_set_slider_value(dialog_->slider_progress, 0.0);
-		fl_set_object_label(dialog_->slider_progress, "0 %");
-		break;
+	ControlSpellchecker::State const state =
+		static_cast<ControlSpellchecker::State>(s);
 
-	case CHECKING:
-	{
+	switch (state) {
+
+	case ControlSpellchecker::SPELL_FOUND_WORD: {
 		// Set suggestions.
 		string w = controller().getWord();
 		fl_set_input(dialog_->input_replacement, w.c_str());
@@ -98,8 +95,7 @@ void FormSpellchecker::updateState(State state)
 		// Fall through...
 	}
 
-	case STARTED:
-	{
+	case ControlSpellchecker::SPELL_PROGRESSED: {
 		int const progress = controller().getProgress();
 		if (progress == 0)
 			break;
@@ -111,68 +107,17 @@ void FormSpellchecker::updateState(State state)
 		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
 		fl_set_slider_value(dialog_->slider_progress, wordcount);
 		fl_set_object_label(dialog_->slider_progress, label.c_str());
+		fl_redraw_object(dialog_->slider_progress);
 		break;
 	}
 
-	case STOPPED:
-	{
-		controller().stop();
-
-		double const wordcount = controller().getCount();
-
-		fl_set_slider_bounds(dialog_->slider_progress, 0.0, wordcount);
-		fl_set_slider_value(dialog_->slider_progress, wordcount);
-		fl_set_object_label(dialog_->slider_progress, "100 %");
-		break;
 	}
-	}
-
-	bool const state_change = state_ != state;
-	state_ = state;
-
-	if (!state_change)
-		return;
-
-	bool const running = (state == STARTED || state == CHECKING);
-	string const label = running ? _("Stop|#S") : _("Start|#S");
-
-	fl_set_object_label(dialog_->button_start, idex(label).c_str());
-	fl_set_button_shortcut(dialog_->button_start, scex(label).c_str(), 1);
-	fl_redraw_object(dialog_->button_start);
-
-	string const tip = running ?
-		_("Stop the spellingchecker.") :
-		_("Start the spellingchecker.");
-	tooltips().init(dialog_->button_start, tip);
-
-	setEnabled(dialog_->button_replace,      running);
-	setEnabled(dialog_->button_ignore,       running);
-	setEnabled(dialog_->button_accept,       running);
-	setEnabled(dialog_->button_add,          running);
-	setEnabled(dialog_->browser_suggestions, running);
-	setEnabled(dialog_->input_replacement,   running);
-}
-
-
-void FormSpellchecker::update()
-{
-	// clear input fields
-	fl_set_input(dialog_->input_replacement, "");
-	fl_set_object_label(dialog_->text_unknown, "");
-	fl_clear_browser(dialog_->browser_suggestions);
-
-	// reset dialog and buttons into start condition
-	updateState(READY_TO_START);
 }
 
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 {
-	if (ob == dialog_->button_start) {
-		updateState(STARTED);
-		controller().check();
-
-	} else if (ob == dialog_->button_replace) {
+	if (ob == dialog_->button_replace) {
 		string const tmp = getString(dialog_->input_replacement);
 		controller().replace(tmp);
 
@@ -205,19 +150,4 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 	}
 
 	return ButtonPolicy::SMI_VALID;
-}
-
-
-void FormSpellchecker::partialUpdate(int id)
-{
-	switch (id) {
-	case 1:
-		// Set suggestions.
-		updateState(CHECKING);
-		break;
-	case 2:
-		// End of spell checking.
-		updateState(STOPPED);
-		break;
-	}
 }

@@ -25,9 +25,7 @@ public slots:
 	virtual void suggestionChanged(const QString &);
  
 protected slots:
-	virtual void stop();
 	virtual void acceptClicked();
-	virtual void spellcheckClicked();
 	virtual void addClicked();
 	virtual void replaceClicked();
 	virtual void ignoreClicked();

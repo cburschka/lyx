@@ -1,3 +1,13 @@
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* SpellBase.h:
+	* ispell.h:
+	* ispell.C:
+	* pspell.h:
+	* pspell.C: reworking. Especially in ispell, a large
+	  number of clean ups and bug fixes.
+
+	* lyxfunc.C: fix revert to behave sensibly
 
 2003-02-17 André Pönitz <poenitz@gmx.net>
 	

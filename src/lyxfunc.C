@@ -454,6 +454,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_VC_HISTORY:
 		disable = !buf->lyxvc.inUse();
 		break;
+	case LFUN_MENURELOAD:
+		disable = buf->isUnnamed() || buf->isClean();
+		break;
 	case LFUN_BOOKMARK_GOTO:
 		disable =  !view()->
 			isSavedPosition(strToUnsignedInt(ev.argument));

@@ -36,14 +36,8 @@ public:
 	/// return true if the spellchecker instance still exists
 	virtual bool alive() = 0;
 
-	/// clean up on messy exit
-	virtual void cleanUp() = 0;
-
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &) = 0;
-
-	/// finish this spellchecker instance
-	virtual void close() = 0;
 
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const &) = 0;

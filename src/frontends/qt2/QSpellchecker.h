@@ -31,17 +31,15 @@ public:
 	/// update from controller
 	void partialUpdate(int id);
 private:
-	void stop();
 	void accept();
 	void add();
 	void ignore();
 	void replace();
-	void spellcheck();
 
 	/// Apply changes
 	virtual void apply() {}
-	/// update
-	virtual void update_contents();
+	/// not needed
+	virtual void update_contents() {}
 	/// build the dialog
 	virtual void build_dialog();
 };

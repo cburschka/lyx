@@ -94,6 +94,9 @@ public:
 	/// Returns the identifying command (for display in the GUI perhaps).
 	string const & command() const { return command_; }
 
+	/// is the process running ?
+	bool running() const;
+
 	/** Kill child prematurely.
 	 *  First, a SIGHUP is sent to the child.
 	 *  If that does not end the child process within "tolerance"

@@ -19,6 +19,7 @@
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
+#include "debug.h"
 
 #include "ispell.h"
 #ifdef USE_PSPELL
@@ -29,17 +30,41 @@
 
 #include "BoostFormat.h"
 
+using std::endl;
+
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
-	  newval_(0.0), oldval_(0), newvalue_(0), count_(0),
-	  stop_(false), speller_(0)
+	  newval_(0.0), oldval_(0), newvalue_(0), count_(0)
+{}
+
+
+ControlSpellchecker::~ControlSpellchecker()
 {}
 
 
 void ControlSpellchecker::setParams()
 {
-	if (speller_)
+	lyxerr[Debug::GUI] << "spell setParams" << endl;
+	startSession();
+}
+
+
+void ControlSpellchecker::clearParams()
+{
+	lyxerr[Debug::GUI] << "spell clearParams" << endl;
+	endSession();
+}
+
+	
+void ControlSpellchecker::startSession()
+{
+	lyxerr[Debug::GUI] << "spell startSession" << endl;
+
+	if (speller_.get()) {
+		lyxerr[Debug::GUI] << "startSession: speller exists" << endl;
+		speller_.reset(0);
 		return;
+	}
 
 	// create spell object
 	string tmp;
@@ -48,70 +73,161 @@ void ControlSpellchecker::setParams()
 		tmp = (lyxrc.isp_use_alt_lang) ?
 			lyxrc.isp_alt_lang : buffer()->params.language->code();
 
-		speller_ = new PSpell(buffer()->params, tmp);
+		speller_.reset(new PSpell(buffer()->params, tmp));
 	} else {
 #endif
 		tmp = (lyxrc.isp_use_alt_lang) ?
 			lyxrc.isp_alt_lang : buffer()->params.language->lang();
 
-		speller_ = new ISpell(buffer()->params, tmp);
+		speller_.reset(new ISpell(buffer()->params, tmp));
 #ifdef USE_PSPELL
 	}
 #endif
 
-	if (!speller_->error().empty()) {
-		emergency_exit_ = true;
-		Alert::alert("The spellchecker has failed", speller_->error());
-		clearParams();
+	// reset values to initial
+	newval_ = 0.0;
+	oldval_ = 0;
+	newvalue_ = 0;
+	count_ = 0;
+	emergency_exit_ = false;
+
+	// start off the check
+	if (speller_->error().empty()) {
+		check();
 		return;
 	}
+
+	emergency_exit_ = true;
+	string message = speller_->error();
+	if (message.empty())
+		message = _("The spell-checker could not be started.\n"
+			 "Maybe it is mis-configured.");
+
+	Alert::alert(_("The spell-checker has failed"), message);
+	speller_.reset(0);
+}
+
+
+void ControlSpellchecker::endSession()
+{
+	lyxerr[Debug::GUI] << "spell endSession" << endl;
+
+	bufferview()->endOfSpellCheck();
+
+	emergency_exit_ = true;
+
+	if (!speller_.get()) {
+		lyxerr[Debug::GUI] << "endSession with no speller" << endl;
+		return;
+	}
+
+	speller_.reset(0);
 }
 
 
 void ControlSpellchecker::check()
 {
+	lyxerr[Debug::GUI] << "spell check a word" << endl;
+
 	SpellBase::Result res = SpellBase::OK;
-	stop_ = false;
 
 	// clear any old selection
 	LyXText * text = bufferview()->getLyXText();
 	bufferview()->toggleSelection(true);
 	bufferview()->update(text, BufferView::SELECT);
 
-	while ((res == SpellBase::OK || res == SpellBase::IGNORE) && !stop_) {
+	while ((res == SpellBase::OK || res == SpellBase::IGNORE)) {
 		word_ = bufferview()->nextWord(newval_);
 
-		if (word_.word().empty()) {
-			clearParams();
+		// end of document
+		if (word_.word().empty())
 			break;
-		}
 
 		++count_;
 
 		// Update slider if and only if value has changed
 		newvalue_ = int(100.0 * newval_);
 		if (newvalue_!= oldval_) {
+			lyxerr[Debug::GUI] << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
-			view().partialUpdate(0);
+			view().partialUpdate(SPELL_PROGRESSED);
 		}
 
-		if (!speller_ || !speller_->alive()) {
-			clearParams();
-			stop();
+		// speller might be dead ...
+		if (!checkAlive())
 			return;
-		}
 
 		res = speller_->check(word_);
+
+		// ... or it might just be reporting an error
+		if (!checkAlive())
+			return;
 	}
 
-	if (!stop_ && !word_.word().empty())
+	lyxerr[Debug::GUI] << "Found word \"" << word_.word() << "\"" << endl;
+
+	if (!word_.word().empty()) {
 		bufferview()->selectLastWord();
+	} else {
+		showSummary();
+		endSession();
+		return;
+	}
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
-		view().partialUpdate(1);
+		lyxerr[Debug::GUI] << "Found a word needing checking." << endl;
+		view().partialUpdate(SPELL_FOUND_WORD);
 	}
+}
+
+
+bool ControlSpellchecker::checkAlive()
+{
+	if (speller_->alive() && speller_->error().empty())
+		return true;
+
+	string message = speller_->error();
+	if (message.empty())
+		message = _("The spell-checker has died for some reason.\n"
+			 "Maybe it has been killed.");
+
+	view().hide();
+	speller_.reset(0);
+
+	Alert::alert(_("The spell-checker has failed"), message);
+	return false;
+}
+
+
+void ControlSpellchecker::showSummary()
+{
+	if (!checkAlive() || count_ == 0) {
+		view().hide();
+		return;
+	}
+
+	string message;
+
+#if USE_BOOST_FORMAT
+	if (count_ != 1) {
+		boost::format fmter("%1$d words checked.");
+		fmter % count_;
+		message += fmter.str();
+	} else {
+		message += _("One word checked.");
+	}
+#else
+	if (count_ != 1) {
+		message += tostr(count_) + " words checked";
+	} else {
+		message = _("One word checked.");
+	}
+#endif
+
+	view().hide();
+	Alert::alert(_("Spell-checking is complete"), message);
 }
 
 
@@ -157,64 +273,3 @@ void ControlSpellchecker::ignoreAll()
 }
 
 
-void ControlSpellchecker::stop()
-{
-	stop_ = true;
-	bufferview()->endOfSpellCheck();
-}
-
-
-void ControlSpellchecker::clearParams()
-{
-	if (!speller_)
-		return;
-
-	if (speller_->alive()) {
-		speller_->close();
-
-		message_ = string(_("Spellchecking completed!")) + '\n';
-
-#if USE_BOOST_FORMAT
-		if (count_ != 1) {
-		boost::format fmter("%1$d words checked.");
-		fmter % count_;
-		message_ += fmter.str();
-		} else {
-			message_ += _("One word checked.");
-		}
-#else
-		if (count_ != 1) {
-			message_ += tostr(count_) + " words checked";
-		} else {
-			message_ = _("One word checked.");
-		}
-#endif
-	} else {
-		message_ = speller_->error();
-		speller_->cleanUp();
-		if (message_.empty())
-		    message_ = _("The spell checker has died for some reason.\n"
-				 "Maybe it has been killed.");
-
-		// make sure that the dialog is not launched
-		emergency_exit_ = true;
-		Alert::alert("The spellchecker has failed", message_);
-	}
-
-	delete speller_;
-
-	bufferview()->endOfSpellCheck();
-
-	// show closing message if any words were checked.
-	if (count_ > 0)
-		view().partialUpdate(2);
-
-	// reset values to initial
-	newval_ = 0.0;
-	oldval_ = 0;
-	newvalue_ = 0;
-	count_ = 0;
-	message_.erase();
-	stop_ = false;
-	speller_ = 0;
-}

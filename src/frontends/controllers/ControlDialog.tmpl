@@ -32,15 +32,15 @@ void ControlDialog<Base>::show()
 
 	connect();
 
+	if (!dialog_built_) {
+		view().build();
+		dialog_built_ = true;
+	}
+
 	setParams();
 	if (emergency_exit_) {
 		hide();
 		return;
-	}
-
-	if (!dialog_built_) {
-		view().build();
-		dialog_built_ = true;
 	}
 
 	bc().readOnly(bufferIsReadonly());

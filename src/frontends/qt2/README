@@ -22,6 +22,8 @@ Remember to check tab order on a dialog (third icon, with blue bars in designer)
  
 Remember to check sensible resizing behaviour on a dialog.
 
+Remember to use Edit->Check Accelerators
+
 If necessary, you should override Qt2Base::isValid() for determining the validity
 of the current dialog's contents.
  

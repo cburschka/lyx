@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>294</width>
-            <height>379</height>
+            <width>323</width>
+            <height>389</height>
         </rect>
     </property>
     <property stdset="1">
@@ -218,7 +218,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Unknown:</string>
+                <string>Unknown word:</string>
             </property>
             <property>
                 <name>buddy</name>
@@ -263,21 +263,6 @@
                 <string>Replace with selected word</string>
             </property>
         </widget>
-        <widget row="1"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>spellcheckPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Start...</string>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Start spellcheck</string>
-            </property>
-        </widget>
     </grid>
 </widget>
 <connections>
@@ -312,12 +297,6 @@
         <slot>addClicked()</slot>
     </connection>
     <connection>
-        <sender>spellcheckPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QSpellcheckerDialogBase</receiver>
-        <slot>spellcheckClicked()</slot>
-    </connection>
-    <connection>
         <sender>suggestionsLB</sender>
         <signal>doubleClicked(QListBoxItem*)</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
@@ -335,11 +314,9 @@
     <slot access="public">optionsClicked()</slot>
     <slot access="public">replaceChanged(const QString &amp;)</slot>
     <slot access="public">replaceClicked()</slot>
-    <slot access="public">spellcheckClicked()</slot>
     <slot access="public">suggestionChanged(const QString &amp;)</slot>
 </connections>
 <tabstops>
-    <tabstop>spellcheckPB</tabstop>
     <tabstop>wordED</tabstop>
     <tabstop>replaceCO</tabstop>
     <tabstop>suggestionsLB</tabstop>
