@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak lyx.1 core
 MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure \
-	development/lyx.spec po/POTFILES.in
+	development/lyx.spec
 SUBDIRS = intl po src lib
 
 EXTRA_DIST = ANNOUNCE CHANGES INSTALL.OS2 INSTALL.autoconf README.OS2 \

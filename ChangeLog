@@ -1,5 +1,9 @@
 1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/BackStack.h: fixed initialization order in constructor
+
+	* Makefile.am (MAINTAINERCLEANFILES): removed po/POTFILES.in
+
 	* acinclude.m4 (VERSION): new rules for when a version is
 	development, added also a variable for prerelease.
 	(warnings): we set with_warnings=yes for prereleases

@@ -33,7 +33,7 @@ public:
 		int y;
 	};
 	///
-	BackStack(int n) : item(new BackStackItem[n]) , imax(n), i(0) {}
+	BackStack(int n) : item(new BackStackItem[n]) , i(0), imax(n) {}
 	///
 	~BackStack() {
 		delete[] item;
