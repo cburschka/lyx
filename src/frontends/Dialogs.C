@@ -95,6 +95,7 @@ void Dialogs::show(string const & name, string const & data)
 	if (!dialog)
 		return;
 
+	// FIXME! Should check that the dialog is NOT an inset dialog.
 	dialog->show(data);
 }
 
@@ -105,6 +106,7 @@ void Dialogs::show(string const & name, string const & data, InsetBase * inset)
 	if (!dialog)
 		return;
 
+	// FIXME! Should check that the dialog IS an inset dialog.
 	dialog->show(data);
 	open_insets_[name] = inset;
 }

@@ -63,3 +63,9 @@ void ControlMath2::dispatchToggleDisplay() const
 	kernel().dispatch(FuncRequest(LFUN_MATH_DISPLAY));
 }
 
+
+void ControlMath2::showDialog(string const & name) const
+{
+	kernel().dispatch(FuncRequest(LFUN_DIALOG_SHOW, name));
+}
+

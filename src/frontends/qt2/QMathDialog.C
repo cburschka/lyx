@@ -21,8 +21,6 @@
 #include "QMath.h"
 
 #include "iconpalette.h"
-#include "QDelimiterDialog.h"
-#include "QMathMatrixDialog.h"
 
 #include <qapplication.h>
 #include <qwidgetstack.h>
@@ -208,9 +206,7 @@ void QMathDialog::fracClicked()
 
 void QMathDialog::delimiterClicked()
 {
-	// FIXME: leak
-	QDelimiterDialog * d = new QDelimiterDialog(form_);
-	d->show();
+	form_->controller().showDialog("mathdelimiter");
 }
 
 
@@ -235,9 +231,7 @@ void QMathDialog::functionSelected(const QString & str)
 
 void QMathDialog::matrixClicked()
 {
-	// FIXME: leak?
-	QMathMatrixDialog * d = new QMathMatrixDialog(form_);
-	d->show();
+	form_->controller().showDialog("mathmatrix");
 }
 
 

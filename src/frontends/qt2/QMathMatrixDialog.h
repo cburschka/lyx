@@ -17,12 +17,12 @@
 
 #include "ui/QMathMatrixDialogBase.h"
 
-class QMath;
+class QMathMatrix;
 
 class QMathMatrixDialog : public QMathMatrixDialogBase {
 	Q_OBJECT
 public:
-	QMathMatrixDialog(QMath * form);
+	QMathMatrixDialog(QMathMatrix * form);
 public slots:
 	void slotOK();
 	void slotClose();
@@ -31,7 +31,7 @@ protected slots:
 	virtual void rowsChanged(int);
 	virtual void change_adaptor();
 private:
-	QMath * form_;
+	QMathMatrix * form_;
 };
 
 #endif // QMATHMATRIXDIALOG_H

@@ -313,6 +313,7 @@ void LyXAction::init()
 		{ LFUN_REJECT_CHANGE, "reject-change", Noop },
 		{ LFUN_ACCEPT_ALL_CHANGES, "accept-all-changes", Noop },
 		{ LFUN_REJECT_ALL_CHANGES, "reject-all-changes", Noop },
+		{ LFUN_DIALOG_SHOW, "dialog-show", Noop },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop },
 		{ LFUN_DIALOG_SHOW_NEXT_INSET, "dialog-show-next-inset", Noop },
 		{ LFUN_DIALOG_UPDATE, "dialog-update", Noop },

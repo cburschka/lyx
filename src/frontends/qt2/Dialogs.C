@@ -82,8 +82,9 @@ namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist", "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log", "math", "minipage",
-"paragraph", "ref", "tabular", "tabularcreate",
+"float", "graphics", "include", "index", "label", "log",
+"math", "mathdelimiter", "mathmatrix",
+"minipage", "paragraph", "ref", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -197,6 +198,14 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "math") {
 		dialog->setController(new ControlMath2(*dialog));
 		dialog->setView(new QMath(*dialog));
+		dialog->bc().bp(new IgnorantPolicy);
+	} else if (name == "mathdelimiter") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new QMathDelimiter(*dialog));
+		dialog->bc().bp(new IgnorantPolicy);
+	} else if (name == "mathmatrix") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new QMathMatrix(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));

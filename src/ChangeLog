@@ -1,3 +1,10 @@
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
+	* lfuns.h:
+	* LyXAction.C (init): new LFUN_DIALOG_SHOW.
+
+	* lyxfunc.C (dispatch): invoke it.
+
 2003-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* iterators.C (operator++, ParPosition): reintroduce some

@@ -1408,6 +1408,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->getDialogs().showMathPanel();
 		break;
 
+	case LFUN_DIALOG_SHOW:
+		owner->getDialogs().show(argument);
+		break;
+
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = argument;
 		string data;

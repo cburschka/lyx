@@ -17,12 +17,42 @@
 
 class ControlMath2;
 class QMathDialog;
+class QMathMatrixDialog;
+class QDelimiterDialog;
 
 class QMath : public QController<ControlMath2, QView<QMathDialog> > {
 public:
 	friend class QMathDialog;
 
 	QMath(Dialog &);
+
+private:
+	virtual void apply() {}
+	virtual void update_contents() {}
+	/// Build the dialog.
+	virtual void build_dialog();
+};
+
+
+class QMathMatrix : public QController<ControlMath2, QView<QMathMatrixDialog> > {
+public:
+	friend class QMathMatrixDialog;
+
+	QMathMatrix(Dialog &);
+
+private:
+	virtual void apply() {}
+	virtual void update_contents() {}
+	/// Build the dialog.
+	virtual void build_dialog();
+};
+
+
+class QMathDelimiter : public QController<ControlMath2, QView<QDelimiterDialog> > {
+public:
+	friend class QDelimiterDialog;
+
+	QMathDelimiter(Dialog &);
 
 private:
 	virtual void apply() {}

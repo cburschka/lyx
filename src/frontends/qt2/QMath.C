@@ -14,18 +14,48 @@
 #include "gettext.h"
 #include "ControlMath2.h"
 #include "QMathDialog.h"
+#include "QMathMatrixDialog.h"
+#include "QDelimiterDialog.h"
 #include "QMath.h"
 
 
-typedef QController<ControlMath2, QView<QMathDialog> > base_class;
+typedef QController<ControlMath2, QView<QMathDialog> > math_base;
 
 
 QMath::QMath(Dialog & parent)
-	: base_class(parent, _("LyX: Math Panel"))
+	: math_base(parent, _("LyX: Math Panel"))
 {}
 
 
 void QMath::build_dialog()
 {
 	dialog_.reset(new QMathDialog(this));
+}
+
+
+typedef QController<ControlMath2, QView<QMathMatrixDialog> > matrix_base;
+
+
+QMathMatrix::QMathMatrix(Dialog & parent)
+	: matrix_base(parent, _("LyX: Insert Matrix"))
+{}
+
+
+void QMathMatrix::build_dialog()
+{
+	dialog_.reset(new QMathMatrixDialog(this));
+}
+
+
+typedef QController<ControlMath2, QView<QDelimiterDialog> > delimiter_base;
+
+
+QMathDelimiter::QMathDelimiter(Dialog & parent)
+	: delimiter_base(parent, _("LyX: Insert Delimiter"))
+{}
+
+
+void QMathDelimiter::build_dialog()
+{
+	dialog_.reset(new QDelimiterDialog(this));
 }

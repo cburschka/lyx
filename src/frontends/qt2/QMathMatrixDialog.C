@@ -31,7 +31,7 @@ static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";
 
 
-QMathMatrixDialog::QMathMatrixDialog(QMath * form)
+QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
 	: QMathMatrixDialogBase(0, 0, false, 0),
 	form_(form)
 {

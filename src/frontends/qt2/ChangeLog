@@ -1,3 +1,14 @@
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): create "mathdelimiter" and "mathmatrix" dialogs.
+
+	* QMath.[Ch]: add QMathMatrix and QMathDelimiter classes.
+
+	* QDelimiterDialog.[Ch]: store a QMathDelimiter*, not a QMath*.
+	* QMathMatrixDialog.[Ch]: store a QMathMatrix*, not a QMath*.
+
+	* QMathDialog.C (delimiterClicked, matrixClicked): fix memory leaks.
+	
 2003-06-14  John Levon  <levon@movementarian.org>
 
 	* ui/QPrintDialogBase.ui: make "OK" default

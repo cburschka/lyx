@@ -16,14 +16,14 @@
 #include "ui/QDelimiterDialogBase.h"
 #include "LString.h"
 
-class QMath;
+class QMathDelimiter;
 class IconPalette;
 class QLabel;
 
 class QDelimiterDialog : public QDelimiterDialogBase {
 	Q_OBJECT
 public:
-	QDelimiterDialog(QMath * form);
+	QDelimiterDialog(QMathDelimiter * form);
 public slots:
 	void ldelim_clicked(const string & str);
 	void rdelim_clicked(const string & str);
@@ -40,7 +40,7 @@ private:
 	string right_;
 
 	/// owning form
-	QMath * form_;
+	QMathDelimiter * form_;
 };
 
 #endif // QDELIMITERDIALOG_H

@@ -71,7 +71,7 @@ string fix_name(string const & str)
 } // namespace anon
 
 
-QDelimiterDialog::QDelimiterDialog(QMath * form)
+QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	: QDelimiterDialogBase(0, 0, false, 0),
 	form_(form)
 {

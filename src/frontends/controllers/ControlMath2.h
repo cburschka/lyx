@@ -41,6 +41,8 @@ public:
 	void dispatchDelim(string const & str) const;
 	/// switch between display and inline
 	void dispatchToggleDisplay() const;
+	/// a request to launch dialog \param name.
+	void showDialog(string const & name) const;
 };
 
 
