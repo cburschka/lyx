@@ -331,6 +331,7 @@ vartriangleleft    msa          67   0 mathrel  x
 trianglerighteq    msa          68   0 mathrel  x
 trianglelefteq     msa          69   0 mathrel  x
 rightsquigarrow    msa          32   0 mathrel  x
+leadsto            msa          32   0 mathrel  x
 lhd                msa          67   0 mathbin  x
 unlhd              msa          69   0 mathbin  x
 rhd                msa          66   0 mathbin  x
@@ -358,6 +359,7 @@ rightrightarrows   msa         182   0 mathrel  x
 upuparrows         msa         183   0 mathrel  x
 downdownarrows     msa         184   0 mathrel  x
 upharpoonright     msa         185   0 mathrel  x
+restriction        msa         185   0 mathrel  x
 downharpoonright   msa         186   0 mathrel  x
 upharpoonleft      msa         187   0 mathrel  x
 downharpoonleft    msa         188   0 mathrel  x
@@ -378,6 +380,7 @@ multimap           msa          40   0 mathrel  x
 therefore          msa          41  92 mathrel  x
 because            msa          42   0 mathrel  x
 doteqdot           msa          43   0 mathrel  x
+Doteq              msa          43   0 mathrel  x
 triangleq          msa          44   0 mathrel  x
 precsim            msa          45   0 mathrel  x
 lesssim            msa          46   0 mathrel  x
@@ -423,7 +426,9 @@ smallfrown         msa          97   0 mathrel  x
 Subset             msa          98   0 mathrel  x
 Supset             msa          99   0 mathrel  x
 Cup                msa         100   0 mathbin  x
+doublecup          msa         100   0 mathbin  x
 Cap                msa         101   0 mathbin  x
+doublecap          msa         101   0 mathbin  x
 curlywedge         msa         102   0 mathbin  x
 curlyvee           msa         103   0 mathbin  x
 leftthreetimes     msa         104   0 mathbin  x
@@ -740,4 +745,30 @@ $                  mathnormal    0   0 special  x
 %                  mathnormal    0   0 special  x
 # don't remove the space from the beginning of the next line
  #                 mathnormal    0   0 special  x
+
+
+
+#
+# pre-defined macros
+#
+
+\def\longleftrightarrow{\leftarrow\kern-2mm\rightarrow} 
+\def\Longleftrightarrow{\Leftarrow\kern-2mm\Rightarrow}
+\def\doteq{\stackrel{\cdot}{\=}}
+\def\longrightarrow{\lyxbar\kern-2mm\rightarrow}
+\def\longleftarrow{\leftarrow\kern-2mm\lyxbar}
+\def\mapsto{\mapstochar\kern-2mm\rightarrow}
+\def\longmapsto{\mapstochar\kern-2mm\lyxbar\kern-6mu\rightarrow}
+\def\Longrightarrow{\lyxeq\kern-2mm\Rightarrow}
+\def\Longleftarrow{\Leftarrow\kern-2mm\lyxeq}
+\def\models{\vert\kern-2mm\lyxeq}
+\def\hookrightarrow{\lhook\kern-2mm\rightarrow}
+\def\hookleftarrow{\leftarrow\kern-2mm\rhook}
+\def\bowtie{\triangleright\kern-2mm\triangleleft}
+\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}
+\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}
+\def\dasharrow{\dashrightarrow}
+\def\Join{\ltimes\kern-2mm\rtimes}
+\def\mathcircumflex{\mbox{\^{}}}
+#"{\hat{}}
 
