@@ -54,7 +54,7 @@ public:
 	///
 	void edit(BufferView *, int, int, unsigned int) {}
 	///
-	void edit(BufferView * bv, bool front = true) {}
+	void edit(BufferView *, bool = true) {}
 	///
 	EDITABLE editable() const{ return NOT_EDITABLE; }
 	///
