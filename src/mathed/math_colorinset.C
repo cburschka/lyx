@@ -16,6 +16,7 @@
 #include "math_support.h"
 
 #include "LaTeXFeatures.h"
+#include "LColor.h"
 
 #include "support/std_ostream.h"
 
@@ -63,8 +64,10 @@ void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 		x += w_ + 2;
 	}
 
-	ColorChanger dummy1(pi.base.font, asString(cell(0)));
+	LColor_color origcol = pi.base.font.color();
+	pi.base.font.setColor(lcolor.getFromGUIName(asString(cell(0))));
 	cell(1).draw(pi, x, y);
+	pi.base.font.setColor(origcol);
 }
 
 
@@ -77,7 +80,7 @@ void MathColorInset::validate(LaTeXFeatures & features) const
 
 void MathColorInset::write(WriteStream & os) const
 {
-	os << "\\color" << '{' << cell(0) << '}' << '{' << cell(1) << '}';
+	os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
 }
 
 

@@ -21,9 +21,11 @@ public:
 	///
 	MathColorInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	/// we write extra braces in any case...
+	bool extraBraces() const { return true; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// we need package color

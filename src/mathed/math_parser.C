@@ -1135,6 +1135,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			return;
 		}
 
+		else if (t.cs() == "color") {
+			MathAtom at = createMathInset(t.cs());
+			parse(at.nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
+			parse(at.nucleus()->cell(1), flags, mode);
+			cell->push_back(at);
+			return;
+		}
+
 		else if (t.cs() == "substack") {
 			cell->push_back(createMathInset(t.cs()));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
