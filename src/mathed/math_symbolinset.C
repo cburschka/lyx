@@ -25,7 +25,7 @@ void MathSymbolInset::write(ostream & os, bool /* fragile */) const
 
 void MathSymbolInset::writeNormal(ostream & os) const
 {
-	os << "[bigop " << sym_->name << "] ";
+	os << "[" << sym_->name << "] ";
 }
 
 

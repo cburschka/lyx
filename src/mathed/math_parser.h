@@ -107,6 +107,8 @@ enum MathTokenEnum
 	///
 	LM_TK_MATH,
 	///
+	LM_TK_NOT,
+	///
 	LM_TK_STACK
 };
 

@@ -200,7 +200,7 @@ latexkeys wordlist[] =
 	{"ni",  LM_TK_NOGLYPH, 0, LMB_RELATION},
 	{"nolimits",  LM_TK_LIMIT, static_cast<unsigned>(-1), LMB_NONE},
 	{"nonumber",  LM_TK_NONUM, 0, LMB_NONE},
-	{"not",  LM_TK_DECORATION, LM_not, LMB_NONE},
+	{"not",  LM_TK_NOT, LM_not, LMB_NONE},
 	{"nu",  LM_TK_SYM, LM_nu, LMB_NONE},
 	{"nwarrow",  LM_TK_NOGLYPH, 0, LMB_NONE},
 	{"odot",  LM_TK_NOGLYPH, 0, LMB_OPERATOR},
