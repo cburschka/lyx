@@ -1294,10 +1294,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 	bool bound = false;
 	int xx = x + xo_; // getRowNearX get absolute x coords
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
-	cur.par() = parOffset(pit);
-	cur.pos() = pos;
-	cur.boundary() = bound;
-	deleteEmptyParagraphMechanism(cur.top(), old_cursor);
+	setCursor(cur, parOffset(pit), pos, true, bound);
 }
 
 
