@@ -1466,22 +1466,22 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 //	return;
 //#else
 void LyXTabular::ReadNew(Buffer const * buf, istream & is,
-			 LyXLex & lex, string const & l)
+						 LyXLex & lex, string const & l)
 {
     string line(l);
 //#endif    
     int rows_arg;
     if (!getTokenValue(line, "rows", rows_arg))
-	return;
+		return;
     int columns_arg;
     if (!getTokenValue(line, "columns", columns_arg))
-	return;
+		return;
     Init(rows_arg, columns_arg);
     l_getline(is, line);
     if (!prefixIs(line, "<features")) {
-	lyxerr << "Wrong tabular format (expected <features ...> got" <<
-	    line << ")" << endl;
-	return;
+		lyxerr << "Wrong tabular format (expected <features ...> got" <<
+			line << ")" << endl;
+		return;
     }
     getTokenValue(line, "rotate", rotate);
     getTokenValue(line, "islongtable", is_long_tabular);
@@ -1491,68 +1491,68 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
     getTokenValue(line, "endlastfoot", endlastfoot);
 
     for (int j = 0; j < columns_; ++j) {
-	l_getline(is,line);
-	if (!prefixIs(line,"<column")) {
-	    lyxerr << "Wrong tabular format (expected <column ...> got" <<
-		line << ")" << endl;
-	    return;
-	}
-	getTokenValue(line, "alignment", column_info[j].alignment);
-	getTokenValue(line, "valignment", column_info[j].valignment);
-	getTokenValue(line, "leftline", column_info[j].left_line);
-	getTokenValue(line, "rightline", column_info[j].right_line);
-	getTokenValue(line, "width", column_info[j].p_width);
-	getTokenValue(line, "special", column_info[j].align_special);
+		l_getline(is,line);
+		if (!prefixIs(line,"<column")) {
+			lyxerr << "Wrong tabular format (expected <column ...> got" <<
+				line << ")" << endl;
+			return;
+		}
+		getTokenValue(line, "alignment", column_info[j].alignment);
+		getTokenValue(line, "valignment", column_info[j].valignment);
+		getTokenValue(line, "leftline", column_info[j].left_line);
+		getTokenValue(line, "rightline", column_info[j].right_line);
+		getTokenValue(line, "width", column_info[j].p_width);
+		getTokenValue(line, "special", column_info[j].align_special);
     }
 
     for (int i = 0; i < rows_; ++i) {
-	l_getline(is, line);
-	if (!prefixIs(line, "<row")) {
-	    lyxerr << "Wrong tabular format (expected <row ...> got" <<
-		line << ")" << endl;
-	    return;
-	}
-	getTokenValue(line, "topline", row_info[i].top_line);
-	getTokenValue(line, "bottomline", row_info[i].bottom_line);
-	getTokenValue(line, "newpage", row_info[i].newpage);
-	for (int j = 0; j < columns_; ++j) {
-	    l_getline(is, line);
-	    if (!prefixIs(line, "<cell")) {
-		lyxerr << "Wrong tabular format (expected <cell ...> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	    getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
-	    getTokenValue(line, "alignment", cell_info[i][j].alignment);
-	    getTokenValue(line, "valignment", cell_info[i][j].valignment);
-	    getTokenValue(line, "topline", cell_info[i][j].top_line);
-	    getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
-	    getTokenValue(line, "leftline", cell_info[i][j].left_line);
-	    getTokenValue(line, "rightline", cell_info[i][j].right_line);
-	    getTokenValue(line, "rotate", cell_info[i][j].rotate);
-	    getTokenValue(line, "usebox", cell_info[i][j].usebox);
-	    getTokenValue(line, "width", cell_info[i][j].p_width);
-	    getTokenValue(line, "special", cell_info[i][j].align_special);
-	    l_getline(is, line);
-	    if (prefixIs(line, "\\begin_inset")) {
-		cell_info[i][j].inset.Read(buf, lex);
 		l_getline(is, line);
-	    }
-	    if (line != "</cell>") {
-		lyxerr << "Wrong tabular format (expected </cell> got" <<
-		    line << ")" << endl;
-		return;
-	    }
-	}
-	l_getline(is, line);
-	if (line != "</row>") {
-	    lyxerr << "Wrong tabular format (expected </row> got" <<
-		line << ")" << endl;
-	    return;
-	}
+		if (!prefixIs(line, "<row")) {
+			lyxerr << "Wrong tabular format (expected <row ...> got" <<
+				line << ")" << endl;
+			return;
+		}
+		getTokenValue(line, "topline", row_info[i].top_line);
+		getTokenValue(line, "bottomline", row_info[i].bottom_line);
+		getTokenValue(line, "newpage", row_info[i].newpage);
+		for (int j = 0; j < columns_; ++j) {
+			l_getline(is, line);
+			if (!prefixIs(line, "<cell")) {
+				lyxerr << "Wrong tabular format (expected <cell ...> got" <<
+					line << ")" << endl;
+				return;
+			}
+			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
+			getTokenValue(line, "alignment", cell_info[i][j].alignment);
+			getTokenValue(line, "valignment", cell_info[i][j].valignment);
+			getTokenValue(line, "topline", cell_info[i][j].top_line);
+			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
+			getTokenValue(line, "leftline", cell_info[i][j].left_line);
+			getTokenValue(line, "rightline", cell_info[i][j].right_line);
+			getTokenValue(line, "rotate", cell_info[i][j].rotate);
+			getTokenValue(line, "usebox", cell_info[i][j].usebox);
+			getTokenValue(line, "width", cell_info[i][j].p_width);
+			getTokenValue(line, "special", cell_info[i][j].align_special);
+			l_getline(is, line);
+			if (prefixIs(line, "\\begin_inset")) {
+				cell_info[i][j].inset.Read(buf, lex);
+				l_getline(is, line);
+			}
+			if (!prefixIs(line, "</cell>")) {
+				lyxerr << "Wrong tabular format (expected </cell> got" <<
+					line << ")" << endl;
+				return;
+			}
+		}
+		l_getline(is, line);
+		if (!prefixIs(line, "</row>")) {
+			lyxerr << "Wrong tabular format (expected </row> got" <<
+				line << ")" << endl;
+			return;
+		}
     }
-    while (line != "</lyxtabular>") {
-	l_getline(is, line);
+    while (!prefixIs(line, "</lyxtabular>")) {
+		l_getline(is, line);
     }
     set_row_column_number_info();
 }
