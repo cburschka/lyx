@@ -215,8 +215,8 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 		return font_metrics::width(c, font);
 
 	} else if (IsHfillChar(c)) {
-		return 3;	/* Because of the representation
-				 * as vertical lines */
+		// Because of the representation as vertical lines 
+		return 3;
 	} else if (c == Paragraph::META_INSET) {
 		Inset * tmpinset = par->getInset(pos);
 		if (tmpinset) {
@@ -951,12 +951,13 @@ int LyXText::labelEnd(BufferView * bview, Row const * row) const
 		Row tmprow;
 		tmprow = *row;
 		tmprow.pos(row->par()->size());
-		return leftMargin(bview, &tmprow);  /* just the beginning
-						of the main body */
-	} else
-		return 0;  /* LabelEnd is only needed, if the
-			      layout fills a flushleft
-			      label. */
+		// just the beginning of the main body 
+		return leftMargin(bview, &tmprow);
+	} else {
+		// LabelEnd is only needed,
+		// if the layout fills a flushleft label. 
+		return 0; 
+	}
 }
 
 
@@ -983,7 +984,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	pos_type i = pos;
 
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		/* special code for right address boxes, only newlines count */
+		// special code for right address boxes, only newlines count
 		while (i < par->size()) {
 			if (par->isNewline(i)) {
 				last_separator = i;
@@ -1153,8 +1154,8 @@ int LyXText::labelFill(BufferView * bview, Row const * row) const
 	// environment with a manual label. (Asger)
 	if (last < 0) last = 0;
 
-	if (row->par()->isLineSeparator(last)) /* a sepearator at this end
-						does not count */
+	// a separator at this end does not count
+	if (row->par()->isLineSeparator(last))
 		--last;
 
 	int w = 0;
@@ -1200,8 +1201,8 @@ int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
 	pos_type const last = rowLast(row);
 	pos_type first = row->pos();
 
-	if (first) { /* hfill *DO* count at the beginning
-		      * of paragraphs! */
+	if (first) {
+		// hfill *DO* count at the beginning of paragraphs!
 		while (first <= last && row->par()->isHfill(first)) {
 			++first;
 		}
@@ -1225,8 +1226,8 @@ int LyXText::numberOfLabelHfills(Buffer const * buf, Row const * row) const
 {
 	pos_type last = rowLast(row);
 	pos_type first = row->pos();
-	if (first) { /* hfill *DO* count at the beginning
-		      * of paragraphs! */
+	if (first) {
+		// hfill *DO* count at the beginning of paragraphs!
 		while (first < last && row->par()->isHfill(first))
 			++first;
 	}
@@ -1297,7 +1298,7 @@ LColor::color LyXText::backgroundColor()
 
 void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 {
-	/* get the maximum ascent and the maximum descent */
+	// get the maximum ascent and the maximum descent
 	int asc = 0;
 	int desc = 0;
 	float layoutasc = 0;
@@ -1306,17 +1307,18 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	LyXFont tmpfont;
 	Inset * tmpinset = 0;
 
-	/* ok , let us initialize the maxasc and maxdesc value.
-	 * This depends in LaTeX of the font of the last character
-	 * in the paragraph. The hack below is necessary because
-	 * of the possibility of open footnotes */
+	// ok , let us initialize the maxasc and maxdesc value.
+	// This depends in LaTeX of the font of the last character
+	// in the paragraph. The hack below is necessary because
+	// of the possibility of open footnotes 
 
-	/* Correction: only the fontsize count. The other properties
-	   are taken from the layoutfont. Nicer on the screen :) */
+	// Correction: only the fontsize count. The other properties
+	//  are taken from the layoutfont. Nicer on the screen :) 
 	Paragraph * par = row_ptr->par();
 	Paragraph * firstpar = row_ptr->par();
 
-	LyXLayout const & layout = textclasslist[bview->buffer()->params.textclass][firstpar->layout()];
+	LyXLayout const & layout
+		= textclasslist[bview->buffer()->params.textclass][firstpar->layout()];
 
 	// as max get the first character of this row then it can increes but not
 	// decrees the height. Just some point to start with so we don't have to
@@ -1604,8 +1606,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 }
 
 
-/* Appends the implicit specified paragraph behind the specified row,
- * start at the implicit given position */
+// Appends the implicit specified paragraph behind the specified row,
+// start at the implicit given position 
 void LyXText::appendParagraph(BufferView * bview, Row * row) const
 {
 	bool not_ready = true;
@@ -1665,8 +1667,8 @@ void LyXText::breakAgain(BufferView * bview, Row * row) const
 				}
 			}
 		} else {
-			/* if there are some rows too much, delete them */
-			/* only if you broke the whole paragraph! */
+			// if there are some rows too much, delete them
+			// only if you broke the whole paragraph!
 			Row * tmprow2 = row;
 			while (tmprow2->next() && tmprow2->next()->par() == row->par()) {
 				tmprow2 = tmprow2->next();
@@ -1678,7 +1680,7 @@ void LyXText::breakAgain(BufferView * bview, Row * row) const
 			not_ready = false;
 		}
 
-		/* set the dimensions of the row */
+		// set the dimensions of the row 
 		tmprow->fill(fill(bview, tmprow, workWidth(bview)));
 		setHeightOfRow(bview, tmprow);
 	} while (not_ready);
@@ -1695,7 +1697,7 @@ void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 	if (z < row->par()->size()) {
 		if (!row->next()
 		    || (row->next() && row->next()->par() != row->par())) {
-			/* insert a new row */
+			// insert a new row 
 			++z;
 			insertRow(row, row->par(), z);
 			row = row->next();
@@ -1730,97 +1732,98 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 {
 	LyXTextClass const & tclass =
 		textclasslist[bview->buffer()->params.textclass];
-   LyXLayout const & layout = tclass[cursor.par()->layout()];
+	LyXLayout const & layout = tclass[cursor.par()->layout()];
 
-   // this is only allowed, if the current paragraph is not empty or caption
-   // and if it has not the keepempty flag aktive
-   if ((cursor.par()->size() <= 0)
-       && layout.labeltype != LABEL_SENSITIVE
+	// this is only allowed, if the current paragraph is not empty or caption
+	// and if it has not the keepempty flag aktive
+	if ((cursor.par()->size() <= 0)
+	   && layout.labeltype != LABEL_SENSITIVE
 	   && !layout.keepempty)
-	   return;
+		return;
 
-   setUndo(bview, Undo::FINISH, cursor.par(), cursor.par()->next());
+	setUndo(bview, Undo::FINISH, cursor.par(), cursor.par()->next());
 
-   // Always break behind a space
-   //
-   // It is better to erase the space (Dekel)
-   if (cursor.pos() < cursor.par()->size()
-       && cursor.par()->isLineSeparator(cursor.pos()))
+	// Always break behind a space
+	//
+	// It is better to erase the space (Dekel)
+	if (cursor.pos() < cursor.par()->size()
+	     && cursor.par()->isLineSeparator(cursor.pos()))
 	   cursor.par()->erase(cursor.pos());
-	   // cursor.pos(cursor.pos() + 1);
+	// cursor.pos(cursor.pos() + 1);
 
-   // break the paragraph
-   if (keep_layout)
-     keep_layout = 2;
-   else
-     keep_layout = layout.isEnvironment();
+	// break the paragraph
+	if (keep_layout)
+		keep_layout = 2;
+	else
+		keep_layout = layout.isEnvironment();
 
-   // we need to set this before we insert the paragraph. IMO the
-   // breakParagraph call should return a bool if it inserts the
-   // paragraph before or behind and we should react on that one
-   // but we can fix this in 1.3.0 (Jug 20020509)
-   bool const isempty = (layout.keepempty && !cursor.par()->size());
-   cursor.par()->breakParagraph(bview->buffer()->params, cursor.pos(),
+	// we need to set this before we insert the paragraph. IMO the
+	// breakParagraph call should return a bool if it inserts the
+	// paragraph before or behind and we should react on that one
+	// but we can fix this in 1.3.0 (Jug 20020509)
+	bool const isempty = (layout.keepempty && !cursor.par()->size());
+	cursor.par()->breakParagraph(bview->buffer()->params, cursor.pos(),
 				keep_layout);
 
-   // well this is the caption hack since one caption is really enough
-   if (layout.labeltype == LABEL_SENSITIVE) {
-     if (!cursor.pos())
-	     // set to standard-layout
-	     cursor.par()->applyLayout(tclass.defaultLayoutName());
-     else
-	     // set to standard-layout
-	     cursor.par()->next()->applyLayout(tclass.defaultLayoutName());
-   }
+	// well this is the caption hack since one caption is really enough
+	if (layout.labeltype == LABEL_SENSITIVE) {
+		if (!cursor.pos())
+			// set to standard-layout
+			cursor.par()->applyLayout(tclass.defaultLayoutName());
+		else
+			// set to standard-layout
+			cursor.par()->next()->applyLayout(tclass.defaultLayoutName());
+	}
 
-   /* if the cursor is at the beginning of a row without prior newline,
-    * move one row up!
-    * This touches only the screen-update. Otherwise we would may have
-    * an empty row on the screen */
-   if (cursor.pos() && !cursor.row()->par()->isNewline(cursor.row()->pos() - 1)
-       && cursor.row()->pos() == cursor.pos())
-   {
-	   cursorLeft(bview);
-   }
+	// if the cursor is at the beginning of a row without prior newline,
+	// move one row up!
+	// This touches only the screen-update. Otherwise we would may have
+	// an empty row on the screen 
+	if (cursor.pos() && !cursor.row()->par()->isNewline(cursor.row()->pos() - 1)
+	                 && cursor.row()->pos() == cursor.pos())
+	{
+		cursorLeft(bview);
+	}
 
-   status(bview, LyXText::NEED_MORE_REFRESH);
-   refresh_row = cursor.row();
-   refresh_y = cursor.y() - cursor.row()->baseline();
+	status(bview, LyXText::NEED_MORE_REFRESH);
+	refresh_row = cursor.row();
+	refresh_y = cursor.y() - cursor.row()->baseline();
 
-   // Do not forget the special right address boxes
-   if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-      while (refresh_row->previous() &&
-	     refresh_row->previous()->par() == refresh_row->par()) {
-	      refresh_row = refresh_row->previous();
-	      refresh_y -= refresh_row->height();
-      }
-   }
-   removeParagraph(cursor.row());
+	// Do not forget the special right address boxes
+	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
+		while (refresh_row->previous() &&
+		       refresh_row->previous()->par() == refresh_row->par())
+		{
+			refresh_row = refresh_row->previous();
+			refresh_y -= refresh_row->height();
+		}
+	}
+	removeParagraph(cursor.row());
 
-   // set the dimensions of the cursor row
-   cursor.row()->fill(fill(bview, cursor.row(), workWidth(bview)));
+	// set the dimensions of the cursor row
+	cursor.row()->fill(fill(bview, cursor.row(), workWidth(bview)));
 
-   setHeightOfRow(bview, cursor.row());
+	setHeightOfRow(bview, cursor.row());
 
-   while (cursor.par()->next()->size()
+	while (cursor.par()->next()->size()
 	  && cursor.par()->next()->isNewline(0))
 	   cursor.par()->next()->erase(0);
 
-   insertParagraph(bview, cursor.par()->next(), cursor.row());
+	insertParagraph(bview, cursor.par()->next(), cursor.row());
 
-   updateCounters(bview, cursor.row()->previous());
+	updateCounters(bview, cursor.row()->previous());
 
-   /* This check is necessary. Otherwise the new empty paragraph will
-    * be deleted automatically. And it is more friendly for the user! */
-   if (cursor.pos() || isempty)
-	   setCursor(bview, cursor.par()->next(), 0);
-   else
-	   setCursor(bview, cursor.par(), 0);
+	// This check is necessary. Otherwise the new empty paragraph will
+	// be deleted automatically. And it is more friendly for the user!
+	if (cursor.pos() || isempty)
+		setCursor(bview, cursor.par()->next(), 0);
+	else
+		setCursor(bview, cursor.par(), 0);
 
-   if (cursor.row()->next())
-	   breakAgain(bview, cursor.row()->next());
+	if (cursor.row()->next())
+		breakAgain(bview, cursor.row()->next());
 
-   need_break_row = 0;
+	need_break_row = 0;
 }
 
 
@@ -1833,8 +1836,8 @@ void LyXText::redoParagraph(BufferView * bview) const
 }
 
 
-/* insert a character, moves all the following breaks in the
- * same Paragraph one to the right and make a rebreak */
+// insert a character, moves all the following breaks in the
+// same Paragraph one to the right and make a rebreak 
 void LyXText::insertChar(BufferView * bview, char c)
 {
 	setUndo(bview, Undo::INSERT, cursor.par(), cursor.par()->next());
@@ -1894,11 +1897,11 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
 
 
-	/* First check, if there will be two blanks together or a blank at
-	  the beginning of a paragraph.
-	  I decided to handle blanks like normal characters, the main
-	  difference are the special checks when calculating the row.fill
-	  (blank does not count at the end of a row) and the check here */
+	// First check, if there will be two blanks together or a blank at
+	// the beginning of a paragraph.
+	// I decided to handle blanks like normal characters, the main
+	// difference are the special checks when calculating the row.fill
+	// (blank does not count at the end of a row) and the check here
 
 	// The bug is triggered when we type in a description environment:
 	// The current_font is not changed when we go from label to main text
@@ -1906,11 +1909,9 @@ void LyXText::insertChar(BufferView * bview, char c)
 	// CHECK There is a bug here! (Asger)
 
 	LyXFont realtmpfont = real_current_font;
-	LyXFont rawtmpfont = current_font;  /* store the current font.
-				     * This is because of the use
-				     * of cursor movements. The moving
-				     * cursor would refresh the
-				     * current font */
+	LyXFont rawtmpfont = current_font; 
+	// store the current font.  This is because of the use of cursor
+	// movements. The moving cursor would refresh the current font 
 
 	// Get the font that is used to calculate the baselineskip
 	pos_type const lastpos = cursor.par()->size();
@@ -1944,9 +1945,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 			charInserted();
 			return;
 		}
-		/* No newline at first position
-		 * of a paragraph or behind labels.
-		 * TeX does not allow that */
+		// No newline at first position of a paragraph or behind labels.
+		// TeX does not allow that
 
 		if (cursor.pos() < cursor.par()->size() &&
 		    cursor.par()->isLineSeparator(cursor.pos()))
@@ -1967,9 +1967,10 @@ void LyXText::insertChar(BufferView * bview, char c)
 	// get the cursor row fist
 	Row * row = cursor.row();
 	int y = cursor.y() - row->baseline();
-	if (c != Paragraph::META_INSET) /* Here case LyXText::InsertInset
-					 * already insertet the character */
+	if (c != Paragraph::META_INSET) {
+		// Here case LyXText::InsertInset  already insertet the character
 		cursor.par()->insertChar(cursor.pos(), c);
+	}
 	setCharFont(bview->buffer(), cursor.par(), cursor.pos(), rawtmpfont);
 
 	if (!jumped_over_space) {
@@ -2031,10 +2032,11 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
 
 	// recalculate the fill of the row
-	if (row->fill() >= 0)  /* needed because a newline
-				* will set fill to -1. Otherwise
-				* we would not get a rebreak! */
+	if (row->fill() >= 0) {
+		// needed because a newline will set fill to -1. Otherwise
+		// we would not get a rebreak!
 		row->fill(fill(bview, row, workWidth(bview)));
+	}
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
 		refresh_y = y;
 		refresh_row = row;
@@ -2226,12 +2228,13 @@ void LyXText::prepareToPrint(BufferView * bview,
 	}
 }
 
-/* important for the screen */
+
+// important for the screen 
 
 
-/* the cursor set functions have a special mechanism. When they
-* realize, that you left an empty paragraph, they will delete it.
-* They also delete the corresponding row */
+// the cursor set functions have a special mechanism. When they
+// realize, that you left an empty paragraph, they will delete it.
+// They also delete the corresponding row 
 
 void LyXText::cursorRightOneWord(BufferView * bview) const
 {
@@ -2267,31 +2270,31 @@ void LyXText::cursorRightOneWord(BufferView * bview) const
 
 void LyXText::cursorTab(BufferView * bview) const
 {
-    LyXCursor tmpcursor = cursor;
-    while (tmpcursor.pos() < tmpcursor.par()->size()
+	LyXCursor tmpcursor = cursor;
+	while (tmpcursor.pos() < tmpcursor.par()->size()
 	   && !tmpcursor.par()->isNewline(tmpcursor.pos()))
 	tmpcursor.pos(tmpcursor.pos() + 1);
 
-    if (tmpcursor.pos() == tmpcursor.par()->size()) {
-	if (tmpcursor.par()->next()) {
-	    tmpcursor.par(tmpcursor.par()->next());
-	    tmpcursor.pos(0);
-	}
-    } else
-	tmpcursor.pos(tmpcursor.pos() + 1);
-    setCursor(bview, tmpcursor.par(), tmpcursor.pos());
+	if (tmpcursor.pos() == tmpcursor.par()->size()) {
+		if (tmpcursor.par()->next()) {
+			tmpcursor.par(tmpcursor.par()->next());
+			tmpcursor.pos(0);
+		}
+	} else
+		tmpcursor.pos(tmpcursor.pos() + 1);
+	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
 
 
-/* -------> Skip initial whitespace at end of word and move cursor to *start*
-	    of prior word, not to end of next prior word. */
-
+// Skip initial whitespace at end of word and move cursor to *start*
+// of prior word, not to end of next prior word. 
 void LyXText::cursorLeftOneWord(BufferView * bview)  const
 {
 	LyXCursor tmpcursor = cursor;
 	cursorLeftOneWord(tmpcursor);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
+
 
 void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
 {
@@ -2320,8 +2323,9 @@ void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
 	}
 }
 
-/* -------> Select current word. This depends on behaviour of
-CursorLeftOneWord(), so it is patched as well. */
+
+// Select current word. This depends on behaviour of
+// CursorLeftOneWord(), so it is patched as well. 
 void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 		      word_location const loc) const
 {
@@ -2381,8 +2385,8 @@ void LyXText::selectWord(BufferView * bview, word_location const loc)
 }
 
 
-/* -------> Select the word currently under the cursor when no
-	selection is currently set */
+// Select the word currently under the cursor when no
+// selection is currently set 
 bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 					word_location const loc)
 {
@@ -2504,7 +2508,7 @@ void LyXText::selectSelectedWord(BufferView * bview)
 }
 
 
-/* -------> Delete from cursor up to the end of the current or next word. */
+// Delete from cursor up to the end of the current or next word.
 void LyXText::deleteWordForward(BufferView * bview)
 {
 	if (!cursor.par()->size())
@@ -2519,32 +2523,32 @@ void LyXText::deleteWordForward(BufferView * bview)
 		cursor = tmpcursor;
 		setSelection(bview);
 
-		/* -----> Great, CutSelection() gets rid of multiple spaces. */
+		// Great, CutSelection() gets rid of multiple spaces.
 		cutSelection(bview, true, false);
 	}
 }
 
 
-/* -------> Delete from cursor to start of current or prior word. */
+// Delete from cursor to start of current or prior word.
 void LyXText::deleteWordBackward(BufferView * bview)
 {
-       if (!cursor.par()->size())
-	       cursorLeft(bview);
-       else {
-	       LyXCursor tmpcursor = cursor;
-	       tmpcursor.row(0); // ??
-	       selection.set(true); // to avoid deletion
-	       cursorLeftOneWord(bview);
-	       setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
-	       selection.cursor = cursor;
-	       cursor = tmpcursor;
-	       setSelection(bview);
-	       cutSelection(bview, true, false);
-       }
+	if (!cursor.par()->size())
+		cursorLeft(bview);
+	else {
+		LyXCursor tmpcursor = cursor;
+		tmpcursor.row(0); // ??
+		selection.set(true); // to avoid deletion
+		cursorLeftOneWord(bview);
+		setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
+		selection.cursor = cursor;
+		cursor = tmpcursor;
+		setSelection(bview);
+		cutSelection(bview, true, false);
+	}
 }
 
 
-/* -------> Kill to end of line. */
+// Kill to end of line. 
 void LyXText::deleteLineForward(BufferView * bview)
 {
 	if (!cursor.par()->size())
@@ -2774,16 +2778,15 @@ void LyXText::backspace(BufferView * bview)
 					false);
 		}
 
-		/* Pasting is not allowed, if the paragraphs have different
-		   layout. I think it is a real bug of all other
-		   word processors to allow it. It confuses the user.
-		   Even so with a footnote paragraph and a non-footnote
-		   paragraph. I will not allow pasting in this case,
-		   because the user would be confused if the footnote behaves
-		   different wether it is open or closed.
+		// Pasting is not allowed, if the paragraphs have different
+		// layout. I think it is a real bug of all other
+		// word processors to allow it. It confuses the user.
+		// Even so with a footnote paragraph and a non-footnote
+		// paragraph. I will not allow pasting in this case,
+		// because the user would be confused if the footnote behaves
+		// different wether it is open or closed.
 
-		   Correction: Pasting is always allowed with standard-layout
-		*/
+		// 	Correction: Pasting is always allowed with standard-layout
 		LyXTextClass const & tclass = textclasslist[bview->buffer()->params.textclass];
 
 		if (cursor.par() != tmppar
@@ -2823,8 +2826,8 @@ void LyXText::backspace(BufferView * bview)
 			setCursor(bview, cursor.par(), cursor.pos(), false);
 		}
 	} else {
-		/* this is the code for a normal backspace, not pasting
-		 * any paragraphs */
+		// this is the code for a normal backspace, not pasting
+		// any paragraphs 
 		setUndo(bview, Undo::DELETE,
 			cursor.par(), cursor.par()->next());
 		// We used to do cursorLeftIntern() here, but it is
@@ -2851,8 +2854,8 @@ void LyXText::backspace(BufferView * bview)
 		Row * row = cursor.row();
 		int y = cursor.y() - row->baseline();
 		pos_type z;
-		/* remember that a space at the end of a row doesnt count
-		 * when calculating the fill */
+		// remember that a space at the end of a row doesnt count
+		// when calculating the fill 
 		if (cursor.pos() < rowLast(row) ||
 		    !cursor.par()->isLineSeparator(cursor.pos())) {
 			row->fill(row->fill() + singleWidth(bview,
@@ -2860,8 +2863,8 @@ void LyXText::backspace(BufferView * bview)
 							    cursor.pos()));
 		}
 
-		/* some special code when deleting a newline. This is similar
-		 * to the behavior when pasting paragraphs */
+		// some special code when deleting a newline. This is similar
+		// to the behavior when pasting paragraphs 
 		if (cursor.pos() && cursor.par()->isNewline(cursor.pos())) {
 			cursor.par()->erase(cursor.pos());
 			// refresh the positions
@@ -2961,10 +2964,10 @@ void LyXText::backspace(BufferView * bview)
 		    (rowLast(row) == row->par()->size() - 1 ||
 		     nextBreakPoint(bview, row, workWidth(bview)) != rowLast(row))) {
 
-			/* it can happen that a paragraph loses one row
-			 * without a real breakup. This is when a word
-			 * is to long to be broken. Well, I don t care this
-			 * hack ;-) */
+			// it can happen that a paragraph loses one row
+			// without a real breakup. This is when a word
+			// is to long to be broken. Well, I don t care this
+			// hack ;-) 
 			if (rowLast(row) == row->par()->size() - 1)
 				removeRow(row->next());
 
@@ -3756,12 +3759,13 @@ void LyXText::getVisibleRow(BufferView * bv, int y_offset, int x_offset,
 int LyXText::defaultHeight() const
 {
 	LyXFont font(LyXFont::ALL_SANE);
-	return int(font_metrics::maxAscent(font) + font_metrics::maxDescent(font) * 1.5);
+	return int(font_metrics::maxAscent(font)
+	         + font_metrics::maxDescent(font) * 1.5);
 }
 
 
-/* returns the column near the specified x-coordinate of the row
-* x is set to the real beginning of this column  */
+// returns the column near the specified x-coordinate of the row
+// x is set to the real beginning of this column 
 pos_type
 LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 			bool & boundary) const
