@@ -7,7 +7,7 @@
 # Full author contact details are available in file CREDITS
 #
 # Use so:
-# sed -f fdfixc.sed < somefile.c > fixedfile.C
+# sed -f fdfixc.sed somefile.c > fixedfile.C
 #
 # It contains the instructions that sed requires to manipulate
 # the .c files produced by fdesign into a form usable by LyX

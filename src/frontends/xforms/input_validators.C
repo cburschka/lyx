@@ -1,11 +1,14 @@
-/* input_validators.C
- * A collection of input filtering and validating functions for use in
- * XForms dialogs.  Mainly meant for filtering input boxes although may
- * be extended to include other generally useful xforms-specific tools.
+/**
+ * \file input_validators.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Allan Rae
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-
 
 #include "lyx_forms.h"
 #include "support/lstrings.h"

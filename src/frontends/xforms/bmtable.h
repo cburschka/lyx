@@ -1,6 +1,5 @@
 /**
  * \file bmtable.h
- * Copyright 1995-1996 Alejandro Aguilar Sierra
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +8,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-/* A bitmap table uses a single bitmap to simulate a 2d array
- * of bitmap buttons. It can be used to build bitmap menus.
+/** A bitmap table uses a single bitmap to simulate a 2d array
+ *  of bitmap buttons. It can be used to build bitmap menus.
  */
 
 #ifndef BMTABLE_H

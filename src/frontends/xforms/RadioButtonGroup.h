@@ -1,7 +1,6 @@
 // -*- C++ -*-
 /**
  * \file RadioButtonGroup.h
- * Copyright 2000 Baruch Even
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

@@ -6,7 +6,6 @@
  * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
- * \date 2001-10-01
  */
 
 #include <config.h>

@@ -1,8 +1,6 @@
 // -*- C++ -*-
 /**
  * \file xforms/Menubar_pimpl.h
- * Copyright 1995 Matthias Ettrich
- * Copyright 1996-2001 Lars Gullik Bjønnes
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

@@ -6,11 +6,6 @@
  * \author Alejandro Aguilar Sierra
  *
  * Full author contact details are available in file CREDITS
- *
- * Implementation of the XForms object bmtable.
- *
- * A bitmap table uses a single bitmap to simulate a 2d array
- * of bitmap buttons. It can be used to build bitmap menus.
  */
 
 #include <config.h>
