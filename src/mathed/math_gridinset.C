@@ -908,6 +908,10 @@ void MathGridInset::write(WriteStream & os) const
 				lastcol = col + 1;
 		for (col_type col = 0; col < lastcol; ++col)
 			os << cell(index(row, col)) << eocString(col, lastcol);
+		// I _really_ hate LaTeX's syntax quirks. Why is 
+		// \begin{eqnarray}\end{eqnarray} not valid?
+		if (lastcol == 0 && os.latex())
+			os << "\\ ";
 		os << eolString(row, os.fragile());
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
