@@ -635,7 +635,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		return filename_;
 	}
 
-	string const temp = AddName(buf->tmppath, filename_);
+	string const temp = MakeAbsPath(filename_, buf->tmppath);
 	string const outfile_base = RemoveExtension(temp);
 
 	lyxerr[Debug::GRAPHICS] << "tempname = " << temp << "\n";
@@ -644,7 +644,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	lyxerr[Debug::GRAPHICS] << "outfile_base = " << outfile_base << endl;
 
 	converters.convert(buf, filename_, outfile_base, from, to);
-	return outfile_base;
+	return RemoveExtension(filename_);
 }
 
 

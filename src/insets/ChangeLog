@@ -1,11 +1,16 @@
+2002-04-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetgraphics.C (prepareFile): fix bug when graphics is a
+	relative path
+
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insertInset): remove unneeded code!
 
 2002-04-08  Herbert Voss  <voss@perce.de>
 
-       * insetgraphic.C (write): write the rotating angle as
-       a float as is. test only for != 0.0
+	* insetgraphic.C (write): write the rotating angle as
+	a float as is. test only for != 0.0
 
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
