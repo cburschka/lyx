@@ -60,7 +60,6 @@ void FormInclude::update()
 
 	string const cmdname = controller().params().cparams.getCmdName();
 
-	lyxerr << cmdname << endl; 
 	if (cmdname == "input")
 		fl_set_button(dialog_->check_preview,
 			      int(controller().params().cparams.preview()));

@@ -257,56 +257,54 @@ void LyXComm::emergencyCleanup()
 // Receives messages and sends then to client
 void LyXComm::read_ready()
 {
-	if (lyxerr.debugging(Debug::LYXSERVER)) {
-		lyxerr << "LyXComm: Receiving from fd " << infd << endl;
-	}
+	// nb! make read_buffer_ a class-member for multiple sessions
+	static string read_buffer_;
+	read_buffer_.erase();
 
-	int const CMDBUFLEN = 100;
-	char charbuf[CMDBUFLEN];
-	string cmd;
-// nb! make lsbuf a class-member for multiple sessions
-	static string lsbuf;
+	int const charbuf_size = 100;
+	char charbuf[charbuf_size];
 
 	errno = 0;
 	int status;
 	// the single = is intended here.
-	while ((status = read(infd, charbuf, CMDBUFLEN - 1))) {
-		int rerrno = errno;
- 
+	while ((status = ::read(infd, charbuf, charbuf_size - 1))) {
+
 		if (status > 0) {
-			charbuf[status]= '\0'; // turn it into a c string
-			lsbuf += rtrim(charbuf, "\r");
-			// commit any commands read
-			while (lsbuf.find('\n') != string::npos) {
-				// split() grabs the entire string if
-				// the delim /wasn't/ found. ?:-P
-				lsbuf= split(lsbuf, cmd,'\n');
-				lyxerr[Debug::LYXSERVER]
-					<< "LyXComm: status:" << status
-					<< ", lsbuf:" << lsbuf
-					<< ", cmd:" << cmd << endl;
-				if (!cmd.empty())
-					clientcb(client, cmd);
-					//\n or not \n?
-			}
-		}
-		if (rerrno == EAGAIN) {
-			errno = 0;
-			return;
-		}
-		if (rerrno != 0) {
-			lyxerr << "LyXComm: " << strerror(rerrno) << endl;
-			if (!lsbuf.empty()) {
+			charbuf[status] = '\0'; // turn it into a c string
+			read_buffer_ += rtrim(charbuf, "\r");
+
+		} else if (errno != EAGAIN) {
+			if (!read_buffer_.empty()) {
 				lyxerr << "LyXComm: truncated command: "
-				       << lsbuf << endl;
-				lsbuf.erase();
+				       << read_buffer_ << '\n'
+				       << "Resetting connection" << endl;
+				read_buffer_.erase();
 			}
-			break; // reset connection
+
+			// reset connection			
+			closeConnection();
+			openConnection();
+			break;
+
+		} else {
+			// errno == EAGAIN
+		  	// Nothing new has arrived, so now's the time
+			// to tell the outside world if there's anything
+			// in the read buffer.
+			break;
 		}
 	}
-	closeConnection();
-	openConnection();
-	errno= 0;
+
+	if (!read_buffer_.empty()) {
+		read_buffer_ = rtrim(read_buffer_, "\n");
+		lyxerr[Debug::LYXSERVER]
+			<< "LyXComm: Received from fd "
+			<< infd << '\n'
+			<< '\"' << read_buffer_ << '\"' << endl;
+		clientcb(client, read_buffer_);
+	}
+
+	errno = 0;
 }
 
 
