@@ -1,5 +1,9 @@
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
+	* insetcommand.[Ch] (localDispatch): new method.
+
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
 	* insetinclude.C (draw): cache the BufferView* using cache not
 	PreviewImpl::setView
 

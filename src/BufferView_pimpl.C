@@ -1312,25 +1312,23 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_REF_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
+		dispatch_result result = UNDISPATCHED;
 		InsetBase * base = owner_->getDialogs().getOpenInset("ref");
-		InsetRef * inset = 0;
+		Inset * inset = 0;
 		if (base) {
-			inset = dynamic_cast<InsetRef *>(base);
-			if (!inset)
-				break;
-
-			inset->setParams(params);
+			// This works both for 'original' and 'mathed' insets.
+			result = base->localDispatch(ev);
 		} else {
-			InsetRef * inset = new InsetRef(params, *buffer_);
+			InsetCommandParams params;
+			InsetCommandMailer::string2params(ev.argument, params);
+
+			inset = new InsetRef(params, *buffer_);
 			if (!insertInset(inset)) {
 				delete inset;
-				break;
+				result = UNDISPATCHED;
 			}
+			updateInset(inset, true);
 		}
-		updateInset(inset, true);
 	}
 	break;
 

@@ -70,6 +70,8 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	///
 	void setParams(InsetCommandParams const &);
+	/// small wrapper for the time being
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 
 private:
 	///

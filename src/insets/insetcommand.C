@@ -11,12 +11,15 @@
 
 #include <config.h>
 
-
 #include "insetcommand.h"
+#include "BufferView.h"
 #include "debug.h"
-#include "frontends/Painter.h"
-#include "Lsstream.h"
+#include "funcrequest.h"
 #include "lyxlex.h"
+
+#include "frontends/Painter.h"
+
+#include "Lsstream.h"
 
 using std::ostream;
 using std::endl;
@@ -60,6 +63,20 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 	return 0;
 }
 
+
+dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
+{
+	InsetCommandParams p;
+	InsetCommandMailer::string2params(cmd.argument, p);
+	if (p.getCmdName().empty())
+		return UNDISPATCHED;
+
+	setParams(p);
+	if (view())
+		view()->updateInset(this, true);
+
+	return DISPATCHED;
+}
 
 InsetCommandMailer::InsetCommandMailer(string const & name,
 				       InsetCommand & inset)

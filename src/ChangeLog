@@ -1,3 +1,8 @@
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): use InsetCommand::localDispatch for
+	LFUN_REF_APPLY.
+
 2003-02-25  John Levon  <levon@movementarian.org>
 
 	* ispell.C: give the forked command a more accurate name
