@@ -22,6 +22,7 @@
 
 class MathMacro;
 class LaTeXFeatures;
+class ReplaceData;
 
 
 #ifdef __GNUG__
@@ -104,6 +105,8 @@ public:
 	void substitute(MathMacro const &);
 	///
 	bool match(MathArray const &) const;
+	///
+	void replace(ReplaceData &);
 
 	///
 	MathAtom & at(size_type pos);

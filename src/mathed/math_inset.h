@@ -231,6 +231,8 @@ public:
 	virtual void handleFont(MathTextCodes) {}
 	///
 	virtual bool match(MathInset *) const { return false; }
+	///
+	virtual void replace(ReplaceData &) {}
 
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;

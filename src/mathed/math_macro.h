@@ -63,6 +63,8 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	bool isMacro() const { return true; }
+	///
+	bool match(MathInset *) const { return false; }
 
 	///
 	void normalize(NormalStream &) const;

@@ -52,6 +52,8 @@ public:
 	bool isRelOp() const;
 	///
 	void handleFont(MathTextCodes t);
+	///
+	bool match(MathInset *) const;
 
 private:
 	/// the character

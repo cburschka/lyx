@@ -118,3 +118,10 @@ void MathCharInset::handleFont(MathTextCodes t)
 {
 	code_ = (code_ == t) ? LM_TC_VAR : t;
 }
+
+
+bool MathCharInset::match(MathInset * p) const
+{
+	MathCharInset const * q = p->asCharInset();
+	return q && char_ == q->char_ && code_ == q->code_;
+}

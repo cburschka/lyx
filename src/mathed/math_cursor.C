@@ -42,6 +42,8 @@
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_mathmlstream.h"
+#include "math_replace.h"
+#include "math_parser.h"
 
 #define FILEDEBUG 0
 
@@ -1269,6 +1271,18 @@ bool MathCursor::interpret(string const & s)
 		n = std::max(1u, n);
 		v_align += 'c';
 		niceInsert(MathAtom(new MathArrayInset(m, n, v_align[0], h_align)));
+		return true;
+	}
+
+	if (s.size() >= 7 && s.substr(0, 7) == "replace") {
+		ReplaceData rep;
+		istringstream is(s.substr(7).c_str());
+		string from, to;
+		is >> from >> to;
+		mathed_parse_cell(rep.from, from);
+		mathed_parse_cell(rep.to, to);
+		lyxerr << "replacing '" << from << "' with '" << to << "'\n";
+		par()->replace(rep);
 		return true;
 	}
 

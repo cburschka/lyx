@@ -67,6 +67,8 @@ public:
 	void dump() const;
 	///
 	bool match(MathInset *) const;
+	///
+	void replace(ReplaceData &);
 
 	///
 	void validate(LaTeXFeatures & features) const;

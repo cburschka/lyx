@@ -2,6 +2,7 @@
 #pragma implementation
 #endif
 
+#include "math_data.h"
 #include "math_inset.h"
 #include "math_deliminset.h"
 #include "math_charinset.h"
@@ -10,7 +11,7 @@
 #include "math_matrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
-#include "math_data.h"
+#include "math_replace.h"
 #include "debug.h"
 #include "support/LAssert.h"
 
@@ -214,4 +215,26 @@ bool MathArray::match(MathArray const & ar) const
 		if (!it->nucleus()->match(jt->nucleus()))
 			return false;
 	return true;
+}
+
+
+void MathArray::replace(ReplaceData & rep)
+{
+	for (size_type i = 0; i < size(); ++i) {
+		iterator it = begin() + i;
+		const_iterator rt = rep.from.begin();
+		const_iterator et = rep.from.end();
+		for (const_iterator jt = it; jt != end() && rt != et; ++jt, ++rt)
+			if (!jt->nucleus()->match(rt->nucleus()))
+				break;
+		if (rt == et) {
+			// match found
+			lyxerr << "match found!\n";
+			erase(it, it + rep.from.size());
+			insert(i, rep.to);
+		}
+	}
+
+	for (const_iterator it = begin(); it != end(); ++it)
+		it->nucleus()->replace(rep);
 }

@@ -189,3 +189,10 @@ bool MathNestInset::match(MathInset * p) const
 			return false;
 	return true;
 }
+
+
+void MathNestInset::replace(ReplaceData & rep)
+{
+	for (idx_type i = 0; i < nargs(); ++i)
+		cell(i).replace(rep);
+}
