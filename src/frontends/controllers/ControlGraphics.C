@@ -24,6 +24,7 @@
 #include "ControlGraphics.h"
 #include "ControlInset.tmpl"
 #include "buffer.h"
+#include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "gettext.h"
@@ -33,11 +34,9 @@
 #include "insets/insetgraphicsParams.h" // need operator!=()
 
 #include "support/FileInfo.h"  // for FileInfo
-#include "helper_funcs.h"      // for browseFile
+#include "helper_funcs.h"
 #include "support/lstrings.h"
 #include "support/filetools.h" // for AddName, zippedFile
-#include "frontends/Alert.h"
-#include "BufferView.h"
 
 using std::pair;
 using std::make_pair;
@@ -98,7 +97,8 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir1(N_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(N_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseFile(&lv_, in_name, title, pattern, dir1, dir2);
+	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+			     title, pattern, dir1, dir2);
 }
 
 
@@ -135,10 +135,9 @@ string const ControlGraphics::readBB(string const & file)
 }
 
 
-void ControlGraphics::checkFilename(string const & fname) {
-	if (!IsFileReadable(fname))
-		Alert::alert(_("Warning!"),
-			     _("Filename") + ' '
-			     + fname + _(" does not exist!"));
-
+bool ControlGraphics::isFilenameValid(string const & fname) const
+{
+	// It may be that the filename is relative.
+	string const name = MakeAbsPath(fname, lv_.buffer()->filePath());
+	return IsFileReadable(name);
 }

@@ -1,3 +1,8 @@
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insettext.C (edit): emit an updateParagraph signal on entering a text
+	inset. Needs to be emitted when leaving the inset also.
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* all files: ws cleanup

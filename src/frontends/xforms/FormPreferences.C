@@ -8,35 +8,31 @@
 
 #include <config.h>
 
-#include <utility>
-#include <iomanip>
-#include <X11/Xlib.h>
-
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
-#include "Color.h"
-#include "LColor.h"
-#include "Lsstream.h"
 #include "FormPreferences.h"
 #include "form_preferences.h"
 #include "ButtonController.tmpl"
-#include "input_validators.h"
+#include "Dialogs.h"
+
+#include "buffer.h"
+#include "converter.h"
+#include "debug.h"
 #include "LyXView.h"
 #include "language.h"
 #include "lyxfunc.h"
-#include "Dialogs.h"
-#include "lyxrc.h"
-#include "combox.h"
-#include "debug.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
+#include "LColor.h"
+#include "Lsstream.h"
+
+#include "combox.h"
+#include "Color.h"
 #include "input_validators.h"
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
-#include "converter.h"
 
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
@@ -44,6 +40,10 @@
 #include "support/LAssert.h"
 
 #include "graphics/GraphicsCache.h"
+
+#include <utility>
+#include <iomanip>
+#include <X11/Xlib.h>
 
 using std::endl;
 using std::pair;
@@ -2999,7 +2999,8 @@ void FormPreferences::browse(FL_OBJECT * inpt,
 
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(lv_, filename, title, pattern, dir1, dir2);
+		browseRelFile(lv_, filename, lv_->buffer()->filePath(),
+			      title, pattern, dir1, dir2);
 
 	// Save the filename to the dialog
 	if (new_filename != filename && !new_filename.empty()) {

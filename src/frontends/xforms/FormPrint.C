@@ -17,25 +17,16 @@
 #include "ControlPrint.h"
 #include "FormPrint.h"
 #include "form_print.h"
-#include "input_validators.h"
-#include "support/lstrings.h"
 
-#include "lyxrc.h" // needed by PrinterParams
+#include "LyXView.h"
+
 #include "PrinterParams.h"
 
-#include "LyXView.h"
-#include "xforms_helpers.h"     // for browseFile
+#include "input_validators.h"
+#include "xforms_helpers.h"
 
-/*
-#include "LyXView.h"
-#include "Dialogs.h"
-#include "Liason.h"
-#include "debug.h"
-#include "BufferView.h"
-*/
+#include "support/lstrings.h"
 
-//using Liason::printBuffer;
-//using Liason::getPrinterParams;
 using std::make_pair;
 
 typedef FormCB<ControlPrint, FormDB<FD_form_print> > base_class;

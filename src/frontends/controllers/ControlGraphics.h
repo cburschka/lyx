@@ -41,7 +41,7 @@ public:
 	/// Control the bb
 	bool bbChanged;
 	/// test if file exist
-	void checkFilename(string const & fname);
+	bool isFilenameValid(string const & fname) const;
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();

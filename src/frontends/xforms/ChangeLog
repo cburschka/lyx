@@ -1,5 +1,13 @@
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormGraphics.C (input): don't activate the Ok, Apply buttons if the
+	file can't be found.
+
+	* FormParagraph.C (changedParagraph): activate the Ok, Apply buttons
+	only if the underlying paragraph will accept changes.
+
+	* FormPreferences.C (browse): use Jean-Marc's browseRelFile.
+
 	* xforms_helper.C (updateWidgetsFromLength): fix crash when trying to
 	set the choice to a unit that isn't present in the choice!
 	Also remove #if 0 sections of code.

@@ -66,5 +66,6 @@ string const ControlBibtex::Browse(string const & in_name,
 				   string const & pattern)
 {
 	pair<string, string> dir1(N_("Documents|#o#O"), string(lyxrc.document_path));
-	return browseFile(&lv_, in_name, title, pattern, dir1);
+	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+			     title, pattern, dir1);
 }

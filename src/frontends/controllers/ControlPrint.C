@@ -24,10 +24,9 @@
 #include "buffer.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "lyxrc.h"
 #include "PrinterParams.h"
 #include "Liason.h"
-#include "helper_funcs.h" // browseFile
+#include "helper_funcs.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
@@ -91,5 +90,6 @@ string const ControlPrint::Browse(string const & in_name)
 	string const pattern = "*.ps";
 
 	// Show the file browser dialog
-	return browseFile(&lv_, in_name, title, pattern);
+	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+			     title, pattern);
 }

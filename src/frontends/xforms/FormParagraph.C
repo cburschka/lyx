@@ -80,15 +80,17 @@ void FormParagraph::changedParagraph()
 	if (p == 0 || p == par_)
 		return;
 
-	// OBS FIX LOOK HERE
+	// For now, don't bother checking if the params are different.
 
-	// shouldn't we chage the par_ pointer too?
-	// anyway for me the below function does just nothing!
-	// (Jug 20020108)
+	// Will the underlying paragraph accept our changes?
+	Inset * const inset = p->inInset();
+	bool const accept = !(inset && inset->forceDefaultParagraphs(inset));
+	bc().valid(accept);
 
-	// For now don't bother checking if the params are different,
-	// just activate the Apply button
-	bc().valid();
+	if (!accept) {
+		postWarning(_("Cannot apply paragraph settings to this inset!"));
+	}
+
 }
 
 

@@ -43,6 +43,7 @@
 #include "lyxfind.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
 
 #include "support/textutils.h"
 #include "support/LAssert.h"
@@ -684,6 +685,9 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
 	updateLocal(bv, code, false);
+
+	// Tell the paragraph dialog that we've entered an insettext.
+	bv->owner()->getDialogs()->updateParagraph();
 }
 
 
