@@ -628,15 +628,17 @@ void InsetFormula::UpdateLocal(BufferView * bv)
 void InsetFormula::InsetButtonRelease(BufferView * bv,
 				      int x, int y, int /*button*/)
 {
-    HideInsetCursor(bv);
-    x += par->xo;
-    y += par->yo;
-    mathcursor->SetPos(x, y);
-    ShowInsetCursor(bv);
-    if (sel_flag) {
-	sel_flag = false; 
-	sel_x = sel_y = 0;
-	bv->updateInset(this, false); 
+    if (mathcursor) {
+	HideInsetCursor(bv);
+	x += par->xo;
+	y += par->yo;
+	mathcursor->SetPos(x, y);
+	ShowInsetCursor(bv);
+	if (sel_flag) {
+	    sel_flag = false; 
+	    sel_x = sel_y = 0;
+	    bv->updateInset(this, false); 
+	}
     }
 }
 
@@ -645,8 +647,8 @@ void InsetFormula::InsetButtonPress(BufferView * bv,
 				    int x, int y, int /*button*/)
 {
     sel_flag = false;
-    sel_x = x;  sel_y = y; 
-    if (mathcursor->Selection()) {
+    sel_x = x;  sel_y = y;
+    if (mathcursor && mathcursor->Selection()) {
 	mathcursor->SelClear();
 	bv->updateInset(this, false); 
     }

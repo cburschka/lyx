@@ -662,7 +662,7 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		
 		/* Check whether the inset was hit. If not reset mode,
 		   otherwise give the event to the inset */
-		if (inset_hit) {
+		if (inset_hit == the_locking_inset) {
 			the_locking_inset->
 				InsetButtonPress(this,
 						 xpos, ypos,
@@ -673,7 +673,8 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		}
 	}
 	
-	selection_possible = true;
+	if (!inset_hit)
+		selection_possible = true;
 	screen->HideCursor();
 	
 	// Right button mouse click on a table
@@ -730,12 +731,15 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 	updateScrollbar();
 	
 	// Single left click in math inset?
-	if (inset_hit != 0 && inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
+	if ((inset_hit != 0) &&
+	    (inset_hit->Editable()==Inset::HIGHLY_EDITABLE)) {
 		// Highly editable inset, like math
+		UpdatableInset *inset = (UpdatableInset *)inset_hit;
 		selection_possible = false;
 		owner_->updateLayoutChoice();
-		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(this, xpos, ypos, button);
+		owner_->getMiniBuffer()->Set(inset->EditMessage());
+		inset->InsetButtonPress(this, xpos, ypos, button);
+		inset->Edit(this, xpos, ypos, button);
 		return;
 	} 
 	
@@ -869,7 +873,13 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		}
 
 		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(this, x, y, button);
+		if (inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
+			// Highly editable inset, like math
+			UpdatableInset *inset = (UpdatableInset *)inset_hit;
+			inset->InsetButtonRelease(this, x, y, button);
+		} else {
+			inset_hit->Edit(this, x, y, button);
+		}
 		return;
 	}
 
@@ -964,7 +974,10 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
   
 	int y_tmp = y + screen->first;
   
+	LyXCursor & old_cursor = text->cursor;
+	text->SetCursorFromCoordinates(x,y);
 	LyXCursor & cursor = text->cursor;
+
 	bool is_rtl = text->real_current_font.isVisibleRightToLeft();
 
 	if (cursor.pos < cursor.par->Last()
@@ -1018,9 +1031,9 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 			return tmpinset;
 		} else {
 			text->CursorRight();
-			return 0;
 		}
 	}
+	text->SetCursor(old_cursor.par, old_cursor.pos);
 	return 0;
 }
 

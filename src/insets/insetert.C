@@ -62,3 +62,11 @@ void InsetERT::SetFont(BufferView *, LyXFont const &, bool)
 	       _("Not permitted to change font-types inside ERT-insets!"),
 	       _("Sorry."));
 }
+
+void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
+{
+    InsetCollapsable::Edit(bv, x, y, button);
+    LyXFont font(LyXFont::ALL_SANE);
+    font.setLatex (LyXFont::ON);
+    current_font = real_current_font = font;
+}

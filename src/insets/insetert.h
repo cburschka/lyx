@@ -44,6 +44,8 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
+    void Edit(BufferView *, int, int, unsigned int);
+    ///
 };
 
 #endif

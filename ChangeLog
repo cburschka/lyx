@@ -1,3 +1,18 @@
+2000-03-24  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetcollapsable.C (Edit): 
+	* src/mathed/formula.C (InsetButtonRelease): 
+	(InsetButtonPress): fixed for new handling of ButtonPress/Release
+	handling.
+
+	* src/BufferView.C (workAreaButtonPress): 
+	(workAreaButtonRelease): 
+	(checkInsetHit): Finally fixed the clicking on insets be handled
+	correctly!
+
+	* src/insets/insetert.C (Edit): inserted this call so that ERT
+	insets work always with LaTeX-font
+
 2000-03-21  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
 
 	* src/lyx_main.C (easyParse): Removed misplaced gui=false which

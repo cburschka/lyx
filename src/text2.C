@@ -833,8 +833,8 @@ void LyXText::RedoParagraphs(LyXCursor const & cur,
 		first_phys_par = tmprow->par->FirstPhysicalPar();
 		// find the first row of the paragraph
 		if (first_phys_par != tmprow->par)
-			while (tmprow->previous
-			       && tmprow->previous->par != first_phys_par) {
+			while (tmprow->previous &&
+			       (tmprow->previous->par != first_phys_par)) {
 				tmprow = tmprow->previous;
 				y -= tmprow->height;
 			}

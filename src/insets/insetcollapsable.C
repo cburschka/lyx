@@ -136,11 +136,8 @@ void InsetCollapsable::Edit(BufferView *bv, int x, int y, unsigned int button)
 	collapsed = false;
 	UpdateLocal(bv, true);
 	InsetText::Edit(bv, 0, 0, button);
-    } else if (button && (x < button_x)  &&
-	(y < (labelfont.maxDescent()+labelfont.maxAscent()))) {
-	collapsed = true;
-	UpdateLocal(bv, false);
-        bv->unlockInset(this);
+    } else if (button && (x < button_x)) {
+	return;
     } else {
 	InsetText::Edit(bv, x-top_x, y, button);
     }
