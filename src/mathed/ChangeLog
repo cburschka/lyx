@@ -1,3 +1,9 @@
+2003-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_symbolinset.C (metrics): apply a different hack to metrics
+	when running under OSX. Hopefully this will not break the X11
+	version under darwin (or hopefully nobody cares :)
+
 2003-09-19  Angus Leeming  <leeming@lyx.org>
 
 	* formula.[Ch] (previewWanted, generatePreview): now passed a
