@@ -95,9 +95,11 @@ public:
 	void infoize(std::ostream & os) const;
 	/// say whether we have displayed limits
 	void infoize2(std::ostream & os) const;
-	/// local dispatcher
-	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
-
+protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 private:
 	/// returns x offset for main part
 	int dxx() const;

@@ -21,6 +21,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "factory.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -389,7 +390,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 } // anon namespace
 
 
-dispatch_result LyXText::dispatch(FuncRequest const & cmd)
+DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: action[" << cmd.action
 			      <<"] arg[" << cmd.argument << ']' << "xy[" <<

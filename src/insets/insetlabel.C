@@ -13,6 +13,7 @@
 #include "insetlabel.h"
 
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 
 #include "frontends/LyXView.h"
@@ -56,7 +57,7 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetLabel::priv_dispatch(FuncRequest const & cmd,
 			  idx_type & idx, pos_type & pos)
 {

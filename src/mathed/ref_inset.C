@@ -15,6 +15,7 @@
 #include "math_factory.h"
 
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "math_support.h"
@@ -52,8 +53,9 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-dispatch_result
-RefInset::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult
+RefInset::priv_dispatch(FuncRequest const & cmd,
+			idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:

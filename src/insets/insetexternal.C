@@ -20,6 +20,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -120,7 +121,7 @@ Translator<DisplayType, string> const initTranslator()
 } // namespace anon
 
 
-Translator<DisplayType, string> const & displayTranslator() 
+Translator<DisplayType, string> const & displayTranslator()
 {
 	static Translator<DisplayType, string> const translator =
 		initTranslator();
@@ -426,7 +427,7 @@ void InsetExternal::statusChanged() const
 }
 
 
-dispatch_result
+DispatchResult
 InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {

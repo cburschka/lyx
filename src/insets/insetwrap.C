@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "funcrequest.h"
@@ -83,7 +84,7 @@ InsetWrap::~InsetWrap()
 }
 
 
-dispatch_result
+DispatchResult
 InsetWrap::priv_dispatch(FuncRequest const & cmd,
 			 idx_type & idx, pos_type & pos)
 {

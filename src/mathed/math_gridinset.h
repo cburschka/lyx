@@ -135,10 +135,6 @@ public:
 	MathGridInset * asGridInset() { return this; }
 	/// identifies GridInset
 	MathGridInset const * asGridInset() const { return this; }
-	/// local dispatcher
-	dispatch_result priv_dispatch(FuncRequest const & cmd,
-		idx_type & idx, pos_type & pos);
-
 	///
 	col_type ncols() const;
 	///
@@ -219,6 +215,11 @@ public:
 	//void octave(OctaveStream &) const;
 
 protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+
 	/// returns x offset of cell compared to inset
 	int cellXOffset(idx_type idx) const;
 	/// returns y offset of cell compared to inset

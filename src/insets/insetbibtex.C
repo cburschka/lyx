@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -87,7 +88,7 @@ void InsetBibtex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetBibtex::priv_dispatch(FuncRequest const & cmd,
 			   idx_type & idx, pos_type & pos)
 {

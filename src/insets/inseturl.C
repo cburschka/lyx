@@ -12,6 +12,7 @@
 
 #include "inseturl.h"
 
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "latexrunparams.h"
 #include "LaTeXFeatures.h"
@@ -43,7 +44,7 @@ InsetUrl::~InsetUrl()
 }
 
 
-dispatch_result
+DispatchResult
 InsetUrl::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {

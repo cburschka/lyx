@@ -29,6 +29,7 @@
 #include "counters.h"
 #include "CutAndPaste.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "errorlist.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -602,7 +603,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// If there is a change in the language the implicit word selection
 	// is disabled.
 	LyXCursor resetCursor = cursor;
-	bool implicitSelection = 
+	bool implicitSelection =
 		font.language() == ignore_language
 		&& font.number() == LyXFont::IGNORE
 		&& selectWordWhenUnderCursor(lyx::WHOLE_WORD_STRICT);
@@ -1354,7 +1355,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
 	double fill_label_hfill = row.fill_label_hfill();
 	pos_type const row_pos  = row.pos();
 	pos_type const end = row.endpos();
-	
+
 	if (end <= row_pos)
 		cursor_vpos = row_pos;
 	else if (pos >= end && !boundary)

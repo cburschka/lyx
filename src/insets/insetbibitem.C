@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
@@ -58,7 +59,7 @@ auto_ptr<InsetBase> InsetBibitem::clone() const
 }
 
 
-dispatch_result
+DispatchResult
 InsetBibitem::priv_dispatch(FuncRequest const & cmd,
 			    idx_type & idx, pos_type & pos)
 {

@@ -202,7 +202,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 	///
 	void updateLocal(BufferView *, bool mark_dirty);
@@ -222,22 +222,22 @@ private:
 	void lfunMouseMotion(FuncRequest const &);
 
 	///
-	dispatch_result moveRight(BufferView *);
+	DispatchResult moveRight(BufferView *);
 	///
-	dispatch_result moveLeft(BufferView *);
+	DispatchResult moveLeft(BufferView *);
 	///
-	dispatch_result moveRightIntern(BufferView *, bool front,
+	DispatchResult moveRightIntern(BufferView *, bool front,
 					       bool activate_inset = true,
 					       bool selecting = false);
 	///
-	dispatch_result moveLeftIntern(BufferView *, bool front,
+	DispatchResult moveLeftIntern(BufferView *, bool front,
 					      bool activate_inset = true,
 					      bool selecting = false);
 
 	///
-	dispatch_result moveUp(BufferView *);
+	DispatchResult moveUp(BufferView *);
 	///
-        dispatch_result moveDown(BufferView *);
+        DispatchResult moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///

@@ -84,7 +84,7 @@ public:
 protected:
 	/// To allow transparent use of math editing functions
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	/// unimplemented
@@ -92,11 +92,11 @@ private:
 	/// common base for handling accents
 	void handleAccent(BufferView * bv, std::string const & arg, std::string const & name);
 	/// lfun handler
-	dispatch_result lfunMousePress(FuncRequest const &);
+	DispatchResult lfunMousePress(FuncRequest const &);
 	///
-	dispatch_result lfunMouseRelease(FuncRequest const &);
+	DispatchResult lfunMouseRelease(FuncRequest const &);
 	///
-	dispatch_result lfunMouseMotion(FuncRequest const &);
+	DispatchResult lfunMouseMotion(FuncRequest const &);
 
 protected:
 

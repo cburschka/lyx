@@ -33,14 +33,16 @@ public:
 	//
 	// void infoize(std::ostream & os) const;
 	///
-	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
-	///
 	virtual std::string const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
 
 	std::string const & commandname() const { return name_; }
-
+protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 private:
 	std::string name_;
 	mutable bool set_label_;

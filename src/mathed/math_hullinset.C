@@ -18,6 +18,7 @@
 #include "math_extern.h"
 #include "math_charinset.h"
 #include "textpainter.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -771,7 +772,7 @@ void MathHullInset::doExtern
 }
 
 
-dispatch_result MathHullInset::priv_dispatch
+DispatchResult MathHullInset::priv_dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

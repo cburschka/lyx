@@ -13,9 +13,10 @@
 #include <config.h>
 
 #include "insetbox.h"
-#include "debug.h"
 
 #include "BufferView.h"
+#include "dispatchresult.h"
+#include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -164,7 +165,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetBox::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {

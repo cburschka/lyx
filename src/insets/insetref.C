@@ -13,6 +13,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -45,8 +46,9 @@ InsetRef::~InsetRef()
 }
 
 
-dispatch_result
-InsetRef::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult
+InsetRef::priv_dispatch(FuncRequest const & cmd,
+			idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT:

@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
@@ -421,11 +422,11 @@ int InsetERT::docbook(Buffer const &, ostream & os, bool) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
-	dispatch_result result = UNDISPATCHED;
+	DispatchResult result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraphs.begin()->empty()) {

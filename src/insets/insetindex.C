@@ -11,6 +11,7 @@
 
 #include "insetindex.h"
 
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -60,7 +61,7 @@ void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetIndex::priv_dispatch(FuncRequest const & cmd,
 			  idx_type & idx, pos_type & pos)
 {

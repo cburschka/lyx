@@ -18,6 +18,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -107,7 +108,7 @@ InsetInclude::~InsetInclude()
 }
 
 
-dispatch_result
+DispatchResult
 InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {

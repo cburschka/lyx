@@ -143,6 +143,7 @@ lyx_SOURCES = \
 	debug.h \
 	dimension.C \
 	dimension.h \
+	dispatchresult.h \
 	encoding.C \
 	encoding.h \
 	errorlist.C \

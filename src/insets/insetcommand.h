@@ -55,7 +55,7 @@ public:
 	virtual int docbook(Buffer const &, std::ostream &, bool) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
-	
+
 	///
 	InsetCommandParams const & params() const { return p_; }
 	///
@@ -70,7 +70,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 	///
 	std::string const getCommand() const { return p_.getCommand(); }

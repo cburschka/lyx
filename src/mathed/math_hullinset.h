@@ -50,9 +50,6 @@ public:
 	bool display() const;
 	///
 	bool ams() const;
-	/// local dispatcher
-	dispatch_result priv_dispatch(FuncRequest const & cmd,
-		idx_type & idx, pos_type & pos);
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
 			  std::vector<std::string> & list) const;
@@ -100,6 +97,10 @@ public:
 	void infoize(std::ostream & os) const;
 
 protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 

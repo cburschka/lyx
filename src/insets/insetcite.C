@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"
 
@@ -308,7 +309,7 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetCitation::priv_dispatch(FuncRequest const & cmd,
 			     idx_type & idx, pos_type & pos)
 {

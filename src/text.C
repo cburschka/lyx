@@ -22,6 +22,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "encoding.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -200,7 +201,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 		return font_metrics::width(c, font);
 	}
 
-	if (c == Paragraph::META_INSET) 
+	if (c == Paragraph::META_INSET)
 		return pit->getInset(pos)->width();
 
 	if (IsSeparatorChar(c))
@@ -409,7 +410,7 @@ namespace {
 pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
 	pos_type const end = par.size();
-	
+
 	for (; i < end; ++i)
 		if (par.isNewline(i))
 			return i + 1;
@@ -428,7 +429,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		row.endpos(end);
 		return;
 	}
-	
+
 	// maximum pixel width of a row.
 	int width = workWidth() - rightMargin(*pit, *bv()->buffer());
 //		- leftMargin(pit, row);
@@ -472,7 +473,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			point = i + 1;
 			break;
 		}
-		// Break before...	
+		// Break before...
 		if (i + 1 < end) {
 			InsetOld * in = pit->getInset(i + 1);
 			if (in && in->display()) {
@@ -488,12 +489,12 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 
 		char const c = pit->getChar(i);
- 
+
 		if (i > endPosOfFontSpan) {
 			font = getFont(pit, i);
 			endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 		}
-		
+
 		{
 			int thiswidth = singleWidth(pit, i, c, font);
 
@@ -512,7 +513,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			//<< x << " width: " << width << endl;
 			chunkwidth += thiswidth;
 		}
-		
+
 
 		// break before a character that will fall off
 		// the right of the row
@@ -521,7 +522,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			if (point == end || chunkwidth >= width - left) {
 				if (i > pos) {
 					point = i;
-					break;  
+					break;
 				}
 			}
 			// exit on last registered breakpoint:
@@ -537,7 +538,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
 				// register breakpoint:
-				point = i + 1; 
+				point = i + 1;
 				chunkwidth = 0;
 			}
 		}
@@ -709,7 +710,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 		BufferParams const & bufparams = bv()->buffer()->params();
 		// some parksips VERY EASY IMPLEMENTATION
 		if (bv()->buffer()->params().paragraph_separation
-		    == BufferParams::PARSEP_SKIP 
+		    == BufferParams::PARSEP_SKIP
 			&& pit != ownerParagraphs().begin()
 			&& ((layout->isParagraph() && pit->getDepth() == 0)
 			    || (boost::prior(pit)->layout()->isParagraph()
@@ -1106,7 +1107,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		{
 			align = LYX_ALIGN_CENTER;
 		}
-		
+
 		switch (align) {
     case LYX_ALIGN_BLOCK: {
 				int const ns = numberOfSeparators(*pit, row);

@@ -77,7 +77,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	///

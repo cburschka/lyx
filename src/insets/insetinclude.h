@@ -80,7 +80,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	/// Slot receiving a signal that the preview is ready to display.

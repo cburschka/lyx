@@ -142,7 +142,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	/** This method is connected to the graphics loader, so we are

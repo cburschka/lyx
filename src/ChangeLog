@@ -1,3 +1,18 @@
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C: 
+	* text2.C: 
+	* text.C: 
+	* lyxtext.h: 
+	* lyxfunc.C: 
+	* cursor.C: 
+	* BufferView_pimpl.C: dispatch_result -> DispatchResult changes.
+
+	* dispatchresult.h: new file, DispatchResult broken out of
+	insets/insetbase.h 
+
+	* Makefile.am (lyx_SOURCES): add dispatchresult.h 
+
 2003-10-28  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text.C (rowBreakPoint): put a hack inside #if 0
@@ -50,13 +65,13 @@
 
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
 
-	* text.C: 
-	* lyxrow_funcs.[Ch]: 
-	* Bidi.C: 
-	* paragraph.C: 
-	* lyxtext.h: 
-	* rowpainter.C: 
-	* text2.C: 
+	* text.C:
+	* lyxrow_funcs.[Ch]:
+	* Bidi.C:
+	* paragraph.C:
+	* lyxtext.h:
+	* rowpainter.C:
+	* text2.C:
 	* text3.C: remove lastPos uses in favour of Row::endpos
 
 2003-10-27  Alfredo Braunstein  <abraunst@libero.it>
@@ -67,9 +82,9 @@
 
 2003-10-25  Alfredo Braunstein  <abraunst@libero.it>
 
-	* text.C (prepareToPrint): fix linebreak rowbreaking as suggested 
+	* text.C (prepareToPrint): fix linebreak rowbreaking as suggested
 	by Martin
-	(rowBreakPoint): fix width. change point to point + 1. 
+	(rowBreakPoint): fix width. change point to point + 1.
 	Add a missing check.
 
 2003-10-25  Martin Vermeer  <martin.vermeer@hut.fi>
@@ -93,7 +108,7 @@
 	* text3.C (cursorPrevious, cursorNext): fix 2 "dontlikes"
 
 2003-10-23  André Pönitz  <poenitz@gmx.net>
-	
+
 	* RowList_fwd.h: change list<> to vector<> to gain speed
 	after suggestion from Alfredo
 

@@ -14,6 +14,7 @@
 #include "BufferView.h"
 #include "cursor.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"

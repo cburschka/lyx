@@ -15,6 +15,7 @@
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
@@ -285,8 +286,9 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-dispatch_result MathNestInset::priv_dispatch(FuncRequest const & cmd,
-	idx_type & idx, pos_type & pos)
+DispatchResult
+MathNestInset::priv_dispatch(FuncRequest const & cmd,
+			     idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 

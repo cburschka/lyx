@@ -150,7 +150,7 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim);
 
 	///
-	dispatch_result dispatch(FuncRequest const & cmd);
+	DispatchResult dispatch(FuncRequest const & cmd);
 
 	BufferView * bv();
 
@@ -409,7 +409,7 @@ private:
 
 	/// FIXME
 	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
-	
+
 	///
 	void charInserted();
 

@@ -17,6 +17,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "funcrequest.h"
@@ -281,7 +282,7 @@ void InsetCollapsable::edit(BufferView * bv, int index)
 }
 
 
-dispatch_result
+DispatchResult
 InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 				idx_type & idx, pos_type & pos)
 {
@@ -355,7 +356,7 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 			return DISPATCHED;
 
 		default:
-			dispatch_result result = inset.dispatch(cmd);
+			DispatchResult result = inset.dispatch(cmd);
 			if (result >= FINISHED)
 				bv->unlockInset(this);
 			first_after_edit = false;

@@ -14,6 +14,7 @@
 #include "insetcommand.h"
 
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
@@ -84,7 +85,7 @@ int InsetCommand::docbook(Buffer const &, ostream &, bool) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {

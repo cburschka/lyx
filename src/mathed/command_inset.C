@@ -13,6 +13,7 @@
 #include "command_inset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "support/std_sstream.h"
 
@@ -52,8 +53,10 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 	button_.draw(pi, x, y);
 }
 
-dispatch_result
-CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+
+DispatchResult
+CommandInset::priv_dispatch(FuncRequest const & cmd,
+			    idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		default:

@@ -101,12 +101,12 @@ public:
 	void write(WriteStream & os) const;
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
-
-	/// local dispatcher
-	dispatch_result priv_dispatch(FuncRequest const & cmd,
-		idx_type & idx, pos_type & pos);
-
 protected:
+	///
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+
 	/// we store the cells in a vector
 	typedef std::vector<MathArray> cells_type;
 	/// thusly:
@@ -123,7 +123,6 @@ protected:
 	void metricsMarkers(int frame = 1) const;
 	/// add space for markers
 	void metricsMarkers2(int frame = 1) const;
-
 };
 
 #endif

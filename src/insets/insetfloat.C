@@ -17,6 +17,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "funcrequest.h"
@@ -159,7 +160,7 @@ InsetFloat::~InsetFloat()
 }
 
 
-dispatch_result
+DispatchResult
 InsetFloat::priv_dispatch(FuncRequest const & cmd,
 			  idx_type & idx, pos_type & pos)
 {

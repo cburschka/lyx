@@ -1,3 +1,19 @@
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* math_scriptinset.h: change dispatch to priv_dispatch and make it
+	protected
+
+	* math_nestinset.h: make priv_dispatch protected
+
+	* math_hullinset.h: make priv_dispatch protected
+
+	* math_gridinset.h: make priv_dispatch protected
+
+	* command_inset.[Ch]: change dispatch to priv_dispatch and make it
+	protected.
+
+	* several files: dispatch_result -> DispatchResult
+
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (generatePreview): changes due to the changed
@@ -15,7 +31,7 @@
 	into this
 	(localDispatch): delete
 
-	* math_nestinset.C (dispatch): 
+	* math_nestinset.C (dispatch):
 	* math_hullinset.C (dispatch):
 	* math_gridinset.C (dispatch):
 	* formulabase.C (openNewInset, priv_dispatch, mathDispatch):

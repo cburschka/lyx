@@ -113,7 +113,7 @@ public:
 protected:
 	///  An updatable inset could handle lyx editing commands
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 	/// scrolls to absolute position in bufferview-workwidth * sx units
 	void scroll(BufferView *, float sx) const;

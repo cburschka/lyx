@@ -14,6 +14,7 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
@@ -1041,7 +1042,7 @@ void MathGridInset::splitCell(idx_type & idx, pos_type & pos)
 }
 
 
-dispatch_result MathGridInset::priv_dispatch(FuncRequest const & cmd,
+DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 	idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

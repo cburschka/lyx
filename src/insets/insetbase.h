@@ -23,45 +23,7 @@ class MetricsInfo;
 class Dimension;
 class PainterInfo;
 class LaTeXFeatures;
-
-/** Dispatch result codes
-		DISPATCHED          = the inset catched the action
-		DISPATCHED_NOUPDATE = the inset catched the action and no update
-				is needed here to redraw the inset
-		FINISHED            = the inset must be unlocked as a result
-				of the action
-		FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
-				the inset.
-		FINISHED_UP         = FINISHED, but put the cursor UP of
-				the inset.
-		FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
-				the inset.
-		UNDISPATCHED        = the action was not catched, it should be
-				dispatched by lower level insets
-*/
-enum dispatch_result {
-	UNDISPATCHED = 0,
-	DISPATCHED,
-	DISPATCHED_NOUPDATE,
-	FINISHED,
-	FINISHED_RIGHT,
-	FINISHED_UP,
-	FINISHED_DOWN,
-	DISPATCHED_POP
-};
-
-/** \c DispatchResult is a wrapper for dispatch_result.
- *  It can be forward-declared and passed as a function argument without
- *  having to expose insetbase.h.
- */
-class DispatchResult {
-	dispatch_result val_;
-public:
-	DispatchResult(dispatch_result val) : val_(val) {}
-	operator dispatch_result() const{ return val_; }
-};
-
-
+class DispatchResult;
 
 /// Common base class to all insets
 class InsetBase {
@@ -85,10 +47,10 @@ public:
 	virtual std::auto_ptr<InsetBase> clone() const = 0;
 
 	// the real dispatcher
-	dispatch_result
+	DispatchResult
 	dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	// the real dispatcher
-	dispatch_result
+	DispatchResult
 	dispatch(FuncRequest const & cmd);
 
 	/// compute the size of the object returned in dim
@@ -103,8 +65,9 @@ public:
 				  std::vector<std::string> & /* list */) const {}
 protected:
 	// the real dispatcher
-	virtual dispatch_result priv_dispatch
-		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	virtual
+	DispatchResult
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 };
 
 #endif

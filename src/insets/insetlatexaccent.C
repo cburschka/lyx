@@ -444,8 +444,8 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		case ACUTE:
 			drawAccent(pi, x2, baseline, char(0xB4));
 			break;
-		
-		case GRAVE: 
+
+		case GRAVE:
 			drawAccent(pi, x2, baseline, char(0x60));
 			break;
 
@@ -477,7 +477,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			drawAccent(pi, x2, baseline, '.');
 			break;
 
-		case CIRCLE: 
+		case CIRCLE:
 			drawAccent(pi, x2, baseline, char(0xB0));
 			break;
 

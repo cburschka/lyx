@@ -29,6 +29,7 @@
 #include "BufferView.h"
 #include "cursor.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "encoding.h"
 #include "exporter.h"
 #include "format.h"
@@ -894,7 +895,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 
 	if (view()->available() && view()->theLockingInset()) {
-		dispatch_result result;
+		DispatchResult result;
 		if (action > 1 || (action == LFUN_UNKNOWN_ACTION &&
 				     !keyseq.deleted()))
 		{
@@ -1485,12 +1486,12 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 	}
 
-	case LFUN_DIALOG_SHOW_NEXT_INSET: 
+	case LFUN_DIALOG_SHOW_NEXT_INSET:
 		break;
 
 	case LFUN_INSET_DIALOG_SHOW: {
 		InsetOld * inset = view()->getLyXText()->getInset();
-		if (inset) 
+		if (inset)
 			inset->dispatch(FuncRequest(view(), LFUN_INSET_DIALOG_SHOW));
 		break;
 	}
@@ -1556,7 +1557,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		argument = split(argument, countstr, ' ');
 		istringstream is(countstr);
 		int count = 0;
-		is >> count;	
+		is >> count;
 		lyxerr << "repeat: count: " << count << " cmd: " << argument << endl;
 		for (int i = 0; i < count; ++i)
 			dispatch(lyxaction.lookupFunc(argument));
@@ -1631,7 +1632,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		if (isStrInt(argument)) {
 			pid_t const pid = strToInt(argument);
 			ForkedcallsController & fcc = ForkedcallsController::get();
-			fcc.kill(pid);	
+			fcc.kill(pid);
 		}
 		break;
 

@@ -79,7 +79,7 @@ public:
 	InsetFloatParams const & params() const { return params_; }
 protected:
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	///

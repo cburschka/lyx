@@ -207,7 +207,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	/// lock cell with given index
@@ -235,13 +235,13 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	dispatch_result moveRight(BufferView *, bool lock = true);
+	DispatchResult moveRight(BufferView *, bool lock = true);
 	///
-	dispatch_result moveLeft(BufferView *, bool lock = true);
+	DispatchResult moveLeft(BufferView *, bool lock = true);
 	///
-	dispatch_result moveUp(BufferView *, bool lock = true);
+	DispatchResult moveUp(BufferView *, bool lock = true);
 	///
-	dispatch_result moveDown(BufferView *, bool lock = true);
+	DispatchResult moveDown(BufferView *, bool lock = true);
 	///
 	bool moveNextCell(BufferView *, bool lock = false);
 	///

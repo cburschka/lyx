@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LColor.h"
@@ -116,7 +117,7 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetBranch::priv_dispatch(FuncRequest const & cmd,
 			   idx_type & idx, pos_type & pos)
 {

@@ -12,6 +12,7 @@
 
 #include "insettoc.h"
 
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "metricsinfo.h"
@@ -73,8 +74,9 @@ void InsetTOC::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result
-InsetTOC::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult
+InsetTOC::priv_dispatch(FuncRequest const & cmd,
+			idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:

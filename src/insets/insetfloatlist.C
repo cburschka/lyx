@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "funcrequest.h"
@@ -118,7 +119,7 @@ void InsetFloatList::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result
+DispatchResult
 InsetFloatList::priv_dispatch(FuncRequest const & cmd,
 			      idx_type & idx, pos_type & pos)
 {

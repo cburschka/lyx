@@ -17,6 +17,7 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxtext.h"
 #include "WordLangTuple.h"
@@ -108,7 +109,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 
 ///  An updatable inset could handle lyx editing commands
-dispatch_result
+DispatchResult
 UpdatableInset::priv_dispatch(FuncRequest const & ev, idx_type &, pos_type &)
 {
 	if (ev.action == LFUN_MOUSE_RELEASE)

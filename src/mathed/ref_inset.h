@@ -43,7 +43,7 @@ public:
 	int docbook(std::ostream & os, bool) const;
 
 	/// small wrapper for the time being
-	dispatch_result localDispatch(FuncRequest const & cmd);
+	DispatchResult localDispatch(FuncRequest const & cmd);
 
 	struct ref_type_info {
 		///
@@ -61,7 +61,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 };
 

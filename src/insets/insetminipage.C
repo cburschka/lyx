@@ -15,6 +15,7 @@
 
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LColor.h"
@@ -95,7 +96,7 @@ InsetMinipage::~InsetMinipage()
 }
 
 
-dispatch_result
+DispatchResult
 InsetMinipage::priv_dispatch(FuncRequest const & cmd,
 			     idx_type & idx, pos_type & pos)
 {

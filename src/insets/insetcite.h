@@ -40,13 +40,13 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	dispatch_result localDispatch(FuncRequest const & cmd);
+	DispatchResult localDispatch(FuncRequest const & cmd);
 	///
 	void validate(LaTeXFeatures &) const;
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	struct Cache {

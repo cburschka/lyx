@@ -59,6 +59,7 @@ TODO
 #include "BufferView.h"
 #include "converter.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "format.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -190,7 +191,7 @@ void InsetGraphics::statusChanged() const
 }
 
 
-dispatch_result
+DispatchResult
 InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {

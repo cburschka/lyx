@@ -25,6 +25,7 @@
 #include "bufferparams.h"
 #include "cursor.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "factory.h"
 #include "FloatList.h"
 #include "funcrequest.h"

@@ -217,9 +217,6 @@ public:
 	CursorPos const & cursor() const;
 	/// how deep are we nested?
 	unsigned depth() const;
-
-	/// local dispatcher
-	dispatch_result dispatch(FuncRequest const & cmd);
 	/// describe the situation
 	std::string info() const;
 	/// dump selection information for debugging
@@ -246,7 +243,9 @@ public:
 	void pullArg();
 	/// split font inset etc
 	void handleFont(std::string const & font);
-
+	///
+	DispatchResult
+	dispatch(FuncRequest const & cmd);
 private:
 	/// moves cursor index one cell to the left
 	bool idxLeft();

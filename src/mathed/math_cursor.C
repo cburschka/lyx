@@ -11,11 +11,12 @@
 
 #include <config.h>
 
+#include "math_cursor.h"
 #include "lyxrc.h"
 #include "support/limited_stack.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "support/std_sstream.h"
-#include "math_cursor.h"
 #include "formulabase.h"
 #include "funcrequest.h"
 #include "math_braceinset.h"
@@ -1406,7 +1407,7 @@ CursorPos MathCursor::normalAnchor() const
 }
 
 
-dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
+DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 {
 	// mouse clicks are somewhat special
 	// check
@@ -1416,7 +1417,7 @@ dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
 		case LFUN_MOUSE_RELEASE:
 		case LFUN_MOUSE_DOUBLE: {
 			CursorPos & pos = Cursor_.back();
-			dispatch_result res = UNDISPATCHED;
+			DispatchResult res = UNDISPATCHED;
 			int x = 0, y = 0;
 			getPos(x, y);
 			if (x < cmd.x && hasPrevAtom()) {
@@ -1436,7 +1437,7 @@ dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
 
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		CursorPos & pos = Cursor_[i];
-		dispatch_result res = pos.inset_->dispatch(cmd, pos.idx_, pos.pos_);
+		DispatchResult res = pos.inset_->dispatch(cmd, pos.idx_, pos.pos_);
 		if (res != UNDISPATCHED) {
 			if (res == DISPATCHED_POP) {
 				Cursor_.shrink(i + 1);

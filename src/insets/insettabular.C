@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
@@ -660,14 +661,14 @@ void InsetTabular::edit(BufferView * bv, int index)
 }
 
 
-dispatch_result
+DispatchResult
 InsetTabular::priv_dispatch(FuncRequest const & cmd,
 			    idx_type & idx, pos_type & pos)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->localDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	dispatch_result result = UpdatableInset::priv_dispatch(cmd, idx, pos);
+	DispatchResult result = UpdatableInset::priv_dispatch(cmd, idx, pos);
 	BufferView * bv = cmd.view();
 
 	if (cmd.action == LFUN_INSET_EDIT) {
@@ -1394,7 +1395,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 }
 
 
-dispatch_result InsetTabular::moveRight(BufferView * bv, bool lock)
+DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
@@ -1412,7 +1413,7 @@ dispatch_result InsetTabular::moveRight(BufferView * bv, bool lock)
 }
 
 
-dispatch_result InsetTabular::moveLeft(BufferView * bv, bool lock)
+DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
@@ -1425,7 +1426,7 @@ dispatch_result InsetTabular::moveLeft(BufferView * bv, bool lock)
 }
 
 
-dispatch_result InsetTabular::moveUp(BufferView * bv, bool lock)
+DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
@@ -1446,7 +1447,7 @@ dispatch_result InsetTabular::moveUp(BufferView * bv, bool lock)
 }
 
 
-dispatch_result InsetTabular::moveDown(BufferView * bv, bool lock)
+DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);

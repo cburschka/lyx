@@ -26,6 +26,7 @@
 
 #include "BufferView.h"
 #include "bufferview_funcs.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -211,7 +212,7 @@ void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 }
 
 
-dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
+DispatchResult InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 {
 	if (!mathcursor)
 		return UNDISPATCHED;
@@ -256,7 +257,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 }
 
 
-dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
+DispatchResult InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
@@ -288,7 +289,7 @@ dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 }
 
 
-dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
+DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (!mathcursor)
 		return DISPATCHED;
@@ -316,7 +317,7 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-dispatch_result
+DispatchResult
 InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 				idx_type &, pos_type &)
 {
@@ -370,7 +371,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		return UNDISPATCHED;
 
 	string argument    = cmd.argument;
-	dispatch_result result      = DISPATCHED;
+	DispatchResult result      = DISPATCHED;
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
 	bool was_selection = mathcursor->selection();
@@ -494,7 +495,7 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 
 	//    case LFUN_GETXY:
 	//      sprintf(dispatch_buffer, "%d %d",);
-	//      dispatch_result = dispatch_buffer;
+	//      DispatchResult= dispatch_buffer;
 	//      break;
 	case LFUN_SETXY: {
 		lyxerr << "LFUN_SETXY broken!" << endl;

@@ -71,7 +71,7 @@ public:
 protected:
 	///
 	virtual
-	dispatch_result
+	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	friend class InsetNoteParams;

@@ -11,16 +11,17 @@
 #include <config.h>
 
 #include "insetbase.h"
+#include "dispatchresult.h"
 
 
-dispatch_result
+DispatchResult
 InsetBase::dispatch(FuncRequest const & f, idx_type & i, pos_type & p)
 {
 	return priv_dispatch(f, i, p);
 }
 
 
-dispatch_result
+DispatchResult
 InsetBase::dispatch(FuncRequest const & f)
 {
 	idx_type i = 0;
@@ -29,7 +30,7 @@ InsetBase::dispatch(FuncRequest const & f)
 }
 
 
-dispatch_result
+DispatchResult
 InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
 {
 	return UNDISPATCHED;

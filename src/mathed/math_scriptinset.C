@@ -15,6 +15,7 @@
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "math_symbolinset.h"
+#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 
@@ -511,8 +512,9 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-dispatch_result MathScriptInset::dispatch
-	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult
+MathScriptInset::priv_dispatch(FuncRequest const & cmd,
+			  idx_type & idx, pos_type & pos)
 {
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument.empty()) {
