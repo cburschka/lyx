@@ -1394,6 +1394,25 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 	return i;
 }
 
+
+bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type initial) const
+{
+	LyXLayout_ptr const & style = layout();
+	LyXFont font_old;
+
+	for (pos_type i = initial; i < size(); ++i) {
+		LyXFont font = getFont(buf.params(), i, outerfont);
+		if (isInset(i))
+			return false;
+		if ( i != initial and font != font_old)
+			return false;
+		font_old = font;
+	}
+
+	return true;
+}
+
+
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
 				    OutputParams const & runparams,
@@ -1406,7 +1425,8 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	bool cdata = style->pass_thru;
+	if (style->pass_thru and not onlyText(buf, outerfont, initial))
+		os << "]]>";
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		LyXFont font = getFont(buf.params(), i, outerfont);
@@ -1414,29 +1434,17 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
 			if (font.emph() == LyXFont::ON) {
-				if (cdata)
-					os << "]]>";
 				os << "<emphasis>";
-				if (cdata)
-					os << "<![CDATA[";
 				emph_flag = true;
 			} else if (i != initial) {
-				if (cdata)
-					os << "]]>";
 				os << "</emphasis>";
-				if (cdata)
-					os << "<![CDATA[";
 				emph_flag = false;
 			}
 		}
 
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
-			if (cdata)
-				os << "]]>";
 			inset->docbook(buf, os, runparams);
-			if (cdata)
-				os << "<![CDATA[";
 		} else {
 			char c = getChar(i);
 			bool ws;
@@ -1452,15 +1460,13 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	}
 
 	if (emph_flag) {
-		if (cdata)
-			os << "]]>";
 		os << "</emphasis>";
-		if (cdata)
-			os << "<![CDATA[";
 	}
 
 	if (style->free_spacing)
 		os << '\n';
+	if (style->pass_thru and not onlyText(buf, outerfont, initial))
+		os << "<![CDATA[";
 }
 
 

@@ -1,5 +1,11 @@
 2004-10-30  José Matos  <jamatos@lyx.org>
 
+	* paragraph.[Ch] (onlyText): Checks if the paragraph contains only
+	text and no inset or font change. This allows to use CDATA
+	sections just for the whole paragraph.
+
+2004-10-30  José Matos  <jamatos@lyx.org>
+
 	* paragraph.C (getFirstWord): remove unused variable.
 
 2004-10-30  José Matos  <jamatos@lyx.org>

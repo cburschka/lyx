@@ -1,3 +1,8 @@
+2004-10-30  José Matos  <jamatos@lyx.org>
+
+	* insetcharstyle.C (docbook): a compromisse solution. Don't output
+	paragraph tags inside inline elements.
+
 2004-10-30  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcharstyle.C (latex, linuxdoc, docbook, plaintext): use

@@ -24,6 +24,7 @@
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "sgml.h"
 
 #include "frontends/font_metrics.h"
@@ -189,10 +190,19 @@ int InsetCharStyle::linuxdoc(Buffer const & buf, ostream & os,
 int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 			    OutputParams const & runparams) const
 {
-	sgml::openTag(os, params_.latexname, params_.latexparam);
-	int i = InsetText::docbook(buf, os, runparams);
+	ParagraphList::const_iterator par = paragraphs().begin();
+        ParagraphList::const_iterator end = paragraphs().end();
+
+	sgml::openTag(os, params_.latexname, par->getID() + params_.latexparam);
+
+        for (; par != end; ++par) {
+		par->simpleDocBookOnePar(buf, os, runparams,
+					 outerFont(par - paragraphs().begin(),
+						   paragraphs()));
+        }
+
 	sgml::closeTag(os, params_.latexname);
-	return i;
+	return 0;
 }
 
 

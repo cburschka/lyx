@@ -140,6 +140,10 @@ public:
 				   std::ostream & os,
 				   OutputParams const & runparams) const;
 
+	/// Checks if the paragraph contains only text and no inset or font change.
+	bool onlyText(Buffer const & buf, LyXFont const & outerfont,
+		      lyx::pos_type initial) const;
+
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
 				 std::ostream &,
