@@ -99,8 +99,10 @@ void BufferView::buffer(Buffer *b)
 	if (buffer_) {
 		buffer_->InsetSleep();
 		buffer_->delUser(this);
+#ifdef MOVE_TEXT
 		delete text;
 		text = 0;
+#endif
 	}
 
 	// Set current buffer
@@ -290,7 +292,7 @@ void BufferView::redoCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "BufferView::redoCurrentBuffer" << endl;
 #ifdef MOVE_TEXT
-	if (text) {
+	if (buffer_ && text) {
 		resize();
 		owner_->updateLayoutChoice();
 	}
