@@ -126,3 +126,9 @@ string const lyx_gui::hexname(LColor::color col)
 	// FIXME
 	return "";
 }
+
+
+void lyx_gui::update_color(LColor::color col)
+{
+	// no need
+}

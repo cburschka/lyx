@@ -41,6 +41,11 @@ namespace lyx_gui {
 	 *      passing LColor::white returns "ffffff".
 	 */
 	string const hexname(LColor::color col);
+
+	/**
+	 * update an altered GUI color
+	 */
+	void update_color(LColor::color col);
 }
 
 #endif // LYX_GUI_H

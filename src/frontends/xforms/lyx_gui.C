@@ -339,3 +339,8 @@ string const lyx_gui::hexname(LColor::color col)
 	return os.str().c_str();
 }
 
+
+void lyx_gui::update_color(LColor::color col)
+{
+	lyxColorHandler->updateColor(col);
+}

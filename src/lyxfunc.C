@@ -20,7 +20,6 @@
 #include "lyxrow.h"
 #include "bufferlist.h"
 #include "BufferView.h"
-#include "frontends/xforms/ColorHandler.h"
 #include "lyxserver.h"
 #include "intl.h"
 #include "lyx_main.h"
@@ -35,13 +34,13 @@
 #include "layout.h"
 #include "bufferview_funcs.h"
 #include "frontends/MiniBuffer.h"
-#include "vspace.h"
 #include "frontends/LyXView.h"
+#include "frontends/lyx_gui.h"
+#include "vspace.h"
 #include "FloatList.h"
 #include "converter.h"
 #include "exporter.h"
 #include "importer.h"
-#include "frontends/font_loader.h"
 #include "TextCache.h"
 #include "lyxfind.h"
 #include "undo_funcs.h"
@@ -100,6 +99,7 @@
 #include <utility>
 #include <algorithm>
 
+#include "frontends/font_loader.h"
 
 using std::pair;
 using std::make_pair;
@@ -1613,7 +1613,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			break;
 		}
 
-		lyxColorHandler->updateColor(lcolor.getFromLyXName(lyx_name));
+		lyx_gui::update_color(lcolor.getFromLyXName(lyx_name));
 
 		if (graphicsbg_changed) {
 #ifdef WITH_WARNINGS
