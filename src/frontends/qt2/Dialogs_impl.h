@@ -18,7 +18,6 @@
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlDocument.h"
-#include "ControlFloat.h"
 #include "ControlForks.h"
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
@@ -45,8 +44,6 @@
 #include "QCharacterDialog.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
-#include "QFloat.h"
-#include "QFloatDialog.h"
 //#include "QForks.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
@@ -109,9 +106,6 @@ DocumentDialog;
 typedef GUI<ControlShowFile, QShowFile, OkCancelPolicy, Qt2BC>
 FileDialog;
 
-typedef GUI<ControlFloat, QFloat, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-FloatDialog;
-
 typedef GUI<ControlGraphics, QGraphics, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 GraphicsDialog;
 
@@ -168,7 +162,6 @@ struct Dialogs::Impl {
 	CharacterDialog     character;
 	DocumentDialog      document;
 	FileDialog          file;
-	FloatDialog         floats;
 	GraphicsDialog      graphics;
 	LogFileDialog       logfile;
 	MinipageDialog      minipage;

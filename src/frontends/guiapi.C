@@ -51,16 +51,11 @@ void gui_ShowFile(string const & f, Dialogs & d)
 }
 
 
-void gui_ShowFloat(InsetFloat * ifl, Dialogs & d)
-{
-	d.showFloat(ifl);
-}
-
-
 void gui_ShowWrap(InsetWrap * iw, Dialogs & d)
 {
 	d.showWrap(iw);
 }
+
 
 void gui_ShowForks(Dialogs & d)
 {

@@ -661,4 +661,3 @@ InsetIncludeMailer::params2string(string const & name,
 
 	return data.str();
 }
-

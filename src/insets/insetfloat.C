@@ -12,22 +12,26 @@
 
 
 #include "insetfloat.h"
-#include "gettext.h"
-#include "lyxfont.h"
+#include "insettext.h"
+
+#include "buffer.h"
 #include "BufferView.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h"
-#include "FloatList.h"
-#include "LaTeXFeatures.h"
 #include "debug.h"
 #include "Floating.h"
-#include "buffer.h"
+#include "FloatList.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "iterators.h"
+#include "LaTeXFeatures.h"
+#include "lyxfont.h"
+#include "lyxlex.h"
+#include "lyxtext.h"
+
+#include "support/LOstream.h"
+#include "support/lstrings.h"
+
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
-#include "lyxlex.h"
-#include "iterators.h"
 
 using std::ostream;
 using std::endl;
@@ -144,19 +148,44 @@ InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
 
 InsetFloat::~InsetFloat()
 {
-	hideDialog();
+	InsetFloatMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
-void InsetFloat::writeParams(ostream & os) const
+dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
+{
+	Inset::RESULT result = UNDISPATCHED;
+
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetFloatParams params;
+		InsetFloatMailer::string2params(cmd.argument, params);
+
+		params_.placement = params.placement;
+		params_.wide      = params.wide;
+
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+	default:
+		result = InsetCollapsable::localDispatch(cmd);
+	}
+
+	return result;
+}
+
+
+void InsetFloatParams::write(ostream & os) const
 {
 	os << "Float " // getInsetName()
-	   << params_.type << '\n';
+	   << type << '\n';
 
-	if (!params_.placement.empty()) {
-		os << "placement " << params_.placement << "\n";
+	if (!placement.empty()) {
+		os << "placement " << placement << "\n";
 	}
-	if (params_.wide) {
+	if (wide) {
 		os << "wide true\n";
 	} else {
 		os << "wide false\n";
@@ -164,21 +193,14 @@ void InsetFloat::writeParams(ostream & os) const
 }
 
 
-void InsetFloat::write(Buffer const * buf, ostream & os) const
-{
-	writeParams(os);
-	InsetCollapsable::write(buf, os);
-}
-
-
-void InsetFloat::readParams(Buffer const * buf, LyXLex & lex)
+void InsetFloatParams::read(LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
 		string token = lex.getString();
 		if (token == "placement") {
 			lex.next();
-			params_.placement = lex.getString();
+			placement = lex.getString();
 		} else {
 			// take countermeasures
 			lex.pushToken(token);
@@ -188,10 +210,7 @@ void InsetFloat::readParams(Buffer const * buf, LyXLex & lex)
 		if (token == "wide") {
 			lex.next();
 			string const tmptoken = lex.getString();
-			if (tmptoken == "true")
-				wide(true, buf->params);
-			else
-				wide(false, buf->params);
+			wide = (tmptoken == "true");
 		} else {
 			lyxerr << "InsetFloat::Read:: Missing wide!"
 			       << endl;
@@ -202,9 +221,17 @@ void InsetFloat::readParams(Buffer const * buf, LyXLex & lex)
 }
 
 
+void InsetFloat::write(Buffer const * buf, ostream & os) const
+{
+	params_.write(os);
+	InsetCollapsable::write(buf, os);
+}
+
+
 void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 {
-	readParams(buf, lex);
+	params_.read(lex);
+	wide(params_.wide, buf->params);
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -299,7 +326,9 @@ bool InsetFloat::insetAllowed(Inset::Code code) const
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
-		bv->owner()->getDialogs().showFloat(const_cast<InsetFloat *>(this));
+		InsetFloat * tmp = const_cast<InsetFloat *>(this);
+		InsetFloatMailer mailer(*tmp);
+		mailer.showDialog();
 	}
 	return true;
 }
@@ -363,4 +392,52 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			toclist[name].push_back(item);
 		}
 	}
+}
+
+
+InsetFloatMailer::InsetFloatMailer(InsetFloat & inset)
+	: name_("float"), inset_(inset)
+{}
+
+
+string const InsetFloatMailer::inset2string() const
+{
+	return params2string(name(), inset_.params());
+}
+
+
+void InsetFloatMailer::string2params(string const & in,
+				     InsetFloatParams & params)
+{
+	params = InsetFloatParams();
+
+	string name;
+	string body = split(in, name, ' ');
+
+	if (name != "float" || body.empty())
+		return;
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	body = split(body, name, '\n');
+	if (!prefixIs(name, "Float "))
+		return;
+
+	istringstream data(body);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	params.read(lex);
+}
+
+
+string const
+InsetFloatMailer::params2string(string const & name,
+				InsetFloatParams const & params)
+{
+	ostringstream data;
+	data << name << ' ';
+	params.write(data);
+
+	return data.str();
 }

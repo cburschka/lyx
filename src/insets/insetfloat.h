@@ -17,13 +17,15 @@
 #include "insetcollapsable.h"
 #include "toc.h"
 
-#include <boost/signals/signal0.hpp>
-
 class Painter;
 
 struct InsetFloatParams {
 	///
 	InsetFloatParams() : placement("htbp"), wide(false) {}
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(LyXLex & lex);
 	///
 	string type;
 	///
@@ -44,6 +46,10 @@ public:
 	InsetFloat(InsetFloat const &, bool same_id = false);
 	///
 	~InsetFloat();
+
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -81,17 +87,37 @@ public:
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///
-	boost::signal0<void> hideDialog;
-	///
 	InsetFloatParams const & params() const { return params_; }
-	///
-	void writeParams(std::ostream & os) const;
-	///
-	void readParams(Buffer const * buf, LyXLex & lex);
 	
 private:
 	///
 	InsetFloatParams params_;
+};
+
+
+#include "mailinset.h"
+
+
+class InsetFloatMailer : public MailInset {
+public:
+	///
+	InsetFloatMailer(InsetFloat & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetFloatParams &);
+	///
+	static string const params2string(string const & name,
+					  InsetFloatParams const &);
+private:
+	///
+	string const name_;
+	///
+	InsetFloat & inset_;
 };
 
 #endif

@@ -39,6 +39,10 @@
 #include "FormExternal.h"
 #include "forms/form_external.h"
 
+#include "ControlFloat.h"
+#include "FormFloat.h"
+#include "forms/form_float.h"
+
 #include "ControlInclude.h"
 #include "FormInclude.h"
 #include "forms/form_include.h"
@@ -86,8 +90,9 @@ namespace {
 // 				     "minipage", "ref", "tabular", "toc",
 // 				     "url", "wrap" };
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "external", "include",
-				     "index", "label", "ref", "toc", "url" };
+				     "error", "ert", "external", "float",
+				     "include", "index", "label", "ref",
+				     "toc", "url" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -143,6 +148,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new FormExternal(*dialog));
 		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+	} else if (name == "float") {
+		dialog->setController(new ControlFloat(*dialog));
+		dialog->setView(new FormFloat(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
 		dialog->setView(new FormInclude(*dialog));

@@ -13,39 +13,31 @@
 #define CONTROLFLOAT_H
 
 
-#include "ControlInset.h"
+#include "Dialog.h"
 #include "insets/insetfloat.h"
-
-inline
-bool operator==(InsetFloatParams const & p1, InsetFloatParams const & p2)
-{
-	return p1.placement == p2.placement && p1.wide == p2.wide;
-}
-
-
-inline
-bool operator!=(InsetFloatParams const & p1, InsetFloatParams const & p2)
-{
-	return !(p1 == p2);
-}
 
 
 /** A controller for Minipage dialogs.
  */
-class ControlFloat : public ControlInset<InsetFloat, InsetFloatParams>  {
+class ControlFloat : public Dialog::Controller {
 public:
 	///
-	ControlFloat(LyXView &, Dialogs &);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
+	ControlFloat(Dialog &);
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual InsetFloatParams const getParams(string const &)
-		{ return InsetFloatParams(); }
-	/// get the parameters from the inset passed to showInset.
-	virtual InsetFloatParams const getParams(InsetFloat const &);
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	InsetFloatParams & params() { return *params_.get(); }
+	///
+	InsetFloatParams const & params() const { return *params_.get(); }
+private:
+	///
+	boost::scoped_ptr<InsetFloatParams> params_;
 };
 
 #endif

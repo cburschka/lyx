@@ -19,6 +19,7 @@
 #include "ControlError.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
+#include "ControlFloat.h"
 #include "ControlInclude.h"
 #include "ControlIndex.h"
 #include "ControlLabel.h"
@@ -38,6 +39,8 @@
 #include "QERTDialog.h"
 #include "QExternal.h"
 #include "QExternalDialog.h"
+#include "QFloat.h"
+#include "QFloatDialog.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
@@ -73,8 +76,9 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "external", "include",
-				     "index", "label", "ref", "toc", "url" };
+				     "error", "ert", "external", "float",
+				     "include", "index", "label", "ref",
+				     "toc", "url" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -130,6 +134,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new QExternal(*dialog));
 		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+	} else if (name == "float") {
+		dialog->setController(new ControlFloat(*dialog));
+		dialog->setView(new QFloat(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
 		dialog->setView(new QInclude(*dialog));

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlFloat.h"
 #include "QFloatDialog.h"
 #include "QFloat.h"
@@ -22,11 +21,11 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
+typedef QController<ControlFloat, QView<QFloatDialog> > base_class;
 
 
-QFloat::QFloat()
-	: base_class(qt_("LyX: Float Settings"))
+QFloat::QFloat(Dialog & parent)
+	: base_class(parent, qt_("LyX: Float Settings"))
 {
 }
 

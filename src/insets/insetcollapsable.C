@@ -29,6 +29,7 @@
 #include "frontends/Painter.h"
 #include "frontends/LyXView.h"
 
+#include "support/LAssert.h"
 #include "support/LOstream.h"
 #include "support/lstrings.h"
 
@@ -184,6 +185,9 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 			    int baseline, float & x, bool cleared) const
 {
+	lyx::Assert(bv);
+	cache(bv);
+
 	if (need_update != NONE) {
 		const_cast<InsetText *>(&inset)->update(bv, f, true);
 		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);

@@ -13,20 +13,19 @@
 #define QFLOAT_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlFloat;
 class QFloatDialog;
 
 ///
-class QFloat
-	: public Qt2CB<ControlFloat, Qt2DB<QFloatDialog> >
-{
+class QFloat : public QController<ControlFloat, QView<QFloatDialog> > {
 public:
 	///
 	friend class QFloatDialog;
 	///
-	QFloat();
+	QFloat(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

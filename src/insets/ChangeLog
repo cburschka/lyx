@@ -1,5 +1,12 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* insetcollapsable.C (draw): cache the BufferView.
+
+	* insetfloat.[Ch]: define a new class InsetFloatMailer and use
+	it to communicate with the frontend dialogs.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* insetfloat.[Ch]: move the params into a separate InsetFloatParams
 	struct.
 

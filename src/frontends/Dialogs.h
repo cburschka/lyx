@@ -23,7 +23,6 @@ class Dialog;
 class InsetBase;
 class LyXView;
 
-class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
 class InsetInfo;
@@ -87,8 +86,6 @@ public:
 	void showDocument();
 	/// show the contents of a file.
 	void showFile(string const &);
-	///
-	void showFloat(InsetFloat *);
 	///
 	void showWrap(InsetWrap *);
 	/// show all forked child processes

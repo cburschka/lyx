@@ -10,31 +10,31 @@
 
 #include <config.h>
 
-
 #include "ControlFloat.h"
-#include "BufferView.h"
-#include "buffer.h"
+#include "funcrequest.h"
 
 
-ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetFloat, InsetFloatParams>(lv, d)
+ControlFloat::ControlFloat(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlFloat::applyParamsToInset()
+void ControlFloat::initialiseParams(string const & data)
 {
-	inset()->placement(params().placement);
-	inset()->wide(params().wide, bufferview()->buffer()->params);
-	bufferview()->updateInset(inset(), true);
-
+	InsetFloatParams params;
+	InsetFloatMailer::string2params(data, params);
+	params_.reset(new InsetFloatParams(params));
 }
 
 
-void ControlFloat::applyParamsNoInset()
-{}
-
-
-InsetFloatParams const ControlFloat::getParams(InsetFloat const & inset)
+void ControlFloat::clearParams()
 {
-	return inset.params();
+	params_.reset();
+}
+
+
+void ControlFloat::dispatchParams()
+{
+	string const lfun = InsetFloatMailer::params2string("float", params());
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }

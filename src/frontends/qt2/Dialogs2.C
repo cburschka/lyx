@@ -51,12 +51,6 @@ void Dialogs::showFile(string const & f)
 }
 
 
-void Dialogs::showFloat(InsetFloat * ifl)
-{
-	pimpl_->floats.controller().showInset(ifl);
-}
-
-
 void Dialogs::showForks()
 {}
 

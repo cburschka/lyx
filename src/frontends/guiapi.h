@@ -16,7 +16,6 @@
 #include "LString.h"
 
 class Dialogs;
-class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
 class InsetMinipage;
@@ -31,7 +30,6 @@ void gui_ShowCharacter(Dialogs &);
 void gui_SetUserFreeFont(Dialogs &);
 void gui_ShowDocument(Dialogs &);
 void gui_ShowFile(string const &, Dialogs &);
-void gui_ShowFloat(InsetFloat *, Dialogs &);
 void gui_ShowForks(Dialogs &);
 void gui_ShowGraphics(InsetGraphics *, Dialogs &);
 void gui_ShowLogFile(Dialogs &);

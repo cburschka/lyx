@@ -13,7 +13,7 @@
 #define FORMFLOAT_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
 class ControlFloat;
@@ -22,10 +22,10 @@ struct FD_float;
 /** This class provides an XForms implementation of the Float
     Dialog.
  */
-class FormFloat : public FormCB<ControlFloat, FormDB<FD_float> > {
+class FormFloat : public FormController<ControlFloat, FormView<FD_float> > {
 public:
 	///
-	FormFloat();
+	FormFloat(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

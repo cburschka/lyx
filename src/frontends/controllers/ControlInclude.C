@@ -13,16 +13,11 @@
 #include <config.h>
 
 #include "ControlInclude.h"
-
 #include "helper_funcs.h"
 
-#include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "lyxfunc.h"
 #include "lyxrc.h"
-
-#include "frontends/Alert.h"
 
 #include "support/filetools.h"
 

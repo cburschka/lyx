@@ -33,10 +33,10 @@ enum {
 } // namespace anon
 
 
-typedef FormCB<ControlFloat, FormDB<FD_float> > base_class;
+typedef FormController<ControlFloat, FormView<FD_float> > base_class;
 
-FormFloat::FormFloat()
-	: base_class(_("Float Options"))
+FormFloat::FormFloat(Dialog & parent)
+	: base_class(parent, _("Float Options"))
 {}
 
 

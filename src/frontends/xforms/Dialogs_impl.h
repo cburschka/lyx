@@ -37,10 +37,6 @@
 #include "FormDocument.h"
 #include "forms/form_document.h"
 
-#include "ControlFloat.h"
-#include "FormFloat.h"
-#include "forms/form_float.h"
-
 #include "ControlForks.h"
 #include "FormForks.h"
 #include "forms/form_forks.h"
@@ -132,9 +128,6 @@ DocumentDialog;
 typedef GUI<ControlShowFile, FormShowFile, OkCancelPolicy, xformsBC>
 FileDialog;
 
-typedef GUI<ControlFloat, FormFloat, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-FloatDialog;
-
 typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
 ForksDialog;
 
@@ -199,7 +192,6 @@ struct Dialogs::Impl {
         CharacterDialog     character;
 	DocumentDialog      document;
 	FileDialog          file;
-	FloatDialog         floats;
 	ForksDialog         forks;
 	GraphicsDialog      graphics;
 	LogFileDialog       logfile;
