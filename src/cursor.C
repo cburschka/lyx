@@ -26,6 +26,8 @@
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 
+#include "mathed/math_data.h"
+
 #include <boost/assert.hpp>
 
 using std::vector;
@@ -226,4 +228,50 @@ void LCursor::resetAnchor()
 BufferView & LCursor::bv() const
 {
 	return *bv_;
+}
+
+
+MathAtom const & LCursor::prevAtom() const
+{
+	BOOST_ASSERT(pos() > 0);
+	return cell()[pos() - 1];
+}
+
+
+MathAtom & LCursor::prevAtom()
+{
+	BOOST_ASSERT(pos() > 0);
+	return cell()[pos() - 1];
+}
+
+
+MathAtom const & LCursor::nextAtom() const
+{
+	BOOST_ASSERT(pos() < lastpos());
+	return cell()[pos()];
+}
+
+
+MathAtom & LCursor::nextAtom()
+{
+	BOOST_ASSERT(pos() < lastpos());
+	return cell()[pos()];
+}
+
+
+bool LCursor::posLeft()
+{
+	if (pos() == 0)
+		return false;
+	--pos();
+	return true;
+}
+
+
+bool LCursor::posRight()
+{
+	if (pos() == lastpos())
+		return false;
+	++pos();
+	return true;
 }

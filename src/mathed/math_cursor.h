@@ -181,26 +181,11 @@ public:
 	/// leave current MathInset to the left
 	bool popRight(LCursor & cur);
 
-	///
-	bool hasPrevAtom(LCursor & cur) const;
-	///
-	bool hasNextAtom(LCursor & cur) const;
-	///
-	MathAtom const & prevAtom(LCursor & cur) const;
-	///
-	MathAtom & prevAtom(LCursor & cur);
-	///
-	MathAtom const & nextAtom(LCursor & cur) const;
-	///
-	MathAtom & nextAtom(LCursor & cur);
-
 	/// returns the selection
 	void getSelection(LCursor & cur, CursorSlice &, CursorSlice &) const;
 	/// returns the normalized anchor of the selection
 	CursorSlice normalAnchor(LCursor & cur) const;
 
-	/// how deep are we nested?
-	unsigned depth(LCursor & cur) const;
 	/// describe the situation
 	std::string info(LCursor & cur) const;
 	/// dump selection information for debugging
@@ -236,10 +221,6 @@ private:
 	bool idxRight(LCursor & bv);
 	/// moves cursor to end of last cell of current line
 	bool idxLineLast(LCursor & bv);
-	/// moves cursor position one cell to the left
-	bool posLeft(LCursor & cur);
-	/// moves cursor position one cell to the right
-	bool posRight(LCursor & cur);
 	/// moves position somehow up or down
 	bool goUpDown(LCursor & cur, bool up);
 	/// moves position closest to (x, y) in given box

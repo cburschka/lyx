@@ -19,6 +19,7 @@
 
 class BufferView;
 class UpdatableInset;
+class MathAtom;
 class DispatchResult;
 class FuncRequest;
 class LyXText;
@@ -68,10 +69,6 @@ public:
 	idx_type idx() const { return top().idx(); }
 	/// return the text-ed cell this cursor is in
 	idx_type & idx() { return top().idx(); }
-	/// return the mathed cell this cursor is in
-	MathArray const & cell() const { return top().cell(); }
-	/// return the mathed cell this cursor is in
-	MathArray & cell() { return top().cell(); }
 	/// return the paragraph this cursor is in
 	par_type par() const { return top().par(); }
 	/// return the paragraph this cursor is in
@@ -93,6 +90,24 @@ public:
 	/// return the grid row of the current cell
 	col_type col() const { return top().col(); }
 
+	//
+	// math-specific part
+	//
+	/// return the mathed cell this cursor is in
+	MathArray const & cell() const { return top().cell(); }
+	/// return the mathed cell this cursor is in
+	MathArray & cell() { return top().cell(); }
+	/// the mathatom left of the cursor
+	MathAtom const & prevAtom() const;
+	/// the mathatom left of the cursor
+	MathAtom & prevAtom();
+	/// the mathatom right of the cursor
+	MathAtom const & nextAtom() const;
+	/// the mathatom right of the cursor
+	MathAtom & nextAtom();
+
+	//
+	// text-specific part
 	///
 	UpdatableInset * innerInset() const;
 	///
@@ -105,6 +120,15 @@ public:
 	void getPos(int & x, int & y) const;
 	/// returns cursor dimension
 	void getDim(int & asc, int & desc) const;
+
+	//
+	// common part
+	//
+	/// move one step to the left
+	bool posLeft();
+	/// move one step to the right
+	bool posRight();
+
 	/// cache the absolute coordinate from the top inset
 	void updatePos();
 	/// sets anchor to cursor position
