@@ -117,31 +117,29 @@ CPATCH=${DIRNAME}/${BASENAME}.C.patch
 COUT=${BASENAME}.cpp
 FINAL_COUT=${BASENAME}.C
 
+# We use a two pass algorithm to generate elegant C++ code whilst
+# keeping the sed clean also.
+
+# Pass 1. The bulk of the clean-up
 FDFIXC=${DIRNAME}/fdfixc.sed
+TMP=tmp
+OUTPUT_FILE=${TMP}; INTRO_MESSAGE
 
-OUTPUT_FILE=${COUT}; INTRO_MESSAGE
-
-# This "c_str" is potentially used many times in many functions
-# so add it to the top of the generated file.
-grep -E 'fl_add.*".*[|].*"' ${CIN} > /dev/null &&
-	cat - >> ${COUT} <<EOF
-namespace {
-char const * c_str;
-} // namespace anon
-
-
-EOF
-
-echo "#include <config.h>" >> ${COUT}
-echo "#include \"forms_gettext.h\"" >> ${COUT}
-echo "#include \"gettext.h\"" >> ${COUT}
+echo "#include <config.h>" >> ${TMP}
+echo "#include \"forms_gettext.h\"" >> ${TMP}
+echo "#include \"gettext.h\"" >> ${TMP}
 
 grep bmtable ${CIN} > /dev/null &&
-	echo "#include \"bmtable.h\"" >> ${COUT}
+	echo "#include \"bmtable.h\"" >> ${TMP}
 
-sed -f ${FDFIXC} < ${CIN} >> ${COUT}
+sed -f ${FDFIXC} < ${CIN} >> ${TMP}
 
-# Patch the .C file if a patch exists
+# Pass 2. Ensure that any c_str variables inserted by fdfixc.sed
+# are declared at the top of the appropriate function.
+FDFIXC=${DIRNAME}/c_str.sed
+sed -f ${FDFIXC} < ${TMP} > ${COUT}
+rm -f ${TMP}
+
 if [ -f "${CPATCH}" ] ; then
 	echo "Patching ${COUT} with ${CPATCH}"
 	patch -s ${COUT} < ${CPATCH}

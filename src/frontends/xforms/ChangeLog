@@ -1,3 +1,11 @@
+2002-11-27  Angus Leeming  <leeming@lyx.org>
+
+	* forms/fdfix.sh:
+	* forms/c_str.sed: replace that nasty global c_str declaration with
+	nice function-specific ones. Use a two-pass algorithm to do so.
+	It's possible to do it in one-pass, but the resulting sed script
+	must use the hold space in a convoluted manner.
+
 2002-11-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* XMiniBuffer.C (peek_event): add l10n on a string missing it.
