@@ -228,20 +228,17 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 
 	if (y + desc - text->top_y() >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
-	else if (y - asc < text->top_y()
-		&& text->top_y() > 0) {
+	else if (y - asc < text->top_y() && text->top_y() > 0)
 		newtop = y - vheight / 4;
-	}
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
 
-	if (newtop != text->top_y()) {
-		draw(text, bv, newtop);
-		text->top_y(newtop);
-		return true;
-	}
+	if (newtop == text->top_y())
+		return false;
 
-	return false;
+	draw(text, bv, newtop);
+	text->top_y(newtop);
+	return true;
 }
 
 
@@ -271,10 +268,8 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 			newtop = cursor.y() - vheight / 2;
 		}
 
-	} else if (static_cast<int>((cursor.y()) - row->baseline()) <
-		   top_y && top_y > 0) {
-		if (row->height() < vheight
-		    && row->height() > vheight / 4) {
+	} else if (int(cursor.y() - row->baseline()) < top_y && top_y > 0) {
+		if (row->height() < vheight && row->height() > vheight / 4) {
 			newtop = cursor.y() - row->baseline();
 		} else {
 			// scroll up
@@ -355,36 +350,7 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
-			     int yo, int xo)
-{
-	if (text->toggle_cursor.par() == text->toggle_end_cursor.par()
-	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
-		return;
-
-	int const top_tmp = text->toggle_cursor.y()
-		- text->getRow(text->toggle_cursor)->baseline();
-	int const bottom_tmp = text->toggle_end_cursor.y()
-		- text->getRow(text->toggle_end_cursor)->baseline()
-		+ text->getRow(text->toggle_end_cursor)->height();
-
-	int const offset = yo < 0 ? yo : 0;
-	int const bottom = min(max(bottom_tmp, text->top_y()),
-		static_cast<int>(text->top_y() + workarea().workHeight())) - offset;
-	int const top = min(max(top_tmp, text->top_y()),
-		static_cast<int>(text->top_y() + workarea().workHeight())) - offset;
-
-	workarea().getPainter().start();
-
-	drawFromTo(text, bv, top - text->top_y(), bottom - text->top_y(), yo, xo);
-	expose(0, top - text->top_y(), workarea().workWidth(),
-	       bottom - text->top_y() - (top - text->top_y()));
-
-	workarea().getPainter().end();
-}
-
-
-void LyXScreen::redraw(LyXText * text, BufferView * bv)
+void LyXScreen::redraw(BufferView * bv, LyXText * text)
 {
 	greyed_out_ = !text;
 

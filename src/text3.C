@@ -72,7 +72,7 @@ namespace {
 			if (lt->isInInset())
 				bv->updateInset(lt->inset_owner);
 			else
-				bv->toggleToggle();
+				bv->repaint();
 		}
 		if (!lt->isInInset()) {
 			bv->update(lt, BufferView::SELECT);
@@ -1334,7 +1334,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!bv->text->selection.set())
 			bv->update(BufferView::UPDATE);
 		bv->text->setSelection();
-		bv->screen().toggleToggle(bv->text, bv);
+		bv->repaint();
 		bv->fitCursor();
 		break;
 	}

@@ -791,11 +791,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	if (cur == text_.cursor)
 		return;
 	text_.setSelection();
-	bool flag = (text_.toggle_cursor.par() != text_.toggle_end_cursor.par() ||
-				 text_.toggle_cursor.pos() != text_.toggle_end_cursor.pos());
-	if (flag) {
-		updateLocal(bv, SELECTION, false);
-	}
+	updateLocal(bv, SELECTION, false);
 }
 
 

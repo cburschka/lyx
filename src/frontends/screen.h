@@ -61,7 +61,7 @@ public:
 		int x, int y, int a, int d);
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw(LyXText *, BufferView *);
+	virtual void redraw(BufferView * bv, LyXText * text);
 
 	/**
 	 * topCursorVisible - get a new "top" to make the cursor visible
@@ -107,10 +107,6 @@ public:
 	/// FIXME
 	virtual void toggleSelection(LyXText *, BufferView *, bool = true,
 			     int y_offset = 0, int x_offset = 0);
-
-	/// FIXME - at least change the name !!
-	virtual void toggleToggle(LyXText *, BufferView *,
-			  int y_offset = 0, int x_offset = 0);
 
 protected:
 	/// cause the display of the given area of the work area

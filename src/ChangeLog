@@ -1,3 +1,13 @@
+
+2003-07-29  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* lyxfunc.C:
+	* text2.C:
+	* text3.C:
+	* textcursor.[Ch]: remove toggleToggle & Co
+
 2003-07-28  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (readParagraph):

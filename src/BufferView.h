@@ -176,8 +176,6 @@ public:
 	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
 	/// FIXME
 	void toggleSelection(bool = true);
-	/// FIXME: my word !
-	void toggleToggle();
 
 	/// hide the cursor if it is visible
 	void hideCursor();

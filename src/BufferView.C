@@ -239,12 +239,6 @@ void BufferView::toggleSelection(bool b)
 }
 
 
-void BufferView::toggleToggle()
-{
-	pimpl_->toggleToggle();
-}
-
-
 void BufferView::center()
 {
 	pimpl_->center();

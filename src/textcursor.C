@@ -14,17 +14,6 @@ bool TextCursor::setSelection()
 
 	selection.set(true);
 
-	// first the toggling area
-	if (cursor.y() < last_sel_cursor.y()
-	    || (cursor.y() == last_sel_cursor.y()
-		&& cursor.x() < last_sel_cursor.x())) {
-		toggle_end_cursor = last_sel_cursor;
-		toggle_cursor = cursor;
-	} else {
-		toggle_end_cursor = cursor;
-		toggle_cursor = last_sel_cursor;
-	}
-
 	last_sel_cursor = cursor;
 
 	// and now the whole selection

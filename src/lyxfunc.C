@@ -127,7 +127,7 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 	if (selecting || TEXT(flag)->selection.mark()) {
 		TEXT(flag)->setSelection();
 		if (!TEXT(flag)->isInInset())
-		    view()->toggleToggle();
+		    view()->repaint();
 	}
 	view()->update(TEXT(flag), BufferView::SELECT);
 

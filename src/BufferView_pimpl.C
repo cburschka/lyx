@@ -463,7 +463,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::repaint()
 {
 	// Regenerate the screen.
-	screen().redraw(bv_->text, bv_);
+	screen().redraw(bv_, bv_->text);
 }
 
 
@@ -817,12 +817,6 @@ void BufferView::Pimpl::toggleSelection(bool b)
 	if (bv_->theLockingInset())
 		bv_->theLockingInset()->toggleSelection(bv_, b);
 	screen().toggleSelection(bv_->text, bv_, b);
-}
-
-
-void BufferView::Pimpl::toggleToggle()
-{
-	screen().toggleToggle(bv_->text, bv_);
 }
 
 

@@ -75,10 +75,6 @@ struct TextCursor {
 
 	/// needed for the toggling (cursor position on last selection made)
 	LyXCursor last_sel_cursor;
-	/// needed for toggling the selection in screen.C
-	LyXCursor toggle_cursor;
-	/// needed for toggling the selection in screen.C
-	LyXCursor toggle_end_cursor;
 };
 
 #endif
