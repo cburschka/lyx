@@ -25,16 +25,15 @@ public:
 	///
 	static
 	bool cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
-			  int start, int & end,
-			  char tc, bool doclear = false);
+                      int start, int & end, char tc, bool doclear = false);
 	///
 	static
 	bool copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
-			   int start, int end, char tc);
+                       int start, int end, char tc);
 	///
 	static
 	bool pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
-			    int & pos, char tc);
+                        int & pos, char tc);
 	///
 	static
 	int nrOfParagraphs();
@@ -44,8 +43,8 @@ public:
 	*/
 	static
 	int SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
-					LyXTextClassList::size_type class2,
-					LyXParagraph * par);
+                                    LyXTextClassList::size_type class2,
+                                    LyXParagraph * par);
 	///
 	static
 	bool checkPastePossible(LyXParagraph *);
