@@ -223,7 +223,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			float & x, bool cleared) const
 {
     Painter & pain = bv->painter();
-    int i, j, cell = 0;
+    int i, j;
     int nx;
     float cx;
 
@@ -252,6 +252,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     bool dodraw;
     x += ADD_TO_TABULAR_WIDTH;
     if (cleared) {
+	int cell = 0;
 	for (i = 0; i < tabular->rows(); ++i) {
 	    nx = int(x);
 	    dodraw = ((baseline + tabular->GetDescentOfRow(i)) > 0) &&
@@ -275,51 +276,54 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		tabular->GetAdditionalHeight(cell);
 	}
     } else if (need_update == CELL) {
+	int cell = 0;
 	nx = int(x);
-	for (i = 0; (cell < actcell) && (i < tabular->rows()); ++i) {
-	    for (j = 0; (cell < actcell) && (j < tabular->columns()); ++j) {
-		if (tabular->IsPartOfMultiColumn(i, j))
-		    continue;
-		nx += tabular->GetWidthOfColumn(cell);
-		++cell;
+	if (the_locking_inset) {
+	    Inset * inset = tabular->GetCellInset(cell);
+	    for (i = 0; (inset != the_locking_inset) && (i < tabular->rows());
+		 ++i)
+	    {
+		for (j = 0; (inset != the_locking_inset) && (j < tabular->columns()); ++j)
+		{
+		    if (tabular->IsPartOfMultiColumn(i, j))
+			continue;
+		    nx += tabular->GetWidthOfColumn(cell);
+		    ++cell;
+		    inset = tabular->GetCellInset(cell);
+		}
+		if (tabular->row_of_cell(cell) > i) {
+		    nx = int(x);
+		    baseline += tabular->GetDescentOfRow(i) +
+			tabular->GetAscentOfRow(i + 1) +
+			tabular->GetAdditionalHeight(cell);
+		}
 	    }
-	    if (tabular->row_of_cell(cell) > i) {
-		nx = int(x);
-		baseline += tabular->GetDescentOfRow(i) +
-		    tabular->GetAscentOfRow(i + 1) +
-		    tabular->GetAdditionalHeight(cell);
+	} else {
+	    for (i = 0; (cell < actcell) && (i < tabular->rows()); ++i) {
+		for (j = 0; (cell < actcell) && (j < tabular->columns()); ++j) {
+		    if (tabular->IsPartOfMultiColumn(i, j))
+			continue;
+		    nx += tabular->GetWidthOfColumn(cell);
+		    ++cell;
+		}
+		if (tabular->row_of_cell(cell) > i) {
+		    nx = int(x);
+		    baseline += tabular->GetDescentOfRow(i) +
+			tabular->GetAscentOfRow(i + 1) +
+			tabular->GetAdditionalHeight(cell);
+		}
 	    }
 	}
-        i = tabular->row_of_cell(actcell);
-	if (the_locking_inset == tabular->GetCellInset(cell)) {
+	i = tabular->row_of_cell(cell);
+	if (the_locking_inset != tabular->GetCellInset(cell)) {
+	    lyxerr[Debug::INSETS] << "ERROR this shouldn't happen\n";
+	    return;
+	}
 #if 0
-	    LyXText::text_status st = bv->text->status;
-	    do {
-		cx = nx + tabular->GetBeginningOfTextInCell(cell);
-		bv->text->status = st;
-		if (need_update == CELL) {
-                    // clear before the inset
-		    pain.fillRectangle(
-			nx + 1,
-			baseline - tabular->GetAscentOfRow(i) + 1,
-			int(cx - nx - 1),
-			tabular->GetAscentOfRow(i) +
-			tabular->GetDescentOfRow(i) - 1);
-		    // clear behind the inset
-		    pain.fillRectangle(
-			int(cx + the_locking_inset->width(bv,font) + 1),
-			baseline - tabular->GetAscentOfRow(i) + 1,
-			tabular->GetWidthOfColumn(cell) -
-			tabular->GetBeginningOfTextInCell(cell) -
-			the_locking_inset->width(bv,font) -
-			tabular->GetAdditionalWidth(cell) - 1,
-			tabular->GetAscentOfRow(i) +
-			tabular->GetDescentOfRow(i) - 1);
-		}
-		tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
-	    } while(bv->text->status == LyXText::CHANGED_IN_DRAW);
-#else
+	LyXText::text_status st = bv->text->status;
+	do {
 	    cx = nx + tabular->GetBeginningOfTextInCell(cell);
+	    bv->text->status = st;
 	    if (need_update == CELL) {
 		// clear before the inset
 		pain.fillRectangle(
@@ -340,10 +344,32 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		    tabular->GetDescentOfRow(i) - 1);
 	    }
 	    tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
-	    if (bv->text->status == LyXText::CHANGED_IN_DRAW)
-		return;
-#endif
+	} while(bv->text->status == LyXText::CHANGED_IN_DRAW);
+#else
+	cx = nx + tabular->GetBeginningOfTextInCell(cell);
+	if (need_update == CELL) {
+	    // clear before the inset
+	    pain.fillRectangle(
+		nx + 1,
+		baseline - tabular->GetAscentOfRow(i) + 1,
+		int(cx - nx - 1),
+		tabular->GetAscentOfRow(i) +
+		tabular->GetDescentOfRow(i) - 1);
+	    // clear behind the inset
+	    pain.fillRectangle(
+		int(cx + the_locking_inset->width(bv,font) + 1),
+		baseline - tabular->GetAscentOfRow(i) + 1,
+		tabular->GetWidthOfColumn(cell) -
+		tabular->GetBeginningOfTextInCell(cell) -
+		the_locking_inset->width(bv,font) -
+		tabular->GetAdditionalWidth(cell) - 1,
+		tabular->GetAscentOfRow(i) +
+		tabular->GetDescentOfRow(i) - 1);
 	}
+	tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
+	if (bv->text->status == LyXText::CHANGED_IN_DRAW)
+	    return;
+#endif
     }
     x -= ADD_TO_TABULAR_WIDTH;
     x += width(bv, font);
@@ -991,6 +1017,17 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
     InsetText * inset;
     bool changed = false;
     
+    // if we have a locking_inset we should have to check only this cell for
+    // change so I'll try this to have a boost, but who knows ;)
+    if ((need_update != INIT) &&
+	(the_locking_inset == tabular->GetCellInset(actcell))) {
+	maxAsc = the_locking_inset->ascent(bv, font);
+	maxDesc = the_locking_inset->descent(bv, font);
+	changed = tabular->SetWidthOfCell(actcell, the_locking_inset->width(bv, font));
+	changed = tabular->SetAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT) || changed;
+	changed = tabular->SetDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT) || changed;
+	return changed;
+    }
     for (int i = 0; i < tabular->rows(); ++i) {
 	maxAsc = maxDesc = 0;
 	for (int j= 0; j < tabular->columns(); ++j) {

@@ -1,3 +1,8 @@
+2000-11-19  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (draw): fixed text border redraw problem.
+	(calculate_dimensions_of_cells): try to boost up when inserting chars.
+
 2000-11-15  Rob Lahaye  <lahaye@postech.edu>
 
 	* lib/ui/default.ui: OptItem used for Fax entry
