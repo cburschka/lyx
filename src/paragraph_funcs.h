@@ -78,4 +78,12 @@ TeXOnePar(Buffer const * buf,
 	  std::ostream & os, TexRow & texrow,
 	  bool moving_arg);
 
+void latexParagraphs(Buffer const * buf,
+		     ParagraphList const & paragraphs,
+		     ParagraphList::iterator par,
+		     ParagraphList::iterator endpar,
+		     std::ostream & ofs,
+		     TexRow & texrow,
+		     bool moving_arg = false);
+
 #endif // PARAGRAPH_FUNCS_H

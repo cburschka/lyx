@@ -1780,7 +1780,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(os, paragraphs.begin(), paragraphs.end(), texrow);
+	latexParagraphs(this, paragraphs, paragraphs.begin(), paragraphs.end(), os, texrow);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1815,6 +1815,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 }
 
 
+#if 0
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
@@ -1890,6 +1891,7 @@ void Buffer::latexParagraphs(ostream & ofs,
 		texrow.newline();
 	}
 }
+#endif
 
 
 bool Buffer::isLatex() const

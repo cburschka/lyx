@@ -1595,8 +1595,9 @@ int InsetText::latex(Buffer const * buf, ostream & os,
 		     bool moving_arg, bool) const
 {
 	TexRow texrow;
-	buf->latexParagraphs(os, paragraphs.begin(), paragraphs.end(),
-			     texrow, moving_arg);
+	latexParagraphs(buf, paragraphs,
+			paragraphs.begin(), paragraphs.end(),
+			os, texrow, moving_arg);
 	return texrow.rows();
 }
 

@@ -635,3 +635,82 @@ TeXOnePar(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "TeXOnePar...done " << &*boost::next(pit) << endl;
 	return ++pit;
 }
+
+
+//
+// LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
+//
+void latexParagraphs(Buffer const * buf,
+		     ParagraphList const & paragraphs,
+		     ParagraphList::iterator par,
+		     ParagraphList::iterator endpar,
+		     ostream & ofs,
+		     TexRow & texrow,
+		     bool moving_arg)
+{
+	bool was_title = false;
+	bool already_title = false;
+	LyXTextClass const & tclass = buf->params.getLyXTextClass();
+
+	// if only_body
+	while (par != endpar) {
+		Inset * in = par->inInset();
+		// well we have to check if we are in an inset with unlimited
+		// length (all in one row) if that is true then we don't allow
+		// any special options in the paragraph and also we don't allow
+		// any environment other then "Standard" to be valid!
+		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+			LyXLayout_ptr const & layout = par->layout();
+
+			if (layout->intitle) {
+				if (already_title) {
+					lyxerr <<"Error in latexParagraphs: You"
+						" should not mix title layouts"
+						" with normal ones." << endl;
+				} else if (!was_title) {
+					was_title = true;
+					if (tclass.titletype() == TITLE_ENVIRONMENT) {
+						ofs << "\\begin{"
+						    << tclass.titlename()
+						    << "}\n";
+						texrow.newline();
+					}
+				}
+			} else if (was_title && !already_title) {
+				if (tclass.titletype() == TITLE_ENVIRONMENT) {
+					ofs << "\\end{" << tclass.titlename()
+					    << "}\n";
+				}
+				else {
+					ofs << "\\" << tclass.titlename()
+					    << "\n";
+				}
+				texrow.newline();
+				already_title = true;
+				was_title = false;
+			}
+
+			if (layout->isEnvironment() ||
+				!par->params().leftIndent().zero())
+			{
+				par = TeXEnvironment(buf, buf->params, paragraphs, par, ofs, texrow);
+			} else {
+				par = TeXOnePar(buf, buf->params, paragraphs, par, ofs, texrow, moving_arg);
+			}
+		} else {
+			par = TeXOnePar(buf, buf->params, paragraphs, par, ofs, texrow, moving_arg);
+		}
+	}
+	// It might be that we only have a title in this document
+	if (was_title && !already_title) {
+		if (tclass.titletype() == TITLE_ENVIRONMENT) {
+			ofs << "\\end{" << tclass.titlename()
+			    << "}\n";
+		}
+		else {
+			ofs << "\\" << tclass.titlename()
+			    << "\n";
+				}
+		texrow.newline();
+	}
+}

@@ -1,3 +1,9 @@
+2003-03-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* buffer.C (latexParagraphs): move function from here...
+	* paragraph_funcs.C (latexParagraphs): ...to here, and adjust
+	args.
+
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
 	* LyXAction.C (init): fix bug in poplating array with multiple entries
