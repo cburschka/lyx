@@ -4,7 +4,8 @@
 # a given macro.
 #
 # Call it with  texify '\macro' [...] to get a line per item giving ascent,
-# descent, width and the primitives that TeX would use to typeset the item
+# descent, width, the font and the position in the font TeX would use to
+# typeset the symbol.
 
 # Original script:
 #\batchmode
@@ -42,7 +43,9 @@ foreach item $::argv {
 	set f [open $filebase.log r]
 	while {![eof $f]} {
 		gets $f line
+		# try to interpret it as a hbox line
 		regexp $hboxexp $line dummy ascent descent width
+		# try to interpret it as a font line
 		regexp $fontexp $line dummy font char
 	}
 	close $f

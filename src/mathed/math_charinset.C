@@ -31,6 +31,9 @@ MathTextCodes MathCharInset::nativeCode(char c) const
 {
 	if (isalpha(c))
 		return LM_TC_VAR;
+	if (strchr("#$%{|}", c))
+		return LM_TC_SPECIAL;
+	//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
 	return LM_TC_CONST;
 }
 

@@ -1251,10 +1251,62 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
+	if (selection_)
+		selDel();
+
+	if (lastcode_ == LM_TC_TEXTRM) {
+		insert(c, LM_TC_TEXTRM);
+		return;
+	}
+
+	if (c == ' ') {
+		if (inMacroMode()) {
+			macroModeClose();
+			lastcode_ = LM_TC_VAR;
+			return;
+		}
+
+		MathSpaceInset * p = prevSpaceInset();
+		if (p) {
+			p->incSpace();
+			return;
+		}
+
+		if (mathcursor->popRight())
+			return;
+
+#warning look here
+			// this would not work if the inset is in an table!
+			//bv->text->cursorRight(bv, true);
+			//result = FINISHED;
+		return;
+	}
+
+	if (lastcode_ == LM_TC_TEX) {
+		if (macroName().empty()) {
+			insert(c, LM_TC_TEX);
+			if (!isalpha(c)) {
+				macroModeClose();
+				lastcode_ = LM_TC_VAR;
+			}
+		} else {
+			if (isalpha(c))
+				insert(c, LM_TC_TEX);
+			else {
+				macroModeClose();
+				lastcode_ = LM_TC_VAR;
+			}
+		}
+		return;
+	}
+
 	if (c == '{') {
 		niceInsert(new MathScopeInset);
 		return;
 	}
+
+	if (c == '}') // ignore it
+		return;
 
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
 		static char const greek[26] =
@@ -1275,85 +1327,14 @@ void MathCursor::interpret(string const & s)
 		return;	
 	}
 
-	if (selection_)
-		selDel();
-
-	if (lastcode_ == LM_TC_TEX) {
-		if (macroName().empty()) {
-			insert(c, LM_TC_TEX);
-			if (!isalpha(c)) {
-				macroModeClose();
-				lastcode_ = LM_TC_VAR;
-			}
-		} else {
-			if (isalpha(c))
-				insert(c, LM_TC_TEX);
-			else {
-				macroModeClose();
-				lastcode_ = LM_TC_VAR;
-			}
-		}
-		return;
-	}
-
-	if (strchr("0123456789;:!|[]().,?+/-*<>=", c)) {
-		if (lastcode_ != LM_TC_TEXTRM)
-			lastcode_ = LM_TC_CONST;
-		insert(c, lastcode_);
-		return;
-	}
-
-	if (strchr("#$%{|}", c)) {
-		if (lastcode_ != LM_TC_TEXTRM)
-			lastcode_ = LM_TC_SPECIAL;
-		insert(c, lastcode_);
-		return;
-	}
-
-	if (c == ' ') {
-		if (inMacroMode()) {
-			macroModeClose();
-			lastcode_ = LM_TC_VAR;
-			return;
-		}
-
-		MathSpaceInset * p = prevSpaceInset();
-		if (p) {
-			p->incSpace();
-			return;
-		}
-
-		if (lastcode_ == LM_TC_TEXTRM) {
-			insert(c, LM_TC_TEXTRM);
-			return;
-		}
-
-		if (mathcursor->popRight())
-			return;
-
-#warning look here
-			// this would not work if the inset is in an table!
-			//bv->text->cursorRight(bv, true);
-			//result = FINISHED;
-		return;
-	}
-
-	if (c == '\'' || c == '@') {
-		insert(c, LM_TC_VAR);
-		return;
-	}
-
 	if (c == '\\') {
 		lastcode_ = LM_TC_TEX;
 		//bv->owner()->message(_("TeX mode"));
 		return;	
 	}
 
-	if (isalpha(c)) {
-		insert(c, lastcode_);
-		return;	
-	}
-
+	// no special circumstances, so insert the character without any fuss
+	insert(c);
 }
 
 
