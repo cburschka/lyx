@@ -1,5 +1,14 @@
 2002-10-15  Angus Leeming  <leeming@lyx.org>
 
+	* XWorkArea.C (work_area_handler): it transpires that
+	  ev->xbutton.button == 0 when the mouse is dragged,
+	  so it cannot be used to initialise x_button_state and
+	  hence FuncRequest.
+	  This patch uses the 'key' that is passed into the function
+	  by xforms to extract this info and so resolve the problem.
+
+2002-10-15  Angus Leeming  <leeming@lyx.org>
+
 	* FormCitation.C (updateBrowser): deselect the highlighted item when
 	updating the browser.
 

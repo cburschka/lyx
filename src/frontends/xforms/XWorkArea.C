@@ -69,41 +69,24 @@ mouse_button::state x_button_state(unsigned int button)
 {
 	mouse_button::state b = mouse_button::none;
 	switch (button) {
-		case Button1:
-			b = mouse_button::button1;
-			break;
-		case Button2:
-			b = mouse_button::button2;
-			break;
-		case Button3:
-			b = mouse_button::button3;
-			break;
-		case Button4:
-			b = mouse_button::button4;
-			break;
-		case Button5:
-			b = mouse_button::button5;
-			break;
-		default: // FIXME
-			break;
+	case FL_MBUTTON1:
+		b = mouse_button::button1;
+		break;
+	case FL_MBUTTON2:
+		b = mouse_button::button2;
+		break;
+	case FL_MBUTTON3:
+		b = mouse_button::button3;
+		break;
+	case FL_MBUTTON4:
+		b = mouse_button::button4;
+		break;
+	case FL_MBUTTON5:
+		b = mouse_button::button5;
+		break;
+	default: // FIXME
+		break;
 	}
-	return b;
-}
-
-
-mouse_button::state x_motion_state(unsigned int state)
-{
-	mouse_button::state b = mouse_button::none;
-	if (state & Button1MotionMask)
-		b |= mouse_button::button1;
-	if (state & Button2MotionMask)
-		b |= mouse_button::button2;
-	if (state & Button3MotionMask)
-		b |= mouse_button::button3;
-	if (state & Button4MotionMask)
-		b |= mouse_button::button4;
-	if (state & Button5MotionMask)
-		b |= mouse_button::button5;
 	return b;
 }
 
@@ -355,18 +338,20 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
 		area->dispatch(
-			FuncRequest(LFUN_MOUSE_PRESS, ev->xbutton.x - ob->x,
-							ev->xbutton.y - ob->y,
-							x_button_state(ev->xbutton.button)));
+			FuncRequest(LFUN_MOUSE_PRESS,
+				    ev->xbutton.x - ob->x,
+				    ev->xbutton.y - ob->y,
+				    x_button_state(key)));
 		break;
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
 		area->dispatch(
-			FuncRequest(LFUN_MOUSE_RELEASE, ev->xbutton.x - ob->x,
-							ev->xbutton.y - ob->y,
-							x_button_state(ev->xbutton.button)));
+			FuncRequest(LFUN_MOUSE_RELEASE,
+				    ev->xbutton.x - ob->x,
+				    ev->xbutton.y - ob->y,
+				    x_button_state(key)));
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89
 	case FL_MOUSE:
@@ -384,9 +369,10 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			scrollbar_value_old = fl_get_scrollbar_value(area->scrollbar);
 			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
 			area->dispatch(
-				FuncRequest(LFUN_MOUSE_MOTION, ev->xbutton.x - ob->x,
-								ev->xbutton.y - ob->y,
-								x_button_state(ev->xbutton.button)));
+				FuncRequest(LFUN_MOUSE_MOTION,
+					    ev->xbutton.x - ob->x,
+					    ev->xbutton.y - ob->y,
+					    x_button_state(key)));
 		}
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89
@@ -519,18 +505,20 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_DBLCLICK:
 		if (ev) {
 			lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
-			FuncRequest cmd(LFUN_MOUSE_DOUBLE, ev->xbutton.x - ob->x,
-							ev->xbutton.y - ob->y,
-							x_button_state(ev->xbutton.button));
+			FuncRequest cmd(LFUN_MOUSE_DOUBLE,
+					ev->xbutton.x - ob->x,
+					ev->xbutton.y - ob->y,
+					x_button_state(key));
 			area->dispatch(cmd);
 		}
 		break;
 	case FL_TRPLCLICK:
 		if (ev) {
 			lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
-			FuncRequest cmd(LFUN_MOUSE_TRIPLE, ev->xbutton.x - ob->x,
-							ev->xbutton.y - ob->y,
-							x_button_state(ev->xbutton.button));
+			FuncRequest cmd(LFUN_MOUSE_TRIPLE,
+					ev->xbutton.x - ob->x,
+					ev->xbutton.y - ob->y,
+					x_button_state(key));
 			area->dispatch(cmd);
 		}
 		break;
