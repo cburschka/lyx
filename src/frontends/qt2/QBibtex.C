@@ -62,29 +62,43 @@ void QBibtex::build_dialog()
 
 void QBibtex::update_contents()
 {
-	InsetBibtexParams const & params = controller().params();
-
 	dialog_->databaseLB->clear();
 
-	vector<FileName>::const_iterator fit  = params.databases.begin();
-	vector<FileName>::const_iterator fend = params.databases.end();
-	for (; fit != fend; ++fit) {
-		string const db = fit->outputFilename(kernel().bufferFilepath());
-		dialog_->databaseLB->insertItem(toqstr(db));
+	string bibs(controller().params().getContents());
+	string bib;
+
+	while (!bibs.empty()) {
+		bibs = split(bibs, bib, ',');
+		bib = trim(bib);
+		if (!bib.empty())
+			dialog_->databaseLB->insertItem(toqstr(bib));
 	}
 
 	dialog_->add_->bibLB->clear();
 
 	vector<string> bib_str;
 	controller().getBibFiles(bib_str);
-	vector<string>::const_iterator sit  = bib_str.begin();
-	vector<string>::const_iterator send = bib_str.end();
-	for (; sit != send; ++sit) {
-		string const bibItem = ChangeExtension(*sit, "");
+	for (vector<string>::const_iterator it = bib_str.begin();
+		it != bib_str.end(); ++it) {
+		string bibItem(ChangeExtension(*it, ""));
 		dialog_->add_->bibLB->insertItem(toqstr(bibItem));
 	}
 
-	dialog_->bibtocCB->setChecked(params.bibtotoc);
+	string bibtotoc = "bibtotoc";
+	string bibstyle(controller().params().getOptions());
+
+	// bibtotoc exists?
+	if (prefixIs(bibstyle, bibtotoc)) {
+		dialog_->bibtocCB->setChecked(true);
+
+		// bibstyle exists?
+		if (contains(bibstyle,','))
+			bibstyle = split(bibstyle, bibtotoc, ',');
+		else
+			bibstyle.erase();
+	} else
+		dialog_->bibtocCB->setChecked(false);
+
 
 	dialog_->styleCB->clear();
 
@@ -92,17 +106,16 @@ void QBibtex::update_contents()
 
 	vector<string> str;
 	controller().getBibStyles(str);
-	sit  = str.begin();
-	send = str.end();
-	for (; sit != send; ++sit) {
-		string const item = ChangeExtension(*sit, "");
-		if (item == params.style)
-			item_nr = int(sit - str.begin());
+	for (vector<string>::const_iterator it = str.begin();
+		it != str.end(); ++it) {
+		string item(ChangeExtension(*it, ""));
+		if (item == bibstyle)
+			item_nr = int(it - str.begin());
 		dialog_->styleCB->insertItem(toqstr(item));
 	}
 
 	if (item_nr == -1) {
-		dialog_->styleCB->insertItem(toqstr(params.style));
+		dialog_->styleCB->insertItem(toqstr(bibstyle));
 		item_nr = dialog_->styleCB->count() - 1;
 	}
 
@@ -112,19 +125,31 @@ void QBibtex::update_contents()
 
 void QBibtex::apply()
 {
-	InsetBibtexParams params;
+	string dbs(fromqstr(dialog_->databaseLB->text(0)));
 
-        for (unsigned int i = 0; i < dialog_->databaseLB->count(); ++i) {
-		FileName file;
-		file.set(fromqstr(dialog_->databaseLB->text(i)),
-			 kernel().bufferFilepath());
-                params.databases.push_back(file);
-        }
+	unsigned int maxCount = dialog_->databaseLB->count();
+	for (unsigned int i = 1; i < maxCount; i++) {
+		dbs += ',';
+		dbs += fromqstr(dialog_->databaseLB->text(i));
+	}
 
-	params.style = fromqstr(dialog_->styleCB->currentText());
-	params.bibtotoc = dialog_->bibtocCB->isChecked();
+	controller().params().setContents(dbs);
 
-	controller().params() = params;
+	string const bibstyle(fromqstr(dialog_->styleCB->currentText()));
+	bool const bibtotoc(dialog_->bibtocCB->isChecked());
+
+	if (bibtotoc && (!bibstyle.empty())) {
+		// both bibtotoc and style
+		controller().params().setOptions("bibtotoc," + bibstyle);
+	} else if (bibtotoc) {
+		// bibtotoc and no style
+		controller().params().setOptions("bibtotoc");
+	} else {
+		// only style. An empty one is valid, because some
+		// documentclasses have an own \bibliographystyle{}
+		// command!
+		controller().params().setOptions(bibstyle);
+	}
 }
 
 
