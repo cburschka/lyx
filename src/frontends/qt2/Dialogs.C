@@ -29,6 +29,7 @@
 #include "QPrintDialog.h"
 #include "QRefDialog.h"
 #include "QSearchDialog.h"
+#include "QSpellcheckerDialog.h"
 #include "QTabularCreateDialog.h"
 #include "QThesaurusDialog.h"
 #include "QURLDialog.h"
@@ -52,6 +53,7 @@
 #include "QPrint.h"
 #include "QRef.h"
 #include "QSearch.h"
+#include "QSpellchecker.h"
 #include "QSplash.h"
 #include "QTabularCreate.h"
 #include "QThesaurus.h"
@@ -82,18 +84,16 @@
 #include "controllers/ControlPrint.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSearch.h"
+#include "controllers/ControlSpellchecker.h"
 #include "controllers/ControlSplash.h"
 #include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlThesaurus.h"
 #include "controllers/ControlUrl.h"
 #include "controllers/ControlVCLog.h"
 #if 0
-#include "controllers/ControlButtons.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlFloat.h"
-#include "controllers/ControlLabel.h"
 #include "controllers/ControlRef.h"
-#include "controllers/ControlSpellchecker.h"
 #include "controllers/ControlToc.h"
 #endif
 
@@ -125,6 +125,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIPrint<QPrint, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUISearch<QSearch, Qt2BC>(*lv, *this)); 
+	add(new GUISpellchecker<QSpellchecker, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
