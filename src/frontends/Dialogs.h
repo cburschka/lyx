@@ -13,15 +13,12 @@
 
 #include <boost/utility.hpp>
 #include <boost/signals/signal0.hpp>
-#include <boost/signals/signal1.hpp>
 
 class Dialog;
 class InsetBase;
 class LyXView;
 
-/** Container of all dialogs and signals a LyXView needs or uses to access them
-    The list of dialog signals isn't comprehensive but should be a good guide
-    for any future additions.  Remember don't go overboard -- think minimal.
+/** Container of all dialogs.
  */
 class Dialogs : boost::noncopyable
 {
@@ -75,12 +72,12 @@ public:
 	void show(std::string const & name, std::string const & data, InsetBase * inset);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
-	    to update the contents of a particular dialog with \param data .
+	    to update the contents of a particular dialog with \param data.
 	    See the comments to 'show', above.
 	*/
 	void update(std::string const & name, std::string const & data);
 
-	/// is the dialog currently visible?
+	/// Is the dialog currently visible?
 	bool visible(std::string const & name) const;
 
 	/** All Dialogs of the given \param name will be closed if they are
