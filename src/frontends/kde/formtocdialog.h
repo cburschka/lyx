@@ -24,8 +24,7 @@
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
-
-#include <ktreelist.h>
+#include <qlistview.h>
  
 #include "FormToc.h"
 
@@ -39,7 +38,7 @@ public:
 	// widgets
  
 	QComboBox *menu;
-	KTreeList *tree;
+	QListView *tree;
 	QPushButton *buttonUpdate;
 	QPushButton *buttonClose;
 
@@ -56,9 +55,9 @@ private:
 	QHBoxLayout *buttonLayout;
  
 private slots:
-	/// adaptor to FormToc::highlight
-	void highlight_adaptor(int index) {
-		form_->highlight(index);
+	/// adaptor to FormToc::select
+	void select_adaptor(QListViewItem *item) {
+		form_->select(item->text(0));
 	}
 
 	/// adaptor to FormToc::update

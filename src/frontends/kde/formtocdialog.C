@@ -30,8 +30,11 @@ FormTocDialog::FormTocDialog(FormToc *form, QWidget *parent, const char *name, b
 	menu->insertItem(_("List of Algorithms"));
 	menu->setMinimumSize(menu->sizeHint()); 
  
-	tree = new KTreeList(this,"tree");
+	tree = new QListView(this);
 	tree->setMinimumHeight(200);
+	tree->setRootIsDecorated(true); 
+	tree->setSorting(-1); 
+	tree->addColumn("Table of Contents");
 
         buttonUpdate = new QPushButton(this);
         buttonUpdate->setMinimumSize(buttonUpdate->sizeHint());
@@ -66,7 +69,7 @@ FormTocDialog::FormTocDialog(FormToc *form, QWidget *parent, const char *name, b
 
 	// connections
 
-	connect(tree, SIGNAL(highlighted(int)), this, SLOT(highlight_adaptor(int)));
+	connect(tree, SIGNAL(selectionChanged(QListViewItem *)), this, SLOT(select_adaptor(QListViewItem *)));
 	connect(menu, SIGNAL(activated(int)), this, SLOT(activate_adaptor(int))); 
 	connect(buttonUpdate, SIGNAL(clicked()), this, SLOT(update_adaptor())); 
 	connect(buttonClose, SIGNAL(clicked()), this, SLOT(close_adaptor()));

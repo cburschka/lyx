@@ -34,10 +34,10 @@ public:
 	~FormToc();
 	//@}
 
-	/// Highlighted an item
-	void highlight(int index);
+	/// Selected a tree item
+	void select(const char *);
 	/// Choose which type
-	void set_type(Buffer::TocType type);
+	void set_type(Buffer::TocType);
 	/// Update the dialog.
 	void update();
 	/// close the connections

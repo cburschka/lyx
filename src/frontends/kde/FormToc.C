@@ -15,6 +15,8 @@
 
 #include <config.h>
 
+#include <stack>
+ 
 #include "formtocdialog.h"
  
 #include "Dialogs.h"
@@ -28,6 +30,7 @@
 
 using std::vector;
 using std::pair;
+using std::stack;
  
 FormToc::FormToc(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
@@ -93,17 +96,58 @@ void FormToc::updateToc()
 
 	dialog_->tree->clear();
 
-	 
-	// FIXME: should do hierarchically. at each point we need to know
-	// id of item we've just inserted, id of most recent sibling, and
-	// id of parent
+	dialog_->tree->setUpdatesEnabled(false);
+
+	int depth = 0; 
+	stack< pair< QListViewItem *, QListViewItem *> > istack;
+	QListViewItem *last = 0;
+	QListViewItem *parent = 0;
+	QListViewItem *item;
  
-	dialog_->tree->setAutoUpdate(false);
+	// Yes, it is this ugly. Two reasons - root items must have a QListView parent,
+	// rather than QListViewItem; and the TOC can move in and out an arbitrary number
+	// of levels
+ 
 	for (vector< Buffer::TocItem >::const_iterator iter = toclist.begin();
 		iter != toclist.end(); ++iter) {
-		dialog_->tree->insertItem((string(4*(*iter).depth,' ')+(*iter).str).c_str(), 0, -1, false);
+		if (iter->depth == depth) {
+			// insert it after the last one we processed
+			if (!parent)
+				item = (last) ? (new QListViewItem(dialog_->tree,last)) : (new QListViewItem(dialog_->tree));
+			else
+				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
+		} else if (iter->depth > depth) {
+			int diff = iter->depth - depth;
+			// first save old parent and last
+			while (diff--)
+				istack.push(pair< QListViewItem *, QListViewItem * >(parent,last));
+			item = (last) ? (new QListViewItem(last)) : (new QListViewItem(dialog_->tree));
+			parent = last;
+		} else {
+			int diff = depth - iter->depth;
+			pair< QListViewItem *, QListViewItem * > top;
+			// restore context
+			while (diff--) {
+				top = istack.top();
+				istack.pop();
+			}
+			parent = top.first;
+			last = top.second;
+			// insert it after the last one we processed
+			if (!parent)
+				item = (last) ? (new QListViewItem(dialog_->tree,last)) : (new QListViewItem(dialog_->tree));
+			else
+				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
+		}
+		lyxerr[Debug::GUI] << "Table of contents" << endl << "Added item " << iter->str.c_str() 
+			<< " at depth " << iter->depth << ", previous sibling \"" << (last ? last->text(0) : "0") 
+			<< "\", parent \"" << (parent ? parent->text(0) : "0") << "\"" << endl;
+		item->setText(0,iter->str.c_str());
+		depth = iter->depth;
+		last = item;
 	}
-	dialog_->tree->setAutoUpdate(true);
+
+	dialog_->tree->setUpdatesEnabled(true);
 	dialog_->tree->update();
 }
  
@@ -113,15 +157,19 @@ void FormToc::setType(Buffer::TocType toctype)
 	switch (type) {
 		case Buffer::TOC_TOC:
 			dialog_->setCaption(_("Table of Contents"));
+			dialog_->tree->setColumnText(0,_("Table of Contents")); 
 			break; 
 		case Buffer::TOC_LOF:
 			dialog_->setCaption(_("List of Figures"));
+			dialog_->tree->setColumnText(0,_("List of Figures")); 
 			break; 
 		case Buffer::TOC_LOT:
 			dialog_->setCaption(_("List of Tables"));
+			dialog_->tree->setColumnText(0,_("List of Tables")); 
 			break; 
 		case Buffer::TOC_LOA:
 			dialog_->setCaption(_("List of Algorithms"));
+			dialog_->tree->setColumnText(0,_("List of Algorithms")); 
 			break; 
 	}
 }
@@ -145,22 +193,19 @@ void FormToc::update()
 	updateToc();
 }
  
-void FormToc::highlight(int index)
+void FormToc::select(const char *text)
 {
 	if (!lv_->view()->available())
 		return;
  
-	// FIXME: frontStrip can go once it's hierarchical
-	string tmp(frontStrip(dialog_->tree->itemAt(index)->getText(),' '));
- 
 	vector <Buffer::TocItem>::const_iterator iter = toclist.begin();
 	for (; iter != toclist.end(); ++iter) {
-		if (iter->str==tmp)
+		if (iter->str==text)
 			break;
-	} 
+	}
 	
 	if (iter==toclist.end()) {
-		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : " << tmp << endl;
+		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : " << text << endl;
 		return;
 	}
 
