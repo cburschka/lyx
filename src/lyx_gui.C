@@ -197,35 +197,41 @@ void LyXGUI::init()
 	if (lyxrc.font_norm_menu.empty())
 		lyxrc.font_norm_menu = lyxrc.font_norm;
 	// Set the font name for popups and menus
-        string menufontname = lyxrc.menu_font_name 
+        string boldfontname = lyxrc.menu_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc.font_norm_menu;
 		// "?" means "scale that font"
-        string popupfontname = lyxrc.popup_font_name 
+        string fontname = lyxrc.popup_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc.font_norm_menu;
 
-	int bold = fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str());
-	int normal = fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str());
+	int bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
+	int normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
         if (bold < 0)
                 lyxerr << "Could not set menu font to "
-		       << menufontname << endl;
+		       << boldfontname << endl;
 
         if (normal < 0)
                 lyxerr << "Could not set popup font to "
-		       << popupfontname << endl;
+		       << fontname << endl;
 
 	if (bold < 0 && normal < 0) {
 		lyxerr << "Using 'helvetica' font for menus" << endl;
-		bold = fl_set_font_name(FL_BOLD_STYLE,
-					"-*-helvetica-bold-r-*-*-*-?-*-*-*-*-iso8859-1");
-		normal = fl_set_font_name(FL_NORMAL_STYLE,
-					  "-*-helvetica-medium-r-*-*-*-?-*-*-*-*-iso8859-1");
+		boldfontname = "-*-helvetica-bold-r-*-*-*-?-*-*-*-*-iso8859-1";
+		fontname = "-*-helvetica-medium-r-*-*-*-?-*-*-*-*-iso8859-1";
+		bold = fl_set_font_name(FL_BOLD_STYLE, boldfontname.c_str());
+		normal = fl_set_font_name(FL_NORMAL_STYLE, fontname.c_str());
+
 		if (bold < 0 && normal < 0) {
 			lyxerr << "Could not find helvetica font. Using 'fixed'." << endl;
-			normal = fl_set_font_name(FL_NORMAL_STYLE, "fixed");
+			fl_set_font_name(FL_NORMAL_STYLE, "fixed");
+			normal = bold = 0;
 		}
 	}
+	if (bold < 0)
+		fl_set_font_name(FL_BOLD_STYLE, fontname.c_str());
+	else if (normal < 0)
+		fl_set_font_name(FL_NORMAL_STYLE, boldfontname.c_str());
 
  	// put here (after fl_initialize) to avoid segfault. Cannot be done
 	// in setDefaults() (Matthias 140496)

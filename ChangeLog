@@ -1,3 +1,25 @@
+2000-10-14  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/text.C (Backspace): Make sure that the row of the cursor is
+	rebreaked.
+
+	* src/lyxfunc.C (Dispatch): Set CurrentState() in minibuffer after
+	insertion of a char.
+
+	* src/lyx_gui.C (init): Prevent a crash when only one font from 
+	menu/popup fonts is not found.
+
+	* lib/lyxrc.example: Add an example for binding a key for language 
+	switching.
+
+2000-10-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/text.C (GetColumnNearX): Better behavior when a RTL
+	paragraph is ended by LTR text.
+
+	* src/text2.C (SetCurrentFont,CursorLeftIntern,CursorRightIntern): 
+	ditto.
+
 2000-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* README: add a description of our numbering scheme

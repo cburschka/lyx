@@ -3416,6 +3416,13 @@ void LyXText::SetCurrentFont() const
 
 	current_font = cursor.par->GetFontSettings(pos);
 	real_current_font = GetFont(cursor.par, pos);
+
+	if (cursor.pos == cursor.par->Last() &&
+	    IsBoundary(cursor.par, cursor.pos) && !cursor.boundary) {
+		Language const * lang =	cursor.par->getParLanguage();
+		current_font.setLanguage(lang);
+		real_current_font.setLanguage(lang);
+	}
 }
 
 
@@ -3475,10 +3482,7 @@ void LyXText::CursorLeftIntern(bool internal) const
 			SetCursor(cursor.par, cursor.pos + 1, true, true);
 	} else if (cursor.par->Previous()) { // steps into the above paragraph.
 		LyXParagraph * par = cursor.par->Previous();
-		LyXParagraph::size_type pos = par->Last();
-		SetCursor(par, pos);
-		if (IsBoundary(par, pos))
-			SetCursor(par, pos, false, true);
+		SetCursor(par, par->Last());
 	}
 }
 
@@ -3498,17 +3502,16 @@ void LyXText::CursorRight(bool internal) const
 
 void LyXText::CursorRightIntern(bool internal) const
 {
-	if (cursor.pos < cursor.par->Last()) {
-		if (!internal && cursor.boundary &&
-		    (!cursor.par->table || !cursor.par->IsNewline(cursor.pos)))
-			SetCursor(cursor.par, cursor.pos, true, false);
-		else {
-			SetCursor(cursor.par, cursor.pos + 1, true, false);
-			if (!internal && IsBoundary(cursor.par, cursor.pos))
-				SetCursor(cursor.par, cursor.pos, true, true);
-		}
-	} else if (cursor.par->Next())
-		SetCursor(cursor.par->Next(), 0);
+	if (!internal && cursor.boundary &&
+	    (!cursor.par->table || !cursor.par->IsNewline(cursor.pos)))
+		SetCursor(cursor.par, cursor.pos, true, false);
+	else if (cursor.pos < cursor.par->Last()) {
+		SetCursor(cursor.par, cursor.pos + 1, true, false);
+		if (!internal &&
+		    IsBoundary(cursor.par, cursor.pos))
+			SetCursor(cursor.par, cursor.pos, true, true);
+ 	} else if (cursor.par->Next())
+ 		SetCursor(cursor.par->Next(), 0);
 }
 
 

@@ -3701,9 +3701,20 @@ void LyXText::Backspace()
 			
 			BreakAgainOneRow(row);
 			SetCursor(cursor.par, cursor.pos, false, cursor.boundary);
-			// cursor MUST be in row now
+			// will the cursor be in another row now?
+			if (row->next && row->next->par == row->par &&
+			    RowLast(row) <= cursor.pos) {
+				row = row->next;
+				BreakAgainOneRow(row);
+			}
+
+                        SetCursor(cursor.par, cursor.pos,
+				  false, cursor.boundary);
 			
-			need_break_row = row->next;
+			if (row->next && row->next->par == row->par)
+				need_break_row = row->next;
+			else
+				need_break_row = 0;
 		} else  {
 			// set the dimensions of the row
 			row->fill = Fill(row, paperwidth);
@@ -3724,9 +3735,9 @@ void LyXText::Backspace()
 
 	lastpos = cursor.par->Last();
 	if (cursor.pos == lastpos) {
-		SetCurrentFont();
 		if (IsBoundary(cursor.par, cursor.pos) != cursor.boundary)
 			SetCursor(cursor.par, cursor.pos, false, !cursor.boundary);
+		SetCurrentFont();
 	}
 	
 	// check, wether the last characters font has changed.
@@ -4666,7 +4677,7 @@ int LyXText::GetColumnNearX(Row * row, int & x, bool & boundary) const
 			++vc;
 		}
 
-		if (vc > row->pos && (tmpx+last_tmpx)/2 > x) {
+		if ((tmpx+last_tmpx)/2 > x) {
 			tmpx = last_tmpx;
 			left_side = true;
 		}
@@ -4677,9 +4688,20 @@ int LyXText::GetColumnNearX(Row * row, int & x, bool & boundary) const
 		vc = last+1;
 
 	boundary = false;
+	bool lastrow = lyxrc.rtl_support // This is not needed, but gives
+		                         // some speedup if rtl_support=false
+		&& (!row->next || row->next->par != row->par);
+	bool rtl = (lastrow)
+		? row->par->isRightToLeftPar()
+		: false; // If lastrow is false, we don't need to compute
+	                 // the value of rtl.
 
 	if (row->pos > last)  // Row is empty?
 		c = row->pos;
+	else if (lastrow &&
+		 ( ( rtl &&  left_side && vc == row->pos && x < tmpx - 5) ||
+		   (!rtl && !left_side && vc == last + 1 && x > tmpx + 5) ))
+		c = last + 1;
 	else if (vc == row->pos ||
 		 (row->par->table && vc <= last && row->par->IsNewline(vc-1)) ) {
 		c = vis2log(vc);

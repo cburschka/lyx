@@ -640,6 +640,12 @@
 # Default is "true"
 #\mark_foreign_language false
 
+# It is possible to bind keys for changing the language inside a document. 
+# For example, the following command will cause F12 to switch between French
+# and English in a French document, and in a document of other language it will
+# switch between that language and French.
+#\bind "F12" "language french"
+
 #
 # HEBREW SUPPORT SECTION ####################################################
 #

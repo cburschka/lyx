@@ -1,4 +1,4 @@
-Preamble: LyX versionning scheme
+Preamble: LyX version scheme
 
 	In September of 1999 the LyX Team decided that we could no
 	longer successfully use the two strand development process
@@ -17,9 +17,7 @@ Preamble: LyX versionning scheme
 
 	 * Establishing the foundations of GUI/system independence, 
 
-	 * Rearrangement of the directory structure, 
-
-	 * Use of libtool, automake and autoconf. 
+	 * Rearrangement of the directory structure.
 
 	Once the transition is over the 1.1 series should be very
 	stable and we will then release 1.2.0. This new series will be
@@ -28,9 +26,9 @@ Preamble: LyX versionning scheme
 	occurring in branches of CVS and once the feature/modification
 	has proved stable it will be merged into the main releases.
 
-	Versionning uses a continuous numbering scheme where odd or
+	LyX now uses a continuous numbering scheme where odd or
 	even numbering is no longer significant. Prereleases are
-	labelled with a "pre" suffix and any fixes required between
+	labeled with a "pre" suffix and any fixes required between
 	stable releases have a "fix" suffix. Thus there are three
 	possible file names:
 
