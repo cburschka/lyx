@@ -48,7 +48,6 @@
 #include "math_support.h"
 
 #include <algorithm>
-#include <cctype>
 
 #define FILEDEBUG 0
 
@@ -56,7 +55,6 @@ using std::endl;
 using std::min;
 using std::max;
 using std::swap;
-using std::isalnum;
 using std::vector;
 using std::ostringstream;
 
@@ -1451,7 +1449,7 @@ bool MathCursor::interpret(char c)
 	}
 
 /*
-	if (strchr("{}", c)) {
+	if (c == '{' || c == '}', c)) {
 		insert(c, LM_TC_TEX);
 		return true;
 	}
@@ -1466,7 +1464,7 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (strchr("$%", c)) {
+	if (c == '$' || c == '%') {
 		insert(MathAtom(new MathSpecialCharInset(c)));
 		lastcode_ = LM_TC_VAR;
 		return true;
