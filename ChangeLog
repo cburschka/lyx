@@ -1,3 +1,17 @@
+2001-05-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LaTeXLog.C: add "using" directive
+
+2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyxrc.C: Add language_command_local, language_use_babel and
+ 	language_global_options.
+
+	* src/lyxfont.C (latexWriteStartChanges): Use language_command_local.
+
+	* src/buffer.C (makeLaTeXFile): Use language_use_babel and 
+	language_global_options.
+
 2001-05-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/examples/de_splash.lyx: update from Pit Suetterlin

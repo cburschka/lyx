@@ -227,16 +227,22 @@ void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 }
 
 
+extern bool use_babel;
+
 int InsetQuotes::Latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-	string doclang = buf->GetLanguage()->lang();
+	string const doclang = buf->GetLanguage()->lang();
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
 	if (lyxrc.fontenc == "T1") {
 		qstr = latex_quote_t1[times][quoteind];
+#ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
+#else
+	} else if (!use_babel) {
+#endif
 		qstr = latex_quote_ot1[times][quoteind];
 	} else if (language == InsetQuotes::FrenchQ 
 		 && times == InsetQuotes::DoubleQ

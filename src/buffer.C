@@ -1580,6 +1580,7 @@ void Buffer::writeFileAscii(ostream & ofs, int linelen)
 	ofs << "\n";
 }
 
+bool use_babel;
 
 void Buffer::makeLaTeXFile(string const & fname, 
 			   string const & original_path,
@@ -1708,24 +1709,28 @@ void Buffer::makeLaTeXFile(string const & fname,
 			options += "landscape,";
 		
 		// language should be a parameter to \documentclass
-		bool use_babel = false;
+		use_babel = false;
+		string language_options;
 		if (params.language->babel() == "hebrew"
 		    && default_language->babel() != "hebrew")
 			 // This seems necessary
 			features.UsedLanguages.insert(default_language);
+
+		if (lyxrc.language_use_babel ||
 #ifdef DO_USE_DEFAULT_LANGUAGE
-		if (params.language->lang() != "default" ||
-		    !features.UsedLanguages.empty()) {
+		    params.language->lang() != "default" ||
 #endif
+		    params.language->lang() != lyxrc.default_language ||
+		    !features.UsedLanguages.empty()) {
 			use_babel = true;
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
 				     features.UsedLanguages.begin();
 			     cit != features.UsedLanguages.end(); ++cit)
-				options += (*cit)->babel() + ",";
-			options += params.language->babel() + ',';
-#ifdef DO_USE_DEFAULT_LANGUAGE
+				language_options += (*cit)->babel() + ',';
+			language_options += params.language->babel();
+			if (lyxrc.language_global_options)
+				options += language_options + ',';
 		}
-#endif
 
 		// the user-defined options
 		if (!params.options.empty()) {
@@ -1901,7 +1906,12 @@ void Buffer::makeLaTeXFile(string const & fname,
 		// We try to load babel late, in case it interferes
 		// with other packages.
 		if (use_babel) {
-			ofs << lyxrc.language_package << endl;
+			string tmp = lyxrc.language_package;
+			if (!lyxrc.language_global_options
+			    && tmp == "\\usepackage{babel}")
+				tmp = "\\usepackage[" +
+					language_options + "]{babel}";
+			ofs << tmp << "\n";
 			texrow.newline();
 		}
 

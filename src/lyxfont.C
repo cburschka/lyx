@@ -689,8 +689,8 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 				count += 3;
 			}
 		} else {
-			string tmp = '{' + 
-				subst(lyxrc.language_command_begin,
+			string tmp =
+				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
 			os << tmp;
 			count += tmp.length();

@@ -16,6 +16,8 @@
 extern FD_LaTeXLog *fd_latex_log;
 extern BufferView *current_view;
 
+using std::endl;
+
 void ShowLatexLog()
 {
 	string filename, fname, bname, path;
