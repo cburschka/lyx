@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>430</width>
+            <width>426</width>
             <height>484</height>
         </rect>
     </property>
@@ -590,11 +590,15 @@
                                 <class>QLabel</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>TextLabel4_2_2</cstring>
+                                    <cstring>displayscaleL</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>enabled</name>
-                                    <bool>false</bool>
+                                    <bool>true</bool>
+                                </property>
+                                <property stdset="1">
+                                    <name>focusPolicy</name>
+                                    <enum>NoFocus</enum>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1485,7 +1489,7 @@
     </connection>
     <connection>
         <sender>origin</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>

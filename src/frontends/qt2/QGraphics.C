@@ -121,12 +121,9 @@ void QGraphics::update_contents()
 
 	dialog_->filename->setText(igp.filename.c_str());
 
-	// set the bounding box values, if exists. First we need the whole
-	// path, because the controller knows nothing about the doc-dir
 	controller().bbChanged = false;
 	if (igp.bb.empty()) {
-		string const fileWithAbsPath(MakeAbsPath(igp.filename, OnlyPath(igp.filename)));
-		string const bb(controller().readBB(fileWithAbsPath));
+		string const bb(controller().readBB(igp.filename));
 		if (!bb.empty()) {
 			// get the values from the file
 			// in this case we always have the point-unit
@@ -274,8 +271,7 @@ void QGraphics::get()
 {
 	string const filename(dialog_->filename->text());
 	if (!filename.empty()) {
-		string const fileWithAbsPath(MakeAbsPath(filename, OnlyPath(filename)));
-		string const bb(controller().readBB(fileWithAbsPath));
+		string const bb(controller().readBB(filename));
 		if (!bb.empty()) {
 			dialog_->lbX->setText(token(bb, ' ', 0).c_str());
 			dialog_->lbY->setText(token(bb, ' ', 1).c_str());
@@ -290,5 +286,6 @@ void QGraphics::get()
 bool QGraphics::isValid()
 {
 	// FIXME: we need more here.
+	// why?? LaTeX needs a filename, the rest is user-specific  (Herbert)
 	return !string(dialog_->filename->text().latin1()).empty();
 }
