@@ -4,7 +4,6 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "support/filetools.h" // LibFileSearch
-#include "support/lyxfunctional.h"
 
 #include <map>
 
@@ -131,7 +130,7 @@ latexkeys_a wordlist_array[] =
 	{"widetilde",  LM_TK_DECORATION, 0},
 	{"{",  LM_TK_SPECIAL, '{'},
 	{"|",  LM_TK_UNDEF, '|'},
-	{"}",  LM_TK_SPECIAL, '}'},
+	{"}",  LM_TK_SPECIAL, '}'}
 };
 
 
@@ -184,7 +183,11 @@ void ReadSymbols(string const & filename)
 			tmp.id = lex.getInteger();
 		if (lex.next())
 			tmp.type = symbolType(lex.getString());
-		wordlist[tmp.name] = tmp;
+		if (wordlist.find(tmp.name) != wordlist.end())
+			lyxerr << "ReadSymbols: token " << tmp.name
+			       << " already exists.\n";
+		else
+			wordlist[tmp.name] = tmp;
 	}
 }
 
