@@ -68,6 +68,8 @@ libcontrollers_la_SOURCES= \
 	ControlMath.h \
 	ControlMinipage.C \
 	ControlMinipage.h \
+	ControlNote.C \
+	ControlNote.h \
 	ControlParagraph.C \
 	ControlParagraph.h \
 	ControlPreamble.C \

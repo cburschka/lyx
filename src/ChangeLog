@@ -1,3 +1,19 @@
+2003-07-08	Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extend Note inset to other forms of annotation like Comment
+	and Greyedout. Right button click gives dialog.
+
+	Files modified or added (+):
+
+	* insetnote.[Ch]
+	* FormNote.[Ch]      +
+	* ControlNote.[Ch]   +
+	* form_note.fd       +
+	* Makefile.am in frontends/xforms, frontends/xforms/forms,
+	frontends/controllers
+	* xforms/Dialogs.C
+	* factory.C
+
 2003-07-01  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* aspell.C: add missing namespace lyx::support

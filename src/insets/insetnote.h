@@ -15,15 +15,30 @@
 
 #include "insetcollapsable.h"
 
-/** The PostIt note inset
+  
+ struct InsetNoteParams {
+ 	///
+ 	void write(std::ostream & os) const;
+ 	///
+ 	void read(LyXLex & lex);
+ 	///
+ 	string type;
+};
+ 
+ 
+/** The PostIt note inset, and other annotations
 
 */
 class InsetNote : public InsetCollapsable {
 public:
 	///
-	InsetNote(BufferParams const &);
-	///
+
+	
+	InsetNote(BufferParams const &, string const &);
+	/// Copy constructor
 	InsetNote(InsetNote const &);
+	///
+	~InsetNote();
 	///
 	InsetBase * clone() const;
 	///
@@ -33,24 +48,58 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
+	void read(Buffer const * buf, LyXLex & lex);
+	///
+	void setButtonLabel();
+	///
+	dispatch_result InsetNote::localDispatch(FuncRequest const &);
+	///
 	int latex(Buffer const *, std::ostream &,
-		  LatexRunParams const &) const
-		{ return 0; }
+			LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const
-		{ return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool) const
-		{ return 0; }
+	int docbook(Buffer const *, std::ostream &, bool) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int) const
-		{ return 0; }
+	int ascii(Buffer const *, std::ostream &, int) const;
 	///
-	void validate(LaTeXFeatures &) const {}
+	void validate(LaTeXFeatures &) const;
+	///
+	InsetNoteParams const & params() const { return params_; }
+
 private:
+	friend class InsetNoteParams;
+
 	/// used by the constructors
 	void init();
-
+	///
+	InsetNoteParams params_;
 };
+
+#include "mailinset.h"
+
+class InsetNoteMailer : public MailInset {
+public:
+	///
+	InsetNoteMailer(string const & name, InsetNote & inset);
+	///
+	virtual InsetBase & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static string const params2string(string const &, InsetNoteParams const &);
+	///
+	static void string2params(string const &, InsetNoteParams &);
+
+private:
+	///
+	string const name_;
+	///
+	InsetNote & inset_;
+};
+
+
 
 #endif

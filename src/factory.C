@@ -71,7 +71,7 @@ Inset * createInset(FuncRequest const & cmd)
 		return new InsetMinipage(params);
 
 	case LFUN_INSERT_NOTE:
-		return new InsetNote(params);
+		return new InsetNote(params, "Note");
 
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);
@@ -348,8 +348,9 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetFormula;
 		} else if (tmptok == "Graphics") {
 			inset = new InsetGraphics;
-		} else if (tmptok == "Note") {
-			inset = new InsetNote(buf.params);
+		} else if (tmptok == "Note"	|| tmptok == "Comment" 
+				|| tmptok == "Greyedout") {
+			inset = new InsetNote(buf.params, tmptok); 
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);
