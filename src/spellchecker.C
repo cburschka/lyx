@@ -34,6 +34,10 @@
 #endif
 
 #ifdef HAVE_SYS_SELECT_H
+# ifdef HAVE_STRINGS_H
+   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
+#  include <strings.h> 
+# endif
 #include <sys/select.h>
 #endif
 

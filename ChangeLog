@@ -1,3 +1,10 @@
+2000-07-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: add check for strings.h header.
+
+	* src/spellchecker.C: include <strings.h> to make sure that
+	bzero() is defined (needed by FD_ZERO at least on AIX).
+
 2000-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
  	* src/LaTeX.C: Patch from Baruch to add hebrew table of
