@@ -79,10 +79,6 @@ public:
 	typedef char value_type;
 	/// The same as ParameterStruct::depth_type 
 	typedef unsigned int depth_type;
-	/// a position in the paragraph
-	typedef lyx::pos_type pos_type;
-	/// a layout number
-	typedef lyx::layout_type layout_type;
 
 	///
 	Paragraph();
@@ -107,7 +103,7 @@ public:
 	///
 	string const asString(Buffer const *, bool label);
 	///
-	string const asString(Buffer const *, pos_type beg, pos_type end,
+	string const asString(Buffer const *, lyx::pos_type beg, lyx::pos_type end,
 			      bool label);
 	
 	///
@@ -156,14 +152,14 @@ public:
 	void resizeInsetsLyXText(BufferView *);
 
 	///
-	pos_type size() const;
+	lyx::pos_type size() const;
 	///
 	void setContentsFromPar(Paragraph * par);
 	///
 	void clearContents();
 
 	///
-	layout_type layout;
+	lyx::layout_type layout;
 
 	///
 	void setCounter(int i, int v);
@@ -214,30 +210,30 @@ public:
 	///
 	void setLabelWidthString(string const & s);
 	///
-	layout_type getLayout() const;
+	lyx::layout_type getLayout() const;
 	///
 	char getAlign() const;
 	///
 	depth_type getDepth() const;
 	///
-	void setLayout(layout_type new_layout);
+	void setLayout(lyx::layout_type new_layout);
 	///
-	void setOnlyLayout(layout_type new_layout);
+	void setOnlyLayout(lyx::layout_type new_layout);
 	///
 	int getFirstCounter(int i) const;
 	///
-	void erase(pos_type pos);
+	void erase(lyx::pos_type pos);
 	/** the flag determines wether the layout should be copied
 	 */ 
-	void breakParagraph(BufferParams const &, pos_type pos, int flag);
+	void breakParagraph(BufferParams const &, lyx::pos_type pos, int flag);
 	///
-	void breakParagraphConservative(BufferParams const &, pos_type pos);
+	void breakParagraphConservative(BufferParams const &, lyx::pos_type pos);
 	/** Get unistantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
 	LyXFont const
-	getFontSettings(BufferParams const &, pos_type pos) const;
+	getFontSettings(BufferParams const &, lyx::pos_type pos) const;
 	///
 	LyXFont const getFirstFontSettings() const;
 
@@ -248,62 +244,62 @@ public:
 	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
 	    LyXFont::TOGGLE.
 	*/
-	LyXFont const getFont(BufferParams const &, pos_type pos) const;
+	LyXFont const getFont(BufferParams const &, lyx::pos_type pos) const;
 	LyXFont const getLayoutFont(BufferParams const &) const;
 	LyXFont const getLabelFont(BufferParams const &) const;
 	///
-	value_type getChar(pos_type pos) const;
+	value_type getChar(lyx::pos_type pos) const;
 	///
-	value_type getUChar(BufferParams const &, pos_type pos) const;
+	value_type getUChar(BufferParams const &, lyx::pos_type pos) const;
 	/// The position must already exist.
-	void setChar(pos_type pos, value_type c);
+	void setChar(lyx::pos_type pos, value_type c);
 	///
-	void setFont(pos_type pos, LyXFont const & font);
+	void setFont(lyx::pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
-	LyXFont::FONT_SIZE highestFontInRange(pos_type startpos,
-	                                      pos_type endpos,
+	LyXFont::FONT_SIZE highestFontInRange(lyx::pos_type startpos,
+	                                      lyx::pos_type endpos,
 										  LyXFont::FONT_SIZE const def_size) const;
 	///
-	void insertChar(pos_type pos, value_type c);
+	void insertChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(pos_type pos, value_type c, LyXFont const &);
+	void insertChar(lyx::pos_type pos, value_type c, LyXFont const &);
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(pos_type pos, Inset * inset);
+	void insertInset(lyx::pos_type pos, Inset * inset);
 	///
-	void insertInset(pos_type pos, Inset * inset, LyXFont const &);
+	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const &);
 	///
 	bool insetAllowed(Inset::Code code);
 	///
-	Inset * getInset(pos_type pos);
+	Inset * getInset(lyx::pos_type pos);
 	///
-	Inset const * getInset(pos_type pos) const;
+	Inset const * getInset(lyx::pos_type pos) const;
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
 	    get rid of the argument to Inset::clone(Buffer const &) */
-	void copyIntoMinibuffer(Buffer const &, pos_type pos) const;
+	void copyIntoMinibuffer(Buffer const &, lyx::pos_type pos) const;
 	///
-	void cutIntoMinibuffer(BufferParams const &, pos_type pos);
+	void cutIntoMinibuffer(BufferParams const &, lyx::pos_type pos);
 	///
-	bool insertFromMinibuffer(pos_type pos);
+	bool insertFromMinibuffer(lyx::pos_type pos);
 
 	///
-	bool isHfill(pos_type pos) const;
+	bool isHfill(lyx::pos_type pos) const;
 	///
-	bool isInset(pos_type pos) const;
+	bool isInset(lyx::pos_type pos) const;
 	///
-	bool isNewline(pos_type pos) const;
+	bool isNewline(lyx::pos_type pos) const;
 	///
-	bool isSeparator(pos_type pos) const;
+	bool isSeparator(lyx::pos_type pos) const;
 	///
-	bool isLineSeparator(pos_type pos) const;
+	bool isLineSeparator(lyx::pos_type pos) const;
 	///
-	bool isKomma(pos_type pos) const;
+	bool isKomma(lyx::pos_type pos) const;
 	/// Used by the spellchecker
-	bool isLetter(pos_type pos) const;
+	bool isLetter(lyx::pos_type pos) const;
 	/// 
-	bool isWord(pos_type pos) const;
+	bool isWord(lyx::pos_type pos) const;
 
 	/** This one resets all layout and dtp switches but not the font
 	    of the single characters
@@ -346,11 +342,11 @@ private:
 	///
 	struct InsetTable {
 		///
-		pos_type pos;
+		lyx::pos_type pos;
 		///
 		Inset * inset;
 		///
-		InsetTable(pos_type p, Inset * i) : pos(p), inset(i) {}
+		InsetTable(lyx::pos_type p, Inset * i) : pos(p), inset(i) {}
 	};
 
 	///
@@ -373,7 +369,7 @@ public:
 		///
 		Inset * operator*() { return it->inset; }
 		///
-		pos_type getPos() const { return it->pos; }
+		lyx::pos_type getPos() const { return it->pos; }
 		///
 		bool operator==(inset_iterator const & iter) const {
 			return it == iter.it;
@@ -394,7 +390,7 @@ public:
 	///
 	inset_iterator inset_iterator_end();
 	///
-	inset_iterator InsetIterator(pos_type pos);
+	inset_iterator InsetIterator(lyx::pos_type pos);
 
 private:
 	/// if anything uses this we don't want it to.

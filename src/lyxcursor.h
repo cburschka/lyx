@@ -25,8 +25,6 @@ class Row;
  */
 class LyXCursor {
 public:
-	/// position in a paragraph
-	typedef lyx::pos_type pos_type;
 	///
 	LyXCursor();
 	///
@@ -34,9 +32,9 @@ public:
 	///
 	Paragraph * par() const;
 	///
-	void pos(pos_type p);
+	void pos(lyx::pos_type p);
 	///
-	pos_type pos() const;
+	lyx::pos_type pos() const;
 	///
 	void boundary(bool b);
 	///
@@ -61,7 +59,7 @@ private:
 	/// The paragraph the cursor is in.
 	Paragraph * par_;
 	/// The position inside the paragraph
-	pos_type pos_;
+	lyx::pos_type pos_;
 	///
 	bool boundary_;
 	///

@@ -23,8 +23,6 @@ class LyXScreen;
 
 ///
 struct BufferView::Pimpl : public SigC::Object {
-	/// position in a paragraph
-	typedef lyx::pos_type pos_type;
 	///
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
@@ -178,11 +176,11 @@ private:
 		/// Cursor paragraph Id
 		int par_id;
 		/// Cursor position
-		pos_type par_pos;
+		lyx::pos_type par_pos;
 		///
 		Position() : par_id(0), par_pos(0) {}
 		///
-		Position(string const & f, int id, pos_type pos)
+		Position(string const & f, int id, lyx::pos_type pos)
 			: filename(f), par_id(id), par_pos(pos) {}
 	};
 	///

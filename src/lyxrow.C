@@ -29,13 +29,13 @@ void Row::par(Paragraph * p)
 }
 
 
-void Row::pos(pos_type p)
+void Row::pos(lyx::pos_type p)
 {
 	pos_ = p;
 }
 
 
-Row::pos_type Row::pos() const
+lyx::pos_type Row::pos() const
 {
 	return pos_;
 }

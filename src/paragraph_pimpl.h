@@ -29,7 +29,7 @@ struct Paragraph::Pimpl {
 	/// Copy constructor
 	Pimpl(Pimpl const &, Paragraph * owner, bool same_ids = false);
 	///
-	pos_type size() const {
+	lyx::pos_type size() const {
 		return text.size();
 	}
 	///
@@ -37,15 +37,15 @@ struct Paragraph::Pimpl {
 	///
 	void setContentsFromPar(Paragraph const * par);
 	///
-	value_type getChar(pos_type pos) const;
+	value_type getChar(lyx::pos_type pos) const;
 	///
-	void setChar(pos_type pos, value_type c);
+	void setChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(pos_type pos, value_type c, LyXFont const & font);
+	void insertChar(lyx::pos_type pos, value_type c, LyXFont const & font);
 	///
-	void insertInset(pos_type pos, Inset * inset, LyXFont const & font);
+	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const & font);
 	///
-	void erase(pos_type pos);
+	void erase(lyx::pos_type pos);
 	///
 	LyXFont const realizeFont(LyXFont const & font,
 				  BufferParams const & bparams) const;
@@ -77,22 +77,22 @@ struct Paragraph::Pimpl {
 	*/
 	struct FontTable  {
 		///
-		FontTable(pos_type p, LyXFont const & f)
+		FontTable(lyx::pos_type p, LyXFont const & f)
 			: pos_(p)
 			{
 				font_ = container.get(f);
 			}
 		///
-		pos_type pos() const { return pos_; }
+		lyx::pos_type pos() const { return pos_; }
 		///
-		void pos(pos_type p) { pos_ = p; }
+		void pos(lyx::pos_type p) { pos_ = p; }
 		///
 		LyXFont const & font() const { return *font_; }
 		///
 		void font(LyXFont const & f) { font_ = container.get(f);}
 	private:
 		/// End position of paragraph this font attribute covers
-		pos_type pos_;
+		lyx::pos_type pos_;
 		/** Font. Interpretation of the font values:
 		    If a value is LyXFont::INHERIT_*, it means that the font 
 		    attribute is inherited from either the layout of this
@@ -126,7 +126,7 @@ struct Paragraph::Pimpl {
 				 std::ostream &, TexRow & texrow);
 	///
 	void simpleTeXBlanks(std::ostream &, TexRow & texrow,
-			     pos_type const i,
+			     lyx::pos_type const i,
 			     int & column, LyXFont const & font,
 			     LyXLayout const & style);
 	///
@@ -136,7 +136,7 @@ struct Paragraph::Pimpl {
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont, bool & open_font,
 				   LyXLayout const & style,
-				   pos_type & i,
+				   lyx::pos_type & i,
 				   int & column, value_type const c);
 	///
 	Paragraph * getParFromID(int id) const;
@@ -148,7 +148,7 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 private:
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(string const & str, pos_type pos);
+	bool isTextAt(string const & str, lyx::pos_type pos);
  
 	/// Who owns us?
 	Paragraph * owner_;

@@ -14,6 +14,9 @@
 #include "buffer.h"
 #include "gettext.h"
 
+using lyx::pos_type;
+
+
 ///
 // locally used enum
 ///
@@ -28,7 +31,7 @@ enum SearchResult {
 
 
 /// returns true if the specified string is at the specified  position
-bool IsStringInText(Paragraph * par, Paragraph::pos_type pos,
+bool IsStringInText(Paragraph * par, pos_type pos,
                     string const & str, bool const & = true,
                     bool const & = false);
 
@@ -140,7 +143,7 @@ bool LyXFind(BufferView * bv,
 		else {
 			text = bv->getLyXText();
 			Paragraph * par = text->cursor.par();
-			Paragraph::pos_type pos = text->cursor.pos();
+			pos_type pos = text->cursor.pos();
 			if (forward) {
 				if (pos < par->size() - 1)
 					++pos;
@@ -183,7 +186,7 @@ bool LyXFind(BufferView * bv,
 
 
 // returns true if the specified string is at the specified position
-bool IsStringInText(Paragraph * par, Paragraph::pos_type pos,
+bool IsStringInText(Paragraph * par, pos_type pos,
 		    string const & str, bool const & cs,
 		    bool const & mw)
 {
@@ -191,7 +194,7 @@ bool IsStringInText(Paragraph * par, Paragraph::pos_type pos,
 		return false;
    
 	string::size_type size = str.length();
-	Paragraph::pos_type i = 0;
+	pos_type i = 0;
 	while (((pos + i) < par->size())
 	       && (string::size_type(i) < size)
 	       && (cs ? (str[i] == par->getChar(pos + i))
@@ -204,7 +207,7 @@ bool IsStringInText(Paragraph * par, Paragraph::pos_type pos,
 		if (!mw)
 			return true;
 		if ((pos <= 0 || !IsLetterCharOrDigit(par->getChar(pos - 1)))
-			&& (pos + Paragraph::pos_type(size) >= par->size()
+			&& (pos + pos_type(size) >= par->size()
 			|| !IsLetterCharOrDigit(par->getChar(pos + size)))) {
 			return true;
 		}
@@ -219,7 +222,7 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
                            bool const & cs, bool const & mw)
 {
 	Paragraph * par = text->cursor.par();
-	Paragraph::pos_type pos = text->cursor.pos();
+	pos_type pos = text->cursor.pos();
 	UpdatableInset * inset;
 
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
@@ -280,7 +283,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
                             bool const & cs, bool const & mw)
 {
 	Paragraph * par = text->cursor.par();
-	Paragraph::pos_type pos = text->cursor.pos();
+	pos_type pos = text->cursor.pos();
 
 	do {
 		if (pos > 0)

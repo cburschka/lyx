@@ -38,10 +38,6 @@ class VSpace;
   */
 class LyXText {
 public:
-	/// a position in the text
-	typedef lyx::pos_type pos_type;
-	/// a layout number
-	typedef lyx::layout_type layout_type;
 	///
 	enum text_status {
 		///
@@ -100,16 +96,17 @@ public:
 	///
 	int getRealCursorX(BufferView *) const;
 	///
-	LyXFont const getFont(Buffer const *, Paragraph * par, pos_type pos) const;
+	LyXFont const getFont(Buffer const *, Paragraph * par,
+		lyx::pos_type pos) const;
 	///
 	LyXFont const getLayoutFont(Buffer const *, Paragraph * par) const;
 	///
 	LyXFont const getLabelFont(Buffer const *, Paragraph * par) const;
 	///
 	void setCharFont(Buffer const *, Paragraph * par,
-	                 pos_type pos, LyXFont const & font);
+	                 lyx::pos_type pos, LyXFont const & font);
 	void setCharFont(BufferView *, Paragraph * par,
-	                 pos_type pos, LyXFont const & font, bool toggleall);
+	                 lyx::pos_type pos, LyXFont const & font, bool toggleall);
 	/// returns a pointer to the very first Paragraph
 	Paragraph * firstParagraph() const;
   
@@ -122,9 +119,9 @@ public:
 	Paragraph * setLayout(BufferView *, LyXCursor & actual_cursor,
 				 LyXCursor & selection_start,
 				 LyXCursor & selection_end,
-				 layout_type layout);
+				 lyx::layout_type layout);
 	///
-	void setLayout(BufferView *, layout_type layout);
+	void setLayout(BufferView *, lyx::layout_type layout);
 	
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(Buffer const *, Paragraph * par);
@@ -199,7 +196,7 @@ public:
 	///
 	mutable Row * refresh_row;
 	///
-	pos_type refresh_pos;
+	lyx::pos_type refresh_pos;
 
 	/// give and set the LyXText status
 	text_status status() const;
@@ -222,14 +219,14 @@ public:
 	/** returns the column near the specified x-coordinate of the row 
 	 x is set to the real beginning of this column
 	 */ 
-	pos_type getColumnNearX(BufferView *, Row * row,
+	lyx::pos_type getColumnNearX(BufferView *, Row * row,
 					    int & x, bool & boundary) const;
 	
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
 	 */
 	Row * getRow(Paragraph * par,
-		     pos_type pos, int & y) const;
+		     lyx::pos_type pos, int & y) const;
 
 	/** returns the height of a default row, needed  for scrollbar
 	 */
@@ -306,16 +303,16 @@ public:
 	void selectSelectedWord(BufferView *);
 	///
 	void setCursor(BufferView *, Paragraph * par,
-		       pos_type pos,
+		       lyx::pos_type pos,
 		       bool setfont = true,
 		       bool boundary = false) const;
 	///
 	void setCursor(BufferView *, LyXCursor &, Paragraph * par,
-		       pos_type pos,
+		       lyx::pos_type pos,
 		       bool boundary = false) const;
 	///
 	void setCursorIntern(BufferView *, Paragraph * par,
-			     pos_type pos,
+			     lyx::pos_type pos,
 			     bool setfont = true,
 			     bool boundary = false) const;
 	///
@@ -323,10 +320,10 @@ public:
 
 	///
 	bool isBoundary(Buffer const *, Paragraph * par,
-			pos_type pos) const;
+			lyx::pos_type pos) const;
 	///
 	bool isBoundary(Buffer const *, Paragraph * par,
-			 pos_type pos,
+			 lyx::pos_type pos,
 			 LyXFont const & font) const;
 
 	///
@@ -457,9 +454,9 @@ public:
 	/// returns false if inset wasn't found
 	bool updateInset(BufferView *, Inset *);
 	///
-	void checkParagraph(BufferView *, Paragraph * par, pos_type pos);
+	void checkParagraph(BufferView *, Paragraph * par, lyx::pos_type pos);
 	///
-	int numberOfCell(Paragraph * par, pos_type pos) const;
+	int numberOfCell(Paragraph * par, lyx::pos_type pos) const;
 	///
 	void removeTableRow(LyXCursor & cursor) const;
 	///
@@ -475,7 +472,7 @@ public:
 
 	/// Maps positions in the visual string to positions in logical string.
 	inline
-	pos_type log2vis(pos_type pos) const {
+	lyx::pos_type log2vis(lyx::pos_type pos) const {
 		if (bidi_start == -1)
 			return pos;
 		else
@@ -484,7 +481,7 @@ public:
 
 	/// Maps positions in the logical string to positions in visual string.
 	inline
-	pos_type vis2log(pos_type pos) const {
+	lyx::pos_type vis2log(lyx::pos_type pos) const {
 		if (bidi_start == -1)
 			return pos;
 		else
@@ -492,7 +489,7 @@ public:
 	}
 	///
 	inline
-	pos_type bidi_level(pos_type pos) const {
+	lyx::pos_type bidi_level(lyx::pos_type pos) const {
 		if (bidi_start == -1)
 			return 0;
 		else
@@ -500,7 +497,7 @@ public:
 	}	
 	///
 	inline
-	bool bidi_InRange(pos_type pos) const {
+	bool bidi_InRange(lyx::pos_type pos) const {
 		return bidi_start == -1 ||
 			(bidi_start <= pos && pos <= bidi_end);
 	}
@@ -514,11 +511,11 @@ private:
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
-	layout_type copylayouttype;
+	lyx::layout_type copylayouttype;
 
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
-	void insertRow(Row * row, Paragraph * par, pos_type pos) const;
+	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos) const;
 	/** removes the row and reset the touched counters */
 	void removeRow(Row * row) const;
 
@@ -620,15 +617,17 @@ private:
 	 */
 	
 	///
-	int singleWidth(BufferView *, Paragraph * par, pos_type pos) const;
+	int singleWidth(BufferView *, Paragraph * par,
+		lyx::pos_type pos) const;
 	///
-	int singleWidth(BufferView *, Paragraph * par, pos_type pos, char c) const;
+	int singleWidth(BufferView *, Paragraph * par,
+		lyx::pos_type pos, char c) const;
 	///
 	void draw(BufferView *, Row const * row,
-		  pos_type & pos, int offset, float & x, bool cleared);
+		  lyx::pos_type & pos, int offset, float & x, bool cleared);
 
 	/// get the next breakpoint in a given paragraph
-	pos_type nextBreakPoint(BufferView *, Row const * row, int width) const;
+	lyx::pos_type nextBreakPoint(BufferView *, Row const * row, int width) const;
 	/// returns the minimum space a row needs on the screen in pixel
 	int fill(BufferView *, Row * row, int workwidth) const;
 	
@@ -637,7 +636,7 @@ private:
 	int labelFill(BufferView *, Row const * row) const;
 
 	///
-	pos_type beginningOfMainBody(Buffer const *, Paragraph const * par) const;
+	lyx::pos_type beginningOfMainBody(Buffer const *, Paragraph const * par) const;
 	
 	/** Returns the left beginning of the text.
 	  This information cannot be taken from the layouts-objekt, because
@@ -668,39 +667,39 @@ private:
 	  LaTeX
 	  */
 	bool hfillExpansion(Buffer const *, Row const * row_ptr,
-			    pos_type pos) const;
+			    lyx::pos_type pos) const;
 	/// 
 	LColor::color backgroundColor();
 
 
 	///
-	mutable std::vector<pos_type> log2vis_list;
+	mutable std::vector<lyx::pos_type> log2vis_list;
 
 	///
-	mutable std::vector<pos_type> vis2log_list;
+	mutable std::vector<lyx::pos_type> vis2log_list;
 
 	///
-	mutable std::vector<pos_type> bidi_levels;
+	mutable std::vector<lyx::pos_type> bidi_levels;
 
 	///
-	mutable pos_type bidi_start;
+	mutable lyx::pos_type bidi_start;
 
 	///
-	mutable pos_type bidi_end;
+	mutable lyx::pos_type bidi_end;
 
 	///
 	mutable bool bidi_same_direction;
 
 	///
 	unsigned char transformChar(unsigned char c, Paragraph * par,
-				    pos_type pos) const;
+				    lyx::pos_type pos) const;
 
 	/** returns the paragraph position of the last character in the 
 	  specified row
 	  */
-	pos_type rowLast(Row const * row) const;
+	lyx::pos_type rowLast(Row const * row) const;
 	///
-	pos_type rowLastPrintable(Row const * row) const;
+	lyx::pos_type rowLastPrintable(Row const * row) const;
 
 	///
 	void charInserted();

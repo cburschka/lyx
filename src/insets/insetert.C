@@ -29,6 +29,8 @@
 #include "debug.h"
 
 using std::ostream;
+using lyx::pos_type;
+
 
 void InsetERT::init()
 {
@@ -38,7 +40,6 @@ void InsetERT::init()
 	labelfont.decSize();
 	labelfont.setColor(LColor::latex);
 	setInsetName("ERT");
-		
 }
 
 
@@ -82,7 +83,7 @@ InsetERT::InsetERT(string const & contents, bool collapsed)
 	font.setColor(LColor::latex);
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
-	Paragraph::pos_type pos = 0;
+	pos_type pos = 0;
 	for (; cit != end; ++cit) {
 		inset.paragraph()->insertChar(pos++, *cit, font);
 	}
@@ -150,8 +151,8 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 	font.setColor(LColor::latex);
 	Paragraph * par = inset.paragraph();
 	while (par) {
-		Paragraph::pos_type siz = par->size();
-		for (Paragraph::pos_type i = 0; i < siz; ++i) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
 			par->setFont(i, font);
 		}
 		par = par->next();
@@ -193,8 +194,8 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	Paragraph * par = inset.paragraph();
 	while (par) {
 		os << "\n\\layout " << layout << "\n";
-		Paragraph::pos_type siz = par->size();
-		for (Paragraph::pos_type i = 0; i < siz; ++i) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_INSET:
@@ -311,8 +312,8 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 	Paragraph * par = inset.paragraph();
 	int lines = 0;
 	while (par) {
-		Paragraph::pos_type siz = par->size();
-		for (Paragraph::pos_type i = 0; i < siz; ++i) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_NEWLINE:
@@ -347,8 +348,8 @@ int InsetERT::linuxdoc(Buffer const *, std::ostream & os) const
 	Paragraph * par = inset.paragraph();
 	int lines = 0;
 	while (par) {
-		Paragraph::pos_type siz = par->size();
-		for (Paragraph::pos_type i = 0; i < siz; ++i) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_NEWLINE:
@@ -376,8 +377,8 @@ int InsetERT::docbook(Buffer const *, std::ostream & os) const
 	Paragraph * par = inset.paragraph();
 	int lines = 0;
 	while (par) {
-		Paragraph::pos_type siz = par->size();
-		for (Paragraph::pos_type i = 0; i < siz; ++i) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_NEWLINE:
@@ -438,10 +439,9 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 string const InsetERT::get_new_label() const
 {
 	string la;
-	Paragraph::pos_type const max_length = 15;
-
-	Paragraph::pos_type const p_siz = inset.paragraph()->size();
-	Paragraph::pos_type const n = std::min(max_length, p_siz);
+	pos_type const max_length = 15;
+	pos_type const p_siz = inset.paragraph()->size();
+	pos_type const n = std::min(max_length, p_siz);
 	int i = 0;
 	int j = 0;
 	for(; i < n && j < p_siz; ++j) {

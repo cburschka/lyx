@@ -49,6 +49,7 @@ using std::find;
 using std::endl;
 using std::find;
 using std::pair;
+using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
@@ -498,7 +499,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 Paragraph * LyXText::setLayout(BufferView * bview,
 			       LyXCursor & cur, LyXCursor & sstart_cur,
 			       LyXCursor & send_cur,
-			       layout_type layout)
+			       lyx::layout_type layout)
 {
 	Paragraph * endpar = send_cur.par()->next();
 	Paragraph * undoendpar = endpar;
@@ -560,7 +561,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void LyXText::setLayout(BufferView * bview, layout_type layout)
+void LyXText::setLayout(BufferView * bview, lyx::layout_type layout)
 {
 	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
 
@@ -1163,7 +1164,7 @@ string LyXText::getStringToIndex(BufferView * bview)
 }
 
 
-LyXText::pos_type LyXText::beginningOfMainBody(Buffer const * buf,
+pos_type LyXText::beginningOfMainBody(Buffer const * buf,
 			     Paragraph const * par) const
 {
 	if (textclasslist.Style(buf->params.textclass,

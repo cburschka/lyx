@@ -308,7 +308,7 @@ private:
 	///
 	int cy(BufferView *) const;
 	///
-	Paragraph::pos_type cpos(BufferView *) const;
+	lyx::pos_type cpos(BufferView *) const;
 	///
 	Paragraph * cpar(BufferView *) const;
 	///
@@ -347,7 +347,7 @@ private:
 	///
 	Paragraph * inset_par;
 	///
-	Paragraph::pos_type inset_pos;
+	lyx::pos_type inset_pos;
 	///
 	bool inset_boundary;
 	///
@@ -379,9 +379,9 @@ private:
 		Paragraph * lpar;
 		Paragraph * selstartpar;
 		Paragraph * selendpar;
-		Paragraph::pos_type pos;
-		Paragraph::pos_type selstartpos;
-		Paragraph::pos_type selendpos;
+		lyx::pos_type pos;
+		lyx::pos_type selstartpos;
+		lyx::pos_type selendpos;
 		bool boundary;
 		bool selstartboundary;
 		bool selendboundary;

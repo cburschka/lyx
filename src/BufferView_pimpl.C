@@ -78,6 +78,7 @@ using std::endl;
 using std::make_pair;
 using std::min;
 using SigC::slot;
+using lyx::pos_type;
 
 /* the selection possible is needed, that only motion events are 
  * used, where the bottom press event was on the drawing area too */

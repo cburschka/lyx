@@ -28,6 +28,7 @@
 
 using std::ostream;
 
+
 void InsetNote::init()
 {
 	LyXFont font(LyXFont::ALL_SANE);
@@ -68,7 +69,6 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 	init();
 
 	Paragraph * par = inset.paragraph();
-	Paragraph::pos_type pos = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, buf->params.language);
 
 	// Since XForms doesn't support RTL, we can assume that old notes
@@ -76,6 +76,7 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 	if (font.language()->RightToLeft())
 		font.setLanguage(default_language);
 
+	lyx::pos_type pos;
 	buf->insertStringAsLines(par, pos, font, strip(contents, '\n'));
 }
 

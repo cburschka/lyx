@@ -23,6 +23,8 @@
 #include "debug.h"
 #include "support/LAssert.h"
 
+using lyx::pos_type;
+
 extern int tex_code_break_column;
 
 

@@ -61,6 +61,8 @@ using std::max;
 using std::make_pair;
 using std::vector;
 
+using lyx::pos_type;
+
 extern unsigned char getCurrentTextClass(Buffer *);
 extern bool math_insert_greek(BufferView *, char);
 extern int greek_kb_flag;
@@ -2008,7 +2010,7 @@ int InsetText::cy(BufferView * bv) const
 }
 
 
-Paragraph::pos_type InsetText::cpos(BufferView * bv) const
+pos_type InsetText::cpos(BufferView * bv) const
 {
 	return getLyXText(bv)->cursor.pos();
 }
@@ -2449,7 +2451,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 			clear = true;
 		}
 		Paragraph * lpar = lt->cursor.par();
-		Paragraph::pos_type pos = lt->cursor.pos();
+		pos_type pos = lt->cursor.pos();
 		if (pos < lpar->size() - 1)
 			++pos;
 		else {

@@ -52,6 +52,9 @@ using std::lower_bound;
 using std::upper_bound;
 using std::reverse;
 
+using lyx::pos_type;
+using lyx::layout_type;
+
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can Paragraph find its buffer to get
 // parameters? (JMarc)
@@ -80,7 +83,7 @@ Paragraph::Paragraph()
 	previous_ = 0;
 	enumdepth = 0;
 	itemdepth = 0;
-        bibkey = 0; // ale970302
+	bibkey = 0; // ale970302
 	clear();
 }
 
@@ -102,8 +105,8 @@ Paragraph::Paragraph(Paragraph * par)
 	previous_->next_ = this;
 	// end
 
-        bibkey = 0; // ale970302        
-    
+	bibkey = 0; // ale970302        
+
 	clear();
 }
 
@@ -112,17 +115,17 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
 	for (int i = 0; i < 10; ++i)
-		setCounter(i , 0);
+		setCounter(i, 0);
 	enumdepth = 0;
 	itemdepth = 0;
-	next_ = 0;
+	next_     = 0;
 	previous_ = 0;
 
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout = lp.layout;
 
-        // ale970302
+	// ale970302
 	if (lp.bibkey) {
 		bibkey = static_cast<InsetBibKey *>
 			(lp.bibkey->clone(*current_view->buffer()));
@@ -131,7 +134,6 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	}
 	
 	// copy everything behind the break-position to the new paragraph
-
 	insetlist = lp.insetlist;
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it)
@@ -154,7 +156,7 @@ Paragraph::~Paragraph()
 		delete it->inset;
 	}
 
-        // ale970302
+	// ale970302
 	delete bibkey;
 
 	delete pimpl_;
@@ -382,8 +384,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 
 	// then the insets
 	LyXLayout const & layout =
-                textclasslist.Style(bparams.textclass,
-                                    getLayout());
+             textclasslist.Style(bparams.textclass, getLayout());
 
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
@@ -607,10 +608,8 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 // Gets uninstantiated font setting at position 0
 LyXFont const Paragraph::getFirstFontSettings() const
 {
-	if (size() > 0) {
-		if (!pimpl_->fontlist.empty())
-			return pimpl_->fontlist[0].font();
-	}
+	if (size() > 0 && !pimpl_->fontlist.empty())
+		return pimpl_->fontlist[0].font();
 	
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
@@ -978,7 +977,7 @@ void Paragraph::breakParagraphConservative(BufferParams const & bparams,
 		}
 	}
 }
-   
+
 
 // Be carefull, this does not make any check at all.
 // This method has wrong name, it combined this par with the next par.
@@ -987,7 +986,7 @@ void Paragraph::pasteParagraph(BufferParams const & bparams)
 {
 	// copy the next paragraph to this one
 	Paragraph * the_next = next();
-   
+
 	// first the DTP-stuff
 	params().lineBottom(the_next->params().lineBottom());
 	params().spaceBottom(the_next->params().spaceBottom());
@@ -1002,7 +1001,7 @@ void Paragraph::pasteParagraph(BufferParams const & bparams)
 		if (insertFromMinibuffer(pos_insert + j))
 			++j;
 	}
-   
+
 	// delete the next paragraph
 	Paragraph * ppar = the_next->previous_;
 	Paragraph * npar = the_next->next_;
@@ -1016,7 +1015,7 @@ int Paragraph::getEndLabel(BufferParams const & bparams) const
 	Paragraph const * par = this;
 	depth_type par_depth = getDepth();
 	while (par) {
-		Paragraph::layout_type layout = par->getLayout();
+		layout_type layout = par->getLayout();
 		int const endlabeltype =
 			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
@@ -1136,11 +1135,11 @@ int Paragraph::beginningOfMainBody() const
 Paragraph * Paragraph::depthHook(depth_type depth)
 {
 	Paragraph * newpar = this;
-  
+
 	do {
 		newpar = newpar->previous();
 	} while (newpar && newpar->getDepth() > depth);
-   
+
 	if (!newpar) {
 		if (previous() || getDepth())
 			lyxerr << "ERROR (Paragraph::DepthHook): "
@@ -1155,11 +1154,11 @@ Paragraph * Paragraph::depthHook(depth_type depth)
 Paragraph const * Paragraph::depthHook(depth_type depth) const
 {
 	Paragraph const * newpar = this;
-   
+
 	do {
 		newpar = newpar->previous();
 	} while (newpar && newpar->getDepth() > depth);
-   
+
 	if (!newpar) {
 		if (previous() || getDepth())
 			lyxerr << "ERROR (Paragraph::DepthHook): "
@@ -1265,7 +1264,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		os << params().spaceTop().asLatexCommand(bparams);
 		further_blank_line = true;
 	}
-      
+
 	if (params().lineTop()) {
 		os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
 		   << "\\vspace{-1\\parskip}";
@@ -1362,10 +1361,10 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-                if (next_ && (params().depth() < next_->params().depth())) {
-                        os << '\n';
-                        texrow.newline();
-                }
+		if (next_ && (params().depth() < next_->params().depth())) {
+			os << '\n';
+			texrow.newline();
+		}
 		break;
 	case LATEX_ENVIRONMENT:
 		// if its the last paragraph of the current environment
@@ -1374,6 +1373,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		    && (next_->layout != layout
 			|| next_->params().depth() != params().depth()))
 			break;
+		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
 		if (next_) {
@@ -1392,7 +1392,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		os << params().spaceBottom().asLatexCommand(bparams);
 		further_blank_line = true;
 	}
-      
+
 	if (params().pagebreakBottom()) {
 		os << "\\newpage";
 		further_blank_line = true;
@@ -2048,7 +2048,7 @@ void Paragraph::setContentsFromPar(Paragraph * par)
 }
 
 
-Paragraph::pos_type Paragraph::size() const
+lyx::pos_type Paragraph::size() const
 {
 	return pimpl_->size();
 }
@@ -2072,7 +2072,7 @@ void  Paragraph::id(int id_arg)
 }
 
 
-Paragraph::layout_type Paragraph::getLayout() const
+layout_type Paragraph::getLayout() const
 {
 	return layout;
 }

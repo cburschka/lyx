@@ -23,8 +23,6 @@ class Paragraph;
 ///
 class Row {
 public:
-	/// A position in the row
-	typedef lyx::pos_type pos_type;
 	///
 	Row();
 	///
@@ -34,9 +32,9 @@ public:
 	///
 	Paragraph * par() const;
 	///
-	void pos(pos_type p);
+	void pos(lyx::pos_type p);
 	///
-	pos_type pos() const;
+	lyx::pos_type pos() const;
 	///
 	void fill(int f);
 	///
@@ -69,7 +67,7 @@ private:
 	///
 	Paragraph * par_;
 	///
-	pos_type pos_;
+	lyx::pos_type pos_;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill_;

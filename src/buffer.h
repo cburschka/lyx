@@ -123,7 +123,7 @@ public:
 					Paragraph::depth_type & depth, 
 					LyXFont &);
 	///
-	void insertStringAsLines(Paragraph *&, Paragraph::pos_type &,
+	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
 				 LyXFont const &, string const &) const;
 #ifndef NO_COMPABILITY
 	///
@@ -371,8 +371,7 @@ public:
 			setParagraph();
 		}
 		///
-		inset_iterator(Paragraph * paragraph,
-			       Paragraph::pos_type pos);
+		inset_iterator(Paragraph * paragraph, lyx::pos_type pos);
 		///
 		inset_iterator & operator++() { // prefix ++
 			if (par) {
@@ -402,7 +401,7 @@ public:
 		///
 		Paragraph * getPar() { return par; }
 		///
-		Paragraph::pos_type getPos() const { return it.getPos(); }
+		lyx::pos_type getPos() const { return it.getPos(); }
 		///
 		friend
 		bool operator==(inset_iterator const & iter1,

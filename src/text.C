@@ -46,6 +46,7 @@ using std::max;
 using std::min;
 using std::endl;
 using std::pair;
+using lyx::pos_type;
 
 namespace {
 
@@ -230,7 +231,7 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 
 
 // Returns the paragraph position of the last character in the specified row
-LyXText::pos_type LyXText::rowLast(Row const * row) const
+pos_type LyXText::rowLast(Row const * row) const
 {
 	if (row->next() == 0)
 		return row->par()->size() - 1;
@@ -241,7 +242,7 @@ LyXText::pos_type LyXText::rowLast(Row const * row) const
 }
 
 
-LyXText::pos_type LyXText::rowLastPrintable(Row const * row) const
+pos_type LyXText::rowLastPrintable(Row const * row) const
 {
 	pos_type const last = rowLast(row);
 	if (last >= row->pos()
@@ -878,7 +879,7 @@ int LyXText::labelEnd(BufferView * bview, Row const * row) const
 
 
 // get the next breakpoint in a given paragraph
-LyXText::pos_type
+pos_type
 LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 {
 	Paragraph * par = row->par();
@@ -887,7 +888,6 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 		return par->size();
 
 	pos_type const pos = row->pos();
-
 
 	// position of the last possible breakpoint 
 	// -1 isn't a suitable value, but a flag
@@ -3581,7 +3581,7 @@ int LyXText::defaultHeight() const
    
 /* returns the column near the specified x-coordinate of the row 
 * x is set to the real beginning of this column  */ 
-LyXText::pos_type
+pos_type
 LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 			bool & boundary) const
 {
