@@ -102,7 +102,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 210, 65, 200, 30, _("Typewriter"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->counter_zoom = obj = fl_add_counter(FL_SIMPLE_COUNTER, 345, 130, 65, 30, idex(_("Zoom %|#Z")));
+  fdui->counter_zoom = obj = fl_add_counter(FL_NORMAL_COUNTER, 310, 130, 100, 30, idex(_("Zoom %|#Z")));
     fl_set_button_shortcut(obj, scex(_("Zoom %|#Z")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
@@ -137,7 +137,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_normal = obj = fl_add_input(FL_FLOAT_INPUT, 200, 229, 70, 30, _("normal"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->counter_dpi = obj = fl_add_counter(FL_SIMPLE_COUNTER, 345, 162, 65, 30, idex(_("Screen DPI|#D")));
+  fdui->counter_dpi = obj = fl_add_counter(FL_NORMAL_COUNTER, 310, 160, 100, 30, idex(_("Screen DPI|#D")));
     fl_set_button_shortcut(obj, scex(_("Screen DPI|#D")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
@@ -181,7 +181,8 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
   fdui->form = fl_bgn_form(FL_NO_BOX, 455, 375);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 375, "");
-  fdui->counter_line_len = obj = fl_add_counter(FL_SIMPLE_COUNTER, 295, 50, 120, 30, idex(_("Ascii line length|#A")));
+    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
+  fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 315, 50, 100, 30, idex(_("Ascii line length|#A")));
     fl_set_button_shortcut(obj, scex(_("Ascii line length|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
@@ -607,7 +608,7 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->counter_autosave = obj = fl_add_counter(FL_SIMPLE_COUNTER, 320, 255, 115, 30, _("Autosave interval"));
+  fdui->counter_autosave = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 255, 115, 30, _("Autosave interval"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -625,7 +626,7 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
     fl_set_button(obj, 1);
-  fdui->counter_wm_jump = obj = fl_add_counter(FL_SIMPLE_COUNTER, 320, 225, 115, 30, _("Wheel mouse jump"));
+  fdui->counter_wm_jump = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 225, 115, 30, _("Wheel mouse jump"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);

@@ -1611,7 +1611,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_PRINT_ADAPTOUTPUT:
-		str = N_("Set to true for LyX to pass the name of the destination printer to your print command.");
+		str = N_("Select for LyX to pass the name of the destination printer to your print command.");
 		break;
 		
 	case RC_PRINTTOFILE:
@@ -1684,11 +1684,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_TEMPDIRPATH:
-		str = N_("The path that LyX will use to store temporary TeX output.");
+		str = N_("LyX will place it's temporary directories in this path. They will be deleted when you quit LyX.");
 		break;
 		
 	case RC_USETEMPDIR:
-		str = N_("Specify to use a temporary directory to store temporary TeX output. This directory is deleted when you quit LyX.");
+		str = N_("Select if you wish to use a temporary directory structure to store temporary TeX output.");
 		break;
 		
 	case RC_LASTFILES:
@@ -1696,11 +1696,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_AUTOREGIONDELETE:
-		str = N_("Set to false if you don't want the current selection to be replaced automatically by what you type.");
+		str = N_("De-select if you don't want the current selection to be replaced automatically by what you type.");
 		break;
 		
 	case RC_OVERRIDE_X_DEADKEYS:
-		str = N_("Set to true for LyX to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
+		str = N_("Select if LyX is to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
 		break;
 		
 
@@ -1745,7 +1745,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_CHECKLASTFILES:
-		str = N_("Specify to check whether the lastfiles still exist.");
+		str = N_("Select to check whether the lastfiles still exist.");
 		break;
 		
 	case RC_VIEWDVI_PAPEROPTION:
@@ -1759,7 +1759,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_ACCEPT_COMPOUND:
-		str = N_("Consider run-together words, such as \"notthe\" for \"not the\", as legal words?");
+		str = N_("Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?");
 		break;
 		
 	case RC_SPELL_COMMAND:
@@ -1806,7 +1806,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_MAKE_BACKUP:
-		str = N_("Set to false if you don't want LyX to create backup files.");
+		str = N_("De-select if you don't want LyX to create backup files.");
 		break;
 		
 	case RC_BACKUPDIR_PATH:
@@ -1814,11 +1814,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_RTL_SUPPORT:
-		str = N_("Use to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
+		str = N_("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
 		break;
 		
 	case RC_MARK_FOREIGN_LANGUAGE:
-		str = N_("Use to control the highlighting of words with a language foreign to that of the document.");
+		str = N_("Select to control the highlighting of words with a language foreign to that of the document.");
 		break;
 		
 	case RC_LANGUAGE_PACKAGE:
@@ -1826,11 +1826,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_LANGUAGE_AUTO_BEGIN:
-		str = N_("Use if a language switching command is needed at the beginning of the document.");
+		str = N_("Select if a language switching command is needed at the beginning of the document.");
 		break;
 		
 	case RC_LANGUAGE_AUTO_END:
-		str = N_("Use if a language switching command is needed at the end of the document.");
+		str = N_("Select if a language switching command is needed at the end of the document.");
 		break;
 		
 	case RC_LANGUAGE_COMMAND_BEGIN:
@@ -1846,7 +1846,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_SHOW_BANNER:
-		str = N_("Set to false if you don't want the startup banner.");
+		str = N_("De-select if you don't want the startup banner.");
 		break;
 		
 	case RC_WHEEL_JUMP:

@@ -60,6 +60,10 @@ public:
 			      FL_Coord, FL_Coord, int, void *);
 
 private:
+	/// Connect signals etc. Set form's max size.
+	virtual void connect();
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colours have been re-mapped). */
 	virtual void redraw();
@@ -134,7 +138,7 @@ private:
 	/// Outputs tabfolder
 	FD_form_outer_tab * outputs_tab_;
 	/// Spellchecker, language stuff, etc
-	FD_form_outer_tab * usage_tab_;
+	FD_form_outer_tab * lang_opts_tab_;
 
 	/** Flag whether a warning has been posted to the text window.
 	    If so, don't redraw the window when the mouse leaves an object. */
@@ -158,7 +162,7 @@ private:
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		bool input(FL_OBJECT const * const);
+		void input(FL_OBJECT const * const);
 		///
 		void update() { LoadBrowserLyX(); }
 		
@@ -169,9 +173,9 @@ private:
 		///
 		void AdjustVal( int, int, double ) const;
 		///
-		bool InputBrowserLyX() const;
+		void InputBrowserLyX() const;
 		///
-		bool InputBrowserX11() const;
+		void InputBrowserX11() const;
 		///
 		void InputHSV();
 		///
@@ -181,7 +185,7 @@ private:
 		///
 		bool LoadDatabase();
 		///
-		bool Modify() const;
+		void Modify();
 		///
 		int SearchEntry(RGBColor const &) const;
 		///

@@ -1,6 +1,3 @@
-# Can't seem to input $classname!
-# CLASSNAME will be swapped for the true classname later
-
 # Create the destructor.
 /\(.*\) *create_form_form/{
 h

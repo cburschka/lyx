@@ -50,10 +50,11 @@ using std::endl;
 using std::find;
 using std::find_if;
 using std::pair;
+using std::make_pair;
 using std::max;
+using std::min;
 using std::sort;
 using std::vector;
-using std::make_pair;
 
 extern string system_lyxdir;
 extern string user_lyxdir;
@@ -71,7 +72,7 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0),
 	  converters_tab_(0), inputs_tab_(0), look_n_feel_tab_(0),
-	  outputs_tab_(0),  usage_tab_(0),
+	  outputs_tab_(0),  lang_opts_tab_(0),
 	  warningPosted(false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this), 
@@ -91,9 +92,27 @@ FormPreferences::~FormPreferences()
 	delete inputs_tab_;
 	delete look_n_feel_tab_;
 	delete outputs_tab_;
-	delete usage_tab_;
+	delete lang_opts_tab_;
 
 	delete dialog_;
+}
+
+
+void FormPreferences::connect()
+{
+	fl_set_form_maxsize( dialog_->form, minw_, minh_ );
+
+	FormBaseBI::connect();
+}
+
+
+void FormPreferences::disconnect()
+{
+	// colors_->disconnect();
+	// converters_->disconnect(); //local_converters.Clear();
+	// formats_->disconnect();    //local_formats.Clear();
+
+	FormBaseBI::disconnect();
 }
 
 
@@ -121,8 +140,8 @@ void FormPreferences::redraw()
 	else if (form2 == outputs_tab_->form)
 		form3 = fl_get_active_folder(outputs_tab_->tabfolder_outer);
 
-	else if (form2 == usage_tab_->form)
-		form3 = fl_get_active_folder(usage_tab_->tabfolder_outer);
+	else if (form2 == lang_opts_tab_->form)
+		form3 = fl_get_active_folder(lang_opts_tab_->tabfolder_outer);
 
 	if (form3 && form3->visible)
 		fl_redraw_form(form3);
@@ -183,7 +202,7 @@ void FormPreferences::build()
 	look_n_feel_tab_ = build_outer_tab();
 	inputs_tab_ = build_outer_tab();
 	outputs_tab_ = build_outer_tab();
-	usage_tab_ = build_outer_tab();
+	lang_opts_tab_ = build_outer_tab();
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
@@ -202,11 +221,11 @@ void FormPreferences::build()
 
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Look and Feel"),
+			   _("Look & Feel"),
 			   look_n_feel_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Usage"),
-			   usage_tab_->form);
+			   _("Lang Opts"),
+			   lang_opts_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Converters"),
 			   converters_tab_->form);
@@ -258,10 +277,10 @@ void FormPreferences::build()
 			   outputs_misc_.dialog()->form);
 
 	// then building usage
-	fl_addto_tabfolder(usage_tab_->tabfolder_outer,
+	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
 			   _("Spell checker"),
 			   spellchecker_.dialog()->form);
-	fl_addto_tabfolder(usage_tab_->tabfolder_outer,
+	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
 			   _("Language"),
 			   language_.dialog()->form);
 }
@@ -343,9 +362,10 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
 
-	if (ob->form->fdui == colors_.dialog())
-		return colors_.input(ob);
-	else if (ob->form->fdui == converters_.dialog())
+	if (ob->form->fdui == colors_.dialog()) {
+		colors_.input(ob);
+		return true;
+	} else if (ob->form->fdui == converters_.dialog())
 		return converters_.input(ob);
 	else if (ob->form->fdui == formats_.dialog())
 		return formats_.input(ob);
@@ -440,8 +460,7 @@ void FormPreferences::Colors::apply()
 		// Ascertain the X11 name
 		RGBColor const & col = (*cit).color();
 		vector<NamedColor>::const_iterator cit2 =
-			find_if(colorDB.begin(), colorDB.end(),
-				compare_memfun(&NamedColor::color, col));
+			find(colorDB.begin(), colorDB.end(), col);
 		if (cit2 == colorDB.end()) continue;
 
 		if (lcolor.getX11Name(lc) != (*cit2).getname()) {
@@ -465,10 +484,9 @@ void FormPreferences::Colors::build()
 {
 	dialog_ = parent_.build_colors();
 
-	fl_set_object_color(dialog_->button_color,
-			    FL_FREE_COL4, FL_FREE_COL4);
+	fl_set_object_color(dialog_->button_color, FL_FREE_COL1, FL_FREE_COL1);
 
-	fl_set_object_color(dialog_->dial_hue, FL_FREE_COL4+1, FL_BLACK);
+	fl_set_object_color(dialog_->dial_hue, FL_FREE_COL2, FL_BLACK);
 	fl_set_dial_return(dialog_->dial_hue, FL_RETURN_CHANGED);
 	fl_set_dial_bounds(dialog_->dial_hue, 0.0, 360.0);
 
@@ -551,7 +569,7 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 }
 
 
-bool FormPreferences::Colors::input(FL_OBJECT const * const ob)
+void FormPreferences::Colors::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->browser_x11) {
 		InputBrowserX11();
@@ -582,8 +600,6 @@ bool FormPreferences::Colors::input(FL_OBJECT const * const ob)
 	} else if (ob == dialog_->button_modify) {
 		Modify();
 	}
-	
-	return true;
 }
 
 
@@ -595,43 +611,38 @@ void FormPreferences::Colors::AdjustVal(int colAdjust, int colParent,
 
 	HSVColor hsv(rgb);
 	hsv.v += addVal;
-	if (hsv.v > 1.0) 
-		hsv.v = 1.0;
-	else if (hsv.v < 0.0)
-		hsv.v = 0.0;
+	hsv.v = min( 1.0, max(0.0, hsv.v) );
 
 	rgb = RGBColor(hsv);
 	fl_mapcolor(colAdjust, rgb.r, rgb.g, rgb.b);
 }
 
 
-bool FormPreferences::Colors::InputBrowserLyX() const
+void FormPreferences::Colors::InputBrowserLyX() const
 {
-	int const i = fl_get_browser(dialog_->browser_lyx_objs);
-	if (i < 1)
-		return true;
-
-	string const name = fl_get_browser_line(dialog_->browser_lyx_objs, i);
+	vector<NamedColor>::size_type const selLyX =
+		fl_get_browser(dialog_->browser_lyx_objs);
+	if (selLyX < 1) return;
 
 	// Is the choice an Xforms color...
-	vector<NamedColor>::const_iterator cit =
-		find_if(xformColorDB.begin(), xformColorDB.end(),
-			compare_memfun(&NamedColor::getname, name));
+	RGBColor color;
 
+	if( selLyX-1 < int(xformColorDB.size()) ) {
+		vector<XformColor>::size_type const i = selLyX - 1;
+		color = xformColorDB[i].color();
+	}
 	// or a LyX Logical color?
-	if (cit == xformColorDB.end()) {
-		cit = find_if(lyxColorDB.begin(), lyxColorDB.end(),
-			      compare_memfun(&NamedColor::getname, name));
-		if (cit == lyxColorDB.end()) return true;
+	else {
+		vector<NamedColor>::size_type const i = selLyX - 1 -
+							xformColorDB.size();
+		color = lyxColorDB[i].color();
 	}
 
-	RGBColor const & col = (*cit).color();
-	cit = find_if(colorDB.begin(), colorDB.end(),
-		      compare_memfun(&NamedColor::color, col));
+	vector<NamedColor>::const_iterator cit =
+		find(colorDB.begin(), colorDB.end(), color);
+	if (cit == colorDB.end())  return;
 
-	int j = 0;
-	if (cit != colorDB.end())
-		j = static_cast<int>(cit - colorDB.begin());
+	int const j = static_cast<int>(cit - colorDB.begin());
 
 	fl_set_browser_topline(dialog_->browser_x11, max(j-5, 1));
 	fl_select_browser_line(dialog_->browser_x11, j+1);
@@ -639,21 +650,18 @@ bool FormPreferences::Colors::InputBrowserLyX() const
 
 	fl_deactivate_object(dialog_->button_modify);
 	fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
-	
-	return true;
 }
 
 
-bool FormPreferences::Colors::InputBrowserX11() const
+void FormPreferences::Colors::InputBrowserX11() const
 {
 	int const i = fl_get_browser(dialog_->browser_x11);
-	if (i < 1)
-		return true;
+	if (i < 1) return;
 
 	fl_freeze_form(dialog_->form);
-	RGBColor const & col = colorDB[i - 1].color();
+	RGBColor const & col = colorDB[i-1].color();
 	
-	fl_mapcolor(FL_FREE_COL4, col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL1, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->button_color);
 
 	HSVColor hsv(col);
@@ -663,15 +671,14 @@ bool FormPreferences::Colors::InputBrowserX11() const
 	fl_set_slider_value(dialog_->slider_value, hsv.v);
 
 	RGBColor col2 = HSVColor(hsv.h, 1.0, 1.0);
-	fl_mapcolor(FL_FREE_COL4+1, col2.r, col2.g, col2.b);
+	fl_mapcolor(FL_FREE_COL2, col2.r, col2.g, col2.b);
 	fl_redraw_object(dialog_->dial_hue);
 
 	// Is it valid to activate the "Modify" button?
 	int const line = fl_get_browser(dialog_->browser_lyx_objs);
-	bool isSelected = (line > 0);
-	if (isSelected)
-		if (line > fl_get_browser_maxline(dialog_->browser_lyx_objs))
-			isSelected = false;	
+	bool const isSelected =
+		(line > 0 &&
+		 line <= fl_get_browser_maxline(dialog_->browser_lyx_objs));
 
 	if (isSelected) {
 		fl_activate_object(dialog_->button_modify);
@@ -679,7 +686,6 @@ bool FormPreferences::Colors::InputBrowserX11() const
 	}
 
 	fl_unfreeze_form(dialog_->form);
-	return true;
 }
 
 
@@ -698,16 +704,15 @@ void FormPreferences::Colors::InputHSV()
 	fl_set_browser_topline(dialog_->browser_x11, max(i-5, 1));
 	fl_select_browser_line(dialog_->browser_x11, i+1);
 
-	fl_mapcolor(FL_FREE_COL4, col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL1, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->button_color);
 
 	// Only activate the "Modify" button if the browser and slider colors
 	// are the same AND if a LyX object is selected.
 	int const line = fl_get_browser(dialog_->browser_lyx_objs);
-	bool isSelected = (line > 0);
-	if (isSelected)
-		if (line > fl_get_browser_maxline(dialog_->browser_lyx_objs))
-			isSelected = false;	
+	bool const isSelected =
+		(line > 0 &&
+		 line <= fl_get_browser_maxline(dialog_->browser_lyx_objs));
 
 	if (isSelected && colorDB[i].color() == col) {
 		fl_activate_object( dialog_->button_modify );
@@ -719,7 +724,7 @@ void FormPreferences::Colors::InputHSV()
 
 	// Finally, modify the color of the dial.
 	col = HSVColor(hue, 1.0, 1.0);
-	fl_mapcolor(FL_FREE_COL4 + 1, col.r, col.g, col.b);
+	fl_mapcolor(FL_FREE_COL2, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->dial_hue);
 
 	fl_unfreeze_form(dialog_->form);
@@ -875,7 +880,7 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename)
 	// This can go here and not in update() because we only need to do it
 	// once.
 	fl_freeze_form(dialog_->form);
-	for (int i = 0; i<LColor::ignore; ++i) {
+	for (int i=0; i<LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
 
 		string name = lowercase(lcolor.getX11Name(lc));
@@ -959,43 +964,39 @@ bool FormPreferences::Colors::LoadDatabase()
 }
 
 
-bool FormPreferences::Colors::Modify() const
+void FormPreferences::Colors::Modify()
 {
-	int const i = fl_get_browser(dialog_->browser_lyx_objs);
-	if (i < 1) return true;
-
-	string const name = fl_get_browser_line(dialog_->browser_lyx_objs, i);
-
-	// Is the choice an Xforms color...
-	vector<NamedColor>::iterator it = // non-const; it's modified below
-		const_cast<vector<XformColor>::iterator>(
-			find_if(xformColorDB.begin(), xformColorDB.end(),
-				compare_memfun(&NamedColor::getname, name)));
-
-	// or a LyX Logical color?
-	if (it == xformColorDB.end()) {
-		it = const_cast<vector<NamedColor>::iterator>(
-			find_if(lyxColorDB.begin(), lyxColorDB.end(),
-				compare_memfun(&NamedColor::getname, name)));
-		if (it == lyxColorDB.end()) return true;
-	}
+	vector<NamedColor>::size_type const selLyX =
+		fl_get_browser(dialog_->browser_lyx_objs);
+	if (selLyX < 1) return;
 	
-	// Ok! Modify the color.
-	int const j = fl_get_browser(dialog_->browser_x11);
-	if (j < 1) return true;
-
-	(*it).r = colorDB[j - 1].r;
-	(*it).g = colorDB[j - 1].g;
-	(*it).b = colorDB[j - 1].b;
-
-	fl_freeze_form(dialog_->form);
-
+	vector<NamedColor>::size_type const selX11 =
+		fl_get_browser(dialog_->browser_x11);
+	if (selX11 < 1) return;
+	
+        // Is the choice an Xforms color...
+	if (selLyX-1 < int(xformColorDB.size())) {
+		vector<XformColor>::size_type const i = selLyX - 1;
+		vector<NamedColor>::size_type const j = selX11 - 1;
+		xformColorDB[i].r  = colorDB[j].r;
+		xformColorDB[i].g  = colorDB[j].g;
+		xformColorDB[i].b  = colorDB[j].b;
+	} else { // or a LyX Logical color?
+		vector<NamedColor>::size_type const i = selLyX - 1 -
+			xformColorDB.size();
+		vector<NamedColor>::size_type const j = selX11 - 1;
+		lyxColorDB[i].r  = colorDB[j].r;
+		lyxColorDB[i].g  = colorDB[j].g;
+		lyxColorDB[i].b  = colorDB[j].b;
+        }
+	
+        fl_freeze_form(dialog_->form);
+	
 	fl_deselect_browser(dialog_->browser_x11);
 	fl_deactivate_object(dialog_->button_modify);
 	fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
-
+	
 	fl_unfreeze_form(dialog_->form);
-	return true;
 }
 
 
@@ -1056,7 +1057,7 @@ void FormPreferences::Colors::Sort()
 	int i = fl_get_browser(dialog_->browser_x11);
 	if (i < 1) return;
 
-	RGBColor const col = colorDB[i - 1].color();
+	RGBColor const col = colorDB[i-1].color();
 
 	if (fl_get_button(dialog_->button_type_sort)) {
 		sort(colorDB.begin(), colorDB.end(),
@@ -1076,15 +1077,14 @@ void FormPreferences::Colors::Sort()
 	}
 
 	vector<NamedColor>::const_iterator cit =
-		find_if(colorDB.begin(), colorDB.end(),
-			compare_memfun(&NamedColor::color, col));
+		find(colorDB.begin(), colorDB.end(), col);
 
 	i = 0;
 	if (cit != colorDB.end())
 		i = static_cast<int>(cit - colorDB.begin());
 
-	fl_set_browser_topline(dialog_->browser_x11, max(i - 5, 1));
-	fl_select_browser_line(dialog_->browser_x11, i + 1);
+	fl_set_browser_topline(dialog_->browser_x11, max(i-5, 1));
+	fl_select_browser_line(dialog_->browser_x11, i+1);
 	fl_unfreeze_form(dialog_->form);
 }
 
@@ -1158,9 +1158,12 @@ FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 	} else if (ob == dialog_->input_flags) {
 		str = N_("Flags that control the converter behavior");
 	} else if (ob == dialog_->button_delete) {
-		str = N_("Remove the current converter from the list of available converters.");
+		str = N_("Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change.");
 	} else if (ob == dialog_->button_add) {
-		str = N_("Add the current converter to the list of available converters.");
+		if (string(ob->label) == _("Add"))
+			str = N_("Add the current converter to the list of available converters. Note: you must then \"Apply\" the change.");
+		else
+			str = N_("Modify the contents of the current converter. Note: you must then \"Apply\" the change.");
 	}
 
 	return str;
@@ -1330,7 +1333,7 @@ string const FormPreferences::Converters::GetFrom() const
 {
 	int const i = fl_get_choice(dialog_->choice_from);
 	if (i > 0)
-		return local_formats.Get(i - 1).name();
+		return local_formats.Get(i-1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetFrom: No choice!"
 		       << endl;
@@ -1343,7 +1346,7 @@ string const FormPreferences::Converters::GetTo() const
 {
 	int const i = fl_get_choice(dialog_->choice_to);
 	if (i > 0)
-		return local_formats.Get(i - 1).name();
+		return local_formats.Get(i-1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetTo: No choice!"
 		       << endl;
@@ -1427,9 +1430,12 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 	} else if (ob == dialog_->input_viewer) {
 		str = N_("The command used to launch the viewer application.");
 	} else if (ob == dialog_->button_delete) {
-		str = N_("Remove the current format from the list of available formats.");
+		str = N_("Remove the current format from the list of available formats. Note: you must then \"Apply\" the change.");
 	} else if (ob == dialog_->button_add) {
-		str = N_("Add the current format to the list of available formats.");
+		if (string(ob->label) == _("Add"))
+			str = N_("Add the current format to the list of available formats. Note: you must then \"Apply\" the change.");
+		else
+			str = N_("Modify the contents of the current format. Note: you must then \"Apply\" the change.");
 	}
 
 	return str;
@@ -1518,7 +1524,7 @@ bool FormPreferences::Formats::Browser()
 
 	fl_freeze_form(dialog_->form);
 
-	Format const & f = local_formats.Get(i - 1);
+	Format const & f = local_formats.Get(i-1);
 
 	fl_set_input(dialog_->input_format, f.name().c_str());
 	fl_set_input(dialog_->input_gui_name, f.prettyname().c_str());
@@ -1580,7 +1586,7 @@ bool FormPreferences::Formats::Input()
 		fl_set_button_shortcut(dialog_->button_add,
 					scex(_("Modify|#M")), 1);
 
-		int const top = max(sel - 5, 0);
+		int const top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
 		fl_select_browser_line(dialog_->browser_all, sel+1);
 		
@@ -1674,8 +1680,7 @@ void FormPreferences::Interface::build()
 
 	fl_set_input_return(dialog_->input_popup_font, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_menu_font, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_popup_encoding, 
-			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_popup_encoding, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_bind_file, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_ui_file, FL_RETURN_CHANGED);
 
@@ -2023,6 +2028,9 @@ void FormPreferences::LnFmisc::build()
 {
 	dialog_ = parent_.build_lnf_misc();
 
+	fl_set_counter_step(dialog_->counter_autosave, 1, 10);
+	fl_set_counter_step(dialog_->counter_wm_jump, 1, 10);
+
 	fl_set_counter_return(dialog_->counter_autosave, FL_RETURN_CHANGED);
 	fl_set_counter_return(dialog_->counter_wm_jump, FL_RETURN_CHANGED);
 
@@ -2104,14 +2112,13 @@ void FormPreferences::OutputsMisc::build()
 {
 	dialog_ = parent_.build_outputs_misc();
 
-	fl_set_counter_return(dialog_->counter_line_len,
-			      FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_tex_encoding,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_ascii_roff,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_checktex,
-			    FL_RETURN_CHANGED);
+	fl_set_counter_step(dialog_->counter_line_len, 1, 10);
+
+	fl_set_counter_return(dialog_->counter_line_len, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_tex_encoding, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_ascii_roff,   FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_checktex,     FL_RETURN_CHANGED);
+
 	fl_addto_choice(dialog_->choice_default_papersize,
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
 
@@ -2351,7 +2358,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		string const name = fl_get_input(dialog_->input_serverpipe);
 		if (!name.empty()) {
 			// strip off the extension
-			string str = ChangeExtension(name, "");
+			string const str = ChangeExtension(name, "");
 			if (!RWInfo::WriteableFile(str + ".in")) {
 				parent_.printWarning(RWInfo::ErrorMessage());
 				return false;
@@ -2729,45 +2736,36 @@ void FormPreferences::ScreenFonts::build()
 {
 	dialog_ = parent_.build_screen_fonts();
 
-	fl_set_input_return(dialog_->input_roman, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_sans, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_typewriter,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_screen_encoding,
-			    FL_RETURN_CHANGED);
-	fl_set_counter_return(dialog_->counter_zoom, FL_RETURN_CHANGED);
-	fl_set_counter_return(dialog_->counter_dpi, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_tiny, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_script, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_footnote, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_small, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_normal, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_large, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_larger, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_largest, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_huge, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_huger, FL_RETURN_CHANGED);
+	fl_set_counter_step(dialog_->counter_zoom, 1, 10);
+	fl_set_counter_step(dialog_->counter_dpi,  1, 10);
 
-	fl_set_input_filter(dialog_->input_tiny,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_script,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_footnote,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_small,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_normal,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_large,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_larger,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_largest,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_huge,
-			    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_huger,
-			    fl_unsigned_int_filter);
+	fl_set_input_return(dialog_->input_roman,           FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_sans,            FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_typewriter,      FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_screen_encoding, FL_RETURN_CHANGED);
+	fl_set_counter_return(dialog_->counter_zoom,        FL_RETURN_CHANGED);
+	fl_set_counter_return(dialog_->counter_dpi,         FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_tiny,            FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_script,          FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_footnote,        FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_small,           FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_normal,          FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_large,           FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_larger,          FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_largest,         FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_huge,            FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_huger,           FL_RETURN_CHANGED);
+
+	fl_set_input_filter(dialog_->input_tiny,     fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_script,   fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_footnote, fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_small,    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_normal,   fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_large,    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_larger,   fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_largest,  fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_huge,     fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_huger,    fl_unsigned_int_filter);
 
 	// set up the feedback mechanism
 	setPreHandler(dialog_->input_roman);
@@ -2984,12 +2982,9 @@ void FormPreferences::SpellChecker::build()
 
 	fl_addto_choice(dialog_->choice_spell_command,
 			_(" none | ispell | aspell "));
-	fl_set_input_return(dialog_->input_alt_lang,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_escape_chars,
-			    FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_personal_dict,
-			    FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_alt_lang,      FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_escape_chars,  FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
 	setPreHandler(dialog_->choice_spell_command);
@@ -3228,11 +3223,8 @@ void FormPreferences::Feedback(FL_OBJECT * ob, int event)
 }
 
 
-
-
 void FormPreferences::setPreHandler(FL_OBJECT * ob)
 {
 	Assert(ob);
 	fl_set_object_prehandler(ob, C_FormPreferencesFeedbackCB);
 }
-

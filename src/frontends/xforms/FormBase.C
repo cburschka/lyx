@@ -45,11 +45,10 @@ C_GENERICCB(FormBase, RestoreCB)
 
 FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 		   ButtonPolicy * bp, char const * close, char const * cancel)
-	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), title(t), bp_(bp),
-	  minw_(0), minh_(0)
+	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), r_(0), title(t),
+	  bp_(bp), minw_(0), minh_(0)
 {
 	Assert(lv && d && bp);
-	Dialogs::redrawGUI.connect(slot(this, &FormBase::redraw));
 }
 
 
@@ -70,6 +69,14 @@ void FormBase::redraw()
 void FormBase::connect()
 {
 	fl_set_form_minsize(form(), minw_, minh_);
+	r_ = Dialogs::redrawGUI.connect(slot(this, &FormBase::redraw));
+}
+
+
+void FormBase::disconnect()
+{
+	h_.disconnect();
+	r_.disconnect();
 }
 
 
@@ -186,12 +193,6 @@ void FormBaseBI::connect()
 }
 
 
-void FormBaseBI::disconnect()
-{
-	h_.disconnect();
-}
-
-
 FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 		       ButtonPolicy * bp,
 		       char const * close, char const * cancel)
@@ -213,5 +214,5 @@ void FormBaseBD::connect()
 void FormBaseBD::disconnect()
 {
 	u_.disconnect();
-	h_.disconnect();
+	FormBase::disconnect();
 }

@@ -48,6 +48,7 @@ done
 $FDESIGN -convert $1
 FDFIXH=fdfixh.sed
 FDFIXC=fdfixc.sed
+FDFIXC_MOD=fdfixc_modified.sed
 
 # Modify .h file for use by LyX
 echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $HOUT
@@ -59,6 +60,10 @@ if [ -f "$HOUT.patch" ] ; then
     patch -s $HOUT < $HOUT.patch
 fi
 
+# Modify the .c file sed-script
+# (Quicker to modify the sed script than the .c file!)
+sed -e "s/CLASSNAME/$CLASSNAME/" < $FDFIXC > $FDFIXC_MOD
+
 # Modify .c file for use by LyX
 echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $COUT
 echo "#include <config.h>" >> $COUT
@@ -66,7 +71,7 @@ echo "#include \"lyx_gui_misc.h\"" >> $COUT
 echo "#include \"gettext.h\"" >> $COUT
 echo >> $COUT
 
-sed -f $FDFIXC < $CIN | sed -e "s/CLASSNAME/$CLASSNAME/" >> $COUT
+sed -f $FDFIXC_MOD < $CIN >> $COUT
 
 # Patch the .C file if a patch exists
 if [ -f "$COUT.patch" ] ; then
@@ -75,5 +80,5 @@ if [ -f "$COUT.patch" ] ; then
 fi
 
 # Clean up, to leave .C and .h files
-rm -f $CIN $HIN
+rm -f $CIN $HIN $FDFIXC_MOD
 mv $HOUT $HIN

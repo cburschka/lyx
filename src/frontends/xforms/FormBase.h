@@ -72,7 +72,7 @@ protected: // methods
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect() = 0;
+	virtual void disconnect();
 	/// Build the dialog
 	virtual void build() = 0;
 	/** Filter the inputs on callback from xforms
@@ -110,6 +110,8 @@ protected: // methods
 	Dialogs * d_;
 	/// Hide connection.
 	Connection h_;
+	/// Redraw connection.
+	Connection r_;
 	/// dialog title, displayed by WM.
   	string title;
 private:
@@ -137,8 +139,6 @@ protected:
 
 	/// Connect signals
 	virtual void connect();
-	/// Disconnect signals
-	virtual void disconnect();
 };
 
 

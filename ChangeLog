@@ -1,3 +1,35 @@
+2000-11-21  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/LColor.C (init):
+	* src/lyxrc.C (getDescription): changed some comments as suggested by
+	Rob Lahaye.
+
+	* src/frontends/xforms/FormBase.[Ch]: modified to connect and disconnect
+	the redrawGUI signal in best-practice fashion.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: renamed usage_tab_ as
+	long_opts_tab to reflect the change in name of this tabfolder, as
+	suggested by Rob Lahaye.
+	(connect, disconnect): new methods. Don't do much at present other than
+	ensuring that we can't resize the dialog. This just makes xforms go
+	crazy.
+	(lots of methods in Colors): made void rather than bool. The idea is
+	to have an isOk() function that keeps track of whether any input is
+	genuinely invalid and should therefore block Save, Apply.
+	Easier to manipulate the counters rapidly.
+	(Colors::InputBrowserLyX, Colors::Modify): rewritten so that Amir's
+	compiler will like this code. Much cleaner way of doing things.
+
+	* src/frontends/xforms/forms/fdfix.sh: a little speed up fix.
+
+	* src/frontends/xforms/forms/form_preferences.fd: used normal counters
+	rather than simple counters, following suggestion by Rob Lahaye.
+
+	* src/frontends/xforms/forms/form_print.fd: used labelframe rather
+	than engraved frame + text.
+
+	* src/frontends/xforms/forms/makefile: removed spurious command.
+
 2000-11-17  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LColor.C (c-tor): fixed a couple of items in the ColorEntry

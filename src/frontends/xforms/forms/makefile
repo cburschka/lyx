@@ -17,9 +17,6 @@
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
 
-# Various commands
-FDESIGN = fdesign
-
 SRCS := form_citation.fd \
 	form_copyright.fd \
 	form_document.fd \

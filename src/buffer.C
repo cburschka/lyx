@@ -813,7 +813,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			for (; tmpret > 0; --tmpret)
 				tmpret2 = tmpret2 * 2;
 #else
-			int const tmpret2 = pow(2.0, tmpret);
+			int const tmpret2 = int(pow(2.0, tmpret));
 #endif
 			lyxerr << "Tmpret2 = " << tmpret2 << endl;
 			par->align = LyXAlignment(tmpret2);

@@ -279,8 +279,8 @@ argument: 0
 
 --------------------
 class: FL_COUNTER
-type: SIMPLE_COUNTER
-box: 345 130 65 30
+type: NORMAL_COUNTER
+box: 310 130 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -446,8 +446,8 @@ argument: 0
 
 --------------------
 class: FL_COUNTER
-type: SIMPLE_COUNTER
-box: 345 162 65 30
+type: NORMAL_COUNTER
+box: 310 160 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -557,15 +557,15 @@ lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_SouthEast
 name: 
 callback: 
 argument: 
 
 --------------------
 class: FL_COUNTER
-type: SIMPLE_COUNTER
-box: 295 50 120 30
+type: NORMAL_COUNTER
+box: 315 50 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1877,7 +1877,7 @@ argument: 0
 
 --------------------
 class: FL_COUNTER
-type: SIMPLE_COUNTER
+type: NORMAL_COUNTER
 box: 320 255 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
@@ -1937,7 +1937,7 @@ argument: 0
 
 --------------------
 class: FL_COUNTER
-type: SIMPLE_COUNTER
+type: NORMAL_COUNTER
 box: 320 225 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE

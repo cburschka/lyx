@@ -60,7 +60,7 @@ LColor::LColor()
 	{ yellow, N_("yellow"), "yellow", "yellow", "yellow" },
 	{ cursor, N_("cursor"), "cursor", "black", "cursor" },
 	{ background, N_("background"), "background", "linen", "background" },
-	{ foreground, N_("foreground"), "foreground", "black", "foreground" },
+	{ foreground, N_("text"), "foreground", "black", "foreground" },
 	{ selection, N_("selection"), "selection", "LightBlue", "selection" },
 	{ latex, N_("latex"), "latex", "DarkRed", "latex" },
 	{ floats, N_("floats"), "floats", "red", "floats" },
