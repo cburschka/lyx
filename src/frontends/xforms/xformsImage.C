@@ -153,13 +153,9 @@ unsigned int xformsImage::getWidth() const
 	if (!image_)
 		return 0;
 
-#if FL_VERSION == 0 && FL_REVISION == 89 && FL_FIXLEVEL <= 6
-	// Used to fix a bug in xforms <= 0.89.6 which 
-	// crops the image unnecessarily.
-	return image_->w + 5;
-#else
-	return image_->w;
-#endif
+	// Why, oh why do we need such hacks?
+	// Angus 12 July 2002
+	return image_->w + 2;
 }
 
 
