@@ -1658,8 +1658,6 @@ void LyXText::insertChar(char c)
 		cursor.par()->getFontSettings(bv()->buffer()->params,
 					      lastpos - 1);
 
-	bool jumped_over_space = false;
-
 	if (!freeSpacing && IsLineSeparatorChar(c)) {
 		if ((cursor.pos() > 0
 		     && cursor.par()->isLineSeparator(cursor.pos() - 1))
@@ -1679,12 +1677,10 @@ void LyXText::insertChar(char c)
 		}
 	}
 
-	// get the cursor row fist
-	RowList::iterator row = cursorRow();
-	if (c != Paragraph::META_INSET) {
-		// Here case LyXText::InsertInset  already inserted the character
+	// Here case LyXText::InsertInset already inserted the character
+	if (c != Paragraph::META_INSET)
 		cursor.par()->insertChar(cursor.pos(), c);
-	}
+
 	setCharFont(cursor.par(), cursor.pos(), rawtmpfont);
 
 	current_font = rawtmpfont;
@@ -2201,9 +2197,6 @@ void LyXText::backspace()
 {
 	// Get the font that is used to calculate the baselineskip
 	pos_type lastpos = cursor.par()->size();
-	LyXFont rawparfont =
-		cursor.par()->getFontSettings(bv()->buffer()->params,
-					      lastpos - 1);
 
 	if (cursor.pos() == 0) {
 		// The cursor is at the beginning of a paragraph,
@@ -2217,10 +2210,12 @@ void LyXText::backspace()
 
 		// is it an empty paragraph?
 
-		if ((lastpos == 0
-		     || (lastpos == 1 && cursor.par()->isSeparator(0)))) {
-			// This is an empty paragraph and we delete it just by moving the cursor one step
-			// left and let the DeleteEmptyParagraphMechanism handle the actual deletion
+		if (lastpos == 0
+		     || (lastpos == 1 && cursor.par()->isSeparator(0))) {
+			// This is an empty paragraph and we delete it just
+			// by moving the cursor one step
+			// left and let the DeleteEmptyParagraphMechanism
+			// handle the actual deletion
 			// of the paragraph.
 
 			if (cursor.par() != ownerParagraphs().begin()) {
@@ -2314,166 +2309,14 @@ void LyXText::backspace()
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		setCursorIntern(cursor.par(), cursor.pos()- 1,
+		setCursorIntern(cursor.par(), cursor.pos() - 1,
 				false, cursor.boundary());
-
-		if (cursor.par()->isInset(cursor.pos())) {
-			// force complete redo when erasing display insets
-			// this is a cruel method but safe..... Matthias
-			if (cursor.par()->getInset(cursor.pos())->display() ||
-			    cursor.par()->getInset(cursor.pos())->needFullRow()) {
-				cursor.par()->erase(cursor.pos());
-				redoParagraph();
-				return;
-			}
-		}
-
-		RowList::iterator row = cursorRow();
-		int y = cursor.y() - row->baseline();
-		pos_type z;
-		// remember that a space at the end of a row doesnt count
-		// when calculating the fill
-		if (cursor.pos() < lastPos(*this, row) ||
-		    !cursor.par()->isLineSeparator(cursor.pos())) {
-			row->fill(row->fill() + singleWidth(
-							    cursor.par(),
-							    cursor.pos()));
-		}
-
-		// some special code when deleting a newline. This is similar
-		// to the behavior when pasting paragraphs
-		if (cursor.pos() && cursor.par()->isNewline(cursor.pos())) {
-			cursor.par()->erase(cursor.pos());
-			// refresh the positions
-			RowList::iterator tmprow = row;
-			while (boost::next(tmprow) != rows().end() &&
-			       boost::next(tmprow)->par() == row->par()) {
-				++tmprow;
-				tmprow->pos(tmprow->pos() - 1);
-			}
-			if (cursor.par()->isLineSeparator(cursor.pos() - 1))
-				cursor.pos(cursor.pos() - 1);
-
-			if (cursor.pos() < cursor.par()->size()
-			    && !cursor.par()->isSeparator(cursor.pos())) {
-				cursor.par()->insertChar(cursor.pos(), ' ');
-				setCharFont(cursor.par(), cursor.pos(), current_font);
-				// refresh the positions
-				tmprow = row;
-				while (boost::next(tmprow) != rows().end() &&
-				       boost::next(tmprow)->par() == row->par()) {
-					++tmprow;
-					tmprow->pos(tmprow->pos() + 1);
-				}
-			}
-		} else {
-			cursor.par()->erase(cursor.pos());
-
-			// refresh the positions
-			RowList::iterator tmprow = row;
-			while (boost::next(tmprow) != rows().end() &&
-			       boost::next(tmprow)->par() == row->par()) {
-				++tmprow;
-				tmprow->pos(tmprow->pos() - 1);
-			}
-
-			// delete newlines at the beginning of paragraphs
-			while (!cursor.par()->empty() &&
-			       cursor.pos() < cursor.par()->size() &&
-			       cursor.par()->isNewline(cursor.pos()) &&
-			       cursor.pos() == cursor.par()->beginningOfBody()) {
-				cursor.par()->erase(cursor.pos());
-				// refresh the positions
-				tmprow = row;
-				while (boost::next(tmprow) != rows().end() &&
-				       boost::next(tmprow)->par() == row->par()) {
-					++tmprow;
-					tmprow->pos(tmprow->pos() - 1);
-				}
-			}
-		}
-
-		// is there a break one row above
-		if (row != rows().begin() && boost::prior(row)->par() == row->par()) {
-			z = rowBreakPoint(*boost::prior(row));
-			if (z >= row->pos()) {
-				row->pos(z + 1);
-
-				RowList::iterator tmprow = boost::prior(row);
-
-				// maybe the current row is now empty
-				if (row->pos() >= row->par()->size()) {
-					// remove it
-					removeRow(row);
-				} else {
-					breakAgainOneRow(row);
-				}
-
-				// set the dimensions of the row above
-				y -= tmprow->height();
-				tmprow->fill(fill(tmprow, workWidth()));
-				setHeightOfRow(tmprow);
-
-				setCursor(cursor.par(), cursor.pos(),
-					  false, cursor.boundary());
-				//current_font = rawtmpfont;
-				//real_current_font = realtmpfont;
-				// check, whether the last character's font has changed.
-				if (rawparfont !=
-				    cursor.par()->getFontSettings(bv()->buffer()->params,
-								  cursor.par()->size() - 1))
-					redoHeightOfParagraph();
-				return;
-			}
-		}
-
-		// break the cursor row again
-		if (boost::next(row) != rows().end() &&
-		    boost::next(row)->par() == row->par() &&
-		    (lastPos(*this, row) == row->par()->size() - 1 ||
-		     rowBreakPoint(*row) != lastPos(*this, row))) {
-
-			// it can happen that a paragraph loses one row
-			// without a real breakup. This is when a word
-			// is to long to be broken. Well, I don t care this
-			// hack ;-)
-			if (lastPos(*this, row) == row->par()->size() - 1)
-				removeRow(boost::next(row));
-
-			breakAgainOneRow(row);
-			// will the cursor be in another row now?
-			if (boost::next(row) != rows().end() &&
-			    boost::next(row)->par() == row->par() &&
-			    lastPos(*this, row) <= cursor.pos()) {
-				++row;
-				breakAgainOneRow(row);
-			}
-
-			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
-		} else  {
-			// set the dimensions of the row
-			row->fill(fill(row, workWidth()));
-			setHeightOfRow(row);
-			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
-		}
+		cursor.par()->erase(cursor.pos());
 	}
-
-	// current_font = rawtmpfont;
-	// real_current_font = realtmpfont;
-
-	if (isBoundary(bv()->buffer(), *cursor.par(), cursor.pos())
-	    != cursor.boundary())
-		setCursor(cursor.par(), cursor.pos(), false, !cursor.boundary());
 
 	lastpos = cursor.par()->size();
 	if (cursor.pos() == lastpos)
 		setCurrentFont();
-
-	// check, whether the last characters font has changed.
-	if (rawparfont !=
-	    cursor.par()->getFontSettings(bv()->buffer()->params, lastpos - 1)) {
-		redoHeightOfParagraph();
-	}
 
 	redoParagraph();
 	setCursor(cursor.par(), cursor.pos(), false, !cursor.boundary());
