@@ -339,7 +339,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 
 	if (button == mouse_button::button1) {
 		// just set the cursor here
-		lyxerr << "setting cursor\n";
+		//lyxerr << "setting cursor\n";
 		metrics(bv);
 		first_x = x;
 		first_y = y;

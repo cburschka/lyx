@@ -218,7 +218,7 @@ public:
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
 	/// -1: text mode, 1: math mode, 0 undecided
-	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
+	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, VERBATIM_MODE};
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
