@@ -11,6 +11,7 @@
 #include "Painter.h"
 #include "math_support.h"
 #include "math_parser.h"
+#include "LaTeXFeatures.h"
 #include "debug.h"
 
 #include <cctype>
@@ -48,6 +49,12 @@ int MathStringInset::width() const
 	return mathed_string_width(code_, mi_, str_);
 }
 
+void MathStringInset::validate(LaTeXFeatures & features) const
+{
+	//lyxerr << "stringinset amssymb" << endl;
+	if (code_ == LM_TC_MSA || code_ == LM_TC_MSB)
+		features.require("amssymb");
+}
 
 void MathStringInset::metrics(MathMetricsInfo const & mi) const
 {
@@ -118,8 +125,3 @@ void MathStringInset::write(WriteStream & os) const
 }
 
 
-void MathStringInset::validate(LaTeXFeatures & features) const
-{
-	// if (...)
-	//	features.require("amssymb");
-}

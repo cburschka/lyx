@@ -51,6 +51,8 @@ public:
 	///
 	bool isRelOp() const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	void handleFont(MathTextCodes t);
 	///
 	bool match(MathInset *) const;

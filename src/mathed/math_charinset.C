@@ -14,6 +14,7 @@
 #include "math_parser.h"
 #include "debug.h"
 #include "math_mathmlstream.h"
+#include "LaTeXFeatures.h"
 
 
 MathCharInset::MathCharInset(char c)
@@ -121,6 +122,13 @@ void MathCharInset::handleFont(MathTextCodes t)
 	code_ = (code_ == t) ? LM_TC_VAR : t;
 }
 
+void MathCharInset::validate(LaTeXFeatures & features) const
+{
+	// Make sure amssymb is put in preamble if Blackboard Bold or
+	// Fraktur used:
+	if ( (code_ == LM_TC_BB) || (code_ == LM_TC_EUFRAK) )
+		features.require("amssymb");
+}
 
 bool MathCharInset::match(MathInset * p) const
 {

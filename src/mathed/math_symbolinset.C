@@ -5,6 +5,7 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "math_parser.h"
+#include "LaTeXFeatures.h"
 #include "debug.h"
 
 
@@ -119,6 +120,11 @@ bool MathSymbolInset::takesLimits() const
 	return sym_->token == LM_TK_CMEX;
 }
 
+void MathSymbolInset::validate(LaTeXFeatures & features) const
+{
+	if (sym_->token == LM_TK_MSA || sym_->token == LM_TK_MSB)
+		features.require("amssymb");
+}
 
 void MathSymbolInset::normalize(NormalStream & os) const
 {
@@ -183,8 +189,3 @@ void MathSymbolInset::infoize(std::ostream & os) const
 }
 
 
-void MathSymbolInset::validate(LaTeXFeatures & features) const
-{
-	// if (...)
-	//	features.require("amssymb");
-}
