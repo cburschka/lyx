@@ -170,7 +170,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	// set current buffer
 	buffer_ = b;
 
-	if (bufferlist.getState() == BufferList::CLOSING) return;
+	// if we're quitting lyx, don't bother updating stuff 
+	if (quitting)
+		return; 
 
 	// if we are closing the buffer, use the first buffer as current
 	if (!buffer_) {

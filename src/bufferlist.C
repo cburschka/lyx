@@ -54,43 +54,8 @@ using std::mem_fun;
 
 extern BufferView * current_view;
 
-//
-// Class BufferStorage
-//
-
-void BufferStorage::release(Buffer * buf)
-{
-	lyx::Assert(buf);
-	Container::iterator it = find(container.begin(), container.end(), buf);
-	if (it != container.end()) {
-		// Make sure that we don't store a LyXText in
-		// the textcache that points to the buffer
-		// we just deleted.
-		Buffer * tmp = (*it);
-		container.erase(it);
-		textcache.removeAllWithBuffer(tmp);
-		delete tmp;
-	}
-}
-
-
-Buffer * BufferStorage::newBuffer(string const & s, bool ronly)
-{
-	Buffer * tmpbuf = new Buffer(s, ronly);
-	tmpbuf->params.useClassDefaults();
-	lyxerr[Debug::INFO] << "Assigning to buffer "
-			    << container.size() << endl;
-	container.push_back(tmpbuf);
-	return tmpbuf;
-}
-
-
-//
-// Class BufferList
-//
 
 BufferList::BufferList()
-	: state_(BufferList::OK)
 {}
 
 
@@ -155,9 +120,35 @@ bool BufferList::qwriteAll()
 }
 
 
+void BufferList::release(Buffer * buf)
+{
+	lyx::Assert(buf);
+	BufferStorage::iterator it = find(bstore.begin(), bstore.end(), buf);
+	if (it != bstore.end()) {
+		// Make sure that we don't store a LyXText in
+		// the textcache that points to the buffer
+		// we just deleted.
+		Buffer * tmp = (*it);
+		bstore.erase(it);
+		textcache.removeAllWithBuffer(tmp);
+		delete tmp;
+	}
+}
+
+
+Buffer * BufferList::newBuffer(string const & s, bool ronly)
+{
+	Buffer * tmpbuf = new Buffer(s, ronly);
+	tmpbuf->params.useClassDefaults();
+	lyxerr[Debug::INFO] << "Assigning to buffer "
+			    << bstore.size() << endl;
+	bstore.push_back(tmpbuf);
+	return tmpbuf;
+}
+ 
+
 void BufferList::closeAll()
 {
-	state_ = BufferList::CLOSING;
 	// Since we are closing we can just as well delete all
 	// in the textcache this will also speed the closing/quiting up a bit.
 	textcache.clear();
@@ -165,20 +156,12 @@ void BufferList::closeAll()
 	while (!bstore.empty()) {
 		close(bstore.front());
 	}
-	state_ = BufferList::OK;
 }
 
 
 bool BufferList::close(Buffer * buf)
 {
 	lyx::Assert(buf);
-
-	// CHECK
-	// Trace back why we need to use buf->getUser here.
-	// Perhaps slight rewrite is in order? (Lgb)
-
-	if (buf->getUser())
-		buf->getUser()->insetUnlock();
 
 	if (!buf->paragraphs.empty() && !buf->isClean() && !quitting) {
 		string fname;
@@ -213,7 +196,7 @@ bool BufferList::close(Buffer * buf)
 		}
 	}
 
-	bstore.release(buf);
+	release(buf);
 	return true;
 }
 
@@ -240,23 +223,6 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 	if (choice >= bstore.size())
 		return 0;
 	return bstore[choice];
-}
-
-
-int BufferList::unlockInset(UpdatableInset * inset)
-{
-	lyx::Assert(inset);
-
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
-		if ((*it)->getUser()
-		    && (*it)->getUser()->theLockingInset() == inset) {
-			(*it)->getUser()->insetUnlock();
-			return 0;
-		}
-	}
-	return 1;
 }
 
 
@@ -363,7 +329,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 		return 0;
 	}
 
-	Buffer * b = bstore.newBuffer(s, ronly);
+	Buffer * b = newBuffer(s, ronly);
 
 	// Check if emergency save file exists and is newer.
 	e += OnlyFilename(s) + ".emergency";
@@ -418,7 +384,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	if (b->readFile(lex, ts))
 		return b;
 	else {
-		bstore.release(b);
+		release(b);
 		return 0;
 	}
 }
@@ -454,7 +420,7 @@ Buffer * BufferList::getBuffer(string const & s)
 Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 {
 	// get a free buffer
-	Buffer * b = bstore.newBuffer(name);
+	Buffer * b = newBuffer(name);
 
 	// use defaults.lyx as a default template if it exists.
 	if (tname.empty()) {

@@ -787,7 +787,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		finishUndo();
 		return 0;
 	}
-	return bufferlist.unlockInset(inset);
+	return 1;
 }
 
 
