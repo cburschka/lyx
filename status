@@ -1,0 +1,17 @@
+This file lists interface changes that might affect users in
+1.4.0, and also some bug fixes.
+
+Interface changes
+-----------------
+
+Some of the LyX functions have changed names :
+
+tab-insert -> cell-split
+tab-backward -> cell-backward
+tab-forward -> cell-forward
+
+Additionally, tab-forward (bound to the "Tab" key normally) no
+longer has any effect in normal text.
+
+Bug fixes
+---------
