@@ -117,6 +117,22 @@ to do such things, the filters to `downgrade' LyX files (from 1.3.0 to
   multi-language documents, assuming you have the right dictionaries
   installed.
 
+
+What's new in version 1.2.3?
+----------------------------
+
+LyX 1.2.3 is a maintenance release. It mainly fixes a very bad bug
+where configuring LyX as root could lead to deleting the /dev/null
+special device (this does not impact users of prebuilt binaries).
+Also, a bug where LyX would create zombie processes has been fixed.
+
+** Updates
+
+- updated italian User Guide
+
+- updated french localization
+
+
 What's new in version 1.2.2?
 ----------------------------
 
