@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_filedialog
 Width: 370
-Height: 310
-Number of Objects: 13
+Height: 275
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 370 310
+box: 0 0 370 275
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -28,24 +28,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: 
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 5 205 360 25
-boxtype: FL_SHADOW_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_SouthWest FL_SouthEast
-name: FileInfo
 callback: 
 argument: 
 
@@ -106,7 +88,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 90 245 275 25
+box: 90 210 275 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -196,7 +178,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 180 280 90 25
+box: 180 245 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -214,7 +196,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 275 280 90 25
+box: 275 245 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
